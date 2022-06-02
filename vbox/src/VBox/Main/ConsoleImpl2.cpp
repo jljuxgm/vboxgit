@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 33244 2010-10-20 09:07:34Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 33307 2010-10-21 13:05:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2923,7 +2923,7 @@ int Console::configMedium(PCFGMNODE pLunL0,
             }
 
             if (    pMedium
-                && (    enmType == DeviceType_DVD
+                && (   enmType == DeviceType_DVD
                     || enmType == DeviceType_Floppy
             ))
             {
@@ -2985,8 +2985,7 @@ int Console::configMedium(PCFGMNODE pLunL0,
                 hrc = pMedium->COMGETTER(Format)(bstr.asOutParam());                        H();
                 InsertConfigString(pCfg, "Format", bstr);
 
-                /* DVDs are always readonly, floppies may be readonly */
-                if (enmType == DeviceType_DVD)
+                if (mediumType == MediumType_Readonly)
                 {
                     InsertConfigInteger(pCfg, "ReadOnly", 1);
                 }
@@ -3004,8 +3003,9 @@ int Console::configMedium(PCFGMNODE pLunL0,
                  *        So, on the "lock-media" command, the target teleporter should also
                  *        make DrvVD undo TempReadOnly.  It gets interesting if we fail after
                  *        that. Grumble. */
-                else if (   aMachineState == MachineState_TeleportingIn
-                         || aMachineState == MachineState_FaultTolerantSyncing)
+                if (   enmType == DeviceType_HardDisk
+                    && (   aMachineState == MachineState_TeleportingIn
+                        || aMachineState == MachineState_FaultTolerantSyncing))
                 {
                     InsertConfigInteger(pCfg, "TempReadOnly", 1);
                 }

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33300 2010-10-21 11:28:06Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33307 2010-10-21 13:05:39Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11348,12 +11348,12 @@ HRESULT SessionMachine::lockMedia()
         if (pMedium != NULL)
         {
             MediumType_T mediumType = pMedium->getType();
-            bool fIsReadOnlyImage =    devType == DeviceType_DVD
-                                    || mediumType == MediumType_Shareable;
+            bool fIsReadOnlyLock =    mediumType == MediumType_Readonly
+                                   || mediumType == MediumType_Shareable;
             bool fIsVitalImage = (devType == DeviceType_HardDisk);
 
             mrc = pMedium->createMediumLockList(fIsVitalImage /* fFailIfInaccessible */,
-                                                !fIsReadOnlyImage /* fMediumLockWrite */,
+                                                !fIsReadOnlyLock /* fMediumLockWrite */,
                                                 NULL,
                                                 *pMediumLockList);
             if (FAILED(mrc))
