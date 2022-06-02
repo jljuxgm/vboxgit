@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 30875 2010-07-16 11:13:18Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 30966 2010-07-21 14:20:20Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -257,6 +257,8 @@ static int vboxserviceVMInfoWriteUsers(void)
         if (ut_user->ut_type == USER_PROCESS)
             cUtmpEntries++;
     }
+    /** @todo r=bird: Guess what happens if someone logs in right now.
+     *        Better do all in a single loop and dynamically resize arrays. */
 
     if (cUtmpEntries) /* Do we have some users at all? */
     {
@@ -277,6 +279,8 @@ static int vboxserviceVMInfoWriteUsers(void)
                         fFound = (strcmp((const char*)aUsers[u], ut_user->ut_user) == 0) ? true : false;
 
                     if (!fFound)
+/** @todo r=bird: RTStrAAppend on an uninitailized variable. Didn't use
+ *        RTMemAllocZ!. */
                         rc = RTStrAAppend(&aUsers[cUsersInList++], (const char*)ut_user->ut_user);
                 }
             }
