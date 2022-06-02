@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 35061 2010-12-14 10:58:49Z vboxsync $ */
+/* $Id: GuestImpl.cpp 35070 2010-12-14 12:28:32Z vboxsync $ */
 
 /** @file
  *
@@ -345,7 +345,7 @@ HRESULT Guest::taskCopyFile(TaskGuest *aTask)
                             /* Transfer the current chunk ... */
                             ULONG uBytesWritten;
                             rc = pGuest->SetProcessInput(uPID, uFlags,
-                                                         5 * 1000 /* Wait 5s for getting the input data transfered. */,
+                                                         10 * 1000 /* Wait 10s for getting the input data transfered. */,
                                                          ComSafeArrayAsInParam(aInputData), &uBytesWritten);
                             if (FAILED(rc))
                             {
@@ -606,7 +606,7 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
                                 #endif
                                     ULONG uBytesWritten;
                                     rc = pGuest->SetProcessInput(uPID, uFlags,
-                                                                 5 * 1000 /* Wait 5s for getting the input data transfered. */,
+                                                                 10 * 1000 /* Wait 10s for getting the input data transfered. */,
                                                                  ComSafeArrayAsInParam(aInputData), &uBytesWritten);
                                     if (FAILED(rc))
                                     {
