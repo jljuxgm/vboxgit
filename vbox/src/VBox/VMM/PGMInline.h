@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 32036 2010-08-27 10:14:39Z vboxsync $ */
+/* $Id: PGMInline.h 32770 2010-09-27 11:37:26Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1431,8 +1431,7 @@ DECLINLINE(void) pgmTrackDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPG
  */
 DECLINLINE(void) pgmPoolCacheUsed(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
 {
-    PVM pVM = pPool->CTX_SUFF(pVM);
-    pgmLock(pVM);
+    Assert(PGMIsLockOwner(pPool->CTX_SUFF(pVM)));
 
     /*
      * Move to the head of the age list.
@@ -1453,7 +1452,6 @@ DECLINLINE(void) pgmPoolCacheUsed(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
         pPool->iAgeHead = pPage->idx;
         pPool->aPages[pPage->iAgeNext].iAgePrev = pPage->idx;
     }
-    pgmUnlock(pVM);
 }
 
 /**
