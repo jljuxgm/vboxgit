@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 32727 2010-09-23 14:31:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 32765 2010-09-24 16:26:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -537,9 +537,11 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     hrc = pMachine->COMGETTER(ChipsetType)(&chipsetType);                               H();
     if (chipsetType == ChipsetType_ICH9)
     {
-        u64McfgLength = 0x10000000;
+        /* We'd better have 0x10000000 region, to cover 256 buses
+           but this put too much load on hypervisor heap */
+        u64McfgLength = 0x4000000; //0x10000000;
         cbRamHole += u64McfgLength;
-        u64McfgBase = _4G -  cbRamHole;
+        u64McfgBase = _4G - cbRamHole;
     }
 
     ULONG cCpus = 1;
@@ -851,6 +853,11 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         InsertConfigInteger(pInst, "Trusted",              1); /* boolean */
         InsertConfigNode(pInst,    "Config", &pCfg);
         InsertConfigInteger(pCfg, "IOAPIC", fIOAPIC);
+        if (chipsetType == ChipsetType_ICH9)
+        {
+            InsertConfigInteger(pCfg,  "McfgBase",   u64McfgBase);
+            InsertConfigInteger(pCfg,  "McfgLength", u64McfgLength);
+        }
 
 #if 0 /* enable this to test PCI bridging */
         InsertConfigNode(pDevices, "pcibridge", &pDev);
