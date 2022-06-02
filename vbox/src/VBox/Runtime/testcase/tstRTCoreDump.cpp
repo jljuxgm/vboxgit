@@ -1,4 +1,4 @@
-/* $Id: tstRTCoreDump.cpp 31802 2010-08-19 18:55:11Z vboxsync $ */
+/* $Id: tstRTCoreDump.cpp 31820 2010-08-20 13:49:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -1802,7 +1802,7 @@ int CreateCore(PVBOXCORE pVBoxCore, ucontext_t *pContext)
                     rc = AllocMemoryArea(pVBoxCore);
                     if (RT_SUCCESS(rc))
                     {
-                        struct COREACCUMULATORS
+                        struct COREACCUMULATOR
                         {
                             const char        *pszName;
                             PFNCOREACCUMULATOR pfnAcc;
