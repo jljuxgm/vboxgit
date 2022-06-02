@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-posix.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-posix.cpp 33279 2010-10-20 21:37:58Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with mmap only.
  */
@@ -40,6 +40,9 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <sys/mman.h>
+#if !defined(MAP_ANONYMOUS) && defined(MAP_ANON)
+# define MAP_ANONYMOUS MAP_ANON
+#endif
 
 
 /**
