@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 32910 2010-10-05 12:33:56Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 33127 2010-10-14 11:15:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -854,7 +854,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                 Assert(false);
             case ChipsetType_PIIX3:
                 InsertConfigNode(pDevices, "pci", &pDev);
-                u32HbcPciAddress = 0;
+                u32HbcPciAddress = (0x0 << 16) | 0;
                 u32IocPciAddress = (0x1 << 16) | 0; // ISA controller
                 break;
             case ChipsetType_ICH9:
