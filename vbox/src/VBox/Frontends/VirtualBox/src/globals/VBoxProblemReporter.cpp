@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34809 2010-12-07 17:21:50Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34814 2010-12-07 19:11:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -415,6 +415,7 @@ void VBoxProblemReporter::cannotFindLicenseFiles (const QString &aPath)
              "<nobr><b>%1</b></nobr>.")
              .arg (aPath));
 }
+#endif
 
 void VBoxProblemReporter::cannotOpenLicenseFile (QWidget *aParent,
                                                  const QString &aPath)
@@ -425,7 +426,6 @@ void VBoxProblemReporter::cannotOpenLicenseFile (QWidget *aParent,
              "Check file permissions.")
              .arg (aPath));
 }
-#endif
 
 void VBoxProblemReporter::cannotOpenURL (const QString &aURL)
 {
