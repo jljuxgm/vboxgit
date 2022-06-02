@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 30586 2010-07-02 18:12:17Z vboxsync $ */
+/* $Id: TMInternal.h 30684 2010-07-06 19:57:20Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -625,6 +625,20 @@ typedef struct TMCPU
     /** The number of nanoseconds spent on other things.
      * @remarks This is updated when cNsExecuting and cNsHalted are updated. */
     uint64_t                    cNsOther;
+    /** The number of halts. */
+    uint64_t                    cPeriodsHalted;
+    /** The number of guest execution runs. */
+    uint64_t                    cPeriodsExecuting;
+# ifdef VBOX_WITH_STATISTICS
+    /** Resettable version of cNsTotal. */
+    STAMCOUNTER                 StatNsTotal;
+    /** Resettable version of cNsExecuting. */
+    STAMPROFILE                 StatNsExecuting;
+    /** Resettable version of cNsHalted. */
+    STAMPROFILE                 StatNsHalted;
+    /** Resettable version of cNsOther. */
+    STAMPROFILE                 StatNsOther;
+# endif
 
     /** CPU load state for this virtual CPU (tmR3CpuLoadTimer). */
     TMCPULOADSTATE              CpuLoad;
