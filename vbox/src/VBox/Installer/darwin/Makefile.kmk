@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31971 2010-08-25 21:41:41Z vboxsync $
+# $Id: Makefile.kmk 32011 2010-08-26 17:19:11Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -912,6 +912,8 @@ if 1
 				-change           @executable_path/../Frameworks/$(qtmod)$(VBOX_QT4_INFIX).framework/Versions/4/$(qtmod)$(VBOX_QT4_INFIX) \
 				/Applications/VirtualBox.app/Contents/Frameworks/$(qtmod)$(VBOX_QT4_INFIX).framework/Versions/4/$(qtmod)$(VBOX_QT4_INFIX) \
 				-change              $(VBOX_PATH_QT4)/Frameworks/$(qtmod)$(VBOX_QT4_INFIX).framework/Versions/4/$(qtmod)$(VBOX_QT4_INFIX) \
+				/Applications/VirtualBox.app/Contents/Frameworks/$(qtmod)$(VBOX_QT4_INFIX).framework/Versions/4/$(qtmod)$(VBOX_QT4_INFIX) \
+				-change                          $(PATH_SDK_QT4)/$(qtmod)$(VBOX_QT4_INFIX).framework/Versions/4/$(qtmod)$(VBOX_QT4_INFIX) \
 				/Applications/VirtualBox.app/Contents/Frameworks/$(qtmod)$(VBOX_QT4_INFIX).framework/Versions/4/$(qtmod)$(VBOX_QT4_INFIX) \
 				-change                                          $(qtmod)$(VBOX_QT4_INFIX).framework/Versions/4/$(qtmod)$(VBOX_QT4_INFIX) \
 				/Applications/VirtualBox.app/Contents/Frameworks/$(qtmod)$(VBOX_QT4_INFIX).framework/Versions/4/$(qtmod)$(VBOX_QT4_INFIX) \
