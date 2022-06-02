@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 33356 2010-10-22 13:49:59Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 33357 2010-10-22 13:59:37Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -104,6 +104,7 @@ static const RTGETOPTDEF g_aImportApplianceOptions[] =
     { "-scsitype",              'T', RTGETOPT_REQ_UINT32 },     // deprecated
     { "--type",                 'T', RTGETOPT_REQ_UINT32 },     // deprecated
     { "-type",                  'T', RTGETOPT_REQ_UINT32 },     // deprecated
+    { "--controller",           'C', RTGETOPT_REQ_STRING },
 };
 
 int handleImportAppliance(HandlerArg *arg)
