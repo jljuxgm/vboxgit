@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VUSBInternal.h 30968 2010-07-21 15:00:52Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -364,6 +364,9 @@ typedef struct VUSBROOTHUB
     /** Version of the attached Host Controller. */
     uint32_t                fHcVersions;
 #ifdef VBOX_WITH_STATISTICS
+#if HC_ARCH_BITS == 32
+    uint32_t                Alignment0; /**< Counters must be 64-bit aligned. */
+#endif
     VUSBROOTHUBTYPESTATS    Total;
     VUSBROOTHUBTYPESTATS    aTypes[VUSBXFERTYPE_MSG];
     STAMCOUNTER             StatIsocReqPkts;
