@@ -1,4 +1,4 @@
-/* $Id: PciDeviceAttachmentImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: PciDeviceAttachmentImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 
 /** @file
  *
@@ -49,13 +49,14 @@ struct PciDeviceAttachment::Data
 HRESULT PciDeviceAttachment::FinalConstruct()
 {
     LogFlowThisFunc(("\n"));
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void PciDeviceAttachment::FinalRelease()
 {
     LogFlowThisFunc(("\n"));
     uninit();
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

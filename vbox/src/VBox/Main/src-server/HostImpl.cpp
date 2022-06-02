@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 35429 2011-01-07 14:42:24Z vboxsync $ */
+/* $Id: HostImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -220,12 +220,13 @@ struct Host::Data
 
 HRESULT Host::FinalConstruct()
 {
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void Host::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 /**

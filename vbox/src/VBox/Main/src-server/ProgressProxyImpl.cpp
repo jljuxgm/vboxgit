@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 35518 2011-01-13 10:56:26Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -134,6 +134,8 @@ void ProgressProxy::FinalRelease()
     muOtherProgressStartWeight    = 0;
     muOtherProgressWeight         = 0;
     muOtherProgressStartOperation = 0;
+
+    BaseFinalRelease();
 }
 
 void ProgressProxy::uninit()

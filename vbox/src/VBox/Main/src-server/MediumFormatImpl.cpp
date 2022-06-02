@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: MediumFormatImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -31,12 +31,14 @@ DEFINE_EMPTY_CTOR_DTOR(MediumFormat)
 
 HRESULT MediumFormat::FinalConstruct()
 {
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void MediumFormat::FinalRelease()
 {
     uninit();
+    
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 35613 2011-01-18 14:41:37Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -66,6 +66,7 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
     /* Scaled image by default is empty: */
     QImage scaledImage;
 
+
     /* If scaled-factor is set and current image is NOT null: */
     if (m_scaledSize.isValid() && !m_img.isNull())
     {
@@ -92,6 +93,7 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
 
     QPainter painter(m_pMachineView->viewport());
 
+    
     if ((ulong)r.width() < m_width * 2 / 3)
     {
         /* This method is faster for narrow updates */

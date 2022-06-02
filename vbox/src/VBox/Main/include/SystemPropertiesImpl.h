@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
 
 /** @file
  *
@@ -45,9 +45,7 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(SystemProperties)
-        COM_INTERFACE_ENTRY(ISupportErrorInfo)
-        COM_INTERFACE_ENTRY(ISystemProperties)
-        COM_INTERFACE_ENTRY2(IDispatch, ISystemProperties)
+        VBOX_DEFAULT_INTERFACE_ENTRIES (ISystemProperties)
     END_COM_MAP()
 
     DECLARE_EMPTY_CTOR_DTOR(SystemProperties)

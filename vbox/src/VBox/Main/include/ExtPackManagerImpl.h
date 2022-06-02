@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 35523 2011-01-13 13:12:03Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -36,10 +36,8 @@ public:
     DECLARE_NOT_AGGREGATABLE(ExtPackFile)
     DECLARE_PROTECT_FINAL_CONSTRUCT()
     BEGIN_COM_MAP(ExtPackFile)
-        COM_INTERFACE_ENTRY(ISupportErrorInfo)
-        COM_INTERFACE_ENTRY(IExtPackFile)
+        VBOX_DEFAULT_INTERFACE_ENTRIES(IExtPackFile)
         COM_INTERFACE_ENTRY(IExtPackBase)
-        COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
     DECLARE_EMPTY_CTOR_DTOR(ExtPackFile)
 
@@ -101,10 +99,8 @@ public:
     DECLARE_NOT_AGGREGATABLE(ExtPack)
     DECLARE_PROTECT_FINAL_CONSTRUCT()
     BEGIN_COM_MAP(ExtPack)
-        COM_INTERFACE_ENTRY(ISupportErrorInfo)
-        COM_INTERFACE_ENTRY(IExtPack)
+        VBOX_DEFAULT_INTERFACE_ENTRIES(IExtPack)
         COM_INTERFACE_ENTRY(IExtPackBase)
-        COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
     DECLARE_EMPTY_CTOR_DTOR(ExtPack)
 
@@ -192,9 +188,7 @@ class ATL_NO_VTABLE ExtPackManager :
     DECLARE_NOT_AGGREGATABLE(ExtPackManager)
     DECLARE_PROTECT_FINAL_CONSTRUCT()
     BEGIN_COM_MAP(ExtPackManager)
-        COM_INTERFACE_ENTRY(ISupportErrorInfo)
-        COM_INTERFACE_ENTRY(IExtPackManager)
-        COM_INTERFACE_ENTRY(IDispatch)
+        VBOX_DEFAULT_INTERFACE_ENTRIES(IExtPackManager)
     END_COM_MAP()
     DECLARE_EMPTY_CTOR_DTOR(ExtPackManager)
 

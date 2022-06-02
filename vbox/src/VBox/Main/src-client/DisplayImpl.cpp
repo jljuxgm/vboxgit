@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 35633 2011-01-19 16:02:24Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -123,7 +123,7 @@ HRESULT Display::FinalConstruct()
     mu32UpdateVBVAFlags = 0;
 #endif
 
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void Display::FinalRelease()
@@ -135,6 +135,7 @@ void Display::FinalRelease()
         RTCritSectDelete (&mVBVALock);
         memset (&mVBVALock, 0, sizeof (mVBVALock));
     }
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

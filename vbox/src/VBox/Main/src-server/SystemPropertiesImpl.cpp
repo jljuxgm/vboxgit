@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 
 /** @file
  *
@@ -61,12 +61,13 @@ SystemProperties::~SystemProperties()
 
 HRESULT SystemProperties::FinalConstruct()
 {
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void SystemProperties::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public methods only for internal purposes

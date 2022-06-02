@@ -1,4 +1,4 @@
-/* $Id: ProgressCombinedImpl.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ProgressCombinedImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -76,9 +76,7 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP (CombinedProgress)
-        COM_INTERFACE_ENTRY  (ISupportErrorInfo)
-        COM_INTERFACE_ENTRY  (IProgress)
-        COM_INTERFACE_ENTRY2 (IDispatch, IProgress)
+        VBOX_DEFAULT_INTERFACE_ENTRIES  (IProgress)
     END_COM_MAP()
 
     HRESULT FinalConstruct();

@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: GuestImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -43,12 +43,13 @@ DEFINE_EMPTY_CTOR_DTOR (Guest)
 
 HRESULT Guest::FinalConstruct()
 {
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void Guest::FinalRelease()
 {
     uninit ();
+    BaseFinalRelease();
 }
 
 // public methods only for internal purposes

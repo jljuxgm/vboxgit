@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 35553 2011-01-14 00:02:56Z vboxsync $ */
+/* $Id: MediumImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -896,7 +896,7 @@ HRESULT Medium::FinalConstruct()
     vrc = RTSemEventMultiSignal(m->queryInfoSem);
     AssertRCReturn(vrc, E_FAIL);
 
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void Medium::FinalRelease()
@@ -904,6 +904,8 @@ void Medium::FinalRelease()
     uninit();
 
     delete m;
+
+    BaseFinalRelease();
 }
 
 /**

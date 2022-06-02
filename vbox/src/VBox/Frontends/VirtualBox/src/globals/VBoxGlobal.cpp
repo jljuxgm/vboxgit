@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35634 2011-01-19 16:13:31Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2389,7 +2389,7 @@ void VBoxGlobal::startEnumeratingMedia()
         virtual void run()
         {
             LogFlow (("MediaEnumThread started.\n"));
-            COMBase::InitializeCOM();
+            COMBase::InitializeCOM(false);
 
             CVirtualBox mVBox = vboxGlobal().virtualBox();
             QObject *self = &vboxGlobal();
@@ -4764,16 +4764,12 @@ void VBoxGlobal::init()
     mVerString += " [DEBUG]";
 #endif
 
-#ifdef Q_WS_WIN
-    /* COM for the main thread is initialized in main() */
-#else
-    HRESULT rc = COMBase::InitializeCOM();
+    HRESULT rc = COMBase::InitializeCOM(true);
     if (FAILED (rc))
     {
         vboxProblem().cannotInitCOM (rc);
         return;
     }
-#endif
 
     mVBox.createInstance (CLSID_VirtualBox);
     if (!mVBox.isOk())

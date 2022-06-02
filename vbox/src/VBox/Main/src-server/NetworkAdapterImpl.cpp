@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -45,12 +45,13 @@ NetworkAdapter::~NetworkAdapter()
 HRESULT NetworkAdapter::FinalConstruct()
 {
 
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void NetworkAdapter::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 35429 2011-01-07 14:42:24Z vboxsync $ */
+/* $Id: HostImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -45,9 +45,7 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(Host)
-        COM_INTERFACE_ENTRY(ISupportErrorInfo)
-        COM_INTERFACE_ENTRY(IHost)
-        COM_INTERFACE_ENTRY(IDispatch)
+        VBOX_DEFAULT_INTERFACE_ENTRIES(IHost)
     END_COM_MAP()
 
     HRESULT FinalConstruct();

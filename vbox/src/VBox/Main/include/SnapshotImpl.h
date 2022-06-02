@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: SnapshotImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
 
 /** @file
  *
@@ -43,9 +43,7 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(Snapshot)
-        COM_INTERFACE_ENTRY  (ISupportErrorInfo)
-        COM_INTERFACE_ENTRY  (ISnapshot)
-        COM_INTERFACE_ENTRY2 (IDispatch, ISnapshot)
+        VBOX_DEFAULT_INTERFACE_ENTRIES  (ISnapshot)
     END_COM_MAP()
 
     Snapshot()

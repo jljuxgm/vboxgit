@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 35608 2011-01-18 14:19:31Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -343,7 +343,11 @@ HRESULT VirtualBox::FinalConstruct()
 {
     LogFlowThisFunc(("\n"));
 
-    return init();
+    HRESULT rc = init();
+   
+    BaseFinalConstruct();
+
+    return rc;
 }
 
 void VirtualBox::FinalRelease()
@@ -351,6 +355,8 @@ void VirtualBox::FinalRelease()
     LogFlowThisFunc(("\n"));
 
     uninit();
+
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

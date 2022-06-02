@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 
 /** @file
  *
@@ -104,12 +104,13 @@ struct StorageController::Data
 
 HRESULT StorageController::FinalConstruct()
 {
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void StorageController::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: MouseImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -46,9 +46,7 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(Mouse)
-        COM_INTERFACE_ENTRY  (ISupportErrorInfo)
-        COM_INTERFACE_ENTRY  (IMouse)
-        COM_INTERFACE_ENTRY2 (IDispatch, IMouse)
+        VBOX_DEFAULT_INTERFACE_ENTRIES(IMouse)
     END_COM_MAP()
 
     DECLARE_EMPTY_CTOR_DTOR (Mouse)

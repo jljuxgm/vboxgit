@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -81,7 +81,7 @@ HRESULT ProgressBase::FinalConstruct()
     m_pfnCancelCallback = NULL;
     m_pvCancelUserArg = NULL;
 
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 // protected initializer/uninitializer for internal purposes only
@@ -592,6 +592,7 @@ HRESULT Progress::FinalConstruct()
 void Progress::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only
@@ -1243,12 +1244,13 @@ HRESULT CombinedProgress::FinalConstruct()
     mProgress = 0;
     mCompletedOperations = 0;
 
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void CombinedProgress::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

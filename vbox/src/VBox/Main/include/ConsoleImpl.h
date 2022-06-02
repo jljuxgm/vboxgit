@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 35460 2011-01-10 14:24:13Z vboxsync $ */
+/* $Id: ConsoleImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -97,9 +97,7 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(Console)
-        COM_INTERFACE_ENTRY(ISupportErrorInfo)
-        COM_INTERFACE_ENTRY(IConsole)
-        COM_INTERFACE_ENTRY(IDispatch)
+        VBOX_DEFAULT_INTERFACE_ENTRIES(IConsole)
     END_COM_MAP()
 
     Console();
@@ -755,7 +753,7 @@ private:
         }
     }
     mCallbackData;
-    COM_STRUCT_OR_CLASS(IEventListener) *mVmListner;
+    COM_STRUCT_OR_CLASS(IEventListener) *mVmListener;
 
     friend struct VMTask;
 };

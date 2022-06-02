@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -81,12 +81,13 @@ HRESULT Keyboard::FinalConstruct()
     RT_ZERO(mpDrv);
     mpVMMDev = NULL;
     mfVMMDevInited = false;
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void Keyboard::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public methods

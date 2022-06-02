@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 35602 2011-01-18 11:27:20Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 
 /** @file
  *
@@ -108,13 +108,14 @@ struct Snapshot::Data
 HRESULT Snapshot::FinalConstruct()
 {
     LogFlowThisFunc(("\n"));
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void Snapshot::FinalRelease()
 {
     LogFlowThisFunc(("\n"));
     uninit();
+    BaseFinalRelease();
 }
 
 /**
@@ -888,7 +889,7 @@ HRESULT SnapshotMachine::FinalConstruct()
 {
     LogFlowThisFunc(("\n"));
 
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void SnapshotMachine::FinalRelease()
@@ -896,6 +897,8 @@ void SnapshotMachine::FinalRelease()
     LogFlowThisFunc(("\n"));
 
     uninit();
+ 
+    BaseFinalRelease();
 }
 
 /**

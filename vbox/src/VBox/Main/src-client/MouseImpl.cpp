@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: MouseImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -78,12 +78,13 @@ HRESULT Mouse::FinalConstruct()
     mcLastAbsY = 0x8000;
     mfLastButtons = 0;
     mfVMMDevGuestCaps = 0;
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void Mouse::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public methods only for internal purposes

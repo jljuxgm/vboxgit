@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 
 /** @file
  *
@@ -42,12 +42,13 @@ HostNetworkInterface::~HostNetworkInterface()
 
 HRESULT HostNetworkInterface::FinalConstruct()
 {
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void HostNetworkInterface::FinalRelease()
 {
     uninit ();
+    BaseFinalRelease();
 }
 
 // public initializer/uninitializer for internal purposes only

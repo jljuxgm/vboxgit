@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2410,12 +2410,13 @@ VRDEServerInfo::~VRDEServerInfo()
 
 HRESULT VRDEServerInfo::FinalConstruct()
 {
-    return S_OK;
+    return BaseFinalConstruct();
 }
 
 void VRDEServerInfo::FinalRelease()
 {
     uninit();
+    BaseFinalRelease();
 }
 
 // public methods only for internal purposes
