@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31851 2010-08-23 08:18:42Z vboxsync $ */
+/* $Id: PGMInternal.h 31895 2010-08-24 09:00:14Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3788,6 +3788,7 @@ void            pgmR3PoolResetUnpluggedCpu(PVM pVM, PVMCPU pVCpu);
 void            pgmR3PoolReset(PVM pVM);
 void            pgmR3PoolClearAll(PVM pVM, bool fFlushRemTlb);
 DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, void *fpvFlushRemTbl);
+void            pgmR3PoolWriteProtectPages(PVM pVM);
 
 #endif /* IN_RING3 */
 #if defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0) || IN_RC

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 31841 2010-08-21 19:02:03Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 31895 2010-08-24 09:00:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7802,6 +7802,8 @@ DECLCALLBACK(int) Console::fntTakeSnapshotWorker(RTTHREAD Thread, void *pvUser)
             LogFlowFunc(("VMR3Save...\n"));
             int vrc = VMR3Save(that->mpVM,
                                strSavedStateFile.c_str(),
+                               NULL /* pStreamOps */,
+                               NULL /* pvStreamOpsUser */,
                                true /*fContinueAfterwards*/,
                                Console::stateProgressCallback,
                                (void*)pTask,
@@ -8061,6 +8063,8 @@ DECLCALLBACK(int) Console::saveStateThread(RTTHREAD Thread, void *pvUser)
     bool fSuspenededBySave;
     int vrc = VMR3Save(that->mpVM,
                        task->mSavedStateFile.c_str(),
+                        NULL /* pStreamOps */,
+                        NULL /* pvStreamOpsUser */,
                        false, /*fContinueAfterwards*/
                        Console::stateProgressCallback,
                        static_cast<VMProgressTask*>(task.get()),

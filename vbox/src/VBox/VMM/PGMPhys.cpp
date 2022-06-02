@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 31630 2010-08-13 09:25:42Z vboxsync $ */
+/* $Id: PGMPhys.cpp 31895 2010-08-24 09:00:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -955,6 +955,93 @@ VMMR3DECL(int) PGMR3PhysChangeMemBalloon(PVM pVM, bool fInflate, unsigned cPages
 #else
     return VERR_NOT_IMPLEMENTED;
 #endif
+}
+
+/**
+ * Rendezvous callback used by PGMR3WriteProtectRAM that write protects all physical RAM
+ *
+ * This is only called on one of the EMTs while the other ones are waiting for
+ * it to complete this function.
+ *
+ * @returns VINF_SUCCESS (VBox strict status code).
+ * @param   pVM         The VM handle.
+ * @param   pVCpu       The VMCPU for the EMT we're being called on. Unused.
+ * @param   pvUser      User parameter
+ */
+static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysWriteProtectRAMRendezvous(PVM pVM, PVMCPU pVCpu, void *pvUser)
+{
+    int rc = VINF_SUCCESS;
+
+    pgmLock(pVM);
+#ifdef PGMPOOL_WITH_OPTIMIZED_DIRTY_PT
+    pgmPoolResetDirtyPages(pVM);
+#endif
+
+    /** @todo pointless to write protect the physical page pointed to by RSP. */
+
+    /*
+     * Clear all the GCPhys links and rebuild the phys ext free list.
+     */
+    for (PPGMRAMRANGE pRam = pVM->pgm.s.CTX_SUFF(pRamRanges);
+         pRam;
+         pRam = pRam->CTX_SUFF(pNext))
+    {
+        if (!PGM_RAM_RANGE_IS_AD_HOC(pRam))
+        {
+            unsigned iPage = pRam->cb >> PAGE_SHIFT;
+            while (iPage-- > 0)
+            {
+                PPGMPAGE pPage = &pRam->aPages[iPage];
+                if (RT_LIKELY(PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM))
+                {
+                    /*
+                     * A RAM page.
+                     */
+                    switch (PGM_PAGE_GET_STATE(pPage))
+                    {
+                    case PGM_PAGE_STATE_ALLOCATED:                    
+                        /** @todo Optimize this: Don't always re-enable write
+                            * monitoring if the page is known to be very busy. */
+                        if (PGM_PAGE_IS_WRITTEN_TO(pPage))
+                            PGM_PAGE_CLEAR_WRITTEN_TO(pPage);
+
+                        PGM_PAGE_SET_STATE(pPage, PGM_PAGE_STATE_WRITE_MONITORED);
+                        break;
+
+                    case PGM_PAGE_STATE_SHARED:
+                        AssertFailed();
+                        break;
+
+                    case PGM_PAGE_STATE_WRITE_MONITORED:    /* nothing to change. */
+                    default:
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    pgmR3PoolWriteProtectPages(pVM);
+    PGM_INVL_ALL_VCPU_TLBS(pVM);
+    for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
+        CPUMSetChangedFlags(&pVM->aCpus[idCpu], CPUM_CHANGED_GLOBAL_TLB_FLUSH);
+
+    pgmUnlock(pVM);
+    return rc;
+}
+
+/**
+ * Protect all physical RAM to monitor writes
+ *
+ * @returns VBox status code.
+ * @param   pVM         The VM handle.
+ */
+VMMR3DECL(int) PGMR3PhysWriteProtectRAM(PVM pVM)
+{
+    VM_ASSERT_EMT_RETURN(pVM, VERR_VM_THREAD_NOT_EMT);
+
+    int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ONCE, pgmR3PhysWriteProtectRAMRendezvous, NULL);
+    AssertRC(rc);
+    return rc;
 }
 
 /**
