@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 30592 2010-07-04 10:40:45Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 30596 2010-07-05 09:02:18Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -361,9 +361,7 @@ typedef struct BUSLOGIC
     /** Queue to send tasks to R3. - RC ptr */
     RCPTRTYPE(PPDMQUEUE)            pNotifierQueueRC;
 
-#if HC_ARCH_BITS == 64
     uint32_t                        Alignment2;
-#endif
 
     /** Critical section protecting access to the interrupt status register. */
     PDMCRITSECT                     CritSectIntr;
