@@ -1,4 +1,4 @@
-/* $Id: pdmnetinline.h 31272 2010-08-02 09:11:22Z vboxsync $ */
+/* $Id: pdmnetinline.h 31275 2010-08-02 09:30:15Z vboxsync $ */
 /** @file
  * PDM - Networking Helpers, Inlined Code. (DEV,++)
  *
@@ -195,10 +195,9 @@ DECLINLINE(void) pdmNetGsoUpdateUdpHdr(uint32_t u32PseudoSum, uint8_t *pbSegHdrs
         case PDMNETCSUMTYPE_COMPLETE:
             pUdpHdr->uh_sum = RTNetUDPChecksum(u32PseudoSum, pUdpHdr);
             break;
-        /** @todo: Implement:
         case PDMNETCSUMTYPE_PSEUDO:
-            pUdpHdr->uh_sum = ???;
-            break; */
+            pUdpHdr->uh_sum = ~RTNetIPv4FinalizeChecksum(u32PseudoSum);
+            break;
         default:
             AssertFailed();
             break;
