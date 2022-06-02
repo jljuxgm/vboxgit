@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 32315 2010-09-08 11:58:00Z vboxsync $ */
+/* $Id: VMMDev.cpp 32352 2010-09-09 12:40:35Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2896,6 +2896,8 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
                                   "KeepCredentials|"
                                   "HeapEnabled|"
                                   "RamSize|"
+                                  "RZEnabled|"
+                                  "GuestCoreDump|"
                                   "TestingEnabled"
                                   ,
                                   "");
