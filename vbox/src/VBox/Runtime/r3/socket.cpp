@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 31105 2010-07-26 11:04:01Z vboxsync $ */
+/* $Id: socket.cpp 31106 2010-07-26 11:06:10Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -813,7 +813,7 @@ RTDECL(int) RTSocketWriteNB(RTSOCKET hSocket, const void *pvBuffer, size_t cbBuf
     {
         rtSocketErrorReset();
 #ifdef RT_OS_WINDOWS
-        int    cbNow = RT_MIN(cbToWrite, INT_MAX/2);
+        int    cbNow = RT_MIN((int)cbToWrite, INT_MAX/2);
 #else
         size_t cbNow = cbToWrite;
 #endif
