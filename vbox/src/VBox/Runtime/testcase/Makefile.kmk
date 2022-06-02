@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32611 2010-09-17 15:15:22Z vboxsync $
+# $Id: Makefile.kmk 32801 2010-09-28 16:17:46Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -101,6 +101,7 @@ PROGRAMS += \
 	tstRTStrVersion \
 	tstRTSystemQueryDmi \
 	tstRTSystemQueryOsInfo \
+	tstRTTcp-1 \
 	tstRTTemp \
 	tstTermCallbacks \
 	tstThread-1 \
@@ -428,6 +429,9 @@ tstRTSystemQueryDmi_SOURCES = tstRTSystemQueryDmi.cpp
 
 tstRTSystemQueryOsInfo_TEMPLATE = VBOXR3TSTEXE
 tstRTSystemQueryOsInfo_SOURCES = tstRTSystemQueryOsInfo.cpp
+
+tstRTTcp-1_TEMPLATE = VBOXR3TSTEXE
+tstRTTcp-1_SOURCES = tstRTTcp-1.cpp
 
 tstRTTemp_TEMPLATE = VBOXR3TSTEXE
 tstRTTemp_SOURCES = tstRTTemp.cpp
