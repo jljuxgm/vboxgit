@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 30573 2010-07-02 12:03:07Z vboxsync $ */
+/* $Id: PGM.cpp 30728 2010-07-08 09:55:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -4186,6 +4186,7 @@ static DECLCALLBACK(int)  pgmR3CmdCheckDuplicatePages(PCDBGCCMD pCmd, PDBGCCMDHL
     unsigned cZero = 0;
     unsigned cUnique = 0;
     unsigned cDuplicate = 0;
+    unsigned cPages = 0;
 
     pgmLock(pVM);
 
@@ -4230,11 +4231,15 @@ static DECLCALLBACK(int)  pgmR3CmdCheckDuplicatePages(PCDBGCCMD pCmd, PDBGCCMDHL
             /* next */
             pPage++;
             GCPhys += PAGE_SIZE;
+            cPages++;
+            /* Give some feedback for every processed megabyte. */
+            if ((cPages & 0x7f) == 0)
+                pCmdHlp->pfnPrintf(pCmdHlp, NULL, ".");
         }
     }
     pgmUnlock(pVM);
 
-    pCmdHlp->pfnPrintf(pCmdHlp, NULL, "Number of zero pages      %x\n", cZero);
+    pCmdHlp->pfnPrintf(pCmdHlp, NULL, "\nNumber of zero pages      %x\n", cZero);
     pCmdHlp->pfnPrintf(pCmdHlp, NULL, "Number of ballooned pages %x\n", cBallooned);
     pCmdHlp->pfnPrintf(pCmdHlp, NULL, "Number of shared pages    %x\n", cShared);
     pCmdHlp->pfnPrintf(pCmdHlp, NULL, "Number of unique pages    %x\n", cUnique);
