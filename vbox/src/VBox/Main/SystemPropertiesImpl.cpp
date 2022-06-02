@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 31698 2010-08-16 15:00:05Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 32070 2010-08-29 15:55:23Z vboxsync $ */
 
 /** @file
  *
@@ -473,6 +473,7 @@ STDMETHODIMP SystemProperties::GetDeviceTypesForStorageBus(StorageBus_T aBus,
     switch (aBus)
     {
         case StorageBus_IDE:
+        case StorageBus_SATA:
         {
             com::SafeArray<DeviceType_T> saDeviceTypes(2);
             saDeviceTypes[0] = DeviceType_DVD;
@@ -480,7 +481,6 @@ STDMETHODIMP SystemProperties::GetDeviceTypesForStorageBus(StorageBus_T aBus,
             saDeviceTypes.detachTo(ComSafeArrayOutArg(aDeviceTypes));
             break;
         }
-        case StorageBus_SATA:
         case StorageBus_SCSI:
         case StorageBus_SAS:
         {
