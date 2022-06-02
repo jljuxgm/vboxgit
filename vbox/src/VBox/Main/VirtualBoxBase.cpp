@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 34237 2010-11-22 13:24:35Z vboxsync $ */
 
 /** @file
  *
@@ -313,7 +313,8 @@ HRESULT VirtualBoxBase::setErrorInternal(HRESULT aResultCode,
     bool preserve = MultiResult::isMultiEnabled();
 
     if (aLogIt)
-        LogRel(("ERROR [COM]: aRC=%Rhrc (%#08x) aIID={%RTuuid} aComponent={%s} aText={%s} aWarning=%RTbool, preserve=%RTbool\n",
+        LogRel(("%s [COM]: aRC=%Rhrc (%#08x) aIID={%RTuuid} aComponent={%s} aText={%s}, preserve=%RTbool\n",
+                aWarning ? "WARNING" : "ERROR",
                 aResultCode,
                 aResultCode,
                 &aIID,
