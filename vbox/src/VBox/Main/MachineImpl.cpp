@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33709 2010-11-02 19:15:26Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -394,6 +394,18 @@ HRESULT Machine::init(VirtualBox *aParent,
             {
                 // load and parse machine XML; this will throw on XML or logic errors
                 mData->pMachineConfigFile = new settings::MachineConfigFile(&mData->m_strConfigFileFull);
+
+                // reject VM UUID duplicates, they can happen if someone
+                // tries to register an already known VM config again
+                if (aParent->findMachine(mData->pMachineConfigFile->uuid,
+                                         true /* fPermitInaccessible */,
+                                         false /* aDoSetError */,
+                                         NULL) != VBOX_E_OBJECT_NOT_FOUND)
+                {
+                    throw setError(E_FAIL,
+                                   tr("Trying to open a VM config '%s' which has the same UUID as an existing virtual machine"),
+                                   mData->m_strConfigFile.c_str());
+                }
 
                 // use UUID from machine config
                 unconst(mData->mUuid) = mData->pMachineConfigFile->uuid;
