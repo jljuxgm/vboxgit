@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 33343 2010-10-22 11:36:56Z vboxsync $ */
+/* $Id: PGMPool.cpp 33512 2010-10-27 13:58:18Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -660,7 +660,6 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
                         PX86PDPAE pShwPD = (PX86PDPAE)PGMPOOL_PAGE_2_PTR_V2(pPool->CTX_SUFF(pVM), pVCpu, pPage);
                         for (unsigned i = 0; i < RT_ELEMENTS(pShwPD->a); i++)
                         {
-                            Assert((pShwPD->a[i].u & (X86_PDE_PAE_MBZ_MASK_NX | UINT64_C(0x7ff0000000000200))) == 0);
                             if (    pShwPD->a[i].n.u1Present
                                 &&  pShwPD->a[i].b.u1Size)
                             {
