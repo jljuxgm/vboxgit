@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 34335 2010-11-24 17:49:09Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 34426 2010-11-26 20:34:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1142,6 +1142,8 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
             InsertConfigInteger(pBiosCfg,  "PXEDebug",             fPXEDebug);
             InsertConfigBytes(pBiosCfg,    "UUID", &HardwareUuid,sizeof(HardwareUuid));
             InsertConfigNode(pBiosCfg,     "NetBoot", &pNetBootCfg);
+            InsertConfigInteger(pBiosCfg,  "McfgBase",   u64McfgBase);
+            InsertConfigInteger(pBiosCfg,  "McfgLength", u32McfgLength);
 
             DeviceType_T bootDevice;
             if (SchemaDefs::MaxBootPosition > 9)
