@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 31973 2010-08-26 08:14:34Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 31978 2010-08-26 10:04:54Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -2905,7 +2905,7 @@ static DECLCALLBACK(int) dbgcCmdDumpPageHierarchy(PCDBGCCMD pCmd, PDBGCCMDHLP pC
         return DBGCCmdHlpFail(pCmdHlp, pCmd, "Failed to convert %DV to a flat address: %Rrc", pRange, rc);
 
     uint64_t cbRange;
-    rc = DBGCCmdHlpVarGetRange(pCmdHlp, pRange, 1, PAGE_SIZE * 8, &cbRange);
+    rc = DBGCCmdHlpVarGetRange(pCmdHlp, pRange, PAGE_SIZE, PAGE_SIZE * 8, &cbRange);
     if (RT_FAILURE(rc))
         return DBGCCmdHlpFail(pCmdHlp, pCmd, "Failed to obtain the range of %DV: %Rrc", pRange, rc);
 

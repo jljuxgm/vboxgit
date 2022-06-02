@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 31775 2010-08-19 09:48:24Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 31978 2010-08-26 10:04:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -206,6 +206,57 @@ VMMDECL(int)  PGMMapModifyPage(PVM pVM, RTGCPTR GCPtr, size_t cb, uint64_t fFlag
     AssertMsgFailed(("Page range %#x LB%#x not found\n", GCPtr, cb));
     return VERR_INVALID_PARAMETER;
 }
+
+
+/**
+ * Get information about a page in a mapping.
+ *
+ * This differs from PGMShwGetPage and PGMGstGetPage in that it only consults
+ * the page table to calculate the flags.
+ *
+ * @returns VINF_SUCCESS, VERR_PAGE_NOT_PRESENT or VERR_NOT_FOUND.
+ * @param   pVM                 The VM handle.
+ * @param   GCPtr               The page addresss.
+ * @param   pfFlags             Where to return the flags.  Optional.
+ * @param   pHCPhys             Where to return the address.  Optional.
+ */
+VMMDECL(int) PGMMapGetPage(PVM pVM, RTGCPTR GCPtr, uint64_t *pfFlags, PRTHCPHYS pHCPhys)
+{
+    /*
+     * Find the mapping.
+     */
+    GCPtr &= PAGE_BASE_GC_MASK;
+    PPGMMAPPING pCur = pVM->pgm.s.CTX_SUFF(pMappings);
+    while (pCur)
+    {
+        RTGCUINTPTR off = (RTGCUINTPTR)GCPtr - (RTGCUINTPTR)pCur->GCPtr;
+        if (off < pCur->cb)
+        {
+            /*
+             * Dig out the information.
+             */
+            int             rc      = VINF_SUCCESS;
+            unsigned        iPT     = off >> X86_PD_SHIFT;
+            unsigned        iPTE    = (off >> PAGE_SHIFT) & X86_PT_MASK;
+            PCPGMSHWPTEPAE  pPtePae = &pCur->aPTs[iPT].CTX_SUFF(paPaePTs)[iPTE / 512].a[iPTE % 512];
+            if (PGMSHWPTEPAE_IS_P(*pPtePae))
+            {
+                if (pfFlags)
+                    *pfFlags = PGMSHWPTEPAE_GET_U(*pPtePae) & ~X86_PTE_PAE_PG_MASK_FULL;
+                if (pHCPhys)
+                    *pHCPhys = PGMSHWPTEPAE_GET_HCPHYS(*pPtePae);
+            }
+            else
+                rc = VERR_PAGE_NOT_PRESENT;
+            return rc;
+        }
+        /* next */
+        pCur = pCur->CTX_SUFF(pNext);
+    }
+
+    return VERR_NOT_FOUND;
+}
+
 
 
 #ifndef IN_RING0
