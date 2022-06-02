@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 34174 2010-11-18 14:52:35Z vboxsync $ */
+/* $Id: thread-posix.cpp 34175 2010-11-18 14:53:50Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -103,7 +103,9 @@ int rtThreadNativeInit(void)
         SIGRTMAX-2,
         SIGRTMAX-1,
 # endif
+# ifndef RT_OS_SOLARIS
         SIGUSR2,
+# endif
         SIGWINCH
     };
 
