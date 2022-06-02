@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 32765 2010-09-24 16:26:32Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1462,7 +1462,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                                                       pszCtrlDev,
                                                       ulInstance,
                                                       enmBus,
-                                                      fUseHostIOCache,
+                                                      !!fUseHostIOCache,
                                                       false /* fSetupMerge */,
                                                       0 /* uMergeSource */,
                                                       0 /* uMergeTarget */,
@@ -3552,7 +3552,7 @@ int Console::configNetwork(const char *pszDevice,
                 if (hrc == S_OK)
                 {
                     /* get the adapter's INetCfgComponent*/
-                    hrc = VBoxNetCfgWinGetComponentByGuid(pNc, &GUID_DEVCLASS_NET, (GUID*)hostIFGuid.ptr(), pAdaptorComponent.asOutParam());
+                    hrc = VBoxNetCfgWinGetComponentByGuid(pNc, &GUID_DEVCLASS_NET, (GUID*)hostIFGuid.raw(), pAdaptorComponent.asOutParam());
                     if (hrc != S_OK)
                     {
                         VBoxNetCfgWinReleaseINetCfg(pNc, FALSE /*fHasWriteLock*/);
@@ -3929,7 +3929,7 @@ int Console::configNetwork(const char *pszDevice,
                 if (hrc == S_OK)
                 {
                     /* get the adapter's INetCfgComponent*/
-                    hrc = VBoxNetCfgWinGetComponentByGuid(pNc, &GUID_DEVCLASS_NET, (GUID*)hostIFGuid.ptr(), pAdaptorComponent.asOutParam());
+                    hrc = VBoxNetCfgWinGetComponentByGuid(pNc, &GUID_DEVCLASS_NET, (GUID*)hostIFGuid.raw(), pAdaptorComponent.asOutParam());
                     if (hrc != S_OK)
                     {
                         VBoxNetCfgWinReleaseINetCfg(pNc, FALSE /*fHasWriteLock*/);

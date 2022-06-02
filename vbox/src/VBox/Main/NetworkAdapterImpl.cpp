@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -1573,7 +1573,7 @@ void NetworkAdapter::generateMACAddress()
     Guid guid;
     guid.create();
     RTStrPrintf (strMAC, sizeof(strMAC), "080027%02X%02X%02X",
-                 guid.ptr()->au8[0], guid.ptr()->au8[1], guid.ptr()->au8[2]);
+                 guid.raw()->au8[0], guid.raw()->au8[1], guid.raw()->au8[2]);
     LogFlowThisFunc(("generated MAC: '%s'\n", strMAC));
     mData->mMACAddress = strMAC;
 }

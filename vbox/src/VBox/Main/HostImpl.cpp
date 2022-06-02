@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 32056 2010-08-27 16:04:23Z vboxsync $ */
+/* $Id: HostImpl.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1087,7 +1087,7 @@ STDMETHODIMP Host::RemoveHostOnlyNetworkInterface(IN_BSTR aId,
                             Guid (aId).raw());
     }
 
-    int r = NetIfRemoveHostOnlyNetworkInterface(m->pParent, Guid(aId), aProgress);
+    int r = NetIfRemoveHostOnlyNetworkInterface(m->pParent, Guid(aId).ref(), aProgress);
     if (RT_SUCCESS(r))
         return S_OK;
 

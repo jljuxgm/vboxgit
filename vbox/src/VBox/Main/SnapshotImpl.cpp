@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
 
 /** @file
  *
@@ -1390,7 +1390,7 @@ STDMETHODIMP SessionMachine::BeginTakingSnapshot(IConsole *aInitiator,
         strStateFilePath = Utf8StrFmt("%s%c{%RTuuid}.sav",
                                       mUserData->m_strSnapshotFolderFull.c_str(),
                                       RTPATH_DELIMITER,
-                                      snapshotId.ptr());
+                                      snapshotId.raw());
         /* ensure the directory for the saved state file exists */
         HRESULT rc = VirtualBox::ensureFilePathExists(strStateFilePath);
         if (FAILED(rc)) return rc;
@@ -1399,7 +1399,7 @@ STDMETHODIMP SessionMachine::BeginTakingSnapshot(IConsole *aInitiator,
     /* create a snapshot machine object */
     ComObjPtr<SnapshotMachine> snapshotMachine;
     snapshotMachine.createObject();
-    HRESULT rc = snapshotMachine->init(this, snapshotId, strStateFilePath);
+    HRESULT rc = snapshotMachine->init(this, snapshotId.ref(), strStateFilePath);
     AssertComRCReturn(rc, rc);
 
     /* create a snapshot object */
