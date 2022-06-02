@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 30929 2010-07-20 14:11:51Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -161,7 +161,11 @@ int handleUnregisterVM(HandlerArg *a)
         Bstr uuid;
         machine->COMGETTER(Id)(uuid.asOutParam());
         machine = NULL;
-        CHECK_ERROR(a->virtualBox, UnregisterMachine(uuid, machine.asOutParam()));
+        SafeArray<BSTR> abstrFiles;
+        CHECK_ERROR(a->virtualBox, UnregisterMachine(uuid,
+                                                     false /* fDetachMedia */,
+                                                     ComSafeArrayAsOutParam(abstrFiles),
+                                                     machine.asOutParam()));
         if (SUCCEEDED(rc) && machine && fDelete)
             CHECK_ERROR(machine, DeleteSettings());
     }

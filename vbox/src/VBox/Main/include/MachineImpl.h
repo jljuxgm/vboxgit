@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 30847 2010-07-14 15:40:49Z vboxsync $ */
+/* $Id: MachineImpl.h 30929 2010-07-20 14:11:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -681,7 +681,8 @@ public:
 
     bool checkForSpawnFailure();
 
-    HRESULT trySetRegistered(BOOL aRegistered);
+    HRESULT prepareRegister();
+    HRESULT prepareUnregister(bool fDetachMedia, MediaList &llMedia);
 
     HRESULT getSharedFolder(CBSTR aName,
                             ComObjPtr<SharedFolder> &aSharedFolder,
