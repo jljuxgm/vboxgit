@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 30544 2010-06-30 22:37:36Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 30545 2010-06-30 23:32:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -33,7 +33,7 @@
 #include "UIActionsPool.h"
 #include "UIMachineLogic.h"
 #include "UIMachineLogicSeamless.h"
-#include "UIMachineView.h"
+#include "UIMachineViewSeamless.h"
 #include "UIMachineWindowSeamless.h"
 #include "UISession.h"
 
@@ -145,7 +145,7 @@ void UIMachineWindowSeamless::sltPopupMainMenu()
 void UIMachineWindowSeamless::sltUpdateMiniToolBarMask()
 {
     if (m_pMiniToolBar)
-        setMask(machineView()->lastVisibleRegion());
+        setMask(qobject_cast<UIMachineViewSeamless*>(machineView())->lastVisibleRegion());
 }
 #endif /* Q_WS_MAC */
 
