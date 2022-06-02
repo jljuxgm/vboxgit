@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsNetwork.cpp 33686 2010-11-02 12:49:41Z vboxsync $ */
+/* $Id: VBoxVMSettingsNetwork.cpp 33742 2010-11-03 17:42:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -343,7 +343,7 @@ void VBoxVMSettingsNetwork::updateAttachmentAlternative()
             mCbAdapterName->setEditable (false);
             break;
         case KNetworkAttachmentType_Internal:
-            mCbAdapterName->insertItems (0, mParent->intList());
+            mCbAdapterName->insertItems (0, mParent->fullIntList());
             mCbAdapterName->setEditable (true);
             mCbAdapterName->setCompleter (0);
             break;
@@ -695,8 +695,13 @@ QStringList VBoxVMSettingsNetworkPage::intList (bool aRefresh)
         }
     }
 
+    return mIntList;
+}
+
+QStringList VBoxVMSettingsNetworkPage::fullIntList (bool aRefresh)
+{
+    QStringList list (intList (aRefresh));
     /* Append network list with names from all the pages */
-    QStringList list (mIntList);
     for (int index = 0; index < mTwAdapters->count(); ++ index)
     {
         VBoxVMSettingsNetwork *page =
@@ -708,7 +713,6 @@ QStringList VBoxVMSettingsNetworkPage::intList (bool aRefresh)
                 list << name;
         }
     }
-
     return list;
 }
 
