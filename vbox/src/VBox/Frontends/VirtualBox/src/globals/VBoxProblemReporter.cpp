@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 30997 2010-07-22 14:12:39Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 31385 2010-08-05 09:29:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1050,7 +1050,7 @@ int VBoxProblemReporter::cannotEnterSeamlessMode()
              QIMessageBox::Ok | QIMessageBox::Default);
 }
 
-bool VBoxProblemReporter::confirmMachineDeletion (const CMachine &machine)
+int VBoxProblemReporter::confirmMachineDeletion(const CMachine &machine)
 {
     QString msg;
     QString button;
@@ -1058,12 +1058,21 @@ bool VBoxProblemReporter::confirmMachineDeletion (const CMachine &machine)
 
     if (machine.GetAccessible())
     {
-        name = machine.GetName();
-        msg = tr ("<p>Are you sure you want to permanently delete "
-                  "the virtual machine <b>%1</b>?</p>"
-                  "<p>This operation cannot be undone.</p>")
-                  .arg (name);
-        button = tr ("Delete", "machine");
+        return message(&vboxGlobal().selectorWnd(), Question,
+        tr("<p>Are you sure you want to permanently delete the virtual "
+           "machine <b>%1</b>?</p>"
+           "<p>This operation <i>cannot</i> be undone.</p>"
+           "<p>If you select <b>Delete All</b> everything gets removed. This "
+           "includes the machine itself, but also all virtual disks attached "
+           "to it. If you want preserve the virtual disks for later use, "
+           "select <b>Keep Harddisks</b>.</p>")
+        .arg(machine.GetName()),
+        0, /* aAutoConfirmId */
+        QIMessageBox::No,
+        QIMessageBox::Yes,
+        QIMessageBox::Cancel | QIMessageBox::Escape | QIMessageBox::Default,
+        tr("Keep Harddisks", "machine"),
+        tr("Delete All", "machine"));
     }
     else
     {
