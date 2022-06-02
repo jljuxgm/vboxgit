@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30727 2010-07-08 09:24:48Z vboxsync $ */
+/* $Id: GMMR0.cpp 30757 2010-07-09 12:09:46Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -866,6 +866,7 @@ GMMR0DECL(void) GMMR0CleanupVM(PGVM pGVM)
              * and left over mappings. (This'll only catch private pages, shared
              * pages will be 'left behind'.)
              */
+            /* todo this might be kind of expensive with a lot of VMs and memory hanging around... */
             uint64_t cPrivatePages = pGVM->gmm.s.cPrivatePages; /* save */
             RTAvlU32DoWithAll(&pGMM->pChunks, true /* fFromLeft */, gmmR0CleanupVMScanChunk, pGVM);
             if (pGVM->gmm.s.cPrivatePages)
