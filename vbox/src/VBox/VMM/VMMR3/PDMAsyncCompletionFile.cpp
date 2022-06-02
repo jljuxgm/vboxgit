@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 35694 2011-01-24 17:35:59Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 35696 2011-01-24 18:03:33Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -73,7 +73,7 @@
 *   Internal Functions                                                         *
 *******************************************************************************/
 #ifdef VBOX_WITH_DEBUGGER
-static DECLCALLBACK(int) pdmacEpFileErrorInject(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR pArgs, unsigned cArgs, PDBGCVAR pResult);
+static DECLCALLBACK(int) pdmacEpFileErrorInject(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR pArgs, unsigned cArgs);
 #endif
 
 /*******************************************************************************
@@ -91,8 +91,8 @@ static const DBGCVARDESC g_aInjectErrorArgs[] =
 /** Command descriptors. */
 static const DBGCCMD g_aCmds[] =
 {
-    /* pszCmd,       cArgsMin, cArgsMax, paArgDesc,                cArgDescs,    pResultDesc,        fFlags,     pfnHandler          pszSyntax,          ....pszDescription */
-    { "injecterror",        3, 3,        &g_aInjectErrorArgs[0],           3,           NULL,             0,     pdmacEpFileErrorInject,        "",   "Inject error into I/O subsystem." },
+    /* pszCmd,       cArgsMin, cArgsMax, paArgDesc,                cArgDescs, fFlags, pfnHandler              pszSyntax, ....pszDescription */
+    { "injecterror",        3, 3,        &g_aInjectErrorArgs[0],           3,      0, pdmacEpFileErrorInject, "",        "Inject error into I/O subsystem." },
 };
 #endif
 
@@ -696,7 +696,7 @@ static int pdmacFileEpNativeGetSize(RTFILE hFile, uint64_t *pcbSize)
 /**
  * Error inject callback.
  */
-static DECLCALLBACK(int) pdmacEpFileErrorInject(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR pArgs, unsigned cArgs, PDBGCVAR pResult)
+static DECLCALLBACK(int) pdmacEpFileErrorInject(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR pArgs, unsigned cArgs)
 {
     /*
      * Validate input.

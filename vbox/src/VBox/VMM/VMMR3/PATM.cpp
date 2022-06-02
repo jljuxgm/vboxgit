@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 35348 2010-12-27 16:35:23Z vboxsync $ */
+/* $Id: PATM.cpp 35696 2011-01-24 18:03:33Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -79,15 +79,15 @@ static DECLCALLBACK(int) RelocatePatches(PAVLOU32NODECORE pNode, void *pParam);
 
 #ifdef VBOX_WITH_DEBUGGER
 static DECLCALLBACK(int) DisableAllPatches(PAVLOU32NODECORE pNode, void *pVM);
-static DECLCALLBACK(int) patmr3CmdOn(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs, PDBGCVAR pResult);
-static DECLCALLBACK(int) patmr3CmdOff(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs, PDBGCVAR pResult);
+static DECLCALLBACK(int) patmr3CmdOn(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs);
+static DECLCALLBACK(int) patmr3CmdOff(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs);
 
 /** Command descriptors. */
 static const DBGCCMD    g_aCmds[] =
 {
-    /* pszCmd,      cArgsMin, cArgsMax, paArgDesc,          cArgDescs,                  pResultDesc,        fFlags,     pfnHandler          pszSyntax,          ....pszDescription */
-    { "patmon",     0,        0,        NULL,               0,                          NULL,               0,          patmr3CmdOn,        "",                     "Enable patching." },
-    { "patmoff",    0,        0,        NULL,               0,                          NULL,               0,          patmr3CmdOff,       "",                     "Disable patching." },
+    /* pszCmd,      cArgsMin, cArgsMax, paArgDesc, cArgDescs, fFlags, pfnHandler    pszSyntax, ....pszDescription */
+    { "patmon",     0,        0,        NULL,      0,         0,      patmr3CmdOn,  "",        "Enable patching."  },
+    { "patmoff",    0,        0,        NULL,      0,         0,      patmr3CmdOff, "",        "Disable patching." },
 };
 #endif
 
@@ -6527,7 +6527,7 @@ RTRCPTR patmPatchQueryStatAddress(PVM pVM, PPATCHINFO pPatch)
  * @param   paArgs      Pointer to (readonly) array of arguments.
  * @param   cArgs       Number of arguments in the array.
  */
-static DECLCALLBACK(int) patmr3CmdOff(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs, PDBGCVAR pResult)
+static DECLCALLBACK(int) patmr3CmdOff(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs)
 {
     /*
      * Validate input.
@@ -6550,7 +6550,7 @@ static DECLCALLBACK(int) patmr3CmdOff(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM p
  * @param   paArgs      Pointer to (readonly) array of arguments.
  * @param   cArgs       Number of arguments in the array.
  */
-static DECLCALLBACK(int) patmr3CmdOn(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs, PDBGCVAR pResult)
+static DECLCALLBACK(int) patmr3CmdOn(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs)
 {
     /*
      * Validate input.
