@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: EventImpl.cpp 35722 2011-01-26 16:37:16Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -803,6 +803,9 @@ HRESULT ListenerRecord::process(IEvent*                     aEvent,
         {
             aAlock.release();
             rc =  mListener->HandleEvent(aEvent);
+#ifdef RT_OS_WINDOWS
+            Assert(rc != RPC_E_WRONG_THREAD);
+#endif
             aAlock.acquire();
         }
         if (aWaitable)

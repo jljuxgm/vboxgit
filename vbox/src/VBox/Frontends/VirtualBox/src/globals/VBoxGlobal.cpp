@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35665 2011-01-21 10:22:12Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 35722 2011-01-26 16:37:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -5248,11 +5248,7 @@ void VBoxGlobal::cleanup()
      * before uninitializing the COM subsystem. */
     QApplication::removePostedEvents (this);
 
-#ifdef Q_WS_WIN
-    /* COM for the main thread is shutdown in main() */
-#else
     COMBase::CleanupCOM();
-#endif
 
     mValid = false;
 }

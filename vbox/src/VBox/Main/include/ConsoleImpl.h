@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: ConsoleImpl.h 35722 2011-01-26 16:37:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -753,7 +753,7 @@ private:
         }
     }
     mCallbackData;
-    COM_STRUCT_OR_CLASS(IEventListener) *mVmListener;
+    ComPtr<IEventListener> mVmListener;
 
     friend struct VMTask;
 };
