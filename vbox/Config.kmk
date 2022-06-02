@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35109 2010-12-14 19:26:56Z vboxsync $
+# $Id: Config.kmk 35159 2010-12-15 17:19:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3620,8 +3620,12 @@ ifdef VBOX_WITH_EXTPACK
   TEMPLATE_VBoxR3ExtPack_CXXFLAGS = $(TEMPLATE_VBOXR3DLLNOXCPT_CXXFLAGS) -fno-rtti
  endif
  TEMPLATE_VBoxR3ExtPack_INST = $(INST_EXTPACK)YouShallOverrideThis/
- if !defined(VBOX_WITH_RUNPATH) && defined(VBOX_WITH_RELATIVE_RUNPATH)
-  TEMPLATE_VBoxR3ExtPack_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)/../../..' $(filter-out '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)', $(TEMPLATE_VBOXR3DLLNOXCPT_LDFLAGS))
+ ifeq ($(KBUILD_TARGET),linux)
+  TEMPLATE_VBoxR3ExtPack_LDFLAGS = $(filter-out '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RUNPATH)' '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)', $(TEMPLATE_VBOXR3DLLNOXCPT_LDFLAGS))
+ else
+  if !defined(VBOX_WITH_RUNPATH) && defined(VBOX_WITH_RELATIVE_RUNPATH)
+   TEMPLATE_VBoxR3ExtPack_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)/../../..' $(filter-out '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)', $(TEMPLATE_VBOXR3DLLNOXCPT_LDFLAGS))
+  endif
  endif
  ifdef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
   if1of ($(KBUILD_TARGET), win os2)
@@ -4602,7 +4606,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35109 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35159 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
