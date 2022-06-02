@@ -1,4 +1,4 @@
-/* $Id: PCIInternal.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PCIInternal.h 32216 2010-09-02 15:32:04Z vboxsync $ */
 /** @file
  * DevPCI - PCI Internal header - Only for hiding bits of PCIDEVICE.
  */
@@ -67,6 +67,9 @@ typedef DECLCALLBACK(void) FNPCIBRIDGECONFIGWRITE(PPDMDEVINSR3 pDevIns, uint8_t 
 typedef FNPCIBRIDGECONFIGWRITE *PFNPCIBRIDGECONFIGWRITE;
 /** Pointer to a PFNPCICONFIGWRITE. */
 typedef PFNPCIBRIDGECONFIGWRITE *PPFNPCIBRIDGECONFIGWRITE;
+
+/* Forward declaration */
+struct PCIBus;
 
 /**
  * PCI Device - Internal data.
