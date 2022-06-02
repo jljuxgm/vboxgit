@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerFullscreen.cpp 30643 2010-07-06 00:13:24Z vboxsync $ */
+/* $Id: UIKeyboardHandlerFullscreen.cpp 30644 2010-07-06 00:43:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,10 +25,6 @@
 /* Local includes */
 #include "UIKeyboardHandlerFullscreen.h"
 #include "UIMachineWindow.h"
-
-#ifdef Q_WS_MAC
-# include <Carbon/Carbon.h>
-#endif /* Q_WS_MAC */
 
 /* Fullscreen keyboard-handler constructor: */
 UIKeyboardHandlerFullscreen::UIKeyboardHandlerFullscreen(UIMachineLogic* pMachineLogic)
