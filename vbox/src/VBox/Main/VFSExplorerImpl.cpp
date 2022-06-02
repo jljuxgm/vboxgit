@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 30716 2010-07-07 16:40:45Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -195,8 +195,8 @@ int VFSExplorer::TaskVFSExplorer::startThread()
                              0, RTTHREADTYPE_MAIN_HEAVY_WORKER, 0,
                              "Explorer::Task");
 
-    ComAssertMsgRCRet(vrc,
-                      ("Could not create taskThreadVFS (%Rrc)\n", vrc), E_FAIL);
+    if (RT_FAILURE(vrc))
+        return VFSExplorer::setErrorStatic(E_FAIL, Utf8StrFmt("Could not create taskThreadVFS (%Rrc)\n", vrc));
 
     return vrc;
 }
