@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31370 2010-08-04 18:49:09Z vboxsync $
+# $Id: Makefile.kmk 31375 2010-08-04 21:41:06Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -123,12 +123,8 @@ PROGRAMS.linux += \
 	tstRTProcWait \
 	tstRTProcIsRunningByName \
 	tstRTBitOperationsPIC3 \
+	tstInlineAsmPIC \
 	tstInlineAsmPIC3
-if1of ($(USERNAME), umoeller)
-else
-PROGRAMS.linux += \
-	tstInlineAsmPIC
-endif
 PROGRAMS.l4 += \
 	tstIoCtl
 PROGRAMS.darwin += \
