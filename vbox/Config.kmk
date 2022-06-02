@@ -1,4 +1,4 @@
-# $Id: Config.kmk 30337 2010-06-21 14:39:44Z vboxsync $
+# $Id: Config.kmk 30428 2010-06-24 12:32:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3542,6 +3542,8 @@ ifdef VBOX_WITH_QTGUI
 	$(PATH_TOOL_$(VBOX_VCC_TOOL)_LIB)/msvcprt$(VBOX_VCC_CRT_TYPE).lib
   endif
   TEMPLATE_VBOXQT4GUIEXE_POST_CMDS = $(VBOX_SIGN_IMAGE_CMDS)
+  TEMPLATE_VBOXQT4GUIEXE_LDFLAGS.win.x86 += /LARGEADDRESSAWARE
+
  ifdef VBOX_USE_VCC100 # HACK ALERT!
   TEMPLATE_VBOXQT4GUIEXE_CINCS   = $(TOOL_$(VBOX_VCC_TOOL)_CINCS)
   TEMPLATE_VBOXQT4GUIEXE_CXXINCS = $(TOOL_$(VBOX_VCC_TOOL)_CXXINCS)
@@ -4271,7 +4273,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30337 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30428 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
