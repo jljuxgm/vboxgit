@@ -1,4 +1,4 @@
-/* $Id: VBoxMiniToolBar.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
+/* $Id: VBoxMiniToolBar.cpp 35064 2010-12-14 11:21:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -125,6 +125,9 @@ VBoxMiniToolBar::VBoxMiniToolBar(QWidget *pParent, Alignment alignment, bool fAc
 
     /* Enable mouse-tracking for this & children allowing to get mouse-move events: */
     setMouseTrackingEnabled(m_fAutoHide);
+
+    /* Auto-fill background to make it use own color: */
+    setAutoFillBackground(true);
 }
 
 /* Appends passed menus into internal menu-list */
