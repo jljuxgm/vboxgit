@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 33854 2010-11-08 15:20:57Z vboxsync $ */
+/* $Id: VBoxService.cpp 34273 2010-11-23 10:14:46Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -518,9 +518,9 @@ int main(int argc, char **argv)
          * Run toolbox code before all other stuff, especially before checking the global
          * mutex because VBoxService might spawn itself to execute some commands.
          */
-        rc = VBoxServiceToolboxMain(argc - 1, &argv[1]);
-        if (rc != VERR_NOT_FOUND) /* Internal tool found? Then bail out. */
-            return rc;
+        int iExitCode;
+        if (VBoxServiceToolboxMain(argc - 1, &argv[1], &iExitCode))
+            return iExitCode;
     }
 #endif
 
