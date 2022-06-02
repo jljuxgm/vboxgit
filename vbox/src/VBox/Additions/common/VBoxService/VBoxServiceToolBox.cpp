@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 33888 2010-11-09 11:05:19Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 33889 2010-11-09 11:06:23Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -152,7 +152,7 @@ int VBoxServiceToolboxMkDir(int argc, char **argv)
      char szDir[RTPATH_MAX];
      RTFMODE newMode = 0;
 #ifdef RT_OS_WINDOWS
-    RTFMODE fileMode = 0;
+     RTFMODE fileMode = 0;
 #else
      RTFMODE fileMode = S_IRWXU | S_IRWXG | S_IRWXO;
 #endif
