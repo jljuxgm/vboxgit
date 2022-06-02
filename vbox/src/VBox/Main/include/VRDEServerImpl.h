@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.h 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: VRDEServerImpl.h 34563 2010-12-01 11:39:52Z vboxsync $ */
 
 /** @file
  *
@@ -22,7 +22,7 @@
 
 #include "VirtualBoxBase.h"
 
-#include <VBox/VRDPAuth.h>
+#include <VBox/VBoxAuth.h>
 #include <VBox/settings.h>
 
 class ATL_NO_VTABLE VRDEServer :

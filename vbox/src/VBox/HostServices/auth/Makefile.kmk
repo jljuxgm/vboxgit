@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34558 2010-12-01 10:56:44Z vboxsync $
+# $Id: Makefile.kmk 34563 2010-12-01 11:39:52Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox RDP authentication plugins.
 #
@@ -53,7 +53,7 @@ VBoxAuth-samples_SOURCES.win = winlogon/winlogon.cpp
 INSTALLS += VBoxAuth-sdkhdr
 VBoxAuth-sdkhdr_INST = $(INST_SDK)/bindings/auth/include/
 VBoxAuth-sdkhdr_MODE = a+r,u+w
-VBoxAuth-sdkhdr_SOURCES = $(PATH_ROOT)/include/VBox/VRDPAuth.h=>VRDPAuth.h
+VBoxAuth-sdkhdr_SOURCES = $(PATH_ROOT)/include/VBox/VBoxAuth.h=>VBoxAuth.h
 
 
 include $(KBUILD_PATH)/subfooter.kmk

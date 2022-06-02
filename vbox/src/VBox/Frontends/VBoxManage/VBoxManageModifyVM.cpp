@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 34563 2010-12-01 11:39:52Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1928,7 +1928,7 @@ int handleModifyVM(HandlerArg *a)
                 }
                 else
                 {
-                    errorArgument("Invalid --vrdpauthtype argument '%s'", ValueUnion.psz);
+                    errorArgument("Invalid --vrdeauthtype argument '%s'", ValueUnion.psz);
                     rc = E_FAIL;
                 }
                 break;
