@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 35452 2011-01-10 11:29:45Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 35475 2011-01-11 10:50:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -2055,7 +2055,7 @@ void UIMachineSettingsStorage::showEvent (QShowEvent *aEvent)
         mLtAttachment->setColumnMinimumWidth (1, maxWidth);
 #endif
     }
-    UISettingsPage::showEvent (aEvent);
+    UISettingsPageMachine::showEvent (aEvent);
 }
 
 void UIMachineSettingsStorage::mediumUpdated (const VBoxMedium &aMedium)
