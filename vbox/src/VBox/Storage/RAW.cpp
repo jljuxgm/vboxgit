@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 33786 2010-11-04 17:15:01Z vboxsync $ */
+/* $Id: RAW.cpp 35045 2010-12-13 21:14:06Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -91,6 +91,7 @@ static const VDFILEEXTENSION s_aRawFileExtensions[] =
     {"img", VDTYPE_FLOPPY},
     {"ima", VDTYPE_FLOPPY},
     {"dsk", VDTYPE_FLOPPY},
+    {"vfd", VDTYPE_FLOPPY},
     {NULL, VDTYPE_INVALID}
 };
 
@@ -543,7 +544,8 @@ static int rawCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
         }
         else if (   !RTStrICmp(pszExtension, ".img")
                  || !RTStrICmp(pszExtension, ".ima")
-                 || !RTStrICmp(pszExtension, ".dsk")) /* Floppy images */
+                 || !RTStrICmp(pszExtension, ".dsk")
+                 || !RTStrICmp(pszExtension, ".vfd")) /* Floppy images */
         {
             if (!(cbFile % 512) && cbFile <= RAW_MAX_FLOPPY_IMG_SIZE)
             {
