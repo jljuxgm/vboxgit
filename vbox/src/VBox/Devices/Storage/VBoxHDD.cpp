@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 33495 2010-10-27 11:53:50Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2109,6 +2109,11 @@ static int vdLoadDynamicBackends()
             /* allocate new buffer. */
             RTMemFree(pPluginDirEntry);
             pPluginDirEntry = (PRTDIRENTRYEX)RTMemAllocZ(cbPluginDirEntry);
+            if (!pPluginDirEntry)
+            {
+                rc = VERR_NO_MEMORY;
+                break;
+            }
             /* Retry. */
             rc = RTDirReadEx(pPluginDir, pPluginDirEntry, &cbPluginDirEntry, RTFSOBJATTRADD_NOTHING, RTPATH_F_ON_LINK);
             if (RT_FAILURE(rc))
@@ -2228,6 +2233,11 @@ static int vdLoadDynamicCacheBackends()
             /* allocate new buffer. */
             RTMemFree(pPluginDirEntry);
             pPluginDirEntry = (PRTDIRENTRYEX)RTMemAllocZ(cbPluginDirEntry);
+            if (!pPluginDirEntry)
+            {
+                rc = VERR_NO_MEMORY;
+                break;
+            }
             /* Retry. */
             rc = RTDirReadEx(pPluginDir, pPluginDirEntry, &cbPluginDirEntry, RTFSOBJATTRADD_NOTHING, RTPATH_F_ON_LINK);
             if (RT_FAILURE(rc))

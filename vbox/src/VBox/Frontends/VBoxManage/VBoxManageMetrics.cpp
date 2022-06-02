@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 33495 2010-10-27 11:53:50Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
@@ -44,25 +44,28 @@ using namespace com;
 static char *toBaseMetricNames(const char *metricList)
 {
     char *newList = (char*)RTMemAlloc(strlen(metricList) + 1);
-    int cSlashes = 0;
-    bool fSkip = false;
-    const char *src = metricList;
-    char c, *dst = newList;
-    while ((c = *src++))
-        if (c == ':')
-            fSkip = true;
-        else if (c == '/' && ++cSlashes == 2)
-            fSkip = true;
-        else if (c == ',')
-        {
-            fSkip = false;
-            cSlashes = 0;
-            *dst++ = c;
-        }
-        else
-            if (!fSkip)
+    if (newList)
+    {
+        int cSlashes = 0;
+        bool fSkip = false;
+        const char *src = metricList;
+        char c, *dst = newList;
+        while ((c = *src++))
+            if (c == ':')
+                fSkip = true;
+            else if (c == '/' && ++cSlashes == 2)
+                fSkip = true;
+            else if (c == ',')
+            {
+                fSkip = false;
+                cSlashes = 0;
                 *dst++ = c;
-    *dst = 0;
+            }
+            else
+                if (!fSkip)
+                    *dst++ = c;
+        *dst = 0;
+    }
     return newList;
 }
 

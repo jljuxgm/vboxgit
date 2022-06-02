@@ -1,4 +1,4 @@
-/* $Id: VHDHDDCore.cpp 33478 2010-10-26 20:56:38Z vboxsync $ */
+/* $Id: VHDHDDCore.cpp 33495 2010-10-27 11:53:50Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -519,7 +519,7 @@ static int vhdLocatorUpdate(PVHDIMAGE pImage, PVHDPLE pLocator, const char *pszF
         case VHD_PLATFORM_CODE_W2KU:
             /* Update unicode absolute name. */
             pszTmp = (char*)RTMemTmpAllocZ(cbMaxLen);
-            if (!pvBuf)
+            if (!pszTmp)
             {
                 rc = VERR_NO_MEMORY;
                 goto out;
