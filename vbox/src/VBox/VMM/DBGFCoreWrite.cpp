@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 32217 2010-09-02 15:47:40Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 32218 2010-09-02 16:20:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -237,7 +237,7 @@ static uint32_t dbgfR3GetRamRangeCount(PVM pVM)
  * @return VBox status code.
  * @remarks The VM must be suspended before calling this function.
  */
-static DECLCALLBACK(int) dbgfR3CoreWrite(PVM pVM, PVMCPU pVCpu, void *pvData)
+static DECLCALLBACK(VBOXSTRICTRC) dbgfR3CoreWrite(PVM pVM, PVMCPU pVCpu, void *pvData)
 {
     /*
      * Validate input.
