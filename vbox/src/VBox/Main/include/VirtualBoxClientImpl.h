@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 34424 2010-11-26 18:40:56Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 34642 2010-12-02 18:16:04Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -37,7 +37,7 @@ public:
 
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(VirtualBoxClient, IVirtualBoxClient)
 
-    DECLARE_CLASSFACTORY_SINGLETON(VirtualBoxClient)
+    DECLARE_CLASSFACTORY()
 
     DECLARE_REGISTRY_RESOURCEID(IDR_VIRTUALBOX)
     DECLARE_NOT_AGGREGATABLE(VirtualBoxClient)
@@ -63,6 +63,10 @@ public:
     STDMETHOD(COMGETTER(EventSource))(IEventSource **aEventSource);
 
 private:
+    /** Instance counter for simulating something similar to a singleton.
+     * Only the first instance will be a usable object, all additional
+     * instances will return a failure at creation time and will not work. */
+    static uint32_t g_cInstances;
 
     static DECLCALLBACK(int) SVCWatcherThread(RTTHREAD ThreadSelf, void *pvUser);
 
