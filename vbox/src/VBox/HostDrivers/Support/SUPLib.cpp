@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 33811 2010-11-05 19:14:11Z vboxsync $ */
+/* $Id: SUPLib.cpp 33878 2010-11-08 21:47:54Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1690,8 +1690,7 @@ static DECLCALLBACK(int) supLoadModuleResolveImport(RTLDRMOD hLdrMod, const char
         pFunc++;
     }
 
-    RTAssertMsg2Weak("%s is importing %s which we couldn't find\n", pvUser, pszSymbol);
-    AssertMsgFailed(("%s is importing %s which we couldn't find\n", pvUser, pszSymbol));
+    AssertLogRelMsgFailed(("%s is importing %s which we couldn't find\n", pvUser, pszSymbol));
     if (g_u32FakeMode)
     {
         *pValue = 0xdeadbeef;
