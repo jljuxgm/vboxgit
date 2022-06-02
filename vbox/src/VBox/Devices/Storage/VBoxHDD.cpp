@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 32518 2010-09-15 13:13:34Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 32519 2010-09-15 13:15:11Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -5121,7 +5121,7 @@ VBOXDDU_DECL(int) VDMerge(PVBOXHDD pDisk, unsigned nImageFrom,
          * Leave in case of an error to avoid corrupted data in the image chain
          * (includes cancelling the operation by the user).
          */
-        if (RT_FIALURE(rc))
+        if (RT_FAILURE(rc))
             break;
 
         /* Need to hold the write lock while finishing the merge. */
