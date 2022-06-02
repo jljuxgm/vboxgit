@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 30842 2010-07-14 14:19:44Z vboxsync $ */
+/* $Id: PGMInternal.h 30843 2010-07-14 14:29:41Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2891,6 +2891,11 @@ typedef struct PGM
     STAMPROFILE                 StatR3IsValidLargePage;
     /** pgmPhysIsValidLargePage profiling - RZ*/
     STAMPROFILE                 StatRZIsValidLargePage;
+
+    STAMPROFILE                 StatChunkAging;
+    STAMPROFILE                 StatChunkFindCandidate;
+    STAMPROFILE                 StatChunkUnmap;
+    STAMPROFILE                 StatChunkMap;
 #endif
 } PGM;
 #ifndef IN_TSTVMSTRUCTGC /* HACK */
