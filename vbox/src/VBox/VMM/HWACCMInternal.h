@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: HWACCMInternal.h 34184 2010-11-18 21:19:11Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -320,7 +320,8 @@ typedef struct HWACCM
 
     struct
     {
-        /** Set by the ring-0 driver to indicate VMX is supported by the CPU. */
+        /** Set by the ring-0 side of HWACCM to indicate VMX is supported by the
+         *  CPU. */
         bool                        fSupported;
 
         /** Set when we've enabled VMX. */
@@ -419,7 +420,8 @@ typedef struct HWACCM
 
     struct
     {
-        /** Set by the ring-0 driver to indicate SVM is supported by the CPU. */
+        /** Set by the ring-0 side of HWACCM to indicate SVM is supported by the
+         *  CPU. */
         bool                        fSupported;
         /** Set when we've enabled SVM. */
         bool                        fEnabled;

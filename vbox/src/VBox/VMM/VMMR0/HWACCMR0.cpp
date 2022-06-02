@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 33545 2010-10-28 10:15:09Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 34184 2010-11-18 21:19:11Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -76,7 +76,7 @@ static struct
 
     struct
     {
-        /** Set by the ring-0 driver to indicate VMX is supported by the CPU. */
+        /** Set to by us to indicate VMX is supported by the CPU. */
         bool                        fSupported;
         /** Whether we're using SUPR0EnableVTx or not. */
         bool                        fUsingSUPR0EnableVTx;
@@ -123,7 +123,7 @@ static struct
         /** SVM feature bits from cpuid 0x8000000a */
         uint32_t                    u32Features;
 
-        /** Set by the ring-0 driver to indicate SVM is supported by the CPU. */
+        /** Set by us to indicate SVM is supported by the CPU. */
         bool                        fSupported;
     } svm;
     /** Saved error from detection */
