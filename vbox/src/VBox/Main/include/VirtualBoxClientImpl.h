@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 34642 2010-12-02 18:16:04Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 35135 2010-12-15 13:41:41Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -75,7 +75,7 @@ private:
         Data()
         {}
 
-        const ComPtr<IVirtualBox> m_pVirtualBox;
+        ComPtr<IVirtualBox> m_pVirtualBox;
         const ComObjPtr<EventSource> m_pEventSource;
 
         RTTHREAD m_ThreadWatcher;
