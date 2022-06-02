@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 31966 2010-08-25 16:15:25Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -873,37 +873,6 @@ static DECLCALLBACK(int) dbgcCmdCpu(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM
 
 
 /**
- * Print formatted string.
- *
- * @param   pHlp        Pointer to this structure.
- * @param   pszFormat   The format string.
- * @param   ...         Arguments.
- */
-static DECLCALLBACK(void) dbgcCmdInfo_Printf(PCDBGFINFOHLP pHlp, const char *pszFormat, ...)
-{
-    PDBGCCMDHLP pCmdHlp = *(PDBGCCMDHLP *)(pHlp + 1);
-    va_list args;
-    va_start(args,  pszFormat);
-    pCmdHlp->pfnPrintfV(pCmdHlp, NULL, pszFormat, args);
-    va_end(args);
-}
-
-
-/**
- * Print formatted string.
- *
- * @param   pHlp        Pointer to this structure.
- * @param   pszFormat   The format string.
- * @param   args        Argument list.
- */
-static DECLCALLBACK(void) dbgcCmdInfo_PrintfV(PCDBGFINFOHLP pHlp, const char *pszFormat, va_list args)
-{
-    PDBGCCMDHLP pCmdHlp = *(PDBGCCMDHLP *)(pHlp + 1);
-    pCmdHlp->pfnPrintfV(pCmdHlp, NULL, pszFormat, args);
-}
-
-
-/**
  * The 'info' command.
  *
  * @returns VBox status.
@@ -931,13 +900,9 @@ static DECLCALLBACK(int) dbgcCmdInfo(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pV
     /*
      * Dump it.
      */
-    struct
-    {
-        DBGFINFOHLP Hlp;
-        DBGCCMDHLP *pCmdHlp; /* XXX gcc warns when using PDBGCCMDHLP here */
-    } Hlp = { { dbgcCmdInfo_Printf, dbgcCmdInfo_PrintfV }, pCmdHlp };
-    int rc = VMR3ReqCallWait(pVM, pDbgc->idCpu,
-                             (PFNRT)DBGFR3Info, 4, pVM, paArgs[0].u.pszString, cArgs == 2 ? paArgs[1].u.pszString : NULL, &Hlp.Hlp);
+    int rc = VMR3ReqCallWait(pVM, pDbgc->idCpu, (PFNRT)DBGFR3Info, 4,
+                             pVM, paArgs[0].u.pszString, cArgs == 2 ? paArgs[1].u.pszString : NULL,
+                             DBGCCmdHlpGetDbgfOutputHlp(pCmdHlp));
     if (RT_FAILURE(rc))
         return pCmdHlp->pfnVBoxError(pCmdHlp, rc, "DBGFR3Info()\n");
 

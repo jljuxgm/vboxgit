@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: DBGCInternal.h 31966 2010-08-25 16:15:25Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -144,6 +144,8 @@ typedef struct DBGC
 {
     /** Command helpers. */
     DBGCCMDHLP          CmdHlp;
+    /** Wrappers for DBGF output. */
+    DBGFINFOHLP         DbgfOutputHlp;
     /** Pointer to backend callback structure. */
     PDBGCBACK           pBack;
 
@@ -175,6 +177,9 @@ typedef struct DBGC
     DBGCVAR             DumpPos;
     /** Size of the previous dump element. */
     unsigned            cbDumpElement;
+    /** Points to DisasmPos, SourcePos or DumpPos depending on which was
+     *  used last. */
+    PCDBGCVAR           pLastPos;
 
     /** Number of variables in papVars. */
     unsigned            cVars;
