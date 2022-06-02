@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 35188 2010-12-16 15:13:07Z vboxsync $ */
+/* $Id: SUPLib.cpp 35191 2010-12-16 15:25:20Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -2212,7 +2212,7 @@ SUPR3DECL(int) SUPR3HardenedLdrLoadPlugIn(const char *pszFilename, PRTLDRMOD phL
     /*
      * Try load it.
      */
-    return RTLdrLoadEx(pszFilename, phLdrMod, 0 /*fFlags*/, pErrInfo);
+    return RTLdrLoadEx(pszFilename, phLdrMod, RTLDRLOAD_FLAGS_LOCAL, pErrInfo);
 }
 
 

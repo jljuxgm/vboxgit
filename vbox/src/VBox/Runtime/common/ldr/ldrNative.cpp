@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 35183 2010-12-16 13:59:44Z vboxsync $ */
+/* $Id: ldrNative.cpp 35191 2010-12-16 15:25:20Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -95,7 +95,7 @@ static const RTLDROPS s_rtldrNativeOps =
  */
 RTDECL(int) RTLdrLoad(const char *pszFilename, PRTLDRMOD phLdrMod)
 {
-    return RTLdrLoadEx(pszFilename, phLdrMod, 0 /*fFlags*/, NULL);
+    return RTLdrLoadEx(pszFilename, phLdrMod, RTLDRLOAD_FLAGS_LOCAL, NULL);
 }
 RT_EXPORT_SYMBOL(RTLdrLoad);
 
@@ -110,6 +110,7 @@ RTDECL(int) RTLdrLoadEx(const char *pszFilename, PRTLDRMOD phLdrMod, uint32_t fF
     RTErrInfoClear(pErrInfo);
     AssertPtrReturn(pszFilename, VERR_INVALID_POINTER);
     AssertPtrReturn(phLdrMod, VERR_INVALID_POINTER);
+    AssertReturn(!(fFlags & ~RTLDRLOAD_FLAGS_VALID_MASK), VERR_INVALID_PARAMETER);
 
     /*
      * Allocate and initialize module structure.

@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 35188 2010-12-16 15:13:07Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 35191 2010-12-16 15:25:20Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -840,7 +840,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
             Log2(("VBoxHeadless: loading VBoxFFmpegFB shared library\n"));
             RTErrInfoInitStatic(&ErrInfo);
-            rrc = SUPR3HardenedLdrLoadAppPriv("VBoxFFmpegFB", &hLdrFFmpegFB, 0 /*fFlags*/, &ErrInfo.Core);
+            rrc = SUPR3HardenedLdrLoadAppPriv("VBoxFFmpegFB", &hLdrFFmpegFB, RTLDRLOAD_FLAGS_LOCAL, &ErrInfo.Core);
 
             if (RT_SUCCESS(rrc))
             {

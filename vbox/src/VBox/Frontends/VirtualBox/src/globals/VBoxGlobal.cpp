@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35188 2010-12-16 15:13:07Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 35191 2010-12-16 15:25:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -5114,7 +5114,7 @@ void VBoxGlobal::init()
     {
         RTERRINFOSTATIC ErrInfo;
         RTErrInfoInitStatic(&ErrInfo);
-        int vrc = SUPR3HardenedLdrLoadAppPriv("VBoxDbg", &mhVBoxDbg, 0 /*fFlags*/, &ErrInfo.Core);
+        int vrc = SUPR3HardenedLdrLoadAppPriv("VBoxDbg", &mhVBoxDbg, RTLDRLOAD_FLAGS_LOCAL, &ErrInfo.Core);
         if (RT_FAILURE(vrc))
         {
             mhVBoxDbg = NIL_RTLDRMOD;
