@@ -1,4 +1,4 @@
-/* $Id */
+/* $Id: FTMInternal.h 31754 2010-08-18 11:31:34Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
