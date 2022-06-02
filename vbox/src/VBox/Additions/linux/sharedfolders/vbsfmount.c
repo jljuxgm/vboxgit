@@ -1,4 +1,4 @@
-/* $Id: vbsfmount.c 31202 2010-07-29 12:41:03Z vboxsync $ */
+/* $Id: vbsfmount.c 31203 2010-07-29 12:44:41Z vboxsync $ */
 /** @file
  * vbsfmount - Commonly used code to mount shared folders on Linux-based
  *             systems.  Currently used by mount.vboxsf and VBoxService.
@@ -28,13 +28,13 @@
 
 /** @todo Use defines for return values! */
 int vbsfmount_complete(const char *host_name, const char *mount_point,
-					   unsigned long flags, struct vbsf_mount_opts *opts)
+                       unsigned long flags, struct vbsf_mount_opts *opts)
 {
     FILE *f, *m;
     char *buf;
     size_t size;
     struct mntent e;
-	int rc = 0;
+    int rc = 0;
 
     m = open_memstream(&buf, &size);
     if (!m)
@@ -64,23 +64,23 @@ int vbsfmount_complete(const char *host_name, const char *mount_point,
 
     f = setmntent(MOUNTED, "a+");
     if (!f)
-	{
-		rc = 2; /* Could not open mount table for update. */
-	}
-	else
-	{
-		e.mnt_fsname = (char*)host_name;
-		e.mnt_dir = (char*)mount_point;
-		e.mnt_type = "vboxsf";
-		e.mnt_opts = buf;
-		e.mnt_freq = 0;
-		e.mnt_passno = 0;
+    {
+        rc = 2; /* Could not open mount table for update. */
+    }
+    else
+    {
+        e.mnt_fsname = (char*)host_name;
+        e.mnt_dir = (char*)mount_point;
+        e.mnt_type = "vboxsf";
+        e.mnt_opts = buf;
+        e.mnt_freq = 0;
+        e.mnt_passno = 0;
 
-		if (addmntent(f, &e))
-			rc = 3;  /* Could not add an entry to the mount table. */
+        if (addmntent(f, &e))
+            rc = 3;  /* Could not add an entry to the mount table. */
 
-		endmntent(f);
-	}
+        endmntent(f);
+    }
 
     if (size > 0)
     {
@@ -88,5 +88,5 @@ int vbsfmount_complete(const char *host_name, const char *mount_point,
         free(buf);
     }
 
-	return rc;
+    return rc;
 }
