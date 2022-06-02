@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 33407 2010-10-25 09:51:30Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 33774 2010-11-04 15:01:55Z vboxsync $ */
 
 /** @file
  *
@@ -190,9 +190,7 @@ void ErrorInfo::init(IUnknown *aI,
                      const GUID &aIID,
                      bool aKeepObj /* = false */)
 {
-    Assert(aI);
-    if (!aI)
-        return;
+    AssertReturnVoid(aI);
 
 #if !defined(VBOX_WITH_XPCOM)
 
