@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 32043 2010-08-27 11:47:17Z vboxsync $ */
+/* $Id: PGMPool.cpp 32098 2010-08-30 13:20:26Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -843,7 +843,7 @@ void pgmR3PoolWriteProtectPages(PVM pVM)
                 PPGMSHWPTPAE    pPTPae;
                 PEPTPT          pPTEpt;
             } uShw;
-            uShw.pv = NULL;
+            uShw.pv = PGMPOOL_PAGE_2_PTR(pVM, pPage);
 
             switch (pPage->enmKind)
             {
