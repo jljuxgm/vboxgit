@@ -1,4 +1,4 @@
-/* $Id: slirp.c 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: slirp.c 35922 2011-02-09 20:04:14Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -990,10 +990,6 @@ void slirp_select_fill(PNATState pData, int *pnfds, struct pollfd *polls)
 #endif
                 UDP_DETACH(pData, so, so_next);
                 CONTINUE_NO_UNLOCK(udp);
-            }
-            else
-            {
-                do_slowtimo = 1; /* Let socket expire */
             }
         }
 

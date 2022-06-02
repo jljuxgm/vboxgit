@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvNAT.cpp 35922 2011-02-09 20:04:14Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -471,8 +471,7 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
         if (!pSgBuf->pvAllocator)
         {
             RTMemFree(pSgBuf);
-            /** @todo Implement the VERR_TRY_AGAIN semantics. */
-            return VERR_NO_MEMORY;
+            return VERR_TRY_AGAIN;
         }
     }
     else
@@ -486,8 +485,7 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
             RTMemFree(pSgBuf->aSegs[0].pvSeg);
             RTMemFree(pSgBuf->pvUser);
             RTMemFree(pSgBuf);
-            /** @todo Implement the VERR_TRY_AGAIN semantics. */
-            return VERR_NO_MEMORY;
+            return VERR_TRY_AGAIN;
         }
     }
 
@@ -906,6 +904,16 @@ void slirp_urg_output(void *pvUser, struct mbuf *m, const uint8_t *pu8Buf, int c
                          (PFNRT)drvNATUrgRecvWorker, 4, pThis, pu8Buf, cb, m);
     AssertRC(rc);
     drvNATUrgRecvWakeup(pThis->pDrvIns, pThis->pUrgRecvThread);
+}
+
+/**
+ * Function called by slirp to wake up device after VERR_TRY_AGAIN
+ */
+void slirp_output_pending(void *pvUser)
+{
+    PDRVNAT pThis = (PDRVNAT)pvUser;
+    Assert(pThis);
+    pThis->pIAboveNet->pfnXmitPending(pThis->pIAboveNet);
 }
 
 /**
