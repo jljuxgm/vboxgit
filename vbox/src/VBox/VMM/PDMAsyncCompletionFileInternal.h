@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 33218 2010-10-18 19:54:10Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 33219 2010-10-18 20:13:24Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -428,7 +428,7 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSFILE
     /** Bitmask for checking the alignment of a buffer. */
     RTR3UINTPTR                         uBitmaskAlignment;
 #ifdef VBOX_WITH_STATISTICS
-    uint32_t                            u32Alignment;
+    uint32_t                            u32Alignment[2];
 #endif
     /** Global cache data. */
     PDMACFILECACHEGLOBAL                Cache;
