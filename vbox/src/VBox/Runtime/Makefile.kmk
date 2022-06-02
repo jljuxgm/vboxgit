@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32572 2010-09-16 16:18:12Z vboxsync $
+# $Id: Makefile.kmk 32648 2010-09-20 16:17:03Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1239,6 +1239,10 @@ RuntimeR0_SOURCES       = \
 	common/misc/term.cpp \
 	common/string/strncmp.cpp \
 	common/string/strpbrk.cpp \
+	common/string/RTStrCopy.cpp \
+	common/string/RTStrCopyEx.cpp \
+	common/string/RTStrNLen.cpp \
+	common/string/RTStrNLenEx.cpp \
 	common/table/avlgcptr.cpp \
 	common/table/avlhcphys.cpp \
 	common/table/avllu32.cpp \
