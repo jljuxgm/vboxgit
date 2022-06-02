@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 34288 2010-11-23 16:02:26Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 34303 2010-11-23 17:39:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -215,7 +215,8 @@ STDMETHODIMP Keyboard::PutScancodes(ComSafeArrayIn(LONG, scancodes),
         *codesStored = sent;
 
     /* Only signal the keys in the event which have been actually sent. */
-    keys.resize(sent);
+    com::SafeArray<LONG> keysSent(sent);
+    memcpy(keysSent.raw(), keys.raw(), sent*sizeof(LONG));
     VBoxEventDesc evDesc;
     evDesc.init(mEventSource, VBoxEventType_OnGuestKeyboardEvent, ComSafeArrayAsInParam(keys));
     evDesc.fire(0);
