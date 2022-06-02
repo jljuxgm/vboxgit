@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: MachineImpl.h 31574 2010-08-11 14:54:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -887,6 +887,7 @@ public:
     RWLockHandle *lockHandle() const;
 
     // IInternalMachineControl methods
+    STDMETHOD(SetRemoveSavedStateFile)(BOOL aRemove);
     STDMETHOD(UpdateState)(MachineState_T machineState);
     STDMETHOD(GetIPCId)(BSTR *id);
     STDMETHOD(BeginPowerUp)(IProgress *aProgress);
@@ -1023,6 +1024,8 @@ private:
 
     HRESULT setMachineState(MachineState_T aMachineState);
     HRESULT updateMachineStateOnClient();
+
+    HRESULT mRemoveSavedState;
 
     SnapshotData mSnapshotData;
 

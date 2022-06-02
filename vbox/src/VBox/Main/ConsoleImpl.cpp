@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 31543 2010-08-10 16:27:29Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 31574 2010-08-11 14:54:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2387,7 +2387,7 @@ STDMETHODIMP Console::AdoptSavedState(IN_BSTR aSavedStateFile)
     return mControl->AdoptSavedState(aSavedStateFile);
 }
 
-STDMETHODIMP Console::DiscardSavedState()
+STDMETHODIMP Console::DiscardSavedState(BOOL aRemoveFile)
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -2399,7 +2399,8 @@ STDMETHODIMP Console::DiscardSavedState()
             tr("Cannot delete the machine state as the machine is not in the saved state (machine state: %s)"),
             Global::stringifyMachineState(mMachineState));
 
-    HRESULT rc = S_OK;
+    HRESULT rc = mControl->SetRemoveSavedStateFile(aRemoveFile);
+    if (FAILED(rc)) return rc;
 
     /*
      * Saved -> PoweredOff transition will be detected in the SessionMachine

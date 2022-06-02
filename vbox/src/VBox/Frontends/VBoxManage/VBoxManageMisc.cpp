@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 31574 2010-08-11 14:54:09Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -432,7 +432,7 @@ int handleDiscardState(HandlerArg *a)
             {
                 ComPtr<IConsole> console;
                 CHECK_ERROR_BREAK(a->session, COMGETTER(Console)(console.asOutParam()));
-                CHECK_ERROR_BREAK(console, DiscardSavedState());
+                CHECK_ERROR_BREAK(console, DiscardSavedState(true /* fDeleteFile */));
             } while (0);
             CHECK_ERROR_BREAK(a->session, UnlockMachine());
         } while (0);
