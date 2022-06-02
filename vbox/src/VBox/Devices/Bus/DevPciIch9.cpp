@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 33314 2010-10-21 15:51:17Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 33370 2010-10-22 19:30:56Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -1891,12 +1891,15 @@ static const struct {
     int32_t     iSlot;
     int32_t     iFunction;
 } PciSlotAssignments[] = {
+    /* Due to somewhat inflexible PCI bus configuration, ConsoleImpl hardcodes 0:5:0 as HDA address, so we shalln't put elsewhere */ 
+#if 0
     {
         "lan",      25, 0 /* LAN controller */
     },
     {
         "hda",      27, 0 /* High Definition Audio */
     },
+#endif
     {
         "i82801",   30, 0 /* Host Controller */
     },
