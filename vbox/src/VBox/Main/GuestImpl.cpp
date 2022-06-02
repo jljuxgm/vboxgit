@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 30794 2010-07-12 12:55:41Z vboxsync $ */
+/* $Id: GuestImpl.cpp 30796 2010-07-12 20:14:15Z vboxsync $ */
 
 /** @file
  *
@@ -1184,7 +1184,7 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
             RTMemFree(papszArgv);
         }
 
-        if (RT_FAILURE(rc))
+        if (RT_FAILURE(vrc))
             LogRel(("Executing guest process \"%s\" as user \"%s\" failed with %Rrc\n",
                     Utf8Command.raw(), Utf8UserName.raw(), vrc));
     }
