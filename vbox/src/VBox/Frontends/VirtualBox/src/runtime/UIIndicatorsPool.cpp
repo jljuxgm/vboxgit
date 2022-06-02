@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 33394 2010-10-24 16:17:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -501,7 +501,7 @@ public:
 
     void updateAppearance()
     {
-        CVRDEServer &srv = m_session.GetMachine().GetVRDEServer();
+        CVRDEServer srv = m_session.GetMachine().GetVRDEServer();
         if (!srv.isNull())
         {
             /* update menu&status icon state */
