@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31969 2010-08-25 18:49:04Z vboxsync $
+# $Id: Makefile.kmk 31970 2010-08-25 19:04:51Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -672,8 +672,10 @@ VBOX_DI_VBAPP_MISC_FILES += \
 	MacOS/UserManual.pdf
 endif
 ifdef VBOX_WITH_ADDITIONS_PACKING
-VBOX_DI_VBAPP_MISC_FILES += \
+ ifneq ($(wildcard $(VBOX_PATH_DIST)/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso),)
+ VBOX_DI_VBAPP_MISC_FILES += \
 	MacOS/VBoxGuestAdditions.iso
+ endif
 endif
 ifdef VBOX_WITH_EFIFW_PACKING
 VBOX_DI_VBAPP_MISC_FILES += \
