@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33322 2010-10-21 17:14:44Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33335 2010-10-22 09:56:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -7286,11 +7286,11 @@ HRESULT Medium::taskImportHandler(Medium::ImportTask &task)
         try
         {
             /* Open source medium. */
-            rc = VDOpen(hdd,
-                        task.mFormat->getId().c_str(),
-                        task.mFilename.c_str(),
-                        VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_SEQUENTIAL,
-                        task.mVDImageIfaces);
+            vrc = VDOpen(hdd,
+                         task.mFormat->getId().c_str(),
+                         task.mFilename.c_str(),
+                         VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_SEQUENTIAL,
+                         task.mVDImageIfaces);
             if (RT_FAILURE(vrc))
                 throw setError(VBOX_E_FILE_ERROR,
                                tr("Could not open the medium storage unit '%s'%s"),
