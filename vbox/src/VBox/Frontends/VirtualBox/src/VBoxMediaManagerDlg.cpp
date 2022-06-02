@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 34791 2010-12-07 15:01:15Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 34982 2010-12-13 09:29:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1063,7 +1063,8 @@ void VBoxMediaManagerDlg::doRemoveMedium()
              * VBoxProblemReporter::confirmRemoveMedium() is aware of that and
              * will give a corresponding hint. Therefore, once the code is
              * changed below, the hint should be re-checked for validity. */
-            if (item->state() != KMediumState_Inaccessible)
+            if (item->state() != KMediumState_Inaccessible &&
+                item->medium().medium().GetMediumFormat().GetCapabilities() & MediumFormatCapabilities_File)
             {
                 int rc = vboxProblem().
                     confirmDeleteHardDiskStorage (this, item->location());

@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34978 2010-12-13 08:34:48Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34982 2010-12-13 09:29:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1115,7 +1115,8 @@ bool VBoxProblemReporter::confirmRemoveMedium (QWidget *aParent,
             .arg (mediumToAccusative (aMedium.type()))
             .arg (aMedium.location());
 
-    if (aMedium.type() == VBoxDefs::MediumType_HardDisk)
+    if (aMedium.type() == VBoxDefs::MediumType_HardDisk &&
+        aMedium.medium().GetMediumFormat().GetCapabilities() & MediumFormatCapabilities_File)
     {
         if (aMedium.state() == KMediumState_Inaccessible)
             msg +=
@@ -1130,8 +1131,7 @@ bool VBoxProblemReporter::confirmRemoveMedium (QWidget *aParent,
     else
         msg +=
             tr ("<p>Note that the storage unit of this medium will not be "
-                "deleted and that it will be possible to add it to "
-                "the list later again.</p>");
+                "deleted and that it will be possible to use it later again.</p>");
 
     return messageOkCancel (aParent, Question, msg,
         "confirmRemoveMedium", /* aAutoConfirmId */
