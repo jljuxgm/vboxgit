@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 34414 2010-11-26 17:01:55Z vboxsync $ */
+/* $Id: vfsmemory.cpp 34441 2010-11-28 23:51:30Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -742,7 +742,8 @@ RTDECL(int) RTVfsMemorizeIoStreamAsFile(RTVFSIOSTREAM hVfsIos, uint32_t fFlags, 
     {
         RTVFSFILE       hVfsFile;
         PRTVFSMEMFILE   pThis;
-        rc = RTVfsNewFile(&g_rtVfsStdFileOps, sizeof(*pThis), fFlags, NIL_RTVFS, NIL_RTVFSLOCK, &hVfsFile, (void **)&pThis);
+        rc = RTVfsNewFile(&g_rtVfsStdFileOps, sizeof(*pThis), fFlags | RTFILE_O_WRITE, NIL_RTVFS, NIL_RTVFSLOCK,
+                          &hVfsFile, (void **)&pThis);
         if (RT_SUCCESS(rc))
         {
             pThis->Base.ObjInfo = ObjInfo;
@@ -764,6 +765,10 @@ RTDECL(int) RTVfsMemorizeIoStreamAsFile(RTVFSIOSTREAM hVfsIos, uint32_t fFlags, 
             RTVfsIoStrmRelease(hVfsIosDst);
             if (RT_SUCCESS(rc))
             {
+                if (!(fFlags & RTFILE_O_WRITE))
+                {
+                    /** @todo clear RTFILE_O_WRITE from the resulting. */
+                }
                 *phVfsFile = hVfsFile;
                 return VINF_SUCCESS;
             }
