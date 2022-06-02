@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 34715 2010-12-03 23:25:52Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 35268 2010-12-20 23:30:58Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -174,7 +174,7 @@ Bool VBOXDRIScreenInit(int scrnIndex, ScreenPtr pScreen, VBOXPtr pVBox)
     if (   (pScrn->displayWidth == 0)
         || (pVBox->pciInfo == NULL)
         || (pVBox->base == NULL)
-        || (pVBox->cbFramebuffer == 0))
+        || (pVBox->cbFBMax == 0))
     {
         xf86DrvMsg(pScrn->scrnIndex, X_ERROR, "%s: preconditions failed\n",
                    __PRETTY_FUNCTION__);
@@ -255,7 +255,7 @@ Bool VBOXDRIScreenInit(int scrnIndex, ScreenPtr pScreen, VBOXPtr pVBox)
         pDRIInfo->ddxDrawableTableEntry = VBOX_MAX_DRAWABLES;
         pDRIInfo->maxDrawableTableEntry = VBOX_MAX_DRAWABLES;
         pDRIInfo->frameBufferPhysicalAddress = (pointer)pScrn->memPhysBase;
-        pDRIInfo->frameBufferSize = pVBox->cbFramebuffer;
+        pDRIInfo->frameBufferSize = pVBox->cbFBMax;
         pDRIInfo->frameBufferStride =   pScrn->displayWidth
                                       * pScrn->bitsPerPixel / 8;
         pDRIInfo->SAREASize = SAREA_MAX;  /* we have no private bits yet. */
