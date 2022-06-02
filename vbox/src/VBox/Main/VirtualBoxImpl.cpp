@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 31372 2010-08-04 19:01:08Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 31387 2010-08-05 10:13:58Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3296,9 +3296,13 @@ HRESULT VirtualBox::saveSettings()
 
         // leave extra data alone, it's still in the config file
 
-        /* host data (USB filters) */
-        rc = m->pHost->saveSettings(m->pMainConfigFile->host);
-        if (FAILED(rc)) throw rc;
+        /* host data (USB filters), will take host lock. */
+        {
+            mediaLock.release();
+            machinesLock.release();
+            rc = m->pHost->saveSettings(m->pMainConfigFile->host);
+            if (FAILED(rc)) throw rc;
+        }
 
         rc = m->pSystemProperties->saveSettings(m->pMainConfigFile->systemProperties);
         if (FAILED(rc)) throw rc;
