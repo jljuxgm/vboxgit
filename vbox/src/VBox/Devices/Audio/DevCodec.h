@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 31263 2010-08-02 04:53:50Z vboxsync $ */
+/* $Id: DevCodec.h 31502 2010-08-10 04:21:33Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -223,6 +223,7 @@ typedef struct CODECState
     /** Mic in */
     SWVoiceIn               *voice_mc;
     void *pHDAState;
+    bool fFirstResetDetected;
     DECLR3CALLBACKMEMBER(int, pfnProcess, (struct CODECState *));
     DECLR3CALLBACKMEMBER(int, pfnLookup, (struct CODECState *pState, uint32_t verb, PPFNCODECVERBPROCESSOR));
     DECLR3CALLBACKMEMBER(int, pfnReset, (struct CODECState *pState));
