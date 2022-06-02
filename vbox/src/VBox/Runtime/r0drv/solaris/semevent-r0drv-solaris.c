@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 33144 2010-10-14 22:11:36Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 33149 2010-10-15 11:26:24Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, Ring-0 Driver, Solaris.
  */
@@ -60,11 +60,11 @@
 typedef struct RTSEMEVENTSOLENTRY
 {
     /** The list node. */
-    RTLISTNODE      Node;
+    RTLISTNODE          Node;
     /** The thread. */
-    kthread_t      *pThread;
+    kthread_t          *pThread;
     /** Flag set when waking up the thread by signal or destroy. */
-    bool volatile   fWokenUp;
+    bool volatile       fWokenUp;
 } RTSEMEVENTSOLENTRY;
 /** Pointer to waiter entry. */
 typedef RTSEMEVENTSOLENTRY *PRTSEMEVENTSOLENTRY;
@@ -272,7 +272,7 @@ static int rtR0SemEventSolWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, uint6
         rc = rtR0SemSolWaitInit(&Wait, fFlags, uTimeout);
         if (RT_SUCCESS(rc))
         {
-            RTSEMEVENTSOLENTRY Waiter;
+            RTSEMEVENTSOLENTRY Waiter;  /* ASSUMES we won't get swapped out while waiting (TS_DONT_SWAP). */
             Waiter.pThread  = curthread;
             Waiter.fWokenUp = false;
             RTListAppend(&pThis->WaitList, &Waiter.Node);
