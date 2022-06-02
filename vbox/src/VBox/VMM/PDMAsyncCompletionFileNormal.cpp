@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 32467 2010-09-14 09:08:17Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 33218 2010-10-18 19:54:10Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -973,9 +973,10 @@ static int pdmacFileAioMgrNormalProcessTaskList(PPDMACTASKFILE pTaskHead,
            && (pAioMgr->cRequestsActive + cRequests < pAioMgr->cRequestsActiveMax)
            && RT_SUCCESS(rc))
     {
+        RTMSINTERVAL msWhenNext;
         PPDMACTASKFILE pCurr = pTaskHead;
 
-        if (!pdmacFileBwMgrIsTransferAllowed(pEndpoint->pBwMgr, (uint32_t)pCurr->DataSeg.cbSeg))
+        if (!pdmacEpIsTransferAllowed(&pEndpoint->Core, (uint32_t)pCurr->DataSeg.cbSeg, &msWhenNext))
         {
             pAioMgr->fBwLimitReached = true;
             break;

@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 32655 2010-09-21 08:41:09Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 33218 2010-10-18 19:54:10Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -208,30 +208,6 @@ typedef struct PDMACEPFILEMGR
 typedef PDMACEPFILEMGR *PPDMACEPFILEMGR;
 /** Pointer to a async I/O manager state pointer. */
 typedef PPDMACEPFILEMGR *PPPDMACEPFILEMGR;
-
-/**
- * Bandwidth control manager instance data
- */
-typedef struct PDMACFILEBWMGR
-{
-    /** Maximum number of bytes the VM is allowed to transfer (Max is 4GB/s) */
-    uint32_t          cbVMTransferPerSecMax;
-    /** Number of bytes we start with */
-    uint32_t          cbVMTransferPerSecStart;
-    /** Step after each update */
-    uint32_t          cbVMTransferPerSecStep;
-    /** Number of bytes we are allowed to transfer till the next update.
-     * Reset by the refresh timer. */
-    volatile uint32_t cbVMTransferAllowed;
-    /** Timestamp of the last update */
-    volatile uint64_t tsUpdatedLast;
-    /** Reference counter - How many endpoints are associated with this manager. */
-    uint32_t          cRefs;
-} PDMACFILEBWMGR;
-/** Pointer to a bandwidth control manager */
-typedef PDMACFILEBWMGR *PPDMACFILEBWMGR;
-/** Pointer to a bandwidth control manager pointer */
-typedef PPDMACFILEBWMGR *PPPDMACFILEBWMGR;
 
 /**
  * A file access range lock.
@@ -458,8 +434,6 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSFILE
     PDMACFILECACHEGLOBAL                Cache;
     /** Flag whether the out of resources warning was printed already. */
     bool                                fOutOfResourcesWarningPrinted;
-    /** The global bandwidth control manager */
-    PPDMACFILEBWMGR                     pBwMgr;
 } PDMASYNCCOMPLETIONEPCLASSFILE;
 /** Pointer to the endpoint class data. */
 typedef PDMASYNCCOMPLETIONEPCLASSFILE *PPDMASYNCCOMPLETIONEPCLASSFILE;
@@ -546,8 +520,6 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
 #endif
     /** Cache of endpoint data. */
     PDMACFILEENDPOINTCACHE                 DataCache;
-    /** Pointer to the associated bandwidth control manager */
-    PPDMACFILEBWMGR                        pBwMgr;
 
     /** Flag whether a flush request is currently active */
     PPDMACTASKFILE                         pFlushReq;
@@ -712,8 +684,6 @@ void pdmacFileTaskFree(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint,
 int pdmacFileEpAddTask(PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint, PPDMACTASKFILE pTask);
 
 void pdmacFileEpTaskCompleted(PPDMACTASKFILE pTask, void *pvUser, int rc);
-
-bool pdmacFileBwMgrIsTransferAllowed(PPDMACFILEBWMGR pBwMgr, uint32_t cbTransfer);
 
 int pdmacFileCacheInit(PPDMASYNCCOMPLETIONEPCLASSFILE pClassFile, PCFGMNODE pCfgNode);
 void pdmacFileCacheDestroy(PPDMASYNCCOMPLETIONEPCLASSFILE pClassFile);

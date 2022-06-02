@@ -1,4 +1,4 @@
-/* $Id: pdmasynccompletion.h 31173 2010-07-28 16:17:36Z vboxsync $ */
+/* $Id: pdmasynccompletion.h 33218 2010-10-18 19:54:10Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion. (VMM)
  */
@@ -325,6 +325,17 @@ VMMR3DECL(int) PDMR3AsyncCompletionEpGetSize(PPDMASYNCCOMPLETIONENDPOINT pEndpoi
  */
 VMMR3DECL(int) PDMR3AsyncCompletionEpSetSize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
                                              uint64_t cbSize);
+
+/**
+ * Assigns or removes a bandwidth control manager to/from the endpoint.
+ *
+ * @returns VBox status code.
+ * @param   pEndpoint       The endpoint.
+ * @param   pcszBwMgr       The identifer of the new bandwidth manager to assign
+ *                          or NULL to remove the current one.
+ */
+VMMR3DECL(int) PDMR3AsyncCompletionEpSetBwMgr(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
+                                              const char *pcszBwMgr);
 
 /**
  * Cancels a async completion task.
