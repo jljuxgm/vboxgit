@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: MediumImpl.cpp 35803 2011-02-01 09:32:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1281,7 +1281,9 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
 
     unconst(m->pVirtualBox) = aVirtualBox;
 
-    /* fake up a UUID which is unique, but also reproducible */
+    // We do not store host drives in VirtualBox.xml or anywhere else, so if we want
+    // host drives to be identifiable by UUID and not give the drive a different UUID
+    // every time VirtualBox starts, we need to fake a reproducible UUID here:
     RTUUID uuid;
     RTUuidClear(&uuid);
     if (aDeviceType == DeviceType_DVD)
