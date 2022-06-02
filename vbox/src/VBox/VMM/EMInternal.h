@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 32917 2010-10-05 13:35:31Z vboxsync $ */
+/* $Id: EMInternal.h 32955 2010-10-06 15:58:15Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -54,7 +54,7 @@ RT_C_DECLS_BEGIN
 #define EMMWAIT_FLAG_MONITOR_ACTIVE     RT_BIT(2)
 
 /** EM time slice in ms; used for capping execution time. */
-#define EM_TIME_SLICE                   1000
+#define EM_TIME_SLICE                   100
 
 /**
  * Cli node structure
