@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 33825 2010-11-08 10:16:25Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 34010 2010-11-11 20:17:47Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -477,6 +477,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--sataideemulation<1-4> <1-30>]\n"
                      "                            [--sataportcount <1-30>]\n"
                      "                            [--hostiocache on|off]\n"
+                     "                            [--bootable on|off]\n"
                      "                            [--remove]\n"
                      "\n");
     }
