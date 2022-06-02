@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 31424 2010-08-05 19:49:11Z vboxsync $
+# $Id: vboxconfig.sh 31425 2010-08-05 19:50:43Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -28,6 +28,7 @@ DIR_CONF="${BASEDIR}/platform/i86pc/kernel/drv"
 DIR_MOD_32="${BASEDIR}/platform/i86pc/kernel/drv"
 DIR_MOD_64=$DIR_MOD_32/amd64
 
+# Default paths, these will be overridden by 'which' if they don't exist
 BIN_ADDDRV=/usr/sbin/add_drv
 BIN_REMDRV=/usr/sbin/rem_drv
 BIN_MODLOAD=/usr/sbin/modload
