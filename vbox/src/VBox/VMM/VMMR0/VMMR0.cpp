@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 31368 2010-08-04 17:22:06Z vboxsync $ */
+/* $Id: VMMR0.cpp 31369 2010-08-04 17:23:39Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -980,7 +980,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
                 GMMR0CheckSharedModulesEnd(pVM);
             }
 # else
-            rc = GMMR0CheckSharedModules(pVM, pVCpu);
+            int rc = GMMR0CheckSharedModules(pVM, pVCpu);
 # endif
             return rc;
         }
