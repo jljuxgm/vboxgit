@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 32471 2010-09-14 10:26:07Z vboxsync $ */
+/* $Id: Builtins.h 34876 2010-12-09 11:16:00Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -83,6 +83,7 @@ extern const PDMDEVREG g_DeviceLsiLogicSAS;
 #ifdef VBOX_WITH_EFI
 extern const PDMDEVREG g_DeviceEFI;
 #endif
+extern const PDMDEVREG g_DevicePciRaw;
 
 extern const PDMDRVREG g_DrvMouseQueue;
 extern const PDMDRVREG g_DrvKeyboardQueue;

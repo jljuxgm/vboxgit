@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34768 2010-12-07 09:21:59Z vboxsync $
+# $Id: Makefile.kmk 34876 2010-12-09 11:16:00Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -271,6 +271,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Bus/DevPciIch9.cpp \
  	Bus/MsiCommon.cpp \
  	Bus/MsixCommon.cpp \
+	Bus/DevPciRaw.cpp \
  	Graphics/DevVGA.cpp \
  	Storage/DevATA.cpp \
  	PC/DevPit-i8254.cpp \
@@ -532,6 +533,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Bus/DevPciIch9.cpp \
  	Bus/MsiCommon.cpp \
  	Bus/MsixCommon.cpp \
+ 	Bus/DevPciRaw.cpp \
   	Graphics/DevVGA.cpp \
   	Input/DevPS2.cpp \
   	PC/DevACPI.cpp \
@@ -635,6 +637,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Bus/DevPciIch9.cpp \
  	Bus/MsiCommon.cpp \
  	Bus/MsixCommon.cpp \
+	Bus/DevPciRaw.cpp \
  	Graphics/DevVGA.cpp \
  	Input/DevPS2.cpp \
  	PC/DevACPI.cpp \
