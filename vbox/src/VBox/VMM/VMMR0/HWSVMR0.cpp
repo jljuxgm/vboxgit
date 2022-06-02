@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 32525 2010-09-15 15:07:05Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 32729 2010-09-23 14:42:57Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1811,6 +1811,7 @@ ResumeExecution:
                 Event.n.u32ErrorCode        = pVMCB->ctrl.u64ExitInfo1; /* EXITINFO1 = error code */
                 break;
             case X86_XCPT_BP:
+                /** Saves the wrong EIP on the stack (pointing to the int3 instead of the next instruction. */
                 break;
             case X86_XCPT_DE:
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitGuestDE);
