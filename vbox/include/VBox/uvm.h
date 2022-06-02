@@ -1,4 +1,4 @@
-/* $Id: uvm.h 32190 2010-09-02 12:20:06Z vboxsync $ */
+/* $Id: uvm.h 32796 2010-09-28 14:54:41Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data. (VMM)
  */
@@ -124,7 +124,7 @@ typedef struct UVM
 #ifdef ___STAMInternal_h
         struct STAMUSERPERVM    s;
 #endif
-        uint8_t                 padding[256];
+        uint8_t                 padding[4096];
     } stam;
 
     /** Per virtual CPU data. */
