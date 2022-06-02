@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 31737 2010-08-17 14:51:12Z vboxsync $ */
+/* $Id: VM.cpp 31854 2010-08-23 11:33:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -265,6 +265,13 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCpus, PFNVMATERROR pfnVMAtError, void *pvU
                     pszError = N_("VirtualBox can't operate in VMX root mode. Please close all other virtualization programs.");
 #endif
                     break;
+
+#ifndef RT_OS_DARWIN
+                case VERR_HWACCM_CONFIG_MISMATCH:
+                    pszError = N_("VT-x/AMD-V is either not available on your host or disabled. "
+                                  "This hardware extension is required by the VM configuration");
+                    break;
+#endif
 
                 case VERR_SVM_IN_USE:
 #ifdef RT_OS_LINUX
