@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 28888 2010-04-29 11:50:05Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 31151 2010-07-27 19:18:02Z vboxsync $ */
 /** @file
  * VBoxManage - The disk delated commands.
  */
@@ -227,7 +227,9 @@ int handleCreateHardDisk(HandlerArg *a)
             case 't':   // --type
                 vrc = parseDiskType(ValueUnion.psz, &DiskType);
                 if (    RT_FAILURE(vrc)
-                    ||  (DiskType != MediumType_Normal && DiskType != MediumType_Writethrough))
+                    ||  (   DiskType != MediumType_Normal
+                         && DiskType != MediumType_Writethrough
+                         && DiskType != MediumType_Shareable))
                     return errorArgument("Invalid hard disk type '%s'", ValueUnion.psz);
                 break;
 
