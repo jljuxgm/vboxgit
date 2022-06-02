@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 35746 2011-01-27 19:32:39Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 35753 2011-01-28 10:58:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -34,7 +34,7 @@
 #include "VMMDev.h"
 #include "Global.h"
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
-#include "PciRawDevImpl.h"
+# include "PciRawDevImpl.h"
 #endif
 
 // generated header
