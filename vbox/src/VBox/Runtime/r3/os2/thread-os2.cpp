@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: thread-os2.cpp 32905 2010-10-05 11:43:35Z vboxsync $ */
 /** @file
  * IPRT - Threads, OS/2.
  */
@@ -292,3 +292,8 @@ RTR3DECL(int) RTTlsSet(RTTLS iTls, void *pvValue)
     return RTErrConvertFromErrno(errno);
 }
 
+
+RTR3DECL(int) RTThreadGetExecutionTimeMilli(RTTHREAD hThread, uint64_t *pKernelTime, uint64_t *pUserTime)
+{
+    return VERR_NOT_IMPLEMENTED;
+}

@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 29251 2010-05-09 17:57:12Z vboxsync $ */
+/* $Id: thread-win.cpp 32905 2010-10-05 11:43:35Z vboxsync $ */
 /** @file
  * IPRT - Threads, Win32.
  */
@@ -222,3 +222,19 @@ RTR3DECL(uint64_t) RTThreadGetAffinity(void)
     return RTErrConvertFromWin32(iLastError);
 }
 
+
+RTR3DECL(int) RTThreadGetExecutionTimeMilli(RTTHREAD hThread, uint64_t *pKernelTime, uint64_t *pUserTime)
+{
+    uint64_t u64CreationTime, u64ExitTime, u64KernelTime, u64UserTime;
+
+    if (GetThreadTimes(hThread, (LPFILETIME)&u64CreationTime, (LPFILETIME)&u64ExitTime, (LPFILETIME)&u64KernelTime, (LPFILETIME)&u64UserTime))
+    {
+        *pKernelTime = u64KernelTime / 10000;    /* GetThreadTimes returns time in 100 ns units */
+        *pUserTime   = u64UserTime / 10000;    /* GetThreadTimes returns time in 100 ns units */
+        return VINF_SUCCESS;
+    }
+
+    int iLastError = GetLastError();
+    AssertMsgFailed(("GetThreadTimes failed, LastError=%d\n", iLastError));
+    return RTErrConvertFromWin32(iLastError);
+}

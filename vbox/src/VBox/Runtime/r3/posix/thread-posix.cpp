@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: thread-posix.cpp 32905 2010-10-05 11:43:35Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -386,3 +386,7 @@ RTDECL(int) RTThreadPoke(RTTHREAD hThread)
 }
 #endif
 
+RTR3DECL(int) RTThreadGetExecutionTimeMilli(RTTHREAD hThread, uint64_t *pKernelTime, uint64_t *pUserTime)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
