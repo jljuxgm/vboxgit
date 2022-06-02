@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 34728 2010-12-06 10:40:42Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 34736 2010-12-06 11:19:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1217,7 +1217,7 @@ bool VBoxMediaManagerDlg::releaseMediumFrom (const VBoxMedium &aMedium, const QS
                     {
                         CStorageController controller = machine.GetStorageControllerByName (attachment.GetController());
                         vboxProblem().cannotDetachDevice (this, machine, VBoxDefs::MediumType_HardDisk, aMedium.location(),
-                                                          controller.GetBus(), attachment.GetPort(), attachment.GetDevice());
+                                                          StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice()));
                         success = false;
                         break;
                     }
