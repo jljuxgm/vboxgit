@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 32953 2010-10-06 15:53:27Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 32954 2010-10-06 15:54:53Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -557,6 +557,7 @@ int emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
             STAM_REL_PROFILE_ADV_START(&pVCpu->em.s.StatCapped, u);
             RTThreadSleep(2);
             STAM_REL_PROFILE_ADV_STOP(&pVCpu->em.s.StatCapped, u);
+            rc = VINF_SUCCESS;
         }
         
 
