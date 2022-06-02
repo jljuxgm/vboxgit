@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 32769 2010-09-27 08:40:49Z vboxsync $ */
+/* $Id: DevVGA.h 32877 2010-10-01 22:51:28Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -255,7 +255,7 @@ typedef void FNCURSORDRAWLINE(struct VGAState *s, uint8_t *d, int y);
 
 #endif /* VBOX */
 
-#ifdef VBOXVDMA
+#ifdef VBOX_WITH_VDMA
 typedef struct VBOXVDMAHOST *PVBOXVDMAHOST;
 #endif
 
@@ -289,7 +289,7 @@ typedef struct VGAState {
 #ifdef VBOX_WITH_HGSMI
     R3PTRTYPE(PHGSMIINSTANCE)   pHGSMI;
 #endif /* VBOX_WITH_HGSMI */
-#ifdef VBOXVDMA
+#ifdef VBOX_WITH_VDMA
     R3PTRTYPE(PVBOXVDMAHOST)    pVdma;
 #endif
 
@@ -494,14 +494,14 @@ int vboxVBVASaveStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Version);
 int vboxVBVALoadStateDone (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 
-# ifdef VBOXVDMA
+# ifdef VBOX_WITH_VDMA
 typedef struct VBOXVDMAHOST *PVBOXVDMAHOST;
 int vboxVDMAConstruct(PVGASTATE pVGAState, struct VBOXVDMAHOST **ppVdma, uint32_t cPipeElements);
 int vboxVDMADestruct(PVBOXVDMAHOST pVdma);
 void vboxVDMAControl(PVBOXVDMAHOST pVdma, PVBOXVDMA_CTL pCmd);
 void vboxVDMACommand(PVBOXVDMAHOST pVdma, PVBOXVDMACBUF_DR pCmd);
 bool vboxVDMAIsEnabled(PVBOXVDMAHOST pVdma);
-# endif /* VBOXVDMA */
+# endif /* VBOX_WITH_VDMA */
 
 #endif /* VBOX_WITH_HGSMI */
 

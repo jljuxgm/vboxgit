@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32823 2010-09-29 16:50:53Z vboxsync $
+# $Id: Makefile.kmk 32877 2010-10-01 22:51:28Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -88,6 +88,9 @@ ifdef VBOX_WITH_WDDM
   ifdef VBOXVDMA_WITH_VBVA
    VBoxVideoWddm_DEFS     += VBOXVDMA_WITH_VBVA 
   endif
+ endif
+ ifdef VBOXVDMA_WITH_VDMA
+  VBoxVideoWddm_DEFS     += VBOXVDMA_WITH_VDMA 
  endif
  ifdef DEBUG_misha
   VBoxVideoWddm_DEFS       += LOG_ENABLED

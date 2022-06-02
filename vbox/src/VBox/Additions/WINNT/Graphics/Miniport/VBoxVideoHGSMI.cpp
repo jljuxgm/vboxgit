@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 32876 2010-10-01 20:38:01Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 32877 2010-10-01 22:51:28Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -958,7 +958,7 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension,
 
         ULONG ulSize;
         ULONG offset;
-#ifdef VBOXVDMA
+#ifdef VBOX_WITH_VDMA
         ulSize = ulAvailable / 2;
         if (ulSize > VBOXWDDM_C_VDMA_BUFFER_SIZE)
             ulSize = VBOXWDDM_C_VDMA_BUFFER_SIZE;
@@ -972,7 +972,7 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension,
         offset = ulAvailable;
 #endif
         rc = vboxVdmaCreate (PrimaryExtension, &PrimaryExtension->u.primary.Vdma
-#ifdef VBOXVDMA
+#ifdef VBOX_WITH_VDMA
                 , offset, ulSize
 #endif
                 );
