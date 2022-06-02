@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34300 2010-11-23 16:58:25Z vboxsync $
+# $Id: Makefile.kmk 34308 2010-11-24 11:44:28Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -288,6 +288,7 @@ VBoxSVC_SOURCES = \
 	xml/ovfreader.cpp \
 	VFSExplorerImpl.cpp \
 	MachineImpl.cpp \
+	PciDeviceAttachmentImpl.cpp \
 	SnapshotImpl.cpp \
 	MediumImpl.cpp \
 	MediumLock.cpp \

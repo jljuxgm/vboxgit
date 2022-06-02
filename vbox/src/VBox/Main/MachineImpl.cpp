@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 34248 2010-11-22 15:14:23Z vboxsync $ */
+/* $Id: MachineImpl.cpp 34308 2010-11-24 11:44:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5727,6 +5727,21 @@ STDMETHODIMP Machine::ReadLog(ULONG aIdx, LONG64 aOffset, LONG64 aSize, ComSafeA
     return rc;
 }
 
+
+STDMETHODIMP Machine::AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAddress, IContext *eventContext, BOOL tryToUnbind)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP Machine::DetachHostPciDevice(LONG hostAddress)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP Machine::COMGETTER(PciDeviceAttachments)(ComSafeArrayOut(IPciDeviceAttachment *, aAttachments))
+{
+    return E_NOTIMPL;
+}
 
 // public methods for internal purposes
 /////////////////////////////////////////////////////////////////////////////

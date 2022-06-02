@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 34010 2010-11-11 20:17:47Z vboxsync $ */
+/* $Id: MachineImpl.h 34308 2010-11-24 11:44:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -23,6 +23,7 @@
 #include "ProgressImpl.h"
 #include "VRDEServerImpl.h"
 #include "MediumAttachmentImpl.h"
+#include "PciDeviceAttachmentImpl.h"
 #include "MediumLock.h"
 #include "NetworkAdapterImpl.h"
 #include "AudioAdapterImpl.h"
@@ -518,6 +519,9 @@ public:
     STDMETHOD(GetCPUStatus(ULONG aCpu, BOOL *aCpuAttached));
     STDMETHOD(QueryLogFilename(ULONG aIdx, BSTR *aName));
     STDMETHOD(ReadLog(ULONG aIdx, LONG64 aOffset, LONG64 aSize, ComSafeArrayOut(BYTE, aData)));
+    STDMETHOD(AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAddress, IContext *eventContext, BOOL tryToUnbind));
+    STDMETHOD(DetachHostPciDevice(LONG hostAddress));
+    STDMETHOD(COMGETTER(PciDeviceAttachments))(ComSafeArrayOut(IPciDeviceAttachment *, aAttachments));
 
     // public methods only for internal purposes
 
@@ -859,6 +863,9 @@ protected:
 
     typedef std::list< ComObjPtr<StorageController> > StorageControllerList;
     Backupable<StorageControllerList> mStorageControllers;
+
+    typedef std::list< ComObjPtr<PciDeviceAttachment> > PciDeviceList;
+    PciDeviceList mPciDeviceList;
 
     friend class SessionMachine;
     friend class SnapshotMachine;
