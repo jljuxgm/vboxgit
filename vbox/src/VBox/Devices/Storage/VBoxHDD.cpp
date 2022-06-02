@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 31185 2010-07-28 20:40:14Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 31258 2010-07-30 18:26:09Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3382,6 +3382,16 @@ VBOXDDU_DECL(int) VDOpen(PVBOXHDD pDisk, const char *pszBackend,
                     uImageFlags |= VD_IMAGE_FLAGS_DIFF;
             }
         }
+
+        /* Ensure we always get correct diff information, even if the backend
+         * doesn't actually have a stored flag for this. It must not return
+         * bogus information for the parent UUID if it is not a diff image. */
+        RTUUID parentUuid;
+        RTUuidClear(&parentUuid);
+        rc2 = pImage->Backend->pfnGetParentUuid(pImage->pvBackendData, &parentUuid);
+        if (RT_SUCCESS(rc2) && !RTUuidIsNull(&parentUuid))
+            uImageFlags |= VD_IMAGE_FLAGS_DIFF;
+
         pImage->uImageFlags = uImageFlags;
 
         /* Force sane optimization settings. It's not worth avoiding writes
@@ -5765,7 +5775,7 @@ VBOXDDU_DECL(int) VDGetImageFlags(PVBOXHDD pDisk, unsigned nImage,
         PVDIMAGE pImage = vdGetImageByNumber(pDisk, nImage);
         AssertPtrBreakStmt(pImage, rc = VERR_VD_IMAGE_NOT_FOUND);
 
-        *puImageFlags = pImage->Backend->pfnGetImageFlags(pImage->pvBackendData);
+        *puImageFlags = pImage->uImageFlags;
     } while (0);
 
     if (RT_UNLIKELY(fLockRead))
