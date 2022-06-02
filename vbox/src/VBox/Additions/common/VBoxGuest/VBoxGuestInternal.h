@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 32266 2010-09-07 09:23:05Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 32283 2010-09-07 12:24:57Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -212,17 +212,14 @@ typedef struct VBOXGUESTSESSION
 RT_C_DECLS_BEGIN
 
 int  VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase, void *pvMMIOBase, uint32_t cbMMIO, VBOXOSTYPE enmOSType, uint32_t fEvents);
-void VBoxGuestDeleteDevExt(PVBOXGUESTDEVEXT pDevExt);
 bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt);
+void VBoxGuestDeleteDevExt(PVBOXGUESTDEVEXT pDevExt);
+int  VBoxGuestReinitDevExtAfterHibernation(PVBOXGUESTDEVEXT pDevExt, VBOXOSTYPE enmOSType);
 int  VBoxGuestSetGuestCapabilities(uint32_t fOr, uint32_t fNot);
 
 int  VBoxGuestCreateUserSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession);
 int  VBoxGuestCreateKernelSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession);
 void VBoxGuestCloseSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession);
-
-#ifdef VBOX_WITH_HGCM
-int  VBoxGuestHGCMInitCommunication(PVBOXGUESTDEVEXT pDevExt, VBOXOSTYPE enmOSType);
-#endif
 
 int  VBoxGuestCommonIOCtlFast(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession);
 int  VBoxGuestCommonIOCtl(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession,
