@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: MachineImpl.h 33417 2010-10-25 12:32:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -489,7 +489,7 @@ public:
     STDMETHOD(DiscardSettings)();
     STDMETHOD(Unregister)(CleanupMode_T cleanupMode, ComSafeArrayOut(IMedium*, aMedia));
     STDMETHOD(Delete)(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProgress);
-    STDMETHOD(Export)(IAppliance *aAppliance, IVirtualSystemDescription **aDescription);
+    STDMETHOD(Export)(IAppliance *aAppliance, IN_BSTR location, IVirtualSystemDescription **aDescription);
     STDMETHOD(FindSnapshot)(IN_BSTR aNameOrId, ISnapshot **aSnapshot);
     STDMETHOD(CreateSharedFolder)(IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable, BOOL aAutoMount);
     STDMETHOD(RemoveSharedFolder)(IN_BSTR aName);
