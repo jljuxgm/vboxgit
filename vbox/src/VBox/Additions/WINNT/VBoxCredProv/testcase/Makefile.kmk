@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: Makefile.kmk 32188 2010-09-02 08:35:30Z vboxsync $
 ## @file
 # Sub-Makefile for test cases.
 #
@@ -33,7 +33,7 @@ VBOX_PATH_PSDK_200702    := \
 tstCredentialProvider_INCS        := \
 	$(VBOX_PATH_PSDK_200702)/Include
 tstCredentialProvider_LIBS.x86  := \
-	$(VBOX_PATH_PSDK_200702)/Lib/Credui.Lib \
+	$(VBOX_PATH_PSDK_200702)/Lib/credui.lib \
 	$(VBOX_PATH_PSDK_200702)/Lib/Secur32.Lib
 tstCredentialProvider_LIBS.amd64  := \
 	$(VBOX_PATH_PSDK_200702)/Lib/x64/Credui.Lib \
