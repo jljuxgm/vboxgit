@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 34580 2010-12-01 15:46:52Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 34608 2010-12-02 14:03:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -22,9 +22,7 @@
 #include "include/ExtPackUtil.h"
 
 #include <iprt/buildconfig.h>
-//#include <iprt/ctype.h>
 #include <iprt/dir.h>
-//#include <iprt/env.h>
 #include <iprt/file.h>
 #include <iprt/fs.h>
 #include <iprt/getopt.h>
@@ -33,7 +31,6 @@
 #include <iprt/message.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
-//#include <iprt/pipe.h>
 #include <iprt/process.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
