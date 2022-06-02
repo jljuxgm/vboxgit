@@ -1,4 +1,4 @@
-/* $Id: UIFirstRunWzd.cpp 33712 2010-11-02 21:50:33Z vboxsync $ */
+/* $Id: UIFirstRunWzd.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -22,7 +22,6 @@
 #include "UIIconPool.h"
 #include "VBoxGlobal.h"
 #include "VBoxProblemReporter.h"
-#include "VBoxVMSettingsHD.h"
 
 UIFirstRunWzd::UIFirstRunWzd(QWidget *pParent, const CMachine &machine) : QIWizard(pParent)
 {
