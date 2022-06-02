@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 34413 2010-11-26 17:01:23Z vboxsync $ */
+/* $Id: vfsbase.cpp 34435 2010-11-28 14:58:25Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -1908,6 +1908,17 @@ RTDECL(int) RTVfsNewIoStream(PCRTVFSIOSTREAMOPS pIoStreamOps, size_t cbInstance,
     *phVfsIos     = pThis;
     *ppvInstance  = pThis->Base.pvThis;
     return VINF_SUCCESS;
+}
+
+
+RTDECL(void *) RTVfsIoStreamToPrivate(RTVFSIOSTREAM hVfsIos, PCRTVFSIOSTREAMOPS pIoStreamOps)
+{
+    RTVFSIOSTREAMINTERNAL *pThis = hVfsIos;
+    AssertPtrReturn(pThis, NULL);
+    AssertReturn(pThis->uMagic == RTVFSIOSTREAM_MAGIC, NULL);
+    if (pThis->pOps != pIoStreamOps)
+        return NULL;
+    return pThis->Base.pvThis;
 }
 
 
