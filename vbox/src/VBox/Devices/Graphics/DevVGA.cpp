@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 30605 2010-07-05 12:18:44Z vboxsync $ */
+/* $Id: DevVGA.cpp 30886 2010-07-16 18:35:14Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2523,7 +2523,10 @@ static int vga_update_display(PVGASTATE s, bool fUpdateAll)
             }
 
             /* Do a complete redraw, which will pick up a new screen resolution. */
-            if (s->gr[6] & 1) {
+            if (fBlank) {
+                s->graphic_mode = GMODE_BLANK;
+                vga_draw_blank(s, 1);
+            } else if (s->gr[6] & 1) {
                 s->graphic_mode = GMODE_GRAPH;
                 rc = vga_draw_graphic(s, 1);
             } else {
