@@ -1,4 +1,4 @@
-/* $Id: buildconfig.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: buildconfig.cpp 33679 2010-11-02 10:44:01Z vboxsync $ */
 /** @file
  * IPRT - Build Configuration Information.
  */
@@ -75,6 +75,38 @@ RTDECL(uint32_t) RTBldCfgVersionMinor(void)
 RTDECL(uint32_t) RTBldCfgVersionBuild(void)
 {
     return IPRT_BLDCFG_VERSION_BUILD;
+}
+#endif
+
+
+#ifdef IPRT_BLDCFG_TARGET
+RTDECL(const char *) RTBldCfgTarget(void)
+{
+    return IPRT_BLDCFG_TARGET;
+}
+#endif
+
+
+#ifdef IPRT_BLDCFG_TARGET_ARCH
+RTDECL(const char *) RTBldCfgTargetArch(void)
+{
+    return IPRT_BLDCFG_TARGET_ARCH;
+}
+#endif
+
+
+#if defined(IPRT_BLDCFG_TARGET) && defined(IPRT_BLDCFG_TARGET_ARCH)
+RTDECL(const char *) RTBldCfgTargetDotArch(void)
+{
+    return IPRT_BLDCFG_TARGET "." IPRT_BLDCFG_TARGET_ARCH;
+}
+#endif
+
+
+#ifdef IPRT_BLDCFG_TYPE
+RTDECL(const char *) RTBldCfgType(void)
+{
+    return IPRT_BLDCFG_TYPE;
 }
 #endif
 
