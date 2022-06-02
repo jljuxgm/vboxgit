@@ -1,14 +1,8 @@
-/* $Id: VBoxDbgDisas.h 31510 2010-08-10 08:48:11Z vboxsync $ */
+/* $Id: VBoxDbgDisas.h 31530 2010-08-10 12:24:45Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Disassembly View.
  */
 
-/*
- * Copyright (C) 2008 Oracle Corporation
- *
- * Oracle Corporation confidential
- * All rights reserved
- */
 
 #ifndef ___Debugger_VBoxDbgDisas_h
 #define ___Debugger_VBoxDbgDisas_h

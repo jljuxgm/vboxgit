@@ -1,13 +1,18 @@
-/* $Id: tstDBGCParser.cpp 31513 2010-08-10 09:25:43Z vboxsync $ */
+/* $Id: tstDBGCParser.cpp 31530 2010-08-10 12:24:45Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser.
  */
 
 /*
- * Copyright (C) 2007 knut st. osmundsen <bird-kStuff-spam@anduin.net>
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
- * Oracle Corporation confidential
- * All rights reserved
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
 /*******************************************************************************
