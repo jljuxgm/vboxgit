@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 35119 2010-12-15 11:01:36Z vboxsync $ */
+/* $Id: Settings.cpp 35123 2010-12-15 12:04:34Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1043,6 +1043,7 @@ void ConfigFileBase::buildMedium(xml::ElementNode &elmMedium,
             "INVALID";
         // no need to save the usual DVD medium types
         if (devType != DeviceType_DVD || (   mdm.hdType != MediumType_Normal
+                                          && mdm.hdType != MediumType_Writethrough
                                           && mdm.hdType != MediumType_Readonly))
             pelmMedium->setAttribute("type", pcszType);
     }
