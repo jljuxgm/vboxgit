@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31818 2010-08-20 13:06:33Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31825 2010-08-20 15:13:24Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1965,9 +1965,10 @@ STDMETHODIMP Machine::GetHWVirtExProperty(HWVirtExPropertyType_T property, BOOL 
         case HWVirtExPropertyType_LargePages:
             *aVal = mHWData->mHWVirtExLargePagesEnabled;
             break;
-            
+
         case HWVirtExPropertyType_Force:
             *aVal = mHWData->mHWVirtExForceEnabled;
+            break;
 
         default:
             return E_INVALIDARG;
@@ -2022,7 +2023,7 @@ STDMETHODIMP Machine::SetHWVirtExProperty(HWVirtExPropertyType_T property, BOOL 
             mHWData.backup();
             mHWData->mHWVirtExForceEnabled = !!aVal;
             break;
-            
+
         default:
             return E_INVALIDARG;
     }
