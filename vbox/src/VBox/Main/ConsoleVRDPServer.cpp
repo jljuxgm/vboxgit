@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 30627 2010-07-05 17:08:55Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 30628 2010-07-05 17:26:09Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1158,7 +1158,7 @@ ConsoleVRDPServer::ConsoleVRDPServer (Console *console)
         console->COMGETTER(EventSource)(es.asOutParam());
         mConsoleListener = new VRDPConsoleListener(this);
         mConsoleListener->AddRef();
-        com::SafeArray <VBoxEventType_T> eventTypes(3);
+        com::SafeArray <VBoxEventType_T> eventTypes;
         eventTypes.push_back(VBoxEventType_OnMousePointerShapeChange);
         eventTypes.push_back(VBoxEventType_OnMouseCapabilityChange);
         eventTypes.push_back(VBoxEventType_OnKeyboardLedsChange);
