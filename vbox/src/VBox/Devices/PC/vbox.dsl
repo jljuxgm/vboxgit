@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 32637 2010-09-20 12:41:48Z vboxsync $
+// $Id: vbox.dsl 32714 2010-09-23 12:28:55Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -564,7 +564,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                     Name (CRS, ResourceTemplate ()
                     {
                         Memory32Fixed (ReadOnly,
-                            0xE0000000,         // Address Base
+                            0xD0000000,         // Address Base
                             0x10000000,         // Address Length
                             _Y13)
                     })
