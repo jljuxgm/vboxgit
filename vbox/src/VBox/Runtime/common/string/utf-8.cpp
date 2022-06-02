@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 28903 2010-04-29 14:58:12Z vboxsync $ */
+/* $Id: utf-8.cpp 30859 2010-07-15 16:20:17Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -325,6 +325,29 @@ RTDECL(bool) RTStrIsValidEncoding(const char *psz)
     return RT_SUCCESS(rc);
 }
 RT_EXPORT_SYMBOL(RTStrIsValidEncoding);
+
+
+RTDECL(size_t) RTStrPurgeEncoding(char *psz)
+{
+    size_t cErrors = 0;
+    for (;;)
+    {
+        RTUNICP Cp;
+        int rc = RTStrGetCpEx((const char **)&psz, &Cp);
+        if (RT_SUCCESS(rc))
+        {
+            if (!Cp)
+                break;
+        }
+        else
+        {
+            psz[-1] = '?';
+            cErrors++;
+        }
+    }
+    return cErrors;
+}
+RT_EXPORT_SYMBOL(RTStrPurgeEncoding);
 
 
 RTDECL(int) RTStrToUni(const char *pszString, PRTUNICP *ppaCps)
