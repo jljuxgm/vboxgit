@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 32701 2010-09-22 17:12:01Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 32712 2010-09-23 12:16:51Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -20,6 +20,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "VBoxManage.h"
+
+#ifndef VBOX_ONLY_DOCS
 
 #include <VBox/com/com.h>
 #include <VBox/com/string.h>
@@ -62,9 +64,11 @@ using namespace com;
 /** Set by the signal handler. */
 static volatile bool    g_fExecCanceled = false;
 
-void usageGuestControl(void)
+#endif /* VBOX_ONLY_DOCS */
+
+void usageGuestControl(PRTSTREAM pStrm)
 {
-    RTStrmPrintf(g_pStdErr,
+    RTStrmPrintf(pStrm,
                  "VBoxManage guestcontrol     execute <vmname>|<uuid>\n"
                  "                            <path to program>\n"
                  "                            --username <name> --password <password>\n"
@@ -74,6 +78,8 @@ void usageGuestControl(void)
                  "                            [--verbose] [--wait-for exit,stdout,stderr||]\n"
                  "\n");
 }
+
+#ifndef VBOX_ONLY_DOCS
 
 /**
  * Signal handler that sets g_fCanceled.
@@ -538,3 +544,5 @@ int handleGuestControl(HandlerArg *a)
     /* default: */
     return errorSyntax(USAGE_GUESTCONTROL, "Incorrect parameters");
 }
+
+#endif /* !VBOX_ONLY_DOCS */

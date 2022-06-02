@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 32709 2010-09-23 11:29:12Z vboxsync $ */
+/* $Id: VBoxManage.h 32712 2010-09-23 12:16:51Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -166,13 +166,17 @@ int handleControlVM(HandlerArg *a);
 int handleModifyVM(HandlerArg *a);
 
 /* VBoxManageGuestProp.cpp */
-extern void usageGuestProperty(void);
+extern void usageGuestProperty(PRTSTREAM pStrm);
+
+/* VBoxManageGuestCtrl.cpp */
+extern void usageGuestControl(PRTSTREAM pStrm);
+
 #ifndef VBOX_ONLY_DOCS
+/* VBoxManageGuestProp.cpp */
 extern int handleGuestProperty(HandlerArg *a);
 
 /* VBoxManageGuestCtrl.cpp */
 extern int handleGuestControl(HandlerArg *a);
-extern void usageGuestControl(void);
 
 /* VBoxManageVMInfo.cpp */
 void showSnapshots(ComPtr<ISnapshot> &rootSnapshot,
