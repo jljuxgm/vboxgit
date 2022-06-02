@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 31690 2010-08-16 11:58:02Z vboxsync $ */
+/* $Id: Settings.cpp 31731 2010-08-17 13:43:49Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3112,11 +3112,11 @@ void MachineConfigFile::readMachine(const xml::ElementNode &elmMachine)
                 Utf8Str strFaultToleranceSate;
                 if (pelmMachineChild->getAttributeValue("state", strFaultToleranceSate))
                 {
-                    if (strFaultToleranceSate == "source")
-                        machineUserData.enmFaultToleranceState = FaultToleranceState_Source;
+                    if (strFaultToleranceSate == "master")
+                        machineUserData.enmFaultToleranceState = FaultToleranceState_Master;
                     else
-                    if (strFaultToleranceSate == "target")
-                        machineUserData.enmFaultToleranceState = FaultToleranceState_Target;
+                    if (strFaultToleranceSate == "clone")
+                        machineUserData.enmFaultToleranceState = FaultToleranceState_Clone;
                     else
                         machineUserData.enmFaultToleranceState = FaultToleranceState_Inactive;
                 }               
@@ -4041,11 +4041,11 @@ void MachineConfigFile::buildMachineXML(xml::ElementNode &elmMachine,
         case FaultToleranceState_Inactive:
             pelmFaultTolerance->setAttribute("state", "inactive");
             break;
-        case FaultToleranceState_Source:
-            pelmFaultTolerance->setAttribute("state", "source");
+        case FaultToleranceState_Master:
+            pelmFaultTolerance->setAttribute("state", "master");
             break;
-        case FaultToleranceState_Target:
-            pelmFaultTolerance->setAttribute("state", "target");
+        case FaultToleranceState_Clone:
+            pelmFaultTolerance->setAttribute("state", "clone");
             break;
         }
 
