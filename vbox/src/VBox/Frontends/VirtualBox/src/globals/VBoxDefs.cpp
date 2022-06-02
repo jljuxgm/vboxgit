@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 32741 2010-09-23 23:21:52Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 34064 2010-11-15 11:12:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,6 +19,9 @@
 
 /* Local includes */
 #include <VBoxDefs.h>
+
+/* Global includes */
+#include <QStringList>
 
 const char* VBoxDefs::GUI_LastWindowPosition = "GUI/LastWindowPosition";
 const char* VBoxDefs::GUI_LastNormalWindowPosition = "GUI/LastNormalWindowPosition";
@@ -45,6 +48,7 @@ const char* VBoxDefs::GUI_PermanentSharedFoldersAtRuntime = "GUI/PermanentShared
 const char* VBoxDefs::GUI_LanguageId = "GUI/LanguageID";
 const char* VBoxDefs::GUI_PreviewUpdate = "GUI/PreviewUpdate";
 const char* VBoxDefs::GUI_DetailsPageBoxes = "GUI/DetailsPageBoxes";
+const char* VBoxDefs::GUI_SelectorVMPositions = "GUI/SelectorVMPositions";
 #ifdef Q_WS_X11
 const char* VBoxDefs::GUI_LicenseKey = "GUI/LicenseAgreed";
 #endif
@@ -83,4 +87,7 @@ const char* VBoxDefs::GUI_Accelerate2D_PixformatAYUV = "GUI/Accelerate2D/Pixform
 const char* VBoxDefs::GUI_DbgEnabled = "GUI/Dbg/Enabled";
 const char* VBoxDefs::GUI_DbgAutoShow = "GUI/Dbg/AutoShow";
 #endif
+
+QStringList VBoxDefs::VBoxFileExts = QStringList() << "xml" << "vbox";
+QStringList VBoxDefs::OVFFileExts = QStringList() << "ovf" << "ova";
 

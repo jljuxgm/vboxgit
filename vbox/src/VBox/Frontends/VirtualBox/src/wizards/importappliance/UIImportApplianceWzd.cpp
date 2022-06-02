@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 32584 2010-09-17 09:50:57Z vboxsync $ */
+/* $Id: UIImportApplianceWzd.cpp 34064 2010-11-15 11:12:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -101,11 +101,20 @@ void UIImportLicenseViewer::sltSave()
     }
 }
 
-UIImportApplianceWzd::UIImportApplianceWzd(QWidget *pParent) : QIWizard(pParent)
+UIImportApplianceWzd::UIImportApplianceWzd(const QString &strFile /* = "" */, QWidget *pParent /* = 0 */)
+  : QIWizard(pParent)
 {
     /* Create & add pages */
-    addPage(new UIImportApplianceWzdPage1);
+    if (strFile.isEmpty())
+        addPage(new UIImportApplianceWzdPage1);
     addPage(new UIImportApplianceWzdPage2);
+    if (!strFile.isEmpty())
+    {
+        VBoxImportApplianceWgt *applianceWidget = field("applianceWidget").value<ImportAppliancePointer>();
+
+        if (!applianceWidget->setFile(strFile))
+            return;
+    }
 
     /* Initial translate */
     retranslateUi();
