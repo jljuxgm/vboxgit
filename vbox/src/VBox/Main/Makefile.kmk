@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34723 2010-12-05 03:08:35Z vboxsync $
+# $Id: Makefile.kmk 34963 2010-12-10 16:56:30Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -268,7 +268,8 @@ VBoxSVC_LIBS.solaris = \
 	adm \
 	nsl \
 	devinfo \
-	socket
+	socket \
+        $(LIB_VMM)
 
 VBoxSVC_INTERMEDIATES = \
 	$(VBOX_MAIN_PREREQS) \
