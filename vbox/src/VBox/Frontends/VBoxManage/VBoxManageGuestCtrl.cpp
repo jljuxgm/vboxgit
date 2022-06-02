@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 34660 2010-12-02 20:50:57Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 34709 2010-12-03 17:38:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -348,6 +348,7 @@ static int handleCtrlExecProgram(HandlerArg *a)
 
             case 'f': /* Flags */
                 /** @todo Needs a bit better processing as soon as we have more flags. */
+                /** @todo Add a hidden flag. */
                 if (!RTStrICmp(ValueUnion.psz, "ignoreorphanedprocesses"))
                     uFlags |= ExecuteProcessFlag_IgnoreOrphanedProcesses;
                 else
