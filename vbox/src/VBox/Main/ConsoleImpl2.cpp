@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 31180 2010-07-28 18:11:10Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 31287 2010-08-02 12:13:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -767,14 +767,6 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         ULONG ioCacheSize = 5;
         hrc = pMachine->COMGETTER(IoCacheSize)(&ioCacheSize);                               H();
         InsertConfigInteger(pPDMAcFile, "CacheSize", ioCacheSize * _1M);
-
-        /* Maximum I/O bandwidth */
-        ULONG ioBandwidthMax = 0;
-        hrc = pMachine->COMGETTER(IoBandwidthMax)(&ioBandwidthMax);                         H();
-        if (ioBandwidthMax != 0)
-        {
-            InsertConfigInteger(pPDMAcFile, "VMTransferPerSecMax", ioBandwidthMax * _1M);
-        }
 
         /*
          * Devices
