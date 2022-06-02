@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 31922 2010-08-24 12:56:20Z vboxsync $
+# $Id: Makefile.kmk 32113 2010-08-31 08:51:21Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
 
 #
-# Copyright (C) 2006-2009 Oracle Corporation
+# Copyright (C) 2006-2010 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
