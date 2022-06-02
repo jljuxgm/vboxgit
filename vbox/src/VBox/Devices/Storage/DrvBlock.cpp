@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 29341 2010-05-11 11:15:22Z vboxsync $ */
+/* $Id: DrvBlock.cpp 32139 2010-08-31 12:33:45Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -158,6 +158,9 @@ static DECLCALLBACK(int) drvblockWrite(PPDMIBLOCK pInterface, uint64_t off, cons
         AssertMsgFailed(("Invalid state! Not mounted!\n"));
         return VERR_PDM_MEDIA_NOT_MOUNTED;
     }
+
+    /* Set an FTM checkpoint as this operation changes the state permanently. */
+    PDMDrvHlpFTSetCheckpoint(pThis->pDrvIns, FTMCHECKPOINTTYPE_STORAGE);
 
     int rc = pThis->pDrvMedia->pfnWrite(pThis->pDrvMedia, off, pvBuf, cbWrite);
 #ifdef VBOX_PERIODIC_FLUSH

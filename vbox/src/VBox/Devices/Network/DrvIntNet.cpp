@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 30587 2010-07-02 18:13:29Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 32139 2010-08-31 12:33:45Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -478,6 +478,9 @@ PDMBOTHCBDECL(int) drvIntNetUp_SendBuf(PPDMINETWORKUP pInterface, PPDMSCATTERGAT
 
     if (pSgBuf->pvUser)
         STAM_COUNTER_INC(&pThis->StatSentGso);
+
+    /* Set an FTM checkpoint as this operation changes the state permanently. */
+    PDMDrvHlpFTSetCheckpoint(pThis->CTX_SUFF(pDrvIns), FTMCHECKPOINTTYPE_NETWORK);
 
     /*
      * Commit the frame and push it thru the switch.

@@ -1,4 +1,4 @@
-/* $Id: DrvVDE.cpp 29461 2010-05-14 11:10:33Z vboxsync $ */
+/* $Id: DrvVDE.cpp 32139 2010-08-31 12:33:45Z vboxsync $ */
 /** @file
  * VDE network transport driver.
  */
@@ -206,6 +206,9 @@ static DECLCALLBACK(int) drvVDENetworkUp_SendBuf(PPDMINETWORKUP pInterface, PPDM
     AssertPtr(pSgBuf);
     Assert((pSgBuf->fFlags & PDMSCATTERGATHER_FLAGS_MAGIC_MASK) == PDMSCATTERGATHER_FLAGS_MAGIC);
     Assert(RTCritSectIsOwner(&pThis->XmitLock));
+
+    /* Set an FTM checkpoint as this operation changes the state permanently. */
+    PDMDrvHlpFTSetCheckpoint(pThis->pDrvIns, FTMCHECKPOINTTYPE_NETWORK);
 
     int rc;
     if (!pSgBuf->pvUser)
