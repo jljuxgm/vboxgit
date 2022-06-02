@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 30895 2010-07-17 02:25:17Z vboxsync $ */
+/* $Id: PGMInternal.h 31054 2010-07-23 12:13:53Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3124,6 +3124,10 @@ typedef struct PGMCPU
     RTGCPHYS                        GCPhysA20Mask;
     /** A20 gate state - boolean! */
     bool                            fA20Enabled;
+    /** Mirror of the EFER.NXE bit. */
+    bool                            fNoExecuteEnabled;
+    /** Unused bits. */
+    bool                            afUnused[2];
 
     /** What needs syncing (PGM_SYNC_*).
      * This is used to queue operations for PGMSyncCR3, PGMInvalidatePage,
