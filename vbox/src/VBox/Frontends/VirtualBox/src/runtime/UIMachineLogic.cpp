@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 30753 2010-07-08 23:01:51Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 30936 2010-07-20 16:59:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -656,6 +656,29 @@ void UIMachineLogic::prepareRequiredFeatures()
 # endif
 #endif
 }
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+void UIMachineLogic::prepareDebugger()
+{
+    if (vboxGlobal().isDebuggerAutoShowEnabled())
+    {
+        /* console in upper left corner of the desktop. */
+//        QRect rct (0, 0, 0, 0);
+//        QDesktopWidget *desktop = QApplication::desktop();
+//        if (desktop)
+//            rct = desktop->availableGeometry(pos());
+//        move (QPoint (rct.x(), rct.y()));
+
+        if (vboxGlobal().isDebuggerAutoShowStatisticsEnabled())
+            sltShowDebugStatistics();
+        if (vboxGlobal().isDebuggerAutoShowCommandLineEnabled())
+            sltShowDebugCommandLine();
+
+        if (!vboxGlobal().isStartPausedEnabled())
+            sltPause(false);
+    }
+}
+#endif /* VBOX_WITH_DEBUGGER_GUI */
 
 #ifdef Q_WS_MAC
 void UIMachineLogic::cleanupDock()

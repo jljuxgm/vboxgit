@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 30696 2010-07-07 09:32:16Z vboxsync $ */
+/* $Id: UISession.cpp 30936 2010-07-20 16:59:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -273,29 +273,6 @@ void UISession::powerUp()
         else
             setPause(false);
     }
-
-#if 0 // TODO: Rework debugger logic!
-# ifdef VBOX_WITH_DEBUGGER_GUI
-    /* Open the debugger in "full screen" mode requested by the user. */
-    else if (vboxGlobal().isDebuggerAutoShowEnabled())
-    {
-        /* console in upper left corner of the desktop. */
-        QRect rct (0, 0, 0, 0);
-        QDesktopWidget *desktop = QApplication::desktop();
-        if (desktop)
-            rct = desktop->availableGeometry(pos());
-        move (QPoint (rct.x(), rct.y()));
-
-        if (vboxGlobal().isDebuggerAutoShowStatisticsEnabled())
-            sltShowDebugStatistics();
-        if (vboxGlobal().isDebuggerAutoShowCommandLineEnabled())
-            sltShowDebugCommandLine();
-
-        if (!vboxGlobal().isStartPausedEnabled())
-            machineWindowWrapper()->machineView()->pause (false);
-    }
-# endif
-#endif
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
     LogRel(("2D video acceleration is %s.\n",
