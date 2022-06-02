@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 31241 2010-07-30 12:50:58Z vboxsync $ */
+/* $Id: VMMDev.cpp 31430 2010-08-06 08:47:51Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -424,8 +424,11 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
 
     Log2(("VMMDev request issued: %d\n", requestHeader.requestType));
 
-    if (    requestHeader.requestType != VMMDevReq_ReportGuestInfo
-        && !pThis->fu32AdditionsOk)
+    /* Because VMMDevReq_ReportGuestInfo is sent last in the first information chain
+     * from the guest also check for VMMDevReq_ReportGuestInfo2. */
+    if (    requestHeader.requestType != VMMDevReq_ReportGuestInfo2
+        && (   requestHeader.requestType != VMMDevReq_ReportGuestInfo
+            && !pThis->fu32AdditionsOk))
     {
         Log(("VMMDev: guest has not yet reported to us. Refusing operation.\n"));
         requestHeader.rc = VERR_NOT_SUPPORTED;

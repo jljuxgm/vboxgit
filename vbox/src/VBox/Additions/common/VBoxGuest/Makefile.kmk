@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29044 2010-05-04 20:38:42Z vboxsync $
+# $Id: Makefile.kmk 31430 2010-08-06 08:47:51Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -44,7 +44,9 @@ if1of ($(KBUILD_TARGET), freebsd $(if $(defined VBOX_WITH_ADDITION_DRIVERS),linu
   else
    VBoxGuest_SOURCES     = VBoxGuest-$(KBUILD_TARGET).c
   endif
-  VBoxGuest_SOURCES     += VBoxGuest.cpp
+  VBoxGuest_SOURCES     += \
+  	VBoxGuest.cpp \
+  	VBoxHelper.cpp
   VBoxGuest_LIBS         = \
   	$(VBOX_LIB_VBGL_R0BASE) \
   	$(VBOX_LIB_IPRT_GUEST_R0)
