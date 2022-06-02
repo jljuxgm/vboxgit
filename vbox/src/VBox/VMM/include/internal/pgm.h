@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: pgm.h 30529 2010-06-30 14:18:14Z vboxsync $ */
 /** @file
  * PGM - Internal VMM header file.
  */
