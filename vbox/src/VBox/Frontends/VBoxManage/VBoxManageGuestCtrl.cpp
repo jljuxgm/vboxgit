@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 35747 2011-01-27 20:29:22Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 35831 2011-02-03 11:34:45Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -491,6 +491,7 @@ static int handleCtrlExecProgram(HandlerArg *a)
                 /* Wait for process to exit ... */
                 BOOL fCompleted = FALSE;
                 BOOL fCanceled = FALSE;
+                int cMilliesSleep = 0;
                 while (SUCCEEDED(progress->COMGETTER(Completed(&fCompleted))))
                 {
                     SafeArray<BYTE> aOutputData;
@@ -574,6 +575,17 @@ static int handleCtrlExecProgram(HandlerArg *a)
                         progress->Cancel();
                         break;
                     }
+
+                    /* Don't hog the CPU in a busy loop! */
+                    if (cbOutputData <= 0)
+                    {
+                        if (cMilliesSleep < 100)
+                            cMilliesSleep++;
+                        RTPrintf("cMilliesSleep = %d\n", cMilliesSleep);
+                        RTThreadSleep(cMilliesSleep);
+                    }
+                    else
+                        cMilliesSleep = 0;
                 }
 
                 /* Undo signal handling */
