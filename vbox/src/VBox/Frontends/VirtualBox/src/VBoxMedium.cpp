@@ -1,4 +1,4 @@
-/* $Id: VBoxMedium.cpp 32531 2010-09-15 17:04:48Z vboxsync $ */
+/* $Id: VBoxMedium.cpp 32532 2010-09-15 17:26:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
