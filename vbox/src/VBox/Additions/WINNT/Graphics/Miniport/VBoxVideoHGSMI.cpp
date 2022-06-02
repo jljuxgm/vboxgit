@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 33308 2010-10-21 13:43:51Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 33530 2010-10-27 19:59:36Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -926,6 +926,17 @@ VOID VBoxSetupDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension,
                 vboxVdmaDestroy(PrimaryExtension, &PrimaryExtension->u.primary.Vdma);
         }
 
+        ulAvailable = offset;
+        ulSize = ulAvailable/2;
+        offset = ulAvailable - ulSize;
+
+        NTSTATUS Status = vboxVideoAMgrCreate(PrimaryExtension, &PrimaryExtension->AllocMgr, offset, ulSize);
+        Assert(Status == STATUS_SUCCESS);
+        if (Status != STATUS_SUCCESS)
+        {
+            offset = ulAvailable;
+        }
+
 #ifdef VBOXWDDM_RENDER_FROM_SHADOW
         if (RT_SUCCESS(rc))
         {
@@ -1017,6 +1028,8 @@ int VBoxFreeDisplaysHGSMI(PDEVICE_EXTENSION PrimaryExtension)
             }
         }
     }
+
+    vboxVideoAMgrDestroy(PrimaryExtension, &PrimaryExtension->AllocMgr);
 
     rc = vboxVdmaDisable(PrimaryExtension, &PrimaryExtension->u.primary.Vdma);
     AssertRC(rc);
