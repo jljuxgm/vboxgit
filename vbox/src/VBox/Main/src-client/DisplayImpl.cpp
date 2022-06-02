@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 35760 2011-01-28 13:09:10Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 35790 2011-01-31 15:35:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2348,6 +2348,12 @@ STDMETHODIMP Display::TakeScreenShot (ULONG aScreenId, BYTE *address, ULONG widt
     CheckComArgExpr(width, width != 0);
     CheckComArgExpr(height, height != 0);
 
+    /* Do not allow too large screenshots. This also filters out negative
+     * values passed as either 'width' or 'height'.
+     */
+    CheckComArgExpr(width, width <= 32767);
+    CheckComArgExpr(height, height <= 32767);
+
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
@@ -2396,6 +2402,12 @@ STDMETHODIMP Display::TakeScreenShotToArray (ULONG aScreenId, ULONG width, ULONG
     CheckComArgOutSafeArrayPointerValid(aScreenData);
     CheckComArgExpr(width, width != 0);
     CheckComArgExpr(height, height != 0);
+
+    /* Do not allow too large screenshots. This also filters out negative
+     * values passed as either 'width' or 'height'.
+     */
+    CheckComArgExpr(width, width <= 32767);
+    CheckComArgExpr(height, height <= 32767);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -2469,6 +2481,12 @@ STDMETHODIMP Display::TakeScreenShotPNGToArray (ULONG aScreenId, ULONG width, UL
     CheckComArgOutSafeArrayPointerValid(aScreenData);
     CheckComArgExpr(width, width != 0);
     CheckComArgExpr(height, height != 0);
+
+    /* Do not allow too large screenshots. This also filters out negative
+     * values passed as either 'width' or 'height'.
+     */
+    CheckComArgExpr(width, width <= 32767);
+    CheckComArgExpr(height, height <= 32767);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
