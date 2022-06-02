@@ -1,4 +1,4 @@
-# $Id: Config.kmk 32923 2010-10-05 14:20:01Z vboxsync $
+# $Id: Config.kmk 32926 2010-10-05 14:33:36Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -537,7 +537,7 @@ endif
 #VBOX_WITH_DTRACE_R0 = 1
 # Set this to enable dtrace probes raw-mode context code.
 #VBOX_WITH_DTRACE_RC = 1
-# Set this to enable support for dtrace probes guest code.
+# Set this to enable support for dtrace probes in guest code.
 #VBOX_WITH_DTRACE_GST = 1
 ## @}
 
@@ -4281,7 +4281,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32923 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32926 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
