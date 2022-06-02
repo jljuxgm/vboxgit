@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 33825 2010-11-08 10:16:25Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 33842 2010-11-08 14:01:10Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6308,7 +6308,7 @@ DECLCALLBACK(void) Console::vmstateChangeCallback(PVM aVM,
                 std::auto_ptr<VMProgressTask> task(new VMProgressTask(that, NULL /* aProgress */,
                                                                       true /* aUsesVMPtr */));
 
-                 /* If creating a task is falied, this can currently mean one of
+                 /* If creating a task failed, this can currently mean one of
                   * two: either Console::uninit() has been called just a ms
                   * before (so a powerDown() call is already on the way), or
                   * powerDown() itself is being already executed. Just do
