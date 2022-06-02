@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 34523 2010-11-30 15:17:06Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 34740 2010-12-06 11:56:28Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -3936,20 +3936,7 @@ void VBoxVHWAImage::resize(const VBoxFBSizeInfo & size)
 //    }
 
     if (remind)
-    {
-        class RemindEvent : public VBoxAsyncEvent
-        {
-            ulong mRealBPP;
-        public:
-            RemindEvent (ulong aRealBPP)
-                : VBoxAsyncEvent(0), mRealBPP (aRealBPP) {}
-            void handle()
-            {
-                vboxProblem().remindAboutWrongColorDepth (mRealBPP, 32);
-            }
-        };
-        (new RemindEvent (size.bitsPerPixel()))->post();
-    }
+        vboxProblem().remindAboutWrongColorDepth(size.bitsPerPixel(), 32);
 }
 
 VBoxVHWAColorFormat::VBoxVHWAColorFormat (uint32_t bitsPerPixel, uint32_t r, uint32_t g, uint32_t b) :

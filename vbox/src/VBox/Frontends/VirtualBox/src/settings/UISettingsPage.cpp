@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 34234 2010-11-22 11:26:38Z vboxsync $ */
+/* $Id: UISettingsPage.cpp 34740 2010-12-06 11:56:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -70,12 +70,25 @@ void UISettingsPage::setProcessed(bool fProcessed)
     m_fProcessed = fProcessed;
 }
 
+/* Page 'failed' stuff: */
+bool UISettingsPage::failed() const
+{
+    return m_fFailed;
+}
+
+/* Page 'failed' stuff: */
+void UISettingsPage::setFailed(bool fFailed)
+{
+    m_fFailed = fFailed;
+}
+
 /* Settings page constructor, hidden: */
 UISettingsPage::UISettingsPage(UISettingsPageType type, QWidget *pParent)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_type(type)
     , m_cId(-1)
     , m_fProcessed(false)
+    , m_fFailed(false)
     , m_pFirstWidget(0)
 {
 }

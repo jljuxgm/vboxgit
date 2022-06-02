@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 34736 2010-12-06 11:19:30Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 34740 2010-12-06 11:56:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -831,14 +831,14 @@ bool UINewVMWzdPage5::constructMachine()
                 CMedium medium = vmedium.medium();              // @todo r=dj can this be cached somewhere?
                 m.AttachDevice(ctrHdName, 0, 0, KDeviceType_HardDisk, medium);
                 if (!m.isOk())
-                    vboxProblem().cannotAttachDevice(this, m, VBoxDefs::MediumType_HardDisk,
-                                                     field("hardDiskLocation").toString(), StorageSlot(ctrHdBus, 0, 0));
+                    vboxProblem().cannotAttachDevice(m, VBoxDefs::MediumType_HardDisk, field("hardDiskLocation").toString(),
+                                                     StorageSlot(ctrHdBus, 0, 0), this);
             }
 
             /* Attach empty CD/DVD ROM Device */
             m.AttachDevice(ctrDvdName, 1, 0, KDeviceType_DVD, CMedium());
             if (!m.isOk())
-                vboxProblem().cannotAttachDevice(this, m, VBoxDefs::MediumType_DVD, QString(), StorageSlot(ctrDvdBus, 1, 0));
+                vboxProblem().cannotAttachDevice(m, VBoxDefs::MediumType_DVD, QString(), StorageSlot(ctrDvdBus, 1, 0), this);
 
             if (m.isOk())
             {
