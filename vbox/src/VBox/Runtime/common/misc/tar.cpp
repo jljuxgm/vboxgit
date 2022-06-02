@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 32756 2010-09-24 10:17:02Z vboxsync $ */
+/* $Id: tar.cpp 32836 2010-09-30 08:41:24Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -607,7 +607,7 @@ RTR3DECL(int) RTTarFileOpen(RTTAR hTar, PRTTARFILE phFile, const char *pszFilena
 
     if (fOpen & RTFILE_O_WRITE)
     {
-        if (pInt->fOpenMode & RTFILE_O_READ)
+        if (!(pInt->fOpenMode & RTFILE_O_WRITE))
             return VERR_WRITE_PROTECT;
         if (pInt->fFileOpenForWrite)
             return VERR_TOO_MANY_OPEN_FILES;
