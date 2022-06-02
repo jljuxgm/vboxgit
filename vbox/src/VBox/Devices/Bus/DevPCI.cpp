@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 32147 2010-08-31 13:38:41Z vboxsync $ */
+/* $Id: DevPCI.cpp 32490 2010-09-14 20:01:50Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1774,7 +1774,7 @@ static int pciRegisterInternal(PPCIBUS pBus, int iDev, PPCIDEVICE pPciDev, const
                             continue;
                         Log(("PCI: relocating '%s' from slot %#x to %#x\n", pBus->devices[iDev + i]->name, iDev + i, iDevRel + i));
                         pBus->devices[iDevRel + i] = pBus->devices[iDev + i];
-                        pBus->devices[iDevRel + i]->devfn = i;
+                        pBus->devices[iDevRel + i]->devfn = iDevRel + i;
                         pBus->devices[iDev + i] = NULL;
                     }
                 }
