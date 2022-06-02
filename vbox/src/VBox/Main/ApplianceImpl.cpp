@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 30881 2010-07-16 14:34:31Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 31562 2010-08-11 10:02:40Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -610,7 +610,7 @@ HRESULT Appliance::searchUniqueDiskImageFilePath(Utf8Str& aName) const
      * already */
     /* @todo: Maybe too cost-intensive; try to find a lighter way */
     while (    RTPathExists(tmpName)
-            || mVirtualBox->FindHardDisk(Bstr(tmpName), &harddisk) != VBOX_E_OBJECT_NOT_FOUND
+            || mVirtualBox->FindMedium(Bstr(tmpName), DeviceType_HardDisk, &harddisk) != VBOX_E_OBJECT_NOT_FOUND
           )
     {
         RTStrFree(tmpName);

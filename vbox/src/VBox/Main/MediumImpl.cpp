@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: MediumImpl.cpp 31562 2010-08-11 10:02:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3633,7 +3633,7 @@ HRESULT Medium::queryInfo()
 
                     Guid id = parentId;
                     ComObjPtr<Medium> pParent;
-                    rc = m->pVirtualBox->findHardDisk(&id, NULL, false /* aSetError */, &pParent);
+                    rc = m->pVirtualBox->findHardDisk(&id, Utf8Str::Empty, false /* aSetError */, &pParent);
                     if (FAILED(rc))
                     {
                         lastAccessError = Utf8StrFmt(

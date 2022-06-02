@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 30936 2010-07-20 16:59:35Z vboxsync $ */
+/* $Id: UISession.cpp 31562 2010-08-11 10:02:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -356,7 +356,7 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
     CVirtualBox vbox = vboxGlobal().virtualBox();
     QString strUuid;
 
-    CMedium image = vbox.FindDVDImage(strSource);
+    CMedium image = vbox.FindMedium(strSource, KDeviceType_DVD);
     if (image.isNull())
     {
         image = vbox.OpenDVDImage(strSource, strUuid);
