@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30876 2010-07-16 11:32:38Z vboxsync $
+# $Id: Makefile.kmk 30931 2010-07-20 15:05:18Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -92,6 +92,7 @@ ovf-testcases_INST = $(INST_BIN)ovf-testcases/
 ovf-testcases_SOURCES = \
 	ovf-dummy.vmdk \
 	ovf-joomla-0.9/joomla-1.1.4-ovf.ovf=>ovf-joomla-0.9/joomla-1.1.4-ovf.ovf \
+	ovf-winhost-audio-nodisks/WinXP.ovf=>ovf-winhost-audio-nodisks/WinXP.ovf \
 	ovf-winxp-vbox-sharedfolders/winxp.ovf=>ovf-winxp-vbox-sharedfolders/winxp.ovf
 endif
 

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 30929 2010-07-20 14:11:51Z vboxsync $ */
+/* $Id: MachineImpl.cpp 30931 2010-07-20 15:05:18Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6020,6 +6020,11 @@ HRESULT Machine::prepareUnregister(bool fCloseMedia,
 
     if (fCloseMedia)
     {
+        // call backup before iterating over the media, because backup WILL change
+        // the pointers and invalidate iterators (grrrrr)
+        setModified(IsModified_Storage);
+        mMediaData.backup();         // do not call this or iterators will be invalidated
+
         // caller wants automatic detachment: then do that and report all media to the array
         MediaData::AttachmentList::iterator it = mMediaData->mAttachments.begin();
         while (it != mMediaData->mAttachments.end())
@@ -6030,17 +6035,14 @@ HRESULT Machine::prepareUnregister(bool fCloseMedia,
             if (!pMedium.isNull())
                 llMedia.push_back(pMedium);
 
-            setModified(IsModified_Storage);
-            mMediaData.backup();
-
             // for non-hard disk media, detach straight away
             // (same logic as in DetachDevice())
             if (!pMedium.isNull())
                 pMedium->detachFrom(mData->mUuid);
 
-            // remove this attachment; erase() returns the iterator of the next element
+            // remove this attachment; erase() returns the iterator behind the thing that got deleted
             it = mMediaData->mAttachments.erase(it);
-        }
+        };
     }
     else
         // caller wants no automatic detachment: then fail if there are any
