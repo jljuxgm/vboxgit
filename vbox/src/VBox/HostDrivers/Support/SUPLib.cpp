@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 33701 2010-11-02 16:47:11Z vboxsync $ */
+/* $Id: SUPLib.cpp 33740 2010-11-03 17:28:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1473,7 +1473,7 @@ SUPR3DECL(int) SUPR3HardenedVerifyPlugIn(const char *pszFilename, char *pszErr, 
      * Only do the actual check in hardened builds.
      */
 #ifdef VBOX_WITH_HARDENING
-    int rc = supR3HardenedVerifyFile(pszFilename, pszErr, cbErr);
+    int rc = supR3HardenedVerifyFile(pszFilename, RTHCUINTPTR_MAX,  pszErr, cbErr);
     if (RT_FAILURE(rc) && (!pszErr || !cbErr))
         LogRel(("supR3HardenedVerifyFile: Verification of \"%s\" failed, rc=%Rrc\n", pszFilename, rc));
     return rc;
