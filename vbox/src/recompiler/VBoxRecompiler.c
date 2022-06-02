@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 30263 2010-06-16 18:31:42Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 30453 2010-06-27 19:43:20Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3819,7 +3819,7 @@ void target_disas(FILE *phFile, target_ulong uCode, target_ulong cb, int fFlags)
                                         pVCpu->idCpu,
                                         cs,
                                         eip,
-                                        0,
+                                        DBGF_DISAS_FLAGS_DEFAULT_MODE,
                                         szBuf, sizeof(szBuf),
                                         &cbInstr);
             if (RT_SUCCESS(rc))
