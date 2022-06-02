@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-nt.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: semevent-r0drv-nt.cpp 33311 2010-10-21 14:23:20Z vboxsync $ */
 /** @file
  * IPRT -  Single Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -76,7 +76,7 @@ RTDECL(int)  RTSemEventCreateEx(PRTSEMEVENT phEventSem, uint32_t fFlags, RTLOCKV
     {
         pThis->u32Magic = RTSEMEVENT_MAGIC;
         pThis->cRefs    = 1;
-        KeInitializeEvent(&pThis->Event, SynchronizationEvent, FALSE);
+        KeInitializeEvent(&pThis->Event, SynchronizationEvent, FALSE /* not signalled */);
 
         *phEventSem = pThis;
         return VINF_SUCCESS;
