@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 35914 2011-02-09 15:04:10Z vboxsync $ */
+/* $Id: GMMR0.cpp 35917 2011-02-09 15:16:00Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2994,7 +2994,7 @@ GMMR0DECL(int) GMMR0BalloonedPages(PVM pVM, VMCPUID idCpu, GMMBALLOONACTION enmA
                 else
                 {
                     Log(("GMMR0BalloonedPages: cBasePages=%#llx Total=%#llx cBalloonedPages=%#llx Reserved=%#llx\n",
-                         pGVM->gmm.s.Allocated.cBasePages, pGVM->gmm.s.cBalloonedPages, cBallonedPages, pGVM->gmm.s.Reserved.cBasePages));
+                         pGVM->gmm.s.Allocated.cBasePages, pGVM->gmm.s.cBalloonedPages, cBalloonedPages, pGVM->gmm.s.Reserved.cBasePages));
                     rc = VERR_GMM_ATTEMPT_TO_FREE_TOO_MUCH;
                 }
                 break;
