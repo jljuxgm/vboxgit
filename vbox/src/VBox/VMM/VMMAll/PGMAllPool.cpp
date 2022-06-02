@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 31978 2010-08-26 10:04:54Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 31995 2010-08-26 13:21:34Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3290,7 +3290,7 @@ int pgmPoolTrackUpdateGCPhys(PVM pVM, RTGCPHYS GCPhysPage, PPGMPAGE pPhysPage, b
         PPGMPAGE pPhysBase;
         RTGCPHYS GCPhysBase = GCPhysPage & X86_PDE2M_PAE_PG_MASK;
 
-        GCPhysPage &= X86_PDE_PAE_PG_MASK;
+        GCPhysPage &= X86_PDE_PAE_PG_MASK_FULL;
 
         /* Fetch the large page base. */
         if (GCPhysBase != GCPhysPage)
