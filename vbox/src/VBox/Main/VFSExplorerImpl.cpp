@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 33553 2010-10-28 11:53:49Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 33794 2010-11-05 15:57:11Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -376,7 +376,6 @@ HRESULT VFSExplorer::deleteFS(TaskVFSExplorer *aTask)
              ++it, ++i)
         {
             memcpy(szPath, m->strPath.c_str(), strlen(m->strPath.c_str()) + 1);
-            RTPathStripFilename(szPath);
             RTPathAppend(szPath, sizeof(szPath), (*it).c_str());
             int vrc = RTFileDelete(szPath);
             if (RT_FAILURE(vrc))
