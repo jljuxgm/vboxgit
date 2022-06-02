@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 34334 2010-11-24 17:32:43Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 34361 2010-11-25 11:12:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4624,7 +4624,7 @@ bool VBoxGlobal::processArgs()
         if (   !strArg.isEmpty()
             && !strArg.startsWith("-")
             && QFile::exists(strArg))
-            list << QUrl(strArg);
+            list << QUrl::fromLocalFile(strArg);
     }
     if (!list.isEmpty())
     {
