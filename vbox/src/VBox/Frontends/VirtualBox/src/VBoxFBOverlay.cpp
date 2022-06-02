@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 34141 2010-11-17 17:06:11Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 34276 2010-11-23 12:34:34Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -2628,6 +2628,7 @@ int VBoxVHWAImage::vhwaSurfaceFlip(struct _VBOXVHWACMD_SURF_FLIP *pCmd)
 
 int VBoxVHWAImage::vhwaSurfaceColorFill(struct _VBOXVHWACMD_SURF_COLORFILL *pCmd)
 {
+    NOREF(pCmd);
     return VERR_NOT_IMPLEMENTED;
 }
 
@@ -5202,6 +5203,9 @@ int VBoxVHWACommandElementProcessor::loadExec (struct SSMHANDLE * pSSM, uint32_t
     uint32_t u32;
     bool b;
     int rc;
+
+    Q_UNUSED(u32Version);
+
     rc = SSMR3GetU32(pSSM, &u32); AssertRC(rc);
     if (RT_SUCCESS(rc))
     {
