@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: state_snapshot.c 33734 2010-11-03 16:19:40Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1940,7 +1940,7 @@ int32_t crStateLoadContext(CRContext *pContext, CRHashTable * pCtxTable, PSSMHAN
         if (pProgram->cUniforms)
         {
             pProgram->pUniforms = crAlloc(pProgram->cUniforms*sizeof(CRGLSLUniform));
-            if (!pProgram) return VERR_NO_MEMORY;
+            if (!pProgram->pUniforms) return VERR_NO_MEMORY;
 
             for (k=0; k<pProgram->cUniforms; ++k)
             {
