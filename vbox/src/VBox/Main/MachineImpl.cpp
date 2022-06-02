@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31814 2010-08-20 12:38:56Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31817 2010-08-20 13:04:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -425,7 +425,13 @@ HRESULT Machine::init(VirtualBox *aParent,
         if (mData->mAccessible)
             autoInitSpan.setSucceeded();
         else
+        {
             autoInitSpan.setLimited();
+
+            // uninit media from this machine's media registry, or else
+            // reloading the settings will fail
+            mParent->unregisterMachineMedia(getId());
+        }
     }
 
     LogFlowThisFunc(("mName='%s', mRegistered=%RTbool, mAccessible=%RTbool "
@@ -502,7 +508,13 @@ HRESULT Machine::init(VirtualBox *aParent,
         if (mData->mAccessible)
             autoInitSpan.setSucceeded();
         else
+        {
             autoInitSpan.setLimited();
+
+            // uninit media from this machine's media registry, or else
+            // reloading the settings will fail
+            mParent->unregisterMachineMedia(getId());
+        }
     }
 
     LogFlowThisFunc(("mName='%s', mRegistered=%RTbool, mAccessible=%RTbool "
@@ -680,6 +692,10 @@ HRESULT Machine::registeredInit()
         /* rollback all changes */
         rollback(false /* aNotify */);
 
+        // uninit media from this machine's media registry, or else
+        // reloading the settings will fail
+        mParent->unregisterMachineMedia(getId());
+
         /* uninitialize the common part to make sure all data is reset to
          * default (null) values */
         uninitDataAndChildObjects();
@@ -754,7 +770,7 @@ void Machine::uninit()
         Assert(mData->mSession.mMachine.isNull());
     }
 
-    // uninit media from this machine's media registry
+    // uninit media from this machine's media registry, if they're still there
     mParent->unregisterMachineMedia(getId());
 
     /* the lock is no more necessary (SessionMachine is uninitialized) */
