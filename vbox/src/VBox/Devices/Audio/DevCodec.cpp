@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 33744 2010-11-03 18:26:03Z vboxsync $ */
+/* $Id: DevCodec.cpp 33748 2010-11-03 18:38:31Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -402,7 +402,6 @@ static int stac9220ResetNode(struct CODECState *pState, uint8_t nodenum, PCODECN
         case 0xA:
             pNode->node.name = "PortA";
             pNode->node.au32F00_param[0xC] =   CODEC_MAKE_F00_0C(0x17)
-                                             | CODEC_F00_0C_CAP_BALANCED_IO
                                              | CODEC_F00_0C_CAP_INPUT
                                              | CODEC_F00_0C_CAP_OUTPUT
                                              | CODEC_F00_0C_CAP_HP
