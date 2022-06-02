@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 34657 2010-12-02 20:26:33Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 34658 2010-12-02 20:31:53Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -2448,7 +2448,7 @@ static void pdmBlkCacheIoXferCompleteEntry(PPDMBLKCACHE pBlkCache, PPDMBLKCACHEI
         if (RT_FAILURE(rcIoXfer))
         {
             LogRel(("I/O cache: Error while writing entry at offset %llu (%u bytes) to medium \"%s\" (rc=%Rrc)\n",
-                    pEntry->Core.Key, pEntry->cbData, pBlkCache->pszId), rcIoXfer);
+                    pEntry->Core.Key, pEntry->cbData, pBlkCache->pszId, rcIoXfer));
 
             if (!ASMAtomicXchgBool(&pCache->fIoErrorVmSuspended, true))
             {
