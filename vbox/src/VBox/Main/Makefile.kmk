@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34963 2010-12-10 16:56:30Z vboxsync $
+# $Id: Makefile.kmk 35170 2010-12-16 10:40:53Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -641,6 +641,7 @@ VBoxC_SOURCES = \
 	ConsoleImplTeleporter.cpp \
 	ConsoleVRDPServer.cpp \
 	GuestImpl.cpp \
+	GuestCtrlImpl.cpp \
 	KeyboardImpl.cpp \
 	MouseImpl.cpp \
 	DisplayImpl.cpp \
