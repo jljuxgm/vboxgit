@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.cpp 35879 2011-02-07 16:43:02Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.cpp 35880 2011-02-07 16:50:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -108,7 +108,7 @@ static struct
 }
 gPropertyMap[] =
 {
-    { "GUI/Input/HostCombo",                       "hostCombo",               "0|\\d*[1-9]\\d*(,\\d*[1-9]\\d*)?(,\\d*[1-9]\\d*)?", true },
+    { "GUI/Input/HostKeyCombination",              "hostCombo",               "0|\\d*[1-9]\\d*(,\\d*[1-9]\\d*)?(,\\d*[1-9]\\d*)?", true },
     { "GUI/Input/AutoCapture",                     "autoCapture",             "true|false", true },
     { "GUI/Customizations",                        "guiFeatures",             "\\S+", true },
     { "GUI/LanguageID",                            "languageId",              gVBoxLangIDRegExp, true },
@@ -160,7 +160,7 @@ void VBoxGlobalSettings::load (CVirtualBox &vbox)
             return;
         /* Check for the host key upgrade path. */
         if (   value.isEmpty()
-            && QString(gPropertyMap[i].publicName) == "GUI/Input/HostCombo")
+            && QString(gPropertyMap[i].publicName) == "GUI/Input/HostKeyCombination")
             value = vbox.GetExtraData("GUI/Input/HostKey");
         /* Empty value means the key is absent. It is OK, the default will
          * apply. */
