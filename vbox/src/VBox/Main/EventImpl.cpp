@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30698 2010-07-07 09:47:45Z vboxsync $ */
+/* $Id: EventImpl.cpp 30702 2010-07-07 11:49:42Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -699,16 +699,22 @@ STDMETHODIMP EventSource::RegisterListener(IEventListener * aListener,
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    {
+        AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    Listeners::const_iterator it = m->mListeners.find(aListener);
-    if (it != m->mListeners.end())
-        return setError(E_INVALIDARG,
-                        tr("This listener already registered"));
+        Listeners::const_iterator it = m->mListeners.find(aListener);
+        if (it != m->mListeners.end())
+            return setError(E_INVALIDARG,
+                            tr("This listener already registered"));
 
-    com::SafeArray<VBoxEventType_T> interested(ComSafeArrayInArg (aInterested));
-    ListenerRecordHolder lrh(new ListenerRecord(aListener, interested, aActive, this));
-    m->mListeners.insert(Listeners::value_type(aListener, lrh));
+        com::SafeArray<VBoxEventType_T> interested(ComSafeArrayInArg (aInterested));
+        ListenerRecordHolder lrh(new ListenerRecord(aListener, interested, aActive, this));
+        m->mListeners.insert(Listeners::value_type(aListener, lrh));
+    }
+
+    VBoxEventDesc evDesc;
+    evDesc.init(this, VBoxEventType_OnEventSourceChange, aListener, TRUE);
+    evDesc.fire(0);
 
     return S_OK;
 }
@@ -720,21 +726,30 @@ STDMETHODIMP EventSource::UnregisterListener(IEventListener * aListener)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
-    Listeners::iterator it = m->mListeners.find(aListener);
     HRESULT rc;
+    {
+        AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (it != m->mListeners.end())
-    {
-        m->mListeners.erase(it);
-        // destructor removes refs from the event map
-        rc = S_OK;
+        Listeners::iterator it = m->mListeners.find(aListener);
+
+        if (it != m->mListeners.end())
+        {
+            m->mListeners.erase(it);
+            // destructor removes refs from the event map
+            rc = S_OK;
+        }
+        else
+        {
+            rc = setError(VBOX_E_OBJECT_NOT_FOUND,
+                          tr("Listener was never registered"));
+        }
     }
-    else
+
+    if (SUCCEEDED(rc))
     {
-        rc = setError(VBOX_E_OBJECT_NOT_FOUND,
-                      tr("Listener was never registered"));
+        VBoxEventDesc evDesc;
+        evDesc.init(this, VBoxEventType_OnEventSourceChange, aListener, FALSE);
+        evDesc.fire(0);
     }
 
     return rc;
