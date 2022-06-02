@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 32353 2010-09-09 12:53:41Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 32359 2010-09-09 14:38:21Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -2259,6 +2259,7 @@ RTDECL(int) RTCoreDumperSetup(const char *pszOutputDir, uint32_t fFlags)
     /*
      * Validate flags.
      */
+    AssertReturn(fFlags, VERR_INVALID_PARAMETER);
     AssertReturn(!(fFlags & ~(  RTCOREDUMPER_FLAGS_REPLACE_SYSTEM_DUMP
                               | RTCOREDUMPER_FLAGS_LIVE_CORE)),
                  VERR_INVALID_PARAMETER);
