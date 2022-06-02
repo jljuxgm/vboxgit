@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 32477 2010-09-14 13:15:01Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 32531 2010-09-15 17:04:48Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2629,7 +2629,6 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
                 LogRel(("File system of '%s' is %s\n", utfFile.c_str(), RTFsTypeName(enmFsTypeFile)));
                 LONG64 i64Size;
                 hrc = pMedium->COMGETTER(LogicalSize)(&i64Size);                            H();
-                i64Size *= _1M;
 #ifdef RT_OS_WINDOWS
                 if (   enmFsTypeFile == RTFSTYPE_FAT
                     && i64Size >= _4G)

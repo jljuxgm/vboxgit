@@ -1,4 +1,4 @@
-/* $Id: VBoxMedium.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxMedium.cpp 32531 2010-09-15 17:04:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -167,7 +167,7 @@ void VBoxMedium::refresh()
     {
         mSize = vboxGlobal().formatSize (mMedium.GetSize());
         if (mType == VBoxDefs::MediumType_HardDisk)
-            mLogicalSize = vboxGlobal().formatSize (mMedium.GetLogicalSize() * _1M);
+            mLogicalSize = vboxGlobal().formatSize(mMedium.GetLogicalSize());
         else
             mLogicalSize = mSize;
     }

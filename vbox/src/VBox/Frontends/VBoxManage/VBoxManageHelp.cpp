@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 32448 2010-09-13 14:24:06Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 32531 2010-09-15 17:04:48Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -484,7 +484,7 @@ void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_CREATEHD)
     {
         RTPrintf("VBoxManage createhd         --filename <filename>\n"
-                 "                            --size <megabytes>\n"
+                 "                            --size <megabytes>|--sizebyte <bytes>\n"
                  "                            [--format VDI|VMDK|VHD] (default: VDI)\n"
                  "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
                  "                            [--type normal|writethrough|\n"

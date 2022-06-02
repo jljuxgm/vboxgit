@@ -1,4 +1,4 @@
-/* $Id: Global.h 32120 2010-08-31 09:58:36Z vboxsync $ */
+/* $Id: Global.h 32531 2010-09-15 17:04:48Z vboxsync $ */
 
 /** @file
  *
@@ -60,7 +60,7 @@ public:
         const uint32_t                 osHint;
         const uint32_t                 recommendedRAM;
         const uint32_t                 recommendedVRAM;
-        const uint32_t                 recommendedHDD;
+        const uint64_t                 recommendedHDD;
         const NetworkAdapterType_T     networkAdapterType;
         const uint32_t                 numSerialEnabled;
         const StorageControllerType_T  dvdStorageControllerType;

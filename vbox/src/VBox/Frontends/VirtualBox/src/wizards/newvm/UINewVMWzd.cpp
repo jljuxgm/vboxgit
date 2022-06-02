@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 32298 2010-09-07 17:01:59Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 32531 2010-09-15 17:04:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -372,8 +372,8 @@ void UINewVMWzdPage4::retranslateUi()
 
     /* Translate recommended 'hdd' field value */
     QString strRecommendedHDD = field("type").value<CGuestOSType>().isNull() ? QString() :
-                                QString::number(field("type").value<CGuestOSType>().GetRecommendedHDD());
-    m_pPage4Text2->setText (tr ("The recommended size of the boot hard disk is <b>%1</b> MB.").arg (strRecommendedHDD));
+                                VBoxGlobal::formatSize(field("type").value<CGuestOSType>().GetRecommendedHDD());
+    m_pPage4Text2->setText (tr ("The recommended size of the boot hard disk is <b>%1</b>.").arg (strRecommendedHDD));
 }
 
 void UINewVMWzdPage4::initializePage()
