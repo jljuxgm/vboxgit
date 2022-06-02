@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 32570 2010-09-16 15:54:14Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 32593 2010-09-17 11:37:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2723,7 +2723,8 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
 
                 char szOsRelease[128];
                 rc = RTSystemQueryOSInfo(RTSYSOSINFO_RELEASE, szOsRelease, sizeof(szOsRelease));
-                bool fKernelHasODirectBug = RT_FAILURE(rc) || RTStrVersionCompare(szOsRelease, "2.6.36") < 0;
+                bool fKernelHasODirectBug =    RT_FAILURE(rc)
+                                            || (RTStrVersionCompare(szOsRelease, "2.6.36-rc4") < 0);
 
                 if (   (uCaps & MediumFormatCapabilities_Asynchronous)
                     && !fUseHostIOCache
