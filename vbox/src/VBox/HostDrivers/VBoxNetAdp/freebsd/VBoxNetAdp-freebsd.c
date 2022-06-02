@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-freebsd.c 35785 2011-01-31 12:45:37Z vboxsync $ */
+/* $Id: VBoxNetAdp-freebsd.c 35786 2011-01-31 13:07:01Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), FreeBSD Specific Code.
  */
@@ -160,7 +160,7 @@ VBoxNetAdpFreeBSDCtrlioctl(struct cdev *dev, u_long iCmd, caddr_t data, int flag
                 || IOCPARM_LEN(iCmd) < sizeof(*pReq))
                 return EINVAL;
 
-            rc = vboxNetAdpCreate(&pAdp);
+            rc = vboxNetAdpCreate(&pAdp, NULL);
             if (RT_FAILURE(rc))
                 return EINVAL;
 

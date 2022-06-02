@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 35785 2011-01-31 12:45:37Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 35786 2011-01-31 13:07:01Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -352,7 +352,7 @@ static int VBoxNetAdpDarwinIOCtl(dev_t Dev, u_long iCmd, caddr_t pData, int fFla
                 return EINVAL;
 
             PVBOXNETADP pNew;
-            rc = vboxNetAdpCreate(&pNew);
+            rc = vboxNetAdpCreate(&pNew, NULL);
             if (RT_FAILURE(rc))
                 return EINVAL;
 
