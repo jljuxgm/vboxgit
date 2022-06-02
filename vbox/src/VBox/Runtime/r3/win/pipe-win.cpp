@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: pipe-win.cpp 32131 2010-08-31 11:55:27Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -1333,8 +1333,9 @@ uint32_t rtPipePollStart(RTPIPE hPipe, RTPOLLSET hPollSet, uint32_t fEvents, boo
  *                              this method is called in reverse order, so the
  *                              first call will have this set (when the entire
  *                              set was processed).
+ * @param   fHarvestEvents      Set if we should check for pending events.
  */
-uint32_t rtPipePollDone(RTPIPE hPipe, uint32_t fEvents, bool fFinalEntry)
+uint32_t rtPipePollDone(RTPIPE hPipe, uint32_t fEvents, bool fFinalEntry, bool fHarvestEvents)
 {
     RTPIPEINTERNAL *pThis = hPipe;
     AssertPtrReturn(pThis, 0);
