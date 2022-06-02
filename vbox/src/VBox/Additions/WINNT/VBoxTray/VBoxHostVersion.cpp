@@ -1,4 +1,4 @@
-/* $Id: VBoxHostVersion.cpp 34025 2010-11-12 10:03:41Z vboxsync $ */
+/* $Id: VBoxHostVersion.cpp 34026 2010-11-12 10:05:57Z vboxsync $ */
 /** @file
  * VBoxHostVersion - Checks the host's VirtualBox version and notifies
  *                   the user in case of an update.
@@ -48,7 +48,7 @@ int VBoxCheckHostVersion()
                 _snprintf(szTitle, sizeof(szTitle), "VirtualBox Guest Additions update available!");
                 _snprintf(szMsg, sizeof(szMsg), "Your guest is currently running the Guest Additions version %s. "
                                                 "We recommend updating to the latest version (%s) by choosing the "
-                                                "install option from the Devices menu.", "1", "2");
+                                                "install option from the Devices menu.", pszGuestVersion, pszHostVersion);
 
                 rc = hlpShowBalloonTip(gInstance, gToolWindow, ID_TRAYICON,
                                        szMsg, szTitle,
