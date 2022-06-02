@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 33140 2010-10-14 16:20:15Z vboxsync $ */
+/* $Id: MachineImpl.h 33232 2010-10-19 14:24:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -151,7 +151,6 @@ public:
         const Guid          mUuid;
         BOOL                mRegistered;
 
-        /** Flag indicating that the config file is read-only. */
         Utf8Str             m_strConfigFile;
         Utf8Str             m_strConfigFileFull;
 

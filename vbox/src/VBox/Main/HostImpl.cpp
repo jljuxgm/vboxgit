@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 32932 2010-10-06 07:27:46Z vboxsync $ */
+/* $Id: HostImpl.cpp 33232 2010-10-19 14:24:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1611,14 +1611,14 @@ HRESULT Host::getDrives(DeviceType_T mediumType,
                  ++itCached)
             {
                 Medium *pCached = *itCached;
-                const Utf8Str strLocationCached = pCached->getLocation();
+                const Utf8Str strLocationCached = pCached->getLocationFull();
                 bool fFound = false;
                 for (MediaList::iterator itNew = llNew.begin();
                      itNew != llNew.end();
                      ++itNew)
                 {
                     Medium *pNew = *itNew;
-                    const Utf8Str strLocationNew = pNew->getLocation();
+                    const Utf8Str strLocationNew = pNew->getLocationFull();
                     if (strLocationNew == strLocationCached)
                     {
                         fFound = true;
@@ -1635,14 +1635,14 @@ HRESULT Host::getDrives(DeviceType_T mediumType,
                  ++itNew)
             {
                 Medium *pNew = *itNew;
-                const Utf8Str strLocationNew = pNew->getLocation();
+                const Utf8Str strLocationNew = pNew->getLocationFull();
                 bool fFound = false;
                 for (MediaList::iterator itCached = pllCached->begin();
                      itCached != pllCached->end();
                      ++itCached)
                 {
                     Medium *pCached = *itCached;
-                    const Utf8Str strLocationCached = pCached->getLocation();
+                    const Utf8Str strLocationCached = pCached->getLocationFull();
                     if (strLocationNew == strLocationCached)
                     {
                         fFound = true;
