@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 33959 2010-11-11 09:41:52Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 33963 2010-11-11 10:23:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -72,6 +72,7 @@
 
 #include <VBox/com/array.h>
 #include "VBox/com/ErrorInfo.h"
+#include <VBox/com/listeners.h>
 
 #include <iprt/asm.h>
 #include <iprt/buildconfig.h>
