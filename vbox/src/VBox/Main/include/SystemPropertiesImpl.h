@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 33596 2010-10-29 10:47:07Z vboxsync $ */
 
 /** @file
  *
@@ -127,8 +127,6 @@ private:
     VirtualBox * const  mParent;
 
     settings::SystemProperties *m;
-
-    Utf8Str             m_strDefaultMachineFolderFull;
 
     MediumFormatList    m_llMediumFormats;
 

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33596 2010-10-29 10:47:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1169,7 +1169,7 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
        )
     {
         strFull = strMachineFolder;
-        strFull += RTPATH_DELIMITER;
+        strFull += RTPATH_SLASH;
         strFull += data.strLocation;
     }
     else
