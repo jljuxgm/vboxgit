@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 32860 2010-10-01 11:30:38Z vboxsync $ */
+/* $Id: DevPCI.cpp 32906 2010-10-05 11:45:48Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2040,6 +2040,7 @@ static DECLCALLBACK(int)   pciConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     PPCIBUS      pBus = &pGlobals->PciBus;
     PciBusReg.u32Version              = PDM_PCIBUSREG_VERSION;
     PciBusReg.pfnRegisterR3           = pciRegister;
+    PciBusReg.pfnRegisterMsiR3        = NULL;
     PciBusReg.pfnIORegionRegisterR3   = pciIORegionRegister;
     PciBusReg.pfnSetConfigCallbacksR3 = pciSetConfigCallbacks;
     PciBusReg.pfnSetIrqR3             = pciSetIrq;
