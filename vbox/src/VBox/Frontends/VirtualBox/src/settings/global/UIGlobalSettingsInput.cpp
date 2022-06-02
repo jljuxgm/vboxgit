@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 33958 2010-11-11 09:17:02Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 33960 2010-11-11 09:53:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -25,7 +25,7 @@
 UIGlobalSettingsInput::UIGlobalSettingsInput()
 {
     /* Apply UI decorations: */
-    Ui::UIGlobalSettingsInput::setupUi (this);
+    Ui::UIGlobalSettingsInput::setupUi(this);
 
     /* Apply language settings: */
     retranslateUi();
