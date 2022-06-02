@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.h 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: ExtPackUtil.h 34058 2010-11-14 19:49:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -34,7 +34,7 @@
 #define VBOX_EXTPACK_INSTALL_DIR        "ExtensionPacks"
 /** The architecture-independent application data subdirectory where the
  * certificates are installed.  Relative to RTPathAppPrivateNoArch. */
-#define VBOX_EXTPACK_CERT_DIR           "Certificates"
+#define VBOX_EXTPACK_CERT_DIR           "ExtPackCertificates"
 
 
 /**
