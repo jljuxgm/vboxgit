@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-darwin.cpp 33047 2010-10-11 18:59:23Z vboxsync $ */
+/* $Id: semevent-r0drv-darwin.cpp 33155 2010-10-15 12:07:44Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -386,5 +386,14 @@ RTDECL(int)  RTSemEventWaitExDebug(RTSEMEVENT hEventSem, uint32_t fFlags, uint64
 {
     RTLOCKVALSRCPOS SrcPos = RTLOCKVALSRCPOS_INIT_DEBUG_API();
     return rtR0SemEventDarwinWait(hEventSem, fFlags, uTimeout, &SrcPos);
+}
+
+
+RTDECL(uint32_t) RTSemEventGetResolution(void)
+{
+    uint32_t cNs = absolutetime_to_nanoseconds(1);
+    if (cNs == 0)
+        cNs = 1;
+    return cNs;
 }
 

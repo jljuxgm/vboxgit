@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-linux.c 33043 2010-10-11 15:56:04Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-linux.c 33155 2010-10-15 12:07:44Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -319,4 +319,11 @@ RTDECL(int)  RTSemEventMultiWaitExDebug(RTSEMEVENTMULTI hEventMultiSem, uint32_t
     return rtR0SemEventMultiLnxWait(hEventMultiSem, fFlags, uTimeout, &SrcPos);
 }
 RT_EXPORT_SYMBOL(RTSemEventMultiWaitExDebug);
+
+
+RTDECL(uint32_t) RTSemEventMultiGetResolution(void)
+{
+    return rtR0SemLnxWaitGetResolution();
+}
+RT_EXPORT_SYMBOL(RTSemEventMultiGetResolution);
 

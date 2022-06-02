@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-nt.cpp 33043 2010-10-11 15:56:04Z vboxsync $ */
+/* $Id: semevent-r0drv-nt.cpp 33155 2010-10-15 12:07:44Z vboxsync $ */
 /** @file
  * IPRT -  Single Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -263,5 +263,11 @@ RTDECL(int)  RTSemEventWaitExDebug(RTSEMEVENT hEventSem, uint32_t fFlags, uint64
 {
     RTLOCKVALSRCPOS SrcPos = RTLOCKVALSRCPOS_INIT_DEBUG_API();
     return rtR0SemEventNtWait(hEventSem, fFlags, uTimeout, &SrcPos);
+}
+
+
+RTDECL(uint32_t) RTSemEventGetResolution(void)
+{
+    return RTTimerGetSystemGranularity();
 }
 

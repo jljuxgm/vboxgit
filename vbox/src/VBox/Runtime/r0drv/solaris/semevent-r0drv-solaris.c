@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 33151 2010-10-15 11:36:36Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 33155 2010-10-15 12:07:44Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -332,4 +332,11 @@ RTDECL(int)  RTSemEventWaitExDebug(RTSEMEVENT hEventSem, uint32_t fFlags, uint64
     RTLOCKVALSRCPOS SrcPos = RTLOCKVALSRCPOS_INIT_DEBUG_API();
     return rtR0SemEventSolWait(hEventSem, fFlags, uTimeout, &SrcPos);
 }
+
+
+RTDECL(uint32_t) RTSemEventGetResolution(void)
+{
+    return rtR0SemSolWaitGetResolution();
+}
+
 

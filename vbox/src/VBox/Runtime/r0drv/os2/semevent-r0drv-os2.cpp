@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-os2.cpp 25724 2010-01-11 14:45:34Z vboxsync $ */
+/* $Id: semevent-r0drv-os2.cpp 33155 2010-10-15 12:07:44Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, OS/2.
  */
@@ -229,5 +229,11 @@ RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 RTDECL(int)  RTSemEventWaitNoResume(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventWait(hEventSem, cMillies, true /* interruptible */);
+}
+
+
+RTDECL(uint32_t) RTSemEventGetResolution(void)
+{
+    return 32000000; /* 32ms */
 }
 

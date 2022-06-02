@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-freebsd.c 25724 2010-01-11 14:45:34Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-freebsd.c 33155 2010-10-15 12:07:44Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, FreeBSD.
  */
@@ -301,5 +301,11 @@ RTDECL(int)  RTSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cM
 RTDECL(int)  RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies)
 {
     return rtSemEventMultiWait(hEventMultiSem, cMillies, true /* interruptible */);
+}
+
+
+RTDECL(uint32_t) RTSemEventMultiGetResolution(void)
+{
+    return 1000000000 / hz;
 }
 

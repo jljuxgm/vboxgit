@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-darwin.cpp 33047 2010-10-11 18:59:23Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-darwin.cpp 33155 2010-10-15 12:07:44Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -400,5 +400,14 @@ RTDECL(int)  RTSemEventMultiWaitExDebug(RTSEMEVENTMULTI hEventMultiSem, uint32_t
 {
     RTLOCKVALSRCPOS SrcPos = RTLOCKVALSRCPOS_INIT_DEBUG_API();
     return rtR0SemEventMultiDarwinWait(hEventMultiSem, fFlags, uTimeout, &SrcPos);
+}
+
+
+RTDECL(uint32_t) RTSemEventMultiGetResolution(void)
+{
+    uint32_t cNs = absolutetime_to_nanoseconds(1);
+    if (cNs == 0)
+        cNs = 1;
+    return cNs;
 }
 

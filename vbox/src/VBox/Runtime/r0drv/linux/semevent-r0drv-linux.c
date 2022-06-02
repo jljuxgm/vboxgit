@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-linux.c 33043 2010-10-11 15:56:04Z vboxsync $ */
+/* $Id: semevent-r0drv-linux.c 33155 2010-10-15 12:07:44Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -254,4 +254,11 @@ RTDECL(int)  RTSemEventWaitExDebug(RTSEMEVENT hEventSem, uint32_t fFlags, uint64
     return rtR0SemEventLnxWait(hEventSem, fFlags, uTimeout, &SrcPos);
 }
 RT_EXPORT_SYMBOL(RTSemEventWaitExDebug);
+
+
+RTDECL(uint32_t) RTSemEventGetResolution(void)
+{
+    return rtR0SemLnxWaitGetResolution();
+}
+RT_EXPORT_SYMBOL(RTSemEventGetResolution);
 
