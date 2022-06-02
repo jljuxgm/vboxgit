@@ -1,4 +1,4 @@
-/* $Id: semeventwait-r0drv-solaris.h 33166 2010-10-15 18:09:39Z vboxsync $ */
+/* $Id: semeventwait-r0drv-solaris.h 33168 2010-10-15 18:17:55Z vboxsync $ */
 /** @file
  * IPRT - Solaris Ring-0 Driver Helpers for Event Semaphore Waits.
  */
@@ -291,7 +291,6 @@ DECLINLINE(void) rtR0SemSolWaitDoIt(PRTR0SEMSOLWAIT pWait, kcondvar_t *pCnd, kmu
      * Do the waiting.
      * (rc > 0 - normal wake-up; rc == 0 - interruption; rc == -1 - timeout)
      */
-    int rc;
     if (pWait->fInterruptible)
     {
         int rc = cv_wait_sig(pCnd, pMtx);
