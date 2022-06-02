@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 35518 2011-01-13 10:56:26Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -354,7 +354,7 @@ void ProgressProxy::copyProgressInfo(IProgress *pOtherProgress, bool fEarly)
                     /* Get the error information. */
                     ComPtr<IVirtualBoxErrorInfo> ptrErrorInfo;
                     hrc = pOtherProgress->COMGETTER(ErrorInfo)(ptrErrorInfo.asOutParam());
-                    if (SUCCEEDED(hrc))
+                    if (SUCCEEDED(hrc) && !ptrErrorInfo.isNull())
                     {
                         Bstr bstrIID;
                         hrc = ptrErrorInfo->COMGETTER(InterfaceID)(bstrIID.asOutParam()); AssertComRC(hrc);
