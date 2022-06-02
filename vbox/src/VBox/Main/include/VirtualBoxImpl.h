@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 31615 2010-08-12 18:12:39Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 31725 2010-08-17 12:06:54Z vboxsync $ */
 
 /** @file
  *
@@ -53,7 +53,7 @@ struct VMClientWatcherData;
 namespace settings
 {
     class MainConfigFile;
-    class MediaRegistry;
+    struct MediaRegistry;
 }
 
 class ATL_NO_VTABLE VirtualBox :
