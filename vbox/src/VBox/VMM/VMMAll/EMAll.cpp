@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 31489 2010-08-09 16:12:00Z vboxsync $ */
+/* $Id: EMAll.cpp 31569 2010-08-11 13:41:52Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1826,6 +1826,7 @@ static int emInterpretInvlPg(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXC
     return rc;
 }
 
+/** @todo change all these EMInterpretXXX methods to VBOXSTRICTRC. */
 
 /**
  * Interpret CPUID given the parameters in the CPU context
@@ -2521,7 +2522,7 @@ VMMDECL(int) EMInterpretRdpmc(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
     /* Just return zero here; rather tricky to properly emulate this, especially as the specs are a mess. */
     pRegFrame->rax = 0;
     pRegFrame->rdx = 0;
-    /* @todo We should trigger a #GP here if the cpu doesn't support the index in ecx. */
+    /** @todo We should trigger a #GP here if the cpu doesn't support the index in ecx. */
     return VINF_SUCCESS;
 }
 
