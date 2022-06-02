@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 30889 2010-07-17 01:54:47Z vboxsync $ */
+/* $Id: PGMAllGst.h 30890 2010-07-17 01:57:09Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -257,7 +257,7 @@ PGM_GST_DECL(int, GetPage)(PVMCPU pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTGC
 
         /* The RW and US flags are determined via bitwise AND across all levels. */
 # if PGM_WITH_NX(PGM_GST_TYPE, PGM_GST_TYPE)
-        bool    fUpperNx    = 0
+        uint32_t fUpperNx   = 0
 #  if PGM_GST_TYPE == PGM_TYPE_AMD64
                             | Walk.Pml4e.n.u1NoExecute
                             | Walk.Pdpe.lm.u1NoExecute
