@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 31209 2010-07-29 13:11:00Z vboxsync $ */
+/* $Id: DevPcBios.cpp 32675 2010-09-21 16:58:00Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -842,6 +842,24 @@ static DECLCALLBACK(int) pcbiosDestruct(PPDMDEVINS pDevIns)
     {
         MMR3HeapFree(pThis->pszLanBootFile);
         pThis->pszLanBootFile = NULL;
+    }
+
+    if (pThis->pszHDDevice)
+    {
+        MMR3HeapFree(pThis->pszHDDevice);
+        pThis->pszHDDevice = NULL;
+    }
+
+    if (pThis->pszFDDevice)
+    {
+        MMR3HeapFree(pThis->pszFDDevice);
+        pThis->pszFDDevice = NULL;
+    }
+
+    if (pThis->pszSataDevice)
+    {
+        MMR3HeapFree(pThis->pszSataDevice);
+        pThis->pszSataDevice = NULL;
     }
 
     return VINF_SUCCESS;
