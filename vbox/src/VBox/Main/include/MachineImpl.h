@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31287 2010-08-02 12:13:00Z vboxsync $ */
+/* $Id: MachineImpl.h 31307 2010-08-02 14:22:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -759,8 +759,7 @@ protected:
                                settings::StorageController &data);
     HRESULT saveStateSettings(int aFlags);
 
-    HRESULT createImplicitDiffs(const Bstr &aFolder,
-                                IProgress *aProgress,
+    HRESULT createImplicitDiffs(IProgress *aProgress,
                                 ULONG aWeight,
                                 bool aOnline,
                                 bool *pfNeedsSaveSettings);
