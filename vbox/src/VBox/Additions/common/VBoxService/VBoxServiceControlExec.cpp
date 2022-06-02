@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 33159 2010-10-15 12:33:13Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 33160 2010-10-15 13:36:24Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -361,7 +361,7 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
 
                 case VBOXSERVICECTRLPIPEID_STDIN_WRITABLE:
                 {
-                    uint32_t cbWritten;
+                    size_t cbWritten;
                     rc = VBoxServiceControlExecProcHandleStdInWritableEvent(hPollSet, fPollEvt, &hStdInW,
                                                                             &pData->stdIn, &cbWritten);
                     if (RT_SUCCESS(rc))
