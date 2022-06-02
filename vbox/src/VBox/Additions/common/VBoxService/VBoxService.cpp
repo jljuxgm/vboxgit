@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 30560 2010-07-01 14:56:14Z vboxsync $ */
+/* $Id: VBoxService.cpp 30561 2010-07-01 14:58:26Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -507,6 +507,7 @@ int main(int argc, char **argv)
 
 #ifdef RT_OS_WINDOWS
     /* Special forked VBoxService.exe process for handling page fusion. */
+    /* Note: ugly hack, but annoying to install additional executables. */
     if (    argc == 2
         &&  !strcmp(argv[1], "-pagefusionfork"))
     {
