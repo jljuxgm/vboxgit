@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 32900 2010-10-05 10:00:18Z vboxsync $ */
 
 /** @file
  *
@@ -3065,7 +3065,7 @@ void SessionMachine::cancelDeleteSnapshotMedium(const ComObjPtr<Medium> &aHD,
 
         if (aHD->getParent().isNull())
         {
-            HRESULT rc = aHD->UnlockWrite(NULL);;
+            HRESULT rc = aHD->UnlockWrite(NULL);
             AssertComRC(rc);
         }
         else
