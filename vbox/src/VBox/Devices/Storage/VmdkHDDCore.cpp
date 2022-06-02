@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 33480 2010-10-27 07:46:48Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 33493 2010-10-27 11:35:34Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -2511,6 +2511,7 @@ static int vmdkDescriptorPrepare(PVMDKIMAGE pImage, uint64_t cbLimit,
                 pszDescriptorNew = (char *)RTMemRealloc(pszDescriptor, cbDescriptor + cb + 4 * _1K);
                 if (!pszDescriptorNew)
                 {
+                    RTMemFree(pszDescriptor);
                     rc = VERR_NO_MEMORY;
                     break;
                 }
