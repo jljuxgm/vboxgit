@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32145 2010-08-31 13:06:25Z vboxsync $ */
+/* $Id: FTM.cpp 32146 2010-08-31 13:12:27Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -1085,6 +1085,8 @@ VMMR3DECL(int) FTMR3SetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmCheckpoint)
 
     case FTMCHECKPOINTTYPE_STORAGE:
         STAM_REL_COUNTER_INC(&pVM->ftm.s.StatCheckpointStorage);
+        break;
+    default:
         break;
     }
     pVM->ftm.s.fCheckpointingActive = true;
