@@ -1,4 +1,4 @@
-# $Id: Config.kmk 32536 2010-09-15 18:25:32Z vboxsync $
+# $Id: Config.kmk 32597 2010-09-17 12:35:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -345,6 +345,9 @@ VBOX_WITH_HGSMI=1
 if1of ($(KBUILD_TARGET), darwin linux win)
  VBOX_WITH_VIDEOHWACCEL = 1
 endif
+# Enable Wddm Video driver for Vista+ guests 
+VBOXWDDM = 1
+VBOXWDDM_WITH_VBVA=1
 # Enable VBVA lock
 VBOX_WITH_OLD_VBVA_LOCK = 1
 # Enable the Intel PXE ROM (replaces Etherboot).
@@ -4258,7 +4261,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32536 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32597 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
