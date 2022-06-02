@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32321 2010-09-08 14:49:14Z vboxsync $
+# $Id: Makefile.kmk 32331 2010-09-08 20:01:07Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox User Manual.
 #
@@ -475,6 +475,7 @@ $(foreach f,$(VBOX_MANUAL_LANGUAGES),$(VBOX_PATH_MANUAL_OUTBASE)/$f/UserManual.p
 		  $(addprefix $(VBOX_PATH_MANUAL_OUTBASE)/$f/,$(VBOX_MANUAL_PNG_FILES_$(f)))) | $$(dir $$@)
 # PDF generation via Latex: generate the .tex file
 	$(call MSG_L1,pdflatex $< (three passes) -> $@)
+	$(QUIET)$(REDIRECT) -C $(@D) -- $(PDFLATEX) UserManual.tex
 	$(QUIET)$(REDIRECT) -C $(@D) -- $(PDFLATEX) UserManual.tex
 	$(QUIET)$(REDIRECT) -C $(@D) -- $(PDFLATEX) UserManual.tex
 	$(QUIET)$(REDIRECT) -C $(@D) -- $(PDFLATEX) UserManual.tex
