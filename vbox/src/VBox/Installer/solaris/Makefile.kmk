@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35022 2010-12-13 15:23:34Z vboxsync $
+# $Id: Makefile.kmk 35029 2010-12-13 16:20:32Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -169,6 +169,13 @@ solaris-drv-confs_SOURCES = \
 solaris-icons_INST = bin/icons
 solaris-icons_MODE = a+r,u+w
 solaris-icons_SOURCES = $(VBOX_MIME_ICONS)
+
+BLDDIRS +=
+	$(SOLARIS_USR_DIR)/share \
+	$(SOLARIS_USR_DIR)/share/icons \
+	$(SOLARIS_USRSHR_ICONS_DIR) \
+    $(foreach s,16 20 24 32 48 64 72 96 128 256,\
+	    $(SOLARIS_USRSHR_ICONS_DIR)/$(s)x$(s))
 
 VBOX_MIME_ICONS = \
 	$(addprefix $(PATH_ROOT)/src/VBox/Resources/other/,\
@@ -566,7 +573,6 @@ endif
 	$(QUIET)$(MKDIR) -p $(SOLARIS_VBOXSMF_DIR)
 	$(QUIET)$(if $(VBOX_WITH_QTGUI),$(MKDIR) -p $(SOLARIS_USRSHR_APPS_DIR),)
 	$(QUIET)$(MKDIR) -p $(SOLARIS_USRSHR_MIMEXML_DIR)
-	$(QUIET)$(MKDIR) -p $(SOLARIS_USRSHR_ICONS_DIR)
 	$(QUIET)$(MKDIR) -p $(SOLARIS_USRSHR_PIXMAPS_DIR)
 	$(QUIET)$(if $(VBOX_WITH_NETADP),$(INSTALL) -m 0644 $(PATH_ROOT)/src/VBox/HostDrivers/VBoxNetAdp/solaris/hostname.vboxnet0    $(SOLARIS_ETC_DIR)/hostname.vboxnet0,)
 	$(QUIET)$(INSTALL) -m 0644 $(PATH_BIN)/LICENSE                                                          $(SOLARIS_VBOXINST_DIR)/LICENSE
