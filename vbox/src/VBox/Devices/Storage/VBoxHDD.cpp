@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 31380 2010-08-05 07:33:32Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 31497 2010-08-09 19:07:28Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -972,7 +972,11 @@ static int vdReadHelperAsync(PVDIOCTX pIoCtx)
             }
         }
 
-        if (rc == VERR_VD_BLOCK_FREE)
+        if (RT_SUCCESS(rc))
+        {
+            ASMAtomicSubU32(&pIoCtx->cbTransferLeft, cbThisRead);
+        }
+        else if (rc == VERR_VD_BLOCK_FREE)
         {
             /* No image in the chain contains the data for the block. */
             vdIoCtxSet(pIoCtx, '\0', cbThisRead);
