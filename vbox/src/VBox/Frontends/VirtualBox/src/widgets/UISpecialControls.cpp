@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.cpp 30356 2010-06-22 08:42:22Z vboxsync $ */
+/* $Id: UISpecialControls.cpp 30694 2010-07-07 09:24:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -289,6 +289,16 @@ void UIRoundRectSegmentedButton::setEnabled(int iSegment, bool fEnabled)
 void UIRoundRectSegmentedButton::animateClick(int iSegment)
 {
     m_pButtons.at(iSegment)->animateClick();
+}
+
+UITexturedSegmentedButton::UITexturedSegmentedButton(int cCount, QWidget *pParent /* = 0 */)
+  : UIRoundRectSegmentedButton(cCount, pParent)
+{
+    for (int i=0; i < m_pButtons.size(); ++i)
+    {
+        m_pButtons.at(i)->setAutoExclusive(true);
+        m_pButtons.at(i)->setCheckable(true);
+    }
 }
 
 /********************************************************************************
