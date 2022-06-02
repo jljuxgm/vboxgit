@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 34023 2010-11-12 09:30:23Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 34048 2010-11-12 22:54:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4424,10 +4424,14 @@ HRESULT Console::getGuestProperty(IN_BSTR aName, BSTR *aValue,
                 Utf8Str strBuffer(pszBuffer);
                 strBuffer.cloneTo(aValue);
 
-                *aTimestamp = parm[2].u.uint64;
+                if (aTimestamp)
+                    *aTimestamp = parm[2].u.uint64;
 
-                size_t iFlags = strBuffer.length() + 1;
-                Utf8Str(pszBuffer + iFlags).cloneTo(aFlags);
+                if (aFlags)
+                {
+                    size_t iFlags = strBuffer.length() + 1;
+                    Utf8Str(pszBuffer + iFlags).cloneTo(aFlags);
+                }
             }
             else
                 aValue = NULL;
