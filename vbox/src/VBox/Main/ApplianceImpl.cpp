@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 31676 2010-08-13 18:40:53Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 31677 2010-08-13 18:43:24Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -18,6 +18,7 @@
 
 #include <iprt/path.h>
 #include <iprt/cpp/utils.h>
+#include <iprt/tar.h>
 
 #include <VBox/com/array.h>
 
@@ -766,7 +767,6 @@ void Appliance::disksWeight()
 
 }
 
-#include <iprt/tar.h>
 /**
  * Called from Appliance::importImpl() and Appliance::writeImpl() to set up a
  * progress object with the proper weights and maximum progress values.
