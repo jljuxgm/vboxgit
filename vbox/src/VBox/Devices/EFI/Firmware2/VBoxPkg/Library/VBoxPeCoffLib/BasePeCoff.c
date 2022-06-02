@@ -1,4 +1,4 @@
-/* $Id: BasePeCoff.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: BasePeCoff.c 35642 2011-01-20 08:04:55Z vboxsync $ */
 /** @file
  * BasePeCoff.c
  */
@@ -103,7 +103,6 @@ PeCoffLoaderGetPeHeader (
                            &Size,
                            &Fat
                            );
-  DEBUG((DEBUG_LOAD, "%a:%d - %r\n", __FILE__, __LINE__, Status));
   if (!RETURN_ERROR(Status) && Fat.Signature == EFI_FAT_IMAGE_HEADER_SIGNATURE)
   {
     UINT32 i;
@@ -140,7 +139,6 @@ PeCoffLoaderGetPeHeader (
                            &Size,
                            &DosHdr
                            );
-    DEBUG((DEBUG_LOAD, "%a:%d - %r\n", __FILE__, __LINE__, Status));
   if (RETURN_ERROR (Status)) {
     ImageContext->ImageError = IMAGE_ERROR_IMAGE_READ;
     return Status;
@@ -168,7 +166,6 @@ PeCoffLoaderGetPeHeader (
                            &Size,
                            Hdr.Pe32
                            );
-    DEBUG((DEBUG_LOAD, "%a:%d - %r\n", __FILE__, __LINE__, Status));
   if (RETURN_ERROR (Status)) {
     ImageContext->ImageError = IMAGE_ERROR_IMAGE_READ;
     return Status;
@@ -194,7 +191,6 @@ PeCoffLoaderGetPeHeader (
     ImageContext->Machine = Hdr.Pe32->FileHeader.Machine;
 
     Magic = PeCoffLoaderGetPeHeaderMagicValue (Hdr);
-    DEBUG((DEBUG_LOAD, "%a:%d - %x\n", __FILE__, __LINE__, Magic));
 
     if (Magic == EFI_IMAGE_NT_OPTIONAL_HDR32_MAGIC) {
       //
