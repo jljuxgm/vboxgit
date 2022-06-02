@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30652 2010-07-06 10:12:38Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30756 2010-07-09 10:11:27Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3608,6 +3608,14 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
         }
         if (RT_SUCCESS(rc))
             rc = VMMR3CallR0(pVM, VMMR0_DO_PGM_ALLOCATE_HANDY_PAGES, 0, NULL);
+    }
+
+    /* todo: we should split this up into an allocate and flush operation. sometimes you want to flush and not allocate more (which will trigger the vm account limit error) */
+    if (    rc == VERR_GMM_HIT_VM_ACCOUNT_LIMIT
+        &&  pVM->pgm.s.cHandyPages > 0)
+    {
+        /* Still handy pages left, so don't panic. */
+        rc = VINF_SUCCESS;
     }
 
     if (RT_SUCCESS(rc))
