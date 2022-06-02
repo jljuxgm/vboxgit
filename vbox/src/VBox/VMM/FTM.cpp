@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32140 2010-08-31 12:47:07Z vboxsync $ */
+/* $Id: FTM.cpp 32141 2010-08-31 12:47:24Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -1089,5 +1089,5 @@ VMMR3DECL(int) FTMR3SetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmType)
     PDMCritSectLeave(&pVM->ftm.s.CritSect);
     pVM->ftm.s.fCheckpointingActive = false;
 
-    return VERR_NOT_IMPLEMENTED;
+    return rc;
 }
