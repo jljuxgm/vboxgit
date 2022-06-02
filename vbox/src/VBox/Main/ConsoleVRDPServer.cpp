@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 33963 2010-11-11 10:23:42Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 34121 2010-11-16 16:29:46Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -757,7 +757,7 @@ DECLCALLBACK(int)  ConsoleVRDPServer::VRDPCallbackQueryProperty(void *pvCallback
 
                     hrc = server->mConsole->machine()->GetExtraData(com::Bstr(extraData).raw(),
                                                                     bstrValue.asOutParam());
-                    if (FAILED(hrc) || bstrValue.isEmpty())
+                    if (FAILED(hrc))
                     {
                         rc = VERR_NOT_SUPPORTED;
                     }
