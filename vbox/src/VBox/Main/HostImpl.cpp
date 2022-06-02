@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: HostImpl.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -139,7 +139,6 @@ extern bool is3DAccelerationSupported();
 #include <VBox/settings.h>
 #include <VBox/sup.h>
 
-#include <VBox/com/array.h>
 #include "VBox/com/MultiResult.h"
 
 #include <stdio.h>

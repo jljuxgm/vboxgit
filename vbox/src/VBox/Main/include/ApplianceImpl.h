@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: ApplianceImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -23,12 +23,27 @@
 /* VBox includes */
 #include "VirtualBoxBase.h"
 
+/* VBox forward declarations */
+class Progress;
+class VirtualSystemDescription;
+struct VirtualSystemDescriptionEntry;
+
 namespace ovf
 {
     struct HardDiskController;
     struct VirtualSystem;
     class OVFReader;
     struct DiskImage;
+}
+
+namespace xml
+{
+    class ElementNode;
+}
+
+namespace settings
+{
+    class MachineConfigFile;
 }
 
 class ATL_NO_VTABLE Appliance :

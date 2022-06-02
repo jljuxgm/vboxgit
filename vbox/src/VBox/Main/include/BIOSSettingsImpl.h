@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -21,6 +21,8 @@
 #define ____H_BIOSSETTINGS
 
 #include "VirtualBoxBase.h"
+
+class GuestOSType;
 
 namespace settings
 {

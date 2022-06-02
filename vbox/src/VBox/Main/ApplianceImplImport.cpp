@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 30763 2010-07-09 14:08:55Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -23,21 +23,22 @@
 #include <iprt/sha.h>
 #include <iprt/manifest.h>
 
+#include <VBox/com/array.h>
+
+#include "ApplianceImpl.h"
 #include "VirtualBoxImpl.h"
 #include "GuestOSTypeImpl.h"
 #include "ProgressImpl.h"
 #include "MachineImpl.h"
 
-#include "ApplianceImplPrivate.h"
-
 #include "AutoCaller.h"
 #include "Logging.h"
+
+#include "ApplianceImplPrivate.h"
 
 #include <VBox/param.h>
 #include <VBox/version.h>
 #include <VBox/settings.h>
-
-#include <VBox/com/array.h>
 
 using namespace std;
 

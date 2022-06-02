@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: USBControllerImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -21,6 +21,14 @@
 #define ____H_USBCONTROLLERIMPL
 
 #include "VirtualBoxBase.h"
+
+class HostUSBDevice;
+class USBDeviceFilter;
+
+namespace settings
+{
+    struct USBController;
+}
 
 class ATL_NO_VTABLE USBController :
     public VirtualBoxBase,

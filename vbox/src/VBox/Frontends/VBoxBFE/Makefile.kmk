@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30760 2010-07-09 13:12:04Z vboxsync $
+# $Id: Makefile.kmk 30764 2010-07-09 14:12:12Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -23,7 +23,7 @@ if !defined(VBOX_WITH_HARDENING) || "$(KBUILD_TARGET)" != "darwin"  # No hardene
 # Files from Main needed for building VBoxBFE
 #
 VBOXBFE_MAIN_CPP = MouseImpl.cpp
-VBOXBFE_MAIN_H   = MouseImpl.h
+VBOXBFE_MAIN_H   = MouseImpl.h ConsoleEvents.h
 
 #
 # Targets.

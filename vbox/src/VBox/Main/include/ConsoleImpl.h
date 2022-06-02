@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: ConsoleImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -23,6 +23,22 @@
 #include "VBox/com/array.h"
 #include "EventImpl.h"
 
+class Guest;
+class Keyboard;
+class Mouse;
+class Display;
+class MachineDebugger;
+class TeleporterStateSrc;
+class OUSBDevice;
+class RemoteUSBDevice;
+class SharedFolder;
+class RemoteDisplayInfo;
+class AudioSniffer;
+class ConsoleVRDPServer;
+class ConsoleCallbackRegistration;      /* See ConsoleImpl.cpp. */
+class VMMDev;
+class Progress;
+
 #include <VBox/vrdpapi.h>
 #include <VBox/pdmdrv.h>
 #ifdef VBOX_WITH_GUEST_PROPS
@@ -35,6 +51,8 @@
 
 struct VUSBIRHCONFIG;
 typedef struct VUSBIRHCONFIG *PVUSBIRHCONFIG;
+
+#include <list>
 
 // defines
 ///////////////////////////////////////////////////////////////////////////////

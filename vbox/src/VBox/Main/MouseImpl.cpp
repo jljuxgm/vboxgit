@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: MouseImpl.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -20,7 +20,6 @@
 #include "MouseImpl.h"
 #include "DisplayImpl.h"
 #include "VMMDev.h"
-#include "ConsoleImpl.h"
 
 #include "AutoCaller.h"
 #include "Logging.h"
@@ -58,6 +57,7 @@ struct DRVMAINMOUSE
     /** The capabilities of this device. */
     uint32_t                    u32DevCaps;
 };
+
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////

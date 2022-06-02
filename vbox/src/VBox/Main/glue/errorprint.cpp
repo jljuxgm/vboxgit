@@ -1,4 +1,4 @@
-/* $Id: errorprint.cpp 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: errorprint.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -24,14 +24,6 @@
 
 #include <iprt/stream.h>
 #include <iprt/path.h>
-
-#ifndef DEBUG
-// string used by ComAssert macro (VirtualBoxBase.h)
-const char *g_pcszComAssertFailedString
-    = "Assertion failed: [%s] at '%s' (%d) in %s.\nPlease contact the product vendor!";
-const char *g_pcszComAssertMsgFailedString
-    = "Assertion failed: [%s] at '%s' (%d) in %s.\n%s\nPlease contact the product vendor!";
-#endif
 
 namespace com
 {

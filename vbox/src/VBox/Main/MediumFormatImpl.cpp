@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.cpp 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: MediumFormatImpl.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -22,8 +22,6 @@
 #include "Logging.h"
 
 #include <VBox/VBoxHDD.h>
-
-#include <VBox/com/array.h>
 
 #include <iprt/cpp/utils.h>
 

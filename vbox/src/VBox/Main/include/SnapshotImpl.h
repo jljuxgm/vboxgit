@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: SnapshotImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -23,6 +23,13 @@
 #include "VirtualBoxBase.h"
 
 #include <iprt/time.h>
+
+class SnapshotMachine;
+
+namespace settings
+{
+    struct Snapshot;
+}
 
 class ATL_NO_VTABLE Snapshot :
     public VirtualBoxBase, // WithTypedChildren<Snapshot>,

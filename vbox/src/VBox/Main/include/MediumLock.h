@@ -1,4 +1,4 @@
-/* $Id: MediumLock.h 30760 2010-07-09 13:12:04Z vboxsync $ */
+/* $Id: MediumLock.h 30764 2010-07-09 14:12:12Z vboxsync $ */
 
 /** @file
  *
@@ -20,8 +20,18 @@
 #ifndef ____H_MEDIUMLOCK
 #define ____H_MEDIUMLOCK
 
+/* interface definitions */
+#include "VBox/com/VirtualBox.h"
 #include "VirtualBoxBase.h"
 #include "AutoCaller.h"
+
+#include <iprt/types.h>
+
+#include <list>
+#include <map>
+
+class Medium;
+class MediumAttachment;
 
 /**
  * Single entry for medium lock lists. Has a medium object reference,
