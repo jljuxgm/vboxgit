@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33307 2010-10-21 13:05:39Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33322 2010-10-21 17:14:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1026,7 +1026,13 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
     if (aDeviceType == DeviceType_HardDisk)
         rc = setLocation(aLocation);
     else
+    {
+        if (aDeviceType == DeviceType_DVD)
+            m->type = MediumType_Readonly;
+        else
+            m->type = MediumType_Writethrough;
         rc = setLocation(aLocation, "RAW");
+    }
     if (FAILED(rc)) return rc;
 
     if (    aDeviceType == DeviceType_DVD
