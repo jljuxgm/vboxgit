@@ -1,4 +1,4 @@
-/* $Id: timer-generic.cpp 32504 2010-09-15 10:12:38Z vboxsync $ */
+/* $Id: timer-generic.cpp 32572 2010-09-16 16:18:12Z vboxsync $ */
 /** @file
  * IPRT - Timers, Generic.
  */
@@ -86,7 +86,7 @@ typedef struct RTTIMER
 static DECLCALLBACK(int) rtTimerThread(RTTHREAD Thread, void *pvUser);
 
 
-RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, unsigned fFlags, PFNRTTIMER pfnTimer, void *pvUser)
+RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_t fFlags, PFNRTTIMER pfnTimer, void *pvUser)
 {
     *ppTimer = NULL;
 
@@ -224,6 +224,15 @@ RTDECL(int) RTTimerStop(PRTTIMER pTimer)
     return rc;
 }
 RT_EXPORT_SYMBOL(RTTimerStop);
+
+
+RTDECL(int) RTTimerChangeInterval(PRTTIMER pTimer, uint64_t u64NanoInterval)
+{
+    if (!rtTimerIsValid(pTimer))
+        return VERR_INVALID_HANDLE;
+    return VERR_NOT_SUPPORTED;
+}
+RT_EXPORT_SYMBOL(RTTimerChangeInterval);
 
 
 static DECLCALLBACK(int) rtTimerThread(RTTHREAD Thread, void *pvUser)

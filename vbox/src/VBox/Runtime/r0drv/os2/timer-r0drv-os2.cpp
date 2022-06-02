@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 32504 2010-09-15 10:12:38Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 32572 2010-09-16 16:18:12Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -108,7 +108,7 @@ RT_C_DECLS_END
 
 
 
-RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, unsigned fFlags, PFNRTTIMER pfnTimer, void *pvUser)
+RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_t fFlags, PFNRTTIMER pfnTimer, void *pvUser)
 {
     *ppTimer = NULL;
 
@@ -285,6 +285,15 @@ RTDECL(int) RTTimerStop(PRTTIMER pTimer)
     RTSpinlockReleaseNoInts(g_Spinlock, &Tmp);
 
     return VINF_SUCCESS;
+}
+
+
+RTDECL(int) RTTimerChangeInterval(PRTTIMER pTimer, uint64_t u64NanoInterval)
+{
+    if (!rtTimerIsValid(pTimer))
+        return VERR_INVALID_HANDLE;
+
+    return VERR_NOT_SUPPORTED;
 }
 
 
