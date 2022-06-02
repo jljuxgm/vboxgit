@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 32965 2010-10-07 08:32:29Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33102 2010-10-13 12:13:44Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1575,11 +1575,10 @@ void Appliance::importOneDiskImage(const ovf::DiskImage &di,
         {
             // construct source file path
             Utf8StrFmt strSrcFilePath("%s%c%s", stack.strSourceDir.c_str(), RTPATH_DELIMITER, strSourceOVF.c_str());
-            // source path must exist
-            if (!RTPathExists(strSrcFilePath.c_str()))
-                throw setError(VBOX_E_FILE_ERROR,
-                               tr("Source virtual disk image file '%s' doesn't exist"),
-                               strSrcFilePath.c_str());
+
+            // Do NOT check here whether the file exists. The clone operation
+            // will figure that out, and filesystem-based tests are simply
+            // wrong in the general case (think of iSCSI).
 
             // Clone the disk image (this is necessary cause the id has
             // to be recreated for the case the same hard disk is
