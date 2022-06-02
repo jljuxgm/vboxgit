@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 31457 2010-08-08 15:11:02Z vboxsync $ */
+/* $Id: DrvVD.cpp 31578 2010-08-11 17:02:18Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1181,7 +1181,7 @@ static DECLCALLBACK(int) drvvdTcpGetPeerAddress(VDSOCKET Sock, PRTNETADDR pAddr)
 }
 
 /** @copydoc VDINTERFACETCPNET::pfnSelectOneEx */
-static DECLCALLBACK(int) drvvdTcpSelectOneEx(VDSOCKET Sock, uint32_t fEvents, 
+static DECLCALLBACK(int) drvvdTcpSelectOneEx(VDSOCKET Sock, uint32_t fEvents,
                                              uint32_t *pfEvents, RTMSINTERVAL cMillies)
 {
     int rc = VINF_SUCCESS;
