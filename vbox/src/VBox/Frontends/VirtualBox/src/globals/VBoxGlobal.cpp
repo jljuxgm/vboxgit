@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35564 2011-01-14 13:52:02Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 35634 2011-01-19 16:13:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4205,14 +4205,17 @@ QString VBoxGlobal::removeAccelMark (const QString &aText)
 }
 
 /* static */
-QString VBoxGlobal::insertKeyToActionText (const QString &aText, const QString &aKey)
+QString VBoxGlobal::insertKeyToActionText(const QString &strText, const QString &strKey)
 {
 #ifdef Q_WS_MAC
-    QString key ("%1 (Host+%2)");
+    QString pattern("%1 (Host+%2)");
 #else
-    QString key ("%1 \tHost+%2");
+    QString pattern("%1 \tHost+%2");
 #endif
-    return key.arg (aText).arg (QKeySequence (aKey).toString (QKeySequence::NativeText));
+    if (strKey.isEmpty())
+        return strText;
+    else
+        return pattern.arg(strText).arg(QKeySequence(strKey).toString(QKeySequence::NativeText));
 }
 
 /* static */
