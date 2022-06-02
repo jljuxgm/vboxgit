@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 30751 2010-07-08 21:21:06Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 30930 2010-07-20 14:26:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -516,16 +516,21 @@ void UIMachineWindowNormal::loadWindowSettings()
                                      QString("%1%2").arg(VBoxDefs::GUI_LastNormalWindowPosition).arg(m_uScreenId);
         QStringList strPositionSettings = machine.GetExtraDataStringList(strPositionAddress);
 
-        bool ok = true, max = false;
+        bool ok = !strPositionSettings.isEmpty(), max = false;
         int x = 0, y = 0, w = 0, h = 0;
+
         if (ok && strPositionSettings.size() > 0)
             x = strPositionSettings[0].toInt(&ok);
+        else ok = false;
         if (ok && strPositionSettings.size() > 1)
             y = strPositionSettings[1].toInt(&ok);
+        else ok = false;
         if (ok && strPositionSettings.size() > 2)
             w = strPositionSettings[2].toInt(&ok);
+        else ok = false;
         if (ok && strPositionSettings.size() > 3)
             h = strPositionSettings[3].toInt(&ok);
+        else ok = false;
         if (ok && strPositionSettings.size() > 4)
             max = strPositionSettings[4] == VBoxDefs::GUI_LastWindowState_Max;
 
