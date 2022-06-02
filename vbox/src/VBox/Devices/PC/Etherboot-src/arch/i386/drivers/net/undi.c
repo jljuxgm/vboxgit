@@ -6,7 +6,7 @@ This file Copyright (C) 2003 Michael Brown <mbrown@fensystems.co.uk>
 of Fen Systems Ltd. (http://www.fensystems.co.uk/).  All rights
 reserved.
 
-$Id: undi.c 11982 2008-09-02 13:09:44Z vboxsync $
+$Id: undi.c 33656 2010-11-01 14:18:11Z vboxsync $
 ***************************************************************************/
 
 /*
@@ -17,8 +17,8 @@ $Id: undi.c 11982 2008-09-02 13:09:44Z vboxsync $
  */
 
 /*
- * Sun GPL Disclaimer: For the avoidance of doubt, except that if any license choice
- * other than GPL or LGPL is available it will apply instead, Sun elects to use only
+ * Oracle GPL Disclaimer: For the avoidance of doubt, except that if any license choice
+ * other than GPL or LGPL is available it will apply instead, Oracle elects to use only
  * the General Public License version 2 (GPLv2) at this time for any software where
  * a choice of GPL license versions is made available with the language indicating
  * that GPLv2 or any later version may be used, or where a choice of which version

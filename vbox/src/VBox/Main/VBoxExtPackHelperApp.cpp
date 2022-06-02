@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 33623 2010-10-29 16:16:06Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 33656 2010-11-01 14:18:11Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -6,13 +6,8 @@
 /*
  * Copyright (C) 2010 Oracle Corporation
  *
- * This file is part of VirtualBox Open Source Edition (OSE), as
- * available from http://www.virtualbox.org. This file is free software;
- * you can redistribute it and/or modify it under the terms of the GNU
- * General Public License (GPL) as published by the Free Software
- * Foundation, in version 2 as it comes in the "COPYING" file of the
- * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ * Oracle Corporation confidential
+ * All rights reserved
  */
 
 

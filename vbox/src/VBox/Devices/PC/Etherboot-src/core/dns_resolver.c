@@ -22,9 +22,9 @@
 *    This code is using nuts and bolts from throughout etherboot.
 *    It is a fresh implementation according to the DNS RFC, #1035
 *    
-*    $Revision: 11982 $
+*    $Revision: 33656 $
 *    $Author: vboxsync $
-*    $Date: 2008-09-02 21:09:44 +0800 (Tue, 02 Sep 2008) $
+*    $Date: 2010-11-01 22:18:11 +0800 (Mon, 01 Nov 2010) $
 *
 *    REVISION HISTORY:
 *    ================
@@ -36,8 +36,8 @@
 ***************************************************************************/
 
 /*
- * Sun GPL Disclaimer: For the avoidance of doubt, except that if any license choice
- * other than GPL or LGPL is available it will apply instead, Sun elects to use only
+ * Oracle GPL Disclaimer: For the avoidance of doubt, except that if any license choice
+ * other than GPL or LGPL is available it will apply instead, Oracle elects to use only
  * the General Public License version 2 (GPLv2) at this time for any software where
  * a choice of GPL license versions is made available with the language indicating
  * that GPLv2 or any later version may be used, or where a choice of which version

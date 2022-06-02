@@ -1,4 +1,4 @@
-/* $Id: keyboard-tables.h 32874 2010-10-01 16:50:10Z vboxsync $ */
+/* $Id: keyboard-tables.h 33656 2010-11-01 14:18:11Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables.
  */
@@ -23,8 +23,8 @@
  */
 
 /*
- * Sun LGPL Disclaimer: For the avoidance of doubt, except that if any license choice
- * other than GPL or LGPL is available it will apply instead, Sun elects to use only
+ * Oracle LGPL Disclaimer: For the avoidance of doubt, except that if any license choice
+ * other than GPL or LGPL is available it will apply instead, Oracle elects to use only
  * the Lesser General Public License version 2.1 (LGPLv2) at this time for any software where
  * a choice of LGPL license versions is made available with the language indicating
  * that LGPLv2 or any later version may be used, or where a choice of which version
