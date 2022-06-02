@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 35727 2011-01-27 09:52:23Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 35741 2011-01-27 15:46:41Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -531,6 +531,11 @@ static void parse_environ(unsigned long *pulFrameWidth, unsigned long *pulFrameH
 }
 #endif /* VBOX_FFMPEG defined */
 
+#ifdef RT_OS_WINDOWS 
+// Required for ATL
+static CComModule _Module;
+#endif
+
 /**
  *  Entry point.
  */
@@ -558,6 +563,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     char pszMPEGFile[RTPATH_MAX];
     const char *pszFileNameParam = "VBox-%d.vob";
 #endif /* VBOX_FFMPEG */
+
 
     /* Make sure that DISPLAY is unset, so that X11 bits do not get initialised
      * on X11-using OSes. */
@@ -1318,7 +1324,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     session.setNull();
     virtualBox.setNull();
     pVirtualBoxClient.setNull();
-
+    machine.setNull();
+  
     com::Shutdown();
 
     LogFlow(("VBoxHeadless FINISHED.\n"));
