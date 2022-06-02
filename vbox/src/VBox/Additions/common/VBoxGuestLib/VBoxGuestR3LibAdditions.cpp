@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 30778 2010-07-12 08:40:54Z vboxsync $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 30779 2010-07-12 08:46:38Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -146,7 +146,7 @@ static int vbglR3CloseAdditionsWinStoragePath(HKEY hKey)
  * @param uStatus
  * @param uFlags
  */
-VBGLR3DECL(int) VbglR3ReportAdditionsStatus(VBoxGuestStatusFacility Facility, VBoxGuestStatusCurrent Status, uint32_t uFlags)
+VBGLR3DECL(int) VbglR3ReportAdditionsStatus(VBoxGuestStatusFacility Facility, VBoxGuestStatusCurrent StatusCurrent, uint32_t uFlags)
 {
     VMMDevReportGuestStatus Report;
     RT_ZERO(Report);
@@ -155,7 +155,7 @@ VBGLR3DECL(int) VbglR3ReportAdditionsStatus(VBoxGuestStatusFacility Facility, VB
     {
 
         Report.guestStatus.facility = Facility;
-        Report.guestStatus.status = Status;
+        Report.guestStatus.status = StatusCurrent;
         Report.guestStatus.flags = uFlags;
 
         rc = vbglR3GRPerform(&Report.header);
