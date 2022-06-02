@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 30682 2010-07-06 17:33:51Z vboxsync $ */
 
 /** @file
  *
@@ -42,6 +42,37 @@ namespace com
 
 // ErrorInfo class
 ////////////////////////////////////////////////////////////////////////////////
+
+ErrorInfo::ErrorInfo(const ErrorInfo &x)
+{
+    mIsBasicAvailable = x.mIsBasicAvailable;
+    mIsFullAvailable = x.mIsFullAvailable;
+
+    mResultCode = x.mResultCode;
+    mInterfaceID = x.mInterfaceID;
+    mComponent = x.mComponent;
+    mText = x.mText;
+
+    if (x.m_pNext)
+        m_pNext = new ErrorInfo(x.m_pNext);
+    else
+        m_pNext = NULL;
+
+    mInterfaceName = x.mInterfaceName;
+    mCalleeIID = x.mCalleeIID;
+    mCalleeName = x.mCalleeName;
+
+    mErrorInfo = x.mErrorInfo;
+}
+
+ErrorInfo::~ErrorInfo()
+{
+    if (m_pNext)
+    {
+        delete m_pNext;
+        m_pNext = NULL;
+    }
+}
 
 void ErrorInfo::init(bool aKeepObj /* = false */)
 {
@@ -226,15 +257,6 @@ void ErrorInfo::init(IVirtualBoxErrorInfo *info)
     mIsFullAvailable = gotAll;
 
     AssertMsg (gotSomething, ("Nothing to fetch!\n"));
-}
-
-ErrorInfo::~ErrorInfo()
-{
-    if (m_pNext)
-    {
-        delete m_pNext;
-        m_pNext = NULL;
-    }
 }
 
 // ProgressErrorInfo class
