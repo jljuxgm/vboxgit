@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 30741 2010-07-08 13:18:57Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 30742 2010-07-08 13:29:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -23,7 +23,8 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "VBox/com/ErrorInfo.h"
+// for some reason Windows burns in sdk\...\winsock.h if this isn't included first
+#include "VBox/com/ptr.h"
 
 #include "ConsoleImpl.h"
 #include "DisplayImpl.h"
