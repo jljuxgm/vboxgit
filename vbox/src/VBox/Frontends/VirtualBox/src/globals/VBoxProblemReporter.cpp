@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 35140 2010-12-15 15:38:49Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 35273 2010-12-21 12:52:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2141,20 +2141,27 @@ void VBoxProblemReporter::badExtPackFile(const QString &strFilename, const CExtP
              "<!--EOM-->" + extPackFile.GetWhyUnusable());
 }
 
-void VBoxProblemReporter::cannotInstallExtPack(const QString &strFilename, const CExtPackFile &extPackFile, QWidget *pParent)
+void VBoxProblemReporter::cannotInstallExtPack(const QString &strFilename, const CExtPackFile &extPackFile, const CProgress &progress, QWidget *pParent)
 {
-    message (pParent ? pParent : mainWindowShown(),
+    if (!pParent)
+        pParent = mainWindowShown();
+    QString strErrInfo = !extPackFile.isOk() ? formatErrorInfo(extPackFile) : formatErrorInfo(progress.GetErrorInfo());
+    message (pParent,
              Error,
              tr("Failed to install the Extension Pack <b>%1</b>.").arg(strFilename),
-             formatErrorInfo(extPackFile));
+             strErrInfo);
 }
 
-void VBoxProblemReporter::cannotUninstallExtPack(const QString &strPackName, const CExtPackManager &extPackManager, QWidget *pParent)
+void VBoxProblemReporter::cannotUninstallExtPack(const QString &strPackName, const CExtPackManager &extPackManager,
+                                                 const CProgress &progress, QWidget *pParent)
 {
-    message (pParent ? pParent : mainWindowShown(),
+    if (!pParent)
+        pParent = mainWindowShown();
+    QString strErrInfo = !extPackManager.isOk() ? formatErrorInfo(extPackManager) : formatErrorInfo(progress.GetErrorInfo());
+    message (pParent,
              Error,
              tr("Failed to uninstall the Extension Pack <b>%1</b>.").arg(strPackName),
-             formatErrorInfo(extPackManager));
+             strErrInfo);
 }
 
 bool VBoxProblemReporter::confirmInstallingPackage(const QString &strPackName, const QString &strPackVersion,
