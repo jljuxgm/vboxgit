@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 33497 2010-10-27 12:19:55Z vboxsync $ */
+/* $Id: GuestImpl.cpp 33505 2010-10-27 13:25:15Z vboxsync $ */
 
 /** @file
  *
@@ -1431,7 +1431,8 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
     LogRel(("Executing guest process \"%s\" as user \"%s\" ...\n",
             Utf8Str(aCommand).c_str(), Utf8Str(aUserName).c_str()));
 
-    return executeProcessInternal(aCommand, aFlags, aArguments, aEnvironment,
+    return executeProcessInternal(aCommand, aFlags, ComSafeArrayInArg(aArguments), 
+                                  ComSafeArrayInArg(aEnvironment),
                                   aUserName, aPassword, aTimeoutMS, aPID, aProgress);
 #endif
 }
