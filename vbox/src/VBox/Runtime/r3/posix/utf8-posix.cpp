@@ -1,4 +1,4 @@
-/* $Id: utf8-posix.cpp 31157 2010-07-28 03:15:35Z vboxsync $ */
+/* $Id: utf8-posix.cpp 31961 2010-08-25 14:02:32Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 helpers, POSIX.
  */
@@ -371,11 +371,18 @@ DECLINLINE(int) rtStrConvertWrapper(const char *pchInput, size_t cchInput, const
     if (hSelf != NIL_RTTHREAD)
     {
         PRTTHREADINT pThread = rtThreadGet(hSelf);
-        if (   pThread
-            && (pThread->fIntFlags & (RTTHREADINT_FLAGS_ALIEN | RTTHREADINT_FLAGS_MAIN)) != RTTHREADINT_FLAGS_ALIEN)
-            return rtstrConvertCached(pchInput, cchInput, pszInputCS,
-                                      (void **)ppszOutput, cbOutput, pszOutputCS,
-                                      cFactor, (iconv_t *)&pThread->ahIconvs[enmCacheIdx]);
+        if (pThread)
+        {
+            if ((pThread->fIntFlags & (RTTHREADINT_FLAGS_ALIEN | RTTHREADINT_FLAGS_MAIN)) != RTTHREADINT_FLAGS_ALIEN)
+            {
+                int rc = rtstrConvertCached(pchInput, cchInput, pszInputCS,
+                                            (void **)ppszOutput, cbOutput, pszOutputCS,
+                                            cFactor, (iconv_t *)&pThread->ahIconvs[enmCacheIdx]);
+                rtThreadRelease(pThread);
+                return rc;
+            }
+            rtThreadRelease(pThread);
+        }
     }
 #endif
     return rtStrConvertUncached(pchInput, cchInput, pszInputCS,
