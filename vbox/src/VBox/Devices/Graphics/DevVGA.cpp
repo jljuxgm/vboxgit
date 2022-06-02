@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 32897 2010-10-05 09:37:12Z vboxsync $ */
+/* $Id: DevVGA.cpp 32902 2010-10-05 10:12:45Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2301,7 +2301,7 @@ static int vga_draw_graphic(VGAState *s, int full_update, bool fFailOnResize)
     if (    disp_width     != (int)s->last_width
         ||  height         != (int)s->last_height
         ||  s->get_bpp(s)  != (int)s->last_bpp
-        ||  offsets_changed)
+        || (offsets_changed && !s->fRenderVRAM))
     {
         if (fFailOnResize)
         {
