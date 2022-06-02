@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 34178 2010-11-18 15:18:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -75,7 +75,6 @@ static char                     g_szCoreDumpFile[PATH_MAX]   = { 0 };
 #define CORELOG(a)          Log(a)
 #define CORELOGRELSYS(a)       \
     do { \
-        LogRel(a); \
         rtCoreDumperSysLogWrapper a; \
     } while (0)
 
