@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 30950 2010-07-21 11:36:18Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 31281 2010-08-02 10:35:19Z vboxsync $ */
 
 /** @file
  *
@@ -83,11 +83,11 @@ HRESULT SystemProperties::init(VirtualBox *aParent)
 
     unconst(mParent) = aParent;
 
-    setDefaultMachineFolder(Utf8Str::Null);
-    setDefaultHardDiskFolder(Utf8Str::Null);
-    setDefaultHardDiskFormat(Utf8Str::Null);
+    setDefaultMachineFolder(Utf8Str::Empty);
+    setDefaultHardDiskFolder(Utf8Str::Empty);
+    setDefaultHardDiskFormat(Utf8Str::Empty);
 
-    setRemoteDisplayAuthLibrary(Utf8Str::Null);
+    setRemoteDisplayAuthLibrary(Utf8Str::Empty);
 
     m->ulLogHistoryCount = 3;
 

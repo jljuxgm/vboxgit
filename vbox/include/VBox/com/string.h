@@ -1,4 +1,4 @@
-/* $Id: string.h 30750 2010-07-08 18:40:30Z vboxsync $ */
+/* $Id: string.h 31281 2010-08-02 10:35:19Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -320,9 +320,9 @@ public:
     }
 
     /**
-     *  Static immutable null object. May be used for comparison purposes.
+     *  Static immutable empty-string object. May be used for comparison purposes.
      */
-    static const Bstr Null;
+    static const Bstr Empty;
 
 protected:
 
@@ -545,9 +545,9 @@ public:
     }
 
     /**
-     *  Static immutable null object. May be used for comparison purposes.
+     *  Static immutable empty-string object. May be used for comparison purposes.
      */
-    static const Utf8Str Null;
+    static const Utf8Str Empty;
 
 protected:
 

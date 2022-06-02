@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31258 2010-07-30 18:26:09Z vboxsync $ */
+/* $Id: MediumImpl.cpp 31281 2010-08-02 10:35:19Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4849,7 +4849,7 @@ HRESULT Medium::setFormat(CBSTR aFormat)
              it != m->formatObj->properties().end();
              ++it)
         {
-            m->properties.insert(std::make_pair(it->name, Bstr::Null));
+            m->properties.insert(std::make_pair(it->name, Bstr::Empty));
         }
     }
 
