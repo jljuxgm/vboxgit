@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 33693 2010-11-02 14:52:24Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 34073 2010-11-15 15:38:20Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -57,8 +57,10 @@ public:
     STDMETHOD(COMGETTER(Description))(BSTR *a_pbstrDescription);
     STDMETHOD(COMGETTER(Version))(BSTR *a_pbstrVersion);
     STDMETHOD(COMGETTER(Revision))(ULONG *a_puRevision);
+    STDMETHOD(COMGETTER(PlugIns))(ComSafeArrayOut(IExtPackPlugIn *, a_paPlugIns));
     STDMETHOD(COMGETTER(Usable))(BOOL *a_pfUsable);
     STDMETHOD(COMGETTER(WhyUnusable))(BSTR *a_pbstrWhy);
+    STDMETHOD(QueryObject)(IN_BSTR a_bstrObjectId, IUnknown **a_ppUnknown);
     /** @}  */
 
     /** @name Internal interfaces used by ExtPackManager.
@@ -77,7 +79,7 @@ protected:
      * @{ */
     void        probeAndLoad(void);
     bool        findModule(const char *a_pszName, const char *a_pszExt,
-                           Utf8Str *a_pStrFound, bool *a_pfNative, PRTFSOBJINFO a_pObjInfo) const;
+                           Utf8Str *a_ppStrFound, bool *a_pfNative, PRTFSOBJINFO a_pObjInfo) const;
     static bool objinfoIsEqual(PCRTFSOBJINFO pObjInfo1, PCRTFSOBJINFO pObjInfo2);
     /** @}  */
 
@@ -85,6 +87,7 @@ protected:
      * @{ */
     static DECLCALLBACK(int)    hlpFindModule(PCVBOXEXTPACKHLP pHlp, const char *pszName, const char *pszExt,
                                               char *pszFound, size_t cbFound, bool *pfNative);
+    static DECLCALLBACK(int)    hlpGetFilePath(PCVBOXEXTPACKHLP pHlp, const char *pszFilename, char *pszPath, size_t cbPath);
     /** @}  */
 
 private:
@@ -127,6 +130,8 @@ class ATL_NO_VTABLE ExtPackManager :
     STDMETHOD(Find)(IN_BSTR a_bstrName, IExtPack **a_pExtPack);
     STDMETHOD(Install)(IN_BSTR a_bstrTarball, BSTR *a_pbstrName);
     STDMETHOD(Uninstall)(IN_BSTR a_bstrName, BOOL a_fForcedRemoval);
+    STDMETHOD(Cleanup)(void);
+    STDMETHOD(QueryAllPlugInsForFrontend)(IN_BSTR a_bstrFrontend, ComSafeArrayOut(BSTR, a_pabstrPlugInModules));
     /** @}  */
 
     /** @name Internal interfaces used by other Main classes.
