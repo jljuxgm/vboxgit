@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 35523 2011-01-13 13:12:03Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -76,6 +76,18 @@ static void vboxExtPackClearDesc(PVBOXEXTPACKDESC a_pExtPackDesc)
     a_pExtPackDesc->paPlugIns = NULL;
     a_pExtPackDesc->fShowLicense = false;
 }
+
+/**
+ * Initializes an extension pack descriptor so that it's safe to call free on
+ * it whatever happens later on.
+ *
+ * @param   a_pExtPackDesc  The descirptor to initialize.
+ */
+void VBoxExtPackInitDesc(PVBOXEXTPACKDESC a_pExtPackDesc)
+{
+    vboxExtPackClearDesc(a_pExtPackDesc);
+}
+
 
 /**
  * Load the extension pack descriptor from an XML document.
