@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35380 2010-12-30 16:06:17Z vboxsync $
+# $Id: Makefile.kmk 35443 2011-01-10 10:34:48Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox HGCM Service.
 #
@@ -56,10 +56,6 @@ VBoxSharedCrOpenGL_INTERMEDIATES = \
 VBoxSharedCrOpenGL_INCS.win = \
 	$(PATH_TOOL_$(VBOX_VCC_TOOL)_ATLMFC_INC) \
 	$(VBOX_PATH_SDK)/bindings/mscom/include \
-## @todo r=bird: This does NOT work when running make from HostService or any of its subdirectories!
-VBoxSharedCrOpenGL_INCS = \
-	$(VBoxSVC_0_OUTDIR) \
-	$(VBoxCOM_0_OUTDIR)
 ifdef VBOX_WITH_XPCOM
  VBoxSharedCrOpenGL_INCS += \
  	$(VBOX_XPCOM_INCS)
