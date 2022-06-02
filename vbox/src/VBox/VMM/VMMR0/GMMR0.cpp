@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30766 2010-07-09 14:36:47Z vboxsync $ */
+/* $Id: GMMR0.cpp 30769 2010-07-09 15:54:22Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2388,7 +2388,7 @@ GMMR0DECL(int)  GMMR0AllocateLargePage(PVM pVM, VMCPUID idCpu, uint32_t cbPage, 
         rc = VERR_INTERNAL_ERROR_5;
 
     RTSemFastMutexRelease(pGMM->Mtx);
-    LogFlow(("GMMR0AllocatePages: returns %Rrc\n", rc));
+    LogFlow(("GMMR0AllocateLargePage: returns %Rrc\n", rc));
     return rc;
 }
 
@@ -3967,7 +3967,7 @@ new_shared_page:
 
                 PageDesc.idPage = paPageDesc[i].uHCPhysPageId;
                 rc = gmmR0FreePages(pGMM, pGVM, 1, &PageDesc, GMMACCOUNT_BASE);
-                AssertRC(rc);
+                AssertRCReturn(rc, rc);
 
                 gmmR0UseSharedPage(pGMM, pGVM, pPage);
 

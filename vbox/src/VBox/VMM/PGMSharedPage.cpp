@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 30762 2010-07-09 13:35:10Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 30769 2010-07-09 15:54:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -198,7 +198,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3SharedModuleRegRendezvous(PVM pVM, PVMCPU
     pgmLock(pVM);
     rc = GMMR3CheckSharedModules(pVM);
     pgmUnlock(pVM);
-
+    AssertLogRelRC(rc);
     return rc;
 }
 
