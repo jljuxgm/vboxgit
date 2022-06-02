@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 32468 2010-09-14 09:57:00Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 32741 2010-09-23 23:21:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -660,7 +660,8 @@ void UIMachineLogic::prepareRequiredFeatures()
 #ifdef VBOX_WITH_DEBUGGER_GUI
 void UIMachineLogic::prepareDebugger()
 {
-    if (vboxGlobal().isDebuggerAutoShowEnabled())
+    CMachine machine = uisession()->session().GetMachine();
+    if (!machine.isNull() && vboxGlobal().isDebuggerAutoShowEnabled(machine))
     {
         /* console in upper left corner of the desktop. */
 //        QRect rct (0, 0, 0, 0);
@@ -669,9 +670,9 @@ void UIMachineLogic::prepareDebugger()
 //            rct = desktop->availableGeometry(pos());
 //        move (QPoint (rct.x(), rct.y()));
 
-        if (vboxGlobal().isDebuggerAutoShowStatisticsEnabled())
+        if (vboxGlobal().isDebuggerAutoShowStatisticsEnabled(machine))
             sltShowDebugStatistics();
-        if (vboxGlobal().isDebuggerAutoShowCommandLineEnabled())
+        if (vboxGlobal().isDebuggerAutoShowCommandLineEnabled(machine))
             sltShowDebugCommandLine();
 
         if (!vboxGlobal().isStartPausedEnabled())

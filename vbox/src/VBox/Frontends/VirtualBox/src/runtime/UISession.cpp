@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 32482 2010-09-14 13:38:54Z vboxsync $ */
+/* $Id: UISession.cpp 32741 2010-09-23 23:21:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -184,7 +184,7 @@ void UISession::powerUp()
     CConsole console = session().GetConsole();
 
     /* Power UP machine: */
-    CProgress progress = vboxGlobal().isStartPausedEnabled() || vboxGlobal().isDebuggerAutoShowEnabled() ?
+    CProgress progress = vboxGlobal().isStartPausedEnabled() || vboxGlobal().isDebuggerAutoShowEnabled(machine) ?
                          console.PowerUpPaused() : console.PowerUp();
 
     /* Check for immediate failure: */

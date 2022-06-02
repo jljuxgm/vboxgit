@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 30868 2010-07-16 09:42:12Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 32741 2010-09-23 23:21:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -78,5 +78,9 @@ const char* VBoxDefs::GUI_Accelerate2D_PixformatYV12 = "GUI/Accelerate2D/Pixform
 const char* VBoxDefs::GUI_Accelerate2D_PixformatUYVY = "GUI/Accelerate2D/PixformatUYVY";
 const char* VBoxDefs::GUI_Accelerate2D_PixformatYUY2 = "GUI/Accelerate2D/PixformatYUY2";
 const char* VBoxDefs::GUI_Accelerate2D_PixformatAYUV = "GUI/Accelerate2D/PixformatAYUV";
+#endif
+#ifdef VBOX_WITH_DEBUGGER_GUI
+const char* VBoxDefs::GUI_DbgEnabled = "GUI/Dbg/Enabled";
+const char* VBoxDefs::GUI_DbgAutoShow = "GUI/Dbg/AutoShow";
 #endif
 

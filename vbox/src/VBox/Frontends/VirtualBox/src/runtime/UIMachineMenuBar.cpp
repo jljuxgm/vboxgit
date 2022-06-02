@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 30753 2010-07-08 23:01:51Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 32741 2010-09-23 23:21:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -112,12 +112,16 @@ QList<QMenu*> UIMachineMenuBar::prepareSubMenus(UIActionsPool *pActionsPool, UIM
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
     /* Debug submenu: */
-    if (   fOptions & UIMainMenuType_Debug
-        && vboxGlobal().isDebuggerEnabled())
+    if (fOptions & UIMainMenuType_Debug)
     {
-        QMenu *pMenuDebug = pActionsPool->action(UIActionIndex_Menu_Debug)->menu();
-        prepareMenuDebug(pMenuDebug, pActionsPool);
-        preparedSubMenus << pMenuDebug;
+        CMachine machine; /** @todo we should try get the machine here. But we'll 
+                           *        probably be fine with the cached values. */
+        if (vboxGlobal().isDebuggerEnabled(machine))
+        {
+            QMenu *pMenuDebug = pActionsPool->action(UIActionIndex_Menu_Debug)->menu();
+            prepareMenuDebug(pMenuDebug, pActionsPool);
+            preparedSubMenus << pMenuDebug;
+        }
     }
 #endif
 
