@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 31776 2010-08-19 09:48:44Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 32195 2010-09-02 13:18:14Z vboxsync $ */
 /** @file
  * VMDK Disk image, Core Code.
  */
@@ -1020,7 +1020,19 @@ DECLINLINE(int) vmdkFileDeflateAt(PVMDKFILE pVmdkFile,
              * rewritten. Cannot cause data loss as the code calling this
              * guarantees that data gets only appended. */
             Assert(DeflateState.uFileOffset > uCompOffset);
-            rc = vmdkFileSetSize(pVmdkFile, DeflateState.uFileOffset);
+
+            /*
+             * Change the file size only if the size really changed,
+             * because this is very expensive on some filesystems
+             * like XFS.
+             */
+            uint64_t cbOld;
+            rc = vmdkFileGetSize(pVmdkFile, &cbOld);
+            if (RT_FAILURE(rc))
+                return rc;
+
+            if (cbOld != DeflateState.uFileOffset)
+                rc = vmdkFileSetSize(pVmdkFile, DeflateState.uFileOffset);
 
             if (uMarker == VMDK_MARKER_IGNORE)
             {
