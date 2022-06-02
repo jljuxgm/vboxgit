@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 31314 2010-08-02 15:30:38Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 31317 2010-08-02 16:01:02Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -37,11 +37,9 @@
 #endif
 #include <unistd.h>
 
-#ifndef RT_OS_SOLARIS
- RT_C_DECLS_BEGIN
-    #include "../../linux/sharedfolders/vbsfmount.h"
- RT_C_DECLS_END
-#endif
+RT_C_DECLS_BEGIN
+#include "../../linux/sharedfolders/vbsfmount.h"
+RT_C_DECLS_END
 
 /*******************************************************************************
 *   Global Variables                                                           *
