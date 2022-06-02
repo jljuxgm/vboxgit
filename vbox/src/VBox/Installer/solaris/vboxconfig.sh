@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 31421 2010-08-05 19:44:36Z vboxsync $
+# $Id: vboxconfig.sh 31422 2010-08-05 19:45:30Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -97,7 +97,7 @@ errorprint()
 }
 
 
-# print_bin_path()
+# find_bin_path()
 # !! failure is always fatal
 find_bin_path()
 {
