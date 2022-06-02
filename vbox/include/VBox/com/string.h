@@ -1,4 +1,4 @@
-/* $Id: string.h 33621 2010-10-29 16:15:40Z vboxsync $ */
+/* $Id: string.h 33675 2010-11-02 09:38:52Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -522,28 +522,6 @@ public:
      * Calls RTPathStripExt() without having to mess with mutableRaw().
      */
     Utf8Str& stripExt();
-
-    /**
-     * Attempts to convert the member string into a 32-bit integer.
-     *
-     * @returns 32-bit unsigned number on success.
-     * @returns 0 on failure.
-     */
-    int toInt32() const
-    {
-        return RTStrToInt32(m_psz);
-    }
-
-    /**
-     * Attempts to convert the member string into an unsigned 32-bit integer.
-     *
-     * @returns 32-bit unsigned number on success.
-     * @returns 0 on failure.
-     */
-    int toUInt32() const
-    {
-        return RTStrToUInt32(m_psz);
-    }
 
     /**
      *  Static immutable empty-string object. May be used for comparison purposes.
