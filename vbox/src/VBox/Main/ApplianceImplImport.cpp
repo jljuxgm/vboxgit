@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 33320 2010-10-21 17:09:15Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33332 2010-10-22 09:27:23Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1738,8 +1738,12 @@ void Appliance::importOneDiskImage(const ovf::DiskImage &di,
         {
             SystemProperties *pSysProps = mVirtualBox->getSystemProperties();
             AutoReadLock propsLock(pSysProps COMMA_LOCKVAL_SRC_POS);
-            // We are always exporting to VMDK stream optimized for now
-            format = pSysProps->mediumFormat("VMDK");
+            Utf8Str strFormat = "VMDK";
+            if (strTargetPath.endsWith("vdi", Utf8Str::CaseInsensitive))
+                strFormat = "VDI";
+            else if (strTargetPath.endsWith("vhd", Utf8Str::CaseInsensitive))
+                strFormat = "VHD";
+            format = pSysProps->mediumFormat(strFormat);
             if (format.isNull())
                 throw setError(VBOX_E_NOT_SUPPORTED,
                                tr("Invalid medium storage format"));
