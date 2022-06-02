@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 30027 2010-06-04 11:06:02Z vboxsync $ */
+/* $Id: GMMR0Internal.h 30650 2010-07-06 09:30:16Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -105,6 +105,9 @@ typedef struct GMMPERVM
 
     /** Whether shared paging is enabled or not. */
     bool                fSharedPagingEnabled;
+
+    /** First GMMR0CheckSharedModules call? */
+    bool                fFirstCheckSharedModule;
 
     /** Whether the VM is allowed to allocate memory or not.
      * This is used when the reservation update request fails or when the VM has

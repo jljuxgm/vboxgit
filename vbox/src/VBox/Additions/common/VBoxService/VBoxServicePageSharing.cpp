@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 30648 2010-07-06 08:15:52Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 30650 2010-07-06 09:30:16Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -482,12 +482,15 @@ skipkernelmodules:
             RTMemFree(pBuffer);
     }
 
+    bool fFirstCheck = (pKnownModuleTree == NULL);
+
     /* Delete leftover modules in the old tree. */
     RTAvlPVDestroy(&pKnownModuleTree, VBoxServicePageSharingEmptyTreeCallback, NULL);
 
     /* Check all registered modules. */
     int rc = VbglR3CheckSharedModules();
-    if (rc == VINF_PGM_SHARED_MODULE_NONE_REGISTERED)
+    if (    rc == VINF_PGM_SHARED_MODULE_FIRST_CHECK
+        &&  !fFirstCheck)
     {
         bool fUnregister = false;
         /* The VM was restored, so reregister all modules the next time. */
