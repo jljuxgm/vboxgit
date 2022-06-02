@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PGMInternal.h 33725 2010-11-03 13:31:24Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2849,6 +2849,8 @@ typedef struct PGMSTATS
     STAMPROFILE                 StatAllocLargePage;
     /** Time spent clearing the newly allocated large pages. */
     STAMPROFILE                 StatClearLargePage;
+    /** The number of times allocating a large pages takes more than the allowed period. */
+    STAMCOUNTER                 StatLargePageOverflow;
     /** pgmPhysIsValidLargePage profiling - R3 */
     STAMPROFILE                 StatR3IsValidLargePage;
     /** pgmPhysIsValidLargePage profiling - RZ*/
