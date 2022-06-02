@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33411 2010-10-25 11:32:26Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33413 2010-10-25 11:38:40Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1105,16 +1105,17 @@ static int handleCtrlCopyTo(HandlerArg *a)
                 if (RT_SUCCESS(vrc))
                 {
                     PDIRECTORYENTRY pNode;
-                    uint32_t uCurObject = 0;
+                    uint32_t uCurObject = 1;
                     RTListForEach(&listToCopy, pNode, DIRECTORYENTRY, Node)
                     {
                         if (fVerbose)
-                            RTPrintf("Copying \"%s\" (%u/%u) ...\n",
-                                     pNode->pszPath, uCurObject + 1, cObjects + 1);
+                            RTPrintf("Copying \"%s\" (%u of %u) ...\n",
+                                     pNode->pszPath, uCurObject, cObjects);
                         vrc = ctrlCopyFile(guest, pNode->pszPath, Utf8Dest.c_str(),
                                            Utf8UserName.c_str(), Utf8Password.c_str(), uFlags);
                         if (RT_FAILURE(vrc))
                             break;
+                        uCurObject++;
                     }
                     if (RT_SUCCESS(vrc) && fVerbose)
                         RTPrintf("Copy operation successful!\n");
