@@ -1,4 +1,4 @@
-# $Id: Config.kmk 32436 2010-09-13 07:30:33Z vboxsync $
+# $Id: Config.kmk 32471 2010-09-14 10:26:07Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -387,12 +387,6 @@ VBOX_WITH_RESOURCE_USAGE_API = 1
 VBOX_WITH_BUSLOGIC = 1
 # Enable LsiLogic SCSI host adapter
 VBOX_WITH_LSILOGIC = 1
-# Enable HPET device
-VBOX_WITH_HPET = 1
-# Enable LPC device
-VBOX_WITH_LPC = 1
-# Enable SMC device
-VBOX_WITH_SMC = 1
 # Enable SCSI drivers
 VBOX_WITH_SCSI = 1
 # Enable changing network attachments dynamically.
@@ -4268,7 +4262,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32436 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32471 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

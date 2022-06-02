@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 32342 2010-09-09 12:08:48Z vboxsync $ */
+/* $Id: Builtins.h 32471 2010-09-14 10:26:07Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -41,9 +41,7 @@ extern const PDMDEVREG g_DevicePcBios;
 extern const PDMDEVREG g_DevicePS2KeyboardMouse;
 extern const PDMDEVREG g_DeviceI8254;
 extern const PDMDEVREG g_DeviceI8259;
-#ifdef VBOX_WITH_HPET
 extern const PDMDEVREG g_DeviceHPET;
-#endif
 extern const PDMDEVREG g_DeviceMC146818;
 extern const PDMDEVREG g_DevicePIIX3IDE;
 extern const PDMDEVREG g_DeviceFloppyController;
