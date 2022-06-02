@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 31098 2010-07-26 09:06:52Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 31243 2010-07-30 13:10:33Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -3784,10 +3784,22 @@ static int iscsiSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
         goto out;
     }
 
-    /* Implement this operation via reopening the image. */
-    iscsiFreeImage(pImage, false);
-    rc = iscsiOpenImage(pImage, uOpenFlags);
-
+    /* Implement this operation via reopening the image if we actually need
+     * to do something. A read/write -> readonly transition doesn't need a
+     * reopen. In the other direction we don't have the necessary information
+     * as the "disk is readonly" flag is thrown away. Can be optimized too,
+     * but it's not worth the effort at the moment. */
+    if (   !(uOpenFlags & VD_OPEN_FLAGS_READONLY)
+        && (pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY))
+    {
+        iscsiFreeImage(pImage, false);
+        rc = iscsiOpenImage(pImage, uOpenFlags);
+    }
+    else
+    {
+        pImage->uOpenFlags = uOpenFlags;
+        rc = VINF_SUCCESS;
+    }
 out:
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
