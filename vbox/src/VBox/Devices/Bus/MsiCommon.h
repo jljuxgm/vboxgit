@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.h 33236 2010-10-19 15:14:42Z vboxsync $ */
+/* $Id: MsiCommon.h 33315 2010-10-21 15:53:09Z vboxsync $ */
 /** @file
  * Header for MSI/MSI-X support routines.
  */
@@ -42,7 +42,9 @@ uint32_t MsiPciConfigRead (PPDMDEVINS pDevIns, PPCIDEVICE pDev, uint32_t u32Addr
 
 
 /* Init MSI-X support in the device. */
-int      MsixInit(PPCIDEVICE pDev, PPDMMSIREG pMsiReg);
+#ifdef IN_RING3
+int      MsixInit(PCPDMPCIHLP pPciHlp, PPCIDEVICE pDev, PPDMMSIREG pMsiReg);
+#endif
 
 /* If MSI-X is enabled, so that MSIXNotify() shall be used for notifications.  */
 bool     MsixIsEnabled(PPCIDEVICE pDev);
