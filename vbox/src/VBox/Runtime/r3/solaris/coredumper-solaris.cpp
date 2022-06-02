@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 31935 2010-08-24 16:17:35Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 31937 2010-08-24 16:54:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -224,7 +224,6 @@ static size_t GetFileSize(const char *pszPath)
 static int AllocMemoryArea(PVBOXCORE pVBoxCore)
 {
     AssertReturn(pVBoxCore->pvCore == NULL, VERR_ALREADY_EXISTS);
-    AssertReturn(pVBoxCore->VBoxProc.Process != NIL_RTPROCESS, VERR_PROCESS_NOT_FOUND);
 
     struct VBOXSOLPREALLOCTABLE
     {
