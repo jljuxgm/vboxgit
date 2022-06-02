@@ -1,4 +1,4 @@
-/* $Revision: 33540 $ */
+/* $Revision: 33940 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -104,11 +104,6 @@
 #       include <asm/semaphore.h>
 #   endif /* older kernels */
 #   include <linux/timer.h>
-
-#   if 0
-#    include <linux/hrtimer.h>
-#    define VBOX_HRTIMER
-#   endif
 
 #elif defined(RT_OS_DARWIN)
 #   include <libkern/libkern.h>
