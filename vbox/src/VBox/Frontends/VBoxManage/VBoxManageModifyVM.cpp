@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 31568 2010-08-11 13:35:59Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 31575 2010-08-11 15:09:20Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -616,7 +616,7 @@ int handleModifyVM(HandlerArg *a)
             case MODIFYVM_HDD: // deprecated
             case MODIFYVM_SATAPORT: // deprecated
             {
-                uint32_t u1, u2 = 0;
+                uint32_t u1 = 0, u2 = 0;
                 Bstr bstrController = L"IDE Controller";
 
                 switch (c)
