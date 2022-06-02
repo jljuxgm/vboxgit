@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32970 2010-10-07 10:08:00Z vboxsync $
+# $Id: Makefile.kmk 32990 2010-10-07 16:36:21Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1082,7 +1082,8 @@ VBoxRT_LIBS.freebsd            = \
 	iconv \
 	rt
 VBoxRT_LIBS.solaris            = \
-	kstat
+	kstat \
+        contract
 ifn1of ($(KBUILD_TARGET_ARCH), sparc32 sparc64)
  # SMBIOS not available on Solaris SPARC.
  VBoxRT_LIBS.solaris += smbios
