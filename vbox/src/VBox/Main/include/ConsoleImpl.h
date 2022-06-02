@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 35872 2011-02-07 13:43:33Z vboxsync $ */
+/* $Id: ConsoleImpl.h 35962 2011-02-14 15:14:20Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -444,9 +444,7 @@ private:
     HRESULT powerUp(IProgress **aProgress, bool aPaused);
     HRESULT powerDown(IProgress *aProgress = NULL);
 
-    HRESULT callTapSetupApplication(bool isStatic, RTFILE tapFD, Bstr &tapDevice,
-                                    Bstr &tapSetupApplication);
-#if ((defined(RT_OS_LINUX) && !defined(VBOX_WITH_NETFLT)) || defined(RT_OS_FREEBSD))
+#if ((defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)) && !defined(VBOX_WITH_NETFLT))
     HRESULT attachToTapInterface(INetworkAdapter *networkAdapter);
     HRESULT detachFromTapInterface(INetworkAdapter *networkAdapter);
 #endif
@@ -698,7 +696,7 @@ private:
     PPDMLED      mapNetworkLeds[SchemaDefs::NetworkAdapterCount];
     PPDMLED      mapSharedFolderLed;
     PPDMLED      mapUSBLed[2];
-#if ((defined(RT_OS_LINUX) && !defined(VBOX_WITH_NETFLT)) || defined(RT_OS_FREEBSD))
+#if ((defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)) && !defined(VBOX_WITH_NETFLT))
     Utf8Str      maTAPDeviceName[8];
     RTFILE       maTapFD[8];
 #endif
