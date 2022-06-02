@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 35237 2010-12-20 11:11:38Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 35256 2010-12-20 17:04:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1367,6 +1367,13 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
                                ? "VirtualBox extension pack uninstaller"
                                : "VirtualBox extension pack maintainer";
         papszArgs[cSuArgs - 1] = "--";
+#elif defined(RT_OS_SOLARIS) /* Force it not to use pfexec as it won't wait then. */
+        iSuArg = cSuArgs - 4;
+        papszArgs[cSuArgs - 4] = szExecTool;
+        papszArgs[cSuArgs - 3] = "-au";
+        papszArgs[cSuArgs - 2] = "root";
+        papszArgs[cSuArgs - 1] = pszCmdLine;
+        papszArgs[cSuArgs] = NULL;
 #else
         iSuArg = cSuArgs - 2;
         papszArgs[cSuArgs - 2] = szExecTool;
