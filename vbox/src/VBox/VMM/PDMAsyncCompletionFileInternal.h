@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 33219 2010-10-18 20:13:24Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 33220 2010-10-18 20:21:05Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -514,15 +514,15 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
     R3PTRTYPE(volatile PPDMACTASKFILE)     pTasksFreeTail;
     /** Number of elements in the cache. */
     volatile uint32_t                      cTasksCached;
-
-#ifdef VBOX_WITH_STATISTICS
-    uint32_t                               u32Alignment;
-#endif
     /** Cache of endpoint data. */
     PDMACFILEENDPOINTCACHE                 DataCache;
 
     /** Flag whether a flush request is currently active */
     PPDMACTASKFILE                         pFlushReq;
+
+#ifdef VBOX_WITH_STATISTICS
+    uint32_t                               u32Alignment;
+#endif
 
 #ifdef VBOX_WITH_STATISTICS
     /** Time spend in a read. */
