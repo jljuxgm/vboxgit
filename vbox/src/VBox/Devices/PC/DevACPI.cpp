@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 34486 2010-11-29 19:33:17Z vboxsync $ */
+/* $Id: DevACPI.cpp 34494 2010-11-30 09:45:03Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2413,10 +2413,10 @@ static void acpiPciConfigWrite(PPCIDEVICE pPciDev, uint32_t Address, uint32_t u3
     Log2(("acpi: PCI config write: 0x%x -> 0x%x (%d)\n", u32Value, Address, cb));
 
 
-    if (Address == VBOX_PCI_INTERRUPT_LINE && PCIDevGetInterruptLine(pPciDev) != 0)
+    if (Address == VBOX_PCI_INTERRUPT_LINE)
     {
-        Log(("acpi: ignore interrupt line settings: %x, we'll use hardcoded value %x\n", u32Value, PCIDevGetInterruptLine(pPciDev)));
-        return;
+        Log(("acpi: ignore interrupt line settings: %d, we'll use hardcoded value %d\n", u32Value, SCI_INT));
+        u32Value = SCI_INT;
     }
 
     pThis->pfnAcpiPciConfigWrite(pPciDev, Address, u32Value, cb);
