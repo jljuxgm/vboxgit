@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35579 2011-01-17 09:36:05Z vboxsync $
+# $Id: Makefile.kmk 35651 2011-01-20 14:15:49Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -177,6 +177,7 @@ VB_WIN_ADD_NSIS_ENV := \
 	-E 'PATH_TARGET=$(subst /,\,$(PATH_TARGET))' \
 	-E 'PATH_TARGET_X86=$(subst /,\,$(PATH_OUT_BASE)/win.x86/$(KBUILD_TYPE)/obj)' \
 	-E 'VBOX_PATH_ADDITIONS_WIN_X86=$(subst /,\,$(VBOX_PATH_ADDITIONS.win.x86))' \
+	-E 'VBOX_PATH_DIFX=$(subst /,\,$(VBOX_PATH_DIFX))' \
 	-E 'VBOX_VENDOR=$(VBOX_VENDOR)' \
 	-E 'VBOX_VENDOR_SHORT=$(VBOX_VENDOR_SHORT)' \
 	-E 'VBOX_PRODUCT=$(VBOX_PRODUCT)' \
