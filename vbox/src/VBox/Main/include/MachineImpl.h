@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31958 2010-08-25 13:28:44Z vboxsync $ */
+/* $Id: MachineImpl.h 32120 2010-08-31 09:58:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -285,6 +285,7 @@ public:
         FirmwareType_T       mFirmwareType;
         KeyboardHidType_T    mKeyboardHidType;
         PointingHidType_T    mPointingHidType;
+        ChipsetType_T        mChipsetType;
 
         BOOL                 mIoCacheEnabled;
         ULONG                mIoCacheSize;
@@ -450,6 +451,8 @@ public:
     STDMETHOD(COMSETTER(KeyboardHidType)) (KeyboardHidType_T  aKeyboardHidType);
     STDMETHOD(COMGETTER(PointingHidType)) (PointingHidType_T *aPointingHidType);
     STDMETHOD(COMSETTER(PointingHidType)) (PointingHidType_T  aPointingHidType);
+    STDMETHOD(COMGETTER(ChipsetType)) (ChipsetType_T *aChipsetType);
+    STDMETHOD(COMSETTER(ChipsetType)) (ChipsetType_T  aChipsetType);
     STDMETHOD(COMGETTER(IoCacheEnabled)) (BOOL *aEnabled);
     STDMETHOD(COMSETTER(IoCacheEnabled)) (BOOL  aEnabled);
     STDMETHOD(COMGETTER(IoCacheSize)) (ULONG *aIoCacheSize);

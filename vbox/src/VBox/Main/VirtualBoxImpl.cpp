@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 32063 2010-08-29 08:41:54Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 32120 2010-08-31 09:58:36Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -461,7 +461,8 @@ HRESULT VirtualBox::init()
                                           Global::sOSTypes[i].dvdStorageControllerType,
                                           Global::sOSTypes[i].dvdStorageBusType,
                                           Global::sOSTypes[i].hdStorageControllerType,
-                                          Global::sOSTypes[i].hdStorageBusType);
+                                          Global::sOSTypes[i].hdStorageBusType,
+                                          Global::sOSTypes[i].chipsetType);
                 if (SUCCEEDED(rc))
                     m->allGuestOSTypes.addChild(guestOSTypeObj);
             }

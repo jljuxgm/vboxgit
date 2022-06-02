@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 32037 2010-08-27 10:23:14Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 32120 2010-08-31 09:58:36Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -170,8 +170,8 @@ static DECLCALLBACK(void) ich9pciRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelt
 /**
  * @interface_method_impl{PDMDEVREG,pfnConstruct}
  */
-static DECLCALLBACK(int)   ich9pcibridgeConstruct(PPDMDEVINS pDevIns, 
-                                                  int        iInstance, 
+static DECLCALLBACK(int)   ich9pcibridgeConstruct(PPDMDEVINS pDevIns,
+                                                  int        iInstance,
                                                   PCFGMNODE  pCfg)
 {
     int rc;

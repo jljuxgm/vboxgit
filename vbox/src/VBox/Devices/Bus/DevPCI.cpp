@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 31336 2010-08-03 13:53:54Z vboxsync $ */
+/* $Id: DevPCI.cpp 32120 2010-08-31 09:58:36Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2136,7 +2136,7 @@ const PDMDEVREG g_DevicePCI =
     /* u32Version */
     PDM_DEVREG_VERSION,
     /* szName */
-    "pci",
+    "piix3pci",
     /* szRCMod */
     "VBoxDDGC.gc",
     /* szR0Mod */
@@ -2498,7 +2498,7 @@ const PDMDEVREG g_DevicePCIBridge =
     /* u32Version */
     PDM_DEVREG_VERSION,
     /* szName */
-    "pcibridge",
+    "piix3pcibridge",
     /* szRCMod */
     "VBoxDDGC.gc",
     /* szR0Mod */
