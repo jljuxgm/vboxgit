@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 32646 2010-09-20 15:41:20Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 33447 2010-10-26 08:07:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -664,6 +664,8 @@ bool UINewVMWzdPage5::constructMachine()
     m_Machine.SetVRAMSize (qMax (type.GetRecommendedVRAM(),
                                 (ULONG) (VBoxGlobal::requiredVideoMemory(&m_Machine) / _1M)));
 
+    /* Selecting recommended Audio Controller */
+    m_Machine.GetAudioAdapter().SetAudioController(type.GetRecommendedAudioController());
     /* Enabling audio by default */
     m_Machine.GetAudioAdapter().SetEnabled(true);
 

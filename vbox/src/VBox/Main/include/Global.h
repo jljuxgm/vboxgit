@@ -1,4 +1,4 @@
-/* $Id: Global.h 32531 2010-09-15 17:04:48Z vboxsync $ */
+/* $Id: Global.h 33447 2010-10-26 08:07:43Z vboxsync $ */
 
 /** @file
  *
@@ -68,6 +68,7 @@ public:
         const StorageControllerType_T  hdStorageControllerType;
         const StorageBus_T             hdStorageBusType;
         const ChipsetType_T            chipsetType;
+        const AudioControllerType_T    audioControllerType;
     };
 
     static const OSType sOSTypes[SchemaDefs::OSTypeId_COUNT];
