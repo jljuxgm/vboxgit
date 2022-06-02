@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 35009 2010-12-13 13:48:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 35040 2010-12-13 17:44:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7539,6 +7539,26 @@ HRESULT Machine::loadStorageDevices(StorageController *aStorageController,
 
                     return setError(E_FAIL,
                                     tr("Immutable hard disk '%s' with UUID {%RTuuid} cannot be directly attached to the virtual machine '%s' ('%s')"),
+                                    medium->getLocationFull().c_str(),
+                                    dev.uuid.raw(),
+                                    mUserData->s.strName.c_str(),
+                                    mData->m_strConfigFileFull.c_str());
+                }
+
+                if (medium->getType() == MediumType_MultiAttach)
+                {
+                    if (isSnapshotMachine())
+                        return setError(E_FAIL,
+                                        tr("Multi-attach hard disk '%s' with UUID {%RTuuid} cannot be directly attached to snapshot with UUID {%RTuuid} "
+                                           "of the virtual machine '%s' ('%s')"),
+                                        medium->getLocationFull().c_str(),
+                                        dev.uuid.raw(),
+                                        puuidSnapshot->raw(),
+                                        mUserData->s.strName.c_str(),
+                                        mData->m_strConfigFileFull.c_str());
+
+                    return setError(E_FAIL,
+                                    tr("Multi-attach hard disk '%s' with UUID {%RTuuid} cannot be directly attached to the virtual machine '%s' ('%s')"),
                                     medium->getLocationFull().c_str(),
                                     dev.uuid.raw(),
                                     mUserData->s.strName.c_str(),
