@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 31341 2010-08-03 14:38:11Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 31342 2010-08-03 14:40:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -126,9 +126,9 @@ void UIMachineViewScale::scalePauseShot()
         QSize scaledSize = frameBuffer()->scaledSize();
         if (scaledSize.isValid())
         {
-            QImage bla1 = m_pPauseImage->scaled(frameBuffer()->scaledSize(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-            dimImage(bla1);
-            m_pauseShot = QPixmap::fromImage(bla1);
+            QImage tmpImg = m_pPauseImage->scaled(frameBuffer()->scaledSize(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            dimImage(tmpImg);
+            m_pauseShot = QPixmap::fromImage(tmpImg);
         }
     }
 }
