@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 32615 2010-09-17 15:49:42Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 32618 2010-09-17 16:46:14Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5658,7 +5658,7 @@ static int vmdksCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
 
     /* Always return failure, to avoid opening other VMDK files via this
      * special VMDK streamOptimized format backend. */
-    rc = VERR_NOT_SUPPORTED;
+    rc = VERR_VD_VMDK_INVALID_HEADER;
 
 out:
     LogFlowFunc(("returns %Rrc\n", rc));
