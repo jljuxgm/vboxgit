@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32102 2010-08-30 14:49:44Z vboxsync $ */
+/* $Id: FTM.cpp 32118 2010-08-31 09:48:46Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -864,7 +864,6 @@ static DECLCALLBACK(int) ftmR3StandbyServeConnection(RTSOCKET Sock, void *pvUser
         char szCmd[128];
 
         rc = ftmR3TcpReadLine(pVM, szCmd, sizeof(szCmd));
-        AssertRC(rc);
         if (RT_FAILURE(rc))
             break;
 
