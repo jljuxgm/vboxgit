@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 33728 2010-11-03 14:05:37Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -1359,16 +1359,27 @@ static DECLCALLBACK(int) drvHostSerialConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
         rc = VINF_SUCCESS;
     }
 
-#else
+#else /* !RT_OS_WINDOWS */
 
-    rc = RTFileOpen(&pThis->DeviceFile, pThis->pszDevicePath, RTFILE_O_READWRITE | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
+    uint32_t fOpen = RTFILE_O_READWRITE | RTFILE_O_OPEN | RTFILE_O_DENY_NONE;
+# ifdef RT_OS_LINUX
+    /* This seems to be necessary on some Linux hosts, otherwise we hang here forever.
+     * Surprisingly, I've never seen VERR_TRY_AGAIN as result even if RTFileOpen()
+     * would block without that flag. */
+    fOpen |= RTFILE_O_NON_BLOCK;
+# endif
+    rc = RTFileOpen(&pThis->DeviceFile, pThis->pszDevicePath, fOpen);
+# ifdef RT_OS_LINUX
+    if (rc == VERR_INVALID_PARAMETER)
+        rc = RTFileOpen(&pThis->DeviceFile, pThis->pszDevicePath, fOpen & ~RTFILE_O_NON_BLOCK);
+# endif
 # ifdef RT_OS_DARWIN
     if (RT_SUCCESS(rc))
         rc = RTFileOpen(&pThis->DeviceFileR, pThis->pszDevicePath, RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
 # endif
 
 
-#endif
+#endif /* !RT_OS_WINDOWS */
 
     if (RT_FAILURE(rc))
     {
