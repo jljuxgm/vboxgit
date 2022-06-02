@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 35868 2011-02-07 13:04:21Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 35934 2011-02-10 17:48:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -644,7 +644,7 @@ STDMETHODIMP ExtPackFile::Install(BOOL a_fReplace, IN_BSTR a_bstrDisplayInfo, IP
             {
                 pJob = new EXTPACKINSTALLJOB;
                 pJob->ptrExtPackFile    = this;
-                pJob->fReplace          = a_fReplace ? true : false;
+                pJob->fReplace          = a_fReplace != FALSE;
                 pJob->strDisplayInfo    = a_bstrDisplayInfo;
                 pJob->ptrExtPackMgr     = m->ptrExtPackMgr;
                 hrc = pJob->ptrProgress.createObject();
