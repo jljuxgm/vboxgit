@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 31103 2010-07-26 10:58:27Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -428,6 +428,9 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
 #endif
 #ifdef EMEDIUMTYPE
         case EMEDIUMTYPE:       return VERR_MEDIA_NOT_RECOGNIZED;
+#endif
+#if defined(EWOULDBLOCK) && (EWOULDBLOCK != EAGAIN)
+        case EWOULDBLOCK        return VERR_TRY_AGAIN;
 #endif
 
         /* Non-linux */
