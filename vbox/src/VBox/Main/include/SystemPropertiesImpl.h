@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 33596 2010-10-29 10:47:07Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 33598 2010-10-29 11:08:42Z vboxsync $ */
 
 /** @file
  *
@@ -117,6 +117,7 @@ private:
 
     typedef std::list<ComObjPtr<MediumFormat> > MediumFormatList;
 
+    HRESULT getUserHomeDirectory(Utf8Str &strPath);
     HRESULT setDefaultMachineFolder(const Utf8Str &aPath);
     HRESULT setDefaultHardDiskFormat(const Utf8Str &aFormat);
 
