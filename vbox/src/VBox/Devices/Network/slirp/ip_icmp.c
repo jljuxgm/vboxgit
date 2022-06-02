@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 30415 2010-06-24 09:02:31Z vboxsync $ */
+/* $Id: ip_icmp.c 33954 2010-11-11 08:05:26Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -685,7 +685,12 @@ end_error_free_m:
     m_freem(pData, m);
 
 end_error:
-    LogRel(("NAT: error occurred while sending ICMP error message\n"));
+    {
+        static int cIcmpErrorReported;
+        if (!cIcmpErrorReported)
+            LogRel(("NAT: error occurred while sending ICMP error message\n"));
+        cIcmpErrorReported++;
+    }
 }
 #undef ICMP_MAXDATALEN
 
