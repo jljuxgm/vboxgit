@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 30453 2010-06-27 19:43:20Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 30454 2010-06-27 20:00:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -116,6 +116,8 @@ static int dbgfR3DisasInstrFirst(PVM pVM, PVMCPU pVCpu, PDBGFSELINFO pSelInfo, P
     DISCPUMODE enmCpuMode;
     switch (fFlags & DBGF_DISAS_FLAGS_MODE_MASK)
     {
+        default:
+            AssertFailed();
         case DBGF_DISAS_FLAGS_DEFAULT_MODE:
             enmCpuMode   = pState->f64Bits
                          ? CPUMODE_64BIT
