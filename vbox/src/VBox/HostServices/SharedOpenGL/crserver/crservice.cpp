@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 33988 2010-11-11 13:03:17Z vboxsync $ */
+/* $Id: crservice.cpp 34182 2010-11-18 18:12:37Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -513,6 +513,10 @@ static int vboxCrHgsmiCtl(PVBOXVDMACMD_CHROMIUM_CTL pCtl)
             g_pvVRamBase = (uint8_t*)pSetup->pvRamBase;
             rc = VINF_SUCCESS;
         } break;
+        case VBOXVDMACMD_CHROMIUM_CTL_TYPE_SAVESTATE_BEGIN:
+        case VBOXVDMACMD_CHROMIUM_CTL_TYPE_SAVESTATE_END:
+            rc = VINF_SUCCESS;
+            break;
         default:
             Assert(0);
             rc = VERR_INVALID_PARAMETER;
