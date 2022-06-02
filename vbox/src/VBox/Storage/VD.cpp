@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 34959 2010-12-10 15:17:31Z vboxsync $ */
+/* $Id: VD.cpp 35152 2010-12-15 16:45:42Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2128,7 +2128,7 @@ static int vdLoadDynamicBackends()
             break;
         }
 
-        rc = SUPR3HardenedLdrLoad(pszPluginPath, &hPlugin, NULL, 0);
+        rc = SUPR3HardenedLdrLoad(pszPluginPath, &hPlugin, 0 /*=fFlags*/, NULL, 0);
         if (RT_SUCCESS(rc))
         {
             rc = RTLdrGetSymbol(hPlugin, VBOX_HDDFORMAT_LOAD_NAME, (void**)&pfnHDDFormatLoad);
@@ -2252,7 +2252,7 @@ static int vdLoadDynamicCacheBackends()
             break;
         }
 
-        rc = SUPR3HardenedLdrLoad(pszPluginPath, &hPlugin, NULL, 0);
+        rc = SUPR3HardenedLdrLoad(pszPluginPath, &hPlugin, 0 /*=fFlags*/, NULL, 0);
         if (RT_SUCCESS(rc))
         {
             rc = RTLdrGetSymbol(hPlugin, VD_CACHEFORMAT_LOAD_NAME, (void**)&pfnVDCacheLoad);

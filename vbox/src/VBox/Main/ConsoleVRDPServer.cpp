@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 35146 2010-12-15 16:31:56Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 35152 2010-12-15 16:45:42Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2339,7 +2339,7 @@ void ConsoleVRDPServer::QueryInfo(uint32_t index, void *pvBuffer, uint32_t cbBuf
         if (RTPathHavePath(pszLibraryName))
             rc = SUPR3HardenedLdrLoadPlugIn(pszLibraryName, &mVRDPLibrary, szErr, sizeof(szErr));
         else
-            rc = SUPR3HardenedLdrLoadAppPriv(pszLibraryName, &mVRDPLibrary, szErr, sizeof(szErr));
+            rc = SUPR3HardenedLdrLoadAppPriv(pszLibraryName, &mVRDPLibrary, 0 /*=fFlags*/, szErr, sizeof(szErr));
         if (RT_SUCCESS(rc))
         {
             struct SymbolEntry

@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 34962 2010-12-10 15:42:36Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 35152 2010-12-15 16:45:42Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -39,9 +39,10 @@
 #include "internal/ldr.h"
 
 
-int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, char *pszError, size_t cbError)
+int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlags, char *pszError, size_t cbError)
 {
     Assert(sizeof(*phHandle) >= sizeof(HMODULE));
+    AssertReturn(fFlags == 0, VERR_INVALID_PARAMETER);
 
     /*
      * Do we need to add an extension?
