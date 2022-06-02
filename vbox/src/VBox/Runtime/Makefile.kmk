@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34016 2010-11-12 00:20:45Z vboxsync $
+# $Id: Makefile.kmk 34027 2010-11-12 10:46:49Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -372,8 +372,8 @@ RuntimeR3_SOURCES       = \
 	common/vfs/vfsstdfile.cpp \
 	common/zip/tar.cpp \
 	common/zip/tarvfs.cpp \
+	common/zip/gzipvfs.cpp \
 	common/zip/zip.cpp \
-	common/zip/zipgzip.cpp \
 	generic/critsect-generic.cpp \
 	generic/env-generic.cpp \
 	generic/RTDirCreateTemp-generic.cpp \
