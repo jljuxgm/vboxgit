@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 33764 2010-11-04 13:50:21Z vboxsync $ */
+/* $Id: VBoxManage.cpp 33766 2010-11-04 14:05:28Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -400,6 +400,7 @@ int main(int argc, char *argv[])
 #endif
             { "dhcpserver",       USAGE_DHCPSERVER,        handleDHCPServer},
             { "vrde",             USAGE_VRDE,              handleVRDE},
+            { "extpack",          USAGE_EXTPACK,           handleExtPack},
             { NULL,               0,                       NULL }
         };
 
