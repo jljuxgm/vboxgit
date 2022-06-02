@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 34129 2010-11-16 22:31:39Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 34131 2010-11-16 23:30:57Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -39,6 +39,8 @@
 #include <VBox/ssm.h>
 #endif
 #include <iprt/semaphore.h>
+
+#include <VBox/err.h>
 
 #include <QFile>
 #include <QTextStream>
