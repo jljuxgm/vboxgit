@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35400 2011-01-04 11:58:52Z vboxsync $
+# $Id: Config.kmk 35562 2011-01-14 13:48:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3665,6 +3665,24 @@ ifdef VBOX_WITH_EXTPACK
   	$(LIB_RUNTIME) \
   	$(LIB_VMM)
  endif
+ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), freebsd.x86 linux.x86) # Undo the PIC avoidance in VBOXR3DLLNOXCPT/VBOXR3
+  TEMPLATE_VBoxR3ExtPack_DEFS      += PIC
+  ifdef TEMPLATE_VBoxR3ExtPack_CXXFLAGS
+   TEMPLATE_VBoxR3ExtPack_CFLAGS   += -fPIC
+  else
+   TEMPLATE_VBoxR3ExtPack_CFLAGS   += $(TEMPLATE_$(TEMPLATE_VBoxR3ExtPack_EXTENDS)_CFLAGS) -fPIC
+  endif
+  ifdef TEMPLATE_VBoxR3ExtPack_CXXFLAGS
+   TEMPLATE_VBoxR3ExtPack_CXXFLAGS += -fPIC
+  else
+   TEMPLATE_VBoxR3ExtPack_CXXFLAGS += $(TEMPLATE_$(TEMPLATE_VBoxR3ExtPack_EXTENDS)_CXXFLAGS) -fPIC
+  endif
+  ifdef TEMPLATE_VBoxR3ExtPack_LDFLAGS
+   TEMPLATE_VBoxR3ExtPack_LDFLAGS  += -fPIC
+  else
+  TEMPLATE_VBoxR3ExtPack_CFLAGS     = $(TEMPLATE_$(TEMPLATE_VBoxR3ExtPack_EXTENDS)_LDFLAGS) -fPIC
+  endif
+ endif
 
  TEMPLATE_VBoxR0ExtPack = For the ring-0 context extension pack modules.
  TEMPLATE_VBoxR0ExtPack_EXTENDS = VBoxR0
@@ -4632,7 +4650,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35400 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35562 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
