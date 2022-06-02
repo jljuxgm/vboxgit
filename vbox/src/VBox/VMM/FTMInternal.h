@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32179 2010-09-01 14:32:27Z vboxsync $ */
+/* $Id: FTMInternal.h 32193 2010-09-02 12:56:32Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -28,16 +28,6 @@
  * @ingroup grp_ftm
  * @{
  */
-
-typedef enum
-{
-    /* Sync the changed memory pages. */
-    FTMSYNCSTATE_DELTA_MEMORY,
-    /* Sync the changed state (memory + vm/device internal state) */
-    FTMSYNCSTATE_DELTA_VM,
-    /* Sync the entire VM state. */
-    FTMSYNCSTATE_FULL
-} FTMSYNCSTATE;
 
 
 /**
