@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29793 2010-05-25 15:46:41Z vboxsync $
+# $Id: Makefile.kmk 30880 2010-07-16 14:06:46Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -202,7 +202,7 @@ $(VBOX_JXPCOM_GEN)/jxpcomgen.list: \
 		$$(addprefix $(VBOX_PATH_XPCOM_SRC)/,$$(XPCOM_IDLFILES)) \
 		$(VBOX_XPIDL) \
 		| $(VBOX_JXPCOM_GEN)/java/
-	$(call MSG_L1,Generating Java interface files from IDL)
+	$(call MSG_L1,Generating XPCOM Java interface files from IDL)
 	$(QUIET)$(RM) -f $(filter-out %/XPCOMError.java, $(wildcard $(VBOX_JXPCOM_GEN)/java/*.java))
 	$(foreach idl, $(VBOX_PATH_SDK)/bindings/xpcom/idl/VirtualBox_XPCOM.idl $(addprefix $(VBOX_PATH_XPCOM_SRC)/,$(XPCOM_IDLFILES))\
 		, $(NLTAB)$(QUIET)$(VBOX_XPIDL) -m java $(XPIDL_INCS) -e $(VBOX_JXPCOM_GEN)/java/$(basename $(notdir $(idl))).java $(idl) )

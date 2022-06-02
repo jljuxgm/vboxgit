@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30825 2010-07-14 12:44:14Z vboxsync $
+# $Id: Makefile.kmk 30880 2010-07-16 14:06:46Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -873,7 +873,7 @@ $(VBOX_JMSCOM_GEN)/jmscomglue.list:  \
                 $(VBOX_GLUE_XSLT_DIR)/glue-java.xsl \
                 $(VBOX_FILESPLIT)    \
 		| $(VBOX_JMSCOM_GEN)/java/
-	$(call MSG_L1,Generating Java glue files from XIDL)
+	$(call MSG_L1,Generating Java MSCOM glue files from XIDL)
 	$(QUIET)$(RM) -f $(wildcard $(VBOX_JMSCOM_GEN)/java/*.java)
 	$(QUIET)$(VBOX_XSLTPROC) \
               --stringparam G_vboxApiSuffix $(VBOX_API_SUFFIX) \
