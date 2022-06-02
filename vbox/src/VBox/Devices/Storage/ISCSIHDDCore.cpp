@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 33121 2010-10-14 08:54:27Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 33124 2010-10-14 09:20:16Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -841,6 +841,7 @@ static PISCSICMD iscsiCmdRemoveAll(PISCSIIMAGE pImage)
             pIScsiCmdHead = pHead;
         }
     }
+    pImage->cCmdsWaiting = 0;
 
     return pIScsiCmdHead;
 }
