@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 30936 2010-07-20 16:59:35Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 31285 2010-08-02 11:59:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,6 +49,9 @@ UIMachineLogicScale::~UIMachineLogicScale()
 
     /* Cleanup handlers: */
     cleanupHandlers();
+
+    /* Cleanup actions groups: */
+    cleanupActionGroups();
 }
 
 void UIMachineLogicScale::initialize()
