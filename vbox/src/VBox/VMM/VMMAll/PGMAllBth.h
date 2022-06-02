@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 32362 2010-09-09 15:55:20Z vboxsync $ */
+/* $Id: PGMAllBth.h 32366 2010-09-09 16:04:38Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1103,7 +1103,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
  *          Currently true, but keep in mind!
  *
  * @todo    Clean this up! Most of it is (or should be) no longer necessary as we catch all page table accesses.
- *          Should only required when PGMPOOL_WITH_OPTIMIZED_DIRTY_PT is active (PAE or AMD64 (for now))
+ *          Should only be required when PGMPOOL_WITH_OPTIMIZED_DIRTY_PT is active (PAE or AMD64 (for now))
  */
 PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
 {
