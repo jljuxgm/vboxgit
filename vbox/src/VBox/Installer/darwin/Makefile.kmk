@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31679 2010-08-13 19:39:19Z vboxsync $
+# $Id: Makefile.kmk 31681 2010-08-16 09:19:01Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -89,8 +89,7 @@ INSTALLS += darwin-docs
 darwin-docs_INST = $(INST_DIST)
 darwin-docs_MODE = a+r,u+w
 darwin-docs_SOURCES = \
-	$(VBOX_BRAND_LICENSE_TXT)=>LICENSE \
-	$(PATH_ROOT)/doc/ReadMe-MacOSX.txt
+	$(VBOX_BRAND_LICENSE_TXT)=>LICENSE
 
 
 #
