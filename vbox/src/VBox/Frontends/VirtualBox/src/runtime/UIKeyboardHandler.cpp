@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 31693 2010-08-16 13:17:14Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 31865 2010-08-23 14:46:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -821,6 +821,10 @@ LRESULT CALLBACK UIKeyboardHandler::lowLevelKeyboardProc(int nCode, WPARAM wPara
 
 bool UIKeyboardHandler::winLowKeyboardEvent(UINT msg, const KBDLLHOOKSTRUCT &event)
 {
+    /* Check what related machine-view was NOT unregistered yet: */
+    if (!m_views.contains(m_iKeyboardHookViewIndex))
+        return false;
+
     /* Sometimes it happens that Win inserts additional events on some key
      * press/release. For example, it prepends ALT_GR in German layout with
      * the VK_LCONTROL vkey with curious 0x21D scan code (seems to be necessary
