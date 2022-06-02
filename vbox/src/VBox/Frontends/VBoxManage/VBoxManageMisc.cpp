@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 35827 2011-02-03 08:56:06Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 35828 2011-02-03 09:17:14Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -163,12 +163,10 @@ int handleUnregisterVM(HandlerArg *a)
         {
             if (fDelete)
             {
-                do
-                {
-                    ComPtr<IProgress> pProgress;
-                    CHECK_ERROR_BREAK(machine, Delete(ComSafeArrayAsInParam(aMedia), pProgress.asOutParam()));
+                ComPtr<IProgress> pProgress;
+                CHECK_ERROR(machine, Delete(ComSafeArrayAsInParam(aMedia), pProgress.asOutParam()));
+                if (SUCCEEDED(rc))
                     CHECK_ERROR(pProgress, WaitForCompletion(-1));
-                } while (0);
             }
         }
     }
