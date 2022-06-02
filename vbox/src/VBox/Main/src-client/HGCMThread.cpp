@@ -1,6 +1,5 @@
+/* $Id: HGCMThread.cpp 35374 2010-12-30 14:42:15Z vboxsync $ */
 /** @file
- *
- * HGCM (Host-Guest Communication Manager):
  * HGCMThread - Host-Guest Communication Manager Threads
  */
 
@@ -19,7 +18,7 @@
 #define LOG_GROUP_MAIN_OVERRIDE LOG_GROUP_HGCM
 #include "Logging.h"
 
-#include "hgcm/HGCMThread.h"
+#include "HGCMThread.h"
 
 #include <VBox/err.h>
 #include <iprt/semaphore.h>
