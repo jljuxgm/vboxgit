@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 30879 2010-07-16 12:48:47Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 34527 2010-11-30 16:25:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -51,7 +51,7 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
 {
 //    RTPrintf("Self add: %RTthrd\n", RTThreadSelf());
     const CVirtualBox &vbox = vboxGlobal().virtualBox();
-    UIMainEventListener *pListener = new UIMainEventListener(this);
+    UIMainEventListenerImpl *pListener = new UIMainEventListenerImpl(this);
     m_mainEventListener = CEventListener(pListener);
     QVector<KVBoxEventType> events;
     events
@@ -64,23 +64,23 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
     vbox.GetEventSource().RegisterListener(m_mainEventListener, events, TRUE);
     AssertWrapperOk(vbox);
 
-    connect(pListener, SIGNAL(sigMachineStateChange(QString, KMachineState)),
+    connect(pListener->getWrapped(), SIGNAL(sigMachineStateChange(QString, KMachineState)),
             this, SIGNAL(sigMachineStateChange(QString, KMachineState)),
             Qt::QueuedConnection);
 
-    connect(pListener, SIGNAL(sigMachineDataChange(QString)),
+    connect(pListener->getWrapped(), SIGNAL(sigMachineDataChange(QString)),
             this, SIGNAL(sigMachineDataChange(QString)),
             Qt::QueuedConnection);
 
-    connect(pListener, SIGNAL(sigMachineRegistered(QString, bool)),
+    connect(pListener->getWrapped(), SIGNAL(sigMachineRegistered(QString, bool)),
             this, SIGNAL(sigMachineRegistered(QString, bool)),
             Qt::QueuedConnection);
 
-    connect(pListener, SIGNAL(sigSessionStateChange(QString, KSessionState)),
+    connect(pListener->getWrapped(), SIGNAL(sigSessionStateChange(QString, KSessionState)),
             this, SIGNAL(sigSessionStateChange(QString, KSessionState)),
             Qt::QueuedConnection);
 
-    connect(pListener, SIGNAL(sigSnapshotChange(QString, QString)),
+    connect(pListener->getWrapped(), SIGNAL(sigSnapshotChange(QString, QString)),
             this, SIGNAL(sigSnapshotChange(QString, QString)),
             Qt::QueuedConnection);
 }
