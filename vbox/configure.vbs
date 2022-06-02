@@ -1,4 +1,4 @@
-' $Id: configure.vbs 31874 2010-08-23 19:02:39Z vboxsync $
+' $Id: configure.vbs 34466 2010-11-29 15:00:56Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -2037,6 +2037,7 @@ sub CheckForSsl(strOptSsl)
    strPathSsl = UnixSlashes(PathAbs(strPathSsl))
    CfgPrint "SDK_VBOX_OPENSSL_INCS := " & strPathSsl & "/include"
    CfgPrint "SDK_VBOX_OPENSSL_LIBS := " & strPathSsl & "/lib/ssleay32.lib" & " " & strPathSsl & "/lib/libeay32.lib"
+   CfgPrint "SDK_VBOX_BLD_OPENSSL_LIBS := " & strPathSsl & "/lib/ssleay32.lib" & " " & strPathSsl & "/lib/libeay32.lib"
 
    PrintResult "openssl", strPathSsl
 end sub

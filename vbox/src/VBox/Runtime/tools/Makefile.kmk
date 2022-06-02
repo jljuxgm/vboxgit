@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34464 2010-11-29 13:45:37Z vboxsync $
+# $Id: Makefile.kmk 34466 2010-11-29 15:00:56Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -31,6 +31,10 @@ include	$(KBUILD_PATH)/subheader.kmk
 PROGRAMS += RTManifest
 RTManifest_TEMPLATE = VBOXR3TSTEXE
 RTManifest_SOURCES = RTManifest.cpp
+
+BLDPROGS += bldRTManifest
+bldRTManifest_TEMPLATE = VBoxAdvBldProg
+bldRTManifest_SOURCES  = RTManifest.cpp
 
 # RTLdrFlt is similar to c++filt, except that it's for VMMR0.r0 stacks.
 PROGRAMS += RTLdrFlt

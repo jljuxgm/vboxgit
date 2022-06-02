@@ -1,4 +1,4 @@
-/* $Id: RTManifest.cpp 34464 2010-11-29 13:45:37Z vboxsync $ */
+/* $Id: RTManifest.cpp 34466 2010-11-29 15:00:56Z vboxsync $ */
 /** @file
  * IPRT - Manifest Utility.
  */
@@ -37,6 +37,7 @@
 #include <iprt/initterm.h>
 #include <iprt/message.h>
 #include <iprt/path.h>
+#include <iprt/process.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/vfs.h>
@@ -360,11 +361,11 @@ int main(int argc, char **argv)
                 break;
 
             case 'h':
-                RTMsgInfo("Usage: %s [--manifest <file>] [--chdir <dir>] [--attribute <attrib-name> [..]] <files>\n"
-                          "   or  %s --verify [--manifest <file>] [--chdir <dir>]\n"
-                          "\n"
-                          "attrib-name: size, md5, sha1, sha256 or sha512\n"
-                          , argv[0], argv[0]);
+                RTPrintf("Usage: %s [--manifest <file>] [--chdir <dir>] [--attribute <attrib-name> [..]] <files>\n"
+                         "   or  %s --verify [--manifest <file>] [--chdir <dir>]\n"
+                         "\n"
+                         "attrib-name: size, md5, sha1, sha256 or sha512\n"
+                         , RTProcShortName(), RTProcShortName());
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
