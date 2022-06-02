@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 35070 2010-12-14 12:28:32Z vboxsync $ */
+/* $Id: GuestImpl.cpp 35095 2010-12-14 15:27:55Z vboxsync $ */
 
 /** @file
  *
@@ -566,8 +566,9 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
                     }
                     else
                     {
-                        LogRel(("Automatic update of Guest Additions started\n"));
-                        LogRel(("Copying Guest Additions installer to guest ...\n"));
+                        LogRel(("Automatic update of Guest Additions started, using \"%s\"\n", aTask->strSource.c_str()));
+                        LogRel(("Copying Guest Additions installer \"%s\" to \"%s\" on guest ...\n",
+                                installerImage.c_str(), strInstallerPath.c_str()));
                         aTask->progress->SetCurrentOperationProgress(20);
 
                         /* Wait for process to exit ... */
