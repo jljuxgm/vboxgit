@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 33952 2010-11-11 03:49:28Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 34992 2010-12-13 11:36:38Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -286,12 +286,13 @@ NATEngine::AddRedirect(IN_BSTR aName, NATProtocol_T aProto, IN_BSTR aBindIp, USH
     for (it = mNATRules.begin(); it != mNATRules.end(); ++it)
     {
         r = it->second;
-        if (   it->first == name
-            || (   r.strHostIP == Utf8Str(aBindIp)
-                && r.u16HostPort == aHostPort))
-        {
-            return E_INVALIDARG;
-        }
+        if (it->first == name)
+            return setError(E_INVALIDARG,
+                            tr("A NAT rule of this name does already exist"));
+        if (   r.strHostIP == Utf8Str(aBindIp)
+            && r.u16HostPort == aHostPort)
+            return setError(E_INVALIDARG,
+                            tr("A NAT rule for this host port and this host IP does already exist"));
     }
 
     r.strName = name.c_str();
