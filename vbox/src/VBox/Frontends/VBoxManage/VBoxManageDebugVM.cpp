@@ -1,10 +1,10 @@
-/* $Id: VBoxManageDebugVM.cpp 34913 2010-12-09 17:20:41Z vboxsync $ */
+/* $Id: VBoxManageDebugVM.cpp 34915 2010-12-09 17:28:00Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
