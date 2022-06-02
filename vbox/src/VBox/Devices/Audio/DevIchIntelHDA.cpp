@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 31502 2010-08-10 04:21:33Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 31507 2010-08-10 06:52:49Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -1200,7 +1200,6 @@ static uint32_t write_audio(INTELHDLinkState *pState, int avail, bool *fStop)
 DECLCALLBACK(int) hdaCodecReset(CODECState *pCodecState)
 {
     INTELHDLinkState *pState = (INTELHDLinkState *)pCodecState->pHDAState;
-    pCodecState->fFirstResetDetected = true;
     return VINF_SUCCESS;
 }
 
