@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 32219 2010-09-02 18:26:21Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 32220 2010-09-02 18:27:25Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -81,7 +81,7 @@ typedef struct
 typedef struct
 {
     Elf64_Nhdr  Hdr;            /* 64-bit NOTE Header */
-    char        achName[8];    /* Name of NOTE section */
+    char        achName[8];     /* Name of NOTE section */
 } ELFNOTEHDR;
 
 
