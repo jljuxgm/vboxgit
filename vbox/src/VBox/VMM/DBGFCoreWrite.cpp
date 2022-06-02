@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 32214 2010-09-02 15:19:06Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 32215 2010-09-02 15:27:11Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -166,7 +166,7 @@ static int Elf64WriteProgHdr(RTFILE hFile, uint32_t Type, uint32_t fFlags, uint6
  *
  * @return IPRT status code.
  */
-static int Elf64WriteNoteHeader(RTFILE hFile, uint_t Type, const char *pszName, const void *pcv, uint64_t cb, uint64_t *pcbNoteHdr)
+static int Elf64WriteNoteHeader(RTFILE hFile, uint16_t Type, const char *pszName, const void *pcv, uint64_t cb, uint64_t *pcbNoteHdr)
 {
     AssertReturn(pcv, VERR_INVALID_POINTER);
     AssertReturn(cb > 0, VERR_NO_DATA);
