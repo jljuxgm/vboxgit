@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 33014 2010-10-08 17:31:59Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 33017 2010-10-08 18:40:37Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -217,7 +217,7 @@ DECLINLINE(void) rtR0SemLnxWaitDoIt(PRTR0SEMLNXWAIT pWait)
         if (pWait->u.lTimeout <= 0)
             pWait->fTimedOut = true;
     }
-    after_wait(&WaitQE);
+    after_wait((&pWait->WaitQE));
 }
 
 
