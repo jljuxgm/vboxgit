@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 34754 2010-12-06 14:40:03Z vboxsync $ */
+/* $Id: MouseImpl.cpp 34835 2010-12-08 14:10:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -467,6 +467,7 @@ HRESULT Mouse::convertDisplayRes(LONG x, LONG y, uint32_t *pcX, uint32_t *pcY)
     else
     {
         int32_t x1, y1, x2, y2;
+        /* Takes the display lock */
         pDisplay->getFramebufferDimensions(&x1, &y1, &x2, &y2);
         *pcX = x1 != x2 ? (x - 1 - x1) * 0xFFFF / (x2 - x1) : 0;
         *pcY = y1 != y2 ? (y - 1 - y1) * 0xFFFF / (y2 - y1) : 0;
