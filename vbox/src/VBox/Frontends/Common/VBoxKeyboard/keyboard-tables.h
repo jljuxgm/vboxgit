@@ -1,4 +1,4 @@
-/* $Id: keyboard-tables.h 30787 2010-07-12 11:19:35Z vboxsync $ */
+/* $Id: keyboard-tables.h 32874 2010-10-01 16:50:10Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables.
  */
@@ -235,6 +235,8 @@ static const unsigned sun_key_scan[256] =
     0, 0, 0, 0, 0, 0, 0, 0,                                     /* 1005FFF0 */
     0, 0, 0, 0, 0, 0, 0, 0                                      /* 1005FFF8 */
 };
+
+#include "xkbtoscan.h"
 
 #endif /* !___VBox_keyboard_tables_h */
 
