@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-nt.cpp 32453 2010-09-13 14:46:00Z vboxsync $ */
+/* $Id: spinlock-r0drv-nt.cpp 32454 2010-09-13 15:05:13Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, NT.
  */
@@ -92,7 +92,7 @@ RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock)
      */
     pSpinlockInt->u32Magic = RTSPINLOCK_MAGIC;
 #ifdef RTSPINLOCK_NT_HACK_NOIRQ
-    pSpinlockInt->u32Hack  = RTSPINLOCK_NT_HACK_NOIRQ;
+    pSpinlockInt->u32Hack  = RTSPINLOCK_NT_HACK_NOIRQ_FREE;
 #endif
     KeInitializeSpinLock(&pSpinlockInt->Spinlock);
     Assert(sizeof(KIRQL) == sizeof(unsigned char));
