@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31140 2010-07-27 13:29:43Z vboxsync $ */
+/* $Id: PGMInternal.h 31141 2010-07-27 13:39:34Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3164,7 +3164,6 @@ typedef struct PGMCPUSTATS
     STAMCOUNTER StatRZTrap0eSVReserved;             /**< RC/R0: \#PF err kind */
     STAMCOUNTER StatRZTrap0eSNXE;                   /**< RC/R0: \#PF err kind */
     STAMCOUNTER StatRZTrap0eGuestPF;                /**< RC/R0: Real guest \#PFs. */
-    STAMCOUNTER StatRZTrap0eGuestPFUnh;             /**< RC/R0: Real guest \#PF ending up at the end of the \#PF code. */
     STAMCOUNTER StatRZTrap0eGuestPFMapping;         /**< RC/R0: Real guest \#PF to HMA or other mapping. */
     STAMCOUNTER StatRZTrap0eWPEmulInRZ;             /**< RC/R0: WP=0 virtualization trap, handled. */
     STAMCOUNTER StatRZTrap0eWPEmulToR3;             /**< RC/R0: WP=0 virtualization trap, chickened out. */

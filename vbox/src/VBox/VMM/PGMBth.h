@@ -1,10 +1,10 @@
-/* $Id: PGMBth.h 31140 2010-07-27 13:29:43Z vboxsync $ */
+/* $Id: PGMBth.h 31141 2010-07-27 13:39:34Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
