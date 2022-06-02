@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35229 2010-12-17 16:27:48Z vboxsync $
+# $Id: Config.kmk 35276 2010-12-21 14:10:36Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4080,7 +4080,7 @@ TEMPLATE_VBOXBLDPROG_LDFLAGS.darwin      = $(VBOX_DARWIN_DEF_SDK_LDFLAGS)
 TEMPLATE_VBOXBLDPROG_LIBS                =
  else if1of ($(KBUILD_HOST), freebsd netbsd openbsd)
 TEMPLATE_VBOXBLDPROG_TOOL                = GXX3
-TEMPLATE_VBOXBLDPROG_LIBS                =
+TEMPLATE_VBOXBLDPROG_LIBS                = pthread
 TEMPLATE_VBOXBLDPROG_INCS               += \
 	/usr/include \
 	/usr/X11R6/include \
@@ -4617,7 +4617,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35229 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35276 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
