@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 31706 2010-08-16 15:27:24Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 31707 2010-08-16 15:36:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7453,6 +7453,11 @@ DECLCALLBACK(int) Console::powerUpThread(RTTHREAD Thread, void *pvUser)
                         int vrc2 = VMR3PowerOff(pVM);
                         AssertRC(vrc2);
                     }
+                }
+                else if (task->mFaultToleranceSyncEnabled)
+                {
+                    /** @todo */
+                    rc = E_NOTIMPL;
                 }
                 else if (task->mStartPaused)
                     /* done */
