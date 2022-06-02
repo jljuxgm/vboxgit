@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34781 2010-12-07 14:06:16Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34787 2010-12-07 14:51:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,7 +44,7 @@
 #endif
 
 #if defined (Q_WS_WIN32)
-#include <Htmlhelp.h>
+# include <Htmlhelp.h>
 #endif
 
 bool VBoxProblemReporter::isAnyWarningShown()
@@ -2109,12 +2109,28 @@ void VBoxProblemReporter::cannotUpdateGuestAdditions (const CProgress &aProgress
              formatErrorInfo (aProgress.GetErrorInfo()));
 }
 
-void VBoxProblemReporter::cannotInstallExtPack(const QString &strFilename, const CExtPackManager &extPackManager, QWidget *pParent /* = 0 */)
+void VBoxProblemReporter::cannotOpenExtPack(const QString &strFilename, const CExtPackManager &extPackManager, QWidget *pParent /* = 0 */)
+{
+    message (pParent ? pParent : mainWindowShown(),
+             Error,
+             tr("Failed to open the Extension Pack <b>%1</b>.").arg(strFilename),
+             formatErrorInfo(extPackManager));
+}
+
+void VBoxProblemReporter::badExtPackFile(const QString &strFilename, const CExtPackFile &extPackFile, QWidget *pParent /* = 0 */)
+{
+    message (pParent ? pParent : mainWindowShown(),
+             Error,
+             tr("Failed to open the Extension Pack <b>%1</b>.").arg(strFilename),
+             extPackFile.GetWhyUnusable());
+}
+
+void VBoxProblemReporter::cannotInstallExtPack(const QString &strFilename, const CExtPackFile &extPackFile, QWidget *pParent /* = 0 */)
 {
     message (pParent ? pParent : mainWindowShown(),
              Error,
              tr("Failed to install the Extension Pack <b>%1</b>.").arg(strFilename),
-             formatErrorInfo(extPackManager));
+             formatErrorInfo(extPackFile));
 }
 
 void VBoxProblemReporter::cannotUninstallExtPack(const QString &strPackName, const CExtPackManager &extPackManager, QWidget *pParent /* = 0 */)
