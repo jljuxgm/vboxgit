@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 31296 2010-08-02 13:13:14Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 31300 2010-08-02 13:22:27Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2824,7 +2824,7 @@ HRESULT VirtualBox::findDVDOrFloppyImage(DeviceType_T mediumType,
                                        strLocationFull.c_str()) == 0);
         if (found)
         {
-            if (pMedium->getType() != mediumType)
+            if (pMedium->getDeviceType() != mediumType)
             {
                 if (mediumType == DeviceType_DVD)
                     return setError(E_INVALIDARG,

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31281 2010-08-02 10:35:19Z vboxsync $ */
+/* $Id: MediumImpl.cpp 31300 2010-08-02 13:22:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3231,6 +3231,15 @@ Bstr Medium::preferredDiffFormat()
     }
 
     return strFormat;
+}
+
+/**
+ * Returns the medium device type. Must have caller + locking!
+ * @return
+ */
+DeviceType_T Medium::getDeviceType() const
+{
+    return m->devType;
 }
 
 /**

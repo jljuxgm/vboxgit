@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 31236 2010-07-30 11:25:13Z vboxsync $ */
+/* $Id: MediumImpl.h 31300 2010-08-02 13:22:27Z vboxsync $ */
 
 /** @file
  *
@@ -163,6 +163,7 @@ public:
     const Utf8Str& getFormat() const;
     const ComObjPtr<MediumFormat> & getMediumFormat() const;
     uint64_t getSize() const;
+    DeviceType_T getDeviceType() const;
     MediumType_T getType() const;
     Utf8Str getName();
 
