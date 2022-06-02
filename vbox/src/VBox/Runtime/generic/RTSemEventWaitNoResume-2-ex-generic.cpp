@@ -1,10 +1,11 @@
-/* $Id: RTSemEventWait-generic.cpp 33036 2010-10-11 10:10:33Z vboxsync $ */
+/* $Id: RTSemEventWaitNoResume-2-ex-generic.cpp 33036 2010-10-11 10:10:33Z vboxsync $ */
 /** @file
- * IPRT - RTSemEventWait, generic RTSemEventWaitNoResume wrapper.
+ * IPRT - RTSemEventWaitNoResume, generic implementation based
+ *        on RTSemEventWaitEx.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,36 +33,21 @@
 #include <iprt/semaphore.h>
 #include "internal/iprt.h"
 
-#include <iprt/time.h>
 #include <iprt/err.h>
 #include <iprt/assert.h>
 
 
-#undef RTSemEventWait                   /* undo debug mapping */
-RTDECL(int) RTSemEventWait(RTSEMEVENT EventSem, RTMSINTERVAL cMillies)
+#undef RTSemEventWaitNoResume               /* undo debug mapping */
+RTDECL(int) RTSemEventWaitNoResume(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     int rc;
     if (cMillies == RT_INDEFINITE_WAIT)
-    {
-        do rc = RTSemEventWaitNoResume(EventSem, cMillies);
-        while (rc == VERR_INTERRUPTED);
-    }
+        rc = RTSemEventWaitEx(hEventSem, RTSEMWAIT_FLAGS_NORESUME | RTSEMWAIT_FLAGS_INDEFINITE, 0);
     else
-    {
-        const uint64_t u64Start = RTTimeMilliTS();
-        rc = RTSemEventWaitNoResume(EventSem, cMillies);
-        if (rc == VERR_INTERRUPTED)
-        {
-            do
-            {
-                uint64_t u64Elapsed = RTTimeMilliTS() - u64Start;
-                if (u64Elapsed >= cMillies)
-                    return VERR_TIMEOUT;
-                rc = RTSemEventWaitNoResume(EventSem, cMillies - (RTMSINTERVAL)u64Elapsed);
-            } while (rc == VERR_INTERRUPTED);
-        }
-    }
+        rc = RTSemEventWaitEx(hEventSem,
+                              RTSEMWAIT_FLAGS_NORESUME | RTSEMWAIT_FLAGS_RELATIVE | RTSEMWAIT_FLAGS_MILLISECS,
+                              cMillies);
     return rc;
 }
-RT_EXPORT_SYMBOL(RTSemEventWait);
+RT_EXPORT_SYMBOL(RTSemEventWaitNoResume);
 
