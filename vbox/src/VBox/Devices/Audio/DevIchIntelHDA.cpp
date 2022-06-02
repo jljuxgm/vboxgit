@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 34061 2010-11-15 06:02:31Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 34062 2010-11-15 06:05:09Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -1314,11 +1314,10 @@ static uint32_t hdaWriteAudio(INTELHDLinkState *pState, int avail, bool *fStop)
         *fStop = true;
         return written;
     }
-    temp = audio_MIN(SDFIFOS(pState, 4) + 1, temp);
     while (temp)
     {
         int copied;
-        to_copy = audio_MIN(temp, 4096U);
+        to_copy = audio_MIN(SDFIFOS(pState, 4) + 1, temp);
         PDMDevHlpPhysRead(ICH6_HDASTATE_2_DEVINS(pState), pBdle->u64BdleCviAddr + pBdle->u32BdleCviPos, tmpbuf, to_copy);
         copied = AUD_write (OSD0FMT_TO_AUDIO_SELECTOR(pState), tmpbuf, to_copy);
         Log(("hda: write_audio max=%x to_copy=%x copied=%x\n",
