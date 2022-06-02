@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: ConsoleImpl.h 34287 2010-11-23 15:20:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -456,6 +456,7 @@ private:
     HRESULT removeSharedFolder(CBSTR aName);
 
     static DECLCALLBACK(int) configConstructor(PVM pVM, void *pvConsole);
+    int configCfgmOverlay(PVM pVM, IVirtualBox *pVirtualBox, IMachine *pMachine);
 
     int configMediumAttachment(PCFGMNODE pCtlInst,
                                const char *pcszDevice,
