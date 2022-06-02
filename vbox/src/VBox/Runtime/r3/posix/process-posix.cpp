@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 33044 2010-10-11 16:30:54Z vboxsync $ */
+/* $Id: process-posix.cpp 33134 2010-10-14 14:03:51Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -383,7 +383,7 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
             if (pid > 0)
             {
                 /* Must wait for the temporary process to avoid a zombie. */
-                int status;
+                int status = 0;
                 waitpid(pid, &status, 0);
                 /* Assume that something wasn't found. No detailed info. */
                 if (status)
