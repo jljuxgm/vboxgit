@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -158,6 +158,42 @@ void UISettingsDialog::sltRevalidate(QIWidgetValidator *pValidator)
 
     /* Remember validation status: */
     pValidator->setOtherValid(fValid);
+}
+
+void UISettingsDialog::sltCategoryChanged(int cId)
+{
+    QWidget *pRootPage = m_pSelector->rootPage(cId);
+#ifdef Q_WS_MAC
+    QSize cs = size();
+    /* First make all fully resizeable: */
+    setMinimumSize(QSize(minimumWidth(), 0));
+    setMaximumSize(QSize(minimumWidth(), QWIDGETSIZE_MAX));
+    for (int i = 0; i < m_pStack->count(); ++i)
+        m_pStack->widget(i)->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Ignored);
+    int a = m_pStack->indexOf(pRootPage);
+    if (a < m_sizeList.count())
+    {
+        QSize ss = m_sizeList.at(a);
+        m_pStack->widget(a)->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        /* Switch to the new page first if we are shrinking: */
+        if (cs.height() > ss.height())
+            m_pStack->setCurrentIndex(m_pStack->indexOf(pRootPage));
+        /* Do the animation: */
+        ::darwinWindowAnimateResize(this, QRect (x(), y(), ss.width(), ss.height()));
+        /* Switch to the new page last if we are zooming: */
+        if (cs.height() <= ss.height())
+            m_pStack->setCurrentIndex(m_pStack->indexOf(pRootPage));
+        /* Make the widget fixed size: */
+        setFixedSize(ss);
+    }
+    ::darwinSetShowsResizeIndicator(this, false);
+#else
+    m_pLbTitle->setText(m_pSelector->itemText(cId));
+    m_pStack->setCurrentIndex(m_pStack->indexOf(pRootPage));
+#endif
+#ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
+    setWindowTitle(title());
+#endif /* VBOX_GUI_WITH_TOOLBAR_SETTINGS */
 }
 
 void UISettingsDialog::retranslateUi()
@@ -368,42 +404,6 @@ void UISettingsDialog::sltUpdateWhatsThis(bool fGotFocus /* = false */)
     if (pWhatsThisWidget && !strWhatsThisText.isEmpty())
         pWhatsThisWidget->setToolTip(QString("<qt>%1</qt>").arg(strWhatsThisText));
 #endif
-}
-
-void UISettingsDialog::sltCategoryChanged(int cId)
-{
-    QWidget *pRootPage = m_pSelector->rootPage(cId);
-#ifdef Q_WS_MAC
-    QSize cs = size();
-    /* First make all fully resizeable: */
-    setMinimumSize(QSize(minimumWidth(), 0));
-    setMaximumSize(QSize(minimumWidth(), QWIDGETSIZE_MAX));
-    for (int i = 0; i < m_pStack->count(); ++i)
-        m_pStack->widget(i)->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Ignored);
-    int a = m_pStack->indexOf(pRootPage);
-    if (a < m_sizeList.count())
-    {
-        QSize ss = m_sizeList.at(a);
-        m_pStack->widget(a)->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        /* Switch to the new page first if we are shrinking: */
-        if (cs.height() > ss.height())
-            m_pStack->setCurrentIndex(m_pStack->indexOf(pRootPage));
-        /* Do the animation: */
-        ::darwinWindowAnimateResize(this, QRect (x(), y(), ss.width(), ss.height()));
-        /* Switch to the new page last if we are zooming: */
-        if (cs.height() <= ss.height())
-            m_pStack->setCurrentIndex(m_pStack->indexOf(pRootPage));
-        /* Make the widget fixed size: */
-        setFixedSize(ss);
-    }
-    ::darwinSetShowsResizeIndicator(this, false);
-#else
-    m_pLbTitle->setText(m_pSelector->itemText(cId));
-    m_pStack->setCurrentIndex(m_pStack->indexOf(pRootPage));
-#endif
-#ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
-    setWindowTitle(title());
-#endif /* VBOX_GUI_WITH_TOOLBAR_SETTINGS */
 }
 
 bool UISettingsDialog::eventFilter(QObject *pObject, QEvent *pEvent)

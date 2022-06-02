@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 33626 2010-10-29 20:57:29Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2812,6 +2812,11 @@ void VBoxGlobal::retranslateUi()
         tr ("Held", "USBDeviceState");
     mUSBDeviceStates [KUSBDeviceState_Captured] =
         tr ("Captured", "USBDeviceState");
+
+    mChipsetTypes [KChipsetType_PIIX3] =
+        tr ("PIIX3", "ChipsetType");
+    mChipsetTypes [KChipsetType_ICH9] =
+        tr ("ICH9", "ChipsetType");
 
     mUserDefinedPortName = tr ("User-defined", "serial port");
 

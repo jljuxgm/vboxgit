@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSFDetails.cpp 31002 2010-07-22 14:45:41Z vboxsync $ */
+/* $Id: VBoxVMSettingsSFDetails.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2008-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -139,9 +139,8 @@ void VBoxVMSettingsSFDetails::retranslateUi()
 
 void VBoxVMSettingsSFDetails::validate()
 {
-    SFDialogType resultType =
-        mCbPermanent && !mCbPermanent->isChecked() ? ConsoleType :
-        mType & MachineType ? MachineType : GlobalType;
+    UISharedFolderType resultType =
+        mUsePermanent && !mCbPermanent->isChecked() ? ConsoleType : MachineType;
     SFolderName pair = qMakePair (mLeName->text(), resultType);
 
     mButtonBox->button (QDialogButtonBox::Ok)->setEnabled (!mPsPath->path().isEmpty() &&
