@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 33845 2010-11-08 14:03:29Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 33847 2010-11-08 14:28:34Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -157,7 +157,7 @@ static int VBoxServiceAutoMountPrepareMountPoint(const char *pszMountPoint, cons
     int rc = RTDirCreateFullPath(pszMountPoint, fMode);
     if (RT_SUCCESS(rc))
     {
-        rc = RTPathSetOwnerEx(pszMountPoint, -1 /* Owner, unchanged */, pOpts->gid, RTPATH_F_ON_LINK);
+        rc = RTPathSetOwnerEx(pszMountPoint, ~0 /* Owner, unchanged */, pOpts->gid, RTPATH_F_ON_LINK);
         if (RT_SUCCESS(rc))
         {
             rc = RTPathSetMode(pszMountPoint, fMode);
