@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 34003 2010-11-11 17:21:56Z vboxsync $ */
+/* $Id: fileio-win.cpp 34579 2010-12-01 15:45:02Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -340,6 +340,8 @@ RTR3DECL(int)  RTFileOpenBitBucket(PRTFILE phFile, uint32_t fAccess)
 
 RTR3DECL(int)  RTFileClose(RTFILE File)
 {
+    if (File == NIL_RTFILE)
+        return VINF_SUCCESS;
     if (CloseHandle((HANDLE)File))
         return VINF_SUCCESS;
     return RTErrConvertFromWin32(GetLastError());

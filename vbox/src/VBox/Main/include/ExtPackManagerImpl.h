@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 34287 2010-11-23 15:20:03Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 34579 2010-12-01 15:45:02Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -47,7 +47,7 @@ public:
 
     HRESULT     FinalConstruct();
     void        FinalRelease();
-    HRESULT     init(VBOXEXTPACKCTX a_enmContext, const char *a_pszName, const char *a_pszParentDir);
+    HRESULT     initWithDir(VBOXEXTPACKCTX a_enmContext, const char *a_pszName, const char *a_pszDir);
     void        uninit();
     /** @}  */
 
