@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 34869 2010-12-09 10:38:55Z vboxsync $ */
+/* $Id: VBoxService.cpp 35027 2010-12-13 16:07:56Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -362,6 +362,10 @@ int VBoxServiceStartServices(void)
         }
     }
 
+    if (RT_SUCCESS(rc))
+        VBoxServiceVerbose(1, "All services started.\n");
+    else
+        VBoxServiceError("An error occcurred while the services!\n");
     return rc;
 }
 
