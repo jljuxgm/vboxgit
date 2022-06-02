@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_x11.cpp 34863 2010-12-09 10:04:58Z vboxsync $ */
+/* $Id: UIDesktopServices_x11.cpp 34886 2010-12-09 14:06:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,6 +53,7 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
             << "Type=Link" << endl
             << "Icon=virtualbox-vbox.png" << endl
         */
+        link.setPermissions(link.permissions() | QFile::ExeOwner);
         return true;
     }
     return false;
