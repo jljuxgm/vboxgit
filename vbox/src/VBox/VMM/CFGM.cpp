@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: CFGM.cpp 34185 2010-11-18 21:19:45Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -2300,8 +2300,7 @@ VMMR3DECL(int) CFGMR3QueryBoolDef(PCFGMNODE pNode, const char *pszName, bool *pf
 {
     uint64_t u64;
     int rc = CFGMR3QueryIntegerDef(pNode, pszName, &u64, fDef);
-    if (RT_SUCCESS(rc))
-        *pf = u64 ? true : false;
+    *pf = u64 ? true : false;
     return rc;
 }
 
