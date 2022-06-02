@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30820 2010-07-14 11:50:30Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30821 2010-07-14 11:51:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3280,7 +3280,7 @@ static DECLCALLBACK(int) pgmR3PhysChunkUnmapCandidateCallback(PAVLLU32NODECORE p
             /*
              * Check that it's not in any of the TLBs.
              */
-            PVM pVM = (pvUser)
+            PVM pVM = (PVM)pvUser;
             for (unsigned i = 0; i < RT_ELEMENTS(pVM->pgm.s.ChunkR3Map.Tlb.aEntries); i++)
                 if (pVM->pgm.s.ChunkR3Map.Tlb.aEntries[i].pChunk == pChunk)
                 {
