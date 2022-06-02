@@ -1,4 +1,4 @@
-/** $Id: VDMemDisk.cpp 35471 2011-01-10 21:10:19Z vboxsync $ */
+/** $Id: VDMemDisk.cpp 35596 2011-01-17 22:00:13Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, memory disk/file.
@@ -262,13 +262,15 @@ int VDMemDiskSetSize(PVDMEMDISK pMemDisk, uint64_t cbSize)
             }
         }
 
-        /* Kill a blocks coming after. */
+        /* Kill all blocks coming after. */
         do
         {
             pSeg = (PVDMEMDISKSEG)RTAvlrU64GetBestFit(pMemDisk->pTreeSegments, cbSize, true);
             if (pSeg)
             {
+                RTAvlrU64Remove(pMemDisk->pTreeSegments, pSeg->Core.Key);
                 RTMemFree(pSeg->pvSeg);
+                pSeg->pvSeg = NULL;
                 RTMemFree(pSeg);
             }
             else
