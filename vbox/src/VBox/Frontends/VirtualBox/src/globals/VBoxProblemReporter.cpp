@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 30996 2010-07-22 14:11:08Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 30997 2010-07-22 14:12:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1608,7 +1608,7 @@ void VBoxProblemReporter::remindAboutGuestAdditionsAreNotActive(QWidget *pParent
                 "from the <b>Machine</b> menu. "
                 "If they are installed but the machine is not yet fully started "
                 "then shared folders will be available once it is.</p>"),
-             "remindAboutGuestAdditionsAreNotInstalled");
+             "remindAboutGuestAdditionsAreNotActive");
 }
 
 int VBoxProblemReporter::cannotFindGuestAdditions (const QString &aSrc1,
