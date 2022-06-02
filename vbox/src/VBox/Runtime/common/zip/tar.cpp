@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 33982 2010-11-11 12:37:18Z vboxsync $ */
+/* $Id: tar.cpp 34002 2010-11-11 17:16:37Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -29,7 +29,6 @@
  *   Header Files                                                             *
  ******************************************************************************/
 #include "internal/iprt.h"
-#include "internal/magics.h"
 #include <iprt/tar.h>
 
 #include <iprt/asm.h>
@@ -39,6 +38,8 @@
 #include <iprt/mem.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+
+#include "internal/magics.h"
 
 
 /******************************************************************************

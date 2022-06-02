@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 33103 2010-10-13 12:46:32Z vboxsync $ */
+/* $Id: fileio-posix.cpp 34002 2010-11-11 17:16:37Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -657,14 +657,22 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE File, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD
      */
     switch (enmAdditionalAttribs)
     {
-        case RTFSOBJATTRADD_EASIZE:
-            pObjInfo->Attr.enmAdditional          = RTFSOBJATTRADD_EASIZE;
-            pObjInfo->Attr.u.EASize.cb            = 0;
-            break;
-
         case RTFSOBJATTRADD_NOTHING:
         case RTFSOBJATTRADD_UNIX:
             /* done */
+            break;
+
+        case RTFSOBJATTRADD_UNIX_OWNER:
+            rtFsObjInfoAttrSetUnixOwner(pObjInfo, Stat.st_uid);
+            break;
+
+        case RTFSOBJATTRADD_UNIX_GROUP:
+            rtFsObjInfoAttrSetUnixGroup(pObjInfo, Stat.st_gid);
+            break;
+
+        case RTFSOBJATTRADD_EASIZE:
+            pObjInfo->Attr.enmAdditional          = RTFSOBJATTRADD_EASIZE;
+            pObjInfo->Attr.u.EASize.cb            = 0;
             break;
 
         default:

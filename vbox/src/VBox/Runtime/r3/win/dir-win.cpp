@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 28918 2010-04-29 18:30:09Z vboxsync $ */
+/* $Id: dir-win.cpp 34002 2010-11-11 17:16:37Z vboxsync $ */
 /** @file
  * IPRT - Directory, win32.
  */
@@ -434,6 +434,18 @@ RTDECL(int) RTDirReadEx(PRTDIR pDir, PRTDIRENTRYEX pDirEntry, size_t *pcbDirEntr
 
         case RTFSOBJATTRADD_NOTHING:
             pDirEntry->Info.Attr.enmAdditional          = RTFSOBJATTRADD_NOTHING;
+            break;
+
+        case RTFSOBJATTRADD_UNIX_OWNER:
+            pDirEntry->Info.Attr.enmAdditional          = RTFSOBJATTRADD_UNIX_OWNER;
+            pDirEntry->Info.Attr.u.UnixOwner.uid        = ~0U;
+            pDirEntry->Info.Attr.u.UnixOwner.szName[0]  = '\0'; /** @todo return something sensible here. */
+            break;
+
+        case RTFSOBJATTRADD_UNIX_GROUP:
+            pDirEntry->Info.Attr.enmAdditional          = RTFSOBJATTRADD_UNIX_GROUP;
+            pDirEntry->Info.Attr.u.UnixGroup.gid        = ~0U;
+            pDirEntry->Info.Attr.u.UnixGroup.szName[0]  = '\0';
             break;
 
         default:

@@ -1,4 +1,4 @@
-/* $Id: zipgzip.cpp 33973 2010-11-11 11:10:10Z vboxsync $ */
+/* $Id: zipgzip.cpp 34002 2010-11-11 17:16:37Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -340,7 +340,6 @@ static DECLCALLBACK(int) rtZipGzip_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSgB
     PRTZIPGZIPSTREAM pThis = (PRTZIPGZIPSTREAM)pvThis;
     int              rc;
 
-    NOREF(fBlocking);
     if (!pThis->fDecompress)
         return VERR_ACCESS_DENIED;
 
