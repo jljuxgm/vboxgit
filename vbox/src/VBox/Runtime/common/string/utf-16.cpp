@@ -1,4 +1,4 @@
-/* $Id: utf-16.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: utf-16.cpp 30749 2010-07-08 18:22:33Z vboxsync $ */
 /** @file
  * IPRT - UTF-16.
  */
@@ -499,7 +499,7 @@ RTDECL(int)  RTUtf16ToUtf8Ex(PCRTUTF16 pwszString, size_t cwcString, char **ppsz
             *ppsz = NULL;
             fShouldFree = true;
             cch = RT_MAX(cch, cchResult + 1);
-            pszResult = (char *)RTMemAlloc(cch);
+            pszResult = (char *)RTStrAlloc(cch);
         }
         if (pszResult)
         {
@@ -511,7 +511,7 @@ RTDECL(int)  RTUtf16ToUtf8Ex(PCRTUTF16 pwszString, size_t cwcString, char **ppsz
             }
 
             if (fShouldFree)
-                RTMemFree(pszResult);
+                RTStrFree(pszResult);
         }
         else
             rc = VERR_NO_STR_MEMORY;
