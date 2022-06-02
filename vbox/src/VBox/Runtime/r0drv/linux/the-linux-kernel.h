@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 35647 2011-01-20 11:35:55Z vboxsync $ */
+/* $Id: the-linux-kernel.h 35662 2011-01-20 18:11:08Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -35,7 +35,7 @@
 #define bool linux_bool
 
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,30)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,33)
 # include <generated/autoconf.h>
 #else
 # ifndef AUTOCONF_INCLUDED

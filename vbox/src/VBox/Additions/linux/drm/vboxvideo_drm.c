@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 35647 2011-01-20 11:35:55Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 35662 2011-01-20 18:11:08Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -50,7 +50,7 @@
  */
 
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,30)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,33)
 # include <generated/autoconf.h>
 #else
 # ifndef AUTOCONF_INCLUDED
