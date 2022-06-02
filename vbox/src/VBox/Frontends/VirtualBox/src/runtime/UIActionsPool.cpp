@@ -1,4 +1,4 @@
-/* $Id: UIActionsPool.cpp 30753 2010-07-08 23:01:51Z vboxsync $ */
+/* $Id: UIActionsPool.cpp 31286 2010-08-02 12:00:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -291,8 +291,8 @@ public:
 
     ToggleScaleModeAction(QObject *pParent)
         : UIToggleAction(pParent,
-                         ":/scaled_on_16px.png", ":/scaled_16px.png",
-                         ":/scaled_on_disabled_16px.png", ":/scaled_disabled_16px.png")
+                         ":/scale_on_16px.png", ":/scale_16px.png",
+                         ":/scale_on_disabled_16px.png", ":/scale_disabled_16px.png")
     {
         retranslateUi();
     }
