@@ -1,4 +1,4 @@
-# $Id: Config.kmk 30971 2010-07-21 15:57:34Z vboxsync $
+# $Id: Config.kmk 30977 2010-07-22 10:14:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -458,13 +458,17 @@ VBOX_WITH_VBOXBFE = 1
 #VBOX_WITH_VBOXFB = 1
 # Enables the Python<->XPCOM and Python<->COM bindings.
 VBOX_WITH_PYTHON ?= 1
-if1of ($(KBUILD_TARGET), )
+if1of ($(KBUILD_TARGET), linux solaris darwin)
  # Enable Java<->XPCOM bridge + glue code
  VBOX_WITH_JXPCOM ?= 1
 endif
 if1of ($(KBUILD_TARGET), )
  # Enable Java<->MSCOM glue, bridge is provided by an external lib (Jacob)
  VBOX_WITH_JMSCOM ?= 1
+endif
+if1of ($(KBUILD_TARGET), linux solaris darwin)
+ # Enable Java<->JAX-WS bridge
+ VBOX_WITH_JWS ?= 1
 endif
 # Use XPIDL instead of XSLT stylesheet
 VBOX_WITH_JAVA_SUPPORT_IN_XPIDL ?= 
@@ -4264,7 +4268,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30971 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30977 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
