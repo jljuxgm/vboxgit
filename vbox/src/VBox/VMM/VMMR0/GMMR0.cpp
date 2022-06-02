@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30650 2010-07-06 09:30:16Z vboxsync $ */
+/* $Id: GMMR0.cpp 30656 2010-07-06 11:37:31Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -792,6 +792,9 @@ GMMR0DECL(void) GMMR0InitPerVMData(PGVM pGVM)
     pGVM->gmm.s.enmPolicy = GMMOCPOLICY_INVALID;
     pGVM->gmm.s.enmPriority = GMMPRIORITY_INVALID;
     pGVM->gmm.s.fMayAllocate = false;
+
+    /* Mark first call of GMMR0CheckSharedModules. */
+    pGVM->gmm.s.fFirstCheckSharedModule = true;
 }
 
 
