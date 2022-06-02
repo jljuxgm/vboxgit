@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 32631 2010-09-20 09:55:38Z vboxsync $ */
+/* $Id: VMMDev.cpp 32645 2010-09-20 15:23:49Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -766,11 +766,7 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                 Log(("VMMDevReq_SetPointerShape: visible: %d, alpha: %d, shape = %d, width: %d, height: %d\n",
                      fVisible, fAlpha, fShape, pointerShape->width, pointerShape->height));
 
-                if (      pRequestHeader->size
-                       != vmmdevGetMousePointerReqSize(pointerShape->width,
-                                                       pointerShape->height)
-                    || !pointerShape->width
-                    || !pointerShape->height)
+                if (pRequestHeader->size == sizeof(VMMDevReqMousePointer))
                 {
                     /* The guest did not provide the shape actually. */
                     fShape = false;
