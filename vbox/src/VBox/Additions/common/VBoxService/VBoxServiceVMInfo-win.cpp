@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 33891 2010-11-09 12:09:25Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -392,8 +392,16 @@ bool VBoxServiceVMInfoWinIsLoggedIn(PVBOXSERVICEVMINFOUSER a_pUserInfo, PLUID a_
                               &dwDomainNameSize,
                               &enmOwnerType))
         {
-            VBoxServiceError("VMInfo/Users: Failed looking up account info for user '%ls': %ld!\n",
-                             a_pUserInfo->wszUser, GetLastError());
+            DWOR dwErr = GetLastError();
+            /*
+             * If a network time-out prevents the function from finding the name or
+             * if a SID that does not have a corresponding account name (such as a
+             * logon SID that identifies a logon session), we get ERROR_NONE_MAPPED
+             * here that we just skip.
+             */
+            if (dwErr != ERROR_NONE_MAPPED)
+                VBoxServiceError("VMInfo/Users: Failed looking up account info for user '%ls': %ld!\n",
+                                 a_pUserInfo->wszUser, dwErr);
         }
         else
         {
