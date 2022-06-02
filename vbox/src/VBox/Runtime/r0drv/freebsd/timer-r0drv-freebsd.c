@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-freebsd.c 18972 2009-04-16 23:43:08Z vboxsync $ */
+/* $Id: timer-r0drv-freebsd.c 32504 2010-09-15 10:12:38Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -265,5 +265,11 @@ RTDECL(int) RTTimerRequestSystemGranularity(uint32_t u32Request, uint32_t *pu32G
 RTDECL(int) RTTimerReleaseSystemGranularity(uint32_t u32Granted)
 {
     return VERR_NOT_SUPPORTED;
+}
+
+
+RTDECL(bool) RTTimerCanDoHighResolution(void)
+{
+    return false;
 }
 

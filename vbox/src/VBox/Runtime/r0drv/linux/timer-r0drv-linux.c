@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 32485 2010-09-14 14:02:19Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 32504 2010-09-15 10:12:38Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -970,4 +970,15 @@ RTDECL(int) RTTimerReleaseSystemGranularity(uint32_t u32Granted)
     return VERR_NOT_SUPPORTED;
 }
 RT_EXPORT_SYMBOL(RTTimerReleaseSystemGranularity);
+
+
+RTDECL(bool) RTTimerCanDoHighResolution(void)
+{
+#ifdef RT_USE_LINUX_HRTIMER
+    return true;
+#else
+    return false;
+#endif
+}
+RT_EXPORT_SYMBOL(RTTimerCanDoHighResolution);
 

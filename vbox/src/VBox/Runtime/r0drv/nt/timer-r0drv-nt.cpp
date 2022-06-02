@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 32504 2010-09-15 10:12:38Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -442,5 +442,11 @@ RTDECL(int) RTTimerReleaseSystemGranularity(uint32_t u32Granted)
     g_pfnrtNtExSetTimerResolution(0 /* ignored */, FALSE);
     NOREF(u32Granted);
     return VINF_SUCCESS;
+}
+
+
+RTDECL(bool) RTTimerCanDoHighResolution(void)
+{
+    return false;
 }
 

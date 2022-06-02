@@ -1,4 +1,4 @@
-/* $Id: timer-generic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: timer-generic.cpp 32504 2010-09-15 10:12:38Z vboxsync $ */
 /** @file
  * IPRT - Timers, Generic.
  */
@@ -324,3 +324,9 @@ RTDECL(int) RTTimerReleaseSystemGranularity(uint32_t u32Granted)
 }
 RT_EXPORT_SYMBOL(RTTimerReleaseSystemGranularity);
 
+
+RTDECL(bool) RTTimerCanDoHighResolution(void)
+{
+    return false;
+}
+RT_EXPORT_SYMBOL(RTTimerCanDoHighResolution);

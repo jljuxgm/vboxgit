@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 20374 2009-06-08 00:43:21Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 32504 2010-09-15 10:12:38Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -369,5 +369,11 @@ RTDECL(int) RTTimerRequestSystemGranularity(uint32_t u32Request, uint32_t *pu32G
 RTDECL(int) RTTimerReleaseSystemGranularity(uint32_t u32Granted)
 {
     return VERR_NOT_SUPPORTED;
+}
+
+
+RTDECL(bool) RTTimerCanDoHighResolution(void)
+{
+    return false;
 }
 

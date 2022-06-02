@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevAPIC.cpp 32497 2010-09-15 06:54:45Z vboxsync $ */
+/* $Id: DevAPIC.cpp 32504 2010-09-15 10:12:38Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2073,7 +2073,11 @@ static int apic_load(QEMUFile *f, void *opaque, int version_id)
     s->uHintedCountShift = s->uHintedInitialCount = 0;
     s->fTimerArmed = TMTimerIsActive(s->CTX_SUFF(pTimer));
     if (s->fTimerArmed)
+    {
+        PDMCritSectEnter(pThis->CTX_SUFF(pCritSect), VERR_SEM_BUSY);
         acpiDoFrequencyHinting(s);
+        PDMCritSectLeave(pThis->CTX_SUFF(pCritSect));
+    }
 #endif
 
     return VINF_SUCCESS; /** @todo darn mess! */
