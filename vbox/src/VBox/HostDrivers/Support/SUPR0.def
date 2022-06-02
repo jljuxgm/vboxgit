@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 32417 2010-09-10 15:37:57Z vboxsync $
+; $Id: SUPR0.def 32507 2010-09-15 11:11:01Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -132,6 +132,16 @@ EXPORTS
     RTThreadPreemptRestore
     RTThreadPreemptPossible
     RTThreadIsInInterrupt
+    RTTimerCreate
+    RTTimerCreateEx
+    RTTimerDestroy
+    RTTimerStart
+    RTTimerStop
+    RTTimerGetSystemGranularity
+    RTTimerRequestSystemGranularity
+    RTTimerReleaseSystemGranularity
+    RTTimerCanDoHighResolution
+
     RTMpOnAll
     RTMpOnOthers
     RTMpOnSpecific
