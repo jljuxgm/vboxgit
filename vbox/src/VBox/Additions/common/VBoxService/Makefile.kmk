@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32653 2010-09-21 07:45:00Z vboxsync $
+# $Id: Makefile.kmk 32656 2010-09-21 08:47:18Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -120,8 +120,6 @@ if1of ($(KBUILD_TARGET), linux)
  VBoxService_LIBS        += \
 	crypt
 endif
-VBoxService_LIBS.win     += \
-	$(PATH_SDK_$(VBOX_WINDDK)_LIB)/Userenv.lib
 ifdef VBOX_WITH_GUEST_PROPS
  VBoxService_LIBS.win    += \
  	Secur32.lib \
