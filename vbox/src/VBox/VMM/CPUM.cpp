@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 31238 2010-07-30 11:49:07Z vboxsync $ */
+/* $Id: CPUM.cpp 31395 2010-08-05 12:15:00Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -930,9 +930,17 @@ static int cpumR3CpuIdInit(PVM pVM)
      * Check if PAE was explicitely enabled by the user.
      */
     bool fEnable;
-    rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "EnablePAE", &fEnable, false);    AssertRCReturn(rc, rc);
+    rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "EnablePAE", &fEnable, false);      AssertRCReturn(rc, rc);
     if (fEnable)
         CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE);
+
+    /*
+     * We don't normally enable NX for raw-mode, so give the user a chance to
+     * force it on.
+     */
+    rc = CFGMR3QueryBoolDef(pCpumCfg, "EnableNX", &fEnable, false);                 AssertRCReturn(rc, rc);
+    if (fEnable)
+        CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NXE);
 
     /*
      * Log the cpuid and we're good.
