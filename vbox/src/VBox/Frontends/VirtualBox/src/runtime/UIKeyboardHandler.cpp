@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 33896 2010-11-09 13:31:46Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 33897 2010-11-09 13:38:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -943,7 +943,7 @@ bool UIKeyboardHandler::darwinKeyboardEvent(const void *pvCocoaEvent, EventRef i
             OSErr err = noErr;
             SInt32 type;
             if ((err = Gestalt(gestaltKeyboardType, &type)) == noErr)
-                printf("Keyboard type %d %d\n", (int32_t)type, LMGetKbdType());
+                LogRel(("Keyboard type %d %d\n", (int32_t)type, LMGetKbdType()));
         }
 #endif /* DEBUG */
         unsigned scanCode = ::DarwinKeycodeToSet1Scancode(keyCode);
