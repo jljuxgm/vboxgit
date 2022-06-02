@@ -1,4 +1,4 @@
-/* $Id: UIActionsPool.cpp 35634 2011-01-19 16:13:31Z vboxsync $ */
+/* $Id: UIActionsPool.cpp 35635 2011-01-19 16:32:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1292,7 +1292,7 @@ bool UIActionsPool::processHotKey(const QKeySequence &key)
                  * corresponding to the key sequence, so that the pointer to
                  * menu data posted along with the event will remain valid in
                  * the event handler, at least until the main window is closed. */
-//                QApplication::postEvent(this, new ActivateActionEvent(pAction));
+                QApplication::postEvent(this, new ActivateActionEvent(pAction));
                 return true;
             }
         }
