@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 30188 2010-06-15 09:06:21Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 30693 2010-07-07 09:21:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -20,6 +20,7 @@
 /* VBox includes */
 #include "UICocoaSpecialControls.h"
 #include "VBoxUtils-darwin.h"
+#include "UIImageTools.h"
 #include <VBox/cdefs.h>
 
 /* System includes */
@@ -227,21 +228,6 @@ NSRect darwinCenterRectVerticalTo(NSRect aRect, const NSRect& aToRect)
 {
     aRect.origin.y = (aToRect.size.height - aRect.size.height) / 2.0;
     return aRect;
-}
-
-QImage toGray(const QImage& image)
-{
-    QImage result = image.convertToFormat(QImage::Format_ARGB32);
-    for (int i=0; i < result.height(); ++i) 
-    {
-        QRgb *pScanLine = (QRgb *)result.scanLine(i);
-        for (int j=0; j < result.width(); ++j) 
-        {
-            const int g = qGray(pScanLine[j]);
-            pScanLine[j] = qRgba(g, g, g, qAlpha(pScanLine[j]));
-        }
-    }
-    return result;
 }
 
 /* 
