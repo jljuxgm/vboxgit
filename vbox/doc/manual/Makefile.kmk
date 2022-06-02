@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34145 2010-11-17 20:24:49Z vboxsync $
+# $Id: Makefile.kmk 34798 2010-12-07 15:41:41Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox User Manual.
 #
@@ -124,7 +124,6 @@ ifdef VBOX_WITH_DOCS
  	UserManual.xml \
  	user_AdvancedTopics.xml \
  	user_BasicConcepts.xml \
- 	user_ChangeLog.xml \
  	user_Glossary.xml \
  	user_Frontends.xml \
  	user_Installation.xml \
