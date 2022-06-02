@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30553 2010-07-01 13:36:06Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30564 2010-07-01 16:54:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5027,13 +5027,11 @@ HRESULT Console::onShowWindow(BOOL aCheck, BOOL *aCanShow, ULONG64 *aWinId)
             ++it;
         }
 #if 1
-        evDesc.init(mEventSource, VBoxEventType_OnShowWindow);
+        evDesc.init(mEventSource, VBoxEventType_OnShowWindow, UINT64_C(0));
         ComPtr<IEvent> aEvent;
         evDesc.getEvent(aEvent.asOutParam());
         ComPtr<IShowWindowEvent> aShowEvent = aEvent;
-        if (aShowEvent)
-            aShowEvent->COMSETTER(WinId)(0);
-        
+
         BOOL fDelivered = evDesc.fire(10000); /* Wait up to 10 secs for delivery */
         Assert(fDelivered);
         if (fDelivered)
