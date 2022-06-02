@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 31987 2010-08-26 12:33:45Z vboxsync $ */
+/* $Id: DBGFMem.cpp 31989 2010-08-26 12:43:18Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -612,9 +612,9 @@ static DECLCALLBACK(int) dbgfR3PagingDumpEx(PVM pVM, VMCPUID idCpu, uint32_t fFl
      */
     int rc;
     if (fFlags & DBGFPGDMP_FLAGS_SHADOW)
-        rc = PGMR3DumpHierarchyHCEx(pVM, cr3, fFlags, *pu64FirstAddr, *pu64LastAddr, cMaxDepth, pHlp);
+        rc = PGMR3DumpHierarchyShw(pVM, cr3, fFlags, *pu64FirstAddr, *pu64LastAddr, cMaxDepth, pHlp);
     else
-        rc = PGMR3DumpHierarchyGCEx(pVM, cr3, fFlags, *pu64FirstAddr, *pu64LastAddr, cMaxDepth, pHlp);
+        rc = PGMR3DumpHierarchyGst(pVM, cr3, fFlags, *pu64FirstAddr, *pu64LastAddr, cMaxDepth, pHlp);
     return rc;
 }
 
