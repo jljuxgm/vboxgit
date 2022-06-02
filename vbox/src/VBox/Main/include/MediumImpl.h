@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 31358 2010-08-04 14:48:26Z vboxsync $ */
+/* $Id: MediumImpl.h 31370 2010-08-04 18:49:09Z vboxsync $ */
 
 /** @file
  *
@@ -187,8 +187,7 @@ public:
     void dumpBackRefs();
 #endif
 
-    HRESULT updatePath(const char *aOldPath, const char *aNewPath);
-    void updatePaths(const char *aOldPath, const char *aNewPath);
+    HRESULT updatePath(const Utf8Str &strOldPath, const Utf8Str &strNewPath);
 
     ComObjPtr<Medium> getBase(uint32_t *aLevel = NULL);
 
