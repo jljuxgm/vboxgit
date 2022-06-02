@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 32935 2010-10-06 09:28:42Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 32938 2010-10-06 09:48:26Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -4875,9 +4875,11 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
     aMsiReg.iNextOffset = 0x0;
     aMsiReg.iMsiFlags = 0;
     rc = PDMDevHlpPCIRegisterMsi(pDevIns, &aMsiReg);
-    AssertRC(rc);
     if (RT_FAILURE (rc))
-        return rc;
+    {
+        LogRel(("Chipset cannot do MSI: %Rrc\n", rc));
+        /* That's OK, we can work without MSI */
+    }
 #endif
 
     rc = PDMDevHlpPCIIORegionRegister(pDevIns, 0, LSILOGIC_PCI_SPACE_IO_SIZE, PCI_ADDRESS_SPACE_IO, lsilogicMap);
