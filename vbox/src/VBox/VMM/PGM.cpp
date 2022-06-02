@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 31997 2010-08-26 13:59:06Z vboxsync $ */
+/* $Id: PGM.cpp 32245 2010-09-06 09:51:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2465,6 +2465,13 @@ static DECLCALLBACK(void) pgmR3ResetNoMorePhysWritesFlag(PVM pVM, VMSTATE enmSta
 }
 #endif
 
+/**
+ * Private API to reset fNoMorePhysWrites.
+ */
+VMMR3DECL(void) PGMR3ResetNoMorePhysWritesFlag(PVM pVM)
+{
+    pVM->pgm.s.fNoMorePhysWrites = false;
+}
 
 /**
  * Terminates the PGM.
