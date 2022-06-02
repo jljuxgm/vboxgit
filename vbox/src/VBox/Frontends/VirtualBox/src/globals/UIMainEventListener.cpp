@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 31811 2010-08-20 12:15:26Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 31813 2010-08-20 12:22:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -71,7 +71,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(IEvent *pEvent)
         }
         case KVBoxEventType_OnMachineDataChanged:
         {
-            CMachineDataChangedEvent es(event);
+            CMachineDataChangedEvent es(pEvent);
             emit sigMachineDataChange(es.GetMachineId());
             break;
         }
@@ -212,7 +212,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(IEvent *pEvent)
         {
             CShowWindowEvent es(pEvent);
             /* Has to be done in place to give an answer */
-            ULONG64 winId;
+            LONG64 winId;
             emit sigShowWindow(winId);
             es.SetWinId(winId);
             break;
