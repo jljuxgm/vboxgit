@@ -1,4 +1,4 @@
-# $Id: Config.kmk 32471 2010-09-14 10:26:07Z vboxsync $
+# $Id: Config.kmk 32536 2010-09-15 18:25:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -396,10 +396,6 @@ VBOX_BIOS_DMI_FALLBACK =
 # Enable host network interface API.
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_HOSTNETIF_API = 1
-endif
-# Enable the new storage I/O path.
-if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
- VBOX_WITH_NEW_IO_CODE = 1
 endif
 ## @}
 
@@ -4262,7 +4258,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32471 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32536 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

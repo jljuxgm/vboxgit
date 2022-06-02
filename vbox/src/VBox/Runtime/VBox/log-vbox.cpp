@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 30732 2010-07-08 11:17:25Z vboxsync $ */
+/* $Id: log-vbox.cpp 32536 2010-09-15 18:25:32Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -238,8 +238,6 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
     ASSERT_LOG_GROUP(DRV_FLOPPY);
     ASSERT_LOG_GROUP(DRV_HOST_DVD);
     ASSERT_LOG_GROUP(DRV_HOST_FLOPPY);
-    ASSERT_LOG_GROUP(DRV_ISCSI);
-    ASSERT_LOG_GROUP(DRV_ISCSI_TRANSPORT_TCP);
     ASSERT_LOG_GROUP(DRV_ISO);
     ASSERT_LOG_GROUP(DRV_KBD_QUEUE);
     ASSERT_LOG_GROUP(DRV_MOUSE_QUEUE);

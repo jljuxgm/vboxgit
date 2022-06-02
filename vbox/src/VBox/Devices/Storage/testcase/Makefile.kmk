@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32432 2010-09-12 16:09:57Z vboxsync $
+# $Id: Makefile.kmk 32536 2010-09-15 18:25:32Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -95,9 +95,6 @@ ifdef VBOX_WITH_TESTCASES
 	$(VBOX_PATH_DEVICES_SRC)/Storage/VHDHDDCore.cpp \
 	$(VBOX_PATH_DEVICES_SRC)/Storage/ParallelsHDDCore.cpp \
 	$(VBOX_PATH_DEVICES_SRC)/Storage/DMGHDDCore.cpp
- ifdef VBOX_WITH_NEW_IO_CODE
- vbox-img_DEFS += VBOX_WITH_NEW_IO_CODE
- endif
  vbox-img_DEFS += VBOX_HDD_NO_DYNAMIC_BACKENDS IN_VBOXDDU IN_VBOXDDU_STATIC IN_RT_R3
 endif
 

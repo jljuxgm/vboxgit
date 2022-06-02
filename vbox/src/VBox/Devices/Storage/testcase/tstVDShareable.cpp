@@ -1,4 +1,4 @@
-/* $Id: tstVDShareable.cpp 31193 2010-07-29 08:06:22Z vboxsync $ */
+/* $Id: tstVDShareable.cpp 32536 2010-09-15 18:25:32Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility for shareable images.
  */
@@ -52,14 +52,10 @@ static void tstVDError(void *pvUser, int rc, RT_SRC_POS_DECL,
     RTPrintf("\n");
 }
 
-static int tstVDMessage(void *pvUser, const char *pszFormat, ...)
+static int tstVDMessage(void *pvUser, const char *pszFormat, va_list va)
 {
-    va_list va;
-
     RTPrintf("tstVD: ");
-    va_start(va, pszFormat);
     RTPrintfV(pszFormat, va);
-    va_end(va);
     return VINF_SUCCESS;
 }
 
@@ -68,8 +64,8 @@ static int tstVDCreateShareDelete(const char *pszBackend, const char *pszFilenam
 {
     int rc;
     PVBOXHDD pVD = NULL, pVD2 = NULL;
-    PDMMEDIAGEOMETRY PCHS = { 0, 0, 0 };
-    PDMMEDIAGEOMETRY LCHS = { 0, 0, 0 };
+    VDGEOMETRY       PCHS = { 0, 0, 0 };
+    VDGEOMETRY       LCHS = { 0, 0, 0 };
     PVDINTERFACE     pVDIfs = NULL;
     VDINTERFACE      VDIError;
     VDINTERFACEERROR VDIErrorCallbacks;
