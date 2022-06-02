@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 30758 2010-07-09 12:30:12Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 30778 2010-07-12 08:40:54Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -178,8 +178,8 @@ DECLCALLBACK(void) vmmdevUpdateGuestStatus(PPDMIVMMDEVCONNECTOR pInterface, cons
     if (!guest)
         return;
 
-    guest->setAdditionsStatus(guestStatus->facility,
-                              guestStatus->status,
+    guest->setAdditionsStatus((VBoxGuestStatusFacility)guestStatus->facility,
+                              (VBoxGuestStatusCurrent)guestStatus->status,
                               guestStatus->flags);
     pDrv->pVMMDev->getParent()->onAdditionsStateChange();
 }
@@ -229,9 +229,8 @@ DECLCALLBACK(void) vmmdevUpdateGuestInfo(PPDMIVMMDEVCONNECTOR pInterface, const 
          * or driver unload.
          */
         guest->setAdditionsInfo(Bstr(), guestInfo->osType);
-        guest->setAdditionsStatus(0,  /* Facility; 0 = Global GA status.  May be changed
-                                       * later to VBoxService' own facility. */
-                                  0,  /* Status; 0 = Not active */
+        guest->setAdditionsStatus(VBoxGuestStatusFacility_Unknown,
+                                  VBoxGuestStatusCurrent_Disabled,
                                   0); /* Flags; not used. */
         pDrv->pVMMDev->getParent()->onAdditionsStateChange();
     }
