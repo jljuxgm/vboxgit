@@ -1,4 +1,4 @@
-/* $Id: tstSupSem.cpp 30489 2010-06-29 09:02:24Z vboxsync $ */
+/* $Id: tstSupSem.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface.
  */
@@ -227,7 +227,7 @@ int main(int argc, char **argv)
     g_cMillies = 120*1000;
     RTTESTI_CHECK_RC(SUPSemEventMultiCreate(pSession, &hEvent), VINF_SUCCESS);
     RTTESTI_CHECK_RC(RTThreadCreate(&hThread, tstSupSemInterruptibleMRE, (void *)hEvent, 0, RTTHREADTYPE_TIMER, RTTHREADFLAGS_WAITABLE, "IntSRE"), VINF_SUCCESS);
-    
+
     RTTHREAD hThread2 = NIL_RTTHREAD;
     RTTESTI_CHECK_RC(RTThreadCreate(&hThread2, tstSupSemInterruptibleMRE, (void *)hEvent, 0, RTTHREADTYPE_TIMER, RTTHREADFLAGS_WAITABLE, "IntSRE"), VINF_SUCCESS);
 

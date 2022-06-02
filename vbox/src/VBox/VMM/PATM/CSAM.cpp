@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 30572 2010-07-02 11:52:02Z vboxsync $ */
+/* $Id: CSAM.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -685,7 +685,7 @@ static R3PTRTYPE(void *) CSAMGCVirtToHCVirt(PVM pVM, PCSAMP2GLOOKUPREC pCacheRec
     STAM_PROFILE_START(&pVM->csam.s.StatTimeAddrConv, a);
 
     pHCPtr = PATMR3GCPtrToHCPtr(pVM, pGCPtr);
-    if (pHCPtr) 
+    if (pHCPtr)
         return pHCPtr;
 
     if (pCacheRec->pPageLocStartHC)
@@ -2288,7 +2288,7 @@ VMMR3DECL(int) CSAMR3CheckCode(PVM pVM, RTRCPTR pInstrGC)
     int rc;
     PCSAMPAGE pPage = NULL;
 
-    if (    EMIsRawRing0Enabled(pVM) == false 
+    if (    EMIsRawRing0Enabled(pVM) == false
         ||  PATMIsPatchGCAddr(pVM, pInstrGC) == true)
     {
         /* Not active. */

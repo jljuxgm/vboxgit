@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 32386 2010-09-10 10:03:26Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -5719,7 +5719,7 @@ VBOXDDU_DECL(int) VDCompact(PVBOXHDD pDisk, unsigned nImage,
 /**
  * Resizes the the given disk image to the given size.
  *
- * @return  VBox status 
+ * @return  VBox status
  * @return  VERR_VD_IMAGE_READ_ONLY if image is not writable.
  * @return  VERR_NOT_SUPPORTED if this kind of image can be compacted, but
  *

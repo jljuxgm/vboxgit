@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 32182 2010-09-01 15:09:42Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -119,10 +119,10 @@ static int VBoxServiceControlHandleCmdStartProcess(uint32_t u32ClientId, uint32_
     uint32_t uTimeLimitMS;
 
 #if 0 /* for valgrind */
-    RT_ZERO(szCmd); 
-    RT_ZERO(szArgs); 
-    RT_ZERO(szEnv); 
-    RT_ZERO(szUser); 
+    RT_ZERO(szCmd);
+    RT_ZERO(szArgs);
+    RT_ZERO(szEnv);
+    RT_ZERO(szUser);
     RT_ZERO(szPassword);
 #endif
 

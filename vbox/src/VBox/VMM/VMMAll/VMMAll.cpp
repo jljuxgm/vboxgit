@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 31361 2010-08-04 15:38:35Z vboxsync $ */
+/* $Id: VMMAll.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -63,8 +63,8 @@ VMMDECL(VMCPUID) VMMGetCpuId(PVM pVM)
     /* Search first by host cpu id (most common case)
      * and then by native thread id (page fusion case).
      */
-    /* RTMpCpuId had better be cheap. */ 
-    RTCPUID idHostCpu = RTMpCpuId(); 
+    /* RTMpCpuId had better be cheap. */
+    RTCPUID idHostCpu = RTMpCpuId();
 
     /** @todo optimize for large number of VCPUs when that becomes more common. */
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
@@ -118,8 +118,8 @@ VMMDECL(PVMCPU) VMMGetCpu(PVM pVM)
      * and then by native thread id (page fusion case).
      */
 
-    /* RTMpCpuId had better be cheap. */ 
-    RTCPUID idHostCpu = RTMpCpuId(); 
+    /* RTMpCpuId had better be cheap. */
+    RTCPUID idHostCpu = RTMpCpuId();
 
     /** @todo optimize for large number of VCPUs when that becomes more common. */
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)

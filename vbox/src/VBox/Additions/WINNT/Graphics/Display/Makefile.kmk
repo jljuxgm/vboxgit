@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32175 2010-09-01 13:01:45Z vboxsync $
+# $Id: Makefile.kmk 32431 2010-09-11 18:02:17Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -78,7 +78,7 @@ VBoxDispD3D_TEMPLATE = VBOXGUESTR3DLL
 VBoxDispD3D_DEFS     = UNICODE _UNICODE VBOXWDDM VBOXVDMA VBOXWDDMDISP
 # VBoxDispD3D_DEFS    += VBOXDISPMP_TEST
 ifdef VBOXWDDM_WITH_VBVA
-VBoxDispD3D_DEFS    += VBOXWDDM_WITH_VBVA 
+VBoxDispD3D_DEFS    += VBOXWDDM_WITH_VBVA
 endif
 
 ifdef VBOX_WITH_VIDEOHWACCEL
@@ -117,7 +117,7 @@ vbvdbg_SDKS     = WINDDKWLH
 
 PROGRAMS += tstMvWnd
 tstMvWnd_TEMPLATE = VBOXR3EXE
-tstMvWnd_DEFS = UNICODE _UNICODE 
+tstMvWnd_DEFS = UNICODE _UNICODE
 tstMvWnd_SOURCES  = \
 	wddm/dbg/tstMvWnd.cpp
 tstMvWnd_LIBS  = \

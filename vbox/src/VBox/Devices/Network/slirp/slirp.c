@@ -1,4 +1,4 @@
-/* $Id: slirp.c 30421 2010-06-24 11:59:49Z vboxsync $ */
+/* $Id: slirp.c 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1380,7 +1380,7 @@ struct arphdr
 AssertCompileSize(struct arphdr, 28);
 
 /**
- * @note This function will free m! 
+ * @note This function will free m!
  */
 static void arp_input(PNATState pData, struct mbuf *m)
 {

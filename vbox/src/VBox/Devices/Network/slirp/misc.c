@@ -1,4 +1,4 @@
-/* $Id: misc.c 30421 2010-06-24 11:59:49Z vboxsync $ */
+/* $Id: misc.c 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -419,8 +419,8 @@ struct mbuf *slirp_ext_m_get(PNATState pData, size_t cbMin, void **ppvBuf, size_
 
 void slirp_ext_m_free(PNATState pData, struct mbuf *m, uint8_t *pu8Buf)
 {
-    
-    if (   !pu8Buf 
+
+    if (   !pu8Buf
         && pu8Buf != mtod(m, uint8_t *))
         RTMemFree(pu8Buf); /* This buffer was allocated on heap */
     m_freem(pData, m);

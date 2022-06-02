@@ -1,4 +1,4 @@
-/* $Id: PGMGstDefs.h 32036 2010-08-27 10:14:39Z vboxsync $ */
+/* $Id: PGMGstDefs.h 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -228,5 +228,4 @@
 # define GST_IS_NX_ACTIVE(pVCpu)                (pgmGstIsNoExecuteActive(pVCpu))
 # define BTH_IS_NP_ACTIVE(pVM)                  (false)
 #endif
-
 

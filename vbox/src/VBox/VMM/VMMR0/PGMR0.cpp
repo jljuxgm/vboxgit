@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 32087 2010-08-30 12:23:05Z vboxsync $ */
+/* $Id: PGMR0.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -406,5 +406,4 @@ VMMR0DECL(VBOXSTRICTRC) PGMR0Trap0eHandlerNPMisconfig(PVM pVM, PVMCPU pVCpu, PGM
     return VERR_INTERNAL_ERROR_4;
 #endif
 }
-
 

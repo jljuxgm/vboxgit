@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 32324 2010-09-08 15:43:32Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1025,7 +1025,7 @@ static int readFilePathsFromDir(const char *pcszPath, DIR *pDir,
  * vector of char pointers.
  *
  * @returns zero on success or (positive) posix error value.
- * @param   pcszPath      the path to dump.  
+ * @param   pcszPath      the path to dump.
  * @param   pvecpchDevs   an empty vector of char pointers - must be cleaned up
  *                        by the caller even on failure.
  * @param   withRealPath  whether to canonicalise the filename with realpath

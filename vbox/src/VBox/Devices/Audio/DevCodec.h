@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 31990 2010-08-26 12:45:26Z vboxsync $ */
+/* $Id: DevCodec.h 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -52,7 +52,7 @@ typedef struct ROOTCODECNODE
 #define AMPLIFIER_SIZE 60
 typedef uint32_t AMPLIFIER[AMPLIFIER_SIZE];
 #define AMPLIFIER_IN    0
-#define AMPLIFIER_OUT   1 
+#define AMPLIFIER_OUT   1
 #define AMPLIFIER_LEFT  1
 #define AMPLIFIER_RIGHT 0
 #define AMPLIFIER_REGISTER(amp, inout, side, index) ((amp)[30*(inout) + 15*(side) + (index)])
@@ -67,7 +67,7 @@ typedef struct DACNODE
 
     uint32_t    u32A_param;
     AMPLIFIER B_params;
-    
+
 } DACNODE, *PDACNODE;
 
 typedef struct ADCNODE

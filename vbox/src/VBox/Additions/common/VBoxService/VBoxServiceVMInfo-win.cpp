@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 31982 2010-08-26 11:54:30Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -337,7 +337,7 @@ bool VBoxServiceVMInfoWinIsLoggedIn(PVBOXSERVICEVMINFOUSER a_pUserInfo, PLUID a_
     if (rcNt != STATUS_SUCCESS)
     {
         ULONG ulError = LsaNtStatusToWinError(rcNt);
-        /* Skip session data which is not valid anymore because it may have been                 
+        /* Skip session data which is not valid anymore because it may have been
          * already terminated. */
         if (ulError != ERROR_NO_SUCH_LOGON_SESSION)
             VBoxServiceError("VMInfo/Users: LsaGetLogonSessionData failed, LSA error %u\n", ulError);

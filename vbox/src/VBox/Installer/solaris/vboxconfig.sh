@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 32388 2010-09-10 10:13:07Z vboxsync $
+# $Id: vboxconfig.sh 32431 2010-09-11 18:02:17Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -129,7 +129,7 @@ find_bin_path()
         errorprint "missing argument to find_bin_path()"
         exit 1
     fi
-    
+
     binfilename=`basename $1`
     binfilepath=`which $binfilename 2> /dev/null`
     if test -x "$binfilepath"; then

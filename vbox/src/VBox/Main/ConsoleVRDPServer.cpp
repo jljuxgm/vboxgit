@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 31957 2010-08-25 13:27:52Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -776,7 +776,7 @@ DECLCALLBACK(int)  ConsoleVRDPServer::VRDPCallbackQueryProperty(void *pvCallback
             }
 
             /* features are mapped to "VRDP/Feature/NAME" extra data. */
-            com::Utf8Str extraData("VRDP/Feature/"); 
+            com::Utf8Str extraData("VRDP/Feature/");
             extraData += pFeature->achInfo;
 
             com::Bstr bstrValue;

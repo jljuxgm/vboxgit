@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 31383 2010-08-05 08:22:44Z vboxsync $ */
+/* $Id: GMMR0.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3764,7 +3764,7 @@ GMMR0DECL(int) GMMR0UnregisterSharedModule(PVM pVM, VMCPUID idCpu, char *pszModu
                             if (pRec->aRegions[i].paHCPhysPageID)
                                 RTMemFree(pRec->aRegions[i].paHCPhysPageID);
 
-                        Assert(pRec->Core.Key == GCBaseAddr || pRec->enmGuestOS == VBOXOSFAMILY_Windows64);                        
+                        Assert(pRec->Core.Key == GCBaseAddr || pRec->enmGuestOS == VBOXOSFAMILY_Windows64);
                         Assert(pRec->cRegions == pRecVM->cRegions);
 #ifdef VBOX_STRICT
                         for (unsigned i = 0; i < pRecVM->cRegions; i++)

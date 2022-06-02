@@ -1,4 +1,4 @@
-/* $Id: UIVMPreviewWindow.cpp 32409 2010-09-10 13:47:42Z vboxsync $ */
+/* $Id: UIVMPreviewWindow.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -162,7 +162,7 @@ void UIVMPreviewWindow::paintEvent(QPaintEvent *pEvent)
 
         /* Paint the name in the center of the monitor */
         painter.fillRect(m_vRect, Qt::black);
-		QFont font = painter.font();
+                QFont font = painter.font();
         font.setBold(true);
         int fFlags = Qt::AlignCenter | Qt::TextWordWrap;
         float h = m_vRect.size().height() * .2;

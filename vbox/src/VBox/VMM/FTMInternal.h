@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32319 2010-09-08 13:18:48Z vboxsync $ */
+/* $Id: FTMInternal.h 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -88,7 +88,7 @@ typedef struct FTM
         uint64_t                   u64LastHeartbeat;
     } standby;
 
-    /* 
+    /*
     struct
     {
     } master;

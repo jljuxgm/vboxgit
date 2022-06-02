@@ -1,4 +1,4 @@
-/* $Id: tstTimer.cpp 32332 2010-09-09 07:38:51Z vboxsync $ */
+/* $Id: tstTimer.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * IPRT Testcase - Timers.
  */
@@ -60,7 +60,7 @@ static DECLCALLBACK(void) TimerCallback(PRTTIMER pTimer, void *pvUser, uint64_t 
             gu64Min = u64Delta;
         if (u64Delta > gu64Max)
             gu64Max = u64Delta;
-        int i = (int)(  RT_ELEMENTS(cFrequency) 
+        int i = (int)(  RT_ELEMENTS(cFrequency)
                       - (u64Delta * (RT_ELEMENTS(cFrequency) / 2) / gu64Norm));
         if (i >= 0 && i < (int)RT_ELEMENTS(cFrequency))
             cFrequency[i]++;

@@ -1,4 +1,4 @@
-/* $Id: sbuf.c 30426 2010-06-24 12:25:24Z vboxsync $ */
+/* $Id: sbuf.c 32431 2010-09-11 18:02:17Z vboxsync $ */
 /** @file
  * NAT - sbuf implemenation.
  */
@@ -278,7 +278,7 @@ sbcopy(struct sbuf *sb, int off, int len, char *to)
     }
 }
 #else /* VBOX_WITH_SLIRP_BSD_SBUF */
-void 
+void
 sbappend (PNATState pData, struct socket *so, struct mbuf *m)
 {
     int ret = 0;
