@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 32290 2010-09-07 13:17:20Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 32349 2010-09-09 12:29:10Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -132,8 +132,7 @@ static int vboxGuestInitFixateGuestMappings(PVBOXGUESTDEVEXT pDevExt)
              * not implemented at all at the current platform, try to map the memory object into the
              * virtual kernel space.
              */
-            if (   rc == VERR_NOT_SUPPORTED
-                || rc == VERR_NOT_IMPLEMENTED)
+            if (rc == VERR_NOT_SUPPORTED)
             {
                 if (hFictive == NIL_RTR0MEMOBJ)
                 {
