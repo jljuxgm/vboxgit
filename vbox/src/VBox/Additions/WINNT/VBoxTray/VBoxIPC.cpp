@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 34097 2010-11-16 10:39:51Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 34117 2010-11-16 15:27:55Z vboxsync $ */
 /** @file
  * VboxIPC - IPC thread.
  */
@@ -73,7 +73,6 @@ int VBoxIPCPostQuitMessage(PVBOXIPCCONTEXT pCtx)
 {
     VBOXTRAYIPCHEADER hdr;
     hdr.ulMsg = VBOXTRAYIPCMSGTYPE_QUIT;
-    hdr.ulVer = 0;
     return VBoxIPCWriteMessage(pCtx, (BYTE*)&hdr, sizeof(hdr));
 }
 
@@ -82,11 +81,11 @@ int VBoxIPCPostQuitMessage(PVBOXIPCCONTEXT pCtx)
  * message area in the Windows main taskbar.
  *
  * @return  IPRT status code.
- * @return  int
  * @param   pCtx
- * @param   uVersion
+ * @param   wParam
+ * @param   lParam
  */
-int VBoxIPCMsgShowBalloonMsg(PVBOXIPCCONTEXT pCtx, UINT uVersion)
+int VBoxIPCMsgShowBalloonMsg(PVBOXIPCCONTEXT pCtx, UINT wParam, UINT lParam)
 {
     VBOXTRAYIPCMSG_SHOWBALLOONMSG msg;
     int rc = VBoxIPCReadMessage(pCtx,(BYTE*)&msg, sizeof(msg));
@@ -206,7 +205,7 @@ unsigned __stdcall VBoxIPCThread(void *pInstance)
                 switch (hdr.ulMsg)
                 {
                     case VBOXTRAYIPCMSGTYPE_SHOWBALLOONMSG:
-                        rc = VBoxIPCMsgShowBalloonMsg(pCtx, hdr.ulVer);
+                        rc = VBoxIPCMsgShowBalloonMsg(pCtx, hdr.wParam, hdr.lParam);
                         break;
 
                     /* Someone asked us to quit ... */
