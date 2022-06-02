@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 32978 2010-10-07 14:11:18Z vboxsync $ */
+/* $Id: DevVGA.cpp 32999 2010-10-08 08:44:36Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6161,15 +6161,15 @@ static DECLCALLBACK(int) vgaR3Destruct(PPDMDEVINS pDevIns)
  */
 static void vgaAdjustModeInfo(PVGASTATE pThis, ModeInfoListItem *pMode)
 {
-    int         nPages;
+    int         maxPage;
 
     /* The "number of image pages" is really the max page index... */
-    nPages = pThis->vram_size / (pMode->info.YResolution * pMode->info.BytesPerScanLine) - 1;
-    Assert(nPages);
-    if (nPages > 255)
-        nPages = 255;   /* 8-bit value. */
-    pMode->info.NumberOfImagePages  = nPages;
-    pMode->info.LinNumberOfPages    = nPages;
+    maxPage = pThis->vram_size / (pMode->info.YResolution * pMode->info.BytesPerScanLine) - 1;
+    Assert(maxPage >= 0);
+    if (maxPage > 255)
+        maxPage = 255;  /* 8-bit value. */
+    pMode->info.NumberOfImagePages = maxPage;
+    pMode->info.LinNumberOfPages   = maxPage;
 }
 
 /**
