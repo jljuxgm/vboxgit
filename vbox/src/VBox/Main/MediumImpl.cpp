@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31180 2010-07-28 18:11:10Z vboxsync $ */
+/* $Id: MediumImpl.cpp 31236 2010-07-30 11:25:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2655,8 +2655,8 @@ uint64_t Medium::getSize() const
  * @param aMachineId    Machine ID.
  * @param aSnapshotId   Snapshot ID; when non-empty, adds a snapshot attachment.
  */
-HRESULT Medium::attachTo(const Guid &aMachineId,
-                         const Guid &aSnapshotId /*= Guid::Empty*/)
+HRESULT Medium::addBackReference(const Guid &aMachineId,
+                                 const Guid &aSnapshotId /*= Guid::Empty*/)
 {
     AssertReturn(!aMachineId.isEmpty(), E_FAIL);
 
@@ -2748,8 +2748,8 @@ HRESULT Medium::attachTo(const Guid &aMachineId,
  * @param aSnapshotId   Snapshot ID; when non-empty, removes the snapshot
  *                      attachment.
  */
-HRESULT Medium::detachFrom(const Guid &aMachineId,
-                           const Guid &aSnapshotId /*= Guid::Empty*/)
+HRESULT Medium::removeBackReference(const Guid &aMachineId,
+                                    const Guid &aSnapshotId /*= Guid::Empty*/)
 {
     AssertReturn(!aMachineId.isEmpty(), E_FAIL);
 

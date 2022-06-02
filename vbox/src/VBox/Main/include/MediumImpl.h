@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 31098 2010-07-26 09:06:52Z vboxsync $ */
+/* $Id: MediumImpl.h 31236 2010-07-30 11:25:13Z vboxsync $ */
 
 /** @file
  *
@@ -166,10 +166,10 @@ public:
     MediumType_T getType() const;
     Utf8Str getName();
 
-    HRESULT attachTo(const Guid &aMachineId,
-                     const Guid &aSnapshotId = Guid::Empty);
-    HRESULT detachFrom(const Guid &aMachineId,
-                       const Guid &aSnapshotId = Guid::Empty);
+    HRESULT addBackReference(const Guid &aMachineId,
+                             const Guid &aSnapshotId = Guid::Empty);
+    HRESULT removeBackReference(const Guid &aMachineId,
+                                const Guid &aSnapshotId = Guid::Empty);
 
     const Guid* getFirstMachineBackrefId() const;
     const Guid* getFirstMachineBackrefSnapshotId() const;
