@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34070 2010-11-15 15:33:59Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34095 2010-11-16 10:32:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1129,7 +1129,7 @@ int VBoxProblemReporter::confirmMachineDeletion(const CMachine &machine)
     {
         /* This should be in sync with UIVMListBoxItem::recache(): */
         QFileInfo fi(machine.GetSettingsFilePath());
-        const QString strName = fi.suffix().toLower() == "xml" ? fi.completeBaseName() : fi.fileName();
+        const QString strName = VBoxGlobal::hasAllowedExtension(fi.completeSuffix(), VBoxDefs::VBoxFileExts) ? fi.completeBaseName() : fi.fileName();
         const QString strBase = tr("You are about to remove the inaccessible virtual machine "
                                    "<b>%1</b> from the machine list. Do you wish to proceed?")
                                    .arg(strName);
