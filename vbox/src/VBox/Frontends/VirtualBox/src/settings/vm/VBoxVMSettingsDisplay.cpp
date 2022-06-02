@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsDisplay.cpp 33638 2010-11-01 08:10:29Z vboxsync $ */
+/* $Id: VBoxVMSettingsDisplay.cpp 33686 2010-11-02 12:49:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -45,6 +45,14 @@ static int calcPageStep (int aMax)
 }
 
 VBoxVMSettingsDisplay::VBoxVMSettingsDisplay()
+    : mValidator(0)
+    , m_minVRAM(0)
+    , m_maxVRAM(0)
+    , m_maxVRAMVisible(0)
+    , m_initialVRAM(0)
+#ifdef VBOX_WITH_CRHGSMI
+    , m_bWddmMode(false)
+#endif
 {
     /* Apply UI decorations */
     Ui::VBoxVMSettingsDisplay::setupUi (this);

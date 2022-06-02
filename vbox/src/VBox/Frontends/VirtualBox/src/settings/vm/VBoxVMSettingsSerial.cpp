@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSerial.cpp 33635 2010-11-01 07:07:59Z vboxsync $ */
+/* $Id: VBoxVMSettingsSerial.cpp 33686 2010-11-02 12:49:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -27,7 +27,7 @@
 /* VBoxVMSettingsSerial stuff */
 VBoxVMSettingsSerial::VBoxVMSettingsSerial()
     : QIWithRetranslateUI<QWidget> (0)
-    , mValidator (0)
+    , mValidator(0)
     , m_iSlot(-1)
 {
     /* Apply UI decorations */
@@ -180,7 +180,8 @@ void VBoxVMSettingsSerial::mCbModeActivated (const QString &aText)
 
 /* VBoxVMSettingsSerialPage stuff */
 VBoxVMSettingsSerialPage::VBoxVMSettingsSerialPage()
-    : mValidator (0)
+    : mValidator(0)
+    , mTabWidget(0)
 {
     /* TabWidget creation */
     mTabWidget = new QITabWidget (this);

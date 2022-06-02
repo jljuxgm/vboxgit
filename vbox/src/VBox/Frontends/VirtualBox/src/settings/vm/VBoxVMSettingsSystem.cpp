@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSystem.cpp 33632 2010-11-01 06:53:26Z vboxsync $ */
+/* $Id: VBoxVMSettingsSystem.cpp 33686 2010-11-02 12:49:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -30,6 +30,8 @@
 #define ITEM_TYPE_ROLE Qt::UserRole + 1
 
 VBoxVMSettingsSystem::VBoxVMSettingsSystem()
+    : mValidator(0)
+    , mMinGuestCPU(0), mMaxGuestCPU(0)
 {
     /* Apply UI decorations */
     Ui::VBoxVMSettingsSystem::setupUi (this);

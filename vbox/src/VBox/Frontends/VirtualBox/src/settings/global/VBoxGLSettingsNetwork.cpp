@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSettingsNetwork.cpp 33632 2010-11-01 06:53:26Z vboxsync $ */
+/* $Id: VBoxGLSettingsNetwork.cpp 33686 2010-11-02 12:49:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -182,7 +182,9 @@ QString NetworkItem::updateInfo()
 }
 
 VBoxGLSettingsNetwork::VBoxGLSettingsNetwork()
-    : m_fChanged(false)
+    : mValidator(0)
+    , mAddInterface(0), mRemInterface(0), mEditInterface(0)
+    , m_fChanged(false)
 {
     /* Apply UI decorations */
     Ui::VBoxGLSettingsNetwork::setupUi (this);

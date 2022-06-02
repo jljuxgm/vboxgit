@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsGeneral.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsGeneral.cpp 33686 2010-11-02 12:49:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -25,7 +25,7 @@
 #include <QDir>
 
 VBoxVMSettingsGeneral::VBoxVMSettingsGeneral()
-    : mValidator (0)
+    : mValidator(0)
 {
     /* Apply UI decorations */
     Ui::VBoxVMSettingsGeneral::setupUi (this);

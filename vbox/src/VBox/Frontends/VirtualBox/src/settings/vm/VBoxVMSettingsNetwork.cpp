@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsNetwork.cpp 33634 2010-11-01 07:02:07Z vboxsync $ */
+/* $Id: VBoxVMSettingsNetwork.cpp 33686 2010-11-02 12:49:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -617,8 +617,9 @@ void VBoxVMSettingsNetwork::populateComboboxes()
 
 /* VBoxVMSettingsNetworkPage Stuff */
 VBoxVMSettingsNetworkPage::VBoxVMSettingsNetworkPage(bool aDisableStaticControls)
-    : mValidator (0)
-    , mDisableStaticControls (false)
+    : mValidator(0)
+    , mTwAdapters(0)
+    , mDisableStaticControls(false)
 {
     /* Setup Main Layout */
     QVBoxLayout *mainLayout = new QVBoxLayout (this);

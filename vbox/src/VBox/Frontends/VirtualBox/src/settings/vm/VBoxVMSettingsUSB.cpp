@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsUSB.cpp 33635 2010-11-01 07:07:59Z vboxsync $ */
+/* $Id: VBoxVMSettingsUSB.cpp 33686 2010-11-02 12:49:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -30,8 +30,11 @@
 
 VBoxVMSettingsUSB::VBoxVMSettingsUSB(UISettingsPageType type)
     : UISettingsPage(type)
-    , mValidator (0)
-    , mUSBFilterListModified (false)
+    , mValidator(0)
+    , mNewAction(0), mAddAction(0), mEdtAction(0), mDelAction(0)
+    , mMupAction(0), mMdnAction(0)
+    , mMenu(0), mUSBDevicesMenu(0)
+    , mUSBFilterListModified(false)
 {
     /* Apply UI decorations */
     Ui::VBoxVMSettingsUSB::setupUi (this);
