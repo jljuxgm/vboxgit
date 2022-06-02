@@ -1,4 +1,4 @@
-/* $Id: RTHandleGetStandard-win.cpp 33973 2010-11-11 11:10:10Z vboxsync $ */
+/* $Id: RTHandleGetStandard-win.cpp 33981 2010-11-11 12:19:23Z vboxsync $ */
 /** @file
  * IPRT - RTHandleGetStandard, Windows.
  */
@@ -37,9 +37,9 @@
 #include <iprt/err.h>
 #include <iprt/log.h>
 
-#include "internal/socket.h"
-
 #include <Windows.h>
+
+#include "internal/socket.h"            /* (Needs Windows.h.) */
 
 
 RTDECL(int) RTHandleGetStandard(RTHANDLESTD enmStdHandle, PRTHANDLE ph)
@@ -97,6 +97,7 @@ RTDECL(int) RTHandleGetStandard(RTHANDLESTD enmStdHandle, PRTHANDLE ph)
     /*
      * Create the IPRT handle.
      */
+    int rc;
     switch (h.enmType)
     {
         case RTHANDLETYPE_FILE:
