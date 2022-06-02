@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 33700 2010-11-02 16:19:36Z vboxsync $ */
+/* $Id: xml.cpp 33835 2010-11-08 13:00:42Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1462,19 +1462,26 @@ void XmlMemParser::read(const void* pvBuf, size_t cbSize,
 ////////////////////////////////////////////////////////////////////////////////
 
 XmlMemWriter::XmlMemWriter()
+  : m_pBuf(0)
 {
 }
 
 XmlMemWriter::~XmlMemWriter()
 {
+    if (m_pBuf)
+        xmlFree(m_pBuf);
 }
 
 void XmlMemWriter::write(const Document &doc, void **ppvBuf, size_t *pcbSize)
 {
-    xmlChar* pBuf;
+    if (m_pBuf)
+    {
+        xmlFree(m_pBuf);
+        m_pBuf = 0;
+    }
     int size;
-    xmlDocDumpFormatMemory(doc.m->plibDocument, &pBuf, &size, 1);
-    *ppvBuf = pBuf;
+    xmlDocDumpFormatMemory(doc.m->plibDocument, (xmlChar**)&m_pBuf, &size, 1);
+    *ppvBuf = m_pBuf;
     *pcbSize = size;
 }
 

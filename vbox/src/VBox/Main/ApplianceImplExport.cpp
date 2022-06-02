@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 33698 2010-11-02 16:03:29Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 33835 2010-11-08 13:00:42Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1724,7 +1724,6 @@ HRESULT Appliance::writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, PVD
                                strOvfFile.c_str());
             /* Write the ovf file to disk. */
             vrc = RTSha1WriteBuf(strOvfFile.c_str(), pvBuf, cbSize, pCallbacks, pStorage);
-            RTMemFree(pvBuf);
             if (RT_FAILURE(vrc))
                 throw setError(VBOX_E_FILE_ERROR,
                                tr("Could not create OVF file '%s' (%Rrc)"),
