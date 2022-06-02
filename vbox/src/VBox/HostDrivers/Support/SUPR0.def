@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 32579 2010-09-16 18:18:54Z vboxsync $
+; $Id: SUPR0.def 33167 2010-10-15 18:16:59Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -55,12 +55,18 @@ EXPORTS
     SUPSemEventSignal
     SUPSemEventWait
     SUPSemEventWaitNoResume
+    SUPSemEventWaitNsAbsIntr
+    SUPSemEventWaitNsRelIntr
+    SUPSemEventGetResolution
     SUPSemEventMultiCreate
     SUPSemEventMultiClose
     SUPSemEventMultiSignal
     SUPSemEventMultiReset
     SUPSemEventMultiWait
     SUPSemEventMultiWaitNoResume
+    SUPSemEventMultiWaitNsAbsIntr
+    SUPSemEventMultiWaitNsRelIntr
+    SUPSemEventMultiGetResolution
     SUPR0GetPagingMode
     SUPR0EnableVTx
     SUPGetGIP
@@ -100,12 +106,18 @@ EXPORTS
     RTSemEventSignal
     RTSemEventWait
     RTSemEventWaitNoResume
+    RTSemEventWaitEx
+    RTSemEventWaitExDebug
+    RTSemEventGetResolution
     RTSemEventDestroy
     RTSemEventMultiCreate
     RTSemEventMultiSignal
     RTSemEventMultiReset
     RTSemEventMultiWait
     RTSemEventMultiWaitNoResume
+    RTSemEventMultiWaitEx
+    RTSemEventMultiWaitExDebug
+    RTSemEventMultiGetResolution
     RTSemEventMultiDestroy
     RTSemFastMutexCreate
     RTSemFastMutexDestroy
