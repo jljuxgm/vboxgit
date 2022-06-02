@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: MediumImpl.h 35836 2011-02-03 14:55:17Z vboxsync $ */
 
 /** @file
  *
@@ -176,7 +176,7 @@ public:
 
     bool addRegistry(const Guid& id);
     bool isInRegistry(const Guid& id);
-    const Guid& getFirstRegistryMachineId() const;
+    bool getFirstRegistryMachineId(Guid &uuid) const;
     HRESULT addToRegistryIDList(GuidList &llRegistryIDs);
 
     HRESULT addBackReference(const Guid &aMachineId,

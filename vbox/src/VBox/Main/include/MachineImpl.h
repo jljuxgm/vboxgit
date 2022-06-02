@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 35755 2011-01-28 11:36:42Z vboxsync $ */
+/* $Id: MachineImpl.h 35836 2011-02-03 14:55:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -780,6 +780,10 @@ protected:
     HRESULT saveStorageDevices(ComObjPtr<StorageController> aStorageController,
                                settings::StorageController &data);
     HRESULT saveStateSettings(int aFlags);
+
+    void addMediumToRegistry(ComObjPtr<Medium> &pMedium,
+                             GuidList &llRegistriesThatNeedSaving,
+                             Guid *puuid);
 
     HRESULT createImplicitDiffs(IProgress *aProgress,
                                 ULONG aWeight,
