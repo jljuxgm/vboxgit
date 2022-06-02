@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 31698 2010-08-16 15:00:05Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 32074 2010-08-29 17:12:05Z vboxsync $ */
 
 /** @file
  *
@@ -100,6 +100,7 @@ public:
     STDMETHOD(GetMaxPortCountForStorageBus) (StorageBus_T aBus, ULONG *aMaxPortCount);
     STDMETHOD(GetMaxInstancesOfStorageBus)(StorageBus_T aBus, ULONG *aMaxInstances);
     STDMETHOD(GetDeviceTypesForStorageBus)(StorageBus_T aBus, ComSafeArrayOut(DeviceType_T, aDeviceTypes));
+    STDMETHOD(GetDefaultIoCacheSettingForStorageController)(StorageControllerType_T aControllerType, BOOL *aEnabled);
 
     // public methods only for internal purposes
 

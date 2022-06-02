@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 32070 2010-08-29 15:55:23Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 32074 2010-08-29 17:12:05Z vboxsync $ */
 
 /** @file
  *
@@ -500,6 +500,34 @@ STDMETHODIMP SystemProperties::GetDeviceTypesForStorageBus(StorageBus_T aBus,
             AssertMsgFailed(("Invalid bus type %d\n", aBus));
     }
 
+    return S_OK;
+}
+
+STDMETHODIMP SystemProperties::GetDefaultIoCacheSettingForStorageController(StorageControllerType_T aControllerType, BOOL *aEnabled)
+{
+    CheckComArgOutPointerValid(aEnabled);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    /* no need to lock, this is const */
+    switch (aControllerType)
+    {
+        case StorageControllerType_LsiLogic:
+        case StorageControllerType_BusLogic:
+        case StorageControllerType_IntelAhci:
+        case StorageControllerType_LsiLogicSas:
+            *aEnabled = false;
+            break;
+        case StorageControllerType_PIIX3:
+        case StorageControllerType_PIIX4:
+        case StorageControllerType_ICH6:
+        case StorageControllerType_I82078:
+            *aEnabled = true;
+            break;
+        default:
+            AssertMsgFailed(("Invalid controller type %d\n", aControllerType));
+    }
     return S_OK;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 32071 2010-08-29 15:58:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 32074 2010-08-29 17:12:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -415,28 +415,25 @@ ControllerItem::ControllerItem (AbstractItem *aParent, const QString &aName,
     {
         case KStorageBus_IDE:
             mCtrType = new IDEControllerType (aControllerType);
-            mUseIoCache = true;
             break;
         case KStorageBus_SATA:
             mCtrType = new SATAControllerType (aControllerType);
-            mUseIoCache = false;
             break;
         case KStorageBus_SCSI:
             mCtrType = new SCSIControllerType (aControllerType);
-            mUseIoCache = false;
             break;
         case KStorageBus_Floppy:
             mCtrType = new FloppyControllerType (aControllerType);
-            mUseIoCache = true;
             break;
         case KStorageBus_SAS:
             mCtrType = new SASControllerType (aControllerType);
-            mUseIoCache = false;
             break;
         default:
             AssertMsgFailed (("Wrong Controller Type {%d}!\n", aBusType));
             break;
     }
+
+    mUseIoCache = vboxGlobal().virtualBox().GetSystemProperties().GetDefaultIoCacheSettingForStorageController (aControllerType);
 }
 
 ControllerItem::~ControllerItem()
