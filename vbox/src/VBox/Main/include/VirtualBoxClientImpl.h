@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 34416 2010-11-26 17:17:12Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 34421 2010-11-26 17:44:43Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -22,6 +22,10 @@
 #include "VirtualBoxBase.h"
 #include "EventImpl.h"
 
+#ifdef RT_OS_WINDOWS
+# include "win/resource.h"
+#endif
+
 class ATL_NO_VTABLE VirtualBoxClient :
     public VirtualBoxBase,
     VBOX_SCRIPTABLE_IMPL(IVirtualBoxClient)
@@ -35,7 +39,7 @@ public:
 
     DECLARE_CLASSFACTORY_SINGLETON(VirtualBoxClient)
 
-    DECLARE_REGISTRY_RESOURCE(IDR_VIRTUALBOX)
+    DECLARE_REGISTRY_RESOURCEID(IDR_VIRTUALBOX)
     DECLARE_NOT_AGGREGATABLE(VirtualBoxClient)
 
     DECLARE_PROTECT_FINAL_CONSTRUCT()

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 34417 2010-11-26 17:18:18Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 34421 2010-11-26 17:44:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -77,7 +77,7 @@ HRESULT VirtualBoxClient::init()
     mData.m_ThreadWatcher = NIL_RTTHREAD;
     int vrc = RTSemEventCreate(&mData.m_SemEvWatcher);
     AssertRC(vrc);
-    if (RT_SUCCESS(rc))
+    if (RT_SUCCESS(vrc))
     {
         vrc = RTThreadCreate(&mData.m_ThreadWatcher, SVCWatcherThread,
                              this, 0, RTTHREADTYPE_INFREQUENT_POLLER,
