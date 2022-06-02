@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PDMUsb.cpp 30528 2010-06-30 14:16:44Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -572,6 +572,7 @@ static int pdmR3UsbCreateDevice(PVM pVM, PPDMUSBHUB pHub, PPDMUSB pUsbDev, int i
     pUsbIns->pCfgGlobal                     = pGlobalConfig;
     pUsbIns->iInstance                      = iInstance;
     pUsbIns->pvInstanceDataR3               = &pUsbIns->achInstanceData[0];
+    pUsbIns->pszName                        = RTStrDup(pUsbDev->pReg->szName);
 
     /*
      * Link it into all the lists.
@@ -985,6 +986,11 @@ static void pdmR3UsbDestroyDevice(PVM pVM, PPDMUSBINS pUsbIns)
      */
     pUsbIns->u32Version = 0;
     pUsbIns->pReg = NULL;
+    if (pUsbIns->pszName)
+    {
+        RTStrFree(pUsbIns->pszName);
+        pUsbIns->pszName = NULL;
+    }
     CFGMR3RemoveNode(pUsbIns->Internal.s.pCfgDelete);
     MMR3HeapFree(pUsbIns);
 }

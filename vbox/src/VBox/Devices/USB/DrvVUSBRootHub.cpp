@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 30528 2010-06-30 14:16:44Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -839,6 +839,11 @@ static DECLCALLBACK(void) vusbRhDestruct(PPDMDRVINS pDrvIns)
         pUrb->VUsb.pNext = NULL;
         RTMemFree(pUrb);
     }
+    if (pRh->Hub.pszName)
+    {
+        RTStrFree(pRh->Hub.pszName);
+        pRh->Hub.pszName = NULL;
+    }
     RTCritSectDelete(&pRh->CritSect);
 }
 
@@ -850,7 +855,7 @@ static DECLCALLBACK(void) vusbRhDestruct(PPDMDRVINS pDrvIns)
  */
 static DECLCALLBACK(int) vusbRhConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
-    LogFlow(("vusbRhConstruct:\n"));
+    LogFlow(("vusbRhConstruct: Instance %d\n", pDrvIns->iInstance));
     PVUSBROOTHUB pThis = PDMINS_2_DATA(pDrvIns, PVUSBROOTHUB);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
@@ -893,6 +898,7 @@ static DECLCALLBACK(int) vusbRhConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     //pThis->hub.cPorts                - later
     pThis->Hub.cDevices                 = 0;
     pThis->Hub.Dev.pHub                 = &pThis->Hub;
+    RTStrAPrintf(&pThis->Hub.pszName, "RootHub#%d", pDrvIns->iInstance);
     /* misc */
     pThis->pDrvIns                      = pDrvIns;
     /* the connector */
