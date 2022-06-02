@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30837 2010-07-14 13:51:34Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30838 2010-07-14 13:52:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3253,7 +3253,7 @@ typedef struct PGMR3PHYSCHUNKUNMAPCB
 {
     PVM                 pVM;            /**< The VM handle. */
     PPGMCHUNKR3MAP      pChunk;         /**< The chunk to unmap. */
-    int32_t             iLastAge;       /**< Highest age found so far. */
+    uint32_t            iLastAge;       /**< Highest age found so far. */
 } PGMR3PHYSCHUNKUNMAPCB, *PPGMR3PHYSCHUNKUNMAPCB;
 
 
