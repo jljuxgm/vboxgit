@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 32792 2010-09-28 13:52:18Z vboxsync $ */
+/* $Id: VMMR0.cpp 32793 2010-09-28 13:57:28Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -440,6 +440,9 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
             else
             if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_TIMER))
                 STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetToR3Timer);
+            else
+            if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_PDM_CRITSECT))
+                STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetToR3CritSect);
             else
             if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_TO_R3))
                 STAM_COUNTER_INC(&pVM->vmm.s.StatRZRetToR3);
