@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 31002 2010-07-22 14:45:41Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 31125 2010-07-26 18:14:17Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -426,7 +426,8 @@ void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_OPENMEDIUM)
     {
         RTPrintf("VBoxManage openmedium       disk|dvd|floppy <filename>\n"
-                 "                            [--type normal|immutable|writethrough] (disk only)\n"
+                 "                            [--type normal|immutable|writethrough|\n"
+                 "                                    shareable] (disk only)\n"
                  "                            [--uuid <uuid>]\n"
                  "                            [--parentuuid <uuid>] (disk only)\n"
                  "\n");
@@ -479,7 +480,8 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            --size <megabytes>\n"
                  "                            [--format VDI|VMDK|VHD] (default: VDI)\n"
                  "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
-                 "                            [--type normal|writethrough] (default: normal)\n"
+                 "                            [--type normal|writethrough|"
+                 "                                    shareable] (default: normal)\n"
                  "                            [--comment <comment>]\n"
                  "                            [--remember]\n"
                  "\n");
@@ -488,7 +490,7 @@ void printUsage(USAGECATEGORY u64Cmd)
     if (u64Cmd & USAGE_MODIFYHD)
     {
         RTPrintf("VBoxManage modifyhd         <uuid>|<filename>\n"
-                 "                            [--type normal|writethrough|immutable]\n"
+                 "                            [--type normal|writethrough|immutable|shareable]\n"
                  "                            [--autoreset on|off]\n"
                  "                            [--compact]\n"
                  "\n");
@@ -499,7 +501,7 @@ void printUsage(USAGECATEGORY u64Cmd)
         RTPrintf("VBoxManage clonehd          <uuid>|<filename> <outputfile>\n"
                  "                            [--format VDI|VMDK|VHD|RAW|<other>]\n"
                  "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
-                 "                            [--type normal|writethrough|immutable]\n"
+                 "                            [--type normal|writethrough|immutable|shareable]\n"
                  "                            [--remember] [--existing]\n"
                  "\n");
     }
@@ -524,7 +526,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--encodedlun <lun>]\n"
                  "                            [--username <username>]\n"
                  "                            [--password <password>]\n"
-                 "                            [--type normal|writethrough|immutable]\n"
+                 "                            [--type normal|writethrough|immutable|shareable]\n"
                  "                            [--intnet]\n"
                  "\n");
     }
