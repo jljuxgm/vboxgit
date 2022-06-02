@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 33975 2010-11-11 11:14:54Z vboxsync $ */
+/* $Id: vfsbase.cpp 33979 2010-11-11 12:08:54Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -368,7 +368,7 @@ static void rtVfsObjDestroy(RTVFSOBJINTERNAL *pThis)
      * Invalidate the object.
      */
     rtVfsObjWriteLock(pThis);           /* paranoia */
-    void *pvToFree;
+    void *pvToFree = NULL;
     switch (enmType)
     {
         case RTVFSOBJTYPE_BASE:
