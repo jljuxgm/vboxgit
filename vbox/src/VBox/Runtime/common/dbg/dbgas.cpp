@@ -1,4 +1,4 @@
-/* $Id: dbgas.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: dbgas.cpp 33663 2010-11-01 15:58:06Z vboxsync $ */
 /** @file
  * IPRT - Debug Address Space.
  */
@@ -984,7 +984,7 @@ RTDECL(int) RTDbgAsModuleByAddr(RTDBGAS hDbgAs, RTUINTPTR Addr, PRTDBGMOD phMod,
 
     RTDBGAS_LOCK_READ(pDbgAs);
     PRTDBGASMAP pMap = (PRTDBGASMAP)RTAvlrUIntPtrRangeGet(&pDbgAs->MapTree, Addr);
-    if (pMap)
+    if (!pMap)
     {
         RTDBGAS_UNLOCK_READ(pDbgAs);
         return VERR_NOT_FOUND;
