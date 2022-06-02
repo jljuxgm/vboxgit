@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 34771 2010-12-07 09:49:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 34772 2010-12-07 09:53:26Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11106,7 +11106,7 @@ HRESULT SessionMachine::onNATRedirectRuleChange(ULONG ulSlot, BOOL aNatRuleRemov
      * instead acting like callback we ask IVirtualBox deliver corresponding event
      */
 
-    mParent->onNatRedirectChange(getId(), ulSlot, aNatRuleRemove ? true : false, aRuleName, aProto, aHostIp, aHostPort, aGuestIp, aGuestPort);
+    mParent->onNatRedirectChange(getId(), ulSlot, RT_BOOL(aNatRuleRemove), aRuleName, aProto, aHostIp, aHostPort, aGuestIp, aGuestPort);
     return S_OK;
 }
 
