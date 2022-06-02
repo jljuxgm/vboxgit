@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 35831 2011-02-03 11:34:45Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 35832 2011-02-03 11:35:42Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -581,7 +581,6 @@ static int handleCtrlExecProgram(HandlerArg *a)
                     {
                         if (cMilliesSleep < 100)
                             cMilliesSleep++;
-                        RTPrintf("cMilliesSleep = %d\n", cMilliesSleep);
                         RTThreadSleep(cMilliesSleep);
                     }
                     else
