@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 30572 2010-07-02 11:52:02Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 30735 2010-07-08 12:02:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -437,6 +437,7 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
 
     if (PGM_PAGE_IS_SHARED(pPage))
     {
+        /* Mark this shared page for freeing/derefencing. */
         pVM->pgm.s.aHandyPages[iHandyPage].idSharedPage = PGM_PAGE_GET_PAGEID(pPage);
         Assert(PGM_PAGE_GET_PAGEID(pPage) != NIL_GMM_PAGEID);
         VM_FF_SET(pVM, VM_FF_PGM_NEED_HANDY_PAGES);
