@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 35040 2010-12-13 17:44:28Z vboxsync $ */
+/* $Id: MediumImpl.cpp 35082 2010-12-14 13:55:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1700,6 +1700,27 @@ STDMETHODIMP Medium::COMSETTER(Type)(MediumType_T aType)
         }
         default:
             AssertFailedReturn(E_FAIL);
+    }
+
+    if (    aType == MediumType_MultiAttach
+         || aType == MediumType_Readonly
+       )
+    {
+        // These two types are new with VirtualBox 4.0 and therefore require settings
+        // version 1.11 in the settings backend. Unfortunately it is not enough to do
+        // the usual routine in MachineConfigFile::bumpSettingsVersionIfNeeded() for
+        // two reasons: The medium type is a property of the media registry tree, which
+        // can reside in the global config file (for pre-4.0 media); we would therefore
+        // possibly need to bump the global config version. We don't want to do that though
+        // because that might make downgrading to pre-4.0 impossible.
+        // As a result, we can only use these two new types if the medium is NOT in the
+        // global registry:
+        const Guid &uuidGlobalRegistry = m->pVirtualBox->getGlobalRegistryId();
+        if (isInRegistry(uuidGlobalRegistry))
+            return setError(VBOX_E_INVALID_OBJECT_STATE,
+                            tr("Cannot change type for medium '%s': the media types 'MultiAttach' and 'Readonly' can only be used "
+                               "on media registered with a machine that was created with VirtualBox 4.0 or later"),
+                            m->strLocationFull.c_str());
     }
 
     m->type = aType;
