@@ -1,4 +1,4 @@
-/* $Id: VBoxRestore.cpp 33966 2010-11-11 10:32:07Z vboxsync $ */
+/* $Id: VBoxRestore.cpp 35863 2011-02-07 10:59:08Z vboxsync $ */
 /** @file
  * VBoxRestore - Restore notification.
  */
@@ -129,10 +129,10 @@ unsigned __stdcall VBoxRestoreThread(void *pInstance)
 
             /* did we get the right event? */
             if (waitEvent.u32EventFlagsOut & VMMDEV_EVENT_RESTORED)
-                PostMessage(gToolWindow, WM_VBOXTRAY_VM_RESTORED, 0, 0);
+                PostMessage(ghwndToolWindow, WM_VBOXTRAY_VM_RESTORED, 0, 0);
             else
                 /** @todo Don't poll, but wait for connect/disconnect events */
-                PostMessage(gToolWindow, WM_VBOXTRAY_VRDP_CHECK, 0, 0);
+                PostMessage(ghwndToolWindow, WM_VBOXTRAY_VRDP_CHECK, 0, 0);
         }
         else
         {

@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 34382 2010-11-25 15:49:37Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 35863 2011-02-07 10:59:08Z vboxsync $ */
 /** @file
  * VboxIPC - IPC thread.
  */
@@ -129,7 +129,7 @@ int VBoxIPCMsgShowBalloonMsg(PVBOXIPCCONTEXT pCtx, UINT wParam, UINT lParam)
     int rc = VBoxIPCReadMessage(pCtx,(BYTE*)&msg, sizeof(msg));
     if (RT_SUCCESS(rc))
     {
-        hlpShowBalloonTip(gInstance, gToolWindow, ID_TRAYICON,
+        hlpShowBalloonTip(ghInstance, ghwndToolWindow, ID_TRAYICON,
                           msg.szContent, msg.szTitle,
                           msg.ulShowMS, msg.ulType);
     }

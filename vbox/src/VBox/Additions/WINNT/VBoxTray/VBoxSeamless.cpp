@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 35304 2010-12-22 15:43:32Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 35863 2011-02-07 10:59:08Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -340,7 +340,7 @@ unsigned __stdcall VBoxSeamlessThread(void *pInstance)
                                 if (!ret)
                                     Log(("VBoxTray: SystemParametersInfo SPI_SETSCREENSAVEACTIVE failed with %d\n", GetLastError()));
                             }
-                            PostMessage(gToolWindow, WM_VBOX_REMOVE_SEAMLESS_HOOK, 0, 0);
+                            PostMessage(ghwndToolWindow, WM_VBOX_REMOVE_SEAMLESS_HOOK, 0, 0);
                             break;
 
                         case VMMDev_Seamless_Visible_Region:
@@ -354,7 +354,7 @@ unsigned __stdcall VBoxSeamlessThread(void *pInstance)
                             ret = SystemParametersInfo(SPI_SETSCREENSAVEACTIVE, FALSE, NULL, 0);
                             if (!ret)
                                 Log(("VBoxTray: SystemParametersInfo SPI_SETSCREENSAVEACTIVE failed with %d\n", GetLastError()));
-                            PostMessage(gToolWindow, WM_VBOX_INSTALL_SEAMLESS_HOOK, 0, 0);
+                            PostMessage(ghwndToolWindow, WM_VBOX_INSTALL_SEAMLESS_HOOK, 0, 0);
                             break;
 
                         case VMMDev_Seamless_Host_Window:
