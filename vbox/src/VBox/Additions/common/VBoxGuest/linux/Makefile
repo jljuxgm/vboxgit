@@ -1,4 +1,4 @@
-# $Revision: 31146 $
+# $Revision: 31498 $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -63,6 +63,7 @@ override MODULE = vboxguest
 OBJS   = \
 	VBoxGuest-linux.o \
 	VBoxGuest.o \
+	VBoxHelper.o \
 	GenericRequest.o \
 	HGCMInternal.o \
 	Init.o \

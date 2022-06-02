@@ -1,4 +1,4 @@
-/* $Id: VBoxHelper.cpp 31430 2010-08-06 08:47:51Z vboxsync $ */
+/* $Id: VBoxHelper.cpp 31498 2010-08-09 21:12:57Z vboxsync $ */
 /** @file
  * VBoxHelper - Miscellaneous functions.
  */
@@ -29,6 +29,9 @@
 #include <VBox/log.h>
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/version.h>
+#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
+# include "revision-generated.h"
+#endif
 
 
 int VBoxReportGuestInfo(VBOXOSTYPE enmOSType)
