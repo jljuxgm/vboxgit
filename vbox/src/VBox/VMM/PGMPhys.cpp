@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30816 2010-07-14 11:30:02Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30817 2010-07-14 11:34:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3391,8 +3391,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysUnmapChunkRendezvous(PVM pVM, PVMCPU pVCpu, 
             /* todo: we should not flush chunks which include cr3 mappings. */
             for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
             {
-                PVMCPU pVCpu = &pVM->aCpus[idCpu];
-                PPGMCPU pPGM = &pVCpu->pgm.s;
+                PPGMCPU pPGM = &pVM->aCpus[idCpu].pgm.s;
 
                 pPGM->pGst32BitPdR3    = NULL;
                 pPGM->pGstPaePdptR3    = NULL;
@@ -3411,7 +3410,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysUnmapChunkRendezvous(PVM pVM, PVMCPU pVCpu, 
                 }
 
                 /* Flush REM TLBs. */
-                CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_GLOBAL_TLB_FLUSH);
+                CPUMSetChangedFlags(&pVM->aCpus[idCpu], CPUM_CHANGED_GLOBAL_TLB_FLUSH);
             }
 
             /* Flush REM translation blocks. */
