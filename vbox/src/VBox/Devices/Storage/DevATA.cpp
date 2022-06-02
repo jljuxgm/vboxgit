@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 33142 2010-10-14 17:25:09Z vboxsync $ */
+/* $Id: DevATA.cpp 33485 2010-10-27 08:59:48Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5542,7 +5542,16 @@ PDMBOTHCBDECL(int) ataIOPortWriteStr1(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
         cbTransfer = cTransAvailable * cb;
 
         rc = PGMPhysSimpleReadGCPtr(PDMDevHlpGetVMCPU(pDevIns), s->CTX_SUFF(pbIOBuffer) + s->iIOBufferPIODataStart, GCSrc, cbTransfer);
+#ifndef IN_RING3
+        /* This can fail in RC if the page table is not present for example. */
+        if (RT_FAILURE(rc))
+        {
+            PDMCritSectLeave(&pCtl->lock);
+            return VINF_IOM_HC_IOPORT_WRITE;
+        }
+#else
         Assert(rc == VINF_SUCCESS);
+#endif
 
         if (cbTransfer)
             Log3(("%s: addr=%#x val=%.*Rhxs\n", __FUNCTION__, Port, cbTransfer, s->CTX_SUFF(pbIOBuffer) + s->iIOBufferPIODataStart));
