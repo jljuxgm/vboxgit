@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 32825 2010-09-29 17:00:22Z vboxsync $ */
+/* $Id: DevACPI.cpp 33052 2010-10-12 10:42:06Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1537,7 +1537,7 @@ PDMBOTHCBDECL(int) acpiSysInfoIndexWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOP
             else
             {
                 /* see comment at the declaration of u8IndexShift */
-                if (s->u8IndexShift == 0)
+                if ((u32 > SYSTEM_INFO_INDEX_END) && (s->u8IndexShift == 0))
                 {
                     if (((u32 >> 2) < SYSTEM_INFO_INDEX_END) && ((u32 & 0x3)) == 0)
                     {
