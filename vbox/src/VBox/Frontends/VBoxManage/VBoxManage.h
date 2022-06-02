@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 32701 2010-09-22 17:12:01Z vboxsync $ */
+/* $Id: VBoxManage.h 32709 2010-09-23 11:29:12Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -27,6 +27,7 @@
 
 #include <iprt/types.h>
 #include <iprt/message.h>
+#include <iprt/stream.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -140,19 +141,19 @@ extern bool g_fDetailedProgress;        // in VBoxManage.cpp
 ////////////////////////////////////////////////////////////////////////////////
 
 /* VBoxManageHelp.cpp */
-void printUsage(USAGECATEGORY u64Cmd);
+void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm);
 int errorSyntax(USAGECATEGORY u64Cmd, const char *pszFormat, ...);
 int errorGetOpt(USAGECATEGORY u64Cmd, int rc, union RTGETOPTUNION const *pValueUnion);
 int errorArgument(const char *pszFormat, ...);
 
-void printUsageInternal(USAGECATEGORY u64Cmd);
+void printUsageInternal(USAGECATEGORY u64Cmd, PRTSTREAM pStrm);
 
 #ifndef VBOX_ONLY_DOCS
 HRESULT showProgress(ComPtr<IProgress> progress);
 #endif
 
 /* VBoxManage.cpp */
-void showLogo(void);
+void showLogo(PRTSTREAM pStrm);
 
 #ifndef VBOX_ONLY_DOCS
 int handleInternalCommands(HandlerArg *a);
