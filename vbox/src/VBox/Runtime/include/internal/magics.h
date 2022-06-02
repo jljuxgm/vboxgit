@@ -1,4 +1,4 @@
-/* $Id: magics.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: magics.h 30578 2010-07-02 13:25:25Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -104,6 +104,8 @@
 #define RTSEMEVENT_MAGIC                UINT32_C(0x19601110)
 /** Magic for the multiple release event semaphore structure. (Isaac Asimov) */
 #define RTSEMEVENTMULTI_MAGIC           UINT32_C(0x19200102)
+/** Dead magic value for multiple release event semaphore structures. */
+#define RTSEMEVENTMULTI_MAGIC_DEAD      UINT32_C(0x19920406)
 /** Magic value for RTSEMFASTMUTEXINTERNAL::u32Magic. (John Ronald Reuel Tolkien) */
 #define RTSEMFASTMUTEX_MAGIC            UINT32_C(0x18920103)
 /** Dead magic value for RTSEMFASTMUTEXINTERNAL::u32Magic. */
