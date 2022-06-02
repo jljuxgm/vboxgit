@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 35800 2011-01-31 18:20:44Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 35821 2011-02-02 12:55:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -181,9 +181,6 @@ bool UIHotKey::isValidKey(int iKeyCode)
 #endif /* Q_WS_X11 */
 
 #ifdef Q_WS_MAC
-    if (!iKeyCode || iKeyCode == ~0U)
-        return false;
-
     UInt32 modMask = ::DarwinKeyCodeToDarwinModifierMask(iKeyCode);
     switch (modMask)
     {
@@ -477,10 +474,13 @@ bool UIHotKeyEditor::darwinKeyboardEvent(const void *pvCocoaEvent, EventRef inEv
                 break;
 
             /* Convert to keycode: */
-            unsigned iKeyCode = ::DarwinModifierMaskToDarwinKeycode(changed);
+            unsigned uKeyCode = ::DarwinModifierMaskToDarwinKeycode(changed);
+
+            if (!uKeyCode || uKeyCode == ~0U)
+                return false;
 
             /* Process the key event: */
-            if (processKeyEvent(iKeyCode, changed & modifierMask))
+            if (processKeyEvent(uKeyCode, changed & modifierMask))
             {
                 /* Save the new modifier mask state. */
                 m_uDarwinKeyModifiers = modifierMask;
