@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 34929 2010-12-09 23:37:54Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -1481,8 +1481,9 @@ static void pdmacFileAioMgrNormalReqCompleteRc(PPDMACEPFILEMGR pAioMgr, RTFILEAI
                     rc = RTFileAioReqPrepareWrite(hReq, pEndpoint->File, offStart,
                                                   pbBuf, cbToTransfer, pTask);
                 }
-
                 AssertRC(rc);
+
+                pTask->hReq = hReq;
                 rc = pdmacFileAioMgrNormalReqsEnqueue(pAioMgr, pEndpoint, &hReq, 1);
                 AssertMsg(RT_SUCCESS(rc) || (rc == VERR_FILE_AIO_INSUFFICIENT_RESSOURCES),
                           ("Unexpected return code rc=%Rrc\n", rc));
@@ -1511,6 +1512,7 @@ static void pdmacFileAioMgrNormalReqCompleteRc(PPDMACEPFILEMGR pAioMgr, RTFILEAI
                 rc = RTFileAioReqPrepareWrite(hReq, pEndpoint->File,
                                               offStart, pTask->pvBounceBuffer, cbToTransfer, pTask);
                 AssertRC(rc);
+                pTask->hReq = hReq;
                 rc = pdmacFileAioMgrNormalReqsEnqueue(pAioMgr, pEndpoint, &hReq, 1);
                 AssertMsg(RT_SUCCESS(rc) || (rc == VERR_FILE_AIO_INSUFFICIENT_RESSOURCES),
                           ("Unexpected return code rc=%Rrc\n", rc));
