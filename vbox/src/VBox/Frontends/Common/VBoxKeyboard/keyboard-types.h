@@ -1,9 +1,7 @@
+/* $Id: keyboard-types.h 30787 2010-07-12 11:19:35Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * X11 keyboard driver translation tables (PC scan code mappings for known
- * keyboard maps)
- *
+ * VBox/Frontends/Common - X11 keyboard driver translation tables (PC scan code
+ *                         mappings for known keyboard maps).
  */
 
 /*

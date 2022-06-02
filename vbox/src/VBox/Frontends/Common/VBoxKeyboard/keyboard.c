@@ -1,8 +1,6 @@
-/* $Id: keyboard.c 30449 2010-06-25 11:53:48Z vboxsync $ */
+/* $Id: keyboard.c 30787 2010-07-12 11:19:35Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * X11 keyboard handler library
+ * VBox/Frontends/Common - X11 keyboard handler library.
  */
 
 /* This code is originally from the Wine project. */
