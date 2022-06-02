@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 30608 2010-07-05 12:40:35Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 30806 2010-07-13 14:02:19Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -202,7 +202,7 @@ static int handleEnumGuestProperty(HandlerArg *a)
     /*
      * Pack the patterns
      */
-    Utf8Str Utf8Patterns(a->argc > 2 ? a->argv[2] : "*");
+    Utf8Str Utf8Patterns(a->argc > 2 ? a->argv[2] : "");
     for (int i = 3; i < a->argc; ++i)
         Utf8Patterns = Utf8StrFmt ("%s,%s", Utf8Patterns.raw(), a->argv[i]);
 
