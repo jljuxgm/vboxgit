@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 29263 2010-05-09 19:52:03Z vboxsync $ */
+/* $Id: fileio-posix.cpp 31717 2010-08-17 09:51:01Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX.
  */
@@ -132,7 +132,7 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint32_t fOpen)
     fOpenMode |= O_BINARY;              /* (pc) */
 #endif
 #ifdef O_LARGEFILE
-    fOpenMode |= O_LARGEFILE;           /* (linux) */
+    fOpenMode |= O_LARGEFILE;           /* (linux, solaris) */
 #endif
 #ifdef O_NOINHERIT
     if (!(fOpen & RTFILE_O_INHERIT))
