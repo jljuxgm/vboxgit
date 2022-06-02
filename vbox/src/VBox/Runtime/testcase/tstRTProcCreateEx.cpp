@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 30093 2010-06-08 14:30:17Z vboxsync $ */
+/* $Id: tstRTProcCreateEx.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -435,7 +435,7 @@ int main(int argc, char **argv)
         return rc;
     RTTestBanner(hTest);
 
-    if (!RTProcGetExecutableName(g_szExecName, sizeof(g_szExecName)))
+    if (!RTProcGetExecutablePath(g_szExecName, sizeof(g_szExecName)))
         RTStrCopy(g_szExecName, sizeof(g_szExecName), argv[0]);
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: tstGuestControlSvc.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
+/* $Id: tstGuestControlSvc.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest control service.
@@ -1126,8 +1126,8 @@ int main(int argc, char **argv)
         return RTMsgInitFailure(rc);
 
     /* Save image name for later use. */
-    if (!RTProcGetExecutableName(g_szImageName, sizeof(g_szImageName)))
-        return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTProcGetExecutableName failed\n");
+    if (!RTProcGetExecutablePath(g_szImageName, sizeof(g_szImageName)))
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTProcGetExecutablePath failed\n");
 
     VBOXHGCMSVCFNTABLE svcTable;
     VBOXHGCMSVCHELPERS svcHelpers;

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33784 2010-11-04 16:50:03Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2061,7 +2061,7 @@ VirtualBox::SVCHelperClientThread(RTTHREAD aThread, void *aUser)
 
         /* get the path to the executable */
         char exePathBuf[RTPATH_MAX];
-        char *exePath = RTProcGetExecutableName(exePathBuf, RTPATH_MAX);
+        char *exePath = RTProcGetExecutablePath(exePathBuf, RTPATH_MAX);
         if (!exePath)
         {
             rc = d->that->setError(E_FAIL, tr("Cannot get executable name"));

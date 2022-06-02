@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 33762 2010-11-04 12:48:02Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -1048,7 +1048,7 @@ int VBoxServiceControlExecResolveExecutable(const char *pszFileName, char *pszRe
 
     /* Search the path of our executable. */
     char szVBoxService[RTPATH_MAX];
-    if (RTProcGetExecutableName(szVBoxService, sizeof(szVBoxService)))
+    if (RTProcGetExecutablePath(szVBoxService, sizeof(szVBoxService)))
     {
         char *pszExecResolved = NULL;
         if (   (g_pszProgName && RTStrICmp(pszFileName, g_pszProgName) == 0)

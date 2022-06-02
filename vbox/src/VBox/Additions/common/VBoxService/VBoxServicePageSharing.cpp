@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 32772 2010-09-27 12:19:31Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -689,7 +689,7 @@ DECLCALLBACK(int) VBoxServicePageSharingWorkerProcess(bool volatile *pfShutdown)
             &&  hProcess == NIL_RTPROCESS)
         {
             char szExeName[256];
-            char *pszExeName = RTProcGetExecutableName(szExeName, sizeof(szExeName));
+            char *pszExeName = RTProcGetExecutablePath(szExeName, sizeof(szExeName));
             if (pszExeName)
             {
                 char const *papszArgs[3];

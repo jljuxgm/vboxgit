@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -1955,7 +1955,7 @@ static int rtCoreDumperCreateCore(PVBOXCORE pVBoxCore, ucontext_t *pContext, con
     pVBoxProc->pCurThreadCtx  = pContext;
     pVBoxProc->CoreContent    = CC_CONTENT_DEFAULT;
 
-    RTProcGetExecutableName(pVBoxProc->szExecPath, sizeof(pVBoxProc->szExecPath));  /* this gets full path not just name */
+    RTProcGetExecutablePath(pVBoxProc->szExecPath, sizeof(pVBoxProc->szExecPath));  /* this gets full path not just name */
     pVBoxProc->pszExecName = RTPathFilename(pVBoxProc->szExecPath);
 
     /*

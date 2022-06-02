@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: DHCPServerRunner.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -82,7 +82,7 @@ int DHCPServerRunner::start()
 
     /* get the path to the executable */
     char exePathBuf[RTPATH_MAX];
-    const char *exePath = RTProcGetExecutableName(exePathBuf, RTPATH_MAX);
+    const char *exePath = RTProcGetExecutablePath(exePathBuf, RTPATH_MAX);
     char *substrSl = strrchr(exePathBuf, '/');
     char *substrBs = strrchr(exePathBuf, '\\');
     char *suffix = substrSl ? substrSl : substrBs;

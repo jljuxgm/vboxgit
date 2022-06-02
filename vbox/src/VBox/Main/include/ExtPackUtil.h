@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.h 33693 2010-11-02 14:52:24Z vboxsync $ */
+/* $Id: ExtPackUtil.h 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -23,6 +23,18 @@
 /** @name VBOX_EXTPACK_SUFFIX
  * The suffix of a extension pack tarball. */
 #define VBOX_EXTPACK_SUFFIX             ".vbox-extpack"
+
+/** The minimum length (strlen) of a extension pack name. */
+#define VBOX_EXTPACK_NAME_MIN_LEN       6
+/** The max length (strlen) of a extension pack name. */
+#define VBOX_EXTPACK_NAME_MAX_LEN       64
+
+/** The architecture-dependent application data subdirectory where the
+ * extension packs are installed.  Relative to RTPathAppPrivateArch. */
+#define VBOX_EXTPACK_INSTALL_DIR        "ExtensionPacks"
+/** The architecture-independent application data subdirectory where the
+ * certificates are installed.  Relative to RTPathAppPrivateNoArch. */
+#define VBOX_EXTPACK_CERT_DIR           "Certificates"
 
 
 /**
@@ -51,6 +63,7 @@ typedef VBOXEXTPACKDESC const *PCVBOXEXTPACKDESC;
 
 
 iprt::MiniString *VBoxExtPackLoadDesc(const char *a_pszDir, PVBOXEXTPACKDESC a_pExtPackDesc, PRTFSOBJINFO a_pObjInfo);
+iprt::MiniString *VBoxExtPackExtractNameFromTarballPath(const char *pszTarball);
 bool    VBoxExtPackIsValidName(const char *pszName);
 bool    VBoxExtPackIsValidVersionString(const char *pszName);
 bool    VBoxExtPackIsValidMainModuleString(const char *pszMainModule);

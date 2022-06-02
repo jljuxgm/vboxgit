@@ -1,4 +1,4 @@
-/* $Id: tstRTDigest.cpp 32568 2010-09-16 15:26:13Z vboxsync $ */
+/* $Id: tstRTDigest.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSha*, RTMd5, RTCrc*.
  */
@@ -47,7 +47,7 @@
 static int Error(const char *pszFormat, ...)
 {
     char szName[RTPATH_MAX];
-    if (!RTProcGetExecutableName(szName, sizeof(szName)))
+    if (!RTProcGetExecutablePath(szName, sizeof(szName)))
         strcpy(szName, "tstRTDigest");
 
     RTStrmPrintf(g_pStdErr, "%s: error: ", RTPathFilename(szName));

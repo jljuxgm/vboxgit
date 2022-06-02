@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 33784 2010-11-04 16:50:03Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5065,7 +5065,7 @@ HRESULT Console::consoleInitReleaseLog(const ComPtr<IMachine> aMachine)
 
         /* the package type is interesting for Linux distributions */
         char szExecName[RTPATH_MAX];
-        char *pszExecName = RTProcGetExecutableName(szExecName, sizeof(szExecName));
+        char *pszExecName = RTProcGetExecutablePath(szExecName, sizeof(szExecName));
         RTLogRelLogger(loggerRelease, 0, ~0U,
                        "Executable: %s\n"
                        "Process ID: %u\n"

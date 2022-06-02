@@ -1,4 +1,4 @@
-/* $Id: init.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: init.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -79,7 +79,7 @@ static int32_t volatile g_cUsers = 0;
 static bool volatile    g_fInitializing = false;
 
 /** The process path.
- * This is used by RTPathExecDir and RTProcGetExecutableName and set by rtProcInitName. */
+ * This is used by RTPathExecDir and RTProcGetExecutablePath and set by rtProcInitName. */
 char        g_szrtProcExePath[RTPATH_MAX];
 /** The length of g_szrtProcExePath. */
 size_t      g_cchrtProcExePath;

@@ -1,4 +1,4 @@
-/* $Id: RTAssertShouldPanic-vbox.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTAssertShouldPanic-vbox.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * IPRT - Assertions, generic RTAssertShouldPanic.
  */
@@ -115,7 +115,7 @@ RTDECL(bool) RTAssertShouldPanic(void)
         if (cch < sizeof(szCmd))
         {
             char *pszExecName = &szCmd[cch];
-            if (!RTProcGetExecutableName(pszExecName, sizeof(szCmd) - cch))
+            if (!RTProcGetExecutablePath(pszExecName, sizeof(szCmd) - cch))
                 *pszExecName = '\0';
         }
         const char *apszArgs[] =

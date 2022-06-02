@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 33664 2010-11-01 16:00:33Z vboxsync $ */
+/* $Id: log-vbox.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -296,7 +296,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
 #ifdef IN_RING3
 # ifndef IN_GUEST
     char szExecName[RTPATH_MAX];
-    if (!RTProcGetExecutableName(szExecName, sizeof(szExecName)))
+    if (!RTProcGetExecutablePath(szExecName, sizeof(szExecName)))
         strcpy(szExecName, "VBox");
     RTTIMESPEC TimeSpec;
     RTTIME Time;
