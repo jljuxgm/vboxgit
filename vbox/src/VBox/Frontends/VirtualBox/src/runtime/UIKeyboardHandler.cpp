@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 30639 2010-07-05 22:56:41Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 30640 2010-07-05 23:10:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,6 +53,7 @@ const int XKeyRelease = KeyRelease;
 #endif /* Q_WS_X11 */
 
 #ifdef Q_WS_MAC
+# include "VBoxUtils-darwin.h"
 # include "DarwinKeyboard.h"
 # include "UICocoaApplication.h"
 #endif /* Q_WS_MAC */
