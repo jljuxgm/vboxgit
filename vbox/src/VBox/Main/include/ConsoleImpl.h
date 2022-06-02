@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 30825 2010-07-14 12:44:14Z vboxsync $ */
+/* $Id: ConsoleImpl.h 30832 2010-07-14 13:00:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -98,7 +98,6 @@ public:
         COM_INTERFACE_ENTRY(ISupportErrorInfo)
         COM_INTERFACE_ENTRY(IConsole)
         COM_INTERFACE_ENTRY(IDispatch)
-        COM_INTERFACE_ENTRY(IConnectionPointContainer)
     END_COM_MAP()
 
     Console();

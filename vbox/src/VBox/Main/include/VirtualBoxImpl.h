@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 30825 2010-07-14 12:44:14Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 30832 2010-07-14 13:00:39Z vboxsync $ */
 
 /** @file
  *
@@ -83,7 +83,6 @@ public:
         COM_INTERFACE_ENTRY2(IDispatch, IVirtualBox)
         COM_INTERFACE_ENTRY(ISupportErrorInfo)
         COM_INTERFACE_ENTRY(IVirtualBox)
-        COM_INTERFACE_ENTRY(IConnectionPointContainer)
     END_COM_MAP()
 
     // to postpone generation of the default ctor/dtor
