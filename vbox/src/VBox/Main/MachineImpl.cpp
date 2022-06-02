@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33921 2010-11-09 17:51:38Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33934 2010-11-10 15:25:06Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5739,7 +5739,7 @@ int Machine::calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult)
  * Copies strSource to strTarget, making it relative to the machine folder
  * if it is a subdirectory thereof, or simply copying it otherwise.
  *
- * @param strSource Path to evalue and copy.
+ * @param strSource Path to evaluate and copy.
  * @param strTarget Buffer to receive target path.
  *
  * @note Locks this object for reading.
@@ -5758,7 +5758,7 @@ void Machine::copyPathRelativeToMachine(const Utf8Str &strSource,
     strTarget.stripFilename();
     if (RTPathStartsWith(strSource.c_str(), strTarget.c_str()))
         // is relative: then append what's left
-        strTarget.append(strSource.c_str() + strTarget.length());     // include '/'
+        strTarget = strSource.substr(strTarget.length() + 1); // skip '/'
     else
         // is not relative: then overwrite
         strTarget = strSource;
