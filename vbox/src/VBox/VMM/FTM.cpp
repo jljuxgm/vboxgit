@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32144 2010-08-31 13:05:17Z vboxsync $ */
+/* $Id: FTM.cpp 32145 2010-08-31 13:06:25Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -1073,6 +1073,9 @@ VMMR3DECL(int) FTMR3SetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmCheckpoint)
 {
     if (!pVM->fFaultTolerantMaster)
         return VINF_SUCCESS;
+
+    /** @todo handle ring-0 callbacks on EMT. */
+    VM_ASSERT_OTHER_THREAD(pVM); 
 
     switch (enmCheckpoint)
     {
