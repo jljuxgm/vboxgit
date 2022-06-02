@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 33353 2010-10-22 13:29:33Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33362 2010-10-22 15:06:28Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1770,6 +1770,7 @@ void Appliance::importOneDiskImage(const ovf::DiskImage &di,
                                    pCallbacks, pStorage,
                                    nullParent,
                                    pProgress);
+        if (FAILED(rc)) throw rc;
 
         /* Advance to the next operation. */
         stack.pProgress->SetNextOperation(BstrFmt(tr("Importing virtual disk image '%s'"), RTPathFilename(strSrcFilePath.c_str())).raw(),
