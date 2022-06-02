@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 34772 2010-12-07 09:53:26Z vboxsync $ */
+/* $Id: MachineImpl.cpp 34854 2010-12-09 09:07:52Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5998,7 +5998,7 @@ HRESULT Machine::openRemoteSession(IInternalSessionControl *aControl,
 
     /* get the path to the executable */
     char szPath[RTPATH_MAX];
-    RTPathAppPrivateArch(szPath, RTPATH_MAX);
+    RTPathAppPrivateArch(szPath, sizeof(szPath) - 1);
     size_t sz = strlen(szPath);
     szPath[sz++] = RTPATH_DELIMITER;
     szPath[sz] = 0;
