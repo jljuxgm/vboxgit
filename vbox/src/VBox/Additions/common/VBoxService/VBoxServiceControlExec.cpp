@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 30444 2010-06-25 06:54:28Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 30625 2010-07-05 15:58:12Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -483,9 +483,11 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
         rc = VbglR3GuestCtrlExecReportStatus(pThread->uClientID, pThread->uContextID,
                                              pData->uPID, uStatus, uFlags,
                                              NULL /* pvData */, 0 /* cbData */);
+        VBoxServiceVerbose(3, "ControlExec: Process loop ended with rc=%Rrc\n", rc);
     }
+    else
+        VBoxServiceError("ControlExec: Process loop failed with rc=%Rrc\n", rc);
     RTMemFree(StdInBuf.pch);
-    VBoxServiceVerbose(3, "ControlExec: Process loop ended with rc=%Rrc\n", rc);
     return rc;
 }
 
