@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 33558 2010-10-28 13:37:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -291,7 +291,7 @@ bool VBoxProblemReporter::showModalProgressDialog (
 {
     VBoxProgressDialog progressDlg (aProgress, aTitle, aMinDuration, aParent ? aParent : mainWindowShown());
 
-    /* run the dialog with the 100 ms refresh interval */
+    /* Run the dialog with the 350 ms refresh interval. */
     progressDlg.run (350);
 
     return true;
@@ -2386,7 +2386,7 @@ void VBoxProblemReporter::cannotUpdateGuestAdditions (const CProgress &aProgress
 
     message (aParent ? aParent : mainWindowShown(),
              Error,
-             tr ("Failed to update Guest Additions."),
+             tr ("Failed to update Guest Additions. The Guest Additions installation image will be mounted to provide a manual installation."),
              formatErrorInfo (aProgress.GetErrorInfo()));
 }
 
