@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 35967 2011-02-15 09:37:16Z vboxsync $ */
+/* $Id: GuestImpl.cpp 35970 2011-02-15 10:17:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -613,7 +613,7 @@ void Guest::setAdditionsInfo2(Bstr aAdditionsVersion, Bstr aVersionName, Bstr aR
 
 bool Guest::facilityIsActive(VBoxGuestFacilityType enmFacility)
 {
-    Assert(enmFacility < UINT32_MAX);
+    Assert(enmFacility < INT32_MAX);
     FacilityMapIterConst it = mData.mFacilityMap.find((AdditionsFacilityType_T)enmFacility);
     if (it != mData.mFacilityMap.end())
     {
@@ -625,7 +625,7 @@ bool Guest::facilityIsActive(VBoxGuestFacilityType enmFacility)
 
 HRESULT Guest::facilityUpdate(VBoxGuestFacilityType enmFacility, VBoxGuestFacilityStatus enmStatus)
 {
-    ComAssertRet(enmFacility < UINT32_MAX, E_INVALIDARG);
+    ComAssertRet(enmFacility < INT32_MAX, E_INVALIDARG);
 
     HRESULT rc;
     RTTIMESPEC tsNow;
