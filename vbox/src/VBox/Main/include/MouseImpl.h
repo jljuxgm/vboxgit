@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: MouseImpl.h 35871 2011-02-07 13:19:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -129,6 +129,11 @@ private:
 #ifndef VBOXBFE_WITHOUT_COM
     const ComObjPtr<EventSource> mEventSource;
     VBoxEventDesc                mMouseEvent;
+
+    void fireMouseEvent(bool fAbsolute, LONG x, LONG y, LONG dz, LONG dw, LONG Buttons);
+#else
+    void fireMouseEvent(bool fAbsolute, LONG x, LONG y, LONG dz, LONG dw, LONG Buttons)
+    {}
 #endif
 };
 
