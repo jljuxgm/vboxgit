@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 30459 2010-06-28 11:34:17Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 30715 2010-07-07 16:22:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1615,6 +1615,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
     rc = CFGMR3InsertInteger(pInst, "PCIFunctionNo",        0);                         RC_CHECK();
     Bstr hwVersion;
     hrc = pMachine->COMGETTER(HardwareVersion)(hwVersion.asOutParam());                 H();
+    rc = CFGMR3InsertInteger(pCfg,  "RamSize",              cbRam);                     RC_CHECK();
     if (hwVersion.compare(Bstr("1")) == 0) /* <= 2.0.x */
     {
         CFGMR3InsertInteger(pCfg, "HeapEnabled", 0);                                    RC_CHECK();
