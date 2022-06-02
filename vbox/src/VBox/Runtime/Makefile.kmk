@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31252 2010-07-30 15:38:52Z vboxsync $
+# $Id: Makefile.kmk 31829 2010-08-20 23:19:37Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1254,22 +1254,6 @@ RuntimeR0_SOURCES       = \
 	generic/RTAssertShouldPanic-generic.cpp \
 	\
 	$(RuntimeNoCrt_SOURCES)
-
-ifneq ($(KBUILD_TARGET),win)
-RuntimeR0_SOURCES      += \
-	common/checksum/crc32.cpp \
-	common/checksum/crc64.cpp \
-	common/checksum/md5.cpp \
-	common/checksum/ipv4.cpp \
-	common/checksum/ipv6.cpp \
-	common/misc/handletable.cpp \
-	common/misc/handletablectx.cpp \
-	common/misc/handletablesimple.cpp \
-	common/string/strformat.cpp \
-	common/string/strformatrt.cpp \
-	common/string/strformattype.cpp \
-	common/string/strprintf.cpp
-endif
 
 if1of ($(KBUILD_TARGET), darwin solaris freebsd)
 RuntimeR0_SOURCES += \

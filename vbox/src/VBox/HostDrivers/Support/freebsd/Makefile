@@ -1,4 +1,4 @@
-# $Id: Makefile 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: Makefile 31829 2010-08-20 23:19:37Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -104,7 +104,8 @@ SRCS += \
 .PATH:	${.CURDIR}/common/checksum
 SRCS += \
 	crc32.c \
-	ipv4.c
+	ipv4.c \
+	ipv6.c
 
 .PATH:	${.CURDIR}/common/table
 SRCS += \

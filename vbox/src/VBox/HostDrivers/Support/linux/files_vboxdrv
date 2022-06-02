@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 31250 2010-07-30 14:50:01Z vboxsync $
+# $Id: files_vboxdrv 31829 2010-08-20 23:19:37Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -34,6 +34,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/include/iprt/avl.h=>include/iprt/avl.h \
     ${PATH_ROOT}/include/iprt/cdefs.h=>include/iprt/cdefs.h \
     ${PATH_ROOT}/include/iprt/cpuset.h=>include/iprt/cpuset.h \
+    ${PATH_ROOT}/include/iprt/crc.h=>include/iprt/crc.h \
     ${PATH_ROOT}/include/iprt/ctype.h=>include/iprt/ctype.h \
     ${PATH_ROOT}/include/iprt/err.h=>include/iprt/err.h \
     ${PATH_ROOT}/include/iprt/heap.h=>include/iprt/heap.h \
@@ -79,6 +80,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvInternal.h=>SUPDrvInternal.h \
     ${PATH_ROOT}/src/VBox/Runtime/common/alloc/alloc.cpp=>common/alloc/alloc.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/alloc/heapsimple.cpp=>common/alloc/heapsimple.c \
+    ${PATH_ROOT}/src/VBox/Runtime/common/checksum/crc32.cpp=>common/checksum/crc32.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/checksum/ipv4.cpp=>common/checksum/ipv4.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/checksum/ipv6.cpp=>common/checksum/ipv6.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/err/RTErrConvertFromErrno.cpp=>common/err/RTErrConvertFromErrno.c \
