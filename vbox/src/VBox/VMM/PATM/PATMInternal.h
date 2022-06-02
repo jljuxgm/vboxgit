@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PATMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -20,10 +20,10 @@
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
-#include <VBox/patm.h>
-#include <VBox/stam.h>
+#include <VBox/vmm/patm.h>
+#include <VBox/vmm/stam.h>
 #include <VBox/dis.h>
-#include <VBox/pgm.h>
+#include <VBox/vmm/pgm.h>
 #include <iprt/avl.h>
 #include <iprt/param.h>
 #include <VBox/log.h>

@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: SSMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -20,7 +20,7 @@
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
-#include <VBox/ssm.h>
+#include <VBox/vmm/ssm.h>
 #include <iprt/critsect.h>
 
 RT_C_DECLS_BEGIN

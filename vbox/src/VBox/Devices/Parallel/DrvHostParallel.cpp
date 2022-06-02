@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 32678 2010-09-21 17:14:02Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -21,8 +21,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_PARALLEL
-#include <VBox/pdmdrv.h>
-#include <VBox/pdmthread.h>
+#include <VBox/vmm/pdmdrv.h>
+#include <VBox/vmm/pdmthread.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>

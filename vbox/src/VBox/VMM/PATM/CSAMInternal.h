@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: CSAMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -20,7 +20,7 @@
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
-#include <VBox/csam.h>
+#include <VBox/vmm/csam.h>
 #include <VBox/dis.h>
 #include <VBox/log.h>
 

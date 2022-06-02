@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: HWACCM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -19,23 +19,23 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_HWACCM
-#include <VBox/cpum.h>
-#include <VBox/stam.h>
-#include <VBox/mm.h>
-#include <VBox/pdmapi.h>
-#include <VBox/pgm.h>
-#include <VBox/ssm.h>
-#include <VBox/trpm.h>
-#include <VBox/dbgf.h>
-#include <VBox/iom.h>
-#include <VBox/patm.h>
-#include <VBox/csam.h>
-#include <VBox/selm.h>
-#include <VBox/rem.h>
-#include <VBox/hwacc_vmx.h>
-#include <VBox/hwacc_svm.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/stam.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/pdmapi.h>
+#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/ssm.h>
+#include <VBox/vmm/trpm.h>
+#include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/iom.h>
+#include <VBox/vmm/patm.h>
+#include <VBox/vmm/csam.h>
+#include <VBox/vmm/selm.h>
+#include <VBox/vmm/rem.h>
+#include <VBox/vmm/hwacc_vmx.h>
+#include <VBox/vmm/hwacc_svm.h>
 #include "HWACCMInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
 

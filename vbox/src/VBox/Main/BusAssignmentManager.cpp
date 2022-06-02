@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 34331 2010-11-24 16:24:17Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 
 /** @file
  *
@@ -21,7 +21,7 @@
 #include <iprt/asm.h>
 #include <iprt/string.h>
 
-#include <VBox/cfgm.h>
+#include <VBox/vmm/cfgm.h>
 #include <VBox/com/array.h>
 
 

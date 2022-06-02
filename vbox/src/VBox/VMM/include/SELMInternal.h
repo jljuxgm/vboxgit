@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: SELMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -20,8 +20,8 @@
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
-#include <VBox/stam.h>
-#include <VBox/cpum.h>
+#include <VBox/vmm/stam.h>
+#include <VBox/vmm/cpum.h>
 
 
 

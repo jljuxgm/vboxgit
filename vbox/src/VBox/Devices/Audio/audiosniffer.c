@@ -1,4 +1,4 @@
-/* $Id: audiosniffer.c 35032 2010-12-13 16:35:15Z vboxsync $ */
+/* $Id: audiosniffer.c 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox audio device: Audio sniffer device
  */
@@ -17,7 +17,7 @@
 
 #define LOG_GROUP LOG_GROUP_DEV_AUDIO
 #define AUDIO_CAP "sniffer"
-#include <VBox/pdm.h>
+#include <VBox/vmm/pdm.h>
 #include <VBox/err.h>
 
 #include <VBox/log.h>

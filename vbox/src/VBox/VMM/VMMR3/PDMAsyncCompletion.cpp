@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -21,11 +21,11 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PDM_ASYNC_COMPLETION
 #include "PDMInternal.h"
-#include <VBox/pdm.h>
-#include <VBox/mm.h>
-#include <VBox/rem.h>
-#include <VBox/vm.h>
-#include <VBox/uvm.h>
+#include <VBox/vmm/pdm.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/rem.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/uvm.h>
 #include <VBox/err.h>
 
 #include <VBox/log.h>
@@ -38,7 +38,7 @@
 #include <iprt/path.h>
 #include <iprt/string.h>
 
-#include <VBox/pdmasynccompletion.h>
+#include <VBox/vmm/pdmasynccompletion.h>
 #include "PDMAsyncCompletionInternal.h"
 
 /**

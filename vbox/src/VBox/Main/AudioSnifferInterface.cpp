@@ -1,4 +1,4 @@
-/* $Id: AudioSnifferInterface.cpp 34906 2010-12-09 16:29:49Z vboxsync $ */
+/* $Id: AudioSnifferInterface.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to Audio Sniffer device
  */
@@ -21,9 +21,9 @@
 
 #include "Logging.h"
 
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #include <VBox/RemoteDesktop/VRDE.h>
-#include <VBox/cfgm.h>
+#include <VBox/vmm/cfgm.h>
 #include <VBox/err.h>
 
 //

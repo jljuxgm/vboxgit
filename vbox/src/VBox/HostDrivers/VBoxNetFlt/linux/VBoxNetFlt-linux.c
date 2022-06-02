@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 35066 2010-12-14 11:37:21Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -32,7 +32,7 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/intnetinline.h>
-#include <VBox/pdmnetinline.h>
+#include <VBox/vmm/pdmnetinline.h>
 #include <VBox/param.h>
 #include <iprt/alloca.h>
 #include <iprt/assert.h>

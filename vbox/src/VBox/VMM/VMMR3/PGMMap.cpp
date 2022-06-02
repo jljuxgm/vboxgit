@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PGMMap.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -20,10 +20,10 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM
-#include <VBox/dbgf.h>
-#include <VBox/pgm.h>
+#include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/pgm.h>
 #include "PGMInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include "PGMInline.h"
 
 #include <VBox/log.h>

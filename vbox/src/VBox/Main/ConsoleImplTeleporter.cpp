@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -33,8 +33,8 @@
 #include <iprt/tcp.h>
 #include <iprt/timer.h>
 
-#include <VBox/vmapi.h>
-#include <VBox/ssm.h>
+#include <VBox/vmm/vmapi.h>
+#include <VBox/vmm/ssm.h>
 #include <VBox/err.h>
 #include <VBox/version.h>
 #include <VBox/com/string.h>

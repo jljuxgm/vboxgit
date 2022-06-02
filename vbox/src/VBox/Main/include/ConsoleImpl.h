@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 35171 2010-12-16 10:53:50Z vboxsync $ */
+/* $Id: ConsoleImpl.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -44,7 +44,7 @@ class ExtPackManager;
 #endif
 
 #include <VBox/RemoteDesktop/VRDE.h>
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>  /* For the property notification callback */
 #endif

@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -21,10 +21,10 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PDM_DEVICE
 #include "PDMInternal.h"
-#include <VBox/pdm.h>
-#include <VBox/rem.h>
-#include <VBox/vm.h>
-#include <VBox/vmm.h>
+#include <VBox/vmm/pdm.h>
+#include <VBox/vmm/rem.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmm.h>
 
 #include <VBox/log.h>
 #include <VBox/err.h>

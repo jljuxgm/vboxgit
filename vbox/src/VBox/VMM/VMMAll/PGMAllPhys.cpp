@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -19,14 +19,14 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM_PHYS
-#include <VBox/pgm.h>
-#include <VBox/trpm.h>
-#include <VBox/vmm.h>
-#include <VBox/iom.h>
-#include <VBox/em.h>
-#include <VBox/rem.h>
+#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/trpm.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/iom.h>
+#include <VBox/vmm/em.h>
+#include <VBox/vmm/rem.h>
 #include "PGMInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include "PGMInline.h"
 #include <VBox/param.h>
 #include <VBox/err.h>

@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -22,9 +22,9 @@
 #include <iprt/memcache.h>
 #include <iprt/sg.h>
 #include <VBox/types.h>
-#include <VBox/cfgm.h>
-#include <VBox/stam.h>
-#include <VBox/pdmasynccompletion.h>
+#include <VBox/vmm/cfgm.h>
+#include <VBox/vmm/stam.h>
+#include <VBox/vmm/pdmasynccompletion.h>
 #include "PDMInternal.h"
 
 RT_C_DECLS_BEGIN

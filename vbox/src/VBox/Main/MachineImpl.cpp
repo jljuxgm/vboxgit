@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 35175 2010-12-16 12:36:00Z vboxsync $ */
+/* $Id: MachineImpl.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -72,7 +72,7 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/settings.h>
-#include <VBox/ssm.h>
+#include <VBox/vmm/ssm.h>
 
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>

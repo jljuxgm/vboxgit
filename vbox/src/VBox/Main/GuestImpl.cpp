@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 35170 2010-12-16 10:40:53Z vboxsync $ */
+/* $Id: GuestImpl.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -31,7 +31,7 @@
 # include <VBox/com/ErrorInfo.h>
 #endif
 #include <iprt/cpp/utils.h>
-#include <VBox/pgm.h>
+#include <VBox/vmm/pgm.h>
 
 // defines
 /////////////////////////////////////////////////////////////////////////////

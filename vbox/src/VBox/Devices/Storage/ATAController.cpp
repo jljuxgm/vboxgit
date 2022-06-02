@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 35214 2010-12-17 10:10:07Z vboxsync $ */
+/* $Id: ATAController.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -21,7 +21,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_IDE
-#include <VBox/pdmdev.h>
+#include <VBox/vmm/pdmdev.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #ifdef IN_RING3
@@ -33,9 +33,9 @@
 #endif /* IN_RING3 */
 #include <iprt/critsect.h>
 #include <iprt/asm.h>
-#include <VBox/stam.h>
-#include <VBox/mm.h>
-#include <VBox/pgm.h>
+#include <VBox/vmm/stam.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/pgm.h>
 
 #include <VBox/scsi.h>
 

@@ -1,4 +1,4 @@
-/* $Id: DBGFLog.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: DBGFLog.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Log Manager.
  */
@@ -19,9 +19,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <VBox/vmapi.h>
-#include <VBox/vmm.h>
-#include <VBox/dbgf.h>
+#include <VBox/vmm/vmapi.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/dbgf.h>
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <iprt/assert.h>

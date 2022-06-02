@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -50,16 +50,16 @@ AssertCompileSize(RTHCPHYS, 8);
 *   Header Files                                                               *
 *******************************************************************************/
 #define IN_TSTVMSTRUCTGC 1
-#include <VBox/cfgm.h>
-#include <VBox/cpum.h>
-#include <VBox/mm.h>
-#include <VBox/pgm.h>
-#include <VBox/selm.h>
-#include <VBox/trpm.h>
-#include <VBox/vmm.h>
-#include <VBox/stam.h>
+#include <VBox/vmm/cfgm.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/selm.h>
+#include <VBox/vmm/trpm.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/stam.h>
 #include "PDMInternal.h"
-#include <VBox/pdm.h>
+#include <VBox/vmm/pdm.h>
 #include "CFGMInternal.h"
 #include "CPUMInternal.h"
 #include "MMInternal.h"
@@ -77,7 +77,7 @@ AssertCompileSize(RTHCPHYS, 8);
 #include "CSAMInternal.h"
 #include "EMInternal.h"
 #include "REMInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include <VBox/param.h>
 #include <VBox/x86.h>
 #include <iprt/assert.h>

@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 35258 2010-12-20 17:12:57Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -23,7 +23,7 @@
 #define PCI_INCLUDE_PRIVATE
 #include <VBox/pci.h>
 #include <VBox/msi.h>
-#include <VBox/pdmdev.h>
+#include <VBox/vmm/pdmdev.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
@@ -2357,7 +2357,7 @@ static DECLCALLBACK(int) ich9pciConstruct(PPDMDEVINS pDevIns,
     /* capability */
     PCIDevSetWord(&pBus->aPciDev,  0x50, VBOX_PCI_CAP_ID_SSVID);
     PCIDevSetDWord(&pBus->aPciDev, 0x54, 0x00000000); /* Subsystem vendor ids */
-    
+
     pBus->aPciDev.pDevIns               = pDevIns;
     /* We register Host<->PCI controller on the bus */
     ich9pciRegisterInternal(pBus, -1, &pBus->aPciDev, "i82801");

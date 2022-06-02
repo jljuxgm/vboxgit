@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -111,7 +111,7 @@ NTSTATUS __stdcall NtQueryVolumeInformationFile(
 # error "Unsupported Platform."
 #endif
 
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>
 #include <iprt/path.h>

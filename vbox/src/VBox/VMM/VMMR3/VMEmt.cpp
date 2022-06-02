@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: VMEmt.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -20,15 +20,15 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VM
-#include <VBox/tm.h>
-#include <VBox/dbgf.h>
-#include <VBox/em.h>
-#include <VBox/pdmapi.h>
-#include <VBox/rem.h>
-#include <VBox/tm.h>
+#include <VBox/vmm/tm.h>
+#include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/em.h>
+#include <VBox/vmm/pdmapi.h>
+#include <VBox/vmm/rem.h>
+#include <VBox/vmm/tm.h>
 #include "VMInternal.h"
-#include <VBox/vm.h>
-#include <VBox/uvm.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/uvm.h>
 
 #include <VBox/err.h>
 #include <VBox/log.h>

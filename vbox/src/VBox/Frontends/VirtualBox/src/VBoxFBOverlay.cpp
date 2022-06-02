@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 35280 2010-12-21 16:48:30Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -36,7 +36,7 @@
 #ifdef VBOX_WITH_VIDEOHWACCEL
 #include <VBox/VBoxVideo.h>
 #include <VBox/types.h>
-#include <VBox/ssm.h>
+#include <VBox/vmm/ssm.h>
 #endif
 #include <iprt/semaphore.h>
 

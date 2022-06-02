@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -102,7 +102,7 @@
 #endif
 
 #include <iprt/asm.h>
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>

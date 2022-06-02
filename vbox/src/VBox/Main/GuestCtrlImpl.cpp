@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 35243 2010-12-20 13:37:12Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -36,7 +36,7 @@
 #include <iprt/isofs.h>
 #include <iprt/list.h>
 #include <iprt/path.h>
-#include <VBox/pgm.h>
+#include <VBox/vmm/pgm.h>
 
 #include <memory>
 

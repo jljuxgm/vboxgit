@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 35282 2010-12-21 20:19:53Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -54,10 +54,10 @@
 #endif
 #include <iprt/stream.h>
 
-#include <VBox/vmapi.h>
+#include <VBox/vmm/vmapi.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
-#include <VBox/pdmapi.h> /* For PDMR3DriverAttach/PDMR3DriverDetach */
+#include <VBox/vmm/pdmapi.h> /* For PDMR3DriverAttach/PDMR3DriverDetach */
 #include <VBox/version.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #ifdef VBOX_WITH_CROGL

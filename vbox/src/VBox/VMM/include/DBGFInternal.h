@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: DBGFInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -24,7 +24,7 @@
 #include <iprt/critsect.h>
 #include <iprt/string.h>
 #include <iprt/avl.h>
-#include <VBox/dbgf.h>
+#include <VBox/vmm/dbgf.h>
 
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMDeps.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: VBoxVMMDeps.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBoxVMM link dependencies - drag all we want into the link!
  */
@@ -19,16 +19,16 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <VBox/pgm.h>
-#include <VBox/pdmapi.h>
-#include <VBox/pdmcritsect.h>
-#include <VBox/pdmqueue.h>
-#include <VBox/vm.h>
-#include <VBox/em.h>
-#include <VBox/iom.h>
-#include <VBox/dbgf.h>
+#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/pdmapi.h>
+#include <VBox/vmm/pdmcritsect.h>
+#include <VBox/vmm/pdmqueue.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/em.h>
+#include <VBox/vmm/iom.h>
+#include <VBox/vmm/dbgf.h>
 #include <VBox/dbg.h>
-#include <VBox/ftm.h>
+#include <VBox/vmm/ftm.h>
 
 VMMR3DECL(int) VMMDoTest(PVM pVM);
 

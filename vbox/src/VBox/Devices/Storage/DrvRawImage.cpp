@@ -1,4 +1,4 @@
-/* $Id: DrvRawImage.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DrvRawImage.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox storage devices: Raw image driver
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_RAW_IMAGE
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>
 #include <iprt/string.h>

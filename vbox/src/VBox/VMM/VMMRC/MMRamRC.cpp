@@ -1,4 +1,4 @@
-/* $Id: MMRamRC.cpp 35335 2010-12-27 12:34:40Z vboxsync $ */
+/* $Id: MMRamRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * MMRamGC - Guest Context Ram access Routines, pair for MMRamGCA.asm.
  */
@@ -20,14 +20,14 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_MM
-#include <VBox/mm.h>
-#include <VBox/cpum.h>
-#include <VBox/trpm.h>
-#include <VBox/em.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/trpm.h>
+#include <VBox/vmm/em.h>
 #include "MMInternal.h"
-#include <VBox/vm.h>
-#include <VBox/vmm.h>
-#include <VBox/pgm.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/pgm.h>
 
 #include <iprt/assert.h>
 #include <VBox/param.h>

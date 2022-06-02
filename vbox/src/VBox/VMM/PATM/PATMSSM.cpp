@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PATMSSM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -21,17 +21,17 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PATM
-#include <VBox/patm.h>
-#include <VBox/cpum.h>
-#include <VBox/mm.h>
-#include <VBox/ssm.h>
+#include <VBox/vmm/patm.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/ssm.h>
 #include <VBox/param.h>
 #include <iprt/avl.h>
 #include "PATMInternal.h"
 #include "PATMPatch.h"
 #include "PATMA.h"
-#include <VBox/vm.h>
-#include <VBox/csam.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/csam.h>
 #include "internal/pgm.h"
 #include <VBox/dbg.h>
 #include <VBox/err.h>

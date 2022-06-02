@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 34028 2010-11-12 10:52:49Z vboxsync $ */
+/* $Id: UsbKbd.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -19,7 +19,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP   LOG_GROUP_USB_KBD
-#include <VBox/pdmusb.h>
+#include <VBox/vmm/pdmusb.h>
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <iprt/assert.h>

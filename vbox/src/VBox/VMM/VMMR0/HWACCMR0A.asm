@@ -1,4 +1,4 @@
-; $Id: HWACCMR0A.asm 35333 2010-12-27 12:10:56Z vboxsync $
+; $Id: HWACCMR0A.asm 35346 2010-12-27 16:13:13Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -20,8 +20,8 @@
 ;*******************************************************************************
 %include "VBox/asmdefs.mac"
 %include "VBox/err.mac"
-%include "VBox/hwacc_vmx.mac"
-%include "VBox/cpum.mac"
+%include "VBox/vmm/hwacc_vmx.mac"
+%include "VBox/vmm/cpum.mac"
 %include "VBox/x86.mac"
 %include "HWACCMInternal.mac"
 

@@ -1,4 +1,4 @@
-/* $Id: Builtins2.h 32471 2010-09-14 10:26:07Z vboxsync $ */
+/* $Id: Builtins2.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * Built-in drivers & devices part 2 header.
  *
@@ -20,7 +20,7 @@
 #ifndef ___Builtins2_h
 #define ___Builtins2_h
 
-#include <VBox/pdm.h>
+#include <VBox/vmm/pdm.h>
 
 RT_C_DECLS_BEGIN
 

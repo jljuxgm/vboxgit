@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 35214 2010-12-17 10:10:07Z vboxsync $ */
+/* $Id: DevAHCI.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -37,10 +37,10 @@
 *******************************************************************************/
 //#define DEBUG
 #define LOG_GROUP LOG_GROUP_DEV_AHCI
-#include <VBox/pdmdev.h>
-#include <VBox/pdmqueue.h>
-#include <VBox/pdmthread.h>
-#include <VBox/pdmcritsect.h>
+#include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmqueue.h>
+#include <VBox/vmm/pdmthread.h>
+#include <VBox/vmm/pdmcritsect.h>
 #include <VBox/scsi.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>

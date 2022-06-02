@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: SSM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -144,11 +144,11 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_SSM
-#include <VBox/ssm.h>
-#include <VBox/dbgf.h>
-#include <VBox/mm.h>
+#include <VBox/vmm/ssm.h>
+#include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/mm.h>
 #include "SSMInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <VBox/version.h>

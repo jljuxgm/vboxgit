@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 34088 2010-11-15 20:35:22Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -21,8 +21,8 @@
 #define VNET_WITH_GSO
 #define VNET_WITH_MERGEABLE_RX_BUFS
 
-#include <VBox/pdmdev.h>
-#include <VBox/pdmnetifs.h>
+#include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmnetifs.h>
 #include <iprt/asm.h>
 #include <iprt/net.h>
 #include <iprt/semaphore.h>

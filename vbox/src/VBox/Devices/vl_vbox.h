@@ -1,4 +1,4 @@
-/* $Id: vl_vbox.h 32784 2010-09-28 08:10:47Z vboxsync $ */
+/* $Id: vl_vbox.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox vl.h Replacement.
  *
@@ -26,9 +26,9 @@
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
 #include <VBox/param.h>
-#include <VBox/ssm.h>
-#include <VBox/tm.h>
-#include <VBox/pdm.h>
+#include <VBox/vmm/ssm.h>
+#include <VBox/vmm/tm.h>
+#include <VBox/vmm/pdm.h>
 #include <VBox/err.h>
 #include <VBox/pci.h>
 

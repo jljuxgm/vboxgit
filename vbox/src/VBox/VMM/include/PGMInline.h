@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PGMInline.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -21,17 +21,17 @@
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
 #include <VBox/err.h>
-#include <VBox/stam.h>
+#include <VBox/vmm/stam.h>
 #include <VBox/param.h>
-#include <VBox/vmm.h>
-#include <VBox/mm.h>
-#include <VBox/pdmcritsect.h>
-#include <VBox/pdmapi.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/pdmcritsect.h>
+#include <VBox/vmm/pdmapi.h>
 #include <VBox/dis.h>
-#include <VBox/dbgf.h>
+#include <VBox/vmm/dbgf.h>
 #include <VBox/log.h>
-#include <VBox/gmm.h>
-#include <VBox/hwaccm.h>
+#include <VBox/vmm/gmm.h>
+#include <VBox/vmm/hwaccm.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/avl.h>

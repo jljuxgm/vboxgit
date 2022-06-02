@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 34396 2010-11-26 14:36:14Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -22,7 +22,7 @@
 #include "Logging.h"
 
 #include <VBox/com/array.h>
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 
 #include <iprt/asm.h>
 #include <iprt/cpp/utils.h>

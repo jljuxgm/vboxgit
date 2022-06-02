@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 34933 2010-12-10 06:50:03Z vboxsync $ */
+/* $Id: DevCodec.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 #define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/pdmdev.h>
+#include <VBox/vmm/pdmdev.h>
 #include <iprt/assert.h>
 #include <iprt/uuid.h>
 #include <iprt/string.h>

@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DrvChar.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMICHARCONNECTOR / PDMICHARPORT.
  *
@@ -26,7 +26,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_CHAR
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/stream.h>

@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 35335 2010-12-27 12:34:40Z vboxsync $ */
+/* $Id: VMMRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -21,11 +21,11 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VMM
 #include <iprt/asm-amd64-x86.h> /* for SUPGetCpuHzFromGIP */
-#include <VBox/vmm.h>
-#include <VBox/trpm.h>
-#include <VBox/pgm.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/trpm.h>
+#include <VBox/vmm/pgm.h>
 #include "VMMInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include <VBox/sup.h>
 #include <VBox/err.h>
 #include <VBox/log.h>

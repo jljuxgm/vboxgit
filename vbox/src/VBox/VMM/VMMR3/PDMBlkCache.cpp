@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -29,9 +29,9 @@
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <VBox/log.h>
-#include <VBox/stam.h>
-#include <VBox/uvm.h>
-#include <VBox/vm.h>
+#include <VBox/vmm/stam.h>
+#include <VBox/vmm/uvm.h>
+#include <VBox/vmm/vm.h>
 
 #include "PDMBlkCacheInternal.h"
 

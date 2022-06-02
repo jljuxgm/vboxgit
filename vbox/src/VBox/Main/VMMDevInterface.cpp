@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 35304 2010-12-22 15:43:32Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -23,7 +23,7 @@
 
 #include "Logging.h"
 
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #include <VBox/VMMDev.h>
 #include <VBox/shflsvc.h>
 #include <iprt/asm.h>

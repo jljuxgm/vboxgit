@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: DBGFSym.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Symbol Management.
  */
@@ -27,11 +27,11 @@
 # define HAVE_DBGHELP /* if doing guest stuff, this can be nice. */
 #endif
 /** @todo Only use DBGHELP for reading modules since it doesn't do all we want (relocations), or is way to slow in some cases (add symbol)! */
-#include <VBox/dbgf.h>
-#include <VBox/mm.h>
-#include <VBox/pdmapi.h>
+#include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/pdmapi.h>
 #include "DBGFInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 

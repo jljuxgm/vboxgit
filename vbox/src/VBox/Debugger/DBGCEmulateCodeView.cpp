@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 35257 2010-12-20 17:09:00Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -20,10 +20,10 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DBGC
 #include <VBox/dbg.h>
-#include <VBox/dbgf.h>
-#include <VBox/pgm.h>
-#include <VBox/selm.h>
-#include <VBox/cpum.h>
+#include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/selm.h>
+#include <VBox/vmm/cpum.h>
 #include <VBox/dis.h>
 #include <VBox/param.h>
 #include <VBox/err.h>

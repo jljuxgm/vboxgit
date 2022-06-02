@@ -1,4 +1,4 @@
-/* $Id: fdc.c 34294 2010-11-23 16:11:48Z vboxsync $ */
+/* $Id: fdc.c 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -46,7 +46,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_FDC
-#include <VBox/pdmdev.h>
+#include <VBox/vmm/pdmdev.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/uuid.h>
@@ -2169,7 +2169,7 @@ static DECLCALLBACK(int) fdcLoadExec (PPDMDEVINS pDevIns,
         }
     }
     else    /* New state - straightforward. */
-    {        
+    {
         Assert(uVersion == FDC_SAVESTATE_CURRENT);
         /* Load the FDC I/O registers... */
         SSMR3GetU8(pSSMHandle, &s->sra);

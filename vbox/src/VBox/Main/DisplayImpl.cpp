@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 35305 2010-12-22 16:37:14Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -32,9 +32,9 @@
 #include <iprt/asm.h>
 #include <iprt/cpp/utils.h>
 
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #ifdef DEBUG /* for VM_ASSERT_EMT(). */
-# include <VBox/vm.h>
+# include <VBox/vmm/vm.h>
 #endif
 
 #ifdef VBOX_WITH_VIDEOHWACCEL

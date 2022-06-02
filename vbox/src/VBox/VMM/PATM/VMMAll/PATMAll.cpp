@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PATMAll.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -19,17 +19,17 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PATM
-#include <VBox/patm.h>
-#include <VBox/cpum.h>
+#include <VBox/vmm/patm.h>
+#include <VBox/vmm/cpum.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
-#include <VBox/em.h>
+#include <VBox/vmm/em.h>
 #include <VBox/err.h>
-#include <VBox/selm.h>
-#include <VBox/mm.h>
+#include <VBox/vmm/selm.h>
+#include <VBox/vmm/mm.h>
 #include "PATMInternal.h"
-#include <VBox/vm.h>
-#include <VBox/vmm.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/vmm.h>
 #include "PATMA.h"
 
 #include <VBox/log.h>

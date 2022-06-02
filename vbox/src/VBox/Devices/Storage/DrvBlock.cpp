@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 34433 2010-11-27 11:09:38Z vboxsync $ */
+/* $Id: DrvBlock.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_BLOCK
-#include <VBox/pdmdrv.h>
+#include <VBox/vmm/pdmdrv.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/uuid.h>

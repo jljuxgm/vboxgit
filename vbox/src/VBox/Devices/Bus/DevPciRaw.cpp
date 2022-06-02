@@ -1,4 +1,4 @@
-/* $Id: DevPciRaw.cpp 34876 2010-12-09 11:16:00Z vboxsync $ */
+/* $Id: DevPciRaw.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PCI passthrough device emulation.
  */
@@ -19,9 +19,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_PCI
-#include <VBox/pdmdev.h>
+#include <VBox/vmm/pdmdev.h>
 #include <VBox/log.h>
-#include <VBox/stam.h>
+#include <VBox/vmm/stam.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 

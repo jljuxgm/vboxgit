@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PDMUsb.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -21,13 +21,13 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PDM_DRIVER
 #include "PDMInternal.h"
-#include <VBox/pdm.h>
+#include <VBox/vmm/pdm.h>
 #include <VBox/vusb.h>
-#include <VBox/mm.h>
-#include <VBox/cfgm.h>
-#include <VBox/vmm.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/cfgm.h>
+#include <VBox/vmm/vmm.h>
 #include <VBox/sup.h>
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 #include <VBox/version.h>
 #include <VBox/err.h>
 

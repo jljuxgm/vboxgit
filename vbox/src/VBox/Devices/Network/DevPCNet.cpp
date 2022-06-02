@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 34243 2010-11-22 14:29:13Z vboxsync $ */
+/* $Id: DevPCNet.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -51,9 +51,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_PCNET
-#include <VBox/pdmdev.h>
-#include <VBox/pdmnetifs.h>
-#include <VBox/pgm.h>
+#include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmnetifs.h>
+#include <VBox/vmm/pgm.h>
 #include <VBox/DevPCNet.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>

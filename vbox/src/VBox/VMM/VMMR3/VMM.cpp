@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: VMM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -50,36 +50,36 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VMM
-#include <VBox/vmm.h>
-#include <VBox/vmapi.h>
-#include <VBox/pgm.h>
-#include <VBox/cfgm.h>
-#include <VBox/pdmqueue.h>
-#include <VBox/pdmcritsect.h>
-#include <VBox/pdmapi.h>
-#include <VBox/cpum.h>
-#include <VBox/mm.h>
-#include <VBox/iom.h>
-#include <VBox/trpm.h>
-#include <VBox/selm.h>
-#include <VBox/em.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/vmapi.h>
+#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/cfgm.h>
+#include <VBox/vmm/pdmqueue.h>
+#include <VBox/vmm/pdmcritsect.h>
+#include <VBox/vmm/pdmapi.h>
+#include <VBox/vmm/cpum.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/iom.h>
+#include <VBox/vmm/trpm.h>
+#include <VBox/vmm/selm.h>
+#include <VBox/vmm/em.h>
 #include <VBox/sup.h>
-#include <VBox/dbgf.h>
-#include <VBox/csam.h>
-#include <VBox/patm.h>
-#include <VBox/rem.h>
-#include <VBox/ssm.h>
-#include <VBox/tm.h>
+#include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/csam.h>
+#include <VBox/vmm/patm.h>
+#include <VBox/vmm/rem.h>
+#include <VBox/vmm/ssm.h>
+#include <VBox/vmm/tm.h>
 #include "VMMInternal.h"
 #include "VMMSwitcher.h"
-#include <VBox/vm.h>
-#include <VBox/ftm.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/ftm.h>
 
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/version.h>
 #include <VBox/x86.h>
-#include <VBox/hwaccm.h>
+#include <VBox/vmm/hwaccm.h>
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
 #include <iprt/asm.h>

@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -26,14 +26,14 @@
 #define LOG_GROUP LOG_GROUP_PDM_ASYNC_COMPLETION
 
 #include "VMInternal.h" /* UVM */
-#include <VBox/vm.h>
-#include <VBox/uvm.h>
-#include <VBox/pdmasynccompletion.h>
-#include <VBox/vmm.h>
-#include <VBox/cpum.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/uvm.h>
+#include <VBox/vmm/pdmasynccompletion.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/cpum.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
-#include <VBox/pdmapi.h>
+#include <VBox/vmm/pdmapi.h>
 #include <iprt/alloc.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>

@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: TM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -120,18 +120,18 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_TM
-#include <VBox/tm.h>
-#include <VBox/vmm.h>
-#include <VBox/mm.h>
-#include <VBox/ssm.h>
-#include <VBox/dbgf.h>
-#include <VBox/rem.h>
-#include <VBox/pdmapi.h>
-#include <VBox/iom.h>
+#include <VBox/vmm/tm.h>
+#include <VBox/vmm/vmm.h>
+#include <VBox/vmm/mm.h>
+#include <VBox/vmm/ssm.h>
+#include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/rem.h>
+#include <VBox/vmm/pdmapi.h>
+#include <VBox/vmm/iom.h>
 #include "TMInternal.h"
-#include <VBox/vm.h>
+#include <VBox/vmm/vm.h>
 
-#include <VBox/pdmdev.h>
+#include <VBox/vmm/pdmdev.h>
 #include <VBox/param.h>
 #include <VBox/err.h>
 

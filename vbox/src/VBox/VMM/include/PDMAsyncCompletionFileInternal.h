@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -18,9 +18,9 @@
 #ifndef ___PDMAsyncCompletionFileInternal_h
 #define ___PDMAsyncCompletionFileInternal_h
 
-#include <VBox/cfgm.h>
-#include <VBox/stam.h>
-#include <VBox/tm.h>
+#include <VBox/vmm/cfgm.h>
+#include <VBox/vmm/stam.h>
+#include <VBox/vmm/tm.h>
 #include <iprt/types.h>
 #include <iprt/file.h>
 #include <iprt/thread.h>

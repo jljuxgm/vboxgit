@@ -1,4 +1,4 @@
-/* $Id: PATMGuest.cpp 30572 2010-07-02 11:52:02Z vboxsync $ */
+/* $Id: PATMGuest.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * PATMGuest - Guest OS Patching Manager (non-generic)
  */
@@ -19,14 +19,14 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PATM
-#include <VBox/patm.h>
-#include <VBox/pgm.h>
-#include <VBox/iom.h>
+#include <VBox/vmm/patm.h>
+#include <VBox/vmm/pgm.h>
+#include <VBox/vmm/iom.h>
 #include <VBox/param.h>
 #include <iprt/avl.h>
 #include "PATMInternal.h"
-#include <VBox/vm.h>
-#include <VBox/csam.h>
+#include <VBox/vmm/vm.h>
+#include <VBox/vmm/csam.h>
 
 #include <VBox/dbg.h>
 #include <VBox/err.h>

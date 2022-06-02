@@ -1,4 +1,4 @@
-/* $Id: DisplayUtils.cpp 32398 2010-09-10 12:46:23Z vboxsync $ */
+/* $Id: DisplayUtils.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * Implementation of IDisplay helpers.
  */
@@ -19,7 +19,7 @@
 
 #include <iprt/log.h>
 #include <VBox/err.h>
-#include <VBox/ssm.h>
+#include <VBox/vmm/ssm.h>
 
 int readSavedDisplayScreenshot(const Utf8Str &strStateFilePath, uint32_t u32Type, uint8_t **ppu8Data, uint32_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height)
 {

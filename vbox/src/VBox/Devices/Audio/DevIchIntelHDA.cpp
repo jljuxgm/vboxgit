@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 34968 2010-12-10 18:09:40Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -19,7 +19,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/pdmdev.h>
+#include <VBox/vmm/pdmdev.h>
 #include <iprt/assert.h>
 #include <iprt/uuid.h>
 #include <iprt/string.h>

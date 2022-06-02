@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 33540 2010-10-28 09:27:05Z vboxsync $
+; $Id: PATMA.asm 35346 2010-12-27 16:13:13Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -31,7 +31,7 @@
 %include "VBox/asmdefs.mac"
 %include "VBox/err.mac"
 %include "VBox/x86.mac"
-%include "VBox/vm.mac"
+%include "VBox/vmm/vm.mac"
 %include "PATMA.mac"
 
 %ifdef DEBUG

@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -19,7 +19,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/pdmdev.h>
+#include <VBox/vmm/pdmdev.h>
 #include <iprt/assert.h>
 #include <iprt/uuid.h>
 #include <iprt/string.h>
