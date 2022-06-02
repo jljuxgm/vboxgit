@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 35148 2010-12-15 16:32:14Z vboxsync $ */
+/* $Id: DisplayImpl.h 35177 2010-12-16 12:41:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -41,6 +41,7 @@ typedef struct _DISPLAYFBINFO
     uint32_t u32InformationSize;
 
     ComPtr<IFramebuffer> pFramebuffer;
+    bool fDisabled;
 
     LONG xOrigin;
     LONG yOrigin;
