@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 31808 2010-08-20 09:40:40Z vboxsync $ */
+/* $Id: crservice.cpp 32420 2010-09-10 16:25:10Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -303,10 +303,15 @@ static DECLCALLBACK(void) svcCall (void *, VBOXHGCMCALLHANDLE callHandle, uint32
                 rc = crVBoxServerClientWrite(u32InjectClientID, pBuffer, cbBuffer);
                 if (!RT_SUCCESS(rc))
                 {
-                    Assert(VERR_NOT_SUPPORTED==rc);
-                    svcClientVersionUnsupported(0, 0);
+                    if (VERR_NOT_SUPPORTED==rc)
+                    {
+                        svcClientVersionUnsupported(0, 0);
+                    }
+                    else
+                    {
+                        crWarning("SHCRGL_GUEST_FN_INJECT failed to inject for %i from %i", u32InjectClientID, u32ClientID);
+                    }
                 }
-
             }
             break;
         }
