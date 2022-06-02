@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 32423 2010-09-10 16:49:55Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 32424 2010-09-10 16:52:01Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -2256,7 +2256,7 @@ RTDECL(int) RTCoreDumperTakeDump(const char *pszOutputFile, bool fLiveCore)
     }
     else
     {
-        CORELOGRELSYS(("RTCoreDumperTakeDump: getcontext failed rc=%d.\n"));
+        CORELOGRELSYS(("RTCoreDumperTakeDump: getcontext failed rc=%d.\n", rc));
         rc = VERR_INVALID_CONTEXT;
     }
 
