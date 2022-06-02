@@ -1,4 +1,4 @@
-/* $Id: em.h 32912 2010-10-05 13:04:39Z vboxsync $ */
+/* $Id: em.h 32953 2010-10-06 15:53:27Z vboxsync $ */
 /** @file
  * EM - Internal VMM header file.
  */
@@ -22,5 +22,7 @@
 
 VMMR3DECL(int)  EMR3NotifyResume(PVM pVM);
 VMMR3DECL(int)  EMR3NotifySuspend(PVM pVM);
+
+VMMR3DECL(bool) EMR3IsExecutionAllowed(PVM pVM, PVMCPU pVCpu);
 
 #endif
