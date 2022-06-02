@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 34853 2010-12-09 06:49:04Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 34920 2010-12-09 18:18:29Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -1483,7 +1483,9 @@ static inline bool hdaIsTransferCountersOverlapped(PINTELHDLinkState pState, PHD
         *pStreamDesc->pu32Lpib -= pStreamDesc->u32Cbl;
     hdaUpdatePosBuf(pState, pStreamDesc);
 
-    if (pBdle->u32BdleCviPos == pBdle->u32BdleCviLen)
+    /* don't touch BdleCvi counter on uninitialized descriptor */
+    if (   pBdle->u32BdleCviPos
+        && pBdle->u32BdleCviPos == pBdle->u32BdleCviLen)
     {
         pBdle->u32BdleCviPos = 0;
         pBdle->u32BdleCvi++;
