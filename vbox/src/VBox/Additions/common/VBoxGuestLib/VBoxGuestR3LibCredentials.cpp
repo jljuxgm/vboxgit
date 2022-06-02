@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibCredentials.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibCredentials.cpp 30829 2010-07-14 12:50:10Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, user credentials.
  */
@@ -29,8 +29,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/asm.h>
-#include <iprt/string.h>
+#include <iprt/mem.h>
 #include <iprt/rand.h>
+#include <iprt/string.h>
 #include <VBox/log.h>
 
 #include "VBGLR3Internal.h"
@@ -112,38 +113,15 @@ VBGLR3DECL(int) VbglR3CredentialsRetrieve(char **ppszUser, char **ppszPassword, 
  */
 VBGLR3DECL(void) VbglR3CredentialsDestroy(char *pszUser, char *pszPassword, char *pszDomain, uint32_t cPasses)
 {
-    size_t const    cchUser     = pszUser     ? strlen(pszUser)     : 0;
-    size_t const    cchPassword = pszPassword ? strlen(pszPassword) : 0;
-    size_t const    cchDomain   = pszDomain   ? strlen(pszDomain)   : 0;
+    /* wipe first */
+    if (pszUser)
+        RTMemWipeThoroughly(pszUser,     strlen(pszUser) + 1,     cPasses);
+    if (pszPassword)
+        RTMemWipeThoroughly(pszPassword, strlen(pszPassword) + 1, cPasses);
+    if (pszDomain)
+        RTMemWipeThoroughly(pszDomain,   strlen(pszDomain) + 1,   cPasses);
 
-    do
-    {
-        if (cchUser)
-            memset(pszUser,     0xff, cchUser);
-        if (cchPassword)
-            memset(pszPassword, 0xff, cchPassword);
-        if (cchDomain)
-            memset(pszDomain,   0xff, cchDomain);
-        ASMMemoryFence();
-
-        if (cchUser)
-            memset(pszUser,     0x00, cchUser);
-        if (cchPassword)
-            memset(pszPassword, 0x00, cchPassword);
-        if (cchDomain)
-            memset(pszDomain,   0x00, cchDomain);
-        ASMMemoryFence();
-
-        if (cchUser)
-            RTRandBytes(pszUser,     cchUser);
-        if (cchPassword)
-            RTRandBytes(pszPassword, cchPassword);
-        if (cchDomain)
-            RTRandBytes(pszDomain,   cchDomain);
-        ASMMemoryFence();
-
-    } while (cPasses-- > 0);
-
+    /* then free. */
     RTStrFree(pszUser);
     RTStrFree(pszPassword);
     RTStrFree(pszDomain);
