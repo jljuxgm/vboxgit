@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 31706 2010-08-16 15:27:24Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 31818 2010-08-20 13:06:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -635,7 +635,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
          * Hardware virtualization extensions.
          */
         BOOL fHWVirtExEnabled;
-        BOOL fHwVirtExtForced;
+        BOOL fHwVirtExtForced = false;
 #ifdef VBOX_WITH_RAW_MODE
         hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_Enabled, &fHWVirtExEnabled); H();
         if (cCpus > 1) /** @todo SMP: This isn't nice, but things won't work on mac otherwise. */
@@ -651,8 +651,13 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
                             || cCpus > 1);
 # endif
 #else  /* !VBOX_WITH_RAW_MODE */
-        fHWVirtExEnabled = fHwVirtExtForced = TRUE;
+        fHWVirtExEnabled = fHwVirtExtForced = true;
 #endif /* !VBOX_WITH_RAW_MODE */
+        /* only honor the property value if there was no other reason to enable it */
+        if (!fHwVirtExtForced)
+        {
+            hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_Force, &fHwVirtExtForced); H();
+        }
         InsertConfigInteger(pRoot, "HwVirtExtForced",      fHwVirtExtForced);
 
         PCFGMNODE pHWVirtExt;

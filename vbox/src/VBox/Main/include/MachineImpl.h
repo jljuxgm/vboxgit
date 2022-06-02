@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31742 2010-08-18 07:52:22Z vboxsync $ */
+/* $Id: MachineImpl.h 31818 2010-08-20 13:06:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -256,6 +256,7 @@ public:
         BOOL                 mHWVirtExNestedPagingEnabled;
         BOOL                 mHWVirtExLargePagesEnabled;
         BOOL                 mHWVirtExVPIDEnabled;
+        BOOL                 mHWVirtExForceEnabled;
         BOOL                 mAccelerate2DVideoEnabled;
         BOOL                 mPAEEnabled;
         BOOL                 mSyntheticCpu;
