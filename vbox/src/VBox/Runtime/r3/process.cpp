@@ -1,4 +1,4 @@
-/* $Id: process.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: process.cpp 33454 2010-10-26 09:51:53Z vboxsync $ */
 /** @file
  * IPRT - Process, Common.
  */
@@ -100,7 +100,7 @@ RTR3DECL(char *) RTProcGetExecutableName(char *pszExecName, size_t cchExecName)
      * Calc the length and check if there is space before copying.
      */
     size_t cch = g_cchrtProcExePath;
-    if (cch <= cchExecName)
+    if (cch < cchExecName)
     {
         memcpy(pszExecName, g_szrtProcExePath, cch);
         pszExecName[cch] = '\0';
