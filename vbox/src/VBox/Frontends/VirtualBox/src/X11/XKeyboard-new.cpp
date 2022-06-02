@@ -1,4 +1,4 @@
-/* $Id: XKeyboard-new.cpp 32875 2010-10-01 16:54:27Z vboxsync $ */
+/* $Id: XKeyboard-new.cpp 32984 2010-10-07 15:15:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -82,7 +82,7 @@ static void printKey(Display *display, int keyc)
  */
 static void dumpLayout(Display *display)
 {
-    LogRel(("Your keyboard layout does not appear to fully supported by\n"
+    LogRel(("Your keyboard layout does not appear to be fully supported by\n"
             "VirtualBox. If you would like to help us improve the product,\n"
             "please submit a bug report and attach this logfile.\n"
             "(Note: please ignore this if you are using a custom layout.)\n\n"
