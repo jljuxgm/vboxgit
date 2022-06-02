@@ -1,4 +1,4 @@
-# $Id: Config.kmk 33269 2010-10-20 15:42:28Z vboxsync $
+# $Id: Config.kmk 33316 2010-10-21 15:57:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -567,6 +567,8 @@ endif
 ifdef VBOX_WITH_HARDENING
  if1of ($(KBUILD_TARGET), solaris)
   VBOX_PATH_APP_PRIVATE      = /opt/VirtualBox/$(if-expr $(KBUILD_TARGET_ARCH) == "amd64",amd64,i386)
+ else ifeq ($(KBUILD_TARGET),linux)
+  VBOX_PATH_APP_PRIVATE      = /opt/VirtualBox
  else ifeq ($(KBUILD_TARGET),darwin)
   VBOX_PATH_APP_PRIVATE      = /Applications/VirtualBox.app/Contents/MacOS
  else ifeq ($(KBUILD_TARGET),freebsd)
@@ -599,7 +601,7 @@ endif
 # depending on the location of the object.)
 #VBOX_WITH_RUNPATH = /usr/lib/virtualbox
 ifdef VBOX_WITH_HARDENING
- if1of ($(KBUILD_TARGET), freebsd solaris)
+ if1of ($(KBUILD_TARGET), freebsd linux solaris)
   VBOX_WITH_RUNPATH = $(VBOX_PATH_APP_PRIVATE)
  endif
 endif
@@ -607,12 +609,10 @@ endif
 # Because of the setuid usage on all ELF platforms when hardening the build
 # things gets a bit complicated since the $ORIGIN+setuid policy differs.
 #VBOX_WITH_ORIGIN=1
-ifdef VBOX_WITH_HARDENING
- if1of ($(KBUILD_TARGET), linux)
+ifndef VBOX_WITH_HARDENING
+ if1of ($(KBUILD_TARGET), linux solaris)
   VBOX_WITH_ORIGIN = 1
  endif
-else if1of ($(KBUILD_TARGET), linux solaris)
- VBOX_WITH_ORIGIN = 1
 endif
 # Enable the system wide support service/daemon.
 # Work in progress, but required for hardening on Windows.
@@ -4285,7 +4285,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 33269 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 33316 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
