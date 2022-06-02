@@ -1,4 +1,4 @@
-/* $Id: tstMicro.cpp 31989 2010-08-26 12:43:18Z vboxsync $ */
+/* $Id: tstMicro.cpp 32190 2010-09-02 12:20:06Z vboxsync $ */
 /** @file
  * Micro Testcase, profiling special CPU operations.
  */
@@ -344,7 +344,7 @@ int main(int argc, char **argv)
      * Create empty VM.
      */
     PVM pVM;
-    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, &pVM);
+    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM);
     if (RT_SUCCESS(rc))
     {
         /*

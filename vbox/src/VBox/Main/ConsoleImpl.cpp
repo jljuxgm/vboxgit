@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32169 2010-09-01 09:21:30Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32190 2010-09-02 12:20:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7361,7 +7361,8 @@ DECLCALLBACK(int) Console::powerUpThread(RTTHREAD Thread, void *pvUser)
          */
         alock.leave();
 
-        vrc = VMR3Create(cCpus, Console::genericVMSetErrorCallback, &task->mErrorMsg,
+        vrc = VMR3Create(cCpus, NULL,
+                         Console::genericVMSetErrorCallback, &task->mErrorMsg,
                          task->mConfigConstructor, static_cast<Console *>(console),
                          &pVM);
 

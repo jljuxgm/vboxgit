@@ -1,4 +1,4 @@
-/* $Id: tstVBoxDbg.cpp 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: tstVBoxDbg.cpp 32190 2010-09-02 12:20:06Z vboxsync $ */
 /** @file
  * VBox Debugger GUI, dummy testcase.
  */
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
      * Create empty VM.
      */
     PVM pVM;
-    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, &pVM);
+    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM);
     if (RT_SUCCESS(rc))
     {
         /*

@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstAnimate.cpp 32190 2010-09-02 12:20:06Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -823,7 +823,7 @@ int main(int argc, char **argv)
      * Create empty VM.
      */
     PVM pVM;
-    rc = VMR3Create(1, NULL, NULL, cfgmR3CreateDefault, &cbMem, &pVM);
+    rc = VMR3Create(1, NULL, NULL, NULL, cfgmR3CreateDefault, &cbMem, &pVM);
     if (RT_SUCCESS(rc))
     {
         /*
