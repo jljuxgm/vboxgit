@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 31040 2010-07-23 08:54:09Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 33516 2010-10-27 14:24:22Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -66,6 +66,7 @@ static int getDefaultIfaceName(char *pszName)
                 return VINF_SUCCESS;
             }
         }
+        fclose(fp);
     }
     return VERR_INTERNAL_ERROR;
 }
