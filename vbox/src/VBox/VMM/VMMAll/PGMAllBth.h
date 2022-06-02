@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 31600 2010-08-12 14:17:05Z vboxsync $ */
+/* $Id: PGMAllBth.h 31610 2010-08-12 15:52:53Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2169,7 +2169,7 @@ static int PGM_BTH_NAME(SyncPage)(PVMCPU pVCpu, GSTPDE PdeSrc, RTGCPTR GCPtrPage
 
 #ifdef DEBUG_sandervl
         if (    pVM->pgm.s.fCountingPhysWrites
-            &&  ((uErr & (X86_TRAP_PF_RW|X86_TRAP_PF_P)) == X86_TRAP_PF_RW))
+            &&  ((uErr & (X86_TRAP_PF_RW|X86_TRAP_PF_P)) == (X86_TRAP_PF_RW|X86_TRAP_PF_P)))
         {
             STAM_COUNTER_INC(&pVM->pgm.s.CTX_MID_Z(Stat, FTPhysPageWrite));
         }
