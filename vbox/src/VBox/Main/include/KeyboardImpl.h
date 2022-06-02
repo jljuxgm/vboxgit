@@ -1,10 +1,10 @@
-/* $Id: KeyboardImpl.h 33061 2010-10-12 12:42:20Z vboxsync $ */
+/* $Id: KeyboardImpl.h 33849 2010-11-08 14:36:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2008 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -62,21 +62,21 @@ public:
         COM_INTERFACE_ENTRY(IDispatch)
     END_COM_MAP()
 
-    DECLARE_EMPTY_CTOR_DTOR (Keyboard)
+    DECLARE_EMPTY_CTOR_DTOR(Keyboard)
 
     HRESULT FinalConstruct();
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init (Console *aParent);
+    HRESULT init(Console *aParent);
     void uninit();
 
     STDMETHOD(PutScancode)(LONG scancode);
-    STDMETHOD(PutScancodes)(ComSafeArrayIn (LONG, scancodes),
+    STDMETHOD(PutScancodes)(ComSafeArrayIn(LONG, scancodes),
                             ULONG *codesStored);
     STDMETHOD(PutCAD)();
 
-    STDMETHOD(COMGETTER(EventSource)) (IEventSource ** aEventSource);
+    STDMETHOD(COMGETTER(EventSource))(IEventSource ** aEventSource);
 
     static const PDMDRVREG  DrvReg;
 
