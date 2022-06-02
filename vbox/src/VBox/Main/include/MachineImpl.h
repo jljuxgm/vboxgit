@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31615 2010-08-12 18:12:39Z vboxsync $ */
+/* $Id: MachineImpl.h 31685 2010-08-16 10:01:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -431,6 +431,12 @@ public:
     STDMETHOD(COMSETTER(TeleporterAddress))(IN_BSTR aAddress);
     STDMETHOD(COMGETTER(TeleporterPassword))(BSTR *aPassword);
     STDMETHOD(COMSETTER(TeleporterPassword))(IN_BSTR aPassword);
+    STDMETHOD(COMGETTER(FaultToleranceState))(FaultToleranceState_T *aEnabled);
+    STDMETHOD(COMSETTER(FaultToleranceState))(FaultToleranceState_T aEnabled);
+    STDMETHOD(COMGETTER(FaultTolerancePort))(ULONG *aPort);
+    STDMETHOD(COMSETTER(FaultTolerancePort))(ULONG aPort);
+    STDMETHOD(COMGETTER(FaultToleranceAddress))(BSTR *aAddress);
+    STDMETHOD(COMSETTER(FaultToleranceAddress))(IN_BSTR aAddress);
     STDMETHOD(COMGETTER(RTCUseUTC))(BOOL *aEnabled);
     STDMETHOD(COMSETTER(RTCUseUTC))(BOOL aEnabled);
     STDMETHOD(COMGETTER(FirmwareType)) (FirmwareType_T *aFirmware);
