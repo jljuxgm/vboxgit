@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30836 2010-07-14 13:50:19Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30837 2010-07-14 13:51:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3261,9 +3261,9 @@ typedef struct PGMR3PHYSCHUNKUNMAPCB
  * Callback used to find the mapping that's been unused for
  * the longest time.
  */
-static DECLCALLBACK(int) pgmR3PhysChunkUnmapCandidateCallback(PAVLLU32NODECORE pNode, void *pvUser)
+static DECLCALLBACK(int) pgmR3PhysChunkUnmapCandidateCallback(PAVLU32NODECORE pNode, void *pvUser)
 {
-    PPGMCHUNKR3MAP pChunk = (PPGMCHUNKR3MAP)((uint8_t *)pNode - RT_OFFSETOF(PGMCHUNKR3MAP, AgeCore));
+    PPGMCHUNKR3MAP pChunk = (PPGMCHUNKR3MAP)pNode;
     PPGMR3PHYSCHUNKUNMAPCB pArg = (PPGMR3PHYSCHUNKUNMAPCB)pvUser;
 
     if (    pChunk->iAge
