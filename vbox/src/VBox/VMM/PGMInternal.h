@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31834 2010-08-21 00:52:39Z vboxsync $ */
+/* $Id: PGMInternal.h 31849 2010-08-22 16:15:03Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3510,6 +3510,18 @@ typedef struct PGMCPU
     /** Alignment padding. */
     bool                            afAlignment2[3];
     /** @} */
+
+    /** @name PAE and AMD64 Guest Paging.
+     * @{ */
+    /** Mask containing the PTE bits that we shadow. */
+    uint64_t                        fGst64ShadowedPteMask;
+    /** Mask containing the PDE bits that we shadow. */
+    uint64_t                        fGst64ShadowedPdeMask;
+    /** Mask containing the big page PDE bits that we shadow in the PDE. */
+    uint64_t                        fGst64ShadowedBigPdeMask;
+    /** Mask containing the big page PDE bits that we shadow in the PTE. */
+    uint64_t                        fGst64ShadowedBigPde4PteMask;
+    /** @}  */
 
     /** @name PAE Guest Paging.
      * @{ */
