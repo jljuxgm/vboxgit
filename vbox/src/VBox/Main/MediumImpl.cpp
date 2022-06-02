@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 34779 2010-12-07 13:53:04Z vboxsync $ */
+/* $Id: MediumImpl.cpp 34782 2010-12-07 14:42:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2417,9 +2417,11 @@ STDMETHODIMP Medium::DeleteStorage(IProgress **aProgress)
 
     ComObjPtr<Progress> pProgress;
 
+    GuidList llRegistriesThatNeedSaving;
     HRESULT rc = deleteStorage(&pProgress,
                                false /* aWait */,
-                               NULL);
+                               &llRegistriesThatNeedSaving);
+    m->pVirtualBox->saveRegistries(llRegistriesThatNeedSaving);
 
     if (SUCCEEDED(rc))
         pProgress.queryInterfaceTo(aProgress);
