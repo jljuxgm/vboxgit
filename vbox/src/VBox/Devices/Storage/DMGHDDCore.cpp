@@ -1,4 +1,4 @@
-/* $Id: DMGHDDCore.cpp 32432 2010-09-12 16:09:57Z vboxsync $ */
+/* $Id: DMGHDDCore.cpp 32500 2010-09-15 08:38:52Z vboxsync $ */
 /** @file
  * VBoxDMG - Intepreter for Apple Disk Images (DMG).
  */
@@ -1557,7 +1557,7 @@ static int dmgRead(void *pBackendData, uint64_t uOffset, void *pvBuf,
     LogFlowFunc(("pBackendData=%#p uOffset=%llu pvBuf=%#p cbToRead=%zu pcbActuallyRead=%#p\n", pBackendData, uOffset, pvBuf, cbToRead, pcbActuallyRead));
     PDMGIMAGE pImage = (PDMGIMAGE)pBackendData;
     PDMGEXTENT pExtent = NULL;
-    int rc;
+    int rc = VINF_SUCCESS;
 
     Assert(pImage);
     Assert(uOffset % 512 == 0);
@@ -1614,7 +1614,7 @@ static int dmgWrite(void *pBackendData, uint64_t uOffset, const void *pvBuf,
     LogFlowFunc(("pBackendData=%#p uOffset=%llu pvBuf=%#p cbToWrite=%zu pcbWriteProcess=%#p pcbPreRead=%#p pcbPostRead=%#p\n",
                  pBackendData, uOffset, pvBuf, cbToWrite, pcbWriteProcess, pcbPreRead, pcbPostRead));
     PDMGIMAGE pImage = (PDMGIMAGE)pBackendData;
-    int rc;
+    int rc = VERR_NOT_IMPLEMENTED;
 
     Assert(pImage);
     Assert(uOffset % 512 == 0);
