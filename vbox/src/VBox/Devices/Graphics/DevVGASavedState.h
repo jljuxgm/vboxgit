@@ -1,4 +1,4 @@
-/* $Id: DevVGASavedState.h 33089 2010-10-13 08:25:53Z vboxsync $ */
+/* $Id: DevVGASavedState.h 34140 2010-11-17 15:56:34Z vboxsync $ */
 /** @file
  * DevVGA - Saved state versions.
  *
@@ -22,7 +22,7 @@
 #ifndef Graphics_DevVGASavedState_h
 #define Graphics_DevVGASavedState_h
 
-#define VGA_SAVEDSTATE_VERSION              7
+#define VGA_SAVEDSTATE_VERSION              8
 #define VGA_SAVEDSTATE_VERSION_WDDM         7
 #define VGA_SAVEDSTATE_VERSION_PRE_WDDM     6
 #define VGA_SAVEDSTATE_VERSION_HOST_HEAP    5

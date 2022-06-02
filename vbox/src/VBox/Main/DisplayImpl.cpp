@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 34140 2010-11-17 15:56:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3458,15 +3458,11 @@ void Display::handleVHWACommandProcess(PPDMIDISPLAYCONNECTOR pInterface, PVBOXVH
 
         if (pFramebuffer != NULL)
         {
-            pFramebuffer->Lock();
-
             HRESULT hr = pFramebuffer->ProcessVHWACommand((BYTE*)pCommand);
             if (FAILED(hr))
             {
                 rc = (hr == E_NOTIMPL) ? VERR_NOT_IMPLEMENTED : VERR_GENERAL_FAILURE;
             }
-
-            pFramebuffer->Unlock();
         }
         else
         {
