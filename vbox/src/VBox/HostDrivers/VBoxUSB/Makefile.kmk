@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31898 2010-08-24 09:28:43Z vboxsync $
+# $Id: Makefile.kmk 31911 2010-08-24 11:56:45Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -33,7 +33,6 @@ LIBRARIES += USBLib
 USBLib_TEMPLATE       = VBOXR3
 USBLib_SDKS.win       = WINPSDK W2K3DDK
 USBLib_DEFS           = IN_USBLIB
-USBLib_DEFS.solaris  = $(if $(VBOX_WITH_NEW_USB_CODE_ON_SOLARIS),VBOX_WITH_NEW_USB_CODE_ON_SOLARIS)
 USBLib_DEFS.os2       = STATIC_USBCALLS
 USBLib_SOURCES        = \
 	USBLib.cpp \

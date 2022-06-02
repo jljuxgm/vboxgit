@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.h 31892 2010-08-24 08:00:51Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.h 31911 2010-08-24 11:56:45Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -317,10 +317,8 @@ private:
 #ifdef RT_OS_SOLARIS
     friend class USBProxyServiceSolaris;
 
-# ifdef VBOX_WITH_NEW_USB_CODE_ON_SOLARIS
     /** One-shot filter id only for new code */
     void *mOneShotId;
-# endif
 #endif
 #ifdef RT_OS_LINUX
     friend class USBProxyServiceLinux;
