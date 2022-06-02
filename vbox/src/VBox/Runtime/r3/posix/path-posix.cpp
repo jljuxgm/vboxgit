@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 33337 2010-10-22 10:24:50Z vboxsync $ */
+/* $Id: path-posix.cpp 33341 2010-10-22 11:14:45Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX.
  */
@@ -508,8 +508,8 @@ RTR3DECL(int) RTReadLink(const char *pszPath, char *pszDestLink, size_t cchDestL
         rtPathFreeNative(pszNativePath, pszPath);
     }
 
-    LogFlow(("RTReadlink(%p:{%s}, pObjInfo=%p): returns %Rrc\n",
-             pszPath, pszPath, pObjInfo, rc));
+    LogFlow(("RTReadlink(%p:{%s}): returns %Rrc\n",
+             pszPath, pszPath, rc));
     return rc;
 }
 
