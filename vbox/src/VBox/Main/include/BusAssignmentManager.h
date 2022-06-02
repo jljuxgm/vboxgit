@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.h 33690 2010-11-02 14:02:19Z vboxsync $ */
+/* $Id: BusAssignmentManager.h 33918 2010-11-09 17:11:14Z vboxsync $ */
 
 /** @file
  *
@@ -110,6 +110,11 @@ public:
         return assignPciDevice(pszDevName, pCfg, Address, false);
     }
     virtual bool findPciAddress(const char* pszDevName, int iInstance, PciBusAddress& Address);
+    virtual bool hasPciDevice(const char* pszDevName, int iInstance)
+    {
+        PciBusAddress Address;
+        return findPciAddress(pszDevName, iInstance, Address);
+    }
 };
 
 #endif //  __BusAssignmentManager_h
