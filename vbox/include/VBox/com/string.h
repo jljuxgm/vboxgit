@@ -1,4 +1,4 @@
-/* $Id: string.h 34837 2010-12-08 14:37:42Z vboxsync $ */
+/* $Id: string.h 34846 2010-12-08 17:50:25Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -122,6 +122,11 @@ public:
     Bstr(const char *that)
     {
         copyFrom(that);
+    }
+
+    Bstr(const char *a_pThat, size_t a_cchMax)
+    {
+        copyFromN(a_pThat, a_cchMax);
     }
 
     ~Bstr()
@@ -387,6 +392,17 @@ protected:
         else
             m_bstr = NULL;
     }
+
+    /**
+     * Variant of copyFrom for sub-string constructors.
+     *
+     * @param   a_pszSrc            The source string.
+     * @param   a_cchMax            The maximum number of chars (not
+     *                              codepoints) to copy.  If you pass RTSTR_MAX
+     *                              it'll be exactly like copyFrom().
+     * @throws  std::bad_alloc
+     */
+    void copyFromN(const char *a_pszSrc, size_t a_cchSrc);
 
     BSTR m_bstr;
 
