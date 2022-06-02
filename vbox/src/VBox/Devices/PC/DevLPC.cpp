@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 34506 2010-11-30 13:11:14Z vboxsync $ */
+/* $Id: DevLPC.cpp 34752 2010-12-06 14:31:57Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  */
@@ -213,6 +213,19 @@ static DECLCALLBACK(void) lpcInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const 
     else
         pHlp->pfnPrintf(pHlp, "APIC backdoor closed: %02x %02x\n",
                         pThis->dev.config[0xde], pThis->dev.config[0xad]);
+
+
+    for (int iLine = 0; iLine < 8; ++iLine)
+    {
+
+        int      iBase = iLine < 4 ? 0x60 : 0x64;
+        uint8_t  iMap = PCIDevGetByte(&pThis->dev, iBase + iLine);
+
+        if ((iMap & 0x80) != 0)
+            pHlp->pfnPrintf(pHlp, "PIRQ%c disabled\n", 'A' + iLine);
+        else
+            pHlp->pfnPrintf(pHlp, "PIRQ%c -> IRQ%d\n", 'A' + iLine, iMap & 0xf);
+    }
 }
 
 /**
