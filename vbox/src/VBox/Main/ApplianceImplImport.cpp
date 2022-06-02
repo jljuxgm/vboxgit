@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 33699 2010-11-02 16:12:29Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33788 2010-11-05 11:37:50Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -916,7 +916,8 @@ HRESULT Appliance::readFSImpl(TaskOVF *pTask, PVDINTERFACEIO pCallbacks, PRTSHA1
         /* Read the OVF into a memory buffer */
         size_t cbSize = 0;
         int vrc = RTSha1ReadBuf(strOvfFile.c_str(), &pvTmpBuf, &cbSize, pCallbacks, pStorage);
-        if (RT_FAILURE(vrc))
+        if (   RT_FAILURE(vrc)
+            || !pvTmpBuf)
             throw setError(VBOX_E_FILE_ERROR,
                            tr("Could not read OVF file '%s' (%Rrc)"),
                            RTPathFilename(strOvfFile.c_str()), vrc);
@@ -1304,13 +1305,15 @@ HRESULT Appliance::importFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock)
                              VDINTERFACETYPE_IO, pRTTarCallbacks,
                              tar, &storage.pVDImageIfaces);
         if (RT_FAILURE(vrc))
-            throw E_FAIL;
+            throw setError(E_FAIL,
+                           tr("Internal error (%Rrc)"), vrc);
 
         /* Skip the OVF file, cause this was read in IAppliance::Read already. */
         vrc = RTTarSeekNextFile(tar);
-        if (RT_FAILURE(vrc))
-            /* Better error .... no unusual error */
-            throw E_FAIL;
+        if (   RT_FAILURE(vrc)
+            && vrc != VERR_TAR_END_OF_FILE)
+            throw setError(E_FAIL,
+                           tr("Internal error (%Rrc)"), vrc);
 
         PVDINTERFACEIO pCallbacks = pRTSha1Callbacks;
         PRTSHA1STORAGE pStorage = &storage;
