@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest2.cpp 32187 2010-09-02 08:34:18Z vboxsync $ */
+/* $Id: VBoxGuest2.cpp 32246 2010-09-06 11:47:55Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, bits shared with the windows code.
  */
@@ -27,6 +27,8 @@
 # include "revision-generated.h"
 #endif
 
+/** @todo Remove and merge this file with VBoxGuest.cpp when the Windows driver
+  *       also will be built from the common sources. */
 
 /**
  * Report the guest information to the host.
@@ -119,7 +121,7 @@ int VBoxGuestReportDriverStatus(bool fActive)
         pReq2->guestStatus.flags = 0;
         rc = VbglGRPerform(&pReq2->header);
         Log(("VBoxGuestReportDriverStatus: VbglGRPerform VMMDevReportGuestStatus completed with fActive=%d, rc=%Rrc\n",
-             rc, fActive ? 1 : 0));
+             fActive ? 1 : 0, rc));
         if (rc == VERR_NOT_IMPLEMENTED) /* Compatibility with older hosts. */
             rc = VINF_SUCCESS;
         VbglGRFree(&pReq2->header);
