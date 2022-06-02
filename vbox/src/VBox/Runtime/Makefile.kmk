@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33042 2010-10-11 15:55:26Z vboxsync $
+# $Id: Makefile.kmk 33047 2010-10-11 18:59:23Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1509,6 +1509,8 @@ RuntimeR0Drv_SOURCES.darwin = \
 	darwin/RTErrConvertFromDarwinIO.cpp \
 	darwin/RTErrConvertFromDarwinKern.cpp \
 	generic/RTAssertShouldPanic-generic.cpp \
+ 	generic/RTSemEventWait-2-ex-generic.cpp \
+ 	generic/RTSemEventWaitNoResume-2-ex-generic.cpp \
  	generic/RTSemEventMultiWait-2-ex-generic.cpp \
  	generic/RTSemEventMultiWaitNoResume-2-ex-generic.cpp \
 	generic/RTTimerCreate-generic.cpp \

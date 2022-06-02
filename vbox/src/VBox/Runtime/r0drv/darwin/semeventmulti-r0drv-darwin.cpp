@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-darwin.cpp 33042 2010-10-11 15:55:26Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-darwin.cpp 33047 2010-10-11 18:59:23Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -191,11 +191,17 @@ RTDECL(int)  RTSemEventMultiSignal(RTSEMEVENTMULTI hEventMultiSem)
     rtR0SemEventMultiDarwinRetain(pThis);
     lck_spin_lock(pThis->pSpinlock);
 
+    /*
+     * Set the signal and increment the generation counter.
+     */
     uint32_t fNew = ASMAtomicUoReadU32(&pThis->fStateAndGen);
     fNew += 1 << RTSEMEVENTMULTIDARWIN_GEN_SHIFT;
     fNew |= RTSEMEVENTMULTIDARWIN_STATE_MASK;
     ASMAtomicWriteU32(&pThis->fStateAndGen, fNew);
 
+    /*
+     * Wake up all sleeping threads.
+     */
     if (pThis->fHaveBlockedThreads)
     {
         ASMAtomicWriteBool(&pThis->fHaveBlockedThreads, false);
