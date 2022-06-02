@@ -1,10 +1,10 @@
-/* $Id: PDMR0Device.cpp 35676 2011-01-24 14:24:34Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 35738 2011-01-27 14:17:41Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -668,6 +668,7 @@ extern DECLEXPORT(const PDMPCIHLPR0) g_pdmR0PciHlp =
 /** @name HPET Ring-0 Helpers
  * @{
  */
+/* none */
 
 /**
  * The Ring-0 HPET Helper Callbacks.
@@ -680,9 +681,12 @@ extern DECLEXPORT(const PDMHPETHLPR0) g_pdmR0HpetHlp =
 
 /** @} */
 
+
 /** @name Raw PCI Ring-0 Helpers
  * @{
  */
+/* none */
+
 /**
  * The Ring-0 PCI raw Helper Callbacks.
  */
@@ -693,6 +697,7 @@ extern DECLEXPORT(const PDMPCIRAWHLPR0) g_pdmR0PciRawHlp =
 };
 
 /** @} */
+
 
 /** @name Ring-0 Context Driver Helpers
  * @{

@@ -1,10 +1,10 @@
-/* $Id: PDMRCDevice.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 35738 2011-01-27 14:17:41Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -46,6 +46,7 @@ extern DECLEXPORT(const PDMIOAPICHLPRC) g_pdmRCIoApicHlp;
 extern DECLEXPORT(const PDMPCIHLPRC)    g_pdmRCPciHlp;
 extern DECLEXPORT(const PDMHPETHLPRC)   g_pdmRCHpetHlp;
 extern DECLEXPORT(const PDMDRVHLPRC)    g_pdmRCDrvHlp;
+/** @todo missing PDMPCIRAWHLPRC  */
 RT_C_DECLS_END
 
 
