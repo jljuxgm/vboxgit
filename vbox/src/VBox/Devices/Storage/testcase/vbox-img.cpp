@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 33213 2010-10-18 16:40:21Z vboxsync $ */
+/* $Id: vbox-img.cpp 33224 2010-10-19 08:11:46Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -362,14 +362,22 @@ static int convInRead(void *pvUser, void *pStorage, uint64_t uOffset,
     /* Fill buffer if it is empty. */
     if (pFS->offBuffer == UINT64_MAX)
     {
-        size_t cbRead = 0;
-        rc = RTFileRead(0, &pFS->abBuffer[0], sizeof(pFS->abBuffer),
-                        &cbRead);
-        if (RT_FAILURE(rc))
-            return rc;
+        /* Repeat reading until buffer is full or EOF. */
+        size_t cbSumRead = 0, cbRead;
+        uint8_t *pTmp = (uint8_t *)&pFS->abBuffer[0];
+        size_t cbTmp = sizeof(pFS->abBuffer);
+        do
+        {
+            rc = RTFileRead(0, pTmp, cbTmp, &cbRead);
+            if (RT_FAILURE(rc))
+                return rc;
+            pTmp += cbRead;
+            cbTmp -= cbRead;
+            cbSumRead += cbRead;
+        } while (cbTmp && cbRead);
 
         pFS->offBuffer = 0;
-        pFS->cbBuffer = cbRead;
+        pFS->cbBuffer = cbSumRead;
     }
 
     /* Read several blocks and assemble the result if necessary */
@@ -386,18 +394,22 @@ static int convInRead(void *pvUser, void *pStorage, uint64_t uOffset,
                 return VERR_EOF;
             }
 
-            size_t cbRead = 0;
-            rc = RTFileRead(0, &pFS->abBuffer[0], sizeof(pFS->abBuffer),
-                            &cbRead);
-            if (RT_FAILURE(rc))
+            /* Repeat reading until buffer is full or EOF. */
+            size_t cbSumRead = 0, cbRead;
+            uint8_t *pTmp = (uint8_t *)&pFS->abBuffer[0];
+            size_t cbTmp = sizeof(pFS->abBuffer);
+            do
             {
-                if (pcbRead)
-                    *pcbRead = cbTotalRead;
-                return rc;
-            }
+                rc = RTFileRead(0, pTmp, cbTmp, &cbRead);
+                if (RT_FAILURE(rc))
+                    return rc;
+                pTmp += cbRead;
+                cbTmp -= cbRead;
+                cbSumRead += cbRead;
+            } while (cbTmp && cbRead);
 
             pFS->offBuffer += pFS->cbBuffer;
-            pFS->cbBuffer = cbRead;
+            pFS->cbBuffer = cbSumRead;
         }
 
         uint32_t cbThisRead = RT_MIN(cbBuffer,
@@ -412,6 +424,8 @@ static int convInRead(void *pvUser, void *pStorage, uint64_t uOffset,
 
     if (pcbRead)
         *pcbRead = cbTotalRead;
+
+    pFS->off = uOffset;
 
     return VINF_SUCCESS;
 }
