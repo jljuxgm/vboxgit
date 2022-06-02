@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 35676 2011-01-24 14:24:34Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 35714 2011-01-25 14:29:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -611,6 +611,12 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
                                 LogRel(("Guest Additions are installed but don't supported automatic updating\n"));
                                 rc = TaskGuest::setProgressErrorInfo(VBOX_E_NOT_SUPPORTED, aTask->progress,
                                                                      Guest::tr("Installed Guest Additions do not support automatic updating"));
+                                break;
+
+                            case VERR_TIMEOUT:
+                                LogRel(("Guest was unable to start copying the Guest Additions setup within time\n"));
+                                rc = TaskGuest::setProgressErrorInfo(E_FAIL, aTask->progress,
+                                                                     Guest::tr("Guest was unable to start copying the Guest Additions setup within time"));
                                 break;
 
                             default:
