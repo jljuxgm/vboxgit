@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 30985 2010-07-22 12:39:25Z vboxsync $ */
+/* $Id: DevCodec.h 31028 2010-07-23 03:33:34Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -31,7 +31,7 @@ typedef struct CODECVERB
     PFNCODECVERBPROCESSOR pfn;
 } CODECVERB;
 
-#define CODECNODE_F0_PARAM_LENGTH 0x13
+#define CODECNODE_F0_PARAM_LENGTH 0x14
 typedef struct CODECCOMMONNODE
 {
     uint8_t id; /* 7 - bit format */
