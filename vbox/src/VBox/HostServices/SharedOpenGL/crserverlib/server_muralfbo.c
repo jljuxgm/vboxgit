@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 34269 2010-11-22 22:44:43Z vboxsync $ */
+/* $Id: server_muralfbo.c 34270 2010-11-22 22:54:51Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -39,10 +39,10 @@ static int crServerGetPointScreen(GLint x, GLint y)
 
 static GLboolean crServerMuralCoverScreen(CRMuralInfo *mural, int sId)
 {
-    return mural->gX<=cr_server.screen[sId].x
-           && mural->gX>=cr_server.screen[sId].x+(int)cr_server.screen[sId].w
-           && mural->gY<=cr_server.screen[sId].y
-           && mural->gY>=cr_server.screen[sId].y+(int)cr_server.screen[sId].h;
+    return mural->gX < cr_server.screen[sId].x
+           && mural->gX+(int)mural->width > cr_server.screen[sId].x+(int)cr_server.screen[sId].w
+           && mural->gY < cr_server.screen[sId].y
+           && mural->gY+(int)mural->height > cr_server.screen[sId].y+(int)cr_server.screen[sId].h;
 }
 
 void crServerCheckMuralGeometry(CRMuralInfo *mural)
