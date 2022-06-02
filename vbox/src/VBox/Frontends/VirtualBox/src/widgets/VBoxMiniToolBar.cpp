@@ -1,4 +1,4 @@
-/* $Id: VBoxMiniToolBar.cpp 31866 2010-08-23 14:52:35Z vboxsync $ */
+/* $Id: VBoxMiniToolBar.cpp 31954 2010-08-25 11:18:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -98,7 +98,7 @@ VBoxMiniToolBar::VBoxMiniToolBar(QWidget *pParent, Alignment alignment, bool fAc
 
     /* Minimize action: */
     m_pMinimizeAction = new QAction(this);
-    m_pMinimizeAction->setIcon(UIIconPool::iconSet(":/discard_16px.png"));
+    m_pMinimizeAction->setIcon(UIIconPool::iconSet(":/minimize_16px.png"));
     m_pMinimizeAction->setToolTip(tr("Minimize Window"));
     connect(m_pMinimizeAction, SIGNAL(triggered()), this, SIGNAL(minimizeAction()));
     addAction(m_pMinimizeAction);
