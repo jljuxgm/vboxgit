@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 31222 2010-07-29 16:04:21Z vboxsync $ */
+/* $Id: tstUtf8.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -82,7 +82,7 @@ static void test1(RTTEST hTest)
                      (hTest, "Conversion of second bad UTF-8 strings to UTF-16 apparantly succeeded. It shouldn't. rc=%Rrc\n", rc));
 
     /*
-     * Test current CP convertion.
+     * Test current CP conversion.
      */
     RTTestSub(hTest, "Rand UTF-16 -> UTF-8 -> CP -> UTF-8");
     pwszRand = (PRTUTF16)RTMemAlloc(31 * sizeof(*pwsz));

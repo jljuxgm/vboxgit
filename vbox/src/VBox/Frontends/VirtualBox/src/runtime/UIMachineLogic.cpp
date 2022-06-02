@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1376,7 +1376,7 @@ void UIMachineLogic::sltPrepareUSBMenu()
             connect(attachUSBAction, SIGNAL(triggered(bool)), this, SLOT(sltAttachUSBDevice()));
             pMenu->addAction(attachUSBAction);
 
-            /* Check if that USB device was alread attached to this session: */
+            /* Check if that USB device was already attached to this session: */
             CConsole console = session().GetConsole();
             CUSBDevice attachedDevice = console.FindUSBDeviceById(device.GetId());
             attachUSBAction->setChecked(!attachedDevice.isNull());

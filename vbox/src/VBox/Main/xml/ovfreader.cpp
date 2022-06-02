@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 32565 2010-09-16 14:39:24Z vboxsync $ */
+/* $Id: ovfreader.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
@@ -25,7 +25,7 @@ using namespace ovf;
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// OVF reader implemenation
+// OVF reader implementation
 //
 ////////////////////////////////////////////////////////////////////////////////
 

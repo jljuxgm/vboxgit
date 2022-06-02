@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-freebsd.c 31556 2010-08-11 08:14:34Z vboxsync $ */
+/* $Id: VBoxNetAdp-freebsd.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), FreeBSD Specific Code.
  */
@@ -201,7 +201,7 @@ static void VBoxNetAdpFreeBSDNetinit(void *priv)
 
 /**
  * Transmit packets.
- * netflt has aldready done everything for us so we just hand the
+ * netflt has already done everything for us so we just hand the
  * packets to BPF and increment the packet stats.
  */
 static void VBoxNetAdpFreeBSDNetstart(struct ifnet *ifp)

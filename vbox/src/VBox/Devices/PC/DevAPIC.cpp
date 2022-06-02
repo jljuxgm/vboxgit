@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 32985 2010-10-07 15:16:54Z vboxsync $ */
+/* $Id: DevAPIC.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -731,7 +731,7 @@ PDMBOTHCBDECL(int) apicReadMSR(PPDMDEVINS pDevIns, VMCPUID idCpu, uint32_t u32Re
         case 0x03: /* version */
             val =   APIC_HW_VERSION                                     |
                     ((APIC_LVT_NB - 1) << 16) /* Max LVT index */       |
-                    (0 << 24) /* Support for EOI broadcast supression */;
+                    (0 << 24) /* Support for EOI broadcast suppression */;
             break;
         case 0x08:
             val = apic->tpr;

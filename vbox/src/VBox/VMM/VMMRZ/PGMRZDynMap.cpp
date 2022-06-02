@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 32036 2010-08-27 10:14:39Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -2456,7 +2456,7 @@ typedef PGMR0DYNMAPTEST *PPGMR0DYNMAPTEST;
 
 /**
  * Checks that the content of the page is the same on all CPUs, i.e. that there
- * are no CPU specfic PTs or similar nasty stuff involved.
+ * are no CPU specific PTs or similar nasty stuff involved.
  *
  * @param   idCpu           The current CPU.
  * @param   pvUser1         Pointer a PGMR0DYNMAPTEST structure.

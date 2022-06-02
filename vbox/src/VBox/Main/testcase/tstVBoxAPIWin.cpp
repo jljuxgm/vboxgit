@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIWin.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
+/* $Id: tstVBoxAPIWin.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * tstVBoxAPIWin - sample program to illustrate the VirtualBox
@@ -41,7 +41,7 @@
  *    everywhere else) VirtualBox client application from the same source code
  *    (including common smart C++ templates for automatic interface pointer
  *    reference counter and string data management);
- * b) simpler XPCOM initialization and shutdown (only a signle method call
+ * b) simpler XPCOM initialization and shutdown (only a single method call
  *    that does everything right).
  *
  * Currently, there is no separate sample program that uses the VirtualBox MS

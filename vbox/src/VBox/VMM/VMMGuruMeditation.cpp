@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 31839 2010-08-21 01:57:30Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -648,7 +648,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
 
 
     /*
-     * Repeate the summary to stderr so we don't have to scroll half a mile up.
+     * Repeat the summary to stderr so we don't have to scroll half a mile up.
      */
     if (Hlp.szSummary[0])
         RTStrmPrintf(g_pStdErr,

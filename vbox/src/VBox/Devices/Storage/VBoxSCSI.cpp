@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 33105 2010-10-13 12:52:58Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -191,7 +191,7 @@ int vboxscsiWriteRegister(PVBOXSCSI pVBoxSCSI, uint8_t iRegister, uint8_t uVal)
                 pVBoxSCSI->aCDB[pVBoxSCSI->iCDB] = uVal;
                 pVBoxSCSI->iCDB++;
 
-                /* Check if we have all neccessary command data. */
+                /* Check if we have all necessary command data. */
                 if (pVBoxSCSI->iCDB == pVBoxSCSI->cbCDB)
                 {
                     Log(("%s: Command ready for processing\n", __FUNCTION__));

@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Common.h 32736 2010-09-23 16:19:46Z vboxsync $ */
+/* $Id: tstRTR0Common.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Common header.
  */
@@ -141,7 +141,7 @@ static uint32_t volatile g_cErrors;
  * Similar to RTTESTI_CHECK_MSG
  *
  * @param   expr            The expression to evaluate.
- * @param   DetailsArgs     Format string + arguments - in paranthesis.
+ * @param   DetailsArgs     Format string + arguments - in parenthesis.
  */
 #define RTR0TESTR0_CHECK_MSG(expr, DetailsArgs) \
     do { \

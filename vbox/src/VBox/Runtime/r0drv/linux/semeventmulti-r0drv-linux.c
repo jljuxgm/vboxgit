@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-linux.c 33373 2010-10-24 12:03:46Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-linux.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -180,7 +180,7 @@ RTDECL(int) RTSemEventMultiSignal(RTSEMEVENTMULTI hEventMultiSem)
     rtR0SemEventMultiLnxRetain(pThis);
 
     /*
-     * Signal the event object.  The cause of the parnoia here is racing to try
+     * Signal the event object.  The cause of the paranoia here is racing to try
      * deal with racing RTSemEventMultiSignal calls (should probably be
      * forbidden, but it's relatively easy to handle).
      */

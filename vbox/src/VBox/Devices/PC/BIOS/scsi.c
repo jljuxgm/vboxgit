@@ -1,4 +1,4 @@
-/* $Id: scsi.c 33106 2010-10-13 12:54:09Z vboxsync $ */
+/* $Id: scsi.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -107,7 +107,7 @@ ASM_START
         mov   dx, _scsi_cmd_data_in.io_base + 2[bp] ;; SCSI data read port
 
         rep
-          insb ;; CX dwords transfered from port(DX) to ES:[DI]
+          insb ;; CX dwords transferred from port(DX) to ES:[DI]
 
         pop  bp
 ASM_END
@@ -167,7 +167,7 @@ ASM_START
         mov   ds, ax      ;; segment in ds
 
         rep
-          outsb ;; CX bytes transfered from DS:[SI] to port(DX)
+          outsb ;; CX bytes transferred from DS:[SI] to port(DX)
 
         pop  ds
         pop  bp

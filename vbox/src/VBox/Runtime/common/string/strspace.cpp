@@ -1,4 +1,4 @@
-/* $Id: strspace.cpp 30611 2010-07-05 12:53:59Z vboxsync $ */
+/* $Id: strspace.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Unique String Spaces.
  */
@@ -101,7 +101,7 @@ DECLINLINE(uint32_t) sdbm(const char *str, size_t *pcch)
  * Inserts a string into a unique string space.
  *
  * @returns true on success.
- * @returns false if the string collieded with an existing string.
+ * @returns false if the string collided with an existing string.
  * @param   pStrSpace       The space to insert it into.
  * @param   pStr            The string node.
  */

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 32771 2010-09-27 12:09:42Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -246,7 +246,7 @@ void VBoxServiceVMInfoWinProcessesFree(PVBOXSERVICEVMINFOPROC paProcs)
 }
 
 /**
- * Determins whether the specified session has processes on the system.
+ * Determines whether the specified session has processes on the system.
  *
  * @returns true if it has, false if it doesn't.
  * @param   pSession        The session.

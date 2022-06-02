@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -55,7 +55,7 @@ HRESULT ProgressProxy::FinalConstruct()
 }
 
 /**
- * Initalize it as a one operation Progress object.
+ * Initialize it as a one operation Progress object.
  *
  * This is used by SessionMachine::OnSessionEnd.
  */

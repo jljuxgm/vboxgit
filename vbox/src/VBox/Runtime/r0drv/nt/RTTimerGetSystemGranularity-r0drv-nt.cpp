@@ -1,4 +1,4 @@
-/* $Id: RTTimerGetSystemGranularity-r0drv-nt.cpp 33155 2010-10-15 12:07:44Z vboxsync $ */
+/* $Id: RTTimerGetSystemGranularity-r0drv-nt.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - RTTimerGetSystemGranularity, Ring-0 Driver, NT.
  */
@@ -42,7 +42,7 @@ RTDECL(uint32_t) RTTimerGetSystemGranularity(void)
 {
     /*
      * Get the default/max timer increment value, return it if ExSetTimerResolution
-     * isn't available. Accoring to the sysinternals guys NtQueryTimerResolution
+     * isn't available. According to the sysinternals guys NtQueryTimerResolution
      * is only available in userland and they find it equally annoying.
      */
     ULONG ulTimeInc = KeQueryTimeIncrement();

@@ -1,4 +1,4 @@
-/* $Id: QILabel.cpp 30868 2010-07-16 09:42:12Z vboxsync $ */
+/* $Id: QILabel.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,10 +32,10 @@
 #include <QPainter>
 #include <QStyleOptionFocusRect>
 
-/* Local inclused */
+/* Local includes */
 #include "QILabel.h"
 
-/* Some constant predefines */
+/* Some constant regular expressions */
 const QRegExp QILabel::mCopyRegExp = QRegExp ("<[^>]*>");
 QRegExp QILabel::mElideRegExp = QRegExp ("(<compact\\s+elipsis=\"(start|middle|end)\"?>([^<]*)</compact>)");
 

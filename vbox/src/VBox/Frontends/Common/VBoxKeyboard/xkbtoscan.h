@@ -1,4 +1,4 @@
-/* $Id: xkbtoscan.h 32895 2010-10-05 09:19:12Z vboxsync $ */
+/* $Id: xkbtoscan.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables (XT scan
  *                         code mappings for XKB key names).
@@ -24,7 +24,7 @@
  * Sun LGPL Disclaimer: For the avoidance of doubt, except that if any license 
  * other than GPL or LGPL is available it will apply instead, Sun elects to use
  * the Lesser General Public License version 2.1 (LGPLv2) at this time for any 
- * a choice of LGPL license versions is made available with the language indica
+ * a choice of LGPL license versions is made available with the language indicating
  * that LGPLv2 or any later version may be used, or where a choice of which ver
  * of the LGPL is applied is otherwise unspecified.
  */

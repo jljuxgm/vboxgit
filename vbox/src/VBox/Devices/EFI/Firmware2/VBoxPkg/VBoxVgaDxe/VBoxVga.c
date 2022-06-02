@@ -1,4 +1,4 @@
-/* $Id: VBoxVga.c 33086 2010-10-13 07:27:19Z vboxsync $ */
+/* $Id: VBoxVga.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxVga.c
  */
@@ -345,7 +345,7 @@ VBoxVgaControllerDriverStart (
 
   PciAttributesSaved = FALSE;
   //
-  // Allocate Private context data for UGA Draw inteface.
+  // Allocate Private context data for UGA Draw interface.
   //
   Private = AllocateZeroPool (sizeof (VBOX_VGA_PRIVATE_DATA));
   if (Private == NULL) {

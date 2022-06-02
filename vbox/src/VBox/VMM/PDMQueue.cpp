@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: PDMQueue.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -667,7 +667,7 @@ VMMR3DECL(void) PDMR3QueueFlushAll(PVM pVM)
     /*
      * Only let one EMT flushing queues at any one time to preserve the order
      * and to avoid wasting time. The FF is always cleared here, because it's
-     * only used to get someones attention. Queue inserts occuring during the
+     * only used to get someones attention. Queue inserts occurring during the
      * flush are caught using the pending bit.
      *
      * Note! We must check the force action and pending flags after clearing

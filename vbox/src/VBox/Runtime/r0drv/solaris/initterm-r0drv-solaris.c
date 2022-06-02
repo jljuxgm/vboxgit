@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-solaris.c 33149 2010-10-15 11:26:24Z vboxsync $ */
+/* $Id: initterm-r0drv-solaris.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Solaris.
  */
@@ -63,7 +63,7 @@ int rtR0InitNative(void)
     {
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
         /*
-         * Detech whether spl*() is preserving the interrupt flag or not.
+         * Detect whether spl*() is preserving the interrupt flag or not.
          * This is a problem on S10.
          */
         RTCCUINTREG uOldFlags = ASMIntDisableFlags();

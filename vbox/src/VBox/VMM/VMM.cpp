@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 32869 2010-10-01 14:53:25Z vboxsync $ */
+/* $Id: VMM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1487,7 +1487,7 @@ DECL_FORCE_INLINE(int) vmmR3EmtRendezvousNonCallerReturn(PVM pVM)
  *
  * @returns VBox strict informational status code for EM scheduling. No failures
  *          will be returned here, those are for the caller only.  When
- *          fIsCaller is set, VINF_SUCESS is always returned.
+ *          fIsCaller is set, VINF_SUCCESS is always returned.
  *
  * @param   pVM                 The VM handle.
  * @param   pVCpu               The VMCPU structure for the calling EMT.

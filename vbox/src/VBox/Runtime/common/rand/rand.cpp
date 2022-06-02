@@ -1,4 +1,4 @@
-/* $Id: rand.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: rand.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers.
  */
@@ -45,7 +45,7 @@
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
-/** For lazily initializating of the random generator. */
+/** For lazily initializing of the random generator. */
 static RTONCE g_rtRandOnce = RTONCE_INITIALIZER;
 /** The default random generator. */
 static RTRAND g_hRand = NIL_RTRAND;

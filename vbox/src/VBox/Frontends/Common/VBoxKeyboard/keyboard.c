@@ -1,4 +1,4 @@
-/* $Id: keyboard.c 32896 2010-10-05 09:29:41Z vboxsync $ */
+/* $Id: keyboard.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard handler library.
  */
@@ -268,7 +268,7 @@ X11DRV_KEYBOARD_DetectLayout (Display *display, unsigned min_keycode,
  * identical to non-Dvorak layouts, but with the keys in a different order.
  * To deal with this, we compare the different candidate layouts to see in
  * which one the X11 keycodes would be most sequential and hope that they
- * really are layed out more or less sequentially.
+ * really are arranged more or less sequentially.
  *
  * The actual detection of the current layout is done in the sub-function
  * X11DRV_KEYBOARD_DetectLayout.  Once we have determined the layout, since we

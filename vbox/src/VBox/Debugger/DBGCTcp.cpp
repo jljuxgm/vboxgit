@@ -1,4 +1,4 @@
-/* $Id: DBGCTcp.cpp 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
@@ -268,7 +268,7 @@ DBGDECL(int)    DBGCTcpCreate(PVM pVM, void **ppvData)
 
 
 /**
- * Terminates any running TCP base debugger consolse service.
+ * Terminates any running TCP base debugger console service.
  *
  * @returns VBox status.
  * @param   pVM         VM handle.

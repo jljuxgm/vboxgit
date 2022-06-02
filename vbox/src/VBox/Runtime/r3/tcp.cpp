@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 32830 2010-09-29 19:36:36Z vboxsync $ */
+/* $Id: tcp.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -593,7 +593,7 @@ static int rtTcpServerListenCleanup(PRTTCPSERVER pServer)
 
 
 /**
- * Listen and accept one incomming connection.
+ * Listen and accept one incoming connection.
  *
  * This is an alternative to RTTcpServerListen for the use the callbacks are not
  * possible.

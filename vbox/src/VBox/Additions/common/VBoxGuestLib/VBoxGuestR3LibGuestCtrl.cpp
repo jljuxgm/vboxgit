@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 33247 2010-10-20 10:01:48Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -59,7 +59,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlConnect(uint32_t *pu32ClientId)
     Info.Loc.type = VMMDevHGCMLoc_LocalHost_Existing;
     RT_ZERO(Info.Loc.u);
     strcpy(Info.Loc.u.host.achName, "VBoxGuestControlSvc");
-    Info.u32ClientID = UINT32_MAX;  /* try make valgrid shut up. */
+    Info.u32ClientID = UINT32_MAX;  /* try make valgrind shut up. */
 
     int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CONNECT, &Info, sizeof(Info));
     if (RT_SUCCESS(rc))

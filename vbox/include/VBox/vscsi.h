@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 32983 2010-10-07 15:14:54Z vboxsync $ */
+/* $Id: vscsi.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox storage drivers: Virtual SCSI driver
  */
@@ -242,7 +242,7 @@ VBOXDDU_DECL(int) VSCSILunCreate(PVSCSILUN phVScsiLun, VSCSILUNTYPE enmLunType,
  * Destroy virtual SCSI LUN.
  *
  * @returns VBox status code.
- * @param   hVScsiLun               The virtal SCSI LUN handle to destroy.
+ * @param   hVScsiLun               The virtual SCSI LUN handle to destroy.
  */
 VBOXDDU_DECL(int) VSCSILunDestroy(VSCSILUN hVScsiLun);
 

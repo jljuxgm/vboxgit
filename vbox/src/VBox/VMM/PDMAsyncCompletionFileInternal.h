@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 33220 2010-10-18 20:21:05Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -46,7 +46,7 @@
 RT_C_DECLS_BEGIN
 
 /**
- * A few forward declerations.
+ * A few forward declarations.
  */
 typedef struct PDMASYNCCOMPLETIONENDPOINTFILE *PPDMASYNCCOMPLETIONENDPOINTFILE;
 /** Pointer to a request segment. */
@@ -172,7 +172,7 @@ typedef struct PDMACEPFILEMGR
     RTMEMCACHE                             hMemCacheRangeLocks;
     /** Critical section protecting the blocking event handling. */
     RTCRITSECT                             CritSectBlockingEvent;
-    /** Event sempahore for blocking external events.
+    /** Event semaphore for blocking external events.
      * The caller waits on it until the async I/O manager
      * finished processing the event. */
     RTSEMEVENT                             EventSemBlock;
@@ -531,7 +531,7 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
     STAMPROFILEADV                         StatWrite;
 #endif
 
-    /** Event sempahore for blocking external events.
+    /** Event semaphore for blocking external events.
      * The caller waits on it until the async I/O manager
      * finished processing the event. */
     RTSEMEVENT                             EventSemBlock;

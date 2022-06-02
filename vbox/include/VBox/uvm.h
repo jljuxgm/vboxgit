@@ -1,4 +1,4 @@
-/* $Id: uvm.h 32796 2010-09-28 14:54:41Z vboxsync $ */
+/* $Id: uvm.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data. (VMM)
  */
@@ -87,7 +87,7 @@ typedef struct UVM
     PCVMM2USERMETHODS   pVmm2UserMethods;
 
 #if HC_ARCH_BITS == 32
-    /** Align the next member on a 32 byte boundrary. */
+    /** Align the next member on a 32 byte boundary. */
     uint8_t             abAlignment0[HC_ARCH_BITS == 32 ? 12 : 0];
 #endif
 

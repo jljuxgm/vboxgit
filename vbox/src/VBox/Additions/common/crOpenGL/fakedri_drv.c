@@ -1,4 +1,4 @@
-/* $Id: fakedri_drv.c 32404 2010-09-10 13:17:42Z vboxsync $ */
+/* $Id: fakedri_drv.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -224,7 +224,7 @@ vboxPatchMesaExport(const char* psFuncName, const void *pStart, const void *pEnd
         pEnd = &patch[5];
     }
 
-    /* Get aligned start adress we're going to patch*/
+    /* Get aligned start address we're going to patch*/
     alPatch = (void*) ((uintptr_t)dlip.dli_saddr & ~(uintptr_t)(PAGESIZE-1));
 
 #ifndef VBOX_NO_MESA_PATCH_REPORTS

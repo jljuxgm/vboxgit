@@ -1,4 +1,4 @@
-/* $Id: UIRegistrationWzd.cpp 29730 2010-05-21 12:48:19Z vboxsync $ */
+/* $Id: UIRegistrationWzd.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -478,7 +478,7 @@ UIRegistrationWzdPage1::UIRegistrationWzdPage1()
     QRegExp passwordExp ("[a-zA-Z0-9_\\-\\+=`~!@#$%^&\\*\\(\\)?\\[\\]:;,\\./]+");
 
     m_pLeOldEmail->setMaxLength(50);
-    /* New accounts *must* have a valid email as user name. Thats not the case
+    /* New accounts *must* have a valid email as user name. This not the case
      * for old existing accounts. So we don't force the email format, so that
      * old accounts could be used for registration also. */
     m_pLeOldEmail->setValidator(new QRegExpValidator(nameExp, this));

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -200,7 +200,7 @@ int handleStorageAttach(HandlerArg *a)
     }
 
     /* for sata controller check if the port count is big enough
-     * to accomodate the current port which is being assigned
+     * to accommodate the current port which is being assigned
      * else just increase the port count
      */
     {

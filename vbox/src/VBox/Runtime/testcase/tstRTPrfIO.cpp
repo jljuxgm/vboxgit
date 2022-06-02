@@ -1,4 +1,4 @@
-/* $Id: tstRTPrfIO.cpp 32993 2010-10-07 22:59:42Z vboxsync $ */
+/* $Id: tstRTPrfIO.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - Profile IPRT I/O APIs.
  */
@@ -72,7 +72,7 @@ static char         g_szNotExitingDirFile[RTPATH_MAX];
 /**
  * Benchmark an operation.
  * @param   stmt        Statement to benchmark.
- * @param   what        String litteral describing what's being benchmarked..
+ * @param   what        String literal describing what's being benchmarked..
  */
 #define TIME_OP(stmt, what) \
     do \
@@ -210,7 +210,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "$Revision: 32993 $\n");
+                RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "$Revision: 33540 $\n");
                 return RTTestSummaryAndDestroy(g_hTest);
 
             case 'h':

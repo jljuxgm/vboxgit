@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 32789 2010-09-28 12:55:42Z vboxsync $ */
+/* $Id: UIWindowMenuManager.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -38,7 +38,7 @@ public:
         m_pWindowMenu->addAction(m_pMinimizeAction);
         connect(m_pMinimizeAction, SIGNAL(triggered(bool)),
                 this, SLOT(minimizeActive(bool)));
-        /* Make sure all already available windows are proberly registered on
+        /* Make sure all already available windows are properly registered on
          * this menu. */
         for (int i=0; i < winList.size(); ++i)
             addWindow(winList.at(i));

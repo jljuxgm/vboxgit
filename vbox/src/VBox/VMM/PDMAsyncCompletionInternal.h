@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 33218 2010-10-18 19:54:10Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -58,7 +58,7 @@ typedef struct PDMASYNCCOMPLETIONEPCLASSOPS
     DECLR3CALLBACKMEMBER(int, pfnInitialize, (PPDMASYNCCOMPLETIONEPCLASS pClassGlobals, PCFGMNODE pCfgNode));
 
     /**
-     * Frees all allocated ressources which were allocated during init.
+     * Frees all allocated resources which were allocated during init.
      *
      * @returns VBox status code.
      * @param   pClassGlobals    Pointer to the globals data.

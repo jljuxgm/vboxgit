@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 32968 2010-10-07 08:38:24Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -35,7 +35,7 @@
  * fall back on the pthread based implementation if glibc is known to contain
  * the bug fix.
  *
- * The external refernce to epoll_pwait is a hack which prevents that we link
+ * The external reference to epoll_pwait is a hack which prevents that we link
  * against glibc < 2.6.
  */
 #include "../posix/semeventmulti-posix.cpp"

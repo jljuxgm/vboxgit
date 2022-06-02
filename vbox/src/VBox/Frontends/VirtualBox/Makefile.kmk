@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32835 2010-09-30 08:02:49Z vboxsync $
+# $Id: Makefile.kmk 33540 2010-10-28 09:27:05Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -197,6 +197,8 @@ VirtualBox_LIBS = $(LIB_DDU)
 VirtualBox_LIBS.linux += Xinerama
 VirtualBox_LIBS.solaris += Xinerama
 VirtualBox_LIBS.freebsd += Xinerama
+
+VirtualBox_CXXFLAGS += -Wno-switch
 
 ifdef VBOX_WITH_VIDEOHWACCEL
 # Necessary for save state support

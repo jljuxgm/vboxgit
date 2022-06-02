@@ -1,4 +1,4 @@
-/* $Id: tstCompressionBenchmark.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstCompressionBenchmark.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * Compression Benchmark for SSM and PGM.
  */
@@ -367,7 +367,7 @@ int main(int argc, char **argv)
 
     /*
      * Double loop compressing and uncompressing the data, where the outer does
-     * the specified number of interations while the inner applies the different
+     * the specified number of iterations while the inner applies the different
      * compression algorithms.
      */
     struct
@@ -382,9 +382,9 @@ int main(int argc, char **argv)
         int         rc;
         /** The compression style: block or stream. */
         bool        fBlock;
-        /** Compresstion type.  */
+        /** Compression type.  */
         RTZIPTYPE   enmType;
-        /** Compresison level.  */
+        /** Compression level.  */
         RTZIPLEVEL  enmLevel;
         /** Method name. */
         const char *pszName;

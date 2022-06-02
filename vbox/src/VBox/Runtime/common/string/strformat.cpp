@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 33496 2010-10-27 12:15:28Z vboxsync $ */
+/* $Id: strformat.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -189,7 +189,7 @@ static int rtStrFormatNumber(char *psz, KSIZE64 ullValue, unsigned int uiBase, s
         fFlags &= ~RTSTR_F_THOUSAND_SEP;
 
     /*
-     * Determin value length
+     * Determine value length
      */
     cchValue = 0;
     if (ullValue.ulHi || (fFlags & RTSTR_F_64BIT))

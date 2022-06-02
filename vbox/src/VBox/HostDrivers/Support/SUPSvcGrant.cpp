@@ -1,4 +1,4 @@
-/* $Id: SUPSvcGrant.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
+/* $Id: SUPSvcGrant.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - The Grant Service.
  */
@@ -167,7 +167,7 @@ static DECLCALLBACK(int) supSvcGrantSessionThread(RTTHREAD hThread, void *pvSess
     Log(("supSvcGrantSessionThread(%p):\n", pThis));
 
     /*
-     * Process client requests untill it quits or we're cancelled on termination.
+     * Process client requests until it quits or we're cancelled on termination.
      */
     while (!ASMAtomicUoReadBool(&pThis->fTerminate))
     {
@@ -251,7 +251,7 @@ static void supSvcGrantSessionDestroy(PSUPSVCGRANTSESSION pThis, PSUPSVCGRANT pP
 static void supSvcGrantCleanUpSessionsLocked(PSUPSVCGRANT pThis)
 {
     /*
-     * Iterate untill be make it all the way thru the list.
+     * Iterate until be make it all the way thru the list.
      *
      * Only use the thread state as and indicator on whether we can destroy
      * the session or not.

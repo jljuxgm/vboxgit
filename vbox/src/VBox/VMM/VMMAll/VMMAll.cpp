@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: VMMAll.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -45,7 +45,7 @@ VMMDECL(RTRCPTR) VMMGetStackRC(PVMCPU pVCpu)
 
 
 /**
- * Gets the ID virtual of the virtual CPU assoicated with the calling thread.
+ * Gets the ID virtual of the virtual CPU associated with the calling thread.
  *
  * @returns The CPU ID. NIL_VMCPUID if the thread isn't an EMT.
  *

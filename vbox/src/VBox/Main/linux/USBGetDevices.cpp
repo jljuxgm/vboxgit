@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 33331 2010-10-22 07:43:14Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -574,7 +574,7 @@ static PUSBDEVICE getDevicesFromUsbfs(const char *pcszUsbfsRoot)
 
             /*
              * Interpret the line.
-             * (Ordered by normal occurence.)
+             * (Ordered by normal occurrence.)
              */
             char ch = psz[0];
             if (psz[1] != ':')

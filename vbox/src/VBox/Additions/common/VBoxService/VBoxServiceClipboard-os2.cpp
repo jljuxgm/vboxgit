@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceClipboard-os2.cpp 33395 2010-10-24 16:18:01Z vboxsync $ */
+/** $Id: VBoxServiceClipboard-os2.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Clipboard Service, OS/2.
  */
@@ -403,7 +403,7 @@ static void VBoxServiceClipboardOS2RenderFormat(USHORT usFmt)
     bool fSucceeded = false;
 
     /*
-     * Determin which format.
+     * Determine which format.
      */
     uint32_t fFormat;
     if (    usFmt == CF_TEXT
@@ -740,7 +740,7 @@ static MRESULT EXPENTRY VBoxServiceClipboardOS2WinProc(HWND hwnd, ULONG msg, MPA
                 &&  g_enmState != kClipboardState_Polling)
                 break;
 
-            /* Lost the position as clipboard viwer?*/
+            /* Lost the position as clipboard viewer?*/
             if (g_enmState == kClipboardState_Viewer)
             {
                 if (WinQueryClipbrdViewer(g_habWorker) == hwnd)

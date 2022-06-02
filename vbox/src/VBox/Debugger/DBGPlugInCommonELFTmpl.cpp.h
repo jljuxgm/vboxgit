@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELFTmpl.cpp.h 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: DBGPlugInCommonELFTmpl.cpp.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Code Template for dealing with one kind of ELF.
  */
@@ -155,7 +155,7 @@ int DBGDiggerCommonParseElfMod(PVM pVM, const char *pszModName, const char *pszF
     }
 
     /*
-     * Validate the symbol table and determin the max section index
+     * Validate the symbol table and determine the max section index
      * when DBG_DIGGER_ELF_FUNNY_SHDRS is flagged.
      */
     uint32_t     uMaxShIdx = fFlags & DBG_DIGGER_ELF_FUNNY_SHDRS ? 0 : pEhdr->e_shnum - 1;

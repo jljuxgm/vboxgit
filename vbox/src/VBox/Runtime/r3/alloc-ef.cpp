@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 31157 2010-07-28 03:15:35Z vboxsync $ */
+/* $Id: alloc-ef.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -49,7 +49,7 @@
 *   Global Variables                                                           *
 *******************************************************************************/
 #ifdef RTALLOC_EFENCE_TRACE
-/** Spinlock protecting the allthe blocks globals. */
+/** Spinlock protecting the all the block's globals. */
 static volatile uint32_t    g_BlocksLock;
 /** Tree tracking the allocations. */
 static AVLPVTREE            g_BlocksTree;
@@ -102,7 +102,7 @@ DECLINLINE(void) rtmemLog(const char *pszOp, const char *pszFormat, ...)
 #ifdef RTALLOC_EFENCE_TRACE
 
 /**
- * Aquires the lock.
+ * Acquires the lock.
  */
 DECLINLINE(void) rtmemBlockLock(void)
 {

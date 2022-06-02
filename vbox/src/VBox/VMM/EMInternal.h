@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 32955 2010-10-06 15:58:15Z vboxsync $ */
+/* $Id: EMInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -431,7 +431,7 @@ typedef struct EMCPU
     RTRCPTR                 padding0;
 #endif
 
-    /** Tree for keeping track of cli occurances (debug only). */
+    /** Tree for keeping track of cli occurrences (debug only). */
     R3PTRTYPE(PAVLGCPTRNODECORE) pCliStatTree;
     STAMCOUNTER             StatTotalClis;
 #if 0

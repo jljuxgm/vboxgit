@@ -1,4 +1,4 @@
-/** $Id: VBoxUSBHelper.cpp 31898 2010-08-24 09:28:43Z vboxsync $ */
+/** $Id: VBoxUSBHelper.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxUSBHelper, setuid binary wrapper for dynamic driver alias updating.
  */
@@ -64,7 +64,7 @@ static void Usage(char *pszName)
  *      0 - success.
  *     -1 - no root permission
  *     -2 - insufficient arguments
- *     -3 - abormal termination of udpate_drv (not likely)
+ *     -3 - abnormal termination of update_drv (not likely)
  *     -4 - update_drv failed (mostly trying to add already existing alias)
  */
 static int UpdateDrv(AliasOp Op, char *pszAlias, char *pszDrv)

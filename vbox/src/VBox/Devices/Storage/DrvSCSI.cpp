@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 33101 2010-10-13 12:10:24Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -388,7 +388,7 @@ static void drvscsiVScsiReqCompleted(VSCSIDEVICE hVScsiDevice, void *pVScsiDevic
  * Dummy request function used by drvscsiReset to wait for all pending requests
  * to complete prior to the device reset.
  *
- * @param   pThis           Pointer to the instace data.
+ * @param   pThis           Pointer to the instance data.
  * @returns VINF_SUCCESS.
  */
 static int drvscsiAsyncIOLoopSyncCallback(PDRVSCSI pThis)
@@ -401,7 +401,7 @@ static int drvscsiAsyncIOLoopSyncCallback(PDRVSCSI pThis)
 /**
  * Request function to wakeup the thread.
  *
- * @param   pThis           Pointer to the instace data.
+ * @param   pThis           Pointer to the instance data.
  * @returns VWRN_STATE_CHANGED.
  */
 static int drvscsiAsyncIOLoopWakeupFunc(PDRVSCSI pThis)

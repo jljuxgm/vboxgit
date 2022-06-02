@@ -1,4 +1,4 @@
-/* $Id: term.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: term.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Common Termination Code.
  */
@@ -202,7 +202,7 @@ RTDECL(void) RTTermRunCallbacks(RTTERMREASON enmReason, int32_t iStatus)
            || enmReason == RTTERMREASON_UNLOAD);
 
     /*
-     * Run the callback list. This is a bit paranoid in order to guard aginst
+     * Run the callback list. This is a bit paranoid in order to guard against
      * recursive calls to RTTermRunCallbacks.
      */
     while (g_hFastMutex != NIL_RTSEMFASTMUTEX)

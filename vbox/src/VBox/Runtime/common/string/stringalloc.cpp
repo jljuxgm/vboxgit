@@ -1,4 +1,4 @@
-/* $Id: stringalloc.cpp 32047 2010-08-27 12:43:06Z vboxsync $ */
+/* $Id: stringalloc.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - String Manipulation.
  */
@@ -189,7 +189,7 @@ RTDECL(int) RTStrAAppendExNVTag(char **ppsz, size_t cPairs, va_list va, const ch
         return VINF_SUCCESS;
 
     /*
-     * Determin the length of each string and calc the new total.
+     * Determine the length of each string and calc the new total.
      */
     struct RTStrAAppendExNVStruct
     {

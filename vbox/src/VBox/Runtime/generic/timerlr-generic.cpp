@@ -1,8 +1,8 @@
-/* $Id: timerlr-generic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: timerlr-generic.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Low Resolution Timers, Generic.
  *
- * This code is more or less identicial to timer-generic.cpp, so
+ * This code is more or less identical to timer-generic.cpp, so
  * bugfixes goes into both files.
  */
 

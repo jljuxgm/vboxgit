@@ -1,4 +1,4 @@
-/* $Id: initterm.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: initterm.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination.
  */
@@ -41,7 +41,7 @@ RT_C_DECLS_BEGIN
 int rtR0InitNative(void);
 
 /**
- * Platform specific terminiation.
+ * Platform specific termination.
  */
 void rtR0TermNative(void);
 

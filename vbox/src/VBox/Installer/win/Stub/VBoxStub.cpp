@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 33466 2010-10-26 12:41:38Z vboxsync $ */
+/* $Id: VBoxStub.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -289,7 +289,7 @@ static BOOL PackageIsNeeded(PVBOXSTUBPKG pPackage)
 
 
 /**
- * Recursivly copies a directory to another location.
+ * Recursively copies a directory to another location.
  *
  * @returns iprt status code.
  *

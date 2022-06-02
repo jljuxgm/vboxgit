@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 33293 2010-10-21 10:41:47Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -133,7 +133,7 @@ typedef struct
     /** Helper variable for keeping track of what
      *  already was processed and what not. */
     uint32_t    cbOffset;
-    /** Cirtical section protecting this buffer structure. */
+    /** Critical section protecting this buffer structure. */
     RTCRITSECT  CritSect;
     /** Indicates the health condition of the child process. */
     bool        fAlive;

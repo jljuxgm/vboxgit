@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 33300 2010-10-21 11:28:06Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -466,7 +466,7 @@ void VBoxSnapshotsWgt::onCurrentChanged (QTreeWidgetItem *aItem)
     mDeleteSnapshotAction->setEnabled (   canTakeDeleteSnapshot
                                        && mCurSnapshotItem && item && !item->isCurrentStateItem());
 
-    /* Enable/disable the details action regardles of the session state */
+    /* Enable/disable the details action regardless of the session state */
     mShowSnapshotDetailsAction->setEnabled (mCurSnapshotItem && item && !item->isCurrentStateItem());
 
     /* Enable/disable taking snapshots */

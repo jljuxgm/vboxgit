@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 
 /** @file
  *
@@ -73,7 +73,7 @@ public:
         bool fGuestCapsLock   = (fCapsLock != FALSE);
         bool fGuestScrollLock = (fScrollLock != FALSE);
 
-        /* Might need to resynch in case the guest itself changed the LED status. */
+        /* Might need to resync in case the guest itself changed the LED status. */
         if (m_InputSynch.fClientNumLock != fGuestNumLock)
         {
             m_InputSynch.cGuestNumLockAdaptions = 2;

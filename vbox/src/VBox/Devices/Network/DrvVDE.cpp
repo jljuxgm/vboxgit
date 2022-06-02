@@ -1,4 +1,4 @@
-/* $Id: DrvVDE.cpp 32139 2010-08-31 12:33:45Z vboxsync $ */
+/* $Id: DrvVDE.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VDE network transport driver.
  */
@@ -365,7 +365,7 @@ static DECLCALLBACK(int) drvVDEAsyncIoThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThr
 
                 /*
                  * A return code != VINF_SUCCESS means that we were woken up during a VM
-                 * state transistion. Drop the packet and wait for the next one.
+                 * state transition. Drop the packet and wait for the next one.
                  */
                 if (RT_FAILURE(rc1))
                     continue;

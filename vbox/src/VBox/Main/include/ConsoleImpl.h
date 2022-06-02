@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 33408 2010-10-25 09:57:32Z vboxsync $ */
+/* $Id: ConsoleImpl.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -675,7 +675,7 @@ private:
      * This is currently only used by Console::Teleport(), but is intended to later
      * be used by the live snapshot code path as well.  Actions like
      * Console::PowerDown, which automatically cancels out the running snapshot /
-     * teleportion operation, will cancel the teleportation / live snapshot
+     * teleportation operation, will cancel the teleportation / live snapshot
      * operation before starting. */
     ComObjPtr<Progress> mptrCancelableProgress;
 

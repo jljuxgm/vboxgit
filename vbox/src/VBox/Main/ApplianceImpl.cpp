@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -109,7 +109,7 @@ g_osTypes[] =
     { ovf::CIMOSType_CIMOS_Linux_2_6_x_64,                       SchemaDefs_OSTypeId_Linux26_64 },
     { ovf::CIMOSType_CIMOS_Linux_64,                             SchemaDefs_OSTypeId_Linux26_64 },
 
-    // types that we have support for but CIM doesnt
+    // types that we have support for but CIM doesn't
     { ovf::CIMOSType_CIMOS_Linux_2_6_x,                          SchemaDefs_OSTypeId_ArchLinux },
     { ovf::CIMOSType_CIMOS_Linux_2_6_x_64,                       SchemaDefs_OSTypeId_ArchLinux_64 },
     { ovf::CIMOSType_CIMOS_Linux_2_6_x,                          SchemaDefs_OSTypeId_Fedora },

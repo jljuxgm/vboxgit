@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 32483 2010-09-14 13:45:07Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -81,7 +81,7 @@ void UIMachineWindow::sltTryClose()
         return;
 
     /* First close any open modal & popup widgets.
-     * Use a single shot with timeout 0 to allow the widgets to cleany close and test then again.
+     * Use a single shot with timeout 0 to allow the widgets to cleanly close and test then again.
      * If all open widgets are closed destroy ourself: */
     QWidget *widget = QApplication::activeModalWidget() ?
                       QApplication::activeModalWidget() :
@@ -249,7 +249,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
             /* Check which button should be initially chosen: */
             QRadioButton *pRadioButton = 0;
 
-            /* If chosing 'last choice' is possible: */
+            /* If choosing 'last choice' is possible: */
             if (lastAction[0] == strSave && fIsStateSavingAllowed)
             {
                 pRadioButton = dlg.mRbSave;

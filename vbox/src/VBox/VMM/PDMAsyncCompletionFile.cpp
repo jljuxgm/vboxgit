@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 33218 2010-10-18 19:54:10Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -457,7 +457,7 @@ static void pdmacFileAioMgrDestroy(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClassFile, 
     rc = RTCritSectLeave(&pEpClassFile->CritSect);
     AssertRC(rc);
 
-    /* Free the ressources. */
+    /* Free the resources. */
     RTCritSectDelete(&pAioMgr->CritSectBlockingEvent);
     RTSemEventDestroy(pAioMgr->EventSem);
     if (pAioMgr->enmMgrType != PDMACEPFILEMGRTYPE_SIMPLE)

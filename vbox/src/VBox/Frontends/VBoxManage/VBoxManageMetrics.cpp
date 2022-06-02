@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 33495 2010-10-27 11:53:50Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
@@ -235,7 +235,7 @@ static int handleMetricsList(int argc, char *argv[],
 }
 
 /**
- * Metics setup
+ * Metrics setup
  */
 static int handleMetricsSetup(int argc, char *argv[],
                               ComPtr<IVirtualBox> aVirtualBox,

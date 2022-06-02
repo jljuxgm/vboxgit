@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 31866 2010-08-23 14:52:35Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -459,11 +459,11 @@ void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
         // mCurrRegion = region;
         // /* We repaint the screen before the ReshapeCustomWindow command. Unfortunately
         //  * this command flushes a copy of the backbuffer to the screen after the new
-        //  * mask is set. This leads into a missplaced drawing of the content. Currently
+        //  * mask is set. This leads into a misplaced drawing of the content. Currently
         //  * no alternative to this and also this is not 100% perfect. */
         // repaint();
         // qApp->processEvents();
-        // /* Now force the reshaping of the window. This is definitly necessary. */
+        // /* Now force the reshaping of the window. This is definitely necessary. */
         // ReshapeCustomWindow (reinterpret_cast <WindowPtr> (winId()));
         QMainWindow::setMask(region);
         // HIWindowInvalidateShadow (::darwinToWindowRef (mConsole->viewport()));

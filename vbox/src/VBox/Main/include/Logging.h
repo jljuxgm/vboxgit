@@ -1,4 +1,4 @@
-/* $Id: Logging.h 32062 2010-08-27 18:36:09Z vboxsync $ */
+/* $Id: Logging.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 
 /** @file
  *
@@ -53,7 +53,7 @@
 
 /** @def MyLogIt
  * Copy of LogIt that works even when logging is completely disabled (e.g. in
- * release builds) and doesn't interefere with the default release logger
+ * release builds) and doesn't interfere with the default release logger
  * instance (which is already in use by the VM process).
  *
  * @warning Logging using MyLog* is intended only as a temporary mean to debug

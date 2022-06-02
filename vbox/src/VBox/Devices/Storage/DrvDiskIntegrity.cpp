@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -101,7 +101,7 @@ typedef struct DRVDISKSEGMENT
     size_t           cbSeg;
     /** Data for this segment */
     uint8_t         *pbSeg;
-    /** Numbner of entries in the I/O array. */
+    /** Number of entries in the I/O array. */
     unsigned         cIoLogEntries;
     /** Array of I/O log references. */
     PIOLOGENT        apIoLog[1];

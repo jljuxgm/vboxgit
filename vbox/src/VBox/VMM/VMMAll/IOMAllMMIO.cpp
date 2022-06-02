@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 33164 2010-10-15 14:49:09Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -362,7 +362,7 @@ static int iomInterpretMOVS(PVM pVM, bool fWriteAccess, PCPUMCTXCORE pRegFrame, 
         pVM->iom.s.cMovsMaxBytes = cTransfers << SIZE_2_SHIFT(cb);
 #endif
 
-/** @todo re-evaluate on page boundraries. */
+/** @todo re-evaluate on page boundaries. */
 
     RTGCPHYS Phys = GCPhysFault;
     int rc;

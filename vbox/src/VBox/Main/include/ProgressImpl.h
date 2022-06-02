@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 31625 2010-08-13 00:33:16Z vboxsync $ */
+/* $Id: ProgressImpl.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -105,7 +105,7 @@ protected:
     void (*m_pfnCancelCallback)(void *);
     void *m_pvCancelUserArg;
 
-    /* The fields below are to be properly initalized by subclasses */
+    /* The fields below are to be properly initialized by subclasses */
 
     BOOL mCompleted;
     BOOL mCancelable;

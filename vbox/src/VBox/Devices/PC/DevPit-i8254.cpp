@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 32484 2010-09-14 14:01:48Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -116,7 +116,7 @@ typedef struct PITChannelState
     /* irq handling */
     int64_t next_transition_time;
     int32_t irq;
-    /** Number of release log entries. Used to prevent floading. */
+    /** Number of release log entries. Used to prevent flooding. */
     uint32_t cRelLogEntries;
 
     uint32_t count; /* can be 65536 */

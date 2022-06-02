@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 31196 2010-07-29 09:18:36Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -219,7 +219,7 @@ QIFileDialog::QIFileDialog (QWidget *aParent, Qt::WindowFlags aFlags)
  *  oddities and limitations.
  *
  *  On Win32, this function makes sure a native dialog is launched in
- *  another thread to avoid dialog visualization errors occuring due to
+ *  another thread to avoid dialog visualization errors occurring due to
  *  multi-threaded COM apartment initialization on the main UI thread while
  *  the appropriate native dialog function expects a single-threaded one.
  *

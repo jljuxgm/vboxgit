@@ -1,4 +1,4 @@
-/* $Id: main.cpp 30114 2010-06-09 12:40:16Z vboxsync $ */
+/* $Id: main.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -65,7 +65,7 @@
 
 #include <cstdio>
 
-/* XXX Temporarily. Don't rely on ther user to hack the Makefile himsef! */
+/* XXX Temporarily. Don't rely on the user to hack the Makefile himself! */
 QString g_QStrHintLinuxNoMemory = QApplication::tr(
   "This error means that the kernel driver was either not able to "
   "allocate enough memory or that some mapping operation failed."

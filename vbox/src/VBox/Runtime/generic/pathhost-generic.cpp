@@ -1,6 +1,6 @@
-/* $Id: pathhost-generic.cpp 33426 2010-10-25 14:32:38Z vboxsync $ */
+/* $Id: pathhost-generic.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
- * IPRT - Path Convertions, generic pass through.
+ * IPRT - Path Conversions, generic pass through.
  */
 
 /*

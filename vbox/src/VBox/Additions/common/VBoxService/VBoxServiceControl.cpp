@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 33161 2010-10-15 13:44:34Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -35,7 +35,7 @@ using namespace guestControl;
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
-/** The control interval (millseconds). */
+/** The control interval (milliseconds). */
 uint32_t g_ControlInterval = 0;
 /** The semaphore we're blocking on. */
 static RTSEMEVENTMULTI      g_hControlEvent = NIL_RTSEMEVENTMULTI;

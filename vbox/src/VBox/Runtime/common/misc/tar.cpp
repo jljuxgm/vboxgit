@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 33484 2010-10-27 08:44:01Z vboxsync $ */
+/* $Id: tar.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -540,7 +540,7 @@ static int rtTarFindFile(RTFILE hFile, const char *pszFile, uint64_t *puOffset, 
                 rc = RTStrToUInt64Full(record.h.size, 8, pcbSize);
                 if (RT_FAILURE(rc))
                     break;
-                /* Seek back, to positionate the file pointer at the start of the header. */
+                /* Seek back, to position the file pointer at the start of the header. */
                 rc = RTFileSeek(hFile, -(int64_t)sizeof(RTTARRECORD), RTFILE_SEEK_CURRENT, puOffset);
                 fFound = true;
                 break;
@@ -1125,7 +1125,7 @@ RTR3DECL(int) RTTarList(const char *pszTarFile, char ***ppapszFiles, size_t *pcF
         return rc;
 
     /* This is done by internal methods, cause we didn't have a RTTARDIR
-     * interface, yet. This should be fixed somedays. */
+     * interface, yet. This should be fixed someday. */
 
     PRTTARINTERNAL pInt = hTar;
     char **papszFiles = 0;

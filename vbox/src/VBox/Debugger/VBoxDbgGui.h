@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.h 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: VBoxDbgGui.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -112,7 +112,7 @@ public:
 
     /**
      * Update the desktop size.
-     * This is called whenever the reference window changes positition.
+     * This is called whenever the reference window changes position.
      */
     void updateDesktopSize();
 
@@ -175,9 +175,9 @@ protected:
     unsigned m_cx;
     /** The height of the window we're relative to. */
     unsigned m_cy;
-    /** The x-coordianate of the desktop. */
+    /** The x-coordinate of the desktop. */
     int m_xDesktop;
-    /** The y-coordianate of the desktop. */
+    /** The y-coordinate of the desktop. */
     int m_yDesktop;
     /** The size of the desktop. */
     unsigned m_cxDesktop;

@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 31906 2010-08-24 10:20:55Z vboxsync $ */
+/* $Id: state_snapshot.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1229,7 +1229,7 @@ int32_t crStateSaveContext(CRContext *pContext, PSSMHANDLE pSSM)
     ui32 = crHashtableNumElements(pContext->program.programHash);
     rc = SSMR3PutU32(pSSM, ui32);
     AssertRCReturn(rc, rc);
-    /* Save defauls programs */
+    /* Save defaults programs */
     crStateSaveProgramCB(0, pContext->program.defaultVertexProgram, pSSM);
     crStateSaveProgramCB(0, pContext->program.defaultFragmentProgram, pSSM);
     /* Save all the rest */
@@ -1768,7 +1768,7 @@ int32_t crStateLoadContext(CRContext *pContext, CRHashTable * pCtxTable, PSSMHAN
     /* Load pixel/vertex programs */
     rc = SSMR3GetU32(pSSM, &uiNumElems);
     AssertRCReturn(rc, rc);
-    /* Load defauls programs */
+    /* Load defaults programs */
     rc = crStateLoadProgram(&pContext->program.defaultVertexProgram, pSSM);
     AssertRCReturn(rc, rc);
     rc = crStateLoadProgram(&pContext->program.defaultFragmentProgram, pSSM);

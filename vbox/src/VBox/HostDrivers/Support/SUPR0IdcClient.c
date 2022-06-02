@@ -1,4 +1,4 @@
-/* $Id: SUPR0IdcClient.c 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: SUPR0IdcClient.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IDC Client Lib, Core.
  */
@@ -42,7 +42,7 @@ static PSUPDRVIDCHANDLE volatile g_pMainHandle = NULL;
  * Opens the IDC interface of the support driver.
  *
  * This will perform basic version negotiations and fail if the
- * minmum requirements aren't met.
+ * minimum requirements aren't met.
  *
  * @returns VBox status code.
  * @param   pHandle             The handle structure (output).

@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 28918 2010-04-29 18:30:09Z vboxsync $ */
+/* $Id: fileio-win.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -474,7 +474,7 @@ RTR3DECL(int)  RTFileSetSize(RTFILE File, uint64_t cbSize)
          */
         if (MySetFilePointer(File, cbSize, NULL, FILE_BEGIN))
         {
-            /* file pointer setted */
+            /* set file pointer */
             if (SetEndOfFile((HANDLE)File))
             {
                 /*
@@ -487,7 +487,7 @@ RTR3DECL(int)  RTFileSetSize(RTFILE File, uint64_t cbSize)
             }
 
             /*
-             * Failed, try restore file pointer.
+             * Failed, try restoring the file pointer.
              */
             rc = GetLastError();
             MySetFilePointer(File, offCurrent, NULL, FILE_BEGIN);

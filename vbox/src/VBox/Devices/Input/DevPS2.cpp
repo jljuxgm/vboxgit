@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 30595 2010-07-04 12:54:05Z vboxsync $ */
+/* $Id: DevPS2.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -494,7 +494,7 @@ static int kbd_write_command(void *opaque, uint32_t addr, uint32_t val)
         /* ignore that - I don't know what is its use */
         break;
     /* Make OS/2 happy. */
-    /* The 8042 RAM is readble using commands 0x20 thru 0x3f, and writable
+    /* The 8042 RAM is readable using commands 0x20 thru 0x3f, and writable
        by 0x60 thru 0x7f. Now days only the firs byte, the mode, is used.
        We'll ignore the writes (0x61..7f) and return 0 for all the reads
        just to make some OS/2 debug stuff a bit happier. */

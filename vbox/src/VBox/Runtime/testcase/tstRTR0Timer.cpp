@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Timer.cpp 32757 2010-09-24 10:30:43Z vboxsync $ */
+/* $Id: tstRTR0Timer.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers.
  */
@@ -166,7 +166,7 @@ static DECLCALLBACK(void) tstRTR0TimerCallbackSpecific(PRTTIMER pTimer, void *pv
 /**
  * Callback which changes the interval at each invocation.
  *
- * The changes are goverened by TSTRTR0TIMERS1::ChangeInterval.  The callback
+ * The changes are governed by TSTRTR0TIMERS1::ChangeInterval.  The callback
  * calls RTTimerStop at iActionShot.
  *
  * @param   pTimer      The timer.

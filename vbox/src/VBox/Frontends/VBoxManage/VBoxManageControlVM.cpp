@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 33408 2010-10-25 09:57:32Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of controlvm command.
  */
@@ -46,7 +46,7 @@
  * Parses a number.
  *
  * @returns Valid number on success.
- * @returns 0 if invalid number. All necesary bitching has been done.
+ * @returns 0 if invalid number. All necessary bitching has been done.
  * @param   psz     Pointer to the nic number.
  */
 static unsigned parseNum(const char *psz, unsigned cMaxNum, const char *name)

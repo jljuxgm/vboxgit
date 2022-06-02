@@ -1,4 +1,4 @@
-/* $Id: gctrl.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
+/* $Id: gctrl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * Guest Control Service: Internal function used by service, Main and testcase.
  */
@@ -57,7 +57,7 @@ namespace guestControl {
  * @todo
  *
  * @todo Respect spaces when quoting for arguments, e.g. "c:\\program files\\".
- * @todo Handle empty ("") argguments.
+ * @todo Handle empty ("") arguments.
  */
 int gctrlPrepareExecArgv(char *pszArgs, void **ppvList, uint32_t *pcbList, uint32_t *pcArgs)
 {

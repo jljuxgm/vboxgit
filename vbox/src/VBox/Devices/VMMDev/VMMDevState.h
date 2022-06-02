@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 32596 2010-09-17 12:35:28Z vboxsync $ */
+/* $Id: VMMDevState.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -261,7 +261,7 @@ typedef struct VMMDevState
     VMMDevCpuEventType  enmCpuHotPlugEvent;
     /** Core id of the CPU to change */
     uint32_t            idCpuCore;
-    /** Package id of the CPU to changhe */
+    /** Package id of the CPU to change */
     uint32_t            idCpuPackage;
 
     uint32_t            StatMemBalloonChunks;

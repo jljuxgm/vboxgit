@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 32796 2010-09-28 14:54:41Z vboxsync $ */
+/* $Id: TMInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -410,7 +410,7 @@ typedef struct TM
 /** @def TM_MAX_CATCHUP_PERIODS
  * The number of catchup rates. */
 #define TM_MAX_CATCHUP_PERIODS  10
-    /** The agressivness of the catch-up relative to how far we've lagged behind.
+    /** The aggressiveness of the catch-up relative to how far we've lagged behind.
      * The idea is to have increasing catch-up percentage as the lag increases. */
     struct TMCATCHUPPERIOD
     {
@@ -476,8 +476,8 @@ typedef struct TM
      * Only accessible from the emulation thread. */
     PTMTIMERR3                  pCreated;
 
-    /** The schedulation timer timer handle (runtime timer).
-     * This timer will do freqent check on pending queue schedulations and
+    /** The schedule timer timer handle (runtime timer).
+     * This timer will do frequent check on pending queue schedules and
      * raise VM_FF_TIMER to pull EMTs attention to them.
      */
     R3PTRTYPE(PRTTIMER)         pTimer;

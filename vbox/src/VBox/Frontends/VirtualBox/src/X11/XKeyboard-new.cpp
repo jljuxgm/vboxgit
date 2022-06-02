@@ -1,4 +1,4 @@
-/* $Id: XKeyboard-new.cpp 32984 2010-10-07 15:15:26Z vboxsync $ */
+/* $Id: XKeyboard-new.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -246,7 +246,7 @@ int getKeysymsPerKeycode()
 /**
  * Initialize X11 keyboard including the remapping specified in the
  * global property GUI/RemapScancodes. This property is a string of
- * comma-seperated x=y pairs, where x is the X11 keycode and y is the
+ * comma-separated x=y pairs, where x is the X11 keycode and y is the
  * keyboard scancode that is emitted when the key attached to the X11
  * keycode is pressed.
  */

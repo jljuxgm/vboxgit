@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 32793 2010-09-28 13:57:28Z vboxsync $ */
+/* $Id: VMMInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -590,7 +590,7 @@ VMMR0DECL(void) vmmR0LoggerWrapper(const char *pszFormat, ...);
 VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger);
 
 /**
- * Interal R0 logger worker: Custom prefix.
+ * Internal R0 logger worker: Custom prefix.
  *
  * @returns Number of chars written.
  *

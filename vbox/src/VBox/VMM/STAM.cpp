@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 32796 2010-09-28 14:54:41Z vboxsync $ */
+/* $Id: STAM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -286,7 +286,7 @@ VMMR3DECL(void) STAMR3TermUVM(PUVM pUVM)
 
 
 /**
- * Registers a sample with the statistics mamanger.
+ * Registers a sample with the statistics manager.
  *
  * Statistics are maintained on a per VM basis and is normally registered
  * during the VM init stage, but there is nothing preventing you from
@@ -315,7 +315,7 @@ VMMR3DECL(int)  STAMR3RegisterU(PUVM pUVM, void *pvSample, STAMTYPE enmType, STA
 
 
 /**
- * Registers a sample with the statistics mamanger.
+ * Registers a sample with the statistics manager.
  *
  * Statistics are maintained on a per VM basis and is normally registered
  * during the VM init stage, but there is nothing preventing you from

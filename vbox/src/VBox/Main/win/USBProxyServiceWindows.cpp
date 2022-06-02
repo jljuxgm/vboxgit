@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceWindows.cpp 31892 2010-08-24 08:00:51Z vboxsync $ */
+/* $Id: USBProxyServiceWindows.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -64,7 +64,7 @@ HRESULT USBProxyServiceWindows::init(void)
     AssertReturn(mhEventInterrupt != INVALID_HANDLE_VALUE, E_FAIL);
 
     /*
-     * Initalize the USB lib and stuff.
+     * Initialize the USB lib and stuff.
      */
     int rc = USBLibInit();
     if (RT_SUCCESS(rc))

@@ -1,4 +1,4 @@
-/* $Id: thread.h 28903 2010-04-29 14:58:12Z vboxsync $ */
+/* $Id: thread.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -51,7 +51,7 @@ RT_C_DECLS_BEGIN
 #endif
 
 /**
- * Internal represenation of a thread.
+ * Internal representation of a thread.
  */
 typedef struct RTTHREADINT
 {

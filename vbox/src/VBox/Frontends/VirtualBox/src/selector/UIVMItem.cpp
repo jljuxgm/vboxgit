@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 31240 2010-07-30 12:07:44Z vboxsync $ */
+/* $Id: UIVMItem.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -337,7 +337,7 @@ bool UIVMItem::switchTo()
 
     HWND hwnd = mWinId;
 
-    /* if there are ownees (modal and modeless dialogs, etc), find the
+    /* if there are blockers (modal and modeless dialogs, etc), find the
      * topmost one */
     HWND hwndAbove = NULL;
     do

@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 30122 2010-06-09 13:50:26Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -645,7 +645,7 @@ static void darwinBruteForcePropertySearch(CFDictionaryRef DictRef, struct Keybo
 
 
     /*
-     * Get the elements key and recursivly iterate the elements looking
+     * Get the elements key and recursively iterate the elements looking
      * for they key cookies.
      */
     ObjRef = CFDictionaryGetValue(DictRef, CFSTR(kIOHIDElementKey));
@@ -959,7 +959,7 @@ static UInt32 darwinQueryHIDModifiers(void)
 #endif /* USE_HID_FOR_MODIFIERS */
 
 /**
- * Left / rigth adjust the modifier mask using the current
+ * Left / right adjust the modifier mask using the current
  * keyboard state.
  *
  * @returns left/right adjusted fModifiers.

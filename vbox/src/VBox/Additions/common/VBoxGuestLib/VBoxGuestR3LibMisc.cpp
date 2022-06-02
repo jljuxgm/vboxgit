@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 32633 2010-09-20 11:26:48Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -84,7 +84,7 @@ VBGLR3DECL(int) VbglR3SetGuestCaps(uint32_t fOr, uint32_t fNot)
  * @returns IPRT status code.
  * @param   pu64IdSession       Session id (out).  This is NOT changed on
  *                              failure, so the caller can depend on this to
- *                              deal with backward compatability (see
+ *                              deal with backward compatibility (see
  *                              VBoxServiceVMInfoWorker() for an example.)
  */
 VBGLR3DECL(int) VbglR3GetSessionId(uint64_t *pu64IdSession)

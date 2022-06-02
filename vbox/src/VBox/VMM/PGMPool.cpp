@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 33512 2010-10-27 13:58:18Z vboxsync $ */
+/* $Id: PGMPool.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -127,7 +127,7 @@ static const DBGCCMD    g_aCmds[] =
 #endif
 
 /**
- * Initalizes the pool
+ * Initializes the pool
  *
  * @returns VBox status code.
  * @param   pVM     The VM handle.

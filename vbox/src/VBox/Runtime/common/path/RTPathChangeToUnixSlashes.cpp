@@ -1,4 +1,4 @@
-/* $Id: RTPathChangeToUnixSlashes.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTPathChangeToUnixSlashes.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - RTPathChangeToUnixSlashes
  */
@@ -33,7 +33,7 @@
 
 
 /**
- * Changes all the slahes in the specified path to unix style.
+ * Changes all the slashes in the specified path to unix style.
  *
  * Unless @a fForce is set, nothing will be done when on a UNIX flavored system
  * since paths wont work with DOS style slashes there.

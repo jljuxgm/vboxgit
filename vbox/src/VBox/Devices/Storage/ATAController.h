@@ -1,4 +1,4 @@
-/* $Id: ATAController.h 29758 2010-05-24 08:38:48Z vboxsync $ */
+/* $Id: ATAController.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller types.
  */
@@ -176,7 +176,7 @@ typedef struct AHCIATADevState {
     /** Pointer to the I/O buffer. */
     RCPTRTYPE(uint8_t *) pbIOBufferRC;
 
-    RTRCPTR Aligmnent1; /**< Align the statistics at an 8-byte boundrary. */
+    RTRCPTR Aligmnent1; /**< Align the statistics at an 8-byte boundary. */
 
     /*
      * No data that is part of the saved state after this point!!!!!
@@ -458,7 +458,7 @@ void ataControllerReset(PAHCIATACONTROLLER pCtl);
 void ataControllerResume(PAHCIATACONTROLLER pCtl);
 
 /**
- * Relocate neccessary pointers.
+ * Relocate necessary pointers.
  *
  * @returns nothing.
  * @param   pCtl     The controller instance.

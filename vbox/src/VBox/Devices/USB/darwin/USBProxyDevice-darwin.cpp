@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 31890 2010-08-24 07:50:47Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1178,7 +1178,7 @@ static int usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress, vo
                                 CFRunLoopAddSource(pDevOsX->RunLoopRef, pDevOsX->RunLoopSrcRef, g_pRunLoopMode);
 
                                 /*
-                                 * Determin the active configuration.
+                                 * Determine the active configuration.
                                  * Can cause hangs, so drop it for now.
                                  */
                                 /** @todo test Palm. */
@@ -1773,7 +1773,7 @@ static void usbProxyDarwinUrbCancel(PVUSBURB pUrb)
              pUrb->pszDesc, pProxyDev->pUsbIns->pszName, pUrb->EndPt));
 
     /*
-     * Determin the interface / endpoint ref and invoke AbortPipe.
+     * Determine the interface / endpoint ref and invoke AbortPipe.
      */
     IOReturn irc = kIOReturnSuccess;
     if (!pUrb->EndPt)

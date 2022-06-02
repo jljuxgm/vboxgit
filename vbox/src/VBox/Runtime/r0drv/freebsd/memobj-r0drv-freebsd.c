@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-freebsd.c 32348 2010-09-09 12:28:05Z vboxsync $ */
+/* $Id: memobj-r0drv-freebsd.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, FreeBSD.
  */
@@ -374,7 +374,7 @@ int rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, bool fExecu
                                         0,                    /* lowest physical address*/
                                         _4G-1,                /* highest physical address */
                                         PAGE_SIZE,            /* alignment. */
-                                        0);                   /* boundrary */
+                                        0);                   /* boundary */
     if (pMemFreeBSD->Core.pv)
     {
         pMemFreeBSD->Core.u.Cont.Phys = vtophys(pMemFreeBSD->Core.pv);
@@ -491,7 +491,7 @@ int rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, RTHCPHYS Ph
                                         0,                    /* lowest physical address*/
                                         _4G-1,                /* highest physical address */
                                         uAlignment,           /* alignment. */
-                                        0);                   /* boundrary */
+                                        0);                   /* boundary */
     if (pMemFreeBSD->Core.pv)
     {
         pMemFreeBSD->Core.u.Cont.Phys = vtophys(pMemFreeBSD->Core.pv);

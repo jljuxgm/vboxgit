@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonPress.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
+/* $Id: QIArrowButtonPress.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -27,7 +27,7 @@
 
 /** @class QIArrowButtonPress
  *
- *  The QIArrowButtonPress class is an arrow tool-botton with text-label,
+ *  The QIArrowButtonPress class is an arrow tool-button with text-label,
  *  used as back/next buttons in QIMessageBox class.
  *
  */

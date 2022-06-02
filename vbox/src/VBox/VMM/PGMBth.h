@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 31851 2010-08-23 08:18:42Z vboxsync $ */
+/* $Id: PGMBth.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -158,7 +158,7 @@ PGM_BTH_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
         pVCpu->pgm.s.iShwUserTable = 0;
     }
 
-    /* contruct a fake address. */
+    /* construct a fake address. */
     GCPhysCR3 = RT_BIT_64(63);
     pVCpu->pgm.s.iShwUser      = SHW_POOL_ROOT_IDX;
     pVCpu->pgm.s.iShwUserTable = GCPhysCR3 >> PAGE_SHIFT;
@@ -198,7 +198,7 @@ PGM_BTH_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
  * @returns VBox status code.
  * @param   pVM         The VM handle.
  * @param   pVCpu       The VMCPU to operate on.
- * @param   offDelta    The reloation offset.
+ * @param   offDelta    The relocation offset.
  */
 PGM_BTH_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)
 {

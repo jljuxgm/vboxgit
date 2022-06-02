@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 32010 2010-08-26 16:51:26Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1301,7 +1301,7 @@ static DECLCALLBACK(int) vusbDevResetThread(RTTHREAD Thread, void *pvUser)
     int rc = pArgs->rc = vusbDevResetWorker(pArgs->pDev, pArgs->fResetOnLinux);
 
     /*
-     * We use a timer to commuicate the result back to EMT.
+     * We use a timer to communicate the result back to EMT.
      * This avoids suspend + poweroff issues, and it should give
      * us more accurate scheduling than making this thread sleep.
      */

@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-win.cpp 30013 2010-06-03 14:40:59Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-win.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, windows ring-3.
  */
@@ -161,7 +161,7 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
     }
 
     /*
-     * Before we do anything with COM, we have to initalize it.
+     * Before we do anything with COM, we have to initialize it.
      */
     HRESULT hrc = rtSystemDmiWinInitialize();
     if (FAILED(hrc))

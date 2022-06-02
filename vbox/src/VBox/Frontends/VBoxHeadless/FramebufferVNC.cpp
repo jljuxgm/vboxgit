@@ -1,4 +1,4 @@
-/* $Id: FramebufferVNC.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
+/* $Id: FramebufferVNC.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxHeadless - VNC server implementation for VirtualBox.
  *
@@ -514,7 +514,7 @@ STDMETHODIMP VNCFB::COMGETTER(Height) (ULONG *height)
  * Return the colour depth of our frame buffer.  Note that we actually
  * store the pixel format, not the colour depth internally, since
  * when display sets FramebufferPixelFormat_Opaque, it
- * wants to retreive FramebufferPixelFormat_Opaque and
+ * wants to retrieve FramebufferPixelFormat_Opaque and
  * nothing else.
  *
  * @returns            COM status code

@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 32388 2010-09-10 10:13:07Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1855,7 +1855,7 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
 #elif defined(RT_OS_OS2)
                     /*
                      * The TAP driver does all the opening and setting up,
-                     * as it was originally was ment to be (stupid fork() problems).
+                     * as it was originally was meant to be (stupid fork() problems).
                      */
                     rc = CFGMR3InsertString(pCfg, "Device", g_aNetDevs[ulInstance].pszName); UPDATE_RC();
                     if (g_aNetDevs[ulInstance].fHaveConnectTo)

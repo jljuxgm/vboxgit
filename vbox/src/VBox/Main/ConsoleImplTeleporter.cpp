@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -110,7 +110,7 @@ public:
 
 
 /**
- * Teleporter state used by the destiation side.
+ * Teleporter state used by the destination side.
  */
 class TeleporterStateTrg : public TeleporterState
 {

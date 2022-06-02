@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 32800 2010-09-28 16:03:31Z vboxsync $ */
+/* $Id: socket.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -279,7 +279,7 @@ static int rtSocketSwitchBlockingModeSlow(RTSOCKETINT *pThis, bool fBlocking)
 
 
 /**
- * Switches the socket to the desired blocking mode if neccessary.
+ * Switches the socket to the desired blocking mode if necessary.
  *
  * The socket must be locked.
  *
@@ -1361,7 +1361,7 @@ int rtSocketSetOpt(RTSOCKET hSocket, int iLevel, int iOption, void const *pvValu
  * @returns Valid handle on success, INVALID_HANDLE_VALUE on failure.
  * @param   hSocket             The socket handle.
  * @param   fEvents             The events we're polling for.
- * @param   ph                  wher to put the primary handle.
+ * @param   ph                  where to put the primary handle.
  */
 int rtSocketPollGetHandle(RTSOCKET hSocket, uint32_t fEvents, PHANDLE ph)
 {

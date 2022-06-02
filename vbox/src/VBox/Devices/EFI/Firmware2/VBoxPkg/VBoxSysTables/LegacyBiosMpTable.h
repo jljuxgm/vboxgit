@@ -1,4 +1,4 @@
-/* $Id: LegacyBiosMpTable.h 29081 2010-05-05 13:32:04Z vboxsync $ */
+/* $Id: LegacyBiosMpTable.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * LegacyBiosMpTable.h
  */
@@ -33,7 +33,7 @@ Module Name:
   LegacyBiosMpTable.h
 
 Abstract:
-  Defives data structures per Multi Processor Specification Ver 1.4.
+  Defines data structures per Multi Processor Specification Ver 1.4.
 
 --*/
 

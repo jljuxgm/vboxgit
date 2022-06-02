@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -442,7 +442,7 @@ bool UISettingsDialog::eventFilter(QObject *pObject, QEvent *pEvent)
             break;
     }
 
-    /* Base-class proessing: */
+    /* Base-class processing: */
     return QIMainDialog::eventFilter(pObject, pEvent);
 }
 

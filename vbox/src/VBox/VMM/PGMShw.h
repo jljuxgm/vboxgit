@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 32998 2010-10-08 08:38:33Z vboxsync $ */
+/* $Id: PGMShw.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -217,7 +217,7 @@ PGM_SHW_DECL(int, Enter)(PVMCPU pVCpu, bool fIs64BitsPagingMode)
  *
  * @returns VBox status code.
  * @param   pVCpu       The VMCPU to operate on.
- * @param   offDelta    The reloation offset.
+ * @param   offDelta    The relocation offset.
  */
 PGM_SHW_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)
 {

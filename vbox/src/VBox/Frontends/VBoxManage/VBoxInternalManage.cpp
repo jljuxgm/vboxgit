@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 33524 2010-10-27 16:44:37Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1866,7 +1866,7 @@ static int CmdConvertHardDisk(int argc, char **argv, ComPtr<IVirtualBox> aVirtua
 }
 
 /**
- * Unloads the neccessary driver.
+ * Unloads the necessary driver.
  *
  * @returns VBox status code
  */
@@ -1883,7 +1883,7 @@ int CmdModUninstall(void)
 }
 
 /**
- * Loads the neccessary driver.
+ * Loads the necessary driver.
  *
  * @returns VBox status code
  */

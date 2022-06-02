@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -95,7 +95,7 @@ typedef struct RTFILEAIOREQINTERNAL
     volatile bool                fCanceled;
     /** Opaque user data. */
     void                        *pvUser;
-    /** Number of bytes actually transfered. */
+    /** Number of bytes actually transferred. */
     size_t                       cbTransfered;
     /** Status code. */
     int                          Rc;
@@ -945,7 +945,7 @@ RTDECL(int) RTFileAioCtxWait(RTFILEAIOCTX hAioCtx, size_t cMinReqs, RTMSINTERVAL
                     if (rcReq == 0)
                     {
                         pReq->Rc = VINF_SUCCESS;
-                        /* Call aio_return() to free ressources. */
+                        /* Call aio_return() to free resources. */
                         pReq->cbTransfered = aio_return(&pReq->AioCB);
                     }
                     else

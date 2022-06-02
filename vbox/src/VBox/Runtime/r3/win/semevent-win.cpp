@@ -1,6 +1,6 @@
-/* $Id: semevent-win.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: semevent-win.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
- * IPRT - Event Sempahore, Windows.
+ * IPRT - Event Semaphore, Windows.
  */
 
 /*

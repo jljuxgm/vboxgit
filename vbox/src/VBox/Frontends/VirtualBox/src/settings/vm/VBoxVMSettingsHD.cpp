@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1534,7 +1534,7 @@ void StorageDelegate::paint (QPainter *aPainter, const QStyleOptionViewItem &aOp
     /* Draw item background */
     QItemDelegate::drawBackground (aPainter, aOption, aIndex);
 
-    /* Setup foregroung settings */
+    /* Setup foreground settings */
     QPalette::ColorGroup cg = state & QStyle::State_Active ? QPalette::Active : QPalette::Inactive;
     bool isSelected = state & QStyle::State_Selected;
     bool isFocused = state & QStyle::State_HasFocus;

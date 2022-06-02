@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32230 2010-09-03 08:21:55Z vboxsync $
+# $Id: Makefile.kmk 33540 2010-10-28 09:27:05Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -41,7 +41,7 @@ if !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_TESTSUITE)
 
  if1of ($(KBUILD_TARGET),linux freebsd)
   #
-  # Install the Makefile for module compliation on Linux and FreeBSD hosts
+  # Install the Makefile for module compilation on Linux and FreeBSD hosts
   #
   INSTALLS += HostDrivers-src
   HostDrivers-src_INST            = bin/src/

@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 31987 2010-08-26 12:33:45Z vboxsync $ */
+/* $Id: DBGCInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -92,7 +92,7 @@ typedef DBGCBP *PDBGCBP;
 /**
  * Named variable.
  *
- * Always allocated from heap in one signle block.
+ * Always allocated from heap in one single block.
  */
 typedef struct DBGCNAMEDVAR
 {
@@ -171,7 +171,7 @@ typedef struct DBGC
     /** Counter use to suppress the printing of the headers. */
     uint8_t             cPagingHierarchyDumps;
 
-    /** Current dissassembler position. */
+    /** Current disassembler position. */
     DBGCVAR             DisasmPos;
     /** Current source position. (flat GC) */
     DBGCVAR             SourcePos;

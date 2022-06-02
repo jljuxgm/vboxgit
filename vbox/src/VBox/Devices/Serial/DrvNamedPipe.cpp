@@ -1,4 +1,4 @@
-/* $Id: DrvNamedPipe.cpp 33392 2010-10-24 16:15:52Z vboxsync $ */
+/* $Id: DrvNamedPipe.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -217,7 +217,7 @@ static DECLCALLBACK(int) drvNamedPipeWrite(PPDMISTREAM pInterface, const void *p
             if (   uError == ERROR_PIPE_LISTENING
                 || uError == ERROR_PIPE_NOT_CONNECTED)
             {
-                /* No connection yet/anymore; just discard the write (pretening everything was written). */;
+                /* No connection yet/anymore; just discard the write (pretending everything was written). */;
             }
             else if (uError != ERROR_IO_PENDING)
             {

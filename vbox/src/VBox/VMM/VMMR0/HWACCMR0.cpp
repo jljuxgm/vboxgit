@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 32489 2010-09-14 15:50:31Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1473,7 +1473,7 @@ VMMR0DECL(int) HWACCMR0EnterSwitcher(PVM pVM, bool *pfVTxDisabled)
 }
 
 /**
- * Reeable VT-x if was active *and* the current switcher turned off paging
+ * Readable VT-x if was active *and* the current switcher turned off paging
  *
  * @returns VBox status code.
  * @param   pVM          VM handle.

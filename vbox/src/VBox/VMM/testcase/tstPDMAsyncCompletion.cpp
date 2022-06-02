@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 32190 2010-09-02 12:20:06Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
         }
 
         /*
-         * Create event semaphor.
+         * Create event semaphore.
          */
         rc = RTSemEventCreate(&g_FinishedEventSem);
         AssertRC(rc);

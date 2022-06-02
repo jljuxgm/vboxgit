@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.h 31157 2010-07-28 03:15:35Z vboxsync $ */
+/* $Id: alloc-ef.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -85,7 +85,7 @@
 /** @def RTALLOC_EFENCE_FREE_FILL
  * This define will enable memset(,RTALLOC_EFENCE_FREE_FILL,)'ing the user memory
  * in the block before freeing/decommitting it. This is useful in GDB since GDB
- * appeares to be able to read the content of the page even after it's been
+ * appears to be able to read the content of the page even after it's been
  * decommitted.
  * Requires RTALLOC_EFENCE_TRACE.
  */
@@ -95,7 +95,7 @@
 
 /** @def RTALLOC_EFENCE_FILLER
  * This define will enable memset(,RTALLOC_EFENCE_FILLER,)'ing the allocated
- * memory when the API doesn't require it to be zero'ed.
+ * memory when the API doesn't require it to be zero'd.
  */
 #define RTALLOC_EFENCE_FILLER           0xef
 

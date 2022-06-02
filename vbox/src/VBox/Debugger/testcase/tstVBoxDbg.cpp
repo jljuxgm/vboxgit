@@ -1,4 +1,4 @@
-/* $Id: tstVBoxDbg.cpp 32190 2010-09-02 12:20:06Z vboxsync $ */
+/* $Id: tstVBoxDbg.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox Debugger GUI, dummy testcase.
  */
@@ -106,7 +106,7 @@ int main(int argc, char **argv)
     }
 
     /*
-     * Summay and exit.
+     * Summary and exit.
      */
     if (!cErrors)
         RTPrintf(TESTCASE ": SUCCESS\n");

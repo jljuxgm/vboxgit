@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.h 32181 2010-09-01 14:50:21Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -37,7 +37,7 @@ typedef struct DBGGUISTATSNODE const *PCDBGGUISTATSNODE;
 /**
  * The VM statistics tree view.
  *
- * A tree represenation of the STAM statistics.
+ * A tree representation of the STAM statistics.
  */
 class VBoxDbgStatsView : public QTreeView, public VBoxDbgBase
 {

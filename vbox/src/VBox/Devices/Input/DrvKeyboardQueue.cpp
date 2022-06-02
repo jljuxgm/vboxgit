@@ -1,4 +1,4 @@
-/* $Id: DrvKeyboardQueue.cpp 30594 2010-07-04 12:53:21Z vboxsync $ */
+/* $Id: DrvKeyboardQueue.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBox input devices: Keyboard queue driver
  */
@@ -126,7 +126,7 @@ static DECLCALLBACK(int) drvKbdQueuePutEvent(PPDMIKEYBOARDPORT pInterface, uint8
 
 
 /**
- * Pass LED status changes from the guest thru to the frontent driver.
+ * Pass LED status changes from the guest thru to the frontend driver.
  *
  * @param   pInterface  Pointer to the keyboard connector interface structure.
  * @param   enmLeds     The new LED mask.
@@ -138,7 +138,7 @@ static DECLCALLBACK(void) drvKbdPassThruLedsChange(PPDMIKEYBOARDCONNECTOR pInter
 }
 
 /**
- * Pass keyboard state changes from the guest thru to the frontent driver.
+ * Pass keyboard state changes from the guest thru to the frontend driver.
  *
  * @param   pInterface  Pointer to the keyboard connector interface structure.
  * @param   fActive     The new active/inactive state.

@@ -1,4 +1,4 @@
-/* $Id: tstFork.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstFork.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - fork() issues.
  */
@@ -56,7 +56,7 @@ int main()
     RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "Skipped\n");
 #else
     /*
-     * Get values that are supposed to or change accross the fork.
+     * Get values that are supposed to or change across the fork.
      */
     RTPROCESS const ProcBefore = RTProcSelf();
 

@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-freebsd.c 32572 2010-09-16 16:18:12Z vboxsync $ */
+/* $Id: timer-r0drv-freebsd.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -170,7 +170,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
         return VERR_CPU_OFFLINE;
 
     /*
-     * Calc when it should start fireing.
+     * Calc when it should start firing.
      */
     u64First += RTTimeNanoTS();
 

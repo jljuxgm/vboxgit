@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
+/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -665,7 +665,7 @@ void VBoxVMSettingsPortForwardingDlg::retranslateUi()
     /* Set window title: */
     setWindowTitle(tr("Port Forwarding Rules"));
 
-    /* Table trnslations: */
+    /* Table translations: */
     m_pTableView->setWhatsThis(tr("This table contains a list of port forwarding rules."));
 
     /* Set action's text: */

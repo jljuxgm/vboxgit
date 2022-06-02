@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 32238 2010-09-03 17:01:25Z vboxsync $ */
+/* $Id: MMHeap.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Heap.
  */
@@ -460,7 +460,7 @@ VMMR3DECL(void *) MMR3HeapRealloc(void *pv, size_t cbNewSize)
 #endif
 
     /*
-     * Rellocate the block.
+     * Reallocate the block.
      */
     cbNewSize = RT_ALIGN_Z(cbNewSize, MMR3HEAP_SIZE_ALIGNMENT) + sizeof(MMHEAPHDR);
     PMMHEAPHDR pHdrNew = (PMMHEAPHDR)RTMemRealloc(pHdr, cbNewSize);

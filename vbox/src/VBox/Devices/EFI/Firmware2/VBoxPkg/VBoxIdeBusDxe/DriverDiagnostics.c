@@ -1,4 +1,4 @@
-/* $Id: DriverDiagnostics.c 33027 2010-10-11 06:17:12Z vboxsync $ */
+/* $Id: DriverDiagnostics.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DriverDiagnostics.c
  */
@@ -16,7 +16,7 @@
  */
 
 /** @file
-  Implementation of UEFI driver Dialnostics protocol which to perform diagnostic on the IDE
+  Implementation of UEFI driver Diagnostics protocol which to perform diagnostic on the IDE
   Bus controller.
   
   Copyright (c) 2006 - 2008, Intel Corporation                                                         

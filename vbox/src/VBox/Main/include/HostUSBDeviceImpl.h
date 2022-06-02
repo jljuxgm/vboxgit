@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.h 31911 2010-08-24 11:56:45Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -291,7 +291,7 @@ private:
      * This is mainly a measure to reduce the number of HostUSBDeviceState values. */
     HostUSBDeviceState mPendingUniState;
     /** Previous state.
-     * This is used for bailing out when a transition like caputure fails. */
+     * This is used for bailing out when a transition like capture fails. */
     HostUSBDeviceState mPrevUniState;
     /** Indicator set by onDetachedPhys and check when advancing a transitional state. */
     bool mIsPhysicallyDetached;

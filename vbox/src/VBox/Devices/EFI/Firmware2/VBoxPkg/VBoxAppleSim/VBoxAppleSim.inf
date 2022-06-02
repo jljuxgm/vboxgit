@@ -1,6 +1,6 @@
-# $Id: VBoxAppleSim.inf 29070 2010-05-05 12:32:52Z vboxsync $
+# $Id: VBoxAppleSim.inf 33540 2010-10-28 09:27:05Z vboxsync $
 ## @file
-# VBoxAppleSim - VBox Apple intrefaces simulation support.
+# VBoxAppleSim - VBox Apple interfaces simulation support.
 #
 
 #

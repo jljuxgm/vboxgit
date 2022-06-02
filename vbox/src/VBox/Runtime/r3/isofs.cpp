@@ -1,4 +1,4 @@
-/* $Id: isofs.cpp 33500 2010-10-27 13:00:20Z vboxsync $ */
+/* $Id: isofs.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 file system handling.
  */
@@ -360,7 +360,7 @@ static int rtIsoFsFindEntry(PRTISOFSFILE pFile, const char *pszFileName,
                     }
                     else /* File */
                     {
-                        /* Get last occurence of ";" and cut it off. */
+                        /* Get last occurrence of ";" and cut it off. */
                         char *pTerm = strrchr(pszName, ';');
                         if (pTerm)
                             pszName[pTerm - pszName] = 0;

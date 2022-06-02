@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 33319 2010-10-21 17:00:14Z vboxsync $ */
+/* $Id: crservice.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -203,7 +203,7 @@ static void svcClientVersionUnsupported(uint32_t minor, uint32_t major)
 {
     LogRel(("SHARED_CROPENGL: unsupported client version %d.%d\n", minor, major));
 
-    /*MS's opengl32 tryes to load our ICD around 30 times on failure...this is to prevent unnecessary spam*/
+    /*MS's opengl32 tries to load our ICD around 30 times on failure...this is to prevent unnecessary spam*/
     static int shown = 0;
 
     if (g_pVM && !shown)

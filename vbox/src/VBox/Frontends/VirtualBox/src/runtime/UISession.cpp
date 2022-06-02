@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 33492 2010-10-27 11:05:14Z vboxsync $ */
+/* $Id: UISession.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,7 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global inclues */
+/* Global includes */
 #include <QApplication>
 #include <QWidget>
 #include <QTimer>
@@ -477,7 +477,7 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
 
 void UISession::sltCloseVirtualSession()
 {
-    /* Recursevely close all the usual modal & popup widgets... */
+    /* Recursively close all the usual modal & popup widgets... */
     QWidget *widget = QApplication::activeModalWidget() ?
                       QApplication::activeModalWidget() :
                       QApplication::activePopupWidget() ?
@@ -489,7 +489,7 @@ void UISession::sltCloseVirtualSession()
         return;
     }
 
-    /* Recursevely close all the opened warnings... */
+    /* Recursively close all the opened warnings... */
     if (vboxProblem().isAnyWarningShown())
     {
         vboxProblem().closeAllWarnings();
@@ -644,7 +644,7 @@ void UISession::loadSessionSettings()
         /* Temporary: */
         QString strSettings;
 
-        /* Is there shoul be First RUN Wizard? */
+        /* Is there should be First RUN Wizard? */
         strSettings = machine.GetExtraData(VBoxDefs::GUI_FirstRun);
         if (strSettings == "yes")
             m_fIsFirstTimeStarted = true;

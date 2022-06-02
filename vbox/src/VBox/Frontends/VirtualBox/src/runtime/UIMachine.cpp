@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 32296 2010-09-07 15:56:10Z vboxsync $ */
+/* $Id: UIMachine.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -525,7 +525,7 @@ void UIMachine::loadMachineSettings()
          * But user can alter extra data manually in machine xml file and set there
          * more than one visual representation mode flags. Shame on such user!
          * There is no reason to enter in more than one visual representation mode
-         * at machine start, so we are chosing first of requested modes: */
+         * at machine start, so we are choosing first of requested modes: */
         bool fIsSomeExtendedModeChosen = false;
 
         if (!fIsSomeExtendedModeChosen)

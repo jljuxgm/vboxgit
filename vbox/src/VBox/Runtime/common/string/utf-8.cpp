@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 31420 2010-08-05 17:41:45Z vboxsync $ */
+/* $Id: utf-8.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -645,7 +645,7 @@ static int rtUtf8RecodeAsUtf16(const char *psz, size_t cch, PRTUTF16 pwsz, size_
         }
         else
         {
-            /* generate surrugate pair */
+            /* generate surrogate pair */
             Assert((uch & (RT_BIT(7) | RT_BIT(6) | RT_BIT(5) | RT_BIT(4) | RT_BIT(3))) == (RT_BIT(7) | RT_BIT(6) | RT_BIT(5) | RT_BIT(4)));
             RTUNICP uc =           (puch[3] & 0x3f)
                        | ((RTUNICP)(puch[2] & 0x3f) << 6)

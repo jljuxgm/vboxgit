@@ -1,4 +1,4 @@
-/* $Id: DriverConfiguration.c 33027 2010-10-11 06:17:12Z vboxsync $ */
+/* $Id: DriverConfiguration.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DriverConfiguration.c
  */
@@ -51,11 +51,11 @@ EFI_DRIVER_CONFIGURATION_PROTOCOL gIDEBusDriverConfiguration = {
 };
 
 /**
-  Interprete keyboard input.
+  Interpret keyboard input.
 
-  @retval  EFI_ABORTED  Get an 'ESC' key inputed.
-  @retval  EFI_SUCCESS  Get an 'Y' or 'y' inputed.
-  @retval  EFI_NOT_FOUND Get an 'N' or 'n' inputed..
+  @retval  EFI_ABORTED  Get an 'ESC' key inputted.
+  @retval  EFI_SUCCESS  Get an 'Y' or 'y' inputted.
+  @retval  EFI_NOT_FOUND Get an 'N' or 'n' inputted..
 
 **/
 EFI_STATUS

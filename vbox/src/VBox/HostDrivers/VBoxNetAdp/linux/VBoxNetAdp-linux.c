@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 31730 2010-08-17 12:53:59Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -278,7 +278,7 @@ static long VBoxNetAdpLinuxIOCtlUnlocked(struct file *pFilp,
     int rc;
 
     Log(("VBoxNetAdpLinuxIOCtl: param len %#x; uCmd=%#x; add=%#x\n", _IOC_SIZE(uCmd), uCmd, VBOXNETADP_CTL_ADD));
-    if (RT_UNLIKELY(_IOC_SIZE(uCmd) != sizeof(Req))) /* paraonia */
+    if (RT_UNLIKELY(_IOC_SIZE(uCmd) != sizeof(Req))) /* paranoia */
     {
         Log(("VBoxNetAdpLinuxIOCtl: bad ioctl sizeof(Req)=%#x _IOC_SIZE=%#x; uCmd=%#x.\n", sizeof(Req), _IOC_SIZE(uCmd), uCmd));
         return -EINVAL;

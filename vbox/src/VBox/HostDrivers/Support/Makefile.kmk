@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33375 2010-10-24 12:29:42Z vboxsync $
+# $Id: Makefile.kmk 33540 2010-10-28 09:27:05Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -169,7 +169,7 @@ if !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_TESTSUITE)
 #
 # VBoxDrv.sys - The Windows driver.
 #
-## @todo consoliate all the targets into a single mess.
+## @todo consolidate all the targets into a single mess.
 ifeq ($(KBUILD_TARGET),win)
 VBoxDrv_TEMPLATE      = VBOXR0DRV
 ifdef VBOX_SIGNING_MODE

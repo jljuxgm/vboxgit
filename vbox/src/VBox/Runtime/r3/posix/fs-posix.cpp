@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 32834 2010-09-29 22:05:49Z vboxsync $ */
+/* $Id: fs-posix.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -106,7 +106,7 @@ RTR3DECL(int) RTFsQuerySerial(const char *pszFsPath, uint32_t *pu32Serial)
     AssertMsgReturn(VALID_PTR(pu32Serial), ("%p", pu32Serial), VERR_INVALID_PARAMETER);
 
     /*
-     * Conver the path and query the stats.
+     * Convert the path and query the stats.
      * We're simply return the device id.
      */
     char const *pszNativeFsPath;

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -105,7 +105,7 @@ STDMETHODIMP Machine::Export(IAppliance *aAppliance, IN_BSTR location, IVirtualS
         else
             rc = pUsbController->COMGETTER(Enabled)(&fUSBEnabled);
 
-        // request the machine lock while acessing internal members
+        // request the machine lock while accessing internal members
         AutoReadLock alock1(this COMMA_LOCKVAL_SRC_POS);
 
         pAudioAdapter = mAudioAdapter;
@@ -761,7 +761,7 @@ void Appliance::buildXML(AutoWriteLockBase& writeLock,
     std::list<xml::ElementNode*> llElementsWithUuidAttributes;
 
     list< ComObjPtr<VirtualSystemDescription> >::const_iterator it;
-    /* Iterate throughs all virtual systems of that appliance */
+    /* Iterate through all virtual systems of that appliance */
     for (it = m->virtualSystemDescriptions.begin();
          it != m->virtualSystemDescriptions.end();
          ++it)

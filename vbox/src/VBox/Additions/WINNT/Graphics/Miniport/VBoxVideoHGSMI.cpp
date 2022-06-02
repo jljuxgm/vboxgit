@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 33532 2010-10-27 22:21:36Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -862,7 +862,7 @@ static int vbvaInitMousePointerShape (PVBOXVIDEO_COMMON, void *pvContext, void *
 
     if (p->fu32Flags & VBOX_MOUSE_POINTER_SHAPE)
     {
-        /* If shape is supplied, then alway create the pointer visible.
+        /* If shape is supplied, then always create the pointer visible.
          * See comments in 'vboxUpdatePointerShape'
          */
         p->fu32Flags |= VBOX_MOUSE_POINTER_VISIBLE;

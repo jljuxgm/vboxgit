@@ -1,4 +1,4 @@
-/* $Id: dri_glx.h 32404 2010-09-10 13:17:42Z vboxsync $ */
+/* $Id: dri_glx.h 33540 2010-10-28 09:27:05Z vboxsync $ */
 
 /** @file
  *
@@ -42,7 +42,7 @@ extern DECLEXPORT(Bool) VBOXGLXTAG(glXMakeCurrentReadSGI)(Display *display, GLXD
 extern DECLEXPORT(const char *) VBOXGLXTAG(glXGetScreenDriver)(Display *dpy, int scrNum);
 extern DECLEXPORT(Display *) VBOXGLXTAG(glXGetCurrentDisplayEXT)(void);
 extern DECLEXPORT(void) VBOXGLXTAG(glXFreeContextEXT)(Display *dpy, GLXContext ctx);
-/*Mesa insternal*/
+/*Mesa internal*/
 extern DECLEXPORT(int) VBOXGLXTAG(glXQueryContextInfoEXT)(Display *dpy, GLXContext ctx);
 extern DECLEXPORT(void *) VBOXGLXTAG(glXAllocateMemoryMESA)(Display *dpy, int scrn,
                                                        size_t size, float readFreq,

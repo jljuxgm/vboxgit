@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 32872 2010-10-01 15:12:58Z vboxsync $ */
+/* $Id: PGMAll.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1861,7 +1861,7 @@ VMMDECL(int) PGMFlushTLB(PVMCPU pVCpu, uint64_t cr3, bool fGlobal)
  * Performs and schedules necessary updates following a CR3 load or reload when
  * using nested or extended paging.
  *
- * This API is an alterantive to PDMFlushTLB that avoids actually flushing the
+ * This API is an alternative to PDMFlushTLB that avoids actually flushing the
  * TLB and triggering a SyncCR3.
  *
  * This will normally involve mapping the guest PD or nPDPT

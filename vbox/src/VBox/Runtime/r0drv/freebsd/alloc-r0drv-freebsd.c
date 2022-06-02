@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-freebsd.c 32708 2010-09-23 11:18:51Z vboxsync $ */
+/* $Id: alloc-r0drv-freebsd.c 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -157,7 +157,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
                       0,                    /* lowest physical address*/
                       _4G-1,                /* highest physical address */
                       PAGE_SIZE,            /* alignment. */
-                      0);                   /* boundrary */
+                      0);                   /* boundary */
     if (pv)
     {
         Assert(!((uintptr_t)pv & PAGE_OFFSET_MASK));

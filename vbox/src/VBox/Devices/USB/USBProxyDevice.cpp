@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 31890 2010-08-24 07:50:47Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -305,7 +305,7 @@ static int copy_interface(PVUSBINTERFACE pIf, uint8_t ifnum,
             if ( ifd->bInterfaceNumber != ifnum )
                 break;
 
-            /* Check we didnt see this alternate setting already
+            /* Check we didn't see this alternate setting already
              * because that will break stuff
              */
             alt = ifd->bAlternateSetting;

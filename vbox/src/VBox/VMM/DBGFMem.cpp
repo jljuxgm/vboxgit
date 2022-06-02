@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 31989 2010-08-26 12:43:18Z vboxsync $ */
+/* $Id: DBGFMem.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -511,7 +511,7 @@ VMMDECL(int) DBGFR3SelInfoValidateCS(PCDBGFSELINFO pSelInfo, RTSEL SelCPL)
 
 
 /**
- * Convers a PGM paging mode to a set of DBGFPGDMP_XXX flags.
+ * Converts a PGM paging mode to a set of DBGFPGDMP_XXX flags.
  *
  * @returns Flags. UINT32_MAX if the mode is invalid (asserted).
  * @param   enmMode             The mode.

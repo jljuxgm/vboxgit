@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-os2.cpp 32572 2010-09-16 16:18:12Z vboxsync $ */
+/* $Id: timer-r0drv-os2.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -62,7 +62,7 @@ typedef struct RTTIMER
     /** Flag indicating the timer is suspended. */
     uint8_t volatile        fSuspended;
     /** Cleared at the start of timer processing, set when calling pfnTimer.
-     * If any timer changes occures while doing the callback this will be used to resume the cycle. */
+     * If any timer changes occurs while doing the callback this will be used to resume the cycle. */
     bool                    fDone;
     /** Callback. */
     PFNRTTIMER              pfnTimer;
@@ -236,7 +236,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
         return VERR_TIMER_ACTIVE;
 
     /*
-     * Calc when it should start fireing and give the thread a kick so it get going.
+     * Calc when it should start firing and give the thread a kick so it get going.
      */
     u64First += RTTimeNanoTS();
 

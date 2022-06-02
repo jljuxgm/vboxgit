@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibCredentials.cpp 30829 2010-07-14 12:50:10Z vboxsync $ */
+/* $Id: VBoxGuestR3LibCredentials.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, user credentials.
  */
@@ -41,7 +41,7 @@
  * Checks whether user credentials are available to the guest or not.
  *
  * @returns IPRT status value; VINF_SUCCESS if credentials are available,
- *          VERR_NOT_FOUND if not. Otherwise an error is occured.
+ *          VERR_NOT_FOUND if not. Otherwise an error is occurred.
  */
 VBGLR3DECL(int) VbglR3CredentialsQueryAvailability(void)
 {

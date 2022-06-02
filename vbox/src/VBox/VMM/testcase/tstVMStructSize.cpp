@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 32920 2010-10-05 13:43:30Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -273,7 +273,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VM, rem.s.StatsInQEMU, 8);
     CHECK_MEMBER_ALIGNMENT(VM, rem.s.Env, 64);
 
-    /* the VMCPUs are page aligned TLB hit reassons. */
+    /* the VMCPUs are page aligned TLB hit reasons. */
     CHECK_MEMBER_ALIGNMENT(VM, aCpus, 4096);
     CHECK_SIZE_ALIGNMENT(VMCPU, 4096);
 
