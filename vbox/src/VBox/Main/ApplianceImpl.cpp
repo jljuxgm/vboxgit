@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 33621 2010-10-29 16:15:40Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 33698 2010-11-02 16:03:29Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -255,6 +255,21 @@ ovf::CIMOSType_T convertVBoxOSType2CIMOSType(const char *pcszVbox)
     }
 
     return ovf::CIMOSType_CIMOS_Other;
+}
+
+Utf8Str convertNetworkAttachmentTypeToString(NetworkAttachmentType_T type)
+{
+    Utf8Str strType;
+    switch (type)
+    {
+        case NetworkAttachmentType_NAT: strType = "NAT"; break;
+        case NetworkAttachmentType_Bridged: strType = "Bridged"; break;
+        case NetworkAttachmentType_Internal: strType = "Internal"; break;
+        case NetworkAttachmentType_HostOnly: strType = "HostOnly"; break;
+        case NetworkAttachmentType_VDE: strType = "VDE"; break;
+        case NetworkAttachmentType_Null: strType = "Null"; break;
+    }
+    return strType;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

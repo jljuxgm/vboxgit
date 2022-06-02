@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 33661 2010-11-01 15:05:54Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 33698 2010-11-02 16:03:29Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -471,37 +471,13 @@ STDMETHODIMP Machine::Export(IAppliance *aAppliance, IN_BSTR location, IVirtualS
 
             if (fEnabled)
             {
-                Utf8Str strAttachmentType;
-
                 rc = pNetworkAdapter->COMGETTER(AdapterType)(&adapterType);
                 if (FAILED(rc)) throw rc;
 
                 rc = pNetworkAdapter->COMGETTER(AttachmentType)(&attachmentType);
                 if (FAILED(rc)) throw rc;
 
-                switch (attachmentType)
-                {
-                    case NetworkAttachmentType_Null:
-                        strAttachmentType = "Null";
-                    break;
-
-                    case NetworkAttachmentType_NAT:
-                        strAttachmentType = "NAT";
-                    break;
-
-                    case NetworkAttachmentType_Bridged:
-                        strAttachmentType = "Bridged";
-                    break;
-
-                    case NetworkAttachmentType_Internal:
-                        strAttachmentType = "Internal";
-                    break;
-
-                    case NetworkAttachmentType_HostOnly:
-                        strAttachmentType = "HostOnly";
-                    break;
-                }
-
+                Utf8Str strAttachmentType = convertNetworkAttachmentTypeToString(attachmentType);
                 pNewDesc->addEntry(VirtualSystemDescriptionType_NetworkAdapter,
                                    "",      // ref
                                    strAttachmentType,      // orig
