@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 35069 2010-12-14 12:27:11Z vboxsync $
+# $Id: vboxconfig.sh 35097 2010-12-14 15:54:47Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -814,7 +814,7 @@ postinstall()
         if test -d $PKG_INSTALL_ROOT/usr/share/icons; then
             infoprint "Installing MIME types and icons"
             if test "$REMOTEINST" -eq 0; then
-                /usr/bin/update-mime-database /usr/share/mime 2>/dev/null
+                /usr/bin/update-mime-database /usr/share/mime >/dev/null 2>&1
                 /usr/bin/update-desktop-database -q 2>/dev/null
             else
                 subprint "Skipped for targetted installs."
