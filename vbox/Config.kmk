@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35648 2011-01-20 13:41:47Z vboxsync $
+# $Id: Config.kmk 35685 2011-01-24 15:56:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -333,6 +333,8 @@ VBOX_WITH_VIRTIO = 1
 VBOX_WITH_ALSA = 1
 # Enable Pulse support for Linux.
 VBOX_WITH_PULSE = 1
+# Enable PCI passthrough support
+VBOX_WITH_PCI_PASSTHROUGH = 1
 # Enable statically linked dbus support
 if1of ($(KBUILD_TARGET), linux solaris)
  VBOX_WITH_DBUS = 1
@@ -879,6 +881,7 @@ ifdef VBOX_OSE
  VBOX_WITH_VRDP=
  VBOX_WITH_EHCI=
  VBOX_WITH_EXTPACK_PUEL=
+ VBOX_WITH_PCI_PASSTHROUGH=
  VBOX_WITH_OS2_ADDITIONS_BIN=
  VBOX_WITH_SECURELABEL=
  VBOX_WITH_KCHMVIEWER=
@@ -4654,7 +4657,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35648 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35685 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

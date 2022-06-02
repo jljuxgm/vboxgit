@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: VBoxDD.cpp 35685 2011-01-24 15:56:51Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -178,9 +178,12 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     if (RT_FAILURE(rc))
         return rc;
 #endif
+
+#ifdef VBOX_WITH_PCI_PASSTHROUGH
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePciRaw);
     if (RT_FAILURE(rc))
         return rc;
+#endif
 
     return VINF_SUCCESS;
 }
@@ -348,4 +351,3 @@ extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u3
 
     return rc;
 }
-

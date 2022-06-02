@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: VBoxDD.h 35685 2011-01-24 15:56:51Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -83,7 +83,9 @@ extern const PDMDEVREG g_DeviceLsiLogicSAS;
 #ifdef VBOX_WITH_EFI
 extern const PDMDEVREG g_DeviceEFI;
 #endif
+#ifdef VBOX_WITH_PCI_PASSTHROUGH
 extern const PDMDEVREG g_DevicePciRaw;
+#endif
 
 extern const PDMDRVREG g_DrvMouseQueue;
 extern const PDMDRVREG g_DrvKeyboardQueue;
