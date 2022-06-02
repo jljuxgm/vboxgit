@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 31976 2010-08-26 09:45:33Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 31977 2010-08-26 09:47:55Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -269,7 +269,6 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--hardwareuuid",             MODIFYVM_HARDWARE_UUID,             RTGETOPT_REQ_STRING },
     { "--hpet",                     MODIFYVM_HPET,                      RTGETOPT_REQ_BOOL_ONOFF },
     { "--iocache",                  MODIFYVM_IOCACHE,                   RTGETOPT_REQ_BOOL_ONOFF },
-    { "--iocachesize",              MODIFYVM_IOCACHESIZE,               RTGETOPT_REQ_UINT32 },
     { "--iocachesize",              MODIFYVM_IOCACHESIZE,               RTGETOPT_REQ_UINT32 },
     { "--faulttolerance",           MODIFYVM_FAULT_TOLERANCE,           RTGETOPT_REQ_STRING },
     { "--faulttoleranceaddress",    MODIFYVM_FAULT_TOLERANCE_ADDRESS,   RTGETOPT_REQ_STRING },
