@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 33724 2010-11-03 13:07:27Z vboxsync $ */
+/* $Id: GuestImpl.cpp 33727 2010-11-03 13:53:03Z vboxsync $ */
 
 /** @file
  *
@@ -1530,7 +1530,7 @@ HRESULT Guest::executeProcessInternal(IN_BSTR aCommand, ULONG aFlags,
                                 2,                                          /* Number of operations. */
                                 Bstr(tr("Starting process ...")).raw());    /* Description of first stage. */
         }
-        ComAssertRC(rc);
+        ComAssertComRC(rc);
 
         /*
          * Prepare process execution.
