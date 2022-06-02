@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35345 2010-12-27 14:41:49Z vboxsync $
+# $Id: Config.kmk 35400 2011-01-04 11:58:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -399,6 +399,8 @@ VBOX_WITH_LSILOGIC = 1
 VBOX_WITH_SCSI = 1
 # Enable this setting to force a fallback to default DMI data on configuration errors
 VBOX_BIOS_DMI_FALLBACK =
+# Enable the builtin PXE ROM
+VBOX_WITH_PXE_ROM = 1
 # Enable MSI support in devices
 VBOX_WITH_MSI_DEVICES = 1
 # Enable host network interface API.
@@ -4630,7 +4632,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35345 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35400 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

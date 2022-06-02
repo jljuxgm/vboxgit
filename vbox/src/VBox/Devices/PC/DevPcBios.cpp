@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DevPcBios.cpp 35400 2011-01-04 11:58:52Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1351,8 +1351,10 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
      */
     if (pThis->pu8LanBoot == NULL)
     {
+#ifdef VBOX_WITH_PXE_ROM
         pu8LanBootBinary = g_abNetBiosBinary;
         cbLanBootBinary  = g_cbNetBiosBinary;
+#endif
     }
     else
     {
