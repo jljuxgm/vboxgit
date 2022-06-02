@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 30544 2010-06-30 22:37:36Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 30546 2010-06-30 23:40:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,15 +28,15 @@
 #include "VBoxProblemReporter.h"
 #include "VBoxUtils.h"
 
+#include "UISession.h"
 #include "UIActionsPool.h"
+#include "UIIndicatorsPool.h"
 #include "UIMouseHandler.h"
+#include "UIMachineLogic.h"
+#include "UIMachineWindowNormal.h"
+#include "UIMachineView.h"
 #include "UIDownloaderAdditions.h"
 #include "UIDownloaderUserManual.h"
-#include "UIIndicatorsPool.h"
-#include "UIMachineLogic.h"
-#include "UIMachineView.h"
-#include "UIMachineWindowNormal.h"
-#include "UISession.h"
 
 #include "QIStatusBar.h"
 #include "QIStateIndicator.h"
