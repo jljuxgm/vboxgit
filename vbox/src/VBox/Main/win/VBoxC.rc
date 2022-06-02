@@ -1,4 +1,4 @@
-/* $Id: VBoxC.rc 32375 2010-09-10 09:10:21Z vboxsync $ */
+/* $Id: VBoxC.rc 32394 2010-09-10 12:13:11Z vboxsync $ */
 /** @file
  * VBoxC - Resource file containing version info and icon.
  */
@@ -39,7 +39,7 @@ BEGIN
     BEGIN
     VALUE "CompanyName",     VBOX_RC_COMPANY_NAME
     VALUE "FileDescription", "VirtualBox Interface\0"
-    VALUE "FileVersion",     VBOX_VERSION_MAJOR "." VBOX_VERSION_MINOR "." VBOX_VERSION_BUILD ".r" VBOX_SVN_REV "\0"
+    VALUE "FileVersion",     VBOX_VERSION_MAJOR "." VBOX_VERSION_MINOR "." VBOX_VERSION_BUILD "." VBOX_SVN_REV "\0"
     VALUE "InternalName",    "VBoxC.dll\0"
     VALUE "LegalCopyright",  VBOX_RC_LEGAL_COPYRIGHT
     VALUE "OriginalFilename","VBoxC.dll\0"

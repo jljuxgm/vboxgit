@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: files_vboxguest 31847 2010-08-21 20:33:07Z vboxsync $
+# $Id: files_vboxguest 32394 2010-09-10 12:13:11Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
 
 #
-# Copyright (C) 2007-2010 Sun Microsystems, Inc.
+# Copyright (C) 2007-2010 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -14,10 +14,6 @@
 # Foundation, in version 2 as it comes in the "COPYING" file of the
 # VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
-#
-# Please contact Sun Microsystems, Inc., 4150 Network Circle, Santa
-# Clara, CA 95054 USA or visit http://www.sun.com if you need
-# additional information or have any questions.
 #
 
 FILES_VBOXGUEST_NOBIN=" \
