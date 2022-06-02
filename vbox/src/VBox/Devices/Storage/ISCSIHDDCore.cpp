@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 31845 2010-08-21 19:52:49Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 31943 2010-08-24 21:59:32Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -3231,6 +3231,8 @@ static void iscsiReattach(PISCSIIMAGE pImage)
         {
             pIScsiCmd = pIScsiCmdHead;
             pIScsiCmdHead = pIScsiCmdHead->pNext;
+
+            pIScsiCmd->pNext = NULL;
 
             rc = iscsiPDUTxPrepare(pImage, pIScsiCmd);
             AssertRC(rc);
