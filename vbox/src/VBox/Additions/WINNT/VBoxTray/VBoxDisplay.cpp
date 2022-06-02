@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 33966 2010-11-11 10:32:07Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 34025 2010-11-12 10:03:41Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -687,7 +687,7 @@ unsigned __stdcall VBoxDisplayThread(void *pInstance)
                 }
             }
             if (waitEvent.u32EventFlagsOut & VMMDEV_EVENT_MOUSE_CAPABILITIES_CHANGED)
-                VBoxServiceReloadCursor();
+                hlpReloadCursor();
         } else
         {
             Log(("VBoxTray: VBoxDisplayThread: error 0 from DeviceIoControl VBOXGUEST_IOCTL_WAITEVENT\n"));

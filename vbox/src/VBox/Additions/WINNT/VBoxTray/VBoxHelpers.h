@@ -1,4 +1,4 @@
-/* $Id: VBoxHelpers.h 33966 2010-11-11 10:32:07Z vboxsync $ */
+/* $Id: VBoxHelpers.h 34025 2010-11-12 10:03:41Z vboxsync $ */
 /** @file
  * helpers - Guest Additions Service helper functions header.
  */
@@ -26,6 +26,7 @@
 #   define DDCLOG(a) do {} while (0)
 #endif /* !DEBUG_DISPLAY_CHANGE */
 
+extern void hlpReloadCursor(void);
 extern void hlpResizeRect(RECTL *paRects, unsigned nRects, unsigned uPrimary, unsigned uResized, int iNewWidth, int iNewHeight);
 extern int hlpShowBalloonTip(HINSTANCE hInst, HWND hWnd, UINT uID, const char *pszMsg, const char *pszTitle, UINT uTimeout, DWORD dwInfoFlags);
 
