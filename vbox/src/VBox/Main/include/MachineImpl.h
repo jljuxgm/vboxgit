@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 30929 2010-07-20 14:11:51Z vboxsync $ */
+/* $Id: MachineImpl.h 30940 2010-07-20 18:07:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -773,6 +773,10 @@ protected:
                                      ComObjPtr<Medium> pMedium);
     MediumAttachment* findAttachment(const MediaData::AttachmentList &ll,
                                      Guid &id);
+
+    HRESULT detachDevice(MediumAttachment *pAttach,
+                         AutoWriteLock &writeLock,
+                         bool *pfNeedsSaveSettings);
 
     void commitMedia(bool aOnline = false);
     void rollbackMedia();
