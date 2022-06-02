@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 35676 2011-01-24 14:24:34Z vboxsync $ */
+/* $Id: MachineImpl.h 35755 2011-01-28 11:36:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -725,7 +725,7 @@ protected:
 
     virtual HRESULT setMachineState(MachineState_T aMachineState);
 
-    HRESULT findSharedFolder(CBSTR aName,
+    HRESULT findSharedFolder(const Utf8Str &aName,
                              ComObjPtr<SharedFolder> &aSharedFolder,
                              bool aSetError = false);
 
