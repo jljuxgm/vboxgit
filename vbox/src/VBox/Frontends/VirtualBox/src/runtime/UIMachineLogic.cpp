@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 30543 2010-06-30 22:06:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1656,34 +1656,6 @@ void UIMachineLogic::dbgAdjustRelativePos()
         QRect rct = defaultMachineWindow()->machineWindow()->frameGeometry();
         m_pDbgGuiVT->pfnAdjustRelativePos(m_pDbgGui, rct.x(), rct.y(), rct.width(), rct.height());
     }
-}
-#endif
-
-#if 0 // TODO: Where to move that?
-void UIMachineLogic::setViewInSeamlessMode (const QRect &aTargetRect)
-{
-#ifndef Q_WS_MAC
-    /* It isn't guaranteed that the guest os set the video mode that
-     * we requested. So after all the resizing stuff set the clipping
-     * mask and the spacing shifter to the corresponding values. */
-    QDesktopWidget *dtw = QApplication::desktop();
-    QRect sRect = dtw->screenGeometry (this);
-    QRect aRect (aTargetRect);
-    mMaskShift.scale (aTargetRect.left(), aTargetRect.top(), Qt::IgnoreAspectRatio);
-    /* Set the clipping mask */
-    mStrictedRegion = aRect;
-    /* Set the shifting spacer */
-    mShiftingSpacerLeft->changeSize (RT_ABS (sRect.left() - aRect.left()), 0,
-                                     QSizePolicy::Fixed, QSizePolicy::Preferred);
-    mShiftingSpacerTop->changeSize (0, RT_ABS (sRect.top() - aRect.top()),
-                                    QSizePolicy::Preferred, QSizePolicy::Fixed);
-    mShiftingSpacerRight->changeSize (RT_ABS (sRect.right() - aRect.right()), 0,
-                                      QSizePolicy::Fixed, QSizePolicy::Preferred);
-    mShiftingSpacerBottom->changeSize (0, RT_ABS (sRect.bottom() - aRect.bottom()),
-                                           QSizePolicy::Preferred, QSizePolicy::Fixed);
-#else // !Q_WS_MAC
-    NOREF (aTargetRect);
-#endif // !Q_WS_MAC
 }
 #endif
 
