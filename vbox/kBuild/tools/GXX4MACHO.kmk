@@ -1,10 +1,10 @@
-# $Id: GXX4MACHO.kmk 2360 2009-10-27 13:37:24Z bird $
+# $Id: GXX4MACHO.kmk 2431 2010-11-19 11:06:42Z bird $
 ## @file
 # kBuild Tool Config - GCC v4 targeting Darwin (Mac OS X) Mach-o, for building C++ code.
 #
 
 #
-# Copyright (c) 2004-2009 knut st. osmundsen <bird-kBuild-spamix@anduin.net>
+# Copyright (c) 2004-2010 knut st. osmundsen <bird-kBuild-spamx@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -34,13 +34,15 @@
 TOOL_GXX4MACHO := GCC v4 targeting Darwin (Mac OS X) Mach-o, for building C++ code.
 
 # Tool Specific Properties
-TOOL_GXX4MACHO_CC        ?= gcc$(HOSTSUFF_EXE)
-TOOL_GXX4MACHO_CXX       ?= g++$(HOSTSUFF_EXE)
-TOOL_GXX4MACHO_OBJC      ?= gcc$(HOSTSUFF_EXE)
-TOOL_GXX4MACHO_OBJCXX    ?= gcc$(HOSTSUFF_EXE)
-TOOL_GXX4MACHO_AS        ?= gcc$(HOSTSUFF_EXE)
-TOOL_GXX4MACHO_LD        ?= g++$(HOSTSUFF_EXE)
-TOOL_GXX4MACHO_LD_SYSMOD ?= g++$(HOSTSUFF_EXE)
+TOOL_GXX4MACHO_PREFIX    ?=
+TOOL_GXX4MACHO_SUFFIX    ?= $(HOSTSUFF_EXE)
+TOOL_GXX4MACHO_CC        ?= $(TOOL_GXX4MACHO_PREFIX)gcc$(TOOL_GXX4MACHO_SUFFIX)
+TOOL_GXX4MACHO_CXX       ?= $(TOOL_GXX4MACHO_PREFIX)g++$(TOOL_GXX4MACHO_SUFFIX)
+TOOL_GXX4MACHO_OBJC      ?= $(TOOL_GXX4MACHO_PREFIX)gcc$(TOOL_GXX4MACHO_SUFFIX)
+TOOL_GXX4MACHO_OBJCXX    ?= $(TOOL_GXX4MACHO_PREFIX)gcc$(TOOL_GXX4MACHO_SUFFIX)
+TOOL_GXX4MACHO_AS        ?= $(TOOL_GXX4MACHO_PREFIX)gcc$(TOOL_GXX4MACHO_SUFFIX)
+TOOL_GXX4MACHO_LD        ?= $(TOOL_GXX4MACHO_PREFIX)g++$(TOOL_GXX4MACHO_SUFFIX)
+TOOL_GXX4MACHO_LD_SYSMOD ?= $(TOOL_GXX4MACHO_PREFIX)g++$(TOOL_GXX4MACHO_SUFFIX)
 ifndef TOOL_GXX4MACHO_LDFLAGS.$(KBUILD_TARGET)
 TOOL_GXX4MACHO_LDFLAGS.dll ?= -dynamiclib
 else
@@ -133,6 +135,7 @@ define TOOL_GXX4MACHO_COMPILE_C_CMDS
 		$(flags) -fpreprocessed -x c\
 		-o $(obj)\
 		-
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 else  # !KBUILD_USE_KOBJCACHE
 TOOL_GXX4MACHO_COMPILE_C_OUTPUT =
@@ -142,6 +145,7 @@ define TOOL_GXX4MACHO_COMPILE_C_CMDS
 		-Wp,-MD,$(dep) -Wp,-MT,$(obj) -Wp,-MP\
 		-o $(obj)\
 		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 endif # !KUSE_OBJCACHE
 
@@ -175,6 +179,7 @@ define TOOL_GXX4MACHO_COMPILE_CXX_CMDS
 		$(flags) -fpreprocessed -x c++\
 		-o $(obj)\
 		-
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 else  # !KBUILD_USE_KOBJCACHE
 TOOL_GXX4MACHO_COMPILE_CXX_OUTPUT =
@@ -184,6 +189,7 @@ define TOOL_GXX4MACHO_COMPILE_CXX_CMDS
 		-Wp,-MD,$(dep) -Wp,-MT,$(obj) -Wp,-MP\
 		-o $(obj)\
 		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 endif # !KUSE_OBJCACHE
 
@@ -217,6 +223,7 @@ define TOOL_GXX4MACHO_COMPILE_OBJC_CMDS
 		$(flags) -fpreprocessed -x objective-c \
 		-o $(obj)\
 		-
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 else  # !KBUILD_USE_KOBJCACHE
 TOOL_GXX4MACHO_COMPILE_OBJC_OUTPUT =
@@ -226,6 +233,7 @@ define TOOL_GXX4MACHO_COMPILE_OBJC_CMDS
 		-Wp,-MD,$(dep) -Wp,-MT,$(obj) -Wp,-MP\
 		-o $(obj)\
 		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 endif # !KUSE_OBJCACHE
 
@@ -259,6 +267,7 @@ define TOOL_GXX4MACHO_COMPILE_OBJCXX_CMDS
 		$(flags) -fpreprocessed -x objective-c++ \
 		-o $(obj)\
 		-
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 else  # !KBUILD_USE_KOBJCACHE
 TOOL_GXX4MACHO_COMPILE_OBJCXX_OUTPUT =
@@ -268,6 +277,7 @@ define TOOL_GXX4MACHO_COMPILE_OBJCXX_CMDS
 		-Wp,-MD,$(dep) -Wp,-MT,$(obj) -Wp,-MP\
 		-o $(obj)\
 		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 endif # !KUSE_OBJCACHE
 
@@ -294,6 +304,7 @@ define TOOL_GXX4MACHO_COMPILE_AS_CMDS
 		-Wp,-MD,$(dep) -Wp,-MT,$(obj) -Wp,-MP\
 		-o $(obj)\
 		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 
 

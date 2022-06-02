@@ -1,4 +1,4 @@
-# $Id: brief.kmk 2413 2010-09-11 17:43:04Z bird $
+# $Id: brief2.kmk 2413 2010-09-11 17:43:04Z bird $
 ## @file
 # kBuild Message Style - 'brief'
 #
@@ -38,8 +38,12 @@ ifndef KBUILD_VERBOSE
 	"$(subst $(PATH_ROOT)/,{R}/,$(subst $(PATH_OUT)/,{O}/,$(subst $(CURDIR)/,{C}/,$(subst $(PATH_TARGET)/,{T}/,$1))))" \
 	"$(subst $(PATH_ROOT)/,{R}/,$(subst $(PATH_OUT)/,{O}/,$(subst $(CURDIR)/,{C}/,$(subst $(PATH_TARGET)/,{T}/,$2))))"
  endif
+ ifndef MSG_L1I
+  MSG_L1I = @$(PRINTF) "  %-7s %s\n" "$1" "$2"
+ endif
 else
  MSG_L1 ?= @$(ECHO) "  $(subst $(PATH_ROOT)/,{R}/,$(subst $(PATH_OUT)/,{O}/,$(subst $(CURDIR)/,{C}/,$(subst $(PATH_TARGET)/,{T}/,$1 $2))))"
+ MSG_L1I?= @$(ECHO) "  $1 $2"
  MSG_L2 ?= @$(ECHO) "  $(subst $(PATH_ROOT)/,{R}/,$(subst $(PATH_OUT)/,{O}/,$(subst $(CURDIR)/,{C}/,$(subst $(PATH_TARGET)/,{T}/,$1))))"
 endif
 
@@ -91,7 +95,7 @@ MSG_GENERATE ?= $(call MSG_L1,GEN,$2)
 # @param 1     Target name.
 # @param 2     The primary link output file name.
 # @param 3     The link tool operation (LINK_LIBRARY,LINK_PROGRAM,LINK_DLL,LINK_SYSMOD,++).
-MSG_LINK     ?= $(call MSG_L1,$(if $(eq $3,LINK_LIBRARY),AR,LD),$1,=> $2)
+MSG_LINK     ?= $(call MSG_L1I,$(if $(eq $3,LINK_LIBRARY),AR,LD),$1 => $2,)
 ## Merging a library into the target (during library linking).
 # @param 1     Target name.
 # @param 2     The output library name.
@@ -108,16 +112,16 @@ MSG_NOTHING  ?= $(call MSG_L1,NOTHING $(CURDIR))
 # @param 1     Target name.
 # @param 2     The source filename.
 # @param 3     The destination file name.
-MSG_INST_TRG ?= $(call MSG_L1,INST,$1 => $3)
+MSG_INST_TRG ?= $(call MSG_L1I,INST,$1 => $3)
 ## Installing a file (install target).
 # @param 1     The source filename.
 # @param 2     The destination filename.
-MSG_INST_FILE?= $(call MSG_L1,IFIL,$2,(<= $1))
+MSG_INST_FILE?= $(call MSG_L1I,IFIL,$2,(<= $1))
 ## Installing a symlink.
 # @param 1     Symlink
 # @param 2     Link target
-MSG_INST_SYM ?= $(call MSG_L1,ISYM,$1,=> $2)
+MSG_INST_SYM ?= $(call MSG_L1I,ISYM,$1,=> $2)
 ## Installing a directory.
 # @param 1     Directory name.
-MSG_INST_DIR ?= $(call MSG_L1,IDIR,$1)
+MSG_INST_DIR ?= $(call MSG_L1I,IDIR,$1)
 

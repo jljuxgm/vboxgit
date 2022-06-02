@@ -1,10 +1,10 @@
-# $Id: GCC.kmk 2243 2009-01-10 02:24:02Z bird $
+# $Id: GCC.kmk 2431 2010-11-19 11:06:42Z bird $
 ## @file
 # kBuild Tool Config - Generic GCC Using The System GCC.
 #
 
 #
-# Copyright (c) 2004-2009 knut st. osmundsen <bird-kBuild-spamix@anduin.net>
+# Copyright (c) 2004-2010 knut st. osmundsen <bird-kBuild-spamx@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -101,6 +101,7 @@ define TOOL_GCC_COMPILE_C_CMDS
 		-Wp,-MD,$(dep) -Wp,-MT,$(obj) \
 		-o $(obj)\
 		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 
 
@@ -126,6 +127,7 @@ define TOOL_GCC_COMPILE_CXX_CMDS
 		-Wp,-MD,$(dep) -Wp,-MT,$(obj) \
 		-o $(obj)\
 		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 
 
@@ -151,6 +153,7 @@ define TOOL_GCC_COMPILE_AS_CMDS
 		-Wp,-MD,$(dep) -Wp,-MT,$(obj) \
 		-o $(obj)\
 		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 
 

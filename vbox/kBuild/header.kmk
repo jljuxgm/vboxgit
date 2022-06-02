@@ -1,10 +1,10 @@
-# $Id: header.kmk 2356 2009-10-12 07:51:08Z bird $
+# $Id: header.kmk 2413 2010-09-11 17:43:04Z bird $
 ## @file
 # kBuild - File included at top of a makefile.
 #
 
 #
-# Copyright (c) 2004-2009 knut st. osmundsen <bird-kBuild-spamix@anduin.net>
+# Copyright (c) 2004-2010 knut st. osmundsen <bird-kBuild-spamx@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -79,7 +79,7 @@ endif
 # The revision in which this file was last modified.
 # This can be useful when using development versions of kBuild.
 #
-KMK_REVISION := $(patsubst %:,,  $Rev: 2356 $  )
+KMK_REVISION := $(patsubst %:,,  $Rev: 2413 $  )
 
 
 #
@@ -251,7 +251,7 @@ else
  ifneq (.$(words $(KBUILD_HOST_CPU)).$(KBUILD_HOST_CPU).,.1.$(strip $(KBUILD_HOST_CPU)).)
   $(error kBuild: The KBUILD_HOST_CPU value '$(KBUILD_HOST_CPU)' contains spaces/tabs!)
  endif
- if1of ($(KBUILD_HOST_CPU), $(KBUILD_OSES) $(BUILD_ARCHES))
+ if1of ($(KBUILD_HOST_CPU), $(KBUILD_OSES) $(KBUILD_ARCHES))
   $(error kBuild: The KBUILD_HOST_CPU value '$(KBUILD_HOST_CPU)' was found in the OS or architecture keywords!)
  endif
  ifeq ($(KBUILD_HOST_CPU),$(KBUILD_TYPE))
@@ -347,7 +347,7 @@ else
  ifneq (.$(words $(KBUILD_TARGET_CPU)).$(KBUILD_TARGET_CPU).,.1.$(strip $(KBUILD_TARGET_CPU)).)
   $(error kBuild: The KBUILD_TARGET_CPU value '$(KBUILD_TARGET_CPU)' contains spaces/tabs!)
  endif
- if1of ($(KBUILD_TARGET_CPU), $(KBUILD_OSES) $(BUILD_ARCHES))
+ if1of ($(KBUILD_TARGET_CPU), $(KBUILD_OSES) $(KBUILD_ARCHES))
   $(error kBuild: The KBUILD_TARGET_CPU value was found in the OS or architecture keywords!)
  endif
  ifeq ($(KBUILD_TARGET_CPU),$(KBUILD_TYPE))
@@ -1346,5 +1346,4 @@ endif
 # end-of-file-content
 __header_kmk__ := 1
 endif # __header_kmk__
-
 
