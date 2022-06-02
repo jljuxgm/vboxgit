@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 33912 2010-11-09 16:25:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -92,7 +92,13 @@ UIMachineSettingsUSB::UIMachineSettingsUSB(UISettingsPageType type)
     toolBar->addAction (mMdnAction);
     toolBar->setSizePolicy (QSizePolicy::Fixed, QSizePolicy::MinimumExpanding);
     toolBar->updateGeometry();
-    toolBar->setMinimumHeight (toolBar->sizeHint().height());
+#ifdef Q_WS_MAC
+    /* On the Mac this has to be slightly higher, than what sizeHint returned.
+     * No idea why. */
+    toolBar->setMinimumHeight(toolBar->sizeHint().height() + 4);
+#else
+    toolBar->setMinimumHeight(toolBar->sizeHint().height());
+#endif /* Q_WS_MAC */
     mWtFilterHandler->layout()->addWidget (toolBar);
 
     /* Setup connections */
