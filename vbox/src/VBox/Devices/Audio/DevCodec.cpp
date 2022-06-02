@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 31264 2010-08-02 06:22:15Z vboxsync $ */
+/* $Id: DevCodec.cpp 31265 2010-08-02 06:27:00Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -237,7 +237,6 @@ static int codecGetConSelectCtrl(struct CODECState *pState, uint32_t cmd, uint64
         *pResp = pState->pNodes[CODEC_NID(cmd)].adcmux.u32F01_param;
     else if (STAC9220_IS_DIGOUTPIN_CMD(cmd))
         *pResp = pState->pNodes[CODEC_NID(cmd)].digout.u32F01_param;
-    //** @todo r=michaln: Else what? We must always fill out *pResp!
     return VINF_SUCCESS;
 }
 
@@ -284,7 +283,6 @@ static int codecGetPinCtrl(struct CODECState *pState, uint32_t cmd, uint64_t *pR
     else if (STAC9220_IS_CD_CMD(cmd))
         *pResp = pState->pNodes[CODEC_NID(cmd)].cdnode.u32F07_param;
     else
-        //** @todo r=michaln: pResp must still be filled out
         AssertMsgFailed(("Unsupported"));
     return VINF_SUCCESS;
 }
