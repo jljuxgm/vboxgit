@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 33300 2010-10-21 11:28:06Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 33425 2010-10-25 14:30:43Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -357,16 +357,15 @@ int handleSnapshot(HandlerArg *a)
             if (fRestoreCurrent)
             {
                 CHECK_ERROR_BREAK(pMachine, COMGETTER(CurrentSnapshot)(pSnapshot.asOutParam()));
-                CHECK_ERROR_BREAK(pSnapshot, COMGETTER(Id)(bstrSnapGuid.asOutParam()));
             }
             else
             {
                 // restore or delete snapshot: then resolve cmd line argument to snapshot instance
                 CHECK_ERROR_BREAK(pMachine, FindSnapshot(Bstr(a->argv[2]).raw(),
                                                          pSnapshot.asOutParam()));
-                Bstr bstrSnapGuid;
-                CHECK_ERROR_BREAK(pSnapshot, COMGETTER(Id)(bstrSnapGuid.asOutParam()));
             }
+
+            CHECK_ERROR_BREAK(pSnapshot, COMGETTER(Id)(bstrSnapGuid.asOutParam()));
 
             if (fDelete)
             {
