@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 30616 2010-07-05 13:13:15Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 30744 2010-07-08 13:42:28Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -1595,6 +1595,14 @@ static int pgmR3SaveRamPages(PVM pVM, PSSMHANDLE pSSM, bool fLiveSave, uint32_t 
                         rc = pgmPhysGCPhys2CCPtrInternalReadOnly(pVM, &pCur->aPages[iPage], GCPhys, &pvPage);
                         if (RT_SUCCESS(rc))
                         {
+                            /* Skip allocated pages that are zero. */
+                            if (    !fLiveSave
+                                &&  ASMMemIsZeroPage(pvPage))
+                            {
+                                fZero = true;
+                                goto save_zero_page;
+                            }
+
                             memcpy(abPage, pvPage, PAGE_SIZE);
 #ifdef PGMLIVESAVERAMPAGE_WITH_CRC32
                             if (paLSPages)
@@ -1615,6 +1623,7 @@ static int pgmR3SaveRamPages(PVM pVM, PSSMHANDLE pSSM, bool fLiveSave, uint32_t 
                     }
                     else
                     {
+save_zero_page:
                         /*
                          * Dirty zero page.
                          */
