@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 31366 2010-08-04 17:17:35Z vboxsync $ */
+/* $Id: GMMR0.cpp 31367 2010-08-04 17:20:18Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -4167,7 +4167,7 @@ GMMR0DECL(int) GMMR0CheckSharedModules(PVM pVM, PVMCPU pVCpu)
     /*
      * Take the sempahore and do some more validations.
      */
-    int rc = RTSemFastMutexRequest(pGMM->Mtx);
+    rc = RTSemFastMutexRequest(pGMM->Mtx);
     AssertRC(rc);
 # endif
     if (GMM_CHECK_SANITY_UPON_ENTERING(pGMM))
@@ -4191,7 +4191,7 @@ GMMR0DECL(int) GMMR0CheckSharedModules(PVM pVM, PVMCPU pVCpu)
         rc = VERR_INTERNAL_ERROR_5;
 
 # ifndef DEBUG_sandervl
-        RTSemFastMutexRelease(pGMM->Mtx);
+    RTSemFastMutexRelease(pGMM->Mtx);
 # endif
     return rc;
 #else
