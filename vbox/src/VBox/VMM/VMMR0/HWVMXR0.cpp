@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 31636 2010-08-13 12:03:15Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 31646 2010-08-13 12:49:15Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -3971,6 +3971,7 @@ ResumeExecution:
     case VMX_EXIT_EXCEPTION:            /* 0 Exception or non-maskable interrupt (NMI). */
     case VMX_EXIT_EXTERNAL_IRQ:         /* 1 External interrupt. */
     case VMX_EXIT_EPT_VIOLATION:
+    case VMX_EXIT_EPT_MISCONFIG:        /* 49 EPT misconfig is used by the PGM/MMIO optimizations. */
     case VMX_EXIT_PREEMPTION_TIMER:     /* 52 VMX-preemption timer expired. The preemption timer counted down to zero. */
         /* Already handled above. */
         break;
