@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 31742 2010-08-18 07:52:22Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 31743 2010-08-18 07:58:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7462,7 +7462,7 @@ DECLCALLBACK(int) Console::powerUpThread(RTTHREAD Thread, void *pvUser)
                      */
                     ULONG uPort;
                     ULONG uInterval;
-                    Bstr bstrAddress;
+                    Bstr bstrAddress, bstrPassword;
 
                     rc = pMachine->COMGETTER(FaultTolerancePort)(&uPort);
                     if (SUCCEEDED(rc))
@@ -7470,16 +7470,20 @@ DECLCALLBACK(int) Console::powerUpThread(RTTHREAD Thread, void *pvUser)
                         rc = pMachine->COMGETTER(FaultToleranceSyncInterval)(&uInterval);
                         if (SUCCEEDED(rc))
                             rc = pMachine->COMGETTER(FaultToleranceAddress)(bstrAddress.asOutParam());
+                        if (SUCCEEDED(rc))
+                            rc = pMachine->COMGETTER(FaultTolerancePassword)(bstrPassword.asOutParam());
                     }
                     if (SUCCEEDED(rc))
                     {
                         Utf8Str strAddress(bstrAddress);
                         const char *pszAddress = strAddress.isEmpty() ? NULL : strAddress.c_str();
+                        Utf8Str strPassword(bstrPassword);
+                        const char *pszPassword = strPassword.isEmpty() ? NULL : strPassword.c_str();
 
                         /** @todo set progress cancel callback! */
 
                         /* Power on the FT enabled VM. */
-                        vrc = FTMR3PowerOn(pVM, (task->mEnmFaultToleranceState == FaultToleranceState_Master) /* fMaster */, uInterval, pszAddress, uPort);
+                        vrc = FTMR3PowerOn(pVM, (task->mEnmFaultToleranceState == FaultToleranceState_Master) /* fMaster */, uInterval, pszAddress, uPort, pszPassword);
                         AssertRC(vrc);
                     }
                 }
