@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30757 2010-07-09 12:09:46Z vboxsync $ */
+/* $Id: GMMR0.cpp 30766 2010-07-09 14:36:47Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2064,7 +2064,6 @@ GMMR0DECL(int) GMMR0AllocateHandyPages(PVM pVM, VMCPUID idCpu, uint32_t cPagesTo
     AssertRC(rc);
     if (GMM_CHECK_SANITY_UPON_ENTERING(pGMM))
     {
-
         /* No allocations before the initial reservation has been made! */
         if (RT_LIKELY(    pGVM->gmm.s.Reserved.cBasePages
                       &&  pGVM->gmm.s.Reserved.cFixedPages
