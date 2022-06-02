@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 32727 2010-09-23 14:31:31Z vboxsync $ */
+/* $Id: NetIf-win.cpp 34545 2010-12-01 08:52:24Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -131,15 +131,27 @@ static int collectNetIfInfo(Bstr &strName, Guid &guid, PNETIFINFO pInfo)
                             case AF_INET:
                                 if (!fIPFound)
                                 {
-                                    fIPFound = true;
-                                    ASMBitSetRange(&pInfo->IPNetMask, 0, pPrefix->PrefixLength);
+                                    if (pPrefix->pPrefixLength <= sizeof(pInfo->IPNetMask) * 8)
+                                    {
+                                        fIPFound = true;
+                                        ASMBitSetRange(&pInfo->IPNetMask, 0, pPrefix->PrefixLength);
+                                    }
+                                    else
+                                        Log(("collectNetIfInfo: Unexpected IPv4 prefix length of %d\n",
+                                             pPrefix->pPrefixLength));
                                 }
                                 break;
                             case AF_INET6:
                                 if (!fIPv6Found)
                                 {
-                                    fIPv6Found = true;
-                                    ASMBitSetRange(&pInfo->IPv6NetMask, 0, pPrefix->PrefixLength);
+                                    if (pPrefix->PrefixLength <= sizeof(pInfo->IPv6NetMask) * 8)
+                                    {
+                                        fIPv6Found = true;
+                                        ASMBitSetRange(&pInfo->IPv6NetMask, 0, pPrefix->PrefixLength);
+                                    }
+                                    else
+                                        Log(("collectNetIfInfo: Unexpected IPv6 prefix length of %d\n",
+                                             pPrefix->PrefixLength));
                                 }
                                 break;
                         }
