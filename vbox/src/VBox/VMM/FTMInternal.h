@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32286 2010-09-07 12:37:46Z vboxsync $ */
+/* $Id: FTMInternal.h 32289 2010-09-07 12:55:16Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -64,9 +64,6 @@ typedef struct FTM
 
     /** Current active socket. */
     RTSOCKET            hSocket;
-#if HC_ARCH_BITS == 32
-    RTSOCKET            hSocketAlignment;
-#endif
 
     /** State sync. */
     struct
