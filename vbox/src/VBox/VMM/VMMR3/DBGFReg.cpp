@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 35468 2011-01-10 17:16:11Z vboxsync $ */
+/* $Id: DBGFReg.cpp 35469 2011-01-10 17:20:07Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -109,7 +109,7 @@ typedef struct DBGFREGSET
     /** The register descriptors. */
     PCDBGFREGDESC           paDescs;
     /** The number of register descriptors. */
-    size_t                  cDescs;
+    uint32_t                cDescs;
 
     /** Array of lookup records. */
     struct DBGFREGLOOKUP   *paLookupRecs;
