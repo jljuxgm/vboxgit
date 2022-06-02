@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 35740 2011-01-27 14:36:03Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 35744 2011-01-27 16:31:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -310,11 +310,14 @@ void UIKeyboardHandler::releaseAllPressedKeys(bool aReleaseHostKey /* = true */)
         m_bIsHostComboPressed = false;
 
 #ifdef Q_WS_MAC
-    // TODO: To NaN: Please fix:
-//    /* Clear most of the modifiers: */
-//    m_darwinKeyModifiers &=
-//        alphaLock | kEventKeyModifierNumLockMask |
-//        (aReleaseHostKey ? 0 : ::DarwinKeyCodeToDarwinModifierMask(m_globalSettings.hostKey()));
+    unsigned int hostComboModifierMask = 0;
+    QList<int> hostCombo = UIHotKeyCombination::toKeyCodeList(m_globalSettings.hostCombo());
+    for (int i = 0; i < hostCombo.size(); ++i)
+        hostComboModifierMask |= ::DarwinKeyCodeToDarwinModifierMask(hostCombo.at(i));
+    /* Clear most of the modifiers: */
+    m_darwinKeyModifiers &=
+        alphaLock | kEventKeyModifierNumLockMask |
+        (aReleaseHostKey ? 0 : hostComboModifierMask);
 #endif
 
     emit keyboardStateChanged(keyboardState());
