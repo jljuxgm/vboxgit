@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 34709 2010-12-03 17:38:01Z vboxsync $ */
+/* $Id: GuestImpl.cpp 34758 2010-12-06 15:42:52Z vboxsync $ */
 
 /** @file
  *
@@ -479,34 +479,23 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
 
     /* Clean up */
     aTask->rc = rc;
-    if (SUCCEEDED(   aTask->progress->COMGETTER(Completed(&fCompleted)))
-                  && !fCompleted)
-        aTask->progress->SetCurrentOperationProgress(99);
 
     if (   SUCCEEDED(aTask->progress->COMGETTER(Canceled(&fCanceled)))
-        && !fCanceled)
+        && !fCanceled
+        && SUCCEEDED(aTask->progress->COMGETTER(Completed(&fCompleted)))
+        && !fCompleted)
     {
-        /* Task completed, regardless whether successful/failed. */
-
-        /* Assign data. */
-        if (rc == S_OK)
+        if (FAILED(rc))
         {
-            /* No data to assign yet. */
-        }
-
-        if (SUCCEEDED(   aTask->progress->COMGETTER(Completed(&fCompleted)))
-                      && !fCompleted)
-            aTask->progress->notifyComplete(rc);
-    }
-    else /* The task was canceled, set error code to prevent assertions. */
-    {
-        LogRel(("Guest Additions update was canceled\n"));
-        if (SUCCEEDED(   aTask->progress->COMGETTER(Completed(&fCompleted)))
-                      && !fCompleted)
-            aTask->progress->notifyComplete(VBOX_E_IPRT_ERROR,
+            aTask->progress->notifyComplete(rc,
                                             COM_IIDOF(IGuest),
                                             Guest::getStaticComponentName(),
-                                            Guest::tr("Automatic Guest Additions update was canceled"));
+                                            rc == VBOX_E_NOT_SUPPORTED
+                                            ? Guest::tr("Automatic Guest Additions update not supported")
+                                            : Guest::tr("Automatic Guest Additions update failed"));
+        }
+        else
+            AssertMsgFailed(("Automatic Guest Additions update neither canceled nor completed and did *not* fail!? D'oh!\n"));
     }
 
     LogFlowFunc(("rc=%Rhrc\n", rc));
