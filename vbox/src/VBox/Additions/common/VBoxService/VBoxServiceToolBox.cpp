@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 34777 2010-12-07 12:41:49Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 35244 2010-12-20 13:46:17Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -185,18 +185,15 @@ static int VBoxServiceToolboxCatOutput(RTFILE hInput, RTFILE hOutput)
         for (;;)
         {
             rc = RTFileRead(hInput, abBuf, sizeof(abBuf), &cbRead);
-            if (RT_SUCCESS(rc) && cbRead)
+            if (RT_SUCCESS(rc))
             {
                 rc = RTFileWrite(hOutput, abBuf, cbRead, NULL /* Try to write all at once! */);
                 cbRead = 0;
             }
             else
             {
-                if (   cbRead == 0
-                    && rc     == VERR_BROKEN_PIPE)
-                {
+                if (rc == VERR_BROKEN_PIPE)
                     rc = VINF_SUCCESS;
-                }
                 break;
             }
         }
