@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 31769 2010-08-18 19:20:10Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3213,7 +3213,7 @@ static DECLCALLBACK(int) dbgcCmdDumpTSS(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM
     {
         if (    VarTssAddr.u64Range > 0
             &&  VarTssAddr.u64Range < sizeof(X86TSS32) - 4)
-            enmTssType == kTss16;
+            enmTssType = kTss16;
         else
         {
             uint64_t uEfer;
