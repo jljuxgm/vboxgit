@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePropCache.cpp 31878 2010-08-24 07:07:33Z vboxsync $ */
+/* $Id: VBoxServicePropCache.cpp 31879 2010-08-24 07:08:27Z vboxsync $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
@@ -100,7 +100,7 @@ int vboxServicePropCacheWritePropF(uint32_t u32ClientId, const char *pszName, ui
         {
             /*
              * Because a value can be temporary we have to make sure it also
-             * gets deleted when the property cache did not have the cache to
+             * gets deleted when the property cache did not have the chance to
              * gracefully clean it up (due to a hard VM reset etc), so set this
              * guest property using the TRANSIENT flag.
              */
