@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 33018 2010-10-08 19:38:32Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 33019 2010-10-08 20:21:03Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -32,6 +32,7 @@
 
 #include <iprt/asm-math.h>
 #include <iprt/err.h>
+#include <iprt/string.h>
 #include <iprt/time.h>
 
 
