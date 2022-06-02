@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 32477 2010-09-14 13:15:01Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 32491 2010-09-14 20:02:11Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -1383,7 +1383,7 @@ static int ich9pciRegisterInternal(PPCIBUS pBus, int iDev, PPCIDEVICE pPciDev, c
                 continue;
             Log(("PCI: relocating '%s' from slot %#x to %#x\n", pBus->apDevices[iDev + i]->name, iDev + i, iRelDev + i));
             pBus->apDevices[iRelDev + i] = pBus->apDevices[iDev + i];
-            pBus->apDevices[iRelDev + i]->devfn = i;
+            pBus->apDevices[iRelDev + i]->devfn = iRelDev + i;
             pBus->apDevices[iDev + i] = NULL;
         }
     }
