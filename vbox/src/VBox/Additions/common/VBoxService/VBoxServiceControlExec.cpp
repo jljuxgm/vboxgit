@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 32777 2010-09-27 13:50:13Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 32852 2010-09-30 15:49:35Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -257,8 +257,7 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
     RTMSINTERVAL                cMsPollCur          = 0;
 
     AssertPtr(pThread);
-
-    AssertPtr(pThread);
+    Assert(pThread->enmType == VBoxServiceCtrlThreadDataExec);
     PVBOXSERVICECTRLTHREADDATAEXEC pData = (PVBOXSERVICECTRLTHREADDATAEXEC)pThread->pvData;
     AssertPtr(pData);
 
@@ -456,6 +455,7 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
         {
             VBoxServiceVerbose(3, "ControlExec: Process got terminated because system/service is about to shutdown\n");
             uStatus = PROC_STS_DWN; /* Service is stopping, process was killed. */
+            uFlags = pData->uFlags; /* Return handed-in execution flags back to the host. */
         }
         else if (fProcessAlive)
         {
