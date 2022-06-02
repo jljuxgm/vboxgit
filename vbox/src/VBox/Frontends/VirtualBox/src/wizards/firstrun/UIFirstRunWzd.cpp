@@ -1,4 +1,4 @@
-/* $Id: UIFirstRunWzd.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
+/* $Id: UIFirstRunWzd.cpp 35234 2010-12-20 09:40:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -304,7 +304,10 @@ void UIFirstRunWzdPage3::cleanupPage()
 
 bool UIFirstRunWzdPage3::validatePage()
 {
-    return insertDevice();
+    startProcessing();
+    bool fResult = insertDevice();
+    endProcessing();
+    return fResult;
 }
 
 bool UIFirstRunWzdPage3::insertDevice()

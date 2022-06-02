@@ -1,4 +1,4 @@
-/* $Id: UIRegistrationWzd.cpp 33550 2010-10-28 10:53:57Z vboxsync $ */
+/* $Id: UIRegistrationWzd.cpp 35234 2010-12-20 09:40:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -567,6 +567,14 @@ bool UIRegistrationWzdPage1::isComplete() const
 }
 
 bool UIRegistrationWzdPage1::validatePage()
+{
+    startProcessing();
+    bool fResult = registration();
+    endProcessing();
+    return fResult;
+}
+
+bool UIRegistrationWzdPage1::registration()
 {
     /* Create registration engine */
     RegistrationEngine engine(this);

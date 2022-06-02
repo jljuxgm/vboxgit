@@ -1,4 +1,4 @@
-/* $Id: UIExportApplianceWzd.cpp 34530 2010-11-30 17:07:32Z vboxsync $ */
+/* $Id: UIExportApplianceWzd.cpp 35234 2010-12-20 09:40:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -516,7 +516,10 @@ void UIExportApplianceWzdPage4::cleanupPage()
 
 bool UIExportApplianceWzdPage4::validatePage()
 {
-    return exportAppliance();
+    startProcessing();
+    bool fResult = exportAppliance();
+    endProcessing();
+    return fResult;
 }
 
 bool UIExportApplianceWzdPage4::prepareSettingsWidget()
