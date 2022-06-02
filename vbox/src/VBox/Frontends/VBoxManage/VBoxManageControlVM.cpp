@@ -1,6 +1,6 @@
-/* $Id: VBoxManageControlVM.cpp 34604 2010-12-02 12:50:36Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 34913 2010-12-09 17:20:41Z vboxsync $ */
 /** @file
- * VBoxManage - Implementation of controlvm command.
+ * VBoxManage - Implementation of the controlvm command.
  */
 
 /*
@@ -1014,7 +1014,7 @@ int handleControlVM(HandlerArg *a)
         }
         else
         {
-            errorSyntax(USAGE_CONTROLVM, "Invalid parameter '%s'", Utf8Str(a->argv[1]).c_str());
+            errorSyntax(USAGE_CONTROLVM, "Invalid parameter '%s'", a->argv[1]);
             rc = E_FAIL;
         }
     } while (0);

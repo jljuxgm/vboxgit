@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 34902 2010-12-09 16:16:51Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 34913 2010-12-09 17:20:41Z vboxsync $ */
 
 /** @file
  *
@@ -726,16 +726,22 @@ STDMETHODIMP MachineDebugger::InjectNMI()
     LogFlowThisFunc(("\n"));
 
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
-
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
-    Console::SafeVMPtr pVM(mParent);
-    if (FAILED(pVM.rc())) return pVM.rc();
-
-    HWACCMR3InjectNMI(pVM);
-
-    return S_OK;
+    HRESULT hrc = autoCaller.rc();
+    if (SUCCEEDED(hrc))
+    {
+        AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+        Console::SafeVMPtr ptrVM(mParent);
+        hrc = ptrVM.rc();
+        if (SUCCEEDED(hrc))
+        {
+            int vrc = HWACCMR3InjectNMI(ptrVM);
+            if (RT_SUCCESS(vrc))
+                hrc = S_OK;
+            else
+                hrc = setError(E_FAIL, tr("HWACCMR3InjectNMI failed with %Rrc"), vrc);
+        }
+    }
+    return hrc;
 }
 
 /**

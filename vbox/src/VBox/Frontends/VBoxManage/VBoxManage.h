@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 34634 2010-12-02 17:21:40Z vboxsync $ */
+/* $Id: VBoxManage.h 34913 2010-12-09 17:20:41Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -97,6 +97,7 @@
 #define USAGE_PASSWORDHASH          RT_BIT_64(54)
 #define USAGE_EXTPACK               RT_BIT_64(55)
 #define USAGE_BANDWIDTHCONTROL      RT_BIT_64(56)
+#define USAGE_DEBUGVM               RT_BIT_64(57)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -165,6 +166,9 @@ int handleControlVM(HandlerArg *a);
 
 /* VBoxManageModifyVM.cpp */
 int handleModifyVM(HandlerArg *a);
+
+/* VBoxManageDebugVM.cpp */
+int handleDebugVM(HandlerArg *a);
 
 /* VBoxManageGuestProp.cpp */
 extern void usageGuestProperty(PRTSTREAM pStrm);
