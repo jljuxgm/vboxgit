@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 35707 2011-01-25 12:53:39Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 35747 2011-01-27 20:29:22Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -537,9 +537,18 @@ static int handleCtrlExecProgram(HandlerArg *a)
                         }
                     }
 
-                    /* No more output data left? Then wait a little while ... */
+                    /* No more output data left? */
                     if (cbOutputData <= 0)
+                    {
+                        /* Only break out from process handling loop if we processed (displayed)
+                         * all output data or if there simply never was output data and the process
+                         * has been marked as complete. */
+                        if (fCompleted)
+                            break;
+
+                        /* Then wait a little while ... */
                         progress->WaitForCompletion(1 /* ms */);
+                    }
 
                     /* Process async cancelation */
                     if (g_fGuestCtrlCanceled && !fCanceledAlready)
