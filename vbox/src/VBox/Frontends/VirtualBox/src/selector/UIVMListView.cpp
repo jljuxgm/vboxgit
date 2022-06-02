@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 35669 2011-01-21 14:16:01Z vboxsync $ */
+/* $Id: UIVMListView.cpp 35670 2011-01-21 14:21:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -597,7 +597,9 @@ QPixmap UIVMListView::dragPixmap(const QModelIndex &index) const
 #if defined(Q_WS_MAC) || defined(Q_WS_WIN)
 # ifdef Q_WS_WIN
     /* Todo: check Win XP, Vista, 2003 */
+#  if (QT_VERSION >= 0x040500)
     if (QSysInfo::windowsVersion() == QSysInfo::WV_WINDOWS7)
+#  endif /* QT_VERSION >= 0x040500 */
 # endif /* Q_WS_WIN */
     {
         p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
