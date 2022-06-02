@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 30217 2010-06-16 01:43:23Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 31123 2010-07-26 17:46:41Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -338,10 +338,6 @@ int main()
     CHECK_MEMBER_ALIGNMENT(PGMCPU, aGCPhysGstPaePDs, sizeof(RTGCPHYS));
     CHECK_MEMBER_ALIGNMENT(PGMCPU, DisState, 8);
     CHECK_MEMBER_ALIGNMENT(PGMCPU, cPoolAccessHandler, 8);
-#ifdef VBOX_WITH_STATISTICS
-    CHECK_MEMBER_ALIGNMENT(PGMCPU, StatSyncPtPD, 8);
-    CHECK_MEMBER_ALIGNMENT(PGMCPU, StatR3Prefetch, 8);
-#endif
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, idx, sizeof(uint16_t));
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, pvPageR3, sizeof(RTHCPTR));
     CHECK_MEMBER_ALIGNMENT(PGMPOOLPAGE, GCPhys, sizeof(RTGCPHYS));
