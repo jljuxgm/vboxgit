@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 32259 2010-09-06 21:51:20Z vboxsync $ */
+/* $Id: DevVGA.cpp 32502 2010-09-15 10:01:31Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4646,6 +4646,8 @@ static DECLCALLBACK(void) vgaInfoText(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, co
             uint32_t offStart;
             uint32_t uLineCompareIgn;
             vga_get_offsets(pThis, &cbLine, &offStart, &uLineCompareIgn);
+            if (!cbLine)
+                cbLine = 80 * 8;
 
             uint32_t cRows = offStart / cbLine + 25;
             uint32_t cCols = cbLine / 8;
