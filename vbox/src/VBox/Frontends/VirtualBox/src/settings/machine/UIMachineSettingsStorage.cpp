@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 35351 2010-12-27 17:04:17Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 35423 2011-01-07 10:48:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1930,7 +1930,7 @@ void UIMachineSettingsStorage::saveFromCacheTo(QVariant &data)
                 vboxProblem().cannotAttachDevice(m_machine, VBoxDefs::MediumType_HardDisk, vboxMedium.location(),
                                                  StorageSlot(controllerData.m_controllerBus,
                                                              attachmentData.m_iAttachmentPort,
-                                                             attachmentData.m_iAttachmentDevice));
+                                                             attachmentData.m_iAttachmentDevice), this);
             }
         }
         if (!failed() && controllerData.m_controllerBus == KStorageBus_SATA)
@@ -2487,7 +2487,7 @@ void UIMachineSettingsStorage::sltChooseRecentMedium()
         QStringList mediumInfoList = pChooseRecentMediumAction->data().toString().split(',');
         VBoxDefs::MediumType mediumType = (VBoxDefs::MediumType)mediumInfoList[0].toUInt();
         QString strMediumLocation = mediumInfoList[1];
-        QString strMediumId = vboxGlobal().openMedium(mediumType, strMediumLocation);
+        QString strMediumId = vboxGlobal().openMedium(mediumType, strMediumLocation, this);
         if (!strMediumId.isNull())
             m_pMediumIdHolder->setId(strMediumId);
     }

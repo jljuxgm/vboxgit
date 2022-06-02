@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35415 2011-01-06 17:33:14Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 35423 2011-01-07 10:48:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2659,12 +2659,12 @@ QString VBoxGlobal::openMediumWithFileOpenDialog(VBoxDefs::MediumType mediumType
 
     /* If dialog has some result: */
     if (!files.empty() && !files[0].isEmpty())
-        return openMedium(mediumType, files[0]);
+        return openMedium(mediumType, files[0], pParent);
 
     return QString();
 }
 
-QString VBoxGlobal::openMedium(VBoxDefs::MediumType mediumType, QString strMediumLocation)
+QString VBoxGlobal::openMedium(VBoxDefs::MediumType mediumType, QString strMediumLocation, QWidget *pParent /* = 0*/)
 {
     /* Convert to native separators: */
     strMediumLocation = QDir::toNativeSeparators(strMediumLocation);
@@ -2707,7 +2707,7 @@ QString VBoxGlobal::openMedium(VBoxDefs::MediumType mediumType, QString strMediu
         return vboxMedium.id();
     }
     else
-        vboxProblem().cannotOpenMedium(0, vbox, mediumType, strMediumLocation);
+        vboxProblem().cannotOpenMedium(pParent, vbox, mediumType, strMediumLocation);
 
     return QString();
 }
