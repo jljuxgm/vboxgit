@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 34723 2010-12-05 03:08:35Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 34724 2010-12-05 03:32:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1599,6 +1599,7 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, int cArgs, con
                     fwrite(achBuf, 1, cbRead, stdout);
                 }
                 rcExit = RTEXITCODE_SUCCESS;
+                fclose(pSocketStrm);
             }
             else
                 RTMsgError("AuthorizationExecuteWithPrivileges failed: %d", orc);
