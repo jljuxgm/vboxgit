@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 35722 2011-01-26 16:37:16Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 35812 2011-02-01 13:46:37Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2741,7 +2741,7 @@ HRESULT VirtualBox::findDVDOrFloppyImage(DeviceType_T mediumType,
         int vrc = calculateFullPath(aLocation, location);
         if (RT_FAILURE(vrc))
             return setError(VBOX_E_FILE_ERROR,
-                            tr("Invalid image file location '%ls' (%Rrc)"),
+                            tr("Invalid image file location '%s' (%Rrc)"),
                             aLocation.c_str(),
                             vrc);
     }
@@ -2809,7 +2809,7 @@ HRESULT VirtualBox::findDVDOrFloppyImage(DeviceType_T mediumType,
                      m->strSettingsFilePath.c_str());
         else
             setError(rc,
-                     tr("Could not find an image file with location '%ls' in the media registry ('%s')"),
+                     tr("Could not find an image file with location '%s' in the media registry ('%s')"),
                      aLocation.c_str(),
                      m->strSettingsFilePath.c_str());
     }
