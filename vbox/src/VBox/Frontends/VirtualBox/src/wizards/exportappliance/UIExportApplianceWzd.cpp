@@ -1,4 +1,4 @@
-/* $Id: UIExportApplianceWzd.cpp 33417 2010-10-25 12:32:50Z vboxsync $ */
+/* $Id: UIExportApplianceWzd.cpp 33421 2010-10-25 13:08:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -437,12 +437,6 @@ bool UIExportApplianceWzdPage3::isComplete() const
             break;
     }
     return bComplete;
-}
-
-bool UIExportApplianceWzdPage3::validatePage()
-{
-    return true;
-//    return exportAppliance();
 }
 
 UIExportApplianceWzdPage4::UIExportApplianceWzdPage4()
