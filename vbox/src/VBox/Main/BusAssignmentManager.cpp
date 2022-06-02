@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 33907 2010-11-09 15:21:14Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 33964 2010-11-11 10:24:29Z vboxsync $ */
 
 /** @file
  *
@@ -449,7 +449,7 @@ HRESULT BusAssignmentManager::assignPciDevice(const char* pszDevName, PCFGMNODE 
         if (!fAvailable)
         {
             if (fAddressRequired)
-                return E_ACCESSDENIED;
+                rc = E_ACCESSDENIED;
             else
                 rc = pState->autoAssign(pszDevName, Address);
         }
