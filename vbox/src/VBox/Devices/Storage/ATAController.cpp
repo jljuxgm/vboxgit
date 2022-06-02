@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 32944 2010-10-06 13:46:06Z vboxsync $ */
+/* $Id: ATAController.cpp 32959 2010-10-06 16:42:00Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -4169,7 +4169,7 @@ static DECLCALLBACK(int) ataAsyncIOLoop(RTTHREAD ThreadSelf, void *pvUser)
                     pCtl->fRedo = fRedo;
                     if (RT_UNLIKELY(fRedo))
                     {
-                        LogRel(("AHCI ATA: Ctl#%d: redo PIO operation\n"));
+                        LogRel(("AHCI ATA: Ctl: redo PIO operation\n"));
                         ataAsyncIOPutRequest(pCtl, &ataPIORequest);
                         break;
                     }
