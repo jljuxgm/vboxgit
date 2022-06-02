@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 34535 2010-11-30 17:46:14Z vboxsync $ */
+/* $Id: vfsmemory.cpp 34560 2010-12-01 11:05:54Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -182,8 +182,8 @@ static PRTVFSMEMEXTENT rtVfsMemFile_LocateExtentSlow(PRTVFSMEMFILE pThis, uint64
     while (off - pExtent->off >= pExtent->cb)
     {
         Assert(pExtent->off <= off);
-        PRTVFSMEMEXTENT pNext = RTListNodeGetNext(&pExtent->Entry, RTVFSMEMEXTENT, Entry);
-        if (   RTListNodeIsLast(&pThis->ExtentHead, &pNext->Entry)
+        PRTVFSMEMEXTENT pNext = RTListGetNext(&pThis->ExtentHead, pExtent, RTVFSMEMEXTENT, Entry);
+        if (   !pNext
             || pNext->off > off)
         {
             *pfHit = false;
@@ -222,7 +222,7 @@ DECLINLINE(PRTVFSMEMEXTENT) rtVfsMemFile_LocateExtent(PRTVFSMEMFILE pThis, uint6
 
     if (off - pExtent->off >= pExtent->cb)
     {
-        pExtent = RTListNodeGetNext(&pExtent->Entry, RTVFSMEMEXTENT, Entry);
+        pExtent = RTListGetNext(&pThis->ExtentHead, pExtent, RTVFSMEMEXTENT, Entry);
         if (   !pExtent
             || off - pExtent->off >= pExtent->cb)
             return rtVfsMemFile_LocateExtentSlow(pThis, off, pfHit);
@@ -758,7 +758,7 @@ RTDECL(int) RTVfsMemorizeIoStreamAsFile(RTVFSIOSTREAM hVfsIos, uint32_t fFlags, 
             if (ObjInfo.cbObject <= 0)
                 pThis->cbExtent = _4K;
             else if (ObjInfo.cbObject < RTVFSMEM_MAX_EXTENT_SIZE)
-                pThis->cbExtent = _4K;
+                pThis->cbExtent = _4K /* ObjInfo.cbObject */;
             else
                 pThis->cbExtent = RTVFSMEM_MAX_EXTENT_SIZE;
 
