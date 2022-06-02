@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 30324 2010-06-21 11:50:02Z vboxsync $ */
+/* $Id: ConsoleImpl.h 30510 2010-06-29 16:05:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -21,6 +21,7 @@
 #include "VirtualBoxBase.h"
 #include "SchemaDefs.h"
 #include "VBox/com/array.h"
+#include "EventImpl.h"
 
 class Guest;
 class Keyboard;
@@ -132,6 +133,7 @@ public:
     STDMETHOD(COMGETTER(RemoteUSBDevices))(ComSafeArrayOut(IHostUSBDevice *, aRemoteUSBDevices));
     STDMETHOD(COMGETTER(RemoteDisplayInfo))(IRemoteDisplayInfo **aRemoteDisplayInfo);
     STDMETHOD(COMGETTER(SharedFolders))(ComSafeArrayOut(ISharedFolder *, aSharedFolders));
+    STDMETHOD(COMGETTER(EventSource)) (IEventSource ** aEventSource);
 
     // IConsole methods
     STDMETHOD(PowerUp)(IProgress **aProgress);
@@ -609,6 +611,7 @@ private:
     const ComObjPtr<Display> mDisplay;
     const ComObjPtr<MachineDebugger> mDebugger;
     const ComObjPtr<RemoteDisplayInfo> mRemoteDisplayInfo;
+    const ComObjPtr<EventSource> mEventSource;
 
     USBDeviceList mUSBDevices;
     RemoteUSBDeviceList mRemoteUSBDevices;
@@ -736,7 +739,7 @@ private:
 #ifdef RT_OS_WINDOWS
     ComEventsHelper                     mComEvHelper;
 #endif
-    
+
     friend struct VMTask;
 };
 

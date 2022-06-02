@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 30381 2010-06-22 22:06:00Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 30510 2010-06-29 16:05:38Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4687,7 +4687,7 @@ void *VirtualBox::CallbackEvent::handler()
     }
 #endif
 
-#if 0
+#if 1
     // We disable generic events firing for now to not harm performance, but it is already functional
     {
         VBoxEventDesc evDesc;
