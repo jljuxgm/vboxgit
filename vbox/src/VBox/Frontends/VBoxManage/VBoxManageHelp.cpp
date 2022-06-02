@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 34634 2010-12-02 17:21:40Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 34663 2010-12-02 22:44:22Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -438,6 +438,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--medium none|emptydrive|\n"
                      "                                      <uuid>|<filename>|host:<drive>|iscsi]\n"
                      "                            [--mtype normal|writethrough|immutable|shareable]\n"
+                     "                            [--comment <text>]\n"
                      "                            [--passthrough on|off]\n"
                      "                            [--bandwidthgroup <name>]\n"
                      "                            [--forceunmount]\n"
