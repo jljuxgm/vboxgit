@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 31321 2010-08-02 16:49:53Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 35247 2010-12-20 14:19:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -149,6 +149,52 @@ bool UIMachineWindowScale::event(QEvent *pEvent)
     }
     return QIWithRetranslateUI2<QMainWindow>::event(pEvent);
 }
+
+#ifdef Q_WS_WIN
+bool UIMachineWindowScale::winEvent(MSG *pMessage, long *pResult)
+{
+    /* Try to keep aspect ratio during window resize if:
+     * 1. machine view exists and 2. event-type is WM_SIZING and 3. shift key is NOT pressed: */
+    if (machineView() && pMessage->message == WM_SIZING && !(QApplication::keyboardModifiers() & Qt::ShiftModifier))
+    {
+        if (double dAspectRatio = machineView()->aspectRatio())
+        {
+            RECT *pRect = reinterpret_cast<RECT*>(pMessage->lParam);
+            switch (pMessage->wParam)
+            {
+                case WMSZ_LEFT:
+                case WMSZ_RIGHT:
+                {
+                    pRect->bottom = pRect->top + (double)(pRect->right - pRect->left) / dAspectRatio;
+                    break;
+                }
+                case WMSZ_TOP:
+                case WMSZ_BOTTOM:
+                {
+                    pRect->right = pRect->left + (double)(pRect->bottom - pRect->top) * dAspectRatio;
+                    break;
+                }
+                case WMSZ_BOTTOMLEFT:
+                case WMSZ_BOTTOMRIGHT:
+                {
+                    pRect->bottom = pRect->top + (double)(pRect->right - pRect->left) / dAspectRatio;
+                    break;
+                }
+                case WMSZ_TOPLEFT:
+                case WMSZ_TOPRIGHT:
+                {
+                    pRect->top = pRect->bottom - (double)(pRect->right - pRect->left) / dAspectRatio;
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    }
+    /* Pass event to base-class: */
+    return QMainWindow::winEvent(pMessage, pResult);
+}
+#endif /* Q_WS_WIN */
 
 #ifdef Q_WS_X11
 bool UIMachineWindowScale::x11Event(XEvent *pEvent)

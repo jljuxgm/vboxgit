@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 33579 2010-10-28 17:39:48Z vboxsync $ */
+/* $Id: UIMachineView.cpp 35247 2010-12-20 14:19:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -138,6 +138,11 @@ UIMachineView* UIMachineView::create(  UIMachineWindow *pMachineWindow
 void UIMachineView::destroy(UIMachineView *pMachineView)
 {
     delete pMachineView;
+}
+
+double UIMachineView::aspectRatio() const
+{
+    return frameBuffer() ? (double)(frameBuffer()->width()) / frameBuffer()->height() : 0;
 }
 
 void UIMachineView::sltMachineStateChanged()
