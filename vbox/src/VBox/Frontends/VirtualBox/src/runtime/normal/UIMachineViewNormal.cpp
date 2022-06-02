@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 30637 2010-07-05 22:36:29Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 30709 2010-07-07 15:26:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -31,8 +31,8 @@
 #include "UIActionsPool.h"
 #include "UIMachineLogic.h"
 #include "UIMachineWindow.h"
-#include "UIFrameBuffer.h"
 #include "UIMachineViewNormal.h"
+#include "UIFrameBuffer.h"
 
 UIMachineViewNormal::UIMachineViewNormal(  UIMachineWindow *pMachineWindow
                                          , ulong uScreenId
