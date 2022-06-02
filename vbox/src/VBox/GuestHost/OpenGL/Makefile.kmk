@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33116 2010-10-13 21:06:35Z vboxsync $
+# $Id: Makefile.kmk 33561 2010-10-28 14:28:37Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -76,7 +76,6 @@ VBoxOGLcrutil_SOURCES       = \
 	util/url.c \
 	util/warp.c \
 	util/vboxhgcm.c \
-	$(if $(VBOX_WITH_CRHGSMI),util/vboxhgsmi.c,) \
 	$(VBOX_PATH_CROGL_GENFILES)/debug_opcodes.c
 VBoxOGLcrutil_SOURCES.win.x86 = \
 	util/util.def \
