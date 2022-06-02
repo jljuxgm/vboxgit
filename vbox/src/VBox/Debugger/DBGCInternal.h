@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 35637 2011-01-19 17:42:59Z vboxsync $ */
+/* $Id: DBGCInternal.h 35673 2011-01-24 10:15:44Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -390,16 +390,6 @@ int     dbgcBpUpdate(PDBGC pDbgc, RTUINT iBp, const char *pszCmd);
 int     dbgcBpDelete(PDBGC pDbgc, RTUINT iBp);
 PDBGCBP dbgcBpGet(PDBGC pDbgc, RTUINT iBp);
 int     dbgcBpExec(PDBGC pDbgc, RTUINT iBp);
-
-void    dbgcVarInit(PDBGCVAR pVar);
-void    dbgcVarSetGCFlat(PDBGCVAR pVar, RTGCPTR GCFlat);
-void    dbgcVarSetGCFlatByteRange(PDBGCVAR pVar, RTGCPTR GCFlat, uint64_t cb);
-void    dbgcVarSetU64(PDBGCVAR pVar, uint64_t u64);
-void    dbgcVarSetVar(PDBGCVAR pVar, PCDBGCVAR pVar2);
-void    dbgcVarSetDbgfAddr(PDBGCVAR pVar, PCDBGFADDRESS pAddress);
-void    dbgcVarSetNoRange(PDBGCVAR pVar);
-void    dbgcVarSetByteRange(PDBGCVAR pVar, uint64_t cb);
-int     dbgcVarToDbgfAddr(PDBGC pDbgc, PCDBGCVAR pVar, PDBGFADDRESS pAddress);
 
 void    dbgcEvalInit(void);
 int     dbgcEvalSub(PDBGC pDbgc, char *pszExpr, size_t cchExpr, DBGCVARCAT enmCategory, PDBGCVAR pResult);
