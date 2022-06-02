@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 33827 2010-11-08 10:46:45Z vboxsync $ */
+/* $Id: Settings.cpp 33828 2010-11-08 10:54:18Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2035,7 +2035,7 @@ void MachineConfigFile::readAttachedNetworkMode(const xml::ElementNode &elmMode,
             NATRule rule;
             uint32_t port = 0;
             (*pf)->getAttributeValue("name", rule.strName);
-            (*pf)->getAttributeValue("proto", rule.proto);
+            (*pf)->getAttributeValue("proto", (uint32_t&)rule.proto);
             (*pf)->getAttributeValue("hostip", rule.strHostIP);
             (*pf)->getAttributeValue("hostport", port);
             rule.u16HostPort = port;
