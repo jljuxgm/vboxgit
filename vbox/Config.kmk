@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34801 2010-12-07 16:25:14Z vboxsync $
+# $Id: Config.kmk 34901 2010-12-09 15:34:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -166,6 +166,7 @@ ifeq ($(int-mod $(VBOX_VERSION_BUILD),2),0)
 # export VBOX_ADDITIONS_SH_MODE = release
 # export VBOX_DOCUMENTATION_SH_MODE = release
 # export VBOX_EFI_SH_MODE = release
+# export VBOX_EXTPACKS_SH_MODE = release
 endif
 
 # Some info on the vendor
@@ -4605,7 +4606,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34801 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34901 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
