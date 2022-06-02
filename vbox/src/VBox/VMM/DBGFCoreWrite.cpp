@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 34136 2010-11-17 11:15:38Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 34194 2010-11-19 13:07:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -453,7 +453,7 @@ static int dbgfR3CoreWriteWorker(PVM pVM, PDBGFCOREDATA pDbgfData, RTFILE hFile)
         for (uint64_t iPage = 0; iPage < cPages; iPage++)
         {
             uint8_t abPage[PAGE_SIZE];
-            rc = PGMPhysRead(pVM, GCPhysStart, abPage, sizeof(abPage));
+            rc = PGMPhysRead(pVM, GCPhysStart + (iPage << PAGE_SHIFT), abPage, sizeof(abPage));
             if (RT_FAILURE(rc))
             {
                 /*
