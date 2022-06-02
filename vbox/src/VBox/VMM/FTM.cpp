@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32085 2010-08-30 11:41:20Z vboxsync $ */
+/* $Id: FTM.cpp 32089 2010-08-30 12:33:09Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -689,9 +689,8 @@ static DECLCALLBACK(int) ftmR3MasterThread(RTTHREAD Thread, void *pvUser)
                     }
                 }
             }
-            rc = RTTcpClientClose(pVM->ftm.s.hSocket);
-            AssertRC(rc);
-            pVM->ftm.s.hSocket = NIL_RTSOCKET;
+            /* Failed, so don't bother anymore. */
+            return VINF_SUCCESS;
         }
         rc = RTSemEventWait(pVM->ftm.s.master.hShutdownEvent, 1000 /* 1 second */);
         if (rc != VERR_TIMEOUT)
