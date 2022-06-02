@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32656 2010-09-21 08:47:18Z vboxsync $
+# $Id: Makefile.kmk 32946 2010-10-06 14:21:29Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -544,6 +544,8 @@ ifdef IPRT_WITH_FUTEX_BASED_SEMS
  	r3/linux/semevent-linux.cpp \
  	r3/linux/semeventmulti-linux.cpp \
  	r3/linux/semmutex-linux.cpp
+# 	generic/RTSemEventMultiWait-2-ex-generic.cpp \
+# 	generic/RTSemEventMultiWaitNoResume-2-ex-generic.cpp
 else
  RuntimeR3_SOURCES.linux.x86 += \
  	r3/posix/semevent-posix.cpp \
@@ -552,6 +554,8 @@ else
  RuntimeR3_SOURCES.linux.amd64 += \
  	r3/linux/semevent-linux.cpp \
  	r3/linux/semeventmulti-linux.cpp
+# 	generic/RTSemEventMultiWait-2-ex-generic.cpp \
+# 	generic/RTSemEventMultiWaitNoResume-2-ex-generic.cpp
  ifdef RT_NEW_LINUX_MUTEX_CODE
   RuntimeR3_SOURCES.linux.amd64 += \
  	r3/linux/semmutex-linux.cpp
