@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInSolaris.cpp 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: DBGPlugInSolaris.cpp 33467 2010-10-26 12:44:43Z vboxsync $ */
 /** @file
  * DBGPlugInSolaris - Debugger and Guest OS Digger Plugin For Solaris.
  */
@@ -1056,12 +1056,18 @@ static DECLCALLBACK(bool)  dbgDiggerSolarisProbe(PVM pVM, void *pvData)
     }
 
     /*
-     * Look for the copy right string too, just to be sure.
+     * Look for the copyright string too, just to be sure.
      */
     static const uint8_t s_abSMI[] = "Sun Microsystems, Inc.";
+    static const uint8_t s_abORCL[] = "Oracle and/or its affiliates.";
     rc = DBGFR3MemScan(pVM, 0, &Addr, cbRange, 1, s_abSMI, sizeof(s_abSMI) - 1, &HitAddr);
     if (RT_FAILURE(rc))
-        return false;
+    {
+        /* Try the alternate copyright string. */
+        rc = DBGFR3MemScan(pVM, 0, &Addr, cbRange, 1, s_abORCL, sizeof(s_abORCL) - 1, &HitAddr);
+        if (RT_FAILURE(rc))
+            return false;
+    }
 
     /*
      * Remember the unix text and data addresses and bitness.
