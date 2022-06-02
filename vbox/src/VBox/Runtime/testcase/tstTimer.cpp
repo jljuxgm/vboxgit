@@ -1,4 +1,4 @@
-/* $Id: tstTimer.cpp 32330 2010-09-08 19:26:57Z vboxsync $ */
+/* $Id: tstTimer.cpp 32332 2010-09-09 07:38:51Z vboxsync $ */
 /** @file
  * IPRT Testcase - Timers.
  */
@@ -229,9 +229,14 @@ int main()
 
         for (int j = 0; j < (int)RT_ELEMENTS(cFrequency); j++)
         {
-            unsigned len = cFrequency[j] * 70 / gcTicks;
-            unsigned deviation = j - RT_ELEMENTS(cFrequency) / 2;
-            RTPrintf("%+4d%c %6u ", deviation, deviation == 0 ? ' ' : '%', cFrequency[j]);
+            uint32_t len = cFrequency[j] * 70 / gcTicks;
+            uint32_t deviation = j - RT_ELEMENTS(cFrequency) / 2;
+            uint64_t u64FreqPercent = (uint64_t)cFrequency[j] * 10000 / gcTicks;
+            uint64_t u64FreqPercentFrac = u64FreqPercent % 100;
+            u64FreqPercent = u64FreqPercent / 100;
+            RTPrintf("%+4d%c %6u %3llu.%02llu%% ",
+                    deviation, deviation == 0 ? ' ' : '%', cFrequency[j],
+                    u64FreqPercent, u64FreqPercentFrac);
             for (unsigned k = 0; k < len; k++)
                 RTPrintf("*");
             RTPrintf("\n");
