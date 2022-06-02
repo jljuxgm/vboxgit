@@ -1,4 +1,4 @@
-/* $Id: PCIInternal.h 32820 2010-09-29 16:25:16Z vboxsync $ */
+/* $Id: PCIInternal.h 32861 2010-10-01 11:31:03Z vboxsync $ */
 /** @file
  * DevPCI - PCI Internal header - Only for hiding bits of PCIDEVICE.
  */
@@ -112,7 +112,7 @@ typedef struct PCIDEVICEINT
     R3PTRTYPE(PFNPCICONFIGWRITE)    pfnConfigWrite;
 
     /* Flags of this PCI device, see PCIDEV_FLAG_ constants */
-    int32_t                         uFlags;
+    uint32_t                        uFlags;
     /** Current state of the IRQ pin of the device. */
     int32_t                         uIrqPinState;
 
