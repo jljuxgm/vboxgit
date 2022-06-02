@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePropCache.cpp 31933 2010-08-24 15:59:54Z vboxsync $ */
+/* $Id: VBoxServicePropCache.cpp 31934 2010-08-24 16:11:16Z vboxsync $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
@@ -368,6 +368,12 @@ void VBoxServicePropCacheDestroy(PVBOXSERVICEVEPROPCACHE pCache)
         PVBOXSERVICEVEPROPCACHEENTRY pNode = RTListNodeGetFirst(&pCache->NodeHead, VBOXSERVICEVEPROPCACHEENTRY, NodeSucc);
         while (pNode)
         {
+            PVBOXSERVICEVEPROPCACHEENTRY pNext = RTListNodeIsLast(&pCache->NodeHead, &pNode->NodeSucc)
+                                                                  ? NULL :
+                                                                    RTListNodeGetNext(&pNode->NodeSucc,
+                                                                                      VBOXSERVICEVEPROPCACHEENTRY, NodeSucc);
+            RTListNodeRemove(&pNode->NodeSucc);
+
             /*
              * When destroying the cache and we have a temporary value, remove the
              * (eventually) set TRANSIENT flag from it so that it doesn't get deleted
@@ -382,12 +388,8 @@ void VBoxServicePropCacheDestroy(PVBOXSERVICEVEPROPCACHE pCache)
             RTStrFree(pNode->pszValueReset);
             pNode->fFlags = 0;
 
-            PVBOXSERVICEVEPROPCACHEENTRY pNext = RTListNodeGetNext(&pNode->NodeSucc, VBOXSERVICEVEPROPCACHEENTRY, NodeSucc);
-            RTListNodeRemove(&pNode->NodeSucc);
             RTMemFree(pNode);
 
-            if (pNext && RTListNodeIsLast(&pCache->NodeHead, &pNext->NodeSucc))
-                break;
             pNode = pNext;
         }
         RTCritSectLeave(&pCache->CritSect);
