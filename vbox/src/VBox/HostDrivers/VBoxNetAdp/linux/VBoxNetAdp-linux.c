@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 31697 2010-08-16 14:56:22Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 31704 2010-08-16 15:20:07Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -62,11 +62,10 @@ static int VBoxNetAdpLinuxOpen(struct inode *pInode, struct file *pFilp);
 static int VBoxNetAdpLinuxClose(struct inode *pInode, struct file *pFilp);
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 36)
 static int VBoxNetAdpLinuxIOCtl(struct inode *pInode, struct file *pFilp,
-                                unsigned int uCmd, unsigned long ulArg);
 #else /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 36) */
-static long VBoxNetAdpLinuxIOCtlUnlocked(struct file *pFilp, unsigned int uCmd,
-                                         unsigned long ulArg);
+static long VBoxNetAdpLinuxIOCtlUnlocked(struct file *pFilp,
 #endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 36) */
+                                unsigned int uCmd, unsigned long ulArg);
 
 /*******************************************************************************
 *   Global Variables                                                           *
@@ -267,11 +266,10 @@ static int VBoxNetAdpLinuxClose(struct inode *pInode, struct file *pFilp)
  */
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 36)
 static int VBoxNetAdpLinuxIOCtl(struct inode *pInode, struct file *pFilp,
-                                unsigned int uCmd, unsigned long ulArg)
 #else /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 36) */
-static long VBoxNetAdpLinuxIOCtlUnlocked(struct file *pFilp, unsigned int uCmd,
-                                         unsigned long ulArg)
+static long VBoxNetAdpLinuxIOCtlUnlocked(struct file *pFilp,
 #endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 36) */
+                                unsigned int uCmd, unsigned long ulArg)
 {
     VBOXNETADPREQ Req;
     PVBOXNETADP pAdp;
