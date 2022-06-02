@@ -1,4 +1,4 @@
-# $Id: Makefile 33376 2010-10-24 12:55:23Z vboxsync $
+# $Id: Makefile 33378 2010-10-24 13:20:43Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -112,10 +112,10 @@ SRCS += \
 	RTLogWriteStdErr-stub-generic.c \
 	RTRandAdvCreateSystemFaster-generic.c \
 	RTRandAdvCreateSystemTruer-generic.c \
-    RTSemEventWait-2-ex-generic.c \
-    RTSemEventWaitNoResume-2-ex-generic.c \
-    RTSemEventMultiWait-2-ex-generic.c \
-    RTSemEventMultiWaitNoResume-2-ex-generic.c \
+	RTSemEventWait-2-ex-generic.c \
+	RTSemEventWaitNoResume-2-ex-generic.c \
+	RTSemEventMultiWait-2-ex-generic.c \
+	RTSemEventMultiWaitNoResume-2-ex-generic.c \
 	RTTimerCreate-generic.c \
 	timer-generic.c \
 	mppresent-generic.c
