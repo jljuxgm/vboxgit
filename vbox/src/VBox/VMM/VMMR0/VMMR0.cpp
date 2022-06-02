@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
+/* $Id: VMMR0.cpp 32418 2010-09-10 15:39:47Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -75,6 +75,13 @@ PFNRT g_VMMGCDeps[] =
     (PFNRT)RTOnce
 };
 
+
+#if defined(RT_OS_WINDOWS) && defined(RT_ARCH_AMD64)
+/* Increase the size of the image to work around the refusal of Win64 to
+ * load images in the 0x80000 range. 
+ */
+static uint64_t u64BloatImage[8192] = {0};
+#endif
 
 /**
  * Initialize the module.
