@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 33146 2010-10-15 10:34:58Z vboxsync $ */
+/* $Id: crservice.cpp 33171 2010-10-15 23:10:10Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -460,6 +460,7 @@ static DECLCALLBACK(void) svcCall (void *, VBOXHGCMCALLHANDLE callHandle, uint32
 static int vboxCrHgsmiCtl(PVBOXVDMACMD_CHROMIUM_CTL pCtl)
 {
     int rc;
+
     switch (pCtl->enmType)
     {
         case VBOXVDMACMD_CHROMIUM_CTL_TYPE_CRHGSMI_SETUP:
