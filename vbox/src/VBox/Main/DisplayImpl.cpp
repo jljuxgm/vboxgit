@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 35211 2010-12-16 23:13:09Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 35283 2010-12-21 20:31:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -41,7 +41,7 @@
 # include <VBox/VBoxVideo.h>
 #endif
 
-#ifdef VBOX_WITH_CROGL
+#if defined(VBOX_WITH_CROGL) || defined(VBOX_WITH_CRHGSMI)
 # include <VBox/HostServices/VBoxCrOpenGLSvc.h>
 #endif
 
