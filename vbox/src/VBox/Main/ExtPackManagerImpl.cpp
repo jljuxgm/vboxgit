@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 34938 2010-12-10 09:15:46Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 34948 2010-12-10 13:26:11Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1929,7 +1929,7 @@ STDMETHODIMP ExtPackManager::Uninstall(IN_BSTR a_bstrName, BOOL a_fForcedRemoval
                                                 "--base-dir", m->strBaseDir.c_str(),
                                                 "--name",     strName.c_str(),
                                                 pszForcedOpt, /* Last as it may be NULL. */
-                                                NULL);
+                                                (const char *)NULL);
                     if (SUCCEEDED(hrc))
                     {
                         hrc = refreshExtPack(strName.c_str(), false /*a_fUnsuableIsError*/, &pExtPack);
@@ -1983,7 +1983,7 @@ STDMETHODIMP ExtPackManager::Cleanup(void)
         AutoWriteLock autoLock(this COMMA_LOCKVAL_SRC_POS);
         hrc = runSetUidToRootHelper("cleanup",
                                     "--base-dir", m->strBaseDir.c_str(),
-                                    NULL);
+                                    (const char *)NULL);
     }
 
     return hrc;
@@ -2427,7 +2427,7 @@ HRESULT ExtPackManager::doInstall(ExtPackFile *a_pExtPackFile)
                                         "--cert-dir",   m->strCertificatDirPath.c_str(),
                                         "--name",       pStrName->c_str(),
                                         "--tarball",    pStrTarball->c_str(),
-                                        NULL);
+                                        (const char *)NULL);
             if (SUCCEEDED(hrc))
             {
                 hrc = refreshExtPack(pStrName->c_str(), true /*a_fUnsuableIsError*/, &pExtPack);
