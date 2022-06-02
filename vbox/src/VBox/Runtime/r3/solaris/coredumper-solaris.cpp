@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 32424 2010-09-10 16:52:01Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 32439 2010-09-13 09:19:39Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -2242,6 +2242,9 @@ RTDECL(int) RTCoreDumperTakeDump(const char *pszOutputFile, bool fLiveCore)
         sigaddset(&SigSet, SIGUSR2);
         pthread_sigmask(SIG_BLOCK, &SigSet, &OldSigSet);
         rc = rtCoreDumperTakeDump(&Context, pszOutputFile);
+        if (RT_FAILURE(rc))
+            CORELOGRELSYS(("RTCoreDumperTakeDump: rtCoreDumperTakeDump failed rc=%Rrc\n", rc));
+
         if (!fLiveCore)
         {
             signal(SIGSEGV, SIG_DFL);
