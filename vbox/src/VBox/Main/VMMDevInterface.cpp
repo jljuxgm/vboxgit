@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 31692 2010-08-16 13:12:42Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 31745 2010-08-18 09:44:22Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -299,7 +299,7 @@ DECLCALLBACK(void) vmmdevUpdateGuestCapabilities(PPDMIVMMDEVCONNECTOR pInterface
     /*
      * Report our current capabilites (and assume none is active yet).
      */
-    guest->setSupportedFeatures((ULONG64)newCapabilities, 0 /* Active capabilities, not used here. */);
+    guest->setSupportedFeatures(newCapabilities, 0 /* Active capabilities, not used here. */);
 
     /*
      * Tell the console interface about the event
