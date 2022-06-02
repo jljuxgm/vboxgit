@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 33556 2010-10-28 13:16:42Z vboxsync $ */
+/* $Id: Settings.cpp 33557 2010-10-28 13:27:45Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4370,7 +4370,7 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
         /* If the properties contain elements other than "TCP/Ports" and "TCP/Address",
          * then increase the version to VBox 4.0.
          */
-        int cOldProperties = 0;
+        unsigned cOldProperties = 0;
 
         StringsMap::const_iterator it = hardwareMachine.vrdeSettings.mapProperties.find("TCP/Ports");
         if (it != hardwareMachine.vrdeSettings.mapProperties.end())
