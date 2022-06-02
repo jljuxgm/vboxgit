@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 30409 2010-06-24 04:11:27Z vboxsync $ */
+/* $Id: UIMachineView.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -555,9 +555,6 @@ void UIMachineView::prepareCommon()
     Assert(ok);
     NOREF(ok);
 #endif
-
-    /* Register mouse-handler: */
-    machineLogic()->mouseHandler()->addMachineView(screenId(), this);
 }
 
 void UIMachineView::prepareFilters()
@@ -614,9 +611,6 @@ void UIMachineView::loadMachineViewSettings()
 
 void UIMachineView::cleanupCommon()
 {
-    /* Unregister mouse-handler: */
-    machineLogic()->mouseHandler()->delMachineView(screenId());
-
 #ifdef Q_WS_PM
     bool ok = VBoxHlpUninstallKbdHook(0, winId(), UM_PREACCEL_CHAR);
     Assert(ok);

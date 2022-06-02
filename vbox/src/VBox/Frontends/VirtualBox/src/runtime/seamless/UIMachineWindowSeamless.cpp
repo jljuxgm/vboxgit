@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 30347 2010-06-21 17:44:06Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -74,6 +74,9 @@ UIMachineWindowSeamless::UIMachineWindowSeamless(UIMachineLogic *pMachineLogic, 
     /* Prepare seamless machine view: */
     prepareMachineView();
 
+    /* Prepare handlers: */
+    prepareHandlers();
+
     /* Prepare mini tool-bar: */
 #ifndef Q_WS_MAC
     prepareMiniToolBar();
@@ -98,6 +101,9 @@ UIMachineWindowSeamless::~UIMachineWindowSeamless()
 {
     /* Save window settings: */
     saveWindowSettings();
+
+    /* Prepare handlers: */
+    cleanupHandlers();
 
     /* Cleanup machine view: */
     cleanupMachineView();

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 30408 2010-06-24 03:41:27Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -79,6 +79,9 @@ UIMachineWindowNormal::UIMachineWindowNormal(UIMachineLogic *pMachineLogic, ulon
     /* Prepare normal machine view: */
     prepareMachineView();
 
+    /* Prepare handlers: */
+    prepareHandlers();
+
     /* Load normal window settings: */
     loadWindowSettings();
 
@@ -93,6 +96,9 @@ UIMachineWindowNormal::~UIMachineWindowNormal()
 {
     /* Save normal window settings: */
     saveWindowSettings();
+
+    /* Prepare handlers: */
+    cleanupHandlers();
 
     /* Cleanup normal machine view: */
     cleanupMachineView();

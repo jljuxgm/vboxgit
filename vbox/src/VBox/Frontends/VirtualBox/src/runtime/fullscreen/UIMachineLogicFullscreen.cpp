@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 30408 2010-06-24 03:41:27Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -54,6 +54,9 @@ UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
 
     /* Cleanup machine window(s): */
     cleanupMachineWindows();
+
+    /* Cleanup handlers: */
+    cleanupHandlers();
 
     /* Cleanup action related stuff */
     cleanupActionGroups();
@@ -132,6 +135,9 @@ void UIMachineLogicFullscreen::initialize()
     /* Prepare action connections: */
     prepareActionConnections();
 
+    /* Prepare handlers: */
+    prepareHandlers();
+
     /* Prepare machine window: */
     prepareMachineWindows();
 
@@ -194,10 +200,6 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     /* Update the multi screen layout: */
     m_pScreenLayout->update();
 
-    /* Create mouse-handler: */
-    UIMouseHandler *pMouseHandler = UIMouseHandler::create(this, visualStateType());
-    setMouseHandler(pMouseHandler);
-
     /* Create machine window(s): */
     for (int cScreenId = 0; cScreenId < m_pScreenLayout->guestScreenCount(); ++cScreenId)
         addMachineWindow(UIMachineWindow::create(this, visualStateType(), cScreenId));
@@ -229,9 +231,6 @@ void UIMachineLogicFullscreen::cleanupMachineWindows()
     /* Cleanup machine window(s): */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         UIMachineWindow::destroy(pMachineWindow);
-
-    /* Cleanup mouse-handler: */
-    UIMouseHandler::destroy(mouseHandler());
 
 #ifdef Q_WS_MAC
     setPresentationModeEnabled(false);

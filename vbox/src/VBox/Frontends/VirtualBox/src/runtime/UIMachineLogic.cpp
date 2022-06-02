@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 30408 2010-06-24 03:41:27Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -553,6 +553,12 @@ void UIMachineLogic::prepareActionGroups()
     m_pRunningOrPausedActions->addAction(actionsPool()->action(UIActionIndex_Simple_InstallGuestTools));
 }
 
+void UIMachineLogic::prepareHandlers()
+{
+    /* Create mouse-handler: */
+    setMouseHandler(UIMouseHandler::create(this, visualStateType()));
+}
+
 #ifdef Q_WS_MAC
 void UIMachineLogic::prepareDock()
 {
@@ -646,6 +652,12 @@ void UIMachineLogic::cleanupDock()
     }
 }
 #endif /* Q_WS_MAC */
+
+void UIMachineLogic::cleanupHandlers()
+{
+    /* Cleanup mouse-handler: */
+    UIMouseHandler::destroy(mouseHandler());
+}
 
 void UIMachineLogic::sltMachineStateChanged()
 {

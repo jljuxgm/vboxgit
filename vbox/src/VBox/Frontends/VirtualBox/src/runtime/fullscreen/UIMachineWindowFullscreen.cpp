@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 30347 2010-06-21 17:44:06Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -63,6 +63,9 @@ UIMachineWindowFullscreen::UIMachineWindowFullscreen(UIMachineLogic *pMachineLog
     /* Prepare fullscreen machine view: */
     prepareMachineView();
 
+    /* Prepare handlers: */
+    prepareHandlers();
+
     /* Prepare mini tool-bar: */
     prepareMiniToolBar();
 
@@ -95,6 +98,9 @@ UIMachineWindowFullscreen::~UIMachineWindowFullscreen()
 {
     /* Save window settings: */
     saveWindowSettings();
+
+    /* Prepare handlers: */
+    cleanupHandlers();
 
     /* Cleanup machine view: */
     cleanupMachineView();

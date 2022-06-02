@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 30408 2010-06-24 03:41:27Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -52,6 +52,9 @@ UIMachineLogicSeamless::~UIMachineLogicSeamless()
 
     /* Cleanup machine window(s): */
     cleanupMachineWindows();
+
+    /* Cleanup handlers: */
+    cleanupHandlers();
 
     /* Cleanup actions groups: */
     cleanupActionGroups();
@@ -124,6 +127,9 @@ void UIMachineLogicSeamless::initialize()
     /* Prepare action connections: */
     prepareActionConnections();
 
+    /* Prepare handlers: */
+    prepareHandlers();
+
     /* Prepare normal machine window: */
     prepareMachineWindows();
 
@@ -184,10 +190,6 @@ void UIMachineLogicSeamless::prepareMachineWindows()
     /* Update the multi screen layout: */
     m_pScreenLayout->update();
 
-    /* Create machine mouse-handler: */
-    UIMouseHandler *pMouseHandler = UIMouseHandler::create(this, visualStateType());
-    setMouseHandler(pMouseHandler);
-
     /* Create machine window(s): */
     for (int cScreenId = 0; cScreenId < m_pScreenLayout->guestScreenCount(); ++cScreenId)
         addMachineWindow(UIMachineWindow::create(this, visualStateType(), cScreenId));
@@ -210,9 +212,6 @@ void UIMachineLogicSeamless::cleanupMachineWindows()
     /* Cleanup machine window(s): */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         UIMachineWindow::destroy(pMachineWindow);
-
-    /* Cleanup mouse-handler: */
-    UIMouseHandler::destroy(mouseHandler());
 }
 
 void UIMachineLogicSeamless::cleanupActionGroups()
