@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 33458 2010-10-26 11:18:04Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 33556 2010-10-28 13:16:42Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -883,6 +883,29 @@ int handleVMStatistics(HandlerArg *a)
             a->session->UnlockMachine();
         }
     }
+
+    return SUCCEEDED(rc) ? 0 : 1;
+}
+
+int handleVRDE(HandlerArg *a)
+{
+    HRESULT rc = S_OK;
+
+    if (a->argc != 2)
+        return errorSyntax(USAGE_VRDE, "Incorrect number of parameters");
+
+    if (!strcmp(a->argv[0], "register"))
+    {
+        Bstr name = a->argv[1];
+        CHECK_ERROR(a->virtualBox, VRDERegisterLibrary(name.raw()));
+    }
+    else if (!strcmp(a->argv[0], "unregister"))
+    {
+        Bstr name = a->argv[1];
+        CHECK_ERROR(a->virtualBox, VRDEUnregisterLibrary(name.raw()));
+    }
+    else
+        return errorSyntax(USAGE_VRDE, "Invalid parameter");
 
     return SUCCEEDED(rc) ? 0 : 1;
 }

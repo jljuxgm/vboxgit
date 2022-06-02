@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33458 2010-10-26 11:18:04Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33556 2010-10-28 13:16:42Z vboxsync $ */
 
 /** @file
  *
@@ -160,6 +160,7 @@ public:
     STDMETHOD(VRDERegisterLibrary)(IN_BSTR aName);
     STDMETHOD(VRDEUnregisterLibrary)(IN_BSTR aName);
     STDMETHOD(VRDEListLibraries)(ComSafeArrayOut(BSTR, aNames));
+    STDMETHOD(VRDEIsLibraryRegistered)(IN_BSTR aName, BOOL *aRegistered);
     /* public methods only for internal purposes */
 
     /**
