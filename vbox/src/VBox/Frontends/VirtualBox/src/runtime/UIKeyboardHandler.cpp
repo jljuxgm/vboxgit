@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 31865 2010-08-23 14:46:52Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 32196 2010-09-02 13:19:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -476,7 +476,14 @@ bool UIKeyboardHandler::x11EventFilter(XEvent *pEvent, ulong uScreenId)
                     flags |= KeyPrint;
                     break;
                 case XK_Pause:
-                    flags |= KeyPause;
+                    if (pEvent->xkey.state & ControlMask) /* Break */
+                    {
+                        ks = XK_Break;
+                        flags |= KeyExtended;
+                        scan = 0x46;
+                    }
+                    else
+                        flags |= KeyPause;
                     break;
             }
 
