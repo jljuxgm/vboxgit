@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33569 2010-10-28 16:08:35Z vboxsync $
+# $Id: Makefile.kmk 33576 2010-10-28 17:18:17Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -88,6 +88,7 @@ ifdef VBOX_WITH_TESTCASES
 
  vbox-img_SOURCES = \
 	vbox-img.cpp
+ vbox-img_DEFS = IN_VBOXDDU IN_VBOXDDU_STATIC IN_RT_R3
 endif
 
 include	$(KBUILD_PATH)/subfooter.kmk
