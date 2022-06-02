@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 30256 2010-06-16 15:14:10Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 30661 2010-07-06 12:14:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -166,7 +166,7 @@ static DECLCALLBACK(void) pgmR3CheckSharedModulesHelper(PVM pVM, VMCPUID idCpu)
 {
     /* We must stall other VCPUs as we'd otherwise have to send IPI flush commands for every single change we make. */
     int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ONE_BY_ONE, pgmR3SharedModuleRegRendezvous, &idCpu);
-    AssertRC(rc);
+    Assert(rc == VINF_SUCCESS || rc == VERR_PGM_SHARED_MODULE_FIRST_CHECK);
 }
 #endif
 
