@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 34192 2010-11-19 12:27:13Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 34275 2010-11-23 11:08:52Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -347,6 +347,34 @@ void darwinCreateContextMenuEvent(void *pvUser, int x, int y)
     QPoint global(x, y);
     QPoint local = pWin->mapFromGlobal(global);
     qApp->postEvent(pWin, new QContextMenuEvent(QContextMenuEvent::Mouse, local, global));
+}
+
+QString darwinResolveAlias(const QString &strFile)
+{
+    OSErr err = noErr;
+    FSRef fileRef;
+    QString strTarget;
+    do
+    {
+        Boolean fDir;
+        if ((err = FSPathMakeRef((const UInt8*)strFile.toUtf8().constData(), &fileRef, &fDir)) != noErr)
+            break;
+        Boolean fAlias = FALSE;
+        if ((err = FSIsAliasFile(&fileRef, &fAlias, &fDir)) != noErr)
+            break;
+        if (fAlias == TRUE)
+        {
+            if ((err = FSResolveAliasFile(&fileRef, TRUE, &fAlias, &fDir)) != noErr)
+                break;
+            char pszPath[1024];
+            if ((err = FSRefMakePath(&fileRef, (UInt8*)pszPath, 1024)) != noErr)
+                break;
+            strTarget = QString::fromUtf8(pszPath);
+        }else
+            strTarget = strFile;
+    }while(0);
+
+    return strTarget;
 }
 
 /********************************************************************************

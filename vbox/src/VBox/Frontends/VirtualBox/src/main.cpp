@@ -1,4 +1,4 @@
-/* $Id: main.cpp 33969 2010-11-11 10:43:59Z vboxsync $ */
+/* $Id: main.cpp 34275 2010-11-23 11:08:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -471,6 +471,10 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
 
             if (!vboxGlobal().isValid())
                 break;
+
+
+            if (vboxGlobal().processArgs())
+                return 0;
 
 #ifndef VBOX_OSE
 #ifdef Q_WS_X11
