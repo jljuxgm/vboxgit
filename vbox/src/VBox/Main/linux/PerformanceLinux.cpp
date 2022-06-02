@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 33977 2010-11-11 11:42:07Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 33992 2010-11-11 13:57:03Z vboxsync $ */
 
 /** @file
  *
@@ -193,7 +193,7 @@ int CollectorLinux::getRawProcessStats(RTPROCESS process, uint64_t *cpuUser, uin
 
     if (f)
     {
-        if (fscanf(f, "%d %80s %c %d %d %d %d %d %u %lu %lu %lu %lu %u %u "
+        if (fscanf(f, "%d %79s %c %d %d %d %d %d %u %lu %lu %lu %lu %u %u "
                       "%ld %ld %ld %ld %ld %ld %llu %lu %u",
                    &pid2, buf, &c, &iTmp, &iTmp, &iTmp, &iTmp, &iTmp, &uTmp,
                    &ulTmp, &ulTmp, &ulTmp, &ulTmp, &u32user, &u32kernel,
