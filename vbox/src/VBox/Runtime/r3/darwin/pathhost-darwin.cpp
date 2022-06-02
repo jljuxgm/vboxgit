@@ -1,4 +1,4 @@
-/* $Id: pathhost-darwin.cpp 28919 2010-04-29 18:34:08Z vboxsync $ */
+/* $Id: pathhost-darwin.cpp 33426 2010-10-25 14:32:38Z vboxsync $ */
 /** @file
  * IPRT - Path Convertions, Darwin.
  *
@@ -88,6 +88,19 @@ int rtPathFromNativeCopy(char *pszPath, size_t cbPath, const char *pszNativePath
     int rc = RTStrValidateEncodingEx(pszNativePath, RTSTR_MAX, 0 /*fFlags*/);
     if (RT_SUCCESS(rc))
         rc = RTStrCopyEx(pszPath, cbPath, pszNativePath, RTSTR_MAX);
+    NOREF(pszBasePath); /* We don't query the FS for codeset preferences. */
+    return rc;
+}
+
+
+int rtPathFromNativeDup(char **ppszPath, const char *pszNativePath, const char *pszBasePath)
+{
+    /** @todo We must compose the codepoints in the string here.  We get file names
+     *        in normalization form D so we'll end up with normalization form C
+     *        whatever approach we take. */
+    int rc = RTStrValidateEncodingEx(pszNativePath, RTSTR_MAX, 0 /*fFlags*/);
+    if (RT_SUCCESS(rc))
+        rc = RTStrDupEx(ppszPath, pszNativePath);
     NOREF(pszBasePath); /* We don't query the FS for codeset preferences. */
     return rc;
 }

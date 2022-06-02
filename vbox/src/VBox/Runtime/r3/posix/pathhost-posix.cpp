@@ -1,4 +1,4 @@
-/* $Id: pathhost-posix.cpp 30303 2010-06-18 10:02:50Z vboxsync $ */
+/* $Id: pathhost-posix.cpp 33426 2010-10-25 14:32:38Z vboxsync $ */
 /** @file
  * IPRT - Path Convertions, POSIX.
  */
@@ -256,6 +256,24 @@ int rtPathFromNativeCopy(char *pszPath, size_t cbPath, const char *pszNativePath
                               2, g_enmFsToUtf8Idx);
         else
             rc = VERR_BUFFER_OVERFLOW;
+    }
+
+    NOREF(pszBasePath); /* We don't query the FS for codeset preferences. */
+    return rc;
+}
+
+
+int rtPathFromNativeDup(char **ppszPath, const char *pszNativePath, const char *pszBasePath)
+{
+    int rc = RTOnce(&g_OnceInitPathConv, rtPathConvInitOnce, NULL, NULL);
+    if (RT_SUCCESS(rc))
+    {
+        if (g_fPassthruUtf8 || !*pszNativePath)
+            rc = RTStrDupEx(ppszPath, pszNativePath);
+        else
+            rc = rtStrConvert(pszNativePath, strlen(pszNativePath), g_szFsCodeset,
+                              ppszPath, 0, "UTF-8",
+                              2, g_enmFsToUtf8Idx);
     }
 
     NOREF(pszBasePath); /* We don't query the FS for codeset preferences. */
