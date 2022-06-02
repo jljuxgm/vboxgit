@@ -1,4 +1,4 @@
-/* $Id: tstRTCoreDump.h 31795 2010-08-19 14:37:28Z vboxsync $ */
+/* $Id: tstRTCoreDump.h 31796 2010-08-19 16:18:42Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core dump, header.
  */
@@ -39,6 +39,10 @@
 # include <sys/old_procfs.h>
 # undef _FILE_OFFSET_BITS
 # define _FILE_OFFSET_BITS 64
+#else
+# include <procfs.h>
+# include <sys/procfs.h>
+# include <sys/old_procfs.h>
 #endif
 # include <limits.h>
 # include <thread.h>
