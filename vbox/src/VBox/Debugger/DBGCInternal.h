@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 35628 2011-01-19 14:58:26Z vboxsync $ */
+/* $Id: DBGCInternal.h 35629 2011-01-19 15:15:21Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -151,7 +151,7 @@ typedef struct DBGC
 
     /** Pointer to the current VM. */
     PVM                 pVM;
-    /** The current virtual CPU id. */
+    /** The ID of current virtual CPU. */
     VMCPUID             idCpu;
     /** The current address space handle. */
     RTDBGAS             hDbgAs;
