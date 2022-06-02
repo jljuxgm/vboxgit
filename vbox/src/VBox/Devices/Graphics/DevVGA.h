@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 33644 2010-11-01 12:03:53Z vboxsync $ */
+/* $Id: DevVGA.h 33648 2010-11-01 13:06:58Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -295,6 +295,8 @@ typedef struct VGAState {
     /** Whether to render the guest VRAM to the framebuffer memory. False only for some LFB modes. */
     bool                        fRenderVRAM;
     bool                        Padding1[2];
+
+    uint32_t                    Padding2;
 
 #ifdef VBOX_WITH_HGSMI
     R3PTRTYPE(PHGSMIINSTANCE)   pHGSMI;
