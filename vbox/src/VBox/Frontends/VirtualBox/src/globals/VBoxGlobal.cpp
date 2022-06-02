@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 33925 2010-11-10 09:01:06Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 34193 2010-11-19 12:33:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3134,6 +3134,11 @@ void VBoxGlobal::loadLanguage (const QString &aLangId)
     }
     if (fResetToC)
         sLoadedLangId = "C";
+#ifdef Q_WS_MAC
+    /* Qt doesn't translate the items in the Application menu initially.
+     * Manually trigger an update. */
+    ::darwinRetranslateAppMenu();
+#endif /* Q_WS_MAC */
 }
 
 QString VBoxGlobal::helpFile() const
