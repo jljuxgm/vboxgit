@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 34135 2010-11-17 10:25:25Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 34136 2010-11-17 11:15:38Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -500,7 +500,7 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3CoreWrite(PVM pVM, PVMCPU pVCpu, void *p
      * Create the core file.
      */
     RTFILE hFile;
-    int rc = RTFileOpen(&hFile, pDbgfData->pszDumpPath, RTFILE_O_CREATE_REPLACE | RTFILE_O_READWRITE);
+    int rc = RTFileOpen(&hFile, pDbgfData->pszDumpPath, RTFILE_O_WRITE | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_WRITE);
     if (RT_SUCCESS(rc))
     {
         rc = dbgfR3CoreWriteWorker(pVM, pDbgfData, hFile);
