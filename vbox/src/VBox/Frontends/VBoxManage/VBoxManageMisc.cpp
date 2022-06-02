@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 33766 2010-11-04 14:05:28Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 33775 2010-11-04 15:02:40Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -928,7 +928,12 @@ int handleExtPack(HandlerArg *a)
         if (a->argc > 2)
             return errorSyntax(USAGE_EXTPACK, "Too many parameters given to \"extpack install\"");
 
-        Bstr bstrTarball(a->argv[1]);
+        char szPath[RTPATH_MAX];
+        int vrc = RTPathAbs(a->argv[1], szPath, sizeof(szPath));
+        if (RT_FAILURE(vrc))
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTPathAbs(%s,,) failed with rc=%Rrc", a->argv[1], vrc);
+
+        Bstr bstrTarball(szPath);
         Bstr bstrName;
         CHECK_ERROR2_RET(ptrExtPackMgr, Install(bstrTarball.raw(), bstrName.asOutParam()), RTEXITCODE_FAILURE);
         RTPrintf("Successfully installed \"%lS\".\n", bstrName.raw());
