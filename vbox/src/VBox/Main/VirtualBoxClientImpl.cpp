@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 35135 2010-12-15 13:41:41Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 35172 2010-12-16 11:54:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -237,7 +237,7 @@ DECLCALLBACK(int) VirtualBoxClient::SVCWatcherThread(RTTHREAD ThreadSelf,
                          * usable as VBoxSVC terminated in the mean time. */
                         pThis->mData.m_pVirtualBox.setNull();
                     }
-                    fireVBoxSVCUnavailableEvent(pThis->mData.m_pEventSource);
+                    fireVBoxSVCAvailabilityChangedEvent(pThis->mData.m_pEventSource, FALSE);
                 }
             }
             else
@@ -259,7 +259,7 @@ DECLCALLBACK(int) VirtualBoxClient::SVCWatcherThread(RTTHREAD ThreadSelf,
                          * VBoxSVC again from now on. */
                         pThis->mData.m_pVirtualBox = pVBox;
                     }
-                    fireVBoxSVCAvailableEvent(pThis->mData.m_pEventSource);
+                    fireVBoxSVCAvailabilityChangedEvent(pThis->mData.m_pEventSource, TRUE);
                     cMillies = VBOXCLIENT_DEFAULT_INTERVAL;
                 }
             }
