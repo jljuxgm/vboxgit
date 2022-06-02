@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 34933 2010-12-10 06:50:03Z vboxsync $ */
+/* $Id: DevCodec.h 35487 2011-01-11 13:45:20Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -489,7 +489,7 @@ typedef struct CODECState
 
 } CODECState;
 
-int codecConstruct(CODECState *pCodecState, ENMCODEC enmCodec);
+int codecConstruct(PPDMDEVINS pDevIns, CODECState *pCodecState, ENMCODEC enmCodec);
 int codecDestruct(CODECState *pCodecState);
 int codecSaveState(CODECState *pCodecState, PSSMHANDLE pSSMHandle);
 int codecLoadState(CODECState *pCodecState, PSSMHANDLE pSSMHandle);

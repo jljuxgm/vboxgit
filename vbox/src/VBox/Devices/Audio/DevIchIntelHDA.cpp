@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 35487 2011-01-11 13:45:20Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -2158,7 +2158,7 @@ static DECLCALLBACK(int) hdaConstruct (PPDMDEVINS pDevIns, int iInstance,
 
 
     pThis->hda.Codec.pHDAState = (void *)&pThis->hda;
-    rc = codecConstruct(&pThis->hda.Codec, /* ALC885_CODEC */ STAC9220_CODEC);
+    rc = codecConstruct(pDevIns, &pThis->hda.Codec, /* ALC885_CODEC */ STAC9220_CODEC);
     if (RT_FAILURE(rc))
         AssertRCReturn(rc, rc);
 
