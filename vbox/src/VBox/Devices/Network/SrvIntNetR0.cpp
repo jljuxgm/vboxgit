@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 31323 2010-08-02 18:18:22Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -5177,7 +5177,6 @@ static int intnetR0OpenNetwork(PINTNET pIntNet, PSUPDRVSESSION pSession, const c
             {
                 if (!((pCur->fFlags ^ fFlags) & INTNET_OPEN_FLAGS_COMPATIBILITY_XOR_MASK))
                 {
-
                     /*
                      * Increment the reference and check that the session
                      * can access this network.

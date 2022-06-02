@@ -1,4 +1,4 @@
-/* $Id: alloc-darwin.cpp 31158 2010-07-28 03:24:30Z vboxsync $ */
+/* $Id: alloc-darwin.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Darwin.
  */
@@ -66,7 +66,7 @@ RTDECL(void *) RTMemExecAllocTag(size_t cb, const char *pszTag) RT_NO_THROW
 }
 
 
-RTDECL(void)    RTMemExecFree(void *pv) RT_NO_THROW
+RTDECL(void)    RTMemExecFree(void *pv, size_t cb) RT_NO_THROW
 {
     if (pv)
         free(pv);
