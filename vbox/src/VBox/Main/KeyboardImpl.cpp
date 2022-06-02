@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 33061 2010-10-12 12:42:20Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 34012 2010-11-11 20:35:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -184,6 +184,11 @@ STDMETHODIMP Keyboard::PutScancode(LONG scancode)
                       tr("Could not send scan code 0x%08X to the virtual keyboard (%Rrc)"),
                       scancode, vrc);
 
+    VBoxEventDesc evDesc;
+    com::SafeArray<LONG> scancodes(1);
+    scancodes[0] = scancode;
+    evDesc.init(mEventSource, VBoxEventType_OnGuestKeyboardEvent, ComSafeArrayAsInParam(scancodes));
+    evDesc.fire(0);
     return rc;
 }
 
@@ -242,17 +247,10 @@ STDMETHODIMP Keyboard::PutScancodes(ComSafeArrayIn(LONG, scancodes),
     /// @todo is it actually possible that not all scancodes can be transmitted?
     if (codesStored)
         *codesStored = (uint32_t)keys.size();
-#if 1
+
     VBoxEventDesc evDesc;
-    evDesc.init(mEventSource, VBoxEventType_OnGuestKeyboardEvent,
-#ifdef RT_OS_WINDOWS
-                scancodes
-#else
-                scancodesSize, scancodes
-#endif
-                );
+    evDesc.init(mEventSource, VBoxEventType_OnGuestKeyboardEvent, ComSafeArrayAsInParam(keys));
     evDesc.fire(0);
-#endif
 
     return rc;
 }
