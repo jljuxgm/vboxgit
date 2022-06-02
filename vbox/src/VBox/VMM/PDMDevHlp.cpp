@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 32935 2010-10-06 09:28:42Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 33236 2010-10-19 15:14:42Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1296,7 +1296,7 @@ static DECLCALLBACK(void) pdmR3DevHlp_PCISetIrqNoWait(PPDMDEVINS pDevIns, int iI
 static DECLCALLBACK(int) pdmR3DevHlp_PCIRegisterMsi(PPDMDEVINS pDevIns, PPDMMSIREG pMsiReg)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-    LogFlow(("pdmR3DevHlp_PCIRegisterMsi: caller='%s'/%d: %d vectors\n", pDevIns->pReg->szName, pDevIns->iInstance, pMsiReg->cVectors));
+    LogFlow(("pdmR3DevHlp_PCIRegisterMsi: caller='%s'/%d: %d MSI vectors %d MSI-X vectors\n", pDevIns->pReg->szName, pDevIns->iInstance, pMsiReg->cMsiVectors,pMsiReg->cMsixVectors ));
     int rc = VINF_SUCCESS;
 
     /*

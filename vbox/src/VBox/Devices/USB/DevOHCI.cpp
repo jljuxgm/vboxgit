@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 33137 2010-10-14 14:49:30Z vboxsync $ */
+/* $Id: DevOHCI.cpp 33236 2010-10-19 15:14:42Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5412,9 +5412,10 @@ static DECLCALLBACK(int) ohciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
 
 #ifdef VBOX_WITH_MSI_DEVICES
     PDMMSIREG aMsiReg;
-    aMsiReg.cVectors = 1;
-    aMsiReg.iCapOffset = 0x80;
-    aMsiReg.iNextOffset = 0x0;
+    RT_ZERO(aMsiReg);
+    aMsiReg.cMsiVectors = 1;
+    aMsiReg.iMsiCapOffset = 0x80;
+    aMsiReg.iMsiNextOffset = 0x0;
     aMsiReg.iMsiFlags = 0;
     rc = PDMDevHlpPCIRegisterMsi(pDevIns, &aMsiReg);
     if (RT_FAILURE (rc))
