@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 33053 2010-10-12 11:13:57Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 33054 2010-10-12 11:59:33Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -45,6 +45,9 @@
 #  include <Windows.h>
 # endif
 #endif
+#if defined(RT_OS_SOLARIS)
+# include <iprt/rand.h>
+#endif
 
 
 /*******************************************************************************
@@ -60,6 +63,18 @@ static DECLCALLBACK(int) VBoxGuestHGCMAsyncWaitCallback(VMMDevHGCMRequestHeader 
 *******************************************************************************/
 static const size_t cbChangeMemBalloonReq = RT_OFFSETOF(VMMDevChangeMemBalloon, aPhysPage[VMMDEV_MEMORY_BALLOON_CHUNK_PAGES]);
 
+#if defined(RT_OS_SOLARIS)
+/**
+ * Drag in the rest of IRPT since we share it with the
+ * rest of the kernel modules on Solaris.
+ */
+PFNRT g_apfnVBoxGuestIPRTDeps[] =
+{
+    /* VirtioNet */
+    (PFNRT)RTRandBytes,
+    NULL
+};
+#endif  /* RT_OS_SOLARIS */
 
 
 /**
