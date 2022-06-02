@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 31676 2010-08-13 18:40:53Z vboxsync $ */
+/* $Id: ApplianceImpl.h 32448 2010-09-13 14:24:06Z vboxsync $ */
 
 /** @file
  *
@@ -92,7 +92,7 @@ public:
     STDMETHOD(ImportMachines)(IProgress **aProgress);
     /* Export methods */
     STDMETHOD(CreateVFSExplorer)(IN_BSTR aURI, IVFSExplorer **aExplorer);
-    STDMETHOD(Write)(IN_BSTR format, IN_BSTR path, IProgress **aProgress);
+    STDMETHOD(Write)(IN_BSTR format, BOOL fManifest, IN_BSTR path, IProgress **aProgress);
 
     STDMETHOD(GetWarnings)(ComSafeArrayOut(BSTR, aWarnings));
 

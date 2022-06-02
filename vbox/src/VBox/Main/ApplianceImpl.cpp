@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 31677 2010-08-13 18:43:24Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 32448 2010-09-13 14:24:06Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -824,13 +824,32 @@ HRESULT Appliance::setUpProgress(const LocationInfo &locInfo,
             break;
         }
         case ImportFileWithManifest:
-        case WriteFile:
         {
             ++cOperations;          // another one for creating the manifest
 
             // assume that creating the manifest will take 10% of the time it takes to export the disks
             m->ulWeightForManifestOperation = m->ulTotalDisksMB / 10;
             ulTotalOperationsWeight += m->ulWeightForManifestOperation;
+            if (fOVA)
+            {
+                // Another operation for packing
+                ++cOperations;
+
+                // assume that packing the files into the archive has the same weight than creating all files in the ovf exporting step
+                ulTotalOperationsWeight += m->ulTotalDisksMB;
+            }
+            break;
+        }
+        case WriteFile:
+        {
+            // assume that creating the manifest will take 10% of the time it takes to export the disks
+            if (m->fManifest)
+            {
+                ++cOperations;          // another one for creating the manifest
+
+                m->ulWeightForManifestOperation = m->ulTotalDisksMB / 10;
+                ulTotalOperationsWeight += m->ulWeightForManifestOperation;
+            }
             if (fOVA)
             {
                 // Another operation for packing

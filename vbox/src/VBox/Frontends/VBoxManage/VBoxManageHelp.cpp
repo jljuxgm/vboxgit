@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 31976 2010-08-26 09:45:33Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 32448 2010-09-13 14:24:06Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -341,6 +341,7 @@ void printUsage(USAGECATEGORY u64Cmd)
     {
         RTPrintf("VBoxManage export           <machines> --output|-o <ovf>\n"
                  "                            [--legacy09]\n"
+                 "                            [--manifest]\n"
                  "                            [--vsys <number of virtual system>]\n"
                  "                                    [--product <product name>]\n"
                  "                                    [--producturl <product url>]\n"
