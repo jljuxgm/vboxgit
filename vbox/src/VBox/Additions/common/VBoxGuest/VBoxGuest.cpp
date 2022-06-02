@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 30780 2010-07-12 08:50:26Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 31241 2010-07-30 12:50:58Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -269,7 +269,7 @@ static int vboxGuestInitReportGuestInfo(PVBOXGUESTDEVEXT pDevExt, VBOXOSTYPE enm
     int rc = VbglGRAlloc((VMMDevRequestHeader **)&pReq, sizeof(*pReq), VMMDevReq_ReportGuestInfo);
     if (RT_SUCCESS(rc))
     {
-        pReq->guestInfo.additionsVersion = VMMDEV_VERSION;
+        pReq->guestInfo.interfaceVersion = VMMDEV_VERSION;
         pReq->guestInfo.osType = enmOSType;
         rc = VbglGRPerform(&pReq->header);
         if (RT_FAILURE(rc))
