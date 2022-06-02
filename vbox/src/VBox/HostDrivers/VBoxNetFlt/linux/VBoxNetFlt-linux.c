@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 30771 2010-07-09 17:26:55Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 30785 2010-07-12 09:57:18Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1441,7 +1441,11 @@ static bool vboxNetFltLinuxCanForwardAsGso(PVBOXNETFLTINS pThis, struct sk_buff 
          * The packet came from the wire and the driver has already consumed
          * mac header. We need to restore it back.
          */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 22)
         pSkb->mac_len = pSkb->network_header - pSkb->mac_header;
+#else
+        pSkb->mac_len = pSkb->nh.raw - pSkb->data;
+#endif
         skb_push(pSkb, pSkb->mac_len);
         Log5(("vboxNetFltLinuxCanForwardAsGso: mac_len=%d data=%p mac_header=%p network_header=%p\n",
               pSkb->mac_len, pSkb->data, skb_mac_header(pSkb), skb_network_header(pSkb)));
