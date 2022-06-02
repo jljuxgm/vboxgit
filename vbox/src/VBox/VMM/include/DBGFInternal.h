@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 35490 2011-01-11 15:17:10Z vboxsync $ */
+/* $Id: DBGFInternal.h 35550 2011-01-13 18:08:54Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -278,7 +278,8 @@ typedef struct DBGF
     R3PTRTYPE(RTSTRSPACE)       RegSpace;
     /** String space holding the register sets. (Protected by hRegDbLock.)  */
     R3PTRTYPE(RTSTRSPACE)       RegSetSpace;
-    /** The number of registers (aliases and sub-fields not counted). */
+    /** The number of registers (aliases, sub-fields and the special CPU
+     * register aliases (eg AH) are not counted). */
     uint32_t                    cRegs;
     /** For early initialization by . */
     bool volatile               fRegDbInitialized;
