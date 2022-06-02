@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 34445 2010-11-29 10:09:02Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 34448 2010-11-29 10:35:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -659,7 +659,7 @@ static void supR3HardenedMainGrabCapabilites(void)
         priv_emptyset(pPrivSet);
         /* The inheritable privilege set contains the privileges the process
          * would have received if it weren't marked as suid root. */
-        int rc = getppriv(PRIV_SET, PRIV_INHERITABLE, pPrivSet);
+        int rc = getppriv(PRIV_INHERITABLE, pPrivSet);
         if (!rc)
         {
             priv_addset(pPrivSet, PRIV_NET_ICMPACCESS);
