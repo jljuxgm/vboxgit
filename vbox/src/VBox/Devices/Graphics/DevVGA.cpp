@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 32769 2010-09-27 08:40:49Z vboxsync $ */
+/* $Id: DevVGA.cpp 32794 2010-09-28 14:30:57Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -870,7 +870,7 @@ static int vbe_ioport_write_data(void *opaque, uint32_t addr, uint32_t val)
                 else
                     s->vbe_line_offset = val * ((s->vbe_regs[VBE_DISPI_INDEX_BPP] + 7) >> 3);
                 /* XXX: support weird bochs semantics ? */
-                s->vbe_regs[VBE_DISPI_INDEX_VIRT_WIDTH] = s->vbe_line_offset;
+                s->vbe_regs[VBE_DISPI_INDEX_VIRT_WIDTH] = val;
                 s->vbe_regs[VBE_DISPI_INDEX_X_OFFSET] = 0;
                 s->vbe_regs[VBE_DISPI_INDEX_Y_OFFSET] = 0;
                 s->vbe_start_addr = 0;
@@ -900,7 +900,7 @@ static int vbe_ioport_write_data(void *opaque, uint32_t addr, uint32_t val)
                 else
                     s->vbe_line_offset = s->vbe_regs[VBE_DISPI_INDEX_XRES] * ((val + 7) >> 3);
                 /* XXX: support weird bochs semantics ? */
-                s->vbe_regs[VBE_DISPI_INDEX_VIRT_WIDTH] = s->vbe_line_offset;
+                s->vbe_regs[VBE_DISPI_INDEX_VIRT_WIDTH] = val;
                 s->vbe_regs[VBE_DISPI_INDEX_X_OFFSET] = 0;
                 s->vbe_regs[VBE_DISPI_INDEX_Y_OFFSET] = 0;
                 s->vbe_start_addr = 0;
