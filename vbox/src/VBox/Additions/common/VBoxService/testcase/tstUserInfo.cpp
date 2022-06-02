@@ -1,4 +1,4 @@
-/* $Id: tstUserInfo.cpp 32634 2010-09-20 12:00:44Z vboxsync $ */
+/* $Id: tstUserInfo.cpp 32636 2010-09-20 12:12:33Z vboxsync $ */
 /** @file
  * Test case for correct user environment.
  */
@@ -61,21 +61,18 @@ int main()
             RTPrintf("SHGetFolderPathW (CSIDL_PERSONAL) = %ls\n", szPath);
         }
         else
-            RTPrintf("SHGetFolderPathW (CSIDL_PERSONAL) returned error: 0x%x", hRes);
+            RTPrintf("SHGetFolderPathW (CSIDL_PERSONAL) returned error: 0x%x\n", hRes);
     }
     else
-        RTPrintf("SHGetFolderPathW (CSIDL_APPDATA) returned error: 0x%x", hRes);
+        RTPrintf("SHGetFolderPathW (CSIDL_APPDATA) returned error: 0x%x\n", hRes);
 
     if (FAILED(hRes))
         rc = RTErrConvertFromWin32(hRes);
 
-    if (RT_SUCCESS(rc))
-    {
-        /* Dump env bits. */
-        RTPrintf("Environment:\n\n");
-        RTPrintf("APPDATA = %s\n", getenv("APPDATA"));
-    }
+    /* Dump env bits. */
+    RTPrintf("Environment:\n\n");
+    RTPrintf("APPDATA = %s\n", getenv("APPDATA"));
 #endif
-    return VINF_SUCCESS(rc) ? 0 : -1;
+    return VINF_SUCCESS(rc) ? 0 : 1;
 }
 
