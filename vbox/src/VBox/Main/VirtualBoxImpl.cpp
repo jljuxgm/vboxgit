@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 31388 2010-08-05 10:26:18Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 31464 2010-08-09 09:15:40Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -598,8 +598,8 @@ HRESULT VirtualBox::initMedia()
 
     HRESULT rc = S_OK;
     settings::MediaList::const_iterator it;
-    for (it = m->pMainConfigFile->llHardDisks.begin();
-         it != m->pMainConfigFile->llHardDisks.end();
+    for (it = m->pMainConfigFile->mediaRegistry.llHardDisks.begin();
+         it != m->pMainConfigFile->mediaRegistry.llHardDisks.end();
          ++it)
     {
         const settings::Medium &xmlHD = *it;
@@ -616,8 +616,8 @@ HRESULT VirtualBox::initMedia()
         if (FAILED(rc)) return rc;
     }
 
-    for (it = m->pMainConfigFile->llDvdImages.begin();
-         it != m->pMainConfigFile->llDvdImages.end();
+    for (it = m->pMainConfigFile->mediaRegistry.llDvdImages.begin();
+         it != m->pMainConfigFile->mediaRegistry.llDvdImages.end();
          ++it)
     {
         const settings::Medium &xmlDvd = *it;
@@ -631,8 +631,8 @@ HRESULT VirtualBox::initMedia()
         if (FAILED(rc)) return rc;
     }
 
-    for (it = m->pMainConfigFile->llFloppyImages.begin();
-         it != m->pMainConfigFile->llFloppyImages.end();
+    for (it = m->pMainConfigFile->mediaRegistry.llFloppyImages.begin();
+         it != m->pMainConfigFile->mediaRegistry.llFloppyImages.end();
          ++it)
     {
         const settings::Medium &xmlFloppy = *it;
@@ -3289,9 +3289,9 @@ HRESULT VirtualBox::saveSettings()
 
         /* now copy the temp data to the config file under the VirtualBox lock */
         m->pMainConfigFile->llMachines = machinesTemp;
-        m->pMainConfigFile->llHardDisks = hardDisksTemp;
-        m->pMainConfigFile->llDvdImages = dvdsTemp;
-        m->pMainConfigFile->llFloppyImages = floppiesTemp;
+        m->pMainConfigFile->mediaRegistry.llHardDisks = hardDisksTemp;
+        m->pMainConfigFile->mediaRegistry.llDvdImages = dvdsTemp;
+        m->pMainConfigFile->mediaRegistry.llFloppyImages = floppiesTemp;
         m->pMainConfigFile->llDhcpServers = dhcpServersTemp;
 
         // leave extra data alone, it's still in the config file
