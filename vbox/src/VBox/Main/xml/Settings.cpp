@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 31731 2010-08-17 13:43:49Z vboxsync $ */
+/* $Id: Settings.cpp 31733 2010-08-17 14:13:06Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3115,8 +3115,8 @@ void MachineConfigFile::readMachine(const xml::ElementNode &elmMachine)
                     if (strFaultToleranceSate == "master")
                         machineUserData.enmFaultToleranceState = FaultToleranceState_Master;
                     else
-                    if (strFaultToleranceSate == "clone")
-                        machineUserData.enmFaultToleranceState = FaultToleranceState_Clone;
+                    if (strFaultToleranceSate == "standby")
+                        machineUserData.enmFaultToleranceState = FaultToleranceState_Standby;
                     else
                         machineUserData.enmFaultToleranceState = FaultToleranceState_Inactive;
                 }               
@@ -4044,8 +4044,8 @@ void MachineConfigFile::buildMachineXML(xml::ElementNode &elmMachine,
         case FaultToleranceState_Master:
             pelmFaultTolerance->setAttribute("state", "master");
             break;
-        case FaultToleranceState_Clone:
-            pelmFaultTolerance->setAttribute("state", "clone");
+        case FaultToleranceState_Standby:
+            pelmFaultTolerance->setAttribute("state", "standby");
             break;
         }
 
