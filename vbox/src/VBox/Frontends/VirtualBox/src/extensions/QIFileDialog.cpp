@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 31191 2010-07-29 07:45:42Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 31196 2010-07-29 09:18:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -366,6 +366,8 @@ QString QIFileDialog::getExistingDirectory (const QString &aDir,
 
     QFileDialog::Options o;
 # if defined (Q_WS_X11)
+    /** @todo see http://bugs.kde.org/show_bug.cgi?id=210904, make it conditional
+     *        when this bug is fixed (xtracker 5167) */
     if (vboxGlobal().isKWinManaged())
       o |= QFileDialog::DontUseNativeDialog;
 # endif
@@ -578,6 +580,8 @@ QString QIFileDialog::getSaveFileName (const QString &aStartWith,
 
     QFileDialog::Options o;
 # if defined (Q_WS_X11)
+    /** @todo see http://bugs.kde.org/show_bug.cgi?id=210904, make it conditional
+     *        when this bug is fixed (xtracker 5167) */
     if (vboxGlobal().isKWinManaged())
       o |= QFileDialog::DontUseNativeDialog;
 # endif
@@ -826,6 +830,8 @@ QStringList QIFileDialog::getOpenFileNames (const QString &aStartWith,
     if (!aResolveSymlinks)
         o |= QFileDialog::DontResolveSymlinks;
 # if defined (Q_WS_X11)
+    /** @todo see http://bugs.kde.org/show_bug.cgi?id=210904, make it conditional
+     *        when this bug is fixed (xtracker 5167) */
     if (vboxGlobal().isKWinManaged())
       o |= QFileDialog::DontUseNativeDialog;
 # endif
