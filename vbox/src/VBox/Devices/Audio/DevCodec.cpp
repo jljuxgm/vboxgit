@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 34459 2010-11-29 12:44:50Z vboxsync $ */
+/* $Id: DevCodec.cpp 34590 2010-12-02 03:22:29Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -2273,7 +2273,7 @@ static int codecLookup(CODECState *pState, uint32_t cmd, PPFNCODECVERBPROCESSOR 
         }
     }
     *pfn = codecUnimplemented;
-    LogRel(("HDAcodec: callback for %x wasn't found\n", CODEC_VERBDATA(cmd)));
+    Log(("HDAcodec: callback for %x wasn't found\n", CODEC_VERBDATA(cmd)));
     return rc;
 }
 
