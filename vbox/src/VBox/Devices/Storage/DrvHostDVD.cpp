@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 30223 2010-06-16 01:55:05Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 32067 2010-08-29 15:44:16Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -233,7 +233,7 @@ static DECLCALLBACK(int) drvHostDvdUnmount(PPDMIMOUNT pInterface, bool fForce)
  */
 static DECLCALLBACK(int) drvHostDvdDoLock(PDRVHOSTBASE pThis, bool fLock)
 {
-#ifdef RT_OS_DARWIN
+#if defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD)
     uint8_t abCmd[16] =
     {
         SCSI_PREVENT_ALLOW_MEDIUM_REMOVAL, 0, 0, 0, fLock, 0,
