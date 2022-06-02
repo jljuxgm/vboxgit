@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 32100 2010-08-30 14:21:58Z vboxsync $ */
+/* $Id: UISession.cpp 32296 2010-09-07 15:56:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -430,8 +430,7 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
 
 void UISession::sltCloseVirtualSession()
 {
-     /* Use a single shot with timeout 0 to allow the widgets to cleanly close and test then again.
-      * If all open widgets are closed destroy ourself: */
+    /* Recursevely close all the usual modal & popup widgets... */
     QWidget *widget = QApplication::activeModalWidget() ?
                       QApplication::activeModalWidget() :
                       QApplication::activePopupWidget() ?
@@ -442,7 +441,17 @@ void UISession::sltCloseVirtualSession()
         QTimer::singleShot(0, this, SLOT(sltCloseVirtualSession()));
         return;
     }
-    m_pMachine->closeVirtualMachine();
+
+    /* Recursevely close all the opened warnings... */
+    if (vboxProblem().isAnyWarningShown())
+    {
+    	vboxProblem().closeAllWarnings();
+        QTimer::singleShot(0, this, SLOT(sltCloseVirtualSession()));
+        return;
+    }
+
+    /* Finally, ask for closing virtual machine: */
+    QTimer::singleShot(0, m_pMachine, SLOT(sltCloseVirtualMachine()));
 }
 
 void UISession::sltMousePointerShapeChange(bool fVisible, bool fAlpha, QPoint hotCorner, QSize size, QVector<uint8_t> shape)
