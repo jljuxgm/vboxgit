@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30702 2010-07-07 11:49:42Z vboxsync $ */
+/* $Id: EventImpl.cpp 30706 2010-07-07 13:51:37Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -770,8 +770,7 @@ STDMETHODIMP EventSource::FireEvent(IEvent * aEvent,
     aEvent->COMGETTER(Waitable)(&aWaitable);
 
     do {
-        /* See comment in EventSource::GetEvent() */
-        AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+        AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
         VBoxEventType_T evType;
         hrc = aEvent->COMGETTER(Type)(&evType);
@@ -812,7 +811,6 @@ STDMETHODIMP EventSource::FireEvent(IEvent * aEvent,
 
             if (FAILED_DEAD_INTERFACE(cbRc))
             {
-                AutoWriteLock awlock(this COMMA_LOCKVAL_SRC_POS);
                 Listeners::iterator lit = m->mListeners.find(record.obj()->mListener);
                 if (lit != m->mListeners.end())
                     m->mListeners.erase(lit);
@@ -841,13 +839,6 @@ STDMETHODIMP EventSource::GetEvent(IEventListener * aListener,
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    /**
-     * There's subtle dependency between this lock and one in FireEvent():
-     * we need to be able to access event queue in FireEvent() while waiting
-     * here, to make this wait preemptible, thus both take read lock (write
-     * lock in FireEvent() would do too, and probably is a bit stricter),
-     * but will be unable to .
-     */
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     Listeners::iterator it = m->mListeners.find(aListener);
