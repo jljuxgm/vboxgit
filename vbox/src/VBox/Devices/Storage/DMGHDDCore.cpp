@@ -1,4 +1,4 @@
-/* $Id: DMGHDDCore.cpp 32768 2010-09-26 18:04:06Z vboxsync $ */
+/* $Id: DMGHDDCore.cpp 33182 2010-10-18 08:30:05Z vboxsync $ */
 /** @file
  * VBoxDMG - Intepreter for Apple Disk Images (DMG).
  */
@@ -2095,9 +2095,8 @@ static int dmgSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
     PDMGIMAGE pThis = (PDMGIMAGE)pBackendData;
     int rc;
 
-    /* Image must be opened and the new flags must be valid. Just readonly and
-     * info flags are supported. */
-    if (!pThis || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO || VD_OPEN_FLAGS_SHAREABLE)))
+    /* Image must be opened and the new flags must be valid. */
+    if (!pThis || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO || VD_OPEN_FLAGS_SHAREABLE | VD_OPEN_FLAGS_SEQUENTIAL)))
     {
         rc = VERR_INVALID_PARAMETER;
         goto out;

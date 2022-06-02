@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 32598 2010-09-17 12:36:19Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 33182 2010-10-18 08:30:05Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -925,9 +925,8 @@ static int rawSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
     PRAWIMAGE pImage = (PRAWIMAGE)pBackendData;
     int rc;
 
-    /* Image must be opened and the new flags must be valid. Just readonly and
-     * info flags are supported. */
-    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_ASYNC_IO | VD_OPEN_FLAGS_SHAREABLE)))
+    /* Image must be opened and the new flags must be valid. */
+    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_ASYNC_IO | VD_OPEN_FLAGS_SHAREABLE | VD_OPEN_FLAGS_SEQUENTIAL)))
     {
         rc = VERR_INVALID_PARAMETER;
         goto out;

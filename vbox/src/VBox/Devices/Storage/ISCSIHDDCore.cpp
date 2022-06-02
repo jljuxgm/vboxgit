@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 33124 2010-10-14 09:20:16Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 33182 2010-10-18 08:30:05Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4892,9 +4892,8 @@ static int iscsiSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
     PISCSIIMAGE pImage = (PISCSIIMAGE)pBackendData;
     int rc;
 
-    /* Image must be opened and the new flags must be valid. Just readonly and
-     * info flags are supported. */
-    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_ASYNC_IO | VD_OPEN_FLAGS_SHAREABLE)))
+    /* Image must be opened and the new flags must be valid. */
+    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_ASYNC_IO | VD_OPEN_FLAGS_SHAREABLE | VD_OPEN_FLAGS_SEQUENTIAL)))
     {
         rc = VERR_INVALID_PARAMETER;
         goto out;
