@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 32389 2010-09-10 11:15:42Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 32390 2010-09-10 11:18:03Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1296,7 +1296,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
             pgmPoolAddDirtyPage(pVM, pPool, pPage);
 
             /* Temporarily allow write access to the page table again. */
-            rc = PGMHandlerPhysicalPageTempOff(pVM, pPage->GCPhys, pPage->GCPhys & PAGE_BASE_GC_MASK);
+            rc = PGMHandlerPhysicalPageTempOff(pVM, pPage->GCPhys & PAGE_BASE_GC_MASK, pPage->GCPhys & PAGE_BASE_GC_MASK);
             if (rc == VINF_SUCCESS)
             {
                 rc = PGMShwMakePageWritable(pVCpu, pvFault, PGM_MK_PG_IS_WRITE_FAULT);
