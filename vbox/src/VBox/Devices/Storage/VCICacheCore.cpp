@@ -1,4 +1,4 @@
-/* $Id: VCICacheCore.cpp 33522 2010-10-27 16:03:15Z vboxsync $ */
+/* $Id: VCICacheCore.cpp 33524 2010-10-27 16:44:37Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -1900,14 +1900,13 @@ static int vciSetComment(void *pBackendData, const char *pszComment)
 
     AssertPtr(pCache);
 
-    if (pCache->uOpenFlags & VD_OPEN_FLAGS_READONLY)
-    {
-        rc = VERR_VD_IMAGE_READ_ONLY;
-        goto out;
-    }
-
     if (pCache)
-        rc = VERR_NOT_SUPPORTED;
+    {
+        if (pCache->uOpenFlags & VD_OPEN_FLAGS_READONLY)
+            rc = VERR_VD_IMAGE_READ_ONLY;
+        else
+            rc = VERR_NOT_SUPPORTED;
+    }
     else
         rc = VERR_VD_NOT_OPENED;
 

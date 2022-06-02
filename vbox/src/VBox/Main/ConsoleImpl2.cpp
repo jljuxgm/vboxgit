@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 33307 2010-10-21 13:05:39Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 33524 2010-10-27 16:44:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -3034,6 +3034,19 @@ int Console::configMedium(PCFGMNODE pLunL0,
                     {
                         InsertConfigInteger(pCfg, "MergeTarget", 1);
                     }
+                }
+
+                switch (enmType)
+                {
+                    case DeviceType_DVD:
+                        InsertConfigString(pCfg, "Type", "DVD");
+                        break;
+                    case DeviceType_Floppy:
+                        InsertConfigString(pCfg, "Type", "Floppy");
+                        break;
+                    case DeviceType_HardDisk:
+                    default:
+                        InsertConfigString(pCfg, "Type", "HardDisk");
                 }
 
                 /* Pass all custom parameters. */

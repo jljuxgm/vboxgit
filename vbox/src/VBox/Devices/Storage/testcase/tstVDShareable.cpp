@@ -1,4 +1,4 @@
-/* $Id: tstVDShareable.cpp 32536 2010-09-15 18:25:32Z vboxsync $ */
+/* $Id: tstVDShareable.cpp 33524 2010-10-27 16:44:37Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility for shareable images.
  */
@@ -91,9 +91,9 @@ static int tstVDCreateShareDelete(const char *pszBackend, const char *pszFilenam
                         NULL, &pVDIfs);
     AssertRC(rc);
 
-    rc = VDCreate(&VDIError, &pVD);
+    rc = VDCreate(&VDIError, VDTYPE_HDD, &pVD);
     CHECK("VDCreate()");
-    rc = VDCreate(&VDIError, &pVD2);
+    rc = VDCreate(&VDIError, VDTYPE_HDD, &pVD2);
     CHECK("VDCreate() #2");
 
     rc = VDCreateBase(pVD, pszBackend, pszFilename, cbSize,

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 33456 2010-10-26 10:51:02Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 33524 2010-10-27 16:44:37Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -887,7 +887,7 @@ int handleConvertFromRaw(int argc, char *argv[])
                  (uImageFlags & VD_IMAGE_FLAGS_FIXED) ? "fixed" : "dynamic", cbFile, (cbFile + _1M - 1) / _1M);
     char pszComment[256];
     RTStrPrintf(pszComment, sizeof(pszComment), "Converted image from %s", srcfilename);
-    rc = VDCreate(pVDIfs, &pDisk);
+    rc = VDCreate(pVDIfs, VDTYPE_HDD, &pDisk);
     if (RT_FAILURE(rc))
     {
         RTMsgError("Cannot create the virtual disk container: %Rrc", rc);

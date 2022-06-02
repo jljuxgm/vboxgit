@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 33339 2010-10-22 10:53:07Z vboxsync $ */
+/* $Id: MediumImpl.h 33524 2010-10-27 16:44:37Z vboxsync $ */
 
 /** @file
  *
@@ -298,6 +298,9 @@ private:
     HRESULT setFormat(const Utf8Str &aFormat);
 
     Utf8Str vdError(int aVRC);
+
+    VDTYPE convertDeviceType();
+    DeviceType_T convertToDeviceType(VDTYPE enmType);
 
     static DECLCALLBACK(void) vdErrorCall(void *pvUser, int rc, RT_SRC_POS_DECL,
                                           const char *pszFormat, va_list va);

@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 33182 2010-10-18 08:30:05Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 33524 2010-10-27 16:44:37Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4368,7 +4368,7 @@ out:
 
 /** @copydoc VBOXHDDBACKEND::pfnCheckIfValid */
 static int iscsiCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                             PVDINTERFACE pVDIfsImage)
+                             PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
 {
     LogFlowFunc(("pszFilename=\"%s\"\n", pszFilename));
 
@@ -4383,7 +4383,7 @@ static int iscsiCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
 /** @copydoc VBOXHDDBACKEND::pfnOpen */
 static int iscsiOpen(const char *pszFilename, unsigned uOpenFlags,
                      PVDINTERFACE pVDIfsDisk, PVDINTERFACE pVDIfsImage,
-                     void **ppBackendData)
+                     VDTYPE enmType, void **ppBackendData)
 {
     LogFlowFunc(("pszFilename=\"%s\" uOpenFlags=%#x pVDIfsDisk=%#p pVDIfsImage=%#p ppBackendData=%#p\n", pszFilename, uOpenFlags, pVDIfsDisk, pVDIfsImage, ppBackendData));
     int rc;
