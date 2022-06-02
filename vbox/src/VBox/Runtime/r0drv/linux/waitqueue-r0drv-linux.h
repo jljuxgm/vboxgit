@@ -1,4 +1,4 @@
-/* $Id: waitqueue-r0drv-linux.h 33012 2010-10-08 15:46:40Z vboxsync $ */
+/* $Id: waitqueue-r0drv-linux.h 33014 2010-10-08 17:31:59Z vboxsync $ */
 /** @file
  * IPRT - Linux Ring-0 Driver Helpers for Abstracting Wait Queues,
  */
@@ -170,7 +170,7 @@ DECLINLINE(int) rtR0SemLnxWaitInit(PRTR0SEMLNXWAIT pWait, uint32_t fFlags, uint6
     /*
      * Initialize the wait queue related bits.
      */
-    init_wait(&pWait->WaitQE);
+    init_wait((&pWait->WaitQE));
     pWait->pWaitQueue = pWaitQueue;
     pWait->iWaitState = fFlags & RTSEMWAIT_FLAGS_INTERRUPTIBLE
                       ? TASK_INTERRUPTIBLE : TASK_UNINTERRUPTIBLE;
