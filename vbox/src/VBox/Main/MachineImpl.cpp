@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 30812 2010-07-14 08:54:00Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5019,6 +5019,7 @@ STDMETHODIMP Machine::ReadLog(ULONG aIdx, ULONG64 aOffset, ULONG64 aSize, ComSaf
             rc = setError(VBOX_E_IPRT_ERROR,
                           tr("Could not read log file '%s' (%Rrc)"),
                           log.raw(), vrc);
+        RTFileClose(LogFile);
     }
     else
         rc = setError(VBOX_E_IPRT_ERROR,
