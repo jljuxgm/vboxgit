@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 29783 2010-05-25 13:13:35Z vboxsync $ */
+/* $Id: strformat.cpp 33496 2010-10-27 12:15:28Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -484,7 +484,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
 
 #ifndef IN_RING3
                     case 'S':   /* Unicode string as current code page -> Unicode as UTF-8 in GC/R0. */
-                        chArgSize = 'l';
+                        chArgSize = 'l'; /** @todo this is nonsensical, isn't it? */
                         /* fall thru */
 #endif
                     case 's':   /* Unicode string as utf8 */
