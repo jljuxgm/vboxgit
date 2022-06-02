@@ -1,4 +1,4 @@
-' $Id: configure.vbs 31871 2010-08-23 15:48:47Z vboxsync $
+' $Id: configure.vbs 31874 2010-08-23 19:02:39Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -2201,12 +2201,12 @@ function CheckForMkisofs(strFnameMkisofs)
    PrintHdr "mkisofs"
 
    CheckForMkisofs = False
-   LogPrint "trying: strPathMkisofs=" & strPathMkisofs
+   LogPrint "trying: strFnameMkisofs=" & strFnameMkisofs
 
-   if FileExists(strFnameMkisofs)
+   if FileExists(strFnameMkisofs) = false then
       LogPrint "Testing '" & strFnameMkisofs & " not found"
    else
-      CfgPrint "VBOX_MKISOFS          := " & strPathMkisofs & "\mkisofs.exe"
+      CfgPrint "VBOX_MKISOFS          := " & strFnameMkisofs
       CheckForMkisofs = True
    end if
 
