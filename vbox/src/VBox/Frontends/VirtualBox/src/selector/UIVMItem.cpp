@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 34064 2010-11-15 11:12:37Z vboxsync $ */
+/* $Id: UIVMItem.cpp 34065 2010-11-15 11:34:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -247,7 +247,7 @@ bool UIVMItem::recache()
         /* this should be in sync with
          * VBoxProblemReporter::confirm_machineDeletion() */
         QFileInfo fi(m_strSettingsFile);
-        QString name = fi.completeSuffix().toLower() == "xml" || fi.completeSuffix().toLower() == "vbox" ?
+        QString name = VBoxGlobal::hasAllowedExtension(fi.completeSuffix(), VBoxDefs::VBoxFileExts) ?
                        fi.completeBaseName() : fi.fileName();
         needsResort = name != m_strName;
         m_strName = name;

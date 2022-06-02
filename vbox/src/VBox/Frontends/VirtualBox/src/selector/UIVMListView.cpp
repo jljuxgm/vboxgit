@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 34064 2010-11-15 11:12:37Z vboxsync $ */
+/* $Id: UIVMListView.cpp 34065 2010-11-15 11:34:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -498,8 +498,7 @@ void UIVMListView::checkDragEvent(QDragMoveEvent *pEvent)
     {
         QList<QUrl> list = pEvent->mimeData()->urls();
         QString file = list.at(0).toLocalFile();
-        if (   (   file.endsWith(".ovf", Qt::CaseInsensitive)
-                || file.endsWith(".ova", Qt::CaseInsensitive))
+        if (   VBoxGlobal::hasAllowedExtension(file, VBoxDefs::OVFFileExts)
             && pEvent->possibleActions().testFlag(Qt::CopyAction))
         {
             pEvent->setDropAction(Qt::CopyAction);

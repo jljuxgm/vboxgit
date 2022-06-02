@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 34064 2010-11-15 11:12:37Z vboxsync $ */
+/* $Id: UIImportApplianceWzd.cpp 34065 2010-11-15 11:34:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -194,7 +194,7 @@ void UIImportApplianceWzdPage1::initializePage()
 bool UIImportApplianceWzdPage1::isComplete() const
 {
     const QString &strFile = m_pFileSelector->path().toLower();
-    return (strFile.endsWith(".ovf") || strFile.endsWith(".ova")) && QFileInfo(m_pFileSelector->path()).exists();
+    return VBoxGlobal::hasAllowedExtension(strFile, VBoxDefs::OVFFileExts) && QFileInfo(m_pFileSelector->path()).exists();
 }
 
 bool UIImportApplianceWzdPage1::validatePage()
