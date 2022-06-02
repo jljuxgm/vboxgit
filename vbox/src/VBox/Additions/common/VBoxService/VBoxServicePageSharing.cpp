@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 30669 2010-07-06 14:28:00Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 30671 2010-07-06 14:43:43Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -565,10 +565,10 @@ static DECLCALLBACK(int) VBoxServicePageSharingInit(void)
 
     if (hNtdll)
         ZwQuerySystemInformation = (PFNZWQUERYSYSTEMINFORMATION)GetProcAddress(hNtdll, "ZwQuerySystemInformation");
-#endif
 
     rc =  VbglR3GetSessionId(&g_idSession);
     AssertRCReturn(rc, rc);
+#endif
 
     /* Never fail here. */
     return VINF_SUCCESS;
