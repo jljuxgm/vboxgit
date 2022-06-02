@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 35378 2010-12-30 14:58:37Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 35527 2011-01-13 14:27:33Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1204,7 +1204,6 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
                 Info.hMonitor    = NULL;
                 Info.hProcess    = INVALID_HANDLE_VALUE;
 
-#if 0 /* This deadlocks with the GUI because the GUI thread is stuck in the API call :/ */
                 /* Apply display hacks. */
                 if (pszDisplayInfoHack)
                 {
@@ -1228,7 +1227,6 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
                 }
                 if (Info.hMonitor != NULL)
                     Info.fMask |= SEE_MASK_HMONITOR;
- #endif
 
                 if (ShellExecuteExW(&Info))
                 {
