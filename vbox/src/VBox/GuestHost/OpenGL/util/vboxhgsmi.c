@@ -1,4 +1,4 @@
-/* $Id: vboxhgsmi.c 33216 2010-10-18 19:26:40Z vboxsync $ */
+/* $Id: vboxhgsmi.c 33223 2010-10-19 00:16:34Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -866,8 +866,6 @@ static void crVBoxHGSMISingleRecv(CRConnection *conn, void *buf, unsigned int le
 static void crVBoxHGSMIFree(CRConnection *conn, void *buf)
 {
     CRVBOXHGSMIBUFFER *hgsmi_buffer = (CRVBOXHGSMIBUFFER *) buf - 1;
-
-    Assert(0);
 
     CRASSERT(hgsmi_buffer->magic == CR_VBOXHGSMI_BUFFER_MAGIC);
 
