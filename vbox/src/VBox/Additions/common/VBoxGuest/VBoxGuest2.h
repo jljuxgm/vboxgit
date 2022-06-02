@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest2.h 31661 2010-08-13 15:49:24Z vboxsync $ */
+/* $Id: VBoxGuest2.h 32433 2010-09-12 23:11:27Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, bits shared with the windows code.
  */
@@ -18,8 +18,14 @@
 #ifndef ___VBoxGuest2_h
 #define ___VBoxGuest2_h
 
+#include <VBox/ostypes>
+
+RT_C_DECLS_BEGIN
+
 int VBoxGuestReportGuestInfo(VBOXOSTYPE enmOSType);
 int VBoxGuestReportDriverStatus(bool fActive);
+
+RT_C_DECLS_END
 
 #endif
 
