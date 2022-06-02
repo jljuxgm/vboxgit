@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 31951 2010-08-25 10:09:12Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 31952 2010-08-25 10:16:51Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -686,6 +686,12 @@ int VBoxServiceControlExecAllocateThreadData(PVBOXSERVICECTRLTHREAD pThread,
             uint32_t cbLen = 0;
             while (cbLen < cbEnv)
             {
+                /* sanity check */
+                if (i >= uNumEnvVars)
+                {
+                    rc = VERR_INVALID_PARAMETER;
+                    break;
+                }
                 int cbStr = RTStrAPrintf(&pData->papszEnv[i++], "%s", pcCur);
                 if (cbStr < 0)
                 {
