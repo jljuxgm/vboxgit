@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 34180 2010-11-18 15:58:58Z vboxsync $ */
+/* $Id: tarvfs.cpp 34181 2010-11-18 17:00:45Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -559,6 +559,7 @@ static int rtZipTarReaderParseNextHeader(PRTZIPTARREADER pThis, PCRTZIPTARHDR pH
     return VINF_SUCCESS;
 }
 
+
 /**
  * Parses and validates a TAR header.
  *
@@ -627,6 +628,7 @@ static int rtZipTarReaderParseHeader(PRTZIPTARREADER pThis, PCRTZIPTARHDR pHdr)
             return VERR_INTERNAL_ERROR_5;
     }
 }
+
 
 /**
  * Translate a TAR header to an IPRT object info structure with additional UNIX
