@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 32519 2010-09-15 13:15:11Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 32520 2010-09-15 13:27:55Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2468,8 +2468,13 @@ static int vdIoCtxContinue(PVDIOCTX pIoCtx, int rcReq)
             }
             else
             {
-                if (pIoCtx->enmTxDir == VDIOCTXTXDIR_WRITE)
+                if (pIoCtx->enmTxDir != VDIOCTXTXDIR_READ)
+                {
+                    AssertMsg(   pIoCtx->enmTxDir == VDIOCTXTXDIR_WRITE
+                              || pIoCtx->enmTxDir == VDIOCTXTXDIR_FLUSH,
+                              ("Invalid transfer direction\n"));
                     vdThreadFinishWrite(pDisk);
+                }
                 else
                     vdThreadFinishRead(pDisk);
 
