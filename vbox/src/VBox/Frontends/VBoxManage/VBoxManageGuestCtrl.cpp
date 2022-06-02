@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 32866 2010-10-01 14:41:42Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 32888 2010-10-04 14:16:23Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -570,7 +570,7 @@ static int handleCtrlCopyTo(HandlerArg *a)
 
     /* Iterate through all possible commands (if available). */
     bool usageOK = true;
-    for (int i = 2; usageOK && i < a->argc; i++)
+    for (int i = 3; usageOK && i < a->argc; i++)
     {
         if (!strcmp(a->argv[i], "--flags"))
         {
