@@ -1,4 +1,4 @@
-/* $Revision: 33640 $ */
+/* $Revision: 33641 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -195,11 +195,14 @@ static int rtR0MemObjLinuxAllocPages(PRTR0MEMOBJLNX *ppMemLnx, RTR0MEMOBJTYPE en
         return VERR_NO_MEMORY;
     pMemLnx->cPages = cPages;
 
-# ifdef __GFP_NOMEMALLOC
      if (cPages > 255)
+     {
+        fFlagsLnx |= __GFP_NORETRY;
+# ifdef __GFP_NOMEMALLOC
         /* Introduced with Linux 2.6.12: Don't use emergency reserves */
         fFlagsLnx |= __GFP_NOMEMALLOC;
 # endif
+     }
 
     /*
      * Allocate the pages.
