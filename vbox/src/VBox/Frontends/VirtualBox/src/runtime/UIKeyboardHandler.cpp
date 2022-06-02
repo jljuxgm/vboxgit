@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 33944 2010-11-10 17:31:27Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 34476 2010-11-29 15:44:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -134,6 +134,10 @@ void UIKeyboardHandler::prepareListener(ulong uIndex, UIMachineWindow *pMachineW
 /* Cleanup listened objects: */
 void UIKeyboardHandler::cleanupListener(ulong uIndex)
 {
+    /* Check if we should release keyboard first: */
+    if (uIndex == m_iKeyboardCaptureViewIndex)
+        releaseKeyboard();
+
     /* If window still registered: */
     if (m_windows.contains(uIndex))
     {
