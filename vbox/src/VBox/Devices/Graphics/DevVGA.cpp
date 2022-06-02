@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 30524 2010-06-30 08:55:33Z vboxsync $ */
+/* $Id: DevVGA.cpp 30605 2010-07-05 12:18:44Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -127,6 +127,7 @@
 #include <VBox/pgm.h>
 #ifdef IN_RING3
 #include <iprt/alloc.h>
+#include <iprt/ctype.h>
 #endif /* IN_RING3 */
 #include <iprt/assert.h>
 #include <iprt/asm.h>
@@ -4627,7 +4628,10 @@ static DECLCALLBACK(void) vgaInfoText(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, co
         {
             for (col = 0; col < num_cols; ++col)
             {
-                pHlp->pfnPrintf(pHlp, "%c", *src);
+                if (RT_C_IS_PRINT(*src))
+                    pHlp->pfnPrintf(pHlp, "%c", *src);
+                else
+                    pHlp->pfnPrintf(pHlp, ".");
                 src += 8;   /* chars are spaced 8 bytes apart */
             }
             pHlp->pfnPrintf(pHlp, "\n");
