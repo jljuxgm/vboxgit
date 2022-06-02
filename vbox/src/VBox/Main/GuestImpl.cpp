@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 32852 2010-09-30 15:49:35Z vboxsync $ */
+/* $Id: GuestImpl.cpp 32855 2010-09-30 18:12:32Z vboxsync $ */
 
 /** @file
  *
@@ -753,7 +753,7 @@ int Guest::notifyCtrlExecStatus(uint32_t                u32Function,
                 CallbackMapIter it2;
                 for (it2 = mCallbackMap.begin(); it2 != mCallbackMap.end(); it2++)
                 {
-                    switch(it2->second.mType)
+                    switch (it2->second.mType)
                     {
                         case VBOXGUESTCTRLCALLBACKTYPE_EXEC_START:
                             break;
@@ -769,6 +769,10 @@ int Guest::notifyCtrlExecStatus(uint32_t                u32Function,
                                 destroyCtrlCallbackContext(it2);
                             break;
                         }
+
+                        default:
+                            AssertMsgFailed(("unknown callback type %d\n", it2->second.mType));
+                            break;
                     }
                 }
 
