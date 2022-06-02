@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30613 2010-07-05 12:56:59Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30652 2010-07-06 10:12:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1402,8 +1402,9 @@ int pgmR3PhysRamReset(PVM pVM)
     rc = GMMR3ResetSharedModules(pVM);
     AssertRC(rc);
 #endif
-    /* Reset counter. */
+    /* Reset counters. */
     pVM->pgm.s.cReusedSharedPages = 0;
+    pVM->pgm.s.cBalloonedPages    = 0;
 
     /*
      * We batch up pages that should be freed instead of calling GMM for
