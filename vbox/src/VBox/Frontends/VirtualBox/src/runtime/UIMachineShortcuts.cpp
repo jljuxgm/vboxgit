@@ -1,4 +1,4 @@
-/* $Id: UIMachineShortcuts.cpp 35634 2011-01-19 16:13:31Z vboxsync $ */
+/* $Id: UIMachineShortcuts.cpp 35752 2011-01-28 10:57:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -60,6 +60,7 @@ UIMachineShortcuts::UIMachineShortcuts()
 #endif /* VBOX_WITH_REGISTRATION */
     m_Shortcuts[UpdateShortcut]                = UIKeySequence("Update");
     m_Shortcuts[AboutShortcut]                 = UIKeySequence("About");
+    m_Shortcuts[PopupMenuShortcut]             = UIKeySequence("PopupMenu",             "Home");
     /* Overwrite the key sequences with the one in extra data. */
     loadExtraData(VBoxDefs::GUI_Input_MachineShortcuts, EndShortcutType);
 }
