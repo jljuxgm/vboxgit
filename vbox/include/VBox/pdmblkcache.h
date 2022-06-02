@@ -1,4 +1,4 @@
-/* $Id: pdmblkcache.h 34219 2010-11-21 18:10:39Z vboxsync $ */
+/* $Id: pdmblkcache.h 35162 2010-12-15 19:39:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Block cache. (VMM)
  */
@@ -309,6 +309,25 @@ VMMR3DECL(int) PDMR3BlkCacheFlush(PPDMBLKCACHE pBlkCache, void *pvUser);
  * @param   rcIoXfer        The status code of the completed request.
  */
 VMMR3DECL(void) PDMR3BlkCacheIoXferComplete(PPDMBLKCACHE pBlkCache, PPDMBLKCACHEIOXFER hIoXfer, int rcIoXfer);
+
+/**
+ * Suspends the block cache. The cache waits until all I/O transfers completed
+ * and stops to enqueue new requests after the call returned but will not accept
+ * reads, write or flushes either.
+ *
+ * @returns VBox status code.
+ * @param   pBlkCache       The cache instance.
+ */
+VMMR3DECL(int) PDMR3BlkCacheSuspend(PPDMBLKCACHE pBlkCache);
+
+/**
+ * Resumes operation of the block cache.
+ *
+ * @returns VBox status code.
+ * @param   pBlkCache       The cache instance.
+ */
+VMMR3DECL(int) PDMR3BlkCacheResume(PPDMBLKCACHE pBlkCache);
+
 /** @} */
 
 RT_C_DECLS_END

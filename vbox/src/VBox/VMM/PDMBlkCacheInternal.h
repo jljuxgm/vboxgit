@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCacheInternal.h 34347 2010-11-24 22:34:21Z vboxsync $ */
+/* $Id: PDMBlkCacheInternal.h 35162 2010-12-15 19:39:54Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -246,6 +246,10 @@ typedef struct PDMBLKCACHE
     /** Number of times a write was deferred because the cache entry was still in progress */
     STAMCOUNTER StatWriteDeferred;
 #endif
+
+    /** Flag whether the cache was suspended. */
+    volatile bool                 fSuspended;
+
 } PDMBLKCACHE, *PPDMBLKCACHE;
 #ifdef VBOX_WITH_STATISTICS
 AssertCompileMemberAlignment(PDMBLKCACHE, StatWriteDeferred, sizeof(uint64_t));
