@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 32967 2010-10-07 08:35:29Z vboxsync $ */
+/* $Id: DevPCNet.cpp 33326 2010-10-21 21:11:08Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -178,9 +178,9 @@ struct PCNetState_st
     PTMTIMERRC                          pTimerPollRC;
 #endif
 
-#if HC_ARCH_BITS == 64
+//#if HC_ARCH_BITS == 64
     uint32_t                            Alignment1;
-#endif
+//#endif
 
     /** Register Address Pointer */
     uint32_t                            u32RAP;
