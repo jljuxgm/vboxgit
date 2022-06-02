@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 31698 2010-08-16 15:00:05Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 34902 2010-12-09 16:16:51Z vboxsync $ */
 
 /** @file
  *
@@ -72,6 +72,7 @@ public:
     STDMETHOD(COMSETTER(VirtualTimeRate)) (ULONG aPct);
     STDMETHOD(COMGETTER(VM)) (LONG64 *aVm);
     STDMETHOD(InjectNMI)();
+    STDMETHOD(DumpGuestCore)(IN_BSTR a_bstrFilename);
 
     // IMachineDebugger methods
     STDMETHOD(ResetStats (IN_BSTR aPattern));

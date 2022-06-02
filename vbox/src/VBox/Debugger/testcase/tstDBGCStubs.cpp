@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 32313 2010-09-08 11:46:16Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 34902 2010-12-09 16:16:51Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -236,7 +236,7 @@ VMMR3DECL(int) DBGFR3SelQueryInfo(PVM pVM, VMCPUID idCpu, RTSEL Sel, uint32_t fF
     return VERR_INTERNAL_ERROR;
 }
 
-VMMR3DECL(int) DBGFR3CoreWrite(PVM pVM, const char *pszDumpPath)
+VMMR3DECL(int) DBGFR3CoreWrite(PVM pVM, const char *pszFilename, bool fReplaceFile)
 {
     return VERR_INTERNAL_ERROR;
 }
