@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31615 2010-08-12 18:12:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31683 2010-08-16 09:39:00Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8344,7 +8344,6 @@ HRESULT Machine::createImplicitDiffs(IProgress *aProgress,
 
             DeviceType_T devType = pAtt->getType();
             Medium* pMedium = pAtt->getMedium();
-            ComObjPtr<Medium> pBase = pMedium->getBase();
 
             if (   devType != DeviceType_HardDisk
                 || pMedium == NULL
@@ -8362,7 +8361,7 @@ HRESULT Machine::createImplicitDiffs(IProgress *aProgress,
                                                     aWeight);        // weight
                     else
                         aProgress->SetNextOperation(BstrFmt(tr("Skipping medium '%s'"),
-                                                            pBase->getName().c_str()),
+                                                            pMedium->getBase()->getName().c_str()),
                                                     aWeight);        // weight
                 }
 
@@ -8372,7 +8371,7 @@ HRESULT Machine::createImplicitDiffs(IProgress *aProgress,
 
             /* need a diff */
             aProgress->SetNextOperation(BstrFmt(tr("Creating differencing hard disk for '%s'"),
-                                                pBase->getName().c_str()),
+                                                pMedium->getBase()->getName().c_str()),
                                         aWeight);        // weight
 
             ComObjPtr<Medium> diff;
