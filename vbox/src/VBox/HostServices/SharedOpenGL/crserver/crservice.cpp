@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 30440 2010-06-24 18:51:20Z vboxsync $ */
+/* $Id: crservice.cpp 31698 2010-08-16 15:00:05Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -499,7 +499,7 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                     ComPtr<IDisplay> pDisplay;
                     ComPtr<IFramebuffer> pFramebuffer;
                     LONG xo, yo;
-                    ULONG64 winId = 0;
+                    LONG64 winId = 0;
                     ULONG monitorCount, i, w, h;
 
                     CHECK_ERROR_BREAK(pConsole, COMGETTER(Machine)(pMachine.asOutParam()));
@@ -613,7 +613,7 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                 ComPtr<IDisplay> pDisplay;
                 ComPtr<IFramebuffer> pFramebuffer;
                 LONG xo, yo;
-                ULONG64 winId = 0;
+                LONG64 winId = 0;
                 ULONG w, h;
 
                 Assert(g_pConsole);

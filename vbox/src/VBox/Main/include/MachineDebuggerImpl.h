@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 31698 2010-08-16 15:00:05Z vboxsync $ */
 
 /** @file
  *
@@ -70,7 +70,7 @@ public:
     STDMETHOD(COMGETTER(PAEEnabled)) (BOOL *aEnabled);
     STDMETHOD(COMGETTER(VirtualTimeRate)) (ULONG *aPct);
     STDMETHOD(COMSETTER(VirtualTimeRate)) (ULONG aPct);
-    STDMETHOD(COMGETTER(VM)) (ULONG64 *aVm);
+    STDMETHOD(COMGETTER(VM)) (LONG64 *aVm);
     STDMETHOD(InjectNMI)();
 
     // IMachineDebugger methods

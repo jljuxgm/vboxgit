@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 31574 2010-08-11 14:54:09Z vboxsync $ */
+/* $Id: ConsoleImpl.h 31698 2010-08-16 15:00:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -187,9 +187,13 @@ public:
     HRESULT onSharedFolderChange(BOOL aGlobal);
     HRESULT onUSBDeviceAttach(IUSBDevice *aDevice, IVirtualBoxErrorInfo *aError, ULONG aMaskedIfs);
     HRESULT onUSBDeviceDetach(IN_BSTR aId, IVirtualBoxErrorInfo *aError);
-    HRESULT getGuestProperty(IN_BSTR aKey, BSTR *aValue, ULONG64 *aTimestamp, BSTR *aFlags);
+    HRESULT getGuestProperty(IN_BSTR aKey, BSTR *aValue, LONG64 *aTimestamp, BSTR *aFlags);
     HRESULT setGuestProperty(IN_BSTR aKey, IN_BSTR aValue, IN_BSTR aFlags);
-    HRESULT enumerateGuestProperties(IN_BSTR aPatterns, ComSafeArrayOut(BSTR, aNames), ComSafeArrayOut(BSTR, aValues), ComSafeArrayOut(ULONG64, aTimestamps), ComSafeArrayOut(BSTR, aFlags));
+    HRESULT enumerateGuestProperties(IN_BSTR aPatterns,
+                                     ComSafeArrayOut(BSTR, aNames),
+                                     ComSafeArrayOut(BSTR, aValues),
+                                     ComSafeArrayOut(LONG64, aTimestamps),
+                                     ComSafeArrayOut(BSTR, aFlags));
     HRESULT onlineMergeMedium(IMediumAttachment *aMediumAttachment,
                               ULONG aSourceIdx, ULONG aTargetIdx,
                               IMedium *aSource, IMedium *aTarget,
@@ -222,7 +226,7 @@ public:
     void onUSBDeviceStateChange(IUSBDevice *aDevice, bool aAttached,
                                 IVirtualBoxErrorInfo *aError);
     void onRuntimeError(BOOL aFatal, IN_BSTR aErrorID, IN_BSTR aMessage);
-    HRESULT onShowWindow(BOOL aCheck, BOOL *aCanShow, ULONG64 *aWinId);
+    HRESULT onShowWindow(BOOL aCheck, BOOL *aCanShow, LONG64 *aWinId);
     void onRemoteDisplayInfoChange();
 
     static const PDMDRVREG DrvStatusReg;
@@ -563,7 +567,7 @@ private:
     HRESULT                     doEnumerateGuestProperties(CBSTR aPatterns,
                                                            ComSafeArrayOut(BSTR, aNames),
                                                            ComSafeArrayOut(BSTR, aValues),
-                                                           ComSafeArrayOut(ULONG64, aTimestamps),
+                                                           ComSafeArrayOut(LONG64, aTimestamps),
                                                            ComSafeArrayOut(BSTR, aFlags));
 
     bool enabledGuestPropertiesVRDP(void);

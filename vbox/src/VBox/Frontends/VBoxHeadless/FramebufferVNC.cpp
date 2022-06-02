@@ -1,4 +1,4 @@
-/* $Id: FramebufferVNC.cpp 30200 2010-06-15 14:18:05Z vboxsync $ */
+/* $Id: FramebufferVNC.cpp 31698 2010-08-16 15:00:05Z vboxsync $ */
 /** @file
  * VBoxHeadless - VNC server implementation for VirtualBox.
  *
@@ -615,7 +615,7 @@ STDMETHODIMP VNCFB::COMGETTER(Overlay) (IFramebufferOverlay **aOverlay)
  * @returns          COM status code
  * @retval  winId Associated window id
  */
-STDMETHODIMP VNCFB::COMGETTER(WinId) (ULONG64 *winId)
+STDMETHODIMP VNCFB::COMGETTER(WinId) (LONG64 *winId)
 {
     if (!winId)
         return E_POINTER;
@@ -682,4 +682,3 @@ STDMETHODIMP VNCFB::ProcessVHWACommand(BYTE *pCommand)
 NS_DECL_CLASSINFO(VNCFB)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(VNCFB, IFramebuffer)
 #endif
-

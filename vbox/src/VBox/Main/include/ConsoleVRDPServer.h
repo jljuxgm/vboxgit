@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 31698 2010-08-16 15:00:05Z vboxsync $ */
 
 /** @file
  *
@@ -263,10 +263,10 @@ public:
         DECL_GETTER (ULONG,   NumberOfClients);
         DECL_GETTER (LONG64,  BeginTime);
         DECL_GETTER (LONG64,  EndTime);
-        DECL_GETTER (ULONG64, BytesSent);
-        DECL_GETTER (ULONG64, BytesSentTotal);
-        DECL_GETTER (ULONG64, BytesReceived);
-        DECL_GETTER (ULONG64, BytesReceivedTotal);
+        DECL_GETTER (LONG64,  BytesSent);
+        DECL_GETTER (LONG64,  BytesSentTotal);
+        DECL_GETTER (LONG64,  BytesReceived);
+        DECL_GETTER (LONG64,  BytesReceivedTotal);
         DECL_GETTER (BSTR,    User);
         DECL_GETTER (BSTR,    Domain);
         DECL_GETTER (BSTR,    ClientName);

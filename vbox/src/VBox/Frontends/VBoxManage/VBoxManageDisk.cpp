@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 31599 2010-08-12 13:02:55Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 31698 2010-08-16 15:00:05Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -1180,12 +1180,12 @@ int handleShowHardDiskInfo(HandlerArg *a)
             RTPrintf("Description:          %lS\n", description.raw());
         }
 
-        ULONG64 logicalSize;
+        LONG64 logicalSize;
         hardDisk->COMGETTER(LogicalSize)(&logicalSize);
-        RTPrintf("Logical size:         %llu MBytes\n", logicalSize);
-        ULONG64 actualSize;
+        RTPrintf("Logical size:         %lld MBytes\n", logicalSize);
+        LONG64 actualSize;
         hardDisk->COMGETTER(Size)(&actualSize);
-        RTPrintf("Current size on disk: %llu MBytes\n", actualSize >> 20);
+        RTPrintf("Current size on disk: %lld MBytes\n", actualSize >> 20);
 
         ComPtr <IMedium> parent;
         hardDisk->COMGETTER(Parent) (parent.asOutParam());
