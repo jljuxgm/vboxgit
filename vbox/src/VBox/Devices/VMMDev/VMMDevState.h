@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 30773 2010-07-10 05:13:03Z vboxsync $ */
+/* $Id: VMMDevState.h 30774 2010-07-10 05:23:57Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -214,6 +214,8 @@ typedef struct VMMDevState
     RTCRITSECT critsectHGCMCmdList;
     /** Whether the HGCM events are already automatically enabled. */
     uint32_t u32HGCMEnabled;
+    /** Alignment padding. */
+    uint32_t u32Alignment7;
 #endif /* VBOX_WITH_HGCM */
 
     /** Status LUN: Shared folders LED */
@@ -229,6 +231,8 @@ typedef struct VMMDevState
 
     /** FLag whether CPU hotplug events are monitored */
     bool                fCpuHotPlugEventsEnabled;
+    /** Alignment padding. */
+    bool                afPadding8[3];
     /** CPU hotplug event */
     VMMDevCpuEventType  enmCpuHotPlugEvent;
     /** Core id of the CPU to change */
@@ -243,7 +247,7 @@ typedef struct VMMDevState
     /** Set if testing is enabled. */
     bool                fTestingEnabled;
     /** Alignment padding. */
-    bool                afPadding[HC_ARCH_BITS == 32 ? 6 : 2];
+    bool                afPadding9[HC_ARCH_BITS == 32 ? 2 : 2];
 #ifndef VBOX_WITHOUT_TESTING_FEATURES
     /** The high timestamp value. */
     uint32_t            u32TestingHighTimestamp;
