@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33565 2010-10-28 15:24:48Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33589 2010-10-29 06:58:22Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1245,12 +1245,12 @@ static int handleCtrlUpdateAdditions(HandlerArg *a)
             if (Utf8Source.isEmpty())
             {
                 char strTemp[RTPATH_MAX];
-                int rc = RTPathAppPrivateNoArch(strTemp, sizeof(strTemp));
-                AssertRC(rc);
+                int vrc = RTPathAppPrivateNoArch(strTemp, sizeof(strTemp));
+                AssertRC(vrc);
                 Utf8Str Utf8Src1 = Utf8Str(strTemp).append("/VBoxGuestAdditions.iso");
 
-                rc = RTPathExecDir(strTemp, sizeof(strTemp));
-                AssertRC(rc);
+                vrc = RTPathExecDir(strTemp, sizeof(strTemp));
+                AssertRC(vrc);
                 Utf8Str Utf8Src2 = Utf8Str(strTemp).append("/additions/VBoxGuestAdditions.iso");
 
                 /* Check the standard image locations */
