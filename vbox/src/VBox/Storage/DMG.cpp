@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: DMG.cpp 33773 2010-11-04 15:00:05Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -750,7 +750,7 @@ static void dmgSwapEndianUdifCkSum(PDMGUDIFCKSUM pCkSum, uint32_t u32Kind, uint3
             break;
 
         default:
-            AssertMsgFailed(("%x\n", u32Kind));
+//            AssertMsgFailed(("%x\n", u32Kind));
             break;
     }
     NOREF(cBits);
