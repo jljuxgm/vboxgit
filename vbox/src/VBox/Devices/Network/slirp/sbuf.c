@@ -1,4 +1,4 @@
-/* $Id: sbuf.c 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: sbuf.c 34103 2010-11-16 11:18:55Z vboxsync $ */
 /** @file
  * NAT - sbuf implemenation.
  */
@@ -113,10 +113,7 @@ sbappend(PNATState pData, struct socket *so, struct mbuf *m)
     caddr_t buf = NULL;
 
     STAM_PROFILE_START(&pData->StatIOSBAppend_pf, a);
-    DEBUG_CALL("sbappend");
-    DEBUG_ARG("so = %lx", (long)so);
-    DEBUG_ARG("m = %lx", (long)m);
-    DEBUG_ARG("m->m_len = %d", m ? m->m_len : 0);
+    LogFlow(("sbappend: so = %lx, m = %lx, m->m_len = %d\n", (long)so, (long)m, m ? m->m_len : 0));
 
     STAM_COUNTER_INC(&pData->StatIOSBAppend);
     /* Shouldn't happen, but...  e.g. foreign host closes connection */
@@ -286,10 +283,7 @@ sbappend (PNATState pData, struct socket *so, struct mbuf *m)
     caddr_t buf = NULL;
 
     STAM_PROFILE_START(&pData->StatIOSBAppend_pf, a);
-    DEBUG_CALL("sbappend");
-    DEBUG_ARG("so = %lx", (long)so);
-    DEBUG_ARG("m = %lx", (long)m);
-    DEBUG_ARG("m->m_len = %d", m ? m->m_len : 0);
+    LogFlow(("sbappend: so = %lx, m = %lx, m->m_len = %d\n", (long)so, (long)m, m ? m->m_len : 0));
 
     STAM_COUNTER_INC(&pData->StatIOSBAppend);
     mlen = m_length(m, NULL);

@@ -1,4 +1,4 @@
-/* $Id: slirp.h 34036 2010-11-12 18:46:21Z vboxsync $ */
+/* $Id: slirp.h 34103 2010-11-16 11:18:55Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -388,7 +388,7 @@ int sscanf(const char *s, const char *format, ...);
 #if defined(VBOX_SLIRP_ALIAS) || defined(VBOX_SLIRP_BSD)
 
 # define ip_next(ip) (void *)((uint8_t *)(ip) + ((ip)->ip_hl << 2))
-# define udp_next(udp) (void *)((uint8_t *)&((struct udphdr *)(udp))[1] )
+# define udp_next(udp) (void *)((uint8_t *)&((struct udphdr *)(udp))[1])
 # define bcopy(src, dst, len) memcpy((dst), (src), (len))
 # define bcmp(a1, a2, len) memcmp((a1), (a2), (len))
 # define NO_FW_PUNCH

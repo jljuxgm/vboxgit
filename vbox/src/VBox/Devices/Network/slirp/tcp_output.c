@@ -1,4 +1,4 @@
-/* $Id: tcp_output.c 30045 2010-06-04 20:38:56Z vboxsync $ */
+/* $Id: tcp_output.c 34103 2010-11-16 11:18:55Z vboxsync $ */
 /** @file
  * NAT - TCP output.
  */
@@ -101,8 +101,7 @@ tcp_output(PNATState pData, register struct tcpcb *tp)
     int idle, sendalot;
     int size;
 
-    DEBUG_CALL("tcp_output");
-    DEBUG_ARG("tp = %lx", (long )tp);
+    LogFlow(("tcp_output: tp = %lx\n", (long)tp));
 
     /*
      * Determine length of data that should be transmitted,
@@ -126,7 +125,7 @@ again:
 
     flags = tcp_outflags[tp->t_state];
 
-    DEBUG_MISC((dfd, " --- tcp_output flags = 0x%x\n",flags));
+    Log2((" --- tcp_output flags = 0x%x\n", flags));
 
     /*
      * If in persist timeout with window of 0, send 1 byte.
