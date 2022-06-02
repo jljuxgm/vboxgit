@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 31423 2010-08-05 19:46:29Z vboxsync $
+# $Id: vboxconfig.sh 31424 2010-08-05 19:49:11Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -107,7 +107,7 @@ find_bin_path()
         echo "$binfilepath"
         return 0
     else
-        errorprint "$1, $2 missing or is not an executable"
+        errorprint "$1 missing or is not an executable"
         exit 1
     fi
 }
