@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33382 2010-10-24 13:58:16Z vboxsync $
+# $Id: Makefile.kmk 33573 2010-10-28 16:44:27Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -601,7 +601,7 @@ VBOX_CORE_DOXYFILE_INPUT_FIRST =\
 	$(PATH_ROOT)/include/VBox/vm.h \
 	\
 	$(PATH_ROOT)/include/VBox/sup.h \
-	$(PATH_ROOT)/include/VBox/VBoxHDD.h \
+	$(PATH_ROOT)/include/VBox/vd.h \
 	$(PATH_ROOT)/include/VBox/types.h \
 	$(PATH_ROOT)/include/VBox/err.h \
 	$(PATH_ROOT)/include/VBox/x86.h \
