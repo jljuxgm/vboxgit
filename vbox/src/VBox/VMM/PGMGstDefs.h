@@ -1,4 +1,4 @@
-/* $Id: PGMGstDefs.h 32009 2010-08-26 16:41:19Z vboxsync $ */
+/* $Id: PGMGstDefs.h 32034 2010-08-27 10:05:25Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -175,7 +175,7 @@
 # define PGSTPDE                                PX86PDEPAE
 # define GST_BIG_PAGE_SIZE                      X86_PAGE_2M_SIZE
 # define GST_BIG_PAGE_OFFSET_MASK               X86_PAGE_2M_OFFSET_MASK
-# define GST_PDE_PG_MASK                        X86_PDE_PAE_PG_MASK_FULL
+# define GST_PDE_PG_MASK                        X86_PDE_PAE_PG_MASK
 # define GST_PDE_BIG_PG_MASK                    X86_PDE2M_PAE_PG_MASK
 # define GST_GET_PTE_GCPHYS(Pte)                ((Pte).u & GST_PTE_PG_MASK)
 # define GST_GET_PDE_GCPHYS(Pde)                ((Pde).u & GST_PDE_PG_MASK)
