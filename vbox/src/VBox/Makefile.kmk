@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34073 2010-11-15 15:38:20Z vboxsync $
+# $Id: Makefile.kmk 34089 2010-11-15 21:26:02Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -80,7 +80,7 @@ else
  if1of ($(KBUILD_TARGET_ARCH), amd64 x86)
   include $(PATH_SUB_CURRENT)/NetworkServices/Makefile.kmk
  endif
- ifdef VBOX_OSE
+ ifndef VBOX_OSE
   include $(PATH_SUB_CURRENT)/ExtPacks/Makefile.kmk
  endif
  ifdef VBOX_WITH_INSTALLER
