@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 30572 2010-07-02 11:52:02Z vboxsync $ */
+/* $Id: PATM.cpp 30575 2010-07-02 12:29:14Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -1012,7 +1012,7 @@ static int patmr3SetBranchTargets(PVM pVM, PPATCHINFO pPatch)
     int32_t displ;
 
     PJUMPREC pRec = 0;
-    int      nrJumpRecs = 0;
+    unsigned nrJumpRecs = 0;
 
     /*
      * Set all branch targets inside the patch block.

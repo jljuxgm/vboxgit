@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 30572 2010-07-02 11:52:02Z vboxsync $ */
+/* $Id: PATMSSM.cpp 30575 2010-07-02 12:29:14Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -425,7 +425,7 @@ static DECLCALLBACK(int) patmSavePatchState(PAVLOU32NODECORE pNode, void *pVM1)
 #ifdef VBOX_STRICT
     uint32_t nrFixupRecs = 0;
     RTAvlPVDoWithAll(&pPatch->patch.FixupTree, true, patmCountLeafPV, &nrFixupRecs);
-    AssertMsg((int32_t)nrFixupRecs == pPatch->patch.nrFixups, ("Fixup inconsistency! counted %d vs %d\n", nrFixupRecs, pPatch->patch.nrFixups));
+    AssertMsg(nrFixupRecs == pPatch->patch.nrFixups, ("Fixup inconsistency! counted %d vs %d\n", nrFixupRecs, pPatch->patch.nrFixups));
 #endif
     RTAvlPVDoWithAll(&pPatch->patch.FixupTree, true, patmSaveFixupRecords, pVM);
 
