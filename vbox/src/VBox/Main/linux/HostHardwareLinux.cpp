@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 31652 2010-08-13 14:17:53Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 32079 2010-08-30 08:40:17Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1221,6 +1221,7 @@ hotplugInotifyImpl::hotplugInotifyImpl(void) :
     /* Excercise the code path (term() on a not-fully-initialised object) as
      * well as we can.  On an uninitialised object this method is a sematic
      * no-op. */
+    mWatches.mhInotify = -1; /* term will access this variable */
     term();
     /* For now this probing method should only be used if nothing else is
      * available */
