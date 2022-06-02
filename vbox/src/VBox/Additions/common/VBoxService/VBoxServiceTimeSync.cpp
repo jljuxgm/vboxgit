@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 32644 2010-09-20 14:35:17Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 32647 2010-09-20 16:07:08Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -257,10 +257,10 @@ static DECLCALLBACK(int) VBoxServiceTimeSyncOption(const char **ppszShort, int a
         rc = VINF_SUCCESS;
     }
     else if (!strcmp(argv[*pi], "--timesync-set-on-restore"))
-        rc = VBoxServiceArgUInt32(argc, argv, "", pi,
-                                  &value, 1, 1);
     {
-        g_fTimeSyncSetOnRestore = !!value;
+        rc = VBoxServiceArgUInt32(argc, argv, "", pi, &value, 1, 1);
+        if (RT_SUCCESS(rc))
+            g_fTimeSyncSetOnRestore = !!value;
     }
 
     return rc;
