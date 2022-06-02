@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePropCache.cpp 31915 2010-08-24 12:20:32Z vboxsync $ */
+/* $Id: VBoxServicePropCache.cpp 31918 2010-08-24 12:41:31Z vboxsync $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
@@ -112,6 +112,8 @@ int vboxServicePropCacheWritePropF(uint32_t u32ClientId, const char *pszName, ui
                 rc = VbglR3GuestPropWriteValue(u32ClientId, pszName, pszValue);
             RTStrFree(pszValue);
         }
+        else
+            rc = VERR_NO_MEMORY;
         va_end(va);
     }
     else
