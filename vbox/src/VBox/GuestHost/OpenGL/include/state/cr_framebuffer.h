@@ -1,4 +1,4 @@
-/* $Id: cr_framebuffer.h 31808 2010-08-20 09:40:40Z vboxsync $ */
+/* $Id: cr_framebuffer.h 34107 2010-11-16 11:37:51Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: FBO related state info
@@ -61,9 +61,6 @@ typedef struct {
 typedef struct {
     CRFramebufferObject     *readFB, *drawFB;
     CRRenderbufferObject    *renderbuffer;
-
-    /* Indicates that we have to resend FBO data to GPU on first glMakeCurrent call with owning context */
-    GLboolean   bResyncNeeded;
 } CRFramebufferObjectState;
 
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectInit(CRContext *ctx);
