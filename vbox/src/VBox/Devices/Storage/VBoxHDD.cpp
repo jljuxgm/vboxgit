@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 32370 2010-09-09 21:39:15Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 32381 2010-09-10 09:48:47Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -5501,6 +5501,8 @@ VBOXDDU_DECL(int) VDCopy(PVBOXHDD pDiskFrom, unsigned nImage, PVBOXHDD pDiskTo,
                 AssertRC(rc2);
                 fLockWriteTo = false;
             }
+            else /* Don't propagate the error to the outside */
+                rc = VINF_SUCCESS;
 
             uOffset += cbThisRead;
             cbRemaining -= cbThisRead;
