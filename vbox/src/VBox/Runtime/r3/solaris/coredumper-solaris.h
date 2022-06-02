@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.h 31860 2010-08-23 13:56:17Z vboxsync $ */
+/* $Id: coredumper-solaris.h 31862 2010-08-23 14:31:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core dump, header.
  */
@@ -88,7 +88,7 @@ typedef VBOXSOLMAPINFO *PVBOXSOLMAPINFO;
 typedef enum VBOXSOLCORETYPE
 {
     enmOldEra       = 0x01d,        /* old */
-    enmNewEra       = 0x5c151       /* sci-fi */
+    enmNewEra       = 0x5c1f1       /* sci-fi */
 } VBOXSOLCORETYPE;
 
 /**
