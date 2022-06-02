@@ -1,9 +1,10 @@
-# $Id: errmsg.sed 35810 2011-02-01 13:00:24Z vboxsync $
+# $Id: errmsg.sed 35811 2011-02-01 13:12:08Z vboxsync $
 ## @file
 # IPRT - SED script for converting */err.h.
 #
 
-# Copyright (C) 2006-2009 Oracle Corporation
+#
+# Copyright (C) 2006-2011 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
