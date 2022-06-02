@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31860 2010-08-23 13:56:17Z vboxsync $
+# $Id: Makefile.kmk 32227 2010-09-03 06:37:27Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1822,7 +1822,7 @@ $(IPRT_OUT_DIR)/errmsgvboxcomdata.h: \
 		$(VBOX_XIDL_FILE_SRC) \
 		| $$(dir $$@)
 	$(call MSG_GENERATE,,$@,$(filter %.xidl,$^))
-	$(VBOX_XSLTPROC) -o $@ $< $(filter %.xidl,$^)
+	$(QUIET)$(VBOX_XSLTPROC) -o $@ $< $(filter %.xidl,$^)
 
 
 if "$(KBUILD_TARGET)" == "freebsd"
