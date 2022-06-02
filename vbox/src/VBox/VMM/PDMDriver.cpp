@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 34207 2010-11-19 15:31:50Z vboxsync $ */
+/* $Id: PDMDriver.cpp 34219 2010-11-21 18:10:39Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -658,6 +658,9 @@ void pdmR3DrvDestroyChain(PPDMDRVINS pDrvIns, uint32_t fFlags)
         /* PDM critsects. */
         rc = pdmR3CritSectDeleteDriver(pVM, pCur);
         AssertRC(rc);
+
+        /* Block caches. */
+        PDMR3BlkCacheReleaseDriver(pVM, pCur);
 
         /* Finally, the driver it self. */
         bool fHyperHeap = pCur->Internal.s.fHyperHeap;

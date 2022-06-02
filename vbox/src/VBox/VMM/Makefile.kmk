@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33935 2010-11-10 15:37:02Z vboxsync $
+# $Id: Makefile.kmk 34219 2010-11-21 18:10:39Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -166,7 +166,8 @@ VMMR3_SOURCES   = \
 	PATM/PATMGuest.cpp \
 	PATM/PATMA.asm \
 	PATM/PATMSSM.cpp \
-	PATM/VMMAll/PATMAll.cpp
+	PATM/VMMAll/PATMAll.cpp \
+	PDMBlkCache.cpp
 ifdef VBOX_WITH_VUSB
  VMMR3_SOURCES += PDMUsb.cpp
 endif
