@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 32313 2010-09-08 11:46:16Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 32340 2010-09-09 11:51:09Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -55,6 +55,7 @@
 #include <VBox/cpum.h>
 #include "CPUMInternal.h"
 #include <VBox/dbgf.h>
+#include <VBox/dbgfcore.h>
 #include <VBox/vm.h>
 #include <VBox/pgm.h>
 #include <VBox/err.h>
@@ -313,12 +314,14 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3CoreWrite(PVM pVM, PVMCPU pVCpu, void *p
 
     DBGFCOREDESCRIPTOR CoreDescriptor;
     RT_ZERO(CoreDescriptor);
-    CoreDescriptor.u32Magic     = DBGFCORE_MAGIC;
-    CoreDescriptor.VBoxVersion  = VBOX_FULL_VERSION;
-    CoreDescriptor.VBoxRevision = VBOX_SVN_REV;
-    CoreDescriptor.cCpus        = pVM->cCpus;
+    CoreDescriptor.u32Magic         = DBGFCORE_MAGIC;
+    CoreDescriptor.u32FmtVersion    = DBGFCORE_FMT_VERSION;
+    CoreDescriptor.cbSelf           = sizeof(CoreDescriptor);
+    CoreDescriptor.u32VBoxVersion   = VBOX_FULL_VERSION;
+    CoreDescriptor.u32VBoxRevision  = VMMGetSvnRev();
+    CoreDescriptor.cCpus            = pVM->cCpus;
 
-    LogRel((DBGFLOG_NAME ":CoreDescriptor Version=%u Revision=%u\n", CoreDescriptor.VBoxVersion, CoreDescriptor.VBoxRevision));
+    LogRel((DBGFLOG_NAME ":CoreDescriptor Version=%u Revision=%u\n", CoreDescriptor.u32VBoxVersion, CoreDescriptor.u32VBoxRevision));
 
     /*
      * Compute total size of the note section.

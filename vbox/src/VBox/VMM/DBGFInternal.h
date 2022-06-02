@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 32253 2010-09-06 15:14:24Z vboxsync $ */
+/* $Id: DBGFInternal.h 32340 2010-09-09 11:51:09Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -308,27 +308,6 @@ typedef struct DBGFCPU
 } DBGFCPU;
 /** Pointer to DBGFCPU data. */
 typedef DBGFCPU *PDBGFCPU;
-
-
-/** DBGCORECOREDESCRIPTOR::u32Magic. */
-#define DBGFCORE_MAGIC      0xc01ac0de
-
-/**
- * The DBGF Core descriptor.
- */
-typedef struct DBGFCOREDESCRIPTOR
-{
-    /** The core file magic (DBGFCORE_MAGIC) */
-    uint32_t                u32Magic;
-    /** VirtualBox version. */
-    uint64_t                VBoxVersion;
-    /** VirtualBox revision. */
-    uint64_t                VBoxRevision;
-    /** Number of CPUs. */
-    uint32_t                cCpus;
-} DBGFCOREDESCRIPTOR;
-/** Pointer to DBGFCOREDESCRIPTOR data. */
-typedef DBGFCOREDESCRIPTOR  *PDBGFCOREDESCRIPTOR;
 
 
 int  dbgfR3AsInit(PVM pVM);
