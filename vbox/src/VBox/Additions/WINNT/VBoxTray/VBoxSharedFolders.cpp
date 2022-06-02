@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFolders.cpp 33966 2010-11-11 10:32:07Z vboxsync $ */
+/* $Id: VBoxSharedFolders.cpp 34613 2010-12-02 14:08:02Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */
@@ -26,7 +26,7 @@ int VBoxSharedFoldersAutoMount(void)
 {
     uint32_t u32ClientId;
     int rc = VbglR3SharedFolderConnect(&u32ClientId);
-    if (!RT_SUCCESS(rc))
+    if (RT_FAILURE(rc))
         Log(("VBoxTray: Failed to connect to the shared folder service, error %Rrc\n", rc));
     else
     {
