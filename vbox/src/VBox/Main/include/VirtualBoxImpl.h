@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33451 2010-10-26 09:34:19Z vboxsync $ */
 
 /** @file
  *
@@ -122,8 +122,11 @@ public:
 
     /* IVirtualBox methods */
     STDMETHOD(ComposeMachineFilename) (IN_BSTR aName, IN_BSTR aBaseFolder, BSTR *aFilename);
-    STDMETHOD(CreateMachine) (IN_BSTR aName, IN_BSTR aOsTypeId, IN_BSTR aBaseFolder,
-                              IN_BSTR aId, BOOL aOverride, IMachine **aMachine);
+    STDMETHOD(CreateMachine) (IN_BSTR aSettingsFile,
+                              IN_BSTR aName,
+                              IN_BSTR aOsTypeId,
+                              IN_BSTR aId,
+                              IMachine **aMachine);
     STDMETHOD(OpenMachine) (IN_BSTR aSettingsFile, IMachine **aMachine);
     STDMETHOD(RegisterMachine) (IMachine *aMachine);
     STDMETHOD(FindMachine) (IN_BSTR aNameOrId, IMachine **aMachine);

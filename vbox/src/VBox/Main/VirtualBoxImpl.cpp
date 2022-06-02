@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33396 2010-10-24 16:21:10Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33451 2010-10-26 09:34:19Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1193,15 +1193,14 @@ STDMETHODIMP VirtualBox::ComposeMachineFilename(IN_BSTR aName,
 }
 
 /** @note Locks mSystemProperties object for reading. */
-STDMETHODIMP VirtualBox::CreateMachine(IN_BSTR aName,
+STDMETHODIMP VirtualBox::CreateMachine(IN_BSTR aSettingsFile,
+                                       IN_BSTR aName,
                                        IN_BSTR aOsTypeId,
-                                       IN_BSTR aBaseFolder,
                                        IN_BSTR aId,
-                                       BOOL aOverride,
                                        IMachine **aMachine)
 {
     LogFlowThisFuncEnter();
-    LogFlowThisFunc(("aName=\"%ls\",aOsTypeId =\"%ls\",aBaseFolder=\"%ls\"\n", aName, aOsTypeId, aBaseFolder));
+    LogFlowThisFunc(("aSettingsFile=\"%ls\", aName=\"%ls\", aOsTypeId =\"%ls\"\n", aSettingsFile, aName, aOsTypeId));
 
     CheckComArgStrNotEmptyOrNull(aName);
     /** @todo tighten checks on aId? */
@@ -1210,9 +1209,16 @@ STDMETHODIMP VirtualBox::CreateMachine(IN_BSTR aName,
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    Bstr bstrSettingsFilename;
-    HRESULT rc = ComposeMachineFilename(aName, aBaseFolder, bstrSettingsFilename.asOutParam());
-    if (FAILED(rc)) return rc;
+    /* NULL settings file means compose automatically */
+    HRESULT rc;
+    Bstr bstrSettingsFile(aSettingsFile);
+    if (bstrSettingsFile.isEmpty())
+    {
+        rc = ComposeMachineFilename(aName,
+                                    NULL,
+                                    bstrSettingsFile.asOutParam());
+        if (FAILED(rc)) return rc;
+    }
 
     /* create a new object */
     ComObjPtr<Machine> machine;
@@ -1230,12 +1236,10 @@ STDMETHODIMP VirtualBox::CreateMachine(IN_BSTR aName,
 
     /* initialize the machine object */
     rc = machine->init(this,
-                       Utf8Str(bstrSettingsFilename),
+                       Utf8Str(bstrSettingsFile),
                        Utf8Str(aName),
                        id,
-                       osType,
-                       aOverride,
-                       TRUE /* aNameSync */);
+                       osType);
     if (SUCCEEDED(rc))
     {
         /* set the return value */
