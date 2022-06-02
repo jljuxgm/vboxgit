@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 34267 2010-11-22 21:23:13Z vboxsync $ */
+/* $Id: server_muralfbo.c 34269 2010-11-22 22:44:43Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -232,7 +232,7 @@ void crServerCreateMuralFBO(CRMuralInfo *mural)
     cr_server.head_spu->dispatch_table.BindTexture(GL_TEXTURE_2D, uid);
 
     uid = ctx->framebufferobject.renderbuffer ? ctx->framebufferobject.renderbuffer->hwid:0;
-    cr_server.head_spu->dispatch_table.BindRenderbufferEXT(GL_RENDERBUFFER_EXT, mural->idDepthStencilRB);
+    cr_server.head_spu->dispatch_table.BindRenderbufferEXT(GL_RENDERBUFFER_EXT, uid);
 
     uid = ctx->framebufferobject.drawFB ? ctx->framebufferobject.drawFB->hwid:0;
     cr_server.head_spu->dispatch_table.BindFramebufferEXT(GL_FRAMEBUFFER_EXT, uid);
