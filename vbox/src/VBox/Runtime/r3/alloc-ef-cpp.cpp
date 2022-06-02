@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-cpp.cpp 31157 2010-07-28 03:15:35Z vboxsync $ */
+/* $Id: alloc-ef-cpp.cpp 31252 2010-07-30 15:38:52Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
@@ -29,7 +29,8 @@
 *******************************************************************************/
 #include "alloc-ef.h"
 
-#if defined(RTALLOC_EFENCE_CPP) || defined(RTMEM_WRAP_TO_EF_APIS) /* rest of the file */
+#if defined(RTALLOC_EFENCE_CPP) \
+ || (defined(RTMEM_WRAP_TO_EF_APIS) && !defined(RTMEM_NO_WRAP_TO_EF_APIS)) /* rest of the file */
 
 #include <iprt/asm.h>
 #include <new>
