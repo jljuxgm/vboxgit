@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 31058 2010-07-23 13:06:52Z vboxsync $ */
+/* $Id: VUSBInternal.h 31230 2010-07-30 07:29:31Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -354,7 +354,7 @@ typedef struct VUSBROOTHUB
     /** Chain of devices attached to this hub. */
     PVUSBDEV                pDevices;
 #if HC_ARCH_BITS == 32
-    uint32_t                Alignment0;
+//    uint32_t                Alignment0;
 #endif
     /** Availability Bitmap. */
     VUSBPORTBITMAP          Bitmap;
