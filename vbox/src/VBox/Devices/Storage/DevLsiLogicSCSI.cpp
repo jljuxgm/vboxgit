@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 33236 2010-10-19 15:14:42Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 33419 2010-10-25 12:45:01Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5053,10 +5053,17 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
 #ifdef VBOX_WITH_MSI_DEVICES
     PDMMSIREG aMsiReg;
     RT_ZERO(aMsiReg);
+    /* use this code for MSI-X support */
+#if 0
+    aMsiReg.cMsixVectors = 1;
+    aMsiReg.iMsixCapOffset = 0x80;
+    aMsiReg.iMsixNextOffset = 0x0;
+    aMsiReg.iMsixBar = 3;
+#else
     aMsiReg.cMsiVectors = 1;
     aMsiReg.iMsiCapOffset = 0x80;
     aMsiReg.iMsiNextOffset = 0x0;
-    aMsiReg.iMsiFlags = 0;
+#endif
     rc = PDMDevHlpPCIRegisterMsi(pDevIns, &aMsiReg);
     if (RT_FAILURE (rc))
     {
