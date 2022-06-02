@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 34421 2010-11-26 17:44:43Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 34423 2010-11-26 18:02:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -216,7 +216,7 @@ DECLCALLBACK(int) VirtualBoxClient::SVCWatcherThread(RTTHREAD ThreadSelf,
                 rc = pV->COMGETTER(Revision)(&rev);
                 if (FAILED_DEAD_INTERFACE(rc))
                 {
-                    LogRel(("VirtualBoxClient: detected unresponsive VBoxSVC (rc=%Rhrc)", rc));
+                    LogRel(("VirtualBoxClient: detected unresponsive VBoxSVC (rc=%Rhrc)\n", rc));
                     fireVBoxSVCUnavailableEvent(pThis->mData.m_pEventSource);
 
                     /* Throw away the VirtualBox reference, it's no longer
