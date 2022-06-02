@@ -1,4 +1,4 @@
-/* $Id: USBLib-win.cpp 34264 2010-11-22 18:20:59Z vboxsync $ */
+/* $Id: USBLib-win.cpp 34265 2010-11-22 18:53:54Z vboxsync $ */
 /** @file
  * USBLIB - USB support library interface, Windows.
  */
@@ -2918,12 +2918,12 @@ USBLIB_DECL(int) USBLibGetDevices(PUSBDEVICE *ppDevices, uint32_t *pcDevices)
         pDevice = ppCaptured[i];
         if (pDevice)
         {
-            RTMemFree((void *)pDevice->pszAddress);
+            RTStrFree((char*)pDevice->pszAddress);
             RTStrFree(pDevice->pszAltAddress);
             RTStrFree(pDevice->pszHubName);
-            RTMemFree((void *)pDevice->pszManufacturer);
-            RTMemFree((void *)pDevice->pszProduct);
-            RTMemFree((void *)pDevice->pszSerialNumber);
+            RTStrFree((char*)pDevice->pszManufacturer);
+            RTStrFree((char*)pDevice->pszProduct);
+            RTStrFree((char*)pDevice->pszSerialNumber);
             RTMemFree(pDevice);
         }
     }
@@ -2984,10 +2984,12 @@ failure:
     {
         PUSBDEVICE pNext = pDevice->pNext;
 
-        RTMemFree((void *)pDevice->pszAddress);
-        RTMemFree((void *)pDevice->pszManufacturer);
-        RTMemFree((void *)pDevice->pszProduct);
-        RTMemFree((void *)pDevice->pszSerialNumber);
+        RTStrFree((char*)pDevice->pszAddress);
+        RTStrFree(pDevice->pszAltAddress);
+        RTStrFree(pDevice->pszHubName);
+        RTStrFree((char*)pDevice->pszManufacturer);
+        RTStrFree((char*)pDevice->pszProduct);
+        RTStrFree((char*)pDevice->pszSerialNumber);
         RTMemFree(pDevice);
 
         pDevice = pNext;
@@ -2999,10 +3001,12 @@ failure:
         pDevice = ppCaptured[i];
         if (pDevice)
         {
-            RTMemFree((void *)pDevice->pszAddress);
-            RTMemFree((void *)pDevice->pszManufacturer);
-            RTMemFree((void *)pDevice->pszProduct);
-            RTMemFree((void *)pDevice->pszSerialNumber);
+            RTStrFree((char*)pDevice->pszAddress);
+            RTStrFree(pDevice->pszAltAddress);
+            RTStrFree(pDevice->pszHubName);
+            RTStrFree((char*)pDevice->pszManufacturer);
+            RTStrFree((char*)pDevice->pszProduct);
+            RTStrFree((char*)pDevice->pszSerialNumber);
             RTMemFree(pDevice);
         }
     }
