@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30764 2010-07-09 14:12:12Z vboxsync $
+# $Id: Makefile.kmk 32231 2010-09-03 08:22:35Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -181,6 +181,9 @@ $(addprefix $$(PATH_VBoxBFE)/,$(VBOXBFE_MAIN_H)): \
 	$(call MSG_INST_FILE,$<,$@)
 	$(QUIET)$(CP_EXT) $< $@
 
+OTHER_CLEAN += \
+	$(addprefix $(PATH_VBoxBFE)/,$(VBOXBFE_MAIN_CPP)) \
+	$(addprefix $(PATH_VBoxBFE)/,$(VBOXBFE_MAIN_H))
 
 
 endif # !VBOX_WITH_HARDENING || !darwin
