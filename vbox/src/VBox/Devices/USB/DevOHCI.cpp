@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: DevOHCI.cpp 33813 2010-11-05 19:35:30Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1110,7 +1110,8 @@ static void ohciDoReset(POHCI pOhci, uint32_t fNewMode, bool fResetOnLinux)
  */
 DECLINLINE(void) ohciPhysRead(POHCI pOhci, uint32_t Addr, void *pvBuf, size_t cbBuf)
 {
-    PDMDevHlpPhysRead(pOhci->CTX_SUFF(pDevIns), Addr, pvBuf, cbBuf);
+    if (cbBuf)
+        PDMDevHlpPhysRead(pOhci->CTX_SUFF(pDevIns), Addr, pvBuf, cbBuf);
 }
 
 /**
@@ -1118,7 +1119,8 @@ DECLINLINE(void) ohciPhysRead(POHCI pOhci, uint32_t Addr, void *pvBuf, size_t cb
  */
 DECLINLINE(void) ohciPhysWrite(POHCI pOhci, uint32_t Addr, const void *pvBuf, size_t cbBuf)
 {
-    PDMDevHlpPhysWrite(pOhci->CTX_SUFF(pDevIns), Addr, pvBuf, cbBuf);
+    if (cbBuf)
+        PDMDevHlpPhysWrite(pOhci->CTX_SUFF(pDevIns), Addr, pvBuf, cbBuf);
 }
 
 /**
