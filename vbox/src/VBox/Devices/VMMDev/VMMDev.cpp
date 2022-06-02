@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 30852 2010-07-14 18:16:12Z vboxsync $ */
+/* $Id: VMMDev.cpp 30857 2010-07-15 09:06:38Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2900,9 +2900,6 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed querying \"TestingEnabled\" as a boolean"));
-# if 1 //def DEBUG_bird /* lazy bird */ - do not commit this!!!!
-    pThis->fTestingEnabled = true;
-# endif
     /** @todo image-to-load-filename? */
 #endif
 
