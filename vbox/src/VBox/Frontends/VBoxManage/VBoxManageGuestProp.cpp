@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 30599 2010-07-05 11:05:26Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 30600 2010-07-05 11:07:22Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -351,11 +351,12 @@ static int handleWaitGuestProperty(HandlerArg *a)
                         Bstr aNextValue, aNextFlags;
                         gpcev->COMGETTER(Value)(aNextValue.asOutParam());
                         gpcev->COMGETTER(Flags)(aNextFlags.asOutParam());
-                        RTPrintf("Name: %lS, value: %lS, flags: %lS\n", 
+                        RTPrintf("Name: %lS, value: %lS, flags: %lS\n",
                                  aNextName.raw(), aNextValue.raw(), aNextFlags.raw());
                         fSignalled = true;
                         break;
                     }
+                    break;
                 }
                 default:
                      AssertFailed();
