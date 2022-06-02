@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 30871 2010-07-16 10:07:21Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 31816 2010-08-20 12:51:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -132,8 +132,8 @@ UIConsoleEventHandler::UIConsoleEventHandler(UISession *pSession)
 
     /* This returns a winId, so we have to respond to the event and have to use
      * a direct connection therefor. */
-    connect(pListener, SIGNAL(sigShowWindow(ULONG64&)),
-            this, SLOT(sltShowWindow(ULONG64&)),
+    connect(pListener, SIGNAL(sigShowWindow(LONG64&)),
+            this, SLOT(sltShowWindow(LONG64&)),
             Qt::DirectConnection);
 }
 
@@ -149,7 +149,7 @@ void UIConsoleEventHandler::sltCanShowWindow(bool & /* fVeto */, QString & /* st
     /* No veto, so nothing for us to do. */
 }
 
-void UIConsoleEventHandler::sltShowWindow(ULONG64 &winId)
+void UIConsoleEventHandler::sltShowWindow(LONG64 &winId)
 {
 #ifdef Q_WS_MAC
         /* Let's try the simple approach first - grab the focus.
