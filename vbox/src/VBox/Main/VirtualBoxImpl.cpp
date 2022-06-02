@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 30777 2010-07-12 08:25:15Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2470,7 +2470,7 @@ VirtualBox::SVCHelperClientThread(RTTHREAD aThread, void *aUser)
                  * (pressing the Cancel button to close the Run As dialog) */
                 if (vrc2 == VERR_CANCELLED)
                     rc = d->that->setError(E_FAIL,
-                                           tr("Operation cancelled by the user"));
+                                           tr("Operation canceled by the user"));
                 else
                     rc = d->that->setError(E_FAIL,
                                            tr("Could not launch a privileged process '%s' (%Rrc)"),
