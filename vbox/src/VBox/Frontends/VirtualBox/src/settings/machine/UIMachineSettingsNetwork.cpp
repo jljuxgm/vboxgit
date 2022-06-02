@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 33906 2010-11-09 15:16:17Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 34004 2010-11-11 18:23:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -58,16 +58,6 @@ UIMachineSettingsNetwork::UIMachineSettingsNetwork (UIMachineSettingsNetworkPage
     connect (mAbsAdvanced, SIGNAL (clicked()), this, SLOT (toggleAdvanced()));
     connect (mTbMAC, SIGNAL (clicked()), this, SLOT (generateMac()));
     connect (mPbPortForwarding, SIGNAL (clicked()), this, SLOT (sltOpenPortForwardingDlg()));
-
-#ifdef Q_WS_MAC
-    /* Prevent this widgets to go in the Small/Mini size state which is
-     * available on Mac OS X. Not sure why this happens but this seems to help
-     * against. */
-    QList <QWidget*> list = findChildren <QWidget*>();
-    foreach (QWidget *w, list)
-        if (w->parent() == this)
-            w->setFixedHeight (w->sizeHint().height());
-#endif /* Q_WS_MAC */
 
     /* Applying language settings */
     retranslateUi();
