@@ -1,10 +1,10 @@
-/* $Id: server.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: server.cpp 30856 2010-07-14 18:50:49Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -77,10 +77,10 @@
 #include <SerialPortImpl.h>
 #include <ParallelPortImpl.h>
 #include <USBControllerImpl.h>
-#include "USBDeviceFilterImpl.h"
 #include "DHCPServerRunner.h"
 #include "DHCPServerImpl.h"
 #ifdef VBOX_WITH_USB
+# include "USBDeviceFilterImpl.h"
 # include <HostUSBDeviceImpl.h>
 # include <USBDeviceImpl.h>
 #endif

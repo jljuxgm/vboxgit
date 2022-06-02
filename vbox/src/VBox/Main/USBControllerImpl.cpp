@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 30854 2010-07-14 18:17:58Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 30856 2010-07-14 18:50:49Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -392,9 +392,7 @@ STDMETHODIMP USBController::COMGETTER(USBStandard) (USHORT *aUSBStandard)
  */
 class ATL_NO_VTABLE USBDeviceFilter :
     public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<USBDeviceFilter, IUSBDeviceFilter>,
-    public VirtualBoxSupportTranslation<USBDeviceFilter>,
-    public IUSBDeviceFilter
+    VBOX_SCRIPTABLE_IMPL(IUSBDeviceFilter)
 {
 public:
     DECLARE_NOT_AGGREGATABLE(USBDeviceFilter)
