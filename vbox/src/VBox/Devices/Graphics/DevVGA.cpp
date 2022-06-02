@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 35002 2010-12-13 13:05:49Z vboxsync $ */
+/* $Id: DevVGA.cpp 35025 2010-12-13 16:01:15Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -970,6 +970,7 @@ static int vbe_ioport_write_data(void *opaque, uint32_t addr, uint32_t val)
             if (val <= VBE_DISPI_MAX_XRES)
             {
                 s->vbe_regs[s->vbe_index] = val;
+                s->vbe_regs[VBE_DISPI_INDEX_VIRT_WIDTH] = val;
                 fRecalculate = true;
             }
             break;
