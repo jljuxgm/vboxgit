@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 33004 2010-10-08 10:23:59Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 33005 2010-10-08 10:49:06Z vboxsync $ */
 
 /** @file
  *
@@ -153,7 +153,7 @@ private:
     /** Static because will never load this more than once! */
     static RTLDRMOD mVRDPLibrary;
 
-    static PFNVRDECREATESERVER mpfnVRDPCreateServer;
+    static PFNVRDECREATESERVER mpfnVRDECreateServer;
 
     static VRDEENTRYPOINTS_1 *mpEntryPoints;
     static VRDECALLBACKS_1 mCallbacks;

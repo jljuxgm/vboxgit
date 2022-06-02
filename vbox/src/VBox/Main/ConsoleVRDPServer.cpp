@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 33004 2010-10-08 10:23:59Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 33005 2010-10-08 10:49:06Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -550,7 +550,7 @@ STDMETHODIMP VRDPConsoleListener::OnMousePointerShapeChange(BOOL visible,
 #ifdef VBOX_WITH_VRDP
 RTLDRMOD ConsoleVRDPServer::mVRDPLibrary;
 
-PFNVRDECREATESERVER ConsoleVRDPServer::mpfnVRDPCreateServer = NULL;
+PFNVRDECREATESERVER ConsoleVRDPServer::mpfnVRDECreateServer = NULL;
 
 VRDEENTRYPOINTS_1 *ConsoleVRDPServer::mpEntryPoints = NULL;
 
@@ -1266,7 +1266,7 @@ int ConsoleVRDPServer::Launch(void)
     {
         if (loadVRDPLibrary())
         {
-            rc = mpfnVRDPCreateServer(&mCallbacks.header, this, (VRDEINTERFACEHDR **)&mpEntryPoints, &mhServer);
+            rc = mpfnVRDECreateServer(&mCallbacks.header, this, (VRDEINTERFACEHDR **)&mpEntryPoints, &mhServer);
 
             if (RT_SUCCESS(rc))
             {
@@ -2153,7 +2153,7 @@ bool ConsoleVRDPServer::loadVRDPLibrary(void)
 
             static const struct SymbolEntry symbols[] =
             {
-                DEFSYMENTRY(VRDPCreateServer)
+                DEFSYMENTRY(VRDECreateServer)
             };
 
             #undef DEFSYMENTRY
