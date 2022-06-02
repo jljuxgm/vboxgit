@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 34241 2010-11-22 14:26:53Z vboxsync $ */
+/* $Id: PDMLdr.cpp 34286 2010-11-23 15:19:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -565,9 +565,9 @@ VMMR3DECL(int) PDMR3LdrLoadRC(PVM pVM, const char *pszFilename, const char *pszN
 
     /* Don't consider VERR_PDM_MODULE_NAME_CLASH and VERR_NO_MEMORY above as these are very unlikely. */
     if (RT_FAILURE(rc) && szErr[0])
-        rc = VMSetError(pVM, rc, RT_SRC_POS, N_("Cannot load GC module %s: %s"), pszFilename, szErr);
+        rc = VMSetError(pVM, rc, RT_SRC_POS, N_("Cannot load RC module %s: %s"), pszFilename, szErr);
     else if (RT_FAILURE(rc))
-        rc = VMSetError(pVM, rc, RT_SRC_POS, N_("Cannot load GC module %s"), pszFilename);
+        rc = VMSetError(pVM, rc, RT_SRC_POS, N_("Cannot load RC module %s"), pszFilename);
 
     RTMemFree(pModule);
     RTMemTmpFree(pszFile);
