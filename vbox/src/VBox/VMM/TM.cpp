@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 30684 2010-07-06 19:57:20Z vboxsync $ */
+/* $Id: TM.cpp 30799 2010-07-13 08:16:37Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -633,7 +633,7 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
     {
         STAMR3RegisterF(pVM, &pVM->aCpus[i].tm.s.offTSCRawSrc,          STAMTYPE_U64, STAMVISIBILITY_ALWAYS, STAMUNIT_TICKS, "TSC offset relative the raw source",           "/TM/TSC/offCPU%u", i);
 #ifndef VBOX_WITHOUT_NS_ACCOUNTING
-# ifdef VBOX_WITH_STATISTICS
+# if defined(VBOX_WITH_STATISTICS) || defined(VBOX_WITH_NS_ACCOUNTING_STATS)
         STAMR3RegisterF(pVM, &pVM->aCpus[i].tm.s.StatNsTotal,       STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_NS,               "Resettable: Total CPU run time.",   "/TM/CPU/%02u", i);
         STAMR3RegisterF(pVM, &pVM->aCpus[i].tm.s.StatNsExecuting,   STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_NS_PER_OCCURENCE, "Resettable: Time spent executing guest code.",    "/TM/CPU/%02u/PrfExecuting", i);
         STAMR3RegisterF(pVM, &pVM->aCpus[i].tm.s.StatNsHalted,      STAMTYPE_PROFILE, STAMVISIBILITY_ALWAYS, STAMUNIT_NS_PER_OCCURENCE, "Resettable: Time spent halted.",                  "/TM/CPU/%02u/PrfHalted", i);
