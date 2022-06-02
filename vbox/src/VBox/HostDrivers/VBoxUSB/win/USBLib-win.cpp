@@ -1,4 +1,4 @@
-/* $Id: USBLib-win.cpp 34262 2010-11-22 18:15:59Z vboxsync $ */
+/* $Id: USBLib-win.cpp 34263 2010-11-22 18:18:11Z vboxsync $ */
 /** @file
  * USBLIB - USB support library interface, Windows.
  */
@@ -2807,7 +2807,7 @@ USBLIB_DECL(int) USBLibGetDevices(PUSBDEVICE *ppDevices, uint32_t *pcDevices)
     /* 2: Get all the USB devices that the filter has captured for us */
 
     /* Get the required info for each captured device */
-    PUSBDEVICE *ppCaptured = (PUSBDEVICE*)RTMemAllocZ(sizeof(PUSBDEVICE) * numDev.cUSBDevices);
+    PUSBDEVICE *ppCaptured = (PUSBDEVICE*)RTMemAllocZ(sizeof(PUSBDEVICE) * numdev.cUSBDevices);
     if (!ppCaptured)
         goto failure;
 
