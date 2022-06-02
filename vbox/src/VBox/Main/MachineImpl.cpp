@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 32649 2010-09-20 17:22:38Z vboxsync $ */
+/* $Id: MachineImpl.cpp 32705 2010-09-23 07:06:34Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11509,6 +11509,7 @@ HRESULT SessionMachine::setMachineState(MachineState_T aMachineState)
         stsFlags |= SaveSTS_StateFilePath;
     }
 
+#ifdef VBOX_WITH_GUEST_PROPS
     if (   aMachineState == MachineState_PoweredOff
         || aMachineState == MachineState_Aborted
         || aMachineState == MachineState_Teleported)
@@ -11533,6 +11534,7 @@ HRESULT SessionMachine::setMachineState(MachineState_T aMachineState)
             SaveSettings();     // @todo r=dj why the public method? why first SaveSettings and then saveStateSettings?
         }
     }
+#endif
 
     rc = saveStateSettings(stsFlags);
 
