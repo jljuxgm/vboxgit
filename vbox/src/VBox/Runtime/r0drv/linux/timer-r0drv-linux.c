@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 32707 2010-09-23 10:15:08Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 32711 2010-09-23 12:12:54Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -598,8 +598,8 @@ static enum hrtimer_restart rtTimerLinuxHrCallback(struct hrtimer *pHrTimer)
     /*
      * Check for unwanted migration.
      */
-    if (   pTimer->fAllCpus
-        && RT_LIKELY((RTCPUID)(pSubTimer - &pTimer->aSubTimers[0]) == RTMpCpuId()))
+    if (   (pTimer->fSpecificCpu || pTimer->fAllCpus)
+        && RT_UNLIKELY((RTCPUID)(pSubTimer - &pTimer->aSubTimers[0]) != RTMpCpuId()))
     {
         rtTimerLnxCallbackHandleMigration(pTimer, pSubTimer);
         return HRTIMER_NORESTART;
@@ -685,8 +685,8 @@ static void rtTimerLinuxStdCallback(unsigned long ulUser)
     /*
      * Check for unwanted migration.
      */
-    if (   pTimer->fAllCpus
-        && RT_LIKELY((RTCPUID)(pSubTimer - &pTimer->aSubTimers[0]) == RTMpCpuId()))
+    if (   (pTimer->fSpecificCpu || pTimer->fAllCpus)
+        && RT_UNLIKELY((RTCPUID)(pSubTimer - &pTimer->aSubTimers[0]) != RTMpCpuId()))
     {
         rtTimerLnxCallbackHandleMigration(pTimer, pSubTimer);
         return;
