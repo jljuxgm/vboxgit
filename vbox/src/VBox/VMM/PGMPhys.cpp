@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 32213 2010-09-02 15:17:57Z vboxsync $ */
+/* $Id: PGMPhys.cpp 32295 2010-09-07 15:48:34Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -988,8 +988,11 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysWriteProtectRAMRendezvous(PVM pVM, PV
             unsigned cPages = pRam->cb >> PAGE_SHIFT;
             for (unsigned iPage = 0; iPage < cPages; iPage++)
             {
-                PPGMPAGE pPage = &pRam->aPages[iPage];
-                if (RT_LIKELY(PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM))
+                PPGMPAGE    pPage = &pRam->aPages[iPage];
+                PGMPAGETYPE enmPageType = (PGMPAGETYPE)PGM_PAGE_GET_TYPE(pPage);
+
+                if (    RT_LIKELY(enmPageType == PGMPAGETYPE_RAM)
+                    ||  enmPageType == PGMPAGETYPE_MMIO2)
                 {
                     /*
                      * A RAM page.
@@ -1068,8 +1071,11 @@ VMMR3DECL(int) PGMR3PhysEnumDirtyFTPages(PVM pVM, PFNPGMENUMDIRTYFTPAGES pfnEnum
             unsigned cPages = pRam->cb >> PAGE_SHIFT;
             for (unsigned iPage = 0; iPage < cPages; iPage++)
             {
-                PPGMPAGE pPage = &pRam->aPages[iPage];
-                if (RT_LIKELY(PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM))
+                PPGMPAGE    pPage = &pRam->aPages[iPage];
+                PGMPAGETYPE enmPageType = (PGMPAGETYPE)PGM_PAGE_GET_TYPE(pPage);
+
+                if (    RT_LIKELY(enmPageType == PGMPAGETYPE_RAM)
+                    ||  enmPageType == PGMPAGETYPE_MMIO2)
                 {
                     /*
                      * A RAM page.
