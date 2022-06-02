@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33238 2010-10-19 15:41:23Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33239 2010-10-19 15:59:39Z vboxsync $ */
 
 /** @file
  *
@@ -147,9 +147,6 @@ public:
     STDMETHOD(GetExtraDataKeys) (ComSafeArrayOut(BSTR, aKeys));
     STDMETHOD(GetExtraData) (IN_BSTR aKey, BSTR *aValue);
     STDMETHOD(SetExtraData) (IN_BSTR aKey, IN_BSTR aValue);
-
-    STDMETHOD(WaitForPropertyChange) (IN_BSTR aWhat, ULONG aTimeout,
-                                      BSTR *aChanged, BSTR *aValues);
 
     STDMETHOD(CreateDHCPServer) (IN_BSTR aName, IDHCPServer ** aServer);
     STDMETHOD(FindDHCPServerByNetworkName) (IN_BSTR aName, IDHCPServer ** aServer);

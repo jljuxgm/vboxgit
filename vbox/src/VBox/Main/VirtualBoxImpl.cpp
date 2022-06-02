@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33238 2010-10-19 15:41:23Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33239 2010-10-19 15:59:39Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1738,14 +1738,6 @@ STDMETHODIMP VirtualBox::SetExtraData(IN_BSTR aKey,
         onExtraDataChange(Guid::Empty, aKey, aValue);
 
     return S_OK;
-}
-
-STDMETHODIMP VirtualBox::WaitForPropertyChange(IN_BSTR /* aWhat */,
-                                               ULONG /* aTimeout */,
-                                               BSTR * /* aChanged */,
-                                               BSTR * /* aValues */)
-{
-    ReturnComNotImplemented();
 }
 
 // public methods only for internal purposes
