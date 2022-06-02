@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 31367 2010-08-04 17:20:18Z vboxsync $ */
+/* $Id: GMMR0.cpp 31383 2010-08-05 08:22:44Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3764,8 +3764,18 @@ GMMR0DECL(int) GMMR0UnregisterSharedModule(PVM pVM, VMCPUID idCpu, char *pszModu
                             if (pRec->aRegions[i].paHCPhysPageID)
                                 RTMemFree(pRec->aRegions[i].paHCPhysPageID);
 
+                        Assert(pRec->Core.Key == GCBaseAddr || pRec->enmGuestOS == VBOXOSFAMILY_Windows64);                        
+                        Assert(pRec->cRegions == pRecVM->cRegions);
+#ifdef VBOX_STRICT
+                        for (unsigned i = 0; i < pRecVM->cRegions; i++)
+                        {
+                            Assert(pRecVM->aRegions[i].GCRegionAddr == pRec->aRegions[i].GCRegionAddr);
+                            Assert(pRecVM->aRegions[i].cbRegion == pRec->aRegions[i].cbRegion);
+                        }
+#endif
+
                         /* Remove from the tree and free memory. */
-                        RTAvlGCPtrRemove(&pGMM->pGlobalSharedModuleTree, GCBaseAddr);
+                        RTAvlGCPtrRemove(&pGMM->pGlobalSharedModuleTree, pRec->Core.Key);
                         RTMemFree(pRec);
                     }
                 }
