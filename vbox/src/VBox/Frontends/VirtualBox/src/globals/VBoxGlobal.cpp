@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 33712 2010-11-02 21:50:33Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 33925 2010-11-10 09:01:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -5005,6 +5005,12 @@ void VBoxGlobal::init()
 #endif
 
     mValid = true;
+
+    /* Cache IMedium data.
+     * There could be no used mediums at all,
+     * but this method should be run anyway just to enumerate null VBoxMedium object,
+     * used by some VBox smart widgets, like VBoxMediaComboBox: */
+    vboxGlobal().startEnumeratingMedia();
 }
 
 
