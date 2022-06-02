@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 33327 2010-10-22 02:36:38Z vboxsync $ */
+/* $Id: DevCodec.cpp 33328 2010-10-22 03:11:58Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -492,7 +492,7 @@ static int alc885ResetNode(struct CODECState *pState, uint8_t nodenum, PCODECNOD
             pNode->node.name = "VENDEF-0";
             goto vendor_define_init;
         case 0x11:
-            pNode->node.name = "VENDEF-0";
+            pNode->node.name = "VENDEF-1";
             goto vendor_define_init;
         case 0x12:
             pNode->node.name = "VENDEF-2";
