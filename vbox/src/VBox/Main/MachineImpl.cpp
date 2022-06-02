@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: MachineImpl.cpp 32727 2010-09-23 14:31:31Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9713,9 +9713,9 @@ HRESULT SessionMachine::init(Machine *aMachine)
 #if defined(RT_OS_WINDOWS)
     mIPCSemName = aMachine->mData->m_strConfigFileFull;
     for (size_t i = 0; i < mIPCSemName.length(); i++)
-        if (mIPCSemName[i] == '\\')
-            mIPCSemName[i] = '/';
-    mIPCSem = ::CreateMutex(NULL, FALSE, mIPCSemName);
+        if (mIPCSemName.raw()[i] == '\\')
+            mIPCSemName.raw()[i] = '/';
+    mIPCSem = ::CreateMutex(NULL, FALSE, mIPCSemName.raw());
     ComAssertMsgRet(mIPCSem,
                     ("Cannot create IPC mutex '%ls', err=%d",
                      mIPCSemName.raw(), ::GetLastError()),

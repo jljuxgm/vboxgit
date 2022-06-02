@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 31698 2010-08-16 15:00:05Z vboxsync $ */
+/* $Id: SessionImpl.cpp 32727 2010-09-23 14:31:31Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -969,7 +969,7 @@ HRESULT Session::grabIPCSemaphore()
                     E_FAIL);
 
     void *data[3];
-    data[0] = (void*)(BSTR)ipcId;
+    data[0] = (void*)(BSTR)ipcId.raw();
     data[1] = (void*)mIPCThreadSem;
     data[2] = 0; /* will get an output from the thread */
 

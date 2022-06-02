@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 32727 2010-09-23 14:31:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -3499,7 +3499,8 @@ int Console::configNetwork(const char *pszDevice,
 
 # elif defined(RT_OS_WINDOWS)
                 ComPtr<IHostNetworkInterface> hostInterface;
-                hrc = host->FindHostNetworkInterfaceByName(HifName, hostInterface.asOutParam());
+                hrc = host->FindHostNetworkInterfaceByName(HifName.raw(),
+                                                           hostInterface.asOutParam());
                 if (!SUCCEEDED(hrc))
                 {
                     AssertLogRelMsgFailed(("NetworkAttachmentType_Bridged: FindByName failed, rc=%Rhrc (0x%x)", hrc, hrc));

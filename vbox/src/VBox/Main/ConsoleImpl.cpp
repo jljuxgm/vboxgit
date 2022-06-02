@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32727 2010-09-23 14:31:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5185,7 +5185,8 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
                 ComPtr<IHost> host;
                 virtualBox->COMGETTER(Host)(host.asOutParam());
                 ComPtr<IHostNetworkInterface> hostInterface;
-                if (!SUCCEEDED(host->FindHostNetworkInterfaceByName(hostif, hostInterface.asOutParam())))
+                if (!SUCCEEDED(host->FindHostNetworkInterfaceByName(hostif.raw(),
+                                                                    hostInterface.asOutParam())))
                 {
                     return setError(VBOX_E_HOST_ERROR,
                         tr("VM cannot start because the host interface '%ls' does not exist"),
