@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 35886 2011-02-08 01:27:27Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 35965 2011-02-14 18:09:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7083,7 +7083,8 @@ Console::usbDetachCallback(Console *that, USBDeviceList::iterator *aIt, PCRTUUID
 }
 #endif /* VBOX_WITH_USB */
 
-#if ((defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)) && !defined(VBOX_WITH_NETFLT))
+/* Note: FreeBSD needs this whether netflt is used or not. */
+#if ((defined(RT_OS_LINUX) && !defined(VBOX_WITH_NETFLT)) || defined(RT_OS_FREEBSD))
 /**
  * Helper function to handle host interface device creation and attachment.
  *
