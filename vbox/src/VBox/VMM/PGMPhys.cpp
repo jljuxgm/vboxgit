@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30438 2010-06-24 14:12:44Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30613 2010-07-05 12:56:59Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -51,7 +51,6 @@
 *   Internal Functions                                                         *
 *******************************************************************************/
 static DECLCALLBACK(int) pgmR3PhysRomWriteHandler(PVM pVM, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser);
-static int pgmPhysFreePage(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t *pcPendingPages, PPGMPAGE pPage, RTGCPHYS GCPhys);
 
 
 /*
@@ -3709,7 +3708,7 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
  *
  * @remarks The caller must own the PGM lock.
  */
-static int pgmPhysFreePage(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t *pcPendingPages, PPGMPAGE pPage, RTGCPHYS GCPhys)
+int pgmPhysFreePage(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t *pcPendingPages, PPGMPAGE pPage, RTGCPHYS GCPhys)
 {
     /*
      * Assert sanity.
