@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31682 2010-08-16 09:22:39Z vboxsync $
+# $Id: Makefile.kmk 31917 2010-08-24 12:38:19Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -320,10 +320,7 @@ endif
 #
 # The VirtualBox Kernel extensions.
 #
-VBOX_DI_KEXTS_UNIVERSAL = VBoxDrv VBoxNetFlt VBoxNetAdp
-ifndef VBOX_OSE
- VBOX_DI_KEXTS_UNIVERSAL += VBoxUSB
-endif
+VBOX_DI_KEXTS_UNIVERSAL = VBoxDrv VBoxNetFlt VBoxNetAdp VBoxUSB
 VBOX_DI_KEXTS = $(VBOX_DI_KEXTS_UNIVERSAL)
 
 $(VBOX_PATH_PACK_TMP)/Packages/VBoxKEXTs.pkg: \
