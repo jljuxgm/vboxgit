@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 30893 2010-07-17 02:05:22Z vboxsync $ */
+/* $Id: PGMAllGst.h 30894 2010-07-17 02:08:25Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -406,7 +406,7 @@ PGM_GST_DECL(int, GetPDE)(PVMCPU pVCpu, RTGCPTR GCPtr, PX86PDEPAE pPDE)
     PX86PD      pPd = pgmGstGet32bitPDPtr(pVCpu);
 
 # elif PGM_GST_TYPE == PGM_TYPE_PAE
-    unsigned    iPd;
+    unsigned    iPd = 0;                /* shut up gcc */
     PCX86PDPAE  pPd = pgmGstGetPaePDPtr(pVCpu, GCPtr, &iPd, NULL);
 
 # elif PGM_GST_TYPE == PGM_TYPE_AMD64
