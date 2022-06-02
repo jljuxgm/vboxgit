@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 35813 2011-02-01 14:30:31Z vboxsync $ */
+/* $Id: HostImpl.cpp 35814 2011-02-01 14:44:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1796,8 +1796,6 @@ HRESULT Host::findHostDriveByNameOrId(DeviceType_T mediumType,
                                       const Utf8Str &strNameOrId,
                                       ComObjPtr<Medium> &pMedium)
 {
-    MediaList *pllMedia;
-
     AutoWriteLock wlock(m->drivesLock COMMA_LOCKVAL_SRC_POS);
 
     Guid uuid(strNameOrId);
