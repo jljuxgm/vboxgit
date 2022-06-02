@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 34891 2010-12-09 14:28:15Z vboxsync $ */
+/* $Id: GuestImpl.cpp 34905 2010-12-09 16:29:34Z vboxsync $ */
 
 /** @file
  *
@@ -353,8 +353,8 @@ HRESULT Guest::taskCopyFile(TaskGuest *aTask)
                             }
 
                             Assert(cbRead <= cbToRead);
+                            Assert(cbToRead >= cbRead);
                             cbToRead -= cbRead;
-                            Assert(cbToRead >= 0);
 
                             cbTransfered += uBytesWritten;
                             Assert(cbTransfered <= cbSize);
