@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 33344 2010-10-22 11:52:30Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33345 2010-10-22 11:53:51Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1740,7 +1740,7 @@ void Appliance::importOneDiskImage(const ovf::DiskImage &di,
                 || di.strFormat.compare("http://www.vmware.com/specifications/vmdk.html#compressed", Utf8Str::CaseInsensitive)
                 || di.strFormat.compare("http://www.vmware.com/interfaces/specifications/vmdk.html#compressed", Utf8Str::CaseInsensitive)
                )
-                strSrcFormat = "VMDK1";
+                strSrcFormat = "VMDK";
             format = pSysProps->mediumFormat(strSrcFormat);
             if (format.isNull())
                 throw setError(VBOX_E_NOT_SUPPORTED,
