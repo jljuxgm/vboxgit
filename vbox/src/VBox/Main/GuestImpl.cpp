@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 31442 2010-08-06 15:53:49Z vboxsync $ */
+/* $Id: GuestImpl.cpp 31525 2010-08-10 11:52:49Z vboxsync $ */
 
 /** @file
  *
@@ -223,6 +223,7 @@ STDMETHODIMP Guest::COMGETTER(AdditionsVersion) (BSTR *aAdditionsVersion)
                                                 addVersion.raw(), addRevision.raw());
                 additionsVersion.cloneTo(aAdditionsVersion);
             }
+            /** @todo r=bird: else: Should not return failure! */
         }
         else
         {
@@ -230,6 +231,7 @@ STDMETHODIMP Guest::COMGETTER(AdditionsVersion) (BSTR *aAdditionsVersion)
              * because of *really* old Guest Additions we only can report the interface
              * version to at least have something. */
             mData.mInterfaceVersion.cloneTo(aAdditionsVersion);
+            /** @todo r=bird: hr is still indicating failure! */
         }
     }
     else
