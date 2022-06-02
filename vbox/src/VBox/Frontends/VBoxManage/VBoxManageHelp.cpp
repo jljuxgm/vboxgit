@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 34971 2010-12-11 23:12:01Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 35037 2010-12-13 16:59:49Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -502,8 +502,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "VBoxManage clonehd          <uuid>|<filename> <outputfile>\n"
                      "                            [--format VDI|VMDK|VHD|RAW|<other>]\n"
                      "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
-                     "                            [--type normal|writethrough|immutable|shareable]\n"
-                     "                            [--remember] [--existing]\n"
+                     "                            [--existing]\n"
                      "\n");
 
     if (u64Cmd & USAGE_CONVERTFROMRAW)
