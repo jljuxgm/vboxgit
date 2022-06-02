@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32062 2010-08-27 18:36:09Z vboxsync $
+# $Id: Makefile.kmk 32228 2010-09-03 06:39:52Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -453,11 +453,11 @@ $$(PATH_VBoxSVC)/xml_SettingsConverter_xsl.h: $(VBOX_XML_CONVERTER_TEMPLATE) $(V
 
 $(VBOX_XML_SCHEMADEFS_H): $(VBOX_XML_SCHEMADEFS_XSL) $(VBOX_XML_SCHEMA.$(KBUILD_TARGET)) $(VBOX_XML_SCHEMA_COMMON) | $$(dir $$@)
 	$(call MSG_GENERATE,SchemaDefs,$@,$<)
-	$(VBOX_XSLTPROC)  --stringparam mode declare -o $@ $(VBOX_XML_SCHEMADEFS_XSL) $(VBOX_XML_SCHEMA.$(KBUILD_TARGET))
+	$(QUIET)$(VBOX_XSLTPROC)  --stringparam mode declare -o $@ $(VBOX_XML_SCHEMADEFS_XSL) $(VBOX_XML_SCHEMA.$(KBUILD_TARGET))
 
 $(VBOX_XML_SCHEMADEFS_CPP): $(VBOX_XML_SCHEMADEFS_XSL) $(VBOX_XML_SCHEMA.$(KBUILD_TARGET)) $(VBOX_XML_SCHEMA_COMMON)  | $$(dir $$@)
 	$(call MSG_GENERATE,SchemaDefs,$@,$<)
-	$(VBOX_XSLTPROC)  --stringparam mode define  -o $@ $(VBOX_XML_SCHEMADEFS_XSL) $(VBOX_XML_SCHEMA.$(KBUILD_TARGET))
+	$(QUIET)$(VBOX_XSLTPROC)  --stringparam mode define  -o $@ $(VBOX_XML_SCHEMADEFS_XSL) $(VBOX_XML_SCHEMA.$(KBUILD_TARGET))
 
 OTHER_CLEAN += $(VBOX_XML_SCHEMADEFS_H) $(VBOX_XML_SCHEMADEFS_CPP)
 
