@@ -1,4 +1,4 @@
-/* $Id: PDMGCDevice.cpp 32935 2010-10-06 09:28:42Z vboxsync $ */
+/* $Id: PDMGCDevice.cpp 33799 2010-11-05 16:14:07Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -235,6 +235,33 @@ static DECLCALLBACK(PVMCPU) pdmRCDevHlp_GetVMCPU(PPDMDEVINS pDevIns)
 }
 
 
+/** @interface_method_impl{PDMDEVHLPRC,pfnTMTimeVirtGet} */
+static DECLCALLBACK(uint64_t) pdmRCDevHlp_TMTimeVirtGet(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmRCDevHlp_TMTimeVirtGet: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
+    return TMVirtualGet(pDevIns->Internal.s.pVMRC);
+}
+
+
+/** @interface_method_impl{PDMDEVHLPRC,pfnTMTimeVirtGetFreq} */
+static DECLCALLBACK(uint64_t) pdmRCDevHlp_TMTimeVirtGetFreq(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmRCDevHlp_TMTimeVirtGetFreq: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
+    return TMVirtualGetFreq(pDevIns->Internal.s.pVMRC);
+}
+
+
+/** @interface_method_impl{PDMDEVHLPRC,pfnTMTimeVirtGetNano} */
+static DECLCALLBACK(uint64_t) pdmRCDevHlp_TMTimeVirtGetNano(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmRCDevHlp_TMTimeVirtGetNano: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
+    return TMVirtualToNano(pDevIns->Internal.s.pVMRC, TMVirtualGet(pDevIns->Internal.s.pVMRC));
+}
+
+
 /**
  * The Raw-Mode Context Device Helper Callbacks.
  */
@@ -254,6 +281,9 @@ extern DECLEXPORT(const PDMDEVHLPRC) g_pdmRCDevHlp =
     pdmRCDevHlp_PATMSetMMIOPatchInfo,
     pdmRCDevHlp_GetVM,
     pdmRCDevHlp_GetVMCPU,
+    pdmRCDevHlp_TMTimeVirtGet,
+    pdmRCDevHlp_TMTimeVirtGetFreq,
+    pdmRCDevHlp_TMTimeVirtGetNano,
     PDM_DEVHLPRC_VERSION
 };
 

@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 32935 2010-10-06 09:28:42Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 33799 2010-11-05 16:14:07Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -251,6 +251,33 @@ static DECLCALLBACK(PVMCPU) pdmR0DevHlp_GetVMCPU(PPDMDEVINS pDevIns)
 }
 
 
+/** @interface_method_impl{PDMDEVHLPR0,pfnTMTimeVirtGet} */
+static DECLCALLBACK(uint64_t) pdmR0DevHlp_TMTimeVirtGet(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR0DevHlp_TMTimeVirtGet: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
+    return TMVirtualGet(pDevIns->Internal.s.pVMR0);
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR0,pfnTMTimeVirtGetFreq} */
+static DECLCALLBACK(uint64_t) pdmR0DevHlp_TMTimeVirtGetFreq(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR0DevHlp_TMTimeVirtGetFreq: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
+    return TMVirtualGetFreq(pDevIns->Internal.s.pVMR0);
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR0,pfnTMTimeVirtGetNano} */
+static DECLCALLBACK(uint64_t) pdmR0DevHlp_TMTimeVirtGetNano(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR0DevHlp_TMTimeVirtGetNano: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
+    return TMVirtualToNano(pDevIns->Internal.s.pVMR0, TMVirtualGet(pDevIns->Internal.s.pVMR0));
+}
+
+
 /**
  * The Ring-0 Device Helper Callbacks.
  */
@@ -271,6 +298,9 @@ extern DECLEXPORT(const PDMDEVHLPR0) g_pdmR0DevHlp =
     pdmR0DevHlp_GetVM,
     pdmR0DevHlp_CanEmulateIoBlock,
     pdmR0DevHlp_GetVMCPU,
+    pdmR0DevHlp_TMTimeVirtGet,
+    pdmR0DevHlp_TMTimeVirtGetFreq,
+    pdmR0DevHlp_TMTimeVirtGetNano,
     PDM_DEVHLPR0_VERSION
 };
 
