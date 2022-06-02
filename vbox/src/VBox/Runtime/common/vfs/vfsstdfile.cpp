@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 33820 2010-11-07 16:33:23Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 33821 2010-11-07 16:36:20Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -103,6 +103,7 @@ static DECLCALLBACK(int) rtVfsStdFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF p
         size_t  cbRead     = 0;
         size_t  cbReadSeg;
         size_t *pcbReadSeg = pcbRead ? &cbReadSeg : NULL;
+        rc = VINF_SUCCESS;
 
         for (uint32_t iSeg = 0; iSeg < pSgBuf->cSegs; iSeg++)
         {
@@ -156,6 +157,7 @@ static DECLCALLBACK(int) rtVfsStdFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
         size_t  cbWritten     = 0;
         size_t  cbWrittenSeg;
         size_t *pcbWrittenSeg = pcbWritten ? &cbWrittenSeg : NULL;
+        rc = VINF_SUCCESS;
 
         for (uint32_t iSeg = 0; iSeg < pSgBuf->cSegs; iSeg++)
         {
