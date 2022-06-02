@@ -1,4 +1,4 @@
-; $Id: TRPMGCHandlersA.asm 33540 2010-10-28 09:27:05Z vboxsync $
+; $Id: TRPMRCHandlersA.asm 35335 2010-12-27 12:34:40Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -17,7 +17,7 @@
 ;*******************************************************************************
 ;* Header Files                                                                *
 ;*******************************************************************************
-%include "VMMGC.mac"
+%include "VMMRC.mac"
 %include "VBox/x86.mac"
 %include "VBox/cpum.mac"
 %include "VBox/stam.mac"

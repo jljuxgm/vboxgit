@@ -1,4 +1,4 @@
-; $Id: CPUMGCA.asm 30164 2010-06-11 14:16:09Z vboxsync $
+; $Id: CPUMRCA.asm 35335 2010-12-27 12:34:40Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -17,7 +17,7 @@
 ;*******************************************************************************
 ;* Header Files                                                                *
 ;*******************************************************************************
-%include "VMMGC.mac"
+%include "VMMRC.mac"
 %include "VBox/vm.mac"
 %include "VBox/err.mac"
 %include "VBox/stam.mac"

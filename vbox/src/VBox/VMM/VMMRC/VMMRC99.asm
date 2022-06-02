@@ -1,6 +1,6 @@
-; $Id: VMMGCBuiltin.def 28800 2010-04-27 08:22:32Z vboxsync $
+; $Id: VMMRC99.asm 35335 2010-12-27 12:34:40Z vboxsync $
 ;; @file
-; VMM Raw-mode Context Builtin DLL - Definition file for generating import library.
+; VMMGC99 - The last object module in the link.
 ;
 
 ; Copyright (C) 2006-2007 Oracle Corporation
@@ -14,15 +14,26 @@
 ; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 ;
 
-LIBRARY VMMGCBuiltin.gc
-EXPORTS
-    ; data
-    g_VM                            DATA
-    g_CPUM                          DATA
-    g_TRPM                          DATA
-    g_TRPMCPU                       DATA
-    g_Logger                        DATA
-    g_RelLogger                     DATA
-    g_pSUPGlobalInfoPage            DATA
+%include "VMMRC.mac"
 
-    ; code
+
+;;
+; End the Trap0b segment.
+VMMR0_SEG Trap0b
+GLOBALNAME g_aTrap0bHandlersEnd
+    dd 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+
+;;
+; End the Trap0d segment.
+VMMR0_SEG Trap0d
+GLOBALNAME g_aTrap0dHandlersEnd
+    dd 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+
+;;
+; End the Trap0e segment.
+VMMR0_SEG Trap0e
+GLOBALNAME g_aTrap0eHandlersEnd
+    dd 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
