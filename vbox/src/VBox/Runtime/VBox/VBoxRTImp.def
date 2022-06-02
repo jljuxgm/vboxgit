@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 34726 2010-12-05 19:39:07Z vboxsync $
+; $Id: VBoxRTImp.def 35185 2010-12-16 14:10:38Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 
@@ -395,6 +395,12 @@ EXPORTS
     RTErrConvertFromErrno
     RTErrConvertToErrno
     RTErrGet
+    RTErrInfoAlloc
+    RTErrInfoAllocEx
+    RTErrInfoFree
+    RTErrInfoSet
+    RTErrInfoSetF
+    RTErrInfoSetV
     RTFileAioCtxAssociateWithFile
     RTFileAioCtxCreate
     RTFileAioCtxDestroy
