@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 35244 2010-12-20 13:46:17Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 35434 2011-01-07 16:47:52Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -1110,8 +1110,7 @@ int VBoxServiceControlExecPrepareArgv(const char *pszFileName,
     /* Skip argv[0] (= file name) if we don't run an internal
      * VBoxService toolbox command - we already have a resolved one in pszFileName. */
     char *pszArgs;
-    int rc = RTGetOptArgvToString(&pszArgs,
-                                  fUseToolbox ? papszArgs : &papszArgs[1],
+    int rc = RTGetOptArgvToString(&pszArgs, papszArgs,
                                   RTGETOPTARGV_CNV_QUOTE_MS_CRT); /* RTGETOPTARGV_CNV_QUOTE_BOURNE_SH */
     if (   RT_SUCCESS(rc)
         && pszArgs)
