@@ -1,4 +1,4 @@
-/* $Id: DMGHDDCore.cpp 33524 2010-10-27 16:44:37Z vboxsync $ */
+/* $Id: DMGHDDCore.cpp 33534 2010-10-28 07:32:14Z vboxsync $ */
 /** @file
  * VBoxDMG - Intepreter for Apple Disk Images (DMG).
  */
@@ -111,7 +111,7 @@ typedef struct DMGUDIF
     uint64_t            cSectors;               /**< 0x1ec - The sector count. Warning! Unaligned!                 (fUDISectorCount) */
     uint32_t            au32Unknown[3];         /**< 0x1f4 - Unknown stuff, hdiutil doesn't dump it... */
 } DMGUDIF;
-#pragma pack(0)
+#pragma pack()
 AssertCompileSize(DMGUDIF, 512);
 AssertCompileMemberOffset(DMGUDIF, cbRsrc,   0x030);
 AssertCompileMemberOffset(DMGUDIF, cbXml,    0x0e0);
@@ -168,7 +168,7 @@ typedef struct DMGBLKX
     DMGUDIFCKSUM        BlkxCkSum;              /**< 0x03c - Checksum for the BLKX table. */
     uint32_t            cBlocksRunCount;        /**< 0x    - Number of entries in the blkx run table afterwards. */
 } DMGBLKX;
-#pragma pack(0)
+#pragma pack()
 AssertCompileSize(DMGBLKX, 204);
 
 typedef DMGBLKX *PDMGBLKX;
@@ -197,7 +197,7 @@ typedef struct DMGBLKXDESC
     uint64_t            offData;                /**< 0x018 - Offset in the image where the data starts. */
     uint64_t            cbData;                 /**< 0x020 - Number of bytes in the image. */
 } DMGBLKXDESC;
-#pragma pack(0)
+#pragma pack()
 AssertCompileSize(DMGBLKXDESC, 40);
 
 typedef DMGBLKXDESC *PDMGBLKXDESC;
