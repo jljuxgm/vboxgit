@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -26,7 +26,7 @@
 #include "VBoxSnapshotDetailsDlg.h"
 #include "VBoxSnapshotsWgt.h"
 #include "VBoxTakeSnapshotDlg.h"
-#include "VBoxToolBar.h"
+#include "UIToolBar.h"
 #include "UIVirtualBoxEventHandler.h"
 
 /* Global includes */
@@ -34,6 +34,7 @@
 #include <QHeaderView>
 #include <QMenu>
 #include <QScrollBar>
+#include <QWindowsStyle>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
@@ -348,7 +349,7 @@ VBoxSnapshotsWgt::VBoxSnapshotsWgt (QWidget *aParent)
 // #endif
 
     /* ToolBar creation */
-    VBoxToolBar *toolBar = new VBoxToolBar (this);
+    UIToolBar *toolBar = new UIToolBar (this);
     toolBar->setUsesTextLabel (false);
     toolBar->setIconSize (QSize (22, 22));
     toolBar->setSizePolicy (QSizePolicy::Fixed, QSizePolicy::Fixed);

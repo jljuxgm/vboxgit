@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 31500 2010-08-09 23:33:52Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,7 +30,7 @@
 #include "UIVMPreviewWindow.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "VBoxSnapshotsWgt.h"
-#include "VBoxToolBar.h"
+#include "UIToolBar.h"
 
 #include "VBoxUtils.h"
 
@@ -1324,7 +1324,7 @@ enum
 //    Desc
 };
 
-UIVMDesktop::UIVMDesktop(VBoxToolBar *pToolBar, QAction *pRefreshAction, QWidget *pParent /* = 0 */)
+UIVMDesktop::UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *pParent /* = 0 */)
   : QIWithRetranslateUI<QWidget>(pParent)
 {
     m_pHeaderBtn = new UITexturedSegmentedButton(2);

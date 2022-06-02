@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 32460 2010-09-13 17:03:51Z vboxsync $ */
+/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -32,7 +32,7 @@
 #include "VBoxVMSettingsPortForwardingDlg.h"
 #include "VBoxGlobal.h"
 #include "VBoxProblemReporter.h"
-#include "VBoxToolBar.h"
+#include "UIToolBar.h"
 #include "QITableView.h"
 #include "QIDialogButtonBox.h"
 #include "UIIconPool.h"
@@ -457,7 +457,7 @@ VBoxVMSettingsPortForwardingDlg::VBoxVMSettingsPortForwardingDlg(QWidget *pParen
     connect(m_pDelAction, SIGNAL(triggered(bool)), this, SLOT(sltDelRule()));
 
     /* Create toolbar: */
-    m_pToolBar = new VBoxToolBar(this);
+    m_pToolBar = new UIToolBar(this);
     m_pToolBar->setIconSize(QSize(16, 16));
     m_pToolBar->setOrientation(Qt::Vertical);
     m_pToolBar->addAction(m_pAddAction);

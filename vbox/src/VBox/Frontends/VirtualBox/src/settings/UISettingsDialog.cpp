@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 32667 2010-09-21 14:04:49Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,7 +30,7 @@
 #include "QIWidgetValidator.h"
 #include "VBoxSettingsSelector.h"
 #include "VBoxSettingsPage.h"
-#include "VBoxToolBar.h"
+#include "UIToolBar.h"
 #include "UIIconPool.h"
 #ifdef Q_WS_MAC
 # include "VBoxUtils.h"
@@ -80,7 +80,7 @@ UISettingsDialog::UISettingsDialog(QWidget *pParent /* = 0 */)
     m_pLbWhatsThis->hide();
     /* Create modern tool-bar selector: */
     m_pSelector = new VBoxSettingsToolBarSelector(this);
-    static_cast<VBoxToolBar*>(m_pSelector->widget())->setMacToolbar();
+    static_cast<UIToolBar*>(m_pSelector->widget())->setMacToolbar();
     addToolBar(qobject_cast<QToolBar*>(m_pSelector->widget()));
     /* No title in this mode, we change the title of the window: */
     pMainLayout->setColumnMinimumWidth(0, 0);

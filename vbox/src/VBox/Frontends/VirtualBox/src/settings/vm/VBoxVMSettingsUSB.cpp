@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsUSB.cpp 31946 2010-08-25 08:10:10Z vboxsync $ */
+/* $Id: VBoxVMSettingsUSB.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -21,7 +21,7 @@
 #include "QIWidgetValidator.h"
 #include "UIIconPool.h"
 #include "VBoxGlobal.h"
-#include "VBoxToolBar.h"
+#include "UIToolBar.h"
 #include "VBoxVMSettingsUSB.h"
 #include "VBoxVMSettingsUSBFilterDetails.h"
 
@@ -82,7 +82,7 @@ VBoxVMSettingsUSB::VBoxVMSettingsUSB (FilterType aType)
     mMenu->addAction (mMdnAction);
 
     /* Prepare toolbar */
-    VBoxToolBar *toolBar = new VBoxToolBar (mWtFilterHandler);
+    UIToolBar *toolBar = new UIToolBar (mWtFilterHandler);
     toolBar->setUsesTextLabel (false);
     toolBar->setIconSize (QSize (16, 16));
     toolBar->setOrientation (Qt::Vertical);

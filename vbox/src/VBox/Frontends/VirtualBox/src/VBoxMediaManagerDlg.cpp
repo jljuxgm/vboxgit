@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 31568 2010-08-11 13:35:59Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -38,7 +38,7 @@
 #include "VBoxMediaManagerDlg.h"
 #include "UINewHDWzd.h"
 #include "VBoxProblemReporter.h"
-#include "VBoxToolBar.h"
+#include "UIToolBar.h"
 #include "QIFileDialog.h"
 #include "QILabel.h"
 #include "UIIconPool.h"
@@ -317,7 +317,7 @@ VBoxMediaManagerDlg::VBoxMediaManagerDlg (QWidget *aParent /* = 0 */, Qt::Window
     mActionsContextMenu->addAction (mReleaseAction);
 
     /* Toolbar composing */
-    mToolBar = new VBoxToolBar (this);
+    mToolBar = new UIToolBar (this);
     mToolBar->setIconSize (QSize (22, 22));
     mToolBar->setToolButtonStyle (Qt::ToolButtonTextUnderIcon);
     mToolBar->setSizePolicy (QSizePolicy::Fixed, QSizePolicy::Preferred);

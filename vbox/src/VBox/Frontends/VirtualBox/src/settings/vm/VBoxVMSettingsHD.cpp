@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 32074 2010-08-29 17:12:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -24,7 +24,6 @@
 #include "VBoxGlobal.h"
 #include "VBoxMediaManagerDlg.h"
 #include "VBoxProblemReporter.h"
-#include "VBoxToolBar.h"
 #include "VBoxVMSettingsHD.h"
 
 /* Global Includes */
@@ -35,6 +34,7 @@
 #include <QScrollBar>
 #include <QStylePainter>
 #include <QTimer>
+#include <QCommonStyle>
 
 /* String Tags */
 const char *firstAvailableId = "first available";
