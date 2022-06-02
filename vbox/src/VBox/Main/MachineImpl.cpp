@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33458 2010-10-26 11:18:04Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33504 2010-10-27 13:19:37Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -65,6 +65,7 @@
 #include <iprt/cpp/utils.h>
 #include <iprt/cpp/xml.h>               /* xml::XmlFileWriter::s_psz*Suff. */
 #include <iprt/string.h>
+#include <iprt/system.h>
 
 #include <VBox/com/array.h>
 
@@ -154,7 +155,15 @@ Machine::HWData::HWData()
     mHWVirtExNestedPagingEnabled = true;
 #if HC_ARCH_BITS == 64
     /* Default value decision pending. */
-    mHWVirtExLargePagesEnabled = false;
+    uint64_t cbRam = 0;
+
+    if (    RTSystemQueryTotalRam(&cbRam) == VINF_SUCCESS
+        &&  cbRam >= (UINT64_C(6) * _1G))
+    {
+        mHWVirtExLargePagesEnabled = true;
+    }
+    else
+        mHWVirtExLargePagesEnabled = false;
 #else
     /* Not supported on 32 bits hosts. */
     mHWVirtExLargePagesEnabled = false;
