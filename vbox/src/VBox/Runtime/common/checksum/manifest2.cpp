@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 34381 2010-11-25 15:49:11Z vboxsync $ */
+/* $Id: manifest2.cpp 34385 2010-11-25 16:29:32Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -183,8 +183,8 @@ RTDECL(uint32_t) RTManifestRelease(RTMANIFEST hManifest)
     RTMANIFESTINT *pThis = hManifest;
     if (pThis == NIL_RTMANIFEST)
         return 0;
-    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
-    AssertReturn(pThis->u32Magic == RTMANIFEST_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pThis, UINT32_MAX);
+    AssertReturn(pThis->u32Magic == RTMANIFEST_MAGIC, UINT32_MAX);
 
     uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
     Assert(cRefs < _1M);
