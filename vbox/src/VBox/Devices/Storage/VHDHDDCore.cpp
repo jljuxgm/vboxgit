@@ -1,4 +1,4 @@
-/* $Id: VHDHDDCore.cpp 32553 2010-09-16 12:07:01Z vboxsync $ */
+/* $Id: VHDHDDCore.cpp 33131 2010-10-14 13:18:51Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -872,7 +872,7 @@ static int vhdLoadDynamicDisk(PVHDIMAGE pImage, uint64_t uDynamicDiskHeaderOffse
     rc = vhdFileReadSync(pImage, uDynamicDiskHeaderOffset,
                          &vhdDynamicDiskHeader, sizeof(VHDDynamicDiskHeader),
                          NULL);
-    if (!memcmp(vhdDynamicDiskHeader.Cookie, VHD_DYNAMIC_DISK_HEADER_COOKIE, VHD_DYNAMIC_DISK_HEADER_COOKIE_SIZE))
+    if (memcmp(vhdDynamicDiskHeader.Cookie, VHD_DYNAMIC_DISK_HEADER_COOKIE, VHD_DYNAMIC_DISK_HEADER_COOKIE_SIZE))
         return VERR_INVALID_PARAMETER;
 
     pImage->cbDataBlock = RT_BE2H_U32(vhdDynamicDiskHeader.BlockSize);
