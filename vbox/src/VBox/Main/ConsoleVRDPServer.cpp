@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 34940 2010-12-10 10:56:01Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 34959 2010-12-10 15:17:31Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1662,7 +1662,7 @@ AuthResult ConsoleVRDPServer::Authenticate(const Guid &uuid, AuthGuestJudgement 
             {
                 const char *pszName;
                 void **ppvAddress;
-                
+
             } AuthEntryInfo;
             AuthEntryInfo entries[] =
             {
@@ -2322,7 +2322,7 @@ void ConsoleVRDPServer::QueryInfo(uint32_t index, void *pvBuffer, uint32_t cbBuf
         if (RTPathHavePath(pszLibraryName))
             rc = SUPR3HardenedLdrLoadPlugIn(pszLibraryName, &mVRDPLibrary, szErr, sizeof(szErr));
         else
-            rc = SUPR3HardenedLdrLoadAppPriv(pszLibraryName, &mVRDPLibrary);
+            rc = SUPR3HardenedLdrLoadAppPriv(pszLibraryName, &mVRDPLibrary, szErr, sizeof(szErr));
         if (RT_SUCCESS(rc))
         {
             struct SymbolEntry

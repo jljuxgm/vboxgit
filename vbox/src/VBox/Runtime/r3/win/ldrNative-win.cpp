@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 34959 2010-12-10 15:17:31Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -38,7 +38,7 @@
 #include "internal/ldr.h"
 
 
-int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle)
+int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, char *pszError, size_t cbError)
 {
     Assert(sizeof(*phHandle) >= sizeof(HMODULE));
 
@@ -66,7 +66,14 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle)
         return VINF_SUCCESS;
     }
 
-    return RTErrConvertFromWin32(GetLastError());
+    /*
+     * Try figure why it failed to load.
+     */
+    DWORD dwErr = GetLastError(dwErr);
+    int   rc    = RTErrConvertFromWin32(dwErr);
+    if (cbError)
+        RTStrPrintf(pszError, cbError, "GetLastError=%u", dwErr);
+    return rc;
 }
 
 

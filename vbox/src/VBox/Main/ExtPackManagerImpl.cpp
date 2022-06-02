@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 34954 2010-12-10 14:43:31Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 34959 2010-12-10 15:17:31Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1162,12 +1162,13 @@ void ExtPack::probeAndLoad(void)
 
     if (fIsNative)
     {
-        vrc = RTLdrLoad(m->strMainModPath.c_str(), &m->hMainMod);
+        char szError[8192];
+        vrc = RTLdrLoadEx(m->strMainModPath.c_str(), &m->hMainMod, szError, sizeof(szError));
         if (RT_FAILURE(vrc))
         {
             m->hMainMod = NIL_RTLDRMOD;
-            m->strWhyUnusable.printf(tr("Failed to locate load the main module ('%s'): %Rrc"),
-                                           m->strMainModPath.c_str(), vrc);
+            m->strWhyUnusable.printf(tr("Failed to locate load the main module ('%s'): %Rrc - %s"),
+                                           m->strMainModPath.c_str(), vrc, szError);
             return;
         }
     }
