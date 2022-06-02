@@ -1,5 +1,5 @@
 
-/* $Id: VBoxServiceControlExec.cpp 30436 2010-06-24 13:41:39Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 30444 2010-06-25 06:54:28Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -882,7 +882,7 @@ DECLCALLBACK(int) VBoxServiceControlExecProcessWorker(PVBOXSERVICECTRLTHREAD pTh
                                     /*
                                      * Close the child ends of any pipes and redirected files.
                                      */
-                                    int rc2 = RTHandleClose(phStdIn);   AssertRC(rc2);
+                                    rc2 = RTHandleClose(phStdIn);   AssertRC(rc2);
                                     phStdIn    = NULL;
                                     rc2 = RTHandleClose(phStdOut);  AssertRC(rc2);
                                     phStdOut   = NULL;
@@ -912,9 +912,9 @@ DECLCALLBACK(int) VBoxServiceControlExecProcessWorker(PVBOXSERVICECTRLTHREAD pTh
                                     VBoxServiceError("ControlExec: Could not start process '%s' (CID: %u)! Error: %Rrc\n",
                                                      pData->pszCmd, pThread->uContextID, rc);
 
-                                    int rc2 = VbglR3GuestCtrlExecReportStatus(pThread->uClientID, pThread->uContextID, pData->uPID,
-                                                                              PROC_STS_ERROR, rc,
-                                                                              NULL /* pvData */, 0 /* cbData */);
+                                    rc2 = VbglR3GuestCtrlExecReportStatus(pThread->uClientID, pThread->uContextID, pData->uPID,
+                                                                          PROC_STS_ERROR, rc,
+                                                                          NULL /* pvData */, 0 /* cbData */);
                                     if (RT_FAILURE(rc2))
                                         VBoxServiceError("ControlExec: Could not report process start error! Error: %Rrc (process error %Rrc)\n",
                                                          rc2, rc);
