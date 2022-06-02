@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 33407 2010-10-25 09:51:30Z vboxsync $ */
 
 /** @file
  *
@@ -313,7 +313,7 @@ HRESULT ErrorInfoKeeper::restore()
     }
     rc = ::SetErrorInfo(0, err);
 
-#else // !defined(VBOX_WITH_XPCOM)
+#else // defined(VBOX_WITH_XPCOM)
 
     nsCOMPtr <nsIExceptionService> es;
     es = do_GetService(NS_EXCEPTIONSERVICE_CONTRACTID, &rc);
@@ -333,7 +333,7 @@ HRESULT ErrorInfoKeeper::restore()
         }
     }
 
-#endif // !defined(VBOX_WITH_XPCOM)
+#endif // defined(VBOX_WITH_XPCOM)
 
     if (SUCCEEDED(rc))
     {
