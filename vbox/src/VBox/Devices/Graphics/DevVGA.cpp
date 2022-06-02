@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 33040 2010-10-11 12:44:03Z vboxsync $ */
+/* $Id: DevVGA.cpp 33041 2010-10-11 13:12:32Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -70,7 +70,7 @@
 /** Converts a vga adaptor state pointer to a device instance pointer. */
 #define VGASTATE2DEVINS(pVgaState)    ((pVgaState)->CTX_SUFF(pDevIns))
 
-/** Use VBE bytewise I/O. Only needed for Windows Longhorn/Vista betas. */
+/** Use VBE bytewise I/O. Only needed for Windows Longhorn/Vista betas and backwards compatibility. */
 #define VBE_BYTEWISE_IO
 
 /** Use VBE new dynamic mode list.
