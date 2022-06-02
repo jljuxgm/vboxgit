@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 34761 2010-12-06 16:06:14Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 34769 2010-12-07 09:43:45Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1478,7 +1478,7 @@ int handleGuestControl(HandlerArg *a)
     arg.argc = a->argc - 1;
     arg.argv = a->argv + 1;
 
-    if (a->argc == 0)
+    if (a->argc <= 0)
         return errorSyntax(USAGE_GUESTCONTROL, "Incorrect parameters");
 
     /* switch (cmd) */
