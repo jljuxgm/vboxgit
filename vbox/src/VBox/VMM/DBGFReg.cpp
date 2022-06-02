@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 35312 2010-12-23 16:40:16Z vboxsync $ */
+/* $Id: DBGFReg.cpp 35314 2010-12-24 04:22:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -788,7 +788,7 @@ static DECLCALLBACK(int) dbgfR3RegQueryWorker(PVM pVM, VMCPUID idCpu, DBGFREG en
         case DBGFREG_XMM13:
         case DBGFREG_XMM14:
         case DBGFREG_XMM15:
-            *pu64 = pCtx->fpu.aRegs[enmReg - DBGFREG_MM0].au64[0];
+            *pu64 = pCtx->fpu.aRegs[enmReg - DBGFREG_XMM0].au64[0];
             *pfRegSizes = R_SZ_128;
             return VINF_SUCCESS;
 
