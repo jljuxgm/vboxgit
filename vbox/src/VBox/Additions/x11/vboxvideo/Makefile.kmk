@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35775 2011-01-30 00:05:05Z vboxsync $
+# $Id: Makefile.kmk 35778 2011-01-30 00:52:45Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -305,7 +305,7 @@ ifdef VBOX_WITH_TESTCASES
 $$(vboxvideo_drv_0_OUTDIR)/tstvboxvideo68.run: $$(INSTARGET_vboxvideo_drv)
 	$(QUIET)$(call MSG_L1,Checking for unresolved symbols in $<)
 	$(QUIET)/bin/sh $(PATH_ROOT)/src/bldprogs/checkUndefined.sh $(KBUILD_TARGET)  \
-	    $(INSTARGET_vboxvideo_drv) $(VBOXVIDEO_SRC_PATH)/undefined_68 --static
+	    $(INSTARGET_vboxvideo_drv) $(VBOXVIDEO_SRC_PATH)/undefined_13 --static
 	$(QUIET)$(APPEND) -t "$@" "done"
      endif
 
@@ -314,7 +314,7 @@ $$(vboxvideo_drv_0_OUTDIR)/tstvboxvideo68.run: $$(INSTARGET_vboxvideo_drv)
 $$(vboxvideo_drv_70_0_OUTDIR)/tstvboxvideo70.run: $$(INSTARGET_vboxvideo_drv_70)
 	$(QUIET)$(call MSG_L1,Checking for unresolved symbols in $<)
 	$(QUIET)/bin/sh $(PATH_ROOT)/src/bldprogs/checkUndefined.sh $(KBUILD_TARGET)  \
-	    $(INSTARGET_vboxvideo_drv_70) $(VBOXVIDEO_SRC_PATH)/undefined_70
+	    $(INSTARGET_vboxvideo_drv_70) $(VBOXVIDEO_SRC_PATH)/undefined_13
 	$(QUIET)$(APPEND) -t "$@" "done"
 
      TESTING += $(vboxvideo_drv_71_0_OUTDIR)/tstvboxvideo71.run
@@ -322,7 +322,7 @@ $$(vboxvideo_drv_70_0_OUTDIR)/tstvboxvideo70.run: $$(INSTARGET_vboxvideo_drv_70)
 $$(vboxvideo_drv_71_0_OUTDIR)/tstvboxvideo71.run: $$(INSTARGET_vboxvideo_drv_71)
 	$(QUIET)$(call MSG_L1,Checking for unresolved symbols in $<)
 	$(QUIET)/bin/sh $(PATH_ROOT)/src/bldprogs/checkUndefined.sh $(KBUILD_TARGET)  \
-	    $(INSTARGET_vboxvideo_drv_71) $(VBOXVIDEO_SRC_PATH)/undefined_70
+	    $(INSTARGET_vboxvideo_drv_71) $(VBOXVIDEO_SRC_PATH)/undefined_13
 	$(QUIET)$(APPEND) -t "$@" "done"
 
      TESTING += $(vboxvideo_drv_13_0_OUTDIR)/tstvboxvideo13.run
