@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 31725 2010-08-17 12:06:54Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 31814 2010-08-20 12:38:56Z vboxsync $ */
 
 /** @file
  *
@@ -251,6 +251,9 @@ public:
 
     HRESULT registerImage(Medium *aImage, DeviceType_T argType, bool *pfNeedsGlobalSaveSettings);
     HRESULT unregisterImage(Medium *aImage, DeviceType_T argType, bool *pfNeedsGlobalSaveSettings);
+
+    void pushMediumToListWithChildren(MediaList &llMedia, Medium *pMedium);
+    HRESULT unregisterMachineMedia(const Guid &id);
 
     HRESULT unregisterMachine(Machine *pMachine, const Guid &id);
 

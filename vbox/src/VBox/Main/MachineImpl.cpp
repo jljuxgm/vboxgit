@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31746 2010-08-18 10:08:52Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31814 2010-08-20 12:38:56Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -753,6 +753,9 @@ void Machine::uninit()
         /* SessionMachine::uninit() must set mSession.mMachine to null */
         Assert(mData->mSession.mMachine.isNull());
     }
+
+    // uninit media from this machine's media registry
+    mParent->unregisterMachineMedia(getId());
 
     /* the lock is no more necessary (SessionMachine is uninitialized) */
     alock.leave();
