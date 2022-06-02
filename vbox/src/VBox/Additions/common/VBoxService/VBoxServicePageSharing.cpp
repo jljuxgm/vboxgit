@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 30650 2010-07-06 09:30:16Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 30655 2010-07-06 11:31:13Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -344,6 +344,7 @@ void VBoxServicePageSharingInspectGuest()
     HANDLE hSnapshot;
     PAVLPVNODECORE pNewTree = NULL;
     DWORD dwProcessId = GetCurrentProcessId();
+    bool fFirstCheck = (pKnownModuleTree == NULL);
 
     VBoxServiceVerbose(3, "VBoxServicePageSharingInspectGuest\n");
 
@@ -481,8 +482,6 @@ skipkernelmodules:
         if (pBuffer)
             RTMemFree(pBuffer);
     }
-
-    bool fFirstCheck = (pKnownModuleTree == NULL);
 
     /* Delete leftover modules in the old tree. */
     RTAvlPVDestroy(&pKnownModuleTree, VBoxServicePageSharingEmptyTreeCallback, NULL);
