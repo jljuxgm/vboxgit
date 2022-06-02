@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 32619 2010-09-17 16:46:51Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 32625 2010-09-19 18:57:19Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -7700,10 +7700,15 @@ static int vmdkAsyncFlush(void *pBackendData, PVDIOCTX pIoCtx)
 #endif /* VBOX_WITH_VMDK_ESX */
             case VMDKETYPE_VMFS:
             case VMDKETYPE_FLAT:
-                /** @todo implement proper path absolute check. */
+                /*
+                 * Don't ignore block devices like in the sync case
+                 * (they have an absolute path).
+                 * We might have unwritten data in the writeback cache and
+                 * the async I/O manager will handle these requests properly
+                 * even if the block device doesn't support these requests.
+                 */
                 if (   pExtent->pFile != NULL
-                    && !(pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY)
-                    && !(pExtent->pszBasename[0] == RTPATH_SLASH))
+                    && !(pImage->uOpenFlags & VD_OPEN_FLAGS_READONLY))
                     rc = vmdkFileFlushAsync(pImage, pExtent->pFile, pIoCtx);
                 break;
             case VMDKETYPE_ZERO:
