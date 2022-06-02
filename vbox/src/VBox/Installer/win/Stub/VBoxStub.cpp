@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 31667 2010-08-13 15:57:03Z vboxsync $ */
+/* $Id: VBoxStub.cpp 32375 2010-09-10 09:10:21Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -178,7 +178,7 @@ static int ExtractFile(const char *pszResourceName,
 
     do
     {
-        AssertBreakStmt(pszResourceName, "Resouce pointer invalid!");
+        AssertBreakStmt(pszResourceName, "Resource pointer invalid!");
         AssertBreakStmt(pszTempFile, "Temp file pointer invalid!");
 
         /* Read the data of the built-in resource. */
