@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 31623 2010-08-13 00:24:14Z vboxsync $ */
+/* $Id: tar.cpp 31624 2010-08-13 00:31:22Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -155,7 +155,7 @@ static int rtTarCopyFileFrom(RTFILE hFile, const char *pszTargetName, PRTTARRECO
     for (;;)
     {
         if (pfnProgressCallback)
-            pfnProgressCallback(100.0 / cbOverallSize * cbOverallWritten, pvUser);
+            pfnProgressCallback((unsigned)(100.0 / cbOverallSize * cbOverallWritten), pvUser);
         /* Finished already? */
         if (cbAllWritten == cbToCopy)
             break;
@@ -269,7 +269,7 @@ static int rtTarCopyFileTo(RTFILE hFile, const char *pszSrcName, const uint64_t 
             for (;;)
             {
                 if (pfnProgressCallback)
-                    pfnProgressCallback(100.0 / cbOverallSize * cbOverallWritten, pvUser);
+                    pfnProgressCallback((unsigned)(100.0 / cbOverallSize * cbOverallWritten), pvUser);
                 if (cbAllWritten >= cbSize)
                     break;
                 size_t cbToRead = sizeof(record);
