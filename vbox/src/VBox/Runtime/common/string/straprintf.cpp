@@ -1,4 +1,4 @@
-/* $Id: straprintf.cpp 31157 2010-07-28 03:15:35Z vboxsync $ */
+/* $Id: straprintf.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * IPRT - Allocating String Formatters.
  */
@@ -139,7 +139,11 @@ static DECLCALLBACK(size_t) strallocoutput(void *pvArg, const char *pachChars, s
 
 RTDECL(int) RTStrAPrintfVTag(char **ppszBuffer, const char *pszFormat, va_list args, const char *pszTag)
 {
+#ifdef IN_RING3
     char            szBuf[2048];
+#else
+    char            szBuf[256];
+#endif
     STRALLOCARG     Arg;
     Arg.fAllocated  = false;
     Arg.cchBuffer   = sizeof(szBuf);

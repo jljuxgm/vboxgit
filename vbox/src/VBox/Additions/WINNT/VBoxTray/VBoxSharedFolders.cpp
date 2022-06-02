@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFolders.cpp 31111 2010-07-26 12:23:16Z vboxsync $ */
+/* $Id: VBoxSharedFolders.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */
@@ -56,15 +56,14 @@ int VBoxSharedFoldersAutoMount(void)
                     {
                         Log(("VBoxTray: Connecting share %u (%s) ...\n", i+1, pszName));
 
-                        char *pszShareName = NULL;
-                        if (   RTStrAPrintf(&pszShareName, "\\\\vboxsrv\\%s", pszName) > 0
-                            && pszShareName)
+                        char *pszShareName;
+                        if (RTStrAPrintf(&pszShareName, "\\\\vboxsrv\\%s", pszName) >= 0)
                         {
-                            char cDrive = 'D'; /* Start probing whether drive D: is free to use. */
+                            char chDrive = 'D'; /* Start probing whether drive D: is free to use. */
                             do
                             {
                                 char szCurDrive[3];
-                                RTStrPrintf(szCurDrive, sizeof(szCurDrive), "%c:", cDrive++);
+                                RTStrPrintf(szCurDrive, sizeof(szCurDrive), "%c:", chDrive++);
 
                                 NETRESOURCE resource;
                                 RT_ZERO(resource);
@@ -101,9 +100,9 @@ int VBoxSharedFoldersAutoMount(void)
                                             break;
                                     }
                                 }
-                            } while(cDrive <= 'Z');
+                            } while (chDrive <= 'Z');
 
-                            if (cDrive > 'Z')
+                            if (chDrive > 'Z')
                             {
                                 LogRel(("VBoxTray: No free driver letter found to assign shared folder \"%s\", aborting.\n", pszName));
                                 break;
@@ -112,7 +111,7 @@ int VBoxSharedFoldersAutoMount(void)
                             RTStrFree(pszShareName);
                         }
                         else
-                            rc = VERR_NO_MEMORY;
+                            rc = VERR_NO_STR_MEMORY;
                         RTStrFree(pszName);
                     }
                     else
@@ -155,30 +154,29 @@ int VBoxSharedFoldersAutoUnmount(void)
                 {
                     Log(("VBoxTray: Disconnecting share %u (%s) ...\n", i+1, pszName));
 
-                    char *pszShareName = NULL;
-                    if (   RTStrAPrintf(&pszShareName, "\\\\vboxsrv\\%s", pszName) > 0
-                        && pszShareName)
+                    char *pszShareName;
+                    if (RTStrAPrintf(&pszShareName, "\\\\vboxsrv\\%s", pszName) >= 0)
                     {
                         DWORD dwErr = WNetCancelConnection2(pszShareName, 0, FALSE /* Force disconnect */);
                         if (dwErr == NO_ERROR)
                         {
                             LogRel(("VBoxTray: Share \"%s\" was disconnected\n", pszShareName));
+                            RTStrFree(pszShareName);
+                            RTStrFree(pszName);
                             break;
                         }
-                        else
+
+                        LogRel(("VBoxTray: Disconnecting \"%s\" failed, dwErr = %ld\n", pszShareName, dwErr));
+
+                        switch (dwErr)
                         {
-                            LogRel(("VBoxTray: Disconnecting \"%s\" failed, dwErr = %ld\n", pszShareName, dwErr));
+                            case ERROR_NOT_CONNECTED:
+                                break;
 
-                            switch (dwErr)
-                            {
-                                case ERROR_NOT_CONNECTED:
-                                    break;
-
-                                default:
-                                    LogRel(("VBoxTray: Error while disconnecting shared folder \"%s\", error = %ld\n",
-                                            pszShareName, dwErr));
-                                    break;
-                            }
+                            default:
+                                LogRel(("VBoxTray: Error while disconnecting shared folder \"%s\", error = %ld\n",
+                                        pszShareName, dwErr));
+                                break;
                         }
 
                         RTStrFree(pszShareName);

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 32705 2010-09-23 07:06:34Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -279,10 +279,7 @@ VBGLR3DECL(int) VbglR3SharedFolderGetMountPrefix(char **ppszPrefix)
         if (rc == VERR_NOT_FOUND) /* No prefix set? Then set the default. */
         {
 #endif
-            if (RTStrAPrintf(ppszPrefix, "sf_"))
-                rc = VINF_SUCCESS;
-            else
-                rc = VERR_NO_MEMORY;
+            rc = RTStrDupEx(ppszPrefix, "sf_");
 #ifdef VBOX_WITH_GUEST_PROPS
         }
         VbglR3GuestPropDisconnect(u32ClientIdGuestProp);

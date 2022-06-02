@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1322,12 +1322,13 @@ static int CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualB
 #ifdef RT_OS_LINUX
                     /* Refer to the correct partition and use offset 0. */
                     char *psz;
-                    vrc = RTStrAPrintf(&psz, "%s%u", rawdisk.c_str(),
-                                       partitions.aPartitions[i].uIndex);
-                    if (RT_FAILURE(vrc))
+                    RTStrAPrintf(&psz, "%s%u", rawdisk.c_str(),
+                                 partitions.aPartitions[i].uIndex);
+                    if (!psz)
                     {
+                        vrc = VERR_NO_STR_MEMORY;
                         RTMsgError("Cannot create reference to individual partition %u, rc=%Rrc",
-                                 partitions.aPartitions[i].uIndex, vrc);
+                                   partitions.aPartitions[i].uIndex, vrc);
                         goto out;
                     }
                     pszRawName = psz;
@@ -1335,10 +1336,11 @@ static int CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualB
 #elif defined(RT_OS_DARWIN)
                     /* Refer to the correct partition and use offset 0. */
                     char *psz;
-                    vrc = RTStrAPrintf(&psz, "%ss%u", rawdisk.c_str(),
-                                       partitions.aPartitions[i].uIndex);
-                    if (RT_FAILURE(vrc))
+                    RTStrAPrintf(&psz, "%ss%u", rawdisk.c_str(),
+                                 partitions.aPartitions[i].uIndex);
+                    if (!psz)
                     {
+                        vrc = VERR_NO_STR_MEMORY;
                         RTMsgError("Cannot create reference to individual partition %u, rc=%Rrc",
                                  partitions.aPartitions[i].uIndex, vrc);
                         goto out;

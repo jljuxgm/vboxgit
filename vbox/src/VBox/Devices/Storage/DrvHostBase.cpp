@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -969,7 +969,7 @@ static int drvHostBaseOpen(PDRVHOSTBASE pThis, PRTFILE pFileDevice, bool fReadOn
         char *pszPassthroughDevice = NULL;
         rc = RTStrAPrintf(&pszPassthroughDevice, "/dev/%s%u",
                           DeviceCCB.cgdl.periph_name, DeviceCCB.cgdl.unit_number);
-        if (RT_SUCCESS(rc))
+        if (rc >= 0)
         {
             RTFILE PassthroughDevice;
 
@@ -1012,6 +1012,8 @@ static int drvHostBaseOpen(PDRVHOSTBASE pThis, PRTFILE pFileDevice, bool fReadOn
                     RTFileClose(PassthroughDevice);
             }
         }
+        else
+            rc = VERR_NO_STR_MEMORY;
     }
     else
         rc = RTErrConvertFromErrno(errno);

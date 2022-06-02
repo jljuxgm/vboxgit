@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 33408 2010-10-25 09:57:32Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -635,49 +635,32 @@ void Console::updateGuestPropertiesVRDPLogon(uint32_t u32ClientId, const char *p
         return;
     }
 
-    int rc;
-    char *pszPropertyName;
+    char szPropNm[256];
     Bstr bstrReadOnlyGuest(L"RDONLYGUEST");
 
-    rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/Name", u32ClientId);
-    if (RT_SUCCESS(rc))
-    {
-        Bstr clientName;
-        mVRDEServerInfo->COMGETTER(ClientName)(clientName.asOutParam());
+    RTStrPrintf(szPropNm, sizeof(szPropNm), "/VirtualBox/HostInfo/VRDP/Client/%u/Name", u32ClientId);
+    Bstr clientName;
+    mVRDEServerInfo->COMGETTER(ClientName)(clientName.asOutParam());
 
-        mMachine->SetGuestProperty(Bstr(pszPropertyName).raw(),
-                                   clientName.raw(),
-                                   bstrReadOnlyGuest.raw());
-        RTStrFree(pszPropertyName);
-    }
+    mMachine->SetGuestProperty(Bstr(szPropNm).raw(),
+                               clientName.raw(),
+                               bstrReadOnlyGuest.raw());
 
-    rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/User", u32ClientId);
-    if (RT_SUCCESS(rc))
-    {
-        mMachine->SetGuestProperty(Bstr(pszPropertyName).raw(),
-                                   Bstr(pszUser).raw(),
-                                   bstrReadOnlyGuest.raw());
-        RTStrFree(pszPropertyName);
-    }
+    RTStrPrintf(szPropNm, sizeof(szPropNm), "/VirtualBox/HostInfo/VRDP/Client/%u/User", u32ClientId);
+    mMachine->SetGuestProperty(Bstr(szPropNm).raw(),
+                               Bstr(pszUser).raw(),
+                               bstrReadOnlyGuest.raw());
 
-    rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/Domain", u32ClientId);
-    if (RT_SUCCESS(rc))
-    {
-        mMachine->SetGuestProperty(Bstr(pszPropertyName).raw(),
-                                   Bstr(pszDomain).raw(),
-                                   bstrReadOnlyGuest.raw());
-        RTStrFree(pszPropertyName);
-    }
+    RTStrPrintf(szPropNm, sizeof(szPropNm), "/VirtualBox/HostInfo/VRDP/Client/%u/Domain", u32ClientId);
+    mMachine->SetGuestProperty(Bstr(szPropNm).raw(),
+                               Bstr(pszDomain).raw(),
+                               bstrReadOnlyGuest.raw());
 
-    char *pszClientId;
-    rc = RTStrAPrintf(&pszClientId, "%d", u32ClientId);
-    if (RT_SUCCESS(rc))
-    {
-        mMachine->SetGuestProperty(Bstr("/VirtualBox/HostInfo/VRDP/LastConnectedClient").raw(),
-                                   Bstr(pszClientId).raw(),
-                                   bstrReadOnlyGuest.raw());
-        RTStrFree(pszClientId);
-    }
+    char szClientId[64];
+    RTStrPrintf(szClientId, sizeof(szClientId), "%d", u32ClientId);
+    mMachine->SetGuestProperty(Bstr("/VirtualBox/HostInfo/VRDP/LastConnectedClient").raw(),
+                               Bstr(szClientId).raw(),
+                               bstrReadOnlyGuest.raw());
 
     return;
 }
@@ -689,42 +672,24 @@ void Console::updateGuestPropertiesVRDPDisconnect(uint32_t u32ClientId)
 
     Bstr bstrReadOnlyGuest(L"RDONLYGUEST");
 
-    int rc;
-    char *pszPropertyName;
+    char szPropNm[256];
+    RTStrPrintf(szPropNm, sizeof(szPropNm), "/VirtualBox/HostInfo/VRDP/Client/%u/Name", u32ClientId);
+    mMachine->SetGuestProperty(Bstr(szPropNm).raw(), Bstr("").raw(),
+                               bstrReadOnlyGuest.raw());
 
-    rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/Name", u32ClientId);
-    if (RT_SUCCESS(rc))
-    {
-        mMachine->SetGuestProperty(Bstr(pszPropertyName).raw(), Bstr("").raw(),
-                                   bstrReadOnlyGuest.raw());
-        RTStrFree(pszPropertyName);
-    }
+    RTStrPrintf(szPropNm, sizeof(szPropNm), "/VirtualBox/HostInfo/VRDP/Client/%u/User", u32ClientId);
+    mMachine->SetGuestProperty(Bstr(szPropNm).raw(), Bstr("").raw(),
+                               bstrReadOnlyGuest.raw());
 
-    rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/User", u32ClientId);
-    if (RT_SUCCESS(rc))
-    {
-        mMachine->SetGuestProperty(Bstr(pszPropertyName).raw(), Bstr("").raw(),
-                                   bstrReadOnlyGuest.raw());
-        RTStrFree(pszPropertyName);
-    }
+    RTStrPrintf(szPropNm, sizeof(szPropNm), "/VirtualBox/HostInfo/VRDP/Client/%u/Domain", u32ClientId);
+    mMachine->SetGuestProperty(Bstr(szPropNm).raw(), Bstr("").raw(),
+                               bstrReadOnlyGuest.raw());
 
-    rc = RTStrAPrintf(&pszPropertyName, "/VirtualBox/HostInfo/VRDP/Client/%u/Domain", u32ClientId);
-    if (RT_SUCCESS(rc))
-    {
-        mMachine->SetGuestProperty(Bstr(pszPropertyName).raw(), Bstr("").raw(),
-                                   bstrReadOnlyGuest.raw());
-        RTStrFree(pszPropertyName);
-    }
-
-    char *pszClientId;
-    rc = RTStrAPrintf(&pszClientId, "%d", u32ClientId);
-    if (RT_SUCCESS(rc))
-    {
-        mMachine->SetGuestProperty(Bstr("/VirtualBox/HostInfo/VRDP/LastDisconnectedClient").raw(),
-                                   Bstr(pszClientId).raw(),
-                                   bstrReadOnlyGuest.raw());
-        RTStrFree(pszClientId);
-    }
+    char szClientId[64];
+    RTStrPrintf(szClientId, sizeof(szClientId), "%d", u32ClientId);
+    mMachine->SetGuestProperty(Bstr("/VirtualBox/HostInfo/VRDP/LastDisconnectedClient").raw(),
+                               Bstr(szClientId).raw(),
+                               bstrReadOnlyGuest.raw());
 
     return;
 }

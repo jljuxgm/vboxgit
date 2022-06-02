@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33448 2010-10-26 08:40:31Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -36,6 +36,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/dir.h>
+#include <iprt/file.h>
 #include <iprt/isofs.h>
 #include <iprt/getopt.h>
 #include <iprt/list.h>
@@ -745,11 +746,11 @@ int ctrlCopyDirectoryRead(const char *pszRootDir, const char *pszSubDir, const c
                     char *pszFileDest = NULL;
                     if (RTStrAPrintf(&pszFileSource, "%s%s%s",
                                      pszRootDir, pszSubDir ? pszSubDir : "",
-                                     DirEntry.szName))
+                                     DirEntry.szName) >= 0)
                     {
                         if (!RTStrAPrintf(&pszFileDest, "%s%s",
                                           pszSubDir ? pszSubDir : "",
-                                          DirEntry.szName))
+                                          DirEntry.szName) >= 0)
                         {
                             rc = VERR_NO_MEMORY;
                         }

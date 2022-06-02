@@ -1,4 +1,4 @@
-/* $Id: FramebufferVNC.cpp 31698 2010-08-16 15:00:05Z vboxsync $ */
+/* $Id: FramebufferVNC.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * VBoxHeadless - VNC server implementation for VirtualBox.
  *
@@ -92,8 +92,8 @@ HRESULT VNCFB::init(const char *pszName)
         vncServer->port = mVncPort;
     char *pszDesktopName;
     rc = RTStrAPrintf(&pszDesktopName, "%s - VirtualBox", pszName);
-    if (RT_SUCCESS(rc))
-        vncServer->desktopName = (const char*)pszDesktopName;
+    if (rc >= 0)
+        vncServer->desktopName = pszDesktopName;
     else
         vncServer->desktopName = "VirtualBox";
     if (mVncPassword)

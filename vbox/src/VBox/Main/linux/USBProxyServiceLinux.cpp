@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceLinux.cpp 33100 2010-10-13 12:09:23Z vboxsync $ */
+/* $Id: USBProxyServiceLinux.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -168,8 +168,7 @@ int USBProxyServiceLinux::initUsbfs(void)
      * Open the devices file.
      */
     int rc;
-    char *pszDevices;
-    RTStrAPrintf(&pszDevices, "%s/devices", mUsbfsRoot.c_str());
+    char *pszDevices = RTPathJoinA(mUsbfsRoot.c_str(), "devices");
     if (pszDevices)
     {
         rc = USBProxyLinuxCheckForUsbfs(pszDevices);
