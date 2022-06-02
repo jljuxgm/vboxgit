@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 30125 2010-06-09 14:45:10Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 30403 2010-06-23 18:42:17Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -928,17 +928,25 @@ int handleStorageController(HandlerArg *a)
 
             CHECK_ERROR(machine, GetStorageControllerByName(Bstr(pszCtl), ctl.asOutParam()));
 
-            if (!RTStrICmp(pszHostIOCache, "on"))
+            if (SUCCEEDED(rc))
             {
-                CHECK_ERROR(ctl, COMSETTER(UseHostIOCache)(TRUE));
-            }
-            else if (!RTStrICmp(pszHostIOCache, "off"))
-            {
-                CHECK_ERROR(ctl, COMSETTER(UseHostIOCache)(FALSE));
+                if (!RTStrICmp(pszHostIOCache, "on"))
+                {
+                    CHECK_ERROR(ctl, COMSETTER(UseHostIOCache)(TRUE));
+                }
+                else if (!RTStrICmp(pszHostIOCache, "off"))
+                {
+                    CHECK_ERROR(ctl, COMSETTER(UseHostIOCache)(FALSE));
+                }
+                else
+                {
+                    errorArgument("Invalid --hostiocache argument '%s'", pszHostIOCache);
+                    rc = E_FAIL;
+                }
             }
             else
             {
-                errorArgument("Invalid --hostiocache argument '%s'", pszHostIOCache);
+                errorArgument("Couldn't find the controller with the name: '%s'\n", pszCtl);
                 rc = E_FAIL;
             }
         }
