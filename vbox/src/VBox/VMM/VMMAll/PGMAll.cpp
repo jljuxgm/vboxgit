@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 32036 2010-08-27 10:14:39Z vboxsync $ */
+/* $Id: PGMAll.cpp 32516 2010-09-15 12:45:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -761,9 +761,6 @@ VMMDECL(int) PGMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCPtrPage)
     rc = PGM_BTH_PFN(InvalidatePage, pVCpu)(pVCpu, GCPtrPage);
     pgmUnlock(pVM);
     STAM_PROFILE_STOP(&pVCpu->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,InvalidatePage), a);
-
-    /* Invalidate the TLB entry; might already be done by InvalidatePage (@todo) */
-    PGM_INVL_PG(pVCpu, GCPtrPage);
 
 #ifdef IN_RING3
     /*
