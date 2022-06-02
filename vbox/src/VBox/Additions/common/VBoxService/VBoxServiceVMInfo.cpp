@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 32633 2010-09-20 11:26:48Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 32731 2010-09-23 14:50:12Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -314,6 +314,9 @@ static int vboxserviceVMInfoWriteUsers(void)
     Assert(RT_FAILURE(rc) || cUsersInList == 0 || (pszUserList && *pszUserList));
     if (RT_FAILURE(rc))
         cUsersInList = 0;
+
+    VBoxServiceVerbose(4, "VMInfo: cUsersInList: %u, pszUserList: %s, rc=%Rrc\n",
+                       cUsersInList, pszUserList ? pszUserList : "<NULL>", rc);
 
     if (pszUserList && cUsersInList > 0)
         VBoxServicePropCacheUpdate(&g_VMInfoPropCache, "/VirtualBox/GuestInfo/OS/LoggedInUsersList", "%s", pszUserList);
