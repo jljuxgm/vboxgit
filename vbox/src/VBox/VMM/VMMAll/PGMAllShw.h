@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 32009 2010-08-26 16:41:19Z vboxsync $ */
+/* $Id: PGMAllShw.h 32033 2010-08-27 09:58:31Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -131,7 +131,7 @@
 # define PSHWPD                         PX86PDPAE
 # define SHWPDE                         X86PDEPAE
 # define PSHWPDE                        PX86PDEPAE
-# define SHW_PDE_PG_MASK                X86_PDE_PAE_PG_MASK
+# define SHW_PDE_PG_MASK                X86_PDE_PAE_PG_MASK_FULL
 # define SHW_PD_SHIFT                   X86_PD_PAE_SHIFT
 # define SHW_PD_MASK                    X86_PD_PAE_MASK
 # define SHW_PTE_PG_MASK                X86_PTE_PAE_PG_MASK
