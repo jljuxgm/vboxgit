@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 35746 2011-01-27 19:32:39Z vboxsync $
+// $Id: vbox.dsl 35782 2011-01-31 11:25:55Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -1460,19 +1460,19 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
     })
 
     // Shift one by the power state number
-//    If (And(PWRS, ShiftLeft(One,1))) {
+    If (And(PWRS, ShiftLeft(One,1))) {
         Name (_S1, Package (2) {
             0x01,
             0x01,
         })
-//    }
+    }
 
-//    If (And(PWRS, ShiftLeft(One,4))) {
+    If (And(PWRS, ShiftLeft(One,4))) {
         Name (_S4, Package (2) {
             0x05,
             0x05,
         })
-//    }
+    }
 
     Name (_S5, Package (2) {
         0x05,
