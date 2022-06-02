@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 31319 2010-08-02 16:41:47Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 31320 2010-08-02 16:47:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4139,6 +4139,7 @@ bool VBoxGlobal::isSheetWindowsAllowed(QWidget *pParent) const
     if (!(   qobject_cast<UIMachineWindowFullscreen*>(pParent)
           || qobject_cast<UIMachineWindowSeamless*>(pParent)))
         return true;
+    return false;
 }
 #endif /* Q_WS_MAC */
 
