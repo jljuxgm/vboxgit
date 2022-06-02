@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 30677 2010-07-06 16:39:25Z vboxsync $ */
+/* $Id: UISession.cpp 30679 2010-07-06 16:50:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -116,8 +116,8 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
     connect(gConsoleEvents, SIGNAL(sigUSBDeviceStateChange(CUSBDevice, bool, CVirtualBoxErrorInfo)),
             this, SIGNAL(sigUSBDeviceStateChange(CUSBDevice, bool, CVirtualBoxErrorInfo)));
 
-    connect(gConsoleEvents, SIGNAL(sigSharedFolderChange(Scope_T)),
-            this, SLOT(sltSharedFolderChange(Scope_T)));
+    connect(gConsoleEvents, SIGNAL(sigSharedFolderChange()),
+            this, SLOT(sltSharedFolderChange()));
 
     connect(gConsoleEvents, SIGNAL(sigRuntimeError(bool, QString, QString)),
             this, SIGNAL(sigRuntimeError(bool, QString, QString)));
@@ -580,7 +580,7 @@ void UISession::sltAdditionsChange()
     }
 }
 
-void UISession::sltSharedFolderChange(Scope_T /* scope */)
+void UISession::sltSharedFolderChange()
 {
     emit sigSharedFolderChange();
 }

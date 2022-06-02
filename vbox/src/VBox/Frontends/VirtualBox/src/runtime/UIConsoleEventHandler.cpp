@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 30677 2010-07-06 16:39:25Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 30679 2010-07-06 16:50:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -116,8 +116,8 @@ UIConsoleEventHandler::UIConsoleEventHandler(UISession *pSession)
             this, SIGNAL(sigUSBDeviceStateChange(CUSBDevice, bool, CVirtualBoxErrorInfo)),
             Qt::QueuedConnection);
 
-    connect(pListener, SIGNAL(sigSharedFolderChange(Scope_T)),
-            this, SIGNAL(sigSharedFolderChange(Scope_T)),
+    connect(pListener, SIGNAL(sigSharedFolderChange()),
+            this, SIGNAL(sigSharedFolderChange()),
             Qt::QueuedConnection);
 
     connect(pListener, SIGNAL(sigRuntimeError(bool, QString, QString)),
