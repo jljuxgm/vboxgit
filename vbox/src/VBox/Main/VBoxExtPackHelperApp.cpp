@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 34292 2010-11-23 16:06:39Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 34298 2010-11-23 16:16:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -38,11 +38,13 @@
 #include <VBox/version.h>
 
 
+#ifdef IN_RT_R3
 /* Override RTAssertShouldPanic to prevent gdb process creation. */
 RTDECL(bool) RTAssertShouldPanic(void)
 {
     return true;
 }
+#endif
 
 
 /**
