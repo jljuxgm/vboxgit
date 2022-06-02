@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 33422 2010-10-25 13:33:07Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 33448 2010-10-26 08:40:31Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -191,7 +191,8 @@ static int  VBoxServiceControlExecProcHandleStdInWritableEvent(RTPOLLSET hPollSe
             rc = VINF_SUCCESS;
         if (RT_FAILURE(rc))
         {
-            if (rc == VERR_BAD_PIPE)
+            if (   rc == VERR_BAD_PIPE
+                || rc == VERR_BROKEN_PIPE)
             {
                 rc = RTPollSetRemove(hPollSet, VBOXSERVICECTRLPIPEID_STDIN_WRITABLE);
                 AssertRC(rc);
