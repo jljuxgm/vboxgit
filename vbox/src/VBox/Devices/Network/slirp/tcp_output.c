@@ -1,4 +1,4 @@
-/* $Id: tcp_output.c 34103 2010-11-16 11:18:55Z vboxsync $ */
+/* $Id: tcp_output.c 35163 2010-12-16 07:37:00Z vboxsync $ */
 /** @file
  * NAT - TCP output.
  */
@@ -99,7 +99,7 @@ tcp_output(PNATState pData, register struct tcpcb *tp)
     u_char opt[MAX_TCPOPTLEN];
     unsigned optlen, hdrlen;
     int idle, sendalot;
-    int size;
+    int size = 0;
 
     LogFlow(("tcp_output: tp = %lx\n", (long)tp));
 
