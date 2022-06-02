@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 32604 2010-09-17 13:32:59Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 32641 2010-09-20 14:01:17Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -4510,10 +4510,14 @@ VBOXDDU_DECL(int) VDCreateBase(PVBOXHDD pDisk, const char *pszBackend,
         }
         else
         {
-            /* Error detected, but image opened. Close and delete image. */
-            rc2 = pImage->Backend->pfnClose(pImage->pBackendData, true);
-            AssertRC(rc2);
-            pImage->pBackendData = NULL;
+            /* Error detected, image may or may not be opened. Close and delete
+             * image if it was opened. */
+            if (pImage->pBackendData)
+            {
+                rc2 = pImage->Backend->pfnClose(pImage->pBackendData, true);
+                AssertRC(rc2);
+                pImage->pBackendData = NULL;
+            }
         }
     } while (0);
 
