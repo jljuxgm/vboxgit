@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 32536 2010-09-15 18:25:32Z vboxsync $ */
+/* $Id: VDICore.h 32553 2010-09-16 12:07:01Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -620,7 +620,7 @@ typedef struct VDIIMAGEDESC
     /** I/O interface. */
     PVDINTERFACE            pInterfaceIO;
     /** I/O interface callbacks. */
-    PVDINTERFACEIO          pInterfaceIOCallbacks;
+    PVDINTERFACEIOINT       pInterfaceIOCallbacks;
 #endif /* VBOX_VDICORE_VD */
 } VDIIMAGEDESC, *PVDIIMAGEDESC;
 

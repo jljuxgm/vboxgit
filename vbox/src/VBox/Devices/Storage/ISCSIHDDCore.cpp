@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 32536 2010-09-15 18:25:32Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 32553 2010-09-16 12:07:01Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -539,7 +539,7 @@ typedef struct ISCSIIMAGE
     /** I/O interface. */
     PVDINTERFACE        pInterfaceIo;
     /** I/O interface callback table. */
-    PVDINTERFACEIO      pInterfaceIoCallbacks;
+    PVDINTERFACEIOINT   pInterfaceIoCallbacks;
     /** Image open flags. */
     unsigned            uOpenFlags;
     /** Number of re-login retries when a connection fails. */
@@ -3754,9 +3754,9 @@ static int iscsiOpenImage(PISCSIIMAGE pImage, unsigned uOpenFlags)
     }
 
     /* Get I/O interface. */
-    pImage->pInterfaceIo = VDInterfaceGet(pImage->pVDIfsImage, VDINTERFACETYPE_IO);
+    pImage->pInterfaceIo = VDInterfaceGet(pImage->pVDIfsImage, VDINTERFACETYPE_IOINT);
     if (pImage->pInterfaceIo)
-        pImage->pInterfaceIoCallbacks = VDGetInterfaceIO(pImage->pInterfaceIo);
+        pImage->pInterfaceIoCallbacks = VDGetInterfaceIOInt(pImage->pInterfaceIo);
     else
     {
         rc = iscsiError(pImage, VERR_VD_ISCSI_UNKNOWN_INTERFACE,
