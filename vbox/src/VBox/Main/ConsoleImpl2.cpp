@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 30750 2010-07-08 18:40:30Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 30951 2010-07-21 11:36:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -309,7 +309,7 @@ static int getSmcDeviceKey(IMachine *pMachine, BSTR *aKey, bool *pfGetKeyFromRea
     return rc;
 }
 
-class DECLEXPORT_CLASS ConfigError : public iprt::Error
+class ConfigError : public iprt::Error
 {
 public:
 
