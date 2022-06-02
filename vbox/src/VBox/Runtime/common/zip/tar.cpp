@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 34002 2010-11-11 17:16:37Z vboxsync $ */
+/* $Id: tar.cpp 34919 2010-12-09 18:14:41Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -259,12 +259,12 @@ DECLINLINE(int) rtTarCreateHeaderRecord(PRTTARRECORD pRecord, const char *pszSrc
     /** @todo check for field overflows. */
     /* Fill the header record */
 //    RT_ZERO(pRecord);
-    RTStrPrintf(pRecord->h.name,  sizeof(pRecord->h.name),  "%s",     pszSrcName);
-    RTStrPrintf(pRecord->h.mode,  sizeof(pRecord->h.mode),  "%0.7o",  fmode);
-    RTStrPrintf(pRecord->h.uid,   sizeof(pRecord->h.uid),   "%0.7o",  uid);
-    RTStrPrintf(pRecord->h.gid,   sizeof(pRecord->h.gid),   "%0.7o",  gid);
-    RTStrPrintf(pRecord->h.size,  sizeof(pRecord->h.size),  "%0.11o", cbSize);
-    RTStrPrintf(pRecord->h.mtime, sizeof(pRecord->h.mtime), "%0.11o", mtime);
+    RTStrPrintf(pRecord->h.name,  sizeof(pRecord->h.name),  "%s",       pszSrcName);
+    RTStrPrintf(pRecord->h.mode,  sizeof(pRecord->h.mode),  "%0.7o",    fmode);
+    RTStrPrintf(pRecord->h.uid,   sizeof(pRecord->h.uid),   "%0.7o",    uid);
+    RTStrPrintf(pRecord->h.gid,   sizeof(pRecord->h.gid),   "%0.7o",    gid);
+    RTStrPrintf(pRecord->h.size,  sizeof(pRecord->h.size),  "%0.11llo", cbSize);
+    RTStrPrintf(pRecord->h.mtime, sizeof(pRecord->h.mtime), "%0.11o",   mtime);
     RTStrPrintf(pRecord->h.magic, sizeof(pRecord->h.magic), "ustar  ");
     RTStrPrintf(pRecord->h.uname, sizeof(pRecord->h.uname), "someone");
     RTStrPrintf(pRecord->h.gname, sizeof(pRecord->h.gname), "someone");
