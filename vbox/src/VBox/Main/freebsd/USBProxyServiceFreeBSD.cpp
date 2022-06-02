@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceFreeBSD.cpp 31892 2010-08-24 08:00:51Z vboxsync $ */
+/* $Id: USBProxyServiceFreeBSD.cpp 32015 2010-08-26 19:23:56Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, FreeBSD Specialization.
  */
@@ -116,7 +116,7 @@ USBProxyServiceFreeBSD::~USBProxyServiceFreeBSD()
 
 int USBProxyServiceFreeBSD::captureDevice(HostUSBDevice *aDevice)
 {
-    Log(("USBProxyServiceFreeBSD::captureDevice: %p {%s}\n", aDevice, aDevice->getName().raw()));
+    Log(("USBProxyServiceFreeBSD::captureDevice: %p {%s}\n", aDevice, aDevice->getName().c_str()));
     AssertReturn(aDevice, VERR_GENERAL_FAILURE);
     AssertReturn(aDevice->isWriteLockOnCurrentThread(), VERR_GENERAL_FAILURE);
 
