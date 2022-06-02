@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-linux.c 33033 2010-10-11 09:55:12Z vboxsync $ */
+/* $Id: semevent-r0drv-linux.c 33043 2010-10-11 15:56:04Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -177,6 +177,7 @@ static int rtR0SemEventLnxWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, uint6
      */
     AssertPtrReturn(pThis, VERR_INVALID_PARAMETER);
     AssertMsgReturn(pThis->u32Magic == RTSEMEVENT_MAGIC, ("%p u32Magic=%RX32\n", pThis, pThis->u32Magic), VERR_INVALID_PARAMETER);
+    AssertReturn(RTSEMWAIT_FLAGS_ARE_VALID(fFlags), VERR_INVALID_PARAMETER);
     rtR0SemEventLnxRetain(pThis);
 
     /*

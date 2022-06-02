@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-nt.cpp 33038 2010-10-11 11:55:01Z vboxsync $ */
+/* $Id: semevent-r0drv-nt.cpp 33043 2010-10-11 15:56:04Z vboxsync $ */
 /** @file
  * IPRT -  Single Release Event Semaphores, Ring-0 Driver, NT.
  */
@@ -168,6 +168,8 @@ DECLINLINE(int) rtR0SemEventNtWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, u
         return VERR_INVALID_PARAMETER;
     AssertPtrReturn(pThis, VERR_INVALID_PARAMETER);
     AssertMsgReturn(pThis->u32Magic == RTSEMEVENT_MAGIC, ("%p u32Magic=%RX32\n", pThis, pThis->u32Magic), VERR_INVALID_PARAMETER);
+    AssertReturn(RTSEMWAIT_FLAGS_ARE_VALID(fFlags), VERR_INVALID_PARAMETER);
+
     rtR0SemEventNtRetain(pThis);
 
     /*
@@ -196,7 +198,6 @@ DECLINLINE(int) rtR0SemEventNtWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, u
             }
         }
     }
-
 
     /*
      * Wait for it.
