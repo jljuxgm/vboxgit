@@ -1,4 +1,4 @@
-/* $Id: path.cpp 31404 2010-08-05 13:02:38Z vboxsync $ */
+/* $Id: path.cpp 31405 2010-08-05 13:03:58Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -193,7 +193,7 @@ RTR3DECL(int) RTPathGetMode(const char *pszPath, PRTFMODE pfMode)
     AssertPtrReturn(pfMode, VERR_INVALID_POINTER);
 
     RTFSOBJINFO ObjInfo;
-    rc = RTPathQueryInfoEx(pszPath, &ObjInfo, RTFSOBJATTRADD_NOTHING, RTPATH_F_FOLLOW_LINK);
+    int rc = RTPathQueryInfoEx(pszPath, &ObjInfo, RTFSOBJATTRADD_NOTHING, RTPATH_F_FOLLOW_LINK);
     if (RT_SUCCESS(rc))
         *pfMode = ObjInfo.Attr.fMode;
 
