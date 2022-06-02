@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 35735 2011-01-27 12:15:53Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 35736 2011-01-27 12:21:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -123,13 +123,13 @@ QString UIHotKey::toString(int iKeyCode)
         case optionKey:
         case controlKey:
         case cmdKey:
-            strKeyName = tr("Left ");
+            strKeyName = UIHotKeyEditor::tr("Left ");
             break;
         case rightShiftKey:
         case rightOptionKey:
         case rightControlKey:
         case kEventKeyModifierRightCmdKeyMask:
-            strKeyName = tr("Right ");
+            strKeyName = UIHotKeyEditor::tr("Right ");
             break;
         default:
             AssertMsgFailedReturn(("modMask=%#x\n", modMask), QString());
