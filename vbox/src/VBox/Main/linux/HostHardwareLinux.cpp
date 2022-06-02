@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 29352 2010-05-11 13:23:15Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 30659 2010-07-06 11:56:46Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1609,7 +1609,8 @@ int walkDirectory(const char *pcszPath, pathHandler *pHandler, bool useRealPath)
         if (useRealPath)
         {
             rc = RTPathReal(szPath, szAbsPath, sizeof(szAbsPath));
-            AssertRCBreak(rc);  /* sysfs should guarantee that this exists */
+            if (RT_FAILURE(rc))
+                break;  /* The file can vanish if a device is unplugged. */
             if (!pHandler->doHandle(szAbsPath))
                 break;
         }
