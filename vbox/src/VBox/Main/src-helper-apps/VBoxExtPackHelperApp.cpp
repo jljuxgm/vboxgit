@@ -1,10 +1,10 @@
-/* $Id: VBoxExtPackHelperApp.cpp 35699 2011-01-25 08:46:13Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 35708 2011-01-25 12:58:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -346,14 +346,26 @@ static RTEXITCODE ValidateUnpackedExtPack(const char *pszDir, const char *pszTar
  */
 static RTEXITCODE UnpackExtPackDir(const char *pszDstDirName, RTVFSOBJ hVfsObj)
 {
-    int rc = RTDirCreate(pszDstDirName, 0755);
+    /*
+     * Get the mode mask before creating the directory.
+     */
+    RTFSOBJINFO ObjInfo;
+    int rc = RTVfsObjQueryInfo(hVfsObj, &ObjInfo, RTFSOBJATTRADD_NOTHING);
+    if (RT_FAILURE(rc))
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTVfsObjQueryInfo failed on '%s': %Rrc", pszDstDirName, rc);
+    ObjInfo.Attr.fMode &= ~(RTFS_UNIX_IWOTH | RTFS_UNIX_IWGRP);
+
+    rc = RTDirCreate(pszDstDirName, ObjInfo.Attr.fMode);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to create directory '%s': %Rrc", pszDstDirName, rc);
-#if !defined(RT_OS_WINDOWS)
-    /* This is necessary because of umask! */
-    rc = RTPathSetMode(pszDstDirName, 0755);
+
+#ifndef RT_OS_WINDOWS
+    /*
+     * Because of umask, we have to apply the mode again.
+     */
+    rc = RTPathSetMode(pszDstDirName, ObjInfo.Attr.fMode);
     if (RT_FAILURE(rc))
-        return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to set directory permissions: %Rrc ('%s')", rc, pszDstDirName);
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to set directory permissions on '%s': %Rrc", pszDstDirName, rc);
 #else
     /** @todo Ownership tricks on windows? */
 #endif
