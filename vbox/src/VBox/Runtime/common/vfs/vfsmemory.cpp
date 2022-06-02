@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 34410 2010-11-26 16:57:12Z vboxsync $ */
+/* $Id: vfsmemory.cpp 34414 2010-11-26 17:01:55Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -369,7 +369,7 @@ static PRTVFSMEMEXTENT rtVfsMemFile_AllocExtent(PRTVFSMEMFILE pThis, uint64_t of
             pThis->cbExtent = RTVFSMEM_MAX_EXTENT_SIZE;
         else if (!RTListIsEmpty(&pThis->ExtentHead))
         {
-            size_t cbNextExtent = pThis->cbExtent;
+            uint32_t cbNextExtent = pThis->cbExtent;
             if (RT_IS_POWER_OF_TWO(cbNextExtent))
                 cbNextExtent *= 2;
             else
