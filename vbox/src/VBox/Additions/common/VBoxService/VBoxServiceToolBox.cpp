@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 33886 2010-11-09 10:34:14Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 33888 2010-11-09 11:05:19Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -151,7 +151,11 @@ int VBoxServiceToolboxMkDir(int argc, char **argv)
 
      char szDir[RTPATH_MAX];
      RTFMODE newMode = 0;
-     RTFMODE fileMode = RTFS_UNIX_MASK | RTFS_TYPE_DIRECTORY;
+#ifdef RT_OS_WINDOWS
+    RTFMODE fileMode = 0;
+#else
+     RTFMODE fileMode = S_IRWXU | S_IRWXG | S_IRWXO;
+#endif
 
      while (   (ch = RTGetOpt(&GetState, &ValueUnion))
             && RT_SUCCESS(rc))
@@ -193,12 +197,7 @@ int VBoxServiceToolboxMkDir(int argc, char **argv)
 #ifndef RT_OS_WINDOWS
              mode_t umaskMode = umask(0); /* Get current umask. */
              if (newMode)
-             {
-                 fileMode |= newMode;
-             }
-             else
-                 fileMode |= S_IRWXU | S_IRWXG | S_IRWXO;
-                 fileMode &= ~umaskMode;
+                fileMode = newMode;
 #endif
          }
 
