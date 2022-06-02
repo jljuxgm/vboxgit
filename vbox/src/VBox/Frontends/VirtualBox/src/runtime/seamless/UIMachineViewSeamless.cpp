@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 30347 2010-06-21 17:44:06Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 30408 2010-06-24 03:41:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -75,8 +75,6 @@ UIMachineViewSeamless::UIMachineViewSeamless(  UIMachineWindow *pMachineWindow
     /* Initialization: */
     sltMachineStateChanged();
     sltAdditionsStateChanged();
-    sltMousePointerShapeChanged();
-    sltMouseCapabilityChanged();
 }
 
 UIMachineViewSeamless::~UIMachineViewSeamless()
@@ -197,9 +195,6 @@ bool UIMachineViewSeamless::event(QEvent *pEvent)
 #ifdef Q_WS_MAC
             machineLogic()->updateDockIconSize(screenId(), pResizeEvent->width(), pResizeEvent->height());
 #endif /* Q_WS_MAC */
-
-            /* Update mouse cursor shape: */
-            updateMouseCursorShape();
 
             /* Update machine-view sliders: */
             updateSliders();

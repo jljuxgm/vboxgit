@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 30347 2010-06-21 17:44:06Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 30408 2010-06-24 03:41:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -68,8 +68,6 @@ UIMachineViewNormal::UIMachineViewNormal(  UIMachineWindow *pMachineWindow
     /* Initialization: */
     sltMachineStateChanged();
     sltAdditionsStateChanged();
-    sltMousePointerShapeChanged();
-    sltMouseCapabilityChanged();
 }
 
 UIMachineViewNormal::~UIMachineViewNormal()
@@ -175,9 +173,6 @@ bool UIMachineViewNormal::event(QEvent *pEvent)
 #ifdef Q_WS_MAC
             machineLogic()->updateDockIconSize(screenId(), pResizeEvent->width(), pResizeEvent->height());
 #endif /* Q_WS_MAC */
-
-            /* Update mouse cursor shape: */
-            updateMouseCursorShape();
 
             /* May be we have to restrict minimum size? */
             maybeRestrictMinimumSize();
