@@ -1,4 +1,4 @@
-/* $Id: RTSemEventMultiWaitNoResume-2-ex-generic.cpp 32946 2010-10-06 14:21:29Z vboxsync $ */
+/* $Id: RTSemEventMultiWaitNoResume-2-ex-generic.cpp 33010 2010-10-08 15:07:52Z vboxsync $ */
 /** @file
  * IPRT - RTSemEventMultiWaitNoResume, generic implementation based
  *        on RTSemEventMultiWaitEx.
@@ -47,7 +47,6 @@ RTDECL(int) RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, RTMSINTE
         rc = RTSemEventMultiWaitEx(hEventMultiSem,
                                    RTSEMWAIT_FLAGS_NORESUME | RTSEMWAIT_FLAGS_RELATIVE | RTSEMWAIT_FLAGS_MILLISECS,
                                    cMillies);
-    Assert(rc != VERR_INTERRUPTED);
     return rc;
 }
 RT_EXPORT_SYMBOL(RTSemEventMultiWaitNoResume);
