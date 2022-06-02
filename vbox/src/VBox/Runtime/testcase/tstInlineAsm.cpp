@@ -1,4 +1,4 @@
-/* $Id: tstInlineAsm.cpp 31375 2010-08-04 21:41:06Z vboxsync $ */
+/* $Id: tstInlineAsm.cpp 31411 2010-08-05 14:43:01Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -1314,6 +1314,9 @@ void tstASMBench(void)
     BENCH(ASMAtomicDecS32(&s_i32),              "ASMAtomicDecS32:");
     BENCH(ASMAtomicAddU32(&s_u32, 5),           "ASMAtomicAddU32:");
     BENCH(ASMAtomicAddS32(&s_i32, 5),           "ASMAtomicAddS32:");
+#if !defined(GCC44_32BIT_PIC) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
+    BENCH(s_u8 = ASMGetApicId(),                "ASMGetApicId:");
+#endif
 
     RTPrintf("Done.\n");
 
