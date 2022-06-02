@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 31103 2010-07-26 10:58:27Z vboxsync $ */
+/* $Id: tcp.cpp 32276 2010-09-07 11:33:52Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -999,6 +999,13 @@ RTR3DECL(int)  RTTcpSetSendCoalescing(RTSOCKET Sock, bool fEnable)
 RTR3DECL(int)  RTTcpSelectOne(RTSOCKET Sock, RTMSINTERVAL cMillies)
 {
     return RTSocketSelectOne(Sock, cMillies);
+}
+
+
+RTR3DECL(int)  RTTcpSelectOneEx(RTSOCKET Sock, uint32_t fEvents, uint32_t *pfEvents,
+                                RTMSINTERVAL cMillies)
+{
+    return RTSocketSelectOneEx(Sock, fEvents, pfEvents, cMillies);
 }
 
 
