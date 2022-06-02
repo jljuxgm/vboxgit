@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 33247 2010-10-20 10:01:48Z vboxsync $ */
+/* $Id: GuestImpl.cpp 33253 2010-10-20 10:46:11Z vboxsync $ */
 
 /** @file
  *
@@ -1398,7 +1398,7 @@ STDMETHODIMP Guest::SetProcessInput(ULONG aPID, ULONG aFlags, ComSafeArrayIn(BYT
     /* Validate flags. */
     if (aFlags)
     {
-        if (!(aFlags & ProcessInputFlag_EOF))
+        if (!(aFlags & ProcessInputFlag_EndOfFile))
             return setError(E_INVALIDARG, tr("Unknown flags (%#x)"), aFlags);
     }
 

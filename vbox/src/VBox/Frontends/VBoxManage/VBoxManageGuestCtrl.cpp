@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33247 2010-10-20 10:01:48Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33253 2010-10-20 10:46:11Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -484,7 +484,7 @@ static int handleCtrlExecProgram(HandlerArg *a)
                                         if (cbLength < _64K)
                                         {
                                             RTPrintf("Last!\n");
-                                            uFlags |= ProcessInputFlag_EOF;
+                                            uFlags |= ProcessInputFlag_EndOfFile;
                                         }
 
                                         ULONG uBytesWritten;
