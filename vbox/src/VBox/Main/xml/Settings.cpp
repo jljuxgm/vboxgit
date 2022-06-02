@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 35146 2010-12-15 16:31:56Z vboxsync $ */
+/* $Id: Settings.cpp 35149 2010-12-15 16:33:18Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1034,10 +1034,12 @@ void ConfigFileBase::buildMedium(xml::ElementNode &elmMedium,
             mdm.hdType == MediumType_Readonly ? "Readonly" :
             mdm.hdType == MediumType_MultiAttach ? "MultiAttach" :
             "INVALID";
-        // no need to save the usual DVD medium types
-        if (devType != DeviceType_DVD || (   mdm.hdType != MediumType_Normal
-                                          && mdm.hdType != MediumType_Writethrough
-                                          && mdm.hdType != MediumType_Readonly))
+        // no need to save the usual DVD/floppy medium types
+        if (   (   devType != DeviceType_DVD
+                || (   mdm.hdType != MediumType_Writethrough // shouldn't happen
+                    && mdm.hdType != MediumType_Readonly))
+            && (   devType != DeviceType_Floppy
+                || mdm.hdType != MediumType_Writethrough))
             pelmMedium->setAttribute("type", pcszType);
     }
 
