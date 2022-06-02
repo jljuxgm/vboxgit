@@ -1,4 +1,4 @@
-/* $Id: tstRTCoreDump.cpp 31913 2010-08-24 12:16:54Z vboxsync $ */
+/* $Id: tstRTCoreDump.cpp 32347 2010-09-09 12:18:38Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -55,7 +55,7 @@ int main()
     /*
      * Setup core dumping.
      */
-    int rc = RTCoreDumperSetup(NULL, 0);
+    int rc = RTCoreDumperSetup(NULL, RTCOREDUMPER_FLAGS_OVERRIDE_SYS_DUMPER | RTCOREDUMPER_FLAGS_LIVE_CORE);
     if (RT_SUCCESS(rc))
     {
         /*
@@ -75,11 +75,11 @@ int main()
             }
         }
         RTPrintf("Spawned %d threads.\n", i);
-    
+
         /*
          * Write the core to disk.
          */
-        rc = RTCoreDumperTakeDump(NULL);
+        rc = RTCoreDumperTakeDump(NULL, false /* fLiveCore*/);
         if (RT_FAILURE(rc))
         {
             g_cErrors++;
