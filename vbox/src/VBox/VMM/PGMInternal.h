@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31081 2010-07-24 20:47:10Z vboxsync $ */
+/* $Id: PGMInternal.h 31092 2010-07-26 07:17:25Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -61,12 +61,6 @@
 #if defined(IN_RING0) || !defined(VBOX_WITH_RAW_MODE)
 # define PGM_WITHOUT_MAPPINGS
 #endif
-
-/**
- * Solve page is out of sync issues inside Guest Context (in PGMGC.cpp).
- * Comment it if it will break something.
- */
-#define PGM_OUT_OF_SYNC_IN_GC
 
 /**
  * Check and skip global PDEs for non-global flushes
