@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 35702 2011-01-25 11:00:29Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 35748 2011-01-28 07:15:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -433,7 +433,7 @@ void UIGlobalSettingsNetwork::sltAddInterface()
             /* Append cache with new item: */
             appendCacheItem(iface);
             /* Append list with new item: */
-            appendListItem(m_cache.m_items.last());
+            appendListItem(m_cache.m_items.last(), true);
         }
         else
             vboxProblem().cannotCreateHostInterface(progress, this);
@@ -582,12 +582,15 @@ void UIGlobalSettingsNetwork::removeCacheItem(const QString &strInterfaceName)
     }
 }
 
-void UIGlobalSettingsNetwork::appendListItem(const UIHostNetworkData &data)
+void UIGlobalSettingsNetwork::appendListItem(const UIHostNetworkData &data, bool fChooseItem)
 {
     /* Add new item to the list: */
     UIHostInterfaceItem *pItem = new UIHostInterfaceItem;
     pItem->fetchNetworkData(data);
     m_pInterfacesTree->addTopLevelItem(pItem);
+    /* And choose it as current if necessary: */
+    if (fChooseItem)
+        m_pInterfacesTree->setCurrentItem(pItem);
 }
 
 void UIGlobalSettingsNetwork::removeListItem(UIHostInterfaceItem *pItem)
