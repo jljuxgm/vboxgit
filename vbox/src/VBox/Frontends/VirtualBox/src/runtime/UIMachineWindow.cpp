@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 30637 2010-07-05 22:36:29Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 30753 2010-07-08 23:01:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -42,6 +42,7 @@
 #include "UIMachineWindowNormal.h"
 #include "UIMachineWindowFullscreen.h"
 #include "UIMachineWindowSeamless.h"
+#include "UIMachineWindowScale.h"
 
 #ifdef Q_WS_X11
 # include <X11/Xlib.h>
@@ -60,6 +61,9 @@ UIMachineWindow* UIMachineWindow::create(UIMachineLogic *pMachineLogic, UIVisual
             break;
         case UIVisualStateType_Seamless:
             window = new UIMachineWindowSeamless(pMachineLogic, uScreenId);
+            break;
+        case UIVisualStateType_Scale:
+            window = new UIMachineWindowScale(pMachineLogic, uScreenId);
             break;
     }
     return window;

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 30752 2010-07-08 22:31:34Z vboxsync $ */
+/* $Id: UIMachineView.cpp 30753 2010-07-08 23:01:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -42,6 +42,7 @@
 #include "UIMachineViewNormal.h"
 #include "UIMachineViewFullscreen.h"
 #include "UIMachineViewSeamless.h"
+#include "UIMachineViewScale.h"
 
 #ifdef Q_WS_X11
 # include <QX11Info>
@@ -119,6 +120,14 @@ UIMachineView* UIMachineView::create(  UIMachineWindow *pMachineWindow
                                                      , bAccelerate2DVideo
 #endif /* VBOX_WITH_VIDEOHWACCEL */
                                                      );
+            break;
+        case UIVisualStateType_Scale:
+            pMachineView = new UIMachineViewScale(  pMachineWindow
+                                                  , uScreenId
+#ifdef VBOX_WITH_VIDEOHWACCEL
+                                                  , bAccelerate2DVideo
+#endif
+                                                  );
             break;
         default:
             break;
