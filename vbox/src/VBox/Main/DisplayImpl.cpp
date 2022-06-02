@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 34140 2010-11-17 15:56:34Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 34188 2010-11-18 21:47:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2900,7 +2900,11 @@ void Display::setupCrHgsmiData(void)
     if (pVMMDev)
         rc = pVMMDev->hgcmHostSvcHandleCreate("VBoxSharedCrOpenGL", &mhCrOglSvc);
 
-    if (RT_FAILURE(rc))
+    if (RT_SUCCESS(rc))
+    {
+        Assert(mhCrOglSvc);
+    }
+    else
     {
         mhCrOglSvc = NULL;
     }
