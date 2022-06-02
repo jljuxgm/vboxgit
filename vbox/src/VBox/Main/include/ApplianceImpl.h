@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 33060 2010-10-12 12:17:49Z vboxsync $ */
+/* $Id: ApplianceImpl.h 33238 2010-10-19 15:41:23Z vboxsync $ */
 
 /** @file
  *
@@ -120,7 +120,6 @@ private:
 
     HRESULT searchUniqueVMName(Utf8Str& aName) const;
     HRESULT searchUniqueDiskImageFilePath(Utf8Str& aName) const;
-    HRESULT getDefaultHardDiskFolder(Utf8Str &str) const;
     void waitForAsyncProgress(ComObjPtr<Progress> &pProgressThis, ComPtr<IProgress> &pProgressAsync);
     void addWarning(const char* aWarning, ...);
 

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33232 2010-10-19 14:24:46Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33238 2010-10-19 15:41:23Z vboxsync $ */
 
 /** @file
  *
@@ -121,6 +121,7 @@ public:
     STDMETHOD(COMGETTER(EventSource))           (IEventSource ** aEventSource);
 
     /* IVirtualBox methods */
+    STDMETHOD(ComposeMachineFilename) (IN_BSTR aName, IN_BSTR aBaseFolder, BSTR *aFilename);
     STDMETHOD(CreateMachine) (IN_BSTR aName, IN_BSTR aOsTypeId, IN_BSTR aBaseFolder,
                               IN_BSTR aId, BOOL aOverride, IMachine **aMachine);
     STDMETHOD(OpenMachine) (IN_BSTR aSettingsFile, IMachine **aMachine);
@@ -240,7 +241,6 @@ public:
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
     void getDefaultMachineFolder(Utf8Str &str) const;
-    void getDefaultHardDiskFolder(Utf8Str &str) const;
     void getDefaultHardDiskFormat(Utf8Str &str) const;
 
     /** Returns the VirtualBox home directory */

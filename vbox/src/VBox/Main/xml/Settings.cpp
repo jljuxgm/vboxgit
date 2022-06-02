@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 33201 2010-10-18 14:37:33Z vboxsync $ */
+/* $Id: Settings.cpp 33238 2010-10-19 15:41:23Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1227,9 +1227,6 @@ MainConfigFile::MainConfigFile(const Utf8Str *pstrFilename)
                     if (pelmGlobalChild->nameEquals("SystemProperties"))
                     {
                         pelmGlobalChild->getAttributeValue("defaultMachineFolder", systemProperties.strDefaultMachineFolder);
-                        if (!pelmGlobalChild->getAttributeValue("defaultHardDiskFolder", systemProperties.strDefaultHardDiskFolder))
-                            // pre-1.4 used @defaultVDIFolder instead
-                            pelmGlobalChild->getAttributeValue("defaultVDIFolder", systemProperties.strDefaultHardDiskFolder);
                         pelmGlobalChild->getAttributeValue("defaultHardDiskFormat", systemProperties.strDefaultHardDiskFormat);
                         pelmGlobalChild->getAttributeValue("remoteDisplayAuthLibrary", systemProperties.strRemoteDisplayAuthLibrary);
                         pelmGlobalChild->getAttributeValue("webServiceAuthLibrary", systemProperties.strWebServiceAuthLibrary);
@@ -1335,8 +1332,6 @@ void MainConfigFile::write(const com::Utf8Str strFilename)
     xml::ElementNode *pelmSysProps = pelmGlobal->createChild("SystemProperties");
     if (systemProperties.strDefaultMachineFolder.length())
         pelmSysProps->setAttribute("defaultMachineFolder", systemProperties.strDefaultMachineFolder);
-    if (systemProperties.strDefaultHardDiskFolder.length())
-        pelmSysProps->setAttribute("defaultHardDiskFolder", systemProperties.strDefaultHardDiskFolder);
     if (systemProperties.strDefaultHardDiskFormat.length())
         pelmSysProps->setAttribute("defaultHardDiskFormat", systemProperties.strDefaultHardDiskFormat);
     if (systemProperties.strRemoteDisplayAuthLibrary.length())

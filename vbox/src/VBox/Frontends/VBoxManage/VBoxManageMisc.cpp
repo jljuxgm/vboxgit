@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 33238 2010-10-19 15:41:23Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -619,15 +619,7 @@ int handleSetProperty(HandlerArg *a)
     ComPtr<ISystemProperties> systemProperties;
     a->virtualBox->COMGETTER(SystemProperties)(systemProperties.asOutParam());
 
-    if (!strcmp(a->argv[0], "hdfolder"))
-    {
-        /* reset to default? */
-        if (!strcmp(a->argv[1], "default"))
-            CHECK_ERROR(systemProperties, COMSETTER(DefaultHardDiskFolder)(NULL));
-        else
-            CHECK_ERROR(systemProperties, COMSETTER(DefaultHardDiskFolder)(Bstr(a->argv[1]).raw()));
-    }
-    else if (!strcmp(a->argv[0], "machinefolder"))
+    if (!strcmp(a->argv[0], "machinefolder"))
     {
         /* reset to default? */
         if (!strcmp(a->argv[1], "default"))

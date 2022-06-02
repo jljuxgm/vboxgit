@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 33140 2010-10-14 16:20:15Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 33238 2010-10-19 15:41:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -976,10 +976,6 @@ void VBoxMediaManagerDlg::doAddMedium()
     if (item && item->state() != KMediumState_Inaccessible
              && item->state() != KMediumState_NotCreated)
         dir = QFileInfo (item->location().trimmed()).absolutePath();
-
-    if (dir.isEmpty())
-        if (type == VBoxDefs::MediumType_HardDisk)
-            dir = mVBox.GetSystemProperties().GetDefaultHardDiskFolder();
 
     if (dir.isEmpty() || !QFileInfo (dir).exists())
         dir = mVBox.GetHomeFolder();
