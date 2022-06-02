@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34068 2010-11-15 15:26:55Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34070 2010-11-15 15:33:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -635,7 +635,7 @@ void VBoxProblemReporter::cannotOpenMachine(QWidget *pParent, const QString &str
 {
     message(pParent ? pParent : mainWindowShown(),
             Error,
-            tr("Failed to open a virtual machine located in %1.")
+            tr("Failed to open virtual machine located in %1.")
                .arg(strMachinePath),
             formatErrorInfo(vbox));
 }
@@ -644,7 +644,7 @@ void VBoxProblemReporter::cannotReregisterMachine(QWidget *pParent, const QStrin
 {
     message(pParent ? pParent : mainWindowShown(),
             Error,
-            tr("Failed to add a virtual machine <b>%1</b> located in <i>%2</i> because its already present.")
+            tr("Failed to add virtual machine <b>%1</b> located in <i>%2</i> because its already present.")
                .arg(strMachineName).arg(strMachinePath));
 }
 
