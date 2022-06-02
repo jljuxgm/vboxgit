@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 34692 2010-12-03 12:49:36Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 34896 2010-12-09 15:05:54Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -355,7 +355,11 @@ static int64_t pit_get_next_transition_time(PITChannelState *s,
     uint64_t d, next_time, base;
     uint32_t period2;
 
-    d = ASMMultU64ByU32DivByU32(current_time - s->count_load_time, PIT_FREQ, TMTimerGetFreq(pTimer));
+    /* Add one to current_time; if we don't, integer truncation will cause
+     * the algorithm to think that at the end of each period, it's still
+     * within the first one instead of at the beginning of the next one.
+     */
+    d = ASMMultU64ByU32DivByU32(current_time + 1 - s->count_load_time, PIT_FREQ, TMTimerGetFreq(pTimer));
     switch(s->mode) {
     default:
     case 0:
