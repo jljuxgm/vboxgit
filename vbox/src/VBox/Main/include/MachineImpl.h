@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 34770 2010-12-07 09:45:08Z vboxsync $ */
+/* $Id: MachineImpl.h 35175 2010-12-16 12:36:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -992,18 +992,18 @@ public:
 
 private:
 
-    struct SnapshotData
+    struct ConsoleTaskData
     {
-        SnapshotData() : mLastState(MachineState_Null) {}
+        ConsoleTaskData() : mLastState(MachineState_Null) {}
 
         MachineState_T mLastState;
+        ComObjPtr<Progress> mProgress;
 
         // used when taking snapshot
         ComObjPtr<Snapshot> mSnapshot;
 
-        // used when saving state
+        // used when saving state (either as part of a snapshot or separate)
         Utf8Str mStateFilePath;
-        ComObjPtr<Progress> mProgress;
     };
 
     struct Uninit
@@ -1062,7 +1062,7 @@ private:
 
     HRESULT mRemoveSavedState;
 
-    SnapshotData mSnapshotData;
+    ConsoleTaskData mConsoleTaskData;
 
     /** interprocess semaphore handle for this machine */
 #if defined(RT_OS_WINDOWS)
