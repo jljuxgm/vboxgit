@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 33621 2010-10-29 16:15:40Z vboxsync $ */
+/* $Id: Settings.cpp 33661 2010-11-01 15:05:54Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4142,6 +4142,10 @@ void MachineConfigFile::buildSnapshotXML(xml::ElementNode &elmParent,
  *      unless the settings version is at least v1.9, which is always the case
  *      when this gets called for OVF export.
  *
+ * --   BuildMachineXML_SuppressSavedState: If set, the Machine/@stateFile
+ *      attribute is never set. This is also for the OVF export case because we
+ *      cannot save states with OVF.
+ *
  * @param elmMachine XML <Machine> element to add attributes and elements to.
  * @param fl Flags.
  * @param pllElementsWithUuidAttributes pointer to list that should receive UUID elements or NULL;
@@ -4162,7 +4166,9 @@ void MachineConfigFile::buildMachineXML(xml::ElementNode &elmMachine,
     if (machineUserData.strDescription.length())
         elmMachine.createChild("Description")->addContent(machineUserData.strDescription);
     elmMachine.setAttribute("OSType", machineUserData.strOsType);
-    if (strStateFile.length())
+    if (    strStateFile.length()
+         && !(fl & BuildMachineXML_SuppressSavedState)
+       )
         elmMachine.setAttribute("stateFile", strStateFile);
     if (    (fl & BuildMachineXML_IncludeSnapshots)
          && !uuidCurrentSnapshot.isEmpty())

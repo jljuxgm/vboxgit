@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 33651 2010-11-01 13:53:01Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 33661 2010-11-01 15:05:54Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1547,7 +1547,8 @@ void Appliance::buildXMLForOneVirtualSystem(AutoWriteLockBase& writeLock,
         // write the machine config to the vbox:Machine element
         pConfig->buildMachineXML(*pelmVBoxMachine,
                                    settings::MachineConfigFile::BuildMachineXML_WriteVboxVersionAttribute
-                                 | settings::MachineConfigFile::BuildMachineXML_SkipRemovableMedia,
+                                 | settings::MachineConfigFile::BuildMachineXML_SkipRemovableMedia
+                                 | settings::MachineConfigFile::BuildMachineXML_SuppressSavedState,
                                         // but not BuildMachineXML_IncludeSnapshots nor BuildMachineXML_MediaRegistry
                                  pllElementsWithUuidAttributes);
         delete pConfig;
