@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: vboxhgcm.c 33684 2010-11-02 12:17:19Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -49,6 +49,12 @@
 #include <VBox/VBoxCrHgsmi.h>
 #endif
 
+#ifdef DEBUG_misha
+#ifdef CRASSERT
+# undef CRASSERT
+#endif
+#define CRASSERT Assert
+#endif
 //#define IN_GUEST
 //#if defined(IN_GUEST)
 //#define VBOX_WITH_CRHGSMIPROFILE
@@ -1377,7 +1383,7 @@ DECLCALLBACK(HVBOXCRHGSMI_CLIENT) _crVBoxHGSMIClientCreate(PVBOXUHGSMI pHgsmi)
         AssertRC(rc);
         if (RT_SUCCESS(rc))
         {
-            rc = pHgsmi->pfnBufferCreate(pHgsmi, CRVBOXHGSMI_PAGE_ALIGN(0x800000),
+            rc = pHgsmi->pfnBufferCreate(pHgsmi, CRVBOXHGSMI_PAGE_ALIGN(1),
                                             VBOXUHGSMI_SYNCHOBJECT_TYPE_EVENT,
                                             NULL,
                                             &pClient->pHGBuffer);
@@ -1388,6 +1394,7 @@ DECLCALLBACK(HVBOXCRHGSMI_CLIENT) _crVBoxHGSMIClientCreate(PVBOXUHGSMI pHgsmi)
                 pClient->bufpool = crBufferPoolInit(16);
                 return (HVBOXCRHGSMI_CLIENT) pClient;
             }
+            pClient->pCmdBuffer->pfnDestroy(pClient->pCmdBuffer);
         }
     }
 
