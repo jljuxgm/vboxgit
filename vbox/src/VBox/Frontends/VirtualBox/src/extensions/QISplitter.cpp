@@ -1,4 +1,4 @@
-/* $Id: QISplitter.cpp 30087 2010-06-08 09:43:31Z vboxsync $ */
+/* $Id: QISplitter.cpp 30868 2010-07-16 09:42:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,14 +17,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* Local includes */
+#include "QISplitter.h"
+
 /* Global includes */
 #include <QApplication>
 #include <QEvent>
 #include <QPainter>
 #include <QPaintEvent>
-
-/* Local includes */
-#include "QISplitter.h"
 
 /* A simple shaded line. */
 class QIShadeSplitterHandle: public QSplitterHandle
@@ -120,7 +120,7 @@ QISplitter::QISplitter(QWidget *pParent /* = 0 */)
     qApp->installEventFilter(this);
 }
 
-QISplitter::QISplitter(Qt::Orientation orientation /* = Qt::Horizontal */, QWidget *pParent /* = 0 */)
+QISplitter::QISplitter(Qt::Orientation orientation, QWidget *pParent /* = 0 */)
     : QSplitter(orientation, pParent)
     , m_fPolished(false)
     , m_type(Shade)
