@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 33788 2010-11-05 11:37:50Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33921 2010-11-09 17:51:38Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1808,14 +1808,13 @@ void Appliance::importOneDiskImage(const ovf::DiskImage &di,
             strTrgFormat = Utf8Str(bstrFormatName);
         }
 
-        bool fNeedsGlobalSaveSettings;
         /* Create an IMedium object. */
         pTargetHD.createObject();
         rc = pTargetHD->init(mVirtualBox,
                              strTrgFormat,
                              strTargetPath,
-                             Guid::Empty,        // media registry
-                             &fNeedsGlobalSaveSettings);
+                             Guid::Empty,       // media registry: none yet
+                             NULL /* llRegistriesThatNeedSaving */);
         if (FAILED(rc)) throw rc;
 
         /* Now create an empty hard disk. */
