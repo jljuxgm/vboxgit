@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32118 2010-08-31 09:48:46Z vboxsync $ */
+/* $Id: FTM.cpp 32121 2010-08-31 10:00:09Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -907,7 +907,11 @@ static DECLCALLBACK(int) ftmR3StandbyServeConnection(RTSOCKET Sock, void *pvUser
                 pVM->ftm.s.StatReceivedMem.c += Hdr.cb;
 
                 /* Update the guest memory of the standby VM. */
+#if 1
+                rc = PGMR3PhysWriteExternal(pVM, Hdr.GCPhys, pPage, Hdr.cbPageRange, "FTMemSync");
+#else
                 rc = PGMPhysWrite(pVM, Hdr.GCPhys, pPage, Hdr.cbPageRange);
+#endif
                 AssertRC(rc);
 
                 RTMemFree(pPage);

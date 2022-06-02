@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 32118 2010-08-31 09:48:46Z vboxsync $ */
+/* $Id: PGMPhys.cpp 32121 2010-08-31 10:00:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -271,7 +271,7 @@ VMMDECL(int) PGMR3PhysWriteExternal(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf,
                  *
                  * Allocating writable pages and access handlers are
                  * problematic, write monitored pages are simple and can be
-                 * dealth with here.
+                 * dealt with here.
                  */
                 if (    PGM_PAGE_HAS_ACTIVE_HANDLERS(pPage)
                     ||  PGM_PAGE_GET_STATE(pPage) != PGM_PAGE_STATE_ALLOCATED)
