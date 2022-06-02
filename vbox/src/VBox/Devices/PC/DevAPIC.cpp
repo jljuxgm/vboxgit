@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 32821 2010-09-29 16:29:46Z vboxsync $ */
+/* $Id: DevAPIC.cpp 32857 2010-10-01 08:39:55Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1447,6 +1447,7 @@ static uint32_t apic_mem_readl(APICDeviceInfo* dev, APICState *s, RTGCPHYS addr)
     int index;
 
     index = (addr >> 4) & 0xff;
+    addr -= (s->apicbase & ~0xfff);
 
     if (addr > 0xfff || (index == 0))
     {
