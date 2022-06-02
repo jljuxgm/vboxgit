@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 34758 2010-12-06 15:42:52Z vboxsync $ */
+/* $Id: GuestImpl.cpp 34760 2010-12-06 16:05:40Z vboxsync $ */
 
 /** @file
  *
@@ -429,6 +429,8 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
                      * complete the progress object now so that the caller can do other work. */
                     if (aTask->uFlags & AdditionsUpdateFlag_WaitForUpdateStartOnly)
                         aTask->progress->notifyComplete(S_OK);
+                    else
+                        aTask->progress->SetCurrentOperationProgress(70);
 
                     LogRel(("Guest Additions update is running ...\n"));
                     while (SUCCEEDED(progressInstaller->COMGETTER(Completed(&fCompleted))))
@@ -451,7 +453,12 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
                         if (fCompleted)
                         {
                             if (uRetExitCode == 0)
+                            {
                                 LogRel(("Guest Additions update successful!\n"));
+                                if (   SUCCEEDED(aTask->progress->COMGETTER(Completed(&fCompleted)))
+                                    && !fCompleted)
+                                    aTask->progress->notifyComplete(S_OK);
+                            }
                             else
                             {
                                 rc = setError(VBOX_E_IPRT_ERROR,
