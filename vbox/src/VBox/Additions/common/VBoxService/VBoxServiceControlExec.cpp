@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 35952 2011-02-14 10:17:07Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 35954 2011-02-14 10:33:26Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -45,6 +45,15 @@
 using namespace guestControl;
 
 extern RTLISTNODE g_GuestControlExecThreads;
+
+static int VBoxServiceControlExecPipeInit(PVBOXSERVICECTRLEXECPIPEBUF pBuf, bool fNeedNotificationPipe);
+static int VBoxServiceControlExecPipeBufRead(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
+                                             uint8_t *pbBuffer, uint32_t cbBuffer, uint32_t *pcbToRead);
+static int VBoxServiceControlExecPipeBufWrite(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
+                                              uint8_t *pbData, uint32_t cbData, bool fPendingClose, uint32_t *pcbWritten);
+static bool VBoxServiceControlExecPipeBufIsEnabled(PVBOXSERVICECTRLEXECPIPEBUF pBuf);
+static int VBoxServiceControlExecPipeBufSetStatus(PVBOXSERVICECTRLEXECPIPEBUF pBuf, bool fEnabled);
+static void VBoxServiceControlExecPipeBufDestroy(PVBOXSERVICECTRLEXECPIPEBUF pBuf);
 
 
 /**

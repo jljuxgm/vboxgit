@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 35952 2011-02-14 10:17:07Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 35954 2011-02-14 10:33:26Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -303,15 +303,6 @@ extern int          VBoxServiceControlExecProcess(uint32_t uContext, const char 
                                                   const char *pszEnv, uint32_t cbEnv, uint32_t uNumEnvVars,
                                                   const char *pszUser, const char *pszPassword, uint32_t uTimeLimitMS);
 extern void         VBoxServiceControlExecDestroyThreadData(PVBOXSERVICECTRLTHREADDATAEXEC pThread);
-
-extern int          VBoxServiceControlExecPipeInit(PVBOXSERVICECTRLEXECPIPEBUF pBuf, bool fNeedNotificationPipe);
-extern int          VBoxServiceControlExecPipeBufRead(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
-                                                      uint8_t *pbBuffer, uint32_t cbBuffer, uint32_t *pcbToRead);
-extern int          VBoxServiceControlExecPipeBufWrite(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
-                                                       uint8_t *pbData, uint32_t cbData, bool fPendingClose, uint32_t *pcbWritten);
-extern bool         VBoxServiceControlExecPipeBufIsEnabled(PVBOXSERVICECTRLEXECPIPEBUF pBuf);
-extern int          VBoxServiceControlExecPipeBufSetStatus(PVBOXSERVICECTRLEXECPIPEBUF pBuf, bool fEnabled);
-extern void         VBoxServiceControlExecPipeBufDestroy(PVBOXSERVICECTRLEXECPIPEBUF pBuf);
 #endif /* VBOX_WITH_GUEST_CONTROL */
 
 #ifdef VBOXSERVICE_MANAGEMENT
