@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 34550 2010-12-01 09:54:32Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 34567 2010-12-01 13:20:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3685,6 +3685,21 @@ QString VBoxGlobal::formatSize (quint64 aSize, uint aDecimal /* = 2 */,
     }
 
     return QString ("%1 %2").arg (number).arg (Suffixes [suffix]);
+}
+
+/* static */
+bool VBoxGlobal::shouldWarnAboutToLowVRAM(const CMachine *pMachine /* = 0 */)
+{
+    static QStringList osList = QStringList()
+        << "Other" << "DOS" << "Netware" << "L4" << "QNX" << "JRockitVE";
+
+    bool fResult = true;
+    if (   pMachine
+        && !pMachine->isNull()
+        && osList.contains(pMachine->GetOSTypeId()))
+        fResult = false;
+
+    return fResult;
 }
 
 /**
