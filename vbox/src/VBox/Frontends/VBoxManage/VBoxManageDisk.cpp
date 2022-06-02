@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 33764 2010-11-04 13:50:21Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -784,7 +784,7 @@ static const RTGETOPTDEF g_aConvertFromRawHardDiskOptions[] =
     { "-variant",       'm', RTGETOPT_REQ_STRING },
 };
 
-int handleConvertFromRaw(int argc, char *argv[])
+RTEXITCODE handleConvertFromRaw(int argc, char *argv[])
 {
     int rc = VINF_SUCCESS;
     bool fReadFromStdIn = false;
@@ -951,7 +951,7 @@ out:
     if (File != NIL_RTFILE)
         RTFileClose(File);
 
-    return RT_FAILURE(rc);
+    return RT_SUCCESS(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
 
 static const RTGETOPTDEF g_aAddiSCSIDiskOptions[] =
