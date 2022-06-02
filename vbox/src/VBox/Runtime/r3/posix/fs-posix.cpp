@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: fs-posix.cpp 35015 2010-12-13 14:36:50Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -246,7 +246,8 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, PRTFSTYPE penmType)
                             else if (!strcmp("proc", mntEnt.mnt_type))
                                 *penmType = RTFSTYPE_PROC;
                             else if (   !strcmp("fuse", mntEnt.mnt_type)
-                                     || !strncmp("fuse.", mntEnt.mnt_type, 5))
+                                     || !strncmp("fuse.", mntEnt.mnt_type, 5)
+                                     || !strcmp("fuseblk", mntEnt.mnt_type))
                                 *penmType = RTFSTYPE_FUSE;
                             else
                             {
