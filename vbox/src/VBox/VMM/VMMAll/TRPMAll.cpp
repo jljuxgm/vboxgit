@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 30493 2010-06-29 11:59:47Z vboxsync $ */
+/* $Id: TRPMAll.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -692,7 +692,9 @@ VMMDECL(int) TRPMForwardTrap(PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t iGat
                     if (iOrgTrap >= 0 && iOrgTrap < (int)RT_ELEMENTS(pVM->trpm.s.aStatGCTraps))
                         STAM_PROFILE_ADV_STOP(&pVM->trpm.s.aStatGCTraps[iOrgTrap], o);
 
-                    CPUMGCCallGuestTrapHandler(pRegFrame, GuestIdte.Gen.u16SegSel | 1, pVM->trpm.s.aGuestTrapHandler[iGate], eflags.u32, ss_r0, (RTRCPTR)esp_r0);
+                    PGMRZDynMapReleaseAutoSet(pVCpu);
+                    CPUMGCCallGuestTrapHandler(pRegFrame, GuestIdte.Gen.u16SegSel | 1, pVM->trpm.s.aGuestTrapHandler[iGate],
+                                               eflags.u32, ss_r0, (RTRCPTR)esp_r0);
                     /* does not return */
 #else
                     /* Turn off interrupts for interrupt gates. */

@@ -1,4 +1,4 @@
-/* $Id: PATMGC.cpp 30326 2010-06-21 12:35:33Z vboxsync $ */
+/* $Id: PATMGC.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -291,6 +291,7 @@ VMMDECL(int) PATMGCHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
 
                     /* We are no longer executing PATM code; set PIF again. */
                     pVM->patm.s.CTXSUFF(pGCState)->fPIF = 1;
+                    PGMRZDynMapReleaseAutoSet(VMMGetCpu0(pVM));
                     CPUMGCCallV86Code(pRegFrame);
                     /* does not return */
                 }

@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 31394 2010-08-05 12:01:43Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2564,7 +2564,7 @@ ResumeExecution:
     }
 #endif
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
-    PGMDynMapFlushAutoSet(pVCpu);
+    PGMRZDynMapFlushAutoSet(pVCpu);
 #endif
 
     /*

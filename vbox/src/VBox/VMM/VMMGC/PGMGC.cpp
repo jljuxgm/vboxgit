@@ -1,10 +1,10 @@
-/* $Id: PGMGC.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PGMGC.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
 /** @file
  * PGM - Page Monitor, Guest Context.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

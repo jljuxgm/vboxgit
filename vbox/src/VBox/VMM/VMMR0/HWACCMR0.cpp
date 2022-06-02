@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 30241 2010-06-16 12:33:44Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1093,7 +1093,7 @@ VMMR0DECL(int) HWACCMR0Enter(PVM pVM, PVMCPU pVCpu)
     }
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    bool fStartedSet = PGMDynMapStartOrMigrateAutoSet(pVCpu);
+    bool fStartedSet = PGMR0DynMapStartOrMigrateAutoSet(pVCpu);
 #endif
 
     rc  = HWACCMR0Globals.pfnEnterSession(pVM, pVCpu, pCpu);
@@ -1106,7 +1106,7 @@ VMMR0DECL(int) HWACCMR0Enter(PVM pVM, PVMCPU pVCpu)
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
     if (fStartedSet)
-        PGMDynMapReleaseAutoSet(pVCpu);
+        PGMRZDynMapReleaseAutoSet(pVCpu);
 #endif
 
     /* keep track of the CPU owning the VMCS for debugging scheduling weirdness and ring-3 calls. */
@@ -1208,7 +1208,7 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
     Assert(ASMAtomicReadBool(&pCpu->fInUse) == true);
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    PGMDynMapStartAutoSet(pVCpu);
+    PGMRZDynMapStartAutoSet(pVCpu);
 #endif
 
     pCtx = CPUMQueryGuestCtxPtr(pVCpu);
@@ -1216,7 +1216,7 @@ VMMR0DECL(int) HWACCMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
     rc = HWACCMR0Globals.pfnRunGuestCode(pVM, pVCpu, pCtx);
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    PGMDynMapReleaseAutoSet(pVCpu);
+    PGMRZDynMapReleaseAutoSet(pVCpu);
 #endif
     return rc;
 }
