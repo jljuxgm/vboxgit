@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: ApplianceImpl.h 30881 2010-07-16 14:34:31Z vboxsync $ */
 
 /** @file
  *
@@ -83,6 +83,7 @@ public:
     STDMETHOD(COMGETTER(Path))(BSTR *aPath);
     STDMETHOD(COMGETTER(Disks))(ComSafeArrayOut(BSTR, aDisks));
     STDMETHOD(COMGETTER(VirtualSystemDescriptions))(ComSafeArrayOut(IVirtualSystemDescription*, aVirtualSystemDescriptions));
+    STDMETHOD(COMGETTER(Machines))(ComSafeArrayOut(BSTR, aMachines));
 
     /* IAppliance methods */
     /* Import methods */

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 30881 2010-07-16 14:34:31Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -449,6 +449,40 @@ STDMETHODIMP Appliance::COMGETTER(VirtualSystemDescriptions)(ComSafeArrayOut(IVi
 
     SafeIfaceArray<IVirtualSystemDescription> sfaVSD(m->virtualSystemDescriptions);
     sfaVSD.detachTo(ComSafeArrayOutArg(aVirtualSystemDescriptions));
+
+    return S_OK;
+}
+
+/**
+ * Public method implementation.
+ * @param aDisks
+ * @return
+ */
+STDMETHODIMP Appliance::COMGETTER(Machines)(ComSafeArrayOut(BSTR, aMachines))
+{
+    CheckComArgOutSafeArrayPointerValid(aMachines);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    if (!isApplianceIdle())
+        return E_ACCESSDENIED;
+
+    com::SafeArray<BSTR> sfaMachines(m->llGuidsMachinesCreated.size());
+    size_t u = 0;
+    for (std::list<Guid>::const_iterator it = m->llGuidsMachinesCreated.begin();
+         it != m->llGuidsMachinesCreated.end();
+         ++it)
+    {
+        const Guid &uuid = *it;
+        Bstr bstr(uuid.toUtf16());
+        bstr.detachTo(&sfaMachines[u]);
+        ++u;
+    }
+
+    sfaMachines.detachTo(ComSafeArrayOutArg(aMachines));
 
     return S_OK;
 }
