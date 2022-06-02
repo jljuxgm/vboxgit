@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 32820 2010-09-29 16:25:16Z vboxsync $ */
+/* $Id: DevAPIC.cpp 32821 2010-09-29 16:29:46Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1531,7 +1531,7 @@ static uint32_t apic_mem_readl(APICDeviceInfo* dev, APICState *s, RTGCPHYS addr)
 }
 /**
  * See chapter 10.11 MESSAGE SIGNALLED INTERRUPTS of IA-32 Intel Architecture
- * Software Developer’s Manual, Volume 3A: System Programming Guide, Part 1
+ * Software Developer's Manual, Volume 3A: System Programming Guide, Part 1
  * for details on MSI and LAPIC interaction.
  */
 static int apicSendMsi(APICDeviceInfo* dev, RTGCPHYS addr, uint32_t val)
