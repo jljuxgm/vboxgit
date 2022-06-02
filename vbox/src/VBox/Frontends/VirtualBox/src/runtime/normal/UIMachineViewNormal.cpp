@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 30408 2010-06-24 03:41:27Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 30544 2010-06-30 22:37:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -35,15 +35,17 @@
 #include "UIMachineViewNormal.h"
 
 UIMachineViewNormal::UIMachineViewNormal(  UIMachineWindow *pMachineWindow
+                                         , ulong uScreenId
 #ifdef VBOX_WITH_VIDEOHWACCEL
                                          , bool bAccelerate2DVideo
 #endif
-                                         , ulong uMonitor)
+                                         )
     : UIMachineView(  pMachineWindow
+                    , uScreenId
 #ifdef VBOX_WITH_VIDEOHWACCEL
                     , bAccelerate2DVideo
 #endif
-                    , uMonitor)
+                    )
     , m_bIsGuestAutoresizeEnabled(pMachineWindow->machineLogic()->actionsPool()->action(UIActionIndex_Toggle_GuestAutoresize)->isChecked())
     , m_fShouldWeDoResize(false)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 30544 2010-06-30 22:37:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -218,11 +218,12 @@ void UIMachineWindowFullscreen::prepareMachineView()
     centralWidget()->setLayout(m_pMachineViewContainer);
 
     m_pMachineView = UIMachineView::create(  this
+                                           , m_uScreenId
+                                           , machineLogic()->visualStateType()
 #ifdef VBOX_WITH_VIDEOHWACCEL
                                            , bAccelerate2DVideo
 #endif
-                                           , machineLogic()->visualStateType()
-                                           , m_uScreenId);
+                                           );
 
     /* Add machine view into layout: */
     m_pMachineViewContainer->addWidget(m_pMachineView, 1, 1, Qt::AlignVCenter | Qt::AlignHCenter);
