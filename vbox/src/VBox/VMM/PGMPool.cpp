@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 33163 2010-10-15 14:27:11Z vboxsync $ */
+/* $Id: PGMPool.cpp 33192 2010-10-18 11:54:33Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -202,7 +202,7 @@ int pgmR3PoolInit(PVM pVM)
                           ("cMaxPhysExts=%u (%#x)\n", cMaxPhysExts, cMaxPhysExts), VERR_INVALID_PARAMETER);
 
     /** @cfgm{/PGM/Pool/ChacheEnabled, bool, true}
-     * Enables or disabling caching of shadow pages. Chaching means that we will try
+     * Enables or disabling caching of shadow pages. Caching means that we will try
      * reuse shadow pages instead of recreating them everything SyncCR3, SyncPT or
      * SyncPage requests one. When reusing a shadow page, we can save time
      * reconstructing it and it's children.
