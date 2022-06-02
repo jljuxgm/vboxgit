@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 33603 2010-10-29 12:42:24Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -341,7 +341,7 @@ static void rtTimerLnxStartSubTimer(PRTTIMERLNXSUBTIMER pSubTimer, uint64_t u64N
      * Calc when it should start firing.
      */
     uint64_t u64NextTS = u64Now + u64First;
-    if (fHighRes)
+    if (!fHighRes)
         pSubTimer->u.Std.u64NextTS = u64NextTS;
     RTTIMERLNX_LOG(("startsubtimer %p\n", pSubTimer->pParent));
 
