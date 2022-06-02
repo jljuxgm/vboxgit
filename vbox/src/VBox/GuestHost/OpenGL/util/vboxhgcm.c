@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 34571 2010-12-01 13:45:57Z vboxsync $ */
+/* $Id: vboxhgcm.c 34884 2010-12-09 13:24:02Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -1611,14 +1611,15 @@ bool _crVBoxHGSMIInit()
         Callbacks.pfnClientDestroy = _crVBoxHGSMIClientDestroy;
         rc = VBoxCrHgsmiInit(&Callbacks);
 #endif
-        AssertRC(rc);
         if (RT_SUCCESS(rc))
             bHasHGSMI = 1;
         else
             bHasHGSMI = 0;
+
+        crDebug("CrHgsmi is %s", bHasHGSMI ? "ENABLED" : "DISABLED");
     }
 
-    Assert(bHasHGSMI);
+    Assert(bHasHGSMI >= 0);
 
     return bHasHGSMI;
 }
