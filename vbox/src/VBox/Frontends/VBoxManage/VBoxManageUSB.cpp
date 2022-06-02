@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 31016 2010-07-22 16:39:23Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -416,7 +416,8 @@ int handleUSBFilter (HandlerArg *a)
     else
     {
         /* open a session for the VM */
-        CHECK_ERROR_RET(cmd.mMachine, LockForSession(a->session, false /* fPermitShared */, NULL), 1);
+        SessionType_T st;
+        CHECK_ERROR_RET(cmd.mMachine, LockForSession(a->session, false /* fPermitShared */, &st), 1);
         /* get the mutable session machine */
         a->session->COMGETTER(Machine)(cmd.mMachine.asOutParam());
         /* and get the USB controller */

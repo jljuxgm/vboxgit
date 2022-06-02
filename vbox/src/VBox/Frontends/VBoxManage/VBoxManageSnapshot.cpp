@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 31016 2010-07-22 16:39:23Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -239,7 +239,8 @@ int handleSnapshot(HandlerArg *a)
     do
     {
         /* we have to open a session for this task (new or shared) */
-        rc = pMachine->LockForSession(a->session, true /* fPermitShared */, NULL);
+        SessionType_T st;
+        rc = pMachine->LockForSession(a->session, true /* fPermitShared */, &st);
         ComPtr<IConsole> console;
         CHECK_ERROR_BREAK(a->session, COMGETTER(Console)(console.asOutParam()));
 

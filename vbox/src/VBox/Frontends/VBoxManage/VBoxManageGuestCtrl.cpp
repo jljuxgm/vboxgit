@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 31016 2010-07-22 16:39:23Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -285,7 +285,8 @@ static int handleExecProgram(HandlerArg *a)
         do
         {
             /* open an existing session for VM */
-            CHECK_ERROR_BREAK(machine, LockForSession(a->session, true /* fPermitShared */, NULL));
+            SessionType_T st;
+            CHECK_ERROR_BREAK(machine, LockForSession(a->session, true /* fPermitShared */, &st));
             // @todo r=dj assert that it's an existing session
 
             /* get the mutable session machine */

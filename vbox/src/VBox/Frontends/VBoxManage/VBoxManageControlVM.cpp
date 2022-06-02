@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 31016 2010-07-22 16:39:23Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -87,7 +87,8 @@ int handleControlVM(HandlerArg *a)
         return 1;
 
     /* open a session for the VM */
-    CHECK_ERROR_RET(machine, LockForSession(a->session, true /* fPermitShared */, NULL), 1);
+    SessionType_T st;
+    CHECK_ERROR_RET(machine, LockForSession(a->session, true /* fPermitShared */, &st), 1);
 
     do
     {

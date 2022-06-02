@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 31016 2010-07-22 16:39:23Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1863,7 +1863,8 @@ int CmdDebugLog(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox, ComPtr<I
     if (FAILED(rc) || ptrMachine.isNull())
         CHECK_ERROR_RET(aVirtualBox, FindMachine(Bstr(argv[0]), ptrMachine.asOutParam()), 1);
 
-    CHECK_ERROR_RET(ptrMachine, LockForSession(aSession, true /* fPermitShared */, NULL), 1);
+    SessionType_T st;
+    CHECK_ERROR_RET(ptrMachine, LockForSession(aSession, true /* fPermitShared */, &st), 1);
 
     /*
      * Get the debugger interface.
