@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 34501 2010-11-30 12:30:30Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 35284 2010-12-21 20:49:53Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -951,6 +951,7 @@ HRESULT Appliance::readFSImpl(TaskOVF *pTask, PVDINTERFACEIO pCallbacks, PSHA1ST
     return rc;
 }
 
+#ifdef VBOX_WITH_S3
 /**
  * Worker code for reading OVF from the cloud. This is called from Appliance::taskThreadImportOrExport()
  * in S3 mode and therefore runs on the OVF read worker thread. This then starts a second worker
@@ -1077,6 +1078,7 @@ HRESULT Appliance::readS3(TaskOVF *pTask)
 
     return rc;
 }
+#endif /* VBOX_WITH_S3 */
 
 /*******************************************************************************
  * Import stuff
@@ -1384,6 +1386,7 @@ HRESULT Appliance::importFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock)
     return rc;
 }
 
+#ifdef VBOX_WITH_S3
 /**
  * Worker code for importing OVF from the cloud. This is called from Appliance::taskThreadImportOrExport()
  * in S3 mode and therefore runs on the OVF import worker thread. This then starts a second worker
@@ -1574,6 +1577,7 @@ HRESULT Appliance::importS3(TaskOVF *pTask)
 
     return rc;
 }
+#endif /* VBOX_WITH_S3 */
 
 HRESULT Appliance::readManifestFile(const Utf8Str &strFile, void **ppvBuf, size_t *pcbSize, PVDINTERFACEIO pCallbacks, PSHA1STORAGE pStorage)
 {
