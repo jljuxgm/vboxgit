@@ -1,4 +1,4 @@
-/* $Id: DBGPlugIns.h 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: DBGPlugIns.h 31531 2010-08-10 12:29:45Z vboxsync $ */
 /** @file
  * DBGPlugIns - Debugger Plug-Ins.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2008-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
