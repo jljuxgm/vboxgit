@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 33605 2010-10-29 13:13:58Z vboxsync $ */
+/* $Id: ministring.cpp 35128 2010-12-15 12:38:41Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -211,6 +211,16 @@ size_t MiniString::find(const char *pcszFind, size_t pos /*= 0*/)
         return p - pszThis;
 
     return npos;
+}
+
+void MiniString::findReplace(char cFind, char cReplace)
+{
+    for (size_t i = 0; i < length(); ++i)
+    {
+        char *p = &m_psz[i];
+        if (*p == cFind)
+            *p = cReplace;
+    }
 }
 
 MiniString MiniString::substr(size_t pos /*= 0*/, size_t n /*= npos*/)

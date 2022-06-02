@@ -1,4 +1,4 @@
-/* $Id: string.cpp 34846 2010-12-08 17:50:25Z vboxsync $ */
+/* $Id: string.cpp 35128 2010-12-15 12:38:41Z vboxsync $ */
 
 /** @file
  *
@@ -129,18 +129,6 @@ Utf8Str& Utf8Str::stripExt()
         RTPathStripExt(m_psz);
         jolt();
     }
-    return *this;
-}
-
-Utf8Str& Utf8Str::useForwardSlashes()
-{
-    for (size_t i = 0; i < length(); ++i)
-    {
-        char *p = &m_psz[i];
-        if (*p == '\\')
-            *p = '/';
-    }
-
     return *this;
 }
 
