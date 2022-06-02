@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 31123 2010-07-26 17:46:41Z vboxsync $ */
+/* $Id: PGMAllBth.h 31136 2010-07-27 12:06:18Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -161,7 +161,7 @@ static VBOXSTRICTRC PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(PVMCPU pVCpu, RT
 # else
         const RTGCPHYS  GCPhysFault = (RTGCPHYS)pvFault;
 # endif
-        PPGMPHYSHANDLER pCur = (PPGMPHYSHANDLER)RTAvlroGCPhysRangeGet(&pVM->pgm.s.CTX_SUFF(pTrees)->PhysHandlers, GCPhysFault);
+        PPGMPHYSHANDLER pCur = pgmHandlerPhysicalLookup(pVM, GCPhysFault);
         if (pCur)
         {
 #  ifdef PGM_SYNC_N_PAGES
@@ -211,13 +211,13 @@ static VBOXSTRICTRC PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(PVMCPU pVCpu, RT
 
                 STAM_PROFILE_START(&pCur->Stat, h);
                 if (fLeaveLock)
-                    pgmUnlock(pVM); /* @todo: Not entirely safe. */
+                    pgmUnlock(pVM); /** @todo: Not entirely safe. */
 
                 rc = pfnHandler(pVM, uErr, pRegFrame, pvFault, GCPhysFault, pvUser);
                 if (fLeaveLock)
                     pgmLock(pVM);
 #  ifdef VBOX_WITH_STATISTICS
-                pCur = (PPGMPHYSHANDLER)RTAvlroGCPhysRangeGet(&pVM->pgm.s.CTX_SUFF(pTrees)->PhysHandlers, GCPhysFault);
+                pCur = pgmHandlerPhysicalLookup(pVM, GCPhysFault);
                 if (pCur)
                     STAM_PROFILE_STOP(&pCur->Stat, h);
 #  else

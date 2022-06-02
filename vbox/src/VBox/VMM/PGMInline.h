@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 31126 2010-07-26 18:21:50Z vboxsync $ */
+/* $Id: PGMInline.h 31136 2010-07-27 12:06:18Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1185,6 +1185,33 @@ DECLINLINE(PX86PML4E) pgmShwGetLongModePML4EPtr(PPGMCPU pPGM, unsigned int iPml4
 }
 
 #endif /* !IN_RC */
+
+
+/**
+ * Cached physical handler lookup.
+ *
+ * @returns Physical handler covering @a GCPhys.
+ * @param   pVM                 The VM handle.
+ * @param   GCPhys              The lookup address.
+ */
+DECLINLINE(PPGMPHYSHANDLER) pgmHandlerPhysicalLookup(PVM pVM, RTGCPHYS GCPhys)
+{
+    PPGMPHYSHANDLER pHandler = pVM->pgm.s.CTX_SUFF(pLastPhysHandler);
+    if (   pHandler
+        && GCPhys >= pHandler->Core.Key
+        && GCPhys < pHandler->Core.KeyLast)
+    {
+        STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,PhysHandlerLookupHits));
+        return pHandler;
+    }
+
+    STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,PhysHandlerLookupMisses));
+    pHandler = (PPGMPHYSHANDLER)RTAvlroGCPhysRangeGet(&pVM->pgm.s.CTX_SUFF(pTrees)->PhysHandlers, GCPhys);
+    if (pHandler)
+        pVM->pgm.s.CTX_SUFF(pLastPhysHandler) = pHandler;
+    return pHandler;
+}
+
 
 /**
  * Gets the page state for a physical handler.
