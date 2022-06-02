@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 33885 2010-11-09 10:28:35Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 33886 2010-11-09 10:34:14Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -30,6 +30,10 @@
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
+
+#ifndef RT_OS_WINDOWS
+#include <sys/stat.h>
+#endif
 
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
@@ -193,7 +197,8 @@ int VBoxServiceToolboxMkDir(int argc, char **argv)
                  fileMode |= newMode;
              }
              else
-                 fileMode |= S_IRWXUGO & ~umaskMode;
+                 fileMode |= S_IRWXU | S_IRWXG | S_IRWXO;
+                 fileMode &= ~umaskMode;
 #endif
          }
 

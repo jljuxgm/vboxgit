@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 33858 2010-11-08 15:55:05Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 33886 2010-11-09 10:34:14Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -93,6 +93,7 @@ static DECLCALLBACK(int) VBoxServiceAutoMountInit(void)
 }
 
 
+/** @todo Integrate into RTFsQueryMountpoint().  */
 static bool VBoxServiceAutoMountShareIsMounted(const char *pszShare,
                                                char *pszMountPoint, size_t cbMountPoint)
 {
