@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32898 2010-10-05 09:43:39Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32899 2010-10-05 09:56:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1866,7 +1866,7 @@ HRESULT Console::doCPURemove(ULONG aCpu)
                         tr("CPU %d is not attached"), aCpu);
 
     /* Leave the lock before any EMT/VMMDev call. */
-    alock.leave();
+    alock.release();
 
     /* Check if the CPU is unlocked */
     PPDMIBASE pBase;
@@ -2032,7 +2032,7 @@ HRESULT Console::doCPUAdd(ULONG aCpu)
                           this, aCpu);
 
     /* leave the lock before a VMR3* call (EMT will call us back)! */
-    alock.leave();
+    alock.release();
 
     if (vrc == VERR_TIMEOUT || RT_SUCCESS(vrc))
     {
