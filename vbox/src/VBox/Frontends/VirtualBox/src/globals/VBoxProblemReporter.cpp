@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 32264 2010-09-07 08:23:05Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 32265 2010-09-07 08:46:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1071,10 +1071,10 @@ int VBoxProblemReporter::confirmMachineDeletion(const CMachine &machine)
                                     "machine <b>%1</b>?</p>"
                                     "<p>This operation <i>cannot</i> be undone.</p>")
                                    .arg(machine.GetName());
-        const QString strText1 = tr("<p>If you select <b>%1</b> everything gets removed. This "
-                                    "includes the machine itself, but also the virtual disks attached "
-                                    "to it. If you want preserve the virtual disks for later use, "
-                                    "select <b>%2</b>.</p>")
+        const QString strText1 = tr("<p>If you select <b>%1</b> both the machine itself and the "
+                                    "virtual disks attached to it will be removed. If you wish "
+                                    "to preserve the virtual disks for later use, select "
+                                    "<b>%2</b>.</p>")
                                    .arg(strDeleteAllBtn)
                                    .arg(strKeepHarddisksBtn);
         if (cDisks == 0)
@@ -1098,7 +1098,7 @@ int VBoxProblemReporter::confirmMachineDeletion(const CMachine &machine)
             return message(&vboxGlobal().selectorWnd(), Question,
                            strText +
                            tr("<p>You have more than one virtual disk attached. Please make sure "
-                              "you didn't need any of them before deletion.</p>") +
+                              "that you do not need any of them before continuing.</p>") +
                            strText1,
                            0, /* aAutoConfirmId */
                            QIMessageBox::No,
