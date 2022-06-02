@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 33004 2010-10-08 10:23:59Z vboxsync $ */
 
 /** @file
  *
@@ -27,7 +27,7 @@
 
 #include <VBox/err.h>
 
-#include <VBox/vrdpapi.h>
+#include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/vrdpusb.h>
 
 // constructor / destructor
@@ -53,7 +53,7 @@ void RemoteUSBDevice::FinalRelease()
 /**
  * Initializes the remote USB device object.
  */
-HRESULT RemoteUSBDevice::init (uint32_t u32ClientId, VRDPUSBDEVICEDESC *pDevDesc)
+HRESULT RemoteUSBDevice::init (uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc)
 {
     LogFlowThisFunc(("u32ClientId=%d,pDevDesc=%p\n", u32ClientId, pDevDesc));
 

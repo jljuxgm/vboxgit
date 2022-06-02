@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 32885 2010-10-04 12:56:35Z vboxsync $ */
+/* $Id: ConsoleImpl.h 33004 2010-10-08 10:23:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -38,7 +38,7 @@ class ConsoleVRDPServer;
 class VMMDev;
 class Progress;
 
-#include <VBox/vrdpapi.h>
+#include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/pdmdrv.h>
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>  /* For the property notification callback */
@@ -210,7 +210,7 @@ public:
     void VRDPInterceptUSB(uint32_t u32ClientId, void **ppvIntercept);
     void VRDPInterceptClipboard(uint32_t u32ClientId);
 
-    void processRemoteUSBDevices(uint32_t u32ClientId, VRDPUSBDEVICEDESC *pDevList, uint32_t cbDevList);
+    void processRemoteUSBDevices(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevList, uint32_t cbDevList);
 
     // callback callers (partly; for some events console callbacks are notified
     // directly from IInternalSessionControl event handlers declared above)

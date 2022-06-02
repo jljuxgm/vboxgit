@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 33004 2010-10-08 10:23:59Z vboxsync $ */
 
 /** @file
  *
@@ -23,8 +23,8 @@
 
 #include "VirtualBoxBase.h"
 
-struct _VRDPUSBDEVICEDESC;
-typedef _VRDPUSBDEVICEDESC VRDPUSBDEVICEDESC;
+struct _VRDEUSBDEVICEDESC;
+typedef _VRDEUSBDEVICEDESC VRDEUSBDEVICEDESC;
 
 class ATL_NO_VTABLE RemoteUSBDevice :
     public VirtualBoxBase,
@@ -51,7 +51,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(uint32_t u32ClientId, VRDPUSBDEVICEDESC *pDevDesc);
+    HRESULT init(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc);
     void uninit();
 
     // IUSBDevice properties
