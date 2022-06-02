@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34584 2010-12-01 18:48:44Z vboxsync $
+# $Id: Makefile.kmk 34679 2010-12-03 08:56:15Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -153,6 +153,11 @@ VBOX_LNX_NO_STRIP = \
 	VBoxCreateUSBNode.sh \
 	VBox.sh \
 	VBox.png
+
+ifdef VBOX_WITH_EXTPACK
+ VBOX_LNX_STRIP_BIN += \
+	VBoxExtPackHelperApp
+endif
 
 # Qt4 GUI
 ifdef VBOX_WITH_QTGUI
