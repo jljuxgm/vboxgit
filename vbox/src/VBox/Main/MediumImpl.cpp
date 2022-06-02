@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 32780 2010-09-27 19:00:22Z vboxsync $ */
+/* $Id: MediumImpl.cpp 32818 2010-09-29 15:28:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5458,7 +5458,7 @@ DECLCALLBACK(int) Medium::vdTcpSocketDestroy(VDSOCKET Sock)
     PVDSOCKETINT pSocketInt = (PVDSOCKETINT)Sock;
 
     if (pSocketInt->hSocket != NIL_RTSOCKET)
-        RTTcpClientClose(pSocketInt->hSocket);
+        RTTcpClientCloseEx(pSocketInt->hSocket, false /*fGracefulShutdown*/);
 
     RTMemFree(pSocketInt);
 
@@ -5477,7 +5477,7 @@ DECLCALLBACK(int) Medium::vdTcpClientClose(VDSOCKET Sock)
     int rc = VINF_SUCCESS;
     PVDSOCKETINT pSocketInt = (PVDSOCKETINT)Sock;
 
-    rc = RTTcpClientClose(pSocketInt->hSocket);
+    rc = RTTcpClientCloseEx(pSocketInt->hSocket, false /*fGracefulShutdown*/);
     pSocketInt->hSocket = NIL_RTSOCKET;
     return rc;
 }

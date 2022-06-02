@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 32810 2010-09-29 10:56:54Z vboxsync $ */
+/* $Id: tcp.cpp 32818 2010-09-29 15:28:35Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -915,6 +915,12 @@ RTR3DECL(int) RTTcpClientConnect(const char *pszAddress, uint32_t uPort, PRTSOCK
 RTR3DECL(int) RTTcpClientClose(RTSOCKET Sock)
 {
     return rtTcpClose(Sock, "RTTcpClientClose", true /*fTryGracefulShutdown*/);
+}
+
+
+RTR3DECL(int) RTTcpClientCloseEx(RTSOCKET Sock, bool fGracefulShutdown)
+{
+    return rtTcpClose(Sock, "RTTcpClientCloseEx", fGracefulShutdown);
 }
 
 

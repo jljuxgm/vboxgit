@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 32691 2010-09-22 10:09:54Z vboxsync $ */
+/* $Id: DrvVD.cpp 32818 2010-09-29 15:28:35Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1043,7 +1043,7 @@ static DECLCALLBACK(int) drvvdTcpSocketDestroy(VDSOCKET Sock)
     }
 
     if (pSockInt->hSocket != NIL_RTSOCKET)
-        rc = RTTcpClientClose(pSockInt->hSocket);
+        rc = RTTcpClientCloseEx(pSockInt->hSocket, false /*fGracefulShutdown*/);
 
     RTMemFree(pSockInt);
 
@@ -1071,7 +1071,7 @@ static DECLCALLBACK(int) drvvdTcpClientConnect(VDSOCKET Sock, const char *pszAdd
         if (RT_SUCCESS(rc))
             return VINF_SUCCESS;
 
-        rc = RTTcpClientClose(pSockInt->hSocket);
+        rc = RTTcpClientCloseEx(pSockInt->hSocket, false /*fGracefulShutdown*/);
     }
 
     return rc;
@@ -1089,7 +1089,7 @@ static DECLCALLBACK(int) drvvdTcpClientClose(VDSOCKET Sock)
         AssertRC(rc);
     }
 
-    rc = RTTcpClientClose(pSockInt->hSocket);
+    rc = RTTcpClientCloseEx(pSockInt->hSocket, false /*fGracefulShutdown*/);
     pSockInt->hSocket = NIL_RTSOCKET;
 
     return rc;
