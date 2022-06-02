@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 33365 2010-10-22 16:28:07Z vboxsync $ */
+/* $Id: vboxhgcm.c 33366 2010-10-22 16:31:40Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -146,9 +146,6 @@ DECLINLINE(void) vboxCrHgsmiProfileScopeExit(PVBOXCRHGSMIPROFILE_SCOPE pScope)
 
 
 #else
-#ifdef IN_GUEST
-#error "should not happen!"
-#endif
 #define VBOXCRHGSMIPROFILE_INIT() do {} while (0)
 #define VBOXCRHGSMIPROFILE_TERM() do {} while (0)
 #define VBOXCRHGSMIPROFILE_FUNC_PROLOGUE() do {} while (0)
