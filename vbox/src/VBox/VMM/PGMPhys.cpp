@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30815 2010-07-14 10:04:14Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30816 2010-07-14 11:30:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3357,6 +3357,10 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysUnmapChunkRendezvous(PVM pVM, PVMCPU pVCpu, 
 
     if (pVM->pgm.s.ChunkR3Map.c >= pVM->pgm.s.ChunkR3Map.cMax)
     {
+        /* Flush the pgm pool cache; call the internal rendezvous handler as we're already in a rendezvous handler here. */
+        /* todo: also not really efficient to unmap a chunk that contains PD or PT pages. */
+        pgmR3PoolClearAllRendezvous(pVM, &pVM->aCpus[0], false /* no need to flush the REM TLB as we already did that above */);
+
         /*
          * Request the ring-0 part to unmap a chunk to make space in the mapping cache.
          */
@@ -3412,10 +3416,6 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysUnmapChunkRendezvous(PVM pVM, PVMCPU pVCpu, 
 
             /* Flush REM translation blocks. */
             REMFlushTBs(pVM);
-
-            /* Flush the pgm pool cache; call the internal rendezvous handler as we're already in a rendezvous handler here. */
-            /* todo: also not really efficient to unmap a chunk that contains PD or PT pages. */
-            pgmR3PoolClearAllRendezvous(pVM, &pVM->aCpus[0], false /* no need to flush the REM TLB as we already did that above */);
         }
     }
     pgmUnlock(pVM);
