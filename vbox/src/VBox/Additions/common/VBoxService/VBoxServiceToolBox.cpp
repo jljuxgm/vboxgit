@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 33154 2010-10-15 12:05:52Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 33255 2010-10-20 11:32:00Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -99,22 +99,14 @@ int VBoxServiceToolboxCatOutput(RTFILE hInput, RTFILE hOutput)
     int rc = VINF_SUCCESS;
     if (hInput == NIL_RTFILE)
     {
-#ifdef RT_OS_WINDOWS
-        rc = RTFileFromNative(&hInput, STD_INPUT_HANDLE);
-#else
-        rc = RTFileFromNative(&hInput, 0 /*stdin*/);
-#endif
+        rc = RTFileFromNative(&hInput, RTFILE_NATIVE_STDIN);
         if (RT_FAILURE(rc))
             VBoxServiceError("Cat: Could not translate input file to native handle, rc=%Rrc\n", rc);
     }
 
     if (hOutput == NIL_RTFILE)
     {
-#ifdef RT_OS_WINDOWS
-        rc = RTFileFromNative(&hOutput, STD_OUTPUT_HANDLE);
-#else
-        rc = RTFileFromNative(&hOutput, 1 /*stdout*/);
-#endif
+        rc = RTFileFromNative(&hOutput, RTFILE_NATIVE_STDOUT);
         if (RT_FAILURE(rc))
             VBoxServiceError("Cat: Could not translate output file to native handle, rc=%Rrc\n", rc);
     }
