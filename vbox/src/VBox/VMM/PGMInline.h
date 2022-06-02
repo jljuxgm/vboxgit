@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 30895 2010-07-17 02:25:17Z vboxsync $ */
+/* $Id: PGMInline.h 31069 2010-07-23 15:49:30Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -552,6 +552,37 @@ DECLINLINE(int) pgmPhysPageQueryTlbeWithPage(PPGM pPGM, PPGMPAGE pPage, RTGCPHYS
 }
 
 #endif /* !IN_RC */
+
+
+/**
+ * Checks if the no-execute (NX) feature is active (EFER.NXE=1).
+ *
+ * This is inlined so that we can perform consistency checks in debug builds.
+ *
+ * @returns true if it is, false if it isn't.
+ * @param   pVCpu       The current CPU.
+ */
+DECL_FORCE_INLINE(bool) pgmGstIsNoExecuteActive(PVMCPU pVCpu)
+{
+    /** @todo shadow this variable */
+    return CPUMIsGuestNXEnabled(pVCpu);
+}
+
+
+/**
+ * Checks if the page size extension (PSE) is currently enabled (CR4.PSE=1).
+ *
+ * This is inlined so that we can perform consistency checks in debug builds.
+ *
+ * @returns true if it is, false if it isn't.
+ * @param   pVCpu       The current CPU.
+ */
+DECL_FORCE_INLINE(bool) pgmGstIsPageSizeExtActive(PVMCPU pVCpu)
+{
+    /** @todo ( (pVCpu)->pgm.s.fGst32BitPageSizeExtension ) */
+    return CPUMIsGuestPageSizeExtEnabled(pVCpu);
+}
+
 
 /**
  * Calculated the guest physical address of the large (4 MB) page in 32 bits paging mode.
