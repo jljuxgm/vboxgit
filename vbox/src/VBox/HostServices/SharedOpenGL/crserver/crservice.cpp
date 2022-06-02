@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: crservice.cpp 35347 2010-12-27 16:25:58Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -23,7 +23,7 @@
 # include <iprt/string.h>
 # include <iprt/assert.h>
 # include <iprt/stream.h>
-# include <VBox/ssm.h>
+# include <VBox/vmm/ssm.h>
 # include <VBox/hgcmsvc.h>
 # include <VBox/HostServices/VBoxCrOpenGLSvc.h>
 # include "cr_server.h"
