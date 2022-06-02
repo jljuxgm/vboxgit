@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 30693 2010-07-07 09:21:11Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 35874 2011-02-07 14:14:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -37,8 +37,8 @@
 #include <QKeyEvent>
 #include <QMacCocoaViewContainer>
 
-/* 
- * Private interfaces 
+/*
+ * Private interfaces
  */
 @interface UIButtonTargetPrivate: NSObject
 {
@@ -70,7 +70,7 @@
 -(id)initWithObject2:(UICocoaSearchField*)object;
 @end
 
-#if MAC_OS_X_VERSION_MIN_ALLOWED >= MAC_OS_X_VERSION_10_6
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_6
 @interface UISearchFieldDelegatePrivate: NSObject<NSTextFieldDelegate>
 #else
 @interface UISearchFieldDelegatePrivate: NSObject
@@ -78,7 +78,7 @@
 {}
 @end
 
-/* 
+/*
  * Implementation of the private interfaces
  */
 @implementation UIButtonTargetPrivate
@@ -121,7 +121,7 @@
     return self;
 }
 
-- (void)dealloc 
+- (void)dealloc
 {
     [mBGColor release];
     [super dealloc];
@@ -221,7 +221,7 @@
 @end
 
 
-/* 
+/*
  * Helper functions
  */
 NSRect darwinCenterRectVerticalTo(NSRect aRect, const NSRect& aToRect)
@@ -230,8 +230,8 @@ NSRect darwinCenterRectVerticalTo(NSRect aRect, const NSRect& aToRect)
     return aRect;
 }
 
-/* 
- * Public classes 
+/*
+ * Public classes
  */
 UICocoaWrapper::UICocoaWrapper(QWidget *pParent /* = 0 */)
     : QWidget(pParent)
