@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 30750 2010-07-08 18:40:30Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -1283,7 +1283,7 @@ Console::teleporterTrgServeConnection(RTSOCKET Sock, void *pvUser)
     if (RT_SUCCESS(vrc))
     {
         LogRel(("Teleporter: Incoming VM from %RTnaddr!\n", &Addr));
-        hrc = pState->mptrProgress->SetNextOperation(Bstr(Utf8StrFmt(tr("Teleporting VM from %RTnaddr"), &Addr)), 8);
+        hrc = pState->mptrProgress->SetNextOperation(BstrFmt(tr("Teleporting VM from %RTnaddr"), &Addr), 8);
     }
     else
     {
