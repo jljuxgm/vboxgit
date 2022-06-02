@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31674 2010-08-13 18:25:28Z vboxsync $
+# $Id: Makefile.kmk 31679 2010-08-13 19:39:19Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -614,7 +614,7 @@ VBOX_DI_VBAPP_DYLIBS.x86 := \
 	MacOS/VBoxREM64.dylib
 ifdef VBOX_WITH_PYTHON
  VBOX_DI_VBAPP_DYLIBS.x86 += \
- 	$(if-expr defined(VBOX_WITH_MAC_OS_X_10_5_SUPPORT),MacOS/VBoxPython2_5.so,) \
+ 	MacOS/VBoxPython2_5.so \
 	$(if-expr defined(VBOX_WITH_MAC_OS_X_10_4_SUPPORT),MacOS/VBoxPython2_3.so,)
 endif
 
