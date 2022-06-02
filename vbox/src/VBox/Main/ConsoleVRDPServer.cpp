@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 34559 2010-12-01 11:04:48Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 34574 2010-12-01 15:01:02Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1489,18 +1489,8 @@ AuthResult ConsoleVRDPServer::Authenticate(const Guid &uuid, AuthGuestJudgement 
     if (!mAuthLibrary)
     {
         /* Load the external authentication library. */
-
-        ComPtr<IMachine> machine;
-        mConsole->COMGETTER(Machine)(machine.asOutParam());
-
-        ComPtr<IVirtualBox> virtualBox;
-        machine->COMGETTER(Parent)(virtualBox.asOutParam());
-
-        ComPtr<ISystemProperties> systemProperties;
-        virtualBox->COMGETTER(SystemProperties)(systemProperties.asOutParam());
-
         Bstr authLibrary;
-        systemProperties->COMGETTER(VRDEAuthLibrary)(authLibrary.asOutParam());
+        mConsole->getVRDEServer()->COMGETTER(AuthLibrary)(authLibrary.asOutParam());
 
         Utf8Str filename = authLibrary;
 

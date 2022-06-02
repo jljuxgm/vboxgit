@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 34529 2010-11-30 16:57:37Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 34574 2010-12-01 15:01:02Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -308,6 +308,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--vrdeextpack default|<name>\n"
                      "                            [--vrdeproperty <name=[value]>]\n"
                      "                            [--vrdeauthtype null|external|guest]\n"
+                     "                            [--vrdeauthlibrary default|<name>\n"
                      "                            [--vrdemulticon on|off]\n"
                      "                            [--vrdereusecon on|off]\n"
                      "                            [--vrdevideochannel on|off]\n"
