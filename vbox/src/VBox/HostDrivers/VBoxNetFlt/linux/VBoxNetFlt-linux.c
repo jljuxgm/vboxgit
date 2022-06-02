@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 30924 2010-07-20 09:22:05Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 31271 2010-08-02 08:31:54Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1119,7 +1119,7 @@ static struct sk_buff *vboxNetFltLinuxSkBufFromSG(PVBOXNETFLTINS pThis, PINTNETS
             pPkt->csum = RT_OFFSETOF(RTNETUDP, uh_sum);
 # endif
         if (!fDstWire)
-            PDMNetGsoPrepForDirectUse(&pSG->GsoCtx, pPkt->data, pSG->cbTotal, false /*fPayloadChecksum*/);
+            PDMNetGsoPrepForDirectUse(&pSG->GsoCtx, pPkt->data, pSG->cbTotal, RTNETCSUMTYPE_PSEUDO);
     }
 #endif /* VBOXNETFLT_WITH_GSO_XMIT_WIRE || VBOXNETFLT_WITH_GSO_XMIT_HOST */
 
