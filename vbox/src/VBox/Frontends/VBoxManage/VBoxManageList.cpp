@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 35085 2010-12-14 14:09:12Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -141,6 +141,9 @@ static void listMedia(const ComPtr<IVirtualBox> aVirtualBox,
                 break;
             case MediumType_Readonly:
                 typeStr = "readonly";
+                break;
+            case MediumType_MultiAttach:
+                typeStr = "multiattach";
                 break;
         }
         RTPrintf("Type:        %s\n", typeStr);

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 35057 2010-12-14 09:52:23Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 35085 2010-12-14 14:09:12Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -436,7 +436,8 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--type dvddrive|hdd|fdd]\n"
                      "                            [--medium none|emptydrive|\n"
                      "                                      <uuid>|<filename>|host:<drive>|iscsi]\n"
-                     "                            [--mtype normal|writethrough|immutable|shareable]\n"
+                     "                            [--mtype normal|writethrough|immutable|shareable|\n"
+                     "                                      readonly|multiattach]\n"
                      "                            [--comment <text>]\n"
                      "                            [--passthrough on|off]\n"
                      "                            [--bandwidthgroup <name>]\n"
@@ -490,7 +491,8 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
     if (u64Cmd & USAGE_MODIFYHD)
         RTStrmPrintf(pStrm,
                      "VBoxManage modifyhd         <uuid>|<filename>\n"
-                     "                            [--type normal|writethrough|immutable|shareable]\n"
+                     "                            [--type normal|writethrough|immutable|shareable|\n"
+                     "                                      readonly|multiattach]\n"
                      "                            [--autoreset on|off]\n"
                      "                            [--compact]\n"
                      "                            [--resize <megabytes>|--resizebyte <bytes>]\n"

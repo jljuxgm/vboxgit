@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 35037 2010-12-13 16:59:49Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 35085 2010-12-14 14:09:12Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -108,6 +108,10 @@ int parseDiskType(const char *psz, MediumType_T *pDiskType)
         DiskType = MediumType_Writethrough;
     else if (!RTStrICmp(psz, "shareable"))
         DiskType = MediumType_Shareable;
+    else if (!RTStrICmp(psz, "readonly"))
+        DiskType = MediumType_Readonly;
+    else if (!RTStrICmp(psz, "multiattach"))
+        DiskType = MediumType_MultiAttach;
     else
         rc = VERR_PARSE_ERROR;
 
@@ -1004,6 +1008,12 @@ int handleShowHardDiskInfo(HandlerArg *a)
                 break;
             case MediumType_Shareable:
                 typeStr = "shareable";
+                break;
+            case MediumType_Readonly:
+                typeStr = "readonly";
+                break;
+            case MediumType_MultiAttach:
+                typeStr = "multiattach";
                 break;
         }
         RTPrintf("Type:                 %s\n", typeStr);
