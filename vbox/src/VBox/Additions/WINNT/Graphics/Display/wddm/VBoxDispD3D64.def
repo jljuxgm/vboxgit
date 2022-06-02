@@ -1,4 +1,4 @@
-; $Id: VBoxDispD3D64.def 34801 2010-12-07 16:25:14Z vboxsync $
+; $Id: VBoxDispD3D64.def 35053 2010-12-14 08:30:26Z vboxsync $
 ;; @file
 ;
 ; VBoxDispD3D 64bit
@@ -12,7 +12,6 @@
 ; Foundation, in version 2 as it comes in the "COPYING" file of the
 ; VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 ; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
-;
 ;
 
 LIBRARY VBoxDispD3D64
