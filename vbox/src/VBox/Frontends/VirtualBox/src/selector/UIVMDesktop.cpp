@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 31240 2010-07-30 12:07:44Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 31330 2010-08-03 12:00:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -505,15 +505,15 @@ void UIDetailsPagePrivate::sltUpdateSystem()
             QStringList accel;
             if (m_vbox.GetHost().GetProcessorFeature(KProcessorFeature_HWVirtEx))
             {
-
                 /* VT-x/AMD-V */
                 if (m_machine.GetHWVirtExProperty(KHWVirtExPropertyType_Enabled))
+                {
                     accel << tr("VT-x/AMD-V", "details report");
 
-                /* Nested Paging */
-                if (m_machine.GetHWVirtExProperty(KHWVirtExPropertyType_NestedPaging))
-                    accel << tr("Nested Paging", "details report");
-
+                    /* Nested Paging (only when hw virt is enabled) */
+                    if (m_machine.GetHWVirtExProperty(KHWVirtExPropertyType_NestedPaging))
+                        accel << tr("Nested Paging", "details report");
+                }
             }
             /* PAE/NX */
             if (m_machine.GetCPUProperty(KCPUPropertyType_PAE))
