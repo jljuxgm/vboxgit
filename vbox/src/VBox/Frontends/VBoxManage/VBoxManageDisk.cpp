@@ -1,6 +1,6 @@
-/* $Id: VBoxManageDisk.cpp 31568 2010-08-11 13:35:59Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 31599 2010-08-12 13:02:55Z vboxsync $ */
 /** @file
- * VBoxManage - The disk delated commands.
+ * VBoxManage - The disk related commands.
  */
 
 /*
@@ -758,7 +758,8 @@ int handleConvertFromRaw(int argc, char *argv[])
                 if (!srcfilename)
                 {
                     srcfilename = ValueUnion.psz;
-#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS)
+// If you change the OS list here don't forget to update VBoxManageHelp.cpp.
+#ifndef RT_OS_WINDOWS
                     fReadFromStdIn = !strcmp(srcfilename, "stdin");
 #endif
                 }

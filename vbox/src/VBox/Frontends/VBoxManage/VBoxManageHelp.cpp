@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 31291 2010-08-02 12:29:35Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 31599 2010-08-12 13:02:55Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -510,9 +510,11 @@ void printUsage(USAGECATEGORY u64Cmd)
         RTPrintf("VBoxManage convertfromraw   <filename> <outputfile>\n"
                  "                            [--format VDI|VMDK|VHD]\n"
                  "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
+#ifndef RT_OS_WINDOWS
                  "VBoxManage convertfromraw   stdin <outputfile> <bytes>\n"
                  "                            [--format VDI|VMDK|VHD]\n"
                  "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
+#endif
                  "\n");
     }
 
