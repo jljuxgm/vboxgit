@@ -1,4 +1,4 @@
-/* $Id: DMGHDDCore.cpp 33182 2010-10-18 08:30:05Z vboxsync $ */
+/* $Id: DMGHDDCore.cpp 33479 2010-10-27 07:44:24Z vboxsync $ */
 /** @file
  * VBoxDMG - Intepreter for Apple Disk Images (DMG).
  */
@@ -1564,11 +1564,10 @@ static int dmgOpenImage(PDMGIMAGE pThis, unsigned uOpenFlags)
                     else
                         rc = VERR_VD_DMG_INVALID_HEADER;
 
+                    RTMemFree(pBlkx);
+
                     if (RT_FAILURE(rc))
-                    {
-                        RTMemFree(pBlkx);
                         break;
-                    }
                 }
             }
             else
