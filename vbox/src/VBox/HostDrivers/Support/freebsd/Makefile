@@ -1,4 +1,4 @@
-# $Id: Makefile 31829 2010-08-20 23:19:37Z vboxsync $
+# $Id: Makefile 31842 2010-08-21 19:02:27Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -50,7 +50,8 @@ SRCS += \
 
 .PATH:	${.CURDIR}/alloc
 SRCS += \
-	heapsimple.c
+	heapsimple.c \
+	alloc.c
 
 .PATH:	${.CURDIR}/common/err
 SRCS += \
@@ -110,6 +111,10 @@ SRCS += \
 .PATH:	${.CURDIR}/common/table
 SRCS += \
 	avlpv.c
+
+.PATH:	${.CURDIR}/common/time
+SRCS += \
+	time.c
 
 .PATH:	${.CURDIR}/generic
 SRCS += \
