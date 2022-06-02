@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31911 2010-08-24 11:56:45Z vboxsync $
+# $Id: Makefile.kmk 33185 2010-10-18 08:40:50Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -333,12 +333,15 @@ ifdef VBOX_WITH_JXPCOM
          sdk/bindings/xpcom/java/vboxjxpcom.jar
 endif
 
+# auth stuff
+ SOLARIS_STRIP_BINS += \
+	VBoxAuth.so \
+	VBoxAuthSimple.so
+
 # VRDP
 ifdef VBOX_WITH_VRDP
  SOLARIS_STRIP_BINS += \
-	VBoxVRDP.so \
-	VRDPAuth.so \
-	VRDPAuthSimple.so
+	VBoxVRDP.so
  SOLARIS_COMMON += \
 	rdesktop-vrdp.tar.gz
  ifdef VBOX_WITH_VRDP_RDESKTOP
