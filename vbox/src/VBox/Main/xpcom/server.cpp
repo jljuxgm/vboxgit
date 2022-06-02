@@ -1,4 +1,4 @@
-/* $Id: server.cpp 30856 2010-07-14 18:50:49Z vboxsync $ */
+/* $Id: server.cpp 31872 2010-08-23 16:07:41Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -209,8 +209,9 @@ enum
 
 static bool gAutoShutdown = false;
 
-static nsIEventQueue  *gEventQ      = nsnull;
-static PRBool volatile gKeepRunning = PR_TRUE;
+static nsIEventQueue  *gEventQ          = nsnull;
+static PRBool volatile gKeepRunning     = PR_TRUE;
+static PRBool volatile gAllowSigUsrQuit = PR_TRUE;
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -334,6 +335,8 @@ public:
                              "on XPCOM shutdown.\n"));
                 Assert(onMainThread);
             }
+
+            gAllowSigUsrQuit = PR_TRUE;
 
             if (!timerStarted)
             {
@@ -532,6 +535,7 @@ public:
                 {
                     /* On success, make sure the previous timer is stopped to
                      * cancel a scheduled server termination (if any). */
+                    gAllowSigUsrQuit = PR_FALSE;
                     RTTimerLRStop(sTimer);
                 }
             }
@@ -551,6 +555,7 @@ public:
                 LogFlowFunc(("Another client has requested a reference to VirtualBox, canceling detruction...\n"));
 
                 /* make sure the previous timer is stopped */
+                gAllowSigUsrQuit = PR_FALSE;
                 RTTimerLRStop(sTimer);
             }
         }
@@ -728,13 +733,25 @@ class ForceQuitEvent : public MyEvent
     }
 };
 
-static void signal_handler(int /* sig */)
+static void signal_handler(int sig)
 {
     if (gEventQ && gKeepRunning)
     {
-        /* post a quit event to the queue */
-        ForceQuitEvent *ev = new ForceQuitEvent();
-        ev->postTo(gEventQ);
+        if (sig == SIGUSR1)
+        {
+            if (gAllowSigUsrQuit)
+            {
+                VirtualBoxClassFactory::MaybeQuitEvent *ev = new VirtualBoxClassFactory::MaybeQuitEvent();
+                ev->postTo(gEventQ);
+            }
+            /* else do nothing */
+        }
+        else
+        {
+            /* post a force quit event to the queue */
+            ForceQuitEvent *ev = new ForceQuitEvent();
+            ev->postTo(gEventQ);
+        }
     }
 }
 
@@ -1029,6 +1046,7 @@ int main(int argc, char **argv)
             sigaction(SIGQUIT, &sa, NULL);
             sigaction(SIGTERM, &sa, NULL);
             sigaction(SIGTRAP, &sa, NULL);
+            sigaction(SIGUSR1, &sa, NULL);
         }
 
         {
