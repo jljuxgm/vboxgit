@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 30772 2010-07-10 04:58:28Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 31109 2010-07-26 11:39:31Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
@@ -225,8 +225,9 @@ PDMBOTHCBDECL(int) vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
                         else
                         {
 #ifdef IN_RING3
-                            RTPrintf("testing: VALUE '%.*s' = %#llx (%llu) [%u]\n",
+                            RTPrintf("testing: VALUE '%.*s'%*s: %'9llu (%#llx) [%u]\n",
                                      sizeof(pThis->TestingData.Value.szName) - 1, pThis->TestingData.Value.szName,
+                                     off - 12 > 48 ? 0 : 48 - (off - 12), "",
                                      pThis->TestingData.Value.u64Value.u, pThis->TestingData.Value.u64Value.u,
                                      pThis->TestingData.Value.u32Unit);
 #else
