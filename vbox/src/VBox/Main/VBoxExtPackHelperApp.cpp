@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 34724 2010-12-05 03:32:45Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 34737 2010-12-06 11:21:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1550,7 +1550,7 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, int cArgs, con
     char szIconName[RTPATH_MAX];
     int rc = RTPathAppPrivateArch(szIconName, sizeof(szIconName));
     if (RT_SUCCESS(rc))
-        rc = RTPathAppend(szIconName, sizeof(szIconName), "../Resources/virtualbox-vbox-128px.png");
+        rc = RTPathAppend(szIconName, sizeof(szIconName), "../Resources/virtualbox.png");
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to construct icon path: %Rrc", rc);
 
