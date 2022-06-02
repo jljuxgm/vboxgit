@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 32485 2010-09-14 14:02:19Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -459,7 +459,7 @@ static DECLCALLBACK(void) rtTimerLnxStartAllOnCpu(RTCPUID idCpu, void *pvUser1, 
 
 
 /**
- * Worker for RTTimerStart() that takes care of the ugly bit.s
+ * Worker for RTTimerStart() that takes care of the ugly bits.
  *
  * @returns RTTimerStart() return value.
  * @param   pTimer      The timer.
