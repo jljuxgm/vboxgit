@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 31307 2010-08-02 14:22:15Z vboxsync $ */
+/* $Id: MachineImpl.h 31308 2010-08-02 14:55:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -820,7 +820,7 @@ protected:
 
     Machine* const          mPeer;
 
-    VirtualBox* const       mParent;
+    VirtualBox * const      mParent;
 
     Shareable<Data>         mData;
     Shareable<SSData>       mSSData;

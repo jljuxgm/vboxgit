@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 31300 2010-08-02 13:22:27Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 31308 2010-08-02 14:55:22Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2938,7 +2938,7 @@ const ComObjPtr<Host>& VirtualBox::host() const
     return m->pHost;
 }
 
-const ComObjPtr<SystemProperties>& VirtualBox::systemProperties() const
+SystemProperties* VirtualBox::getSystemProperties() const
 {
     return m->pSystemProperties;
 }
