@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 31028 2010-07-23 03:33:34Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 31029 2010-07-23 03:37:03Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -1505,8 +1505,8 @@ static DECLCALLBACK(int) hdaDestruct (PPDMDEVINS pDevIns)
     AssertRC(rc);
     if (pThis->hda.pu32CorbBuf)
         RTMemFree(pThis->hda.pu32CorbBuf);
-    if (pThis->hda.pu32CorbBuf)
-        RTMemFree(pThis->hda.pu32CorbBuf);
+    if (pThis->hda.pu64RirbBuf)
+        RTMemFree(pThis->hda.pu64RirbBuf);
     return VINF_SUCCESS;
 }
 
