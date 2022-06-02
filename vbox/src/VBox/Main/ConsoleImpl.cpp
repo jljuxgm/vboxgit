@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32103 2010-08-30 15:04:38Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32105 2010-08-30 15:11:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6264,6 +6264,7 @@ DECLCALLBACK(void) Console::vmstateChangeCallback(PVM aVM,
                 case MachineState_Restoring:
                 case MachineState_Stopping:
                 case MachineState_TeleportingIn:
+                case MachineState_FaultTolerantSyncing:
                     /* The worker thread handles the transition. */
                     break;
 
