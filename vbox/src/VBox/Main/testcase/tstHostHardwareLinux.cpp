@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 30265 2010-06-17 06:22:11Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 31564 2010-08-11 12:42:43Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -145,7 +145,6 @@ int main()
         }
     }
     VBoxMainHotplugWaiter waiter;
-    RTPrintf ("Waiting for hotplug events.  Note that DBus often seems to deliver duplicate events in close succession.\n");
     RTPrintf ("Waiting for a hotplug event for five seconds...\n");
     doHotplugEvent(&waiter, 5000);
     RTPrintf ("Waiting for a hotplug event, Ctrl-C to abort...\n");
