@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 30587 2010-07-02 18:13:29Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 31001 2010-07-22 14:45:03Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -3807,7 +3807,12 @@ static int intnetR0NetworkSetIfActive(PINTNETNETWORK pNetwork, PINTNETIF pIf, bo
      * Tell the trunk if necessary.
      */
     if (pTrunk && pTrunk->pIfPort)
+    {
+        if (!fActive)
+            intnetR0BusyWait(pNetwork, &pTrunk->cBusy);
+
         pTrunk->pIfPort->pfnSetState(pTrunk->pIfPort, fActive ? INTNETTRUNKIFSTATE_ACTIVE : INTNETTRUNKIFSTATE_INACTIVE);
+    }
 
     RTSemMutexRelease(pIntNet->hMtxCreateOpenDestroy);
 
