@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 31388 2010-08-05 10:26:18Z vboxsync $ */
+/* $Id: HostImpl.cpp 31389 2010-08-05 11:02:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1512,7 +1512,8 @@ HRESULT Host::saveSettings(settings::Host &data)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoReadLock alock(&m->usbListsLock COMMA_LOCKVAL_SRC_POS);
+    AutoReadLock alock1(this COMMA_LOCKVAL_SRC_POS);
+    AutoReadLock alock2(&m->usbListsLock COMMA_LOCKVAL_SRC_POS);
 
     data.llUSBDeviceFilters.clear();
 
