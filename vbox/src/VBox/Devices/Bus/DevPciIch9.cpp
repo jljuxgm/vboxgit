@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 34485 2010-11-29 19:32:19Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 34516 2010-11-30 14:05:27Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -2153,9 +2153,19 @@ static void ich9pciBusInfo(PPCIBUS pBus, PCDBGFINFOHLP pHlp, int iIndent)
                         continue;
 
                     uint32_t u32Addr = ich9pciConfigReadDev(pPciDev, ich9pciGetRegionReg(iRegion), 4);
-                    const char * szDesc =
-                            (pRegion->type & PCI_ADDRESS_SPACE_IO) ?
-                            "IO" : "MMIO";
+                    const char * szDesc;
+
+                    if (pRegion->type & PCI_ADDRESS_SPACE_IO)
+                    {
+                        szDesc = "IO";
+                        u32Addr &= ~0x3;
+                    }
+                    else
+                    {
+                        szDesc = "MMIO";
+                        u32Addr &= ~0xf;
+                    }
+
                     printIndent(pHlp, iIndent + 2);
                     pHlp->pfnPrintf(pHlp, "  %s region #%d: %x..%x\n",
                                     szDesc, iRegion, u32Addr, u32Addr+iRegionSize);
