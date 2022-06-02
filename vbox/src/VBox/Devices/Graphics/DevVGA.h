@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 33146 2010-10-15 10:34:58Z vboxsync $ */
+/* $Id: DevVGA.h 33174 2010-10-16 18:10:47Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -405,6 +405,12 @@ typedef struct VGAState {
     uint8_t                     Padding6[7];
     /** Palette data. */
     uint32_t                    au32LogoPalette[256];
+    /** The VGA BIOS ROM data. */
+    uint8_t                     *pu8VgaBios;
+    /** The size of the VGA BIOS ROM. */
+    uint64_t                    cbVgaBios;
+    /** The name of the VGA BIOS ROM file. */
+    char                        *pszVgaBiosFile;
 #endif /* VBOX */
 #ifdef VBOX_WITH_HGSMI
     /** Base port in the assigned PCI I/O space. */
