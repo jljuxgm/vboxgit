@@ -1,4 +1,4 @@
-/* $Id: VBoxFUSE.cpp 31455 2010-08-08 13:34:51Z vboxsync $ */
+/* $Id: VBoxFUSE.cpp 31844 2010-08-21 19:37:58Z vboxsync $ */
 /** @file
  * VBoxFUSE - Disk Image Flattening FUSE Program.
  */
@@ -1008,6 +1008,13 @@ static int vboxfuseOp_open(const char *pszPath, struct fuse_file_info *pInfo)
 #elif defined(RT_OS_LINUX)
     if (pInfo->flags & (  O_APPEND | O_ASYNC | O_DIRECT /* | O_LARGEFILE ? */
                         | O_NOATIME | O_NOCTTY | O_NOFOLLOW | O_NONBLOCK
+                        /* | O_SYNC ? */))
+        return -EINVAL;
+    if ((pInfo->flags & O_ACCMODE) == O_ACCMODE)
+        return -EINVAL;
+#elif defined(RT_OS_FREEBSD)
+    if (pInfo->flags & (  O_APPEND | O_ASYNC | O_DIRECT /* | O_LARGEFILE ? */
+                        | O_NOCTTY | O_NOFOLLOW | O_NONBLOCK
                         /* | O_SYNC ? */))
         return -EINVAL;
     if ((pInfo->flags & O_ACCMODE) == O_ACCMODE)
