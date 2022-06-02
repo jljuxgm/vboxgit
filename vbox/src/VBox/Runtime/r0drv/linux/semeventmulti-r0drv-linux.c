@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-linux.c 33011 2010-10-08 15:42:24Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-linux.c 33033 2010-10-11 09:55:12Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -225,6 +225,9 @@ RT_EXPORT_SYMBOL(RTSemEventMultiReset);
  *
  * @returns VBox status code.
  * @param   pThis           The event semaphore.
+ * @param   fFlags          See RTSemEventMultiWaitEx.
+ * @param   uTimeout        See RTSemEventMultiWaitEx.
+ * @param   pSrcPos         The source code position of the wait.
  */
 static int rtR0SemEventMultiLnxWait(PRTSEMEVENTMULTIINTERNAL pThis, uint32_t fFlags, uint64_t uTimeout,
                                     PCRTLOCKVALSRCPOS pSrcPos)

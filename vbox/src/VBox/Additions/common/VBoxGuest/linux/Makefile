@@ -1,4 +1,4 @@
-# $Revision: 33011 $
+# $Revision: 33033 $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -118,6 +118,8 @@ OBJS   = \
 	generic/RTAssertShouldPanic-generic.o \
         generic/RTLogWriteStdErr-stub-generic.o \
         generic/RTLogWriteStdOut-stub-generic.o \
+	generic/RTSemEventWait-2-ex-generic.o \
+	generic/RTSemEventWaitNoResume-2-ex-generic.o \
 	generic/RTSemEventMultiWait-2-ex-generic.o \
 	generic/RTSemEventMultiWaitNoResume-2-ex-generic.o \
 	VBox/log-vbox.o \
