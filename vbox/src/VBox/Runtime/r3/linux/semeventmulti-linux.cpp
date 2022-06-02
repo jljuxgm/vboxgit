@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 32946 2010-10-06 14:21:29Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 32948 2010-10-06 14:29:34Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -286,7 +286,7 @@ DECLINLINE(int) rtSemEventLnxMultiWait(struct RTSEMEVENTMULTIINTERNAL *pThis, ui
         if (uTimeout != UINT64_MAX) /* unofficial way of indicating an indefinite wait */
         {
             if (fFlags & RTSEMWAIT_FLAGS_RELATIVE)
-                u64Deadline = RTTimeSystemNanoTS();
+                u64Deadline = RTTimeSystemNanoTS() + uTimeout;
             else
             {
                 uint64_t u64Now = RTTimeSystemNanoTS();
