@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32158 2010-08-31 15:47:41Z vboxsync $ */
+/* $Id: FTM.cpp 32169 2010-09-01 09:21:30Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -37,6 +37,8 @@
 #include <iprt/socket.h>
 #include <iprt/semaphore.h>
 #include <iprt/asm.h>
+
+#include <include/internal/vm.h>
 
 /*******************************************************************************
  * Structures and Typedefs                                                     *
@@ -612,6 +614,9 @@ static int ftmR3PerformSync(PVM pVM, FTMSYNCSTATE enmState)
     {
         rc = VMR3Suspend(pVM);
         AssertRCReturn(rc, rc);
+        /** Hack alert as EM is responsible for dealing with the suspend state. We must do this here ourselves, but only for this EMT.*/
+        if (VM_IS_EMT(pVM))
+            TMR3NotifySuspend(pVM, VMMGetCpu(pVM));  /* Stop the virtual time. */
     }
 
     switch (enmState)
@@ -638,7 +643,7 @@ static int ftmR3PerformSync(PVM pVM, FTMSYNCSTATE enmState)
         AssertRC(rc);
 
         pVM->ftm.s.fDeltaLoadSaveActive = (fFullSync == false);
-        rc = VMR3Save(pVM, NULL /* pszFilename */, &g_ftmR3TcpOps, pVM, true /* fContinueAfterwards */, NULL, NULL, &fSuspended);
+        rc = VMR3SaveFT(pVM, &g_ftmR3TcpOps, pVM, &fSuspended);
         pVM->ftm.s.fDeltaLoadSaveActive = false;
         AssertRC(rc);
 
@@ -663,6 +668,10 @@ static int ftmR3PerformSync(PVM pVM, FTMSYNCSTATE enmState)
     {
         rc = VMR3Resume(pVM);
         AssertRCReturn(rc, rc);
+
+        /** Hack alert as EM is responsible for dealing with the suspend state. We must do this here ourselves, but only for this EMT.*/
+        if (VM_IS_EMT(pVM))
+            TMR3NotifyResume(pVM, VMMGetCpu(pVM));  /* Stop the virtual time. */
     }
     return VINF_SUCCESS;
 }
