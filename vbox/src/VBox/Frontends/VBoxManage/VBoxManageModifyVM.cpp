@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 33200 2010-10-18 14:29:54Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 33201 2010-10-18 14:37:33Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1058,10 +1058,6 @@ int handleModifyVM(HandlerArg *a)
                 else if (!strcmp(ValueUnion.psz, "82545EM"))
                 {
                     CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_I82545EM));
-                }
-                 else if (!strcmp(ValueUnion.psz, "82566MC"))
-                {
-                    CHECK_ERROR(nic, COMSETTER(AdapterType)(NetworkAdapterType_I82566MC));
                 }
 #endif
 #ifdef VBOX_WITH_VIRTIO
