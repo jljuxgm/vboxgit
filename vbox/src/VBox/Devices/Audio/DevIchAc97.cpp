@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 32304 2010-09-08 09:56:58Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 32696 2010-09-22 11:55:54Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -788,6 +788,7 @@ static void transfer_audio (AC97LinkState *s, int index, int elapsed)
                 temp = write_audio (s, r, elapsed, &stop);
                 written += temp;
                 elapsed -= temp;
+                Assert((temp & 1) == 0);    /* Else the following shift won't work */
                 r->picb -= (temp >> 1);
                 break;
 
@@ -795,6 +796,7 @@ static void transfer_audio (AC97LinkState *s, int index, int elapsed)
             case MC_INDEX:
                 temp = read_audio (s, r, elapsed, &stop);
                 elapsed -= temp;
+                Assert((temp & 1) == 0);    /* Else the following shift won't work */
                 r->picb -= (temp >> 1);
                 break;
         }
