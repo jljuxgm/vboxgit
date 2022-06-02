@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 35536 2011-01-13 15:12:10Z vboxsync $ */
+/* $Id: ovfreader.cpp 35566 2011-01-14 14:16:22Z vboxsync $ */
 /** @file
  *
  * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
@@ -750,11 +750,11 @@ void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSy
                         i.strAddressOnParent.toInt(vd.ulAddressOnParent);
                         // ovf://disk/lamp
                         // 123456789012345
-                        if (i.strHostResource.substr(0, 11) == "ovf://disk/")
+                        if (i.strHostResource.startsWith("ovf://disk/"))
                             vd.strDiskId = i.strHostResource.substr(11);
-                        else if (i.strHostResource.substr(0, 10) == "ovf:/disk/")
+                        else if (i.strHostResource.startsWith("ovf:/disk/"))
                             vd.strDiskId = i.strHostResource.substr(10);
-                        else if (i.strHostResource.substr(0, 6) == "/disk/")
+                        else if (i.strHostResource.startsWith("/disk/"))
                             vd.strDiskId = i.strHostResource.substr(6);
 
                         if (    !(vd.strDiskId.length())
