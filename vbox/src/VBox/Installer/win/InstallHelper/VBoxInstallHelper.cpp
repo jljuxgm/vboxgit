@@ -1,7 +1,7 @@
-/* $Id: VBoxInstallHelper.cpp 31857 2010-08-23 12:13:39Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 32111 2010-08-31 08:38:07Z vboxsync $ */
 /** @file
-* VBoxInstallHelper - Various helper routines for Windows host installer.
-*/
+ * VBoxInstallHelper - Various helper routines for Windows host installer.
+ */
 
 /*
  * Copyright (C) 2006-2010 Oracle Corporation
@@ -1287,3 +1287,4 @@ UINT __stdcall UninstallTAPInstances (MSIHANDLE a_hModule)
     }
     return ERROR_SUCCESS;
 }
+

@@ -1,7 +1,7 @@
-/* $Id: VBoxCommon.h 32110 2010-08-31 08:36:13Z vboxsync $ */
+/* $Id: VBoxCommon.h 32111 2010-08-31 08:38:07Z vboxsync $ */
 /** @file
-* VBoxCommon - Misc helper routines for install helper.
-*/
+ * VBoxCommon - Misc helper routines for install helper.
+ */
 
 /*
  * Copyright (C) 2006-2010 Oracle Corporation
@@ -26,3 +26,4 @@ UINT VBoxGetProperty(MSIHANDLE a_hModule, TCHAR *a_pszName, TCHAR *a_pValue, DWO
 UINT VBoxSetProperty(MSIHANDLE a_hModule, TCHAR *a_pszName, TCHAR *a_pValue);
 
 #endif /* !___VBoxInstallHelper_Common_h */
+
