@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 32272 2010-09-07 10:09:20Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 32274 2010-09-07 11:19:18Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1994,7 +1994,7 @@ static int VBoxGuestCommonIOCtl_ChangeMemoryBalloon(PVBOXGUESTDEVEXT pDevExt, PV
 static int VBoxGuestCommonIOCtl_EnableVRDPSession(VBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
 {
     /* Nothing to do here right now, since this only is supported on Windows at the moment. */
-    return VINF_SUCCESS;
+    return VERR_NOT_IMPLEMENTED;
 }
 
 
@@ -2009,7 +2009,7 @@ static int VBoxGuestCommonIOCtl_EnableVRDPSession(VBOXGUESTDEVEXT pDevExt, PVBOX
 static int VBoxGuestCommonIOCtl_DisableVRDPSession(VBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
 {
     /* Nothing to do here right now, since this only is supported on Windows at the moment. */
-    return VINF_SUCCESS;
+    return VERR_NOT_IMPLEMENTED;
 }
 #endif /* VBOX_WITH_VRDP_SESSION_HANDLING */
 
