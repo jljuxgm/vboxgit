@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 30944 2010-07-20 19:40:41Z vboxsync $ */
+/* $Id: VMMDevState.h 31057 2010-07-23 13:06:14Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -271,13 +271,13 @@ typedef struct VMMDevState
     /** For buffering the what comes in over the testing data port. */
     union
     {
-        char            padding[512];
+        char            padding[1024];
 
         /** VMMDEV_TESTING_CMD_INIT, VMMDEV_TESTING_CMD_SUB_NEW,
          *  VMMDEV_TESTING_CMD_FAILED. */
         struct
         {
-            char        sz[512];
+            char        sz[1024];
         } String, Init, SubNew, Failed;
 
         /** VMMDEV_TESTING_CMD_TERM, VMMDEV_TESTING_CMD_SUB_DONE. */
@@ -291,7 +291,7 @@ typedef struct VMMDevState
         {
             RTUINT64U   u64Value;
             uint32_t    u32Unit;
-            char        szName[512 - 8 - 4];
+            char        szName[1024 - 8 - 4];
         } Value;
     } TestingData;
 #endif /* !VBOX_WITHOUT_TESTING_FEATURES */
