@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 32860 2010-10-01 11:30:38Z vboxsync $ */
+/* $Id: MsiCommon.cpp 32862 2010-10-01 12:28:40Z vboxsync $ */
 /** @file
  * MSI support routines
  */
@@ -139,7 +139,7 @@ void     MSIPciConfigWrite(PPDMDEVINS pDevIns, PPCIDEVICE pDev, uint32_t u32Addr
                         maskUpdated = reg - VBOX_MSI_CAP_MASK_BITS_64;
                     }
 
-                    if (maskUpdated != -1)
+                    if (maskUpdated != -1 && msiIsEnabled(pDev))
                     {
                         for (int iBitNum = 0; i<8; i++)
                         {
@@ -197,6 +197,10 @@ int MSIInit(PPCIDEVICE pDev, PPDMMSIREG pMsiReg)
     uint16_t   iMsiFlags   = pMsiReg->iMsiFlags;
 
     Assert(cVectors > 0);
+
+    if (cVectors != 1)
+        /* We cannot handle multiple vectors yet */
+        return VERR_TOO_MUCH_DATA;
 
     if (cVectors > VBOX_MSI_MAX_ENTRIES)
         return VERR_TOO_MUCH_DATA;
