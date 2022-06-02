@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32990 2010-10-07 16:36:21Z vboxsync $
+# $Id: Makefile.kmk 32997 2010-10-08 08:26:59Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -386,6 +386,7 @@ RuntimeR3_SOURCES       = \
 	r3/fileio.cpp \
 	r3/fs.cpp \
 	r3/init.cpp \
+	r3/isofs.cpp \
 	r3/path.cpp \
 	r3/process.cpp \
 	r3/socket.cpp \
