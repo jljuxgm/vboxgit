@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 31281 2010-08-02 10:35:19Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 31296 2010-08-02 13:13:14Z vboxsync $ */
 
 /** @file
  *
@@ -227,6 +227,10 @@ public:
                                  const Utf8Str &aLocation,
                                  bool aSetError,
                                  ComObjPtr<Medium> *aImage = NULL);
+    HRESULT findRemoveableMedium(DeviceType_T mediumType,
+                                 const Guid &uuid,
+                                 bool fRefresh,
+                                 ComObjPtr<Medium> &pMedium);
 
     HRESULT findGuestOSType(const Bstr &bstrOSType,
                             GuestOSType*& pGuestOSType);
