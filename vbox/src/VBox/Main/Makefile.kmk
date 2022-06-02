@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33624 2010-10-29 16:20:52Z vboxsync $
+# $Id: Makefile.kmk 33627 2010-10-29 23:12:11Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -720,7 +720,7 @@ endif # !VBOX_ONLY_SDK (the ifndef is far above)
 #
 # The VBoxExtPackHelperApp.
 #
-ifdef VBOX_WITH_EXTPACK
+if 0 # def VBOX_WITH_EXTPACK
  PROGRAMS += VBoxExtPackHelperApp
  VBoxExtPackHelperApp_TEMPLATE = VBoxR3Static
  VBoxExtPackHelperApp_SOURCES = VBoxExtPackHelperApp.cpp
