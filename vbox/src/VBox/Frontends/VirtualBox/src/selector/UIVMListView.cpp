@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 35670 2011-01-21 14:21:01Z vboxsync $ */
+/* $Id: UIVMListView.cpp 35737 2011-01-27 12:39:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -515,6 +515,11 @@ void UIVMListView::checkDragEvent(QDragMoveEvent *pEvent)
                 pEvent->accept();
             }
         }else if (   VBoxGlobal::hasAllowedExtension(file, VBoxDefs::OVFFileExts)
+                  && pEvent->possibleActions().testFlag(Qt::CopyAction))
+        {
+            pEvent->setDropAction(Qt::CopyAction);
+            pEvent->accept();
+        }else if (   VBoxGlobal::hasAllowedExtension(file, VBoxDefs::VBoxExtPackFileExts)
                   && pEvent->possibleActions().testFlag(Qt::CopyAction))
         {
             pEvent->setDropAction(Qt::CopyAction);
