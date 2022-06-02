@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 34757 2010-12-06 15:00:09Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 34762 2010-12-06 16:44:04Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1808,7 +1808,7 @@ static RTEXITCODE ElevationCheck(bool *pfElevated)
             RTMemFree(pSidAndAttr);
         }
         else if (   GetLastError() == ERROR_INVALID_PARAMETER
-                 && GetLastError() == ERROR_NOT_SUPPORTED)
+                 || GetLastError() == ERROR_NOT_SUPPORTED)
             *pfElevated = true; /* Older Windows version. */
         else
             rcExit = RTMsgErrorExit(RTEXITCODE_FAILURE, "GetTokenInformation failed: %u (%#x)", GetLastError(), GetLastError());
