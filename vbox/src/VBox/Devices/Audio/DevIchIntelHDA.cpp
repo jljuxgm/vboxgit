@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 31009 2010-07-22 15:41:21Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 31015 2010-07-22 16:33:44Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -789,6 +789,8 @@ DECLCALLBACK(int)hdaRegWriteGCTL(INTELHDLinkState* pState, uint32_t offset, uint
     {
         /* enter reset state*/
         hdaReset(ICH6_HDASTATE_2_DEVINS(pState));
+        GCTL(pState) &= ~HDA_REG_FIELD_FLAG_MASK(GCTL, RST);
+        //** @todo r=michaln: The device isn't supposed to respond to any writes except to this bit now.
     }
     if (u32Value & HDA_REG_FIELD_FLAG_MASK(GCTL, FSH))
     {
