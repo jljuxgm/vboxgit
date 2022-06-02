@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 34902 2010-12-09 16:16:51Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 35242 2010-12-20 13:33:23Z vboxsync $ */
 
 /** @file
  *
@@ -71,13 +71,23 @@ public:
     STDMETHOD(COMGETTER(VirtualTimeRate)) (ULONG *aPct);
     STDMETHOD(COMSETTER(VirtualTimeRate)) (ULONG aPct);
     STDMETHOD(COMGETTER(VM)) (LONG64 *aVm);
-    STDMETHOD(InjectNMI)();
-    STDMETHOD(DumpGuestCore)(IN_BSTR a_bstrFilename);
 
     // IMachineDebugger methods
-    STDMETHOD(ResetStats (IN_BSTR aPattern));
-    STDMETHOD(DumpStats (IN_BSTR aPattern));
-    STDMETHOD(GetStats (IN_BSTR aPattern, BOOL aWithDescriptions, BSTR *aStats));
+    STDMETHOD(DumpGuestCore)(IN_BSTR a_bstrFilename, IN_BSTR a_bstrCompression);
+    STDMETHOD(DumpHostProcessCore)(IN_BSTR a_bstrFilename, IN_BSTR a_bstrCompression);
+    STDMETHOD(Info)(IN_BSTR a_bstrName, IN_BSTR a_bstrArgs, BSTR *a_bstrInfo);
+    STDMETHOD(InjectNMI)();
+    STDMETHOD(ReadPhysicalMemory)(LONG64 a_Address, ULONG a_cbRead, ComSafeArrayOut(BYTE, a_abData));
+    STDMETHOD(WritePhysicalMemory)(LONG64 a_Address, ULONG a_cbRead, ComSafeArrayIn(BYTE, a_abData));
+    STDMETHOD(ReadVirtualMemory)(ULONG a_idCpu, LONG64 a_Address, ULONG a_cbRead, ComSafeArrayOut(BYTE, a_abData));
+    STDMETHOD(WriteVirtualMemory)(ULONG a_idCpu, LONG64 a_Address, ULONG a_cbRead, ComSafeArrayIn(BYTE, a_abData));
+    STDMETHOD(GetRegister)(ULONG a_idCpu, IN_BSTR a_bstrName, BSTR *a_pbstrValue);
+    STDMETHOD(GetRegisters)(ULONG a_idCpu, ComSafeArrayOut(BSTR, a_bstrNames), ComSafeArrayOut(BSTR, a_bstrValues));
+    STDMETHOD(SetRegister)(ULONG a_idCpu, IN_BSTR a_bstrName, IN_BSTR a_bstrValue);
+    STDMETHOD(SetRegisters)(ULONG a_idCpu, ComSafeArrayIn(IN_BSTR, a_bstrNames), ComSafeArrayIn(IN_BSTR, a_bstrValues));
+    STDMETHOD(ResetStats)(IN_BSTR aPattern);
+    STDMETHOD(DumpStats)(IN_BSTR aPattern);
+    STDMETHOD(GetStats)(IN_BSTR aPattern, BOOL aWithDescriptions, BSTR *aStats);
 
 
     // "public-private methods"
