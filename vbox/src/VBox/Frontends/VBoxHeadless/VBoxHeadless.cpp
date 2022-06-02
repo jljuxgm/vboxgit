@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 30627 2010-07-05 17:08:55Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -154,7 +154,7 @@ public:
         {
             case VBoxEventType_OnGuestPropertyChange:
             {
-                ComPtr<IGuestPropertyChangeEvent> gpcev = aEvent;
+                ComPtr<IGuestPropertyChangedEvent> gpcev = aEvent;
                 Assert(gpcev);
 
                 Bstr aKey;
@@ -288,7 +288,7 @@ public:
             case VBoxEventType_OnMouseCapabilityChange:
             {
 
-                ComPtr<IMouseCapabilityChangeEvent> mccev = aEvent;
+                ComPtr<IMouseCapabilityChangedEvent> mccev = aEvent;
                 Assert(mccev);
 
                 BOOL fSupportsAbsolute = false;
@@ -312,7 +312,7 @@ public:
             }
             case VBoxEventType_OnStateChange:
             {
-                ComPtr<IStateChangeEvent> scev = aEvent;
+                ComPtr<IStateChangedEvent> scev = aEvent;
                 Assert(scev);
 
                 MachineState_T machineState;
@@ -323,7 +323,7 @@ public:
             }
             case VBoxEventType_OnRemoteDisplayInfoChange:
             {
-                ComPtr<IRemoteDisplayInfoChangeEvent> rdicev = aEvent;
+                ComPtr<IRemoteDisplayInfoChangedEvent> rdicev = aEvent;
                 Assert(rdicev);
 
 #ifdef VBOX_WITH_VRDP

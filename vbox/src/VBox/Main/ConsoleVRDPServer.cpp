@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -90,7 +90,7 @@ public:
         {
             case VBoxEventType_OnMousePointerShapeChange:
             {
-                ComPtr<IMousePointerShapeChangeEvent> mpscev = aEvent;
+                ComPtr<IMousePointerShapeChangedEvent> mpscev = aEvent;
                 Assert(mpscev);
                 BOOL    visible,  alpha;
                 ULONG   xHot, yHot, width, height;
@@ -109,7 +109,7 @@ public:
             }
             case VBoxEventType_OnMouseCapabilityChange:
             {
-                ComPtr<IMouseCapabilityChangeEvent> mccev = aEvent;
+                ComPtr<IMouseCapabilityChangedEvent> mccev = aEvent;
                 Assert(mccev);
                 if (m_server)
                 {
@@ -121,7 +121,7 @@ public:
             }
             case VBoxEventType_OnKeyboardLedsChange:
             {
-                ComPtr<IKeyboardLedsChangeEvent> klcev = aEvent;
+                ComPtr<IKeyboardLedsChangedEvent> klcev = aEvent;
                 Assert(klcev);
 
                 if (m_server)

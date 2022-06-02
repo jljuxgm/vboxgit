@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -746,7 +746,7 @@ STDMETHODIMP Display::HandleEvent(IEvent * aEvent)
     {
         case VBoxEventType_OnStateChange:
         {
-            ComPtr<IStateChangeEvent> scev = aEvent;
+            ComPtr<IStateChangedEvent> scev = aEvent;
             Assert(scev);
             MachineState_T machineState;
             scev->COMGETTER(State)(&machineState);

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30739 2010-07-08 12:27:42Z vboxsync $
+# $Id: Makefile.kmk 30825 2010-07-14 12:44:14Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -638,7 +638,6 @@ VBoxC_SOURCES = \
 	ProgressImpl.cpp \
 	SharedFolderImpl.cpp \
 	SessionImpl.cpp \
-	VirtualBoxCallbackImpl.cpp \
 	ConsoleImpl.cpp \
 	ConsoleImpl2.cpp \
 	ConsoleImplTeleporter.cpp \
@@ -658,8 +657,7 @@ VBoxC_SOURCES = \
 VBoxC_SOURCES.win = \
 	win/dllmain.cpp \
 	win/VBoxC.def \
-	win/VBoxC.rc \
-	win/VBoxComEvents.cpp
+	win/VBoxC.rc
 
 
 ifdef VBOX_WITH_XPCOM

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 30806 2010-07-13 14:02:19Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -337,7 +337,7 @@ static int handleWaitGuestProperty(HandlerArg *a)
             {
                 case VBoxEventType_OnGuestPropertyChange:
                 {
-                    ComPtr<IGuestPropertyChangeEvent> gpcev = ev;
+                    ComPtr<IGuestPropertyChangedEvent> gpcev = ev;
                     Assert(gpcev);
                     Bstr aNextStrGuid;
                     gpcev->COMGETTER(MachineId)(aNextStrGuid.asOutParam());

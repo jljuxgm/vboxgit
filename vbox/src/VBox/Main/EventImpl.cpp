@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30770 2010-07-09 16:17:48Z vboxsync $ */
+/* $Id: EventImpl.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -370,7 +370,7 @@ private:
     EventMapRecord* mPrev;
     ListenerRecord* mRef; /* must be weak reference */
     int32_t         mRefCnt;
-    
+
 public:
     EventMapRecord(ListenerRecord* aRef)
         :
