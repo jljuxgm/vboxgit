@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 31086 2010-07-25 10:40:49Z vboxsync $ */
+/* $Id: PGMAllBth.h 31089 2010-07-26 06:43:33Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -73,7 +73,7 @@ RT_C_DECLS_END
 #endif
 
 /* enables the new code. */
-//#define PGM_WITH_GST_WALK
+#define PGM_WITH_GST_WALK
 
 #ifndef IN_RING3
 
