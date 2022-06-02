@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 32637 2010-09-20 12:41:48Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 32638 2010-09-20 12:48:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -830,10 +830,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         /*
          * PCI buses.
          */
-        ChipsetType_T chipsetType;
-        hrc = pMachine->COMGETTER(ChipsetType)(&chipsetType);                                H();
         uint32_t u32IocPciAddress, u32HbcPciAddress;
-
         switch (chipsetType)
         {
             default:
