@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 30894 2010-07-17 02:08:25Z vboxsync $ */
+/* $Id: PGMAllGst.h 30896 2010-07-17 02:33:46Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -152,7 +152,7 @@ PGM_GST_DECL(int, Walk)(PVMCPU pVCpu, RTGCPTR GCPtr, PGSTPTWALK pWalk)
     {
         PGSTPD  register    pPd = pWalk->pPd;
         PGSTPDE register    pPde;
-        GSTPDE  register    Pde;
+        GSTPDE              Pde;
 
         pWalk->pPde  = pPde  = &pPd->a[(GCPtr >> GST_PD_SHIFT) & GST_PD_MASK];
         pWalk->Pde.u = Pde.u = pPde->u;
