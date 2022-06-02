@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 32799 2010-09-28 15:54:12Z vboxsync $ */
+/* $Id: GVMMR0.cpp 32815 2010-09-29 14:02:18Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1748,6 +1748,8 @@ GVMMR0DECL(int) GVMMR0SchedHalt(PVM pVM, VMCPUID idCpu, uint64_t u64ExpireGipTim
         gvmmR0UsedUnlock(pGVMM);
 
         uint32_t cMillies = (u64ExpireGipTime - u64Now) / 1000000;
+        /* Cap the timeout to one second. */
+        cMillies = RT_MIN(1000, cMillies);
         rc = RTSemEventMultiWaitNoResume(pCurGVCpu->gvmm.s.HaltEventMulti, cMillies ? cMillies : 1);
         ASMAtomicXchgU64(&pCurGVCpu->gvmm.s.u64HaltExpire, 0);
         if (rc == VERR_TIMEOUT)
