@@ -1,4 +1,4 @@
-# $Id: Config.kmk 31656 2010-08-13 14:44:33Z vboxsync $
+# $Id: Config.kmk 31670 2010-08-13 17:28:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -847,6 +847,9 @@ ifdef VBOX_OSE
  endif
  VBOX_USB_WITH_SYSFS=
  # branding
+ VBOX_BRAND_LICENSE_HTML       := $(PATH_ROOT)/doc/License-gpl-2.0.html
+ VBOX_BRAND_LICENSE_RTF        := $(PATH_ROOT)/doc/License-gpl-2.0.rtf
+ VBOX_BRAND_LICENSE_TXT        := $(PATH_ROOT)/doc/License-gpl-2.0.txt
  VBOX_BRAND_BIOS_LOGO          := $(PATH_ROOT)/src/VBox/Devices/Graphics/BIOS/ose_logo.bmp
  VBOX_BRAND_GUI_ABOUT_PNG      := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox/images/OSE/about.png
  VBOX_BRAND_GUI_ABOUT_16PX_PNG := $(PATH_ROOT)/src/VBox/Frontends/VirtualBox/images/OSE/about_16px.png
@@ -4266,7 +4269,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31656 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31670 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
