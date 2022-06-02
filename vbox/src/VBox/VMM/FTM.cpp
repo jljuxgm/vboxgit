@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32286 2010-09-07 12:37:46Z vboxsync $ */
+/* $Id: FTM.cpp 32287 2010-09-07 12:38:55Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -173,7 +173,7 @@ VMMR3DECL(int) FTMR3Term(PVM pVM)
         RTMemFree(pVM->ftm.s.pszPassword);
 
     /* Remove all pending memory updates. */
-    if (&pVM->ftm.s.standby.pPhysPageTree)
+    if (pVM->ftm.s.standby.pPhysPageTree)
     {
         RTAvlGCPhysDestroy(&pVM->ftm.s.standby.pPhysPageTree, ftmR3PageTreeDestroyCallback, NULL);
         pVM->ftm.s.standby.pPhysPageTree = NULL;
@@ -991,7 +991,7 @@ static DECLCALLBACK(int) ftmR3StandbyServeConnection(RTSOCKET Sock, void *pvUser
                 continue;
 
             /* Flush all pending memory updates. */
-            if (&pVM->ftm.s.standby.pPhysPageTree)
+            if (pVM->ftm.s.standby.pPhysPageTree)
             {
                 RTAvlGCPhysDestroy(&pVM->ftm.s.standby.pPhysPageTree, ftmR3PageTreeDestroyCallback, pVM);
                 pVM->ftm.s.standby.pPhysPageTree = NULL;
