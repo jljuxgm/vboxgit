@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 35461 2011-01-10 15:01:30Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 35462 2011-01-10 15:11:16Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -1112,7 +1112,7 @@ int VBoxServiceControlExecPrepareArgv(const char *pszFileName,
      * (e.g. "vbox_cat" -> "C:\Windows\system32\VBoxService vbox_cat") in pszFileName. */
     char *pszArgs;
     int rc = RTGetOptArgvToString(&pszArgs,
-                                  fUseToolbox ? papszArgs[1] : &papszArgs,
+                                  fUseToolbox ? &papszArgs[1] : papszArgs,
                                   RTGETOPTARGV_CNV_QUOTE_MS_CRT); /* RTGETOPTARGV_CNV_QUOTE_BOURNE_SH */
     if (   RT_SUCCESS(rc)
         && pszArgs)
