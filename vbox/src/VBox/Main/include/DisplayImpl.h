@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 31718 2010-08-17 10:18:05Z vboxsync $ */
+/* $Id: DisplayImpl.h 31958 2010-08-25 13:28:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -278,6 +278,10 @@ void BitmapScale32 (uint8_t *dst,
                         const uint8_t *src,
                         int iDeltaLine,
                         int srcW, int srcH);
+
+int DisplayMakePNG(uint8_t *pu8Data, uint32_t cx, uint32_t cy,
+                   uint8_t **ppu8PNG, uint32_t *pcbPNG, uint32_t *pcxPNG, uint32_t *pcyPNG,
+                   uint8_t fLimitSize);
 
 #endif // ____H_DISPLAYIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
