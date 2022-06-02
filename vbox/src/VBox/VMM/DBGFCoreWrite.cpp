@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 32340 2010-09-09 11:51:09Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 32341 2010-09-09 11:56:06Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -55,7 +55,7 @@
 #include <VBox/cpum.h>
 #include "CPUMInternal.h"
 #include <VBox/dbgf.h>
-#include <VBox/dbgfcore.h>
+#include <VBox/dbgfcorefmt.h>
 #include <VBox/vm.h>
 #include <VBox/pgm.h>
 #include <VBox/err.h>
