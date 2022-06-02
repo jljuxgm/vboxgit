@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 30590 2010-07-02 18:21:50Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 31099 2010-07-26 09:14:48Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1015,7 +1015,7 @@ ResumeExecution:
     }
 
 #ifdef VBOX_HIGH_RES_TIMERS_HACK_IN_RING0
-    if (RT_UNLIKELY(cResume & 0xf) == 0)
+    if (RT_UNLIKELY((cResume & 0xf) == 0))
     {
         uint64_t u64CurTime = RTTimeMilliTS();
 
