@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 33783 2010-11-04 16:33:15Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 33785 2010-11-04 17:05:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -87,9 +87,8 @@ PixmapPool* PixmapPool::pool (QObject *aParent)
 
 PixmapPool::PixmapPool (QObject *aParent)
     : QObject (aParent)
+    , mPool(MaxIndex)
 {
-    mPool.resize (MaxIndex);
-
     mPool [ControllerAddEn]          = QPixmap (":/controller_add_16px.png");
     mPool [ControllerAddDis]         = QPixmap (":/controller_add_disabled_16px.png");
     mPool [ControllerDelEn]          = QPixmap (":/controller_remove_16px.png");
