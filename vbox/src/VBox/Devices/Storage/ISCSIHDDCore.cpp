@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 32441 2010-09-13 09:31:28Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 32442 2010-09-13 09:36:31Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -3337,7 +3337,7 @@ static DECLCALLBACK(int) iscsiIoThreadWorker(RTTHREAD ThreadSelf, void *pvUser)
                 pIScsiCmd = iscsiCmdGet(pImage);
             }
         }
-        else if (rc == VERR_TIMEOU) && pImage->cCmdsWaiting)
+        else if (rc == VERR_TIMEOUT && pImage->cCmdsWaiting)
         {
             /*
              * We are waiting for a response from the target but
