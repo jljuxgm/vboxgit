@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 33240 2010-10-19 16:18:49Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 33344 2010-10-22 11:52:30Z vboxsync $ */
 
 /** @file
  *
@@ -843,6 +843,46 @@ ComObjPtr<MediumFormat> SystemProperties::mediumFormat(const Utf8Str &aFormat)
         {
             format = *it;
             break;
+        }
+    }
+
+    return format;
+}
+
+/**
+ * Returns a medium format object corresponding to the given file extension or
+ * null if no such format.
+ *
+ * @param aExt   File extension.
+ *
+ * @return ComObjPtr<MediumFormat>
+ */
+ComObjPtr<MediumFormat> SystemProperties::mediumFormatFromExtension(const Utf8Str &aExt)
+{
+    ComObjPtr<MediumFormat> format;
+
+    AutoCaller autoCaller(this);
+    AssertComRCReturn (autoCaller.rc(), format);
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    bool fFound = false;
+    for (MediumFormatList::const_iterator it = m_llMediumFormats.begin();
+         it != m_llMediumFormats.end() && !fFound;
+         ++it)
+    {
+        /* MediumFormat is all const, no need to lock */
+        MediumFormat::StrList aFileList = (*it)->getFileExtensions();
+        for (MediumFormat::StrList::const_iterator it1 = aFileList.begin();
+             it1 != aFileList.end();
+             ++it1)
+        {
+            if ((*it1).compare(aExt, Utf8Str::CaseInsensitive) == 0)
+            {
+                format = *it;
+                fFound = true;
+                break;
+            }
         }
     }
 
