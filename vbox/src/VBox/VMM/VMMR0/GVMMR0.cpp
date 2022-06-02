@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 33170 2010-10-15 22:51:56Z vboxsync $ */
+/* $Id: GVMMR0.cpp 33172 2010-10-15 23:33:49Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -361,11 +361,17 @@ GVMMR0DECL(int) GVMMR0Init(void)
                 pGVMM->nsEarlyWakeUp1    =  25000 /* ns (0.025 ms) */;
                 pGVMM->nsEarlyWakeUp2    =  50000 /* ns (0.050 ms) */;
             }
+            else if (cNsResolution > RT_NS_100US)
+            {
+                pGVMM->nsMinSleepAlone   = cNsResolution / 2;
+                pGVMM->nsMinSleepCompany = cNsResolution / 4;
+                pGVMM->nsEarlyWakeUp1    = 0;
+                pGVMM->nsEarlyWakeUp2    = 0;
+            }
             else
             {
-                cNsResolution = RT_MIN(cNsResolution, 10000);
-                pGVMM->nsMinSleepAlone   = cNsResolution - cNsResolution / 3;
-                pGVMM->nsMinSleepCompany = cNsResolution - cNsResolution / 3;
+                pGVMM->nsMinSleepAlone   = 2000;
+                pGVMM->nsMinSleepCompany = 2000;
                 pGVMM->nsEarlyWakeUp1    = 0;
                 pGVMM->nsEarlyWakeUp2    = 0;
             }
