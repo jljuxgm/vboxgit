@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 31285 2010-08-02 11:59:15Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 34984 2010-12-13 10:29:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -52,6 +52,26 @@ UIMachineLogicScale::~UIMachineLogicScale()
 
     /* Cleanup actions groups: */
     cleanupActionGroups();
+}
+
+bool UIMachineLogicScale::checkAvailability()
+{
+    /* Base class availability: */
+    if (!UIMachineLogic::checkAvailability())
+        return false;
+
+    /* Take the toggle hot key from the menu item. Since
+     * VBoxGlobal::extractKeyFromActionText gets exactly the
+     * linked key without the 'Host+' part we are adding it here. */
+    QString strHotKey = QString("Host+%1")
+        .arg(VBoxGlobal::extractKeyFromActionText(actionsPool()->action(UIActionIndex_Toggle_Scale)->text()));
+    Assert(!strHotKey.isEmpty());
+
+    /* Show the info message. */
+    if (!vboxProblem().confirmGoingScale(strHotKey))
+        return false;
+
+    return true;
 }
 
 void UIMachineLogicScale::initialize()
