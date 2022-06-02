@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 33236 2010-10-19 15:14:42Z vboxsync $ */
+/* $Id: DevAHCI.cpp 33371 2010-10-22 19:31:29Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -513,9 +513,7 @@ typedef struct AHCIPort
     /** Error counter */
     uint32_t                        cErrors;
 
-#if HC_ARCH_BITS == 64
     uint32_t                        u32Alignment4;
-#endif
 } AHCIPort;
 /** Pointer to the state of an AHCI port. */
 typedef AHCIPort *PAHCIPort;
