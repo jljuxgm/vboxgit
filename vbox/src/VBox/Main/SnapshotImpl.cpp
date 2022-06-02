@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 30884 2010-07-16 16:25:38Z vboxsync $ */
 
 /** @file
  *
@@ -1796,6 +1796,7 @@ void SessionMachine::restoreSnapshotHandler(RestoreSnapshotTask &aTask)
                 alock.leave();
 
                 /* copy the state file */
+                RTFileDelete(stateFilePath.c_str());
                 int vrc = RTFileCopyEx(snapStateFilePath.c_str(),
                                        stateFilePath.c_str(),
                                        0,
