@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30405 2010-06-23 20:52:35Z vboxsync $
+# $Id: Makefile.kmk 30462 2010-06-28 12:34:11Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -87,6 +87,8 @@ VBoxDispD3D_SOURCES  = \
 	wddm/VBoxDispD3D.cpp \
     wddm/VBoxDispD3DIf.cpp \
     wddm/VBoxDispCm.cpp \
+    wddm/VBoxDispMp.cpp \
+    wddm/VBoxDispMpTst.cpp \
 	wddm/VBoxDispD3D.def \
 	wddm/VBoxDispD3D.rc
 VBoxDispD3D_LIBS     = \
