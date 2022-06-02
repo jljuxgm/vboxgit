@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsGeneral.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
+/* $Id: VBoxVMSettingsGeneral.cpp 33599 2010-10-29 11:14:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -56,6 +56,14 @@ bool VBoxVMSettingsGeneral::is64BitOSTypeSelected() const
 bool VBoxVMSettingsGeneral::isWindowsOSTypeSelected() const
 {
     return mOSTypeSelector->type().GetFamilyId() == "Windows";
+}
+#endif
+
+#ifdef VBOX_WITH_CRHGSMI
+bool VBoxVMSettingsGeneral::isWddmSupportedForOSType() const
+{
+    return mOSTypeSelector->type().GetId() == "Windows Vista"
+            || mOSTypeSelector->type().GetId() == "Windows 7";
 }
 #endif
 

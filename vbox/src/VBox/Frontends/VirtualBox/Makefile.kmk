@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33542 2010-10-28 09:45:04Z vboxsync $
+# $Id: Makefile.kmk 33599 2010-10-29 11:14:14Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -146,6 +146,9 @@ ifdef VBOX_WITH_VIRTIO
 endif
 ifdef VBOX_WITH_WDDM
  VirtualBox_DEFS        += VBOX_WITH_WDDM
+endif
+ifdef VBOX_WITH_CRHGSMI
+ VirtualBox_DEFS        += VBOX_WITH_CRHGSMI
 endif
 ifdef VBOX_BLEEDING_EDGE
 VirtualBox_src/selector/VBoxSelectorWnd.cpp_DEFS += \

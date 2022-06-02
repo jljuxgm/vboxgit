@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsDisplay.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: VBoxVMSettingsDisplay.cpp 33599 2010-10-29 11:14:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -124,6 +124,23 @@ bool VBoxVMSettingsDisplay::isAcceleration2DVideoSelected() const
 }
 #endif
 
+#ifdef VBOX_WITH_CRHGSMI
+bool VBoxVMSettingsDisplay::isAcceleration3DSelected() const
+{
+    return mCb3D->isChecked();
+}
+
+int VBoxVMSettingsDisplay::getMinVramSizeMBForWddm3D() const
+{
+    return 128;
+}
+
+int VBoxVMSettingsDisplay::getVramSizeMB() const
+{
+    return mSlMemory->value();
+}
+#endif
+
 void VBoxVMSettingsDisplay::getFrom (const CMachine &aMachine)
 {
     mMachine = aMachine;
@@ -205,6 +222,10 @@ void VBoxVMSettingsDisplay::setValidator (QIWidgetValidator *aVal)
              mValidator, SLOT (revalidate()));
 #ifdef VBOX_WITH_VIDEOHWACCEL
     connect (mCb2DVideo, SIGNAL (stateChanged (int)),
+             mValidator, SLOT (revalidate()));
+#endif
+#ifdef VBOX_WITH_CRHGSMI
+    connect (mCb3D, SIGNAL (stateChanged (int)),
              mValidator, SLOT (revalidate()));
 #endif
     connect (mCbVRDE, SIGNAL (toggled (bool)),
