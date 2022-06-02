@@ -1,4 +1,4 @@
-/* $Id: ldrElf.h 31964 2010-08-25 15:25:44Z vboxsync $ */
+/* $Id: ldrElf.h 31965 2010-08-25 15:27:55Z vboxsync $ */
 /** @file
  * ELF types, current architecture.
  */
@@ -62,9 +62,9 @@ typedef	Elf32_Rel           Elf_Rel;
 typedef	Elf32_Rela          Elf_Rela;
 typedef	Elf32_Sym           Elf_Sym;
 
-#define ELF_R_SYM           ELF64_R_SYM
-#define ELF_R_TYPE          ELF64_R_TYPE
-#define ELF_R_INFO          ELF64_R_INFO
+#define ELF_R_SYM           ELF32_R_SYM
+#define ELF_R_TYPE          ELF32_R_TYPE
+#define ELF_R_INFO          ELF32_R_INFO
 #define ELF_ST_BIND         ELF32_ST_BIND
 #define ELF_ST_TYPE         ELF32_ST_TYPE
 #define ELF_ST_INFO         ELF32_ST_INFO
