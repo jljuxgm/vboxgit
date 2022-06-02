@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 32087 2010-08-30 12:23:05Z vboxsync $ */
+/* $Id: PGMPhys.cpp 32101 2010-08-30 14:27:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1007,6 +1007,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysWriteProtectRAMRendezvous(PVM pVM, PV
                         }
 
                         PGM_PAGE_SET_STATE(pPage, PGM_PAGE_STATE_WRITE_MONITORED);
+                        pVM->pgm.s.cMonitoredPages++;
                         break;
 
                     case PGM_PAGE_STATE_SHARED:
