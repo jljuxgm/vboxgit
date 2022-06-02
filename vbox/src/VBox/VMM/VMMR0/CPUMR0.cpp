@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 33935 2010-11-10 15:37:02Z vboxsync $ */
+/* $Id: CPUMR0.cpp 33936 2010-11-10 15:41:04Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -60,9 +60,11 @@ static void cpumR0UnmapLocalApics(void);
  */
 VMMR0DECL(int) CPUMR0ModuleInit(void)
 {
+    int rc = VINF_SUCCESS;
 #ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
-    return cpumR0MapLocalApics();
+    rc = cpumR0MapLocalApics();
 #endif
+    return rc;
 }
 
 
