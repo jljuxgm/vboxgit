@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 32398 2010-09-10 12:46:23Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 32400 2010-09-10 12:49:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -509,14 +509,6 @@ int Display::registerSSM(PVM pVM)
                                    NULL, NULL, NULL,
                                    NULL, displaySSMSave, NULL,
                                    NULL, displaySSMLoad, NULL, this);
-    AssertRCReturn(rc, rc);
-
-    /* Old version for backward compatibility */
-//    rc = SSMR3RegisterExternal(pVM, "DisplayData", 0, sSSMDisplayVer,
-//                               mcMonitors * sizeof(uint32_t) * 3 + sizeof(uint32_t),
-//                               NULL, NULL, NULL,
-//                               NULL, NULL, NULL,
-//                               NULL, displaySSMLoad, NULL, this);
     AssertRCReturn(rc, rc);
 
     /*
