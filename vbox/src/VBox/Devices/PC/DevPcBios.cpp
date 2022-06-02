@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 29332 2010-05-11 10:22:27Z vboxsync $ */
+/* $Id: DevPcBios.cpp 30451 2010-06-25 15:04:42Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -96,7 +96,7 @@
          0x61 - 0x65
 
   Second CMOS bank (offsets 0x80 to 0xff):
-    Reserved for future use:
+    Reserved for internal use by PXE ROM:
          0x80 - 0x81
     First net boot device PCI bus/dev/fn:
          0x82 - 0x83
