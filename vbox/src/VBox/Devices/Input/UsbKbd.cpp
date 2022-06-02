@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 30507 2010-06-29 14:40:48Z vboxsync $ */
+/* $Id: UsbKbd.cpp 30511 2010-06-29 16:35:47Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -844,6 +844,7 @@ static int usbHidSendReport(PUSBHID pThis)
 
         int rc = usbHidFillReport(pReport, pThis->abUnreportedKeys,
                                   pThis->abDepressedKeys);
+        pThis->fHasPendingChanges = false;
         AssertRCReturn(rc, rc);
         return usbHidCompleteOk(pThis, pUrb, sizeof(*pReport));
     }
