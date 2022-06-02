@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 33750 2010-11-03 21:00:26Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -207,7 +207,7 @@ typedef struct VBOXGUESTSESSION
 #ifdef VBOX_WITH_HGCM
     /** Array containing HGCM client IDs associated with this session.
      * This will be automatically disconnected when the session is closed. */
-    uint32_t volatile           aHGCMClientIds[8];
+    uint32_t volatile           aHGCMClientIds[64];
 #endif
     /** The last consumed VMMDEV_EVENT_MOUSE_POSITION_CHANGED sequence number.
      * Used to implement polling.  */
