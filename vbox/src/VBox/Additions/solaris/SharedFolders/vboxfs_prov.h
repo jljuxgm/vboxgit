@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 30446 2010-06-25 09:51:58Z vboxsync $ */
+/* $Id: vboxfs_prov.h 30504 2010-06-29 14:06:52Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -93,6 +93,8 @@ extern int sfprov_get_size(sfp_mount_t *, char *, uint64_t *);
 extern int sfprov_get_atime(sfp_mount_t *, char *, timestruc_t *);
 extern int sfprov_get_mtime(sfp_mount_t *, char *, timestruc_t *);
 extern int sfprov_get_ctime(sfp_mount_t *, char *, timestruc_t *);
+extern int sfprov_get_attr(sfp_mount_t *, char *, mode_t *, uint64_t *,
+   timestruc_t *, timestruc_t *, timestruc_t *);
 extern int sfprov_set_attr(sfp_mount_t *, char *, uint_t, mode_t,
    timestruc_t, timestruc_t, timestruc_t);
 extern int sfprov_set_size(sfp_mount_t *, char *, uint64_t);
