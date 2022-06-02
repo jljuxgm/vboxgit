@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 30952 2010-07-21 11:44:27Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 31173 2010-07-28 16:17:36Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -799,12 +799,32 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
     PDMACEPFILEMGRTYPE enmMgrType = pEpClassFile->enmMgrTypeOverride;
     PDMACFILEEPBACKEND enmEpBackend = pEpClassFile->enmEpBackendDefault;
 
-    AssertMsgReturn((fFlags & ~(PDMACEP_FILE_FLAGS_READ_ONLY | PDMACEP_FILE_FLAGS_CACHING)) == 0,
+    AssertMsgReturn((fFlags & ~(PDMACEP_FILE_FLAGS_READ_ONLY | PDMACEP_FILE_FLAGS_CACHING | PDMACEP_FILE_FLAGS_DONT_LOCK)) == 0,
                     ("PDMAsyncCompletion: Invalid flag specified\n"), VERR_INVALID_PARAMETER);
 
-    unsigned fFileFlags = fFlags & PDMACEP_FILE_FLAGS_READ_ONLY
-                         ? RTFILE_O_READ      | RTFILE_O_OPEN | RTFILE_O_DENY_NONE
-                         : RTFILE_O_READWRITE | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE;
+    unsigned fFileFlags = RTFILE_O_OPEN;
+
+    if (fFlags & PDMACEP_FILE_FLAGS_READ_ONLY)
+        fFlags |= RTFILE_O_READ | RTFILE_O_DENY_NONE;
+    else
+    {
+        fFlags |= RTFILE_O_READWRITE;
+
+        /*
+         * Opened in read/write mode. Check whether the caller wants to
+         * avoid the lock. Return an error in case caching is enabled
+         * because this can lead to data corruption.
+         */
+        if (fFlags & PDMACEP_FILE_FLAGS_DONT_LOCK)
+        {
+            if (fFlags & PDMACEP_FILE_FLAGS_CACHING)
+                return VERR_NOT_SUPPORTED;
+            else
+                fFlags |= RTFILE_O_DENY_NONE;
+        }
+        else
+            fFlags |= RTFILE_O_DENY_WRITE;
+    }
 
     if (enmMgrType == PDMACEPFILEMGRTYPE_ASYNC)
         fFileFlags |= RTFILE_O_ASYNC_IO;
