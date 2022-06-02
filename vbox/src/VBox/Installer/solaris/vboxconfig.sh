@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 31484 2010-08-09 13:34:37Z vboxsync $
+# $Id: vboxconfig.sh 31485 2010-08-09 13:52:24Z vboxsync $
 
 # Sun VirtualBox
 # VirtualBox Configuration Script, Solaris host.
@@ -178,8 +178,8 @@ find_bins()
         BIN_BOOTADM=`find_bin_path "$BIN_BOOTADM"`
     fi
 
-    if test ! -x "$BIN_BOOTADM"; then
-        BIN_BOOTADM=`find_bin_path "$BIN_BOOTADM"`
+    if test ! -x "$BIN_SVCADM"; then
+        BIN_SVCADM=`find_bin_path "$BIN_SVCADM"`
     fi
 
     if test ! -x "$BIN_SVCCFG"; then
