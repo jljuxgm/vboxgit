@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30839 2010-07-14 14:00:28Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30841 2010-07-14 14:10:57Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3458,7 +3458,6 @@ int pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk)
 #endif
     AssertReturn(pChunk, VERR_NO_MEMORY);
     pChunk->Core.Key = idChunk;
-    pChunk->iAge     = pVM->pgm.s.ChunkR3Map.iNow;
 
     /*
      * Request the ring-0 part to map the chunk in question.
