@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 31408 2010-08-05 13:39:30Z vboxsync $ */
+/* $Id: VM.cpp 31410 2010-08-05 13:51:47Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -577,7 +577,7 @@ static int vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCTOR pfnCFGMCons
             pVM->aCpus[i].idCpu             = i;
             pVM->aCpus[i].hNativeThread     = pUVM->aCpus[i].vm.s.NativeThreadEMT;
             Assert(pVM->aCpus[i].hNativeThread != NIL_RTNATIVETHREAD);
-
+            /* hNativeThreadR0 is initialized on EMT registration. */
             pUVM->aCpus[i].pVCpu            = &pVM->aCpus[i];
             pUVM->aCpus[i].pVM              = pVM;
         }
