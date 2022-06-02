@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 32122 2010-08-31 10:02:50Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 32313 2010-09-08 11:46:16Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -2111,7 +2111,7 @@ static DECLCALLBACK(int) dbgcCmdWriteCore(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, P
     if (!pszDumpPath)
         return DBGCCmdHlpFail(pCmdHlp, pCmd, "Missing file path.\n");
 
-    int rc = DBGFR3CoreWrite(pVM, 0, pszDumpPath);
+    int rc = DBGFR3CoreWrite(pVM, pszDumpPath);
     if (RT_FAILURE(rc))
         return DBGCCmdHlpFail(pCmdHlp, pCmd, "DBGFR3WriteCore failed. rc=%Rrc\n", rc);
 
