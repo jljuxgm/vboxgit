@@ -1,4 +1,4 @@
-/* $Id: PGMGstDefs.h 30889 2010-07-17 01:54:47Z vboxsync $ */
+/* $Id: PGMGstDefs.h 31066 2010-07-23 14:48:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -83,7 +83,7 @@
 #  define GST_PTE_PG_MASK                       SHW_PTE_PG_MASK
 #  define GST_IS_NX_ACTIVE(pVCpu)               (CPUMIsGuestNXEnabled(pVCpu)) /** @todo shadow this variable */
 #  if PGM_GST_TYPE == PGM_TYPE_PROT             /* (comment at top of PGMAllBth.h) */
-#   define BTH_IS_NP_ACTIVE(pVM)                HWACCMIsNestedPagingActive(pVM)
+#   define BTH_IS_NP_ACTIVE(pVM)                (pVM->pgm.s.fNestedPaging)
 #  else
 #   define BTH_IS_NP_ACTIVE(pVM)                (false)
 #  endif

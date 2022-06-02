@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 30326 2010-06-21 12:35:33Z vboxsync $ */
+/* $Id: PGMShw.h 31066 2010-07-23 14:48:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -187,7 +187,8 @@ PGM_SHW_DECL(int, Enter)(PVMCPU pVCpu, bool fIs64BitsPagingMode)
     PVM          pVM       = pVCpu->pVMR3;
     PPGMPOOL     pPool     = pVM->pgm.s.CTX_SUFF(pPool);
 
-    Assert(HWACCMIsNestedPagingActive(pVM));
+    Assert(HWACCMIsNestedPagingActive(pVM) == pVM->pgm.s.fNestedPaging);
+    Assert(pVM->pgm.s.fNestedPaging);
     Assert(!pVCpu->pgm.s.pShwPageCR3R3);
 
     pgmLock(pVM);
