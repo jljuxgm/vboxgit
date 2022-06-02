@@ -1,4 +1,4 @@
-/* $Id: Guid.h 32780 2010-09-27 19:00:22Z vboxsync $ */
+/* $Id: Guid.h 32781 2010-09-27 19:05:40Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -182,7 +182,7 @@ public:
     }
 
     /* to pass instances to printf-like functions */
-    const PCRTUUID raw() const
+    PCRTUUID raw() const
     {
         return (PCRTUUID)&uuid;
     }
