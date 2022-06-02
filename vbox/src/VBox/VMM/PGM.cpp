@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 30843 2010-07-14 14:29:41Z vboxsync $ */
+/* $Id: PGM.cpp 30845 2010-07-14 14:33:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1249,7 +1249,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
                            );
     AssertLogRelRCReturn(rc, rc);
 
-#ifdef VBOX_WITH_LARGE_ADDRESS_SPACE_ON_32_BIT_HOST
+#ifdef PGM_WITH_LARGE_ADDRESS_SPACE_ON_32_BIT_HOST
     rc = CFGMR3QueryU32Def(pCfgPGM, "MaxRing3Chunks", &pVM->pgm.s.ChunkR3Map.cMax, _1G / GMM_CHUNK_SIZE);
 #else
     rc = CFGMR3QueryU32Def(pCfgPGM, "MaxRing3Chunks", &pVM->pgm.s.ChunkR3Map.cMax, UINT32_MAX);
