@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 31602 2010-08-12 14:51:58Z vboxsync $ */
+/* $Id: PGM.cpp 31603 2010-08-12 15:06:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -4316,7 +4316,7 @@ static DECLCALLBACK(int) pgmR3CmdAssertCR3(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
  */
 DECLCALLBACK(void) pgmR3PhysWriteCountTMCallback(PVM pVM, PTMTIMER pTimer, void *pvUser)
 {
-    uint32_t uInterval = (uint32_t) pvUser;
+    uint32_t uInterval = (uint32_t)(uintptr_t)pvUser;
 
     if (pVM->pgm.s.fCountingPhysWrites)
     {
