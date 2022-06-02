@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 32414 2010-09-10 15:32:02Z vboxsync $
+; $Id: SUPR0.def 32417 2010-09-10 15:37:57Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -196,28 +196,6 @@ EXPORTS
     RTHandleTableDestroy
     RTHandleTableFreeWithCtx
     RTHandleTableLookupWithCtx
-
-    RTAvlGCPtrDestroy
-    RTAvlGCPtrDoWithAll
-    RTAvlGCPtrGet
-    RTAvlGCPtrGetBestFit
-    RTAvlGCPtrInsert
-    RTAvlGCPtrRemove
-    RTAvlGCPtrRemoveBestFit
-    RTAvlHCPhysDestroy
-    RTAvlHCPhysDoWithAll
-    RTAvlHCPhysGet
-    RTAvlHCPhysGetBestFit
-    RTAvlHCPhysInsert
-    RTAvlHCPhysRemove
-    RTAvlHCPhysRemoveBestFit
-    RTAvlU32Destroy
-    RTAvlU32DoWithAll
-    RTAvlU32Get
-    RTAvlU32GetBestFit
-    RTAvlU32Insert
-    RTAvlU32Remove
-    RTAvlU32RemoveBestFit
 
     ; data
     g_pSUPGlobalInfoPage DATA ; NT
