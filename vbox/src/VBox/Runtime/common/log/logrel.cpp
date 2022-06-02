@@ -1,10 +1,10 @@
-/* $Id: logrel.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: logrel.cpp 33704 2010-11-02 18:21:28Z vboxsync $ */
 /** @file
- * Runtime VBox - Logger.
+ * Runtime VBox - Release Logger.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
