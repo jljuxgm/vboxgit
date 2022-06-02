@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 31103 2010-07-26 10:58:27Z vboxsync $ */
+/* $Id: socket.cpp 31104 2010-07-26 11:01:06Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -257,7 +257,7 @@ DECLINLINE(int) rtSocketSwitchBlockingMode(RTSOCKETINT *pThis, bool fBlocking)
     if (pThis->fBlocking != fBlocking)
     {
 #ifdef RT_OS_WINDOWS
-        if (ioctlsocket(pThis->hNative, FIONBIO, !fBlocking))
+        if (ioctlsocket(pThis->hNative, FIONBIO, fBlocking ? 0 : 1))
 #else
         if (fcntl(pThis->hNative, F_SETFL, O_NONBLOCK))
 #endif
