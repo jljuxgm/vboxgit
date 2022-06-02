@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 34338 2010-11-24 19:54:45Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 34398 2010-11-26 16:24:58Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1449,7 +1449,7 @@ static int handleCtrlUpdateAdditions(HandlerArg *a)
 
             ComPtr<IProgress> progress;
             CHECK_ERROR(guest, UpdateGuestAdditions(Bstr(Utf8Source).raw(),
-                                                    0 /* Flags, not used. */,
+                                                    AdditionsUpdateFlag_None,
                                                     progress.asOutParam()));
             if (FAILED(rc))
                 vrc = ctrlPrintError(guest, COM_IIDOF(IGuest));
