@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 34748 2010-12-06 13:57:56Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 34749 2010-12-06 13:59:33Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -2463,7 +2463,7 @@ static void ich9pciResetDevice(PPCIDEVICE pDev)
     {
         PCIDevSetByte(pDev, VBOX_PCI_CACHE_LINE_SIZE, 0x0);
         PCIDevSetInterruptLine(pDev, 0x0);
-    }   
+    }
     /* Clear regions too ? */
 }
 
