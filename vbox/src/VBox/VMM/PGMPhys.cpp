@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 31398 2010-08-05 12:18:36Z vboxsync $ */
+/* $Id: PGMPhys.cpp 31630 2010-08-13 09:25:42Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3538,7 +3538,7 @@ int pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk)
         {
 #ifdef PGM_WITH_LARGE_ADDRESS_SPACE_ON_32_BIT_HOST
             /* Postpone the unmap operation (which requires a rendezvous operation) as we own the PGM lock here. */
-            rc = VMR3ReqCallNoWaitU(pVM->pUVM, VMCPUID_ANY, (PFNRT)pgmR3PhysUnmapChunk, 1, pVM);
+            rc = VMR3ReqCallNoWaitU(pVM->pUVM, VMCPUID_ANY_QUEUE, (PFNRT)pgmR3PhysUnmapChunk, 1, pVM);
             AssertRC(rc);
 #else
             AssertFatalFailed();  /* can't happen */
