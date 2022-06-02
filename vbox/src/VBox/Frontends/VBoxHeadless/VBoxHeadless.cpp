@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 33590 2010-10-29 08:55:09Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 33594 2010-10-29 10:32:00Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -514,7 +514,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     const char *vrdePort = NULL;
     const char *vrdeAddress = NULL;
     const char *vrdeEnabled = NULL;
-    int cVRDEProperties = 0;
+    unsigned cVRDEProperties = 0;
     const char *aVRDEProperties[16];
 #ifdef VBOX_WITH_VNC
     bool        fVNCEnable      = false;
@@ -1046,8 +1046,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             /* Set VRDE properties. */
             if (cVRDEProperties > 0)
             {
-                int i;
-                for (i = 0; i < cVRDEProperties; i++)
+                for (unsigned i = 0; i < cVRDEProperties; i++)
                 {
                     /* Parse 'name=value' */
                     char *pszProperty = RTStrDup(aVRDEProperties[i]);
