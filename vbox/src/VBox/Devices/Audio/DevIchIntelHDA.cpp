@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 31429 2010-08-06 04:55:19Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 31439 2010-08-06 13:13:43Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -583,8 +583,8 @@ static int hdaProcessInterrupt(INTELHDLinkState* pState)
    /* @todo add state change */
     if(   INTCTL_CIE(pState)
        && (   RIRBSTS_RINTFL(pState)
-           || RIRBSTS_RIRBOIS(pState))
-           || STATESTS(pState))
+           || RIRBSTS_RIRBOIS(pState)
+           || STATESTS(pState)))
     {
         fIrq = true;
     }
