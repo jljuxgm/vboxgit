@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 33859 2010-11-08 16:15:07Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 33872 2010-11-08 20:01:19Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -79,6 +79,10 @@
 *******************************************************************************/
 /** The max path length acceptable for a trusted path. */
 #define SUPR3HARDENED_MAX_PATH      260U
+
+#ifdef RT_OS_SOLARIS
+# define dirfd(x) ((d)->dd_fd)
+#endif
 
 
 /*******************************************************************************
