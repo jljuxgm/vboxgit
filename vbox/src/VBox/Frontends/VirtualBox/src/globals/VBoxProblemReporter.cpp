@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34333 2010-11-24 17:05:39Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34343 2010-11-24 21:17:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1290,7 +1290,7 @@ int VBoxProblemReporter::askAboutHardDiskAttachmentCreation(QWidget *pParent,
 {
     return message(pParent, Question,
                    tr("<p>You are about to add a virtual hard disk to controller <b>%1</b>.</p>"
-                      "<p>Would you like to create a new, empty disk or select an existing one?</p>")
+                      "<p>Would you like to create a new, empty file to hold the disk contents or select an existing one?</p>")
                       .arg(strControllerName),
                    0, /* aAutoConfirmId */
                    QIMessageBox::Yes,
@@ -1305,7 +1305,7 @@ int VBoxProblemReporter::askAboutOpticalAttachmentCreation(QWidget *pParent,
 {
     return message(pParent, Question,
                    tr("<p>You are about to add a new CD/DVD drive to controller <b>%1</b>.</p>"
-                      "<p>Would you like to choose a virtual CD/DVD disk to insert into the drive "
+                      "<p>Would you like to choose a virtual CD/DVD disk to put in the drive "
                       "or to leave it empty for now?</p>")
                       .arg(strControllerName),
                    0, /* aAutoConfirmId */
@@ -1321,7 +1321,7 @@ int VBoxProblemReporter::askAboutFloppyAttachmentCreation(QWidget *pParent,
 {
     return message(pParent, Question,
                    tr("<p>You are about to add a new floppy drive to controller <b>%1</b>.</p>"
-                      "<p>Would you like to choose a virtual floppy disk to insert into the drive "
+                      "<p>Would you like to choose a virtual floppy disk to put in the drive "
                       "or to leave it empty for now?</p>")
                       .arg(strControllerName),
                    0, /* aAutoConfirmId */
