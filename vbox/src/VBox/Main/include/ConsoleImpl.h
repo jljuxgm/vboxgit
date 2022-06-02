@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 33952 2010-11-11 03:49:28Z vboxsync $ */
+/* $Id: ConsoleImpl.h 34075 2010-11-15 15:59:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -37,7 +37,7 @@ class AudioSniffer;
 class ConsoleVRDPServer;
 class VMMDev;
 class Progress;
-class IEventListener;
+COM_STRUCT_OR_CLASS(IEventListener);
 #ifdef VBOX_WITH_EXTPACK
 class ExtPackManager;
 #endif
@@ -736,7 +736,7 @@ private:
         }
     }
     mCallbackData;
-    class IEventListener *mVmListner;
+    COM_STRUCT_OR_CLASS(IEventListener) *mVmListner;
 
     friend struct VMTask;
 };

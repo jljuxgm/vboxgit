@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 34073 2010-11-15 15:38:20Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 34075 2010-11-15 15:59:31Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -227,7 +227,7 @@ bool VBoxExtPackIsValidName(const char *pszName)
     size_t off = 0;
     while (pszName[off])
     {
-        if (!RT_C_IS_ALNUM(pszName[off]) && !pszName[off] == ' ')
+        if (!RT_C_IS_ALNUM(pszName[off]) && pszName[off] != ' ')
             return false;
         off++;
     }
