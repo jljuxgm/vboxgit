@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31706 2010-08-16 15:27:24Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31742 2010-08-18 07:52:22Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2657,6 +2657,38 @@ STDMETHODIMP Machine::COMSETTER(FaultTolerancePort)(ULONG aPort)
     setModified(IsModified_MachineData);
     mUserData.backup();
     mUserData->s.uFaultTolerancePort = aPort;
+    return S_OK;
+}
+
+STDMETHODIMP Machine::COMGETTER(FaultTolerancePassword)(BSTR *aPassword)
+{
+    CheckComArgOutPointerValid(aPassword);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    mUserData->s.strFaultTolerancePassword.cloneTo(aPassword);
+
+    return S_OK;
+}
+
+STDMETHODIMP Machine::COMSETTER(FaultTolerancePassword)(IN_BSTR aPassword)
+{
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    /* @todo deal with running state change. */
+    HRESULT rc = checkStateDependency(MutableStateDep);
+    if (FAILED(rc)) return rc;
+
+    setModified(IsModified_MachineData);
+    mUserData.backup();
+    mUserData->s.strFaultTolerancePassword = aPassword;
+
     return S_OK;
 }
 
