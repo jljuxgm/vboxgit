@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdWorkers.cpp 35628 2011-01-19 14:58:26Z vboxsync $ */
+/* $Id: DBGCCmdWorkers.cpp 35632 2011-01-19 15:55:05Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Worker Routines.
  */
@@ -374,7 +374,7 @@ PDBGCBP dbgcBpGet(PDBGC pDbgc, RTUINT iBp)
  * @returns VINF_DBGC_BP_NO_COMMAND if there is no command associated with the breakpoint.
  * @returns VERR_DBGC_BP_NOT_FOUND if the breakpoint wasn't found.
  * @returns VERR_BUFFER_OVERFLOW if the is not enough space in the scratch buffer for the command.
- * @returns VBox status code from dbgcEvalCommand() other wise.
+ * @returns VBox status code from dbgcEvalCommand() otherwise.
  * @param   pDbgc       The DBGC instance.
  * @param   iBp         The breakpoint to execute.
  */
