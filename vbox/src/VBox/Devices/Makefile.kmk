@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32877 2010-10-01 22:51:28Z vboxsync $
+# $Id: Makefile.kmk 32904 2010-10-05 10:34:28Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -351,6 +351,9 @@ ifdef VBOX_WITH_VDMA
  DevicesR3_DEFS        += VBOX_WITH_VDMA
  DevicesR3_SOURCES      += \
 	Graphics/DevVGA_VDMA.cpp
+endif
+ifdef VBOXWDDM_TEST_UHGSMI
+ DevicesR3_DEFS   += VBOXWDDM_TEST_UHGSMI
 endif
 ifdef VBOXWDDM_WITH_VBVA
  DevicesR3_DEFS        += VBOXWDDM_WITH_VBVA
