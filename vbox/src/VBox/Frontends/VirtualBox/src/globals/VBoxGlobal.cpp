@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 35665 2011-01-21 10:22:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4212,7 +4212,8 @@ QString VBoxGlobal::insertKeyToActionText(const QString &strText, const QString 
 #else
     QString pattern("%1 \tHost+%2");
 #endif
-    if (strKey.isEmpty())
+    if (   strKey.isEmpty()
+        || strKey.compare("None", Qt::CaseInsensitive) == 0)
         return strText;
     else
         return pattern.arg(strText).arg(QKeySequence(strKey).toString(QKeySequence::NativeText));
