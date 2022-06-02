@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31344 2010-08-03 15:58:25Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31358 2010-08-04 14:48:26Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3414,9 +3414,9 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
         ComObjPtr<Medium> diff;
         diff.createObject();
         rc = diff->init(mParent,
-                        medium->preferredDiffFormat().raw(),
-                        BstrFmt("%ls"RTPATH_SLASH_STR,
-                                 mUserData->mSnapshotFolderFull.raw()).raw(),
+                        medium->getPreferredDiffFormat(),
+                        Utf8StrFmt("%ls"RTPATH_SLASH_STR,
+                                   mUserData->mSnapshotFolderFull.raw()).raw(),
                         &fNeedsSaveSettings);
         if (FAILED(rc)) return rc;
 
@@ -8398,9 +8398,9 @@ HRESULT Machine::createImplicitDiffs(IProgress *aProgress,
             ComObjPtr<Medium> diff;
             diff.createObject();
             rc = diff->init(mParent,
-                            pMedium->preferredDiffFormat().raw(),
-                            BstrFmt("%ls"RTPATH_SLASH_STR,
-                                    mUserData->mSnapshotFolderFull.raw()).raw(),
+                            pMedium->getPreferredDiffFormat(),
+                            Utf8StrFmt("%ls"RTPATH_SLASH_STR,
+                                       mUserData->mSnapshotFolderFull.raw()).raw(),
                             pfNeedsSaveSettings);
             if (FAILED(rc)) throw rc;
 

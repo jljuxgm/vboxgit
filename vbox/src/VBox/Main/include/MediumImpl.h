@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 31306 2010-08-02 14:16:12Z vboxsync $ */
+/* $Id: MediumImpl.h 31358 2010-08-04 14:48:26Z vboxsync $ */
 
 /** @file
  *
@@ -66,28 +66,36 @@ public:
                 // and would be ambiguous
 
     // public initializer/uninitializer for internal purposes only
+
+    // initializer to create empty medium (VirtualBox::CreateHardDisk())
     HRESULT init(VirtualBox *aVirtualBox,
-                 CBSTR aFormat,
-                 CBSTR aLocation,
+                 const Utf8Str &aFormat,
+                 const Utf8Str &aLocation,
                  bool *pfNeedsSaveSettings);
+
+    // initializer for opening existing media
+    // (VirtualBox::OpenHardDisk/DVD(); Machine::AttachDevice())
     HRESULT init(VirtualBox *aVirtualBox,
-                 CBSTR aLocation,
+                 const Utf8Str &aLocation,
                  HDDOpenMode enOpenMode,
                  DeviceType_T aDeviceType,
                  BOOL aSetImageId,
                  const Guid &aImageId,
                  BOOL aSetParentId,
                  const Guid &aParentId);
+
     // initializer used when loading settings
     HRESULT init(VirtualBox *aVirtualBox,
                  Medium *aParent,
                  DeviceType_T aDeviceType,
                  const settings::Medium &data);
+
     // initializer for host floppy/DVD
     HRESULT init(VirtualBox *aVirtualBox,
                  DeviceType_T aDeviceType,
-                 CBSTR aLocation,
-                 CBSTR aDescription = NULL);
+                 const Utf8Str &aLocation,
+                 const Utf8Str &aDescription = Utf8Str::Empty);
+
     void uninit();
 
     void deparent();
@@ -149,12 +157,11 @@ public:
     STDMETHOD(Resize)(ULONG64 aLogicalSize, IProgress **aProgress);
     STDMETHOD(Reset)(IProgress **aProgress);
 
-    // public methods for internal purposes only
+    // unsafe methods for internal purposes only (ensure there is
+    // a caller and a read lock before calling them!)
     const ComObjPtr<Medium>& getParent() const;
     const MediaList& getChildren() const;
 
-    // unsafe methods for internal purposes only (ensure there is
-    // a caller and a read lock before calling them!)
     const Guid& getId() const;
     MediumState_T getState() const;
     MediumVariant_T getVariant() const;
@@ -232,7 +239,7 @@ public:
     HRESULT fixParentUuidOfChildren(const MediaList &childrenToReparent);
 
     /** Returns a preferred format for a differencing hard disk. */
-    Bstr preferredDiffFormat();
+    Utf8Str getPreferredDiffFormat();
 
 private:
 
@@ -243,8 +250,8 @@ private:
 
     HRESULT setStateError();
 
-    HRESULT setLocation(const Utf8Str &aLocation, const Utf8Str &aFormat = Utf8Str());
-    HRESULT setFormat(CBSTR aFormat);
+    HRESULT setLocation(const Utf8Str &aLocation, const Utf8Str &aFormat = Utf8Str::Empty);
+    HRESULT setFormat(const Utf8Str &aFormat);
 
     Utf8Str vdError(int aVRC);
 

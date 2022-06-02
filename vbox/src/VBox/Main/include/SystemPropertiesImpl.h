@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 30950 2010-07-21 11:36:18Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 31358 2010-08-04 14:48:26Z vboxsync $ */
 
 /** @file
  *
@@ -106,7 +106,7 @@ public:
     HRESULT loadSettings(const settings::SystemProperties &data);
     HRESULT saveSettings(settings::SystemProperties &data);
 
-    ComObjPtr<MediumFormat> mediumFormat(CBSTR aFormat);
+    ComObjPtr<MediumFormat> mediumFormat(const Utf8Str &aFormat);
 
     // public methods for internal purposes only
     // (ensure there is a caller and a read lock before calling them!)

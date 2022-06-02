@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 31333 2010-08-03 13:00:54Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 31358 2010-08-04 14:48:26Z vboxsync $ */
 
 /** @file
  *
@@ -2623,7 +2623,7 @@ void SessionMachine::deleteSnapshotHandler(DeleteSnapshotTask &aTask)
                         throw rc;
                     // Diff medium not backed by a file - cannot get status so
                     // be pessimistic.
-                    if (!(sourceFormat->capabilities() & MediumFormatCapabilities_File))
+                    if (!(sourceFormat->getCapabilities() & MediumFormatCapabilities_File))
                         throw rc;
                     const Utf8Str &loc = it->mpSource->getLocationFull();
                     // Source medium is still there, so merge failed early.
