@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 35133 2010-12-15 13:32:39Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 35351 2010-12-27 17:04:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1554,7 +1554,7 @@ void StorageDelegate::paint (QPainter *aPainter, const QStyleOptionViewItem &aOp
 class UIMediumIDHolder : public QObject
 {
     Q_OBJECT;
-    
+
 public:
 
     UIMediumIDHolder(QWidget *pParent) : QObject(pParent) {}
@@ -2461,7 +2461,7 @@ void UIMachineSettingsStorage::sltUnmountDevice()
 
 void UIMachineSettingsStorage::sltChooseExistingMedium()
 {
-	QString strMachineFolder(QFileInfo(m_machine.GetSettingsFilePath()).absolutePath());
+    QString strMachineFolder(QFileInfo(m_machine.GetSettingsFilePath()).absolutePath());
     QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(m_pMediumIdHolder->type(), this, strMachineFolder);
     if (!strMediumId.isNull())
         m_pMediumIdHolder->setId(strMediumId);

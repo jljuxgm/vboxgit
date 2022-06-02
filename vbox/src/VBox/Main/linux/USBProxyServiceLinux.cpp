@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceLinux.cpp 34341 2010-11-24 20:14:36Z vboxsync $ */
+/* $Id: USBProxyServiceLinux.cpp 35351 2010-12-27 17:04:17Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -210,7 +210,7 @@ int USBProxyServiceLinux::initSysfs(void)
     Assert(!mUsingUsbfsDevices);
 
 #ifdef VBOX_USB_WITH_SYSFS
-    try 
+    try
     {
         mpWaiter = new VBoxMainHotplugWaiter(mDevicesRoot.c_str());
     }

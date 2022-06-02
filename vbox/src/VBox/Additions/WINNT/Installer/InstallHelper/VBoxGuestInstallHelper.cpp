@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 34357 2010-11-25 10:24:41Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 35351 2010-12-27 17:04:17Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  */
@@ -141,7 +141,7 @@ HRESULT VBoxIPCWriteMessage(HANDLE hPipe, BYTE *pMessage, DWORD cbMessage)
 VBOXINSTALLHELPER_EXPORT VBoxTrayShowBallonMsg(HWND hwndParent, int string_size,
                                                TCHAR *variables, stack_t **stacktop)
 {
-	EXDLL_INIT();
+    EXDLL_INIT();
 
     VBOXTRAYIPCHEADER hdr;
     hdr.ulMsg = VBOXTRAYIPCMSGTYPE_SHOWBALLOONMSG;
@@ -177,6 +177,6 @@ VBOXINSTALLHELPER_EXPORT VBoxTrayShowBallonMsg(HWND hwndParent, int string_size,
 BOOL WINAPI DllMain(HANDLE hInst, ULONG uReason, LPVOID lpReserved)
 {
     g_hInstance = (HINSTANCE)hInst;
-	return TRUE;
+    return TRUE;
 }
 

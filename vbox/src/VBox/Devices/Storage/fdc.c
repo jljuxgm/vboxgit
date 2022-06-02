@@ -1,4 +1,4 @@
-/* $Id: fdc.c 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: fdc.c 35351 2010-12-27 17:04:17Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -438,9 +438,9 @@ enum {
 };
 
 enum {
-    FD_STATE_MULTI  = 0x01,	/* multi track flag */
-    FD_STATE_FORMAT = 0x02,	/* format flag */
-    FD_STATE_SEEK   = 0x04 	/* seek flag */
+    FD_STATE_MULTI  = 0x01,     /* multi track flag */
+    FD_STATE_FORMAT = 0x02,     /* format flag */
+    FD_STATE_SEEK   = 0x04      /* seek flag */
 };
 
 enum {

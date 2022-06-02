@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGFReg.cpp 35351 2010-12-27 17:04:17Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -1194,5 +1194,4 @@ VMMR3DECL(const char *) DBGFR3RegName(DBGFREG enmReg, DBGFREGVALTYPE enmType)
 
     return pDesc->pszName;
 }
-
 

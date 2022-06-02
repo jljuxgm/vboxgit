@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 35269 2010-12-20 23:32:03Z vboxsync $ */
+/* $Id: vboxvideo.c 35351 2010-12-27 17:04:17Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1075,7 +1075,7 @@ VBOXScreenInit(int scrnIndex, ScreenPtr pScreen, int argc, char **argv)
         xf86DrvMsg(pScrn->scrnIndex, X_ERROR, "Initial CRTC configuration failed!\n");
         return (FALSE);
     }
-    
+
     /* Initialise randr 1.2 mode-setting functions and set first mode.
      * Note that the mode won't be usable until the server has resized the
      * framebuffer to something reasonable. */
@@ -1094,7 +1094,7 @@ VBOXScreenInit(int scrnIndex, ScreenPtr pScreen, int argc, char **argv)
                                    vboxAtomVBoxMode(), XA_STRING, 8,
                                    PropModeReplace, sizeof(csz), csz, TRUE,
                                    FALSE);
-            
+
         }
     }
 
