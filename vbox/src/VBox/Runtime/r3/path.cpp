@@ -1,4 +1,4 @@
-/* $Id: path.cpp 31304 2010-08-02 14:01:05Z vboxsync $ */
+/* $Id: path.cpp 31305 2010-08-02 14:05:20Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -190,6 +190,7 @@ RTDECL(int) RTPathTemp(char *pszPath, size_t cchPath)
 
 RTR3DECL(int) RTPathGetMode(const char *pszPath, PRTFMODE pfMode)
 {
+    AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
     AssertPtrReturn(pfMode, VERR_INVALID_POINTER);
 
     char szPathReal[RTPATH_MAX];
