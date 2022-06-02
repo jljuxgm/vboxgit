@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 35964 2011-02-14 17:06:48Z vboxsync $ */
+/* $Id: Performance.cpp 35971 2011-02-15 10:37:27Z vboxsync $ */
 
 /** @file
  *
@@ -344,7 +344,7 @@ void HostRamVmm::init(ULONG period, ULONG length)
     mSharedVMM->init(mLength);
 }
 
-void HostRamVmm::preCollect(CollectorHints& hints, uint64_t /* iTick */)
+void HostRamVmm::preCollect(CollectorHints& /* hints */, uint64_t /* iTick */)
 {
     /* Guest RAM metrics do not use hints */
 }
