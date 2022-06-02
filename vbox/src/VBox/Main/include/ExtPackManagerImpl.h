@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 34893 2010-12-09 14:44:38Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 34897 2010-12-09 15:11:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -227,6 +227,7 @@ class ATL_NO_VTABLE ExtPackManager :
     HRESULT     checkVrdeExtPack(Utf8Str const *a_pstrExtPack);
     int         getVrdeLibraryPathForExtPack(Utf8Str const *a_pstrExtPack, Utf8Str *a_pstrVrdeLibrary);
     HRESULT     getDefaultVrdeExtPack(Utf8Str *a_pstrExtPack);
+    bool        isExtPackUsable(const char *a_pszExtPack);
     /** @}  */
 
 private:
