@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 33847 2010-11-08 14:28:34Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 33856 2010-11-08 15:47:58Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -105,6 +105,25 @@ static bool VBoxServiceAutoMountShareIsMounted(const char *pszShare,
      *       of an absolute one ("temp" vs. "/media/temp")?
      * procfs contains the full path but not the actual share name ...
      * FILE *pFh = setmntent("/proc/mounts", "r+t"); */
+#ifdef RT_OS_SOLARIS
+    FILE *pFh = fopen(_PATH_MOUNTED, "r");
+    if (!pFh)
+        VBoxServiceError("VBoxServiceAutoMountShareIsMounted: Could not open mtab!\n");
+    else
+    {
+        mnttab mntTab;
+        while ((getmntent(&pFh, &mntTab)))
+        {
+            if (!RTStrICmp(mntTab->mnt_special, pszShare))
+            {
+                fMounted = RTStrPrintf(pszMountPoint, cbMountPoint, "%s", pMntEnt->mnt_mountp)
+                         ? true : false;
+                break;
+            }
+        }
+        fclose(pFh);
+    }
+#else
     FILE *pFh = setmntent(_PATH_MOUNTED, "r+t");
     if (pFh == NULL)
         VBoxServiceError("VBoxServiceAutoMountShareIsMounted: Could not open mtab!\n");
@@ -122,6 +141,7 @@ static bool VBoxServiceAutoMountShareIsMounted(const char *pszShare,
         }
         endmntent(pFh);
     }
+#endif
     return fMounted;
 }
 
