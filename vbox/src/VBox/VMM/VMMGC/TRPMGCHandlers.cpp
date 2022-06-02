@@ -1,4 +1,4 @@
-/* $Id: TRPMGCHandlers.cpp 30263 2010-06-16 18:31:42Z vboxsync $ */
+/* $Id: TRPMGCHandlers.cpp 31100 2010-07-26 09:30:22Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -440,7 +440,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         {
             uint32_t cbIgnored;
             rc = EMInterpretInstructionCPU(pVM, pVCpu, &Cpu, pRegFrame, PC, &cbIgnored);
-            if (RT_LIKELY(RT_SUCCESS(rc)))
+            if (RT_SUCCESS(rc))
                 pRegFrame->eip += Cpu.opsize;
         }
         /* Never generate a raw trap here; it might be an instruction, that requires emulation. */
