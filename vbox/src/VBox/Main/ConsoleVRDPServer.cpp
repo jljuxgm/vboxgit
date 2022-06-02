@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 34558 2010-12-01 10:56:44Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 34559 2010-12-01 11:04:48Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1579,7 +1579,7 @@ AuthResult ConsoleVRDPServer::Authenticate(const Guid &uuid, AuthGuestJudgement 
 
     Assert(mAuthLibrary && (mpfnAuthEntry || mpfnAuthEntry2 || mpfnAuthEntry3));
 
-    AuthResult result; 
+    AuthResult result = AuthResultAccessDenied;
     if (mpfnAuthEntry3)
     {
         result = mpfnAuthEntry3("vrde", &rawuuid, guestJudgement, pszUser, pszPassword, pszDomain, true, u32ClientId);
