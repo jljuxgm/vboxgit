@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 34401 2010-11-26 16:37:51Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 35415 2011-01-06 17:33:14Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -64,6 +64,11 @@ void darwinSetShowsToolbarButton(QToolBar *aToolBar, bool fEnabled)
     QWidget *parent = aToolBar->parentWidget();
     if (parent)
         ::darwinSetShowsToolbarButtonImpl(::darwinToNativeWindow(parent), fEnabled);
+}
+
+void darwinLabelToolbar(QWidget *pWidget, QPixmap *pPixmap)
+{
+    ::darwinLabelToolbar(::darwinToNativeWindow(pWidget), ::darwinToNSImageRef(pPixmap));
 }
 
 void darwinSetHidesAllTitleButtons(QWidget *pWidget)

@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 34401 2010-11-26 16:37:51Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 35415 2011-01-06 17:33:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -93,6 +93,25 @@ NativeNSStringRef darwinToNativeString(const char* pcszString)
 void darwinSetShowsToolbarButtonImpl(NativeNSWindowRef pWindow, bool fEnabled)
 {
     [pWindow setShowsToolbarButton:fEnabled];
+}
+
+void darwinLabelToolbar(NativeNSWindowRef pWindow, NativeNSImageRef pImage)
+{
+    NSToolbar *tb = [pWindow toolbar];
+    if ([tb respondsToSelector:@selector(_toolbarView)])
+    {
+        NSView *tbv = [tb performSelector:@selector(_toolbarView)];
+        if (tbv)
+        {
+            NSSize s = [pImage size];
+            NSSize s1 = [tbv frame].size;
+            NSImageView *iv = [[NSImageView alloc] initWithFrame:NSMakeRect(s1.width - s.width, s1.height - s.height - 1, s.width, s.height)];
+            [iv setImage:pImage];
+            [iv setAutoresizesSubviews:true];
+            [iv setAutoresizingMask:NSViewMinXMargin | NSViewMaxYMargin];
+            [tbv addSubview:iv positioned:NSWindowBelow relativeTo:nil];
+        }
+    }
 }
 
 void darwinSetShowsResizeIndicatorImpl(NativeNSWindowRef pWindow, bool fEnabled)
