@@ -1,4 +1,4 @@
-/* $Id: BasePeCoff.c 35642 2011-01-20 08:04:55Z vboxsync $ */
+/* $Id: BasePeCoff.c 35644 2011-01-20 08:29:40Z vboxsync $ */
 /** @file
  * BasePeCoff.c
  */
@@ -457,7 +457,6 @@ PeCoffLoaderGetImageInfo (
                                &Size,
                                &SectionHeader
                                );
-    DEBUG((DEBUG_LOAD, "%a:%d - %r\n", __FILE__, __LINE__, Status));
       if (RETURN_ERROR (Status)) {
         ImageContext->ImageError = IMAGE_ERROR_IMAGE_READ;
         return Status;
@@ -1094,7 +1093,6 @@ PeCoffLoaderLoadImage (
                                                             ImageContext,
                                                             (UINTN)Hdr.Pe32->OptionalHeader.AddressOfEntryPoint
                                                             );
-      DEBUG((DEBUG_INFO, "%a:%d entry point %x\n", __FILE__, __LINE__, ImageContext->EntryPoint));
     } else {
       //
       // Use PE32+ offset
@@ -1103,7 +1101,6 @@ PeCoffLoaderLoadImage (
                                                             ImageContext,
                                                             (UINTN)Hdr.Pe32Plus->OptionalHeader.AddressOfEntryPoint
                                                             );
-      DEBUG((DEBUG_INFO, "%a:%d entry point %x\n", __FILE__, __LINE__, ImageContext->EntryPoint));
     }
   } else {
     ImageContext->EntryPoint =  (PHYSICAL_ADDRESS) (
@@ -1112,7 +1109,6 @@ PeCoffLoaderLoadImage (
                                 (UINTN)sizeof(EFI_TE_IMAGE_HEADER) -
                                 (UINTN)Hdr.Te->StrippedSize
                                 );
-      DEBUG((DEBUG_INFO, "%a:%d entry point %x\n", __FILE__, __LINE__, ImageContext->EntryPoint));
   }
 
   //
