@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 35730 2011-01-27 10:49:44Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 35740 2011-01-27 14:36:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -967,7 +967,7 @@ void UIKeyboardHandler::darwinGrabKeyboardEvents(bool fGrab)
     {
         /* Disable mouse and keyboard event compression/delaying to make sure we *really* get all of the events. */
         ::CGSetLocalEventsSuppressionInterval(0.0);
-        machineLogic()->mouseHandler()->setMouseCoalescingEnabled(false);
+        ::darwinSetMouseCoalescingEnabled(false);
 
         /* Register the event callback/hook and grab the keyboard. */
         UICocoaApplication::instance()->registerForNativeEvents(RT_BIT_32(10) | RT_BIT_32(11) | RT_BIT_32(12) /* NSKeyDown  | NSKeyUp | | NSFlagsChanged */,
