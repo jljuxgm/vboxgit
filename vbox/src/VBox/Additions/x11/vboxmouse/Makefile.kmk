@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32523 2010-09-15 14:48:26Z vboxsync $
+# $Id: Makefile.kmk 32524 2010-09-15 15:04:04Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Additions XFree86 and X.org mouse drivers.
 #
@@ -264,7 +264,7 @@ $$(PATH_vboxmouse_drv_13)/tstvboxmouse13.run: $$(INSTARGET_vboxmouse_drv_13)
 	    $(INSTARGET_vboxmouse_drv_13) $(OUR_PATH_VBOXMOUSE)/undefined_15
 	$(QUIET)$(APPEND) -t "$@" "done"
 
-ifeq ($(KBUILD_TARGET),linux)
+if1of ($(KBUILD_TARGET),linux solaris)
      TESTING  += $(PATH_vboxmouse_drv_14)/tstvboxmouse14.run
      OTHERS += $(PATH_vboxmouse_drv_14)/tstvboxmouse14.run
 $$(PATH_vboxmouse_drv_14)/tstvboxmouse14.run: $$(INSTARGET_vboxmouse_drv_14)
