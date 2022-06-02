@@ -1,4 +1,4 @@
-/* $Id: VBoxHelpActions.cpp 30206 2010-06-15 15:41:05Z vboxsync $ */
+/* $Id: VBoxHelpActions.cpp 30677 2010-07-06 16:39:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,6 +24,7 @@
 #include "VBoxGlobal.h"
 #include "VBoxProblemReporter.h"
 #include "UIIconPool.h"
+#include "UIExtraDataEventHandler.h"
 
 /* Qt includes */
 #include <QMenu>
@@ -66,10 +67,10 @@ void VBoxHelpActions::setup (QObject *aParent)
     QObject::connect (aboutAction, SIGNAL (triggered()),
                       &vboxProblem(), SLOT (showHelpAboutDialog()));
 
-    QObject::connect (&vboxGlobal(), SIGNAL (canShowRegDlg (bool)),
-                      registerAction, SLOT (setEnabled (bool)));
-    QObject::connect (&vboxGlobal(), SIGNAL (canShowUpdDlg (bool)),
-                      updateAction, SLOT (setEnabled (bool)));
+    QObject::connect (gEDataEvents, SIGNAL(sigCanShowRegistrationDlg(bool)),
+                      registerAction, SLOT(setEnabled(bool)));
+    QObject::connect (gEDataEvents, SIGNAL(sigCanShowUpdateDlg(bool)),
+                      updateAction, SLOT(setEnabled(bool)));
 }
 
 void VBoxHelpActions::addTo (QMenu *aMenu)

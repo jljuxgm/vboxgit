@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 30677 2010-07-06 16:39:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -33,8 +33,8 @@
 #include "UIMultiScreenLayout.h"
 #include "UISession.h"
 
-
 #ifdef Q_WS_MAC
+# include "UIExtraDataEventHandler.h"
 # include "VBoxUtils.h"
 # include <Carbon/Carbon.h>
 #endif /* Q_WS_MAC */
@@ -167,8 +167,8 @@ int UIMachineLogicFullscreen::hostScreenForGuestScreen(int screenId) const
 void UIMachineLogicFullscreen::prepareCommonConnections()
 {
     /* Presentation mode connection */
-    connect (&vboxGlobal(), SIGNAL(presentationModeChanged(const VBoxChangePresentationModeEvent &)),
-             this, SLOT(sltChangePresentationMode(const VBoxChangePresentationModeEvent &)));
+    connect(gEDataEvents, SIGNAL(sigPresentationModeChange(bool)),
+            this, SLOT(sltChangePresentationMode(bool)));
 }
 #endif /* Q_WS_MAC */
 
@@ -244,7 +244,7 @@ void UIMachineLogicFullscreen::cleanupActionGroups()
 }
 
 #ifdef Q_WS_MAC
-void UIMachineLogicFullscreen::sltChangePresentationMode(const VBoxChangePresentationModeEvent & /* event */)
+void UIMachineLogicFullscreen::sltChangePresentationMode(bool /* fEnabled */)
 {
     setPresentationModeEnabled(true);
 }

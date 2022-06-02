@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 30288 2010-06-17 16:19:41Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 30677 2010-07-06 16:39:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -39,6 +39,7 @@ const char* VBoxDefs::GUI_LastCloseAction = "GUI/LastCloseAction";
 const char* VBoxDefs::GUI_RestrictedCloseActions = "GUI/RestrictedCloseActions";
 const char* VBoxDefs::GUI_SuppressMessages = "GUI/SuppressMessages";
 const char* VBoxDefs::GUI_PermanentSharedFoldersAtRuntime = "GUI/PermanentSharedFoldersAtRuntime";
+const char* VBoxDefs::GUI_LanguageId = "GUI/LanguageID";
 #ifdef Q_WS_X11
 const char* VBoxDefs::GUI_LicenseKey = "GUI/LicenseAgreed";
 #endif
@@ -52,6 +53,7 @@ const char* VBoxDefs::GUI_InfoDlgState = "GUI/InfoDlgState";
 const char* VBoxDefs::GUI_RenderMode = "GUI/RenderMode";
 #ifdef VBOX_GUI_WITH_SYSTRAY
 const char* VBoxDefs::GUI_TrayIconWinID = "GUI/TrayIcon/WinID";
+const char* VBoxDefs::GUI_TrayIconEnabled = "GUI/TrayIcon/Enabled";
 const char* VBoxDefs::GUI_MainWindowCount = "GUI/MainWindowCount";
 #endif
 #ifdef Q_WS_MAC
