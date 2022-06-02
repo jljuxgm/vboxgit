@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 32028 2010-08-27 09:32:20Z vboxsync $ */
+/* $Id: PGMAllBth.h 32035 2010-08-27 10:08:21Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4232,7 +4232,7 @@ PGM_BTH_DECL(unsigned, AssertCR3)(PVMCPU pVCpu, uint64_t cr3, uint64_t cr4, RTGC
                                     cErrors++;
                                 }
                             }
-                            else if (HCPhysShw != (HCPhys & X86_PTE_PAE_PG_MASK))
+                            else if (HCPhysShw != (HCPhys & X86_PTE_PAE_PG_MASK_FULL))
                             {
                                 AssertMsgFailed(("Out of sync (phys) at %RGv! HCPhysShw=%RHp HCPhys=%RHp GCPhysGst=%RGp PdeSrc=%#RX64 PteDst=%#RX64\n",
                                                  GCPtr + off, HCPhysShw, HCPhys, GCPhysGst, (uint64_t)PdeSrc.u, SHW_PTE_LOG64(PteDst)));
