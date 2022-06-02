@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 35550 2011-01-13 18:08:54Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 35551 2011-01-13 18:11:19Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation.
  */
@@ -1089,6 +1089,8 @@ static HRESULT formatRegisterValue(Bstr *a_pbstr, PCDBGFREGVAL a_pValue, DBGFREG
             char *pszHex = szHex;
             if (a_pValue->r80.s.fSign)
                 *pszHex++ = '-';
+            else
+                *pszHex++ = '+';
 
             if (a_pValue->r80.s.uExponent == 0)
             {
