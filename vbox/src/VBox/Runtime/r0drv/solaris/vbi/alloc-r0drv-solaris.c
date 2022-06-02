@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 32674 2010-09-21 16:51:50Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 32707 2010-09-23 10:15:08Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -43,7 +43,7 @@
 /**
  * OS specific allocation function.
  */
-PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
+int rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
 {
     size_t      cbAllocated = cb;
     PRTMEMHDR   pHdr;
@@ -58,22 +58,25 @@ PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
     else
 #endif
     {
-        unsigned fKmFlags = fFlags & RTMEMHDR_FLAG_ALLOC_ANY_CTX ? KM_NOSLEEP : KM_SLEEP;
+        unsigned fKmFlags = fFlags & RTMEMHDR_FLAG_ANY_CTX_ALLOC ? KM_NOSLEEP : KM_SLEEP;
         if (fFlags & RTMEMHDR_FLAG_ZEROED)
             pHdr = (PRTMEMHDR)kmem_zalloc(cb + sizeof(*pHdr), fKmFlags);
         else
             pHdr = (PRTMEMHDR)kmem_alloc(cb + sizeof(*pHdr), fKmFlags);
     }
-    if (pHdr)
+    if (RT_UNLIKELY(!pHdr))
     {
-        pHdr->u32Magic  = RTMEMHDR_MAGIC;
-        pHdr->fFlags    = fFlags;
-        pHdr->cb        = cbAllocated;
-        pHdr->cbReq     = cb;
+        LogRel(("rtMemAllocEx(%u, %#x) failed\n", (unsigned)cb + sizeof(*pHdr), fFlags));
+        return VERR_NO_MEMORY;
     }
-    else
-        LogRel(("rtMemAlloc(%u, %#x) failed\n", (unsigned)cb + sizeof(*pHdr), fFlags));
-    return pHdr;
+
+    pHdr->u32Magic  = RTMEMHDR_MAGIC;
+    pHdr->fFlags    = fFlags;
+    pHdr->cb        = cbAllocated;
+    pHdr->cbReq     = cb;
+
+    *ppHdr = pHdr;
+    return VINF_SUCCESS;
 }
 
 

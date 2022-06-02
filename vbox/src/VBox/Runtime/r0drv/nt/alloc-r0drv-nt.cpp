@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 32674 2010-09-21 16:51:50Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 32707 2010-09-23 10:15:08Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -38,19 +38,21 @@
 /**
  * OS specific allocation function.
  */
-PRTMEMHDR rtR0MemAlloc(size_t cb, uint32_t fFlags)
+int rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
 {
-    AssertReturn(!(fFlags & RTMEMHDR_FLAG_ANY_CTX), NULL);
+    if (fFlags & RTMEMHDR_FLAG_ANY_CTX)
+        return VERR_NOT_SUPPORTED;
 
     PRTMEMHDR pHdr = (PRTMEMHDR)ExAllocatePoolWithTag(NonPagedPool, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
-    if (pHdr)
-    {
-        pHdr->u32Magic  = RTMEMHDR_MAGIC;
-        pHdr->fFlags    = fFlags;
-        pHdr->cb        = (uint32_t)cb; Assert(pHdr->cb == cb);
-        pHdr->cbReq     = (uint32_t)cb;
-    }
-    return pHdr;
+    if (RT_UNLIKELY(!pHdr))
+        return VERR_NO_MEMORY;
+
+    pHdr->u32Magic  = RTMEMHDR_MAGIC;
+    pHdr->fFlags    = fFlags;
+    pHdr->cb        = (uint32_t)cb; Assert(pHdr->cb == cb);
+    pHdr->cbReq     = (uint32_t)cb;
+    *ppHdr = pHdr;
+    return VINF_SUCCESS;
 }
 
 
