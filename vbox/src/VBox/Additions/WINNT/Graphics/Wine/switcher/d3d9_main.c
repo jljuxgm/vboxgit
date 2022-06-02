@@ -1,4 +1,4 @@
-/* $Id: d3d9_main.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: d3d9_main.c 35319 2010-12-24 15:42:36Z vboxsync $ */
 
 /** @file
  * VBox D3D8 dll switcher
@@ -49,7 +49,11 @@ typedef struct _D3D9ExTag
     D3DPERF_SetRegionProc   pD3DPERF_SetRegion;
 } D3D9Export;
 
+#ifdef VBOX_WDDM_WOW64
+static D3D9Export g_swd3d9 = {0, "VBoxD3D9-x86.dll", "MSD3D9.dll",};
+#else
 static D3D9Export g_swd3d9 = {0, "VBoxD3D9.dll", "MSD3D9.dll",};
+#endif
 
 void FillD3DExports(HANDLE hDLL)
 {

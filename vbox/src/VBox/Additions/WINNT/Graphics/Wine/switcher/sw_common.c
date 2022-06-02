@@ -1,4 +1,4 @@
-/* $Id: sw_common.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: sw_common.c 35319 2010-12-24 15:42:36Z vboxsync $ */
 
 /** @file
  * VBox D3D8/9 dll switcher
@@ -28,7 +28,11 @@ BOOL isVBox3DEnabled(void)
     HANDLE hDLL;
     BOOL result = FALSE;
 
+#ifdef VBOX_WDDM_WOW64
+    hDLL = LoadLibrary("VBoxOGL-x86.dll");
+#else
     hDLL = LoadLibrary("VBoxOGL.dll");
+#endif
 
     /* note: this isn't really needed as our library will refuse to load if it can't connect to host.
        so it's in case we'd change it one day.
