@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 35146 2010-12-15 16:31:56Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 35194 2010-12-16 15:36:09Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -609,16 +609,18 @@ int handleControlVM(HandlerArg *a)
                 }
             }
         }
-        else if (!strcmp(a->argv[1], "vrdpport"))
+        else if (   !strcmp(a->argv[1], "vrdeport")
+                 || !strcmp(a->argv[1], "vrdpport"))
         {
+            if (!strcmp(a->argv[1], "vrdpport"))
+                RTStrmPrintf(g_pStdErr, "Warning: 'vrdpport' is deprecated. Use 'vrdeport'.\n");
+
             if (a->argc <= 1 + 1)
             {
                 errorArgument("Missing argument to '%s'", a->argv[1]);
                 rc = E_FAIL;
                 break;
             }
-
-            RTStrmPrintf(g_pStdErr, "Warning: 'vrdpport' is deprecated. Use 'vrdeproperty TCP/Ports=%s'.\n", a->argv[2]);
 
             ComPtr<IVRDEServer> vrdeServer;
             sessionMachine->COMGETTER(VRDEServer)(vrdeServer.asOutParam());
