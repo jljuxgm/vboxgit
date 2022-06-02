@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 31779 2010-08-19 09:55:30Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 31976 2010-08-26 09:45:33Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -320,6 +320,13 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--iocachesize <I/O cache size in MB>]\n"
 #endif
                 );
+        RTPrintf("                            [--faulttolerance master|standby]\n"
+                 "                            [--faulttoleranceaddress <name>]\n"
+                 "                            [--faulttoleranceport <port>]\n"
+                 "                            [--faulttolerancesyncinterval <msec>]\n"
+                 "                            [--faulttolerancepassword <password>]\n"
+                 );
+
         RTPrintf("\n");
     }
 
