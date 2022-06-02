@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 35537 2011-01-13 15:14:20Z vboxsync $ */
+/* $Id: PGMAllBth.h 35754 2011-01-28 11:03:21Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3180,7 +3180,8 @@ static int PGM_BTH_NAME(SyncPT)(PVMCPU pVCpu, unsigned iPDSrc, PGSTPD pPDSrc, RT
                 break;
         }
     }
-    /* else cached entry; assume it's still fully valid. */
+    else
+        rc = VINF_SUCCESS; /* Cached entry; assume it's still fully valid. */
 
     /* Save the new PDE. */
     PdeDst.u &= X86_PDE_AVL_MASK;
