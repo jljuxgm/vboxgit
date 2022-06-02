@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 34256 2010-11-22 15:55:00Z vboxsync $ */
+/* $Id: thread-win.cpp 34507 2010-11-30 13:14:14Z vboxsync $ */
 /** @file
  * IPRT - Threads, Win32.
  */
@@ -195,7 +195,7 @@ static int rtThreadGetCurrentProcessorNumber(void)
 RTR3DECL(int) RTThreadSetAffinity(uint64_t u64Mask)
 {
     Assert((DWORD_PTR)u64Mask == u64Mask || u64Mask == ~(uint64_t)0);
-    DWORD dwRet = SetThreadAffinityMask(GetCurrentThread(), (DWORD_PTR)u64Mask);
+    DWORD_PTR dwRet = SetThreadAffinityMask(GetCurrentThread(), (DWORD_PTR)u64Mask);
     if (dwRet)
         return VINF_SUCCESS;
 
@@ -215,10 +215,10 @@ RTR3DECL(uint64_t) RTThreadGetAffinity(void)
     if (GetProcessAffinityMask(GetCurrentProcess(), &dwProcAff, &dwIgnored))
     {
         HANDLE hThread = GetCurrentThread();
-        DWORD dwRet = SetThreadAffinityMask(hThread, dwProcAff);
+        DWORD_PTR dwRet = SetThreadAffinityMask(hThread, dwProcAff);
         if (dwRet)
         {
-            DWORD dwSet = SetThreadAffinityMask(hThread, dwRet);
+            DWORD_PTR dwSet = SetThreadAffinityMask(hThread, dwRet);
             Assert(dwSet == dwProcAff); NOREF(dwRet);
             return dwRet;
         }

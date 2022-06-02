@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: lockvalidator.cpp 34507 2010-11-30 13:14:14Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -3750,8 +3750,8 @@ DECLINLINE(void) rtLockValidatorRecSharedFreeOwner(PRTLOCKVALRECSHRDOWN pEntry)
             uintptr_t iEntry = pEntry - &pThread->LockValidator.aShrdOwners[0];
             AssertReleaseReturnVoid(iEntry < RT_ELEMENTS(pThread->LockValidator.aShrdOwners));
 
-            Assert(!ASMBitTest(&pThread->LockValidator.bmFreeShrdOwners, iEntry));
-            ASMAtomicBitSet(&pThread->LockValidator.bmFreeShrdOwners, iEntry);
+            Assert(!ASMBitTest(&pThread->LockValidator.bmFreeShrdOwners, (int32_t)iEntry));
+            ASMAtomicBitSet(&pThread->LockValidator.bmFreeShrdOwners, (int32_t)iEntry);
 
             rtThreadRelease(pThread);
         }

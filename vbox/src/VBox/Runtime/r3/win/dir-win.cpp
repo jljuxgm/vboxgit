@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 34002 2010-11-11 17:16:37Z vboxsync $ */
+/* $Id: dir-win.cpp 34507 2010-11-30 13:14:14Z vboxsync $ */
 /** @file
  * IPRT - Directory, win32.
  */
@@ -383,13 +383,18 @@ RTDECL(int) RTDirReadEx(PRTDIR pDir, PRTDIRENTRYEX pDirEntry, size_t *pcbDirEntr
         /* copy and calc length */
         PCRTUTF16 pwszSrc = (PCRTUTF16)pDir->Data.cAlternateFileName;
         PRTUTF16  pwszDst = pDirEntry->wszShortName;
-        while (*pwszSrc)
-            *pwszDst++ = *pwszSrc++;
-        pDirEntry->cwcShortName = pwszDst - &pDirEntry->wszShortName[0];
+        uint32_t  off = 0;
+        while (pwszSrc[off] && off < RT_ELEMENTS(pDirEntry->wszShortName) - 1U)
+        {
+            pwszDst[off] = pwszSrc[off];
+            off++;
+        }
+        pDirEntry->cwcShortName = (uint16_t)off;
+
         /* zero the rest */
-        const PRTUTF16 pwszEnd = &pDirEntry->wszShortName[RT_ELEMENTS(pDirEntry->wszShortName)];
-        while (pwszDst < pwszEnd)
-            *pwszDst++ = '\0';
+        do
+            pwszDst[off++] = '\0';
+        while (off < RT_ELEMENTS(pDirEntry->wszShortName));
     }
     else
     {
