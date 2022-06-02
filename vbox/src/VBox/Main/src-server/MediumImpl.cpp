@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: MediumImpl.cpp 35553 2011-01-14 00:02:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6189,7 +6189,7 @@ HRESULT Medium::taskCreateDiffHandler(Medium::CreateDiffTask &task)
 
         Utf8Str targetFormat(pTarget->m->strFormat);
         Utf8Str targetLocation(pTarget->m->strLocationFull);
-        uint64_t capabilities = m->formatObj->getCapabilities();
+        uint64_t capabilities = pTarget->m->formatObj->getCapabilities();
         ComAssertThrow(capabilities & VD_CAP_CREATE_DYNAMIC, E_FAIL);
 
         Assert(pTarget->m->state == MediumState_Creating);
