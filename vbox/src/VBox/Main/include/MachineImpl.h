@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 33592 2010-10-29 09:36:56Z vboxsync $ */
+/* $Id: MachineImpl.h 33708 2010-11-02 18:46:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -80,7 +80,7 @@ namespace settings
 ////////////////////////////////////////////////////////////////////////////////
 
 class ATL_NO_VTABLE Machine :
-    public VirtualBoxBaseWithChildrenNEXT,
+    public VirtualBoxBase,
     VBOX_SCRIPTABLE_IMPL(IMachine)
 {
     Q_OBJECT

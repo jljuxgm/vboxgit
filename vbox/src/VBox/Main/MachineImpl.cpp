@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33596 2010-10-29 10:47:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6577,10 +6577,6 @@ void Machine::uninitDataAndChildObjects()
     AssertComRCReturnVoid(autoCaller.rc());
     AssertComRCReturnVoid(    autoCaller.state() == InUninit
                            || autoCaller.state() == Limited);
-
-    /* uninit all children using addDependentChild()/removeDependentChild()
-     * in their init()/uninit() methods */
-    uninitDependentChildren();
 
     /* tell all our other child objects we've been uninitialized */
 

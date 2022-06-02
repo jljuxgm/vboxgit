@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 32531 2010-09-15 17:04:48Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
 
 /** @file
  *
@@ -150,10 +150,6 @@ HRESULT StorageController::init(Machine *aParent,
 
     /* m->pPeer is left null */
 
-    /* register with parent early, since uninit() will unconditionally
-     * unregister on failure */
-    m->pParent->addDependentChild(this);
-
     m->bd.allocate();
 
     m->bd->strName = aName;
@@ -226,10 +222,6 @@ HRESULT StorageController::init(Machine *aParent,
 
     m = new Data(aParent);
 
-    /* register with parent early, since uninit() will unconditionally
-     * unregister on failure */
-    m->pParent->addDependentChild(this);
-
     /* sanity */
     AutoCaller thatCaller(aThat);
     AssertComRCReturnRC(thatCaller.rc());
@@ -273,8 +265,6 @@ HRESULT StorageController::initCopy(Machine *aParent, StorageController *aThat)
     m = new Data(aParent);
     /* m->pPeer is left null */
 
-    m->pParent->addDependentChild(this);
-
     AutoCaller thatCaller(aThat);
     AssertComRCReturnRC(thatCaller.rc());
 
@@ -302,8 +292,6 @@ void StorageController::uninit()
         return;
 
     m->bd.free();
-
-    m->pParent->removeDependentChild(this);
 
     unconst(m->pPeer) = NULL;
     unconst(m->pParent) = NULL;

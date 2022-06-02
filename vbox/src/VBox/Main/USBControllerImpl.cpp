@@ -1,10 +1,10 @@
-/* $Id: USBControllerImpl.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -506,7 +506,6 @@ STDMETHODIMP USBController::InsertDeviceFilter(ULONG aPosition,
 
     ComObjPtr<USBDeviceFilter> filter = static_cast<USBDeviceFilter*>(aFilter);
     // @todo r=dj make sure the input object is actually from us
-//     ComObjPtr<USBDeviceFilter> filter = getDependentChild(aFilter);
 //     if (!filter)
 //         return setError (E_INVALIDARG,
 //             tr ("The given USB device filter is not created within "

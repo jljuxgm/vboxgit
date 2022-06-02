@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 33621 2010-10-29 16:15:40Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -506,12 +506,6 @@ void Console::uninit()
     }
 
     LogFlowThisFunc(("initFailed()=%d\n", autoUninitSpan.initFailed()));
-
-    /*
-     * Uninit all children that use addDependentChild()/removeDependentChild()
-     * in their init()/uninit() methods.
-     */
-    uninitDependentChildren();
 
     /* power down the VM if necessary */
     if (mpVM)

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ConsoleImpl.h 33708 2010-11-02 18:46:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -78,7 +78,7 @@ typedef struct VUSBIRHCONFIG *PVUSBIRHCONFIG;
 
 /** IConsole implementation class */
 class ATL_NO_VTABLE Console :
-    public VirtualBoxBaseWithChildrenNEXT,
+    public VirtualBoxBase,
     VBOX_SCRIPTABLE_IMPL(IConsole)
 #ifdef RT_OS_WINDOWS
     , public CComCoClass<Console, &CLSID_Console>

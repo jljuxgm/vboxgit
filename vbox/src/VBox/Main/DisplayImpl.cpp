@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 33685 2010-11-02 12:19:28Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2788,7 +2788,6 @@ STDMETHODIMP Display::ResizeCompleted(ULONG aScreenId)
     LogFlowFunc (("\n"));
 
     /// @todo (dmik) can we AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS); here?
-    //  do it when we switch this class to VirtualBoxBase_NEXT.
     //  This will require general code review and may add some details.
     //  In particular, we may want to check whether EMT is really waiting for
     //  this notification, etc. It might be also good to obey the caller to make
