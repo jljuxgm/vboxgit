@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 30183 2010-06-14 14:28:04Z vboxsync $ */
+/* $Id: HWACCMInternal.h 30789 2010-07-12 11:21:21Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -24,6 +24,7 @@
 #include <VBox/stam.h>
 #include <VBox/dis.h>
 #include <VBox/hwaccm.h>
+#include <VBox/hwacc_vmx.h>
 #include <VBox/pgm.h>
 #include <VBox/cpum.h>
 #include <iprt/memobj.h>
