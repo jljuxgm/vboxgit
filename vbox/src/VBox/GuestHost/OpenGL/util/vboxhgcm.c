@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 32511 2010-09-15 11:35:29Z vboxsync $ */
+/* $Id: vboxhgcm.c 32909 2010-10-05 12:31:36Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -716,6 +716,7 @@ static void crVBoxHGCMReceiveMessage(CRConnection *conn)
 
     conn->recv_credits     -= len;
     conn->total_bytes_recv += len;
+    conn->recv_count++;
 
     crNetDispatchMessage( g_crvboxhgcm.recv_list, conn, msg, len );
 
