@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 32458 2010-09-13 16:30:10Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 32525 2010-09-15 15:07:05Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -787,7 +787,7 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
             case PGMMODE_PAE:           /* PAE paging. */
             case PGMMODE_PAE_NX:        /* PAE paging with NX enabled. */
-                /** @todo use normal 32 bits paging */
+                /** Must use PAE paging as we could use physical memory > 4 GB */
                 val |= X86_CR4_PAE;
                 break;
 
