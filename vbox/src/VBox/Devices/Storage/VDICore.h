@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 31810 2010-08-20 10:31:26Z vboxsync $ */
+/* $Id: VDICore.h 32388 2010-09-10 10:13:07Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -46,7 +46,7 @@
 /** Image info, not handled anyhow.
  *  Must be less than 64 bytes in length, including the trailing 0.
  */
-#define VDI_IMAGE_FILE_INFO   "<<< Sun VirtualBox Disk Image >>>\n"
+#define VDI_IMAGE_FILE_INFO   "<<< Oracle VM VirtualBox Disk Image >>>\n"
 
 /** The Sector size.
  * Currently we support only 512 bytes sectors.

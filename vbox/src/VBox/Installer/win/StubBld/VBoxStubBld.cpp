@@ -1,4 +1,4 @@
-/* $Id: VBoxStubBld.cpp 31667 2010-08-13 15:57:03Z vboxsync $ */
+/* $Id: VBoxStubBld.cpp 32388 2010-09-10 10:13:07Z vboxsync $ */
 /** @file
  * VBoxStubBld - VirtualBox's Windows installer stub builder.
  */
@@ -164,7 +164,7 @@ int main (int argc, char* argv[])
 
     do
     {
-        printf("Sun VirtualBox Stub Builder v%d.%d.%d.%d\n",
+        printf(VBOX_PRODUCT " Stub Builder v%d.%d.%d.%d\n",
                VBOX_VERSION_MAJOR, VBOX_VERSION_MINOR, VBOX_VERSION_BUILD, VBOX_SVN_REV);
 
         if (argc < 2)
