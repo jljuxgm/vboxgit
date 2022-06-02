@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32151 2010-08-31 14:26:21Z vboxsync $ */
+/* $Id: FTM.cpp 32154 2010-08-31 14:58:01Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -924,8 +924,8 @@ static DECLCALLBACK(int) ftmR3StandbyServeConnection(RTSOCKET Sock, void *pvUser
         }
         else
         if (    !strcmp(szCmd, "checkpoint")
-            ||  (fFullSync = true)  /* intended assignment */
-            ||  !strcmp(szCmd, "full-sync"))
+            ||  !strcmp(szCmd, "full-sync")
+            ||  (fFullSync = true))  /* intended assignment */
         {
             rc = ftmR3TcpWriteACK(pVM);
             AssertRC(rc);
