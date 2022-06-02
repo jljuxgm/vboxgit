@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 33590 2010-10-29 08:55:09Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 33904 2010-11-09 14:56:28Z vboxsync $ */
 
 /** @file
  *
@@ -1385,8 +1385,10 @@ STDMETHODIMP SessionMachine::BeginTakingSnapshot(IConsole *aInitiator,
     if (    fTakingSnapshotOnline
          || mData->mMachineState == MachineState_Saved)
     {
+        Utf8Str strFullSnapshotFolder;
+        calculateFullPath(mUserData->s.strSnapshotFolder, strFullSnapshotFolder);
         strStateFilePath = Utf8StrFmt("%s%c{%RTuuid}.sav",
-                                      mUserData->m_strSnapshotFolderFull.c_str(),
+                                      strFullSnapshotFolder.c_str(),
                                       RTPATH_DELIMITER,
                                       snapshotId.raw());
         /* ensure the directory for the saved state file exists */
@@ -1854,8 +1856,10 @@ void SessionMachine::restoreSnapshotHandler(RestoreSnapshotTask &aTask)
             {
                 Utf8Str snapStateFilePath = aTask.pSnapshot->stateFilePath();
 
+                Utf8Str strFullSnapshotFolder;
+                calculateFullPath(mUserData->s.strSnapshotFolder, strFullSnapshotFolder);
                 Utf8Str stateFilePath = Utf8StrFmt("%s%c{%RTuuid}.sav",
-                                                   mUserData->m_strSnapshotFolderFull.c_str(),
+                                                   strFullSnapshotFolder.c_str(),
                                                    RTPATH_DELIMITER,
                                                    mData->mUuid.raw());
 
