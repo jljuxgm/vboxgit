@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 31220 2010-07-29 15:25:57Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 31333 2010-08-03 13:00:54Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -158,28 +158,19 @@ int handleUnregisterVM(HandlerArg *a)
     }
     if (machine)
     {
-        SafeArray<BSTR> abstrFiles;
-        CHECK_ERROR(machine, Unregister(fDelete /* fAutoCleanup */,
-                                        ComSafeArrayAsOutParam(abstrFiles)));
+        SafeIfaceArray<IMedium> aMedia;
+        CleanupMode_T cleanupMode = CleanupMode_DetachAllReturnNone;
+        if (fDelete)
+            cleanupMode = CleanupMode_DetachAllReturnHardDisksOnly;
+        CHECK_ERROR(machine, Unregister(cleanupMode,
+                                        ComSafeArrayAsOutParam(aMedia)));
         if (SUCCEEDED(rc))
         {
-            for (size_t u = 0;
-                 u < abstrFiles.size();
-                 ++u)
-            {
-                Utf8Str strFile(abstrFiles[u]);
-                if (fDelete)
-                {
-                    RTPrintf("Deleting '%s'\n", strFile.c_str());
-                    RTFileDelete(strFile.c_str());
-                }
-                else
-                    RTPrintf("File '%s' is now obsolete and can be deleted\n", strFile.c_str());
-            }
-
             if (fDelete)
             {
-                CHECK_ERROR(machine, Delete());
+                ComPtr<IProgress> pProgress;
+                CHECK_ERROR(machine, Delete(ComSafeArrayAsInParam(aMedia), pProgress.asOutParam()));
+                CHECK_ERROR(pProgress, WaitForCompletion(-1));
             }
         }
     }

@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 31307 2010-08-02 14:22:15Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 31333 2010-08-03 13:00:54Z vboxsync $ */
 
 /** @file
  *
@@ -827,10 +827,14 @@ HRESULT Snapshot::saveSnapshot(settings::Snapshot &data, bool aAttrsOnly)
  *
  * Caller must hold the machine write lock (which protects the snapshots tree!)
  *
+ * @param writeLock Machine write lock, which can get released temporarily here.
+ * @param cleanupMode Cleanup mode; see Machine::detachAllMedia().
+ * @param llMedia List of media returned to caller, depending on cleanupMode.
  * @param llFilenames
  * @return
  */
 HRESULT Snapshot::uninitRecursively(AutoWriteLock &writeLock,
+                                    CleanupMode_T cleanupMode,
                                     MediaList &llMedia,
                                     std::list<Utf8Str> &llFilenames)
 {
@@ -857,7 +861,7 @@ HRESULT Snapshot::uninitRecursively(AutoWriteLock &writeLock,
          ++it)
     {
         Snapshot *pChild = *it;
-        rc = pChild->uninitRecursively(writeLock, llMedia, llFilenames);
+        rc = pChild->uninitRecursively(writeLock, cleanupMode, llMedia, llFilenames);
         if (FAILED(rc))
             return rc;
     }
@@ -865,6 +869,7 @@ HRESULT Snapshot::uninitRecursively(AutoWriteLock &writeLock,
     // now call detachAllMedia on the snapshot machine
     rc = m->pMachine->detachAllMedia(writeLock,
                                      this /* pSnapshot */,
+                                     cleanupMode,
                                      llMedia);
     if (FAILED(rc))
         return rc;

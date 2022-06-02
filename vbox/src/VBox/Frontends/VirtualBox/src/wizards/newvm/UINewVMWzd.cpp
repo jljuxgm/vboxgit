@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 31333 2010-08-03 13:00:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -781,9 +781,12 @@ bool UINewVMWzdPage5::constructMachine()
         if (!success)
         {
             /* Unregister on failure */
-            QVector<QString> files = m_Machine.Unregister(false /*fDetachMedia*/);
+            QVector<CMedium> aMedia = m_Machine.Unregister(KCleanupMode_UnregisterOnly);   //  @todo replace with DetachAllReturnHardDisksOnly once a progress dialog is in place below
             if (vbox.isOk())
-                m_Machine.Delete();
+            {
+                CProgress progress = m_Machine.Delete(aMedia);
+                progress.WaitForCompletion(-1);         // @todo do this nicely with a progress dialog, this can delete lots of files
+            }
             return false;
         }
     }

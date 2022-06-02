@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 31333 2010-08-03 13:00:54Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -1083,6 +1083,8 @@ HRESULT Progress::notifyComplete(HRESULT aResultCode)
 
     AssertReturn(mCompleted == FALSE, E_FAIL);
 
+    LogFunc(("aResultCode=%d\n", aResultCode));
+
     if (mCanceled && SUCCEEDED(aResultCode))
         aResultCode = E_FAIL;
 
@@ -1104,7 +1106,7 @@ HRESULT Progress::notifyComplete(HRESULT aResultCode)
 
     /* wake up all waiting threads */
     if (mWaitersCount > 0)
-        RTSemEventMultiSignal (mCompletedSem);
+        RTSemEventMultiSignal(mCompletedSem);
 
     return rc;
 }
