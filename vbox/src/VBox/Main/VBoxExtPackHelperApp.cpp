@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 35227 2010-12-17 14:39:59Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 35236 2010-12-20 11:02:26Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1433,7 +1433,7 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
         papszArgs[cSuArgs] = NULL;
     }
     else if (fHaveDisplayVar)
-        RTMsgError("Unable to locate 'pkexec', 'pksu' or 'su+xterm'. Try perform the operation using VBoxManage running as root");
+        RTMsgError("Unable to locate 'pkexec', 'gksu' or 'su+xterm'. Try perform the operation using VBoxManage running as root");
     else
         RTMsgError("Unable to locate 'pkexec'. Try perform the operation using VBoxManage running as root");
     if (iSuArg != cSuArgs)
