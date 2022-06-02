@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35332 2010-12-24 21:14:00Z vboxsync $
+# $Id: Makefile.kmk 35341 2010-12-27 13:50:56Z vboxsync $
 ## @file
 # Makefile for the Wine D3D related dlls for VirtualBox.
 #
@@ -277,15 +277,16 @@ VBoxD3D9_SOURCES      := \
     d3d9/vertexshader.c \
     d3d9/volume.c \
     d3d9/volumetexture.c
-VBoxD3D9_SOURCES.x86   := \
-    d3d9/d3d9.def
-VBoxD3D9_SOURCES.amd64 := \
-    d3d9/d3d9xpdm.def
-VBoxD3D9_LIBS.x86 = \
+ 
+VBoxD3D9_SOURCES.x86      = \
+	d3d9/d3d9.def
+VBoxD3D9_SOURCES.amd64    = \
+	vbox/libWineStub/debug.c \
+	d3d9/d3d9xpdm.def
+VBoxD3D9_LIBS.x86         = \
     $(PATH_LIB)/libWine$(VBOX_SUFF_LIB)
-VBoxD3D9_LIBS     = \
+VBoxD3D9_LIBS             = \
     $(PATH_LIB)/wined3d$(VBOX_SUFF_LIB)
-VBoxD3D9_SOURCES.amd64 = vbox/libWineStub/debug.c
 VBoxD3D9_SDKS.amd64    = WINDDKWLH
 
 ifdef VBOX_WITH_WDDM
