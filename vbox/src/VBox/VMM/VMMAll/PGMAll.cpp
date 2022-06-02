@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 32516 2010-09-15 12:45:45Z vboxsync $ */
+/* $Id: PGMAll.cpp 32872 2010-10-01 15:12:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1252,7 +1252,7 @@ static int pgmShwGetEPTPDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, PEPTPDPT *ppPdpt, PE
     {
         RTGCPTR64 GCPdPt = (RTGCPTR64)iPdPt << EPT_PDPT_SHIFT;
 
-        rc = pgmPoolAlloc(pVM, GCPdPt, PGMPOOLKIND_64BIT_PD_FOR_PHYS, pShwPage->idx, iPdPt, &pShwPage);
+        rc = pgmPoolAlloc(pVM, GCPdPt, PGMPOOLKIND_EPT_PD_FOR_PHYS, pShwPage->idx, iPdPt, &pShwPage);
         AssertRCReturn(rc, rc);
     }
     else
