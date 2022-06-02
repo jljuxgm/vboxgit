@@ -1,4 +1,4 @@
-/* $Id: path.cpp 35222 2010-12-17 13:03:01Z vboxsync $ */
+/* $Id: path.cpp 35225 2010-12-17 13:54:46Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation.
  */
@@ -46,7 +46,7 @@
  * @param   pszPath             See RTPathExecDir.
  * @param   cchPath             See RTPathExecDir.
  */
-static int rtPathSolarisArchHack(char *pszPath, size_t cchPath)
+DECLINLINE(int) rtPathSolarisArchHack(char *pszPath, size_t cchPath)
 {
     int rc = RTPathExecDir(pszPath, cchPath);
     if (RT_SUCCESS(rc))
@@ -105,12 +105,15 @@ RTDECL(int) RTPathAppPrivateArch(char *pszPath, size_t cchPath)
 
 RTDECL(int) RTPathAppPrivateArchTop(char *pszPath, size_t cchPath)
 {
-#if !defined(RT_OS_WINDOWS) && defined(RTPATH_APP_PRIVATE_ARCH)
+#if !defined(RT_OS_WINDOWS) && defined(RTPATH_APP_PRIVATE_ARCH_TOP)
+    return RTStrCopy(pszPath, cchPath, RTPATH_APP_PRIVATE_ARCH_TOP);
+#elif !defined(RT_OS_WINDOWS) && defined(RTPATH_APP_PRIVATE_ARCH)
     return RTStrCopy(pszPath, cchPath, RTPATH_APP_PRIVATE_ARCH);
 #elif defined(RT_OS_SOLARIS)
     return rtPathSolarisArchHack(pszPath, cchPath);
 #else
-    return RTPathExecDir(pszPath, cchPath);
+    int rc = RTPathExecDir(pszPath, cchPath);
+    return rc;
 #endif
 }
 

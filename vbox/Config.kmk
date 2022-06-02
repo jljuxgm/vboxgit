@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35220 2010-12-17 12:55:58Z vboxsync $
+# $Id: Config.kmk 35225 2010-12-17 13:54:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -579,9 +579,7 @@ endif
 # Where the application files are (going to be) installed.
 #VBOX_PATH_APP_PRIVATE       = /usr/lib/virtualbox
 ifdef VBOX_WITH_HARDENING
- if1of ($(KBUILD_TARGET), solaris)
-  VBOX_PATH_APP_PRIVATE      = /opt/VirtualBox/$(if-expr $(KBUILD_TARGET_ARCH) == "amd64",amd64,i386)
- else ifeq ($(KBUILD_TARGET),linux)
+ if1of ($(KBUILD_TARGET), linux solaris)
   VBOX_PATH_APP_PRIVATE      = /opt/VirtualBox
  else ifeq ($(KBUILD_TARGET),darwin)
   VBOX_PATH_APP_PRIVATE      = /Applications/VirtualBox.app/Contents/MacOS
@@ -592,14 +590,19 @@ endif
 # Where the architecture specific application files are (going to be) installed.
 #VBOX_PATH_APP_PRIVATE_ARCH  = /usr/lib/virtualbox
 ifdef VBOX_WITH_HARDENING
- if1of ($(KBUILD_TARGET), darwin solaris)
+ if1of ($(KBUILD_TARGET), solaris)
+  VBOX_PATH_APP_PRIVATE_ARCH_TOP = $(VBOX_PATH_APP_PRIVATE)
+  VBOX_PATH_APP_PRIVATE_ARCH = $(VBOX_PATH_APP_PRIVATE_ARCH_TOP)/$(if-expr $(KBUILD_TARGET_ARCH) == "amd64",amd64,i386)
+ else if1of ($(KBUILD_TARGET), darwin)
   VBOX_PATH_APP_PRIVATE_ARCH = $(VBOX_PATH_APP_PRIVATE)
  endif
 endif
 # Where the shared libraries are (going to be) installed.
 #VBOX_PATH_SHARED_LIBS       = /usr/lib
 ifdef VBOX_WITH_HARDENING
- if1of ($(KBUILD_TARGET), darwin solaris)
+ if1of ($(KBUILD_TARGET), solaris)
+  VBOX_PATH_SHARED_LIBS      = $(VBOX_PATH_APP_PRIVATE)/$(if-expr $(KBUILD_TARGET_ARCH) == "amd64",amd64,i386)
+ else if1of ($(KBUILD_TARGET), darwin)
   VBOX_PATH_SHARED_LIBS      = $(VBOX_PATH_APP_PRIVATE)
  endif
 endif
@@ -615,7 +618,9 @@ endif
 # depending on the location of the object.)
 #VBOX_WITH_RUNPATH = /usr/lib/virtualbox
 ifdef VBOX_WITH_HARDENING
- if1of ($(KBUILD_TARGET), freebsd linux solaris)
+ if1of ($(KBUILD_TARGET), solaris)
+  VBOX_WITH_RUNPATH = $(VBOX_PATH_APP_PRIVATE)/$(if-expr $(KBUILD_TARGET_ARCH) == "amd64",amd64,i386)
+ else if1of ($(KBUILD_TARGET), freebsd linux)
   VBOX_WITH_RUNPATH = $(VBOX_PATH_APP_PRIVATE)
  endif
 endif
@@ -913,6 +918,7 @@ ifdef VBOX_WITHOUT_HARDENING
  ifeq ($(VBOX_WITH_HARDENING),)
   VBOX_PATH_APP_PRIVATE=
   VBOX_PATH_APP_PRIVATE_ARCH=
+  VBOX_PATH_APP_PRIVATE_ARCH_TOP=
   VBOX_PATH_SHARED_LIBS=
   VBOX_PATH_APP_DOCS=
   VBOX_WITH_RUNPATH=
@@ -1316,6 +1322,9 @@ ifdef VBOX_PATH_APP_PRIVATE
 endif
 ifdef VBOX_PATH_APP_PRIVATE_ARCH
  DEFS += RTPATH_APP_PRIVATE_ARCH=\"$(VBOX_PATH_APP_PRIVATE_ARCH)\"
+endif
+ifdef VBOX_PATH_APP_PRIVATE_ARCH_TOP
+ DEFS += RTPATH_APP_PRIVATE_ARCH_TOP=\"$(VBOX_PATH_APP_PRIVATE_ARCH_TOP)\"
 endif
 ifdef VBOX_PATH_SHARED_LIBS
  DEFS += RTPATH_SHARED_LIBS=\"$(VBOX_PATH_SHARED_LIBS)\"
@@ -4608,7 +4617,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35220 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35225 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
