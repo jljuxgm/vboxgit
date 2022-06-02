@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 32036 2010-08-27 10:14:39Z vboxsync $ */
+/* $Id: PGMInternal.h 32043 2010-08-27 11:47:17Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -420,7 +420,7 @@
  *
  * @{
  */
-#if 0
+#if 1
 /**
  * For making sure that u1Present and X86_PTE_P checks doesn't mistake
  * invalid entries for present.

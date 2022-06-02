@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 32036 2010-08-27 10:14:39Z vboxsync $ */
+/* $Id: PGMPool.cpp 32043 2010-08-27 11:47:17Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -867,8 +867,8 @@ void pgmR3PoolWriteProtectPages(PVM pVM)
                 case PGMPOOLKIND_PAE_PT_FOR_PHYS:
                     for (unsigned iShw = 0; iShw < RT_ELEMENTS(uShw.pPTPae->a); iShw++)
                     {
-                        if (uShw.pPTPae->a[iShw].n.u1Present)
-                            uShw.pPTPae->a[iShw].n.u1Write = 0;
+                        if (PGMSHWPTEPAE_IS_P(uShw.pPTPae->a[iShw]))
+                            PGMSHWPTEPAE_SET_RO(uShw.pPTPae->a[iShw]);
                     }
                     break;
 
