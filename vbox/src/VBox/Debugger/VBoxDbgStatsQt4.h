@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.h 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.h 32181 2010-09-01 14:50:21Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -73,6 +73,11 @@ public:
      */
     void resetStats(const QString &rPatStr);
 
+    /**
+     * Resizes the columns to fit the content.
+     */
+    void resizeColumnsToContent();
+
 protected:
     /**
      * Expands or collapses a sub-tree.
@@ -105,6 +110,7 @@ protected slots:
     void actCopy();
     void actToLog();
     void actToRelLog();
+    void actAdjColumns();
     /** @} */
 
 
@@ -143,6 +149,8 @@ protected:
     QAction *m_pToLogAct;
     /** To Release Log action. */
     QAction *m_pToRelLogAct;
+    /** Adjust the columns. */
+    QAction *m_pAdjColumns;
 #if 0
     /** Save Tree (to file) action. */
     QAction *m_SaveFileAct;
