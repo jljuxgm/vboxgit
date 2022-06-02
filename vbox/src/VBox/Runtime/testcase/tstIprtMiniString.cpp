@@ -1,4 +1,4 @@
-/* $Id: tstIprtMiniString.cpp 33605 2010-10-29 13:13:58Z vboxsync $ */
+/* $Id: tstIprtMiniString.cpp 33610 2010-10-29 14:42:36Z vboxsync $ */
 /** @file
  * IPRT Testcase - iprt::MiniString.
  */
@@ -36,6 +36,14 @@
 #include <iprt/uni.h>
 
 
+static void test1Hlp1(const char *pszExpect, const char *pszFormat, ...)
+{
+    va_list va;
+    va_start(va, pszFormat);
+    iprt::MiniString strTst(pszFormat, va);
+    va_end(va);
+    RTTESTI_CHECK_MSG(strTst.equals(pszExpect),  ("strTst='%s' expected='%s'\n",  strTst.c_str(), pszExpect));
+}
 
 static void test1(RTTEST hTest)
 {
@@ -117,6 +125,8 @@ static void test1(RTTEST hTest)
     CHECK(iprt::MiniString("abc").equalsIgnoreCase("ABc"));
     CHECK(iprt::MiniString("abc").equalsIgnoreCase("ABC"));
     CHECK(!iprt::MiniString("abc").equalsIgnoreCase("dBC"));
+    CHECK(iprt::MiniString("").equals(""));
+    CHECK(iprt::MiniString("").equalsIgnoreCase(""));
 
     copy2.setNull();
     for (int i = 0; i < 100; ++i)
@@ -137,6 +147,10 @@ static void test1(RTTEST hTest)
     /* printf */
     iprt::MiniString StrFmt;
     CHECK(StrFmt.printf("%s-%s-%d", "abc", "def", 42).equals("abc-def-42"));
+    test1Hlp1("abc-42-def", "%s-%d-%s", "abc", 42, "def");
+    test1Hlp1("", "");
+    test1Hlp1("1", "1");
+    test1Hlp1("foobar", "%s", "foobar");
 
 #undef CHECK
 #undef CHECK_DUMP
