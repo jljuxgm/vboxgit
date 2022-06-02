@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 34244 2010-11-22 14:31:02Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 34529 2010-11-30 16:57:37Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -574,8 +574,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
     if (u64Cmd & USAGE_SETPROPERTY)
     {
         RTStrmPrintf(pStrm,
-                     "VBoxManage setproperty      hdfolder default|<folder> |\n"
-                     "                            machinefolder default|<folder> |\n"
+                     "VBoxManage setproperty      machinefolder default|<folder> |\n"
                      "                            vrdeauthlibrary default|<library> |\n"
                      "                            websrvauthlibrary default|null|<library> |\n"
                      "                            vrdeextpack null|<library> |\n"
