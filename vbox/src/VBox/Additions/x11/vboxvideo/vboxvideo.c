@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 35933 2011-02-10 17:35:31Z vboxsync $ */
+/* $Id: vboxvideo.c 35948 2011-02-11 23:24:57Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1337,7 +1337,7 @@ VBOXSetMode(ScrnInfoPtr pScrn, unsigned cDisplay, unsigned cWidth,
     {
         if (cDisplay == 0)
             VBoxVideoSetModeRegisters(cwReal, cHeight, pScrn->displayWidth,
-                                      vboxBPP(pScrn), x, y);
+                                      vboxBPP(pScrn), 0, x, y);
         /* Tell the host we support graphics */
         if (vbox_device_available(pVBox))
             vboxEnableGraphicsCap(pVBox);
