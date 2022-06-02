@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 30671 2010-07-06 14:43:43Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 30672 2010-07-06 14:44:14Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -611,6 +611,7 @@ DECLCALLBACK(int) VBoxServicePageSharingWorker(bool volatile *pfShutdown)
             VBoxServiceError("RTSemEventMultiWait failed; rc=%Rrc\n", rc);
             break;
         }
+#if defined(RT_OS_WINDOWS) && !defined(TARGET_NT4)
         idNewSession = g_idSession;
         rc =  VbglR3GetSessionId(&idNewSession);
         AssertRC(rc);
@@ -626,7 +627,7 @@ DECLCALLBACK(int) VBoxServicePageSharingWorker(bool volatile *pfShutdown)
 
             g_idSession = idNewSession;
         }
-
+#endif
     }
 
     RTSemEventMultiDestroy(g_PageSharingEvent);
