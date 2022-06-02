@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32923 2010-10-05 14:20:01Z vboxsync $
+# $Id: Makefile.kmk 32925 2010-10-05 14:32:54Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -453,7 +453,6 @@ ifdef VBOX_WITH_USB
 endif
 
 ifdef VBOX_WITH_DTRACE_R3
- DevicesR3_TEMPLATE    = VBOXR3OSX105
  DevicesR3_DEFS        += VBOX_WITH_DTRACE
  DevicesR3_INCS        += $(DevicesR3_0_OUTDIR)
  DevicesR3_INTERMEDIATES += $(DevicesR3_0_OUTDIR)/VBoxDD-dtrace.h
