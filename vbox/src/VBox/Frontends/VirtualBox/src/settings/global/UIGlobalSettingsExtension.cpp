@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 35100 2010-12-14 16:21:38Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 35103 2010-12-14 16:33:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -165,7 +165,7 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
     if (extPackFile.GetShowLicense())
     {
         QString strLicense = extPackFile.GetLicense();
-        VBoxLicenseViewer licenseViewer;
+        VBoxLicenseViewer licenseViewer(pParent);
         if (licenseViewer.showLicenseFromString(strLicense) != QDialog::Accepted)
             return;
     }

@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.cpp 34812 2010-12-07 18:50:43Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.cpp 35103 2010-12-14 16:33:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -33,8 +33,8 @@
 #include <QFile>
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-VBoxLicenseViewer::VBoxLicenseViewer()
-    : QIWithRetranslateUI<QDialog>()
+VBoxLicenseViewer::VBoxLicenseViewer(QWidget *pParent /* = 0 */)
+    : QIWithRetranslateUI2<QDialog>(pParent)
     , mLicenseText (0)
     , mAgreeButton (0)
     , mDisagreeButton (0)
