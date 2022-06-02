@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsNetwork.cpp 31533 2010-08-10 13:08:56Z vboxsync $ */
+/* $Id: VBoxVMSettingsNetwork.cpp 31535 2010-08-10 14:46:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -188,8 +188,8 @@ void VBoxVMSettingsNetwork::putBackToAdapter()
     {
         UIPortForwardingData redirectData = mPortForwardingRules[i];
         mAdapter.GetNatDriver().AddRedirect(redirectData.name, redirectData.protocol,
-                                            redirectData.hostIp, redirectData.hostPort,
-                                            redirectData.guestIp, redirectData.guestPort);
+                                            redirectData.hostIp, redirectData.hostPort.value(),
+                                            redirectData.guestIp, redirectData.guestPort.value());
     }
 }
 

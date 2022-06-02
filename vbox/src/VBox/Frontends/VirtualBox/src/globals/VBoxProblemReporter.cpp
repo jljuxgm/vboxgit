@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 31494 2010-08-09 17:16:10Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 31535 2010-08-10 14:46:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2344,6 +2344,13 @@ void VBoxProblemReporter::cannotExportAppliance (const CProgress &aProgress, CAp
              Error,
              tr ("Failed to export appliance <b>%1</b>.").arg (aAppliance->GetPath()),
              formatErrorInfo (aProgress.GetErrorInfo()));
+}
+
+void VBoxProblemReporter::warnAboutIncorrectPort(QWidget *pParent) const
+{
+    message(pParent, Error,
+            tr("The current port forwarding rules are not valid. "
+               "None of the host or guest port values may be set to zero."));
 }
 
 void VBoxProblemReporter::showRuntimeError (const CConsole &aConsole, bool fatal,
