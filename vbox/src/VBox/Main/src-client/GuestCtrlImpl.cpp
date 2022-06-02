@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 35455 2011-01-10 13:52:26Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 35456 2011-01-10 13:57:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1418,7 +1418,7 @@ uint32_t Guest::addCtrlCallbackContext(eVBoxGuestCtrlCallbackType enmType, void 
     return uNewContext;
 }
 
-HRESULT Guest::waitForProcessStatusChange(ULONG uPID, PULONG puRetStatus, PULONG puRetExitCode, ULONG uTimeoutMS)
+HRESULT Guest::waitForProcessStatusChange(ULONG uPID, ULONG *puRetStatus, ULONG *puRetExitCode, ULONG uTimeoutMS)
 {
     AssertPtr(puRetStatus);
     AssertPtr(puRetExitCode);
