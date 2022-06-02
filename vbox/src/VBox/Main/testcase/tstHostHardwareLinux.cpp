@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 32258 2010-09-06 20:33:08Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 32262 2010-09-06 23:37:00Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -91,7 +91,7 @@ int main()
     }
 #ifdef VBOX_USB_WITH_SYSFS
     VBoxMainUSBDeviceInfo deviceInfo;
-    AssertRCReturn(VBoxMainUSBDevInfoInit(&deviceInfo), 1);
+    VBoxMainUSBDevInfoInit(&deviceInfo);
     rc = USBDevInfoUpdateDevices(&deviceInfo);
     if (RT_FAILURE(rc))
     {
