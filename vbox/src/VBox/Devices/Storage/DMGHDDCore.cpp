@@ -1,4 +1,4 @@
-/* $Id: DMGHDDCore.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DMGHDDCore.cpp 33547 2010-10-28 10:21:28Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -1192,7 +1192,11 @@ static const char *dmgOpenXmlToRsrc(PDMGIMAGE pThis, char const *pszXml)
             strcpy(&pThis->aRsrcs[iRsrc].szName[0], "plst");
         }
         else
-            return psz;
+        {
+            SKIP_AHEAD(psz, "</array>");
+            continue;
+        }
+
 
         /*
          * Descend into the array and add the elements to the resource entry.
