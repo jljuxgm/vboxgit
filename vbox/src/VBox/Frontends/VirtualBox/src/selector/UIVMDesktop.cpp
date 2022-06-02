@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 31240 2010-07-30 12:07:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1251,7 +1251,7 @@ void UIDescriptionPagePrivate::updateState()
 
     if (m_pVMItem)
     {
-        bool saved = m_pVMItem->state() == KMachineState_Saved;
+        bool saved = m_pVMItem->machineState() == KMachineState_Saved;
         bool busy = m_pVMItem->sessionState() != KSessionState_Unlocked;
         m_pEditBtn->setEnabled(!saved && !busy);
     }
