@@ -1,4 +1,4 @@
-/* $Id: server_glsl.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: server_glsl.c 31808 2010-08-20 09:40:40Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL related fucntions
@@ -101,6 +101,34 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchDeleteObjectARB(GLhandleARB obj)
     }
 
     cr_server.head_spu->dispatch_table.DeleteObjectARB(hwid);
+}
+
+GLint SERVER_DISPATCH_APIENTRY crServerDispatchGetAttribLocation( GLuint program, const char * name )
+{
+    GLint retval;
+    retval = cr_server.head_spu->dispatch_table.GetAttribLocation(crStateGetProgramHWID(program), name );
+    crServerReturnValue( &retval, sizeof(retval) );
+    return retval; /* WILL PROBABLY BE IGNORED */
+}
+
+GLhandleARB SERVER_DISPATCH_APIENTRY crServerDispatchGetHandleARB( GLenum pname )
+{
+    GLhandleARB retval;
+    retval = cr_server.head_spu->dispatch_table.GetHandleARB(pname);
+    if (pname==GL_PROGRAM_OBJECT_ARB)
+    {
+        retval = crStateGLSLProgramHWIDtoID(retval);
+    }
+    crServerReturnValue( &retval, sizeof(retval) );
+    return retval; /* WILL PROBABLY BE IGNORED */
+}
+
+GLint SERVER_DISPATCH_APIENTRY crServerDispatchGetUniformLocation(GLuint program, const char * name)
+{
+    GLint retval;
+    retval = cr_server.head_spu->dispatch_table.GetUniformLocation(crStateGetProgramHWID(program), name);
+    crServerReturnValue( &retval, sizeof(retval) );
+    return retval; /* WILL PROBABLY BE IGNORED */
 }
 
 #endif /* #ifdef CR_OPENGL_VERSION_2_0 */

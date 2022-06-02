@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: server_muralfbo.c 31808 2010-08-20 09:40:40Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -228,7 +228,7 @@ void crServerCreateMuralFBO(CRMuralInfo *mural)
     mural->fboHeight = mural->height;
 
     /*Restore gl state*/
-    uid = ctx->texture.unit[ctx->texture.curTextureUnit].currentTexture2D->name;
+    uid = ctx->texture.unit[ctx->texture.curTextureUnit].currentTexture2D->hwid;
     cr_server.head_spu->dispatch_table.BindTexture(GL_TEXTURE_2D, uid);
 
     uid = ctx->framebufferobject.renderbuffer ? ctx->framebufferobject.renderbuffer->hwid:0;
@@ -329,7 +329,7 @@ void crServerPresentFBO(CRMuralInfo *mural)
 
     cr_server.head_spu->dispatch_table.BindTexture(GL_TEXTURE_2D, mural->idColorTex);
     cr_server.head_spu->dispatch_table.GetTexImage(GL_TEXTURE_2D, 0, GL_BGRA, GL_UNSIGNED_BYTE, pixels);
-    uid = ctx->texture.unit[ctx->texture.curTextureUnit].currentTexture2D->name;
+    uid = ctx->texture.unit[ctx->texture.curTextureUnit].currentTexture2D->hwid;
     cr_server.head_spu->dispatch_table.BindTexture(GL_TEXTURE_2D, uid);
 
     for (i=0; i<cr_server.screenCount; ++i)
