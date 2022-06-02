@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 30013 2010-06-03 14:40:59Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 31962 2010-08-25 14:27:44Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -354,11 +354,12 @@ static DECLCALLBACK(void) VBoxServiceControlTerm(void)
     while (pNode)
     {
         PVBOXSERVICECTRLTHREAD pNext = RTListNodeGetNext(&pNode->Node, VBOXSERVICECTRLTHREAD, Node);
+        bool fLast = RTListNodeIsLast(&g_GuestControlExecThreads, &pNode->Node);
 
         RTListNodeRemove(&pNode->Node);
         RTMemFree(pNode);
 
-        if (pNext && RTListNodeIsLast(&g_GuestControlExecThreads, &pNext->Node))
+        if (fLast)
             break;
 
         pNode = pNext;
