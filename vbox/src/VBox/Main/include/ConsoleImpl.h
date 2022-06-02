@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 34075 2010-11-15 15:59:31Z vboxsync $ */
+/* $Id: ConsoleImpl.h 34111 2010-11-16 12:43:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -559,6 +559,7 @@ private:
     int mcAudioRefs;
     volatile uint32_t mcVRDPClients;
     uint32_t mu32SingleRDPClientId; /* The id of a connected client in the single connection mode. */
+    volatile  bool mcGuestCredentialsProvided;
 
     static const char *sSSMConsoleUnit;
     static uint32_t sSSMConsoleVer;
