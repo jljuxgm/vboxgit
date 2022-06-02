@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 31409 2010-08-05 13:47:41Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 32631 2010-09-20 09:55:38Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -98,7 +98,12 @@ VBGLR3DECL(int) VbglR3VideoAccelFlush(void)
 VBGLR3DECL(int) VbglR3SetPointerShape(uint32_t fFlags, uint32_t xHot, uint32_t yHot, uint32_t cx, uint32_t cy, const void *pvImg, size_t cbImg)
 {
     VMMDevReqMousePointer *pReq;
-    int rc = vbglR3GRAlloc((VMMDevRequestHeader **)&pReq, RT_OFFSETOF(VMMDevReqMousePointer, pointerData) + cbImg, VMMDevReq_SetPointerShape);
+    size_t cbReq = vmmdevGetMousePointerReqSize(cx, cy);
+    AssertReturn(   !pvImg
+                 || cbReq == RT_OFFSETOF(VMMDevReqMousePointer, pointerData) + cbImg,
+                 VERR_INVALID_PARAMETER);
+    int rc = vbglR3GRAlloc((VMMDevRequestHeader **)&pReq, cbReq,
+                           VMMDevReq_SetPointerShape);
     if (RT_SUCCESS(rc))
     {
         pReq->fFlags = fFlags;
@@ -110,9 +115,9 @@ VBGLR3DECL(int) VbglR3SetPointerShape(uint32_t fFlags, uint32_t xHot, uint32_t y
             memcpy(pReq->pointerData, pvImg, cbImg);
 
         rc = vbglR3GRPerform(&pReq->header);
-        vbglR3GRFree(&pReq->header);
         if (RT_SUCCESS(rc))
             rc = pReq->header.rc;
+        vbglR3GRFree(&pReq->header);
     }
     return rc;
 }
