@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 30783 2010-07-12 09:19:24Z vboxsync $ */
+/* $Id: PGMR0SharedPage.cpp 30793 2010-07-12 12:52:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -120,6 +120,15 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PGVM pGVM, VMCPUID idCpu, PGMMSHA
                     else
                         break;
                 }
+            }
+            else
+            {
+                Assert(    rc == VINF_SUCCESS 
+                       ||  rc == VERR_PAGE_NOT_PRESENT
+                       ||  rc == VERR_PAGE_MAP_LEVEL4_NOT_PRESENT
+                       ||  rc == VERR_PAGE_DIRECTORY_PTR_NOT_PRESENT
+                       ||  rc == VERR_PAGE_TABLE_NOT_PRESENT);  
+                rc = VINF_SUCCESS;  /* ignore error */
             }
 
             idxPage++;
