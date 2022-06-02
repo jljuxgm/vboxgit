@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33645 2010-11-01 12:38:50Z vboxsync $
+# $Id: Makefile.kmk 33647 2010-11-01 13:05:59Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -580,7 +580,7 @@ ifdef VBOX_WITH_RAW_MODE
  endif
 
  ifdef VBOXWDDM_WITH_VBVA
-  VBoxDDGC_DEFS         += VBOXWDDM_WITH_VBVA
+  VBoxDDGC_DEFS        += VBOXWDDM_WITH_VBVA
  endif
 
  ifdef VBOX_WITH_VUSB
@@ -679,10 +679,10 @@ ifdef VBOX_WITH_WDDM
  VBoxDDR0_DEFS         += VBOX_WITH_WDDM
 endif
 ifdef VBOX_WITH_VDMA
- VBoxDDR0_DEFS        += VBOX_WITH_VDMA
+ VBoxDDR0_DEFS         += VBOX_WITH_VDMA
 endif
 ifdef VBOX_WITH_CRHGSMI
- VBoxDDR0_DEFS        += VBOX_WITH_CRHGSMI
+ VBoxDDR0_DEFS         += VBOX_WITH_CRHGSMI
 endif
 
 ifdef VBOXWDDM_WITH_VBVA
@@ -727,19 +727,6 @@ ifdef VBOX_WITH_HGSMI
 endif
 ifdef VBOX_WITH_VIDEOHWACCEL
  VBoxDDR0_DEFS         += VBOX_WITH_VIDEOHWACCEL
-endif
-ifdef VBOX_WITH_WDDM
- VBoxDDR0_DEFS         += VBOX_WITH_WDDM
-endif
-ifdef VBOX_WITH_VDMA
- VBoxDDR0_DEFS         += VBOX_WITH_VDMA
-endif
-ifdef VBOX_WITH_CRHGSMI
- VBoxDDR0_DEFS        += VBOX_WITH_CRHGSMI
-endif
-
-ifdef VBOXWDDM_WITH_VBVA
- VBoxDDR0_DEFS        += VBOXWDDM_WITH_VBVA
 endif
 
 if1of ($(VBOX_LDR_FMT), pe lx)
