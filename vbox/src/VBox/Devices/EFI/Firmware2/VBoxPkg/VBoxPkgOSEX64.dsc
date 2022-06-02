@@ -1,7 +1,7 @@
-# $Id: VBoxPkgOSEX64.dsc 32394 2010-09-10 12:13:11Z vboxsync $
+# $Id: VBoxPkgOSEX64.dsc 32436 2010-09-13 07:30:33Z vboxsync $
 
 #
-# Copyright (C) 2009-2010 Sun Microsystems, Inc.
+# Copyright (C) 2009-2010 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
