@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFolders.cpp 31027 2010-07-23 00:13:31Z vboxsync $ */
+/* $Id: VBoxSharedFolders.cpp 31052 2010-07-23 12:10:41Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */
@@ -24,6 +24,7 @@
 
 int VBoxSharedFoldersAutoMount(void)
 {
+#if 0
     uint32_t u32ClientId;
     int rc = VbglR3SharedFolderConnect(&u32ClientId);
     if (!RT_SUCCESS(rc))
@@ -96,6 +97,8 @@ int VBoxSharedFoldersAutoMount(void)
         VbglR3SharedFolderDisconnect(u32ClientId);
     }
     return rc;
+#endif
+    return 0;
 }
 
 int VBoxSharedFoldersAutoUnmount(void)
