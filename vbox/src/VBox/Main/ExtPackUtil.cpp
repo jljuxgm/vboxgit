@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 33862 2010-11-08 17:07:49Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -179,7 +179,7 @@ iprt::MiniString *VBoxExtPackExtractNameFromTarballPath(const char *pszTarball)
     /*
      * Make a duplicate of the name and return it.
      */
-    iprt::MiniString *pStrRet = new iprt::MiniString(off, pszSrc);
+    iprt::MiniString *pStrRet = new iprt::MiniString(pszSrc, off);
     Assert(VBoxExtPackIsValidName(pStrRet->c_str()));
     return pStrRet;
 }
