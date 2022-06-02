@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceFreeBSD.cpp 33813 2010-11-05 19:35:30Z vboxsync $ */
+/* $Id: USBProxyServiceFreeBSD.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, FreeBSD Specialization.
  */
@@ -325,8 +325,8 @@ PUSBDEVICE USBProxyServiceFreeBSD::getDevices(void)
                 pDevice->pszSerialNumber = RTStrDupN(UsbDevInfo.udi_serial, sizeof(UsbDevInfo.udi_serial));
                 pDevice->u64SerialHash   = USBLibHashSerial(pDevice->pszSerialNumber);
             }
-	    rc = ioctl(FileUsb, USB_GET_PLUGTIME, &PlugTime);
-	    if (rc == 0)
+            rc = ioctl(FileUsb, USB_GET_PLUGTIME, &PlugTime);
+            if (rc == 0)
                 pDevice->u64SerialHash  += PlugTime;
 
             pDevice->pszAddress = RTStrDup(pszDevicePath);

@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 34009 2010-11-11 20:14:36Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5126,7 +5126,7 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
     /*
      * Create critical sections protecting the reply post and free queues.
      */
-    RTStrPrintf(szTaggedText, sizeof(szTaggedText), "%sRFQ", szDevTag); 
+    RTStrPrintf(szTaggedText, sizeof(szTaggedText), "%sRFQ", szDevTag);
     rc = PDMDevHlpCritSectInit(pDevIns, &pThis->ReplyFreeQueueCritSect, RT_SRC_POS,
                                szTaggedText);
     if (RT_FAILURE(rc))

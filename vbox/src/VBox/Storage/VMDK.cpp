@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 34008 2010-11-11 19:37:18Z vboxsync $ */
+/* $Id: VMDK.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5944,7 +5944,7 @@ static int vmdkRename(void *pBackendData, const char *pszFilename)
         rc = VERR_INVALID_PARAMETER;
         goto out;
     }
-    
+
     cExtents = pImage->cExtents;
 
     /*

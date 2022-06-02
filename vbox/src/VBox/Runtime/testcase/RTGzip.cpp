@@ -1,4 +1,4 @@
-/* $Id: RTGzip.cpp 33973 2010-11-11 11:10:10Z vboxsync $ */
+/* $Id: RTGzip.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * IPRT - GZIP Testcase Utility.
  */
@@ -354,5 +354,4 @@ int main(int argc, char **argv)
         }
     }
 }
-
 

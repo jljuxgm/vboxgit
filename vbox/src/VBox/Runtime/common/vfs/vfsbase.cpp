@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 34002 2010-11-11 17:16:37Z vboxsync $ */
+/* $Id: vfsbase.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -1740,5 +1740,4 @@ RTDECL(RTVFSIOSTREAM) RTVfsFileToIoStream(RTVFSFILE hVfsFile)
     rtVfsObjRetainVoid(&pThis->Stream.Base);
     return &pThis->Stream;
 }
-
 

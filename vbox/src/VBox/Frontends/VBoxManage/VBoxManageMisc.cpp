@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 33775 2010-11-04 15:02:40Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -980,5 +980,4 @@ int handleExtPack(HandlerArg *a)
 
     return RTEXITCODE_SUCCESS;
 }
-
 

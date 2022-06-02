@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 34013 2010-11-11 20:56:14Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 
 /** @file
  *
@@ -43,7 +43,7 @@ struct DeviceAliasRule
 
 /* Those rules define PCI slots assignment */
 
-/* Device           Bus  Device Function Priority */ 
+/* Device           Bus  Device Function Priority */
 
 /* Generic rules */
 static const DeviceAssignmentRule aGenericRules[] =

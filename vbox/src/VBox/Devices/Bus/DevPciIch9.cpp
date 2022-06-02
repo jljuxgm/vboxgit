@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 33722 2010-11-03 12:56:43Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -1963,7 +1963,7 @@ static const struct {
     int32_t     iSlot;
     int32_t     iFunction;
 } PciSlotAssignments[] = {
-    /* The only override that have to be here, as host controller is added in the way invisible to bus slot assignment management, 
+    /* The only override that have to be here, as host controller is added in the way invisible to bus slot assignment management,
        maybe to be changed in the future. */
     {
         "i82801",   30, 0 /* Host Controller */

@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-freebsd.cpp 33813 2010-11-05 19:35:30Z vboxsync $ */
+/* $Id: USBProxyDevice-freebsd.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * USB device proxy - the FreeBSD backend.
  */
@@ -323,7 +323,7 @@ static int usbProxyFreeBSDEndpointClose(PUSBPROXYDEV pProxyDev, int Endpoint)
              (void *)pProxyDev, Endpoint));
 
     /* check for cancelling */
-    if (pEndpointFBSD->pUrb != NULL) 
+    if (pEndpointFBSD->pUrb != NULL)
     {
         pEndpointFBSD->fCancelling = true;
         pDevFBSD->fCancelling = true;
@@ -919,7 +919,7 @@ repeat:
 
     /* Check if any endpoints are complete */
     rc = usbProxyFreeBSDDoIoCtl(pProxyDev, USB_FS_COMPLETE, &UsbFsComplete, true);
-    if (RT_SUCCESS(rc)) 
+    if (RT_SUCCESS(rc))
     {
         pXferEndpoint = &pDevFBSD->aHwEndpoint[UsbFsComplete.ep_index];
         pEndpointFBSD = &pDevFBSD->aSwEndpoint[UsbFsComplete.ep_index];

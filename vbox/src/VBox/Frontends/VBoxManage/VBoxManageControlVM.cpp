@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 33830 2010-11-08 11:28:09Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of controlvm command.
  */
@@ -393,7 +393,7 @@ int handleControlVM(HandlerArg *a)
                     RTMsgError("The NIC %d is currently disabled and thus can't change its trace flag", n);
             }
         }
-        else if(   a->argc > 2 
+        else if(   a->argc > 2
                 && !strncmp(a->argv[1], "natpf", 5))
         {
             /* Get the number of network adapters */
@@ -431,7 +431,7 @@ int handleControlVM(HandlerArg *a)
             }
 
             if (!strcmp(a->argv[2], "delete"))
-            { 
+            {
                 if (a->argc >= 3)
                     CHECK_ERROR(engine, RemoveRedirect(Bstr(a->argv[3]).raw()));
             }
