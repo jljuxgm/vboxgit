@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: UsbKbd.cpp 35438 2011-01-07 19:47:06Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -578,8 +578,8 @@ static int usbHidCompleteStall(PUSBHID pThis, PUSBHIDEP pEp, PVUSBURB pUrb, cons
         pEp->fHalted = true;
     else
     {
+        pThis->aEps[0].fHalted = true;
         pThis->aEps[1].fHalted = true;
-        pThis->aEps[2].fHalted = true;
     }
 
     usbHidLinkDone(pThis, pUrb);
