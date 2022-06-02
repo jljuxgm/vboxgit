@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: Global.cpp 31716 2010-08-17 09:50:17Z vboxsync $ */
 
 /** @file
  *
@@ -342,6 +342,7 @@ Global::stringifyMachineState(MachineState_T aState)
         case MachineState_Restoring:            return "Restoring";
         case MachineState_TeleportingPausedVM:  return "TeleportingPausedVM";
         case MachineState_TeleportingIn:        return "TeleportingIn";
+        case MachineState_FaultTolerantSyncing: return "FaultTolerantSyncing";
         case MachineState_DeletingSnapshotOnline: return "DeletingSnapshotOnline";
         case MachineState_DeletingSnapshotPaused: return "DeletingSnapshotPaused";
         case MachineState_RestoringSnapshot:    return "RestoringSnapshot";
