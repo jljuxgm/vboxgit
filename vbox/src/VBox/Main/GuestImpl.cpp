@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 33696 2010-11-02 15:37:54Z vboxsync $ */
+/* $Id: GuestImpl.cpp 33697 2010-11-02 15:56:17Z vboxsync $ */
 
 /** @file
  *
@@ -310,6 +310,12 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
                                         && fCanceled)
                                     {
                                         break;
+                                    }
+                                    if (aTask->progress)
+                                    {
+                                        if (SUCCEEDED(aTask->progress->COMGETTER(Canceled(&fCanceled)))
+                                            && fCanceled)
+                                            break;
                                     }
                                 }
                             }
