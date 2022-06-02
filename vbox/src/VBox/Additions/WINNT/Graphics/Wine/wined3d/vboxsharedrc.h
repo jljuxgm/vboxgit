@@ -1,4 +1,4 @@
-/* $Id: vboxsharedrc.h 32184 2010-09-01 16:37:20Z vboxsync $ */
+/* $Id: vboxsharedrc.h 34987 2010-12-13 10:41:08Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D
@@ -36,7 +36,11 @@
 
 #ifdef DEBUG_misha
 /* just for simplicity */
+#ifdef RT_ARCH_X86
 #define AssertBreakpoint() do { __asm {int 3} } while (0)
+#else
+#define AssertBreakpoint() do { /* @todo */ } while (0)
+#endif
 #define Assert(_expr) do { \
         if (!(_expr)) AssertBreakpoint(); \
     } while (0)
