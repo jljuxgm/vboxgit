@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 30050 2010-06-07 07:11:15Z vboxsync $ */
+/* $Id: MMHyper.cpp 30493 2010-06-29 11:59:47Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -28,6 +28,7 @@
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/log.h>
+#include <include/internal/pgm.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

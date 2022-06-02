@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 30447 2010-06-25 11:38:33Z vboxsync $ */
+/* $Id: CPUM.cpp 30493 2010-06-29 11:59:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -56,7 +56,7 @@
 #include <iprt/string.h>
 #include <iprt/mp.h>
 #include <iprt/cpuset.h>
-
+#include <include/internal/pgm.h>
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *

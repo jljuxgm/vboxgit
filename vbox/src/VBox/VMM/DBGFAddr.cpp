@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 30493 2010-06-29 11:59:47Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -29,6 +29,7 @@
 #include <VBox/param.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
+#include <include/internal/pgm.h>
 
 
 

@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 30338 2010-06-21 14:48:17Z vboxsync $ */
+/* $Id: EMAll.cpp 30493 2010-06-29 11:59:47Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -33,12 +33,12 @@
 #include <VBox/hwaccm.h>
 #include <VBox/tm.h>
 #include <VBox/pdmapi.h>
-
 #include <VBox/param.h>
 #include <VBox/err.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
 #include <VBox/log.h>
+#include <include/internal/pgm.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>

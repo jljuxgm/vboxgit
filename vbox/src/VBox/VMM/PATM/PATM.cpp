@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 30453 2010-06-27 19:43:20Z vboxsync $ */
+/* $Id: PATM.cpp 30493 2010-06-29 11:59:47Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -38,7 +38,6 @@
 #include "PATMPatch.h"
 #include <VBox/vm.h>
 #include <VBox/csam.h>
-
 #include <VBox/dbg.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
@@ -46,6 +45,7 @@
 #include <iprt/asm.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
+#include <include/internal/pgm.h>
 
 #include <iprt/string.h>
 #include "PATMA.h"
