@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 34489 2010-11-29 19:40:38Z vboxsync $ */
+/* $Id: DevLPC.cpp 34504 2010-11-30 12:58:11Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  */
@@ -231,14 +231,13 @@ static DECLCALLBACK(int) lpcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
      */
     PCIDevSetVendorId         (&pThis->dev, 0x8086); /* Intel */
     PCIDevSetDeviceId         (&pThis->dev, 0x27b9);
-    PCIDevSetCommand          (&pThis->dev, 0x0007); /* master, memory and I/O */
+    PCIDevSetCommand          (&pThis->dev, PCI_COMMAND_IOACCESS | PCI_COMMAND_MEMACCESS | PCI_COMMAND_BUSMASTER);
     PCIDevSetRevisionId       (&pThis->dev, 0x02);
     PCIDevSetClassSub         (&pThis->dev, 0x01); /* PCI-to-ISA Bridge */
     PCIDevSetClassBase        (&pThis->dev, 0x06); /* Bridge */
     PCIDevSetHeaderType       (&pThis->dev, 0x80); /* normal, multifunction device (so that other devices can be its functions) */
     PCIDevSetSubSystemVendorId(&pThis->dev, 0x8086);
     PCIDevSetSubSystemId      (&pThis->dev, 0x7270);
-    PCIDevSetInterruptPin     (&pThis->dev, 0x03);
     PCIDevSetStatus           (&pThis->dev, 0x0200); /* PCI_status_devsel_medium */
 
     /** @todo: rewrite using PCI accessors */
