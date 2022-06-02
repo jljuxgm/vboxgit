@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 35894 2011-02-08 11:56:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4911,8 +4911,8 @@ void VBoxGlobal::init()
         {"NetBSD_64",       ":/os_netbsd_64.png"},
         {"Solaris",         ":/os_solaris.png"},
         {"Solaris_64",      ":/os_solaris_64.png"},
-        {"OpenSolaris",     ":/os_opensolaris.png"},
-        {"OpenSolaris_64",  ":/os_opensolaris_64.png"},
+        {"OpenSolaris",     ":/os_oraclesolaris.png"},
+        {"OpenSolaris_64",  ":/os_oraclesolaris_64.png"},
         {"QNX",             ":/os_qnx.png"},
         {"MacOS",           ":/os_macosx.png"},
         {"MacOS_64",        ":/os_macosx_64.png"},
