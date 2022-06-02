@@ -1,10 +1,10 @@
-/* $Id: DBGCInternal.h 35625 2011-01-19 11:17:34Z vboxsync $ */
+/* $Id: DBGCInternal.h 35628 2011-01-19 14:58:26Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -395,8 +395,9 @@ void    dbgcVarSetNoRange(PDBGCVAR pVar);
 void    dbgcVarSetByteRange(PDBGCVAR pVar, uint64_t cb);
 int     dbgcVarToDbgfAddr(PDBGC pDbgc, PCDBGCVAR pVar, PDBGFADDRESS pAddress);
 
+void    dbgcEvalInit(void);
 int     dbgcEvalSub(PDBGC pDbgc, char *pszExpr, size_t cchExpr, PDBGCVAR pResult);
-int     dbgcProcessCommand(PDBGC pDbgc, char *pszCmd, size_t cchCmd, bool fNoExecute);
+int     dbgcEvalCommand(PDBGC pDbgc, char *pszCmd, size_t cchCmd, bool fNoExecute);
 
 int     dbgcSymbolGet(PDBGC pDbgc, const char *pszSymbol, DBGCVARTYPE enmType, PDBGCVAR pResult);
 PCDBGCSYM   dbgcLookupRegisterSymbol(PDBGC pDbgc, const char *pszSymbol);
@@ -433,3 +434,4 @@ extern const unsigned   g_cOps;
 
 
 #endif
+

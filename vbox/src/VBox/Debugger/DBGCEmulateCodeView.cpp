@@ -1,10 +1,10 @@
-/* $Id: DBGCEmulateCodeView.cpp 35626 2011-01-19 12:29:20Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 35628 2011-01-19 14:58:26Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -22,7 +22,6 @@
 #include <VBox/dbg.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pgm.h>
-#include <VBox/vmm/selm.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/dis.h>
 #include <VBox/param.h>
@@ -30,7 +29,6 @@
 #include <VBox/log.h>
 
 #include <iprt/asm.h>
-#include <iprt/alloca.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/assert.h>
