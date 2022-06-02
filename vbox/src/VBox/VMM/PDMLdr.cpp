@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 35188 2010-12-16 15:13:07Z vboxsync $ */
+/* $Id: PDMLdr.cpp 35218 2010-12-17 12:45:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -1111,8 +1111,9 @@ static char *pdmR3File(const char *pszFile, const char *pszDefaultExt, const cha
     /*
      * Use the default location.
      */
-    rc = fShared ? RTPathSharedLibs(szPath, sizeof(szPath))
-                 : RTPathAppPrivateArch(szPath, sizeof(szPath));
+    rc = fShared
+       ? RTPathSharedLibs(    szPath, sizeof(szPath))
+       : RTPathAppPrivateArch(szPath, sizeof(szPath));
     if (!RT_SUCCESS(rc))
     {
         AssertMsgFailed(("RTPath[SharedLibs|AppPrivateArch](,%d) failed rc=%d!\n", sizeof(szPath), rc));

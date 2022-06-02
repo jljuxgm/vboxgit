@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 35204 2010-12-16 17:59:42Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 35218 2010-12-17 12:45:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -175,7 +175,7 @@ static bool IsValidBaseDir(const char *pszBaseDir)
      * Just be darn strict for now.
      */
     char szCorrect[RTPATH_MAX];
-    int rc = RTPathAppPrivateArch(szCorrect, sizeof(szCorrect));
+    int rc = RTPathAppPrivateArchTop(szCorrect, sizeof(szCorrect));
     if (RT_FAILURE(rc))
         return false;
     rc = RTPathAppend(szCorrect, sizeof(szCorrect), VBOX_EXTPACK_INSTALL_DIR);
