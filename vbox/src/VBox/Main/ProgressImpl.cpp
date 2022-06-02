@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 31333 2010-08-03 13:00:54Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 31625 2010-08-13 00:33:16Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -497,6 +497,20 @@ STDMETHODIMP ProgressBase::COMGETTER(OperationPercent)(ULONG *aOperationPercent)
         *aOperationPercent = 100;
     else
         *aOperationPercent = m_ulOperationPercent;
+
+    return S_OK;
+}
+
+STDMETHODIMP ProgressBase::COMGETTER(OperationWeight)(ULONG *aOperationWeight)
+{
+    CheckComArgOutPointerValid(aOperationWeight);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aOperationWeight = m_ulCurrentOperationWeight;
 
     return S_OK;
 }
