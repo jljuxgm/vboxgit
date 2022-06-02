@@ -1,4 +1,4 @@
-/* $Id: UIFirstRunWzd.cpp 33140 2010-10-14 16:20:15Z vboxsync $ */
+/* $Id: UIFirstRunWzd.cpp 33712 2010-11-02 21:50:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -20,7 +20,7 @@
 /* Local includes */
 #include "UIFirstRunWzd.h"
 #include "UIIconPool.h"
-#include "VBoxMediaManagerDlg.h"
+#include "VBoxGlobal.h"
 #include "VBoxProblemReporter.h"
 #include "VBoxVMSettingsHD.h"
 
@@ -223,11 +223,11 @@ void UIFirstRunWzdPage2::sltMediumChanged()
 
 void UIFirstRunWzdPage2::sltOpenVirtualMediaManager()
 {
-    /* Create & open VMM */
-    VBoxMediaManagerDlg dlg(this);
-    dlg.setup(m_pMediaSelector->type(), true /* propose to choose? */);
-    if (dlg.exec() == QDialog::Accepted)
-        m_pMediaSelector->setCurrentItem(dlg.selectedId());
+    /* Get opened vboxMedium id: */
+    QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(m_pMediaSelector->type(), this);
+    /* Update medium-combo if necessary: */
+    if (!strMediumId.isNull())
+        m_pMediaSelector->setCurrentItem(strMediumId);
 }
 
 UIFirstRunWzdPage3::UIFirstRunWzdPage3()
