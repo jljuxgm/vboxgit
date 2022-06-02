@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30627 2010-07-05 17:08:55Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30629 2010-07-05 17:30:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4815,9 +4815,9 @@ void Console::onMousePointerShapeChange(bool fVisible, bool fAlpha,
      * @todo: better solution
      */
 #ifdef RT_OS_WINDOWS
-    CONSOLE_DO_CALLBACKS7(OnMousePointerShapeChange, fVisible, fAlpha, xHot, yHot, width, height, mCallbackData.mpsc.shape.raw());
+    CONSOLE_DO_CALLBACKS7(OnMousePointerShapeChange, fVisible, fAlpha, xHot, yHot, width, height, pShape);
 #else
-    CONSOLE_DO_CALLBACKS8(OnMousePointerShapeChange, fVisible, fAlpha, xHot, yHot, width, height, mCallbackData.mpsc.shape.size(), mCallbackData.mpsc.shape.raw());
+    CONSOLE_DO_CALLBACKS8(OnMousePointerShapeChange, fVisible, fAlpha, xHot, yHot, width, height, pShapeSize, pShape);
 #endif
 
 #if 0
