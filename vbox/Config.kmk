@@ -1,4 +1,4 @@
-# $Id: Config.kmk 32929 2010-10-05 19:49:36Z vboxsync $
+# $Id: Config.kmk 32975 2010-10-07 13:05:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -438,6 +438,8 @@ VBOX_WITH_HEADLESS = 1
 VBOX_WITH_VRDP = 1
 # Enable support for video redirection VRDP channel.
 VBOX_WITH_VRDP_VIDEO_CHANNEL = 1
+# Enable memory consumption limit in VRDP server.
+VBOX_WITH_VRDP_SB_LIMIT = 1
 # Build the VRDP authentication modules.
 VBOX_WITH_VRDP_AUTHMOD = 1
 # Build enhanced version of rdesktop.
@@ -4281,7 +4283,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32929 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32975 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
