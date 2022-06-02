@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 33247 2010-10-20 10:01:48Z vboxsync $ */
+/* $Id: VBoxService.cpp 33272 2010-10-20 17:33:26Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -526,6 +526,8 @@ int main(int argc, char **argv)
         return VBoxServicePageSharingInitFork();
 #endif
 
+    g_pszProgName = RTPathFilename(argv[0]);
+
 #ifdef VBOXSERVICE_TOOLBOX
     /*
      * Run toolbox code before all other stuff, especially before checking the global
@@ -539,7 +541,6 @@ int main(int argc, char **argv)
     /*
      * Do pre-init of services.
      */
-    g_pszProgName = RTPathFilename(argv[0]);
     for (unsigned j = 0; j < RT_ELEMENTS(g_aServices); j++)
     {
         rc = g_aServices[j].pDesc->pfnPreInit();
