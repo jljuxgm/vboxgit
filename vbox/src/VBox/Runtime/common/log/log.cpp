@@ -1,4 +1,4 @@
-/* $Id: log.cpp 30965 2010-07-21 14:03:47Z vboxsync $ */
+/* $Id: log.cpp 32355 2010-09-09 13:43:02Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -1429,6 +1429,44 @@ RTDECL(int) RTLogFlags(PRTLOGGER pLogger, const char *pszVar)
     return rc;
 }
 RT_EXPORT_SYMBOL(RTLogFlags);
+
+
+/**
+ * Changes the buffering setting of the specified logger.
+ *
+ * This can be used for optimizing longish logging sequences.
+ *
+ * @returns The old state.
+ * @param   pLogger         The logger instance (NULL is an alias for the
+ *                          default logger).
+ * @param   fBuffered       The new state.
+ */
+RTDECL(bool) RTLogSetBuffering(PRTLOGGER pLogger, bool fBuffered)
+{
+    bool fOld;
+
+    /*
+     * Resolve the logger instance.
+     */
+    if (!pLogger)
+    {
+        pLogger = RTLogDefaultInstance();
+        if (!pLogger)
+            return false;
+    }
+
+    rtlogLock(pLogger);
+    fOld  = !!(pLogger->fFlags & RTLOGFLAGS_BUFFERED);
+    if (fBuffered)
+        pLogger->fFlags |= RTLOGFLAGS_BUFFERED;
+    else
+        pLogger->fFlags &= ~RTLOGFLAGS_BUFFERED;
+    rtlogUnlock(pLogger);
+
+    return fOld;
+}
+RT_EXPORT_SYMBOL(RTLogSetBuffering);
+
 
 
 #ifndef IN_RC

@@ -1,4 +1,4 @@
-/* $Id: logrel.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: logrel.cpp 32355 2010-09-09 13:43:02Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -144,4 +144,22 @@ RTDECL(void) RTLogRelPrintfV(const char *pszFormat, va_list args)
     RTLogRelLoggerV(NULL, 0, ~0U, pszFormat, args);
 }
 RT_EXPORT_SYMBOL(RTLogRelPrintfV);
+
+
+/**
+ * Changes the buffering setting of the default release logger.
+ *
+ * This can be used for optimizing longish logging sequences.
+ *
+ * @returns The old state.
+ * @param   fBuffered       The new state.
+ */
+RTDECL(bool) RTLogRelSetBuffering(bool fBuffered)
+{
+    PRTLOGGER pLogger = RTLogRelDefaultInstance();
+    if (pLogger)
+        return RTLogSetBuffering(pLogger, fBuffered);
+    return false;
+}
+RT_EXPORT_SYMBOL(RTLogRelSetBuffering);
 
