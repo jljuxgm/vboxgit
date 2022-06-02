@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 32427 2010-09-11 14:42:42Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 32466 2010-09-14 09:06:49Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -806,7 +806,10 @@ static int pdmacFileAioMgrNormalTaskPrepareBuffered(PPDMACEPFILEMGR pAioMgr,
                                             pTask);
 
         if (RT_SUCCESS(rc))
+        {
+            pTask->hReq = hReq;
             *phReq = hReq;
+        }
     }
     else
         LogFlow(("Task %#p was deferred because the access range is locked\n", pTask));
@@ -934,7 +937,10 @@ static int pdmacFileAioMgrNormalTaskPrepareNonBuffered(PPDMACEPFILEMGR pAioMgr,
             rc = pdmacFileAioMgrNormalRangeLock(pAioMgr, pEndpoint, offStart, cbToTransfer, pTask);
 
             if (RT_SUCCESS(rc))
+            {
+                pTask->hReq = hReq;
                 *phReq = hReq;
+            }
             else
             {
                 /* Cleanup */
