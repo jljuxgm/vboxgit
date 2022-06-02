@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32001 2010-08-26 14:13:09Z vboxsync $ */
+/* $Id: FTM.cpp 32002 2010-08-26 14:17:57Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -730,7 +730,7 @@ static DECLCALLBACK(int) ftmR3MasterThread(RTTHREAD Thread, void *pvUser)
             Hdr.GCPhys      = 0;
             Hdr.cbPageRange = 0;
             Hdr.cb          = 0;
-            int rc = RTTcpSgWriteL(pVM->ftm.s.hSocket, 1, &Hdr, sizeof(Hdr));
+            rc = RTTcpSgWriteL(pVM->ftm.s.hSocket, 1, &Hdr, sizeof(Hdr));
             if (RT_FAILURE(rc))
                 LogRel(("FTSync/TCP: Write error (ftmR3MasterThread): %Rrc (cb=%#x)\n", rc, Hdr.cb));
 
