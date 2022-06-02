@@ -1,4 +1,4 @@
-# $Id: Config.kmk 33806 2010-11-05 17:20:15Z vboxsync $
+# $Id: Config.kmk 33935 2010-11-10 15:37:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -662,6 +662,12 @@ VBOX_DO_STRIP_MODULES = 1
 ## @todo os2? Reconsider perhaps windows? (see defect) This should be made the default.
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_VMMR0_DISABLE_PREEMPTION = 1
+endif
+# Mask all Local APIC interrupt vectors which are set up to NMI mode when switching
+# to/from the guest in raw mode. Modern Linux kernels use the performance counter
+# to raise an NMI from time to time.
+if1of ($(KBUILD_TARGET), linux)
+ VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI = 1
 endif
 ## For testing deadlock detection and lock order validation.
 # If issues are found, create high priority defects and temporarily comment
@@ -4352,7 +4358,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 33806 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 33935 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

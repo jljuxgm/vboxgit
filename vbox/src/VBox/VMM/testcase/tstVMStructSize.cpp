@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 33935 2010-11-10 15:37:02Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -259,6 +259,9 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VM, aCpus[1].cpum.s.Guest, 64);
     CHECK_MEMBER_ALIGNMENT(VM, aCpus[0].cpum.s.Hyper, 64);
     CHECK_MEMBER_ALIGNMENT(VM, aCpus[1].cpum.s.Hyper, 64);
+#ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
+    CHECK_MEMBER_ALIGNMENT(VM, cpum.s.pvApicBase, 8);
+#endif
     CHECK_MEMBER_ALIGNMENT(VM, cpum.s.GuestEntry, 64);
 
     CHECK_MEMBER_ALIGNMENT(VMCPU, vmm.s.u64CallRing3Arg, 8);

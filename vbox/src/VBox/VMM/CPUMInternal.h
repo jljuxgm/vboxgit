@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: CPUMInternal.h 33935 2010-11-10 15:37:02Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -312,12 +312,17 @@ typedef struct CPUM
     CPUMCPUID               GuestCpuIdDef;
 
 #if HC_ARCH_BITS == 32
-    /** Align the next member, and thereby the structure, on a 64-byte boundary. */
     uint8_t                 abPadding2[4];
 #endif
 
+#ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
+    RTHCPTR                 pvApicBase;
+    uint32_t                fApicDisVectors;
+    uint8_t                 abPadding3[HC_ARCH_BITS == 32 ? 56 : 52];
+#endif
+
     /**
-     * Guest context on raw mode entry.
+     * Guest context on raw mode entry. 64-byte aligned!
      * This a debug feature, see CPUMR3SaveEntryCtx.
      */
     CPUMCTX                 GuestEntry;
