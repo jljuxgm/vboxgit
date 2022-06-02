@@ -1,4 +1,4 @@
-/* $Id: slirp.c 34041 2010-11-12 18:56:40Z vboxsync $ */
+/* $Id: slirp.c 34043 2010-11-12 19:04:49Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1549,7 +1549,7 @@ void if_encap(PNATState pData, uint16_t eth_proto, struct mbuf *m, int flags)
     m->m_data -= ETH_HLEN;
     m->m_len += ETH_HLEN;
     eh = mtod(m, struct ethhdr *);
-    mlen = m->m_len;//m_length(m, NULL);
+    mlen = m->m_len;
 
     if (memcmp(eh->h_source, special_ethaddr, ETH_ALEN) != 0)
     {
