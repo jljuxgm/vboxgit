@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31335 2010-08-03 13:24:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31343 2010-08-03 15:32:10Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4148,6 +4148,8 @@ STDMETHODIMP Machine::Delete(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProg
                              0,
                              "MachineDelete");
 
+    pTask->pProgress.queryInterfaceTo(aProgress);
+
     alock.release();
 
     if (fNeedsGlobalSaveSettings)
@@ -4161,8 +4163,6 @@ STDMETHODIMP Machine::Delete(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProg
         delete pTask;
         return setError(E_FAIL, "Could not create MachineDelete thread (%Rrc)", vrc);
     }
-
-    pTask->pProgress.queryInterfaceTo(aProgress);
 
     LogFlowFuncLeave();
 
