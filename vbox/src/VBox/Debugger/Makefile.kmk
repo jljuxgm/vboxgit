@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31530 2010-08-10 12:24:45Z vboxsync $
+# $Id: Makefile.kmk 31846 2010-08-21 20:16:47Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -48,6 +48,7 @@ Debugger_SOURCES   = \
 	DBGCCommands.cpp \
 	DBGCEmulateCodeView.cpp \
 	DBGCOps.cpp \
+	DBGCGdbRemoteStub.cpp \
 	DBGCTcp.cpp
 
 #
