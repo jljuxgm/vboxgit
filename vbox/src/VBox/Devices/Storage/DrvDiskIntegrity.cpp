@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 34433 2010-11-27 11:09:38Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 34932 2010-12-10 00:29:53Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -671,6 +671,9 @@ static DECLCALLBACK(int) drvdiskintStartFlush(PPDMIMEDIAASYNC pInterface, void *
     PDRVDISKINTEGRITY pThis = PDMIMEDIAASYNC_2_DRVDISKINTEGRITY(pInterface);
     PDRVDISKAIOREQ pIoReq = drvdiskintIoReqAlloc(DRVDISKAIOTXDIR_FLUSH, 0, NULL, 0, 0, pvUser);
     AssertPtr(pIoReq);
+
+    if (pThis->fTraceRequests)
+        drvdiskintIoReqAdd(pThis, pIoReq);
 
     return pThis->pDrvMediaAsync->pfnStartFlush(pThis->pDrvMediaAsync, pIoReq);
 }
