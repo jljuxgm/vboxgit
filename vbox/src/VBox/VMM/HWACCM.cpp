@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 32489 2010-09-14 15:50:31Z vboxsync $ */
+/* $Id: HWACCM.cpp 32506 2010-09-15 11:03:14Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -550,6 +550,9 @@ VMMR3DECL(int) HWACCMR3InitCPU(PVM pVM)
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatDRxArmed,               "/HWACCM/CPU%d/Debug/Armed");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatDRxContextSwitch,       "/HWACCM/CPU%d/Debug/ContextSwitch");
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatDRxIOCheck,             "/HWACCM/CPU%d/Debug/IOCheck");
+
+        HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatLoadMinimal,            "/HWACCM/CPU%d/Load/Minimal");
+        HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatLoadFull,               "/HWACCM/CPU%d/Load/Full");
 
 #if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
         HWACCM_REG_COUNTER(&pVCpu->hwaccm.s.StatFpu64SwitchBack,        "/HWACCM/CPU%d/Switch64/Fpu");

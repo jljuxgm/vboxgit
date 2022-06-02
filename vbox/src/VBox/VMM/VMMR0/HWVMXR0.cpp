@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 32458 2010-09-13 16:30:10Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 32506 2010-09-15 11:03:14Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2617,6 +2617,7 @@ ResumeExecution:
     if (!pVCpu->hwaccm.s.fContextUseFlags)
     {
         VMXR0LoadMinimalGuestState(pVM, pVCpu, pCtx);
+        STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatLoadMinimal);
     }
     else
 #endif
@@ -2627,6 +2628,7 @@ ResumeExecution:
             VMMR0LogFlushEnable(pVCpu);
             goto end;
         }
+        STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatLoadFull);
     }
 
 #ifndef VBOX_WITH_VMMR0_DISABLE_PREEMPTION

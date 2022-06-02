@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 32361 2010-09-09 15:46:29Z vboxsync $ */
+/* $Id: HWACCMInternal.h 32506 2010-09-15 11:03:14Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -858,6 +858,9 @@ typedef struct HWACCMCPU
     STAMCOUNTER             StatDRxArmed;
     STAMCOUNTER             StatDRxContextSwitch;
     STAMCOUNTER             StatDRxIOCheck;
+
+    STAMCOUNTER             StatLoadMinimal;
+    STAMCOUNTER             StatLoadFull;
 
 #if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
     STAMCOUNTER             StatFpu64SwitchBack;
