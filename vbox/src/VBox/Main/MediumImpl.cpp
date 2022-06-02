@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31098 2010-07-26 09:06:52Z vboxsync $ */
+/* $Id: MediumImpl.cpp 31164 2010-07-28 09:01:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1578,7 +1578,7 @@ STDMETHODIMP Medium::COMGETTER(AutoReset)(BOOL *aAutoReset)
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (m->pParent)
+    if (m->pParent.isNull())
         *aAutoReset = FALSE;
     else
         *aAutoReset = m->autoReset;
