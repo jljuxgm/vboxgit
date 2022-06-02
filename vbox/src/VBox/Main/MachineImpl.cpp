@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33078 2010-10-12 16:26:35Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33108 2010-10-13 14:31:56Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3859,15 +3859,17 @@ STDMETHODIMP Machine::MountMedium(IN_BSTR aControllerName,
         if (mediumType != DeviceType_HardDisk && !oldmedium.isNull())
             oldmedium->removeBackReference(mData->mUuid);
         if (!medium.isNull())
+        {
             medium->addBackReference(mData->mUuid);
-        pAttach->updateMedium(medium);
+            // and decide which medium registry to use now that the medium is attached:
+            if (mData->pMachineConfigFile->canHaveOwnMediaRegistry())
+                // machine XML is VirtualBox 4.0 or higher:
+                medium->addRegistry(getId());        // machine UUID
+            else
+                medium->addRegistry(mParent->getGlobalRegistryId()); // VirtualBox global registry UUID
+        }
 
-        // and decide which medium registry to use now that the medium is attached:
-        if (mData->pMachineConfigFile->canHaveOwnMediaRegistry())
-            // machine XML is VirtualBox 4.0 or higher:
-            medium->addRegistry(getId());        // machine UUID
-        else
-            medium->addRegistry(mParent->getGlobalRegistryId()); // VirtualBox global registry UUID
+        pAttach->updateMedium(medium);
 
         setModified(IsModified_Storage);
     }

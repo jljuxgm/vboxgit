@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 33004 2010-10-08 10:23:59Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 33108 2010-10-13 14:31:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3309,7 +3309,7 @@ DECLCALLBACK(int) Console::changeRemovableMedium(Console *pConsole,
                                                  bool fForce)
 {
     LogFlowFunc(("pConsole=%p uInstance=%u pszDevice=%p:{%s} enmBus=%u, aMediumAtt=%p, fForce=%d\n",
-                 pConsole, uInstance, pcszDevice, enmBus, fForce));
+                 pConsole, uInstance, pcszDevice, pcszDevice, enmBus, aMediumAtt, fForce));
 
     AssertReturn(pConsole, VERR_INVALID_PARAMETER);
 
