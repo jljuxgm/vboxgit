@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 35785 2011-01-31 12:45:37Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 35809 2011-02-01 12:31:15Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -40,7 +40,7 @@
 #define VBOXNETADP_CTL_DEV_NAME    "/dev/vboxnetctl"
 #define VBOXNETADP_NAME            "vboxnet"
 #define VBOXNETADP_MAX_NAME_LEN    32
-#define VBOXNETADP_CTL_ADD    _IOR('v', 1, VBOXNETADPREQ)
+#define VBOXNETADP_CTL_ADD   _IOWR('v', 1, VBOXNETADPREQ)
 #define VBOXNETADP_CTL_REMOVE _IOW('v', 2, VBOXNETADPREQ)
 typedef struct VBoxNetAdpReq
 {
