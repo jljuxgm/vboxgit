@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 30789 2010-07-12 11:21:21Z vboxsync $ */
+/* $Id: PGMInternal.h 30813 2010-07-14 09:53:09Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1164,7 +1164,7 @@ typedef struct PGMRAMRANGE
     /** Start of the HC mapping of the range. This is only used for MMIO2. */
     R3PTRTYPE(void *)                   pvR3;
     /** Live save per page tracking data. */
-    R3PTRTYPE(PPGMLIVESAVERAMPAGE)         paLSPages;
+    R3PTRTYPE(PPGMLIVESAVERAMPAGE)      paLSPages;
     /** The range description. */
     R3PTRTYPE(const char *)             pszDesc;
     /** Pointer to self - R0 pointer. */
