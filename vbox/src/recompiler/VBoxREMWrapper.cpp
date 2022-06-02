@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 35152 2010-12-15 16:45:42Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 35161 2010-12-15 17:27:11Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1982,7 +1982,7 @@ static int remLoadLinuxObj(void)
      */
     if (g_ModVMM != NIL_RTLDRMOD)
     {
-        rc = SUPR3HardenedLdrLoadAppPriv("VBoxVMM", &g_ModVMM, NULL, 0);
+        rc = SUPR3HardenedLdrLoadAppPriv("VBoxVMM", &g_ModVMM, 0 /*=fFlags*/, NULL, 0);
         AssertRCReturn(rc, rc);
         for (size_t i = 0; i < RT_ELEMENTS(g_aVMMImports); i++)
         {
@@ -2096,7 +2096,7 @@ static bool remIs64bitEnabled(PVM pVM)
 #  ifdef VBOX_WITHOUT_REM_LDR_CYCLE
     if (g_ModVMM == NIL_RTLDRMOD)
     {
-        rc = SUPR3HardenedLdrLoadAppPriv("VBoxVMM", &g_ModVMM, NULL, 0);
+        rc = SUPR3HardenedLdrLoadAppPriv("VBoxVMM", &g_ModVMM, 0 /*=fFlags*/, NULL, 0);
         AssertRCReturn(rc, false);
     }
 
