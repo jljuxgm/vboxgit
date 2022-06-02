@@ -1,4 +1,4 @@
-/* $Id: VCICacheCore.cpp 33524 2010-10-27 16:44:37Z vboxsync $ */
+/* $Id: VCICacheCore.cpp 33533 2010-10-28 07:28:44Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -716,6 +716,7 @@ static int vciBlkMapLoad(PVCICACHE pStorage, uint64_t offBlkMap, uint32_t cBlkMa
                         while (   RT_SUCCESS(rc)
                                && cBlocksLeft)
                         {
+#if 0
                             while (cBlocksRead)
                             {
                                 if (pRangeCur->fFree)
@@ -738,6 +739,7 @@ static int vciBlkMapLoad(PVCICACHE pStorage, uint64_t offBlkMap, uint32_t cBlkMa
                                     /* Create a new range descriptor. */
                                 }
                             }
+#endif
                             cBlocksLeft -= cBlocksRead;
                             offBlkMap   += cBlocksRead;
 
