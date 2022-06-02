@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 30850 2010-07-14 17:41:01Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 31764 2010-08-18 14:00:39Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1377,7 +1377,6 @@ int main()
     GEN_CHECK_OFF(VNETSTATE, pCanRxQueueR3);
     GEN_CHECK_OFF(VNETSTATE, pCanRxQueueR0);
     GEN_CHECK_OFF(VNETSTATE, pCanRxQueueRC);
-    GEN_CHECK_OFF(VNETSTATE, pTxBuf);
     GEN_CHECK_OFF(VNETSTATE, pLinkUpTimer);
 # ifdef VNET_TX_DELAY
     GEN_CHECK_OFF(VNETSTATE, pTxTimerR3);
