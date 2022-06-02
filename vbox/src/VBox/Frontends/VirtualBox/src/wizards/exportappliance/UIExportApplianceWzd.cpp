@@ -1,4 +1,4 @@
-/* $Id: UIExportApplianceWzd.cpp 33702 2010-11-02 17:52:06Z vboxsync $ */
+/* $Id: UIExportApplianceWzd.cpp 33703 2010-11-02 17:55:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -162,7 +162,7 @@ bool UIExportApplianceWzdPage1::isComplete() const
 
 bool UIExportApplianceWzdPage1::validatePage()
 {
-    /* Ask user about disk-less machine */
+    /* Ask user machines which are in save state currently. */
     QStringList savedMachines;
     QList<QListWidgetItem*> pItems = m_pVMSelector->selectedItems();
     for (int i=0; i < pItems.size(); ++i)
