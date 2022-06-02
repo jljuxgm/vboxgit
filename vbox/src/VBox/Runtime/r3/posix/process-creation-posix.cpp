@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 33602 2010-10-29 12:39:54Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 33772 2010-11-04 14:59:15Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -338,11 +338,7 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
      * Check for execute access to the file.
      */
     if (access(pszExec, X_OK))
-    {
-        rc = RTErrConvertFromErrno(errno);
-        AssertMsgFailed(("'%s' %Rrc!\n", pszExec, rc));
-        return rc;
-    }
+        return RTErrConvertFromErrno(errno);
 
     pid_t pid = -1;
 
