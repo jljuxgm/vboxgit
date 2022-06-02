@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 30500 2010-06-29 13:20:37Z vboxsync $ */
+/* $Id: CSAM.cpp 30572 2010-07-02 11:52:02Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2288,9 +2288,10 @@ VMMR3DECL(int) CSAMR3CheckCode(PVM pVM, RTRCPTR pInstrGC)
     int rc;
     PCSAMPAGE pPage = NULL;
 
-    if (EMIsRawRing0Enabled(pVM) == false || PATMIsPatchGCAddr(pVM, pInstrGC) == true)
+    if (    EMIsRawRing0Enabled(pVM) == false 
+        ||  PATMIsPatchGCAddr(pVM, pInstrGC) == true)
     {
-        // No use
+        /* Not active. */
         return VINF_SUCCESS;
     }
 

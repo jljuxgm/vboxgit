@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 29436 2010-05-12 20:57:57Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 30572 2010-07-02 11:52:02Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -1106,7 +1106,7 @@ int main()
     GEN_CHECK_OFF(PATCHINFO, uState);
     GEN_CHECK_OFF(PATCHINFO, uOldState);
     GEN_CHECK_OFF(PATCHINFO, uOpMode);
-    GEN_CHECK_OFF(PATCHINFO, pPrivInstrHC);
+    GEN_CHECK_OFF(PATCHINFO, unusedHC);
     GEN_CHECK_OFF(PATCHINFO, pPrivInstrGC);
     GEN_CHECK_OFF(PATCHINFO, aPrivInstr);
     GEN_CHECK_OFF(PATCHINFO, aPrivInstr[1]);
@@ -1128,11 +1128,11 @@ int main()
     GEN_CHECK_OFF(PATCHINFO, Patch2GuestAddrTree);
     GEN_CHECK_OFF(PATCHINFO, Guest2PatchAddrTree);
     GEN_CHECK_OFF(PATCHINFO, nrPatch2GuestRecs);
-    GEN_CHECK_OFF(PATCHINFO, cacheRec);
-    GEN_CHECK_OFF(PATCHINFO, cacheRec.pPatchLocStartHC);
-    GEN_CHECK_OFF(PATCHINFO, cacheRec.pPatchLocEndHC);
-    GEN_CHECK_OFF(PATCHINFO, cacheRec.pGuestLoc);
-    GEN_CHECK_OFF(PATCHINFO, cacheRec.opsize);
+    GEN_CHECK_OFF(PATCHINFO, unused);
+    GEN_CHECK_OFF(PATCHINFO, unused.pPatchLocStartHC);
+    GEN_CHECK_OFF(PATCHINFO, unused.pPatchLocEndHC);
+    GEN_CHECK_OFF(PATCHINFO, unused.pGuestLoc);
+    GEN_CHECK_OFF(PATCHINFO, unused.opsize);
     GEN_CHECK_OFF(PATCHINFO, pTempInfo);
     GEN_CHECK_OFF(PATCHINFO, cCodeWrites);
     GEN_CHECK_OFF(PATCHINFO, cTraps);
