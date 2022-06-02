@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 33740 2010-11-03 17:28:41Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 33832 2010-11-08 11:34:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -948,7 +948,7 @@ static int supR3HardenedVerifyPathSanity(const char *pszPath, char *pszErr, size
                 break;
             }
             *pszDst++ = *pszSrc++;
-            if (pszDst - &pInfo->szPath[0] >= SUPR3HARDENED_MAX_PATH)
+            if ((uintptr_t)(pszDst - &pInfo->szPath[0]) >= SUPR3HARDENED_MAX_PATH)
                 return supR3HardenedSetError3(VERR_SUPLIB_PATH_TOO_LONG, pszErr, cbErr,
                                               "The path is too long: '", pszPath, "'");
         }
