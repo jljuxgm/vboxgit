@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3722,7 +3722,7 @@ RWLockHandle& VirtualBox::getMediaTreeLockHandle()
 
 /**
  *  Thread function that watches the termination of all client processes
- *  that have opened sessions using IMachine::LockForSession()
+ *  that have opened sessions using IMachine::LockMachine()
  */
 // static
 DECLCALLBACK(int) VirtualBox::ClientWatcher(RTTHREAD /* thread */, void *pvUser)

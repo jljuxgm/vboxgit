@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1232,7 +1232,7 @@ HRESULT Appliance::importFS(const LocationInfo &locInfo,
              ++itM)
         {
             const MyHardDiskAttachment &mhda = *itM;
-            rc2 = mhda.pMachine->LockForSession(stack.pSession, false /* fPermitShared */, NULL);
+            rc2 = mhda.pMachine->LockMachine(stack.pSession, LockType_Write);
             if (SUCCEEDED(rc2))
             {
                 ComPtr<IMachine> sMachine;
@@ -1759,7 +1759,7 @@ void Appliance::importMachineGeneric(const ovf::VirtualSystem &vsysThis,
         try
         {
             // to attach things we need to open a session for the new machine
-            rc = pNewMachine->LockForSession(stack.pSession, false /* fPermitShared */, NULL);
+            rc = pNewMachine->LockMachine(stack.pSession, LockType_Write);
             if (FAILED(rc)) DebugBreakThrow(rc);
             stack.fSessionOpen = true;
 
@@ -1871,7 +1871,7 @@ void Appliance::importMachineGeneric(const ovf::VirtualSystem &vsysThis,
         try
         {
             // to attach things we need to open a session for the new machine
-            rc = pNewMachine->LockForSession(stack.pSession, false /* fPermitShared */, NULL);
+            rc = pNewMachine->LockMachine(stack.pSession, LockType_Write);
             if (FAILED(rc)) DebugBreakThrow(rc);
             stack.fSessionOpen = true;
 

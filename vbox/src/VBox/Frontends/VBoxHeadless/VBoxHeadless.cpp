@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 31016 2010-07-22 16:39:23Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -823,8 +823,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
               Utf8Str(id).raw()));
 
         // open a session
-        SessionType_T st;
-        CHECK_ERROR_BREAK(m, LockForSession(session, false /* fPermitShared */, &st));
+        CHECK_ERROR_BREAK(m, LockMachine(session, LockType_Write));
         fSessionOpened = true;
 
         /* get the console */

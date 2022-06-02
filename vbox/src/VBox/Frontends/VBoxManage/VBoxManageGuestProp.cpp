@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 31016 2010-07-22 16:39:23Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -87,8 +87,7 @@ static int handleGetGuestProperty(HandlerArg *a)
     if (machine)
     {
         /* open a session for the VM - new or existing */
-        SessionType_T st;
-        CHECK_ERROR_RET(machine, LockForSession(a->session, true /* fPermitShared */, &st), 1);
+        CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Shared), 1);
 
         /* get the mutable session machine */
         a->session->COMGETTER(Machine)(machine.asOutParam());
@@ -153,8 +152,7 @@ static int handleSetGuestProperty(HandlerArg *a)
     if (machine)
     {
         /* open a session for the VM - new or existing */
-        SessionType_T st;
-        CHECK_ERROR_RET(machine, LockForSession(a->session, true /* fPermitShared */, &st), 1);
+        CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Write), 1);
 
         /* get the mutable session machine */
         a->session->COMGETTER(Machine)(machine.asOutParam());
@@ -214,8 +212,7 @@ static int handleEnumGuestProperty(HandlerArg *a)
     if (machine)
     {
         /* open a session for the VM - new or existing */
-        SessionType_T st;
-        CHECK_ERROR_RET(machine, LockForSession(a->session, true /* fPermitShared */, &st), 1);
+        CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Shared), 1);
 
         /* get the mutable session machine */
         a->session->COMGETTER(Machine)(machine.asOutParam());

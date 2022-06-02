@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 31016 2010-07-22 16:39:23Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -311,8 +311,7 @@ int handleModifyVM(HandlerArg *a)
     }
 
     /* open a session for the VM */
-    SessionType_T st;
-    CHECK_ERROR_RET(machine, LockForSession(a->session, false /* fPermitShared */, &st), 1);
+    CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Write), 1);
 
     /* get the mutable session machine */
     a->session->COMGETTER(Machine)(machine.asOutParam());

@@ -1,4 +1,4 @@
-/* $Id: UIVMPreviewWindow.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: UIVMPreviewWindow.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -244,7 +244,7 @@ void UIVMPreviewWindow::sltRecreatePreview()
                 if (!session.isNull())
                 {
                     CVirtualBox vbox = vboxGlobal().virtualBox();
-                    m_machine.LockForSession(session, true /* fPermitShared */);
+                    m_machine.LockMachine(session, KLockType_Shared);
                     if (vbox.isOk())
                     {
                         CDisplay display = session.GetConsole().GetDisplay();

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 31008 2010-07-22 15:24:27Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2178,8 +2178,9 @@ CSession VBoxGlobal::openSession(const QString &aId, bool aExisting /* = false *
     CMachine foundMachine = CVirtualBox(mVBox).GetMachine(aId);
     if (!foundMachine.isNull())
     {
-        KSessionType t = foundMachine.LockForSession(session, aExisting /* fPermitShared */);
-        if (t == KSessionType_Shared)
+        foundMachine.LockMachine(session,
+                                 (aExisting) ? KLockType_Shared : KLockType_Write);
+        if (session.GetType() == KSessionType_Shared)
         {
             CMachine machine = session.GetMachine();
             /* Make sure that the language is in two letter code.
