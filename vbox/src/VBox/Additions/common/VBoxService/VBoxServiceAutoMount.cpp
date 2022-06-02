@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 33886 2010-11-09 10:34:14Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 33922 2010-11-09 20:12:25Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -202,7 +202,7 @@ static int VBoxServiceAutoMountSharedFolder(const char *pszShareName, const char
 {
     AssertPtr(pOpts);
 
-    int rc;
+    int rc = VINF_SUCCESS;
     char szAlreadyMountedTo[RTPATH_MAX];
     /* If a Shared Folder already is mounted but not to our desired mount point,
      * do an unmount first! */
