@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 31265 2010-08-02 06:27:00Z vboxsync $ */
+/* $Id: DevCodec.cpp 31266 2010-08-02 07:08:56Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -211,8 +211,8 @@ static int codecGetParameter(struct CODECState *pState, uint32_t cmd, uint64_t *
         Log(("HDAcodec: invalide node address %d\n", CODEC_NID(cmd)));
         return VINF_SUCCESS;
     }
-    Assert(((cmd & CODEC_VERB_8BIT_DATA) < 16));
-    if ((cmd & CODEC_VERB_8BIT_DATA) >= 16)
+    Assert(((cmd & CODEC_VERB_8BIT_DATA) < CODECNODE_F0_PARAM_LENGTH));
+    if ((cmd & CODEC_VERB_8BIT_DATA) >= CODECNODE_F0_PARAM_LENGTH)
     {
         Log(("HDAcodec: invalide F00 parameter %d\n", (cmd & CODEC_VERB_8BIT_DATA)));
         return VINF_SUCCESS;
