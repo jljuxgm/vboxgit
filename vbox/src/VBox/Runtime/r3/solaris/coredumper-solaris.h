@@ -1,4 +1,4 @@
-/* $Id: tstRTCoreDump.h 31821 2010-08-20 13:53:41Z vboxsync $ */
+/* $Id: coredumper-solaris.h 31822 2010-08-20 13:55:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core dump, header.
  */
