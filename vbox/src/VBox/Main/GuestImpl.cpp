@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 34554 2010-12-01 10:32:22Z vboxsync $ */
+/* $Id: GuestImpl.cpp 34619 2010-12-02 15:51:06Z vboxsync $ */
 
 /** @file
  *
@@ -2399,7 +2399,7 @@ STDMETHODIMP Guest::CopyToGuest(IN_BSTR aSource, IN_BSTR aDest,
                      * Prepare tool command line.
                      */
                     char szOutput[RTPATH_MAX];
-                    if (RTStrPrintf(szOutput, sizeof(szOutput), "--output=%s", Utf8Dest.c_str()) >= sizeof(szOutput) - 1)
+                    if (RTStrPrintf(szOutput, sizeof(szOutput), "--output=%s", Utf8Dest.c_str()) <= sizeof(szOutput) - 1)
                     {
                         /*
                          * Normalize path slashes, based on the detected guest.
@@ -2632,17 +2632,21 @@ HRESULT Guest::createDirectoryInternal(IN_BSTR aDirectory,
                 if (SUCCEEDED(rc))
                 {
                     rc = GetProcessStatus(uPID, &uRetExitCode, &uRetFlags, &uRetStatus);
-                    if (uRetExitCode == 0)
+                    if (SUCCEEDED(rc) && uRetExitCode != 0)
                     {
-                        progressCreate->notifyComplete(S_OK);
+                        rc = setError(VBOX_E_IPRT_ERROR,
+                                      tr("Error while creating directory"));
                     }
-                    else
-                        progressCreate->notifyComplete(VBOX_E_IPRT_ERROR,
-                                                       COM_IIDOF(IGuest),
-                                                       Guest::getStaticComponentName(),
-                                                       Guest::tr("Error while creating directory"));
                 }
             }
+            else if (fCanceled)
+                rc = setError(VBOX_E_IPRT_ERROR,
+                                      tr("Directory creation was aborted"));
+            else
+                AssertReleaseMsgFailed(("Directory creation neither completed nor canceled!?"));
+
+            if (SUCCEEDED(rc))
+                progressCreate->notifyComplete(S_OK);
             else
                 progressCreate->notifyComplete(VBOX_E_IPRT_ERROR,
                                                COM_IIDOF(IGuest),
