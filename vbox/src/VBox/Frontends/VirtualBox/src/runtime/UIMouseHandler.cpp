@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 30409 2010-06-24 04:11:27Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 30410 2010-06-24 04:14:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -206,7 +206,7 @@ void UIMachineView::setMouseCoalescingEnabled(bool fOn)
     /* Enable mouse event compression if we leave the VM view.
      * This is necessary for having smooth resizing of the VM/other windows.
      * Disable mouse event compression if we enter the VM view.
-     * So all mouse events are registered in the VM.
+     * So all mouse events are registered in the VM. */
     ::darwinSetMouseCoalescingEnabled(fOn);
 }
 #endif /* Q_WS_MAC */
