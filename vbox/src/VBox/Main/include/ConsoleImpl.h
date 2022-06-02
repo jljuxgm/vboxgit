@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 35157 2010-12-15 17:13:27Z vboxsync $ */
+/* $Id: ConsoleImpl.h 35171 2010-12-16 10:53:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -652,6 +652,8 @@ private:
     bool mfSnapshotFolderSizeWarningShown : 1;
     /** true if we already showed the snapshot folder ext4/xfs bug warning. */
     bool mfSnapshotFolderExt4WarningShown : 1;
+    /** true if we already listed the disk type of the snapshot folder. */
+    bool mfSnapshotFolderDiskTypeShown : 1;
 
     /** Pointer to the VMM -> User (that's us) callbacks.
      * This structure is followed by a pointer to the Console object. */

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 34794 2010-12-07 15:28:17Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 35171 2010-12-16 10:53:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -335,6 +335,7 @@ Console::Console()
     , mVMIsAlreadyPoweringOff(false)
     , mfSnapshotFolderSizeWarningShown(false)
     , mfSnapshotFolderExt4WarningShown(false)
+    , mfSnapshotFolderDiskTypeShown(false)
     , mpVmm2UserMethods(NULL)
     , m_pVMMDev(NULL)
     , mAudioSniffer(NULL)
