@@ -1,4 +1,4 @@
-/* $Id: UIVMPreviewWindow.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
+/* $Id: UIVMPreviewWindow.cpp 32409 2010-09-10 13:47:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -240,7 +240,7 @@ void UIVMPreviewWindow::sltRecreatePreview()
                 QVector<BYTE> screenData = m_machine.ReadSavedScreenshotPNGToArray(0, width, height);
                 if (screenData.size() != 0)
                 {
-                    QImage shot = QImage::fromData(screenData.data(), screenData.size(), "PNG").scaled(m_vRect.size());
+                    QImage shot = QImage::fromData(screenData.data(), screenData.size(), "PNG").scaled(m_vRect.size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
                     dimImage(shot);
                     painter.drawImage(m_vRect.x(), m_vRect.y(), shot);
                     fDone = true;
