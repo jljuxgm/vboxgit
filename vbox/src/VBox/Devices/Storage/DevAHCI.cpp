@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 32069 2010-08-29 15:54:53Z vboxsync $ */
+/* $Id: DevAHCI.cpp 32072 2010-08-29 16:06:33Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -477,10 +477,8 @@ typedef struct AHCIPort
     /** First task throwing an error. */
     R3PTRTYPE(volatile PAHCIPORTTASKSTATE) pTaskErr;
 
-    uint32_t                        u32Alignment5[4];
-
-#if 0 /*HC_ARCH_BITS == 32*/
-    uint32_t                        u32Alignment6;
+#if HC_ARCH_BITS == 32
+    uint32_t                        u32Alignment7;
 #endif
 
     /** Release statistics: number of DMA commands. */
