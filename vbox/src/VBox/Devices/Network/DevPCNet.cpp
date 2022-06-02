@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 29435 2010-05-12 20:55:39Z vboxsync $ */
+/* $Id: DevPCNet.cpp 30722 2010-07-08 08:19:41Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -1407,7 +1407,7 @@ static void pcnetUpdateIrq(PCNetState *pThis)
     if (RT_UNLIKELY(iISR != pThis->iISR))
     {
         Log(("#%d INTA=%d\n", PCNET_INST_NR, iISR));
-        PDMDevHlpPCISetIrqNoWait(PCNETSTATE_2_DEVINS(pThis), 0, iISR);
+        PDMDevHlpPCISetIrq(PCNETSTATE_2_DEVINS(pThis), 0, iISR);
         pThis->iISR = iISR;
     }
     STAM_PROFILE_ADV_STOP(&pThis->StatInterrupt, a);
