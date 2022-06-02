@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 35668 2011-01-21 14:15:04Z vboxsync $ */
+/* $Id: UIVMListView.cpp 35669 2011-01-21 14:16:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -599,10 +599,10 @@ QPixmap UIVMListView::dragPixmap(const QModelIndex &index) const
     /* Todo: check Win XP, Vista, 2003 */
     if (QSysInfo::windowsVersion() == QSysInfo::WV_WINDOWS7)
 # endif /* Q_WS_WIN */
-	{
-	    p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-		p.fillRect(image.rect(), QColor(0, 0, 0, 177));
-	}
+    {
+        p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+        p.fillRect(image.rect(), QColor(0, 0, 0, 177));
+    }
 #endif /* defined(Q_WS_MAC) || defined(Q_WS_WIN) */
     p.end();
     /* Some Qt versions seems buggy in creating QPixmap from QImage. Seems they
