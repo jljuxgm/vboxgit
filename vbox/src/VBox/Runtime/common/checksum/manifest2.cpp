@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 34418 2010-11-26 17:25:58Z vboxsync $ */
+/* $Id: manifest2.cpp 34442 2010-11-29 00:25:17Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -673,6 +673,26 @@ RTDECL(int) RTManifestEntryRemove(RTMANIFEST hManifest, const char *pszEntry)
 
     return rc;
 }
+
+
+#if 0
+static int rtManifestReadLine(RTVFSIOSTREAM hVfsIos, char *pszLine, size_t cbLine)
+{
+    /* This is horribly slow right now, but it's not a biggy as the input is
+       usually cached in memory somewhere... */
+    *pszLine = '\0';
+    while (cbLine > 1)
+    {
+        int rc = RTVfsIoStrmRead(hVfsIos, pszLine, 1, true /*fBLocking*/, NULL);
+        if (RT_FAILURE(rc))
+        {
+            *pszLine = '\0';
+            return rc == VERR_EOF ? VINF_EOF : rc;
+        }
+    }
+    return rc;
+}
+#endif
 
 
 /**
