@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32056 2010-08-27 16:04:23Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32103 2010-08-30 15:04:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6271,6 +6271,10 @@ DECLCALLBACK(void) Console::vmstateChangeCallback(PVM aVM,
                     AssertMsgFailed(("%s\n", Global::stringifyMachineState(that->mMachineState)));
                 case MachineState_Running:
                     that->setMachineState(MachineState_Paused);
+                    break;
+
+                case MachineState_Paused:
+                    /* Nothing to do. */
                     break;
             }
             break;
