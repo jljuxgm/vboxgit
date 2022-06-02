@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35572 2011-01-14 14:51:16Z vboxsync $
+# $Id: Makefile.kmk 35855 2011-02-04 17:02:44Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -435,6 +435,9 @@ ifndef VBOX_ONLY_EXTPACKS
  ## @todo eliminate IN_GVMM_R0 IN_GMM_R0
  ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
   VMMR0_DEFS    += VBOX_WITH_VMMR0_DISABLE_PREEMPTION
+ endif
+ ifdef VBOX_WITH_PCI_PASSTHROUGH
+  VMMR0_DEFS    += VBOX_WITH_PCI_PASSTHROUGH IN_PCIRAW_R0
  endif
  VMMR0_DEFS.darwin = VMM_R0_SWITCH_STACK
  VMMR0_DEFS.darwin.x86 = \
