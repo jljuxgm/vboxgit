@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 35903 2011-02-08 16:46:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -274,7 +274,7 @@ public:
                            const Utf8Str &strMachineFolder);
     HRESULT saveSettings();
 
-    void addGuidToListUniquely(GuidList &llRegistriesThatNeedSaving, Guid uuid);
+    void addGuidToListUniquely(GuidList &llRegistriesThatNeedSaving, const Guid &uuid);
     HRESULT saveRegistries(const GuidList &llRegistriesThatNeedSaving);
 
     static HRESULT ensureFilePathExists(const Utf8Str &strFileName);
