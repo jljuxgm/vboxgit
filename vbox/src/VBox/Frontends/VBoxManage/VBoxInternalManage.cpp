@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 33550 2010-10-28 10:53:57Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -220,7 +220,7 @@ void printUsageInternal(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #ifdef RT_OS_WINDOWS
         (u64Cmd & USAGE_MODINSTALL)
         ? "  modinstall\n"
-          "       Installs the neccessary driver for the host OS\n"
+          "       Installs the necessary driver for the host OS\n"
           "\n"
         : "",
         (u64Cmd & USAGE_MODUNINSTALL)

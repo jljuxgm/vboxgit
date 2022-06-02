@@ -1,4 +1,4 @@
-/* $Id: tstCompressionBenchmark.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstCompressionBenchmark.cpp 33550 2010-10-28 10:53:57Z vboxsync $ */
 /** @file
  * Compression Benchmark for SSM and PGM.
  */
@@ -239,7 +239,7 @@ int main(int argc, char **argv)
      */
     static const RTGETOPTDEF    s_aOptions[] =
     {
-        { "--interations",    'i', RTGETOPT_REQ_UINT32 },
+        { "--iterations",     'i', RTGETOPT_REQ_UINT32 },
         { "--num-pages",      'n', RTGETOPT_REQ_UINT32 },
         { "--page-at-a-time", 'c', RTGETOPT_REQ_UINT32 },
         { "--page-file",      'f', RTGETOPT_REQ_STRING },
@@ -297,7 +297,7 @@ int main(int argc, char **argv)
                          "Options:\n"
                          "  -h, --help\n"
                          "    Show this help page\n"
-                         "  -i, --interations <num>\n"
+                         "  -i, --iterations <num>\n"
                          "    The number of iterations.\n"
                          "  -n, --num-pages <pages>\n"
                          "    The number of pages.\n"

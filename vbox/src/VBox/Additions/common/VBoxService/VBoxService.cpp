@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 33395 2010-10-24 16:18:01Z vboxsync $ */
+/* $Id: VBoxService.cpp 33550 2010-10-28 10:53:57Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -135,7 +135,7 @@ static int VBoxServiceUsage(void)
     RTPrintf("\n"
              "Options:\n"
              "    -i | --interval         The default interval.\n"
-             "    -f | --foreground       Don't daemonzie the program. For debugging.\n"
+             "    -f | --foreground       Don't daemonize the program. For debugging.\n"
              "    -v | --verbose          Increment the verbosity level. For debugging.\n"
              "    -h | -? | --help        Show this message and exit with status 1.\n"
              );

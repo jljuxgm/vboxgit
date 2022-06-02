@@ -1,4 +1,4 @@
-/* $Id: vboxfs_mount.c 31691 2010-08-16 12:59:23Z vboxsync $ */
+/* $Id: vboxfs_mount.c 33550 2010-10-28 10:53:57Z vboxsync $ */
 /** @file
  * VirtualBox File System Mount Helper, Solaris host.
  * Userspace mount wrapper that parses mount (or user-specified) options
@@ -51,13 +51,13 @@ static void Usage(char *pszName)
     fprintf(stderr, "Usage: %s [OPTIONS] NAME MOUNTPOINT\n"
            "Mount the VirtualBox shared folder NAME from the host system to MOUNTPOINT.\n"
            "\n"
-           "  -w                    mount the shared folder writably (the default)\n"
+           "  -w                    mount the shared folder writable (the default)\n"
            "  -r                    mount the shared folder read-only\n"
            "  -o OPTION[,OPTION...] use the mount options specified\n"
            "\n", pszName);
     fprintf(stderr, "Available mount options are:\n"
            "\n"
-           "     rw                 mount writably (the default)\n"
+           "     rw                 mount writable (the default)\n"
            "     ro                 mount read only\n"
            "     uid=UID            set the default file owner user id to UID\n"
            "     gid=GID            set the default file owner group id to GID\n"
