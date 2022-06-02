@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 30016 2010-06-03 18:31:14Z vboxsync $ */
+/* $Id: libslirp.h 30421 2010-06-24 11:59:49Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -126,7 +126,7 @@ void *slirp_get_queue(PNATState pData);
 #endif
 
 struct mbuf *slirp_ext_m_get(PNATState pData, size_t cbMin, void **ppvBuf, size_t *pcbBuf);
-void slirp_ext_m_free(PNATState pData, struct mbuf *);
+void slirp_ext_m_free(PNATState pData, struct mbuf *, uint8_t *pu8Buf);
 
 /*
  * Returns the timeout.
