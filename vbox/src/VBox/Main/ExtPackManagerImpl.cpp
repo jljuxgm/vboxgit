@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 33623 2010-10-29 16:16:06Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 33671 2010-11-02 07:57:56Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -232,7 +232,7 @@ HRESULT ExtPack::refresh(bool *pfCanDelete)
     if (   RT_FAILURE(vrc)
         || !RTFS_IS_DIRECTORY(ObjInfoExtPack.Attr.fMode))
     {
-        if (*pfCanDelete)
+        if (pfCanDelete)
             *pfCanDelete = true;
         return S_OK;
     }
