@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33678 2010-11-02 10:30:46Z vboxsync $
+# $Id: Makefile.kmk 33973 2010-11-11 11:10:10Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -570,6 +570,11 @@ endif # VBOX_WITH_TESTCASES
 PROGRAMS += RTLdrFlt
 RTLdrFlt_TEMPLATE = VBOXR3TSTEXE
 RTLdrFlt_SOURCES = RTLdrFlt.cpp
+
+# RTGzip - our gzip clone (for testing the gzip/gunzip streaming code)
+PROGRAMS += RTGzip
+RTGzip_TEMPLATE = VBOXR3TSTEXE
+RTGzip_SOURCES = RTGzip.cpp
 
 
 
