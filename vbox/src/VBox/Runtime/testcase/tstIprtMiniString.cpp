@@ -1,4 +1,4 @@
-/* $Id: tstIprtMiniString.cpp 35567 2011-01-14 14:16:45Z vboxsync $ */
+/* $Id: tstIprtMiniString.cpp 35568 2011-01-14 14:24:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - iprt::MiniString.
  */
@@ -250,6 +250,10 @@ static void test1(RTTEST hTest)
 
     CHECK_EQUAL(strTest.substr(16, 1),   "");
     CHECK_EQUAL(strTest.substrCP(15, 1), "");
+
+    /* and check cooperation with find() */
+    size_t pos = strTest.find("ß");
+    CHECK_EQUAL(strTest.substr(pos), "ßäbcdef");
 
     /* special constructor and assignment arguments */
     iprt::MiniString StrCtor1("");
