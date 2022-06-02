@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 31895 2010-08-24 09:00:14Z vboxsync $ */
+/* $Id: FTMInternal.h 32051 2010-08-27 13:05:10Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -59,7 +59,9 @@ typedef struct FTM
     bool                fIsStandbyNode;
     /** Set when this master VM is busy with checkpointing. */
     bool                fCheckpointingActive;
-    bool                fAlignment[6];
+    /** Set when VM save/restore should only include changed pages. */
+    bool                fDeltaLoadSaveActive;
+    bool                fAlignment[5];
 
     /** Current active socket. */
     RTSOCKET            hSocket;

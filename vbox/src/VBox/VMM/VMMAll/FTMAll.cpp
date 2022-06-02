@@ -1,4 +1,4 @@
-/* $Id: FTMAll.cpp 31792 2010-08-19 14:09:31Z vboxsync $ */
+/* $Id: FTMAll.cpp 32051 2010-08-27 13:05:10Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager - All contexts
  */
@@ -48,3 +48,17 @@ VMMDECL(int) FTMSetCheckpoint(PVM pVM)
     return VERR_NOT_IMPLEMENTED;
 #endif
 }
+
+
+/**
+ * Checks if the delta save/load is enabled
+ *
+ * @returns true/false
+ *
+ * @param   pVM         The VM to operate on.
+ */
+VMMDECL(bool)  FTMIsDeltaLoadSaveActive(PVM pVM)
+{
+    return pVM->ftm.s.fDeltaLoadSaveActive;
+}
+
