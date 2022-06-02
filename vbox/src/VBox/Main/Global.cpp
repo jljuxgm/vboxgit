@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 33945 2010-11-10 17:49:56Z vboxsync $ */
+/* $Id: Global.cpp 33946 2010-11-10 17:52:17Z vboxsync $ */
 
 /** @file
  *
@@ -494,6 +494,7 @@ Global::vboxStatusCodeToCOM(int aVBoxStatus)
             if (   aVBoxStatus < 0
                 && (   aVBoxStatus > -1000
                     || (aVBoxStatus < -22000 && aVBoxStatus > -32766) )
+               )
                 return VBOX_E_IPRT_ERROR;
             if (    aVBoxStatus <  VERR_PDM_NO_SUCH_LUN / 100 * 10
                 &&  aVBoxStatus >  VERR_PDM_NO_SUCH_LUN / 100 * 10 - 100)
