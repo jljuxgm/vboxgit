@@ -1,4 +1,4 @@
-/* $Id: string.h 33675 2010-11-02 09:38:52Z vboxsync $ */
+/* $Id: string.h 34242 2010-11-22 14:27:48Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -208,6 +208,13 @@ public:
      * (Bstr does not cache string lengths).
      */
     bool isEmpty() const { return m_bstr == NULL || *m_bstr == 0; }
+
+    /**
+     * Returns true if the member string has a length of one or more.
+     *
+     * @returns true if not empty, false if empty (NULL or "").
+     */
+    bool isNotEmpty() const { return m_bstr != NULL && *m_bstr != 0; }
 
     size_t length() const { return isEmpty() ? 0 : ::RTUtf16Len((PRTUTF16)m_bstr); }
 
