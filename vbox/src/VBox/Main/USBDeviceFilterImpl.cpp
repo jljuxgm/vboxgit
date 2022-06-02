@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 31892 2010-08-24 08:00:51Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -256,7 +256,7 @@ HRESULT USBDeviceFilter::init(USBController *aParent,
         rc = usbFilterFieldSetter(USBFILTERIDX_PORT, data.strPort);
         if (FAILED(rc)) break;
 
-        rc = COMSETTER(Remote)(Bstr(data.strRemote));
+        rc = COMSETTER(Remote)(Bstr(data.strRemote).raw());
         if (FAILED(rc)) break;
 
         rc = COMSETTER(MaskedInterfaces)(data.ulMaskedInterfaces);

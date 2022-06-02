@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -541,7 +541,7 @@ STDMETHODIMP VFSExplorer::Update(IProgress **aProgress)
 
         rc = progress->init(mVirtualBox,
                             static_cast<IVFSExplorer*>(this),
-                            progressDesc,
+                            progressDesc.raw(),
                             TRUE /* aCancelable */);
         if (FAILED(rc)) throw rc;
 
@@ -670,7 +670,7 @@ STDMETHODIMP VFSExplorer::Remove(ComSafeArrayIn(IN_BSTR, aNames), IProgress **aP
         progress.createObject();
 
         rc = progress->init(mVirtualBox, static_cast<IVFSExplorer*>(this),
-                            Bstr(tr("Delete files")),
+                            Bstr(tr("Delete files")).raw(),
                             TRUE /* aCancelable */);
         if (FAILED(rc)) throw rc;
 

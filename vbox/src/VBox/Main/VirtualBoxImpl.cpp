@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 32120 2010-08-31 09:58:36Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1694,7 +1694,7 @@ STDMETHODIMP VirtualBox::SetExtraData(IN_BSTR aKey,
         Bstr error;
         Bstr bstrValue(aValue);
 
-        if (!onExtraDataCanChange(Guid::Empty, aKey, bstrValue, error))
+        if (!onExtraDataCanChange(Guid::Empty, aKey, bstrValue.raw(), error))
         {
             const char *sep = error.isEmpty() ? "" : ": ";
             CBSTR err = error.raw();
@@ -4400,7 +4400,7 @@ HRESULT VirtualBox::registerDHCPServer(DHCPServer *aDHCPServer,
     if (FAILED(rc)) return rc;
 
     ComPtr<IDHCPServer> existing;
-    rc = FindDHCPServerByNetworkName(name, existing.asOutParam());
+    rc = FindDHCPServerByNetworkName(name.raw(), existing.asOutParam());
     if (SUCCEEDED(rc))
         return E_INVALIDARG;
 

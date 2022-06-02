@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -226,7 +226,7 @@ bool ProgressProxy::setOtherProgressObject(IProgress *pOtherProgress)
 
         muOtherProgressStartWeight = m_ulOperationsCompletedWeight + m_ulCurrentOperationWeight;
         muOtherProgressWeight      = m_ulTotalOperationsWeight - muOtherProgressStartWeight;
-        Progress::SetNextOperation(bstrOperationDescription, muOtherProgressWeight);
+        Progress::SetNextOperation(bstrOperationDescription.raw(), muOtherProgressWeight);
 
         muOtherProgressStartOperation = m_ulCurrentOperation;
         m_cOperations = cOperations + m_ulCurrentOperation;

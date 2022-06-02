@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 32701 2010-09-22 17:12:01Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
@@ -110,7 +110,8 @@ static int parseFilterParameters(int argc, char *argv[],
         else
         {
             ComPtr <IMachine> machine;
-            rc = aVirtualBox->FindMachine(Bstr(argv[0]), machine.asOutParam());
+            rc = aVirtualBox->FindMachine(Bstr(argv[0]).raw(),
+                                          machine.asOutParam());
             if (SUCCEEDED (rc))
             {
                 retObjects.reset(1);

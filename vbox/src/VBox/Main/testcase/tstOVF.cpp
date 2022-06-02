@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 31333 2010-08-03 13:00:54Z vboxsync $ */
+/* $Id: tstOVF.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -93,7 +93,7 @@ void importOVF(const char *pcszPrefix,
     if (FAILED(rc)) throw MyError(rc, "failed to create appliance\n");
 
     ComPtr<IProgress> pProgress;
-    rc = pAppl->Read(Bstr(szAbsOVF), pProgress.asOutParam());
+    rc = pAppl->Read(Bstr(szAbsOVF).raw(), pProgress.asOutParam());
     if (FAILED(rc)) throw MyError(rc, "Appliance::Read() failed\n");
     rc = pProgress->WaitForCompletion(-1);
     if (FAILED(rc)) throw MyError(rc, "Progress::WaitForCompletion() failed\n");
@@ -344,7 +344,7 @@ int main(int argc, char *argv[])
             const Guid &uuid = *it;
             Bstr bstrUUID(uuid.toUtf16());
             ComPtr<IMachine> pMachine;
-            rc = pVirtualBox->GetMachine(bstrUUID, pMachine.asOutParam());
+            rc = pVirtualBox->GetMachine(bstrUUID.raw(), pMachine.asOutParam());
             if (FAILED(rc)) throw MyError(rc, "VirtualBox::FindMachine() failed\n");
 
             RTPrintf("  Deleting machine %ls...\n", bstrUUID.raw());
