@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 32181 2010-09-01 14:50:21Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 32787 2010-09-28 10:06:32Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -2258,6 +2258,7 @@ VBoxDbgStatsModel::strDeltaValue(PCDBGGUISTATSNODE pNode)
         case STAMTYPE_U32_RESET:
         case STAMTYPE_X32:
         case STAMTYPE_X32_RESET:
+        case STAMTYPE_U64:
         case STAMTYPE_U64_RESET:
         case STAMTYPE_X64:
         case STAMTYPE_X64_RESET:
