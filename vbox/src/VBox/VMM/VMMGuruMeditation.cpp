@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 31837 2010-08-21 00:55:30Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 31839 2010-08-21 01:57:30Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -125,7 +125,7 @@ static DECLCALLBACK(void) vmmR3FatalDumpInfoHlp_pfnPrintfV(PCDBGFINFOHLP pHlp, c
     }
     if (pMyHlp->fRecSummary)
     {
-        uint32_t cchLeft = sizeof(pMyHlp->szSummary) - pMyHlp->offSummary;
+        size_t cchLeft = sizeof(pMyHlp->szSummary) - pMyHlp->offSummary;
         if (cchLeft > 1)
         {
             va_list args2;
