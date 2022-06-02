@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 34795 2010-12-07 15:28:38Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 35139 2010-12-15 15:13:43Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3731,6 +3731,17 @@ void VirtualBox::addGuidToListUniquely(GuidList &llRegistriesThatNeedSaving,
     llRegistriesThatNeedSaving.push_back(uuid);
 }
 
+/**
+ * Saves all settings files according to the given list of UUIDs, which are
+ * either machine IDs (in which case Machine::saveSettings is invoked) or
+ * the global registry UUID (in which case VirtualBox::saveSettings is invoked).
+ *
+ * This locks machines and the VirtualBox object as necessary, so better not
+ * hold any locks before calling this.
+ *
+ * @param llRegistriesThatNeedSaving
+ * @return
+ */
 HRESULT VirtualBox::saveRegistries(const GuidList &llRegistriesThatNeedSaving)
 {
     bool fNeedsGlobalSettings = false;
