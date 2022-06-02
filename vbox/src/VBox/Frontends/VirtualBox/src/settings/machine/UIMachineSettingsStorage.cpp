@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 35423 2011-01-07 10:48:48Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 35452 2011-01-10 11:29:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -764,6 +764,7 @@ StorageModel::StorageModel (QObject *aParent)
     : QAbstractItemModel (aParent)
     , mRootItem (new RootItem)
     , mToolTipType (DefaultToolTip)
+    , m_chipsetType(KChipsetType_PIIX3)
 {
 }
 
