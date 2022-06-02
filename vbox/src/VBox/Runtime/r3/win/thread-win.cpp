@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 32914 2010-10-05 13:25:58Z vboxsync $ */
+/* $Id: thread-win.cpp 34256 2010-11-22 15:55:00Z vboxsync $ */
 /** @file
  * IPRT - Threads, Win32.
  */
@@ -77,6 +77,13 @@ void rtThreadNativeDetach(void)
         rtThreadTerminate(pThread, 0);
         TlsSetValue(g_dwSelfTLS, NULL);
     }
+}
+
+
+void rtThreadNativeDestroy(PRTTHREADINT pThread)
+{
+    if (pThread == (PRTTHREADINT)TlsGetValue(g_dwSelfTLS))
+        TlsSetValue(g_dwSelfTLS, NULL);
 }
 
 

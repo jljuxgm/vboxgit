@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 33393 2010-10-24 16:17:00Z vboxsync $ */
+/* $Id: thread-os2.cpp 34256 2010-11-22 15:55:00Z vboxsync $ */
 /** @file
  * IPRT - Threads, OS/2.
  */
@@ -91,6 +91,13 @@ int rtThreadNativeAdopt(PRTTHREADINT pThread)
 
     *g_ppCurThread = pThread;
     return VINF_SUCCESS;
+}
+
+
+void rtThreadNativeDestroy(PRTTHREADINT pThread)
+{
+    if (pThread == *g_ppCurThread)
+        *g_ppCurThread = NULL;
 }
 
 

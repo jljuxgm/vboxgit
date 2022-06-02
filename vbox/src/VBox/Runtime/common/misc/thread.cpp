@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
+/* $Id: thread.cpp 34256 2010-11-22 15:55:00Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -603,6 +603,7 @@ static void rtThreadDestroy(PRTTHREADINT pThread)
     if (hEvt2 != NIL_RTSEMEVENTMULTI)
         RTSemEventMultiDestroy(hEvt2);
 
+    rtThreadNativeDestroy(pThread);
     RTMemFree(pThread);
 }
 
