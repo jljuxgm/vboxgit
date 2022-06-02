@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 33154 2010-10-15 12:05:52Z vboxsync $ */
+/* $Id: VBoxService.cpp 33230 2010-10-19 13:42:22Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -27,6 +27,9 @@
 #include <errno.h>
 #ifndef RT_OS_WINDOWS
 # include <signal.h>
+#endif
+#ifdef RT_OS_FREEBSD
+# include <pthread.h>
 #endif
 
 #include "product-generated.h"
