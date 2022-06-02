@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -297,7 +297,7 @@ int handleControlVM(HandlerArg *a)
                 }
                 else
                 {
-                    errorArgument("Invalid link state '%s'", Utf8Str(a->argv[2]).raw());
+                    errorArgument("Invalid link state '%s'", Utf8Str(a->argv[2]).c_str());
                     rc = E_FAIL;
                     break;
                 }
@@ -396,7 +396,7 @@ int handleControlVM(HandlerArg *a)
                     }
                     else
                     {
-                        errorArgument("Invalid nictrace%lu argument '%s'", n, Utf8Str(a->argv[2]).raw());
+                        errorArgument("Invalid nictrace%lu argument '%s'", n, Utf8Str(a->argv[2]).c_str());
                         rc = E_FAIL;
                         break;
                     }
@@ -490,7 +490,7 @@ int handleControlVM(HandlerArg *a)
 #endif
                     else
                     {
-                        errorArgument("Invalid type '%s' specfied for NIC %lu", Utf8Str(a->argv[2]).raw(), n);
+                        errorArgument("Invalid type '%s' specfied for NIC %lu", Utf8Str(a->argv[2]).c_str(), n);
                         rc = E_FAIL;
                         break;
                     }
@@ -527,7 +527,7 @@ int handleControlVM(HandlerArg *a)
                 }
                 else
                 {
-                    errorArgument("Invalid vrdp server state '%s'", Utf8Str(a->argv[2]).raw());
+                    errorArgument("Invalid vrdp server state '%s'", Utf8Str(a->argv[2]).c_str());
                     rc = E_FAIL;
                     break;
                 }
@@ -875,7 +875,7 @@ int handleControlVM(HandlerArg *a)
         }
         else
         {
-            errorSyntax(USAGE_CONTROLVM, "Invalid parameter '%s'", Utf8Str(a->argv[1]).raw());
+            errorSyntax(USAGE_CONTROLVM, "Invalid parameter '%s'", Utf8Str(a->argv[1]).c_str());
             rc = E_FAIL;
         }
     } while (0);

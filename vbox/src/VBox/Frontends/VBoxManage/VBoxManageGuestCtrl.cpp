@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 31381 2010-08-05 07:44:08Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestcontrol' command.
  */
@@ -252,15 +252,11 @@ static int handleExecProgram(HandlerArg *a)
             }
         }
         else if (!strcmp(a->argv[i], "--verbose"))
-        {
             fVerbose = true;
-        }
         /** @todo Add fancy piping stuff here. */
         else
-        {
             return errorSyntax(USAGE_GUESTCONTROL,
-                               "Invalid parameter '%s'", Utf8Str(a->argv[i]).raw());
-        }
+                               "Invalid parameter '%s'", Utf8Str(a->argv[i]).c_str());
     }
 
     if (!usageOK)
@@ -332,7 +328,7 @@ static int handleExecProgram(HandlerArg *a)
                 break;
             }
             if (fVerbose)
-                RTPrintf("Process '%s' (PID: %u) started\n", Utf8Cmd.raw(), uPID);
+                RTPrintf("Process '%s' (PID: %u) started\n", Utf8Cmd.c_str(), uPID);
             if (fWaitForExit)
             {
                 if (fTimeout)

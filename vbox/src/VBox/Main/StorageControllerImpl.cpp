@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 31328 2010-08-03 10:45:28Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 
 /** @file
  *
@@ -126,7 +126,7 @@ HRESULT StorageController::init(Machine *aParent,
                                 ULONG aInstance)
 {
     LogFlowThisFunc(("aParent=%p aName=\"%s\" aInstance=%u\n",
-                     aParent, aName.raw(), aInstance));
+                     aParent, aName.c_str(), aInstance));
 
     ComAssertRet(aParent && !aName.isEmpty(), E_INVALIDARG);
     if (   (aStorageBus <= StorageBus_Null)

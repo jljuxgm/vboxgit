@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
+/* $Id: VBoxManage.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -406,9 +406,7 @@ int main(int argc, char *argv[])
         }
     }
     if (!s_commandHandlers[commandIndex].command)
-    {
-        rc = errorSyntax(USAGE_ALL, "Invalid command '%s'", Utf8Str(argv[iCmd]).raw());
-    }
+        rc = errorSyntax(USAGE_ALL, "Invalid command '%s'", Utf8Str(argv[iCmd]).c_str());
 
     /* Although all handlers should always close the session if they open it,
      * we do it here just in case if some of the handlers contains a bug --

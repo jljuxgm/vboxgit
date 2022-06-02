@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -455,7 +455,7 @@ int handleSnapshot(HandlerArg *a)
                 }
                 else
                 {
-                    errorSyntax(USAGE_SNAPSHOT, "Invalid parameter '%s'", Utf8Str(a->argv[i]).raw());
+                    errorSyntax(USAGE_SNAPSHOT, "Invalid parameter '%s'", Utf8Str(a->argv[i]).c_str());
                     rc = E_FAIL;
                     break;
                 }
@@ -488,12 +488,10 @@ int handleSnapshot(HandlerArg *a)
             showVMInfo(a->virtualBox, pMachine2, VMINFO_NONE, console);
         }
         else if (!strcmp(a->argv[1], "dump"))          // undocumented parameter to debug snapshot info
-        {
             DumpSnapshot(pMachine);
-        }
         else
         {
-            errorSyntax(USAGE_SNAPSHOT, "Invalid parameter '%s'", Utf8Str(a->argv[1]).raw());
+            errorSyntax(USAGE_SNAPSHOT, "Invalid parameter '%s'", Utf8Str(a->argv[1]).c_str());
             rc = E_FAIL;
         }
     } while (0);

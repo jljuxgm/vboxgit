@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 30322 2010-06-21 09:30:16Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -307,7 +307,7 @@ int handleDHCPServer(HandlerArg *a)
         }
         else
         {
-            result = errorSyntax(USAGE_DHCPSERVER, "Invalid parameter '%s'", Utf8Str(a->argv[i]).raw());
+            result = errorSyntax(USAGE_DHCPSERVER, "Invalid parameter '%s'", Utf8Str(a->argv[i]).c_str());
             break;
         }
     }

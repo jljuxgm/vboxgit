@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 30716 2010-07-07 16:40:45Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -535,11 +535,12 @@ STDMETHODIMP VFSExplorer::Update(IProgress **aProgress)
     try
     {
         Bstr progressDesc = BstrFmt(tr("Update directory info for '%s'"),
-                                    m->strPath.raw());
+                                    m->strPath.c_str());
         /* Create the progress object */
         progress.createObject();
 
-        rc = progress->init(mVirtualBox, static_cast<IVFSExplorer*>(this),
+        rc = progress->init(mVirtualBox,
+                            static_cast<IVFSExplorer*>(this),
                             progressDesc,
                             TRUE /* aCancelable */);
         if (FAILED(rc)) throw rc;

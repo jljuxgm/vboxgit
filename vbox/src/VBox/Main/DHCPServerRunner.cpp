@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DHCPServerRunner.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -110,7 +110,7 @@ int DHCPServerRunner::start()
              * and thus check the mOptions string length here
              */
             if (mOptions[i].length())
-                args[index++] = mOptions[i].raw();  // value
+                args[index++] = mOptions[i].c_str();  // value
         }
     }
 

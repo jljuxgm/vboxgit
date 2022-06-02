@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 31333 2010-08-03 13:00:54Z vboxsync $ */
+/* $Id: SnapshotImpl.h 31539 2010-08-10 15:40:18Z vboxsync $ */
 
 /** @file
  *
@@ -115,10 +115,10 @@ public:
     ComObjPtr<Snapshot> findChildOrSelf(IN_GUID aId);
     ComObjPtr<Snapshot> findChildOrSelf(const Utf8Str &aName);
 
-    void updateSavedStatePaths(const char *aOldPath,
-                               const char *aNewPath);
-    void updateSavedStatePathsImpl(const char *aOldPath,
-                                   const char *aNewPath);
+    void updateSavedStatePaths(const Utf8Str &strOldPath,
+                               const Utf8Str &strNewPath);
+    void updateSavedStatePathsImpl(const Utf8Str &strOldPath,
+                                   const Utf8Str &strNewPath);
 
     HRESULT saveSnapshot(settings::Snapshot &data, bool aAttrsOnly);
     HRESULT saveSnapshotImpl(settings::Snapshot &data, bool aAttrsOnly);

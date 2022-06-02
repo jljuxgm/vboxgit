@@ -1,4 +1,4 @@
-/* $Id: string.h 31281 2010-08-02 10:35:19Z vboxsync $ */
+/* $Id: string.h 31539 2010-08-10 15:40:18Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -116,7 +116,7 @@ public:
 
     Bstr(const iprt::MiniString &that)
     {
-        copyFrom(that.raw());
+        copyFrom(that.c_str());
     }
 
     Bstr(const char *that)

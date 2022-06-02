@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 29356 2010-05-11 14:03:35Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -72,7 +72,7 @@ static void listMedia(const ComPtr<IVirtualBox> aVirtualBox,
         ComPtr<IMedium> pMedium = aMedia[i];
         Bstr uuid;
         pMedium->COMGETTER(Id)(uuid.asOutParam());
-        RTPrintf("UUID:        %s\n", Utf8Str(uuid).raw());
+        RTPrintf("UUID:        %s\n", Utf8Str(uuid).c_str());
         if (pszParentUUIDStr)
             RTPrintf("Parent UUID: %s\n", pszParentUUIDStr);
         Bstr format;
@@ -166,7 +166,7 @@ static void listMedia(const ComPtr<IVirtualBox> aVirtualBox,
         if (children.size() > 0)
         {
             // depth first listing of child media
-            listMedia(aVirtualBox, children, Utf8Str(uuid).raw());
+            listMedia(aVirtualBox, children, Utf8Str(uuid).c_str());
         }
     }
 }
@@ -390,7 +390,7 @@ int handleList(HandlerArg *a)
                     ComPtr<IMedium> dvdDrive = coll[i];
                     Bstr uuid;
                     dvdDrive->COMGETTER(Id)(uuid.asOutParam());
-                    RTPrintf("UUID:         %s\n", Utf8Str(uuid).raw());
+                    RTPrintf("UUID:         %s\n", Utf8Str(uuid).c_str());
                     Bstr name;
                     dvdDrive->COMGETTER(Name)(name.asOutParam());
                     RTPrintf("Name:         %lS\n\n", name.raw());
@@ -412,7 +412,7 @@ int handleList(HandlerArg *a)
                     ComPtr<IMedium> floppyDrive = coll[i];
                     Bstr uuid;
                     floppyDrive->COMGETTER(Id)(uuid.asOutParam());
-                    RTPrintf("UUID:         %s\n", Utf8Str(uuid).raw());
+                    RTPrintf("UUID:         %s\n", Utf8Str(uuid).c_str());
                     Bstr name;
                     floppyDrive->COMGETTER(Name)(name.asOutParam());
                     RTPrintf("Name:         %lS\n\n", name.raw());
@@ -705,7 +705,7 @@ int handleList(HandlerArg *a)
                             "VendorId:           0x%04x (%04X)\n"
                             "ProductId:          0x%04x (%04X)\n"
                             "Revision:           %u.%u (%02u%02u)\n",
-                            Utf8Str(id).raw(),
+                            Utf8Str(id).c_str(),
                             usVendorId, usVendorId, usProductId, usProductId,
                             bcdRevision >> 8, bcdRevision & 0xff,
                             bcdRevision >> 8, bcdRevision & 0xff);

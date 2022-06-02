@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 31332 2010-08-03 12:38:49Z vboxsync $ */
+/* $Id: ConsoleImpl.h 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -228,7 +228,6 @@ public:
     static const PDMDRVREG DrvStatusReg;
 
     static HRESULT setErrorStatic(HRESULT aResultCode, const char *pcsz, ...);
-    HRESULT setAuthLibraryError(const char *filename, int rc);
     HRESULT setInvalidMachineStateError();
 
     static HRESULT handleUnexpectedExceptions(RT_SRC_POS_DECL);

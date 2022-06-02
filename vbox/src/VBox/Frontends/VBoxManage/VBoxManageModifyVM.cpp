@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 31298 2010-08-02 13:16:21Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -338,7 +338,7 @@ int handleModifyVM(HandlerArg *a)
                 }
                 else
                 {
-                    errorArgument("Invalid guest OS type '%s'", Utf8Str(ValueUnion.psz).raw());
+                    errorArgument("Invalid guest OS type '%s'", Utf8Str(ValueUnion.psz).c_str());
                     rc = E_FAIL;
                 }
                 break;
