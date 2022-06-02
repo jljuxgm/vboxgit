@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 33670 2010-11-02 03:53:37Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 33702 2010-11-02 17:52:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2332,6 +2332,18 @@ void VBoxProblemReporter::cannotRemoveFiles (const CProgress &aProgress, QWidget
              Error,
              tr ("Failed to remove file."),
              formatErrorInfo (aProgress.GetErrorInfo()));
+}
+
+bool VBoxProblemReporter::confirmExportMachinesInSaveState(const QStringList &machineNames, QWidget * /* aParent  = NULL */) const
+{
+    return messageOkCancel(mainWindowShown(), Warning,
+        tr("<p>The virtual machine(s) <b>%1</b> are currently in a saved state.</p>"
+           "<p>If you "
+           "continue the runtime state of the exported machine(s) will be "
+           "discarded. Note that the existing machine(s) are not "
+           "changed.</p>", "", machineNames.size()).arg(VBoxGlobal::toHumanReadableList(machineNames)),
+        0 /* aAutoConfirmId */,
+        tr("Continue"), tr("Cancel"));
 }
 
 void VBoxProblemReporter::cannotExportAppliance (CAppliance *aAppliance, QWidget *aParent /* = NULL */) const
