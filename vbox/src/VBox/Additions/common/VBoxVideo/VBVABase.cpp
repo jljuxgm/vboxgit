@@ -1,4 +1,4 @@
-/* $Id: VBVABase.cpp 34665 2010-12-02 23:05:33Z vboxsync $ */
+/* $Id: VBVABase.cpp 34686 2010-12-03 11:06:34Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - VBVA initialisation and helper
  * functions.
@@ -387,43 +387,4 @@ RTDECL(void) VBoxVBVASetupBufferContext(PVBVABUFFERCONTEXT pCtx,
 {
     pCtx->offVRAMBuffer = offVRAMBuffer;
     pCtx->cbBuffer      = cbBuffer;
-}
-
-RTDECL(void) VBoxHGSMIProcessDisplayInfo(PHGSMIGUESTCOMMANDCONTEXT pCtx,
-                                         uint32_t cDisplay,
-                                         int32_t  cOriginX,
-                                         int32_t  cOriginY,
-                                         uint32_t offStart,
-                                         uint32_t cbPitch,
-                                         uint32_t cWidth,
-                                         uint32_t cHeight,
-                                         uint16_t cBPP)
-{
-    /* Issue the screen info command. */
-    void *p = VBoxHGSMIBufferAlloc(pCtx,
-                                   sizeof (VBVAINFOSCREEN),
-                                   HGSMI_CH_VBVA,
-                                   VBVA_INFO_SCREEN);
-    if (!p)
-    {
-        LogFunc(("HGSMIHeapAlloc failed\n"));
-    }
-    else
-    {
-        VBVAINFOSCREEN *pScreen = (VBVAINFOSCREEN *)p;
-
-        pScreen->u32ViewIndex    = cDisplay;
-        pScreen->i32OriginX      = cOriginX;
-        pScreen->i32OriginY      = cOriginY;
-        pScreen->u32StartOffset  = offStart;
-        pScreen->u32LineSize     = cbPitch;
-        pScreen->u32Width        = cWidth;
-        pScreen->u32Height       = cHeight;
-        pScreen->u16BitsPerPixel = cBPP;
-        pScreen->u16Flags        = VBVA_SCREEN_F_ACTIVE;
-
-        VBoxHGSMIBufferSubmit(pCtx, p);
-
-        VBoxHGSMIBufferFree(pCtx, p);
-    }
 }

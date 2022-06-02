@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34440 2010-11-28 22:12:07Z vboxsync $
+# $Id: Makefile.kmk 34686 2010-12-03 11:06:34Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -48,6 +48,7 @@ VBoxDisp_SOURCES     = \
 	vbox.c \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/VBVABase.cpp \
+	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp \
 	VBoxDisp.def \
 	VBoxDisp.rc
 

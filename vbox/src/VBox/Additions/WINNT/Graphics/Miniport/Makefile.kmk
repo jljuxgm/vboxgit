@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34429 2010-11-27 01:56:46Z vboxsync $
+# $Id: Makefile.kmk 34686 2010-12-03 11:06:34Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxVideo.
 #
@@ -45,7 +45,8 @@ VBoxVideo_SOURCES     = \
 	VBoxVideo.def \
 	VBoxVideo.rc \
 	VBoxVideoHGSMI.cpp \
-	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp
+	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp \
+	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp
 VBoxVideo_LIBS.x86    = \
 	$(PATH_SDK_W2K3DDK_LIB)/exsup.lib
 VBoxVideo_LIBS        = \
@@ -100,6 +101,7 @@ ifdef VBOX_WITH_WDDM
  VBoxVideoWddm_SOURCES     = \
  	VBoxVideoHGSMI.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp \
+	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp \
  	VBoxVideo.cpp \
     Helper.cpp \
  	wddm/VBoxVideoWddm.cpp \
