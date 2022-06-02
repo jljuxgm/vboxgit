@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 32439 2010-09-13 09:19:39Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 32530 2010-09-15 15:49:41Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -1162,7 +1162,7 @@ static int rtCoreDumperForEachThread(PVBOXCORE pVBoxCore,  uint64_t *pcThreads, 
             {
                 prheader_t *pHeader = (prheader_t *)pvInfoHdr;
                 lwpsinfo_t *pThreadInfo = (lwpsinfo_t *)((uintptr_t)pvInfoHdr + sizeof(prheader_t));
-                for (unsigned i = 0; i < pHeader->pr_nent; i++)
+                for (long i = 0; i < pHeader->pr_nent; i++)
                 {
                     pfnWorker(pVBoxCore, pThreadInfo);
                     pThreadInfo = (lwpsinfo_t *)((uintptr_t)pThreadInfo + pHeader->pr_entsize);
