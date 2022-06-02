@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 33206 2010-10-18 14:59:01Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 33207 2010-10-18 15:02:47Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -209,7 +209,7 @@ void tstASMCpuId(void)
         RTTestIPrintf(RTTESTLVL_ALWAYS, "%08x  %08x %08x %08x %08x%s\n",
                       iStd, s.uEAX, s.uEBX, s.uECX, s.uEDX, iStd <= cFunctions ? "" : "*");
 
-        if (iStd == 0x04 || iStd == 0x0d || iStd > cFunctions)
+        if (iStd == 0x04 || iStd == 0x0b || iStd == 0x0d || iStd > cFunctions)
             continue; /* Leaf 04 and leaf 0d output depend on the initial value of ECX
                        * The same seems to apply to invalid standard functions */
 
