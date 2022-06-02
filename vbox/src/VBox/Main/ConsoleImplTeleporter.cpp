@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 31254 2010-07-30 15:42:19Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 31255 2010-07-30 16:45:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -634,7 +634,7 @@ Console::teleporterSrc(TeleporterStateSrc *pState)
         return setError(E_FAIL, tr("canceled"));
 
     /*
-     * Try connect to the destination machine, disable Nagel.
+     * Try connect to the destination machine, disable Nagle.
      * (Note. The caller cleans up mhSocket, so we can return without worries.)
      */
     int vrc = RTTcpClientConnect(pState->mstrHostname.c_str(), pState->muPort, &pState->mhSocket);
