@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33451 2010-10-26 09:34:19Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33458 2010-10-26 11:18:04Z vboxsync $ */
 
 /** @file
  *
@@ -126,6 +126,7 @@ public:
                               IN_BSTR aName,
                               IN_BSTR aOsTypeId,
                               IN_BSTR aId,
+                              BOOL forceOverwrite,
                               IMachine **aMachine);
     STDMETHOD(OpenMachine) (IN_BSTR aSettingsFile, IMachine **aMachine);
     STDMETHOD(RegisterMachine) (IMachine *aMachine);

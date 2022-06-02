@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 33451 2010-10-26 09:34:19Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 33458 2010-10-26 11:18:04Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1819,6 +1819,7 @@ void Appliance::importMachineGeneric(const ovf::VirtualSystem &vsysThis,
                                     Bstr(stack.strNameVBox).raw(),
                                     Bstr(stack.strOsTypeVBox).raw(),
                                     NULL, /* uuid */
+                                    FALSE, /* fForceOverwrite */
                                     pNewMachine.asOutParam());
     if (FAILED(rc)) throw rc;
 

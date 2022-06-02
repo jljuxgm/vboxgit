@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 33451 2010-10-26 09:34:19Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 33458 2010-10-26 11:18:04Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -243,6 +243,7 @@ int handleCreateVM(HandlerArg *a)
                                         name.raw(),
                                         osTypeId.raw(),
                                         Guid(id).toUtf16().raw(),
+                                        FALSE /* forceOverwrite */,
                                         machine.asOutParam()));
 
         CHECK_ERROR_BREAK(machine, SaveSettings());

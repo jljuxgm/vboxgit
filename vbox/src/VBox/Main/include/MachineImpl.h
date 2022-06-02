@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 33451 2010-10-26 09:34:19Z vboxsync $ */
+/* $Id: MachineImpl.h 33458 2010-10-26 11:18:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -331,8 +331,9 @@ public:
     HRESULT init(VirtualBox *aParent,
                  const Utf8Str &strConfigFile,
                  const Utf8Str &strName,
+                 GuestOSType *aOsType,
                  const Guid &aId,
-                 GuestOSType *aOsType = NULL);
+                 bool fForceOverwrite);
 
     // initializer for loading existing machine XML (either registered or not)
     HRESULT init(VirtualBox *aParent,
@@ -356,7 +357,7 @@ protected:
                      const Utf8Str &strConfigFile);
     HRESULT initDataAndChildObjects();
     HRESULT registeredInit();
-    HRESULT tryCreateMachineConfigFile();
+    HRESULT tryCreateMachineConfigFile(bool fForceOverwrite);
     void uninitDataAndChildObjects();
 
 public:

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33451 2010-10-26 09:34:19Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33458 2010-10-26 11:18:04Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1197,6 +1197,7 @@ STDMETHODIMP VirtualBox::CreateMachine(IN_BSTR aSettingsFile,
                                        IN_BSTR aName,
                                        IN_BSTR aOsTypeId,
                                        IN_BSTR aId,
+                                       BOOL forceOverwrite,
                                        IMachine **aMachine)
 {
     LogFlowThisFuncEnter();
@@ -1238,8 +1239,9 @@ STDMETHODIMP VirtualBox::CreateMachine(IN_BSTR aSettingsFile,
     rc = machine->init(this,
                        Utf8Str(bstrSettingsFile),
                        Utf8Str(aName),
+                       osType,
                        id,
-                       osType);
+                       !!forceOverwrite);
     if (SUCCEEDED(rc))
     {
         /* set the return value */
