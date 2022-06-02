@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 34045 2010-11-12 19:16:09Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 34405 2010-11-26 16:43:26Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -163,7 +163,7 @@ static DECLCALLBACK(int) rtVfsStdFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF p
                 rc = RTFileReadAt(pThis->hFile, off, pvSeg, cbSeg, pcbRead ? &cbReadSeg : NULL);
             if (RT_FAILURE(rc))
                 break;
-            if (off < 0)
+            if (off >= 0)
                 off += cbReadSeg;
             cbRead  += cbReadSeg;
             if ((pcbRead && cbReadSeg != cbSeg) || rc != VINF_SUCCESS)
