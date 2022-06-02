@@ -1,4 +1,4 @@
-/* $Id: socket.c 32744 2010-09-24 06:25:52Z vboxsync $ */
+/* $Id: socket.c 32745 2010-09-24 06:32:57Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -751,13 +751,13 @@ sorecvfrom(PNATState pData, struct socket *so)
         len += n;
 
         size = MCLBYTES;
-        if (len < MSIZE)
+        if (len + if_maxlinkhdr < MSIZE)
             size = MCLBYTES;
-        else if (len < MCLBYTES)
+        else if (len + if_maxlinkhdr < MCLBYTES)
             size = MCLBYTES;
-        else if (len < MJUM9BYTES)
+        else if (len + if_maxlinkhdr < MJUM9BYTES)
             size = MJUM9BYTES;
-        else if (len < MJUM16BYTES)
+        else if (len + if_maxlinkhdr < MJUM16BYTES)
             size = MJUM16BYTES;
         else
             AssertMsgFailed(("Unsupported size"));
