@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32667 2010-09-21 14:04:49Z vboxsync $
+# $Id: Makefile.kmk 32758 2010-09-24 12:57:20Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -575,6 +575,14 @@ ifdef VBOX_WITH_COCOA_QT
  	src/darwin/UICocoaSpecialControls.mm
  VirtualBox_QT_MOCHDRS.darwin = \
  	src/darwin/UICocoaSpecialControls.h
+endif
+
+ifdef VBOX_GUI_WITH_SYSTRAY
+ VirtualBox_DEFS += VBOX_GUI_WITH_SYSTRAY
+ VirtualBox_QT_MOCHDRS += \
+	src/selector/VBoxTrayIcon.h
+ VirtualBox_SOURCES += \
+	src/selector/VBoxTrayIcon.cpp
 endif
 
 if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_GUI_USE_QGL)
