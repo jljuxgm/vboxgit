@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: VMDK.cpp 33937 2010-11-10 15:48:19Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -2575,19 +2575,20 @@ static int vmdkWriteDescriptor(PVMDKIMAGE pImage)
         rc = vmdkFileWriteSync(pImage, pDescFile, uOffset, pvDescriptor, cbLimit ? cbLimit : cbDescriptor, NULL);
         if (RT_FAILURE(rc))
             rc = vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: error writing descriptor in '%s'"), pImage->pszFilename);
+
+        if (RT_SUCCESS(rc) && !cbLimit)
+        {
+            rc = vmdkFileSetSize(pImage, pDescFile, cbDescriptor);
+            if (RT_FAILURE(rc))
+                rc = vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: error truncating descriptor in '%s'"), pImage->pszFilename);
+        }
+
+        if (RT_SUCCESS(rc))
+            pImage->Descriptor.fDirty = false;
+
+        RTMemFree(pvDescriptor);
     }
 
-    if (RT_SUCCESS(rc) && !cbLimit)
-    {
-        rc = vmdkFileSetSize(pImage, pDescFile, cbDescriptor);
-        if (RT_FAILURE(rc))
-            rc = vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: error truncating descriptor in '%s'"), pImage->pszFilename);
-    }
-
-    if (RT_SUCCESS(rc))
-        pImage->Descriptor.fDirty = false;
-
-    RTMemFree(pvDescriptor);
     return rc;
 }
 
