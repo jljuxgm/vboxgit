@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 31895 2010-08-24 09:00:14Z vboxsync $ */
+/* $Id: VM.cpp 32095 2010-08-30 13:07:40Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1773,8 +1773,8 @@ VMMR3DECL(int) VMR3Save(PVM pVM, const char *pszFilename, PCSSMSTRMOPS pStreamOp
     *pfSuspended = false;
     VM_ASSERT_VALID_EXT_RETURN(pVM, VERR_INVALID_VM_HANDLE);
     VM_ASSERT_OTHER_THREAD(pVM);
-    AssertPtrReturn(pszFilename, VERR_INVALID_POINTER);
-    AssertReturn(*pszFilename, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pszFilename || pStreamOps, VERR_INVALID_POINTER);
+    AssertReturn(pStreamOps || *pszFilename, VERR_INVALID_PARAMETER);
     AssertPtrNullReturn(pfnProgress, VERR_INVALID_POINTER);
 
     /*
