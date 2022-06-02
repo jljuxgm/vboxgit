@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30880 2010-07-16 14:06:46Z vboxsync $
+# $Id: Makefile.kmk 31135 2010-07-27 11:09:18Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -894,6 +894,16 @@ $$(VBOX_JMSCOM_JAR): $(VBOX_JMSCOM_GEN)/jmscomglue.list | $$(dir $$@)
 	$(VBOX_JAR) cf $@ -C $(VBOX_JMSCOM_JDEST) .
 
 endif # VBOX_WITH_JMSCOM
+
+#
+# Install Java glue sample code.
+#
+INSTALLS += javagluesample
+javagluesample_INST = $(INST_SDK)bindings/glue/java
+javagluesample_MODE = a+rx,u+w
+javagluesample_SOURCES = \
+	$(VBOX_PATH_MAIN_SRC)/glue/tests/TestVBox.java=>TestVBox.java \
+	$(VBOX_PATH_MAIN_SRC)/glue/tests/Makefile.kmk=>Makefile.kmk
 
 updatenls::
 	$(VBOX_LUPDATE) $(VBoxSVC_SOURCES) $(VBoxSVC_VBOX_HEADERS) -ts $(VBoxSVC_VBOX_TRANSLATIONS)
