@@ -1,4 +1,4 @@
-/* $Id: listeners.h 33963 2010-11-11 10:23:42Z vboxsync $ */
+/* $Id: listeners.h 33976 2010-11-11 11:22:35Z vboxsync $ */
 /** @file
  *
  * Listeners helpers.
@@ -66,6 +66,10 @@ public:
     {
     }
 
+    T* getWrapped()
+    {
+        return &mListener;
+    }
 
     /* On Windows QI implemented by VBOX_SCRIPTABLE_DISPATCH_IMPL */
 #ifndef RT_OS_WINDOWS
