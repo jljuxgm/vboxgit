@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 32818 2010-09-29 15:28:35Z vboxsync $ */
+/* $Id: MediumImpl.cpp 32849 2010-09-30 14:45:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5118,8 +5118,6 @@ HRESULT Medium::exportFile(const char *aFilename,
                            void *aVDImageIOCallbacks, void *aVDImageIOUser,
                            ComObjPtr<Progress> aProgress)
 {
-    return E_FAIL;
-
     AssertPtrReturn(aFilename, E_INVALIDARG);
     AssertReturn(!aFormat.isNull(), E_INVALIDARG);
     AssertReturn(!aProgress.isNull(), E_INVALIDARG);
