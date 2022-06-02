@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DrvTAP.cpp 31114 2010-07-26 13:32:52Z vboxsync $ */
 /** @file
  * DrvTAP - Universial TAP network transport driver.
  */
@@ -1104,12 +1104,6 @@ static DECLCALLBACK(int) drvTAPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     }
 
     /*
-     * Create the transmit lock.
-     */
-    rc = RTCritSectInit(&pThis->XmitLock);
-    AssertRCReturn(rc, rc);
-
-    /*
      * Do the setup.
      */
 # ifdef VBOX_WITH_CROSSBOW
@@ -1137,6 +1131,12 @@ static DECLCALLBACK(int) drvTAPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
         return PDMDrvHlpVMSetError(pDrvIns, VERR_INVALID_HANDLE, RT_SRC_POS,
                                    N_("The TAP file handle %RTfile is not valid"), pThis->FileDevice);
 #endif /* !RT_OS_SOLARIS */
+
+    /*
+     * Create the transmit lock.
+     */
+    rc = RTCritSectInit(&pThis->XmitLock);
+    AssertRCReturn(rc, rc);
 
     /*
      * Make sure the descriptor is non-blocking and valid.
