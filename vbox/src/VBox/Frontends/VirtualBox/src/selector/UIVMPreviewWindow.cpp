@@ -1,4 +1,4 @@
-/* $Id: UIVMPreviewWindow.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: UIVMPreviewWindow.cpp 35795 2011-01-31 17:05:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -126,6 +126,7 @@ void UIVMPreviewWindow::retranslateUi()
 void UIVMPreviewWindow::resizeEvent(QResizeEvent *pEvent)
 {
     repaintBGImages();
+    sltRecreatePreview();
     QWidget::resizeEvent(pEvent);
 }
 
@@ -227,7 +228,9 @@ void UIVMPreviewWindow::sltRecreatePreview()
         m_pPreviewImg = 0;
     }
 
-    if (!m_machine.isNull())
+    if (   !m_machine.isNull()
+        && m_vRect.width() > 0
+        && m_vRect.height() > 0)
     {
         Assert(m_machineState != KMachineState_Null);
         QImage image(size(), QImage::Format_ARGB32);
