@@ -1,4 +1,4 @@
-/* $Id: UIExportApplianceWzd.cpp 32448 2010-09-13 14:24:06Z vboxsync $ */
+/* $Id: UIExportApplianceWzd.cpp 33077 2010-10-12 15:44:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -401,7 +401,7 @@ void UIExportApplianceWzdPage4::retranslateUi()
 
     /* Translate the file selector */
     m_pFileSelector->setFileDialogTitle(tr("Select a file to export into"));
-    m_pFileSelector->setFileFilters(tr("Open Virtualization Format (%1)").arg("*.ova *.ovf"));
+    m_pFileSelector->setFileFilters(tr("Open Virtualization Format Archive (%1)").arg("*.ova")  + ";;" + tr("Open Virtualization Format (%1)").arg("*.ovf"));
 }
 
 void UIExportApplianceWzdPage4::initializePage()
