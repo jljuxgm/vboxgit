@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32144 2010-08-31 13:05:17Z vboxsync $ */
+/* $Id: FTMInternal.h 32179 2010-09-01 14:32:27Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -104,7 +104,7 @@ typedef struct FTM
     STAMCOUNTER         StatFullSync;
     STAMCOUNTER         StatCheckpointNetwork;
     STAMCOUNTER         StatCheckpointStorage;
-
+    STAMPROFILE         StatCheckpoint;
 } FTM;
 AssertCompileMemberAlignment(FTM, CritSect, 8);
 
