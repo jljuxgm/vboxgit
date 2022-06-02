@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 35753 2011-01-28 10:58:06Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 35833 2011-02-03 14:24:02Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -619,7 +619,11 @@ Section $(VBOX_COMPONENT_MAIN) SEC01
   ${Else}
     DetailPrint "No previous version of ${PRODUCT_NAME} detected."
   ${EndIf}
-  DetailPrint "Detected OS: Windows $g_strWinVersion"
+!if $%BUILD_TARGET_ARCH% == "amd64"
+  DetailPrint "Detected OS: Windows $g_strWinVersion (64-bit)"
+!else
+  DetailPrint "Detected OS: Windows $g_strWinVersion (32-bit)"
+!endif
   DetailPrint "System Directory: $g_strSystemDir"
 
 !ifdef _DEBUG
