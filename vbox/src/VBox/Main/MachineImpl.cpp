@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31333 2010-08-03 13:00:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31335 2010-08-03 13:24:47Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4134,7 +4134,7 @@ STDMETHODIMP Machine::Delete(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProg
 
     pTask->pProgress.createObject();
     pTask->pProgress->init(getVirtualBox(),
-                           this /* aInitiator */,
+                           static_cast<IMachine*>(this) /* aInitiator */,
                            Bstr(tr("Deleting files")),
                            true /* fCancellable */,
                            pTask->llFilesToDelete.size() + 1,   // cOperations
