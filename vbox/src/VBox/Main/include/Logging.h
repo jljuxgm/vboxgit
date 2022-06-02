@@ -1,4 +1,4 @@
-/* $Id: Logging.h 32056 2010-08-27 16:04:23Z vboxsync $ */
+/* $Id: Logging.h 32062 2010-08-27 18:36:09Z vboxsync $ */
 
 /** @file
  *
@@ -99,7 +99,7 @@ void *MLDMemAllocDbg (size_t cb, bool fTmp, bool fZero, const char *pszCaller, i
 void *MLDMemReallocDbg (void *pv, size_t cb, const char *pszCaller, int iLine);
 void MLDMemFreeDbg (void *pv, bool fTmp);
 
-void MLDMemInit (void);
+void MLDMemInit (const char *pszPrefix);
 void MLDMemUninit (void);
 
 void MLDMemDump (void);
