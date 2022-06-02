@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31698 2010-08-16 15:00:05Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31706 2010-08-16 15:27:24Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2591,6 +2591,8 @@ STDMETHODIMP Machine::COMSETTER(FaultToleranceState)(FaultToleranceState_T aStat
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     /* @todo deal with running state change. */
+    HRESULT rc = checkStateDependency(MutableStateDep);
+    if (FAILED(rc)) return rc;
 
     setModified(IsModified_MachineData);
     mUserData.backup();

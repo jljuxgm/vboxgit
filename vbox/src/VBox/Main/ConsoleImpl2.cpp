@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 31701 2010-08-16 15:14:07Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 31706 2010-08-16 15:27:24Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2945,7 +2945,8 @@ int Console::configMedium(PCFGMNODE pLunL0,
                  *        So, on the "lock-media" command, the target teleporter should also
                  *        make DrvVD undo TempReadOnly.  It gets interesting if we fail after
                  *        that. Grumble. */
-                else if (aMachineState == MachineState_TeleportingIn)
+                else if (   aMachineState == MachineState_TeleportingIn
+                         || aMachineState == MachineState_FaultTolerantSyncing)
                 {
                     InsertConfigInteger(pCfg, "TempReadOnly", 1);
                 }
