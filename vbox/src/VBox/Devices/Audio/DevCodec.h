@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 31507 2010-08-10 06:52:49Z vboxsync $ */
+/* $Id: DevCodec.h 31771 2010-08-19 09:15:42Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -232,5 +232,7 @@ typedef struct CODECState
 
 int stac9220Construct(CODECState *pCodecState);
 int stac9220Destruct(CODECState *pCodecState);
+int stac9220SaveState(CODECState *pCodecState, PSSMHANDLE pSSMHandle);
+int stac9220LoadState(CODECState *pCodecState, PSSMHANDLE pSSMHandle);
 
 #endif
