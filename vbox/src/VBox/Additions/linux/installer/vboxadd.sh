@@ -1,6 +1,6 @@
 #! /bin/sh
 # Sun VirtualBox
-# Linux Additions kernel module init script ($Revision: 30443 $)
+# Linux Additions kernel module init script ($Revision: 31315 $)
 #
 
 #
@@ -396,6 +396,11 @@ setup()
     useradd -d /var/run/vboxadd -g 1 -r -s /bin/false vboxadd >/dev/null 2>&1
     # And for the others, we choose a UID ourselves
     useradd -d /var/run/vboxadd -g 1 -u 501 -o -s /bin/false vboxadd >/dev/null 2>&1
+
+    # Add a group "vboxsf" for Shared Folders access
+    # All users which want to access the auto-mounted Shared Folders have to
+    # be added to this group.
+    groupadd -f vboxsf >/dev/null 2>&1
 
     # Create udev description file
     if [ -d /etc/udev/rules.d ]; then
