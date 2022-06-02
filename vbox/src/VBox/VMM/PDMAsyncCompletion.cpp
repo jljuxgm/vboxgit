@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 29496 2010-05-14 19:09:40Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 30690 2010-07-07 08:26:21Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -788,7 +788,7 @@ static void pdmR3AsyncCompletionPutTask(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, P
 
     if (RT_UNLIKELY(tsRun >= (uint64_t)10*1000*1000*1000))
     {
-        LogRel(("AsyncCompletion: Task completed after %llu seconds\n", tsRun / ((uint64_t)1000*1000*1000)));
+        LogRel(("AsyncCompletion: Task %#p completed after %llu seconds\n", pTask, tsRun / ((uint64_t)1000*1000*1000)));
     }
 
 #ifdef VBOX_WITH_STATISTICS
