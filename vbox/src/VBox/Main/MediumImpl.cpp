@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 34782 2010-12-07 14:42:12Z vboxsync $ */
+/* $Id: MediumImpl.cpp 35009 2010-12-13 13:48:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2952,6 +2952,20 @@ const Utf8Str& Medium::getFormat() const
 const ComObjPtr<MediumFormat>& Medium::getMediumFormat() const
 {
     return m->formatObj;
+}
+
+/**
+ * Internal method that returns true if the medium is represented by a file on the host disk
+ * (and not iSCSI or something).
+ * @return
+ */
+bool Medium::isMediumFormatFile() const
+{
+    if (    m->formatObj
+         && (m->formatObj->getCapabilities() & MediumFormatCapabilities_File)
+       )
+        return true;
+    return false;
 }
 
 /**
