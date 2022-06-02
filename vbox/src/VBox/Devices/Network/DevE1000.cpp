@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
+/* $Id: DevE1000.cpp 32160 2010-08-31 15:51:22Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -53,8 +53,6 @@
 #include <VBox/pdmnetifs.h>
 #include <VBox/pdmnetinline.h>
 #include <VBox/param.h>
-#include <VBox/tm.h>
-#include <VBox/vm.h>
 #include "../Builtins.h"
 
 #include "DevEEPROM.h"
