@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32594 2010-09-17 12:34:19Z vboxsync $
+# $Id: Makefile.kmk 32606 2010-09-17 13:47:21Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -99,6 +99,10 @@ VBoxOGLhostcrutil_pixel.c_CFLAGS.win.x86 += -Od
 #
 VBoxOGLhostcrutil_EXTENDS  = VBoxOGLcrutil
 VBoxOGLhostcrutil_TEMPLATE = VBOXCROGLR3HOSTDLL
+if defined(VBOX_SIGNING_MODE) && defined(VBOXWDDM)
+ # need to reset the NOINST flag
+ VBoxOGLhostcrutil_NOINST.win.x86 =
+endif
 VBoxOGLhostcrutil_LDFLAGS.darwin = $(VBoxOGLcrutil_LDFLAGS.darwin) \
 	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxOGLhostcrutil.dylib
 ## @todo kBuild bug, possibly same as ticket #51: PATH_SDK_DXSDK_LIB is expanded too early.
@@ -502,6 +506,10 @@ VBoxOGLerrorspu_LIBS = \
 #
 VBoxOGLhosterrorspu_EXTENDS  = VBoxOGLerrorspu
 VBoxOGLhosterrorspu_TEMPLATE = VBOXCROGLR3HOSTDLL
+if defined(VBOX_SIGNING_MODE) && defined(VBOXWDDM)
+ # need to reset the NOINST flag
+ VBoxOGLhosterrorspu_NOINST.win.x86 =
+endif
 VBoxOGLhosterrorspu_LDFLAGS.darwin += $(VBoxOGLerrorspu_LDFLAGS.darwin) \
 	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxOGLhosterrorspu.dylib
 VBoxOGLhosterrorspu_LIBS  = \
