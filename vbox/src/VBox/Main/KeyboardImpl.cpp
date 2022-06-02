@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 34395 2010-11-26 14:33:47Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 34396 2010-11-26 14:36:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -20,7 +20,6 @@
 
 #include "AutoCaller.h"
 #include "Logging.h"
-#include "VBoxEvents.h"
 
 #include <VBox/com/array.h>
 #include <VBox/pdmdrv.h>
@@ -219,9 +218,9 @@ STDMETHODIMP Keyboard::PutScancodes(ComSafeArrayIn(LONG, scancodes),
     com::SafeArray<LONG> keysSent(sent);
     memcpy(keysSent.raw(), keys.raw(), sent*sizeof(LONG));
 
-    VBoxEventDesc evDesc; 
-    evDesc.init(mEventSource, VBoxEventType_OnGuestKeyboard, ComSafeArrayAsInParam(keys)); 
-    evDesc.fire(0); 
+    VBoxEventDesc evDesc;
+    evDesc.init(mEventSource, VBoxEventType_OnGuestKeyboard, ComSafeArrayAsInParam(keys));
+    evDesc.fire(0);
 
     if (RT_FAILURE(vrc))
         return setError(VBOX_E_IPRT_ERROR,
