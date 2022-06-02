@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 31966 2010-08-25 16:15:25Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 31973 2010-08-26 08:14:34Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -2885,7 +2885,7 @@ static DECLCALLBACK(int) dbgcCmdDumpPageHierarchy(PCDBGCCMD pCmd, PDBGCCMDHLP pC
     /*
      * Figure the context.
      */
-    uint32_t fFlags = 0;
+    uint32_t fFlags = DBGFPGDMP_FLAGS_PAGE_INFO | DBGFPGDMP_FLAGS_HEADER;
     if (pCmd->pszCmd[3] == '\0')
         fFlags |= pDbgc->fRegCtxGuest ? DBGFPGDMP_FLAGS_GUEST : DBGFPGDMP_FLAGS_SHADOW;
     else if (pCmd->pszCmd[3] == 'g')
