@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 30850 2010-07-14 17:41:01Z vboxsync $ */
+/* $Id: VMMDevState.h 30852 2010-07-14 18:16:12Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -64,18 +64,18 @@ typedef struct VMMDEVCREDS
     /** credentials for guest logon purposes */
     struct
     {
-        char szUserName[VMMDEV_CREDENTIALS_STRLEN];
-        char szPassword[VMMDEV_CREDENTIALS_STRLEN];
-        char szDomain[VMMDEV_CREDENTIALS_STRLEN];
+        char szUserName[VMMDEV_CREDENTIALS_SZ_SIZE];
+        char szPassword[VMMDEV_CREDENTIALS_SZ_SIZE];
+        char szDomain[VMMDEV_CREDENTIALS_SZ_SIZE];
         bool fAllowInteractiveLogon;
     } Logon;
 
     /** credentials for verification by guest */
     struct
     {
-        char szUserName[VMMDEV_CREDENTIALS_STRLEN];
-        char szPassword[VMMDEV_CREDENTIALS_STRLEN];
-        char szDomain[VMMDEV_CREDENTIALS_STRLEN];
+        char szUserName[VMMDEV_CREDENTIALS_SZ_SIZE];
+        char szPassword[VMMDEV_CREDENTIALS_SZ_SIZE];
+        char szDomain[VMMDEV_CREDENTIALS_SZ_SIZE];
     } Judge;
 } VMMDEVCREDS;
 
