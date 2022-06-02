@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 32576 2010-09-16 17:50:45Z vboxsync $ */
+/* $Id: VBoxControl.cpp 32586 2010-09-17 10:05:15Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1418,12 +1418,12 @@ static RTEXITCODE handleWriteCoreDump(int argc, char *argv[])
     int rc = VbglR3WriteCoreDump();
     if (RT_SUCCESS(rc))
     {
-        RTPrintf("Successfully taking guest core\n");
+        RTPrintf("Guest core dump successful.\n");
         return RTEXITCODE_SUCCESS;
     }
     else
     {
-        VBoxControlError("Error while taking guest core. rc=%Rrc\n", rc);
+        VBoxControlError("Error while taking guest core dump. rc=%Rrc\n", rc);
         return RTEXITCODE_FAILURE;
     }
 }
