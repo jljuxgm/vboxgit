@@ -1,4 +1,4 @@
-/* $Id: VMMDev.h 30758 2010-07-09 12:30:12Z vboxsync $ */
+/* $Id: VMMDev.h 30776 2010-07-12 08:05:23Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Declaration of VMMDev: driver interface to VMM device
@@ -43,6 +43,7 @@ public:
     int hgcmHostCall (const char *pszServiceName, uint32_t u32Function, uint32_t cParms, PVBOXHGCMSVCPARM paParms);
 
 private:
+    static DECLCALLBACK(void)   UpdateGuestStatus(PPDMIVMMDEVCONNECTOR pInterface, const VBoxGuestStatus *guestStatus);
     static DECLCALLBACK(void)   UpdateGuestInfo(PPDMIVMMDEVCONNECTOR pInterface, const VBoxGuestInfo *guestInfo);
     static DECLCALLBACK(void)   UpdateGuestCapabilities(PPDMIVMMDEVCONNECTOR pInterface, uint32_t newCapabilities);
     static DECLCALLBACK(void)   UpdateMouseCapabilities(PPDMIVMMDEVCONNECTOR pInterface, uint32_t newCapabilities);
