@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 34567 2010-12-01 13:20:13Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 34681 2010-12-03 09:54:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4833,8 +4833,7 @@ void VBoxGlobal::init()
         {"QNX",             ":/os_qnx.png"},
         {"MacOS",           ":/os_macosx.png"},
         {"MacOS_64",        ":/os_macosx_64.png"},
-        /** @todo add JRockitVE icon */
-        {"JRockitVE",       ":/os_other.png"},
+        {"JRockitVE",       ":/os_jrockitve.png"},
     };
     for (uint n = 0; n < SIZEOF_ARRAY (kOSTypeIcons); ++ n)
     {
