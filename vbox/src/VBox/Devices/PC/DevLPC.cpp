@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 32476 2010-09-14 12:12:07Z vboxsync $ */
+/* $Id: DevLPC.cpp 33142 2010-10-14 17:25:09Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  */
@@ -235,7 +235,7 @@ static DECLCALLBACK(int) lpcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     PCIDevSetRevisionId       (&pThis->dev, 0x02);
     PCIDevSetClassSub         (&pThis->dev, 0x01); /* PCI-to-ISA Bridge */
     PCIDevSetClassBase        (&pThis->dev, 0x06); /* Bridge */
-    PCIDevSetHeaderType       (&pThis->dev, 0x00); /* normal device */
+    PCIDevSetHeaderType       (&pThis->dev, 0x80); /* normal, multifunction device (so that other devices can be its functions) */
     PCIDevSetSubSystemVendorId(&pThis->dev, 0x8086);
     PCIDevSetSubSystemId      (&pThis->dev, 0x7270);
     PCIDevSetInterruptPin     (&pThis->dev, 0x03);

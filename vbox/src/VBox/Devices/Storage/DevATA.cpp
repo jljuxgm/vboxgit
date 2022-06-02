@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 32943 2010-10-06 13:42:59Z vboxsync $ */
+/* $Id: DevATA.cpp 33142 2010-10-14 17:25:09Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -6737,7 +6737,7 @@ static DECLCALLBACK(int)   ataR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("PIIX3 cannot register PCI device"));
-    AssertMsg(pThis->dev.devfn == 9 || iInstance != 0, ("pThis->dev.devfn=%d\n", pThis->dev.devfn));
+    //AssertMsg(pThis->dev.devfn == 9 || iInstance != 0, ("pThis->dev.devfn=%d\n", pThis->dev.devfn));
     rc = PDMDevHlpPCIIORegionRegister(pDevIns, 4, 0x10, PCI_ADDRESS_SPACE_IO, ataBMDMAIORangeMap);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
