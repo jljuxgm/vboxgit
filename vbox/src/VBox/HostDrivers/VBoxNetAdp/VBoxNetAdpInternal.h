@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 35785 2011-01-31 12:45:37Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -140,7 +140,7 @@ typedef VBOXNETADP *PVBOXNETADP;
 
 DECLHIDDEN(int) vboxNetAdpInit(void);
 DECLHIDDEN(void) vboxNetAdpShutdown(void);
-DECLHIDDEN(int) vboxNetAdpCreate (PVBOXNETADP *ppNew);
+DECLHIDDEN(int) vboxNetAdpCreate (PVBOXNETADP *ppNew, const char *pcszName);
 DECLHIDDEN(int) vboxNetAdpDestroy(PVBOXNETADP pThis);
 DECLHIDDEN(PVBOXNETADP) vboxNetAdpFindByName(const char *pszName);
 DECLHIDDEN(void) vboxNetAdpComposeMACAddress(PVBOXNETADP pThis, PRTMAC pMac);
@@ -176,7 +176,7 @@ DECLHIDDEN(void) vboxNetAdpOsDestroy(PVBOXNETADP pThis);
  *
  * @remarks Owns no locks.
  */
-DECLHIDDEN(int) vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMac);
+DECLHIDDEN(int) vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMac, const char *pcszName);
 
 
 

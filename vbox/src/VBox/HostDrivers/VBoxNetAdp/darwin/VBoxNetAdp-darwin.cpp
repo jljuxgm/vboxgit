@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 35785 2011-01-31 12:45:37Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -192,8 +192,9 @@ static void vboxNetAdpDarwinDetach(ifnet_t pIface)
 }
 
 
-int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
+int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress, const char *pcszName)
 {
+    /* TODO: Use pcszName */
     int rc;
     struct ifnet_init_params Params;
     RTUUID uuid;
