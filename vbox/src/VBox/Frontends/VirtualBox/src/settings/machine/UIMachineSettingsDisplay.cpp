@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 34857 2010-12-09 09:40:13Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 34860 2010-12-09 09:58:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -393,7 +393,7 @@ void UIMachineSettingsDisplay::checkVRAMRequirements()
 #if 0 // def VBOX_WITH_CRHGSMI
     if (m_bWddmMode && mCb3D->isChecked())
     {
-        needMBytes += VBoxGlobal::required3dwddmoffscreenvideomemory(&m_machine, cVal) / _1M;
+        needMBytes += VBoxGlobal::required3DWddmOffscreenVideoMemory(&m_machine, cVal) / _1M;
         needMBytes = RT_MAX(needMBytes, 128);
         needMBytes = RT_MIN(needMBytes, 256);
         m_maxVRAMVisible = 256;
