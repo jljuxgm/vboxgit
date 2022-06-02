@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DevVGA.cpp 33572 2010-10-28 16:39:36Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5392,6 +5392,10 @@ static DECLCALLBACK(int) vgaR3Destruct(PPDMDEVINS pDevIns)
 #ifdef VBE_NEW_DYN_LIST
     PVGASTATE   pThis = PDMINS_2_DATA(pDevIns, PVGASTATE);
     LogFlow(("vgaR3Destruct:\n"));
+
+#ifdef VBOX_WITH_VDMA
+    vboxVDMADestruct(pThis->pVdma);
+#endif
 
     /*
      * Free MM heap pointers.
