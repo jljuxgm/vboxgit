@@ -1,4 +1,4 @@
-/* $Id: vbox.c 34440 2010-11-28 22:12:07Z vboxsync $ */
+/* $Id: vbox.c 35150 2010-12-15 16:33:59Z vboxsync $ */
 /** @file
  * Display - VirtualBox Win 2000/XP guest display driver, support functions.
  */
@@ -35,7 +35,8 @@ void VBoxProcessDisplayInfo (PPDEV ppdev)
                                      ? ppdev->lDeltaScreen
                                      : -ppdev->lDeltaScreen, ppdev->cxScreen,
                                      ppdev->cyScreen,
-                                     (uint16_t)ppdev->ulBitCount);
+                                     (uint16_t)ppdev->ulBitCount,
+                                     VBVA_SCREEN_F_ACTIVE);
     }
 
     return;
