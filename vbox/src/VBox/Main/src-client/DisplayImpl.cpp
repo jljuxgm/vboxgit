@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 35760 2011-01-28 13:09:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2245,6 +2245,10 @@ int Display::displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_
                     *pu32Width = width;
                     *pu32Height = height;
                 }
+                else
+                {
+                    RTMemFree(pu8Data);
+                }
             }
         }
         else
@@ -2314,8 +2318,15 @@ static int displayTakeScreenshot(PVM pVM, Display *pDisplay, struct DRVMAINDISPL
                            srcW, srcH);
         }
 
-        /* This can be called from any thread. */
-        pDrv->pUpPort->pfnFreeScreenshot (pDrv->pUpPort, pu8Data);
+        if (aScreenId == VBOX_VIDEO_PRIMARY_SCREEN)
+        {
+            /* This can be called from any thread. */
+            pDrv->pUpPort->pfnFreeScreenshot (pDrv->pUpPort, pu8Data);
+        }
+        else
+        {
+            RTMemFree(pu8Data);
+        }
     }
 
     return vrc;
