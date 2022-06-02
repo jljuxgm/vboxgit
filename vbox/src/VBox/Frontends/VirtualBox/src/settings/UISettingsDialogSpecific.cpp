@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 33617 2010-10-29 15:08:08Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 33626 2010-10-29 20:57:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -586,19 +586,6 @@ bool UIVMSettingsDlg::recorrelate(QWidget *pPage, QString &strWarning)
         {
             bool bWddmSupported = pGeneralPage->isWddmSupportedForOSType();
             pDisplayPage->setWddmMode(bWddmSupported);
-            if (pDisplayPage->isAcceleration3DSelected() && bWddmSupported)
-            {
-                int vramMb = pDisplayPage->getVramSizeMB();
-                int requiredVramMb = pDisplayPage->getMinVramSizeMBForWddm3D();
-                if (vramMb < requiredVramMb)
-                {
-                    strWarning = tr(
-                        "You have 3D Acceleration enabled for a operation system which uses the WDDM video driver. "
-                        "For maximal performance set the guest VRAM to at least <b>%1</b>."
-                        ).arg (vboxGlobal().formatSize (requiredVramMb * _1M, 0, VBoxDefs::FormatSize_RoundUp));
-                    return true;
-                }
-            }
         }
 #endif
 #ifdef VBOX_WITH_VIDEOHWACCEL
