@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 32449 2010-09-13 14:27:19Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 32574 2010-09-16 17:44:29Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1989,6 +1989,35 @@ static int VBoxGuestCommonIOCtl_ChangeMemoryBalloon(PVBOXGUESTDEVEXT pDevExt, PV
 }
 
 
+/**
+ * Handle a request for writing a core dump of the guest on the host.
+ *
+ * @returns VBox status code.
+ *
+ * @param pDevExt               The device extension.
+ * @param pInfo                 The output buffer.
+ */
+static int VBoxGuestCommonIOCtl_WriteCoreDump(PVBOXGUESTDEVEXT pDevExt, VBoxGuestWriteCoreDump *pInfo)
+{
+    VMMDevReqWriteCoreDump *pReq = NULL;
+    int rc = VbglGRAlloc((VMMDevRequestHeader **)&pReq, sizeof(*pReq), VMMDevReq_WriteCoreDump);
+    if (RT_FAILURE(rc))
+    {
+        Log(("VBoxGuestCommonIOCtl: WRITE_CORE_DUMP: failed to allocate %u (%#x) bytes to cache the request. rc=%Rrc!!\n",
+             sizeof(*pReq), sizeof(*pReq), rc));
+        return rc;
+    }
+
+    pReq->fFlags = pInfo->fFlags;
+    rc = VbglGRPerform(&pReq->header);
+    if (RT_FAILURE(rc))
+        Log(("VBoxGuestCommonIOCtl: WRITE_CORE_DUMP: VbglGRPerform failed, rc=%Rrc!\n", rc));
+
+    VbglGRFree(&pReq->header);
+    return rc;
+}
+
+
 #ifdef VBOX_WITH_VRDP_SESSION_HANDLING
 /**
  * Enables the VRDP session and saves its session ID.
@@ -2210,6 +2239,11 @@ int VBoxGuestCommonIOCtl(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUES
             case VBOXGUEST_IOCTL_CHANGE_BALLOON:
                 CHECKRET_MIN_SIZE("CHANGE_MEMORY_BALLOON", sizeof(VBoxGuestChangeBalloonInfo));
                 rc = VBoxGuestCommonIOCtl_ChangeMemoryBalloon(pDevExt, pSession, (VBoxGuestChangeBalloonInfo *)pvData, pcbDataReturned);
+                break;
+
+            case VBOXGUEST_IOCTL_WRITE_CORE_DUMP:
+                CHECKRET_MIN_SIZE("WRITE_CORE_DUMP", sizeof(VBoxGuestWriteCoreDump));
+                rc = VBoxGuestCommonIOCtl_WriteCoreDump(pDevExt, (VBoxGuestWriteCoreDump *)pvData);
                 break;
 
 #ifdef VBOX_WITH_VRDP_SESSION_HANDLING
