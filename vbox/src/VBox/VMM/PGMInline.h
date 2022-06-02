@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 31402 2010-08-05 12:28:18Z vboxsync $ */
+/* $Id: PGMInline.h 31444 2010-08-06 19:47:04Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -499,25 +499,6 @@ DECLINLINE(void *) pgmPoolMapPageV2Inlined(PVM pVM, PVMCPU pVCpu, PPGMPOOLPAGE p
         return pv;
     }
     AssertFatalMsgFailed(("pgmPoolMapPageV2Inlined invalid page index %x\n", pPage->idx));
-}
-
-/**
- * Temporarily maps one host page specified by HC physical address, returning
- * pointer within the page.
- *
- * Be WARNED that the dynamic page mapping area is small, 8 pages, thus the space is
- * reused after 8 mappings (or perhaps a few more if you score with the cache).
- *
- * @returns The address corresponding to HCPhys.
- * @param   pVM         The VM handle.
- * @param   HCPhys      HC Physical address of the page.
- */
-DECLINLINE(void *) pgmRZDynMapHCPageOff(PVM pVM, RTHCPHYS HCPhys RTLOG_COMMA_SRC_POS_DECL)
-{
-    void *pv;
-    pgmRZDynMapHCPageInlined(VMMGetCpu(pVM), HCPhys & ~(RTHCPHYS)PAGE_OFFSET_MASK, &pv RTLOG_COMMA_SRC_POS_ARGS);
-    pv = (void *)((uintptr_t)pv | ((uintptr_t)HCPhys & PAGE_OFFSET_MASK));
-    return pv;
 }
 
 #endif /*  VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0 || IN_RC */
