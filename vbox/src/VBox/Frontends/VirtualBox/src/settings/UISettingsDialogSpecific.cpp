@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 33639 2010-11-01 09:30:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -227,6 +227,7 @@ protected slots:
         {
             m_eventLoop.processEvents();
             m_eventLoop.quit();
+            m_eventLoop.processEvents();
         }
     }
 
