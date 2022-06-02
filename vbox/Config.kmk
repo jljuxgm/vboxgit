@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34466 2010-11-29 15:00:56Z vboxsync $
+# $Id: Config.kmk 34468 2010-11-29 15:11:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3812,6 +3812,9 @@ endif # VBOX_WITH_QTGUI
 #
 TEMPLATE_VBOXBLDPROG  = VBox Build Program
 TEMPLATE_VBOXBLDPROG_DEFS                = IN_RING3
+TEMPLATE_VBOXBLDPROG_ASTOOL              = YASM
+TEMPLATE_VBOXBLDPROG_ASFLAGS.x86         = $(VBOX_ASFLAGS32)
+TEMPLATE_VBOXBLDPROG_ASFLAGS.amd64       = $(VBOX_ASFLAGS64)
 ifeq ($(KBUILD_HOST),win)
  ifndef VBOX_USE_VCC70
   TEMPLATE_VBOXBLDPROG_TOOL            := $(VBOX_VCC_TOOL_STEM)$(toupper $(KBUILD_HOST_ARCH))
@@ -3996,8 +3999,8 @@ TEMPLATE_VBOXLNXHOSTR3EXE_INST              = $(INST_BIN)
 TEMPLATE_VBOXLNXHOSTR3EXE_BLD_TRG           = linux
 TEMPLATE_VBOXLNXHOSTR3EXE_TOOL              = $(VBOX_GCC_TOOL)
 TEMPLATE_VBOXLNXHOSTR3EXE_ASTOOL            = YASM
-TEMPLATE_VBOXLNXHOSTR3EXE_DLLSUFF           = .so
 TEMPLATE_VBOXLNXHOSTR3EXE_ASFLAGS           = $(VBOX_ASFLAGS)
+TEMPLATE_VBOXLNXHOSTR3EXE_DLLSUFF           = .so
 TEMPLATE_VBOXLNXHOSTR3EXE_DEFS              = IN_RING3 $(ARCH_BITS_DEFS)
 TEMPLATE_VBOXLNXHOSTR3EXE_CXXFLAGS          = -g -pipe $(VBOX_GCC_PEDANTIC_CXX) $(VBOX_GCC_fno-stack-protector)
 TEMPLATE_VBOXLNXHOSTR3EXE_CXXFLAGS.debug    = -fno-inline
@@ -4438,7 +4441,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34466 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34468 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
