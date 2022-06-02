@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31659 2010-08-13 15:13:08Z vboxsync $
+# $Id: Makefile.kmk 31660 2010-08-13 15:31:37Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -31,7 +31,9 @@ endif
 ifeq ($(KBUILD_TARGET_ARCH),x86)
  include $(PATH_SUB_CURRENT)/Stub/Makefile.kmk
  include $(PATH_SUB_CURRENT)/StubBld/Makefile.kmk
- include $(PATH_SUB_CURRENT)/AutoStartMenu/Makefile.kmk
+ ifdef VBOX_BRAND_WIN_AS_MENU
+  include $(PATH_SUB_CURRENT)/AutoStartMenu/Makefile.kmk
+ endif
 endif
 
 #
