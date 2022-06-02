@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: Parallels.cpp 34147 2010-11-17 20:46:42Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -1013,7 +1013,6 @@ static int parallelsSetComment(void *pBackendData, const char *pszComment)
     else
         rc = VERR_VD_NOT_OPENED;
 
-out:
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
 }

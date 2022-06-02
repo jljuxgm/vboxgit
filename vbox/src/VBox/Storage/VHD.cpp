@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: VHD.cpp 34147 2010-11-17 20:46:42Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2150,7 +2150,6 @@ static int vhdSetComment(void *pBackendData, const char *pszComment)
     else
         rc = VERR_VD_NOT_OPENED;
 
-out:
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
 }
@@ -2885,7 +2884,7 @@ static int vhdResize(void *pBackendData, uint64_t cbSize,
         {
             /* Calculate how many sectors nee to be relocated. */
             uint64_t cbOverlapping = offStartDataNew - offStartDataOld;
-            unsigned cBlocksReloc = cbOverlapping / cbBlock;
+            unsigned cBlocksReloc = (unsigned)(cbOverlapping / cbBlock);
             if (cbOverlapping % cbBlock)
                 cBlocksReloc++;
 
