@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 30596 2010-07-05 09:02:18Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 30597 2010-07-05 09:09:01Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -275,9 +275,9 @@ typedef struct BUSLOGIC
     /** Pointer to the device instance - RC ptr. */
     PPDMDEVINSRC                    pDevInsRC;
 
-    /* Whether R0 is enabled. */
+    /** Whether R0 is enabled. */
     bool                            fR0Enabled;
-    /** Whether GC is enabled. */
+    /** Whether RC is enabled. */
     bool                            fGCEnabled;
 
     /** Base address of the I/O ports. */
@@ -377,19 +377,19 @@ typedef struct BUSLOGIC
 
     /** The base interface.
      * @todo use PDMDEVINS::IBase  */
-    PDMIBASE                       IBase;
+    PDMIBASE                        IBase;
     /** Status Port - Leds interface. */
-    PDMILEDPORTS                   ILeds;
+    PDMILEDPORTS                    ILeds;
     /** Partner of ILeds. */
-    R3PTRTYPE(PPDMILEDCONNECTORS)  pLedsConnector;
+    R3PTRTYPE(PPDMILEDCONNECTORS)   pLedsConnector;
 
 #if HC_ARCH_BITS == 64
-    uint32_t                       Alignment3;
+    uint32_t                        Alignment3;
 #endif
 
     /** Indicates that PDMDevHlpAsyncNotificationCompleted should be called when
      * a port is entering the idle state. */
-    bool volatile                  fSignalIdle;
+    bool volatile                   fSignalIdle;
 
 } BUSLOGIC, *PBUSLOGIC;
 
