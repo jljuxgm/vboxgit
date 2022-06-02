@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 34224 2010-11-21 23:52:04Z vboxsync $ */
+/* $Id: DrvVD.cpp 34247 2010-11-22 15:14:02Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1770,6 +1770,10 @@ static DECLCALLBACK(int) drvvdStartFlush(PPDMIMEDIAASYNC pInterface, void *pvUse
     else
     {
         rc = PDMR3BlkCacheFlush(pThis->pBlkCache, pvUser);
+        if (rc == VINF_AIO_TASK_PENDING)
+            rc = VERR_VD_ASYNC_IO_IN_PROGRESS;
+        else if (rc == VINF_SUCCESS)
+            rc = VINF_VD_ASYNC_IO_FINISHED;
     }
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
