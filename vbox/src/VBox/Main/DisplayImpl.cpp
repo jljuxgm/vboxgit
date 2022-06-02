@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 32851 2010-09-30 15:12:55Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 32928 2010-10-05 15:37:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1224,7 +1224,7 @@ static void vbvaSetMemoryFlagsHGSMI (unsigned uScreenId,
             }
         }
 
-        ASMAtomicOrU32(&pFBInfo->pVBVAHostFlags->u32HostEvents, fu32HostEvents);
+        ASMAtomicWriteU32(&pFBInfo->pVBVAHostFlags->u32HostEvents, fu32HostEvents);
         ASMAtomicWriteU32(&pFBInfo->pVBVAHostFlags->u32SupportedOrders, fu32SupportedOrders);
 
         LogFlowFunc(("    fu32HostEvents = 0x%08X, fu32SupportedOrders = 0x%08X\n", fu32HostEvents, fu32SupportedOrders));
