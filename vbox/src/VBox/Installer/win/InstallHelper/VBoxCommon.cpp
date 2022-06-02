@@ -1,10 +1,10 @@
-/* $Id: */
+/* $Id: VBoxCommon.cpp 32112 2010-08-31 08:44:09Z vboxsync $ */
 /** @file
-* VBoxCommon - Misc helper routines for install helper.
-*/
+ * VBoxCommon - Misc helper routines for install helper.
+ */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2008-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
