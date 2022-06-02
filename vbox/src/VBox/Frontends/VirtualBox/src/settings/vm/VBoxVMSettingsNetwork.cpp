@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsNetwork.cpp 31535 2010-08-10 14:46:54Z vboxsync $ */
+/* $Id: VBoxVMSettingsNetwork.cpp 31541 2010-08-10 16:17:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -56,7 +56,7 @@ VBoxVMSettingsNetwork::VBoxVMSettingsNetwork (VBoxVMSettingsNetworkPage *aParent
     /* Setup connections */
     connect (mAbsAdvanced, SIGNAL (clicked()), this, SLOT (toggleAdvanced()));
     connect (mTbMAC, SIGNAL (clicked()), this, SLOT (generateMac()));
-    connect (mPbPortForwarding, SIGNAL (clicked()), this, SLOT (sltOpenPortsForwadringDlg()));
+    connect (mPbPortForwarding, SIGNAL (clicked()), this, SLOT (sltOpenPortForwardingDlg()));
 
 #ifdef Q_WS_MAC
     /* Prevent this widgets to go in the Small/Mini size state which is
@@ -527,7 +527,7 @@ void VBoxVMSettingsNetwork::generateMac()
     mLeMAC->setText (mAdapter.GetMACAddress());
 }
 
-void VBoxVMSettingsNetwork::sltOpenPortsForwadringDlg()
+void VBoxVMSettingsNetwork::sltOpenPortForwardingDlg()
 {
     VBoxVMSettingsPortForwardingDlg dlg(this, mPortForwardingRules);
     if (dlg.exec() == QDialog::Accepted)
