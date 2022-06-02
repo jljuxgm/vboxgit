@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 31565 2010-08-11 12:47:07Z vboxsync $ */
+/* $Id: PGMR0.cpp 31593 2010-08-12 00:52:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -213,6 +213,9 @@ VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PVMCPU pVCpu, PGMMODE enm
     AssertMsg(   enmShwPagingMode == PGMMODE_32_BIT || enmShwPagingMode == PGMMODE_PAE      || enmShwPagingMode == PGMMODE_PAE_NX
               || enmShwPagingMode == PGMMODE_AMD64  || enmShwPagingMode == PGMMODE_AMD64_NX || enmShwPagingMode == PGMMODE_EPT,
               ("enmShwPagingMode=%d\n", enmShwPagingMode));
+
+    /* Reserved shouldn't end up here. */
+    Assert(!(uErr & X86_TRAP_PF_RSVD));
 
 #ifdef VBOX_WITH_STATISTICS
     /*
