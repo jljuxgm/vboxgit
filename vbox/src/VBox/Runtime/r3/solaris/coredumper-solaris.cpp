@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 32048 2010-08-27 12:44:51Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 32197 2010-09-02 13:22:21Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -53,7 +53,8 @@
 # include <sys/mman.h>
 #endif  /* RT_OS_SOLARIS */
 
-#include "internal/ldrElf.h"
+#include "internal/ldrELF.h"
+#include "internal/ldrELF64.h"
 
 /*******************************************************************************
 *   Globals                                                                    *
@@ -84,7 +85,7 @@ static char                g_szCoreDumpFile[PATH_MAX] = { 0 };
  */
 typedef struct ELFNOTEHDR
 {
-    Elf_Nhdr                        Hdr;                        /* Header of NOTE section */
+    Elf64_Nhdr                      Hdr;                        /* Header of NOTE section */
     char                            achName[8];                 /* Name of NOTE section */
 } ELFNOTEHDR;
 typedef ELFNOTEHDR *PELFNOTEHDR;
