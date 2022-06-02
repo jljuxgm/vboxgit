@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34480 2010-11-29 16:49:01Z vboxsync $
+# $Id: Config.kmk 34492 2010-11-29 23:57:12Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -532,7 +532,9 @@ endif
 # Enables the extension pack feature.
 VBOX_WITH_EXTPACK = 1
 # Enables building of the "PUEL" (final name TBD) extension pack.
-#VBOX_WITH_EXTPACK_PUEL = 1
+ifdef VBOX_ONLY_EXTPACKS
+ VBOX_WITH_EXTPACK_PUEL = 1
+endif
 ## @}
 
 ## @name Misc
@@ -702,6 +704,13 @@ VBOX_BRAND_DARWIN_INSTALLER_BG       := $(PATH_ROOT)/src/VBox/Installer/darwin/V
 #
 # Skip stuff.
 #
+
+ifdef VBOX_ONLY_EXTPACKS
+ # Clear some VBOX_WITH_XXX variables instead of adding ifdefs all over the place.
+ VBOX_WITH_DEBUGGER =
+ VBOX_WITH_ADDITIONS =
+ VBOX_WITH_VBOXDRV =
+endif
 
 # VBOX_QUICK can be used by core developers to speed to the build
 ifdef VBOX_QUICK
@@ -4454,7 +4463,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34480 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34492 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
