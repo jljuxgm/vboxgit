@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 33031 2010-10-11 08:42:53Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 33115 2010-10-13 20:13:45Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -922,6 +922,22 @@ static int lsilogicProcessMessageRequest(PLSILOGICSCSI pLsiLogic, PMptMessageHdr
 
             rc = lsilogicProcessConfigurationRequest(pLsiLogic, pConfigurationReq, &pReply->Configuration);
             AssertRC(rc);
+            break;
+        }
+        case MPT_MESSAGE_HDR_FUNCTION_FW_UPLOAD:
+        {
+            PMptFWUploadRequest pFWUploadReq = (PMptFWUploadRequest)pMessageHdr;
+
+            pReply->FWUpload.u8ImageType        = pFWUploadReq->u8ImageType;
+            pReply->FWUpload.u8MessageLength    = 6;
+            pReply->FWUpload.u32ActualImageSize = 0;
+            break;
+        }
+        case MPT_MESSAGE_HDR_FUNCTION_FW_DOWNLOAD:
+        {
+            //PMptFWDownloadRequest pFWDownloadReq = (PMptFWDownloadRequest)pMessageHdr;
+
+            pReply->FWDownload.u8MessageLength    = 5;
             break;
         }
         case MPT_MESSAGE_HDR_FUNCTION_SCSI_IO_REQUEST: /* Should be handled already. */
@@ -3564,7 +3580,10 @@ static DECLCALLBACK(bool) lsilogicNotifyQueueConsumer(PPDMDEVINS pDevIns, PPDMQU
                 //cbRequest = sizeof(MptEventAckRequest);
                 break;
             case MPT_MESSAGE_HDR_FUNCTION_FW_DOWNLOAD:
-                AssertMsgFailed(("todo\n"));
+                cbRequest = sizeof(MptFWDownloadRequest);
+                break;
+            case MPT_MESSAGE_HDR_FUNCTION_FW_UPLOAD:
+                cbRequest = sizeof(MptFWUploadRequest);
                 break;
             default:
                 AssertMsgFailed(("Unknown function issued %u\n", pTaskState->GuestRequest.Header.u8Function));
@@ -3685,7 +3704,7 @@ static int lsilogicPrepareBIOSSCSIRequest(PLSILOGICSCSI pLsiLogic)
             ASMAtomicIncU32(&pTaskState->pTargetDevice->cOutstandingRequests);
 
             rc = pTaskState->pTargetDevice->pDrvSCSIConnector->pfnSCSIRequestSend(pTaskState->pTargetDevice->pDrvSCSIConnector,
-                                                                                    &pTaskState->PDMScsiRequest);
+                                                                                  &pTaskState->PDMScsiRequest);
             AssertMsgRCReturn(rc, ("Sending request to SCSI layer failed rc=%Rrc\n", rc), rc);
             return VINF_SUCCESS;
         }
