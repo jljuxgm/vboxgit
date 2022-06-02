@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 30792 2010-07-12 12:43:02Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 31108 2010-07-26 11:39:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -517,7 +517,17 @@ void UIKeyboardHandler::sltMachineStateChanged()
             {
                 if (m_views[theListOfViewIds[i]]->hasFocus())
                 {
-                    captureKeyboard(theListOfViewIds[i]);
+                    /* Capture keyboard: */
+#ifdef Q_WS_WIN
+                    if (!uisession()->isAutoCaptureDisabled() && m_globalSettings.autoCapture() &&
+                        GetAncestor(m_views[theListOfViewIds[i]]->winId(), GA_ROOT) == GetForegroundWindow())
+#else /* Q_WS_WIN */
+                    if (!uisession()->isAutoCaptureDisabled() && m_globalSettings.autoCapture())
+#endif /* !Q_WS_WIN */
+                        captureKeyboard(theListOfViewIds[i]);
+                    /* Reset the single-time disable capture flag: */
+                    if (uisession()->isAutoCaptureDisabled())
+                        uisession()->setAutoCaptureDisabled(false);
                     break;
                 }
             }
