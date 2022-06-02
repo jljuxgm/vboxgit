@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DevVGA.cpp 35407 2011-01-05 13:17:57Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4655,6 +4655,11 @@ static DECLCALLBACK(int) vgaPortTakeScreenshot(PPDMIDISPLAYPORT pInterface, uint
                 *pcbData = cbRequired;
                 *pcx = Connector.cx;
                 *pcy = Connector.cy;
+            }
+            else
+            {
+                /* If we do not return a success, then the data buffer must be freed. */
+                RTMemFree(pu8Data);
             }
         }
     }
