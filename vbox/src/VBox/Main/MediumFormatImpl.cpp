@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.cpp 32531 2010-09-15 17:04:48Z vboxsync $ */
+/* $Id: MediumFormatImpl.cpp 32682 2010-09-22 06:59:46Z vboxsync $ */
 
 /** @file
  *
@@ -197,8 +197,7 @@ STDMETHODIMP MediumFormat::COMGETTER(Name)(BSTR *aName)
 
 STDMETHODIMP MediumFormat::COMGETTER(FileExtensions)(ComSafeArrayOut(BSTR, aFileExtensions))
 {
-    if (ComSafeArrayOutIsNull(aFileExtensions))
-        return E_POINTER;
+    CheckComArgOutSafeArrayPointerValid(aFileExtensions);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -241,11 +240,11 @@ STDMETHODIMP MediumFormat::DescribeProperties(ComSafeArrayOut(BSTR, aNames),
                                               ComSafeArrayOut(ULONG, aFlags),
                                               ComSafeArrayOut(BSTR, aDefaults))
 {
-    CheckComArgSafeArrayNotNull(aNames);
-    CheckComArgSafeArrayNotNull(aDescriptions);
-    CheckComArgSafeArrayNotNull(aTypes);
-    CheckComArgSafeArrayNotNull(aFlags);
-    CheckComArgSafeArrayNotNull(aDefaults);
+    CheckComArgOutSafeArrayPointerValid(aNames);
+    CheckComArgOutSafeArrayPointerValid(aDescriptions);
+    CheckComArgOutSafeArrayPointerValid(aTypes);
+    CheckComArgOutSafeArrayPointerValid(aFlags);
+    CheckComArgOutSafeArrayPointerValid(aDefaults);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
