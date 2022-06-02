@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 30753 2010-07-08 23:01:51Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 30911 2010-07-19 15:28:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -573,6 +573,10 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
                                 Qt::MouseButtons mouseButtons,
                                 int wheelDelta, Qt::Orientation wheelDirection)
 {
+    /* Check if machine is still running: */
+    if (!uisession()->isRunning())
+        return true;
+
     /* Check if such view & viewport are registered: */
     if (!m_views.contains(uScreenId) || !m_viewports.contains(uScreenId))
         return true;
