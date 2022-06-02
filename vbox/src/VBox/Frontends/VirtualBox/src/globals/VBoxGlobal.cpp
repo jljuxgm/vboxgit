@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 30677 2010-07-06 16:39:25Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2743,6 +2743,8 @@ void VBoxGlobal::retranslateUi()
         tr ("ICH AC97", "AudioControllerType");
     mAudioControllerTypes [KAudioControllerType_SB16] =
         tr ("SoundBlaster 16", "AudioControllerType");
+    mAudioControllerTypes [KAudioControllerType_HDA] =
+    tr ("Intel HD Audio", "AudioControllerType");
 
     mNetworkAdapterTypes [KNetworkAdapterType_Am79C970A] =
         tr ("PCnet-PCI II (Am79C970A)", "NetworkAdapterType");

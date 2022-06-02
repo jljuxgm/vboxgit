@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 29865 2010-05-28 14:53:07Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -294,7 +294,7 @@ void printUsage(USAGECATEGORY u64Cmd)
             RTPrintf(                        "|coreaudio");
         }
         RTPrintf(                            "]\n");
-        RTPrintf("                            [--audiocontroller ac97|sb16]\n"
+        RTPrintf("                            [--audiocontroller ac97|hda|sb16]\n"
                  "                            [--clipboard disabled|hosttoguest|guesttohost|\n"
                  "                                         bidirectional]\n");
         if (fVRDP)

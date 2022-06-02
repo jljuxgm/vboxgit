@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 30767 2010-07-09 14:56:07Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1213,6 +1213,12 @@ HRESULT showVMInfo (ComPtr<IVirtualBox> virtualBox,
                         pszCtrl = "sb16";
                     else
                         pszCtrl = "SB16";
+                    break;
+                case AudioControllerType_HDA:
+                    if (details == VMINFO_MACHINEREADABLE)
+                        pszCtrl = "hda";
+                    else
+                        pszCtrl = "HDA";
                     break;
             }
         }

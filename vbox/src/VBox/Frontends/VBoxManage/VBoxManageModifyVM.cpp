@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 29465 2010-05-14 11:59:31Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1725,6 +1725,8 @@ int handleModifyVM(HandlerArg *a)
                     CHECK_ERROR(audioAdapter, COMSETTER(AudioController)(AudioControllerType_SB16));
                 else if (!strcmp(ValueUnion.psz, "ac97"))
                     CHECK_ERROR(audioAdapter, COMSETTER(AudioController)(AudioControllerType_AC97));
+                else if (!strcmp(ValueUnion.psz, "hda"))
+                    CHECK_ERROR(audioAdapter, COMSETTER(AudioController)(AudioControllerType_HDA));
                 else
                 {
                     errorArgument("Invalid --audiocontroller argument '%s'", ValueUnion.psz);

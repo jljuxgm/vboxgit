@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -312,6 +312,8 @@ void ProgressProxy::copyProgressInfo(IProgress *pOtherProgress, bool fEarly)
 {
     HRESULT hrc;
     LogFlowThisFunc(("\n"));
+    
+    NOREF(fEarly);
 
     /*
      * No point in doing this if the progress object was canceled already.

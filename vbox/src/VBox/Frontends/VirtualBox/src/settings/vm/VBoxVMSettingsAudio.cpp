@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsAudio.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxVMSettingsAudio.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -106,6 +106,8 @@ void VBoxVMSettingsAudio::prepareComboboxes()
     /* Clear the controller box */
     mCbAudioController->clear();
     /* Refill them */
+    mCbAudioController->insertItem (mCbAudioController->count(),
+        vboxGlobal().toString (KAudioControllerType_HDA));
     mCbAudioController->insertItem (mCbAudioController->count(),
         vboxGlobal().toString (KAudioControllerType_AC97));
     mCbAudioController->insertItem (mCbAudioController->count(),

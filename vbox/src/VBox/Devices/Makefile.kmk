@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30866 2010-07-16 05:37:14Z vboxsync $
+# $Id: Makefile.kmk 30976 2010-07-22 10:06:58Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -313,17 +313,12 @@ DevicesR3_SOURCES       = \
 	Network/DevPCNet.cpp \
 	Audio/DevIchAc97.cpp \
 	Audio/DevSB16.cpp \
+	Audio/DevIchIntelHDA.cpp \
+	Audio/DevCodec.cpp \
 	PC/DevDMA.cpp \
 	Storage/fdc.c \
 	Serial/DevSerial.cpp \
 	Parallel/DevParallel.cpp
-
-ifdef VBOX_WITH_AUDIO_INTELHD
-    DevicesR3_SOURCES += Audio/DevIchIntelHDA.cpp
-    DevicesR3_SOURCES += Audio/DevCodec.cpp
-    DevicesR3_DEFS    += VBOX_WITH_AUDIO_INTELHD
-    VBoxDD_DEFS    += VBOX_WITH_AUDIO_INTELHD
-endif
 
 ifdef VBOX_DYNAMIC_NET_ATTACH
  DevicesR3_DEFS        += VBOX_DYNAMIC_NET_ATTACH
