@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34806 2010-12-07 17:11:51Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34809 2010-12-07 17:21:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2165,7 +2165,7 @@ bool VBoxProblemReporter::confirmRemovingPackage(const QString &strPackName, QWi
     return messageOkCancel (pParent ? pParent : mainWindowShown(),
                             Question,
                             tr("<p>You are about to remove the VirtualBox extension pack <b>%1</b>.</p>"
-                               "<p>Are you sure you want to do that?</p>").arg(strPackName),
+                               "<p>Are you sure you want to proceed?</p>").arg(strPackName),
                             0,
                             tr("&Remove"));
 }
