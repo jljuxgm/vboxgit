@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 33372 2010-10-23 10:51:52Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 33406 2010-10-25 09:49:48Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -650,7 +650,7 @@ int handleImportAppliance(HandlerArg *arg)
 #endif
                                 else
                                     RTPrintf("%2u: Hard disk image: source image=%ls, target path=%ls, %ls"
-                                            "\n    (change controller with \"--vsys %u --unit %u --controller <id>\";"
+                                            "\n    (change target path with \"--vsys %u --unit %u --disk path\";"
                                             "\n    disable with \"--vsys %u --unit %u --ignore\")\n",
                                             a,
                                             aOvfValues[a],
