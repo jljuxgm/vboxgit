@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 33075 2010-10-12 15:20:06Z vboxsync $ */
+/* $Id: MouseImpl.cpp 33261 2010-10-20 13:40:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -425,7 +425,7 @@ HRESULT Mouse::reportAbsEvent(uint32_t mouseXAbs, uint32_t mouseYAbs,
         if (mouseXAbs != mLastAbsX || mouseYAbs != mLastAbsY)
         {
             rc = reportAbsEventToVMMDev(mouseXAbs, mouseYAbs);
-            cJiggle = 1;
+            cJiggle = !fUsesVMMDevEvent;
         }
         rc = reportRelEventToMouseDev(cJiggle, 0, dz, dw, fButtons);
     }
