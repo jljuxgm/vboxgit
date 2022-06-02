@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 34308 2010-11-24 11:44:28Z vboxsync $ */
+/* $Id: MachineImpl.h 34313 2010-11-24 12:15:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -519,7 +519,7 @@ public:
     STDMETHOD(GetCPUStatus(ULONG aCpu, BOOL *aCpuAttached));
     STDMETHOD(QueryLogFilename(ULONG aIdx, BSTR *aName));
     STDMETHOD(ReadLog(ULONG aIdx, LONG64 aOffset, LONG64 aSize, ComSafeArrayOut(BYTE, aData)));
-    STDMETHOD(AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAddress, IContext *eventContext, BOOL tryToUnbind));
+    STDMETHOD(AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAddress, IEventContext *eventContext, BOOL tryToUnbind));
     STDMETHOD(DetachHostPciDevice(LONG hostAddress));
     STDMETHOD(COMGETTER(PciDeviceAttachments))(ComSafeArrayOut(IPciDeviceAttachment *, aAttachments));
 
