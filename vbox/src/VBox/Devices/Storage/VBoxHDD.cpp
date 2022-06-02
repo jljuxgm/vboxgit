@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 31776 2010-08-19 09:48:44Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 31803 2010-08-19 21:09:14Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -4975,7 +4975,7 @@ VBOXDDU_DECL(int) VDResize(PVBOXHDD pDisk, uint64_t cbSize,
         fLockWrite = true;
 
         rc = pImage->Backend->pfnResize(pImage->pvBackendData,
-                                        cbSize,
+                                        cbSize * _1M,
                                         pPCHSGeometry,
                                         pLCHSGeometry,
                                         0, 99,
