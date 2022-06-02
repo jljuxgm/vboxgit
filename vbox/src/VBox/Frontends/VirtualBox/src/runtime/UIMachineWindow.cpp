@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 34471 2010-11-29 15:28:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -473,14 +473,14 @@ void UIMachineWindow::prepareHandlers()
     /* Register keyboard-handler: */
     machineLogic()->keyboardHandler()->prepareListener(m_uScreenId, this);
 
-    /* Register machine-view in mouse-handler: */
-    machineLogic()->mouseHandler()->addMachineView(m_uScreenId, this->machineView());
+    /* Register mouse-handler: */
+    machineLogic()->mouseHandler()->prepareListener(m_uScreenId, this);
 }
 
 void UIMachineWindow::cleanupHandlers()
 {
-    /* Unregister machine-view from mouse-handler: */
-    machineLogic()->mouseHandler()->delMachineView(m_uScreenId);
+    /* Unregister mouse-handler: */
+    machineLogic()->mouseHandler()->cleanupListener(m_uScreenId);
 
     /* Unregister keyboard-handler: */
     machineLogic()->keyboardHandler()->cleanupListener(m_uScreenId);
