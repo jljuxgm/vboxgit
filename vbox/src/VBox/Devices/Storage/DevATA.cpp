@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 30723 2010-07-08 08:24:12Z vboxsync $ */
+/* $Id: DevATA.cpp 32068 2010-08-29 15:48:59Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1975,8 +1975,8 @@ static bool atapiPassthroughSS(ATADevState *s)
                     ataH2BE_U32(aATAPICmd + 6, cReqSectors);
                     break;
                 case SCSI_READ_CD:
-                    ataH2BE_U32(s->aATAPICmd + 2, iATAPILBA);
-                    ataH2BE_U24(s->aATAPICmd + 6, cbCurrTX);
+                    ataH2BE_U32(aATAPICmd + 2, iATAPILBA);
+                    ataH2BE_U24(aATAPICmd + 6, cbCurrTX);
                     break;
                 case SCSI_READ_CD_MSF:
                     ataLBA2MSF(aATAPICmd + 3, iATAPILBA);
