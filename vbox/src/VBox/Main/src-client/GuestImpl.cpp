@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 35888 2011-02-08 08:58:48Z vboxsync $ */
+/* $Id: GuestImpl.cpp 35890 2011-02-08 09:11:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -444,7 +444,7 @@ HRESULT Guest::setStatistic(ULONG aCpuId, GUESTSTATTYPE enmType, ULONG aVal)
  * @param   aType           Facility to get the status from.
  * @param   aTimestamp      Timestamp of last facility status update in ms (optional).
  */
-STDMETHODIMP Guest::GetFacilityStatus(AdditionsFacilityType aType, LONG64 *aTimestamp, AdditionsFacilityStatus *aStatus)
+STDMETHODIMP Guest::GetFacilityStatus(AdditionsFacilityType_T aType, LONG64 *aTimestamp, AdditionsFacilityStatus_T *aStatus)
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
