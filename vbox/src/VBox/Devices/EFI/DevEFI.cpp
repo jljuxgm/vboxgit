@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: DevEFI.cpp 32720 2010-09-23 13:17:35Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -993,6 +993,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
                               "DmiBIOSReleaseMinor\0"
                               "DmiBIOSFirmwareMajor\0"
                               "DmiBIOSFirmwareMinor\0"
+                              "DmiSystemSKU\0"
                               "DmiSystemFamily\0"
                               "DmiSystemProduct\0"
                               "DmiSystemSerial\0"
