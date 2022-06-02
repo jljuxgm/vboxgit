@@ -1,4 +1,4 @@
-/* $Id: poll-win.cpp 31454 2010-08-08 13:33:35Z vboxsync $ */
+/* $Id: poll-win.cpp 31942 2010-08-24 21:53:00Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows Implementation.
  *
@@ -208,6 +208,9 @@ static int rtPollNoResumeWorker(RTPOLLSETINTERNAL *pThis, RTMSINTERVAL cMillies,
     /*
      * Get event (if pending) and do wait cleanup.
      */
+    /** @todo r=aeichner: The loop below overwrites events if
+     *  more than one source has events pending.
+     */
     i = cHandles;
     while (i-- > 0)
     {
@@ -215,13 +218,13 @@ static int rtPollNoResumeWorker(RTPOLLSETINTERNAL *pThis, RTMSINTERVAL cMillies,
         switch (pThis->aHandles[i].enmType)
         {
             case RTHANDLETYPE_PIPE:
-                rtPipePollDone(pThis->aHandles[i].u.hPipe, pThis->aHandles[i].fEvents,
-                               pThis->aHandles[i].fFinalEntry);
+                fEvents = rtPipePollDone(pThis->aHandles[i].u.hPipe, pThis->aHandles[i].fEvents,
+                                         pThis->aHandles[i].fFinalEntry);
                 break;
 
             case RTHANDLETYPE_SOCKET:
-                rtSocketPollDone(pThis->aHandles[i].u.hSocket, pThis->aHandles[i].fEvents,
-                                 pThis->aHandles[i].fFinalEntry);
+                fEvents = rtSocketPollDone(pThis->aHandles[i].u.hSocket, pThis->aHandles[i].fEvents,
+                                           pThis->aHandles[i].fFinalEntry);
                 break;
 
             default:
