@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 30776 2010-07-12 08:05:23Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 32851 2010-09-30 15:12:55Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMMDev: driver interface to VMM device
@@ -56,7 +56,7 @@
 typedef struct DRVMAINVMMDEV
 {
     /** Pointer to the VMMDev object. */
-    VMMDev                     *pVMMDev;
+    VMMDev                      *pVMMDev;
     /** Pointer to the driver instance structure. */
     PPDMDRVINS                  pDrvIns;
     /** Pointer to the VMMDev port interface of the driver/device above us. */

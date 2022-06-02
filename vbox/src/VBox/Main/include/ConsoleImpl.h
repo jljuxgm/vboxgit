@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 32194 2010-09-02 13:06:27Z vboxsync $ */
+/* $Id: ConsoleImpl.h 32851 2010-09-30 15:12:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -200,7 +200,7 @@ public:
                               BOOL aMergeForward, IMedium *aParentForTarget,
                               ComSafeArrayIn(IMedium *, aChildrenToReparent),
                               IProgress *aProgress);
-    VMMDev *getVMMDev() { return mVMMDev; }
+    VMMDev *getVMMDev() { return m_pVMMDev; }
     AudioSniffer *getAudioSniffer() { return mAudioSniffer; }
 
     int VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const char *pszPassword, const char *pszDomain);
@@ -640,7 +640,7 @@ private:
      */
     NetworkAttachmentType_T meAttachmentType[SchemaDefs::NetworkAdapterCount];
 
-    VMMDev * const mVMMDev;
+    VMMDev * m_pVMMDev;
     AudioSniffer * const mAudioSniffer;
 
     enum
