@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 32304 2010-09-08 09:56:58Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -767,7 +767,7 @@ static void transfer_audio (AC97LinkState *s, int index, int elapsed)
 
         if (!r->picb)
         {
-            Log (("ac97: fresh bd %d is empty %#x %#x\n",
+            Log (("ac97: fresh bd %d is empty %#x %#x, skipping\n",
                   r->civ, r->bd.addr, r->bd.ctl_len));
             if (r->civ == r->lvi)
             {
@@ -779,7 +779,7 @@ static void transfer_audio (AC97LinkState *s, int index, int elapsed)
             r->civ = r->piv;
             r->piv = (r->piv + 1) % 32;
             fetch_bd (s, r);
-            return;
+            continue;
         }
 
         switch (index)
