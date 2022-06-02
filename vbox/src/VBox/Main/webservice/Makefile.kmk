@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31117 2010-07-26 14:49:24Z vboxsync $
+# $Id: Makefile.kmk 31232 2010-07-30 08:04:52Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -457,9 +457,13 @@ endef
 	$(VBOXWEB_WS_PHP) \
 	$(VBOXWEB_PYTHONWSSAMPLE)\
 	$(VBOXWEB_JAXWSSAMPLE) \
-	$(VBOXWEB_METRICSAMPLE) \
+	$(VBOXWEB_METRICSAMPLE)
+
+ifdef VBOX_WITH_OLD_JWS
+  VBOXWEB_OTHERS               += \
         $(VBOXWEB_JAVA15_JAR) \
 	$(VBOXWEB_JAVA16_JAR)
+endif
 
  #
  # Install sample code.
