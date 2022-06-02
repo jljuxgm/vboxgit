@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 34536 2010-11-30 17:55:30Z vboxsync $ */
+/* $Id: manifest2.cpp 34845 2010-12-08 17:43:25Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -1032,7 +1032,7 @@ RTDECL(int) RTManifestEntryRemove(RTMANIFEST hManifest, const char *pszEntry)
     AssertRCReturn(rc, rc);
 
     /*
-     * Only add one if it does not already exist.
+     * Look it up before removing it.
      */
     PRTMANIFESTENTRY pEntry;
     rc = rtManifestGetEntry(pThis, pszEntry, fNeedNormalization, cchEntry, &pEntry);
@@ -1045,6 +1045,27 @@ RTDECL(int) RTManifestEntryRemove(RTMANIFEST hManifest, const char *pszEntry)
     }
 
     return rc;
+}
+
+
+RTDECL(bool) RTManifestEntryExists(RTMANIFEST hManifest, const char *pszEntry)
+{
+    RTMANIFESTINT *pThis = hManifest;
+    AssertPtrReturn(pThis, false);
+    AssertReturn(pThis->u32Magic == RTMANIFEST_MAGIC, false);
+    AssertPtr(pszEntry);
+
+    bool    fNeedNormalization;
+    size_t  cchEntry;
+    int rc = rtManifestValidateNameEntry(pszEntry, &fNeedNormalization, &cchEntry);
+    AssertRCReturn(rc, false);
+
+    /*
+     * Check if it exists.
+     */
+    PRTMANIFESTENTRY pEntry;
+    rc = rtManifestGetEntry(pThis, pszEntry, fNeedNormalization, cchEntry, &pEntry);
+    return RT_SUCCESS_NP(rc);
 }
 
 
