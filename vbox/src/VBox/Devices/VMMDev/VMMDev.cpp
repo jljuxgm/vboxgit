@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 32672 2010-09-21 16:42:52Z vboxsync $ */
+/* $Id: VMMDev.cpp 32774 2010-09-27 13:00:04Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -551,7 +551,7 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                      * User makes sure the directory exists.
                      */
                     if (!RTDirExists(pThis->szGuestCoreDumpDir))
-                        return VERR_NOT_FOUND;
+                        return VERR_PATH_NOT_FOUND;
 
                     char szCorePath[RTPATH_MAX];
                     RTStrCopy(szCorePath, sizeof(szCorePath), pThis->szGuestCoreDumpDir);
