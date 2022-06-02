@@ -1,4 +1,4 @@
-/* $Id: VBoxImportApplianceWgt.cpp 34496 2010-11-30 10:17:59Z vboxsync $ */
+/* $Id: VBoxImportApplianceWgt.cpp 34530 2010-11-30 17:07:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -138,7 +138,7 @@ bool VBoxImportApplianceWgt::import()
         if (fResult)
         {
             /* Show some progress, so the user know whats going on */
-            vboxProblem().showModalProgressDialog (progress, tr ("Importing Appliance ..."), "", this);
+            vboxProblem().showModalProgressDialog (progress, tr ("Importing Appliance ..."), ":/progress_import_90px.png", this, true);
             if (progress.GetCanceled())
                 return false;
             if (!progress.isOk() || progress.GetResultCode() != 0)
