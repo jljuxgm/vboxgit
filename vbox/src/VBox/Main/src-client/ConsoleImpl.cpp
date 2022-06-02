@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 35758 2011-01-28 12:54:56Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 35875 2011-02-07 14:39:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3049,7 +3049,7 @@ STDMETHODIMP Console::TakeSnapshot(IN_BSTR aName,
     }
 
     // b) one extra sub-operations for online snapshots OR offline snapshots that have a saved state (needs to be copied)
-    bool fTakingSnapshotOnline = ((mMachineState == MachineState_Running) || (mMachineState == MachineState_Paused));
+    bool const fTakingSnapshotOnline = Global::IsOnline(mMachineState);
 
     LogFlowFunc(("fTakingSnapshotOnline = %d, mMachineState = %d\n", fTakingSnapshotOnline, mMachineState));
 
