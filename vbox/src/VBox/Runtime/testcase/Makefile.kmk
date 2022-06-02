@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33563 2010-10-28 14:46:26Z vboxsync $
+# $Id: Makefile.kmk 33678 2010-11-02 10:30:46Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -96,6 +96,7 @@ PROGRAMS += \
 	tstRTSort \
 	tstRTStrAlloc \
 	tstRTStrCache \
+	tstRTStrCatCopy \
 	tstRTStrFormat \
 	tstStrSimplePattern \
 	tstStrToNum \
@@ -427,6 +428,10 @@ tstRTStrAlloc_SOURCES = tstRTStrAlloc.cpp
 tstRTStrCache_TEMPLATE = VBOXR3TSTEXE
 tstRTStrCache_SOURCES = tstRTStrCache.cpp
 
+tstRTStrCatCopy_TEMPLATE = VBOXR3TSTEXE
+tstRTStrCatCopy_SOURCES = tstRTStrCatCopy.cpp
+
+tstRTStrFormat_TEMPLATE = VBOXR3TSTEXE
 tstRTStrFormat_SOURCES = tstRTStrFormat.cpp
 
 tstStrSimplePattern_SOURCES = tstStrSimplePattern.cpp
