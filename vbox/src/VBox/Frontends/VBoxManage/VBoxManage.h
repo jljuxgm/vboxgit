@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 30319 2010-06-21 08:29:08Z vboxsync $ */
+/* $Id: VBoxManage.h 31461 2010-08-09 08:13:58Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -93,6 +93,7 @@
 # define USAGE_GUESTCONTROL         RT_BIT_64(51)
 #endif  /* VBOX_WITH_GUEST_CONTROL defined */
 #define USAGE_DEBUGLOG              RT_BIT_64(52)
+#define USAGE_SETHDPARENTUUID       RT_BIT_64(53)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
