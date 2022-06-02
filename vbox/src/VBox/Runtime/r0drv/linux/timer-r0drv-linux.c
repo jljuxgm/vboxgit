@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 32748 2010-09-24 09:28:02Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 32757 2010-09-24 10:30:43Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -700,7 +700,6 @@ static void rtTimerLinuxStdCallback(unsigned long ulUser)
             return;
         }
     }
-
 #endif
 
     if (pTimer->u64NanoInterval)
