@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33757 2010-11-04 10:25:18Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33760 2010-11-04 11:00:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4229,7 +4229,7 @@ VDTYPE Medium::convertDeviceType()
             enmType = VDTYPE_FLOPPY;
             break;
         default:
-            ComAssertFailedThrow(E_FAIL);
+            ComAssertFailedRet(VDTYPE_INVALID);
     }
 
     return enmType;
@@ -4254,7 +4254,7 @@ DeviceType_T Medium::convertToDeviceType(VDTYPE enmType)
             devType = DeviceType_Floppy;
             break;
         default:
-            ComAssertFailedThrow(E_FAIL);
+            ComAssertFailedRet(DeviceType_Null);
     }
 
     return devType;
