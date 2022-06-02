@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: GuestImpl.cpp 31692 2010-08-16 13:12:42Z vboxsync $ */
 
 /** @file
  *
@@ -268,30 +268,14 @@ STDMETHODIMP Guest::COMGETTER(SupportsGraphics) (BOOL *aSupportsGraphics)
     return S_OK;
 }
 
-STDMETHODIMP Guest::COMGETTER(PageFusionEnabled) (BOOL *aPageFusionEnabled)
+BOOL Guest::isPageFusionEnabled()
 {
-    CheckComArgOutPointerValid(aPageFusionEnabled);
-
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    if (FAILED(autoCaller.rc())) return false;
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    *aPageFusionEnabled = mfPageFusionEnabled;
-
-    return S_OK;
-}
-
-STDMETHODIMP Guest::COMSETTER(PageFusionEnabled) (BOOL aPageFusionEnabled)
-{
-    AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
-
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
-    /** todo; API complete, but not implemented */
-
-    return E_NOTIMPL;
+    return mfPageFusionEnabled;
 }
 
 STDMETHODIMP Guest::COMGETTER(MemoryBalloonSize) (ULONG *aMemoryBalloonSize)

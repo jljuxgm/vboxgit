@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 31436 2010-08-06 11:39:39Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 31692 2010-08-16 13:12:42Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -587,8 +587,7 @@ DECLCALLBACK(int) vmmdevIsPageFusionEnabled(PPDMIVMMDEVCONNECTOR pInterface, boo
     if (!guest)
         return VERR_INVALID_PARAMETER; /** @todo wrong error */
 
-    guest->COMGETTER(PageFusionEnabled)(&val);
-    *pfPageFusionEnabled = !!val;
+    *pfPageFusionEnabled = !!guest->isPageFusionEnabled();
     return VINF_SUCCESS;
 }
 

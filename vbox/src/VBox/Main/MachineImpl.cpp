@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31688 2010-08-16 11:19:25Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31692 2010-08-16 13:12:42Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1524,6 +1524,7 @@ STDMETHODIMP Machine::COMSETTER(PageFusionEnabled) (BOOL enabled)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
+    /** @todo must support changes for running vms and keep this in sync with IGuest. */
     setModified(IsModified_MachineData);
     mHWData.backup();
     mHWData->mPageFusionEnabled = enabled;
