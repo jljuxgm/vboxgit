@@ -1,6 +1,6 @@
-/* $Id: alloc-darwin.cpp 31157 2010-07-28 03:15:35Z vboxsync $ */
+/* $Id: alloc-darwin.cpp 31158 2010-07-28 03:24:30Z vboxsync $ */
 /** @file
- * IPRT - Memory Allocation, POSIX.
+ * IPRT - Memory Allocation, Darwin.
  */
 
 /*
@@ -151,3 +151,4 @@ RTDECL(int) RTMemProtect(void *pv, size_t cb, unsigned fProtect) RT_NO_THROW
         return rc;
     return RTErrConvertFromErrno(errno);
 }
+
