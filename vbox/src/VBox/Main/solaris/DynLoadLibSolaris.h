@@ -1,4 +1,4 @@
-/* $Id: DynLoadLibSolaris.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DynLoadLibSolaris.h 31340 2010-08-03 14:29:43Z vboxsync $ */
 /** @file
  * Dynamically loaded libraries for Solaris hosts, Internal header.
  */
@@ -18,7 +18,7 @@
 #ifndef ____H_DYN_LOAD_LIB_SOLARIS
 #define ____H_DYN_LOAD_LIB_SOLARIS
 
-#define LIB_DLPI "libdlpi.so"
+#define LIB_DLPI "libdlpi.so.1"
 #ifdef RT_OS_SOLARIS_10
 #include <sys/dlpi.h>
 #else
