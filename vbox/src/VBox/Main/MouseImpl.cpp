@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 33261 2010-10-20 13:40:49Z vboxsync $ */
+/* $Id: MouseImpl.cpp 33305 2010-10-21 12:38:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -565,7 +565,7 @@ STDMETHODIMP Mouse::PutMouseEventAbsolute(LONG x, LONG y, LONG dz, LONG dw,
     {
         AutoWriteLock aLock(this COMMA_LOCKVAL_SRC_POS);
 
-        if (mfVMMDevCanAbs && !(mfHostCaps & VMMDEV_MOUSE_HOST_WANTS_ABSOLUTE))
+        if (!(mfHostCaps & VMMDEV_MOUSE_HOST_WANTS_ABSOLUTE))
         {
             mfHostCaps |= VMMDEV_MOUSE_HOST_WANTS_ABSOLUTE;
             fUpdateCaps = TRUE;
