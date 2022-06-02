@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibBalloon.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibBalloon.cpp 31044 2010-07-23 09:39:35Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Ballooning.
  */
@@ -45,8 +45,8 @@ VBGLR3DECL(int) VbglR3MemBalloonRefresh(uint32_t *pcChunks, bool *pfHandleInR3)
     if (RT_SUCCESS(rc))
     {
         *pcChunks = Info.cBalloonChunks;
-        Assert(Info.fHandleInR3 == false || Info.fHandleInR3 == true ||  RT_FAILURE(rc));
-        *pfHandleInR3 = Info.fHandleInR3 != false;
+        Assert(Info.fHandleInR3 == FALSE || Info.fHandleInR3 == TRUE ||  RT_FAILURE(rc));
+        *pfHandleInR3 = Info.fHandleInR3 != FALSE;
     }
     return rc;
 }
