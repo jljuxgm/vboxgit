@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34607 2010-12-02 13:30:40Z vboxsync $
+# $Id: Makefile.kmk 34609 2010-12-02 14:04:24Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -501,7 +501,7 @@ VBOXWEB_OTHERS += \
 # Update the OTHERS and OTHER_CLEAN lists with VBOXWEB_OTHERS and some more stuff.
 #
 # We can't just built up OTHERS and append it to OTHER_CLEAN because we're sharing
-# OTHERS with all the other VBox makefiles (VBOX_SINGLE_MAKEFILE), thus VBOXWEB_OTHERS.
+# OTHERS with all the other VBox makefiles, thus VBOXWEB_OTHERS.
 #
 OTHERS += $(VBOXWEB_OTHERS)
 OTHER_CLEAN += \

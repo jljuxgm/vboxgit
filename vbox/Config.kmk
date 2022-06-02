@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34595 2010-12-02 11:15:09Z vboxsync $
+# $Id: Config.kmk 34609 2010-12-02 14:04:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -225,10 +225,6 @@ VBOX_PACKAGE_STRING = $(VBOX_PACKAGE_OS)_$(VBOX_PACKAGE_ARCH)_$(VBOX_PACKAGE_DIS
 # aren't enabled by default is left commented out just to show that they
 # exist and which value they should have (usually 1, but anyway).
 #
-
-# Virtual single makefile.
-# If undefined, the tranditional recursive make method will be used.
-VBOX_SINGLE_MAKEFILE = 1
 
 ## @name Additions
 ## @{
@@ -4531,7 +4527,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34595 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34609 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
