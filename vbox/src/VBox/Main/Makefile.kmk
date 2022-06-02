@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34293 2010-11-23 16:07:53Z vboxsync $
+# $Id: Makefile.kmk 34296 2010-11-23 16:15:33Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -721,9 +721,6 @@ else # !win
 endif # !win
 
 
-endif # !VBOX_ONLY_SDK (the ifndef is far above)
-
-
 #
 # The VBoxExtPackHelperApp.
 #
@@ -738,6 +735,10 @@ ifdef VBOX_WITH_EXTPACK
         $(LIB_RUNTIME)
 
 endif # VBOX_WITH_EXTPACK
+
+
+endif # !VBOX_ONLY_SDK (the ifndef is far above)
+
 
 #
 # Installs com related thing(s) to bin.
