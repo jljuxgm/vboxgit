@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 32573 2010-09-16 17:18:03Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 32578 2010-09-16 18:15:52Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -4236,9 +4236,9 @@ static int vmdksCreateImage(PVMDKIMAGE pImage, uint64_t cbSize,
         pImage->pInterfaceErrorCallbacks = VDGetInterfaceError(pImage->pInterfaceError);
 
     /* Get I/O interface. */
-    pImage->pInterfaceIO = VDInterfaceGet(pImage->pVDIfsImage, VDINTERFACETYPE_IO);
+    pImage->pInterfaceIO = VDInterfaceGet(pImage->pVDIfsImage, VDINTERFACETYPE_IOINT);
     AssertPtrReturn(pImage->pInterfaceIO, VERR_INVALID_PARAMETER);
-    pImage->pInterfaceIOCallbacks = VDGetInterfaceIO(pImage->pInterfaceIO);
+    pImage->pInterfaceIOCallbacks = VDGetInterfaceIOInt(pImage->pInterfaceIO);
     AssertPtrReturn(pImage->pInterfaceIOCallbacks, VERR_INVALID_PARAMETER);
 
     PVMDKEXTENT pExtent;
