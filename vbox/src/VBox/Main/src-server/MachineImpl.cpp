@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 35836 2011-02-03 14:55:17Z vboxsync $ */
+/* $Id: MachineImpl.cpp 35838 2011-02-03 15:12:24Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4422,7 +4422,9 @@ STDMETHODIMP Machine::Delete(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProg
     for (size_t i = 0; i < sfaMedia.size(); ++i)
     {
         IMedium *pIMedium(sfaMedia[i]);
-        Medium *pMedium = static_cast<Medium*>(pIMedium);
+        ComObjPtr<Medium> pMedium = static_cast<Medium*>(pIMedium);
+        if (pMedium.isNull())
+            return setError(E_INVALIDARG, "The given medium pointer %d is invalid", i);
         AutoCaller mediumAutoCaller(pMedium);
         if (FAILED(mediumAutoCaller.rc())) return mediumAutoCaller.rc();
 
