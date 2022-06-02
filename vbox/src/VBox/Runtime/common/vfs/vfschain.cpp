@@ -1,4 +1,4 @@
-/* $Id: vfschain.cpp 33945 2010-11-10 17:49:56Z vboxsync $ */
+/* $Id: vfschain.cpp 33950 2010-11-10 21:27:13Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
@@ -362,8 +362,8 @@ RTDECL(int)     RTVfsChainSpecParse(const char *pszSpec, uint32_t fFlags, RTVFSC
     AssertPtrReturn(ppSpec, VERR_INVALID_POINTER);
     *ppSpec = NULL;
     AssertPtrReturn(pszSpec, VERR_INVALID_POINTER);
-    AssertPtrReturn(!(fFlags & ~RTVFSCHAIN_PF_VALID_MASK), VERR_INVALID_PARAMETER);
-    AssertPtrReturn(enmLeadingAction > RTVFSCHAINACTION_INVALID && enmLeadingAction < RTVFSCHAINACTION_END, VERR_INVALID_PARAMETER);
+    AssertReturn(!(fFlags & ~RTVFSCHAIN_PF_VALID_MASK), VERR_INVALID_PARAMETER);
+    AssertReturn(enmLeadingAction > RTVFSCHAINACTION_INVALID && enmLeadingAction < RTVFSCHAINACTION_END, VERR_INVALID_PARAMETER);
 
     /*
      * Check the start of the specification and allocate an empty return spec.
