@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 32741 2010-09-23 23:21:52Z vboxsync $ */
+/* $Id: UISession.cpp 33140 2010-10-14 16:20:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -404,8 +404,11 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
     {
         bool fIsMounted = false;
 
+        VBoxMedium vmedium = vboxGlobal().findMedium(strUuid);
+        CMedium medium = vmedium.medium();              // @todo r=dj can this be cached somewhere?
+
         /* Mount medium to the predefined port/device */
-        machine.MountMedium(strCntName, iCntPort, iCntDevice, strUuid, false /* force */);
+        machine.MountMedium(strCntName, iCntPort, iCntDevice, medium, false /* force */);
         if (machine.isOk())
             fIsMounted = true;
         else
@@ -415,7 +418,7 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
                                                   true /* mount? */, true /* retry? */) == QIMessageBox::Ok)
             {
                 /* Force mount medium to the predefined port/device */
-                machine.MountMedium(strCntName, iCntPort, iCntDevice, strUuid, true /* force */);
+                machine.MountMedium(strCntName, iCntPort, iCntDevice, medium, true /* force */);
                 if (machine.isOk())
                     fIsMounted = true;
                 else

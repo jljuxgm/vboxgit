@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 32789 2010-09-28 12:55:42Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 33140 2010-10-14 16:20:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1233,7 +1233,7 @@ bool VBoxMediaManagerDlg::releaseMediumFrom (const VBoxMedium &aMedium, const QS
                 VBoxMedium medium = vboxGlobal().findMedium (attachment.GetMedium().isNull() ? QString() : attachment.GetMedium().GetId());
                 if (medium.id() == aMedium.id())
                 {
-                    machine.MountMedium (attachment.GetController(), attachment.GetPort(), attachment.GetDevice(), QString(""), false /* force */);
+                    machine.MountMedium (attachment.GetController(), attachment.GetPort(), attachment.GetDevice(), CMedium(), false /* force */);
                     if (!machine.isOk())
                     {
                         vboxProblem().cannotRemountMedium (this, machine, aMedium, false /* mount? */, false /* retry? */);
@@ -1254,7 +1254,7 @@ bool VBoxMediaManagerDlg::releaseMediumFrom (const VBoxMedium &aMedium, const QS
                 VBoxMedium medium = vboxGlobal().findMedium (attachment.GetMedium().isNull() ? QString() : attachment.GetMedium().GetId());
                 if (medium.id() == aMedium.id())
                 {
-                    machine.MountMedium (attachment.GetController(), attachment.GetPort(), attachment.GetDevice(), QString(""), false /* force */);
+                    machine.MountMedium (attachment.GetController(), attachment.GetPort(), attachment.GetDevice(), CMedium(), false /* force */);
                     if (!machine.isOk())
                     {
                         vboxProblem().cannotRemountMedium (this, machine, aMedium, false /* mount? */, false /* retry? */);

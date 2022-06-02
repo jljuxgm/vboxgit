@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 33140 2010-10-14 16:20:15Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -246,8 +246,10 @@ int handleStorageAttach(HandlerArg *a)
                     || (deviceType == DeviceType_Floppy))
                 {
                     /* just unmount the floppy/dvd */
-                    CHECK_ERROR(machine, MountMedium(Bstr(pszCtl).raw(), port,
-                                                     device, Bstr("").raw(),
+                    CHECK_ERROR(machine, MountMedium(Bstr(pszCtl).raw(),
+                                                     port,
+                                                     device,
+                                                     NULL,
                                                      fForceUnmount));
                 }
             }
@@ -406,7 +408,6 @@ int handleStorageAttach(HandlerArg *a)
 
         if (!RTStrICmp(pszType, "dvddrive"))
         {
-            Bstr uuid;
             ComPtr<IMedium> dvdMedium;
 
             if (!fRunTime)
@@ -492,9 +493,8 @@ int handleStorageAttach(HandlerArg *a)
 
             if (dvdMedium)
             {
-                dvdMedium->COMGETTER(Id)(uuid.asOutParam());
                 CHECK_ERROR(machine, MountMedium(Bstr(pszCtl).raw(), port,
-                                                 device, uuid.raw(),
+                                                 device, dvdMedium,
                                                  fForceUnmount));
             }
         }
@@ -589,9 +589,9 @@ int handleStorageAttach(HandlerArg *a)
 
             if (floppyMedium)
             {
-                floppyMedium->COMGETTER(Id)(uuid.asOutParam());
                 CHECK_ERROR(machine, MountMedium(Bstr(pszCtl).raw(), port,
-                                                 device, uuid.raw(),
+                                                 device,
+                                                 floppyMedium,
                                                  fForceUnmount));
             }
         }

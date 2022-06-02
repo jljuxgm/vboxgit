@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 33107 2010-10-13 14:00:08Z vboxsync $ */
+/* $Id: MediumImpl.h 33140 2010-10-14 16:20:15Z vboxsync $ */
 
 /** @file
  *
@@ -175,7 +175,8 @@ public:
     MediumType_T getType() const;
     Utf8Str getName();
 
-    bool addRegistry(const Guid& id);
+    bool addRegistry(const Guid& id,
+                     bool *pfNeedsSaveSettings);
     bool isInRegistry(const Guid& id);
     const Guid& getFirstRegistryMachineId() const;
 
