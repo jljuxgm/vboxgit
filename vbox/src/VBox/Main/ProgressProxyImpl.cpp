@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 29948 2010-06-01 12:55:23Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 30632 2010-07-05 19:36:40Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -291,7 +291,7 @@ bool ProgressProxy::setOtherProgressObject(IProgress *pOtherProgress)
  */
 void ProgressProxy::clearOtherProgressObjectInternal(bool fEarly)
 {
-    if (mptrOtherProgress.isNotNull())
+    if (!mptrOtherProgress.isNull())
     {
         ComPtr<IProgress> ptrOtherProgress = mptrOtherProgress;
         mptrOtherProgress.setNull();
@@ -501,7 +501,7 @@ STDMETHODIMP ProgressProxy::COMGETTER(Canceled)(BOOL *aCanceled)
         hrc = Progress::COMGETTER(Canceled)(aCanceled);
         if (   SUCCEEDED(hrc)
             && !*aCanceled
-            && mptrOtherProgress.isNotNull()
+            && !mptrOtherProgress.isNull()
             && mCancelable)
         {
             hrc = mptrOtherProgress->COMGETTER(Canceled)(aCanceled);

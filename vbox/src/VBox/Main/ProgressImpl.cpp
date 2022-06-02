@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 30396 2010-06-23 15:26:41Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 30632 2010-07-05 19:36:40Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -135,7 +135,7 @@ HRESULT ProgressBase::protectedInit (AutoInitSpan &aAutoInitSpan,
     if (aInitiator)
     {
         ComObjPtr<VirtualBox> pVirtualBox(mParent);
-        if (!pVirtualBox.equalsTo(aInitiator))
+        if (!(pVirtualBox == aInitiator))
             unconst(mInitiator) = aInitiator;
     }
 #else
