@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 35351 2010-12-27 17:04:17Z vboxsync $ */
+/* $Id: vboxvideo.c 35393 2011-01-03 20:14:27Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1159,7 +1159,7 @@ static void
 vboxClearVRAM(ScrnInfoPtr pScrn, int32_t cNewX, int32_t cNewY)
 {
     VBOXPtr pVBox = VBOXGetRec(pScrn);
-    int64_t cbOldFB, cbNewFB;
+    uint64_t cbOldFB, cbNewFB;
 
     cbOldFB = pVBox->cbLine * pScrn->virtualX;
     cbNewFB = vboxLineLength(pScrn, cNewX) * cNewY;
