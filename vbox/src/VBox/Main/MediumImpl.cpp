@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: MediumImpl.cpp 30760 2010-07-09 13:12:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -16,9 +16,11 @@
  */
 
 #include "MediumImpl.h"
+#include "MediumFormatImpl.h"
 #include "ProgressImpl.h"
 #include "SystemPropertiesImpl.h"
 #include "VirtualBoxImpl.h"
+#include "MediumLock.h"
 
 #include "AutoCaller.h"
 #include "Logging.h"

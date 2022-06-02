@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 
 /** @file
  *
@@ -21,16 +21,6 @@
 #define ____H_SYSTEMPROPERTIESIMPL
 
 #include "VirtualBoxBase.h"
-#include "MediumFormatImpl.h"
-
-#include <VBox/com/array.h>
-
-#include <list>
-
-namespace settings
-{
-    struct SystemProperties;
-}
 
 class ATL_NO_VTABLE SystemProperties :
     public VirtualBoxBase,

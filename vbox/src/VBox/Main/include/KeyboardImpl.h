@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: KeyboardImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -19,27 +19,11 @@
 #define ____H_KEYBOARDIMPL
 
 #include "VirtualBoxBase.h"
-#include "ConsoleEvents.h"
 
 #include <VBox/pdmdrv.h>
 
 /** Limit of simultaneously attached devices (just USB and/or PS/2). */
 enum { KEYBOARD_MAX_DEVICES = 2 };
-
-/** Simple keyboard event class. */
-class KeyboardEvent
-{
-public:
-    KeyboardEvent() : scan(-1) {}
-    KeyboardEvent(int _scan) : scan(_scan) {}
-    bool isValid()
-    {
-        return (scan & ~0x80) && !(scan & ~0xFF);
-    }
-    int scan;
-};
-// template instantiation
-typedef ConsoleEventBuffer<KeyboardEvent> KeyboardEventBuffer;
 
 class Console;
 

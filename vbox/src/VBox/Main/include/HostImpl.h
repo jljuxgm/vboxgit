@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: HostImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 /** @file
  * Implemenation of IHost.
  */
@@ -19,19 +19,6 @@
 #define ____H_HOSTIMPL
 
 #include "VirtualBoxBase.h"
-
-class HostUSBDeviceFilter;
-class USBProxyService;
-class SessionMachine;
-class Progress;
-class PerformanceCollector;
-
-namespace settings
-{
-    struct Host;
-}
-
-#include <list>
 
 class ATL_NO_VTABLE Host :
     public VirtualBoxBase,

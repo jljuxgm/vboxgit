@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 30760 2010-07-09 13:12:04Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include "RemoteUSBBackend.h"
 #include "ConsoleVRDPServer.h"
 #include "ConsoleImpl.h"
 #include "DisplayImpl.h"

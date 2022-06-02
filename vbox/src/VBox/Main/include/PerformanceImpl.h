@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: PerformanceImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 
 /** @file
  *
@@ -22,28 +22,15 @@
 
 #include "VirtualBoxBase.h"
 
-#include <VBox/com/com.h>
-#include <VBox/com/array.h>
-//#ifdef VBOX_WITH_RESOURCE_USAGE_API
+// #include <VBox/com/com.h>
+// #include <VBox/com/array.h>
 #include <iprt/timer.h>
-//#endif /* VBOX_WITH_RESOURCE_USAGE_API */
-
-#include <list>
-
-namespace pm
-{
-    class Metric;
-    class BaseMetric;
-    class CollectorHAL;
-}
 
 #undef min
 #undef max
 
 /* Each second we obtain new CPU load stats. */
 #define VBOX_USAGE_SAMPLER_MIN_INTERVAL 1000
-
-class HostUSBDevice;
 
 class ATL_NO_VTABLE PerformanceMetric :
     public VirtualBoxBase,

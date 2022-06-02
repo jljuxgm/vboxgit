@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -20,11 +20,6 @@
 #define ____H_PARALLELPORTIMPL
 
 #include "VirtualBoxBase.h"
-
-namespace settings
-{
-    struct ParallelPort;
-}
 
 class ATL_NO_VTABLE ParallelPort :
     public VirtualBoxBase,
@@ -50,8 +45,8 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init (Machine *aParent, ULONG aSlot);
-    HRESULT init (Machine *aParent, ParallelPort *aThat);
+    HRESULT init(Machine *aParent, ULONG aSlot);
+    HRESULT init(Machine *aParent, ParallelPort *aThat);
     HRESULT initCopy (Machine *parent, ParallelPort *aThat);
     void uninit();
 

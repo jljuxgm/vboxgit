@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 28864 2010-04-28 12:59:54Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 30760 2010-07-09 13:12:04Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -26,7 +26,7 @@
 
 #include <VBox/err.h>
 #include <VBox/settings.h>
-
+#include "VBox/com/array.h"
 
 // constructor / destructor
 ////////////////////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: SerialPortImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 
 /** @file
  *
@@ -21,13 +21,6 @@
 #define ____H_SERIALPORTIMPL
 
 #include "VirtualBoxBase.h"
-
-class GuestOSType;
-
-namespace settings
-{
-    struct SerialPort;
-}
 
 class ATL_NO_VTABLE SerialPort :
     public VirtualBoxBase,

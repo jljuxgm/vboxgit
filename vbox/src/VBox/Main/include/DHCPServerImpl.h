@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 
 /** @file
  *
@@ -21,6 +21,8 @@
 #define ____H_H_DHCPSERVERIMPL
 
 #include "VirtualBoxBase.h"
+
+#include "DHCPServerRunner.h"
 
 #ifdef VBOX_WITH_HOSTNETIF_API
 struct NETIFINFO;

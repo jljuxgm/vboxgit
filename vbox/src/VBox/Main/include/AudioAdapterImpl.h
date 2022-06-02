@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 
 /** @file
  *
@@ -21,11 +21,6 @@
 #define ____H_AUDIOADAPTER
 
 #include "VirtualBoxBase.h"
-
-namespace settings
-{
-    struct AudioAdapter;
-}
 
 class ATL_NO_VTABLE AudioAdapter :
     public VirtualBoxBase,

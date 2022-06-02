@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 30760 2010-07-09 13:12:04Z vboxsync $ */
 
 /** @file
  *
@@ -32,16 +32,6 @@ namespace com
     class EventQueue;
 }
 
-class SessionMachine;
-class GuestOSType;
-class SharedFolder;
-class Progress;
-class Host;
-class SystemProperties;
-class DHCPServer;
-class PerformanceCollector;
-class VirtualBoxCallbackRegistration; /* see VirtualBoxImpl.cpp */
-
 typedef std::list< ComObjPtr<SessionMachine> > SessionMachinesList;
 
 #ifdef RT_OS_WINDOWS
@@ -49,11 +39,6 @@ class SVCHlpClient;
 #endif
 
 struct VMClientWatcherData;
-
-namespace settings
-{
-    class MainConfigFile;
-}
 
 class ATL_NO_VTABLE VirtualBox :
     public VirtualBoxBase,
@@ -67,7 +52,6 @@ class ATL_NO_VTABLE VirtualBox :
 
 public:
 
-    typedef std::list< VirtualBoxCallbackRegistration > CallbackList;
     typedef std::list< ComPtr<IInternalSessionControl> > InternalControlList;
 
     class CallbackEvent;
