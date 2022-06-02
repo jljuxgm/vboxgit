@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 34431 2010-11-27 09:56:47Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 34612 2010-12-02 14:07:02Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -312,7 +312,7 @@ void pdmacFileEpTaskCompleted(PPDMACTASKFILE pTask, void *pvUser, int rc)
         /* The first error will be returned. */
         if (RT_FAILURE(rc))
             ASMAtomicCmpXchgS32(&pTaskFile->rc, rc, VINF_SUCCESS);
-#ifdef DEBUG
+#ifdef VBOX_WITH_DEBUGGER
         else
         {
             PPDMASYNCCOMPLETIONENDPOINTFILE pEpFile = (PPDMASYNCCOMPLETIONENDPOINTFILE)pTaskFile->Core.pEndpoint;
