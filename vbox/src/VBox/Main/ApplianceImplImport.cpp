@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 30739 2010-07-08 12:27:42Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 30746 2010-07-08 16:42:49Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -683,12 +683,12 @@ HRESULT Appliance::readFS(const LocationInfo &locInfo)
         m->strOVFSHA1Digest = pszDigest;
         RTStrFree(pszDigest);
     }
-    catch(xml::Error &x)
+    catch (iprt::Error &x)      // includes all XML exceptions
     {
         rc = setError(VBOX_E_FILE_ERROR,
                       x.what());
     }
-    catch(HRESULT aRC)
+    catch (HRESULT aRC)
     {
         rc = aRC;
     }

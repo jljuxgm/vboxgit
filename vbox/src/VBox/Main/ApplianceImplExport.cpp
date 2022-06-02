@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 29984 2010-06-02 12:22:39Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 30746 2010-07-08 16:42:49Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1616,12 +1616,12 @@ HRESULT Appliance::writeFS(const LocationInfo &locInfo, const OVFFormat enFormat
                            tr("Could not create manifest file '%s' (%Rrc)"),
                            pcszManifestFileOnly, vrc);
     }
-    catch(xml::Error &x)
+    catch (iprt::Error &x)  // includes all XML exceptions
     {
         rc = setError(VBOX_E_FILE_ERROR,
                       x.what());
     }
-    catch(HRESULT aRC)
+    catch (HRESULT aRC)
     {
         rc = aRC;
     }
