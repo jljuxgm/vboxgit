@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 30341 2010-06-21 16:06:53Z vboxsync $ */
+/* $Id: PGMR0SharedPage.cpp 30761 2010-07-09 13:27:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -37,11 +37,11 @@
  * @returns The following VBox status codes.
  *
  * @param   pVM         The VM handle.
+ * @param   pGVM        Pointer to the GVM instance data.
  * @param   idCpu       VCPU id
  * @param   pModule     Module description
  * @param   cRegions    Number of regions
  * @param   pRegions    Region array
- * @param   pGVM        Pointer to the GVM instance data.
  */
 VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PGVM pGVM, VMCPUID idCpu, PGMMSHAREDMODULE pModule, uint32_t cRegions, PGMMSHAREDREGIONDESC pRegions)
 {
