@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 35855 2011-02-04 17:02:44Z vboxsync $ */
+/* $Id: VMMR0.cpp 35856 2011-02-04 17:05:37Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1206,7 +1206,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
 #endif
         default:
             /*
-             * We're returning VERR_NOT_SUPPORT here s we've got something else
+             * We're returning VERR_NOT_SUPPORT here so we've got something else
              * than -1 which the interrupt gate glue code might return.
              */
             Log(("operation %#x is not supported\n", enmOperation));
