@@ -1,4 +1,4 @@
-# $Id: Config.kmk 30788 2010-07-12 11:20:45Z vboxsync $
+# $Id: Config.kmk 30854 2010-07-14 18:17:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -308,7 +308,7 @@ VBOX_WITH_PDM_LOCK = 1
 VBOX_WITH_HGCM = 1
 ## Build the bugcheck detection code.
 #VBOX_WITH_GUEST_BUGCHECK_DETECTION =
-# Enable the USB feature. This incluses VBOX_WITH_VUSB!
+# Enable the USB feature. This includes VBOX_WITH_VUSB!
 VBOX_WITH_USB = 1
 # Enable the USB 1.1 controller plus virtual USB HID devices.
 VBOX_WITH_VUSB = 1
@@ -4266,7 +4266,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30788 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 30854 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

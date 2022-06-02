@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 30854 2010-07-14 18:17:58Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -25,8 +25,8 @@
 # include "USBDeviceImpl.h"
 # include "HostUSBDeviceImpl.h"
 # include "USBProxyService.h"
+# include "USBDeviceFilterImpl.h"
 #endif
-#include "USBDeviceFilterImpl.h"
 
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>
