@@ -1,4 +1,4 @@
-/* $Id: PciDeviceAttachmentImpl.cpp 35357 2010-12-27 22:38:34Z vboxsync $ */
+/* $Id: PciDeviceAttachmentImpl.cpp 35358 2010-12-28 07:58:40Z vboxsync $ */
 
 /** @file
  *
@@ -24,11 +24,11 @@
 
 struct PciDeviceAttachment::Data
 {
-    Data(Machine        *aParent,
-         const Bstr     &aDevName,
-         LONG           aHostAddress,
-         LONG           aGuestAddress,
-         BOOL           afPhysical)
+    Data(Machine      *aParent,
+         const Bstr   &aDevName,
+         LONG          aHostAddress,
+         LONG          aGuestAddress,
+         BOOL          afPhysical)
         : pMachine(aParent),
           HostAddress(aHostAddress), GuestAddress(aGuestAddress),
           fPhysical(afPhysical)
@@ -60,11 +60,11 @@ void PciDeviceAttachment::FinalRelease()
 
 // public initializer/uninitializer for internal purposes only
 /////////////////////////////////////////////////////////////////////////////
-HRESULT PciDeviceAttachment::init(Machine       *aParent,
-                                  const Bstr    &aDevName,
-                                  LONG           aHostAddress,
-                                  LONG           aGuestAddress,
-                                  BOOL           fPhysical)
+HRESULT PciDeviceAttachment::init(Machine      *aParent,
+                                  const Bstr   &aDevName,
+                                  LONG          aHostAddress,
+                                  LONG          aGuestAddress,
+                                  BOOL          fPhysical)
 {
     m = new Data(aParent, aDevName, aHostAddress, aGuestAddress, fPhysical);
 
