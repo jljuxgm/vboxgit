@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 32654 2010-09-21 08:14:08Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 32685 2010-09-22 08:34:19Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1332,7 +1332,7 @@ static int VBoxGuestCommonIOCtl_WaitEvent(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSE
     else if (rc == VERR_TIMEOUT)
     {
         pInfo->u32Result = VBOXGUEST_WAITEVENT_TIMEOUT;
-        Log(("VBoxGuestCommonIOCtl: WAITEVENT: returns VERR_TIMEOUT\n"));
+        Log(("VBoxGuestCommonIOCtl: WAITEVENT: returns VERR_TIMEOUT (2)\n"));
     }
     else
     {
