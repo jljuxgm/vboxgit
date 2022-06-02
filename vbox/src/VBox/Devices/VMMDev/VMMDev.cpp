@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 32596 2010-09-17 12:35:28Z vboxsync $ */
+/* $Id: VMMDev.cpp 32605 2010-09-17 13:46:02Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -554,8 +554,8 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                     if (!RTDirExists(pThis->szGuestCoreDumpDir))
                         return VERR_FILE_NOT_FOUND;
                     char szCorePath[RTPATH_MAX];
-                    const char *pszCoreDir = pThis->szGuestCoreDumpDir;
-                    RTStrPrintf(szCorePath, sizeof(szCorePath), "%s/VBox.core", pszCoreDir);
+                    RTStrCopy(szCorePath, sizeof(szCorePath), pThis->szGuestCoreDumpDir);
+                    RTPathAppend(szCorePath, sizeof(szCorePath), "VBox.core");
 
                     /*
                      * Rotate existing cores based on number of additional cores to keep around.
