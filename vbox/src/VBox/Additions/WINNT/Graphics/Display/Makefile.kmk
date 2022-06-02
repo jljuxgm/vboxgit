@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 30483 2010-06-28 19:00:55Z vboxsync $
+# $Id: Makefile.kmk 30518 2010-06-29 18:30:26Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -76,7 +76,7 @@ VBoxDispD3D_NOINST = true
  endif
 VBoxDispD3D_TEMPLATE = VBOXGUESTR3DLL
 VBoxDispD3D_DEFS     = UNICODE _UNICODE VBOXWDDM VBOXVDMA VBOXWDDMDISP
-VBoxDispD3D_DEFS    += VBOXDISPMP_TEST
+# VBoxDispD3D_DEFS    += VBOXDISPMP_TEST
 ifdef VBOXWDDM_WITH_VBVA
 VBoxDispD3D_DEFS    += VBOXWDDM_WITH_VBVA 
 endif
