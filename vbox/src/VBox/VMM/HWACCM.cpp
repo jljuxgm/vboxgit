@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 32506 2010-09-15 11:03:14Z vboxsync $ */
+/* $Id: HWACCM.cpp 33066 2010-10-12 13:35:36Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2256,6 +2256,12 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
                     {
                         return false;
                     }
+                }
+                /* VT-x also chokes on invalid tr or ldtr selectors (minix) */
+                if (    pCtx->tr > pCtx->gdtr.cbGdt
+                    ||  pCtx->ldtr > pCtx->gdtr.cbGdt)
+                {
+                    return false;
                 }
             }
         }
