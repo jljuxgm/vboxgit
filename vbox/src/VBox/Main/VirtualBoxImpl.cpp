@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 31545 2010-08-10 16:35:36Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 31552 2010-08-10 22:00:43Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2163,7 +2163,7 @@ VirtualBox::SVCHelperClientThread(RTTHREAD aThread, void *aUser)
 
         Utf8Str argsStr = Utf8StrFmt("/Helper %s", client.name().c_str());
 
-        LogFlowFunc(("Starting '\"%s\" %s'...\n", exePath, argsStr.raw()));
+        LogFlowFunc(("Starting '\"%s\" %s'...\n", exePath, argsStr.c_str()));
 
         RTPROCESS pid = NIL_RTPROCESS;
 
