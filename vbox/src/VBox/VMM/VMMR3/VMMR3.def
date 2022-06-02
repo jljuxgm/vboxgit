@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 34668 2010-12-02 23:33:28Z vboxsync $
+; $Id: VMMR3.def 34703 2010-12-03 15:13:38Z vboxsync $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -14,7 +14,7 @@
 ; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 ;
 
-LIBRARY VBoxVMMR3.dll
+LIBRARY VBoxVMM.dll
 EXPORTS
     ; data
 
