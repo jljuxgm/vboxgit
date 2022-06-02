@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 33711 2010-11-02 21:48:55Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 33713 2010-11-02 21:55:42Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -647,7 +647,7 @@ BOOLEAN vboxUpdatePointerShape (PDEVICE_EXTENSION DeviceExtension,
 
     uint32_t cbData = 0;
 
-    if (!pointerAttr->Enable & VBOX_MOUSE_POINTER_SHAPE)
+    if (pointerAttr->Enable & VBOX_MOUSE_POINTER_SHAPE)
     {
         /* Size of the pointer data: sizeof (AND mask) + sizeof (XOR_MASK) */
         cbData = ((((pointerAttr->Width + 7) / 8) * pointerAttr->Height + 3) & ~3)
