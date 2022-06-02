@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 34967 2010-12-10 17:52:01Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 35158 2010-12-15 17:15:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -1136,7 +1136,7 @@ int VBoxExtPackValidateTarball(RTFILE hTarballFile, const char *pszExtPackName, 
             rc = VBoxExtPackValidateMember(pszName, enmType, hVfsObj, pszError, cbError);
             if (RT_SUCCESS(rc))
             {
-                PRTVFSFILE phVfsFile;
+                PRTVFSFILE phVfsFile = NULL;
                 if (!strcmp(pszAdjName, VBOX_EXTPACK_DESCRIPTION_NAME))
                     phVfsFile = &hXmlFile;
                 else if (!strcmp(pszAdjName, VBOX_EXTPACK_MANIFEST_NAME))
@@ -1145,8 +1145,6 @@ int VBoxExtPackValidateTarball(RTFILE hTarballFile, const char *pszExtPackName, 
                     phVfsFile = &hSignatureFile;
                 else if (!strncmp(pszAdjName, VBOX_EXTPACK_LICENSE_NAME_PREFIX, sizeof(VBOX_EXTPACK_LICENSE_NAME_PREFIX) - 1))
                     rc = VBoxExtPackValidateStandardFile(pszAdjName, enmType, &hVfsObj, NULL, pszError, cbError);
-                else
-                    phVfsFile = NULL;
                 if (phVfsFile)
                     rc = VBoxExtPackValidateStandardFile(pszAdjName, enmType, &hVfsObj, phVfsFile, pszError, cbError);
             }
