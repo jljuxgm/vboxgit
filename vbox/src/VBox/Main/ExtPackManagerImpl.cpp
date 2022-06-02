@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 34073 2010-11-15 15:38:20Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 34074 2010-11-15 15:59:27Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1248,7 +1248,7 @@ STDMETHODIMP ExtPackManager::QueryAllPlugInsForFrontend(IN_BSTR a_bstrFrontend, 
     HRESULT hrc = autoCaller.rc();
     if (SUCCEEDED(hrc))
     {
-        com::SafeArray<BSTR> saPaths(0);
+        com::SafeArray<BSTR> saPaths((size_t)0);
         /** @todo implement plug-ins */
         saPaths.detachTo(ComSafeArrayOutArg(a_pabstrPlugInModules));
     }
