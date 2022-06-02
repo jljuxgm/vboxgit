@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 32521 2010-09-15 13:46:22Z vboxsync $ */
+/* $Id: PGMAllBth.h 32539 2010-09-16 08:08:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1932,15 +1932,12 @@ static int PGM_BTH_NAME(SyncPage)(PVMCPU pVCpu, GSTPDE PdeSrc, RTGCPTR GCPtrPage
                         else
                             iPTDst -= PGM_SYNC_NR_PAGES / 2;
 
-                        /* Paranoia: the faulting page can't be present. We assume that below. */
-                        Assert(!SHW_PTE_IS_P(pPTDst->a[iPTDstPage]));
-
                         for (; iPTDst < iPTDstEnd; iPTDst++)
                         {
                             const PGSTPTE pPteSrc = &pPTSrc->a[offPTSrc + iPTDst];
 
-                            if (    pPteSrc->n.u1Present
-                                &&  !SHW_PTE_IS_P(pPTDst->a[iPTDst]))
+                            if (   pPteSrc->n.u1Present
+                                && !SHW_PTE_IS_P(pPTDst->a[iPTDst]))
                             {
                                 RTGCPTR GCPtrCurPage = (GCPtrPage & ~(RTGCPTR)(GST_PT_MASK << GST_PT_SHIFT)) | ((offPTSrc + iPTDst) << PAGE_SHIFT);
                                 NOREF(GCPtrCurPage);
