@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 34049 2010-11-13 01:31:07Z vboxsync $ */
+/* $Id: tarvfs.cpp 34050 2010-11-13 08:38:45Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -453,7 +453,7 @@ static int rtZipTarHdrToFsObjInfo(PCRTZIPTARHDR pTar, PRTFSOBJINFO pObjInfo)
     if (pObjInfo->Attr.fMode & ~RTFS_UNIX_MASK)
         return VERR_TAR_BAD_MODE_FIELD;
 
-    RTFMODE fModeType;
+    RTFMODE fModeType = 0;
     switch (pTar->Posix.typeflag)
     {
         case RTZIPTAR_TF_OLDNORMAL:
