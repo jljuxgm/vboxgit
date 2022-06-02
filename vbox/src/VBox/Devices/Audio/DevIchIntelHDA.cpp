@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 31062 2010-07-23 13:34:08Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 31065 2010-07-23 14:45:11Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -1477,7 +1477,7 @@ static DECLCALLBACK(int) hdaConstruct (PPDMDEVINS pDevIns, int iInstance,
     PCIDevSetStatus             (&pThis->dev, 0x0010); /* 06 rwc?,ro? - pcists. */
     PCIDevSetRevisionId         (&pThis->dev, 0x01);   /* 08 ro - rid. */
     PCIDevSetClassProg          (&pThis->dev, 0x00);   /* 09 ro - pi. */
-    PCIDevSetClassSub           (&pThis->dev, 0x03);   /* 0a ro - scc; 01 == Audio. */
+    PCIDevSetClassSub           (&pThis->dev, 0x02);   /* 0a ro - scc; 02 == HDA. */
     PCIDevSetClassBase          (&pThis->dev, 0x04);   /* 0b ro - bcc; 04 == multimedia. */
     PCIDevSetHeaderType         (&pThis->dev, 0x00);   /* 0e ro - headtyp. */
     PCIDevSetBaseAddress        (&pThis->dev, 0,       /* 10 rw - MMIO */
