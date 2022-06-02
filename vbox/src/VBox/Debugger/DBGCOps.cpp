@@ -1,4 +1,4 @@
-/* $Id: DBGCOps.cpp 35490 2011-01-11 15:17:10Z vboxsync $ */
+/* $Id: DBGCOps.cpp 35513 2011-01-12 17:50:43Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Operators.
  */
@@ -521,8 +521,12 @@ static DECLCALLBACK(int) dbgcOpRegister(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pR
                 DBGCVAR_INIT_NUMBER(pResult, Value.u128.s.Lo);
                 return VINF_SUCCESS;
 
-            case DBGFREGVALTYPE_LRD:
-                DBGCVAR_INIT_NUMBER(pResult, (uint64_t)Value.lrd);
+            case DBGFREGVALTYPE_R80:
+#ifdef RT_COMPILER_WITH_80BIT_LONG_DOUBLE
+                DBGCVAR_INIT_NUMBER(pResult, (uint64_t)Value.r80.lrd);
+#else
+                DBGCVAR_INIT_NUMBER(pResult, (uint64_t)Value.r80.sj64.u63Fraction);
+#endif
                 return VINF_SUCCESS;
 
             case DBGFREGVALTYPE_DTR:
