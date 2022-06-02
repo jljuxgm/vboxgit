@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 35016 2010-12-13 14:40:09Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -287,3 +287,30 @@ VBGLR3DECL(int) VbglR3SharedFolderGetMountPrefix(char **ppszPrefix)
 #endif
     return rc;
 }
+
+/**
+ * Retrieves the mount root directory for auto-mounted shared 
+ * folders. mount point. If no string is set (VERR_NOT_FOUND) 
+ * it's up on the caller (guest) to decide where to mount. 
+ *
+ * @returns VBox status code.
+ * @param   ppszDir         Where to return the directory 
+ *                          string. This shall be freed by
+ *                          calling RTStrFree.
+ */
+VBGLR3DECL(int) VbglR3SharedFolderGetMountDir(char **ppszDir)
+{
+    AssertPtrReturn(ppszDir, VERR_INVALID_POINTER);
+    int rc;
+#ifdef VBOX_WITH_GUEST_PROPS
+    uint32_t u32ClientIdGuestProp;
+    rc = VbglR3GuestPropConnect(&u32ClientIdGuestProp);
+    if (RT_SUCCESS(rc))
+    {
+        rc = VbglR3GuestPropReadValueAlloc(u32ClientIdGuestProp, "/VirtualBox/GuestAdd/SharedFolders/MountDir", ppszDir);
+        VbglR3GuestPropDisconnect(u32ClientIdGuestProp);
+    }
+#endif
+    return rc;
+}
+
