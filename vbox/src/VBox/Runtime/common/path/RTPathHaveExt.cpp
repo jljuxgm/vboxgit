@@ -1,4 +1,4 @@
-/* $Id: RTPathHaveExt.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTPathHaveExt.cpp 32864 2010-10-01 12:32:06Z vboxsync $ */
 /** @file
  * IPRT - RTPathHaveExt
  */
@@ -34,10 +34,10 @@
 
 
 /**
- * Checks if a path have an extension.
+ * Checks if a path has an extension.
  *
  * @returns true if extension present.
- * @returns false if no extension.
+ * @returns false if no extension present.
  * @param   pszPath     Path to check.
  */
 RTDECL(bool) RTPathHaveExt(const char *pszPath)
