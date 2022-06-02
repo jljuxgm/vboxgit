@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 31062 2010-07-23 13:34:08Z vboxsync $ */
+/* $Id: DevCodec.h 31156 2010-07-28 02:49:45Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -22,6 +22,9 @@ struct INTELHDLinkState;
 typedef DECLCALLBACK(int) FNCODECVERBPROCESSOR(struct CODECState *pState, uint32_t cmd, uint64_t *pResp);
 typedef FNCODECVERBPROCESSOR *PFNCODECVERBPROCESSOR;
 typedef FNCODECVERBPROCESSOR **PPFNCODECVERBPROCESSOR;
+
+/* RPM 5.3.1 */
+#define CODEC_RESPONSE_UNSOLICITED RT_BIT_64(34)
 
 typedef struct CODECVERB
 {
