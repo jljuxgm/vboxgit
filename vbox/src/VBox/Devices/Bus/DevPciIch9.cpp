@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 34231 2010-11-22 10:23:59Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 34268 2010-11-22 21:41:24Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -719,6 +719,8 @@ static void ich9pciUpdateMappings(PCIDevice* pDev)
 
         if (iRegionSize == 0)
             continue;
+
+        AssertMsg((pRegion->type & PCI_ADDRESS_SPACE_BAR64) == 0, ("64-bit BARs not yet implemented\n"));
 
         if (pRegion->type & PCI_ADDRESS_SPACE_IO)
         {
