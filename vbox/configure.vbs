@@ -1,4 +1,4 @@
-' $Id: configure.vbs 30227 2010-06-16 02:05:26Z vboxsync $
+' $Id: configure.vbs 31871 2010-08-23 15:48:47Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -2193,6 +2193,27 @@ function CheckForPython(strPathPython)
    PrintResult "Python ", strPathPython
 end function
 
+
+'
+'
+function CheckForMkisofs(strFnameMkisofs)
+
+   PrintHdr "mkisofs"
+
+   CheckForMkisofs = False
+   LogPrint "trying: strPathMkisofs=" & strPathMkisofs
+
+   if FileExists(strFnameMkisofs)
+      LogPrint "Testing '" & strFnameMkisofs & " not found"
+   else
+      CfgPrint "VBOX_MKISOFS          := " & strPathMkisofs & "\mkisofs.exe"
+      CheckForMkisofs = True
+   end if
+
+   PrintResult "mkisofs ", strFnameMkisofs
+end function
+
+
 ''
 ' Show usage.
 sub usage
@@ -2258,6 +2279,7 @@ Sub Main
    strOptSsl = ""
    strOptCurl = ""
    strOptPython = ""
+   strOptMkisofs = ""
    blnOptDisableCOM = False
    for i = 1 to Wscript.Arguments.Count
       dim str, strArg, strPath
@@ -2307,6 +2329,8 @@ Sub Main
             strOptCurl = strPath
          case "--with-python"
             strOptPython = strPath
+         case "--with-mkisofs"
+            strOptMkisofs = strPath
          case "--disable-com"
             blnOptDisableCOM = True
          case "--enable-com"
@@ -2372,6 +2396,9 @@ Sub Main
    CheckForQt4 strOptQt4
    if (strOptPython <> "") then
      CheckForPython strOptPython
+   end if
+   if (strOptMkisofs <> "") then
+     CheckForMkisofs strOptMkisofs
    end if
    if g_blnInternalMode then
       EnvPrint "call " & g_strPathDev & "/env.cmd %1 %2 %3 %4 %5 %6 %7 %8 %9"
