@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: ConsoleImpl.h 35369 2010-12-30 14:03:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -50,7 +50,7 @@ class ExtPackManager;
 #endif
 
 #ifdef RT_OS_WINDOWS
-# include "win/VBoxComEvents.h"
+# include "../src-server/win/VBoxComEvents.h"
 #endif
 
 struct VUSBIRHCONFIG;
