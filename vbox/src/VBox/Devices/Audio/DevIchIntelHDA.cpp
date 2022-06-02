@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 31955 2010-08-25 12:07:34Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 32293 2010-09-07 15:20:04Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -1319,6 +1319,7 @@ DECLCALLBACK(void) hdaTransfer(CODECState *pCodecState, ENMSOUNDSOURCE src, int 
                 nBytes = read_audio(pState, avail, &fStop);
                 break;
             default:
+                nBytes = 0;
                 AssertMsgFailed(("Unsupported"));
         }
         if (   fStop 
@@ -1351,8 +1352,10 @@ DECLCALLBACK(void) hdaTransfer(CODECState *pCodecState, ENMSOUNDSOURCE src, int 
                 pBdle->u32BdleCvi++;
                 if (pBdle->u32BdleCvi == pBdle->u32BdleMaxCvi + 1)
                     pBdle->u32BdleCvi = 0;
+                fStop = true;   /* Give the guest a chance to refill buffers. */
             }
-            fStop = false;
+            else
+                fStop = false;
             fetch_bd(pState, pBdle, u64BaseDMA);
         }
     }
