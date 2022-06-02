@@ -1,4 +1,4 @@
-/* $Id: tstRTCoreDump.cpp 32347 2010-09-09 12:18:38Z vboxsync $ */
+/* $Id: tstRTCoreDump.cpp 32350 2010-09-09 12:29:57Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -55,7 +55,7 @@ int main()
     /*
      * Setup core dumping.
      */
-    int rc = RTCoreDumperSetup(NULL, RTCOREDUMPER_FLAGS_OVERRIDE_SYS_DUMPER | RTCOREDUMPER_FLAGS_LIVE_CORE);
+    int rc = RTCoreDumperSetup(NULL, RTCOREDUMPER_FLAGS_REPLACE_SYSTEM_DUMP | RTCOREDUMPER_FLAGS_LIVE_CORE);
     if (RT_SUCCESS(rc))
     {
         /*
