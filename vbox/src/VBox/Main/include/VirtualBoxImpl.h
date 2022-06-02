@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 30832 2010-07-14 13:00:39Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 30847 2010-07-14 15:40:49Z vboxsync $ */
 
 /** @file
  *
@@ -214,6 +214,7 @@ public:
     void onSnapshotChange(const Guid &aMachineId, const Guid &aSnapshotId);
     void onGuestPropertyChange(const Guid &aMachineId, IN_BSTR aName, IN_BSTR aValue,
                                IN_BSTR aFlags);
+    void onMachineUninit(Machine *aMachine);
 
     ComObjPtr<GuestOSType> getUnknownOSType();
 

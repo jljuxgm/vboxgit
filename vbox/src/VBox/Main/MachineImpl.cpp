@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 30812 2010-07-14 08:54:00Z vboxsync $ */
+/* $Id: MachineImpl.cpp 30847 2010-07-14 15:40:49Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9596,9 +9596,10 @@ void SessionMachine::uninit(Uninit::Reason aReason)
     // and others need mParent lock, and USB needs host lock.
     AutoMultiWriteLock3 multilock(mParent, mParent->host(), this COMMA_LOCKVAL_SRC_POS);
 
-#ifdef VBOX_WITH_RESOURCE_USAGE_API
-    unregisterMetrics(mParent->performanceCollector(), mPeer);
-#endif /* VBOX_WITH_RESOURCE_USAGE_API */
+    // Trigger async cleanup tasks, avoid doing things here which are not
+    // vital to be done immediately and maybe need more locks. This calls
+    // Machine::unregisterMetrics().
+    mParent->onMachineUninit(mPeer);
 
     if (aReason == Uninit::Abnormal)
     {

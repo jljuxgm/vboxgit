@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 30847 2010-07-14 15:40:49Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2700,6 +2700,51 @@ void VirtualBox::onGuestPropertyChange(const Guid &aMachineId, IN_BSTR aName,
                                        IN_BSTR aValue, IN_BSTR aFlags)
 {
     postEvent(new GuestPropertyEvent(this, aMachineId, aName, aValue, aFlags));
+}
+
+/** Event for onMachineUninit(), this is not a CallbackEvent */
+class MachineUninitEvent : public Event
+{
+public:
+
+    MachineUninitEvent(VirtualBox *aVirtualBox, Machine *aMachine)
+        : mVirtualBox(aVirtualBox), mMachine(aMachine)
+    {
+        Assert(aVirtualBox);
+        Assert(aMachine);
+    }
+
+    void *handler()
+    {
+#ifdef VBOX_WITH_RESOURCE_USAGE_API
+        /* Handle unregistering metrics here, as it is not vital to get
+         * it done immediately. It reduces the number of locks needed and
+         * the lock contention in SessionMachine::uninit. */
+        mMachine->unregisterMetrics(mVirtualBox->performanceCollector(), mMachine);
+#endif /* VBOX_WITH_RESOURCE_USAGE_API */
+
+        return NULL;
+    }
+
+private:
+
+    /**
+     *  Note that this is a weak ref -- the CallbackEvent handler thread
+     *  is bound to the lifetime of the VirtualBox instance, so it's safe.
+     */
+    VirtualBox        *mVirtualBox;
+
+    /** Reference to the machine object. */
+    ComObjPtr<Machine> mMachine;
+};
+
+/**
+ *  Trigger internal event. This isn't meant to be signalled to clients.
+ *  @note Doesn't lock any object.
+ */
+void VirtualBox::onMachineUninit(Machine *aMachine)
+{
+    postEvent(new MachineUninitEvent(this, aMachine));
 }
 
 /**

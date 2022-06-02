@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: MachineImpl.h 30847 2010-07-14 15:40:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -355,6 +355,11 @@ public:
                  const settings::MachineConfigFile &config);
 
     void uninit();
+
+#ifdef VBOX_WITH_RESOURCE_USAGE_API
+    // Needed from VirtualBox, for the delayed metrics cleanup.
+    void unregisterMetrics(PerformanceCollector *aCollector, Machine *aMachine);
+#endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
 protected:
     HRESULT initImpl(VirtualBox *aParent,
@@ -800,7 +805,6 @@ protected:
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
     void registerMetrics(PerformanceCollector *aCollector, Machine *aMachine, RTPROCESS pid);
-    void unregisterMetrics(PerformanceCollector *aCollector, Machine *aMachine);
 
     pm::CollectorGuestHAL  *mGuestHAL;
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
