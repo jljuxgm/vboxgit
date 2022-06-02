@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 33259 2010-10-20 12:49:55Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 33310 2010-10-21 14:16:13Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3781,6 +3781,7 @@ VBOXDDU_DECL(void) VDDestroy(PVBOXHDD pDisk)
         AssertPtrBreak(pDisk);
         AssertMsg(pDisk->u32Signature == VBOXHDDDISK_SIGNATURE, ("u32Signature=%08x\n", pDisk->u32Signature));
         VDCloseAll(pDisk);
+        RTCritSectDelete(&pDisk->CritSect);
         RTMemCacheDestroy(pDisk->hMemCacheIoCtx);
         RTMemCacheDestroy(pDisk->hMemCacheIoTask);
         RTMemFree(pDisk);
