@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 30881 2010-07-16 14:34:31Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 30882 2010-07-16 15:20:43Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -2722,7 +2722,10 @@ public:
         /* Handle unregistering metrics here, as it is not vital to get
          * it done immediately. It reduces the number of locks needed and
          * the lock contention in SessionMachine::uninit. */
-        mMachine->unregisterMetrics(mVirtualBox->performanceCollector(), mMachine);
+        {
+            AutoWriteLock mLock(mMachine COMMA_LOCKVAL_SRC_POS);
+            mMachine->unregisterMetrics(mVirtualBox->performanceCollector(), mMachine);
+        }
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
         return NULL;
