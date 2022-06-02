@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceLinux.cpp 31892 2010-08-24 08:00:51Z vboxsync $ */
+/* $Id: USBProxyServiceLinux.cpp 32080 2010-08-30 08:41:59Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -1448,13 +1448,13 @@ PUSBDEVICE USBProxyServiceLinux::getDevicesFromSysfs(void)
                    USBInterfaceList_iter_incr(&it2))
             {
                 ssize_t cb = RTLinuxSysFsGetLinkDest(szBuf, sizeof(szBuf), "%s/driver",
-                                                     USBInterfaceList_iter_target(&it2));
+                                                     *USBInterfaceList_iter_target(&it2));
                 if (cb > 0 && Dev->enmState != USBDEVICESTATE_UNSUPPORTED)
                     Dev->enmState = (strcmp(szBuf, "hub") == 0)
                                   ? USBDEVICESTATE_UNSUPPORTED
                                   : USBDEVICESTATE_USED_BY_HOST_CAPTURABLE;
                 if (RTLinuxSysFsReadIntFile(16, "%s/bInterfaceClass",
-                                            USBInterfaceList_iter_target(&it2)) == 9 /* hub */)
+                                            *USBInterfaceList_iter_target(&it2)) == 9 /* hub */)
                     Dev->enmState = USBDEVICESTATE_UNSUPPORTED;
             }
 
