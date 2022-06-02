@@ -1,4 +1,4 @@
-# $Revision: 28800 $
+# $Revision: 30961 $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -122,6 +122,7 @@ OBJS   = \
 	common/string/strformattype.o \
 	common/string/strprintf.o \
 	common/string/strtonum.o \
+	common/time/time.o \
 	r0drv/linux/RTLogWriteDebugger-r0drv-linux.o \
 	generic/RTAssertShouldPanic-generic.o \
 	generic/RTLogWriteStdErr-stub-generic.o \

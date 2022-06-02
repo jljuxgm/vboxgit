@@ -1,4 +1,4 @@
-/* $Id: log.cpp 30849 2010-07-14 17:29:21Z vboxsync $ */
+/* $Id: log.cpp 30961 2010-07-21 13:39:14Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2339,11 +2339,7 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
                 psz = &pLogger->achScratch[pLogger->offScratch];
                 if (pLogger->fFlags & RTLOGFLAGS_PREFIX_TS)
                 {
-#if defined(IN_RING3) || defined(IN_RC)
-                    uint64_t u64 = RTTimeNanoTS();
-#else
-                    uint64_t u64 = ~0;
-#endif
+                    uint64_t     u64    = RTTimeNanoTS();
                     int          iBase  = 16;
                     unsigned int fFlags = RTSTR_F_ZEROPAD;
                     if (pLogger->fFlags & RTLOGFLAGS_DECIMAL_TS)
@@ -2406,7 +2402,7 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
                 }
                 if (pLogger->fFlags & RTLOGFLAGS_PREFIX_TIME)
                 {
-#ifdef IN_RING3
+#if defined(IN_RING3) || defined(IN_RING0)
                     RTTIMESPEC TimeSpec;
                     RTTIME Time;
                     RTTimeExplode(&Time, RTTimeNow(&TimeSpec));
