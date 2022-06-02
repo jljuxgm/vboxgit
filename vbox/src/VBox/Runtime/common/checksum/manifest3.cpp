@@ -1,4 +1,4 @@
-/* $Id: manifest3.cpp 34435 2010-11-28 14:58:25Z vboxsync $ */
+/* $Id: manifest3.cpp 34495 2010-11-30 10:12:42Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the bits with the most dependencies.
  */
@@ -470,7 +470,7 @@ RTDECL(int) RTManifestPtIosAddEntryNow(RTVFSIOSTREAM hVfsPtIos)
 {
     PRTMANIFESTPTIOS pThis = (PRTMANIFESTPTIOS)RTVfsIoStreamToPrivate(hVfsPtIos, &g_rtManifestPassthruIosOps);
     AssertReturn(pThis, VERR_INVALID_HANDLE);
-    AssertReturn(pThis->fAddedEntry, VERR_WRONG_ORDER);
+    AssertReturn(!pThis->fAddedEntry, VERR_WRONG_ORDER);
 
     pThis->fAddedEntry = true;
     rtManifestHashesFinal(pThis->pHashes);
