@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 34406 2010-11-26 16:45:34Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 34617 2010-12-02 15:14:15Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -313,6 +313,7 @@ static int VBoxServiceToolboxMkDir(int argc, char **argv)
                                 pNodeIt->pszName, pMsg->pszMsgFull);
                  else
                      RTMsgError("mkdir: Could not create directory '%s', rc=%Rrc\n", pNodeIt->pszName, rc);
+                 break;
              }
          }
      }
