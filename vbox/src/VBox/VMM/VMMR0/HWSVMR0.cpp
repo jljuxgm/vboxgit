@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 32729 2010-09-23 14:42:57Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 32847 2010-09-30 14:18:37Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1052,7 +1052,6 @@ ResumeExecution:
             if (    VM_FF_ISPENDING(pVM, VM_FF_HWACCM_TO_R3_MASK)
                 ||  VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_HWACCM_TO_R3_MASK))
             {
-                VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_TO_R3);
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatSwitchToR3);
                 rc = RT_UNLIKELY(VM_FF_ISPENDING(pVM, VM_FF_PGM_NO_MEMORY)) ? VINF_EM_NO_MEMORY : VINF_EM_RAW_TO_R3;
                 goto end;
@@ -2509,6 +2508,9 @@ ResumeExecution:
     }
 
 end:
+
+    /* We now going back to ring-3, so clear the action flag. */
+    VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_TO_R3);
 
     /* Signal changes for the recompiler. */
     CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_SYSENTER_MSR | CPUM_CHANGED_LDTR | CPUM_CHANGED_GDTR | CPUM_CHANGED_IDTR | CPUM_CHANGED_TR | CPUM_CHANGED_HIDDEN_SEL_REGS);
