@@ -1,4 +1,4 @@
-/* $Id: audiosniffer.c 34906 2010-12-09 16:29:49Z vboxsync $ */
+/* $Id: audiosniffer.c 35032 2010-12-13 16:35:15Z vboxsync $ */
 /** @file
  * VBox audio device: Audio sniffer device
  */
@@ -242,7 +242,7 @@ void filter_input_end(void *pvCtx)
 
     pCtx->fEndedByFilter = true;
 
-    c = ASMAtomicDecU32(&pCtx->cRefs);
+    c = ASMAtomicDecS32(&pCtx->cRefs);
 
     if (c == 0)
     {
@@ -423,7 +423,7 @@ static DECLCALLBACK(void) iface_AudioInputEventEnd (PPDMIAUDIOSNIFFERPORT pInter
 
     Assert(g_pData == pThis);
 
-    c = ASMAtomicDecU32(&pCtx->cRefs);
+    c = ASMAtomicDecS32(&pCtx->cRefs);
 
     if (c == 0)
     {
