@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 31269 2010-08-02 08:05:57Z vboxsync $ */
+/* $Id: EventImpl.cpp 31572 2010-08-11 14:08:41Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -683,6 +683,9 @@ static BOOL implies(VBoxEventType_T who, VBoxEventType_T what)
     {
         case VBoxEventType_Any:
             return TRUE;
+        case VBoxEventType_Vetoable:
+            return     (what == VBoxEventType_OnExtraDataCanChange)
+                    || (what == VBoxEventType_OnCanShowWindow);
         case VBoxEventType_MachineEvent:
             return     (what == VBoxEventType_OnMachineStateChanged)
                     || (what == VBoxEventType_OnMachineDataChanged)
