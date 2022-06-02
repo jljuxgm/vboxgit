@@ -1,4 +1,4 @@
-/* $Id: VBoxCloseVMDlg.cpp 29794 2010-05-25 16:06:59Z vboxsync $ */
+/* $Id: VBoxCloseVMDlg.cpp 31319 2010-08-02 16:41:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -24,6 +24,10 @@
 #include "VBoxProblemReporter.h"
 #include "UIMachineWindowNormal.h"
 
+#ifdef Q_WS_MAC
+# include "VBoxGlobal.h"
+#endif /* Q_WS_MAC */
+
 /* Qt includes */
 #include <QPushButton>
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -34,8 +38,7 @@ VBoxCloseVMDlg::VBoxCloseVMDlg (QWidget *aParent)
 #ifdef Q_WS_MAC
     /* No sheets in another mode than normal for now. Firstly it looks ugly and
      * secondly in some cases it is broken. */
-    UIMachineWindowNormal *pWnd = qobject_cast<UIMachineWindowNormal*>(aParent);
-    if (pWnd)
+    if (vboxGlobal().isSheetWindowsAllowed(aParent))
         setWindowFlags (Qt::Sheet);
 #endif /* Q_WS_MAC */
 

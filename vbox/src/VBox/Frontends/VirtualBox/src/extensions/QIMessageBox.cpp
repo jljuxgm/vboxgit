@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 31319 2010-08-02 16:41:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -65,9 +65,8 @@ QIMessageBox::QIMessageBox (const QString &aCaption, const QString &aText,
 #ifdef Q_WS_MAC
     /* No sheets in another mode than normal for now. Firstly it looks ugly and
      * secondly in some cases it is broken. */
-    if (!(   qobject_cast<UIMachineWindowFullscreen*>(aParent)
-          || qobject_cast<UIMachineWindowSeamless*>(aParent)))
-        setWindowFlags (Qt::Sheet);
+    if (vboxGlobal().isSheetWindowsAllowed(aParent))
+        setWindowFlags(Qt::Sheet);
 #endif /* Q_WS_MAC */
 
     setWindowTitle (aCaption);

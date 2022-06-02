@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 31319 2010-08-02 16:41:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -39,6 +39,11 @@
 #ifdef VBOX_WITH_VIDEOHWACCEL
 # include "VBoxFBOverlay.h"
 #endif /* VBOX_WITH_VIDEOHWACCEL */
+
+#ifdef Q_WS_MAC
+# include "UIMachineWindowFullscreen.h"
+# include "UIMachineWindowSeamless.h"
+#endif /* Q_WS_MAC */
 
 /* Qt includes */
 #include <QProgressDialog>
@@ -4127,6 +4132,15 @@ quint64 VBoxGlobal::required2DOffscreenVideoMemory()
 }
 
 #endif
+
+#ifdef Q_WS_MAC
+bool VBoxGlobal::isSheetWindowsAllowed(QWidget *pParent) const
+{
+    if (!(   qobject_cast<UIMachineWindowFullscreen*>(pParent)
+          || qobject_cast<UIMachineWindowSeamless*>(pParent)))
+        return true;
+}
+#endif /* Q_WS_MAC */
 
 // Public slots
 ////////////////////////////////////////////////////////////////////////////////
