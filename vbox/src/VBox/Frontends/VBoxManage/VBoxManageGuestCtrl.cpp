@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 35459 2011-01-10 14:18:22Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 35534 2011-01-13 15:01:40Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -504,6 +504,7 @@ static int handleCtrlExecProgram(HandlerArg *a)
                     if (   fWaitForStdOut
                         || fWaitForStdErr)
                     {
+                        /** @todo r=bird: Why use u32TimeoutMS here?  */
                         rc = guest->GetProcessOutput(uPID, 0 /* aFlags */,
                                                      u32TimeoutMS, _64K, ComSafeArrayAsOutParam(aOutputData));
                         if (FAILED(rc))
@@ -544,6 +545,9 @@ static int handleCtrlExecProgram(HandlerArg *a)
                         if (fCompleted)
                             break;
 
+                        /** @todo r=bird: Why only apply the timeout here?
+                         *        Shouldn't it time out regardless of
+                         *        whether there is more output or not? */
                         if (   fTimeout
                             && RTTimeMilliTS() - u64StartMS > u32TimeoutMS + 5000)
                         {
