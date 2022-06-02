@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 31074 2010-07-24 01:22:22Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 31078 2010-07-24 13:44:23Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1370,8 +1370,8 @@ static void vboxNetFltSolarisPromiscReqWrap(void *pvData)
             pPromiscStream->TimeoutId = 0;
             vboxNetFltSolarisPromiscReq(pPromiscStream->Stream.pReadQueue, pParams->fPromiscOn);
         }
+        RTMemFree(pParams);
     }
-    RTMemFree(pParams);
 }
 
 
