@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 35770 2011-01-28 15:23:22Z vboxsync $ */
+/* $Id: crservice.cpp 35771 2011-01-28 15:24:18Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -144,13 +144,6 @@ static DECLCALLBACK(void) svcPresentFBO(void *data, int32_t screenId, int32_t x,
     RTCritSectLeave(&g_SvcPresentFBO.hQueueLock);
 
     RTSemEventSignal(g_SvcPresentFBO.hEventProcess);
-    /*
-    HRESULT rc;
-    ComPtr<IDisplay> pDisplay;
-
-    CHECK_ERROR(g_pConsole, COMGETTER(Display)(pDisplay.asOutParam()));
-    CHECK_ERROR(pDisplay, DrawToScreen(screenId, (BYTE*)data, x, y, w, h));
-    */
 }
 
 static DECLCALLBACK(int) svcPresentFBOWorkerThreadProc(RTTHREAD ThreadSelf, void *pvUser)
