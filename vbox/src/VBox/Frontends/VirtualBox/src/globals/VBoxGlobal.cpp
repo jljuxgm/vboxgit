@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 34740 2010-12-06 11:56:28Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 34811 2010-12-07 18:23:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2136,8 +2136,8 @@ bool VBoxGlobal::showVirtualBoxLicense()
         if (strList.at(i) == latestVersion)
             return true;
 
-    VBoxLicenseViewer licenseDialog (latestFilePath);
-    bool result = licenseDialog.exec() == QDialog::Accepted;
+    VBoxLicenseViewer licenseDialog;
+    bool result = licenseDialog.showLicenseFromFile(latestFilePath) == QDialog::Accepted;
     if (result)
         virtualBox().SetExtraData (VBoxDefs::GUI_LicenseKey, (strList << latestVersion).join(","));
     return result;
