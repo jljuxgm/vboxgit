@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 31919 2010-08-24 12:53:24Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 32021 2010-08-27 07:23:34Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2521,7 +2521,7 @@ static int vdIOReadMetaAsync(void *pvUser, PVDIOSTORAGE pIoStorage,
     {
 #ifdef RT_STRICT
         pMetaXfer = (PVDMETAXFER)RTAvlrFileOffsetGetBestFit(pIoStorage->pTreeMetaXfers, uOffset, false /* fAbove */);
-        AssertMsg(!pMetaXfer || (pMetaXfer->Core.Key + pMetaXfer->cbMeta <= uOffset),
+        AssertMsg(!pMetaXfer || (pMetaXfer->Core.Key + pMetaXfer->cbMeta <= (RTFOFF)uOffset),
                   ("Overlapping meta transfers!\n"));
 #endif
 
