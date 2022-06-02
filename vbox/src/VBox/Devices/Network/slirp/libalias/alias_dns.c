@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: alias_dns.c 30921 2010-07-20 04:09:30Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -185,6 +185,7 @@ protohandler(struct libalias *la, struct ip *pip, struct alias_data *ah)
     uint16_t *qw_qclass = NULL;
     struct hostent *h = NULL;
     char cname[255];
+    int cname_len = 0;
 
     struct udphdr *udp = NULL;
     union dnsmsg_header *hdr = NULL;
@@ -194,6 +195,7 @@ protohandler(struct libalias *la, struct ip *pip, struct alias_data *ah)
     if (hdr->X.qr == 1)
         return 0; /* this is respose */
 
+    memset(cname, 0, sizeof(cname));
     qw_qname = (char *)&hdr[1];
     Assert((ntohs(hdr->X.qdcount) == 1));
 
@@ -206,6 +208,18 @@ protohandler(struct libalias *la, struct ip *pip, struct alias_data *ah)
     }
 
     QStr2CStr(qw_qname, cname, sizeof(cname));
+    cname_len = RTStrNLen(cname, sizeof(cname));
+    /* Some guests like win-xp adds _dot_ after host name 
+     * and after domain name (not passed with host resolver)
+     * that confuses host resolver.
+     */
+    if (   cname_len > 2 
+        && cname[cname_len - 1] == '.'
+        && cname[cname_len - 2] == '.')
+    {
+        cname[cname_len - 1] = 0;
+        cname[cname_len - 2] = 0;
+    }
     h = gethostbyname(cname);
     fprintf(stderr, "cname:%s\n", cname);
     doanswer(la, hdr, qw_qname, pip, h);
