@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 32020 2010-08-27 07:08:38Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 32468 2010-09-14 09:57:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -583,7 +583,7 @@ void UIMachineLogic::prepareDock()
      * this. */
     QList<QAction*> actions = actionsPool()->action(UIActionIndex_Menu_Machine)->menu()->actions();
     for (int i=0; i < actions.size(); ++i)
-        if (actions.at(i)->menuRole() == QAction::TextHeuristicRole)
+        if (actions.at(i)->menuRole() == QAction::NoRole)
             pDockMenu->addAction(actions.at(i));
     pDockMenu->addSeparator();
 
