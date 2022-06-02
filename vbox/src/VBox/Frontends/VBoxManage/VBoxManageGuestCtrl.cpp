@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 32852 2010-09-30 15:49:35Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 32853 2010-09-30 16:02:16Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -199,7 +199,7 @@ static int handleExecProgram(HandlerArg *a)
             else
             {
                 /** @todo Needs a bit better processing as soon as we have more flags. */
-                if (!strcmp(a->argv[i + 1], "ignoreorphanedchilds"))
+                if (!strcmp(a->argv[i + 1], "ignoreorphanedprocesses"))
                     uFlags |= ExecuteProcessFlag_IgnoreOrphanedProcesses;
                 else
                     usageOK = false;
