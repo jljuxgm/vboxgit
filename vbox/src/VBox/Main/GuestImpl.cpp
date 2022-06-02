@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 34889 2010-12-09 14:19:12Z vboxsync $ */
+/* $Id: GuestImpl.cpp 34891 2010-12-09 14:28:15Z vboxsync $ */
 
 /** @file
  *
@@ -427,7 +427,7 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
          */
         Utf8Str installerImage;
         Bstr osTypeId;
-        if (   SUCCEEDED(pGuest-COMGETTER(OSTypeId(osTypeId.asOutParam())))
+        if (   SUCCEEDED(pGuest->COMGETTER(OSTypeId(osTypeId.asOutParam())))
             && !osTypeId.isEmpty())
         {
             Utf8Str osTypeIdUtf8(osTypeId); /* Needed for .contains(). */
