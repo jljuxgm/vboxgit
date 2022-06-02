@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 35907 2011-02-09 11:20:31Z vboxsync $ */
+/* $Id: UISession.cpp 35926 2011-02-10 13:53:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -611,9 +611,9 @@ void UISession::sltAdditionsChange()
     ULONG ulGuestAdditionsRunLevel = guest.GetAdditionsRunLevel();
     LONG64 lLastUpdatedIgnored;
     bool fIsGuestSupportsGraphics = guest.GetFacilityStatus(KAdditionsFacilityType_Graphics, lLastUpdatedIgnored)
-                                    == AdditionsFacilityStatus_Active;
+                                    == KAdditionsFacilityStatus_Active;
     bool fIsGuestSupportsSeamless = guest.GetFacilityStatus(KAdditionsFacilityType_Seamless, lLastUpdatedIgnored)
-                                    == AdditionsFacilityStatus_Active;
+                                    == KAdditionsFacilityStatus_Active;
     /* Check if something had changed: */
     if (m_ulGuestAdditionsRunLevel != ulGuestAdditionsRunLevel ||
         m_fIsGuestSupportsGraphics != fIsGuestSupportsGraphics ||
