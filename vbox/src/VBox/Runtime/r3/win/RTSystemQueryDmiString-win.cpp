@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-win.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-win.cpp 34502 2010-11-30 12:37:29Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, windows ring-3.
  */
@@ -217,7 +217,7 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
                                      * into the return buffer.
                                      */
                                     char *pszValue;
-                                    rc = RTUtf16ToUtf8(Var.bstrVal, &pszValue);
+                                    rc = RTUtf16ToUtf8((PCRTUTF16)Var.bstrVal, &pszValue);
                                     if (RT_SUCCESS(rc))
                                     {
                                         rc = RTStrCopy(pszBuf, cbBuf, pszValue);
