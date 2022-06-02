@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 35410 2011-01-05 17:21:11Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -124,6 +124,10 @@ int main()
     GEN_CHECK_OFF(DBGF, cBreakpoints);
     GEN_CHECK_OFF(DBGF, aHwBreakpoints);
     GEN_CHECK_OFF(DBGF, aBreakpoints);
+    GEN_CHECK_OFF(DBGF, hAsDbLock);
+    GEN_CHECK_OFF(DBGF, hRegDbLock);
+    GEN_CHECK_OFF(DBGF, RegSetSpace);
+    GEN_CHECK_OFF(DBGF, pCurOS);
     GEN_CHECK_SIZE(DBGFEVENT);
 
     GEN_CHECK_SIZE(DBGFCPU);

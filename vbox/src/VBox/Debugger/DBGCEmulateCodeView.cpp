@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 35392 2011-01-03 17:26:58Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 35410 2011-01-05 17:21:11Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3285,7 +3285,7 @@ static DECLCALLBACK(int) dbgcCmdDumpTSS(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM
     {
         /** @todo consider querying the hidden bits instead (missing API). */
         uint16_t SelTR;
-        rc = DBGFR3RegQueryU16(pVM, pDbgc->idCpu, DBGFREG_TR, &SelTR);
+        rc = DBGFR3RegCpuQueryU16(pVM, pDbgc->idCpu, DBGFREG_TR, &SelTR);
         if (RT_FAILURE(rc))
             return DBGCCmdHlpFail(pCmdHlp, pCmd, "Failed to query TR, rc=%Rrc\n", rc);
         DBGCVAR_INIT_GC_FAR(&VarTssAddr, SelTR, 0);
@@ -3359,7 +3359,7 @@ static DECLCALLBACK(int) dbgcCmdDumpTSS(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM
         else
         {
             uint64_t uEfer;
-            rc = DBGFR3RegQueryU64(pVM, pDbgc->idCpu, DBGFREG_MSR_K6_EFER, &uEfer);
+            rc = DBGFR3RegCpuQueryU64(pVM, pDbgc->idCpu, DBGFREG_MSR_K6_EFER, &uEfer);
             if (   RT_FAILURE(rc)
                 || !(uEfer &  MSR_K6_EFER_LMA) )
                 enmTssType = kTss32;
