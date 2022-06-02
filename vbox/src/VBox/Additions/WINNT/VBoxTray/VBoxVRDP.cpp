@@ -1,10 +1,10 @@
-/* $Id: VBoxVRDP.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 33966 2010-11-11 10:32:07Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -19,11 +19,11 @@
 #define _WIN32_WINNT 0x0501
 #include <windows.h>
 #include "VBoxTray.h"
+#include "VBoxHelpers.h"
 #include "VBoxVRDP.h"
 #include <VBox/VMMDev.h>
 #include <VBoxGuestInternal.h>
 #include <iprt/assert.h>
-#include "helpers.h"
 
 
 /* The guest receives VRDP_ACTIVE/VRDP_INACTIVE notifications.

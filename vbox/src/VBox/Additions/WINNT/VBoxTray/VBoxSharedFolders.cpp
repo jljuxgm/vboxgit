@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFolders.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
+/* $Id: VBoxSharedFolders.cpp 33966 2010-11-11 10:32:07Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */
@@ -17,7 +17,7 @@
 
 #include "VBoxSharedFolders.h"
 #include "VBoxTray.h"
-#include "helpers.h"
+#include "VBoxHelpers.h"
 
 #include <iprt/mem.h>
 #include <VBox/VBoxGuestLib.h>
@@ -104,7 +104,7 @@ int VBoxSharedFoldersAutoMount(void)
 
                             if (chDrive > 'Z')
                             {
-                                LogRel(("VBoxTray: No free driver letter found to assign shared folder \"%s\", aborting.\n", pszName));
+                                LogRel(("VBoxTray: No free driver letter found to assign shared folder \"%s\", aborting\n", pszName));
                                 break;
                             }
 

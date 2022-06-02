@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 31145 2010-07-27 15:53:05Z vboxsync $ */
+/* $Id: VBoxTray.h 33966 2010-11-11 10:32:07Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -35,13 +35,37 @@
 
 #include "VBoxDispIf.h"
 
-#define WM_VBOX_RESTORED                WM_APP + 1
-#define WM_VBOX_CHECK_VRDP              WM_APP + 2
-#define WM_VBOX_CHECK_HOSTVERSION       WM_APP + 3
-#define WM_VBOX_TRAY                    WM_APP + 4
+/*
+ * Windows messsages.
+ */
 
+/**
+ * General VBoxTray messages.
+ */
+#define WM_VBOXTRAY_TRAY_ICON                   WM_APP + 40
+#define WM_VBOXTRAY_TRAY_DISPLAY_BALLOON        WM_APP + 41
+/**
+ * VM/VMMDev related messsages.
+ */
+#define WM_VBOXTRAY_VM_RESTORED                 WM_APP + 100
+/**
+ * VRDP messages.
+ */
+#define WM_VBOXTRAY_VRDP_CHECK                  WM_APP + 301
+/**
+ * Misc. utility functions.
+ */
+#define WM_VBOXTRAY_CHECK_HOSTVERSION           WM_APP + 1000
+
+
+/* The tray icon's ID. */
 #define ID_TRAYICON                     2000
 
+
+/*
+ * Timer IDs.
+ */
+#define TIMERID_VBOXTRAY_CHECK_HOSTVERSION      1000
 
 /* The environment information for services. */
 typedef struct _VBOXSERVICEENV

@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 33966 2010-11-11 10:32:07Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -17,13 +17,13 @@
 #define _WIN32_WINNT 0x0500
 #include <windows.h>
 #include "VBoxTray.h"
+#include "VBoxHelpers.h"
 #include "VBoxSeamless.h"
 #include <VBoxHook.h>
 #include <VBoxDisplay.h>
 #include <VBox/VMMDev.h>
 #include <iprt/assert.h>
 #include <VBoxGuestInternal.h>
-#include "helpers.h"
 
 typedef struct _VBOXSEAMLESSCONTEXT
 {
@@ -323,7 +323,7 @@ unsigned __stdcall VBoxSeamlessThread(void *pInstance)
             /* did we get the right event? */
             if (waitEvent.u32EventFlagsOut & VMMDEV_EVENT_SEAMLESS_MODE_CHANGE_REQUEST)
             {
-                Log(("VBoxTray: VBoxTray: going to get seamless change information.\n"));
+                Log(("VBoxTray: VBoxTray: going to get seamless change information\n"));
 
                 /* We got at least one event. Read the requested resolution
                  * and try to set it until success. New events will not be seen
