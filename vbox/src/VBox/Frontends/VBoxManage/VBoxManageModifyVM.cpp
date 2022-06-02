@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 32885 2010-10-04 12:56:35Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 32913 2010-10-05 13:21:03Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -521,6 +521,7 @@ int handleModifyVM(HandlerArg *a)
             case MODIFYVM_CPU_EXECTUION_CAP:
             {
                 CHECK_ERROR(machine, COMSETTER(CPUExecutionCap)(ValueUnion.u32));
+                break;
             }
 
             case MODIFYVM_MONITORCOUNT:
