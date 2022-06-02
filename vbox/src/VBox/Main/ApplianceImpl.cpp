@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 33060 2010-10-12 12:17:49Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 33080 2010-10-12 17:07:18Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -673,10 +673,7 @@ void Appliance::waitForAsyncProgress(ComObjPtr<Progress> &pProgressThis,
         rc = pProgressThis->COMGETTER(Canceled)(&fCanceled);
         if (FAILED(rc)) throw rc;
         if (fCanceled)
-        {
             pProgressAsync->Cancel();
-            break;
-        }
         /* Check if the current operation has changed. It is also possible
            that in the meantime more than one async operation was finished. So
            we have to loop as long as we reached the same operation count. */
