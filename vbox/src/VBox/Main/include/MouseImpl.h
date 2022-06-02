@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 32817 2010-09-29 14:30:07Z vboxsync $ */
+/* $Id: MouseImpl.h 32828 2010-09-29 19:21:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -93,12 +93,14 @@ public:
         return mParent;
     }
 
-    // for VMMDevInterface
+    /** notify the front-end that the guest now supports absolute reporting */
     void onVMMDevCanAbsChange(bool)
     {
         sendMouseCapsNotifications();
     }
 
+    /** notify the front-end as to whether the guest can start drawing its own
+     * cursor on demand */
     void onVMMDevNeedsHostChange(bool needsHost)
     {
         fVMMDevNeedsHostCursor = needsHost;
