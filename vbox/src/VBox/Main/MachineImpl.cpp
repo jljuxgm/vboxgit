@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31312 2010-08-02 15:17:45Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31313 2010-08-02 15:19:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3419,34 +3419,38 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
                                         true /* fMediumLockWrite */,
                                         medium,
                                         *pMediumLockList);
-        if (FAILED(rc)) return rc;
-        rc = pMediumLockList->Lock();
-        if (FAILED(rc))
-            return setError(rc,
-                            tr("Could not lock medium when creating diff '%s'"),
-                            diff->getLocationFull().c_str());
+        if (SUCCEEDED(rc))
+        {
+            rc = pMediumLockList->Lock();
+            if (FAILED(rc))
+                setError(rc,
+                         tr("Could not lock medium when creating diff '%s'"),
+                         diff->getLocationFull().c_str());
+            else
+            {
+                /* will leave the lock before the potentially lengthy operation, so
+                 * protect with the special state */
+                MachineState_T oldState = mData->mMachineState;
+                setMachineState(MachineState_SettingUp);
 
-        /* will leave the lock before the potentially lengthy operation, so
-         * protect with the special state */
-        MachineState_T oldState = mData->mMachineState;
-        setMachineState(MachineState_SettingUp);
+                mediumLock.leave();
+                treeLock.leave();
+                alock.leave();
 
-        mediumLock.leave();
-        treeLock.leave();
-        alock.leave();
+                rc = medium->createDiffStorage(diff,
+                                               MediumVariant_Standard,
+                                               pMediumLockList,
+                                               NULL /* aProgress */,
+                                               true /* aWait */,
+                                               &fNeedsSaveSettings);
 
-        rc = medium->createDiffStorage(diff,
-                                       MediumVariant_Standard,
-                                       pMediumLockList,
-                                       NULL /* aProgress */,
-                                       true /* aWait */,
-                                       &fNeedsSaveSettings);
+                alock.enter();
+                treeLock.enter();
+                mediumLock.enter();
 
-        alock.enter();
-        treeLock.enter();
-        mediumLock.enter();
-
-        setMachineState(oldState);
+                setMachineState(oldState);
+            }
+        }
 
         /* Unlock the media and free the associated memory. */
         delete pMediumLockList;
