@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 32346 2010-09-09 12:17:54Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 32379 2010-09-10 09:44:37Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -1130,11 +1130,13 @@ static DECLCALLBACK(void) ich9pciConfigWrite(PCIDevice *aDev, uint32_t u32Addres
                                              uint32_t val, unsigned len)
 {
     /* Fast case - update one of BARs or ROM address, 'while' only for 'break' */
-    while (len == 4 &&
-           (u32Address >= VBOX_PCI_BASE_ADDRESS_0 &&
-            u32Address < VBOX_PCI_BASE_ADDRESS_0 + 6 * 4)
-           ||
-           (u32Address >= VBOX_PCI_ROM_ADDRESS && u32Address < VBOX_PCI_ROM_ADDRESS+4))
+    while (   len == 4
+           && (   (   u32Address >= VBOX_PCI_BASE_ADDRESS_0
+                   && u32Address <  VBOX_PCI_BASE_ADDRESS_0 + 6 * 4)
+               || (   u32Address >= VBOX_PCI_ROM_ADDRESS
+                   && u32Address <  VBOX_PCI_ROM_ADDRESS+4)
+              )
+           )
     {
         PCIIORegion *pRegion;
         int reg, regionSize;
