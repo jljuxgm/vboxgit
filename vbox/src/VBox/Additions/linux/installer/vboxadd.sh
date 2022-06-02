@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 35202 $)
+# Linux Additions kernel module init script ($Revision: 35249 $)
 #
 
 #
@@ -265,7 +265,7 @@ do_vboxguest_non_udev()
 start()
 {
     begin "Starting the VirtualBox Guest Additions ";
-    which udevd >/dev/null || no_udev=1
+    which udevd >/dev/null 2>&1 || no_udev=1
     running_vboxguest || {
         rm -f $dev || {
             fail "Cannot remove $dev"
