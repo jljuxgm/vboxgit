@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 34302 2010-11-23 17:35:15Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 34332 2010-11-24 16:43:26Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -2394,6 +2394,10 @@ static void ich9pciResetDevice(PPCIDEVICE pDev)
         PCIDevSetByte(pDev, VBOX_PCI_CACHE_LINE_SIZE, 0x0);
         PCIDevSetByte(pDev, VBOX_PCI_INTERRUPT_LINE,  0x0);
     }
+    else
+    {
+        /* @todo: reset devices behind the bridge too */
+    }
     /* Regions ? */
 }
 
@@ -2406,7 +2410,7 @@ static DECLCALLBACK(void) ich9pciReset(PPDMDEVINS pDevIns)
     PPCIGLOBALS pGlobals = PDMINS_2_DATA(pDevIns, PPCIGLOBALS);
     PPCIBUS     pBus     = &pGlobals->aPciBus;
 
-    /* Relocate RC pointers for the attached pci devices. */
+    /* PCI-specific reset for each device. */
     for (uint32_t i = 0; i < RT_ELEMENTS(pBus->apDevices); i++)
     {
         if (pBus->apDevices[i])
