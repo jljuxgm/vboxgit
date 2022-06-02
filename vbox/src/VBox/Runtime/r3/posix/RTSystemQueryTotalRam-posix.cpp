@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryTotalRam-posix.cpp 33499 2010-10-27 12:54:29Z vboxsync $ */
+/* $Id: RTSystemQueryTotalRam-posix.cpp 33503 2010-10-27 13:12:57Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryTotalRam, windows ring-3.
  */
@@ -39,6 +39,12 @@
 
 
 RTDECL(int) RTSystemQueryTotalRam(uint64_t *pcb)
+{
+    AssertPtrReturn(pcb, VERR_INVALID_POINTER);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+RTDECL(int) RTSystemQueryAvailableRam(uint64_t *pcb)
 {
     AssertPtrReturn(pcb, VERR_INVALID_POINTER);
     return VERR_NOT_IMPLEMENTED;

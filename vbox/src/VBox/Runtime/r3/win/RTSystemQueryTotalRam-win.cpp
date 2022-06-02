@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryTotalRam-win.cpp 33498 2010-10-27 12:51:19Z vboxsync $ */
+/* $Id: RTSystemQueryTotalRam-win.cpp 33503 2010-10-27 13:12:57Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryTotalRam, windows ring-3.
  */
@@ -37,9 +37,22 @@
 #include <iprt/string.h>
 
 
-
-
 RTDECL(int) RTSystemQueryTotalRam(uint64_t *pcb)
+{
+    MEMORYSTATUSEX MemStatus;
+
+    AssertPtrReturn(pcb, VERR_INVALID_POINTER);
+
+    MemStatus.dwLength = sizeof(MemStatus);
+    if (!GlobalMemoryStatusEx(&MemStatus))
+        return RTErrConvertFromWin32(GetLastError());
+
+    *pcb = MemStatus.ullTotalPhys;
+    return VINF_SUCCESS;
+}
+
+
+RTDECL(int) RTSystemQueryAvailableRam(uint64_t *pcb)
 {
     MEMORYSTATUSEX MemStatus;
 
