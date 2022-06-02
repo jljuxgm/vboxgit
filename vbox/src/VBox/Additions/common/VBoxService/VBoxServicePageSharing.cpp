@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 30655 2010-07-06 11:31:13Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 30660 2010-07-06 12:08:21Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -488,7 +488,7 @@ skipkernelmodules:
 
     /* Check all registered modules. */
     int rc = VbglR3CheckSharedModules();
-    if (    rc == VINF_PGM_SHARED_MODULE_FIRST_CHECK
+    if (    rc == VERR_PGM_SHARED_MODULE_FIRST_CHECK
         &&  !fFirstCheck)
     {
         bool fUnregister = false;

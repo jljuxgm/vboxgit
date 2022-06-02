@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30656 2010-07-06 11:37:31Z vboxsync $ */
+/* $Id: GMMR0.cpp 30660 2010-07-06 12:08:21Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -4179,7 +4179,7 @@ GMMR0DECL(int) GMMR0CheckSharedModules(PVM pVM, PVMCPU pVCpu)
         if (pGVM->gmm.s.fFirstCheckSharedModule)
         {
             /* To make sure the guest additions can detect a VM restore as that needs a reregistration of all modules. */
-            rc = VINF_PGM_SHARED_MODULE_FIRST_CHECK;
+            rc = VERR_PGM_SHARED_MODULE_FIRST_CHECK;
             pGVM->gmm.s.fFirstCheckSharedModule = false;
         }
         else
