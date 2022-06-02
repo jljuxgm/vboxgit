@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 29590 2010-05-18 07:02:17Z vboxsync $ */
+/* $Id: VMMDevState.h 30668 2010-07-06 14:26:53Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -163,6 +163,9 @@ typedef struct VMMDevState
 
     /* guest ram size */
     uint64_t    cbGuestRAM;
+    
+    /* unique session id; the id will be different after each start, reset or restore of the VM. */
+    uint64_t    idSession;
 
     /* statistics interval change request */
     uint32_t    u32StatIntervalSize, u32LastStatIntervalSize;

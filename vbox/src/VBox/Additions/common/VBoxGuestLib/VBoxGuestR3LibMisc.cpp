@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 30668 2010-07-06 14:26:53Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -74,3 +74,22 @@ VBGLR3DECL(int) VbglR3SetGuestCaps(uint32_t fOr, uint32_t fNot)
     return rc;
 }
 
+/**
+ * Query the session id of this VM; this is a unique id that gets changed for each VM start, reset or restore.
+ * Useful for detection a VM restore.
+ *
+ * @returns IPRT status code.
+ * pu64IdSession    Session id (out)
+ *
+ */
+VBGLR3DECL(int) VbglR3GetSessionId(uint64_t *pu64IdSession)
+{
+    VMMDevReqSessionId Req;
+
+    vmmdevInitRequest(&Req.header, VMMDevReq_GetSessionId);
+    int rc = vbglR3GRPerform(&Req.header);
+    if (rc == VINF_SUCCESS)
+        *pu64IdSession = Req.idSession;
+
+    return rc;
+}
