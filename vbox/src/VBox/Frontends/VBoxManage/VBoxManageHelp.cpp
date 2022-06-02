@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 35317 2010-12-24 15:10:13Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 35508 2011-01-12 14:54:12Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -615,6 +615,8 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            injectnmi |\n"
                      "                            osdetect |\n"
                      "                            osinfo |\n"
+                     "                            getregisters [--cpu <id>] <reg>|all ... |\n"
+                     "                            setregisters [--cpu <id>] <reg>=<value> ... |\n"
                      "                            statistics [--reset] [--pattern <pattern>]\n"
                      "                            [--descriptions]\n"
                      "\n");
