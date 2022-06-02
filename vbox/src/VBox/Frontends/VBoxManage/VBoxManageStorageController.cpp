@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 35239 2010-12-20 12:45:14Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 35241 2010-12-20 13:14:55Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -396,7 +396,7 @@ int handleStorageAttach(HandlerArg *a)
                         ComPtr<IMedium> pExistingMedium;
                         rc = findMedium(a, pszMedium, deviceType, true /* fSilent */,
                                         pExistingMedium);
-                        if (pExistingMedium)
+                        if (SUCCEEDED(rc) && pExistingMedium)
                         {
                             if (    (deviceType == DeviceType_DVD)
                                  || (deviceType == DeviceType_HardDisk)
@@ -544,7 +544,7 @@ int handleStorageAttach(HandlerArg *a)
 
                 rc = findOrOpenMedium(a, pszMedium, devTypeRequested,
                                       pMedium2Mount, NULL);
-                if (!pMedium2Mount)
+                if (FAILED(rc) || !pMedium2Mount)
                     throw Utf8StrFmt("Invalid UUID or filename \"%s\"", pszMedium);
             }
 
