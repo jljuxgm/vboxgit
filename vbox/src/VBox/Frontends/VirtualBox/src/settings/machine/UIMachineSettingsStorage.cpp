@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 34946 2010-12-10 12:40:15Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 34947 2010-12-10 13:14:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -35,29 +35,6 @@
 #include <QStylePainter>
 #include <QTimer>
 #include <QCommonStyle>
-
-/* Type converters */
-VBoxDefs::MediumType typeToLocal (KDeviceType aType)
-{
-    VBoxDefs::MediumType result = VBoxDefs::MediumType_Invalid;
-    switch (aType)
-    {
-        case KDeviceType_HardDisk:
-            result = VBoxDefs::MediumType_HardDisk;
-            break;
-        case KDeviceType_DVD:
-            result = VBoxDefs::MediumType_DVD;
-            break;
-        case KDeviceType_Floppy:
-            result = VBoxDefs::MediumType_Floppy;
-            break;
-        default:
-            AssertMsgFailed (("Incorrect medium type!\n"));
-            break;
-    }
-    return result;
-}
-
 
 QString compressText (const QString &aText)
 {
@@ -2320,7 +2297,7 @@ void UIMachineSettingsStorage::getInformation()
                     default:
                         break;
                 }
-                m_pMediumIdHolder->setType(typeToLocal(device));
+                m_pMediumIdHolder->setType(vboxGlobal().mediumTypeToLocal(device));
                 m_pMediumIdHolder->setId(mStorageModel->data(index, StorageModel::R_AttMediumId).toString());
 
                 /* Getting Passthrough state */

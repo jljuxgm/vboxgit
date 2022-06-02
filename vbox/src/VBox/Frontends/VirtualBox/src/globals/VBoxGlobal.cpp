@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 34822 2010-12-08 09:19:56Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 34947 2010-12-10 13:14:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2391,6 +2391,38 @@ void VBoxGlobal::startEnumeratingMedia()
     emit mediumEnumStarted();
 
     mMediaEnumThread->start();
+}
+
+VBoxDefs::MediumType VBoxGlobal::mediumTypeToLocal(KDeviceType globalType)
+{
+    switch (globalType)
+    {
+        case KDeviceType_HardDisk:
+            return VBoxDefs::MediumType_HardDisk;
+        case KDeviceType_DVD:
+            return VBoxDefs::MediumType_DVD;
+        case KDeviceType_Floppy:
+            return VBoxDefs::MediumType_Floppy;
+        default:
+            break;
+    }
+    return VBoxDefs::MediumType_Invalid;
+}
+
+KDeviceType VBoxGlobal::mediumTypeToGlobal(VBoxDefs::MediumType localType)
+{
+    switch (localType)
+    {
+        case VBoxDefs::MediumType_HardDisk:
+            return KDeviceType_HardDisk;
+        case VBoxDefs::MediumType_DVD:
+            return KDeviceType_DVD;
+        case VBoxDefs::MediumType_Floppy:
+            return KDeviceType_Floppy;
+        default:
+            break;
+    }
+    return KDeviceType_Null;
 }
 
 /**
