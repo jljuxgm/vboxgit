@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 35424 2011-01-07 13:05:41Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 35730 2011-01-27 10:49:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,7 +44,7 @@
 
 #include "QIStatusBar.h"
 #include "QIStateIndicator.h"
-#include "QIHotKeyEdit.h"
+#include "UIHotKeyEditor.h"
 
 UIMachineWindowNormal::UIMachineWindowNormal(UIMachineLogic *pMachineLogic, ulong uScreenId)
     : QIWithRetranslateUI2<QMainWindow>(0, Qt::Window)
@@ -261,7 +261,7 @@ void UIMachineWindowNormal::sltShowIndicatorsContextMenu(QIStateIndicator *pIndi
 
 void UIMachineWindowNormal::sltProcessGlobalSettingChange(const char * /* aPublicName */, const char * /* aName */)
 {
-    m_pNameHostkey->setText(QIHotKeyEdit::keyName(vboxGlobal().settings().hostKey()));
+    m_pNameHostkey->setText(UIHotKeyCombination::toReadableString(vboxGlobal().settings().hostCombo()));
 }
 
 void UIMachineWindowNormal::retranslateUi()
@@ -274,7 +274,7 @@ void UIMachineWindowNormal::retranslateUi()
            "This key, when pressed alone, toggles the keyboard and mouse "
            "capture state. It can also be used in combination with other keys "
            "to quickly perform actions from the main menu."));
-    m_pNameHostkey->setText(QIHotKeyEdit::keyName(vboxGlobal().settings().hostKey()));
+    m_pNameHostkey->setText(UIHotKeyCombination::toReadableString(vboxGlobal().settings().hostCombo()));
 }
 
 void UIMachineWindowNormal::updateAppearanceOf(int iElement)
@@ -442,7 +442,7 @@ void UIMachineWindowNormal::prepareStatusBar()
     pHostkeyLedContainerLayout->setSpacing(3);
     pIndicatorBoxHLayout->addWidget(m_pCntHostkey);
     pHostkeyLedContainerLayout->addWidget(indicatorsPool()->indicator(UIIndicatorIndex_Hostkey));
-    m_pNameHostkey = new QLabel(QIHotKeyEdit::keyName(vboxGlobal().settings().hostKey()));
+    m_pNameHostkey = new QLabel(UIHotKeyCombination::toReadableString(vboxGlobal().settings().hostCombo()));
     pHostkeyLedContainerLayout->addWidget(m_pNameHostkey);
 
     /* Add to statusbar: */
