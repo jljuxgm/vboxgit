@@ -1,4 +1,4 @@
-/* $Id: vbsfmount.c 31203 2010-07-29 12:44:41Z vboxsync $ */
+/* $Id: vbsfmount.c 31205 2010-07-29 12:48:43Z vboxsync $ */
 /** @file
  * vbsfmount - Commonly used code to mount shared folders on Linux-based
  *             systems.  Currently used by mount.vboxsf and VBoxService.
@@ -18,6 +18,9 @@
 
 #include "vbsfmount.h"
 
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#endif
 #include <ctype.h>
 #include <mntent.h>
 #include <stdio.h>
