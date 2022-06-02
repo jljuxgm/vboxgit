@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 32912 2010-10-05 13:04:39Z vboxsync $ */
+/* $Id: EMInternal.h 32917 2010-10-05 13:35:31Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -400,7 +400,7 @@ typedef struct EMCPU
      * @{ */
     STAMPROFILE             StatForcedActions;
     STAMPROFILE             StatHalted;
-    STAMPROFILE             StatCapped;
+    STAMPROFILEADV          StatCapped;
     STAMPROFILEADV          StatHwAccEntry;
     STAMPROFILE             StatHwAccExec;
     STAMPROFILE             StatREMEmu;
