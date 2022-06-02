@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 33461 2010-10-26 11:55:27Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 33553 2010-10-28 11:53:49Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -236,6 +236,9 @@ DECLCALLBACK(int) VFSExplorer::TaskVFSExplorer::taskThread(RTTHREAD /* aThread *
                 rc = pVFSExplorer->deleteS3(task.get());
             break;
         }
+        default:
+            AssertMsgFailed(("Invalid task type %u specified!\n", task->taskType));
+            break;
     }
 
     LogFlowFunc(("rc=%Rhrc\n", rc));
