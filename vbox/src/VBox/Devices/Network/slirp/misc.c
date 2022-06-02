@@ -1,4 +1,4 @@
-/* $Id: misc.c 34040 2010-11-12 18:52:01Z vboxsync $ */
+/* $Id: misc.c 35861 2011-02-07 04:27:19Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -164,6 +164,7 @@ static void *slirp_uma_alloc(uma_zone_t zone,
         {
             /* We're on master zone and we cant allocate more */
             Log2(("NAT: no room on %s zone\n", zone->name));
+            AssertMsgFailed(("NAT: OOM!"));
             break;
         }
 
