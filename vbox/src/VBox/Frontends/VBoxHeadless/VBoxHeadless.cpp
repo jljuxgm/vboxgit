@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 33594 2010-10-29 10:32:00Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 33852 2010-11-08 14:54:02Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -383,7 +383,7 @@ static void SaveState(int sig)
     RTPrintf("Signal received, saving state.\n");
 
     HRESULT rc = gConsole->SaveState(progress.asOutParam());
-    if (FAILED(S_OK))
+    if (FAILED(rc))
     {
         RTPrintf("Error saving state! rc = 0x%x\n", rc);
         return;
