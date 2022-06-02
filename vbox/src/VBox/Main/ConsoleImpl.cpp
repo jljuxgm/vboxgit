@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 31728 2010-08-17 12:52:17Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 31729 2010-08-17 12:53:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7476,7 +7476,7 @@ DECLCALLBACK(int) Console::powerUpThread(RTTHREAD Thread, void *pvUser)
                         Utf8Str strAddress(bstrAddress);
                         const char *pszAddress = strAddress.isEmpty() ? NULL : strAddress.c_str();
 
-                        /* Start FT syncing. */
+                        /* Power on the FT enabled VM. */
                         vrc = FTMR3PowerOn(pVM, (task->mEnmFaultToleranceState == FaultToleranceState_Source) /* fSource */, uInterval, pszAddress, uPort);
                         AssertRC(vrc);
                     }
