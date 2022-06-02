@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33182 2010-10-18 08:30:05Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33187 2010-10-18 09:35:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -7426,7 +7426,7 @@ HRESULT Medium::taskImportHandler(Medium::ImportTask &task)
                              targetId.raw(),
                              VD_OPEN_FLAGS_NORMAL,
                              NULL /* pVDIfsOperation */,
-                             task.mVDImageIfaces,
+                             m->vdImageIfaces,
                              task.mVDOperationIfaces);
                 if (RT_FAILURE(vrc))
                     throw setError(VBOX_E_FILE_ERROR,
