@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 35632 2011-01-19 15:55:05Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 35637 2011-01-19 17:42:59Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -672,7 +672,7 @@ static DECLCALLBACK(int) dbgcHlpEvalV(PDBGCCMDHLP pCmdHlp, PDBGCVAR pResult, con
     size_t cb = RTStrPrintfExV(dbgcStringFormatter, pDbgc, szExprFormatted, sizeof(szExprFormatted), pszExpr, va);
     /* ignore overflows. */
 
-    return dbgcEvalSub(pDbgc, &szExprFormatted[0], cb, pResult);
+    return dbgcEvalSub(pDbgc, &szExprFormatted[0], cb, DBGCVAR_CAT_ANY, pResult);
 }
 
 
