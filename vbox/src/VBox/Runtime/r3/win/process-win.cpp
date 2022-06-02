@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 33044 2010-10-11 16:30:54Z vboxsync $ */
+/* $Id: process-win.cpp 33490 2010-10-27 10:37:44Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -898,8 +898,6 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
                 CloseHandle(hTokenUserDesktop);
             rtProcUserLogoff(hTokenLogon);
         }
-        else
-            dwErr = rc; /* rtProcUserLogon() failed. */
     }
 
     if (dwErr != NO_ERROR)
