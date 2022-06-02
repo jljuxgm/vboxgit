@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33360 2010-10-22 14:54:12Z vboxsync $
+# $Id: Makefile.kmk 33644 2010-11-01 12:03:53Z vboxsync $
 ## @file
 # Sub-Makefile for the device testcases.
 #
@@ -75,6 +75,15 @@ ifdef VBOX_WITH_RAW_MODE
  ifdef VBOX_WITH_HGSMI
   tstDeviceStructSizeRC_DEFS    += VBOX_WITH_HGSMI
  endif
+ ifdef VBOX_WITH_CRHGSMI
+  tstDeviceStructSizeRC_DEFS    += VBOX_WITH_CRHGSMI
+ endif
+ ifdef VBOX_WITH_VDMA
+  tstDeviceStructSizeRC_DEFS    += VBOX_WITH_VDMA
+ endif
+ ifdef VBOX_WITH_WDDM
+  tstDeviceStructSizeRC_DEFS    += VBOX_WITH_WDDM
+ endif
  ifdef VBOX_WITH_VIDEOHWACCEL
   tstDeviceStructSizeRC_DEFS    += VBOX_WITH_VIDEOHWACCEL
  endif
@@ -114,6 +123,15 @@ ifdef VBOX_WITH_LSILOGIC
 endif
 ifdef VBOX_WITH_HGSMI
  tstDeviceStructSize_DEFS   += VBOX_WITH_HGSMI
+endif
+ifdef VBOX_WITH_CRHGSMI
+ tstDeviceStructSize_DEFS    += VBOX_WITH_CRHGSMI
+endif
+ifdef VBOX_WITH_VDMA
+ tstDeviceStructSize_DEFS    += VBOX_WITH_VDMA
+endif
+ifdef VBOX_WITH_WDDM
+ tstDeviceStructSize_DEFS    += VBOX_WITH_WDDM
 endif
 ifdef VBOX_WITH_VIDEOHWACCEL
  tstDeviceStructSize_DEFS   += VBOX_WITH_VIDEOHWACCEL
