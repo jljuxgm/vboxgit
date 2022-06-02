@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 34874 2010-12-09 11:15:05Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 35115 2010-12-15 09:37:13Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -557,6 +557,17 @@ int handleStorageAttach(HandlerArg *a)
                     throw Utf8StrFmt("Invalid UUID or filename \"%s\"", pszMedium);
             }
 
+            // set medium type, if so desired
+            if (pMedium2Mount && mediumType != MediumType_Normal)
+            {
+                CHECK_ERROR(pMedium2Mount, COMSETTER(Type)(mediumType));
+            }
+
+            if (pMedium2Mount && !bstrComment.isEmpty())
+            {
+                CHECK_ERROR(pMedium2Mount, COMSETTER(Description)(bstrComment.raw()));
+            }
+
             switch (devTypeRequested)
             {
                 case DeviceType_DVD:
@@ -619,17 +630,6 @@ int handleStorageAttach(HandlerArg *a)
                                                       pMedium2Mount));
                 }
                 break;
-            }
-
-            // set medium type, if so desired
-            if (pMedium2Mount && mediumType != MediumType_Normal)
-            {
-                CHECK_ERROR(pMedium2Mount, COMSETTER(Type)(mediumType));
-            }
-
-            if (!bstrComment.isEmpty())
-            {
-                CHECK_ERROR(pMedium2Mount, COMSETTER(Description)(bstrComment.raw()));
             }
         }
 
