@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 35544 2011-01-13 15:58:44Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 35545 2011-01-13 16:01:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -778,7 +778,7 @@ void Display::handleResizeCompletedEMT (void)
         LogFlowFunc (("Calling VRDP\n"));
         mParent->consoleVRDPServer()->SendResize();
 
-#if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL) && 0
+#if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)
         {
             BOOL is3denabled;
             mParent->machine()->COMGETTER(Accelerate3DEnabled)(&is3denabled);
