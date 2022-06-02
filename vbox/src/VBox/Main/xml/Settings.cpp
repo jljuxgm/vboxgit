@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 31287 2010-08-02 12:13:00Z vboxsync $ */
+/* $Id: Settings.cpp 31292 2010-08-02 12:36:33Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4253,7 +4253,7 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
         && (    hardwareMachine.ulCpuPriority != 100
            )
        )
-        m->sv = SettingsVersion_v1_10;
+        m->sv = SettingsVersion_v1_11;
 }
 
 /**
