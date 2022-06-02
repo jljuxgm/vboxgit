@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 33725 2010-11-03 13:31:24Z vboxsync $ */
+/* $Id: PGMInternal.h 34149 2010-11-17 21:31:45Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3796,7 +3796,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
 void            pgmR3PoolWriteProtectPages(PVM pVM);
 
 #endif /* IN_RING3 */
-#if defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0) || IN_RC
+#if defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0) || defined(IN_RC)
 int             pgmRZDynMapHCPageCommon(PPGMMAPSET pSet, RTHCPHYS HCPhys, void **ppv RTLOG_COMMA_SRC_POS_DECL);
 int             pgmRZDynMapGCPageCommon(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void **ppv RTLOG_COMMA_SRC_POS_DECL);
 # ifdef LOG_ENABLED
