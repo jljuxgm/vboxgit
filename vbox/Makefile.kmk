@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31139 2010-07-27 13:23:27Z vboxsync $
+# $Id: Makefile.kmk 31150 2010-07-27 18:43:06Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -821,6 +821,7 @@ additions-packing:
 		VBOX_WITH_ADDITIONS_ISO.freebsd.x86= \
 		VBOX_WITH_ADDITIONS_ISO.linux.amd64= \
 		VBOX_WITH_ADDITIONS_ISO.linux.x86=1 \
+		VBOX_WITH_COMBINED_LINUX_GUEST_PACKAGE=1 \
 		VBOX_WITH_ADDITIONS_ISO.solaris.amd64=1 \
 		VBOX_WITH_ADDITIONS_ISO.solaris.x86=1 \
 		VBOX_WITH_COMBINED_SOLARIS_GUEST_PACKAGE=1 \
