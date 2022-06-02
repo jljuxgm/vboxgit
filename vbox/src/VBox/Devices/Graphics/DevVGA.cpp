@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 31434 2010-08-06 10:56:38Z vboxsync $ */
+/* $Id: DevVGA.cpp 32250 2010-09-06 13:55:20Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5658,6 +5658,9 @@ static DECLCALLBACK(int) vgaR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
     int         rc;
 
     if (    uVersion != VGA_SAVEDSTATE_VERSION
+#ifdef VBOXWDDM
+        &&  uVersion != VGA_SAVEDSTATE_VERSION_PRE_WDDM
+#endif
         &&  uVersion != VGA_SAVEDSTATE_VERSION_HOST_HEAP
         &&  uVersion != VGA_SAVEDSTATE_VERSION_WITH_CONFIG
         &&  uVersion != VGA_SAVEDSTATE_VERSION_HGSMI
