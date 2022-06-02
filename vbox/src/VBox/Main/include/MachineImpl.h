@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 33232 2010-10-19 14:24:46Z vboxsync $ */
+/* $Id: MachineImpl.h 33237 2010-10-19 15:39:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1002,8 +1002,6 @@ private:
     void uninit(Uninit::Reason aReason);
 
     HRESULT endSavingState(BOOL aSuccess);
-
-    typedef std::map<ComObjPtr<Machine>, MachineState_T> AffectedMachines;
 
     void deleteSnapshotHandler(DeleteSnapshotTask &aTask);
     void restoreSnapshotHandler(RestoreSnapshotTask &aTask);
