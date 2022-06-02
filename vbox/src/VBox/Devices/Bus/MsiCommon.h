@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.h 32935 2010-10-06 09:28:42Z vboxsync $ */
+/* $Id: MsiCommon.h 33215 2010-10-18 17:51:24Z vboxsync $ */
 /** @file
  * Header for MSI support routines.
  */
@@ -34,7 +34,7 @@ int      MsiInit(PPCIDEVICE pDev, PPDMMSIREG pMsiReg);
 bool     MsiIsEnabled(PPCIDEVICE pDev);
 
 /* Device notification (aka interrupt). */
-void     MsiNotify(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPCIDEVICE pDev, int iVector);
+void     MsiNotify(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPCIDEVICE pDev, int iVector, int iLevel);
 
 /* PCI config space accessors for MSI registers */
 void     MsiPciConfigWrite(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPCIDEVICE pDev, uint32_t u32Address, uint32_t val, unsigned len);
