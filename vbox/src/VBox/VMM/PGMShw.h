@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 32036 2010-08-27 10:14:39Z vboxsync $ */
+/* $Id: PGMShw.h 32980 2010-10-07 14:17:45Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -246,8 +246,10 @@ PGM_SHW_DECL(int, Exit)(PVMCPU pVCpu)
 
         pgmLock(pVM);
 
-        /* Mark the page as unlocked; allow flushing again. */
-        pgmPoolUnlockPage(pPool, pVCpu->pgm.s.CTX_SUFF(pShwPageCR3));
+        /* Do *not* unlock this page as we have two of them floating around in the 32-bit host & 64-bit guest case.
+         * We currently assert when you try to free one of them; don't bother to really allow this.
+         */
+        /* pgmPoolUnlockPage(pPool, pVCpu->pgm.s.CTX_SUFF(pShwPageCR3)); */
 
         pgmPoolFreeByPage(pPool, pVCpu->pgm.s.CTX_SUFF(pShwPageCR3), pVCpu->pgm.s.iShwUser, pVCpu->pgm.s.iShwUserTable);
         pVCpu->pgm.s.pShwPageCR3R3 = 0;
