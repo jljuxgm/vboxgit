@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 33510 2010-10-27 13:48:09Z vboxsync $ */
+/* $Id: GuestImpl.cpp 33528 2010-10-27 17:17:57Z vboxsync $ */
 
 /** @file
  *
@@ -250,8 +250,8 @@ HRESULT Guest::taskUpdateGuestAdditions(TaskGuest *aTask)
                                                         ExecuteProcessFlag_WaitForProcessStartOnly,
                                                         ComSafeArrayAsInParam(args),
                                                         ComSafeArrayAsInParam(env),
-                                                        Bstr("admin").raw()    /* Username */,
-                                                        Bstr("password").raw() /* Password */,
+                                                        Bstr("").raw() /* Username */,
+                                                        Bstr("").raw() /* Password */,
                                                         10 * 1000 /* Wait 10s for getting the process started */,
                                                         &uPID, progressCopy.asOutParam());
                     if (SUCCEEDED(rc))
@@ -1431,7 +1431,7 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
     LogRel(("Executing guest process \"%s\" as user \"%s\" ...\n",
             Utf8Str(aCommand).c_str(), Utf8Str(aUserName).c_str()));
 
-    return executeProcessInternal(aCommand, aFlags, ComSafeArrayInArg(aArguments), 
+    return executeProcessInternal(aCommand, aFlags, ComSafeArrayInArg(aArguments),
                                   ComSafeArrayInArg(aEnvironment),
                                   aUserName, aPassword, aTimeoutMS, aPID, aProgress);
 #endif
