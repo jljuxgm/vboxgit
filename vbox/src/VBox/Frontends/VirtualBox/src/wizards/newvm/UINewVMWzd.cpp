@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 34497 2010-11-30 10:42:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -125,6 +125,7 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp("((Mac)|(Tig)|(Leop)|(osx)).*64", Qt::CaseInsensitive), "MacOS_64" },
     { QRegExp("(Mac)|(Tig)|(Leop)|(osx)", Qt::CaseInsensitive), "MacOS" },
     { QRegExp("Net", Qt::CaseInsensitive), "Netware" },
+    { QRegExp("Rocki", Qt::CaseInsensitive), "JRockitVE" },
     { QRegExp("Ot", Qt::CaseInsensitive), "Other" },
 };
 

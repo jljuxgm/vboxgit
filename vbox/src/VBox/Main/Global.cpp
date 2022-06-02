@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 33946 2010-11-10 17:52:17Z vboxsync $ */
+/* $Id: Global.cpp 34497 2010-11-30 10:42:14Z vboxsync $ */
 
 /** @file
  *
@@ -301,6 +301,10 @@ const Global::OSType Global::sOSTypes[SchemaDefs::OSTypeId_COUNT] =
       VBOXOSTYPE_QNX,             VBOXOSHINT_HWVIRTEX,
        512,   4,  4 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
       StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
+    { "Other",   "Other",             SchemaDefs_OSTypeId_JRockitVE,        "JRockitVE",
+        VBOXOSTYPE_JRockitVE,     VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_64BIT,
+        1024, 4,  8 * _1G64, NetworkAdapterType_I82545EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
 };
 
 /**
