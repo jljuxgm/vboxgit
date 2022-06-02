@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 31941 2010-08-24 21:02:47Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 32535 2010-09-15 17:57:51Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -369,10 +369,19 @@ static int vboxserviceVMInfoWriteNetwork(void)
     SOCKET sd = WSASocket(AF_INET, SOCK_DGRAM, 0, 0, 0, 0);
     if (sd == SOCKET_ERROR) /* Socket invalid. */
     {
-        VBoxServiceError("VMInfo/Network: Failed to get a socket: Error %d\n", WSAGetLastError());
+        int wsaErr = WSAGetLastError();
+        /* Don't complain/bail out with an error if network stack is not up; can happen
+         * on NT4 due to start up when not connected shares dialogs pop up. */
+        if (WSAENETDOWN == wsaErr)
+        {
+            VBoxServiceVerbose(0, "VMInfo/Network: Network is not up yet.\n");
+            wsaErr = VINF_SUCCESS;
+        }
+        else
+            VBoxServiceError("VMInfo/Network: Failed to get a socket: Error %d\n", wsaErr);
         if (pAdpInfo)
             RTMemFree(pAdpInfo);
-        return RTErrConvertFromWin32(WSAGetLastError());
+        return RTErrConvertFromWin32(wsaErr);
     }
 
     INTERFACE_INFO InterfaceList[20] = {0};
