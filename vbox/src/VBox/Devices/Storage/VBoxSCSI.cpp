@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 32983 2010-10-07 15:14:54Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 33099 2010-10-13 12:02:25Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -383,6 +383,7 @@ int vboxscsiWriteString(PPDMDEVINS pDevIns, PVBOXSCSI pVBoxSCSI, uint8_t iRegist
     *pGCPtrSrc = (RTGCPTR)((RTGCUINTPTR)GCSrc + cbTransfer);
     *pcTransfer = 0;
 
+    ASMAtomicXchgBool(&pVBoxSCSI->fBusy, true);
     return VERR_MORE_DATA;
 }
 
