@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 30836 2010-07-14 13:50:19Z vboxsync $ */
+/* $Id: PGMInternal.h 30840 2010-07-14 14:08:02Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2666,6 +2666,9 @@ typedef struct PGM
 #else
         R3R0PTRTYPE(PAVLU32NODECORE) pTree;
 #endif
+#if HC_ARCH_BITS == 32
+        uint32_t                    u32Alignment;
+#endif
         /** The chunk mapping TLB. */
         PGMCHUNKR3MAPTLB            Tlb;
         /** The number of mapped chunks. */
@@ -2677,7 +2680,7 @@ typedef struct PGM
         uint32_t                    iNow;
         /** Number of pgmR3PhysChunkFindUnmapCandidate calls left to the next ageing. */
         uint32_t                    AgeingCountdown;
-    }                               ChunkR3Map;
+    } ChunkR3Map;
 
     /**
      * The page mapping TLB for ring-3 and (for the time being) ring-0.
