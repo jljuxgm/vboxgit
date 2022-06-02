@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 31770 2010-08-19 08:53:41Z vboxsync $ */
+/* $Id: FTMInternal.h 31782 2010-08-19 11:18:51Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -21,6 +21,8 @@
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
 #include <VBox/ftm.h>
+#include <VBox/stam.h>
+#include <VBox/pdmcritsect.h>
 #include <iprt/tcp.h>
 #include <iprt/semaphore.h>
 
@@ -38,15 +40,16 @@ typedef struct FTM
 {
     /** Address of the standby VM. */
     char               *pszAddress;
-    /** Port of the standby VM. */
-    unsigned            uPort;
     /** Password to access the syncing server of the standby VM. */
     char               *pszPassword;
+    /** Port of the standby VM. */
+    unsigned            uPort;
     /** Syncing interval in ms. */
     unsigned            uInterval;
 
     /** Set when this VM is the standby FT node. */
     bool                fIsStandbyNode;
+    bool                fAlignment[7];
 
     /** Current active socket. */
     RTSOCKET            hSocket;
@@ -61,6 +64,15 @@ typedef struct FTM
         RTSEMEVENT      hShutdownEvent;
     } master;
 
+    /** FTm critical section.
+     * This makes sure only the checkpoint or sync is active
+     */
+    PDMCRITSECT         CritSect;
+
+    STAMCOUNTER         StatReceivedMem;
+    STAMCOUNTER         StatReceivedState;
+    STAMCOUNTER         StatSentMem;
+    STAMCOUNTER         StatSentState;
 } FTM;
 
 /** @} */
