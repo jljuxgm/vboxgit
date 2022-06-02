@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 33128 2010-10-14 12:12:09Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 33129 2010-10-14 12:19:11Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -116,7 +116,7 @@ int VBoxServiceToolboxMain(int argc, char **argv)
             if (RT_SUCCESS(rc))
             {
                 uint8_t cBuf[_64K];
-                uint32_t cbRead;
+                size_t cbRead;
                 do
                 {
                     rc = RTStrmReadEx(pStream, cBuf, sizeof(cBuf), &cbRead);
