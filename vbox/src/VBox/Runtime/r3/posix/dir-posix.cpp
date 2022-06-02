@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 35884 2011-02-08 01:14:05Z vboxsync $ */
+/* $Id: dir-posix.cpp 35935 2011-02-10 18:08:56Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -253,7 +253,10 @@ static int rtDirReadMore(PRTDIR pDir)
             if (rc)
             {
                 rc = RTErrConvertFromErrno(rc);
-                //AssertRC(rc);
+                /** @todo Consider translating ENOENT (The current
+                 *        position of the directory stream is invalid)
+                 *        differently. */
+                AssertMsg(rc == VERR_FILE_NOT_FOUND, ("%Rrc\n", rc));
                 return rc;
             }
             if (!pResult)
