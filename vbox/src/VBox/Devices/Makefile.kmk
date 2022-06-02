@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33590 2010-10-29 08:55:09Z vboxsync $
+# $Id: Makefile.kmk 33645 2010-11-01 12:38:50Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -596,23 +596,6 @@ ifdef VBOX_WITH_RAW_MODE
    VBoxDDGC_SOURCES    += \
  	USB/DevEHCI.cpp
   endif
- endif
-
- ifdef VBOX_WITH_HGSMI
-  VBoxDDGC_DEFS        += VBOX_WITH_HGSMI
- endif
- ifdef VBOX_WITH_WDDM
-  VBoxDDGC_DEFS        += VBOX_WITH_WDDM
- endif
- ifdef VBOX_WITH_VDMA
-  VBoxDDGC_DEFS        += VBOX_WITH_VDMA
- endif
- ifdef VBOX_WITH_CRHGSMI
-  VBoxDDGC_DEFS        += VBOX_WITH_CRHGSMI
- endif
-
- ifdef VBOXWDDM_WITH_VBVA
-  VBoxDDGC_DEFS         += VBOXWDDM_WITH_VBVA
  endif
 
  ifdef VBOX_WITH_VIDEOHWACCEL
