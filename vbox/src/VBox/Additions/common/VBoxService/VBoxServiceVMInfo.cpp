@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 31916 2010-08-24 12:21:49Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 31941 2010-08-24 21:02:47Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -615,9 +615,8 @@ static int vboxserviceVMInfoWriteNetwork(void)
         }
         else
         {
-            rc = RTErrConvertFromErrno(errno);
-            VBoxServiceError("VMInfo/Network: failed to ioctl(SIOCGLIFADDR) on socket: Error %Rrc\n", rc);
-            break;
+            VBoxServiceVerbose(2, "VMInfo/Network: Interface %d has no assigned IP address, skipping ...\n", i);
+            continue;
         }
 # else
         if (ioctl(sd, SIOCGIFHWADDR, &ifrequest[i]) < 0)
