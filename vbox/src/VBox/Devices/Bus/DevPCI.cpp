@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 34750 2010-12-06 14:20:13Z vboxsync $ */
+/* $Id: DevPCI.cpp 34751 2010-12-06 14:26:43Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1985,7 +1985,7 @@ static DECLCALLBACK(void) pciIrqInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, con
         if (irq_map & 0x80)
             pHlp->pfnPrintf(pHlp, "PIRQ%c disabled\n", 'A' + i);
         else
-            pHlp->pfnPrintf(pHlp, "PIRQ%c -> IRQ%d\n", 'A' + i, irq_map & f);
+            pHlp->pfnPrintf(pHlp, "PIRQ%c -> IRQ%d\n", 'A' + i, irq_map & 0xf);
     }
 }
 
