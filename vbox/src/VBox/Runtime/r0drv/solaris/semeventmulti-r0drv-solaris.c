@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 30579 2010-07-02 14:45:28Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 30711 2010-07-07 15:54:20Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -283,7 +283,6 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMil
         rc = VERR_TIMEOUT;
     else
     {
-
         /* This loop is only for continuing after a spurious wake-up. */
         for (;;)
         {
