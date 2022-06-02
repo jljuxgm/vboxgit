@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 31895 2010-08-24 09:00:14Z vboxsync $ */
+/* $Id: PGMPool.cpp 31897 2010-08-24 09:23:10Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -853,7 +853,7 @@ void pgmR3PoolWriteProtectPages(PVM pVM)
                 case PGMPOOLKIND_32BIT_PT_FOR_32BIT_PT:
                 case PGMPOOLKIND_32BIT_PT_FOR_32BIT_4MB:
                 case PGMPOOLKIND_32BIT_PT_FOR_PHYS:
-                    for (unsigned iShw = 0; iShw < RT_ELEMENTS(uShw.pPT); iShw++)
+                    for (unsigned iShw = 0; iShw < RT_ELEMENTS(uShw.pPT->a); iShw++)
                     {
                         if (uShw.pPT->a[iShw].n.u1Present)
                             uShw.pPT->a[iShw].n.u1Write = 0;
@@ -865,7 +865,7 @@ void pgmR3PoolWriteProtectPages(PVM pVM)
                 case PGMPOOLKIND_PAE_PT_FOR_PAE_PT:
                 case PGMPOOLKIND_PAE_PT_FOR_PAE_2MB:
                 case PGMPOOLKIND_PAE_PT_FOR_PHYS:
-                    for (unsigned iShw = 0; iShw < RT_ELEMENTS(uShw.pPTPae); iShw++)
+                    for (unsigned iShw = 0; iShw < RT_ELEMENTS(uShw.pPTPae->a); iShw++)
                     {
                         if (uShw.pPTPae->a[iShw].n.u1Present)
                             uShw.pPTPae->a[iShw].n.u1Write = 0;
@@ -873,7 +873,7 @@ void pgmR3PoolWriteProtectPages(PVM pVM)
                     break;
 
                 case PGMPOOLKIND_EPT_PT_FOR_PHYS:
-                    for (unsigned iShw = 0; iShw < RT_ELEMENTS(uShw.pPTEpt); iShw++)
+                    for (unsigned iShw = 0; iShw < RT_ELEMENTS(uShw.pPTEpt->a); iShw++)
                     {
                         if (uShw.pPTEpt->a[iShw].n.u1Present)
                             uShw.pPTEpt->a[iShw].n.u1Write = 0;
