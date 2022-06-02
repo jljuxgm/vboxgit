@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 35009 2010-12-13 13:48:07Z vboxsync $ */
+/* $Id: MediumImpl.h 35252 2010-12-20 16:46:31Z vboxsync $ */
 
 /** @file
  *
@@ -105,7 +105,7 @@ public:
     STDMETHOD(COMGETTER(Description))(BSTR *aDescription);
     STDMETHOD(COMSETTER(Description))(IN_BSTR aDescription);
     STDMETHOD(COMGETTER(State))(MediumState_T *aState);
-    STDMETHOD(COMGETTER(Variant))(MediumVariant_T *aVariant);
+    STDMETHOD(COMGETTER(Variant))(ULONG *aVariant);
     STDMETHOD(COMGETTER(Location))(BSTR *aLocation);
     STDMETHOD(COMSETTER(Location))(IN_BSTR aLocation);
     STDMETHOD(COMGETTER(Name))(BSTR *aName);
@@ -145,14 +145,14 @@ public:
     STDMETHOD(SetProperties)(ComSafeArrayIn(IN_BSTR, aNames),
                              ComSafeArrayIn(IN_BSTR, aValues));
     STDMETHOD(CreateBaseStorage)(LONG64 aLogicalSize,
-                                 MediumVariant_T aVariant,
+                                 ULONG aVariant,
                                  IProgress **aProgress);
     STDMETHOD(DeleteStorage)(IProgress **aProgress);
     STDMETHOD(CreateDiffStorage)(IMedium *aTarget,
-                                 MediumVariant_T aVariant,
+                                 ULONG aVariant,
                                  IProgress **aProgress);
     STDMETHOD(MergeTo)(IMedium *aTarget, IProgress **aProgress);
-    STDMETHOD(CloneTo)(IMedium *aTarget, MediumVariant_T aVariant,
+    STDMETHOD(CloneTo)(IMedium *aTarget, ULONG aVariant,
                         IMedium *aParent, IProgress **aProgress);
     STDMETHOD(Compact)(IProgress **aProgress);
     STDMETHOD(Resize)(LONG64 aLogicalSize, IProgress **aProgress);
