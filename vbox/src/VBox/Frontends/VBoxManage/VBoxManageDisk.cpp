@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 32718 2010-09-23 12:57:52Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 33084 2010-10-12 20:32:09Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -669,15 +669,17 @@ int handleCloneHardDisk(HandlerArg *a)
                                                   AccessMode_ReadWrite,
                                                   srcDisk.asOutParam()));
         }
-        if (SUCCEEDED(rc))
+        else if (SUCCEEDED(rc))
             fSrcUnknown = true;
+        else
+        {
+            com::GluePrintRCMessage(rc);
+            return 1;
+        }
     }
 
     do
     {
-        if (!SUCCEEDED(rc))
-            break;
-
         /* open/create destination hard disk */
         if (fExisting)
         {
