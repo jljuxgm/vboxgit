@@ -1,4 +1,4 @@
-/* $Revision: 32654 $ */
+/* $Revision: 33243 $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -1028,7 +1028,6 @@ DECLR0VBGL(int) VbglR0HGCMInternalCall32(VBoxGuestHGCMCallInfo *pCallInfo, uint3
                 switch (pParm64->type)
                 {
                     case VMMDevHGCMParmType_32bit:
-                        LogRel(("pParm32->u.value32=%d\n", pParm32->u.value32));
                         pParm32->u.value32 = pParm64->u.value32;
                         break;
 
