@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 34964 2010-12-10 17:18:30Z vboxsync $ */
+/* $Id: vfsbase.cpp 34967 2010-12-10 17:52:01Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -2250,38 +2250,6 @@ RTDECL(bool) RTVfsIoStrmIsAtEnd(RTVFSIOSTREAM hVfsIos)
     size_t  cbRead;
     int rc = RTVfsIoStrmRead(hVfsIos, &bDummy, 0 /*cbToRead*/, false /*fBlocking*/, &cbRead);
     return rc == VINF_EOF;
-}
-
-
-RTDECL(int) RTVfsIoStrmValidateUtf8Encoding(RTVFSIOSTREAM hVfsIos)
-{
-    char    achBuf[1024 + 1];
-    size_t  cbUsed = 0;
-    int     rc;
-    for (;;)
-    {
-        /*
-         * Fill the buffer
-         */
-        size_t cbRead = 0;
-        rc = RTVfsIoStrmRead(hVfsIos, &achBuf[cbUsed], sizeof(achBuf) - cbUsed - 1, true /*fBlocking*/, &cbRead);
-        if (RT_FAILURE(rc))
-            break;
-        cbUsed += cbRead;
-        if (!cbUsed)
-        {
-            Assert(rc == VINF_EOF);
-            break;
-        }
-
-        /*
-         * Process the data in the buffer, maybe leaving the final chars till
-         * the next round.
-         */
-/** @todo  implement this */
-    }
-
-    return rc == VINF_EOF ? VINF_SUCCESS : rc;
 }
 
 
