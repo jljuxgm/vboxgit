@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 34397 2010-11-26 15:06:16Z vboxsync $ */
+/* $Id: ConsoleImpl.h 34434 2010-11-27 11:20:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -462,6 +462,7 @@ private:
                                unsigned uInstance,
                                StorageBus_T enmBus,
                                bool fUseHostIOCache,
+                               bool fBuiltinIoCache,
                                bool fSetupMerge,
                                unsigned uMergeSource,
                                unsigned uMergeTarget,
@@ -476,6 +477,7 @@ private:
                      bool fPassthrough,
                      DeviceType_T enmType,
                      bool fUseHostIOCache,
+                     bool fBuiltinIoCache,
                      bool fSetupMerge,
                      unsigned uMergeSource,
                      unsigned uMergeTarget,
@@ -488,6 +490,7 @@ private:
                                                          unsigned uInstance,
                                                          StorageBus_T enmBus,
                                                          bool fUseHostIOCache,
+                                                         bool fBuiltinIoCache,
                                                          bool fSetupMerge,
                                                          unsigned uMergeSource,
                                                          unsigned uMergeTarget,
