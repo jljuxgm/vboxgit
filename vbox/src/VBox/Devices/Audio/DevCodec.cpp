@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 31028 2010-07-23 03:33:34Z vboxsync $ */
+/* $Id: DevCodec.cpp 31030 2010-07-23 03:52:34Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -89,7 +89,7 @@ static int codecUnimplemented(struct CODECState *pState, uint32_t cmd, uint64_t 
     Log(("codecUnimplemented: cmd(raw:%x: cad:%x, d:%c, nid:%x, verb:%x)\n", cmd,
         CODEC_CAD(cmd), CODEC_DIRECT(cmd) ? 'N' : 'Y', CODEC_NID(cmd), CODEC_VERBDATA(cmd)));
     if (CODEC_CAD(cmd) != 0)
-        *pResp = ((uint64_t)CODEC_CAD(cmd) << 4)| 0x0;
+        *pResp = ((uint64_t)CODEC_CAD(cmd) << 4)| 0xFF;
     else
         *pResp = 0;
     return VINF_SUCCESS;
