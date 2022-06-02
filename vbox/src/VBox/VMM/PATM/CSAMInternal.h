@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: CSAMInternal.h 30500 2010-06-29 13:20:37Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -73,6 +73,8 @@ typedef struct
     uint32_t             depth;  //call/jump depth
 
     PCSAMCALLEXITREC     pCallExitRec;
+
+    PGMPAGEMAPLOCK       Lock;
 } CSAMP2GLOOKUPREC, *PCSAMP2GLOOKUPREC;
 
 typedef struct
