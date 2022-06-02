@@ -1,4 +1,4 @@
-/* $Id: main.cpp 34275 2010-11-23 11:08:52Z vboxsync $ */
+/* $Id: main.cpp 34623 2010-12-02 16:28:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -475,14 +475,6 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
 
             if (vboxGlobal().processArgs())
                 return 0;
-
-#ifndef VBOX_OSE
-#ifdef Q_WS_X11
-            /* show the user license file */
-            if (!vboxGlobal().showVirtualBoxLicense())
-                break;
-#endif
-#endif
 
             vboxProblem().checkForMountedWrongUSB();
 
