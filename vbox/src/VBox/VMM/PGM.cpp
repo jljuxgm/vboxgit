@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 30730 2010-07-08 10:07:15Z vboxsync $ */
+/* $Id: PGM.cpp 30731 2010-07-08 10:09:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -4221,7 +4221,7 @@ static DECLCALLBACK(int)  pgmR3CmdCheckDuplicatePages(PCDBGCCMD pCmd, PDBGCCMDHL
                         /* Check if the page was allocated, but completely zero. */
                         int rc = pgmPhysGCPhys2CCPtrInternalReadOnly(pVM, pPage, GCPhys, &pvPage);
                         if (    rc == VINF_SUCCESS
-                            &&  !memcmp(pVM->pgm.s.pvZeroPgR3, pvPage, PAGE_SIZE))
+                            &&  ASMMemIsZeroPage(pvPage))
                         {
                             cAllocZero++;
                         }
