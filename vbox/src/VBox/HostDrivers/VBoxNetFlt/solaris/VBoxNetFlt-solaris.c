@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 32710 2010-09-23 11:44:42Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 32716 2010-09-23 12:50:55Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1387,8 +1387,6 @@ static void vboxNetFltSolarisPromiscReqWrapExcl(queue_t *pQueue, mblk_t *pMsg)
     int rc = vboxNetFltSolarisPromiscReq(pQueue, fPromisc);
     if (RT_FAILURE(rc))
         LogRel((DEVICE_NAME ":VBoxNetFltSolarisPromiscReqWrapExcl vboxNetFltSolarisPromiscReq failed. rc=%d\n", rc));
-    else
-        LogRel((DEVICE_NAME ":VBoxNetFltSolarisPromiscReqWrapExcl success fPromisc=%d\n", fPromisc));
 }
 
 
