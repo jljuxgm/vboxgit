@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 33709 2010-11-02 19:15:26Z vboxsync $ */
+/* $Id: MachineImpl.cpp 33731 2010-11-03 15:57:50Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -152,7 +152,7 @@ Machine::HWData::HWData()
     mMonitorCount = 1;
     mHWVirtExEnabled = true;
     mHWVirtExNestedPagingEnabled = true;
-#if HC_ARCH_BITS == 64
+#if HC_ARCH_BITS == 64 && !defined(RT_OS_LINUX)
     mHWVirtExLargePagesEnabled = true;
 #else
     /* Not supported on 32 bits hosts. */
