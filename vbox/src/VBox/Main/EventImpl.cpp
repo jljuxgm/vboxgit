@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30521 2010-06-30 08:24:32Z vboxsync $ */
+/* $Id: EventImpl.cpp 30534 2010-06-30 16:16:59Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -98,6 +98,10 @@ HRESULT VBoxEvent::init(IEventSource *aSource, VBoxEventType_T aType, BOOL aWait
 
 void VBoxEvent::uninit()
 {
+    AutoUninitSpan autoUninitSpan(this);
+    if (autoUninitSpan.uninitDone())
+        return;
+
     if (!m)
         return;
 
@@ -253,6 +257,10 @@ HRESULT VBoxVetoEvent::init(IEventSource *aSource, VBoxEventType_T aType)
 
 void VBoxVetoEvent::uninit()
 {
+    AutoUninitSpan autoUninitSpan(this);
+    if (autoUninitSpan.uninitDone())
+        return;
+
     VBoxEvent::uninit();
     if (!m)
         return;
@@ -623,6 +631,9 @@ HRESULT EventSource::init(IUnknown *)
 
 void EventSource::uninit()
 {
+    AutoUninitSpan autoUninitSpan(this);
+    if (autoUninitSpan.uninitDone())
+        return;
     m->mListeners.clear();
     // m->mEvMap shall be cleared at this point too by destructors, assert?
 }
