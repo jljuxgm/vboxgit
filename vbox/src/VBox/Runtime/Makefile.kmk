@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34662 2010-12-02 21:51:17Z vboxsync $
+# $Id: Makefile.kmk 34668 2010-12-02 23:33:28Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1260,8 +1260,7 @@ endif # linux
 #
 # VBoxRTImp - Import library/hack.
 #
-VBoxRTImp_TEMPLATE = VBoxR3Dll
-$(call VBOX_GENERATE_IMPORT_TARGET_FN,VBoxRTImp,VBox/VBoxRTImp.def,VBoxRT)
+$(call VBOX_GENERATE_IMPORT_TARGET_FN,VBoxRTImp,VBoxRT,VBox/VBoxRTImp.def r3/win/VBoxRT-openssl-ose.def)
 
 
 #

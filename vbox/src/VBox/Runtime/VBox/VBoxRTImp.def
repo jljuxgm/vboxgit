@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 34662 2010-12-02 21:51:17Z vboxsync $
+; $Id: VBoxRTImp.def 34668 2010-12-02 23:33:28Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 
@@ -33,6 +33,12 @@ EXPORTS
     g_u32RTAssertLine       DATA
 
     ; code
+    ASMAtomicCmpXchgExU64   ; not-some-systems...
+    ASMAtomicCmpXchgU64     ; not-some-systems...
+    ASMAtomicReadU64        ; not-some-systems...
+    ASMAtomicUoReadU64      ; not-some-systems...
+    ASMAtomicXchgU64        ; not-some-systems...
+
     RTAssertAreQuiet
     RTAssertMayPanic
     RTAssertMsg1

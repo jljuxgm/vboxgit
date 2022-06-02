@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34662 2010-12-02 21:51:17Z vboxsync $
+# $Id: Makefile.kmk 34668 2010-12-02 23:33:28Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -38,7 +38,7 @@ if !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_TES
 endif # !VBOX_ONLY_DOCS
 
 # Libcurl for inet access
-if defined(VBOX_WITH_LIBCURL) && !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_TESTSUITE) \
+if defined(VBOX_WITH_LIBCURL) && !defined(VBOX_ONLY_EXTPACKS_USE_IMPLIBS) && !defined(VBOX_ONLY_SDK) && !defined(VBOX_ONLY_TESTSUITE) \
  && "$(SDK_VBOX_LIBCURL_INCS)" == "$(PATH_ROOT)/src/libs/curl-7.19.4/include"
  include $(PATH_SUB_CURRENT)/curl-7.19.4/Makefile.kmk
 endif
