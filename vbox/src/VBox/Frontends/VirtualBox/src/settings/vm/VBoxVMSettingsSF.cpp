@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSF.cpp 31059 2010-07-23 13:09:33Z vboxsync $ */
+/* $Id: VBoxVMSettingsSF.cpp 31088 2010-07-26 06:31:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -236,6 +236,7 @@ VBoxVMSettingsSF::VBoxVMSettingsSF (int aType, QWidget *aParent)
 
 void VBoxVMSettingsSF::resizeEvent (QResizeEvent *aEvent)
 {
+    NOREF(aEvent);
     adjustList();
 }
 
