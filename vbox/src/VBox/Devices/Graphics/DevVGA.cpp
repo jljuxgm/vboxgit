@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 33572 2010-10-28 16:39:36Z vboxsync $ */
+/* $Id: DevVGA.cpp 33578 2010-10-28 17:39:46Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4238,7 +4238,7 @@ static DECLCALLBACK(void *) vgaPortQueryInterface(PPDMIBASE pInterface, const ch
     PVGASTATE pThis = RT_FROM_MEMBER(pInterface, VGASTATE, IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pThis->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIDISPLAYPORT, &pThis->IPort);
-#if defined(VBOX_WITH_HGSMI) && defined(VBOX_WITH_VIDEOHWACCEL)
+#if defined(VBOX_WITH_HGSMI) && (defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_WITH_CRHGSMI))
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIDISPLAYVBVACALLBACKS, &pThis->IVBVACallbacks);
 #endif
     return NULL;
