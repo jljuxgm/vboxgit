@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 34025 2010-11-12 10:03:41Z vboxsync $ */
+/* $Id: VBoxTray.h 34080 2010-11-15 17:18:03Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -92,7 +92,7 @@ typedef struct _VBOXGLOBALMESSAGE
     /** Message name. */
     char    *pszName;
     /** Function pointer for handling the message. */
-    int      (* pfnHandler)          (LPARAM lParam, WPARAM wParam);
+    int      (* pfnHandler)          (WPARAM wParam, LPARAM lParam);
 
     /* Variables. */
 
