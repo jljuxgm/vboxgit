@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31202 2010-07-29 12:41:03Z vboxsync $
+# $Id: Makefile.kmk 31900 2010-08-24 09:53:37Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxsf (linux shared folders module).
 #
@@ -32,8 +32,7 @@ include $(PATH_SUB_CURRENT)/files_vboxsf
 vboxsf-mod_INST        = $(INST_ADDITIONS)src/vboxsf/
 vboxsf-mod_MODE        = a+r,u+w
 vboxsf-mod_SOURCES     = $(subst ",,$(FILES_VBOXSF_NOBIN))
-vboxsf-mod_SOURCES    += $(if $(VBOX_OSE),,\
-			    $(PATH_vboxsf-mod)/dkms.conf)
+vboxsf-mod_SOURCES    += $(PATH_vboxsf-mod)/dkms.conf
 vboxsf-mod_CLEAN      += $(PATH_vboxsf-mod)/dkms.conf
 
 vboxsf-sh_INST        = $(INST_ADDITIONS)src/vboxsf/
@@ -41,8 +40,7 @@ vboxsf-sh_MODE        = a+rx,u+w
 vboxsf-sh_SOURCES     = $(subst ",,$(FILES_VBOXSF_BIN))
 vboxsf-sh_SOURCES    += \
 	$(PATH_vboxsf-sh)/build_in_tmp \
-	$(if $(VBOX_OSE),,\
-	  $(PATH_ROOT)/src/VBox/HostDrivers/linux/do_Module.symvers)
+	$(PATH_ROOT)/src/VBox/HostDrivers/linux/do_Module.symvers
 vboxsf-sh_CLEAN      += $(PATH_vboxsf-sh)/build_in_tmp
 
 
