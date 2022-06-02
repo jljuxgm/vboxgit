@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGF.cpp 35466 2011-01-10 16:36:35Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -135,6 +135,8 @@ VMMR3DECL(int) DBGFR3Init(PVM pVM)
 {
     int rc = dbgfR3InfoInit(pVM);
     if (RT_SUCCESS(rc))
+        rc = dbgfR3RegInit(pVM);
+    if (RT_SUCCESS(rc))
         rc = dbgfR3AsInit(pVM);
     if (RT_SUCCESS(rc))
         rc = dbgfR3SymInit(pVM);
@@ -207,6 +209,7 @@ VMMR3DECL(int) DBGFR3Term(PVM pVM)
      */
     dbgfR3OSTerm(pVM);
     dbgfR3AsTerm(pVM);
+    dbgfR3RegTerm(pVM);
     dbgfR3InfoTerm(pVM);
     return VINF_SUCCESS;
 }
