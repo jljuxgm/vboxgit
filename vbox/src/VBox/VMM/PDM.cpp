@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 30050 2010-06-07 07:11:15Z vboxsync $ */
+/* $Id: PDM.cpp 33221 2010-10-18 20:34:08Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1046,6 +1046,10 @@ VMMR3DECL(void) PDMR3PowerOn(PVM pVM)
         if (RT_SUCCESS(rc))
             rc = pdmR3PowerOnUsb(pUsbIns);
     }
+#endif
+
+#ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
+    pdmR3AsyncCompletionResume(pVM);
 #endif
 
     /*

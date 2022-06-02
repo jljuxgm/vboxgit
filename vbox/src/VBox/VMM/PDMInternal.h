@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 32935 2010-10-06 09:28:42Z vboxsync $ */
+/* $Id: PDMInternal.h 33221 2010-10-18 20:34:08Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1159,6 +1159,7 @@ int         pdmR3ThreadSuspendAll(PVM pVM);
 #ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
 int         pdmR3AsyncCompletionInit(PVM pVM);
 int         pdmR3AsyncCompletionTerm(PVM pVM);
+void        pdmR3AsyncCompletionResume(PVM pVM);
 #endif
 
 #endif /* IN_RING3 */
