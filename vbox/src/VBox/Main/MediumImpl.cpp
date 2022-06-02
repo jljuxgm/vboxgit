@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33708 2010-11-02 18:46:46Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33757 2010-11-04 10:25:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3692,7 +3692,8 @@ HRESULT Medium::setLocation(const Utf8Str &aLocation,
                     AssertComRCReturnRC(rc);
                 }
             }
-            else if (m->devType != convertToDeviceType(enmType))
+            else if (   enmType == VDTYPE_INVALID
+                     || m->devType != convertToDeviceType(enmType))
             {
                 /*
                  * The user tried to use a image as a device which is not supported
