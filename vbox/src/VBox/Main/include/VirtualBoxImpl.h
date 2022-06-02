@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 31568 2010-08-11 13:35:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 31595 2010-08-12 11:44:47Z vboxsync $ */
 
 /** @file
  *
@@ -118,11 +118,8 @@ public:
     STDMETHOD(COMGETTER(EventSource))           (IEventSource ** aEventSource);
 
     /* IVirtualBox methods */
-
     STDMETHOD(CreateMachine) (IN_BSTR aName, IN_BSTR aOsTypeId, IN_BSTR aBaseFolder,
                               IN_BSTR aId, BOOL aOverride, IMachine **aMachine);
-    STDMETHOD(CreateLegacyMachine) (IN_BSTR aName, IN_BSTR aOsTypeId, IN_BSTR aSettingsFile,
-                                    IN_BSTR aId, IMachine **aMachine);
     STDMETHOD(OpenMachine) (IN_BSTR aSettingsFile, IMachine **aMachine);
     STDMETHOD(RegisterMachine) (IMachine *aMachine);
     STDMETHOD(GetMachine) (IN_BSTR aId, IMachine **aMachine);
