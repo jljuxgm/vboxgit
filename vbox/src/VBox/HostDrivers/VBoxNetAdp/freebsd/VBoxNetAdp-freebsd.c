@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-freebsd.c 30320 2010-06-21 08:35:09Z vboxsync $ */
+/* $Id: VBoxNetAdp-freebsd.c 31556 2010-08-11 08:14:34Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), FreeBSD Specific Code.
  */
@@ -102,7 +102,7 @@ VBoxNetAdpFreeBSDModuleEvent(struct module *pMod, int enmEventType, void *pvArg)
 {
     int rc = 0;
 
-    Log(("VBoxNetFltFreeBSDModuleEvent\n"));
+    Log(("VBoxNetAdpFreeBSDModuleEvent\n"));
 
     switch (enmEventType)
     {
