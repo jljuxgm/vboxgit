@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 33696 2010-11-02 15:37:54Z vboxsync $ */
+/* $Id: UISession.cpp 33756 2010-11-04 09:59:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -383,6 +383,11 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
              * mounting method. */
             if (rc != VBOX_E_NOT_SUPPORTED)
                 vboxProblem().cannotUpdateGuestAdditions(progressInstall, mainMachineWindow());
+
+            /* In every case we log the error message in the release log. */
+            QString strErr = progressInstall.GetErrorInfo().GetText();
+            if (!strErr.isEmpty())
+                LogRel(("%s\n", strErr.toLatin1().constData()));
             fDoMount = true; /* Since automatic updating failed, fall back to .ISO mounting. */
         }
     }
