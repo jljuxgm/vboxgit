@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 34065 2010-11-15 11:34:50Z vboxsync $ */
+/* $Id: UIImportApplianceWzd.cpp 34496 2010-11-30 10:17:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -137,6 +137,15 @@ UIImportApplianceWzd::UIImportApplianceWzd(const QString &strFile /* = "" */, QW
     AssertMsg(!field("applianceWidget").value<ImportAppliancePointer>().isNull(), ("Appliance Widget is not set!\n"));
     connect(this, SIGNAL(customButtonClicked(int)), field("applianceWidget").value<ImportAppliancePointer>(), SLOT(restoreDefaults()));
     connect(this, SIGNAL(currentIdChanged(int)), this, SLOT(sltCurrentIdChanged(int)));
+}
+
+bool UIImportApplianceWzd::isValid() const
+{
+    bool fResult = false;
+    if (VBoxImportApplianceWgt *applianceWidget = field("applianceWidget").value<ImportAppliancePointer>())
+        fResult = applianceWidget->isValid();
+
+    return fResult;
 }
 
 void UIImportApplianceWzd::retranslateUi()
