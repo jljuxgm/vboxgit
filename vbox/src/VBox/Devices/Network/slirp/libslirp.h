@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 33825 2010-11-08 10:16:25Z vboxsync $ */
+/* $Id: libslirp.h 34209 2010-11-19 16:04:55Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -37,6 +37,7 @@ int inet_aton(const char *cp, struct in_addr *ia);
 #endif
 
 #include <VBox/types.h>
+#include <VBox/dbgf.h>
 
 typedef struct NATState *PNATState;
 struct mbuf;
@@ -89,8 +90,9 @@ void slirp_set_sndbuf(PNATState pData, int kilobytes);
 void slirp_set_tcp_rcvspace(PNATState pData, int kilobytes);
 void slirp_set_tcp_sndspace(PNATState pData, int kilobytes);
 
-int slirp_set_binding_address(PNATState, char *addr);
+int  slirp_set_binding_address(PNATState, char *addr);
 void slirp_set_mtu(PNATState, int);
+void slirp_info(PNATState pData, PCDBGFINFOHLP pHlp, const char *pszArgs);
 
 #if defined(RT_OS_WINDOWS)
 

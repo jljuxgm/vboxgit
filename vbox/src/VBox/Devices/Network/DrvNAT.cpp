@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
+/* $Id: DrvNAT.cpp 34209 2010-11-19 16:04:55Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -990,6 +990,16 @@ static DECLCALLBACK(void) drvNATPowerOn(PPDMDRVINS pDrvIns)
 
 
 /**
+ * Info handler.
+ */
+static DECLCALLBACK(void) drvNATInfo(PPDMDRVINS pDrvIns, PCDBGFINFOHLP pHlp, const char *pszArgs)
+{
+    PDRVNAT pThis = PDMINS_2_DATA(pDrvIns, PDRVNAT);
+    slirp_info(pThis->pNATState, pHlp, pszArgs);
+}
+
+
+/**
  * Sets up the redirectors.
  *
  * @returns VBox status code.
@@ -1312,6 +1322,10 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 
             rc = RTCritSectInit(&pThis->XmitLock);
             AssertRCReturn(rc, rc);
+
+            char szTmp[128];
+            RTStrPrintf(szTmp, sizeof(szTmp), "nat%d", pDrvIns->iInstance);
+            PDMDrvHlpDBGFInfoRegister(pDrvIns, szTmp, "NAT info.", drvNATInfo);
 
 #ifndef RT_OS_WINDOWS
             /*

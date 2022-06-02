@@ -1,4 +1,4 @@
-/* $Id: slirp.c 34103 2010-11-16 11:18:55Z vboxsync $ */
+/* $Id: slirp.c 34209 2010-11-19 16:04:55Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -2069,4 +2069,42 @@ void slirp_set_mtu(PNATState pData, int mtu)
     /* MTU is maximum transition unit on */
     if_mtu =
     if_mru = mtu;
+}
+
+/**
+ * Info handler.
+ */
+void slirp_info(PNATState pData, PCDBGFINFOHLP pHlp, const char *pszArgs)
+{
+    struct socket *so, *so_next;
+    struct arp_cache_entry *ac;
+    struct port_forward_rule *rule;
+
+    pHlp->pfnPrintf(pHlp, "NAT parameters: MTU=%d\n", if_mtu);
+    pHlp->pfnPrintf(pHlp, "NAT TCP ports:\n");
+    QSOCKET_FOREACH(so, so_next, tcp)
+    /* { */
+        pHlp->pfnPrintf(pHlp, " %R[natsock]\n", so);
+    }
+
+    pHlp->pfnPrintf(pHlp, "NAT UDP ports:\n");
+    QSOCKET_FOREACH(so, so_next, udp)
+    /* { */
+        pHlp->pfnPrintf(pHlp, " %R[natsock]\n", so);
+    }
+
+    pHlp->pfnPrintf(pHlp, "NAT ARP cache:\n");
+    LIST_FOREACH(ac, &pData->arp_cache, list)
+    {
+        pHlp->pfnPrintf(pHlp, " %R[IP4] %R[ether]\n", &ac->ip, &ac->ether);
+    }
+
+    pHlp->pfnPrintf(pHlp, "NAT rules:\n");
+    LIST_FOREACH(rule, &pData->port_forward_rule_head, list)
+    {
+        pHlp->pfnPrintf(pHlp, " %s %d => %R[IP4]:%d %c\n",
+                        rule->proto == IPPROTO_UDP ? "UDP" : "TCP",
+                        rule->host_port, &rule->guest_addr.s_addr, rule->guest_port,
+                        rule->activated ? ' ' : '*');
+    }
 }
