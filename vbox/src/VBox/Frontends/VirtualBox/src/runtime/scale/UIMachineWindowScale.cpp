@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 30930 2010-07-20 14:26:06Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 31321 2010-08-02 16:49:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -164,8 +164,12 @@ void UIMachineWindowScale::closeEvent(QCloseEvent *pEvent)
 
 void UIMachineWindowScale::prepareMenu()
 {
+    UIMainMenuType fMenus = UIMainMenuType(UIMainMenuType_All ^ UIMainMenuType_View);
+#ifdef Q_WS_MAC
+    setMenuBar(uisession()->newMenuBar(fMenus));
+#endif /* Q_WS_MAC */
     /* No view menu in normal mode: */
-    m_pMainMenu = uisession()->newMenu(UIMainMenuType(UIMainMenuType_All ^ UIMainMenuType_View));
+    m_pMainMenu = uisession()->newMenu(fMenus);
 }
 
 void UIMachineWindowScale::prepareMachineViewContainer()
