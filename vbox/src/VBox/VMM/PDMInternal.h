@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 34241 2010-11-22 14:26:53Z vboxsync $ */
+/* $Id: PDMInternal.h 34347 2010-11-24 22:34:21Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1177,6 +1177,7 @@ void        pdmR3AsyncCompletionResume(PVM pVM);
 
 int         pdmR3BlkCacheInit(PVM pVM);
 void        pdmR3BlkCacheTerm(PVM pVM);
+int         pdmR3BlkCacheResume(PVM pVM);
 
 #endif /* IN_RING3 */
 

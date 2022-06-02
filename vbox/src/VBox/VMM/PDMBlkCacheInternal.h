@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCacheInternal.h 34221 2010-11-21 18:26:04Z vboxsync $ */
+/* $Id: PDMBlkCacheInternal.h 34347 2010-11-24 22:34:21Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -153,6 +153,8 @@ typedef struct PDMBLKCACHEGLOBAL
     /** Number of times a buffer could be reused. */
     STAMCOUNTER       StatBuffersReused;
 #endif
+    /** Flag whether the VM was suspended becaus of an I/O error. */
+    volatile bool     fIoErrorVmSuspended;
 } PDMBLKCACHEGLOBAL;
 #ifdef VBOX_WITH_STATISTICS
 AssertCompileMemberAlignment(PDMBLKCACHEGLOBAL, cHits, sizeof(uint64_t));

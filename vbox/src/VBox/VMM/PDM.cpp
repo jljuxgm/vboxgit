@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 34219 2010-11-21 18:10:39Z vboxsync $ */
+/* $Id: PDM.cpp 34347 2010-11-24 22:34:21Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1622,6 +1622,12 @@ VMMR3DECL(void) PDMR3Resume(PVM pVM)
      */
     if (RT_SUCCESS(rc))
         pdmR3ThreadResumeAll(pVM);
+
+    /*
+     * Resume the block cache.
+     */
+    if (RT_SUCCESS(rc))
+        pdmR3BlkCacheResume(pVM);
 
     /*
      * On failure, clean up via PDMR3Suspend.
