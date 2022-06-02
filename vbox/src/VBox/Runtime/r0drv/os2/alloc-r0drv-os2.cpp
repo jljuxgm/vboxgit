@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-os2.cpp 32707 2010-09-23 10:15:08Z vboxsync $ */
+/* $Id: alloc-r0drv-os2.cpp 32708 2010-09-23 11:18:51Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, OS/2.
  */
@@ -33,11 +33,13 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-os2-kernel.h"
+#include "internal/iprt.h"
+#include <iprt/mem.h>
 
-#include <iprt/alloc.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/param.h>
-#include "r0drv/alloc-r0drv.h" /** @todo drop the r0drv/alloc-r0drv.cpp stuff on OS/2. */
+#include "r0drv/alloc-r0drv.h" /** @todo drop the r0drv/alloc-r0drv.cpp stuff on OS/2? */
 
 
 int rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)

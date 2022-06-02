@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-freebsd.c 32707 2010-09-23 10:15:08Z vboxsync $ */
+/* $Id: alloc-r0drv-freebsd.c 32708 2010-09-23 11:18:51Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -32,9 +32,11 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-freebsd-kernel.h"
+#include "internal/iprt.h"
+#include <iprt/mem.h>
 
-#include <iprt/alloc.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include <iprt/param.h>
 
 #include "r0drv/alloc-r0drv.h"

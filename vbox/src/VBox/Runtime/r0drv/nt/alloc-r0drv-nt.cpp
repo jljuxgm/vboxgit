@@ -1,10 +1,10 @@
-/* $Id: alloc-r0drv-nt.cpp 32707 2010-09-23 10:15:08Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 32708 2010-09-23 11:18:51Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NT.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -29,9 +29,11 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "the-nt-kernel.h"
+#include "internal/iprt.h"
+#include <iprt/mem.h>
 
-#include <iprt/alloc.h>
 #include <iprt/assert.h>
+#include <iprt/err.h>
 #include "r0drv/alloc-r0drv.h"
 
 
