@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoHGSMI.cpp 34429 2010-11-27 01:56:46Z vboxsync $ */
+/* $Id: VBoxVideoHGSMI.cpp 34491 2010-11-29 22:05:59Z vboxsync $ */
 /** @file
  * VirtualBox Video miniport driver for NT/2k/XP - HGSMI related functions.
  */
@@ -235,7 +235,7 @@ static VBVADISP_CHANNELCONTEXT* vboxVBVAFindHandlerInfo(VBVA_CHANNELCONTEXTS *pC
     return NULL;
 }
 
-DECLCALLBACK(void) hgsmiHostCmdComplete (HVBOXVIDEOHGSMI hHGSMI, struct _VBVAHOSTCMD * pCmd)
+DECLCALLBACK(void) hgsmiHostCmdComplete (HVBOXVIDEOHGSMI hHGSMI, struct VBVAHOSTCMD * pCmd)
 {
     PHGSMIHOSTCOMMANDCONTEXT pCtx = &((PVBOXVIDEO_COMMON)hHGSMI)->hostCtx;
     VBoxHGSMIHostCmdComplete(pCtx, pCmd);
@@ -255,7 +255,7 @@ static VBVAHOSTCMD *vboxVBVAReverseList(VBVAHOSTCMD *pList)
     return pFirst;
 }
 
-DECLCALLBACK(int) hgsmiHostCmdRequest (HVBOXVIDEOHGSMI hHGSMI, uint8_t u8Channel, uint32_t iDevice, struct _VBVAHOSTCMD ** ppCmd)
+DECLCALLBACK(int) hgsmiHostCmdRequest (HVBOXVIDEOHGSMI hHGSMI, uint8_t u8Channel, uint32_t iDevice, struct VBVAHOSTCMD ** ppCmd)
 {
 //    if(display < 0)
 //        return VERR_INVALID_PARAMETER;
