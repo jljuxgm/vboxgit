@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 32136 2010-08-31 12:24:38Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 32264 2010-09-07 08:23:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2357,8 +2357,8 @@ void VBoxProblemReporter::warnAboutIncorrectPort(QWidget *pParent) const
 bool VBoxProblemReporter::confirmCancelingPortForwardingDialog(QWidget *pParent) const
 {
     return messageOkCancel(pParent, Question,
-        tr("<p>Canceling the port forwarding configuration process will cause "
-           "any unsaved changes to be lost. Do you really wish to do so?</p>"));
+        tr("<p>There are unsaved changes in the port forwarding configuration.</p>"
+           "<p>If you proceed your changes will be discarded.</p>"));
 }
 
 void VBoxProblemReporter::showRuntimeError (const CConsole &aConsole, bool fatal,
