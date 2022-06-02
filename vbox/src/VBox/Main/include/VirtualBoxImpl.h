@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 33556 2010-10-28 13:16:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 33765 2010-11-04 14:04:20Z vboxsync $ */
 
 /** @file
  *
@@ -119,6 +119,7 @@ public:
     STDMETHOD(COMGETTER(PerformanceCollector))  (IPerformanceCollector **aPerformanceCollector);
     STDMETHOD(COMGETTER(DHCPServers))           (ComSafeArrayOut(IDHCPServer *, aDHCPServers));
     STDMETHOD(COMGETTER(EventSource))           (IEventSource ** aEventSource);
+    STDMETHOD(COMGETTER(ExtensionPackManager))  (IExtPackManager **aExtPackManager);
 
     /* IVirtualBox methods */
     STDMETHOD(ComposeMachineFilename) (IN_BSTR aName, IN_BSTR aBaseFolder, BSTR *aFilename);
