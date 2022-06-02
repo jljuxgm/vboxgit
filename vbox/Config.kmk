@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34609 2010-12-02 14:04:24Z vboxsync $
+# $Id: Config.kmk 34622 2010-12-02 16:19:11Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -532,13 +532,8 @@ endif
 ## @{
 # Enables the extension pack feature.
 VBOX_WITH_EXTPACK = 1
-# Enables building of the "PUEL" (final name TBD) extension pack.
-if1of ($(KBUILD_TARGET), linux solaris win) ## @todo make this default when the darwin build has been added.
- VBOX_WITH_EXTPACK_PUEL = 1
-endif
-ifdef VBOX_ONLY_EXTPACKS
- VBOX_WITH_EXTPACK_PUEL = 1
-endif
+# Enables building of the Oracle VM VirtualBox Extension Pack, dubbed PUEL.
+VBOX_WITH_EXTPACK_PUEL = 1
 ## @}
 
 ## @name Misc
@@ -4527,7 +4522,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34609 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34622 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
