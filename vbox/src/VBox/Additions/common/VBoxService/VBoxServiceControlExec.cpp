@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 33273 2010-10-20 17:36:41Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 33276 2010-10-20 19:49:31Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -1052,7 +1052,7 @@ int VBoxServiceControlExecCreateProcess(const char *pszExec, const char * const 
      * (usually, if started by SCM) has administrator rights. Because of that a UI
      * won't be shown (doesn't have a desktop).
      */
-    if (stricmp(pszExec, "sysprep") == 0)
+    if (RTStrICmp(pszExec, "sysprep") == 0)
     {
         /* Get the predefined path of sysprep.exe (depending on Windows OS). */
         char szSysprepCmd[RTPATH_MAX] = "C:\\sysprep\\sysprep.exe";
@@ -1077,8 +1077,8 @@ int VBoxServiceControlExecCreateProcess(const char *pszExec, const char * const 
     /*
      * Use the built-in toolbox of VBoxService?
      */
-    if (   (g_pszProgName && stricmp(pszExec, g_pszProgName) == 0)
-        || stricmp(pszExec, VBOXSERVICE_NAME))
+    if (   (g_pszProgName && RTStrICmp(pszExec, g_pszProgName) == 0)
+        || RTStrICmp(pszExec, VBOXSERVICE_NAME))
     {
         /* Search the path of our executable. */
         char szVBoxService[RTPATH_MAX];
