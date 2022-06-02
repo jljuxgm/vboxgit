@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: KeyboardImpl.h 33061 2010-10-12 12:42:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -20,6 +20,7 @@
 
 #include "VirtualBoxBase.h"
 #include "ConsoleEvents.h"
+#include "EventImpl.h"
 
 #include <VBox/pdmdrv.h>
 
@@ -75,6 +76,8 @@ public:
                             ULONG *codesStored);
     STDMETHOD(PutCAD)();
 
+    STDMETHOD(COMGETTER(EventSource)) (IEventSource ** aEventSource);
+
     static const PDMDRVREG  DrvReg;
 
     Console *getParent() const
@@ -96,6 +99,8 @@ private:
     PPDMDEVINS              mpVMMDev;
     /** Set after the first attempt to find the VMM Device. */
     bool                    mfVMMDevInited;
+
+    const ComObjPtr<EventSource> mEventSource;
 };
 
 #endif // !____H_KEYBOARDIMPL
