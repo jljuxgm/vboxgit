@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 34875 2010-12-09 11:15:06Z vboxsync $ */
+/* $Id: DevAHCI.cpp 35214 2010-12-17 10:10:07Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -8170,10 +8170,14 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
             RTStrPrintf(szName, sizeof(szName), "EmulatedATA%d", i);
             rc = ataControllerInit(pDevIns, pCtl,
                                    iPortMaster, pThis->ahciPort[iPortMaster].pDrvBase,
-                                   iPortSlave, pThis->ahciPort[iPortSlave].pDrvBase,
-                                   &cbSSMState, szName, &pThis->ahciPort[iPortMaster].Led,
+                                   &pThis->ahciPort[iPortMaster].Led,
                                    &pThis->ahciPort[iPortMaster].StatBytesRead,
-                                   &pThis->ahciPort[iPortMaster].StatBytesWritten);
+                                   &pThis->ahciPort[iPortMaster].StatBytesWritten,
+                                   iPortSlave, pThis->ahciPort[iPortSlave].pDrvBase,
+                                   &pThis->ahciPort[iPortSlave].Led,
+                                   &pThis->ahciPort[iPortSlave].StatBytesRead,
+                                   &pThis->ahciPort[iPortSlave].StatBytesWritten,
+                                   &cbSSMState, szName);
             if (RT_FAILURE(rc))
                 return rc;
 
