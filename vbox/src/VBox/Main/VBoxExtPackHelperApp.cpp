@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 35218 2010-12-17 12:45:16Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 35219 2010-12-17 12:47:57Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1084,6 +1084,7 @@ static bool FindExecTool(char *pszPath, size_t cbPath, const char *pszName)
         "/usr/gnu/bin",
         "/usr/xpg4/bin",
         "/usr/xpg6/bin",
+        "/usr/openwin/bin",
         "/usr/ucb"
 #endif
     };
