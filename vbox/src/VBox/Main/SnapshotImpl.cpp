@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 33318 2010-10-21 16:16:03Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
 
 /** @file
  *
@@ -1006,8 +1006,8 @@ HRESULT SnapshotMachine::init(SessionMachine *aSessionMachine,
     mBIOSSettings->initCopy(this, mPeer->mBIOSSettings);
 
 #ifdef VBOX_WITH_VRDP
-    unconst(mVRDPServer).createObject();
-    mVRDPServer->initCopy(this, mPeer->mVRDPServer);
+    unconst(mVRDEServer).createObject();
+    mVRDEServer->initCopy(this, mPeer->mVRDEServer);
 #endif
 
     unconst(mAudioAdapter).createObject();
@@ -1099,8 +1099,8 @@ HRESULT SnapshotMachine::init(Machine *aMachine,
     mBIOSSettings->init(this);
 
 #ifdef VBOX_WITH_VRDP
-    unconst(mVRDPServer).createObject();
-    mVRDPServer->init(this);
+    unconst(mVRDEServer).createObject();
+    mVRDEServer->init(this);
 #endif
 
     unconst(mAudioAdapter).createObject();

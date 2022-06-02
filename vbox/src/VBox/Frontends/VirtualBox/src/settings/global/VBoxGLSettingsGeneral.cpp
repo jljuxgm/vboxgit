@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSettingsGeneral.cpp 33238 2010-10-19 15:41:23Z vboxsync $ */
+/* $Id: VBoxGLSettingsGeneral.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -60,7 +60,7 @@ void VBoxGLSettingsGeneral::getFrom (const CSystemProperties &aProps,
                                      const VBoxGlobalSettings &aGs)
 {
     mPsMach->setPath (aProps.GetDefaultMachineFolder());
-    mPsVRDP->setPath (aProps.GetRemoteDisplayAuthLibrary());
+    mPsVRDP->setPath (aProps.GetVRDEAuthLibrary());
     mCbCheckTrayIcon->setChecked (aGs.trayIconEnabled());
 #ifdef Q_WS_MAC
     mCbCheckPresentationMode->setChecked (aGs.presentationModeEnabled());
@@ -74,7 +74,7 @@ void VBoxGLSettingsGeneral::putBackTo (CSystemProperties &aProps,
     if (aProps.isOk() && mPsMach->isModified())
         aProps.SetDefaultMachineFolder (mPsMach->path());
     if (aProps.isOk() && mPsVRDP->isModified())
-        aProps.SetRemoteDisplayAuthLibrary (mPsVRDP->path());
+        aProps.SetVRDEAuthLibrary (mPsVRDP->path());
     aGs.setTrayIconEnabled (mCbCheckTrayIcon->isChecked());
 #ifdef Q_WS_MAC
     aGs.setPresentationModeEnabled (mCbCheckPresentationMode->isChecked());

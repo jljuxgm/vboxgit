@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 33322 2010-10-21 17:14:44Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -883,10 +883,12 @@ int handleList(HandlerArg *a)
             RTPrintf("Maximum Devices per Floppy Port: %u\n", ulValue);
             systemProperties->COMGETTER(DefaultMachineFolder)(str.asOutParam());
             RTPrintf("Default machine folder:          %lS\n", str.raw());
-            systemProperties->COMGETTER(RemoteDisplayAuthLibrary)(str.asOutParam());
-            RTPrintf("VRDP authentication library:     %lS\n", str.raw());
+            systemProperties->COMGETTER(VRDEAuthLibrary)(str.asOutParam());
+            RTPrintf("VRDE auth library:               %lS\n", str.raw());
             systemProperties->COMGETTER(WebServiceAuthLibrary)(str.asOutParam());
             RTPrintf("Webservice auth. library:        %lS\n", str.raw());
+            systemProperties->COMGETTER(DefaultVRDELibrary)(str.asOutParam());
+            RTPrintf("Remote desktop library:          %lS\n", str.raw());
             systemProperties->COMGETTER(LogHistoryCount)(&ulValue);
             RTPrintf("Log history count:               %u\n", ulValue);
 

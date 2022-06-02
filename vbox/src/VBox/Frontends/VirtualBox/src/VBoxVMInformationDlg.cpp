@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 31436 2010-08-06 11:39:39Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -474,14 +474,14 @@ void VBoxVMInformationDlg::refreshStatistics()
             osType = tr ("Not Detected", "guest os type");
         else
             osType = vboxGlobal().vmGuestOSTypeDescription (osType);
-        int vrdpPort = console.GetRemoteDisplayInfo().GetPort();
-        QString vrdpInfo = (vrdpPort == 0 || vrdpPort == -1)?
-            tr ("Not Available", "details report (VRDP server port)") :
-            QString ("%1").arg (vrdpPort);
+        int vrdePort = console.GetVRDEServerInfo().GetPort();
+        QString vrdeInfo = (vrdePort == 0 || vrdePort == -1)?
+            tr ("Not Available", "details report (VRDE server port)") :
+            QString ("%1").arg (vrdePort);
 
         /* Searching for longest string */
         QStringList valuesList;
-        valuesList << resolution << virtualization << nested << addVersionStr << osType << vrdpInfo;
+        valuesList << resolution << virtualization << nested << addVersionStr << osType << vrdeInfo;
         int maxLength = 0;
         foreach (const QString &value, valuesList)
             maxLength = maxLength < fontMetrics().width (value) ?
@@ -493,7 +493,7 @@ void VBoxVMInformationDlg::refreshStatistics()
         result += formatValue (VBoxGlobal::tr ("Nested Paging", "details report"), nested, maxLength);
         result += formatValue (tr ("Guest Additions"), addVersionStr, maxLength);
         result += formatValue (tr ("Guest OS Type"), osType, maxLength);
-        result += formatValue (VBoxGlobal::tr ("Remote Display Server Port", "details report (VRDP Server)"), vrdpInfo, maxLength);
+        result += formatValue (VBoxGlobal::tr ("Remote Desktop Server Port", "details report (VRDE Server)"), vrdeInfo, maxLength);
         result += paragraph;
     }
 

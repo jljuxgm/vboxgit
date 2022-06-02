@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4453,6 +4453,21 @@ HRESULT VirtualBox::unregisterDHCPServer(DHCPServer *aDHCPServer,
     }
 
     return rc;
+}
+
+STDMETHODIMP VirtualBox::VRDERegisterLibrary(IN_BSTR aName)
+{
+    return E_FAIL; /* @todo VRDE */
+}
+
+STDMETHODIMP VirtualBox::VRDEUnregisterLibrary(IN_BSTR aName)
+{
+    return E_FAIL; /* @todo VRDE */
+}
+
+STDMETHODIMP VirtualBox::VRDEListLibraries(ComSafeArrayOut(BSTR, aNames))
+{
+    return E_FAIL; /* @todo VRDE */
 }
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 33140 2010-10-14 16:20:15Z vboxsync $ */
+/* $Id: UISession.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -581,17 +581,17 @@ void UISession::loadSessionSettings()
 
     /* Availability settings: */
     {
-        /* VRDP Stuff: */
-        CVRDPServer vrdpServer = machine.GetVRDPServer();
-        if (vrdpServer.isNull())
+        /* VRDE Stuff: */
+        CVRDEServer server = machine.GetVRDEServer();
+        if (server.isNull())
         {
-            /* Hide VRDP Action: */
-            uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDP)->setVisible(false);
+            /* Hide VRDE Action: */
+            uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDEServer)->setVisible(false);
         }
         else
         {
-            /* Check/Uncheck VRDP action depending on VRDP server status: */
-            uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDP)->setChecked(vrdpServer.GetEnabled());
+            /* Check/Uncheck VRDE action depending on VRDE server status: */
+            uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDEServer)->setChecked(server.GetEnabled());
         }
     }
 
