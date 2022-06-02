@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 34955 2010-12-10 14:57:21Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2618,7 +2618,8 @@ ResumeExecution:
     }
 
     /* Load the guest state */
-    if (!pVCpu->hwaccm.s.fContextUseFlags)
+    if (    !pVCpu->hwaccm.s.fContextUseFlags
+        &&  pVCpu->hwaccm.s.idLastCpu == pCpu->idCpu)
     {
         VMXR0LoadMinimalGuestState(pVM, pVCpu, pCtx);
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatLoadMinimal);
