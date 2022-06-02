@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34469 2010-11-29 15:14:18Z vboxsync $
+# $Id: Config.kmk 34470 2010-11-29 15:19:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3955,18 +3955,24 @@ TEMPLATE_VBoxAdvBldProg_LIBS    = \
 	$(PATH_LIB)/RuntimeBldProg$(VBOX_SUFF_LIB) \
 	$(TEMPLATE_VBOXBLDPROG_LIBS)
 TEMPLATE_VBoxAdvBldProg_LIBS.darwin = \
+	$(TEMPLATE_VBOXBLDPROG_LIBS) \
 	iconv \
 	$(TEMPLATE_VBOXBLDPROG_LIBS.darwin)
 TEMPLATE_VBoxAdvBldProg_LIBS.freebsd = \
+	$(TEMPLATE_VBOXBLDPROG_LIBS) \
 	iconv \
 	rt \
 	$(TEMPLATE_VBOXBLDPROG_LIBS.freebsd)
 TEMPLATE_VBoxAdvBldProg_LIBS.linux = \
+	$(TEMPLATE_VBOXBLDPROG_LIBS) \
 	crypt \
 	$(TEMPLATE_VBOXBLDPROG_LIBS.linux)
 TEMPLATE_VBoxAdvBldProg_LIBS.solaris = \
-	kstat \
+	$(TEMPLATE_VBOXBLDPROG_LIBS) \
 	contract \
+	kstat \
+	rt \
+	socket \
 	$(TEMPLATE_VBOXBLDPROG_LIBS.solaris)
 
 
@@ -4442,7 +4448,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34469 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34470 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
