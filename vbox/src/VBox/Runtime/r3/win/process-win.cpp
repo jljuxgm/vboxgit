@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 32656 2010-09-21 08:47:18Z vboxsync $ */
+/* $Id: process-win.cpp 32657 2010-09-21 08:53:52Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -625,6 +625,10 @@ static int rtProcEnvironmentCreateFromToken(HANDLE hToken, RTENV hEnv, PRTUTF16 
         }
         RTLdrClose(hUserenv);
     }
+    /* If we don't have the Userenv-API for whatever reason or something with the
+     * native environment block failed, try to return at least our own environment block. */
+    if (RT_FAILURE(rc))
+        rc = RTEnvQueryUtf16Block(hEnv, ppwszBlock);
     return rc;
 }
 
