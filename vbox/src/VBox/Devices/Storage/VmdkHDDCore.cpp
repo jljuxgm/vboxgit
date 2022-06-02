@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 32618 2010-09-17 16:46:14Z vboxsync $ */
+/* $Id: VmdkHDDCore.cpp 32619 2010-09-17 16:46:51Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5674,7 +5674,7 @@ static int vmdksOpen(const char *pszFilename, unsigned uOpenFlags,
     LogFlowFunc(("pszFilename=\"%s\" uOpenFlags=%#x pVDIfsDisk=%#p pVDIfsImage=%#p ppBackendData=%#p\n", pszFilename, uOpenFlags, pVDIfsDisk, pVDIfsImage, ppBackendData));
     int rc;
 
-    rc = VERR_VD_VMDK_INVALID_HEADER;
+    rc = VERR_NOT_SUPPORTED;
     LogFlowFunc(("returns %Rrc (pBackendData=%#p)\n", rc, *ppBackendData));
     return rc;
 }
