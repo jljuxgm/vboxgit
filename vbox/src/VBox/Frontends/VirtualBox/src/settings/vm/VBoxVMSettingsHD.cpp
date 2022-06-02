@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 33712 2010-11-02 21:50:33Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 33783 2010-11-04 16:33:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1638,9 +1638,6 @@ VBoxVMSettingsHD::VBoxVMSettingsHD()
     /* Apply UI decorations */
     Ui::VBoxVMSettingsHD::setupUi (this);
 
-    /* Enumerate Mediums */
-    vboxGlobal().startEnumeratingMedia();
-
     /* Initialize pixmap pool */
     PixmapPool::pool (this);
 
@@ -2055,6 +2052,9 @@ void VBoxVMSettingsHD::showEvent (QShowEvent *aEvent)
 {
     if (!mIsPolished)
     {
+        /* Enumerate Mediums */
+        vboxGlobal().startEnumeratingMedia();
+
         mIsPolished = true;
 
         /* First column indent */
