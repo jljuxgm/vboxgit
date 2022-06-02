@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30902 2010-07-19 09:02:40Z vboxsync $ */
+/* $Id: GMMR0.cpp 31350 2010-08-04 08:58:21Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -4096,7 +4096,6 @@ DECLCALLBACK(int) gmmR0CheckSharedModule(PAVLGCPTRNODECORE pNode, void *pvUser)
 }
 #endif
 
-#ifdef DEBUG_sandervl
 /**
  * Setup for a GMMR0CheckSharedModules call (to allow log flush jumps back to ring 3)
  *
@@ -4141,7 +4140,6 @@ GMMR0DECL(int) GMMR0CheckSharedModulesEnd(PVM pVM)
     RTSemFastMutexRelease(pGMM->Mtx);
     return VINF_SUCCESS;
 }
-#endif
 
 /**
  * Check all shared modules for the specified VM
@@ -4163,13 +4161,6 @@ GMMR0DECL(int) GMMR0CheckSharedModules(PVM pVM, PVMCPU pVCpu)
     if (RT_FAILURE(rc))
         return rc;
 
-# ifndef DEBUG_sandervl
-    /*
-     * Take the sempahore and do some more validations.
-     */
-    rc = RTSemFastMutexRequest(pGMM->Mtx);
-    AssertRC(rc);
-# endif
     if (GMM_CHECK_SANITY_UPON_ENTERING(pGMM))
     {
         GMMCHECKSHAREDMODULEINFO Info;
@@ -4190,9 +4181,6 @@ GMMR0DECL(int) GMMR0CheckSharedModules(PVM pVM, PVMCPU pVCpu)
     else
         rc = VERR_INTERNAL_ERROR_5;
 
-# ifndef DEBUG_sandervl
-    RTSemFastMutexRelease(pGMM->Mtx);
-# endif
     return rc;
 #else
     return VERR_NOT_IMPLEMENTED;
