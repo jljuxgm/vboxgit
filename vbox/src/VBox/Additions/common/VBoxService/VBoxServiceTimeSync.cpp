@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 32772 2010-09-27 12:19:31Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 32841 2010-09-30 12:42:58Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -164,7 +164,7 @@ static DECLCALLBACK(int) VBoxServiceTimeSyncPreInit(void)
     int rc = VbglR3GuestPropConnect(&uGuestPropSvcClientID);
     if (RT_FAILURE(rc))
     {
-        VBoxServiceError("Failed to connect to the guest property service! Error: %Rrc\n", rc);
+        VBoxServiceError("VBoxServiceTimeSyncPreInit: Failed to connect to the guest property service! Error: %Rrc\n", rc);
     }
     else
     {
@@ -305,14 +305,14 @@ static DECLCALLBACK(int) VBoxServiceTimeSyncInit(void)
                 {
                     DWORD dwErr = GetLastError();
                     rc = RTErrConvertFromWin32(dwErr);
-                    VBoxServiceError("Adjusting token privileges (SE_SYSTEMTIME_NAME) failed with status code %u/%Rrc!\n", dwErr, rc);
+                    VBoxServiceError("VBoxServiceTimeSyncInit: Adjusting token privileges (SE_SYSTEMTIME_NAME) failed with status code %u/%Rrc!\n", dwErr, rc);
                 }
             }
             else
             {
                 DWORD dwErr = GetLastError();
                 rc = RTErrConvertFromWin32(dwErr);
-                VBoxServiceError("Looking up token privileges (SE_SYSTEMTIME_NAME) failed with status code %u/%Rrc!\n", dwErr, rc);
+                VBoxServiceError("VBoxServiceTimeSyncInit: Looking up token privileges (SE_SYSTEMTIME_NAME) failed with status code %u/%Rrc!\n", dwErr, rc);
             }
             if (RT_FAILURE(rc))
             {
@@ -324,19 +324,19 @@ static DECLCALLBACK(int) VBoxServiceTimeSyncInit(void)
         {
             DWORD dwErr = GetLastError();
             rc = RTErrConvertFromWin32(dwErr);
-            VBoxServiceError("Opening process token (SE_SYSTEMTIME_NAME) failed with status code %u/%Rrc!\n", dwErr, rc);
+            VBoxServiceError("VBoxServiceTimeSyncInit: Opening process token (SE_SYSTEMTIME_NAME) failed with status code %u/%Rrc!\n", dwErr, rc);
             g_hTokenProcess = NULL;
         }
     }
 
     if (GetSystemTimeAdjustment(&g_dwWinTimeAdjustment, &g_dwWinTimeIncrement, &g_bWinTimeAdjustmentDisabled))
-        VBoxServiceVerbose(3, "Windows time adjustment: Initially %ld (100ns) units per %ld (100 ns) units interval, disabled=%d\n",
+        VBoxServiceVerbose(3, "VBoxServiceTimeSyncInit: Initially %ld (100ns) units per %ld (100 ns) units interval, disabled=%d\n",
                            g_dwWinTimeAdjustment, g_dwWinTimeIncrement, g_bWinTimeAdjustmentDisabled ? 1 : 0);
     else
     {
         DWORD dwErr = GetLastError();
         rc = RTErrConvertFromWin32(dwErr);
-        VBoxServiceError("Could not get time adjustment values! Last error: %ld!\n", dwErr);
+        VBoxServiceError("VBoxServiceTimeSyncInit: Could not get time adjustment values! Last error: %ld!\n", dwErr);
     }
 #endif /* RT_OS_WINDOWS */
 
@@ -389,8 +389,8 @@ static bool VBoxServiceTimeSyncAdjust(PCRTTIMESPEC pDrift)
             }
         }
 
-        VBoxServiceVerbose(3, "Windows time adjustment: Drift=%lldms\n", RTTimeSpecGetMilli(pDrift));
-        VBoxServiceVerbose(3, "Windows time adjustment: OrgTA=%ld, CurTA=%ld, NewTA=%ld, DiffNew=%ld, DiffMax=%ld\n",
+        VBoxServiceVerbose(3, "VBoxServiceTimeSyncAdjust: Drift=%lldms\n", RTTimeSpecGetMilli(pDrift));
+        VBoxServiceVerbose(3, "VBoxServiceTimeSyncAdjust: OrgTA=%ld, CurTA=%ld, NewTA=%ld, DiffNew=%ld, DiffMax=%ld\n",
                            g_dwWinTimeAdjustment, dwWinTimeAdjustment, dwWinNewTimeAdjustment, dwDiffNew, dwDiffMax);
         if (SetSystemTimeAdjustment(dwWinNewTimeAdjustment, FALSE /* Periodic adjustments enabled. */))
         {
@@ -399,10 +399,10 @@ static bool VBoxServiceTimeSyncAdjust(PCRTTIMESPEC pDrift)
         }
 
         if (g_cTimeSyncErrors++ < 10)
-             VBoxServiceError("SetSystemTimeAdjustment failed, error=%u\n", GetLastError());
+             VBoxServiceError("VBoxServiceTimeSyncAdjust: SetSystemTimeAdjustment failed, error=%u\n", GetLastError());
     }
     else if (g_cTimeSyncErrors++ < 10)
-        VBoxServiceError("GetSystemTimeAdjustment failed, error=%ld\n", GetLastError());
+        VBoxServiceError("VBoxServiceTimeSyncAdjust: GetSystemTimeAdjustment failed, error=%ld\n", GetLastError());
 
 #elif defined(RT_OS_OS2)
     /* No API for doing gradual time adjustments. */
@@ -416,7 +416,7 @@ static bool VBoxServiceTimeSyncAdjust(PCRTTIMESPEC pDrift)
     if (adjtime(&tv, NULL) == 0)
     {
         if (g_cVerbosity >= 1)
-            VBoxServiceVerbose(1, "adjtime by %RDtimespec\n", pDrift);
+            VBoxServiceVerbose(1, "VBoxServiceTimeSyncAdjust: adjtime by %RDtimespec\n", pDrift);
         g_cTimeSyncErrors = 0;
         return true;
     }
