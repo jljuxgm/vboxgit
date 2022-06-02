@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 31778 2010-08-19 09:51:24Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 32081 2010-08-30 09:15:00Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -362,7 +362,7 @@ int handleModifyHardDisk(HandlerArg *a)
     MediumType_T DiskType;
     bool AutoReset = false;
     bool fModifyDiskType = false, fModifyAutoReset = false, fModifyCompact = false;
-    bool fModifyResize = true;
+    bool fModifyResize = false;
     uint64_t resizeMB = 0;
     const char *FilenameOrUuid = NULL;
 
