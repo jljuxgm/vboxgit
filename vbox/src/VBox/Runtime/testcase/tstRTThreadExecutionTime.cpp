@@ -1,4 +1,4 @@
-/* $Id: tstRTThreadExecutionTime.cpp 34626 2010-12-02 16:44:03Z vboxsync $ */
+/* $Id: tstRTThreadExecutionTime.cpp 34629 2010-12-02 17:09:09Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTThreadGetExecution.
  */
@@ -45,13 +45,13 @@ static volatile uint64_t g_kernel, g_user;
 
 static DECLCALLBACK(int) testThread(RTTHREAD hSelf, void *pvUser)
 {
-    RTTEST_CHECK_RC(g_hTest, RTThreadSleep(60*1000), VERR_INTERRUPTED);
     uint64_t u64Now = RTTimeMilliTS();
-    uint64_t kernel, user;
+    uint64_t kernel, kernelStart, user, userStart;
+    RTThreadGetExecutionTimeMilli(&kernelStart, &userStart);
     while (RTTimeMilliTS() < u64Now + 1000)
         ;
     RTThreadGetExecutionTimeMilli(&kernel, &user);
-    RTPrintf("kernel = %4lldms, user = %4lldms\n", kernel, user);
+    RTPrintf("kernel = %4lldms, user = %4lldms\n", kernel - kernelStart, user - userStart);
     ASMAtomicAddU64(&g_kernel, kernel);
     ASMAtomicAddU64(&g_user, user);
 
@@ -70,8 +70,6 @@ static void test1(void)
                               RTTHREADFLAGS_WAITABLE, "test"), VINF_SUCCESS);
     }
     RTThreadSleep(500);
-    for (unsigned i = 0; i < RT_ELEMENTS(hThread); i++)
-        RTTESTI_CHECK_RC(RTThreadPoke(hThread[i]), VINF_SUCCESS);
     RTPrintf("Waiting for %dms ...\n", msWait);
     RTThreadSleep(msWait);
     for (unsigned i = 0; i < RT_ELEMENTS(hThread); i++)
