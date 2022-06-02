@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 32422 2010-09-10 16:48:22Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 32423 2010-09-10 16:49:55Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -1928,7 +1928,8 @@ WriteCoreDone:
  *
  * @param pVBoxCore         Pointer to a core object.
  * @param pContext          Pointer to the caller context thread.
- * @param pszCoreFilePath   Path to the core file (Optional, can be NULL).
+ * @param pszCoreFilePath   Path to the core file. If NULL is passed, the global
+ *                          path specified in RTCoreDumperSetup() would be used.
  *
  * @remarks Halts all threads.
  * @return IPRT status code.
