@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 33270 2010-10-20 15:52:20Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -2000,7 +2000,7 @@ static int remLoadLinuxObj(void)
     if (RT_SUCCESS(rc))
     {
         g_cbREM2 = RTLdrSize(g_ModREM2);
-        g_pvREM2 = RTMemExecAlloc(g_cbREM);
+        g_pvREM2 = RTMemExecAlloc(g_cbREM2);
         if (g_pvREM2)
         {
 #  ifdef DEBUG /* How to load the VBoxREM2.rel symbols into the GNU debugger. */
