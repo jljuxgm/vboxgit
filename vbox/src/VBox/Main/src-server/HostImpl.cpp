@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 35785 2011-01-31 12:45:37Z vboxsync $ */
+/* $Id: HostImpl.cpp 35804 2011-02-01 09:38:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1315,12 +1315,16 @@ STDMETHODIMP Host::FindHostDVDDrive(IN_BSTR aName, IMedium **aDrive)
     for (size_t i = 0; i < drivevec.size(); ++i)
     {
         ComPtr<IMedium> drive = drivevec[i];
-        Bstr name, location;
+        Bstr name, location, id;
         rc = drive->COMGETTER(Name)(name.asOutParam());
         if (FAILED(rc)) return rc;
         rc = drive->COMGETTER(Location)(location.asOutParam());
         if (FAILED(rc)) return rc;
-        if (name == aName || location == aName)
+        rc = drive->COMGETTER(Id)(id.asOutParam());
+        if (FAILED(rc)) return rc;
+        if (   name == aName
+            || location == aName
+            || (!Guid(aName).isEmpty() && aName == id))
             return drive.queryInterfaceTo(aDrive);
     }
 
