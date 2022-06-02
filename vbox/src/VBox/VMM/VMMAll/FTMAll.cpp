@@ -1,4 +1,4 @@
-/* $Id: FTMAll.cpp 32135 2010-08-31 12:24:28Z vboxsync $ */
+/* $Id: FTMAll.cpp 32140 2010-08-31 12:47:07Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager - All contexts
  */
@@ -44,9 +44,9 @@ VMMDECL(int)   FTMSetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmType)
         return VINF_SUCCESS;
 
 #ifdef IN_RING3
-    return FTMR3SyncState(pVM);
+    return FTMR3SetCheckpoint(pVM, enmType);
 #else
-    return VERR_NOT_IMPLEMENTED;
+    return VMMRZCallRing3(pVM, VMMGetCpu(pVM), VMMCALLRING3_FTM_SET_CHECKPOINT, enmType);
 #endif
 }
 

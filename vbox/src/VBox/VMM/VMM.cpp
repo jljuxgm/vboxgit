@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 30798 2010-07-13 07:26:38Z vboxsync $ */
+/* $Id: VMM.cpp 32140 2010-08-31 12:47:07Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -73,6 +73,7 @@
 #include "VMMInternal.h"
 #include "VMMSwitcher/VMMSwitcher.h"
 #include <VBox/vm.h>
+#include <VBox/ftm.h>
 
 #include <VBox/err.h>
 #include <VBox/param.h>
@@ -2144,6 +2145,10 @@ static int vmmR3ServiceCallRing3Request(PVM pVM, PVMCPU pVCpu)
          */
         case VMMCALLRING3_VM_R0_PREEMPT:
             pVCpu->vmm.s.rcCallRing3 = VINF_SUCCESS;
+            break;
+
+        case VMMCALLRING3_FTM_SET_CHECKPOINT:
+            pVCpu->vmm.s.rcCallRing3 = FTMR3SetCheckpoint(pVM, (FTMCHECKPOINTTYPE)pVCpu->vmm.s.u64CallRing3Arg);
             break;
 
         default:
