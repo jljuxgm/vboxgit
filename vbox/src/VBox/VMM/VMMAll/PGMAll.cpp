@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
+/* $Id: PGMAll.cpp 31565 2010-08-11 12:47:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1269,6 +1269,63 @@ static int pgmShwGetEPTPDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, PEPTPDPT *ppPdpt, PE
 }
 
 #endif /* IN_RC */
+
+#ifdef IN_RING0
+/**
+ * Synchronizes a range of nested page table entries.
+ *
+ * The caller must own the PGM lock.
+ *
+ * @param   pVCpu               The current CPU.
+ * @param   GCPhys              Where to start.
+ * @param   cPages              How many pages which entries should be synced.
+ * @param   enmShwPagingMode    The shadow paging mode (PGMMODE_EPT for VT-x,
+ *                              host paging mode for AMD-V).
+ */
+int pgmShwSyncNestedPageLocked(PVMCPU pVCpu, RTGCPHYS GCPhysFault, uint32_t cPages, PGMMODE enmShwPagingMode)
+{
+    Assert(PGMIsLockOwner(pVCpu->CTX_SUFF(pVM)));
+
+    int rc;
+    switch (enmShwPagingMode)
+    {
+        case PGMMODE_32_BIT:
+        {
+            X86PDE PdeDummy = { X86_PDE_P | X86_PDE_US | X86_PDE_RW | X86_PDE_A };
+            rc = PGM_BTH_NAME_32BIT_PROT(SyncPage)(pVCpu, PdeDummy, GCPhysFault, cPages, ~0U /*uErr*/);
+            break;
+        }
+
+        case PGMMODE_PAE:
+        case PGMMODE_PAE_NX:
+        {
+            X86PDEPAE PdeDummy = { X86_PDE_P | X86_PDE_US | X86_PDE_RW | X86_PDE_A };
+            rc = PGM_BTH_NAME_PAE_PROT(SyncPage)(pVCpu, PdeDummy, GCPhysFault, cPages, ~0U /*uErr*/);
+            break;
+        }
+
+        case PGMMODE_AMD64:
+        case PGMMODE_AMD64_NX:
+        {
+            X86PDEPAE PdeDummy = { X86_PDE_P | X86_PDE_US | X86_PDE_RW | X86_PDE_A };
+            rc = PGM_BTH_NAME_AMD64_PROT(SyncPage)(pVCpu, PdeDummy, GCPhysFault, cPages, ~0U /*uErr*/);
+            break;
+        }
+
+        case PGMMODE_EPT:
+        {
+            X86PDEPAE PdeDummy = { X86_PDE_P | X86_PDE_US | X86_PDE_RW | X86_PDE_A };
+            rc = PGM_BTH_NAME_EPT_PROT(SyncPage)(pVCpu, PdeDummy, GCPhysFault, cPages, ~0U /*uErr*/);
+            break;
+        }
+
+        default:
+            AssertMsgFailedReturn(("%d\n", enmShwPagingMode), VERR_INTERNAL_ERROR_5);
+    }
+    return rc;
+}
+#endif /* IN_RING0 */
+
 
 /**
  * Gets effective Guest OS page information.

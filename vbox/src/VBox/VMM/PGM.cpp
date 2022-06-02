@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
+/* $Id: PGM.cpp 31565 2010-08-11 12:47:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1777,6 +1777,8 @@ static int pgmR3InitStats(PVM pVM)
                             "The number of SyncPage per PD n.", "/PGM/CPU%u/PDSyncPage/%04X", i, j);
 # endif
         /* R0 only: */
+        PGM_REG_PROFILE(&pCpuStats->StatR0NpMiscfg,                      "/PGM/CPU%u/R0/NpMiscfg",                     "PGMR0Trap0eHandlerNPMisconfig() profiling.");
+        PGM_REG_COUNTER(&pCpuStats->StatR0NpMiscfgSyncPage,              "/PGM/CPU%u/R0/NpMiscfgSyncPage",             "SyncPage calls from PGMR0Trap0eHandlerNPMisconfig().");
 
         /* RZ only: */
         PGM_REG_PROFILE(&pCpuStats->StatRZTrap0e,                      "/PGM/CPU%u/RZ/Trap0e",                     "Profiling of the PGMTrap0eHandler() body.");
