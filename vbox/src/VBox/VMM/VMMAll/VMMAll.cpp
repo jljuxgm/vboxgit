@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 31352 2010-08-04 09:45:01Z vboxsync $ */
+/* $Id: VMMAll.cpp 31353 2010-08-04 09:58:34Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -25,7 +25,7 @@
 #include <VBox/vm.h>
 #include <VBox/vmm.h>
 #include <VBox/param.h>
-#include <iprt/mp.h>
+#include <iprt/thread.h>
 
 
 /**
