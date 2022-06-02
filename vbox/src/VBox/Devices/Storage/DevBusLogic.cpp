@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 30809 2010-07-13 17:22:38Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 32983 2010-10-07 15:14:54Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -2012,7 +2012,8 @@ static DECLCALLBACK(int) buslogicMMIOMap(PPCIDEVICE pPciDev, /*unsigned*/ int iR
     return rc;
 }
 
-static DECLCALLBACK(int) buslogicDeviceSCSIRequestCompleted(PPDMISCSIPORT pInterface, PPDMSCSIREQUEST pSCSIRequest, int rcCompletion)
+static DECLCALLBACK(int) buslogicDeviceSCSIRequestCompleted(PPDMISCSIPORT pInterface, PPDMSCSIREQUEST pSCSIRequest,
+                                                            int rcCompletion, bool fRedo, int rcReq)
 {
     int rc;
     PBUSLOGICTASKSTATE pTaskState = (PBUSLOGICTASKSTATE)pSCSIRequest->pvUser;

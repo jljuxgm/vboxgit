@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 32983 2010-10-07 15:14:54Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
@@ -315,7 +315,7 @@ static int drvscsihostProcessRequestOne(PDRVSCSIHOST pThis, PPDMSCSIREQUEST pReq
 #endif
     }
     /* Notify device that request finished. */
-    rc = pThis->pDevScsiPort->pfnSCSIRequestCompleted(pThis->pDevScsiPort, pRequest, SCSI_STATUS_OK);
+    rc = pThis->pDevScsiPort->pfnSCSIRequestCompleted(pThis->pDevScsiPort, pRequest, SCSI_STATUS_OK, false, VINF_SUCCESS);
     AssertMsgRC(rc, ("Notifying device above failed rc=%Rrc\n", rc));
 
     return rc;
