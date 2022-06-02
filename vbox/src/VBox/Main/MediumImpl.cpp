@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31063 2010-07-23 14:36:53Z vboxsync $ */
+/* $Id: MediumImpl.cpp 31068 2010-07-23 14:52:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2587,7 +2587,7 @@ MediumState_T Medium::getState() const
  * Internal method to return the medium's variant. Must have caller + locking!
  * @return
  */
-MediumState_T Medium::getVariant() const
+MediumVariant_T Medium::getVariant() const
 {
     return m->variant;
 }
