@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 31258 2010-07-30 18:26:09Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 31380 2010-08-05 07:33:32Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1489,7 +1489,6 @@ static int vdWriteHelperOptimizedAsync(PVDIOCTX pIoCtx)
     size_t cbFill = 0;
     size_t cbWriteCopy = 0;
     size_t cbReadImage = 0;
-    int rc;
 
     LogFlowFunc(("pIoCtx=%#p\n", pIoCtx));
 
