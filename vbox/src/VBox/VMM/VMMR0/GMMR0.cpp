@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 30488 2010-06-29 09:02:04Z vboxsync $ */
+/* $Id: GMMR0.cpp 30602 2010-07-05 11:31:51Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2967,7 +2967,7 @@ GMMR0DECL(int) GMMR0BalloonedPages(PVM pVM, VMCPUID idCpu, GMMBALLOONACTION enmA
         {
             case GMMBALLOONACTION_INFLATE:
             {
-                if (pGVM->gmm.s.Allocated.cBasePages >= cBalloonedPages)
+                if (pGVM->gmm.s.Allocated.cBasePages + cBalloonedPages <= pGVM->gmm.s.Reserved.cBasePages)
                 {
                     /*
                      * Record the ballooned memory.
