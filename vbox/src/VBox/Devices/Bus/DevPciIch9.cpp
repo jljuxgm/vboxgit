@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 34301 2010-11-23 17:12:50Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 34302 2010-11-23 17:35:15Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -1690,7 +1690,7 @@ static void ich9pciBiosInitDevice(PPCIGLOBALS pGlobals, uint8_t uBus, uint8_t uD
             cBridgeDepth--;
         }
 
-        int iIrq = aPciIrqs[ich9pciSlotGetPirq(uBus, uDevFn, iPin)];        
+        int iIrq = aPciIrqs[ich9pciSlotGetPirq(uBus, uDevFn, iPin)];
         ich9pciConfigWrite(pGlobals, uBus, uDevFn, VBOX_PCI_INTERRUPT_LINE, iIrq, 1);
     }
 }
@@ -2412,6 +2412,8 @@ static DECLCALLBACK(void) ich9pciReset(PPDMDEVINS pDevIns)
         if (pBus->apDevices[i])
             ich9pciResetDevice(pBus->apDevices[i]);
     }
+
+    ich9pciFakePCIBIOS(pDevIns);
 }
 
 /**
