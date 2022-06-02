@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 33174 2010-10-16 18:10:47Z vboxsync $ */
+/* $Id: DevVGA.cpp 33178 2010-10-16 20:25:02Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -947,6 +947,11 @@ static int vbe_ioport_write_data(void *opaque, uint32_t addr, uint32_t val)
                 max_bank = s->vbe_bank_max >> 2;    /* Each bank really covers 256K */
             else
                 max_bank = s->vbe_bank_max;
+            /* Old software may pass garbage in the high byte of bank. If the maximum
+             * bank fits into a single byte, toss the high byte the user supplied.
+             */
+            if (max_bank < 0x100)
+                val &= 0xff;
             if (val > max_bank)
                 val = max_bank;
             s->vbe_regs[s->vbe_index] = val;
