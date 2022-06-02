@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 35903 2011-02-08 16:46:25Z vboxsync $ */
+/* $Id: MediumImpl.cpp 35915 2011-02-09 15:04:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6207,7 +6207,7 @@ HRESULT Medium::taskCreateDiffHandler(Medium::CreateDiffTask &task)
     MediumVariant_T variant = MediumVariant_Standard;
     bool fGenerateUuid = false;
 
-    GuidList llRegistriesThatNeedSaving;
+    GuidList llRegistriesThatNeedSaving;        // gets copied to task pointer later in synchronous mode
 
     try
     {
