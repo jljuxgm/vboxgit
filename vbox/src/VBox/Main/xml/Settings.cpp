@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 31073 2010-07-23 19:04:04Z vboxsync $ */
+/* $Id: Settings.cpp 31131 2010-07-27 07:43:45Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3610,6 +3610,8 @@ void MachineConfigFile::buildNetworkXML(NetworkAttachmentType_T mode,
             xml::ElementNode *pelmNAT;
             pelmNAT = elmParent.createChild("NAT");
 
+            if (nic.nat.strNetwork.length())
+                pelmNAT->setAttribute("network", nic.nat.strNetwork);
             if (nic.nat.strBindIP.length())
                 pelmNAT->setAttribute("hostip", nic.nat.strBindIP);
             if (nic.nat.u32Mtu)
