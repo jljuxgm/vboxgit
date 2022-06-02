@@ -1,4 +1,4 @@
-/* $Id: PGMR0DynMap.cpp 31170 2010-07-28 15:20:02Z vboxsync $ */
+/* $Id: PGMR0DynMap.cpp 31175 2010-07-28 16:20:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, ring-0 dynamic mapping cache.
  */
@@ -75,7 +75,7 @@
 #define PGMR0DYNMAP_CALC_OVERLOAD(cPages)   ((cPages) / 2)
 
 #if 0
-/* Assertions causes panics if preemption is disabled, this can be used to work aroudn that. */
+/* Assertions causes panics if preemption is disabled, this can be used to work around that. */
 //#define RTSpinlockAcquire(a,b) do {} while (0)
 //#define RTSpinlockRelease(a,b) do {} while (0)
 #endif
