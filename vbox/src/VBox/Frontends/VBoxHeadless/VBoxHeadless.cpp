@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 35722 2011-01-26 16:37:16Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 35727 2011-01-27 09:52:23Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1040,7 +1040,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         {
             ComPtr<IEventSource> es;
             CHECK_ERROR(console, COMGETTER(EventSource)(es.asOutParam()));
-            consoleListener.createObject(); 
+            consoleListener.createObject();
             consoleListener->init(new ConsoleEventListener());
             com::SafeArray<VBoxEventType_T> eventTypes;
             eventTypes.push_back(VBoxEventType_OnMouseCapabilityChanged);
@@ -1278,7 +1278,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         CHECK_ERROR(virtualBox, COMGETTER(EventSource)(es.asOutParam()));
         if (!es.isNull())
             CHECK_ERROR(es, UnregisterListener(vboxListener));
-        vboxListener->Release();
+        vboxListener.setNull();
     }
 
     /* Console callback unregistration. */
@@ -1288,7 +1288,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         CHECK_ERROR(gConsole, COMGETTER(EventSource)(es.asOutParam()));
         if (!es.isNull())
             CHECK_ERROR(es, UnregisterListener(consoleListener));
-        consoleListener->Release();
+        consoleListener.setNull();
     }
 
     /* VirtualBoxClient callback unregistration. */
@@ -1298,7 +1298,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
         CHECK_ERROR(pVirtualBoxClient, COMGETTER(EventSource)(pES.asOutParam()));
         if (!pES.isNull())
             CHECK_ERROR(pES, UnregisterListener(vboxClientListener));
-        vboxClientListener->Release();
+        vboxClientListener.setNull();
     }
 
     /* No more access to the 'console' object, which will be uninitialized by the next session->Close call. */
