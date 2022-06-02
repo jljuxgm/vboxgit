@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 31268 2010-08-02 07:39:38Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 31273 2010-08-02 09:14:04Z vboxsync $ */
 
 /** @file
  *
@@ -214,11 +214,6 @@ public:
 
     void getOpenedMachines(SessionMachinesList &aMachines,
                            InternalControlList *aControls = NULL);
-
-    bool isMachineIdValid(const Guid &aId)
-    {
-        return SUCCEEDED(findMachine(aId, true /* fPermitInaccessible */, false /* aSetError */, NULL));
-    }
 
     HRESULT findMachine (const Guid &aId,
                          bool fPermitInaccessible,
