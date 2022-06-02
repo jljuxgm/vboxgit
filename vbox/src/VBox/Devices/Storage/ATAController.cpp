@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 33485 2010-10-27 08:59:48Z vboxsync $ */
+/* $Id: ATAController.cpp 33486 2010-10-27 09:04:30Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -4705,7 +4705,17 @@ int ataControllerIOPortReadStr1(PAHCIATACONTROLLER pCtl, RTIOPORT Port, RTGCPTR 
 
         PPDMDEVINS pDevIns = pCtl->CTX_SUFF(pDevIns);
         rc = PGMPhysSimpleDirtyWriteGCPtr(PDMDevHlpGetVMCPU(pDevIns), GCDst, s->CTX_SUFF(pbIOBuffer) + s->iIOBufferPIODataStart, cbTransfer);
+#ifndef IN_RING3
+        /* Paranoia. */
+        if (RT_FAILURE(rc))
+        {
+            PDMCritSectLeave(&pCtl->lock);
+            AssertFailed();
+            return VINF_IOM_HC_IOPORT_READ;
+        }
+#else
         Assert(rc == VINF_SUCCESS);
+#endif
 
         if (cbTransfer)
             Log3(("%s: addr=%#x val=%.*Rhxs\n", __FUNCTION__, Port, cbTransfer, s->CTX_SUFF(pbIOBuffer) + s->iIOBufferPIODataStart));
@@ -4758,10 +4768,11 @@ int ataControllerIOPortWriteStr1(PAHCIATACONTROLLER pCtl, RTIOPORT Port, RTGCPTR
         PPDMDEVINS pDevIns = pCtl->CTX_SUFF(pDevIns);
         rc = PGMPhysSimpleReadGCPtr(PDMDevHlpGetVMCPU(pDevIns), s->CTX_SUFF(pbIOBuffer) + s->iIOBufferPIODataStart, GCSrc, cbTransfer);
 #ifndef IN_RING3
-        /* This can fail in RC if the page table is not present for example. */
+        /* Paranoia. */
         if (RT_FAILURE(rc))
         {
             PDMCritSectLeave(&pCtl->lock);
+            AssertFailed();
             return VINF_IOM_HC_IOPORT_WRITE;
         }
 #else
