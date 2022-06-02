@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 31489 2010-08-09 16:12:00Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 31512 2010-08-10 09:06:28Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2311,7 +2311,12 @@ VMMDECL(uint32_t) CPUMGetGuestCPL(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore)
          * at SS. (ACP2 regression during install after a far call to ring 2)
          */
         if (RT_LIKELY(pVCpu->cpum.s.Guest.cr0 & X86_CR0_PE))
-            cpl = pCtxCore->ssHid.Attr.n.u2Dpl;
+        {
+            if (!pCtxCore->eflags.Bits.u1VM)
+                cpl = pCtxCore->ssHid.Attr.n.u2Dpl;
+            else
+                cpl = 3; /* REM doesn't set DPL=3 in V8086 mode. See #5130. */
+        }
         else
             cpl = 0;  /* CPL set to 3 for VT-x real-mode emulation. */
     }
