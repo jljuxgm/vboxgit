@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 33408 2010-10-25 09:57:32Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 33456 2010-10-26 10:51:02Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -447,17 +447,6 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                                 [--name <name>]\n"
                      "                                 [--description <desc>] |\n"
                      "                            showvminfo <uuid>|<name>\n"
-                     "\n");
-    }
-
-    if (u64Cmd & USAGE_OPENMEDIUM)
-    {
-        RTStrmPrintf(pStrm,
-                     "VBoxManage openmedium       disk|dvd|floppy <filename>\n"
-                     "                            [--type normal|immutable|writethrough|\n"
-                     "                                    shareable] (disk only)\n"
-                     "                            [--uuid <uuid>]\n"
-                     "                            [--parentuuid <uuid>] (disk only)\n"
                      "\n");
     }
 
