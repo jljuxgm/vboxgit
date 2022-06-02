@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 30330 2010-06-21 13:30:27Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 30407 2010-06-24 02:16:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -156,7 +156,7 @@ void UIMachineLogicNormal::prepareMachineWindows()
 
 void UIMachineLogicNormal::cleanupMachineWindow()
 {
-    /* Do not cleanup machine window if it is not present: */
+    /* Do not cleanup machine window(s) if not present: */
     if (!isMachineWindowsCreated())
         return;
 
