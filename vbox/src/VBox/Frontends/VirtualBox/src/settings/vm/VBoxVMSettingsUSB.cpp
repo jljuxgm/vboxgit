@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsUSB.cpp 30192 2010-06-15 12:35:56Z vboxsync $ */
+/* $Id: VBoxVMSettingsUSB.cpp 31946 2010-08-25 08:10:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -130,6 +130,10 @@ VBoxVMSettingsUSB::VBoxVMSettingsUSB (FilterType aType)
 
     /* Applying language settings */
     retranslateUi();
+
+#ifndef VBOX_WITH_EHCI
+    mCbUSB2->setHidden(true);
+#endif
 }
 
 bool VBoxVMSettingsUSB::isOHCIEnabled() const
