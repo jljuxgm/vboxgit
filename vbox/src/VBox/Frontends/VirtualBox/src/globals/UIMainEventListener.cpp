@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 30679 2010-07-06 16:50:07Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 30680 2010-07-06 16:53:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -33,7 +33,7 @@ UIMainEventListener::UIMainEventListener(QObject * /* pParent */)
 //  : QObject(pParent) /* Todo: Not sure if pParent should delete this. Especially on Win there is ref counting implemented. */
   : QObject()
 #ifdef Q_WS_WIN
-  , m_refcnt
+  , m_refcnt(0)
 #endif /* Q_WS_WIN */
 {
     /* For queued events we have to extra register our enums/interface classes
