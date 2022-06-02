@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-linux.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-linux.c 35051 2010-12-14 08:14:36Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -120,6 +120,7 @@ RT_EXPORT_SYMBOL(RTSemEventMultiCreate);
 DECLINLINE(void) rtR0SemEventMultiLnxRetain(PRTSEMEVENTMULTIINTERNAL pThis)
 {
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
+    NOREF(cRefs);
     Assert(cRefs && cRefs < 100000);
 }
 
