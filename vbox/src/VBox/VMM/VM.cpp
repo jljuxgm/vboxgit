@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 31331 2010-08-03 12:22:53Z vboxsync $ */
+/* $Id: VM.cpp 31339 2010-08-03 14:17:06Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -4114,6 +4114,8 @@ VMMR3DECL(int) VMR3HotPlugCpu(PVM pVM, VMCPUID idCpu)
 VMMR3DECL(int) VMR3SetCpuPriority(PVM pVM, unsigned ulCpuPriority)
 {
     AssertReturn(ulCpuPriority > 0 && ulCpuPriority <= 100, VERR_INVALID_PARAMETER);
+
+    Log(("VMR3SetCpuPriority: new priority = %d\n", ulCpuPriority));
     /* Note: not called from EMT. */
     pVM->uCpuPriority = ulCpuPriority;
     return VINF_SUCCESS;
