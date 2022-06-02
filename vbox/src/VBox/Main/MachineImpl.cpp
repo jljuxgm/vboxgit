@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31742 2010-08-18 07:52:22Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31746 2010-08-18 10:08:52Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5619,6 +5619,8 @@ STDMETHODIMP Machine::ReadLog(ULONG aIdx, LONG64 aOffset, LONG64 aSize, ComSafeA
 {
     LogFlowThisFunc(("\n"));
     CheckComArgOutSafeArrayPointerValid(aData);
+    if (aSize < 0)
+        return setError(E_INVALIDARG, tr("The size argument (%lld) is negative"), aSize);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();

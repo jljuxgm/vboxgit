@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 31712 2010-08-16 17:16:33Z vboxsync $ */
+/* $Id: MediumImpl.cpp 31746 2010-08-18 10:08:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2130,6 +2130,8 @@ STDMETHODIMP Medium::CreateBaseStorage(LONG64 aLogicalSize,
                                        IProgress **aProgress)
 {
     CheckComArgOutPointerValid(aProgress);
+    if (aLogicalSize < 0)
+        return setError(E_INVALIDARG, tr("The medium size argument (%lld) is negative"), aLogicalSize);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();

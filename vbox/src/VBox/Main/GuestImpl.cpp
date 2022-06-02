@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 31745 2010-08-18 09:44:22Z vboxsync $ */
+/* $Id: GuestImpl.cpp 31746 2010-08-18 10:08:52Z vboxsync $ */
 
 /** @file
  *
@@ -1224,9 +1224,10 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
     using namespace guestControl;
 
     CheckComArgExpr(aPID, aPID > 0);
-
+    if (aSize < 0)
+        return setError(E_INVALIDARG, tr("The size argument (%lld) is negative"), aSize);
     if (aFlags != 0) /* Flags are not supported at the moment. */
-        return E_INVALIDARG;
+        return setError(E_INVALIDARG, tr("Unknown flags (%#x)"), aFlags);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
