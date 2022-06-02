@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 34867 2010-12-09 10:33:41Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 35010 2010-12-13 13:51:20Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -103,7 +103,7 @@ static int VBoxServiceControlExecProcWriteStdIn(PVBOXSERVICECTRLEXECPIPEBUF pStd
     if (RT_SUCCESS(rc))
     {
         size_t cbToWrite = pStdInBuf->cbSize - pStdInBuf->cbOffset;
-        cbToWrite = RT_MIN(cbToWrite, _1M);
+        cbToWrite = RT_MIN(cbToWrite, _64K);
         *pfClose = false;
         if (cbToWrite && pStdInBuf->fAlive)
         {
@@ -1721,7 +1721,7 @@ int VBoxServiceControlExecHandleCmdGetOutput(uint32_t u32ClientId, uint32_t uNum
             PVBOXSERVICECTRLTHREADDATAEXEC pData = (PVBOXSERVICECTRLTHREADDATAEXEC)pNode->pvData;
             AssertPtr(pData);
 
-            const uint32_t cbSize = _1M;
+            const uint32_t cbSize = _64K;
             uint32_t cbRead = cbSize;
             uint8_t *pBuf = (uint8_t*)RTMemAlloc(cbSize);
             if (pBuf)
