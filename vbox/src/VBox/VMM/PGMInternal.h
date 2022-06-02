@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31978 2010-08-26 10:04:54Z vboxsync $ */
+/* $Id: PGMInternal.h 31997 2010-08-26 13:59:06Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3592,6 +3592,10 @@ typedef struct PGMCPU
     uint64_t                        fGstAmd64MbzBigPdpeMask;
     /** Mask containing the MBZ PML4E bits. */
     uint64_t                        fGstAmd64MbzPml4eMask;
+    /** Mask containing the PDPE bits that we shadow. */
+    uint64_t                        fGstAmd64ShadowedPdpeMask;
+    /** Mask containing the PML4E bits that we shadow. */
+    uint64_t                        fGstAmd64ShadowedPml4eMask;
     /** @} */
 
     /** @name PAE and AMD64 Guest Paging.
