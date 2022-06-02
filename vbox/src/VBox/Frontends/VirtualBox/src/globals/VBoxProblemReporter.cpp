@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 34814 2010-12-07 19:11:34Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 34978 2010-12-13 08:34:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2168,6 +2168,13 @@ bool VBoxProblemReporter::confirmRemovingPackage(const QString &strPackName, QWi
                                "<p>Are you sure you want to proceed?</p>").arg(strPackName),
                             0,
                             tr("&Remove"));
+}
+
+void VBoxProblemReporter::notifyAboutExtPackInstalled(const QString &strPackName, QWidget *pParent)
+{
+    message (pParent ? pParent : mainWindowShown(),
+             Info,
+             tr("The extension pack <br><nobr><b>%1</b><nobr><br> was installed successfully.").arg(strPackName));
 }
 
 void VBoxProblemReporter::warnAboutIncorrectPort (QWidget *pParent) const

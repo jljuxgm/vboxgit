@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 34892 2010-12-09 14:43:38Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 34978 2010-12-13 08:34:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -144,7 +144,10 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
                     /* Install package: */
                     extPackFile.Install();
                     if (extPackFile.isOk())
+                    {
+                        vboxProblem().notifyAboutExtPackInstalled(strPackName, pParent);
                         fInstalled = true;
+                    }
                     else
                         vboxProblem().cannotInstallExtPack(strFilePath, extPackFile, pParent);
                 }
