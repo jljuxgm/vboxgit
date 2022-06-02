@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 33008 2010-10-08 12:25:52Z vboxsync $ */
+/* $Id: PGMPool.cpp 33162 2010-10-15 14:21:06Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -190,7 +190,7 @@ int pgmR3PoolInit(PVM pVM)
      * The max number of extents for tracking aliased guest pages.
      */
     uint16_t cMaxPhysExts;
-    rc = CFGMR3QueryU16Def(pCfg, "MaxPhysExts", &cMaxPhysExts, RT_MAX(cMaxPages * 2, PGMPOOL_IDX_LAST));
+    rc = CFGMR3QueryU16Def(pCfg, "MaxPhysExts", &cMaxPhysExts, RT_MAX(cMaxPages * 2, 2048 /* 2k max as this eat too much hyper heap */));
     AssertLogRelRCReturn(rc, rc);
     AssertLogRelMsgReturn(cMaxPhysExts >= 16 && cMaxPages <= PGMPOOL_IDX_LAST,
                           ("cMaxPhysExts=%u (%#x)\n", cMaxPhysExts, cMaxPhysExts), VERR_INVALID_PARAMETER);
