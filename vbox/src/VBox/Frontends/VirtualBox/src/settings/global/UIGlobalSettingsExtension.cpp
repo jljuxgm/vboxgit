@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 35079 2010-12-14 13:44:16Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 35083 2010-12-14 13:57:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -171,14 +171,16 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
     }
 
     /*
-     * Perform uninstallation of any pervious package.  Set the package name
-     * return value before doing this as the caller should do a refresh even
-     * on failure.
+     * Perform uninstallation of any previous package.
+     *
+     * Set the package name return value before doing this as the caller should
+     * do a refresh even on failure.
      */
     if (pstrExtPackName)
         *pstrExtPackName = strPackName;
     if (fUninstallIt)
     {
+        /** @todo Refuse this if any VMs are running. */
         manager.Uninstall(strPackName, false /*aForcedRemoval*/);
         if (!extPackFile.isOk())
         {
@@ -387,6 +389,7 @@ void UIGlobalSettingsExtension::sltRemovePackage()
             /* Get package manager: */
             CExtPackManager manager = vboxGlobal().virtualBox().GetExtensionPackManager();
             /* Uninstall package: */
+            /** @todo Refuse this if any VMs are running. */
             manager.Uninstall(strSelectedPackageName, false /* forced removal? */);
             if (manager.isOk())
             {
