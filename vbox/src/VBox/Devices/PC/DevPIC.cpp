@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 34695 2010-12-03 13:38:26Z vboxsync $ */
+/* $Id: DevPIC.cpp 34697 2010-12-03 14:10:43Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -186,6 +186,7 @@ static inline void pic_set_irq1(PicState *s, int irq, int level)
             }
             s->last_irr |= mask;
         } else {
+            s->irr &= ~mask;
             s->last_irr &= ~mask;
         }
     }
@@ -247,6 +248,8 @@ static int pic_update_irq(PDEVPIC pThis)
     if (irq2 >= 0) {
         /* if irq request by slave pic, signal master PIC */
         pic_set_irq1(&pics[0], 2, 1);
+    } else {
+        /* If not, clear the IR on the master PIC. */
         pic_set_irq1(&pics[0], 2, 0);
     }
     /* look at requested irq */
