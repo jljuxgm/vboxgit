@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 35817 2011-02-01 17:07:26Z vboxsync $ */
 
 /** @file
  *
@@ -350,7 +350,8 @@ STDMETHODIMP SystemProperties::GetMaxNetworkAdaptersOfType(ChipsetType_T aChipse
 
     ULONG uResult = 0;
     HRESULT rc = GetMaxNetworkAdapters(aChipset, &uResult);
-    
+    if (FAILED(rc))
+        return rc;
 
     /* no need for locking, no state */
     switch (aType)
