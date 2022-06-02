@@ -1,4 +1,4 @@
-# $Id: Config.kmk 31536 2010-08-10 14:51:18Z vboxsync $
+# $Id: Config.kmk 31561 2010-08-11 09:58:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1388,13 +1388,13 @@ ARCH_BITS_DEFS += $(VBOX_GC_ARCH_BITS_DEFS)
 #
 # Add the output dir(s) to the dynamic loader search path.
 #
-if1of ($(KBUILD_TARGET), freebsd linux l4 netbsd openbsd solaris)
+if1of ($(KBUILD_HOST), freebsd linux l4 netbsd openbsd solaris)
  export LD_LIBRARY_PATH:=$(PATH_BIN):$(PATH_LIB):$(LD_LIBRARY_PATH)
 endif
-ifeq ($(KBUILD_TARGET),os2)
+ifeq ($(KBUILD_HOST),os2)
  #fixme! export BEGINLIBPATH:=$(PATH_BIN);$(PATH_LIB);$(BEGINLIBPATH)
 endif
-ifeq ($(KBUILD_TARGET),win)
+ifeq ($(KBUILD_HOST),win)
  export PATH:=$(PATH_BIN);$(PATH_LIB);$(PATH)
 endif
 
@@ -4273,7 +4273,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31536 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31561 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
