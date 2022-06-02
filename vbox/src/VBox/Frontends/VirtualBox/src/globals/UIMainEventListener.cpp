@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 30680 2010-07-06 16:53:46Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 30698 2010-07-07 09:47:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,6 +49,11 @@ UIMainEventListener::UIMainEventListener(QObject * /* pParent */)
     qRegisterMetaType<CVirtualBoxErrorInfo>("CVirtualBoxErrorInfo");
 }
 
+
+/**
+ * @todo: instead of double wrapping of events into signals maybe it
+ * make sense to use passive listeners, and peek up events in main thread.
+ */
 STDMETHODIMP UIMainEventListener::HandleEvent(IEvent *pEvent)
 {
     CEvent event(pEvent);
@@ -216,4 +221,3 @@ STDMETHODIMP UIMainEventListener::HandleEvent(IEvent *pEvent)
     }
     return S_OK;
 }
-
