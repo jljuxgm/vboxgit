@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 30830 2010-07-14 12:55:02Z vboxsync $ */
+/* $Id: PGMAll.cpp 30831 2010-07-14 12:56:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1489,7 +1489,7 @@ PX86PDPAE pgmGstLazyMapPaePD(PPGMCPU pPGM, uint32_t iPdpt)
 }
 #endif /* !VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0 */
 
-#ifndef IN_RC
+#if !defined(IN_RC) && !defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0)
 /**
  * Performs the lazy mapping of the 32-bit guest PD.
  *
