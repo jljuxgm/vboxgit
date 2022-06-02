@@ -1,4 +1,4 @@
-/* $Id: DrvNamedPipe.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: DrvNamedPipe.cpp 33392 2010-10-24 16:15:52Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -39,6 +39,9 @@
 # include <sys/types.h>
 # include <sys/socket.h>
 # include <sys/un.h>
+# ifndef SHUT_RDWR /* OS/2 */
+#  define SHUT_RDWR 3
+# endif
 #endif /* !RT_OS_WINDOWS */
 
 
