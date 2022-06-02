@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 32469 2010-09-14 10:01:17Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -535,7 +535,7 @@ static int openDevicesFile(const char *pcszUsbfsRoot, FILE **ppFile)
 static PUSBDEVICE getDevicesFromUsbfs(const char *pcszUsbfsRoot)
 {
     PUSBDEVICE pFirst = NULL;
-    FILE *pFile;
+    FILE *pFile = NULL;
     int rc;
     rc = openDevicesFile(pcszUsbfsRoot, &pFile);
     if (RT_SUCCESS(rc))
@@ -1378,12 +1378,7 @@ static PUSBDEVICE getDevicesFromSysfs(void)
             break;
     }
     if (RT_FAILURE(rc))
-        while (pFirst)
-        {
-            PUSBDEVICE pNext = pFirst->pNext;
-            deviceFree(pFirst);
-            pFirst = pNext;
-        }
+        deviceListFree(&pFirst);
 
     VEC_CLEANUP_OBJ(&vecDevInfo);
     return pFirst;

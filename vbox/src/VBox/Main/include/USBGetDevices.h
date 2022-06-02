@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.h 32324 2010-09-08 15:43:32Z vboxsync $ */
+/* $Id: USBGetDevices.h 32469 2010-09-14 10:01:17Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -56,6 +56,25 @@ static inline void deviceFree(PUSBDEVICE pDevice)
 }
 
 /**
+ * Free a linked list of USB devices created by the Linux enumeration code.
+ * @param  pHead  Pointer to the first device in the linked list
+ */
+static inline void deviceListFree(PUSBDEVICE *ppHead)
+{
+    PUSBDEVICE pHead, pNext;
+    pHead = *ppHead;
+    while (pHead)
+    {
+        pNext = pHead->pNext;
+        deviceFree(pHead);
+        pHead = pNext;
+    }
+    *ppHead = NULL;
+}
+
+RT_C_DECLS_BEGIN
+
+/**
  * Check whether @a pcszDevices is a valid usbfs devices file for checking
  * whether usbfs is supported or not.
  * @returns VINF_SUCCESS if it is
@@ -71,5 +90,7 @@ extern int USBProxyLinuxCheckForUsbfs(const char *pcszDevices);
  * @param pcszUsbfsRoot  the path to usbfs, or NULL to use sysfs
  */
 extern PUSBDEVICE USBProxyLinuxGetDevices(const char *pcszUsbfsRoot);
+
+RT_C_DECLS_END
 
 #endif /* ___USBGetDevices_h */
