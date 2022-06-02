@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 31993 2010-08-26 13:14:46Z vboxsync $ */
+/* $Id: PGMAll.cpp 31994 2010-08-26 13:18:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -961,13 +961,13 @@ int pgmShwSyncPaePDPtr(PVMCPU pVCpu, RTGCPTR GCPtr, X86PGPAEUINT uGstPdpe, PX86P
                      */
                     Assert(!HWACCMIsEnabled(pVM));
 
-                    GCPdPt  = uGstPdpe & X86_PDPE_PG_MASK;
+                    GCPdPt  = uGstPdpe & X86_PDPE_PG_MASK_FULL;
                     enmKind = PGMPOOLKIND_PAE_PD_PHYS;
                     uGstPdpe |= X86_PDPE_P;
                 }
                 else
                 {
-                    GCPdPt  = uGstPdpe & X86_PDPE_PG_MASK;
+                    GCPdPt  = uGstPdpe & X86_PDPE_PG_MASK_FULL;
                     enmKind = PGMPOOLKIND_PAE_PD_FOR_PAE_PD;
                 }
             }
@@ -984,7 +984,7 @@ int pgmShwSyncPaePDPtr(PVMCPU pVCpu, RTGCPTR GCPtr, X86PGPAEUINT uGstPdpe, PX86P
 
         /* The PD was cached or created; hook it up now. */
         pPdpe->u |= pShwPage->Core.Key
-                 | (uGstPdpe & ~(X86_PDPE_PG_MASK | X86_PDPE_AVL_MASK | X86_PDPE_PCD | X86_PDPE_PWT));
+                 | (uGstPdpe & ~(X86_PDPE_PG_MASK_FULL | X86_PDPE_AVL_MASK | X86_PDPE_PCD | X86_PDPE_PWT));
 
 # if defined(IN_RC)
         /*
@@ -1126,7 +1126,7 @@ static int pgmShwSyncLongModePDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, X86PGPAEUINT u
         }
         else
         {
-            GCPdPt  = uGstPdpe & X86_PDPE_PG_MASK;
+            GCPdPt  = uGstPdpe & X86_PDPE_PG_MASK_FULL;
             enmKind = PGMPOOLKIND_64BIT_PD_FOR_64BIT_PD;
         }
 
@@ -1143,7 +1143,7 @@ static int pgmShwSyncLongModePDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, X86PGPAEUINT u
     }
     /* The PD was cached or created; hook it up now. */
     pPdpe->u |= pShwPage->Core.Key
-             | (uGstPdpe & ~(X86_PDPE_PG_MASK | X86_PDPE_AVL_MASK | X86_PDPE_PCD | X86_PDPE_PWT));
+             | (uGstPdpe & ~(X86_PDPE_PG_MASK_FULL | X86_PDPE_AVL_MASK | X86_PDPE_PCD | X86_PDPE_PWT));
 
     *ppPD = (PX86PDPAE)PGMPOOL_PAGE_2_PTR_V2(pVM, pVCpu, pShwPage);
     return VINF_SUCCESS;

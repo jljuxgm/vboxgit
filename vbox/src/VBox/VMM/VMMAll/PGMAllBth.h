@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 31989 2010-08-26 12:43:18Z vboxsync $ */
+/* $Id: PGMAllBth.h 31994 2010-08-26 13:18:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4396,7 +4396,7 @@ PGM_BTH_DECL(int, MapCR3)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
                 {
                     RTHCPTR     HCPtr;
                     RTHCPHYS    HCPhys;
-                    RTGCPHYS    GCPhys = pGuestPDPT->a[i].u & X86_PDPE_PG_MASK;
+                    RTGCPHYS    GCPhys = pGuestPDPT->a[i].u & X86_PDPE_PG_MASK_FULL;
                     pgmLock(pVM);
                     PPGMPAGE    pPage  = pgmPhysGetPage(&pVM->pgm.s, GCPhys);
                     AssertReturn(pPage, VERR_INTERNAL_ERROR_2);
