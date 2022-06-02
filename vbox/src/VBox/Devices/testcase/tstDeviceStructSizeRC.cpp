@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 34009 2010-11-11 20:14:36Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 34183 2010-11-18 20:38:31Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1629,6 +1629,8 @@ int main()
     GEN_CHECK_OFF(LSILOGICSCSI, pLedsConnector);
     GEN_CHECK_OFF(LSILOGICSCSI, pConfigurationPages);
     GEN_CHECK_OFF(LSILOGICSCSI, fSignalIdle);
+    GEN_CHECK_OFF(LSILOGICSCSI, fRedo);
+    GEN_CHECK_OFF(LSILOGICSCSI, pTasksRedoHead);
 #endif /* VBOX_WITH_LSILOGIC */
 
     GEN_CHECK_SIZE(HpetState);
