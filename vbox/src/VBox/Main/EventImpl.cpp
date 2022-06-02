@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30871 2010-07-16 10:07:21Z vboxsync $ */
+/* $Id: EventImpl.cpp 30913 2010-07-19 15:44:35Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -15,7 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/**
+/** @page pg_main_events    Events
+ *
  * Theory of operations.
  *
  * This code implements easily extensible event mechanism, letting us
