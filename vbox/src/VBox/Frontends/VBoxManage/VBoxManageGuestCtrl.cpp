@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33809 2010-11-05 18:19:15Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33841 2010-11-08 13:51:19Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -585,20 +585,18 @@ int ctrlCopyDirectoryEntryAppend(const char *pszFileSource, const char *pszFileD
     if (pNode == NULL)
         return VERR_NO_MEMORY;
 
-    pNode->pszSourcePath = NULL;
-    pNode->pszDestPath = NULL;
-    if (RT_SUCCESS(RTStrAAppend(&pNode->pszSourcePath, pszFileSource)))
+    pNode->pszSourcePath = RTStrDup(pszFileSource);
+    pNode->pszDestPath = RTStrDup(pszFileDest);
+    if (   !pNode->pszSourcePath
+        || !pNode->pszDestPath)
     {
-        if (RT_SUCCESS(RTStrAAppend(&pNode->pszDestPath, pszFileDest)))
-        {
-            pNode->Node.pPrev = NULL;
-            pNode->Node.pNext = NULL;
-            RTListAppend(pList, &pNode->Node);
-            return VINF_SUCCESS;
-        }
         return VERR_NO_MEMORY;
     }
-    return VERR_NO_MEMORY;
+    
+    pNode->Node.pPrev = NULL;
+    pNode->Node.pNext = NULL;
+    RTListAppend(pList, &pNode->Node);
+    return VINF_SUCCESS;
 }
 
 /**
@@ -777,10 +775,23 @@ int ctrlCopyInit(const char *pszSource, const char *pszDest, uint32_t uFlags,
             char *pszDestAbs = RTStrDup(pszDest);
             if (pszDestAbs)
             {
-                RTPathStripFilename(pszDestAbs);
-                rc = RTStrAAppend(&pszDestAbs, RTPATH_SLASH_STR);
-                if (RT_SUCCESS(rc))
+                /* Do we have a trailing slash for the destination?
+                 * Then this is a directory ... */
+                size_t cch = strlen(pszDestAbs);
+                if (    cch > 1
+                    && (   RTPATH_IS_SLASH(pszDestAbs[cch - 1])
+                        || RTPATH_IS_SLASH(pszDestAbs[cch - 2])
+                       )
+                   )
+                {
                     rc = RTStrAAppend(&pszDestAbs, RTPathFilename(pszSourceAbs));
+                }
+                else
+                {
+                    /* Since the desetination seems not to be a directory,
+                     * we assume that this is the absolute path to the destination
+                     * file -> nothing to do here ... */
+                }
 
                 if (RT_SUCCESS(rc))
                 {
@@ -1172,7 +1183,7 @@ static int handleCtrlCopyTo(HandlerArg *a)
                     RTMsgError("No files to copy found!\n");
                     break;
 
-                case VERR_PATH_NOT_FOUND:
+                case VERR_FILE_NOT_FOUND:
                     RTMsgError("Source path \"%s\" not found!\n", Utf8Source.c_str());
                     break;
 
