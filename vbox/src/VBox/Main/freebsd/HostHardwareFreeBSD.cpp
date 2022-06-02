@@ -1,4 +1,4 @@
-/* $Id: HostHardwareFreeBSD.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: HostHardwareFreeBSD.cpp 33812 2010-11-05 19:32:59Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under FreeBSD.
  */
@@ -294,7 +294,7 @@ static int getDVDInfoFromCAM(DriveInfoList *pList, bool *pfSuccess)
                                                     pDevResult->inq_data.product,
                                                     szDesc, sizeof(szDesc));
 
-                            pList->push_back(DriveInfo(szPath, NULL, szDesc));
+                            pList->push_back(DriveInfo(szPath, "", szDesc));
                             if (pfSuccess)
                                 *pfSuccess = true;
                         }
