@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 32982 2010-10-07 15:12:02Z vboxsync $ */
+/* $Id: DevAPIC.cpp 32985 2010-10-07 15:16:54Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1104,7 +1104,7 @@ static void apic_init_ipi(APICDeviceInfo* dev, APICState *s)
     s->esr = 0;
     memset(s->icr, 0, sizeof(s->icr));
     s->divide_conf = 0;
-    s->count_shift = 0;
+    s->count_shift = 1;
     s->initial_count = 0;
     s->initial_count_load_time = 0;
     s->next_time = 0;
