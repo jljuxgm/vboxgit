@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 33174 2010-10-16 18:10:47Z vboxsync $ */
+/* $Id: DevVGA.h 33176 2010-10-16 18:56:32Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -411,6 +411,9 @@ typedef struct VGAState {
     uint64_t                    cbVgaBios;
     /** The name of the VGA BIOS ROM file. */
     char                        *pszVgaBiosFile;
+# if HC_ARCH_BITS == 32
+    uint32_t                    Padding6a;
+# endif
 #endif /* VBOX */
 #ifdef VBOX_WITH_HGSMI
     /** Base port in the assigned PCI I/O space. */
