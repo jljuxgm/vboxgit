@@ -1,4 +1,4 @@
-/* $Id: isofs.cpp 32997 2010-10-08 08:26:59Z vboxsync $ */
+/* $Id: isofs.cpp 33148 2010-10-15 11:06:49Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 file system handling.
  */
@@ -548,11 +548,11 @@ RTR3DECL(int) RTIsoFsExtractFile(PRTISOFSFILE pFile, const char *pszSource,
             if (RT_SUCCESS(rc))
             {
                 size_t cbToRead, cbRead, cbWritten;
-                uint8_t byBuffer[_4K];
+                uint8_t byBuffer[_64K];
                 while (   cbLength > 0
                        && RT_SUCCESS(rc))
                 {
-                    cbToRead = RT_MIN(cbLength, _4K);
+                    cbToRead = RT_MIN(cbLength, _64K);
                     rc = RTFileRead(pFile->file, (uint8_t*)byBuffer, cbToRead, &cbRead);
                     if (RT_FAILURE(rc))
                         break;
