@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 30891 2010-07-17 01:58:30Z vboxsync $ */
+/* $Id: PGMAllBth.h 30895 2010-07-17 02:25:17Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3500,8 +3500,8 @@ PGM_BTH_DECL(int, VerifyAccessSyncPage)(PVMCPU pVCpu, RTGCPTR GCPtrPage, unsigne
     }
 
 #  elif PGM_GST_TYPE == PGM_TYPE_AMD64
-    unsigned        iPDSrc;
-    PX86PML4E       pPml4eSrc;
+    unsigned        iPDSrc = 0;         /* shut up gcc */
+    PX86PML4E       pPml4eSrc = NULL;   /* ditto */
     X86PDPE         PdpeSrc;
     PGSTPD          pPDSrc = pgmGstGetLongModePDPtr(pVCpu, GCPtrPage, &pPml4eSrc, &PdpeSrc, &iPDSrc);
     if (RT_UNLIKELY(!pPDSrc))
