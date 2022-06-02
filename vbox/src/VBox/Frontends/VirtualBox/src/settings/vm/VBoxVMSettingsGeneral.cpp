@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsGeneral.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxVMSettingsGeneral.cpp 32510 2010-09-15 11:33:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2008 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -143,16 +143,20 @@ void VBoxVMSettingsGeneral::setValidator (QIWidgetValidator *aVal)
 
 void VBoxVMSettingsGeneral::setOrderAfter (QWidget *aWidget)
 {
-    /* Setup Tab order */
+    /* Basic tab-order */
     setTabOrder (aWidget, mTwGeneral->focusProxy());
     setTabOrder (mTwGeneral->focusProxy(), mLeName);
     setTabOrder (mLeName, mOSTypeSelector);
 
+    /* Advanced tab-order */
     setTabOrder (mOSTypeSelector, mPsSnapshot);
     setTabOrder (mPsSnapshot, mCbClipboard);
     setTabOrder (mCbClipboard, mCbSaveMounted);
+    setTabOrder (mCbSaveMounted, mCbShowToolBar);
+    setTabOrder (mCbShowToolBar, mCbToolBarAlignment);
 
-    setTabOrder (mCbSaveMounted, mTeDescription);
+    /* Description tab-order */
+    setTabOrder (mCbToolBarAlignment, mTeDescription);
 }
 
 void VBoxVMSettingsGeneral::retranslateUi()
