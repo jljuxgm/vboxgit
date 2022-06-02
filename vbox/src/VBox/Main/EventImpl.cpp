@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30559 2010-07-01 14:51:30Z vboxsync $ */
+/* $Id: EventImpl.cpp 30591 2010-07-02 18:41:57Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -356,6 +356,8 @@ public:
     {
         return mActive;
     }
+
+    friend class EventSource;
 };
 
 /* Handy class with semantics close to ComPtr, but for ListenerRecord */
@@ -735,7 +737,15 @@ STDMETHODIMP EventSource::FireEvent(IEvent * aEvent,
              * could be temporary released when calling event handler.
              */
             cbRc = record.obj()->process(aEvent, aWaitable, pit, alock);
-            // what to do with cbRc?
+
+            if (FAILED_DEAD_INTERFACE(cbRc))
+            {
+                AutoWriteLock awlock(this COMMA_LOCKVAL_SRC_POS);
+                Listeners::iterator lit = m->mListeners.find(record.obj()->mListener);
+                if (lit != m->mListeners.end())
+                    m->mListeners.erase(lit);
+            }
+            // anything else to do with cbRc?
         }
     } while (0);
     /* We leave the lock here */
