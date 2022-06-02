@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 30947 2010-07-21 10:51:32Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 30975 2010-07-22 09:19:17Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -956,9 +956,19 @@ static int lsilogicRegisterWrite(PLSILOGICSCSI pThis, uint32_t uOffset, void *pv
         }
         case LSILOGIC_REG_REQUEST_QUEUE:
         {
-            ASMAtomicWriteU32(&pThis->CTX_SUFF(pRequestQueueBase)[pThis->uRequestQueueNextEntryFreeWrite], u32);
-            pThis->uRequestQueueNextEntryFreeWrite++;
-            pThis->uRequestQueueNextEntryFreeWrite %= pThis->cRequestQueueEntries;
+            uint32_t uNextWrite = ASMAtomicReadU32(&pThis->uRequestQueueNextEntryFreeWrite);
+
+            ASMAtomicWriteU32(&pThis->CTX_SUFF(pRequestQueueBase)[uNextWrite], u32);
+
+            /*
+             * Don't update the value in place. It can happen that we get preempted
+             * after the increment but before the modulo.
+             * Another EMT will read the wrong value when processing the queues
+             * and hang in an endless loop creating thousands of requests.
+             */
+            uNextWrite++;
+            uNextWrite %= pThis->cRequestQueueEntries;
+            ASMAtomicWriteU32(&pThis->uRequestQueueNextEntryFreeWrite, uNextWrite);
 
             /* Send notification to R3 if there is not one send already. */
             if (!ASMAtomicXchgBool(&pThis->fNotificationSend, true))
@@ -3421,11 +3431,11 @@ static DECLCALLBACK(bool) lsilogicNotifyQueueConsumer(PPDMDEVINS pDevIns, PPDMQU
 
     LogFlowFunc(("pDevIns=%#p pItem=%#p\n", pDevIns, pItem));
 
-    /* Only process request which arrived before we received the notification. */
-    uint32_t uRequestQueueNextEntryWrite = ASMAtomicReadU32(&pLsiLogic->uRequestQueueNextEntryFreeWrite);
-
     /* Reset notification event. */
     ASMAtomicXchgBool(&pLsiLogic->fNotificationSend, false);
+
+    /* Only process request which arrived before we received the notification. */
+    uint32_t uRequestQueueNextEntryWrite = ASMAtomicReadU32(&pLsiLogic->uRequestQueueNextEntryFreeWrite);
 
     /* Go through the messages now and process them. */
     while (   RT_LIKELY(pLsiLogic->enmState == LSILOGICSTATE_OPERATIONAL)
