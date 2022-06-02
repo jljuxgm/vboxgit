@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 35809 2011-02-01 12:31:15Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 35824 2011-02-02 13:32:03Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -85,7 +85,7 @@ struct VBoxNetAdapter
     /** Denotes availability of this slot in adapter array. */
     VBOXNETADPSTATE   enmState;
     /** Corresponds to the digit at the end of device name. */
-    int               nUnit;
+    int               iUnit;
 
     union
     {
@@ -141,7 +141,7 @@ typedef VBOXNETADP *PVBOXNETADP;
 
 DECLHIDDEN(int) vboxNetAdpInit(void);
 DECLHIDDEN(void) vboxNetAdpShutdown(void);
-DECLHIDDEN(int) vboxNetAdpCreate (PVBOXNETADP *ppNew, const char *pcszName);
+DECLHIDDEN(int) vboxNetAdpCreate(PVBOXNETADP *ppNew, const char *pcszName);
 DECLHIDDEN(int) vboxNetAdpDestroy(PVBOXNETADP pThis);
 DECLHIDDEN(PVBOXNETADP) vboxNetAdpFindByName(const char *pszName);
 DECLHIDDEN(void) vboxNetAdpComposeMACAddress(PVBOXNETADP pThis, PRTMAC pMac);

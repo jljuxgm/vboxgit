@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-freebsd.c 35809 2011-02-01 12:31:15Z vboxsync $ */
+/* $Id: VBoxNetAdp-freebsd.c 35824 2011-02-02 13:32:03Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), FreeBSD Specific Code.
  */
@@ -263,7 +263,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMac, const char *pcszName)
     if (ifp == NULL)
         return VERR_NO_MEMORY;
 
-    if_initname(ifp, VBOXNETADP_NAME, pThis->nUnit);
+    if_initname(ifp, VBOXNETADP_NAME, pThis->iUnit);
     ifp->if_softc = pThis;
     ifp->if_mtu = ETHERMTU;
     ifp->if_flags = IFF_BROADCAST | IFF_SIMPLEX | IFF_MULTICAST;
