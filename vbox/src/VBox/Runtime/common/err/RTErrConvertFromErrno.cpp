@@ -1,10 +1,10 @@
-/* $Id: RTErrConvertFromErrno.cpp 31103 2010-07-26 10:58:27Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 31316 2010-08-02 15:36:30Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -430,7 +430,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         case EMEDIUMTYPE:       return VERR_MEDIA_NOT_RECOGNIZED;
 #endif
 #if defined(EWOULDBLOCK) && (EWOULDBLOCK != EAGAIN)
-        case EWOULDBLOCK        return VERR_TRY_AGAIN;
+        case EWOULDBLOCK:       return VERR_TRY_AGAIN;
 #endif
 
         /* Non-linux */
