@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 28918 2010-04-29 18:30:09Z vboxsync $ */
+/* $Id: dir-posix.cpp 35884 2011-02-08 01:14:05Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -253,7 +253,7 @@ static int rtDirReadMore(PRTDIR pDir)
             if (rc)
             {
                 rc = RTErrConvertFromErrno(rc);
-                AssertRC(rc);
+                //AssertRC(rc);
                 return rc;
             }
             if (!pResult)
