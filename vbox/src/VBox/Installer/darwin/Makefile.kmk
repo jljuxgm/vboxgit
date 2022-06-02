@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31672 2010-08-13 17:55:41Z vboxsync $
+# $Id: Makefile.kmk 31674 2010-08-13 18:25:28Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -1072,5 +1072,5 @@ endif
 		$(VBOX_PATH_PACK_TMP)/VirtualBoxCLI.pkg.res
 
 ifndef VBOX_OSE
- include $(PATH_SUB_CURRENT)/Bundle.kmk
+ include $(PATH_SUB_CURRENT)/darwin/Bundle.kmk
 endif
