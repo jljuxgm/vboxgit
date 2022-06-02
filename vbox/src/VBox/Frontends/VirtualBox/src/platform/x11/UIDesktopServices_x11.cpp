@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_x11.cpp 34834 2010-12-08 13:53:03Z vboxsync $ */
+/* $Id: UIDesktopServices_x11.cpp 34863 2010-12-09 10:04:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,7 +43,7 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
             << "Comment=Starts the VirtualBox machine " << strName << endl
             << "Type=Application" << endl
             << "Exec=" << QCoreApplication::applicationFilePath() << " --comment \"" << strName << "\" --startvm \"" << strUuid << "\"" << endl
-            << "Icon=VBox.png" << endl;
+            << "Icon=virtualbox-vbox.png" << endl;
         /* This would be a real file link entry, but then we could also simply
          * use a soft link (on most UNIX fs):
         out << "[Desktop Entry]" << endl
@@ -51,7 +51,7 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
             << "Version=1.0" << endl
             << "Name=" << strName << endl
             << "Type=Link" << endl
-            << "Icon=VBox.png" << endl
+            << "Icon=virtualbox-vbox.png" << endl
         */
         return true;
     }
