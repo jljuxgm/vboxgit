@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: UISession.cpp 32482 2010-09-14 13:38:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -612,11 +612,13 @@ void UISession::loadSessionSettings()
         QAction *pGuestAutoresizeSwitch = uimachine()->actionsPool()->action(UIActionIndex_Toggle_GuestAutoresize);
         pGuestAutoresizeSwitch->setChecked(strSettings != "off");
 
-#ifdef Q_WS_WIN
+#if 0 /* Disabled for now! */
+# ifdef Q_WS_WIN
         /* Disable host screen-saver if requested: */
         if (vboxGlobal().settings().hostScreenSaverDisabled())
             SystemParametersInfo(SPI_SETSCREENSAVEACTIVE, false, 0, 0);
-#endif /* Q_WS_WIN */
+# endif /* Q_WS_WIN */
+#endif
     }
 }
 
@@ -635,10 +637,12 @@ void UISession::saveSessionSettings()
                              uimachine()->actionsPool()->action(UIActionIndex_Toggle_GuestAutoresize)->isChecked() ?
                              QString() : "off");
 
-#ifdef Q_WS_WIN
+#if 0 /* Disabled for now! */
+# ifdef Q_WS_WIN
         /* Restore screen-saver activity to system default: */
         SystemParametersInfo(SPI_SETSCREENSAVEACTIVE, true, 0, 0);
-#endif /* Q_WS_WIN */
+# endif /* Q_WS_WIN */
+#endif
     }
 }
 

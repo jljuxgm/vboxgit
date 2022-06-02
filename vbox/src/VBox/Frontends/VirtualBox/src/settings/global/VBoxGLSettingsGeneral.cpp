@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSettingsGeneral.cpp 32100 2010-08-30 14:21:58Z vboxsync $ */
+/* $Id: VBoxGLSettingsGeneral.cpp 32482 2010-09-14 13:38:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -37,10 +37,10 @@ VBoxGLSettingsGeneral::VBoxGLSettingsGeneral()
     mCbCheckPresentationMode->hide();
     mWtSpacer2->hide();
 #endif /* !Q_WS_MAC */
-#ifndef Q_WS_WIN
+//#ifndef Q_WS_WIN /* Checkbox hidden for now! */
     mCbDisableHostScreenSaver->hide();
     mWtSpacer3->hide();
-#endif /* !Q_WS_WIN */
+//#endif /* !Q_WS_WIN */
 
     if (mCbCheckTrayIcon->isHidden() &&
         mCbCheckPresentationMode->isHidden() &&
