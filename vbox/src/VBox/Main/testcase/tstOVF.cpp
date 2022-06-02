@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 30931 2010-07-20 15:05:18Z vboxsync $ */
+/* $Id: tstOVF.cpp 30956 2010-07-21 12:59:12Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -349,11 +349,9 @@ int main(int argc, char *argv[])
 
             RTPrintf("  Deleting machine %ls...\n", bstrUUID.raw());
             SafeArray<BSTR> sfaFiles;
-            rc = pVirtualBox->UnregisterMachine(bstrUUID,
-                                                true /* fDetachMedia */,
-                                                ComSafeArrayAsOutParam(sfaFiles),
-                                                pMachine.asOutParam());
-            if (FAILED(rc)) throw MyError(rc, "VirtualBox::UnregisterMachine() failed\n");
+            rc = pMachine->Unregister(true /* fDetachMedia */,
+                                      ComSafeArrayAsOutParam(sfaFiles));
+            if (FAILED(rc)) throw MyError(rc, "Machine::Unregister() failed\n");
 
             for (size_t u = 0;
                  u < sfaFiles.size();
@@ -363,7 +361,7 @@ int main(int argc, char *argv[])
                 llFiles2Delete.push_back(sfaFiles[u]);
             }
 
-            rc = pMachine->DeleteSettings();
+            rc = pMachine->Delete();
             if (FAILED(rc)) throw MyError(rc, "Machine::DeleteSettings() failed\n");
         }
     }

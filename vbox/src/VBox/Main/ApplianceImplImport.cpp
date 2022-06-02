@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 30929 2010-07-20 14:11:51Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 30956 2010-07-21 12:59:12Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1267,9 +1267,12 @@ HRESULT Appliance::importFS(const LocationInfo &locInfo,
             Bstr bstrGuid = guid.toUtf16();
             ComPtr<IMachine> failedMachine;
             SafeArray<BSTR> abstrPaths;
-            rc2 = mVirtualBox->UnregisterMachine(bstrGuid, false, ComSafeArrayAsOutParam(abstrPaths), failedMachine.asOutParam());
+            rc2 = mVirtualBox->GetMachine(bstrGuid, failedMachine.asOutParam());
             if (SUCCEEDED(rc2))
-                rc2 = failedMachine->DeleteSettings();
+            {
+                rc2 = failedMachine->Unregister(false, ComSafeArrayAsOutParam(abstrPaths));
+                rc2 = failedMachine->Delete();
+            }
         }
     }
 

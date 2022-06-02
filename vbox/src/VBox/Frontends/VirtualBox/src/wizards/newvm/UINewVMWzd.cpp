@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 30929 2010-07-20 14:11:51Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 30956 2010-07-21 12:59:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -781,11 +781,9 @@ bool UINewVMWzdPage5::constructMachine()
         if (!success)
         {
             /* Unregister on failure */
-            QVector<QString> files;
-            CMachine machine;
-            vbox.UnregisterMachine(machineId, false /*fDetachMedia*/, files, machine);
+            QVector<QString> files = m_Machine.Unregister(false /*fDetachMedia*/);
             if (vbox.isOk())
-                m_Machine.DeleteSettings();
+                m_Machine.Delete();
             return false;
         }
     }

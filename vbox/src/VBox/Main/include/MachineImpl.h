@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 30940 2010-07-20 18:07:30Z vboxsync $ */
+/* $Id: MachineImpl.h 30956 2010-07-21 12:59:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -480,7 +480,8 @@ public:
     STDMETHOD(SetHWVirtExProperty)(HWVirtExPropertyType_T property, BOOL aVal);
     STDMETHOD(SaveSettings)();
     STDMETHOD(DiscardSettings)();
-    STDMETHOD(DeleteSettings)();
+    STDMETHOD(Unregister) (BOOL fCloseMedia, ComSafeArrayOut(BSTR, aFiles));
+    STDMETHOD(Delete)();
     STDMETHOD(Export)(IAppliance *aAppliance, IVirtualSystemDescription **aDescription);
     STDMETHOD(GetSnapshot)(IN_BSTR aId, ISnapshot **aSnapshot);
     STDMETHOD(FindSnapshot)(IN_BSTR aName, ISnapshot **aSnapshot);
@@ -682,7 +683,6 @@ public:
     bool checkForSpawnFailure();
 
     HRESULT prepareRegister();
-    HRESULT prepareUnregister(bool fDetachMedia, MediaList &llMedia);
 
     HRESULT getSharedFolder(CBSTR aName,
                             ComObjPtr<SharedFolder> &aSharedFolder,
