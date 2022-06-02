@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.h 34307 2010-11-24 10:56:41Z vboxsync $ */
+/* $Id: ExtPackUtil.h 34391 2010-11-26 11:12:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -25,6 +25,12 @@
 /** @name VBOX_EXTPACK_DESCRIPTION_NAME
  * The name of the description file in an extension pack.  */
 #define VBOX_EXTPACK_DESCRIPTION_NAME   "ExtPack.xml"
+/** @name VBOX_EXTPACK_DESCRIPTION_NAME
+ * The name of the manifest file in an extension pack.  */
+#define VBOX_EXTPACK_MANIFEST_NAME      "ExtPack.manifest"
+/** @name VBOX_EXTPACK_SIGNATURE_NAME
+ * The name of the signature file in an extension pack.  */
+#define VBOX_EXTPACK_SIGNATURE_NAME     "ExtPack.signature"
 /** @name VBOX_EXTPACK_SUFFIX
  * The suffix of a extension pack tarball. */
 #define VBOX_EXTPACK_SUFFIX             ".vbox-extpack"
