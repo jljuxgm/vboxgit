@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 33334 2010-10-22 09:44:03Z vboxsync $ */
+/* $Id: MediumImpl.h 33339 2010-10-22 10:53:07Z vboxsync $ */
 
 /** @file
  *
@@ -246,7 +246,8 @@ public:
      *
      * @param aFilename             Filename to create (UTF8).
      * @param aFormat               Medium format for creating @a aFilename.
-     * @param aVariant              Which exact image format variant to use.
+     * @param aVariant              Which exact image format variant to use
+     *                              for the destination image.
      * @param aVDImageIOCallbacks   Pointer to the callback table for a
      *                              VDINTERFACEIO interface. May be NULL.
      * @param aVDImageIOUser        Opaque data for the callbacks.
@@ -264,7 +265,8 @@ public:
      *
      * @param aFilename             Filename to read (UTF8).
      * @param aFormat               Medium format for reading @a aFilename.
-     * @param aVariant              Which exact image format variant to use.
+     * @param aVariant              Which exact image format variant to use
+     *                              for the destination image.
      * @param aVDImageIOCallbacks   Pointer to the callback table for a
      *                              VDINTERFACEIO interface. May be NULL.
      * @param aVDImageIOUser        Opaque data for the callbacks.
