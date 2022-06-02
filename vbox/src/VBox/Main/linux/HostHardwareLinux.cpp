@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 33100 2010-10-13 12:09:23Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1122,7 +1122,8 @@ static int iwInit(inotifyWatch *pSelf)
 
     flags = fcntl(fd, F_GETFL, NULL);
     if (   flags < 0
-        || fcntl(fd, F_SETFL, flags | O_NONBLOCK) < 0)
+        || fcntl(fd, F_SETFL, flags | O_NONBLOCK) < 0
+        || fcntl(fd, F_SETFD, FD_CLOEXEC) < 0 /* race here */)
     {
         Assert(errno > 0);
         rc = RTErrConvertFromErrno(errno);
@@ -1226,11 +1227,19 @@ static int pipeCreateSimple(int *phPipeRead, int *phPipeWrite)
     AssertPtrReturn(phPipeWrite, VERR_INVALID_POINTER);
 
     /*
-     * Create the pipe and set the close-on-exec flag if requested.
+     * Create the pipe and set the close-on-exec flag.
      */
     int aFds[2] = {-1, -1};
     if (pipe(aFds))
         return RTErrConvertFromErrno(errno);
+    if (   fcntl(aFds[0], F_SETFD, FD_CLOEXEC) < 0
+        || fcntl(aFds[1], F_SETFD, FD_CLOEXEC) < 0)
+    {
+        int rc = RTErrConvertFromErrno(errno);
+        close(aFds[0]);
+        close(aFds[1]);
+        return rc;
+    }
 
     *phPipeRead  = aFds[0];
     *phPipeWrite = aFds[1];
