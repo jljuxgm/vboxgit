@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMUsb.cpp 35810 2011-02-01 13:00:24Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -636,7 +636,11 @@ static int pdmR3UsbCreateDevice(PVM pVM, PPDMUSBHUB pHub, PPDMUSB pUsbDev, int i
                 pUsbIns->pReg->szName, pUsbIns->iInstance, pHub, rc));
     }
     else
+    {
         AssertMsgFailed(("Failed to construct '%s'/%d! %Rra\n", pUsbIns->pReg->szName, pUsbIns->iInstance, rc));
+        if (rc == VERR_VERSION_MISMATCH)
+            rc = VERR_PDM_DRIVER_VERSION_MISMATCH;
+    }
     if (fAtRuntime)
         pdmR3UsbDestroyDevice(pVM, pUsbIns);
     /* else: destructors are invoked later. */

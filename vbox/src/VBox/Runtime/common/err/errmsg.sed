@@ -1,4 +1,4 @@
-# $Id: errmsg.sed 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: errmsg.sed 35810 2011-02-01 13:00:24Z vboxsync $
 ## @file
 # IPRT - SED script for converting */err.h.
 #
@@ -93,6 +93,11 @@ s/  { NULL, \"\([^.!?"]*[.!?][.!?]*\)/  { \"\1\",\n    \"\1/
 
 # terminate the string
 s/[[:space:]]*\*\//\"\,/
+
+# translate empty lines into new-lines (only one, please).
+s/[[:space:]]*[[:space:]]\*[[:space:]][[:space:]]*\*[[:space:]][[:space:]]*/\\n/g
+
+# remove asterics.
 s/[[:space:]]*[[:space:]]\*[[:space:]][[:space:]]*/ /g
 b end
 

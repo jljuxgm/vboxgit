@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMMRC.cpp 35810 2011-02-01 13:00:24Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -72,7 +72,7 @@ VMMRCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
              * Validate the svn revision (uArg).
              */
             if (uArg != VMMGetSvnRev())
-                return VERR_VERSION_MISMATCH;
+                return VERR_VMM_RC_VERSION_MISMATCH;
 
             /*
              * Initialize the runtime.

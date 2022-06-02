@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMMR0.cpp 35810 2011-02-01 13:00:24Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -209,7 +209,7 @@ static int vmmR0InitVM(PVM pVM, uint32_t uSvnRev)
     {
         LogRel(("VMMR0InitVM: Revision mismatch, r3=%d r0=%d\n", uSvnRev, VMMGetSvnRev()));
         SUPR0Printf("VMMR0InitVM: Revision mismatch, r3=%d r0=%d\n", uSvnRev, VMMGetSvnRev());
-        return VERR_VERSION_MISMATCH;
+        return VERR_VMM_R0_VERSION_MISMATCH;
     }
     if (    !VALID_PTR(pVM)
         ||  pVM->pVMR0 != pVM)
