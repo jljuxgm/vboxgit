@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 34326 2010-11-24 14:03:55Z vboxsync $ */
+/* $Id: HWACCM.cpp 34564 2010-12-01 11:49:37Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2397,6 +2397,7 @@ VMMR3DECL(bool) HWACCMR3IsRescheduleRequired(PVM pVM, PCPUMCTX pCtx)
 {
     /** The VMM device heap is a requirement for emulating real mode or protected mode without paging when the unrestricted guest execution feature is missing. (VT-x only) */
     if (    pVM->hwaccm.s.vmx.fEnabled
+        &&  !pVM->hwaccm.s.vmx.fUnrestrictedGuest
         &&  !CPUMIsGuestInPagedProtectedModeEx(pCtx)
         &&  !PDMVMMDevHeapIsEnabled(pVM)
         &&  (pVM->hwaccm.s.fNestedPaging || CPUMIsGuestInRealModeEx(pCtx)))
