@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 31804 2010-08-19 21:10:57Z vboxsync $ */
+/* $Id: VDICore.h 31810 2010-08-20 10:31:26Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -372,7 +372,7 @@ DECLINLINE(void) setImageDataOffset(PVDIHEADER ph, uint32_t offData)
     switch (GET_MAJOR_HEADER_VERSION(ph))
     {
         case 0: return;
-        case 1: ph->u.v1.offData = offData;
+        case 1: ph->u.v1.offData = offData; return;
     }
     AssertFailed();
 }
