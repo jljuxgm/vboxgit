@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 34406 2010-11-26 16:45:34Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 34465 2010-11-29 14:19:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1178,18 +1178,37 @@ static int handleCtrlCopyTo(HandlerArg *a)
                 uint32_t uCurObject = 1;
                 RTListForEach(&listToCopy, pNode, DIRECTORYENTRY, Node)
                 {
+                    char *pszDestPath = RTStrDup(pNode->pszDestPath);
+                    AssertPtrBreak(pszDestPath);
+                    RTPathStripFilename(pszDestPath);
+
                     if (fVerbose)
-#ifndef DEBUG
-                        RTPrintf("Copying \"%s\" (%u/%u) ...\n",
-                                 pNode->pszSourcePath, uCurObject, cObjects);
-#else
-                        RTPrintf("Copying \"%s\" to \"%s\" (%u/%u) ...\n",
-                                 pNode->pszSourcePath, pNode->pszDestPath, uCurObject, cObjects);
-#endif
-                    /* Finally copy the desired file (if no dry run selected). */
+                        RTPrintf("Preparing guest directory \"%s\" ...\n", pszDestPath);
+
+                    ComPtr<IProgress> progressDir;
                     if (!fDryRun)
-                        vrc = ctrlCopyFileToGuest(guest, pNode->pszSourcePath, pNode->pszDestPath,
-                                                  Utf8UserName.c_str(), Utf8Password.c_str(), uFlags);
+                        rc = guest->CreateDirectory(Bstr(pszDestPath).raw(),
+                                                    Bstr(Utf8UserName).raw(), Bstr(Utf8Password).raw(),
+                                                    0 /* Creation mode */, CreateDirectoryFlag_Parents,
+                                                    progressDir.asOutParam());
+                    RTStrFree(pszDestPath);
+                    if (FAILED(rc))
+                        vrc = ctrlPrintError(guest, COM_IIDOF(IGuest));
+                    else
+                    {
+                        if (fVerbose)
+                    #ifndef DEBUG
+                            RTPrintf("Copying \"%s\" (%u/%u) ...\n",
+                                     pNode->pszSourcePath, uCurObject, cObjects);
+                    #else
+                            RTPrintf("Copying \"%s\" to \"%s\" (%u/%u) ...\n",
+                                     pNode->pszSourcePath, pNode->pszDestPath, uCurObject, cObjects);
+                    #endif
+                        /* Finally copy the desired file (if no dry run selected). */
+                        if (!fDryRun)
+                            vrc = ctrlCopyFileToGuest(guest, pNode->pszSourcePath, pNode->pszDestPath,
+                                                      Utf8UserName.c_str(), Utf8Password.c_str(), uFlags);
+                    }
                     if (RT_FAILURE(vrc))
                         break;
                     uCurObject++;
