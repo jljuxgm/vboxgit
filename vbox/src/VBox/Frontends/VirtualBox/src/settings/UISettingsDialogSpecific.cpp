@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 34543 2010-12-01 00:32:54Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 34596 2010-12-02 11:21:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -365,8 +365,8 @@ UIGLSettingsDlg::UIGLSettingsDlg(QWidget *pParent)
                 {
                     UISettingsPage *pSettingsPage = new UIGlobalSettingsExtension;
                     pSettingsPage->setId(i);
-                    addItem(":/shared_folder_32px.png", ":/shared_folder_disabled_32px.png",
-                            ":/shared_folder_16px.png", ":/shared_folder_disabled_16px.png",
+                    addItem(":/extension_pack_32px.png", ":/extension_pack_disabled_32px.png",
+                            ":/extension_pack_16px.png", ":/extension_pack_disabled_16px.png",
                             i, "#extension", pSettingsPage);
                     break;
                 }
