@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32925 2010-10-05 14:32:54Z vboxsync $
+# $Id: Makefile.kmk 32927 2010-10-05 14:47:23Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -129,9 +129,6 @@ endif
 # VBoxDD (shared object)
 #
 VBoxDD_TEMPLATE         = VBOXR3
-ifdef VBOX_WITH_DTRACE_R3
- VBoxDD_TEMPLATE        = VBOXR3OSX105
-endif
 VBoxDD_SDKS.win         = WINPSDK DXSDK W2K3DDK VBOX_NTDLL
 VBoxDD_SOURCES          = \
 	Builtins.cpp
