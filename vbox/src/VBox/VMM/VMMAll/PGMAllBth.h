@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 30889 2010-07-17 01:54:47Z vboxsync $ */
+/* $Id: PGMAllBth.h 30891 2010-07-17 01:58:30Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2392,7 +2392,10 @@ PGM_BTH_DECL(int, CheckPageFault)(PVMCPU pVCpu, uint32_t uErr, PGSTPDE pPdeSrc, 
             pPteSrc = &PteSrc;
         }
         else
-            AssertRCReturn(rc, rc);
+        {
+            AssertRC(rc);
+            return rc;
+        }
 
         /*
          * Real page fault?
