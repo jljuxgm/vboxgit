@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: MachineImpl.cpp 35429 2011-01-07 14:42:24Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7528,7 +7528,10 @@ HRESULT Machine::loadStorageDevices(StorageController *aStorageController,
         {
             case DeviceType_Floppy:
             case DeviceType_DVD:
-                rc = mParent->findRemoveableMedium(dev.deviceType, dev.uuid, false /* fRefresh */, medium);
+                if (dev.strHostDriveSrc.isNotEmpty())
+                    rc = mParent->host()->findHostDriveByName(dev.deviceType, dev.strHostDriveSrc, false /* fRefresh */, medium);
+                else
+                    rc = mParent->findRemoveableMedium(dev.deviceType, dev.uuid, false /* fRefresh */, medium);
                 if (FAILED(rc))
                     return rc;
             break;
