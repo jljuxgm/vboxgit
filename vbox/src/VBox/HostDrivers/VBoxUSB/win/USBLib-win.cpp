@@ -1,4 +1,4 @@
-/* $Id: USBLib-win.cpp 34257 2010-11-22 16:57:23Z vboxsync $ */
+/* $Id: USBLib-win.cpp 34258 2010-11-22 17:06:39Z vboxsync $ */
 /** @file
  * USBLIB - USB support library interface, Windows.
  */
@@ -2872,8 +2872,8 @@ USBLIB_DECL(int) USBLibGetDevices(PUSBDEVICE *ppDevices, uint32_t *pcDevices)
 
     /* 3: Add all host devices to array of captured devices; obviously making sure there are no duplicates */
     Assert(pHostDevices && pCaptured);
-    pList = pCaptured;
-    for (uint32_t i = 0; i < numdev.cUSBDevices; i++)
+    pList   = pCaptured;
+    while (pList)
     {
         uint32_t j;
 
@@ -2882,14 +2882,14 @@ USBLIB_DECL(int) USBLibGetDevices(PUSBDEVICE *ppDevices, uint32_t *pcDevices)
 
         for (j = 0; j < cHostDevices; j++)
         {
-            char *pszDeviceRegPath = usblibQueryDeviceRegPath(i);
+            char *pszDeviceRegPath = usblibQueryDeviceRegPath(j);
 
             Assert(pszDeviceRegPath);
             if (pszDeviceRegPath)
             {
                 if (!strcmp(pszDeviceRegPath, pDevice->pszAddress))
                 {
-                    Log(("usbLibGetDevices: Duplicate device %s (%s)\n", pszDeviceRegPath, usblibQueryDeviceName(i)));
+                    Log(("usbLibGetDevices: Duplicate device %s (%s)\n", pszDeviceRegPath, usblibQueryDeviceName(j)));
                     break;
                 }
             }
