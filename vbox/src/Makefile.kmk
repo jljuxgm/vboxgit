@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33377 2010-10-24 13:19:45Z vboxsync $
+# $Id: Makefile.kmk 34473 2010-11-29 15:38:07Z vboxsync $
 ## @file
 # Top-level makefile for the src directory.
 #
@@ -64,7 +64,7 @@ else ifdef VBOX_ONLY_SDK
 
 else  # !VBOX_ONLY_ADDITIONS
  # Build IPRT first because xpcom (IPC, nspr, python) depends on it.
- SUBDIRS = VBox/Runtime	bldprogs libs VBox recompiler
+ SUBDIRS = libs VBox/Runtime bldprogs VBox recompiler
  ifneq ($(wildcard apps),)
   SUBDIRS += apps
  endif
