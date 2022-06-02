@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30838 2010-07-14 13:52:45Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30839 2010-07-14 14:00:28Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3441,6 +3441,7 @@ void pgmR3PhysUnmapChunk(PVM pVM)
  * @param   ppChunk     Where to store the chunk tracking structure.
  *
  * @remarks Called from within the PGM critical section.
+ * @remarks Can be called from any thread!
  */
 int pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk)
 {
@@ -3489,7 +3490,7 @@ int pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk)
         {
 #ifdef VBOX_WITH_LARGE_ADDRESS_SPACE_ON_32_BIT_HOST
             /* Postpone the unmap operation (which requires a rendezvous operation) as we own the PGM lock here. */
-            rc = VMR3ReqCallNoWaitU(pVM->pUVM, VMCPUID_ANY_QUEUE, (PFNRT)pgmR3PhysUnmapChunk, 1, pVM);
+            rc = VMR3ReqCallNoWaitU(pVM->pUVM, VMCPUID_ANY, (PFNRT)pgmR3PhysUnmapChunk, 1, pVM);
             AssertRC(rc);
 #else
             AssertFatalFailed();  /* can't happen */
