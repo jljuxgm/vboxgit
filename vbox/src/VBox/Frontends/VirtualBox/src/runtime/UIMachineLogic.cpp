@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 34083 2010-11-15 17:23:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1293,6 +1293,7 @@ void UIMachineLogic::sltMountStorageMedium()
         }
         /* Open VMM Dialog: */
         QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(target.type, defaultMachineWindow()->machineWindow());
+        defaultMachineWindow()->machineView()->setFocus();
         if (!strMediumId.isNull())
             newId = strMediumId;
         else return;
