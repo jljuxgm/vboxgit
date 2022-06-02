@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 30647 2010-07-06 08:09:01Z vboxsync $ */
+/* $Id: SELM.cpp 32613 2010-09-17 15:26:00Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -452,7 +452,8 @@ VMMR3DECL(void) SELMR3Relocate(PVM pVM)
     pVM->selm.s.TssTrap08.offIoBitmap = sizeof(VBOXTSS);
     /* TRPM will be updating the eip */
 
-    if (!pVM->selm.s.fDisableMonitoring)
+    if (    !pVM->selm.s.fDisableMonitoring
+        &&  !VMMIsHwVirtExtForced(pVM))
     {
         /*
          * Update shadow GDT/LDT/TSS write access handlers.
