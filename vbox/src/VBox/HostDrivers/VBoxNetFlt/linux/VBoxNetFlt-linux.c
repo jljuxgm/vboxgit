@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 35554 2011-01-14 08:46:18Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 35927 2011-02-10 13:57:42Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -50,8 +50,9 @@
 #define VBOXNETFLT_OS_SPECFIC 1
 #include "../VBoxNetFltInternal.h"
 
+#define VBOXNETFLT_WITH_FILTER_HOST2GUEST_SKBS_EXPERIMENT
 #ifdef CONFIG_NET_SCHED
-# define VBOXNETFLT_WITH_QDISC /* Comment this out to disable qdisc support */
+/*# define VBOXNETFLT_WITH_QDISC  Comment this out to disable qdisc support */
 # ifdef VBOXNETFLT_WITH_QDISC
 # include <net/pkt_sched.h>
 # endif /* VBOXNETFLT_WITH_QDISC */
