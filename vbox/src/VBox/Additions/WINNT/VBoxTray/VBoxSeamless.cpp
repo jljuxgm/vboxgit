@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 32687 2010-09-22 08:40:24Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -312,7 +312,7 @@ unsigned __stdcall VBoxSeamlessThread(void *pInstance)
         waitEvent.u32EventMaskIn = VMMDEV_EVENT_SEAMLESS_MODE_CHANGE_REQUEST;
         if (DeviceIoControl(gVBoxDriver, VBOXGUEST_IOCTL_WAITEVENT, &waitEvent, sizeof(waitEvent), &waitEvent, sizeof(waitEvent), &cbReturned, NULL))
         {
-            Log(("VBoxTray: VBoxSeamlessThread: DeviceIOControl succeded\n"));
+            Log(("VBoxTray: VBoxSeamlessThread: DeviceIOControl succeeded\n"));
 
             /* are we supposed to stop? */
             if (WaitForSingleObject(pCtx->pEnv->hStopEvent, 0) == WAIT_OBJECT_0)

@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 33561 2010-10-28 14:28:37Z vboxsync $ */
+/* $Id: vboxhgcm.c 33595 2010-10-29 10:35:00Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -452,7 +452,7 @@ static bool _crVBoxHGCMWriteBytes(CRConnection *conn, const void *buf, uint32_t 
 
     if (conn->cbHostBufferAllocated < len)
     {
-        crDebug("Host buffer too small %d out of requsted %d bytes, reallocating", conn->cbHostBufferAllocated, len);
+        crDebug("Host buffer too small %d out of requested %d bytes, reallocating", conn->cbHostBufferAllocated, len);
         crFree(conn->pHostBuffer);
         conn->pHostBuffer = crAlloc(len);
         if (!conn->pHostBuffer)
@@ -533,7 +533,7 @@ static int crVBoxHGCMCall(void *pvData, unsigned cbData)
                 rc = ioctl(g_crvboxhgcm.iGuestDrv, VBOXGUEST_IOCTL_HGCM_CALL(cbData), pvData);
                 if (rc==0)
                 {
-                    crWarning("vboxCall retry(%i) succeded", i+1);
+                    crWarning("vboxCall retry(%i) succeeded", i+1);
                     return VINF_SUCCESS;
                 }
                 else if (rc==VINF_INTERRUPTED)

@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 33558 2010-10-28 13:37:37Z vboxsync $ */
+/* $Id: GuestImpl.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 
 /** @file
  *
@@ -1041,7 +1041,7 @@ int Guest::notifyCtrlExecStatus(uint32_t                u32Function,
                         hr = it->second.pProgress->notifyComplete(S_OK);
                         AssertComRC(hr);
 
-                        LogFlowFunc(("Proccess (CID=%u, status=%u) terminated successfully\n",
+                        LogFlowFunc(("Process (CID=%u, status=%u) terminated successfully\n",
                                      pData->hdr.u32ContextID, pData->u32Status));
                     }
                     break;

@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DrvTAP.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
@@ -668,11 +668,11 @@ static int SolarisOpenVNIC(PDRVTAP pThis)
                         }
                         else
                             rc = PDMDrvHlpVMSetError(pThis->pDrvIns, VERR_HOSTIF_INIT_FAILED, RT_SRC_POS,
-                                                     N_("Failed to set appropriate promiscous mode"));
+                                                     N_("Failed to set appropriate promiscuous mode"));
                     }
                     else
                         rc = PDMDrvHlpVMSetError(pThis->pDrvIns, VERR_HOSTIF_INIT_FAILED, RT_SRC_POS,
-                                                 N_("Failed to activate promiscous mode for VNIC"));
+                                                 N_("Failed to activate promiscuous mode for VNIC"));
                 }
                 else
                     rc = PDMDrvHlpVMSetError(pThis->pDrvIns, VERR_HOSTIF_INIT_FAILED, RT_SRC_POS,

@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: STAM.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -1986,7 +1986,7 @@ static DECLCALLBACK(int) stamR3CmdStatsReset(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp
     if (RT_SUCCESS(rc))
         return pCmdHlp->pfnPrintf(pCmdHlp, NULL, "info: Statistics reset.\n");
 
-    return pCmdHlp->pfnVBoxError(pCmdHlp, rc, "Restting statistics.\n");
+    return pCmdHlp->pfnVBoxError(pCmdHlp, rc, "Resetting statistics.\n");
 }
 
 #endif /* VBOX_WITH_DEBUGGER */

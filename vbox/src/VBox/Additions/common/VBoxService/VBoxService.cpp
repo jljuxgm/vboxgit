@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 33550 2010-10-28 10:53:57Z vboxsync $ */
+/* $Id: VBoxService.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -255,7 +255,7 @@ int VBoxServiceArgUInt32(int argc, char **argv, const char *psz, int *pi, uint32
     if (RT_FAILURE(rc) || *pszNext)
         return VBoxServiceSyntax("Failed to convert interval '%s' to a number.\n", psz);
     if (*pu32 < u32Min || *pu32 > u32Max)
-        return VBoxServiceSyntax("The timesync interval of %RU32 secconds is out of range [%RU32..%RU32].\n",
+        return VBoxServiceSyntax("The timesync interval of %RU32 seconds is out of range [%RU32..%RU32].\n",
                                  *pu32, u32Min, u32Max);
     return 0;
 }

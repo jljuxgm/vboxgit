@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DevAHCI.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -7871,7 +7871,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         PDMDevHlpSTAMRegisterF(pDevIns, &pAhciPort->StatProfileReadWrite, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_NS_PER_CALL,
                                "Amount of time for the read/write operation to complete.", "/Devices/SATA%d/Port%d/ProfileReadWrite", iInstance, i);
         PDMDevHlpSTAMRegisterF(pDevIns, &pAhciPort->StatProfileDestroyScatterGatherList, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_NS_PER_CALL,
-                               "Amount of time to destroy the scatter gather list and free associated ressources.", "/Devices/SATA%d/Port%d/ProfileDestroyScatterGatherList", iInstance, i);
+                               "Amount of time to destroy the scatter gather list and free associated resources.", "/Devices/SATA%d/Port%d/ProfileDestroyScatterGatherList", iInstance, i);
 #endif
 
         ahciPortHwReset(pAhciPort);

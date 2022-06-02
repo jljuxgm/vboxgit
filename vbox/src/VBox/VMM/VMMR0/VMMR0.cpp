@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VMMR0.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -217,14 +217,14 @@ static int vmmR0InitVM(PVM pVM, uint32_t uSvnRev)
         LogCom(("vmmR0InitVM: after %p dereg\n", RTLogDefaultInstance()));
 
         pR0Logger->Logger.pfnLogger("hello ring-0 logger\n");
-        LogCom(("vmmR0InitVM: returned succesfully from direct logger call.\n"));
+        LogCom(("vmmR0InitVM: returned successfully from direct logger call.\n"));
         pR0Logger->Logger.pfnFlush(&pR0Logger->Logger);
-        LogCom(("vmmR0InitVM: returned succesfully from direct flush call.\n"));
+        LogCom(("vmmR0InitVM: returned successfully from direct flush call.\n"));
 
         RTLogSetDefaultInstanceThread(&pR0Logger->Logger, (uintptr_t)pVM->pSession);
         LogCom(("vmmR0InitVM: after %p reg2\n", RTLogDefaultInstance()));
         pR0Logger->Logger.pfnLogger("hello ring-0 logger\n");
-        LogCom(("vmmR0InitVM: returned succesfully from direct logger call (2). offScratch=%d\n", pR0Logger->Logger.offScratch));
+        LogCom(("vmmR0InitVM: returned successfully from direct logger call (2). offScratch=%d\n", pR0Logger->Logger.offScratch));
         RTLogSetDefaultInstanceThread(NULL, pVM->pSession);
         LogCom(("vmmR0InitVM: after %p dereg2\n", RTLogDefaultInstance()));
 

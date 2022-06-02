@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PDMUsb.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -231,7 +231,7 @@ static DECLCALLBACK(int) pdmR3UsbReg_Register(PCPDMUSBREGCB pCallbacks, PCPDMUSB
     AssertMsgReturn(pReg->cbInstance <= _1M,
                     ("Instance size %d bytes! (USB Device %s)\n", pReg->cbInstance, pReg->szName),
                     VERR_PDM_INVALID_USB_REGISTRATION);
-    AssertMsgReturn(pReg->pfnConstruct, ("No constructore! (USB Device %s)\n", pReg->szName),
+    AssertMsgReturn(pReg->pfnConstruct, ("No constructor! (USB Device %s)\n", pReg->szName),
                     VERR_PDM_INVALID_USB_REGISTRATION);
 
     /*

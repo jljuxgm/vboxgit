@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DevCodec.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -1826,7 +1826,7 @@ static int codecLookup(CODECState *pState, uint32_t cmd, PPFNCODECVERBPROCESSOR 
     Assert(CODEC_CAD(cmd) == pState->id);
     if (codecIsReservedNode(pState, CODEC_NID(cmd)))
     {
-        LogRel(("HDAcodec: cmd %x was addressed to reseved node\n", cmd));
+        LogRel(("HDAcodec: cmd %x was addressed to reserved node\n", cmd));
     }
     if (   CODEC_VERBDATA(cmd) == 0
         || CODEC_NID(cmd) >= pState->cTotalNodes)

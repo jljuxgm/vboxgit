@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -862,7 +862,7 @@ static int CmdListPartitions(int argc, char **argv, ComPtr<IVirtualBox> aVirtual
     int vrc = RTFileOpen(&RawFile, rawdisk.c_str(), RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
     if (RT_FAILURE(vrc))
     {
-        RTMsgError("Cannnot open the raw disk: %Rrc", vrc);
+        RTMsgError("Cannot open the raw disk: %Rrc", vrc);
         return vrc;
     }
 

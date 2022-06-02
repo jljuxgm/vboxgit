@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 33408 2010-10-25 09:57:32Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -1060,7 +1060,7 @@ static void vnetTransmitPendingPackets(PVNETSTATE pState, PVQUEUE pQueue, bool f
     else
         uHdrLen = sizeof(VNETHDR);
 
-    Log3(("%s vnetTransmitPendingPackets: About to trasmit %d pending packets\n", INSTANCE(pState),
+    Log3(("%s vnetTransmitPendingPackets: About to transmit %d pending packets\n", INSTANCE(pState),
           vringReadAvailIndex(&pState->VPCI, &pState->pTxQueue->VRing) - pState->pTxQueue->uNextAvailIndex));
 
     vpciSetWriteLed(&pState->VPCI, true);

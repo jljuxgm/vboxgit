@@ -1,4 +1,4 @@
-/* $Id: vboxhgsmi.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: vboxhgsmi.c 33595 2010-10-29 10:35:00Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -289,7 +289,7 @@ static int crVBoxHGCMCall(void *pvData, unsigned cbData)
                 rc = ioctl(g_crvboxhgsmi.iGuestDrv, VBOXGUEST_IOCTL_HGCM_CALL(cbData), pvData);
                 if (rc==0)
                 {
-                    crWarning("vboxCall retry(%i) succeded", i+1);
+                    crWarning("vboxCall retry(%i) succeeded", i+1);
                     return VINF_SUCCESS;
                 }
                 else if (rc==VINF_INTERRUPTED)

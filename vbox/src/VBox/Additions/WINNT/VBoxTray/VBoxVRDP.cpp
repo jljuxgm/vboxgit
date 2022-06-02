@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -333,7 +333,7 @@ unsigned __stdcall VBoxVRDPThread(void *pInstance)
         waitEvent.u32EventMaskIn = VMMDEV_EVENT_VRDP;
         if (DeviceIoControl(gVBoxDriver, VBOXGUEST_IOCTL_WAITEVENT, &waitEvent, sizeof(waitEvent), &waitEvent, sizeof(waitEvent), &cbReturned, NULL))
         {
-            Log(("VBoxTray: VBoxVRDPThread: DeviceIOControl succeded\n"));
+            Log(("VBoxTray: VBoxVRDPThread: DeviceIOControl succeeded\n"));
 
             /* are we supposed to stop? */
             if (WaitForSingleObject(pCtx->pEnv->hStopEvent, 0) == WAIT_OBJECT_0)

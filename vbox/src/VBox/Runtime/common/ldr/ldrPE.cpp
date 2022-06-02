@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ldrPE.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1222,7 +1222,7 @@ int rtldrPEValidateSectionHeaders(const IMAGE_SECTION_HEADER *paSections, unsign
 
             if (pSH->VirtualAddress & (pOptHdr->SectionAlignment - 1)) //ASSUMES power of 2 alignment.
             {
-                Log(("rtldrPEOpen: %s: VirtualAddress=%#x missaligned (%#x) - section #%d '%.*s'!!!\n",
+                Log(("rtldrPEOpen: %s: VirtualAddress=%#x misaligned (%#x) - section #%d '%.*s'!!!\n",
                      pszLogName, pSH->VirtualAddress, pOptHdr->SectionAlignment, iSH, sizeof(pSH->Name), pSH->Name));
                 return VERR_BAD_EXE_FORMAT;
             }
@@ -1252,7 +1252,7 @@ int rtldrPEValidateSectionHeaders(const IMAGE_SECTION_HEADER *paSections, unsign
 
         if (pSH->PointerToRawData & (pOptHdr->FileAlignment - 1)) //ASSUMES power of 2 alignment.
         {
-            Log(("rtldrPEOpen: %s: PointerToRawData=%#x missaligned (%#x) - section #%d '%.*s'!!!\n",
+            Log(("rtldrPEOpen: %s: PointerToRawData=%#x misaligned (%#x) - section #%d '%.*s'!!!\n",
                  pszLogName, pSH->PointerToRawData, pOptHdr->FileAlignment, iSH, sizeof(pSH->Name), pSH->Name));
             return VERR_BAD_EXE_FORMAT;
         }

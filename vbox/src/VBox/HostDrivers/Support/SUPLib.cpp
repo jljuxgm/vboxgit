@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: SUPLib.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1499,7 +1499,7 @@ static DECLCALLBACK(int) supLoadModuleResolveImport(RTLDRMOD hLdrMod, const char
         &&  strcmp(pszModule, "VBoxDrv.sys")
         &&  strcmp(pszModule, "VMMR0.r0"))
     {
-        AssertMsgFailed(("%s is importing from %s! (expected 'SUPR0.dll' or 'VMMR0.r0', case-sensitiv)\n", pvUser, pszModule));
+        AssertMsgFailed(("%s is importing from %s! (expected 'SUPR0.dll' or 'VMMR0.r0', case-sensitive)\n", pvUser, pszModule));
         return VERR_SYMBOL_NOT_FOUND;
     }
 

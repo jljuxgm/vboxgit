@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -577,7 +577,7 @@ static DECLCALLBACK(int) drvHostSerialSendThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
                     dwRet = WaitForMultipleObjects(2, haWait, FALSE, INFINITE);
                     if (dwRet != WAIT_OBJECT_0)
                     {
-                        AssertMsg(pThread->enmState != PDMTHREADSTATE_RUNNING, ("The halt event sempahore is set but the thread is still in running state\n"));
+                        AssertMsg(pThread->enmState != PDMTHREADSTATE_RUNNING, ("The halt event semaphore is set but the thread is still in running state\n"));
                         break;
                     }
                 }
@@ -624,7 +624,7 @@ static DECLCALLBACK(int) drvHostSerialSendThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
                     dwRet = WaitForMultipleObjects(2, haWait, FALSE, INFINITE);
                     if (dwRet != WAIT_OBJECT_0)
                     {
-                        AssertMsg(pThread->enmState != PDMTHREADSTATE_RUNNING, ("The halt event sempahore is set but the thread is still in running state\n"));
+                        AssertMsg(pThread->enmState != PDMTHREADSTATE_RUNNING, ("The halt event semaphore is set but the thread is still in running state\n"));
                         break;
                     }
                 }
@@ -751,7 +751,7 @@ static DECLCALLBACK(int) drvHostSerialRecvThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
                 rc = RTFileRead(pThis->WakeupPipeR, abBuffer, 1, &cbRead);
                 if (RT_FAILURE(rc))
                 {
-                    LogRel(("HostSerial#%d: draining the wakekup pipe failed with %Rrc, terminating the worker thread.\n", pDrvIns->iInstance, rc));
+                    LogRel(("HostSerial#%d: draining the wakeup pipe failed with %Rrc, terminating the worker thread.\n", pDrvIns->iInstance, rc));
                     rcThread = rc;
                     break;
                 }
@@ -827,7 +827,7 @@ static DECLCALLBACK(int) drvHostSerialRecvThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
                     if (dwRet != WAIT_OBJECT_0)
                     {
                         /* notification to terminate */
-                        AssertMsg(pThread->enmState != PDMTHREADSTATE_RUNNING, ("The halt event sempahore is set but the thread is still in running state\n"));
+                        AssertMsg(pThread->enmState != PDMTHREADSTATE_RUNNING, ("The halt event semaphore is set but the thread is still in running state\n"));
                         break;
                     }
                 }

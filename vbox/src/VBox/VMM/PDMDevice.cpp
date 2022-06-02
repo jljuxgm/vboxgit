@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PDMDevice.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -669,7 +669,7 @@ static DECLCALLBACK(int) pdmR3DevReg_Register(PPDMDEVREGCB pCallbacks, PCPDMDEVR
                     ("Instance size %d bytes! (Device %s)\n", pReg->cbInstance, pReg->szName),
                     VERR_PDM_INVALID_DEVICE_REGISTRATION);
     AssertMsgReturn(pReg->pfnConstruct,
-                    ("No constructore! (Device %s)\n", pReg->szName),
+                    ("No constructor! (Device %s)\n", pReg->szName),
                     VERR_PDM_INVALID_DEVICE_REGISTRATION);
     AssertLogRelMsgReturn((pReg->fFlags & PDM_DEVREG_FLAGS_GUEST_BITS_MASK) == PDM_DEVREG_FLAGS_GUEST_BITS_DEFAULT,
                           ("PDM: Rejected device '%s' because it didn't match the guest bits.\n", pReg->szName),

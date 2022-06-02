@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -663,7 +663,7 @@ static void supR3HardenedMainGrabCapabilites(void)
             {
                 rc = setppriv(PRIV_SET, PRIV_EFFECTIVE, pPrivSet);
                 if (rc)
-                    supR3HardenedError(rc, false, "SUPR3HardenedMain: failed to set effectives privilege set.\n");
+                    supR3HardenedError(rc, false, "SUPR3HardenedMain: failed to set effective privilege set.\n");
             }
             else
                 supR3HardenedError(rc, false, "SUPR3HardenedMain: failed to set permitted privilege set.\n");

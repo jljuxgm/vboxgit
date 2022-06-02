@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: vbox-img.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1038,7 +1038,7 @@ int main(int argc, char *argv[])
     rc = VDInit();
     if (RT_FAILURE(rc))
     {
-        errorSyntax("Initalizing backends failed! rc=%Rrc\n", rc);
+        errorSyntax("Initializing backends failed! rc=%Rrc\n", rc);
         return 1;
     }
 

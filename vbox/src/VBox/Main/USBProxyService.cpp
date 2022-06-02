@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 33590 2010-10-29 08:55:09Z vboxsync $ */
+/* $Id: USBProxyService.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -391,7 +391,7 @@ HRESULT USBProxyService::runAllFiltersOnDevice(ComObjPtr<HostUSBDevice> &aDevice
                                                SessionMachinesList &llOpenedMachines,
                                                SessionMachine *aIgnoreMachine)
 {
-    LogFlowThisFunc(("{%s} ignorning=%p\n", aDevice->getName().c_str(), aIgnoreMachine));
+    LogFlowThisFunc(("{%s} ignoring=%p\n", aDevice->getName().c_str(), aIgnoreMachine));
 
     /*
      * Verify preconditions.

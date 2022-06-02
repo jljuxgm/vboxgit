@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: EM.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -817,7 +817,7 @@ static int emR3Debug(PVM pVM, PVMCPU pVCpu, int rc)
                  * The rest is unexpected, and will keep us here.
                  */
                 default:
-                    AssertMsgFailed(("Unxpected rc %Rrc!\n", rc));
+                    AssertMsgFailed(("Unexpected rc %Rrc!\n", rc));
                     break;
             }
         } while (false);

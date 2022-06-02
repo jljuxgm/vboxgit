@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 33580 2010-10-28 17:41:02Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -214,8 +214,8 @@ bool UIMachineViewScale::event(QEvent *pEvent)
             QSize scaledSize = frameBuffer()->scaledSize();
             double xRatio = (double)scaledSize.width() / frameBuffer()->width();
             double yRatio = (double)scaledSize.height() / frameBuffer()->height();
-            AssertMsg(contentsX() == 0, ("Thats can't be, else notify Dsen!\n"));
-            AssertMsg(contentsY() == 0, ("Thats can't be, else notify Dsen!\n"));
+            AssertMsg(contentsX() == 0, ("This can't be, else notify Dsen!\n"));
+            AssertMsg(contentsY() == 0, ("This can't be, else notify Dsen!\n"));
 
             /* Make sure we update always a bigger rectangle than requested to
              * catch all rounding errors. (use 1 time the ratio factor and

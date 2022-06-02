@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DevE1000.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2058,7 +2058,7 @@ static int e1kHandleRxPacket(E1KSTATE* pState, const void *pvBuf, size_t cb, E1K
 
     if (RDH == RDT)
     {
-        E1kLog(("%s Out of recieve buffers, dropping the packet",
+        E1kLog(("%s Out of receive buffers, dropping the packet",
                 INSTANCE(pState)));
     }
     /* Store the packet to receive buffers */
@@ -2114,7 +2114,7 @@ static int e1kHandleRxPacket(E1KSTATE* pState, const void *pvBuf, size_t cb, E1K
     }
 
     if (cb > 0)
-        E1kLog(("%s Out of recieve buffers, dropping %u bytes", INSTANCE(pState), cb));
+        E1kLog(("%s Out of receive buffers, dropping %u bytes", INSTANCE(pState), cb));
 
     pState->led.Actual.s.fReading = 0;
 

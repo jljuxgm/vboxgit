@@ -1,4 +1,4 @@
-/* $Id: tstPalmOne.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstPalmOne.c 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * USB PalmOne testcase
  */
@@ -280,12 +280,12 @@ static void msd()
         memset(abBuf, 0, sizeof(abBuf));
     //printf("recv..\n");
         int cb = recv_bulk(InEndPt, abBuf, 36);
-        hex(abBuf, cb, "inquery result");
+        hex(abBuf, cb, "inquiry result");
 
         /* sense? */
         memset(abBuf, 0, sizeof(abBuf));
         cb = recv_bulk(InEndPt, abBuf, 36);
-        hex(abBuf, cb, "inquery sense?");
+        hex(abBuf, cb, "inquiry sense?");
         usleep(150000);
     }
 }

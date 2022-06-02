@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -433,7 +433,7 @@ bool VBoxServiceVMInfoWinIsLoggedIn(PVBOXSERVICEVMINFOUSER a_pUserInfo, PLUID a_
                 }
                 else
                 {
-                    VBoxServiceVerbose(3, "VMInfo/Users:  Account User=%ls, WTSConnectState returnd %ld\n",
+                    VBoxServiceVerbose(3, "VMInfo/Users:  Account User=%ls, WTSConnectState returned %ld\n",
                                        a_pUserInfo->wszUser, GetLastError());
 
                     /*
@@ -514,7 +514,7 @@ int VBoxServiceVMInfoWinWriteUsers(char **ppszUserList, uint32_t *pcUsersInList)
                     RTMemFree(pszTemp);
                 }
                 else
-                    rc = RTStrAAppend(ppszUserList, "<string-convertion-error>");
+                    rc = RTStrAAppend(ppszUserList, "<string-conversion-error>");
                 AssertRCBreakStmt(rc, RTStrFree(*ppszUserList));
             }
         }

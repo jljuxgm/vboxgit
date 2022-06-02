@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -759,7 +759,7 @@ static int __init VBoxNetFltLinuxInit(void)
             rc = register_qdisc(&g_VBoxNetFltQDiscOps);
             if (rc)
             {
-                LogRel(("VBoxNetFlt: Failed to registed qdisc: %d\n", rc));
+                LogRel(("VBoxNetFlt: Failed to registered qdisc: %d\n", rc));
                 return rc;
             }
 #endif /* VBOXNETFLT_WITH_QDISC */

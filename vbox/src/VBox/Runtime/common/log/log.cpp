@@ -1,4 +1,4 @@
-/* $Id: log.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: log.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -421,7 +421,7 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, uint32_t fFlags, const char *psz
                 }
 
                 if (pszErrorMsg)
-                    RTStrPrintf(pszErrorMsg, cchErrorMsg, N_("failed to create sempahore"));
+                    RTStrPrintf(pszErrorMsg, cchErrorMsg, N_("failed to create semaphore"));
             }
 #ifdef IN_RING3
             RTFileClose(pLogger->File);

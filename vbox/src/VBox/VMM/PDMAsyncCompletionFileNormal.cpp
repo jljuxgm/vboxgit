@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -1450,7 +1450,7 @@ static void pdmacFileAioMgrNormalReqCompleteRc(PPDMACEPFILEMGR pAioMgr, RTFILEAI
                 size_t cbToTransfer;
                 uint8_t *pbBuf = NULL;
 
-                LogFlow(("Restarting incomplete transfer %#p (%zu bytes transfered)\n",
+                LogFlow(("Restarting incomplete transfer %#p (%zu bytes transferred)\n",
                          pTask, cbTransfered));
                 Assert(cbTransfered % 512 == 0);
 

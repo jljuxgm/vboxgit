@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -970,14 +970,14 @@ DECLCALLBACK(int)hdaRegWriteSDCTL(INTELHDLinkState* pState, uint32_t offset, uin
 {
     if(u32Value & HDA_REG_FIELD_FLAG_MASK(SDCTL, SRST))
     {
-        LogRel(("hda: guest has iniated hw stream reset\n"));
+        LogRel(("hda: guest has initiated hw stream reset\n"));
         pState->u8StreamsInReset |= HDA_STREAM_BITMASK(offset);
         hdaStreamReset(pState, offset);
         HDA_REG_IND(pState, index) &= ~HDA_REG_FIELD_FLAG_MASK(SDCTL, SRST);
     }
     else if (HDA_IS_STREAM_IN_RESET(pState, offset))
     {
-        LogRel(("hda: guest has iniated exit of stream reset\n"));
+        LogRel(("hda: guest has initiated exit of stream reset\n"));
         pState->u8StreamsInReset &= ~HDA_STREAM_BITMASK(offset);
         HDA_REG_IND(pState, index) &= ~HDA_REG_FIELD_FLAG_MASK(SDCTL, SRST);
     }

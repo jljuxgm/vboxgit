@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PDM.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -889,7 +889,7 @@ static DECLCALLBACK(int) pdmR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersi
         if (u32Sep == UINT32_MAX)
             break;
         if (u32Sep != i)
-            AssertMsgFailedReturn(("Out of seqence. u32Sep=%#x i=%#x\n", u32Sep, i), VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
+            AssertMsgFailedReturn(("Out of sequence. u32Sep=%#x i=%#x\n", u32Sep, i), VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
 
         /* Get the name and instance number. */
         char szName[RT_SIZEOFMEMB(PDMDEVREG, szName)];

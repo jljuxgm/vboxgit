@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VM.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3640,7 +3640,7 @@ static void vmR3SetErrorWorkerDoCall(PVM pVM, PVMATERROR pCur, int rc, RT_SRC_PO
 VMMR3DECL(void) VMR3SetErrorWorker(PVM pVM)
 {
     VM_ASSERT_EMT(pVM);
-    AssertReleaseMsgFailed(("And we have a winner! You get to implement Ring-0 and GC VMSetErrorV! Contrats!\n"));
+    AssertReleaseMsgFailed(("And we have a winner! You get to implement Ring-0 and GC VMSetErrorV! Contracts!\n"));
 
     /*
      * Unpack the error (if we managed to format one).
