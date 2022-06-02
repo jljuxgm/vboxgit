@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
+/* $Id: TRPMAll.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -36,7 +36,7 @@
 #include <iprt/asm.h>
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/param.h>
-#include <include/internal/pgm.h>
+#include "internal/pgm.h"
 
 
 

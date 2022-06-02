@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PGMAll.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -33,9 +33,9 @@
 #include <VBox/em.h>
 #include <VBox/hwaccm.h>
 #include <VBox/hwacc_vmx.h>
-#include "../PGMInternal.h"
+#include "PGMInternal.h"
 #include <VBox/vm.h>
-#include "../PGMInline.h"
+#include "PGMInline.h"
 #include <iprt/assert.h>
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>

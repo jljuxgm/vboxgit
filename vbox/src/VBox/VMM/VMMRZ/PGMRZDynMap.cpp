@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -21,9 +21,9 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM_DYNMAP
 #include <VBox/pgm.h>
-#include "../PGMInternal.h"
+#include "PGMInternal.h"
 #include <VBox/vm.h>
-#include "../PGMInline.h"
+#include "PGMInline.h"
 #include <VBox/err.h>
 #include <VBox/param.h>
 #include <VBox/sup.h>

@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: CSAM.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -47,7 +47,7 @@
 #include <iprt/string.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
-#include <include/internal/pgm.h>
+#include "internal/pgm.h"
 
 
 /* Enabled by default */

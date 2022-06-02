@@ -1,4 +1,4 @@
-/* $Id: PGMGC.cpp 31402 2010-08-05 12:28:18Z vboxsync $ */
+/* $Id: PGMGC.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
 /** @file
  * PGM - Page Monitor, Guest Context.
  */
@@ -28,9 +28,9 @@
 #include <VBox/iom.h>
 #include <VBox/trpm.h>
 #include <VBox/rem.h>
-#include "../PGMInternal.h"
+#include "PGMInternal.h"
 #include <VBox/vm.h>
-#include "../PGMInline.h"
+#include "PGMInline.h"
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>

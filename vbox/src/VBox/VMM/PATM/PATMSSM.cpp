@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 30575 2010-07-02 12:29:14Z vboxsync $ */
+/* $Id: PATMSSM.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -32,7 +32,7 @@
 #include "PATMA.h"
 #include <VBox/vm.h>
 #include <VBox/csam.h>
-#include <include/internal/pgm.h>
+#include "internal/pgm.h"
 #include <VBox/dbg.h>
 #include <VBox/err.h>
 #include <VBox/log.h>

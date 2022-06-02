@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: PGMR0.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -21,9 +21,9 @@
 #define LOG_GROUP LOG_GROUP_PGM
 #include <VBox/pgm.h>
 #include <VBox/gmm.h>
-#include "../PGMInternal.h"
+#include "PGMInternal.h"
 #include <VBox/vm.h>
-#include "../PGMInline.h"
+#include "PGMInline.h"
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <iprt/assert.h>

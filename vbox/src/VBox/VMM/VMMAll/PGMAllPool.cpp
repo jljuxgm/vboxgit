@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -27,9 +27,9 @@
 #ifdef IN_RC
 # include <VBox/patm.h>
 #endif
-#include "../PGMInternal.h"
+#include "PGMInternal.h"
 #include <VBox/vm.h>
-#include "../PGMInline.h"
+#include "PGMInline.h"
 #include <VBox/disopcode.h>
 #include <VBox/hwacc_vmx.h>
 
