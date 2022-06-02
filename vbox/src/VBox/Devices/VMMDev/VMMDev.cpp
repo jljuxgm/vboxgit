@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 30141 2010-06-10 08:12:25Z vboxsync $ */
+/* $Id: VMMDev.cpp 30594 2010-07-04 12:53:21Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2881,8 +2881,10 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
         }
 #endif
         /* Query the initial balloon size. */
+        AssertPtr(pThis->pDrv->pfnQueryBalloonSize);
         rc = pThis->pDrv->pfnQueryBalloonSize(pThis->pDrv, &pThis->u32MemoryBalloonSize);
         AssertRC(rc);
+
         Log(("Initial balloon size %x\n", pThis->u32MemoryBalloonSize));
     }
     else if (rc == VERR_PDM_NO_ATTACHED_DRIVER)
