@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 33259 2010-10-20 12:49:55Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 33300 2010-10-21 11:28:06Z vboxsync $ */
 
 /** @file
  *
@@ -2087,7 +2087,7 @@ STDMETHODIMP SessionMachine::DeleteSnapshot(IConsole *aInitiator,
                         Global::stringifyMachineState(mData->mMachineState));
 
     ComObjPtr<Snapshot> pSnapshot;
-    HRESULT rc = findSnapshot(id, pSnapshot, true /* aSetError */);
+    HRESULT rc = findSnapshotById(id, pSnapshot, true /* aSetError */);
     if (FAILED(rc)) return rc;
 
     AutoWriteLock snapshotLock(pSnapshot COMMA_LOCKVAL_SRC_POS);

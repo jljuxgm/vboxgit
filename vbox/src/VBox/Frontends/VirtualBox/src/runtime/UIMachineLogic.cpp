@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 33140 2010-10-14 16:20:15Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 33300 2010-10-21 11:28:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -993,7 +993,7 @@ void UIMachineLogic::sltTakeSnapshot()
 
     /* Search for the max available filter index. */
     QString strNameTemplate = QApplication::translate("UIMachineLogic", "Snapshot %1");
-    int iMaxSnapshotIndex = searchMaxSnapshotIndex(machine, machine.GetSnapshot(QString()), strNameTemplate);
+    int iMaxSnapshotIndex = searchMaxSnapshotIndex(machine, machine.FindSnapshot(QString()), strNameTemplate);
     dlg.mLeName->setText(strNameTemplate.arg(++ iMaxSnapshotIndex));
 
     if (dlg.exec() == QDialog::Accepted)

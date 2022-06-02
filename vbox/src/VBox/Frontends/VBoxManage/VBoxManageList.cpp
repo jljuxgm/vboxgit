@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 33300 2010-10-21 11:28:06Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -149,7 +149,7 @@ static void listMedia(const ComPtr<IVirtualBox> aVirtualBox,
             for (size_t k = 0; k < snapshotIds.size(); ++k)
             {
                 ComPtr<ISnapshot> snapshot;
-                machine->GetSnapshot(snapshotIds[k], snapshot.asOutParam());
+                machine->FindSnapshot(snapshotIds[k], snapshot.asOutParam());
                 if (snapshot)
                 {
                     Bstr snapshotName;

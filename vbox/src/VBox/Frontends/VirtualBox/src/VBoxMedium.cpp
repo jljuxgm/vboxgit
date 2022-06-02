@@ -1,4 +1,4 @@
-/* $Id: VBoxMedium.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
+/* $Id: VBoxMedium.cpp 33300 2010-10-21 11:28:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -207,7 +207,7 @@ void VBoxMedium::refresh()
                         continue;
                     }
 
-                    CSnapshot snapshot = machine.GetSnapshot (*jt);
+                    CSnapshot snapshot = machine.FindSnapshot(*jt);
                     if (!snapshot.isNull())           // can be NULL while takeSnaphot is in progress
                     {
                         if (!sSnapshots.isNull())

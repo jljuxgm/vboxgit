@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 33237 2010-10-19 15:39:06Z vboxsync $ */
+/* $Id: MachineImpl.h 33300 2010-10-21 11:28:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -490,9 +490,7 @@ public:
     STDMETHOD(Unregister)(CleanupMode_T cleanupMode, ComSafeArrayOut(IMedium*, aMedia));
     STDMETHOD(Delete)(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProgress);
     STDMETHOD(Export)(IAppliance *aAppliance, IVirtualSystemDescription **aDescription);
-    STDMETHOD(GetSnapshot)(IN_BSTR aId, ISnapshot **aSnapshot);
-    STDMETHOD(FindSnapshot)(IN_BSTR aName, ISnapshot **aSnapshot);
-    STDMETHOD(SetCurrentSnapshot)(IN_BSTR aId);
+    STDMETHOD(FindSnapshot)(IN_BSTR aNameOrId, ISnapshot **aSnapshot);
     STDMETHOD(CreateSharedFolder)(IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable, BOOL aAutoMount);
     STDMETHOD(RemoveSharedFolder)(IN_BSTR aName);
     STDMETHOD(CanShowConsoleWindow)(BOOL *aCanShow);
@@ -734,10 +732,12 @@ protected:
                                const Guid *puuidRegistry,
                                const Guid *puuidSnapshot);
 
-    HRESULT findSnapshot(const Guid &aId, ComObjPtr<Snapshot> &aSnapshot,
-                         bool aSetError = false);
-    HRESULT findSnapshot(IN_BSTR aName, ComObjPtr<Snapshot> &aSnapshot,
-                         bool aSetError = false);
+    HRESULT findSnapshotById(const Guid &aId,
+                             ComObjPtr<Snapshot> &aSnapshot,
+                             bool aSetError = false);
+    HRESULT findSnapshotByName(const Utf8Str &strName,
+                               ComObjPtr<Snapshot> &aSnapshot,
+                               bool aSetError = false);
 
     HRESULT getStorageControllerByName(const Utf8Str &aName,
                                        ComObjPtr<StorageController> &aStorageController,

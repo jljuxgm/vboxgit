@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 33300 2010-10-21 11:28:06Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2029,7 +2029,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
      * snapshots
      */
     ComPtr<ISnapshot> snapshot;
-    rc = machine->GetSnapshot(Bstr().raw(), snapshot.asOutParam());
+    rc = machine->FindSnapshot(Bstr().raw(), snapshot.asOutParam());
     if (SUCCEEDED(rc) && snapshot)
     {
         ComPtr<ISnapshot> currentSnapshot;
