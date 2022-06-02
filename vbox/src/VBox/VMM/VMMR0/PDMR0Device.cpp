@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 35357 2010-12-27 22:38:34Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -47,6 +47,7 @@ extern DECLEXPORT(const PDMAPICHLPR0)   g_pdmR0ApicHlp;
 extern DECLEXPORT(const PDMIOAPICHLPR0) g_pdmR0IoApicHlp;
 extern DECLEXPORT(const PDMPCIHLPR0)    g_pdmR0PciHlp;
 extern DECLEXPORT(const PDMHPETHLPR0)   g_pdmR0HpetHlp;
+extern DECLEXPORT(const PDMPCIRAWHLPR0) g_pdmR0PciRawHlp;
 extern DECLEXPORT(const PDMDRVHLPR0)    g_pdmR0DrvHlp;
 RT_C_DECLS_END
 
@@ -675,6 +676,15 @@ extern DECLEXPORT(const PDMHPETHLPR0) g_pdmR0HpetHlp =
 {
     PDM_HPETHLPR0_VERSION,
     PDM_HPETHLPR0_VERSION, /* the end */
+};
+
+/**
+ * The Ring-0 PCI raw Helper Callbacks.
+ */
+extern DECLEXPORT(const PDMPCIRAWHLPR0) g_pdmR0PciRawHlp =
+{
+    PDM_PCIRAWHLPR0_VERSION,
+    PDM_PCIRAWHLPR0_VERSION, /* the end */
 };
 
 /** @} */

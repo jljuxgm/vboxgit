@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 35357 2010-12-27 22:38:34Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -306,8 +306,13 @@ public:
                 if (FAILED(rc))
                     break;
                 mConsole->onNATRedirectRuleChange(ulSlot, fRemove, proto, hostIp.raw(), hostPort, guestIp.raw(), guestPort);
+                break;
             }
-            break;
+            case VBoxEventType_OnHostPciDevicePlug:
+            {
+                // handle if needed
+                break;
+            }
             default:
                 AssertFailed();
         }
@@ -483,6 +488,7 @@ HRESULT Console::init(IMachine *aMachine, IInternalMachineControl *aControl)
         mVmListner = new VmEventListenerImpl(this);
         com::SafeArray<VBoxEventType_T> eventTypes;
         eventTypes.push_back(VBoxEventType_OnNATRedirect);
+        eventTypes.push_back(VBoxEventType_OnHostPciDevicePlug);
         rc = pES->RegisterListener(mVmListner, ComSafeArrayAsInParam(eventTypes), true);
         AssertComRC(rc);
     }

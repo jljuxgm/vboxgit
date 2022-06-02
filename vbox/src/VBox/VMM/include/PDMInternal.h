@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMInternal.h 35357 2010-12-27 22:38:34Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1084,6 +1084,7 @@ extern const PDMPCIHLPR3    g_pdmR3DevPciHlp;
 extern const PDMDMACHLP     g_pdmR3DevDmacHlp;
 extern const PDMRTCHLP      g_pdmR3DevRtcHlp;
 extern const PDMHPETHLPR3   g_pdmR3DevHpetHlp;
+extern const PDMPCIRAWHLPR3 g_pdmR3DevPciRawHlp;
 #endif
 
 

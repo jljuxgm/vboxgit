@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 35175 2010-12-16 12:36:00Z vboxsync $ */
+/* $Id: MachineImpl.h 35357 2010-12-27 22:38:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -290,6 +290,9 @@ public:
 
         BOOL                 mIoCacheEnabled;
         ULONG                mIoCacheSize;
+
+        typedef std::list< ComObjPtr<PciDeviceAttachment> > PciDeviceAssignmentList;
+        PciDeviceAssignmentList mPciDeviceAssignments;
     };
 
     /**
@@ -522,7 +525,7 @@ public:
     STDMETHOD(GetCPUStatus(ULONG aCpu, BOOL *aCpuAttached));
     STDMETHOD(QueryLogFilename(ULONG aIdx, BSTR *aName));
     STDMETHOD(ReadLog(ULONG aIdx, LONG64 aOffset, LONG64 aSize, ComSafeArrayOut(BYTE, aData)));
-    STDMETHOD(AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAddress, IEventContext *eventContext, BOOL tryToUnbind));
+    STDMETHOD(AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAddress, BOOL tryToUnbind));
     STDMETHOD(DetachHostPciDevice(LONG hostAddress));
     STDMETHOD(COMGETTER(PciDeviceAssignments))(ComSafeArrayOut(IPciDeviceAttachment *, aAssignments));
     STDMETHOD(COMGETTER(BandwidthControl))(IBandwidthControl **aBandwidthControl);
@@ -869,9 +872,6 @@ protected:
 
     typedef std::list< ComObjPtr<StorageController> > StorageControllerList;
     Backupable<StorageControllerList> mStorageControllers;
-
-    typedef std::list< ComObjPtr<PciDeviceAttachment> > PciDeviceAssignmentList;
-    PciDeviceAssignmentList mPciDeviceAssignments;
 
     friend class SessionMachine;
     friend class SnapshotMachine;
