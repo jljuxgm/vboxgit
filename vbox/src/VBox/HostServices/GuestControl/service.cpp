@@ -1,4 +1,4 @@
-/* $Id: service.cpp 34253 2010-11-22 15:34:38Z vboxsync $ */
+/* $Id: service.cpp 34776 2010-12-07 12:07:45Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -430,9 +430,14 @@ int Service::paramBufferAssign(PVBOXGUESTCTRPARAMBUFFER pBuf, uint32_t cParms, V
                     break;
 
                 case VBOX_HGCM_SVC_PARM_PTR:
-                    memcpy(paParms[i].u.pointer.addr,
-                           pBuf->pParms[i].u.pointer.addr,
-                           pBuf->pParms[i].u.pointer.size);
+                    if (paParms[i].u.pointer.size >= pBuf->pParms[i].u.pointer.size)
+                    {
+                        memcpy(paParms[i].u.pointer.addr,
+                               pBuf->pParms[i].u.pointer.addr,
+                               pBuf->pParms[i].u.pointer.size);
+                    }
+                    else
+                        rc = VERR_BUFFER_OVERFLOW;
                     break;
 
                 default:
