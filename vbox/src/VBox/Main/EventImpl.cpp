@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30553 2010-07-01 13:36:06Z vboxsync $ */
+/* $Id: EventImpl.cpp 30559 2010-07-01 14:51:30Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -888,6 +888,8 @@ NS_DECL_CLASSINFO(VBoxEvent)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(VBoxEvent, IEvent)
 NS_DECL_CLASSINFO(VBoxVetoEvent)
 NS_IMPL_ISUPPORTS_INHERITED1(VBoxVetoEvent, VBoxEvent, IVetoEvent)
+NS_DECL_CLASSINFO(EventSource)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(EventSource, IEventSource)
 #endif
 
 STDMETHODIMP EventSource::CreateListener(IEventListener ** aListener)
