@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 33621 2010-10-29 16:15:40Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -1160,7 +1160,7 @@ HRESULT Progress::notifyCompleteV(HRESULT aResultCode,
                                   const char *aText,
                                   va_list va)
 {
-    Utf8Str text = Utf8StrFmtVA(aText, va);
+    Utf8Str text(aText, va);
 
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.rc());

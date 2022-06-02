@@ -1,4 +1,4 @@
-/* $Id: string.cpp 33563 2010-10-28 14:46:26Z vboxsync $ */
+/* $Id: string.cpp 33621 2010-10-29 16:15:40Z vboxsync $ */
 
 /** @file
  *
@@ -135,21 +135,6 @@ void Utf8Str::copyFrom(CBSTR s)
         m_cch = 0;
         m_cbAllocated = 0;
         m_psz = NULL;
-    }
-}
-
-void Utf8StrFmt::init(const char *format, va_list args)
-{
-    if (!format || !*format)
-    {
-        m_cch = 0;
-        m_cbAllocated = 0;
-        m_psz = NULL;
-    }
-    else
-    {
-        m_cch = RTStrAPrintfV(&m_psz, format, args);
-        m_cbAllocated = m_cch + 1;
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 33621 2010-10-29 16:15:40Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -818,7 +818,7 @@ void Appliance::addWarning(const char* aWarning, ...)
 {
     va_list args;
     va_start(args, aWarning);
-    Utf8StrFmtVA str(aWarning, args);
+    Utf8Str str(aWarning, args);
     va_end(args);
     m->llWarnings.push_back(str);
 }
