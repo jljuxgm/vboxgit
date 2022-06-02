@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: SUPLib.cpp 33623 2010-10-29 16:16:06Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1431,6 +1431,48 @@ SUPR3DECL(int) SUPR3HardenedVerifyFile(const char *pszFilename, const char *pszM
     if (RT_FAILURE(rc))
         LogRel(("SUPR3HardenedVerifyFile: %s: Verification of \"%s\" failed, rc=%Rrc\n", pszMsg, pszFilename, rc));
     return rc;
+#else
+    return VINF_SUCCESS;
+#endif
+}
+
+
+SUPR3DECL(int) SUPR3HardenedVerifyDir(const char *pszDirPath, bool fRecursive, bool fCheckFiles, char *pszErr, size_t cbErr)
+{
+    /*
+     * Quick input validation
+     */
+    AssertPtr(pszDirPath);
+    AssertPtr(pszErr);
+    Assert(cbErr > 32);
+
+    /*
+     * Only do the actual check in hardened builds.
+     */
+#ifdef VBOX_WITH_HARDENING
+/** @todo implement me! */
+    return VINF_SUCCESS;
+#else
+    return VINF_SUCCESS;
+#endif
+}
+
+
+SUPR3DECL(int) SUPR3HardenedVerifyPlugIn(const char *pszFilename, char *pszErr, size_t cbErr)
+{
+    /*
+     * Quick input validation
+     */
+    AssertPtr(pszFilename);
+    AssertPtr(pszErr);
+    Assert(cbErr > 32);
+
+    /*
+     * Only do the actual check in hardened builds.
+     */
+#ifdef VBOX_WITH_HARDENING
+/** @todo implement me! */
+    return VINF_SUCCESS;
 #else
     return VINF_SUCCESS;
 #endif

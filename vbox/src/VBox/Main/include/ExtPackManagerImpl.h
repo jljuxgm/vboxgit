@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 33521 2010-10-27 15:20:21Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 33623 2010-10-29 16:16:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -20,6 +20,7 @@
 
 #include "VirtualBoxBase.h"
 #include <VBox/ExtPack/ExtPack.h>
+#include <iprt/fs.h>
 
 
 /**
@@ -63,6 +64,21 @@ public:
      * @{ */
     void *getCallbackTable();
     HRESULT refresh(bool *pfCanDelete);
+    /** @}  */
+
+protected:
+    /** @name Internal helper methods.
+     * @{ */
+    void        probeAndLoad(void);
+    bool        findModule(const char *a_pszName, const char *a_pszExt,
+                           Utf8Str *a_pStrFound, bool *a_pfNative, PRTFSOBJINFO a_pObjInfo) const;
+    static bool objinfoIsEqual(PCRTFSOBJINFO pObjInfo1, PCRTFSOBJINFO pObjInfo2);
+    /** @}  */
+
+    /** @name Extension Pack Helpers
+     * @{ */
+    static DECLCALLBACK(int)    hlpFindModule(PCVBOXEXTPACKHLP pHlp, const char *pszName, const char *pszExt,
+                                              char *pszFound, size_t cbFound, bool *pfNative);
     /** @}  */
 
 private:
