@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 35150 2010-12-15 16:33:59Z vboxsync $ */
+/* $Id: vboxvideo.c 35155 2010-12-15 16:58:47Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1292,7 +1292,7 @@ VBOXSetMode(ScrnInfoPtr pScrn, unsigned cDisplay, unsigned cWidth,
 {
     VBOXPtr pVBox = VBOXGetRec(pScrn);
     Bool rc = TRUE, fActive = TRUE;
-    uint32_t offStart, cwReal;
+    uint32_t offStart, cwReal = cWidth;
 
     TRACE_LOG("cDisplay=%u, cWidth=%u, cHeight=%u, x=%d, y=%d, displayWidth=%d\n",
               cDisplay, cWidth, cHeight, x, y, pScrn->displayWidth);
