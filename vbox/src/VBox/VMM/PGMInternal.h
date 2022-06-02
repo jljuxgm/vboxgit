@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 32043 2010-08-27 11:47:17Z vboxsync $ */
+/* $Id: PGMInternal.h 32066 2010-08-29 13:09:15Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -87,7 +87,7 @@
  * Enables optimizations for MMIO handlers that exploits X86_TRAP_PF_RSVD and
  * VMX_EXIT_EPT_MISCONFIG.
  */
-#if 0 /* ! remember to disable before committing ! XXX TODO  */
+#if 1 /* testing */
 # define PGM_WITH_MMIO_OPTIMIZATIONS
 #endif
 
