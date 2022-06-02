@@ -1,4 +1,4 @@
-# $Id: Config.kmk 32975 2010-10-07 13:05:58Z vboxsync $
+# $Id: Config.kmk 33031 2010-10-11 08:42:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -396,6 +396,8 @@ VBOX_WITH_SCSI = 1
 VBOX_DYNAMIC_NET_ATTACH = 1
 # Enable this setting to force a fallback to default DMI data on configuration errors
 VBOX_BIOS_DMI_FALLBACK =
+# Enable MSI support in devices
+# VBOX_WITH_MSI_DEVICES = 1
 # Enable host network interface API.
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_HOSTNETIF_API = 1
@@ -4283,7 +4285,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 32975 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 33031 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

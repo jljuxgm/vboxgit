@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 33013 2010-10-08 15:58:36Z vboxsync $ */
+/* $Id: DevAHCI.cpp 33031 2010-10-11 08:42:53Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -69,9 +69,6 @@
 /** The saved state version use in VirtualBox 3.0 and earlier.
  * This was before the config was added and ahciIOTasks was dropped. */
 #define AHCI_SAVED_STATE_VERSION_VBOX_30        2
-
-/* If AHCI shall emulate MSI support */
-#define AHCI_WITH_MSI
 
 /**
  * Maximum number of sectors to transfer in a READ/WRITE MULTIPLE request.
@@ -7852,7 +7849,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     PCIDevSetVendorId    (&pThis->dev, 0x8086); /* Intel */
     PCIDevSetDeviceId    (&pThis->dev, 0x2829); /* ICH-8M */
     PCIDevSetCommand     (&pThis->dev, 0x0000);
-#ifdef AHCI_WITH_MSI
+#ifdef VBOX_WITH_MSI_DEVICES
     PCIDevSetStatus      (&pThis->dev, VBOX_PCI_STATUS_CAP_LIST);
     PCIDevSetCapabilityList(&pThis->dev, 0x80);
 #else
@@ -7884,7 +7881,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     if (RT_FAILURE(rc))
         return rc;
 
-#ifdef AHCI_WITH_MSI
+#ifdef VBOX_WITH_MSI_DEVICES
     PDMMSIREG aMsiReg;
     aMsiReg.cVectors = 1;
     aMsiReg.iCapOffset = 0x80;
