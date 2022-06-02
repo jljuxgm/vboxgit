@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 29263 2010-05-09 19:52:03Z vboxsync $
+# $Id: Makefile.kmk 33377 2010-10-24 13:19:45Z vboxsync $
 ## @file
 # Top-level makefile for the src directory.
 #
@@ -25,7 +25,6 @@ if defined(VBOX_ONLY_ADDITIONS)
 
 else if defined(VBOX_ONLY_TESTSUITE)
  include $(PATH_SUB_CURRENT)/VBox/Makefile.kmk
- include $(PATH_SUB_CURRENT)/tests/Makefile.kmk
 
 else if defined(VBOX_ONLY_DOCS) || defined(VBOX_ONLY_SDK)
  include $(PATH_SUB_CURRENT)/bldprogs/Makefile.kmk
