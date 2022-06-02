@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 31440 2010-08-06 13:37:23Z vboxsync $ */
+/* $Id: PGMAllGst.h 31465 2010-08-09 09:21:27Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -487,6 +487,7 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
 # if PGM_GST_TYPE == PGM_TYPE_32BIT
         bool const  fBigPage = Pde.b.u1Size;
 # else
+        /** @todo this is not correct for PAE and AMD64 modes! */
         bool const  fBigPage = Pde.b.u1Size && (pState->cr4 & X86_CR4_PSE);
 # endif
         if (    Pde.n.u1Present
