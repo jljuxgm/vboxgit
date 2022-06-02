@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 35607 2011-01-18 14:08:06Z vboxsync $ */
+/* $Id: DBGFReg.cpp 35609 2011-01-18 14:24:34Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -1100,7 +1100,7 @@ VMMR3DECL(int) DBGFR3RegCpuQueryBatch(PVM pVM, VMCPUID idCpu, PDBGFREGENTRY paRe
 
 
 /**
- * Query a all registers for a Virtual CPU.
+ * Query all registers for a Virtual CPU.
  *
  * @retval  VINF_SUCCESS
  * @retval  VERR_INVALID_VM_HANDLE
