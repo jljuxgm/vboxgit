@@ -1,4 +1,4 @@
-/* $Id: vboxsharedrc.h 31884 2010-08-24 07:20:03Z vboxsync $ */
+/* $Id: vboxsharedrc.h 31936 2010-08-24 16:52:58Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D
@@ -24,5 +24,16 @@
 #define VBOXSHRC_SET_SHAREHANDLE(_o, _h) ((_o)->resource.sharerc_handle = (_h))
 #define VBOXSHRC_IS_SHARED(_o) (!!(VBOXSHRC_GET_SHAREFLAFS(_o) & VBOXSHRC_F_SHARED))
 #define VBOXSHRC_IS_SHARED_OPENED(_o) (!!(VBOXSHRC_GET_SHAREFLAFS(_o) & VBOXSHRC_F_SHARED_OPENED))
+
+#ifdef DEBUG_misha
+/* just for simplicity */
+#define AssertBreakpoint() do { __asm {int 3} } while (0)
+#define Assert(_expr) do { \
+        if (!(_expr)) AssertBreakpoint(); \
+    } while (0)
+#else
+#define AssertBreakpoint() do { } while (0)
+#define Assert(_expr) do { } while (0)
+#endif
 
 #endif /* #ifndef ___vboxsharedrc_h___ */
