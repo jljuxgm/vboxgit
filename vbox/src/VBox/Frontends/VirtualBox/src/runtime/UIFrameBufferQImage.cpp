@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 34740 2010-12-06 11:56:28Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 34850 2010-12-09 00:06:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -162,6 +162,11 @@ void UIFrameBufferQImage::resizeEvent(UIResizeEvent *pEvent)
             /* ...and the scan lines ought to be a whole number of pixels. */
             Assert ((bitsPerLine & (pEvent->bitsPerPixel() - 1)) == 0);
             bFallback = ((bitsPerLine & (pEvent->bitsPerPixel() - 1)) != 0);
+        }
+        if (!bFallback)
+        {
+            Assert (bitsPerLine / pEvent->bitsPerPixel() >= m_width);
+            bFallback = RT_BOOL (bitsPerLine / pEvent->bitsPerPixel() < m_width);
         }
         if (!bFallback)
         {
