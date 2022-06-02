@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 31142 2010-07-27 13:50:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -633,7 +633,8 @@ QStringList QIFileDialog::getOpenFileNames (const QString &aStartWith,
                                             bool           aResolveSymlinks /* = true */,
                                             bool           aSingleFile /* = false */)
 {
-#if defined Q_WS_WIN
+/* It seems, running QFileDialog in separate thread is NOT needed under windows any more: */
+#if defined (Q_WS_WIN) && (QT_VERSION < 0x040403)
 
     /**
      *  QEvent class reimplementation to carry Win32 API native dialog's
