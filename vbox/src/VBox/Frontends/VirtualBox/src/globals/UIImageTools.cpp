@@ -1,4 +1,4 @@
-/* $Id: UIImageTools.cpp 35415 2011-01-06 17:33:14Z vboxsync $ */
+/* $Id: UIImageTools.cpp 35417 2011-01-06 17:45:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -239,7 +239,7 @@ QPixmap betaLabel()
     p.drawPath(tp);
     p.end();
     /* Create a secondary image which will contain the rotated banner. */
-    int w = sqrt(pow(ls.width(), 2) / 2);
+    int w = sqrtf(powf(ls.width(), 2) / 2);
     QImage i1(w, w, QImage::Format_ARGB32);
     i1.fill(Qt::transparent);
     QPainter p1(&i1);
