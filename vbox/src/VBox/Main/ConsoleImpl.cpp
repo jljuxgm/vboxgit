@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 34111 2010-11-16 12:43:09Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 34244 2010-11-22 14:31:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -795,6 +795,18 @@ void Console::updateGuestPropertiesVRDPDisconnect(uint32_t u32ClientId)
 }
 
 #endif /* VBOX_WITH_GUEST_PROPS */
+
+#ifdef VBOX_WITH_EXTPACK
+/**
+ * Used by VRDEServer and others to talke to the extension pack manager.
+ *
+ * @returns The extension pack manager.
+ */
+ExtPackManager *Console::getExtPackManager()
+{
+    return mptrExtPackManager;
+}
+#endif
 
 
 int Console::VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const char *pszPassword, const char *pszDomain)

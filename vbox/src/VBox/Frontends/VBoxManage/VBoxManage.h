@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 33766 2010-11-04 14:05:28Z vboxsync $ */
+/* $Id: VBoxManage.h 34244 2010-11-22 14:31:02Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -96,8 +96,7 @@
 #define USAGE_DEBUGLOG              RT_BIT_64(52)
 #define USAGE_SETHDPARENTUUID       RT_BIT_64(53)
 #define USAGE_PASSWORDHASH          RT_BIT_64(54)
-#define USAGE_VRDE                  RT_BIT_64(55)
-#define USAGE_EXTPACK               RT_BIT_64(56)
+#define USAGE_EXTPACK               RT_BIT_64(55)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -210,7 +209,6 @@ int handleSetExtraData(HandlerArg *a);
 int handleSetProperty(HandlerArg *a);
 int handleSharedFolder(HandlerArg *a);
 int handleVMStatistics(HandlerArg *a);
-int handleVRDE(HandlerArg *a);
 int handleExtPack(HandlerArg *a);
 
 /* VBoxManageDisk.cpp */
