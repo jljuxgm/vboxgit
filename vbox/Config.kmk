@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34502 2010-11-30 12:37:29Z vboxsync $
+# $Id: Config.kmk 34508 2010-11-30 13:19:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3849,7 +3849,7 @@ ifeq ($(KBUILD_HOST),win)
  else
   $(error KBUILD_HOST_ARCH=$(KBUILD_HOST_ARCH))
  endif
- ifndef VBOX_USE_VCC70
+ ifneq ($(TEMPLATE_VBOXBLDPROG_TOOL),VCC70)
   TEMPLATE_VBOXBLDPROG_CXXFLAGS          = -Zi -Zl -GR- -EHs- -GF -MT$(VBOX_VCC_CRT_TYPE) -W3 -wd4996 -Zc:wchar_t-
   TEMPLATE_VBOXBLDPROG_CXXFLAGS.debug    = -RTCsu
   TEMPLATE_VBOXBLDPROG_CXXFLAGS.release  = -O2 -Oy- -GS-
@@ -4470,7 +4470,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34502 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34508 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
