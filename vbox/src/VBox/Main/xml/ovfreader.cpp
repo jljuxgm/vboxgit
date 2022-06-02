@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 33700 2010-11-02 16:19:36Z vboxsync $ */
+/* $Id: ovfreader.cpp 34501 2010-11-30 12:30:30Z vboxsync $ */
 /** @file
  *
  * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
@@ -774,6 +774,11 @@ void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSy
             const xml::ElementNode *pelmCIMOSDescription;
             if ((pelmCIMOSDescription = pelmThis->findChildElement("Description")))
                 vsys.strCimosDesc = pelmCIMOSDescription->getValue();
+
+            const xml::ElementNode *pelmVBoxOSType;
+            if ((pelmVBoxOSType = pelmThis->findChildElement("vbox",            // namespace
+                                                             "OSType")))        // element name
+                vsys.strTypeVbox = pelmVBoxOSType->getValue();
         }
         else if (    (!strcmp(pcszElemName, "AnnotationSection"))
                   || (!strcmp(pcszTypeAttr, "ovf:AnnotationSection_Type"))
