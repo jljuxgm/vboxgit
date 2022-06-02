@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 30688 2010-07-07 07:31:40Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 30723 2010-07-08 08:24:12Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -781,7 +781,7 @@ static void buslogicClearInterrupt(PBUSLOGIC pBusLogic)
 {
     LogFlowFunc(("pBusLogic=%#p\n", pBusLogic));
     pBusLogic->regInterrupt = 0;
-    PDMDevHlpPCISetIrqNoWait(pBusLogic->CTX_SUFF(pDevIns), 0, 0);
+    PDMDevHlpPCISetIrq(pBusLogic->CTX_SUFF(pDevIns), 0, 0);
 }
 
 /**
@@ -795,7 +795,7 @@ static void buslogicSetInterrupt(PBUSLOGIC pBusLogic)
     LogFlowFunc(("pBusLogic=%#p\n", pBusLogic));
     pBusLogic->regInterrupt |= BUSLOGIC_REGISTER_INTERRUPT_INTERRUPT_VALID;
     if (pBusLogic->fIRQEnabled)
-        PDMDevHlpPCISetIrqNoWait(pBusLogic->CTX_SUFF(pDevIns), 0, 1);
+        PDMDevHlpPCISetIrq(pBusLogic->CTX_SUFF(pDevIns), 0, 1);
 }
 
 #if defined(IN_RING3)
