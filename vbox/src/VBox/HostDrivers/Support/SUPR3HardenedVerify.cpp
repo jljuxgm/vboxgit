@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 33832 2010-11-08 11:34:43Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 33859 2010-11-08 16:15:07Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -916,7 +916,8 @@ static int supR3HardenedVerifyPathSanity(const char *pszPath, char *pszErr, size
     /*
      * Check each component.  No parent references or double slashes.
      */
-    pInfo->fDirSlash = false;
+    pInfo->cComponents = 0;
+    pInfo->fDirSlash   = false;
     while (pszSrc[0])
     {
         /* Sanity checks. */

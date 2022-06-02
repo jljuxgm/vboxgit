@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 33821 2010-11-07 16:36:20Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 33859 2010-11-08 16:15:07Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -242,6 +242,17 @@ static DECLCALLBACK(int) rtVfsStdFile_Tell(void *pvThis, PRTFOFF poffActual)
 
 
 /**
+ * @interface_method_impl{RTVFSIOSTREAMOPS,pfnSkip}
+ */
+static DECLCALLBACK(int) rtVfsStdFile_Skip(void *pvThis, RTFOFF cb)
+{
+    PRTVFSSTDFILE pThis = (PRTVFSSTDFILE)pvThis;
+    uint64_t offIgnore;
+    return RTFileSeek(pThis->hFile, cb, RTFILE_SEEK_CURRENT, &offIgnore);
+}
+
+
+/**
  * @interface_method_impl{RTVFSOBJSETOPS,pfnMode}
  */
 static DECLCALLBACK(int) rtVfsStdFile_SetMode(void *pvThis, RTFMODE fMode, RTFMODE fMask)
@@ -338,6 +349,8 @@ DECLHIDDEN(const RTVFSFILEOPS) g_rtVfsStdFileOps =
         rtVfsStdFile_Flush,
         rtVfsStdFile_PollOne,
         rtVfsStdFile_Tell,
+        rtVfsStdFile_Skip,
+        NULL /*ZeroFill*/,
         RTVFSIOSTREAMOPS_VERSION,
     },
     RTVFSFILEOPS_VERSION,
