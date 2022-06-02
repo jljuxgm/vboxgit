@@ -1,4 +1,4 @@
-/* $Id: ProgressCombinedImpl.h 29923 2010-05-31 17:55:44Z vboxsync $ */
+/* $Id: ProgressCombinedImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -65,15 +65,17 @@
  *       will be in a loop calling a method that returns immediately.
  */
 class ATL_NO_VTABLE CombinedProgress :
-    public com::SupportErrorInfoDerived<ProgressBase, CombinedProgress, IProgress>,
+//     public com::SupportErrorInfoDerived<ProgressBase, CombinedProgress, IProgress>,
+    public Progress,
     public VirtualBoxSupportTranslation<CombinedProgress>
 {
 
 public:
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(CombinedProgress, IProgress)
 
-    VIRTUALBOXSUPPORTTRANSLATION_OVERRIDE (CombinedProgress)
+    VIRTUALBOXSUPPORTTRANSLATION_OVERRIDE(CombinedProgress)
 
-    DECLARE_NOT_AGGREGATABLE (CombinedProgress)
+    DECLARE_NOT_AGGREGATABLE(CombinedProgress)
 
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
@@ -180,9 +182,6 @@ public:
     }
 
     // public methods only for internal purposes
-
-    /** For com::SupportErrorInfoImpl. */
-    static const char *ComponentName() { return "CombinedProgress"; }
 
 private:
 

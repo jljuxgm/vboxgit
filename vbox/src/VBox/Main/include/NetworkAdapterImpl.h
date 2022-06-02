@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 28867 2010-04-28 13:28:20Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -32,7 +32,6 @@ namespace settings
 
 class ATL_NO_VTABLE NetworkAdapter :
     public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<NetworkAdapter, INetworkAdapter>,
     public VirtualBoxSupportTranslation<NetworkAdapter>,
     VBOX_SCRIPTABLE_IMPL(INetworkAdapter)
 {
@@ -72,7 +71,7 @@ public:
         ULONG mBootPriority;
     };
 
-    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (NetworkAdapter)
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(NetworkAdapter, INetworkAdapter)
 
     DECLARE_NOT_AGGREGATABLE(NetworkAdapter)
 
@@ -142,9 +141,6 @@ public:
     void commit();
     void copyFrom (NetworkAdapter *aThat);
     void applyDefaults (GuestOSType *aOsType);
-
-    // for VirtualBoxSupportErrorInfoImpl
-    static const wchar_t *getComponentName() { return L"NetworkAdapter"; }
 
 private:
 

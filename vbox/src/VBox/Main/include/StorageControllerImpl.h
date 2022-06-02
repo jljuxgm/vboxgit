@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 29480 2010-05-14 15:24:19Z vboxsync $ */
+/* $Id: StorageControllerImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -24,13 +24,12 @@
 
 class ATL_NO_VTABLE StorageController :
     public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<StorageController, IStorageController>,
     public VirtualBoxSupportTranslation<StorageController>,
     VBOX_SCRIPTABLE_IMPL(IStorageController)
 {
 public:
 
-    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (StorageController)
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(StorageController, IStorageController)
 
     DECLARE_NOT_AGGREGATABLE (StorageController)
 
@@ -98,9 +97,6 @@ public:
     Machine* getMachine();
 
     ComObjPtr<StorageController> getPeer();
-
-    // for VirtualBoxSupportErrorInfoImpl
-    static const wchar_t *getComponentName() { return L"StorageController"; }
 
 private:
 

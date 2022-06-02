@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: MediumFormatImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -39,7 +39,6 @@ struct VDBACKENDINFO;
  */
 class ATL_NO_VTABLE MediumFormat :
     public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<MediumFormat, IMediumFormat>,
     public VirtualBoxSupportTranslation<MediumFormat>,
     VBOX_SCRIPTABLE_IMPL(IMediumFormat)
 {
@@ -68,7 +67,7 @@ public:
         const PropertyList properties;
     };
 
-    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (MediumFormat)
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(MediumFormat, IMediumFormat)
 
     DECLARE_NOT_AGGREGATABLE (MediumFormat)
 
@@ -115,9 +114,6 @@ public:
     uint64_t capabilities() const { return m.capabilities; }
     /** Const, no need to lock */
     const PropertyList &properties() const { return m.properties; }
-
-    // for VirtualBoxSupportErrorInfoImpl
-    static const wchar_t *getComponentName() { return L"MediumFormat"; }
 
 private:
 

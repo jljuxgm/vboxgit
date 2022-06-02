@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 30714 2010-07-07 16:20:03Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1512,7 +1512,7 @@ VRDPAuthResult ConsoleVRDPServer::Authenticate (const Guid &uuid, VRDPAuthGuestJ
 
         if (RT_FAILURE(rc))
         {
-            mConsole->reportAuthLibraryError(filename.raw(), rc);
+            mConsole->setAuthLibraryError(filename.raw(), rc);
 
             mpfnAuthEntry = NULL;
             mpfnAuthEntry2 = NULL;

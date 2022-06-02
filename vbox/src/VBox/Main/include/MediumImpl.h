@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 29325 2010-05-11 10:07:04Z vboxsync $ */
+/* $Id: MediumImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -38,12 +38,11 @@ namespace settings
  */
 class ATL_NO_VTABLE Medium :
     public VirtualBoxBase,
-    public com::SupportErrorInfoImpl<Medium, IMedium>,
     public VirtualBoxSupportTranslation<Medium>,
     VBOX_SCRIPTABLE_IMPL(IMedium)
 {
 public:
-    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(Medium)
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(Medium, IMedium)
 
     DECLARE_NOT_AGGREGATABLE(Medium)
 
@@ -228,9 +227,6 @@ public:
 
     /** Returns a preferred format for a differencing hard disk. */
     Bstr preferredDiffFormat();
-
-    /** For com::SupportErrorInfoImpl. */
-    static const char *ComponentName() { return "Medium"; }
 
 private:
 

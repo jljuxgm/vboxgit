@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -28,13 +28,12 @@ typedef _VRDPUSBDEVICEDESC VRDPUSBDEVICEDESC;
 
 class ATL_NO_VTABLE RemoteUSBDevice :
     public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<RemoteUSBDevice, IHostUSBDevice>,
     public VirtualBoxSupportTranslation<RemoteUSBDevice>,
     VBOX_SCRIPTABLE_IMPL(IHostUSBDevice)
 {
 public:
 
-    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (OUSBDevice)
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(RemoteUSBDevice, IHostUSBDevice)
 
     DECLARE_NOT_AGGREGATABLE (RemoteUSBDevice)
 
@@ -94,9 +93,6 @@ public:
             mData.state = USBDeviceState_Available;
         }
     }
-
-    // for VirtualBoxSupportErrorInfoImpl
-    static const wchar_t *getComponentName() { return L"RemoteUSBDevice"; }
 
 private:
 

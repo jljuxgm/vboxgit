@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 30683 2010-07-06 17:46:22Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -53,7 +53,7 @@ void ErrorInfo::copyFrom(const ErrorInfo &x)
     mComponent = x.mComponent;
     mText = x.mText;
 
-    if (x.m_pNext)
+    if (x.m_pNext != NULL)
         m_pNext = new ErrorInfo(x.m_pNext);
     else
         m_pNext = NULL;
@@ -257,7 +257,7 @@ void ErrorInfo::init(IVirtualBoxErrorInfo *info)
     if (SUCCEEDED(rc) && !next.isNull())
     {
         m_pNext = new ErrorInfo(next);
-        Assert(m_pNext);
+        Assert(m_pNext != NULL);
         if (!m_pNext)
             rc = E_OUTOFMEMORY;
     }

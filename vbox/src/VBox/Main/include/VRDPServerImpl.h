@@ -1,4 +1,4 @@
-/* $Id: VRDPServerImpl.h 28802 2010-04-27 09:23:16Z vboxsync $ */
+/* $Id: VRDPServerImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -31,7 +31,6 @@ namespace settings
 
 class ATL_NO_VTABLE VRDPServer :
     public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<VRDPServer, IVRDPServer>,
     public VirtualBoxSupportTranslation<VRDPServer>,
     VBOX_SCRIPTABLE_IMPL(IVRDPServer)
 {
@@ -50,7 +49,7 @@ public:
         ULONG mVideoChannelQuality;
     };
 
-    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (VRDPServer)
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(VRDPServer, IVRDPServer)
 
     DECLARE_NOT_AGGREGATABLE(VRDPServer)
 
@@ -103,9 +102,6 @@ public:
     void rollback();
     void commit();
     void copyFrom (VRDPServer *aThat);
-
-    // for VirtualBoxSupportErrorInfoImpl
-    static const wchar_t *getComponentName() { return L"VRDPServer"; }
 
 private:
 

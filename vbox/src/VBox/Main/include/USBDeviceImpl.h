@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
@@ -27,13 +27,12 @@
  */
 class ATL_NO_VTABLE OUSBDevice :
     public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<OUSBDevice, IUSBDevice>,
     public VirtualBoxSupportTranslation<OUSBDevice>,
     VBOX_SCRIPTABLE_IMPL(IUSBDevice)
 {
 public:
 
-    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (OUSBDevice)
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(OUSBDevice, IUSBDevice)
 
     DECLARE_NOT_AGGREGATABLE(OUSBDevice)
 
@@ -70,9 +69,6 @@ public:
 
     // public methods only for internal purposes
     const Guid &id() const { return mData.id; }
-
-    // for VirtualBoxSupportErrorInfoImpl
-    static const wchar_t *getComponentName() { return L"USBDevice"; }
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -29,7 +29,6 @@ namespace settings
 
 class ATL_NO_VTABLE AudioAdapter :
     public VirtualBoxBase,
-    public VirtualBoxSupportErrorInfoImpl<AudioAdapter, IAudioAdapter>,
     public VirtualBoxSupportTranslation<AudioAdapter>,
     VBOX_SCRIPTABLE_IMPL(IAudioAdapter)
 {
@@ -44,7 +43,7 @@ public:
         AudioControllerType_T mAudioController;
     };
 
-    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT (AudioAdapter)
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(AudioAdapter, IAudioAdapter)
 
     DECLARE_NOT_AGGREGATABLE(AudioAdapter)
 
@@ -82,9 +81,6 @@ public:
     void rollback();
     void commit();
     void copyFrom(AudioAdapter *aThat);
-
-    // for VirtualBoxSupportErrorInfoImpl
-    static const wchar_t *getComponentName() { return L"AudioAdapter"; }
 
 private:
 

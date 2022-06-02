@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 28835 2010-04-27 14:46:23Z vboxsync $ */
+/* $Id: SnapshotImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
 
 /** @file
  *
@@ -32,12 +32,13 @@ namespace settings
 }
 
 class ATL_NO_VTABLE Snapshot :
-    public VirtualBoxSupportErrorInfoImpl<Snapshot, ISnapshot>,
     public VirtualBoxSupportTranslation<Snapshot>,
     public VirtualBoxBase, // WithTypedChildren<Snapshot>,
     VBOX_SCRIPTABLE_IMPL(ISnapshot)
 {
 public:
+    VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(Snapshot, ISnapshot)
+
     DECLARE_NOT_AGGREGATABLE(Snapshot)
 
     DECLARE_PROTECT_FINAL_CONSTRUCT()
@@ -88,16 +89,6 @@ public:
     // public methods only for internal purposes
 
     /**
-     * Simple run-time type identification without having to enable C++ RTTI.
-     * The class IDs are defined in VirtualBoxBase.h.
-     * @return
-     */
-    virtual VBoxClsID getClassID() const
-    {
-        return clsidSnapshot;
-    }
-
-    /**
      * Override of the default locking class to be used for validating lock
      * order with the standard member lock handle.
      */
@@ -132,12 +123,6 @@ public:
 
     HRESULT saveSnapshot(settings::Snapshot &data, bool aAttrsOnly);
     HRESULT saveSnapshotImpl(settings::Snapshot &data, bool aAttrsOnly);
-
-    // for VirtualBoxSupportErrorInfoImpl
-    static const wchar_t *getComponentName()
-    {
-        return L"Snapshot";
-    }
 
 private:
     struct Data;            // opaque, defined in SnapshotImpl.cpp

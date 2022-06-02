@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 30714 2010-07-07 16:20:03Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -537,12 +537,12 @@ STDMETHODIMP Appliance::GetWarnings(ComSafeArrayOut(BSTR, aWarnings))
  *
  * @return
  */
-bool Appliance::isApplianceIdle() const
+bool Appliance::isApplianceIdle()
 {
     if (m->state == Data::ApplianceImporting)
-        setError(VBOX_E_INVALID_OBJECT_STATE, "The appliance is busy importing files");
+        setError(VBOX_E_INVALID_OBJECT_STATE, tr("The appliance is busy importing files"));
     else if (m->state == Data::ApplianceExporting)
-        setError(VBOX_E_INVALID_OBJECT_STATE, "The appliance is busy exporting files");
+        setError(VBOX_E_INVALID_OBJECT_STATE, tr("The appliance is busy exporting files"));
     else
         return true;
 
@@ -863,7 +863,7 @@ void Appliance::parseURI(Utf8Str strUri, LocationInfo &locInfo) const
     locInfo.strPath = strUri;
 }
 
-void Appliance::parseBucket(Utf8Str &aPath, Utf8Str &aBucket) const
+void Appliance::parseBucket(Utf8Str &aPath, Utf8Str &aBucket)
 {
     /* Buckets are S3 specific. So parse the bucket out of the file path */
     if (!aPath.startsWith("/"))
