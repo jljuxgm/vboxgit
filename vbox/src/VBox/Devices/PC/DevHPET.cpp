@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: DevHPET.cpp 33662 2010-11-01 15:41:54Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -716,7 +716,7 @@ PDMBOTHCBDECL(int)  hpetMMIORead(PPDMDEVINS pDevIns,
         case 1:
         case 2:
             Log(("Narrow read: %d\n", cb));
-            rc = VERR_INTERNAL_ERROR;
+            rc = VINF_SUCCESS;
             break;
         case 4:
         {
@@ -765,7 +765,7 @@ PDMBOTHCBDECL(int)  hpetMMIORead(PPDMDEVINS pDevIns,
 
         default:
             AssertReleaseMsgFailed(("cb=%d\n", cb)); /* for now we assume simple accesses. */
-            rc = VERR_INTERNAL_ERROR;
+            rc = VINF_SUCCESS;
     }
 
     hpetUnlock(pThis);
