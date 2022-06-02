@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 30112 2010-06-09 12:31:50Z vboxsync $ */
+/* $Id: VMReq.cpp 31631 2010-08-13 09:48:28Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -881,7 +881,7 @@ VMMR3DECL(int) VMR3ReqQueue(PVMREQ pReq, RTMSINTERVAL cMillies)
     {
         unsigned fFlags = ((VMREQ volatile *)pReq)->fFlags;     /* volatile paranoia */
 
-        Assert(pReq->idDstCpu != VMCPUID_ANY_QUEUE || pUVCpu);
+        /* Note: pUVCpu may or may not be NULL in the VMCPUID_ANY_QUEUE case; we don't care. */
 
         /*
          * Insert it.
