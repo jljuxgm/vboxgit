@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest2.cpp 32246 2010-09-06 11:47:55Z vboxsync $ */
+/* $Id: VBoxGuest2.cpp 32435 2010-09-12 23:15:26Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, bits shared with the windows code.
  */
@@ -26,6 +26,7 @@
 #if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
 # include "revision-generated.h"
 #endif
+#include "VBoxGuest2.h"
 
 /** @todo Remove and merge this file with VBoxGuest.cpp when the Windows driver
   *       also will be built from the common sources. */
