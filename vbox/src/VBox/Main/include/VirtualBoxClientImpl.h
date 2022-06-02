@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 34421 2010-11-26 17:44:43Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 34424 2010-11-26 18:40:56Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -49,8 +49,6 @@ public:
         COM_INTERFACE_ENTRY(ISupportErrorInfo)
         COM_INTERFACE_ENTRY(IVirtualBoxClient)
     END_COM_MAP()
-
-    DECLARE_EMPTY_CTOR_DTOR(VirtualBoxClient)
 
     HRESULT FinalConstruct();
     void FinalRelease();
