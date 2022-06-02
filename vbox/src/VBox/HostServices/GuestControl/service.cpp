@@ -1,4 +1,4 @@
-/* $Id: service.cpp 34825 2010-12-08 11:02:22Z vboxsync $ */
+/* $Id: service.cpp 35033 2010-12-13 16:38:35Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -170,7 +170,7 @@ private:
     /** Client contexts list. */
     ClientContextsList mClientContextsList;
     /** Number of connected clients. */
-    uint32_t mNumClients;
+    int32_t mNumClients;
 public:
     explicit Service(PVBOXHGCMSVCHELPERS pHelpers)
         : mpHelpers(pHelpers)
