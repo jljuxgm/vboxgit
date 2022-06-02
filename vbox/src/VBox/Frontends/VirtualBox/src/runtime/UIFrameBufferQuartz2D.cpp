@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 35215 2010-12-17 10:12:26Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 35281 2010-12-21 17:08:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -442,18 +442,8 @@ void UIFrameBufferQuartz2D::clean()
 #ifdef VBOX_WITH_VIDEOHWACCEL
 void UIFrameBufferQuartz2D::setView(UIMachineView *pView)
 {
-    clean();
-    m_pMachineLogic = NULL;
-    m_pDataAddress = NULL;
-
     if (pView)
-    {
         m_pMachineLogic = pView->machineLogic();
-
-        UIResizeEvent event(FramebufferPixelFormat_Opaque,
-                        NULL, 0, 0, 640, 480);
-        UIFrameBufferQuartz2D::resizeEvent (&event);
-    }
 
     UIFrameBuffer::setView(pView);
 }
