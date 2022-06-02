@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 35253 2010-12-20 16:47:38Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 35257 2010-12-20 17:09:00Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3297,10 +3297,10 @@ static DECLCALLBACK(int) dbgcCmdDumpTSS(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM
             DBGCVAR_INIT_GC_FAR(&VarTssAddr, (RTSEL)paArgs[0].u.u64Number, 0);
         else
         {
-            if (VarTssAddr.enmRangeType == DBGCVAR_RANGE_ELEMENTS)
+            if (paArgs[0].enmRangeType == DBGCVAR_RANGE_ELEMENTS)
                 return DBGCCmdHlpFail(pCmdHlp, pCmd, "Element count doesn't combine with a TSS address.\n");
             DBGCVAR_INIT_GC_FLAT(&VarTssAddr, paArgs[0].u.u64Number);
-            if (VarTssAddr.enmRangeType == DBGCVAR_RANGE_BYTES)
+            if (paArgs[0].enmRangeType == DBGCVAR_RANGE_BYTES)
             {
                 VarTssAddr.enmRangeType = paArgs[0].enmRangeType;
                 VarTssAddr.u64Range     = paArgs[0].u64Range;
