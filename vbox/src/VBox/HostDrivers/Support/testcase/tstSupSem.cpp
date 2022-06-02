@@ -1,10 +1,10 @@
-/* $Id: tstSupSem.cpp 33011 2010-10-08 15:42:24Z vboxsync $ */
+/* $Id: tstSupSem.cpp 33032 2010-10-11 09:30:34Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -39,6 +39,7 @@
 #include <iprt/process.h>
 #include <iprt/env.h>
 #include <iprt/string.h>
+#include <iprt/time.h>
 
 
 /*******************************************************************************
@@ -229,8 +230,9 @@ int main(int argc, char **argv)
 
     /*
      * Fork test.
-     * Spawn a thread waiting for an event, then spawn a new child process (of ourselves)
-     * and make sure that this does not alter the intended behaviour of our event semaphore implementation (see #5090).
+     * Spawn a thread waiting for an event, then spawn a new child process (of
+     * ourselves) and make sure that this does not alter the intended behaviour
+     * of our event semaphore implementation (see #5090).
      */
     RTTestSub(hTest, "SRE Process Spawn");
     hThread = NIL_RTTHREAD;
@@ -279,6 +281,45 @@ int main(int argc, char **argv)
     RTTESTI_CHECK_RC(SUPSemEventMultiClose(pSession, hEvent), VINF_OBJECT_DESTROYED);
 
 #endif /* !OS2 && !WINDOWS */
+
+    if (RTTestErrorCount(hTest) == 0)
+    {
+        RTTestSub(hTest, "MRE Timeout Accuracy");
+        RTTESTI_CHECK_RC(SUPSemEventMultiCreate(pSession, &hEvent), VINF_SUCCESS);
+
+        static unsigned const s_acMsIntervals[] = { 0, 1, 2, 3, 4, 8, 10, 16, 32 };
+        for (unsigned i = 0; i < RT_ELEMENTS(s_acMsIntervals); i++)
+        {
+            uint64_t cMs        = s_acMsIntervals[i];
+            uint64_t cNsMinSys  = UINT64_MAX;
+            uint64_t cNsMin     = UINT64_MAX;
+            uint64_t cNsTotalSys= 0;
+            uint64_t cNsTotal   = 0;
+            for (unsigned j = 0; j < 10; j++)
+            {
+                uint64_t u64StartSys = RTTimeSystemNanoTS();
+                uint64_t u64Start    = RTTimeNanoTS();
+                int rcX = SUPSemEventMultiWaitNoResume(pSession, hEvent, cMs);
+                if (rc == VERR_TIMEOUT)
+                    RTTestFailed(hTest, "%Rrc j=%u cMs=%u", rcX, j, cMs);
+                uint64_t cNsElapsedSys = RTTimeSystemNanoTS() - u64StartSys;
+                uint64_t cNsElapsed    = RTTimeNanoTS()       - u64Start;
+                if (cNsElapsedSys < cNsMinSys)
+                    cNsMinSys = cNsElapsedSys;
+                if (cNsElapsed < cNsMin)
+                    cNsMin = cNsElapsed;
+                cNsTotalSys += cNsElapsedSys;
+                cNsTotal    += cNsElapsed;
+            }
+            RTTestValueF(hTest, cNsMinSys, RTTESTUNIT_NS, "%u ms min (clock=sys)", cMs);
+            RTTestValueF(hTest, cNsTotalSys / 10, RTTESTUNIT_NS, "%u ms avg - (clock=sys)", cMs);
+            RTTestValueF(hTest, cNsMin, RTTESTUNIT_NS, "%u ms min (clock=gip)", cMs);
+            RTTestValueF(hTest, cNsTotal / 10, RTTESTUNIT_NS, "%u ms avg - (clock=gip)", cMs);
+        }
+
+        RTTESTI_CHECK_RC(SUPSemEventMultiClose(pSession, hEvent), VINF_OBJECT_DESTROYED);
+    }
+
 
     /*
      * Done.
