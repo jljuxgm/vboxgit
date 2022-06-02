@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35319 2010-12-24 15:42:36Z vboxsync $
+# $Id: Config.kmk 35343 2010-12-27 14:30:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1482,7 +1482,7 @@ ifeq ($(KBUILD_TARGET),os2)
  LIB_RUNTIME_EF  = #$(PATH_LIB)/RuntimeEFCPP.a
  LIB_KPROFILE    = $(PATH_BIN)/kPrf2.dll
  LIB_VMM         = $(PATH_BIN)/VBoxVMM.dll
- LIB_VMMGC       = $(PATH_LIB)/VMMGCImp.lib
+ LIB_VMMGC       = $(PATH_LIB)/VMMRCImp.lib
  LIB_REM         = $(PATH_LIB)/VBoxREMImp.lib
  LIB_XPCOM       = $(PATH_BIN)/VBoxXCOM.dll
  LIB_DDU         = $(PATH_BIN)/VBoxDDU.dll
@@ -1493,7 +1493,7 @@ ifeq ($(KBUILD_TARGET),win)
  LIB_RUNTIME_EF  = #$(PATH_LIB)/RuntimeEFCPP.lib
  LIB_KPROFILE    = $(PATH_LIB)/kPrf2.lib
  LIB_VMM         = $(PATH_LIB)/VBoxVMM.lib
- LIB_VMMGC       = $(PATH_OBJ)/VMMGC/VMMGC.lib
+ LIB_VMMGC       = $(PATH_OBJ)/VMMRC/VMMRC.lib
  LIB_REM         = $(PATH_LIB)/VBoxREMImp.lib
  LIB_XPCOM       = $(PATH_BIN)/VBoxXPCOM.dll
  LIB_DDU         = $(PATH_LIB)/VBoxDDU.lib
@@ -4493,7 +4493,7 @@ VBOX_LIB_VBGL_R0BASE             = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR0LibBase
 VBOX_LIB_VBGL_R0                 = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR0Lib$(VBOX_SUFF_LIB)
 ifeq ($(KBUILD_TARGET),x86)
  VBOX_LIB_IPRT_GUEST_R3_X86      = $(VBOX_LIB_IPRT_GUEST_R3)
- VBOX_LIB_IPRT_GUEST_R3_SHARED_X86 = $(VBOX_LIB_IPRT_GUEST_R3_SHARED)  
+ VBOX_LIB_IPRT_GUEST_R3_SHARED_X86 = $(VBOX_LIB_IPRT_GUEST_R3_SHARED)
  VBOX_LIB_VBGL_R3_X86            = $(VBOX_LIB_VBGL_R3)
  VBOX_LIB_VBGL_R3_SHARED_X86     = $(VBOX_LIB_VBGL_R3_SHARED)
 else
@@ -4630,7 +4630,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35319 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35343 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
