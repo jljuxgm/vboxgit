@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 32052 2010-08-27 14:03:57Z vboxsync $ */
+/* $Id: DevOHCI.cpp 32054 2010-08-27 14:30:02Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -347,6 +347,8 @@ typedef struct OHCI
     bool                fIdle;
     /** A flag indicating that the bulk list may have in-flight URBs. */
     bool                fBulkNeedsCleaning;
+
+    uint32_t            Alignment3;     /**< Align size on a 8 byte boundary. */
 } OHCI;
 
 /* Standard OHCI bus speed */
