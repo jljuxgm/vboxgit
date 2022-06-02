@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 33082 2010-10-12 20:26:27Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 33088 2010-10-13 07:49:04Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -432,7 +432,6 @@ typedef struct VDMETAXFER
 
 extern VBOXHDDBACKEND g_RawBackend;
 extern VBOXHDDBACKEND g_VmdkBackend;
-extern VBOXHDDBACKEND g_VmdkStreamBackend;
 extern VBOXHDDBACKEND g_VDIBackend;
 extern VBOXHDDBACKEND g_VhdBackend;
 extern VBOXHDDBACKEND g_ParallelsBackend;
@@ -449,7 +448,6 @@ static PVBOXHDDBACKEND aStaticBackends[] =
 {
     &g_RawBackend,
     &g_VmdkBackend,
-    &g_VmdkStreamBackend,
     &g_VDIBackend,
     &g_VhdBackend,
     &g_ParallelsBackend

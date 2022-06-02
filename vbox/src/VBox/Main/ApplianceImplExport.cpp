@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 33060 2010-10-12 12:17:49Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 33088 2010-10-13 07:49:04Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1760,7 +1760,7 @@ HRESULT Appliance::writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, PVD
             SystemProperties *pSysProps = mVirtualBox->getSystemProperties();
             AutoReadLock propsLock(pSysProps COMMA_LOCKVAL_SRC_POS);
             // We are always exporting to VMDK stream optimized for now
-            format = pSysProps->mediumFormat("VMDKstream");
+            format = pSysProps->mediumFormat("VMDK");
             if (format.isNull())
                 throw setError(VBOX_E_NOT_SUPPORTED,
                                tr("Invalid medium storage format"));
