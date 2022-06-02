@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 31320 2010-08-02 16:47:54Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 31533 2010-08-10 13:08:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2782,6 +2782,11 @@ void VBoxGlobal::retranslateUi()
     mNetworkAttachmentTypes [KNetworkAttachmentType_VDE] =
         tr ("VDE Adapter", "NetworkAttachmentType");
 #endif
+
+    mNATProtocolTypes [KNATProtocol_UDP] =
+        tr ("UDP", "NATProtocolType");
+    mNATProtocolTypes [KNATProtocol_TCP] =
+        tr ("TCP", "NATProtocolType");
 
     mClipboardTypes [KClipboardMode_Disabled] =
         tr ("Disabled", "ClipboardType");
