@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsHD.cpp 32760 2010-09-24 13:41:31Z vboxsync $ */
+/* $Id: VBoxVMSettingsHD.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1985,7 +1985,7 @@ void VBoxVMSettingsHD::showEvent (QShowEvent *aEvent)
         mLtAttachment->setColumnMinimumWidth (1, maxWidth);
 #endif
     }
-    VBoxSettingsPage::showEvent (aEvent);
+    UISettingsPage::showEvent (aEvent);
 }
 
 void VBoxVMSettingsHD::mediumUpdated (const VBoxMedium &aMedium)

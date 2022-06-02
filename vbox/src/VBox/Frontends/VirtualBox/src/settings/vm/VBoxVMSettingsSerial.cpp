@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSerial.cpp 29972 2010-06-02 09:03:45Z vboxsync $ */
+/* $Id: VBoxVMSettingsSerial.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -203,8 +203,8 @@ VBoxVMSettingsSerialPage::VBoxVMSettingsSerialPage()
 
 void VBoxVMSettingsSerialPage::getFrom (const CMachine &aMachine)
 {
-    Assert (mFirstWidget);
-    setTabOrder (mFirstWidget, mTabWidget->focusProxy());
+    Assert (m_pFirstWidget);
+    setTabOrder (m_pFirstWidget, mTabWidget->focusProxy());
     QWidget *lastFocusWidget = mTabWidget->focusProxy();
 
     /* Tab pages loading */

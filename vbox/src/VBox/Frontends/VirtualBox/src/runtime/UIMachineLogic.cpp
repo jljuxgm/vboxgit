@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 32741 2010-09-23 23:21:52Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -159,7 +159,7 @@ protected:
 
 private:
 
-    VBoxSettingsPage *m_pSettings;
+    UISettingsPage *m_pSettings;
     CSession &m_session;
 };
 

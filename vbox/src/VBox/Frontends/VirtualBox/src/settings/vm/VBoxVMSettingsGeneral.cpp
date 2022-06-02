@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsGeneral.cpp 32510 2010-09-15 11:33:43Z vboxsync $ */
+/* $Id: VBoxVMSettingsGeneral.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -180,6 +180,6 @@ void VBoxVMSettingsGeneral::retranslateUi()
 void VBoxVMSettingsGeneral::showEvent (QShowEvent *aEvent)
 {
     QCoreApplication::sendPostedEvents();
-    VBoxSettingsPage::showEvent (aEvent);
+    UISettingsPage::showEvent (aEvent);
 }
 

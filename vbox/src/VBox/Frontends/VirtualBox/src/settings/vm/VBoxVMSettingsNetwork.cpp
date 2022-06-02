@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsNetwork.cpp 31541 2010-08-10 16:17:27Z vboxsync $ */
+/* $Id: VBoxVMSettingsNetwork.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -743,8 +743,8 @@ QStringList VBoxVMSettingsNetworkPage::hoiList (bool aRefresh)
 void VBoxVMSettingsNetworkPage::getFrom (const CMachine &aMachine)
 {
     /* Setup tab order */
-    Assert (mFirstWidget);
-    setTabOrder (mFirstWidget, mTwAdapters->focusProxy());
+    Assert (m_pFirstWidget);
+    setTabOrder (m_pFirstWidget, mTwAdapters->focusProxy());
     QWidget *lastFocusWidget = mTwAdapters->focusProxy();
 
     /* Cache data */

@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSF.cpp 31088 2010-07-26 06:31:01Z vboxsync $ */
+/* $Id: VBoxVMSettingsSF.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -165,7 +165,7 @@ private:
 };
 
 VBoxVMSettingsSF::VBoxVMSettingsSF (int aType, QWidget *aParent)
-    : VBoxSettingsPage (aParent)
+    : UISettingsPage (aParent)
     , mDialogType (aType)
     , mIsListViewChanged (false)
 {

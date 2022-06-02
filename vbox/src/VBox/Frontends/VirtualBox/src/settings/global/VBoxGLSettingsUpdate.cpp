@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSettingsUpdate.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGLSettingsUpdate.cpp 32814 2010-09-29 12:34:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -132,7 +132,7 @@ void VBoxGLSettingsUpdate::toggledBranch()
 
 void VBoxGLSettingsUpdate::showEvent (QShowEvent *aEvent)
 {
-    VBoxSettingsPage::showEvent (aEvent);
+    UISettingsPage::showEvent (aEvent);
 
     /* That little hack allows avoid one of qt4 children focusing bug */
     QWidget *current = QApplication::focusWidget();
