@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 33807 2010-11-05 18:07:21Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -361,8 +361,8 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
      * Before entering the loop, tell the host that we've started the guest
      * and that it's now OK to send input to the process.
      */
-    VBoxServiceVerbose(3, "ControlExec: Process started: PID=%u, CID=%u, User=%s, PW=%s\n",
-                       pData->uPID, pThread->uContextID, pData->pszUser, pData->pszPassword);
+    VBoxServiceVerbose(3, "ControlExec: Process started: PID=%u, CID=%u, User=%s\n",
+                       pData->uPID, pThread->uContextID, pData->pszUser);
     rc = VbglR3GuestCtrlExecReportStatus(pThread->uClientID, pThread->uContextID,
                                          pData->uPID, PROC_STS_STARTED, 0 /* u32Flags */,
                                          NULL /* pvData */, 0 /* cbData */);
