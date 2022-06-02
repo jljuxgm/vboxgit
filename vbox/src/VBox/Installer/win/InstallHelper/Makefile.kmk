@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31858 2010-08-23 12:17:52Z vboxsync $
+# $Id: Makefile.kmk 31859 2010-08-23 12:50:24Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxInstallHelper.dll.
 #
@@ -43,7 +43,9 @@ endif
 
 ifeq ($(KBUILD_TARGET),win)
  ifdef VBOX_WITH_TESTCASES
-  include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
+  ifndef VBOX_OSE
+   include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
+  endif
  endif
 endif
 
