@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltCommon-win.h 29682 2010-05-20 11:16:03Z vboxsync $ */
+/* $Id: VBoxNetFltCommon-win.h 32338 2010-09-09 11:12:45Z vboxsync $ */
 /** @file
  * VBoxNetFltCommon.h - Network Filter Driver (Host), Windows Specific Code. Common headeer with commonly used defines and decls
  */
@@ -365,6 +365,8 @@ typedef struct _ADAPT
     PNDIS_PACKET                   aReceivedPackets[MAX_RECEIVE_PACKET_ARRAY_SIZE];
     /** number of packets in the aReceivedPackets array*/
     ULONG                          cReceivedPacketCount;
+    /** flag indicating whether rx packet queueing is allowed */
+    BOOLEAN                        bIsReceivePacketQueueingDisabled;
     /** packet filter flags set by the upper protocols */
     ULONG                          fUpperProtocolSetFilter;
     /** packet filter flags set by the upper protocols */
