@@ -1,4 +1,4 @@
-/* $Id: Builtins.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
+/* $Id: Builtins.cpp 32342 2010-09-09 12:08:48Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1)
  */
@@ -57,6 +57,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     int rc;
 
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePCI);
+    if (RT_FAILURE(rc))
+        return rc;
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePciIch9);
     if (RT_FAILURE(rc))
         return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePcArch);
@@ -164,6 +167,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
         return rc;
 #endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePCIBridge);
+    if (RT_FAILURE(rc))
+        return rc;
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePciIch9Bridge);
     if (RT_FAILURE(rc))
         return rc;
 #ifdef VBOX_WITH_LSILOGIC
