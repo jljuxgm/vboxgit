@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 32315 2010-09-08 11:58:00Z vboxsync $ */
+/* $Id: VMMDevState.h 32369 2010-09-09 16:56:18Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -221,7 +221,7 @@ typedef struct VMMDevState
     bool fHeapEnabled;
 
     /** Guest Core Dumping enabled. */
-    bool fGuestCoreDump;
+    bool fGuestCoreDumpEnabled;
 
     /** Alignment padding. */
     bool afAlignment7[4];
