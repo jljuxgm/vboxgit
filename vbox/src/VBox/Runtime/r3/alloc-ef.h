@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: alloc-ef.h 34291 2010-11-23 16:06:11Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -89,7 +89,7 @@
  * decommitted.
  * Requires RTALLOC_EFENCE_TRACE.
  */
-#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS)
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(DOXYGEN_RUNNING)
 # define RTALLOC_EFENCE_FREE_FILL       'f'
 #endif
 
