@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 32400 2010-09-10 12:49:38Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 32402 2010-09-10 12:55:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -379,8 +379,10 @@ Display::displaySSMLoad(PSSMHANDLE pSSM, void *pvUser, uint32_t uVersion, uint32
         SSMR3GetU32(pSSM, &that->maFramebuffers[i].u32InformationSize);
         if (uVersion == sSSMDisplayVer2)
         {
-            SSMR3GetU32(pSSM, &that->maFramebuffers[i].w);
-            SSMR3GetU32(pSSM, &that->maFramebuffers[i].h);
+            uint32_t w = (uint32_t)that->maFramebuffers[i].w;
+            uint32_t h = (uint32_t)that->maFramebuffers[i].h;
+            SSMR3GetU32(pSSM, &w);
+            SSMR3GetU32(pSSM, &h);
         }
     }
 
