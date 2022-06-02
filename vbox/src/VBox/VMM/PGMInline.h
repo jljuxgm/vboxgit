@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 32000 2010-08-26 14:08:55Z vboxsync $ */
+/* $Id: PGMInline.h 32005 2010-08-26 16:12:59Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1081,7 +1081,7 @@ DECLINLINE(PX86PDPAE) pgmShwGetPaePDPtr(PVMCPU pVCpu, RTGCPTR GCPtr)
 
     /* Fetch the pgm pool shadow descriptor. */
     PVM pVM = pVCpu->CTX_SUFF(pVM);
-    PPGMPOOLPAGE pShwPde = pgmPoolGetPage(pVM->pgm.s.CTX_SUFF(pPool), pPdpt->a[iPdpt].u & X86_PDPE_PG_MASK);
+    PPGMPOOLPAGE pShwPde = pgmPoolGetPage(pVM->pgm.s.CTX_SUFF(pPool), pPdpt->a[iPdpt].u & X86_PDPE_PG_MASK_FULL);
     AssertReturn(pShwPde, NULL);
 
     return (PX86PDPAE)PGMPOOL_PAGE_2_PTR_V2(pVM, pVCpu, pShwPde);
@@ -1104,7 +1104,7 @@ DECLINLINE(PX86PDPAE) pgmShwGetPaePDPtr(PVMCPU pVCpu, PX86PDPT pPdpt, RTGCPTR GC
 
     /* Fetch the pgm pool shadow descriptor. */
     PVM             pVM     = pVCpu->CTX_SUFF(pVM);
-    PPGMPOOLPAGE    pShwPde = pgmPoolGetPage(pVM->pgm.s.CTX_SUFF(pPool), pPdpt->a[iPdpt].u & X86_PDPE_PG_MASK);
+    PPGMPOOLPAGE    pShwPde = pgmPoolGetPage(pVM->pgm.s.CTX_SUFF(pPool), pPdpt->a[iPdpt].u & X86_PDPE_PG_MASK_FULL);
     AssertReturn(pShwPde, NULL);
 
     return (PX86PDPAE)PGMPOOL_PAGE_2_PTR_V2(pVM, pVCpu, pShwPde);
