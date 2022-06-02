@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 32622 2010-09-17 20:18:39Z vboxsync $
+# $Id: Makefile.kmk 32739 2010-09-23 16:56:20Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxDisp.dll.
 #
@@ -83,6 +83,9 @@ endif
 
 ifdef VBOX_WITH_VIDEOHWACCEL
  VBoxDispD3D_DEFS   += VBOX_WITH_VIDEOHWACCEL
+endif
+ifdef VBOX_WDDMDISP_WITH_PROFILE
+ VBoxDispD3D_DEFS   += VBOX_WDDMDISP_WITH_PROFILE
 endif
 VBoxDispD3D_SOURCES  = \
 	wddm/VBoxDispD3D.cpp \
