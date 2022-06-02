@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31514 2010-08-10 09:53:44Z vboxsync $
+# $Id: Makefile.kmk 31594 2010-08-12 09:56:25Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -50,7 +50,8 @@ endif
 ifdef VBOX_WITH_TESTCASES
  PROGRAMS += tstVD tstVD-2 tstVDCopy tstVDSnap tstVDShareable tstVDSetUuid
  if1of ($(KBUILD_TARGET), darwin freebsd linux win solaris)
-  PROGRAMS += VBoxFixHdd
+ # disable as no longer required
+ # PROGRAMS += VBoxFixHdd
  endif
  ifeq ($(KBUILD_TARGET),l4)
   tstVD_TEMPLATE = VBOXLNXHOSTR3EXE

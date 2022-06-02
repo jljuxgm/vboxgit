@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31514 2010-08-10 09:53:44Z vboxsync $
+# $Id: Makefile.kmk 31594 2010-08-12 09:56:25Z vboxsync $
 ## @file
 # Sub-Makefile for zlib.
 #
@@ -20,7 +20,8 @@ include $(KBUILD_PATH)/subheader.kmk
 
 LIBRARIES += VBox-zlib
 if1of ($(KBUILD_TARGET),os2 win)
- LIBRARIES += VBox-zlib-static
+ # only required for (now) disabled VBoxFidHdd
+ # LIBRARIES += VBox-zlib-static
 endif
 VBox-zlib_TEMPLATE = VBOXR3
 VBox-zlib_DEFS = verbose=-1
