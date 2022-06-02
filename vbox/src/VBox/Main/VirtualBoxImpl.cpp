@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 30938 2010-07-20 17:32:27Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 30950 2010-07-21 11:36:18Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3201,7 +3201,7 @@ const ComObjPtr<PerformanceCollector>& VirtualBox::performanceCollector() const
 const Utf8Str& VirtualBox::getDefaultMachineFolder() const
 {
     AutoReadLock propsLock(m->pSystemProperties COMMA_LOCKVAL_SRC_POS);
-    return m->pSystemProperties->m_strDefaultMachineFolder;
+    return m->pSystemProperties->m->strDefaultMachineFolder;
 }
 
 /**
@@ -3212,7 +3212,7 @@ const Utf8Str& VirtualBox::getDefaultMachineFolder() const
 const Utf8Str& VirtualBox::getDefaultHardDiskFolder() const
 {
     AutoReadLock propsLock(m->pSystemProperties COMMA_LOCKVAL_SRC_POS);
-    return m->pSystemProperties->m_strDefaultHardDiskFolder;
+    return m->pSystemProperties->m->strDefaultHardDiskFolder;
 }
 
 /**
@@ -3223,7 +3223,7 @@ const Utf8Str& VirtualBox::getDefaultHardDiskFolder() const
 const Utf8Str& VirtualBox::getDefaultHardDiskFormat() const
 {
     AutoReadLock propsLock(m->pSystemProperties COMMA_LOCKVAL_SRC_POS);
-    return m->pSystemProperties->m_strDefaultHardDiskFormat;
+    return m->pSystemProperties->m->strDefaultHardDiskFormat;
 }
 
 const Utf8Str& VirtualBox::homeDir() const

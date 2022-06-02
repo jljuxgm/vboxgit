@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 30934 2010-07-20 16:53:40Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 30950 2010-07-21 11:36:18Z vboxsync $ */
 
 /** @file
  *
@@ -124,17 +124,12 @@ private:
 
     VirtualBox * const  mParent;
 
-    Utf8Str             m_strDefaultMachineFolder;
+    settings::SystemProperties *m;
+
     Utf8Str             m_strDefaultMachineFolderFull;
-    Utf8Str             m_strDefaultHardDiskFolder;
     Utf8Str             m_strDefaultHardDiskFolderFull;
-    Utf8Str             m_strDefaultHardDiskFormat;
 
-    MediumFormatList    mMediumFormats;
-
-    Utf8Str             m_strRemoteDisplayAuthLibrary;
-    Utf8Str             m_strWebServiceAuthLibrary;
-    ULONG               mLogHistoryCount;
+    MediumFormatList    m_llMediumFormats;
 
     friend class VirtualBox;
 };
