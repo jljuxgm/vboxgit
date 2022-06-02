@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 33611 2010-10-29 14:50:45Z vboxsync $ */
+/* $Id: Settings.cpp 33612 2010-10-29 14:52:06Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3250,7 +3250,6 @@ void MachineConfigFile::readMachine(const xml::ElementNode &elmMachine)
         throw ConfigFileError(this, &elmMachine, N_("Required Machine/@uuid or @name attributes is missing"));
 }
 
-#include <stdio.h>
 /**
  * Creates a <Hardware> node under elmParent and then writes out the XML
  * keys under that. Called for both the <Machine> node and for snapshots.
