@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 32553 2010-09-16 12:07:01Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 32598 2010-09-17 12:36:19Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4369,7 +4369,7 @@ static int iscsiCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
 
     /* iSCSI images can't be checked for validity this way, as the filename
      * just can't supply enough configuration information. */
-    int rc = VERR_NOT_SUPPORTED;
+    int rc = VERR_VD_ISCSI_INVALID_HEADER;
 
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;

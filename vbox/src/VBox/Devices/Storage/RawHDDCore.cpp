@@ -1,4 +1,4 @@
-/* $Id: RawHDDCore.cpp 32553 2010-09-16 12:07:01Z vboxsync $ */
+/* $Id: RawHDDCore.cpp 32598 2010-09-17 12:36:19Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -447,7 +447,7 @@ static int rawCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
     }
 
     /* Always return failure, to avoid opening everything as a raw image. */
-    rc = VERR_NOT_SUPPORTED;
+    rc = VERR_VD_RAW_INVALID_HEADER;
 
 out:
     LogFlowFunc(("returns %Rrc\n", rc));
