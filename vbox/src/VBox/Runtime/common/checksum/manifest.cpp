@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 32568 2010-09-16 15:26:13Z vboxsync $ */
+/* $Id: manifest.cpp 33057 2010-10-12 12:10:14Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling.
  */
@@ -325,5 +325,47 @@ RTR3DECL(int) RTManifestWriteFiles(const char *pszManifestFile, const char * con
         RTFileDelete(pszManifestFile);
 
     return rc;
+}
+
+RTR3DECL(int) RTManifestWriteFilesBuf(void **ppvBuf, size_t *pcbSize, const char * const *papszFileNames, const char * const *papszFileDigests, size_t cFiles)
+{
+    /* Validate input */
+    AssertPtrReturn(ppvBuf, VERR_INVALID_POINTER);
+    AssertPtrReturn(pcbSize, VERR_INVALID_POINTER);
+    AssertPtrReturn(papszFileNames, VERR_INVALID_POINTER);
+    AssertPtrReturn(papszFileDigests, VERR_INVALID_POINTER);
+    AssertReturn(cFiles > 0, VERR_INVALID_PARAMETER);
+
+    /* Calculate the size necessary for the memory buffer. */
+    size_t cbSize = 0;
+    size_t cbMaxSize = 0;
+    for (size_t i = 0; i < cFiles; ++i)
+    {
+        size_t cbTmp = strlen(RTPathFilename(papszFileNames[i])) + strlen(papszFileDigests[i]) + 10;
+        cbMaxSize = RT_MAX(cbMaxSize, cbTmp);
+        cbSize += cbTmp;
+    }
+
+    /* Create the memory buffer */
+    void *pvBuf = RTMemAlloc(cbSize);
+    if (!pvBuf)
+        return VERR_NO_MEMORY;
+
+    /* Allocate a temporary string buffer. */
+    char * pszTmp = RTStrAlloc(cbMaxSize + 1);
+    size_t cbPos = 0;
+    for (size_t i = 0; i < cFiles; ++i)
+    {
+        size_t cch = RTStrPrintf(pszTmp, cbMaxSize + 1, "SHA1 (%s)= %s\n", RTPathFilename(papszFileNames[i]), papszFileDigests[i]);
+        memcpy(&((char*)pvBuf)[cbPos], pszTmp, cch);
+        cbPos += cch;
+    }
+    RTStrFree(pszTmp);
+
+    /* Results */
+    *ppvBuf = pvBuf;
+    *pcbSize = cbSize;
+
+    return VINF_SUCCESS;
 }
 
