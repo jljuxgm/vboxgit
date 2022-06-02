@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 34787 2010-12-07 14:51:18Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 34893 2010-12-09 14:44:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -74,6 +74,7 @@ static void vboxExtPackClearDesc(PVBOXEXTPACKDESC a_pExtPackDesc)
     a_pExtPackDesc->strVrdeModule.setNull();
     a_pExtPackDesc->cPlugIns = 0;
     a_pExtPackDesc->paPlugIns = NULL;
+    a_pExtPackDesc->fShowLicense = false;
 }
 
 /**
@@ -157,7 +158,13 @@ static iprt::MiniString *vboxExtPackLoadDescFromDoc(xml::Document *a_pDoc, PVBOX
     }
 
     /*
-     * Parse plug-in descriptions.
+     * Whether to show the license, optional. (presense is enough here)
+     */
+    const xml::ElementNode *pShowLicenseElm = pVBoxExtPackElm->findChildElement("ShowLicense");
+    bool fShowLicense = pShowLicenseElm != NULL;
+
+    /*
+     * Parse plug-in descriptions (last because of the manual memory management).
      */
     uint32_t                cPlugIns  = 0;
     PVBOXEXTPACKPLUGINDESC  paPlugIns = NULL;
@@ -179,6 +186,7 @@ static iprt::MiniString *vboxExtPackLoadDescFromDoc(xml::Document *a_pDoc, PVBOX
     a_pExtPackDesc->strVrdeModule   = pszVrdeModule;
     a_pExtPackDesc->cPlugIns        = cPlugIns;
     a_pExtPackDesc->paPlugIns       = paPlugIns;
+    a_pExtPackDesc->fShowLicense    = fShowLicense;
 
     return NULL;
 }
@@ -335,6 +343,7 @@ void VBoxExtPackFreeDesc(PVBOXEXTPACKDESC a_pExtPackDesc)
     a_pExtPackDesc->cPlugIns = 0;
     RTMemFree(a_pExtPackDesc->paPlugIns);
     a_pExtPackDesc->paPlugIns = NULL;
+    a_pExtPackDesc->fShowLicense = false;
 }
 
 /**

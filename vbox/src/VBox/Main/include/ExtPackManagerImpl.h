@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 34808 2010-12-07 17:21:19Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 34893 2010-12-09 14:44:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -58,10 +58,12 @@ public:
     STDMETHOD(COMGETTER(Revision))(ULONG *a_puRevision);
     STDMETHOD(COMGETTER(VRDEModule))(BSTR *a_pbstrVrdeModule);
     STDMETHOD(COMGETTER(PlugIns))(ComSafeArrayOut(IExtPackPlugIn *, a_paPlugIns));
-    STDMETHOD(COMGETTER(License))(BSTR *a_pbstrHtmlLicense);
-    STDMETHOD(COMGETTER(ShowLicense))(BOOL *a_pfShowIt);
     STDMETHOD(COMGETTER(Usable))(BOOL *a_pfUsable);
     STDMETHOD(COMGETTER(WhyUnusable))(BSTR *a_pbstrWhy);
+    STDMETHOD(COMGETTER(ShowLicense))(BOOL *a_pfShowIt);
+    STDMETHOD(COMGETTER(License))(BSTR *a_pbstrHtmlLicense);
+    STDMETHOD(QueryLicense)(IN_BSTR a_bstrPreferredLocale, IN_BSTR a_bstrPreferredLanguage,
+                            IN_BSTR a_bstrFormat, BSTR *a_pbstrLicense);
     /** @}  */
 
     /** @name IExtPackFile interfaces
@@ -121,10 +123,12 @@ public:
     STDMETHOD(COMGETTER(Revision))(ULONG *a_puRevision);
     STDMETHOD(COMGETTER(VRDEModule))(BSTR *a_pbstrVrdeModule);
     STDMETHOD(COMGETTER(PlugIns))(ComSafeArrayOut(IExtPackPlugIn *, a_paPlugIns));
-    STDMETHOD(COMGETTER(License))(BSTR *a_pbstrHtmlLicense);
-    STDMETHOD(COMGETTER(ShowLicense))(BOOL *a_pfShowIt);
     STDMETHOD(COMGETTER(Usable))(BOOL *a_pfUsable);
     STDMETHOD(COMGETTER(WhyUnusable))(BSTR *a_pbstrWhy);
+    STDMETHOD(COMGETTER(ShowLicense))(BOOL *a_pfShowIt);
+    STDMETHOD(COMGETTER(License))(BSTR *a_pbstrHtmlLicense);
+    STDMETHOD(QueryLicense)(IN_BSTR a_bstrPreferredLocale, IN_BSTR a_bstrPreferredLanguage,
+                            IN_BSTR a_bstrFormat, BSTR *a_pbstrLicense);
     /** @}  */
 
     /** @name IExtPack interfaces
