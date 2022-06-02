@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: Settings.cpp 33396 2010-10-24 16:21:10Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4207,7 +4207,7 @@ AudioDriverType_T MachineConfigFile::getHostDefaultAudioDriver()
 #elif defined(RT_OS_DARWIN)
     return AudioDriverType_CoreAudio;
 #elif defined(RT_OS_OS2)
-    return AudioDriverType_MMP;
+    return AudioDriverType_MMPM;
 #elif defined(RT_OS_FREEBSD)
     return AudioDriverType_OSS;
 #else

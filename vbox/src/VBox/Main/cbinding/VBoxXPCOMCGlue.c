@@ -1,4 +1,4 @@
-/* $Revision: 32394 $ */
+/* $Revision: 33396 $ */
 /** @file
  * Glue code for dynamically linking to VBoxXPCOMC.
  */
@@ -204,6 +204,9 @@ int VBoxCGlueInit(void)
         return 0;
 #elif defined(__FreeBSD__)
     if (tryLoadOne("/usr/local/lib/virtualbox", 1) == 0)
+        return 0;
+#elif defined(__OS2__)
+    if (tryLoadOne("C:/Apps/VirtualBox", 1) == 0)
         return 0;
 #else
 # error "port me"
