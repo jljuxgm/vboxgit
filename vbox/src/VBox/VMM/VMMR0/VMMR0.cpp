@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 35902 2011-02-08 16:13:18Z vboxsync $ */
+/* $Id: VMMR0.cpp 35959 2011-02-14 14:30:03Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1178,7 +1178,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
         case VMMR0_DO_PCIRAW_REQ:
             if (u64Arg || !pReqHdr || !vmmR0IsValidSession(pVM, ((PPCIRAWSENDREQ)pReqHdr)->pSession, pSession) || idCpu != NIL_VMCPUID)
                 return VERR_INVALID_PARAMETER;
-            return PciRawR0ProcessReq(pSession, (PPCIRAWSENDREQ)pReqHdr);
+            return PciRawR0ProcessReq(pSession, pVM, (PPCIRAWSENDREQ)pReqHdr);
 #endif
         /*
          * For profiling.
@@ -1552,4 +1552,3 @@ DECLEXPORT(void) RTCALL RTAssertMsg2WeakV(const char *pszFormat, va_list va)
      */
     RTAssertMsg2V(pszFormat, va);
 }
-
