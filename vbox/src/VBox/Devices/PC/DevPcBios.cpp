@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 34169 2010-11-18 13:09:35Z vboxsync $ */
+/* $Id: DevPcBios.cpp 34317 2010-11-24 12:56:31Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1369,7 +1369,8 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     {
         pThis->cbLanBoot = cbLanBootBinary;
 
-        rc = PDMDevHlpROMRegister(pDevIns, VBOX_LANBOOT_SEG << 4,  RT_MAX(cbLanBootBinary, _64K - (VBOX_LANBOOT_SEG << 4 & 0xffff)),
+        rc = PDMDevHlpROMRegister(pDevIns, VBOX_LANBOOT_SEG << 4,
+                                  RT_MAX(cbLanBootBinary, _64K - (VBOX_LANBOOT_SEG << 4 & 0xffff)),
                                   pu8LanBootBinary, cbLanBootBinary,
                                   PGMPHYS_ROM_FLAGS_SHADOWED, "Net Boot ROM");
         AssertRCReturn(rc, rc);
