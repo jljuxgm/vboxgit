@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 29963 2010-06-01 16:43:09Z vboxsync $ */
+/* $Id: strformatrt.cpp 33299 2010-10-21 11:10:36Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -1080,7 +1080,7 @@ size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **p
                                     case '>':   cchOutput += pfnOutput(pvArgOutput, "&gt;", 4); break;
                                     case '&':   cchOutput += pfnOutput(pvArgOutput, "&amp;", 5); break;
                                     case '\'':  cchOutput += pfnOutput(pvArgOutput, "&apos;", 6); break;
-                                    case '"':   cchOutput += pfnOutput(pvArgOutput, "&qout;", 6); break;
+                                    case '"':   cchOutput += pfnOutput(pvArgOutput, "&quot;", 6); break;
                                     case '\n':  cchOutput += pfnOutput(pvArgOutput, "&#xA;", 5); break;
                                     case '\r':  cchOutput += pfnOutput(pvArgOutput, "&#xD;", 5); break;
                                     default:
