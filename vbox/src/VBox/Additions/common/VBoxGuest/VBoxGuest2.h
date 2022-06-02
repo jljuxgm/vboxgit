@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest2.h 32433 2010-09-12 23:11:27Z vboxsync $ */
+/* $Id: VBoxGuest2.h 32434 2010-09-12 23:11:51Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, bits shared with the windows code.
  */
@@ -18,7 +18,7 @@
 #ifndef ___VBoxGuest2_h
 #define ___VBoxGuest2_h
 
-#include <VBox/ostypes>
+#include <VBox/ostypes.h>
 
 RT_C_DECLS_BEGIN
 
