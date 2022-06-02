@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 34044 2010-11-12 19:05:42Z vboxsync $ */
 
 /** @file
  *
@@ -420,7 +420,7 @@ void BusAssignmentManager::AddRef()
 }
 void BusAssignmentManager::Release()
 {
-    if (ASMAtomicDecS32(&pState->cRefCnt) == 1)
+    if (ASMAtomicDecS32(&pState->cRefCnt) == 0)
         delete this;
 }
 
