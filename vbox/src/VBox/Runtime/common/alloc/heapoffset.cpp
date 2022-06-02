@@ -1,4 +1,4 @@
-/* $Id: heapoffset.cpp 35398 2011-01-04 09:39:07Z vboxsync $ */
+/* $Id: heapoffset.cpp 35525 2011-01-13 14:00:37Z vboxsync $ */
 /** @file
  * IPRT - An Offset Based Heap.
  */
@@ -29,9 +29,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_DEFAULT
-/* XXX this header must be included first as it re-defines some symbols
- * (e.g size_t) if IN_XF86_MODULE is defined. */
-#include <iprt/string.h>
 #include <iprt/heap.h>
 #include "internal/iprt.h"
 
@@ -40,6 +37,7 @@
 #include <iprt/err.h>
 #include <iprt/log.h>
 #include <iprt/param.h>
+#include <iprt/string.h>
 
 #include "internal/magics.h"
 
