@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 34332 2010-11-24 16:43:26Z vboxsync $ */
+/* $Id: DevPCI.cpp 34750 2010-12-06 14:20:13Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1961,6 +1961,35 @@ static DECLCALLBACK(int) pciFakePCIBIOS(PPDMDEVINS pDevIns)
 }
 
 /**
+ * Info handler, device version.
+ *
+ * @param   pDevIns     Device instance which registered the info.
+ * @param   pHlp        Callback functions for doing output.
+ * @param   pszArgs     Argument string. Optional and specific to the handler.
+ */
+static DECLCALLBACK(void) pciIrqInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs)
+{
+    PPCIGLOBALS pGlobals = PDMINS_2_DATA(pDevIns, PPCIGLOBALS);
+    PPCIBUS     pBus = DEVINS_2_PCIBUS(pDevIns);
+    uint16_t    router;
+    uint8_t     irq_map;
+    int         i;
+
+    router = pGlobals->PIIX3State.dev.devfn;
+    pHlp->pfnPrintf(pHlp, "PCI interrupt router at: %02X:%02X:%X\n",
+                    router >> 8, (router >> 3) & 0x1f, router & 0x7);
+
+    for (i = 0; i < 4; ++i)
+    {
+        irq_map = pci_config_readb(pGlobals, 0, router, 0x60 + i);
+        if (irq_map & 0x80)
+            pHlp->pfnPrintf(pHlp, "PIRQ%c disabled\n", 'A' + i);
+        else
+            pHlp->pfnPrintf(pHlp, "PIRQ%c -> IRQ%d\n", 'A' + i, irq_map & f);
+    }
+}
+
+/**
  * @copydoc FNPDMDEVRELOCATE
  */
 static DECLCALLBACK(void) pciRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
@@ -2132,6 +2161,8 @@ static DECLCALLBACK(int)   pciConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
                                 NULL, pciR3LoadExec, NULL);
     if (RT_FAILURE(rc))
         return rc;
+
+    PDMDevHlpDBGFInfoRegister(pDevIns, "pciirq", "Display PCI IRQ routing state. (no arguments)", pciIrqInfo);
 
     return VINF_SUCCESS;
 }
