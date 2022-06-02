@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: VM.cpp 34216 2010-11-20 20:35:50Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -544,7 +544,7 @@ static int vmR3CreateUVM(uint32_t cCpus, PCVMM2USERMETHODS pVmm2UserMethods, PUV
         }
         RTTlsFree(pUVM->vm.s.idxTLS);
     }
-    RTMemPageFree(pUVM, sizeof(*pUVM));
+    RTMemPageFree(pUVM, RT_OFFSETOF(UVM, aCpus[pUVM->cCpus]));
     return rc;
 }
 
@@ -2596,7 +2596,7 @@ static void vmR3DestroyUVM(PUVM pUVM, uint32_t cMilliesEMTWait)
     RTTlsFree(pUVM->vm.s.idxTLS);
 
     ASMAtomicUoWriteU32(&pUVM->u32Magic, UINT32_MAX);
-    RTMemPageFree(pUVM, sizeof(*pUVM));
+    RTMemPageFree(pUVM, RT_OFFSETOF(UVM, aCpus[pUVM->cCpus]));
 
     RTLogFlush(NULL);
 }
