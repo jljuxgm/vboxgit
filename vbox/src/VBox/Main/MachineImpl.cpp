@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 32885 2010-10-04 12:56:35Z vboxsync $ */
+/* $Id: MachineImpl.cpp 32886 2010-10-04 13:04:26Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1346,7 +1346,7 @@ STDMETHODIMP Machine::COMSETTER(CPUExecutionCap)(ULONG aExecutionCap)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     alock.release();
-    rc = onCpuExecutionCapChange(aExecutionCap);
+    rc = onCPUExecutionCapChange(aExecutionCap);
     alock.acquire();
     if (FAILED(rc)) return rc;
 
