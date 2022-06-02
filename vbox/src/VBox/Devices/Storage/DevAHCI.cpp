@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 32073 2010-08-29 17:09:41Z vboxsync $ */
+/* $Id: DevAHCI.cpp 32076 2010-08-30 07:18:36Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -3517,8 +3517,8 @@ static int atapiPassthroughSS(PAHCIPORTTASKSTATE pAhciPortTaskState, PAHCIPort p
                 break;
             default:
                 AssertMsgFailed(("Don't know how to split command %#04x\n", pAhciPortTaskState->aATAPICmd[0]));
-                //if (s->cErrors++ < MAX_LOG_REL_ERRORS)
-                LogRel(("AHCI: LUN#%d: CD-ROM passthrough split error\n", pAhciPort->iLUN));
+                if (pAhciPort->cErrors++ < MAX_LOG_REL_ERRORS)
+                    LogRel(("AHCI: LUN#%d: CD-ROM passthrough split error\n", pAhciPort->iLUN));
                 atapiCmdErrorSimple(pAhciPort, pAhciPortTaskState, SCSI_SENSE_ILLEGAL_REQUEST, SCSI_ASC_ILLEGAL_OPCODE);
                 return false;
         }
@@ -3546,7 +3546,7 @@ static int atapiPassthroughSS(PAHCIPORTTASKSTATE pAhciPortTaskState, PAHCIPort p
                     break;
                 case SCSI_READ_CD:
                     ataH2BE_U32(aATAPICmd + 2, iATAPILBA);
-                    ataH2BE_U24(aATAPICmd + 6, cbCurrTX);
+                    ataH2BE_U24(aATAPICmd + 6, cReqSectors);
                     break;
                 case SCSI_READ_CD_MSF:
                     ataLBA2MSF(aATAPICmd + 3, iATAPILBA);
