@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 30764 2010-07-09 14:12:12Z vboxsync $ */
+/* $Id: SnapshotImpl.h 31228 2010-07-29 19:44:50Z vboxsync $ */
 
 /** @file
  *
@@ -32,7 +32,7 @@ namespace settings
 }
 
 class ATL_NO_VTABLE Snapshot :
-    public VirtualBoxBase, // WithTypedChildren<Snapshot>,
+    public VirtualBoxBase,
     VBOX_SCRIPTABLE_IMPL(ISnapshot)
 {
 public:
@@ -122,6 +122,10 @@ public:
 
     HRESULT saveSnapshot(settings::Snapshot &data, bool aAttrsOnly);
     HRESULT saveSnapshotImpl(settings::Snapshot &data, bool aAttrsOnly);
+
+    HRESULT uninitRecursively(AutoWriteLock &writeLock,
+                              MediaList &llMedia,
+                              std::list<Utf8Str> &llFilenames);
 
 private:
     struct Data;            // opaque, defined in SnapshotImpl.cpp
