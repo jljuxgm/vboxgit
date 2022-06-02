@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 33856 2010-11-08 15:47:58Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 33857 2010-11-08 15:49:08Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -112,7 +112,7 @@ static bool VBoxServiceAutoMountShareIsMounted(const char *pszShare,
     else
     {
         mnttab mntTab;
-        while ((getmntent(&pFh, &mntTab)))
+        while ((getmntent(pFh, &mntTab)))
         {
             if (!RTStrICmp(mntTab->mnt_special, pszShare))
             {
