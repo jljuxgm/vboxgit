@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 34275 2010-11-23 11:08:52Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 34401 2010-11-26 16:37:51Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -134,11 +134,6 @@ bool darwinIsWindowMaximized(QWidget *pWidget)
 void darwinMinaturizeWindow(QWidget *pWidget)
 {
     return ::darwinMinaturizeWindow(::darwinToNativeWindow(pWidget));
-}
-
-bool darwinShowFileInFinder(const QString& strFile)
-{
-    return ::darwinShowFileInFinder(darwinToNativeString(strFile.toUtf8().constData()));
 }
 
 bool darwinOpenFile(const QString& strFile)
@@ -376,6 +371,7 @@ QString darwinResolveAlias(const QString &strFile)
 
     return strTarget;
 }
+
 
 /********************************************************************************
  *
