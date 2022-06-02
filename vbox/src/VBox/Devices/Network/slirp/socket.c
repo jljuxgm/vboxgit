@@ -1,4 +1,4 @@
-/* $Id: socket.c 32431 2010-09-11 18:02:17Z vboxsync $ */
+/* $Id: socket.c 32744 2010-09-24 06:25:52Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -743,7 +743,7 @@ sorecvfrom(PNATState pData, struct socket *so)
             signalled = 1;
         }
 
-        len = sizeof(struct udpiphdr) + ETH_HLEN;
+        len = sizeof(struct udpiphdr);
         if (n > (if_mtu - len))
         {
             n = if_mtu - len; /* can't read than we can put in the mbuf*/
