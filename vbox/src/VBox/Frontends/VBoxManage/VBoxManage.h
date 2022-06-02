@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 35761 2011-01-28 13:19:26Z vboxsync $ */
+/* $Id: VBoxManage.h 35764 2011-01-28 13:56:15Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -162,7 +162,7 @@ int handleInternalCommands(HandlerArg *a);
 
 /* VBoxManageControlVM.cpp */
 int handleControlVM(HandlerArg *a);
-ULONG getMaxNics(IVirtualBox* vbox, IMachine* mach);
+unsigned int getMaxNics(IVirtualBox* vbox, IMachine* mach);
 
 /* VBoxManageModifyVM.cpp */
 int handleModifyVM(HandlerArg *a);
