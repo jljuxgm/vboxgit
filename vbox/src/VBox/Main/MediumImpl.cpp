@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33232 2010-10-19 14:24:46Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33250 2010-10-20 10:19:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1168,7 +1168,8 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
     // machine folder, then a relative path will be relative to that:
     Utf8Str strFull;
     if (    !strMachineFolder.isEmpty()
-         && !RTPathHavePath(data.strLocation.c_str()))
+         && !RTPathStartsWithRoot(data.strLocation.c_str())
+       )
     {
         strFull = strMachineFolder;
         strFull += RTPATH_DELIMITER;

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33239 2010-10-19 15:59:39Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33250 2010-10-20 10:19:51Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -611,7 +611,9 @@ HRESULT VirtualBox::initMedia(const Guid &uuidRegistry,
                               const settings::MediaRegistry mediaRegistry,
                               const Utf8Str &strMachineFolder)
 {
-    LogFlow(("VirtualBox::initMedia ENTERING, uuidRegistry=%s\n", uuidRegistry.toString().c_str()));
+    LogFlow(("VirtualBox::initMedia ENTERING, uuidRegistry=%s, strMachineFolder=%s\n",
+             uuidRegistry.toString().c_str(),
+             strMachineFolder.c_str()));
 
     AutoWriteLock treeLock(getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
 
