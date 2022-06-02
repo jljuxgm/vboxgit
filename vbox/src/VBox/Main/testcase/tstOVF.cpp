@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 30881 2010-07-16 14:34:31Z vboxsync $ */
+/* $Id: tstOVF.cpp 30883 2010-07-16 15:31:22Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -358,15 +358,15 @@ int main(int argc, char *argv[])
 //                 }
 //             }
 
-            RTPrintf("  Deleting machine %ls...\n", bstrUUID.raw());
-            pVirtualBox->UnregisterMachine(bstrUUID, pMachine.asOutParam());
-            if (FAILED(rc)) throw MyError(rc, "VirtualBox::UnregisterMachine() failed\n");
-
-            if (!pMachine.isNull())
-            {
-                rc = pMachine->DeleteSettings();
-                if (FAILED(rc)) throw MyError(rc, "Machine::DeleteSettings() failed\n");
-            }
+//             RTPrintf("  Deleting machine %ls...\n", bstrUUID.raw());
+//             pVirtualBox->UnregisterMachine(bstrUUID, pMachine.asOutParam());
+//             if (FAILED(rc)) throw MyError(rc, "VirtualBox::UnregisterMachine() failed\n");
+//
+//             if (!pMachine.isNull())
+//             {
+//                 rc = pMachine->DeleteSettings();
+//                 if (FAILED(rc)) throw MyError(rc, "Machine::DeleteSettings() failed\n");
+//             }
         }
     }
     catch (MyError &e)
