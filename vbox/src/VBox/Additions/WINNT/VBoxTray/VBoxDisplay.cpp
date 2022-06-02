@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 32687 2010-09-22 08:40:24Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 33264 2010-10-20 14:29:45Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -528,9 +528,6 @@ unsigned __stdcall VBoxDisplayThread(void *pInstance)
                     if (fDisplayChangeQueried)
                     {
                         Log(("VBoxTray: VBoxDisplayThread: VMMDevReq_GetDisplayChangeRequest2: %dx%dx%d at %d\n", displayChangeRequest.xres, displayChangeRequest.yres, displayChangeRequest.bpp, displayChangeRequest.display));
-
-                        /* Horizontal resolution must be a multiple of 8, round down. */
-                        displayChangeRequest.xres &= 0xfff8;
 
                         /*
                          * Only try to change video mode if the active display driver is VBox additions.
