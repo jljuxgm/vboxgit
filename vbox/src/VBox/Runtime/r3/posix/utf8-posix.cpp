@@ -1,4 +1,4 @@
-/* $Id: utf8-posix.cpp 30294 2010-06-17 21:51:43Z vboxsync $ */
+/* $Id: utf8-posix.cpp 31157 2010-07-28 03:15:35Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 helpers, POSIX.
  */
@@ -412,15 +412,7 @@ int rtStrConvert(const char *pchInput, size_t cchInput, const char *pszInputCS,
 }
 
 
-/**
- * Allocates tmp buffer, translates pszString from UTF8 to current codepage.
- *
- * @returns iprt status code.
- * @param   ppszString      Receives pointer of allocated native CP string.
- *                          The returned pointer must be freed using RTStrFree().
- * @param   pszString       UTF-8 string to convert.
- */
-RTR3DECL(int)  RTStrUtf8ToCurrentCP(char **ppszString, const char *pszString)
+RTR3DECL(int)  RTStrUtf8ToCurrentCPTag(char **ppszString, const char *pszString, const char *pszTag)
 {
     Assert(ppszString);
     Assert(pszString);
@@ -433,7 +425,7 @@ RTR3DECL(int)  RTStrUtf8ToCurrentCP(char **ppszString, const char *pszString)
     if (cch <= 0)
     {
         /* zero length string passed. */
-        *ppszString = (char *)RTMemTmpAllocZ(sizeof(char));
+        *ppszString = (char *)RTMemTmpAllocZTag(sizeof(char), pszTag);
         if (*ppszString)
             return VINF_SUCCESS;
         return VERR_NO_TMP_MEMORY;
@@ -442,15 +434,7 @@ RTR3DECL(int)  RTStrUtf8ToCurrentCP(char **ppszString, const char *pszString)
 }
 
 
-/**
- * Allocates tmp buffer, translates pszString from current codepage to UTF-8.
- *
- * @returns iprt status code.
- * @param   ppszString      Receives pointer of allocated UTF-8 string.
- *                          The returned pointer must be freed using RTStrFree().
- * @param   pszString       Native string to convert.
- */
-RTR3DECL(int)  RTStrCurrentCPToUtf8(char **ppszString, const char *pszString)
+RTR3DECL(int)  RTStrCurrentCPToUtf8Tag(char **ppszString, const char *pszString, const char *pszTag)
 {
     Assert(ppszString);
     Assert(pszString);
@@ -463,7 +447,7 @@ RTR3DECL(int)  RTStrCurrentCPToUtf8(char **ppszString, const char *pszString)
     if (cch <= 0)
     {
         /* zero length string passed. */
-        *ppszString = (char *)RTMemTmpAllocZ(sizeof(char));
+        *ppszString = (char *)RTMemTmpAllocZTag(sizeof(char), pszTag);
         if (*ppszString)
             return VINF_SUCCESS;
         return VERR_NO_TMP_MEMORY;
