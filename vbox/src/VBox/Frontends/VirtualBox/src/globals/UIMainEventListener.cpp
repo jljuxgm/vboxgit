@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 30698 2010-07-07 09:47:45Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 30699 2010-07-07 10:19:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -103,7 +103,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(IEvent *pEvent)
         }
         case KVBoxEventType_OnSessionStateChange:
         {
-            CSessionStateEvent es(event);
+            CSessionStateChangeEvent es(event);
             emit sigSessionStateChange(es.GetMachineId(), es.GetState());
             break;
         }
