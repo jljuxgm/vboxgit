@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 35860 2011-02-07 04:26:47Z vboxsync $ */
+/* $Id: tcp_input.c 35923 2011-02-10 03:48:27Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -789,7 +789,6 @@ findso:
                     m->m_len  += sizeof(struct tcpiphdr)+off-sizeof(struct tcphdr);
                     *ip = save_ip;
                     icmp_error(pData, m, ICMP_UNREACH, code, 0, strerror(errno));
-                    m_freem(pData, m);
                     tp->t_socket->so_m = NULL;
                 }
                 tp = tcp_close(pData, tp);
