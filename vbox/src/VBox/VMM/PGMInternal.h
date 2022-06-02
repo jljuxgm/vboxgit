@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 31784 2010-08-19 11:42:18Z vboxsync $ */
+/* $Id: PGMInternal.h 31807 2010-08-20 09:15:56Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3222,16 +3222,6 @@ typedef struct PGM
     STAMCOUNTER                     StatLargePageRefused;               /**< The number of times we couldn't use a large page.*/
     STAMCOUNTER                     StatLargePageRecheck;               /**< The number of times we rechecked a disabled large page.*/
     /** @} */
-
-#ifdef DEBUG_sandervl
-    PTMTIMERR3                      pPhysWritesCountTimer;
-    uint32_t                        u32PhysWriteCountTimerInterval;
-    bool                            fCountingPhysWrites;
-    uint8_t                         u8Alignment[3];
-
-    STAMCOUNTER                     StatR3FTPhysPageWrite;              /**< R3: The number of times a physical page was written to (FT stats) */
-    STAMCOUNTER                     StatRZFTPhysPageWrite;              /**< RC/R0: The number of times a physical page was written to (FT stats) */
-#endif
 
 #ifdef VBOX_WITH_STATISTICS
     /** @name Statistics on the heap.
