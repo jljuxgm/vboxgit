@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 34196 2010-11-19 13:17:33Z vboxsync $ */
+/* $Id: UIVMListView.cpp 34200 2010-11-19 13:58:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -595,6 +595,10 @@ QPixmap UIVMListView::dragPixmap(const QModelIndex &index) const
     p.drawText(QRect(margin, margin + osTypeSize.height() + space,  s.width() - 2 * margin, nameSize.height()), Qt::AlignCenter, name);
     p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
     p.fillRect(image.rect(), QColor(0, 0, 0, 177));
+    p.end();
+#ifdef DEBUG
+    image.save("test.png", "PNG");
+#endif
     return QPixmap::fromImage(image);
 }
 
