@@ -1,4 +1,4 @@
-/* $Id: stringalloc.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: stringalloc.cpp 34032 2010-11-12 16:20:25Z vboxsync $ */
 /** @file
  * IPRT - String Manipulation.
  */
@@ -260,7 +260,7 @@ RTDECL(int) RTStrATruncateTag(char **ppsz, size_t cchNew, const char *pszTag)
     else
     {
         AssertPtrReturn(pszOld, VERR_OUT_OF_RANGE);
-        AssertPtrReturn(cchNew < ~(size_t)64, VERR_OUT_OF_RANGE);
+        AssertReturn(cchNew < ~(size_t)64, VERR_OUT_OF_RANGE);
         char *pszZero = RTStrEnd(pszOld, cchNew + 63);
         AssertReturn(!pszZero || (size_t)(pszZero - pszOld) >= cchNew, VERR_OUT_OF_RANGE);
         pszOld[cchNew] = '\0';

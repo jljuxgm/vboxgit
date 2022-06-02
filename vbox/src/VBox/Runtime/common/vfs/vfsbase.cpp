@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 34031 2010-11-12 15:02:30Z vboxsync $ */
+/* $Id: vfsbase.cpp 34032 2010-11-12 16:20:25Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -686,8 +686,8 @@ static int rtVfsObjInitNewObject(RTVFSOBJINTERNAL *pThis, PCRTVFSOBJOPS pObjOps,
              * The caller specified a lock, we consume the this reference.
              */
             AssertPtrReturn(hLock, VERR_INVALID_HANDLE);
-            AssertPtrReturn(hLock->enmType > RTVFSLOCKTYPE_INVALID && hLock->enmType < RTVFSLOCKTYPE_END, VERR_INVALID_HANDLE);
-            AssertPtrReturn(hLock->cRefs > 0, VERR_INVALID_HANDLE);
+            AssertReturn(hLock->enmType > RTVFSLOCKTYPE_INVALID && hLock->enmType < RTVFSLOCKTYPE_END, VERR_INVALID_HANDLE);
+            AssertReturn(hLock->cRefs > 0, VERR_INVALID_HANDLE);
         }
     }
     else if (hVfs != NIL_RTVFS)
