@@ -1,6 +1,6 @@
-/* $Id: RTTar.cpp 34045 2010-11-12 19:16:09Z vboxsync $ */
+/* $Id: RTTar.cpp 34464 2010-11-29 13:45:37Z vboxsync $ */
 /** @file
- * IPRT - TAR Testcase Utility.
+ * IPRT - TAR Utility.
  */
 
 /*
@@ -41,5 +41,4 @@ int main(int argc, char **argv)
         return RTMsgInitFailure(rc);
     return RTZipTarCmd(argc, argv);
 }
-
 

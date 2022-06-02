@@ -1,6 +1,6 @@
-/* $Id: RTGzip.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
+/* $Id: RTGzip.cpp 34464 2010-11-29 13:45:37Z vboxsync $ */
 /** @file
- * IPRT - GZIP Testcase Utility.
+ * IPRT - GZIP Utility.
  */
 
 /*
