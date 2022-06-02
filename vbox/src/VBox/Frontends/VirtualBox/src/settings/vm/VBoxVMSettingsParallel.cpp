@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsParallel.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsParallel.cpp 33635 2010-11-01 07:07:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -250,7 +250,7 @@ void VBoxVMSettingsParallelPage::saveFromCacheTo(QVariant &data)
     for (int iSlot = 0; iSlot < m_cache.m_items.size(); ++iSlot)
     {
         /* Get adapter: */
-        CParallelPort &port = m_machine.GetParallelPort(iSlot);
+        CParallelPort port = m_machine.GetParallelPort(iSlot);
 
         /* Get cached data for this slot: */
         const UIParallelPortData &data = m_cache.m_items[iSlot];

@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 33635 2010-11-01 07:07:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -436,7 +436,7 @@ VBoxVMSettingsPortForwardingDlg::VBoxVMSettingsPortForwardingDlg(QWidget *pParen
     m_pTableView = new QITableView(this);
     m_pTableView->setTabKeyNavigation(false);
     m_pTableView->verticalHeader()->hide();
-    m_pTableView->verticalHeader()->setDefaultSectionSize(m_pTableView->verticalHeader()->minimumSectionSize() * 1.33);
+    m_pTableView->verticalHeader()->setDefaultSectionSize((int)m_pTableView->verticalHeader()->minimumSectionSize() * 1.33);
     m_pTableView->setSelectionMode(QAbstractItemView::SingleSelection);
     m_pTableView->setContextMenuPolicy(Qt::CustomContextMenu);
     m_pTableView->installEventFilter(this);

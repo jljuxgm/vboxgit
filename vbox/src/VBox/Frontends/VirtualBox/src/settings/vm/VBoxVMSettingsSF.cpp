@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSF.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsSF.cpp 33635 2010-11-01 07:07:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -221,7 +221,8 @@ void VBoxVMSettingsSF::saveDirectlyTo(CConsole &console)
 {
     putToCache();
     saveFromCacheToConsole(console);
-    saveFromCacheToMachine(console.GetMachine());
+    CMachine machine = console.GetMachine();
+    saveFromCacheToMachine(machine);
 }
 
 void VBoxVMSettingsSF::resizeEvent (QResizeEvent *aEvent)
