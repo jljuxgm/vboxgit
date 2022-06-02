@@ -1,0 +1,24 @@
+; $Id: VBoxInstallHelper.def 31856 2010-08-23 12:11:12Z vboxsync $
+;; @file
+; VBoxInstallHelper - Defines the exports the MSI engine uses.
+;
+
+;
+; Copyright (C) 2008 Oracle Corporation
+;
+; Oracle Corporation confidential
+; All rights reserved
+;
+
+LIBRARY "VBoxInstallHelper"
+EXPORTS
+    IsSerialCheckNeeded
+    CheckSerial
+    InstallPythonAPI
+    InstallBranding
+    UninstallBranding
+    InstallNetFlt
+    UninstallNetFlt
+    UninstallTAPInstances
+    CreateHostOnlyInterface
+    RemoveHostOnlyInterfaces
