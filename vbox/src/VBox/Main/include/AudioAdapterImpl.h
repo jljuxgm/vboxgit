@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  *
@@ -29,7 +29,6 @@ namespace settings
 
 class ATL_NO_VTABLE AudioAdapter :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<AudioAdapter>,
     VBOX_SCRIPTABLE_IMPL(IAudioAdapter)
 {
 public:

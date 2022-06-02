@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 30739 2010-07-08 12:27:42Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -26,6 +26,7 @@
 # include "HostUSBDeviceImpl.h"
 # include "USBProxyService.h"
 #endif
+#include "USBDeviceFilterImpl.h"
 
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>
@@ -167,7 +168,7 @@ HRESULT USBController::init(Machine *aParent, USBController *aPeer)
     {
         ComObjPtr<USBDeviceFilter> filter;
         filter.createObject();
-        filter->init (this, *it);
+        filter->init(this, *it);
         m->llDeviceFilters->push_back(filter);
         ++ it;
     }

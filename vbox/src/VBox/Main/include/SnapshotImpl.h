@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: SnapshotImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  *
@@ -32,7 +32,6 @@ namespace settings
 }
 
 class ATL_NO_VTABLE Snapshot :
-    public VirtualBoxSupportTranslation<Snapshot>,
     public VirtualBoxBase, // WithTypedChildren<Snapshot>,
     VBOX_SCRIPTABLE_IMPL(ISnapshot)
 {

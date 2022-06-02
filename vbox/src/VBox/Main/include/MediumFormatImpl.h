@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: MediumFormatImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  *
@@ -39,7 +39,6 @@ struct VDBACKENDINFO;
  */
 class ATL_NO_VTABLE MediumFormat :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<MediumFormat>,
     VBOX_SCRIPTABLE_IMPL(IMediumFormat)
 {
 public:

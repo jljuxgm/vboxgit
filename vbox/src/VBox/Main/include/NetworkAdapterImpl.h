@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  *
@@ -32,7 +32,6 @@ namespace settings
 
 class ATL_NO_VTABLE NetworkAdapter :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<NetworkAdapter>,
     VBOX_SCRIPTABLE_IMPL(INetworkAdapter)
 {
 public:

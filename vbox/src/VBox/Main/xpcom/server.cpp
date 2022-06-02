@@ -1,4 +1,4 @@
-/* $Id: server.cpp 30631 2010-07-05 19:20:03Z vboxsync $ */
+/* $Id: server.cpp 30739 2010-07-08 12:27:42Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -77,6 +77,7 @@
 #include <SerialPortImpl.h>
 #include <ParallelPortImpl.h>
 #include <USBControllerImpl.h>
+#include "USBDeviceFilterImpl.h"
 #include "DHCPServerRunner.h"
 #include "DHCPServerImpl.h"
 #ifdef VBOX_WITH_USB

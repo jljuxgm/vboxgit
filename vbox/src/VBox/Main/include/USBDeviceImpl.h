@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
@@ -27,7 +27,6 @@
  */
 class ATL_NO_VTABLE OUSBDevice :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<OUSBDevice>,
     VBOX_SCRIPTABLE_IMPL(IUSBDevice)
 {
 public:

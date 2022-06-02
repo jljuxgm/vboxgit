@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: PerformanceImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  *
@@ -47,7 +47,6 @@ class HostUSBDevice;
 
 class ATL_NO_VTABLE PerformanceMetric :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<PerformanceMetric>,
     VBOX_SCRIPTABLE_IMPL(IPerformanceMetric)
 {
 public:
@@ -115,7 +114,6 @@ private:
 
 class ATL_NO_VTABLE PerformanceCollector :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<PerformanceCollector>,
     VBOX_SCRIPTABLE_IMPL(IPerformanceCollector)
 {
 public:

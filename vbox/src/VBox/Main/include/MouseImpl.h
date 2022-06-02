@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: MouseImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -49,9 +49,7 @@ typedef ConsoleEventBuffer<MouseEvent> MouseEventBuffer;
 class ATL_NO_VTABLE Mouse :
     public VirtualBoxBase
 #ifndef VBOXBFE_WITHOUT_COM
-    ,
-    public VirtualBoxSupportTranslation<Mouse>,
-    VBOX_SCRIPTABLE_IMPL(IMouse)
+    , VBOX_SCRIPTABLE_IMPL(IMouse)
 #endif
 {
 public:

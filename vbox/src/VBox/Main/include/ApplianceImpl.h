@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 30716 2010-07-07 16:40:45Z vboxsync $ */
+/* $Id: ApplianceImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  *
@@ -48,7 +48,6 @@ namespace settings
 
 class ATL_NO_VTABLE Appliance :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<Appliance>,
     VBOX_SCRIPTABLE_IMPL(IAppliance)
 {
 public:
@@ -196,7 +195,6 @@ struct VirtualSystemDescriptionEntry
 
 class ATL_NO_VTABLE VirtualSystemDescription :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<VirtualSystemDescription>,
     VBOX_SCRIPTABLE_IMPL(IVirtualSystemDescription)
 {
     friend class Appliance;

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  *
@@ -57,7 +57,6 @@ namespace settings
 
 class ATL_NO_VTABLE VirtualBox :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<VirtualBox>,
     VBOX_SCRIPTABLE_IMPL(IVirtualBox)
 #ifdef RT_OS_WINDOWS
     , public CComCoClass<VirtualBox, &CLSID_VirtualBox>

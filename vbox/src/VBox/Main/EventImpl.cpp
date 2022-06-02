@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: EventImpl.cpp 30739 2010-07-08 12:27:42Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -913,7 +913,6 @@ STDMETHODIMP EventSource::EventProcessed(IEventListener * aListener,
  */
 class ATL_NO_VTABLE PassiveEventListener :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<PassiveEventListener>,
     VBOX_SCRIPTABLE_IMPL(IEventListener)
 {
 public:

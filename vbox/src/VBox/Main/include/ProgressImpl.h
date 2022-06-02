@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: ProgressImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -21,8 +21,6 @@
 
 #include "VirtualBoxBase.h"
 
-#include <VBox/com/SupportErrorInfo.h>
-
 #include <iprt/semaphore.h>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -32,7 +30,6 @@
  */
 class ATL_NO_VTABLE ProgressBase :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<ProgressBase>,
     VBOX_SCRIPTABLE_IMPL(IProgress)
 {
 protected:
@@ -133,14 +130,11 @@ protected:
  * Normal progress object.
  */
 class ATL_NO_VTABLE Progress :
-    public ProgressBase,
-    public VirtualBoxSupportTranslation<Progress>
+    public ProgressBase
 {
 
 public:
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(Progress, IProgress)
-
-    VIRTUALBOXSUPPORTTRANSLATION_OVERRIDE(Progress)
 
     DECLARE_NOT_AGGREGATABLE (Progress)
 

@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: StorageControllerImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 
 /** @file
  *
@@ -24,7 +24,6 @@
 
 class ATL_NO_VTABLE StorageController :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<StorageController>,
     VBOX_SCRIPTABLE_IMPL(IStorageController)
 {
 public:

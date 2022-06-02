@@ -1,4 +1,4 @@
-/* $Id: ProgressCombinedImpl.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: ProgressCombinedImpl.h 30739 2010-07-08 12:27:42Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -65,15 +65,11 @@
  *       will be in a loop calling a method that returns immediately.
  */
 class ATL_NO_VTABLE CombinedProgress :
-//     public com::SupportErrorInfoDerived<ProgressBase, CombinedProgress, IProgress>,
-    public Progress,
-    public VirtualBoxSupportTranslation<CombinedProgress>
+    public Progress
 {
 
 public:
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(CombinedProgress, IProgress)
-
-    VIRTUALBOXSUPPORTTRANSLATION_OVERRIDE(CombinedProgress)
 
     DECLARE_NOT_AGGREGATABLE(CombinedProgress)
 
