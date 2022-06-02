@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 31966 2010-08-25 16:15:25Z vboxsync $ */
+/* $Id: DBGConsole.cpp 31987 2010-08-26 12:33:45Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -1962,6 +1962,7 @@ int dbgcCreate(PDBGC *ppDbgc, PDBGCBACK pBack, unsigned fFlags)
     //pDbgc->fLog             = false;
     pDbgc->fRegCtxGuest     = true;
     pDbgc->fRegTerse        = true;
+    //pDbgc->cPagingHierarchyDumps = 0;
     //pDbgc->DisasmPos        = {0};
     //pDbgc->SourcePos        = {0};
     //pDbgc->DumpPos          = {0};

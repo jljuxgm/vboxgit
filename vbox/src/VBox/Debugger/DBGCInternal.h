@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 31966 2010-08-25 16:15:25Z vboxsync $ */
+/* $Id: DBGCInternal.h 31987 2010-08-26 12:33:45Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -168,6 +168,8 @@ typedef struct DBGC
     bool                fRegCtxGuest;
     /** Indicates whether the register are terse or sparse. */
     bool                fRegTerse;
+    /** Counter use to suppress the printing of the headers. */
+    uint8_t             cPagingHierarchyDumps;
 
     /** Current dissassembler position. */
     DBGCVAR             DisasmPos;
