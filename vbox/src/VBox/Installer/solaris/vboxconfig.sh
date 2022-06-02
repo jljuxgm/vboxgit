@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 32582 2010-09-17 09:18:56Z vboxsync $
+# $Id: vboxconfig.sh 32583 2010-09-17 09:46:57Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -644,11 +644,11 @@ stop_process()
     fi
 
     procname=$1
-    procpid=`ps -eo pid,fname | grep $PROC_NAME | grep -v grep | awk '{ print $1 }'`
+    procpid=`ps -eo pid,fname | grep $procname | grep -v grep | awk '{ print $1 }'`
     if test ! -z "$procpid" && test "$procpid" -ge 0; then
         $BIN_PKILL "$procname"
         sleep 2
-        procpid=`ps -eo pid,fname | grep $PROC_NAME | grep -v grep | awk '{ print $1 }'`
+        procpid=`ps -eo pid,fname | grep $procname | grep -v grep | awk '{ print $1 }'`
         if test ! -z "$procpid" && test "$procpid" -ge 0; then
             subprint "Terminating: $procname  ...FAILED!"
             if test "$fatal" = "$FATALOP"; then
