@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35659 2011-01-20 16:49:12Z vboxsync $
+# $Id: Makefile.kmk 35719 2011-01-26 09:46:04Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -28,18 +28,6 @@ VBOX_PATH_ADDITIONS.win.x86 := $(PATH_OUT_BASE)/win.x86/$(KBUILD_TYPE)/bin/addit
 VBOX_WITH_GUEST_INSTALL_HELPER := 1 # Use our guest install helper DLL.
 
 ## @todo VBOX_WIN_ADD_INS_OUT_DIR := $(PATH_TARGET)/Additions/Installer/win
-
-DLLS += VBCoInst
-VBCoInst_TEMPLATE = VBOXGUESTR3DLL
-ifdef VBOX_SIGN_ADDITIONS # (See the parent makefile.)
- VBCoInst_NOINST  = true
-endif
-VBCoInst_DEFS     = _WIN32_WINNT=0x0400 WIN32_LEAN_AND_MEAN=1 UNICODE
-VBCoInst_LDFLAGS  = /subsystem:console,4.10
-VBCoInst_SOURCES  = \
-	VBCoInst.cpp \
-	VBCoInst.def \
-	VBCoInst.rc
 
 PROGRAMS += VBoxDrvInst
 VBoxDrvInst_TEMPLATE= VBOXGUESTR3EXE
