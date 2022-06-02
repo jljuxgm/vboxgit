@@ -1,10 +1,10 @@
-/* $Id: semeventmulti-r0drv-solaris.c 30552 2010-07-01 12:24:21Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 30576 2010-07-02 12:53:46Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -60,7 +60,7 @@ typedef struct RTSEMEVENTMULTIINTERNAL
     uint8_t volatile    fSignaled;
     /** The number of threads in the process of waking up, doubles up as a ref counter. */
     uint32_t volatile   cWaking;
-    /** Object version indicating a valid signal event occurred. */
+    /** Object version that is incremented every time the object is signaled. */
     uint32_t volatile   u32Version;
     /** The Solaris mutex protecting this structure and pairing up the with the cv. */
     kmutex_t            Mtx;
@@ -279,7 +279,7 @@ static int rtSemEventMultiWait(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMil
                 if (RT_LIKELY(pThis->u32Magic == RTSEMEVENTMULTI_MAGIC))
                 {
                     /* Retured due to call to cv_signal() or cv_broadcast() */
-                    if (u32Version > u32VersionBeforeWait)
+                    if (u32Version != u32VersionBeforeWait)
                     {
                         rc = VINF_SUCCESS;
                         ASMAtomicDecU32(&pThis->cWaking);
