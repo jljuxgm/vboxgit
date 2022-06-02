@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-nt.cpp 32454 2010-09-13 15:05:13Z vboxsync $ */
+/* $Id: spinlock-r0drv-nt.cpp 32463 2010-09-14 07:30:11Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, NT.
  */
@@ -47,7 +47,7 @@
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
 /** Apply the NoIrq hack if defined. */
-//#define RTSPINLOCK_NT_HACK_NOIRQ
+#define RTSPINLOCK_NT_HACK_NOIRQ
 
 #ifdef RTSPINLOCK_NT_HACK_NOIRQ
 /** Indicates that the spinlock is taken. */
