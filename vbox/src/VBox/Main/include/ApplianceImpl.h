@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 33353 2010-10-22 13:29:33Z vboxsync $ */
+/* $Id: ApplianceImpl.h 33368 2010-10-22 16:47:32Z vboxsync $ */
 
 /** @file
  *
@@ -177,7 +177,7 @@ private:
                                      int32_t &lDevice);
 
     void importOneDiskImage(const ovf::DiskImage &di,
-                            Utf8Str strTargetPath,
+                            const Utf8Str &strTargetPath,
                             ComObjPtr<Medium> &pTargetHD,
                             ImportStack &stack,
                             PVDINTERFACEIO pCallbacks,
