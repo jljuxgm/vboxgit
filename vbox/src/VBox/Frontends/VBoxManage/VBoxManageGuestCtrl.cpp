@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 33413 2010-10-25 11:38:40Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 33414 2010-10-25 11:56:45Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -939,8 +939,8 @@ int ctrlCopyFile(IGuest *pGuest, const char *pszSource, const char *pszDest,
                 }
                 else
                 {
-                    if (RT_FAILURE(rc))
-                        RTMsgError("Error while looking up error code, rc=%Rrc", rc);
+                    if (RT_FAILURE(vrc))
+                        RTMsgError("Error while looking up error code, rc=%Rrc", vrc);
                     else
                         com::GluePrintRCMessage(iRc);
                 }
