@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 35689 2011-01-24 16:13:19Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 35731 2011-01-27 10:49:47Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -829,7 +829,7 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
         /* Synthetic CPU */
         BOOL fSyntheticCpu = false;
         hrc = pMachine->GetCPUProperty(CPUPropertyType_Synthetic, &fSyntheticCpu);          H();
-        InsertConfigInteger(pRoot, "SyntheticCpu", fSyntheticCpu);
+        InsertConfigInteger(pCPUM, "SyntheticCpu", fSyntheticCpu);
 
         BOOL fPXEDebug;
         hrc = biosSettings->COMGETTER(PXEDebugEnabled)(&fPXEDebug);                         H();
