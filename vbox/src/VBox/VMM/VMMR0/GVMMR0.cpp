@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 32798 2010-09-28 15:53:48Z vboxsync $ */
+/* $Id: GVMMR0.cpp 32799 2010-09-28 15:54:12Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -29,7 +29,7 @@
  * possible to implement usage polices later (in SUPR0ObjRegister).
  *
  *
- * @section     Periodic Preemption Timer
+ * @section  sec_gvmm_ppt       Periodic Preemption Timer (PPT)
  *
  * On system that sports a high resolution kernel timer API, we use per-cpu
  * timers to generate interrupts that preempts VT-x, AMD-V and raw-mode guest
