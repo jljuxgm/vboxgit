@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32193 2010-09-02 12:56:32Z vboxsync $ */
+/* $Id: FTMInternal.h 32268 2010-09-07 09:40:47Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -23,12 +23,21 @@
 #include <VBox/ftm.h>
 #include <VBox/stam.h>
 #include <VBox/pdmcritsect.h>
+#include <iprt/avl.h>
 
 /** @defgroup grp_ftm_int Internals.
  * @ingroup grp_ftm
  * @{
  */
 
+/** Physical page tree node. */
+typedef struct FTMPHYSPAGETREENODE
+{
+    AVLOGCPHYSNODECORE  Core;
+    void               *pPage;
+} FTMPHYSPAGETREENODE;
+/** Pointer to FTMPHYSPAGETREENODE */
+typedef FTMPHYSPAGETREENODE *PFTMPHYSPAGETREENODE;
 
 /**
  * FTM VM Instance data.
@@ -73,6 +82,7 @@ typedef struct FTM
     struct
     {
         R3PTRTYPE(PRTTCPSERVER) hServer;
+        PPAVLOGCPHYSNODECORE    ppPhysPageTree;
     } standby;
 
     struct
