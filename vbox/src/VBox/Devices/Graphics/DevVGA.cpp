@@ -1,5 +1,5 @@
 #ifdef VBOX
-/* $Id: DevVGA.cpp 33178 2010-10-16 20:25:02Z vboxsync $ */
+/* $Id: DevVGA.cpp 33263 2010-10-20 14:27:32Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -893,6 +893,8 @@ static int vbe_ioport_write_data(void *opaque, uint32_t addr, uint32_t val)
             }
 #ifdef VBOX
             if (val == VBE_DISPI_ID_VBOX_VIDEO) {
+                s->vbe_regs[s->vbe_index] = val;
+            } else if (val == VBE_DISPI_ID_ANYX) {
                 s->vbe_regs[s->vbe_index] = val;
             }
 #ifdef VBOX_WITH_HGSMI
