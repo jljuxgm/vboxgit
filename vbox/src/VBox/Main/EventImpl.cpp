@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 31572 2010-08-11 14:08:41Z vboxsync $ */
+/* $Id: EventImpl.cpp 33265 2010-10-20 14:34:58Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -824,13 +824,20 @@ HRESULT ListenerRecord::enqueue (IEvent* aEvent)
     // and events keep coming, or queue is oversized we shall unregister this listener.
     uint64_t sinceRead = RTTimeMilliTS() - mLastRead;
     uint32_t queueSize = mQueue.size();
-    if ( (queueSize > 200) || ((queueSize > 100) && (sinceRead > 60 * 1000)))
+    if ( (queueSize > 1000) || ((queueSize > 500) && (sinceRead > 60 * 1000)))
     {
         ::RTCritSectLeave(&mcsQLock);
         return E_ABORT;
     }
 
-    mQueue.push_back(aEvent);
+
+    if (queueSize != 0 && mQueue.back() == aEvent)
+        /* if same event is being pushed multiple times - it's reusable event and 
+           we don't really need multiple instances of it in the queue */
+        (void)aEvent;
+    else
+        mQueue.push_back(aEvent);
+
     ::RTCritSectLeave(&mcsQLock);
 
      // notify waiters
