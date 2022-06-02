@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35685 2011-01-24 15:56:51Z vboxsync $
+# $Id: Config.kmk 35905 2011-02-09 10:02:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2167,7 +2167,7 @@ ifdef VBOX_SIGNING_MODE
    VBOX_CERTIFICATE_SUBJECT_NAME ?= MyTestCertificate
    VBOX_CERTIFICATE_SUBJECT_NAME_ARGS ?= /n "$(VBOX_CERTIFICATE_SUBJECT_NAME)"
   else if1of ($(VBOX_SIGNING_MODE), release development)
-   VBOX_CERTIFICATE_SUBJECT_NAME ?= Sun Microsystems, Inc.
+   VBOX_CERTIFICATE_SUBJECT_NAME ?= Oracle Corporation
    VBOX_CERTIFICATE_SUBJECT_NAME_ARGS ?= /n "$(VBOX_CERTIFICATE_SUBJECT_NAME)"
    VBOX_CROSS_CERTIFICATE_FILE ?= $(VBOX_PATH_SELFSIGN)/MSCV-VSClass3.cer
    VBOX_CROSS_CERTIFICATE_FILE_ARGS ?= /ac "$(VBOX_CROSS_CERTIFICATE_FILE)"
@@ -4657,7 +4657,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35685 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35905 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
