@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: log-vbox.cpp 33664 2010-11-01 16:00:33Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -346,7 +346,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
         {
             /* braindead */
             unsigned iArg = 0;
-            char ch;
+            int ch;
             bool fNew = true;
             while (!feof(pFile) && (ch = fgetc(pFile)) != EOF)
             {
