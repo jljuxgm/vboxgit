@@ -1,10 +1,10 @@
-/* $Id: VBoxManageDHCPServer.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 32701 2010-09-22 17:12:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -26,9 +26,6 @@
 #include <VBox/com/EventQueue.h>
 
 #include <VBox/com/VirtualBox.h>
-
-#include <vector>
-#include <list>
 #endif /* !VBOX_ONLY_DOCS */
 
 #include <iprt/cidr.h>

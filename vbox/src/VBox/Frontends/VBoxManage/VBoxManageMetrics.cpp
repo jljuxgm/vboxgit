@@ -1,10 +1,10 @@
-/* $Id: VBoxManageMetrics.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 32701 2010-09-22 17:12:01Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -175,12 +175,12 @@ static void listAffectedMetrics(ComPtr<IVirtualBox> aVirtualBox,
     }
     else
     {
-        RTPrintf("No metrics match the specified filter!\n");
+        RTMsgError("No metrics match the specified filter!");
     }
 }
 
 /**
- * list                                                               *
+ * list
  */
 static int handleMetricsList(int argc, char *argv[],
                              ComPtr<IVirtualBox> aVirtualBox,
@@ -464,8 +464,8 @@ static int handleMetricsCollect(int argc, char *argv[],
 
     if (isDetached)
     {
-        RTPrintf("Warning! The background process holding collected metrics will shutdown\n"
-                 "in few seconds, discarding all collected data and parameters.\n");
+        RTMsgWarning("The background process holding collected metrics will shutdown\n"
+                     "in few seconds, discarding all collected data and parameters.");
         return 0;
     }
 
