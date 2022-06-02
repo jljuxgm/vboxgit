@@ -1,4 +1,4 @@
-/* $Id: ParallelsHDDCore.cpp 33182 2010-10-18 08:30:05Z vboxsync $ */
+/* $Id: ParallelsHDDCore.cpp 33258 2010-10-20 12:22:21Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -656,7 +656,6 @@ static int parallelsRead(void *pBackendData, uint64_t uOffset, void *pvBuf,
                 uOffset, pvBuf, cbBuf, cbBuf, pvBuf));
     }
 
-out:
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;
 }
