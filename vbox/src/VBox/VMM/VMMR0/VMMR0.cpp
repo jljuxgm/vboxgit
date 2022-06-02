@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 31350 2010-08-04 08:58:21Z vboxsync $ */
+/* $Id: VMMR0.cpp 31351 2010-08-04 09:15:05Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -975,6 +975,8 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
                 RTThreadPreemptDisable(&PreemptState);
 # elif !defined(RT_OS_WINDOWS)
                 RTCCUINTREG uFlags = ASMIntDisableFlags();
+# else 
+                AssertCompileFailed();
 # endif
                 /* Select a valid VCPU context. */
                 ASMAtomicWriteU32(&pVCpu->idHostCpu, RTMpCpuId());
@@ -987,6 +989,8 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
                 RTThreadPreemptRestore(&PreemptState);
 # elif !defined(RT_OS_WINDOWS)
                 ASMSetFlags(uFlags);
+# else 
+                AssertCompileFailed();
 # endif
 
                 GMMR0CheckSharedModulesEnd(pVM);
