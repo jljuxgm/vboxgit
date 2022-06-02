@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ovfreader.cpp 33700 2010-11-02 16:19:36Z vboxsync $ */
 /** @file
  *
  * OVF reader declarations. Depends only on IPRT, including the iprt::MiniString
@@ -36,7 +36,7 @@ using namespace ovf;
  * @param cbSize the size of the memory buffer
  * @param path   path to a filename for error messages.
  */
-OVFReader::OVFReader(const void *pvBuf, int cbSize, const MiniString &path)
+OVFReader::OVFReader(const void *pvBuf, size_t cbSize, const MiniString &path)
     : m_strPath(path)
 {
     xml::XmlMemParser parser;

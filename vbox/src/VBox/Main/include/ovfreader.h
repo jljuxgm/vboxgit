@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 32565 2010-09-16 14:39:24Z vboxsync $ */
+/* $Id: ovfreader.h 33700 2010-11-02 16:19:36Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -402,7 +402,7 @@ struct VirtualSystem
 class OVFReader
 {
 public:
-    OVFReader(const void *pvBuf, int cbSize, const iprt::MiniString &path);
+    OVFReader(const void *pvBuf, size_t cbSize, const iprt::MiniString &path);
     OVFReader(const iprt::MiniString &path);
 
     // Data fields
