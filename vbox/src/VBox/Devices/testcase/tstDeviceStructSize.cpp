@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 30597 2010-07-05 09:09:01Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 30772 2010-07-10 04:58:28Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -23,6 +23,8 @@
 #include <VBox/types.h>
 #include <VBox/x86.h>
 
+
+#define VBOX_WITH_HGCM                  /* grumble */
 #define VBOX_DEVICE_STRUCT_TESTCASE
 #undef LOG_GROUP
 #include "../Bus/DevPCI.cpp"
