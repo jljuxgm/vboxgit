@@ -1,9 +1,8 @@
-/* $Id: UIDesktopServices_darwin_cocoa.mm 34401 2010-11-26 16:37:51Z vboxsync $ */
+/* $Id: UIDesktopServices_darwin_cocoa.mm 34411 2010-11-26 16:57:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
- * Declarations of utility classes and functions for handling Darwin Cocoa
- * specific tasks
+ * Qt GUI - Utility Classes and Functions specific to darwin.
  */
 
 /*
