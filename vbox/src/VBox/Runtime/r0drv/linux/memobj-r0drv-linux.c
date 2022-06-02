@@ -1,4 +1,4 @@
-/* $Revision: 33006 $ */
+/* $Revision: 33011 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -174,7 +174,7 @@ static pgprot_t rtR0MemObjLinuxConvertProt(unsigned fProt, bool fKernel)
  * @param   ppMemLnx    Where to store the memory object pointer.
  * @param   enmType     The object type.
  * @param   cb          The number of bytes to allocate.
- * @param   uAlignment  The alignment of the phyiscal memory.
+ * @param   uAlignment  The alignment of the physical memory.
  *                      Only valid if fContiguous == true, ignored otherwise.
  * @param   fFlagsLnx   The page allocation flags (GPFs).
  * @param   fContiguous Whether the allocation must be contiguous.

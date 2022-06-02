@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 29648 2010-05-18 16:15:42Z vboxsync $ */
+/* $Id: the-linux-kernel.h 33011 2010-10-08 15:42:24Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -345,6 +345,17 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 # undef PAGE_OFFSET_MASK
 # include <iprt/param.h>
 #endif
+
+/*
+ * Some global indicator macros.
+ */
+/** @def IPRT_LINUX_HAS_HRTIMER
+ * Whether the kernel support high resolution timers (Linux kernel versions
+ * 2.6.28 and later (hrtimer_add_expires_ns() & schedule_hrtimeout). */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 28)
+# define IPRT_LINUX_HAS_HRTIMER
+#endif
+
 
 #endif
 
