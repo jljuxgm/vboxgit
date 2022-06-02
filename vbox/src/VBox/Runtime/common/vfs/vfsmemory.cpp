@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 34507 2010-11-30 13:14:14Z vboxsync $ */
+/* $Id: vfsmemory.cpp 34535 2010-11-30 17:46:14Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -268,7 +268,11 @@ static DECLCALLBACK(int) rtVfsMemFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF p
         *pcbRead = cbLeftToRead = (size_t)((uint64_t)pThis->Base.ObjInfo.cbObject - offUnsigned);
     }
     else
-        *pcbRead = cbLeftToRead = pSgBuf->paSegs[0].cbSeg;
+    {
+        cbLeftToRead = pSgBuf->paSegs[0].cbSeg;
+        if (pcbRead)
+            *pcbRead = cbLeftToRead;
+    }
 
     /*
      * Ok, we've got a valid stretch within the file.  Do the reading.
@@ -766,6 +770,9 @@ RTDECL(int) RTVfsMemorizeIoStreamAsFile(RTVFSIOSTREAM hVfsIos, uint32_t fFlags, 
             RTVfsIoStrmRelease(hVfsIosDst);
             if (RT_SUCCESS(rc))
             {
+                pThis->pCurExt   = RTListGetFirst(&pThis->ExtentHead, RTVFSMEMEXTENT, Entry);
+                pThis->offCurPos = 0;
+
                 if (!(fFlags & RTFILE_O_WRITE))
                 {
                     /** @todo clear RTFILE_O_WRITE from the resulting. */
