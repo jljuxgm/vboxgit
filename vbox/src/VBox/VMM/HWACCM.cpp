@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: HWACCM.cpp 34187 2010-11-18 21:26:02Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1048,8 +1048,7 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
             }
 
             LogRel(("HWACCM: MSR_IA32_VMX_MISC             = %RX64\n", pVM->hwaccm.s.vmx.msr.vmx_misc));
-            if (   !pVM->hwaccm.s.vmx.fUsePreemptTimer
-                || MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT(pVM->hwaccm.s.vmx.msr.vmx_misc) == pVM->hwaccm.s.vmx.cPreemptTimerShift)
+            if (MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT(pVM->hwaccm.s.vmx.msr.vmx_misc) == pVM->hwaccm.s.vmx.cPreemptTimerShift)
                 LogRel(("HWACCM:    MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT %x\n", MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT(pVM->hwaccm.s.vmx.msr.vmx_misc)));
             else
                 LogRel(("HWACCM:    MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT %x - erratum detected, using %x instead\n", MSR_IA32_VMX_MISC_PREEMPT_TSC_BIT(pVM->hwaccm.s.vmx.msr.vmx_misc), pVM->hwaccm.s.vmx.cPreemptTimerShift));
@@ -1222,6 +1221,18 @@ VMMR3DECL(int) HWACCMR3InitFinalizeR0(PVM pVM)
                     }
                 }
                 LogRel(("HWACCM: TPR Patching %s.\n", (pVM->hwaccm.s.fTRPPatchingAllowed) ? "enabled" : "disabled"));
+
+                /*
+                 * Check for preemption timer config override and log the state of it.
+                 */
+                if (pVM->hwaccm.s.vmx.fUsePreemptTimer)
+                {
+                    PCFGMNODE pCfgHwAccM = CFGMR3GetChild(CFGMR3GetRoot(pVM), "HWACCM");
+                    int rc2 = CFGMR3QueryBoolDef(pCfgHwAccM, "UsePreemptTimer", &pVM->hwaccm.s.vmx.fUsePreemptTimer, true);
+                    AssertLogRelRC(rc2);
+                }
+                if (pVM->hwaccm.s.vmx.fUsePreemptTimer)
+                    LogRel(("HWACCM: Using the VMX-preemption timer (cPreemptTimerShift=%u)\n", pVM->hwaccm.s.vmx.cPreemptTimerShift));
             }
             else
             {
