@@ -1,4 +1,4 @@
-/* $Id: tstDevEEPROM.cpp 31880 2010-08-24 07:08:41Z vboxsync $ */
+/* $Id: tstDevEEPROM.cpp 31885 2010-08-24 07:22:23Z vboxsync $ */
 /** @file
  * EEPROM 93C46 unit tests.
  */
@@ -6,8 +6,13 @@
 /*
  * Copyright (C) 2007-2010 Oracle Corporation
  *
- * Oracle Corporation confidential
- * All rights reserved
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
 #include <cppunit/ui/text/TestRunner.h>
