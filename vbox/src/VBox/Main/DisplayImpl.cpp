@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 33146 2010-10-15 10:34:58Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 33365 2010-10-22 16:28:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2914,16 +2914,7 @@ void Display::setupCrHgsmiData(void)
 
 void Display::destructCrHgsmiData(void)
 {
-    if (mhCrOglSvc)
-    {
-        VMMDev *pVMMDev = mParent->getVMMDev();
-        Assert(pVMMDev);
-        if (pVMMDev)
-        {
-            int rc = pVMMDev->hgcmHostSvcHandleDestroy(mhCrOglSvc);
-            AssertRC(rc);
-        }
-    }
+    mhCrOglSvc = NULL;
 }
 #endif
 
