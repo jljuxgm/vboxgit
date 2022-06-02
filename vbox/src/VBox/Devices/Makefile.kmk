@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34100 2010-11-16 10:51:40Z vboxsync $
+# $Id: Makefile.kmk 34115 2010-11-16 14:07:25Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1147,7 +1147,7 @@ ifdef VBOX_WITH_EXTPACK_PUEL
  #
  INSTALLS += VBoxExtPackPuelInsRoms
  VBoxExtPackPuelInsRoms_TEMPLATE = VBoxInsExtPackPuel
- VBoxExtPackPuelInsRoms_SOURCES = PC/PXE/pxepcnet.rom=>PXE-Intel.rom
+ VBoxExtPackPuelInsRoms_SOURCES = PC/PXE/PXE-Intel.rom=>PXE-Intel.rom
 endif # VBOX_WITH_USB && VBOX_WITH_EXTPACK_PUEL
 
 

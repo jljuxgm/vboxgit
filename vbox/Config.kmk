@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34073 2010-11-15 15:38:20Z vboxsync $
+# $Id: Config.kmk 34115 2010-11-16 14:07:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -356,8 +356,8 @@ VBOX_WITH_VDMA = 1
 VBOX_WITH_CRHGSMI = 1
 # Enable VBVA lock
 VBOX_WITH_OLD_VBVA_LOCK = 1
-# Enable the Intel PXE ROM (replaces Etherboot).
-VBOX_WITH_INTEL_PXE = 1
+# Disable the Intel PXE ROM (uses Etherboot).
+VBOX_WITH_INTEL_PXE =
 # Enable EFI support
 VBOX_WITH_EFI = 1
 # Fetch EFI firmware image from the build server
@@ -4370,7 +4370,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34073 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34115 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
