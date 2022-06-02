@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 30976 2010-07-22 10:06:58Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 31002 2010-07-22 14:45:41Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -601,7 +601,7 @@ void printUsage(USAGECATEGORY u64Cmd)
     {
         RTPrintf("VBoxManage sharedfolder     add <vmname>|<uuid>\n"
                  "                            --name <name> --hostpath <hostpath>\n"
-                 "                            [--transient] [--readonly]\n"
+                 "                            [--transient] [--readonly] [--automount]\n"
                  "\n");
     }
 

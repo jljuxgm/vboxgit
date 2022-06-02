@@ -1,11 +1,11 @@
-/* $Id: VBoxHostVersion.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxHostVersion.cpp 31002 2010-07-22 14:45:41Z vboxsync $ */
 /** @file
  * VBoxHostVersion - Checks the host's VirtualBox version and notifies
  *                   the user in case of an update.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -44,7 +44,7 @@ int VBoxCheckHostVersion ()
                 char szMsg[256]; /* Sizes according to MSDN. */
                 char szTitle[64];
 
-                /** @todo add some translation macros here */
+                /** @todo Add some translation macros here. */
                 _snprintf(szTitle, sizeof(szTitle), "VirtualBox Guest Additions update available!");
                 _snprintf(szMsg, sizeof(szMsg), "Your guest is currently running the Guest Additions version %s. "
                                                 "We recommend updating to the latest version (%s) by choosing the "
@@ -55,7 +55,7 @@ int VBoxCheckHostVersion ()
                     Log(("VBoxTray: Guest Additions update found; however: could not show version notifier balloon tooltip! rc = %d\n", rc));
             }
 
-            /* Store host version to not notify again */
+            /* Store host version to not notify again. */
             rc = VbglR3HostVersionLastCheckedStore(uGuestPropSvcClientID, pszHostVersion);
 
             VbglR3GuestPropReadValueFree(pszHostVersion);

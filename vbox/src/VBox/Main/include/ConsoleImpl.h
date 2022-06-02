@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 30832 2010-07-14 13:00:39Z vboxsync $ */
+/* $Id: ConsoleImpl.h 31002 2010-07-22 14:45:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -144,7 +144,7 @@ public:
     STDMETHOD(DetachUSBDevice)(IN_BSTR aId, IUSBDevice **aDevice);
     STDMETHOD(FindUSBDeviceByAddress)(IN_BSTR aAddress, IUSBDevice **aDevice);
     STDMETHOD(FindUSBDeviceById)(IN_BSTR aId, IUSBDevice **aDevice);
-    STDMETHOD(CreateSharedFolder)(IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable);
+    STDMETHOD(CreateSharedFolder)(IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable, BOOL aAutoMount);
     STDMETHOD(RemoveSharedFolder)(IN_BSTR aName);
     STDMETHOD(TakeSnapshot)(IN_BSTR aName, IN_BSTR aDescription,
                             IProgress **aProgress);
@@ -388,14 +388,17 @@ public:
     {
     public:
         SharedFolderData() {}
-        SharedFolderData(Bstr aHostPath, BOOL aWritable)
+        SharedFolderData(Bstr aHostPath, BOOL aWritable, BOOL aAutoMount)
            : mHostPath(aHostPath)
-           , mWritable(aWritable) {}
+           , mWritable(aWritable)
+           , mAutoMount(aAutoMount) {}
         SharedFolderData(const SharedFolderData& aThat)
            : mHostPath(aThat.mHostPath)
-           , mWritable(aThat.mWritable) {}
+           , mWritable(aThat.mWritable)
+           , mAutoMount(aThat.mAutoMount) {}
         Bstr mHostPath;
         BOOL mWritable;
+        BOOL mAutoMount;
     };
     typedef std::map <Bstr, ComObjPtr<SharedFolder> > SharedFolderMap;
     typedef std::map <Bstr, SharedFolderData> SharedFolderDataMap;

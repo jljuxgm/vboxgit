@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 30956 2010-07-21 12:59:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 31002 2010-07-22 14:45:41Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -1718,7 +1718,8 @@ STDMETHODIMP VirtualBox::GetGuestOSType(IN_BSTR aId, IGuestOSType **aType)
                  aId);
 }
 
-STDMETHODIMP VirtualBox::CreateSharedFolder(IN_BSTR aName, IN_BSTR aHostPath, BOOL /* aWritable */)
+STDMETHODIMP VirtualBox::CreateSharedFolder(IN_BSTR aName,        IN_BSTR aHostPath,
+                                            BOOL /* aWritable */, BOOL /* aAutoMount */)
 {
     CheckComArgStrNotEmptyOrNull(aName);
     CheckComArgStrNotEmptyOrNull(aHostPath);
