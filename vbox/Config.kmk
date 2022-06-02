@@ -1,4 +1,4 @@
-# $Id: Config.kmk 31902 2010-08-24 09:56:42Z vboxsync $
+# $Id: Config.kmk 31909 2010-08-24 11:32:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -842,9 +842,6 @@ ifdef VBOX_OSE
  VBOX_WITH_FFMPEG=
  ifn1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_INSTALLER=
- endif
- if1of ($(KBUILD_TARGET), solaris)
-  VBOX_WITH_NEW_USB_CODE_ON_SOLARIS=
  endif
  # branding
  VBOX_BRAND_LICENSE_HTML       := $(PATH_ROOT)/doc/License-gpl-2.0.html
@@ -4269,7 +4266,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31902 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 31909 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
