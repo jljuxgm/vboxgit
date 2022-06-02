@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 30560 2010-07-01 14:56:14Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 30601 2010-07-05 11:22:54Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -288,7 +288,7 @@ extern int  VBoxServiceControlExecWritePipeBuffer(PVBOXSERVICECTRLEXECPIPEBUF pB
 extern uint32_t VBoxServiceBalloonQueryPages(uint32_t cbPage);
 #endif
 #if defined(VBOX_WITH_PAGE_SHARING) && defined(RT_OS_WINDOWS)
-extern void VBoxServicePageSharingInitFork();
+extern RTEXITCODE VBoxServicePageSharingInitFork(void);
 #endif
 
 RT_C_DECLS_END
