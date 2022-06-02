@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35333 2010-12-27 12:10:56Z vboxsync $
+# $Id: Makefile.kmk 35339 2010-12-27 13:41:55Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -263,7 +263,7 @@ ifdef VBOX_WITH_RAW_MODE
  	$(PATH_LIB)/RuntimeRC$(VBOX_SUFF_LIB)
  ifeq ($(filter-out pe lx,$(VBOX_LDR_FMT32)),)
   tstMicroRC_LIBS        += \
-  	$(PATH_LIB)/VMMGCBuiltin$(VBOX_SUFF_LIB) \
+  	$(PATH_LIB)/VMMRCBuiltin$(VBOX_SUFF_LIB) \
   	$(LIB_VMMGC)
  endif
  tstMicroRC_SOURCES.win = tstMicroRC.def
