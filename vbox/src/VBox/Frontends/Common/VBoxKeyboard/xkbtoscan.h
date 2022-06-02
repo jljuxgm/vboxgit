@@ -1,4 +1,4 @@
-/* $Id: xkbtoscan.h 35449 2011-01-10 11:14:10Z vboxsync $ */
+/* $Id: xkbtoscan.h 35453 2011-01-10 11:35:30Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables (XT scan
  *                         code mappings for XKB key names).
@@ -37,6 +37,9 @@ enum { XKB_NAME_SIZE = 4 };
 
 /**
  * This table contains a list of mappings of XKB key names to XT scan codes.
+ * We only use XKB to look up layout-dependent keys (mainly the alpha-numeric
+ * ones), so that user re-mappings will work at least for the remaining keys.
+ * This is the reason for the commented out entries in the table.
  */
 struct
 {
