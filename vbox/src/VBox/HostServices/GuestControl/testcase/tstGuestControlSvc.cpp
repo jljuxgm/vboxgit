@@ -1,4 +1,4 @@
-/* $Id: tstGuestControlSvc.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstGuestControlSvc.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest control service.
@@ -22,7 +22,7 @@
 #include <VBox/HostServices/GuestControlSvc.h>
 #include <iprt/alloca.h>
 #include <iprt/initterm.h>
-#include <iprt/crc32.h>
+#include <iprt/crc.h>
 #include <iprt/ctype.h>
 #include <iprt/env.h>
 #include <iprt/file.h>

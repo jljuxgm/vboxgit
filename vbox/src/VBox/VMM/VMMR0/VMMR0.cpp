@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 31407 2010-08-05 13:36:39Z vboxsync $ */
+/* $Id: VMMR0.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -41,7 +41,7 @@
 
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/assert.h>
-#include <iprt/crc32.h>
+#include <iprt/crc.h>
 #include <iprt/mp.h>
 #include <iprt/once.h>
 #include <iprt/stdarg.h>

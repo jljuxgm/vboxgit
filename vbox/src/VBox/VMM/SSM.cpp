@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 30396 2010-06-23 15:26:41Z vboxsync $ */
+/* $Id: SSM.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -155,7 +155,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/crc32.h>
+#include <iprt/crc.h>
 #include <iprt/file.h>
 #include <iprt/mem.h>
 #include <iprt/param.h>

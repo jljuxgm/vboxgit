@@ -1,4 +1,4 @@
-/* $Id: gctrl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: gctrl.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
 /** @file
  * Guest Control Service: Internal function used by service, Main and testcase.
  */
@@ -29,7 +29,7 @@
 /** @todo Remove unused header files below! */
 #include <iprt/alloca.h>
 #include <iprt/initterm.h>
-#include <iprt/crc32.h>
+#include <iprt/crc.h>
 #include <iprt/ctype.h>
 #include <iprt/env.h>
 #include <iprt/file.h>

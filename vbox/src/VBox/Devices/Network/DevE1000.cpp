@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 31097 2010-07-26 08:59:43Z vboxsync $ */
+/* $Id: DevE1000.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -43,7 +43,7 @@
 //#define E1K_REL_STATS
 //#define E1K_USE_SUPLIB_SEMEVENT
 
-#include <iprt/crc32.h>
+#include <iprt/crc.h>
 #include <iprt/ctype.h>
 #include <iprt/net.h>
 #include <iprt/semaphore.h>

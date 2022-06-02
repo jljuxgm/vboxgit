@@ -1,4 +1,4 @@
-/* $Id: crc32.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: crc32.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
 /** @file
  * IPRT - CRC32.
  */
@@ -74,7 +74,7 @@ __FBSDID("$FreeBSD: src/sys/libkern/crc32.c,v 1.2 2003/06/11 05:23:04 obrien Exp
 #include <sys/param.h>
 #include <sys/systm.h>
 #else
-# include <iprt/crc32.h>
+# include <iprt/crc.h>
 # include "internal/iprt.h"
 #endif
 

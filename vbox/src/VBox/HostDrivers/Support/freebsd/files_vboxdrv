@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 31842 2010-08-21 19:02:27Z vboxsync $
+# $Id: files_vboxdrv 31847 2010-08-21 20:33:07Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -60,7 +60,6 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/include/iprt/types.h=>include/iprt/types.h \
     ${PATH_ROOT}/include/iprt/uuid.h=>include/iprt/uuid.h \
     ${PATH_ROOT}/include/iprt/crc.h=>include/iprt/crc.h \
-    ${PATH_ROOT}/include/iprt/crc32.h=>include/iprt/crc32.h \
     ${PATH_ROOT}/include/iprt/net.h=>include/iprt/net.h \
     ${PATH_ROOT}/include/iprt/rand.h=>include/iprt/rand.h \
     ${PATH_ROOT}/include/iprt/path.h=>include/iprt/path.h \

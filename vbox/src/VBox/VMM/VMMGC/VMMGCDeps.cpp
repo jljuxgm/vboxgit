@@ -1,4 +1,4 @@
-/* $Id: VMMGCDeps.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VMMGCDeps.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
 /** @file
  * VMMGC Runtime Dependencies.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include <iprt/crc.h>
 #include <iprt/string.h>
-#include <iprt/crc32.h>
 
 PFNRT g_VMMGCDeps[] =
 {

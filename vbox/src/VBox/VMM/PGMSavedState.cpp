@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 31080 2010-07-24 17:25:32Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -34,7 +34,7 @@
 
 #include <iprt/asm.h>
 #include <iprt/assert.h>
-#include <iprt/crc32.h>
+#include <iprt/crc.h>
 #include <iprt/mem.h>
 #include <iprt/sha.h>
 #include <iprt/string.h>
