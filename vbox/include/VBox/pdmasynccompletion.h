@@ -1,4 +1,4 @@
-/* $Id: pdmasynccompletion.h 33218 2010-10-18 19:54:10Z vboxsync $ */
+/* $Id: pdmasynccompletion.h 34586 2010-12-01 20:08:49Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion. (VMM)
  */
@@ -349,6 +349,16 @@ VMMR3DECL(int) PDMR3AsyncCompletionEpSetBwMgr(PPDMASYNCCOMPLETIONENDPOINT pEndpo
  * @param   pTask           The Task to cancel.
  */
 VMMR3DECL(int) PDMR3AsyncCompletionTaskCancel(PPDMASYNCCOMPLETIONTASK pTask);
+
+/**
+ * Changes the limit of a bandwidth manager for file endpoints to the given value.
+ *
+ * @returns VBox status code.
+ * @param   pVM             Pointer to the shared VM structure.
+ * @param   pcszBwMgr       The identifer of the bandwidth manager to change.
+ * @param   cbMaxNew        The new maximum for the bandwidth manager in bytes/sec.
+ */
+VMMR3DECL(int) PDMR3AsyncCompletionBwMgrSetMaxForFile(PVM pVM, const char *pcszBwMgr, uint32_t cbMaxNew);
 
 /** @} */
 
