@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -24,7 +24,7 @@
 #include <iprt/uuid.h>
 #include <iprt/string.h>
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 extern "C" {
 #include "audio.h"

@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevEFI.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -43,8 +43,8 @@
 #endif
 
 #include "Firmware2/VBoxPkg/Include/DevEFI.h"
-#include "../Builtins.h"
-#include "../Builtins2.h"
+#include "VBoxDD.h"
+#include "VBoxDD2.h"
 #include "../PC/DevFwCommon.h"
 
 /* EFI includes */

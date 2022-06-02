@@ -1,4 +1,4 @@
-/* $Id: DevPciRaw.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevPciRaw.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * PCI passthrough device emulation.
  */
@@ -25,7 +25,7 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *

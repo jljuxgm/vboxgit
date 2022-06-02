@@ -1,6 +1,6 @@
-/* $Id: Builtins.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VBoxDD.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
- * Built-in drivers & devices (part 1)
+ * VBoxDD - Built-in drivers & devices (part 1).
  */
 
 /*
@@ -28,7 +28,7 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 
-#include "Builtins.h"
+#include "VBoxDD.h"
 
 
 /*******************************************************************************
@@ -348,3 +348,4 @@ extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u3
 
     return rc;
 }
+

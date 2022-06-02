@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DrvVD.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -46,7 +46,7 @@ RT_C_DECLS_BEGIN
 RT_C_DECLS_END
 #endif /* VBOX_WITH_INIP */
 
-#include "Builtins.h"
+#include "VBoxDD.h"
 
 #ifdef VBOX_WITH_INIP
 /* Small hack to get at lwIP initialized status */

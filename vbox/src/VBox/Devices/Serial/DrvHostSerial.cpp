@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -68,7 +68,7 @@
 # include <Windows.h>
 #endif
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 
 /** Size of the send fifo queue (in bytes) */

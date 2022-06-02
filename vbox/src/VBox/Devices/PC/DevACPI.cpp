@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevACPI.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -32,7 +32,7 @@
 # include <iprt/uuid.h>
 #endif /* IN_RING3 */
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 #ifdef LOG_ENABLED
 # define DEBUG_ACPI

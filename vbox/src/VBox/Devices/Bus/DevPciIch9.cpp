@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -31,7 +31,7 @@
 #include <iprt/alloc.h>
 #endif
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 #include "MsiCommon.h"
 

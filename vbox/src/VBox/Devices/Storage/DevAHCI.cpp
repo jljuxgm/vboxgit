@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevAHCI.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -56,7 +56,7 @@
 
 #include "ide.h"
 #include "ATAController.h"
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 #define AHCI_MAX_NR_PORTS_IMPL 30
 #define AHCI_NR_COMMAND_SLOTS 32

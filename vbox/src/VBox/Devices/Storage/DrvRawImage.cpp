@@ -1,4 +1,4 @@
-/* $Id: DrvRawImage.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DrvRawImage.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * VBox storage devices: Raw image driver
  */
@@ -26,7 +26,7 @@
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 
-#include "Builtins.h"
+#include "VBoxDD.h"
 
 
 /*******************************************************************************

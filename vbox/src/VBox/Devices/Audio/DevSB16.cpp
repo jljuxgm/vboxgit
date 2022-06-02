@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevSB16.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -36,7 +36,7 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/uuid.h>
-#include "../vl_vbox.h"
+#include "vl_vbox.h"
 
 extern "C" {
 #include "audio.h"

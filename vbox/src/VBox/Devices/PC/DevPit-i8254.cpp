@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -56,7 +56,7 @@
 # include <iprt/uuid.h>
 #endif /* IN_RING3 */
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 
 /*******************************************************************************

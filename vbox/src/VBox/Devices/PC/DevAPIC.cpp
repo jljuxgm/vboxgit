@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevAPIC.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -34,7 +34,7 @@
 
 #include <VBox/msi.h>
 
-#include "Builtins2.h"
+#include "VBoxDD2.h"
 
 #define MSR_IA32_APICBASE               0x1b
 #define MSR_IA32_APICBASE_BSP           (1<<8)

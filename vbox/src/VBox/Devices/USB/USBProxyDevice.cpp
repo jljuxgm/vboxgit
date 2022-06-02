@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -30,7 +30,7 @@
 #include <iprt/assert.h>
 #include "USBProxyDevice.h"
 #include "VUSBInternal.h"
-#include "Builtins.h"
+#include "VBoxDD.h"
 
 
 /*******************************************************************************

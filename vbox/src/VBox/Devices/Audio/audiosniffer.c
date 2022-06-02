@@ -1,4 +1,4 @@
-/* $Id: audiosniffer.c 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: audiosniffer.c 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * VBox audio device: Audio sniffer device
  */
@@ -27,8 +27,8 @@
 #include <iprt/string.h>
 #include <iprt/alloc.h>
 
-#include "Builtins.h"
-#include "../../vl_vbox.h"
+#include "VBoxDD.h"
+#include "vl_vbox.h"
 
 #include "audio.h"
 #include "audio_int.h"

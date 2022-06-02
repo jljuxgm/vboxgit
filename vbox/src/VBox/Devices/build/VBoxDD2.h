@@ -1,4 +1,4 @@
-/* $Id: Builtins2.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VBoxDD2.h 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * Built-in drivers & devices part 2 header.
  *
@@ -17,8 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Builtins2_h
-#define ___Builtins2_h
+#ifndef ___build_VBoxDD2_h
+#define ___build_VBoxDD2_h
 
 #include <VBox/vmm/pdm.h>
 
@@ -51,3 +51,4 @@ extern const PDMDEVREG g_DeviceLPC;
 RT_C_DECLS_END
 
 #endif
+

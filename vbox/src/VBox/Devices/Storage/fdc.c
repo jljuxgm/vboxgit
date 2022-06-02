@@ -1,4 +1,4 @@
-/* $Id: fdc.c 35351 2010-12-27 17:04:17Z vboxsync $ */
+/* $Id: fdc.c 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -51,8 +51,8 @@
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 
-#include "Builtins.h"
-#include "../vl_vbox.h"
+#include "VBoxDD.h"
+#include "vl_vbox.h"
 
 #define FDC_SAVESTATE_CURRENT   2       /* The new and improved saved state. */
 #define FDC_SAVESTATE_OLD       1       /* The original saved state. */

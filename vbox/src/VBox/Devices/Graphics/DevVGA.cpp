@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevVGA.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -131,8 +131,8 @@
 #endif
 
 #include "vl_vbox.h"
-#include "Builtins.h"
-#include "Builtins2.h"
+#include "VBoxDD.h"
+#include "VBoxDD2.h"
 
 
 /*******************************************************************************

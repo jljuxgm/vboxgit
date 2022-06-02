@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
@@ -37,7 +37,7 @@
 # include <sys/ioctl.h>
 #endif
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 /**
  * SCSI driver instance data.

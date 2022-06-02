@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -33,7 +33,7 @@
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 
-#include "Builtins.h"
+#include "VBoxDD.h"
 
 /** The maximum number of release log entries per device. */
 #define MAX_LOG_REL_ERRORS  1024

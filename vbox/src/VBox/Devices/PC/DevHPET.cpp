@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevHPET.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -26,7 +26,7 @@
 #include <iprt/asm-math.h>
 #include <iprt/string.h>
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 
 /*******************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: Builtins.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VBoxDD.h 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Builtins_h
-#define ___Builtins_h
+#ifndef ___build_VBoxDD_h
+#define ___build_VBoxDD_h
 
 #include <VBox/vmm/pdm.h>
 

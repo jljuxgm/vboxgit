@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DrvNAT.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -36,7 +36,7 @@
 #include <iprt/stream.h>
 #include <iprt/uuid.h>
 
-#include "Builtins.h"
+#include "VBoxDD.h"
 
 #ifndef RT_OS_WINDOWS
 # include <unistd.h>

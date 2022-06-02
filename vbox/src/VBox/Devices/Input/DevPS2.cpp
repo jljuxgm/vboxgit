@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DevPS2.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -50,7 +50,7 @@
 #include <iprt/assert.h>
 #include <iprt/uuid.h>
 
-#include "../Builtins.h"
+#include "VBoxDD.h"
 
 #define PCKBD_SAVED_STATE_VERSION 5
 
