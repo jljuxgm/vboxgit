@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 32159 2010-08-31 15:51:21Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 32173 2010-09-01 11:37:08Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3089,7 +3089,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
                 AssertLogRelRCReturn(rc, rc);
 
                 /* Update pVM->pgm.s.GCPhysCR3. */
-                Assert(pVCpu->pgm.s.GCPhysCR3 == NIL_RTGCPHYS);
+                Assert(pVCpu->pgm.s.GCPhysCR3 == NIL_RTGCPHYS || FTMIsDeltaLoadSaveActive(pVM));
                 RTGCPHYS GCPhysCR3 = CPUMGetGuestCR3(pVCpu);
                 if (    pVCpu->pgm.s.enmGuestMode == PGMMODE_PAE
                     ||  pVCpu->pgm.s.enmGuestMode == PGMMODE_PAE_NX
