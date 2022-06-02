@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 30765 2010-07-09 14:12:58Z vboxsync $ */
+/* $Id: EventImpl.cpp 30770 2010-07-09 16:17:48Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -359,24 +359,26 @@ static const int NumEvents  = LastEvent - FirstEvent;
  */
 class EventMapRecord
 {
-private:
+public:
     /**
      * We have to be double linked, as structural modifications in list are delayed
      * till element removed, so we have to know our previous one to update its next
      */
     EventMapRecord* mNext;
+    bool            mAlive;
+private:
     EventMapRecord* mPrev;
     ListenerRecord* mRef; /* must be weak reference */
     int32_t         mRefCnt;
-    bool            mAlive;
+    
 public:
     EventMapRecord(ListenerRecord* aRef)
         :
         mNext(0),
+        mAlive(true),
         mPrev(0),
         mRef(aRef),
-        mRefCnt(1),
-        mAlive(true)
+        mRefCnt(1)
     {}
 
     EventMapRecord(EventMapRecord& aOther)
