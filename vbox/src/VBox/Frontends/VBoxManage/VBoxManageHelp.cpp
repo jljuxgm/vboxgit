@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 34970 2010-12-11 16:37:47Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 34971 2010-12-11 23:12:01Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -603,18 +603,14 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
         usageGuestControl(pStrm);
 #endif /* VBOX_WITH_GUEST_CONTROL defined */
 
-    /** @todo merge into debugvm */
-    if (u64Cmd & USAGE_VM_STATISTICS)
-        RTStrmPrintf(pStrm,
-                     "VBoxManage vmstatistics     <vmname>|<uuid> [--reset]\n"
-                     "                            [--pattern <pattern>] [--descriptions]\n"
-                     "\n");
     if (u64Cmd & USAGE_DEBUGVM)
     {
         RTStrmPrintf(pStrm,
                      "VBoxManage debugvm          <uuid>|<name>\n"
+                     "                            dumpguestcore --filename <name> |\n"
                      "                            injectnmi |\n"
-                     "                            dumpguestcore --filename <name>\n"
+                     "                            statistics [--reset] [--pattern <pattern>] "
+                     "                                [--descriptions]\n"
                      "\n");
     }
     if (u64Cmd & USAGE_METRICS)

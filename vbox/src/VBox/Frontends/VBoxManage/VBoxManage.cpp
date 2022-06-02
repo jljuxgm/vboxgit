@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 34913 2010-12-09 17:20:41Z vboxsync $ */
+/* $Id: VBoxManage.cpp 34971 2010-12-11 23:12:01Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -415,7 +415,6 @@ int main(int argc, char *argv[])
             { "setproperty",      USAGE_SETPROPERTY,       handleSetProperty },
             { "usbfilter",        USAGE_USBFILTER,         handleUSBFilter },
             { "sharedfolder",     USAGE_SHAREDFOLDER,      handleSharedFolder },
-            { "vmstatistics",     USAGE_VM_STATISTICS,     handleVMStatistics },
 #ifdef VBOX_WITH_GUEST_PROPS
             { "guestproperty",    USAGE_GUESTPROPERTY,     handleGuestProperty },
 #endif

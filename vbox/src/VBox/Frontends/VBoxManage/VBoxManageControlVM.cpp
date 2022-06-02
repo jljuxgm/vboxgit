@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 34913 2010-12-09 17:20:41Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 34971 2010-12-11 23:12:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -189,13 +189,6 @@ int handleControlVM(HandlerArg *a)
         else if (!strcmp(a->argv[1], "acpisleepbutton"))
         {
             CHECK_ERROR_BREAK(console, SleepButton());
-        }
-        else if (!strcmp(a->argv[1], "injectnmi"))
-        {
-            /* get the machine debugger. */
-            ComPtr <IMachineDebugger> debugger;
-            CHECK_ERROR_BREAK(console, COMGETTER(Debugger)(debugger.asOutParam()));
-            CHECK_ERROR_BREAK(debugger, InjectNMI());
         }
         else if (!strcmp(a->argv[1], "keyboardputscancode"))
         {
