@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 30251 2010-06-16 13:36:00Z vboxsync $ */
+/* $Id: VMMR0.cpp 30488 2010-06-29 09:02:04Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -982,6 +982,15 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
             /* Clear the VCPU context. */
             ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
             return rc;
+        }
+#endif
+
+#if defined(VBOX_STRICT) && HC_ARCH_BITS == 64
+        case VMMR0_DO_GMM_FIND_DUPLICATE_PAGE:
+        {
+            if (u64Arg)
+                return VERR_INVALID_PARAMETER;
+            return GMMR0FindDuplicatePageReq(pVM, (PGMMFINDDUPLICATEPAGEREQ)pReqHdr);
         }
 #endif
 
