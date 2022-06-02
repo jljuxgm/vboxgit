@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 32294 2010-09-07 15:26:36Z vboxsync $ */
+/* $Id: FTMInternal.h 32297 2010-09-07 16:05:07Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -67,6 +67,9 @@ typedef struct FTM
     /** Current active socket. */
     RTSOCKET            hSocket;
 
+    /* Shutdown event semaphore. */
+    RTSEMEVENT          hShutdownEvent;
+
     /** State sync. */
     struct
     {
@@ -90,8 +93,6 @@ typedef struct FTM
     {
     } master;
     */
-
-    RTSEMEVENT          hShutdownEvent;
 
     /** FTM critical section.
      * This makes sure only the checkpoint or sync is active
