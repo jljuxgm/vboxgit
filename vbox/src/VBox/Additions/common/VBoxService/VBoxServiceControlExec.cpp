@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 33272 2010-10-20 17:33:26Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 33273 2010-10-20 17:36:41Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -1078,7 +1078,7 @@ int VBoxServiceControlExecCreateProcess(const char *pszExec, const char * const 
      * Use the built-in toolbox of VBoxService?
      */
     if (   (g_pszProgName && stricmp(pszExec, g_pszProgName) == 0)
-        || stricmp(pszExec, "VBoxService"))
+        || stricmp(pszExec, VBOXSERVICE_NAME))
     {
         /* Search the path of our executable. */
         char szVBoxService[RTPATH_MAX];
