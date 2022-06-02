@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 30348 2010-06-21 18:23:20Z vboxsync $ */
+/* $Id: UISession.cpp 30525 2010-06-30 11:17:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -906,6 +906,18 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
 
 void UISession::sltCloseVirtualSession()
 {
+     /* Use a single shot with timeout 0 to allow the widgets to cleanly close and test then again.
+      * If all open widgets are closed destroy ourself: */
+    QWidget *widget = QApplication::activeModalWidget() ?
+                      QApplication::activeModalWidget() :
+                      QApplication::activePopupWidget() ?
+                      QApplication::activePopupWidget() : 0;
+    if (widget)
+    {
+        widget->hide();
+        QTimer::singleShot(0, this, SLOT(sltCloseVirtualSession()));
+        return;
+    }
     m_pMachine->closeVirtualMachine();
 }
 
