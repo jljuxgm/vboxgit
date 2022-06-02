@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 31476 2010-08-09 11:48:06Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 31477 2010-08-09 11:51:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -406,7 +406,7 @@ DECLCALLBACK(int)  pgmR3CmdShowSharedModules(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp
         }
         i++;
     }
-    while (i < cSharedModules);
+    while (i < RT_ELEMENTS(pSharedModules));
     pgmUnlock(pVM);
 
     return VINF_SUCCESS;
