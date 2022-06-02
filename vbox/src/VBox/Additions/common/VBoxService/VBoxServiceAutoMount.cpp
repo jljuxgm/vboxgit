@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 33837 2010-11-08 13:28:12Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 33843 2010-11-08 14:02:26Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -33,8 +33,9 @@
 #include <grp.h>
 #include <sys/mount.h>
 #ifdef RT_OS_SOLARIS
-# include <sys/vfs.h>
+# include <sys/mount.h>
 # include <sys/mnttab.h>
+# include <sys/vfs.h>
 #else
 # include <mntent.h>
 # include <paths.h>
