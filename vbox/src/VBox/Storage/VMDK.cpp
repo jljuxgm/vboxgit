@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 34581 2010-12-01 16:43:39Z vboxsync $ */
+/* $Id: VMDK.cpp 34885 2010-12-09 13:56:03Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5527,6 +5527,8 @@ static int vmdkAllocGrainAsync(PVMDKIMAGE pImage, PVMDKEXTENT pExtent,
         pGrainAlloc->cIoXfersPending++;
     else if (RT_FAILURE(rc))
         return vmdkError(pImage, rc, RT_SRC_POS, N_("VMDK: cannot write allocated data block in '%s'"), pExtent->pszFullname);
+
+    pExtent->uAppendPosition += cbWrite;
 
     rc = vmdkAllocGrainAsyncGTUpdate(pImage, pExtent, pIoCtx, pGrainAlloc);
 
