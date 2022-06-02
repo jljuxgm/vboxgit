@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 34407 2010-11-26 16:45:50Z vboxsync $ */
+/* $Id: vfsmemory.cpp 34410 2010-11-26 16:57:12Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -658,7 +658,7 @@ static DECLCALLBACK(int) rtVfsMemFile_Seek(void *pvThis, RTFOFF offSeek, unsigne
             || offNew > RTFOFF_MAX)
             offNew = RTFOFF_MAX;
     }
-    else if ((uint64_t)-offSeek < offNew)
+    else if ((uint64_t)-offSeek < offWrt)
         offNew = offWrt + offSeek;
     else
         offNew = 0;

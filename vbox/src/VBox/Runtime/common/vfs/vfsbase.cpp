@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 34407 2010-11-26 16:45:50Z vboxsync $ */
+/* $Id: vfsbase.cpp 34410 2010-11-26 16:57:12Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -38,6 +38,7 @@
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/semaphore.h>
+#include <iprt/thread.h>
 
 #include "internal/file.h"
 #include "internal/fs.h"
