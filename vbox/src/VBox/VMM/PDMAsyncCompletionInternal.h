@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 33840 2010-11-08 13:44:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -199,10 +199,6 @@ typedef struct PDMASYNCCOMPLETIONENDPOINT
     R3PTRTYPE(PPDMASYNCCOMPLETIONENDPOINT)      pPrev;
     /** Pointer to the class this endpoint belongs to. */
     R3PTRTYPE(PPDMASYNCCOMPLETIONEPCLASS)       pEpClass;
-    /** ID of the next task to ensure consistency. */
-    volatile uint32_t                           uTaskIdNext;
-    /** Flag whether a wraparound occurred for the ID counter. */
-    bool                                        fTaskIdWraparound;
     /** Template associated with this endpoint. */
     PPDMASYNCCOMPLETIONTEMPLATE                 pTemplate;
     /** Reference count. */
@@ -212,6 +208,7 @@ typedef struct PDMASYNCCOMPLETIONENDPOINT
     /** Pointer to the assigned bandwidth manager. */
     volatile PPDMACBWMGR                        pBwMgr;
 #ifdef VBOX_WITH_STATISTICS
+    uint32_t                                    u32Alignment;
     STAMCOUNTER                                 StatTaskRunTimesNs[10];
     STAMCOUNTER                                 StatTaskRunTimesMicroSec[10];
     STAMCOUNTER                                 StatTaskRunTimesMs[10];
@@ -224,6 +221,9 @@ typedef struct PDMASYNCCOMPLETIONENDPOINT
     uint64_t                                    cIoOpsCompleted;
 #endif
 } PDMASYNCCOMPLETIONENDPOINT;
+#ifdef VBOX_WITH_STATISTICS
+AssertCompileMemberAlignment(PDMASYNCCOMPLETIONENDPOINT, StatTaskRunTimesNs, sizeof(uint64_t));
+#endif
 
 /**
  * A PDM async completion task handle.
@@ -241,8 +241,6 @@ typedef struct PDMASYNCCOMPLETIONTASK
     R3PTRTYPE(PPDMASYNCCOMPLETIONENDPOINT)  pEndpoint;
     /** Opaque user data for this task. */
     void                                   *pvUser;
-    /** Task id. */
-    uint32_t                                uTaskId;
     /** Start timestamp. */
     uint64_t                                tsNsStart;
 } PDMASYNCCOMPLETIONTASK;

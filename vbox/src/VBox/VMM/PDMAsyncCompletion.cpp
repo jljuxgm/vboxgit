@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 33840 2010-11-08 13:44:38Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1066,9 +1066,6 @@ static PPDMASYNCCOMPLETIONTASK pdmR3AsyncCompletionGetTask(PPDMASYNCCOMPLETIONEN
 
     if (RT_LIKELY(pTask))
     {
-        /* Get ID of the task. */
-        pTask->uTaskId   = ASMAtomicIncU32(&pEndpoint->uTaskIdNext);
-
         /* Initialize common parts. */
         pTask->pvUser    = pvUser;
         pTask->pEndpoint = pEndpoint;
@@ -1218,8 +1215,6 @@ VMMR3DECL(int) PDMR3AsyncCompletionEpCreateForFile(PPPDMASYNCCOMPLETIONENDPOINT 
             pEndpoint->pNext             = NULL;
             pEndpoint->pPrev             = NULL;
             pEndpoint->pEpClass          = pEndpointClass;
-            pEndpoint->uTaskIdNext       = 0;
-            pEndpoint->fTaskIdWraparound = false;
             pEndpoint->pTemplate         = pTemplate;
             pEndpoint->pszUri            = RTStrDup(pszFilename);
             pEndpoint->cUsers            = 1;
