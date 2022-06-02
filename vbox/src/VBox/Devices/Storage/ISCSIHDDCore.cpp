@@ -1,4 +1,4 @@
-/* $Id: ISCSIHDDCore.cpp 31616 2010-08-12 18:15:04Z vboxsync $ */
+/* $Id: ISCSIHDDCore.cpp 31617 2010-08-12 18:16:53Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -3305,7 +3305,7 @@ static DECLCALLBACK(int) iscsiIoThreadWorker(RTTHREAD ThreadSelf, void *pvUser)
                 rc = iscsiRecvPDUAsync(pImage);
                 if (rc == VERR_BROKEN_PIPE)
                     iscsiReattach(pImage);
-                if (RT_FAILURE(rc))
+                else if (RT_FAILURE(rc))
                     LogRel(("iSCSI: Handling incoming request failed %Rrc\n", rc));
             }
             else if (fEvents & VD_INTERFACETCPNET_EVT_WRITE)
