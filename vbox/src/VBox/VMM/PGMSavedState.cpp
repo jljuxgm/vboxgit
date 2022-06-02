@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 32053 2010-08-27 14:10:39Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 32153 2010-08-31 14:47:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -277,9 +277,6 @@ static int pgmR3SaveRomRanges(PVM pVM, PSSMHANDLE pSSM)
 static int pgmR3LoadRomRanges(PVM pVM, PSSMHANDLE pSSM)
 {
     Assert(PGMIsLockOwner(pVM));
-
-    if (FTMIsDeltaLoadSaveActive(pVM))
-        return VINF_SUCCESS;    /* nothing to do as nothing has changed here */
 
     for (PPGMROMRANGE pRom = pVM->pgm.s.pRomRangesR3; pRom; pRom = pRom->pNextR3)
         pRom->idSavedState = UINT8_MAX;
