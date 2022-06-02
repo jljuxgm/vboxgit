@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 30889 2010-07-17 01:54:47Z vboxsync $ */
+/* $Id: PGM.cpp 30908 2010-07-19 13:02:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2050,7 +2050,8 @@ VMMR3DECL(int) PGMR3InitFinalize(PVM pVM)
         /** @todo The manuals are not entirely clear whether the physical
          *        address width is relevant.  See table 5-9 in the intel
          *        manual vs the PDE4M descriptions.  Write testcase (NP). */
-        pVCpu->pgm.s.fGst32BitMbzBigPdeMask  = (uint32_t)(fMbzPageFrameMask >> (32 - 13)) | X86_PDE4M_MBZ_MASK;
+        pVCpu->pgm.s.fGst32BitMbzBigPdeMask  = ((uint32_t)(fMbzPageFrameMask >> (32 - 13)) & X86_PDE4M_PG_HIGH_MASK)
+                                             | X86_PDE4M_MBZ_MASK;
 
         pVCpu->pgm.s.fGstPaeMbzPteMask       = fMbzPageFrameMask | X86_PTE_PAE_MBZ_MASK_NO_NX;
         pVCpu->pgm.s.fGstPaeMbzPdeMask       = fMbzPageFrameMask | X86_PDE_PAE_MBZ_MASK_NO_NX;
