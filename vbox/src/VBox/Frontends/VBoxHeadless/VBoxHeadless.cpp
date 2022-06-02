@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 31798 2010-08-19 18:08:55Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 31974 2010-08-26 08:21:59Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -885,10 +885,10 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 #ifdef VBOX_WITH_VNC
         if (fVNCEnable)
         {
-            Bstr name;
-            machine->COMGETTER(Name)(name.asOutParam());
+            Bstr machineName;
+            machine->COMGETTER(Name)(machineName.asOutParam());
             g_pFramebufferVNC = new VNCFB(console, uVNCPort, pszVNCPassword);
-            rc = g_pFramebufferVNC->init(name ? Utf8Str(name).raw() : "");
+            rc = g_pFramebufferVNC->init(machineName ? Utf8Str(machineName).c_str() : "");
             if (rc != S_OK)
             {
                 LogError("Failed to load the vnc server extension, possibly due to a damaged file\n", rc);
