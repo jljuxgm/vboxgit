@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 31563 2010-08-11 12:14:50Z vboxsync $ */
+/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 32460 2010-09-13 17:03:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -51,13 +51,15 @@ public:
 
     QValidator::State validate(QString &strInput, int & /* iPos */) const
     {
+        QString strStringToValidate(strInput);
+        strStringToValidate.remove(' ');
         QString strDot("\\.");
         QString strDigits("(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)");
         QRegExp intRegExp(QString("^(%1?(%2(%1?(%2(%1?(%2%1?)?)?)?)?)?)?$").arg(strDigits).arg(strDot));
         uint uNetwork, uMask;
-        if (strInput.isEmpty() || RTCidrStrToIPv4(strInput.toLatin1().constData(), &uNetwork, &uMask) == VINF_SUCCESS)
+        if (strStringToValidate == "..." || RTCidrStrToIPv4(strStringToValidate.toLatin1().constData(), &uNetwork, &uMask) == VINF_SUCCESS)
             return QValidator::Acceptable;
-        else if (intRegExp.indexIn(strInput) != -1)
+        else if (intRegExp.indexIn(strStringToValidate) != -1)
             return QValidator::Intermediate;
         else
             return QValidator::Invalid;
@@ -139,6 +141,7 @@ public:
         setFrame(false);
         setAlignment(Qt::AlignCenter);
         setValidator(new IPValidator(this));
+        setInputMask("000.000.000.000");
     }
 
 private:
@@ -150,7 +153,7 @@ private:
 
     IpData ip() const
     {
-        return text();
+        return text() == "..." ? QString() : text();
     }
 };
 
