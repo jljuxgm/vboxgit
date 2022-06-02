@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: MachineImpl.cpp 31546 2010-08-10 16:39:05Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6010,7 +6010,7 @@ bool Machine::checkForSpawnFailure()
      * error and finalize session spawning */
     rc = setError(E_FAIL,
                   tr("The virtual machine '%ls' has terminated unexpectedly during startup"),
-                  getName().raw());
+                  getName().c_str());
 #else
 
     /* PID not yet initialized, skip check. */
