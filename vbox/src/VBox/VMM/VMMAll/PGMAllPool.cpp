@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 32859 2010-10-01 11:16:57Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 32865 2010-10-01 14:15:58Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -4189,8 +4189,7 @@ static void pgmPoolTracDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPage, RTHCPHYS 
         }
         pRam = pRam->CTX_SUFF(pNext);
     }
-    if (!pRam)
-        AssertFatalMsgFailed(("HCPhys=%RHp GCPhys=%RGp\n", HCPhys, GCPhys));
+    AssertFatalMsgFailed(("HCPhys=%RHp GCPhys=%RGp\n", HCPhys, GCPhys));
 }
 
 
