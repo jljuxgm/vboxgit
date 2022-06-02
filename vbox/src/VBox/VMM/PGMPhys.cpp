@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 30808 2010-07-13 16:50:39Z vboxsync $ */
+/* $Id: PGMPhys.cpp 30811 2010-07-14 08:23:24Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3339,8 +3339,7 @@ static int32_t pgmR3PhysChunkFindUnmapCandidate(PVM pVM)
 }
 
 /**
- * Rendezvous callback used by pgmR3PhysUnmapChunk that clears all shadow pages
- * and all modification counters.
+ * Rendezvous callback used by pgmR3PhysUnmapChunk that unmaps a chunk
  *
  * This is only called on one of the EMTs while the other ones are waiting for
  * it to complete this function.
