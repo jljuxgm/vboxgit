@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsSFDetails.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxVMSettingsSFDetails.cpp 30990 2010-07-22 13:20:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -40,9 +40,12 @@ VBoxVMSettingsSFDetails::VBoxVMSettingsSFDetails (DialogType aType,
 
     /* No reset button */
     mPsPath->setResetEnabled (false);
+
+    /* Setup connections: */
     connect (mPsPath, SIGNAL (currentIndexChanged (int)),
              this, SLOT (onSelectPath()));
-
+    connect (mPsPath, SIGNAL (pathChanged (const QString &)),
+             this, SLOT (onSelectPath()));
     connect (mLeName, SIGNAL (textChanged (const QString &)),
              this, SLOT (validate()));
 
@@ -132,6 +135,7 @@ void VBoxVMSettingsSFDetails::validate()
     SFolderName pair = qMakePair (mLeName->text(), resultType);
 
     mButtonBox->button (QDialogButtonBox::Ok)->setEnabled (!mPsPath->path().isEmpty() &&
+                                                           QDir(mPsPath->path()).exists() &&
                                                            !mLeName->text().trimmed().isEmpty() &&
                                                            !mLeName->text().contains(" ") &&
                                                            !mUsedNames.contains (pair));
@@ -156,7 +160,7 @@ void VBoxVMSettingsSFDetails::onSelectPath()
     QDir folder (folderName);
     if (!folder.isRoot())
         /* Processing non-root folder */
-        mLeName->setText (folder.dirName());
+        mLeName->setText (folder.dirName().replace(' ', '_'));
     else
     {
         /* Processing root folder */
