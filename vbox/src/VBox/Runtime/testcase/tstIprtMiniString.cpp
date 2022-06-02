@@ -1,4 +1,4 @@
-/* $Id: tstIprtMiniString.cpp 33563 2010-10-28 14:46:26Z vboxsync $ */
+/* $Id: tstIprtMiniString.cpp 33605 2010-10-29 13:13:58Z vboxsync $ */
 /** @file
  * IPRT Testcase - iprt::MiniString.
  */
@@ -133,6 +133,10 @@ static void test1(RTTEST hTest)
         copy2.append('1');
     }
     CHECK(copy2.length() == 100);
+
+    /* printf */
+    iprt::MiniString StrFmt;
+    CHECK(StrFmt.printf("%s-%s-%d", "abc", "def", 42).equals("abc-def-42"));
 
 #undef CHECK
 #undef CHECK_DUMP

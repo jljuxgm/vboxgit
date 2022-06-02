@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 33563 2010-10-28 14:46:26Z vboxsync $ */
+/* $Id: ministring.cpp 33605 2010-10-29 13:13:58Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -46,6 +46,59 @@ const size_t MiniString::npos = ~(size_t)0;
 /** Allocation block alignment used when appending bytes to a string. */
 #define IPRT_MINISTRING_APPEND_ALIGNMENT    64
 
+
+MiniString &MiniString::printf(const char *pszFormat, ...)
+{
+    va_list va;
+    va_start(va, pszFormat);
+    printfV(pszFormat, va);
+    va_end(va);
+    return *this;
+}
+
+/**
+ * Callback used with RTStrFormatV by MiniString::printfV.
+ *
+ * @returns The number of bytes added (not used).
+ *
+ * @param   pvArg           The string object.
+ * @param   pachChars       The characters to append.
+ * @param   cbChars         The number of characters.  0 on the final callback.
+ */
+/*static*/ DECLCALLBACK(size_t)
+MiniString::printfOutputCallback(void *pvArg, const char *pachChars, size_t cbChars)
+{
+    MiniString *pThis = (MiniString *)pvArg;
+    if (cbChars)
+    {
+        size_t cchBoth = pThis->m_cch + cbChars;
+        if (cchBoth >= pThis->m_cbAllocated)
+        {
+            /* Double the buffer size, if it's less that _4M. Align sizes like
+               for append. */
+            size_t cbAlloc = RT_ALIGN_Z(pThis->m_cbAllocated, IPRT_MINISTRING_APPEND_ALIGNMENT);
+            cbAlloc += RT_MIN(cbAlloc, _4M);
+            if (cbAlloc <= cchBoth)
+                cbAlloc = RT_ALIGN_Z(cchBoth + 1, IPRT_MINISTRING_APPEND_ALIGNMENT);
+            pThis->reserve(cbAlloc);
+#ifndef RT_EXCEPTIONS_ENABLED
+            AssertReleaseReturn(pThis->capacity() > cchBoth, 0);
+#endif
+        }
+
+        memcpy(&pThis->m_psz[pThis->m_cch], pachChars, cbChars);
+        pThis->m_cch = cchBoth;
+        pThis->m_psz[cchBoth] = '\0';
+    }
+    return cbChars;
+}
+
+MiniString &MiniString::printfV(const char *pszFormat, va_list va)
+{
+    cleanup();
+    RTStrFormatV(printfOutputCallback, this, NULL, NULL, pszFormat, va);
+    return *this;
+}
 
 MiniString &MiniString::append(const MiniString &that)
 {
