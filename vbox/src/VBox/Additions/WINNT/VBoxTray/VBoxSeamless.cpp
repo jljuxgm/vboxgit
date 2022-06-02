@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 33966 2010-11-11 10:32:07Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 35304 2010-12-22 15:43:32Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -41,9 +41,6 @@ typedef struct
 {
     HDC     hdc;
     HRGN    hrgn;
-#ifndef MMSEAMLESS
-    RECT    rect;
-#endif
 } VBOX_ENUM_PARAM, *PVBOX_ENUM_PARAM;
 
 static VBOXSEAMLESSCONTEXT gCtx = {0};
@@ -154,15 +151,10 @@ BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam)
 
     Log(("VBoxTray: VBoxEnumFunc %x\n", hwnd));
     /* Only visible windows that are present on the desktop are interesting here */
-#ifndef MMSEAMLESS
-    if (    GetWindowRect(hwnd, &rectWindow)
-        &&  IntersectRect(&rectVisible, &lpParam->rect, &rectWindow))
-    {
-#else
     if (GetWindowRect(hwnd, &rectWindow))
     {
         rectVisible = rectWindow;
-#endif
+
         char szWindowText[256];
         szWindowText[0] = 0;
         GetWindowText(hwnd, szWindowText, sizeof(szWindowText));
@@ -222,10 +214,6 @@ void VBoxSeamlessCheckWindows()
     param.hdc       = GetDC(HWND_DESKTOP);
     param.hrgn      = 0;
 
-#ifndef MMSEAMLESS
-    GetWindowRect(GetDesktopWindow(), &param.rect);
-    Log(("VBoxTray: VBoxRecheckVisibleWindows desktop=%x rect (%d,%d) (%d,%d)\n", GetDesktopWindow(), param.rect.left, param.rect.top, param.rect.right, param.rect.bottom));
-#endif
     EnumWindows(VBoxEnumFunc, (LPARAM)&param);
 
     if (param.hrgn)
