@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 30796 2010-07-12 20:14:15Z vboxsync $ */
+/* $Id: GuestImpl.cpp 30903 2010-07-19 09:17:38Z vboxsync $ */
 
 /** @file
  *
@@ -1171,6 +1171,11 @@ STDMETHODIMP Guest::ExecuteProcess(IN_BSTR aCommand, ULONG aFlags,
                 {
                     rc = setError(VBOX_E_VM_ERROR,
                                   tr("The guest execution service is not ready"));
+                }
+                else if (vrc == VERR_HGCM_SERVICE_NOT_FOUND)
+                {
+                    rc = setError(VBOX_E_VM_ERROR,
+                                  tr("The guest execution service is not available"));
                 }
                 else /* HGCM call went wrong. */
                 {
