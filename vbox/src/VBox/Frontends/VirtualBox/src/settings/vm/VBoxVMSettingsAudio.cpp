@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsAudio.cpp 33631 2010-11-01 06:35:05Z vboxsync $ */
+/* $Id: VBoxVMSettingsAudio.cpp 33633 2010-11-01 06:55:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -73,7 +73,7 @@ void VBoxVMSettingsAudio::saveFromCacheTo(QVariant &data)
     UISettingsPageMachine::fetchData(data);
 
     /* Gather corresponding values from internal variables: */
-    CAudioAdapter &audio = m_machine.GetAudioAdapter();
+    CAudioAdapter audio = m_machine.GetAudioAdapter();
     audio.SetEnabled(m_cache.m_fAudioEnabled);
     audio.SetAudioDriver(m_cache.m_audioDriverType);
     audio.SetAudioController(m_cache.m_audioControllerType);
