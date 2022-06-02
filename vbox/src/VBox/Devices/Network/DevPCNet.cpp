@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 33326 2010-10-21 21:11:08Z vboxsync $ */
+/* $Id: DevPCNet.cpp 33408 2010-10-25 09:57:32Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4825,7 +4825,6 @@ static DECLCALLBACK(void) pcnetPowerOff(PPDMDEVINS pDevIns)
     pcnetWakeupReceive(pDevIns);
 }
 
-#ifdef VBOX_DYNAMIC_NET_ATTACH
 
 /**
  * Detach notification.
@@ -4925,7 +4924,6 @@ static DECLCALLBACK(int) pcnetAttach(PPDMDEVINS pDevIns, unsigned iLUN, uint32_t
 
 }
 
-#endif /* VBOX_DYNAMIC_NET_ATTACH */
 
 /**
  * @copydoc FNPDMDEVSUSPEND
@@ -5410,17 +5408,10 @@ const PDMDEVREG g_DevicePCNet =
     pcnetSuspend,
     /* pfnResume */
     NULL,
-#ifdef VBOX_DYNAMIC_NET_ATTACH
     /* pfnAttach */
     pcnetAttach,
     /* pfnDetach */
     pcnetDetach,
-#else /* !VBOX_DYNAMIC_NET_ATTACH */
-    /* pfnAttach */
-    NULL,
-    /* pfnDetach */
-    NULL,
-#endif /* !VBOX_DYNAMIC_NET_ATTACH */
     /* pfnQueryInterface. */
     NULL,
     /* pfnInitComplete. */

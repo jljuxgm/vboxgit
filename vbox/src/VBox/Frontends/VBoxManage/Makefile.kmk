@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33356 2010-10-22 13:49:59Z vboxsync $
+# $Id: Makefile.kmk 33408 2010-10-25 09:57:32Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -70,8 +70,7 @@ VBoxManage_DEFS      += \
  	$(if $(VBOX_WITH_VDE), VBOX_WITH_VDE) \
 	$(if $(VBOX_WITH_VIDEOHWACCEL), VBOX_WITH_VIDEOHWACCEL) \
  	$(if $(VBOX_WITH_VIRTIO),VBOX_WITH_VIRTIO) \
- 	$(if $(VBOX_WITH_VRDP), VBOX_WITH_VRDP) \
-	$(if $(VBOX_DYNAMIC_NET_ATTACH), VBOX_DYNAMIC_NET_ATTACH)
+ 	$(if $(VBOX_WITH_VRDP), VBOX_WITH_VRDP)
 
 ifneq ($(KBUILD_TARGET),win)
  # Workaround for buggy gcc-4.3 compilers, see

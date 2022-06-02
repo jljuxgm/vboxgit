@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: ConsoleImpl.h 33408 2010-10-25 09:57:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -506,13 +506,11 @@ private:
     HRESULT doCPURemove(ULONG aCpu);
     HRESULT doCPUAdd(ULONG aCpu);
 
-#ifdef VBOX_DYNAMIC_NET_ATTACH
     HRESULT doNetworkAdapterChange(const char *pszDevice, unsigned uInstance,
                                    unsigned uLun, INetworkAdapter *aNetworkAdapter);
     static DECLCALLBACK(int) changeNetworkAttachment(Console *pThis, const char *pszDevice,
                                                      unsigned uInstance, unsigned uLun,
                                                      INetworkAdapter *aNetworkAdapter);
-#endif /* VBOX_DYNAMIC_NET_ATTACH */
 
 #ifdef VBOX_WITH_USB
     HRESULT attachUSBDevice(IUSBDevice *aHostDevice, ULONG aMaskedIfs);

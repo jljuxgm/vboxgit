@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33146 2010-10-15 10:34:58Z vboxsync $
+# $Id: Makefile.kmk 33408 2010-10-25 09:57:32Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -577,10 +577,6 @@ VBoxC_DEFS += VBOX_WITH_HGSMI
 endif
 ifdef VBOX_WITH_VIDEOHWACCEL
 VBoxC_DEFS += VBOX_WITH_VIDEOHWACCEL
-endif
-
-ifdef VBOX_DYNAMIC_NET_ATTACH
-VBoxC_DEFS += VBOX_DYNAMIC_NET_ATTACH
 endif
 
 VBoxC_DEFS.darwin.x86 = VBOX_WITH_2X_4GB_ADDR_SPACE

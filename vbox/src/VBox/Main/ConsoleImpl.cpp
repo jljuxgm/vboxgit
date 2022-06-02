@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 33408 2010-10-25 09:57:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3505,7 +3505,6 @@ HRESULT Console::onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL c
                                                                         : PDMNETWORKLINKSTATE_DOWN);
                         ComAssertRC(vrc);
                     }
-#ifdef VBOX_DYNAMIC_NET_ATTACH
                     if (RT_SUCCESS(vrc) && changeAdapter)
                     {
                         VMSTATE enmVMState = VMR3GetState(mpVM);
@@ -3527,7 +3526,6 @@ HRESULT Console::onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL c
                             }
                         }
                     }
-#endif /* VBOX_DYNAMIC_NET_ATTACH */
                 }
 
                 if (RT_FAILURE(vrc))
@@ -3545,7 +3543,6 @@ HRESULT Console::onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL c
 }
 
 
-#ifdef VBOX_DYNAMIC_NET_ATTACH
 /**
  * Process a network adaptor change.
  *
@@ -3723,7 +3720,6 @@ DECLCALLBACK(int) Console::changeNetworkAttachment(Console *pThis,
     LogFlowFunc(("Returning %Rrc\n", rcRet));
     return rcRet;
 }
-#endif /* VBOX_DYNAMIC_NET_ATTACH */
 
 
 /**
