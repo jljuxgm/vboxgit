@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 35856 2011-02-04 17:05:37Z vboxsync $ */
+/* $Id: VMMR0.cpp 35885 2011-02-08 01:20:04Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -142,7 +142,7 @@ VMMR0DECL(int) ModuleInit(void)
                                     return VINF_SUCCESS;
                                 }
                             }
-                            
+
                             /* bail out */
                             LogFlow(("ModuleTerm: returns %Rrc\n", rc));
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
@@ -191,7 +191,7 @@ VMMR0DECL(void) ModuleTerm(void)
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
     PGMR0DynMapTerm();
 #endif
-        
+
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
     /*
      * Terminate PCI passthrough service.

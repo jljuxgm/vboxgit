@@ -1,4 +1,4 @@
-/* $Id: PciDeviceAttachmentImpl.h 35684 2011-01-24 15:28:38Z vboxsync $ */
+/* $Id: PciDeviceAttachmentImpl.h 35885 2011-02-08 01:20:04Z vboxsync $ */
 
 /** @file
  *
@@ -21,6 +21,7 @@
 #define ____H_PCIDEVICEATTACHMENTIMPL
 
 #include "VirtualBoxBase.h"
+#include <VBox/settings.h>
 
 class ATL_NO_VTABLE PciAddress :
     public VirtualBoxBase,
@@ -108,7 +109,13 @@ public:
                  LONG          aHostAddess,
                  LONG          aGuestAddress,
                  BOOL          fPhysical);
+
     void uninit();
+
+    // settings
+    HRESULT loadSettings(IMachine * aParent,
+                         const settings::HostPciDeviceAttachment& aHpda);
+    HRESULT saveSettings(settings::HostPciDeviceAttachment &data);
 
     HRESULT FinalConstruct();
     void FinalRelease();
@@ -121,7 +128,7 @@ public:
 
 private:
     struct Data;
-    Data *m;
+    Data*  m;
 };
 
 #endif // ____H_PCIDEVICEATTACHMENTIMPL
