@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34218 2010-11-21 17:00:38Z vboxsync $
+# $Id: Makefile.kmk 34381 2010-11-25 15:49:11Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1111,6 +1111,9 @@ VBoxRT_SOURCES                += \
 	common/checksum/RTSha1Digest.cpp \
 	common/checksum/crc32-zlib.cpp \
 	common/checksum/manifest.cpp \
+	common/checksum/manifest2.cpp \
+	common/checksum/manifest3.cpp \
+	common/checksum/manifest-file.cpp \
 	common/checksum/sha1.cpp \
 	common/checksum/sha1str.cpp \
 	common/checksum/sha256.cpp \
