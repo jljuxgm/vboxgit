@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 33078 2010-10-12 16:26:35Z vboxsync $ */
+/* $Id: MediumImpl.cpp 33082 2010-10-12 20:26:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6517,6 +6517,7 @@ HRESULT Medium::taskCloneHandler(Medium::CloneTask &task)
                              0 /* cbSize */,
                              task.mVariant,
                              targetId.raw(),
+                             VD_OPEN_FLAGS_NORMAL,
                              NULL /* pVDIfsOperation */,
                              pTarget->m->vdImageIfaces,
                              task.mVDOperationIfaces);
@@ -7106,6 +7107,7 @@ HRESULT Medium::taskExportHandler(Medium::ExportTask &task)
                              0 /* cbSize */,
                              task.mVariant,
                              NULL /* pDstUuid */,
+                             VD_OPEN_FLAGS_NORMAL,
                              NULL /* pVDIfsOperation */,
                              task.mVDImageIfaces,
                              task.mVDOperationIfaces);
