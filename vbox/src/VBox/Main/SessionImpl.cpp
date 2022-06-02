@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 31070 2010-07-23 16:00:09Z vboxsync $ */
+/* $Id: SessionImpl.cpp 31244 2010-07-30 13:10:40Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -895,7 +895,9 @@ HRESULT Session::unlockMachine(bool aFinalRelease, bool aFromServer)
         if (mType != SessionType_WriteLock && (rc == E_UNEXPECTED || rc == E_ACCESSDENIED))
             rc = S_OK;
 
+#ifndef DEBUG_bird /* I don't want clients crashing on me just because VBoxSVC went belly up. */
         AssertComRC(rc);
+#endif
     }
 
     mControl.setNull();
