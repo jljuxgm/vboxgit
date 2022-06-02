@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35000 2010-12-13 13:00:33Z vboxsync $
+# $Id: Makefile.kmk 35206 2010-12-16 21:54:47Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -326,6 +326,7 @@ $(VBOX_LNX_INST_OUT_DIR)/vboxdrv.sh: $(VBOX_PATH_LNX_INST_SRC)/vboxdrv.sh.in | $
 		-e "s|%NOLSB%|yes|g" \
 		-e "s|%DEBIAN%||g" \
 		-e "s|%PACKAGE%|virtualbox|g" \
+		-e "s|%GROUP%|$(if $(VBOX_WITHOUT_HARDENING),vboxusers,root)|g" \
 		--output $@ \
 		$<
 
