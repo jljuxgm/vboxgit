@@ -1,4 +1,4 @@
-/* $Id: FTMInternal.h 31754 2010-08-18 11:31:34Z vboxsync $ */
+/* $Id: FTMInternal.h 31770 2010-08-19 08:53:41Z vboxsync $ */
 /** @file
  * FTM - Internal header file.
  */
@@ -22,7 +22,7 @@
 #include <VBox/types.h>
 #include <VBox/ftm.h>
 #include <iprt/tcp.h>
-
+#include <iprt/semaphore.h>
 
 /** @defgroup grp_ftm_int Internals.
  * @ingroup grp_ftm
@@ -48,10 +48,18 @@ typedef struct FTM
     /** Set when this VM is the standby FT node. */
     bool                fIsStandbyNode;
 
+    /** Current active socket. */
+    RTSOCKET            hSocket;
+
     struct
     {
         PRTTCPSERVER    hServer;
     } standby;
+
+    struct
+    {
+        RTSEMEVENT      hShutdownEvent;
+    } master;
 
 } FTM;
 
