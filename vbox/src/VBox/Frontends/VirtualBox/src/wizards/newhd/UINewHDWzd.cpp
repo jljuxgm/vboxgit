@@ -1,4 +1,4 @@
-/* $Id: UINewHDWzd.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
+/* $Id: UINewHDWzd.cpp 34983 2010-12-13 10:14:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -521,7 +521,7 @@ bool UINewHDWzdPage4::createHardDisk()
         return false;
     }
 
-    vboxProblem().showModalProgressDialog(progress, windowTitle(), "", parentWidget());
+    vboxProblem().showModalProgressDialog(progress, windowTitle(), ":/progress_media_create_90px.png", this, true);
 
     if (progress.GetCanceled())
         return false;

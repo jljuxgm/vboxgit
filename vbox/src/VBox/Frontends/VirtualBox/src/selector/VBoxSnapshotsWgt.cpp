@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 34479 2010-11-29 16:44:03Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 34983 2010-12-13 10:14:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -535,8 +535,8 @@ void VBoxSnapshotsWgt::restoreSnapshot()
     if (console.isOk())
     {
         /* Show the progress dialog */
-        vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), "",
-                                               vboxProblem().mainWindowShown());
+        vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), ":/progress_snapshot_restore_90px.png",
+                                               vboxProblem().mainWindowShown(), true);
 
         if (progress.GetResultCode() != 0)
             vboxProblem().cannotRestoreSnapshot (progress, snapshot.GetName());
@@ -581,8 +581,8 @@ void VBoxSnapshotsWgt::deleteSnapshot()
     if (console.isOk())
     {
         /* Show the progress dialog */
-        vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), "",
-                                               vboxProblem().mainWindowShown());
+        vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), ":/progress_snapshot_discard_90px.png",
+                                               vboxProblem().mainWindowShown(), true);
 
         if (progress.GetResultCode() != 0)
             vboxProblem().cannotDeleteSnapshot (progress,  snapshot.GetName());
@@ -652,8 +652,8 @@ void VBoxSnapshotsWgt::takeSnapshot()
         if (console.isOk())
         {
             /* Show the progress dialog */
-            vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), "",
-                                                   vboxProblem().mainWindowShown());
+            vboxProblem().showModalProgressDialog (progress, mMachine.GetName(), ":/progress_snapshot_create_90px.png",
+                                                   vboxProblem().mainWindowShown(), true);
 
             if (progress.GetResultCode() != 0)
                 vboxProblem().cannotTakeSnapshot (progress);

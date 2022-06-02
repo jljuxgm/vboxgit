@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 34728 2010-12-06 10:40:42Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 34983 2010-12-13 10:14:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -370,7 +370,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                                 else
                                 {
                                     /* Show the progress dialog: */
-                                    vboxProblem().showModalProgressDialog(progress, machine.GetName());
+                                    vboxProblem().showModalProgressDialog(progress, machine.GetName(), ":/progress_snapshot_discard_90px.png", 0, true);
                                     if (progress.GetResultCode() != 0)
                                         vboxProblem().cannotRestoreSnapshot(progress, snapshot.GetName());
                                 }
