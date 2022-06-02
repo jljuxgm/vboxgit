@@ -1,4 +1,4 @@
-# $Id: Config.kmk 34583 2010-12-01 17:20:20Z vboxsync $
+# $Id: Config.kmk 34592 2010-12-02 11:06:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3583,6 +3583,11 @@ endif
  TEMPLATE_VBoxR0ExtPack_EXTENDS_BY = appending
  TEMPLATE_VBoxR0ExtPack_INST = $(INST_EXTPACK)YouShallOverrideThis/
  TEMPLATE_VBoxR0ExtPack_DEFS = VBOX_IN_EXTPACK VBOX_IN_EXTPACK_R0
+ if1of ($(VBOX_LDR_FMT), pe lx)
+  TEMPLATE_VBoxR0ExtPack_LIBS = \
+	$(PATH_LIB)/VMMR0Builtin$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/SUPR0$(VBOX_SUFF_LIB)
+ endif
 
  TEMPLATE_VBoxRcExtPack = For the raw-mode context extension pack modules.
  TEMPLATE_VBoxRcExtPack_EXTENDS = VBoxRc
@@ -3590,6 +3595,11 @@ endif
  TEMPLATE_VBoxRcExtPack_SYSSUFF = .rc
  TEMPLATE_VBoxRcExtPack_INST = $(INST_EXTPACK)YouShallOverrideThis/
  TEMPLATE_VBoxRcExtPack_DEFS = VBOX_IN_EXTPACK VBOX_IN_EXTPACK_RC
+ if1of ($(VBOX_LDR_FMT32), pe lx)
+  TEMPLATE_VBoxRcExtPack_LIBS = \
+	$(PATH_LIB)/VMMGCBuiltin$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/VMMGCImp$(VBOX_SUFF_LIB)
+ endif
 
  TEMPLATE_VBoxInsExtPack = For the install targets of an extension pack.
  TEMPLATE_VBoxInsExtPack_MODE = 0644
@@ -4521,7 +4531,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34583 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 34592 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
