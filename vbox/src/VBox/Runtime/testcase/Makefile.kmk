@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34045 2010-11-12 19:16:09Z vboxsync $
+# $Id: Makefile.kmk 34174 2010-11-18 14:52:35Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -108,6 +108,7 @@ PROGRAMS += \
 	tstRTTemp \
 	tstTermCallbacks \
 	tstThread-1 \
+	tstRTThreadPoke \
 	tstTime \
 	tstTime-2 \
 	tstTime-3 \
@@ -459,6 +460,9 @@ tstRTTemp_SOURCES = tstRTTemp.cpp
 tstTermCallbacks_SOURCES = tstTermCallbacks.cpp
 
 tstThread-1_SOURCES = tstThread-1.cpp
+
+tstRTThreadPoke_TEMPLATE = VBOXR3TSTEXE
+tstRTThreadPoke_SOURCES = tstRTThreadPoke.cpp
 
 tstTime_SOURCES = tstTime.cpp
 
