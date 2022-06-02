@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34876 2010-12-09 11:16:00Z vboxsync $
+# $Id: Makefile.kmk 34906 2010-12-09 16:29:49Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -793,6 +793,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Audio/audiosniffer.c \
  	Audio/mixeng.c \
  	Audio/noaudio.c \
+ 	Audio/filteraudio.c \
  	Input/DrvKeyboardQueue.cpp \
  	Input/DrvMouseQueue.cpp \
  	Network/DrvIntNet.cpp \

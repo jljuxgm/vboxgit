@@ -1,4 +1,4 @@
-/* $Id: AudioSnifferInterface.cpp 33004 2010-10-08 10:23:59Z vboxsync $ */
+/* $Id: AudioSnifferInterface.cpp 34906 2010-12-09 16:29:49Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to Audio Sniffer device
  */
@@ -112,6 +112,32 @@ DECLCALLBACK(void) iface_AudioVolumeOut (PPDMIAUDIOSNIFFERCONNECTOR pInterface, 
     pDrv->pAudioSniffer->getParent()->consoleVRDPServer()->SendAudioVolume(left, right);
 }
 
+DECLCALLBACK(int) iface_AudioInputBegin (PPDMIAUDIOSNIFFERCONNECTOR pInterface,
+                                         void **ppvUserCtx,
+                                         void *pvContext,
+                                         uint32_t cSamples,
+                                         uint32_t iSampleHz,
+                                         uint32_t cChannels,
+                                         uint32_t cBits)
+{
+    PDRVAUDIOSNIFFER pDrv = PDMIAUDIOSNIFFERCONNECTOR_2_MAINAUDIOSNIFFER(pInterface);
+
+    return pDrv->pAudioSniffer->getParent()->consoleVRDPServer()->SendAudioInputBegin(ppvUserCtx,
+                                                                                      pvContext,
+                                                                                      cSamples,
+                                                                                      iSampleHz,
+                                                                                      cChannels,
+                                                                                      cBits);
+}
+
+DECLCALLBACK(void) iface_AudioInputEnd (PPDMIAUDIOSNIFFERCONNECTOR pInterface,
+                                        void *pvUserCtx)
+{
+    PDRVAUDIOSNIFFER pDrv = PDMIAUDIOSNIFFERCONNECTOR_2_MAINAUDIOSNIFFER(pInterface);
+
+    pDrv->pAudioSniffer->getParent()->consoleVRDPServer()->SendAudioInputEnd(pvUserCtx);
+}
+
 
 /**
  * @interface_method_impl{PDMIBASE,pfnQueryInterface}
@@ -174,6 +200,8 @@ DECLCALLBACK(int) AudioSniffer::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg,
     /* Audio Sniffer connector. */
     pThis->Connector.pfnAudioSamplesOut         = iface_AudioSamplesOut;
     pThis->Connector.pfnAudioVolumeOut          = iface_AudioVolumeOut;
+    pThis->Connector.pfnAudioInputBegin         = iface_AudioInputBegin;
+    pThis->Connector.pfnAudioInputEnd           = iface_AudioInputEnd;
 
     /*
      * Get the Audio Sniffer Port interface of the above driver/device.
