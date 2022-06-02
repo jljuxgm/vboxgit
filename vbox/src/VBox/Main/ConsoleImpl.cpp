@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 32727 2010-09-23 14:31:31Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 32730 2010-09-23 14:49:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5403,13 +5403,13 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
 #ifdef RT_OS_SOLARIS
     /* setup host core dumper for the VM */
     Bstr value;
-    HRESULT hrc = mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpEnabled"), value.asOutParam());
+    HRESULT hrc = mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpEnabled").raw(), value.asOutParam());
     if (SUCCEEDED(hrc) && value == "1")
     {
         Bstr coreDumpDir, coreDumpReplaceSys, coreDumpLive;
-        mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpDir"), coreDumpDir.asOutParam());
-        mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpReplaceSystemDump"), coreDumpReplaceSys.asOutParam());
-        mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpLive"), coreDumpLive.asOutParam());
+        mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpDir").raw(), coreDumpDir.asOutParam());
+        mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpReplaceSystemDump").raw(), coreDumpReplaceSys.asOutParam());
+        mMachine->GetExtraData(Bstr("VBoxInternal2/CoreDumpLive").raw(), coreDumpLive.asOutParam());
 
         uint32_t fCoreFlags = 0;
         if (   coreDumpReplaceSys.isEmpty() == false
