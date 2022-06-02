@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 31284 2010-08-02 11:40:32Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 31866 2010-08-23 14:52:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -250,6 +250,7 @@ void UIMachineWindowSeamless::prepareMiniToolBar()
         for (int i=0; i < actions.size(); ++i)
             menus << actions.at(i)->menu();
         *m_pMiniToolBar << menus;
+        connect(m_pMiniToolBar, SIGNAL(minimizeAction()), this, SLOT(showMinimized()));
         connect(m_pMiniToolBar, SIGNAL(exitAction()),
                 uisession()->actionsPool()->action(UIActionIndex_Toggle_Seamless), SLOT(trigger()));
         connect(m_pMiniToolBar, SIGNAL(closeAction()),
