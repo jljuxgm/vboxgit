@@ -1,4 +1,4 @@
-# $Id: Config.kmk 35344 2010-12-27 14:36:15Z vboxsync $
+# $Id: Config.kmk 35345 2010-12-27 14:41:49Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3683,8 +3683,8 @@ ifdef VBOX_WITH_EXTPACK
  TEMPLATE_VBoxRcExtPack_DEFS = VBOX_IN_EXTPACK VBOX_IN_EXTPACK_RC
  if1of ($(VBOX_LDR_FMT32), pe lx)
   TEMPLATE_VBoxRcExtPack_LIBS = \
-	$(PATH_LIB)/VMMGCBuiltin$(VBOX_SUFF_LIB) \
-	$(PATH_LIB)/VMMGCImp$(VBOX_SUFF_LIB)
+	$(PATH_LIB)/VMMRCBuiltin$(VBOX_SUFF_LIB) \
+	$(PATH_LIB)/VMMRCImp$(VBOX_SUFF_LIB)
  endif
 
  TEMPLATE_VBoxInsExtPack = For the install targets of an extension pack.
@@ -4630,7 +4630,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35344 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 35345 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
