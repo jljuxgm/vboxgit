@@ -1,4 +1,4 @@
-/* $Id: path2-posix.cpp 34015 2010-11-12 00:15:05Z vboxsync $ */
+/* $Id: path2-posix.cpp 34230 2010-11-22 10:06:48Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX, Part 2 - RTPathQueryInfo.
  */
@@ -243,9 +243,9 @@ RTR3DECL(int) RTPathSetOwnerEx(const char *pszPath, uint32_t uid, uint32_t gid, 
     AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
     AssertReturn(*pszPath, VERR_INVALID_PARAMETER);
     AssertMsgReturn(RTPATH_F_IS_VALID(fFlags, 0), ("%#x\n", fFlags), VERR_INVALID_PARAMETER);
-    uid_t uidNative = uid != UINT32_MAX ? (uid_t)uid : (uid_t)-1;
+    uid_t uidNative = uid != NIL_RTUID ? (uid_t)uid : (uid_t)-1;
     AssertReturn(uid == uidNative, VERR_INVALID_PARAMETER);
-    gid_t gidNative = gid != UINT32_MAX ? (gid_t)gid : (uid_t)-1;
+    gid_t gidNative = gid != NIL_RTGID ? (gid_t)gid : (uid_t)-1;
     AssertReturn(gid == gidNative, VERR_INVALID_PARAMETER);
 
     /*
