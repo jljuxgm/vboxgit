@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 33707 2010-11-02 18:44:21Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 33718 2010-11-03 09:14:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2639,7 +2639,8 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
          *    taking an online snapshot!
          */
         if (   lType == DeviceType_HardDisk
-            && aMachineState == MachineState_Starting)
+            && (   aMachineState == MachineState_Starting
+                || aMachineState == MachineState_Restoring))
         {
             /*
              * Some sanity checks.
