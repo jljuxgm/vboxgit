@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 31019 2010-07-22 17:48:18Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 31023 2010-07-22 19:40:27Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -817,6 +817,16 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             AssertComRC(rc);
             if (FAILED(rc))
                 break;
+        }
+        else
+        {
+            /* Use the GUID. */
+            rc = virtualBox->GetMachine(id, m.asOutParam());
+            if (FAILED(rc))
+            {
+                LogError("Invalid machine uid!\n", rc);
+                break;
+            }
         }
 
         Log(("VBoxHeadless: Opening a session with machine (id={%s})...\n",
