@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 32573 2010-09-16 17:18:03Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 32600 2010-09-17 12:59:18Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -4734,7 +4734,7 @@ VBOXDDU_DECL(int) VDCreateDiff(PVBOXHDD pDisk, const char *pszBackend,
                 rc2 = pDisk->pLast->Backend->pfnGetTimeStamp(pDisk->pLast->pBackendData,
                                                              &ts);
             else
-                rc = VERR_NOT_IMPLEMENTED;
+                rc2 = VERR_NOT_IMPLEMENTED;
             if (RT_SUCCESS(rc2) && pImage->Backend->pfnSetParentTimeStamp)
                 pImage->Backend->pfnSetParentTimeStamp(pImage->pBackendData, &ts);
 
