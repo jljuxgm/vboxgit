@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: IOM.cpp 34241 2010-11-22 14:26:53Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1416,9 +1416,9 @@ VMMR3DECL(int)  IOMR3MMIORegisterR3(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys
      */
     if (pVM->iom.s.pfnMMIOHandlerR0 == NIL_RTR0PTR)
     {
-        rc = PDMR3LdrGetSymbolRCLazy(pVM, NULL, "IOMMMIOHandler", &pVM->iom.s.pfnMMIOHandlerRC);
+        rc = PDMR3LdrGetSymbolRC(pVM, NULL, "IOMMMIOHandler", &pVM->iom.s.pfnMMIOHandlerRC);
         AssertLogRelRCReturn(rc, rc);
-        rc = PDMR3LdrGetSymbolR0Lazy(pVM, NULL, "IOMMMIOHandler", &pVM->iom.s.pfnMMIOHandlerR0);
+        rc = PDMR3LdrGetSymbolR0(pVM, NULL, "IOMMMIOHandler", &pVM->iom.s.pfnMMIOHandlerR0);
         AssertLogRelRCReturn(rc, rc);
     }
 
