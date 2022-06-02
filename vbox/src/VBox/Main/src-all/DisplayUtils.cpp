@@ -1,4 +1,4 @@
-/* $Id: DisplayUtils.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: DisplayUtils.cpp 35576 2011-01-14 18:46:03Z vboxsync $ */
 /** @file
  * Implementation of IDisplay helpers.
  */
@@ -163,7 +163,8 @@ int readSavedGuestSize(const Utf8Str &strStateFilePath, uint32_t u32ScreenId, ui
         if (RT_SUCCESS(vrc))
         {
             /* Only the second version is supported. */
-            if (uVersion == sSSMDisplayVer2)
+            if (   uVersion == sSSMDisplayVer2
+                || uVersion == sSSMDisplayVer3)
             {
                 uint32_t cMonitors;
                 SSMR3GetU32(pSSM, &cMonitors);
