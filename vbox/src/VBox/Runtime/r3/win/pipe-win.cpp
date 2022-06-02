@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 32131 2010-08-31 11:55:27Z vboxsync $ */
+/* $Id: pipe-win.cpp 33194 2010-10-18 12:17:12Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -749,7 +749,9 @@ RTDECL(int) RTPipeWrite(RTPIPE hPipe, const void *pvBuf, size_t cbToWrite, size_
                     if (Info.NamedPipeState == FILE_PIPE_CLOSING_STATE)
                         rc = VERR_BROKEN_PIPE;
                     else if (   cbToWrite >= Info.WriteQuotaAvailable
-                             && Info.OutboundQuota != 0)
+                             && Info.OutboundQuota != 0
+                             && (Info.WriteQuotaAvailable || pThis->cbBounceBufAlloc)
+                            )
                     {
                         cbToWrite = Info.WriteQuotaAvailable;
                         if (!cbToWrite)
