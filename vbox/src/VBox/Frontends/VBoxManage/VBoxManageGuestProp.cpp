@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 30871 2010-07-16 10:07:21Z vboxsync $ */
 /** @file
  * VBoxManage - The 'guestproperty' command.
  */
@@ -309,7 +309,7 @@ static int handleWaitGuestProperty(HandlerArg *a)
     ComPtr<IEventListener> listener;
     CHECK_ERROR(es, CreateListener(listener.asOutParam()));
     com::SafeArray <VBoxEventType_T> eventTypes(1);
-    eventTypes.push_back(VBoxEventType_OnGuestPropertyChange);
+    eventTypes.push_back(VBoxEventType_OnGuestPropertyChanged);
     CHECK_ERROR(es, RegisterListener(listener, ComSafeArrayAsInParam(eventTypes), false));
 
     uint64_t u64Started = RTTimeMilliTS();
@@ -335,7 +335,7 @@ static int handleWaitGuestProperty(HandlerArg *a)
             rc = ev->COMGETTER(Type)(&aType);
             switch (aType)
             {
-                case VBoxEventType_OnGuestPropertyChange:
+                case VBoxEventType_OnGuestPropertyChanged:
                 {
                     ComPtr<IGuestPropertyChangedEvent> gpcev = ev;
                     Assert(gpcev);

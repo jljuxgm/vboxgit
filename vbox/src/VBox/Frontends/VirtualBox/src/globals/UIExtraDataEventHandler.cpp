@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataEventHandler.cpp 30703 2010-07-07 12:34:22Z vboxsync $ */
+/* $Id: UIExtraDataEventHandler.cpp 30871 2010-07-16 10:07:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -256,7 +256,7 @@ UIExtraDataEventHandler::UIExtraDataEventHandler()
     QVector<KVBoxEventType> events;
     events
         << KVBoxEventType_OnExtraDataCanChange
-        << KVBoxEventType_OnExtraDataChange;
+        << KVBoxEventType_OnExtraDataChanged;
 
     vbox.GetEventSource().RegisterListener(m_mainEventListener, events, TRUE);
     AssertWrapperOk(vbox);
@@ -317,4 +317,3 @@ UIExtraDataEventHandler::~UIExtraDataEventHandler()
 }
 
 #include "UIExtraDataEventHandler.moc"
-

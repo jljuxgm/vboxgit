@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 30825 2010-07-14 12:44:14Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 30871 2010-07-16 10:07:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -652,7 +652,7 @@ HRESULT Display::init (Console *aParent)
         ComPtr<IEventSource> es;
         mParent->COMGETTER(EventSource)(es.asOutParam());
         com::SafeArray <VBoxEventType_T> eventTypes;
-        eventTypes.push_back(VBoxEventType_OnStateChange);
+        eventTypes.push_back(VBoxEventType_OnStateChanged);
         es->RegisterListener(this, ComSafeArrayAsInParam(eventTypes), true);
     }
 
@@ -744,7 +744,7 @@ STDMETHODIMP Display::HandleEvent(IEvent * aEvent)
     aEvent->COMGETTER(Type)(&aType);
     switch (aType)
     {
-        case VBoxEventType_OnStateChange:
+        case VBoxEventType_OnStateChanged:
         {
             ComPtr<IStateChangedEvent> scev = aEvent;
             Assert(scev);
