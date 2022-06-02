@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30777 2010-07-12 08:25:15Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30804 2010-07-13 13:59:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1473,15 +1473,7 @@ HRESULT Console::doEnumerateGuestProperties(CBSTR aPatterns,
 
     Utf8Str utf8Patterns(aPatterns);
     parm[0].type = VBOX_HGCM_SVC_PARM_PTR;
-    // mutableRaw() returns NULL for an empty string
-//     if ((parm[0].u.pointer.addr = utf8Patterns.mutableRaw()))
-//         parm[0].u.pointer.size = (uint32_t)utf8Patterns.length() + 1;
-//     else
-//     {
-//         parm[0].u.pointer.addr = (void*)"";
-//         parm[0].u.pointer.size = 1;
-//     }
-    parm[0].u.pointer.addr = utf8Patterns.mutableRaw();
+    parm[0].u.pointer.addr = (void*)utf8Patterns.c_str();
     parm[0].u.pointer.size = (uint32_t)utf8Patterns.length() + 1;
 
     /*
