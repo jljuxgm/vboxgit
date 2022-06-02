@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
+/* $Id: PGMPool.cpp 34741 2010-12-06 12:12:23Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -154,7 +154,7 @@ int pgmR3PoolInit(PVM pVM)
     if (cbRam >= UINT64_C(2) * _1G)
     {
         /* In the nested paging case we require 2 + 513 * (cbRam/1GB) pages to
-         * store the entire page table descriptors.
+         * store all page table descriptors.
          */
         uint64_t u64MaxPages = cbRam  / (_1G / UINT64_C(512));
         if (u64MaxPages > PGMPOOL_IDX_LAST)
