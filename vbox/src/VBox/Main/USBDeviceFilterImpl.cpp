@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 31891 2010-08-24 07:58:48Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 31892 2010-08-24 08:00:51Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -6,8 +6,13 @@
 /*
  * Copyright (C) 2006-2007 Oracle Corporation
  *
- * Oracle Corporation confidential
- * All rights reserved
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
 #include "USBDeviceFilterImpl.h"
