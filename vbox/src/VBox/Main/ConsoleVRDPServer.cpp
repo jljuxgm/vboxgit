@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 30676 2010-07-06 16:36:43Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -29,7 +29,6 @@
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/alloca.h>
-#include <iprt/cpp/utils.h>
 
 #include <VBox/err.h>
 #ifdef VBOX_WITH_VRDP

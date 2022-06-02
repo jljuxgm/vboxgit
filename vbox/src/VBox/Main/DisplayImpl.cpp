@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 30670 2010-07-06 14:37:09Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 30676 2010-07-06 16:36:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -26,7 +26,6 @@
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
 #include <iprt/asm.h>
-#include <iprt/cpp/utils.h>
 
 #include <VBox/pdmdrv.h>
 #ifdef DEBUG /* for VM_ASSERT_EMT(). */
