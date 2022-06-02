@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35840 2011-02-03 15:56:03Z vboxsync $
+# $Id: Makefile.kmk 35843 2011-02-03 16:25:37Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -71,6 +71,7 @@ vboxvideo_drv_INCS = \
 	$(VBOX_PATH_X11_XFREE_4_3)/programs/Xserver/Xext
 vboxvideo_drv_INCS += $(PATH_ROOT)/src/VBox/Runtime/include
 vboxvideo_drv_SOURCES = \
+	pointer.c \
 	vboxutils.c \
 	vboxvideo.c \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp \
