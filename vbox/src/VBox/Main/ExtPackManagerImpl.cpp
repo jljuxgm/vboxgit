@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 33693 2010-11-02 14:52:24Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 33695 2010-11-02 15:09:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1561,7 +1561,7 @@ void ExtPackManager::processDropZone(void)
                     else
                     {
                         Utf8Str strErr;
-                        com::ErrorInfo Info(this, COM_IIDOF(IExtPackManager));
+                        com::ErrorInfo Info;
                         if (Info.isFullAvailable())
                             strErr.printf("failed\n"
                                           "%ls\n"
