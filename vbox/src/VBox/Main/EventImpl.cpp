@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 31210 2010-07-29 13:16:26Z vboxsync $ */
+/* $Id: EventImpl.cpp 31269 2010-08-02 08:05:57Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -1014,7 +1014,7 @@ STDMETHODIMP EventSource::FireEvent(IEvent * aEvent,
 
         VBoxEventType_T evType;
         hrc = aEvent->COMGETTER(Type)(&evType);
-        AssertComRCReturn(hrc, VERR_ACCESS_DENIED);
+        AssertComRCReturn(hrc, hrc);
 
         EventMapList& listeners = m->mEvMap[(int)evType-FirstEvent];
 
