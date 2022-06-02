@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 32714 2010-09-23 12:28:55Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 32715 2010-09-23 12:34:43Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -322,7 +322,6 @@ static int ich9pciDataWriteAddr(PPCIGLOBALS pGlobals, PciAddress* pAddr, uint32_
 static int ich9pciDataWrite(PPCIGLOBALS pGlobals, uint32_t addr, uint32_t val, int len)
 {
     PciAddress aPciAddr;
-    uint32_t uConfigReg;
 
     Log(("ich9pciDataWrite: addr=%08x val=%08x len=%d\n", pGlobals->uConfigReg, val, len));
 
@@ -404,7 +403,6 @@ static int ich9pciDataReadAddr(PPCIGLOBALS pGlobals, PciAddress* pPciAddr, int l
 static int ich9pciDataRead(PPCIGLOBALS pGlobals, uint32_t addr, int len, uint32_t *pu32)
 {
     PciAddress aPciAddr;
-    uint32_t uConfigReg;
 
     *pu32 = 0xffffffff;
 
