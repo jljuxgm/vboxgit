@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePropCache.cpp 31879 2010-08-24 07:08:27Z vboxsync $ */
+/* $Id: VBoxServicePropCache.cpp 31881 2010-08-24 07:14:36Z vboxsync $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
@@ -344,8 +344,13 @@ void VBoxServicePropCacheDestroy(PVBOXSERVICEVEPROPCACHE pCache)
         PVBOXSERVICEVEPROPCACHEENTRY pNode = RTListNodeGetFirst(&pCache->NodeHead, VBOXSERVICEVEPROPCACHEENTRY, NodeSucc);
         while (pNode)
         {
+            /*
+             * When destroying the cache and we have a temporary value, remove the
+             * (eventually) set TRANSIENT flag from it so that it doesn't get deleted
+             * by the host side in order to put the actual reset value in it.
+             */
             if ((pNode->fFlags & VBOXSERVICEPROPCACHEFLAG_TEMPORARY) == 0)
-                vboxServicePropCacheWritePropF(pCache->uClientID, pNode->pszName, pNode->fFlags, pNode->pszValueReset);
+                vboxServicePropCacheWritePropF(pCache->uClientID, pNode->pszName, 0 /* Flags */, pNode->pszValueReset);
 
             AssertPtr(pNode->pszName);
             RTStrFree(pNode->pszName);
