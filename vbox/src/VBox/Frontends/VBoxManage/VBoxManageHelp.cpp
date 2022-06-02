@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 31599 2010-08-12 13:02:55Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 31779 2010-08-19 09:55:30Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -492,6 +492,7 @@ void printUsage(USAGECATEGORY u64Cmd)
                  "                            [--type normal|writethrough|immutable|shareable]\n"
                  "                            [--autoreset on|off]\n"
                  "                            [--compact]\n"
+                 "                            [--resize <megabytes>]\n"
                  "\n");
     }
 
