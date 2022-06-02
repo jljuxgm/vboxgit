@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 32398 2010-09-10 12:46:23Z vboxsync $ */
+/* $Id: MachineImpl.cpp 32649 2010-09-20 17:22:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10238,19 +10238,19 @@ STDMETHODIMP SessionMachine::EndPowerUp(LONG iResult)
     {
         mData->mSession.mProgress->notifyComplete((HRESULT)iResult);
         mData->mSession.mProgress.setNull();
-
-        if (SUCCEEDED((HRESULT)iResult))
-        {
-#ifdef VBOX_WITH_RESOURCE_USAGE_API
-            /* The VM has been powered up successfully, so it makes sense
-             * now to offer the performance metrics for a running machine
-             * object. Doing it earlier wouldn't be safe. */
-            registerMetrics(mParent->performanceCollector(), mPeer,
-                            mData->mSession.mPid);
-#endif /* VBOX_WITH_RESOURCE_USAGE_API */
-
-        }
     }
+
+    if (SUCCEEDED((HRESULT)iResult))
+    {
+#ifdef VBOX_WITH_RESOURCE_USAGE_API
+        /* The VM has been powered up successfully, so it makes sense
+         * now to offer the performance metrics for a running machine
+         * object. Doing it earlier wouldn't be safe. */
+        registerMetrics(mParent->performanceCollector(), mPeer,
+                        mData->mSession.mPid);
+#endif /* VBOX_WITH_RESOURCE_USAGE_API */
+    }
+
     return S_OK;
 }
 
