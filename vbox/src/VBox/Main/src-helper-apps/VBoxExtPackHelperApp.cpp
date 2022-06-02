@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 35708 2011-01-25 12:58:25Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 35712 2011-01-25 14:03:01Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -703,6 +703,16 @@ static RTEXITCODE DoInstall2(const char *pszBaseDir, const char *pszCertDir, con
      * If all checks out correctly, rename it to the final directory.
      */
     RTDirCreate(pszBaseDir, 0755);
+#ifndef RT_OS_WINDOWS
+    /*
+     * Because of umask, we have to apply the mode again.
+     */
+    rc = RTPathSetMode(pszBaseDir, 0755);
+    if (RT_FAILURE(rc))
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to set directory permissions on '%s': %Rrc", pszBaseDir, rc);
+#else
+    /** @todo Ownership tricks on windows? */
+#endif
     rc = RTDirCreate(szTmpPath, 0700);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to create temporary directory: %Rrc ('%s')", rc, szTmpPath);
