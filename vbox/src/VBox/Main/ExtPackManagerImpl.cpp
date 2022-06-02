@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 33474 2010-10-26 16:44:17Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 33477 2010-10-26 19:44:31Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -27,6 +27,7 @@
 #include <iprt/path.h>
 
 #include <VBox/com/array.h>
+#include <VBox/log.h>
 #include "AutoCaller.h"
 
 
