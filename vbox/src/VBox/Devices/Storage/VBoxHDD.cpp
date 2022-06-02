@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 31497 2010-08-09 19:07:28Z vboxsync $ */
+/* $Id: VBoxHDD.cpp 31504 2010-08-10 06:36:02Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1698,6 +1698,7 @@ static int vdFlushHelperAsync(PVDIOCTX pIoCtx)
  */
 static int vdLoadDynamicBackends()
 {
+#ifndef VBOX_HDD_NO_DYNAMIC_BACKENDS
     int rc = VINF_SUCCESS;
     PRTDIR pPluginDir = NULL;
 
@@ -1808,6 +1809,9 @@ out:
     if (pPluginDir)
         RTDirClose(pPluginDir);
     return rc;
+#else
+    return VINF_SUCCESS;
+#endif
 }
 
 /**
@@ -2897,9 +2901,11 @@ VBOXDDU_DECL(int) VDShutdown(void)
     g_cBackends = 0;
     g_apBackends = NULL;
 
+#ifndef VBOX_HDD_NO_DYNAMIC_BACKENDS
     for (unsigned i = 0; i < cBackends; i++)
         if (pBackends[i]->hPlugin != NIL_RTLDRMOD)
             RTLdrClose(pBackends[i]->hPlugin);
+#endif
 
     RTMemFree(pBackends);
     return VINF_SUCCESS;
