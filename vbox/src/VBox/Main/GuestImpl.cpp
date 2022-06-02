@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 34831 2010-12-08 13:37:55Z vboxsync $ */
+/* $Id: GuestImpl.cpp 34832 2010-12-08 13:44:43Z vboxsync $ */
 
 /** @file
  *
@@ -2620,8 +2620,8 @@ STDMETHODIMP Guest::CopyToGuest(IN_BSTR aSource, IN_BSTR aDest,
         AssertPtr(pTask);
         std::auto_ptr<TaskGuest> task(pTask);
 
-        /* Assign data - in that case aSource is the full path
-         * to the Guest Additions .ISO we want to mount. */
+        /* Assign data - aSource is the source file on the host,
+         * aDest reflects the full path on the guest. */
         task->strSource   = (Utf8Str(aSource));
         task->strDest     = (Utf8Str(aDest));
         task->strUserName = (Utf8Str(aUserName));
