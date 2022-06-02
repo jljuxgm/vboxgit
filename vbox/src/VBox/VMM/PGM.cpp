@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 31198 2010-07-29 09:35:27Z vboxsync $ */
+/* $Id: PGM.cpp 31206 2010-07-29 13:05:31Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2443,6 +2443,7 @@ VMMR3DECL(int) PGMR3Term(PVM pVM)
     /* Must free shared pages here. */
     pgmLock(pVM);
     pgmR3PhysRamTerm(pVM);
+    pgmR3PhysRomTerm(pVM);
     pgmUnlock(pVM);
 
     PGMDeregisterStringFormatTypes();
