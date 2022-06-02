@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 34188 2010-11-18 21:47:50Z vboxsync $ */
+/* $Id: DevVGA.cpp 34243 2010-11-22 14:29:13Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5737,7 +5737,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 #endif
 
     /* The LBF access handler - error handling is better here than in the map function.  */
-    rc = PDMR3LdrGetSymbolRCLazy(pVM, pDevIns->pReg->szRCMod, "vgaGCLFBAccessHandler", &pThis->RCPtrLFBHandler);
+    rc = PDMR3LdrGetSymbolRCLazy(pVM, pDevIns->pReg->szRCMod, NULL, "vgaGCLFBAccessHandler", &pThis->RCPtrLFBHandler);
     if (RT_FAILURE(rc))
     {
         AssertReleaseMsgFailed(("PDMR3LdrGetSymbolRC(, %s, \"vgaGCLFBAccessHandler\",) -> %Rrc\n", pDevIns->pReg->szRCMod, rc));

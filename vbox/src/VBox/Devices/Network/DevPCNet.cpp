@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DevPCNet.cpp 34243 2010-11-22 14:29:13Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -5183,9 +5183,9 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     /*
      * Resolve the R0 and RC handlers.
      */
-    rc = PDMR3LdrGetSymbolR0Lazy(PDMDevHlpGetVM(pDevIns), NULL, "EMInterpretInstruction", &pThis->pfnEMInterpretInstructionR0);
+    rc = PDMR3LdrGetSymbolR0Lazy(PDMDevHlpGetVM(pDevIns), NULL, NULL, "EMInterpretInstruction", &pThis->pfnEMInterpretInstructionR0);
     if (RT_SUCCESS(rc))
-        rc = PDMR3LdrGetSymbolRCLazy(PDMDevHlpGetVM(pDevIns), NULL, "EMInterpretInstruction", (RTGCPTR *)&pThis->pfnEMInterpretInstructionRC);
+        rc = PDMR3LdrGetSymbolRCLazy(PDMDevHlpGetVM(pDevIns), NULL, NULL, "EMInterpretInstruction", (RTGCPTR *)&pThis->pfnEMInterpretInstructionRC);
     AssertLogRelMsgRCReturn(rc, ("PDMR3LdrGetSymbolRCLazy(EMInterpretInstruction) -> %Rrc\n", rc), rc);
 #else
     rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL, pcnetTimer, pThis,
