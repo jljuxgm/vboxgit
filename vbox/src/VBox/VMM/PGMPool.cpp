@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 31996 2010-08-26 13:32:30Z vboxsync $ */
+/* $Id: PGMPool.cpp 32036 2010-08-27 10:14:39Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -930,7 +930,7 @@ static DECLCALLBACK(int) pgmR3PoolCmdCheck(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
                     if (PGMSHWPTEPAE_IS_P(pShwPT->a[j]))
                     {
                         RTHCPHYS HCPhys = NIL_RTHCPHYS;
-                        rc = PGMPhysGCPhys2HCPhys(pPool->CTX_SUFF(pVM), pGstPT->a[j].u & X86_PTE_PAE_PG_MASK_FULL, &HCPhys);
+                        rc = PGMPhysGCPhys2HCPhys(pPool->CTX_SUFF(pVM), pGstPT->a[j].u & X86_PTE_PAE_PG_MASK, &HCPhys);
                         if (   rc != VINF_SUCCESS
                             || PGMSHWPTEPAE_GET_HCPHYS(pShwPT->a[j]) != HCPhys)
                         {

@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 32035 2010-08-27 10:08:21Z vboxsync $ */
+/* $Id: MMPagePool.cpp 32036 2010-08-27 10:14:39Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -501,7 +501,7 @@ VMMR3DECL(void *) MMR3PageDummyHCPtr(PVM pVM)
         pVM->mm.s.pvDummyPage = mmR3PagePoolAlloc(pVM->mm.s.pPagePoolR3);
         AssertRelease(pVM->mm.s.pvDummyPage);
         pVM->mm.s.HCPhysDummyPage = mmPagePoolPtr2Phys(pVM->mm.s.pPagePoolR3, pVM->mm.s.pvDummyPage);
-        AssertRelease(!(pVM->mm.s.HCPhysDummyPage & ~X86_PTE_PAE_PG_MASK_FULL));
+        AssertRelease(!(pVM->mm.s.HCPhysDummyPage & ~X86_PTE_PAE_PG_MASK));
     }
     return pVM->mm.s.pvDummyPage;
 }

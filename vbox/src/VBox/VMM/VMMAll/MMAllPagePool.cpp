@@ -1,4 +1,4 @@
-/* $Id: MMAllPagePool.cpp 32035 2010-08-27 10:08:21Z vboxsync $ */
+/* $Id: MMAllPagePool.cpp 32036 2010-08-27 10:14:39Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  *
@@ -61,7 +61,7 @@ void *mmPagePoolPhys2Ptr(PMMPAGEPOOL pPool, RTHCPHYS HCPhys)
     /*
      * Lookup the virtual address.
      */
-    PMMPPLOOKUPHCPHYS pLookup = (PMMPPLOOKUPHCPHYS)RTAvlHCPhysGet(&pPool->pLookupPhys, HCPhys & X86_PTE_PAE_PG_MASK_FULL);
+    PMMPPLOOKUPHCPHYS pLookup = (PMMPPLOOKUPHCPHYS)RTAvlHCPhysGet(&pPool->pLookupPhys, HCPhys & X86_PTE_PAE_PG_MASK);
     if (pLookup)
     {
         STAM_COUNTER_INC(&pPool->cToVirtCalls);

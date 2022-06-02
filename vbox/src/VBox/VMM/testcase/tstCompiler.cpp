@@ -1,4 +1,4 @@
-/* $Id: tstCompiler.cpp 31996 2010-08-26 13:32:30Z vboxsync $ */
+/* $Id: tstCompiler.cpp 32036 2010-08-27 10:14:39Z vboxsync $ */
 /** @file
  * Testing how the compiler deals with various things.
  *
@@ -173,13 +173,13 @@ bool Test6464(X86PTEPAE64 Pte)
 
 void Mix6432Consts(PX86PTEPAE64 pPteDst, PX86PTEPAE64 pPteSrc)
 {
-    pPteDst->u = pPteSrc->u & ~(X86_PTE_PAE_PG_MASK_FULL | X86_PTE_AVL_MASK | X86_PTE_PAT | X86_PTE_PCD | X86_PTE_PWT);
+    pPteDst->u = pPteSrc->u & ~(X86_PTE_PAE_PG_MASK | X86_PTE_AVL_MASK | X86_PTE_PAT | X86_PTE_PCD | X86_PTE_PWT);
 }
 
 
 void Mix32Var64Const64Data(PX86PTEPAE64 pPteDst, uint32_t fMask, uint32_t fFlags)
 {
-    pPteDst->u = (pPteDst->u & (fMask | X86_PTE_PAE_PG_MASK_FULL)) | (fFlags & ~X86_PTE_PAE_PG_MASK_FULL);
+    pPteDst->u = (pPteDst->u & (fMask | X86_PTE_PAE_PG_MASK)) | (fFlags & ~X86_PTE_PAE_PG_MASK);
 }
 
 

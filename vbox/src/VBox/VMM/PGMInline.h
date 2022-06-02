@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 32009 2010-08-26 16:41:19Z vboxsync $ */
+/* $Id: PGMInline.h 32036 2010-08-27 10:14:39Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -520,7 +520,7 @@ DECLINLINE(int) pgmPhysPageQueryTlbe(PPGM pPGM, RTGCPHYS GCPhys, PPPGMPAGEMAPTLB
 {
     int rc;
     PPGMPAGEMAPTLBE pTlbe = &pPGM->CTXSUFF(PhysTlb).aEntries[PGM_PAGEMAPTLB_IDX(GCPhys)];
-    if (pTlbe->GCPhys == (GCPhys & X86_PTE_PAE_PG_MASK_FULL))
+    if (pTlbe->GCPhys == (GCPhys & X86_PTE_PAE_PG_MASK))
     {
         STAM_COUNTER_INC(&pPGM->CTX_SUFF(pStats)->CTX_MID_Z(Stat,PageMapTlbHits));
         rc = VINF_SUCCESS;
@@ -550,7 +550,7 @@ DECLINLINE(int) pgmPhysPageQueryTlbeWithPage(PPGM pPGM, PPGMPAGE pPage, RTGCPHYS
 {
     int rc;
     PPGMPAGEMAPTLBE pTlbe = &pPGM->CTXSUFF(PhysTlb).aEntries[PGM_PAGEMAPTLB_IDX(GCPhys)];
-    if (pTlbe->GCPhys == (GCPhys & X86_PTE_PAE_PG_MASK_FULL))
+    if (pTlbe->GCPhys == (GCPhys & X86_PTE_PAE_PG_MASK))
     {
         STAM_COUNTER_INC(&pPGM->CTX_SUFF(pStats)->CTX_MID_Z(Stat,PageMapTlbHits));
         rc = VINF_SUCCESS;
