@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 30637 2010-07-05 22:36:29Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 30638 2010-07-05 22:45:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -51,6 +51,10 @@ const int XKeyRelease = KeyRelease;
 # endif /* KeyPress */
 # include "XKeyboard.h"
 #endif /* Q_WS_X11 */
+
+#ifdef Q_WS_MAC
+# include "DarwinKeyboard.h"
+#endif /* Q_WS_MAC */
 
 /* Enums representing different keyboard-states: */
 enum { KeyExtended = 0x01, KeyPressed = 0x02, KeyPause = 0x04, KeyPrint = 0x08 };
