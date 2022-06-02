@@ -1,4 +1,4 @@
-/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 31535 2010-08-10 14:46:54Z vboxsync $ */
+/* $Id: VBoxVMSettingsPortForwardingDlg.cpp 31540 2010-08-10 16:04:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -49,7 +49,7 @@ public:
     IPValidator(QObject *pParent) : QValidator(pParent) {}
     ~IPValidator() {}
 
-    QValidator::State validate(QString &strInput, int &iPos) const
+    QValidator::State validate(QString &strInput, int & /* iPos */) const
     {
         QString strDot("\\.");
         QString strDigits("(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)");
@@ -421,6 +421,10 @@ VBoxVMSettingsPortForwardingDlg::VBoxVMSettingsPortForwardingDlg(QWidget *pParen
     , m_pCopyAction(0)
     , m_pDelAction(0)
 {
+#ifdef Q_WS_MAC
+    setWindowFlags(Qt::Sheet);
+#endif /* Q_WS_MAC */
+
     /* Set dialog icon: */
     setWindowIcon(UIIconPool::iconSetFull(QSize(32, 32), QSize(16, 16), ":/nw_32px.png", ":/nw_16px.png"));
 
