@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 34634 2010-12-02 17:21:40Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 34794 2010-12-07 15:28:17Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -504,8 +504,7 @@ HRESULT VirtualBox::init()
         rc = unconst(m->ptrExtPackManager).createObject();
         if (SUCCEEDED(rc))
             /** @todo Define drop zone location. */
-            rc = m->ptrExtPackManager->init(this, NULL /*a_pszDropZoneDir*/, false /*a_fCheckDropZone*/,
-                                            VBOXEXTPACKCTX_PER_USER_DAEMON);
+            rc = m->ptrExtPackManager->initExtPackManager(this, VBOXEXTPACKCTX_PER_USER_DAEMON);
         if (FAILED(rc))
             throw rc;
 #endif

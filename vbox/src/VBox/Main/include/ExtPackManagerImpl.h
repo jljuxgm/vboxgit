@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 34787 2010-12-07 14:51:18Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 34794 2010-12-07 15:28:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -192,8 +192,7 @@ class ATL_NO_VTABLE ExtPackManager :
 
     HRESULT     FinalConstruct();
     void        FinalRelease();
-    HRESULT     init(VirtualBox *a_pVirtualBox, const char *a_pszDropZonePath, bool a_fCheckDropZone,
-                     VBOXEXTPACKCTX a_enmContext);
+    HRESULT     initExtPackManager(VirtualBox *a_pVirtualBox, VBOXEXTPACKCTX a_enmContext);
     void        uninit();
     RTMEMEF_NEW_AND_DELETE_OPERATORS();
     /** @}  */
@@ -211,7 +210,6 @@ class ATL_NO_VTABLE ExtPackManager :
     /** @name Internal interfaces used by other Main classes.
      * @{ */
     HRESULT     doInstall(ExtPackFile *a_pExtPackFile);
-    /*void        processDropZone(void);*/
     void        callAllVirtualBoxReadyHooks(void);
     void        callAllConsoleReadyHooks(IConsole *a_pConsole);
     void        callAllVmCreatedHooks(IMachine *a_pMachine);

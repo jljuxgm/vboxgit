@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 34587 2010-12-01 20:30:02Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 34794 2010-12-07 15:28:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -437,7 +437,7 @@ HRESULT Console::init(IMachine *aMachine, IInternalMachineControl *aControl)
 
 #ifdef VBOX_WITH_EXTPACK
     unconst(mptrExtPackManager).createObject();
-    rc = mptrExtPackManager->init(NULL, NULL, false, VBOXEXTPACKCTX_VM_PROCESS); /* Drop zone handling is VBoxSVC only. */
+    rc = mptrExtPackManager->initExtPackManager(NULL, VBOXEXTPACKCTX_VM_PROCESS);
     AssertComRCReturnRC(rc);
 #endif
 
