@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 34811 2010-12-07 18:23:35Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 34892 2010-12-09 14:43:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -50,7 +50,7 @@ public:
         setText(1, m_data.m_strName);
 
         /* Version: */
-        setText(2, QString("%1.%2").arg(m_data.m_strVersion).arg(m_data.m_strRevision));
+        setText(2, QString("%1r%2").arg(m_data.m_strVersion).arg(m_data.m_strRevision));
 
         /* Tool-tip: */
         QString strTip = m_data.m_strDescription;
@@ -131,7 +131,7 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
         {
             /* Ask user to confirm installation: */
             QString strPackName = extPackFile.GetName();
-            QString strPackVersion = QString("%1.%2").arg(extPackFile.GetVersion()).arg(extPackFile.GetRevision());
+            QString strPackVersion = QString("%1r%2").arg(extPackFile.GetVersion()).arg(extPackFile.GetRevision());
             QString strPackDescription = extPackFile.GetDescription();
             if (vboxProblem().confirmInstallingPackage(strPackName, strPackVersion, strPackDescription))
             {
