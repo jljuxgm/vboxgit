@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 33963 2010-11-11 10:23:42Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 34122 2010-11-16 16:36:24Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -167,6 +167,7 @@ public:
                                         hrc = machine->COMGETTER(VRDEServer)(vrdeServer.asOutParam());
                                         if (SUCCEEDED(hrc) && vrdeServer)
                                         {
+                                            LogRel(("VRDE: the guest user has logged out, disconnecting remote clients.\n"));
                                             vrdeServer->COMSETTER(Enabled)(FALSE);
                                             vrdeServer->COMSETTER(Enabled)(TRUE);
                                         }
