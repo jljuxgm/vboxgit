@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 30498 2010-06-29 12:54:26Z vboxsync $ */
+/* $Id: DevOHCI.cpp 30568 2010-07-02 06:20:42Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -3639,9 +3639,9 @@ static void rhport_power(POHCIROOTHUB pRh, unsigned iPort, bool fPowerUp)
     {
         /* power down */
         pPort->fReg &= ~(  OHCI_PORT_R_POWER_STATUS
-                           | OHCI_PORT_R_CURRENT_CONNECT_STATUS
-                           | OHCI_PORT_R_SUSPEND_STATUS
-                           | OHCI_PORT_R_RESET_STATUS);
+                         | OHCI_PORT_R_CURRENT_CONNECT_STATUS
+                         | OHCI_PORT_R_SUSPEND_STATUS
+                         | OHCI_PORT_R_RESET_STATUS);
         if (pPort->pDev && fOldPPS)
             VUSBIDevPowerOff(pPort->pDev);
     }
@@ -4579,6 +4579,7 @@ static int HcRhPortStatus_w(POHCI pOhci, uint32_t iReg, uint32_t val)
         rhport_power(&pOhci->RootHub, i, true /* power up */);
         pOhci->RootHub.aPorts[i].fReg &= ~OHCI_PORT_R_SUSPEND_STATUS;
         pOhci->RootHub.aPorts[i].fReg |= OHCI_PORT_R_SUSPEND_STATUS_CHANGE;
+        ohciSetInterrupt(pOhci, OHCI_INTR_ROOT_HUB_STATUS_CHANGE);
     }
 
     if (p->fReg != old_state)
