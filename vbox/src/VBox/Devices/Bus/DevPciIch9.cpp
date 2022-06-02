@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 34836 2010-12-08 14:18:29Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 35258 2010-12-20 17:12:57Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation Device.
  */
@@ -516,8 +516,8 @@ DECLINLINE(int) ich9pciSlotGetPirq(uint8_t uBus, uint8_t uDevFn, int iIrqNum)
     return (iIrqNum + iSlotAddend) & 3;
 }
 
-/* irqs corresponding to PCI irqs A-D */
-static const uint8_t aPciIrqs[4] = { 11, 9, 11, 9 };
+/* irqs corresponding to PCI irqs A-D, must match pci_irq_list in rombios.c */
+static const uint8_t aPciIrqs[4] = { 11, 10, 9, 5 };
 
 /* Add one more level up request on APIC input line */
 DECLINLINE(void) ich9pciApicLevelUp(PPCIGLOBALS pGlobals, int irq_num)
@@ -2461,6 +2461,9 @@ static DECLCALLBACK(int) ich9pciConstruct(PPDMDEVINS pDevIns,
 
 static void ich9pciResetDevice(PPCIDEVICE pDev)
 {
+    /* Clear regions */
+    memset(&pDev->Int.s.aIORegions, 0, sizeof(pDev->Int.s.aIORegions));
+
     PCIDevSetCommand(pDev,
                      PCIDevGetCommand(pDev)
                      &
@@ -2474,7 +2477,6 @@ static void ich9pciResetDevice(PPCIDEVICE pDev)
         PCIDevSetByte(pDev, VBOX_PCI_CACHE_LINE_SIZE, 0x0);
         PCIDevSetInterruptLine(pDev, 0x0);
     }
-    /* Clear regions too ? */
 }
 
 
