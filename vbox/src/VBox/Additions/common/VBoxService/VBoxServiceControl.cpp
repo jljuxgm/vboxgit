@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 34867 2010-12-09 10:33:41Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 35060 2010-12-14 10:26:12Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -39,7 +39,7 @@ using namespace guestControl;
 uint32_t g_ControlInterval = 0;
 /** The semaphore we're blocking on. */
 static RTSEMEVENTMULTI      g_hControlEvent = NIL_RTSEMEVENTMULTI;
-/** The guest property service client ID. */
+/** The Guest Control service client ID. */
 static uint32_t             g_GuestControlSvcClientID = 0;
 /** List of spawned processes */
 RTLISTNODE                  g_GuestControlExecThreads;
