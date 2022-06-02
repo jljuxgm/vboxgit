@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 33098 2010-10-13 11:53:47Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 33101 2010-10-13 12:10:24Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -1861,13 +1861,6 @@ static int buslogicPrepareBIOSSCSIRequest(PBUSLOGIC pBusLogic)
         rc = pTaskState->CTX_SUFF(pTargetDevice)->pDrvSCSIConnector->pfnSCSIRequestSend(pTaskState->CTX_SUFF(pTargetDevice)->pDrvSCSIConnector,
                                                                                         &pTaskState->PDMScsiRequest);
         AssertMsgRC(rc, ("Sending request to SCSI layer failed rc=%Rrc\n", rc));
-
-        if (rc == VINF_VD_ASYNC_IO_FINISHED)
-        {
-            vboxscsiRequestFinished(&pBusLogic->VBoxSCSI, &pTaskState->PDMScsiRequest);
-            RTMemCacheFree(pBusLogic->hTaskCache, pTaskState);
-            rc = VINF_SUCCESS;
-        }
     }
 
     return rc;
