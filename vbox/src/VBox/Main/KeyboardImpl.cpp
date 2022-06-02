@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 30676 2010-07-06 16:36:43Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -23,7 +23,9 @@
 
 #include <VBox/com/array.h>
 #include <VBox/pdmdrv.h>
+
 #include <iprt/asm.h>
+#include <iprt/cpp/utils.h>
 
 // defines
 ////////////////////////////////////////////////////////////////////////////////

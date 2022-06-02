@@ -1,4 +1,4 @@
-/* $Id: errorprint.cpp 30676 2010-07-06 16:36:43Z vboxsync $ */
+/* $Id: errorprint.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -27,7 +27,6 @@
 
 namespace com
 {
-
 
 void GluePrintErrorInfo(com::ErrorInfo &info)
 {
@@ -74,7 +73,7 @@ void GlueHandleComError(ComPtr<IUnknown> iface,
                         uint32_t ulLine)
 {
     // if we have full error info, print something nice, and start with the actual error message
-    com::ErrorInfo info(iface);
+    com::ErrorInfo info(iface, COM_IIDOF(IUnknown));
     if (info.isFullAvailable() || info.isBasicAvailable())
         GluePrintErrorInfo(info);
     else

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 30676 2010-07-06 16:36:43Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -386,9 +386,9 @@ int handleStartVM(HandlerArg *a)
         CHECK_ERROR_RET(progress, COMGETTER(ResultCode)(&iRc), rc);
         if (FAILED(iRc))
         {
-            ComPtr <IVirtualBoxErrorInfo> errorInfo;
+            ComPtr<IVirtualBoxErrorInfo> errorInfo;
             CHECK_ERROR_RET(progress, COMGETTER(ErrorInfo)(errorInfo.asOutParam()), 1);
-            ErrorInfo info (errorInfo);
+            ErrorInfo info(errorInfo, COM_IIDOF(IVirtualBoxErrorInfo));
             com::GluePrintErrorInfo(info);
         }
         else

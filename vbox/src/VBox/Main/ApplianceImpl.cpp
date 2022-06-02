@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 30676 2010-07-06 16:36:43Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -17,6 +17,7 @@
  */
 
 #include <iprt/path.h>
+#include <iprt/cpp/utils.h>
 
 #include <VBox/com/array.h>
 

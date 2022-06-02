@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 30676 2010-07-06 16:36:43Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 30681 2010-07-06 17:20:20Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -20,6 +20,7 @@
 #include <iprt/path.h>
 #include <iprt/file.h>
 #include <iprt/s3.h>
+#include <iprt/cpp/utils.h>
 
 #include <VBox/com/array.h>
 
@@ -32,6 +33,8 @@
 
 #include "AutoCaller.h"
 #include "Logging.h"
+
+#include <memory>
 
 ////////////////////////////////////////////////////////////////////////////////
 //
