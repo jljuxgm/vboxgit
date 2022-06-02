@@ -1,4 +1,4 @@
-/* $Id: VCICacheCore.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VCICache.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -19,7 +19,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD_RAW /** @todo logging group */
-#include <VBox/VBoxHDD-CachePlugin.h>
+#include <VBox/vd-cache-plugin.h>
 #include <VBox/err.h>
 
 #include <VBox/log.h>

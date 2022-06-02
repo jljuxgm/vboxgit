@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -35,7 +35,7 @@
 #include <iprt/ctype.h>
 #include <iprt/getopt.h>
 #include <VBox/log.h>
-#include <VBox/VBoxHDD.h>
+#include <VBox/vd.h>
 
 #include "VBoxManage.h"
 using namespace com;

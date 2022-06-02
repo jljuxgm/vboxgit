@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -18,7 +18,7 @@
  */
 
 #include "VBoxGlobal.h"
-#include <VBox/VBoxHDD.h>
+#include <VBox/vd.h>
 #include <VBox/version.h>
 
 #include "VBoxDefs.h"

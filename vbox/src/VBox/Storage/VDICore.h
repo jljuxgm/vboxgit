@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VDICore.h 33567 2010-10-28 15:37:21Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -21,7 +21,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <VBox/VBoxHDD.h>
+#include <VBox/vd.h>
 #ifndef VBOX_VDICORE_VD
 #include <VBox/pdm.h>
 #endif /* !VBOX_VDICORE_VD */

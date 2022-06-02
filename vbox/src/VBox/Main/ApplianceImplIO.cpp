@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 33536 2010-10-28 08:30:48Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
 /** @file
  *
  * IO helper for IAppliance COM class implementations.
@@ -30,7 +30,7 @@
 #include <iprt/asm.h>
 #include <iprt/stream.h>
 #include <iprt/circbuf.h>
-#include <VBox/VBoxHDD.h>
+#include <VBox/vd.h>
 
 /******************************************************************************
  *   Structures and Typedefs                                                  *

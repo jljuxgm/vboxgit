@@ -1,4 +1,4 @@
-/* $Id: VBoxHDD.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VD.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -19,7 +19,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD
-#include <VBox/VBoxHDD.h>
+#include <VBox/vd.h>
 #include <VBox/err.h>
 #include <VBox/sup.h>
 #include <VBox/log.h>
@@ -40,8 +40,8 @@
 #include <iprt/list.h>
 #include <iprt/avl.h>
 
-#include <VBox/VBoxHDD-Plugin.h>
-#include <VBox/VBoxHDD-CachePlugin.h>
+#include <VBox/vd-plugin.h>
+#include <VBox/vd-cache-plugin.h>
 
 #define VBOXHDDDISK_SIGNATURE 0x6f0e2a7d
 
@@ -443,9 +443,7 @@ extern VBOXHDDBACKEND g_VDIBackend;
 extern VBOXHDDBACKEND g_VhdBackend;
 extern VBOXHDDBACKEND g_ParallelsBackend;
 extern VBOXHDDBACKEND g_DmgBackend;
-#ifdef VBOX_WITH_ISCSI
 extern VBOXHDDBACKEND g_ISCSIBackend;
-#endif
 
 static unsigned g_cBackends = 0;
 static PVBOXHDDBACKEND *g_apBackends = NULL;
@@ -456,10 +454,8 @@ static PVBOXHDDBACKEND aStaticBackends[] =
     &g_VhdBackend,
     &g_ParallelsBackend,
     &g_DmgBackend,
-    &g_RawBackend
-#ifdef VBOX_WITH_ISCSI
-    ,&g_ISCSIBackend
-#endif
+    &g_RawBackend,
+    &g_ISCSIBackend
 };
 
 /**

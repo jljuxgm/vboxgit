@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 33556 2010-10-28 13:16:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -36,7 +36,6 @@
 
 #include <VBox/err.h>
 #include <VBox/param.h>
-#include <VBox/VBoxHDD.h>
 #include <VBox/settings.h>
 #include <VBox/version.h>
 

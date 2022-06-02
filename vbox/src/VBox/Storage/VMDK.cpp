@@ -1,4 +1,4 @@
-/* $Id: VmdkHDDCore.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VMDK.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -19,7 +19,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD_VMDK
-#include <VBox/VBoxHDD-Plugin.h>
+#include <VBox/vd-plugin.h>
 #include <VBox/err.h>
 
 #include <VBox/log.h>
@@ -5620,7 +5620,7 @@ static int vmdkStreamReadSequential(PVMDKIMAGE pImage, PVMDKEXTENT pExtent,
                     uGrainSectorAbs += VMDK_BYTE2SECTOR(RT_ALIGN(Marker.cbSize + RT_OFFSETOF(VMDKMARKER, uType), 512));
                     continue;
                 }
-                uint64_t uLBA;
+                uint64_t uLBA = 0;
                 uint32_t cbGrainStreamRead = 0;
                 rc = vmdkFileInflateSync(pImage, pExtent,
                                          VMDK_SECTOR2BYTE(uGrainSectorAbs),

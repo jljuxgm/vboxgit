@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 33524 2010-10-27 16:44:37Z vboxsync $ */
+/* $Id: MediumImpl.h 33567 2010-10-28 15:37:21Z vboxsync $ */
 
 /** @file
  *
@@ -20,7 +20,7 @@
 #ifndef ____H_MEDIUMIMPL
 #define ____H_MEDIUMIMPL
 
-#include <VBox/VBoxHDD.h>
+#include <VBox/vd.h>
 
 #include "VirtualBoxBase.h"
 #include "MediumLock.h"
