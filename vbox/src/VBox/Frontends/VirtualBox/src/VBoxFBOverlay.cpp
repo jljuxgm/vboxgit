@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 31759 2010-08-18 12:18:20Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 31985 2010-08-26 12:18:52Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -4824,7 +4824,7 @@ VBoxVHWACommandElementProcessor::VBoxVHWACommandElementProcessor(QObject *pNotif
 VBoxVHWACommandElementProcessor::~VBoxVHWACommandElementProcessor()
 {
     Assert(!m_NotifyObjectRefs.refs());
-    Assert(!m_CmdPipe.isEmpty());
+    Assert(m_CmdPipe.isEmpty());
     RTCritSectDelete(&mCritSect);
 }
 
