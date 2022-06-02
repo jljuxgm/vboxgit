@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 30758 2010-07-09 12:30:12Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -137,6 +137,31 @@ static int vbglR3CloseAdditionsWinStoragePath(HKEY hKey)
 }
 
 #endif /* RT_OS_WINDOWS */
+
+/**
+ * Reports the Guest Additions status of a certain facility to the host.
+ *
+ * @returns IPRT status value
+ * @param uFacility
+ * @param uStatus
+ * @param uFlags
+ */
+VBGLR3DECL(int) VbglR3ReportAdditionsStatus(uint32_t uFacility, uint32_t uStatus, uint32_t uFlags)
+{
+    VMMDevReportGuestStatus Report;
+    RT_ZERO(Report);
+    int rc = vmmdevInitRequest((VMMDevRequestHeader*)&Report, VMMDevReq_ReportGuestStatus);
+    if (RT_SUCCESS(rc))
+    {
+
+        Report.guestStatus.facility = uFacility;
+        Report.guestStatus.status = uStatus;
+        Report.guestStatus.flags = uFlags;
+
+        rc = vbglR3GRPerform(&Report.header);
+    }
+    return rc;
+}
 
 /**
  * Retrieves the installed Guest Additions version and/or revision.

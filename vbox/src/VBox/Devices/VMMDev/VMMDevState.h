@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 30724 2010-07-08 08:30:20Z vboxsync $ */
+/* $Id: VMMDevState.h 30758 2010-07-09 12:30:12Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -126,8 +126,7 @@ typedef struct VMMDevState
      */
     VBoxGuestInfo guestInfo;
 
-    /** Information reported by guest via VMMDevReportGuestCapabilities
-     */
+    /** Information reported by guest via VMMDevReportGuestCapabilities. */
     uint32_t      guestCaps;
 
     /** "Additions are Ok" indicator, set to true after processing VMMDevReportGuestInfo,

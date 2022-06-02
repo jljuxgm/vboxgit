@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 30594 2010-07-04 12:53:21Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 30758 2010-07-09 12:30:12Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMMDev: driver interface to VMM device
@@ -107,14 +107,14 @@ PPDMIVMMDEVPORT VMMDev::getVMMDevPort()
 
 
 /**
- * Report guest OS version.
+ * Report guest information.
  * Called whenever the Additions issue a guest version report request.
  *
  * @param   pInterface          Pointer to this interface.
  * @param   guestInfo           Pointer to guest information structure
  * @thread  The emulation thread.
  */
-DECLCALLBACK(void) VMMDev::UpdateGuestVersion(PPDMIVMMDEVCONNECTOR pInterface, VBoxGuestInfo *guestInfo)
+DECLCALLBACK(void) VMMDev::UpdateGuestInfo(PPDMIVMMDEVCONNECTOR pInterface, const VBoxGuestInfo *guestInfo)
 {
     return;
 }
@@ -384,7 +384,7 @@ DECLCALLBACK(int) VMMDev::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint3
      */
     pDrvIns->IBase.pfnQueryInterface            = VMMDev::drvQueryInterface;
 
-    pData->Connector.pfnUpdateGuestVersion      = VMMDev::UpdateGuestVersion;
+    pData->Connector.pfnUpdateGuestInfo         = VMMDev::UpdateGuestInfo;
     pData->Connector.pfnUpdateGuestCapabilities = VMMDev::UpdateGuestCapabilities;
     pData->Connector.pfnUpdateMouseCapabilities = VMMDev::UpdateMouseCapabilities;
     pData->Connector.pfnUpdatePointerShape      = VMMDev::UpdatePointerShape;
