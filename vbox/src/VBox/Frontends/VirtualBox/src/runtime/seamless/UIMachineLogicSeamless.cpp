@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 30542 2010-06-30 21:53:06Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 30707 2010-07-07 15:06:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,13 +25,11 @@
 #include "VBoxGlobal.h"
 #include "VBoxProblemReporter.h"
 
+#include "UISession.h"
 #include "UIActionsPool.h"
-#include "UIMouseHandler.h"
 #include "UIMachineLogicSeamless.h"
-#include "UIMachineWindow.h"
 #include "UIMachineWindowSeamless.h"
 #include "UIMultiScreenLayout.h"
-#include "UISession.h"
 
 #ifdef Q_WS_MAC
 # include "VBoxUtils.h"
