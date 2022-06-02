@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 31562 2010-08-11 10:02:40Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 31568 2010-08-11 13:35:59Z vboxsync $ */
 
 /** @file
  *
@@ -131,16 +131,13 @@ public:
 
     STDMETHOD(CreateHardDisk)(IN_BSTR aFormat, IN_BSTR aLocation,
                                IMedium **aHardDisk);
-    STDMETHOD(OpenHardDisk) (IN_BSTR aLocation, AccessMode_T accessMode,
-                             BOOL aSetImageId, IN_BSTR aImageId,
-                             BOOL aSetParentId, IN_BSTR aParentId,
-                             IMedium **aHardDisk);
-    STDMETHOD(FindMedium) (IN_BSTR aLocation, DeviceType_T deviceType, IMedium **aMedium);
-
-    STDMETHOD(OpenDVDImage) (IN_BSTR aLocation, IN_BSTR aId,
-                             IMedium **aDVDImage);
-    STDMETHOD(OpenFloppyImage) (IN_BSTR aLocation, IN_BSTR aId,
-                                IMedium **aFloppyImage);
+    STDMETHOD(OpenMedium)(IN_BSTR aLocation,
+                          DeviceType_T deviceType,
+                          AccessMode_T accessMode,
+                          IMedium **aMedium);
+    STDMETHOD(FindMedium)(IN_BSTR aLocation,
+                          DeviceType_T deviceType,
+                          IMedium **aMedium);
 
     STDMETHOD(GetGuestOSType) (IN_BSTR aId, IGuestOSType **aType);
     STDMETHOD(CreateSharedFolder) (IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable, BOOL aAutoMount);

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 31482 2010-08-09 12:55:33Z vboxsync $ */
+/* $Id: MediumImpl.h 31568 2010-08-11 13:35:59Z vboxsync $ */
 
 /** @file
  *
@@ -78,11 +78,7 @@ public:
     HRESULT init(VirtualBox *aVirtualBox,
                  const Utf8Str &aLocation,
                  HDDOpenMode enOpenMode,
-                 DeviceType_T aDeviceType,
-                 BOOL aSetImageId,
-                 const Guid &aImageId,
-                 BOOL aSetParentId,
-                 const Guid &aParentId);
+                 DeviceType_T aDeviceType);
 
     // initializer used when loading settings
     HRESULT init(VirtualBox *aVirtualBox,
@@ -128,6 +124,8 @@ public:
     STDMETHOD(COMGETTER(MachineIds))(ComSafeArrayOut(BSTR, aMachineIds));
 
     // IMedium methods
+    STDMETHOD(SetIDs)(BOOL aSetImageId, IN_BSTR aImageId,
+                      BOOL aSetParentId, IN_BSTR aParentId);
     STDMETHOD(RefreshState)(MediumState_T *aState);
     STDMETHOD(GetSnapshotIds)(IN_BSTR aMachineId,
                               ComSafeArrayOut(BSTR, aSnapshotIds));
@@ -244,7 +242,7 @@ public:
 
 private:
 
-    HRESULT queryInfo();
+    HRESULT queryInfo(bool fSetImageId, bool fSetParentId);
 
     HRESULT canClose();
     HRESULT unregisterWithVirtualBox(bool *pfNeedsSaveSettings);

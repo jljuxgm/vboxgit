@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 31539 2010-08-10 15:40:18Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 31568 2010-08-11 13:35:59Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1341,13 +1341,10 @@ void Appliance::importOneDiskImage(const ovf::DiskImage &di,
             // attached already from a previous import)
 
             // First open the existing disk image
-            rc = mVirtualBox->OpenHardDisk(Bstr(strSrcFilePath),
-                                           AccessMode_ReadOnly,
-                                           false,
-                                           NULL,
-                                           false,
-                                           NULL,
-                                           pSourceHD.asOutParam());
+            rc = mVirtualBox->OpenMedium(Bstr(strSrcFilePath),
+                                         DeviceType_HardDisk,
+                                         AccessMode_ReadOnly,
+                                         pSourceHD.asOutParam());
             if (FAILED(rc)) DebugBreakThrow(rc);
             fSourceHdNeedsClosing = true;
 
