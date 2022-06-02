@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30871 2010-07-16 10:07:21Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30899 2010-07-19 08:16:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -576,11 +576,7 @@ void Console::uninit()
     // we don't perform uninit() as it's possible that some pending event refers to this source
     unconst(mEventSource).setNull();
 
-    /* dynamically allocated members of mCallbackData are uninitialized
-     * at the end of powerDown() */
-    Assert(!mCallbackData.mpsc.valid && mCallbackData.mpsc.shape.isNull());
-    Assert(!mCallbackData.mcc.valid);
-    Assert(!mCallbackData.klc.valid);
+    mCallbackData.clear();
 
     LogFlowThisFuncLeave();
 }
