@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 32287 2010-09-07 12:38:55Z vboxsync $ */
+/* $Id: FTM.cpp 32291 2010-09-07 13:32:18Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -859,7 +859,8 @@ static int ftmR3SyncMem(PVM pVM)
                 break;
             }
             pVM->ftm.s.StatReceivedMem.c += PAGE_SIZE;
-            Hdr.cbPageRange -= PAGE_SIZE;
+            Hdr.cbPageRange              -= PAGE_SIZE;
+            GCPhys                       += PAGE_SIZE;
         }
     }
     return VINF_SUCCESS;
