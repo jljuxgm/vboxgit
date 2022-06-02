@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 33386 2010-10-24 15:57:55Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 33389 2010-10-24 16:12:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -586,7 +586,7 @@ void UIDetailsPagePrivate::sltUpdateDisplay()
                 item += sSectionItemTpl2.arg(tr("Acceleration", "details report"), accel.join(", "));
 
             /* VRDE tab */
-            CVRDEServer &srv = m_machine.GetVRDEServer();
+            CVRDEServer srv = m_machine.GetVRDEServer();
             if (!srv.isNull())
             {
                 if (srv.GetEnabled())
