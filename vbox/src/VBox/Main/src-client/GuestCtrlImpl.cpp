@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 35540 2011-01-13 15:36:00Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 35676 2011-01-24 14:24:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -205,7 +205,7 @@ HRESULT Guest::taskCopyFile(TaskGuest *aTask)
         if (!RTFileExists(aTask->strSource.c_str()))
         {
             rc = TaskGuest::setProgressErrorInfo(VBOX_E_IPRT_ERROR, aTask->progress,
-                                                 Guest::tr("Source file \"%s\" does not exist"),
+                                                 Guest::tr("Source file \"%s\" does not exist, or is not a file"),
                                                  aTask->strSource.c_str());
         }
         else
@@ -2530,4 +2530,3 @@ STDMETHODIMP Guest::UpdateGuestAdditions(IN_BSTR aSource, ULONG aFlags, IProgres
     return rc;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
-

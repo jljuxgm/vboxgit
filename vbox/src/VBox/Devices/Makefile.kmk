@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35572 2011-01-14 14:51:16Z vboxsync $
+# $Id: Makefile.kmk 35676 2011-01-24 14:24:34Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -516,8 +516,9 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  # For finding PCIInternal.h from VBox/pci.h.
  Bus/DevPCI.cpp_INCS      = Bus
  Bus/DevPciIch9.cpp_INCS  = Bus
- Bus/MsiCommon.cpp_INCS  = Bus
+ Bus/MsiCommon.cpp_INCS   = Bus
  Bus/MsixCommon.cpp_INCS  = Bus
+ Bus/DevPciRaw.cpp_INCS   = Bus
 
  # For finding and generating vbetables.h (see Graphics/BIOS/Makefile.kmk).
  Graphics/DevVGA.cpp_INCS = $(VgaBiosBin_0_OUTDIR)
