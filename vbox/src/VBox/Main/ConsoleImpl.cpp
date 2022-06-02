@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 30430 2010-06-24 12:41:57Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 30431 2010-06-24 12:43:10Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5176,7 +5176,7 @@ HRESULT Console::consoleInitReleaseLog(const ComPtr<IMachine> aMachine)
         else
             maxRAMArch = UINT32_C(1500);
 
-        RTLogRelLogger(loggerRelease, 0, ~0U, "Maximum user application address: %p\n", sysInfo.lpMaximumApplicationAddress);
+        RTLogRelLogger(loggerRelease, 0, ~0U, "Maximum user application address: 0x%p\n", sysInfo.lpMaximumApplicationAddress);
         RTLogRelLogger(loggerRelease, 0, ~0U, "Maximum allowed guest RAM size:   %d MB\n", maxRAMArch);
 #endif
 
