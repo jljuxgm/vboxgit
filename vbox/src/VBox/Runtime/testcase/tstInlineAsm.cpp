@@ -1,4 +1,4 @@
-/* $Id: tstInlineAsm.cpp 30163 2010-06-11 14:13:10Z vboxsync $ */
+/* $Id: tstInlineAsm.cpp 30797 2010-07-13 07:10:39Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -421,7 +421,7 @@ void tstASMCpuId(void)
      {
          ASMCpuId(0x80000008, &s.uEAX, &s.uEBX, &s.uECX, &s.uEDX);
          RTPrintf("Physical Address Width:          %d bits\n"
-                  "Virtual Address Width:           %d bits\n",
+                  "Virtual Address Width:           %d bits\n"
                   "Guest Physical Address Width:    %d bits\n",
                   (s.uEAX >> 0) & 0xff,
                   (s.uEAX >> 8) & 0xff,
