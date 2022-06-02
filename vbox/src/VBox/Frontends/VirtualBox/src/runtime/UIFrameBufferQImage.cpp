@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 31759 2010-08-18 12:18:20Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 32150 2010-08-31 14:14:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -192,7 +192,7 @@ void UIFrameBufferQImage::resizeEvent(UIResizeEvent *pEvent)
             ulong mRealBPP;
         public:
             RemindEvent (ulong aRealBPP)
-                : VBoxAsyncEvent(100), mRealBPP (aRealBPP) {}
+                : VBoxAsyncEvent(0), mRealBPP (aRealBPP) {}
             void handle()
             {
                 vboxProblem().remindAboutWrongColorDepth (mRealBPP, 32);

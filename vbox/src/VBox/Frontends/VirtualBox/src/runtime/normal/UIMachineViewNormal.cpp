@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 30752 2010-07-08 22:31:34Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 32150 2010-08-31 14:14:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -167,7 +167,7 @@ bool UIMachineViewNormal::event(QEvent *pEvent)
             /* We use processEvents rather than sendPostedEvents & set the time out value to max cause on X11 otherwise
              * the layout isn't calculated correctly. Dosn't find the bug in Qt, but this could be triggered through
              * the async nature of the X11 window event system. */
-            QCoreApplication::processEvents(QEventLoop::AllEvents, INT_MAX);
+            qApp->processEvents();
 #else /* Q_WS_X11 */
             QCoreApplication::sendPostedEvents(0, QEvent::LayoutRequest);
 #endif /* Q_WS_X11 */

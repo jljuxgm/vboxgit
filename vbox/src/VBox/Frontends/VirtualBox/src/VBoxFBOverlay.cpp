@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 31985 2010-08-26 12:18:52Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 32150 2010-08-31 14:14:00Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementaion
  */
@@ -3883,7 +3883,7 @@ void VBoxVHWAImage::resize(const VBoxFBSizeInfo & size)
             ulong mRealBPP;
         public:
             RemindEvent (ulong aRealBPP)
-                : VBoxAsyncEvent(100), mRealBPP (aRealBPP) {}
+                : VBoxAsyncEvent(0), mRealBPP (aRealBPP) {}
             void handle()
             {
                 vboxProblem().remindAboutWrongColorDepth (mRealBPP, 32);
