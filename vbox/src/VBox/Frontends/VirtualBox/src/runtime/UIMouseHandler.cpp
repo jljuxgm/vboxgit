@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 35906 2011-02-09 11:02:31Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 35940 2011-02-11 11:58:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -31,6 +31,10 @@
 #include "UIMachineWindow.h"
 #include "UIMachineView.h"
 #include "UIFrameBuffer.h"
+
+#ifdef Q_WS_WIN
+# include "VBoxUtils-win.h"
+#endif /* Q_WS_WIN */
 
 #ifdef Q_WS_X11
 # include <X11/XKBlib.h>
@@ -879,7 +883,7 @@ void UIMouseHandler::updateMouseCursorClipping()
         viewportRectangle = viewportRectangle.intersected(QApplication::desktop()->availableGeometry());
         /* Trim partial-viewport-rectangle by top-most windows: */
         QRegion viewportRegion(viewportRectangle);
-        QRegion topMostRegion(VBoxGlobal::areaCoveredByTopMostWindows());
+        QRegion topMostRegion(NativeWindowSubsystem::areaCoveredByTopMostWindows());
         viewportRegion -= topMostRegion;
         /* Check if partial-viewport-region consists of 1 rectangle: */
         if (viewportRegion.rectCount() > 1)

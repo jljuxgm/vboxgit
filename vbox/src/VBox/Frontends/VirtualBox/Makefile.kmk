@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35808 2011-02-01 11:22:40Z vboxsync $
+# $Id: Makefile.kmk 35940 2011-02-11 11:58:32Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -573,7 +573,8 @@ endif
 
 VirtualBox_SOURCES.win += \
 	src/platform/win/VirtualBox.rc \
-	src/platform/win/UIDesktopServices_win.cpp
+	src/platform/win/UIDesktopServices_win.cpp \
+	src/platform/win/VBoxUtils-win.cpp
 
 VirtualBox_DEFS.darwin += VBOX_DARWIN_USE_NATIVE_CONTROLS
 VirtualBox_SOURCES.darwin += \
