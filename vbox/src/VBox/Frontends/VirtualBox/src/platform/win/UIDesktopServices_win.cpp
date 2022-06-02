@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_win.cpp 34409 2010-11-26 16:46:26Z vboxsync $ */
+/* $Id: UIDesktopServices_win.cpp 34415 2010-11-26 17:09:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -63,7 +63,7 @@ bool UIDesktopServices::createMachineShortcut(const QString & /* strSrcFile */, 
         pPPF->Release();
     if (pShl)
         pShl->Release();
-    return SUCCEDDED(rc);
+    return SUCCEEDED(rc);
 }
 
 bool UIDesktopServices::openInFileManager(const QString &strFile)

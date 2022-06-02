@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 34397 2010-11-26 15:06:16Z vboxsync $
+# $Id: Makefile.kmk 34416 2010-11-26 17:17:12Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -629,6 +629,7 @@ VBoxC_SOURCES = \
 	RemoteUSBDeviceImpl.cpp \
 	VirtualBoxBase.cpp \
 	VirtualBoxErrorInfoImpl.cpp \
+	VirtualBoxClientImpl.cpp \
 	ProgressImpl.cpp \
 	SharedFolderImpl.cpp \
 	SessionImpl.cpp \
