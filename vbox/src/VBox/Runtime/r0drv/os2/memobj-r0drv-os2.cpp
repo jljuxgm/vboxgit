@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-os2.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: memobj-r0drv-os2.cpp 39744 2012-01-10 18:15:04Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, OS/2.
  */
@@ -166,7 +166,8 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocLow(PPRTR0MEMOBJINTERNAL ppMem, size_t cb, 
         KernVMFree(pMemOs2->Core.pv);
     }
     rtR0MemObjDelete(&pMemOs2->Core);
-    return RTErrConvertFromOS2(rc);
+    rc = RTErrConvertFromOS2(rc);
+    return rc == VERR_NO_MEMORY ? VERR_NO_LOW_MEMORY : rc;
 }
 
 

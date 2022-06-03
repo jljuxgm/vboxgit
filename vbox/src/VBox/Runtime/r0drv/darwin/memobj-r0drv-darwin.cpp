@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 39744 2012-01-10 18:15:04Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -507,7 +507,14 @@ static int rtR0MemObjNativeAllocWorker(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
                     return VINF_SUCCESS;
                 }
 
-                rc = VERR_NO_MEMORY;
+                if (enmType == RTR0MEMOBJTYPE_PHYS_NC)
+                    rc = VERR_NO_PHYS_MEMORY;
+                else if (enmType == RTR0MEMOBJTYPE_LOW)
+                    rc = VERR_NO_LOW_MEMORY;
+                else if (enmType == RTR0MEMOBJTYPE_CONT)
+                    rc = VERR_NO_CONT_MEMORY;
+                else
+                    rc = VERR_NO_MEMORY;
             }
             else
                 rc = VERR_MEMOBJ_INIT_FAILED;
