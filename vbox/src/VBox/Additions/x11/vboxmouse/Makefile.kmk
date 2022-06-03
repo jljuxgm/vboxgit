@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36301 2011-03-17 11:46:42Z vboxsync $
+# $Id: Makefile.kmk 36388 2011-03-24 09:28:16Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Additions XFree86 and X.org mouse drivers.
 #
@@ -211,26 +211,6 @@ vboxmouse_drv_19_INCS := \
 	$(VBOX_PATH_X11_ROOT)/xproto-7.0.18 \
 	$(PATH_SUB_CURRENT)
 vboxmouse_drv_19_SOURCES = \
-	vboxmouse_15.c
-
-
-#
-# vboxmouse_drv_110rc
-#
-DLLS += vboxmouse_drv_110rc
-vboxmouse_drv_110rc_TEMPLATE = VBOXGUESTR3XORGMOD
-vboxmouse_drv_110rc_DEFS := $(vboxmouse_drv_70_DEFS) NO_ANSIC
-## @todo replace $(VBOX_PATH_X11_ROOT)/xorg-server-1.6.0-local
-vboxmouse_drv_110rc_INCS := \
-	$(VBOX_PATH_X11_ROOT)/inputproto-1.9.99.902 \
-	$(VBOX_PATH_X11_ROOT)/libpciaccess-0.10.8 \
-	$(VBOX_PATH_X11_ROOT)/pixman-0.16.0 \
-	$(VBOX_PATH_X11_ROOT)/xextproto-7.1.1 \
-	$(VBOX_PATH_X11_ROOT)/xorg-server-1.9.99.901+git20110131.be3be758 \
-	$(VBOX_PATH_X11_ROOT)/xorg-server-1.6.0-local \
-	$(VBOX_PATH_X11_ROOT)/xproto-7.0.18 \
-	$(PATH_SUB_CURRENT)
-vboxmouse_drv_110rc_SOURCES = \
 	vboxmouse_15.c
 
 
