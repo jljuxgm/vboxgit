@@ -1,4 +1,4 @@
-/* $Id: sems-os2.cpp 33393 2010-10-24 16:17:00Z vboxsync $ */
+/* $Id: sems-os2.cpp 40304 2012-02-29 20:02:14Z vboxsync $ */
 /** @file
  * IPRT - Semaphores, OS/2.
  */
@@ -51,7 +51,7 @@ RTDECL(int)  RTSemEventCreate(PRTSEMEVENT phEventSem)
 
 RTDECL(int)  RTSemEventCreateEx(PRTSEMEVENT phEventSem, uint32_t fFlags, RTLOCKVALCLASS hClass, const char *pszNameFmt, ...)
 {
-    AssertReturn(!(fFlags & ~(RTSEMEVENT_FLAGS_NO_LOCK_VAL | RTSEMEVENT_FLAGS_BOOTSTRAP_HACK), VERR_INVALID_PARAMETER);
+    AssertReturn(!(fFlags & ~(RTSEMEVENT_FLAGS_NO_LOCK_VAL | RTSEMEVENT_FLAGS_BOOTSTRAP_HACK)), VERR_INVALID_PARAMETER);
     Assert(!(fFlags & RTSEMEVENT_FLAGS_BOOTSTRAP_HACK) || (fFlags & RTSEMEVENT_FLAGS_NO_LOCK_VAL));
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: iprt.h 35662 2011-01-20 18:11:08Z vboxsync $ */
+/* $Id: iprt.h 40304 2012-02-29 20:02:14Z vboxsync $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
@@ -190,6 +190,15 @@
 #else
 # define RT_ASSERT_PREEMPTIBLE()        do { } while (0)
 #endif
+
+
+RT_C_DECLS_BEGIN
+
+#ifdef RT_OS_OS2
+uint32_t rtR0SemWaitOs2ConvertTimeout(uint32_t fFlags, uint64_t uTimeout);
+#endif
+
+RT_C_DECLS_END
 
 #endif
 
