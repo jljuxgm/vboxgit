@@ -1,4 +1,4 @@
-/* $Id: tstRTMemWipe.cpp 40365 2012-03-05 18:48:55Z vboxsync $ */
+/* $Id: tstRTMemWipe.cpp 41031 2012-04-23 18:36:11Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMemWipe* functions.
  */
@@ -68,8 +68,8 @@ static void doMemWipeThoroughly(RTTEST hTest)
                           cbAlloc);
             continue;
         }
-        RTMemWipeThoroughly(pvWipe, RT_MIN(cbAlloc, RTRandU32Ex(1, cbAlloc)),
-                            p /* Passes */);
+        size_t cbWipeRand = RTRandU32Ex(1, cbAlloc);
+        RTMemWipeThoroughly(pvWipe, RT_MIN(cbAlloc, cbWipeRand), p /* Passes */);
         if (!memcmp(pvWipe, pvBuf, cbAlloc))
             RTTestIFailed("Memory blocks must differ (%z bytes, 0x%p vs. 0x%p)!\n",
                           cbAlloc, pvWipe, pvBuf);
