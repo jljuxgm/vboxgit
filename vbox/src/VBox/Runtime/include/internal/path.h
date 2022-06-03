@@ -1,4 +1,4 @@
-/* $Id: path.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: path.h 39626 2011-12-15 11:33:47Z vboxsync $ */
 /** @file
  * IPRT - RTPath Internal header.
  */
@@ -47,7 +47,7 @@ DECLHIDDEN(size_t)  rtPathRootSpecLen(const char *pszPath);
 DECLHIDDEN(size_t)  rtPathVolumeSpecLen(const char *pszPath);
 DECLHIDDEN(int)     rtPathPosixRename(const char *pszSrc, const char *pszDst, unsigned fRename, RTFMODE fFileType);
 DECLHIDDEN(int)     rtPathWin32MoveRename(const char *pszSrc, const char *pszDst, uint32_t fFlags, RTFMODE fFileType);
-
+DECLHIDDEN(int)     rtPathOpenPathNoFollowFh(const char *pszPath, int *fh, const char **ppszName);
 
 /**
  * Converts a path from IPRT to native representation.

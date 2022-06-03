@@ -1,4 +1,4 @@
-/* $Id: dir.h 28918 2010-04-29 18:30:09Z vboxsync $ */
+/* $Id: dir.h 39626 2011-12-15 11:33:47Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -128,6 +128,6 @@ DECLINLINE(bool) rtDirValidHandle(PRTDIR pDir)
  *                      Find-first style systems can use this to setup the
  *                      wildcard expression.
  */
-int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf);
+int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf, uint32_t fOpen);
 
 #endif

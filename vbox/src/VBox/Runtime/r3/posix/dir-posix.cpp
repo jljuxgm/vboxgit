@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
+/* $Id: dir-posix.cpp 39626 2011-12-15 11:33:47Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -193,7 +193,7 @@ RTDECL(int) RTDirFlush(const char *pszPath)
 }
 
 
-int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
+int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf, uint32_t fOpen)
 {
     NOREF(pszPathBuf); /* only used on windows */
 
@@ -204,7 +204,30 @@ int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
     int rc = rtPathToNative(&pszNativePath, pDir->pszPath, NULL);
     if (RT_SUCCESS(rc))
     {
-        pDir->pDir = opendir(pszNativePath);
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
+        /* XXX Darwin? */
+        if (fOpen & RTDIROPEN_FLAGS_NO_SYMLINKS)
+        {
+            const char *pszName;
+            int fhDir;
+            rc = rtPathOpenPathNoFollowFh(pszNativePath, &fhDir, &pszName);
+            printf("rtPathOpenPathNoFollowFh '%s' => %d\n", pszNativePath, rc);
+            AssertRCReturn(rc, rc);
+            if (pszName != NULL)
+            {
+                AssertMsgFailed(("Path name '%s' contains filename\n", pszNativePath));
+                return VERR_INVALID_PARAMETER;
+            }
+            pDir->pDir = fdopendir(fhDir);
+            /*
+             * do NOT close fhDir, it will be closed implicitely when closing pDir!
+             */
+        }
+        else
+#endif
+        {
+            pDir->pDir = opendir(pszNativePath);
+        }
         if (pDir->pDir)
         {
             /*

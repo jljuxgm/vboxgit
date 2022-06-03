@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: fileio-posix.cpp 39626 2011-12-15 11:33:47Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -203,7 +203,27 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint64_t fOpen)
     if (RT_FAILURE(rc))
         return (rc);
 
-    int fh = open(pszNativeFilename, fOpenMode, fMode);
+    int fh;
+#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
+    /* XXX Darwin? */
+    if (fOpen & RTFILE_O_NO_SYMLINKS)
+    {
+        const char *pszName;
+        int fhDir;
+        rc = rtPathOpenPathNoFollowFh(pszNativeFilename, &fhDir, &pszName);
+        if (RT_FAILURE(rc))
+        {
+            rtPathFreeNative(pszNativeFilename, pszFilename);
+            return rc;
+        }
+        fh = openat(fhDir, pszName, fOpenMode, fMode | O_NOFOLLOW);
+        close(fhDir);
+    }
+    else
+#endif
+    {
+        fh = open(pszNativeFilename, fOpenMode, fMode);
+    }
     int iErr = errno;
 
 #ifdef O_CLOEXEC
