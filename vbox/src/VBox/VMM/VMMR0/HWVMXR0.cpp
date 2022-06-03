@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 40451 2012-03-13 16:13:54Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 40551 2012-03-20 13:57:43Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -1308,13 +1308,10 @@ static void hmR0VmxUpdateExceptionBitmap(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         u32TrapMask &= ~RT_BIT(X86_XCPT_PF);   /* no longer need to intercept #PF. */
 #endif
 
-    /* Also catch floating point exceptions as we need to report them to the guest in a different way. */
-    if (    CPUMIsGuestFPUStateActive(pVCpu) == true
-        && !(pCtx->cr0 & X86_CR0_NE)
-        && !pVCpu->hwaccm.s.fFPUOldStyleOverride)
+    /* Also catch floating point exceptions if we need to report them to the guest in a different way. */
+    if (!(pCtx->cr0 & X86_CR0_NE))
     {
         u32TrapMask |= RT_BIT(X86_XCPT_MF);
-        pVCpu->hwaccm.s.fFPUOldStyleOverride = true;
     }
 
 #ifdef VBOX_STRICT
