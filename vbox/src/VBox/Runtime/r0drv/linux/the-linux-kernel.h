@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 39829 2012-01-22 12:36:30Z vboxsync $ */
+/* $Id: the-linux-kernel.h 39840 2012-01-23 17:32:44Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -316,6 +316,10 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
  * Stop using the linux bool type.
  */
 #undef bool
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 3, 0)
+typedef int umode_t
+#endif
 
 /*
  * There are post-2.6.24 kernels (confusingly with unchanged version number)
