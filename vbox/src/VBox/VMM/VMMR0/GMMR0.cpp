@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 37247 2011-05-30 10:02:05Z vboxsync $ */
+/* $Id: GMMR0.cpp 37250 2011-05-30 10:09:57Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2814,7 +2814,6 @@ static int gmmR0AllocatePagesNew(PGMM pGMM, PGVM pGVM, uint32_t cPages, PGMMPAGE
      * Bound mode is also relatively straightforward.
      */
     int rc = VINF_SUCCESS;
-    PGMMCHUNK pChunk;
     if (pGMM->fBoundMemoryMode)
     {
         iPage = gmmR0AllocatePagesInBoundMode(pGMM, pGVM, iPage, cPages, paPages);
