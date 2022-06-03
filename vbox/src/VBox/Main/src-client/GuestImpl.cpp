@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 36069 2011-02-24 11:57:32Z vboxsync $ */
+/* $Id: GuestImpl.cpp 36128 2011-03-02 05:44:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -391,6 +391,8 @@ STDMETHODIMP Guest::InternalGetStatistics(ULONG *aCpuUser, ULONG *aCpuKernel, UL
             *aMemBalloonTotal = (ULONG)(uBalloonedTotal / _1K);
             *aMemSharedTotal  = (ULONG)(uSharedTotal / _1K);
         }
+        else
+            return E_FAIL;
 
         /* Query the missing per-VM memory statistics. */
         *aMemShared  = 0;
@@ -400,6 +402,8 @@ STDMETHODIMP Guest::InternalGetStatistics(ULONG *aCpuUser, ULONG *aCpuKernel, UL
         {
             *aMemShared = (ULONG)(uSharedMem / _1K);
         }
+        else
+            return E_FAIL;
     }
     else
     {
@@ -408,6 +412,7 @@ STDMETHODIMP Guest::InternalGetStatistics(ULONG *aCpuUser, ULONG *aCpuKernel, UL
         *aMemBalloonTotal = 0;
         *aMemSharedTotal  = 0;
         *aMemShared       = 0;
+        return E_FAIL;
     }
 
     return S_OK;

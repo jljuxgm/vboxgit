@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 36121 2011-03-01 15:25:18Z vboxsync $ */
+/* $Id: HostImpl.cpp 36128 2011-03-02 05:44:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2793,7 +2793,7 @@ void Host::registerMetrics(PerformanceCollector *aCollector)
                                                     ramUsageUsed,
                                                     ramUsageFree);
     aCollector->registerBaseMetric (ramUsage);
-    pm::BaseMetric *ramVmm = new pm::HostRamVmm(hal, objptr, 
+    pm::BaseMetric *ramVmm = new pm::HostRamVmm(aCollector->getGuestManager(), objptr, 
                                                 ramVMMUsed,
                                                 ramVMMFree,
                                                 ramVMMBallooned,

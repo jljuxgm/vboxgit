@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 36082 2011-02-25 12:21:57Z vboxsync $ */
+/* $Id: MachineImpl.h 36128 2011-03-02 05:44:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -859,7 +859,7 @@ protected:
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
     void registerMetrics(PerformanceCollector *aCollector, Machine *aMachine, RTPROCESS pid);
 
-    pm::CollectorGuestHAL  *mGuestHAL;
+    pm::CollectorGuest     *mCollectorGuest;
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
     Machine* const          mPeer;
