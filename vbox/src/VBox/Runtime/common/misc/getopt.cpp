@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
+/* $Id: getopt.cpp 40598 2012-03-23 18:08:59Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -319,6 +319,38 @@ static int rtGetOptProcessValue(uint32_t fFlags, const char *pszValue, PRTGETOPT
     {
         case RTGETOPT_REQ_STRING:
             pValueUnion->psz = pszValue;
+            break;
+
+        case RTGETOPT_REQ_BOOL:
+            if (   !RTStrICmp(pszValue, "true")
+                || !RTStrICmp(pszValue, "t")
+                || !RTStrICmp(pszValue, "yes")
+                || !RTStrICmp(pszValue, "y")
+                || !RTStrICmp(pszValue, "enabled")
+                || !RTStrICmp(pszValue, "enable")
+                || !RTStrICmp(pszValue, "en")
+                || !RTStrICmp(pszValue, "e")
+                || !RTStrICmp(pszValue, "on")
+                || !RTStrCmp(pszValue, "1")
+                )
+                pValueUnion->f = true;
+            else if (   !RTStrICmp(pszValue, "false")
+                     || !RTStrICmp(pszValue, "f")
+                     || !RTStrICmp(pszValue, "no")
+                     || !RTStrICmp(pszValue, "n")
+                     || !RTStrICmp(pszValue, "disabled")
+                     || !RTStrICmp(pszValue, "disable")
+                     || !RTStrICmp(pszValue, "dis")
+                     || !RTStrICmp(pszValue, "d")
+                     || !RTStrICmp(pszValue, "off")
+                     || !RTStrCmp(pszValue, "0")
+                     )
+                pValueUnion->f = false;
+            else
+            {
+                pValueUnion->psz = pszValue;
+                return VERR_GETOPT_UNKNOWN_OPTION;
+            }
             break;
 
         case RTGETOPT_REQ_BOOL_ONOFF:
