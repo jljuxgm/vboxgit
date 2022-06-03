@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 38348 2011-08-08 12:09:18Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 39408 2011-11-24 13:44:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -390,7 +390,7 @@ void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
     if (m_pMiniToolBar)
     {
         /* Get mini-toolbar mask: */
-        QRegion toolBarRegion(m_pMiniToolBar->mask());
+        QRegion toolBarRegion(m_pMiniToolBar->rect());
 
         /* Move mini-toolbar mask to mini-toolbar position: */
         toolBarRegion.translate(QPoint(m_pMiniToolBar->x(), m_pMiniToolBar->y()));
