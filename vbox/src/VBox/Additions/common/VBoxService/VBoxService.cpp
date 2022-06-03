@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 40129 2012-02-14 13:45:25Z vboxsync $ */
+/* $Id: VBoxService.cpp 40731 2012-03-30 20:20:43Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -243,7 +243,7 @@ static int VBoxServiceLogCreate(const char *pszLogFile)
 
 static void VBoxServiceLogDestroy(void)
 {
-    RTLogDestroy(g_pLoggerRelease);
+    RTLogDestroy(RTLogRelSetDefaultInstance(NULL));
 }
 
 
