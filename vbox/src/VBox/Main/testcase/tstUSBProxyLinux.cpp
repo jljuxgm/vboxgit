@@ -1,4 +1,4 @@
-/* $Id: tstUSBProxyLinux.cpp 36993 2011-05-06 21:53:21Z vboxsync $ */
+/* $Id: tstUSBProxyLinux.cpp 36994 2011-05-06 22:20:05Z vboxsync $ */
 /** @file
  * USBProxyServiceLinux test case.
  */
@@ -90,7 +90,7 @@ static struct
     { "sysfs", "/dev/bus/usb", NULL, false, NULL, false, VERR_NO_MEMORY, VERR_NO_MEMORY, "/dev/bus/usb", false },
     { "sysfs", "/dev/bus/usb", "/dev/usbvbox", false, "/proc/usb/bus", false, VINF_SUCCESS, VINF_SUCCESS, "/dev/bus/usb", false },
     { "sysfs", "/dev/bus/usb", "/dev/usbvbox", false, "/proc/usb/bus", false, VERR_NO_MEMORY, VERR_NO_MEMORY, "/dev/bus/usb", false },
-    { "sysfs", NULL, "/dev/usbvbox", true, NULL, false, VINF_SUCCESS, VINF_SUCCESS, "/dev/vboxusb", false },
+    { "sysfs", NULL, "/dev/vboxusb", true, NULL, false, VINF_SUCCESS, VINF_SUCCESS, "/dev/vboxusb", false },
     { "usbfs", "/dev/bus/usb", NULL, false, NULL, false, VINF_SUCCESS, VINF_SUCCESS, "/dev/bus/usb", true },
     { "usbfs", "/dev/bus/usb", NULL, false, NULL, false, VERR_NO_MEMORY, VERR_NO_MEMORY, "/dev/bus/usb", true },
     { "usbfs", "/dev/bus/usb", "/dev/usbvbox", false, "/proc/usb/bus", false, VINF_SUCCESS, VINF_SUCCESS, "/dev/bus/usb", true },
