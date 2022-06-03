@@ -1,4 +1,4 @@
-# $Id: Config.kmk 40975 2012-04-18 14:49:24Z vboxsync $
+# $Id: Config.kmk 40989 2012-04-19 13:28:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -417,7 +417,9 @@ VBOX_WITH_EFI = 1
 # Include the EFI firmware into the package
 VBOX_WITH_EFIFW_PACKING = 1
 # Use kStuff for MACH-O and LX binary loading.
-IPRT_WITH_KSTUFF = 1
+if1of ($(KBUILD_TARGET_ARCH), x86 amd64)
+ IPRT_WITH_KSTUFF = 1
+endif
 # Enable setuid wrapper for Solaris host DVD.
 #VBOX_WITH_SUID_WRAPPER = 1
 # Enable the virtual SATA/AHCI controller
@@ -5058,7 +5060,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40975 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40989 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
