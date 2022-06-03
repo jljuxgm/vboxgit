@@ -1,4 +1,4 @@
-/* $Id: kLdrModMachO.c 43 2011-08-31 14:37:38Z bird $ */
+/* $Id: kLdrModMachO.c 44 2011-11-04 11:47:47Z bird $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -1169,7 +1169,7 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                                 pSeg->fFlags = 0;
                                 pSeg->enmProt = KPROT_EXECUTE_WRITECOPY; /** @todo fixme! */
                                 pSeg->cb = pSect->size;
-                                pSeg->Alignment = (1 << pSect->align);
+                                pSeg->Alignment = (KLDRADDR)1 << pSect->align;
                                 pSeg->LinkAddress = pSect->addr;
                                 if (pSect->offset)
                                 {
@@ -1304,7 +1304,7 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                                 pSeg->fFlags = 0;
                                 pSeg->enmProt = KPROT_EXECUTE_WRITECOPY; /** @todo fixme! */
                                 pSeg->cb = pSect->size;
-                                pSeg->Alignment = (1 << pSect->align);
+                                pSeg->Alignment = (KLDRADDR)1 << pSect->align;
                                 pSeg->LinkAddress = pSect->addr;
                                 if (pSect->offset)
                                 {
