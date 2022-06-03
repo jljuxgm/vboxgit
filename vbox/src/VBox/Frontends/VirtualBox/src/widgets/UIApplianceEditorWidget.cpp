@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 38384 2011-08-09 16:07:54Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,14 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* VBox includes */
-#include "UIApplianceEditorWidget.h"
-#include "VBoxGlobal.h"
-#include "UIMessageCenter.h"
-#include "VBoxOSTypeSelectorButton.h"
-#include "UILineTextEdit.h"
-
-/* Qt includes */
+/* Qt includes: */
 #include <QItemDelegate>
 #include <QSortFilterProxyModel>
 #include <QHeaderView>
@@ -32,6 +25,16 @@
 #include <QTextEdit>
 #include <QSpinBox>
 #include <QComboBox>
+
+/* GUI includes: */
+#include "UIApplianceEditorWidget.h"
+#include "VBoxGlobal.h"
+#include "UIMessageCenter.h"
+#include "VBoxOSTypeSelectorButton.h"
+#include "UILineTextEdit.h"
+
+/* COM includes: */
+#include "CSystemProperties.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // ModelItem

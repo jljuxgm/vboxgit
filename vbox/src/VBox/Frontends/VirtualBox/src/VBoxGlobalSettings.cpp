@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.cpp 37544 2011-06-17 13:54:47Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -20,14 +20,20 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include "precomp.h"
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-/* Qt includes */
+
+/* Qt includes: */
 #include <QString>
 #include <QRegExp>
 #include <QVariant>
 
+/* GUI includes: */
 #include "VBoxGlobalSettings.h"
 #include "UIHotKeyEditor.h"
-#include "COMDefs.h"
+
+/* COM includes: */
+#include "COMEnums.h"
+#include "CVirtualBox.h"
+
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /** @class VBoxGlobalSettingsData

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,7 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QGridLayout>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -27,13 +27,16 @@
 #include <QCheckBox>
 #include <QLineEdit>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardCloneVDPageExpert.h"
 #include "UIWizardCloneVD.h"
 #include "UIMessageCenter.h"
 #include "UIIconPool.h"
 #include "VBoxMediaComboBox.h"
 #include "QIToolButton.h"
+
+/* COM includes: */
+#include "CSystemProperties.h"
 
 UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &sourceVirtualDisk)
 {

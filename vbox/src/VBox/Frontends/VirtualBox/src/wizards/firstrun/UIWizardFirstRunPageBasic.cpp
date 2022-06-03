@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.cpp 41401 2012-05-22 16:23:13Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,14 +17,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardFirstRunPageBasic.h"
 #include "UIWizardFirstRun.h"
-#include "COMDefs.h"
 #include "UIIconPool.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"

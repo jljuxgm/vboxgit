@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 41389 2012-05-22 13:04:09Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,18 +17,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QDir>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLineEdit>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardNewVMPageBasic1.h"
 #include "UIWizardNewVM.h"
 #include "UIMessageCenter.h"
 #include "UINameAndSystemEditor.h"
 #include "QIRichTextLabel.h"
+
+/* COM includes: */
+#include "CSystemProperties.h"
 
 /* Defines some patterns to guess the right OS type. Should be in sync with
  * VirtualBox-settings-common.xsd in Main. The list is sorted by priority. The

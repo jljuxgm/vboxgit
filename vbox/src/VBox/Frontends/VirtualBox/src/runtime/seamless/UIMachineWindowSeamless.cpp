@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 41487 2012-05-29 17:13:41Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,7 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QDesktopWidget>
 #include <QMenu>
 #include <QTimer>
@@ -25,7 +25,7 @@
 # include <QMenuBar>
 #endif /* Q_WS_MAC */
 
-/* Local includes: */
+/* GUI includes: */
 #include "VBoxGlobal.h"
 #include "UISession.h"
 #include "UIActionPoolRuntime.h"
@@ -38,6 +38,9 @@
 #ifdef Q_WS_MAC
 # include "VBoxUtils.h"
 #endif /* Q_WS_MAC */
+
+/* COM includes: */
+#include "CSnapshot.h"
 
 UIMachineWindowSeamless::UIMachineWindowSeamless(UIMachineLogic *pMachineLogic, ulong uScreenId)
     : UIMachineWindow(pMachineLogic, uScreenId)

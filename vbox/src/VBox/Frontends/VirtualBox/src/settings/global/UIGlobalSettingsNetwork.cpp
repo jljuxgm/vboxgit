@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,17 +17,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes */
+/* Qt includes: */
 #include <QHeaderView>
 #include <QHostAddress>
 
-/* Local includes */
+/* GUI includes: */
 #include "QIWidgetValidator.h"
 #include "UIIconPool.h"
 #include "UIGlobalSettingsNetwork.h"
 #include "UIGlobalSettingsNetworkDetails.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+
+/* COM includes: */
+#include "CHostNetworkInterface.h"
+#include "CDHCPServer.h"
 
 /* Host-network item constructor: */
 UIHostInterfaceItem::UIHostInterfaceItem()

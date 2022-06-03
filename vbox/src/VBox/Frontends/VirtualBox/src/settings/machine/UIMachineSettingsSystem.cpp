@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,15 +17,20 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes */
+/* Qt includes: */
+#include <QHeaderView>
+
+/* GUI includes: */
 #include "QIWidgetValidator.h"
 #include "UIIconPool.h"
 #include "VBoxGlobal.h"
 #include "UIMachineSettingsSystem.h"
 
-/* Global includes */
+/* COM includes: */
+#include "CBIOSSettings.h"
+
+/* Other VBox includes: */
 #include <iprt/cdefs.h>
-#include <QHeaderView>
 
 UIMachineSettingsSystem::UIMachineSettingsSystem()
     : mValidator(0)

@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 41051 2012-04-25 12:48:17Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,19 +17,17 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes */
+/* GUI includes: */
 #include "UIConsoleEventHandler.h"
 #include "UIMainEventListener.h"
 #include "VBoxGlobal.h"
 #include "UISession.h"
-
 #ifdef Q_WS_MAC
 # include "VBoxUtils.h"
 #endif /* Q_WS_MAC */
 
-/* Global includes */
-//#include <iprt/thread.h>
-//#include <iprt/stream.h>
+/* COM includes: */
+#include "CEventSource.h"
 
 /* static */
 UIConsoleEventHandler *UIConsoleEventHandler::m_pInstance = 0;

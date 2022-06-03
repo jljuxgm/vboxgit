@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,13 +17,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes: */
+/* GUI includes: */
 #include "QIWidgetValidator.h"
 #include "QIArrowButtonSwitch.h"
 #include "VBoxGlobal.h"
 #include "UIMachineSettingsNetwork.h"
 #include "QITabWidget.h"
 
+/* COM includes: */
+#include "CNetworkAdapter.h"
+#include "CNATEngine.h"
+#include "CHostNetworkInterface.h"
+
+/* Other VBox includes: */
 #ifdef VBOX_WITH_VDE
 # include <iprt/ldr.h>
 # include <VBox/VDEPlug.h>

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 40192 2012-02-21 10:46:37Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,12 +17,17 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* Qt includes: */
+#include <QDesktopWidget>
+
+/* GUI includes: */
 #include "QIWidgetValidator.h"
 #include "UIMachineSettingsDisplay.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 
-#include <QDesktopWidget>
+/* COM includes: */
+#include "CVRDEServer.h"
 
 /**
  *  Calculates a suitable page step size for the given max value. The returned

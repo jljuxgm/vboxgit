@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,10 +17,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QVariant>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardNewVD.h"
 #include "UIWizardNewVDPageBasic1.h"
 #include "UIWizardNewVDPageBasic2.h"
@@ -28,6 +28,9 @@
 #include "UIWizardNewVDPageExpert.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+
+/* COM includes: */
+#include "CMediumFormat.h"
 
 UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
                              const QString &strDefaultName, const QString &strDefaultPath,

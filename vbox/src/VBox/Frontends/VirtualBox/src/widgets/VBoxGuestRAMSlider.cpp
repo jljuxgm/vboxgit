@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestRAMSlider.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
+/* $Id: VBoxGuestRAMSlider.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,9 +17,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* VBox includes */
+/* GUI includes: */
 #include "VBoxGuestRAMSlider.h"
 #include "VBoxGlobal.h"
+
+/* COM includes: */
+#include "CSystemProperties.h"
 
 VBoxGuestRAMSlider::VBoxGuestRAMSlider (QWidget *aParent /* = 0 */)
   : QIAdvancedSlider (aParent)

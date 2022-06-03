@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UIVMItem.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -21,16 +21,17 @@
 # include "precomp.h"
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* Local includes */
-#include "UIVMItem.h"
-
-/* Qt includes */
+/* Qt includes: */
 #include <QFileInfo>
 
+/* GUI includes: */
+#include "UIVMItem.h"
 #ifdef Q_WS_MAC
-//# include "VBoxUtils.h"
 # include <ApplicationServices/ApplicationServices.h>
 #endif /* Q_WS_MAC */
+
+/* COM includes: */
+#include "CSnapshot.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 

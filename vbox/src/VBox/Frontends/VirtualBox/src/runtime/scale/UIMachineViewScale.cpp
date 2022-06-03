@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 41107 2012-05-02 00:14:21Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,7 +17,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes */
+/* Qt includes: */
+#include <QDesktopWidget>
+#include <QMainWindow>
+#include <QTimer>
+
+/* GUI includes */
 #include "VBoxGlobal.h"
 #include "UISession.h"
 #include "UIMachineLogic.h"
@@ -29,10 +34,8 @@
 # include "UIFrameBufferQuartz2D.h"
 #endif /* VBOX_GUI_USE_QUARTZ2D */
 
-/* Global includes */
-#include <QDesktopWidget>
-#include <QMainWindow>
-#include <QTimer>
+/* COM includes: */
+#include "CDisplay.h"
 
 UIMachineViewScale::UIMachineViewScale(  UIMachineWindow *pMachineWindow
                                        , ulong uScreenId

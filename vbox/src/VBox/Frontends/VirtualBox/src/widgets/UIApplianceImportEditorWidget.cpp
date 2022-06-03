@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 38412 2011-08-11 09:50:04Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,10 +17,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* VBox includes */
+/* GUI includes: */
 #include "UIApplianceImportEditorWidget.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+
+/* COM includes: */
+#include "CAppliance.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // ImportSortProxyModel

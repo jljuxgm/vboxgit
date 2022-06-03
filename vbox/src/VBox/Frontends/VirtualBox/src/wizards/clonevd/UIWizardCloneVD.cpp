@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,10 +17,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QVariant>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardCloneVD.h"
 #include "UIWizardCloneVDPageBasic1.h"
 #include "UIWizardCloneVDPageBasic2.h"
@@ -29,6 +29,9 @@
 #include "UIWizardCloneVDPageExpert.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+
+/* COM includes: */
+#include "CMediumFormat.h"
 
 UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const CMedium &sourceVirtualDisk)
     : UIWizard(pParent, UIWizardType_CloneVD)

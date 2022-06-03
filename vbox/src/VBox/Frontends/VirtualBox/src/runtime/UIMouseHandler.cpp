@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 41107 2012-05-02 00:14:21Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,11 +17,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes */
+/* Qt includes: */
 #include <QDesktopWidget>
 #include <QMouseEvent>
 
-/* Local includes */
+/* GUI includes: */
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 #include "UIKeyboardHandler.h"
@@ -53,6 +53,11 @@ const int XKeyRelease = KeyRelease;
 #ifdef Q_WS_MAC
 # include "VBoxUtils-darwin.h"
 #endif /* Q_WS_MAC */
+
+/* COM includes: */
+#include "CMouse.h"
+#include "CFramebuffer.h"
+#include "CDisplay.h"
 
 /* Factory function to create mouse-handler: */
 UIMouseHandler* UIMouseHandler::create(UIMachineLogic *pMachineLogic,

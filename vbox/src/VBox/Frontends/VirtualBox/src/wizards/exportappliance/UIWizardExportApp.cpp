@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,11 +17,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QVariant>
 #include <QFileInfo>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardExportApp.h"
 #include "UIWizardExportAppDefs.h"
 #include "UIWizardExportAppPageBasic1.h"
@@ -29,8 +29,11 @@
 #include "UIWizardExportAppPageBasic3.h"
 #include "UIWizardExportAppPageBasic4.h"
 #include "UIWizardExportAppPageExpert.h"
-#include "COMDefs.h"
 #include "UIMessageCenter.h"
+
+/* COM includes: */
+#include "CAppliance.h"
+#include "CVFSExplorer.h"
 
 UIWizardExportApp::UIWizardExportApp(QWidget *pParent, const QStringList &selectedVMNames)
     : UIWizard(pParent, UIWizardType_ExportAppliance)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,7 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QDir>
 #include <QRegExpValidator>
 #include <QVBoxLayout>
@@ -27,10 +27,9 @@
 #include <QLabel>
 #include <QSpacerItem>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardNewVDPageBasic3.h"
 #include "UIWizardNewVD.h"
-#include "COMDefs.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 #include "UIIconPool.h"
@@ -38,6 +37,10 @@
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
 #include "QILineEdit.h"
+
+/* COM includes: */
+#include "CSystemProperties.h"
+#include "CMediumFormat.h"
 
 UIWizardNewVDPage3::UIWizardNewVDPage3(const QString &strDefaultName, const QString &strDefaultPath)
     : m_strDefaultName(strDefaultName.isEmpty() ? QString("NewVirtualDisk1") : strDefaultName)

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 37126 2011-05-17 13:56:50Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,8 +17,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* GUI includes: */
 #include "UIMachineSettingsAudio.h"
 #include "VBoxGlobal.h"
+
+/* COM includes: */
+#include "CAudioAdapter.h"
 
 UIMachineSettingsAudio::UIMachineSettingsAudio()
 {

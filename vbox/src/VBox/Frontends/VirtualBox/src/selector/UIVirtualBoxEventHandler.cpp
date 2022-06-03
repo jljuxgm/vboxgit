@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 35722 2011-01-26 16:37:16Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,14 +17,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes */
+/* GUI includes: */
 #include "UIVirtualBoxEventHandler.h"
 #include "UIMainEventListener.h"
 #include "VBoxGlobal.h"
 
-/* Global includes */
-//#include <iprt/thread.h>
-//#include <iprt/stream.h>
+/* COM includes: */
+#include "CEventSource.h"
 
 /* static */
 UIVirtualBoxEventHandler *UIVirtualBoxEventHandler::m_pInstance = 0;

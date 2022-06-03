@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,10 +17,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes */
+/* Qt includes: */
 #include <QHeaderView>
 
-/* Local includes */
+/* GUI includes: */
 #include "QIWidgetValidator.h"
 #include "UIIconPool.h"
 #include "VBoxGlobal.h"
@@ -29,6 +29,15 @@
 #include "UIMachineSettingsUSB.h"
 #include "UIMachineSettingsUSBFilterDetails.h"
 #include "VBoxDefs.h"
+
+/* COM includes: */
+#include "CUSBController.h"
+#include "CUSBDevice.h"
+#include "CUSBDeviceFilter.h"
+#include "CHostUSBDevice.h"
+#include "CHostUSBDeviceFilter.h"
+#include "CExtPackManager.h"
+#include "CExtPack.h"
 
 /* Using declarations: */
 using namespace VBoxGlobalDefs;

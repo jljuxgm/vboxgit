@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 39878 2012-01-25 16:30:07Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -15,16 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes */
+/* Qt includes: */
 #include <QHeaderView>
 
-/* Local includes */
+/* GUI includes: */
 #include "UIGlobalSettingsExtension.h"
 #include "UIIconPool.h"
 #include "QIFileDialog.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 #include "VBoxLicenseViewer.h"
+
+/* COM includes: */
+#include "CExtPackManager.h"
+#include "CExtPack.h"
+#include "CExtPackFile.h"
 
 /* Extension package item: */
 class UIExtensionPackageItem : public QTreeWidgetItem

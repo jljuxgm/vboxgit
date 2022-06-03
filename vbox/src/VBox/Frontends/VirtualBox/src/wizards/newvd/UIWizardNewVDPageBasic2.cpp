@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic2.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic2.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,17 +17,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QVBoxLayout>
 #include <QButtonGroup>
 #include <QRadioButton>
 #include <QCheckBox>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardNewVDPageBasic2.h"
 #include "UIWizardNewVD.h"
-#include "COMDefs.h"
 #include "QIRichTextLabel.h"
+
+/* COM includes: */
+#include "CMediumFormat.h"
 
 UIWizardNewVDPage2::UIWizardNewVDPage2()
 {

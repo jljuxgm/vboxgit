@@ -1,4 +1,4 @@
-/* $Id: VBoxMedium.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: VBoxMedium.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -20,13 +20,18 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include "precomp.h"
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-/* Global includes */
+
+/* Qt includes: */
 #include <QDir>
 
-/* Local includes */
+/* GUI includes */
 #include "VBoxMedium.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+
+/* COM includes: */
+#include "CSnapshot.h"
+
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 QString VBoxMedium::mTable = QString ("<table>%1</table>");

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,7 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QGridLayout>
 #include <QVBoxLayout>
 #include <QRegExpValidator>
@@ -29,7 +29,7 @@
 #include <QSlider>
 #include <QLabel>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardNewVDPageExpert.h"
 #include "UIWizardNewVD.h"
 #include "VBoxGlobal.h"
@@ -38,6 +38,9 @@
 #include "QIRichTextLabel.h"
 #include "QIToolButton.h"
 #include "QILineEdit.h"
+
+/* COM includes: */
+#include "CSystemProperties.h"
 
 UIWizardNewVDPageExpert::UIWizardNewVDPageExpert(const QString &strDefaultName, const QString &strDefaultPath, qulonglong uDefaultSize)
     : UIWizardNewVDPage3(strDefaultName, strDefaultPath)

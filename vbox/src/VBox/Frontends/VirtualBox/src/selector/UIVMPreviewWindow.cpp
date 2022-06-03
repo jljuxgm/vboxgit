@@ -1,4 +1,4 @@
-/* $Id: UIVMPreviewWindow.cpp 39261 2011-11-10 12:01:01Z vboxsync $ */
+/* $Id: UIVMPreviewWindow.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,17 +17,20 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QContextMenuEvent>
 #include <QMenu>
 #include <QPainter>
 #include <QTimer>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIVMPreviewWindow.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIImageTools.h"
 #include "VBoxGlobal.h"
+
+/* COM includes: */
+#include "CDisplay.h"
 
 /* Initialize map: */
 UpdateIntervalMap UpdateIntervalMapConstructor()

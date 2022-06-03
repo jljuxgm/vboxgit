@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,16 +17,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QVBoxLayout>
 #include <QButtonGroup>
 #include <QRadioButton>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardCloneVDPageBasic2.h"
 #include "UIWizardCloneVD.h"
 #include "VBoxGlobal.h"
 #include "QIRichTextLabel.h"
+
+/* COM includes: */
+#include "CSystemProperties.h"
 
 UIWizardCloneVDPage2::UIWizardCloneVDPage2()
 {
