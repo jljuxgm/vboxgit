@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38679 2011-09-07 17:34:31Z vboxsync $
+# $Id: Makefile.kmk 38680 2011-09-08 07:52:08Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -72,6 +72,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Storage/VSCSI/VSCSILunSbc.cpp \
  	Storage/VSCSI/VSCSISense.cpp \
  	Storage/VSCSI/VSCSIIoReq.cpp \
+ 	Storage/VSCSI/VSCSIVpdPagePool.cpp \
  	build/VBoxDDUDeps.cpp
  ifdef VBOX_WITH_USB
   VBoxDDU_INCS.os2       += \
