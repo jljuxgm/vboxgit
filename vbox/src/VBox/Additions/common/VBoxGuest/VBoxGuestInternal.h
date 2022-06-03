@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 38592 2011-08-31 20:45:29Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 38598 2011-09-01 13:14:53Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -170,7 +170,9 @@ typedef struct VBOXGUESTDEVEXT
      *          data could be lumped together at the end with a < 64 byte padding
      *          following it (to grow into and align the struct size).
      */
+#if HC_ARCH_BITS == 32  /* Disabled for now to prevent a zero-sized array. */
     uint8_t abAlignment1[HC_ARCH_BITS == 32 ? 20 : 0];
+#endif
 
     /** Windows part. */
     union
