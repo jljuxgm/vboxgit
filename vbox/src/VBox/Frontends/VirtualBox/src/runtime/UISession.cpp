@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 41106 2012-05-01 20:02:21Z vboxsync $ */
+/* $Id: UISession.cpp 41107 2012-05-02 00:14:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -314,7 +314,7 @@ void UISession::powerUp()
 
 QWidget* UISession::mainMachineWindow() const
 {
-    return uimachine()->machineLogic()->mainMachineWindow()->machineWindow();
+    return uimachine()->machineLogic()->mainMachineWindow();
 }
 
 UIMachineLogic* UISession::machineLogic() const

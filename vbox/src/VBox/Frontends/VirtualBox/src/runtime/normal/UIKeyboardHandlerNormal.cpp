@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerNormal.cpp 35752 2011-01-28 10:57:53Z vboxsync $ */
+/* $Id: UIKeyboardHandlerNormal.cpp 41107 2012-05-02 00:14:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -61,7 +61,7 @@ bool UIKeyboardHandlerNormal::eventFilter(QObject *pWatchedObject, QEvent *pEven
                 if (isHostKeyPressed() && pKeyEvent->key() == gMS->keySequence(UIMachineShortcuts::PopupMenuShortcut))
                 {
                     /* Trying to get menu-bar: */
-                    QMenuBar *pMenuBar = qobject_cast<QMainWindow*>(m_windows[uScreenId]->machineWindow())->menuBar();
+                    QMenuBar *pMenuBar = qobject_cast<QMainWindow*>(m_windows[uScreenId])->menuBar();
                     /* If menu-bar is present and have actions: */
                     if (pMenuBar && !pMenuBar->actions().isEmpty())
                     {
