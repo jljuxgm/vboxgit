@@ -1,4 +1,4 @@
-/* $Id: xkbtoscan.h 35478 2011-01-11 11:36:23Z vboxsync $ */
+/* $Id: xkbtoscan.h 36093 2011-02-26 21:14:12Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables (XT scan
  *                         code mappings for XKB key names).
@@ -168,9 +168,9 @@ struct
     { "I128", 0x0 },
     { "I129", 0x7e },
     { "HNGL", 0xf2 },
-    { "HJCV", 0xf1 },
+    { "HJCV", 0xf1 }, */
     { "AE13", 0x7d },
-    { "LWIN", 0x15b },
+/*    { "LWIN", 0x15b },
     { "RWIN", 0x15c },
     { "COMP", 0x15d },
     { "STOP", 0x168 },
