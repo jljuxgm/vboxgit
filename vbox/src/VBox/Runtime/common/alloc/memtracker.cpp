@@ -1,4 +1,4 @@
-/* $Id: memtracker.cpp 36597 2011-04-06 19:46:15Z vboxsync $ */
+/* $Id: memtracker.cpp 36599 2011-04-06 20:04:52Z vboxsync $ */
 /** @file
  * IPRT - Memory Tracker & Leak Detector.
  */
@@ -1195,7 +1195,7 @@ static PRTMEMTRACKERINT rtMemTrackerLazyInitDefaultTracker(void)
     if (ASMAtomicXchgBool(&s_fInitialized, true))
         return g_pDefaultTracker;
 
-    PRTMEMTRACKERINT pTracker;
+    PRTMEMTRACKERINT pTracker = NULL; /* gcc sucks. */
     int rc = rtMemTrackerCreate(&pTracker);
     if (RT_FAILURE(rc))
         return NULL;
