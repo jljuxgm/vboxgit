@@ -1,4 +1,4 @@
-/* $Id: main.cpp 40443 2012-03-13 12:54:10Z vboxsync $ */
+/* $Id: main.cpp 41016 2012-04-20 21:21:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -578,6 +578,7 @@ int main (int argc, char **argv, char **envp)
         switch (rc)
         {
             case VERR_VM_DRIVER_NOT_INSTALLED:
+            case VERR_VM_DRIVER_LOAD_ERROR:
                 msgText += QApplication::tr (
                         "<b>Cannot access the kernel driver!</b><br/><br/>");
 # ifdef RT_OS_LINUX
