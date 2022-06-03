@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 41117 2012-05-02 14:22:29Z vboxsync $ */
+/* $Id: SUPDrv.c 41147 2012-05-03 20:15:27Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -193,6 +193,7 @@ static SUPFUNC g_aFunctions[] =
     { "SUPR0TracerRegisterDrv",                 (void *)SUPR0TracerRegisterDrv },
     { "SUPR0TracerRegisterImpl",                (void *)SUPR0TracerRegisterImpl },
     { "SUPR0TracerRegisterModule",              (void *)SUPR0TracerRegisterModule },
+    { "SUPR0TracerUmodProbeFire",               (void *)SUPR0TracerUmodProbeFire },
     { "SUPR0UnlockMem",                         (void *)SUPR0UnlockMem },
     { "SUPSemEventClose",                       (void *)SUPSemEventClose },
     { "SUPSemEventCreate",                      (void *)SUPSemEventCreate },

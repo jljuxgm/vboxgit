@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: VMMRC.cpp 41147 2012-05-03 20:15:27Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -206,6 +206,18 @@ VMMRCDECL(void) VMMGCGuestToHost(PVM pVM, int rc)
 {
     pVM->vmm.s.pfnGuestToHostRC(rc);
 }
+
+
+/**
+ * Calls the ring-0 host code.
+ *
+ * @param   pVM             The VM handle.
+ */
+DECLASM(void) vmmRCProbeFireHelper(PVM pVM)
+{
+    pVM->vmm.s.pfnGuestToHostRC(VINF_VMM_CALL_TRACER);
+}
+
 
 
 /**

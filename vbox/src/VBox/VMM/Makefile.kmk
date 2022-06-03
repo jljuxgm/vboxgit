@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41076 2012-04-26 23:29:56Z vboxsync $
+# $Id: Makefile.kmk 41147 2012-05-03 20:15:27Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -52,6 +52,9 @@ ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
 endif
 ifdef VBOX_WITH_PCI_PASSTHROUGH
  VMM_COMMON_DEFS += VBOX_WITH_PCI_PASSTHROUGH
+endif
+ifdef VBOX_WITH_DTRACE_RC
+ VMM_COMMON_DEFS += VBOX_WITH_DTRACE_RC
 endif
 # VMM_COMMON_DEFS += VBOX_WITH_NS_ACCOUNTING_STATS
 

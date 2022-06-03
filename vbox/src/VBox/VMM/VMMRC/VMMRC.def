@@ -1,4 +1,4 @@
-; $Id: VMMRC.def 39357 2011-11-17 21:27:04Z vboxsync $
+; $Id: VMMRC.def 41147 2012-05-03 20:15:27Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -65,6 +65,7 @@ EXPORTS
     MMGCRamWriteNoTrapHandler
     MMGCRamReadNoTrapHandler
     VMMGetSvnRev
+    VMMRCProbeFire
     vmmGCLoggerFlush
     vmmGCLoggerWrapper
     vmmGCRelLoggerWrapper
