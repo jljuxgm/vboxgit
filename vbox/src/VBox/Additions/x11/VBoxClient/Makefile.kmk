@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35380 2010-12-30 16:06:17Z vboxsync $
+# $Id: Makefile.kmk 36805 2011-04-21 21:48:52Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -106,6 +106,14 @@ $$(tstSeamlessX11-auto_0_OUTDIR)/tstSeamlessX11-auto.run: \
         $$(INSTARGET_tstSeamlessX11-auto)
 	export VBOX_LOG_DEST=nofile; $(INSTARGET_tstSeamlessX11-auto) quiet
 	$(QUIET)$(APPEND) -t "$@" "done"
+
+   PROGRAMS += tstVector
+   tstVector_TEMPLATE = VBOXR3TSTEXE
+   tstVector_SOURCES = \
+           testcase/tstVector.cpp
+   tstVector_INCS = .
+   tstVector_LIBS = \
+           $(LIB_RUNTIME)
 
    #
    # Additional testcase designed to be run manually, which initiates and starts the Linux
