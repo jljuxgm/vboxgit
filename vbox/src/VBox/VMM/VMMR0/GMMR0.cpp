@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
+/* $Id: GMMR0.cpp 39745 2012-01-10 18:23:43Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2504,7 +2504,7 @@ static int gmmR0AllocatePagesNew(PGMM pGMM, PGVM pGVM, uint32_t cPages, PGMMPAGE
                 while (iPage < cPages && RT_SUCCESS(rc));
 
                 /* If the host is out of memory, take whatever we can get. */
-                if (   rc == VERR_NO_MEMORY
+                if (   (rc == VERR_NO_MEMORY || rc == VERR_NO_PHYS_MEMORY)
                     && pGMM->PrivateX.cFreePages + pGMM->Shared.cFreePages >= cPages - iPage)
                 {
                     iPage = gmmR0AllocatePagesIndiscriminately(&pGMM->PrivateX, pGVM, iPage, cPages, paPages);
