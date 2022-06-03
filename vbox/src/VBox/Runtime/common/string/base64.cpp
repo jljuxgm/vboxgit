@@ -1,4 +1,4 @@
-/* $Id: base64.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: base64.cpp 40058 2012-02-10 13:10:26Z vboxsync $ */
 /** @file
  * IPRT - Base64, MIME content transfer encoding.
  */
@@ -423,8 +423,7 @@ RTDECL(size_t) RTBase64EncodedLength(size_t cbData)
             cch += 8;
         cch /= 6;
 
-        cch += (cch / RTBASE64_LINE_LEN) * RTBASE64_EOL_SIZE;
-        cch -= (cch % RTBASE64_LINE_LEN) == 0;
+        cch += ((cch - 1) / RTBASE64_LINE_LEN) * RTBASE64_EOL_SIZE;
         return cch;
     }
 
@@ -433,8 +432,7 @@ RTDECL(size_t) RTBase64EncodedLength(size_t cbData)
         cch += 8;
     cch /= 6;
 
-    cch += (cch / RTBASE64_LINE_LEN) * RTBASE64_EOL_SIZE;
-    cch -= (cch % RTBASE64_LINE_LEN) == 0;
+    cch += ((cch - 1) / RTBASE64_LINE_LEN) * RTBASE64_EOL_SIZE;
     return cch;
 }
 RT_EXPORT_SYMBOL(RTBase64EncodedLength);
