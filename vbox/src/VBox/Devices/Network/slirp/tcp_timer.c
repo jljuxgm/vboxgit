@@ -1,4 +1,4 @@
-/* $Id: tcp_timer.c 41411 2012-05-22 18:29:37Z vboxsync $ */
+/* $Id: tcp_timer.c 41840 2012-06-20 04:35:53Z vboxsync $ */
 /** @file
  * NAT - TCP timers.
  */
@@ -56,6 +56,7 @@
 #include <slirp.h>
 
 
+static struct tcpcb *tcp_timers(PNATState pData, register struct tcpcb *tp, int timer);
 /*
  * Fast timeout routine for processing delayed acks
  */
@@ -153,7 +154,7 @@ const int  tcp_backoff[TCP_MAXRXTSHIFT + 1] =
 /*
  * TCP timer processing.
  */
-struct tcpcb *
+static struct tcpcb *
 tcp_timers(PNATState pData, register struct tcpcb *tp, int timer)
 {
     register int rexmt;
