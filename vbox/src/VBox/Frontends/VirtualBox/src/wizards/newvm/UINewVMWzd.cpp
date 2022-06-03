@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 40156 2012-02-16 16:31:01Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 40245 2012-02-24 11:54:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -162,7 +162,7 @@ UINewVMWzd::UINewVMWzd(QWidget *pParent) : QIWizard(pParent)
 #endif /* Q_WS_MAC */
 
     /* Resize to 'golden ratio' */
-    resizeToGoldenRatio(1.2);
+    resizeToGoldenRatio(UIWizardType_NewVM);
 }
 
 const CMachine UINewVMWzd::machine() const

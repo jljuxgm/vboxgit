@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 40146 2012-02-16 11:11:26Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 40245 2012-02-24 11:54:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -217,7 +217,7 @@ UINewHDWizard::UINewHDWizard(QWidget *pParent, const QString &strDefaultName, co
 #endif /* Q_WS_MAC */
 
     /* Resize wizard to 'golden ratio': */
-    resizeToGoldenRatio(1.8);
+    resizeToGoldenRatio(UIWizardType_NewVD);
 }
 
 CMedium UINewHDWizard::hardDisk() const

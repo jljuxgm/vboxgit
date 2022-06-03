@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 40146 2012-02-16 11:11:26Z vboxsync $ */
+/* $Id: UIImportApplianceWzd.cpp 40245 2012-02-24 11:54:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -131,7 +131,7 @@ UIImportApplianceWzd::UIImportApplianceWzd(const QString &strFile /* = "" */, QW
 #endif /* Q_WS_MAC */
 
     /* Resize to 'golden ratio' */
-    resizeToGoldenRatio(1.8);
+    resizeToGoldenRatio(UIWizardType_ImportAppliance);
 
     /* Configure 'Restore Defaults' button */
     AssertMsg(!field("applianceWidget").value<ImportAppliancePointer>().isNull(), ("Appliance Widget is not set!\n"));

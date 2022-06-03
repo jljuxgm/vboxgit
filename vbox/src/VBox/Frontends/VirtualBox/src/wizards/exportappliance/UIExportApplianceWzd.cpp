@@ -1,4 +1,4 @@
-/* $Id: UIExportApplianceWzd.cpp 40146 2012-02-16 11:11:26Z vboxsync $ */
+/* $Id: UIExportApplianceWzd.cpp 40245 2012-02-24 11:54:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -76,7 +76,7 @@ UIExportApplianceWzd::UIExportApplianceWzd(QWidget *pParent, const QStringList &
 #endif /* Q_WS_MAC */
 
     /* Resize to 'golden ratio' */
-    resizeToGoldenRatio(1.8);
+    resizeToGoldenRatio(UIWizardType_ExportAppliance);
 
     /* Setup connections */
     connect(this, SIGNAL(currentIdChanged(int)), this, SLOT(sltCurrentIdChanged(int)));
