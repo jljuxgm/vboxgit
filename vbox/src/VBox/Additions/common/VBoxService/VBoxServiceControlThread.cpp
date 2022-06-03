@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlThread.cpp 39437 2011-11-28 13:31:03Z vboxsync $ */
+/* $Id: VBoxServiceControlThread.cpp 39461 2011-11-29 17:33:37Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for every started guest process.
  */
@@ -460,10 +460,16 @@ static int VBoxServiceControlThreadHandleRequest(RTPOLLSET hPollSet, uint32_t fP
             else
                 rcReq = VINF_EOF;
 
-            /* If this is the last write we need to close the stdin pipe on our
-             * end and remove it from the poll set. */
-            if (VBOXSERVICECTRLREQUEST_STDIN_WRITE_EOF == pRequest->enmType)
-                rc = VBoxServiceControlThreadCloseStdIn(hPollSet, phStdInW);
+            /*
+             * If this is the last write + we have really have written all data
+             * we need to close the stdin pipe on our end and remove it from
+             * the poll set.
+             */
+            if (   pRequest->enmType == VBOXSERVICECTRLREQUEST_STDIN_WRITE_EOF)
+                && pRequest->cbData  == cbWritten)
+            {
+                    rc = VBoxServiceControlThreadCloseStdIn(hPollSet, phStdInW);
+            }
 
             /* Reqport back actual data written (if any). */
             pRequest->cbData = cbWritten;
