@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 36073 2011-02-24 15:28:45Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 36078 2011-02-24 17:09:42Z vboxsync $ */
 
 /** @file
  *
@@ -25,7 +25,6 @@
 #include <kstat.h>
 #include <sys/sysinfo.h>
 #include <sys/time.h>
-#include <syslog.h>
 
 #include <iprt/err.h>
 #include <iprt/string.h>
