@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 36998 2011-05-07 20:19:55Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 37001 2011-05-07 20:57:58Z vboxsync $ */
 /** @file
  * VBox USB R3 Driver Interface library
  */
@@ -1163,7 +1163,7 @@ static void usbLibOnDeviceChange()
         if (!DeleteTimerQueueTimer(g_VBoxUsbGlobal.hTimerQueue, g_VBoxUsbGlobal.hTimer, NULL))
         {
             DWORD winEr = GetLastError();
-            AssertMsgFailed((__FUNCTION__": DeleteTimerQueueTimer failed, winEr (%d)\n", winEr));
+            AssertMsg(winEr == ERROR_IO_PENDING, (__FUNCTION__": DeleteTimerQueueTimer failed, winEr (%d)\n", winEr));
         }
     }
 
