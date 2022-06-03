@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 41736 2012-06-15 00:39:37Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 41760 2012-06-15 15:56:20Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -146,9 +146,11 @@ static DECLCALLBACK(int) MyGetSymbol(PCDISCPUSTATE pCpu, uint32_t u32Sel, RTUINT
 /**
  * @callback_method_impl{FNDISREADBYTES}
  */
-static DECLCALLBACK(int) MyReadBytes(PDISCPUSTATE pDisState, uint8_t *pbDst, RTUINTPTR uSrcAddr, uint32_t cbToRead)
+static DECLCALLBACK(int) MyReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_t cbMinRead, uint8_t cbMaxRead)
 {
-    memcpy(pbDst, (uint8_t const *)((uintptr_t)uSrcAddr + (uintptr_t)pDisState->pvUser), cbToRead);
+    uint8_t const *pbSrc = (uint8_t const *)((uintptr_t)pDis->uInstrAddr + (uintptr_t)pDis->pvUser + offInstr);
+    memcpy(&pDis->abInstr[offInstr], pbSrc, cbMinRead);
+    pDis->cbCachedInstr = offInstr + cbMinRead;
     return VINF_SUCCESS;
 }
 

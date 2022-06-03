@@ -1,4 +1,4 @@
-/* $Id: MakeDebianBiosAssembly.cpp 41734 2012-06-15 00:20:13Z vboxsync $ */
+/* $Id: MakeDebianBiosAssembly.cpp 41760 2012-06-15 15:56:20Z vboxsync $ */
 /** @file
  * MakeDebianBiosAssembly - Generate Assembly Source for Debian-minded Distros.
  */
@@ -188,7 +188,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41734 2012-06-15 00:20:13Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41760 2012-06-15 15:56:20Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -907,18 +907,19 @@ static size_t disHandleYasmDifferences(PDISCPUSTATE pCpuState, uint32_t uFlatAdd
  *
  * @remarks @a uSrcAddr is the flat address.
  */
-static DECLCALLBACK(int) disReadOpcodeBytes(PDISCPUSTATE pDisState, uint8_t *pbDst, RTUINTPTR uSrcAddr, uint32_t cbToRead)
+static DECLCALLBACK(int) disReadOpcodeBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_t cbMinRead, uint8_t cbMaxRead)
 {
-    if (uSrcAddr + cbToRead >= VBOX_BIOS_BASE + _64K)
+    RTUINTPTR   offBios  = pDis->uInstrAddr + offInstr - VBOX_BIOS_BASE;
+    size_t      cbToRead = cbMaxRead;
+    if (offBios + cbToRead > _64K)
     {
-        RT_BZERO(pbDst, cbToRead);
-        if (uSrcAddr >= VBOX_BIOS_BASE + _64K)
+        if (offBios >= _64K)
             cbToRead = 0;
         else
-            cbToRead = VBOX_BIOS_BASE + _64K - uSrcAddr;
+            cbToRead = _64K - offBios;
     }
-    memcpy(pbDst, &g_pbImg[uSrcAddr - VBOX_BIOS_BASE], cbToRead);
-    NOREF(pDisState);
+    memcpy(&pDis->abInstr[offInstr], &g_pbImg[offBios], cbToRead);
+    pDis->cbCachedInstr = offInstr + cbToRead;
     return VINF_SUCCESS;
 }
 
