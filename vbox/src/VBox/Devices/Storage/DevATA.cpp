@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 41019 2012-04-22 18:05:26Z vboxsync $ */
+/* $Id: DevATA.cpp 41099 2012-04-30 14:28:23Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2266,6 +2266,7 @@ static bool atapiPassthroughSS(ATADevState *s)
                 {
                     s->cbCueSheet = 0;
                     RTMemFree(s->pbCueSheet);
+                    s->pbCueSheet = NULL;
                 }
                 break;
             }
@@ -6299,7 +6300,10 @@ static DECLCALLBACK(int) ataR3Destruct(PPDMDEVINS pDevIns)
         for (uint32_t iIf = 0; iIf < RT_ELEMENTS(pThis->aCts[i].aIfs); iIf++)
         {
             if (pThis->aCts[i].aIfs[iIf].pbCueSheet)
+            {
                 RTMemFree(pThis->aCts[i].aIfs[iIf].pbCueSheet);
+                pThis->aCts[i].aIfs[iIf].pbCueSheet = NULL;
+            }
         }
     }
 
