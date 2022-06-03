@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -391,6 +391,7 @@ static void tstPDMACStressTestFileTaskCompleted(PVM pVM, void *pvUser, void *pvU
 {
     PPDMACTESTFILE pTestFile = (PPDMACTESTFILE)pvUser2;
     PPDMACTESTFILETASK pTestTask = (PPDMACTESTFILETASK)pvUser;
+    NOREF(pVM); NOREF(rcReq);
 
     if (pTestTask->fWrite)
     {

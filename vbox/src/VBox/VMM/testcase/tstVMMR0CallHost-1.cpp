@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -55,6 +55,8 @@ static intptr_t volatile    g_cbFooUsed;
 
 int foo(int i, int iZero, int iMinusOne)
 {
+    NOREF(iZero);
+
     /* allocate a buffer which we fill up to the end. */
     size_t cb = (i % 1555) + 32;
     g_cbFoo = cb;

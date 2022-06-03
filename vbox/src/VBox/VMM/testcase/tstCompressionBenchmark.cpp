@@ -1,4 +1,4 @@
-/* $Id: tstCompressionBenchmark.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstCompressionBenchmark.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
 /** @file
  * Compression Benchmark for SSM and PGM.
  */
@@ -63,6 +63,7 @@ static size_t   g_cbComprAlloc;
  */
 static DECLCALLBACK(int) ComprOutCallback(void *pvUser, const void *pvBuf, size_t cbBuf)
 {
+    NOREF(pvUser);
     AssertReturn(g_cbCompr + cbBuf <= g_cbComprAlloc, VERR_BUFFER_OVERFLOW);
     memcpy(&g_pabCompr[g_cbCompr], pvBuf, cbBuf);
     g_cbCompr += cbBuf;
@@ -74,6 +75,7 @@ static DECLCALLBACK(int) ComprOutCallback(void *pvUser, const void *pvBuf, size_
  */
 static DECLCALLBACK(int) DecomprInCallback(void *pvUser, void *pvBuf, size_t cbBuf, size_t *pcbBuf)
 {
+    NOREF(pvUser);
     size_t cb = RT_MIN(cbBuf, g_cbCompr - g_offComprIn);
     if (pcbBuf)
         *pcbBuf = cb;

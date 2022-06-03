@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstAnimate.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -53,6 +53,7 @@ static volatile bool g_fSignaled = false;
 
 static void SigInterrupt(int iSignal)
 {
+    NOREF(iSignal);
     signal(SIGINT, SigInterrupt);
     g_fSignaled = true;
     RTPrintf("caught SIGINT\n");
@@ -62,6 +63,7 @@ typedef DECLCALLBACK(int) FNSETGUESTGPR(PVM, uint32_t);
 typedef FNSETGUESTGPR *PFNSETGUESTGPR;
 static int scriptGPReg(PVM pVM, char *pszVar, char *pszValue, void *pvUser)
 {
+    NOREF(pszVar);
     uint32_t u32;
     int rc = RTStrToUInt32Ex(pszValue, NULL, 16, &u32);
     if (RT_FAILURE(rc))
@@ -73,6 +75,7 @@ typedef DECLCALLBACK(int) FNSETGUESTSEL(PVM, uint16_t);
 typedef FNSETGUESTSEL *PFNSETGUESTSEL;
 static int scriptSelReg(PVM pVM, char *pszVar, char *pszValue, void *pvUser)
 {
+    NOREF(pszVar);
     uint16_t u16;
     int rc = RTStrToUInt16Ex(pszValue, NULL, 16, &u16);
     if (RT_FAILURE(rc))
@@ -84,6 +87,7 @@ typedef DECLCALLBACK(int) FNSETGUESTSYS(PVM, uint32_t);
 typedef FNSETGUESTSYS *PFNSETGUESTSYS;
 static int scriptSysReg(PVM pVM, char *pszVar, char *pszValue, void *pvUser)
 {
+    NOREF(pszVar);
     uint32_t u32;
     int rc = RTStrToUInt32Ex(pszValue, NULL, 16, &u32);
     if (RT_FAILURE(rc))
@@ -96,6 +100,7 @@ typedef DECLCALLBACK(int) FNSETGUESTDTR(PVM, uint32_t, uint16_t);
 typedef FNSETGUESTDTR *PFNSETGUESTDTR;
 static int scriptDtrReg(PVM pVM, char *pszVar, char *pszValue, void *pvUser)
 {
+    NOREF(pszVar);
     char *pszPart2 = strchr(pszValue, ':');
     if (!pszPart2)
         return -1;
@@ -124,6 +129,7 @@ static int scriptDtrReg(PVM pVM, char *pszVar, char *pszValue, void *pvUser)
 
 static int scriptCommand(PVM pVM, const char *pszIn, size_t cch)
 {
+    NOREF(cch);
     int rc = VINF_SUCCESS;
     char *psz = RTStrDup(pszIn);
     char *pszEqual = strchr(psz, '=');

@@ -1,4 +1,4 @@
-/* $Id: tstVMM-HwAccm.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstVMM-HwAccm.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -38,8 +38,10 @@
 VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM);
 
 
-DECLCALLBACK(int) CFGMConstructor(PVM pVM, void *pvUser)
+static DECLCALLBACK(int) CFGMConstructor(PVM pVM, void *pvUser)
 {
+    NOREF(pvUser);
+
     /*
      * Get root node first.
      * This is the only node in the tree.
