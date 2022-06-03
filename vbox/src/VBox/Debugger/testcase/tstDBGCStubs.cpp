@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 41565 2012-06-04 14:07:38Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 41931 2012-06-27 16:12:16Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -365,11 +365,6 @@ VMMDECL(RTSEL) CPUMGetHyperCS(PVMCPU pVCpu)
     return 0xfff8;
 }
 
-VMMDECL(PCCPUMCTXCORE) CPUMGetHyperCtxCore(PVMCPU pVCpu)
-{
-    return NULL;
-}
-
 VMMDECL(uint32_t) CPUMGetHyperEIP(PVMCPU pVCpu)
 {
     return 0;
@@ -378,11 +373,6 @@ VMMDECL(uint32_t) CPUMGetHyperEIP(PVMCPU pVCpu)
 VMMDECL(PCPUMCTX) CPUMQueryGuestCtxPtr(PVMCPU pVCpu)
 {
     return NULL;
-}
-
-VMMDECL(int) CPUMQueryHyperCtxPtr(PVMCPU pVCpu, PCPUMCTX *ppCtx)
-{
-    return VERR_INTERNAL_ERROR;
 }
 
 

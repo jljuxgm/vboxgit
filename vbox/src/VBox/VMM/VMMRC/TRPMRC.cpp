@@ -1,4 +1,4 @@
-/* $Id: TRPMRC.cpp 41823 2012-06-19 13:43:39Z vboxsync $ */
+/* $Id: TRPMRC.cpp 41931 2012-06-27 16:12:16Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -84,7 +84,6 @@ VMMRCDECL(void) TRPMGCHyperReturnToHost(PVM pVM, int rc)
 
     LogFlow(("TRPMGCHyperReturnToHost: rc=%Rrc\n", rc));
     TRPMResetTrap(pVCpu);
-    CPUMHyperSetCtxCore(pVCpu, NULL);
     VMMGCGuestToHost(pVM, rc);
     AssertReleaseFailed();
 }

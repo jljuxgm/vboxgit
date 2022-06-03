@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
+/* $Id: TRPM.cpp 41931 2012-06-27 16:12:16Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -777,6 +777,40 @@ VMMR3DECL(void) TRPMR3Reset(PVM pVM)
      */
     PVMCPU pVCpu = &pVM->aCpus[0];  /* raw mode implies on VCPU */
     VMCPU_FF_SET(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
+}
+
+
+/**
+ * Resolve a builtin RC symbol.
+ *
+ * Called by PDM when loading or relocating RC modules.
+ *
+ * @returns VBox status
+ * @param   pVM             Pointer to the VM.
+ * @param   pszSymbol       Symbol to resolv
+ * @param   pRCPtrValue     Where to store the symbol value.
+ *
+ * @remark  This has to work before VMMR3Relocate() is called.
+ */
+VMMR3_INT_DECL(int) TRPMR3GetImportRC(PVM pVM, const char *pszSymbol, PRTRCPTR pRCPtrValue)
+{
+    if (!strcmp(pszSymbol, "g_TRPM"))
+        *pRCPtrValue = VM_RC_ADDR(pVM, &pVM->trpm);
+    else if (!strcmp(pszSymbol, "g_TRPMCPU"))
+        *pRCPtrValue = VM_RC_ADDR(pVM, &pVM->aCpus[0].trpm);
+    else if (!strcmp(pszSymbol, "g_trpmGuestCtxCore"))
+    {
+        PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(VMMGetCpu0(pVM));
+        *pRCPtrValue = VM_RC_ADDR(pVM, CPUMCTX2CORE(pCtx));
+    }
+    else if (!strcmp(pszSymbol, "g_trpmHyperCtxCore"))
+    {
+        PCPUMCTX pCtx = CPUMGetHyperCtxPtr(VMMGetCpu0(pVM));
+        *pRCPtrValue = VM_RC_ADDR(pVM, CPUMCTX2CORE(pCtx));
+    }
+    else
+        return VERR_SYMBOL_NOT_FOUND;
+    return VINF_SUCCESS;
 }
 
 
