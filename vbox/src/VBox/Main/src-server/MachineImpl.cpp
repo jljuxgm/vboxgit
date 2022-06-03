@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37681 2011-06-29 11:30:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37686 2011-06-29 14:19:43Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1460,6 +1460,26 @@ STDMETHODIMP Machine::COMSETTER(CPUHotPlugEnabled)(BOOL enabled)
     mHWData->mCPUHotPlugEnabled = enabled;
 
     return rc;
+}
+
+STDMETHODIMP Machine::COMGETTER(EmulatedUSBCardReaderEnabled)(BOOL *enabled)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP Machine::COMSETTER(EmulatedUSBCardReaderEnabled)(BOOL enabled)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP Machine::COMGETTER(EmulatedUSBWebcameraEnabled)(BOOL *enabled)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP Machine::COMSETTER(EmulatedUSBWebcameraEnabled)(BOOL enabled)
+{
+    return E_NOTIMPL;
 }
 
 STDMETHODIMP Machine::COMGETTER(HpetEnabled)(BOOL *enabled)

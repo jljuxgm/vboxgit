@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 37531 2011-06-17 12:12:29Z vboxsync $ */
+/* $Id: MachineImpl.h 37686 2011-06-29 14:19:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -388,6 +388,10 @@ public:
     STDMETHOD(COMSETTER(CPUHotPlugEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(CPUExecutionCap))(ULONG *aExecutionCap);
     STDMETHOD(COMSETTER(CPUExecutionCap))(ULONG aExecutionCap);
+    STDMETHOD(COMGETTER(EmulatedUSBCardReaderEnabled))(BOOL *enabled);
+    STDMETHOD(COMSETTER(EmulatedUSBCardReaderEnabled))(BOOL enabled);
+    STDMETHOD(COMGETTER(EmulatedUSBWebcameraEnabled))(BOOL *enabled);
+    STDMETHOD(COMSETTER(EmulatedUSBWebcameraEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(HpetEnabled))(BOOL *enabled);
     STDMETHOD(COMSETTER(HpetEnabled))(BOOL enabled);
     STDMETHOD(COMGETTER(MemoryBalloonSize))(ULONG *memoryBalloonSize);
