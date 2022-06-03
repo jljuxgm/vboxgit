@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 36597 2011-04-06 19:46:15Z vboxsync $ */
+/* $Id: fileio-win.cpp 36601 2011-04-06 20:07:12Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -361,12 +361,12 @@ RTFILE rtFileGetStandard(RTHANDLESTD enmStdHandle)
             AssertFailedReturn(NIL_RTFILE);
     }
 
-    HANDLE hHandle = GetStdHandle(dwStdHandle);
+    HANDLE hNative = GetStdHandle(dwStdHandle);
     if (hNative == INVALID_HANDLE_VALUE)
         return NIL_RTFILE;
 
-    RTFILE hFile = (RTFILE)(uintptr_t)hHandle;
-    AssertReturn((HANDLE)(uintptr_t)hFile == hHandle, NIL_RTFILE);
+    RTFILE hFile = (RTFILE)(uintptr_t)hNative;
+    AssertReturn((HANDLE)(uintptr_t)hFile == hNative, NIL_RTFILE);
     return hFile;
 }
 
