@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 36927 2011-05-03 11:08:35Z vboxsync $ */
+/* $Id: PGMInternal.h 36931 2011-05-03 13:34:43Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1145,18 +1145,27 @@ typedef PPGMPAGE *PPPGMPAGE;
  * @returns PGM_PAGE_HNDL_VIRT_STATE_* value.
  * @param   a_pPage     Pointer to the physical guest page tracking structure.
  */
+#ifdef PGMPAGE_USE_MORE_BITFIELDS
+#define PGM_PAGE_GET_HNDL_VIRT_STATE(a_pPage)   ( (a_pPage)->u1.bit.u2HandlerVirtStateY )
+#else
 #define PGM_PAGE_GET_HNDL_VIRT_STATE(a_pPage)   ((uint8_t)( (a_pPage)->u1.au8[1] & UINT8_C(0x03) ))
+#endif
 
 /**
  * Sets the virtual access handler state of a page.
  * @param   a_pPage     Pointer to the physical guest page tracking structure.
  * @param   a_uState    The new state value.
  */
+#ifdef PGMPAGE_USE_MORE_BITFIELDS
+#define PGM_PAGE_SET_HNDL_VIRT_STATE(a_pPage, a_uState) \
+    do { (a_pPage)->u1.bit.u2HandlerVirtStateY = (a_uState); } while (0)
+#else
 #define PGM_PAGE_SET_HNDL_VIRT_STATE(a_pPage, a_uState) \
     do { \
         (a_pPage)->u1.au8[1] = ((a_pPage)->u1.au8[1] & UINT8_C(0xfc)) \
                              | ((a_uState)           & UINT8_C(0x03)); \
     } while (0)
+#endif
 
 /**
  * Checks if the page has any virtual access handlers.
