@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -126,7 +126,7 @@ RT_C_DECLS_END
  *
  * @returns rc, can be adjusted if its VINF_SUCCESS or something really bad
  *          happened.
- * @param   pVM         VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The virtual CPU handle.
  * @param   rc          The VBox status code to return.
  * @param   pRegFrame   Pointer to the register frame for the trap.

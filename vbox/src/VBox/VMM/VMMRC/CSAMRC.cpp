@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
+/* $Id: CSAMRC.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -53,7 +53,7 @@
  * for ALL and WRITE handlers these will also trigger.
  *
  * @returns VBox status code (appropriate for GC return).
- * @param   pVM         VM Handle.
+ * @param   pVM         Pointer to the VM.
  * @param   uErrorCode   CPU Error code.
  * @param   pRegFrame   Trap register frame.
  * @param   pvFault     The fault address (cr2).

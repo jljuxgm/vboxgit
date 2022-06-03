@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: TMAll.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -528,7 +528,7 @@ void tmTimerQueueSchedule(PVM pVM, PTMTIMERQUEUE pQueue)
 /**
  * Checks that the timer queues are sane.
  *
- * @param   pVM     VM handle.
+ * @param   pVM     Pointer to the VM.
  *
  * @remarks Called while owning the lock.
  */

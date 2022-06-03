@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PGMR0.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -378,7 +378,7 @@ VMMR0_INT_DECL(int) PGMR0PhysSetupIommu(PVM pVM)
  * #PF Handler for nested paging.
  *
  * @returns VBox status code (appropriate for trap handling and GC return).
- * @param   pVM                 VM Handle.
+ * @param   pVM                 Pointer to the VM.
  * @param   pVCpu               VMCPU Handle.
  * @param   enmShwPagingMode    Paging mode for the nested page tables.
  * @param   uErr                The trap error code.

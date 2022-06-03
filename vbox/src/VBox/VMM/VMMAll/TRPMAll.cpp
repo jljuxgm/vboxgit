@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: TRPMAll.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -313,7 +313,7 @@ VMMDECL(int)  TRPMQueryTrapAll(PVMCPU pVCpu, uint8_t *pu8TrapNo, TRPMEVENT *pEnm
  * Any function which uses temporary trap handlers should
  * probably also use this facility to save the original trap.
  *
- * @param   pVM     VM handle.
+ * @param   pVM     Pointer to the VM.
  */
 VMMDECL(void) TRPMSaveTrap(PVMCPU pVCpu)
 {
@@ -329,7 +329,7 @@ VMMDECL(void) TRPMSaveTrap(PVMCPU pVCpu)
  *
  * Multiple restores of a saved trap is possible.
  *
- * @param   pVM     VM handle.
+ * @param   pVM     Pointer to the VM.
  */
 VMMDECL(void) TRPMRestoreTrap(PVMCPU pVCpu)
 {

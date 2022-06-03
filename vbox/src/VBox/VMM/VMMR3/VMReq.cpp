@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: VMReq.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -477,7 +477,7 @@ static void vmr3ReqJoinFree(PVMINTUSERPERVM pVMInt, PVMREQ pList)
  *
  * @returns VBox status code.
  *
- * @param   pVM             VM handle.
+ * @param   pVM             Pointer to the VM.
  * @param   ppReq           Where to store the pointer to the allocated packet.
  * @param   enmType         Package type.
  * @param   idDstCpu        The destination CPU(s). Either a specific CPU ID or
@@ -1106,7 +1106,7 @@ VMMR3DECL(int) VMR3ReqProcessU(PUVM pUVM, VMCPUID idDstCpu, bool fPriorityOnly)
  *
  * @returns VBox status code.
  *
- * @param   pVM         VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pReq        Request packet to process.
  */
 static int  vmR3ReqProcessOneU(PUVM pUVM, PVMREQ pReq)

@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 39944 2012-02-01 21:16:23Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -225,7 +225,7 @@ static void vmmR3FatalDumpInfoHlpDelete(PVMMR3FATALDUMPINFOHLP pHlp)
 /**
  * Dumps the VM state on a fatal error.
  *
- * @param   pVM         VM Handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       VMCPU Handle.
  * @param   rcErr       VBox status code.
  */

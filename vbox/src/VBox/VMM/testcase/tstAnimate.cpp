@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
+/* $Id: tstAnimate.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -326,7 +326,7 @@ static DECLCALLBACK(int) loadMem(PVM pVM, RTFILE File, uint64_t *poff)
  * This assumes an empty tree.
  *
  * @returns VBox status code.
- * @param   pVM     VM handle.
+ * @param   pVM     Pointer to the VM.
  */
 static DECLCALLBACK(int) cfgmR3CreateDefault(PVM pVM, void *pvUser)
 {

@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: HWACCM.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1626,7 +1626,7 @@ VMMR3DECL(void) HWACCMR3ResetCpu(PVMCPU pVCpu)
  * For the HWACCM component this means that any GDT/LDT/TSS monitors
  * needs to be removed.
  *
- * @param   pVM     VM handle.
+ * @param   pVM     Pointer to the VM.
  */
 VMMR3DECL(void) HWACCMR3Reset(PVM pVM)
 {
@@ -2637,7 +2637,7 @@ VMMR3DECL(void) HWACCMR3CheckError(PVM pVM, int iStatusCode)
  * Execute state save operation.
  *
  * @returns VBox status code.
- * @param   pVM             VM Handle.
+ * @param   pVM             Pointer to the VM.
  * @param   pSSM            SSM operation handle.
  */
 static DECLCALLBACK(int) hwaccmR3Save(PVM pVM, PSSMHANDLE pSSM)
@@ -2720,7 +2720,7 @@ static DECLCALLBACK(int) hwaccmR3Save(PVM pVM, PSSMHANDLE pSSM)
  * Execute state load operation.
  *
  * @returns VBox status code.
- * @param   pVM             VM Handle.
+ * @param   pVM             Pointer to the VM.
  * @param   pSSM            SSM operation handle.
  * @param   uVersion        Data layout version.
  * @param   uPass           The data pass.

@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMMSwitcher.h 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * VMM - World Switchers.
  */
@@ -67,7 +67,7 @@ typedef struct VMMSWITCHERDEF *PVMMSWITCHERDEF;
 /**
  * Callback function for relocating the core code belonging to a switcher.
  *
- * @param   pVM         VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pSwitcher   Pointer to the switcher structure.
  * @param   R0PtrCode   Pointer to the first code byte in the ring-0 mapping.
  * @param   pu8CodeR3   Pointer to the first code byte in the ring-3 mapping.

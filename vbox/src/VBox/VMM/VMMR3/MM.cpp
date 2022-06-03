@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: MM.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -505,7 +505,7 @@ VMMR3DECL(void) MMR3TermUVM(PUVM pUVM)
  * Execute state save operation.
  *
  * @returns VBox status code.
- * @param   pVM             VM Handle.
+ * @param   pVM             Pointer to the VM.
  * @param   pSSM            SSM operation handle.
  */
 static DECLCALLBACK(int) mmR3Save(PVM pVM, PSSMHANDLE pSSM)
@@ -522,7 +522,7 @@ static DECLCALLBACK(int) mmR3Save(PVM pVM, PSSMHANDLE pSSM)
  * Execute state load operation.
  *
  * @returns VBox status code.
- * @param   pVM             VM Handle.
+ * @param   pVM             Pointer to the VM.
  * @param   pSSM            SSM operation handle.
  * @param   uVersion       Data layout version.
  * @param   uPass           The data pass.
@@ -706,7 +706,7 @@ VMMR3DECL(int) MMR3UpdateShadowReservation(PVM pVM, uint32_t cShadowPages)
  * Convert HC Physical address to HC Virtual address.
  *
  * @returns VBox status.
- * @param   pVM         VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   HCPhys      The host context virtual address.
  * @param   ppv         Where to store the resulting address.
  * @thread  The Emulation Thread.

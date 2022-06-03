@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 41799 2012-06-17 02:53:52Z vboxsync $ */
+/* $Id: EMAll.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -202,7 +202,7 @@ VMM_INT_DECL(bool) EMShouldContinueAfterHalt(PVMCPU pVCpu, PCPUMCTX pCtx)
 /**
  * Locks REM execution to a single VCpu
  *
- * @param   pVM         VM handle.
+ * @param   pVM         Pointer to the VM.
  */
 VMMDECL(void) EMRemLock(PVM pVM)
 {
@@ -221,7 +221,7 @@ VMMDECL(void) EMRemLock(PVM pVM)
 /**
  * Unlocks REM execution
  *
- * @param   pVM         VM handle.
+ * @param   pVM         Pointer to the VM.
  */
 VMMDECL(void) EMRemUnlock(PVM pVM)
 {

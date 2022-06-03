@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PDMUsb.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -167,7 +167,7 @@ int pdmR3UsbRegisterHub(PVM pVM, PPDMDRVINS pDrvIns, uint32_t fVersions, uint32_
  * Loads one device module and call the registration entry point.
  *
  * @returns VBox status code.
- * @param   pVM             VM handle.
+ * @param   pVM             Pointer to the VM.
  * @param   pRegCB          The registration callback stuff.
  * @param   pszFilename     Module filename.
  * @param   pszName         Module name.

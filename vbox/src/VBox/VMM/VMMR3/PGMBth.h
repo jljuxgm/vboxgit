@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PGMBth.h 41800 2012-06-17 16:18:26Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -114,7 +114,7 @@ PGM_BTH_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
  * Enters the shadow+guest mode.
  *
  * @returns VBox status code.
- * @param   pVM         VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The VMCPU to operate on.
  * @param   GCPhysCR3   The physical address from the CR3 register.
  */
