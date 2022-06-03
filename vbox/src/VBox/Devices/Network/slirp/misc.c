@@ -1,4 +1,4 @@
-/* $Id: misc.c 41322 2012-05-16 03:02:49Z vboxsync $ */
+/* $Id: misc.c 41323 2012-05-16 03:26:34Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -49,6 +49,8 @@ getouraddr(PNATState pData)
     our_addr.s_addr = loopback_addr.s_addr;
 }
 #else /* VBOX_NAT_TST_QUEUE */
+# include <iprt/cdefs.h>
+# include <iprt/types.h>
 # include "misc.h"
 #endif
 struct quehead
