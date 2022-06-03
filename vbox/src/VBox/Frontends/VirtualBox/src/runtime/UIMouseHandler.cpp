@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 38798 2011-09-20 09:41:10Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 39451 2011-11-29 10:38:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -814,6 +814,19 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
             /* Set scaling if scale-factor is present: */
             cpnt.setX((int)(cpnt.x() * xRatio));
             cpnt.setY((int)(cpnt.y() * yRatio));
+
+            if (   cpnt.x() < 0
+                || cpnt.x() > iCw - 1
+                || cpnt.y() < 0
+                || cpnt.y() > iCh - 1)
+            {
+                if ((mouseButtons.testFlag(Qt::LeftButton)))
+                {
+                    m_views[uScreenId]->handleGHDnd();
+
+                    return false;
+                }
+            }
 
             /* Bound coordinates: */
             if (cpnt.x() < 0) cpnt.setX(0);

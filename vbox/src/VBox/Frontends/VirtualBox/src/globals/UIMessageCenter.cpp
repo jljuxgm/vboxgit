@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 39451 2011-11-29 10:38:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2878,6 +2878,28 @@ void UIMessageCenter::cannotRemoveSharedFolder(const CConsole &console, const QS
     else
         emit sigCannotRemoveSharedFolder(console, strName, strPath, pParent);
 }
+
+#ifdef VBOX_WITH_DRAG_AND_DROP
+void UIMessageCenter::cannotDropData(const CGuest &guest,
+                                     QWidget *pParent /* = 0 */) const
+{
+    message(pParent ? pParent : mainWindowShown(),
+            Error,
+            tr("Failed to drop data."),
+            formatErrorInfo(guest));
+}
+
+void UIMessageCenter::cannotDropData(const CProgress &progress,
+                                     QWidget *pParent /* = 0 */) const
+{
+    AssertWrapperOk(progress);
+
+    message(pParent ? pParent : mainWindowShown(),
+            Error,
+            tr("Failed to drop data."),
+            formatErrorInfo(progress.GetErrorInfo()));
+}
+#endif /* VBOX_WITH_DRAG_AND_DROP */
 
 void UIMessageCenter::remindAboutWrongColorDepth(ulong uRealBPP, ulong uWantedBPP)
 {
