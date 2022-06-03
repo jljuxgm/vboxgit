@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 36128 2011-03-02 05:44:04Z vboxsync $ */
+/* $Id: Performance.cpp 36226 2011-03-09 14:01:14Z vboxsync $ */
 
 /** @file
  *
@@ -169,6 +169,7 @@ int CollectorGuest::disable()
     mEnabled = false;
     Assert(mGuest && mConsole);
     HRESULT ret = mGuest->COMSETTER(StatisticsUpdateInterval)(0 /* off */);
+    NOREF(ret);
     LogAleksey(("{%p} " LOG_FN_FMT ": Set guest statistics update interval to 0 sec (%s)\n",
                 this, __PRETTY_FUNCTION__, SUCCEEDED(ret)?"success":"failed"));
     invalidateStats();
