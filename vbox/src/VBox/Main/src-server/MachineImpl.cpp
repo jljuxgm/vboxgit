@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 38609 2011-09-02 11:47:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38618 2011-09-03 19:36:07Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -95,12 +95,6 @@
 #else /* !RT_OS_WINDOWS */
 # define HOSTSUFF_EXE ""
 #endif /* !RT_OS_WINDOWS */
-
-#if defined(RT_OS_WINDOWS)
-# define VBOXHEADLESS_NAME "VBoxHeadlessSVC"
-#else
-# define VBOXHEADLESS_NAME "VBoxHeadless"
-#endif
 
 // defines / prototypes
 /////////////////////////////////////////////////////////////////////////////
@@ -6623,7 +6617,7 @@ HRESULT Machine::launchVMProcess(IInternalSessionControl *aControl,
          * Only if a VRDE has been installed and the VM enables it, the "headless" will work
          * differently in 4.0 and 3.x.
          */
-        const char VBoxHeadless_exe[] = VBOXHEADLESS_NAME HOSTSUFF_EXE;
+        const char VBoxHeadless_exe[] = "VBoxHeadless" HOSTSUFF_EXE;
         Assert(sz >= sizeof(VBoxHeadless_exe));
         strcpy(cmd, VBoxHeadless_exe);
 
@@ -6639,7 +6633,13 @@ HRESULT Machine::launchVMProcess(IInternalSessionControl *aControl,
             unsigned pos = RT_ELEMENTS(args) - 2;
             args[pos] = "--capture";
         }
-        vrc = RTProcCreate(szPath, args, env, 0, &pid);
+        vrc = RTProcCreate(szPath, args, env,
+#ifdef RT_OS_WINDOWS
+                RTPROC_FLAGS_NO_WINDOW
+#else
+                0
+#endif
+                , &pid);
     }
 #else /* !VBOX_WITH_HEADLESS */
     if (0)
