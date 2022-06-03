@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: VMMR0.cpp 41976 2012-07-01 14:16:40Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -671,7 +671,7 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
                         VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_EXEC);
                         TMNotifyStartOfExecution(pVCpu);
 
-                        rc = pVM->vmm.s.pfnHostToGuestR0(pVM);
+                        rc = pVM->vmm.s.pfnR0ToRawMode(pVM);
                         pVCpu->vmm.s.iLastGZRc = rc;
 
                         TMNotifyEndOfExecution(pVCpu);
@@ -981,7 +981,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
             if (RT_FAILURE(rc))
                 return rc;
 
-            rc = pVM->vmm.s.pfnHostToGuestR0(pVM);
+            rc = pVM->vmm.s.pfnR0ToRawMode(pVM);
 
             /* Re-enable VT-x if previously turned off. */
             HWACCMR0LeaveSwitcher(pVM, fVTxDisabled);

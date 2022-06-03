@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: VMMRC.cpp 41976 2012-07-01 14:16:40Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -204,7 +204,7 @@ VMMRCDECL(void) VMMGCLogFlushIfFull(PVM pVM)
  */
 VMMRCDECL(void) VMMGCGuestToHost(PVM pVM, int rc)
 {
-    pVM->vmm.s.pfnGuestToHostRC(rc);
+    pVM->vmm.s.pfnRCToHost(rc);
 }
 
 
@@ -215,7 +215,7 @@ VMMRCDECL(void) VMMGCGuestToHost(PVM pVM, int rc)
  */
 DECLASM(void) vmmRCProbeFireHelper(PVM pVM)
 {
-    pVM->vmm.s.pfnGuestToHostRC(VINF_VMM_CALL_TRACER);
+    pVM->vmm.s.pfnRCToHost(VINF_VMM_CALL_TRACER);
 }
 
 

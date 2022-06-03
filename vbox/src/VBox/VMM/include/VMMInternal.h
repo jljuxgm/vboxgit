@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 41836 2012-06-19 16:20:52Z vboxsync $ */
+/* $Id: VMMInternal.h 41976 2012-07-01 14:16:40Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -237,9 +237,9 @@ typedef struct VMM
     /** Call Trampoline. See vmmGCCallTrampoline(). */
     RTRCPTR                     pfnCallTrampolineRC;
     /** Guest to host switcher entry point. */
-    RCPTRTYPE(PFNVMMSWITCHERRC) pfnGuestToHostRC;
+    RCPTRTYPE(PFNVMMSWITCHERRC) pfnRCToHost;
     /** Host to guest switcher entry point. */
-    R0PTRTYPE(PFNVMMSWITCHERHC) pfnHostToGuestR0;
+    R0PTRTYPE(PFNVMMSWITCHERHC) pfnR0ToRawMode;
     /** @}  */
 
     /** @name Logging

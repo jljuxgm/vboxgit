@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41677 2012-06-13 09:32:02Z vboxsync $
+# $Id: Makefile.kmk 41976 2012-07-01 14:16:40Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -416,6 +416,15 @@ endif
 $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructsAsm.o: \
 		$(VBOX_PATH_VMM_SRC)/testcase/tstAsmStructsAsm.asm \
 		$(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructsAsm.mac \
+		$(DEPTH)/include/iprt/asmdefs.mac \
+		$(DEPTH)/include/VBox/vmm/cpum.mac \
+		$(DEPTH)/include/VBox/vmm/vm.mac \
+		$(DEPTH)/include/VBox/sup.mac \
+		$(DEPTH)/include/iprt/x86.mac \
+		$(VBOX_PATH_VMM_SRC)/include/CPUMInternal.mac \
+		$(VBOX_PATH_VMM_SRC)/include/HWACCMInternal.mac \
+		$(VBOX_PATH_VMM_SRC)/include/VMMInternal.mac \
+		$(VBOX_PATH_VMM_SRC)/include/VMMSwitcher.mac \
 		$(VBOX_PATH_VMM_SRC)/testcase/Makefile.kmk \
 		| $$(dir $$@)
 	$(call MSG_COMPILE,tstAsmStructsasm,$<,$@,AS)
