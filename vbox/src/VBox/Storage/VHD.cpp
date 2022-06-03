@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 39577 2011-12-10 20:35:11Z vboxsync $ */
+/* $Id: VHD.cpp 40034 2012-02-07 23:32:07Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2740,7 +2740,7 @@ static int vhdCompact(void *pBackendData, unsigned uPercentStart,
                 }
                 else if (pfnParentRead)
                 {
-                    rc = pfnParentRead(pvParent, i * pImage->cbDataBlock, pvParent, pImage->cbDataBlock);
+                    rc = pfnParentRead(pvParent, (uint64_t)i * pImage->cbDataBlock, pvParent, pImage->cbDataBlock);
                     if (RT_FAILURE(rc))
                         break;
                     if (!memcmp(pvParent, pvBuf, pImage->cbDataBlock))
@@ -3241,7 +3241,7 @@ static DECLCALLBACK(int) vhdRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
                 break;
             }
 
-            pu32BlockBitmap = (uint32_t *)RTMemAllocZ(RT_ALIGN_Z(cBatEntries, 4));
+            pu32BlockBitmap = (uint32_t *)RTMemAllocZ(RT_ALIGN_Z(cBatEntries / 8, 4));
             if (!pu32BlockBitmap)
             {
                 rc = vdIfError(pIfError, VERR_NO_MEMORY, RT_SRC_POS,
