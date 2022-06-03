@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 37491 2011-06-16 12:23:34Z vboxsync $ */
+/* $Id: MachineImpl.h 37492 2011-06-16 12:25:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -838,17 +838,6 @@ protected:
     struct DeleteTask;
     static DECLCALLBACK(int) deleteThread(RTTHREAD Thread, void *pvUser);
     HRESULT deleteTaskWorker(DeleteTask &task);
-
-    struct CloneVMTask;
-    HRESULT cloneCreateMachineList(const ComPtr<ISnapshot> &pSnapshot, RTCList< ComObjPtr<Machine> > &machineList) const;
-    settings::Snapshot cloneFindSnapshot(settings::MachineConfigFile *pMCF, const settings::SnapshotsList &snl, const Guid &id) const;
-    void cloneUpdateStorageLists(settings::StorageControllersList &sc, const Bstr &bstrOldId, const Bstr &bstrNewId) const;
-    void cloneUpdateSnapshotStorageLists(settings::SnapshotsList &sl, const Bstr &bstrOldId, const Bstr &bstrNewId) const;
-    void cloneUpdateStateFile(settings::SnapshotsList &snl, const Guid &id, const Utf8Str &strFile) const;
-    static int cloneCopyStateFileProgress(unsigned uPercentage, void *pvUser);
-
-    static DECLCALLBACK(int) cloneVMThread(RTTHREAD Thread, void *pvUser);
-    HRESULT cloneVMTaskWorker(CloneVMTask *pTask);
 
 #ifdef VBOX_WITH_GUEST_PROPS
     HRESULT getGuestPropertyFromService(IN_BSTR aName, BSTR *aValue,
