@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 40251 2012-02-24 21:24:23Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 40256 2012-02-25 01:09:31Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4300,45 +4300,6 @@ IEM_CIMPL_DEF_1(iemCImpl_fxch_underflow, uint8_t, iStReg)
         pCtx->fpu.FSW |= X86_FSW_C1 | X86_FSW_IE | X86_FSW_SF | X86_FSW_ES | X86_FSW_B;
     }
     iemFpuUpdateOpcodeAndIpWorker(pIemCpu, pCtx);
-
-    iemRegAddToRip(pIemCpu, cbInstr);
-    return VINF_SUCCESS;
-}
-
-
-/**
- * Implements 'FINCSTP' and 'FDECSTP'.
- *
- * @param   cToAdd              1 or 7.
- */
-IEM_CIMPL_DEF_1(iemCImpl_fpu_AddToTop, uint8_t, cToAdd)
-{
-    PCPUMCTX pCtx = pIemCpu->CTX_SUFF(pCtx);
-
-    /*
-     * Raise exceptions.
-     */
-    if (pCtx->cr0 & (X86_CR0_EM | X86_CR0_TS))
-        return iemRaiseDeviceNotAvailable(pIemCpu);
-    uint16_t u16Fsw = pCtx->fpu.FSW;
-    if (u16Fsw & X86_FSW_ES)
-        return iemRaiseMathFault(pIemCpu);
-
-    /*
-     * Do the job.
-     *
-     * Note! The instructions are listed as control instructions and should
-     *       therefore not update FOP, FPUIP and FPUCS...
-     * Note! C0, C2 and C3 are documented as undefined, we clear them.
-     */
-    /** @todo Testcase: Check whether FOP, FPUIP and FPUCS are affected by
-     *        FINCSTP and FDECSTP. */
-    uint16_t iTop = X86_FSW_TOP_GET(u16Fsw);
-    iTop += cToAdd;
-    iTop &= X86_FSW_TOP_SMASK;
-    u16Fsw &= ~(X86_FSW_TOP_MASK | X86_FSW_C_MASK);
-    u16Fsw |= (iTop << X86_FSW_TOP_SHIFT);
-    pCtx->fpu.FSW = u16Fsw;
 
     iemRegAddToRip(pIemCpu, cbInstr);
     return VINF_SUCCESS;
