@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 40433 2012-03-12 17:00:57Z vboxsync $ */
+/* $Id: DevVGA.cpp 40472 2012-03-15 08:26:21Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4452,6 +4452,8 @@ static DECLCALLBACK(void) vgaInfoVBE(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, con
 {
     PVGASTATE   s = PDMINS_2_DATA(pDevIns, PVGASTATE);
     NOREF(pszArgs);
+
+    pHlp->pfnPrintf(pHlp, "LFB at %RGp\n", s->GCPhysVRAM);
 
     if (!(s->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED))
     {
