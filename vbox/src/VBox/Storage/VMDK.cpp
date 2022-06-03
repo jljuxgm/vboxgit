@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 38819 2011-09-21 18:32:50Z vboxsync $ */
+/* $Id: VMDK.cpp 38876 2011-09-27 09:03:15Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -7191,5 +7191,7 @@ VBOXHDDBACKEND g_VmdkBackend =
     /* pfnResize */
     NULL,
     /* pfnDiscard */
+    NULL,
+    /* pfnAsyncDiscard */
     NULL
 };
