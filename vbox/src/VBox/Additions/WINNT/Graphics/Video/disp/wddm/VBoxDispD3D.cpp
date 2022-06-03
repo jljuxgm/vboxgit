@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 39820 2012-01-20 13:16:27Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 39870 2012-01-25 10:29:00Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -1363,7 +1363,7 @@ static void vboxWddmLockUnlockMemSynch(PVBOXWDDMDISP_ALLOCATION pAlloc, D3DLOCKE
         uint8_t *pvSrc, *pvDst;
         uint32_t srcPitch, dstPitch;
         uint8_t * pvAllocMemStart = (uint8_t *)pAlloc->pvMem;
-        uint32_t offAllocMemStart = vboxWddmCalcOffXYrd(pRect->top, pRect->left, pAlloc->SurfDesc.pitch, pAlloc->SurfDesc.format);
+        uint32_t offAllocMemStart = vboxWddmCalcOffXYrd(pRect->left, pRect->top, pAlloc->SurfDesc.pitch, pAlloc->SurfDesc.format);
         pvAllocMemStart += offAllocMemStart;
 
         if (bToLockInfo)
