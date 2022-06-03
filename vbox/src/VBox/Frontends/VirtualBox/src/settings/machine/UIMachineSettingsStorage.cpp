@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 37126 2011-05-17 13:56:50Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 37140 2011-05-18 14:54:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1922,7 +1922,7 @@ void UIMachineSettingsStorage::getFromCache()
 void UIMachineSettingsStorage::putToCache()
 {
     /* Prepare storage data: */
-    UIDataSettingsMachineStorage storageData;
+    UIDataSettingsMachineStorage storageData = m_cache.base();
 
     /* For each storage controller: */
     QModelIndex rootIndex = mStorageModel->root();
