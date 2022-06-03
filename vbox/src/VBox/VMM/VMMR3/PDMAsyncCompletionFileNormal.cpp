@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 41862 2012-06-21 15:08:02Z vboxsync $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -19,7 +19,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PDM_ASYNC_COMPLETION
-#define RT_STRICT
 #include <iprt/types.h>
 #include <iprt/asm.h>
 #include <iprt/file.h>
