@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 37632 2011-06-24 13:38:09Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 37863 2011-07-11 11:09:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -3099,6 +3099,17 @@ STDMETHODIMP Guest::DirectoryRead(ULONG aHandle, IGuestDirEntry **aDirEntry)
 }
 
 STDMETHODIMP Guest::FileExists(IN_BSTR aFile, IN_BSTR aUserName, IN_BSTR aPassword, BOOL *aExists)
+{
+#ifndef VBOX_WITH_GUEST_CONTROL
+    ReturnComNotImplemented();
+#else /* VBOX_WITH_GUEST_CONTROL */
+    using namespace guestControl;
+
+    return VBOX_E_NOT_SUPPORTED;
+#endif
+}
+
+STDMETHODIMP Guest::FileQuerySize(IN_BSTR aFile, IN_BSTR aUserName, IN_BSTR aPassword, LONG64 *aSize)
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
