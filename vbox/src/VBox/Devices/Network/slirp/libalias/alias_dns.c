@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 33957 2010-11-11 09:13:09Z vboxsync $ */
+/* $Id: alias_dns.c 37724 2011-07-01 09:45:11Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -78,7 +78,7 @@ fingerprint(struct libalias *la, struct ip *pip, struct alias_data *ah)
     if (!ah->dport || !ah->sport || !ah->lnk)
         return -1;
 
-    Log(("NAT:%s: ah(dport: %hd, sport: %hd) oaddr:%R[IP4] aaddr:%R[IP4]\n",
+    Log(("NAT:%s: ah(dport: %hd, sport: %hd) oaddr:%R[naipv4] aaddr:%R[naipv4]\n",
         __FUNCTION__, ntohs(*ah->dport), ntohs(*ah->sport),
         &ah->oaddr, &ah->aaddr));
 
