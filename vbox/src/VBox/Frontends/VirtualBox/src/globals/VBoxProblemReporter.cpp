@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 37468 2011-06-15 13:39:42Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 37470 2011-06-15 14:43:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1227,6 +1227,14 @@ bool VBoxProblemReporter::confirmDiscardSavedState (const CMachine &machine)
             .arg (machine.GetName()),
         0 /* aAutoConfirmId */,
         tr ("Discard", "saved state"));
+}
+
+void VBoxProblemReporter::cannotChangeMediumType(QWidget *pParent, const CMedium &medium, KMediumType oldMediumType, KMediumType newMediumType)
+{
+    message(pParent ? pParent : mainWindowShown(), Error,
+            tr("<p>Error changing medium type from <b>%1</b> to <b>%2</b>.</p>")
+                .arg(vboxGlobal().toString(oldMediumType)).arg(vboxGlobal().toString(newMediumType)),
+            formatErrorInfo(medium));
 }
 
 bool VBoxProblemReporter::confirmReleaseMedium (QWidget *aParent,
