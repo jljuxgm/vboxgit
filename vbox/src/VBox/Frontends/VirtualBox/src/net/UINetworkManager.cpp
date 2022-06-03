@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 39950 2012-02-02 06:22:00Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 40009 2012-02-06 12:38:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -188,8 +188,23 @@ private slots:
         /* Show 'retry' button: */
         m_pRetryButton->setHidden(false);
 
+        /* Try to find all the links in the error-message,
+         * replace them with %increment if present: */
+        QString strErrorText(strError);
+        QRegExp linkRegExp("[\\S]+[\\./][\\S]+");
+        QStringList links;
+        for (int i = 1; linkRegExp.indexIn(strErrorText) != -1; ++i)
+        {
+            links << linkRegExp.cap();
+            strErrorText.replace(linkRegExp.cap(), QString("%%1").arg(i));
+        }
+        /* Return back all the links, just in bold: */
+        if (!links.isEmpty())
+            for (int i = 0; i < links.size(); ++i)
+                strErrorText = strErrorText.arg(QString("<b>%1</b>").arg(links[i]));
+
         /* Show error label: */
-        m_pErrorPane->setPlainText(UINetworkManager::tr("Error: %1.").arg(strError));
+        m_pErrorPane->setText(UINetworkManager::tr("Error: %1.").arg(strErrorText));
         m_pErrorPane->setMinimumHeight(m_pErrorPane->document()->size().toSize().height());
     }
 
