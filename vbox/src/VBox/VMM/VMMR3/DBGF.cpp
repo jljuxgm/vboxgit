@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 35466 2011-01-10 16:36:35Z vboxsync $ */
+/* $Id: DBGF.cpp 36768 2011-04-20 18:33:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -243,7 +243,7 @@ bool dbgfR3WaitForAttach(PVM pVM, DBGFEVENTTYPE enmEvent)
      */
 #ifndef RT_OS_L4
 
-# if !defined(DEBUG) || defined(DEBUG_sandervl) || defined(DEBUG_frank)
+# if !defined(DEBUG) || defined(DEBUG_sandervl) || defined(DEBUG_frank) || defined(IEM_VERIFICATION_MODE)
     int cWait = 10;
 # else
     int cWait = HWACCMIsEnabled(pVM)
