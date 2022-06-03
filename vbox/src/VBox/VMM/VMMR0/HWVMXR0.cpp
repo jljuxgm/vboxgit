@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41312 2012-05-15 13:43:43Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41314 2012-05-15 13:53:00Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -2235,7 +2235,7 @@ static DECLCALLBACK(void) hmR0VmxSetupTLBBoth(PVM pVM, PVMCPU pVCpu)
 
 #ifdef VBOX_WITH_STATISTICS
             /*
-             * This is not terribly accurate (i.e. we don't have a StatFlushEPT counter so we currently count these
+             * This is not terribly accurate (i.e. we don't have any StatFlushEPT counter). We currently count these
              * as ASID flushes too, better than including them under StatFlushTLBWorldSwitch.
              */
             STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatFlushASID);
