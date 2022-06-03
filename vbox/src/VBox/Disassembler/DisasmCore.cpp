@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 41707 2012-06-14 13:00:54Z vboxsync $ */
+/* $Id: DisasmCore.cpp 41713 2012-06-14 15:51:00Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -2581,7 +2581,7 @@ uint64_t disReadQWord(PDISCPUSTATE pCpu, RTUINTPTR uAddress)
         pCpu->abInstr[pCpu->opsize + 5] = uTemp.au8[5];
         pCpu->abInstr[pCpu->opsize + 6] = uTemp.au8[6];
         pCpu->abInstr[pCpu->opsize + 7] = uTemp.au8[7];
-        pCpu->opsize += 4;
+        pCpu->opsize += 8;
     }
     else
         disStoreInstrBytesSlow(pCpu, uAddress, uTemp.au8, sizeof(uTemp));
