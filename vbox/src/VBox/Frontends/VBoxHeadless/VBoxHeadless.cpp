@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 36280 2011-03-15 10:47:13Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 36380 2011-03-23 18:00:10Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -216,7 +216,7 @@ public:
                         if (!mfNoLoggedInUsers) /* Only if the property really changes. */
                         {
                             if (   utf8Value == "true"
-                                /* Guest property got deleted due to hard reset,
+                                /* Guest property got deleted due to reset,
                                  * so it has no value anymore. */
                                 || utf8Value.isEmpty())
                             {
@@ -226,7 +226,7 @@ public:
                         }
                         else if (utf8Value == "false")
                             mfNoLoggedInUsers = false;
-                        /* Guest property got deleted due to hard reset,
+                        /* Guest property got deleted due to reset,
                          * take the shortcut without touching the mfNoLoggedInUsers
                          * state. */
                         else if (utf8Value.isEmpty())
