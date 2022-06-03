@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 37280 2011-05-31 21:31:19Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 38895 2011-09-28 12:04:39Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -28,6 +28,10 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_SUP_DRV
+#ifdef DEBUG_ramshankar
+# define LOG_ENABLED
+# define LOG_INSTANCE       RTLogRelDefaultInstance()
+#endif
 #include <sys/types.h>
 #include <sys/param.h>
 #include <sys/errno.h>
