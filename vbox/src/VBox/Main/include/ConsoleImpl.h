@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 37687 2011-06-29 15:22:11Z vboxsync $ */
+/* $Id: ConsoleImpl.h 37813 2011-07-07 09:59:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -550,6 +550,8 @@ private:
                                                    bool fUseHostIOCache,
                                                    IMediumAttachment *aMediumAtt,
                                                    bool fForce);
+
+    HRESULT attachRawPciDevices(PVM pVM, BusAssignmentManager *BusMgr, PCFGMNODE pDevices);
     void attachStatusDriver(PCFGMNODE pCtlInst, PPDMLED *papLeds,
                             uint64_t uFirst, uint64_t uLast,
                             Console::MediumAttachmentMap *pmapMediumAttachments,
