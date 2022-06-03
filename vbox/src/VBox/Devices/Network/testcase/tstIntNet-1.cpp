@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 36470 2011-03-30 09:36:09Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -447,7 +447,7 @@ static void doPacketSniffing(INTNETIFHANDLE hIf, PSUPDRVSESSION pSession, PINTNE
         WaitReq.hIf = hIf;
         WaitReq.cMillies = cMillies - (uint32_t)cElapsedMillies;
         int rc = SUPR3CallVMMR0Ex(NIL_RTR0PTR, NIL_VMCPUID, VMMR0_DO_INTNET_IF_WAIT, 0, &WaitReq.Hdr);
-        if (rc == VERR_TIMEOUT)
+        if (rc == VERR_TIMEOUT || rc == VERR_INTERRUPTED)
             break;
         if (RT_FAILURE(rc))
         {
@@ -749,7 +749,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 35346 $\n");
+                RTPrintf("$Revision: 36470 $\n");
                 return 0;
 
             default:
