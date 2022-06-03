@@ -1,10 +1,10 @@
-/* $Id: SessionImpl.cpp 40177 2012-02-19 21:06:09Z vboxsync $ */
+/* $Id: SessionImpl.cpp 40257 2012-02-27 09:25:12Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -935,13 +935,13 @@ HRESULT Session::unlockMachine(bool aFinalRelease, bool aFromServer)
          *  we need to release the lock to avoid deadlocks. The state is already
          *  SessionState_Closing here, so it's safe.
          */
-        alock.leave();
+        alock.release();
 
         LogFlowThisFunc(("Calling mControl->OnSessionEnd()...\n"));
         HRESULT rc = mControl->OnSessionEnd(this, progress.asOutParam());
         LogFlowThisFunc(("mControl->OnSessionEnd()=%08X\n", rc));
 
-        alock.enter();
+        alock.acquire();
 
         /*
          *  If we get E_UNEXPECTED this means that the direct session has already

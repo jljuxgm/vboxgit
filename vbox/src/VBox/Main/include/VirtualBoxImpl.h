@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxImpl.h 38818 2011-09-21 17:10:25Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 40257 2012-02-27 09:25:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -259,11 +259,8 @@ public:
     int calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult);
     void copyPathRelativeToConfig(const Utf8Str &strSource, Utf8Str &strTarget);
 
-    HRESULT registerHardDisk(Medium *aHardDisk, GuidList *pllRegistriesThatNeedSaving);
-    HRESULT unregisterHardDisk(Medium *aHardDisk, GuidList *pllRegistriesThatNeedSaving);
-
-    HRESULT registerImage(Medium *aImage, DeviceType_T argType, GuidList *pllRegistriesThatNeedSaving);
-    HRESULT unregisterImage(Medium *aImage, DeviceType_T argType, GuidList *pllRegistriesThatNeedSaving);
+    HRESULT registerMedium(Medium *pMedium, ComObjPtr<Medium> *ppMedium, DeviceType_T argType, GuidList *pllRegistriesThatNeedSaving);
+    HRESULT unregisterMedium(Medium *pMedium, GuidList *pllRegistriesThatNeedSaving);
 
     void pushMediumToListWithChildren(MediaList &llMedia, Medium *pMedium);
     HRESULT unregisterMachineMedia(const Guid &id);
@@ -300,7 +297,7 @@ private:
     HRESULT checkMediaForConflicts(const Guid &aId,
                                    const Utf8Str &aLocation,
                                    Utf8Str &aConflictType,
-                                   bool &fIdentical);
+                                   ComObjPtr<Medium> *pDupMedium);
 
     HRESULT registerMachine(Machine *aMachine);
 
