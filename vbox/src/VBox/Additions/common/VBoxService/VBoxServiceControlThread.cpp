@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlThread.cpp 39314 2011-11-15 15:07:39Z vboxsync $ */
+/* $Id: VBoxServiceControlThread.cpp 39393 2011-11-22 09:48:32Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for every started guest process.
  */
@@ -355,7 +355,7 @@ static int VBoxServiceControlThreadHandleIPCRequest(RTPOLLSET hPollSet, uint32_t
         /* Drain the notification pipe. */
         uint8_t abBuf[8];
         size_t cbIgnore;
-        int rc = RTPipeRead(pThread->hNotificationPipeR, abBuf, sizeof(abBuf), &cbIgnore);
+        rc = RTPipeRead(pThread->hNotificationPipeR, abBuf, sizeof(abBuf), &cbIgnore);
         if (RT_FAILURE(rc))
             VBoxServiceError("ControlThead: Draining IPC notification pipe failed with rc=%Rrc\n", rc);
 
