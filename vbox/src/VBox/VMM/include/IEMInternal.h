@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 36794 2011-04-21 15:02:34Z vboxsync $ */
+/* $Id: IEMInternal.h 36815 2011-04-22 14:13:52Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -440,6 +440,14 @@ FNIEMAIMPLBINU8  iemAImpl_test_u8;
 FNIEMAIMPLBINU16 iemAImpl_test_u16;
 FNIEMAIMPLBINU32 iemAImpl_test_u32;
 FNIEMAIMPLBINU64 iemAImpl_test_u64;
+/** @}  */
+
+/** @name Exchange memory with register operations.
+ * @{ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u8, (uint8_t  *pu8Mem,  uint8_t  *pu8Reg));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u16,(uint16_t *pu16Mem, uint16_t *pu16Reg));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u32,(uint32_t *pu32Mem, uint32_t *pu32Reg));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u64,(uint64_t *pu64Mem, uint64_t *pu64Reg));
 /** @}  */
 
 /** @name Signed multiplication operations (thrown in with the binary ops).

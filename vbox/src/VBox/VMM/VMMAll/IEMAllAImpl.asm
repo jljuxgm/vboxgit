@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 36768 2011-04-20 18:33:29Z vboxsync $
+; $Id: IEMAllAImpl.asm 36815 2011-04-22 14:13:52Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -371,6 +371,53 @@ BEGINPROC iemAImpl_imul_two_u64
         EPILOGUE_3_ARGS
         ret
 ENDPROC iemAImpl_imul_two_u64
+
+
+;
+; XCHG for memory operands.  This implies locking.  No flag changes.
+;
+; Each function takes two arguments, first the pointer to the memory,
+; then the pointer to the register.  They all return void.
+;
+BEGINPROC iemAImpl_xchg_u8
+        PROLOGUE_2_ARGS
+        mov     T0_8, [A1]
+        xchg    [A0], T0_8
+        mov     [A1], T0_8
+        EPILOGUE_2_ARGS
+        ret
+ENDPROC iemAImpl_xchg_u8
+
+BEGINPROC iemAImpl_xchg_u16
+        PROLOGUE_2_ARGS
+        mov     T0_16, [A1]
+        xchg    [A0], T0_16
+        mov     [A1], T0_16
+        EPILOGUE_2_ARGS
+        ret
+ENDPROC iemAImpl_xchg_u16
+
+BEGINPROC iemAImpl_xchg_u32
+        PROLOGUE_2_ARGS
+        mov     T0_32, [A1]
+        xchg    [A0], T0_32
+        mov     [A1], T0_32
+        EPILOGUE_2_ARGS
+        ret
+ENDPROC iemAImpl_xchg_u32
+
+BEGINPROC iemAImpl_xchg_u64
+%ifdef RT_ARCH_AMD64
+        PROLOGUE_2_ARGS
+        mov     T0, [A1]
+        xchg    [A0], T0
+        mov     [A1], T0
+        EPILOGUE_2_ARGS
+        ret
+%else
+        int3
+%endif
+ENDPROC iemAImpl_xchg_u64
 
 
 ;;
