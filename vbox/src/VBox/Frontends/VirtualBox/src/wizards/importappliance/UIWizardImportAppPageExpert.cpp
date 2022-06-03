@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 41402 2012-05-22 16:31:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -43,6 +43,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(const QString &strFileN
         }
         m_pApplianceWidget = new UIApplianceImportEditorWidget(this);
         {
+            m_pApplianceWidget->setMinimumHeight(300);
             m_pApplianceWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
             m_pApplianceWidget->setFile(strFileName);
         }
