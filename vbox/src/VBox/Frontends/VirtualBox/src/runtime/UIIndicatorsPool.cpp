@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 37712 2011-06-30 14:11:14Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 37753 2011-07-04 10:09:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -576,7 +576,7 @@ public:
                                             "Virtualization Stuff LED")
                     .arg(VBoxGlobal::tr("VT-x/AMD-V", "details report"), virtualization)
                     .arg(VBoxGlobal::tr("Nested Paging"), nestedPaging)
-                    .arg(VBoxGlobal::tr("CPU Execution Cap", "details report"), strCPUExecCap));
+                    .arg(VBoxGlobal::tr("Execution Cap", "details report"), strCPUExecCap));
 
         int cpuCount = console.GetMachine().GetCPUCount();
         if (cpuCount > 1)
