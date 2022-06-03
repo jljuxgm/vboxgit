@@ -1,4 +1,4 @@
-/* $Id: once.cpp 37316 2011-06-03 12:49:02Z vboxsync $ */
+/* $Id: once.cpp 38888 2011-09-27 13:03:22Z vboxsync $ */
 /** @file
  * IPRT - Execute Once.
  */
@@ -207,7 +207,7 @@ RTDECL(int) RTOnceSlow(PRTONCE pOnce, PFNRTONCE pfnOnce, void *pvUser1, void *pv
                          VERR_INTERNAL_ERROR_2);
 
             int32_t cRefs = ASMAtomicIncS32(&pOnce->cEventRefs);
-            Assert(cRefs > 1);
+            Assert(cRefs > 1); NOREF(cRefs);
 
             RTSEMEVENTMULTI hEvtM;
             ASMAtomicReadHandle(&pOnce->hEventMulti, &hEvtM);
@@ -255,6 +255,7 @@ RTDECL(void) RTOnceReset(PRTONCE pOnce)
     AssertMsg(   iState == RTONCESTATE_DONE
               && iState == RTONCESTATE_UNINITIALIZED,
               ("%d\n", iState));
+    NOREF(iState);
 
     /* Do the same as RTONCE_INITIALIZER does. */
     ASMAtomicWriteS32(&pOnce->rc, VERR_INTERNAL_ERROR);
