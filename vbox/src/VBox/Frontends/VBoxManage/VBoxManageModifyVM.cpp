@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 40729 2012-03-30 14:47:36Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 41347 2012-05-17 22:40:43Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -722,8 +722,8 @@ int handleModifyVM(HandlerArg *a)
                 {
                     ComPtr<IMedium> hardDisk;
                     rc = findOrOpenMedium(a, ValueUnion.psz, DeviceType_HardDisk,
-                                          hardDisk, false /* fForceNewUuidOnOpen */,
-                                          NULL);
+                                          AccessMode_ReadWrite, hardDisk,
+                                          false /* fForceNewUuidOnOpen */, NULL);
                     if (FAILED(rc))
                         break;
                     if (hardDisk)
@@ -818,8 +818,8 @@ int handleModifyVM(HandlerArg *a)
                 {
                     ComPtr<IMedium> hardDisk;
                     rc = findOrOpenMedium(a, ValueUnion.psz, DeviceType_HardDisk,
-                                          hardDisk, false /* fForceNewUuidOnOpen */,
-                                          NULL);
+                                          AccessMode_ReadWrite, hardDisk,
+                                          false /* fForceNewUuidOnOpen */, NULL);
                     if (FAILED(rc))
                         break;
                     if (hardDisk)
@@ -946,8 +946,8 @@ int handleModifyVM(HandlerArg *a)
                 else
                 {
                     rc = findOrOpenMedium(a, ValueUnion.psz, DeviceType_DVD,
-                                          dvdMedium, false /* fForceNewUuidOnOpen */,
-                                          NULL);
+                                          AccessMode_ReadOnly, dvdMedium,
+                                          false /* fForceNewUuidOnOpen */, NULL);
                     if (FAILED(rc))
                         break;
                     if (!dvdMedium)
@@ -1010,8 +1010,8 @@ int handleModifyVM(HandlerArg *a)
                     else
                     {
                         rc = findOrOpenMedium(a, ValueUnion.psz, DeviceType_Floppy,
-                                              floppyMedium, false /* fForceNewUuidOnOpen */,
-                                              NULL);
+                                              AccessMode_ReadWrite, floppyMedium,
+                                              false /* fForceNewUuidOnOpen */, NULL);
                         if (FAILED(rc))
                             break;
                         if (!floppyMedium)

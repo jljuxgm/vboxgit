@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 38887 2011-09-27 12:08:50Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 41347 2012-05-17 22:40:43Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -635,7 +635,8 @@ int handleStorageAttach(HandlerArg *a)
                 {
                     Bstr bstrMedium(pszMedium);
                     rc = findOrOpenMedium(a, pszMedium, devTypeRequested,
-                                          pMedium2Mount, fSetNewUuid, NULL);
+                                          AccessMode_ReadWrite, pMedium2Mount,
+                                          fSetNewUuid, NULL);
                     if (FAILED(rc) || !pMedium2Mount)
                         throw Utf8StrFmt("Invalid UUID or filename \"%s\"", pszMedium);
                 }
