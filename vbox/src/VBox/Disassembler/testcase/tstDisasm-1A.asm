@@ -1,4 +1,4 @@
-; $Id: tstDisasm-1A.asm 41868 2012-06-21 21:08:40Z vboxsync $
+; $Id: tstDisasm-1A.asm 41874 2012-06-22 00:14:56Z vboxsync $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -136,8 +136,7 @@ BEGINPROC   TestProc32
         pi2fw       mm0, qword [es:esi*5]
         pswapd      mm2, qword [es:esi*8]
 
-        pmulhrwa mm0, qword [ds:ebp+edi*8+00f000001h]
-
+        pmulhrwa    mm0, qword [ds:ebp+edi*8+00f000001h]
 
         ; MMX
         psubusb     mm1, mm3

@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-1.cpp 41797 2012-06-17 02:52:09Z vboxsync $ */
+/* $Id: tstDisasm-1.cpp 41874 2012-06-22 00:14:56Z vboxsync $ */
 /** @file
  * VBox disassembler - Test application
  */
@@ -71,6 +71,17 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
             RTTestIFailureDetails("rc=%Rrc, off=%#x (%u) cbInstr=%u enmDisCpuMode=%d\n",
                                   rc, off, Dis.cbInstr, enmDisCpuMode);
         RTTestIPrintf(RTTESTLVL_ALWAYS, "%s\n", szOutput);
+
+        /* Check with size-only. */
+        uint32_t        cbOnly = 1;
+        DISSTATE        DisOnly;
+        rc = DISInstWithPrefetchedBytes((uintptr_t)&pabInstrs[off], enmDisCpuMode,  0 /*fFilter - none */,
+                                        Dis.abInstr, Dis.cbCachedInstr, NULL, NULL, &DisOnly, &cbOnly);
+
+        RTTESTI_CHECK_RC(rc, VINF_SUCCESS);
+        RTTESTI_CHECK(cbOnly == DisOnly.cbInstr);
+        RTTESTI_CHECK_MSG(cbOnly == cb, ("%#x vs %#x\n", cbOnly, cb));
+
         off += cb;
     }
 }

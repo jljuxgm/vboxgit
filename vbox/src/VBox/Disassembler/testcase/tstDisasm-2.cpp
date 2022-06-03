@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 41863 2012-06-21 15:46:24Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 41874 2012-06-22 00:14:56Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -356,6 +356,25 @@ static int MyDisasmBlock(const char *argv0, DISCPUMODE enmCpuMode, uint64_t uAdd
         /* Highlight this instruction? */
         if (uHighlightAddr - State.uAddress < State.cbInstr)
             RTPrintf("; ^^^^^^^^^^^^^^^^^^^^^\n");
+
+        /* Check that the size-only mode returns the smae size on success. */
+        if (RT_SUCCESS(rc))
+        {
+            uint32_t cbInstrOnly = 32;
+            uint8_t  abInstr[sizeof(State.Dis.abInstr)];
+            memcpy(abInstr, State.Dis.abInstr, sizeof(State.Dis.abInstr));
+            int rcOnly = DISInstWithPrefetchedBytes(State.uAddress, enmCpuMode, 0 /*fFilter - none */,
+                                                    abInstr, State.Dis.cbCachedInstr, MyDisasInstrRead, &State,
+                                                    &State.Dis, &cbInstrOnly);
+            if (   rcOnly != rc
+                || cbInstrOnly != State.cbInstr)
+            {
+                RTPrintf("; Instruction size only check failed rc=%Rrc cbInstrOnly=%#x exepcted %Rrc and %#x\n",
+                         rcOnly, cbInstrOnly, rc, State.cbInstr);
+                rcRet = VERR_GENERAL_FAILURE;
+                break;
+            }
+        }
 
         /* next */
         State.uAddress += State.cbInstr;
