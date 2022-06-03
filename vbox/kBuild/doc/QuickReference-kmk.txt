@@ -543,6 +543,16 @@ String Manipulation Functions:
 
         $(join list1,list2)
 
+    Extract the first defined variable from ``variables``, returning its name
+    (default) or value::
+
+        $(firstdefined variables[, name|value])
+
+    Extract the last defined variable from ``variables``, returning its name
+    (default) or value::
+
+        $(lastdefined variables[, name|value])
+
     Fold ``text`` to upper case [1]_::
 
         $(toupper text)
@@ -608,6 +618,11 @@ Functions for file names:
     Windows & OS/2) [1]_::
 
         $(root names...)
+
+    Extract the non-root part of each file name (a bit complicated on
+    Windows & OS/2) [1]_::
+
+        $(notroot names...)
 
     Append ``suffix`` to each word in ``names``::
 
@@ -829,7 +844,7 @@ Advanced Functions:
 
     A combination of ``$(eval )`` and ``$(call )`` [1]_::
 
-        $(evalcall var)
+        $(evalcall2 var)
 
     Remove comments and blank lines from the variable ``var``. Expands to
     the empty string [1]_::
@@ -1026,7 +1041,7 @@ Pattern rules
 
 -----
 
-:Status: $Id: QuickReference-kmk.txt 2340 2009-04-18 12:05:47Z bird $
+:Status: $Id: QuickReference-kmk.txt 2490 2011-07-22 11:16:39Z bird $
 :Copyright: Copyright (C) 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
             1996, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2006,
             2007 Free Software Foundation, Inc.
