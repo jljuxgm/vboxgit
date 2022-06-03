@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 39690 2011-12-30 13:06:50Z vboxsync $ */
+/* $Id: pipe-win.cpp 39691 2011-12-30 13:16:35Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -1160,7 +1160,7 @@ RTDECL(int) RTPipeQueryReadable(RTPIPE hPipe, size_t *pcbReadable)
         return rc;
 
     DWORD cbAvailable = 0;
-    if (PeekNamedPipe(pThis->hPipe, NULL, 0, NULL, &cbAvailable, NULL)
+    if (PeekNamedPipe(pThis->hPipe, NULL, 0, NULL, &cbAvailable, NULL))
         *pcbReadable = cbAvailable;
     else
         rc = RTErrConvertFromWin32(GetLastError());
