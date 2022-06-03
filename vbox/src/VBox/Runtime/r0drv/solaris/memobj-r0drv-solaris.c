@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 41682 2012-06-13 12:52:01Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 41875 2012-06-22 04:40:10Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -750,6 +750,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
         else
             ASMAtomicWriteU32(&s_cbLargePage, 0);
     }
+
     uint64_t PhysAddr;
     if (   cb == s_cbLargePage
         && cb == uAlignment
@@ -776,8 +777,6 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPhys(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
     {
         /*
          * Allocate physically contiguous memory aligned as specified.
-         * Note: contig_alloc() can be agonizingly slow for large (e.g. >= _2M) contiguous allocations.
-         *      So we shouldn't ideally be in this path for large-page allocations.                                                                                              .
          */
         AssertCompile(NIL_RTHCPHYS == UINT64_MAX); NOREF(RTASSERTVAR);
         PhysAddr = PhysHighest;
