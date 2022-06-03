@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 41956 2012-06-28 11:15:26Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 41959 2012-06-28 12:05:20Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -42,7 +42,7 @@ using namespace com;
 #include <VBox/err.h>
 #include <VBox/VBoxVideo.h>
 
-#ifdef VBOX_WITH_VIDEO_REC ||
+#ifdef VBOX_WITH_VIDEO_REC 
 #include <cstdlib>
 #include <cerrno>
 #include "VBoxHeadless.h"
