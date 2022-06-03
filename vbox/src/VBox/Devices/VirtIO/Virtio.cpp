@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: Virtio.cpp 41809 2012-06-18 06:39:51Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -110,7 +110,18 @@ void vringSetNotification(PVPCISTATE pState, PVRING pVRing, bool fEnabled)
                        &tmp, sizeof(tmp));
 }
 
-bool vqueueGet(PVPCISTATE pState, PVQUEUE pQueue, PVQUEUEELEM pElem)
+bool vqueueSkip(PVPCISTATE pState, PVQUEUE pQueue)
+{
+    if (vqueueIsEmpty(pState, pQueue))
+        return false;
+
+    Log2(("%s vqueueSkip: %s avail_idx=%u\n", INSTANCE(pState),
+          QUEUENAME(pState, pQueue), pQueue->uNextAvailIndex));
+    pQueue->uNextAvailIndex++;
+    return true;
+}
+
+bool vqueueGet(PVPCISTATE pState, PVQUEUE pQueue, PVQUEUEELEM pElem, bool fRemove)
 {
     if (vqueueIsEmpty(pState, pQueue))
         return false;
@@ -121,7 +132,9 @@ bool vqueueGet(PVPCISTATE pState, PVQUEUE pQueue, PVQUEUEELEM pElem)
           QUEUENAME(pState, pQueue), pQueue->uNextAvailIndex));
 
     VRINGDESC desc;
-    uint16_t  idx = vringReadAvail(pState, &pQueue->VRing, pQueue->uNextAvailIndex++);
+    uint16_t  idx = vringReadAvail(pState, &pQueue->VRing, pQueue->uNextAvailIndex);
+    if (fRemove)
+        pQueue->uNextAvailIndex++;
     pElem->uIndex = idx;
     do
     {
