@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 39373 2011-11-18 17:08:40Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 39379 2011-11-21 12:33:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -179,7 +179,6 @@ private slots:
         request.setUrl(url);
         request.setRawHeader("User-Agent", strUserAgent.toAscii());
         QNetworkReply *pReply = gNetworkManager->get(request);
-        connect(pReply, SIGNAL(sslErrors(QList<QSslError>)), pReply, SLOT(ignoreSslErrors()));
         connect(pReply, SIGNAL(finished()), this, SLOT(sltHandleCheckReply()));
     }
 

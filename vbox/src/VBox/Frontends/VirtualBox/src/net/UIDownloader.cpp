@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
+/* $Id: UIDownloader.cpp 39379 2011-11-21 12:33:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -136,7 +136,6 @@ void UIDownloader::sltStartAcknowledging()
     QNetworkRequest request;
     request.setUrl(m_source);
     QNetworkReply *pReply = gNetworkManager->head(request);
-    connect(pReply, SIGNAL(sslErrors(QList<QSslError>)), pReply, SLOT(ignoreSslErrors()));
     connect(pReply, SIGNAL(finished()), this, SLOT(sltFinishAcknowledging()));
 }
 
@@ -189,7 +188,6 @@ void UIDownloader::sltStartDownloading()
     QNetworkRequest request;
     request.setUrl(m_source);
     QNetworkReply *pReply = gNetworkManager->get(request);
-    connect(pReply, SIGNAL(sslErrors(QList<QSslError>)), pReply, SLOT(ignoreSslErrors()));
     connect(pReply, SIGNAL(downloadProgress(qint64, qint64)), this, SIGNAL(sigDownloadProgress(qint64, qint64)));
     connect(pReply, SIGNAL(finished()), this, SLOT(sltFinishDownloading()));
 }
