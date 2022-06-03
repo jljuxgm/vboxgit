@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 39682 2011-12-28 10:36:27Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 39944 2012-02-01 21:16:23Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -592,6 +592,14 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
                                 pVCpu->vmm.s.pbEMTStackRC, pVCpu->vmm.s.pbEMTStackBottomRC,
                                 VMM_STACK_SIZE, pVCpu->vmm.s.pbEMTStackR3);
             } /* !HWACCMIsEnabled */
+            break;
+        }
+
+        case VERR_IEM_INSTR_NOT_IMPLEMENTED:
+        case VERR_IEM_ASPECT_NOT_IMPLEMENTED:
+        {
+            DBGFR3Info(pVM, "cpumguest", NULL, pHlp);
+            DBGFR3Info(pVM, "cpumguestinstr", NULL, pHlp);
             break;
         }
 

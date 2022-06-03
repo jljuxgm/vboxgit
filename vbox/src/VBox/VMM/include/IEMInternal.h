@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: IEMInternal.h 39944 2012-02-01 21:16:23Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -324,6 +324,10 @@ typedef IEMCPU *PIEMCPU;
 #define IEM_ACCESS_STACK_R              (IEM_ACCESS_TYPE_READ  | IEM_ACCESS_WHAT_STACK)
 /** Stack read+write alias. */
 #define IEM_ACCESS_STACK_RW             (IEM_ACCESS_TYPE_READ  | IEM_ACCESS_TYPE_WRITE | IEM_ACCESS_WHAT_STACK)
+/** Read system table alias. */
+#define IEM_ACCESS_SYS_R                (IEM_ACCESS_TYPE_READ  | IEM_ACCESS_WHAT_SYS)
+/** Read+write system table alias. */
+#define IEM_ACCESS_SYS_RW               (IEM_ACCESS_TYPE_READ  | IEM_ACCESS_TYPE_WRITE | IEM_ACCESS_WHAT_SYS)
 /** @} */
 
 /** @name Prefix constants (IEMCPU::fPrefixes)

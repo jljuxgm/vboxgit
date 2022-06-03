@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: EM.cpp 39944 2012-02-01 21:16:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -850,6 +850,8 @@ static int emR3Debug(PVM pVM, PVMCPU pVCpu, int rc)
                 case VINF_EM_RAW_IRET_TRAP:
                 case VERR_TRPM_PANIC:
                 case VERR_TRPM_DONT_PANIC:
+                case VERR_IEM_INSTR_NOT_IMPLEMENTED:
+                case VERR_IEM_ASPECT_NOT_IMPLEMENTED:
                 case VERR_VMM_RING0_ASSERTION:
                 case VERR_VMM_HYPER_CR3_MISMATCH:
                 case VERR_VMM_RING3_CALL_DISABLED:

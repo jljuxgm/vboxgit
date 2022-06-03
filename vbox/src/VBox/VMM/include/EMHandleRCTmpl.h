@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 39944 2012-02-01 21:16:23Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -319,6 +319,8 @@ int emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VERR_VMM_RING0_ASSERTION:
         case VERR_VMM_HYPER_CR3_MISMATCH:
         case VERR_VMM_RING3_CALL_DISABLED:
+        case VERR_IEM_INSTR_NOT_IMPLEMENTED:
+        case VERR_IEM_ASPECT_NOT_IMPLEMENTED:
             break;
 
 #ifdef EMHANDLERC_WITH_HWACCM
