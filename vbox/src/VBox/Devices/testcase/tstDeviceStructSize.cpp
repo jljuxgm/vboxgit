@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 37752 2011-07-04 10:02:23Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 37781 2011-07-05 13:35:29Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -90,7 +90,7 @@
 # include "../Storage/DevLsiLogicSCSI.cpp"
 #endif
 
-#ifdef VBOX_WITH_PCI_PASSTHROUGH
+#ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
 # undef LOG_GROUP
 # include "../Bus/DevPciRaw.cpp"
 #endif
@@ -325,8 +325,8 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VPCISTATE, led, 4);
     CHECK_MEMBER_ALIGNMENT(VPCISTATE, Queues, 8);
 #endif
-#ifdef VBOX_WITH_PCI_PASSTHROUGH
-    //CHECK_MEMBER_ALIGNMENT(PCIRAWSENDREQ, u.aGetRegionInfo.u64RegionSize, 8);
+#ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
+    CHECK_MEMBER_ALIGNMENT(PCIRAWSENDREQ, u.aGetRegionInfo.u64RegionSize, 8);
 #endif
 
 #ifdef VBOX_WITH_RAW_MODE
