@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 38606 2011-09-02 01:14:51Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 39075 2011-10-21 12:06:20Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -291,11 +291,11 @@ my_generate_project()
     echo '            </Target>'                                                                                        >> "${MY_FILE}"
     echo '            <Target Name="Build" MenuCaption="&amp;Build"CaptureOutputWith="ProcessBuffer"'                   >> "${MY_FILE}"
     echo '                    SaveOption="SaveWorkspaceFiles" RunFromDir="%rw" ClearProcessBuffer="1">'                 >> "${MY_FILE}"
-    echo '                <Exec CmdLine="'"${MY_KMK_INVOCATION}"'"/>'                                                   >> "${MY_FILE}"
+    echo '                <Exec CmdLine="'"${MY_KMK_INVOCATION}"' -C %rw"/>'                                            >> "${MY_FILE}"
     echo '            </Target>'                                                                                        >> "${MY_FILE}"
     echo '            <Target Name="Rebuild" MenuCaption="&amp;Rebuild" CaptureOutputWith="ProcessBuffer"'              >> "${MY_FILE}"
     echo '                    SaveOption="SaveWorkspaceFiles" RunFromDir="%rw" ClearProcessBuffer="1">'                 >> "${MY_FILE}"
-    echo '                <Exec CmdLine="'"${MY_KMK_INVOCATION}"' rebuild"/>'                                           >> "${MY_FILE}"
+    echo '                <Exec CmdLine="'"${MY_KMK_INVOCATION}"' -C %rw rebuild"/>'                                    >> "${MY_FILE}"
     echo '            </Target>'                                                                                        >> "${MY_FILE}"
     echo '            <Target Name="Debug" MenuCaption="&amp;Debug" SaveOption="SaveNone" RunFromDir="%rw">'            >> "${MY_FILE}"
     echo '                <Exec/>'                                                                                      >> "${MY_FILE}"
