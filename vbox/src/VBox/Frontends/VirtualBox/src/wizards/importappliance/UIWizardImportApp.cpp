@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -229,6 +229,11 @@ void UIWizardImportApp::prepare()
         case UIWizardMode_Expert:
         {
             setPage(PageExpert, new UIWizardImportAppPageExpert(m_strFileName));
+            break;
+        }
+        default:
+        {
+            AssertMsgFailed(("Invalid mode: %d", mode()));
             break;
         }
     }

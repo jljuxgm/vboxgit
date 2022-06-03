@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -182,6 +182,11 @@ void UIWizardCloneVM::prepare()
             setPage(PageExpert, new UIWizardCloneVMPageExpert(m_machine.GetName(),
                                                               m_snapshot.isNull(),
                                                               m_snapshot.isNull() ? false : m_snapshot.GetChildrenCount() > 0));
+            break;
+        }
+        default:
+        {
+            AssertMsgFailed(("Invalid mode: %d", mode()));
             break;
         }
     }

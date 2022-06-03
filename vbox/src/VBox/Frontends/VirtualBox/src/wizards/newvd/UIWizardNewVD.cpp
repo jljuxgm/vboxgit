@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -29,8 +29,11 @@
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 
-UIWizardNewVD::UIWizardNewVD(QWidget *pParent, const QString &strDefaultName, const QString &strDefaultPath, qulonglong uDefaultSize)
-    : UIWizard(pParent, UIWizardType_NewVD)
+UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
+                             const QString &strDefaultName, const QString &strDefaultPath,
+                             qulonglong uDefaultSize,
+                             UIWizardMode mode)
+    : UIWizard(pParent, UIWizardType_NewVD, mode)
     , m_strDefaultName(strDefaultName)
     , m_strDefaultPath(strDefaultPath)
     , m_uDefaultSize(uDefaultSize)
@@ -119,6 +122,11 @@ void UIWizardNewVD::prepare()
         case UIWizardMode_Expert:
         {
             setPage(PageExpert, new UIWizardNewVDPageExpert(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
+            break;
+        }
+        default:
+        {
+            AssertMsgFailed(("Invalid mode: %d", mode()));
             break;
         }
     }

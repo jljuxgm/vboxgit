@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 41373 2012-05-21 17:41:41Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -105,6 +105,11 @@ void UIWizardFirstRun::prepare()
         case UIWizardMode_Expert:
         {
             AssertMsgFailed(("First-run wizard has no expert-mode!"));
+            break;
+        }
+        default:
+        {
+            AssertMsgFailed(("Invalid mode: %d", mode()));
             break;
         }
     }

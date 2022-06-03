@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -120,6 +120,11 @@ void UIWizardCloneVD::prepare()
         case UIWizardMode_Expert:
         {
             setPage(PageExpert, new UIWizardCloneVDPageExpert(m_sourceVirtualDisk));
+            break;
+        }
+        default:
+        {
+            AssertMsgFailed(("Invalid mode: %d", mode()));
             break;
         }
     }

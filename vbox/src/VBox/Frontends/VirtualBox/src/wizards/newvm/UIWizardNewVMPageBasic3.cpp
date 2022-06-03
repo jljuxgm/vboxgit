@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 41389 2012-05-22 13:04:09Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -80,7 +80,8 @@ bool UIWizardNewVMPage3::getWithNewVirtualDiskWizard()
     UIWizardNewVD dlg(thisImp(),
                       fieldImp("machineBaseName").toString(),
                       fieldImp("machineFolder").toString(),
-                      fieldImp("type").value<CGuestOSType>().GetRecommendedHDD());
+                      fieldImp("type").value<CGuestOSType>().GetRecommendedHDD(),
+                      wizardImp()->mode());
     if (dlg.exec() == QDialog::Accepted)
     {
         m_virtualDisk = dlg.virtualDisk();

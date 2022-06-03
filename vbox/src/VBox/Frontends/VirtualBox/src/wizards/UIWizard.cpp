@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 41401 2012-05-22 16:23:13Z vboxsync $ */
+/* $Id: UIWizard.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -80,6 +80,11 @@ void UIWizard::sltCustomButtonClicked(int iId)
                     wizards.removeAll(strWizardName);
                 break;
             }
+            default:
+            {
+                AssertMsgFailed(("Invalid mode: %d", m_mode));
+                break;
+            }
         }
 
         /* Save mode settings: */
@@ -90,10 +95,10 @@ void UIWizard::sltCustomButtonClicked(int iId)
     }
 }
 
-UIWizard::UIWizard(QWidget *pParent, UIWizardType type)
+UIWizard::UIWizard(QWidget *pParent, UIWizardType type, UIWizardMode mode)
     : QIWithRetranslateUI<QWizard>(pParent)
     , m_type(type)
-    , m_mode(loadModeForType(m_type))
+    , m_mode(mode == UIWizardMode_Auto ? loadModeForType(m_type) : mode)
 {
 #ifdef Q_WS_WIN
     /* Hide window icon: */
@@ -118,6 +123,7 @@ void UIWizard::retranslateUi()
     {
         case UIWizardMode_Basic: setButtonText(QWizard::CustomButton1, tr("Hide Description")); break;
         case UIWizardMode_Expert: setButtonText(QWizard::CustomButton1, tr("Show Description")); break;
+        default: AssertMsgFailed(("Invalid mode: %d", m_mode)); break;
     }
 }
 
