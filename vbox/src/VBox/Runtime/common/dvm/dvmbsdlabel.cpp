@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 40137 2012-02-15 16:24:51Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 40298 2012-02-29 14:19:21Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -296,7 +296,7 @@ DECLCALLBACK(int) rtDvmFmtBsdLblOpen(PCRTDVMDISK pDisk, PRTDVMFMT phVolMgrFmt)
     PRTDVMFMTINTERNAL pThis = NULL;
 
     pThis = (PRTDVMFMTINTERNAL)RTMemAllocZ(sizeof(RTDVMFMTINTERNAL));
-    if (VALID_PTR(pThis))
+    if (pThis)
     {
         pThis->pDisk       = pDisk;
         pThis->cPartitions = 0;
@@ -368,7 +368,7 @@ static int rtDvmFmtBsdLblVolumeCreate(PRTDVMFMTINTERNAL pThis, PBsdLabelPartitio
     int rc = VINF_SUCCESS;
     PRTDVMVOLUMEFMTINTERNAL pVol = (PRTDVMVOLUMEFMTINTERNAL)RTMemAllocZ(sizeof(RTDVMVOLUMEFMTINTERNAL));
 
-    if (VALID_PTR(pVol))
+    if (pVol)
     {
         pVol->pVolMgr            = pThis;
         pVol->idxEntry           = idx;

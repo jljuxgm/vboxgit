@@ -1,4 +1,4 @@
-/* $Id: dvmgpt.cpp 40137 2012-02-15 16:24:51Z vboxsync $ */
+/* $Id: dvmgpt.cpp 40298 2012-02-29 14:19:21Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - GPT format backend.
  */
@@ -254,7 +254,7 @@ static DECLCALLBACK(int) rtDvmFmtGptOpen(PCRTDVMDISK pDisk, PRTDVMFMT phVolMgrFm
     PRTDVMFMTINTERNAL pThis = NULL;
 
     pThis = (PRTDVMFMTINTERNAL)RTMemAllocZ(sizeof(RTDVMFMTINTERNAL));
-    if (VALID_PTR(pThis))
+    if (pThis)
     {
         pThis->pDisk       = pDisk;
         pThis->cPartitions = 0;
@@ -279,7 +279,7 @@ static DECLCALLBACK(int) rtDvmFmtGptOpen(PCRTDVMDISK pDisk, PRTDVMFMT phVolMgrFm
             if (pThis->HdrRev1.cbPartitionEntry == sizeof(GptEntry))
             {
                 pThis->paGptEntries = (PGptEntry)RTMemAllocZ(pThis->HdrRev1.cPartitionEntries * pThis->HdrRev1.cbPartitionEntry);
-                if (VALID_PTR(pThis->paGptEntries))
+                if (pThis->paGptEntries)
                 {
                     rc = rtDvmDiskRead(pDisk, RTDVM_GPT_LBA2BYTE(pThis->HdrRev1.u64LbaPartitionEntries, pDisk),
                                      pThis->paGptEntries, pThis->HdrRev1.cPartitionEntries * pThis->HdrRev1.cbPartitionEntry);
@@ -369,7 +369,7 @@ static int rtDvmFmtMbrVolumeCreate(PRTDVMFMTINTERNAL pThis, PGptEntry pGptEntry,
     int rc = VINF_SUCCESS;
     PRTDVMVOLUMEFMTINTERNAL pVol = (PRTDVMVOLUMEFMTINTERNAL)RTMemAllocZ(sizeof(RTDVMVOLUMEFMTINTERNAL));
 
-    if (VALID_PTR(pVol))
+    if (pVol)
     {
         pVol->pVolMgr    = pThis;
         pVol->idxEntry   = idx;
