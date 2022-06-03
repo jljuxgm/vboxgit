@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 42011 2012-07-04 05:25:31Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1182,6 +1182,7 @@ SUPR0DECL(int) SUPR0TracerRegisterImpl(void *hMod, PSUPDRVSESSION pSession, PCSU
     PSUPDRVDEVEXT       pDevExt;
     PSUPDRVTPPROVIDER   pProv;
     int                 rc;
+    int                 rc2;
 
     /*
      * Validate input and context.
@@ -1244,7 +1245,7 @@ SUPR0DECL(int) SUPR0TracerRegisterImpl(void *hMod, PSUPDRVSESSION pSession, PCSU
             {
                 Assert(!pProv->fRegistered);
                 pProv->fRegistered = true;
-                int rc2 = pDevExt->pTracerOps->pfnProviderRegister(pDevExt->pTracerOps, &pProv->Core);
+                rc2 = pDevExt->pTracerOps->pfnProviderRegister(pDevExt->pTracerOps, &pProv->Core);
                 if (RT_FAILURE(rc2))
                 {
                     pProv->fRegistered = false;
