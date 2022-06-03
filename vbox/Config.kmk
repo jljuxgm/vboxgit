@@ -1,4 +1,4 @@
-# $Id: Config.kmk 39882 2012-01-26 00:54:50Z vboxsync $
+# $Id: Config.kmk 39924 2012-01-31 20:34:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2431,7 +2431,7 @@ VBOXLNX32GUEST_SUFF_LIB = .a
 # SDKs for external libraries.
 #
 SDK_VBOX_LIBXML2          = .
-SDK_VBOX_LIBXML2_INCS   ?= $(PATH_ROOT)/src/libs/libxml2-2.6.30/include
+SDK_VBOX_LIBXML2_INCS   ?= $(PATH_ROOT)/src/libs/libxml2-2.6.31/include
 SDK_VBOX_LIBXML2_DEFS  ?= _REENTRANT
 SDK_VBOX_LIBXML2_DEFS.win += WIN32 _WINDOWS _MBCS
 # note: no linking to LIB here, we do that explicitly in src/VBox/Runtime/Makefile.kmk to link
@@ -4936,7 +4936,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39882 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39924 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
