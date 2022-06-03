@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41951 2012-06-28 08:24:43Z vboxsync $
+# $Id: Makefile.kmk 41954 2012-06-28 10:39:54Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -73,7 +73,7 @@ if defined(VBOX_WITH_MAIN) \
   if1of ($(KBUILD_TARGET), darwin linux solaris)
    include $(PATH_SUB_CURRENT)/ffmpeg-20060710/Makefile.kmk
   endif
-  if1of ($(KBUILD_TARGET), darwin linux)
+  if1of ($(KBUILD_TARGET), darwin linux solaris)
    include $(PATH_SUB_CURRENT)/libvpx/Makefile.kmk
   endif
  endif
