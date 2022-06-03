@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 38584 2011-08-31 14:38:20Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 38585 2011-08-31 14:45:06Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -1775,7 +1775,7 @@ static int rtDwarfInfo_LoadAll(PRTDBGMODDWARF pThis)
     RTDWARFCURSOR Cursor;
     int rc = rtDwarfCursor_Init(&Cursor, pThis, krtDbgModDwarfSect_info);
     if (RT_FAILURE(rc))
-        return NULL;
+        return rc;
 
     while (   !rtDwarfCursor_IsAtEnd(&Cursor)
            && RT_SUCCESS(rc))
