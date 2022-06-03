@@ -1,4 +1,4 @@
-/* $Id: MakeDebianBiosAssembly.cpp 41498 2012-05-30 14:49:23Z vboxsync $ */
+/* $Id: MakeDebianBiosAssembly.cpp 41500 2012-05-30 15:57:40Z vboxsync $ */
 /** @file
  * MakeDebianBiosAssembly - Generate Assembly Source for Debian-minded Distros.
  */
@@ -170,7 +170,7 @@ static bool disError(const char *pszFormat, ...)
  */
 static bool disFileHeader(void)
 {
-    return outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41498 2012-05-30 14:49:23Z vboxsync $ \n"
+    return outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41500 2012-05-30 15:57:40Z vboxsync $ \n"
                         ";; @file\n"
                         "; Auto Generated source file. Do not edit.\n"
                         ";\n"
@@ -736,7 +736,7 @@ static bool disIs16BitCode(const char *pszSymbol)
 static size_t disHandleYasmDifferences(PDISCPUSTATE pCpuState, uint32_t uFlatAddr, uint32_t cbInstr,
                                        char *pszBuf, size_t cbBuf, size_t cchUsed)
 {
-    bool fDifferent = false;
+    bool fDifferent = DISFormatYasmIsOddEncoding(pCpuState);
     uint8_t const  *pb = &g_pbImg[uFlatAddr - VBOX_BIOS_BASE];
     if (   pb[0] == 0x2a
         && pb[1] == 0xe4)
