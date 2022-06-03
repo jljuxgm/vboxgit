@@ -1,4 +1,4 @@
-# $Id: Config.kmk 40908 2012-04-13 20:50:27Z vboxsync $
+# $Id: Config.kmk 40918 2012-04-14 11:33:04Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3200,10 +3200,13 @@ TEMPLATE_VBOXR3EXE                     = VBox Ring 3 Exe
 TEMPLATE_VBOXR3EXE_ASTOOL              = $(VBOX_ASTOOL)
 TEMPLATE_VBOXR3EXE_ASFLAGS.x86         = $(VBOX_ASFLAGS32)
 TEMPLATE_VBOXR3EXE_ASFLAGS.amd64       = $(VBOX_ASFLAGS64)
+TEMPLATE_VBOXR3EXE_USES                = dtrace
 ifdef VBOX_WITH_DTRACE_R3
  TEMPLATE_VBOXR3EXE_DTRACETOOL         = StandardDTrace
  TEMPLATE_VBOXR3EXE_DTRACE_OBJ_FLAGS   = -C
  TEMPLATE_VBOXR3EXE_DTRACE_HDR_FLAGS   = -C
+else
+ TEMPLATE_VBOXR3EXE_DTRACETOOL         = VBoxTpG-Disabled
 endif
 TEMPLATE_VBOXR3EXE_DEFS                = IN_RING3 $(ARCH_BITS_DEFS)
 TEMPLATE_VBOXR3EXE_LIBS.kprofile       = $(LIB_KPROFILE)
@@ -5044,7 +5047,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40908 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40918 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
