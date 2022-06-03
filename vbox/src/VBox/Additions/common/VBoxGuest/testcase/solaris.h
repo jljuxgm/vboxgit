@@ -1,4 +1,4 @@
-/* $Id: solaris.h 40501 2012-03-16 15:04:26Z vboxsync $ */
+/* $Id: solaris.h 40533 2012-03-19 11:43:47Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver for Solaris - testcase stubs.
  */
@@ -220,7 +220,7 @@ typedef struct datab
     unsigned char     *db_lim;
     unsigned char      db_ref;
     unsigned char      db_type;
-} dlk_t;
+} dblk_t;
 
 struct iocblk
 {
