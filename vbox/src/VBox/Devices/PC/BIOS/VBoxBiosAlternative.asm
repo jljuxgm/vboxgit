@@ -1,4 +1,4 @@
-; $Id: VBoxBiosAlternative.asm 42053 2012-07-09 12:43:31Z vboxsync $ 
+; $Id: VBoxBiosAlternative.asm 42057 2012-07-09 12:54:37Z vboxsync $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
@@ -552,7 +552,7 @@
 ;
 ; Source file: logo.c
 ;
-;  $Id: VBoxBiosAlternative.asm 42053 2012-07-09 12:43:31Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 42057 2012-07-09 12:54:37Z vboxsync $
 ;  Stuff for drawing the BIOS logo.
 ;  
 ;  
@@ -570,7 +570,7 @@
 ;
 ; Source file: scsi.c
 ;
-;  $Id: VBoxBiosAlternative.asm 42053 2012-07-09 12:43:31Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 42057 2012-07-09 12:54:37Z vboxsync $
 ;  SCSI host adapter driver to boot from SCSI disks
 ;  
 ;  
@@ -588,7 +588,7 @@
 ;
 ; Source file: ahci.c
 ;
-;  $Id: VBoxBiosAlternative.asm 42053 2012-07-09 12:43:31Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 42057 2012-07-09 12:54:37Z vboxsync $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
@@ -640,7 +640,7 @@
 ;
 ; Source file: support.asm
 ;
-;  $Id: VBoxBiosAlternative.asm 42053 2012-07-09 12:43:31Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 42057 2012-07-09 12:54:37Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
