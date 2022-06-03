@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 40057 2012-02-10 00:21:23Z vboxsync $ */
+/* $Id: tstX86-1.cpp 40082 2012-02-12 13:40:29Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -238,12 +238,12 @@ int main()
         rc = x861_Test4();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test4 -> %d", rc);
+#endif
 
         RTTestSub(hTest, "Odd floating point encodings");
         rc = x861_Test5();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test5 -> %d", rc);
-#endif
 
         RTTestSub(hTest, "Floating point exceptions ++");
         rc = x861_Test6();
