@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg-win.h 36486 2011-04-01 07:22:37Z vboxsync $ */
+/* $Id: VBoxDrvCfg-win.h 36503 2011-04-01 14:01:42Z vboxsync $ */
 /** @file
  * VBoxDrvCfg-win.h - Windows Driver Manipulation API
  */
@@ -19,6 +19,7 @@
 #include <Windows.h>
 
 #include <iprt/cdefs.h>
+#include <VBox/cdefs.h>
 
 RT_C_DECLS_BEGIN
 
@@ -31,7 +32,7 @@ RT_C_DECLS_BEGIN
 # endif
 #else
 /*enable this in case we include this in a static lib*/
-# define VBOXDRVCFG_DECL(_type) _type __stdcall
+# define VBOXDRVCFG_DECL(_type) _type VBOXCALL
 #endif
 
 typedef enum
