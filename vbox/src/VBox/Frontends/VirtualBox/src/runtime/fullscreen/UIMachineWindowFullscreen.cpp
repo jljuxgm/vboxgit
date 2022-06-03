@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 41114 2012-05-02 13:07:55Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 41333 2012-05-16 11:43:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,6 +19,7 @@
 
 /* Global includes: */
 #include <QDesktopWidget>
+#include <QMenu>
 #include <QTimer>
 #ifdef Q_WS_MAC
 # include <QMenuBar>
