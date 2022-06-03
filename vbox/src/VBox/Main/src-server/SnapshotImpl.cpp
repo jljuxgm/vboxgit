@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 37985 2011-07-15 15:04:39Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 38718 2011-09-12 15:56:52Z vboxsync $ */
 
 /** @file
  *
@@ -1819,7 +1819,16 @@ void SessionMachine::restoreSnapshotHandler(RestoreSnapshotTask &aTask)
             // restore the attachments from the snapshot
             setModified(IsModified_Storage);
             mMediaData.backup();
-            mMediaData->mAttachments = pSnapshotMachine->mMediaData->mAttachments;
+            mMediaData->mAttachments.clear();
+            for (MediaData::AttachmentList::const_iterator it = pSnapshotMachine->mMediaData->mAttachments.begin();
+                 it != pSnapshotMachine->mMediaData->mAttachments.end();
+                 ++it)
+            {
+                ComObjPtr<MediumAttachment> pAttach;
+                pAttach.createObject();
+                pAttach->initCopy(this, *it);
+                mMediaData->mAttachments.push_back(pAttach);
+            }
 
             /* leave the locks before the potentially lengthy operation */
             snapshotLock.release();
