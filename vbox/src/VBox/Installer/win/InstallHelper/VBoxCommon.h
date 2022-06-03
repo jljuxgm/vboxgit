@@ -1,10 +1,10 @@
-/* $Id: VBoxCommon.h 38791 2011-09-19 13:21:31Z vboxsync $ */
+/* $Id: VBoxCommon.h 40997 2012-04-19 19:54:24Z vboxsync $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

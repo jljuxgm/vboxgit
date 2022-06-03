@@ -1,10 +1,10 @@
-/* $Id: VBoxInstallHelper.cpp 40995 2012-04-19 17:36:57Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 40997 2012-04-19 19:54:24Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
