@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 39169 2011-11-02 07:17:45Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 40502 2012-03-16 16:23:10Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -710,6 +710,7 @@ int handleCloneHardDisk(HandlerArg *a)
             rc = createHardDisk(a, Utf8Str(format).c_str(), pszDst, dstDisk);
             if (FAILED(rc))
                 break;
+            fDstUnknown = true;
         }
 
         ComPtr<IProgress> progress;
