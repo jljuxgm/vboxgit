@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 38939 2011-10-05 12:57:44Z vboxsync $ */
+/* $Id: vbox-img.cpp 38945 2011-10-05 16:31:46Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -52,8 +52,10 @@ static void printUsage(PRTSTREAM pStrm)
                  "   info         --filename <filename>\n"
                  "\n"
                  "   compact      --filename <filename>\n"
+                 "\n"
                  "   createcache  --filename <filename>\n"
                  "                --size <cache size>\n"
+                 "\n"
                  "   createbase   --filename <filename>\n"
                  "                --size <size in bytes>\n"
                  "                [--format VDI|VMDK|VHD] (default: VDI)\n"
