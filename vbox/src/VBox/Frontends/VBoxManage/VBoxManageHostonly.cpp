@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 35330 2010-12-24 18:05:33Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 38525 2011-08-25 11:40:58Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -65,16 +65,7 @@ static int handleCreate(HandlerArg *a, int iStart, int *pcProcessed)
 
     rc = showProgress(progress);
     *pcProcessed = index - iStart;
-    if (FAILED(rc))
-    {
-        com::ProgressErrorInfo info(progress);
-        if (info.isBasicAvailable())
-            RTMsgError("Failed to create the host-only adapter. Error message: %lS", info.getText().raw());
-        else
-            RTMsgError("Failed to create the host-only adapter. No error message available, code: %Rhrc", rc);
-
-        return 1;
-    }
+    CHECK_PROGRESS_ERROR_RET(progress, ("Failed to create the host-only adapter"), 1);
 
     Bstr name;
     CHECK_ERROR(hif, COMGETTER(Name) (name.asOutParam()));
@@ -109,16 +100,7 @@ static int handleRemove(HandlerArg *a, int iStart, int *pcProcessed)
 
     rc = showProgress(progress);
     *pcProcessed = index - iStart;
-    if (FAILED(rc))
-    {
-        com::ProgressErrorInfo info(progress);
-        if (info.isBasicAvailable())
-            RTMsgError("Failed to remove the host-only adapter. Error message: %lS", info.getText().raw());
-        else
-            RTMsgError("Failed to remove the host-only adapter. No error message available, code: %Rhrc", rc);
-
-        return 1;
-    }
+    CHECK_PROGRESS_ERROR_RET(progress, ("Failed to remove the host-only adapter"), 1);
 
     return 0;
 }
