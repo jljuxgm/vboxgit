@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 37211 2011-05-25 11:37:52Z vboxsync $ */
+/* $Id: VM.cpp 37462 2011-06-15 09:59:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -603,6 +603,9 @@ static int vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCTOR pfnCFGMCons
         AssertRelease(pVM->cCpus == cCpus);
         AssertRelease(pVM->uCpuExecutionCap == 100);
         AssertRelease(pVM->offVMCPU == RT_UOFFSETOF(VM, aCpus));
+        AssertCompileMemberAlignment(VM, cpum, 64);
+        AssertCompileMemberAlignment(VM, aCpus, PAGE_SIZE);
+        AssertCompileMemberAlignment(VM, aCpus[1], PAGE_SIZE);
 
         Log(("VMR3Create: Created pUVM=%p pVM=%p pVMR0=%p hSelf=%#x cCpus=%RU32\n",
              pUVM, pVM, pVM->pVMR0, pVM->hSelf, pVM->cCpus));
