@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 36630 2011-04-08 18:41:51Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 36631 2011-04-08 19:25:59Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1822,7 +1822,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
              {
                  ComPtr<IPciDeviceAttachment> Assignment = assignments[index];
                  char szHostPciAddress[32], szGuestPciAddress[32];
-                 int32_t iHostPciAddress = -1, iGuestPciAddress = -1;
+                 LONG iHostPciAddress = -1, iGuestPciAddress = -1;
                  Bstr DevName;
 
                  Assignment->COMGETTER(Name)(DevName.asOutParam());
