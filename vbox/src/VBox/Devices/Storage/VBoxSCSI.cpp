@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 40676 2012-03-28 12:42:10Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -345,7 +345,10 @@ int vboxscsiReadString(PPDMDEVINS pDevIns, PVBOXSCSI pVBoxSCSI, uint8_t iRegiste
 
     /* Read string only valid for data in register. */
     AssertMsg(iRegister == 1, ("Hey only register 1 can be read from with string\n"));
-    Assert(pVBoxSCSI->pBuf);
+
+    /* Accesses without a valid buffer will be ignored. */
+    if (!pVBoxSCSI->pBuf)
+        return VINF_SUCCESS;
 
     int rc = PGMPhysSimpleDirtyWriteGCPtr(PDMDevHlpGetVMCPU(pDevIns), GCDst, pVBoxSCSI->pBuf, cbTransfer);
     AssertRC(rc);
@@ -374,6 +377,11 @@ int vboxscsiWriteString(PPDMDEVINS pDevIns, PVBOXSCSI pVBoxSCSI, uint8_t iRegist
 
     /* Write string only valid for data in/out register. */
     AssertMsg(iRegister == 1, ("Hey only register 1 can be written to with string\n"));
+
+    /* Accesses without a valid buffer will be ignored. */
+    if (!pVBoxSCSI->pBuf)
+        return VINF_SUCCESS;
+
     Assert(cbTransfer == pVBoxSCSI->cbBuf);
     if (cbTransfer > pVBoxSCSI->cbBuf)
         cbTransfer = pVBoxSCSI->cbBuf;  /* Ignore excess data (not supposed to happen). */
