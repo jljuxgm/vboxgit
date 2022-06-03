@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMM.cpp 36054 2011-02-22 15:04:28Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2257,7 +2257,7 @@ static DECLCALLBACK(void) vmmR3InfoFF(PVM pVM, PCDBGFINFOHLP pHlp, const char *p
     PRINT_GROUP(VM_FF_,HIGH_PRIORITY_POST,_MASK);
     PRINT_GROUP(VM_FF_,NORMAL_PRIORITY_POST,_MASK);
     PRINT_GROUP(VM_FF_,NORMAL_PRIORITY,_MASK);
-    PRINT_GROUP(VM_FF_,ALL_BUT_RAW,_MASK);
+    PRINT_GROUP(VM_FF_,ALL_REM,_MASK);
     if (c)
         pHlp->pfnPrintf(pHlp, "\n");
 
@@ -2304,7 +2304,7 @@ static DECLCALLBACK(void) vmmR3InfoFF(PVM pVM, PCDBGFINFOHLP pHlp, const char *p
         PRINT_GROUP(VMCPU_FF_,NORMAL_PRIORITY,_MASK);
         PRINT_GROUP(VMCPU_FF_,RESUME_GUEST,_MASK);
         PRINT_GROUP(VMCPU_FF_,HWACCM_TO_R3,_MASK);
-        PRINT_GROUP(VMCPU_FF_,ALL_BUT_RAW,_MASK);
+        PRINT_GROUP(VMCPU_FF_,ALL_REM,_MASK);
         if (c)
             pHlp->pfnPrintf(pHlp, "\n");
     }
