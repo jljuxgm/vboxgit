@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 36532 2011-04-04 14:41:14Z vboxsync $ */
+/* $Id: ministring.cpp 36544 2011-04-04 17:59:31Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -369,8 +369,9 @@ RTCString::join(const RTCList<RTCString, RTCString *> &a_rList,
     {
         for (size_t i = 0; i < a_rList.size() - 1; ++i)
             strRet += a_rList.at(i) + a_rstrSep;
-        strRet += a_rList.last();
     }
+    if (a_rList.size() > 0)
+        strRet += a_rList.last();
 
     return strRet;
 }
