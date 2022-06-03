@@ -1,4 +1,4 @@
-/* $Id: config-host.h 36170 2011-03-04 12:49:02Z vboxsync $ */
+/* $Id: config-host.h 37675 2011-06-29 07:07:14Z vboxsync $ */
 /** @file
  * Sun host config - maintained by hand
  */
@@ -37,7 +37,7 @@
 #  define HAVE_BYTESWAP_H 1
 # endif
 #endif
-#define QEMU_VERSION "0.8.1"
+#define QEMU_VERSION "0.12.5"
 #define CONFIG_UNAME_RELEASE ""
 #define CONFIG_QEMU_SHAREDIR "."
 

@@ -1,4 +1,4 @@
-/* $Id: kvm.h 36211 2011-03-08 18:00:36Z vboxsync $ */
+/* $Id: kvm.h 37675 2011-06-29 07:07:14Z vboxsync $ */
 /** @file
  * VBox Recompiler - kvm stub header.
  */
@@ -22,6 +22,7 @@
 #define kvm_update_guest_debug(a, b)    AssertFailed()
 #define kvm_set_phys_mem(a, b, c)       AssertFailed()
 #define kvm_arch_get_registers(a)       AssertFailed()
+#define cpu_synchronize_state(a)        do { } while (0)
 
 #endif
 
