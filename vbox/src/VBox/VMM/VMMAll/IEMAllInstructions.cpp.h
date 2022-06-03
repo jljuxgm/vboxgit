@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 38077 2011-07-19 17:15:29Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 38079 2011-07-19 17:25:00Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -9832,7 +9832,14 @@ FNIEMOP_DEF(iemOp_Grp2_Ev_CL)
 }
 
 /** Opcode 0xd4. */
-FNIEMOP_STUB(iemOp_aam_Ib);
+FNIEMOP_DEF(iemOp_aam_Ib)
+{
+    IEMOP_MNEMONIC("aam Ib");
+    uint8_t bImm; IEM_OPCODE_GET_NEXT_U8(&bImm);
+    IEMOP_HLP_NO_LOCK_PREFIX();
+    IEMOP_HLP_NO_64BIT();
+    return IEM_MC_DEFER_TO_CIMPL_1(iemCImpl_aam, bImm);
+}
 
 
 /** Opcode 0xd5. */
