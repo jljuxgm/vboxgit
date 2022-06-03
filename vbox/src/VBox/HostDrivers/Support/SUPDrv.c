@@ -1,4 +1,4 @@
-/* $Revision: 37249 $ */
+/* $Revision: 37293 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5118,6 +5118,7 @@ static DECLCALLBACK(void) supdrvGipMpEvent(RTMPEVENT enmEvent, RTCPUID idCpu, vo
     PSUPDRVDEVEXT       pDevExt = (PSUPDRVDEVEXT)pvUser;
     PSUPGLOBALINFOPAGE  pGip    = pDevExt->pGip;
 
+    AssertRelease(idCpu == RTMpCpuId());
     AssertRelease(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
     /*
