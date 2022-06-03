@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38161 2011-07-25 14:18:03Z vboxsync $
+# $Id: Makefile.kmk 38228 2011-07-28 17:33:56Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -332,6 +332,7 @@ $(VBOX_JWS_GEN)/jwsglue.list:  \
                 $(VBOX_GLUE_XSLT_DIR)/glue-java.xsl \
                 $(VBOX_FILESPLIT)    \
 		$(VBOXWEBSERVICE_WSDL) \
+		$(VBOXWEB_WSDL) \
 	        | $(VBOX_JWS_GEN)/java/jws/
 	$(call MSG_L1,Generating JAX-WS Java glue files from XIDL)
 	$(RM) -f $(wildcard $(VBOX_JWS_GEN)/java/*.java) $(wildcard $(VBOX_JWS_GEN)/java/jws/*/*/*/*.java)
