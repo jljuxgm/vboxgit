@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42084 2012-07-10 10:17:20Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42087 2012-07-10 11:06:54Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -385,7 +385,7 @@ STDMETHODIMP GuestSession::DirectoryRemoveRecursive(BSTR aPath, ComSafeArrayIn(D
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
-STDMETHODIMP GuestSession::DirectoryRename(BSTR aSource, BSTR aDest, ComSafeArrayIn(DirectoryRenameFlag, aFlags))
+STDMETHODIMP GuestSession::DirectoryRename(BSTR aSource, BSTR aDest, ComSafeArrayIn(PathRenameFlag, aFlags))
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
@@ -529,7 +529,7 @@ STDMETHODIMP GuestSession::FileRemove(BSTR aPath)
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
-STDMETHODIMP GuestSession::FileRename(BSTR aSource, BSTR aDest, ComSafeArrayIn(DirectoryRenameFlag, aFlags))
+STDMETHODIMP GuestSession::FileRename(BSTR aSource, BSTR aDest, ComSafeArrayIn(PathRenameFlag, aFlags))
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();

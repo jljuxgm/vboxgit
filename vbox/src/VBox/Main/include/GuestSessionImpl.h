@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42084 2012-07-10 10:17:20Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42087 2012-07-10 11:06:54Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -74,7 +74,7 @@ public:
     STDMETHOD(DirectoryQueryInfo)(BSTR aPath, IGuestFsObjInfo **aInfo);
     STDMETHOD(DirectoryRemove)(BSTR aPath);
     STDMETHOD(DirectoryRemoveRecursive)(BSTR aPath, ComSafeArrayIn(DirectoryRemoveRecFlag, aFlags), IProgress **aProgress);
-    STDMETHOD(DirectoryRename)(BSTR aSource, BSTR aDest, ComSafeArrayIn(DirectoryRenameFlag, aFlags));
+    STDMETHOD(DirectoryRename)(BSTR aSource, BSTR aDest, ComSafeArrayIn(PathRenameFlag, aFlags));
     STDMETHOD(DirectorySetACL)(BSTR aPath, BSTR aACL);
     STDMETHOD(EnvironmentClear)(void);
     STDMETHOD(EnvironmentSet)(BSTR aName, BSTR aValue);
@@ -86,7 +86,7 @@ public:
     STDMETHOD(FileQueryInfo)(BSTR aPath, IGuestFsObjInfo **aInfo);
     STDMETHOD(FileQuerySize)(BSTR aPath, LONG64 *aSize);
     STDMETHOD(FileRemove)(BSTR aPath);
-    STDMETHOD(FileRename)(BSTR aSource, BSTR aDest, ComSafeArrayIn(DirectoryRenameFlag, aFlags));
+    STDMETHOD(FileRename)(BSTR aSource, BSTR aDest, ComSafeArrayIn(PathRenameFlag, aFlags));
     STDMETHOD(FileSetACL)(BSTR aPath, BSTR aACL);
     STDMETHOD(ProcessCreate)(BSTR aCommand, ComSafeArrayIn(BSTR, aArguments), ComSafeArrayIn(BSTR, aEnvironment),
                              ComSafeArrayIn(ProcessCreateFlag, aFlags), ULONG aTimeoutMS, IGuestProcess **IGuestProcess);
