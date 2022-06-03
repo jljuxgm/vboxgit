@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 37959 2011-07-14 13:03:03Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 38169 2011-07-25 21:16:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -447,7 +447,7 @@ void UINewVMWzdPage4::retranslateUi()
     /* Translate recommended 'hdd' field value */
     QString strRecommendedHDD = field("type").value<CGuestOSType>().isNull() ? QString() :
                                 VBoxGlobal::formatSize(field("type").value<CGuestOSType>().GetRecommendedHDD());
-    m_pPage4Text2->setText (tr ("The recommended size of the boot hard disk is <b>%1</b>.").arg (strRecommendedHDD));
+    m_pPage4Text2->setText (tr ("The recommended size of the start-up disk is <b>%1</b>.").arg (strRecommendedHDD));
 }
 
 void UINewVMWzdPage4::initializePage()
@@ -671,7 +671,7 @@ void UINewVMWzdPage5::retranslateUi()
     {
         summary += QString(
             "<tr><td><nobr>%8: </nobr></td><td><nobr>%9</nobr></td></tr>")
-            .arg(tr("Boot Hard Disk", "summary"), field("hardDiskName").toString());
+            .arg(tr("Start-up Disk", "summary"), field("hardDiskName").toString());
         /* Extend summary to 4 lines */
         setSummaryFieldLinesNumber(m_pSummaryText, 4);
     }
