@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36867 2011-04-28 07:27:03Z vboxsync $
+# $Id: Makefile.kmk 37273 2011-05-31 11:44:48Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -31,6 +31,9 @@ VBoxDisp_DEFS          = _WIN32_WINNT=0x0501 VBOX_WITH_DDRAW
 VBoxDisp_DEFS         += LOG_TO_BACKDOOR #LOG_ENABLED
 ifdef VBOX_WITH_VIDEOHWACCEL
  VBoxDisp_DEFS        += VBOX_WITH_VIDEOHWACCEL
+endif
+ifdef VBOX_WITH_CROGL
+ VBoxDisp_DEFS        += VBOX_WITH_CROGL
 endif
 #VBoxDisp_DEFS         += VBOX_VBVA_ADJUST_RECT
 VBoxDisp_INCS          = ../../../include ..
