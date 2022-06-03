@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 40487 2012-03-15 15:45:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 40493 2012-03-16 08:57:51Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3627,7 +3627,7 @@ HRESULT VirtualBox::registerMedium(const ComObjPtr<Medium> &pMedium,
     }
     else
     {
-        // pMedium may be the last reference, to the Medium object, and the
+        // pMedium may be the last reference to the Medium object, and the
         // caller may have specified the same ComObjPtr as the output parameter.
         // In this case the assignment will uninit the object, and we must not
         // have a caller pending.
