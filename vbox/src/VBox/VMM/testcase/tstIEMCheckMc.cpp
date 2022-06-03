@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 40154 2012-02-16 15:57:34Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 40163 2012-02-16 20:28:18Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -430,6 +430,17 @@ IEMOPSHIFTDBLSIZES g_iemAImpl_shrd;
 #define IEM_MC_IF_FPUREG_NOT_EMPTY_REF_R80(a_pr80Dst, a_iSt)            if (g_fRandom) {
 #define IEM_MC_ELSE()                                                   } else {
 #define IEM_MC_ENDIF()                                                  } do {} while (0)
+
+
+#define iemAImpl_fpu_r64_to_r80         NULL
+#define iemAImpl_fadd_r80_by_r64        NULL
+#define iemAImpl_fmul_r80_by_r64        NULL
+#define iemAImpl_fcom_r80_by_r64        NULL
+#define iemAImpl_fsub_r80_by_r64        NULL
+#define iemAImpl_fsubr_r80_by_r64       NULL
+#define iemAImpl_fdiv_r80_by_r64        NULL
+#define iemAImpl_fdivr_r80_by_r64       NULL
+
 
 /** @}  */
 
