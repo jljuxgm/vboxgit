@@ -1,4 +1,4 @@
-# $Id: Config.kmk 37228 2011-05-26 19:25:54Z vboxsync $
+# $Id: Config.kmk 37236 2011-05-27 14:50:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3222,12 +3222,14 @@ ifeq ($(KBUILD_TARGET),win)
  	$(PATH_TOOL_$(TEMPLATE_VBOXR3STATIC_TOOL.win.amd64)_LIB)/libcpmt$(VBOX_VCC_CRT_TYPE).lib \
  	$(PATH_TOOL_$(TEMPLATE_VBOXR3STATIC_TOOL.win.amd64)_LIB)/oldnames.lib
 else ifn1of ($(KBUILD_TARGET), darwin solaris)
- # The gcc guys sans darwin.
+ # The gcc guys sans darwin and solaris.
  TEMPLATE_VBOXR3STATIC_CFLAGS          = $(TEMPLATE_VBOXR3EXE_CFLAGS) -static
  TEMPLATE_VBOXR3STATIC_CXXFLAGS        = $(TEMPLATE_VBOXR3EXE_CXXFLAGS) -static
  TEMPLATE_VBOXR3STATIC_OBJCFLAGS       = $(TEMPLATE_VBOXR3EXE_OBJCFLAGS) -static
  TEMPLATE_VBOXR3STATIC_OBJCXXFLAGS     = $(TEMPLATE_VBOXR3EXE_OBJCXXFLAGS) -static
  TEMPLATE_VBOXR3STATIC_LDFLAGS         = $(TEMPLATE_VBOXR3EXE_LDFLAGS) -static
+else ifeq ($(KBUILD_TARGET),solaris)
+ TEMPLATE_VBOXR3STATIC_LIBS            = nsl
 endif
 
 #
@@ -4754,7 +4756,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37228 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37236 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
