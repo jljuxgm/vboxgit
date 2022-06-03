@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 40685 2012-03-28 14:48:00Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 40688 2012-03-28 15:02:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1248,7 +1248,7 @@ HRESULT Guest::setErrorFromProgress(ComPtr<IProgress> pProgress)
     HRESULT rc = pProgress->COMGETTER(Completed)(&fCompleted);
     ComAssertComRC(rc);
 
-    HRESULT rcProc = S_OK;
+    LONG rcProc = S_OK;
     Utf8Str strError;
 
     if (!fCompleted)
