@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 37324 2011-06-03 16:28:03Z vboxsync $ */
+/* $Id: TMAll.cpp 37414 2011-06-10 15:53:59Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -801,6 +801,52 @@ VMMDECL(PTMTIMERR0) TMTimerR0Ptr(PTMTIMER pTimer)
 VMMDECL(PTMTIMERRC) TMTimerRCPtr(PTMTIMER pTimer)
 {
     return (PTMTIMERRC)MMHyperCCToRC(pTimer->CTX_SUFF(pVM), pTimer);
+}
+
+
+/**
+ * Locks the timer clock.
+ *
+ * @returns VINF_SUCCESS on success, @a rcBusy if busy, and VERR_NOT_SUPPORTED
+ *          if the clock does not have a lock.
+ * @param   pTimer              The timer which clock lock we wish to take.
+ * @param   rcBusy              What to return in ring-0 and raw-mode context
+ *                              if the lock is busy.
+ *
+ * @remarks Currently only supported on timers using the virtual sync clock.
+ */
+VMMDECL(int) TMTimerLock(PTMTIMER pTimer, int rcBusy)
+{
+    AssertPtr(pTimer);
+    AssertReturn(pTimer->enmClock == TMCLOCK_VIRTUAL_SYNC, VERR_NOT_SUPPORTED);
+    return PDMCritSectEnter(&pTimer->CTX_SUFF(pVM)->tm.s.VirtualSyncLock, rcBusy);
+}
+
+
+/**
+ * Unlocks a timer clock locked by TMTimerLock.
+ *
+ * @param   pTimer              The timer which clock to unlock.
+ */
+VMMDECL(void) TMTimerUnlock(PTMTIMER pTimer)
+{
+    AssertPtr(pTimer);
+    AssertReturnVoid(pTimer->enmClock == TMCLOCK_VIRTUAL_SYNC);
+    PDMCritSectLeave(&pTimer->CTX_SUFF(pVM)->tm.s.VirtualSyncLock);
+}
+
+
+/**
+ * Checks if the current thread owns the timer clock lock.
+ *
+ * @returns @c true if its the owner, @c false if not.
+ * @param   pTimer              The timer handle.
+ */
+VMMDECL(bool) TMTimerIsLockOwner(PTMTIMER pTimer)
+{
+    AssertPtr(pTimer);
+    AssertReturn(pTimer->enmClock == TMCLOCK_VIRTUAL_SYNC, false);
+    return PDMCritSectIsOwner(&pTimer->CTX_SUFF(pVM)->tm.s.VirtualSyncLock);
 }
 
 

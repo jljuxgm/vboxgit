@@ -1,4 +1,4 @@
-; $Id: VMMRC.def 35335 2010-12-27 12:34:40Z vboxsync $
+; $Id: VMMRC.def 37414 2011-06-10 15:53:59Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -45,6 +45,8 @@ EXPORTS
     TMTimerGet
     TMTimerGetFreq
     TMTimerIsActive
+    TMTimerIsLockOwner
+    TMTimerLock
     TMTimerSet
     TMTimerSetRelative
     TMTimerSetMillies
@@ -52,6 +54,7 @@ EXPORTS
     TMTimerSetNano
     TMTimerSetFrequencyHint
     TMTimerStop
+    TMTimerUnlock
     TRPMGCHandlerGeneric
     TRPMGCHandlerInterupt
     TRPMGCHandlerTrap08

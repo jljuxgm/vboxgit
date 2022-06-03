@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 37321 2011-06-03 15:15:32Z vboxsync $
+; $Id: VMMR0.def 37414 2011-06-10 15:53:59Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -49,6 +49,8 @@ EXPORTS
     TMTimerGet
     TMTimerGetFreq
     TMTimerIsActive
+    TMTimerIsLockOwner
+    TMTimerLock
     TMTimerSet
     TMTimerSetRelative
     TMTimerSetMillies
@@ -56,6 +58,7 @@ EXPORTS
     TMTimerSetNano
     TMTimerSetFrequencyHint
     TMTimerStop
+    TMTimerUnlock
     VMMGetSvnRev
     vmmR0LoggerFlush
     vmmR0LoggerWrapper
