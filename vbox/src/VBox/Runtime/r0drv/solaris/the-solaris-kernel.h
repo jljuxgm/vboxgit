@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 40972 2012-04-18 13:30:14Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 40978 2012-04-18 17:21:14Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -84,7 +84,6 @@ typedef void         (*PFNSOL_contig_free)(void *addr, size_t size);
 
 /* IPRT globals. */
 extern bool                     g_frtSolSplSetsEIF;
-extern struct ddi_dma_attr      g_SolarisX86PhysMemLimits;
 extern RTCPUSET                 g_rtMpSolCpuSet;
 extern PFNSOL_timeout_generic   g_pfnrtR0Sol_timeout_generic;
 extern PFNSOL_untimeout_generic g_pfnrtR0Sol_untimeout_generic;
