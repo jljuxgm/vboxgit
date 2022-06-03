@@ -1,4 +1,4 @@
-/* $Id: tstRTDirCreateUniqueNumbered.cpp 36577 2011-04-06 13:35:17Z vboxsync $ */
+/* $Id: tstRTDirCreateUniqueNumbered.cpp 40903 2012-04-13 14:38:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - Unique directory creation.
  */
@@ -54,7 +54,7 @@ static void tst1(size_t cTest, size_t cchDigits, char chSep)
     char **papszNames = (char **)RTMemTmpAllocZ(cTimes * sizeof(char *));
     RTTESTI_CHECK_RETV(papszNames != NULL);
 
-    int rc;
+    int rc = VERR_INTERNAL_ERROR;
     /* The test loop. */
     size_t i;
     for (i = 0; i < cTimes; i++)
