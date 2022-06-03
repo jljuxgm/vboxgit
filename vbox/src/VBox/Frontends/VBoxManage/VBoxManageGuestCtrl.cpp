@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 36610 2011-04-07 09:23:22Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 36690 2011-04-17 08:44:16Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1218,9 +1218,9 @@ static int handleCtrlCopyTo(ComPtr<IGuest> guest, HandlerArg *pArg)
                 }
                 else
                 {
-                    int vrc = ctrlDirectoryEntryAppend(ValueUnion.psz,      /* Source */
-                                                       NULL,                /* No destination given */
-                                                       &listSources);
+                    vrc = ctrlDirectoryEntryAppend(ValueUnion.psz,      /* Source */
+                                                   NULL,                /* No destination given */
+                                                   &listSources);
                     if (RT_SUCCESS(vrc))
                     {
                         cSources++;
