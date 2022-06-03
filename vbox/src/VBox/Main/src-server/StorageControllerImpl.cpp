@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 37924 2011-07-13 15:21:10Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 37926 2011-07-13 15:36:59Z vboxsync $ */
 
 /** @file
  *
@@ -769,7 +769,7 @@ HRESULT StorageController::checkPortAndDeviceValid(LONG aControllerPort,
         || aDevice >= (LONG)devicesPerPort
        )
         return setError(E_INVALIDARG,
-                        tr("The port and/or device parameter are out of range: port=%d (must be in range [0, %u]), device=%u (must be in range [0, %u])"),
+                        tr("The port and/or device parameter are out of range: port=%d (must be in range [0, %d]), device=%d (must be in range [0, %d])"),
                         (int)aControllerPort, (int)portCount-1, (int)aDevice, (int)devicesPerPort-1);
 
     return S_OK;
