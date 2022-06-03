@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 38982 2011-10-12 20:20:21Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 39981 2012-02-03 12:13:33Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -98,10 +98,10 @@ typedef struct _VBOXMP_DEVEXT
 
    VBOXWDDM_GLOBAL_POINTER_INFO PointerInfo;
 
-   VBOXSHGSMILIST CtlList;
-   VBOXSHGSMILIST DmaCmdList;
+   VBOXVTLIST CtlList;
+   VBOXVTLIST DmaCmdList;
 #ifdef VBOX_WITH_VIDEOHWACCEL
-   VBOXSHGSMILIST VhwaCmdList;
+   VBOXVTLIST VhwaCmdList;
 #endif
    BOOL bNotifyDxDpc;
 

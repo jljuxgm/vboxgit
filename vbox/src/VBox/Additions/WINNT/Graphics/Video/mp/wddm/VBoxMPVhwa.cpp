@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVhwa.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPVhwa.cpp 39981 2012-02-03 12:13:33Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -188,9 +188,9 @@ static DECLCALLBACK(void) vboxVhwaCompletionFreeCmd(PVBOXMP_DEVEXT pDevExt, VBOX
     vboxVhwaCommandFree(pDevExt, pCmd);
 }
 
-void vboxVhwaCompletionListProcess(PVBOXMP_DEVEXT pDevExt, VBOXSHGSMILIST *pList)
+void vboxVhwaCompletionListProcess(PVBOXMP_DEVEXT pDevExt, VBOXVTLIST *pList)
 {
-    PVBOXSHGSMILIST_ENTRY pNext, pCur;
+    PVBOXVTLIST_ENTRY pNext, pCur;
     for (pCur = pList->pFirst; pCur; pCur = pNext)
     {
         /* need to save next since the command may be released in a pfnCallback and thus its data might be invalid */

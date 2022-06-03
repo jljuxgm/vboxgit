@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVhwa.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPVhwa.h 39981 2012-02-03 12:13:33Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -40,15 +40,15 @@ typedef FNVBOXVHWACMDCOMPLETION *PFNVBOXVHWACMDCOMPLETION;
 void vboxVhwaCommandSubmitAsynch(PVBOXMP_DEVEXT pDevExt, VBOXVHWACMD* pCmd, PFNVBOXVHWACMDCOMPLETION pfnCompletion, void * pContext);
 void vboxVhwaCommandSubmitAsynchByEvent(PVBOXMP_DEVEXT pDevExt, VBOXVHWACMD* pCmd, RTSEMEVENT hEvent);
 
-#define VBOXVHWA_CMD2LISTENTRY(_pCmd) ((PVBOXSHGSMILIST_ENTRY)&(_pCmd)->u.pNext)
+#define VBOXVHWA_CMD2LISTENTRY(_pCmd) ((PVBOXVTLIST_ENTRY)&(_pCmd)->u.pNext)
 #define VBOXVHWA_LISTENTRY2CMD(_pEntry) ( (VBOXVHWACMD*)((uint8_t *)(_pEntry) - RT_OFFSETOF(VBOXVHWACMD, u.pNext)) )
 
-DECLINLINE(void) vboxVhwaPutList(VBOXSHGSMILIST *pList, VBOXVHWACMD* pCmd)
+DECLINLINE(void) vboxVhwaPutList(VBOXVTLIST *pList, VBOXVHWACMD* pCmd)
 {
-    vboxSHGSMIListPut(pList, VBOXVHWA_CMD2LISTENTRY(pCmd), VBOXVHWA_CMD2LISTENTRY(pCmd));
+    vboxVtListPut(pList, VBOXVHWA_CMD2LISTENTRY(pCmd), VBOXVHWA_CMD2LISTENTRY(pCmd));
 }
 
-void vboxVhwaCompletionListProcess(PVBOXMP_DEVEXT pDevExt, VBOXSHGSMILIST *pList);
+void vboxVhwaCompletionListProcess(PVBOXMP_DEVEXT pDevExt, VBOXVTLIST *pList);
 #endif
 
 void vboxVhwaFreeHostInfo1(PVBOXMP_DEVEXT pDevExt, VBOXVHWACMD_QUERYINFO1* pInfo);

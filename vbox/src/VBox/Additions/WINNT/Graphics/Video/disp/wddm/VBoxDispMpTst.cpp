@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpTst.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispMpTst.cpp 39981 2012-02-03 12:13:33Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -55,7 +55,7 @@ static DECLCALLBACK(int) vboxDispMpTstThreadProc(RTTHREAD ThreadSelf, void *pvUs
         {
             vboxVDbgPrint(("\n>>>\n"));
             HWND hWnd = Regions.hWnd;
-            if (Regions.pRegions->fFlags.bSetVisibleRects)
+            if (Regions.pRegions->fFlags.bAddVisibleRects)
             {
                 uint32_t iVisibleRects = 0;
                 uint32_t cVisibleRects = Regions.pRegions->RectsInfo.cRects;
