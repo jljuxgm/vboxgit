@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 41231 2012-05-10 11:27:52Z vboxsync $ */
+/* $Id: MediumImpl.cpp 41243 2012-05-10 16:34:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5982,7 +5982,8 @@ HRESULT Medium::setLocation(const Utf8Str &aLocation,
             }
             else if (   vrc != VERR_FILE_NOT_FOUND
                      && vrc != VERR_PATH_NOT_FOUND
-                     && vrc != VERR_ACCESS_DENIED)
+                     && vrc != VERR_ACCESS_DENIED
+                     && locationFull != aLocation)
             {
                 /* assume it's not a file, restore the original location */
                 locationFull = aLocation;
