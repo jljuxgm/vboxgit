@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 40252 2012-02-24 21:39:29Z vboxsync $ */
+/* $Id: IEMInternal.h 41829 2012-06-19 14:39:48Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -215,7 +215,7 @@ typedef struct IEMCPU
     /** Exception / interrupt recursion depth. */
     int8_t                  cXcptRecursions;
     /** Explicit alignment padding. */
-    bool                    afAlignment1[5];
+    bool                    afAlignment1[1];
     /** The CPL. */
     uint8_t                 uCpl;
     /** The current CPU execution mode (CS). */
@@ -227,6 +227,9 @@ typedef struct IEMCPU
     uint32_t                cInstructions;
     /** The number of potential exits. */
     uint32_t                cPotentialExits;
+    /** The number of bytes data or stack written (mostly for IEMExecOneEx).
+     * This may contain uncommitted writes.  */
+    uint32_t                cbWritten;
 #ifdef IEM_VERIFICATION_MODE
     /** The Number of I/O port reads that has been performed. */
     uint32_t                cIOReads;
