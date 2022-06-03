@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: VD.cpp 41785 2012-06-16 19:38:41Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -805,7 +805,7 @@ static int vdCacheReadHelper(PVDCACHE pCache, uint64_t uOffset,
  *
  * @returns VBox status code.
  * @param   pCache     The cache to write to.
- * @param   uOffset    Offset of the virtual disk to write to teh cache.
+ * @param   uOffset    Offset of the virtual disk to write to the cache.
  * @param   pcvBuf     The data to write.
  * @param   cbWrite    How much to write.
  * @param   pcbWritten How much data could be written, optional.

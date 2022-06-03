@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 40229 2012-02-23 12:22:21Z vboxsync $ */
+/* $Id: ISCSI.cpp 41785 2012-06-16 19:38:41Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -788,7 +788,7 @@ static PISCSICMD iscsiCmdRemove(PISCSIIMAGE pImage, uint32_t Itt)
  * Removes all commands from the table and returns the
  * list head
  *
- * @returns Pointer to the head of teh command list.
+ * @returns Pointer to the head of the command list.
  * @param   pImage    iSCSI connection to use.
  */
 static PISCSICMD iscsiCmdRemoveAll(PISCSIIMAGE pImage)

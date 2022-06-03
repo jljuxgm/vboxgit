@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 41549 2012-06-01 17:29:05Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 41785 2012-06-16 19:38:41Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -185,7 +185,7 @@ typedef RTDVMVOLUMEFMTINTERNAL *PRTDVMVOLUMEFMTINTERNAL;
  * Calculates the checksum of the entire bsd disklabel structure.
  *
  * @returns The checksum.
- * @param   pBsdLabel    BSD disklabel to get teh checksum for.
+ * @param   pBsdLabel    BSD disklabel to get the checksum for.
  */
 static uint16_t rtDvmFmtBsdLblDiskLabelChkSum(PBsdLabel pBsdLabel)
 {

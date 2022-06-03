@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: ldrPE.cpp 41785 2012-06-16 19:38:41Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1061,7 +1061,7 @@ int rtldrPEValidateFileHeader(PIMAGE_FILE_HEADER pFileHdr, const char *pszLogNam
  * @returns iprt status code.
  * @param   pOptHdr     Pointer to the optional header which needs validation.
  * @param   pszLogName  The log name to  prefix the errors with.
- * @param   offNtHdrs   The offset of the NT headers from teh start of the file.
+ * @param   offNtHdrs   The offset of the NT headers from the start of the file.
  * @param   pFileHdr    Pointer to the file header (valid).
  * @param   cbRawImage  The raw image size.
  */
