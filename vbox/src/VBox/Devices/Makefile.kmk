@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39767 2012-01-13 19:32:18Z vboxsync $
+# $Id: Makefile.kmk 39777 2012-01-17 12:22:28Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -881,6 +881,10 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Network/slirp/libalias/alias_dns.c \
  	Network/slirp/libalias/alias_nbt.c \
  	Network/slirp/libalias/alias_util.c
+
+ # Enable VBOX_WITH_DNSMAPPING_IN_HOSTRESOLVER here for a while, then move to $(file)_DEFS or clean the code 
+ # disabled with this definition
+ VBOX_WITH_DNSMAPPING_IN_HOSTRESOLVER=1
 
  Drivers_SOURCES += $(VBOX_SLIRP_SOURCES)
  define def_vbox_slirp_cflags
