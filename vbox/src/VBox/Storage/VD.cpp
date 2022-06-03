@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 36221 2011-03-09 11:01:08Z vboxsync $ */
+/* $Id: VD.cpp 36278 2011-03-14 22:37:24Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3046,6 +3046,7 @@ static int vdIOIntReadUserAsync(void *pvUser, PVDIOSTORAGE pIoStorage,
         else if (rc != VERR_VD_ASYNC_IO_IN_PROGRESS)
         {
             ASMAtomicDecU32(&pIoCtx->cDataTransfersPending);
+            vdIoTaskFree(pDisk, pIoTask);
             break;
         }
 
@@ -3118,6 +3119,7 @@ static int vdIOIntWriteUserAsync(void *pvUser, PVDIOSTORAGE pIoStorage,
         else if (rc != VERR_VD_ASYNC_IO_IN_PROGRESS)
         {
             ASMAtomicDecU32(&pIoCtx->cDataTransfersPending);
+            vdIoTaskFree(pDisk, pIoTask);
             break;
         }
 
