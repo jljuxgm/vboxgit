@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38258 2011-08-01 13:38:33Z vboxsync $
+# $Id: Config.kmk 38260 2011-08-01 14:01:09Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -70,6 +70,7 @@ VBOX_PUEL_MANGLED_NAME := Oracle_VM_VirtualBox_Extension_Pack
 ifndef VBOX_WITH_NEW_LAYOUT
  PATH_INS             = $(PATH_OUT)/dist
  PATH_STAGE           = $(PATH_OUT)
+ INST_DEBUG          := stage/debug/
 endif
 
 ifeq ($(KBUILD_TARGET),darwin)
@@ -4821,7 +4822,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38258 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38260 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
