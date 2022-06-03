@@ -1,4 +1,4 @@
-# $Id: Config.kmk 36254 2011-03-10 17:22:08Z vboxsync $
+# $Id: Config.kmk 36269 2011-03-12 19:43:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2377,7 +2377,7 @@ SDK_VBOX_NTDLL_LIBS.amd64 ?= $(PATH_LIB)/RuntimeR3NtDll-amd64.lib
 #
 if1of ($(KBUILD_TARGET), linux)
  ifeq ($(origin VBOX_LINUX_SRC),undefined)
-  ifneq ($(wildcard /lib/modules/$(shell uname -r)/build/include/linux/autoconf.h),)
+  ifneq ($(wildcard /lib/modules/$(shell uname -r)/build/include/linux/autoconf.h  /lib/modules/$(shell uname -r)/build/include/generated/autoconf.h),)
    export VBOX_LINUX_SRC := /lib/modules/$(shell uname -r)/build
   else
    export VBOX_LINUX_SRC := /usr/src/linux
@@ -4680,7 +4680,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 36254 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 36269 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
