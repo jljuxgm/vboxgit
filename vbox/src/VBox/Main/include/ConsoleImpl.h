@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 37282 2011-06-01 02:56:05Z vboxsync $ */
+/* $Id: ConsoleImpl.h 37380 2011-06-08 14:44:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -153,6 +153,7 @@ public:
     STDMETHOD(TakeSnapshot)(IN_BSTR aName, IN_BSTR aDescription,
                             IProgress **aProgress);
     STDMETHOD(DeleteSnapshot)(IN_BSTR aId, IProgress **aProgress);
+    STDMETHOD(DeleteSnapshotAndAllChildren)(IN_BSTR aId, IProgress **aProgress);
     STDMETHOD(RestoreSnapshot)(ISnapshot *aSnapshot, IProgress **aProgress);
     STDMETHOD(Teleport)(IN_BSTR aHostname, ULONG aPort, IN_BSTR aPassword, ULONG aMaxDowntime, IProgress **aProgress);
 

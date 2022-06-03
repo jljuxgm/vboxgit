@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 37074 2011-05-13 14:32:50Z vboxsync $ */
+/* $Id: MachineImpl.h 37380 2011-06-08 14:44:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -966,6 +966,7 @@ public:
                                    BSTR *aStateFilePath);
     STDMETHOD(EndTakingSnapshot)(BOOL aSuccess);
     STDMETHOD(DeleteSnapshot)(IConsole *aInitiator, IN_BSTR aId,
+                              BOOL fDeleteAllChildren,
                               MachineState_T *aMachineState, IProgress **aProgress);
     STDMETHOD(FinishOnlineMergeMedium)(IMediumAttachment *aMediumAttachment,
                                        IMedium *aSource, IMedium *aTarget,
