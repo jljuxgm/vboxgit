@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVideoPortAPI.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPVideoPortAPI.cpp 36896 2011-04-29 14:15:44Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport video port api
@@ -80,7 +80,6 @@ vboxCreateSecondaryDisplayVoid(IN PVOID HwDeviceExtension, IN OUT PVOID Secondar
 #define VP_GETPROC(dst, type, name) \
 {                                                                                   \
     pAPI->dst = (type)(pConfigInfo->VideoPortGetProcAddress)(pExt, (PUCHAR)(name)); \
-    Assert(pAPI->dst);                                                              \
 }
 
 /*Query video port for api functions or fill with stubs if those are not supported*/
