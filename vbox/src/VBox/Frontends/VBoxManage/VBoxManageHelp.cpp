@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 37925 2011-07-13 15:31:10Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37929 2011-07-13 18:34:49Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -457,7 +457,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm,
                      "VBoxManage storageattach    <uuid|vmname>\n"
                      "                            --storagectl <name>\n"
-                     "                            --port <number>\n"
+                     "                            [--port <number>]\n"
                      "                            [--device <number>]\n"
                      "                            [--type dvddrive|hdd|fdd]\n"
                      "                            [--medium none|emptydrive|\n"
@@ -474,7 +474,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--forceunmount]\n"
                      "                            [--server <name>|<ip>]\n"
                      "                            [--target <target>]\n"
-                     "                            [--port <port>]\n"
+                     "                            [--tport <port>]\n"
                      "                            [--lun <lun>]\n"
                      "                            [--encodedlun <lun>]\n"
                      "                            [--username <username>]\n"
