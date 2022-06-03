@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 36149 2011-03-03 14:34:33Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 36156 2011-03-03 19:52:32Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -204,12 +204,12 @@ Display::Display() {}
 
 Display::~Display() {}
 
-VMMR3DECL(bool) CFGMR3AreValuesValid(PCFGMNODE, const char *)
+DECLEXPORT(bool) CFGMR3AreValuesValid(PCFGMNODE, const char *)
 {
     return true;
 }
 
-VMMR3DECL(int) CFGMR3QueryPtr(PCFGMNODE, const char *, void **pv)
+DECLEXPORT(int) CFGMR3QueryPtr(PCFGMNODE, const char *, void **pv)
 {
     *pv = pMouse;
     return VINF_SUCCESS;

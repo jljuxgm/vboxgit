@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36152 2011-03-03 14:48:42Z vboxsync $
+# $Id: Makefile.kmk 36156 2011-03-03 19:52:32Z vboxsync $
 ## @file
 # Sub-Makefile for the VBoxBFE testcases.
 #
@@ -23,8 +23,8 @@ include $(KBUILD_PATH)/subheader.kmk
 #
 ifndef VBOX_ONLY_SDK
  if defined(VBOX_WITH_TESTCASES)
-#  PROGRAMS       += \
-#	tstMouseImpl
+  PROGRAMS       += \
+	tstMouseImpl
  endif # !VBOX_WITH_TESTCASES
 endif # !VBOX_ONLY_SDK
 
