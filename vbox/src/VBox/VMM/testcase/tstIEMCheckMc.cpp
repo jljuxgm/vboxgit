@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 40164 2012-02-17 00:36:19Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 40165 2012-02-17 09:26:47Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -411,6 +411,10 @@ IEMOPSHIFTDBLSIZES g_iemAImpl_shrd;
 #define IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP(a_iStReg)                                           do { } while (0)
 #define IEM_MC_FPU_STACK_UNDERFLOW_MEM_OP(a_iStReg, a_iEffSeg, a_GCPtrEff)                      do { } while (0)
 #define IEM_MC_FPU_STACK_UNDERFLOW_MEM_OP_THEN_POP(a_iStReg, a_iEffSeg, a_GCPtrEff)             do { } while (0)
+#define IEM_MC_UPDATE_FSW(a_u16FSW)                                                             do { } while (0)
+#define IEM_MC_UPDATE_FSW_WITH_MEM_OP(a_u16FSW, a_iEffSeg, a_GCPtrEff)                          do { } while (0)
+#define IEM_MC_UPDATE_FSW_THEN_POP(a_u16FSW)                                                    do { } while (0)
+#define IEM_MC_UPDATE_FSW_WITH_MEM_OP_THEN_POP(a_u16FSW, a_iEffSeg, a_GCPtrEff)                 do { } while (0)
 
 #define IEM_MC_IF_EFL_BIT_SET(a_fBit)                                   if (g_fRandom) {
 #define IEM_MC_IF_EFL_BIT_NOT_SET(a_fBit)                               if (g_fRandom) {

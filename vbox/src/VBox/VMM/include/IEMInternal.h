@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 40164 2012-02-17 00:36:19Z vboxsync $ */
+/* $Id: IEMInternal.h 40165 2012-02-17 09:26:47Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -747,6 +747,16 @@ FNIEMAIMPLFPUR80  iemAImpl_fdiv_r80_by_r80;
 FNIEMAIMPLFPUR80  iemAImpl_fdivr_r80_by_r80;
 
 /** @} */
+
+/** @name FPU operations taking a 32-bit signed integer argument
+ * @{  */
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLFPUS32OUT,(PCX86FXSTATE pFpuState, uint16_t *pu16FSW,
+                                                     int32_t *pi32Dst, PCRTFLOAT80U pr80Value));
+typedef FNIEMAIMPLFPUS32OUT *PFNIEMAIMPLFPUS32OUT;
+
+FNIEMAIMPLFPUS32OUT iemAImpl_fpu_r80_to_i32;
+
+/** @}  */
 
 
 /** @name Function tables.

@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 40164 2012-02-17 00:36:19Z vboxsync $
+; $Id: IEMAllAImpl.asm 40165 2012-02-17 09:26:47Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -1365,6 +1365,31 @@ BEGINPROC_FASTCALL iemAImpl_fpu_r64_to_r80, 12
         add     xSP, 20h
         EPILOGUE_3_ARGS 0
 ENDPROC iemAImpl_fpu_r64_to_r80
+
+;;
+; Converts a 80-bit floating point value to a 32-bit signed integer.
+;
+; @param    A0      FPU context (fxsave).
+; @param    A1      Pointer to a 16-bit FSW output variable.
+; @param    A2      Pointer to the 32-bit signed integer output variable.
+; @param    A3      Pointer to the 80-bit floating point value to convert.
+;
+BEGINPROC_FASTCALL iemAImpl_fpu_r80_to_i32, 12
+        PROLOGUE_4_ARGS
+        sub     xSP, 20h
+
+        fninit
+        fld     tword [A3]
+        FPU_LD_FXSTATE_FCW_AND_SAFE_FSW A0
+        fistp   dword [A2]
+
+        fnstsw  word  [A1]
+        fnclex
+
+        add     xSP, 20h
+        EPILOGUE_4_ARGS 0
+ENDPROC iemAImpl_fpu_r80_to_i32
+
 
 
 ;;
