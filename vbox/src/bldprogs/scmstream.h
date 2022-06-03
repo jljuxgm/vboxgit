@@ -1,4 +1,4 @@
-/* $Id: scmstream.h 40554 2012-03-20 18:07:34Z vboxsync $ */
+/* $Id: scmstream.h 41179 2012-05-06 20:31:02Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -97,6 +97,7 @@ void        ScmStreamRewindForWriting(PSCMSTREAM pStream);
 bool        ScmStreamIsText(PSCMSTREAM pStream);
 int         ScmStreamCheckItegrity(PSCMSTREAM pStream);
 int         ScmStreamWriteToFile(PSCMSTREAM pStream, const char *pszFilenameFmt, ...);
+int         ScmStreamWriteToStdOut(PSCMSTREAM pStream);
 size_t      ScmStreamTell(PSCMSTREAM pStream);
 size_t      ScmStreamTellLine(PSCMSTREAM pStream);
 size_t      ScmStreamSize(PSCMSTREAM pStream);
