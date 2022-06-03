@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 38488 2011-08-18 10:26:06Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 38616 2011-09-02 18:24:55Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -560,6 +560,7 @@ VOID vboxUsbMonHubDevWalk(PFNVBOXUSBMONDEVWALKER pfnWalker, PVOID pvWalker, ULON
                     {
                         LOG(("the walker said to stop"));
                         ObDereferenceObject(Data.pDevObj);
+                        ObDereferenceObject(pHubFileObj);
                         break;
                     }
 
