@@ -1,4 +1,4 @@
-/* $Id: vboxext.h 38114 2011-07-22 13:58:48Z vboxsync $ */
+/* $Id: vboxext.h 38331 2011-08-05 15:29:06Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D
@@ -28,5 +28,9 @@ HRESULT VBoxExtCheckTerm();
  * then device is started to be used in another thread */
 HDC VBoxExtGetDC(HWND hWnd);
 int VBoxExtReleaseDC(HWND hWnd, HDC hDC);
+
+/* API for creating & destroying windows */
+HRESULT VBoxExtWndDestroy(HWND hWnd);
+HRESULT VBoxExtWndCreate(DWORD width, DWORD height, HWND *phWnd);
 
 #endif /* #ifndef ___VBOXEXT_H__*/
