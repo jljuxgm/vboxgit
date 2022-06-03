@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 38599 2011-09-01 13:30:54Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 38648 2011-09-05 21:53:44Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -59,6 +59,7 @@ static DECLCALLBACK(int) VBoxGuestHGCMAsyncWaitCallback(VMMDevHGCMRequestHeader 
 #ifdef DEBUG
 static void testSetMouseStatus(void);
 #endif
+static int VBoxGuestCommonIOCtl_SetMouseStatus(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession, uint32_t fFeatures);
 
 
 /*******************************************************************************
@@ -985,6 +986,7 @@ void VBoxGuestCloseSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
     pSession->Process = NIL_RTPROCESS;
     pSession->R0Process = NIL_RTR0PROCESS;
     vboxGuestCloseMemBalloon(pDevExt, pSession);
+    VBoxGuestCommonIOCtl_SetMouseStatus(pDevExt, pSession, 0);
     RTMemFree(pSession);
 }
 
