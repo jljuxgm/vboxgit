@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 37556 2011-06-20 13:41:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -266,11 +266,16 @@ int suplibOsQueryVTxSupported(void)
 
         rc = RTStrToUInt32Ex(szBuf, &pszNext, 10, &uA);
         if (   RT_SUCCESS(rc)
-                && *pszNext == '.')
+            && *pszNext == '.')
         {
+            /*
+             * new version number scheme starting with Linux 3.0
+             */
+            if (uA >= 3)
+                return VINF_SUCCESS;
             rc = RTStrToUInt32Ex(pszNext+1, &pszNext, 10, &uB);
             if (   RT_SUCCESS(rc)
-                    && *pszNext == '.')
+                && *pszNext == '.')
             {
                 rc = RTStrToUInt32Ex(pszNext+1, &pszNext, 10, &uC);
                 if (RT_SUCCESS(rc))
