@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 41107 2012-05-02 00:14:21Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,10 +17,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes */
+/* Qt includes: */
 #include <QKeyEvent>
+#ifdef Q_WS_X11
+# include <QX11Info>
+#endif /* Q_WS_X11 */
 
-/* Local includes */
+/* GUI includes: */
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 #include "UIActionPool.h"
@@ -35,8 +38,8 @@
 #include "UIMachineView.h"
 #include "UIHotKeyEditor.h"
 
+/* Other VBox includes: */
 #ifdef Q_WS_X11
-# include <QX11Info>
 # include <X11/XKBlib.h>
 # include <X11/keysym.h>
 # ifdef KeyPress
@@ -58,6 +61,9 @@ const int XKeyRelease = KeyRelease;
 # include "UICocoaApplication.h"
 # include <Carbon/Carbon.h>
 #endif /* Q_WS_MAC */
+
+/* COM includes: */
+#include "CConsole.h"
 
 /* Enums representing different keyboard-states: */
 enum { KeyExtended = 0x01, KeyPressed = 0x02, KeyPause = 0x04, KeyPrint = 0x08 };

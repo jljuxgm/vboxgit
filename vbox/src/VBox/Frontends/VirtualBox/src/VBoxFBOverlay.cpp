@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -33,6 +33,7 @@
 #include "VBoxGlobal.h"
 
 /* COM includes: */
+#include "CConsole.h"
 #include "CDisplay.h"
 
 /* Other VBox includes: */

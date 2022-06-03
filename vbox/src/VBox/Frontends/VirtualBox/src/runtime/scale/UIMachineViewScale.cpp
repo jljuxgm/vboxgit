@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -35,6 +35,7 @@
 #endif /* VBOX_GUI_USE_QUARTZ2D */
 
 /* COM includes: */
+#include "CConsole.h"
 #include "CDisplay.h"
 
 UIMachineViewScale::UIMachineViewScale(  UIMachineWindow *pMachineWindow

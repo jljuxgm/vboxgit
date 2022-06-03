@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UISession.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,6 +53,7 @@
 #endif /* VBOX_GUI_WITH_KEYS_RESET_HANDLER */
 
 /* COM includes: */
+#include "CConsole.h"
 #include "CSystemProperties.h"
 #include "CMachineDebugger.h"
 #include "CGuest.h"

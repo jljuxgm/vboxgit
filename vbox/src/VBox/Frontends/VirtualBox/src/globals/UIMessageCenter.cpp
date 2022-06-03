@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 41590 2012-06-06 06:15:39Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,6 +49,7 @@
 #endif /* Q_WS_WIN */
 
 /* COM includes: */
+#include "CConsole.h"
 #include "CSystemProperties.h"
 #include "CVirtualBoxErrorInfo.h"
 #include "CMediumAttachment.h"

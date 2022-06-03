@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 41415 2012-05-23 12:46:34Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,7 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIWizardCloneVM.h"
 #include "UIWizardCloneVMPageBasic1.h"
 #include "UIWizardCloneVMPageBasic2.h"
@@ -25,6 +25,9 @@
 #include "UIWizardCloneVMPageExpert.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+
+/* COM includes: */
+#include "CConsole.h"
 
 UIWizardCloneVM::UIWizardCloneVM(QWidget *pParent, const CMachine &machine, CSnapshot snapshot /* = CSnapshot() */)
     : UIWizard(pParent, UIWizardType_CloneVM)
