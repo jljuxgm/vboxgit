@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 39907 2012-01-30 15:31:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -633,7 +633,7 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
     const RTHCPHYS HCPhys = pVM->pgm.s.aHandyPages[iHandyPage].HCPhysGCPhys;
     pVM->pgm.s.aHandyPages[iHandyPage].HCPhysGCPhys = GCPhys & ~(RTGCPHYS)PAGE_OFFSET_MASK;
 
-    void *pvSharedPage = NULL;
+    void const *pvSharedPage = NULL;
     if (PGM_PAGE_IS_SHARED(pPage))
     {
         /* Mark this shared page for freeing/dereferencing. */
@@ -646,7 +646,7 @@ int pgmPhysAllocPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys)
         pVM->pgm.s.cSharedPages--;
 
         /* Grab the address of the page so we can make a copy later on. (safe) */
-        rc = pgmPhysPageMap(pVM, pPage, GCPhys, &pvSharedPage);
+        rc = pgmPhysPageMapReadOnly(pVM, pPage, GCPhys, &pvSharedPage);
         AssertRC(rc);
     }
     else
