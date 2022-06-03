@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 41589 2012-06-06 04:46:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -62,6 +62,9 @@
 #include "CHostUSBDevice.h"
 #include "CUSBDevice.h"
 #include "CVRDEServer.h"
+#ifdef Q_WS_MAC
+# include "CGuest.h"
+#endif /* Q_WS_MAC */
 
 /* Other VBox includes: */
 #include <iprt/path.h>
