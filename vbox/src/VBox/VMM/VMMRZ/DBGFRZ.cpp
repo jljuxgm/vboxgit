@@ -1,4 +1,4 @@
-/* $Id: DBGFRZ.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
+/* $Id: DBGFRZ.cpp 41823 2012-06-19 13:43:39Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, RZ part.
  */
@@ -126,9 +126,9 @@ VMMRZDECL(int) DBGFRZTrap03Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame
         RTGCPTR pPc;
         int rc = SELMValidateAndConvertCSAddr(pVCpu, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid,
 #ifdef IN_RC
-                                              (RTGCPTR)((RTGCUINTPTR)pRegFrame->eip - 1),
+                                              pRegFrame->eip - 1,
 #else
-                                              (RTGCPTR)pRegFrame->rip /* no -1 in R0 */,
+                                              pRegFrame->rip /* no -1 in R0 */,
 #endif
                                               &pPc);
         AssertRCReturn(rc, rc);

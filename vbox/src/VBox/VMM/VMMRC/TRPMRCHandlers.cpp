@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 41823 2012-06-19 13:43:39Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -497,7 +497,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
          */
         RTGCPTR PC;
         rc = SELMValidateAndConvertCSAddr(pVCpu, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs, &pRegFrame->csHid,
-                                          (RTGCPTR)pRegFrame->eip, &PC);
+                                          pRegFrame->rip, &PC);
         if (RT_FAILURE(rc))
         {
             Log(("TRPMGCTrap06Handler: Failed to convert %RTsel:%RX32 (cpl=%d) - rc=%Rrc !!\n", pRegFrame->cs, pRegFrame->eip, pRegFrame->ss & X86_SEL_RPL, rc));
@@ -954,7 +954,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFram
     RTGCPTR PC;
     uint32_t cBits;
     int rc = SELMValidateAndConvertCSAddrGCTrap(pVCpu, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs,
-                                                (RTGCPTR)pRegFrame->eip, &PC, &cBits);
+                                                pRegFrame->rip, &PC, &cBits);
     if (RT_FAILURE(rc))
     {
         Log(("trpmGCTrap0dHandler: Failed to convert %RTsel:%RX32 (cpl=%d) - rc=%Rrc !!\n",
@@ -968,7 +968,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFram
      */
     DISCPUSTATE Cpu;
     uint32_t    cbOp;
-    rc = EMInterpretDisasOneEx(pVM, pVCpu, (RTGCUINTPTR)PC, pRegFrame, &Cpu, &cbOp);
+    rc = EMInterpretDisasOneEx(pVM, pVCpu, PC, pRegFrame, &Cpu, &cbOp);
     if (RT_FAILURE(rc))
     {
         AssertMsgFailed(("DISCoreOneEx failed to PC=%RGv rc=%Rrc\n", PC, rc));
