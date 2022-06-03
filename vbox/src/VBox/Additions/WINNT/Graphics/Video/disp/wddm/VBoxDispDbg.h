@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 37840 2011-07-08 11:53:53Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 37845 2011-07-08 12:47:16Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -238,9 +238,10 @@ extern DWORD g_VBoxVDbgPid;
 #define VBOXVDBG_DUMP_SETTEXTURE(_pRc) do { } while (0)
 #define VBOXVDBG_DUMP_TEXBLT_ENTER(_pSrcRc, _pSrcRect, _pDstRc, _pDstPoint) do { } while (0)
 #define VBOXVDBG_DUMP_TEXBLT_LEAVE(_pSrcRc, _pSrcRect, _pDstRc, _pDstPoint) do { } while (0)
-#define VBOXVDBG_DUMP_BLT_ENTER(_pSrcSurf, _pSrcRect, _pDstSurf, _pDstRect) do { } while (0)
-#define VBOXVDBG_DUMP_BLT_LEAVE(_pSrcSurf, _pSrcRect, _pDstSurf, _pDstRect) do { } while (0)
+#define VBOXVDBG_DUMP_BLT_ENTER(_pSrcRc, _pSrcSurf, _pSrcRect, _pDstRc, _pDstSurf, _pDstRect) do { } while (0)
+#define VBOXVDBG_DUMP_BLT_LEAVE(_pSrcRc, _pSrcSurf, _pSrcRect, _pDstRc, _pDstSurf, _pDstRect) do { } while (0)
 #define VBOXVDBG_DUMP_SYNC_RT(_pBbSurf) do { } while (0)
+#define VBOXVDBG_DUMP_FLUSH(_pDevice) do { } while (0)
 #endif
 
 
