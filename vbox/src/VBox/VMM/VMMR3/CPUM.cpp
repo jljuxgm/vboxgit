@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 35490 2011-01-11 15:17:10Z vboxsync $ */
+/* $Id: CPUM.cpp 36660 2011-04-12 15:56:46Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1095,7 +1095,7 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVMCPU pVCpu)
 
     pCtx->trHid.u32Limit            = 0xffff;
     pCtx->trHid.Attr.n.u1Present    = 1;
-    pCtx->trHid.Attr.n.u4Type       = X86_SEL_TYPE_SYS_286_TSS_BUSY;
+    pCtx->trHid.Attr.n.u4Type       = X86_SEL_TYPE_SYS_386_TSS_BUSY;    /* Deduction, not properly documented by Intel. */
 
     pCtx->dr[6]                     = X86_DR6_INIT_VAL;
     pCtx->dr[7]                     = X86_DR7_INIT_VAL;
