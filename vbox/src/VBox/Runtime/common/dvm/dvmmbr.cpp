@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: dvmmbr.cpp 40027 2012-02-07 23:09:31Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -352,6 +352,24 @@ static DECLCALLBACK(uint64_t) rtDvmFmtMbrVolumeGetFlags(RTDVMVOLUMEFMT hVolFmt)
     return fFlags;
 }
 
+DECLCALLBACK(bool) rtDvmFmtMbrVolumeIsRangeIntersecting(RTDVMVOLUMEFMT hVolFmt,
+                                                        uint64_t offStart, size_t cbRange,
+                                                        uint64_t *poffVol,
+                                                        size_t *pcbIntersect)
+{
+    bool fIntersect = false;
+    PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;
+
+    if (RTDVM_RANGE_IS_INTERSECTING(pVol->offStart, pVol->cbVolume, offStart))
+    {
+        fIntersect    = true;
+        *poffVol      = offStart - pVol->offStart;
+        *pcbIntersect = RT_MIN(cbRange, pVol->offStart + pVol->cbVolume - offStart);
+    }
+
+    return fIntersect;
+}
+
 static DECLCALLBACK(int) rtDvmFmtMbrVolumeRead(RTDVMVOLUMEFMT hVolFmt, uint64_t off, void *pvBuf, size_t cbRead)
 {
     PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;
@@ -398,6 +416,8 @@ RTDVMFMTOPS g_rtDvmFmtMbr =
     rtDvmFmtMbrVolumeGetType,
     /* pfnVolumeGetFlags */
     rtDvmFmtMbrVolumeGetFlags,
+    /* pfnVOlumeIsRangeIntersecting */
+    rtDvmFmtMbrVolumeIsRangeIntersecting,
     /* pfnVolumeRead */
     rtDvmFmtMbrVolumeRead,
     /* pfnVolumeWrite */
