@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 36742 2011-04-20 09:54:21Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 36784 2011-04-21 08:04:22Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -501,7 +501,8 @@ static int handleCtrlExecProgram(ComPtr<IGuest> guest, HandlerArg *pArg)
 
                 if (args.size() == 0 && Utf8Cmd.isEmpty())
                     Utf8Cmd = ValueUnion.psz;
-                args.push_back(Bstr(ValueUnion.psz).raw());
+                else
+                    args.push_back(Bstr(ValueUnion.psz).raw());
                 break;
             }
 
