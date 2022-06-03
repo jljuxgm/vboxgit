@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 37219 2011-05-26 09:52:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -180,7 +180,7 @@ static PSUPDRVSESSION       g_apSessionHashTab[19];
 /** Spinlock protecting g_apSessionHashTab. */
 static RTSPINLOCK           g_Spinlock = NIL_RTSPINLOCK;
 /** Calculates bucket index into g_apSessionHashTab.*/
-#define SESSION_HASH(sfn) ((sfn) % RT_ELEMENTS(g_apSessionHashTab))
+#define SESSION_HASH(sfn)   ((sfn) % RT_ELEMENTS(g_apSessionHashTab))
 
 /**
  * Kernel entry points
