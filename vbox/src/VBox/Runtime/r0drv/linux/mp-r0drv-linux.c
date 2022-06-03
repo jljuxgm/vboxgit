@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-linux.c 36232 2011-03-09 16:41:09Z vboxsync $ */
+/* $Id: mp-r0drv-linux.c 36951 2011-05-04 07:07:34Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Linux.
  */
@@ -361,6 +361,7 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
 # else  /* older kernels */
 #  error oops
 # endif /* older kernels */
+    NOREF(rc);
     Assert(rc == 0);
     return VINF_SUCCESS;
 

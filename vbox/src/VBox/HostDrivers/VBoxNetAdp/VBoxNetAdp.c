@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp.c 36909 2011-05-02 13:10:10Z vboxsync $ */
+/* $Id: VBoxNetAdp.c 36951 2011-05-04 07:07:34Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Common Code.
  */
@@ -1089,6 +1089,7 @@ DECLINLINE(int) vboxNetAdpGetNextAvailableUnit(void)
 DECLINLINE(void) vboxNetAdpReleaseUnit(int iUnit)
 {
     bool fSet = ASMAtomicBitTestAndClear(g_aUnits, iUnit);
+    NOREF(fSet);
     Assert(fSet);
 }
 
