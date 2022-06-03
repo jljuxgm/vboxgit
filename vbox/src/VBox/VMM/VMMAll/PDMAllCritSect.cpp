@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 37583 2011-06-22 09:50:27Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 38035 2011-07-18 16:19:51Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -517,7 +517,23 @@ VMMDECL(void) PDMCritSectLeave(PPDMCRITSECT pCritSect)
     if (pCritSect->s.Core.fFlags & RTCRITSECT_FLAGS_NOP)
         return;
 
-    Assert(pCritSect->s.Core.NativeThreadOwner == pdmCritSectGetNativeSelf(pCritSect));
+    /*
+     * Always check that the caller is the owner (screw performance).
+     */
+    RTNATIVETHREAD const hNativeSelf = pdmCritSectGetNativeSelf(pCritSect);
+    if (RT_UNLIKELY(pCritSect->s.Core.NativeThreadOwner != hNativeSelf))
+    {
+#if 0
+        AssertMsgFailed(("%p %s: %p != %p; cLockers=%d cNestings=%d\n", pCritSect, R3STRING(pCritSect->s.pszName),
+                         pCritSect->s.Core.NativeThreadOwner, hNativeSelf,
+                         pCritSect->s.Core.cLockers, pCritSect->s.Core.cNestings));
+#else
+        AssertReleaseMsgFailed(("%p %s: %p != %p; cLockers=%d cNestings=%d\n", pCritSect, R3STRING(pCritSect->s.pszName),
+                                pCritSect->s.Core.NativeThreadOwner, hNativeSelf,
+                                pCritSect->s.Core.cLockers, pCritSect->s.Core.cNestings));
+#endif
+        return;
+    }
     Assert(pCritSect->s.Core.cNestings >= 1);
 
     /*
