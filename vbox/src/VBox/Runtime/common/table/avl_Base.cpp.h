@@ -1,4 +1,4 @@
-/* $Id: avl_Base.cpp.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: avl_Base.cpp.h 36233 2011-03-09 17:05:12Z vboxsync $ */
 /** @file
  * kAVLBase - basic routines for all AVL trees.
  */
@@ -294,11 +294,11 @@ RTDECL(bool) KAVL_FN(Insert)(PPKAVLNODECORE ppTree, PKAVLNODECORE pNode)
 {
     KAVLSTACK               AVLStack;
     PPKAVLNODECORE          ppCurNode = ppTree;
+    register PKAVLNODECORE  pCurNode;
     register KAVLKEY        Key = pNode->Key; NOREF(Key);
 #ifdef KAVL_RANGE
     register KAVLKEY        KeyLast = pNode->KeyLast; NOREF(KeyLast);
 #endif
-    register PKAVLNODECORE  pCurNode;
 
     AVLStack.cEntries = 0;
 
