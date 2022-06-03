@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 37307 2011-06-02 12:48:21Z vboxsync $ */
+/* $Id: HostImpl.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -150,11 +150,11 @@ extern bool is3DAccelerationSupported();
 #undef GS
 
 #include <VBox/usb.h>
-#include <VBox/x86.h>
 #include <VBox/vmm/hwacc_svm.h>
 #include <VBox/err.h>
 #include <VBox/settings.h>
 #include <VBox/sup.h>
+#include <iprt/x86.h>
 
 #include "VBox/com/MultiResult.h"
 

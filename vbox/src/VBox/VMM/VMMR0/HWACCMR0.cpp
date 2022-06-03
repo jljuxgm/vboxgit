@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 37320 2011-06-03 15:05:36Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager - Host Context Ring-0.
  */
@@ -24,7 +24,6 @@
 #include <VBox/vmm/pgm.h>
 #include "HWACCMInternal.h"
 #include <VBox/vmm/vm.h>
-#include <VBox/x86.h>
 #include <VBox/vmm/hwacc_vmx.h>
 #include <VBox/vmm/hwacc_svm.h>
 #include <VBox/err.h>
@@ -40,6 +39,7 @@
 #include <iprt/power.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
+#include <iprt/x86.h>
 #include "HWVMXR0.h"
 #include "HWSVMR0.h"
 

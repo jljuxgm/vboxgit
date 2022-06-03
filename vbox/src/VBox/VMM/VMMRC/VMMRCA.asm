@@ -1,4 +1,4 @@
-; $Id: VMMRCA.asm 35335 2010-12-27 12:34:40Z vboxsync $
+; $Id: VMMRCA.asm 37955 2011-07-14 12:23:02Z vboxsync $
 ;; @file
 ; VMMGC - Raw-mode Context Virtual Machine Monitor assembly routines.
 ;
@@ -18,7 +18,7 @@
 ;* Header Files                                                                *
 ;*******************************************************************************
 %include "VBox/asmdefs.mac"
-%include "VBox/x86.mac"
+%include "iprt/x86.mac"
 
 
 ;*******************************************************************************

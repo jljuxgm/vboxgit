@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 37386 2011-06-08 15:15:11Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -30,7 +30,6 @@
 #include <VBox/vmm/tm.h>
 #include "HWACCMInternal.h"
 #include <VBox/vmm/vm.h>
-#include <VBox/x86.h>
 #include <VBox/vmm/pdmapi.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
@@ -41,6 +40,7 @@
 #ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
 # include <iprt/thread.h>
 #endif
+#include <iprt/x86.h>
 #include "HWVMXR0.h"
 
 /*******************************************************************************

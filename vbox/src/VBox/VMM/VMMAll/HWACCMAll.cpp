@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 37389 2011-06-08 16:13:49Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -24,7 +24,6 @@
 #include <VBox/vmm/pgm.h>
 #include "HWACCMInternal.h"
 #include <VBox/vmm/vm.h>
-#include <VBox/x86.h>
 #include <VBox/vmm/hwacc_vmx.h>
 #include <VBox/vmm/hwacc_svm.h>
 #include <VBox/err.h>
@@ -33,6 +32,7 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
+#include <iprt/x86.h>
 
 /**
  * Queues a page for invalidation
