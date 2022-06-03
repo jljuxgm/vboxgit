@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 37079 2011-05-13 15:35:03Z vboxsync $ */
+/* $Id: IEMAll.cpp 37084 2011-05-13 19:53:02Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2070,7 +2070,8 @@ static VBOXSTRICTRC iemRaiseSelectorInvalidAccess(PIEMCPU pIemCpu, uint32_t iSeg
 /** \#PF(n) - 0e.  */
 static VBOXSTRICTRC iemRaisePageFault(PIEMCPU pIemCpu, RTGCPTR GCPtrWhere, uint32_t fAccess, int rc)
 {
-    AssertFailed(/** @todo implement this */);
+    /** @todo implement this */
+    AssertMsgFailed(("GCPtrWhere=%RGp fAccess=%#x rc=%Rrc\n", GCPtrWhere, fAccess, rc));
     return VERR_NOT_IMPLEMENTED;
 }
 
