@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: PATMRC.cpp 41964 2012-06-29 02:41:23Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -478,9 +478,6 @@ VMMRCDECL(int) PATMRCHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
         }
         if (pRec->patch.flags & PATMFL_INT3_REPLACEMENT)
         {
-            uint32_t    cbOp;
-            DISCPUSTATE cpu;
-
             /* eip is pointing to the instruction *after* 'int 3' already */
             pRegFrame->eip = pRegFrame->eip - 1;
 
@@ -522,6 +519,8 @@ VMMRCDECL(int) PATMRCHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                                                     pRec->patch.aPrivInstr, pRec->patch.cbPrivInstr);
             rc = VBOXSTRICTRC_TODO(rcStrict);
 #else
+            uint32_t    cbOp;
+            DISCPUSTATE cpu;
             rc = DISInstr(&pRec->patch.aPrivInstr[0], enmCpuMode, &cpu, &cbOp);
             if (RT_FAILURE(rc))
             {
