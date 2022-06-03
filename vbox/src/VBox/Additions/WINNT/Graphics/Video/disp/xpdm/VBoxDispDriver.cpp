@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriver.cpp 37273 2011-05-31 11:44:48Z vboxsync $ */
+/* $Id: VBoxDispDriver.cpp 37335 2011-06-07 08:25:17Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver interface functions
@@ -942,7 +942,7 @@ ULONG APIENTRY VBoxDispDrvEscape(SURFOBJ *pso, ULONG iEsc, ULONG cjIn, PVOID pvI
                 &&  pvIn
                 &&  lpRgnData->rdh.dwSize == sizeof(RGNDATAHEADER)
                 &&  lpRgnData->rdh.iType  == RDH_RECTANGLES
-                &&  cjIn == lpRgnData->rdh.nCount * sizeof(RECT) + sizeof(RGNDATAHEADER))
+                &&  cjIn == ((uint64_t)lpRgnData->rdh.nCount) * sizeof(RECT) + sizeof(RGNDATAHEADER))
             {
                 DWORD   i;
                 PRTRECT pRTRect;
