@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39252 2011-11-09 14:00:21Z vboxsync $
+# $Id: Makefile.kmk 39448 2011-11-29 10:16:56Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -126,6 +126,7 @@ PROGRAMS += \
 	tstRTUuid \
 	tstRTCircBuf \
 	tstRTManifest \
+	tstRTUri \
 	tstVector
 
 PROGRAMS.win += \
@@ -517,6 +518,9 @@ tstRTCircBuf_SOURCES = tstRTCircBuf.cpp
 
 tstRTManifest_TEMPLATE = VBOXR3TSTEXE
 tstRTManifest_SOURCES = tstRTManifest.cpp
+
+tstRTUri_TEMPLATE = VBOXR3TSTEXE
+tstRTUri_SOURCES = tstRTUri.cpp
 
 tstRTCoreDump_TEMPLACE = VBOXR3TSTEXE
 tstRTCoreDump_SOURCES = tstRTCoreDump.cpp
