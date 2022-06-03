@@ -1,4 +1,4 @@
-/* $Id: debug.c 39360 2011-11-18 09:08:55Z vboxsync $ */
+/* $Id: debug.c 39363 2011-11-18 10:43:04Z vboxsync $ */
 /** @file
  * NAT - debug helpers.
  */
@@ -305,7 +305,7 @@ printSocket(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput,
             "l_(addr:port)=%RTnaipv4:%d "
             "name=%RTnaipv4:%d",
             so->s, so->so_type,
-            so->so_expire - curtime,
+            so->so_expire ? so->so_expire - curtime : 0,
             so->so_state,
             so->so_faddr.s_addr,
             RT_N2H_U16(so->so_fport),
