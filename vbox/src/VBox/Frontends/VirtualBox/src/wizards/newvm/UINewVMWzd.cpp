@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 40153 2012-02-16 14:56:18Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 40156 2012-02-16 16:31:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -313,7 +313,7 @@ bool UINewVMWzdPage2::createMachineFolder()
     QFileInfo fileInfo(strMachineFilename);
     /* Get machine directory: */
     QString strMachineFolder = fileInfo.absolutePath();
-    QString strMachineBaseName = fileInfo.baseName();
+    QString strMachineBaseName = fileInfo.completeBaseName();
 
     /* Try to create this machine directory (and it's predecessors): */
     bool fMachineFolderCreated = QDir().mkpath(strMachineFolder);
