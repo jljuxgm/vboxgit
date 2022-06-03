@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 40142 2012-02-16 09:42:38Z vboxsync $ */
+/* $Id: QIRichTextLabel.cpp 40145 2012-02-16 11:05:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,6 +19,7 @@
 
 /* Global includes: */
 #include <QVBoxLayout>
+#include <QUrl>
 
 /* Local includes: */
 #include "QIRichTextLabel.h"
@@ -48,6 +49,13 @@ QIRichTextLabel::QIRichTextLabel(QWidget *pParent)
 QString QIRichTextLabel::text() const
 {
     return m_pTextEdit->toHtml();
+}
+
+/* Register image: */
+void QIRichTextLabel::registerImage(const QImage &image, const QString &strName)
+{
+    /* Register passed image in internal text-document: */
+    m_pTextEdit->document()->addResource(QTextDocument::ImageResource, QUrl(strName), QVariant(image));
 }
 
 /* Minimum text-width setter: */
