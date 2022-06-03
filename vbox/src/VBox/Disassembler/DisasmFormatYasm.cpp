@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 41692 2012-06-13 19:32:54Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 41719 2012-06-14 18:15:56Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -699,7 +699,18 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
                             PUT_SEGMENT_OVERRIDE();
 
                         bool fBase =  (pParam->fUse & DISUSE_BASE) /* When exactly is DISUSE_BASE supposed to be set? disasmModRMReg doesn't set it. */
-                                   || (   (pParam->fUse & (DISUSE_REG_GEN8 | DISUSE_REG_GEN16 | DISUSE_REG_GEN32 | DISUSE_REG_GEN64))
+                                   || (   (pParam->fUse & (  DISUSE_REG_GEN8
+                                                           | DISUSE_REG_GEN16
+                                                           | DISUSE_REG_GEN32
+                                                           | DISUSE_REG_GEN64
+                                                           | DISUSE_REG_FP
+                                                           | DISUSE_REG_MMX
+                                                           | DISUSE_REG_XMM
+                                                           | DISUSE_REG_CR
+                                                           | DISUSE_REG_DBG
+                                                           | DISUSE_REG_SEG
+                                                           | DISUSE_REG_TEST
+                                                           ))
                                        && !DISUSE_IS_EFFECTIVE_ADDR(pParam->fUse));
                         if (fBase)
                         {
