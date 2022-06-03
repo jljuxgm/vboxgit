@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: HWACCM.cpp 40360 2012-03-05 15:41:22Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2280,6 +2280,12 @@ VMMR3DECL(bool) HWACCMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
                  */
                 if (   (   pCtx->cs != (pCtx->csHid.u64Base >> 4)
                         && pCtx->csHid.u64Base != 0xffff0000 /* we can deal with the BIOS code as it's also mapped into the lower region. */)
+                    || (pCtx->csHid.u32Limit != 0xffff)
+                    || (pCtx->dsHid.u32Limit != 0xffff)
+                    || (pCtx->esHid.u32Limit != 0xffff)
+                    || (pCtx->ssHid.u32Limit != 0xffff)
+                    || (pCtx->fsHid.u32Limit != 0xffff)
+                    || (pCtx->gsHid.u32Limit != 0xffff)
                     || pCtx->ds != (pCtx->dsHid.u64Base >> 4)
                     || pCtx->es != (pCtx->esHid.u64Base >> 4)
                     || pCtx->fs != (pCtx->fsHid.u64Base >> 4)
