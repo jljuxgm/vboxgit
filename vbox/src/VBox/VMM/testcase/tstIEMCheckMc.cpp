@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 40174 2012-02-18 21:19:07Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 40176 2012-02-19 19:27:34Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -461,6 +461,8 @@ IEMOPSHIFTDBLSIZES g_iemAImpl_shrd;
 #define iemAImpl_fdiv_r80_by_r80        NULL
 #define iemAImpl_fdivr_r80_by_r80       NULL
 
+#define iemCImpl_callf                  NULL
+#define iemCImpl_FarJmp                 NULL
 
 /** @}  */
 
