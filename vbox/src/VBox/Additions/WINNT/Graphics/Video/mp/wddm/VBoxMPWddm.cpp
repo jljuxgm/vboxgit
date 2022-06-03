@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 39525 2011-12-05 12:41:59Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 39526 2011-12-05 12:43:27Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -3741,7 +3741,6 @@ DxgkDdiEscape(
             case VBOXESC_SCREENLAYOUT:
             {
                 /* set screen layout (unused currently) */
-                Assert(pEscape->PrivateDriverDataSize >= sizeof (VBOXDISPIFESCAPE_SCREENLAYOUT));
                 if (pEscape->PrivateDriverDataSize < sizeof (VBOXDISPIFESCAPE_SCREENLAYOUT))
                 {
                     WARN(("VBOXESC_SCREENLAYOUT: incorrect buffer size (%d) < sizeof (VBOXDISPIFESCAPE_SCREENLAYOUT) (%d)",
