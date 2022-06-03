@@ -1,4 +1,4 @@
-/* $Id: gzipvfs.cpp 39043 2011-10-19 17:04:08Z vboxsync $ */
+/* $Id: gzipvfs.cpp 39049 2011-10-20 09:39:22Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -185,25 +185,27 @@ static int rtZipGzipConvertErrFromZlib(PRTZIPGZIPSTREAM pThis, int rc)
 
         case Z_BUF_ERROR:
             /* This isn't fatal. */
-            return VINF_SUCCESS;
+            return VINF_SUCCESS; /** @todo The code in zip.cpp treats Z_BUF_ERROR as fatal... */
 
-        case Z_ERRNO:
         case Z_STREAM_ERROR:
+            pThis->fFatalError = true;
+            return VERR_ZIP_CORRUPTED;
+
         case Z_DATA_ERROR:
+            pThis->fFatalError = true;
+            return pThis->fDecompress ? VERR_ZIP_CORRUPTED : VERR_ZIP_ERROR;
+
         case Z_MEM_ERROR:
+            pThis->fFatalError = true;
+            return VERR_ZIP_NO_MEMORY;
+
         case Z_VERSION_ERROR:
             pThis->fFatalError = true;
-            switch (rc)
-            {
-                case Z_ERRNO:           return VERR_INTERNAL_ERROR_5;
-                case Z_STREAM_ERROR:    return VERR_INTERNAL_ERROR_3;
-                case Z_DATA_ERROR:      return VERR_ZIP_ERROR;
-                case Z_MEM_ERROR:       return VERR_ZIP_NO_MEMORY;
-                case Z_VERSION_ERROR:   return VERR_ZIP_UNSUPPORTED_VERSION;
-            }
-            /* not reached */
+            return VERR_ZIP_UNSUPPORTED_VERSION;
 
+        case Z_ERRNO: /* We shouldn't see this status! */
         default:
+            AssertMsgFailed(("%d\n", rc));
             if (rc >= 0)
                 return VINF_SUCCESS;
             pThis->fFatalError = true;
