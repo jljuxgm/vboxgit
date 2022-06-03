@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: IEMAll.cpp 39125 2011-10-27 10:40:17Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2164,6 +2164,22 @@ DECL_NO_INLINE(static, VBOXSTRICTRC) iemRaisePageFault(PIEMCPU pIemCpu, RTGCPTR 
 DECL_NO_INLINE(static, VBOXSTRICTRC) iemRaiseMathFault(PIEMCPU pIemCpu)
 {
     return iemRaiseXcptOrInt(pIemCpu, 0, X86_XCPT_MF, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
+}
+
+
+/**
+ * Macro for calling iemCImplRaiseDivideError().
+ *
+ * This enables us to add/remove arguments and force different levels of
+ * inlining as we wish.
+ *
+ * @return  Strict VBox status code.
+ */
+#define IEMOP_RAISE_DIVIDE_ERROR()          IEM_MC_DEFER_TO_CIMPL_0(iemCImplRaiseDivideError)
+IEM_CIMPL_DEF_0(iemCImplRaiseDivideError)
+{
+    NOREF(cbInstr);
+    return iemRaiseXcptOrInt(pIemCpu, 0, X86_XCPT_DE, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
 }
 
 

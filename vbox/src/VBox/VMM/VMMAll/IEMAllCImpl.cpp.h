@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 39125 2011-10-27 10:40:17Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2961,11 +2961,12 @@ IEM_CIMPL_DEF_1(iemCImpl_aad, uint8_t, bImm)
 /**
  * Implements 'AAM'.
  *
- * @param   enmEffOpSize    The effective operand size.
+ * @param   bImm            The immediate operand. Cannot be 0.
  */
 IEM_CIMPL_DEF_1(iemCImpl_aam, uint8_t, bImm)
 {
     PCPUMCTX pCtx = pIemCpu->CTX_SUFF(pCtx);
+    Assert(bImm != 0); /* #DE on 0 is handled in the decoder. */
 
     uint16_t const ax = pCtx->ax;
     uint8_t const  al = (uint8_t)ax % bImm;
@@ -2978,6 +2979,7 @@ IEM_CIMPL_DEF_1(iemCImpl_aam, uint8_t, bImm)
     iemRegAddToRip(pIemCpu, cbInstr);
     return VINF_SUCCESS;
 }
+
 
 
 

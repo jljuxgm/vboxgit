@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 39125 2011-10-27 10:40:17Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -87,6 +87,7 @@ typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
 #define IEMOP_HLP_NO_LOCK_PREFIX()                          do { } while (0)
 #define IEMOP_HLP_NO_64BIT()                                do { } while (0)
 #define IEMOP_HLP_DEFAULT_64BIT_OP_SIZE()                   do { } while (0)
+#define IEMOP_RAISE_DIVIDE_ERROR()                          VERR_TRPM_ACTIVE_TRAP
 #define IEMOP_RAISE_INVALID_OPCODE()                        VERR_TRPM_ACTIVE_TRAP
 #define IEMOP_RAISE_INVALID_LOCK_PREFIX()                   VERR_TRPM_ACTIVE_TRAP
 #define IEMOP_MNEMONIC(a_szMnemonic)                        do { } while (0)
