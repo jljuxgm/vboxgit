@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 40329 2012-03-02 16:13:50Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 40418 2012-03-09 22:00:56Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -320,6 +320,9 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--teleporterport <port>]\n"
                      "                            [--teleporteraddress <address|empty>\n"
                      "                            [--teleporterpassword <password>]\n"
+                     "                            [--tracing-enabled on|off]\n"
+                     "                            [--tracing-config <config-string>]\n"
+                     "                            [--tracing-allow-vm-access on|off]\n"
 #if 0
                      "                            [--iocache on|off]\n"
                      "                            [--iocachesize <I/O cache size in MB>]\n"
