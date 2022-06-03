@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 36988 2011-05-06 15:59:27Z vboxsync $ */
+/* $Id: GVMMR0.cpp 37212 2011-05-25 11:38:11Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1293,7 +1293,7 @@ static DECLCALLBACK(void) gvmmR0HandleObjDestructor(void *pvObj, void *pvGVMM, v
     ASMAtomicWriteNullPtr(&pHandle->pVM);
     ASMAtomicWriteNullPtr(&pHandle->pvObj);
     ASMAtomicWriteNullPtr(&pHandle->pSession);
-    ASMAtomicWriteSize(&pHandle->hEMT0,     NIL_RTNATIVETHREAD);
+    ASMAtomicWriteHandle(&pHandle->hEMT0,        NIL_RTNATIVETHREAD);
     ASMAtomicWriteSize(&pHandle->ProcId,         NIL_RTPROCESS);
 
     gvmmR0UsedUnlock(pGVMM);
