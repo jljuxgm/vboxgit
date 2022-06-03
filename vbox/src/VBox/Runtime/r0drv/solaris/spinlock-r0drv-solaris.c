@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-solaris.c 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: spinlock-r0drv-solaris.c 40809 2012-04-06 22:53:53Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Solaris.
  */
@@ -69,8 +69,6 @@ typedef struct RTSPINLOCKINTERNAL
 #endif
 } RTSPINLOCKINTERNAL, *PRTSPINLOCKINTERNAL;
 
-
-This code has changed and need testing!;
 
 
 RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock, uint32_t fFlags, const char *pszName)
