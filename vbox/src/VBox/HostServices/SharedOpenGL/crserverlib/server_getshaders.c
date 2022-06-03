@@ -1,4 +1,4 @@
-/* $Id: server_getshaders.c 40094 2012-02-13 13:39:42Z vboxsync $ */
+/* $Id: server_getshaders.c 40167 2012-02-17 09:48:20Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related get functions
@@ -105,7 +105,7 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchGetAttachedObjectsARB(GLhandleARB 
         GLsizei i;
         GLuint *ids=(GLuint*)&pLocal[1];
 
-        for (i=0; i<*pLocal; ++i);
+        for (i=0; i<*pLocal; ++i)
           ids[i] = crStateGLSLShaderHWIDtoID(ids[i]);
     }
 
