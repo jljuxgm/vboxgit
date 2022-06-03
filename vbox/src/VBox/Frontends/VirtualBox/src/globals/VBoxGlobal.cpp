@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 39982 2012-02-03 12:22:11Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 40157 2012-02-16 16:34:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -5291,7 +5291,8 @@ void VBoxGlobal::cleanup()
 
     /* media list contains a lot of CUUnknown, release them */
     mMediaList.clear();
-    /* the last step to ensure we don't use COM any more */
+    /* the last steps to ensure we don't use COM any more */
+    mHost.detach();
     mVBox.detach();
 
     /* There may be VBoxMediaEnumEvent instances still in the message
