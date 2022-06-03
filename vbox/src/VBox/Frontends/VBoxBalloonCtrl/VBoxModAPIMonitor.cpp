@@ -1,5 +1,5 @@
 
-/* $Id: VBoxModAPIMonitor.cpp 40010 2012-02-06 22:23:09Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 40011 2012-02-06 22:26:52Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -33,7 +33,7 @@ using namespace com;
 /**
  * The module's RTGetOpt-IDs for the command line.
  */
-static enum GETOPTDEF_APIMON
+enum GETOPTDEF_APIMON
 {
     GETOPTDEF_APIMON_ISLN_RESPONSE = 3000,
     GETOPTDEF_APIMON_ISLN_TIMEOUT,
