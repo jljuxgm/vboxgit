@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 41049 2012-04-25 07:19:53Z vboxsync $ */
+/* $Id: MachineImpl.h 41371 2012-05-21 15:23:40Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -290,6 +290,7 @@ public:
         KeyboardHidType_T    mKeyboardHidType;
         PointingHidType_T    mPointingHidType;
         ChipsetType_T        mChipsetType;
+        BOOL                 mEmulatedUSBCardReaderEnabled;
 
         BOOL                 mIoCacheEnabled;
         ULONG                mIoCacheSize;

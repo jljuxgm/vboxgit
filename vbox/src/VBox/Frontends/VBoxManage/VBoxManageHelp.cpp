@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 40984 2012-04-19 07:42:43Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 41371 2012-05-21 15:23:40Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -334,6 +334,9 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--faulttoleranceport <port>]\n"
                      "                            [--faulttolerancesyncinterval <msec>]\n"
                      "                            [--faulttolerancepassword <password>]\n"
+#endif
+#ifdef VBOX_WITH_USB_CARDREADER
+                     "                            [--usbcardreader on|off]\n"
 #endif
                      "\n");
     }
