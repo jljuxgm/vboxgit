@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 37138 2011-05-18 14:53:25Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 37168 2011-05-20 16:56:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -173,12 +173,11 @@ void UISettingsDialog::sltRevalidate(QIWidgetValidator *pValidator)
     QString strWarning;
     QString strTitle = m_pSelector->itemTextByPage(pSettingsPage);
 
+    /* Recorrelate page with others before revalidation: */
+    recorrelate(pSettingsPage);
+
     /* Revalidate the page: */
     bool fValid = pSettingsPage->revalidate(strWarning, strTitle);
-
-    /* If revalidation is fully passed - recorrelate the pages: */
-    if (fValid && strWarning.isEmpty())
-        fValid = recorrelate(pSettingsPage, strWarning);
 
     /* Compose a message: */
     strWarning = strWarning.isEmpty() ? QString() :
@@ -369,11 +368,6 @@ void UISettingsDialog::addItem(const QString &strBigIcon,
     }
     if (pSettingsPage)
         assignValidator(pSettingsPage);
-}
-
-bool UISettingsDialog::recorrelate(QWidget * /* pPage */, QString & /* strWarning */)
-{
-    return true;
 }
 
 void UISettingsDialog::sltHandleValidityChanged(const QIWidgetValidator * /* pValidator */)
