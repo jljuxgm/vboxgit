@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 36286 2011-03-15 15:01:45Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 36392 2011-03-24 11:20:37Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -304,7 +304,7 @@ static int rtR0SemEventMultiSolWait(PRTSEMEVENTMULTIINTERNAL pThis, uint32_t fFl
                     else
                     {
                         /* Do the wait and then recheck the conditions. */
-                        rtR0SemSolWaitDoIt(&Wait, &pThis->Cnd, &pThis->Mtx);
+                        rtR0SemSolWaitDoIt(&Wait, &pThis->Cnd, &pThis->Mtx, &pThis->fStateAndGen, fOrgStateAndGen);
                         continue;
                     }
                 }
