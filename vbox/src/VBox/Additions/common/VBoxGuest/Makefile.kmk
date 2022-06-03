@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39358 2011-11-17 22:25:36Z vboxsync $
+# $Id: Makefile.kmk 40311 2012-03-01 12:09:56Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -205,6 +205,16 @@ ifeq ($(KBUILD_TARGET),win)
 #PROGRAMS += VBoxGuestInst
 VBoxGuestInst_TEMPLATE= VBOXGUESTR3EXE
 VBoxGuestInst_SOURCES = win/VBoxGuestInst.cpp
+endif
+
+if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_SDK)
+ PROGRAMS += tstVBoxGuest-solaris
+ tstVBoxGuest-solaris_TEMPLATE = VBOXR3TSTEXE
+ tstVBoxGuest-solaris_SOURCES  = \
+        VBoxGuest-solaris-streams.c \
+        testcase/tstVBoxGuest-solaris.cpp
+ tstVBoxGuest-solaris_DEFS     = TESTCASE
+ tstVBoxGuest-solaris_LIBS     = $(LIB_RUNTIME)
 endif
 
 include	$(KBUILD_PATH)/subfooter.kmk
