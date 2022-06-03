@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 40449 2012-03-13 15:51:02Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 41168 2012-05-04 14:20:10Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -19,7 +19,7 @@
 #define ___EMHandleRCTmpl_h
 
 /**
- * Process a subset of the raw-mode return code.
+ * Process a subset of the raw-mode and hwaccm return codes.
  *
  * Since we have to share this with raw-mode single stepping, this inline
  * function has been created to avoid code duplication.
