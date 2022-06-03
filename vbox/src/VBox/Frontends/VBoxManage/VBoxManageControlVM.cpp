@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 41096 2012-04-30 10:28:59Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 41097 2012-04-30 10:30:09Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -185,7 +185,6 @@ int handleControlVM(HandlerArg *a)
                     CHECK_ERROR_BREAK(console, COMGETTER(State)(&machineState));
                     /* the error code was lost by the previous instruction */
                     rc = VBOX_E_INVALID_VM_STATE;
-                    RTPrintf("machineState = %d (%d)\n", machineState, MachineState_Paused);
                     if (machineState != MachineState_Paused)
                     {
                         RTMsgError("Machine in invalid state %d -- %s\n",
