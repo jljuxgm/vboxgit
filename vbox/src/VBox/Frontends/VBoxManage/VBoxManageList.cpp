@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 37244 2011-05-30 08:28:07Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 38733 2011-09-13 13:17:13Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -699,7 +699,7 @@ static HRESULT produceList(enum enmListType enmCommand, bool fOptLong, const Com
                     USHORT bcdRevision;
                     CHECK_ERROR_RET(dev, COMGETTER(Revision)(&bcdRevision), 1);
 
-                    RTPrintf("UUID:               %S\n"
+                    RTPrintf("UUID:               %s\n"
                              "VendorId:           %#06x (%04X)\n"
                              "ProductId:          %#06x (%04X)\n"
                              "Revision:           %u.%u (%02u%02u)\n",
