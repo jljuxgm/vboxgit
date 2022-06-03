@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 39288 2011-11-14 09:58:38Z vboxsync $ */
+/* $Id: crservice.cpp 39507 2011-12-02 07:44:16Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1244,3 +1244,33 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *pt
     return rc;
 }
 
+#ifdef RT_OS_WINDOWS
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID lpvReserved)
+{
+    (void) lpvReserved;
+
+    switch (fdwReason)
+    {
+        case DLL_THREAD_ATTACH:
+        {
+            crStateOnThreadAttachDetach(GL_TRUE);
+            break;
+        }
+
+        case DLL_THREAD_DETACH:
+        {
+            crStateOnThreadAttachDetach(GL_FALSE);
+            break;
+        }
+
+        case DLL_PROCESS_ATTACH:
+        case DLL_PROCESS_DETACH:
+        default:
+            break;
+    }
+
+    return TRUE;
+}
+#endif
