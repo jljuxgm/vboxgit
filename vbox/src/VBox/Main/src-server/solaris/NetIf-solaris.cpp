@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 40068 2012-02-10 15:45:18Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 40078 2012-02-11 11:15:16Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -201,6 +201,7 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
     Uuid.Gen.au8Node[5] = Info.MACAddress.au8[5];
     Info.Uuid = Uuid;
     Info.enmMediumType = NETIF_T_ETHERNET;
+    strncpy(Info.szShortName, szNICInstance, sizeof(Info.szShortName) - 1);
 
     HostNetworkInterfaceType_T enmType;
     if (strncmp("vboxnet", szNICInstance, 7))
