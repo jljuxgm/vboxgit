@@ -1,4 +1,4 @@
-# $Id: sh-utils.sh 36658 2011-04-12 15:40:51Z vboxsync $
+# $Id: sh-utils.sh 36779 2011-04-20 20:55:49Z vboxsync $
 # Shell script include file
 ## @file
 # Shell script routines which are likely to be useful for different scripts
@@ -30,7 +30,7 @@ mywhich() {
 # Calls mywhich
 getxterm() {
     # gnome-terminal uses -e differently to other emulators
-    for gxti in "gnome-terminal --title -x" "konsole --title -e" "xterm -T -e"; do
+    for gxti in "konsole --title -e" "gnome-terminal --title -x" "xterm -T -e"; do
         set $gxti
         gxtpath="`mywhich $1`"
         case "$gxtpath" in ?*)
