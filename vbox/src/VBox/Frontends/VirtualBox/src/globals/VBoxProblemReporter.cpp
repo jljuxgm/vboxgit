@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 38222 2011-07-28 14:22:17Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 38241 2011-07-29 13:12:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1088,6 +1088,17 @@ void VBoxProblemReporter::cannotDeleteSnapshot (const CProgress &aProgress,
             .arg (aSnapshotName)
             .arg (console.GetMachine().GetName()),
         formatErrorInfo (aProgress.GetErrorInfo()));
+}
+
+void VBoxProblemReporter::cannotFindSnapshotByName(QWidget *pParent,
+                                                   const CMachine &machine,
+                                                   const QString &strName) const
+{
+    message (pParent ? pParent : mainWindowShown(), Error,
+             tr ("Can't find snapshot named <b>%1</b>.")
+             .arg(strName),
+             formatErrorInfo(machine)
+    );
 }
 
 void VBoxProblemReporter::cannotFindMachineByName (const CVirtualBox &vbox,
