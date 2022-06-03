@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 40776 2012-04-05 13:43:02Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 41072 2012-04-26 16:35:04Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1521,7 +1521,6 @@ static int iomMMIOHandler(PVM pVM, uint32_t uErrorCode, PCPUMCTXCORE pCtxCore, R
     PDISCPUSTATE    pDis  = &pVCpu->iom.s.DisState;
     unsigned        cbOp;
     rc = EMInterpretDisasOne(pVM, pVCpu, pCtxCore, pDis, &cbOp);
-    AssertRC(rc);
     if (RT_FAILURE(rc))
     {
         iomMmioReleaseRange(pVM, pRange);
