@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 37824 2011-07-07 15:29:03Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37862 2011-07-11 10:09:29Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -344,7 +344,10 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 
     if (u64Cmd & USAGE_IMPORTAPPLIANCE)
         RTStrmPrintf(pStrm,
-                     "VBoxManage import           <ovf/ova> [--dry-run|-n] [more options]\n"
+                     "VBoxManage import           <ovf/ova>\n"
+                     "                            [--dry-run|-n]\n"
+                     "                            [--options keepallmacs|keepnatmacs]\n"
+                     "                            [more options]\n"
                      "                            (run with -n to have options displayed\n"
                      "                             for a particular OVF)\n\n");
 

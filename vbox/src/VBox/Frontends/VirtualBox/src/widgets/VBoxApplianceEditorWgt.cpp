@@ -1,4 +1,4 @@
-/* $Id: VBoxApplianceEditorWgt.cpp 35979 2011-02-15 14:37:12Z vboxsync $ */
+/* $Id: VBoxApplianceEditorWgt.cpp 37862 2011-07-11 10:09:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1086,6 +1086,9 @@ VBoxApplianceEditorWgt::VBoxApplianceEditorWgt (QWidget *aParent /* = NULL */)
     mTvSettings->setAllColumnsShowFocus (true);
     mTvSettings->header()->setStretchLastSection (true);
     mTvSettings->header()->setResizeMode (QHeaderView::ResizeToContents);
+
+    /* Hidden by default */
+    mReinitMACsCheckBox->setHidden(true);
 
     /* Applying language settings */
     retranslateUi();

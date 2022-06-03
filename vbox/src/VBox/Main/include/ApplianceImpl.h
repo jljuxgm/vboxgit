@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: ApplianceImpl.h 37862 2011-07-11 10:09:29Z vboxsync $ */
 
 /** @file
  *
@@ -96,7 +96,7 @@ public:
     /* Import methods */
     STDMETHOD(Read)(IN_BSTR path, IProgress **aProgress);
     STDMETHOD(Interpret)(void);
-    STDMETHOD(ImportMachines)(IProgress **aProgress);
+    STDMETHOD(ImportMachines)(ComSafeArrayIn(ImportOptions_T, options), IProgress **aProgress);
     /* Export methods */
     STDMETHOD(CreateVFSExplorer)(IN_BSTR aURI, IVFSExplorer **aExplorer);
     STDMETHOD(Write)(IN_BSTR format, BOOL fManifest, IN_BSTR path, IProgress **aProgress);
