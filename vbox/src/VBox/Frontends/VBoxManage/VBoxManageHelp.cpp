@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 36275 2011-03-14 18:01:34Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 36279 2011-03-15 06:53:14Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -207,7 +207,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--nicspeed<1-N> <kbps>]\n"
                      "                            [--nicbootprio<1-N> <priority>]\n"
                      "                            [--nicpromisc<1-N> deny|allow-vms|allow-all]\n"
-                     "                            [--nicbandwidthgroup<1-N> <name>\n"
+                     "                            [--nicbandwidthgroup<1-N> none|<name>]\n"
                      "                            [--bridgeadapter<1-N> none|<devicename>]\n"
 #if defined(VBOX_WITH_NETFLT)
                      "                            [--hostonlyadapter<1-N> none|<devicename>]\n"
