@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-freebsd.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-freebsd.c 41169 2012-05-04 14:24:42Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, FreeBSD.
  */
@@ -68,4 +68,17 @@ RTR0DECL(bool) RTR0MemAreKrnlAndUsrDifferent(void)
 {
     return true;
 }
+
+
+RTR0DECL(int) RTR0MemKernelCopyFrom(void *pvDst, void const *pvSrc, size_t cb)
+{
+    return VERR_NOT_SUPPORTED;
+}
+
+
+RTR0DECL(int) RTR0MemKernelCopyTo(void *pvDst, void const *pvSrc, size_t cb)
+{
+    return VERR_NOT_SUPPORTED;
+}
+
 

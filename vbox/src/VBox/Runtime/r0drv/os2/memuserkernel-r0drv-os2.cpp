@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-os2.cpp 40304 2012-02-29 20:02:14Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-os2.cpp 41169 2012-05-04 14:24:42Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, OS/2.
  */
@@ -73,5 +73,17 @@ RTR0DECL(bool) RTR0MemAreKrnlAndUsrDifferent(void)
 {
     /** @todo this is all wrong, see RTR0MemUserIsValidAddr. */
     return false;
+}
+
+
+RTR0DECL(int) RTR0MemKernelCopyFrom(void *pvDst, void const *pvSrc, size_t cb)
+{
+    return VERR_NOT_SUPPORTED;
+}
+
+
+RTR0DECL(int) RTR0MemKernelCopyTo(void *pvDst, void const *pvSrc, size_t cb)
+{
+    return VERR_NOT_SUPPORTED;
 }
 

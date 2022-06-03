@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-solaris.c 29284 2010-05-10 00:22:16Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-solaris.c 41169 2012-05-04 14:24:42Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Solaris.
  */
@@ -78,5 +78,23 @@ RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
 RTR0DECL(bool) RTR0MemAreKrnlAndUsrDifferent(void)
 {
     return true;
+}
+
+
+RTR0DECL(int) RTR0MemKernelCopyFrom(void *pvDst, void const *pvSrc, size_t cb)
+{
+    int rc = kcopy(pvSrc, pvDst, cb);
+    if (RT_LIKELY(rc == 0))
+        return VINF_SUCCESS;
+    return VERR_ACCESS_DENIED;
+}
+
+
+RTR0DECL(int) RTR0MemKernelCopyTo(void *pvDst, void const *pvSrc, size_t cb)
+{
+    int rc = kcopy(pvSrc, pvDst, cb);
+    if (RT_LIKELY(rc == 0))
+        return VINF_SUCCESS;
+    return VERR_ACCESS_DENIED;
 }
 

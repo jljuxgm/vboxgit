@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-nt.cpp 29705 2010-05-20 15:58:39Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-nt.cpp 41169 2012-05-04 14:24:42Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, NT.
  */
@@ -89,5 +89,33 @@ RTR0DECL(bool) RTR0MemKernelIsValidAddr(void *pv)
 RTR0DECL(bool) RTR0MemAreKrnlAndUsrDifferent(void)
 {
     return true;
+}
+
+
+RTR0DECL(int) RTR0MemKernelCopyFrom(void *pvDst, void const *pvSrc, size_t cb)
+{
+    __try
+    {
+        memcpy(pvDst, pvSrc, cb);
+    }
+    __except(EXCEPTION_EXECUTE_HANDLER)
+    {
+        return VERR_ACCESS_DENIED;
+    }
+    return VINF_SUCCESS;
+}
+
+
+RTR0DECL(int) RTR0MemKernelCopyTo(void *pvDst, void const *pvSrc, size_t cb)
+{
+    __try
+    {
+        memcpy(pvDst, pvSrc, cb);
+    }
+    __except(EXCEPTION_EXECUTE_HANDLER)
+    {
+        return VERR_ACCESS_DENIED;
+    }
+    return VINF_SUCCESS;
 }
 

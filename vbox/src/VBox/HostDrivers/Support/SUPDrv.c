@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 41147 2012-05-03 20:15:27Z vboxsync $ */
+/* $Id: SUPDrv.c 41169 2012-05-04 14:24:42Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -291,6 +291,8 @@ static SUPFUNC g_aFunctions[] =
     { "RTR0AssertPanicSystem",                  (void *)RTR0AssertPanicSystem },
     { "RTR0MemAreKrnlAndUsrDifferent",          (void *)RTR0MemAreKrnlAndUsrDifferent },
     { "RTR0MemKernelIsValidAddr",               (void *)RTR0MemKernelIsValidAddr },
+    { "RTR0MemKernelCopyFrom",                  (void *)RTR0MemKernelCopyFrom },
+    { "RTR0MemKernelCopyTo",                    (void *)RTR0MemKernelCopyTo },
     { "RTR0MemObjAddress",                      (void *)RTR0MemObjAddress },
     { "RTR0MemObjAddressR3",                    (void *)RTR0MemObjAddressR3 },
     { "RTR0MemObjAllocContTag",                 (void *)RTR0MemObjAllocContTag },
