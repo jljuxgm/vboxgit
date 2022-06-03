@@ -1,4 +1,4 @@
-/* $Id: VBoxCPP.cpp 41246 2012-05-10 20:05:32Z vboxsync $ */
+/* $Id: VBoxCPP.cpp 41249 2012-05-10 20:11:11Z vboxsync $ */
 /** @file
  * VBox Build Tool - A mini C Preprocessor.
  *
@@ -2474,7 +2474,7 @@ static RTEXITCODE vbcppMacroTryConvertToInlineD(PVBCPP pThis, PVBCPPDEF pMacro)
     /*
      * A value wrapped in a constant macro?
      */
-    else if (   (pszNext = strchr(pszValue, '(')) != NULL
+    else if (   (pszNext = (char *)strchr(pszValue, '(')) != NULL
              && pszValue[cchValue - 1] == ')' )
     {
         size_t      cchPrefix = pszNext - pszValue;
@@ -4029,7 +4029,7 @@ static RTEXITCODE vbcppParseOptions(PVBCPP pThis, int argc, char **argv, bool *p
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 41246 $";
+                static const char s_szRev[] = "$Revision: 41249 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 *pfExit = true;
