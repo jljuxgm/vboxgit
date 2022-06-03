@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 40870 2012-04-11 15:44:29Z vboxsync $ */
+/* $Id: UISession.cpp 41051 2012-04-25 12:48:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -136,6 +136,9 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
 
     connect(gConsoleEvents, SIGNAL(sigCPUExecutionCapChange()),
             this, SIGNAL(sigCPUExecutionCapChange()));
+
+    connect(gConsoleEvents, SIGNAL(sigGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)),
+            this, SIGNAL(sigGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)));
 
     /* Prepare framebuffers: */
     prepareFramebuffers();

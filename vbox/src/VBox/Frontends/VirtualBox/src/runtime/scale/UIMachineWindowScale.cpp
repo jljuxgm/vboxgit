@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 38348 2011-08-08 12:09:18Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 41051 2012-04-25 12:48:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -86,8 +86,8 @@ UIMachineWindowScale::UIMachineWindowScale(UIMachineLogic *pMachineLogic, ulong 
     }
 #endif /* Q_WS_MAC */
 
-    /* Show window: */
-    showSimple();
+    /* Show scaled window: */
+    showInNecessaryMode();
 }
 
 UIMachineWindowScale::~UIMachineWindowScale()
@@ -110,6 +110,11 @@ UIMachineWindowScale::~UIMachineWindowScale()
 void UIMachineWindowScale::sltMachineStateChanged()
 {
     UIMachineWindow::sltMachineStateChanged();
+}
+
+void UIMachineWindowScale::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo)
+{
+    UIMachineWindow::sltGuestMonitorChange(changeType, uScreenId, screenGeo);
 }
 
 void UIMachineWindowScale::sltPopupMainMenu()
@@ -359,10 +364,14 @@ void UIMachineWindowScale::cleanupMenu()
     m_pMainMenu = 0;
 }
 
-void UIMachineWindowScale::showSimple()
+void UIMachineWindowScale::showInNecessaryMode()
 {
-    /* Just show window: */
-    show();
+    /* Make sure we really have to show window: */
+    BOOL fEnabled = true;
+    ULONG guestOriginX = 0, guestOriginY = 0, guestWidth = 0, guestHeight = 0;
+    session().GetMachine().QuerySavedGuestScreenInfo(m_uScreenId, guestOriginX, guestOriginY, guestWidth, guestHeight, fEnabled);
+    if (fEnabled)
+        show();
 }
 
 bool UIMachineWindowScale::isMaximizedChecked()
