@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 36891 2011-04-29 13:22:57Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 38953 2011-10-06 08:49:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -341,20 +341,19 @@ DECLCALLBACK(int)  pgmR3CmdCheckDuplicatePages(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdH
                     case PGM_PAGE_STATE_ALLOCATED:
                     case PGM_PAGE_STATE_WRITE_MONITORED:
                     {
-                        const void *pvPage;
                         /* Check if the page was allocated, but completely zero. */
-                        int rc = pgmPhysGCPhys2CCPtrInternalReadOnly(pVM, pPage, GCPhys, &pvPage);
-                        if (    rc == VINF_SUCCESS
+                        PGMPAGEMAPLOCK PgMpLck;
+                        const void    *pvPage;
+                        int rc = pgmPhysGCPhys2CCPtrInternalReadOnly(pVM, pPage, GCPhys, &pvPage, &PgMpLck);
+                        if (    RT_SUCCESS(rc)
                             &&  ASMMemIsZeroPage(pvPage))
-                        {
                             cAllocZero++;
-                        }
-                        else
-                        if (GMMR3IsDuplicatePage(pVM, PGM_PAGE_GET_PAGEID(pPage)))
+                        else if (GMMR3IsDuplicatePage(pVM, PGM_PAGE_GET_PAGEID(pPage)))
                             cDuplicate++;
                         else
                             cUnique++;
-
+                        if (RT_SUCCESS(rc))
+                            pgmPhysReleaseInternalPageMappingLock(pVM, &PgMpLck);
                         break;
                     }
 
