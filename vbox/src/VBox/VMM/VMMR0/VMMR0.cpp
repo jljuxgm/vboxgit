@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 36329 2011-03-21 16:47:48Z vboxsync $ */
+/* $Id: VMMR0.cpp 36441 2011-03-25 21:11:56Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -973,6 +973,11 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
             if (idCpu == NIL_VMCPUID)
                 return VERR_INVALID_CPU_ID;
             return PGMR0PhysAllocateLargeHandyPage(pVM, &pVM->aCpus[idCpu]);
+
+        case VMMR0_DO_PGM_PHYS_SETUP_IOMMU:
+            if (idCpu != 0)
+                return VERR_INVALID_CPU_ID;
+            return PGMR0PhysSetupIommu(pVM);
 
         /*
          * GMM wrappers.

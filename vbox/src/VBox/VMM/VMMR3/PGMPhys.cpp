@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 36009 2011-02-17 10:15:02Z vboxsync $ */
+/* $Id: PGMPhys.cpp 36441 2011-03-25 21:11:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1007,14 +1007,14 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysWriteProtectRAMRendezvous(PVM pVM, PV
                             /* Remember this dirty page for the next (memory) sync. */
                             PGM_PAGE_SET_FT_DIRTY(pPage);
                         }
-    
+
                         pgmPhysPageWriteMonitor(pVM, pPage, pRam->GCPhys + ((RTGCPHYS)iPage << PAGE_SHIFT));
                         break;
-    
+
                     case PGM_PAGE_STATE_SHARED:
                         AssertFailed();
                         break;
-    
+
                     case PGM_PAGE_STATE_WRITE_MONITORED:    /* nothing to change. */
                     default:
                         break;
