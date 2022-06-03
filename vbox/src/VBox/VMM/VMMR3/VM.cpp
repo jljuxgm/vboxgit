@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 36768 2011-04-20 18:33:29Z vboxsync $ */
+/* $Id: VM.cpp 37211 2011-05-25 11:37:52Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2527,7 +2527,7 @@ static void vmR3DestroyUVM(PUVM pUVM, uint32_t cMilliesEMTWait)
             break;
         for (PVMREQ pReq = pReqHead; pReq; pReq = pReq->pNext)
         {
-            ASMAtomicUoWriteSize(&pReq->iStatus, VERR_INTERNAL_ERROR);
+            ASMAtomicUoWriteS32(&pReq->iStatus, VERR_INTERNAL_ERROR);
             ASMAtomicWriteSize(&pReq->enmState, VMREQSTATE_INVALID);
             RTSemEventSignal(pReq->EventSem);
             RTThreadSleep(2);
@@ -2552,7 +2552,7 @@ static void vmR3DestroyUVM(PUVM pUVM, uint32_t cMilliesEMTWait)
                 break;
             for (PVMREQ pReq = pReqHead; pReq; pReq = pReq->pNext)
             {
-                ASMAtomicUoWriteSize(&pReq->iStatus, VERR_INTERNAL_ERROR);
+                ASMAtomicUoWriteS32(&pReq->iStatus, VERR_INTERNAL_ERROR);
                 ASMAtomicWriteSize(&pReq->enmState, VMREQSTATE_INVALID);
                 RTSemEventSignal(pReq->EventSem);
                 RTThreadSleep(2);

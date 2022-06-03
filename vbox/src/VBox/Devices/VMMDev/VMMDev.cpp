@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 37175 2011-05-21 20:51:24Z vboxsync $ */
+/* $Id: VMMDev.cpp 37211 2011-05-25 11:37:52Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2188,12 +2188,10 @@ static DECLCALLBACK(int) vmmdevQueryStatusLed(PPDMILEDPORTS pInterface, unsigned
 static DECLCALLBACK(int) vmmdevQueryAbsoluteMouse(PPDMIVMMDEVPORT pInterface, int32_t *pAbsX, int32_t *pAbsY)
 {
     VMMDevState *pThis = IVMMDEVPORT_2_VMMDEVSTATE(pInterface);
-    AssertCompile(sizeof(pThis->mouseXAbs) == sizeof(*pAbsX));
-    AssertCompile(sizeof(pThis->mouseYAbs) == sizeof(*pAbsY));
     if (pAbsX)
-        ASMAtomicReadSize(&pThis->mouseXAbs, pAbsX);
+        *pAbsX = ASMAtomicReadS32(&pThis->mouseXAbs); /* why the atomic read? */
     if (pAbsY)
-        ASMAtomicReadSize(&pThis->mouseYAbs, pAbsY);
+        *pAbsY = ASMAtomicReadS32(&pThis->mouseYAbs);
     return VINF_SUCCESS;
 }
 
@@ -2209,7 +2207,7 @@ static DECLCALLBACK(int) vmmdevSetAbsoluteMouse(PPDMIVMMDEVPORT pInterface, int3
     VMMDevState *pThis = IVMMDEVPORT_2_VMMDEVSTATE(pInterface);
     PDMCritSectEnter(&pThis->CritSect, VERR_SEM_BUSY);
 
-    if ((pThis->mouseXAbs == absX) && (pThis->mouseYAbs == absY))
+    if (pThis->mouseXAbs == absX && pThis->mouseYAbs == absY)
     {
         PDMCritSectLeave(&pThis->CritSect);
         return VINF_SUCCESS;

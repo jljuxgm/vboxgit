@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv.c 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: mpnotification-r0drv.c 37211 2011-05-25 11:37:52Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Event Notifications.
  */
@@ -304,7 +304,7 @@ DECLHIDDEN(void) rtR0MpNotificationTerm(void)
 
     /* pick up the list and the spinlock. */
     RTSpinlockAcquire(hSpinlock, &Tmp);
-    ASMAtomicWriteSize(&g_hRTMpNotifySpinLock, NIL_RTSPINLOCK);
+    ASMAtomicWriteHandle(&g_hRTMpNotifySpinLock, NIL_RTSPINLOCK);
     pHead = g_pRTMpCallbackHead;
     g_pRTMpCallbackHead = NULL;
     ASMAtomicIncU32(&g_iRTMpGeneration);
