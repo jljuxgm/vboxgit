@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 36015 2011-02-17 15:10:32Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 36043 2011-02-21 17:04:14Z vboxsync $ */
 /** @file
  *
  * IO helper for IAppliance COM class implementations.
@@ -628,10 +628,11 @@ DECLINLINE(int) sha1WaitForManifestThreadFinished(PSHA1STORAGEINTERNAL pInt)
     for(;;)
     {
 //        RTPrintf(" wait\n");
-        if (!(   ASMAtomicReadU32(&pInt->u32Status) == STATUS_WRITE
-              || ASMAtomicReadU32(&pInt->u32Status) == STATUS_WRITING
-              || ASMAtomicReadU32(&pInt->u32Status) == STATUS_READ
-              || ASMAtomicReadU32(&pInt->u32Status) == STATUS_READING))
+        uint32_t u32Status = ASMAtomicReadU32(&pInt->u32Status);
+        if (!(   u32Status == STATUS_WRITE
+              || u32Status == STATUS_WRITING
+              || u32Status == STATUS_READ
+              || u32Status == STATUS_READING))
             break;
         rc = RTSemEventWait(pInt->workFinishedEvent, 100);
     }
