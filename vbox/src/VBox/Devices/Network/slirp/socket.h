@@ -1,4 +1,4 @@
-/* $Id: socket.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: socket.h 39287 2011-11-14 09:41:52Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -190,5 +190,13 @@ void sofcantrcvmore (struct  socket *);
 void sofcantsendmore (struct socket *);
 void soisfdisconnected (struct socket *);
 void sofwdrain (struct socket *);
+
+/**
+ * Creates copy of UDP socket with specified addr
+ * @return copy of the socket with f_addr equal to u32ForeignAddr
+ */
+#ifdef VBOX_WITH_NAT_UDP_SOCKET_CLONE
+struct socket * soCloneUDPSocketWithForegnAddr(PNATState pData, const struct socket *so, uint32_t u32ForeignAddr);
+#endif
 
 #endif /* _SOCKET_H_ */
