@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 41734 2012-06-15 00:20:13Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 41736 2012-06-15 00:39:37Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -121,7 +121,6 @@ extern "C" DECLEXPORT(int) DisasmTest1(void)
     MY_PRINTF(("DisasmTest1: %p\n", &DisasmTest1));
 
     memset(&Cpu, 0, sizeof(Cpu));
-    Cpu.mode = DISCPUMODE_32BIT;
 
 #define DISAS_AND_CHECK(cbInstr, enmOp) \
         do { \

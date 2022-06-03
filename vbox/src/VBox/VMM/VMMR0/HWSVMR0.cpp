@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41735 2012-06-15 00:26:44Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41736 2012-06-15 00:39:37Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2981,7 +2981,7 @@ static int hmR0SvmInterpretInvpg(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, 
             uint32_t     cbOp;
             PDISCPUSTATE pDis = &pVCpu->hwaccm.s.DisState;
 
-            pDis->mode = enmMode;
+            pDis->uCpuMode = enmMode;
             rc = EMInterpretDisasOneEx(pVM, pVCpu, pbCode, pRegFrame, pDis, &cbOp);
             Assert(RT_FAILURE(rc) || pDis->pCurInstr->opcode == OP_INVLPG);
             if (RT_SUCCESS(rc) && pDis->pCurInstr->opcode == OP_INVLPG)
