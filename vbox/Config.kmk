@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38234 2011-07-28 20:23:42Z vboxsync $
+# $Id: Config.kmk 38254 2011-08-01 11:14:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2449,7 +2449,8 @@ if "$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)"
 endif
 
 SDK_VBOX_OPENSSL_EXTPACK         = Internal use only.
-SDK_VBOX_OPENSSL_EXTPACK_EXTENDS = VBOX_OPENSSL
+SDK_VBOX_OPENSSL_INCS            = $(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)
+SDK_VBOX_OPENSSL_ORDERDEPS       = $(crypto-headers_1_TARGET)
 SDK_VBOX_OPENSSL_EXTPACK_LIBS    = \
 	$(PATH_STAGE_LIB)/VBoxExtPack-libssl$(VBOX_SUFF_LIB) \
 	$(PATH_STAGE_LIB)/VBoxExtPack-libcrypto$(VBOX_SUFF_LIB)
@@ -4810,7 +4811,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38234 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38254 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
