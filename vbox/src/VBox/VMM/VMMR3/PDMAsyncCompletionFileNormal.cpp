@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 36001 2011-02-16 21:21:39Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Async File I/O manager.
@@ -61,7 +61,6 @@ int pdmacFileAioMgrNormalInit(PPDMACEPFILEMGR pAioMgr)
         pAioMgr->iFreeEntry       = 0;
         pAioMgr->cReqEntries      = pAioMgr->cRequestsActiveMax;
         pAioMgr->pahReqsFree      = (RTFILEAIOREQ *)RTMemAllocZ(pAioMgr->cReqEntries * sizeof(RTFILEAIOREQ));
-        pAioMgr->msBwLimitExpired = RT_INDEFINITE_WAIT;
 
         if (pAioMgr->pahReqsFree)
         {
