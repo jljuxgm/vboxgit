@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 40524 2012-03-19 09:13:44Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 40539 2012-03-19 14:27:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -133,6 +133,7 @@ public:
     STDMETHOD(OpenMachine)(IN_BSTR aSettingsFile, IMachine **aMachine);
     STDMETHOD(RegisterMachine)(IMachine *aMachine);
     STDMETHOD(FindMachine)(IN_BSTR aNameOrId, IMachine **aMachine);
+    STDMETHOD(GetMachineStates)(ComSafeArrayIn(IMachine *, aMachines), ComSafeArrayOut(MachineState_T, aStates));
     STDMETHOD(CreateAppliance)(IAppliance **anAppliance);
 
     STDMETHOD(CreateHardDisk)(IN_BSTR aFormat,
