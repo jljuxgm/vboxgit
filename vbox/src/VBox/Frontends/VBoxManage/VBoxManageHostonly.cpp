@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 38735 2011-09-13 13:25:16Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 41174 2012-05-04 17:02:07Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -56,12 +56,12 @@ static int handleCreate(HandlerArg *a, int iStart, int *pcProcessed)
 //    index++;
 
     ComPtr<IHost> host;
-    CHECK_ERROR(a->virtualBox, COMGETTER(Host)(host.asOutParam()));
+    CHECK_ERROR_RET(a->virtualBox, COMGETTER(Host)(host.asOutParam()), 1);
 
     ComPtr<IHostNetworkInterface> hif;
     ComPtr<IProgress> progress;
 
-    CHECK_ERROR(host, CreateHostOnlyNetworkInterface (hif.asOutParam(), progress.asOutParam()));
+    CHECK_ERROR_RET(host, CreateHostOnlyNetworkInterface (hif.asOutParam(), progress.asOutParam()), 1);
 
     rc = showProgress(progress);
     *pcProcessed = index - iStart;

@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 39429 2011-11-28 06:22:46Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 41174 2012-05-04 17:02:07Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -165,13 +165,23 @@ int NetIfCreateHostOnlyNetworkInterface(VirtualBox *pVBox,
             }
             else
                 strcat(szAdpCtl, "add");
+            if (strlen(szAdpCtl) < RTPATH_MAX - sizeof(" 2>&1"))
+                strcat(szAdpCtl, " 2>&1");
             FILE *fp = popen(szAdpCtl, "r");
 
             if (fp)
             {
-                char szBuf[VBOXNET_MAX_SHORT_NAME];
+                char szBuf[128]; /* We are not interested in long error messages. */
                 if (fgets(szBuf, sizeof(szBuf), fp))
                 {
+                    if (!strncmp(VBOXNETADPCTL_NAME ":", szBuf, sizeof(VBOXNETADPCTL_NAME)))
+                    {
+                        progress->notifyComplete(E_FAIL,
+                                                 COM_IIDOF(IHostNetworkInterface),
+                                                 HostNetworkInterface::getStaticComponentName(),
+                                                 "%s", szBuf);
+                        return E_FAIL;
+                    }
                     char *pLast = szBuf + strlen(szBuf) - 1;
                     if (pLast >= szBuf && *pLast == '\n')
                         *pLast = 0;
