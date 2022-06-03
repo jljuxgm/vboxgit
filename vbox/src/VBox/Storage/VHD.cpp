@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 36636 2011-04-09 12:17:08Z vboxsync $ */
+/* $Id: VHD.cpp 37737 2011-07-02 20:12:28Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1735,7 +1735,8 @@ static int vhdRead(void *pBackendData, uint64_t uOffset, void *pvBuf,
         rc = vhdFileReadSync(pImage, uOffset, pvBuf, cbBuf, NULL);
     }
 
-    if (RT_SUCCESS(rc))
+    if (   RT_SUCCESS(rc)
+        || rc == VERR_VD_BLOCK_FREE)
     {
         if (pcbActuallyRead)
             *pcbActuallyRead = cbBuf;
