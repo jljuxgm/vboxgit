@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 36239 2011-03-09 17:43:15Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 36240 2011-03-09 17:46:46Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -70,22 +70,22 @@ int rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enmType)
     {
         case RTTHREADTYPE_INFREQUENT_POLLER:
         {
-            param.sched_priority = MAX_RT_PRIO + 2;
+            param.sched_priority = MAX_RT_PRIO + 5;
             break;
         }
         case RTTHREADTYPE_EMULATION:
         {
-            param.sched_priority = MAX_RT_PRIO + 3;
+            param.sched_priority = MAX_RT_PRIO + 4;
             break;
         }
         case RTTHREADTYPE_DEFAULT:
         {
-            param.sched_priority = MAX_RT_PRIO + 4;
+            param.sched_priority = MAX_RT_PRIO + 3;
             break;
         }
         case RTTHREADTYPE_MSG_PUMP:
         {
-            param.sched_priority = MAX_RT_PRIO + 5;
+            param.sched_priority = MAX_RT_PRIO + 2;
             break;
         }
         case RTTHREADTYPE_IO:
