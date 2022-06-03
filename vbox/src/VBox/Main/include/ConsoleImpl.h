@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 39435 2011-11-28 12:56:50Z vboxsync $ */
+/* $Id: ConsoleImpl.h 39493 2011-12-01 15:42:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -221,7 +221,7 @@ public:
     EventSource *getEventSource() { return mEventSource; }
 
     int VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const char *pszPassword, const char *pszDomain);
-    void VRDPClientNameChange(uint32_t u32ClientId, const char *pszName);
+    void VRDPClientStatusChange(uint32_t u32ClientId, const char *pszStatus);
     void VRDPClientConnect(uint32_t u32ClientId);
     void VRDPClientDisconnect(uint32_t u32ClientId, uint32_t fu32Intercepted);
     void VRDPInterceptAudio(uint32_t u32ClientId);
@@ -662,6 +662,7 @@ private:
     void guestPropertiesHandleVMReset(void);
     bool guestPropertiesVRDPEnabled(void);
     void guestPropertiesVRDPUpdateLogon(uint32_t u32ClientId, const char *pszUser, const char *pszDomain);
+    void guestPropertiesVRDPUpdateClientAttach(uint32_t u32ClientId, bool fAttached);
     void guestPropertiesVRDPUpdateNameChange(uint32_t u32ClientId, const char *pszName);
     void guestPropertiesVRDPUpdateDisconnect(uint32_t u32ClientId);
 #endif
