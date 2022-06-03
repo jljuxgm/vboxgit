@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 36234 2011-03-09 17:19:20Z vboxsync $ */
+/* $Id: CPUMR0.cpp 36236 2011-03-09 17:27:22Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -694,7 +694,7 @@ static int cpumR0MapLocalApics(void)
      */
     if (RTMpGetArraySize() > RT_ELEMENTS(g_aLApics))
     {
-        LogRel(("CPUM: Too many real CPUs - %u, max %u\n", RTMpGetArraySize(), RT_ELEMENTS(g_aLApics)));
+        LogRel(("CPUM: Too many real CPUs/cores/threads - %u, max %u\n", RTMpGetArraySize(), RT_ELEMENTS(g_aLApics)));
         return VERR_TOO_MANY_CPUS;
     }
 

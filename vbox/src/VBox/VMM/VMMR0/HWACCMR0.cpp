@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 36236 2011-03-09 17:27:22Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -153,7 +153,6 @@ VMMR0DECL(int) HWACCMR0Init(void)
     int     rc;
     bool    fAMDVPresent = false;
 
-    memset(&HWACCMR0Globals, 0, sizeof(HWACCMR0Globals));
     HWACCMR0Globals.enmHwAccmState = HWACCMSTATE_UNINITIALIZED;
     for (unsigned i = 0; i < RT_ELEMENTS(HWACCMR0Globals.aCpuInfo); i++)
         HWACCMR0Globals.aCpuInfo[i].pMemObj = NIL_RTR0MEMOBJ;
@@ -172,6 +171,15 @@ VMMR0DECL(int) HWACCMR0Init(void)
 
     /* Default is global VT-x/AMD-V init */
     HWACCMR0Globals.fGlobalInit         = true;
+
+    /*
+     * Make sure aCpuInfo is big enough for all the CPUs on this system.
+     */
+    if (RTMpGetArraySize() > RT_ELEMENTS(HWACCMR0Globals.aCpuInfo))
+    {
+        LogRel(("HWACCM: Too many real CPUs/cores/threads - %u, max %u\n", RTMpGetArraySize(), RT_ELEMENTS(HWACCMR0Globals.aCpuInfo)));
+        return VERR_TOO_MANY_CPUS;
+    }
 
     /*
      * Check for VT-x and AMD-V capabilities
