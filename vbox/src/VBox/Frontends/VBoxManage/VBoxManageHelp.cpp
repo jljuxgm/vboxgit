@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 36720 2011-04-18 17:17:07Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37074 2011-05-13 14:32:50Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -331,6 +331,15 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #endif
                      "\n");
     }
+
+    if (u64Cmd & USAGE_CLONEVM)
+        RTStrmPrintf(pStrm,
+                     "VBoxManage clonevm          <uuid>|<name>\n"
+                     "                            [--name <name>]\n"
+                     "                            [--basefolder <basefolder>]\n"
+                     "                            [--uuid <uuid>]\n"
+                     "                            [--register]\n"
+                     "\n");
 
     if (u64Cmd & USAGE_IMPORTAPPLIANCE)
         RTStrmPrintf(pStrm,

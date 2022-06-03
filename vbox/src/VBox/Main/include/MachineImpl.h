@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 36991 2011-05-06 19:16:50Z vboxsync $ */
+/* $Id: MachineImpl.h 37074 2011-05-13 14:32:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -838,6 +838,10 @@ protected:
     struct DeleteTask;
     static DECLCALLBACK(int) deleteThread(RTTHREAD Thread, void *pvUser);
     HRESULT deleteTaskWorker(DeleteTask &task);
+
+    struct CloneVMTask;
+    static DECLCALLBACK(int) cloneVMThread(RTTHREAD Thread, void *pvUser);
+    HRESULT cloneVMTaskWorker(CloneVMTask *pTask);
 
 #ifdef VBOX_WITH_GUEST_PROPS
     HRESULT getGuestPropertyFromService(IN_BSTR aName, BSTR *aValue,
