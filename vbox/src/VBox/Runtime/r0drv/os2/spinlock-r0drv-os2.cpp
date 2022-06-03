@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-os2.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: spinlock-r0drv-os2.cpp 40871 2012-04-11 16:27:51Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, OS/2.
  */
@@ -76,7 +76,6 @@ RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock, uint32_t fFlags, const char
      */
     pThis->u32Magic     = RTSPINLOCK_MAGIC;
     pThis->fFlags       = fFlags;
-    pThis->fIntSaved    = 0;
     KernAllocSpinLock(&pThis->Spinlock);
     *pSpinlock = pThis;
     return VINF_SUCCESS;
