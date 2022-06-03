@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 41159 2012-05-04 01:54:46Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 41185 2012-05-07 13:29:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -54,7 +54,7 @@ QDialog::DialogCode QIMainDialog::exec()
     setResult(QDialog::Rejected);
 
     /* Tune some attributes: */
-    bool fDeleteOnClose = testAttribute(Qt::WA_DeleteOnClose);
+    bool fDeleteOnClose = testAttribute(Qt::WA_DeleteOnClose); NOREF(fDeleteOnClose);
     AssertMsg(!fDeleteOnClose, ("QIMainDialog is NOT supposed to be run in 'delete-on-close' mode!"));
     setAttribute(Qt::WA_DeleteOnClose, false);
     bool fWasShowModal = testAttribute(Qt::WA_ShowModal);
