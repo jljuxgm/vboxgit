@@ -1,4 +1,4 @@
-# $Revision: 36583 $
+# $Revision: 37233 $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -87,6 +87,7 @@ MOD_OBJS   = \
 	generic/RTSemEventWaitNoResume-2-ex-generic.o \
 	generic/RTSemEventMultiWait-2-ex-generic.o \
 	generic/RTSemEventMultiWaitNoResume-2-ex-generic.o \
+	generic/errvars-generic.o \
 	VBox/log-vbox.o \
 	VBox/logbackdoor.o
 ifeq ($(BUILD_TARGET_ARCH),x86)
