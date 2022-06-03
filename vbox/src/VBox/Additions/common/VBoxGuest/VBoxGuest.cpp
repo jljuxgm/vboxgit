@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 41617 2012-06-08 08:49:44Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -722,6 +722,9 @@ int VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase,
     pDevExt->MemBalloon.fUseKernelAPI = true;
     pDevExt->MemBalloon.paMemObj = NULL;
     pDevExt->MemBalloon.pOwner = NULL;
+    for (unsigned i = 0; i < RT_ELEMENTS(pDevExt->cMouseFeatureUsage); ++i)
+        pDevExt->cMouseFeatureUsage[i] = 0;
+    pDevExt->fMouseStatus = 0;
 
     /*
      * If there is an MMIO region validate the version and size.
