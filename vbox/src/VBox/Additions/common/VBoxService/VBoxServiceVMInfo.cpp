@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 33554 2010-10-28 11:59:44Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 36249 2011-03-10 12:18:20Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -146,11 +146,11 @@ static DECLCALLBACK(int) VBoxServiceVMInfoInit(void)
          * Declare some guest properties with flags and reset values.
          */
         VBoxServicePropCacheUpdateEntry(&g_VMInfoPropCache, "/VirtualBox/GuestInfo/OS/LoggedInUsersList",
-                                        VBOXSERVICEPROPCACHEFLAG_TEMPORARY, NULL /* Delete on exit */);
+                                        VBOXSERVICEPROPCACHEFLAG_TEMPORARY | VBOXSERVICEPROPCACHEFLAG_TRANSIENT, NULL /* Delete on exit */);
         VBoxServicePropCacheUpdateEntry(&g_VMInfoPropCache, "/VirtualBox/GuestInfo/OS/LoggedInUsers",
-                                        VBOXSERVICEPROPCACHEFLAG_TEMPORARY, "0");
+                                        VBOXSERVICEPROPCACHEFLAG_TEMPORARY | VBOXSERVICEPROPCACHEFLAG_TRANSIENT, "0");
         VBoxServicePropCacheUpdateEntry(&g_VMInfoPropCache, "/VirtualBox/GuestInfo/OS/NoLoggedInUsers",
-                                        VBOXSERVICEPROPCACHEFLAG_TEMPORARY, "true");
+                                        VBOXSERVICEPROPCACHEFLAG_TEMPORARY | VBOXSERVICEPROPCACHEFLAG_TRANSIENT, "true");
         VBoxServicePropCacheUpdateEntry(&g_VMInfoPropCache, "/VirtualBox/GuestInfo/Net/Count",
                                         VBOXSERVICEPROPCACHEFLAG_TEMPORARY | VBOXSERVICEPROPCACHEFLAG_ALWAYS_UPDATE, NULL /* Delete on exit */);
     }
