@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 38329 2011-08-05 15:18:40Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38357 2011-08-08 16:05:00Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9428,7 +9428,7 @@ HRESULT Machine::createImplicitDiffs(IProgress *aProgress,
                                   true /* aImplicit */,
                                   false /* aPassthrough */,
                                   false /* aTempEject */,
-                                  false /* aNonRotational */,
+                                  pAtt->getNonRotational(),
                                   pAtt->getBandwidthGroup());
             if (FAILED(rc)) throw rc;
 
