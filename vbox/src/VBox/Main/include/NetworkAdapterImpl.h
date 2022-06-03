@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 37200 2011-05-24 15:34:06Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 40491 2012-03-15 20:52:05Z vboxsync $ */
 
 /** @file
  *
@@ -69,7 +69,7 @@ public:
         Bstr mGenericDriver;
         settings::StringsMap mGenericProperties;
         ULONG mBootPriority;
-        ComObjPtr<BandwidthGroup> mBandwidthGroup;
+        Utf8Str mBandwidthGroup;
     };
 
     VIRTUALBOXBASE_ADD_ERRORINFO_SUPPORT(NetworkAdapter, INetworkAdapter)
