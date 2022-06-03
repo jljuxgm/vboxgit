@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 41347 2012-05-17 22:40:43Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 41348 2012-05-17 22:51:54Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -564,7 +564,7 @@ int handleModifyHardDisk(HandlerArg *a)
     if (fModifyCompact)
     {
         ComPtr<IProgress> progress;
-        CHECK_ERROR(hardDisk, Compact(FALSE, progress.asOutParam()));
+        CHECK_ERROR(hardDisk, Compact(progress.asOutParam()));
         if (SUCCEEDED(rc))
             rc = showProgress(progress);
         if (FAILED(rc))
