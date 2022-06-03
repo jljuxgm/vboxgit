@@ -1,4 +1,4 @@
-/* $Id: ldr.h 38515 2011-08-24 14:33:32Z vboxsync $ */
+/* $Id: ldr.h 38547 2011-08-26 12:58:47Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -238,6 +238,18 @@ typedef struct RTLDROPS
      */
     DECLCALLBACKMEMBER(int, pfnEnumDbgInfo)(PRTLDRMODINTERNAL pMod, const void *pvBits,
                                             PFNRTLDRENUMDBG pfnCallback, void *pvUser);
+
+    /**
+     * Enumerates the segments in the module.
+     *
+     * @returns iprt status code, which might have been returned by pfnCallback.
+     * @param   pMod        Pointer to the loader module structure.
+     * @param   pfnCallback The callback function which each debug info part is
+     *                      to be fed to.
+     * @param   pvUser      User argument to pass to the enumerator.
+     * @remark  This is an optional entry point that can be NULL.
+     */
+    DECLCALLBACKMEMBER(int, pfnEnumSegments)(PRTLDRMODINTERNAL pMod, PFNRTLDRENUMSEGS pfnCallback, void *pvUser);
 
 
     /** Dummy entry to make sure we've initialized it all. */

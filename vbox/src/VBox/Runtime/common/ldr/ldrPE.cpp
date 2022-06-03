@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 38515 2011-08-24 14:33:32Z vboxsync $ */
+/* $Id: ldrPE.cpp 38547 2011-08-26 12:58:47Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -775,6 +775,13 @@ static DECLCALLBACK(int) rtldrPE_EnumDbgInfo(PRTLDRMODINTERNAL pMod, const void 
 }
 
 
+/** @copydoc RTLDROPS::pfnEnumSegments. */
+static DECLCALLBACK(int) rtldrPE_EnumSegments(PRTLDRMODINTERNAL pMod, PFNRTLDRENUMSEGS pfnCallback, void *pvUser)
+{
+    return VINF_NOT_SUPPORTED;
+}
+
+
 /** @copydoc RTLDROPS::pfnDone */
 static DECLCALLBACK(int) rtldrPEDone(PRTLDRMODINTERNAL pMod)
 {
@@ -834,6 +841,7 @@ static const RTLDROPSPE s_rtldrPE32Ops =
         rtldrPERelocate,
         rtldrPEGetSymbolEx,
         rtldrPE_EnumDbgInfo,
+        rtldrPE_EnumSegments,
         42
     },
     rtldrPEResolveImports32,
@@ -858,6 +866,7 @@ static const RTLDROPSPE s_rtldrPE64Ops =
         rtldrPERelocate,
         rtldrPEGetSymbolEx,
         rtldrPE_EnumDbgInfo,
+        rtldrPE_EnumSegments,
         42
     },
     rtldrPEResolveImports64,
