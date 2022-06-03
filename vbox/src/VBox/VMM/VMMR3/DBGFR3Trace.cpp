@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Trace.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: DBGFR3Trace.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
@@ -77,7 +77,7 @@ static int dbgfR3TraceEnable(PVM pVM, uint32_t cbEntry, uint32_t cEntries)
     rc = RTTraceBufCarve(&hTraceBuf, cEntries, cbEntry, 0 /*fFlags*/, NULL, &cbBlock);
     if (rc != VERR_BUFFER_OVERFLOW)
     {
-        AssertReturn(!RT_SUCCESS_NP(rc), VERR_INTERNAL_ERROR_4);
+        AssertReturn(!RT_SUCCESS_NP(rc), VERR_IPE_UNEXPECTED_INFO_STATUS);
         return rc;
     }
 

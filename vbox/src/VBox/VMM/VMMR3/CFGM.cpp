@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 36819 2011-04-22 19:40:04Z vboxsync $ */
+/* $Id: CFGM.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -555,7 +555,7 @@ VMMR3DECL(int) CFGMR3QuerySize(PCFGMNODE pNode, const char *pszName, size_t *pcb
                 break;
 
             default:
-                rc = VERR_INTERNAL_ERROR;
+                rc = VERR_CFGM_IPE_1;
                 AssertMsgFailed(("Invalid value type %d\n", pLeaf->enmType));
                 break;
         }

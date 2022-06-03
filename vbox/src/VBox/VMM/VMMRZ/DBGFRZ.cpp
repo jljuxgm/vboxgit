@@ -1,4 +1,4 @@
-/* $Id: DBGFRZ.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGFRZ.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, RZ part.
  */
@@ -94,7 +94,7 @@ VMMRZDECL(int) DBGFRZTrap01Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame
 #endif
 
     LogFlow(("DBGFRZTrap01Handler: guest debug event %RTreg at %04x:%RGv!\n", uDr6, pRegFrame->cs, pRegFrame->rip));
-    return fInHyper ? VERR_INTERNAL_ERROR : VINF_EM_RAW_GUEST_TRAP;
+    return fInHyper ? VERR_DBGF_HYPER_DB_XCPT : VINF_EM_RAW_GUEST_TRAP;
 }
 
 

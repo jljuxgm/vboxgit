@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: HWACCM.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2560,7 +2560,7 @@ VMMR3DECL(VBOXSTRICTRC) HWACCMR3RestartPendingIOInstr(PVM pVM, PVMCPU pVCpu, PCP
         break;
 
     default:
-        AssertLogRelFailedReturn(VERR_INTERNAL_ERROR);
+        AssertLogRelFailedReturn(VERR_HM_UNKNOWN_IO_INSTRUCTION);
     }
 
     return rcStrict;

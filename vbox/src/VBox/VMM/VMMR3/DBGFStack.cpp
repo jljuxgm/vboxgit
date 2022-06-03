@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: DBGFStack.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -180,7 +180,7 @@ static int dbgfR3StackWalk(PVM pVM, VMCPUID idCpu, RTDBGAS hAs, PDBGFSTACKFRAME 
         case 2:    pFrame->AddrReturnFrame.off = *uBp.pu16; break;
         case 4:    pFrame->AddrReturnFrame.off = *uBp.pu32; break;
         case 8:    pFrame->AddrReturnFrame.off = *uBp.pu64; break;
-        default:    AssertMsgFailed(("cbStackItem=%d\n", cbStackItem)); return VERR_INTERNAL_ERROR;
+        default:    AssertMsgFailedReturn(("cbStackItem=%d\n", cbStackItem), VERR_DBGF_STACK_IPE_1);
     }
     pFrame->AddrReturnFrame.FlatPtr += pFrame->AddrReturnFrame.off - pFrame->AddrFrame.off;
 
@@ -262,7 +262,7 @@ static int dbgfR3StackWalk(PVM pVM, VMCPUID idCpu, RTDBGAS hAs, PDBGFSTACKFRAME 
         case 2: pFrame->fFlags |= DBGFSTACKFRAME_FLAGS_16BIT; break;
         case 4: pFrame->fFlags |= DBGFSTACKFRAME_FLAGS_32BIT; break;
         case 8: pFrame->fFlags |= DBGFSTACKFRAME_FLAGS_64BIT; break;
-        default:    AssertMsgFailed(("cbStackItem=%d\n", cbStackItem)); return VERR_INTERNAL_ERROR;
+        default:    AssertMsgFailedReturn(("cbStackItem=%d\n", cbStackItem), VERR_DBGF_STACK_IPE_2);
     }
 
     /*

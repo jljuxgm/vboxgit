@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: DBGFBp.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -745,8 +745,7 @@ static DECLCALLBACK(int) dbgfR3BpClear(PVM pVM, uint32_t iBp)
                 break;
 
             default:
-                AssertMsgFailed(("Invalid enmType=%d!\n", pBp->enmType));
-                return VERR_INTERNAL_ERROR;
+                AssertMsgFailedReturn(("Invalid enmType=%d!\n", pBp->enmType), VERR_IPE_NOT_REACHED_DEFAULT_CASE);
         }
         AssertRCReturn(rc, rc);
     }
@@ -822,8 +821,7 @@ static DECLCALLBACK(int) dbgfR3BpEnable(PVM pVM, uint32_t iBp)
             break;
 
         default:
-            AssertMsgFailed(("Invalid enmType=%d!\n", pBp->enmType));
-            return VERR_INTERNAL_ERROR;
+            AssertMsgFailedReturn(("Invalid enmType=%d!\n", pBp->enmType), VERR_IPE_NOT_REACHED_DEFAULT_CASE);
     }
     if (RT_FAILURE(rc))
         pBp->fEnabled = false;
@@ -895,8 +893,7 @@ static DECLCALLBACK(int) dbgfR3BpDisable(PVM pVM, uint32_t iBp)
             break;
 
         default:
-            AssertMsgFailed(("Invalid enmType=%d!\n", pBp->enmType));
-            return VERR_INTERNAL_ERROR;
+            AssertMsgFailedReturn(("Invalid enmType=%d!\n", pBp->enmType), VERR_IPE_NOT_REACHED_DEFAULT_CASE);
     }
 
     return rc;

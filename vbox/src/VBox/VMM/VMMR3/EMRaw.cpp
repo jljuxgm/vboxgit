@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: EMRaw.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
 
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
@@ -1382,7 +1382,7 @@ int emR3RawExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
 {
     STAM_REL_PROFILE_ADV_START(&pVCpu->em.s.StatRAWTotal, a);
 
-    int      rc = VERR_INTERNAL_ERROR;
+    int      rc = VERR_IPE_UNINITIALIZED_STATUS;
     PCPUMCTX pCtx = pVCpu->em.s.pCtx;
     LogFlow(("emR3RawExecute: (cs:eip=%04x:%08x)\n", pCtx->cs, pCtx->eip));
     pVCpu->em.s.fForceRAW = false;
@@ -1413,7 +1413,7 @@ int emR3RawExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
         {
             PGMMapCheck(pVM);
             AssertMsgFailed(("We should not get conflicts any longer!!!\n"));
-            return VERR_INTERNAL_ERROR;
+            return VERR_EM_UNEXPECTED_MAPPING_CONFLICT;
         }
 #endif /* VBOX_STRICT */
 
@@ -1548,7 +1548,7 @@ int emR3RawExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
         {
             PGMMapCheck(pVM);
             AssertMsgFailed(("We should not get conflicts any longer!!! rc=%Rrc\n", rc));
-            return VERR_INTERNAL_ERROR;
+            return VERR_EM_UNEXPECTED_MAPPING_CONFLICT;
         }
 #endif /* VBOX_STRICT */
 

@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: GMM.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -210,7 +210,7 @@ GMMR3DECL(int) GMMR3FreePagesPerform(PVM pVM, PGMMFREEPAGESREQ pReq, uint32_t cA
      */
     if (cActualPages != pReq->cPages)
     {
-        AssertReturn(cActualPages < pReq->cPages, VERR_INTERNAL_ERROR);
+        AssertReturn(cActualPages < pReq->cPages, VERR_GMM_ACTUAL_PAGES_IPE);
         if (!cActualPages)
             return VINF_SUCCESS;
         pReq->cPages = cActualPages;
