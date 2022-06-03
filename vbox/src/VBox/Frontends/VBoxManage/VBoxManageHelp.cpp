@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 38099 2011-07-21 13:39:27Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 38191 2011-07-26 17:02:38Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -370,7 +370,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
     if (u64Cmd & USAGE_STARTVM)
     {
         RTStrmPrintf(pStrm,
-                     "VBoxManage startvm          <uuid>|<name>\n");
+                     "VBoxManage startvm          <uuid>|<name>...\n");
         RTStrmPrintf(pStrm,
                      "                            [--type gui");
         if (fVBoxSDL)
