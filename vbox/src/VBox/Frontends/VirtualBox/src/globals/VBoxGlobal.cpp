@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 39982 2012-02-03 12:22:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -18,7 +18,6 @@
 #include "VBoxGlobal.h"
 #include <VBox/vd.h>
 #include <VBox/version.h>
-#include <iprt/stream.h>
 
 #include "VBoxUtils.h"
 #include "VBoxDefs.h"
@@ -117,7 +116,6 @@
 #include <iprt/file.h>
 #include <iprt/ldr.h>
 #include <iprt/system.h>
-#include <iprt/stream.h>
 
 #ifdef VBOX_GUI_WITH_SYSTRAY
 #include <iprt/process.h>
