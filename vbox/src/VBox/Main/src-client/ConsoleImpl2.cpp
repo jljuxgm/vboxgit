@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36991 2011-05-06 19:16:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 37016 2011-05-09 17:48:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -4674,8 +4674,13 @@ int configSetGlobalPropertyFlags(VMMDev * const pVMMDev,
          * from the machine XML, to ensure that properties saved in the XML
          * will override them.
          */
-        /* Set the VBox version string as a guest property */
+        /* Set the raw VBox version string as a guest property. Used for host/guest
+         * version comparison. */
         configSetProperty(pConsole->m_pVMMDev, "/VirtualBox/HostInfo/VBoxVer",
+                          VBOX_VERSION_STRING_RAW, "TRANSIENT, RDONLYGUEST");
+        /* Set the full VBox version string as a guest property. Can contain vendor-specific
+         * information/branding and/or pre-release tags. */
+        configSetProperty(pConsole->m_pVMMDev, "/VirtualBox/HostInfo/VBoxVerExt",
                           VBOX_VERSION_STRING, "TRANSIENT, RDONLYGUEST");
         /* Set the VBox SVN revision as a guest property */
         configSetProperty(pConsole->m_pVMMDev, "/VirtualBox/HostInfo/VBoxRev",

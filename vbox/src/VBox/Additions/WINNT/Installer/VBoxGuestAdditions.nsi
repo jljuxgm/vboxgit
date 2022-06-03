@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 36571 2011-04-06 09:30:03Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 37016 2011-05-09 17:48:43Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -674,7 +674,8 @@ notsupported:
 success:
 
   ; Write a registry key with version and installation path for later lookup
-  WriteRegStr HKLM "${PRODUCT_INSTALL_KEY}" "Version" "$%VBOX_VERSION_STRING%"
+  WriteRegStr HKLM "${PRODUCT_INSTALL_KEY}" "Version" "$%VBOX_VERSION_STRING_RAW%"
+  WriteRegStr HKLM "${PRODUCT_INSTALL_KEY}" "VersionExt" "$%VBOX_VERSION_STRING%"
   WriteRegStr HKLM "${PRODUCT_INSTALL_KEY}" "Revision" "$%VBOX_SVN_REV%"
   WriteRegStr HKLM "${PRODUCT_INSTALL_KEY}" "InstallDir" "$INSTDIR"
 
