@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39474 2011-11-30 12:46:12Z vboxsync $
+# $Id: Makefile.kmk 39521 2011-12-03 22:59:46Z vboxsync $
 ## @file
 # Sub-makefile for the FreeBSD host driver helper scripts.
 #
@@ -21,7 +21,6 @@ include $(KBUILD_PATH)/subheader.kmk
 INSTALLS += HostDrivers-scripts
 HostDrivers-scripts_INST    = bin/src/
 HostDrivers-scripts_SOURCES = Makefile
-HostDrivers-scripts_EXEC_SOURCES = export_modules
 
 include $(KBUILD_PATH)/subfooter.kmk
 
