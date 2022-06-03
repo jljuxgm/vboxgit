@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 37525 2011-06-17 10:09:21Z vboxsync $ */
+/* $Id: MediumImpl.h 37768 2011-07-04 14:49:46Z vboxsync $ */
 
 /** @file
  *
@@ -192,6 +192,7 @@ public:
     const Guid* getFirstMachineBackrefId() const;
     const Guid* getAnyMachineBackref() const;
     const Guid* getFirstMachineBackrefSnapshotId() const;
+    size_t getMachineBackRefCount() const;
 
 #ifdef DEBUG
     void dumpBackRefs();
