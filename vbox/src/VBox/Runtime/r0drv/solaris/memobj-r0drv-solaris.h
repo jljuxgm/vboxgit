@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.h 41622 2012-06-08 13:01:44Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.h 41701 2012-06-14 10:13:16Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects - Segment driver, Solaris.
  */
@@ -87,7 +87,7 @@ DECLINLINE(int) rtR0SegVBoxSolCreate(seg_t *pSeg, void *pvArgs)
     pSeg->s_data = pData;
 
     /*
-     * Now load the locked mappings to the pages.
+     * Now load and lock down the mappings to the physical addresses.
      */
     caddr_t virtAddr = pSeg->s_base;
     pgcnt_t cPages   = (pSeg->s_size + cbPageSize - 1) >> uPageShift;
