@@ -1,4 +1,4 @@
-/* $Id: debug.c 35351 2010-12-27 17:04:17Z vboxsync $ */
+/* $Id: debug.c 36351 2011-03-23 04:40:17Z vboxsync $ */
 /** @file
  * NAT - debug helpers.
  */
@@ -247,12 +247,12 @@ print_ether_address(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput,
                    int cchWidth, int cchPrecision, unsigned fFlags,
                    void *pvUser)
 {
-    char *ether = (char *)pvUser;
+    char *ether = (char *)pvValue;
 
     AssertReturn(strcmp(pszType, "ether") == 0, 0);
-    if (ether != NULL)
+    if (ether)
         return RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
-            "[ether %hhx:%hhx:%hhx:%hhx:%hhx:%hhx]",
+            "[ether %RX8:%RX8:%RX8:%RX8:%RX8:%RX8]",
             ether[0], ether[1], ether[2],
             ether[3], ether[4], ether[5]);
     else
