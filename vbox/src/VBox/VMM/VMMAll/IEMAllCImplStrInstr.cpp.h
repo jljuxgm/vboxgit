@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 39958 2012-02-02 16:48:02Z vboxsync $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 39970 2012-02-02 21:29:12Z vboxsync $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -1157,7 +1157,7 @@ IEM_CIMPL_DEF_0(RT_CONCAT4(iemCImpl_rep_ins_op,OP_SIZE,_addr,ADDR_SIZE))
             if (!IOM_SUCCESS(rcStrict))
                 return rcStrict;
 
-            *puMem = u32Value;
+            *puMem = (OP_TYPE)u32Value;
             VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmap(pIemCpu, puMem, IEM_ACCESS_DATA_W);
             AssertLogRelReturn(rcStrict2 == VINF_SUCCESS, VERR_IEM_IPE_1); /* See non-rep version. */
 

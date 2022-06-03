@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 38026 2011-07-18 15:02:15Z vboxsync $
+; $Id: IEMAllAImpl.asm 39970 2012-02-02 21:29:12Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -1232,4 +1232,47 @@ ENDPROC iemAImpl_ %+ %1 %+ _u64
 
 IEMIMPL_DIV_OP div,  0, (X86_EFL_OF | X86_EFL_SF | X86_EFL_ZF | X86_EFL_AF | X86_EFL_PF | X86_EFL_CF)
 IEMIMPL_DIV_OP idiv, 0, (X86_EFL_OF | X86_EFL_SF | X86_EFL_ZF | X86_EFL_AF | X86_EFL_PF | X86_EFL_CF)
+
+
+;
+; BSWAP. No flag changes.
+;
+; Each function takes one argument, pointer to the value to bswap
+; (input/output). They all return void.
+;
+BEGINPROC_FASTCALL iemAImpl_bswap_u16, 4
+        PROLOGUE_1_ARGS
+        mov     T0_32, [A0]             ; just in case any of the upper bits are used.
+        db 66h
+        bswap   T0_32
+        mov     [A0], T0_32
+        EPILOGUE_1_ARGS 0
+ENDPROC iemAImpl_bswap_u16
+
+BEGINPROC_FASTCALL iemAImpl_bswap_u32, 4
+        PROLOGUE_1_ARGS
+        mov     T0_32, [A0]
+        bswap   T0_32
+        mov     [A0], T0_32
+        EPILOGUE_1_ARGS 0
+ENDPROC iemAImpl_bswap_u32
+
+BEGINPROC_FASTCALL iemAImpl_bswap_u64, 4
+%ifdef RT_ARCH_AMD64
+        PROLOGUE_1_ARGS
+        mov     T0, [A0]
+        bswap   T0
+        mov     [A0], T0
+        EPILOGUE_1_ARGS 0
+%else
+        PROLOGUE_1_ARGS
+        mov     T0, [A0]
+        mov     T1, [A0 + 4]
+        bswap   T0
+        bswap   T1
+        mov     [A0 + 4], T0
+        mov     [A0], T1
+        EPILOGUE_1_ARGS 0
+%endif
+ENDPROC iemAImpl_bswap_u64
 
