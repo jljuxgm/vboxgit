@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 38618 2011-09-03 19:36:07Z vboxsync $ */
+/* $Id: process-win.cpp 39801 2012-01-18 18:01:11Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -1275,6 +1275,9 @@ RTR3DECL(int) RTProcWaitNoResume(RTPROCESS Process, unsigned fFlags, PRTPROCSTAT
 
 RTR3DECL(int) RTProcTerminate(RTPROCESS Process)
 {
+    if (Process == NIL_RTPROCESS)
+        return VINF_SUCCESS;
+
     int rc = RTOnce(&g_rtProcWinInitOnce, rtProcWinInitOnce, NULL, NULL);
     AssertRCReturn(rc, rc);
 

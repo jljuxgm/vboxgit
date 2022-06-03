@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 33602 2010-10-29 12:39:54Z vboxsync $ */
+/* $Id: process-posix.cpp 39801 2012-01-18 18:01:11Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -130,6 +130,9 @@ RTR3DECL(int)   RTProcWaitNoResume(RTPROCESS Process, unsigned fFlags, PRTPROCST
 
 RTR3DECL(int) RTProcTerminate(RTPROCESS Process)
 {
+    if (Process == NIL_RTPROCESS)
+        return VINF_SUCCESS;
+
     if (!kill(Process, SIGKILL))
         return VINF_SUCCESS;
     return RTErrConvertFromErrno(errno);

@@ -1,4 +1,4 @@
-/* $Id: socket.h 32131 2010-08-31 11:55:27Z vboxsync $ */
+/* $Id: socket.h 39801 2012-01-18 18:01:11Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTSocket.
  */
@@ -29,6 +29,7 @@
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
+#include <iprt/net.h>
 /* Currently requires a bunch of socket headers. */
 
 
@@ -53,10 +54,10 @@ RT_C_DECLS_BEGIN
 int rtSocketResolverError(void);
 int rtSocketCreateForNative(RTSOCKETINT **ppSocket, RTSOCKETNATIVE hNative);
 int rtSocketCreate(PRTSOCKET phSocket, int iDomain, int iType, int iProtocol);
-int rtSocketBind(RTSOCKET hSocket, const struct sockaddr *pAddr, int cbAddr);
+int rtSocketBind(RTSOCKET hSocket, PCRTNETADDR pAddr);
 int rtSocketListen(RTSOCKET hSocket, int cMaxPending);
 int rtSocketAccept(RTSOCKET hSocket, PRTSOCKET phClient, struct sockaddr *pAddr, size_t *pcbAddr);
-int rtSocketConnect(RTSOCKET hSocket, const struct sockaddr *pAddr, int cbAddr);
+int rtSocketConnect(RTSOCKET hSocket, PCRTNETADDR pAddr);
 int rtSocketSetOpt(RTSOCKET hSocket, int iLevel, int iOption, void const *pvValue, int cbValue);
 #endif /* IPRT_INTERNAL_SOCKET_POLLING_ONLY */
 
