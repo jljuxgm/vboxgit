@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 36910 2011-05-02 14:00:58Z vboxsync $ */
+/* $Id: GMMR0.cpp 36944 2011-05-03 17:13:31Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -133,7 +133,7 @@
  *
  *
  *
- * @section sec_gmm_numa  NUMA
+ * @section sec_gmm_numa        NUMA
  *
  * NUMA considerations will be designed and implemented a bit later.
  *
