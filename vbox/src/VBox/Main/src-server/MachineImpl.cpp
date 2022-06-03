@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37606 2011-06-23 09:59:04Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37656 2011-06-28 10:38:39Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3424,8 +3424,12 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
 
     if (fHotplug && !isControllerHotplugCapable(ctrlType))
         return setError(VBOX_E_INVALID_VM_STATE,
-                        tr("Invalid machine state: %s"),
-                        Global::stringifyMachineState(mData->mMachineState));
+                        tr("Controller '%ls' does not support hotplugging"),
+                        aControllerName);
+
+    if (fHotplug && aType == DeviceType_DVD)
+        return setError(VBOX_E_INVALID_VM_STATE,
+                        tr("Attaching a DVD drive while the VM is running is not supported"));
 
     // check that the port and device are not out of range
     rc = ctl->checkPortAndDeviceValid(aControllerPort, aDevice);
@@ -3844,8 +3848,12 @@ STDMETHODIMP Machine::DetachDevice(IN_BSTR aControllerName, LONG aControllerPort
 
     if (fHotplug && !isControllerHotplugCapable(ctrlType))
         return setError(VBOX_E_INVALID_VM_STATE,
-                        tr("Invalid machine state: %s"),
-                        Global::stringifyMachineState(mData->mMachineState));
+                        tr("Controller '%ls' does not support hotplugging"),
+                        aControllerName);
+
+    if (fHotplug && aType == DeviceType_DVD)
+        return setError(VBOX_E_INVALID_VM_STATE,
+                        tr("Detaching a DVD drive while the VM is running is not supported"));
 
     MediumAttachment *pAttach = findAttachment(mMediaData->mAttachments,
                                                aControllerName,
