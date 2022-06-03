@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 36001 2011-02-16 21:21:39Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 36285 2011-03-15 13:22:02Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -369,7 +369,6 @@ int pdmacFileEpTaskInitiate(PPDMASYNCCOMPLETIONTASK pTask,
                             PCRTSGSEG paSegments, size_t cSegments,
                             size_t cbTransfer, PDMACTASKFILETRANSFER enmTransfer)
 {
-    int rc = VINF_SUCCESS;
     PPDMASYNCCOMPLETIONENDPOINTFILE pEpFile = (PPDMASYNCCOMPLETIONENDPOINTFILE)pEndpoint;
     PPDMASYNCCOMPLETIONTASKFILE pTaskFile = (PPDMASYNCCOMPLETIONTASKFILE)pTask;
     PPDMACEPFILEMGR pAioMgr = pEpFile->pAioMgr;
@@ -398,13 +397,7 @@ int pdmacFileEpTaskInitiate(PPDMASYNCCOMPLETIONTASK pTask,
 
     AssertMsg(!cbTransfer, ("Incomplete transfer %u bytes left\n", cbTransfer));
 
-    if (ASMAtomicReadS32(&pTaskFile->cbTransferLeft) == 0
-        && !ASMAtomicXchgBool(&pTaskFile->fCompleted, true))
-        pdmR3AsyncCompletionCompleteTask(pTask, pTaskFile->rc, false);
-    else
-        rc = VINF_AIO_TASK_PENDING;
-
-    return rc;
+    return VINF_AIO_TASK_PENDING;
 }
 
 /**
