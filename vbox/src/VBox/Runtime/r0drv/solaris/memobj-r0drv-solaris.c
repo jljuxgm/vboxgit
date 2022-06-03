@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 41627 2012-06-08 16:16:04Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 41628 2012-06-08 16:19:13Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -150,7 +150,6 @@ static page_t *rtR0MemObjSolPageAlloc(caddr_t virtAddr, size_t cbPage)
 
     KernelSeg.s_as = &kas;
     page_t *pPage = page_create_va(&g_PageVnode, offPage, cbPage, PG_WAIT | PG_NORELOC, &KernelSeg, virtAddr);
-
     if (RT_LIKELY(pPage))
     {
         /*
