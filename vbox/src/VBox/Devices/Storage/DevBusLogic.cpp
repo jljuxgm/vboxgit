@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 38470 2011-08-16 10:42:35Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -3118,7 +3118,7 @@ static DECLCALLBACK(int) buslogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
 
     /* Initialize task queue. */
     rc = PDMDevHlpQueueCreate(pDevIns, sizeof(PDMQUEUEITEMCORE), 5, 0,
-                              buslogicNotifyQueueConsumer, true, "BugLogicTask", &pThis->pNotifierQueueR3);
+                              buslogicNotifyQueueConsumer, true, "BusLogicTask", &pThis->pNotifierQueueR3);
     if (RT_FAILURE(rc))
         return rc;
     pThis->pNotifierQueueR0 = PDMQueueR0Ptr(pThis->pNotifierQueueR3);
