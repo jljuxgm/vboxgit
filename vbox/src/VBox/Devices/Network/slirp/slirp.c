@@ -1,4 +1,4 @@
-/* $Id: slirp.c 40835 2012-04-09 08:13:57Z vboxsync $ */
+/* $Id: slirp.c 40836 2012-04-09 09:10:45Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1321,11 +1321,13 @@ void slirp_select_poll(PNATState pData, struct pollfd *polls, int ndfs)
                 ret = soread(pData, so);
                 if (ret > 0)
                     TCP_OUTPUT(pData, sototcpcb(so));
+#ifdef LOG_ENABLED
                 else if (pPrevSo->so_next == so)
                 {
                     Log2(("%R[natsock] errno %d (%s)\n", so, errno, strerror(errno)));
                     break;
                 }
+#endif
             }
             if (pPrevSo->so_next == so)
             {
