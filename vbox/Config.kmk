@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41633 2012-06-08 18:14:39Z vboxsync $
+# $Id: Config.kmk 41634 2012-06-08 18:17:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2246,7 +2246,7 @@ ifeq ($(KBUILD_HOST),darwin)
 	$(QUIET)$(APPEND) '$@' 'VBOX_LD_no_compact_linkedit    ?= $(call VBOX_GCC_CHECK_LD,-no_compact_linkedit,)'
 endif
 	$(QUIET)$(ECHO) '========= START OF $@ ========='
-	$(CAT) $@
+	$(QUIET)$(CAT) $@
 	$(QUIET)$(ECHO) '=========== END OF $@ ========='
 
 include $(PATH_OUT)/GCCConfig.kmk
@@ -5113,7 +5113,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41633 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41634 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
