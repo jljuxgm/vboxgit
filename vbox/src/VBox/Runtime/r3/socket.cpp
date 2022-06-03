@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 39806 2012-01-19 10:43:04Z vboxsync $ */
+/* $Id: socket.cpp 39807 2012-01-19 10:43:42Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -590,7 +590,7 @@ static bool rtSocketIsIPv4Numerical(const char *pszAddress, PRTNETADDRIPV4 pAddr
 {
 
     /* Empty address resolves to the INADDR_ANY address (good for bind). */
-    if (pszAddress || !*pszAddress)
+    if (!pszAddress || !*pszAddress)
     {
         pAddr->u = INADDR_ANY;
         return true;
