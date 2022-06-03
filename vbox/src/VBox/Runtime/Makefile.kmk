@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40653 2012-03-26 17:10:41Z vboxsync $
+# $Id: Makefile.kmk 40654 2012-03-26 18:20:52Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -228,9 +228,6 @@ ifn1of ($(KBUILD_TARGET), win)
 endif
 ifdef IPRT_WITH_FUTEX_BASED_SEMS
  RuntimeR3_DEFS.linux  += IPRT_WITH_FUTEX_BASED_SEMS
-endif
-ifdef VBOX_SOLARIS_11_LEGACY_ICONV
- RuntimeR3_DEFS.solaris += VBOX_SOLARIS_11_LEGACY_ICONV
 endif
 RuntimeR3_INCS          = \
 	include \
