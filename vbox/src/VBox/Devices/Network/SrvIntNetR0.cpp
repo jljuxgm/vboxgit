@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 37979 2011-07-15 14:04:24Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 38549 2011-08-26 13:26:07Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -2662,14 +2662,14 @@ static int intnetR0TrunkIfSendGsoFallback(PINTNETTRUNKIF pThis, PINTNETIF pIfSen
     uint32_t const cSegs = PDMNetGsoCalcSegmentCount(&pSG->GsoCtx, pSG->cbTotal);
     for (uint32_t iSeg = 0; iSeg < cSegs; iSeg++)
     {
-        uint32_t cbSegPayload;
+        uint32_t cbSegPayload, cbSegHdrs;
         uint32_t offSegPayload = PDMNetGsoCarveSegment(&pSG->GsoCtx, (uint8_t *)pSG->aSegs[0].pv, pSG->cbTotal, iSeg, cSegs,
-                                                       pIfSender->abGsoHdrs, &cbSegPayload);
+                                                       pIfSender->abGsoHdrs, &cbSegHdrs, &cbSegPayload);
 
-        IntNetSgInitTempSegs(&u.SG, pSG->GsoCtx.cbHdrs + cbSegPayload, 2, 2);
+        IntNetSgInitTempSegs(&u.SG, cbSegHdrs + cbSegPayload, 2, 2);
         u.SG.aSegs[0].Phys = NIL_RTHCPHYS;
         u.SG.aSegs[0].pv   = pIfSender->abGsoHdrs;
-        u.SG.aSegs[0].cb   = pSG->GsoCtx.cbHdrs;
+        u.SG.aSegs[0].cb   = cbSegHdrs;
         u.SG.aSegs[1].Phys = NIL_RTHCPHYS;
         u.SG.aSegs[1].pv   = (uint8_t *)pSG->aSegs[0].pv + offSegPayload;
         u.SG.aSegs[1].cb   = (uint32_t)cbSegPayload;
