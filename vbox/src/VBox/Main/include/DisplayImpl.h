@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 39603 2011-12-14 11:12:56Z vboxsync $ */
+/* $Id: DisplayImpl.h 41404 2012-05-22 16:41:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -170,6 +170,8 @@ public:
     STDMETHOD(SetSeamlessMode)(BOOL enabled);
 
     STDMETHOD(CompleteVHWACommand)(BYTE *pCommand);
+
+    STDMETHOD(ViewportChanged)(ULONG aScreenId, ULONG x, ULONG y, ULONG width, ULONG height);
 
     static const PDMDRVREG  DrvReg;
 
