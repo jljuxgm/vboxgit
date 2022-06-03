@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 40956 2012-04-16 22:58:48Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -255,7 +255,7 @@ static DECLCALLBACK(uint32_t) pdmR3ApicHlp_CalcIrqTag(PPDMDEVINS pDevIns, uint8_
 
 
     pdmUnlock(pVM);
-    LogFlow(("pdmR3ApicHlp_CalcIrqTag: caller='%s'/%d: returns %#x (u8Level=%d)\n", 
+    LogFlow(("pdmR3ApicHlp_CalcIrqTag: caller='%s'/%d: returns %#x (u8Level=%d)\n",
              pDevIns->pReg->szName, pDevIns->iInstance, uTagSrc, u8Level));
     return uTagSrc;
 }
