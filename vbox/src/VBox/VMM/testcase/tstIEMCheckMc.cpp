@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 40256 2012-02-25 01:09:31Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 40266 2012-02-27 22:09:01Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -24,6 +24,7 @@
 
 #include <VBox/types.h>
 #include <VBox/err.h>
+#include <VBox/log.h>
 #include "../include/IEMInternal.h"
 
 
@@ -102,6 +103,13 @@ typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
     typedef int ignore_semicolon
 #define FNIEMOP_STUB_1(a_Name, a_Type0, a_Name0) \
     FNIEMOP_DEF_1(a_Name, a_Type0, a_Name0) { return VERR_NOT_IMPLEMENTED; } \
+    typedef int ignore_semicolon
+
+#define FNIEMOP_UD_STUB(a_Name) \
+    FNIEMOP_DEF(a_Name) { return IEMOP_RAISE_INVALID_OPCODE(); } \
+    typedef int ignore_semicolon
+#define FNIEMOP_UD_STUB_1(a_Name, a_Type0, a_Name0) \
+    FNIEMOP_DEF_1(a_Name, a_Type0, a_Name0) { return IEMOP_RAISE_INVALID_OPCODE(); } \
     typedef int ignore_semicolon
 
 

@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 40256 2012-02-25 01:09:31Z vboxsync $ */
+/* $Id: IEMAll.cpp 40266 2012-02-27 22:09:01Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2596,6 +2596,25 @@ static void iemOpStubMsg2(PIEMCPU pIemCpu)
         RTAssertPanic(); \
         NOREF(a_Name0); \
         return VERR_IEM_INSTR_NOT_IMPLEMENTED; \
+    } \
+    typedef int ignore_semicolon
+
+/** Stubs an opcode which currently should raise \#UD. */
+#define FNIEMOP_UD_STUB(a_Name) \
+    FNIEMOP_DEF(a_Name) \
+    { \
+        Log(("Unsupported instruction %Rfn\n", __FUNCTION__)); \
+        return IEMOP_RAISE_INVALID_OPCODE(); \
+    } \
+    typedef int ignore_semicolon
+
+/** Stubs an opcode which currently should raise \#UD. */
+#define FNIEMOP_UD_STUB_1(a_Name, a_Type0, a_Name0) \
+    FNIEMOP_DEF_1(a_Name, a_Type0, a_Name0) \
+    { \
+        NOREF(a_Name0); \
+        Log(("Unsupported instruction %Rfn\n", __FUNCTION__)); \
+        return IEMOP_RAISE_INVALID_OPCODE(); \
     } \
     typedef int ignore_semicolon
 
