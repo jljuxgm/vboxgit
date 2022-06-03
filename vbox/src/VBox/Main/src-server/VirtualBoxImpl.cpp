@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 35982 2011-02-15 16:02:28Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 36027 2011-02-21 09:22:52Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4532,7 +4532,7 @@ STDMETHODIMP VirtualBox::FindDHCPServerByNetworkName(IN_BSTR aName, IDHCPServer 
          ++it)
     {
         rc = (*it)->COMGETTER(NetworkName)(bstr.asOutParam());
-        if (FAILED(rc)) throw rc;
+        if (FAILED(rc)) return rc;
 
         if (bstr == aName)
         {
