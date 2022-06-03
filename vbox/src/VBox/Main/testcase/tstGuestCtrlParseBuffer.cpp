@@ -1,4 +1,4 @@
-/* $Id: tstGuestCtrlParseBuffer.cpp 37884 2011-07-12 10:15:23Z vboxsync $ */
+/* $Id: tstGuestCtrlParseBuffer.cpp 37886 2011-07-12 10:20:09Z vboxsync $ */
 
 /** @file
  *
@@ -37,7 +37,7 @@ typedef std::map< RTCString, VBOXGUESTCTRL_BUFFER_VALUE >::const_iterator GuestB
 
 char pszUnterm1[] = { 'a', 's', 'd', 'f' };
 
-#ifndef RT_OS_WINDOWS
+#ifndef BYTE
 # define BYTE uint8_t
 #endif
 
