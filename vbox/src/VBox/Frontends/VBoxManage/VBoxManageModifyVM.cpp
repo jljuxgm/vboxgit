@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 40724 2012-03-30 11:21:27Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 40725 2012-03-30 11:25:36Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2218,7 +2218,7 @@ int handleModifyVM(HandlerArg *a)
                 size_t cbFile;
                 char szPasswd[512];
                 int vrc = VINF_SUCCESS;
-                bool fStdIn = !strcmp(ValueUnion.psz, "-");
+                bool fStdIn = !strcmp(ValueUnion.psz, "stdin");
                 PRTSTREAM pStrm;
                 if (!fStdIn)
                     vrc = RTStrmOpen(ValueUnion.psz, "r", &pStrm);
