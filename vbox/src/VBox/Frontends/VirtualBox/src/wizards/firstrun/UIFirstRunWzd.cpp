@@ -1,4 +1,4 @@
-/* $Id: UIFirstRunWzd.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UIFirstRunWzd.cpp 39593 2011-12-13 09:26:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -284,8 +284,6 @@ void UIFirstRunWzdPage3::retranslateUi()
     .arg(tr("Type", "summary"), description)
     .arg(tr("Source", "summary"), source)
     ;
-    /* Feat summary to 3 lines */
-    setSummaryFieldLinesNumber(m_pSummaryText, 2);
 
     m_pSummaryText->setText("<table cellspacing=0 cellpadding=0>" + summary + "</table>");
 }
@@ -295,6 +293,8 @@ void UIFirstRunWzdPage3::initializePage()
     /* Fill and translate */
     retranslateUi();
 
+    /* Update summary geometry: */
+    m_pSummaryText->updateGeometry();
     /* Summary should initially have focus */
     m_pSummaryText->setFocus();
 }

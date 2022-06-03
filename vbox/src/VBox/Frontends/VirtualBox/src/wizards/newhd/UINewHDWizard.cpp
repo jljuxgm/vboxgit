@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 39128 2011-10-27 12:44:47Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 39593 2011-12-13 09:26:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -995,9 +995,6 @@ void UINewHDWizardPageSummary::retranslateUi()
     .arg(UINewHDWizard::tr("Location", "summary"), strMediumPath)
     .arg(UINewHDWizard::tr("Size", "summary"), sizeFormatted, sizeUnformatted);
 
-    /* Feat summary to 4 lines: */
-    setSummaryFieldLinesNumber(m_pSummaryText, 4);
-
     m_pSummaryText->setText("<table cellspacing=0 cellpadding=0>" + strSummary + "</table>");
 }
 
@@ -1006,6 +1003,8 @@ void UINewHDWizardPageSummary::initializePage()
     /* Retranslate page: */
     retranslateUi();
 
+    /* Update summary geometry: */
+    m_pSummaryText->updateGeometry();
     /* Summary should have focus initially: */
     m_pSummaryText->setFocus();
 }
