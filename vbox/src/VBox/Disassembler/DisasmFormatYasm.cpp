@@ -1,10 +1,10 @@
-/* $Id: DisasmFormatYasm.cpp 41662 2012-06-12 08:29:07Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 41666 2012-06-12 11:47:18Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1228,7 +1228,7 @@ DISDECL(bool) DISFormatYasmIsOddEncoding(PDISCPUSTATE pCpu)
      * Check for multiple prefixes of the same kind.
      */
     uint32_t fPrefixes = 0;
-    for (uint32_t offOpcode = 0; offOpcode < 32; offOpcode++)
+    for (uint32_t offOpcode = 0; offOpcode < RT_ELEMENTS(pCpu->abInstr); offOpcode++)
     {
         uint32_t f;
         switch (pCpu->abInstr[offOpcode])
