@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 39431 2011-11-28 09:32:33Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 39433 2011-11-28 12:23:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -775,7 +775,8 @@ static int handleCtrlExecProgram(ComPtr<IGuest> pGuest, HandlerArg *pArg)
         /* Wait for process to exit ... */
         BOOL fCompleted    = FALSE;
         BOOL fCanceled     = FALSE;
-        while (SUCCEEDED(progress->COMGETTER(Completed(&fCompleted))))
+        while (   SUCCEEDED(progress->COMGETTER(Completed(&fCompleted)))
+               && !fCompleted)
         {
             /* Do we need to output stuff? */
             uint32_t cMsTimeLeft;
