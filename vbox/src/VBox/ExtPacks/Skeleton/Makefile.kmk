@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35963 2011-02-14 16:18:36Z vboxsync $
+# $Id: Makefile.kmk 35990 2011-02-16 11:04:08Z vboxsync $
 ## @file
 # Sub-Makefile for the Skeleton Extension Pack Sample.
 #
@@ -153,7 +153,7 @@ $(VBOX_PATH_PACKAGES)/$(VBOX_SKELETON_MANGLED_NAME)-$(VBOX_VERSION_STRING)r$(VBO
 		$(VBoxSkeletonIns_0_OUTDIR)/Stage/ExtPack.manifest \
 		$(VBoxSkeletonIns_0_OUTDIR)/Stage/ExtPack.signature
 # Tar it up.
-	tar -cv -C  $(VBoxSkeletonIns_0_OUTDIR)/Stage/ . | gzip -9c > $@
+	tar -cvf - -C $(VBoxSkeletonIns_0_OUTDIR)/Stage/ . | gzip -9c > $@
 # Clean up
 	$(RM) -Rf $(VBoxSkeletonIns_0_OUTDIR)/Stage/
 
