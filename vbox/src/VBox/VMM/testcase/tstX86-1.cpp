@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 40024 2012-02-07 21:50:43Z vboxsync $ */
+/* $Id: tstX86-1.cpp 40057 2012-02-10 00:21:23Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -70,6 +70,7 @@ DECLASM(int32_t) x861_Test2(void);
 DECLASM(int32_t) x861_Test3(void);
 DECLASM(int32_t) x861_Test4(void);
 DECLASM(int32_t) x861_Test5(void);
+DECLASM(int32_t) x861_Test6(void);
 
 
 
@@ -232,15 +233,22 @@ int main()
         rc = x861_Test3();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test3 -> %d", rc);
+
         RTTestSub(hTest, "Multibyte NOPs");
         rc = x861_Test4();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test4 -> %d", rc);
+
         RTTestSub(hTest, "Odd floating point encodings");
-#endif
         rc = x861_Test5();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test5 -> %d", rc);
+#endif
+
+        RTTestSub(hTest, "Floating point exceptions ++");
+        rc = x861_Test6();
+        if (rc != 0)
+            RTTestFailed(hTest, "x861_Test6 -> %d", rc);
     }
 
     return RTTestSummaryAndDestroy(hTest);

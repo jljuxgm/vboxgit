@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 40037 2012-02-08 11:35:44Z vboxsync $
+; $Id: tstX86-1A.asm 40057 2012-02-10 00:21:23Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -56,6 +56,7 @@ GLOBALNAME g_aTrapInfo
 %define X86_XCPT_UD     6
 %define X86_XCPT_GP     13
 %define X86_XCPT_PF     14
+%define X86_XCPT_MF     16
 
 %define PAGE_SIZE       0x1000
 
@@ -1331,6 +1332,52 @@ BEGINPROC   x861_Test5
 .r80V1: dt 8.0
 
 ENDPROC     x861_Test5
+
+
+;;
+; Tests some floating point exceptions and such.
+;
+BEGINPROC   x861_Test6
+        SAVE_ALL_PROLOGUE
+        sub     xSP, 1024
+
+        ; stack overflow
+        fninit
+        ;mov     dword [xSP], 037fh
+        mov     dword [xSP], 0300h
+        fldcw   [xSP]
+        fld dword REF(.r32V1)
+        fld dword REF(.r32V1)
+        fld dword REF(.r32V1)
+        fld dword REF(.r32V1)
+        fld dword REF(.r32V1)
+        fld dword REF(.r32V1)
+        fld dword REF(.r32V1)
+        fld dword REF(.r32V1)
+        fwait
+
+        fld dword REF(.r32V1)
+        ShouldTrap X86_XCPT_MF, fwait
+        fnstenv [xSP]
+        and     word [xSP + 4], ~07fh
+        fldenv  [xSP]
+
+        fld dword REF(.r32V1)
+        ShouldTrap X86_XCPT_MF, fwait
+
+
+.success:
+        xor     eax, eax
+.return:
+        add     xSP, 1024
+        SAVE_ALL_EPILOGUE
+        ret
+
+.r32V1: dd 3.2
+.r64V1: dq 6.4
+.r80V1: dt 8.0
+
+ENDPROC     x861_Test6
 
 
 ;;
