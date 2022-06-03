@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 41325 2012-05-16 08:37:07Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -749,7 +749,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 38636 $\n");
+                RTPrintf("$Revision: 41325 $\n");
                 return 0;
 
             default:
@@ -774,6 +774,14 @@ int main(int argc, char **argv)
     if (RT_FAILURE(rc))
     {
         RTPrintf("tstIntNet-1: RTPathExecDir -> %Rrc\n", rc);
+        return 1;
+    }
+
+    char szAbsPath[RTPATH_MAX];
+    rc = RTPathAbs(szPath, szAbsPath, sizeof(szAbsPath));
+    if (RT_FAILURE(rc))
+    {
+        RTPrintf("tstIntNet-1: RTPathAbs -> %Rrc\n", rc);
         return 1;
     }
 
