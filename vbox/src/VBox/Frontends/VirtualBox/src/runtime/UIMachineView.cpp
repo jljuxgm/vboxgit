@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 39097 2011-10-24 20:44:38Z vboxsync $ */
+/* $Id: UIMachineView.cpp 39098 2011-10-24 20:53:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -375,12 +375,12 @@ void UIMachineView::prepareFrameBuffer()
                     /** these two additional template args is a workaround to
                      * this [VBox|UI] duplication
                      * @todo: they are to be removed once VBox stuff is gone */
-                    pFrameBuffer = new VBoxOverlayFrameBuffer<UIFrameBufferSDL, UIMachineView, UIResizeEvent>(this, &machineWindowWrapper()->session(), (uint32_t)screenId());
+                    pFrameBuffer = new VBoxOverlayFrameBuffer<UIFrameBufferQuartz2D, UIMachineView, UIResizeEvent>(this, &machineWindowWrapper()->session(), (uint32_t)screenId());
                 }
                 else
-                    pFrameBuffer = new UIFrameBufferSDL(this);
+                    pFrameBuffer = new UIFrameBufferQuartz2D(this);
 # else /* VBOX_WITH_VIDEOHWACCEL */
-                pFrameBuffer = new UIFrameBufferSDL(this);
+                pFrameBuffer = new UIFrameBufferQuartz2D(this);
 # endif /* !VBOX_WITH_VIDEOHWACCEL */
                 uisession()->setFrameBuffer(screenId(), pFrameBuffer);
             }
