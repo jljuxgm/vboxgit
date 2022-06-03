@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 39544 2011-12-06 21:46:22Z vboxsync $ */
+/* $Id: vbsf.cpp 39586 2011-12-12 15:55:57Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -41,7 +41,9 @@
 # include "teststubs.h"
 #endif
 
-#define SHFL_RT_LINK(pClient) ((pClient)->fu32Flags & SHFL_CF_SYMLINKS ? RTPATH_F_ON_LINK : RTPATH_F_FOLLOW_LINK)
+// never follow symbolic links */
+//#define SHFL_RT_LINK(pClient) ((pClient)->fu32Flags & SHFL_CF_SYMLINKS ? RTPATH_F_ON_LINK : RTPATH_F_FOLLOW_LINK)
+#define SHFL_RT_LINK(pClient) (RTPATH_F_ON_LINK)
 
 /**
  * @todo find a better solution for supporting the execute bit for non-windows
