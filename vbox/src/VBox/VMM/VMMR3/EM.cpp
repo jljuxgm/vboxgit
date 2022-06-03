@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 38326 2011-08-05 14:35:08Z vboxsync $ */
+/* $Id: EM.cpp 38327 2011-08-05 14:37:40Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -113,9 +113,9 @@ VMMR3DECL(int) EMR3Init(PVM pVM)
     pVM->em.s.offVM = RT_OFFSETOF(VM, em.s);
     bool fEnabled;
     int rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "RawR3Enabled", &fEnabled);
-    pVM->fRecompileUser = RT_SUCCESS(rc) ? fEnabled : true;
+    pVM->fRecompileUser       = RT_SUCCESS(rc) ? !fEnabled : false;
     rc = CFGMR3QueryBool(CFGMR3GetRoot(pVM), "RawR0Enabled", &fEnabled);
-    pVM->fRecompileSupervisor = RT_SUCCESS(rc) ? fEnabled : true;
+    pVM->fRecompileSupervisor = RT_SUCCESS(rc) ? !fEnabled : false;
     Log(("EMR3Init: fRecompileUser=%RTbool fRecompileSupervisor=%RTbool\n", pVM->fRecompileUser, pVM->fRecompileSupervisor));
 
     /*
