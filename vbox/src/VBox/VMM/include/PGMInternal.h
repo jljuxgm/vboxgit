@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 38707 2011-09-09 14:10:18Z vboxsync $ */
+/* $Id: PGMInternal.h 38708 2011-09-09 14:38:59Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -89,13 +89,6 @@
  */
 #if 1 /* testing */
 # define PGM_WITH_MMIO_OPTIMIZATIONS
-#endif
-
-/**
- * Chunk unmapping code activated on 32-bit hosts for > 1.5/2 GB guest memory support
- */
-#if (HC_ARCH_BITS == 32) && !defined(RT_OS_DARWIN)
-# define PGM_WITH_LARGE_ADDRESS_SPACE_ON_32_BIT_HOST
 #endif
 
 /**
