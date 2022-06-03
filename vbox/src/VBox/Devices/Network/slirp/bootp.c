@@ -1,4 +1,4 @@
-/* $Id: bootp.c 40122 2012-02-14 08:46:23Z vboxsync $ */
+/* $Id: bootp.c 40421 2012-03-11 02:28:13Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -347,8 +347,6 @@ static int dhcp_do_ack_offer(PNATState pData, struct mbuf *m, BOOTPClient *bc, i
 
 static int dhcp_send_nack(PNATState pData, struct bootp_t *bp, BOOTPClient *bc, struct mbuf *m)
 {
-    struct bootp_t *rbp;
-    rbp = mtod(m, struct bootp_t *);
     NOREF(bc);
 
     dhcp_create_msg(pData, bp, m, DHCPNAK);
