@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 37027 2011-05-10 13:12:48Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 37143 2011-05-18 15:25:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -717,6 +717,17 @@ void VBoxProblemReporter::cannotLoadMachineSettings (const CMachine &machine,
                  "<b>%1</b> from <b><nobr>%2</nobr></b>.")
                 .arg (machine.GetName(), machine.GetSettingsFilePath()),
              formatErrorInfo (res));
+}
+
+bool VBoxProblemReporter::confirmedSettingsReloading(QWidget *pParent)
+{
+    int rc = message(pParent, Question,
+                     tr("<p>The machine settings were changed while you were editing them. "
+                        "You currently have unsaved setting changes.</p>"
+                        "<p>Would you like to reload the changed settings or to keep your own changes?</p>"), 0,
+                     QIMessageBox::Yes, QIMessageBox::No | QIMessageBox::Default | QIMessageBox::Escape, 0,
+                     tr("Reload settings"), tr("Keep changes"), 0);
+    return rc == QIMessageBox::Yes;
 }
 
 void VBoxProblemReporter::cannotStartMachine (const CConsole &console)
