@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 39917 2012-01-31 14:04:52Z vboxsync $ */
+/* $Id: GMMR0Internal.h 40054 2012-02-09 15:37:11Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -29,20 +29,13 @@ typedef struct GMMSHAREDMODULEPERVM
 {
     /** Tree node. */
     AVLGCPTRNODECORE            Core;
-
     /** Pointer to global shared module info. */
     PGMMSHAREDMODULE            pGlobalModule;
-
-    /** Set if another VM registered a different shared module at the same base address. */
-    bool                        fCollision;
-    /** Alignment. */
-    bool                        bAlignment[3];
-
-    /** Number of included region descriptors */
-    uint32_t                    cRegions;
-
-    /** Shared region descriptor(s). */
-    GMMSHAREDREGIONDESC         aRegions[1];
+    /** Pointer to the region addresses.
+     *
+     * They can differe between VMs because of address space scrambling or
+     * simply different loading order. */
+    RTGCPTR64                   aRegionsGCPtrs[1];
 } GMMSHAREDMODULEPERVM;
 /** Pointer to a GMMSHAREDMODULEPERVM. */
 typedef GMMSHAREDMODULEPERVM *PGMMSHAREDMODULEPERVM;
