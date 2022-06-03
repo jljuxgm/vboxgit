@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 40906 2012-04-13 19:38:21Z vboxsync $ */
+/* $Id: VDICore.h 40935 2012-04-16 08:55:15Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -603,17 +603,6 @@ typedef struct VDIASYNCBLOCKALLOC
     /** Block index to allocate. */
     unsigned                uBlock;
 } VDIASYNCBLOCKALLOC, *PVDIASYNCBLOCKALLOC;
-
-/**
- * Endianess conversion direction.
- */
-typedef enum VDIECONV
-{
-    /** Host to file endianess. */
-    VDIECONV_H2F = 0,
-    /** File to host endianess. */
-    VDIECONV_F2H
-} VDIECONV;
 
 #endif
 
