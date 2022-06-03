@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 41619 2012-06-08 10:40:09Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 41640 2012-06-11 09:17:49Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -166,6 +166,11 @@ typedef struct VBOXGUESTDEVEXT
     /** The mouse feature status matching the counts above.  These are updated
      * together inside the session spinlock. */
     uint32_t volatile           fMouseStatus;
+    /** Callback and user data for a kernel mouse handler. */
+    VBoxGuestMouseSetNotifyCallback volatile MouseSetNotifyCallback;
+    /** Counter of number of active ISRs.  Currently used for safely removing
+     * the mouse handler callback. */
+    uint32_t volatile           cISR;
 
     /** Windows part. */
     union
