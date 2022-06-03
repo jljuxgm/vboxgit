@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 40139 2012-02-15 21:10:19Z vboxsync $
+; $Id: tstX86-1A.asm 40140 2012-02-15 21:12:14Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -144,13 +144,6 @@ GLOBALNAME g_aTrapInfo
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;   Defined Constants And Macros                                              ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-%define X86_XCPT_UD     6
-%define X86_XCPT_GP     13
-%define X86_XCPT_PF     14
-%define X86_XCPT_MF     16
-
-%define PAGE_SIZE       0x1000
-
 ;; Reference a variable
 %ifdef RT_ARCH_AMD64
  %define REF(a_Name)     a_Name wrt rip
