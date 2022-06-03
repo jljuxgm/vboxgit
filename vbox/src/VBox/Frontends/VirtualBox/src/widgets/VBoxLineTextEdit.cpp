@@ -1,4 +1,4 @@
-/* $Id: VBoxLineTextEdit.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxLineTextEdit.cpp 38367 2011-08-09 08:25:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -99,6 +99,10 @@ VBoxLineTextEdit::VBoxLineTextEdit (QWidget *aParent /* = NULL */)
 {
     connect (this, SIGNAL (clicked()),
              this, SLOT (edit()));
+
+    /* Don't interpret the Enter Key. */
+    setAutoDefault(false);
+    setDefault(false);
 
     setFocusPolicy (Qt::StrongFocus);
     retranslateUi();
