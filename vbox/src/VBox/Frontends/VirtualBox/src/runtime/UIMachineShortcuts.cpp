@@ -1,4 +1,4 @@
-/* $Id: UIMachineShortcuts.cpp 36357 2011-03-23 09:36:05Z vboxsync $ */
+/* $Id: UIMachineShortcuts.cpp 38477 2011-08-16 13:46:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -27,6 +27,7 @@ UIMachineShortcuts::UIMachineShortcuts()
     /* Defaults */
     m_Shortcuts[SettingsDialogShortcut]        = UIKeySequence("SettingsDialog",        "S");
     m_Shortcuts[TakeSnapshotShortcut]          = UIKeySequence("TakeSnapshot",          "T");
+    m_Shortcuts[TakeScreenshotShortcut]        = UIKeySequence("TakeScreenshot",        "E");
     m_Shortcuts[InformationDialogShortcut]     = UIKeySequence("InformationDialog",     "N");
     m_Shortcuts[MouseIntegrationShortcut]      = UIKeySequence("MouseIntegration" ,     "I");
     m_Shortcuts[TypeCADShortcut]               = UIKeySequence("TypeCAD",               "Del");

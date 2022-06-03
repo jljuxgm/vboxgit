@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 38476 2011-08-16 13:25:17Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 38477 2011-08-16 13:46:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -192,6 +192,7 @@ void UIMachineMenuBar::prepareMenuMachine(QMenu *pMenu)
     /* Machine submenu: */
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_SettingsDialog));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_TakeSnapshot));
+    pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_TakeScreenshot));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_InformationDialog));
     pMenu->addSeparator();
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_MouseIntegration));
