@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 38990 2011-10-13 20:49:57Z vboxsync $ */
+/* $Id: UIMachineView.cpp 38991 2011-10-13 21:21:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -548,21 +548,20 @@ CSession& UIMachineView::session()
 
 QSize UIMachineView::sizeHint() const
 {
+    QSize fb(m_pFrameBuffer->width(), m_pFrameBuffer->height());
+    QSize hint = fb.boundedTo(m_storedConsoleSize);
 #ifdef VBOX_WITH_DEBUGGER
     // TODO: Fix all DEBUGGER stuff!
     /* HACK ALERT! Really ugly workaround for the resizing to 9x1 done by DevVGA if provoked before power on. */
-    QSize fb(m_pFrameBuffer->width(), m_pFrameBuffer->height());
-    if (fb.width() < 16 || fb.height() < 16)
+    if (hint.width() < 16 || hint.height() < 16)
     {
         CMachine machine = uisession()->session().GetMachine();
         if (   vboxGlobal().isStartPausedEnabled()
             || vboxGlobal().isDebuggerAutoShowEnabled(machine))
-        fb = QSize(640, 480);
+        hint = QSize(640, 480);
     }
-    return QSize(fb.width() + frameWidth() * 2, fb.height() + frameWidth() * 2);
-#else /* VBOX_WITH_DEBUGGER */
-    return QSize(m_pFrameBuffer->width() + frameWidth() * 2, m_pFrameBuffer->height() + frameWidth() * 2);
-#endif /* !VBOX_WITH_DEBUGGER */
+#endif /* VBOX_WITH_DEBUGGER */
+    return QSize(hint.width() + frameWidth() * 2, hint.height() + frameWidth() * 2);
 }
 
 int UIMachineView::contentsX() const

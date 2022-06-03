@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 38963 2011-10-06 21:16:20Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 38991 2011-10-13 21:21:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -371,8 +371,7 @@ void UIMachineViewScale::calculateDesktopGeometry()
 {
     /* This method should not get called until we have initially set up the desktop geometry type: */
     Assert((desktopGeometryType() != DesktopGeo_Invalid));
-    /* If we are not doing automatic geometry calculation then there is nothing to do: */
-    if (desktopGeometryType() == DesktopGeo_Automatic)
+    if (desktopGeometryType() != DesktopGeo_Fixed)
     {
         /* The area taken up by the machine window on the desktop,
          * including window frame, title, menu bar and status bar: */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 38990 2011-10-13 20:49:57Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 38991 2011-10-13 21:21:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -208,8 +208,7 @@ void UIMachineViewFullscreen::calculateDesktopGeometry()
 {
     /* This method should not get called until we have initially set up the desktop geometry type: */
     Assert((desktopGeometryType() != DesktopGeo_Invalid));
-    /* If we are not doing automatic geometry calculation then there is nothing to do: */
-    if (desktopGeometryType() == DesktopGeo_Automatic)
+    if (desktopGeometryType() != DesktopGeo_Fixed)
         m_desktopGeometry = workingArea().size();
 }
 
