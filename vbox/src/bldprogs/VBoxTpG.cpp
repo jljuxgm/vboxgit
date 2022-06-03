@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40601 2012-03-24 09:31:11Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40604 2012-03-24 13:39:19Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -423,7 +423,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40601 2012-03-24 09:31:11Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40604 2012-03-24 13:39:19Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -696,7 +696,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                     "; Prob stubs.\n"
                     ";\n"
                     "BEGINCODE\n"
-                    "extern %sNAME(%s)\n", 
+                    "extern %sNAME(%s)\n",
                     g_fProbeFnImported ? "IMP" : "",
                     g_pszProbeFnName);
     RTListForEach(&g_ProviderHead, pProvider, VTGPROVIDER, ListEntry)
@@ -747,7 +747,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
             else if (g_cBits == 32)
                 /* Assumes the size of the arguments are no larger than a
                    pointer.  This is asserted in the header. */
-                ScmStreamPrintf(pStrm, g_fProbeFnImported ? 
+                ScmStreamPrintf(pStrm, g_fProbeFnImported ?
                                 "        mov     edx, [eax + 4]     ; idProbe\n"
                                 "        mov     ecx, IMP(%s)\n"
                                 "        mov     [esp + 4], edx     ; Replace pVTGProbeLoc with idProbe.\n"
@@ -758,7 +758,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                                 "        jmp     NAME(%s)\n"
                                 , g_pszProbeFnName);
             else if (fWin64)
-                ScmStreamPrintf(pStrm, g_fProbeFnImported ? 
+                ScmStreamPrintf(pStrm, g_fProbeFnImported ?
                                 "        mov     rax, IMP(%s) wrt RIP\n"
                                 "        mov     ecx, [rcx + 4]     ; idProbe replaces pVTGProbeLoc.\n"
                                 "        jmp     rax\n"
@@ -855,7 +855,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40601 2012-03-24 09:31:11Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40604 2012-03-24 13:39:19Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -1565,6 +1565,8 @@ static RTEXITCODE parseProbe(PSCMSTREAM pStrm, PVTGPROVIDER pProv)
                 {
                     if (!cchName)
                         return parseError(pStrm, 1, "Argument has no name");
+                    if (cchArg - cchName - 1 >= 128)
+                        return parseError(pStrm, 1, "Argument type too long");
                     pArg->pszType = strtabInsertN(szArg, cchArg - cchName - 1);
                     pArg->pszName = strtabInsertN(&szArg[cchArg - cchName], cchName);
                     if (!pArg->pszType || !pArg->pszName)
@@ -1907,7 +1909,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40601 $";
+                static const char s_szRev[] = "$Revision: 40604 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
@@ -1944,7 +1946,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
                 g_apszAssemblerOptions[g_cAssemblerOptions] = ValueUnion.psz;
                 g_cAssemblerOptions++;
                 break;
-            
+
             case kVBoxTpGOpt_ProbeFnName:
                 g_pszProbeFnName = ValueUnion.psz;
                 break;
