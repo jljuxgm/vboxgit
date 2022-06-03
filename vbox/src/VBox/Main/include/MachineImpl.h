@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 38820 2011-09-22 14:14:49Z vboxsync $ */
+/* $Id: MachineImpl.h 38873 2011-09-27 08:58:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -478,6 +478,7 @@ public:
     STDMETHOD(PassthroughDevice)(IN_BSTR aControllerName, LONG aControllerPort, LONG aDevice, BOOL aPassthrough);
     STDMETHOD(TemporaryEjectDevice)(IN_BSTR aControllerName, LONG aControllerPort, LONG aDevice, BOOL aTempEject);
     STDMETHOD(NonRotationalDevice)(IN_BSTR aControllerName, LONG aControllerPort, LONG aDevice, BOOL aNonRotational);
+    STDMETHOD(DiscardDevice)(IN_BSTR aControllerName, LONG aControllerPort, LONG aDevice, BOOL aDiscard);
     STDMETHOD(SetBandwidthGroupForDevice)(IN_BSTR aControllerName, LONG aControllerPort,
                                           LONG aDevice, IBandwidthGroup *aBandwidthGroup);
     STDMETHOD(MountMedium)(IN_BSTR aControllerName, LONG aControllerPort,
