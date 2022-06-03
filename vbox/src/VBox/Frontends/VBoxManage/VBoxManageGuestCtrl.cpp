@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 37633 2011-06-24 14:24:34Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 37634 2011-06-24 14:26:52Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -192,11 +192,13 @@ void usageGuestControl(PRTSTREAM pStrm)
                  /** @todo Add a "--" parameter (has to be last parameter) to directly execute
                   *        stuff, e.g. "VBoxManage guestcontrol execute <VMName> --username <> ... -- /bin/rm -Rf /foo". */
                  "\n"
+#if 0
                  "                            copyfrom\n"
                  "                            <source on guest> <destination on host>\n"
                  "                            --username <name> --password <password>\n"
                  "                            [--dryrun] [--follow] [--recursive] [--verbose]\n"
                  "\n"
+#endif
                  "                            copyto|cp\n"
                  "                            <source on host> <destination on guest>\n"
                  "                            --username <name> --password <password>\n"
@@ -1769,11 +1771,13 @@ int handleGuestControl(HandlerArg *pArg)
         {
             rcExit = handleCtrlExecProgram(guest, &arg);
         }
+#if 0
         else if (!strcmp(pArg->argv[1], "copyfrom"))
         {
             rcExit = handleCtrlCopyTo(guest, &arg,
                                       false /* Guest to host */);
         }
+#endif
         else if (   !strcmp(pArg->argv[1], "copyto")
                  || !strcmp(pArg->argv[1], "cp"))
         {
