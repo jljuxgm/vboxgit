@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 41623 2012-06-08 13:19:19Z vboxsync $
+# $Id: vboxconfig.sh 41641 2012-06-11 09:32:23Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -771,7 +771,7 @@ stop_process()
     fi
 }
 
-# start_service(servicename, shortFMRI pretty printing, full FMRI)
+# start_service(servicename, shortFMRI pretty printing, full FMRI, log-file path)
 # failure: non-fatal
 start_service()
 {
