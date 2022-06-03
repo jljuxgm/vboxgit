@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 36305 2011-03-17 13:46:21Z vboxsync $
+# $Id: Makefile.kmk 36548 2011-04-05 09:27:33Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
 
 #
-# Copyright (C) 2007-2010 Oracle Corporation
+# Copyright (C) 2007-2011 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -69,6 +69,7 @@ ifdef VBOX_WITH_GUEST_CONTROL
  VBoxService_SOURCES    += \
  	VBoxServiceControl.cpp \
  	VBoxServiceControlExec.cpp \
+	VBoxServiceControlExecThread.cpp \
 	VBoxServicePipeBuf.cpp
 endif
 
