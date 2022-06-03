@@ -1,4 +1,4 @@
-/* $Id: socket.c 41178 2012-05-06 05:11:18Z vboxsync $ */
+/* $Id: socket.c 41196 2012-05-08 03:29:49Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -1366,7 +1366,11 @@ send_icmp_to_guest(PNATState pData, char *buff, size_t len, const struct sockadd
     }
 
     m = icm->im_m;
-    Assert(m != NULL);
+    if (!m)
+    {
+        RTMemFree(icm);
+        return;
+    }
 
     src = addr->sin_addr.s_addr;
     if (type == ICMP_ECHOREPLY)
