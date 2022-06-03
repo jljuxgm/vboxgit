@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 41553 2012-06-02 20:11:07Z vboxsync $ */
+/* $Id: DBGConsole.cpp 41561 2012-06-04 12:10:19Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -867,6 +867,8 @@ int dbgcCreate(PDBGC *ppDbgc, PDBGCBACK pBack, unsigned fFlags)
     pDbgc->pszEmulation     = "CodeView/WinDbg";
     pDbgc->paEmulationCmds  = &g_aCmdsCodeView[0];
     pDbgc->cEmulationCmds   = g_cCmdsCodeView;
+    pDbgc->paEmulationFuncs = &g_aFuncsCodeView[0];
+    pDbgc->cEmulationFuncs  = g_cFuncsCodeView;
     //pDbgc->fLog             = false;
     pDbgc->fRegCtxGuest     = true;
     pDbgc->fRegTerse        = true;

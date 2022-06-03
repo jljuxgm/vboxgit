@@ -1,4 +1,4 @@
-/* $Id: tstDBGCParser.cpp 41559 2012-06-04 00:57:02Z vboxsync $ */
+/* $Id: tstDBGCParser.cpp 41561 2012-06-04 12:10:19Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser.
  */
@@ -1135,7 +1135,10 @@ static void testBasicsFundametalParsing(PDBGC pDbgc)
     tstTry(pDbgc, "format (1)1\n", VERR_DBGC_PARSE_EXPECTED_BINARY_OP);
     tstTry(pDbgc, "format (1)(1)\n", VERR_DBGC_PARSE_EXPECTED_BINARY_OP);
     tstTry(pDbgc, "format (1)''\n", VERR_DBGC_PARSE_EXPECTED_BINARY_OP);
-    tstTry(pDbgc, "format foo(1)\n", VERR_DBGC_PARSE_EXPECTED_BINARY_OP); /** @todo VERR_DBGC_PARSE_FUNCTION_NOT_FOUND */
+    tstTry(pDbgc, "format nosuchfunction(1)\n", VERR_DBGC_PARSE_FUNCTION_NOT_FOUND);
+    tstTry(pDbgc, "format nosuchfunction(1,2,3)\n", VERR_DBGC_PARSE_FUNCTION_NOT_FOUND);
+    tstTry(pDbgc, "format nosuchfunction()\n", VERR_DBGC_PARSE_FUNCTION_NOT_FOUND);
+    tstTry(pDbgc, "format randu32()\n", VINF_SUCCESS);
     tstTry(pDbgc, "sa 3 23 4 'q' \"21123123\" 'b' \n", VINF_SUCCESS);
     tstTry(pDbgc, "sa 3,23, 4,'q' ,\"21123123\" , 'b' \n", VINF_SUCCESS);
 }
