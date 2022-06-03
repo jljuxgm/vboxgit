@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 39001 2011-10-17 11:53:39Z vboxsync $
+# $Id: vboxconfig.sh 39002 2011-10-17 12:00:30Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -850,7 +850,7 @@ postinstall()
                 # S11 175a renames vboxnet0 as 'netX', undo this and rename it back
                 if test "$HOST_OS_MAJORVERSION" = "5.11" && test "$HOST_OS_MINORVERSION" -gt 174; then
                     vanityname=`dladm show-phys -po link,device | grep vboxnet0 | cut -f1 -d':'`
-                    if test $? -eq 0 && test ! -z "vanityname"; then
+                    if test $? -eq 0 && test ! -z "vanityname" && test "$vanityname" != "vboxnet0"; then
                         dladm rename-link "$vanityname" vboxnet0
                         if test $? -ne 0; then
                             errorprint "Failed to rename vanity interface ($vanityname) to vboxnet0"
