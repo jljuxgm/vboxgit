@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 41579 2012-06-05 14:05:25Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Additions XFree86 and X.org mouse drivers.
 #
@@ -292,7 +292,7 @@ $$(vboxmouse_drv_0_OUTDIR)/tstvboxmouse68.run: $$(vboxmouse_drv_1_STAGE_TARGET)
      OTHERS += $(vboxmouse_drv_70_0_OUTDIR)/tstvboxmouse70.run
 $$(vboxmouse_drv_70_0_OUTDIR)/tstvboxmouse70.run: $$(vboxmouse_drv_70_1_STAGE_TARGET)
 	$(QUIET)$(call MSG_L1,Checking for unresolved symbols in $<)
-	$(QUIET)/bin/sh $(PATH_ROOT)/src/bldprogs/checkUndefined.sh  $(KBUILD_TARGET) \
+	$(QUIET)/bin/sh $(PATH_ROOT)/src/bldprogs/checkUndefined.sh $(KBUILD_HOST) \
 	    $(vboxmouse_drv_70_1_STAGE_TARGET) $(VBOXMOUSE_SRC_PATH)/undefined
 	$(QUIET)$(APPEND) -t "$@" "done"
 
