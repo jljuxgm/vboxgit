@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 36912 2011-05-02 14:23:01Z vboxsync $ */
+/* $Id: HWACCM.cpp 37323 2011-06-03 16:20:06Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1094,7 +1094,7 @@ static int hwaccmR3InitFinalizeR0(PVM pVM)
             for (VMCPUID i = 0; i < pVM->cCpus; i++)
             {
                 LogRel(("HWACCM: VCPU%d: MSR bitmap physaddr      = %RHp\n", i, pVM->aCpus[i].hwaccm.s.vmx.pMSRBitmapPhys));
-                LogRel(("HWACCM: VCPU%d: VMCS physaddr            = %RHp\n", i, pVM->aCpus[i].hwaccm.s.vmx.pVMCSPhys));
+                LogRel(("HWACCM: VCPU%d: VMCS physaddr            = %RHp\n", i, pVM->aCpus[i].hwaccm.s.vmx.HCPhysVMCS));
             }
 
 #ifdef HWACCM_VTX_WITH_EPT
@@ -2592,7 +2592,7 @@ VMMR3DECL(void) HWACCMR3CheckError(PVM pVM, int iStatusCode)
             break;
 
         case VERR_VMX_INVALID_VMCS_PTR:
-            LogRel(("VERR_VMX_INVALID_VMCS_PTR: CPU%d Current pointer %RGp vs %RGp\n", i, pVM->aCpus[i].hwaccm.s.vmx.lasterror.u64VMCSPhys, pVM->aCpus[i].hwaccm.s.vmx.pVMCSPhys));
+            LogRel(("VERR_VMX_INVALID_VMCS_PTR: CPU%d Current pointer %RGp vs %RGp\n", i, pVM->aCpus[i].hwaccm.s.vmx.lasterror.u64VMCSPhys, pVM->aCpus[i].hwaccm.s.vmx.HCPhysVMCS));
             LogRel(("VERR_VMX_INVALID_VMCS_PTR: CPU%d Current VMCS version %x\n", i, pVM->aCpus[i].hwaccm.s.vmx.lasterror.ulVMCSRevision));
             LogRel(("VERR_VMX_INVALID_VMCS_PTR: CPU%d Entered Cpu %d\n", i, pVM->aCpus[i].hwaccm.s.vmx.lasterror.idEnteredCpu));
             LogRel(("VERR_VMX_INVALID_VMCS_PTR: CPU%d Current Cpu %d\n", i, pVM->aCpus[i].hwaccm.s.vmx.lasterror.idCurrentCpu));
