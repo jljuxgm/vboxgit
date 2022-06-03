@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
+/* $Id: DevE1000.cpp 39136 2011-10-28 10:13:34Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4639,15 +4639,15 @@ static DECLCALLBACK(int) e1kMap(PPCIDEVICE pPciDev, int iRegion,
                                        e1kMMIOWrite, e1kMMIORead, "E1000");
             if (pState->fR0Enabled)
             {
-                rc = PDMDevHlpMMIORegisterR0(pPciDev->pDevIns, GCPhysAddress, cb, 0,
-                                             "e1kMMIOWrite", "e1kMMIORead", NULL);
+                rc = PDMDevHlpMMIORegisterR0(pPciDev->pDevIns, GCPhysAddress, cb, NIL_RTR0PTR /*pvUser*/,
+                                             "e1kMMIOWrite", "e1kMMIORead");
                 if (RT_FAILURE(rc))
                     break;
             }
             if (pState->fGCEnabled)
             {
-                rc = PDMDevHlpMMIORegisterRC(pPciDev->pDevIns, GCPhysAddress, cb, 0,
-                                             "e1kMMIOWrite", "e1kMMIORead", NULL);
+                rc = PDMDevHlpMMIORegisterRC(pPciDev->pDevIns, GCPhysAddress, cb, NIL_RTRCPTR /*pvUser*/,
+                                             "e1kMMIOWrite", "e1kMMIORead");
             }
             break;
         default:

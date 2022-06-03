@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
+/* $Id: DevAHCI.cpp 39136 2011-10-28 10:13:34Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -2505,24 +2505,22 @@ static DECLCALLBACK(int) ahciR3MMIOMap(PPCIDEVICE pPciDev, /*unsigned*/ int iReg
     Assert(cb >= 4352);
 
     /* We use the assigned size here, because we currently only support page aligned MMIO ranges. */
-    rc = PDMDevHlpMMIORegisterEx(pDevIns, GCPhysAddress, cb, NULL /*pvUser*/,
-                                 IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
-                                 ahciMMIOWrite, ahciMMIORead, NULL, "AHCI");
+    rc = PDMDevHlpMMIORegister(pDevIns, GCPhysAddress, cb, NULL /*pvUser*/,
+                               IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                               ahciMMIOWrite, ahciMMIORead, "AHCI");
     if (RT_FAILURE(rc))
         return rc;
 
     if (pThis->fR0Enabled)
     {
-        rc = PDMDevHlpMMIORegisterR0(pDevIns, GCPhysAddress, cb, 0,
-                                     "ahciMMIOWrite", "ahciMMIORead", NULL);
+        rc = PDMDevHlpMMIORegisterR0(pDevIns, GCPhysAddress, cb, NIL_RTR0PTR /*pvUser*/, "ahciMMIOWrite", "ahciMMIORead");
         if (RT_FAILURE(rc))
             return rc;
     }
 
     if (pThis->fGCEnabled)
     {
-        rc = PDMDevHlpMMIORegisterRC(pDevIns, GCPhysAddress, cb, 0,
-                                     "ahciMMIOWrite", "ahciMMIORead", NULL);
+        rc = PDMDevHlpMMIORegisterRC(pDevIns, GCPhysAddress, cb, NIL_RTRCPTR /*pvUser*/, "ahciMMIOWrite", "ahciMMIORead");
         if (RT_FAILURE(rc))
             return rc;
     }

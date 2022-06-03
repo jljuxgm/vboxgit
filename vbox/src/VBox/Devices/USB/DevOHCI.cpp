@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
+/* $Id: DevOHCI.cpp 39136 2011-10-28 10:13:34Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -4883,23 +4883,12 @@ ohciR3Map(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, uint32_t cb, 
         return rc;
 
 # if 1 /* this enabled / disabled GC/R0 stuff */
-    rc = PDMDevHlpMMIORegisterRC(pOhci->CTX_SUFF(pDevIns),
-                                 GCPhysAddress,
-                                 cb,
-                                 0,
-                                 "ohciWrite",
-                                 "ohciRead",
-                                 NULL);
+    rc = PDMDevHlpMMIORegisterRC(pOhci->CTX_SUFF(pDevIns), GCPhysAddress, cb, NIL_RTRCPTR /*pvUser*/, "ohciWrite", "ohciRead");
     if (RT_FAILURE(rc))
         return rc;
 
-    rc = PDMDevHlpMMIORegisterR0(pOhci->CTX_SUFF(pDevIns),
-                                 GCPhysAddress,
-                                 cb,
-                                 0,
-                                 "ohciWrite",
-                                 "ohciRead",
-                                 NULL);
+    rc = PDMDevHlpMMIORegisterR0(pOhci->CTX_SUFF(pDevIns), GCPhysAddress, cb, NIL_RTR0PTR /*pvUser*/,
+                                 "ohciWrite", "ohciRead");
     if (RT_FAILURE(rc))
         return rc;
 

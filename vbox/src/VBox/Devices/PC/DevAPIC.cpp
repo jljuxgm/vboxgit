@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
+/* $Id: DevAPIC.cpp 39136 2011-10-28 10:13:34Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2288,8 +2288,7 @@ static DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         pDev->pApicHlpRC  = pDev->pApicHlpR3->pfnGetRCHelpers(pDevIns);
         pDev->pCritSectRC = pDev->pApicHlpR3->pfnGetRCCritSect(pDevIns);
 
-        rc = PDMDevHlpMMIORegisterRC(pDevIns, ApicBase, 0x1000, 0,
-                                     "apicMMIOWrite", "apicMMIORead", NULL);
+        rc = PDMDevHlpMMIORegisterRC(pDevIns, ApicBase, 0x1000, NIL_RTRCPTR /*pvUser*/, "apicMMIOWrite", "apicMMIORead");
         if (RT_FAILURE(rc))
             return rc;
     }
@@ -2298,8 +2297,7 @@ static DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         pDev->pApicHlpR0  = pDev->pApicHlpR3->pfnGetR0Helpers(pDevIns);
         pDev->pCritSectR0 = pDev->pApicHlpR3->pfnGetR0CritSect(pDevIns);
 
-        rc = PDMDevHlpMMIORegisterR0(pDevIns, ApicBase, 0x1000, 0,
-                                     "apicMMIOWrite", "apicMMIORead", NULL);
+        rc = PDMDevHlpMMIORegisterR0(pDevIns, ApicBase, 0x1000, NIL_RTR0PTR /*pvUser*/, "apicMMIOWrite", "apicMMIORead");
         if (RT_FAILURE(rc))
             return rc;
     }

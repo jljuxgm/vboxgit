@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 39136 2011-10-28 10:13:34Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
@@ -342,14 +342,10 @@ int vmmdevTestingInitialize(PPDMDEVINS pDevIns)
     if (pThis->fRZEnabled)
     {
         rc = PDMDevHlpMMIORegisterR0(pDevIns, VMMDEV_TESTING_MMIO_BASE, VMMDEV_TESTING_MMIO_SIZE, NIL_RTR0PTR /*pvUser*/,
-                                     "vmmdevTestingMmioWrite",
-                                     "vmmdevTestingMmioRead",
-                                     NULL /*pszFill*/);
+                                     "vmmdevTestingMmioWrite", "vmmdevTestingMmioRead");
         AssertRCReturn(rc, rc);
         rc = PDMDevHlpMMIORegisterRC(pDevIns, VMMDEV_TESTING_MMIO_BASE, VMMDEV_TESTING_MMIO_SIZE, NIL_RTRCPTR /*pvUser*/,
-                                     "vmmdevTestingMmioWrite",
-                                     "vmmdevTestingMmioRead",
-                                     NULL /*pszFill*/);
+                                     "vmmdevTestingMmioWrite", "vmmdevTestingMmioRead");
         AssertRCReturn(rc, rc);
     }
 

@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 39136 2011-10-28 10:13:34Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3848,16 +3848,16 @@ static DECLCALLBACK(int) lsilogicMap(PPCIDEVICE pPciDev, /*unsigned*/ int iRegio
 
         if (pThis->fR0Enabled)
         {
-            rc = PDMDevHlpMMIORegisterR0(pDevIns, GCPhysAddress, cb, 0,
-                                         "lsilogicMMIOWrite", "lsilogicMMIORead", NULL);
+            rc = PDMDevHlpMMIORegisterR0(pDevIns, GCPhysAddress, cb, NIL_RTR0PTR /*pvUser*/,
+                                         "lsilogicMMIOWrite", "lsilogicMMIORead");
             if (RT_FAILURE(rc))
                 return rc;
         }
 
         if (pThis->fGCEnabled)
         {
-            rc = PDMDevHlpMMIORegisterRC(pDevIns, GCPhysAddress, cb, 0,
-                                         "lsilogicMMIOWrite", "lsilogicMMIORead", NULL);
+            rc = PDMDevHlpMMIORegisterRC(pDevIns, GCPhysAddress, cb, NIL_RTRCPTR /*pvUser*/,
+                                         "lsilogicMMIOWrite", "lsilogicMMIORead");
             if (RT_FAILURE(rc))
                 return rc;
         }
@@ -3875,16 +3875,16 @@ static DECLCALLBACK(int) lsilogicMap(PPCIDEVICE pPciDev, /*unsigned*/ int iRegio
 
         if (pThis->fR0Enabled)
         {
-            rc = PDMDevHlpMMIORegisterR0(pDevIns, GCPhysAddress, cb, 0,
-                                         "lsilogicDiagnosticWrite", "lsilogicDiagnosticRead", NULL);
+            rc = PDMDevHlpMMIORegisterR0(pDevIns, GCPhysAddress, cb, NIL_RTR0PTR /*pvUser*/,
+                                         "lsilogicDiagnosticWrite", "lsilogicDiagnosticRead");
             if (RT_FAILURE(rc))
                 return rc;
         }
 
         if (pThis->fGCEnabled)
         {
-            rc = PDMDevHlpMMIORegisterRC(pDevIns, GCPhysAddress, cb, 0,
-                                         "lsilogicDiagnosticWrite", "lsilogicDiagnosticRead", NULL);
+            rc = PDMDevHlpMMIORegisterRC(pDevIns, GCPhysAddress, cb, NIL_RTRCPTR /*pvUser*/,
+                                         "lsilogicDiagnosticWrite", "lsilogicDiagnosticRead");
             if (RT_FAILURE(rc))
                 return rc;
         }
