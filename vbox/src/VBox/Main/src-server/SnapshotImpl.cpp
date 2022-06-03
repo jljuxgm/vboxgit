@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 36074 2011-02-24 15:38:25Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 36188 2011-03-07 15:12:47Z vboxsync $ */
 
 /** @file
  *
@@ -41,30 +41,6 @@
 #include <VBox/err.h>
 
 #include <VBox/settings.h>
-
-////////////////////////////////////////////////////////////////////////////////
-//
-// Globals
-//
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- *  Progress callback handler for lengthy operations
- *  (corresponds to the FNRTPROGRESS typedef).
- *
- *  @param uPercentage  Completion percentage (0-100).
- *  @param pvUser       Pointer to the Progress instance.
- */
-static DECLCALLBACK(int) progressCallback(unsigned uPercentage, void *pvUser)
-{
-    IProgress *progress = static_cast<IProgress*>(pvUser);
-
-    /* update the progress object */
-    if (progress)
-        progress->SetCurrentOperationProgress(uPercentage);
-
-    return VINF_SUCCESS;
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 //
