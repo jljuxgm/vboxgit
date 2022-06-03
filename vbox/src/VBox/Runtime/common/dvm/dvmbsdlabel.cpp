@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 40085 2012-02-12 18:52:43Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 40137 2012-02-15 16:24:51Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -374,7 +374,7 @@ static int rtDvmFmtBsdLblVolumeCreate(PRTDVMFMTINTERNAL pThis, PBsdLabelPartitio
         pVol->idxEntry           = idx;
         pVol->pBsdPartitionEntry = pBsdPartitionEntry;
         pVol->offStart           = (uint64_t)pBsdPartitionEntry->offSectorStart * pThis->DiskLabel.cbSector;
-        pVol->cbVolume           = pBsdPartitionEntry->cSectors * pThis->DiskLabel.cbSector;
+        pVol->cbVolume           = (uint64_t)pBsdPartitionEntry->cSectors * pThis->DiskLabel.cbSector;
 
         *phVolFmt = pVol;
     }
@@ -468,7 +468,7 @@ DECLCALLBACK(uint64_t) rtDvmFmtBsdLblVolumeGetFlags(RTDVMVOLUMEFMT hVolFmt)
 DECLCALLBACK(bool) rtDvmFmtBsdLblVolumeIsRangeIntersecting(RTDVMVOLUMEFMT hVolFmt,
                                                            uint64_t offStart, size_t cbRange,
                                                            uint64_t *poffVol,
-                                                           size_t *pcbIntersect)
+                                                           uint64_t *pcbIntersect)
 {
     bool fIntersect = false;
     PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;

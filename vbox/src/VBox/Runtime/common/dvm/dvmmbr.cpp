@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 40027 2012-02-07 23:09:31Z vboxsync $ */
+/* $Id: dvmmbr.cpp 40137 2012-02-15 16:24:51Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -355,7 +355,7 @@ static DECLCALLBACK(uint64_t) rtDvmFmtMbrVolumeGetFlags(RTDVMVOLUMEFMT hVolFmt)
 DECLCALLBACK(bool) rtDvmFmtMbrVolumeIsRangeIntersecting(RTDVMVOLUMEFMT hVolFmt,
                                                         uint64_t offStart, size_t cbRange,
                                                         uint64_t *poffVol,
-                                                        size_t *pcbIntersect)
+                                                        uint64_t *pcbIntersect)
 {
     bool fIntersect = false;
     PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;

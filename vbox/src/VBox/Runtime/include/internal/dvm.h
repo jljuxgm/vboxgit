@@ -1,4 +1,4 @@
-/* $Id: dvm.h 40028 2012-02-07 23:12:47Z vboxsync $ */
+/* $Id: dvm.h 40137 2012-02-15 16:24:51Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -214,7 +214,7 @@ typedef struct RTDVMFMTOPS
     DECLCALLBACKMEMBER(bool, pfnVolumeIsRangeIntersecting)(RTDVMVOLUMEFMT hVolFmt,
                                                            uint64_t offStart, size_t cbRange,
                                                            uint64_t *poffVol,
-                                                           size_t *pcbIntersect);
+                                                           uint64_t *pcbIntersect);
 
     /**
      * Read data from the given volume.

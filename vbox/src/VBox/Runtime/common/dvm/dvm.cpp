@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 40027 2012-02-07 23:09:31Z vboxsync $ */
+/* $Id: dvm.cpp 40137 2012-02-15 16:24:51Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -482,7 +482,7 @@ RTDECL(int) RTDvmMapQueryBlockStatus(RTDVM hVolMgr, uint64_t off, uint64_t cb,
     {
         PRTDVMVOLUMEINTERNAL pVol;
         bool fVolFound = false;
-        size_t cbIntersect;
+        uint64_t cbIntersect;
         uint64_t offVol;
 
         /*
