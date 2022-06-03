@@ -1,4 +1,4 @@
-/* $Revision: 38321 $ */
+/* $Revision: 38323 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -1912,11 +1912,7 @@ int VBOXCALL supdrvIDC(uintptr_t uReq, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSe
         {
             REQ_CHECK_IDC_SIZE(SUPDRV_IDC_REQ_DISCONNECT, sizeof(*pReqHdr));
 
-#ifdef RT_OS_WINDOWS
-            /* Windows will destroy the session when the file object is destroyed. */
-#else
             supdrvCloseSession(pDevExt, pSession);
-#endif
             return pReqHdr->rc = VINF_SUCCESS;
         }
 
