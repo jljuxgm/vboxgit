@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 38200 2011-07-27 14:34:03Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 38206 2011-07-27 16:59:51Z vboxsync $ */
 /** @file
  * VBox USB R3 Driver Interface library
  */
@@ -765,7 +765,7 @@ static int usbLibDevGetHubPortDevices(HANDLE hHub, LPCSTR lpcszHubName, ULONG iP
         return VINF_SUCCESS;
     }
 
-    char nameEmptyBuf = '0';
+    char nameEmptyBuf = '\0';
     LPSTR lpszName = NULL;
     rc = usbLibDevStrDriverKeyGet(hHub, iPort, &lpszName);
     Assert(!!lpszName == !!RT_SUCCESS(rc));
