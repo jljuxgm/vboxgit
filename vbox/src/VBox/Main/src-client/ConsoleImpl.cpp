@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 39643 2011-12-16 10:54:38Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 39647 2011-12-16 11:23:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7216,7 +7216,7 @@ HRESULT Console::createSharedFolder(const Utf8Str &strName, const SharedFolderDa
     size_t cbString;
 
     Bstr value;
-    HRESULT hrc = mMachine->GetExtraData(BstrFmt("VBoxInternal/SharedFoldersEnableSymlinksCreate/%s",
+    HRESULT hrc = mMachine->GetExtraData(BstrFmt("VBoxInternal2/SharedFoldersEnableSymlinksCreate/%s",
                                                  strName.c_str()).raw(),
                                          value.asOutParam());
     bool fSymlinksCreate = hrc == S_OK && value == "1";
