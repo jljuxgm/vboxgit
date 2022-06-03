@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 37380 2011-06-08 14:44:32Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 37449 2011-06-14 16:34:16Z vboxsync $ */
 
 /** @file
  *
@@ -445,6 +445,15 @@ STDMETHODIMP Snapshot::COMGETTER(Children)(ComSafeArrayOut(ISnapshot *, aChildre
 
     SafeIfaceArray<ISnapshot> collection(m->llChildren);
     collection.detachTo(ComSafeArrayOutArg(aChildren));
+
+    return S_OK;
+}
+
+STDMETHODIMP Snapshot::GetChildrenCount(ULONG* count)
+{
+    CheckComArgOutPointerValid(count);
+
+    *count = getChildrenCount();
 
     return S_OK;
 }
