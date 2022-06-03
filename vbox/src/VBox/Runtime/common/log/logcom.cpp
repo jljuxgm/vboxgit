@@ -1,4 +1,4 @@
-/* $Id: logcom.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: logcom.cpp 39243 2011-11-08 15:36:46Z vboxsync $ */
 /** @file
  * IPRT - Logging to Serial Port.
  */
@@ -128,7 +128,7 @@ RTDECL(void) RTLogWriteCom(const char *pach, size_t cb)
             RTLogWriteCom("\r", 1);
 
         /* Check if port is ready. */
-        cMaxWait = ~0;
+        cMaxWait = ~0U;
         do
         {
             u8 = ASMInU8(IPRT_UART_BASE + 5);

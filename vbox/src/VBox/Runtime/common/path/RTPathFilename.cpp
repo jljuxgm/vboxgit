@@ -1,4 +1,4 @@
-/* $Id: RTPathFilename.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTPathFilename.cpp 39243 2011-11-08 15:36:46Z vboxsync $ */
 /** @file
  * IPRT - RTPathFilename
  */
@@ -70,7 +70,6 @@ RTDECL(char *) RTPathFilename(const char *pszPath)
         }
     }
 
-    /* will never get here */
-    return NULL;
+    /* not reached */
 }
 
