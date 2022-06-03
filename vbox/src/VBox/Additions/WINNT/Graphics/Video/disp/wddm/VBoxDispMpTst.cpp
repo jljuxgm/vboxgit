@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMpTst.cpp 39981 2012-02-03 12:13:33Z vboxsync $ */
+/* $Id: VBoxDispMpTst.cpp 42101 2012-07-11 10:25:42Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -16,12 +16,11 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include "VBoxDispD3DCmn.h"
 #include "VBoxDispMp.h"
 
 #include <iprt/thread.h>
 #include <iprt/err.h>
-
-#include "VBoxDispD3DCmn.h"
 
 #ifdef VBOXWDDM_TEST_UHGSMI
 #include "VBoxDispProfile.h"
