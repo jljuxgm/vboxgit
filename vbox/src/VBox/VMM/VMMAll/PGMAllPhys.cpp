@@ -1,10 +1,10 @@
-/* $Id: PGMAllPhys.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 39294 2011-11-14 11:45:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -2386,7 +2386,7 @@ static int pgmPhysWriteHandler(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void co
                                              GCPhys, pPage, rc), rc);
             if (RT_LIKELY(cbRange == cbWrite))
             {
-                if (pvBuf)
+                if (pvDst)
                     pgmPhysReleaseInternalPageMappingLock(pVM, &PgMpLck);
                 return VINF_SUCCESS;
             }
@@ -2403,7 +2403,7 @@ static int pgmPhysWriteHandler(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void co
     }
     /*
      * A virtual handler without any interfering physical handlers.
-     * Hopefully it'll convert the whole write.
+     * Hopefully it'll cover the whole write.
      */
     else if (!PGM_PAGE_HAS_ACTIVE_PHYSICAL_HANDLERS(pPage))
     {
@@ -2449,8 +2449,7 @@ static int pgmPhysWriteHandler(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void co
                                              GCPhys, pPage, rc), rc);
             if (RT_LIKELY(cbRange == cbWrite))
             {
-                if (pvBuf)
-                    pgmPhysReleaseInternalPageMappingLock(pVM, &PgMpLck);
+                pgmPhysReleaseInternalPageMappingLock(pVM, &PgMpLck);
                 return VINF_SUCCESS;
             }
 
