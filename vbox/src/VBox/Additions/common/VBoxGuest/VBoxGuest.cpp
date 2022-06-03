@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 40194 2012-02-21 12:43:55Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 40195 2012-02-21 12:48:41Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -711,7 +711,7 @@ int VBoxGuestInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase,
     RTListInit(&pDevExt->FreeList);
 #ifdef
 #ifdef VBOX_WITH_VRDP_SESSION_HANDLING
-    pDevExt->fVRDPEnabled = FALSE;
+    pDevExt->fVRDPEnabled = false;
 #endif
     pDevExt->f32PendingEvents = 0;
     pDevExt->u32MousePosChangedSeq = 0;

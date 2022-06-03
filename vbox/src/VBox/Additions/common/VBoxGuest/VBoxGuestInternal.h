@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 39515 2011-12-02 13:41:07Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 40195 2012-02-21 12:48:41Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -112,7 +112,6 @@ typedef struct VBOXGUESTDEVEXT
     uint32_t                    fFixedEvents;
     /** The memory object reserving space for the guest mappings. */
     RTR0MEMOBJ                  hGuestMappings;
-
     /** Spinlock protecting the signaling and resetting of the wait-for-event
      * semaphores as well as the event acking in the ISR. */
     RTSPINLOCK                  EventSpinlock;
@@ -130,7 +129,7 @@ typedef struct VBOXGUESTDEVEXT
      * The entire list is evaluated upon the arrival of an HGCM event, unlike
      * the other lists which are only evaluated till the first thread has
      * been woken up. */
-    RTLISTANCHOR               HGCMWaitList;
+    RTLISTANCHOR                HGCMWaitList;
 #endif
 #ifdef VBOXGUEST_USE_DEFERRED_WAKE_UP
     /** List of wait-for-event entries that needs waking up
@@ -151,7 +150,7 @@ typedef struct VBOXGUESTDEVEXT
     /** Spinlock various items in the VBOXGUESTSESSION. */
     RTSPINLOCK                  SessionSpinlock;
 #ifdef VBOX_WITH_VRDP_SESSION_HANDLING
-    BOOL                        fVRDPEnabled;
+    bool                        fVRDPEnabled;
 #endif
     /** Memory balloon information for RTR0MemObjAllocPhysNC(). */
     VBOXGUESTMEMBALLOON         MemBalloon;
