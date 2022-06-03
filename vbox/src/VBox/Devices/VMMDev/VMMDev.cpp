@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 37381 2011-06-08 14:47:58Z vboxsync $ */
+/* $Id: VMMDev.cpp 37384 2011-06-08 15:09:14Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1486,9 +1486,11 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             {
                 VMMDevVideoSetVisibleRegion *ptr = (VMMDevVideoSetVisibleRegion *)pRequestHeader;
 
-                if (pRequestHeader->size != sizeof(VMMDevVideoSetVisibleRegion) + (uint64_t)ptr->cRect * sizeof(RTRECT) - sizeof(RTRECT))
+                if (   ptr->cRects > _1M /* restrict to sane range */
+                    || pRequestHeader->size != sizeof(VMMDevVideoSetVisibleRegion) + ptr->cRect * sizeof(RTRECT) - sizeof(RTRECT))
                 {
-                    Log(("VMMDevReq_VideoSetVisibleRegion request size too small!!!\n"));
+                    Log(("VMMDevReq_VideoSetVisibleRegion: cRects=%#x doesn't match size=%#x or is out of bounds\n",
+                         ptr->cRects, pRequestHeader->size));
                     pRequestHeader->rc = VERR_INVALID_PARAMETER;
                 }
                 else
