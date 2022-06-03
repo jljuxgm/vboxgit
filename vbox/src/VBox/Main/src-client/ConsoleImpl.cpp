@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 36439 2011-03-25 16:19:12Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 36481 2011-03-31 14:11:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7671,6 +7671,14 @@ void Console::processRemoteUSBDevices(uint32_t u32ClientId, VRDEUSBDEVICEDESC *p
      */
     while (cbDevList >= 2 && e->oNext)
     {
+        /* Sanitize incoming strings in case they aren't valid UTF-8. */
+        if (e->oManufacturer)
+            RTStrPurgeEncoding((char *)e + e->oManufacturer);
+        if (e->oProduct)
+            RTStrPurgeEncoding((char *)e + e->oProduct);
+        if (e->oSerialNumber)
+            RTStrPurgeEncoding((char *)e + e->oSerialNumber);
+
         LogFlowThisFunc(("vendor %04X, product %04X, name = %s\n",
                           e->idVendor, e->idProduct,
                           e->oProduct? (char *)e + e->oProduct: ""));
