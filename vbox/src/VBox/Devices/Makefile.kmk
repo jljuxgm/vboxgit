@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 41636 2012-06-09 12:56:51Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -252,6 +252,10 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   VBoxDD_DEFS           += VBOX_WITH_VDMA
   VBoxDD_SOURCES        += \
  	Graphics/DevVGA_VDMA.cpp
+ endif
+ 
+ ifdef VBOX_VDMA_WITH_WATCHDOG
+  VBoxDD_DEFS           += VBOX_VDMA_WITH_WATCHDOG
  endif
 
  ifdef VBOX_WITH_PXE_ROM
@@ -828,9 +832,11 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   ifdef VBOX_WITH_CRHGSMI
    VBoxDDGC_DEFS        += VBOX_WITH_CRHGSMI
   endif
-
   ifdef VBOXWDDM_WITH_VBVA
    VBoxDDGC_DEFS        += VBOXWDDM_WITH_VBVA
+  endif
+  ifdef VBOX_VDMA_WITH_WATCHDOG
+   VBoxDDGC_DEFS        += VBOX_VDMA_WITH_WATCHDOG
   endif
 
   ifdef VBOX_WITH_VUSB
@@ -975,6 +981,9 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  endif
  ifdef VBOXWDDM_WITH_VBVA
   VBoxDDR0_DEFS         += VBOXWDDM_WITH_VBVA
+ endif
+ ifdef VBOX_VDMA_WITH_WATCHDOG
+  VBoxDDR0_DEFS        += VBOX_VDMA_WITH_WATCHDOG
  endif
 
  ifdef VBOX_WITH_VUSB

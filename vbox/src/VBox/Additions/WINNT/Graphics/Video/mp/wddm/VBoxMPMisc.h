@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 41379 2012-05-21 19:19:55Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 41636 2012-06-09 12:56:51Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -198,5 +198,15 @@ NTSTATUS VBoxWddmVrInit();
 void VBoxWddmVrTerm();
 
 NTSTATUS vboxWddmDrvCfgInit(PUNICODE_STRING pRegStr);
+
+#ifdef VBOX_VDMA_WITH_WATCHDOG
+NTSTATUS vboxWddmWdInit(PVBOXMP_DEVEXT pDevExt);
+NTSTATUS vboxWddmWdTerm(PVBOXMP_DEVEXT pDevExt);
+#endif
+
+NTSTATUS VBoxWddmSlEnableVSyncNotification(PVBOXMP_DEVEXT pDevExt, BOOLEAN fEnable);
+NTSTATUS VBoxWddmSlGetScanLine(PVBOXMP_DEVEXT pDevExt, DXGKARG_GETSCANLINE *pSl);
+NTSTATUS VBoxWddmSlInit(PVBOXMP_DEVEXT pDevExt);
+NTSTATUS VBoxWddmSlTerm(PVBOXMP_DEVEXT pDevExt);
 
 #endif /* #ifndef ___VBoxMPMisc_h__ */

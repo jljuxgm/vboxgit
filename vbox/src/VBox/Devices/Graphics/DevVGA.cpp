@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 41533 2012-06-01 10:01:22Z vboxsync $ */
+/* $Id: DevVGA.cpp 41636 2012-06-09 12:56:51Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2871,7 +2871,12 @@ static DECLCALLBACK(int) vgaR3IOPortHGSMIWrite(PPDMDEVINS pDevIns, void *pvUser,
                 if(u32 == HGSMIOFFSET_VOID)
                 {
                     PDMDevHlpPCISetIrq(pDevIns, 0, PDM_IRQ_LEVEL_LOW);
-                    HGSMIClearHostGuestFlags(s->pHGSMI, HGSMIHOSTFLAGS_IRQ);
+                    HGSMIClearHostGuestFlags(s->pHGSMI, HGSMIHOSTFLAGS_IRQ
+#ifdef VBOX_VDMA_WITH_WATCHDOG
+                            | HGSMIHOSTFLAGS_WATCHDOG
+#endif
+                            | HGSMIHOSTFLAGS_VSYNC
+                            );
                 }
                 else
 #endif
@@ -5255,6 +5260,11 @@ static DECLCALLBACK(void) vgaTimerRefresh(PPDMDEVINS pDevIns, PTMTIMER pTimer, v
 {
     PVGASTATE pThis = (PVGASTATE)pvUser;
     NOREF(pDevIns);
+
+    if (pThis->fScanLineCfg & VBVASCANLINECFG_ENABLE_VSYNC_IRQ)
+    {
+        VBVARaiseIrq(pThis, HGSMIHOSTFLAGS_VSYNC);
+    }
 
     if (pThis->pDrv)
         pThis->pDrv->pfnRefresh(pThis->pDrv);
