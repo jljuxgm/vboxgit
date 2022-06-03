@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 40257 2012-02-27 09:25:12Z vboxsync $ */
+/* $Id: MediumImpl.cpp 40259 2012-02-27 09:52:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5668,7 +5668,14 @@ HRESULT Medium::queryInfo(bool fSetImageId, bool fSetParentId)
             rc = aRC;
         }
 
-        VDDestroy(hdd);
+        vrc = VDDestroy(hdd);
+        if (RT_FAILURE(vrc))
+        {
+            lastAccessError = Utf8StrFmt(tr("Could not update and close the medium '%s'%s"),
+                                         location.c_str(), vdError(vrc).c_str());
+            success = false;
+            throw S_OK;
+        }
     }
     catch (HRESULT aRC)
     {
