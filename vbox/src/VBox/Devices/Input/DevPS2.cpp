@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 38377 2011-08-09 12:01:37Z vboxsync $ */
+/* $Id: DevPS2.cpp 38383 2011-08-09 15:21:46Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1074,7 +1074,7 @@ static int kbd_write_data(void *opaque, uint32_t addr, uint32_t val)
         kbd_update_irq(s);
         break;
     case KBD_CCMD_WRITE_OBUF:
-        kbd_queue(s, val, 0);
+        kbc_dbb_out(s, val);
         break;
     case KBD_CCMD_WRITE_AUX_OBUF:
         kbd_queue(s, val, 1);
