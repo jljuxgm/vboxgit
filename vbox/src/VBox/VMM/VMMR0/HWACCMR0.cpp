@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 40227 2012-02-23 11:15:37Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 41312 2012-05-15 13:43:43Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -864,10 +864,6 @@ static int hmR0EnableCpu(PVM pVM, RTCPUID idCpu)
     Assert(!g_HvmR0.fGlobalInit || ASMAtomicReadBool(&pCpu->fInUse) == false);
 
     pCpu->idCpu         = idCpu;
-
-    /* Make sure we start with a clean TLB. */
-    pCpu->fFlushTLB     = true;
-
     pCpu->uCurrentASID  = 0;    /* we'll aways increment this the first time (host uses ASID 0) */
     pCpu->cTLBFlushes   = 0;
 
