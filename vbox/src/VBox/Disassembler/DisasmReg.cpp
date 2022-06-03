@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 41736 2012-06-15 00:39:37Z vboxsync $ */
+/* $Id: DisasmReg.cpp 41740 2012-06-15 01:41:24Z vboxsync $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -202,7 +202,7 @@ static const unsigned g_aRegHidSegIndex[] =
 //*****************************************************************************
 DISDECL(int) DISGetParamSize(PDISCPUSTATE pCpu, PDISOPPARAM pParam)
 {
-    int subtype = OP_PARM_VSUBTYPE(pParam->param);
+    unsigned subtype = OP_PARM_VSUBTYPE(pParam->fParam);
 
     if (subtype == OP_PARM_v)
     {
@@ -223,7 +223,7 @@ DISDECL(int) DISGetParamSize(PDISCPUSTATE pCpu, PDISOPPARAM pParam)
         }
     }
 
-    switch(subtype)
+    switch (subtype)
     {
     case OP_PARM_b:
         return 1;
