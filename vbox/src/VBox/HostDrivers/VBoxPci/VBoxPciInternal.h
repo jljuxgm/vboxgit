@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 36460 2011-03-29 12:52:21Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 36484 2011-03-31 16:09:17Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -32,6 +32,7 @@
 #endif
 
 #ifdef VBOX_WITH_IOMMU
+#include <linux/errno.h>
 #include <linux/iommu.h>
 #endif
 
