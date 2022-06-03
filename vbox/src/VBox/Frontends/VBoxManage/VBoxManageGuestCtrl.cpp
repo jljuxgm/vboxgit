@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 36726 2011-04-19 12:35:37Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 36742 2011-04-20 09:54:21Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1320,9 +1320,12 @@ static int handleCtrlCopyTo(ComPtr<IGuest> guest, HandlerArg *pArg)
                 break;
             uCurObject++;
         }
-        Assert(cTotalObjects == uCurObject - 1);
 
-        if (RT_SUCCESS(vrc) && fVerbose)
+        Assert(cTotalObjects >= uCurObject - 1);
+        if (cTotalObjects != uCurObject - 1)
+            RTPrintf("Warning: %u elements instead of %ld were copied!\n",
+                     uCurObject - 1, cTotalObjects);
+        else if (RT_SUCCESS(vrc) && fVerbose)
             RTPrintf("Copy operation successful!\n");
     }
 
