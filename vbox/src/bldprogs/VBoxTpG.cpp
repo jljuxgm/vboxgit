@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40857 2012-04-10 18:52:33Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40860 2012-04-10 23:46:03Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -445,7 +445,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40857 2012-04-10 18:52:33Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40860 2012-04-10 23:46:03Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -725,6 +725,9 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
     /*
      * Emit code for the stub functions.
      */
+    bool const fWin64   = g_cBits == 64 && (!strcmp(g_pszAssemblerFmtVal, "win64") || !strcmp(g_pszAssemblerFmtVal, "pe64"));
+    bool const fMachO64 = g_cBits == 64 && !strcmp(g_pszAssemblerFmtVal, "macho64");
+    bool const fMachO32 = g_cBits == 32 && !strcmp(g_pszAssemblerFmtVal, "macho32");
     ScmStreamPrintf(pStrm,
                     "\n"
                     ";\n"
@@ -734,6 +737,12 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                     "extern %sNAME(%s)\n",
                     g_fProbeFnImported ? "IMP" : "",
                     g_pszProbeFnName);
+    if (fMachO64 && g_fProbeFnImported)
+        ScmStreamPrintf(pStrm,
+                        "g_pfnVtgProbeFn:\n"
+                        "   dq NAME(%s)\n",
+                        g_pszProbeFnName);
+
     RTListForEach(&g_ProviderHead, pProvider, VTGPROVIDER, ListEntry)
     {
         RTListForEach(&pProvider->ProbeHead, pProbe, VTGPROBE, ListEntry)
@@ -748,9 +757,6 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
             }
             ScmStreamPrintf(pStrm,
                             ");\n");
-
-            bool const fWin64   = g_cBits == 64 && (!strcmp(g_pszAssemblerFmtVal, "win64") || !strcmp(g_pszAssemblerFmtVal, "pe64"));
-            bool const fMachO32 = g_cBits == 32 && !strcmp(g_pszAssemblerFmtVal, "macho32");
 
             /*
              * Check if the probe in question is enabled.
@@ -769,49 +775,6 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                                 "        test    byte [rdi+3], 0x80 ; fEnabled == true?\n"
                                 "        jz      .return            ; jump on false\n");
 
-#if 0
-            /*
-             * Shuffle the arguments around, replacing the location pointer with the probe ID.
-             */
-            if (fMachO32)
-            {
-                /* Need to recreate the stack frame entirely here as the probe
-                   function differs by taking all uint64_t arguments instead
-                   of uintptr_t.  Understandable, but real PITA. */
-                ScmStreamPrintf(pStrm, "int3\n");
-            }
-            else if (g_cBits == 32)
-                /* Assumes the size of the arguments are no larger than a
-                   pointer.  This is asserted in the header. */
-                ScmStreamPrintf(pStrm, g_fProbeFnImported ?
-                                "        mov     edx, [eax + 4]     ; idProbe\n"
-                                "        mov     ecx, IMP2(%s)\n"
-                                "        mov     [esp + 4], edx     ; Replace pVTGProbeLoc with idProbe.\n"
-                                "        jmp     ecx\n"
-                                :
-                                "        mov     edx, [eax + 4]     ; idProbe\n"
-                                "        mov     [esp + 4], edx     ; Replace pVTGProbeLoc with idProbe.\n"
-                                "        jmp     NAME(%s)\n"
-                                , g_pszProbeFnName);
-            else if (fWin64)
-                ScmStreamPrintf(pStrm, g_fProbeFnImported ?
-                                "        mov     rax, IMP2(%s)\n"
-                                "        mov     ecx, [rcx + 4]     ; idProbe replaces pVTGProbeLoc.\n"
-                                "        jmp     rax\n"
-                                :
-                                "        mov     ecx, [rcx + 4]     ; idProbe replaces pVTGProbeLoc.\n"
-                                "        jmp     NAME(%s)\n"
-                                , g_pszProbeFnName);
-            else
-                ScmStreamPrintf(pStrm, g_fProbeFnImported ?
-                                "        lea     rax, [IMP2(%s)]\n" //??? macho64?
-                                "        mov     edi, [rdi + 4]     ; idProbe replaces pVTGProbeLoc.\n"
-                                "        jmp     rax\n"
-                                :
-                                "        mov     edi, [rdi + 4]     ; idProbe replaces pVTGProbeLoc.\n"
-                                "        jmp     NAME(%s)\n"
-                                , g_pszProbeFnName);
-#else
             /*
              * Jump to the fire-probe function.
              */
@@ -829,6 +792,9 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                                 :
                                 "        jmp     NAME(%s)\n"
                                 , g_pszProbeFnName);
+            else if (fMachO64 && g_fProbeFnImported)
+                ScmStreamPrintf(pStrm,
+                                "        jmp     [g_pfnVtgProbeFn wrt rip]\n");
             else
                 ScmStreamPrintf(pStrm, g_fProbeFnImported ?
                                 "        lea     rax, [IMP2(%s)]\n" //??? macho64?
@@ -836,7 +802,6 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                                 :
                                 "        jmp     NAME(%s)\n"
                                 , g_pszProbeFnName);
-#endif
 
             ScmStreamPrintf(pStrm,
                             ".return:\n"
@@ -917,7 +882,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40857 2012-04-10 18:52:33Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40860 2012-04-10 23:46:03Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -2013,7 +1978,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40857 $";
+                static const char s_szRev[] = "$Revision: 40860 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
