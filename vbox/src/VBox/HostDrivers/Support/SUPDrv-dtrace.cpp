@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 40885 2012-04-12 00:11:25Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 40889 2012-04-12 05:44:28Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -55,7 +55,7 @@
 *******************************************************************************/
 /* Seems there is some return code difference here. Keep the return code and
    case it to whatever the host desires. */
-#ifdef RT_OS_DARWIN
+#if defined (RT_OS_DARWIN) && MAC_OS_X_VERSION_MIN_REQUIRED < 1070
 typedef void FNPOPS_ENABLE(void *, dtrace_id_t, void *);
 #else
 typedef int  FNPOPS_ENABLE(void *, dtrace_id_t, void *);
