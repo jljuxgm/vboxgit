@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 38750 2011-09-14 13:02:02Z vboxsync $ */
+/* $Id: VBoxControl.cpp 41443 2012-05-25 07:52:59Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1376,7 +1376,7 @@ static RTEXITCODE listSharedFolders(int argc, char **argv)
                     VBoxControlError("Error while getting the shared folder name for root node = %u, rc = %Rrc\n",
                                      paMappings[i].u32Root, rc);
             }
-            if (cMappings == 0)
+            if (!cMappings)
                 RTPrintf("No Shared Folders available.\n");
             VbglR3SharedFolderFreeMappings(paMappings);
         }
