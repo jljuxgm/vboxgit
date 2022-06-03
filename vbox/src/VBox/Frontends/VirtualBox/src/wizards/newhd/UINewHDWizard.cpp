@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 37655 2011-06-28 09:50:04Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 37658 2011-06-28 11:07:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -294,6 +294,12 @@ void UINewHDWizardPageWelcome::retranslateUi()
 
     /* Append page text with common part: */
     m_pLabel->setText(m_pLabel->text() + QString("<p>%1</p>").arg(standardHelpText()));
+
+    /* Append page text for source virtual disk part: */
+    m_pLabel->setText(m_pLabel->text() + QString("Please select the virtual hard disk which you would like to "
+                                                 "copy if it is not already selected. You can either choose one "
+                                                 "from the list or use the folder icon beside the list to "
+                                                 "select a virtual hard disk file."));
 }
 
 void UINewHDWizardPageWelcome::initializePage()
