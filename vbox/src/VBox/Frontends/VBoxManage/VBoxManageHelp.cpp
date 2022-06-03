@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 41915 2012-06-26 09:18:41Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 41925 2012-06-27 14:04:09Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -419,14 +419,13 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            guestmemoryballoon <balloonsize in MB>]\n"
                      "                            gueststatisticsinterval <seconds>]\n"
                      "                            usbattach <uuid>|<address> |\n"
-                     "                            usbdetach <uuid>|<address> |\n");
-        RTStrmPrintf(pStrm,
-                     "                            vrde on|off |\n");
-        RTStrmPrintf(pStrm,
+                     "                            usbdetach <uuid>|<address> |\n"
+                     "                            clipboard disabled|hosttoguest|guesttohost|\n"
+                     "                                         bidirectional]\n"
+                     "                            vrde on|off |\n"
                      "                            vrdeport <port> |\n"
                      "                            vrdeproperty <name=[value]> |\n"
-                     "                            vrdevideochannelquality <percent>\n");
-        RTStrmPrintf(pStrm,
+                     "                            vrdevideochannelquality <percent>\n"
                      "                            setvideomodehint <xres> <yres> <bpp> [display] |\n"
                      "                            screenshotpng <file> [display] |\n"
                      "                            setcredentials <username> <password> <domain>\n"

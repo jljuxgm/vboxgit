@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 41528 2012-05-31 16:48:33Z vboxsync $ */
+/* $Id: ConsoleImpl.h 41925 2012-06-27 14:04:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -196,6 +196,7 @@ public:
     HRESULT onMediumChange(IMediumAttachment *aMediumAttachment, BOOL aForce);
     HRESULT onCPUChange(ULONG aCPU, BOOL aRemove);
     HRESULT onCPUExecutionCapChange(ULONG aExecutionCap);
+    HRESULT onClipboardModeChange(ClipboardMode_T aClipboardMode);
     HRESULT onVRDEServerChange(BOOL aRestart);
     HRESULT onUSBControllerChange();
     HRESULT onSharedFolderChange(BOOL aGlobal);
@@ -598,6 +599,8 @@ private:
     static DECLCALLBACK(int) changeNetworkAttachment(Console *pThis, PVM pVM, const char *pszDevice,
                                                      unsigned uInstance, unsigned uLun,
                                                      INetworkAdapter *aNetworkAdapter);
+
+    void changeClipboardMode(ClipboardMode_T aClipboardMode);
 
 #ifdef VBOX_WITH_USB
     HRESULT attachUSBDevice(IUSBDevice *aHostDevice, ULONG aMaskedIfs);

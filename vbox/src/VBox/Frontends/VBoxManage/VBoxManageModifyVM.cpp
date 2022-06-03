@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 41916 2012-06-26 09:58:05Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 41925 2012-06-27 14:04:09Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1953,26 +1953,23 @@ int handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_CLIPBOARD:
             {
+                ClipboardMode_T mode;
                 if (!strcmp(ValueUnion.psz, "disabled"))
-                {
-                    CHECK_ERROR(machine, COMSETTER(ClipboardMode)(ClipboardMode_Disabled));
-                }
+                    mode = ClipboardMode_Disabled;
                 else if (!strcmp(ValueUnion.psz, "hosttoguest"))
-                {
-                    CHECK_ERROR(machine, COMSETTER(ClipboardMode)(ClipboardMode_HostToGuest));
-                }
+                    mode = ClipboardMode_HostToGuest;
                 else if (!strcmp(ValueUnion.psz, "guesttohost"))
-                {
-                    CHECK_ERROR(machine, COMSETTER(ClipboardMode)(ClipboardMode_GuestToHost));
-                }
+                    mode = ClipboardMode_GuestToHost;
                 else if (!strcmp(ValueUnion.psz, "bidirectional"))
-                {
-                    CHECK_ERROR(machine, COMSETTER(ClipboardMode)(ClipboardMode_Bidirectional));
-                }
+                    mode = ClipboardMode_Bidirectional;
                 else
                 {
                     errorArgument("Invalid --clipboard argument '%s'", ValueUnion.psz);
                     rc = E_FAIL;
+                }
+                if (SUCCEEDED(rc))
+                {
+                    CHECK_ERROR(machine, COMSETTER(ClipboardMode)(mode));
                 }
                 break;
             }

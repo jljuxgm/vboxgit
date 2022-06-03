@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 41885 2012-06-22 12:55:10Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 41925 2012-06-27 14:04:09Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -161,6 +161,34 @@ int handleControlVM(HandlerArg *a)
             unsigned n = parseNum(a->argv[2], 100, "ExecutionCap");
 
             CHECK_ERROR_BREAK(sessionMachine, COMSETTER(CPUExecutionCap)(n));
+        }
+        else if (!strcmp(a->argv[1], "clipboard"))
+        {
+            if (a->argc <= 1 + 1)
+            {
+                errorArgument("Missing argument to '%s'. Expected clipboard mode.", a->argv[1]);
+                rc = E_FAIL;
+                break;
+            }
+
+            ClipboardMode_T mode;
+            if (!strcmp(a->argv[2], "disabled"))
+                mode = ClipboardMode_Disabled;
+            else if (!strcmp(a->argv[2], "hosttoguest"))
+                mode = ClipboardMode_HostToGuest;
+            else if (!strcmp(a->argv[2], "guesttohost"))
+                mode = ClipboardMode_GuestToHost;
+            else if (!strcmp(a->argv[2], "bidirectional"))
+                mode = ClipboardMode_Bidirectional;
+            else
+            {
+                errorArgument("Invalid '%s' argument '%s'.", a->argv[1], a->argv[2]);
+                rc = E_FAIL;
+            }
+            if (SUCCEEDED(rc))
+            {
+                CHECK_ERROR_BREAK(sessionMachine, COMSETTER(ClipboardMode)(mode));
+            }
         }
         else if (!strcmp(a->argv[1], "poweroff"))
         {
