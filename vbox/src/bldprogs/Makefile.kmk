@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 40549 2012-03-20 09:29:58Z vboxsync $
+# $Id: Makefile.kmk 40554 2012-03-20 18:07:34Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
 
 #
-# Copyright (C) 2006-2010 Oracle Corporation
+# Copyright (C) 2006-2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -40,10 +40,10 @@ if  !defined(VBOX_ONLY_ADDITIONS) \
  	scmdiff.cpp \
  	scmrw.cpp \
  	scmstream.cpp \
- 	scmsubversion.cpp 
+ 	scmsubversion.cpp
 
 
- #BLDPROGS += VBoxTpG
+ BLDPROGS += VBoxTpG
  VBoxTpG_TEMPLATE = VBoxAdvBldProg
  VBoxTpG_SOURCES = \
  	VBoxTpG.cpp \
