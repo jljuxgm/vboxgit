@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 41738 2012-06-15 01:25:47Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 41739 2012-06-15 01:31:29Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -737,14 +737,14 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
             /*
              * Little hack to make the code below not fail
              */
-            pCpu->param1.fUse  = DISUSE_IMMEDIATE8;
-            pCpu->param1.parval = 3;
+            pCpu->Param1.fUse  = DISUSE_IMMEDIATE8;
+            pCpu->Param1.parval = 3;
             /* fallthru */
         case OP_INT:
         {
-            Assert(pCpu->param1.fUse & DISUSE_IMMEDIATE8);
+            Assert(pCpu->Param1.fUse & DISUSE_IMMEDIATE8);
             Assert(!(PATMIsPatchGCAddr(pVM, PC)));
-            if (pCpu->param1.parval == 3)
+            if (pCpu->Param1.parval == 3)
             {
                 /* Int 3 replacement patch? */
                 if (PATMRCHandleInt3PatchTrap(pVM, pRegFrame) == VINF_SUCCESS)
@@ -753,7 +753,7 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
                     return trpmGCExitTrap(pVM, pVCpu, VINF_SUCCESS, pRegFrame);
                 }
             }
-            rc = TRPMForwardTrap(pVCpu, pRegFrame, (uint32_t)pCpu->param1.parval, pCpu->cbInstr, TRPM_TRAP_NO_ERRORCODE, TRPM_SOFTWARE_INT, 0xd);
+            rc = TRPMForwardTrap(pVCpu, pRegFrame, (uint32_t)pCpu->Param1.parval, pCpu->cbInstr, TRPM_TRAP_NO_ERRORCODE, TRPM_SOFTWARE_INT, 0xd);
             if (RT_SUCCESS(rc) && rc != VINF_EM_RAW_GUEST_TRAP)
                 return trpmGCExitTrap(pVM, pVCpu, VINF_SUCCESS, pRegFrame);
 
@@ -839,13 +839,13 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
             /*
              * Little hack to make the code below not fail
              */
-            pCpu->param1.fUse  = DISUSE_IMMEDIATE8;
-            pCpu->param1.parval = 3;
+            pCpu->Param1.fUse  = DISUSE_IMMEDIATE8;
+            pCpu->Param1.parval = 3;
             /* fall thru */
         case OP_INT:
         {
-            Assert(pCpu->param1.fUse & DISUSE_IMMEDIATE8);
-            rc = TRPMForwardTrap(pVCpu, pRegFrame, (uint32_t)pCpu->param1.parval, pCpu->cbInstr, TRPM_TRAP_NO_ERRORCODE, TRPM_SOFTWARE_INT, 0xd);
+            Assert(pCpu->Param1.fUse & DISUSE_IMMEDIATE8);
+            rc = TRPMForwardTrap(pVCpu, pRegFrame, (uint32_t)pCpu->Param1.parval, pCpu->cbInstr, TRPM_TRAP_NO_ERRORCODE, TRPM_SOFTWARE_INT, 0xd);
             if (RT_SUCCESS(rc) && rc != VINF_EM_RAW_GUEST_TRAP)
                 return trpmGCExitTrap(pVM, pVCpu, VINF_SUCCESS, pRegFrame);
 

@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41737 2012-06-15 01:01:49Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41739 2012-06-15 01:31:29Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3703,8 +3703,8 @@ ResumeExecution:
                     {
                         uint32_t intInfo2;
 
-                        LogFlow(("Realmode: INT %x\n", pDis->param1.parval & 0xff));
-                        intInfo2  = pDis->param1.parval & 0xff;
+                        LogFlow(("Realmode: INT %x\n", pDis->Param1.parval & 0xff));
+                        intInfo2  = pDis->Param1.parval & 0xff;
                         intInfo2 |= (1 << VMX_EXIT_INTERRUPTION_INFO_VALID_SHIFT);
                         intInfo2 |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_SW << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
 

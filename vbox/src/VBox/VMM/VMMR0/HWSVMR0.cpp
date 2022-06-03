@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41737 2012-06-15 01:01:49Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41739 2012-06-15 01:31:29Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2922,7 +2922,7 @@ static int hmR0svmInterpretInvlPg(PVMCPU pVCpu, PDISCPUSTATE pCpu, PCPUMCTXCORE 
     RTGCPTR     addr;
     NOREF(uASID);
 
-    int rc = DISQueryParamVal(pRegFrame, pCpu, &pCpu->param1, &param1, DISQPVWHICH_SRC);
+    int rc = DISQueryParamVal(pRegFrame, pCpu, &pCpu->Param1, &param1, DISQPVWHICH_SRC);
     if (RT_FAILURE(rc))
         return VERR_EM_INTERPRETER;
 
