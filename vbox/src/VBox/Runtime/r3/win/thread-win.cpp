@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 37310 2011-06-03 08:39:51Z vboxsync $ */
+/* $Id: thread-win.cpp 37733 2011-07-01 15:41:37Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -236,32 +236,6 @@ RTDECL(RTTHREAD) RTThreadSelf(void)
     PRTTHREADINT pThread = (PRTTHREADINT)TlsGetValue(g_dwSelfTLS);
     /** @todo import alien threads ? */
     return pThread;
-}
-
-
-RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
-{
-    return (RTNATIVETHREAD)GetCurrentThreadId();
-}
-
-
-RTR3DECL(int)   RTThreadSleep(RTMSINTERVAL cMillies)
-{
-    LogFlow(("RTThreadSleep: cMillies=%d\n", cMillies));
-    Sleep(cMillies);
-    LogFlow(("RTThreadSleep: returning %Rrc (cMillies=%d)\n", VINF_SUCCESS, cMillies));
-    return VINF_SUCCESS;
-}
-
-
-RTR3DECL(bool) RTThreadYield(void)
-{
-    uint64_t u64TS = ASMReadTSC();
-    Sleep(0);
-    u64TS = ASMReadTSC() - u64TS;
-    bool fRc = u64TS > 1500;
-    LogFlow(("RTThreadYield: returning %d (%llu ticks)\n", fRc, u64TS));
-    return fRc;
 }
 
 
