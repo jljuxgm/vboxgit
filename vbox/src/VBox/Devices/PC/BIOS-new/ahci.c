@@ -1,4 +1,4 @@
-/* $Id: ahci.c 39597 2011-12-13 17:03:01Z vboxsync $ */
+/* $Id: ahci.c 39598 2011-12-13 17:22:04Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -321,8 +321,8 @@ static void ahci_cmd_data(bio_dsk_t __far *bios_dsk, uint8_t cmd)
     prdt_idx = ahci->cur_prd;
 
     /* Set up the PRDT. */
-    ahci->aPrdt[prdt_idx].len       = ahci->edds.u.sg[prdt_idx].size - 1;
-    ahci->aPrdt[prdt_idx].phys_addr = ahci->edds.u.sg[prdt_idx].phys_addr;
+    ahci->aPrdt[prdt_idx].len       = ahci->edds.u.sg[0].size - 1;
+    ahci->aPrdt[prdt_idx].phys_addr = ahci->edds.u.sg[0].phys_addr;
     ++prdt_idx;
 
     if (bios_dsk->drqp.skip_a) {
