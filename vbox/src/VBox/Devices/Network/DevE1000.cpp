@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 37324 2011-06-03 16:28:03Z vboxsync $ */
+/* $Id: DevE1000.cpp 37627 2011-06-24 12:04:55Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2854,6 +2854,14 @@ static DECLCALLBACK(void) e1kLateIntTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer, v
 static DECLCALLBACK(void) e1kLinkUpTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
 {
     E1KSTATE *pState = (E1KSTATE *)pvUser;
+
+    /*
+     * This can happen if we set the link status to down when the Link up timer was
+     * already armed (shortly after e1kLoadDone() or when the cable was disconnected
+     * and connect+disconnect the cable very quick.
+     */
+    if (!pState->fCableConnected)
+        return;
 
     if (RT_LIKELY(e1kMutexAcquire(pState, VERR_SEM_BUSY, RT_SRC_POS) == VINF_SUCCESS))
     {
