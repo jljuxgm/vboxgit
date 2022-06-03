@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 40061 2012-02-10 14:02:45Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 40403 2012-03-08 16:14:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -121,6 +121,7 @@ int Guest::callbackAdd(const PVBOXGUESTCTRL_CALLBACK pCallback, uint32_t *puCont
 
     /* Create a new context ID and assign it. */
     uint32_t uNewContextID = 0;
+    uint32_t uTries = 0;
     for (;;)
     {
         /* Create a new context ID ... */
@@ -136,6 +137,9 @@ int Guest::callbackAdd(const PVBOXGUESTCTRL_CALLBACK pCallback, uint32_t *puCont
             rc = VINF_SUCCESS;
             break;
         }
+
+        if (++uTries == UINT32_MAX)
+            break; /* Don't try too hard. */
     }
 
     if (RT_SUCCESS(rc))
@@ -190,11 +194,17 @@ void Guest::callbackRemove(uint32_t uContextID)
     mCallbackMap.erase(uContextID);
 }
 
+/**
+ * Checks whether a callback with the given context ID
+ * exists or not.
+ * Does not do locking!
+ *
+ * @return  bool                True, if callback exists, false if not.
+ * @param   uContextID          Context ID to check.
+ */
 bool Guest::callbackExists(uint32_t uContextID)
 {
     AssertReturn(uContextID, false);
-
-    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     CallbackMapIter it = mCallbackMap.find(uContextID);
     return (it == mCallbackMap.end()) ? false : true;
