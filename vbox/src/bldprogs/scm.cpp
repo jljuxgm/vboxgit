@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 40534 2012-03-19 11:49:34Z vboxsync $ */
+/* $Id: scm.cpp 41966 2012-06-29 02:53:56Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1248,18 +1248,8 @@ static int scmProcessDirTreeRecursion(char *pszBuf, size_t cchDir, PRTDIRENTRY p
      */
     if (pSettingsStack->Base.fOnlySvnDirs)
     {
-        rc = RTPathAppend(pszBuf, RTPATH_MAX, ".svn");
-        if (RT_FAILURE(rc))
-        {
-            RTMsgError("RTPathAppend: %Rrc\n", rc);
-            return rc;
-        }
-        if (!RTDirExists(pszBuf))
+        if (!ScmSvnIsDirInWorkingCopy(pszBuf))
             return VINF_SUCCESS;
-
-        Assert(RTPATH_IS_SLASH(pszBuf[cchDir]));
-        pszBuf[cchDir]     = '\0';
-        pszBuf[cchDir - 1] = '.';
     }
 
     /*
@@ -1539,7 +1529,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40534 $";
+                static const char s_szRev[] = "$Revision: 41966 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
