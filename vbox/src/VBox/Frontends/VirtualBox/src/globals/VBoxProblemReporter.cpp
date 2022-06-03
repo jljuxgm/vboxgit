@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 37470 2011-06-15 14:43:55Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 37570 2011-06-21 10:31:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -912,6 +912,14 @@ void VBoxProblemReporter::cannotDeleteMachine(const CMachine &machine)
             Error,
             tr("Failed to remove the virtual machine <b>%1</b>.").arg(machine.GetName()),
             !machine.isOk() ? formatErrorInfo(machine) : formatErrorInfo(res));
+}
+
+void VBoxProblemReporter::cannotDeleteMachine(const CMachine &machine, const CProgress &progress)
+{
+    message(mainWindowShown(),
+            Error,
+            tr("Failed to remove the virtual machine <b>%1</b>.").arg(machine.GetName()),
+            formatErrorInfo(progress.GetErrorInfo()));
 }
 
 void VBoxProblemReporter::cannotDiscardSavedState (const CConsole &console)
