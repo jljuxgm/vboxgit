@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 38577 2011-08-31 09:24:09Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2159,8 +2159,10 @@ static void vmxR0SetupTLBEPT(PVM pVM, PVMCPU pVCpu)
         /* Force a TLB flush on VM entry. */
         pVCpu->hwaccm.s.fForceTLBFlush = true;
     }
-    else
-        Assert(!pCpu->fFlushTLB);
+    /* Disabled because this has triggered every time I have suspended my
+     * laptop with a VM running for the past three months or more.  */
+    // else
+    //     Assert(!pCpu->fFlushTLB);
 
     /* Check for tlb shootdown flushes. */
     if (VMCPU_FF_TESTANDCLEAR(pVCpu, VMCPU_FF_TLB_FLUSH))
