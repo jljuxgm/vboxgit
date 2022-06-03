@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 36312 2011-03-18 12:59:15Z vboxsync $ */
+/* $Id: sg.cpp 38539 2011-08-25 22:06:11Z vboxsync $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
@@ -107,6 +107,18 @@ RTDECL(void) RTSgBufClone(PRTSGBUF pSgBufTo, PCRTSGBUF pSgBufFrom)
     pSgBufTo->idxSeg    = pSgBufFrom->idxSeg;
     pSgBufTo->pvSegCur  = pSgBufFrom->pvSegCur;
     pSgBufTo->cbSegLeft = pSgBufFrom->cbSegLeft;
+}
+
+
+RTDECL(void *) RTSgBufGetNextSegment(PRTSGBUF pSgBuf, size_t *pcbSeg)
+{
+    AssertPtrReturn(pSgBuf, NULL);
+    AssertPtrReturn(pcbSeg, NULL);
+
+    if (!*pcbSeg)
+        *pcbSeg = pSgBuf->cbSegLeft;
+
+    return sgBufGet(pSgBuf, pcbSeg);
 }
 
 
