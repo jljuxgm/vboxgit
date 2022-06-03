@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: VMInternal.h 38841 2011-09-23 11:39:15Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -330,7 +330,7 @@ typedef struct VMINTUSERPERVMCPU
     /** Wait/Idle indicator. */
     bool volatile                   fWait;
     /** Align the next bit. */
-    bool                            afAlignment[7];
+    bool                            afAlignment[HC_ARCH_BITS == 32 ? 3 : 7];
 
     /** @name Generic Halt data
      * @{
