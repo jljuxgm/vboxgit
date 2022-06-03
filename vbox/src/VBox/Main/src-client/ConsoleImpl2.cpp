@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 39477 2011-11-30 16:02:17Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 40056 2012-02-09 19:15:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -4146,7 +4146,17 @@ int Console::configNetwork(const char *pszDevice,
                 InsertConfigInteger(pCfg, "IgnoreConnectFailure", (uint64_t)fIgnoreConnectFailure);
                 InsertConfigString(pCfg, "IfPolicyPromisc", pszPromiscuousGuestPolicy);
                 char szNetwork[INTNET_MAX_NETWORK_NAME];
+
+#if defined(RT_OS_SOLARIS)                /* @todo Shouldn't darwin also do the same? */
+                /*
+                 * 'pszTrunk' contains just the interface name required in ring-0, while 'pszBridgedIfName' contains
+                 * interface name + optional description. We must not pass any description to the VM as it can differ
+                 * for the same interface name, eg: "nge0 - ethernet" (GUI) vs "nge0" (VBoxManage).
+                 */
+                RTStrPrintf(szNetwork, sizeof(szNetwork), "HostInterfaceNetworking-%s", pszTrunk);
+#else
                 RTStrPrintf(szNetwork, sizeof(szNetwork), "HostInterfaceNetworking-%s", pszBridgedIfName);
+#endif
                 InsertConfigString(pCfg, "Network", szNetwork);
                 networkName = Bstr(szNetwork);
                 trunkName = Bstr(pszTrunk);
