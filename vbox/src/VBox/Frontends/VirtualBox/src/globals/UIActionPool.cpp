@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 39932 2012-02-01 13:33:09Z vboxsync $ */
+/* $Id: UIActionPool.cpp 39950 2012-02-02 06:22:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -330,8 +330,8 @@ protected:
 
     void retranslateUi()
     {
-        setText(vboxGlobal().insertKeyToActionText(QApplication::translate("UIMessageCenter", "Network Access Manager..."), gMS->shortcut(UIMachineShortcuts::NetworkAccessManager)));
-        setStatusTip(QApplication::translate("UIMessageCenter", "Show Network Access Manager"));
+        setText(vboxGlobal().insertKeyToActionText(QApplication::translate("UIMessageCenter", "Network Operations Manager..."), gMS->shortcut(UIMachineShortcuts::NetworkAccessManager)));
+        setStatusTip(QApplication::translate("UIMessageCenter", "Show Network Operations Manager"));
     }
 };
 
