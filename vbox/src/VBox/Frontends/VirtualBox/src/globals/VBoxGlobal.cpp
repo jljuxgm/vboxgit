@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 40864 2012-04-11 08:36:28Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 41017 2012-04-20 21:56:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4776,7 +4776,14 @@ void VBoxGlobal::init()
     HRESULT rc = COMBase::InitializeCOM(true);
     if (FAILED (rc))
     {
-        msgCenter().cannotInitCOM (rc);
+        if (rc == NS_ERROR_FILE_ACCESS_DENIED)
+        {
+            char szHome[RTPATH_MAX] = "";
+            com::GetVBoxUserHomeDirectory(szHome, sizeof(szHome));
+            msgCenter().cannotInitUserHome(QString(szHome));
+        }
+        else
+            msgCenter().cannotInitCOM(rc);
         return;
     }
 

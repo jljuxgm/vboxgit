@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 35640 2011-01-19 20:44:02Z vboxsync $ */
+/* $Id: initterm.cpp 41017 2012-04-20 21:56:33Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -342,6 +342,8 @@ HRESULT Initialize(bool fGui)
     char szXptiDat[RTPATH_MAX];
 
     int vrc = GetVBoxUserHomeDirectory(szCompReg, sizeof(szCompReg));
+    if (vrc == VERR_ACCESS_DENIED)
+        return NS_ERROR_FILE_ACCESS_DENIED;
     AssertRCReturn(vrc, NS_ERROR_FAILURE);
     strcpy(szXptiDat, szCompReg);
 

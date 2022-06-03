@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 40890 2012-04-12 10:30:54Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 41017 2012-04-20 21:56:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -598,6 +598,17 @@ void UIMessageCenter::cannotInitCOM(HRESULT rc)
             "or failed to start.</p>"
             "<p>The application will now terminate.</p>"),
         formatErrorInfo(COMErrorInfo(), rc));
+}
+
+void UIMessageCenter::cannotInitUserHome(const QString &strUserHome)
+{
+    message(0, Critical,
+        tr("<p>Failed to initialize COM because the VirtualBox global "
+           "configuration directory <b><nobr>%1</nobr></b> is not accessible. "
+           "Please check the permissions of this directory and of its parent "
+           "directory.</p>"
+           "<p>The application will now terminate.</p>").arg(strUserHome),
+        formatErrorInfo(COMErrorInfo()));
 }
 
 void UIMessageCenter::cannotCreateVirtualBox(const CVirtualBox &vbox)
