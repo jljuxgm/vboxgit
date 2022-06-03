@@ -1,4 +1,4 @@
-/* $Id: filteraudio.c 36327 2011-03-21 15:49:12Z vboxsync $ */
+/* $Id: filteraudio.c 39104 2011-10-25 06:36:29Z vboxsync $ */
 /** @file
  * VBox audio devices: filter driver, which sits between the host audio driver
  * and the virtual audio device and intercept all host driver operations.
@@ -293,8 +293,6 @@ static void caReinitOutput(HWVoiceOut *hw);
 
 static int fltInitOutput(filterVoiceOut *pVoice)
 {
-    uint32_t uSize = 0; /* temporary size of properties */
-    uint32_t uFlag = 0; /* for setting flags */
     uint32_t cFrames; /* default frame count */
     uint32_t cSamples; /* samples count */
 
