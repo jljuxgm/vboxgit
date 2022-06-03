@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 36103 2011-02-28 15:04:35Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 36206 2011-03-08 16:32:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1575,7 +1575,7 @@ HRESULT Guest::executeProcessInternal(IN_BSTR aCommand, ULONG aFlags,
 
             char *pszArgs = NULL;
             if (uNumArgs > 0)
-                vrc = RTGetOptArgvToString(&pszArgs, papszArgv, 0);
+                vrc = RTGetOptArgvToString(&pszArgs, papszArgv, RTGETOPTARGV_CNV_QUOTE_MS_CRT);
             if (RT_SUCCESS(vrc))
             {
                 uint32_t cbArgs = pszArgs ? strlen(pszArgs) + 1 : 0; /* Include terminating zero. */
