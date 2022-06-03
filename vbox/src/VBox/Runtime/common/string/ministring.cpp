@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 35567 2011-01-14 14:16:45Z vboxsync $ */
+/* $Id: ministring.cpp 36501 2011-04-01 13:40:21Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -329,5 +329,72 @@ int MiniString::toInt(uint32_t &i) const
     if (!m_psz)
         return VERR_NO_DIGITS;
     return RTStrToUInt32Ex(m_psz, NULL, 0, &i);
+}
+
+iprt::list<iprt::MiniString, iprt::MiniString*> MiniString::split(const iprt::MiniString &strSep, SplitMode mode /* = RemoveEmptyParts */)
+{
+    iprt::list<iprt::MiniString> res;
+    if (!m_psz)
+        return res;
+    if (strSep.isEmpty())
+    {
+        res.append(iprt::MiniString(m_psz));
+        return res;
+    }
+
+    size_t cch = m_cch;
+    char *pszTmp = m_psz;
+    while(cch > 0)
+    {
+        char *pszNext = strstr(pszTmp, strSep.c_str());
+        if (!pszNext)
+            break;
+        size_t chNext = pszNext - pszTmp;
+        if (   chNext > 0
+            || mode == KeepEmptyParts)
+            res.append(iprt::MiniString(pszTmp, chNext));
+        pszTmp += chNext + strSep.length();
+        cch    -= chNext + strSep.length();
+    }
+    /* Some characters left at the end? */
+    if (cch > 0)
+        res.append(iprt::MiniString(pszTmp, cch));
+
+    return res;
+}
+
+/* static */
+iprt::MiniString MiniString::join(const iprt::list<iprt::MiniString, iprt::MiniString*> &list, const iprt::MiniString &strSep /* = "" */)
+{
+    MiniString res;
+    if (list.size() > 1)
+    {
+        for(size_t i = 0; i < list.size() - 1; ++i)
+            res += list.at(i) + strSep;
+        res += list.last();
+    }
+
+    return res;
+}
+
+const iprt::MiniString operator+(const iprt::MiniString &one, const iprt::MiniString &other)
+{
+    iprt::MiniString res(one);
+
+    return res += other;
+}
+
+const iprt::MiniString operator+(const iprt::MiniString &one, const char *pcszOther)
+{
+    iprt::MiniString res(one);
+
+    return res += pcszOther;
+}
+
+const iprt::MiniString operator+(const char *pcszOne, const iprt::MiniString &other)
+{
+    iprt::MiniString res(pcszOne);
+
+    return res += other;
 }
 
