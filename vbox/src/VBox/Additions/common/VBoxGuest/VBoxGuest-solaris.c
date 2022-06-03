@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 34521 2010-11-30 14:35:40Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 36347 2011-03-22 15:04:08Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -188,7 +188,9 @@ int _init(void)
         static const char * const s_apszGroups[] = VBOX_LOGGROUP_NAMES;
         rc = RTLogCreate(&pRelLogger, 0 /* fFlags */, "all",
                          "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups,
-                         RTLOGDEST_STDOUT | RTLOGDEST_DEBUGGER, NULL);
+                         RTLOGDEST_STDOUT | RTLOGDEST_DEBUGGER,
+                         NULL /* pfnBeginEnd */, 0 /* cHistory */, 0 /* cbHistoryFileMax */, 0 /* uHistoryTimeMax */,
+                         NULL);
         if (RT_SUCCESS(rc))
             RTLogRelSetDefaultInstance(pRelLogger);
         else

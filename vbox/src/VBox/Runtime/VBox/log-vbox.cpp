@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 36344 2011-03-22 14:29:37Z vboxsync $ */
+/* $Id: log-vbox.cpp 36347 2011-03-22 15:04:08Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -413,8 +413,9 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
 # else  /* IN_GUEST */
     /* The user destination is backdoor logging. */
     rc = RTLogCreate(&pLogger, 0, NULL, "VBOX_LOG",
-                     RT_ELEMENTS(g_apszGroups), &g_apszGroups[0],
-                     RTLOGDEST_USER, "VBox.log");
+                     RT_ELEMENTS(g_apszGroups), &g_apszGroups[0], RTLOGDEST_USER,
+                     NULL /* pfnBeginEnd */, 0 /* cHistory */, 0 /* cbHistoryFileMax */, 0 /* uHistoryTimeMax */,
+                      "VBox.log");
 # endif /* IN_GUEST */
 
 #else /* IN_RING0 */
