@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 40176 2012-02-19 19:27:34Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 40182 2012-02-20 15:22:46Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -159,6 +159,26 @@ IEMOPSHIFTDBLSIZES g_iemAImpl_shrd;
 #define iemAImpl_div_u8     ((PFNIEMAIMPLMULDIVU8)0)
 #define iemAImpl_imul_u8    ((PFNIEMAIMPLMULDIVU8)0)
 #define iemAImpl_mul_u8     ((PFNIEMAIMPLMULDIVU8)0)
+
+#define iemAImpl_fpu_r64_to_r80         NULL
+#define iemAImpl_fadd_r80_by_r64        NULL
+#define iemAImpl_fmul_r80_by_r64        NULL
+#define iemAImpl_fcom_r80_by_r64        NULL
+#define iemAImpl_fsub_r80_by_r64        NULL
+#define iemAImpl_fsubr_r80_by_r64       NULL
+#define iemAImpl_fdiv_r80_by_r64        NULL
+#define iemAImpl_fdivr_r80_by_r64       NULL
+
+#define iemAImpl_fadd_r80_by_r80        NULL
+#define iemAImpl_fmul_r80_by_r80        NULL
+#define iemAImpl_fcom_r80_by_r80        NULL
+#define iemAImpl_fsub_r80_by_r80        NULL
+#define iemAImpl_fsubr_r80_by_r80       NULL
+#define iemAImpl_fdiv_r80_by_r80        NULL
+#define iemAImpl_fdivr_r80_by_r80       NULL
+
+#define iemCImpl_callf                  NULL
+#define iemCImpl_FarJmp                 NULL
 
 /** @}  */
 
@@ -442,27 +462,6 @@ IEMOPSHIFTDBLSIZES g_iemAImpl_shrd;
 #define IEM_MC_IF_TWO_FPUREGS_NOT_EMPTY_REF_R80(p0, i0, p1, i1)         if (g_fRandom) {
 #define IEM_MC_ELSE()                                                   } else {
 #define IEM_MC_ENDIF()                                                  } do {} while (0)
-
-
-#define iemAImpl_fpu_r64_to_r80         NULL
-#define iemAImpl_fadd_r80_by_r64        NULL
-#define iemAImpl_fmul_r80_by_r64        NULL
-#define iemAImpl_fcom_r80_by_r64        NULL
-#define iemAImpl_fsub_r80_by_r64        NULL
-#define iemAImpl_fsubr_r80_by_r64       NULL
-#define iemAImpl_fdiv_r80_by_r64        NULL
-#define iemAImpl_fdivr_r80_by_r64       NULL
-
-#define iemAImpl_fadd_r80_by_r80        NULL
-#define iemAImpl_fmul_r80_by_r80        NULL
-#define iemAImpl_fcom_r80_by_r80        NULL
-#define iemAImpl_fsub_r80_by_r80        NULL
-#define iemAImpl_fsubr_r80_by_r80       NULL
-#define iemAImpl_fdiv_r80_by_r80        NULL
-#define iemAImpl_fdivr_r80_by_r80       NULL
-
-#define iemCImpl_callf                  NULL
-#define iemCImpl_FarJmp                 NULL
 
 /** @}  */
 
