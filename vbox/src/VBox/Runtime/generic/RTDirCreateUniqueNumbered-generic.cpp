@@ -1,4 +1,4 @@
-/* $Id: RTDirCreateUniqueNumbered-generic.cpp 36579 2011-04-06 13:45:19Z vboxsync $ */
+/* $Id: RTDirCreateUniqueNumbered-generic.cpp 36582 2011-04-06 14:02:03Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
@@ -63,7 +63,7 @@ RTDECL(int) RTDirCreateUniqueNumbered(char *pszPath, size_t cbSize, RTFMODE fMod
 
     /* How many tries? */
     size_t cMaxTries = 10;
-    for (size_t i = 0; i < (size_t)cchDigits - 1; ++i)
+    for (size_t a = 0; a < (size_t)cchDigits - 1; ++a)
         cMaxTries *= 10;
 
     /* Try cMaxTries - 1 counts to create a directory with the appended number. */
