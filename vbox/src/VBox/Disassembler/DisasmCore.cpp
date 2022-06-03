@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: DisasmCore.cpp 41661 2012-06-12 08:26:37Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -2591,11 +2591,11 @@ disStoreInstrBytesSlow(PDISCPUSTATE pCpu, RTUINTPTR uAddress, const uint8_t *pbS
     if (off + cbSrc <= sizeof(pCpu->abInstr))
     {
         memcpy(&pCpu->abInstr[cbInstr], pbSrc, cbSrc);
-        pCpu->opsize = cbInstr + cbSrc;
+        pCpu->opsize = cbInstr + (uint32_t)cbSrc;
     }
     else
     {
-        uint32_t cbToCopy = sizeof(pCpu->abInstr) - off;
+        size_t cbToCopy = sizeof(pCpu->abInstr) - off;
         memcpy(&pCpu->abInstr[cbInstr], pbSrc, cbToCopy);
         pCpu->opsize = sizeof(pCpu->abInstr);
         AssertMsgFailed(("%RTptr LB %zx off=%RTptr (%.*Rhxs)", uAddress, cbSrc, off, sizeof(pCpu->abInstr), pCpu->abInstr));
