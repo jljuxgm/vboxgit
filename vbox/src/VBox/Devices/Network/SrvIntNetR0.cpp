@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 38937 2011-10-05 06:56:51Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 39040 2011-10-19 14:47:48Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1560,8 +1560,7 @@ static INTNETSWDECISION intnetR0NetworkPreSwitchUnicast(PINTNETNETWORK pNetwork,
 
     /* Iterate the internal network interfaces and look for matching source and
        destination addresses. */
-    uint32_t cExactHits = 0;
-    uint32_t iIfMac     = pTab->cEntries;
+    uint32_t iIfMac = pTab->cEntries;
     while (iIfMac-- > 0)
     {
         if (pTab->paEntries[iIfMac].fActive)
