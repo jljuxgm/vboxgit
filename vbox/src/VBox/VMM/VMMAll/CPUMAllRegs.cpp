@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 36639 2011-04-11 10:10:38Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 36762 2011-04-20 16:52:26Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -474,18 +474,18 @@ VMMDECL(PCPUMCTX) CPUMQueryGuestCtxPtr(PVMCPU pVCpu)
     return &pVCpu->cpum.s.Guest;
 }
 
-VMMDECL(int) CPUMSetGuestGDTR(PVMCPU pVCpu, uint32_t addr, uint16_t limit)
+VMMDECL(int) CPUMSetGuestGDTR(PVMCPU pVCpu, uint64_t GCPtrBase, uint16_t cbLimit)
 {
-    pVCpu->cpum.s.Guest.gdtr.cbGdt = limit;
-    pVCpu->cpum.s.Guest.gdtr.pGdt  = addr;
+    pVCpu->cpum.s.Guest.gdtr.cbGdt = cbLimit;
+    pVCpu->cpum.s.Guest.gdtr.pGdt  = GCPtrBase;
     pVCpu->cpum.s.fChanged |= CPUM_CHANGED_GDTR;
     return VINF_SUCCESS;
 }
 
-VMMDECL(int) CPUMSetGuestIDTR(PVMCPU pVCpu, uint32_t addr, uint16_t limit)
+VMMDECL(int) CPUMSetGuestIDTR(PVMCPU pVCpu, uint64_t GCPtrBase, uint16_t cbLimit)
 {
-    pVCpu->cpum.s.Guest.idtr.cbIdt = limit;
-    pVCpu->cpum.s.Guest.idtr.pIdt  = addr;
+    pVCpu->cpum.s.Guest.idtr.cbIdt = cbLimit;
+    pVCpu->cpum.s.Guest.idtr.pIdt  = GCPtrBase;
     pVCpu->cpum.s.fChanged |= CPUM_CHANGED_IDTR;
     return VINF_SUCCESS;
 }
