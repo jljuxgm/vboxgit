@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 39317 2011-11-15 20:33:56Z vboxsync $ */
+/* $Id: DevE1000.cpp 39318 2011-11-15 21:35:00Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -3207,8 +3207,11 @@ static void e1kTransmitFrame(E1KSTATE* pState, bool fOnWorkerThread)
     {
         E1kLog3(("%s Inserting VLAN tag %08x\n",
             INSTANCE(pState), RT_BE2H_U16(VET) | (RT_BE2H_U16(pState->u16VTagTCI) << 16)));
+        /** @todo: nocrt_memmove does not get resolved, fix it! */
+#ifndef RT_OS_WINDOWS
         memmove((uint8_t*)pSg->aSegs[0].pvSeg + 16, (uint8_t*)pSg->aSegs[0].pvSeg + 12, cbFrame - 12);
         *((uint32_t*)pSg->aSegs[0].pvSeg + 3) = RT_BE2H_U16(VET) | (RT_BE2H_U16(pState->u16VTagTCI) << 16);
+#endif
     }
     /* Update the stats */
     E1K_INC_CNT32(TPT);
