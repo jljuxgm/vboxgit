@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 38525 2011-08-25 11:40:58Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 40673 2012-03-28 11:12:00Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -181,13 +181,15 @@ int handleControlVM(HandlerArg *a)
                     /* check if we are already paused */
                     MachineState_T machineState;
                     CHECK_ERROR_BREAK(console, COMGETTER(State)(&machineState));
+                    /* the error code was lost by the previous instruction */
+                    rc = VBOX_E_INVALID_VM_STATE;
                     if (machineState != MachineState_Paused)
                     {
                         RTMsgError("Machine in invalid state %d -- %s\n",
                                    machineState, machineStateToName(machineState, false));
-                        break;
                     }
                 }
+                break;
             }
 
             ComPtr<IProgress> progress;
