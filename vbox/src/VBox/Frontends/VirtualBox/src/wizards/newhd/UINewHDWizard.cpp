@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 38569 2011-08-30 12:58:14Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 38570 2011-08-30 12:59:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -369,8 +369,6 @@ QString UINewHDWizardPageFormat::fullFormatName(const QString &strBaseFormatName
         return UINewHDWizard::tr("&VDI (VirtualBox Disk Image)");
     else if (strBaseFormatName == "VMDK")
         return UINewHDWizard::tr("V&MDK (Virtual Machine Disk)");
-    else if (strBaseFormatName == "VHD")
-        return UINewHDWizard::tr("V&HD (Virtual Hard Disk)");
     else if (strBaseFormatName == "VHD")
         return UINewHDWizard::tr("V&HD (Virtual Hard Disk)");
     else if (strBaseFormatName == "Parallels")
