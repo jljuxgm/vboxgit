@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 39828 2012-01-22 11:19:14Z vboxsync $ */
+/* $Id: DevAHCI.cpp 39845 2012-01-23 21:57:31Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -5169,8 +5169,11 @@ static void *ahciReqMemAlloc(PAHCIREQ pAhciReq, size_t cb)
         if (pAhciReq->cbAlloc)
             RTMemPageFree(pAhciReq->pvAlloc, pAhciReq->cbAlloc);
 
-        pAhciReq->pvAlloc = RTMemPageAlloc(RT_ALIGN_Z(cb, _4K));
+        pAhciReq->cbAlloc = RT_ALIGN_Z(cb, _4K);
+        pAhciReq->pvAlloc = RTMemPageAlloc(pAhciReq->cbAlloc);
         pAhciReq->cAllocTooMuch = 0;
+        if (RT_UNLIKELY(!pAhciReq->pvAlloc))
+            pAhciReq->cbAlloc = 0;
     }
 
     return pAhciReq->pvAlloc;
