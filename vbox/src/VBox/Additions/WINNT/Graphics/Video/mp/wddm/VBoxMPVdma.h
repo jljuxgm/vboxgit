@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 42026 2012-07-05 15:21:52Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 42081 2012-07-10 09:47:29Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -352,8 +352,8 @@ VOID vboxVdmaGgCmdDmaNotifyInit(PVBOXVDMAPIPE_CMD_DMACMD pCmd,
         uint32_t u32NodeOrdinal, uint32_t u32FenceId,
         PFNVBOXVDMADDICMDCOMPLETE_DPC pfnComplete, PVOID pvComplete);
 
-NTSTATUS vboxVdmaGgDmaBltPerform(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_ALLOCATION pSrcAlloc, RECT* pSrcRect,
-        PVBOXWDDM_ALLOCATION pDstAlloc, RECT* pDstRect);
+NTSTATUS vboxVdmaGgDmaBltPerform(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_ALLOC_DATA * pSrcAlloc, RECT* pSrcRect,
+        struct VBOXWDDM_ALLOC_DATA *pDstAlloc, RECT* pDstRect);
 
 #define VBOXVDMAPIPE_CMD_DR_FROM_DDI_CMD(_pCmd) ((PVBOXVDMAPIPE_CMD_DR)(((uint8_t*)(_pCmd)) - RT_OFFSETOF(VBOXVDMAPIPE_CMD_DR, DdiCmd)))
 DECLCALLBACK(VOID) vboxVdmaGgDdiCmdRelease(PVBOXMP_DEVEXT pDevExt, PVBOXVDMADDI_CMD pCmd, PVOID pvContext);
