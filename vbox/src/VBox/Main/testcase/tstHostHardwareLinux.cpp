@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 37662 2011-06-28 11:41:49Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2008-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -31,7 +31,6 @@
 #include <iprt/cdefs.h>
 #include <iprt/types.h>
 
-#include <errno.h>
 #include <string.h>
 #include <stdlib.h>
 
