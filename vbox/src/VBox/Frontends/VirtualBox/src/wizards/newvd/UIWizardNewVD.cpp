@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 41331 2012-05-16 11:41:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -43,24 +43,6 @@ UIWizardNewVD::UIWizardNewVD(QWidget *pParent, const QString &strDefaultName, co
     /* Assign background image: */
     assignBackground(":/vmw_new_harddisk_bg.png");
 #endif /* Q_WS_MAC */
-}
-
-/* static */
-QString UIWizardNewVD::fullFormatName(const QString &strBaseFormatName)
-{
-    if (strBaseFormatName == "VDI")
-        return QApplication::translate("UIWizardNewVD", "&VDI (VirtualBox Disk Image)");
-    else if (strBaseFormatName == "VMDK")
-        return QApplication::translate("UIWizardNewVD", "V&MDK (Virtual Machine Disk)");
-    else if (strBaseFormatName == "VHD")
-        return QApplication::translate("UIWizardNewVD", "V&HD (Virtual Hard Disk)");
-    else if (strBaseFormatName == "Parallels")
-        return QApplication::translate("UIWizardNewVD", "H&DD (Parallels Hard Disk)");
-    else if (strBaseFormatName == "QED")
-        return QApplication::translate("UIWizardNewVD", "Q&ED (QEMU enhanced disk)");
-    else if (strBaseFormatName == "QCOW")
-        return QApplication::translate("UIWizardNewVD", "&QCOW (QEMU Copy-On-Write)");
-    return strBaseFormatName;
 }
 
 bool UIWizardNewVD::createVirtualDisk()

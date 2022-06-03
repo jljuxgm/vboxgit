@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 41062 2012-04-26 03:57:29Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 41331 2012-05-16 11:41:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4476,6 +4476,24 @@ bool VBoxGlobal::isSheetWindowsAllowed(QWidget *pParent) const
     return false;
 }
 #endif /* Q_WS_MAC */
+
+/* static */
+QString VBoxGlobal::fullMediumFormatName(const QString &strBaseMediumFormatName)
+{
+    if (strBaseMediumFormatName == "VDI")
+        return tr("VDI (VirtualBox Disk Image)");
+    else if (strBaseMediumFormatName == "VMDK")
+        return tr("VMDK (Virtual Machine Disk)");
+    else if (strBaseMediumFormatName == "VHD")
+        return tr("VHD (Virtual Hard Disk)");
+    else if (strBaseMediumFormatName == "Parallels")
+        return tr("HDD (Parallels Hard Disk)");
+    else if (strBaseMediumFormatName == "QED")
+        return tr("QED (QEMU enhanced disk)");
+    else if (strBaseMediumFormatName == "QCOW")
+        return tr("QCOW (QEMU Copy-On-Write)");
+    return strBaseMediumFormatName;
+}
 
 // Public slots
 ////////////////////////////////////////////////////////////////////////////////

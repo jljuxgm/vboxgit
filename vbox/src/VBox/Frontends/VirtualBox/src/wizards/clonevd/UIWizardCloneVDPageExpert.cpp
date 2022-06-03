@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 41230 2012-05-10 10:38:37Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 41331 2012-05-16 11:41:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -238,12 +238,12 @@ void UIWizardCloneVDPageExpert::retranslateUi()
     m_pSourceDiskOpenButton->setToolTip(UIWizardCloneVD::tr("Choose a virtual hard disk file..."));
     m_pDestinationCnt->setTitle(UIWizardCloneVD::tr("&Destination virtual disk"));
     m_pDestinationDiskOpenButton->setToolTip(UIWizardCloneVD::tr("Choose a virtual hard disk file..."));
-    m_pFormatCnt->setTitle(UIWizardCloneVD::tr("File type"));
+    m_pFormatCnt->setTitle(UIWizardCloneVD::tr("File &type"));
     QList<QAbstractButton*> buttons = m_pFormatButtonGroup->buttons();
     for (int i = 0; i < buttons.size(); ++i)
     {
         QAbstractButton *pButton = buttons[i];
-        pButton->setText(UIWizardCloneVD::fullFormatName(m_formatNames[m_pFormatButtonGroup->id(pButton)]));
+        pButton->setText(VBoxGlobal::fullMediumFormatName(m_formatNames[m_pFormatButtonGroup->id(pButton)]));
     }
     m_pVariantCnt->setTitle(UIWizardCloneVD::tr("Storage details"));
     m_pDynamicalButton->setText(UIWizardCloneVD::tr("&Dynamically allocated"));

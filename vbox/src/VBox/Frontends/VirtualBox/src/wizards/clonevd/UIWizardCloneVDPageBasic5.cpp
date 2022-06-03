@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic5.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic5.cpp 41331 2012-05-16 11:41:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -68,7 +68,7 @@ void UIWizardCloneVDPageBasic5::retranslateUi()
         "<tr><td><nobr>%7: </nobr></td><td><nobr>%8 (%9)</nobr></td></tr>"
     )
     .arg(UIWizardCloneVD::tr("File type", "summary"), mediumFormat.isNull() ?
-             QString() : VBoxGlobal::removeAccelMark(UIWizardCloneVD::fullFormatName(mediumFormat.GetName())))
+         QString() : VBoxGlobal::removeAccelMark(VBoxGlobal::fullMediumFormatName(mediumFormat.GetName())))
     .arg(UIWizardCloneVD::tr("Details", "summary"), vboxGlobal().toString((KMediumVariant)uVariant))
     .arg(UIWizardCloneVD::tr("Location", "summary"), strMediumPath)
     .arg(UIWizardCloneVD::tr("Size", "summary"), sizeFormatted, sizeUnformatted);

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.cpp 41331 2012-05-16 11:41:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -143,12 +143,12 @@ void UIWizardCloneVDPageBasic2::retranslateUi()
                                           "to use for the new virtual disk. If you do not need "
                                           "to use it with other virtualization software you can "
                                           "leave this setting unchanged."));
-    m_pFormatCnt->setTitle(UIWizardCloneVD::tr("File type"));
+    m_pFormatCnt->setTitle(UIWizardCloneVD::tr("File &type"));
     QList<QAbstractButton*> buttons = m_pFormatButtonGroup->buttons();
     for (int i = 0; i < buttons.size(); ++i)
     {
         QAbstractButton *pButton = buttons[i];
-        pButton->setText(UIWizardCloneVD::fullFormatName(m_formatNames[m_pFormatButtonGroup->id(pButton)]));
+        pButton->setText(VBoxGlobal::fullMediumFormatName(m_formatNames[m_pFormatButtonGroup->id(pButton)]));
     }
 }
 
