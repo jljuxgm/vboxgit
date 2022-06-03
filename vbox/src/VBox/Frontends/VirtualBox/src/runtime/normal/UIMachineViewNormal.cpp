@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 38981 2011-10-12 19:19:08Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 38990 2011-10-13 20:49:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -133,8 +133,6 @@ bool UIMachineViewNormal::eventFilter(QObject *pWatched, QEvent *pEvent)
             {
                 const QSize *pSize = &static_cast<QResizeEvent *>(pEvent)
                                     ->size();
-                /* Store the new size */
-                storeConsoleSize(pSize->width(), pSize->height());
                 if (pEvent->spontaneous() && m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
                     QTimer::singleShot(300, this, SLOT(sltPerformGuestResize()));
                 break;
