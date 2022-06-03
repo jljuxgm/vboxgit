@@ -1,4 +1,4 @@
-/* $Id: VBoxApplianceEditorWgt.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: VBoxApplianceEditorWgt.cpp 38346 2011-08-08 11:45:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -752,6 +752,12 @@ VirtualSystemModel::VirtualSystemModel (QVector<CVirtualSystemDescription>& aVSD
             }
         }
     }
+}
+
+VirtualSystemModel::~VirtualSystemModel()
+{
+    if (mRootItem)
+        delete mRootItem;
 }
 
 QModelIndex VirtualSystemModel::index (int aRow, int aColumn, const QModelIndex &aParent /* = QModelIndex() */) const
