@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35440 2011-01-09 23:43:10Z vboxsync $
+# $Id: Makefile.kmk 36941 2011-05-03 14:56:08Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -46,8 +46,7 @@ USBLib_SOURCES.os2 = \
 USBLib_SOURCES.solaris = \
 	solaris/USBLib-solaris.cpp
 USBLib_SOURCES.win = \
-	win/USBLib-win.cpp
-
+	win/lib/VBoxUsbLib-win.cpp
 
 #
 # USBFilter testcase.
