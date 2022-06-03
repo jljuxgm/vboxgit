@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 40387 2012-03-06 20:38:49Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 40483 2012-03-15 14:20:20Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -95,6 +95,9 @@ typedef struct _VBOXMP_DEVEXT
    KSPIN_LOCK SynchLock;
    volatile uint32_t cContexts3D;
    volatile uint32_t cUnlockedVBVADisabled;
+
+   HVBOXCRCTL hCrCtl;
+   uint32_t cCrCtlRefs;
 
    VBOXWDDM_GLOBAL_POINTER_INFO PointerInfo;
 

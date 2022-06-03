@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.h 40483 2012-03-15 14:20:20Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -32,9 +32,23 @@
 #error "VBOX_WITH_CRHGSMI not defined!"
 #endif
 
+typedef DECLCALLBACK(int) FNVBOXCRHGSMI_CTLCON_CALL(struct VBOXUHGSMI_PRIVATE_BASE *pHgsmi, struct VBoxGuestHGCMCallInfo *pCallInfo, int cbCallInfo);
+typedef FNVBOXCRHGSMI_CTLCON_CALL *PFNVBOXCRHGSMI_CTLCON_CALL;
+
+#define VBoxCrHgsmiPrivateCtlConCall(_pHgsmi, _pCallInfo, _cbCallInfo) (_pHgsmi->pfnCtlConCall((_pHgsmi), (_pCallInfo), (_cbCallInfo)))
+
+
+typedef DECLCALLBACK(int) FNVBOXCRHGSMI_CTLCON_GETCLIENTID(struct VBOXUHGSMI_PRIVATE_BASE *pHgsmi, uint32_t *pu32ClientID);
+typedef FNVBOXCRHGSMI_CTLCON_GETCLIENTID *PFNVBOXCRHGSMI_CTLCON_GETCLIENTID;
+
+#define VBoxCrHgsmiPrivateCtlConGetClientID(_pHgsmi, _pu32ClientID) (_pHgsmi->pfnCtlConGetClientID((_pHgsmi), (_pu32ClientID)))
+
+
 typedef struct VBOXUHGSMI_PRIVATE_BASE
 {
     VBOXUHGSMI Base;
+    PFNVBOXCRHGSMI_CTLCON_CALL pfnCtlConCall;
+    PFNVBOXCRHGSMI_CTLCON_GETCLIENTID pfnCtlConGetClientID;
 #ifdef VBOX_CRHGSMI_WITH_D3DDEV
     HVBOXCRHGSMI_CLIENT hClient;
 #endif

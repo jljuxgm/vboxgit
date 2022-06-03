@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 39161 2011-11-01 14:37:37Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 40483 2012-03-15 14:20:20Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -249,11 +249,15 @@ HRESULT vboxDispKmtDestroyDevice(PVBOXDISPKMT_DEVICE pDevice)
 }
 
 HRESULT vboxDispKmtCreateContext(PVBOXDISPKMT_DEVICE pDevice, PVBOXDISPKMT_CONTEXT pContext,
-                                    VBOXWDDM_CONTEXT_TYPE enmType, HANDLE hEvent, uint64_t u64UmInfo)
+                                    VBOXWDDM_CONTEXT_TYPE enmType,
+                                    uint32_t crVersionMajor, uint32_t crVersionMinor,
+                                    HANDLE hEvent, uint64_t u64UmInfo)
 {
     VBOXWDDM_CREATECONTEXT_INFO Info = {0};
     Info.u32IfVersion = 9;
     Info.enmType = enmType;
+    Info.crVersionMajor = crVersionMajor;
+    Info.crVersionMinor = crVersionMinor;
     Info.hUmEvent = (uint64_t)hEvent;
     Info.u64UmInfo = u64UmInfo;
     D3DKMT_CREATECONTEXT ContextData = {0};

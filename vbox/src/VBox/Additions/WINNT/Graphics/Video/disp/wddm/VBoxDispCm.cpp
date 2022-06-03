@@ -1,4 +1,4 @@
-/* $Id: VBoxDispCm.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
+/* $Id: VBoxDispCm.cpp 40483 2012-03-15 14:20:20Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -113,7 +113,7 @@ HRESULT vboxDispCmTerm()
 
 HRESULT vboxDispCmCtxCreate(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_CONTEXT pContext)
 {
-    VBOXWDDM_CREATECONTEXT_INFO Info;
+    VBOXWDDM_CREATECONTEXT_INFO Info = {0};
     Info.u32IfVersion = pDevice->u32IfVersion;
     Info.enmType = VBOXDISPMODE_IS_3D(pDevice->pAdapter) ? VBOXWDDM_CONTEXT_TYPE_CUSTOM_3D : VBOXWDDM_CONTEXT_TYPE_CUSTOM_2D;
     Info.hUmEvent = (uint64_t)g_pVBoxCmMgr.Session.hEvent;

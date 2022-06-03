@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 39981 2012-02-03 12:13:33Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 40483 2012-03-15 14:20:20Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -30,6 +30,7 @@ typedef struct VBOXWDDM_ALLOCATION *PVBOXWDDM_ALLOCATION;
 #include "VBoxMPVdma.h"
 #include "VBoxMPShgsmi.h"
 #include "VBoxMPVbva.h"
+#include "VBoxMPCr.h"
 
 #if 0
 #include <iprt/avl.h>
@@ -219,6 +220,7 @@ typedef struct VBOXWDDM_CONTEXT
     VBOXWDDM_CONTEXT_TYPE enmType;
     UINT  NodeOrdinal;
     UINT  EngineAffinity;
+    uint32_t u32CrConClientID;
     VBOXWDDM_HTABLE Swapchains;
     VBOXVIDEOCM_CTX CmContext;
     VBOXVIDEOCM_ALLOC_CONTEXT AllocContext;
