@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 41233 2012-05-10 12:16:22Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 41638 2012-06-09 16:58:09Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -808,6 +808,9 @@ static NTSTATUS vboxVdmaGgDmaCmdProcessFast(PVBOXMP_DEVEXT pDevExt, VBOXVDMAPIPE
             PVBOXVDMAPIPE_CMD_DMACMD_FLIP pFlip = (PVBOXVDMAPIPE_CMD_DMACMD_FLIP)pDmaCmd;
             Assert(pFlip->Hdr.fFlags.fVisibleRegions);
             Assert(!pFlip->Hdr.fFlags.fRealOp);
+            PVBOXWDDM_ALLOCATION pAlloc = pFlip->Flip.Alloc.pAlloc;
+            VBOXWDDM_SOURCE *pSource = &pDevExt->aSources[pAlloc->SurfDesc.VidPnSourceId];
+            vboxWddmAssignPrimary(pDevExt, pSource, pAlloc, pAlloc->SurfDesc.VidPnSourceId);
             if (pFlip->Hdr.fFlags.fVisibleRegions)
             {
                 Status = STATUS_MORE_PROCESSING_REQUIRED;
