@@ -1,4 +1,4 @@
-/* $Id: scsi.c 40640 2012-03-26 12:55:17Z vboxsync $ */
+/* $Id: scsi.c 41543 2012-06-01 13:33:40Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -310,12 +310,12 @@ void scsi_enumerate_attached_devices(uint16_t io_base)
                 /* We need to calculate the geometry for the disk. From 
                  * the BusLogic driver in the Linux kernel. 
                  */
-                if (sectors >= 4 * 1024 * 1024)
+                if (sectors >= (uint32_t)4 * 1024 * 1024)
                 {
                     heads = 255;
                     sectors_per_track = 63;
                 }
-                else if (sectors >= 2 * 1024 * 1024)
+                else if (sectors >= (uint32_t)2 * 1024 * 1024)
                 {
                     heads = 128;
                     sectors_per_track = 32;
