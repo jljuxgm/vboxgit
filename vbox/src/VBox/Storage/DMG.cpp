@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 38876 2011-09-27 09:03:15Z vboxsync $ */
+/* $Id: DMG.cpp 39519 2011-12-02 21:12:21Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -2335,5 +2335,7 @@ VBOXHDDBACKEND g_DmgBackend =
     /* pfnDiscard */
     NULL,
     /* pfnAsyncDiscard */
+    NULL,
+    /* pfnRepair */
     NULL
 };

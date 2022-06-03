@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 38876 2011-09-27 09:03:15Z vboxsync $ */
+/* $Id: QED.cpp 39519 2011-12-02 21:12:21Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -2922,5 +2922,7 @@ VBOXHDDBACKEND g_QedBackend =
     /* pfnDiscard */
     NULL,
     /* pfnAsyncDiscard */
+    NULL,
+    /* pfnRepair */
     NULL
 };
