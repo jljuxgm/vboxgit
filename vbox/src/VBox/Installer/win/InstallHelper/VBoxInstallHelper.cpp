@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 36121 2011-03-01 15:25:18Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 36452 2011-03-29 07:26:50Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -203,9 +203,10 @@ UINT __stdcall InstallPythonAPI(MSIHANDLE hModule)
         rc = ::RegQueryValueEx(hkPythonInstPath, L"", NULL, &dwKeyType, (LPBYTE)szVal, &dwLen);
         if(rc == ERROR_SUCCESS)
             LogString(hModule, TEXT("InstallPythonAPI: Path \"%s\" detected."), szVal);
-    }
 
-    ::RegCloseKey (hkPythonCore);
+        ::RegCloseKey(hkPythonInstPath);
+    }
+    ::RegCloseKey(hkPythonCore);
 
     /* Python path found? */
     TCHAR szExec[MAX_PATH] = { 0 };
