@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 39427 2011-11-25 14:29:43Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 40683 2012-03-28 14:36:35Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -103,8 +103,8 @@ VBGLR3DECL(int) VbglR3GuestCtrlDisconnect(uint32_t u32ClientId)
  */
 VBGLR3DECL(int) VbglR3GuestCtrlWaitForHostMsg(uint32_t u32ClientId, uint32_t *puMsg, uint32_t *puNumParms)
 {
-    AssertPtrReturn(puMsg, VERR_INVALID_PARAMETER);
-    AssertPtrReturn(puNumParms, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(puMsg, VERR_INVALID_POINTER);
+    AssertPtrReturn(puNumParms, VERR_INVALID_POINTER);
 
     VBoxGuestCtrlHGCMMsgType Msg;
 
