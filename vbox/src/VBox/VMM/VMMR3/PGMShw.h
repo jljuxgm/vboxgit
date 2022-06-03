@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PGMShw.h 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -170,7 +170,7 @@ PGM_SHW_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
  * Enters the shadow mode.
  *
  * @returns VBox status code.
- * @param   pVCpu                   The VMCPU to operate on.
+ * @param   pVCpu                   Pointer to the VMCPU.
  * @param   fIs64BitsPagingMode     New shadow paging mode is for 64 bits? (only relevant for 64 bits guests on a 32 bits AMD-V nested paging host)
  */
 PGM_SHW_DECL(int, Enter)(PVMCPU pVCpu, bool fIs64BitsPagingMode)
@@ -219,7 +219,7 @@ PGM_SHW_DECL(int, Enter)(PVMCPU pVCpu, bool fIs64BitsPagingMode)
  * Relocate any GC pointers related to shadow mode paging.
  *
  * @returns VBox status code.
- * @param   pVCpu       The VMCPU to operate on.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   offDelta    The relocation offset.
  */
 PGM_SHW_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)
@@ -233,7 +233,7 @@ PGM_SHW_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)
  * Exits the shadow mode.
  *
  * @returns VBox status code.
- * @param   pVCpu       The VMCPU to operate on.
+ * @param   pVCpu       Pointer to the VMCPU.
  */
 PGM_SHW_DECL(int, Exit)(PVMCPU pVCpu)
 {

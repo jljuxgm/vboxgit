@@ -1,4 +1,4 @@
-/* $Id: FTMAll.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: FTMAll.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager - All contexts
  */
@@ -35,7 +35,7 @@
  *
  * @returns VBox status code.
  *
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  * @param   enmType     Checkpoint type
  */
 VMMDECL(int)   FTMSetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmType)
@@ -56,7 +56,7 @@ VMMDECL(int)   FTMSetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmType)
  *
  * @returns true/false
  *
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  */
 VMMDECL(bool)  FTMIsDeltaLoadSaveActive(PVM pVM)
 {

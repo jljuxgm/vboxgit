@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -188,7 +188,7 @@ DECLINLINE(bool) cpumR3RegIsFxSaveFormat(PVMCPU pVCpu)
  * format is FXSAVE.
  *
  * @returns The tag register value.
- * @param   pVCpu               The virtual CPU handle.
+ * @param   pFpu                Pointer to the guest FPU.
  * @param   iReg                The register number (0..7).
  */
 DECLINLINE(uint16_t) cpumR3RegCalcFpuTagFromFxSave(PCX86FXSTATE pFpu, unsigned iReg)

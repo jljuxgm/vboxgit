@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: PDMDriver.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -75,7 +75,7 @@ static int pdmR3DrvLoad(PVM pVM, PPDMDRVREGCBINT pRegCB, const char *pszFilename
  * Register drivers in a statically linked environment.
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  * @param   pfnCallback Driver registration callback
  */
 VMMR3DECL(int) PDMR3DrvStaticRegistration(PVM pVM, FNPDMVBOXDRIVERSREGISTER pfnCallback)

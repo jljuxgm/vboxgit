@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: TRPMInternal.h 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -248,7 +248,7 @@ VMMRCDECL(int) trpmRCShadowIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
  * Clear guest trap/interrupt gate handler
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  * @param   iTrap       Interrupt/trap number.
  */
 VMMDECL(int) trpmClearGuestTrapHandler(PVM pVM, unsigned iTrap);
@@ -260,7 +260,7 @@ VMMDECL(int) trpmClearGuestTrapHandler(PVM pVM, unsigned iTrap);
  * Clear passthrough interrupt gate handler (reset to default handler)
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  * @param   iTrap       Trap/interrupt gate number.
  */
 VMMR3DECL(int) trpmR3ClearPassThroughHandler(PVM pVM, unsigned iTrap);

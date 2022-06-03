@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: IOMAll.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -43,7 +43,7 @@
  * Check if this VCPU currently owns the IOM lock.
  *
  * @returns bool owner/not owner
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  */
 VMMDECL(bool) IOMIsLockOwner(PVM pVM)
 {

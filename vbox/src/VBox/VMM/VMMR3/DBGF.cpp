@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: DBGF.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -1103,7 +1103,7 @@ VMMR3DECL(int) DBGFR3Step(PVM pVM, VMCPUID idCpu)
  *
  * @returns VINF_EM_DBG_STEP
  *
- * @param   pVCpu       The virtual CPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  *
  * @thread  VCpu EMT
  */

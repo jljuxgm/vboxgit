@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41741 2012-06-15 01:50:13Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -4957,7 +4957,7 @@ VMMR0DECL(int) VMXR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
  *
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VM CPU to operate on.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   GCPhys      Guest physical address of the page to invalidate.
  */
 VMMR0DECL(int) VMXR0InvalidatePhysPage(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys)

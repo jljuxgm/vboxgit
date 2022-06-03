@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: PGMBth.h 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -115,7 +115,7 @@ PGM_BTH_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
  *
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VMCPU to operate on.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   GCPhysCR3   The physical address from the CR3 register.
  */
 PGM_BTH_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
@@ -199,7 +199,7 @@ PGM_BTH_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
  *
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VMCPU to operate on.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   offDelta    The relocation offset.
  */
 PGM_BTH_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)

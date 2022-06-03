@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 41779 2012-06-16 18:53:29Z vboxsync $ */
+/* $Id: CPUMR0.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -114,7 +114,7 @@ VMMR0DECL(int) CPUMR0ModuleTerm(void)
  * with VBox.
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  */
 VMMR0DECL(int) CPUMR0Init(PVM pVM)
 {

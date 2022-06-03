@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -197,7 +197,7 @@ static void mmHyperUnlock(PVM pVM)
  * The returned memory is of course zeroed.
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  * @param   cb          Number of bytes to allocate.
  * @param   uAlignment  Required memory alignment in bytes.
  *                      Values are 0,8,16,32,64 and PAGE_SIZE.
@@ -756,7 +756,7 @@ static void mmR3HyperStatRegisterOne(PVM pVM, PMMHYPERSTAT pStat)
  * The caller validates the parameters of this request.
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  * @param   pv          The memory to free.
  * @remark  Try avoid free hyper memory.
  */

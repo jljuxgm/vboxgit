@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: VMMRC.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -54,7 +54,7 @@ static DECLCALLBACK(int) vmmGCTestTmpPFHandlerCorruptFS(PVM pVM, PCPUMCTXCORE pR
  * The GC entry point.
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
+ * @param   pVM         Pointer to the VM.
  * @param   uOperation  Which operation to execute (VMMGCOPERATION).
  * @param   uArg        Argument to that operation.
  */
