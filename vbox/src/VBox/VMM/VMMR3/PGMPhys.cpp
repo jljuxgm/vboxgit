@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 36893 2011-04-29 13:26:46Z vboxsync $ */
+/* $Id: PGMPhys.cpp 36897 2011-04-29 15:11:55Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -579,6 +579,29 @@ VMMR3DECL(int) PGMR3PhysGCPhys2CCPtrReadOnlyExternal(PVM pVM, RTGCPHYS GCPhys, v
 
 
 /**
+ * Rebuilds the RAM range search trees.
+ *
+ * @param   pVM         The VM handle.
+ */
+static void pgmR3PhysRebuildRamRangeSearchTrees(PVM pVM)
+{
+#ifdef PGM_USE_RAMRANGE_SEARCH_TREES
+    /*
+     * Create the three balanced trees by sequentially working the linked list.
+     */
+
+    /* Count them and calculate the max depth. */
+    unsigned cRanges = 0;
+    for (PPGMRAMRANGE pRam = pVM->pgm.s.pRamRangesXR3; pRam; pRam = pRam->pNextR3)
+        cRanges++;
+
+    /// contine later
+
+#endif
+}
+
+
+/**
  * Relinks the RAM ranges using the pSelfRC and pSelfR0 pointers.
  *
  * Called when anything was relocated.
@@ -625,6 +648,9 @@ void pgmR3PhysRelinkRamRanges(PVM pVM)
         Assert(pVM->pgm.s.pRamRangesXRC == NIL_RTRCPTR);
     }
     ASMAtomicIncU32(&pVM->pgm.s.idRamRangesGen);
+
+    pgmR3PhysRebuildRamRangeSearchTrees(pVM);
+
 }
 
 
@@ -661,6 +687,8 @@ static void pgmR3PhysLinkRamRange(PVM pVM, PPGMRAMRANGE pNew, PPGMRAMRANGE pPrev
         pVM->pgm.s.pRamRangesXRC = pNew->pSelfRC;
     }
     ASMAtomicIncU32(&pVM->pgm.s.idRamRangesGen);
+
+    pgmR3PhysRebuildRamRangeSearchTrees(pVM);
     pgmUnlock(pVM);
 }
 
@@ -695,6 +723,8 @@ static void pgmR3PhysUnlinkRamRange2(PVM pVM, PPGMRAMRANGE pRam, PPGMRAMRANGE pP
         pVM->pgm.s.pRamRangesXRC = pNext ? pNext->pSelfRC : NIL_RTRCPTR;
     }
     ASMAtomicIncU32(&pVM->pgm.s.idRamRangesGen);
+
+    pgmR3PhysRebuildRamRangeSearchTrees(pVM);
     pgmUnlock(pVM);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 36893 2011-04-29 13:26:46Z vboxsync $ */
+/* $Id: PGMInternal.h 36897 2011-04-29 15:11:55Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1299,6 +1299,22 @@ typedef struct PGMRAMRANGE
     R0PTRTYPE(struct PGMRAMRANGE *)     pSelfR0;
     /** Pointer to self - RC pointer. */
     RCPTRTYPE(struct PGMRAMRANGE *)     pSelfRC;
+
+#ifdef PGM_USE_RAMRANGE_SEARCH_TREES
+    /** Pointer to the left search three node - ring-3 context. */
+    R3PTRTYPE(struct PGMRAMRANGE *)     pLeftR3;
+    /** Pointer to the right search three node - ring-3 context. */
+    R3PTRTYPE(struct PGMRAMRANGE *)     pRightR3;
+    /** Pointer to the left search three node - ring-0 context. */
+    R0PTRTYPE(struct PGMRAMRANGE *)     pLeftR0;
+    /** Pointer to the right search three node - ring-0 context. */
+    R0PTRTYPE(struct PGMRAMRANGE *)     pRightR0;
+    /** Pointer to the left search three node - raw-mode context. */
+    RCPTRTYPE(struct PGMRAMRANGE *)     pLeftRC;
+    /** Pointer to the right search three node - raw-mode context. */
+    RCPTRTYPE(struct PGMRAMRANGE *)     pRightRC;
+#endif
+
     /** Padding to make aPage aligned on sizeof(PGMPAGE). */
     uint32_t                            au32Alignment2[HC_ARCH_BITS == 32 ? 1 : 3];
     /** Array of physical guest page tracking structures. */
