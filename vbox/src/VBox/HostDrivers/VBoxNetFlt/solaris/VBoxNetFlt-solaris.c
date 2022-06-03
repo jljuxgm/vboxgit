@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 39208 2011-11-04 16:27:25Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 40231 2012-02-23 13:13:32Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -444,7 +444,9 @@ vboxNetFltSolarisProbeCtf(void)
     if (pModCtl)
     {
         int err;
+        mutex_enter(&mod_lock);
         ctf_file_t *pCtfFile = ctf_modopen(pModCtl->mod_mp, &err);
+        mutex_exit(&mod_lock);
         if (pCtfFile)
         {
             rc = vboxNetFltSolarisCtfGetMemberOffset(pCtfFile, "file_t", "f_vnode", &s_off_vnode);
