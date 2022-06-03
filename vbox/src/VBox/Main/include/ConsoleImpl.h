@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 40482 2012-03-15 14:20:01Z vboxsync $ */
+/* $Id: ConsoleImpl.h 40499 2012-03-16 12:33:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -676,7 +676,7 @@ private:
     void guestPropertiesHandleVMReset(void);
     bool guestPropertiesVRDPEnabled(void);
     void guestPropertiesVRDPUpdateLogon(uint32_t u32ClientId, const char *pszUser, const char *pszDomain);
-    void Console::guestPropertiesVRDPUpdateActiveClient(uint32_t u32ClientId);
+    void guestPropertiesVRDPUpdateActiveClient(uint32_t u32ClientId);
     void guestPropertiesVRDPUpdateClientAttach(uint32_t u32ClientId, bool fAttached);
     void guestPropertiesVRDPUpdateNameChange(uint32_t u32ClientId, const char *pszName);
     void guestPropertiesVRDPUpdateDisconnect(uint32_t u32ClientId);
