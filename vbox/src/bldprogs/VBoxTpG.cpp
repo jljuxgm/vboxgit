@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40636 2012-03-26 12:14:18Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40641 2012-03-26 13:11:32Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -424,7 +424,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40636 2012-03-26 12:14:18Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40641 2012-03-26 13:11:32Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -856,7 +856,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40636 2012-03-26 12:14:18Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40641 2012-03-26 13:11:32Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -1041,9 +1041,9 @@ bool ScmStreamCMatchingWordM1(PSCMSTREAM pStream, const char *pszWord, size_t cc
 const char *ScmStreamCGetWord(PSCMSTREAM pStream, size_t *pcchWord)
 {
     /* Check stream state. */
-    AssertReturn(!pStream->fWriteOrRead, false);
-    AssertReturn(RT_SUCCESS(pStream->rc), false);
-    AssertReturn(pStream->fFullyLineated, false);
+    AssertReturn(!pStream->fWriteOrRead, NULL);
+    AssertReturn(RT_SUCCESS(pStream->rc), NULL);
+    AssertReturn(pStream->fFullyLineated, NULL);
 
     /* Get the number of chars left on the line and locate the current char. */
     size_t const    iLine   = pStream->iLine;
@@ -1080,9 +1080,9 @@ const char *ScmStreamCGetWord(PSCMSTREAM pStream, size_t *pcchWord)
 const char *ScmStreamCGetWordM1(PSCMSTREAM pStream, size_t *pcchWord)
 {
     /* Check stream state. */
-    AssertReturn(!pStream->fWriteOrRead, false);
-    AssertReturn(RT_SUCCESS(pStream->rc), false);
-    AssertReturn(pStream->fFullyLineated, false);
+    AssertReturn(!pStream->fWriteOrRead, NULL);
+    AssertReturn(RT_SUCCESS(pStream->rc), NULL);
+    AssertReturn(pStream->fFullyLineated, NULL);
 
     /* Get the number of chars left on the line and locate the current char. */
     size_t const    iLine   = pStream->iLine;
@@ -1516,10 +1516,10 @@ static RTEXITCODE parsePragma(PSCMSTREAM pStrm)
 
 
 /**
- * Unmangles the probe name. 
- *  
+ * Unmangles the probe name.
+ *
  * This involves translating double underscore to dash.
- *  
+ *
  * @returns Pointer to the unmangled name in the string table.
  * @param   pszMangled          The mangled name.
  */
@@ -1581,7 +1581,7 @@ static RTEXITCODE parseProbe(PSCMSTREAM pStrm, PVTGPROVIDER pProv)
     pProbe->pszUnmangledName = parseUnmangleProbeName(pProbe->pszMangledName);
     if (!pProbe->pszUnmangledName)
         return parseError(pStrm, 0, "Out of memory");
-    
+
     /*
      * Parse loop for the argument.
      */
@@ -1946,7 +1946,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40636 $";
+                static const char s_szRev[] = "$Revision: 40641 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
