@@ -1,4 +1,4 @@
-/* $Id: slirp.c 39471 2011-11-30 08:53:22Z vboxsync $ */
+/* $Id: slirp.c 39498 2011-12-01 19:59:21Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -621,7 +621,7 @@ int slirp_init(PNATState *ppData, uint32_t u32NetAddr, uint32_t u32Netmask,
 #ifdef VBOX_WITH_SLIRP_MT
     QSOCKET_LOCK_CREATE(tcb);
     QSOCKET_LOCK_CREATE(udb);
-    rc = RTReqCreateQueue(&pData->pReqQueue);
+    rc = RTReqQueueCreate(&pData->pReqQueue);
     AssertReleaseRC(rc);
 #endif
 
@@ -1949,7 +1949,7 @@ void slirp_post_sent(PNATState pData, void *pvArg)
 #ifdef VBOX_WITH_SLIRP_MT
 void slirp_process_queue(PNATState pData)
 {
-     RTReqProcess(pData->pReqQueue, RT_INDEFINITE_WAIT);
+     RTReqQueueProcess(pData->pReqQueue, RT_INDEFINITE_WAIT);
 }
 void *slirp_get_queue(PNATState pData)
 {
