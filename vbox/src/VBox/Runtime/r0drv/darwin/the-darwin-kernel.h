@@ -1,10 +1,10 @@
-/* $Id: the-darwin-kernel.h 37569 2011-06-21 10:19:16Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 37575 2011-06-21 12:40:01Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -151,11 +151,19 @@ RT_C_DECLS_END
 /*
  * Internals of the Darwin Ring-0 IPRT.
  */
-
 RT_C_DECLS_BEGIN
-extern lck_grp_t *g_pDarwinLockGroup;
+
+/* initterm-r0drv-darwin.cpp. */
+typedef uint32_t *  (*PFNR0DARWINASTPENDING)(void);
+typedef void        (*PFNR0DARWINCPUINTERRUPT)(int);
+extern lck_grp_t                  *g_pDarwinLockGroup;
+extern PFNR0DARWINASTPENDING       g_pfnR0DarwinAstPending;
+extern PFNR0DARWINCPUINTERRUPT     g_pfnR0DarwinCpuInterrupt;
+
+/* threadpreempt-r0drv-darwin.cpp */
 int  rtThreadPreemptDarwinInit(void);
 void rtThreadPreemptDarwinTerm(void);
+
 RT_C_DECLS_END
 
 
