@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 37040 2011-05-11 16:42:48Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 37041 2011-05-11 16:54:32Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -110,12 +110,9 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 #if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
     __asm__ volatile("movl %%gs:%P1,%0\n\t"
                      : "=r" (ast_pending)
-                     : "i"  (7*sizeof(void*) + (7 + (ARCH_BITS == 64)) *sizeof(int)) );
+                     : "i"  (__builtin_offsetof(struct my_cpu_data_x86, cpu_pending_ast)) );
 #else
-# error fixme.
-    cpu_data_t *pCpu = current_cpu_datap(void);
-    AssertCompileMemberOffset(cpu_data_t, cpu_pending_ast, 7*sizeof(void*) + 7*sizeof(int));
-    cpu_pending_ast = pCpu->cpu_pending_ast;
+# error "Port me"
 #endif
     AssertMsg(!(ast_pending & UINT32_C(0xfffff000)),("%#x\n", ast_pending));
     return (ast_pending & (AST_PREEMPT | AST_URGENT)) != 0;

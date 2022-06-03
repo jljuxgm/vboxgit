@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 37041 2011-05-11 16:54:32Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -109,6 +109,30 @@ extern kern_return_t thread_terminate(thread_t);
 /* osfmk/i386/mp.h */
 extern void mp_rendezvous(void (*)(void *), void (*)(void *), void (*)(void *), void *);
 extern void mp_rendezvous_no_intrs(void (*)(void *), void *);
+
+/* osfmk/i386/cpu_data.h */
+struct my_cpu_data_x86
+{
+    struct my_cpu_data_x86 *cpu_this;
+    thread_t                cpu_active_thread;
+    void                   *cpu_int_state;
+    vm_offset_t             cpu_active_stack;
+    vm_offset_t             cpu_kernel_stack;
+    vm_offset_t             cpu_int_stack_top;
+    int                     cpu_preemption_level;
+    int                     cpu_simple_lock_count;
+    int                     cpu_interrupt_level;
+    int                     cpu_number;
+    int                     cpu_phys_number;
+    cpu_id_t                cpu_id;
+    int                     cpu_signals;
+    int                     cpu_mcount_off;
+    /*ast_t*/uint32_t       cpu_pending_ast;
+    int                     cpu_type;
+    int                     cpu_subtype;
+    int                     cpu_threadtype;
+    int                     cpu_running;
+};
 
 /* osfmk/i386/cpu_number.h */
 extern int cpu_number(void);
