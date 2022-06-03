@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37455 2011-06-14 20:09:32Z vboxsync $
+# $Id: Makefile.kmk 37458 2011-06-14 21:15:32Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service testcases.
 #
@@ -20,9 +20,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_SDK)
 
- ifneq ($(KBUILD_TARGET),win)
-  PROGRAMS += tstClipboardServiceHost
- endif
+ PROGRAMS += tstClipboardServiceHost
 
  tstClipboardServiceHost_TEMPLATE = VBOXR3TSTEXE
  tstClipboardServiceHost_DEFS     = VBOX_WITH_HGCM UNIT_TEST
