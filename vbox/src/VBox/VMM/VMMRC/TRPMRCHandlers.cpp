@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 40453 2012-03-13 18:38:06Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 40486 2012-03-15 15:02:35Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -993,6 +993,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFram
         VBOXSTRICTRC rcStrict = IOMRCIOPortHandler(pVM, pRegFrame, &Cpu);
         if (IOM_SUCCESS(rcStrict))
             pRegFrame->rip += cbOp;
+        rc = VBOXSTRICTRC_TODO(rcStrict);
         return trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
     }
 
