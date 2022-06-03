@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvTool.cpp 37047 2011-05-12 10:29:26Z vboxsync $ */
+/* $Id: VBoxDrvTool.cpp 37490 2011-06-16 10:58:27Z vboxsync $ */
 /** @file
  * Windows Driver R0 Tooling.
  */
@@ -186,7 +186,7 @@ VBOXDRVTOOL_DECL(VOID) VBoxDrvToolRefWaitEqual(PVBOXDRVTOOL_REF pRef, uint32_t u
         Assert(cRefs >= u32Val);
         Assert(cRefs < UINT32_MAX/2);
 
-        KeDelayExecutionThread(KernelMode, TRUE, &Interval);
+        KeDelayExecutionThread(KernelMode, FALSE, &Interval);
     }
 }
 
