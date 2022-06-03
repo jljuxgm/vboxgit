@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 36124 2011-03-01 16:44:58Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 36138 2011-03-03 10:44:55Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -107,7 +107,7 @@ DECLHIDDEN(int)  vboxPciOsDevGetRegionInfo(PVBOXRAWPCIINS pIns,
                                            RTHCPHYS       *pRegionStart,
                                            uint64_t       *pu64RegionSize,
                                            bool           *pfPresent,
-                                           bool           *pfMmio);
+                                           uint32_t       *pfFlags);
 DECLHIDDEN(int)  vboxPciOsDevMapRegion(PVBOXRAWPCIINS pIns,
                                        int32_t        iRegion,
                                        RTHCPHYS       pRegionStart,
