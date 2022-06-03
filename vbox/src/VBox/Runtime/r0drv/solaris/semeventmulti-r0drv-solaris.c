@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 36190 2011-03-07 16:28:50Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 36286 2011-03-15 15:01:45Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -129,6 +129,7 @@ DECLINLINE(void) rtR0SemEventMultiSolRetain(PRTSEMEVENTMULTIINTERNAL pThis)
 {
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
     Assert(cRefs && cRefs < 100000);
+    NOREF(cRefs);
 }
 
 
