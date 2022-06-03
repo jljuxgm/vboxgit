@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 35907 2011-02-09 11:20:31Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 37175 2011-05-21 20:51:24Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -463,9 +463,6 @@ DECLCALLBACK(int) vmmdevSetVisibleRegion(PPDMIVMMDEVCONNECTOR pInterface, uint32
 {
     PDRVMAINVMMDEV pDrv = PDMIVMMDEVCONNECTOR_2_MAINVMMDEV(pInterface);
     Console *pConsole = pDrv->pVMMDev->getParent();
-
-    if (!cRect)
-        return VERR_INVALID_PARAMETER;
 
     /* Forward to Display, which calls corresponding framebuffers. */
     pConsole->getDisplay()->handleSetVisibleRegion(cRect, pRect);
