@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 38489 2011-08-18 11:02:30Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -201,7 +201,10 @@ int main()
     PRINT_OFFSET(VM, cpum);
     CHECK_PADDING_VM(64, cpum);
     CHECK_PADDING_VM(64, vmm);
+    PRINT_OFFSET(VM, pgm);
+    PRINT_OFFSET(VM, pgm.s.CritSect);
     CHECK_PADDING_VM(64, pgm);
+    PRINT_OFFSET(VM, hwaccm);
     CHECK_PADDING_VM(64, hwaccm);
     CHECK_PADDING_VM(64, trpm);
     CHECK_PADDING_VM(64, selm);
