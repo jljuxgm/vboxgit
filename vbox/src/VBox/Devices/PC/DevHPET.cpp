@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 37506 2011-06-16 16:39:53Z vboxsync $ */
+/* $Id: DevHPET.cpp 37507 2011-06-16 16:41:47Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -378,7 +378,7 @@ static void hpetProgramTimer(HpetTimer *pHpetTimer)
 }
 
 
-/* -=-=-=-=-=- Register accesses -=-=-=-=-=- */
+/* -=-=-=-=-=- Timer register accesses -=-=-=-=-=- */
 
 
 /**
@@ -567,7 +567,7 @@ static int hpetTimerRegWrite32(HpetState *pThis, uint32_t iTimerNo, uint32_t iTi
 }
 
 
-
+/* -=-=-=-=-=- Non-timer register accesses -=-=-=-=-=- */
 
 
 /**
