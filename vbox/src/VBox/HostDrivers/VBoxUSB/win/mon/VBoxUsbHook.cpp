@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbHook.cpp 37042 2011-05-11 19:04:07Z vboxsync $ */
+/* $Id: VBoxUsbHook.cpp 37083 2011-05-13 19:24:39Z vboxsync $ */
 /** @file
  * Driver Dispatch Table Hooking API
  */
@@ -50,9 +50,12 @@ NTSTATUS VBoxUsbHookUninstall(PVBOXUSBHOOK_ENTRY pHook)
     Assert(pfnOldVal == pHook->pfnHook);
     if (pfnOldVal != pHook->pfnHook)
     {
-        AssertFailed();
+        AssertMsgFailed(("unhook failed!!!\n"));
         /* this is bad! this could happen if someone else has chained another hook,
-         * return the failure and don't do anything else */
+         * or (which is even worse) restored the "initial" entry value it saved when doing a hooking before us
+         * return the failure and don't do anything else
+         * the best thing to do if this happens is to leave everything as is
+         * and to prevent the driver from being unloaded to ensure no one references our unloaded hook routine */
         KeReleaseSpinLock(&pHook->Lock, Irql);
         return STATUS_UNSUCCESSFUL;
     }
