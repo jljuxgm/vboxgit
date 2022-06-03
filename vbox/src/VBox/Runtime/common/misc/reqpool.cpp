@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 39634 2011-12-15 20:50:46Z vboxsync $ */
+/* $Id: reqpool.cpp 39636 2011-12-16 00:19:35Z vboxsync $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -364,7 +364,7 @@ static DECLCALLBACK(int) rtReqPoolThreadProc(RTTHREAD hThreadSelf, void *pvArg)
         /* Update the global statistics. */
         if (cReqPrevProcessedStat != pThread->cReqProcessed)
         {
-            pPool->cReqProcessed          = pThread->cReqProcessed         - cReqPrevProcessedStat;
+            pPool->cReqProcessed         += pThread->cReqProcessed         - cReqPrevProcessedStat;
             cReqPrevProcessedStat         = pThread->cReqProcessed;
             pPool->cNsTotalReqProcessing += pThread->cNsTotalReqProcessing - cNsPrevTotalReqProcessing;
             cNsPrevTotalReqProcessing     = pThread->cNsTotalReqProcessing;

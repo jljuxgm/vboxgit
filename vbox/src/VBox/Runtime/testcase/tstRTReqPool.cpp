@@ -1,4 +1,4 @@
-/* $Id: tstRTReqPool.cpp 39633 2011-12-15 16:46:31Z vboxsync $ */
+/* $Id: tstRTReqPool.cpp 39636 2011-12-16 00:19:35Z vboxsync $ */
 /** @file
  * IPRT Testcase - Request Thread Pool.
  */
@@ -78,8 +78,11 @@ static void test1(void)
     RTTESTI_CHECK(RTReqRelease(hReq) == 0);
     RTTESTI_CHECK(RTReqPoolGetStat(hPool, RTREQPOOLSTAT_REQUESTS_FREE) == 1);
 
+    RTTESTI_CHECK(RTReqPoolGetStat(hPool, RTREQPOOLSTAT_REQUESTS_PROCESSED) == 0);
     RTTESTI_CHECK_RC(RTReqPoolCallWait(hPool, (PFNRT)RTThreadSleep, 1, (RTMSINTERVAL)0), VINF_SUCCESS);
     RTTESTI_CHECK_RC(RTReqPoolCallWait(hPool, (PFNRT)RTThreadSleep, 1, (RTMSINTERVAL)2), VINF_SUCCESS);
+    RTTESTI_CHECK_RC(RTReqPoolCallWait(hPool, (PFNRT)RTThreadSleep, 1, (RTMSINTERVAL)3), VINF_SUCCESS);
+    RTTESTI_CHECK(RTReqPoolGetStat(hPool, RTREQPOOLSTAT_REQUESTS_PROCESSED) > 1);
     RTTESTI_CHECK(RTReqPoolGetStat(hPool, RTREQPOOLSTAT_THREADS) == 1);
 
     /* Use no wait requests to maximize the number of worker threads. */
