@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 36155 2011-03-03 18:12:18Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 36210 2011-03-08 17:40:10Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -2276,13 +2276,16 @@ RTDECL(int) RTCoreDumperSetup(const char *pszOutputDir, uint32_t fFlags)
                               | RTCOREDUMPER_FLAGS_LIVE_CORE)),
                  VERR_INVALID_PARAMETER);
 
+
+    /*
+     * Setup/change the core dump directory if specified.
+     */
     RT_ZERO(g_szCoreDumpDir);
     if (pszOutputDir)
     {
-        if (RTDirExists(pszOutputDir))
-            RTStrCopy(g_szCoreDumpDir, sizeof(g_szCoreDumpDir), pszOutputDir);
-        else
+        if (!RTDirExists(pszOutputDir))
             return VERR_NOT_A_DIRECTORY;
+        RTStrCopy(g_szCoreDumpDir, sizeof(g_szCoreDumpDir), pszOutputDir);
     }
 
     /*
