@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 39130 2011-10-27 16:36:48Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 39150 2011-10-31 13:37:06Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -164,16 +164,6 @@ typedef struct VBOXWDDMDISP_SWAPCHAIN
     VBOXWDDMDISP_RENDERTGT aRTs[VBOXWDDMDISP_MAX_SWAPCHAIN_SIZE];
 } VBOXWDDMDISP_SWAPCHAIN, *PVBOXWDDMDISP_SWAPCHAIN;
 
-
-//typedef struct VBOXWDDMDISP_SCREEN
-//{
-//    RTLISTNODE SwapchainList;
-//    IDirect3DDevice9 *pDevice9If;
-////    struct VBOXWDDMDISP_RESOURCE *pDstSharedRc;
-//    uint32_t iRenderTargetFrontBuf;
-//    HWND hWnd;
-//} VBOXWDDMDISP_SCREEN, *PVBOXWDDMDISP_SCREEN;
-
 typedef struct VBOXWDDMDISP_DEVICE
 {
     HANDLE hDevice;
@@ -204,6 +194,7 @@ typedef struct VBOXWDDMDISP_DEVICE
 
     /* no lock is needed for this since we're guaranteed the per-device calls are not reentrant */
     RTLISTNODE DirtyAllocList;
+
     UINT cRTs;
     struct VBOXWDDMDISP_ALLOCATION * apRTs[1];
 } VBOXWDDMDISP_DEVICE, *PVBOXWDDMDISP_DEVICE;

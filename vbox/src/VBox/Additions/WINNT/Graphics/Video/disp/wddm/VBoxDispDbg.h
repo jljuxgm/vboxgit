@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 39130 2011-10-27 16:36:48Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 39150 2011-10-31 13:37:06Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -200,6 +200,10 @@ extern DWORD g_VBoxVDbgPid;
 
 #define VBOXVDBG_CHECK_EXE(_pszName) (vboxVDbgDoCheckExe(_pszName))
 #define VBOXVDBG_IS_DWM() (!!(g_VBoxVDbgFIsDwm >=0 ? g_VBoxVDbgFIsDwm : (g_VBoxVDbgFIsDwm = VBOXVDBG_CHECK_EXE("dwm.exe"))))
+
+#define VBOXVDBG_ASSERT_IS_DWM(_bDwm) do { \
+        Assert((!VBOXVDBG_IS_DWM()) == (!(_bDwm))); \
+    } while (0)
 
 #define VBOXVDBG_IS_DUMP_ALLOWED(_type) ( \
         g_VBoxVDbgFDump##_type \
@@ -502,6 +506,7 @@ extern DWORD g_VBoxVDbgPid;
 #define VBOXVDBG_CHECK_SMSYNC(_pRc) do { } while (0)
 #define VBOXVDBG_CHECK_BLT(_opBlt, _pSrcAlloc, _pSrcSurf, _pSrcRect, _pDstAlloc, _pDstSurf, _pDstRect) do { } while (0)
 #define VBOXVDBG_CHECK_TEXBLT(_opTexBlt, _pSrcRc, _pSrcRect, _pDstRc, _pDstPoint) do { } while (0)
+#define VBOXVDBG_ASSERT_IS_DWM(_bDwm) do {} while (0)
 #endif
 
 

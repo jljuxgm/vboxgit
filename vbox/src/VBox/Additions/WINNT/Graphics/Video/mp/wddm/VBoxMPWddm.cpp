@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 38982 2011-10-12 20:20:21Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 39150 2011-10-31 13:37:06Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2112,8 +2112,6 @@ NTSTATUS APIENTRY DxgkDdiCreateAllocation(
         }
         else
             Status = STATUS_INVALID_PARAMETER;
-        /* @todo: Implement Resource Data Handling */
-        LOGREL(("WARNING: Implement Resource Data Handling"));
     }
 
     if (Status == STATUS_SUCCESS)
@@ -5122,6 +5120,8 @@ DxgkDdiPresent(
 
                     vboxWddmPopulateDmaAllocInfo(&pBlt->Blt.SrcAlloc, pSrcAlloc, pSrc);
                     vboxWddmPopulateDmaAllocInfo(&pBlt->Blt.DstAlloc, pDstAlloc, pDst);
+
+                    ASSERT_WARN(!pSrcAlloc->fRcFlags.SharedResource, ("Shared Allocatoin used in Present!"));
 
                     pBlt->Blt.SrcRect = pPresent->SrcRect;
                     pBlt->Blt.DstRects.ContextRect = pPresent->DstRect;
