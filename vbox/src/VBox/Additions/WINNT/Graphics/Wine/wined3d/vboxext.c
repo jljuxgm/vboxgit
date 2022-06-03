@@ -1,4 +1,4 @@
-/* $Id: vboxext.c 38366 2011-08-09 06:55:53Z vboxsync $ */
+/* $Id: vboxext.c 39257 2011-11-09 15:30:48Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D
@@ -184,6 +184,8 @@ HRESULT VBoxExtWorkerDestroy(PVBOXEXT_WORKER pWorker)
     DeleteCriticalSection(&pWorker->CritSect);
 
     FreeLibrary(pWorker->hSelf);
+
+    CloseHandle(pWorker->hThread);
 
     return S_OK;
 }
