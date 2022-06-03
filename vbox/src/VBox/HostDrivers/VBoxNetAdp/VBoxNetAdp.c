@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp.c 36907 2011-05-02 11:02:23Z vboxsync $ */
+/* $Id: VBoxNetAdp.c 36909 2011-05-02 13:10:10Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Common Code.
  */
@@ -601,8 +601,9 @@ int vboxNetAdpCreate(PINTNETTRUNKFACTORY pIfFactory, PVBOXNETADP *ppNew)
         if (vboxNetAdpCheckAndSetState(pThis, kVBoxNetAdpState_Invalid, kVBoxNetAdpState_Transitional))
         {
             /* Found an empty slot -- use it. */
+            uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
+            Assert(cRefs == 1);
             RTMAC Mac;
-            Assert(ASMAtomicIncU32(&pThis->cRefs) == 1);
             vboxNetAdpComposeMACAddress(pThis, &Mac);
             rc = vboxNetAdpOsCreate(pThis, &Mac);
             *ppNew = pThis;
