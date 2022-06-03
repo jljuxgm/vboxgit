@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38005 2011-07-18 10:17:43Z vboxsync $
+# $Id: Makefile.kmk 38082 2011-07-20 14:26:24Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -153,7 +153,7 @@ ifndef VBOX_ONLY_TESTSUITE
  # The packing target rule, but only if we're on the local build box.
  # (VBOX_WITHOUT_ADDITIONS_ISO is used by the additions build box, see the root makefile.)
  ifndef VBOX_WITHOUT_ADDITIONS_ISO
-  PACKING += $(PATH_BIN)/additions/VBoxGuestAdditions.iso
+  PACKING += $(PATH_STAGE_BIN)/additions/VBoxGuestAdditions.iso
  endif
 endif # !VBOX_ONLY_TESTSUITE
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38002 2011-07-18 10:16:41Z vboxsync $
+# $Id: Makefile.kmk 38082 2011-07-20 14:26:24Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -251,7 +251,7 @@ VirtualBox_LIBS.win       = \
 	$(PATH_SDK_DXSDK_LIB)/ddraw.lib \
 	$(PATH_SDK_DXSDK_LIB)/dxguid.lib
 if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # X11
- VirtualBox_LIBS         += $(PATH_DLL)/VBoxKeyboard$(VBOX_SUFF_DLL)
+ VirtualBox_LIBS         += $(PATH_STAGE_DLL)/VBoxKeyboard$(VBOX_SUFF_DLL)
 endif
 
 if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_GUI_USE_QGL)

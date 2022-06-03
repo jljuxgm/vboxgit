@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37999 2011-07-18 10:14:45Z vboxsync $
+# $Id: Makefile.kmk 38082 2011-07-20 14:26:24Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -279,7 +279,7 @@ endif
   vboxwebsrv_CXXFLAGS += -Wno-shadow
  endif
  vboxwebsrv_LIBS += \
-	$(PATH_LIB)/vboxsoap$(VBOX_SUFF_LIB) \
+	$(PATH_STAGE_LIB)/vboxsoap$(VBOX_SUFF_LIB) \
 	$(VBOX_GSOAP_CXX_LIBS)
  vboxwebsrv_LIBS.solaris += socket nsl
  vboxwebsrv_SOURCES = \
@@ -376,7 +376,7 @@ $$(VBOX_JWS_JAR): $(VBOX_JWS_GEN)/jwsglue.list $(VBOXWEB_WSDL) $(VBOXWEBSERVICE_
 	$(VBOXWEB_OUT_DIR) \
 	.
  webtest_LIBS += \
-	$(PATH_LIB)/vboxsoap$(VBOX_SUFF_LIB) \
+	$(PATH_STAGE_LIB)/vboxsoap$(VBOX_SUFF_LIB) \
 	$(VBOX_GSOAP_CXX_LIBS)
  webtest_LIBS.solaris += nsl
  webtest_SOURCES = \
