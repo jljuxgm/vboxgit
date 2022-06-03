@@ -1,10 +1,10 @@
-/* $Id: VBoxManageStorageController.cpp 35389 2011-01-03 13:21:55Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 36652 2011-04-12 12:09:05Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1035,7 +1035,7 @@ int handleStorageController(HandlerArg *a)
                 }
                 else
                 {
-                    errorArgument("Invalid --bootable argument '%s'", pszHostIOCache);
+                    errorArgument("Invalid --bootable argument '%s'", pszBootable);
                     rc = E_FAIL;
                 }
             }
