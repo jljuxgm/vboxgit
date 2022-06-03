@@ -1,4 +1,4 @@
-/* $Id: dbg-r0drv-solaris.c 40700 2012-03-28 16:57:10Z vboxsync $ */
+/* $Id: dbg-r0drv-solaris.c 40701 2012-03-28 16:58:05Z vboxsync $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
@@ -185,7 +185,7 @@ RTR0DECL(uint32_t) RTR0DbgKrnlInfoRelease(RTDBGKRNLINFO hKrnlInfo)
     if (cRefs == 0)
     {
         pThis->u32Magic = ~RTDBGKRNLINFO_MAGIC;
-        rtR0DbgKrnlInfoModRelease(pThis->pGenUnixCTF, pThis->pGenUnixCTF);
+        rtR0DbgKrnlInfoModRelease(pThis->pGenUnixMod, pThis->pGenUnixCTF);
         RTMemFree(pThis);
     }
     return cRefs;
