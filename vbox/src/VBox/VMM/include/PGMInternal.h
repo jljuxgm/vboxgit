@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 36902 2011-04-30 11:57:28Z vboxsync $ */
+/* $Id: PGMInternal.h 36903 2011-04-30 11:58:12Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1265,7 +1265,8 @@ typedef PGMLIVESAVERAMPAGE *PPGMLIVESAVERAMPAGE;
 #define PGMLIVSAVEPAGE_MAX_DIRTIED 0x00fffff0
 
 
-//#define PGM_USE_RAMRANGE_SEARCH_TREES
+/** Enables the RAM range search trees. */
+#define PGM_USE_RAMRANGE_SEARCH_TREES
 
 /**
  * RAM range for GC Phys to HC Phys conversion.
