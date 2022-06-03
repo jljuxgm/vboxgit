@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38523 2011-08-25 10:20:51Z vboxsync $
+# $Id: Config.kmk 38567 2011-08-30 11:44:18Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4764,6 +4764,7 @@ $(VBOX_PRODUCT_HEADER): $(VBOX_VERSION_STAMP)
 	$(QUIET)$(APPEND) $@.tmp '#define VBOX_VENDOR "$(VBOX_VENDOR)"'
 	$(QUIET)$(APPEND) $@.tmp '#define VBOX_VENDOR_SHORT "$(VBOX_VENDOR_SHORT)"'
 	$(QUIET)$(APPEND) $@.tmp '#define VBOX_PRODUCT "$(VBOX_PRODUCT)"'
+	$(QUIET)$(APPEND) $@.tmp '#define VBOX_BUILD_PUBLISHER "$(VBOX_BUILD_PUBLISHER)"'
 	$(QUIET)$(APPEND) $@.tmp '#define VBOX_C_YEAR "$(VBOX_C_YEAR)"'
 	$(QUIET)$(APPEND) $@.tmp ''
 	$(QUIET)$(APPEND) $@.tmp '#endif'
@@ -4831,7 +4832,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38523 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38567 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
