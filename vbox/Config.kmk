@@ -1,4 +1,4 @@
-# $Id: Config.kmk 39197 2011-11-04 10:05:34Z vboxsync $
+# $Id: Config.kmk 39198 2011-11-04 10:18:31Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -415,7 +415,9 @@ VBOX_WITH_EFI = 1
 # Include the EFI firmware into the package
 VBOX_WITH_EFIFW_PACKING = 1
 # Use kStuff for MACH-O and LX binary loading.
-IPRT_WITH_KSTUFF = 1
+ifneq ($(KBUILD_TARGET),win) # temporarily, build fixing needed.
+ IPRT_WITH_KSTUFF = 1
+endif
 # Enable Crossbow support for Solaris TAP driver.
 VBOX_WITH_CROSSBOW = 1
 # Enable setuid wrapper for Solaris host DVD.
@@ -4844,7 +4846,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39197 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39198 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
