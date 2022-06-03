@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB-solaris.c 41687 2012-06-13 17:01:16Z vboxsync $ */
+/* $Id: VBoxUSB-solaris.c 41688 2012-06-13 17:03:42Z vboxsync $ */
 /** @file
  * VirtualBox USB Client Driver, Solaris Hosts.
  */
@@ -3161,7 +3161,7 @@ LOCAL void vboxUSBSolarisCtrlXferCompleted(usb_pipe_handle_t pPipe, usb_ctrl_req
 
             /*
              * Should be safe to update pMsg here without the state mutex, see vboxUSBSolarisSendURB()
-             * and vboxUSBSolarisQueueUURB() as the URB state is (still) not VBOXUSB_URB_STATE_FREE.
+             * and vboxUSBSolarisQueueURB() as the URB state is (still) not VBOXUSB_URB_STATE_FREE.
              */
             pUrb->pMsg = pSetupMsg;
             pUrb->pMsg->b_cont = pReq->ctrl_data;
