@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 38518 2011-08-25 07:46:41Z vboxsync $ */
+/* $Id: VHD.cpp 38519 2011-08-25 07:51:48Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1460,6 +1460,7 @@ static int vhdRead(void *pBackendData, uint64_t uOffset, void *pvBuf,
          */
         if (pImage->pBlockAllocationTable[cBlockAllocationTableEntry] == ~0U)
             rc = VERR_VD_BLOCK_FREE;
+        else
         {
             uVhdOffset = ((uint64_t)pImage->pBlockAllocationTable[cBlockAllocationTableEntry] + pImage->cDataBlockBitmapSectors + cBATEntryIndex) * VHD_SECTOR_SIZE;
             LogFlowFunc(("uVhdOffset=%llu cbBuf=%u\n", uVhdOffset, cbBuf));
