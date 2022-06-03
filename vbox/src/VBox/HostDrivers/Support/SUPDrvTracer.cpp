@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40880 2012-04-11 23:26:39Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 40881 2012-04-11 23:33:21Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -347,11 +347,15 @@ static int supdrvVtgValidate(PVTGOBJHDR pVtgHdr, size_t cbVtgObj, const uint8_t 
                             pArgList->aArgs[iArg].fType, iArg, i);
                 return rc;
             }
-            if (VTG_TYPE_IS_LARGE(pArgList->aArgs[iArg].fType))
+            if (VTG_TYPE_IS_LARGE(pArgList->aArgs[iArg].fType) && iArg >= 5)
                 fHaveLargeArgs = true;
         }
         if ((uint8_t)fHaveLargeArgs != pArgList->fHaveLargeArgs)
+        {
+            SUPR0Printf("supdrvVtgValidate: VERR_SUPDRV_TRACER_BAD_ARG_FLAGS - fType=%#x iProbe=%u fHaveLargeArgs=%d expected %d\n",
+                        pArgList->aArgs[iArg].fType, i, pArgList->fHaveLargeArgs, fHaveLargeArgs);
             return VERR_SUPDRV_VTG_BAD_PROBE;
+        }
     }
 
     /*
