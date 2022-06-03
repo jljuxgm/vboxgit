@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 37191 2011-05-24 05:47:47Z vboxsync $ */
+/* $Id: DevCodec.cpp 37482 2011-06-16 04:09:27Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -1867,7 +1867,7 @@ static DECLCALLBACK(int)codecLoadV1(PCODECState pCodecState, PSSMHANDLE pSSMHand
 int codecLoadState(CODECState *pCodecState, PSSMHANDLE pSSMHandle, uint32_t uVersion)
 {
     int rc;
-    if (uVersion == 1)
+    if (uVersion == HDA_SSM_VERSION_1)
     {
 #if RT_ARCH_X86
         if (SSMR3HandleHostBits(pSSMHandle) == 32)

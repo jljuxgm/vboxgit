@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 37190 2011-05-24 03:23:48Z vboxsync $ */
+/* $Id: DevCodec.h 37482 2011-06-16 04:09:27Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -529,7 +529,9 @@ int codecSaveState(CODECState *pCodecState, PSSMHANDLE pSSMHandle);
 int codecLoadState(CODECState *pCodecState, PSSMHANDLE pSSMHandle, uint32_t uVersion);
 int codecOpenVoice(CODECState *pCodecState, ENMSOUNDSOURCE enmSoundSource, audsettings_t *pAudioSettings);
 
-#define HDA_SSM_VERSION 2
+#define HDA_SSM_VERSION 3
+#define HDA_SSM_VERSION_1 1
+#define HDA_SSM_VERSION_2 2
 
 # ifdef VBOX_WITH_HDA_CODEC_EMU
 /* */

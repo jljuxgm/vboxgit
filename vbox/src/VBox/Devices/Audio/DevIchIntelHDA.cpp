@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 37190 2011-05-24 03:23:48Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 37482 2011-06-16 04:09:27Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -417,6 +417,19 @@ typedef struct HDABDLEDESC
     uint32_t    cbUnderFifoW;
     uint8_t     au8HdaBuffer[HDA_SDONFIFO_256B + 1];
 } HDABDLEDESC, *PHDABDLEDESC;
+
+static SSMFIELD const g_aHdaBDLEDescFields[] =
+{
+    SSMFIELD_ENTRY(     HDABDLEDESC, u64BdleCviAddr),
+    SSMFIELD_ENTRY(     HDABDLEDESC, u32BdleMaxCvi),
+    SSMFIELD_ENTRY(     HDABDLEDESC, u32BdleCvi),
+    SSMFIELD_ENTRY(     HDABDLEDESC, u32BdleCviLen),
+    SSMFIELD_ENTRY(     HDABDLEDESC, u32BdleCviPos),
+    SSMFIELD_ENTRY(     HDABDLEDESC, fBdleCviIoc),
+    SSMFIELD_ENTRY(     HDABDLEDESC, cbUnderFifoW),
+    SSMFIELD_ENTRY(     HDABDLEDESC, au8HdaBuffer),
+    SSMFIELD_ENTRY_TERM()
+};
 
 typedef struct HDASTREAMTRANSFERDESC
 {
@@ -1974,9 +1987,9 @@ static DECLCALLBACK(int) hdaSaveExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle)
     /* Save MMIO registers */
     SSMR3PutMem (pSSMHandle, pThis->hda.au32Regs, sizeof (pThis->hda.au32Regs));
     /* Save HDA dma counters */
-    SSMR3PutMem (pSSMHandle, &pThis->hda.stOutBdle, sizeof (HDABDLEDESC));
-    SSMR3PutMem (pSSMHandle, &pThis->hda.stMicBdle, sizeof (HDABDLEDESC));
-    SSMR3PutMem (pSSMHandle, &pThis->hda.stInBdle, sizeof (HDABDLEDESC));
+    SSMR3PutStruct (pSSMHandle, &pThis->hda.stOutBdle, g_aHdaBDLEDescFields);
+    SSMR3PutStruct (pSSMHandle, &pThis->hda.stMicBdle, g_aHdaBDLEDescFields);
+    SSMR3PutStruct (pSSMHandle, &pThis->hda.stInBdle, g_aHdaBDLEDescFields);
     return VINF_SUCCESS;
 }
 
@@ -1994,17 +2007,26 @@ static DECLCALLBACK(int) hdaLoadExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle,
 {
     PCIINTELHDLinkState *pThis = PDMINS_2_DATA(pDevIns, PCIINTELHDLinkState *);
     /* Load Codec nodes states */
-    if (uVersion > HDA_SSM_VERSION)
-        return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     Assert (uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     codecLoadState(&pThis->hda.Codec, pSSMHandle, uVersion);
     /* Load MMIO registers */
     SSMR3GetMem (pSSMHandle, pThis->hda.au32Regs, sizeof (pThis->hda.au32Regs));
     /* Load HDA dma counters */
-    SSMR3GetMem (pSSMHandle, &pThis->hda.stOutBdle, sizeof (HDABDLEDESC));
-    SSMR3GetMem (pSSMHandle, &pThis->hda.stMicBdle, sizeof (HDABDLEDESC));
-    SSMR3GetMem (pSSMHandle, &pThis->hda.stInBdle, sizeof (HDABDLEDESC));
+    if (   uVersion == HDA_SSM_VERSION_1
+        || uVersion == HDA_SSM_VERSION_2)
+    {
+        SSMR3GetMem (pSSMHandle, &pThis->hda.stOutBdle, sizeof (HDABDLEDESC));
+        SSMR3GetMem (pSSMHandle, &pThis->hda.stMicBdle, sizeof (HDABDLEDESC));
+        SSMR3GetMem (pSSMHandle, &pThis->hda.stInBdle, sizeof (HDABDLEDESC));
+    }
+    else
+    {
+        SSMR3GetStruct (pSSMHandle, &pThis->hda.stOutBdle, g_aHdaBDLEDescFields);
+        SSMR3GetStruct (pSSMHandle, &pThis->hda.stMicBdle, g_aHdaBDLEDescFields);
+        SSMR3GetStruct (pSSMHandle, &pThis->hda.stInBdle, g_aHdaBDLEDescFields);
+    }
+
 
     AUD_set_active_in(pThis->hda.Codec.SwVoiceIn, SDCTL(&pThis->hda, 0) & HDA_REG_FIELD_FLAG_MASK(SDCTL, RUN));
     AUD_set_active_out(pThis->hda.Codec.SwVoiceOut, SDCTL(&pThis->hda, 4) & HDA_REG_FIELD_FLAG_MASK(SDCTL, RUN));
