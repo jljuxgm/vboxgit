@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 37407 2011-06-10 13:34:32Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 37445 2011-06-14 14:40:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -968,9 +968,27 @@ bool UINewHDWizardPageSummary::createHardDisk()
         return false;
     }
 
-    /* Inform everybody there is a new medium: */
+    /* Assign hardDisk field value: */
     m_hardDisk = hardDisk;
-    vboxGlobal().addMedium(VBoxMedium(m_hardDisk, VBoxDefs::MediumType_HardDisk, KMediumState_Created));
+
+    /* Depending on dialog type: */
+    switch (wizardType())
+    {
+        case UINewHDWizardType_Creating:
+        {
+            /* Inform everybody there is a new medium: */
+            vboxGlobal().addMedium(VBoxMedium(m_hardDisk, VBoxDefs::MediumType_HardDisk, KMediumState_Created));
+            break;
+        }
+        case UINewHDWizardType_Copying:
+        {
+            /* Just close the clone medium, it is not necessary yet: */
+            m_hardDisk.Close();
+            break;
+        }
+        default:
+            return false;
+    }
 
     return true;
 }
