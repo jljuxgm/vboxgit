@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 37216 2011-05-26 08:50:49Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -24,7 +24,7 @@
 
 /* generic debugging facilities & extra data checks */
 # define VBOXWDDMDISP_DEBUG
-# ifdef DEBUG_misha
+# if defined(DEBUG_misha) || defined(DEBUG_leo)
 /* for some reason when debugging with VirtualKD, user-mode DbgPrint's are discarded
  * the workaround so far is to pass the log info to the kernel driver and DbgPrint'ed from there,
  * which is enabled by this define */

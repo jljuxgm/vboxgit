@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 34887 2010-12-09 14:13:56Z vboxsync $ */
+/* $Id: icd_drv.c 37216 2011-05-26 08:50:49Z vboxsync $ */
 
 /** @file
  * VBox OpenGL windows ICD driver functions
@@ -291,8 +291,7 @@ BOOL APIENTRY DrvSwapLayerBuffers(HDC hdc, UINT fuPlanes)
 {
     if (fuPlanes == 1)
     {
-        DrvSwapBuffers(hdc);
-        return 1;
+        return DrvSwapBuffers(hdc);
     }
     else
     {
