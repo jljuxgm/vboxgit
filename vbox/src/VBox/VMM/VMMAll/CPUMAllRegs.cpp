@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 40166 2012-02-17 09:30:56Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -888,6 +888,7 @@ VMMDECL(int) CPUMQueryGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
             /* no break */
 #endif
 
+/** @todo missing CPU IA32_MTRRCAP (0xfe)! */
         default:
             /* In X2APIC specification this range is reserved for APIC control. */
             if (    idMsr >= MSR_IA32_APIC_START
