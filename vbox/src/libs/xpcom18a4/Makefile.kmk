@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38690 2011-09-08 16:12:17Z vboxsync $
+# $Id: Makefile.kmk 38692 2011-09-08 17:24:28Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -470,8 +470,13 @@ else
  libIDL_config_libs   := $(shell $(VBOX_LIBIDL_CONFIG) --libs)
  xpidl_CFLAGS = \
 	$(libIDL_config_cflags)
+ ifeq ($(BUILD_PLATFORM),linux)
  xpidl_LDFLAGS = \
 	$(filter-out -l%,$(libIDL_config_libs))
+ else
+ xpidl_LDFLAGS = \
+	$(libIDL_config_libs)
+ endif
  xpidl_LDFLAGS.linux = \
 	$(VBOX_LD_as_needed)
  xpidl_LIBS.linux += \
