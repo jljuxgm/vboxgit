@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: VBoxControl.cpp 38637 2011-09-05 13:51:53Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1616,20 +1616,6 @@ int main(int argc, char **argv)
 
     if (!fOnlyInfo && rcExit == RTEXITCODE_SUCCESS)
     {
-        /*
-         * The input is in the guest OS'es codepage (NT guarantees ACP).
-         * For VBox we use UTF-8.  For simplicity, just convert the argv[] array
-         * here.
-         */
-        /** @todo this must be done before we start checking for --help and
-         *        stuff above. */
-        for (int i = iArg; i < argc; i++)
-        {
-            char *pszConverted;
-            RTStrCurrentCPToUtf8(&pszConverted, argv[i]);
-            argv[i] = pszConverted;
-        }
-
         if (argc > iArg)
         {
             /*
@@ -1654,12 +1640,6 @@ int main(int argc, char **argv)
             rcExit = RTEXITCODE_FAILURE;
             usage();
         }
-
-        /*
-         * Free converted argument vector
-         */
-        for (int i = iArg; i < argc; i++)
-            RTStrFree(argv[i]);
     }
 
     /*
