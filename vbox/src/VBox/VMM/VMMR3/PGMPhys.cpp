@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 36902 2011-04-30 11:57:28Z vboxsync $ */
+/* $Id: PGMPhys.cpp 36911 2011-05-02 14:21:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -965,9 +965,9 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
         {
             PPGMPAGE pPage = pgmPhysGetPage(pVM, paPhysPage[i]);
             if (    pPage == NULL
-                ||  pPage->uTypeY != PGMPAGETYPE_RAM)
+                ||  PGM_PAGE_GET_TYPE(pPage) != PGMPAGETYPE_RAM)
             {
-                Log(("pgmR3PhysChangeMemBalloonRendezvous: invalid physical page %RGp pPage->u3Type=%d\n", paPhysPage[i], (pPage) ? pPage->uTypeY : 0));
+                Log(("pgmR3PhysChangeMemBalloonRendezvous: invalid physical page %RGp pPage->u3Type=%d\n", paPhysPage[i], pPage ? PGM_PAGE_GET_TYPE(pPage) : 0));
                 break;
             }
 
@@ -1005,7 +1005,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3PhysChangeMemBalloonRendezvous(PVM pVM, P
         for (unsigned i = 0; i < cPages; i++)
         {
             PPGMPAGE pPage = pgmPhysGetPage(pVM, paPhysPage[i]);
-            AssertBreak(pPage && pPage->uTypeY == PGMPAGETYPE_RAM);
+            AssertBreak(pPage && PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_RAM);
 
             LogFlow(("Free ballooned page: %RGp\n", paPhysPage[i]));
 
