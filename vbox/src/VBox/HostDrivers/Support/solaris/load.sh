@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: load.sh 40614 2012-03-25 19:33:11Z vboxsync $
+# $Id: load.sh 40618 2012-03-25 19:51:16Z vboxsync $
 ## @file
 # For development.
 #
@@ -41,7 +41,7 @@ if [ ! -f "$DRVFILE.conf" ]; then
 fi
 
 SUDO=sudo
-set -x
+#set -x
 
 # Unload driver that may depend on the driver we're going to (re-)load 
 # as well as the driver itself.
