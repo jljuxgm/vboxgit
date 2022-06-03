@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 38602 2011-09-01 17:10:23Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 38604 2011-09-01 18:33:01Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -182,7 +182,7 @@ typedef struct VBOXGUESTDEVEXT
 #ifdef ___VBoxGuest_win_h
         VBOXGUESTDEVEXTWIN          s;
 #endif
-        uint8_t                     padding[256];      /* Multiple of 64; fix me! */
+        uint8_t                     padding[320];      /* Multiple of 64; fix me! */
     } win;
 
 } VBOXGUESTDEVEXT;
