@@ -1,4 +1,4 @@
-/* $Id: udp.c 41856 2012-06-21 06:00:24Z vboxsync $ */
+/* $Id: udp.c 41987 2012-07-02 16:44:45Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -203,7 +203,8 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
     if (   uh->uh_dport == RT_H2N_U16_C(TFTP_SERVER)
         && CTL_CHECK(ip->ip_dst.s_addr, CTL_TFTP))
     {
-        tftp_input(pData, m);
+        if (pData->pvTftpSessions)
+            slirpTftpInput(pData, m);
         goto done_free_mbuf;
     }
 
