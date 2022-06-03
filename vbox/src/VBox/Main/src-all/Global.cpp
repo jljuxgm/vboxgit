@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 40690 2012-03-28 15:08:56Z vboxsync $ */
+/* $Id: Global.cpp 41973 2012-06-29 15:08:30Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -211,11 +211,11 @@ const Global::OSType Global::sOSTypes[] =
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Oracle",             "Oracle",
       VBOXOSTYPE_Oracle,          VBOXOSHINT_RTCUTC | VBOXOSHINT_PAE,
-       512,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       512,  12, 12 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Oracle_64",          "Oracle (64 bit)",
       VBOXOSTYPE_Oracle_x64,      VBOXOSHINT_64BIT | VBOXOSHINT_PAE | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC,
-       512,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       512,  12, 12 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Linux",              "Other Linux",
       VBOXOSTYPE_Linux,           VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
