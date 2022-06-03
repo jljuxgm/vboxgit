@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 37828 2011-07-08 08:09:58Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 37902 2011-07-12 13:49:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -469,7 +469,8 @@ HRESULT Console::attachRawPciDevices(PVM pVM,
     ComPtr<IMachine> aMachine = machine();
 
     hrc = aMachine->COMGETTER(PciDeviceAssignments)(ComSafeArrayAsOutParam(assignments));
-    if (hrc != S_OK)
+    if (   hrc != S_OK
+        || assignments.size() < 1)
         return hrc;
 
     /*
