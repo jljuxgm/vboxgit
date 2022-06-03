@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 37200 2011-05-24 15:34:06Z vboxsync $ */
+/* $Id: Settings.cpp 37502 2011-06-16 15:20:46Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -345,6 +345,13 @@ ConfigFileBase::ConfigFileBase(const com::Utf8Str *pstrFilename)
     }
 }
 
+ConfigFileBase::ConfigFileBase(const ConfigFileBase &other)
+    : m(new Data)
+{
+    copyBaseFrom(other);
+    m->strFilename = "";
+    m->fFileExists = false;
+}
 /**
  * Clean up.
  */
