@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38257 2011-08-01 13:06:56Z vboxsync $
+# $Id: Config.kmk 38258 2011-08-01 13:38:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2370,6 +2370,16 @@ VBOX_EDIT_INF64_FN = $(SED) \
 	-e 's/^;edit-DriverVer.*/DriverVer = $(date-utc %m\/%d\/%Y),$(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)/' \
 	--output $(2) \
 	$(1)
+
+#
+# Adjust kBuild defaults.
+#
+kBuildGlobalDefaults_DEBUG_NOSTAGE.win = true
+kBuildGlobalDefaults_DEBUG_NOSTAGE.os2 = true
+if1of ($(KBUILD_TARGET), win)
+ kBuildGlobalDefaults_LD_DEBUG = split
+endif
+
 
 #
 # Default prefixes and suffixes.
@@ -4811,7 +4821,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38257 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38258 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
