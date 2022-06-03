@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 39418 2011-11-25 10:11:06Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 39427 2011-11-25 14:29:43Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -339,10 +339,7 @@ extern int          VBoxServiceWinGetComponentVersions(uint32_t uiClientID);
 
 #ifdef VBOX_WITH_GUEST_CONTROL
 /* Guest control functions. */
-extern int          VBoxServiceControlHandleCmdStartProc(uint32_t u32ClientId, uint32_t uNumParms);
-extern int          VBoxServiceControlHandleCmdSetInput(uint32_t u32ClientId, uint32_t uNumParms, size_t cbMaxBufSize);
-extern int          VBoxServiceControlHandleCmdGetOutput(uint32_t u32ClientId, uint32_t uNumParms);
-extern const PVBOXSERVICECTRLTHREAD VBoxServiceControlGetThreadLocked(uint32_t uPID);
+extern PVBOXSERVICECTRLTHREAD VBoxServiceControlGetThreadLocked(uint32_t uPID);
 extern void         VBoxServiceControlThreadUnlock(const PVBOXSERVICECTRLTHREAD pThread);
 extern int          VBoxServiceControlAssignPID(PVBOXSERVICECTRLTHREAD pThread, uint32_t uPID);
 extern void         VBoxServiceControlRemoveThread(const PVBOXSERVICECTRLTHREAD pThread);

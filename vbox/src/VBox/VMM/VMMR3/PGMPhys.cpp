@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: PGMPhys.cpp 39427 2011-11-25 14:29:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1853,7 +1853,11 @@ int pgmR3PhysRamReset(PVM pVM)
         uint32_t iPage = pRam->cb >> PAGE_SHIFT;
         AssertMsg(((RTGCPHYS)iPage << PAGE_SHIFT) == pRam->cb, ("%RGp %RGp\n", (RTGCPHYS)iPage << PAGE_SHIFT, pRam->cb));
 
+#ifndef NO_RAM_RESET
         if (!pVM->pgm.s.fRamPreAlloc)
+#else
+        if (0)
+#endif
         {
             /* Replace all RAM pages by ZERO pages. */
             while (iPage-- > 0)
@@ -1929,7 +1933,9 @@ int pgmR3PhysRamReset(PVM pVM)
                                 void *pvPage;
                                 rc = pgmPhysPageMap(pVM, pPage, pRam->GCPhys + ((RTGCPHYS)iPage << PAGE_SHIFT), &pvPage);
                                 AssertLogRelRCReturn(rc, rc);
+#ifndef NO_RAM_RESET
                                 ASMMemZeroPage(pvPage);
+#endif
                                 break;
                             }
                         }
