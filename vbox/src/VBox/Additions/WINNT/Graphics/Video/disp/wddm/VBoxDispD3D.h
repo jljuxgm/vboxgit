@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 39150 2011-10-31 13:37:06Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 39515 2011-12-02 13:41:07Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -169,7 +169,7 @@ typedef struct VBOXWDDMDISP_DEVICE
     HANDLE hDevice;
     PVBOXWDDMDISP_ADAPTER pAdapter;
     IDirect3DDevice9 *pDevice9If;
-    RTLISTNODE SwapchainList;
+    RTLISTANCHOR SwapchainList;
     UINT u32IfVersion;
     UINT uRtVersion;
     D3DDDI_DEVICECALLBACKS RtCallbacks;
@@ -193,7 +193,7 @@ typedef struct VBOXWDDMDISP_DEVICE
 #endif
 
     /* no lock is needed for this since we're guaranteed the per-device calls are not reentrant */
-    RTLISTNODE DirtyAllocList;
+    RTLISTANCHOR DirtyAllocList;
 
     UINT cRTs;
     struct VBOXWDDMDISP_ALLOCATION * apRTs[1];

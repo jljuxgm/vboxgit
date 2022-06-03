@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 39427 2011-11-25 14:29:43Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -252,11 +252,11 @@ typedef enum VBOXSERVICECTRLTHREADSTATUS
 typedef struct VBOXSERVICEVEPROPCACHE
 {
     /** The client ID for HGCM communication. */
-    uint32_t    uClientID;
+    uint32_t        uClientID;
     /** Head in a list of VBOXSERVICEVEPROPCACHEENTRY nodes. */
-    RTLISTNODE  NodeHead;
+    RTLISTANCHOR    NodeHead;
     /** Critical section for thread-safe use. */
-    RTCRITSECT  CritSect;
+    RTCRITSECT      CritSect;
 } VBOXSERVICEVEPROPCACHE;
 /** Pointer to a guest property cache. */
 typedef VBOXSERVICEVEPROPCACHE *PVBOXSERVICEVEPROPCACHE;

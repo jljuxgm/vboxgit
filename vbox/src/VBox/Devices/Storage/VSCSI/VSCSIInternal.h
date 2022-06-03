@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 38878 2011-09-27 09:07:07Z vboxsync $ */
+/* $Id: VSCSIInternal.h 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -160,8 +160,8 @@ typedef struct VSCSIIOREQINT
  */
 typedef struct VSCSIVPDPOOL
 {
-    /** List of registered pages. */
-    RTLISTNODE    ListPages;
+    /** List of registered pages (VSCSIVPDPAGE). */
+    RTLISTANCHOR    ListPages;
 } VSCSIVPDPOOL;
 /** Pointer to the VSCSI VPD page pool. */
 typedef VSCSIVPDPOOL *PVSCSIVPDPOOL;

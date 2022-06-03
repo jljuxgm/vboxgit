@@ -1,4 +1,4 @@
-/* $Id: vfschain.cpp 39438 2011-11-28 13:55:27Z vboxsync $ */
+/* $Id: vfschain.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
@@ -55,8 +55,8 @@
 static RTONCE       g_rtVfsChainElementInitOnce;
 /** Critical section protecting g_rtVfsChainElementProviderList. */
 static RTCRITSECT   g_rtVfsChainElementCritSect;
-/** List of VFS chain element providers. */
-static RTLISTNODE   g_rtVfsChainElementProviderList;
+/** List of VFS chain element providers (RTVFSCHAINELEMENTREG). */
+static RTLISTANCHOR g_rtVfsChainElementProviderList;
 
 
 /**

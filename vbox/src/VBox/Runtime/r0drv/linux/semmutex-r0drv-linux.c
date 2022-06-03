@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-linux.c 36190 2011-03-07 16:28:50Z vboxsync $ */
+/* $Id: semmutex-r0drv-linux.c 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Linux.
  */
@@ -73,7 +73,7 @@ typedef struct RTSEMMUTEXINTERNAL
     /** The number of recursions. */
     uint32_t                    cRecursions;
     /** The list of waiting threads. */
-    RTLISTNODE                  WaiterList;
+    RTLISTANCHOR                WaiterList;
     /** The current owner, NULL if none. */
     struct task_struct         *pOwnerTask;
     /** The number of references to this piece of memory.  This is used to

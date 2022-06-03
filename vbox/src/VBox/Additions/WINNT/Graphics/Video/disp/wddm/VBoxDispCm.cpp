@@ -1,4 +1,4 @@
-/* $Id: VBoxDispCm.cpp 38565 2011-08-30 09:28:15Z vboxsync $ */
+/* $Id: VBoxDispCm.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -27,7 +27,8 @@ typedef struct VBOXDISPCM_SESSION
 {
     HANDLE hEvent;
     CRITICAL_SECTION CritSect;
-    RTLISTNODE CtxList;
+    /** List of VBOXWDDMDISP_CONTEXT nodes. */
+    RTLISTANCHOR CtxList;
     bool bQueryMp;
 } VBOXDISPCM_SESSION, *PVBOXDISPCM_SESSION;
 

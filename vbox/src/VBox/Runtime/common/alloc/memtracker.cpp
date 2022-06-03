@@ -1,4 +1,4 @@
-/* $Id: memtracker.cpp 39080 2011-10-21 14:26:05Z vboxsync $ */
+/* $Id: memtracker.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * IPRT - Memory Tracker & Leak Detector.
  */
@@ -91,8 +91,8 @@ typedef struct RTMEMTRACKERUSER
     PRTMEMTRACKERINT    pTracker;
     /** Critical section protecting the memory list. */
     RTCRITSECT          CritSect;
-    /** The list of memory allocated by this user. */
-    RTLISTNODE          MemoryList;
+    /** The list of memory allocated by this user (RTMEMTRACKERHDR). */
+    RTLISTANCHOR        MemoryList;
     /** Positive numbers indicates recursion.
      * Negative numbers are used for the global user since that is shared by
      * more than one thread. */
@@ -141,7 +141,7 @@ typedef struct RTMEMTRACKERINT
     /** Critical section protecting the user list and tag database. */
     RTCRITSECT          CritSect;
     /** List of RTMEMTRACKERUSER records. */
-    RTLISTNODE          UserList;
+    RTLISTANCHOR        UserList;
     /** The next user identifier number.  */
     uint32_t            idUserNext;
     /** The TLS index used for the per thread user records. */
@@ -154,7 +154,7 @@ typedef struct RTMEMTRACKERINT
     /** The root of the tag lookup database. */
     AVLU32TREE          TagDbRoot;
     /** List of RTMEMTRACKERTAG records. */
-    RTLISTNODE          TagList;
+    RTLISTANCHOR        TagList;
 #if ARCH_BITS == 32
     /** Alignment padding. */
     uint32_t            u32Alignment;

@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -368,7 +368,7 @@ typedef struct RTDBGMODDWARF
     RTDWARFABBREV           LookupAbbrev;
 
     /** The list of compilation units (RTDWARFDIE).   */
-    RTLISTNODE              CompileUnitList;
+    RTLISTANCHOR            CompileUnitList;
 } RTDBGMODDWARF;
 /** Pointer to instance data of the DWARF reader. */
 typedef RTDBGMODDWARF *PRTDBGMODDWARF;

@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 39414 2011-11-24 21:52:15Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -655,7 +655,7 @@ static void pdmBlkCacheCommit(PPDMBLKCACHE pBlkCache)
     RTSemRWRequestWrite(pBlkCache->SemRWEntries, RT_INDEFINITE_WAIT);
 
     /* The list is moved to a new header to reduce locking overhead. */
-    RTLISTNODE ListDirtyNotCommitted;
+    RTLISTANCHOR ListDirtyNotCommitted;
     RTSPINLOCKTMP Tmp;
 
     RTListInit(&ListDirtyNotCommitted);

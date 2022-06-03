@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 36392 2011-03-24 11:20:37Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -83,7 +83,7 @@ typedef struct RTSEMEVENTINTERNAL
     /** Set if the object is signalled when there are no waiters. */
     bool                fSignaled;
     /** List of waiting and woken up threads. */
-    RTLISTNODE          WaitList;
+    RTLISTANCHOR        WaitList;
     /** The Solaris mutex protecting this structure and pairing up the with the cv. */
     kmutex_t            Mtx;
     /** The Solaris condition variable. */

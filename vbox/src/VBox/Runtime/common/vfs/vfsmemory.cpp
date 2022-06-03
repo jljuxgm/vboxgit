@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: vfsmemory.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -104,7 +104,7 @@ typedef struct RTVFSMEMFILE
     /** Pointer to the current file extent. */
     PRTVFSMEMEXTENT     pCurExt;
     /** Linked list of file extents - RTVFSMEMEXTENT. */
-    RTLISTNODE          ExtentHead;
+    RTLISTANCHOR        ExtentHead;
     /** The current extent size.
      * This is slowly grown to RTVFSMEM_MAX_EXTENT_SIZE as the file grows.  */
     uint32_t            cbExtent;

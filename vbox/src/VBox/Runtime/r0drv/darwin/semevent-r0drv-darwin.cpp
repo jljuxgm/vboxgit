@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-darwin.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
+/* $Id: semevent-r0drv-darwin.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -80,7 +80,7 @@ typedef struct RTSEMEVENTINTERNAL
     /** Set if the event object is signaled. */
     bool volatile       fSignaled;
     /** List of waiting and woken up threads. */
-    RTLISTNODE          WaitList;
+    RTLISTANCHOR        WaitList;
     /** The spinlock protecting us. */
     lck_spin_t         *pSpinlock;
 } RTSEMEVENTINTERNAL, *PRTSEMEVENTINTERNAL;

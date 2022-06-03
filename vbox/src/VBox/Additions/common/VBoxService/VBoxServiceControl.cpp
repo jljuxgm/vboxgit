@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 39437 2011-11-28 13:31:03Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -45,8 +45,8 @@ static uint32_t             g_GuestControlSvcClientID = 0;
  *  information to the host. Default is 25 processes. If 0 is specified,
  *  the maximum number of processes is unlimited. */
 static uint32_t             g_GuestControlProcsMaxKept = 25;
-/** List of guest control threads. */
-static RTLISTNODE           g_GuestControlThreads;
+/** List of guest control threads (VBOXSERVICECTRLTHREAD). */
+static RTLISTANCHOR         g_GuestControlThreads;
 /** Critical section protecting g_GuestControlExecThreads. */
 static RTCRITSECT           g_GuestControlThreadsCritSect;
 
@@ -300,7 +300,7 @@ static int VBoxServiceControlHandleCmdStartProc(uint32_t idClient, uint32_t cPar
                     if (RT_SUCCESS(rc))
                     {
                         /** @todo Put the following params into a struct! */
-                        RTLISTNODE *pThreadNode;
+                        PRTLISTNODE pThreadNode;
                         rc = VBoxServiceControlThreadStart(idClient, uContextID,
                                                            szCmd, uFlags, szArgs, cArgs,
                                                            szEnv, cbEnv, cEnvVars,
