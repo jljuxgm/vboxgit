@@ -1,4 +1,4 @@
-/* $Id: bootp.c 39409 2011-11-24 15:28:32Z vboxsync $ */
+/* $Id: bootp.c 39483 2011-12-01 03:20:24Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -695,6 +695,11 @@ static void dhcp_decode(PNATState pData, struct bootp_t *bp, const uint8_t *buf,
 
         case DHCPDECLINE:
             p = dhcp_find_option(&bp->bp_vend[0], RFC2132_REQ_ADDR);
+            if (!p)
+            {
+                Log(("NAT: RFC2132_REQ_ADDR not found\n"));
+                break;
+            }
             req_ip.s_addr = *(uint32_t *)(p + 2);
             rc = bootp_cache_lookup_ether_by_ip(pData, req_ip.s_addr, NULL);
             if (RT_FAILURE(rc))
