@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 35986 2011-02-15 17:50:34Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 35992 2011-02-16 11:23:23Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -53,6 +53,11 @@ typedef struct VBOXRAWPCIINS
     /* Host PCI address of this device. */
     uint32_t           HostPciAddress;
 
+    /** The session this interface is associated with. */
+    PSUPDRVSESSION     pSession;
+    /** The SUPR0 object id. */
+    void               *pvObj;
+    
     /** Port, given to the outside world. */
     RAWPCIDEVPORT      DevPort;
 } VBOXRAWPCIINS;

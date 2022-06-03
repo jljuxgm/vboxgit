@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 35984 2011-02-15 16:16:11Z vboxsync $ */
+/* $Id: MachineImpl.cpp 35992 2011-02-16 11:23:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5835,6 +5835,15 @@ STDMETHODIMP Machine::AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAdd
 
         HRESULT rc = checkStateDependency(MutableStateDep);
         if (FAILED(rc)) return rc;
+
+        ChipsetType_T aChipset = ChipsetType_PIIX3;
+        COMGETTER(ChipsetType)(&aChipset);
+
+        if (aChipset != ChipsetType_ICH9)
+        {
+            return setError(E_INVALIDARG,
+                            tr("Host PCI attachment only supported with ICH9 chipset"));
+        }
 
         ComObjPtr<PciDeviceAttachment> pda;
         char name[32];
