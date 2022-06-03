@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 38680 2011-09-08 07:52:08Z vboxsync $ */
+/* $Id: VSCSIInternal.h 38878 2011-09-27 09:07:07Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -148,7 +148,7 @@ typedef struct VSCSIIOREQINT
         struct
         {
             /** Array of ranges to unmap. */
-            PVSCSIRANGE    paRanges;
+            PRTRANGE       paRanges;
             /** Number of ranges. */
             unsigned       cRanges;
         } Unmap;
@@ -334,7 +334,7 @@ int vscsiIoReqTransferEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
  * @param   cRanges     Number of ranges in the array.
  */
 int vscsiIoReqUnmapEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
-                           PVSCSIRANGE paRanges, unsigned cRanges);
+                           PRTRANGE paRanges, unsigned cRanges);
 
 /**
  * Returns the current number of outstanding tasks on the given LUN.

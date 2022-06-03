@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 38680 2011-09-08 07:52:08Z vboxsync $ */
+/* $Id: vscsi.h 38878 2011-09-27 09:07:07Z vboxsync $ */
 /** @file
  * VBox storage drivers: Virtual SCSI driver
  */
@@ -93,19 +93,6 @@ typedef enum VSCSILUNTYPE
 } VSCSILUNTYPE;
 /** Pointer to a SCSI LUN type */
 typedef VSCSILUNTYPE *PVSCSILUNTYPE;
-
-/**
- * Range descriptor.
- */
-typedef struct VSCSIRANGE
-{
-    /** Start offset. */
-    uint64_t offStart;
-    /** Size of the range. */
-    size_t   cbRange;
-} VSCSIRANGE;
-/** Pointer to a range descriptor. */
-typedef VSCSIRANGE *PVSCSIRANGE;
 
 /** The LUN can handle the UNMAP command. */
 #define VSCSI_LUN_FEATURE_UNMAP          RT_BIT(0)
@@ -325,7 +312,7 @@ VBOXDDU_DECL(int) VSCSIIoReqParamsGet(VSCSIIOREQ hVScsiIoReq, uint64_t *puOffset
  * @param   ppaRanges      Where to store the pointer to the range array on success.
  * @param   pcRanges       Where to store the number of ranges on success.
  */
-VBOXDDU_DECL(int) VSCSIIoReqUnmapParamsGet(VSCSIIOREQ hVScsiIoReq, PVSCSIRANGE *ppaRanges,
+VBOXDDU_DECL(int) VSCSIIoReqUnmapParamsGet(VSCSIIOREQ hVScsiIoReq, PCRTRANGE *ppaRanges,
                                            unsigned *pcRanges);
 
 RT_C_DECLS_END

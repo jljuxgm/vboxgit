@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 38702 2011-09-09 11:33:13Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 38878 2011-09-27 09:07:07Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -446,9 +446,9 @@ static int vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
 
                     if (cBlkDesc)
                     {
-                        PVSCSIRANGE paRanges;
+                        PRTRANGE paRanges;
 
-                        paRanges = (PVSCSIRANGE)RTMemAllocZ(cBlkDesc * sizeof(PVSCSIRANGE));
+                        paRanges = (PRTRANGE)RTMemAllocZ(cBlkDesc * sizeof(RTRANGE));
                         if (paRanges)
                         {
                             for (unsigned i = 0; i < cBlkDesc; i++)

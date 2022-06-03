@@ -1,4 +1,4 @@
-/* $Id: VSCSIIoReq.cpp 38680 2011-09-08 07:52:08Z vboxsync $ */
+/* $Id: VSCSIIoReq.cpp 38878 2011-09-27 09:07:07Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: I/O request handling.
  */
@@ -87,7 +87,7 @@ int vscsiIoReqTransferEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
 
 
 int vscsiIoReqUnmapEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
-                           PVSCSIRANGE paRanges, unsigned cRanges)
+                           PRTRANGE paRanges, unsigned cRanges)
 {
     int rc = VINF_SUCCESS;
     PVSCSIIOREQINT pVScsiIoReq = NULL;
@@ -201,7 +201,7 @@ VBOXDDU_DECL(int) VSCSIIoReqParamsGet(VSCSIIOREQ hVScsiIoReq, uint64_t *puOffset
     return VINF_SUCCESS;
 }
 
-VBOXDDU_DECL(int) VSCSIIoReqUnmapParamsGet(VSCSIIOREQ hVScsiIoReq, PVSCSIRANGE *ppaRanges,
+VBOXDDU_DECL(int) VSCSIIoReqUnmapParamsGet(VSCSIIOREQ hVScsiIoReq, PCRTRANGE *ppaRanges,
                                            unsigned *pcRanges)
 {
     PVSCSIIOREQINT pVScsiIoReq = hVScsiIoReq;
