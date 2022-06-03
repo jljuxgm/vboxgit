@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 35977 2011-02-15 12:44:02Z vboxsync $ */
+/* $Id: GuestImpl.cpp 36069 2011-02-24 11:57:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -403,8 +403,11 @@ STDMETHODIMP Guest::InternalGetStatistics(ULONG *aCpuUser, ULONG *aCpuKernel, UL
     }
     else
     {
-        *aMemFreeTotal = 0;
-        *aMemShared  = 0;
+        *aMemAllocTotal   = 0;
+        *aMemFreeTotal    = 0;
+        *aMemBalloonTotal = 0;
+        *aMemSharedTotal  = 0;
+        *aMemShared       = 0;
     }
 
     return S_OK;
