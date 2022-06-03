@@ -1,4 +1,4 @@
-/* $Id: AutostartDb-generic.cpp 42069 2012-07-09 18:10:08Z vboxsync $ */
+/* $Id: AutostartDb-generic.cpp 42118 2012-07-11 19:43:11Z vboxsync $ */
 /** @file
  * VirtualBox Main - Autostart implementation.
  */
@@ -53,6 +53,8 @@ static int autostartModifyDb(bool fAutostart, bool fAddVM)
 
         if (fAddVM)
             fOpen |= RTFILE_O_OPEN_CREATE;
+        else
+            fOpen |= RTFILE_O_OPEN;
 
         rc = RTStrAPrintf(&pszFile, "%s/%s.%s",
                           AUTOSTART_DATABASE, pszUser, fAutostart ? "start" : "stop");
