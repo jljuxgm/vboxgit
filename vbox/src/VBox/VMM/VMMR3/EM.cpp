@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 40377 2012-03-06 15:00:44Z vboxsync $ */
+/* $Id: EM.cpp 41247 2012-05-10 20:07:11Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2116,7 +2116,7 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
             EMSTATE const enmNewState = pVCpu->em.s.enmState;
             if (enmOldState != enmNewState)
             {
-                VBOXVMM_EM_STATE_CHANGED(pVCpu, enmOldState, enmNewState, rc);
+                VBOXVMM_EM_STATE_CHANGED((PVMCPU)VM_R0_ADDR(pVM, pVCpu), enmOldState, enmNewState, rc);
 
                 /* Clear MWait flags. */
                 if (   enmOldState == EMSTATE_HALTED
