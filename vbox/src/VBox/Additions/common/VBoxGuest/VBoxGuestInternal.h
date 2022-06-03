@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 40195 2012-02-21 12:48:41Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 40198 2012-02-21 14:02:26Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -152,6 +152,9 @@ typedef struct VBOXGUESTDEVEXT
 #ifdef VBOX_WITH_VRDP_SESSION_HANDLING
     bool                        fVRDPEnabled;
 #endif
+    /** Flag indicating whether logging to the release log
+     *  is enabled. */
+    bool                        fLoggingEnabled;
     /** Memory balloon information for RTR0MemObjAllocPhysNC(). */
     VBOXGUESTMEMBALLOON         MemBalloon;
     /** For each mouse status feature the number of sessions which have
