@@ -1,10 +1,10 @@
-/* $Id: TRPMInternal.h 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: TRPMInternal.h 41943 2012-06-28 02:33:43Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -57,8 +57,6 @@ RT_C_DECLS_BEGIN
 #define TRPM_TRAP_IN_IRET       5
 /** Set if this is a V86 resume. */
 #define TRPM_TRAP_IN_V86        RT_BIT(30)
-/** If set this is a hypervisor register set. If cleared it's a guest set. */
-#define TRPM_TRAP_IN_HYPER      RT_BIT(31)
 /** @} */
 
 
