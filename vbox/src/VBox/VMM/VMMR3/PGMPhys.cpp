@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 41393 2012-05-22 14:23:13Z vboxsync $ */
+/* $Id: PGMPhys.cpp 41394 2012-05-22 14:23:54Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3390,7 +3390,6 @@ static DECLCALLBACK(int) pgmR3PhysRomWriteHandler(PVM pVM, RTGCPHYS GCPhys, void
     PPGMROMPAGE     pRomPage = &pRom->aPages[iPage];
     Log5(("pgmR3PhysRomWriteHandler: %d %c %#08RGp %#04zx\n", pRomPage->enmProt, enmAccessType == PGMACCESSTYPE_READ ? 'R' : 'W', GCPhys, cbBuf));
     NOREF(pvPhys);
-RTLogPrintf("pgmPhysRomWriteHandler: enmAccessType=%d GCPhys=%RGp\n", (uint32_t)enmAccessType, GCPhys);
 
     if (enmAccessType == PGMACCESSTYPE_READ)
     {
