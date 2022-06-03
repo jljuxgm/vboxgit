@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 37394 2011-06-09 15:25:30Z vboxsync $ */
+/* $Id: server_muralfbo.c 37613 2011-06-23 12:42:08Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -229,6 +229,9 @@ void crServerRedirMuralFBO(CRMuralInfo *mural, GLboolean redir)
         {
             cr_server.head_spu->dispatch_table.BindFramebufferEXT(GL_READ_FRAMEBUFFER, mural->idFBO);
         }
+
+        crStateGetCurrent()->buffer.width = 0;
+        crStateGetCurrent()->buffer.height = 0;
     }
     else
     {
@@ -245,6 +248,9 @@ void crServerRedirMuralFBO(CRMuralInfo *mural, GLboolean redir)
                 cr_server.head_spu->dispatch_table.BindFramebufferEXT(GL_READ_FRAMEBUFFER, 0);
             }
         }
+
+        crStateGetCurrent()->buffer.width = mural->width;
+        crStateGetCurrent()->buffer.height = mural->height;
     }
 
     mural->bUseFBO = redir;
