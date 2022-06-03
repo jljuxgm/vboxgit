@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Trace.cpp 40405 2012-03-08 18:27:45Z vboxsync $ */
+/* $Id: DBGFR3Trace.cpp 40413 2012-03-09 11:38:34Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
@@ -151,7 +151,7 @@ int dbgfR3TraceInit(PVM pVM)
     PCFGMNODE pDbgfNode = CFGMR3GetChild(CFGMR3GetRoot(pVM), "DBGF");
 #if defined(DEBUG) || defined(RTTRACE_ENABLED)
     bool const          fDefault        = true;
-    const char * const  pszConfigDefault = "*";
+    const char * const  pszConfigDefault = "all";
 #else
     bool const          fDefault        = false;
     const char * const  pszConfigDefault = "";
