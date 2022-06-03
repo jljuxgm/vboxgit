@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: VMMInternal.h 41836 2012-06-19 16:20:52Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -529,7 +529,7 @@ void vmmR3SwitcherRelocate(PVM pVM, RTGCINTPTR offDelta);
  * It will call VMMGCEntry().
  *
  * @returns return code from VMMGCEntry().
- * @param   pVM     The VM in question.
+ * @param   pVM     Pointer to the VM.
  * @param   uArg    See VMMGCEntry().
  * @internal
  */

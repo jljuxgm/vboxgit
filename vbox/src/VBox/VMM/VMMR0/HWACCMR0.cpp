@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 41776 2012-06-16 18:36:56Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 41836 2012-06-19 16:20:52Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1506,7 +1506,7 @@ VMMR0DECL(int) HWACCMR0Leave(PVM pVM, PVMCPU pVCpu)
  *
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       VMCPUD id.
+ * @param   pVCpu       Pointer to the VMCPU.
  *
  * @remarks Called with preemption disabled and after first having called
  *          HWACCMR0Enter.

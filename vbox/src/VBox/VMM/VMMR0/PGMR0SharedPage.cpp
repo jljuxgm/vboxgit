@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PGMR0SharedPage.cpp 41836 2012-06-19 16:20:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -41,7 +41,7 @@
  * @param   pVM                 Pointer to the VM.
  * @param   pGVM                Pointer to the GVM instance data.
  * @param   idCpu               The ID of the calling virtual CPU.
- * @param   pModule             Global module description
+ * @param   pModule             Global module description.
  * @param   paRegionsGCPtrs     Array parallel to pModules->aRegions with the
  *                              addresses of the regions in the calling
  *                              process.

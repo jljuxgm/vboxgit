@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
+/* $Id: PGMPhys.cpp 41836 2012-06-19 16:20:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3703,7 +3703,7 @@ VMMR3DECL(int) PGMR3PhysRomProtect(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cb, PGMROM
 /**
  * Sets the Address Gate 20 state.
  *
- * @param   pVCpu       The VCPU to operate on.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   fEnable     True if the gate should be enabled.
  *                      False if the gate should be disabled.
  */

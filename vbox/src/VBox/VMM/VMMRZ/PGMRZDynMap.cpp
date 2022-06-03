@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 41805 2012-06-17 17:29:20Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 41836 2012-06-19 16:20:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -338,7 +338,7 @@ static int  pgmR0DynMapTest(PVM pVM);
  * Initializes the auto mapping sets for a VM.
  *
  * @returns VINF_SUCCESS on success, VERR_PGM_DYNMAP_IPE on failure.
- * @param   pVM         The VM in question.
+ * @param   pVM         Pointer to the VM.
  */
 static int pgmRZDynMapInitAutoSetsForVM(PVM pVM)
 {
