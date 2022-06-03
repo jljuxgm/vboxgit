@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36839 2011-04-25 17:29:21Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36898 2011-04-29 15:34:05Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6024,6 +6024,12 @@ STDMETHODIMP Machine::COMGETTER(BandwidthControl)(IBandwidthControl **aBandwidth
     mBandwidthControl.queryInterfaceTo(aBandwidthControl);
 
     return S_OK;
+}
+
+STDMETHODIMP Machine::CloneTo(IMachine *aTarget, BOOL aFullClone, IProgress **aProgress)
+{
+    NOREF(aTarget); NOREF(aFullClone); NOREF(aProgress);
+    ReturnComNotImplemented();
 }
 
 // public methods for internal purposes
