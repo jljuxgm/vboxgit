@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 40691 2012-03-28 15:48:51Z vboxsync $ */
+/* $Id: state_snapshot.c 41057 2012-04-25 19:34:43Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1497,7 +1497,7 @@ int32_t crStateLoadContext(CRContext *pContext, CRHashTable * pCtxTable, PFNCRST
         {
             CRASSERT(pContext->shared->refCount==1);
             bLoadShared = GL_FALSE;
-            crStateFreeShared(pContext->shared);
+            crStateFreeShared(pContext, pContext->shared);
             pContext->shared = NULL;
             pTmpContext->shared->refCount++;
         }
