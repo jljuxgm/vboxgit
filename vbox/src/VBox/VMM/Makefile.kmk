@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36834 2011-04-24 23:04:52Z vboxsync $
+# $Id: Makefile.kmk 37011 2011-05-09 10:04:13Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -565,8 +565,10 @@ VMMAll/PGMAllPool.cpp_CXXFLAGS = $(if-expr $(KBUILD_TARGET) == "win",,$(VBOX_GCC
 #
 if1of ($(KBUILD_TARGET), win)
 #VMMAll/IEMAll.cpp_CXXFLAGS = TODO
+#else if1of ($(KBUILD_TARGET_ARCH), amd64)
+# VMMAll/IEMAll.cpp_CXXFLAGS = -O2 -fomit-frame-pointer
 else
-VMMAll/IEMAll.cpp_CXXFLAGS = -O2 #-fomit-frame-pointer - latter causes trouble on mac.
+ VMMAll/IEMAll.cpp_CXXFLAGS = -O2 #-fomit-frame-pointer - latter causes trouble on mac.
 endif
 
 
