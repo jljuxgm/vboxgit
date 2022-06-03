@@ -1,4 +1,4 @@
-/* $Id: UIMediumTypeChangeDialog.cpp 37893 2011-07-12 12:31:43Z vboxsync $ */
+/* $Id: UIMediumTypeChangeDialog.cpp 37895 2011-07-12 12:48:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -112,7 +112,6 @@ void UIMediumTypeChangeDialog::retranslateUi()
 
     /* Translate description: */
     m_pLabel->setText(tr("<p>You are about to change the attributes of the virtual disk located in <b>%1</b>.</p>"
-                         "<p><i>Note: For now only the 'medium type' attribute is changeable.</i></p>"
                          "<p>Please choose one of the following medium types and press <b>%2</b> "
                          "to proceed or <b>%3</b> otherwise.</p>")
                       .arg(m_medium.GetLocation())
