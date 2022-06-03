@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 36311 2011-03-18 11:02:24Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 36404 2011-03-24 14:52:43Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -960,10 +960,13 @@ Function .onSelChange
       ${EndIf}
     ${EndIf}
 
-    ; If we're not in safe mode, print a warning and don't install D3D support
-    ${If} $g_iSystemMode == '0'
-      MessageBox MB_ICONINFORMATION|MB_OK $(VBOX_COMPONENT_D3D_NO_SM) /SD IDOK
-      Goto d3d_disable
+    ; If force flag is set skip the safe mode check
+    ${If} $g_bForceInstall != "true"
+      ; If we're not in safe mode, print a warning and don't install D3D support
+      ${If} $g_iSystemMode == '0'
+        MessageBox MB_ICONINFORMATION|MB_OK $(VBOX_COMPONENT_D3D_NO_SM) /SD IDOK
+        Goto d3d_disable
+      ${EndIf}
     ${EndIf}
   ${Else} ; D3D unselected again
     StrCpy $g_bWithWDDM "false"
