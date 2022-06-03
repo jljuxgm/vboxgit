@@ -1,4 +1,4 @@
-# $Id: Config.kmk 40595 2012-03-23 14:54:46Z vboxsync $
+# $Id: Config.kmk 40609 2012-03-24 21:57:09Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2909,6 +2909,13 @@ TEMPLATE_VBOXR0DRV                     = VBox SUPDRV Ring 0
 TEMPLATE_VBOXR0DRV_ASTOOL              = $(VBOX_ASTOOL)
 TEMPLATE_VBOXR0DRV_ASFLAGS             = $(VBOX_ASFLAGS)
 TEMPLATE_VBOXR0DRV_DEFS                = IN_RING0 IN_RT_R0 $(ARCH_BITS_DEFS)
+TEMPLATE_VBOXR0DRV_USES               += dtrace
+ifdef VBOX_WITH_DTRACE_R0DRV
+ TEMPLATE_VBOXR0DRV_DTRACETOOL         = VBoxTpG
+ TEMPLATE_VBOXR0DRV_DEFS              += VBOX_WITH_DTRACE VBOX_WITH_DTRACE_R0DRV
+else
+ TEMPLATE_VBOXR0DRV_DTRACETOOL         = VBoxTpG-Disabled
+endif
 
 ifeq ($(KBUILD_TARGET),win)
  TEMPLATE_VBOXR0DRV_TOOL               = $(VBOX_VCC_TOOL)
@@ -4994,7 +5001,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40595 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40609 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
