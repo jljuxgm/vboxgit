@@ -1,4 +1,4 @@
-/* $Id: fdc.c 37223 2011-05-26 13:03:07Z vboxsync $ */
+/* $Id: fdc.c 37459 2011-06-14 21:54:45Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -2032,6 +2032,7 @@ static void fdctrl_write_data(fdctrl_t *fdctrl, uint32_t value)
         pos = command_to_handler[value & 0xff];
         FLOPPY_DPRINTF("%s command\n", handlers[pos].name);
         fdctrl->data_len = handlers[pos].parameters + 1;
+        fdctrl->msr |= FD_MSR_CMDBUSY;
     }
 
     FLOPPY_DPRINTF("%s: %02x\n", __func__, value);
