@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 38201 2011-07-27 14:50:39Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -355,6 +355,8 @@ int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
 # ifdef VBOX_VBGLR3_XFREE86
     int rc = xf86ioctl((int)g_File, iFunction, pvData);
 # else
+    if (g_File == NIL_RTFILE)
+        return VERR_INVALID_HANDLE;
     int rc = ioctl(RTFileToNative(g_File), iFunction, pvData);
 # endif
     if (RT_LIKELY(rc == 0))
