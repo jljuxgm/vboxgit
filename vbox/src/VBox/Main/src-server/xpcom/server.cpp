@@ -1,4 +1,4 @@
-/* $Id: server.cpp 36478 2011-03-30 18:39:29Z vboxsync $ */
+/* $Id: server.cpp 37179 2011-05-23 08:47:18Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -809,7 +809,7 @@ int main(int argc, char **argv)
                 break;
             }
 
-            /* Used together with '-P', see below. Internal use only. */
+            /* --auto-shutdown mode means we're already daemonized. */
             case 'A':
             {
                 gAutoShutdown = true;
