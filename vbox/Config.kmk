@@ -1,4 +1,4 @@
-# $Id: Config.kmk 40274 2012-02-28 13:17:35Z vboxsync $
+# $Id: Config.kmk 40303 2012-02-29 20:00:37Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2275,7 +2275,7 @@ ifeq ($(KBUILD_TARGET),os2)
 		-e '/not-$(KBUILD_TARGET)/d' \
 		-e '/not-$(KBUILD_TARGET_ARCH)/d' \
 		-e 's/^LIBRARY[[:space:]][[:space:]]*\(.*\)\.dll/LIBRARY \1 INITINSTANCE TERMINSTANCE\nDATA MULTIPLE\n/' \
-		-e 's/^[ \t][ \t]*\([a-zA-Z]\)/    _\1/' \
+		-e 's/^[ \t][ \t]*\([_a-zA-Z]\)/    _\1/' \
 		-e 's/[ \t]DATA[ \t]*/ /'  \
 		--output $$@ $(addprefix $(PATH_SUB_CURRENT)/,$(3))
 else ifeq ($(KBUILD_TARGET),win)
@@ -4923,7 +4923,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40274 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40303 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
