@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -963,13 +963,13 @@ VMM_INT_DECL(uint64_t) TMVirtualGetFreq(PVM pVM)
 /**
  * Worker for TMR3PauseClocks.
  *
- * @returns VINF_SUCCESS or VERR_INTERNAL_ERROR (asserted).
+ * @returns VINF_SUCCESS or VERR_TM_VIRTUAL_TICKING_IPE (asserted).
  * @param   pVM     The VM handle.
  */
 int tmVirtualPauseLocked(PVM pVM)
 {
     uint32_t c = ASMAtomicDecU32(&pVM->tm.s.cVirtualTicking);
-    AssertMsgReturn(c < pVM->cCpus, ("%u vs %u\n", c, pVM->cCpus), VERR_INTERNAL_ERROR);
+    AssertMsgReturn(c < pVM->cCpus, ("%u vs %u\n", c, pVM->cCpus), VERR_TM_VIRTUAL_TICKING_IPE);
     if (c == 0)
     {
         STAM_COUNTER_INC(&pVM->tm.s.StatVirtualPause);
@@ -983,13 +983,13 @@ int tmVirtualPauseLocked(PVM pVM)
 /**
  * Worker for TMR3ResumeClocks.
  *
- * @returns VINF_SUCCESS or VERR_INTERNAL_ERROR (asserted).
+ * @returns VINF_SUCCESS or VERR_TM_VIRTUAL_TICKING_IPE (asserted).
  * @param   pVM     The VM handle.
  */
 int tmVirtualResumeLocked(PVM pVM)
 {
     uint32_t c = ASMAtomicIncU32(&pVM->tm.s.cVirtualTicking);
-    AssertMsgReturn(c <= pVM->cCpus, ("%u vs %u\n", c, pVM->cCpus), VERR_INTERNAL_ERROR);
+    AssertMsgReturn(c <= pVM->cCpus, ("%u vs %u\n", c, pVM->cCpus), VERR_TM_VIRTUAL_TICKING_IPE);
     if (c == 1)
     {
         STAM_COUNTER_INC(&pVM->tm.s.StatVirtualResume);

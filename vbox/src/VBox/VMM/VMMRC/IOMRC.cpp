@@ -1,4 +1,4 @@
-/* $Id: IOMRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: IOMRC.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Guest Context.
  */
@@ -86,7 +86,7 @@ VMMRCDECL(VBOXSTRICTRC) IOMGCIOPortHandler(PVM pVM, PCPUMCTXCORE pRegFrame, PDIS
          */
         default:
             AssertMsgFailed(("Unknown I/O port access opcode %d.\n", pCpu->pCurInstr->opcode));
-            return VERR_INTERNAL_ERROR;
+            return VERR_IOM_IOPORT_UNKNOWN_OPCODE;
     }
 }
 

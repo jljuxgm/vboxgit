@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2029,7 +2029,7 @@ static int pgmPoolCacheFreeOne(PPGMPOOL pPool, uint16_t iUser)
             break;
         LogFlow(("pgmPoolCacheFreeOne: refuse CR3 mapping\n"));
         pgmPoolCacheUsed(pPool, pPage);
-        AssertLogRelReturn(iLoop < 8192, VERR_INTERNAL_ERROR);
+        AssertLogRelReturn(iLoop < 8192, VERR_PGM_POOL_TOO_MANY_LOOPS);
     }
 
     /*
@@ -4997,7 +4997,7 @@ int pgmPoolAllocEx(PVM pVM, RTGCPHYS GCPhys, PGMPOOLKIND enmKind, PGMPOOLACCESS 
             return rc;
         }
         iNew = pPool->iFreeHead;
-        AssertReleaseReturn(iNew != NIL_PGMPOOL_IDX, VERR_INTERNAL_ERROR);
+        AssertReleaseReturn(iNew != NIL_PGMPOOL_IDX, VERR_PGM_POOL_IPE);
     }
 
     /* unlink the free head */

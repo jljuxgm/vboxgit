@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMMRZ.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -79,7 +79,7 @@ VMMRZDECL(int) VMMRZCallRing3(PVM pVM, PVMCPU pVCpu, VMMCALLRING3 enmOperation, 
 /** @todo profile this! */
     pVCpu->vmm.s.enmCallRing3Operation = enmOperation;
     pVCpu->vmm.s.u64CallRing3Arg = uArg;
-    pVCpu->vmm.s.rcCallRing3 = VERR_INTERNAL_ERROR;
+    pVCpu->vmm.s.rcCallRing3 = VERR_VMM_RING3_CALL_NO_RC;
 #ifdef IN_RC
     pVM->vmm.s.pfnGuestToHostRC(VINF_VMM_CALL_HOST);
 #else

@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PDM.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -738,7 +738,7 @@ static void pdmR3SaveBoth(PVM pVM, PSSMHANDLE pSSM)
 static DECLCALLBACK(int) pdmR3LiveExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uPass)
 {
     LogFlow(("pdmR3LiveExec:\n"));
-    AssertReturn(uPass == 0, VERR_INTERNAL_ERROR_4);
+    AssertReturn(uPass == 0, VERR_SSM_UNEXPECTED_PASS);
     pdmR3SaveBoth(pVM, pSSM);
     return VINF_SSM_DONT_CALL_AGAIN;
 }

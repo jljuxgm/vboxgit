@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
+/* $Id: PGM.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2215,7 +2215,7 @@ VMMR3_INT_DECL(int) PGMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
                 }
             }
 #else
-            AssertLogRelReturn(!pVM->pgm.s.fPciPassthrough, VERR_INTERNAL_ERROR_5);
+            AssertLogRelReturn(!pVM->pgm.s.fPciPassthrough, VERR_PGM_PCI_PASSTHRU_MISCONFIG);
 #endif
             break;
 

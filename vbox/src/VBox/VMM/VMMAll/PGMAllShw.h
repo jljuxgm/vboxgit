@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PGMAllShw.h 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -305,7 +305,7 @@ PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, P
         Assert(pgmMapAreMappingsEnabled(pVM));
 
         PPGMMAPPING pMap = pgmGetMapping(pVM, (RTGCPTR)GCPtr);
-        AssertMsgReturn(pMap, ("GCPtr=%RGv\n", GCPtr), VERR_INTERNAL_ERROR);
+        AssertMsgReturn(pMap, ("GCPtr=%RGv\n", GCPtr), VERR_PGM_MAPPING_IPE);
 #  if PGM_SHW_TYPE == PGM_TYPE_32BIT
         pPT = pMap->aPTs[(GCPtr - pMap->GCPtr) >> X86_PD_SHIFT].CTX_SUFF(pPT);
 #  else /* PAE */

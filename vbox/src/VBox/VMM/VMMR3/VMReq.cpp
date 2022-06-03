@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 39327 2011-11-16 10:52:07Z vboxsync $ */
+/* $Id: VMReq.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1185,7 +1185,7 @@ static int  vmR3ReqProcessOneU(PUVM pUVM, PVMREQ pReq)
                 case 15: rcRet = u.pfn15(pauArgs[0], pauArgs[1], pauArgs[2], pauArgs[3], pauArgs[4], pauArgs[5], pauArgs[6], pauArgs[7], pauArgs[8], pauArgs[9], pauArgs[10], pauArgs[11], pauArgs[12], pauArgs[13], pauArgs[14]); break;
                 default:
                     AssertReleaseMsgFailed(("cArgs=%d\n", pReq->u.Internal.cArgs));
-                    rcRet = rcReq = VERR_INTERNAL_ERROR;
+                    rcRet = rcReq = VERR_VM_REQUEST_TOO_MANY_ARGS_IPE;
                     break;
             }
 #else /* x86: */

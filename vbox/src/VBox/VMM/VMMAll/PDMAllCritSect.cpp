@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -481,7 +481,7 @@ VMMDECL(int) PDMCritSectTryEnterDebug(PPDMCRITSECT pCritSect, RTHCUINTPTR uId, R
  */
 VMMR3DECL(int) PDMR3CritSectEnterEx(PPDMCRITSECT pCritSect, bool fCallRing3)
 {
-    int rc = PDMCritSectEnter(pCritSect, VERR_INTERNAL_ERROR);
+    int rc = PDMCritSectEnter(pCritSect, VERR_IGNORED);
     if (    rc == VINF_SUCCESS
         &&  fCallRing3
         &&  pCritSect->s.Core.pValidatorRec

@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -991,7 +991,7 @@ VMMR3_INT_DECL(int) VMMR3DisableSwitcher(PVM pVM)
 {
 /** @todo r=bird: I would suggest that we create a dummy switcher which just does something like:
  * @code
- *       mov eax, VERR_INTERNAL_ERROR
+ *       mov eax, VERR_VMM_DUMMY_SWITCHER
  *       ret
  * @endcode
  * And then check for fSwitcherDisabled in VMMR3SelectSwitcher() in order to prevent it from being removed.

@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -925,7 +925,7 @@ static DECLCALLBACK(int32_t) hmR0EnableAllCpuOnce(void *pvUser, void *pvUserIgno
      * Note! There is a potential race between this function and the suspend
      *       notification.  Kind of unlikely though, so ignored for now.
      */
-    AssertReturn(!g_HvmR0.fEnabled, VERR_INTERNAL_ERROR_3);
+    AssertReturn(!g_HvmR0.fEnabled, VERR_HM_ALREADY_ENABLED_IPE);
     ASMAtomicWriteBool(&g_HvmR0.fEnabled, true);
 
     /*

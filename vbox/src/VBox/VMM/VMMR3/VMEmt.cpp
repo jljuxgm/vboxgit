@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: VMEmt.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -306,7 +306,7 @@ static int vmR3FatalWaitError(PUVMCPU pUVCpu, const char *pszFmt, int rcFmt)
     ASMAtomicUoWriteBool(&pUVCpu->pUVM->vm.s.fTerminateEMT, true);
     if (pUVCpu->pVM)
         VM_FF_SET(pUVCpu->pVM, VM_FF_CHECK_VM_STATE);
-    return VERR_INTERNAL_ERROR;
+    return VERR_VM_FATAL_WAIT_ERROR;
 }
 
 

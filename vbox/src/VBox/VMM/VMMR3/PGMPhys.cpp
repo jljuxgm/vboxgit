@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
+/* $Id: PGMPhys.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3393,7 +3393,7 @@ static DECLCALLBACK(int) pgmR3PhysRomWriteHandler(PVM pVM, RTGCPHYS GCPhys, void
             default:
                 AssertMsgFailedReturn(("enmProt=%d iPage=%d GCPhys=%RGp\n",
                                        pRom->aPages[iPage].enmProt, iPage, GCPhys),
-                                      VERR_INTERNAL_ERROR);
+                                      VERR_IPE_NOT_REACHED_DEFAULT_CASE);
         }
     }
     else
@@ -3431,7 +3431,7 @@ static DECLCALLBACK(int) pgmR3PhysRomWriteHandler(PVM pVM, RTGCPHYS GCPhys, void
                 if (!PGMROMPROT_IS_ROM(pRomPage->enmProt))
                 {
                     pShadowPage = pgmPhysGetPage(pVM, GCPhys);
-                    AssertLogRelReturn(pShadowPage, VERR_INTERNAL_ERROR);
+                    AssertLogRelReturn(pShadowPage, VERR_PGM_PHYS_PAGE_GET_IPE);
                 }
 
                 void *pvDstPage;
@@ -3449,7 +3449,7 @@ static DECLCALLBACK(int) pgmR3PhysRomWriteHandler(PVM pVM, RTGCPHYS GCPhys, void
             default:
                 AssertMsgFailedReturn(("enmProt=%d iPage=%d GCPhys=%RGp\n",
                                        pRom->aPages[iPage].enmProt, iPage, GCPhys),
-                                      VERR_INTERNAL_ERROR);
+                                      VERR_IPE_NOT_REACHED_DEFAULT_CASE);
         }
     }
 }
@@ -4239,7 +4239,7 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
      * Allocate more pages, noting down the index of the first new page.
      */
     uint32_t iClear = pVM->pgm.s.cHandyPages;
-    AssertMsgReturn(iClear <= RT_ELEMENTS(pVM->pgm.s.aHandyPages), ("%d", iClear), VERR_INTERNAL_ERROR);
+    AssertMsgReturn(iClear <= RT_ELEMENTS(pVM->pgm.s.aHandyPages), ("%d", iClear), VERR_PGM_HANDY_PAGE_IPE);
     Log(("PGMR3PhysAllocateHandyPages: %d -> %d\n", iClear, RT_ELEMENTS(pVM->pgm.s.aHandyPages)));
     int rcAlloc = VINF_SUCCESS;
     int rcSeed  = VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -726,7 +726,7 @@ VMMDECL(int) PGMHandlerPhysicalSplit(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCPhysSp
                 return VINF_SUCCESS;
             }
             AssertMsgFailed(("whu?\n"));
-            rc = VERR_INTERNAL_ERROR;
+            rc = VERR_PGM_PHYS_HANDLER_IPE;
         }
         else
         {
@@ -791,7 +791,7 @@ VMMDECL(int) PGMHandlerPhysicalJoin(PVM pVM, RTGCPHYS GCPhys1, RTGCPHYS GCPhys2)
                     }
 
                     Assert(pCur3 == pCur2);
-                    rc = VERR_INTERNAL_ERROR;
+                    rc = VERR_PGM_PHYS_HANDLER_IPE;
                 }
                 else
                 {
@@ -914,7 +914,7 @@ VMMDECL(int) PGMHandlerPhysicalReset(PVM pVM, RTGCPHYS GCPhys)
              */
             default:
                 AssertMsgFailed(("Invalid type %d! Corruption!\n",  pCur->enmType));
-                rc = VERR_INTERNAL_ERROR;
+                rc = VERR_PGM_PHYS_HANDLER_IPE;
                 break;
         }
     }

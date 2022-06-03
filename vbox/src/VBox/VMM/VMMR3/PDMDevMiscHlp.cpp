@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 36820 2011-04-22 19:40:29Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -578,7 +578,7 @@ static DECLCALLBACK(int) pdmR3HpetHlp_SetLegacyMode(PPDMDEVINS pDevIns, bool fAc
         if (RT_SUCCESS(rc))
         {
             PPDMIHPETLEGACYNOTIFY pPort = PDMIBASE_QUERY_INTERFACE(pBase, PDMIHPETLEGACYNOTIFY);
-            AssertLogRelMsgBreakStmt(pPort, ("%s\n", s_apszDevsToNotify[i]), rc = VERR_INTERNAL_ERROR_3);
+            AssertLogRelMsgBreakStmt(pPort, ("%s\n", s_apszDevsToNotify[i]), rc = VERR_PDM_HPET_LEGACY_NOTIFY_MISSING);
             pPort->pfnModeChanged(pPort, fActivated);
         }
         else if (   rc == VERR_PDM_DEVICE_NOT_FOUND

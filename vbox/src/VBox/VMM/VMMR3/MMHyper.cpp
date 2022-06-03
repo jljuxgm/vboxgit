@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: MMHyper.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -581,7 +581,7 @@ VMMR3DECL(int) MMR3HyperMapMMIO2(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion, 
             {
                 RTHCPHYS HCPhys;
                 rc = PGMR3PhysMMIO2GetHCPhys(pVM, pDevIns, iRegion, offCur, &HCPhys);
-                AssertRCReturn(rc, VERR_INTERNAL_ERROR);
+                AssertRCReturn(rc, rc);
                 rc = PGMMap(pVM, GCPtr + (offCur - off), HCPhys, PAGE_SIZE, 0);
                 if (RT_FAILURE(rc))
                 {

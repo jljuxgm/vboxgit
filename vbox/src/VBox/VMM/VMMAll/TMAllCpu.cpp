@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -75,7 +75,7 @@ int tmCpuTickResume(PVM pVM, PVMCPU pVCpu)
         return VINF_SUCCESS;
     }
     AssertFailed();
-    return VERR_INTERNAL_ERROR;
+    return VERR_TM_TSC_ALREADY_TICKING;
 }
 
 
@@ -95,7 +95,7 @@ int tmCpuTickPause(PVMCPU pVCpu)
         return VINF_SUCCESS;
     }
     AssertFailed();
-    return VERR_INTERNAL_ERROR;
+    return VERR_TM_TSC_ALREADY_PAUSED;
 }
 
 /**
