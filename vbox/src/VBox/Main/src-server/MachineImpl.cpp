@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 35982 2011-02-15 16:02:28Z vboxsync $ */
+/* $Id: MachineImpl.cpp 35984 2011-02-15 16:16:11Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -936,6 +936,12 @@ STDMETHODIMP Machine::COMSETTER(Name)(IN_BSTR aName)
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    // prohibit setting a UUID only as the machine name, or else it can
+    // never be found by findMachine()
+    Guid test(aName);
+    if (test.isNotEmpty())
+        return setError(E_INVALIDARG,  tr("A machine cannot have a UUID as its name"));
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
