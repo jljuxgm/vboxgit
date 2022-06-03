@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 42098 2012-07-10 16:16:18Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 42128 2012-07-12 16:31:42Z vboxsync $ */
 
 /** @file
  * VBox Miniport video modes related functions
@@ -491,12 +491,11 @@ static BOOLEAN VBoxMPIsStartingUp(PVBOXMP_DEVEXT pExt, uint32_t iDisplay)
 {
 #ifdef VBOX_XPDM_MINIPORT
     return (pExt->CurrentMode == 0);
-#else
+#elif defined(VBOX_WDDM_WIN8)
+    return FALSE;
+#else /* VBOX_WDDM_MINIPORT && !VBOX_WDDM_MINIPORT */
     return (!VBoxCommonFromDeviceExt(pExt)->cDisplays
-# ifndef VBOX_WDDM_MINIPORT
-            || !pExt->aSources[iDisplay].pPrimaryAllocation
-# endif
-                    );
+            || !pExt->aSources[iDisplay].pPrimaryAllocation);
 #endif
 }
 

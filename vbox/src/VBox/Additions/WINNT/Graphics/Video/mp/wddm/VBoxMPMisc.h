@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 41636 2012-06-09 12:56:51Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 42128 2012-07-12 16:31:42Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -208,5 +208,11 @@ NTSTATUS VBoxWddmSlEnableVSyncNotification(PVBOXMP_DEVEXT pDevExt, BOOLEAN fEnab
 NTSTATUS VBoxWddmSlGetScanLine(PVBOXMP_DEVEXT pDevExt, DXGKARG_GETSCANLINE *pSl);
 NTSTATUS VBoxWddmSlInit(PVBOXMP_DEVEXT pDevExt);
 NTSTATUS VBoxWddmSlTerm(PVBOXMP_DEVEXT pDevExt);
+
+#ifdef VBOX_WDDM_WIN8
+void vboxWddmDiInitDefault(DXGK_DISPLAY_INFORMATION *pInfo, PHYSICAL_ADDRESS PhAddr, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId);
+void vboxWddmDiToAllocData(PVBOXMP_DEVEXT pDevExt, const DXGK_DISPLAY_INFORMATION *pInfo, struct VBOXWDDM_ALLOC_DATA *pAllocData);
+void vboxWddmDmAdjustDefaultVramLocations(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID ModifiedVidPnSourceId);
+#endif
 
 #endif /* #ifndef ___VBoxMPMisc_h__ */
