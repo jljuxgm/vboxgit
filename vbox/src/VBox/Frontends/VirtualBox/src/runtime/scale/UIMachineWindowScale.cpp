@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 41486 2012-05-29 15:50:49Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 41487 2012-05-29 17:13:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -199,8 +199,11 @@ void UIMachineWindowScale::cleanupMenu()
 void UIMachineWindowScale::showInNecessaryMode()
 {
     /* Show window if we have to: */
-    if (shouldWeShowWindow())
+    if (uisession()->isScreenVisible(m_uScreenId))
         show();
+    /* Else hide window: */
+    else
+        hide();
 }
 
 bool UIMachineWindowScale::event(QEvent *pEvent)

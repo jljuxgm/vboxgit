@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 41486 2012-05-29 15:50:49Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 41487 2012-05-29 17:13:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -165,7 +165,7 @@ void UIMachineWindowFullscreen::cleanupMenu()
 void UIMachineWindowFullscreen::showInNecessaryMode()
 {
     /* Show window if we have to: */
-    if (shouldWeShowWindow())
+    if (uisession()->isScreenVisible(m_uScreenId))
     {
         /* Make sure the window is placed on valid screen
          * before we are show fullscreen window: */
@@ -185,6 +185,8 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
         move(r.topLeft());
 #endif /* Q_WS_MAC */
     }
+    /* Else hide window: */
+    else hide();
 }
 
 void UIMachineWindowFullscreen::updateAppearanceOf(int iElement)
