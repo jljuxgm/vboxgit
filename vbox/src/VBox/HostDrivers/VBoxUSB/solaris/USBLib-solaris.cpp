@@ -1,4 +1,4 @@
-/** $Id: USBLib-solaris.cpp 38736 2011-09-13 13:58:47Z vboxsync $ */
+/** $Id: USBLib-solaris.cpp 39374 2011-11-18 17:17:20Z vboxsync $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Solaris flavor.
  */
@@ -89,7 +89,7 @@ USBLIB_DECL(int) USBLibInit(void)
     int rc = RTFileOpen(&File, VBOXUSB_DEVICE_NAME, RTFILE_O_READWRITE | RTFILE_O_OPEN | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
     {
-        LogRel((USBLIBR3 ":RTFileOpen failed to open VBoxUSB device.rc=%d\n", rc));
+        LogRel((USBLIBR3 ":failed to open the VBoxUSB monitor device node '%s' rc=%Rrc\n", VBOXUSB_DEVICE_NAME, rc));
         return rc;
     }
     g_File = File;
