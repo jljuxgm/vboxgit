@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 39258 2011-11-09 18:50:33Z vboxsync $ */
+/* $Id: vboxfs_prov.h 39263 2011-11-10 13:08:53Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -122,6 +122,7 @@ extern int sfprov_rename(sfp_mount_t *, char *from, char *to, uint_t is_dir);
 typedef struct sffs_stat {
 	mode_t		sf_mode;
 	off_t		sf_size;
+	off_t       sf_alloc;
 	timestruc_t	sf_atime;
 	timestruc_t	sf_mtime;
 	timestruc_t	sf_ctime;
