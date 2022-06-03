@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 36891 2011-04-29 13:22:57Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 37107 2011-05-16 15:11:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -2218,7 +2218,10 @@ static int pgmR3LoadPageBitsOld(PVM pVM, PSSMHANDLE pSSM, uint8_t uType, PPGMPAG
      * Match up the type, dealing with MMIO2 aliases (dropped).
      */
     AssertLogRelMsgReturn(   PGM_PAGE_GET_TYPE(pPage) == uType
-                          || uType == PGMPAGETYPE_INVALID,
+                          || uType == PGMPAGETYPE_INVALID
+                          || (   uType == PGMPAGETYPE_ROM /* kudge for the expanded PXE bios (r67885) - #5687. */
+                              && GCPhys >= 0xed000
+                              && GCPhys <= 0xeffff),
                           ("pPage=%R[pgmpage] GCPhys=%#x %s\n", pPage, GCPhys, pRam->pszDesc),
                           VERR_SSM_UNEXPECTED_DATA);
 
