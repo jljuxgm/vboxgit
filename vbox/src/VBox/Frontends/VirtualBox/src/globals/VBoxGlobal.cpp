@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 40322 2012-03-02 13:27:29Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 40845 2012-04-10 13:07:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -130,6 +130,8 @@
 #if defined (Q_WS_X11)
 #include <iprt/mem.h>
 #endif
+
+#include <VBox/VBoxOGLTest.h>
 
 //#define VBOX_WITH_FULL_DETAILS_REPORT /* hidden for now */
 
@@ -4791,7 +4793,7 @@ void VBoxGlobal::init()
         return;
     }
     mHost = virtualBox().GetHost();
-    m3DAvailable = mHost.GetAcceleration3DAvailable();
+    m3DAvailable = VBoxOglIs3DAccelerationSupported();
 
     /* create default non-null global settings */
     gset = VBoxGlobalSettings (false);

@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: OpenGLTestDarwin.cpp 40845 2012-04-10 13:07:39Z vboxsync $ */
 
 /** @file
  * VBox host opengl support test
@@ -25,7 +25,9 @@
 # include <iprt/log.h>
 #endif /* VBOX_WITH_COCOA_QT */
 
-bool is3DAccelerationSupported()
+#include <VBox/VBoxOGLTest.h>
+
+bool RTCALL VBoxOglIs3DAccelerationSupported()
 {
     CGDirectDisplayID   display = CGMainDisplayID ();
     CGOpenGLDisplayMask cglDisplayMask = CGDisplayIDToOpenGLDisplayMask (display);
