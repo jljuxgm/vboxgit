@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 41803 2012-06-17 17:20:33Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 41804 2012-06-17 17:24:59Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -30,7 +30,7 @@
  * @param   pVM     Pointer to the VM.
  * @param   pVCpu   Pointer to the VMCPU.
  * @param   rc      The return code.
- * @param   pCtx    The guest cpu context.
+ * @param   pCtx    Pointer to the guest CPU context.
  */
 #ifdef EMHANDLERC_WITH_PATM
 int emR3RawHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)

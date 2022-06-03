@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41804 2012-06-17 17:24:59Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -2200,7 +2200,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
  * @param   pVCpu       Pointer to the VMCPU.
- * @param   pCtx        Pointer the guest CPU context.
+ * @param   pCtx        Pointer to the guest CPU context.
  */
 DECLINLINE(int) VMXR0SaveGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
