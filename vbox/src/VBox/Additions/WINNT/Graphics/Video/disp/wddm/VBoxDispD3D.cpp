@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 41109 2012-05-02 08:37:46Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 41337 2012-05-16 13:24:25Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -5117,6 +5117,8 @@ static HRESULT APIENTRY vboxWddmDDevCreateResource(HANDLE hDevice, D3DDDIARG_CRE
             pAllocation->SurfDesc.pitch = vboxWddmCalcPitch(pSurf->Width, pResource->Format);
 
         pAllocation->SurfDesc.cbSize = vboxWddmCalcSize(pAllocation->SurfDesc.pitch, pAllocation->SurfDesc.height, pAllocation->SurfDesc.format);
+
+        pAllocation->SurfDesc.VidPnSourceId = pResource->VidPnSourceId;
     }
 
     if (VBOXDISPMODE_IS_3D(pAdapter))

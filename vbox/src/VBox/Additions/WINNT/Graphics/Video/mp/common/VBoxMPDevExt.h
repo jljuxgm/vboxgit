@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 40897 2012-04-12 18:16:40Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 41337 2012-05-16 13:24:25Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -276,7 +276,6 @@ DECLINLINE(VOID) vboxWddmAssignPrimary(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SOURCE 
     {
         pAllocation->bVisible = FALSE;
         Assert(pAllocation->SurfDesc.VidPnSourceId == srcId);
-        pAllocation->SurfDesc.VidPnSourceId = srcId;
         pAllocation->bAssigned = TRUE;
     }
 
