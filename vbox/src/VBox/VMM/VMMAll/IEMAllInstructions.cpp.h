@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 39931 2012-02-01 13:26:38Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 39958 2012-02-02 16:48:02Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -823,8 +823,13 @@ FNIEMOP_DEF_1(iemOp_Grp7_lmsw, uint8_t, bRm)
 /** Opcode 0x0f 0x01 /7. */
 FNIEMOP_DEF_1(iemOp_Grp7_invlpg, uint8_t, bRm)
 {
-    NOREF(pIemCpu); NOREF(bRm);
-    AssertFailedReturn(VERR_NOT_IMPLEMENTED);
+    IEMOP_HLP_NO_LOCK_PREFIX();
+    IEM_MC_BEGIN(1, 1);
+    IEM_MC_ARG(RTGCPTR, GCPtrEffDst, 0);
+    IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffDst, bRm);
+    IEM_MC_CALL_CIMPL_1(iemCImpl_invlpg, GCPtrEffDst);
+    IEM_MC_END();
+    return VINF_SUCCESS;
 }
 
 

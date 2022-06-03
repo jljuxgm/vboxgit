@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 39945 2012-02-01 21:17:34Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 39958 2012-02-02 16:48:02Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2851,6 +2851,31 @@ IEM_CIMPL_DEF_2(iemCImpl_mov_Dd_Rd, uint8_t, iDrReg, uint8_t, iGReg)
     iemRegAddToRip(pIemCpu, cbInstr);
     return VINF_SUCCESS;
 }
+
+
+/**
+ * Implements 'INVLPG m'.
+ *
+ * @param   GCPtrPage       The effective address of the page to invalidate.
+ * @remarks Updates the RIP.
+ */
+IEM_CIMPL_DEF_1(iemCImpl_invlpg, uint8_t, GCPtrPage)
+{
+    /* ring-0 only. */
+    if (pIemCpu->uCpl != 0)
+        return iemRaiseGeneralProtectionFault0(pIemCpu);
+    Assert(!pIemCpu->CTX_SUFF(pCtx)->eflags.Bits.u1VM);
+
+    int rc = PGMInvalidatePage(IEMCPU_TO_VMCPU(pIemCpu), GCPtrPage);
+    iemRegAddToRip(pIemCpu, cbInstr);
+
+    if (   rc == VINF_SUCCESS
+        || rc == VINF_PGM_SYNC_CR3)
+        return VINF_SUCCESS;
+    Log(("PGMInvalidatePage(%RGv) -> %Rrc\n", rc));
+    return rc;
+}
+
 
 
 /**
