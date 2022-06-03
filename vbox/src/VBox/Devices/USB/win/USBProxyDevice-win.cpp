@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 37233 2011-05-27 13:31:57Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 37346 2011-06-07 13:06:29Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  *
@@ -543,7 +543,7 @@ static int usbProxyWinUrbQueue(PVUSBURB pUrb)
 #ifdef DEBUG_misha
     else
     {
-        AssertMsgFailed((__FUNCTION__": FAILED!!\n"));
+        AssertMsgFailed(("FAILED!!, hEvent(0x%p), cPendingUrbs(%d)\n", pQUrbWin->overlapped.hEvent, pPriv->cPendingUrbs));
     }
 #endif
 
