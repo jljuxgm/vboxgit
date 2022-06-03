@@ -1,4 +1,4 @@
-/* $Revision: 39808 $ */
+/* $Revision: 41082 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -678,7 +678,7 @@ static int rtR0MemObjLinuxAllocPhysSub2(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJTY
     {
         size_t iPage = pMemLnx->cPages;
         while (iPage-- > 0)
-            if (page_to_phys(pMemLnx->apPages[iPage]) >= PhysHighest)
+            if (page_to_phys(pMemLnx->apPages[iPage]) > PhysHighest)
             {
                 rtR0MemObjLinuxFreePages(pMemLnx);
                 rtR0MemObjDelete(&pMemLnx->Core);
