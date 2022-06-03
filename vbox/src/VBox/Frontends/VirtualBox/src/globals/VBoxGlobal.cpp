@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 41691 2012-06-13 18:42:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4708,9 +4708,6 @@ void VBoxGlobal::cleanup()
     else
         UIActionPoolSelector::destroy();
 
-    /* Cleanup COM enum extensions: */
-    COMEnumsWrapper::cleanup();
-
     /* sanity check */
     if (!sVBoxGlobalInCleanup)
     {
@@ -4745,6 +4742,7 @@ void VBoxGlobal::cleanup()
     /* Destroy our event handlers */
     UIExtraDataEventHandler::destroy();
 
+    /* Cleanup medium enumeration thread: */
     if (mMediaEnumThread)
     {
         /* sVBoxGlobalInCleanup is true here, so just wait for the thread */
@@ -4762,6 +4760,9 @@ void VBoxGlobal::cleanup()
         delete mSelectorWnd;
     if (m_pVirtualMachine)
         delete m_pVirtualMachine;
+
+    /* Cleanup COM enum extensions: */
+    COMEnumsWrapper::cleanup();
 
     /* ensure CGuestOSType objects are no longer used */
     mFamilyIDs.clear();
