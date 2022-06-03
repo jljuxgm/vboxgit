@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 37328 2011-06-06 11:50:47Z vboxsync $
+# $Id: vboxconfig.sh 37338 2011-06-07 09:20:50Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -493,8 +493,8 @@ install_drivers()
         load_module "drv/$MOD_VBOXNET" "$DESC_VBOXNET" "$FATALOP"
     fi
 
-    # If vboxinst_vboxflt exists or if host is Solaris 10 or S11 versions < snv_159 then load vboxflt driver.
-    if test -f /etc/vboxinst_vboxflt || test "$HOST_OS_MAJORVERSION" = "5.10" || test "$HOST_OS_MINORVERSION" -lt 159;  then
+    # If "/etc/vboxinst_vboxflt" exists or if host is Solaris 10 or S11 versions < snv_159 then load vboxflt driver.
+    if test -f /etc/vboxinst_vboxflt || test "$HOST_OS_MAJORVERSION" = "5.10" || test "$HOST_OS_MINORVERSION" -lt 159 || test ! -f "$DIR_CONF/vboxbow.conf"; then
         # Load VBoxNetFlt
         if test -f "$DIR_CONF/vboxflt.conf"; then
             add_driver "$MOD_VBOXFLT" "$DESC_VBOXFLT" "$FATALOP"
