@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 39429 2011-11-28 06:22:46Z vboxsync $ */
+/* $Id: HostImpl.cpp 40079 2012-02-11 11:25:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -537,7 +537,7 @@ static int vboxNetWinAddComponent(std::list< ComObjPtr<HostNetworkInterface> > *
             ComObjPtr<HostNetworkInterface> iface;
             iface.createObject();
             /* remove the curly bracket at the end */
-            if (SUCCEEDED(iface->init (name, Guid (IfGuid), HostNetworkInterfaceType_Bridged)))
+            if (SUCCEEDED(iface->init (name, name, Guid (IfGuid), HostNetworkInterfaceType_Bridged)))
             {
 //                iface->setVirtualBox(m->pParent);
                 pPist->push_back(iface);
