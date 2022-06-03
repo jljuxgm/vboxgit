@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 39739 2012-01-10 15:27:08Z vboxsync $ */
+/* $Id: PGMShw.h 41458 2012-05-28 10:36:04Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -193,8 +193,9 @@ PGM_SHW_DECL(int, Enter)(PVMCPU pVCpu, bool fIs64BitsPagingMode)
 
     pgmLock(pVM);
 
-    int rc = pgmPoolAllocEx(pVM, GCPhysCR3, PGMPOOLKIND_ROOT_NESTED, PGMPOOLACCESS_DONTCARE, PGMPOOL_IDX_NESTED_ROOT,
-                            GCPhysCR3 >> PAGE_SHIFT, true /*fLockPage*/, &pNewShwPageCR3);
+    int rc = pgmPoolAlloc(pVM, GCPhysCR3, PGMPOOLKIND_ROOT_NESTED, PGMPOOLACCESS_DONTCARE, PGM_A20_IS_ENABLED(pVCpu),
+                          PGMPOOL_IDX_NESTED_ROOT, GCPhysCR3 >> PAGE_SHIFT, true /*fLockPage*/,
+                          &pNewShwPageCR3);
     AssertFatalRC(rc);
 
     pVCpu->pgm.s.iShwUser      = PGMPOOL_IDX_NESTED_ROOT;
