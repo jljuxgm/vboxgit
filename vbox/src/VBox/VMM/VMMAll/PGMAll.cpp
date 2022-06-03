@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: PGMAll.cpp 37357 2011-06-07 17:10:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2231,7 +2231,7 @@ VMMDECL(const char *) PGMGetModeName(PGMMODE enmMode)
  */
 VMM_INT_DECL(void) PGMNotifyNxeChanged(PVMCPU pVCpu, bool fNxe)
 {
-    VMCPU_ASSERT_EMT(pVCpu);
+    VMCPU_ASSERT_EMT_OR_RESET(pVCpu);
     Log(("PGMNotifyNxeChanged: fNxe=%RTbool\n", fNxe));
 
     pVCpu->pgm.s.fNoExecuteEnabled = fNxe;
