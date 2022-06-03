@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 36084 2011-02-25 13:01:42Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 36085 2011-02-25 13:23:34Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1257,7 +1257,7 @@ static int drvIntNetR3CfgGetPolicy(PPDMDRVINS pDrvIns, const char *pszName, PCDR
      * Check for +fixed first, so it can be stripped off.
      */
     char *pszSep = strpbrk(szValue, "+,;");
-    if (*pszSep)
+    if (pszSep)
     {
         *pszSep++ = '\0';
         const char *pszFixed = RTStrStripL(pszSep);
