@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 39660 2011-12-20 11:10:43Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 40107 2012-02-13 19:36:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -601,8 +601,7 @@ static DECLCALLBACK(void) handleVDError(void *pvUser, int rc, RT_SRC_POS_DECL, c
 static int handleVDMessage(void *pvUser, const char *pszFormat, va_list va)
 {
     NOREF(pvUser);
-    RTPrintfV(pszFormat, va);
-    return RTPrintf("\n");
+    return RTPrintfV(pszFormat, va);
 }
 
 static int CmdSetHDUUID(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox, ComPtr<ISession> aSession)
