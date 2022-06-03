@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 41160 2012-05-04 09:55:53Z vboxsync $ */
+/* $Id: server_muralfbo.c 41258 2012-05-11 16:39:12Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -166,20 +166,29 @@ void crServerCheckMuralGeometry(CRMuralInfo *mural)
     }
     else
     {
-        if (!mural->bUseFBO)
+        if (mural->spuWindow)
         {
-            crServerRedirMuralFBO(mural, GL_TRUE);
-        }
-        else
-        {
-            if (mural->width!=mural->fboWidth
-                || mural->height!=mural->height)
+            if (!mural->bUseFBO)
             {
-                crServerRedirMuralFBO(mural, GL_FALSE);
-                crServerDeleteMuralFBO(mural);
                 crServerRedirMuralFBO(mural, GL_TRUE);
             }
+            else
+            {
+                if (mural->width!=mural->fboWidth
+                    || mural->height!=mural->height)
+                {
+                    crServerRedirMuralFBO(mural, GL_FALSE);
+                    crServerDeleteMuralFBO(mural);
+                    crServerRedirMuralFBO(mural, GL_TRUE);
+                }
+            }
         }
+#ifdef DEBUG_misha
+        else
+        {
+            Assert(!mural->bUseFBO);
+        }
+#endif
 
         if (!mural->bUseFBO)
         {
