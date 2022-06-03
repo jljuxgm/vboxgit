@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 41760 2012-06-15 15:56:20Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 41762 2012-06-15 16:54:09Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -88,7 +88,7 @@ static DECLCALLBACK(int) DisasmTest1ReadCode(PDISCPUSTATE pDis, uint8_t offInstr
     if (cb + pDis->uInstrAddr + offInstr > sizeof(g_ab32BitCode))
         cb = cbMinRead;
     memcpy(&pDis->abInstr[offInstr], &g_ab32BitCode[pDis->uInstrAddr + offInstr], cb);
-    pDis->cbCachedInstr = offInstr + cb;
+    pDis->cbCachedInstr = offInstr + (uint8_t)cb;
     return VINF_SUCCESS;
 }
 
