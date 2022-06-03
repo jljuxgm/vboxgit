@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 38961 2011-10-06 13:00:28Z vboxsync $ */
+/* $Id: UIMachineView.cpp 38962 2011-10-06 20:37:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -156,6 +156,9 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
      * contains this view only and gives it all available space: */
     QSize newSize(toSize.isValid() ? toSize : pMachineWindow ? pMachineWindow->centralWidget()->size() : QSize());
     AssertMsg(newSize.isValid(), ("Size should be valid!\n"));
+
+    /* Remember the new size: */
+    storeConsoleSize(newSize.width(), newSize.height());
 
     /* Send new size-hint to the guest: */
     session().GetConsole().GetDisplay().SetVideoModeHint(newSize.width(), newSize.height(), 0, screenId());
@@ -670,8 +673,7 @@ void UIMachineView::setDesktopGeometry(DesktopGeo geometry, int aWidth, int aHei
 
 void UIMachineView::storeConsoleSize(int iWidth, int iHeight)
 {
-    if (m_desktopGeometryType == DesktopGeo_Automatic)
-        m_storedConsoleSize = QSize(iWidth, iHeight);
+    m_storedConsoleSize = QSize(iWidth, iHeight);
 }
 
 void UIMachineView::storeGuestSizeHint(const QSize &sizeHint)
