@@ -1,4 +1,4 @@
-/* $Id: socket.c 38108 2011-07-21 17:19:16Z vboxsync $ */
+/* $Id: socket.c 38111 2011-07-22 06:05:36Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -1024,7 +1024,7 @@ solisten(PNATState pData, u_int32_t bind_addr, u_int port, u_int32_t laddr, u_in
     if (   ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
         || (setsockopt(s, SOL_SOCKET, SO_REUSEADDR,(char *)&opt, sizeof(int)) < 0)
         || (bind(s,(struct sockaddr *)&addr, sizeof(addr)) < 0)
-        || (listen(s, SOMAXCONN) < 0))
+        || (listen(s, pData->soMaxConn) < 0))
     {
 #ifdef RT_OS_WINDOWS
         int tmperrno = WSAGetLastError(); /* Don't clobber the real reason we failed */
