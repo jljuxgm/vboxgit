@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 36338 2011-03-22 10:57:01Z vboxsync $ */
+/* $Id: VBoxService.cpp 36745 2011-04-20 10:08:26Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -587,14 +587,8 @@ int main(int argc, char **argv)
      * VBoxService and shouldn't be subject to /dev/vboxguest, pid-files and
      * global mutex restrictions.
      */
-# if 0 /** @todo r=bird: pending argv[0] bugfixing.  */
     if (VBoxServiceToolboxMain(argc, argv, &rcExit))
         return rcExit;
-# else
-    if (argc > 1)
-        if (VBoxServiceToolboxMain(argc - 1, &argv[1], &rcExit))
-            return rcExit;
-# endif
 #endif
 
     /*
