@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 41827 2012-06-19 14:32:29Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 41828 2012-06-19 14:34:32Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -797,7 +797,7 @@ my_generate_project "REM"           "src/recompiler"                        --be
     "src/recompiler/Sun/crt" \
     --end-includes \
     "src/recompiler" \
-    "src/VBox/VMM/REMInternal.h" \
+    "src/VBox/VMM/include/REMInternal.h" \
     "src/VBox/VMM/VMMAll/REMAll.cpp"
 
 # src/VBox/Additions
