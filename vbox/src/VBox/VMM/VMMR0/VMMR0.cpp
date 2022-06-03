@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: VMMR0.cpp 40424 2012-03-12 11:04:15Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1271,7 +1271,7 @@ typedef VMMR0ENTRYEXARGS *PVMMR0ENTRYEXARGS;
  * @returns VBox status code.
  * @param   pvArgs      The argument package
  */
-static int vmmR0EntryExWrapper(void *pvArgs)
+static DECLCALLBACK(int) vmmR0EntryExWrapper(void *pvArgs)
 {
     return vmmR0EntryExWorker(((PVMMR0ENTRYEXARGS)pvArgs)->pVM,
                               ((PVMMR0ENTRYEXARGS)pvArgs)->idCpu,

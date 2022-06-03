@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: CPUMR0.cpp 40424 2012-03-12 11:04:15Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -676,7 +676,7 @@ VMMR0DECL(int) CPUMR0LoadHyperDebugState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, b
  * Worker for cpumR0MapLocalApics. Check each CPU for a present Local APIC.
  * Play safe and treat each CPU separate.
  */
-static void cpumR0MapLocalApicWorker(RTCPUID idCpu, void *pvUser1, void *pvUser2)
+static DECLCALLBACK(void) cpumR0MapLocalApicWorker(RTCPUID idCpu, void *pvUser1, void *pvUser2)
 {
     NOREF(pvUser1); NOREF(pvUser2);
     int iCpu = RTMpCpuIdToSetIndex(idCpu);
