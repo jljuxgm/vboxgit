@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 36104 2011-02-28 16:55:24Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 36396 2011-03-24 12:09:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2976,7 +2976,7 @@ void VBoxGlobal::retranslateUi()
     mNetworkAdapterPromiscModePolicyTypes [KNetworkAdapterPromiscModePolicy_Deny] =
         tr ("Deny", "NetworkAdapterPromiscModePolicyType");
     mNetworkAdapterPromiscModePolicyTypes [KNetworkAdapterPromiscModePolicy_AllowNetwork] =
-        tr ("Allow Network", "NetworkAdapterPromiscModePolicyType");
+        tr ("Allow VMs", "NetworkAdapterPromiscModePolicyType");
     mNetworkAdapterPromiscModePolicyTypes [KNetworkAdapterPromiscModePolicy_AllowAll] =
         tr ("Allow All", "NetworkAdapterPromiscModePolicyType");
 
