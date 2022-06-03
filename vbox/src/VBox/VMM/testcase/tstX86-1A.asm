@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 40024 2012-02-07 21:50:43Z vboxsync $
+; $Id: tstX86-1A.asm 40037 2012-02-08 11:35:44Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -1285,9 +1285,9 @@ BEGINPROC   x861_Test5
         SAVE_ALL_PROLOGUE
 
         ; standard stuff...
-        fld dword [.r32V1]
-        fld qword [.r64V1]
-        fld tword [.r80V1]
+        fld dword REF(.r32V1)
+        fld qword REF(.r64V1)
+        fld tword REF(.r80V1)
 
         ShouldTrap X86_XCPT_UD, db 0d9h, 008h
         ShouldTrap X86_XCPT_UD, db 0d9h, 009h
