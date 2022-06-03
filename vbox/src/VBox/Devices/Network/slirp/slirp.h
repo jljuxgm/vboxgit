@@ -1,4 +1,4 @@
-/* $Id: slirp.h 39287 2011-11-14 09:41:52Z vboxsync $ */
+/* $Id: slirp.h 41977 2012-07-02 08:52:58Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -268,6 +268,7 @@ int inet_aton (const char *cp, struct in_addr *ia);
 #include "tftp.h"
 
 #include "slirp_state.h"
+#include "slirp_dns.h"
 
 #undef PVM /* XXX Mac OS X hack */
 
