@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 36719 2011-04-18 15:56:31Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 37009 2011-05-09 09:07:56Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -141,6 +141,7 @@ typedef struct VBOXRAWPCIGLOBALS
     /** The SUPDRV IDC handle (opaque struct). */
     SUPDRVIDCHANDLE SupDrvIDC;
 #ifdef RT_OS_LINUX
+    bool fPciStubModuleAvail;
     struct module    * pciStubModule;
 #endif
 } VBOXRAWPCIGLOBALS;
