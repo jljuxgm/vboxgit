@@ -1,4 +1,4 @@
-/* $Revision: 33540 $ */
+/* $Revision: 42004 $ */
 /** @file
  * VBoxGuestLibR0 - IDC with VBoxGuest and HGCM helpers.
  */
@@ -168,6 +168,17 @@ extern DECLVBGL(void)   VBoxGuestIDCClose (void *pvOpaque);
 extern DECLVBGL(int)    VBoxGuestIDCCall (void *pvOpaque, unsigned int iCmd, void *pvData, size_t cbSize, size_t *pcbReturn);
 RT_C_DECLS_END
 # endif
+
+bool vbglDriverIsOpened (VBGLDRIVER *pDriver)
+{
+# ifdef RT_OS_WINDOWS
+    return pDriver->pFileObject != NULL;
+# elif defined (RT_OS_OS2)
+    return pDriver->u32Session != UINT32_MAX;
+# else
+    return pDriver->pvOpaque != NULL;
+# endif
+}
 
 int vbglDriverOpen (VBGLDRIVER *pDriver)
 {

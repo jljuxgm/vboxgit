@@ -1,4 +1,4 @@
-/* $Revision: 41430 $ */
+/* $Revision: 42004 $ */
 /** @file
  * VBoxGuestLibR0 - System dependent helpers internal header.
  */
@@ -85,6 +85,15 @@ void vbglUnlockLinear (void *pvCtx, void *pv, uint32_t u32Size);
  * @return VBox error code
  */
 int vbglDriverOpen (VBGLDRIVER *pDriver);
+
+/**
+ * Answers whether the VBoxGuest driver is opened
+ *
+ * @param pDriver      Pointer to the driver structure.
+ *
+ * @return true - if opened, false - otherwise
+ */
+bool vbglDriverIsOpened (VBGLDRIVER *pDriver);
 
 /**
  * Call VBoxGuest driver.
