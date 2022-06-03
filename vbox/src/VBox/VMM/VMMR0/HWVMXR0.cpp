@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 37323 2011-06-03 16:20:06Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 37386 2011-06-08 15:15:11Z vboxsync $ */
 /** @file
  * HWACCM VMX - Host Context Ring 0.
  */
@@ -2662,8 +2662,8 @@ ResumeExecution:
     rc2 = VMXWriteVMCS(VMX_VMCS32_GUEST_ACTIVITY_STATE,           VMX_CMS_GUEST_ACTIVITY_ACTIVE);
     AssertRC(rc2);
 
-    /** Set TLB flush state as checked until we return from the world switch. */
-    ASMAtomicWriteU8(&pVCpu->hwaccm.s.fCheckedTLBFlush, true);
+    /* Set TLB flush state as checked until we return from the world switch. */
+    ASMAtomicWriteBool(&pVCpu->hwaccm.s.fCheckedTLBFlush, true);
     /* Deal with tagged TLB setup and invalidation. */
     pVM->hwaccm.s.vmx.pfnSetupTaggedTLB(pVM, pVCpu);
 
@@ -2702,8 +2702,8 @@ ResumeExecution:
 #else
     rc = pVCpu->hwaccm.s.vmx.pfnStartVM(pVCpu->hwaccm.s.fResumeVM, pCtx, &pVCpu->hwaccm.s.vmx.VMCSCache, pVM, pVCpu);
 #endif
-    ASMAtomicWriteU8(&pVCpu->hwaccm.s.fCheckedTLBFlush, false);
-    ASMAtomicIncU32(&pVCpu->hwaccm.s.cWorldSwitchExit);
+    ASMAtomicWriteBool(&pVCpu->hwaccm.s.fCheckedTLBFlush, false);
+    ASMAtomicIncU32(&pVCpu->hwaccm.s.cWorldSwitchExits);
     /* Possibly the last TSC value seen by the guest (too high) (only when we're in tsc offset mode). */
     if (!(pVCpu->hwaccm.s.vmx.proc_ctls & VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_RDTSC_EXIT))
         TMCpuTickSetLastSeen(pVCpu, ASMReadTSC() + pVCpu->hwaccm.s.vmx.u64TSCOffset - 0x400 /* guestimate of world switch overhead in clock ticks */);

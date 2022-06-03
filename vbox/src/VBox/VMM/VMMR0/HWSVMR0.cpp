@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 37320 2011-06-03 15:05:36Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 37386 2011-06-08 15:15:11Z vboxsync $ */
 /** @file
  * HWACCM SVM - Host Context Ring 0.
  */
@@ -1215,7 +1215,7 @@ ResumeExecution:
     pVCpu->hwaccm.s.idLastCpu = pCpu->idCpu;
 
     /* Set TLB flush state as checked until we return from the world switch. */
-    ASMAtomicWriteU8(&pVCpu->hwaccm.s.fCheckedTLBFlush, true);
+    ASMAtomicWriteBool(&pVCpu->hwaccm.s.fCheckedTLBFlush, true);
 
     /* Check for tlb shootdown flushes. */
     if (VMCPU_FF_TESTANDCLEAR(pVCpu, VMCPU_FF_TLB_FLUSH))
@@ -1295,8 +1295,8 @@ ResumeExecution:
 #else
     pVCpu->hwaccm.s.svm.pfnVMRun(pVCpu->hwaccm.s.svm.pVMCBHostPhys, pVCpu->hwaccm.s.svm.pVMCBPhys, pCtx, pVM, pVCpu);
 #endif
-    ASMAtomicWriteU8(&pVCpu->hwaccm.s.fCheckedTLBFlush, false);
-    ASMAtomicIncU32(&pVCpu->hwaccm.s.cWorldSwitchExit);
+    ASMAtomicWriteBool(&pVCpu->hwaccm.s.fCheckedTLBFlush, false);
+    ASMAtomicIncU32(&pVCpu->hwaccm.s.cWorldSwitchExits);
     /* Possibly the last TSC value seen by the guest (too high) (only when we're in tsc offset mode). */
     if (!(pVMCB->ctrl.u32InterceptCtrl1 & SVM_CTRL1_INTERCEPT_RDTSC))
         TMCpuTickSetLastSeen(pVCpu, ASMReadTSC() + pVMCB->ctrl.u64TSCOffset - 0x400 /* guestimate of world switch overhead in clock ticks */);
