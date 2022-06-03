@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 39540 2011-12-06 15:17:59Z vboxsync $ */
+/* $Id: vbsf.cpp 39542 2011-12-06 16:48:23Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -16,7 +16,6 @@
  */
 
 #ifdef UNITTEST
-# include "teststubs.h"
 # include "testcase/tstSharedFolderService.h"
 #endif
 
@@ -36,6 +35,10 @@
 #include <iprt/stream.h>
 #ifdef RT_OS_DARWIN
 # include <Carbon/Carbon.h>
+#endif
+
+#ifdef UNITTEST
+# include "teststubs.h"
 #endif
 
 #define SHFL_RT_LINK(pClient) ((pClient)->fu32Flags & SHFL_CF_SYMLINKS ? RTPATH_F_ON_LINK : RTPATH_F_FOLLOW_LINK)
