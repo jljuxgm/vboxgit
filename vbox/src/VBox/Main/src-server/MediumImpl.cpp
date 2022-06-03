@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 38717 2011-09-12 14:48:50Z vboxsync $ */
+/* $Id: MediumImpl.cpp 38729 2011-09-13 09:50:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2528,8 +2528,8 @@ STDMETHODIMP Medium::CreateDiffStorage(IMedium *aTarget,
     ComObjPtr<Medium> diff = static_cast<Medium*>(aTarget);
 
     // locking: we need the tree lock first because we access parent pointers
-    AutoReadLock treeLock(m->pVirtualBox->getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
-    AutoMultiWriteLock2 alock(this, diff COMMA_LOCKVAL_SRC_POS);
+    AutoMultiWriteLock3 alock(&m->pVirtualBox->getMediaTreeLockHandle(),
+                              this->lockHandle(), diff->lockHandle() COMMA_LOCKVAL_SRC_POS);
 
     if (m->type == MediumType_Writethrough)
         return setError(VBOX_E_INVALID_OBJECT_STATE,
@@ -2572,7 +2572,6 @@ STDMETHODIMP Medium::CreateDiffStorage(IMedium *aTarget,
         diff->m->llRegistryIDs.push_back(parentMachineRegistry);
     }
 
-    treeLock.release();
     alock.release();
 
     ComObjPtr <Progress> pProgress;
