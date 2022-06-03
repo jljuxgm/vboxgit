@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 35599 2011-01-18 09:52:52Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 36350 2011-03-22 21:53:31Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -99,10 +99,8 @@ static const USBSUFF s_aIntervalSuff[] =
  */
 static const USBDEVTREELOCATION s_aTreeLocations[] =
 {
-    { "/proc/bus/usb", false },
-    { "/dev/bus/usb",  false },
     { "/dev/vboxusb",  true },
-    { "/dev/bus/usb",  true },
+    { "/proc/bus/usb", false },
 };
 
 
