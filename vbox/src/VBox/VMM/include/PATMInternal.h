@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: PATMInternal.h 41897 2012-06-23 18:40:19Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -373,7 +373,7 @@ typedef struct PATMPATCHPAGE
     /** Maximum nr of pointers in the array. */
     uint32_t                    cMaxPatches;
     /** Array of patch pointers for this page. */
-    R3PTRTYPE(PPATCHINFO *)     aPatch;
+    R3PTRTYPE(PPATCHINFO *)     papPatch;
 } PATMPATCHPAGE, *PPATMPATCHPAGE;
 
 #define PATM_PATCHREC_FROM_COREOFFSET(a)  (PPATMPATCHREC)((uintptr_t)a - RT_OFFSETOF(PATMPATCHREC, CoreOffset))

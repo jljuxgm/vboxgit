@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: PATMRC.cpp 41897 2012-06-23 18:40:19Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -120,7 +120,7 @@ VMMRCDECL(int) PATMGCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RTR
             }
             STAM_COUNTER_INC(&pVM->patm.s.StatPatchWriteInterpretedFailed);
         }
-        R3PTRTYPE(PPATCHINFO) *paPatch = (R3PTRTYPE(PPATCHINFO) *)MMHyperR3ToRC(pVM, pPatchPage->aPatch);
+        R3PTRTYPE(PPATCHINFO) *paPatch = (R3PTRTYPE(PPATCHINFO) *)MMHyperR3ToRC(pVM, pPatchPage->papPatch);
 
         /* Increase the invalid write counter for each patch that's registered for that page. */
         for (uint32_t i=0;i<pPatchPage->cCount;i++)
