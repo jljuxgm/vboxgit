@@ -1,4 +1,4 @@
-/* $Id: DrvVDE.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvVDE.cpp 37299 2011-06-01 16:32:27Z vboxsync $ */
 /** @file
  * VDE network transport driver.
  */
@@ -561,7 +561,7 @@ static DECLCALLBACK(int) drvVDEConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     /*
      * Validate the config.
      */
-    if (!CFGMR3AreValuesValid(pCfg, "Network"))
+    if (!CFGMR3AreValuesValid(pCfg, "network"))
         return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES, "");
 
     /*
@@ -584,7 +584,7 @@ static DECLCALLBACK(int) drvVDEConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
      */
     int rc;
     char szNetwork[RTPATH_MAX];
-    rc = CFGMR3QueryString(pCfg, "Network", szNetwork, sizeof(szNetwork));
+    rc = CFGMR3QueryString(pCfg, "network", szNetwork, sizeof(szNetwork));
     if (RT_FAILURE(rc))
         *szNetwork=0;
 
