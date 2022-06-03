@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 36340 2011-03-22 13:19:08Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 36343 2011-03-22 13:58:50Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -170,7 +170,7 @@ DECLHIDDEN(int)  vboxPciOsDevUnregisterIrqHandler(PVBOXRAWPCIINS pIns, int32_t i
 
 DECLHIDDEN(int)  vboxPciOsDevPowerStateChange(PVBOXRAWPCIINS pIns, PCIRAWPOWERSTATE  aState);
 
-#define VBOX_DRV_VMDATA(pIns) ((PVBOXRAWPCIDRVVM)(pIns->pVmCtx->pDriverData))
+#define VBOX_DRV_VMDATA(pIns) ((PVBOXRAWPCIDRVVM)(pIns->pVmCtx ? pIns->pVmCtx->pDriverData : NULL))
 
 RT_C_DECLS_END
 
