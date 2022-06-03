@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 41785 2012-06-16 19:38:41Z vboxsync $ */
+/* $Id: VD.cpp 42039 2012-07-06 13:29:33Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -989,7 +989,10 @@ static int vdReadHelperEx(PVBOXHDD pDisk, PVDIMAGE pImage, PVDIMAGE pImageParent
             else
                 cbBufClear += cbThisRead;
 
-            rc = VINF_SUCCESS;
+            if (pImage->uOpenFlags & VD_OPEN_FLAGS_INFORM_ABOUT_ZERO_BLOCKS)
+                rc = VINF_VD_NEW_ZEROED_BLOCK;
+            else
+                rc = VINF_SUCCESS;
         }
         else if (RT_SUCCESS(rc))
         {
