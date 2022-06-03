@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 38052 2011-07-19 08:44:28Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 38054 2011-07-19 08:50:19Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -962,14 +962,12 @@ static void vboxNetFltLinuxHookDev(PVBOXNETFLTINS pThis, struct net_device *pDev
     if (!pOverride)
         return;
     pOverride->pOrgOps              = pDev->OVR_OPS;
+    /* We only need to save ethtool_ops structure if it is present (#5712) */
+    if (VALID_PTR(pDev->OVR_OPS))
+        pOverride->Ops              = *pDev->OVR_OPS;
 # if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 29)
-    /**
-     * There is no need to save ethtool_ops structure since we only modify
-     * the pointer itself and the structure is optional (#5712).
-     */
     pOverride->pfnStartXmit         = pDev->hard_start_xmit;
 # else /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29) */
-    pOverride->Ops                  = *pDev->OVR_OPS;
     pOverride->Ops.ndo_start_xmit   = vboxNetFltLinuxStartXmitFilter;
 # endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29) */
     pOverride->u32Magic             = VBOXNETDEVICEOPSOVERRIDE_MAGIC;
