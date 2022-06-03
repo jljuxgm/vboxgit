@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 38741 2011-09-13 14:47:57Z vboxsync $ */
+/* $Id: MediumImpl.cpp 38744 2011-09-13 15:00:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2650,7 +2650,7 @@ STDMETHODIMP Medium::CloneTo(IMedium *aTarget,
         AutoMultiWriteLock4 alock(&m->pVirtualBox->getMediaTreeLockHandle(),
                                   this->lockHandle(),
                                   pTarget->lockHandle(),
-                                  pParent->LockHandle() COMMA_LOCKVAL_SRC_POS);
+                                  pParent->lockHandle() COMMA_LOCKVAL_SRC_POS);
 
         if (    pTarget->m->state != MediumState_NotCreated
             &&  pTarget->m->state != MediumState_Created)
