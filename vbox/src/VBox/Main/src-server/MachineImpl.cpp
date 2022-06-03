@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 39200 2011-11-04 10:35:06Z vboxsync $ */
+/* $Id: MachineImpl.cpp 39221 2011-11-08 06:08:59Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11012,14 +11012,6 @@ void SessionMachine::uninit(Uninit::Reason aReason)
     // and others need mParent lock, and USB needs host lock.
     AutoMultiWriteLock3 multilock(mParent, mParent->host(), this COMMA_LOCKVAL_SRC_POS);
 
-    LogAleksey(("{%p} " LOG_FN_FMT ": mCollectorGuest=%p\n",
-                this, __PRETTY_FUNCTION__, mCollectorGuest));
-    if (mCollectorGuest)
-    {
-        mParent->performanceCollector()->unregisterGuest(mCollectorGuest);
-        // delete mCollectorGuest; => CollectorGuestManager::destroyUnregistered()
-        mCollectorGuest = NULL;
-    }
 #if 0
     // Trigger async cleanup tasks, avoid doing things here which are not
     // vital to be done immediately and maybe need more locks. This calls
@@ -11033,6 +11025,15 @@ void SessionMachine::uninit(Uninit::Reason aReason)
      */
     unregisterMetrics(mParent->performanceCollector(), mPeer);
 #endif
+    /* The guest must be unregistered after its metrics (#5949). */
+    LogAleksey(("{%p} " LOG_FN_FMT ": mCollectorGuest=%p\n",
+                this, __PRETTY_FUNCTION__, mCollectorGuest));
+    if (mCollectorGuest)
+    {
+        mParent->performanceCollector()->unregisterGuest(mCollectorGuest);
+        // delete mCollectorGuest; => CollectorGuestManager::destroyUnregistered()
+        mCollectorGuest = NULL;
+    }
 
     if (aReason == Uninit::Abnormal)
     {
