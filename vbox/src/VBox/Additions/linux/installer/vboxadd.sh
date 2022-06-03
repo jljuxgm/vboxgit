@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 36668 $)
+# Linux Additions kernel module init script ($Revision: 36948 $)
 #
 
 #
@@ -167,6 +167,12 @@ dev=/dev/vboxguest
 userdev=/dev/vboxuser
 owner=vboxadd
 group=1
+
+test_for_gcc_and_make()
+{
+    which make > /dev/null 2>&1 || printf "\nThe make utility was not found. If the following module compilation fails then\nthis could be the reason and you should try installing it.\n"
+    which gcc > /dev/null 2>&1 || printf "\nThe gcc utility was not found. If the following module compilation fails then\nthis could be the reason and you should try installing it.\n"
+}
 
 test_sane_kernel_dir()
 {
@@ -366,6 +372,7 @@ setup_modules()
         return 0
     fi
 
+    test_for_gcc_and_make
     test_sane_kernel_dir
 
     echo
