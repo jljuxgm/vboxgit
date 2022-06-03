@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38152 2011-07-25 12:19:13Z vboxsync $
+# $Id: Makefile.kmk 38158 2011-07-25 13:13:51Z vboxsync $
 ## @file
 # Makefile for the VirtualBox X11 keyboard library
 #
@@ -69,7 +69,7 @@ VBoxKeyboard-Tarball_SOURCES = $(VBoxKeyboard-Tarball_0_OUTDIR)/vboxkeyboard.tar
 VBoxKeyboard-Tarball_CLEAN   = $(VBoxKeyboard-Tarball_0_OUTDIR)/vboxkeyboard.tar.bz2
 
 $$(VBoxKeyboard-Tarball_0_OUTDIR)/vboxkeyboard.tar.bz2: \
-		$$(VBoxKeyboard-Files_2_STAGE_TARGET) \
+		$$(VBoxKeyboard-Files_2_STAGE_TARGETS) \
 		$(MAKEFILE_CURRENT) \
 		| $$(dir $$@)
 	$(call MSG_L1,Packing $@)
@@ -86,5 +86,4 @@ endif
 
 
 include $(KBUILD_PATH)/subfooter.kmk
-
 
