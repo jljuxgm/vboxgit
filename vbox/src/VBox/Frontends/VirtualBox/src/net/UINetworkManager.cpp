@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 40009 2012-02-06 12:38:39Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 40152 2012-02-16 14:46:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -754,7 +754,7 @@ void UINetworkManager::prepareNetworkRequest(UINetworkRequest *pNetworkRequest)
 }
 
 /* Cleanup network-request: */
-void UINetworkManager::cleanupNetworkRequest(const QUuid &uuid)
+void UINetworkManager::cleanupNetworkRequest(QUuid uuid)
 {
     /* Cleanup network-request map: */
     delete m_requests[uuid];
