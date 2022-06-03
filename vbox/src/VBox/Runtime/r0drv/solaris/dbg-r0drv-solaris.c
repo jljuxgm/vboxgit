@@ -1,4 +1,4 @@
-/* $Id: dbg-r0drv-solaris.c 40701 2012-03-28 16:58:05Z vboxsync $ */
+/* $Id: dbg-r0drv-solaris.c 40702 2012-03-28 17:03:17Z vboxsync $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
@@ -107,7 +107,7 @@ static int rtR0DbgKrnlInfoModRetain(char *pszModule, modctl_t **ppMod, ctf_file_
         }
         else
         {
-            LogRel(("rtR0DbgKrnlInfoModRetain: mod_hold_by_id failed for '%s'\n" pszModule));
+            LogRel(("rtR0DbgKrnlInfoModRetain: mod_hold_by_id failed for '%s'\n", pszModule));
             rc = VERR_INTERNAL_ERROR_2;
         }
     }
