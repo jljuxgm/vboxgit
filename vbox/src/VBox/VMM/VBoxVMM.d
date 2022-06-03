@@ -1,4 +1,4 @@
-/* $Id: VBoxVMM.d 40907 2012-04-13 20:50:14Z vboxsync $ */
+/* $Id: VBoxVMM.d 40921 2012-04-14 11:53:10Z vboxsync $ */
 /** @file
  * VBoxVMM - Static dtrace probes.
  */
@@ -44,9 +44,9 @@ provider vboxvmm
     probe em__ff__raw_ret(struct VMCPU *a_pVCpu, int a_rc);
     /*^^VMM-ALT-TP: "%d", (a_rc) */
 
-    probe pdm__irq__get(       struct VMCPU *a_pVCpu, uint32_t a_uTag, uint32_t a_idSource, uint32_t a_iIrq);
-    probe pdm__irq__high(       struct VMCPU *a_pVCpu, uint32_t a_uTag, uint32_t a_idSource);
-    probe pdm__irq__low(     struct VMCPU *a_pVCpu, uint32_t a_uTag, uint32_t a_idSource);
+    probe pdm__irq__get( struct VMCPU *a_pVCpu, uint32_t a_uTag, uint32_t a_idSource, uint32_t a_iIrq);
+    probe pdm__irq__high(struct VMCPU *a_pVCpu, uint32_t a_uTag, uint32_t a_idSource);
+    probe pdm__irq__low( struct VMCPU *a_pVCpu, uint32_t a_uTag, uint32_t a_idSource);
     probe pdm__irq__hilo(struct VMCPU *a_pVCpu, uint32_t a_uTag, uint32_t a_idSource);
 
 
