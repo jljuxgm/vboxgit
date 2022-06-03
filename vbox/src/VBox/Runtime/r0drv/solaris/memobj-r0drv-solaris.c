@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 41628 2012-06-08 16:19:13Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 41629 2012-06-08 17:37:38Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -245,7 +245,7 @@ static page_t **rtR0MemObjSolPagesAlloc(uint64_t uPhysHi, uint64_t *puPhys, size
                     /*
                      * No pages found or found pages didn't meet requirements, release what was grabbed so far.
                      */
-                    for (size_t k = 0; k <= i; k++)
+                    for (size_t k = 0; k < i; k++)
                         page_destroy(ppPages[k], 0 /* move it to the free list */);
                     kmem_free(ppPages, cbPages);
                     page_unresv(cPages);
