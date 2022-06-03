@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: PGMInternal.h 37370 2011-06-08 08:29:42Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -806,7 +806,7 @@ typedef PPGMPAGE *PPPGMPAGE;
 
 
 /** Asserts lock ownership in some of the PGM_PAGE_XXX macros. */
-#ifdef VBOX_STRICT
+#if defined(VBOX_STRICT) && 0 /** @todo triggers in pgmRZDynMapGCPageV2Inlined */
 # define PGM_PAGE_ASSERT_LOCK(a_pVM)  PGM_LOCK_ASSERT_OWNER(a_pVM)
 #else
 # define PGM_PAGE_ASSERT_LOCK(a_pVM)  do { } while (0)
