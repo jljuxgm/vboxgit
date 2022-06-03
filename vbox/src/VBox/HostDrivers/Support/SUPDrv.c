@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 40904 2012-04-13 14:47:07Z vboxsync $ */
+/* $Id: SUPDrv.c 40981 2012-04-18 18:56:50Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -1785,6 +1785,28 @@ static int supdrvIOCtlInner(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESS
 
             /* execute */
             pReqHdr->rc = supdrvIOCtl_TracerIOCtl(pDevExt, pSession, pReq->u.In.uCmd, pReq->u.In.uArg, &pReq->u.Out.iRetVal);
+            return 0;
+        }
+
+        case SUP_CTL_CODE_NO_SIZE(SUP_IOCTL_TRACER_UMOD_REG):
+        {
+            /* validate */
+            PSUPTRACERUMODREG pReq = (PSUPTRACERUMODREG)pReqHdr;
+            REQ_CHECK_SIZES(SUP_IOCTL_TRACER_UMOD_REG);
+
+            /* execute */
+            pReqHdr->rc = supdrvIOCtl_TracerUmodRegister(pDevExt, pSession, pReq->u.In.pVtgHdr, pReq->u.In.szName, pReq->u.In.fFlags);
+            return 0;
+        }
+
+        case SUP_CTL_CODE_NO_SIZE(SUP_IOCTL_TRACER_UMOD_DEREG):
+        {
+            /* validate */
+            PSUPTRACERUMODDEREG pReq = (PSUPTRACERUMODDEREG)pReqHdr;
+            REQ_CHECK_SIZES(SUP_IOCTL_TRACER_UMOD_DEREG);
+
+            /* execute */
+            pReqHdr->rc = supdrvIOCtl_TracerUmodDeregister(pDevExt, pSession, pReq->u.In.pVtgHdr);
             return 0;
         }
 

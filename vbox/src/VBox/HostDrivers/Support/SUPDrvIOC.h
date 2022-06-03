@@ -1,4 +1,4 @@
-/* $Revision: 40819 $ */
+/* $Revision: 40981 $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -1245,6 +1245,60 @@ typedef struct SUPTRACERIOCTL
         } Out;
     } u;
 } SUPTRACERIOCTL, *PSUPTRACERIOCTL;
+/** @} */
+
+
+/** @name SUP_IOCTL_TRACER_UMOD_REG
+ * Registers tracepoints in a user mode module.
+ *
+ * @{
+ */
+#define SUP_IOCTL_TRACER_UMOD_REG                       SUP_CTL_CODE_SIZE(31, SUP_IOCTL_TRACER_UMOD_REG)
+#define SUP_IOCTL_TRACER_UMOD_REG_SIZE                  sizeof(SUPTRACERUMODREG)
+#define SUP_IOCTL_TRACER_UMOD_REG_SIZE_IN               sizeof(SUPTRACERUMODREG)
+#define SUP_IOCTL_TRACER_UMOD_REG_SIZE_OUT              sizeof(SUPREQHDR)
+typedef struct SUPTRACERUMODREG
+{
+    /** The header. */
+    SUPREQHDR               Hdr;
+    union
+    {
+        struct
+        {
+            /** Pointer to the VTG header. */
+            RTR3PTR         pVtgHdr;
+            /** Future flags, MBZ.  */
+            uint32_t        fFlags;
+            /** The module name. */
+            char            szName[64];
+        } In;
+    } u;
+} SUPTRACERUMODREG, *PSUPTRACERUMODREG;
+/** @} */
+
+
+/** @name SUP_IOCTL_TRACER_UMOD_DEREG
+ * Deregisters tracepoints in a user mode module.
+ *
+ * @{
+ */
+#define SUP_IOCTL_TRACER_UMOD_DEREG                     SUP_CTL_CODE_SIZE(32, SUP_IOCTL_TRACER_UMOD_DEREG)
+#define SUP_IOCTL_TRACER_UMOD_DEREG_SIZE                sizeof(SUPTRACERUMODDEREG)
+#define SUP_IOCTL_TRACER_UMOD_DEREG_SIZE_IN             sizeof(SUPTRACERUMODDEREG)
+#define SUP_IOCTL_TRACER_UMOD_DEREG_SIZE_OUT            sizeof(SUPREQHDR)
+typedef struct SUPTRACERUMODDEREG
+{
+    /** The header. */
+    SUPREQHDR               Hdr;
+    union
+    {
+        struct
+        {
+            /** Pointer to the VTG header. */
+            RTR3PTR         pVtgHdr;
+        } In;
+    } u;
+} SUPTRACERUMODDEREG, *PSUPTRACERUMODDEREG;
 /** @} */
 
 

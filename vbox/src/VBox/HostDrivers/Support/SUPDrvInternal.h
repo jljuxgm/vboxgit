@@ -1,4 +1,4 @@
-/* $Revision: 40975 $ */
+/* $Revision: 40981 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -659,6 +659,10 @@ int  VBOXCALL   supdrvIOCtl_TracerClose(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pS
 int  VBOXCALL   supdrvIOCtl_TracerIOCtl(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, uintptr_t uCmd, uintptr_t uArg, int32_t *piRetVal);
 extern PFNRT    g_pfnSupdrvProbeFireKernel;
 DECLASM(void)   supdrvTracerProbeFireStub(void);
+
+int  VBOXCALL   supdrvIOCtl_TracerUmodRegister(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, RTR3PTR pVtgHdr, const char *pszModName, uint32_t fFlags);
+int  VBOXCALL   supdrvIOCtl_TracerUmodDeregister(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, RTR3PTR pVtgHdr);
+void  VBOXCALL  supdrvIOCtl_TracerUmodProbeFire(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PCSUPDRVTRACERUSRCTX pCtx);
 
 #ifdef VBOX_WITH_NATIVE_DTRACE
 const SUPDRVTRACERREG * VBOXCALL supdrvDTraceInit(void);

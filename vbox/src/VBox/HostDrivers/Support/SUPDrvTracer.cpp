@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40975 2012-04-18 14:49:24Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 40981 2012-04-18 18:56:50Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1229,6 +1229,22 @@ void VBOXCALL supdrvTracerCleanupSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION p
      */
     if (pSession->uTracerData)
         supdrvIOCtl_TracerClose(pDevExt, pSession);
+}
+
+
+int  VBOXCALL   supdrvIOCtl_TracerUmodRegister(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, RTR3PTR pVtgHdr, const char *pszModName, uint32_t fFlags)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int  VBOXCALL   supdrvIOCtl_TracerUmodDeregister(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, RTR3PTR pVtgHdr)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+void  VBOXCALL  supdrvIOCtl_TracerUmodProbeFire(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PCSUPDRVTRACERUSRCTX pCtx)
+{
+
 }
 
 
