@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 38490 2011-08-18 12:22:02Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 38491 2011-08-18 12:27:51Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -832,7 +832,7 @@ HRESULT Appliance::readFSOVF(TaskOVF *pTask)
         SHA1STORAGE storage;
         RT_ZERO(storage);
         int vrc = VDInterfaceAdd(&pFileIo->Core, "Appliance::IOFile",
-                                 VDINTERFACETYPE_IO, pFileIo, sizeof(VDINTERFACEIO),
+                                 VDINTERFACETYPE_IO, 0, sizeof(VDINTERFACEIO),
                                  &storage.pVDImageIfaces);
         if (RT_FAILURE(vrc))
         {
@@ -1246,7 +1246,7 @@ HRESULT Appliance::importFSOVF(TaskOVF *pTask, AutoWriteLockBase& writeLock)
         RT_ZERO(storage);
         storage.fCreateDigest = true;
         int vrc = VDInterfaceAdd(&pFileIo->Core, "Appliance::IOFile",
-                                 VDINTERFACETYPE_IO, pFileIo, sizeof(VDINTERFACEIO),
+                                 VDINTERFACETYPE_IO, 0, sizeof(VDINTERFACEIO),
                                  &storage.pVDImageIfaces);
         if (RT_FAILURE(vrc))
             throw E_FAIL;
