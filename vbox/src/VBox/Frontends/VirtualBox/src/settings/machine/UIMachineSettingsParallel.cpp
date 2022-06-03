@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 37051 2011-05-12 13:48:15Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 37126 2011-05-17 13:56:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -259,8 +259,12 @@ void UIMachineSettingsParallelPage::getFromCache()
     /* Applying language settings: */
     retranslateUi();
 
+    /* Polish page finally: */
+    polishPage();
+
     /* Revalidate if possible: */
-    if (mValidator) mValidator->revalidate();
+    if (mValidator)
+        mValidator->revalidate();
 }
 
 /* Save data from corresponding widgets to cache,

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 37051 2011-05-12 13:48:15Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 37126 2011-05-17 13:56:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -86,6 +86,9 @@ void UIMachineSettingsNetwork::polishTab()
     m_pMACLabel->setEnabled(m_pParent->isMachineOffline());
     m_pMACEditor->setEnabled(m_pParent->isMachineOffline());
     m_pMACButton->setEnabled(m_pParent->isMachineOffline());
+
+    m_pPortForwardingButton->setEnabled(m_pParent->isMachineInValidMode() &&
+                                        attachmentType() == KNetworkAttachmentType_NAT);
 
     /* Postprocessing: */
     if ((m_pParent->isMachineSaved() || m_pParent->isMachineOnline()) && !m_pAdvancedArrow->isExpanded())
@@ -855,8 +858,12 @@ void UIMachineSettingsNetworkPage::getFromCache()
     /* Applying language settings: */
     retranslateUi();
 
+    /* Polish page finally: */
+    polishPage();
+
     /* Revalidate if possible: */
-    if (m_pValidator) m_pValidator->revalidate();
+    if (m_pValidator)
+        m_pValidator->revalidate();
 }
 
 /* Save data from corresponding widgets to cache,

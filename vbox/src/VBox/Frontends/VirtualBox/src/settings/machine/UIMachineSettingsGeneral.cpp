@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 37051 2011-05-12 13:48:15Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 37126 2011-05-17 13:56:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -114,14 +114,17 @@ void UIMachineSettingsGeneral::getFromCache()
     mCbSaveMounted->setChecked(generalData.m_fSaveMountedAtRuntime);
     mCbShowToolBar->setChecked(generalData.m_fShowMiniToolBar);
     mCbToolBarAlignment->setChecked(generalData.m_fMiniToolBarAtTop);
-    mCbToolBarAlignment->setEnabled(mCbShowToolBar->isChecked());
     mPsSnapshot->setPath(generalData.m_strSnapshotsFolder);
     mPsSnapshot->setHomeDir(generalData.m_strSnapshotsHomeDir);
     mCbClipboard->setCurrentIndex(generalData.m_clipboardMode);
     mTeDescription->setPlainText(generalData.m_strDescription);
 
+    /* Polish page finally: */
+    polishPage();
+
     /* Revalidate if possible: */
-    if (mValidator) mValidator->revalidate();
+    if (mValidator)
+        mValidator->revalidate();
 }
 
 /* Save data from corresponding widgets to cache,
@@ -244,6 +247,6 @@ void UIMachineSettingsGeneral::polishPage()
     mCbSaveMounted->setEnabled(isMachineInValidMode());
     mLbToolBar->setEnabled(isMachineInValidMode());
     mCbShowToolBar->setEnabled(isMachineInValidMode());
-    mCbToolBarAlignment->setEnabled(mCbShowToolBar->isChecked() && isMachineInValidMode());
+    mCbToolBarAlignment->setEnabled(isMachineInValidMode() && mCbShowToolBar->isChecked());
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 37051 2011-05-12 13:48:15Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 37126 2011-05-17 13:56:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -69,6 +69,9 @@ void UIMachineSettingsAudio::getFromCache()
     mGbAudio->setChecked(audioData.m_fAudioEnabled);
     mCbAudioDriver->setCurrentIndex(mCbAudioDriver->findText(vboxGlobal().toString(audioData.m_audioDriverType)));
     mCbAudioController->setCurrentIndex(mCbAudioController->findText(vboxGlobal().toString(audioData.m_audioControllerType)));
+
+    /* Polish page finally: */
+    polishPage();
 }
 
 /* Save data from corresponding widgets to cache,
