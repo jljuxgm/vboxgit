@@ -1,4 +1,4 @@
-/* $Id: ldrELF.h 32204 2010-09-02 14:06:26Z vboxsync $ */
+/* $Id: ldrELF.h 37560 2011-06-20 14:48:32Z vboxsync $ */
 /** @file
  * ELF types, current architecture.
  */
@@ -82,5 +82,5 @@ typedef	Elf32_Sym           Elf_Sym;
 # error Unknown arch!
 #endif
 
-#endif  /* ___internal_ldrELF_h */
+#endif /* !___internal_ldrELF_h */
 

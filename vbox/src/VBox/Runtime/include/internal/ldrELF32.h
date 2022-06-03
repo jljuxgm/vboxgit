@@ -1,4 +1,4 @@
-/* $Id: ldrELF32.h 32223 2010-09-02 19:11:02Z vboxsync $ */
+/* $Id: ldrELF32.h 37560 2011-06-20 14:48:32Z vboxsync $ */
 /** @file
  * IPRT - ELF 32-bit header.
  */
@@ -184,5 +184,5 @@ typedef struct
 #define ELF32_R_INFO(sym, type)     (((sym) << 8) + (unsigned char)(type))
 
 
-#endif /* ___internal_ldrELF32_h */
+#endif /* !___internal_ldrELF32_h */
 
