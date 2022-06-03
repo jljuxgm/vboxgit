@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInstall.cpp 41010 2012-04-20 13:16:32Z vboxsync $ */
+/* $Id: VBoxNetAdpInstall.cpp 41011 2012-04-20 13:20:01Z vboxsync $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
@@ -226,10 +226,6 @@ int __cdecl main(int argc, char **argv)
         printUsage();
         return 1;
     }
-
-#if 0
-    __debugbreak();
-#endif
 
     if (!strcmp(argv[1], "i"))
         return VBoxNetAdpInstall();
