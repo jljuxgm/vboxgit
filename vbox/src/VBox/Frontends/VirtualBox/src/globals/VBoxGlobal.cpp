@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 38774 2011-09-16 10:04:41Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 38977 2011-10-12 11:44:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -23,7 +23,7 @@
 
 #include "VBoxUtils.h"
 #include "VBoxDefs.h"
-#include "VBoxSelectorWnd.h"
+#include "UISelectorWindow.h"
 #include "UIMessageCenter.h"
 #include "QIMessageBox.h"
 #include "QIDialogButtonBox.h"
@@ -416,7 +416,7 @@ bool VBoxGlobal::setSettings (VBoxGlobalSettings &gs)
  *
  *  There is only one such a window per VirtualBox application.
  */
-VBoxSelectorWnd &VBoxGlobal::selectorWnd()
+UISelectorWindow &VBoxGlobal::selectorWnd()
 {
     AssertMsg (!vboxGlobal().isVMConsoleProcess(),
                ("Must NOT be a VM console process"));
@@ -430,7 +430,7 @@ VBoxSelectorWnd &VBoxGlobal::selectorWnd()
          *  to avoid recursion, since this method may be (and will be) called
          *  from the below constructor or from constructors/methods it calls.
          */
-        VBoxSelectorWnd *w = new VBoxSelectorWnd (&mSelectorWnd, 0);
+        UISelectorWindow *w = new UISelectorWindow (&mSelectorWnd, 0);
         Assert (w == mSelectorWnd);
         NOREF(w);
     }

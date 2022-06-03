@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 38977 2011-10-12 11:44:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -107,8 +107,7 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
 /**
  * Attempt the actual installation.
  *
- * This code is shared by UIGlobalSettingsExtension::sltInstallPackage and
- * VBoxSelectorWnd::sltOpenUrls.
+ * This code is shared by UIGlobalSettingsExtension::sltInstallPackage and UISelectorWindow::sltOpenUrls.
  *
  * @param   strFilePath     The path to the tarball.
  * @param   pParent         The parent widget.
