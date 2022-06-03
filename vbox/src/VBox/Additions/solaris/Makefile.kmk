@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 41704 2012-06-14 11:19:20Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -319,7 +319,7 @@ else # !VBOX_WITH_COMBINED_SOLARIS_GUEST_PACKAGE
 	$(LN_SYMLINK) -f ../../..$(SOLARIS_VBOXADDINST_SUBDIR)/$(SOLARIS_ADDDIR_NAME_ISA)/vboxfsmount         $(SOLARIS_ADD_ETCFS_DIR)/mount
 endif
 	$(QUIET)$(INSTALL) -m 0644 $(VBOX_PATH_SOLARIS_ADDITION_INSTALLER)/vboxservice.xml                    $(SOLARIS_ADD_SERVICESINST_DIR)/vboxservice.xml
-	$(QUIET)$(SOLARIS_ADDINST_OUT_DIR)/makepackage.sh $(SOLARIS_ADDINST_OUT_DIR) $(PKGFILENAME) $(VBOX_SVN_REV)
+	$(QUIET)$(SOLARIS_ADDINST_OUT_DIR)/makepackage.sh $(SOLARIS_ADDINST_OUT_DIR) $(PKGFILENAME) $(VBOX_SVN_REV) $(VBOX_SOL_PKG_DEV)
 	$(QUIET)$(INSTALL) -m 0644 $(SOLARIS_ADDINST_OUT_DIR)/$(PKGFILENAME) $(PATH_STAGE_BIN)/additions/$(PKGFILENAME)
 	$(QUIET)$(RM) -f $(SOLARIS_ADDINST_OUT_DIR)/$(PKGFILENAME)
 
