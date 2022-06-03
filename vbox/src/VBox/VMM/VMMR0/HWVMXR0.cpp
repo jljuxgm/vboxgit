@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 40447 2012-03-13 15:30:35Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 40449 2012-03-13 15:51:02Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -3180,7 +3180,7 @@ ResumeExecution:
                             uMask  = 0xffff;
                         }
 
-                        rc2 = SELMToFlatEx(pVM, DIS_SELREG_SS, CPUMCTX2CORE(pCtx), pCtx->esp & uMask, 0, &GCPtrStack);
+                        rc2 = SELMToFlatEx(pVCpu, DIS_SELREG_SS, CPUMCTX2CORE(pCtx), pCtx->esp & uMask, 0, &GCPtrStack);
                         if (RT_FAILURE(rc2))
                         {
                             rc = VERR_EM_INTERPRETER;
@@ -3222,7 +3222,7 @@ ResumeExecution:
                             uMask  = 0xffff;
                         }
 
-                        rc2 = SELMToFlatEx(pVM, DIS_SELREG_SS, CPUMCTX2CORE(pCtx), (pCtx->esp - cbParm) & uMask, 0, &GCPtrStack);
+                        rc2 = SELMToFlatEx(pVCpu, DIS_SELREG_SS, CPUMCTX2CORE(pCtx), (pCtx->esp - cbParm) & uMask, 0, &GCPtrStack);
                         if (RT_FAILURE(rc2))
                         {
                             rc = VERR_EM_INTERPRETER;
@@ -3258,7 +3258,7 @@ ResumeExecution:
                             break;
                         }
 
-                        rc2 = SELMToFlatEx(pVM, DIS_SELREG_SS, CPUMCTX2CORE(pCtx), pCtx->esp & uMask, 0, &GCPtrStack);
+                        rc2 = SELMToFlatEx(pVCpu, DIS_SELREG_SS, CPUMCTX2CORE(pCtx), pCtx->esp & uMask, 0, &GCPtrStack);
                         if (RT_FAILURE(rc2))
                         {
                             rc = VERR_EM_INTERPRETER;

@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 40447 2012-03-13 15:30:35Z vboxsync $ */
+/* $Id: PATMRC.cpp 40449 2012-03-13 15:51:02Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -471,7 +471,6 @@ VMMDECL(int) PATMHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
             STAM_COUNTER_INC(&pVM->patm.s.StatInt3BlockRun);
             return VINF_SUCCESS;
         }
-        else
         if (pRec->patch.flags & PATMFL_INT3_REPLACEMENT)
         {
             uint32_t    cbOp;
@@ -505,8 +504,8 @@ VMMDECL(int) PATMHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                 return VINF_EM_RAW_EMULATE_INSTR;
             }
 
-            cpu.mode = SELMGetCpuModeFromSelector(pVM, pRegFrame->eflags, pRegFrame->cs, 0);
-            if(cpu.mode != CPUMODE_32BIT)
+            cpu.mode = SELMGetCpuModeFromSelector(VMMGetCpu0(pVM), pRegFrame->eflags, pRegFrame->cs, 0);
+            if (cpu.mode != CPUMODE_32BIT)
             {
                 AssertFailed();
                 return VINF_EM_RAW_EMULATE_INSTR;
