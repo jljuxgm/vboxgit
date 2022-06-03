@@ -1,4 +1,4 @@
-/* $Id: UIVMPreviewWindow.cpp 35798 2011-01-31 18:09:28Z vboxsync $ */
+/* $Id: UIVMPreviewWindow.cpp 38798 2011-09-20 09:41:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -112,7 +112,7 @@ CMachine UIVMPreviewWindow::machine() const
 
 QSize UIVMPreviewWindow::sizeHint() const
 {
-    return QSize(220, 220 * 3.0/4.0);
+    return QSize(220, (int)(220 * 3.0/4.0));
 }
 
 void UIVMPreviewWindow::retranslateUi()
@@ -182,7 +182,7 @@ void UIVMPreviewWindow::paintEvent(QPaintEvent *pEvent)
         do
         {
             h = h * .8;
-            font.setPixelSize(h);
+            font.setPixelSize((int)h);
             painter.setFont(font);
             r = painter.boundingRect(m_vRect, fFlags, strName);
         }while ((   r.height() > m_vRect.height()
