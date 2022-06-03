@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38082 2011-07-20 14:26:24Z vboxsync $
+# $Id: Makefile.kmk 40136 2012-02-15 15:23:33Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows Guest Additions Installer.
 #
@@ -81,6 +81,12 @@ DRIVER_FILES := \
 	$(PATH_STAGE_BIN)/additions/VBoxControl.exe \
 	$(PATH_STAGE_BIN)/additions/VBoxWHQLFake.exe \
 	$(PATH_STAGE_BIN)/additions/VBoxService.exe
+ifeq ($(KBUILD_TARGET_ARCH),amd64)
+      # Also include 32-bit network provider DLLs on 64-bit guests to enable
+      # running 32-bit apps which use that.
+      DRIVER_FILES += \
+		$(PATH_STAGE_BIN)/additions/VBoxMRXNP-x86.dll
+endif
 ifeq ($(KBUILD_TARGET_ARCH),x86)
 DRIVER_FILES += \
 	$(PATH_STAGE_BIN)/additions/VBoxMouseNT.sys \
