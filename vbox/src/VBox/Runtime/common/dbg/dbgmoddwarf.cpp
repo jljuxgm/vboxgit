@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 38620 2011-09-03 20:01:52Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -1965,6 +1965,7 @@ static int rtDwarfLine_RunProgram(PRTDWARFLINESTATE pLnState, PRTDWARFCURSOR pCu
                             {
                                 uint64_t uSeg = rtDwarfCursor_GetVarSizedU(pCursor, cbInstr - 1, UINT64_MAX);
                                 Log2(("%08x: DW_LNE_set_segment: %ll#x - Watcom Extension\n", offOpCode, uSeg));
+                                NOREF(uSeg);
                                 /** @todo make use of this? */
                             }
                             break;

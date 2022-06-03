@@ -1,10 +1,10 @@
-/* $Id: RTStrCatP.cpp 36407 2011-03-24 16:14:57Z vboxsync $ */
+/* $Id: RTStrCatP.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - RTStrCat.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -38,11 +38,12 @@ RTDECL(int) RTStrCatP(char **ppszDst, size_t *pcbDst, const char *pszSrc)
      * Advance past the current string in the output buffer and turn this into
      * a copy operation.
      */
-    size_t  cbDst  = *pcbDst;
-    char   *pszDst = RTStrEnd(*ppszDst, *pcbDst);
+    char   *pszDstOrg = *ppszDst;
+    size_t  cbDst     = *pcbDst;
+    char   *pszDst    = RTStrEnd(pszDstOrg, cbDst);
     AssertReturn(pszDst, VERR_INVALID_PARAMETER);
-    *pcbDst -= pszDst - *ppszDst;
     *ppszDst = pszDst;
+    *pcbDst  = cbDst - (pszDst - pszDstOrg);
 
     return RTStrCopyP(ppszDst, pcbDst, pszSrc);
 }

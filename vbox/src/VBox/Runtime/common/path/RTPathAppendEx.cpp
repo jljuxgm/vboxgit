@@ -1,4 +1,4 @@
-/* $Id: RTPathAppendEx.cpp 34214 2010-11-19 17:18:15Z vboxsync $ */
+/* $Id: RTPathAppendEx.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - RTPathAppendEx
  */
@@ -129,7 +129,6 @@ RTDECL(int) RTPathAppendEx(char *pszPath, size_t cbPathDst, const char *pszAppen
     /*
      * Balance slashes and check for buffer overflow.
      */
-    bool fAddSlash = false;
     if (!RTPATH_IS_SLASH(pszPathEnd[-1]))
     {
         if (!RTPATH_IS_SLASH(pszAppend[0]))

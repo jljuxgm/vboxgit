@@ -1,4 +1,4 @@
-/* $Id: circbuf.cpp 38862 2011-09-26 12:33:21Z vboxsync $ */
+/* $Id: circbuf.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Lock Free Circular Buffer
  */
@@ -205,7 +205,6 @@ RTDECL(void) RTCircBufReleaseWriteBlock(PRTCIRCBUF pBuf, size_t cbSize)
     /* Split at the end of the buffer. */
     pBuf->offWrite = (pBuf->offWrite + cbSize) % pBuf->cbBuf;
 
-    size_t cbOldIgnored = 0;
     ASMAtomicAddZ(&pBuf->cbUsed, cbSize);
 }
 

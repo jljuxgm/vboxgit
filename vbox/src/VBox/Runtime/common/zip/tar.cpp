@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 35351 2010-12-27 17:04:17Z vboxsync $ */
+/* $Id: tar.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -598,7 +598,6 @@ static int rtTarAppendFileFromFile(RTTAR hTar, const char *pszSrcName, const uin
          * size aligned. */
         uint64_t cbAllWritten = 0; /* Already copied */
         uint64_t cbRead       = 0; /* Actually read in the last step */
-        uint64_t cbWrite      = 0; /* Actually write in the last step */
         for (;;)
         {
             if (pfnProgressCallback)

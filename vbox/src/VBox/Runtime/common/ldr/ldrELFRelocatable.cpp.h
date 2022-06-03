@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 38581 2011-08-31 12:43:26Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -691,7 +691,7 @@ static DECLCALLBACK(int) RTLDRELF_NAME(EnumDbgInfo)(PRTLDRMODINTERNAL pMod, cons
     PRTLDRMODELF pModElf = (PRTLDRMODELF)pMod;
     NOREF(pvBits);
 
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_NOT_IMPLEMENTED; NOREF(pModElf);
 }
 
 
@@ -700,7 +700,7 @@ static DECLCALLBACK(int) RTLDRELF_NAME(EnumSegments)(PRTLDRMODINTERNAL pMod, PFN
 {
     PRTLDRMODELF pModElf = (PRTLDRMODELF)pMod;
 
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_NOT_IMPLEMENTED; NOREF(pModElf);
 }
 
 
@@ -710,7 +710,7 @@ static DECLCALLBACK(int) RTLDRELF_NAME(LinkAddressToSegOffset)(PRTLDRMODINTERNAL
 {
     PRTLDRMODELF pModElf = (PRTLDRMODELF)pMod;
 
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_NOT_IMPLEMENTED; NOREF(pModElf);
 }
 
 
@@ -719,7 +719,7 @@ static DECLCALLBACK(int) RTLDRELF_NAME(LinkAddressToRva)(PRTLDRMODINTERNAL pMod,
 {
     PRTLDRMODELF pModElf = (PRTLDRMODELF)pMod;
 
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_NOT_IMPLEMENTED; NOREF(pModElf);
 }
 
 
@@ -729,7 +729,7 @@ static DECLCALLBACK(int) RTLDRELF_NAME(SegOffsetToRva)(PRTLDRMODINTERNAL pMod, u
 {
     PRTLDRMODELF pModElf = (PRTLDRMODELF)pMod;
 
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_NOT_IMPLEMENTED; NOREF(pModElf);
 }
 
 
@@ -739,7 +739,7 @@ static DECLCALLBACK(int) RTLDRELF_NAME(RvaToSegOffset)(PRTLDRMODINTERNAL pMod, R
 {
     PRTLDRMODELF pModElf = (PRTLDRMODELF)pMod;
 
-    return VERR_NOT_IMPLEMENTED;
+    return VERR_NOT_IMPLEMENTED; NOREF(pModElf);
 }
 
 

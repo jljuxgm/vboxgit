@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 37196 2011-05-24 14:50:05Z vboxsync $ */
+/* $Id: socket.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -331,7 +331,6 @@ DECLINLINE(void) rtSocketUnlock(RTSOCKETINT *pThis)
  */
 static int rtSocketSwitchBlockingModeSlow(RTSOCKETINT *pThis, bool fBlocking)
 {
-    int     rc        = VINF_SUCCESS;
 #ifdef RT_OS_WINDOWS
     u_long  uBlocking = fBlocking ? 0 : 1;
     if (ioctlsocket(pThis->hNative, FIONBIO, &uBlocking))

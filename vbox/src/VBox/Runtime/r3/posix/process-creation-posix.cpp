@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 37499 2011-06-16 14:46:47Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -696,7 +696,8 @@ RTR3DECL(int)   RTProcDaemonizeUsingFork(bool fNoChDir, bool fNoClose, const cha
 
     if (!fNoChDir)
     {
-        int rcChdir = chdir("/");
+        int rcIgnored = chdir("/");
+        NOREF(rcIgnored);
     }
 
     /* Second fork to lose session leader status. */
@@ -711,7 +712,7 @@ RTR3DECL(int)   RTProcDaemonizeUsingFork(bool fNoChDir, bool fNoClose, const cha
         {
             char szBuf[256];
             size_t cbPid = RTStrPrintf(szBuf, sizeof(szBuf), "%d\n", pid);
-            int rcWrite = write(fdPidfile, szBuf, cbPid);
+            ssize_t cbIgnored = write(fdPidfile, szBuf, cbPid); NOREF(cbIgnored);
             close(fdPidfile);
         }
         exit(0);

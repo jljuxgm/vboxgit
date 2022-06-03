@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 38515 2011-08-24 14:33:32Z vboxsync $ */
+/* $Id: getopt.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -687,7 +687,6 @@ RTDECL(int) RTGetOpt(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion)
                 return VERR_GETOPT_INDEX_MISSING;
 
             uint32_t uIndex;
-            char *pszRet = NULL;
             if (RTStrToUInt32Full(&pszArgThis[cchLong], 10, &uIndex) == VINF_SUCCESS)
                 pState->uIndex = uIndex;
             else

@@ -1,4 +1,4 @@
-/* $Id: semevent-posix.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: semevent-posix.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Event Semaphore, POSIX.
  */
@@ -310,7 +310,9 @@ RTDECL(int)  RTSemEventSignal(RTSEMEVENT hEventSem)
 
 DECL_FORCE_INLINE(int) rtSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies, bool fAutoResume)
 {
+#ifdef RTSEMEVENT_STRICT
     PCRTLOCKVALSRCPOS  pSrcPos = NULL;
+#endif
 
     /*
      * Validate input.

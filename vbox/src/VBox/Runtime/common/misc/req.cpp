@@ -1,4 +1,4 @@
-/* $Id: req.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: req.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - Request packets
  */
@@ -452,7 +452,6 @@ static void vmr3ReqJoinFree(PRTREQQUEUE pQueue, PRTREQ pList)
  */
 RTDECL(int) RTReqAlloc(PRTREQQUEUE pQueue, PRTREQ *ppReq, RTREQTYPE enmType)
 {
-    RT_EXPORT_SYMBOL(RTReqAlloc);
     /*
      * Validate input.
      */
@@ -572,6 +571,7 @@ RTDECL(int) RTReqAlloc(PRTREQQUEUE pQueue, PRTREQ *ppReq, RTREQTYPE enmType)
     LogFlow(("RTReqAlloc: returns VINF_SUCCESS *ppReq=%p new\n", pReq));
     return VINF_SUCCESS;
 }
+RT_EXPORT_SYMBOL(RTReqAlloc);
 
 
 /**

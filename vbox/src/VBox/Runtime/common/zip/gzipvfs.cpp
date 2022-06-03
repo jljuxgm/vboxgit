@@ -1,4 +1,4 @@
-/* $Id: gzipvfs.cpp 34049 2010-11-13 01:31:07Z vboxsync $ */
+/* $Id: gzipvfs.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -510,7 +510,6 @@ RTDECL(int) RTZipGzipDecompressIoStream(RTVFSIOSTREAM hVfsIosIn, uint32_t fFlags
              *        prebuffer what we read in the input buffer so it can
              *        be handed on to zlib later on.
              */
-            size_t cbRead = 0;
             rc = RTVfsIoStrmRead(pThis->hVfsIos, pThis->abBuffer, sizeof(RTZIPGZIPHDR), true /*fBlocking*/, NULL /*pcbRead*/);
             if (RT_SUCCESS(rc))
             {
