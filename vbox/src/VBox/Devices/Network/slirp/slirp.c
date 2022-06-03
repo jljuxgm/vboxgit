@@ -1,4 +1,4 @@
-/* $Id: slirp.c 39883 2012-01-26 08:11:00Z vboxsync $ */
+/* $Id: slirp.c 39949 2012-02-02 04:55:17Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1105,7 +1105,7 @@ static bool slirpConnectOrWrite(PNATState pData, struct socket *so, bool fConnec
             || errno == EINPROGRESS
             || errno == ENOTCONN)
         {
-            LogFlowFunc(("LEAVE: true"));
+            LogFlowFunc(("LEAVE: false\n"));
             return false;
         }
 
@@ -1128,7 +1128,7 @@ static bool slirpConnectOrWrite(PNATState pData, struct socket *so, bool fConnec
      * for a window update. In the worst case, the remote will send
      * a window probe to get things going again.
      */
-    LogFlowFunc(("LEAVE: true"));
+    LogFlowFunc(("LEAVE: true\n"));
     return true;
 }
 
