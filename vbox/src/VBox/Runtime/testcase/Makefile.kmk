@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37560 2011-06-20 14:48:32Z vboxsync $
+# $Id: Makefile.kmk 37573 2011-06-21 11:40:11Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -577,7 +577,10 @@ tstR0ThreadPreemptionDriver_SOURCES = tstR0ThreadPreemptionDriver.cpp
 tstDarwinSched_SOURCES = tstDarwinSched.cpp
 
 tstRTDarwinMachKernel_TEMPLATE = VBOXR3TSTEXE
-tstRTDarwinMachKernel_SOURCES  = tstRTDarwinMachKernel.cpp
+tstRTDarwinMachKernel_INCS     = ../include
+tstRTDarwinMachKernel_SOURCES  = \
+	tstRTDarwinMachKernel.cpp \
+	../r0drv/darwin/mach_kernel-r0drv-darwin.cpp
 
 ntGetTimerResolution_SOURCES = ntGetTimerResolution.cpp
 ntGetTimerResolution_SDKS.win = WINPSDK W2K3DDK VBOX_NTDLL
