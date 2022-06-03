@@ -1,4 +1,4 @@
-# $Id: Makefile 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: Makefile 40911 2012-04-14 07:04:34Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -18,7 +18,7 @@
 
 KMOD = vboxnetadp
 
-CFLAGS += -DRT_OS_FREEBSD -DIN_RING0 -DIN_RT_R0 -DIN_SUP_R0 -DVBOX -DRT_WITH_VBOX -Iinclude -I. -Ir0drv -w -DVBOX_WITH_HARDENING
+CFLAGS += -DRT_OS_FREEBSD -DIN_RING0 -DIN_RT_R0 -DIN_SUP_R0 -DVBOX -DRT_WITH_VBOX -Iinclude -I. -Ir0drv -w -DVBOX_WITH_HARDENING -DVIMAGE
 
 .if (${MACHINE_ARCH} == "i386")
  CFLAGS += -DRT_ARCH_X86
