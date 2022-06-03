@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 40712 2012-03-29 15:33:43Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 40715 2012-03-29 16:16:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5167,11 +5167,13 @@ HRESULT Console::onBandwidthGroupChange(IBandwidthGroup *aBandwidthGroup)
                 if (enmType == BandwidthGroupType_Disk)
                     vrc = PDMR3AsyncCompletionBwMgrSetMaxForFile(ptrVM, Utf8Str(strName).c_str(),
                                                                  cMax * _1M);
+#ifdef VBOX_WITH_NETSHAPER
                 else if (enmType == BandwidthGroupType_Network)
                     vrc = PDMR3NsBwGroupSetLimit(ptrVM, Utf8Str(strName).c_str(),
                                                                  cMax * 1000);
                 else
                     rc = E_NOTIMPL;
+#endif /* VBOX_WITH_NETSHAPER */
                 AssertRC(vrc);
             }
         }
