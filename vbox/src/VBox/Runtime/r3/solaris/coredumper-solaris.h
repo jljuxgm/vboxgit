@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.h 37631 2011-06-24 13:25:07Z vboxsync $ */
+/* $Id: coredumper-solaris.h 40646 2012-03-26 13:52:44Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -66,7 +66,7 @@ typedef struct RTSOLCOREMAPINFO
 {
     prmap_t                         pMap;                       /**< Proc description of this mapping */
     int                             fError;                     /**< Any error reading this mapping (errno) */
-    struct RTSOLCOREMAPINFO            *pNext;                      /**< Pointer to the next mapping */
+    struct RTSOLCOREMAPINFO        *pNext;                      /**< Pointer to the next mapping */
 } RTSOLCOREMAPINFO;
 /** Pointer to a solaris memory mapping descriptor. */
 typedef RTSOLCOREMAPINFO *PRTSOLCOREMAPINFO;
