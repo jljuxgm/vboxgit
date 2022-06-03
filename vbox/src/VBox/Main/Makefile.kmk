@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35967 2011-02-15 09:37:16Z vboxsync $
+# $Id: Makefile.kmk 36466 2011-03-29 17:40:35Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -244,10 +244,6 @@ VBoxSVC_DEFS.solaris += VBOX_USE_LIBHAL
 VBoxSVC_DEFS.freebsd += VBOX_USE_LIBHAL
 
 VBoxSVC_CXXFLAGS = $(filter-out -Wno-unused,$(TEMPLATE_VBOXMAINEXE_CXXFLAGS))
-## @todo We're disabling optimizations on FreeBSD to work around strange linker
-#        errors in release builds. Figure out why and how to work around it in a
-#        more optimal fashion.
-VBoxSVC_CXXFLAGS.freebsd = -O0
 
 VBoxSVC_INCS = \
 	include \
