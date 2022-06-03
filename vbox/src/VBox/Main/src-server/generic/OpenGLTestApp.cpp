@@ -1,10 +1,10 @@
-/* $Id: OpenGLTestApp.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 36344 2011-03-22 14:29:37Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -132,8 +132,9 @@ static int vboxInitLogging(const char *pszFilename, bool bGenNameSuffix)
     }
 
     int vrc = RTLogCreateEx(&loggerRelease, fFlags, "all",
-                            "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups,
-                            enmLogDest, szError, sizeof(szError), pszFilenameFmt, pszFilename, RTTimeMilliTS());
+                            "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups, enmLogDest,
+                            NULL /* pfnBeginEnd */, 0 /* cHistory */, 0 /* cbHistoryFileMax */, 0 /* uHistoryTimeMax */,
+                            szError, sizeof(szError), pszFilenameFmt, pszFilename, RTTimeMilliTS());
     if (RT_SUCCESS(vrc))
     {
         /* some introductory information */

@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 36344 2011-03-22 14:29:37Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1135,8 +1135,9 @@ DECLCALLBACK(int) VMPowerUpThread(RTTHREAD Thread, void *pvUser)
         static char s_szError[RTPATH_MAX + 128] = "";
         PRTLOGGER pLogger;
         rc2 = RTLogCreateEx(&pLogger, RTLOGFLAGS_PREFIX_TIME_PROG, "all",
-                            "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups,
-                            RTLOGDEST_FILE, s_szError, sizeof(s_szError), "./VBoxBFE.log");
+                            "VBOX_RELEASE_LOG", RT_ELEMENTS(s_apszGroups), s_apszGroups, RTLOGDEST_FILE,
+                            NULL /* pfnBeginEnd */, 0 /* cHistory */, 0 /* cbHistoryFileMax */, 0 /* uHistoryTimeMax */,
+                            s_szError, sizeof(s_szError), "./VBoxBFE.log");
         if (RT_SUCCESS(rc2))
         {
             /* some introductory information */
