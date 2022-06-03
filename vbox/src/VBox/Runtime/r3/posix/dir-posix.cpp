@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 35935 2011-02-10 18:08:56Z vboxsync $ */
+/* $Id: dir-posix.cpp 36166 2011-03-04 11:54:53Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -100,12 +100,19 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
                 if (    rc == ENOSYS
                     ||  rc == EACCES)
                 {
-                    struct stat st;
-                    if (!stat(pszNativePath, &st))
-                        rc = EEXIST;
+                    rc = EEXIST;
                 }
 #endif
                 rc = RTErrConvertFromErrno(rc);
+                if (rc == VERR_ALREADY_EXISTS)
+                {
+                    /*
+                     * Verify that it really exists as a directory.
+                     */
+                    struct stat st;
+                    if (!stat(pszNativePath, &st) && !S_ISDIR(st.st_mode))
+                        rc = VERR_IS_A_FILE;
+                }
             }
         }
 
