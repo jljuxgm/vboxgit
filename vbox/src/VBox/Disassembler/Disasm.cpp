@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 41674 2012-06-12 20:16:31Z vboxsync $ */
+/* $Id: Disasm.cpp 41676 2012-06-12 20:53:40Z vboxsync $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -46,7 +46,7 @@
 DISDECL(int) DISInstrToStr(void const *pvInstr, DISCPUMODE enmCpuMode, PDISCPUSTATE pCpu, uint32_t *pcbInstr,
                            char *pszOutput, size_t cbOutput)
 {
-    return DISInstrToStrEx((uintptr_t)pvInstr, enmCpuMode, NULL, NULL, OPTYPE_ALL,
+    return DISInstrToStrEx((uintptr_t)pvInstr, enmCpuMode, NULL, NULL, DISOPTYPE_ALL,
                            pCpu, pcbInstr, pszOutput, cbOutput);
 }
 
@@ -71,7 +71,7 @@ DISDECL(int) DISInstrToStrWithReader(RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode
                                      PDISCPUSTATE pCpu, uint32_t *pcbInstr, char *pszOutput, size_t cbOutput)
 
 {
-    return DISInstrToStrEx(uInstrAddr, enmCpuMode, pfnReadBytes, pvUser, OPTYPE_ALL,
+    return DISInstrToStrEx(uInstrAddr, enmCpuMode, pfnReadBytes, pvUser, DISOPTYPE_ALL,
                            pCpu, pcbInstr, pszOutput, cbOutput);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 41676 2012-06-12 20:53:40Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -803,8 +803,8 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
             }
             return false;
     }
-    if (    (    (pDis->param1.flags & USE_REG_GEN32)
-             ||  (pDis->param1.flags & USE_REG_GEN64))
+    if (    (    (pDis->param1.flags & DISUSE_REG_GEN32)
+             ||  (pDis->param1.flags & DISUSE_REG_GEN64))
         &&  (pDis->param1.base.reg_gen == USE_REG_ESP))
     {
         Log4(("pgmPoolMonitorIsReused: ESP\n"));
