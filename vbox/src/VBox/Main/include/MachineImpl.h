@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 37686 2011-06-29 14:19:43Z vboxsync $ */
+/* $Id: MachineImpl.h 37687 2011-06-29 15:22:11Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -985,6 +985,8 @@ public:
                                   LONG64 aTimestamp, IN_BSTR aFlags);
     STDMETHOD(LockMedia)()   { return lockMedia(); }
     STDMETHOD(UnlockMedia)() { unlockMedia(); return S_OK; }
+    STDMETHOD(EjectMedium)(IMediumAttachment *aAttachment,
+                           IMediumAttachment **aNewAttachment);
 
     // public methods only for internal purposes
 
