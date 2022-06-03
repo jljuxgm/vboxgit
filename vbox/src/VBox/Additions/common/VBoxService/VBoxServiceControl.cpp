@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 37375 2011-06-08 10:51:26Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 38133 2011-07-25 09:02:17Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -161,18 +161,6 @@ DECLCALLBACK(int) VBoxServiceControlWorker(bool volatile *pfShutdown)
 
                 case HOST_EXEC_GET_OUTPUT:
                     rc = VBoxServiceControlExecHandleCmdGetOutput(g_GuestControlSvcClientID, uNumParms);
-                    break;
-
-                case HOST_DIR_CLOSE:
-                    rc = VBoxServiceGCtrlDirClose(g_GuestControlSvcClientID, uNumParms);
-                    break;
-
-                case HOST_DIR_OPEN:
-                    rc = VBoxServiceGCtrlDirOpen(g_GuestControlSvcClientID, uNumParms);
-                    break;
-
-                case HOST_DIR_READ:
-                    rc = VBoxServiceGCtrlDirRead(g_GuestControlSvcClientID, uNumParms);
                     break;
 
                 default:
