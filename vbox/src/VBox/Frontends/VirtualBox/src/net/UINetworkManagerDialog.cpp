@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.cpp 41440 2012-05-24 16:37:17Z vboxsync $ */
+/* $Id: UINetworkManagerDialog.cpp 41457 2012-05-28 10:22:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -92,7 +92,7 @@ UINetworkManagerDialog::UINetworkManagerDialog()
     retranslateUi();
 }
 
-UINetworkRequestWidget* UINetworkManagerDialog::addNetworkRequestWidget(UINetworkRequest *pNetworkRequest)
+void UINetworkManagerDialog::addNetworkRequestWidget(UINetworkRequest *pNetworkRequest)
 {
     /* Make sure network-request is really exists: */
     AssertMsg(pNetworkRequest, ("Network-request doesn't exists!\n"));
@@ -113,8 +113,9 @@ UINetworkRequestWidget* UINetworkManagerDialog::addNetworkRequestWidget(UINetwor
         showNormal();
     }
 
-    /* Return network-request widget: */
-    return pNetworkRequestWidget;
+    /* Prepare network-request widget's notifications for network-request: */
+    connect(pNetworkRequestWidget, SIGNAL(sigRetry()), pNetworkRequest, SLOT(sltRetry()));
+    connect(pNetworkRequestWidget, SIGNAL(sigCancel()), pNetworkRequest, SLOT(sltCancel()));
 }
 
 void UINetworkManagerDialog::removeNetworkRequestWidget(const QUuid &uuid)
