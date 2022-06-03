@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PATM.cpp 39417 2011-11-25 09:42:28Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -5637,7 +5637,7 @@ int patmR3RefreshPatch(PVM pVM, PPATMPATCHREC pPatchRec)
         bool fInserted = RTAvloU32Insert(&pVM->patm.s.PatchLookupTreeHC->PatchTree, &pNewPatchRec->Core);
         Assert(fInserted); NOREF(fInserted);
 
-        LogRel(("PATM: patmR3RefreshPatch: succeeded to refresh patch at %RRv \n", pInstrGC));
+        Log(("PATM: patmR3RefreshPatch: succeeded to refresh patch at %RRv \n", pInstrGC));
         STAM_COUNTER_INC(&pVM->patm.s.StatPatchRefreshSuccess);
 
         /* Used by another patch, so don't remove it! */
