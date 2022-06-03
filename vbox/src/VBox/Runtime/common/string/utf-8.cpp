@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 40071 2012-02-10 21:35:27Z vboxsync $ */
+/* $Id: utf-8.cpp 40073 2012-02-10 22:08:19Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -351,7 +351,7 @@ RTDECL(size_t) RTStrPurgeEncoding(char *psz)
 RT_EXPORT_SYMBOL(RTStrPurgeEncoding);
 
 
-ssize_t RTStrPurgeComplementSet(char *psz, PCRTUNICP puszValidSet, char chReplacement)
+RTDECL(ssize_t) RTStrPurgeComplementSet(char *psz, PCRTUNICP puszValidSet, char chReplacement)
 {
     size_t cReplacements = 0;
     AssertReturn(chReplacement && (unsigned)chReplacement < 128, -1);

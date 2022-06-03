@@ -1,4 +1,4 @@
-/* $Id: utf-16.cpp 40071 2012-02-10 21:35:27Z vboxsync $ */
+/* $Id: utf-16.cpp 40073 2012-02-10 22:08:19Z vboxsync $ */
 /** @file
  * IPRT - UTF-16.
  */
@@ -249,7 +249,7 @@ RTDECL(PRTUTF16) RTUtf16ToUpper(PRTUTF16 pwsz)
 RT_EXPORT_SYMBOL(RTUtf16ToUpper);
 
 
-ssize_t RTUtf16PurgeComplementSet(PRTUTF16 pwsz, PCRTUNICP puszValidSet, char chReplacement)
+RTDECL(ssize_t) RTUtf16PurgeComplementSet(PRTUTF16 pwsz, PCRTUNICP puszValidSet, char chReplacement)
 {
     size_t cReplacements = 0;
     AssertReturn(chReplacement && (unsigned)chReplacement < 128, -1);
