@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 40165 2012-02-17 09:26:47Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 40169 2012-02-17 14:20:55Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -10783,7 +10783,15 @@ FNIEMOP_DEF(iemOp_fndisi)
 
 
 /** Opcode 0xdb 0xe2. */
-FNIEMOP_STUB(iemOp_fnclex);
+FNIEMOP_DEF(iemOp_fnclex)
+{
+    IEMOP_MNEMONIC("fnclex");
+    IEM_MC_BEGIN(0,0);
+    IEM_MC_CLEAR_FSW_EX();
+    IEM_MC_ADVANCE_RIP();
+    IEM_MC_END();
+    return VINF_SUCCESS;
+}
 
 
 /** Opcode 0xdb 0xe3. */
