@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 39661 2011-12-20 13:35:17Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 39878 2012-01-25 16:30:07Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -43,7 +43,7 @@ public:
 
     HRESULT     FinalConstruct();
     void        FinalRelease();
-    HRESULT     initWithFile(const char *a_pszFile, class ExtPackManager *a_pExtPackMgr, VirtualBox *a_pVirtualBox);
+    HRESULT     initWithFile(const char *a_pszFile, const char *a_pszDigest, class ExtPackManager *a_pExtPackMgr, VirtualBox *a_pVirtualBox);
     void        uninit();
     RTMEMEF_NEW_AND_DELETE_OPERATORS();
     /** @}  */

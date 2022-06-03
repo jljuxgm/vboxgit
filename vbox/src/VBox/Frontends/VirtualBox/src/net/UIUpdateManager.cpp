@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 39664 2011-12-20 19:24:29Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 39878 2012-01-25 16:30:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -310,8 +310,8 @@ private slots:
         UIDownloaderExtensionPack *pDl = UIDownloaderExtensionPack::create();
         pDl->setParentWidget(msgCenter().mainWindowShown());
         /* After downloading finished => propose to install the Extension Pack: */
-        connect(pDl, SIGNAL(sigNotifyAboutExtensionPackDownloaded(const QString &, const QString &)),
-                this, SLOT(sltHandleDownloadedExtensionPack(const QString &, const QString &)));
+        connect(pDl, SIGNAL(sigNotifyAboutExtensionPackDownloaded(const QString &, const QString &, QString)),
+                this, SLOT(sltHandleDownloadedExtensionPack(const QString &, const QString &, QString)));
         /* Also, destroyed downloader is a signal to finish the step: */
         connect(pDl, SIGNAL(destroyed(QObject*)), this, SIGNAL(sigStepComplete()));
         /* Start downloading: */
@@ -319,11 +319,11 @@ private slots:
     }
 
     /* Finishing slot: */
-    void sltHandleDownloadedExtensionPack(const QString &strSource, const QString &strTarget)
+    void sltHandleDownloadedExtensionPack(const QString &strSource, const QString &strTarget, QString strDigest)
     {
         /* Warn the user about extension pack was downloaded and saved, propose to install it: */
         if (msgCenter().proposeInstallExtentionPack(UI_ExtPackName, strSource, QDir::toNativeSeparators(strTarget)))
-            UIGlobalSettingsExtension::doInstallation(strTarget, msgCenter().mainWindowShown(), NULL);
+            UIGlobalSettingsExtension::doInstallation(strTarget, strDigest, msgCenter().mainWindowShown(), NULL);
     }
 };
 
