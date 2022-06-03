@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 38751 2011-09-14 13:30:16Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 38935 2011-10-04 14:28:42Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -650,7 +650,7 @@ nt4: ; Windows NT4
   goto success
 !endif
 
-vista: ; Windows Vista / Windows 7
+vista: ; Windows Vista / Windows 7 / Windows 8
 
   ; Copy some common files ...
   Call Common_CopyFiles
@@ -962,6 +962,13 @@ Function .onSelChange
   ${If} $0 == ${SF_SELECTED}
 
 !if $%VBOX_WITH_WDDM% == "1"
+    ; If we're running Windows 8 we always need the WDDM driver
+    ; -- so just print a hint about the required VRAM size and bail out
+    ${If} $g_strWinVersion == "8"
+      MessageBox MB_ICONINFORMATION|MB_OK $(VBOX_COMPONENT_D3D_HINT_VRAM) /SD IDOK
+      goto exit
+    ${EndIf}
+
     ; If we're able to use the WDDM driver just use it instead of the replaced
     ; D3D components below
     ${If} $g_bCapWDDM == "true"
@@ -1002,7 +1009,9 @@ d3d_install:
       ${EndIf}
     ${EndIf}
   ${Else} ; D3D unselected again
-    StrCpy $g_bWithWDDM "false"
+    ${If} $g_strWinVersion != "8" ; On Windows 8 WDDM is mandatory
+      StrCpy $g_bWithWDDM "false"
+    ${EndIf}
   ${EndIf}
   Goto exit
 
