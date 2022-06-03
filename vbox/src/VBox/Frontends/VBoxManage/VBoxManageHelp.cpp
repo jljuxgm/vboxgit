@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 37763 2011-07-04 13:39:55Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37817 2011-07-07 13:02:40Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -151,9 +151,9 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--vram <vramsize in MB>]\n"
                      "                            [--acpi on|off]\n"
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
-                     "                            [--attachpci 03:04.0]\n"
-                     "                            [--attachpci 03:04.0@02:01.0]\n"
-                     "                            [--detachpci 03:04.0]\n"
+                     "                            [--pciattach 03:04.0]\n"
+                     "                            [--pciattach 03:04.0@02:01.0]\n"
+                     "                            [--pcidetach 03:04.0]\n"
 #endif
                      "                            [--ioapic on|off]\n"
                      "                            [--pae on|off]\n"
