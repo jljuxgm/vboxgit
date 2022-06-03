@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 36527 2011-04-04 13:16:09Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 39172 2011-11-02 09:50:31Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -588,6 +588,14 @@ bool VBoxExtPackIsValidVersionString(const char *pszVersion)
         do
             pszVersion++;
         while (RT_C_IS_DIGIT(*pszVersion));
+    }
+
+    /* upper case string indicating the edition */
+    if (*pszVersion == '-')
+    {
+        do
+            pszVersion++;
+        while (RT_C_IS_UPPER(*pszVersion));
     }
 
     return *pszVersion == '\0';
