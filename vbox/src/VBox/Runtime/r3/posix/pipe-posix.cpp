@@ -1,4 +1,4 @@
-/* $Id: pipe-posix.cpp 39690 2011-12-30 13:06:50Z vboxsync $ */
+/* $Id: pipe-posix.cpp 39692 2011-12-30 13:20:49Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, POSIX Implementation.
  */
@@ -49,6 +49,9 @@
 #include <signal.h>
 #ifdef RT_OS_LINUX
 # include <sys/syscall.h>
+#endif
+#ifdef RT_OS_SOLARIS
+# include <sys/filio.h>
 #endif
 
 
