@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 37090 2011-05-14 01:45:15Z vboxsync $ */
+/* $Id: IEMInternal.h 37091 2011-05-14 07:06:09Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -146,7 +146,7 @@ typedef struct IEMCPU
     /** Whether to bypass access handlers or not. */
     bool                    fByPassHandlers;
     /** Explicit alignment padding. */
-    bool                    afAlignment0[2];
+    bool                    afAlignment0[3];
 
     /** The flags of the current exception / interrupt. */
     uint32_t                fCurXcpt;
@@ -155,7 +155,7 @@ typedef struct IEMCPU
     /** Exception / interrupt recursion depth. */
     int8_t                  cXcptRecursions;
     /** Explicit alignment padding. */
-    bool                    afAlignment1[1];
+    bool                    afAlignment1[5];
     /** The CPL. */
     uint8_t                 uCpl;
     /** The current CPU execution mode (CS). */
