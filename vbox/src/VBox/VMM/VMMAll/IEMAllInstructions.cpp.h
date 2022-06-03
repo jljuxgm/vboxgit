@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 38073 2011-07-19 15:28:21Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 38074 2011-07-19 15:34:20Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -10496,7 +10496,16 @@ FNIEMOP_DEF(iemOp_hlt)
 
 
 /** Opcode 0xf5. */
-FNIEMOP_STUB(iemOp_cmc);
+FNIEMOP_DEF(iemOp_cmc)
+{
+    IEMOP_MNEMONIC("cmc");
+    IEMOP_HLP_NO_LOCK_PREFIX();
+    IEM_MC_BEGIN(0, 0);
+    IEM_MC_FLIP_EFL_BIT(X86_EFL_CF);
+    IEM_MC_ADVANCE_RIP();
+    IEM_MC_END();
+    return VINF_SUCCESS;
+}
 
 
 /**
@@ -11124,7 +11133,7 @@ FNIEMOP_DEF(iemOp_clc)
 /** Opcode 0xf9. */
 FNIEMOP_DEF(iemOp_stc)
 {
-    IEMOP_MNEMONIC("slc");
+    IEMOP_MNEMONIC("stc");
     IEMOP_HLP_NO_LOCK_PREFIX();
     IEM_MC_BEGIN(0, 0);
     IEM_MC_SET_EFL_BIT(X86_EFL_CF);
