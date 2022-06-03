@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBMon-solaris.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxUSBMon-solaris.c 36031 2011-02-21 12:25:12Z vboxsync $ */
 /** @file
  * VirtualBox USB Monitor Driver, Solaris Hosts.
  */
@@ -221,18 +221,24 @@ int _init(void)
          * Initialize global mutex.
          */
         mutex_init(&g_VBoxUSBMonSolarisMtx, NULL, MUTEX_DRIVER, NULL);
-        rc = ddi_soft_state_init(&g_pVBoxUSBMonSolarisState, sizeof(vboxusbmon_state_t), 1);
-        if (!rc)
+        rc = VBoxUSBFilterInit();
+        if (RT_SUCCESS(rc))
         {
-            rc = mod_install(&g_VBoxUSBMonSolarisModLinkage);
+            rc = ddi_soft_state_init(&g_pVBoxUSBMonSolarisState, sizeof(vboxusbmon_state_t), 1);
             if (!rc)
-                return rc;
+            {
+                rc = mod_install(&g_VBoxUSBMonSolarisModLinkage);
+                if (!rc)
+                    return rc;
 
-            LogRel((DEVICE_NAME ":mod_install failed! rc=%d\n", rc));
-            ddi_soft_state_fini(&g_pVBoxUSBMonSolarisState);
+                LogRel((DEVICE_NAME ":mod_install failed! rc=%d\n", rc));
+                ddi_soft_state_fini(&g_pVBoxUSBMonSolarisState);
+            }
+            else
+                LogRel((DEVICE_NAME ":ddi_soft_state_init failed! rc=%d\n", rc));
         }
         else
-            LogRel((DEVICE_NAME ":ddi_soft_state_init failed! rc=%d\n", rc));
+            LogRel((DEVICE_NAME ":VBoxUSBFilterInit failed! rc=%d\n", rc));
 
         mutex_destroy(&g_VBoxUSBMonSolarisMtx);
         RTR0Term();
@@ -254,6 +260,7 @@ int _fini(void)
     if (!rc)
     {
         ddi_soft_state_fini(&g_pVBoxUSBMonSolarisState);
+        VBoxUSBFilterTerm();
         mutex_destroy(&g_VBoxUSBMonSolarisMtx);
 
         RTR0Term();
