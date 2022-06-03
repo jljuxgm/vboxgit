@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: DevE1000.cpp 41808 2012-06-18 06:11:24Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4959,6 +4959,7 @@ static int e1kXmitPending(E1KSTATE *pState, bool fOnWorkerThread)
                 memmove(pState->aTxDescriptors,
                         &pState->aTxDescriptors[pState->iTxDCurrent],
                         u8Remain * sizeof(E1KTXDESC));
+                pState->iTxDCurrent = 0;
                 pState->nTxDFetched = u8Remain;
                 e1kTxDLoadMore(pState);
                 fIncomplete = true;
