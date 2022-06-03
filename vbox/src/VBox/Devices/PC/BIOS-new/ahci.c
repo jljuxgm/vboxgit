@@ -1,4 +1,4 @@
-/* $Id: ahci.c 38848 2011-09-23 13:27:55Z vboxsync $ */
+/* $Id: ahci.c 38851 2011-09-23 14:00:03Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -42,6 +42,13 @@
 #endif
 
 #define AHCI_MAX_STORAGE_DEVICES 4
+
+/* Because we don't tell the recompiler when guest's physical memory 
+ * is written, it can incorrectly cache guest code overwritten by
+ * bus master DMA. We just re-write the memory block to flush any of
+ * its caches. This is not exactly efficient, but works!
+ */
+#define DMA_WORKAROUND      1
 
 /**
  * AHCI device data.
@@ -644,6 +651,7 @@ static void ahci_cmd_data_out(uint16_t ahci_seg, uint16_t u16IoBase, uint8_t u8P
                   u8SectCountExp, SegData :> OffData, u16Sectors * 512, 1);
 }
 
+
 /**
  * Read data from the device.
  */
@@ -667,6 +675,9 @@ static void ahci_cmd_data_in(uint16_t ahci_seg, uint16_t u16IoBase, uint8_t u8Po
     ahci_cmd_data(ahci_seg, u16IoBase, u8Cmd, 0, u8Device, u8CylHigh, u8CylLow,
                   u8Sect, 0, u8CylHighExp, u8CylLowExp, u8SectExp, u8SectCount,
                   u8SectCountExp, SegData :> OffData, u16Sectors * 512, 0);
+#ifdef DMA_WORKAROUND
+    rep_movsw(SegData :> OffData, SegData :> OffData, u16Sectors * 512 / 2);
+#endif
 }
 
 static void ahci_port_detect_device(uint16_t ahci_seg, uint16_t u16IoBase, uint8_t u8Port)
