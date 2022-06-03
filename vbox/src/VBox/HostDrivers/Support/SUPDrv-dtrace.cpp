@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 40518 2012-03-17 21:52:45Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 40599 2012-03-23 18:09:21Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -46,8 +46,8 @@ static int      supdrvDTracePOps_Enable(void *pvProv, dtrace_id_t idProbe, void 
 static void     supdrvDTracePOps_Disable(void *pvProv, dtrace_id_t idProbe, void *pvProbe);
 static void     supdrvDTracePOps_GetArgDesc(void *pvProv, dtrace_id_t idProbe, void *pvProbe, 
                                             dtrace_argdesc_t *pArgDesc);
-static uint64_t supdrvDTracePOps_GetArgVal(void *pvProv, dtrace_id_t idProbe, void *pvProbe,
-                                           int iArg, int cFrames);
+/*static uint64_t supdrvDTracePOps_GetArgVal(void *pvProv, dtrace_id_t idProbe, void *pvProbe,
+                                           int iArg, int cFrames);*/
 static void     supdrvDTracePOps_Destroy(void *pvProv, dtrace_id_t idProbe, void *pvProbe);
 
 
@@ -77,7 +77,7 @@ static const dtrace_pops_t g_SupDrvDTraceProvOps =
     /* .dtps_suspend         = */ NULL,
     /* .dtps_resume          = */ NULL,
     /* .dtps_getargdesc      = */ supdrvDTracePOps_GetArgDesc,
-    /* .dtps_getargval       = */ supdrvDTracePOps_GetArgVal,
+    /* .dtps_getargval       = */ NULL/*supdrvDTracePOps_GetArgVal*/,
     /* .dtps_usermode        = */ NULL,
     /* .dtps_destroy         = */ supdrvDTracePOps_Destroy
 };
@@ -188,6 +188,7 @@ static void     supdrvDTracePOps_GetArgDesc(void *pvProv, dtrace_id_t idProbe, v
 }
 
 
+#if 0
 /**
  * @callback_method_impl{dtrace_pops_t,dtps_getargval}
  */
@@ -196,6 +197,7 @@ static uint64_t supdrvDTracePOps_GetArgVal(void *pvProv, dtrace_id_t idProbe, vo
 {
     return 0xbeef;
 }
+#endif
 
 
 /**
