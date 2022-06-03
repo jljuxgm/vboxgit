@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 36592 2011-04-06 15:48:47Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 36593 2011-04-06 16:08:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -234,6 +234,11 @@ protected:
     /* Settings processor: */
     void run()
     {
+        /* Mark all the pages initially as NOT processed: */
+        QList<UISettingsPage*> pageList = m_pages.values();
+        for (int iPageNumber = 0; iPageNumber < pageList.size(); ++iPageNumber)
+            pageList[iPageNumber]->setProcessed(false);
+
         /* Iterate over the all left settings pages: */
         UISettingsPageMap pages(m_pages);
         while (!pages.empty())
