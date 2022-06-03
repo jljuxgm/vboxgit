@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 39536 2011-12-05 16:35:03Z vboxsync $ */
+/* $Id: VBoxMPIf.h 39537 2011-12-05 16:50:49Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -875,7 +875,7 @@ DECLINLINE(void) vboxWddmDirtyRegionClear(PVBOXWDDM_DIRTYREGION pInfo)
     pInfo->fFlags = 0;
 }
 
-#define VBOXWDDM_ARRAY_MAXELEMENTSU32(_t) ((uint32_t)((~(0UL)) / sizeof (_t)))
+#define VBOXWDDM_ARRAY_MAXELEMENTSU32(_t) ((uint32_t)((UINT32_MAX) / sizeof (_t)))
 #define VBOXWDDM_TRAILARRAY_MAXELEMENTSU32(_t, _af) ((uint32_t)(((~(0UL)) - (uint32_t)RT_OFFSETOF(_t, _af[0])) / RT_SIZEOFMEMB(_t, _af[0])))
 
 #endif /* #ifndef ___VBoxMPIf_h___ */
