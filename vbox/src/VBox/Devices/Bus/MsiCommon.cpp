@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 36079 2011-02-24 17:10:31Z vboxsync $ */
+/* $Id: MsiCommon.cpp 36562 2011-04-05 13:56:34Z vboxsync $ */
 /** @file
  * MSI support routines
  */
@@ -31,7 +31,7 @@ DECLINLINE(uint16_t) msiGetMessageControl(PPCIDEVICE pDev)
 
 DECLINLINE(bool) msiIs64Bit(PPCIDEVICE pDev)
 {
-    return (msiGetMessageControl(pDev) & VBOX_PCI_MSI_FLAGS_64BIT) != 0;
+    return pciDevIsMsi64Capable(pDev);
 }
 
 DECLINLINE(uint32_t*) msiGetMaskBits(PPCIDEVICE pDev)
