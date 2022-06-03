@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceLinux.cpp 36994 2011-05-06 22:20:05Z vboxsync $ */
+/* $Id: USBProxyServiceLinux.cpp 36995 2011-05-06 22:49:41Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -113,6 +113,9 @@ HRESULT USBProxyServiceLinux::init(void)
      * USBFS and using sysfs.  The default choice is sysfs; if that is not
      * available we fall back to USBFS.
      * In the event of both failing, an appropriate error will be returned.
+     * The user may also specify a method and root using the VBOX_USB and
+     * VBOX_USB_ROOT environment variables.  In this case we don't check
+     * the root they provide for validity.
      */
     bool fUsbfsChosen = false, fSysfsChosen = false;
     const char *pcszUsbFromEnv = RTEnvGet("VBOX_USB");
