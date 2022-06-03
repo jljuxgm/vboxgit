@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 41159 2012-05-04 01:54:46Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 41234 2012-05-10 12:58:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -966,10 +966,16 @@ void UIMachineLogic::sltTakeScreenshot()
             i = filters.indexOf(QRegExp(".*bmp.*", Qt::CaseInsensitive));
     }
     if (i != -1)
-        strFilter = filters.at(i);
+    {
+        filters.prepend(filters.takeAt(i));
+        strFilter = filters.first();
+    }
     /* Request the filename from the user. */
     const CMachine &machine = session().GetMachine();
-    const QString &strStart = machine.GetSettingsFilePath();
+    QFileInfo fi(machine.GetSettingsFilePath());
+    QString strAbsolutePath(fi.absolutePath());
+    QString strCompleteBaseName(fi.completeBaseName());
+    QString strStart = QDir(strAbsolutePath).absoluteFilePath(strCompleteBaseName);
     QString strFilename = QIFileDialog::getSaveFileName(strStart,
                                                         filters.join(";;"),
                                                         activeMachineWindow(),
