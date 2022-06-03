@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: CSAM.cpp 41659 2012-06-12 01:19:14Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1263,11 +1263,11 @@ static int csamAnalyseCodeStream(PVM pVM, RCPTRTYPE(uint8_t *) pInstrGC, RCPTRTY
 
             STAM_PROFILE_START(&pVM->csam.s.StatTimeDisasm, a);
 #ifdef DEBUG
-            rc2 = CSAMR3DISInstr(pVM, pCurInstrGC, pCurInstrHC, (fCode32) ? CPUMODE_32BIT : CPUMODE_16BIT,
+            rc2 = CSAMR3DISInstr(pVM, pCurInstrGC, pCurInstrHC, fCode32 ? CPUMODE_32BIT : CPUMODE_16BIT,
                                  &cpu, &opsize, szOutput);
             if (RT_SUCCESS(rc2)) Log(("CSAM Analysis: %s", szOutput));
 #else
-            rc2 = CSAMR3DISInstr(pVM, &cpu, pCurInstrGC, pCurInstrHC, (fCode32) ? CPUMODE_32BIT : CPUMODE_16BIT,
+            rc2 = CSAMR3DISInstr(pVM, pCurInstrGC, pCurInstrHC, fCode32 ? CPUMODE_32BIT : CPUMODE_16BIT,
                                  &cpu, &opsize, NULL);
 #endif
             STAM_PROFILE_STOP(&pVM->csam.s.StatTimeDisasm, a);
