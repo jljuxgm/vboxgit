@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 37237 2011-05-27 14:57:54Z vboxsync $ */
+/* $Id: DevACPI.cpp 37391 2011-06-08 16:56:30Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1924,8 +1924,8 @@ PDMBOTHCBDECL(int) acpiPMTmrRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port
         do
         {
             u64Seen = ASMAtomicReadU64(&s->u64PmTimerLastSeen);
-            if (u64Now < s->u64PmTimerLastSeen)
-                u64Now = s->u64PmTimerLastSeen + 1;
+            if (u64Now < u64Seen)
+                u64Now = u64Seen + 1;
         } while (!ASMAtomicCmpXchgU64(&s->u64PmTimerLastSeen, u64Now, u64Seen));
 
         uint64_t u64Elapsed = u64Now - s->u64PmTimerInitial;
