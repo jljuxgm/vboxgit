@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 36065 2011-02-23 17:09:15Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 36154 2011-03-03 18:01:44Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1272,7 +1272,7 @@ int vboxNetFltPortOsDisconnectInterface(PVBOXNETFLTINS pThis, void *pvIfData)
          * Remove the VNIC from the list, destroy and free it.
          */
         list_remove(&pThis->u.s.hVNICs, pVNIC);
-        LogRel((DEVICE_NAME ":vboxNetFltPortOsDisconnectInterface destroying pVNIC=%p\n", pVNIC));
+        LogFlow((DEVICE_NAME ":vboxNetFltPortOsDisconnectInterface destroying pVNIC=%p\n", pVNIC));
         vboxNetFltSolarisDestroyVNIC(pVNIC);
         vboxNetFltSolarisFreeVNIC(pVNIC);
     }
