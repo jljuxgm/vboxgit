@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: GuestImpl.cpp 39418 2011-11-25 10:11:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -119,8 +119,16 @@ void Guest::uninit()
          */
         AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-        /* Clean up callback data. */
+        /* Notify left over callbacks that we are about to shutdown ... */
         CallbackMapIter it;
+        for (it = mCallbackMap.begin(); it != mCallbackMap.end(); it++)
+        {
+            int rc2 = callbackNotifyEx(it->first, VERR_CANCELLED,
+                                       Guest::tr("VM is shutting down, canceling uncompleted guest requests ..."));
+            AssertRC(rc2);
+        }
+
+        /* Destroy left over callback data. */
         for (it = mCallbackMap.begin(); it != mCallbackMap.end(); it++)
             callbackDestroy(it->first);
 

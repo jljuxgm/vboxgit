@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlIO.cpp 38439 2011-08-12 15:29:32Z vboxsync $ */
+/* $Id: GuestCtrlIO.cpp 39418 2011-11-25 10:11:06Z vboxsync $ */
 /** @file
  *
  * IO helper for IGuest COM class implementations.
@@ -315,6 +315,11 @@ void GuestProcessStream::Destroy()
 uint32_t GuestProcessStream::GetOffset()
 {
     return m_cbOffset;
+}
+
+uint32_t GuestProcessStream::GetSize()
+{
+    return m_cbSize;
 }
 
 /**
