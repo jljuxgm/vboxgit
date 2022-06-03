@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 40711 2012-03-29 15:28:02Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 40746 2012-04-02 13:23:47Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -947,6 +947,12 @@ Section -Post
 
   ; Tune TcpWindowSize for a better network throughput
   WriteRegDWORD HKLM "SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" "TcpWindowSize" 64240
+
+  ; Add Sun Ray  client info keys
+  ; Note: We only need 32-bit keys (HKLM\Software / HKLM\Software\Wow6432Node),
+  ;       so no need to switch registry views here
+  WriteRegStr HKLM "SOFTWARE\Oracle\Sun Ray\ClientInfoAgent\ReconnectActions" "" ""
+  WriteRegStr HKLM "SOFTWARE\Oracle\Sun Ray\ClientInfoAgent\DisconnectActions" "" ""
 
   DetailPrint "Installation completed."
 
