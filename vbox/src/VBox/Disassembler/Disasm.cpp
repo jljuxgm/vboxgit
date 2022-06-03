@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 41668 2012-06-12 13:15:51Z vboxsync $ */
+/* $Id: Disasm.cpp 41669 2012-06-12 13:34:07Z vboxsync $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -35,16 +35,18 @@
  * @returns VBox error code
  * @param   pCpu            Pointer to cpu structure which have DISCPUSTATE::mode
  *                          set correctly.
- * @param   uInstrAddr      Pointer to the structure to disassemble.
+ * @param   pvInstr         Pointer to the instruction to disassemble.
  * @param   pcbInstr        Where to store the size of the instruction. NULL is
  *                          allowed.
  * @param   pszOutput       Storage for disassembled instruction
+ * @param   cbOutput        Size of the output buffer.
  *
  * @todo    Define output callback.
  */
-DISDECL(int) DISInstr(RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode, PDISCPUSTATE pCpu, uint32_t *pcbInstr, char *pszOutput)
+DISDECL(int) DISInstrToStr(void const *pvInstr, DISCPUMODE enmCpuMode, PDISCPUSTATE pCpu, uint32_t *pcbInstr,
+                           char *pszOutput, size_t cbOutput)
 {
-    return DISInstrEx(uInstrAddr, 0, enmCpuMode, NULL, NULL, OPTYPE_ALL,
+    return DISInstrEx((uintptr_t)pvInstr, 0, enmCpuMode, NULL, NULL, OPTYPE_ALL,
                       pCpu, pcbInstr, pszOutput);
 }
 
@@ -54,7 +56,7 @@ DISDECL(int) DISInstr(RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode, PDISCPUSTATE 
  * @returns VBox error code
  * @param   pCpu            Pointer to cpu structure which have DISCPUSTATE::mode
  *                          set correctly.
- * @param   uInstrAddr      Pointer to the structure to disassemble.
+ * @param   uInstrAddr      Pointer to the instruction to disassemble.
  * @param   offRealAddr     Offset to add to instruction address to get the real
  *                          virtual address.
  * @param   pcbInstr        Where to store the size of the instruction. NULL is
