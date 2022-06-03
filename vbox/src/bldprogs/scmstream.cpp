@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 41179 2012-05-06 20:31:02Z vboxsync $ */
+/* $Id: scmstream.cpp 41180 2012-05-06 23:51:14Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -692,12 +692,15 @@ const char *ScmStreamGetLine(PSCMSTREAM pStream, size_t *pcchLine, PSCMEOL penmE
     size_t      iCurLine = pStream->iLine;
     const char *pszLine  = ScmStreamGetLineByNo(pStream, iCurLine, pcchLine, penmEol);
     if (   pszLine 
-        && pStream->paLines[iCurLine].off < offCur)
+        && offCur > pStream->paLines[iCurLine].off)
     {
         offCur -= pStream->paLines[iCurLine].off;
-        Assert(offCur <= pStream->paLines[iCurLine].off);
-        *pcchLine -= offCur;
-        pszLine   += offCur;
+        Assert(offCur <= pStream->paLines[iCurLine].cch + pStream->paLines[iCurLine].enmEol);
+        if (offCur < pStream->paLines[iCurLine].cch)
+            *pcchLine  -= offCur;
+        else
+            *pcchLine   = 0;
+        pszLine        += offCur;
     }
     return pszLine;
 }
