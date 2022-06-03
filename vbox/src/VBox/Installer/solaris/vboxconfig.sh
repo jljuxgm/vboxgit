@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 40190 2012-02-21 09:51:01Z vboxsync $
+# $Id: vboxconfig.sh 41101 2012-04-30 15:27:15Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -58,10 +58,6 @@ DESC_VBOXFLT="NetFilter (STREAMS)"
 
 MOD_VBOXBOW=vboxbow
 DESC_VBOXBOW="NetFilter (Crossbow)"
-
-# No Separate VBI since (3.1)
-#MOD_VBI=vbi
-#DESC_VBI="Kernel Interface"
 
 MOD_VBOXUSBMON=vboxusbmon
 DESC_VBOXUSBMON="USBMonitor"
@@ -682,9 +678,6 @@ remove_drivers()
 
     unload_module "$MOD_VBOXDRV" "$DESC_VBOXDRV" "$fatal"
     rem_driver "$MOD_VBOXDRV" "$DESC_VBOXDRV" "$fatal"
-
-# No separate VBI since 3.1
-#    unload_module "$MOD_VBI" "$DESC_VBI" "$fatal"
 
     # remove devlinks
     if test -h "$PKG_INSTALL_ROOT/dev/vboxdrv" || test -f "$PKG_INSTALL_ROOT/dev/vboxdrv"; then

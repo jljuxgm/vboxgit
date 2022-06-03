@@ -1,4 +1,4 @@
-# $Id: Config.kmk 40989 2012-04-19 13:28:33Z vboxsync $
+# $Id: Config.kmk 41101 2012-04-30 15:27:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -444,8 +444,6 @@ ifeq ($(KBUILD_TARGET),linux)
  # VBOX_USB_WITH_DBUS = 1
  VBOX_USB_WITH_INOTIFY = 1
 endif
-# Use the new VBI module on Solaris.
-#VBOX_WITH_SOLARIS_VBI = 1
 # Enable performance API.
 VBOX_WITH_RESOURCE_USAGE_API = 1
 # Enable BusLogic SCSI host adapter
@@ -5060,7 +5058,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40989 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41101 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
