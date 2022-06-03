@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 41671 2012-06-12 15:22:43Z vboxsync $ */
+/* $Id: Disasm.cpp 41674 2012-06-12 20:16:31Z vboxsync $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -95,7 +95,7 @@ DISDECL(int) DISInstrToStrEx(RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode,
                              PFNDISREADBYTES pfnReadBytes, void *pvUser, uint32_t uFilter,
                              PDISCPUSTATE pCpu, uint32_t *pcbInstr, char *pszOutput, size_t cbOutput)
 {
-    int rc = DISCoreOneExEx(uInstrAddr, enmCpuMode, uFilter, pfnReadBytes, pvUser, pCpu, pcbInstr);
+    int rc = DISInstEx(uInstrAddr, enmCpuMode, uFilter, pfnReadBytes, pvUser, pCpu, pcbInstr);
     if (RT_SUCCESS(rc) && pszOutput && cbOutput)
     {
         rc = DISFormatYasmEx(pCpu, pszOutput, cbOutput,
