@@ -1,10 +1,10 @@
-/* $Id: VBoxManageList.cpp 35801 2011-02-01 08:44:46Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 37244 2011-05-30 08:28:07Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -831,6 +831,9 @@ static HRESULT produceList(enum enmListType enmCommand, bool fOptLong, const Com
             Bstr str;
             ULONG ulValue;
             LONG64 i64Value;
+
+            rptrVirtualBox->COMGETTER(APIVersion)(str.asOutParam());
+            RTPrintf("API version:                     %ls\n", str.raw());
 
             systemProperties->COMGETTER(MinGuestRAM)(&ulValue);
             RTPrintf("Minimum guest RAM size:          %u Megabytes\n", ulValue);

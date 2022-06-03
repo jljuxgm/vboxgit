@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxImpl.h 35903 2011-02-08 16:46:25Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 37244 2011-05-30 08:28:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -103,6 +103,7 @@ public:
     STDMETHOD(COMGETTER(Version))               (BSTR *aVersion);
     STDMETHOD(COMGETTER(Revision))              (ULONG *aRevision);
     STDMETHOD(COMGETTER(PackageType))           (BSTR *aPackageType);
+    STDMETHOD(COMGETTER(APIVersion))            (BSTR *aAPIVersion);
     STDMETHOD(COMGETTER(HomeFolder))            (BSTR *aHomeFolder);
     STDMETHOD(COMGETTER(SettingsFilePath))      (BSTR *aSettingsFilePath);
     STDMETHOD(COMGETTER(Host))                  (IHost **aHost);
@@ -312,6 +313,7 @@ private:
     static Bstr sVersion;
     static ULONG sRevision;
     static Bstr sPackageType;
+    static Bstr sAPIVersion;
 
     static DECLCALLBACK(int) ClientWatcher (RTTHREAD thread, void *pvUser);
     static DECLCALLBACK(int) AsyncEventHandler (RTTHREAD thread, void *pvUser);
