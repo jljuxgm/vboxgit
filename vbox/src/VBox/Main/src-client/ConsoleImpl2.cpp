@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 38873 2011-09-27 08:58:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -755,6 +755,8 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
     hrc = guestOSType->COMGETTER(FamilyId)(guestTypeFamilyId.asOutParam());                 H();
     BOOL fOsXGuest = guestTypeFamilyId == Bstr("MacOS");
 
+    ULONG maxNetworkAdapters;
+    hrc = systemProperties->GetMaxNetworkAdapters(chipsetType, &maxNetworkAdapters);        H();
     /*
      * Get root node first.
      * This is the only node in the tree.
@@ -1709,7 +1711,7 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
         InsertConfigNode(pDevices, "virtio-net", &pDevVirtioNet);
 #endif /* VBOX_WITH_VIRTIO */
         std::list<BootNic> llBootNics;
-        for (ULONG ulInstance = 0; ulInstance < SchemaDefs::NetworkAdapterCount; ++ulInstance)
+        for (ULONG ulInstance = 0; ulInstance < maxNetworkAdapters; ++ulInstance)
         {
             ComPtr<INetworkAdapter> networkAdapter;
             hrc = pMachine->GetNetworkAdapter(ulInstance, networkAdapter.asOutParam());     H();

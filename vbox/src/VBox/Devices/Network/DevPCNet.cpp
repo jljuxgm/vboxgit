@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
+/* $Id: DevPCNet.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -5002,9 +5002,6 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     char            szTmp[128];
     int             rc;
 
-    /* up to eight instances are supported */
-    Assert((iInstance >= 0) && (iInstance < 8));
-
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     Assert(RT_ELEMENTS(pThis->aBCR) == BCR_MAX_RAP);
     Assert(RT_ELEMENTS(pThis->aMII) == MII_MAX_REG);
@@ -5381,7 +5378,7 @@ const PDMDEVREG g_DevicePCNet =
     /* fClass */
     PDM_DEVREG_CLASS_NETWORK,
     /* cMaxInstances */
-    8,
+    ~0,
     /* cbInstance */
     sizeof(PCNetState),
     /* pfnConstruct */

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 38996 2011-10-14 12:59:50Z vboxsync $ */
+/* $Id: MachineImpl.h 39248 2011-11-09 12:29:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -49,6 +49,7 @@
 #include <iprt/time.h>
 
 #include <list>
+#include <vector>
 
 // defines
 ////////////////////////////////////////////////////////////////////////////////
@@ -276,7 +277,7 @@ public:
 
         DeviceType_T         mBootOrder[SchemaDefs::MaxBootPosition];
 
-        typedef std::list< ComObjPtr<SharedFolder> > SharedFolderList;
+        typedef std::list<ComObjPtr<SharedFolder> > SharedFolderList;
         SharedFolderList     mSharedFolders;
 
         ClipboardMode_T      mClipboardMode;
@@ -293,7 +294,7 @@ public:
         BOOL                 mIoCacheEnabled;
         ULONG                mIoCacheSize;
 
-        typedef std::list< ComObjPtr<PciDeviceAttachment> > PciDeviceAssignmentList;
+        typedef std::list<ComObjPtr<PciDeviceAttachment> > PciDeviceAssignmentList;
         PciDeviceAssignmentList mPciDeviceAssignments;
     };
 
@@ -311,7 +312,7 @@ public:
         MediaData();
         ~MediaData();
 
-        typedef std::list< ComObjPtr<MediumAttachment> > AttachmentList;
+        typedef std::list<ComObjPtr<MediumAttachment> > AttachmentList;
         AttachmentList mAttachments;
     };
 
@@ -919,10 +920,11 @@ protected:
     const ComObjPtr<AudioAdapter>   mAudioAdapter;
     const ComObjPtr<USBController>  mUSBController;
     const ComObjPtr<BIOSSettings>   mBIOSSettings;
-    const ComObjPtr<NetworkAdapter> mNetworkAdapters[SchemaDefs::NetworkAdapterCount];
+    typedef std::vector<ComObjPtr<NetworkAdapter> > NetworkAdapterVector;
+    NetworkAdapterVector            mNetworkAdapters;
     const ComObjPtr<BandwidthControl> mBandwidthControl;
 
-    typedef std::list< ComObjPtr<StorageController> > StorageControllerList;
+    typedef std::list<ComObjPtr<StorageController> > StorageControllerList;
     Backupable<StorageControllerList> mStorageControllers;
 
     friend class SessionMachine;

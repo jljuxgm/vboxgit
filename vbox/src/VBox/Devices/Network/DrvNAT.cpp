@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 38971 2011-10-10 08:28:30Z vboxsync $ */
+/* $Id: DrvNAT.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1266,7 +1266,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
         char *pszBindIP = NULL;
         GET_STRING_ALLOC(rc, pThis, pCfg, "BindIP", pszBindIP);
         rc = slirp_set_binding_address(pThis->pNATState, pszBindIP);
-        if (rc != 0)
+        if (rc != 0 && pszBindIP && *pszBindIP)
             LogRel(("NAT: value of BindIP has been ignored\n"));
 
         if(pszBindIP != NULL)
@@ -1412,7 +1412,7 @@ const PDMDRVREG g_DrvNAT =
     /* fClass. */
     PDM_DRVREG_CLASS_NETWORK,
     /* cMaxInstances */
-    16,
+    ~0,
     /* cbInstance */
     sizeof(DRVNAT),
     /* pfnConstruct */

@@ -1,11 +1,11 @@
-/* $Id: ApplianceImplExport.cpp 38491 2011-08-18 12:27:51Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -33,6 +33,7 @@
 #include "MachineImpl.h"
 #include "MediumImpl.h"
 #include "MediumFormatImpl.h"
+#include "Global.h"
 #include "SystemPropertiesImpl.h"
 
 #include "AutoCaller.h"
@@ -453,10 +454,9 @@ STDMETHODIMP Machine::Export(IAppliance *aAppliance, IN_BSTR location, IVirtualS
         }
 
 //     <const name="NetworkAdapter" />
+        uint32_t maxNetworkAdapters = Global::getMaxNetworkAdapters(getChipsetType());
         size_t a;
-        for (a = 0;
-             a < SchemaDefs::NetworkAdapterCount;
-             ++a)
+        for (a = 0; a < maxNetworkAdapters; ++a)
         {
             ComPtr<INetworkAdapter> pNetworkAdapter;
             BOOL fEnabled;
