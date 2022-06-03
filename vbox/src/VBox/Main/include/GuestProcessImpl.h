@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 42105 2012-07-11 11:53:22Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 42117 2012-07-11 18:09:05Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -20,6 +20,10 @@
 #define ____H_GUESTPROCESSIMPL
 
 #include "VirtualBoxBase.h"
+
+#include <vector>
+
+typedef std::vector<Utf8Str> StringsArray;
 
 class GuestSession;
 
@@ -43,7 +47,7 @@ public:
     DECLARE_EMPTY_CTOR_DTOR(GuestProcess)
 
     int     init(GuestSession *pSession,
-                 const Utf8Str &aCommand, ComSafeArrayIn(Utf8Str, aArguments), ComSafeArrayIn(Utf8Str, aEnvironment),
+                 const Utf8Str &aCommand, const StringsArray &aArguments, const StringsArray &aEnvironment,
                  ComSafeArrayIn(ProcessCreateFlag_T, aFlags), ULONG aTimeoutMS,
                  ProcessPriority_T aPriority, ComSafeArrayIn(LONG, aAffinity));
     void    uninit(void);
