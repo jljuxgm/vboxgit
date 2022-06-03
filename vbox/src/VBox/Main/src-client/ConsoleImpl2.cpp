@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36130 2011-03-02 16:56:11Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 36260 2011-03-11 12:57:35Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -505,6 +505,11 @@ static HRESULT attachRawPciDevices(BusAssignmentManager* BusMgr,
     }
 
     /* Now actually add devices */
+    PCFGMNODE pPciDevs = NULL;
+
+    if (assignments.size() > 0)
+        InsertConfigNode(pDevices,     "pciraw",  &pPciDevs);
+
     for (size_t iDev = 0; iDev < assignments.size(); iDev++)
     {
         PciBusAddress HostPciAddress, GuestPciAddress;
@@ -516,9 +521,8 @@ static HRESULT attachRawPciDevices(BusAssignmentManager* BusMgr,
         assignment->COMGETTER(GuestAddress)(&guest);
         assignment->COMGETTER(Name)(aDevName.asOutParam());
 
-        InsertConfigNode(pDevices,     "pciraw",  &pDev);
-        InsertConfigNode(pDev,          Utf8StrFmt("%d", iDev).c_str(), &pInst);
-        InsertConfigInteger(pInst,     "Trusted", 1);
+        InsertConfigNode(pPciDevs, Utf8StrFmt("%d", iDev).c_str(), &pInst);
+        InsertConfigInteger(pInst, "Trusted", 1);
 
         HostPciAddress.fromLong(host);
         Assert(HostPciAddress.valid());
