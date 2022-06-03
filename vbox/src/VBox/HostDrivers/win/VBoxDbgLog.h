@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: VBoxDbgLog.h 38433 2011-08-12 12:04:34Z vboxsync $ */
 
 /** @file
  * Logging helper
