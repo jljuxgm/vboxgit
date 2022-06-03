@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 41120 2012-05-02 14:55:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 41214 2012-05-08 17:59:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -277,8 +277,6 @@ public:
     void saveModifiedRegistries();
 
     static HRESULT ensureFilePathExists(const Utf8Str &strFileName, bool fCreate);
-
-    static HRESULT handleUnexpectedExceptions(RT_SRC_POS_DECL);
 
     const Utf8Str& settingsFilePath();
 

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 41089 2012-04-27 16:01:10Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 41214 2012-05-08 17:59:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -116,7 +116,6 @@
 #include <algorithm>
 #include <memory> // for auto_ptr
 #include <vector>
-#include <typeinfo>
 
 
 // VMTask and friends
@@ -3483,36 +3482,6 @@ HRESULT Console::setInvalidMachineStateError()
                     Global::stringifyMachineState(mMachineState));
 }
 
-
-/**
- * @copydoc VirtualBox::handleUnexpectedExceptions
- */
-/* static */
-HRESULT Console::handleUnexpectedExceptions(RT_SRC_POS_DECL)
-{
-    try
-    {
-        /* re-throw the current exception */
-        throw;
-    }
-    catch (const std::exception &err)
-    {
-        return setErrorStatic(E_FAIL,
-                              tr("Unexpected exception: %s [%s]\n%s[%d] (%s)"),
-                              err.what(), typeid(err).name(),
-                              pszFile, iLine, pszFunction);
-    }
-    catch (...)
-    {
-        return setErrorStatic(E_FAIL,
-                              tr("Unknown exception\n%s[%d] (%s)"),
-                              pszFile, iLine, pszFunction);
-    }
-
-    /* should not get here */
-    AssertFailed();
-    return E_FAIL;
-}
 
 /* static */
 const char *Console::convertControllerTypeToDev(StorageControllerType_T enmCtrlType)

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 40767 2012-04-05 09:47:33Z vboxsync $ */
+/* $Id: ConsoleImpl.h 41214 2012-05-08 17:59:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -265,8 +265,6 @@ public:
 
     static HRESULT setErrorStatic(HRESULT aResultCode, const char *pcsz, ...);
     HRESULT setInvalidMachineStateError();
-
-    static HRESULT handleUnexpectedExceptions(RT_SRC_POS_DECL);
 
     static const char *convertControllerTypeToDev(StorageControllerType_T enmCtrlType);
     static HRESULT convertBusPortDeviceToLun(StorageBus_T enmBus, LONG port, LONG device, unsigned &uLun);

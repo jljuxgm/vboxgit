@@ -1,11 +1,11 @@
-/* $Id: ParallelPortImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 41214 2012-05-08 17:59:43Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -84,5 +84,5 @@ private:
     Data *m;
 };
 
-#endif // ____H_FLOPPYDRIVEIMPL
+#endif // ____H_PARALLELPORTIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
