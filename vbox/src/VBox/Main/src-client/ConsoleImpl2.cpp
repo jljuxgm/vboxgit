@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 37241 2011-05-27 15:37:48Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 37282 2011-06-01 02:56:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2272,7 +2272,7 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
                 }
 #endif
 
-# if 0  /* Virtual Webcam */
+#ifdef VBOX_WITH_USB_VIDEO
 
                 InsertConfigNode(pUsbDevices, "Webcam", &pDev);
                 InsertConfigNode(pDev,     "0", &pInst);
@@ -2281,12 +2281,16 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
                 InsertConfigInteger(pCfg, "USBVER", RT_BIT(2));
 # endif
                 InsertConfigNode(pInst,    "LUN#0", &pLunL0);
+# ifdef VBOX_WITH_USB_VIDEO_TEST
                 InsertConfigString(pLunL0,    "Driver", "WebcamFileFeeder");
                 InsertConfigNode(pLunL0,    "Config", &pCfg);
-# if 1
                 InsertConfigString(pCfg,   "DirToFeed", "out");
+# else
+                InsertConfigString(pLunL0,    "Driver", "UsbWebcamInterface");
+                InsertConfigNode(pLunL0,    "Config", &pCfg);
+                InsertConfigInteger(pCfg,   "Object", &mUsbWebcamInterface);
 # endif
-# endif
+#endif
 # if 0  /* Virtual MSD*/
 
                 InsertConfigNode(pUsbDevices, "Msd", &pDev);

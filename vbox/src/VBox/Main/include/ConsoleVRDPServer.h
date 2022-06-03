@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 36843 2011-04-26 08:33:19Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 37282 2011-06-01 02:56:05Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -135,6 +135,10 @@ public:
                             uint32_t cBits);
 
     void SendAudioInputEnd(void *pvUserCtx);
+#ifdef VBOX_WITH_USB_VIDEO
+    int GetVideoFrameDimensions(uint16_t *pu16Heigh, uint16_t *pu16Width);
+    int SendVideoSreamOn(bool fFetch);
+#endif
 
 private:
     /* Note: This is not a ComObjPtr here, because the ConsoleVRDPServer object

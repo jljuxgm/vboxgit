@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 36925 2011-05-03 08:02:13Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 37282 2011-06-01 02:56:05Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2769,6 +2769,23 @@ void ConsoleVRDPServer::SendAudioInputEnd(void *pvUserCtx)
         }
     }
 }
+
+#ifdef VBOX_WITH_USB_VIDEO
+int ConsoleVRDPServer::GetVideoFrameDimensions(uint16_t *pu16Heigh, uint16_t *pu16Width)
+{
+    *pu16Heigh = 640;
+    *pu16Width = 480;
+    return VINF_SUCCESS;
+}
+
+int ConsoleVRDPServer::SendVideoSreamOn(bool fFetch)
+{
+    /* Here we inform server that guest is starting/stopping
+     * the stream
+     */
+    return VINF_SUCCESS;
+}
+#endif
 
 
 
