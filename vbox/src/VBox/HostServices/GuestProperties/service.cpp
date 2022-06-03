@@ -1,4 +1,4 @@
-/* $Id: service.cpp 39242 2011-11-08 13:38:59Z vboxsync $ */
+/* $Id: service.cpp 40361 2012-03-05 16:25:09Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1147,7 +1147,7 @@ void Service::doNotifications(const char *pszProperty, uint64_t u64Timestamp)
     {
         /* Send out a host notification */
         if (RT_SUCCESS(rc))
-            rc = notifyHost(pszProperty, NULL, u64Timestamp, NULL);
+            rc = notifyHost(pszProperty, "", u64Timestamp, "");
     }
     LogFlowThisFunc(("returning\n"));
 }
