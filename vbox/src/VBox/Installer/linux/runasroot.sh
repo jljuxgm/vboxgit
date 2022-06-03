@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: runasroot.sh 36667 2011-04-14 10:19:53Z vboxsync $
+# $Id: runasroot.sh 36681 2011-04-15 10:17:02Z vboxsync $
 ## @file
 # VirtualBox privileged execution helper script for Linux and Solaris
 #
@@ -23,6 +23,13 @@ if test "$ostype" != "Linux" && test "$ostype" != "SunOS" ; then
   echo "Linux/Solaris not detected."
   exit 1
 fi
+
+HAS_TERMINAL=""
+case "$1" in "--has-terminal")
+    shift
+    HAS_TERMINAL="yes"
+    ;;
+esac
 
 case "$#" in "2"|"3")
     ;;
@@ -57,13 +64,6 @@ case "$DISPLAY" in ?*)
         ;;
     esac
 
-    KDESU="`mywhich kdesu`"
-    case "$KDESU" in ?*)
-        "$KDESU" -c "$COMMAND"
-        exit
-        ;;
-    esac
-
     GKSU="`mywhich gksu`"
     case "$GKSU" in ?*)
         # Older gksu does not grok --description nor '--' and multiple args.
@@ -80,10 +80,24 @@ esac # $DISPLAY
 # pkexec may work for ssh console sessions as well if the right agents
 # are installed.  However it is very generic and does not allow for any
 # custom messages.  Thus it comes after gksu.
+## @todo should we insist on either a display or a terminal?
+# case "$DISPLAY$HAS_TERMINAL" in ?*)
 PKEXEC="`mywhich pkexec`"
 case "$PKEXEC" in ?*)
     eval "\"$PKEXEC\" $COMMAND"
     exit
+    ;;
+esac
+#    ;;S
+#esac
+
+case "$HAS_TERMINAL" in ?*)
+    SU="`mywhich su`"
+    case "$SU" in ?*)
+        "$SU" - root -c "$COMMAND"
+        exit
+        ;;
+    esac
     ;;
 esac
 
