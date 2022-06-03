@@ -1,4 +1,4 @@
-; $Id: PAEand32Bit.mac 37955 2011-07-14 12:23:02Z vboxsync $
+; $Id: PAEand32Bit.mac 41905 2012-06-24 01:19:25Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for PAE and 32-Bit.
 ;
@@ -384,11 +384,11 @@ GLOBALNAME FarJmpGCTarget
     mov     gs, eax
     mov     fs, eax
 
-    ; Setup stack; use the lss_esp, ss pair for lss
+    ; Setup stack.
     DEBUG_CHAR('3')
-    mov     eax, [edx + CPUMCPU.Hyper.esp]
-    mov     [edx + CPUMCPU.Hyper.lss_esp], eax
-    lss     esp, [edx + CPUMCPU.Hyper.lss_esp]
+    mov     eax, [edx + CPUMCPU.Hyper.ss]
+    mov     ss, ax
+    mov     esp, [edx + CPUMCPU.Hyper.esp]
 
     ; Restore TSS selector; must mark it as not busy before using ltr (!)
     DEBUG_CHAR('4')

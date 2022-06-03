@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 41836 2012-06-19 16:20:52Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 41905 2012-06-24 01:19:25Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -113,7 +113,6 @@ VMMDECL(void) CPUMSetHyperGDTR(PVMCPU pVCpu, uint32_t addr, uint16_t limit)
 {
     pVCpu->cpum.s.Hyper.gdtr.cbGdt = limit;
     pVCpu->cpum.s.Hyper.gdtr.pGdt  = addr;
-    pVCpu->cpum.s.Hyper.gdtrPadding = 0;
 }
 
 
@@ -121,7 +120,6 @@ VMMDECL(void) CPUMSetHyperIDTR(PVMCPU pVCpu, uint32_t addr, uint16_t limit)
 {
     pVCpu->cpum.s.Hyper.idtr.cbIdt = limit;
     pVCpu->cpum.s.Hyper.idtr.pIdt = addr;
-    pVCpu->cpum.s.Hyper.idtrPadding = 0;
 }
 
 

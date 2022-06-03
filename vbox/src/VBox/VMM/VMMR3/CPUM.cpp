@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 41904 2012-06-24 01:16:49Z vboxsync $ */
+/* $Id: CPUM.cpp 41905 2012-06-24 01:19:25Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -86,7 +86,7 @@
 /** The saved state version of 1.6, used for backwards compatibility. */
 #define CPUM_SAVED_STATE_VERSION_VER1_6         6
 
-//#define CPUM_WITH_CHANGED_CPUMCTX
+#define CPUM_WITH_CHANGED_CPUMCTX
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
