@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 37494 2011-06-16 13:30:56Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 37495 2011-06-16 13:32:37Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -1953,7 +1953,6 @@ public:
         QGLContext(format),
         mAllowDoneCurrent(true)
     {
-        makeCurrent();
     }
 
     void doneCurrent()
