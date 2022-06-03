@@ -1,4 +1,4 @@
-/* $Id: slirp.c 41178 2012-05-06 05:11:18Z vboxsync $ */
+/* $Id: slirp.c 41229 2012-05-10 07:22:23Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -164,13 +164,14 @@
 # define DO_ENGAGE_EVENT2(so, fdset1, fdset2, label) \
     DO_ENGAGE_EVENT1((so), (fdset1), label)
 
-# define DO_POLL_EVENTS(rc, error, so, events, label)                       \
-    (rc) = WSAEnumNetworkEvents((so)->s, VBOX_SOCKET_EVENT, (events));      \
-    if ((rc) == SOCKET_ERROR)                                               \
-    {                                                                       \
-        (error) = WSAGetLastError();                                        \
-        LogRel(("WSAEnumNetworkEvents " #label " error %d\n", (error)));    \
-        CONTINUE(label);                                                    \
+# define DO_POLL_EVENTS(rc, error, so, events, label)                                           \
+    (rc) = WSAEnumNetworkEvents((so)->s, VBOX_SOCKET_EVENT, (events));                          \
+    if ((rc) == SOCKET_ERROR)                                                                   \
+    {                                                                                           \
+        (error) = WSAGetLastError();                                                            \
+        LogRel(("WSAEnumNetworkEvents %R[natsock] " #label " error %d\n", (so), (error)));      \
+        LogFunc(("WSAEnumNetworkEvents %R[natsock] " #label " error %d\n", (so), (error)));     \
+        CONTINUE(label);                                                                        \
     }
 
 # define acceptds_win     FD_ACCEPT
