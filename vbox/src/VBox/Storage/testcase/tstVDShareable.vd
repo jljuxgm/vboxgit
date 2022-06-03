@@ -1,4 +1,4 @@
-# $Id: tstVDShareable.vd 35789 2011-01-31 15:25:22Z vboxsync $
+# $Id: tstVDShareable.vd 36131 2011-03-02 21:56:42Z vboxsync $
 #
 # Storage: Testcase for shareable disks.
 #
@@ -16,7 +16,7 @@
 #
 
 # Init I/O RNG for generating random data for writes
-iorngcreate size=10M seed=1234567890
+iorngcreate size=10M mode=manual seed=1234567890
 
 # Create disk containers.
 createdisk name=shared1
