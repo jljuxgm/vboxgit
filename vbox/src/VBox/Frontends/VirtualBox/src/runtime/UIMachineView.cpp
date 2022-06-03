@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 38978 2011-10-12 13:33:28Z vboxsync $ */
+/* $Id: UIMachineView.cpp 38979 2011-10-12 13:41:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -149,6 +149,8 @@ double UIMachineView::aspectRatio() const
 
 void UIMachineView::sltPerformGuestResize(const QSize &toSize)
 {
+    /* Get the current machine: */
+    CMachine machine = session().GetMachine();
     /* Get machine window: */
     QMainWindow *pMachineWindow = machineWindowWrapper() && machineWindowWrapper()->machineWindow() ?
                                   qobject_cast<QMainWindow*>(machineWindowWrapper()->machineWindow()) : 0;
