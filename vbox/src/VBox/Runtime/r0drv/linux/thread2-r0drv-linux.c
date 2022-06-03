@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 36240 2011-03-09 17:46:46Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 36241 2011-03-09 17:48:07Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -141,7 +141,7 @@ int rtThreadNativeCreate(PRTTHREADINT pThreadInt, PRTNATIVETHREAD pNativeThread)
 
     RT_ASSERT_PREEMPTIBLE();
 
-    NativeThread = kthread_run(rtThreadNativeMain, pThreadInt, "%s", pThreadInt->szName);
+    NativeThread = kthread_run(rtThreadNativeMain, pThreadInt, "vbox-%s", pThreadInt->szName);
 
     if (IS_ERR(NativeThread))
         return VERR_GENERAL_FAILURE;
