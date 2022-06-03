@@ -1,4 +1,4 @@
-; $Id: tstMicroRCA.asm 41933 2012-06-27 18:37:33Z vboxsync $
+; $Id: tstMicroRCA.asm 41944 2012-06-28 02:34:44Z vboxsync $
 ;; @file
 ; tstMicroRCA
 ;
@@ -126,7 +126,6 @@ gabStackCopy resb  4096
 
 extern NAME(idtOnly42)
 extern IMPNAME(g_VM)
-extern IMPNAME(VMMGCGuestToHostAsm)
 
 BEGINCODE
 EXPORTEDNAME tstMicroRCAsmStart
