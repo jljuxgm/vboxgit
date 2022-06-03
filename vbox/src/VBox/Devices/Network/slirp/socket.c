@@ -1,4 +1,4 @@
-/* $Id: socket.c 37745 2011-07-04 05:10:47Z vboxsync $ */
+/* $Id: socket.c 37756 2011-07-04 10:36:19Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -306,11 +306,11 @@ soread(PNATState pData, struct socket *so)
     /* Update fields */
     sb->sb_cc += nn;
     sb->sb_wptr += nn;
-    Log2(("%s: update so_snd (readed nn = %d) %R[sbuf]\n", __PRETTY_FUNCTION__, nn, so, sb));
+    Log2(("%s: update so_snd (readed nn = %d) %R[sbuf]\n", __PRETTY_FUNCTION__, nn, sb));
     if (sb->sb_wptr >= (sb->sb_data + sb->sb_datalen))
     {
         sb->sb_wptr -= sb->sb_datalen;
-        Log2(("%s: alter sb_wptr  so_snd = %R[sbuf]\n", __PRETTY_FUNCTION__, nn, so, sb));
+        Log2(("%s: alter sb_wptr  so_snd = %R[sbuf]\n", __PRETTY_FUNCTION__, sb));
     }
     STAM_PROFILE_STOP(&pData->StatIOread, a);
     SOCKET_UNLOCK(so);
