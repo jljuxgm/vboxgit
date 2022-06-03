@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.h 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: alloc-r0drv.h 40894 2012-04-12 14:40:45Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -65,6 +65,8 @@ typedef struct RTMEMHDR
 /** Indicate that it was allocated by rtR0MemAllocExTag. */
 #define RTMEMHDR_FLAG_ALLOC_EX      RT_BIT(4)
 #ifdef RT_OS_LINUX
+/** Linux: Allocated using vm_area hacks. */
+# define RTMEMHDR_FLAG_EXEC_VM_AREA RT_BIT(29)
 /** Linux: Allocated from the special heap for executable memory. */
 # define RTMEMHDR_FLAG_EXEC_HEAP    RT_BIT(30)
 /** Linux: Allocated by kmalloc() instead of vmalloc(). */
