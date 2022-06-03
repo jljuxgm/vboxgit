@@ -1,4 +1,4 @@
-/* $Id: dbg-r0drv-solaris.c 40698 2012-03-28 16:48:05Z vboxsync $ */
+/* $Id: dbg-r0drv-solaris.c 40700 2012-03-28 16:57:10Z vboxsync $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
@@ -92,7 +92,7 @@ static int rtR0DbgKrnlInfoModRetain(char *pszModule, modctl_t **ppMod, ctf_file_
              */
             int err;
             mutex_enter(&mod_lock);
-            *ppCTF = ctf_modopen(*ppMod->mod_mp, &err);
+            *ppCTF = ctf_modopen(((modctl_t *)*ppMod)->mod_mp, &err);
             mutex_exit(&mod_lock);
 
             if (*ppCTF)
