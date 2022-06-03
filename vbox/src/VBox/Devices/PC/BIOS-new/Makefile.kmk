@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41513 2012-05-30 23:17:27Z vboxsync $
+# $Id: Makefile.kmk 41515 2012-05-30 23:22:42Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -17,13 +17,6 @@
 
 SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
-
-## @todo move to Config.kmk.
-ifndef VBOX_WITHOUT_OPEN_WATCOM
- if1of ($(KBUILD_TARGET), os2 win linux)
-  VBOX_WITH_OPEN_WATCOM := 1
- endif
-endif
 
 
 ifdef VBOX_WITH_OPEN_WATCOM
