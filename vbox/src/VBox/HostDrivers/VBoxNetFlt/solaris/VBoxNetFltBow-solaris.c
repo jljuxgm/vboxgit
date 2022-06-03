@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 38896 2011-09-28 13:32:03Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 40444 2012-03-13 13:30:40Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1010,11 +1010,13 @@ LOCAL void vboxNetFltSolarisDestroyVNIC(PVBOXNETFLTVNIC pVNIC)
     {
         if (pVNIC->hClient)
         {
+#if 0
             if (pVNIC->hUnicast)
             {
                 mac_unicast_remove(pVNIC->hClient, pVNIC->hUnicast);
                 pVNIC->hUnicast = NULL;
             }
+#endif
 
             if (pVNIC->hPromisc)
             {
@@ -1465,12 +1467,14 @@ void vboxNetFltPortOsNotifyMacAddress(PVBOXNETFLTINS pThis, void *pvIfData, PCRT
         /*
          * Remove existing unicast address, promisc. and the RX hook.
          */
+#if 0
         if (pVNIC->hUnicast)
         {
             mac_rx_clear(pVNIC->hClient);
             mac_unicast_remove(pVNIC->hClient, pVNIC->hUnicast);
             pVNIC->hUnicast = NULL;
         }
+#endif
 
         if (pVNIC->hPromisc)
         {
