@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: EMAll.cpp 41799 2012-06-17 02:53:52Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -556,7 +556,7 @@ VMMDECL(VBOXSTRICTRC) EMInterpretInstructionDisasState(PVMCPU pVCpu, PDISCPUSTAT
     LogFlow(("EMInterpretInstructionDisasState %RGv fault %RGv\n", (RTGCPTR)pRegFrame->rip, pvFault));
 #ifdef VBOX_WITH_IEM
     NOREF(pDis); NOREF(pvFault); NOREF(enmCodeType);
-    VBOXSTRICTRC rc = IEMExecOneEx(pVCpu, pRegFrame, NULL);
+    VBOXSTRICTRC rc = IEMExecOneWithPrefetchedByPC(pVCpu, pRegFrame, pRegFrame->rip, pDis->abInstr, pDis->cbCachedInstr);
     if (RT_UNLIKELY(   rc == VERR_IEM_ASPECT_NOT_IMPLEMENTED
                     || rc == VERR_IEM_INSTR_NOT_IMPLEMENTED))
         return VERR_EM_INTERPRETER;
