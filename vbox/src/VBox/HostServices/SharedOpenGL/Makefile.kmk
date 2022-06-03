@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40850 2012-04-10 13:57:53Z vboxsync $
+# $Id: Makefile.kmk 40859 2012-04-10 20:13:51Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -279,7 +279,6 @@ ifneq ($(KBUILD_TARGET),darwin)
   VBoxOGLTest_SOURCES = OpenGLTest/OpenGLTest.cpp
 endif
 VBoxOGLTest_SOURCES.darwin = OpenGLTest/OpenGLTestDarwin.cpp
-VBoxOGLTest_DEFS = IN_RING3 $(ARCH_BITS_DEFS)
 
 #
 # VBoxTestOGL - OpenGL support test app.
