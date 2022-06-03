@@ -1,4 +1,4 @@
-/* $Id: log.cpp 41305 2012-05-15 11:48:39Z vboxsync $ */
+/* $Id: log.cpp 41306 2012-05-15 11:53:42Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2117,7 +2117,7 @@ RTDECL(void) RTLogFlush(PRTLOGGER pLogger)
          * is not always true for g_Logger (special case in our RC loader)
          */
         PRTLOGGER pLogger1 = &g_Logger;
-        pLogger = ASMAtomicReadPtrT(&pLogger, PRTLOGGER);
+        pLogger = ASMAtomicReadPtrT(&pLogger1, PRTLOGGER);
 #else
         pLogger = g_pLogger;
 #endif
