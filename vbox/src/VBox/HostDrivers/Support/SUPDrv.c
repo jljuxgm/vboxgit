@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 41254 2012-05-11 13:20:47Z vboxsync $ */
+/* $Id: SUPDrv.c 41755 2012-06-15 13:12:58Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5155,7 +5155,7 @@ static void supdrvGipMpEventOnline(PSUPDRVDEVEXT pDevExt, RTCPUID idCpu)
 
     /*
      * Do this behind a spinlock with interrupts disabled as this can fire
-     * on all CPUs simultaneously, see #6110.
+     * on all CPUs simultaneously, see @bugref{6110}.
      */
     RTSpinlockAcquire(pDevExt->hGipSpinlock);
 
