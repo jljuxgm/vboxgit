@@ -1,4 +1,4 @@
-/* $Revision: 39551 $ */
+/* $Revision: 39552 $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -45,8 +45,8 @@
 #define SHFL_CPARMS_SET_SYMLINKS 0
 
 #define VBOX_INIT_CALL(a, b, c)          \
-    Log(("%s: %s, u32ClientID=%d\n", __func__, "SHFL_FN_" # b, \
-         (c)->ulClientID)); \
+    LogFunc(("%s, u32ClientID=%d\n", "SHFL_FN_" # b, \
+            (c)->ulClientID)); \
     (a)->result      = VINF_SUCCESS;     \
     (a)->u32ClientID = (c)->ulClientID;  \
     (a)->u32Function = SHFL_FN_##b;      \
@@ -97,7 +97,7 @@ DECLVBGL(int) vboxConnect (PVBSFCLIENT pClient)
     if (RT_SUCCESS (rc))
     {
         pClient->ulClientID = data.u32ClientID;
-        Log(("%s: u32ClientID=%d\n", __func__, pClient->ulClientID));
+        LogFunc(("u32ClientID=%d\n", pClient->ulClientID));
     }
     return rc;
 }
@@ -106,7 +106,7 @@ DECLVBGL(void) vboxDisconnect (PVBSFCLIENT pClient)
 {
     int rc;
 
-    Log(("%s: u32ClientID=%d\n", __func__, pClient->ulClientID));
+    LogFunc(("u32ClientID=%d\n", pClient->ulClientID));
     VBoxGuestHGCMDisconnectInfo data;
 
     if (pClient->handle == NULL)
