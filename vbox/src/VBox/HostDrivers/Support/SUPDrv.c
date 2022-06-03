@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 40796 2012-04-06 16:23:55Z vboxsync $ */
+/* $Id: SUPDrv.c 40798 2012-04-06 16:44:13Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -385,6 +385,14 @@ static SUPFUNC g_aFunctions[] =
     { "RTCrc32Finish",                          (void *)RTCrc32Finish },
     { "RTCrc32Process",                         (void *)RTCrc32Process },
     { "RTCrc32Start",                           (void *)RTCrc32Start },
+    { "RTUuidCompare",                          (void *)RTUuidCompare },
+    { "RTUuidCompareStr",                       (void *)RTUuidCompareStr },
+    { "RTUuidFromStr",                          (void *)RTUuidFromStr },
+    { "RTStrDupTag",                            (void *)RTStrDupTag },
+    { "RTStrFree",                              (void *)RTStrFree },
+    { "RTStrCopy",                              (void *)RTStrCopy },
+    { "RTStrNCmp",                              (void *)RTStrNCmp },
+
 /* SED: END */
 };
 
@@ -397,13 +405,6 @@ PFNRT g_apfnVBoxDrvIPRTDeps[] =
 {
     /* VBoxNetFlt */
     (PFNRT)RTErrConvertFromErrno,
-    (PFNRT)RTUuidCompare,
-    (PFNRT)RTUuidCompareStr,
-    (PFNRT)RTUuidFromStr,
-    (PFNRT)RTStrDupTag,
-    (PFNRT)RTStrFree,
-    (PFNRT)RTStrCopy,
-    (PFNRT)RTStrNCmp,
     /* VBoxNetAdp */
     (PFNRT)RTRandBytes,
     /* VBoxUSB */

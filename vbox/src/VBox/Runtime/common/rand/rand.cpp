@@ -1,4 +1,4 @@
-/* $Id: rand.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: rand.cpp 40798 2012-04-06 16:44:13Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers.
  */
@@ -60,9 +60,6 @@ static RTRAND g_hRand = NIL_RTRAND;
  */
 static DECLCALLBACK(int) rtRandInitOnce(void *pvUser1, void *pvUser2)
 {
-    NOREF(pvUser1);
-    NOREF(pvUser2);
-
     RTRAND hRand;
     int rc = RTRandAdvCreateSystemFaster(&hRand);
     if (RT_FAILURE(rc))
@@ -79,6 +76,8 @@ static DECLCALLBACK(int) rtRandInitOnce(void *pvUser1, void *pvUser2)
     else
         AssertRC(rc);
 
+    NOREF(pvUser1);
+    NOREF(pvUser2);
     return rc;
 }
 
