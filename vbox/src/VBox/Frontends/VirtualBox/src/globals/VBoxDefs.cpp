@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 39349 2011-11-17 14:58:30Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 40002 2012-02-06 09:35:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -50,6 +50,7 @@ const char* VBoxDefs::GUI_LastCloseAction = "GUI/LastCloseAction";
 const char* VBoxDefs::GUI_RestrictedCloseActions = "GUI/RestrictedCloseActions";
 const char* VBoxDefs::GUI_CloseActionHook = "GUI/CloseActionHook";
 const char* VBoxDefs::GUI_SuppressMessages = "GUI/SuppressMessages";
+const char* VBoxDefs::GUI_InvertMessageOption = "GUI/InvertMessageOption";
 const char* VBoxDefs::GUI_PermanentSharedFoldersAtRuntime = "GUI/PermanentSharedFoldersAtRuntime";
 const char* VBoxDefs::GUI_LanguageId = "GUI/LanguageID";
 const char* VBoxDefs::GUI_PreviewUpdate = "GUI/PreviewUpdate";

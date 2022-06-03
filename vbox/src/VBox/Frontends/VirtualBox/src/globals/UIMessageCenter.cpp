@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 39950 2012-02-02 06:22:00Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 40002 2012-02-06 09:35:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1026,7 +1026,7 @@ int UIMessageCenter::askAboutSnapshotRestoring(const QString &strSnapshotName, b
                                 "if you do not do this the current state will be permanently lost. Do you wish to proceed?</p>")
                                 .arg(strSnapshotName),
                              tr("Create a snapshot of the current machine state"),
-                             true /* choose option by default */,
+                             !vboxGlobal().virtualBox().GetExtraDataStringList(VBoxDefs::GUI_InvertMessageOption).contains("askAboutSnapshotRestoring"),
                              QString::null /* details */,
                              QIMessageBox::Ok, QIMessageBox::Cancel, 0 /* 3rd button */,
                              tr("Restore"), tr("Cancel"), QString::null /* 3rd button text */) :
