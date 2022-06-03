@@ -1,4 +1,4 @@
-/* $Id: main.cpp 41016 2012-04-20 21:21:52Z vboxsync $ */
+/* $Id: main.cpp 41355 2012-05-19 22:16:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -282,9 +282,11 @@ static void showHelp()
             "  (*) For AMD-V/VT-x setups the effect is --recompile-all.\n"
             "\n"
 # ifdef VBOX_WITH_DEBUGGER_GUI
-            "The following environment variables are evaluated:\n"
-            "  VBOX_GUI_DBG_ENABLED       enable the GUI debug menu if set\n"
-            "  VBOX_GUI_DBG_AUTO_SHOW     show debug windows at VM startup\n"
+            "The following environment (and extra data) variables are evaluated:\n"
+            "  VBOX_GUI_DBG_ENABLED (GUI/Dbg/Enabled)\n"
+            "                             enable the GUI debug menu if set\n"
+            "  VBOX_GUI_DBG_AUTO_SHOW (GUI/Dbg/AutoShow)\n"
+            "                             show debug windows at VM startup\n"
             "  VBOX_GUI_NO_DEBUGGER       disable the GUI debug menu and debug windows\n"
 # endif
             "\n",
