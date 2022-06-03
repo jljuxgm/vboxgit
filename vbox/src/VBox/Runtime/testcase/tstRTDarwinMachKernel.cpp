@@ -1,4 +1,4 @@
-/* $Id: tstRTDarwinMachKernel.cpp 37560 2011-06-20 14:48:32Z vboxsync $ */
+/* $Id: tstRTDarwinMachKernel.cpp 37566 2011-06-20 23:42:13Z vboxsync $ */
 /** @file
  * IPRT Testcase - mach_kernel symbol resolving hack.
  */
@@ -38,6 +38,21 @@ static void dotest(const char *pszMachKernel)
 {
     PRTR0DARWINKERNEL pKernel;
     RTTESTI_CHECK_RC_RETV(rtR0DarwinMachKernelOpen(pszMachKernel, &pKernel), VINF_SUCCESS);
+    static const char * const s_apszSyms[] =
+    {
+        "ast_pending",
+        "i386_signal_cpu",
+        "i386_cpu_IPI",
+        "dtrace_register",
+        "dtrace_suspend",
+    };
+    for (unsigned i = 0; i < RT_ELEMENTS(s_apszSyms); i++)
+    {
+        uintptr_t uPtr = rtR0DarwinMachKernelLookup(pKernel, s_apszSyms[i]);
+        RTTestIPrintf(RTTESTLVL_ALWAYS, "%p %s\n", uPtr, s_apszSyms[i]);
+        RTTESTI_CHECK(uPtr != 0);
+    }
+    rtR0DarwinMachKernelClose(pKernel);
 }
 
 
