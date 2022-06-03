@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 39202 2011-11-04 11:07:23Z vboxsync $ */
+/* $Id: VBoxService.cpp 39843 2012-01-23 18:38:18Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -39,6 +39,9 @@
 #include <iprt/asm.h>
 #include <iprt/buildconfig.h>
 #include <iprt/initterm.h>
+#ifdef DEBUG
+# include <iprt/memtracker.h>
+#endif
 #include <iprt/message.h>
 #include <iprt/path.h>
 #include <iprt/semaphore.h>
@@ -934,6 +937,7 @@ int main(int argc, char **argv)
 
 #ifdef DEBUG
     RTCritSectDelete(&g_csLog);
+    //RTMemTrackerDumpAllToStdOut();
 #endif
     return rcExit;
 }
