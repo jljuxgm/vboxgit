@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 40485 2012-03-15 14:56:43Z vboxsync $ */
+/* $Id: vboxhgcm.c 40544 2012-03-19 19:15:51Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -343,7 +343,6 @@ DECLINLINE(PCRVBOXHGSMI_CLIENT) _crVBoxHGSMIClientGet(CRConnection *conn)
         return &conn->HgsmiClient;
     {
         PVBOXUHGSMI pHgsmi = VBoxCrHgsmiCreate();
-        CRASSERT(pHgsmi);
         if (pHgsmi)
         {
             int rc = _crVBoxHGSMIClientInit(&conn->HgsmiClient, pHgsmi);
@@ -354,6 +353,10 @@ DECLINLINE(PCRVBOXHGSMI_CLIENT) _crVBoxHGSMIClientGet(CRConnection *conn)
                 return &conn->HgsmiClient;
             }
             VBoxCrHgsmiDestroy(pHgsmi);
+        }
+        else
+        {
+            crWarning("VBoxCrHgsmiCreate failed");
         }
     }
     return NULL;
