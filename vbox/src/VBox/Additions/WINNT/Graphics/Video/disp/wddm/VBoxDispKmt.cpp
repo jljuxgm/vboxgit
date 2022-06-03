@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 37300 2011-06-01 19:45:51Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 37626 2011-06-24 12:01:33Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -258,8 +258,8 @@ HRESULT vboxDispKmtCreateContext(PVBOXDISPKMT_DEVICE pDevice, PVBOXDISPKMT_CONTE
     Info.u64UmInfo = u64UmInfo;
     D3DKMT_CREATECONTEXT ContextData = {0};
     ContextData.hDevice = pDevice->hDevice;
-    ContextData.NodeOrdinal = 0;
-    ContextData.EngineAffinity = 0;
+    ContextData.NodeOrdinal = VBOXWDDM_NODE_ID_3D_KMT;
+    ContextData.EngineAffinity = VBOXWDDM_ENGINE_ID_3D_KMT;
     ContextData.pPrivateDriverData = &Info;
     ContextData.PrivateDriverDataSize = sizeof (Info);
     ContextData.ClientHint = enmType == VBOXWDDM_CONTEXT_TYPE_CUSTOM_UHGSMI_GL ? D3DKMT_CLIENTHINT_OPENGL : D3DKMT_CLIENTHINT_DX9;

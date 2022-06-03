@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 37626 2011-06-24 12:01:33Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -60,6 +60,24 @@ DECLINLINE(PVBOXWDDM_RESOURCE) vboxWddmResourceForAlloc(PVBOXWDDM_ALLOCATION pAl
     return pAlloc->pResource;
 #endif
 }
+
+VOID vboxWddmAllocationDestroy(PVBOXWDDM_ALLOCATION pAllocation);
+
+DECLINLINE(VOID) vboxWddmAllocationRelease(PVBOXWDDM_ALLOCATION pAllocation)
+{
+    uint32_t cRefs = ASMAtomicDecU32(&pAllocation->cRefs);
+    Assert(cRefs < UINT32_MAX/2);
+    if (!cRefs)
+    {
+        vboxWddmAllocationDestroy(pAllocation);
+    }
+}
+
+DECLINLINE(VOID) vboxWddmAllocationRetain(PVBOXWDDM_ALLOCATION pAllocation)
+{
+    ASMAtomicIncU32(&pAllocation->cRefs);
+}
+
 
 #define VBOXWDDMENTRY_2_SWAPCHAIN(_pE) ((PVBOXWDDM_SWAPCHAIN)((uint8_t*)(_pE) - RT_OFFSETOF(VBOXWDDM_SWAPCHAIN, DevExtListEntry)))
 

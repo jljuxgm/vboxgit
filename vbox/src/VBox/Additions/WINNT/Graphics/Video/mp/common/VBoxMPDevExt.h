@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 37626 2011-06-24 12:01:33Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -87,7 +87,8 @@ typedef struct _VBOXMP_DEVEXT
    VBOXVIDEOCM_MGR CmMgr;
    /* hgsmi allocation manager */
    VBOXVIDEOCM_ALLOC_MGR AllocMgr;
-   VBOXVDMADDI_CMD_QUEUE DdiCmdQueue;
+   VBOXVDMADDI_NODE aNodes[VBOXWDDM_NUM_NODES];
+   LIST_ENTRY DpcCmdQueue;
    LIST_ENTRY SwapchainList3D;
    /* mutex for context list operations */
    FAST_MUTEX ContextMutex;

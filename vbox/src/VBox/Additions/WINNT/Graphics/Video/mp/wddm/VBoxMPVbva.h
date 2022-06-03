@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPVbva.h 37626 2011-06-24 12:01:33Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -50,6 +50,7 @@ void vboxVbvaBufferEndUpdate(PVBOXMP_DEVEXT pDevExt, VBOXVBVAINFO *pVbva);
 
 #define VBOXVBVA_OP_WITHLOCK_ATDPC(_op, _pdext, _psrc, _arg) \
         do { \
+            Assert(KeGetCurrentIrql() == DISPATCH_LEVEL); \
             KeAcquireSpinLockAtDpcLevel(&(_psrc)->Vbva.Lock);  \
             VBOXVBVA_OP(_op, _pdext, _psrc, _arg);        \
             KeReleaseSpinLockFromDpcLevel(&(_psrc)->Vbva.Lock);\
