@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 40224 2012-02-23 01:33:53Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 40225 2012-02-23 11:05:34Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -3681,6 +3681,7 @@ IEM_CIMPL_DEF_0(iemCImpl_sti)
         pCtx->eflags.Bits.u1IF = 1;
 
     iemRegAddToRip(pIemCpu, cbInstr);
+    /** @todo don't do this unconditionally... */
     EMSetInhibitInterruptsPC(IEMCPU_TO_VMCPU(pIemCpu), pCtx->rip);
     return VINF_SUCCESS;
 }
