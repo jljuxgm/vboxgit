@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 39361 2011-11-18 10:08:52Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 39392 2011-11-22 09:34:32Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -281,14 +281,14 @@ int VBoxServiceControlHandleCmdStartProc(uint32_t uClientID, uint32_t uNumParms)
                            szCmd, uFlags, uNumArgs ? szArgs : "<None>", uNumEnvVars ? szEnv : "<None>", szUser, szPassword, uTimeLimitMS);
 #endif
         bool fAllowed = false;
-        int rc = VBoxServiceControlStartAllowed(&fAllowed);
+        rc = VBoxServiceControlStartAllowed(&fAllowed);
         if (RT_FAILURE(rc))
             VBoxServiceError("Control: Error determining whether process can be started or not, rc=%Rrc\n", rc);
 
         if (   RT_SUCCESS(rc)
             && fAllowed)
         {
-            int rc = RTCritSectEnter(&g_GuestControlThreadsCritSect);
+            rc = RTCritSectEnter(&g_GuestControlThreadsCritSect);
             if (RT_SUCCESS(rc))
             {
                 /** @todo Put the following params into a struct! */
@@ -718,7 +718,7 @@ static int VBoxServiceControlStartAllowed(bool *pbAllowed)
  * @return  PVBOXSERVICECTRLTHREAD      Process structure if found, otherwise NULL.
  * @param   uPID                        PID to search for.
  */
-const PVBOXSERVICECTRLTHREAD VBoxServiceControlGetThreadByPID(uint32_t uPID)
+PVBOXSERVICECTRLTHREAD VBoxServiceControlGetThreadByPID(uint32_t uPID)
 {
     PVBOXSERVICECTRLTHREAD pThread = NULL;
     int rc = RTCritSectEnter(&g_GuestControlThreadsCritSect);
