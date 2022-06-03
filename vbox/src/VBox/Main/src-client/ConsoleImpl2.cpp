@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 40845 2012-04-10 13:07:39Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 41352 2012-05-18 12:19:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2342,6 +2342,10 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
 # ifdef VBOX_WITH_USB_CARDREADER_TEST
                 InsertConfigString(pLunL0,    "Driver", "DrvDirectCardReader");
                 InsertConfigNode(pLunL0,    "Config", &pCfg);
+# else
+                InsertConfigString(pLunL0,    "Driver", "UsbCardReader");
+                InsertConfigNode(pLunL0,    "Config", &pCfg);
+                InsertConfigInteger(pCfg,   "Object", (uintptr_t)mUsbCardReader);
 # endif
 #endif
 # if 0  /* Virtual MSD*/

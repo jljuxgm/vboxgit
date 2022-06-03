@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 41214 2012-05-08 17:59:43Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 41352 2012-05-18 12:19:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -58,6 +58,9 @@
 #include "AudioSnifferInterface.h"
 #ifdef VBOX_WITH_USB_VIDEO
 # include "UsbWebcamInterface.h"
+#endif
+#ifdef VBOX_WITH_USB_CARDREADER
+# include "UsbCardReader.h"
 #endif
 #include "ProgressCombinedImpl.h"
 #include "ConsoleVRDPServer.h"
@@ -375,6 +378,9 @@ Console::Console()
 #ifdef VBOX_WITH_USB_VIDEO
     , mUsbWebcamInterface(NULL)
 #endif
+#ifdef VBOX_WITH_USB_CARDREADER
+    , mUsbCardReader(NULL)
+#endif
     , mBusMgr(NULL)
     , mVMStateChangeCallbackDisabled(false)
     , mfUseHostClipboard(true)
@@ -531,6 +537,10 @@ HRESULT Console::init(IMachine *aMachine, IInternalMachineControl *aControl)
     unconst(mUsbWebcamInterface) = new UsbWebcamInterface(this);
     AssertReturn(mUsbWebcamInterface, E_FAIL);
 #endif
+#ifdef VBOX_WITH_USB_CARDREADER
+    unconst(mUsbCardReader) = new UsbCardReader(this);
+    AssertReturn(mUsbCardReader, E_FAIL);
+#endif
 
     /* VirtualBox events registration. */
     {
@@ -623,6 +633,14 @@ void Console::uninit()
     {
         delete mUsbWebcamInterface;
         unconst(mUsbWebcamInterface) = NULL;
+    }
+#endif
+
+#ifdef VBOX_WITH_USB_CARDREADER
+    if (mUsbCardReader)
+    {
+        delete mUsbCardReader;
+        unconst(mUsbCardReader) = NULL;
     }
 #endif
 
