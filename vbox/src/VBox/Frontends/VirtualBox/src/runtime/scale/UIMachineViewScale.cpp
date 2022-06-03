@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 39023 2011-10-18 21:01:00Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 39081 2011-10-21 21:20:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -62,9 +62,6 @@ UIMachineViewScale::UIMachineViewScale(  UIMachineWindow *pMachineWindow
 
     /* Prepare event-filters: */
     prepareFilters();
-
-    /* Prepare connections: */
-    prepareConnections();
 
     /* Prepare console connections: */
     prepareConsoleConnections();
@@ -149,11 +146,6 @@ void UIMachineViewScale::sltPerformGuestScale()
 
     /* Update machine-view sliders: */
     updateSliders();
-}
-
-void UIMachineViewScale::sltDesktopResized()
-{
-
 }
 
 bool UIMachineViewScale::event(QEvent *pEvent)
@@ -336,11 +328,6 @@ void UIMachineViewScale::prepareFrameBuffer()
         UIResizeEvent event(FramebufferPixelFormat_Opaque, NULL, 0, 0, size.width(), size.height());
         frameBuffer()->resizeEvent(&event);
     }
-}
-
-void UIMachineViewScale::prepareConnections()
-{
-    connect(QApplication::desktop(), SIGNAL(resized(int)), this, SLOT(sltDesktopResized()));
 }
 
 void UIMachineViewScale::saveMachineViewSettings()

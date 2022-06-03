@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 39023 2011-10-18 21:01:00Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 39081 2011-10-21 21:20:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -92,11 +92,6 @@ void UIMachineViewFullscreen::sltAdditionsStateChanged()
             sltPerformGuestResize(workingArea().size());
 }
 
-void UIMachineViewFullscreen::sltDesktopResized()
-{
-
-}
-
 bool UIMachineViewFullscreen::event(QEvent *pEvent)
 {
     switch (pEvent->type())
@@ -166,11 +161,6 @@ void UIMachineViewFullscreen::prepareFilters()
     /* Menu bar filter: */
     qobject_cast<QMainWindow*>(machineWindowWrapper()->machineWindow())->menuBar()->installEventFilter(this);
 #endif
-}
-
-void UIMachineViewFullscreen::prepareConnections()
-{
-    connect(QApplication::desktop(), SIGNAL(resized(int)), this, SLOT(sltDesktopResized()));
 }
 
 void UIMachineViewFullscreen::prepareConsoleConnections()

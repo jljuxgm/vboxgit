@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 39077 2011-10-21 13:40:27Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 39081 2011-10-21 21:20:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -63,9 +63,6 @@ UIMachineViewNormal::UIMachineViewNormal(  UIMachineWindow *pMachineWindow
     /* Prepare event-filters: */
     prepareFilters();
 
-    /* Prepare connections: */
-    prepareConnections();
-
     /* Prepare console connections: */
     prepareConsoleConnections();
 
@@ -93,11 +90,6 @@ void UIMachineViewNormal::sltAdditionsStateChanged()
      * mode initially after the transition this happens when we
      * switch. */
     maybeResendResizeHint();
-}
-
-void UIMachineViewNormal::sltDesktopResized()
-{
-
 }
 
 bool UIMachineViewNormal::event(QEvent *pEvent)
@@ -192,11 +184,6 @@ void UIMachineViewNormal::prepareFilters()
 
     /* Menu bar filters: */
     qobject_cast<QMainWindow*>(machineWindowWrapper()->machineWindow())->menuBar()->installEventFilter(this);
-}
-
-void UIMachineViewNormal::prepareConnections()
-{
-    connect(QApplication::desktop(), SIGNAL(resized(int)), this, SLOT(sltDesktopResized()));
 }
 
 void UIMachineViewNormal::prepareConsoleConnections()
