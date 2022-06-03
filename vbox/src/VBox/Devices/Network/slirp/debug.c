@@ -1,4 +1,4 @@
-/* $Id: debug.c 39101 2011-10-25 02:44:01Z vboxsync $ */
+/* $Id: debug.c 39102 2011-10-25 02:55:58Z vboxsync $ */
 /** @file
  * NAT - debug helpers.
  */
@@ -438,14 +438,17 @@ print_networkevents(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput,
                     void *pvUser)
 {
     size_t cb = 0;
+#ifdef RT_OS_WINDOWS
+    WSANETWORKEVENTS *pNetworkEvents = (WSANETWORKEVENTS*)pvValue;
+    bool fDelim = false;
+#endif
+
     NOREF(cchWidth);
     NOREF(cchPrecision);
     NOREF(fFlags);
     NOREF(pvUser);
-#ifdef RT_OS_WINDOWS
-    WSANETWORKEVENTS *pNetworkEvents = (WSANETWORKEVENTS*)pvValue;
-    bool fDelim = false;
 
+#ifdef RT_OS_WINDOWS
     AssertReturn(strcmp(pszType, "natwinnetevents") == 0, 0);
 
     cb += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, "events=%02x (",
