@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 34708 2010-12-03 17:30:45Z vboxsync $ */
+/* $Id: process-win.cpp 37311 2011-06-03 08:50:36Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -203,7 +203,7 @@ static HANDLE rtProcWinFindPid(RTPROCESS pid)
 
 
 /**
- * Removes a process from g_paProcesses.
+ * Removes a process from g_paProcesses and closes the process handle.
  *
  * @param   pid                 The process to remove (pid).
  */
@@ -214,11 +214,16 @@ static void rtProcWinRemovePid(RTPROCESS pid)
     while (i-- > 0)
         if (g_paProcesses[i].pid == pid)
         {
+            HANDLE hProcess = g_paProcesses[i].hProcess;
+
             g_cProcesses--;
             uint32_t cToMove = g_cProcesses - i;
             if (cToMove)
                 memmove(&g_paProcesses[i], &g_paProcesses[i + 1], cToMove * sizeof(g_paProcesses[0]));
-            break;
+
+            RTCritSectLeave(&g_CritSect);
+            CloseHandle(hProcess);
+            return;
         }
     RTCritSectLeave(&g_CritSect);
 }
