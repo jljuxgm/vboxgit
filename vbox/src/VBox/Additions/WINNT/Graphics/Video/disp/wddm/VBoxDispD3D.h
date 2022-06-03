@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 41473 2012-05-29 08:39:27Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 41637 2012-06-09 12:57:58Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -23,6 +23,13 @@
 #include "common/wddm/VBoxMPIf.h"
 #ifdef VBOX_WITH_CRHGSMI
 #include "VBoxUhgsmiDisp.h"
+#endif
+
+#ifdef VBOX_WDDMDISP_WITH_PROFILE
+#include <iprt/asm.h>
+extern volatile uint32_t g_u32VBoxDispProfileFunctionLoggerIndex;
+# define VBOXDISPPROFILE_FUNCTION_LOGGER_INDEX_GEN() ASMAtomicIncU32(&g_u32VBoxDispProfileFunctionLoggerIndex);
+# include "VBoxDispProfile.h"
 #endif
 
 #include <iprt/cdefs.h>
@@ -76,6 +83,10 @@ typedef struct VBOXWDDMDISP_ADAPTER
     uint32_t cSurfDescs;
     DDSURFACEDESC *paSurfDescs;
     UINT cMaxSimRTs;
+#ifdef VBOX_WDDMDISP_WITH_PROFILE
+    VBoxDispProfileFpsCounter ProfileDdiFps;
+    VBoxDispProfileSet ProfileDdiFunc;
+#endif
 #ifdef VBOX_WITH_VIDEOHWACCEL
     uint32_t cHeads;
     VBOXWDDMDISP_HEAD aHeads[1];
@@ -204,6 +215,17 @@ typedef struct VBOXWDDMDISP_DEVICE
 
     UINT cSamplerTextures;
     struct VBOXWDDMDISP_RESOURCE *aSamplerTextures[VBOXWDDMDISP_TOTAL_SAMPLERS];
+
+#ifdef VBOX_WDDMDISP_WITH_PROFILE
+    VBoxDispProfileFpsCounter ProfileDdiFps;
+    VBoxDispProfileSet ProfileDdiFunc;
+
+    VBoxDispProfileSet ProfileDdiPresentCb;
+#endif
+
+#ifdef VBOXWDDMDISP_DEBUG_TIMER
+    HANDLE hTimerQueue;
+#endif
 
     UINT cRTs;
     struct VBOXWDDMDISP_ALLOCATION * apRTs[1];
