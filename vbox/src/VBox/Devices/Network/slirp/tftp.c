@@ -1,4 +1,4 @@
-/* $Id: tftp.c 41996 2012-07-03 10:55:24Z vboxsync $ */
+/* $Id: tftp.c 41997 2012-07-03 11:12:59Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -434,7 +434,6 @@ DECLINLINE(int) pftpSessionOpenFile(PNATState pData, PTFTPSESSION pTftpSession, 
     return rc;
 }
 
-/* @todo: rewrite this */
 DECLINLINE(int) tftpSessionEvaluateOptions(PNATState pData, PTFTPSESSION pTftpSession)
 {
     int rc = VINF_SUCCESS;
