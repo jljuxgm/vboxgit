@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 39136 2011-10-28 10:13:34Z vboxsync $ */
+/* $Id: DevVGA.cpp 39425 2011-11-25 14:00:48Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4130,6 +4130,7 @@ static DECLCALLBACK(void) vgaInfoState(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, c
         pHlp->pfnPrintf(pHlp, "vfreq: %d Hz, hfreq: %d.%03d kHz\n",
                         vfreq_hz, hfreq_hz / 1000, hfreq_hz % 1000);
     }
+    pHlp->pfnPrintf(pHlp, "display refresh interval: %u ms\n", s->cMilliesRefreshInterval);
 }
 
 
