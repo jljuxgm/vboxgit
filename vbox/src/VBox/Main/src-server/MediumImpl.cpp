@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 38744 2011-09-13 15:00:42Z vboxsync $ */
+/* $Id: MediumImpl.cpp 38764 2011-09-15 14:09:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1048,7 +1048,12 @@ HRESULT Medium::init(VirtualBox *aVirtualBox,
     /* get all the information about the medium from the storage unit */
     if (fForceNewUuid)
         unconst(m->uuidImage).create();
-    rc = queryInfo(fForceNewUuid /* fSetImageId */, false /* fSetParentId */);
+
+    {
+        // Medium::queryInfo needs write lock
+        AutoWriteLock treeLock(m->pVirtualBox->getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
+        rc = queryInfo(fForceNewUuid /* fSetImageId */, false /* fSetParentId */);
+    }
 
     if (SUCCEEDED(rc))
     {
@@ -1954,7 +1959,8 @@ STDMETHODIMP Medium::SetIDs(BOOL aSetImageId,
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AutoMultiWriteLock2 alock(&m->pVirtualBox->getMediaTreeLockHandle(),
+                              this->lockHandle() COMMA_LOCKVAL_SRC_POS);
 
     switch (m->state)
     {
