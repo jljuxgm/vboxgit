@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 40727 2012-03-30 13:53:46Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 40776 2012-04-05 13:43:02Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -615,7 +615,11 @@ DECLINLINE(int) iomRamRead(PVMCPU pVCpu, void *pDest, RTGCPTR GCSrc, uint32_t cb
              isn't a problem though since the operation can be restarted in REM. */
 #ifdef IN_RC
     NOREF(pVCpu);
-    return MMGCRamReadNoTrapHandler(pDest, (void *)(uintptr_t)GCSrc, cb);
+    int rc = MMGCRamReadNoTrapHandler(pDest, (void *)(uintptr_t)GCSrc, cb);
+    /* Page may be protected and not directly accessible. */
+    if (rc == VERR_ACCESS_DENIED)
+        rc = VINF_IOM_R3_IOPORT_WRITE;
+    return rc;
 #else
     return PGMPhysReadGCPtr(pVCpu, pDest, GCSrc, cb);
 #endif
