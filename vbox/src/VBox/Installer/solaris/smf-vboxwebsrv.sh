@@ -1,5 +1,5 @@
 #!/sbin/sh
-# $Id: smf-vboxwebsrv.sh 41365 2012-05-21 12:48:57Z vboxsync $
+# $Id: smf-vboxwebsrv.sh 41367 2012-05-21 13:03:55Z vboxsync $
 
 # Copyright (C) 2008-2012 Oracle Corporation
 #
@@ -101,13 +101,13 @@ case $VW_OPT in
 
         # Set authentication method + password hash
         if [ -n "$VW_AUTH_LIBRARY" ]; then
-            exec /opt/VirtualBox/VBoxManage setproperty websrvauthlibrary $VW_AUTH_LIBRARY
+            exec su - "$VW_USER" -c "/opt/VirtualBox/VBoxManage setproperty websrvauthlibrary \"$VW_AUTH_LIBRARY\""
             if [ $? != 0 ]; then
                 echo "Error $? setting webservice authentication library to $VW_AUTH_LIBRARY"
             fi
         fi
         if [ -n "$VW_AUTH_PWHASH" ]; then
-            exec /opt/VirtualBox/VBoxManage setextradata global VBoxAuthSimple/users/$VW_USER $VW_AUTH_PWHASH
+            exec su - "$VW_USER" -c "/opt/VirtualBox/VBoxManage setextradata global \"VBoxAuthSimple/users/$VW_USER\" \"$VW_AUTH_PWHASH\""
             if [ $? != 0 ]; then
                 echo "Error $? setting webservice password hash"
             fi
