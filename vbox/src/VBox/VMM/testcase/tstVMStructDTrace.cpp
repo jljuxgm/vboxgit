@@ -1,4 +1,4 @@
-/* $Id: tstVMStructDTrace.cpp 41261 2012-05-12 00:22:13Z vboxsync $ */
+/* $Id: tstVMStructDTrace.cpp 41268 2012-05-14 08:35:51Z vboxsync $ */
 /** @file
  * tstVMMStructDTrace - Generates the DTrace test scripts for check that C/C++
  *                      and DTrace has the same understand of the VM, VMCPU and
@@ -124,6 +124,12 @@ int main()
            "{\n"
            "    printf(\"%%u errors!\\n\", g_cErrors);\n"
            "    exit(1);\n"
+           "}\n"
+           "\n"
+           "dtrace:::BEGIN\n"
+           "{\n"
+           "    printf(\"Success!\\n\");\n"
+           "    exit(0);\n"
            "}\n"
            "\n"
            );
