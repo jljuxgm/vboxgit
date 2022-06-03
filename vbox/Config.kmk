@@ -1,4 +1,4 @@
-# $Id: Config.kmk 40519 2012-03-18 16:45:50Z vboxsync $
+# $Id: Config.kmk 40564 2012-03-21 13:39:49Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3996,13 +3996,6 @@ ifdef VBOX_WITH_QTGUI
   endif
  endif
 
- ifdef VBOX_WITH_QT4_SUN
-  VBOX_QT4_INFIX=VBox
- endif
-
- VBOX_QT4_MOD = QtCore QtGui QtNetwork $(if $(VBOX_GUI_USE_QGL),QtOpenGL,)
- VBOX_QT4_MOD_NAMES = $(foreach qtmod,$(VBOX_QT4_MOD),$(qtmod)$(VBOX_QT4_INFIX))
-
  #
  # Handmade configuration of qt4 - very annoying, this needs to
  # be cleaned up properly later some time (not important now).
@@ -4019,7 +4012,7 @@ ifdef VBOX_WITH_QTGUI
    endif
   else if1of ($(KBUILD_TARGET), win)
    VBOX_PATH_QT4 ?= $(lastword $(sort $(wildcard $(PATH_DEVTOOLS_TRG)/qt/v4*)))
-  else if1of ($(KBUILD_TARGET), solaris)
+  else if1of ($(KBUILD_TARGET), linux solaris)
    VBOX_PATH_QT4 ?= $(lastword $(sort $(wildcard $(PATH_DEVTOOLS_TRG)/qt/v4*)))
    ifneq ($(VBOX_PATH_QT4),)
     VBOX_WITH_QT4_SUN = 1
@@ -4035,6 +4028,13 @@ ifdef VBOX_WITH_QTGUI
  endif
  VBOX_PATH_QT4            ?= /usr
  VBOX_PATH_QT4_LIB        ?= $(VBOX_PATH_QT4)/lib
+
+ ifdef VBOX_WITH_QT4_SUN
+  VBOX_QT4_INFIX=VBox
+ endif
+
+ VBOX_QT4_MOD = QtCore QtGui QtNetwork $(if $(VBOX_GUI_USE_QGL),QtOpenGL,)
+ VBOX_QT4_MOD_NAMES = $(foreach qtmod,$(VBOX_QT4_MOD),$(qtmod)$(VBOX_QT4_INFIX))
 
  # Hack LD_LIBRARY_PATH for stuff in tools.
  ifdef VBOX_WITH_QT4_SUN
@@ -4955,7 +4955,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40519 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40564 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
