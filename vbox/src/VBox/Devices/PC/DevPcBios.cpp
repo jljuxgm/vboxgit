@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 40277 2012-02-28 14:10:07Z vboxsync $ */
+/* $Id: DevPcBios.cpp 40973 2012-04-18 14:36:51Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -1407,7 +1407,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
 
     /*
      * Map the Network Boot ROM into memory.
-     * Currently there is a fixed mapping: 0x000d2000 to 0x000dffff contains
+     * Currently there is a fixed mapping: 0x000e2000 to 0x000effff contains
      * the (up to) 56 kb ROM image.  The mapping size is fixed to trouble with
      * the saved state (in PGM).
      */
