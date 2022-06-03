@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 39076 2011-10-21 12:10:19Z vboxsync $ */
+/* $Id: UIMachineView.cpp 39094 2011-10-24 15:46:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -555,6 +555,8 @@ CSession& UIMachineView::session()
 
 QSize UIMachineView::sizeHint() const
 {
+    if (m_sizeHintOverride.isValid())
+        return m_sizeHintOverride;
 #ifdef VBOX_WITH_DEBUGGER
     // TODO: Fix all DEBUGGER stuff!
     /* HACK ALERT! Really ugly workaround for the resizing to 9x1 done by DevVGA if provoked before power on. */
@@ -857,6 +859,9 @@ bool UIMachineView::guestResizeEvent(QEvent *pEvent,
     {
         /* Reapply maximum size restriction for machine-view: */
         setMaximumSize(sizeHint());
+
+        /* Disable the resize hint override hack: */
+        m_sizeHintOverride = QSize(-1, -1);
 
         /* Perform machine-view resize: */
         resize(pResizeEvent->width(), pResizeEvent->height());
