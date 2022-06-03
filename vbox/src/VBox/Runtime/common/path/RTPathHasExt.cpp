@@ -1,10 +1,10 @@
-/* $Id: RTPathHavePath.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTPathHasExt.cpp 40979 2012-04-18 18:14:03Z vboxsync $ */
 /** @file
- * IPRT - RTPathHavePath
+ * IPRT - RTPathHasExt
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,22 +30,18 @@
 *******************************************************************************/
 #include "internal/iprt.h"
 #include <iprt/path.h>
-#include <iprt/string.h>
+
 
 
 /**
- * Checks if a path includes more than a filename.
+ * Checks if a path has an extension.
  *
- * @returns true if path present.
- * @returns false if no path.
+ * @returns true if extension present.
+ * @returns false if no extension present.
  * @param   pszPath     Path to check.
  */
-RTDECL(bool) RTPathHavePath(const char *pszPath)
+RTDECL(bool) RTPathHasExt(const char *pszPath)
 {
-#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
-    return strpbrk(pszPath, "/\\:") != NULL;
-#else
-    return strpbrk(pszPath, "/") != NULL;
-#endif
+    return RTPathExt(pszPath) != NULL;
 }
 
