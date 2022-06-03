@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 41169 2012-05-04 14:24:42Z vboxsync $ */
+/* $Id: SUPDrv.c 41254 2012-05-11 13:20:47Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4164,7 +4164,7 @@ static int supdrvIOCtl_LdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
         else
         {
             memcpy(pImage->pvImage, &pReq->u.In.abImage[0], pImage->cbImageBits);
-            SUPR0Printf("vboxdrv: Loaded '%s' at %p\n", pImage->szName, pImage->pvImage);
+            Log(("vboxdrv: Loaded '%s' at %p\n", pImage->szName, pImage->pvImage));
         }
     }
 
