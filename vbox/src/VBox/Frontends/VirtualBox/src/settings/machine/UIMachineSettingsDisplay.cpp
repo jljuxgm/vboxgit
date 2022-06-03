@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 37652 2011-06-27 19:33:07Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 37735 2011-07-02 13:24:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -140,7 +140,7 @@ void UIMachineSettingsDisplay::setGuestOSType(CGuestOSType guestOSType)
 #ifdef VBOX_WITH_CRHGSMI
     /* Check if WDDM mode supported by the guest OS type: */
     QString strguestOSTypeId = m_guestOSType.GetId();
-    m_fWddmModeSupported = strguestOSTypeId == "WindowsVista" || strguestOSTypeId == "Windows7";
+    m_fWddmModeSupported = VBoxGlobal::isWddmCompatibleOsType(strguestOSTypeId);
 #endif /* VBOX_WITH_CRHGSMI */
 
     /* Recheck video RAM requirement: */
