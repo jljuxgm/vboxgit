@@ -1,4 +1,4 @@
-/* $Id: precomp.h 38375 2011-08-09 11:55:48Z vboxsync $*/
+/* $Id: precomp.h 38384 2011-08-09 16:07:54Z vboxsync $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -192,7 +192,7 @@
 # include "DockIconPreview.h"
 #endif
 #include "VBoxAboutDlg.h"
-#include "VBoxApplianceEditorWgt.h"
+#include "UIApplianceEditorWidget.h"
 #include "VBoxCloseVMDlg.h"
 #ifdef Q_WS_MAC
 # include "VBoxCocoaHelper.h"
