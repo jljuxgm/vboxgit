@@ -1,10 +1,10 @@
-/* $Id: VMMSwitcher.cpp 42024 2012-07-05 12:10:53Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 42025 2012-07-05 12:52:41Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
