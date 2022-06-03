@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 41055 2012-04-25 16:22:12Z vboxsync $ */
+/* $Id: process-win.cpp 41056 2012-04-25 16:25:51Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -297,7 +297,7 @@ static int rtProcWinMapErrorCodes(DWORD dwError)
             break;
 
         case ERROR_FILE_CORRUPT:
-            rc = VERR_INVALID_EXE_SIGNATURE;
+            rc = VERR_BAD_EXE_FORMAT;
             break;
 
         default:
