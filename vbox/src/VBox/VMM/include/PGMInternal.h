@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 40054 2012-02-09 15:37:11Z vboxsync $ */
+/* $Id: PGMInternal.h 41391 2012-05-22 14:06:53Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2516,6 +2516,23 @@ DECLINLINE(void *) pgmPoolMapPageStrict(PPGMPOOLPAGE a_pPage)
  * @returns The @a idx field
  * @param   u16         The tracking data word. */
 #define PGMPOOL_TD_GET_IDX(u16)         ( ((u16) >> PGMPOOL_TD_IDX_SHIFT)   & PGMPOOL_TD_IDX_MASK   )
+/** @} */
+
+
+
+/** @name A20 gate macros
+ * @{ */
+/*#define PGM_WITH_A20*/
+#ifdef PGM_WITH_A20
+# define PGM_A20_IS_ENABLED(a_pVCpu)                        ((a_pVCpu)->pgm.s.fA20Enabled)
+# define PGM_A20_APPLY(a_pVCpu, a_GCPhys)                   ((a_pVCpu)->pgm.s.GCPhysA20Mask & (a_GCPhys))
+# define PGM_A20_APPLY_TO_VAR(a_pVCpu, a_GCPhysVar)         \
+    do { a_GCPhysVar = (a_pVCpu)->pgm.s.GCPhysA20Mask & a_GCPhysVar; } while (0)
+#else
+# define PGM_A20_IS_ENABLED(a_pVCpu)                        (true)
+# define PGM_A20_APPLY(a_pVCpu, a_GCPhys)                   (a_GCPhys)
+# define PGM_A20_APPLY_TO_VAR(a_pVCpu, a_GCPhysVar)         do { } while (0)
+#endif
 /** @} */
 
 

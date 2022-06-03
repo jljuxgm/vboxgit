@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 41386 2012-05-22 09:04:47Z vboxsync $ */
+/* $Id: PGMAll.cpp 41391 2012-05-22 14:06:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1846,6 +1846,7 @@ VMMDECL(int) PGMFlushTLB(PVMCPU pVCpu, uint64_t cr3, bool fGlobal)
             GCPhysCR3 = (RTGCPHYS)(cr3 & X86_CR3_PAGE_MASK);
             break;
     }
+    PGM_A20_APPLY_TO_VAR(pVCpu, GCPhysCR3);
 
     if (pVCpu->pgm.s.GCPhysCR3 != GCPhysCR3)
     {
@@ -1948,6 +1949,8 @@ VMMDECL(int) PGMUpdateCR3(PVMCPU pVCpu, uint64_t cr3)
             GCPhysCR3 = (RTGCPHYS)(cr3 & X86_CR3_PAGE_MASK);
             break;
     }
+    PGM_A20_APPLY_TO_VAR(pVCpu, GCPhysCR3);
+
     if (pVCpu->pgm.s.GCPhysCR3 != GCPhysCR3)
     {
         pVCpu->pgm.s.GCPhysCR3 = GCPhysCR3;
@@ -2033,6 +2036,7 @@ VMMDECL(int) PGMSyncCR3(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr4, 
                 GCPhysCR3 = (RTGCPHYS)(cr3 & X86_CR3_PAGE_MASK);
                 break;
         }
+        PGM_A20_APPLY_TO_VAR(pVCpu, GCPhysCR3);
 
         if (pVCpu->pgm.s.GCPhysCR3 != GCPhysCR3)
         {
