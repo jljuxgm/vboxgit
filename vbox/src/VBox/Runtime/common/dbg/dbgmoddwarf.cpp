@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 38601 2011-09-01 14:44:54Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 38603 2011-09-01 17:45:36Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -1839,7 +1839,7 @@ static int rtDwarfDieStack_Push(PRTDWARFDIESTACK pStack, uint32_t uAbbrCode, uin
     uint32_t i = pStack->cOnStack;
     if (i == pStack->cAlloced)
     {
-        size_t cNewSize = pStack->cAlloced ? pStack->cAlloced * 2 : 1 /*16*/;
+        uint32_t cNewSize = pStack->cAlloced ? pStack->cAlloced * 2 : 1 /*16*/;
         void *pv = RTMemRealloc(pStack->paEntries, sizeof(pStack->paEntries[0]) * cNewSize);
         if (!pv)
             return VERR_NO_MEMORY;
