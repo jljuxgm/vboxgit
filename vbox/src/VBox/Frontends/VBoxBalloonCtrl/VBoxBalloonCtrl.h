@@ -1,4 +1,4 @@
-/* $Id: VBoxBalloonCtrl.h 36693 2011-04-18 07:57:57Z vboxsync $ */
+/* $Id: VBoxBalloonCtrl.h 36707 2011-04-18 12:17:33Z vboxsync $ */
 /** @file
  * VBoxBalloonCtrl - VirtualBox Ballooning Control Service.
  */
@@ -40,11 +40,6 @@ struct HandlerArg
 {
     int argc;
     char **argv;
-
-#ifndef VBOX_ONLY_DOCS
-    ComPtr<IVirtualBox> virtualBox;
-    ComPtr<ISession> session;
-#endif
 };
 
 ////////////////////////////////////////////////////////////////////////////////
