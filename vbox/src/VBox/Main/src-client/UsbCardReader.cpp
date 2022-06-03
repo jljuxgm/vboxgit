@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 41363 2012-05-21 12:26:40Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 41364 2012-05-21 12:47:04Z vboxsync $ */
 
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
@@ -1367,7 +1367,7 @@ int UsbCardReader::Connect(struct USBCARDREADER *pDrv,
         rc = mpDrv->pICardReaderUp->pfnCardReaderUpConnect(mpDrv->pICardReaderUp,
                                                            pvUser,
                                                            VRDE_SCARD_E_NO_SMARTCARD,
-                                                           SCARD_PROTOCOL_T0);
+                                                           VRDE_SCARD_PROTOCOL_T0);
     }
     else
     {
@@ -1377,7 +1377,7 @@ int UsbCardReader::Connect(struct USBCARDREADER *pDrv,
             rc = mpDrv->pICardReaderUp->pfnCardReaderUpConnect(mpDrv->pICardReaderUp,
                                                                pvUser,
                                                                VRDE_SCARD_E_NO_MEMORY,
-                                                               SCARD_PROTOCOL_T0);
+                                                               VRDE_SCARD_PROTOCOL_T0);
         }
         else
         {
