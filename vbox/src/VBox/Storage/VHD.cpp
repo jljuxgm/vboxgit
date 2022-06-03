@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 40107 2012-02-13 19:36:26Z vboxsync $ */
+/* $Id: VHD.cpp 40240 2012-02-23 20:51:34Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -3273,7 +3273,7 @@ static DECLCALLBACK(int) vhdRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
                     {
                         vdIfErrorMessage(pIfError, "Entry %u points to invalid offset %llu, clearing\n",
                                          i, offBlock);
-                        paBat[i] = 0;
+                        paBat[i] = UINT32_C(0xffffffff);
                         fRepairBat = true;
                     }
                     else if (offBlock + cbBlock > offFooter)
@@ -3284,11 +3284,12 @@ static DECLCALLBACK(int) vhdRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
                         fRepairBat = true;
                     }
 
-                    if (ASMBitTestAndSet(pu32BlockBitmap, (paBat[i] - idxMinBlock) / (cbBlock / VHD_SECTOR_SIZE)))
+                    if (   paBat[i] != UINT32_C(0xffffffff)
+                        && ASMBitTestAndSet(pu32BlockBitmap, (paBat[i] - idxMinBlock) / (cbBlock / VHD_SECTOR_SIZE)))
                     {
                         vdIfErrorMessage(pIfError, "Entry %u points to an already referenced data block, clearing\n",
                                          i);
-                        paBat[i] = 0;
+                        paBat[i] = UINT32_C(0xffffffff);
                         fRepairBat = true;
                     }
                 }
