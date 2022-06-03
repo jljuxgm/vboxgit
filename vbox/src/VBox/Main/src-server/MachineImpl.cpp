@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37554 2011-06-20 12:49:34Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37606 2011-06-23 09:59:04Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7391,7 +7391,6 @@ HRESULT Machine::loadMachineDataFromSettings(const settings::MachineConfigFile &
     /* set the machine state to Aborted or Saved when appropriate */
     if (config.fAborted)
     {
-        Assert(!mSSData->strStateFilePath.isEmpty());
         mSSData->strStateFilePath.setNull();
 
         /* no need to use setMachineState() during init() */

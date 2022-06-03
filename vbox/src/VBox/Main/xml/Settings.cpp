@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 37503 2011-06-16 15:24:27Z vboxsync $ */
+/* $Id: Settings.cpp 37606 2011-06-23 09:59:04Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3293,6 +3293,8 @@ void MachineConfigFile::readMachine(const xml::ElementNode &elmMachine)
         if (elmMachine.getAttributeValue("lastStateChange", str))
             parseTimestamp(timeLastStateChange, str);
             // constructor has called RTTimeNow(&timeLastStateChange) before
+        if (elmMachine.getAttributeValue("aborted", fAborted))
+            fAborted = true;
 
         // parse Hardware before the other elements because other things depend on it
         const xml::ElementNode *pelmHardware;
