@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39212 2011-11-05 00:32:30Z vboxsync $
+# $Id: Makefile.kmk 39535 2011-12-05 15:42:26Z vboxsync $
 ## @file
 # Sub-Makefile for Python bindings
 #
@@ -71,6 +71,8 @@ VBoxPythonBase_DEFS     = \
 	VBOX_PYXPCOM \
 	VBOX_WITH_XPCOM \
 	VBOX_PYXPCOM_VERSIONED
+VBoxPythonBase_DEFS.debug = \
+	VBOX_DEBUG_LIFETIMES
 VBoxPythonBase_INCS     = \
 	src
 VBoxPythonBase_SOURCES  = \
