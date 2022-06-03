@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 40607 2012-03-24 21:48:27Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 40611 2012-03-24 22:07:33Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -566,7 +566,7 @@ SUPR0DECL(void) SUPR0VtgDeregisterDrv(PSUPDRVSESSION pSession)
  * @returns VBox status code.
  * @param   pDevExt             The device extension structure.
  */
-int supdrvDTraceInit(PSUPDRVDEVEXT pDevExt)
+int VBOXCALL supdrvDTraceInit(PSUPDRVDEVEXT pDevExt)
 {
     /*
      * Register a provider for this module.
@@ -591,7 +591,7 @@ int supdrvDTraceInit(PSUPDRVDEVEXT pDevExt)
  * @returns VBox status code.
  * @param   pDevExt             The device extension structure.
  */
-int supdrvDTraceTerm(PSUPDRVDEVEXT pDevExt)
+int VBOXCALL supdrvDTraceTerm(PSUPDRVDEVEXT pDevExt)
 {
     PSUPDRVDTPROVIDER pProv, pProvNext;
 
