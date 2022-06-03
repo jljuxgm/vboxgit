@@ -1,10 +1,10 @@
-/* $Id: PGMR0.cpp 37582 2011-06-22 09:24:45Z vboxsync $ */
+/* $Id: PGMR0.cpp 37803 2011-07-06 14:45:27Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -120,10 +120,10 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
              */
             do
             {
-                cPages >>= 2;
+                cPages >>= 1;
                 if (cPages + iFirst < PGM_HANDY_PAGES_MIN)
                     cPages = PGM_HANDY_PAGES_MIN - iFirst;
-                rc = GMMR0AllocateHandyPages(pVM, pVCpu->idCpu, cPages, cPages, &pVM->pgm.s.aHandyPages[iFirst]);
+                rc = GMMR0AllocateHandyPages(pVM, pVCpu->idCpu, 0, cPages, &pVM->pgm.s.aHandyPages[iFirst]);
             } while (   (   rc == VERR_GMM_HIT_GLOBAL_LIMIT
                          || rc == VERR_GMM_HIT_VM_ACCOUNT_LIMIT)
                      && cPages + iFirst > PGM_HANDY_PAGES_MIN);
