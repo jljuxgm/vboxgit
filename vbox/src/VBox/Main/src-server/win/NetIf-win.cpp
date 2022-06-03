@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 36121 2011-03-01 15:25:18Z vboxsync $ */
+/* $Id: NetIf-win.cpp 40080 2012-02-11 11:37:28Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -316,7 +316,7 @@ static HRESULT netIfNetworkInterfaceHelperClient(SVCHlpClient *aClient,
 
                         /* initialize the object returned to the caller by
                          * CreateHostOnlyNetworkInterface() */
-                        rc = d->iface->init(Bstr(name), guid, HostNetworkInterfaceType_HostOnly);
+                        rc = d->iface->init(Bstr(name), Bstr(name), guid, HostNetworkInterfaceType_HostOnly);
                         if (SUCCEEDED(rc))
                         {
                             rc = d->iface->setVirtualBox(d->vBox);
