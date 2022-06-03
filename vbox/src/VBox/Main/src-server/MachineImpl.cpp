@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 41999 2012-07-03 12:50:18Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42000 2012-07-03 12:55:29Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6691,7 +6691,7 @@ STDMETHODIMP Machine::COMSETTER(AutostopType)(AutostopType_T enmAutostopType)
             else
                 hrc = setError(E_UNEXPECTED,
                                tr("%s machine '%s' to the autostop database failed with %Rrc"),
-                               fEnabled ? "Adding" : "Removing",
+                               enmAutostopType != AutostopType_Disabled ? "Adding" : "Removing",
                                mUserData->s.strName.c_str(), vrc);
         }
     }
