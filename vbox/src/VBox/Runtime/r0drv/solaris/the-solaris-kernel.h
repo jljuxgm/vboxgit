@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 40966 2012-04-17 16:43:28Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 40972 2012-04-18 13:30:14Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -48,6 +48,7 @@
 #include <vm/hat.h>
 #include <vm/seg_vn.h>
 #include <vm/seg_kmem.h>
+#include <vm/page.h>
 #include <sys/ddi.h>
 #include <sys/sunddi.h>
 #include <sys/spl.h>
@@ -58,6 +59,9 @@
 #include <sys/modctl.h>
 
 #undef u /* /usr/include/sys/user.h:249:1 is where this is defined to (curproc->p_user). very cool. */
+#ifndef PG_KFLT     /* introduced in snv_153, previous builds don't define this. */
+# define PG_KFLT        (0x0200)
+#endif
 
 #include <iprt/cdefs.h>
 #include <iprt/types.h>

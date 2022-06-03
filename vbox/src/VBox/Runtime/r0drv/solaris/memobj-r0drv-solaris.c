@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 40968 2012-04-17 17:35:53Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 40972 2012-04-18 13:30:14Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -132,7 +132,7 @@ static page_t *rtR0MemObjSolPageFromFreelist(caddr_t virtAddr, size_t cbPage)
         && g_frtSolUseKflt)
     {
         pPage = page_get_freelist(&s_PageVnode, 0 /* offset */, &KernelSeg, virtAddr,
-                                  cbPage, 0x200 /* PG_KFLT */, NULL /* NUMA group */);
+                                  cbPage, PG_KFLT, NULL /* NUMA group */);
     }
     return pPage;
 }
@@ -157,7 +157,7 @@ static page_t *rtR0MemObjSolPageFromCachelist(caddr_t virtAddr, size_t cbPage)
         && g_frtSolUseKflt)
     {
         pPage = page_get_cachelist(&s_PageVnode, 0 /* offset */, &KernelSeg, virtAddr,
-                                   0x200 /* PG_KFLT */, NULL /* NUMA group */);
+                                   PG_KFLT, NULL /* NUMA group */);
     }
 
     /*
