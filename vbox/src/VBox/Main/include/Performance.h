@@ -1,4 +1,4 @@
-/* $Id: Performance.h 36839 2011-04-25 17:29:21Z vboxsync $ */
+/* $Id: Performance.h 36842 2011-04-26 07:54:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -43,6 +43,7 @@ namespace pm
     {
     public:
         CircularBuffer() : mData(0), mLength(0), mEnd(0), mWrapped(false) {};
+        ~CircularBuffer() { if (mData) RTMemFree(mData); };
         void init(ULONG length);
         ULONG length();
         ULONG getSequenceNumber() { return mSequenceNumber; }
