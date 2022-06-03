@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 41106 2012-05-01 20:02:21Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 41120 2012-05-02 14:55:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -143,9 +143,6 @@ public:
                           DeviceType_T deviceType,
                           AccessMode_T accessMode,
                           BOOL fForceNewUuid,
-                          IMedium **aMedium);
-    STDMETHOD(FindMedium)(IN_BSTR aLocation,
-                          DeviceType_T deviceType,
                           IMedium **aMedium);
 
     STDMETHOD(GetGuestOSType)(IN_BSTR aId, IGuestOSType **aType);

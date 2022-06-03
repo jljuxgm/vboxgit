@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 41106 2012-05-01 20:02:21Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 41120 2012-05-02 14:55:59Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -170,11 +170,15 @@ HRESULT findMedium(HandlerArg *a, const char *pszFilenameOrUuid,
     }
 
     if (!fSilent)
-        CHECK_ERROR(a->virtualBox, FindMedium(Bstr(pszFilenameOrUuid).raw(),
-                                              enmDevType, pMedium.asOutParam()));
+        CHECK_ERROR(a->virtualBox, OpenMedium(Bstr(pszFilenameOrUuid).raw(),
+                                              enmDevType, AccessMode_ReadWrite,
+                                              /* fForceNewUuidOnOpen */ false,
+                                              pMedium.asOutParam()));
     else
-        rc = a->virtualBox->FindMedium(Bstr(pszFilenameOrUuid).raw(),
-                                       enmDevType, pMedium.asOutParam());
+        rc = a->virtualBox->OpenMedium(Bstr(pszFilenameOrUuid).raw(),
+                                              enmDevType, AccessMode_ReadWrite,
+                                              /* fForceNewUuidOnOpen */ false,
+                                              pMedium.asOutParam());
     return rc;
 }
 
@@ -199,7 +203,9 @@ HRESULT findOrOpenMedium(HandlerArg *a, const char *pszFilenameOrUuid,
         pszFilenameOrUuid = szFilenameAbs;
     }
 
-    rc = a->virtualBox->FindMedium(Bstr(pszFilenameOrUuid).raw(), enmDevType,
+    rc = a->virtualBox->OpenMedium(Bstr(pszFilenameOrUuid).raw(),
+                                   enmDevType, AccessMode_ReadWrite,
+                                   /* fForceNewUuidOnOpen */ false,
                                    pMedium.asOutParam());
     /* If the medium is unknown try to open it. */
     if (!pMedium)
