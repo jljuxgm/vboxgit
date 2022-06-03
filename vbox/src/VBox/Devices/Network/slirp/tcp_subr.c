@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 41455 2012-05-28 02:31:25Z vboxsync $ */
+/* $Id: tcp_subr.c 42100 2012-07-11 07:19:03Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -298,7 +298,8 @@ tcp_close(PNATState pData, register struct tcpcb *tp)
     /* clobber input socket cache if we're closing the cached connection */
     if (so == tcp_last_so)
         tcp_last_so = &tcb;
-    closesocket(so->s);
+    if (so->s != -1)
+        closesocket(so->s);
     /* Avoid double free if the socket is listening and therefore doesn't have
      * any sbufs reserved. */
     if (!(so->so_state & SS_FACCEPTCONN))

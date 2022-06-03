@@ -1,4 +1,4 @@
-/* $Id: slirp.c 41987 2012-07-02 16:44:45Z vboxsync $ */
+/* $Id: slirp.c 42100 2012-07-11 07:19:03Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -461,10 +461,13 @@ void slirp_link_down(PNATState pData)
 
     while ((so = tcb.so_next) != &tcb)
     {
-        if (so->so_state & SS_NOFDREF || so->s == -1)
-            sofree(pData, so);
+        /* Don't miss TCB releasing */
+        if (   !sototcpcb(so)
+            && (   so->so_state & SS_NOFDREF
+                || so->s == -1))
+             sofree(pData, so);
         else
-            tcp_drop(pData, sototcpcb(so), 0);
+            tcp_close(pData, sototcpcb(so));
     }
 
     while ((so = udb.so_next) != &udb)
