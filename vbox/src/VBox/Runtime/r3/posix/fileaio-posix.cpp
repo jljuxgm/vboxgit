@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 39143 2011-10-29 13:21:25Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -307,7 +307,7 @@ RTR3DECL(int) RTFileAioGetLimits(PRTFILEAIOLIMITS pAioLimits)
                          &cReqsOutstandingMax,  /* Where to store the old value. */
                          &cbParameter,          /* Size of the memory pointed to. */
                          NULL,                  /* Where the new value is located. */
-                         NULL);                 /* Where the size of the new value is stored. */
+                         0);                    /* Where the size of the new value is stored. */
     if (rcBSD == -1)
         return RTErrConvertFromErrno(errno);
 
@@ -326,7 +326,7 @@ RTR3DECL(int) RTFileAioGetLimits(PRTFILEAIOLIMITS pAioLimits)
                          &cReqsOutstandingMax,       /* Where to store the old value. */
                          &cbParameter,               /* Size of the memory pointed to. */
                          NULL,                       /* Where the new value is located. */
-                         NULL);                      /* Where the size of the new value is stored. */
+                         0);                         /* Where the size of the new value is stored. */
     if (rcBSD == -1)
     {
         /* ENOENT means the value is unknown thus the module is not loaded. */
