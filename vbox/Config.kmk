@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38279 2011-08-02 13:09:04Z vboxsync $
+# $Id: Config.kmk 38281 2011-08-02 13:13:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1230,8 +1230,12 @@ endif
 #
 ifndef VBOX_GCC_TOOL
  ifeq ($(KBUILD_TARGET),win)
-  VBOX_GCC_TOOL := MINGW32
-  TOOL_MINGW32_CFLAGS := $(UNDEFINED) # override -g
+#  ifeq ($(KBUILD_TARGET_ARCH),x86) 
+   VBOX_GCC_TOOL := MINGW32
+   TOOL_MINGW32_CFLAGS := $(UNDEFINED) # override -g
+#  else
+#   VBOX_GCC_TOOL := MINGW64
+#  endif
  else ifeq ($(KBUILD_TARGET),os2)
   VBOX_GCC_TOOL := GXX3OMF
  else ifeq ($(KBUILD_TARGET),darwin)
@@ -3506,7 +3510,7 @@ TEMPLATE_VBOXNOCRTGCC_CXXFLAGS.$(KBUILD_TARGET) = $(TEMPLATE_VBOXNOCRTGCC_CFLAGS
 TEMPLATE_VBOXNOCRTGCC_CXXFLAGS.$(KBUILD_TARGET_ARCH) = $(TEMPLATE_VBOXNOCRTGCC_CFLAGS.$(KBUILD_TARGET_ARCH))
 TEMPLATE_VBOXNOCRTGCC_INCS              = $(PATH_ROOT)/include/iprt/nocrt
 
-ifeq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),win.amd64)
+ifeq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),$(if-expr !defined(VBOX_WITH_NEW_WIN_TOOLCHAIN),win.amd64,))
  # cross compile to 64-bit ELF (linux).
  TEMPLATE_VBOXNOCRTGCC_TOOL             = XGCCAMD64LINUX
  TEMPLATE_VBOXNOCRTGCC_ASTOOL           = YASM
@@ -4822,7 +4826,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38279 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38281 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
