@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41941 2012-06-28 01:46:39Z vboxsync $
+# $Id: Config.kmk 41942 2012-06-28 02:15:05Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2592,7 +2592,7 @@ endif
 
 #VPXLIB
 SDK_VBOX_VPX       = .
-if1of ($(KBUILD_TARGET), darwin linux os2 solaris win)
+if1of ($(KBUILD_TARGET), darwin linux os2 )
  SDK_VBOX_VPX_INCS ?=  \
      $(PATH_ROOT)/src/libs/libvpx/vpx \
      $(PATH_ROOT)/src/libs/libvpx/vp8 \
@@ -5133,7 +5133,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41941 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41942 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
