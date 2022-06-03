@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 40174 2012-02-18 21:19:07Z vboxsync $ */
+/* $Id: tstX86-1.cpp 40199 2012-02-21 14:07:05Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -241,14 +241,14 @@ int main()
         rc = x861_Test4();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test4 -> %d", rc);
-#endif
+//#endif
 
         RTTestSub(hTest, "Odd encodings and odd ends");
         rc = x861_Test5();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test5 -> %d", rc);
 
-#if 0
+//#if 0
         RTTestSub(hTest, "Odd floating point encodings");
         rc = x861_Test6();
         if (rc != 0)
@@ -258,11 +258,11 @@ int main()
         rc = x861_Test7();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test6 -> %d", rc);
+#endif
 
         rc = x861_TestFPUInstr1();
         if (rc != 0)
             RTTestFailed(hTest, "x861_TestFPUInstr1 -> %d", rc);
-#endif
     }
 
     return RTTestSummaryAndDestroy(hTest);
