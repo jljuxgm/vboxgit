@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 36422 2011-03-25 08:20:08Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 36448 2011-03-28 12:37:43Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -85,7 +85,7 @@ typedef struct VBOXRAWPCIINS
     PFNRAWPCIISR       pfnIrqHandler;
     void              *pIrqContext;
 
-    PRAWPCIVM         pVmCtx;
+    PRAWPCIPERVM       pVmCtx;
 } VBOXRAWPCIINS;
 
 /**
@@ -138,7 +138,7 @@ typedef struct VBOXRAWPCIGLOBALS
 DECLHIDDEN(int)  vboxPciInit(PVBOXRAWPCIGLOBALS pGlobals);
 DECLHIDDEN(void) vboxPciShutdown(PVBOXRAWPCIGLOBALS pGlobals);
 
-DECLHIDDEN(int)  vboxPciOsInitVm(PVBOXRAWPCIDRVVM pThis,   PVM pVM, PRAWPCIVM pVmData);
+DECLHIDDEN(int)  vboxPciOsInitVm(PVBOXRAWPCIDRVVM pThis,   PVM pVM, PRAWPCIPERVM pVmData);
 DECLHIDDEN(void) vboxPciOsDeinitVm(PVBOXRAWPCIDRVVM pThis, PVM pVM);
 
 DECLHIDDEN(int)  vboxPciOsDevInit  (PVBOXRAWPCIINS pIns, uint32_t fFlags);
