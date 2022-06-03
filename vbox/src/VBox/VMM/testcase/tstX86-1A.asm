@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 40140 2012-02-15 21:12:14Z vboxsync $
+; $Id: tstX86-1A.asm 40155 2012-02-16 16:00:03Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -851,7 +851,7 @@ BEGINPROC x861_Test1
         mov     es, dx
 
         ; check that repne scasb (al=0) behaves like expected.
-        lea     xDI, [REF(g_szAlpha)]
+        lea     xDI, [REF(NAME(g_szAlpha))]
         xor     eax, eax                ; find the end
         mov     ecx, g_cchAlpha + 1
         repne scasb
@@ -860,7 +860,7 @@ BEGINPROC x861_Test1
         jne     .failed
 
         ; check that repe scasb (al=0) behaves like expected.
-        lea     xDI, [REF(g_szAlpha)]
+        lea     xDI, [REF(NAME(g_szAlpha))]
         xor     eax, eax                ; find the end
         mov     ecx, g_cchAlpha + 1
         repe scasb
@@ -869,7 +869,7 @@ BEGINPROC x861_Test1
         jne     .failed
 
         ; repne is last, it wins.
-        lea     xDI, [REF(g_szAlpha)]
+        lea     xDI, [REF(NAME(g_szAlpha))]
         xor     eax, eax                ; find the end
         mov     ecx, g_cchAlpha + 1
         db 0f3h                         ; repe  - ignored
@@ -880,7 +880,7 @@ BEGINPROC x861_Test1
         jne     .failed
 
         ; repe is last, it wins.
-        lea     xDI, [REF(g_szAlpha)]
+        lea     xDI, [REF(NAME(g_szAlpha))]
         xor     eax, eax                ; find the end
         mov     ecx, g_cchAlpha + 1
         db 0f2h                         ; repne - ignored
