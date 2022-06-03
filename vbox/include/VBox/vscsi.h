@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 38878 2011-09-27 09:07:07Z vboxsync $ */
+/* $Id: vscsi.h 39566 2011-12-09 13:27:31Z vboxsync $ */
 /** @file
  * VBox storage drivers: Virtual SCSI driver
  */
@@ -98,6 +98,8 @@ typedef VSCSILUNTYPE *PVSCSILUNTYPE;
 #define VSCSI_LUN_FEATURE_UNMAP          RT_BIT(0)
 /** The LUN has a non rotational medium. */
 #define VSCSI_LUN_FEATURE_NON_ROTATIONAL RT_BIT(1)
+/** The medium of the LUN is readonly. */
+#define VSCSI_LUN_FEATURE_READONLY       RT_BIT(2)
 
 /**
  * Virtual SCSI LUN I/O Callback table.
