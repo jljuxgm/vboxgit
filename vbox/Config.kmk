@@ -1,4 +1,4 @@
-# $Id: Config.kmk 39091 2011-10-24 13:58:22Z vboxsync $
+# $Id: Config.kmk 39105 2011-10-25 08:27:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1437,7 +1437,7 @@ endif
 #
 VBOX_GCC_WARN     ?= -Wall $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) -Wno-unused -Wno-trigraphs $(VBOX_GCC_fdiagnostics-show-option)
 VBOX_GCC_WARN_PEDANTIC = -Wshadow $(VBOX_GCC_WARN) -Wno-long-long
-if1of ($(USERNAME), bird)
+ifdef VBOX_WITH_MASOCHISTIC_WARNINGS
  VBOX_GCC_WARN_PEDANTIC += -Wunused-variable -Wunused-function -Wunused-label -Wunused-parameter
 endif
 VBOX_GCC_PEDANTIC_CXX ?= -pedantic -Wshadow $(VBOX_GCC_WARN_PEDANTIC) -Wno-long-long
@@ -4845,7 +4845,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39091 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39105 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
