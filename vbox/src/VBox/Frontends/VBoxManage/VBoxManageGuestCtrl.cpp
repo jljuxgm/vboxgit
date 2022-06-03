@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 39582 2011-12-12 13:40:09Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 39659 2011-12-20 10:36:53Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1102,7 +1102,9 @@ static int ctrlCopyDirCreate(PCOPYCONTEXT pContext, const char *pszDir)
     AssertPtrReturn(pszDir, VERR_INVALID_POINTER);
 
     bool fDirExists;
-    if (ctrlCopyDirExists(pContext, pContext->fHostToGuest, pszDir, &fDirExists))
+    int rc = ctrlCopyDirExists(pContext, pContext->fHostToGuest, pszDir, &fDirExists);
+    if (   RT_SUCCESS(rc)
+        && fDirExists)
     {
         if (pContext->fVerbose)
             RTPrintf("Directory \"%s\" already exists\n", pszDir);
@@ -1115,7 +1117,6 @@ static int ctrlCopyDirCreate(PCOPYCONTEXT pContext, const char *pszDir)
     if (pContext->fDryRun)
         return VINF_SUCCESS;
 
-    int rc = VINF_SUCCESS;
     if (pContext->fHostToGuest) /* We want to create directories on the guest. */
     {
         HRESULT hrc = pContext->pGuest->DirectoryCreate(Bstr(pszDir).raw(),
@@ -1126,7 +1127,7 @@ static int ctrlCopyDirCreate(PCOPYCONTEXT pContext, const char *pszDir)
     }
     else /* ... or on the host. */
     {
-        rc = RTDirCreateFullPath(pszDir, 700);
+        rc = RTDirCreateFullPath(pszDir, 0700);
         if (rc == VERR_ALREADY_EXISTS)
             rc = VINF_SUCCESS;
     }
