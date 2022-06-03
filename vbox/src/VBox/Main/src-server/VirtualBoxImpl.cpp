@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 38211 2011-07-28 09:26:31Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 38754 2011-09-14 17:36:15Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -4538,7 +4538,13 @@ DECLCALLBACK(int) VirtualBox::AsyncEventHandler(RTTHREAD thread, void *pvUser)
     // signal that we're ready
     RTThreadUserSignal(thread);
 
-    while (RT_SUCCESS(eventQ->processEventQueue(RT_INDEFINITE_WAIT)))
+    /*
+     * In case of spurious wakeups causing VERR_TIMEOUTs and/or other return codes
+     * we must not stop processing events and delete the "eventQ" object. This must
+     * be done ONLY when we stop this loop via interruptEventQueueProcessing().
+     * See #5724.
+     */
+    while (eventQ->processEventQueue(RT_INDEFINITE_WAIT) != VERR_INTERRUPTED)
         /* nothing */ ;
 
     delete eventQ;
