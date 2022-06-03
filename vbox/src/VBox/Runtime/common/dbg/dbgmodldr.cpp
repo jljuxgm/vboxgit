@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 39327 2011-11-16 10:52:07Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -189,5 +189,4 @@ DECL_HIDDEN_CONST(RTDBGMODVTIMG) const g_rtDbgModVtImgLdr =
 
     /*.u32EndMagic = */                 RTDBGMODVTIMG_MAGIC
 };
-
 

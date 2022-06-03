@@ -1,4 +1,4 @@
-/* $Id: tstRTCType.cpp 39246 2011-11-09 10:25:42Z vboxsync $ */
+/* $Id: tstRTCType.cpp 39327 2011-11-16 10:52:07Z vboxsync $ */
 /** @file
  * IPRT Testcase - ctype.h.
  */
@@ -300,5 +300,4 @@ int main()
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

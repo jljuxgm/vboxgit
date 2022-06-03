@@ -1,4 +1,4 @@
-/* $Id: ldrEx.cpp 38581 2011-08-31 12:43:26Z vboxsync $ */
+/* $Id: ldrEx.cpp 39327 2011-11-16 10:52:07Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Extended Features.
  */
@@ -546,5 +546,4 @@ RTDECL(int) RTLdrRvaToSegOffset(RTLDRMOD hLdrMod, RTLDRADDR Rva, uint32_t *piSeg
     return rc;
 }
 RT_EXPORT_SYMBOL(RTLdrRvaToSegOffset);
-
 

@@ -1,4 +1,4 @@
-/* $Id: thread2-win.cpp 37733 2011-07-01 15:41:37Z vboxsync $ */
+/* $Id: thread2-win.cpp 39327 2011-11-16 10:52:07Z vboxsync $ */
 /** @file
  * IPRT - Threads part 2, Windows.
  */
@@ -64,5 +64,4 @@ RTR3DECL(bool) RTThreadYield(void)
     LogFlow(("RTThreadYield: returning %d (%llu ticks)\n", fRc, u64TS));
     return fRc;
 }
-
 
