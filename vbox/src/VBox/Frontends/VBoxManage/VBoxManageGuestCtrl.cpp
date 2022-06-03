@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 40684 2012-03-28 14:41:08Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 40687 2012-03-28 14:58:23Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -414,7 +414,10 @@ static int ctrlPrintProgressError(ComPtr<IProgress> pProgress)
             LONG rcProc;
             CHECK_ERROR_BREAK(pProgress, COMGETTER(ResultCode)(&rcProc));
             if (FAILED(rcProc))
-                vrc = ctrlPrintError(com::ProgressErrorInfo(pProgress));
+            {
+                com::ProgressErrorInfo ErrInfo(pProgress);
+                vrc = ctrlPrintError(ErrInfo);
+            }
         }
 
     } while(0);
