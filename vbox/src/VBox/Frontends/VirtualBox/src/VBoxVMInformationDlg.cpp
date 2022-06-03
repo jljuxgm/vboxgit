@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 41819 2012-06-18 17:59:30Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 41927 2012-06-27 14:49:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -475,6 +475,9 @@ void VBoxVMInformationDlg::refreshStatistics()
         if (bpp)
             resolution += QString ("x%1").arg (bpp);
 
+        QString mode = gpConverter->toString(m.GetClipboardMode());
+
+
         CMachineDebugger debugger = console.GetDebugger();
         QString virtualization = debugger.GetHWVirtExEnabled() ?
             VBoxGlobal::tr ("Enabled", "details report (VT-x/AMD-V)") :
@@ -514,6 +517,7 @@ void VBoxVMInformationDlg::refreshStatistics()
 
         result += hdrRow.arg (":/state_running_16px.png").arg (tr ("Runtime Attributes"));
         result += formatValue (tr ("Screen Resolution"), resolution, maxLength);
+        result += formatValue (tr ("Clipboard Mode"), mode, maxLength);
         result += formatValue (VBoxGlobal::tr ("VT-x/AMD-V", "details report"), virtualization, maxLength);
         result += formatValue (VBoxGlobal::tr ("Nested Paging", "details report"), nested, maxLength);
         result += formatValue (tr ("Guest Additions"), addVersionStr, maxLength);
