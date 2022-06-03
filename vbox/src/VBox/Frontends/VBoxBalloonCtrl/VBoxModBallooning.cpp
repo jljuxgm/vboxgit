@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 41422 2012-05-23 15:59:04Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 41602 2012-06-06 16:44:14Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -137,9 +137,9 @@ static unsigned long balloonGetMaxSize(const ComPtr<IMachine> &rptrMachine)
     unsigned long ulBalloonMax = g_ulMemoryBalloonMaxMB;
     if (!ulBalloonMax)
     {
-        int rc = cfgGetValueULong(g_pVirtualBox, rptrMachine,
+        int vrc = cfgGetValueULong(g_pVirtualBox, rptrMachine,
                                   "VBoxInternal/Guest/BalloonSizeMax", "VBoxInternal/Guest/BalloonSizeMax", &ulBalloonMax, 0 /* Ballooning disabled */);
-        if (RT_FAILURE(rc))
+        if (RT_FAILURE(vrc))
         {
             /* Try (new) VBoxWatch per-VM approach. */
             Bstr strValue;
