@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 37432 2011-06-14 10:38:19Z vboxsync $ */
+/* $Id: crservice.cpp 37433 2011-06-14 11:44:45Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -488,8 +488,14 @@ static CRVBOXSVCBUFFER_t* svcGetBuffer(uint32_t iBuffer, uint32_t cbBufferSize)
             {
                 if (pBuffer->uiSize!=cbBufferSize)
                 {
-                    LogRel(("SHARED_CROPENGL svcGetBuffer: invalid buffer(%i) size %i instead of %i\n",
-                            iBuffer, pBuffer->uiSize, cbBufferSize));
+                    static int shown=0;
+
+                    if (shown<20)
+                    {
+                        shown++;
+                        LogRel(("SHARED_CROPENGL svcGetBuffer: invalid buffer(%i) size %i instead of %i\n",
+                                iBuffer, pBuffer->uiSize, cbBufferSize));
+                    }
                     return NULL;
                 }
                 return pBuffer;
