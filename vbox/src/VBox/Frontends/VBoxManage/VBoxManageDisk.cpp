@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 41120 2012-05-02 14:55:59Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 41236 2012-05-10 13:46:50Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -237,12 +237,18 @@ static HRESULT createHardDisk(HandlerArg *a, const char *pszFormat,
             RTMsgError("Cannot convert filename \"%s\" to absolute path", pszFilename);
             return E_FAIL;
         }
-        pszFilename = szFilenameAbs;
-    }
+        pszFilename = szFilenameAbs; 
+	CHECK_ERROR(a->virtualBox, OpenMedium(Bstr(pszFilename).raw(),
+                                   DeviceType_Network, 
+                                   AccessMode_ReadWrite,
+                                   /* fForceNewUuidOnOpen */ false,
+                                   pMedium.asOutParam()));
+    }else{
 
-    CHECK_ERROR(a->virtualBox, CreateHardDisk(Bstr(pszFormat).raw(),
-                                              Bstr(pszFilename).raw(),
-                                              pMedium.asOutParam()));
+        CHECK_ERROR(a->virtualBox, CreateHardDisk(Bstr(pszFormat).raw(),
+                                                  Bstr(pszFilename).raw(),
+                                                  pMedium.asOutParam()));
+    }
     return rc;
 }
 
