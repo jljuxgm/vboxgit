@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 33167 2010-10-15 18:16:59Z vboxsync $
+; $Id: SUPR0.def 37070 2011-05-13 12:54:35Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -166,6 +166,8 @@ EXPORTS
     RTMpGetSet
     RTMpIsCpuOnline
     RTMpIsCpuWorkPending
+    RTMpNotificationRegister
+    RTMpNotificationDeregister
     RTMpOnAll
     RTMpOnOthers
     RTMpOnSpecific
