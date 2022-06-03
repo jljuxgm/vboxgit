@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 41131 2012-05-03 11:43:01Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -115,7 +115,8 @@ VMMDev::~VMMDev()
 
 PPDMIVMMDEVPORT VMMDev::getVMMDevPort()
 {
-    AssertReturn(mpDrv, NULL);
+    if (!mpDrv)
+        return NULL;
     return mpDrv->pUpPort;
 }
 

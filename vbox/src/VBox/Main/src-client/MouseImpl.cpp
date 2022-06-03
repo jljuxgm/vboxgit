@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 40310 2012-03-01 11:56:06Z vboxsync $ */
+/* $Id: MouseImpl.cpp 41131 2012-05-03 11:43:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -167,7 +167,8 @@ HRESULT Mouse::updateVMMDevMouseCaps(uint32_t fCapsAdded,
         return E_FAIL;  /* No assertion, as the front-ends can send events
                          * at all sorts of inconvenient times. */
     PPDMIVMMDEVPORT pVMMDevPort = pVMMDev->getVMMDevPort();
-    ComAssertRet(pVMMDevPort, E_FAIL);
+    if (!pVMMDevPort)
+        return E_FAIL;  /* same here */
 
     int rc = pVMMDevPort->pfnUpdateMouseCapabilities(pVMMDevPort, fCapsAdded,
                                                      fCapsRemoved);
