@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 37357 2011-06-07 17:10:10Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 37360 2011-06-07 17:28:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2819,7 +2819,7 @@ VMMDECL(int) PGMPhysSimpleWriteGCPhys(PVM pVM, RTGCPHYS GCPhysDst, const void *p
 VMMDECL(int) PGMPhysSimpleReadGCPtr(PVMCPU pVCpu, void *pvDst, RTGCPTR GCPtrSrc, size_t cb)
 {
     PVM pVM = pVCpu->CTX_SUFF(pVM);
-    VMCPU_ASSERT_EMT_OR_GURU(pVCpu);
+/** @todo fix the macro / state handling: VMCPU_ASSERT_EMT_OR_GURU(pVCpu); */
 
     /*
      * Treat the first page as a special case.
