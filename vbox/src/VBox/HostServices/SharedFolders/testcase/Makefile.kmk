@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38152 2011-07-25 12:19:13Z vboxsync $
+# $Id: Makefile.kmk 39540 2011-12-06 15:17:59Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -49,6 +49,35 @@ tstShflCase_TEMPLATE = VBOXR3TSTEXE
 tstShflCase_DEFS     = VBOX_WITH_HGCM
 tstShflCase_SOURCES  = tstShflCase.cpp
 tstShflCase_LIBS     = $(LIB_RUNTIME)
+
+#
+# HGCM service testcase.
+#
+
+# As there are differences between the Windows build of the service and others,
+# we do an additional build with RT_OS_WINDOWS defined on non-Windows targets.
+PROGRAMS += \
+    tstSharedFolderService \
+    $(if $(eq $(KBUILD_TARGET),win),,tstSharedFolderService-win)
+
+tstSharedFolderService_TEMPLATE = VBOXR3TSTEXE
+tstSharedFolderService_DEFS     = VBOX_WITH_HGCM UNITTEST
+tstSharedFolderService_INCS     = ..
+tstSharedFolderService_SOURCES  = \
+    tstSharedFolderService.cpp \
+    ../mappings.cpp \
+    ../service.cpp \
+    ../shflhandle.cpp \
+    ../vbsf.cpp
+tstSharedFolderService_LIBS     = $(LIB_RUNTIME)
+
+tstSharedFolderService-win_TEMPLATE = $(tstSharedFolderService_TEMPLATE)
+tstSharedFolderService-win_DEFS     = \
+    $(tstSharedFolderService_DEFS) \
+    RT_OS_WINDOWS
+tstSharedFolderService-win_INCS     = $(tstSharedFolderService_INCS)
+tstSharedFolderService-win_SOURCES  = $(tstSharedFolderService_SOURCES)
+tstSharedFolderService-win_LIBS     = $(tstSharedFolderService_LIBS)
 
 endif # VBOX_WITH_TESTCASES
 
