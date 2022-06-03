@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 38878 2011-09-27 09:07:07Z vboxsync $ */
+/* $Id: DrvVD.cpp 39414 2011-11-24 21:52:15Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1998,6 +1998,12 @@ static DECLCALLBACK(void) drvvdReset(PPDMDRVINS pDrvIns)
 {
     LogFlowFunc(("\n"));
     PVBOXDISK pThis = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
+
+    if (pThis->pBlkCache)
+    {
+        int rc = PDMR3BlkCacheClear(pThis->pBlkCache);
+        AssertRC(rc);
+    }
 
     if (pThis->fBootAccelEnabled)
     {

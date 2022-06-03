@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 39356 2011-11-17 19:03:25Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 39414 2011-11-24 21:52:15Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -2737,5 +2737,28 @@ VMMR3DECL(int) PDMR3BlkCacheResume(PPDMBLKCACHE pBlkCache)
     ASMAtomicXchgBool(&pBlkCache->fSuspended, false);
 
     return VINF_SUCCESS;
+}
+
+VMMR3DECL(int) PDMR3BlkCacheClear(PPDMBLKCACHE pBlkCache)
+{
+    int rc = VINF_SUCCESS;
+    PPDMBLKCACHEGLOBAL pCache = pBlkCache->pCache;
+
+    /*
+     * Commit all dirty entries now (they are waited on for completion during the
+     * destruction of the AVL tree below).
+     * The exception is if the VM was paused because of an I/O error before.
+     */
+    if (!ASMAtomicReadBool(&pCache->fIoErrorVmSuspended))
+        pdmBlkCacheCommit(pBlkCache);
+
+    /* Make sure nobody is accessing the cache while we delete the tree. */
+    pdmBlkCacheLockEnter(pCache);
+    RTSemRWRequestWrite(pBlkCache->SemRWEntries, RT_INDEFINITE_WAIT);
+    RTAvlrU64Destroy(pBlkCache->pTree, pdmBlkCacheEntryDestroy, pCache);
+    RTSemRWReleaseWrite(pBlkCache->SemRWEntries);
+
+    pdmBlkCacheLockLeave(pCache);
+    return rc;
 }
 
