@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41224 2012-05-09 13:46:05Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41280 2012-05-14 12:25:44Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -2231,9 +2231,10 @@ static DECLCALLBACK(void) hmR0VmxSetupTLBBoth(PVM pVM, PVMCPU pVCpu)
         }
         else
         {
-            /** @todo is it better to flush by EPT or VPID here? find out which is less
-             *        expensive. */
-            hmR0VmxFlushEPT(pVM, pVCpu, pVM->hwaccm.s.vmx.enmFlushEPT);
+            if (pVM->hwaccm.s.vmx.msr.vmx_eptcaps & MSR_IA32_VMX_EPT_CAPS_INVVPID_CAPS_SINGLE_CONTEXT)
+                hmR0VmxFlushVPID(pVM, pVCpu, pVM->hwaccm.s.vmx.enmFlushVPID, 0 /* GCPtr */);
+            else
+                hmR0VmxFlushEPT(pVM, pVCpu, pVM->hwaccm.s.vmx.enmFlushEPT);
         }
 
         pVCpu->hwaccm.s.cTLBFlushes    = pCpu->cTLBFlushes;
