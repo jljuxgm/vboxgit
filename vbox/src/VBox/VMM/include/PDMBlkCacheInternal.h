@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCacheInternal.h 38877 2011-09-27 09:04:46Z vboxsync $ */
+/* $Id: PDMBlkCacheInternal.h 38885 2011-09-27 09:59:16Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -250,9 +250,14 @@ typedef struct PDMBLKCACHE
     } u;
 
 #ifdef VBOX_WITH_STATISTICS
+
+#if HC_ARCH_BITS == 64
     uint32_t                      u32Alignment;
+#endif
     /** Number of times a write was deferred because the cache entry was still in progress */
     STAMCOUNTER                   StatWriteDeferred;
+    /** Number appended cache entries. */
+    STAMCOUNTER                   StatAppendedWrites;
 #endif
 
     /** Flag whether the cache was suspended. */
