@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 37418 2011-06-11 08:22:10Z vboxsync $ */
+/* $Id: PDMDriver.cpp 38847 2011-09-23 13:19:23Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -640,7 +640,11 @@ void pdmR3DrvDestroyChain(PPDMDRVINS pDrvIns, uint32_t fFlags)
             Assert(pLun->pTop == pCur);
             pLun->pTop = NULL;
             if (!(fFlags & PDM_TACH_FLAGS_NO_CALLBACKS) && pLun->pDevIns->pReg->pfnDetach)
+            {
+                PDMCritSectEnter(pLun->pDevIns->pCritSectRoR3, VERR_IGNORED);
                 pLun->pDevIns->pReg->pfnDetach(pLun->pDevIns, pLun->iLun, fFlags);
+                PDMCritSectLeave(pLun->pDevIns->pCritSectRoR3);
+            }
         }
 
         /*

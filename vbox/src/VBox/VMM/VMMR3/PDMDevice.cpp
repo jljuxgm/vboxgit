@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 37812 2011-07-07 09:56:42Z vboxsync $ */
+/* $Id: PDMDevice.cpp 38847 2011-09-23 13:19:23Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -419,7 +419,9 @@ int pdmR3DevInit(PVM pVM)
     {
         if (pDevIns->pReg->pfnInitComplete)
         {
+            PDMCritSectEnter(pDevIns->pCritSectRoR3, VERR_IGNORED);
             rc = pDevIns->pReg->pfnInitComplete(pDevIns);
+            PDMCritSectLeave(pDevIns->pCritSectRoR3);
             if (RT_FAILURE(rc))
             {
                 AssertMsgFailed(("InitComplete on device '%s'/%d failed with rc=%Rrc\n",
@@ -795,7 +797,9 @@ VMMR3DECL(int) PDMR3DeviceAttach(PVM pVM, const char *pszDevice, unsigned iInsta
         {
             if (!pLun->pTop)
             {
+                PDMCritSectEnter(pDevIns->pCritSectRoR3, VERR_IGNORED);
                 rc = pDevIns->pReg->pfnAttach(pDevIns, iLun, fFlags);
+                PDMCritSectLeave(pDevIns->pCritSectRoR3);
             }
             else
                 rc = VERR_PDM_DRIVER_ALREADY_ATTACHED;
@@ -903,9 +907,11 @@ VMMR3DECL(int) PDMR3DriverAttach(PVM pVM, const char *pszDevice, unsigned iInsta
             PPDMDEVINS pDevIns = pLun->pDevIns;
             if (pDevIns->pReg->pfnAttach)
             {
+                PDMCritSectEnter(pDevIns->pCritSectRoR3, VERR_IGNORED);
                 rc = pDevIns->pReg->pfnAttach(pDevIns, iLun, fFlags);
                 if (RT_SUCCESS(rc) && ppBase)
                     *ppBase = pLun->pTop ? &pLun->pTop->IBase : NULL;
+                PDMCritSectLeave(pDevIns->pCritSectRoR3);
             }
             else
                 rc = VERR_PDM_DEVICE_NO_RT_ATTACH;
