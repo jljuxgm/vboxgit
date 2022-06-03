@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40668 2012-03-27 17:30:51Z vboxsync $
+# $Id: Makefile.kmk 40788 2012-04-06 12:52:33Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -201,6 +201,7 @@ RuntimeNoCrt_SOURCES = \
 	common/string/memset.asm \
 	common/string/strchr.asm \
 	common/string/strcpy.asm \
+	common/string/strncpy.asm \
 	common/string/strcmp.asm \
 	common/string/strlen.asm
 endif
