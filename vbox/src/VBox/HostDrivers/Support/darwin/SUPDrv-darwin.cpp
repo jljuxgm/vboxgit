@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 37050 2011-05-12 13:46:12Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 37093 2011-05-16 02:51:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -360,8 +360,13 @@ static int VBoxDrvDarwinOpen(dev_t Dev, int fFlags, int fDevType, struct proc *p
     kauth_cred_t    pCred = kauth_cred_proc_ref(pProcess);
     if (pCred)
     {
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1070
+        RTUID           Uid =  pCred->posix_cred.cr_ruid;
+        RTGID           Gid = pCred->posix_cred.cr_rgid;
+#else
         RTUID           Uid =  pCred->cr_ruid;
         RTGID           Gid = pCred->cr_rgid;
+#endif
         RTPROCESS       Process = RTProcSelf();
         unsigned        iHash = SESSION_HASH(Process);
         RTSPINLOCKTMP   Tmp = RTSPINLOCKTMP_INITIALIZER;
