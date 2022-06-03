@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 40442 2012-03-13 11:40:27Z vboxsync $ */
+/* $Id: PATMRC.cpp 40447 2012-03-13 15:30:35Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -110,10 +110,8 @@ VMMRCDECL(int) PATMGCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RTR
             ||  pPatchPage->pHighestAddrGC < (RTRCPTR)GCPtr)
         {
             /* This part of the page was not patched; try to emulate the instruction. */
-            uint32_t cb;
-
             LogFlow(("PATMHandleWriteToPatchPage: Interpret %x accessing %RRv\n", pRegFrame->eip, GCPtr));
-            int rc = EMInterpretInstruction(pVM, VMMGetCpu0(pVM), pRegFrame, (RTGCPTR)(RTRCUINTPTR)GCPtr, &cb);
+            int rc = EMInterpretInstruction(pVM, VMMGetCpu0(pVM), pRegFrame, (RTGCPTR)(RTRCUINTPTR)GCPtr);
             if (rc == VINF_SUCCESS)
             {
                 STAM_COUNTER_INC(&pVM->patm.s.StatPatchWriteInterpreted);
