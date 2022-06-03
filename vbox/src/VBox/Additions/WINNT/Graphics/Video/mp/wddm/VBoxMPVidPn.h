@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.h 37188 2011-05-23 18:24:48Z vboxsync $ */
+/* $Id: VBoxMPVidPn.h 37189 2011-05-23 20:50:29Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -128,7 +128,7 @@ NTSTATUS vboxVidPnCreatePopulateVidPnPathFromLegacy(PVBOXMP_DEVEXT pDevExt, D3DK
 
 NTSTATUS vboxVidPnCheckAddMonitorModes(PVBOXMP_DEVEXT pDevExt,
         D3DDDI_VIDEO_PRESENT_TARGET_ID targetId, D3DKMDT_MONITOR_CAPABILITIES_ORIGIN enmOrigin,
-        D3DKMDT_2DREGION *pResolutions, uint32_t cResolutions, int32_t iPreferred);
+        D3DKMDT_2DREGION *pResolutions, uint32_t cResolutions);
 
 NTSTATUS vboxVidPnCofuncModalityForPath(PVBOXVIDPNCOFUNCMODALITY pCbContext, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId, D3DDDI_VIDEO_PRESENT_TARGET_ID VidPnTargetId);
 
