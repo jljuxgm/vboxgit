@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 38618 2011-09-03 19:36:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38717 2011-09-12 14:48:50Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12512,7 +12512,8 @@ HRESULT SessionMachine::lockMedia()
     AutoCaller autoCaller(this);
     AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AutoMultiWriteLock2 alock(this->lockHandle(),
+                              &mParent->getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
 
     AssertReturn(   mData->mMachineState == MachineState_Starting
                  || mData->mMachineState == MachineState_Restoring
