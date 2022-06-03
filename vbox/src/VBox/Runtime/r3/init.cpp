@@ -1,4 +1,4 @@
-/* $Id: init.cpp 38638 2011-09-05 14:02:29Z vboxsync $ */
+/* $Id: init.cpp 38639 2011-09-05 14:04:05Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -91,11 +91,11 @@ DECLHIDDEN(size_t)          g_cchrtProcDir;
 DECLHIDDEN(size_t)          g_offrtProcName;
 
 /** The argument count of the program.  */
-DECLHIDDEN(int)             g_crtArgs = -1;
+static int                  g_crtArgs = -1;
 /** The arguments of the program (UTF-8).  This is "leaked". */
-DECLHIDDEN(char **)         g_papszrtArgs;
+static char **              g_papszrtArgs;
 /** The original argument vector of the program. */
-DECLHIDDEN(char **)         g_papszrtOrgArgs;
+static char **              g_papszrtOrgArgs;
 
 /**
  * Program start nanosecond TS.
