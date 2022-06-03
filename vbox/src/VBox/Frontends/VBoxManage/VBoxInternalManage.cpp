@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 37925 2011-07-13 15:31:10Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1253,7 +1253,7 @@ static int CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aVirtualB
                 }
 
                 /** @todo the clipping below isn't 100% accurate, as it should
-                 * actually clip to the track size. However that's easier said
+                 * actually clip to the track size. However, that's easier said
                  * than done as figuring out the track size is heuristics. In
                  * any case the clipping is adjusted later after sorting, to
                  * prevent overlapping data areas on the resulting image. */

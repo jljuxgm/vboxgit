@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 37900 2011-07-12 13:31:46Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37925 2011-07-13 15:31:10Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -458,7 +458,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "VBoxManage storageattach    <uuid|vmname>\n"
                      "                            --storagectl <name>\n"
                      "                            --port <number>\n"
-                     "                            --device <number>\n"
+                     "                            [--device <number>]\n"
                      "                            [--type dvddrive|hdd|fdd]\n"
                      "                            [--medium none|emptydrive|\n"
                      "                                      <uuid>|<filename>|host:<drive>|iscsi]\n"
