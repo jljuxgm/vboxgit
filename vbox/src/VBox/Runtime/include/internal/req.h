@@ -1,4 +1,4 @@
-/* $Id: req.h 39510 2011-12-02 10:58:29Z vboxsync $ */
+/* $Id: req.h 39517 2011-12-02 15:58:27Z vboxsync $ */
 /** @file
  * IPRT - Internal RTReq header.
  */
@@ -81,6 +81,9 @@ struct RTREQ
         RTREQQUEUE          hQueue;
     } uOwner;
 
+    /** Timestamp take when the request was submitted to a pool.  Not used
+     * for queued request. */
+    uint64_t                uSubmitNanoTs;
     /** Requester event sem.
      * The request can use this event semaphore to wait/poll for completion
      * of the request.
