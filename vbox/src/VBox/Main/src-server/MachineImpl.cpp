@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37680 2011-06-29 11:27:20Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37681 2011-06-29 11:30:07Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4668,8 +4668,7 @@ HRESULT Machine::deleteTaskWorker(DeleteTask &task)
             ComPtr<IProgress> pProgress2;
             rc = pMedium->DeleteStorage(pProgress2.asOutParam());
             if (FAILED(rc)) throw rc;
-            rc = pProgress2->WaitForCompletion(-1);
-//            rc = task.pProgress->WaitForAsyncProgressCompletion(pProgress2);
+            rc = task.pProgress->WaitForAsyncProgressCompletion(pProgress2);
             if (FAILED(rc)) throw rc;
             /* Check the result of the asynchrony process. */
             LONG iRc;
