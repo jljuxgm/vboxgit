@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 39098 2011-10-24 20:53:38Z vboxsync $ */
+/* $Id: UIMachineView.cpp 39099 2011-10-24 21:04:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -515,7 +515,7 @@ void UIMachineView::cleanupFrameBuffer()
             || vboxGlobal().vmRenderMode() == VBoxDefs::SDLMode
 #endif
 #ifdef VBOX_GUI_USE_QUARTZ2D
-            || vboxGlobal().vmRenderMode() == VBoxDefs::Quartz2DMode)
+            || vboxGlobal().vmRenderMode() == VBoxDefs::Quartz2DMode
 #endif
 #ifdef VBOX_WITH_VIDEOHWACCEL
             || m_fAccelerate2DVideo
