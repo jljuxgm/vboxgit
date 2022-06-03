@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: DevPIC.cpp 38849 2011-09-23 13:31:23Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -982,6 +982,12 @@ static DECLCALLBACK(int)  picConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     if (fR0Enabled)
         pThis->pPicHlpR0 = pThis->pPicHlpR3->pfnGetR0Helpers(pDevIns);
 
+    /*
+     * Since the PIC helper interface provides access to the PDM lock, 
+     * we need no device level critical section. 
+     */
+    rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
+    AssertRCReturn(rc, rc);
 
     /*
      * Register I/O ports and save state.
