@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 37284 2011-06-01 08:47:01Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 37285 2011-06-01 09:13:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -55,10 +55,10 @@
 #include "USBDeviceImpl.h"
 #include "RemoteUSBDeviceImpl.h"
 #include "SharedFolderImpl.h"
+#include "AudioSnifferInterface.h"
 #ifdef VBOX_WITH_USB_VIDEO
-# include "AudioSnifferInterface.h"
+# include "UsbWebcamInterface.h"
 #endif
-#include "UsbWebcamInterface.h"
 #include "ProgressCombinedImpl.h"
 #include "ConsoleVRDPServer.h"
 #include "VMMDev.h"
