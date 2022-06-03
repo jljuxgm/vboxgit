@@ -1,4 +1,4 @@
-/* $Id: debug.c 39102 2011-10-25 02:55:58Z vboxsync $ */
+/* $Id: debug.c 39285 2011-11-14 02:26:34Z vboxsync $ */
 /** @file
  * NAT - debug helpers.
  */
@@ -266,9 +266,9 @@ print_socket(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput,
     if (so == NULL)
         return RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
                 "socket is null");
-    if (so->so_state == SS_NOFDREF || so->s == -1)
+    if (so->s == -1)
         return RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
-                "socket(%d) SS_NOFDREF", so->s);
+                "socket(%d)", so->s);
 
     status = getsockname(so->s, &addr, &socklen);
     if(status != 0 || addr.sa_family != AF_INET)
