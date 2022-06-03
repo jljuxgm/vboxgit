@@ -1,4 +1,4 @@
-# $Id: Config.kmk 36222 2011-03-09 12:36:23Z vboxsync $
+# $Id: Config.kmk 36254 2011-03-10 17:22:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2550,8 +2550,8 @@ ifdef VBOX_WITH_RAW_MODE
  endif
 
  ifeq ($(VBOX_LDR_FMT32),elf)
-  TEMPLATE_VBoxRcExe_CFLAGS   = $(filter-out -nostdinc,$(TEMPLATE_VBoxRc_CFLAGS))
-  TEMPLATE_VBoxRcExe_CXXFLAGS = $(filter-out -nostdinc,$(TEMPLATE_VBoxRc_CXXFLAGS))
+  TEMPLATE_VBoxRcExe_CFLAGS   = $(filter-out -nostdinc,$(TEMPLATE_VBoxRc_CFLAGS)) -O0
+  TEMPLATE_VBoxRcExe_CXXFLAGS = $(filter-out -nostdinc,$(TEMPLATE_VBoxRc_CXXFLAGS)) -O0
   TEMPLATE_VBoxRcExe_LDFLAGS  = -g
   TEMPLATE_VBoxRcExe_LDFLAGS.dbgopt = -g
   TEMPLATE_VBoxRcExe_LDFLAGS.strict = -g
@@ -4680,7 +4680,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 36222 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 36254 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
