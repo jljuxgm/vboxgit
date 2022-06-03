@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: ProgressImpl.h 37069 2011-05-13 12:41:38Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -241,6 +241,7 @@ public:
     // IProgress methods
     STDMETHOD(WaitForCompletion)(LONG aTimeout);
     STDMETHOD(WaitForOperationCompletion)(ULONG aOperation, LONG aTimeout);
+    STDMETHOD(WaitForAsyncProgressCompletion)(IProgress *pProgressAsync);
     STDMETHOD(Cancel)();
 
     STDMETHOD(SetCurrentOperationProgress)(ULONG aPercent);
