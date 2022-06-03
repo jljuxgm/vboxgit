@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38093 2011-07-21 12:45:30Z vboxsync $
+# $Id: Config.kmk 38125 2011-07-24 19:08:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2012,7 +2012,7 @@ ifdef VBOX_WITH_CROGL
  VBOX_DARWIN_OPENGL_HEADERS  = gl.h glu.h
  SDK_DARWIN-OPENGL           = Workaround SDK for the darwin OpenGL include directorly layout layout.
  SDK_DARWIN-OPENGL_INCS      = $(PATH_OUT)/obj/VBoxOGL
- SDK_DARWIN-OPENGL_ORDERDEPS = $(addprefix $(PATH_OUT)/obj/VBoxOGL/GL/./,$(VBOX_DARWIN_OPENGL_HEADERS))
+ SDK_DARWIN-OPENGL_ORDERDEPS = $(addprefix $(PATH_OUT)/obj/VBoxOGL/GL/,$(VBOX_DARWIN_OPENGL_HEADERS))
  ## @todo kBuild: Using INTERMEDIATES doesn't work!
 endif
 
@@ -4814,7 +4814,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38093 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38125 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
