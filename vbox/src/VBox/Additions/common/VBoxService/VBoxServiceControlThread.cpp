@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlThread.cpp 39844 2012-01-23 18:47:34Z vboxsync $ */
+/* $Id: VBoxServiceControlThread.cpp 39896 2012-01-27 12:13:28Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for every started guest process.
  */
@@ -89,8 +89,9 @@ static int gstsvcCntlExecThreadInit(PVBOXSERVICECTRLTHREAD pThread,
     if (RT_FAILURE(rc))
         return rc;
 
-    pThread->uPID = 0; /* Don't have a PID yet. */
-    pThread->uFlags = uFlags;
+    pThread->uPID         = 0;          /* Don't have a PID yet. */
+    pThread->pRequest     = NULL;       /* No request assigned yet. */
+    pThread->uFlags       = uFlags;
     pThread->uTimeLimitMS = (   uTimeLimitMS == UINT32_MAX
                              || uTimeLimitMS == 0)
                           ? RT_INDEFINITE_WAIT : uTimeLimitMS;
