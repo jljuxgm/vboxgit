@@ -1,4 +1,4 @@
-; $Id: SUPLibTracerA.asm 41126 2012-05-02 20:10:38Z vboxsync $
+; $Id: SUPLibTracerA.asm 41127 2012-05-02 20:29:36Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Tracer Interface, Assembly bits.
 ;
@@ -210,7 +210,7 @@ EXPORTEDNAME SUPTracerFireProbe
  %else
         mov     xSI, xSP
   %ifdef RT_ASM_USE_PLT
-        call    [rel NAME(suplibTracerFireProbe) wrt ..plt]
+        call    NAME(suplibTracerFireProbe) wrt ..plt
   %else
         call    NAME(suplibTracerFireProbe)
   %endif
