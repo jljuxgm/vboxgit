@@ -1,4 +1,4 @@
-/* $Id: log.cpp 36408 2011-03-24 16:25:47Z vboxsync $ */
+/* $Id: log.cpp 36679 2011-04-15 09:35:07Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -531,11 +531,6 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, uint32_t fFlags, const char *psz
                     }
                 }
             }
-
-            /* Use the callback to generate some initial log contents. */
-            Assert(VALID_PTR(pLogger->pFile->pfnPhase) || pLogger->pFile->pfnPhase == NULL);
-            if (pLogger->pFile->pfnPhase)
-                pLogger->pFile->pfnPhase(pLogger, RTLOGPHASE_BEGIN, rtlogPhaseMsgNormal);
 #endif  /* IN_RING3 */
 
             /*
@@ -557,6 +552,11 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, uint32_t fFlags, const char *psz
                         RTSemSpinMutexRelease(pLogger->hSpinMtx);
                         ASMAtomicWriteU32(&g_cLoggerLockCount, c);
                     }
+
+                    /* Use the callback to generate some initial log contents. */
+                    Assert(VALID_PTR(pLogger->pFile->pfnPhase) || pLogger->pFile->pfnPhase == NULL);
+                    if (pLogger->pFile->pfnPhase)
+                        pLogger->pFile->pfnPhase(pLogger, RTLOGPHASE_BEGIN, rtlogPhaseMsgNormal);
 #endif
                     *ppLogger = pLogger;
                     return VINF_SUCCESS;
