@@ -1,10 +1,10 @@
-/* $Id: SUPUninstall.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: SUPUninstall.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
 /** @file
  * SUPUninstall - Driver Uninstall.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,18 +32,22 @@
 #include <VBox/err.h>
 #include <iprt/initterm.h>
 #include <iprt/stream.h>
+#include <iprt/message.h>
 
 
 int main(int argc, char **argv)
 {
     RTR3InitExeNoArguments(0);
+    if (argc != 1)
+        return RTMsgErrorExit(RTEXITCODE_SYNTAX, "This utility takes no arguments\n");
+    NOREF(argv);
+
     int rc = SUPR3Uninstall();
     if (RT_SUCCESS(rc))
     {
-        RTPrintf("uninstalled successfully\n");
-        return 0;
+        RTMsgInfo("uninstalled successfully");
+        return RTEXITCODE_SUCCESS;
     }
-    RTPrintf("uninstallation failed. rc=%Rrc\n", rc);
-    return 1;
+    return RTMsgErrorExit(RTEXITCODE_FAILURE, "uninstallation failed. rc=%Rrc", rc);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -172,6 +172,7 @@ int suplibOsUninstall(void)
 int suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cbReq)
 {
     AssertMsg(pThis->hDevice != (intptr_t)NIL_RTFILE, ("SUPLIB not initiated successfully!\n"));
+    NOREF(cbReq);
 
     /*
      * Issue device iocontrol.
@@ -244,6 +245,7 @@ int suplibOsPageAlloc(PSUPLIBDATA pThis, size_t cPages, void **ppvPages)
 
 int suplibOsPageFree(PSUPLIBDATA pThis, void *pvPages, size_t cPages)
 {
+    NOREF(pThis);
     munmap(pvPages, cPages << PAGE_SHIFT);
     return VINF_SUCCESS;
 }

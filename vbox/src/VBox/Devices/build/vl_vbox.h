@@ -1,4 +1,4 @@
-/* $Id: vl_vbox.h 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: vl_vbox.h 39091 2011-10-24 13:58:22Z vboxsync $ */
 /** @file
  * VBox vl.h Replacement.
  *
@@ -323,11 +323,13 @@ DECLINLINE(type) cpu_to_ ## endian ## size(type v)\
 \
 DECLINLINE(void) endian ## size ## _to_cpus(type *p)\
 {\
+    NOREF(p); \
     endian ## _bswaps(p, size)\
 }\
 \
 DECLINLINE(void) cpu_to_ ## endian ## size ## s(type *p)\
 {\
+    NOREF(p); \
     endian ## _bswaps(p, size)\
 }\
 \

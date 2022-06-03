@@ -1,4 +1,4 @@
-/* $Id: DevVGATmpl.h 34024 2010-11-12 09:47:37Z vboxsync $ */
+/* $Id: DevVGATmpl.h 39091 2011-10-24 13:58:22Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, code templates.
  */
@@ -398,6 +398,7 @@ static void glue(vga_draw_line15_, DEPTH)(VGAState *s1, uint8_t *d,
         d += BPP;
     } while (--w != 0);
 #endif
+    NOREF(s1);
 }
 
 /*
@@ -423,6 +424,7 @@ static void glue(vga_draw_line16_, DEPTH)(VGAState *s1, uint8_t *d,
         d += BPP;
     } while (--w != 0);
 #endif
+    NOREF(s1);
 }
 
 /*
@@ -433,6 +435,7 @@ static void glue(vga_draw_line24_, DEPTH)(VGAState *s1, uint8_t *d,
 {
     int w;
     uint32_t r, g, b;
+    NOREF(s1);
 
     w = width;
     do {
@@ -479,6 +482,7 @@ static void glue(vga_draw_line32_, DEPTH)(VGAState *s1, uint8_t *d,
         d += BPP;
     } while (--w != 0);
 #endif
+    NOREF(s1);
 }
 
 #if DEPTH != 15

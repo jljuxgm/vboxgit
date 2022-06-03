@@ -1,4 +1,4 @@
-# $Id: Config.kmk 39079 2011-10-21 14:22:16Z vboxsync $
+# $Id: Config.kmk 39091 2011-10-24 13:58:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1442,6 +1442,11 @@ if1of ($(USERNAME), bird)
 endif
 VBOX_GCC_PEDANTIC_CXX ?= -pedantic -Wshadow $(VBOX_GCC_WARN_PEDANTIC) -Wno-long-long
 VBOX_GCC_PEDANTIC_C   ?= -pedantic -Wshadow $(VBOX_GCC_WARN_PEDANTIC) -Wno-long-long -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations -Werror-implicit-function-declaration
+ifeq ($(KBUILD_TARGET),win)
+ VBOX_C_CXX_FLAGS_NO_UNUSED_PARAMETERS = #-Wdxxxx
+else
+ VBOX_C_CXX_FLAGS_NO_UNUSED_PARAMETERS = -Wno-unused-parameter
+endif
 ifeq ($(KBUILD_TYPE),debug)
  VBOX_GCC_FP     ?= -fno-omit-frame-pointer
  VBOX_GCC_OPT    ?= -O0
@@ -4840,7 +4845,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39079 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39091 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

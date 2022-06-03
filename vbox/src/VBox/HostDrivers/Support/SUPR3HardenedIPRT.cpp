@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedIPRT.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: SUPR3HardenedIPRT.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened Support Routines using IPRT.
  */
@@ -100,6 +100,7 @@ DECLHIDDEN(void)   supR3HardenedFatalMsgV(const char *pszWhere, SUPINITOP enmWha
     va_copy(vaCopy, va);
     AssertFatalMsgFailed(("%s (rc=%Rrc): %N", pszWhere, rc, pszMsgFmt, &vaCopy));
     va_end(vaCopy);
+    NOREF(enmWhat);
 }
 
 

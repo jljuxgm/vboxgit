@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 33325 2010-10-21 20:34:14Z vboxsync $ */
+/* $Id: Virtio.h 39091 2011-10-24 13:58:22Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -311,6 +311,7 @@ void vqueueSync(PVPCISTATE pState, PVQUEUE pQueue);
 
 DECLINLINE(bool) vqueueIsReady(PVPCISTATE pState, PVQUEUE pQueue)
 {
+    NOREF(pState);
     return !!pQueue->VRing.addrAvail;
 }
 

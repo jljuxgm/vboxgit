@@ -1,4 +1,4 @@
-/* $Id: semrw-posix.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: semrw-posix.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, POSIX.
  */
@@ -663,6 +663,7 @@ RTDECL(bool)  RTSemRWIsReadOwner(RTSEMRW hRWSem, bool fWannaHear)
     /*
      * Ask the lock validator.
      */
+    NOREF(fWannaHear);
     return RTLockValidatorRecSharedIsOwner(&pThis->ValidatorRead, NIL_RTTHREAD);
 #else
     /*

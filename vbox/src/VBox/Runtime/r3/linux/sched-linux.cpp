@@ -1,4 +1,4 @@
-/* $Id: sched-linux.cpp 36912 2011-05-02 14:23:01Z vboxsync $ */
+/* $Id: sched-linux.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -405,6 +405,7 @@ static void *rtSchedNativeSubProberThread(void *pvUser)
  */
 static void *rtSchedNativeProberThread(void *pvUser)
 {
+    NOREF(pvUser);
     SAVEDPRIORITY SavedPriority;
     rtSchedNativeSave(&SavedPriority);
 
