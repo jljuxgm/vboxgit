@@ -1,4 +1,4 @@
-/* $Revision: 40756 $ */
+/* $Revision: 40758 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -555,6 +555,8 @@ typedef struct SUPDRVDEVEXT
     bool                            fTracerUnloading;
 
 #elif defined(VBOX_WITH_DTRACE_R0DRV)
+    /** Lock protecting The DTrace members. */
+    RTSEMFASTMUTEX                  mtxDTrace;
     /** List of DTrace providers (SUPDRVDTPROVIDER). */
     RTLISTANCHOR                    DtProviderList;
     /** List of zombie DTrace providers (SUPDRVDTPROVIDER). */
