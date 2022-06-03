@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 41333 2012-05-16 11:43:39Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 41486 2012-05-29 15:50:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -198,11 +198,8 @@ void UIMachineWindowScale::cleanupMenu()
 
 void UIMachineWindowScale::showInNecessaryMode()
 {
-    /* Make sure we really have to show window: */
-    BOOL fEnabled = true;
-    ULONG guestOriginX = 0, guestOriginY = 0, guestWidth = 0, guestHeight = 0;
-    machine().QuerySavedGuestScreenInfo(m_uScreenId, guestOriginX, guestOriginY, guestWidth, guestHeight, fEnabled);
-    if (fEnabled)
+    /* Show window if we have to: */
+    if (shouldWeShowWindow())
         show();
 }
 

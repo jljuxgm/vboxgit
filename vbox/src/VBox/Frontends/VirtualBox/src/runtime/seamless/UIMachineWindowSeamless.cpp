@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 41334 2012-05-16 12:16:55Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 41486 2012-05-29 15:50:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -218,11 +218,8 @@ void UIMachineWindowSeamless::cleanupMenu()
 
 void UIMachineWindowSeamless::showInNecessaryMode()
 {
-    /* Make sure we really have to show window: */
-    BOOL fEnabled = true;
-    ULONG guestOriginX = 0, guestOriginY = 0, guestWidth = 0, guestHeight = 0;
-    machine().QuerySavedGuestScreenInfo(m_uScreenId, guestOriginX, guestOriginY, guestWidth, guestHeight, fEnabled);
-    if (fEnabled)
+    /* Show window if we have to: */
+    if (shouldWeShowWindow())
     {
         /* Show manually maximized window: */
         sltPlaceOnScreen();
