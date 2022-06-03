@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 36071 2011-02-24 15:02:10Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 36073 2011-02-24 15:28:45Z vboxsync $ */
 
 /** @file
  *
@@ -260,4 +260,4 @@ int CollectorSolaris::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
     return rc;
 }
 
-
+}
