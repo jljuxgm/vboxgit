@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 35685 2011-01-24 15:56:51Z vboxsync $ */
+/* $Id: VBoxDD.cpp 37198 2011-05-24 15:10:40Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -236,6 +236,11 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 #endif
 #if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostInterface);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_UDPTUNNEL
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvUDPTunnel);
     if (RT_FAILURE(rc))
         return rc;
 #endif

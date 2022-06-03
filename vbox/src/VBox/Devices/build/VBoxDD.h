@@ -1,10 +1,10 @@
-/* $Id: VBoxDD.h 35685 2011-01-24 15:56:51Z vboxsync $ */
+/* $Id: VBoxDD.h 37198 2011-05-24 15:10:40Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -100,6 +100,9 @@ extern const PDMDRVREG g_DrvISCSI;
 extern const PDMDRVREG g_DrvISCSITransportTcp;
 #if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
 extern const PDMDRVREG g_DrvHostInterface;
+#endif
+#ifdef VBOX_WITH_UDPTUNNEL
+extern const PDMDRVREG g_DrvUDPTunnel;
 #endif
 #ifdef VBOX_WITH_VDE
 extern const PDMDRVREG g_DrvVDE;
