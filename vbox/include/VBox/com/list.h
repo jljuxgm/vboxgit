@@ -1,4 +1,4 @@
-/* $Id: list.h 37068 2011-05-13 12:38:28Z vboxsync $ */
+/* $Id: list.h 37530 2011-06-17 12:03:46Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - List classes declaration.
  */
@@ -194,6 +194,15 @@ public:
     /* Define our own new and delete. */
     RTMEMEF_NEW_AND_DELETE_OPERATORS();
 };
+
+template <typename T> RTCList<T> SafeArrayToRTCList(ComSafeArrayIn(T, other))
+{
+    com::SafeArray<T> sfaOther(ComSafeArrayInArg(other));
+    RTCList<T> list(sfaOther.size());
+    for (size_t i = 0; i < sfaOther.size(); ++i)
+        list.append(sfaOther[i]);
+    return list;
+}
 
 #endif /* !___VBox_com_list_h */
 
