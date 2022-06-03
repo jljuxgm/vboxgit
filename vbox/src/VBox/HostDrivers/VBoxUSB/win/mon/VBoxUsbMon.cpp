@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 37083 2011-05-13 19:24:39Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 37757 2011-07-04 10:44:53Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -731,16 +731,19 @@ static NTSTATUS vboxUsbMonCheckInitStuff()
             Status = VBoxUsbFltInit();
             if (NT_SUCCESS(Status))
             {
-                vboxUsbMonHookCheckInit();
-                Status = vboxUsbMonHookInstall();
+                Status = vboxUsbMonHookCheckInit();
                 if (NT_SUCCESS(Status))
                 {
-                    Status = STATUS_SUCCESS;
-                    break;
-                }
-                else
-                {
-                    AssertFailed();
+                    Status = vboxUsbMonHookInstall();
+                    if (NT_SUCCESS(Status))
+                    {
+                        Status = STATUS_SUCCESS;
+                        break;
+                    }
+                    else
+                    {
+                        AssertFailed();
+                    }
                 }
                 VBoxUsbFltTerm();
             }
