@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37800 2011-07-06 12:16:29Z vboxsync $
+# $Id: Makefile.kmk 38005 2011-07-18 10:17:43Z vboxsync $
 ## @file
 # Top-level makefile for the VirtualBox Guest Additions.
 #
@@ -73,7 +73,7 @@ ifndef VBOX_ONLY_TESTSUITE
 
  ifeq ($(KBUILD_TARGET),linux)
   INSTALLS += LnxAddIso-scripts
-  LnxAddIso-scripts_INST    = bin/additions
+  LnxAddIso-scripts_INST    = $(INST_ADDITIONS)
   LnxAddIso-scripts_MODE    = a+rx,u+w
   LnxAddIso-scripts_SOURCES = \
 	$(LnxAddIso-scripts_0_OUTDIR)/runasroot.sh \
