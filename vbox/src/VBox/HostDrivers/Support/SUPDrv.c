@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 41067 2012-04-26 11:36:57Z vboxsync $ */
+/* $Id: SUPDrv.c 41068 2012-04-26 11:39:29Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3891,7 +3891,8 @@ static int supdrvIOCtl_LdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
     /*
      * Allocate memory.
      */
-    pv = RTMemAlloc(RT_OFFSETOF(SUPDRVLDRIMAGE, szName[cchName + 1]));
+    Assert(cchName < sizeof(pImage->szName));
+    pv = RTMemAlloc(sizeof(SUPDRVLDRIMAGE));
     if (!pv)
     {
         supdrvLdrUnlock(pDevExt);
