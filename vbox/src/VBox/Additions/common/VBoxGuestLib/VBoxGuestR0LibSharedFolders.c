@@ -1,4 +1,4 @@
-/* $Revision: 39552 $ */
+/* $Revision: 39553 $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -105,10 +105,9 @@ DECLVBGL(int) vboxConnect (PVBSFCLIENT pClient)
 DECLVBGL(void) vboxDisconnect (PVBSFCLIENT pClient)
 {
     int rc;
-
-    LogFunc(("u32ClientID=%d\n", pClient->ulClientID));
     VBoxGuestHGCMDisconnectInfo data;
 
+    LogFunc(("u32ClientID=%d\n", pClient->ulClientID));
     if (pClient->handle == NULL)
         return;                 /* not connected */
 
