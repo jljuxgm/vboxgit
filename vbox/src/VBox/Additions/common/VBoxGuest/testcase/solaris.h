@@ -1,4 +1,4 @@
-/* $Id: solaris.h 40311 2012-03-01 12:09:56Z vboxsync $ */
+/* $Id: solaris.h 40345 2012-03-02 23:12:40Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver for Solaris - testcase stubs.
  */
@@ -156,7 +156,7 @@ typedef struct dev_info *dev_info_t;
 typedef struct __ddi_acc_handle * ddi_acc_handle_t;
 typedef struct __ddi_intr_handle *ddi_intr_handle_t;
 typedef struct mutex *kmutex_t;
-typedef unsigned long uint_t;
+typedef unsigned int uint_t;
 typedef unsigned short ushort_t;
 typedef unsigned char uchar_t;
 
