@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 37809 2011-07-07 08:15:02Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 39435 2011-11-28 12:56:50Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -850,6 +850,41 @@ DECLCALLBACK(int)  ConsoleVRDPServer::VRDPCallbackQueryProperty(void *pvCallback
             if (pcbOut)
             {
                 *pcbOut = sizeof(uint32_t);
+            }
+
+            server->mConsole->onVRDEServerInfoChange();
+        } break;
+
+        case VRDE_SP_CLIENT_NAME:
+        {
+            if (cbBuffer < sizeof(VRDECLIENTNAME))
+            {
+                rc = VERR_INVALID_PARAMETER;
+                break;
+            }
+
+            size_t cbName = cbBuffer - RT_OFFSETOF(VRDECLIENTNAME, achName);
+
+            VRDECLIENTNAME *pClientName = (VRDECLIENTNAME *)pvBuffer;
+
+            size_t cchName = 0;
+            rc = RTStrNLenEx(pClientName->achName, cbName, &cchName);
+
+            if (RT_FAILURE(rc))
+            {
+                rc = VERR_INVALID_PARAMETER;
+                break;
+            }
+
+            Log(("VRDE_SP_CLIENT_NAME [%s]\n", pClientName->achName));
+
+            server->mConsole->VRDPClientNameChange(pClientName->u32ClientId, pClientName->achName);
+
+            rc = VINF_SUCCESS;
+
+            if (pcbOut)
+            {
+                *pcbOut = cbBuffer;
             }
 
             server->mConsole->onVRDEServerInfoChange();
