@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 40879 2012-04-11 23:02:53Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 40885 2012-04-12 00:11:25Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -388,8 +388,8 @@ static void     supdrvDtPOps_GetArgDesc(void *pvProv, dtrace_id_t idProbe, void 
         PVTGDESCARGLIST pArgList   = (PVTGDESCARGLIST)((uintptr_t)pProv->pHdr->paArgLists + pProbeDesc->offArgList);
         AssertPtrReturnVoid(pArgList);
 
-        Assert(pProbeDesc->offArgList < pProv->pHdr->cbArgLists);
-        if (pArgList->cArgs > uArg)
+        AssertReturnVoid(pProbeDesc->offArgList < pProv->pHdr->cbArgLists);
+        if (uArg < pArgList->cArgs)
         {
             const char *pszType = vboxDtVtgGetString(pProv->pHdr, pArgList->aArgs[uArg].offType);
             size_t      cchType = strlen(pszType);
