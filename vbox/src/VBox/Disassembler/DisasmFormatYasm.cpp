@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 41501 2012-05-30 15:58:23Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 41505 2012-05-30 19:18:15Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -1422,6 +1422,12 @@ DISDECL(bool) DISFormatYasmIsOddEncoding(PDISCPUSTATE pCpu)
             case OP_PUSH:
                 Assert(pCpu->opcode == 0x8f);
                 return true;
+
+            case OP_MOV:
+                if (   pCpu->opcode == 0x8a
+                    || pCpu->opcode == 0x8b)
+                    return true;
+                break;
 
             default:
                 break;
