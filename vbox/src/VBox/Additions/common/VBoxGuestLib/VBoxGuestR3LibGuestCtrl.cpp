@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 36740 2011-04-20 09:50:51Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 37021 2011-05-10 09:38:12Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -317,8 +317,6 @@ VBGLR3DECL(int) VbglR3GuestCtrlExecGetHostCmdInput(uint32_t  u32ClientId,    uin
     VbglHGCMParmUInt32Set(&Msg.flags, 0);
     VbglHGCMParmPtrSet(&Msg.data, pvData, cbData);
     VbglHGCMParmUInt32Set(&Msg.size, 0);
-
-    RTPrintf("vbglR3DoIOCtl: data = 0x%p, %u, msg = %u\n", pvData, cbData, sizeof(Msg));
 
     int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
     if (RT_SUCCESS(rc))
