@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 38350 2011-08-08 13:57:50Z vboxsync $ */
+/* $Id: DevOHCI.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -4876,14 +4876,9 @@ static DECLCALLBACK(int)
 ohciR3Map(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, uint32_t cb, PCIADDRESSSPACE enmType)
 {
     POHCI pOhci = (POHCI)pPciDev;
-    int rc = PDMDevHlpMMIORegister(pOhci->CTX_SUFF(pDevIns),
-                                   GCPhysAddress,
-                                   cb,
-                                   NULL,
-                                   ohciWrite,
-                                   ohciRead,
-                                   NULL,
-                                   "USB OHCI");
+    int rc = PDMDevHlpMMIORegister(pOhci->CTX_SUFF(pDevIns), GCPhysAddress, cb, NULL /*pvUser*/,
+                                   IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                                   ohciWrite, ohciRead, "USB OHCI");
     if (RT_FAILURE(rc))
         return rc;
 

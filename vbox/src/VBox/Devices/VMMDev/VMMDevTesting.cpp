@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
@@ -336,10 +336,8 @@ int vmmdevTestingInitialize(PPDMDEVINS pDevIns)
      * tests interfaces.
      */
     int rc = PDMDevHlpMMIORegister(pDevIns, VMMDEV_TESTING_MMIO_BASE, VMMDEV_TESTING_MMIO_SIZE, NULL /*pvUser*/,
-                                   vmmdevTestingMmioWrite,
-                                   vmmdevTestingMmioRead,
-                                   NULL /*pfnFill*/,
-                                   "VMMDev Testing");
+                                   IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                                   vmmdevTestingMmioWrite, vmmdevTestingMmioRead, "VMMDev Testing");
     AssertRCReturn(rc, rc);
     if (pThis->fRZEnabled)
     {

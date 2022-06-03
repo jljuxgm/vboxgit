@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 37654 2011-06-28 06:02:23Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -2040,8 +2040,9 @@ static DECLCALLBACK(int) hdaMap (PPCIDEVICE pPciDev, int iRegion,
     PCIINTELHDLinkState *pThis = PCIDEV_2_ICH6_HDASTATE(pPciDev);
 
     Assert(enmType == PCI_ADDRESS_SPACE_MEM);
-    rc = PDMDevHlpMMIORegister(pPciDev->pDevIns, GCPhysAddress, cb, 0,
-                               hdaMMIOWrite, hdaMMIORead, NULL, "ICH6_HDA");
+    rc = PDMDevHlpMMIORegister(pPciDev->pDevIns, GCPhysAddress, cb, NULL /*pvUser*/,
+                               IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                               hdaMMIOWrite, hdaMMIORead, "ICH6_HDA");
 
     if (RT_FAILURE(rc))
         return rc;

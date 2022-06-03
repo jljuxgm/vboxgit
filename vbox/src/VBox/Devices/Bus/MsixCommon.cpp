@@ -1,4 +1,4 @@
-/* $Id: MsixCommon.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
+/* $Id: MsixCommon.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * MSI-X support routines
  */
@@ -156,7 +156,8 @@ static DECLCALLBACK(int) msixMap (PPCIDEVICE pPciDev, int iRegion,
     NOREF(iRegion); NOREF(enmType);
 
     int rc = PDMDevHlpMMIORegister(pPciDev->pDevIns, GCPhysAddress, cb, pPciDev,
-                                   msixMMIOWrite, msixMMIORead, NULL, "MSI-X tables");
+                                   IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                                   msixMMIOWrite, msixMMIORead, "MSI-X tables");
 
     if (RT_FAILURE(rc))
         return rc;

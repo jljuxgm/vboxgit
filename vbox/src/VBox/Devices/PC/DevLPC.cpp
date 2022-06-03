@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
+/* $Id: DevLPC.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  */
@@ -336,7 +336,8 @@ static DECLCALLBACK(int) lpcConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
      * Register the MMIO regions.
      */
     rc = PDMDevHlpMMIORegister(pDevIns, RCBA_BASE, 0x4000, pThis,
-                               lpcMMIOWrite, lpcMMIORead, NULL, "LPC Memory");
+                               IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                               lpcMMIOWrite, lpcMMIORead, "LPC Memory");
     if (RT_FAILURE(rc))
         return rc;
 

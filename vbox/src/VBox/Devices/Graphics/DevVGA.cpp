@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
+/* $Id: DevVGA.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5982,7 +5982,9 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     }
 
     /* vga mmio */
-    rc = PDMDevHlpMMIORegister(pDevIns, 0x000a0000, 0x00020000, 0, vgaMMIOWrite, vgaMMIORead, vgaMMIOFill, "VGA - VGA Video Buffer");
+    rc = PDMDevHlpMMIORegisterEx(pDevIns, 0x000a0000, 0x00020000, NULL /*pvUser*/,
+                                 IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                                 vgaMMIOWrite, vgaMMIORead, vgaMMIOFill, "VGA - VGA Video Buffer");
     if (RT_FAILURE(rc))
         return rc;
     if (pThis->fGCEnabled)

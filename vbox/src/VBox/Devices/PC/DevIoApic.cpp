@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 39059 2011-10-20 14:48:56Z vboxsync $ */
+/* $Id: DevIoApic.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -628,7 +628,8 @@ static DECLCALLBACK(int) ioapicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
      * Register MMIO callbacks and saved state.
      */
     rc = PDMDevHlpMMIORegister(pDevIns, 0xfec00000, 0x1000, s,
-                               ioapicMMIOWrite, ioapicMMIORead, NULL, "I/O APIC Memory");
+                               IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                               ioapicMMIOWrite, ioapicMMIORead, "I/O APIC Memory");
     if (RT_FAILURE(rc))
         return rc;
 

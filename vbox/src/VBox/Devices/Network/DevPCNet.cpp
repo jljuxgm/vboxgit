@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
+/* $Id: DevPCNet.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4051,7 +4051,8 @@ static DECLCALLBACK(int) pcnetMMIOMap(PPCIDEVICE pPciDev, /*unsigned*/ int iRegi
 
     /* We use the assigned size here, because we currently only support page aligned MMIO ranges. */
     rc = PDMDevHlpMMIORegister(pPciDev->pDevIns, GCPhysAddress, cb, pThis,
-                               pcnetMMIOWrite, pcnetMMIORead, NULL, "PCNet");
+                               IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                               pcnetMMIOWrite, pcnetMMIORead, "PCNet");
     if (RT_FAILURE(rc))
         return rc;
     pThis->MMIOBase = GCPhysAddress;

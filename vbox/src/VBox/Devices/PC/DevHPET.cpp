@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
+/* $Id: DevHPET.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -1443,7 +1443,8 @@ static DECLCALLBACK(int) hpetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
      * addresses and sizes.
      */
     rc = PDMDevHlpMMIORegister(pDevIns, HPET_BASE, 0x1000, pThis,
-                               hpetMMIOWrite, hpetMMIORead, NULL, "HPET Memory");
+                               IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                               hpetMMIOWrite, hpetMMIORead, "HPET Memory");
     AssertRCReturn(rc, rc);
 
     if (fRCEnabled)

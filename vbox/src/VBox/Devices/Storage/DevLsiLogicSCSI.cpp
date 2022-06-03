@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 39135 2011-10-28 09:47:55Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3840,8 +3840,9 @@ static DECLCALLBACK(int) lsilogicMap(PPCIDEVICE pPciDev, /*unsigned*/ int iRegio
     if ((enmType == PCI_ADDRESS_SPACE_MEM) && (iRegion == 1))
     {
         /* We use the assigned size here, because we currently only support page aligned MMIO ranges. */
-        rc = PDMDevHlpMMIORegister(pDevIns, GCPhysAddress, cb, NULL,
-                                   lsilogicMMIOWrite, lsilogicMMIORead, NULL, pcszCtrl);
+        rc = PDMDevHlpMMIORegister(pDevIns, GCPhysAddress, cb, NULL /*pvUser*/,
+                                   IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                                   lsilogicMMIOWrite, lsilogicMMIORead, pcszCtrl);
         if (RT_FAILURE(rc))
             return rc;
 
@@ -3863,11 +3864,12 @@ static DECLCALLBACK(int) lsilogicMap(PPCIDEVICE pPciDev, /*unsigned*/ int iRegio
 
         pThis->GCPhysMMIOBase = GCPhysAddress;
     }
-    else if ((enmType == PCI_ADDRESS_SPACE_MEM) && (iRegion == 2))
+    else if (enmType == PCI_ADDRESS_SPACE_MEM && iRegion == 2)
     {
         /* We use the assigned size here, because we currently only support page aligned MMIO ranges. */
-        rc = PDMDevHlpMMIORegister(pDevIns, GCPhysAddress, cb, NULL,
-                                   lsilogicDiagnosticWrite, lsilogicDiagnosticRead, NULL, pcszDiag);
+        rc = PDMDevHlpMMIORegister(pDevIns, GCPhysAddress, cb, NULL /*pvUser*/,
+                                   IOMMMIO_FLAGS_READ_PASSTHRU | IOMMMIO_FLAGS_WRITE_PASSTHRU,
+                                   lsilogicDiagnosticWrite, lsilogicDiagnosticRead, pcszDiag);
         if (RT_FAILURE(rc))
             return rc;
 
