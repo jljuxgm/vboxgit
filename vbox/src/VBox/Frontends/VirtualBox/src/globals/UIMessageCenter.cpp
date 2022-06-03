@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 41017 2012-04-20 21:56:33Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 41153 2012-05-03 22:23:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1946,12 +1946,6 @@ void UIMessageCenter::showUpdateNotFound()
 bool UIMessageCenter::askAboutCancelAllNetworkRequest(QWidget *pParent)
 {
     return messageOkCancel(pParent, Question, tr("Do you wish to cancel all current network operations?"));
-}
-
-bool UIMessageCenter::askAboutCancelOrLeaveAllNetworkRequest(QWidget *pParent)
-{
-    return messageYesNo(pParent, Question, tr("Do you wish to cancel all current network operations or leave them running in the background?"),
-                        0 /* auto-confirm id */, tr("Cancel All"), tr("Leave in Background"));
 }
 
 /**

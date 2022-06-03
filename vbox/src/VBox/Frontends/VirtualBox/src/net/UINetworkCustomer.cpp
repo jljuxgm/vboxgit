@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.cpp 41142 2012-05-03 15:52:52Z vboxsync $ */
+/* $Id: UINetworkCustomer.cpp 41153 2012-05-03 22:23:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,8 +24,15 @@
 #include "UINetworkCustomer.h"
 #include "UINetworkManager.h"
 
-UINetworkCustomer::UINetworkCustomer(QObject *pParent /* = 0 */)
+UINetworkCustomer::UINetworkCustomer()
+    : QObject(0)
+    , m_fForceCall(true)
+{
+}
+
+UINetworkCustomer::UINetworkCustomer(QObject *pParent, bool fForceCall)
     : QObject(pParent)
+    , m_fForceCall(fForceCall)
 {
 }
 
