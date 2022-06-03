@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 39409 2011-11-24 15:28:32Z vboxsync $ */
+/* $Id: tcp_subr.c 40422 2012-03-11 02:37:03Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -275,11 +275,9 @@ struct tcpcb *
 tcp_close(PNATState pData, register struct tcpcb *tp)
 {
     struct socket *so = tp->t_socket;
-    struct socket *so_next, *so_prev;
 
     struct tseg_qent *te = NULL;
     LogFlowFunc(("ENTER: tp = %R[tcpcb793]\n", tp));
-    so_next = so_prev = NULL;
     /*XXX: freeing the reassembly queue */
     while (!LIST_EMPTY(&tp->t_segq))
     {
