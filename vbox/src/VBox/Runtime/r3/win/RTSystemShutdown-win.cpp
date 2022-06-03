@@ -1,4 +1,4 @@
-/* $Id: RTSystemShutdown-win.cpp 39726 2012-01-08 16:39:33Z vboxsync $ */
+/* $Id: RTSystemShutdown-win.cpp 39727 2012-01-08 16:51:52Z vboxsync $ */
 /** @file
  * IPRT - RTSystemShutdown, Windows.
  */
@@ -56,7 +56,7 @@ RTDECL(int) RTSystemShutdown(RTMSINTERVAL cMsDelay, uint32_t fFlags, const char 
                                 cSecsTimeout,
                                 fForceAppsClosed,
                                 fRebootAfterShutdown))
-        return VINF_SUCCESS;
+        return (fFlags & RTSYSTEM_SHUTDOWN_ACTION_MASK) == RTSYSTEM_SHUTDOWN_HALT ? VINF_SYS_MAY_POWER_OFF : VINF_SUCCESS;
     return RTErrConvertFromWin32(GetLastError());
 }
 RT_EXPORT_SYMBOL(RTSystemShutdown);
