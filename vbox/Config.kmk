@@ -1,4 +1,4 @@
-# $Id: Config.kmk 37238 2011-05-27 15:11:11Z vboxsync $
+# $Id: Config.kmk 37240 2011-05-27 15:24:26Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4359,9 +4359,10 @@ TEMPLATE_VBOXGUESTR3EXE_DEFS     := $(filter-out $(ARCH_BITS_DEFS), $(TEMPLATE_V
 TEMPLATE_VBOXGUESTR3EXE_DEFS.linux := $(TEMPLATE_VBOXR3EXE_DEFS.linux) LOG_USE_C99 RT_WITHOUT_EXEC_ALLOC
 ifeq ($(KBUILD_TARGET),linux) # As few libs as possible on linux.
  TEMPLATE_VBOXGUESTR3EXE_LIBS     = pthread rt m
-endif
-if1of ($(KBUILD_TARGET), freebsd netbsd openbsd)
+else if1of ($(KBUILD_TARGET), freebsd netbsd openbsd)
  TEMPLATE_VBOXGUESTR3EXE_LIBS     = $(TEMPLATE_VBOXR3EXE_LIBS) iconv
+else ifeq ($(KBUILD_TARGET), solaris)
+ TEMPLATE_VBOXGUESTR3EXE_LIBS     = $(TEMPLATE_VBOXR3EXE_LIBS) nsl
 endif
 
 
@@ -4756,7 +4757,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37238 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37240 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
