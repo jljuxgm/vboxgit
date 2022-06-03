@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41734 2012-06-15 00:20:13Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2417,13 +2417,13 @@ ResumeExecution:
                 {
                     Log2(("IOMInterpretOUTSEx %RGv %x size=%d\n", (RTGCPTR)pCtx->rip, IoExitInfo.n.u16Port, uIOSize));
                     STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitIOStringWrite);
-                    rc = IOMInterpretOUTSEx(pVM, CPUMCTX2CORE(pCtx), IoExitInfo.n.u16Port, pDis->prefix, (DISCPUMODE)pDis->addrmode, uIOSize);
+                    rc = IOMInterpretOUTSEx(pVM, CPUMCTX2CORE(pCtx), IoExitInfo.n.u16Port, pDis->fPrefix, (DISCPUMODE)pDis->addrmode, uIOSize);
                 }
                 else
                 {
                     Log2(("IOMInterpretINSEx  %RGv %x size=%d\n", (RTGCPTR)pCtx->rip, IoExitInfo.n.u16Port, uIOSize));
                     STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitIOStringRead);
-                    rc = IOMInterpretINSEx(pVM, CPUMCTX2CORE(pCtx), IoExitInfo.n.u16Port, pDis->prefix, (DISCPUMODE)pDis->addrmode, uIOSize);
+                    rc = IOMInterpretINSEx(pVM, CPUMCTX2CORE(pCtx), IoExitInfo.n.u16Port, pDis->fPrefix, (DISCPUMODE)pDis->addrmode, uIOSize);
                 }
             }
             else

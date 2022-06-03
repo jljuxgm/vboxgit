@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
+/* $Id: EMRaw.cpp 41734 2012-06-15 00:20:13Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -427,7 +427,7 @@ static int emR3ExecuteIOInstruction(PVM pVM, PVMCPU pVCpu)
     {
         VBOXSTRICTRC rcStrict = VINF_EM_RAW_EMULATE_INSTR;
 
-        if (!(Cpu.prefix & (DISPREFIX_REP | DISPREFIX_REPNE)))
+        if (!(Cpu.fPrefix & (DISPREFIX_REP | DISPREFIX_REPNE)))
         {
             switch (Cpu.pCurInstr->opcode)
             {
@@ -446,7 +446,7 @@ static int emR3ExecuteIOInstruction(PVM pVM, PVMCPU pVCpu)
                 }
             }
         }
-        else if (Cpu.prefix & DISPREFIX_REP)
+        else if (Cpu.fPrefix & DISPREFIX_REP)
         {
             switch (Cpu.pCurInstr->opcode)
             {

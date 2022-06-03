@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 41734 2012-06-15 00:20:13Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -541,7 +541,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         /*
          * Speed up dtrace and don't entrust invalid lock sequences to the recompiler.
          */
-        else if (Cpu.prefix & DISPREFIX_LOCK)
+        else if (Cpu.fPrefix & DISPREFIX_LOCK)
         {
             Log(("TRPMGCTrap06Handler: pc=%08x op=%d\n", pRegFrame->eip, Cpu.pCurInstr->opcode));
 #ifdef DTRACE_EXPERIMENT /** @todo fix/remove/permanent-enable this when DIS/PATM handles invalid lock sequences. */

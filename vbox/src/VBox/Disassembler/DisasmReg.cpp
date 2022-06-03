@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
+/* $Id: DisasmReg.cpp 41734 2012-06-15 00:20:13Z vboxsync $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -258,7 +258,7 @@ DISDECL(int) DISGetParamSize(PDISCPUSTATE pCpu, PDISOPPARAM pParam)
 //*****************************************************************************
 DISDECL(DISSELREG) DISDetectSegReg(PDISCPUSTATE pCpu, PDISOPPARAM pParam)
 {
-    if (pCpu->prefix & DISPREFIX_SEG)
+    if (pCpu->fPrefix & DISPREFIX_SEG)
         /* Use specified SEG: prefix. */
         return (DISSELREG)pCpu->idxSegPrefix;
 
@@ -279,7 +279,7 @@ DISDECL(DISSELREG) DISDetectSegReg(PDISCPUSTATE pCpu, PDISOPPARAM pParam)
 //*****************************************************************************
 DISDECL(uint8_t) DISQuerySegPrefixByte(PDISCPUSTATE pCpu)
 {
-    Assert(pCpu->prefix & DISPREFIX_SEG);
+    Assert(pCpu->fPrefix & DISPREFIX_SEG);
     switch (pCpu->idxSegPrefix)
     {
     case DISSELREG_ES:
