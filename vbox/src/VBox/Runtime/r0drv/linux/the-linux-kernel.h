@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 39702 2012-01-04 22:42:39Z vboxsync $ */
+/* $Id: the-linux-kernel.h 39829 2012-01-22 12:36:30Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -64,6 +64,9 @@
 #  define KBUILD_STR(s) #s
 # endif
 #endif
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 3, 0)
+#  include <linux/kconfig.h> /* for macro IS_ENABLED */
+# endif
 #include <linux/string.h>
 #include <linux/spinlock.h>
 #include <linux/slab.h>
