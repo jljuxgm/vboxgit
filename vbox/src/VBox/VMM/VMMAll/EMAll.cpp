@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: EMAll.cpp 36291 2011-03-16 11:37:27Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -659,7 +659,7 @@ static int emInterpretIncDec(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXC
                 pParam1 = emConvertToFlatAddr(pVM, pRegFrame, pDis, &pDis->param1, pParam1);
 #ifdef IN_RC
                 /* Safety check (in theory it could cross a page boundary and fault there though) */
-                AssertReturn(pParam1 == pvFault, VERR_EM_INTERPRETER);
+                EM_ASSERT_FAULT_RETURN(pParam1 == pvFault, VERR_EM_INTERPRETER);
 #endif
                 rc = emRamRead(pVM, pVCpu, pRegFrame,  &valpar1, pParam1, param1.size);
                 if (RT_FAILURE(rc))
