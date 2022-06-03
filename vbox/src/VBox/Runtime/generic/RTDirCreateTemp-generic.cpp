@@ -1,4 +1,4 @@
-/* $Id: RTDirCreateTemp-generic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTDirCreateTemp-generic.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateTemp, generic implementation.
  */
@@ -99,7 +99,7 @@ RTDECL(int) RTDirCreateTemp(char *pszTemplate)
         unsigned j = cXes;
         while (j-- > 0)
             pszX[j] = s_sz[RTRandU32Ex(0, RT_ELEMENTS(s_sz) - 2)];
-        int rc = RTDirCreate(pszTemplate, 0700);
+        int rc = RTDirCreate(pszTemplate, 0700, 0);
         if (RT_SUCCESS(rc))
             return rc;
         if (rc != VERR_ALREADY_EXISTS)

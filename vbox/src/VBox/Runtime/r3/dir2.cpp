@@ -1,4 +1,4 @@
-/* $Id: dir2.cpp 34015 2010-11-12 00:15:05Z vboxsync $ */
+/* $Id: dir2.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 2.
  */
@@ -115,7 +115,7 @@ static int rtDirRemoveRecursiveSub(char *pszBuf, size_t cchDir, PRTDIRENTRY pDir
                 }
 
                 //case RTDIRENTRYTYPE_SYMLINK:
-                //    rc = RTSymlinkDelete(pszBuf);
+                //    rc = RTSymlinkDelete(pszBuf, 0);
                 //    break;
 
                 default:

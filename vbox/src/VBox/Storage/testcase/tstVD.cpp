@@ -1,4 +1,4 @@
-/* $Id: tstVD.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstVD.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility.
  */
@@ -883,7 +883,7 @@ int main(int argc, char *argv[])
 
     if (!RTDirExists("tmp"))
     {
-        rc = RTDirCreate("tmp", RTFS_UNIX_IRWXU);
+        rc = RTDirCreate("tmp", RTFS_UNIX_IRWXU, 0);
         if (RT_FAILURE(rc))
         {
             RTPrintf("tstVD: Failed to create 'tmp' directory! rc=%Rrc\n", rc);

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -988,7 +988,7 @@ static RTEXITCODE VBoxServiceToolboxMkDir(int argc, char **argv)
                      * twice). */
                     rc = RTDirCreateFullPath(ValueUnion.psz, fDirMode);
                 else
-                    rc = RTDirCreate(ValueUnion.psz, fDirMode);
+                    rc = RTDirCreate(ValueUnion.psz, fDirMode, 0);
                 if (RT_FAILURE(rc))
                     return RTMsgErrorExit(RTEXITCODE_FAILURE, "Could not create directory '%s': %Rra\n",
                                           ValueUnion.psz, rc);

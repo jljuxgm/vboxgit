@@ -1,4 +1,4 @@
-/* $Id: RTDirCreateUniqueNumbered-generic.cpp 36604 2011-04-06 23:02:52Z vboxsync $ */
+/* $Id: RTDirCreateUniqueNumbered-generic.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
@@ -53,7 +53,7 @@ RTDECL(int) RTDirCreateUniqueNumbered(char *pszPath, size_t cbSize, RTFMODE fMod
     size_t cbLeft = cbSize - (pszEnd - pszPath);
 
     /* First try is to create the path without any numbers. */
-    int rc = RTDirCreate(pszPath, fMode);
+    int rc = RTDirCreate(pszPath, fMode, 0);
     if (   RT_SUCCESS(rc)
         || rc != VERR_ALREADY_EXISTS)
         return rc;
@@ -88,7 +88,7 @@ RTDECL(int) RTDirCreateUniqueNumbered(char *pszPath, size_t cbSize, RTFMODE fMod
             *pszPath = '\0';
             return (int)rc2;
         }
-        rc = RTDirCreate(pszPath, fMode);
+        rc = RTDirCreate(pszPath, fMode, 0);
         if (RT_SUCCESS(rc))
             return rc;
         ++i;

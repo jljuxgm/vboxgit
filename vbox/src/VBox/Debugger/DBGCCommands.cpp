@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1874,7 +1874,7 @@ void dbgcPlugInAutoLoad(PDBGC pDbgc)
     strcat(szPath, pszSuff);
 
     PRTDIR pDir;
-    rc = RTDirOpenFiltered(&pDir, szPath, RTDIRFILTER_WINNT);
+    rc = RTDirOpenFiltered(&pDir, szPath, RTDIRFILTER_WINNT, 0);
     if (RT_SUCCESS(rc))
     {
         /*

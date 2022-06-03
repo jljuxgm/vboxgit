@@ -1,4 +1,4 @@
-/* $Id: tstRunTestcases.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstRunTestcases.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
 /** @file
  * tstRunTestcases - Driver program for running VBox testcase (tst* testcase/tst*).
  */
@@ -170,7 +170,7 @@ static void Process(const char *pszFilter, const char *pszDir)
      * Open and enumerate the directory.
      */
     PRTDIR pDir;
-    int rc = RTDirOpenFiltered(&pDir, pszFilter, RTDIRFILTER_WINNT);
+    int rc = RTDirOpenFiltered(&pDir, pszFilter, RTDIRFILTER_WINNT, 0);
     if (RT_SUCCESS(rc))
     {
         for (;;)

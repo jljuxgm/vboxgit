@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: dir-posix.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -77,7 +77,7 @@ RTDECL(bool) RTDirExists(const char *pszPath)
 }
 
 
-RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
+RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode, uint32_t fCreate)
 {
     int rc;
     fMode = rtFsModeNormalize(fMode, pszPath, 0);
