@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 40273 2012-02-28 13:08:24Z vboxsync $ */
+/* $Id: UISession.cpp 40275 2012-02-28 13:17:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,9 +32,9 @@
 #include "UIMessageCenter.h"
 #include "UIFirstRunWzd.h"
 #include "UIConsoleEventHandler.h"
+#include "UIFrameBuffer.h"
 #ifdef VBOX_WITH_VIDEOHWACCEL
 # include "VBoxFBOverlay.h"
-# include "UIFrameBuffer.h"
 #endif
 
 #ifdef Q_WS_X11
