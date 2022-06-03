@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 41914 2012-06-26 09:17:43Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 42110 2012-07-11 14:41:33Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -1894,8 +1894,6 @@ void SessionMachine::restoreSnapshotHandler(RestoreSnapshotTask &aTask)
             }
         }
 
-        int saveFlags = 0;
-
         /* we have already deleted the current state, so set the execution
          * state accordingly no matter of the delete snapshot result */
         if (mSSData->strStateFilePath.isNotEmpty())
@@ -1945,7 +1943,7 @@ void SessionMachine::restoreSnapshotHandler(RestoreSnapshotTask &aTask)
         // save machine settings, reset the modified flag and commit;
         bool fNeedsGlobalSaveSettings = false;
         rc = saveSettings(&fNeedsGlobalSaveSettings,
-                          SaveS_ResetCurStateModified | saveFlags);
+                          SaveS_ResetCurStateModified);
         if (FAILED(rc))
             throw rc;
         // unconditionally add the parent registry. We do similar in SessionMachine::EndTakingSnapshot
