@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 40442 2012-03-13 11:40:27Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -555,10 +555,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         else if (Cpu.pCurInstr->opcode == OP_MONITOR)
         {
             LogFlow(("TRPMGCTrap06Handler: -> EMInterpretInstructionCPU\n"));
-            uint32_t cbIgnored;
-            rc = EMInterpretInstructionCPU(pVM, pVCpu, &Cpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR, &cbIgnored);
-            if (RT_SUCCESS(rc))
-                pRegFrame->eip += Cpu.opsize;
+            rc = EMInterpretInstructionCpuUpdtPC(pVM, pVCpu, &Cpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR);
         }
         /* Never generate a raw trap here; it might be an instruction, that requires emulation. */
         else
@@ -800,11 +797,8 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
         case OP_RDMSR:
         case OP_WRMSR:
         {
-            uint32_t cbIgnored;
-            rc = EMInterpretInstructionCPU(pVM, pVCpu, pCpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR, &cbIgnored);
-            if (RT_SUCCESS(rc))
-                pRegFrame->eip += pCpu->opsize;
-            else if (rc == VERR_EM_INTERPRETER)
+            rc = EMInterpretInstructionCpuUpdtPC(pVM, pVCpu, pCpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR);
+            if (rc == VERR_EM_INTERPRETER)
                 rc = VINF_EM_RAW_EXCEPTION_PRIVILEGED;
             return trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
         }
@@ -879,11 +873,8 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
         case OP_RDTSC:
         case OP_RDPMC:
         {
-            uint32_t cbIgnored;
-            rc = EMInterpretInstructionCPU(pVM, pVCpu, pCpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR, &cbIgnored);
-            if (RT_SUCCESS(rc))
-                pRegFrame->eip += pCpu->opsize;
-            else if (rc == VERR_EM_INTERPRETER)
+            rc = EMInterpretInstructionCpuUpdtPC(pVM, pVCpu, pCpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR);
+            if (rc == VERR_EM_INTERPRETER)
                 rc = VINF_EM_RAW_EXCEPTION_PRIVILEGED;
             return trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
         }
@@ -999,8 +990,9 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFram
     if (    pVCpu->trpm.s.uActiveErrorCode == 0
         &&  (Cpu.pCurInstr->optype & OPTYPE_PORTIO))
     {
-        VBOXSTRICTRC rcStrict = EMInterpretPortIO(pVM, pVCpu, pRegFrame, &Cpu, cbOp);
-        rc = VBOXSTRICTRC_TODO(rcStrict);
+        VBOXSTRICTRC rcStrict = IOMRCIOPortHandler(pVM, pRegFrame, &Cpu);
+        if (IOM_SUCCESS(rcStrict))
+            pRegFrame->rip += cbOp;
         return trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
     }
 

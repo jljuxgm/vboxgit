@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: IOM.cpp 40442 2012-03-13 11:40:27Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -32,8 +32,8 @@
  * IOPL is 0 regardless of what the guest IOPL is. The \#GP handler use the
  * disassembler (DIS) to figure which instruction caused it (there are a number
  * of instructions in addition to the I/O ones) and if it's an I/O port access
- * it will hand it to IOMGCIOPortHandler (via EMInterpretPortIO).
- * IOMGCIOPortHandler will lookup the port in the AVL tree of registered
+ * it will hand it to IOMRCIOPortHandler (via EMInterpretPortIO).
+ * IOMRCIOPortHandler will lookup the port in the AVL tree of registered
  * handlers. If found, the handler will be called otherwise default action is
  * taken. (Default action is to write into the void and read all set bits.)
  *

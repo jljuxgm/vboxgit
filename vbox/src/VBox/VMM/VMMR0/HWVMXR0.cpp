@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 40424 2012-03-12 11:04:15Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 40442 2012-03-13 11:40:27Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -3114,7 +3114,6 @@ ResumeExecution:
             case X86_XCPT_GP:   /* General protection failure exception.*/
             {
                 uint32_t     cbOp;
-                uint32_t     cbSize;
                 PDISCPUSTATE pDis = &pVCpu->hwaccm.s.DisState;
 
                 STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitGuestGP);
@@ -3335,7 +3334,8 @@ ResumeExecution:
                     }
 
                     default:
-                        rc = EMInterpretInstructionCPU(pVM, pVCpu, pDis, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR, &cbSize);
+                        rc = EMInterpretInstructionCpuUpdtPC(pVM, pVCpu, pDis, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR);
+                        fUpdateRIP = false;
                         break;
                     }
 

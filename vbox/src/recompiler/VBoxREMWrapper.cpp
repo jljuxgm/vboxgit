@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 39699 2012-01-04 15:06:35Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 40442 2012-03-13 11:40:27Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -522,18 +522,6 @@ static const REMPARMDESC g_aArgsCPUMGetGuestCpl[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU),             NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(PCPUMCTXCORE),       NULL },
-};
-
-/* EMInterpretInstructionCPU args */
-static const REMPARMDESC g_aArgsEMInterpretInstructionCPU[] =
-{
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU),             NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(PDISCPUSTATE),       NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(PCPUMCTXCORE),       NULL },
-    { REMPARMDESC_FLAGS_GCPTR,      sizeof(RTGCPTR),            NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(EMCODETYPE),         NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t *),         NULL }
 };
 
 /* CPUMQueryGuestMsr args */
@@ -1302,7 +1290,6 @@ static REMFNDESC g_aVMMImports[] =
     { "VMR3ReqFree",                            VMM_FN(VMR3ReqFree),                    &g_aArgsVMR3ReqFree[0],                     RT_ELEMENTS(g_aArgsVMR3ReqFree),                       REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "VMR3GetVMCPUId",                         VMM_FN(VMR3GetVMCPUId),                 &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "VMR3GetVMCPUNativeThread",               VMM_FN(VMR3GetVMCPUNativeThread),       &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_INT,    sizeof(void *),     NULL },
-    { "EMInterpretInstructionCPU",              VMM_FN(EMInterpretInstructionCPU),      &g_aArgsEMInterpretInstructionCPU[0],       RT_ELEMENTS(g_aArgsEMInterpretInstructionCPU),         REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
 //    { "",                        VMM_FN(),                &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_INT,    sizeof(int),   NULL },
 };
 
