@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 37912 2011-07-13 11:21:36Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 38167 2011-07-25 20:31:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -656,7 +656,7 @@ void UINewHDWizardPageOptions::retranslateUi()
         default:
             break;
     }
-    m_pLabel1->setText(UINewHDWizard::tr("Press the <b>Select</b> button to select the location of a file to store the virtual disk data or type a file name in the entry field."));
+    m_pLabel1->setText(UINewHDWizard::tr("Please type the name of the new virtual disk file into the box below or click on the folder icon to select a different folder to create the file in."));
 }
 
 void UINewHDWizardPageOptions::initializePage()
