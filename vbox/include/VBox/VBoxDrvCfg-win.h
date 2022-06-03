@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg-win.h 36941 2011-05-03 14:56:08Z vboxsync $ */
+/* $Id: VBoxDrvCfg-win.h 37479 2011-06-15 18:56:52Z vboxsync $ */
 /** @file
  * Windows Driver Manipulation API.
  */
@@ -13,6 +13,15 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ *
+ * The contents of this file may alternatively be used under the terms
+ * of the Common Development and Distribution License Version 1.0
+ * (CDDL) only, as it comes in the "COPYING.CDDL" file of the
+ * VirtualBox OSE distribution, in which case the provisions of the
+ * CDDL are applicable instead of those of the GPL.
+ *
+ * You may elect to license modified versions of this file under the
+ * terms and conditions of either the GPL or the CDDL or both.
  */
 
 #ifndef ___VBox_VBoxDrvCfg_win_h
