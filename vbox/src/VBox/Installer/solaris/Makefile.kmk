@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38831 2011-09-22 17:34:33Z vboxsync $
+# $Id: Makefile.kmk 38998 2011-10-14 14:59:01Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -544,7 +544,6 @@ $(PATH_STAGE_BIN)/$(PKG_FILENAME).tar.gz: \
 		$(VBOX_PATH_SOL_INST_SRC)/preremove.sh \
 		$(VBOX_PATH_SOL_INST_SRC)/vbox.pkginfo \
 		$(VBOX_PATH_SOL_INST_SRC)/vbox.space \
-		$(VBOX_PATH_SOL_INST_SRC)/vbox.depend \
 		$(VBOX_PATH_SOL_INST_SRC)/vbox.pkgresponse \
 		$(PATH_ROOT)/src/VBox/Installer/common/virtualbox.desktop.in \
 		$(PATH_ROOT)/src/VBox/Installer/common/virtualbox.xml \
@@ -670,8 +669,6 @@ endif
 	$(QUIET)$(INSTALL) -m 0644 $(VBOX_PATH_SOL_INST_SRC)/vbox.pkgresponse                                   $(SOLARIS_VBOXINST_DIR)/autoresponse
 	$(QUIET)$(INSTALL) -m 0644 $(VBOX_PATH_SOL_INST_SRC)/vbox.pkgresponse                                   $(SOLARIS_BASEINST_DIR)/autoresponse
 	$(QUIET)$(INSTALL) -m 0644 $(VBOX_PATH_SOL_INST_SRC)/vbox.space                                         $(SOLARIS_BASEINST_DIR)/vbox.space
-	@# Warning!! If we add NON-PYTHON dependencies to vbox.depend, remove the VBOX_WITH_PYTHON setting
-	$(QUIET)$(if $(VBOX_WITH_PYTHON),$(INSTALL) -m 0644 $(VBOX_PATH_SOL_INST_SRC)/vbox.depend               $(SOLARIS_BASEINST_DIR)/vbox.depend,)
 	$(QUIET)$(SED) \
 		-e "s/@VBOX_PRODUCT@/$(VBOX_PRODUCT)/g" \
 		-e "s/@VBOX_VENDOR@/$(VBOX_VENDOR)/g" \
