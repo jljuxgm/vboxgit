@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 41420 2012-05-23 15:14:05Z vboxsync $ */
+/* $Id: PGMAllBth.h 41456 2012-05-28 10:11:53Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1615,7 +1615,7 @@ static void PGM_BTH_NAME(SyncPageWorker)(PVMCPU pVCpu, PSHWPTE pPteDst, RTGCPHYS
         PGSTPT pGstPT;
 
         /* Note that iPTDst can be used to index the guest PT even in the pae/32bit combo as we copy only half the table; see pgmPoolAddDirtyPage. */
-        pGstPT = (PGSTPT)&pPool->aDirtyPages[pShwPage->idxDirty].aPage[0];
+        pGstPT = (PGSTPT)&pPool->aDirtyPages[pShwPage->idxDirtyEntry].aPage[0];
         GCPhysOldPage = GST_GET_PTE_GCPHYS(pGstPT->a[iPTDst]);
         pGstPT->a[iPTDst].u = PteSrc.u;
     }

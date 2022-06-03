@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 39755 2012-01-11 17:04:59Z vboxsync $ */
+/* $Id: PGMPool.cpp 41456 2012-05-28 10:11:53Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -908,12 +908,13 @@ void pgmR3PoolClearAll(PVM pVM, bool fFlushRemTlb)
     AssertRC(rc);
 }
 
+
 /**
  * Protect all pgm pool page table entries to monitor writes
  *
  * @param   pVM         The VM handle.
  *
- * Remark: assumes the caller will flush all TLBs (!!)
+ * @remarks ASSUMES the caller will flush all TLBs!!
  */
 void pgmR3PoolWriteProtectPages(PVM pVM)
 {

@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 41268 2012-05-14 08:35:51Z vboxsync $ */
+/* $Id: tstVMStruct.h 41456 2012-05-28 10:11:53Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -837,30 +837,31 @@
     GEN_CHECK_OFF(PGMPOOLPAGE, pvPageR3);
     GEN_CHECK_OFF(PGMPOOLPAGE, enmKind);
     GEN_CHECK_OFF(PGMPOOLPAGE, enmAccess);
+    //GEN_CHECK_OFF(PGMPOOLPAGE, fA20Enabled);
+    //GEN_CHECK_OFF(PGMPOOLPAGE, fSeenNonGlobal);
+    //GEN_CHECK_OFF(PGMPOOLPAGE, fMonitored);
+    //GEN_CHECK_OFF(PGMPOOLPAGE, fCached);
+    //GEN_CHECK_OFF(PGMPOOLPAGE, fReusedFlushPending);
     GEN_CHECK_OFF(PGMPOOLPAGE, idx);
     GEN_CHECK_OFF(PGMPOOLPAGE, iNext);
-#ifdef PGMPOOL_WITH_USER_TRACKING
     GEN_CHECK_OFF(PGMPOOLPAGE, iUserHead);
     GEN_CHECK_OFF(PGMPOOLPAGE, cPresent);
     GEN_CHECK_OFF(PGMPOOLPAGE, iFirstPresent);
-#endif
-#ifdef PGMPOOL_WITH_MONITORING
     GEN_CHECK_OFF(PGMPOOLPAGE, cModifications);
     GEN_CHECK_OFF(PGMPOOLPAGE, iModifiedNext);
     GEN_CHECK_OFF(PGMPOOLPAGE, iModifiedPrev);
     GEN_CHECK_OFF(PGMPOOLPAGE, iMonitoredNext);
     GEN_CHECK_OFF(PGMPOOLPAGE, iMonitoredPrev);
-#endif
-#ifdef PGMPOOL_WITH_CACHE
     GEN_CHECK_OFF(PGMPOOLPAGE, iAgeNext);
     GEN_CHECK_OFF(PGMPOOLPAGE, iAgePrev);
-#endif
-    GEN_CHECK_OFF(PGMPOOLPAGE, fZeroed);
-    GEN_CHECK_OFF(PGMPOOLPAGE, fSeenNonGlobal);
-    GEN_CHECK_OFF(PGMPOOLPAGE, fMonitored);
-    GEN_CHECK_OFF(PGMPOOLPAGE, fCached);
-    GEN_CHECK_OFF(PGMPOOLPAGE, fReusedFlushPending);
+    GEN_CHECK_OFF(PGMPOOLPAGE, idxDirtyEntry);
+    GEN_CHECK_OFF(PGMPOOLPAGE, GCPtrLastAccessHandlerRip);
+    GEN_CHECK_OFF(PGMPOOLPAGE, GCPtrLastAccessHandlerFault);
+    GEN_CHECK_OFF(PGMPOOLPAGE, cLastAccessHandler);
     GEN_CHECK_OFF(PGMPOOLPAGE, cLocked);
+#ifdef VBOX_STRICT
+    GEN_CHECK_OFF(PGMPOOLPAGE, GCPtrDirtyFault);
+#endif
     GEN_CHECK_SIZE(PGMPOOL);
     GEN_CHECK_OFF(PGMPOOL, pVMR3);
     GEN_CHECK_OFF(PGMPOOL, pVMR0);
