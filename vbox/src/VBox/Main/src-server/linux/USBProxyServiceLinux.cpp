@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceLinux.cpp 36418 2011-03-24 22:53:13Z vboxsync $ */
+/* $Id: USBProxyServiceLinux.cpp 36431 2011-03-25 14:14:21Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -122,8 +122,11 @@ HRESULT USBProxyServiceLinux::init(void)
     {
         PCUSBDEVTREELOCATION pcLocation;
         pcLocation = USBProxyLinuxGetDeviceRoot(fUseSysfs);
-        pcszUsbRoot = pcLocation->szDevicesRoot;
-        fUseSysfs = pcLocation->fUseSysfs;
+        if (pcLocation)
+        {
+            pcszUsbRoot = pcLocation->szDevicesRoot;
+            fUseSysfs = pcLocation->fUseSysfs;
+        }
     }
     if (pcszUsbRoot)
     {
