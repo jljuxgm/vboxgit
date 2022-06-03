@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 39023 2011-10-18 21:01:00Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 39066 2011-10-20 22:09:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -221,7 +221,11 @@ void UIMachineViewNormal::maybeResendResizeHint()
                              (VBoxDefs::GUI_LastGuestSizeHintWasFullscreen);
         QString strHintSent = machine.GetExtraData(strKey);
         if (!strHintSent.isEmpty())
-            sltPerformGuestResize(guestSizeHint());
+        {
+            QSize hint = guestSizeHint();
+            resize(hint);
+            sltPerformGuestResize(hint);
+        }
     }
 }
 
