@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 37918 2011-07-13 13:38:33Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 37934 2011-07-13 22:58:03Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -11306,7 +11306,7 @@ FNIEMOP_DEF_1(iemOp_Grp5_callf_Ep, uint8_t, bRm)
  */
 FNIEMOP_DEF_1(iemOp_Grp5_jmpn_Ev, uint8_t, bRm)
 {
-    IEMOP_MNEMONIC("callf Ep");
+    IEMOP_MNEMONIC("jmpn Ev");
     IEMOP_HLP_NO_LOCK_PREFIX(); /** @todo Too early? */
     IEMOP_HLP_DEFAULT_64BIT_OP_SIZE();
 
@@ -11389,7 +11389,7 @@ FNIEMOP_DEF_1(iemOp_Grp5_jmpn_Ev, uint8_t, bRm)
  */
 FNIEMOP_DEF_1(iemOp_Grp5_jmpf_Ep, uint8_t, bRm)
 {
-    IEMOP_MNEMONIC("jmp Ap");
+    IEMOP_MNEMONIC("jmp Ep");
     IEMOP_HLP_NO_64BIT();
     /** @todo could share all the decoding with iemOp_Grp5_callf_Ep. */
 
