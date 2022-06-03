@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 37168 2011-05-20 16:56:46Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 37615 2011-06-23 14:37:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -266,6 +266,11 @@ void UISettingsDialog::retranslateUi()
         m_pWarningPane->setWarningText(m_strErrorHint);
     else if (!m_fSilent)
         m_pWarningPane->setWarningText(m_strWarningHint);
+
+#ifndef VBOX_GUI_WITH_TOOLBAR_SETTINGS
+    /* Retranslate current page headline: */
+    m_pLbTitle->setText(m_pSelector->itemText(m_pSelector->currentId()));
+#endif /* VBOX_GUI_WITH_TOOLBAR_SETTINGS */
 
     /* Get the list of validators: */
     QList<QIWidgetValidator*> validatorsList = findChildren<QIWidgetValidator*>();
