@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 39878 2012-01-25 16:30:07Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 40468 2012-03-14 17:07:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2040,10 +2040,7 @@ STDMETHODIMP ExtPackManager::OpenExtPackFile(IN_BSTR a_bstrTarballAndDigest, IEx
     Utf8Str strTarball;
     Utf8Str strDigest;
     Utf8Str strTarballAndDigest(a_bstrTarballAndDigest);
-    size_t offSha256 = Utf8Str::npos;
-    const char *pszFilename = RTPathFilename(strTarballAndDigest.c_str());
-    if (pszFilename)
-        offSha256 = strTarballAndDigest.find("::SHA-256=", pszFilename - strTarballAndDigest.c_str());
+    size_t offSha256 = strTarballAndDigest.find("::SHA-256=");
     if (offSha256 == Utf8Str::npos)
         strTarball = strTarballAndDigest;
     else
