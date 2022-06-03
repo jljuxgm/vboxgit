@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 37410 2011-06-10 15:11:40Z vboxsync $
+; $Id: SUPR0.def 38960 2011-10-06 12:55:19Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -80,6 +80,7 @@ EXPORTS
     RTR0MemObjAllocPhysExTag
     RTR0MemObjAllocPhysNCTag
     RTR0MemObjAllocContTag
+    RTR0MemObjEnterPhysTag
     RTR0MemObjLockUserTag
     RTR0MemObjMapKernelTag
     RTR0MemObjMapUserTag
