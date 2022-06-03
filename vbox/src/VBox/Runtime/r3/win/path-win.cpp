@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 36613 2011-04-07 10:38:30Z vboxsync $ */
+/* $Id: path-win.cpp 36614 2011-04-07 10:41:56Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -190,7 +190,7 @@ RTDECL(int) RTPathUserDocuments(char *pszPath, size_t cchPath)
     AssertReturn(cchPath, VERR_INVALID_PARAMETER);
 
     RTUTF16 wszPath[RTPATH_MAX];
-    HRESULT rc = SHGetFolderPath(0, CSIDL_MYDOCUMENTS, NULL, SHGFP_TYPE_CURRENT, wszPath);
+    HRESULT rc = SHGetFolderPathW(0, CSIDL_MYDOCUMENTS, NULL, SHGFP_TYPE_CURRENT, wszPath);
     if (   rc == S_OK     /* Found */
         || rc == S_FALSE) /* Found, but doesn't exists */
         /*
