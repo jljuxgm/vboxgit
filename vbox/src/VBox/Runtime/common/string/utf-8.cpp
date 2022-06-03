@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 40073 2012-02-10 22:08:19Z vboxsync $ */
+/* $Id: utf-8.cpp 40091 2012-02-13 10:14:00Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -355,14 +355,13 @@ RTDECL(ssize_t) RTStrPurgeComplementSet(char *psz, PCRTUNICP puszValidSet, char 
 {
     size_t cReplacements = 0;
     AssertReturn(chReplacement && (unsigned)chReplacement < 128, -1);
-    if (RT_FAILURE(RTStrValidateEncoding(psz)))
-        return -1;
     for (;;)
     {
         RTUNICP Cp;
         PCRTUNICP pCp;
         char *pszOld = psz;
-        RTStrGetCpEx((const char **)&psz, &Cp);
+        if (RT_FAILURE(RTStrGetCpEx((const char **)&psz, &Cp)))
+            return -1;
         if (!Cp)
             break;
         for (pCp = puszValidSet; ; ++pCp)

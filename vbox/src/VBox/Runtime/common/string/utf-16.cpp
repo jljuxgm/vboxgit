@@ -1,4 +1,4 @@
-/* $Id: utf-16.cpp 40073 2012-02-10 22:08:19Z vboxsync $ */
+/* $Id: utf-16.cpp 40091 2012-02-13 10:14:00Z vboxsync $ */
 /** @file
  * IPRT - UTF-16.
  */
@@ -254,14 +254,13 @@ RTDECL(ssize_t) RTUtf16PurgeComplementSet(PRTUTF16 pwsz, PCRTUNICP puszValidSet,
     size_t cReplacements = 0;
     AssertReturn(chReplacement && (unsigned)chReplacement < 128, -1);
     /* Validate the encoding. */
-    if (RT_FAILURE(RTUtf16CalcUtf8LenEx(pwsz, RTSTR_MAX, NULL)))
-        return -1;
     for (;;)
     {
         RTUNICP Cp;
         PCRTUNICP pCp;
         PRTUTF16 pwszOld = pwsz;
-        RTUtf16GetCpEx((PCRTUTF16 *)&pwsz, &Cp);
+        if (RT_FAILURE(RTUtf16GetCpEx((PCRTUTF16 *)&pwsz, &Cp)))
+            return -1;
         if (!Cp)
             break;
         for (pCp = puszValidSet; ; ++pCp)
