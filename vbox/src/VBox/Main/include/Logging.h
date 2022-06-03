@@ -1,4 +1,4 @@
-/* $Id: Logging.h 38037 2011-07-18 17:31:38Z vboxsync $ */
+/* $Id: Logging.h 41040 2012-04-24 10:13:40Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2004-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -42,9 +42,6 @@
 #endif
 
 #include <VBox/log.h>
-
-int VBoxSVCLogRelCreate(const char *pszLogFile, uint32_t cHistory,
-                        uint32_t uHistoryFileTime, uint64_t uHistoryFileSize);
 
 #endif // ____H_LOGGING
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
