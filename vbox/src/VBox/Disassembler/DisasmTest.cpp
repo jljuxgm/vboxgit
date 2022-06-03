@@ -1,4 +1,4 @@
-/* $Id: DisasmTest.cpp 41716 2012-06-14 17:58:39Z vboxsync $ */
+/* $Id: DisasmTest.cpp 41717 2012-06-14 18:03:06Z vboxsync $ */
 /** @file
  * VBox disassembler - Test application 
  */
@@ -33,11 +33,11 @@ DECLASM(int) TestProc64_EndProc(void);
 #endif
 //uint8_t aCode16[] = { 0x66, 0x67, 0x89, 0x07 };
 
-static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uEndPtr, DISCPUMODE enmDisCpuMode)
+static void testDisasp(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uEndPtr, DISCPUMODE enmDisCpuMode)
 {
     RTTestISub(pszSub);
     size_t const cbInstrs = uEndPtr - (uintptr_t)pabInstrs;
-    for (size_t off = 0; off < cbInstrs; off++)
+    for (size_t off = 0; off < cbInstrs;)
     {
         uint32_t const  cErrBefore = RTTestIErrorCount();
         uint32_t        cb = 1;
