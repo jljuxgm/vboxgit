@@ -1,5 +1,5 @@
 
-/* $Id: VBoxModAPIMonitor.cpp 40011 2012-02-06 22:26:52Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 40014 2012-02-06 22:35:57Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -49,7 +49,7 @@ static const RTGETOPTDEF g_aAPIMonitorOpts[] = {
     { "--apimon-groups",         GETOPTDEF_APIMON_GROUPS,         RTGETOPT_REQ_STRING }
 };
 
-static enum APIMON_RESPONSE
+enum APIMON_RESPONSE
 {
     /** Unknown / unhandled response. */
     APIMON_RESPONSE_UNKNOWN    = 0,
