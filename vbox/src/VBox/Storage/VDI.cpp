@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 40713 2012-03-29 16:06:14Z vboxsync $ */
+/* $Id: VDI.cpp 40739 2012-04-02 11:39:25Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -1281,6 +1281,8 @@ static int vdiOpen(const char *pszFilename, unsigned uOpenFlags,
     rc = vdiOpenImage(pImage, uOpenFlags);
     if (RT_SUCCESS(rc))
         *ppBackendData = pImage;
+    else
+        RTMemFree(pImage);
 
 out:
     LogFlowFunc(("returns %Rrc (pBackendData=%#p)\n", rc, *ppBackendData));

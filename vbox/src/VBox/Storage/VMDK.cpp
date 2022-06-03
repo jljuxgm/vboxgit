@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 39519 2011-12-02 21:12:21Z vboxsync $ */
+/* $Id: VMDK.cpp 40739 2012-04-02 11:39:25Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5562,6 +5562,8 @@ static int vmdkOpen(const char *pszFilename, unsigned uOpenFlags,
     rc = vmdkOpenImage(pImage, uOpenFlags);
     if (RT_SUCCESS(rc))
         *ppBackendData = pImage;
+    else
+        RTMemFree(pImage);
 
 out:
     LogFlowFunc(("returns %Rrc (pBackendData=%#p)\n", rc, *ppBackendData));
