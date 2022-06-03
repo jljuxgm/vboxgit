@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 41841 2012-06-20 07:34:27Z vboxsync $
 ## @file
 # Sub-Makefile for Windows driver tooling lib.
 #
@@ -29,7 +29,9 @@ INSTALLS += HostDrivers-scripts
 HostDrivers-scripts_INST = $(INST_DIST)
 HostDrivers-scripts_EXEC_SOURCES = \
 	loadall.sh \
-	loadall.cmd
+	loadall.cmd \
+	load.sh \
+	load.cmd
 
 # generate rules
 include $(FILE_KBUILD_SUB_FOOTER)
