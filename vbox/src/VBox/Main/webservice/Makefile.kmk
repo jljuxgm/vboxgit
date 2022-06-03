@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38802 2011-09-20 12:07:19Z vboxsync $
+# $Id: Makefile.kmk 38914 2011-09-30 10:12:01Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -400,6 +400,8 @@ $$(VBOX_JWSDOC_JAR): $(VBOX_JWS_GEN)/jwsglue.list $(VBOXWEB_WSDL) $(VBOXWEBSERVI
 $$(VBOX_JWSSRC_JAR): $$(VBOX_JWS_JAR) | $$(dir $$@)
 	$(call MSG_LINK,$(notdir $@),$@)
 	$(VBOX_JAR) cf $@ -C $(VBOX_JWS_GEN)/java .
+
+## @todo compile ../glue/tests/TestVBox.java to have sanity checking
 
  endif # VBOX_WITH_JWS
 
