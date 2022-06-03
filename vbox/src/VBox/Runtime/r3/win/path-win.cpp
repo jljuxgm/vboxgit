@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 34003 2010-11-11 17:21:56Z vboxsync $ */
+/* $Id: path-win.cpp 36611 2011-04-07 10:35:29Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -178,6 +178,26 @@ RTDECL(int) RTPathUserHome(char *pszPath, size_t cchPath)
      * Convert and return.
      */
     return RTUtf16ToUtf8Ex(&wszPath[0], RTSTR_MAX, &pszPath, cchPath, NULL);
+}
+
+RTDECL(int) RTPathUserDocuments(char *pszPath, size_t cchPath)
+{
+    /*
+     * Validate input
+     */
+    AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
+    AssertReturn(cchPath, VERR_INVALID_PARAMETER);
+
+    RTUTF16 wszPath[RTPATH_MAX];
+    HRESULT rc = SHGetFolderPath(0, CSIDL_MYDOCUMENTS, NULL, SHGFP_TYPE_CURRENT, wszPath);
+    if (   rc == S_OK     /* Found */
+        || rc == S_FALSE) /* Found, but doesn't exists */
+        /*
+         * Convert and return.
+         */
+        return RTUtf16ToUtf8Ex(&wszPath[0], RTSTR_MAX, &pszPath, cchPath, NULL);
+
+    return VERR_PATH_NOT_FOUND;
 }
 
 

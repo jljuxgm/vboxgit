@@ -1,4 +1,4 @@
-/* $Id: tstRTPath.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: tstRTPath.cpp 36611 2011-04-07 10:35:29Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -69,6 +69,11 @@ int main()
     RTTESTI_CHECK_RC(RTPathUserHome(szPath, sizeof(szPath)), VINF_SUCCESS);
     if (RT_SUCCESS(rc))
         RTTestIPrintf(RTTESTLVL_INFO, "UserHome={%s}\n", szPath);
+
+    RTTestSub(hTest, "RTPathUserDocuments");
+    RTTESTI_CHECK_RC(RTPathUserDocuments(szPath, sizeof(szPath)), VINF_SUCCESS);
+    if (RT_SUCCESS(rc))
+        RTTestIPrintf(RTTESTLVL_INFO, "UserDocuments={%s}\n", szPath);
 
     RTTestSub(hTest, "RTPathTemp");
     RTTESTI_CHECK_RC(RTPathTemp(szPath, sizeof(szPath)), VINF_SUCCESS);
