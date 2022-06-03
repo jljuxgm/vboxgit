@@ -1,4 +1,4 @@
-/* $Revision: 40207 $ */
+/* $Revision: 41430 $ */
 /** @file
  * VBoxGuestLibR0 - System dependent helpers internal header.
  */
@@ -26,6 +26,8 @@
 
 #ifndef __VBoxGuestLib_SysHlp_h
 #define __VBoxGuestLib_SysHlp_h
+
+#include <iprt/types.h>
 
 #ifdef RT_OS_WINDOWS
 # undef PAGE_SIZE
