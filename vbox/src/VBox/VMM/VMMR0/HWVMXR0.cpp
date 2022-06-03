@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41318 2012-05-15 15:42:12Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41327 2012-05-16 10:39:24Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -1341,7 +1341,6 @@ static void hmR0VmxUpdateExceptionBitmap(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
                    | RT_BIT(X86_XCPT_DB)
                    | RT_BIT(X86_XCPT_DE)
                    | RT_BIT(X86_XCPT_NM)
-                   | RT_BIT(X86_XCPT_PF)
                    | RT_BIT(X86_XCPT_UD)
                    | RT_BIT(X86_XCPT_NP)
                    | RT_BIT(X86_XCPT_SS)
