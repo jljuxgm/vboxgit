@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39136 2011-10-28 10:13:34Z vboxsync $
+# $Id: Makefile.kmk 39319 2011-11-16 00:06:34Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -513,10 +513,7 @@ ifndef VBOX_ONLY_EXTPACKS
  	VMMAll/VMAll.cpp \
  	VMMAll/VMMAll.cpp \
  	VMMAll/VMMAllA.asm
- ifeq ($(VBOX_LDR_FMT),pe)
-  VMMR0_SOURCES += VMMR0/VMMR0.def
- endif
- ifeq ($(VBOX_LDR_FMT),lx)
+ if1of($(VBOX_LDR_FMT),pe lx)
   VMMR0_SOURCES += $(VMMR0Imp_0_OUTDIR)/VMMR0.def
  endif
  ifdef VBOX_WITH_TRIPLE_FAULT_HACK
