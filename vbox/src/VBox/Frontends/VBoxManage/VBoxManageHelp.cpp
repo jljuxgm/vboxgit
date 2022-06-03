@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 38787 2011-09-19 10:08:15Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 38874 2011-09-27 08:59:11Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -471,6 +471,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--passthrough on|off]\n"
                      "                            [--tempeject on|off]\n"
                      "                            [--nonrotational on|off]\n"
+                     "                            [--discard on|off]\n"
                      "                            [--bandwidthgroup <name>]\n"
                      "                            [--forceunmount]\n"
                      "                            [--server <name>|<ip>]\n"
