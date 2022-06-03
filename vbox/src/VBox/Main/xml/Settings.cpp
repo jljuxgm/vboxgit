@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 40418 2012-03-09 22:00:56Z vboxsync $ */
+/* $Id: Settings.cpp 40652 2012-03-26 16:36:16Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1498,6 +1498,7 @@ bool NetworkAdapter::operator==(const NetworkAdapter &n) const
                   && (strGenericDriver      == n.strGenericDriver)
                   && (genericProperties     == n.genericProperties)
                   && (ulBootPriority        == n.ulBootPriority)
+                  && (strBandwidthGroup     == n.strBandwidthGroup)
                 )
            );
 }

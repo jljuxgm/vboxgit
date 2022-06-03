@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: MMAll.cpp 40652 2012-03-26 16:36:16Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -611,6 +611,9 @@ const char *mmGetTagName(MMTAG enmTag)
         TAG2STR(PDM_QUEUE);
         TAG2STR(PDM_THREAD);
         TAG2STR(PDM_ASYNC_COMPLETION);
+#ifdef VBOX_WITH_NETSHAPER
+        TAG2STR(PDM_NET_SHAPER);
+#endif /* VBOX_WITH_NETSHAPER */
 
         TAG2STR(PGM);
         TAG2STR(PGM_CHUNK_MAPPING);

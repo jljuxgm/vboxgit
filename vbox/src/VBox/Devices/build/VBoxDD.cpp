@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 40591 2012-03-23 12:26:17Z vboxsync $ */
+/* $Id: VBoxDD.cpp 40652 2012-03-26 16:36:16Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -256,6 +256,11 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvNetSniffer);
     if (RT_FAILURE(rc))
         return rc;
+#ifdef VBOX_WITH_NETSHAPER
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvNetShaper);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif /* VBOX_WITH_NETSHAPER */
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvAUDIO);
     if (RT_FAILURE(rc))
         return rc;

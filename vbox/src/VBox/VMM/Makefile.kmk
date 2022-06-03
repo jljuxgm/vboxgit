@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40636 2012-03-26 12:14:18Z vboxsync $
+# $Id: Makefile.kmk 40652 2012-03-26 16:36:16Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -77,6 +77,9 @@ ifdef VBOX_WITH_VUSB
 endif
 ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
  VBoxVMM_DEFS   += VBOX_WITH_PDM_ASYNC_COMPLETION
+endif
+ifdef VBOX_WITH_NETSHAPER
+ VBoxVMM_DEFS   += VBOX_WITH_NETSHAPER
 endif
 VBoxVMM_DEFS.darwin = VMM_R0_SWITCH_STACK
 VBoxVMM_DEFS.darwin.x86 = \
@@ -200,6 +203,10 @@ ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
  	VMMR3/PDMAsyncCompletionFile.cpp \
  	VMMR3/PDMAsyncCompletionFileFailsafe.cpp \
  	VMMR3/PDMAsyncCompletionFileNormal.cpp
+endif
+ifdef VBOX_WITH_NETSHAPER
+ VBoxVMM_SOURCES += \
+ 	VMMR3/PDMNetShaper.cpp
 endif
 
 ifdef VBOX_WITH_RAW_MODE
