@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40849 2012-04-10 13:42:24Z vboxsync $
+# $Id: Makefile.kmk 40850 2012-04-10 13:57:53Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -274,7 +274,7 @@ if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # the X11 gang
 endif
 
 LIBRARIES += VBoxOGLTest
-VBoxOGLTest_TEMPLATE = VBOXR3STATIC
+VBoxOGLTest_TEMPLATE = VBOXR3
 ifneq ($(KBUILD_TARGET),darwin)
   VBoxOGLTest_SOURCES = OpenGLTest/OpenGLTest.cpp
 endif
