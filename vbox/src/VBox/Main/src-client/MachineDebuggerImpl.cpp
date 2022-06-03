@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 39668 2011-12-20 21:46:30Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 39676 2011-12-21 23:50:10Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation.
  */
@@ -528,7 +528,7 @@ STDMETHODIMP MachineDebugger::COMGETTER(LogDbgDestinations)(BSTR *a_pbstrSetting
     AutoCaller autoCaller(this);
     HRESULT hrc = autoCaller.rc();
     if (SUCCEEDED(hrc))
-        hrc = logStringProps(RTLogRelDefaultInstance(), RTLogGetDestinations, "RTLogGetDestinations", a_pbstrSettings);
+        hrc = logStringProps(RTLogGetDefaultInstance(), RTLogGetDestinations, "RTLogGetDestinations", a_pbstrSettings);
 
     return hrc;
 }
