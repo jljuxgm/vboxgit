@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 39579 2011-12-11 21:43:40Z vboxsync $ */
+/* $Id: DevAHCI.cpp 39584 2011-12-12 15:08:25Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -5164,7 +5164,12 @@ static void ahciScatterGatherListGetTotalBufferSize(PAHCIPort pAhciPort, PAHCIPO
             PDMDevHlpPhysRead(pDevIns, GCPhysAddrPRDTLEntryStart, &aSGLEntry[0], cSGLEntriesGCRead * sizeof(SGLEntry));
 
             for (cActualSGEntry = 0; cActualSGEntry < cSGLEntriesGCRead; cActualSGEntry++)
-            cbSGBuffers += (aSGLEntry[cActualSGEntry].u32DescInf & SGLENTRY_DESCINF_DBC) + 1;
+            {
+                cbSGBuffers += (aSGLEntry[cActualSGEntry].u32DescInf & SGLENTRY_DESCINF_DBC) + 1;
+                ahciLog(("%s: SG Entry: info %08X at phys %08X'%08X (%u bytes)\n", __FUNCTION__, aSGLEntry[cActualSGEntry].u32DescInf,
+                         aSGLEntry[cActualSGEntry].u32DBAUp, aSGLEntry[cActualSGEntry].u32DBA,
+                         (aSGLEntry[cActualSGEntry].u32DescInf & SGLENTRY_DESCINF_DBC) + 1));
+            }
 
             /* Set address to the next entries to read. */
             GCPhysAddrPRDTLEntryStart += cSGLEntriesGCRead * sizeof(SGLEntry);
