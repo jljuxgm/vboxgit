@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 38561 2011-08-29 19:15:48Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 38586 2011-08-31 15:07:47Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1186,6 +1186,8 @@ static int ctrlCopyFileToDest(PCOPYCONTEXT pContext, const char *pszFileSource,
     {
         rc = showProgress(progress);
         CHECK_PROGRESS_ERROR(progress, ("File copy failed"));
+        if (FAILED(rc))
+            vrc = ctrlPrintError(pContext->pGuest, COM_IIDOF(IGuest));
     }
 
     return vrc;
@@ -2066,7 +2068,7 @@ static int handleCtrlStat(ComPtr<IGuest> guest, HandlerArg *pArg)
                  * drop out with exitcode 1. */
                 if (!fExists)
                 {
-                    RTPrintf("Cannot stat for element \"%s\": No such file or directory.\n",
+                    RTPrintf("Cannot stat for element \"%s\": No such file or directory\n",
                              it->first.c_str());
                     rcExit = RTEXITCODE_FAILURE;
                 }
@@ -2150,7 +2152,7 @@ static int handleCtrlUpdateAdditions(ComPtr<IGuest> guest, HandlerArg *pArg)
             Utf8Source = Utf8Src2;
         else
         {
-            RTMsgError("Source could not be determined! Please use --source to specify a valid source.\n");
+            RTMsgError("Source could not be determined! Please use --source to specify a valid source\n");
             vrc = VERR_FILE_NOT_FOUND;
         }
     }
@@ -2177,9 +2179,13 @@ static int handleCtrlUpdateAdditions(ComPtr<IGuest> guest, HandlerArg *pArg)
         {
             rc = showProgress(progress);
             CHECK_PROGRESS_ERROR(progress, ("Guest additions update failed"));
-            if (   SUCCEEDED(rc)
-                && fVerbose)
-                RTPrintf("Guest Additions update successful.\n");
+            if (FAILED(rc))
+                vrc = ctrlPrintError(guest, COM_IIDOF(IGuest));
+            else if (   SUCCEEDED(rc)
+                     && fVerbose)
+            {
+                RTPrintf("Guest Additions update successful\n");
+            }
         }
     }
 
