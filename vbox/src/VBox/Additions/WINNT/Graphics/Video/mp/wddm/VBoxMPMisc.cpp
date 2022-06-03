@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 41058 2012-04-25 21:42:29Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 41379 2012-05-21 19:19:55Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2339,4 +2339,28 @@ NTSTATUS VBoxWddmVrListRectsGet(PVBOXWDDMVR_LIST pList, UINT cRects, PRECT aRect
         aRects[i] = pReg1->Rect;
     }
     return STATUS_SUCCESS;
+}
+
+NTSTATUS vboxWddmDrvCfgInit(PUNICODE_STRING pRegStr)
+{
+    HANDLE hKey;
+    OBJECT_ATTRIBUTES ObjAttr;
+
+    InitializeObjectAttributes(&ObjAttr, pRegStr, OBJ_CASE_INSENSITIVE | OBJ_KERNEL_HANDLE, NULL, NULL);
+
+    NTSTATUS Status = ZwOpenKey(&hKey, GENERIC_READ, &ObjAttr);
+    if (!NT_SUCCESS(Status))
+    {
+        WARN(("ZwOpenKey for settings key failed, Status 0x%x", Status));
+        return Status;
+    }
+
+    DWORD dwValue = 0;
+    Status = vboxWddmRegQueryValueDword(hKey, VBOXWDDM_CFG_STR_LOG_UM, &dwValue);
+    if (NT_SUCCESS(Status))
+        g_VBoxLogUm = dwValue;
+
+    ZwClose(hKey);
+
+    return Status;
 }

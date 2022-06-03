@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 39981 2012-02-03 12:13:33Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 41379 2012-05-21 19:19:55Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -196,5 +196,7 @@ NTSTATUS VBoxWddmVrListRectsGet(PVBOXWDDMVR_LIST pList, UINT cRects, PRECT aRect
 
 NTSTATUS VBoxWddmVrInit();
 void VBoxWddmVrTerm();
+
+NTSTATUS vboxWddmDrvCfgInit(PUNICODE_STRING pRegStr);
 
 #endif /* #ifndef ___VBoxMPMisc_h__ */

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 40747 2012-04-02 17:07:43Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 41379 2012-05-21 19:19:55Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -29,6 +29,11 @@
 #include "../../common/VBoxVideoTools.h"
 
 //#define VBOXWDDM_DEBUG_VIDPN
+
+#define VBOXWDDM_CFG_LOG_UM_BACKDOOR 0x00000001
+#define VBOXWDDM_CFG_LOG_UM_DBGPRINT 0x00000002
+#define VBOXWDDM_CFG_STR_LOG_UM L"VBoxLogUm"
+extern DWORD g_VBoxLogUm;
 
 RT_C_DECLS_BEGIN
 NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING RegistryPath);
