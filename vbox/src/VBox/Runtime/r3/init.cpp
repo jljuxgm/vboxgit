@@ -1,4 +1,4 @@
-/* $Id: init.cpp 38658 2011-09-06 14:22:53Z vboxsync $ */
+/* $Id: init.cpp 39751 2012-01-11 16:07:37Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -33,6 +33,7 @@
 
 #ifdef RT_OS_WINDOWS
 # include <process.h>
+# include <Windows.h>
 #else
 # include <unistd.h>
 # ifndef RT_OS_OS2
@@ -323,6 +324,15 @@ static int rtR3InitBody(uint32_t fFlags, int cArgs, char ***papszArgs, const cha
     g_ProcessSelf = _getpid(); /* crappy ansi compiler */
 #else
     g_ProcessSelf = getpid();
+#endif
+
+    /*
+     * Disable error popups.
+     */
+#ifdef RT_OS_WINDOWS
+    SetErrorMode(GetErrorMode() | SEM_FAILCRITICALERRORS);
+#elif defined(RT_OS_OS2)
+# error "FIXME"
 #endif
 
 #if !defined(IN_GUEST) && !defined(RT_NO_GIP)
