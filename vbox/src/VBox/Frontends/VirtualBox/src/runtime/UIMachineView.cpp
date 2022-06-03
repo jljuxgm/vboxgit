@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 39099 2011-10-24 21:04:15Z vboxsync $ */
+/* $Id: UIMachineView.cpp 39107 2011-10-25 10:09:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -905,11 +905,15 @@ bool UIMachineView::guestResizeEvent(QEvent *pEvent,
     return true;
 }
 
+UIVisualStateType UIMachineView::visualStateType()
+{
+    return machineLogic()->visualStateType();
+}
+
 bool UIMachineView::isFullscreenOrSeamless()
 {
-    UIVisualStateType type = machineLogic()->visualStateType();
-    return    type == UIVisualStateType_Fullscreen
-           || type == UIVisualStateType_Seamless;
+    return    visualStateType() == UIVisualStateType_Fullscreen
+           || visualStateType() == UIVisualStateType_Seamless;
 }
 
 QString UIMachineView::makeExtraDataKeyPerMonitor(QString base) const
