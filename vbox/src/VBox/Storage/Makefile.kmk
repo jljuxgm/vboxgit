@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38463 2011-08-15 17:02:17Z vboxsync $
+# $Id: Makefile.kmk 38540 2011-08-25 22:09:59Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -21,6 +21,7 @@ include $(KBUILD_PATH)/subheader.kmk
 VBOX_PATH_STORAGE_SRC := $(PATH_SUB_CURRENT)
 
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
+include $(PATH_SUB_CURRENT)/Debug/Makefile.kmk
 
 ifndef VBOX_OSE
  include $(PATH_SUB_CURRENT)/VDFormats/Makefile.kmk
