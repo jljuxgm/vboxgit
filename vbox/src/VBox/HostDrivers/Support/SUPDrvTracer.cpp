@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40812 2012-04-07 10:13:10Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 40813 2012-04-07 10:23:09Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -346,7 +346,7 @@ static const char *supdrvVtgGetString(PVTGOBJHDR pVtgHdr,  uint32_t offStrTab)
  */
 static void supdrvTracerFreeProvider(PSUPDRVTPPROVIDER pProv)
 {
-    LOG_TRACER(("Freeing DTrace provider '%s' / %p\n", pProv->szName, pProv->Core.TracerData.DTrace.idProvider));
+    LOG_TRACER(("Freeing tracepoint provider '%s' / %p\n", pProv->szName, pProv->Core.TracerData.DTrace.idProvider));
     pProv->fRegistered = false;
     pProv->fZombie     = true;
     pProv->Core.pDesc  = NULL;
@@ -568,7 +568,7 @@ static int supdrvTracerRegisterVtgObj(PSUPDRVDEVEXT pDevExt, PVTGOBJHDR pVtgHdr,
                 {
                     RTListAppend(&pDevExt->TracerProviderList, &pProv->ListEntry);
                     RTSemFastMutexRelease(pDevExt->mtxTracer);
-                    LOG_TRACER(("Registered Tracer provider '%s' in '%s' -> %p\n",
+                    LOG_TRACER(("Registered tracepoint provider '%s' in '%s' -> %p\n",
                                 pProv->szName, pszModName, pProv->Core.TracerData.DTrace.idProvider));
                 }
                 else
