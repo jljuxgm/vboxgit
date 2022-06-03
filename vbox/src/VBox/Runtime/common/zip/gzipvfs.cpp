@@ -1,4 +1,4 @@
-/* $Id: gzipvfs.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
+/* $Id: gzipvfs.cpp 39043 2011-10-19 17:04:08Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -40,6 +40,21 @@
 
 #include <zlib.h>
 
+#if defined(RT_OS_OS2) || defined(RT_OS_SOLARIS) || defined(RT_OS_WINDOWS)
+/**
+ * Drag in the missing zlib symbols.
+ */
+PFNRT g_apfnRTZlibDeps[] =
+{
+    (PFNRT)gzrewind,
+    (PFNRT)gzread,
+    (PFNRT)gzopen,
+    (PFNRT)gzwrite,
+    (PFNRT)gzclose,
+    (PFNRT)gzdopen,
+    NULL
+};
+#endif /* RT_OS_OS2 || RT_OS_SOLARIS || RT_OS_WINDOWS */
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
