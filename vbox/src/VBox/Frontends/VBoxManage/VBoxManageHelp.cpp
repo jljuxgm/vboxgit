@@ -1,10 +1,10 @@
-/* $Id: VBoxManageHelp.cpp 36630 2011-04-08 18:41:51Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 36657 2011-04-12 14:48:17Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -510,7 +510,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 
     if (u64Cmd & USAGE_CLONEHD)
         RTStrmPrintf(pStrm,
-                     "VBoxManage clonehd          <uuid>|<filename> <outputfile>\n"
+                     "VBoxManage clonehd          <uuid>|<filename> <uuid>|<outputfile>\n"
                      "                            [--format VDI|VMDK|VHD|RAW|<other>]\n"
                      "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
                      "                            [--existing]\n"
