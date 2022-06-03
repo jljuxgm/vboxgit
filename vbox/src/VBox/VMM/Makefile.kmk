@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36824 2011-04-23 22:39:21Z vboxsync $
+# $Id: Makefile.kmk 36834 2011-04-24 23:04:52Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -591,5 +591,6 @@ PGMInline.o 	PGMInline.obj: 			PGMDbg.o
 # Alias the IEM templates to the object in which they are instantiated.
 IEMInternal.o \
 IEMAllInstructions.cpp.o  IEMAllInstructions.cpp.obj \
+IEMAllCImpl.cpp.o         IEMAllCImpl.cpp.obj \
 IEMAllCImplStrInstr.cpp.o IEMAllCImplStrInstr.cpp.obj: IEMAll.o
 
