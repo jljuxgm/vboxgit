@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 36324 2011-03-21 12:34:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -195,8 +195,8 @@ void UIMachineSettingsParallelPage::loadToCacheFrom(QVariant &data)
  * this task SHOULD be performed in GUI thread only: */
 void UIMachineSettingsParallelPage::getFromCache()
 {
-    Assert(m_pFirstWidget);
-    setTabOrder(m_pFirstWidget, mTabWidget->focusProxy());
+    Assert(firstWidget());
+    setTabOrder(firstWidget(), mTabWidget->focusProxy());
     QWidget *pLastFocusWidget = mTabWidget->focusProxy();
 
     /* Apply internal variables data to QWidget(s): */
