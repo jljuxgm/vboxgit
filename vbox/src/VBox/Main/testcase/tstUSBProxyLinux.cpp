@@ -1,4 +1,4 @@
-/* $Id: tstUSBProxyLinux.cpp 36419 2011-03-24 22:53:54Z vboxsync $ */
+/* $Id: tstUSBProxyLinux.cpp 36958 2011-05-04 14:50:32Z vboxsync $ */
 /** @file
  * USBProxyServiceLinux test case.
  */
@@ -61,13 +61,14 @@ com::Utf8Str HostUSBDevice::getName()
     return Utf8Str();
 }
 
-static USBDEVTREELOCATION s_deviceRoot = { "", false };
-static bool s_fGetDeviceRootPreferSysfs = false;
+static const char *s_pcszDeviceRoot = "";
+static bool s_fIsDeviceNodes = false;
 
-PCUSBDEVTREELOCATION USBProxyLinuxGetDeviceRoot(bool fPreferSysfs)
+bool USBProxyLinuxCheckDeviceRoot(const char *pcszRoot,
+                                  bool fIsDeviceNodes)
 {
-    s_fGetDeviceRootPreferSysfs = fPreferSysfs;
-    return &s_deviceRoot;
+    return (   (!strcmp(s_pcszDeviceRoot, pcszRoot))
+            && (s_fIsDeviceNodes == fIsDeviceNodes));
 }
 
 static struct
@@ -152,9 +153,8 @@ static void testEnvironment(RTTEST hTest)
                      s_testEnvironment[i].pcszVBOX_USB_ROOT);
         else
             RTEnvUnset("VBOX_USB_ROOT");
-        strcpy(s_deviceRoot.szDevicesRoot,
-               s_testEnvironment[i].pcszReturnedRoot);
-        s_deviceRoot.fUseSysfs = s_testEnvironment[i].fReturnedUseSysfs;
+        s_pcszDeviceRoot = s_testEnvironment[i].pcszReturnedRoot;
+        s_fIsDeviceNodes = s_testEnvironment[i].fReturnedUseSysfs;
         RTTESTI_CHECK(test.init() == S_OK);
         test.getDevices();
         RTTESTI_CHECK_MSG(!strcmp(s_getDevices.pcszDevicesRoot,
