@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 41174 2012-05-04 17:02:07Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 41290 2012-05-14 18:07:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -180,6 +180,7 @@ int NetIfCreateHostOnlyNetworkInterface(VirtualBox *pVBox,
                                                  COM_IIDOF(IHostNetworkInterface),
                                                  HostNetworkInterface::getStaticComponentName(),
                                                  "%s", szBuf);
+                        pclose(fp);
                         return E_FAIL;
                     }
                     char *pLast = szBuf + strlen(szBuf) - 1;
