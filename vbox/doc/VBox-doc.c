@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 39685 2011-12-30 01:29:33Z vboxsync $ */
+/* $Id: VBox-doc.c 39688 2011-12-30 08:53:48Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -136,9 +136,6 @@
  *      - @ref pg_main_events
  *      - @ref pg_vrdb_usb
  *  - IPRT - Runtime Library for hiding host OS differences.
- *      - @ref pg_rtlog
- *      - @ref pg_rt_thread
- *      - @ref pg_rtfileaio_linux
  *  - Testsuite:
  *      - @ref pg_testsuite_guideline
  *
