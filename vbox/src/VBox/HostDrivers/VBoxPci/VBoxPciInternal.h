@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 36484 2011-03-31 16:09:17Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 36485 2011-04-01 05:04:35Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -26,9 +26,7 @@
 #ifdef RT_OS_LINUX
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 35)
-//# ifdef DEBUG_nike
-#  define VBOX_WITH_IOMMU
-//# endif
+# define VBOX_WITH_IOMMU
 #endif
 
 #ifdef VBOX_WITH_IOMMU
@@ -44,6 +42,17 @@ RT_C_DECLS_BEGIN
 typedef struct VBOXRAWPCIGLOBALS *PVBOXRAWPCIGLOBALS;
 typedef struct VBOXRAWPCIDRVVM   *PVBOXRAWPCIDRVVM;
 typedef struct VBOXRAWPCIINS     *PVBOXRAWPCIINS;
+
+typedef struct VBOXRAWPCIISRDESC 
+{
+    /** Handler function. */
+    PFNRAWPCIISR       pfnIrqHandler;
+    /** Handler context. */
+    void              *pIrqContext;
+    /** Host IRQ. */
+    int32_t            iHostIrq;
+} VBOXRAWPCIISRDESC;
+typedef struct VBOXRAWPCIISRDESC     *PVBOXRAWPCIISRDESC;
 
 /**
  * The per-instance data of the VBox raw PCI interface.
@@ -76,16 +85,13 @@ typedef struct VBOXRAWPCIINS
     bool               fIommuUsed;
     bool               fPad0;
 
-    /** Temporary: host IRQ we were given. Assumes single IRQ devices. */
-    int32_t            iHostIrq;
-
     /** Port, given to the outside world. */
     RAWPCIDEVPORT      DevPort;
 
-    uint32_t           cHandlersCount;
-    PFNRAWPCIISR       pfnIrqHandler;
-    void              *pIrqContext;
+    /** IRQ handler. */
+    VBOXRAWPCIISRDESC  IrqHandler;
 
+    /** Pointer to per-VM context in hypervisor data. */
     PRAWPCIPERVM       pVmCtx;
 } VBOXRAWPCIINS;
 
