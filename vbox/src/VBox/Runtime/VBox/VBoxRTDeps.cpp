@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 40130 2012-02-14 15:17:35Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 41117 2012-05-02 14:22:29Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -55,6 +55,7 @@ PFNRT g_VBoxRTDeps[] =
     (PFNRT)SUPR3Init,
     (PFNRT)SUPR3PageAllocEx,
     (PFNRT)SUPSemEventCreate,
+    (PFNRT)SUPTracerFireProbe,
 #endif
     (PFNRT)xmlModuleOpen,
     (PFNRT)MD5_Init,
