@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSupportInfo.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxGLSupportInfo.cpp 36386 2011-03-24 06:51:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -603,7 +603,7 @@ bool VBoxVHWAInfo::isVHWASupported() const
 /* static */
 bool VBoxVHWAInfo::checkVHWASupport()
 {
-#if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX)
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
     static char pszVBoxPath[RTPATH_MAX];
     const char *papszArgs[] = { NULL, "-test", "2D", NULL};
     int rc;
