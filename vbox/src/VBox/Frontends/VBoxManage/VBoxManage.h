@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 39119 2011-10-26 13:07:47Z vboxsync $ */
+/* $Id: VBoxManage.h 39477 2011-11-30 16:02:17Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -67,7 +67,7 @@
 #define USAGE_SHAREDFOLDER_ADD      RT_BIT_64(25)
 #define USAGE_SHAREDFOLDER_REMOVE   RT_BIT_64(26)
 #define USAGE_LOADSYMS              RT_BIT_64(29)
-#define USAGE_UNLOADSYMS            RT_BIT_64(30)
+#define USAGE_LOADMAP               RT_BIT_64(30)
 #define USAGE_SETHDUUID             RT_BIT_64(31)
 #define USAGE_CONVERTFROMRAW        RT_BIT_64(32)
 #define USAGE_LISTPARTITIONS        RT_BIT_64(33)
