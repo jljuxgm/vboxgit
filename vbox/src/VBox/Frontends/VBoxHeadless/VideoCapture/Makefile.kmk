@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41960 2012-06-28 12:27:58Z vboxsync $
+# $Id: Makefile.kmk 41986 2012-07-02 15:04:09Z vboxsync $
 ## @file
 # Sub-Makefile for the ffmpeg frame buffer module.
 #
@@ -19,13 +19,28 @@ SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 DLLS += VBoxFFmpegFB
-VBoxFFmpegFB_TEMPLATE        = VBOXMAINCLIENTDLL
-#VBoxFFmpegFB_DEFS      += \
-				 VBOX_WITH_VPX  
-VBoxFFmpegFB_SDKS            = VBOX_FFMPEG VBOX_LIBPNG VBOX_ZLIB VBOX_VPX
-VBoxFFmpegFB_SOURCES         +=  \
-							FFmpegFB.cpp \
-							EbmlWriter.cpp
+VBoxFFmpegFB_TEMPLATE     = VBOXMAINCLIENTDLL
+
+ifdef VBOX_WITH_VPX
+  VBoxFFmpegFB_DEFS      += \
+    VBOX_WITH_VPX  
+endif
+
+ifdef VBOX_WITH_VPX
+  VBoxFFmpegFB_SDKS       = VBOX_FFMPEG VBOX_LIBPNG VBOX_ZLIB VBOX_VPX
+else
+  VBoxFFmpegFB_SDKS       = VBOX_FFMPEG VBOX_LIBPNG VBOX_ZLIB 
+endif
+
+ifdef VBOX_WITH_VPX
+  VBoxFFmpegFB_SOURCES   +=  \
+    FFmpegFB.cpp \
+	EbmlWriter.cpp
+else
+  VBoxFFmpegFB_SOURCES   +=  \
+    FFmpegFB.cpp 
+endif
+
 VBoxFFmpegFB_CXXFLAGS.linux += -fPIC
 
 include $(FILE_KBUILD_SUB_FOOTER)

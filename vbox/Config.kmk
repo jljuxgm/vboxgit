@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41961 2012-06-28 12:34:16Z vboxsync $
+# $Id: Config.kmk 41986 2012-07-02 15:04:09Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -989,6 +989,7 @@ ifdef VBOX_OSE
  ## @todo remove once the iPXE code is in public tree
  VBOX_WITHOUT_IPXE=1
  VBOX_WITH_FFMPEG=
+ VBOX_WITH_VPX=
  # Disable for OSE, requires snv_159+.
  VBOX_WITH_NETFLT_CROSSBOW=
  ifn1of ($(KBUILD_TARGET), darwin linux solaris win)
@@ -5135,7 +5136,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41961 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41986 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
