@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38154 2011-07-25 12:30:55Z vboxsync $
+# $Id: Makefile.kmk 38418 2011-08-11 13:59:31Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -51,7 +51,7 @@ else ifdef VBOX_ONLY_DOCS
  #
  # Build docs only - need just regular R3 runtime.
  #
- LIBRARIES += RuntimeR3
+ LIBRARIES += RuntimeR3 RuntimeBldProg
  DLLS += VBoxRT
 
 else ifdef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
@@ -101,7 +101,7 @@ endif
 # Always build the ntdll import libraries on windows.
 LIBRARIES.win += RuntimeR3NtDll-x86
 if1of (amd64, $(KBUILD_TARGET_ARCH) $(KBUILD_HOST_ARCH))
- LIBRARIES.win += RuntimeR3NtDll-amd64
+# LIBRARIES.win += RuntimeR3NtDll-amd64
 endif
 
 
