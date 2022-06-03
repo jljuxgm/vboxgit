@@ -1,4 +1,4 @@
-/* $Id: fileaio-win.cpp 37607 2011-06-23 10:42:42Z vboxsync $ */
+/* $Id: fileaio-win.cpp 39987 2012-02-03 14:56:35Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Windows host platform.
  */
@@ -361,7 +361,10 @@ RTDECL(int) RTFileAioCtxSubmit(RTFILEAIOCTX hAioCtx, PRTFILEAIOREQ pahReqs, size
                                    &pReqInt->Overlapped);
         }
         else
+        {
+            fSucceeded = false;
             AssertMsgFailed(("Invalid transfer direction\n"));
+        }
 
         if (RT_UNLIKELY(!fSucceeded && GetLastError() != ERROR_IO_PENDING))
         {
