@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 35722 2011-01-26 16:37:16Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 36364 2011-03-23 11:35:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -170,9 +170,13 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         }
         /* Not used *
         case KVBoxEventType_OnCPUChange:
-        case KVBoxEventType_OnVRDEServerChange:
-        case KVBoxEventType_OnVRDEServerInfoChange:
          */
+        case KVBoxEventType_OnVRDEServerChanged:
+        case KVBoxEventType_OnVRDEServerInfoChanged:
+        {
+            emit sigVRDEChange();
+            break;
+        }
         case KVBoxEventType_OnUSBControllerChanged:
         {
             emit sigUSBControllerChange();

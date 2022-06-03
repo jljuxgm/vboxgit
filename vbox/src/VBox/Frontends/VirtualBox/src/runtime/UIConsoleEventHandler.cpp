@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 35722 2011-01-26 16:37:16Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 36364 2011-03-23 11:35:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -71,6 +71,8 @@ UIConsoleEventHandler::UIConsoleEventHandler(UISession *pSession)
         << KVBoxEventType_OnAdditionsStateChanged
         << KVBoxEventType_OnNetworkAdapterChanged
         << KVBoxEventType_OnMediumChanged
+        << KVBoxEventType_OnVRDEServerChanged
+        << KVBoxEventType_OnVRDEServerInfoChanged
         << KVBoxEventType_OnUSBControllerChanged
         << KVBoxEventType_OnUSBDeviceStateChanged
         << KVBoxEventType_OnSharedFolderChanged
@@ -108,6 +110,10 @@ UIConsoleEventHandler::UIConsoleEventHandler(UISession *pSession)
 
     connect(pListener->getWrapped(), SIGNAL(sigMediumChange(CMediumAttachment)),
             this, SIGNAL(sigMediumChange(CMediumAttachment)),
+            Qt::QueuedConnection);
+
+    connect(pListener->getWrapped(), SIGNAL(sigVRDEChange()),
+            this, SIGNAL(sigVRDEChange()),
             Qt::QueuedConnection);
 
     connect(pListener->getWrapped(), SIGNAL(sigUSBControllerChange()),

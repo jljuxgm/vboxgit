@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 35926 2011-02-10 13:53:30Z vboxsync $ */
+/* $Id: UISession.cpp 36364 2011-03-23 11:35:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -108,6 +108,9 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
 
     connect(gConsoleEvents, SIGNAL(sigAdditionsChange()),
             this, SLOT(sltAdditionsChange()));
+
+    connect(gConsoleEvents, SIGNAL(sigVRDEChange()),
+            this, SLOT(sltVRDEChange()));
 
     connect(gConsoleEvents, SIGNAL(sigNetworkAdapterChange(CNetworkAdapter)),
             this, SIGNAL(sigNetworkAdapterChange(CNetworkAdapter)));
@@ -602,6 +605,22 @@ void UISession::sltStateChange(KMachineState state)
     }
 }
 
+void UISession::sltVRDEChange()
+{
+    /* Get machine: */
+    const CMachine &machine = session().GetMachine();
+    /* Get VRDE server: */
+    const CVRDEServer &server = machine.GetVRDEServer();
+    bool fIsVRDEServerAvailable = !server.isNull();
+    /* Show/Hide VRDE action depending on VRDE server availability status: */
+    uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDEServer)->setVisible(fIsVRDEServerAvailable);
+    /* Check/Uncheck VRDE action depending on VRDE server activity status: */
+    if (fIsVRDEServerAvailable)
+        uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDEServer)->setChecked(server.GetEnabled());
+    /* Notify listeners about VRDE change: */
+    emit sigVRDEChange();
+}
+
 void UISession::sltAdditionsChange()
 {
     /* Get our guest: */
@@ -964,18 +983,6 @@ void UISession::reinitMenuPool()
         pOpticalDevicesMenu->setVisible(iDevicesCountCD);
         pFloppyDevicesMenu->setData(iDevicesCountFD);
         pFloppyDevicesMenu->setVisible(iDevicesCountFD);
-    }
-
-    /* VRDE stuff: */
-    {
-        /* Get VRDE server: */
-        CVRDEServer server = machine.GetVRDEServer();
-        bool fIsVRDEServerAvailable = !server.isNull();
-        /* Show/Hide VRDE action depending on VRDE server availability status: */
-        uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDEServer)->setVisible(fIsVRDEServerAvailable);
-        /* Check/Uncheck VRDE action depending on VRDE server activity status: */
-        if (fIsVRDEServerAvailable)
-            uimachine()->actionsPool()->action(UIActionIndex_Toggle_VRDEServer)->setChecked(server.GetEnabled());
     }
 
     /* Network stuff: */
