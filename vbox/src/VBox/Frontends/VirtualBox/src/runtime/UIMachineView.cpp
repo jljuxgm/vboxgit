@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 41404 2012-05-22 16:41:38Z vboxsync $ */
+/* $Id: UIMachineView.cpp 41527 2012-05-31 16:29:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1015,8 +1015,8 @@ bool UIMachineView::eventFilter(QObject *pWatched, QEvent *pEvent)
         {
             case QEvent::Resize:
             {
-                QResizeEvent* pResizeEvent = static_cast<QResizeEvent*>(pEvent);
 #ifdef VBOX_WITH_VIDEOHWACCEL
+                QResizeEvent* pResizeEvent = static_cast<QResizeEvent*>(pEvent);
                 if (m_pFrameBuffer)
                     m_pFrameBuffer->viewportResized(pResizeEvent);
 #endif /* VBOX_WITH_VIDEOHWACCEL */
