@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 41706 2012-06-14 12:33:12Z vboxsync $ */
+/* $Id: DisasmInternal.h 41707 2012-06-14 13:00:54Z vboxsync $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -150,8 +150,8 @@ extern const DISOPCODE g_aMapX86_EscF6_High[16*4];
 extern const DISOPCODE g_aMapX86_EscF7_Low[8];
 extern const DISOPCODE g_aMapX86_EscF7_High[16*4];
 
-extern PCDISOPCODE     g_paMapX86_FP_Low[8];
-extern PCDISOPCODE     g_paMapX86_FP_High[8];
+extern const PCDISOPCODE g_apMapX86_FP_Low[8];
+extern const PCDISOPCODE g_apMapX86_FP_High[8];
 /** @} */
 
 /** @def OP

@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 41692 2012-06-13 19:32:54Z vboxsync $ */
+/* $Id: DisasmTables.cpp 41707 2012-06-14 13:00:54Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -2342,7 +2342,7 @@ const DISOPCODE g_aMapX86_EscF7_High[16*4] =
 };
 
 
-PCDISOPCODE g_paMapX86_FP_Low[8] =
+const PCDISOPCODE g_apMapX86_FP_Low[8] =
 {
     g_aMapX86_EscF0_Low,
     g_aMapX86_EscF1_Low,
@@ -2354,7 +2354,7 @@ PCDISOPCODE g_paMapX86_FP_Low[8] =
     g_aMapX86_EscF7_Low
 };
 
-PCDISOPCODE g_paMapX86_FP_High[8] =
+const PCDISOPCODE g_apMapX86_FP_High[8] =
 {
     g_aMapX86_EscF0_High,
     g_aMapX86_EscF1_High,

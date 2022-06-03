@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 41703 2012-06-14 11:07:19Z vboxsync $ */
+/* $Id: DisasmCore.cpp 41707 2012-06-14 13:00:54Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -530,7 +530,7 @@ unsigned ParseEscFP(RTUINTPTR uCodePtr, PCDISOPCODE pOp, PDISOPPARAM pParam, PDI
     index = pCpu->opcode - 0xD8;
     if (ModRM <= 0xBF)
     {
-        fpop            = &(g_paMapX86_FP_Low[index])[MODRM_REG(ModRM)];
+        fpop            = &(g_apMapX86_FP_Low[index])[MODRM_REG(ModRM)];
         pCpu->pCurInstr = (PCDISOPCODE)fpop;
 
         // Should contain the parameter type on input
@@ -539,7 +539,7 @@ unsigned ParseEscFP(RTUINTPTR uCodePtr, PCDISOPCODE pOp, PDISOPPARAM pParam, PDI
     }
     else
     {
-        fpop            = &(g_paMapX86_FP_High[index])[ModRM - 0xC0];
+        fpop            = &(g_apMapX86_FP_High[index])[ModRM - 0xC0];
         pCpu->pCurInstr = (PCDISOPCODE)fpop;
     }
 
