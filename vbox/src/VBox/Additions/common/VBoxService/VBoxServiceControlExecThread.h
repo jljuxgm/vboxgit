@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExecThread.h 36548 2011-04-05 09:27:33Z vboxsync $ */
+/* $Id: VBoxServiceControlExecThread.h 38113 2011-07-22 13:57:35Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for an executed guest process.
  */
@@ -26,6 +26,7 @@ int VBoxServiceControlExecThreadAlloc(PVBOXSERVICECTRLTHREAD pThread,
                                       const char *pszArgs, uint32_t uNumArgs,
                                       const char *pszEnv, uint32_t cbEnv, uint32_t uNumEnvVars,
                                       const char *pszUser, const char *pszPassword, uint32_t uTimeLimitMS);
+int VBoxServiceControlExecThreadAssignPID(PVBOXSERVICECTRLTHREADDATAEXEC pData, uint32_t uPID);
 void VBoxServiceControlExecThreadDestroy(PVBOXSERVICECTRLTHREADDATAEXEC pData);
 int VBoxServiceControlExecThreadSetInput(uint32_t uPID, bool fPendingClose, uint8_t *pBuf,
                                          uint32_t cbSize, uint32_t *pcbWritten);
