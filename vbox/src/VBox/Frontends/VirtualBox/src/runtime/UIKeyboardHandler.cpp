@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 36049 2011-02-22 11:15:07Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 36853 2011-04-27 09:56:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1131,7 +1131,7 @@ bool UIKeyboardHandler::keyEvent(int iKey, uint8_t uScan, int fFlags, ulong uScr
         }
     }
     /* Check if we are currently holding FULL host-combo: */
-    bool fIsFullHostComboPresent = allHostComboKeys == m_pressedHostComboKeys.keys().toSet();
+    bool fIsFullHostComboPresent = !allHostComboKeys.isEmpty() && allHostComboKeys == m_pressedHostComboKeys.keys().toSet();
     /* Check if currently pressed/released key had changed host-combo state: */
     const bool isHostComboStateChanged = (!m_bIsHostComboPressed &&  fIsFullHostComboPresent) ||
                                          ( m_bIsHostComboPressed && !fIsFullHostComboPresent);
