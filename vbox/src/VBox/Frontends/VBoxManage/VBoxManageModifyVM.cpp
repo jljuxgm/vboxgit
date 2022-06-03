@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 40714 2012-03-29 16:08:29Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 40724 2012-03-30 11:21:27Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2216,18 +2216,32 @@ int handleModifyVM(HandlerArg *a)
             case MODIFYVM_TELEPORTER_PASSWORD_FROM:
             {
                 size_t cbFile;
-                char *pszFileBuf;
-                int vrc = RTFileReadAll(ValueUnion.psz, (void**)&pszFileBuf, &cbFile);
+                char szPasswd[512];
+                int vrc = VINF_SUCCESS;
+                bool fStdIn = !strcmp(ValueUnion.psz, "-");
+                PRTSTREAM pStrm;
+                if (!fStdIn)
+                    vrc = RTStrmOpen(ValueUnion.psz, "r", &pStrm);
+                else
+                    pStrm = g_pStdIn;
                 if (RT_SUCCESS(vrc))
                 {
-                    char szPasswd[512];
-                    for (unsigned i = 0;
-                            i < cbFile
-                         && i < sizeof(szPasswd)-1
-                         && !RT_C_IS_CNTRL(pszFileBuf[i]); i++)
-                        szPasswd[i] = pszFileBuf[i];
-
-                    CHECK_ERROR(machine, COMSETTER(TeleporterPassword)(Bstr(szPasswd).raw()));
+                    vrc = RTStrmReadEx(pStrm, szPasswd, sizeof(szPasswd)-1, &cbFile);
+                    if (RT_SUCCESS(vrc))
+                    {
+                        if (cbFile >= sizeof(szPasswd)-1)
+                            errorArgument("Provided password too long");
+                        else
+                        {
+                            unsigned i;
+                            for (i = 0; i < cbFile && !RT_C_IS_CNTRL(szPasswd[i]); i++)
+                                ;
+                            szPasswd[i] = '\0';
+                            CHECK_ERROR(machine, COMSETTER(TeleporterPassword)(Bstr(szPasswd).raw()));
+                        }
+                    }
+                    if (!fStdIn)
+                        RTStrmClose(pStrm);
                 }
                 else
                     errorArgument("Cannot open password file '%s' (%Rrc)", ValueUnion.psz, vrc);
