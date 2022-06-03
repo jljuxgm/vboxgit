@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 41231 2012-05-10 11:27:52Z vboxsync $ */
+/* $Id: MediumImpl.h 42125 2012-07-12 10:39:18Z vboxsync $ */
 
 /** @file
  *
@@ -182,11 +182,14 @@ public:
     bool isInRegistry(const Guid& id);
     bool getFirstRegistryMachineId(Guid &uuid) const;
     void markRegistriesModified();
+    
+    HRESULT setPropertyDirect(const Utf8Str &aName, const Utf8Str &aValue);
 
     HRESULT addBackReference(const Guid &aMachineId,
                              const Guid &aSnapshotId = Guid::Empty);
     HRESULT removeBackReference(const Guid &aMachineId,
                                 const Guid &aSnapshotId = Guid::Empty);
+
 
     const Guid* getFirstMachineBackrefId() const;
     const Guid* getAnyMachineBackref() const;

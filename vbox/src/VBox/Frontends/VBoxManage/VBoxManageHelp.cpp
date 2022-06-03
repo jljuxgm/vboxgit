@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 41925 2012-06-27 14:04:09Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 42125 2012-07-12 10:39:18Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -98,8 +98,10 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 
     if (u64Cmd == USAGE_ALL)
         RTStrmPrintf(pStrm,
-                     "VBoxManage [-v|--version]    print version number and exit\n"
-                     "VBoxManage [-q|--nologo] ... suppress the logo\n"
+                     "VBoxManage [-v|--version]          print version number and exit\n"
+                     "VBoxManage [-q|--nologo]       ... suppress the logo\n"
+                     "VBoxManage [--settingspw <pw>] ...\n"
+                     "VBoxManage [--settingspwfile]  ... provide the settings password\n"
                      "\n");
 
     if (u64Cmd & USAGE_LIST)
