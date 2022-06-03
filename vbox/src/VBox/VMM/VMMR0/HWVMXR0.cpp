@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 39700 2012-01-04 15:06:46Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 39739 2012-01-10 15:27:08Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -2040,7 +2040,7 @@ DECLINLINE(int) VMXR0SaveGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     /* Note: no reason to sync back the CRx registers. They can't be changed by the guest. */
     /* Note: only in the nested paging case can CR3 & CR4 be changed by the guest. */
     if (    pVM->hwaccm.s.fNestedPaging
-        &&  CPUMIsGuestInPagedProtectedModeEx(pCtx))
+        &&  CPUMIsGuestInPagedProtectedModeEx(pCtx)) /** @todo check if we will always catch mode switches and such... */
     {
         PVMCSCACHE pCache = &pVCpu->hwaccm.s.vmx.VMCSCache;
 
