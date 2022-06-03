@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 38521 2011-08-25 08:23:13Z vboxsync $ */
+/* $Id: VHD.cpp 38621 2011-09-04 16:56:56Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -3138,5 +3138,7 @@ VBOXHDDBACKEND g_VhdBackend =
     /* pfnCompact */
     vhdCompact,
     /* pfnResize */
-    vhdResize
+    vhdResize,
+    /* pfnDiscard */
+    NULL
 };

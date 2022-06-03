@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 38563 2011-08-29 19:33:42Z vboxsync $ */
+/* $Id: QCOW.cpp 38621 2011-09-04 16:56:56Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -2744,5 +2744,7 @@ VBOXHDDBACKEND g_QCowBackend =
     /* pfnCompact */
     NULL,
     /* pfnResize */
+    NULL,
+    /* pfnDiscard */
     NULL
 };

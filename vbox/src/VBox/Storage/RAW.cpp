@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 38469 2011-08-16 10:34:32Z vboxsync $ */
+/* $Id: RAW.cpp 38621 2011-09-04 16:56:56Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -1289,5 +1289,7 @@ VBOXHDDBACKEND g_RawBackend =
     /* pfnCompact */
     NULL,
     /* pfnResize */
+    NULL,
+    /* pfnDiscard */
     NULL
 };
