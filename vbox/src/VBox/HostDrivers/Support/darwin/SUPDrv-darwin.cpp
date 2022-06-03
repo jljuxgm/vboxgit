@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 37116 2011-05-16 22:51:35Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 37249 2011-05-30 10:03:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -775,9 +775,9 @@ int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAG
 }
 
 
-int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const uint8_t *pbImageBits)
+int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const uint8_t *pbImageBits, PSUPLDRLOAD pReq)
 {
-    NOREF(pDevExt); NOREF(pImage); NOREF(pbImageBits);
+    NOREF(pDevExt); NOREF(pImage); NOREF(pbImageBits); NOREF(pReq);
     return VERR_NOT_SUPPORTED;
 }
 
