@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 41155 2012-05-03 23:33:24Z vboxsync $ */
+/* $Id: VMMInternal.h 41158 2012-05-04 00:26:16Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -432,7 +432,7 @@ typedef struct VMMCPU
     /** @} */
 
     /** Alignment padding, making sure u64CallRing3Arg is nicly aligned. */
-    uint32_t                    u32Padding1;
+    uint32_t                    au32Padding1[3];
 
     /** @name Call Ring-3
      * Formerly known as host calls.

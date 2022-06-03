@@ -1,4 +1,4 @@
-; $Id: VMMInternal.mac 41155 2012-05-03 23:33:24Z vboxsync $
+; $Id: VMMInternal.mac 41158 2012-05-04 00:26:16Z vboxsync $
 ;; @file
 ; VMM - Internal header file.
 ;
@@ -117,7 +117,7 @@ struc VMMCPU
         alignb 8
         .TracerCtx              resb SUPDRVTRACERUSRCTX64_size
 
-        .u32Padding1            resd 1
+        .au32Padding1           resd 3
 
         .cCallRing3Disabled     resd 1
         .enmCallRing3Operation  resd 1
