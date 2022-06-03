@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 38348 2011-08-08 12:09:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -31,7 +31,6 @@
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 
-#include "UIActionsPool.h"
 #include "UIKeyboardHandler.h"
 #include "UIMachineLogic.h"
 #include "UIMachineView.h"
