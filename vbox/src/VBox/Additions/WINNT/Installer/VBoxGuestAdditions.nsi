@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 39513 2011-12-02 12:11:04Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 39514 2011-12-02 13:15:10Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -836,7 +836,7 @@ Section /o $(VBOX_COMPONENT_D3D) SEC03
   !if $%BUILD_TARGET_ARCH% == "amd64"
     ; We need a special directory set to SysWOW64 because some
     ; shell operations don't support file redirection (yet)
-    Var SYSWOW64DIR
+    Var /GLOBAL SYSWOW64DIR
     StrCpy SYSWOW64DIR "$WINDIR\SysWOW64"
     ; Only 64-bit installer:
     ; Also copy 32-bit DLLs on 64-bit Windows in SysWOW64 node
