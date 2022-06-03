@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 36009 2011-02-17 10:15:02Z vboxsync $ */
+/* $Id: PGMInternal.h 36013 2011-02-17 13:03:30Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -924,6 +924,13 @@ typedef PPGMPAGE *PPPGMPAGE;
  * @param   pPage       Pointer to the physical guest page tracking structure.
  */
 #define PGM_PAGE_IS_BALLOONED(pPage)        ( (pPage)->uStateY == PGM_PAGE_STATE_BALLOONED )
+
+/**
+ * Checks if the page is allocated.
+ * @returns true/false.
+ * @param   pPage       Pointer to the physical guest page tracking structure.
+ */
+#define PGM_PAGE_IS_ALLOCATED(pPage)        ( (pPage)->uStateY == PGM_PAGE_STATE_ALLOCATED )
 
 /**
  * Marks the page as written to (for GMM change monitoring).
