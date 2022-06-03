@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 36633 2011-04-08 21:43:41Z vboxsync $ */
+/* $Id: ISCSI.cpp 37176 2011-05-22 10:37:44Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -1977,6 +1977,7 @@ out_release:
          * about 30-40 seconds, or the guest will lose its patience. */
         iscsiTransportClose(pImage);
         pImage->state = ISCSISTATE_FREE;
+        rc = VERR_BROKEN_PIPE;
     }
     RTSemMutexRelease(pImage->Mutex);
 
