@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMAll.cpp 36822 2011-04-23 22:31:39Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -45,7 +45,7 @@ VMMDECL(int) PDMGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Interrupt)
     pdmLock(pVM);
 
     /*
-     * The local APIC has a higer priority than the PIC.
+     * The local APIC has a higher priority than the PIC.
      */
     if (VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INTERRUPT_APIC))
     {
