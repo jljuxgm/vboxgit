@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 37485 2011-06-16 08:37:49Z vboxsync $ */
+/* $Id: MachineImpl.h 37491 2011-06-16 12:23:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -907,6 +907,8 @@ protected:
     friend class SnapshotMachine;
     friend class Appliance;
     friend class VirtualBox;
+
+    friend class MachineCloneVM;
 };
 
 // SessionMachine class
