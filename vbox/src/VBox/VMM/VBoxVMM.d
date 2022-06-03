@@ -1,4 +1,4 @@
-/* $Id: VBoxVMM.d 40599 2012-03-23 18:09:21Z vboxsync $ */
+/* $Id: VBoxVMM.d 40645 2012-03-26 13:21:44Z vboxsync $ */
 /** @file
  * VBoxVMM - Static dtrace probes.
  */
@@ -45,6 +45,10 @@ provider vboxvmm
     /*^^VMM-ALT-TP: "%d", (a_rc) */
 
     probe r0__gvmm__vm__created(void *a_pGVM, void *a_pVM, unsigned int a_Pid, void *a_hEMT0, unsigned int a_cCpus);
+    probe r0__hmsvm__vmexit(struct VMCPU *a_pVM, struct CPUMCTX *a_pCtx, unsigned long a_ExitCode, 
+                            unsigned long a_ExitInfo1, unsigned long a_ExitInfo2, unsigned long a_ExitIntInfo, 
+                            unsigned long a_TestArgument);
+
 };
 
 #pragma D attributes Evolving/Evolving/Common provider vboxvmm provider
