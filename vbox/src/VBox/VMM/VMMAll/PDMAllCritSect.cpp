@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 37582 2011-06-22 09:24:45Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 37583 2011-06-22 09:50:27Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -329,10 +329,6 @@ VMMDECL(int) PDMCritSectEnter(PPDMCRITSECT pCritSect, int rcBusy)
         RTLOCKVALSRCPOS SrcPos = RTLOCKVALSRCPOS_INIT_NORMAL_API();
         rc = pdmCritSectEnter(pCritSect, VERR_SEM_BUSY, &SrcPos);
 # endif
-        if (rc == VERR_SEM_BUSY)
-        {
-
-        }
     }
     else
 #endif /* !IN_RING3 */
