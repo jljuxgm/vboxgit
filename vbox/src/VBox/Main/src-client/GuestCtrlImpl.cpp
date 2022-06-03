@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 36531 2011-04-04 14:05:09Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 36741 2011-04-20 09:51:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2471,7 +2471,7 @@ HRESULT Guest::createDirectoryInternal(IN_BSTR aDirectory,
                     if (SUCCEEDED(rc) && uRetExitCode != 0)
                     {
                         rc = setError(VBOX_E_IPRT_ERROR,
-                                      tr("Error while creating directory"));
+                                      tr("Error %u while creating directory"), uRetExitCode);
                     }
                 }
             }
