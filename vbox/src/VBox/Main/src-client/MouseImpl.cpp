@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 35989 2011-02-15 19:55:27Z vboxsync $ */
+/* $Id: MouseImpl.cpp 36150 2011-03-03 14:38:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -484,8 +484,8 @@ HRESULT Mouse::convertDisplayRes(LONG x, LONG y, int32_t *pcX, int32_t *pcY,
         if (FAILED(rc))
             return rc;
 
-        *pcX = displayWidth ? ((x - 1) * 0xFFFF) / displayWidth: 0;
-        *pcY = displayHeight ? ((y - 1) * 0xFFFF) / displayHeight: 0;
+        *pcX = displayWidth ? ((x - 1) * 0xFFFF) / (LONG) displayWidth: 0;
+        *pcY = displayHeight ? ((y - 1) * 0xFFFF) / (LONG) displayHeight: 0;
     }
     else
     {
