@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 41528 2012-05-31 16:48:33Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 41813 2012-06-18 12:11:28Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -1378,7 +1378,11 @@ bool HostUSBDevice::updateState(PCUSBDEVICE aDev, bool *aRunFilters, SessionMach
 
                         /* Take action if we're supposed to attach it to a VM. */
                         if (mUniState == kHostUSBDeviceState_AttachingToVM)
+                        {
+                            alock.release();
                             attachToVM(mMachine, mMaskedIfs);
+                            alock.acquire();
+                        }
                         break;
 
                     /* Can only mean that we've failed capturing it. */
@@ -1467,7 +1471,6 @@ bool HostUSBDevice::updateState(PCUSBDEVICE aDev, bool *aRunFilters, SessionMach
     }
 
     return fIsImportant;
-
 }
 
 
