@@ -1,4 +1,4 @@
-/* $Id: tstVector.cpp 37480 2011-06-15 18:57:55Z vboxsync $ */
+/* $Id: tstVector.cpp 37720 2011-06-30 20:27:48Z vboxsync $ */
 /** @file
  * IPRT Testcase - Vector container structure.
  */
@@ -18,9 +18,8 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "vector.h"
-
 #include <iprt/test.h>
+#include <iprt/vector.h>
 
 #include <stdlib.h>  /* For realloc */
 
