@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 39997 2012-02-04 15:56:18Z vboxsync $
+; $Id: tstX86-1A.asm 39998 2012-02-04 16:06:05Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -1207,7 +1207,7 @@ BEGINPROC   x861_Test3
 
         add     ebx, 16
         cmp     ebx, 512
-        jb      .fxrstor_pf_effect_loop
+        jbe     .fxrstor_pf_effect_loop
 
 .success:
         xor     eax, eax
