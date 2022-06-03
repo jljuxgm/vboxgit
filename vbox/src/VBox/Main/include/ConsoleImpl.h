@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 39720 2012-01-07 02:56:25Z vboxsync $ */
+/* $Id: ConsoleImpl.h 40084 2012-02-12 14:01:47Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -229,6 +229,20 @@ public:
     void VRDPInterceptClipboard(uint32_t u32ClientId);
 
     void processRemoteUSBDevices(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevList, uint32_t cbDevList, bool fDescExt);
+    void reportGuestStatistics(ULONG aValidStats, ULONG aCpuUser,
+                               ULONG aCpuKernel, ULONG aCpuIdle,
+                               ULONG aMemTotal, ULONG aMemFree,
+                               ULONG aMemBalloon, ULONG aMemShared,
+                               ULONG aMemCache, ULONG aPageTotal,
+                               ULONG aAllocVMM, ULONG aFreeVMM,
+                               ULONG aBalloonedVMM, ULONG aSharedVMM)
+    {
+        mControl->ReportGuestStatistics(aValidStats, aCpuUser, aCpuKernel, aCpuIdle,
+                                        aMemTotal, aMemFree, aMemBalloon, aMemShared,
+                                        aMemCache, aPageTotal, aAllocVMM, aFreeVMM,
+                                        aBalloonedVMM, aSharedVMM);
+    }
+    void enableVMMStatistics(BOOL aEnable);
 
     // callback callers (partly; for some events console callbacks are notified
     // directly from IInternalSessionControl event handlers declared above)

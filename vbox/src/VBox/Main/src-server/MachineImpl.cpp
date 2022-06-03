@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 40066 2012-02-10 14:52:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 40084 2012-02-12 14:01:47Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11286,6 +11286,26 @@ RWLockHandle *SessionMachine::lockHandle() const
 
 // IInternalMachineControl methods
 ////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *  Passes collected guest statistics to performance collector object
+ */
+STDMETHODIMP SessionMachine::ReportGuestStatistics(ULONG aValidStats, ULONG aCpuUser,
+                                                   ULONG aCpuKernel, ULONG aCpuIdle,
+                                                   ULONG aMemTotal, ULONG aMemFree,
+                                                   ULONG aMemBalloon, ULONG aMemShared,
+                                                   ULONG aMemCache, ULONG aPageTotal,
+                                                   ULONG aAllocVMM, ULONG aFreeVMM,
+                                                   ULONG aBalloonedVMM, ULONG aSharedVMM)
+{
+    if (mCollectorGuest)
+        mCollectorGuest->updateStats(aValidStats, aCpuUser, aCpuKernel, aCpuIdle,
+                                     aMemTotal, aMemFree, aMemBalloon, aMemShared,
+                                     aMemCache, aPageTotal, aAllocVMM, aFreeVMM,
+                                     aBalloonedVMM, aSharedVMM);
+
+    return S_OK;
+}
 
 /**
  *  @note Locks this object for writing.

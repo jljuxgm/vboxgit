@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: SessionImpl.cpp 40084 2012-02-12 14:01:47Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -835,6 +835,13 @@ STDMETHODIMP Session::OnlineMergeMedium(IMediumAttachment *aMediumAttachment,
                                        aProgress);
 }
 
+STDMETHODIMP Session::EnableVMMStatistics(BOOL aEnable)
+{
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    mConsole->enableVMMStatistics(aEnable);
+}
 
 // private methods
 ///////////////////////////////////////////////////////////////////////////////

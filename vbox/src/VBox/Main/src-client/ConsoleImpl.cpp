@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 39926 2012-01-31 20:45:46Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 40084 2012-02-12 14:01:47Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5604,6 +5604,15 @@ HRESULT Console::onlineMergeMedium(IMediumAttachment *aMediumAttachment,
     return rc;
 }
 
+
+/**
+ * Merely passes the call to Guest::enableVMMStatistics().
+ */
+void Console::enableVMMStatistics(BOOL aEnable)
+{
+    if (mGuest)
+        mGuest->enableVMMStatistics(aEnable);
+}
 
 /**
  * Gets called by Session::UpdateMachineState()
