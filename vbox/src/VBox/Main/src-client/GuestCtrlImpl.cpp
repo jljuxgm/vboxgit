@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 38293 2011-08-03 09:33:11Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 38294 2011-08-03 09:45:29Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1186,6 +1186,7 @@ HRESULT Guest::executeStreamCollectBlock(ULONG aPID,
 
     SafeArray<BYTE> aOutputData;
     ULONG cbOutputData = 0;
+    int vrc;
     for (;;)
     {
         rc = this->GetProcessOutput(aPID, ProcessOutputFlag_None,
@@ -1194,7 +1195,7 @@ HRESULT Guest::executeStreamCollectBlock(ULONG aPID,
         if (   SUCCEEDED(rc)
             && aOutputData.size())
         {
-            int vrc = stream.AddData(aOutputData.raw(), aOutputData.size());
+            vrc = stream.AddData(aOutputData.raw(), aOutputData.size());
             if (RT_UNLIKELY(RT_FAILURE(vrc)))
             {
                 rc = setError(VBOX_E_IPRT_ERROR,
