@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 35560 2011-01-14 13:37:32Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 36797 2011-04-21 15:46:31Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -980,7 +980,6 @@ static int drvHostBaseOpen(PDRVHOSTBASE pThis, PRTFILE pFileDevice, bool fReadOn
             if (RT_SUCCESS(rc))
             {
                 /* Get needed device parameters. */
-                union ccb DeviceCCB;
 
                 /*
                  * The device path, target id and lun id. Those are

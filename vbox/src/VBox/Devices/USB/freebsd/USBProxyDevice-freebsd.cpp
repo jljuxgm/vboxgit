@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-freebsd.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: USBProxyDevice-freebsd.cpp 36797 2011-04-21 15:46:31Z vboxsync $ */
 /** @file
  * USB device proxy - the FreeBSD backend.
  */
@@ -240,7 +240,7 @@ static void usbProxyFreeBSDSetupReq(struct usb_device_request *pSetupData,
 static int usbProxyFreeBSDEndpointOpen(PUSBPROXYDEV pProxyDev, int Endpoint, bool fIsoc, int index)
 {
     PUSBPROXYDEVFBSD pDevFBSD = (PUSBPROXYDEVFBSD) pProxyDev->Backend.pv;
-    PUSBENDPOINTFBSD pEndpointFBSD;
+    PUSBENDPOINTFBSD pEndpointFBSD = NULL; /* shut up gcc */
     struct usb_fs_endpoint *pXferEndpoint;
     struct usb_fs_open UsbFsOpen;
     int rc;
