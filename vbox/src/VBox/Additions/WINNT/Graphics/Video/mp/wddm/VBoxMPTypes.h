@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 40842 2012-04-10 08:47:25Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 41058 2012-04-25 21:42:29Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -149,12 +149,8 @@ typedef struct VBOXWDDM_ALLOCATION
 #if 0
     AVLPVNODECORE ShRcTreeEntry;
 #endif
-    VBOXUHGSMI_SYNCHOBJECT_TYPE enmSynchType;
-    union
-    {
-        PKEVENT pSynchEvent;
-        PRKSEMAPHORE pSynchSemaphore;
-    };
+    VBOXUHGSMI_BUFFER_TYPE_FLAGS fUhgsmiType;
+    PKEVENT pSynchEvent;
 } VBOXWDDM_ALLOCATION, *PVBOXWDDM_ALLOCATION;
 
 typedef struct VBOXWDDM_RESOURCE

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 40716 2012-03-29 17:14:19Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 41058 2012-04-25 21:42:29Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -5715,6 +5715,8 @@ static HRESULT APIENTRY vboxWddmDDevCreateResource(HANDLE hDevice, D3DDDIARG_CRE
             hr = E_OUTOFMEMORY;
         }
     }
+
+    VBOXVDBG_BREAK_SHARED(pRc);
 
     if (hr == S_OK)
         pResource->hResource = pRc;
