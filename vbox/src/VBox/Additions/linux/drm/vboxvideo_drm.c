@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 39831 2012-01-22 13:26:46Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 39832 2012-01-22 13:39:38Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -126,7 +126,7 @@ static struct drm_driver driver =
         .poll = drm_poll,
         .fasync = drm_fasync,
     },
-#else /* LINUX_VERSION_CODE > KERNEL_VERSION(3,3,0) */
+#else /* LINUX_VERSION_CODE >= KERNEL_VERSION(3,3,0) */
     .fops = &driver_fops,
 #endif
 #if LINUX_VERSION_CODE < KERNEL_VERSION (2, 6, 39) && !defined(DRM_RHEL61)
