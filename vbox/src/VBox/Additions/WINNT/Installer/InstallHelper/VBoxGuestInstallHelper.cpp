@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 36455 2011-03-29 11:37:01Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 36461 2011-03-29 14:12:52Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  */
@@ -195,6 +195,8 @@ BOOL WINAPI DllMain(HANDLE hInst, ULONG uReason, LPVOID lpReserved)
 VBOXINSTALLHELPER_EXPORT DisableWFP(HWND hwndParent, int string_size,
                                     TCHAR *variables, stack_t **stacktop)
 {
+    EXDLL_INIT();
+
     TCHAR szFile[MAX_PATH + 1];
     HRESULT hr = VBoxPopString(szFile, sizeof(szFile) / sizeof(TCHAR));
     if (SUCCEEDED(hr))
