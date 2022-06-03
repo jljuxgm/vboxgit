@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 36006 $)
+# Linux Additions kernel module init script ($Revision: 36019 $)
 #
 
 #
@@ -521,7 +521,7 @@ status)
     dmnstatus
     ;;
 *)
-    echo "Usage: $0 {start|stop|restart|status}"
+    echo "Usage: $0 {start|stop|restart|status|setup}"
     exit 1
 esac
 
