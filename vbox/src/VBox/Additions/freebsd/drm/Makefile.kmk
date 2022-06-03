@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38154 2011-07-25 12:30:55Z vboxsync $
+# $Id: Makefile.kmk 38317 2011-08-04 15:27:37Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (FreeBSD kernel OpenGL module).
 #
@@ -19,7 +19,7 @@
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
-INSTALLS += vboxvideo_drm vboxvideo-mod
+INSTALLS += vboxvideo-mod
 
 ifdef VBOX_WITH_ADDITION_DRIVERS
  SYSMODS  += vboxvideo_drm
@@ -40,6 +40,8 @@ vboxvideo-mod_SOURCES     = $(subst ",,$(FILES_VBOXVIDEO_DRM_NOBIN))
 
 #
 # vboxvideo - The Video DRM (Direct Rendering Module) kernel module
+#
+# Note! Syntax checking only.
 #
 vboxvideo_drm_TEMPLATE      = VBOXGUESTR0
 vboxvideo_drm_NAME          = vboxvideo

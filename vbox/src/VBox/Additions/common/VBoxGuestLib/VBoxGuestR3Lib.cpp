@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 38201 2011-07-27 14:50:39Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 38317 2011-08-04 15:27:37Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -343,7 +343,11 @@ int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
  *        error instead of an errno.h one. Alternatively, extend/redefine the
  *        header with an error code return field (much better alternative
  *        actually). */
+#ifdef VBOX_VBGLR3_XFREE86
+    int rc = xf86ioctl(g_File, iFunction, &Hdr);
+#else
     int rc = ioctl(RTFileToNative(g_File), iFunction, &Hdr);
+#endif
     if (rc == -1)
     {
         rc = errno;
