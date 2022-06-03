@@ -1,4 +1,4 @@
-/* $Id: slirp.c 38043 2011-07-19 04:36:48Z vboxsync $ */
+/* $Id: slirp.c 38044 2011-07-19 04:52:49Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1162,6 +1162,14 @@ void slirp_select_poll(PNATState pData, struct pollfd *polls, int ndfs)
              * combination on other Unixs hosts doesn't enter to this branch
              */
             &&  !CHECK_FD_SET(so, NetworkEvents, closefds)
+#endif
+#ifdef NAT_CONNECT_EXPERIMENT
+# ifdef RT_OS_WINDOWS
+            /**
+             * In some cases FD_CONNECT comes with FD_OOB, that confuse tcp processing.
+             */
+            && !WIN_CHECK_FD_SET(so, NetworkEvents, connectfds)
+# endif
 #endif
         )
         {
