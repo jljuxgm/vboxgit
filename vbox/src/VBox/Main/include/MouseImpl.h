@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 35989 2011-02-15 19:55:27Z vboxsync $ */
+/* $Id: MouseImpl.h 36120 2011-03-01 15:04:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -148,7 +148,7 @@ enum
     MouseButtonState_RightButton = 2,
     MouseButtonState_MiddleButton = 4,
     MouseButtonState_XButton1 = 8,
-    MouseButtonState_XButton2 = 16,
+    MouseButtonState_XButton2 = 16
 };
 #endif
 
