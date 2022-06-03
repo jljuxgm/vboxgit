@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 38482 2011-08-16 15:57:05Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 38532 2011-08-25 15:04:20Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -2172,10 +2172,18 @@ static DECLCALLBACK(int) buslogicDeviceSCSIRequestCompleted(PPDMISCSIPORT pInter
             if (pTaskState->pbSenseBuffer)
                 buslogicSenseBufferFree(pTaskState, (rcCompletion != SCSI_STATUS_OK));
 
-            buslogicSendIncomingMailbox(pBusLogic, pTaskState,
-                                        BUSLOGIC_MAILBOX_INCOMING_ADAPTER_STATUS_CMD_COMPLETED,
-                                        BUSLOGIC_MAILBOX_INCOMING_DEVICE_STATUS_OPERATION_GOOD,
-                                        BUSLOGIC_MAILBOX_INCOMING_COMPLETION_WITHOUT_ERROR);
+            if (rcCompletion == SCSI_STATUS_OK)
+                buslogicSendIncomingMailbox(pBusLogic, pTaskState,
+                                            BUSLOGIC_MAILBOX_INCOMING_ADAPTER_STATUS_CMD_COMPLETED,
+                                            BUSLOGIC_MAILBOX_INCOMING_DEVICE_STATUS_OPERATION_GOOD,
+                                            BUSLOGIC_MAILBOX_INCOMING_COMPLETION_WITHOUT_ERROR);
+            else if (rcCompletion == SCSI_STATUS_CHECK_CONDITION)
+                buslogicSendIncomingMailbox(pBusLogic, pTaskState,
+                                            BUSLOGIC_MAILBOX_INCOMING_ADAPTER_STATUS_CMD_COMPLETED,
+                                            BUSLOGIC_MAILBOX_INCOMING_DEVICE_STATUS_CHECK_CONDITION,
+                                            BUSLOGIC_MAILBOX_INCOMING_COMPLETION_WITH_ERROR);
+            else
+                AssertMsgFailed(("invalid completion status %d\n", rcCompletion));
         }
 
         /* Add task to the cache. */
