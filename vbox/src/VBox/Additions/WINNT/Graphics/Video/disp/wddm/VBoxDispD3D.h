@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 39900 2012-01-27 15:47:30Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 41471 2012-05-29 07:12:09Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -202,10 +202,8 @@ typedef struct VBOXWDDMDISP_DEVICE
     /* no lock is needed for this since we're guaranteed the per-device calls are not reentrant */
     RTLISTANCHOR DirtyAllocList;
 
-#ifdef VBOXWDDMDISP_DEBUG
     UINT cSamplerTextures;
     struct VBOXWDDMDISP_RESOURCE *aSamplerTextures[VBOXWDDMDISP_TOTAL_SAMPLERS];
-#endif
 
     UINT cRTs;
     struct VBOXWDDMDISP_ALLOCATION * apRTs[1];
