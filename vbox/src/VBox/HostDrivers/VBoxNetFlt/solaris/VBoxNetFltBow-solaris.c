@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltBow-solaris.c 41700 2012-06-14 10:12:57Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 41702 2012-06-14 10:15:11Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
