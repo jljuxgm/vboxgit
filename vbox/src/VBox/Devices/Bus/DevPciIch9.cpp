@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 38853 2011-09-23 14:03:23Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  */
@@ -2731,6 +2731,10 @@ static DECLCALLBACK(int)   ich9pcibridgeConstruct(PPDMDEVINS pDevIns,
 
     pBus->pPciHlpRC = pBus->pPciHlpR3->pfnGetRCHelpers(pDevIns);
     pBus->pPciHlpR0 = pBus->pPciHlpR3->pfnGetR0Helpers(pDevIns);
+
+    /* Disable default device locking. */
+    rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
+    AssertRCReturn(rc, rc);
 
     /*
      * Fill in PCI configs and add them to the bus.
