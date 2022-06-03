@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 38042 2011-07-18 22:40:50Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 38059 2011-07-19 09:34:44Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -507,7 +507,7 @@ VMMDECL(void) PDMCritSectLeave(PPDMCRITSECT pCritSect)
     RTNATIVETHREAD const hNativeSelf = pdmCritSectGetNativeSelf(pCritSect);
     if (RT_UNLIKELY(pCritSect->s.Core.NativeThreadOwner != hNativeSelf))
     {
-#if 0
+#if 1
         AssertMsgFailed(("%p %s: %p != %p; cLockers=%d cNestings=%d\n", pCritSect, R3STRING(pCritSect->s.pszName),
                          pCritSect->s.Core.NativeThreadOwner, hNativeSelf,
                          pCritSect->s.Core.cLockers, pCritSect->s.Core.cNestings));
