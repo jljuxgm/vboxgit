@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 42024 2012-07-05 12:10:53Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 42086 2012-07-10 10:35:16Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -108,6 +108,12 @@ VMMR0DECL(int) SVMR0EnableCpu(PHMGLOBLCPUINFO pCpu, PVM pVM, void *pvCpuPage, RT
      * to flush the TLB with before using a new ASID.
      */
     pCpu->fFlushASIDBeforeUse = true;
+
+    /*
+     * Ensure each VCPU scheduled on this CPU gets a new VPID on resume. See @bugref{6255}.
+     */
+    ++pCpu->cTLBFlushes;
+
     return VINF_SUCCESS;
 }
 
