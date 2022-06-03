@@ -1,4 +1,4 @@
-/* $Id: dvm.h 40137 2012-02-15 16:24:51Z vboxsync $ */
+/* $Id: dvm.h 41549 2012-06-01 17:29:05Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -119,6 +119,20 @@ typedef struct RTDVMFMTOPS
      * @param   hVolMgrFmt      The format specific volume manager handle.
      */
     DECLCALLBACKMEMBER(void, pfnClose)(RTDVMFMT hVolMgrFmt);
+
+    /**
+     * Returns whether the given range is in use by the volume manager.
+     *
+     * @returns IPRT status code.
+     * @param   hVolMgrFmt      The format specific volume manager handle.
+     * @param   offStart        Start offset of the range.
+     * @param   cbRange         Size of the range to check in bytes.
+     * @param   pfUsed          Where to store whether the range is in use by the
+     *                          volume manager.
+     */
+    DECLCALLBACKMEMBER(int, pfnQueryRangeUse)(RTDVMFMT hVolMgrFmt,
+                                              uint64_t off, uint64_t cbRange,
+                                              bool *pfUsed);
 
     /**
      * Gets the number of valid volumes in the map.

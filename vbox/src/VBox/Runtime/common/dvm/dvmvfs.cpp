@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 41094 2012-04-29 22:07:23Z vboxsync $ */
+/* $Id: dvmvfs.cpp 41549 2012-06-01 17:29:05Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -92,7 +92,6 @@ static DECLCALLBACK(int) rtDvmVfsFile_Read(void *pvThis, RTFOFF off, PCRTSGBUF p
     int rc = VINF_SUCCESS;
 
     Assert(pSgBuf->cSegs == 1);
-    Assert(off < 0);
     NOREF(fBlocking);
 
     /*
@@ -148,7 +147,6 @@ static DECLCALLBACK(int) rtDvmVfsFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
     int rc = VINF_SUCCESS;
 
     Assert(pSgBuf->cSegs == 1);
-    Assert(off < 0);
     NOREF(fBlocking);
 
     /*

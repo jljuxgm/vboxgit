@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 41549 2012-06-01 17:29:05Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -280,6 +280,7 @@ RuntimeR3_SOURCES       = \
 	common/dvm/dvmbsdlabel.cpp \
 	common/dvm/dvmgpt.cpp \
 	common/dvm/dvmmbr.cpp \
+	common/dvm/dvmvfs.cpp \
 	common/err/errinfo.cpp \
 	common/err/errmsg.cpp \
 	common/err/RTErrConvertFromErrno.cpp \

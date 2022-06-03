@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 40949 2012-04-16 18:53:51Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 41549 2012-06-01 17:29:05Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -342,6 +342,20 @@ DECLCALLBACK(void) rtDvmFmtBsdLblClose(RTDVMFMT hVolMgrFmt)
     RTMemFree(pThis);
 }
 
+static DECLCALLBACK(int) rtDvmFmtBsdLblQueryRangeUse(RTDVMFMT hVolMgrFmt,
+                                                     uint64_t off, uint64_t cbRange,
+                                                     bool *pfUsed)
+{
+    PRTDVMFMTINTERNAL pThis = hVolMgrFmt;
+
+    if (off <= RTDVM_BSDLBL_LBA2BYTE(1, pThis->pDisk))
+        *pfUsed = true;
+    else
+        *pfUsed = false;
+
+    return VINF_SUCCESS;
+}
+
 DECLCALLBACK(uint32_t) rtDvmFmtBsdLblGetValidVolumes(RTDVMFMT hVolMgrFmt)
 {
     PRTDVMFMTINTERNAL pThis = hVolMgrFmt;
@@ -512,6 +526,8 @@ DECLHIDDEN(RTDVMFMTOPS) g_rtDvmFmtBsdLbl =
     rtDvmFmtBsdLblInitialize,
     /* pfnClose */
     rtDvmFmtBsdLblClose,
+    /* pfnQueryRangeUse */
+    rtDvmFmtBsdLblQueryRangeUse,
     /* pfnGetValidVolumes */
     rtDvmFmtBsdLblGetValidVolumes,
     /* pfnGetMaxVolumes */

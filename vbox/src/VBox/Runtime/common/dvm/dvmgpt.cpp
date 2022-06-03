@@ -1,4 +1,4 @@
-/* $Id: dvmgpt.cpp 40949 2012-04-16 18:53:51Z vboxsync $ */
+/* $Id: dvmgpt.cpp 41549 2012-06-01 17:29:05Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - GPT format backend.
  */
@@ -341,6 +341,20 @@ static DECLCALLBACK(void) rtDvmFmtGptClose(RTDVMFMT hVolMgrFmt)
     RTMemFree(pThis);
 }
 
+static DECLCALLBACK(int) rtDvmFmtGptQueryRangeUse(RTDVMFMT hVolMgrFmt,
+                                                  uint64_t off, uint64_t cbRange,
+                                                  bool *pfUsed)
+{
+    PRTDVMFMTINTERNAL pThis = hVolMgrFmt;
+
+    if (off < 33*pThis->pDisk->cbSector)
+        *pfUsed = true;
+    else
+        *pfUsed = false;
+
+    return VINF_SUCCESS;
+}
+
 static DECLCALLBACK(uint32_t) rtDvmFmtGptGetValidVolumes(RTDVMFMT hVolMgrFmt)
 {
     PRTDVMFMTINTERNAL pThis = hVolMgrFmt;
@@ -530,6 +544,8 @@ RTDVMFMTOPS g_rtDvmFmtGpt =
     rtDvmFmtGptInitialize,
     /* pfnClose */
     rtDvmFmtGptClose,
+    /* pfnQueryRangeUse */
+    rtDvmFmtGptQueryRangeUse,
     /* pfnGetValidVolumes */
     rtDvmFmtGptGetValidVolumes,
     /* pfnGetMaxVolumes */
