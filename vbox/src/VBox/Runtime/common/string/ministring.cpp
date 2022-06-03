@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 39277 2011-11-11 16:22:46Z vboxsync $ */
+/* $Id: ministring.cpp 39873 2012-01-25 11:49:04Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -201,13 +201,16 @@ RTCString &RTCString::appendCodePoint(RTUNICP uc)
 
 size_t RTCString::find(const char *pcszFind, size_t pos /*= 0*/) const
 {
-    const char *pszThis, *p;
-
-    if (    ((pszThis = c_str()))
-         && (pos < length())
-         && ((p = strstr(pszThis + pos, pcszFind)))
-       )
-        return p - pszThis;
+    if (pos < length())
+    {
+        const char *pszThis = c_str();
+        if (pszThis)
+        {
+            const char *pszHit = strstr(pszThis, pcszFind);
+            if (pszHit)
+                return pszHit - pszThis;
+        }
+    }
 
     return npos;
 }
