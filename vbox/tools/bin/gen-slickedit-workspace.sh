@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 40629 2012-03-26 09:20:47Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 40737 2012-04-02 09:00:05Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -875,6 +875,9 @@ my_generate_project "RDP-Misc"      "src/VBox/RDP"                          --be
 
 # src/VBox/Testsuite
 my_generate_project "Testsuite"     "src/VBox/Testsuite"                    --begin-incs "include"                                          --end-includes "src/VBox/Testsuite"
+
+# src/VBox/ExtPacks
+my_generate_project "ExtPacks"      "src/VBox/ExtPacks"                     --begin-incs "include"                                          --end-includes "src/VBox/ExtPacks"
 
 # src/apps/adpctl - misplaced.
 my_generate_project "adpctl"        "src/apps/adpctl"                       --begin-incs "include"                                          --end-includes "src/apps/adpctl"
