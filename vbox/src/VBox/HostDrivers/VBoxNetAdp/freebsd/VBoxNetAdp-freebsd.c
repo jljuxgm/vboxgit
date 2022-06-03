@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-freebsd.c 40911 2012-04-14 07:04:34Z vboxsync $ */
+/* $Id: VBoxNetAdp-freebsd.c 41199 2012-05-08 08:25:20Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), FreeBSD Specific Code.
  */
@@ -304,8 +304,8 @@ void vboxNetAdpOsDestroy(PVBOXNETADP pThis)
 {
     struct ifnet *ifp;
 
-    VBOXCURVNET_SET(ifp->if_vnet);
     ifp = pThis->u.s.ifp;
+    VBOXCURVNET_SET(ifp->if_vnet);
     ether_ifdetach(ifp);
     if_free(ifp);
     VBOXCURVNET_RESTORE();
