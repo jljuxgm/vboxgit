@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 36248 2011-03-10 11:00:18Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 36730 2011-04-19 14:31:40Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -92,6 +92,7 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
         SolarisNICMap.insert(NICPair("skge", "SksKonnect Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("spwr", "SMC EtherPower II 10/100 (9432) Ethernet"));
         SolarisNICMap.insert(NICPair("vboxnet", "VirtualBox Host Ethernet"));
+        SolarisNICMap.insert(NICPair("vboxvnic_template", "VirtualBox Virtual Network Interface Template"));
         SolarisNICMap.insert(NICPair("vlan", "Virtual LAN Ethernet"));
         SolarisNICMap.insert(NICPair("vnic", "Virtual Network Interface Ethernet"));
         SolarisNICMap.insert(NICPair("xge", "Neterior Xframe 10Gigabit Ethernet"));
@@ -210,6 +211,14 @@ static boolean_t vboxSolarisAddLinkHostIface(const char *pszIface, void *pvHostN
      * Skip IPSEC interfaces. It's at IP level.
      */
     if (!strncmp(pszIface, "ip.tun", 6))
+        return _B_FALSE;
+
+    /*
+     * Skip our own dynamic VNICs but don't skip VNIC templates.
+     * These names originate from VBoxNetFltBow-solaris.c, hardcoded here for now.
+     */
+    if (    strncmp(pszIface, "vboxvnic_template", 17)
+        && !strncmp(pszIface, "vboxvnic", 8))
         return _B_FALSE;
 
     /*

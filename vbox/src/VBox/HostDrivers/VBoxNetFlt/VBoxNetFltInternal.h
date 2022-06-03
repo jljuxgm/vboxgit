@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 36121 2011-03-01 15:25:18Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 36730 2011-04-19 14:31:40Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -179,12 +179,12 @@ typedef struct VBOXNETFLTINS
 #  ifdef VBOX_WITH_NETFLT_CROSSBOW
             /** Whether the underlying interface is a VNIC or not. */
             bool fIsVNIC;
+            /** Whether the underlying interface is a VNIC template or not. */
+            bool fIsVNICTemplate;
             /** Handle to list of created VNICs. */
             list_t hVNICs;
             /** Instance number while creating VNICs. */
             uint64_t uInstance;
-            /** Pointer to the VNIC instance data. */
-            void *pvVNIC;
             /** The MAC address of the host interface. */
             RTMAC MacAddr;
             /** Whether required capabilities have been reported. */
