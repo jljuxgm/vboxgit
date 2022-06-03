@@ -1,4 +1,4 @@
-# $Id: Config.kmk 39252 2011-11-09 14:00:21Z vboxsync $
+# $Id: Config.kmk 39254 2011-11-09 14:49:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4619,6 +4619,7 @@ endif
 #
 TEMPLATE_VBOXGUESTR0LIB          = VBox Guest Driver Libraries
 TEMPLATE_VBOXGUESTR0LIB_EXTENDS  = VBOXGUESTR0
+TEMPLATE_VBOXGUESTR0LIB_INSTTYPE = stage
 TEMPLATE_VBOXGUESTR0LIB_INST     = $(INST_ADDITIONS_LIB)
 
 #
@@ -4867,7 +4868,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39252 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39254 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
