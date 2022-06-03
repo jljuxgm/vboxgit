@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 37768 2011-07-04 14:49:46Z vboxsync $ */
+/* $Id: MediumImpl.h 37831 2011-07-08 10:10:41Z vboxsync $ */
 
 /** @file
  *
@@ -115,6 +115,7 @@ public:
     STDMETHOD(COMGETTER(MediumFormat))(IMediumFormat **aMediumFormat);
     STDMETHOD(COMGETTER(Type))(MediumType_T *aType);
     STDMETHOD(COMSETTER(Type))(MediumType_T aType);
+    STDMETHOD(COMGETTER(AllowedTypes))(ComSafeArrayOut(MediumType_T, aAllowedTypes));
     STDMETHOD(COMGETTER(Parent))(IMedium **aParent);
     STDMETHOD(COMGETTER(Children))(ComSafeArrayOut(IMedium *, aChildren));
     STDMETHOD(COMGETTER(Base))(IMedium **aBase);

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 37768 2011-07-04 14:49:46Z vboxsync $ */
+/* $Id: MediumImpl.cpp 37831 2011-07-08 10:10:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1767,6 +1767,18 @@ STDMETHODIMP Medium::COMSETTER(Type)(MediumType_T aType)
     HRESULT rc = m->pVirtualBox->saveRegistries(llRegistriesThatNeedSaving);
 
     return rc;
+}
+
+STDMETHODIMP Medium::COMGETTER(AllowedTypes)(ComSafeArrayOut(MediumType_T, aAllowedTypes))
+{
+    CheckComArgOutSafeArrayPointerValid(aAllowedTypes);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    ReturnComNotImplemented();
 }
 
 STDMETHODIMP Medium::COMGETTER(Parent)(IMedium **aParent)
