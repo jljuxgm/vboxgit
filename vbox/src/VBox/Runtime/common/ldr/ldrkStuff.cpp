@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 38515 2011-08-24 14:33:32Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -135,6 +135,8 @@ static int rtkldrGetImportWrapper(PKLDRMOD pMod, uint32_t iImport, uint32_t iSym
 
 static DECLCALLBACK(int) rtkldrGetSymbolEx(PRTLDRMODINTERNAL pMod, const void *pvBits, RTUINTPTR BaseAddress,
                                            const char *pszSymbol, RTUINTPTR *pValue);
+static DECLCALLBACK(int) rtkldr_EnumDbgInfo(PRTLDRMODINTERNAL pMod, const void *pvBits,
+                                            PFNRTLDRENUMDBG pfnCallback, void *pvUser);
 
 
 
@@ -441,6 +443,7 @@ static const RTLDROPS g_rtkldrOps =
     rtkldrGetBits,
     rtkldrRelocate,
     rtkldrGetSymbolEx,
+    rtkldr_EnumDbgInfo,
     42
 };
 
@@ -626,6 +629,13 @@ static DECLCALLBACK(int) rtkldrGetSymbolEx(PRTLDRMODINTERNAL pMod, const void *p
     return rtkldrConvertError(rc);
 }
 
+
+/** @copydoc RTLDROPS::pfnEnumDbgInfo */
+static DECLCALLBACK(int) rtkldr_EnumDbgInfo(PRTLDRMODINTERNAL pMod, const void *pvBits,
+                                            PFNRTLDRENUMDBG pfnCallback, void *pvUser)
+{
+    return VERR_NOT_SUPPORTED;
+}
 
 
 /**

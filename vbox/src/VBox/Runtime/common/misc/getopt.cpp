@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 37665 2011-06-28 12:32:13Z vboxsync $ */
+/* $Id: getopt.cpp 38515 2011-08-24 14:33:32Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -720,7 +720,6 @@ RTDECL(int) RTGetOptFetchValue(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion
      * Validate input.
      */
     PCRTGETOPTDEF pOpt = pState->pDef;
-    AssertReturn(pOpt, VERR_GETOPT_UNKNOWN_OPTION);
     AssertReturn(!(fFlags & ~RTGETOPT_VALID_MASK), VERR_INVALID_PARAMETER);
     AssertReturn((fFlags & RTGETOPT_REQ_MASK) != RTGETOPT_REQ_NOTHING, VERR_INVALID_PARAMETER);
 

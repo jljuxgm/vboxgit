@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 38515 2011-08-24 14:33:32Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -684,6 +684,16 @@ static DECLCALLBACK(int) RTLDRELF_NAME(GetSymbolEx)(PRTLDRMODINTERNAL pMod, cons
 }
 
 
+/** @copydoc RTLDROPS::pfnEnumDbgInfo */
+static DECLCALLBACK(int) RTLDRELF_NAME(EnumDbgInfo)(PRTLDRMODINTERNAL pMod, const void *pvBits,
+                                                    PFNRTLDRENUMDBG pfnCallback, void *pvUser)
+{
+    PRTLDRMODELF pModElf = (PRTLDRMODELF)pMod;
+    NOREF(pvBits);
+
+    return VERR_NOT_IMPLEMENTED;
+}
+
 
 /**
  * The ELF module operations.
@@ -704,7 +714,8 @@ static RTLDROPS RTLDRELF_MID(s_rtldrElf,Ops) =
     RTLDRELF_NAME(GetBits),
     RTLDRELF_NAME(Relocate),
     RTLDRELF_NAME(GetSymbolEx),
-    0
+    RTLDRELF_NAME(EnumDbgInfo),
+    42
 };
 
 

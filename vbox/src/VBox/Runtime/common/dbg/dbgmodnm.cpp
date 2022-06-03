@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 38515 2011-08-24 14:33:32Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -462,6 +462,13 @@ static int rtDbgModNmScanFile(PRTDBGMODNM pThis, PRTSTREAM pStrm, bool fAddSymbo
 /** @interface_method_impl{RTDBGMODVTDBG,pfnTryOpen} */
 static DECLCALLBACK(int) rtDbgModNm_TryOpen(PRTDBGMODINT pMod)
 {
+    /*
+     * Fend off images.
+     */
+    if (   !pMod->pszDbgFile
+        || pMod->pImgVt)
+        return VERR_DBG_NO_MATCHING_INTERPRETER;
+
     /*
      * Try open the file and create an instance.
      */

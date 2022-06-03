@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 35191 2010-12-16 15:25:20Z vboxsync $ */
+/* $Id: ldrNative.cpp 38515 2011-08-24 14:33:32Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -68,6 +68,7 @@ static const RTLDROPS s_rtldrNativeOps =
     rtldrNativeDone,
     rtldrNativeEnumSymbols,
     /* ext: */
+    NULL,
     NULL,
     NULL,
     NULL,
