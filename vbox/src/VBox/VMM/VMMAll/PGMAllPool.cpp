@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 41734 2012-06-15 00:20:13Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 41735 2012-06-15 00:26:44Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -893,7 +893,7 @@ DECLINLINE(int) pgmPoolAccessHandlerSTOSD(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE 
     Assert(pRegFrame->rcx <= 0x20);
 
 #ifdef VBOX_STRICT
-    if (pDis->opmode == DISCPUMODE_32BIT)
+    if (pDis->uOpMode == DISCPUMODE_32BIT)
         Assert(uIncrement == 4);
     else
         Assert(uIncrement == 8);
@@ -1197,8 +1197,8 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
          */
         if (    pDis->pCurInstr->opcode == OP_STOSWD
             &&  !pRegFrame->eflags.Bits.u1DF
-            &&  pDis->opmode == pDis->mode
-            &&  pDis->addrmode == pDis->mode)
+            &&  pDis->uOpMode == pDis->mode
+            &&  pDis->uAddrMode == pDis->mode)
         {
             bool fValidStosd = false;
 

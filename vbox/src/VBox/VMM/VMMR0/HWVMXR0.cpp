@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41734 2012-06-15 00:20:13Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41735 2012-06-15 00:26:44Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -4320,13 +4320,13 @@ ResumeExecution:
                 {
                     Log2(("IOMInterpretOUTSEx %RGv %x size=%d\n", (RTGCPTR)pCtx->rip, uPort, cbSize));
                     STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitIOStringWrite);
-                    rc = IOMInterpretOUTSEx(pVM, CPUMCTX2CORE(pCtx), uPort, pDis->fPrefix, (DISCPUMODE)pDis->addrmode, cbSize);
+                    rc = IOMInterpretOUTSEx(pVM, CPUMCTX2CORE(pCtx), uPort, pDis->fPrefix, (DISCPUMODE)pDis->uAddrMode, cbSize);
                 }
                 else
                 {
                     Log2(("IOMInterpretINSEx  %RGv %x size=%d\n", (RTGCPTR)pCtx->rip, uPort, cbSize));
                     STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitIOStringRead);
-                    rc = IOMInterpretINSEx(pVM, CPUMCTX2CORE(pCtx), uPort, pDis->fPrefix, (DISCPUMODE)pDis->addrmode, cbSize);
+                    rc = IOMInterpretINSEx(pVM, CPUMCTX2CORE(pCtx), uPort, pDis->fPrefix, (DISCPUMODE)pDis->uAddrMode, cbSize);
                 }
             }
             else
