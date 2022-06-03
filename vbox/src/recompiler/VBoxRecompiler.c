@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 38320 2011-08-04 19:16:53Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 38326 2011-08-05 14:35:08Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1429,6 +1429,12 @@ bool remR3CanExecuteRaw(CPUX86State *env, RTGCPTR eip, unsigned fFlags, int *piE
         CPUMCTX Ctx;
 
         env->state |= CPU_RAW_HWACC;
+
+        /*
+         * The simple check first...
+         */
+        if (!EMIsHwVirtExecutionEnabled(env->pVM))
+            return false;
 
         /*
          * Create partial context for HWACCMR3CanExecuteGuest
