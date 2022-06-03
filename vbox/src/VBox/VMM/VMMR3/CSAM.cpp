@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 36912 2011-05-02 14:23:01Z vboxsync $ */
+/* $Id: CSAM.cpp 36969 2011-05-05 08:59:43Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1983,7 +1983,7 @@ VMMR3DECL(int) CSAMR3UnmonitorPage(PVM pVM, RTRCPTR pPageAddrGC, CSAMTAG enmTag)
 #ifdef VBOX_STRICT
     PCSAMPAGEREC pPageRec;
 
-    pPageRec = (PCSAMPAGEREC)RTAvlPVGet(&pVM->csam.s.pPageTree, (AVLPVKEY)pPageAddrGC);
+    pPageRec = (PCSAMPAGEREC)RTAvlPVGet(&pVM->csam.s.pPageTree, (AVLPVKEY)(uintptr_t)pPageAddrGC);
     Assert(pPageRec && pPageRec->page.enmTag == enmTag);
 #endif
     return CSAMR3RemovePage(pVM, pPageAddrGC);

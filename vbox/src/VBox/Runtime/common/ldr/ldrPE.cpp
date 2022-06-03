@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 36912 2011-05-02 14:23:01Z vboxsync $ */
+/* $Id: ldrPE.cpp 36969 2011-05-05 08:59:43Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -315,7 +315,7 @@ static DECLCALLBACK(int) rtldrPEResolveImports32(PRTLDRMODPE pModPe, const void 
                 rc = pfnGetImport(&pModPe->Core, pszModName, PE_RVA2TYPE(pvBitsR, (char*)(uintptr_t)pThunk->u1.AddressOfData + 2, const char *),
                                   ~0, &Value, pvUser);
                 Log4((RT_SUCCESS(rc) ? "RTLdrPE:  %RTptr %s\n" : "RTLdrPE:  %08RX32 %s rc=%Rrc\n",
-                      (uint32_t)Value, PE_RVA2TYPE(pvBitsR, (char*)pThunk->u1.AddressOfData + 2, const char *), rc));
+                      (uint32_t)Value, PE_RVA2TYPE(pvBitsR, (char*)(uintptr_t)pThunk->u1.AddressOfData + 2, const char *), rc));
             }
             else
             {
