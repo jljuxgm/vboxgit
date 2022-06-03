@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 37338 2011-06-07 09:20:50Z vboxsync $
+# $Id: vboxconfig.sh 37343 2011-06-07 12:21:14Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -17,6 +17,8 @@
 
 # Never use exit 2 or exit 20 etc., the return codes are used in
 # SRv4 postinstall procedures which carry special meaning. Just use exit 1 for failure.
+
+export LANG=C
 
 # S10 or OpenSoalris
 HOST_OS_MAJORVERSION=`uname -r`
