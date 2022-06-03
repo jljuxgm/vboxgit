@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 40490 2012-03-15 19:38:25Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -1308,6 +1308,11 @@ void NetworkAdapter::commit()
         mData.commit();
         if (mPeer)
         {
+            if (!mData->mBandwidthGroup.isNull())
+            {
+                Assert(!mData->mBandwidthGroup->getPeer().isNull() && mData->mBandwidthGroup->getPeer()->getPeer().isNull());
+                mData->mBandwidthGroup = mData->mBandwidthGroup->getPeer();
+            }
             /* attach new data to the peer and reshare it */
             mPeer->mData.attach(mData);
         }
