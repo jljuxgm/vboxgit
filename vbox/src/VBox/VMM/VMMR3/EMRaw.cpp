@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 41676 2012-06-12 20:53:40Z vboxsync $ */
+/* $Id: EMRaw.cpp 41678 2012-06-13 09:37:47Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -989,17 +989,17 @@ static int emR3RawPrivileged(PVM pVM, PVMCPU pVCpu)
                 break;
 
             case OP_MOV_CR:
-                if (Cpu.param1.flags & DISUSE_REG_GEN32)
+                if (Cpu.param1.fUse & DISUSE_REG_GEN32)
                 {
                     //read
-                    Assert(Cpu.param2.flags & DISUSE_REG_CR);
+                    Assert(Cpu.param2.fUse & DISUSE_REG_CR);
                     Assert(Cpu.param2.base.reg_ctrl <= USE_REG_CR4);
                     STAM_COUNTER_INC(&pStats->StatMovReadCR[Cpu.param2.base.reg_ctrl]);
                 }
                 else
                 {
                     //write
-                    Assert(Cpu.param1.flags & DISUSE_REG_CR);
+                    Assert(Cpu.param1.fUse & DISUSE_REG_CR);
                     Assert(Cpu.param1.base.reg_ctrl <= USE_REG_CR4);
                     STAM_COUNTER_INC(&pStats->StatMovWriteCR[Cpu.param1.base.reg_ctrl]);
                 }
@@ -1099,7 +1099,7 @@ static int emR3RawPrivileged(PVM pVM, PVMCPU pVCpu)
                         STAM_PROFILE_STOP(&pVCpu->em.s.StatPrivEmu, a);
 
                         if (    Cpu.pCurInstr->opcode == OP_MOV_CR
-                            &&  Cpu.param1.flags == DISUSE_REG_CR /* write */
+                            &&  Cpu.param1.fUse == DISUSE_REG_CR /* write */
                            )
                         {
                             /* Deal with CR0 updates inside patch code that force

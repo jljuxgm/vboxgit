@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 41676 2012-06-12 20:53:40Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 41678 2012-06-13 09:37:47Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -760,7 +760,7 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
     NOREF(pVM); NOREF(pvFault);
 #endif
 
-    LogFlow(("Reused instr %RGv %d at %RGv param1.flags=%x param1.reg=%d\n", pRegFrame->rip, pDis->pCurInstr->opcode, pvFault, pDis->param1.flags,  pDis->param1.base.reg_gen));
+    LogFlow(("Reused instr %RGv %d at %RGv param1.fUse=%llx param1.reg=%d\n", pRegFrame->rip, pDis->pCurInstr->opcode, pvFault, pDis->param1.fUse,  pDis->param1.base.reg_gen));
 
     /* Non-supervisor mode write means it's used for something else. */
     if (CPUMGetGuestCPL(pVCpu, pRegFrame) != 0)
@@ -803,8 +803,8 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
             }
             return false;
     }
-    if (    (    (pDis->param1.flags & DISUSE_REG_GEN32)
-             ||  (pDis->param1.flags & DISUSE_REG_GEN64))
+    if (    (    (pDis->param1.fUse & DISUSE_REG_GEN32)
+             ||  (pDis->param1.fUse & DISUSE_REG_GEN64))
         &&  (pDis->param1.base.reg_gen == USE_REG_ESP))
     {
         Log4(("pgmPoolMonitorIsReused: ESP\n"));

@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 41676 2012-06-12 20:53:40Z vboxsync $ */
+/* $Id: CSAMInternal.h 41678 2012-06-13 09:37:47Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -250,23 +250,23 @@ typedef int (VBOXCALL *PFN_CSAMR3ANALYSE)(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(
 inline RTRCPTR CSAMResolveBranch(PDISCPUSTATE pCpu, RTRCPTR pBranchInstrGC)
 {
     uint32_t disp;
-    if (pCpu->param1.flags & DISUSE_IMMEDIATE8_REL)
+    if (pCpu->param1.fUse & DISUSE_IMMEDIATE8_REL)
     {
         disp = (int32_t)(char)pCpu->param1.parval;
     }
     else
-    if (pCpu->param1.flags & DISUSE_IMMEDIATE16_REL)
+    if (pCpu->param1.fUse & DISUSE_IMMEDIATE16_REL)
     {
         disp = (int32_t)(uint16_t)pCpu->param1.parval;
     }
     else
-    if (pCpu->param1.flags & DISUSE_IMMEDIATE32_REL)
+    if (pCpu->param1.fUse & DISUSE_IMMEDIATE32_REL)
     {
         disp = (int32_t)pCpu->param1.parval;
     }
     else
     {
-        Log(("We don't support far jumps here!! (%08X)\n", pCpu->param1.flags));
+        Log(("We don't support far jumps here!! (%08X)\n", pCpu->param1.fUse));
         return 0;
     }
 #ifdef IN_RC
