@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 36098 2011-02-28 13:35:58Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 36374 2011-03-23 16:37:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -545,6 +545,14 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                         return true;
                     }
 
+#ifdef Q_WS_X11
+                    /* Make sure that we are focused after a click.  Rather
+                     * ugly, but works around a problem with GNOME
+                     * screensaver, which sometimes removes our input focus
+                     * and gives us no way to get it back. */
+                    if (pEvent->type() == QEvent::MouseButtonRelease)
+                        pWatchedWidget->window()->activateWindow();
+#endif /* Q_WS_X11 */
                     /* Check if we should activate window under cursor: */
                     if (!uisession()->isMouseCaptured() &&
                         QApplication::activeWindow() &&
