@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 40453 2012-03-13 18:38:06Z vboxsync $ */
+/* $Id: IEMAll.cpp 41779 2012-06-16 18:53:29Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7070,7 +7070,7 @@ static void iemExecVerificationModeSetup(PIEMCPU pIemCpu)
 
 /**
  * Allocate an event record.
- * @returns Poitner to a record.
+ * @returns Pointer to a record.
  */
 static PIEMVERIFYEVTREC iemVerifyAllocRecord(PIEMCPU pIemCpu)
 {
