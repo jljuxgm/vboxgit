@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 36166 2011-03-04 11:54:53Z vboxsync $ */
+/* $Id: dir-posix.cpp 36167 2011-03-04 12:33:39Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -90,6 +90,7 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
             if (mkdir(pszNativePath, fMode & RTFS_UNIX_MASK))
             {
                 rc = errno;
+                bool fVerifyIsDir = true;
 #ifdef RT_OS_SOLARIS
                 /*
                  * mkdir on nfs mount points has been/is busted in various
@@ -100,11 +101,23 @@ RTDECL(int) RTDirCreate(const char *pszPath, RTFMODE fMode)
                 if (    rc == ENOSYS
                     ||  rc == EACCES)
                 {
-                    rc = EEXIST;
+                    rc = RTErrConvertFromErrno(rc);
+                    fVerifyIsDir = false;  /* We'll check if it's a dir ourselves since we're going to stat() anyway. */
+                    struct stat st;
+                    if (!stat(pszNativePath, &st))
+                    {
+                        rc = VERR_ALREADY_EXISTS;
+                        if (!S_ISDIR(st.st_mode))
+                            rc = VERR_IS_A_FILE;
+                    }
                 }
-#endif
+                else
+                    rc = RTErrConvertFromErrno(rc);
+#else
                 rc = RTErrConvertFromErrno(rc);
-                if (rc == VERR_ALREADY_EXISTS)
+#endif
+                if (   rc == VERR_ALREADY_EXISTS
+                    && fVerifyIsDir == true)
                 {
                     /*
                      * Verify that it really exists as a directory.
