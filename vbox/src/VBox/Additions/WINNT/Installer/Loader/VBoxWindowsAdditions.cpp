@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 39743 2012-01-10 17:48:22Z vboxsync $ */
+/* $Id: VBoxWindowsAdditions.cpp 40363 2012-03-05 16:52:22Z vboxsync $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -213,7 +213,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             wcscpy(pwsz, pwszOrgCmdLine);
         }
         else
+        {
             *pwsz = L'\0';
+            pwszOrgCmdLine = NULL;
+        }
     }
 
     /*
@@ -256,7 +259,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         ShExecInfo.hwnd         = NULL;
         ShExecInfo.lpVerb       = L"runas" ;
         ShExecInfo.lpFile       = wszModule;
-        ShExecInfo.lpParameters = pwszNewCmdLine;
+        ShExecInfo.lpParameters = pwszOrgCmdLine; /* pass only args here!!! */
         ShExecInfo.lpDirectory  = wszCurDir;
         ShExecInfo.nShow        = SW_NORMAL;
         ShExecInfo.hProcess     = INVALID_HANDLE_VALUE;
