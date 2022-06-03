@@ -1,4 +1,4 @@
-/* $Id: UIMachineShortcuts.cpp 35752 2011-01-28 10:57:53Z vboxsync $ */
+/* $Id: UIMachineShortcuts.cpp 36111 2011-02-28 19:51:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -52,7 +52,7 @@ UIMachineShortcuts::UIMachineShortcuts()
     m_Shortcuts[CommandLineWindowShortcut]     = UIKeySequence("CommandLineWindow");
     m_Shortcuts[LoggingShortcut]               = UIKeySequence("Logging");
 #endif /* VBOX_WITH_DEBUGGER_GUI */
-    m_Shortcuts[HelpShortcut]                  = UIKeySequence("Help",                  QKeySequence::HelpContents);
+    m_Shortcuts[HelpShortcut]                  = UIKeySequence("Help");
     m_Shortcuts[WebShortcut]                   = UIKeySequence("Web");
     m_Shortcuts[ResetWarningsShortcut]         = UIKeySequence("ResetWarnings");
 #ifdef VBOX_WITH_REGISTRATION
