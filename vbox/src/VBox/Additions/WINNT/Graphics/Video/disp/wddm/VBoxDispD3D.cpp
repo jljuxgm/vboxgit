@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 39463 2011-11-29 20:34:17Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 39508 2011-12-02 09:24:48Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -2340,7 +2340,7 @@ static HRESULT vboxWddmSwapchainSwtichOffscreenRt(PVBOXWDDMDISP_DEVICE pDevice, 
         PVBOXWDDMDISP_RENDERTGT pRT = &pSwapchain->aRTs[i];
         if (pRT->pAlloc->enmD3DIfType != VBOXDISP_D3DIFTYPE_SURFACE)
             continue;
-        BOOL fHasSurf = !!pRT->pAlloc->pRc->aAllocations[i].pD3DIf;
+        BOOL fHasSurf = !!pRT->pAlloc->pRc->aAllocations[0].pD3DIf;
         if (!fForceCreate && !fHasSurf)
             continue;
 
