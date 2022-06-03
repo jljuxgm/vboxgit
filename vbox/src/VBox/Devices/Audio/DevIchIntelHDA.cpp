@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 36691 2011-04-18 03:03:15Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 37185 2011-05-23 15:06:44Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -52,7 +52,7 @@ extern "C" {
 # error "Please specify your HDA device vendor/device IDs"
 #endif
 
-#define HDA_SSM_VERSION 1
+#define HDA_SSM_VERSION 2
 PDMBOTHCBDECL(int) hdaMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void *pv, unsigned cb);
 PDMBOTHCBDECL(int) hdaMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void *pv, unsigned cb);
 static DECLCALLBACK(void)  hdaReset (PPDMDEVINS pDevIns);
@@ -1995,7 +1995,8 @@ static DECLCALLBACK(int) hdaLoadExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle,
 {
     PCIINTELHDLinkState *pThis = PDMINS_2_DATA(pDevIns, PCIINTELHDLinkState *);
     /* Load Codec nodes states */
-    AssertMsgReturn (uVersion == HDA_SSM_VERSION, ("%d\n", uVersion), VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION);
+    if (uVersion < HDA_SSM_VERSION)
+        return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     Assert (uPass == SSM_PASS_FINAL); NOREF(uPass);
 
     codecLoadState(&pThis->hda.Codec, pSSMHandle);
