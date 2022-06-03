@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 39562 2011-12-08 17:05:52Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 39674 2011-12-21 14:08:14Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -549,8 +549,16 @@ Function CheckForInstalledComponents
   ; regardless whether the user used "/with_autologon" or not
   ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion\WinLogon" "GinaDLL"
   ${If} $0 == "VBoxGINA.dll"
-    DetailPrint "Found already installed auto-logon support ..."
     StrCpy $g_bWithAutoLogon "true"
+  ${EndIf}
+  
+  ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{275D3BCC-22BB-4948-A7F6-3A3054EBA92B}" ""
+  ${If} $0 == "VBoxCredProv.dll"
+    StrCpy $g_bWithAutoLogon "true"  
+  ${EndIf}
+  
+  ${If} $g_bWithAutoLogon == "true"
+    DetailPrint "Found already installed auto-logon support ..."
   ${EndIf}
 
   Pop $0
