@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-linux.c 39006 2011-10-17 14:34:24Z vboxsync $ */
+/* $Id: initterm-r0drv-linux.c 39013 2011-10-18 08:26:56Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
@@ -72,7 +72,7 @@ DECLHIDDEN(void) rtR0LnxWorkqueuePush(RTR0LNXWORKQUEUEITEM *pWork, void (*pfnWor
 # endif
     queue_work(g_prtR0LnxWorkQueue, pWork);
 #else
-    INIT_TQUEUE(pWork, pfnWorker, pWork);
+    INIT_TQUEUE(pWork, (void (*)(void *))pfnWorker, pWork);
     queue_task(pWork, &g_rtR0LnxWorkQueue);
 #endif
 }
@@ -96,9 +96,11 @@ DECLHIDDEN(void) rtR0LnxWorkqueueFlush(void)
 
 DECLHIDDEN(int) rtR0InitNative(void)
 {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 41)
     g_prtR0LnxWorkQueue = create_workqueue("iprt");
     if (!g_prtR0LnxWorkQueue)
         return VERR_NO_MEMORY;
+#endif
 
     return VINF_SUCCESS;
 }
