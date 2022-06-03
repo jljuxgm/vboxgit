@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 37767 2011-07-04 14:20:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2445,6 +2445,14 @@ HRESULT ExtPackManager::refreshExtPack(const char *a_pszName, bool a_fUnusableIs
     }
     else
     {
+        /*
+         * Do this check here, otherwise VBoxExtPackCalcDir() will fail with a strange
+         * error.
+         */
+        bool fValid = VBoxExtPackIsValidName(a_pszName);
+        if (!fValid)
+            return setError(E_FAIL, "Invalid extension pack name specified");
+
         /*
          * Does the dir exist?  Make some special effort to deal with case
          * sensitivie file systems (a_pszName is case insensitive and mangled).
