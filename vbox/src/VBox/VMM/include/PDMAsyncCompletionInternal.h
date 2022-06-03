@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 39014 2011-10-18 10:18:06Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -210,7 +210,7 @@ typedef struct PDMASYNCCOMPLETIONENDPOINT
 #ifdef VBOX_WITH_STATISTICS
     uint32_t                                    u32Alignment;
     STAMCOUNTER                                 StatTaskRunTimesNs[10];
-    STAMCOUNTER                                 StatTaskRunTimesMicroSec[10];
+    STAMCOUNTER                                 StatTaskRunTimesUs[10];
     STAMCOUNTER                                 StatTaskRunTimesMs[10];
     STAMCOUNTER                                 StatTaskRunTimesSec[10];
     STAMCOUNTER                                 StatTaskRunOver100Sec;
