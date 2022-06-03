@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 40539 2012-03-19 14:27:50Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 40578 2012-03-22 15:43:25Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1651,7 +1651,7 @@ STDMETHODIMP VirtualBox::GetMachineStates(ComSafeArrayIn(IMachine *, aMachines),
         if (!pMachine.isNull())
         {
             HRESULT rc = pMachine->COMGETTER(State)(&state);
-            if (rc = E_ACCESSDENIED)
+            if (rc == E_ACCESSDENIED)
                 rc = S_OK;
             AssertComRC(rc);
         }
