@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 35015 2010-12-13 14:36:50Z vboxsync $ */
+/* $Id: fs-posix.cpp 40101 2012-02-13 17:48:39Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -164,9 +164,9 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
         rtPathFreeNative(pszNativeFsPath, pszFsPath);
     }
 
-    LogFlow(("RTFsQueryProperties(%p:{%s}, %p:{.cbMaxComponent=%u, .fCaseSensitive=%RTbool}): returns %Rrc\n",
-             pszFsPath, pszFsPath, pProperties, pProperties->cbMaxComponent, pProperties->fReadOnly));
-    return VINF_SUCCESS;
+    LogFlow(("RTFsQueryProperties(%p:{%s}, %p:{.cbMaxComponent=%u, .fReadOnly=%RTbool}): returns %Rrc\n",
+             pszFsPath, pszFsPath, pProperties, pProperties->cbMaxComponent, pProperties->fReadOnly, rc));
+    return rc;
 }
 
 
