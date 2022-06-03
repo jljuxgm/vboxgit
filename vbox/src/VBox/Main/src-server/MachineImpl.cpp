@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36630 2011-04-08 18:41:51Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36664 2011-04-13 16:50:41Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5864,6 +5864,20 @@ STDMETHODIMP Machine::AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAdd
         {
             return setError(E_INVALIDARG,
                             tr("Host PCI attachment only supported with ICH9 chipset"));
+        }
+
+        // check if device with this host PCI address already attached
+        for (HWData::PciDeviceAssignmentList::iterator it =  mHWData->mPciDeviceAssignments.begin();
+             it !=  mHWData->mPciDeviceAssignments.end();
+             ++it)
+        {
+            LONG iHostAddress = -1;
+            ComPtr<PciDeviceAttachment> pAttach;
+            pAttach = *it;
+            pAttach->COMGETTER(HostAddress)(&iHostAddress);
+            if (iHostAddress == hostAddress)
+                return setError(E_INVALIDARG,
+                                tr("Device with host PCI address already attached to this VM"));
         }
 
         ComObjPtr<PciDeviceAttachment> pda;
