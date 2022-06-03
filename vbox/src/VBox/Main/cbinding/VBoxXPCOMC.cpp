@@ -1,4 +1,4 @@
-/* $Id: VBoxXPCOMC.cpp 29167 2010-05-06 15:58:14Z vboxsync $ */
+/* $Id: VBoxXPCOMC.cpp 39895 2012-01-27 09:58:56Z vboxsync $ */
 /** @file VBoxXPCOMC.cpp
  * Utility functions to use with the C binding for XPCOM.
  */
@@ -24,7 +24,7 @@
 #include <iprt/env.h>
 #include <VBox/log.h>
 
-#include "VBoxCAPI_v3_2.h"
+#include "VBoxCAPI.h"
 #include "VBox/com/com.h"
 #include "VBox/version.h"
 
