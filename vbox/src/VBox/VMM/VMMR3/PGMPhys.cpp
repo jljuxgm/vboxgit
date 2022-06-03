@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 41466 2012-05-28 22:30:31Z vboxsync $ */
+/* $Id: PGMPhys.cpp 41521 2012-05-31 14:42:29Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4117,8 +4117,8 @@ VMMR3DECL(void) PGMR3PhysChunkInvalidateTLB(PVM pVM)
 
 
 /**
- * Response to VMMCALLRING3_PGM_ALLOCATE_LARGE_PAGE to allocate a large (2MB) page
- * for use with a nested paging PDE.
+ * Response to VMMCALLRING3_PGM_ALLOCATE_LARGE_HANDY_PAGE to allocate a large
+ * (2MB) page for use with a nested paging PDE.
  *
  * @returns The following VBox status codes.
  * @retval  VINF_SUCCESS on success.
