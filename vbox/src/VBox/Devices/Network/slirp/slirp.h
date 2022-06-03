@@ -1,4 +1,4 @@
-/* $Id: slirp.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: slirp.h 36353 2011-03-23 07:08:02Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -343,8 +343,6 @@ struct tcpcb *tcp_drop(PNATState, struct tcpcb *tp, int err);
 
 /*slirp.c*/
 void slirp_arp_who_has(PNATState pData, uint32_t dst);
-int slirp_arp_cache_update(PNATState pData, uint32_t dst, const uint8_t *mac);
-void slirp_arp_cache_add(PNATState pData, uint32_t ip, const uint8_t *ether);
 int slirp_arp_cache_update_or_add(PNATState pData, uint32_t dst, const uint8_t *mac);
 int slirp_init_dns_list(PNATState pData);
 void slirp_release_dns_list(PNATState pData);
