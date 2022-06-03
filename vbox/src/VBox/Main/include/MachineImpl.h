@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: MachineImpl.h 39821 2012-01-20 14:01:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -516,6 +516,7 @@ public:
     STDMETHOD(GetGuestPropertyTimestamp)(IN_BSTR aName, LONG64 *aTimestamp);
     STDMETHOD(SetGuestProperty)(IN_BSTR aName, IN_BSTR aValue, IN_BSTR aFlags);
     STDMETHOD(SetGuestPropertyValue)(IN_BSTR aName, IN_BSTR aValue);
+    STDMETHOD(DeleteGuestProperty)(IN_BSTR aName);
     STDMETHOD(EnumerateGuestProperties)(IN_BSTR aPattern, ComSafeArrayOut(BSTR, aNames), ComSafeArrayOut(BSTR, aValues), ComSafeArrayOut(LONG64, aTimestamps), ComSafeArrayOut(BSTR, aFlags));
     STDMETHOD(GetMediumAttachmentsOfController)(IN_BSTR aName, ComSafeArrayOut(IMediumAttachment *, aAttachments));
     STDMETHOD(GetMediumAttachment)(IN_BSTR aConstrollerName, LONG aControllerPort, LONG aDevice, IMediumAttachment **aAttachment);
