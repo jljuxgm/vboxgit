@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 38308 2011-08-04 09:29:51Z vboxsync $ */
+/* $Id: MediumImpl.h 38420 2011-08-11 14:30:48Z vboxsync $ */
 
 /** @file
  *
@@ -263,7 +263,7 @@ public:
                        const ComObjPtr<Progress> &aProgress);
 
     HRESULT cloneToEx(const ComObjPtr<Medium> &aTarget, ULONG aVariant,
-                      const ComObjPtr<Medium> &aParent, const ComObjPtr<Progress> &aProgress,
+                      const ComObjPtr<Medium> &aParent, IProgress **aProgress,
                       uint32_t idxSrcImageSame, uint32_t idxDstImageSame);
 
 private:
