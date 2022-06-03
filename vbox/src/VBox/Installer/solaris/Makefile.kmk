@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38135 2011-07-25 09:09:08Z vboxsync $
+# $Id: Makefile.kmk 38466 2011-08-16 08:57:04Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -833,7 +833,8 @@ $(PATH_STAGE_BIN)/$(DBG_ARCHIVE): \
 		$(SOLARIS_DBG_DEPFILES)
 	$(call MSG_L1,Installing debug binaries $(SOLARIS_DBG_DIR))
 	$(call MSG_L1,Packing $@)
-	$(QUIET)/usr/sfw/bin/gtar --owner 0 --group 0 -cjRhf $(PATH_STAGE_BIN)/$(DBG_ARCHIVE) -C $(SOLARIS_DBG_DIR) $(SOLARIS_DBG_DEPFILES)
+	$(QUIET)/usr/sfw/bin/gtar --dereference --owner 0 --group 0 \
+		-cjRhf $(PATH_STAGE_BIN)/$(DBG_ARCHIVE) -C $(SOLARIS_DBG_DIR) $(SOLARIS_DBG_DEPFILES)
 	$(QUIET)$(CHMOD) 0644 $@
 
 #
