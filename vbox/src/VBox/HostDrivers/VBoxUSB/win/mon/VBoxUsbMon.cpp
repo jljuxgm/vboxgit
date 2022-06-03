@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 37757 2011-07-04 10:44:53Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 38200 2011-07-27 14:34:03Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -257,7 +257,7 @@ static PDRIVER_OBJECT vboxUsbMonHookFindHubDrvObj()
             }
             else
             {
-                AssertFailed();
+                Log(("IoGetDeviceObjectPointer returned Status (0x%x) for %S returned\n", Status, szwHubName));
             }
         }
         else

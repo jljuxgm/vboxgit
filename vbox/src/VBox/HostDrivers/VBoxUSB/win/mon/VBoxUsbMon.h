@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.h 37038 2011-05-11 14:57:23Z vboxsync $ */
+/* $Id: VBoxUsbMon.h 38200 2011-07-27 14:34:03Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -31,22 +31,6 @@
 #endif
 
 #include "../cmn/VBoxDrvTool.h"
-
-#ifdef Log
-# undef Log
-# define Log(_m) DbgPrint _m
-#endif
-
-#ifdef LogRel
-# undef LogRel
-# define LogRel(_m) DbgPrint _m
-#endif
-
-#ifdef LogFlow
-# undef LogFlow
-# define LogFlow(_m) DbgPrint _m
-#endif
-
 #include "../cmn/VBoxUsbTool.h"
 
 #include "VBoxUsbHook.h"
