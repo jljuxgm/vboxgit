@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 37467 2011-06-15 13:08:45Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -377,7 +377,7 @@ int main()
     PRINT_OFFSET(VM, StatGCToQemu);
 #endif
 
-    CHECK_MEMBER_ALIGNMENT(IOM, EmtLock, sizeof(uintptr_t));
+    CHECK_MEMBER_ALIGNMENT(IOM, CritSect, sizeof(uintptr_t));
     CHECK_MEMBER_ALIGNMENT(EM, CritSectREM, sizeof(uintptr_t));
     CHECK_MEMBER_ALIGNMENT(PGM, CritSect, sizeof(uintptr_t));
     CHECK_MEMBER_ALIGNMENT(PDM, CritSect, sizeof(uintptr_t));
