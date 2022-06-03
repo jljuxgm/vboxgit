@@ -1,4 +1,4 @@
-/* $Id: UIMediumTypeChangeDialog.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UIMediumTypeChangeDialog.cpp 41608 2012-06-07 02:02:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,18 +17,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Global includes: */
+/* Qt includes: */
 #include <QVBoxLayout>
 #include <QGroupBox>
 #include <QRadioButton>
 #include <QPushButton>
 
-/* Local includes: */
+/* GUI includes: */
 #include "UIMediumTypeChangeDialog.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 #include "QILabel.h"
 #include "QIDialogButtonBox.h"
+#include "COMEnumsWrapper.h"
 
 /* Constructor: */
 UIMediumTypeChangeDialog::UIMediumTypeChangeDialog(QWidget *pParent, const QString &strMediumId)
@@ -124,7 +125,7 @@ void UIMediumTypeChangeDialog::retranslateUi()
     /* Translate radio-buttons: */
     QList<QRadioButton*> buttons = findChildren<QRadioButton*>();
     for (int i = 0; i < buttons.size(); ++i)
-        buttons[i]->setText(vboxGlobal().toString(buttons[i]->property("mediumType").value<KMediumType>()));
+        buttons[i]->setText(gCOMenum->toString(buttons[i]->property("mediumType").value<KMediumType>()));
 }
 
 void UIMediumTypeChangeDialog::sltValidate()

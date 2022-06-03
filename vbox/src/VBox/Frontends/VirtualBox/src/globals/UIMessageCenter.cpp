@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 41600 2012-06-06 14:27:10Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 41608 2012-06-07 02:02:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -35,6 +35,7 @@
 #include "UIProgressDialog.h"
 #include "UINetworkManager.h"
 #include "UINetworkManagerDialog.h"
+#include "COMEnumsWrapper.h"
 #ifdef VBOX_OSE
 # include "UIDownloaderUserManual.h"
 #endif /* VBOX_OSE */
@@ -1350,7 +1351,7 @@ void UIMessageCenter::cannotChangeMediumType(QWidget *pParent,
 {
     message(pParent ? pParent : mainWindowShown(), Error,
             tr("<p>Error changing medium type from <b>%1</b> to <b>%2</b>.</p>")
-                .arg(vboxGlobal().toString(oldMediumType)).arg(vboxGlobal().toString(newMediumType)),
+                .arg(gCOMenum->toString(oldMediumType)).arg(gCOMenum->toString(newMediumType)),
             formatErrorInfo(medium));
 }
 

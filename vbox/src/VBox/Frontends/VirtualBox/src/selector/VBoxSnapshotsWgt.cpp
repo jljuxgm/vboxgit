@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 41608 2012-06-07 02:02:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -38,6 +38,7 @@
 #include "UIToolBar.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UISelectorShortcuts.h"
+#include "COMEnumsWrapper.h"
 
 /* COM includes: */
 #include "CConsole.h"
@@ -188,7 +189,7 @@ public:
         if (mMachine.isNull())
             return;
 
-        setIcon (0, vboxGlobal().toIcon (aState));
+        setIcon (0, gCOMenum->toIcon (aState));
         mMachineState = aState;
         mTimestamp.setTime_t (mMachine.GetLastStateChange() / 1000);
     }
@@ -275,7 +276,7 @@ private:
         else
         {
             dateTime = VBoxSnapshotsWgt::tr ("%1 since %2", "Current State (time or date + time)")
-                .arg (vboxGlobal().toString (mMachineState)).arg (dateTime);
+                .arg (gCOMenum->toString (mMachineState)).arg (dateTime);
         }
 
         QString toolTip = QString ("<nobr><b>%1</b>%2</nobr><br><nobr>%3</nobr>")

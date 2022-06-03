@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.cpp 41608 2012-06-07 02:02:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,8 +17,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* GUI includes: */
 #include "UIMachineSettingsUSBFilterDetails.h"
-#include "VBoxGlobal.h"
+#include "COMEnumsWrapper.h"
 
 UIMachineSettingsUSBFilterDetails::UIMachineSettingsUSBFilterDetails(UISettingsPageType type, QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI2<QIDialog>(pParent, Qt::Sheet)
@@ -61,8 +62,8 @@ void UIMachineSettingsUSBFilterDetails::retranslateUi()
     mCbRemote->setItemText (UIMachineSettingsUSB::ModeOff, tr ("No",  "remote"));
 
     mCbAction->setItemText (0,
-        vboxGlobal().toString (KUSBDeviceFilterAction_Ignore));
+        gCOMenum->toString (KUSBDeviceFilterAction_Ignore));
     mCbAction->setItemText (1,
-        vboxGlobal().toString (KUSBDeviceFilterAction_Hold));
+        gCOMenum->toString (KUSBDeviceFilterAction_Hold));
 }
 
