@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 38455 2011-08-15 09:57:51Z vboxsync $ */
+/* $Id: ApplianceImpl.h 40329 2012-03-02 16:13:50Z vboxsync $ */
 
 /** @file
  *
@@ -34,7 +34,7 @@ struct VirtualSystemDescriptionEntry;
 struct LocationInfo;
 typedef struct VDINTERFACE   *PVDINTERFACE;
 typedef struct VDINTERFACEIO *PVDINTERFACEIO;
-typedef struct SHA1STORAGE *PSHA1STORAGE;
+typedef struct SHASTORAGE    *PSHASTORAGE;
 
 namespace ovf
 {
@@ -76,7 +76,8 @@ public:
     {
         unspecified,
         OVF_0_9,
-        OVF_1_0
+        OVF_1_0,
+        OVF_2_0
     };
 
     // public initializer/uninitializer for internal purposes only
@@ -149,7 +150,7 @@ private:
     HRESULT readFS(TaskOVF *pTask);
     HRESULT readFSOVF(TaskOVF *pTask);
     HRESULT readFSOVA(TaskOVF *pTask);
-    HRESULT readFSImpl(TaskOVF *pTask, const RTCString &strFilename, PVDINTERFACEIO pCallbacks, PSHA1STORAGE pStorage);
+    HRESULT readFSImpl(TaskOVF *pTask, const RTCString &strFilename, PVDINTERFACEIO pCallbacks, PSHASTORAGE pStorage);
     HRESULT readS3(TaskOVF *pTask);
 
     /*******************************************************************************
@@ -163,8 +164,8 @@ private:
     HRESULT importFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock);
     HRESULT importS3(TaskOVF *pTask);
 
-    HRESULT readManifestFile(const Utf8Str &strFile, void **ppvBuf, size_t *pcbSize, PVDINTERFACEIO pCallbacks, PSHA1STORAGE pStorage);
-    HRESULT readTarManifestFile(RTTAR tar, const Utf8Str &strFile, void **ppvBuf, size_t *pcbSize, PVDINTERFACEIO pCallbacks, PSHA1STORAGE pStorage);
+    HRESULT readManifestFile(const Utf8Str &strFile, void **ppvBuf, size_t *pcbSize, PVDINTERFACEIO pCallbacks, PSHASTORAGE pStorage);
+    HRESULT readTarManifestFile(RTTAR tar, const Utf8Str &strFile, void **ppvBuf, size_t *pcbSize, PVDINTERFACEIO pCallbacks, PSHASTORAGE pStorage);
     HRESULT verifyManifestFile(const Utf8Str &strFile, ImportStack &stack, void *pvBuf, size_t cbSize);
 
     void convertDiskAttachmentValues(const ovf::HardDiskController &hdc,
@@ -178,21 +179,21 @@ private:
                             ComObjPtr<Medium> &pTargetHD,
                             ImportStack &stack,
                             PVDINTERFACEIO pCallbacks,
-                            PSHA1STORAGE pStorage);
+                            PSHASTORAGE pStorage);
     void importMachineGeneric(const ovf::VirtualSystem &vsysThis,
                               ComObjPtr<VirtualSystemDescription> &vsdescThis,
                               ComPtr<IMachine> &pNewMachine,
                               ImportStack &stack,
                               PVDINTERFACEIO pCallbacks,
-                              PSHA1STORAGE pStorage);
+                              PSHASTORAGE pStorage);
     void importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescThis,
                            ComPtr<IMachine> &pNewMachine,
                            ImportStack &stack,
                            PVDINTERFACEIO pCallbacks,
-                           PSHA1STORAGE pStorage);
+                           PSHASTORAGE pStorage);
     void importMachines(ImportStack &stack,
                         PVDINTERFACEIO pCallbacks,
-                        PSHA1STORAGE pStorage);
+                        PSHASTORAGE pStorage);
 
     /*******************************************************************************
      * Write stuff
@@ -203,7 +204,7 @@ private:
     HRESULT writeFS(TaskOVF *pTask);
     HRESULT writeFSOVF(TaskOVF *pTask, AutoWriteLockBase& writeLock);
     HRESULT writeFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock);
-    HRESULT writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, PVDINTERFACEIO pCallbacks, PSHA1STORAGE pStorage);
+    HRESULT writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, PVDINTERFACEIO pCallbacks, PSHASTORAGE pStorage);
     HRESULT writeS3(TaskOVF *pTask);
 
     struct XMLStack;
