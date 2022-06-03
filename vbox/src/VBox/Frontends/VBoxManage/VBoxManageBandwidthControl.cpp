@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 40470 2012-03-15 06:18:49Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 40471 2012-03-15 06:22:17Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -216,27 +216,6 @@ static RTEXITCODE handleBandwidthControlList(HandlerArg *pArgs, ComPtr<IBandwidt
     /* See showVMInfo. */
     if (FAILED(showBandwidthGroups(rptrBWControl, enmDetails)))
         return RTEXITCODE_FAILURE;
-#if 0
-    com::SafeIfaceArray<IBandwidthGroup> bwGroups;
-    CHECK_ERROR2_RET(rptrBWControl, GetAllBandwidthGroups(ComSafeArrayAsOutParam(bwGroups)), RTEXITCODE_FAILURE);
-    for (size_t i = 0; i < bwGroups.size(); i++)
-    {
-        Bstr strName;
-        ULONG cMaxMbPerSec;
-        BandwidthGroupType_T enmType;
-
-        CHECK_ERROR2_RET(bwGroups[i], COMGETTER(Name)(strName.asOutParam()), RTEXITCODE_FAILURE);
-        CHECK_ERROR2_RET(bwGroups[i], COMGETTER(Type)(&enmType), RTEXITCODE_FAILURE);
-        CHECK_ERROR2_RET(bwGroups[i], COMGETTER(MaxMbPerSec)(&cMaxMbPerSec), RTEXITCODE_FAILURE);
-
-        RTPrintf(enmDetails == VMINFO_MACHINEREADABLE ?
-                 "Group=%ls\nType=%s\nLimit=%u\n\n" :
-                 "%-30ls %-10s %u MBytes/sec\n",
-                 strName.raw(),
-                 typeToString(enmType),
-                 cMaxMbPerSec);
-    }
-#endif
 
     return RTEXITCODE_SUCCESS;
 }
