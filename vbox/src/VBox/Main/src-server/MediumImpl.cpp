@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 41243 2012-05-10 16:34:36Z vboxsync $ */
+/* $Id: MediumImpl.cpp 42109 2012-07-11 13:28:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4240,7 +4240,6 @@ HRESULT Medium::deleteStorage(ComObjPtr<Progress> *aProgress,
         // no longer need lock
         multilock.release();
         markRegistriesModified();
-        m->pVirtualBox->saveModifiedRegistries();
 
         if (aProgress != NULL)
         {

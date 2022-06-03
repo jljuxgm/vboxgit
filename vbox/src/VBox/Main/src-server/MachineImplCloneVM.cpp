@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 41214 2012-05-08 17:59:43Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 42109 2012-07-11 13:28:52Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1394,6 +1394,9 @@ HRESULT MachineCloneVM::run()
             RTDirRemove(strTrgSnapshotFolder.c_str());
         /* Delete the machine folder when not empty. */
         RTDirRemove(strTrgMachineFolder.c_str());
+
+        /* Must save the modified registries */
+        p->mParent->saveModifiedRegistries();
     }
 
     return mrc;
