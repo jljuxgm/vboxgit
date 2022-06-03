@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 39066 2011-10-20 22:09:47Z vboxsync $ */
+/* $Id: UIMachineView.cpp 39076 2011-10-21 12:10:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -504,9 +504,12 @@ void UIMachineView::cleanupFrameBuffer()
     {
         /* Process pending frame-buffer resize events: */
         QApplication::sendPostedEvents(this, VBoxDefs::ResizeEventType);
-        if (   m_fAccelerate2DVideo
-            || vboxGlobal().vmRenderMode() == VBoxDefs::QImageMode
-            || vboxGlobal().vmRenderMode() == VBoxDefs::SDLMode)
+        if (   vboxGlobal().vmRenderMode() == VBoxDefs::QImageMode
+            || vboxGlobal().vmRenderMode() == VBoxDefs::SDLMode
+#ifdef VBOX_WITH_VIDEOHWACCEL
+            || m_fAccelerate2DVideo
+#endif
+           )
         {
             Assert(m_pFrameBuffer == uisession()->frameBuffer(screenId()));
             CDisplay display = session().GetConsole().GetDisplay();
