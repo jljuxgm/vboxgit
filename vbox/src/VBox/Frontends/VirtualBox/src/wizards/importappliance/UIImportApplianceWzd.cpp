@@ -1,4 +1,4 @@
-/* $Id: UIImportApplianceWzd.cpp 38412 2011-08-11 09:50:04Z vboxsync $ */
+/* $Id: UIImportApplianceWzd.cpp 40142 2012-02-16 09:42:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -122,16 +122,16 @@ UIImportApplianceWzd::UIImportApplianceWzd(const QString &strFile /* = "" */, QW
     /* Initial translate all pages */
     retranslateAllPages();
 
-    /* Resize to 'golden ratio' */
-    resizeToGoldenRatio();
-
+#ifndef Q_WS_MAC
     /* Assign watermark */
-#ifdef Q_WS_MAC
+    assignWatermark(":/vmw_ovf_import.png");
+#else /* Q_WS_MAC */
     /* Assign background image */
     assignBackground(":/vmw_ovf_import_bg.png");
-#else /* Q_WS_MAC */
-    assignWatermark(":/vmw_ovf_import.png");
 #endif /* Q_WS_MAC */
+
+    /* Resize to 'golden ratio' */
+    resizeToGoldenRatio();
 
     /* Configure 'Restore Defaults' button */
     AssertMsg(!field("applianceWidget").value<ImportAppliancePointer>().isNull(), ("Appliance Widget is not set!\n"));
