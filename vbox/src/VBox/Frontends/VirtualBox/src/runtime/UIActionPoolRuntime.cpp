@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 38498 2011-08-19 11:24:36Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 39580 2011-12-12 11:59:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -457,6 +457,7 @@ public:
     MenuOpticalDevicesAction(QObject *pParent)
         : UIMenuAction(pParent, ":/cd_16px.png", ":/cd_disabled_16px.png")
     {
+        qobject_cast<UIMenuInterface*>(menu())->setShowToolTips(true);
         retranslateUi();
     }
 
@@ -477,6 +478,7 @@ public:
     MenuFloppyDevicesAction(QObject *pParent)
         : UIMenuAction(pParent, ":/fd_16px.png", ":/fd_disabled_16px.png")
     {
+        qobject_cast<UIMenuInterface*>(menu())->setShowToolTips(true);
         retranslateUi();
     }
 
