@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42105 2012-07-11 11:53:22Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42106 2012-07-11 12:08:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -384,8 +384,9 @@ int GuestSession::processCreateExInteral(const Utf8Str &aCommand, ComSafeArrayIn
         if (FAILED(hr)) throw VERR_COM_UNEXPECTED;
 
         rc = pGuestProcess->init(this,
-                                 aCommand, aArguments, aEnvironment,
-                                 aFlags, aTimeoutMS, aPriority, aAffinity);
+                                 aCommand, ComSafeArrayInArg(aArguments), ComSafeArrayInArg(aEnvironment),
+                                 ComSafeArrayInArg(aFlags), aTimeoutMS,
+                                 aPriority, ComSafeArrayInArg(aAffinity));
         if (RT_FAILURE(rc)) throw rc;
 
         mData.mProcesses.push_back(pGuestProcess);
@@ -763,7 +764,8 @@ STDMETHODIMP GuestSession::ProcessCreate(IN_BSTR aCommand, ComSafeArrayIn(IN_BST
 
     com::SafeArray<LONG> aAffinity; /** @todo Process affinity, not used yet. */
 
-    int rc = processCreateExInteral(aCommand, aArguments, aEnvironment, aFlags, aTimeoutMS,
+    int rc = processCreateExInteral(aCommand, ComSafeArrayInArg(aArguments), ComSafeArrayInArg(aEnvironment),
+                                    ComSafeArrayInArg(aFlags), aTimeoutMS,
                                     ProcessPriority_Default, ComSafeArrayAsInParam(aAffinity), aProcess);
     return RT_SUCCESS(rc) ? S_OK : VBOX_E_IPRT_ERROR;
 #endif /* VBOX_WITH_GUEST_CONTROL */
@@ -782,8 +784,9 @@ STDMETHODIMP GuestSession::ProcessCreateEx(IN_BSTR aCommand, ComSafeArrayIn(IN_B
 
     CheckComArgOutPointerValid(aProcess);
 
-    int rc = processCreateExInteral(aCommand, aArguments, aEnvironment, aFlags, aTimeoutMS,
-                                    aPriority, aAffinity, aProcess);
+    int rc = processCreateExInteral(aCommand, ComSafeArrayInArg(aArguments), ComSafeArrayInArg(aEnvironment),
+                                    ComSafeArrayInArg(aFlags), aTimeoutMS,
+                                    aPriority, ComSafeArrayInArg(aAffinity), aProcess);
     return RT_SUCCESS(rc) ? S_OK : VBOX_E_IPRT_ERROR;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }

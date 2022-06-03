@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 42105 2012-07-11 11:53:22Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 42106 2012-07-11 12:08:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -66,7 +66,7 @@ int GuestProcess::init(GuestSession *pSession,
     if (RT_SUCCESS(rc))
         autoInitSpan.setSucceeded();
 
-    return S_OK;
+    return rc;
 }
 
 /**
