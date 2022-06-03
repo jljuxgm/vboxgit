@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 36326 2011-03-21 14:48:23Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 36531 2011-04-04 14:05:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -418,9 +418,10 @@ HRESULT Guest::taskCopyFile(TaskGuest *aTask)
                                  * Even if we succeeded until here make sure to check whether we really transfered
                                  * everything.
                                  */
-                                if (!cbTransfered)
+                                if (   cbSize > 0
+                                    && cbTransfered == 0)
                                 {
-                                    /* If nothing was transfered this means "vbox_cat" wasn't able to write
+                                    /* If nothing was transfered but the file size was > 0 then "vbox_cat" wasn't able to write
                                      * to the destination -> access denied. */
                                     rc = TaskGuest::setProgressErrorInfo(VBOX_E_IPRT_ERROR, aTask->progress,
                                                                          Guest::tr("Access denied when copying file \"%s\" to \"%s\""),
