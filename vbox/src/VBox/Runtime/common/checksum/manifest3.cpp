@@ -1,4 +1,4 @@
-/* $Id: manifest3.cpp 39080 2011-10-21 14:26:05Z vboxsync $ */
+/* $Id: manifest3.cpp 39439 2011-11-28 13:56:13Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the bits with the most dependencies.
  */
@@ -531,6 +531,7 @@ RTDECL(int) RTManifestEntryAddIoStream(RTMANIFEST hManifest, RTVFSIOSTREAM hVfsI
                 break;
             rtManifestHashesUpdate(pHashes, pvBuf, cbRead);
         }
+        RTMemTmpFree(pvBuf);
         if (RT_SUCCESS(rc))
         {
             /*
