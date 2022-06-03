@@ -1,10 +1,10 @@
-/* $Id: magics.h 37184 2011-05-23 14:55:10Z vboxsync $ */
+/* $Id: magics.h 37196 2011-05-24 14:50:05Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
 
 /*
- * Copyright (C) 2007-2008 Oracle Corporation
+ * Copyright (C) 2007-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -146,6 +146,8 @@
 #define RTSTREAM_MAGIC                  UINT32_C(0xe44e44ee)
 /** Magic value for RTTCPSERVER::u32Magic. (Jan Garbarek) */
 #define RTTCPSERVER_MAGIC               UINT32_C(0x19470304)
+/** Magic value for RTTCPSERVER::u32Magic. (Harlan Ellison) */
+#define RTUDPSERVER_MAGIC               UINT32_C(0x19340527)
 /** RTTESTINT::u32Magic value. (Daniel Kehlmann) */
 #define RTTESTINT_MAGIC                 UINT32_C(0x19750113)
 /** RTTHREADINT::u32Magic value. (Gilbert Keith Chesterton) */
