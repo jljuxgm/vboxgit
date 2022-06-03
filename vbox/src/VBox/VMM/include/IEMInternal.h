@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 39989 2012-02-03 16:31:04Z vboxsync $ */
+/* $Id: IEMInternal.h 40022 2012-02-07 20:29:04Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -265,7 +265,7 @@ typedef struct IEMCPU
      * This runs in parallel to aMemMappings and aMemBbMappings. */
     struct
     {
-        uint8_t             ab[64];
+        uint8_t             ab[512];
     } aBounceBuffers[3];
 
 #ifdef IEM_VERIFICATION_MODE
