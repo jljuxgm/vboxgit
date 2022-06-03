@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 39739 2012-01-10 15:27:08Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 39812 2012-01-19 16:56:12Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -24,6 +24,7 @@
 #include <VBox/vmm/hwaccm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/dbgf.h>
+#include <VBox/vmm/dbgftrace.h>
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/rem.h>
@@ -2851,6 +2852,10 @@ ResumeExecution:
         AssertRC(rc2);
     }
 
+#ifdef DBGFTRACE_ENABLED /** @todo DTrace later. */
+    RTTraceBufAddMsgF(pVM->CTX_SUFF(hTraceBuf), "vmexit %08x %016RX64 at %04:%08RX64 %RX64",
+                      exitReason, (uint64_t)exitQualification, pCtx->cs, pCtx->rip, (uint64_t)intInfo);
+#endif
     STAM_PROFILE_ADV_STOP_START(&pVCpu->hwaccm.s.StatExit1, &pVCpu->hwaccm.s.StatExit2, x);
 
     /* Some cases don't need a complete resync of the guest CPU state; handle them here. */
