@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 35426 2011-01-07 13:48:53Z vboxsync $ */
+/* $Id: Global.cpp 37059 2011-05-13 09:29:39Z vboxsync $ */
 
 /** @file
  *
@@ -149,11 +149,11 @@ const Global::OSType Global::sOSTypes[SchemaDefs::OSTypeId_COUNT] =
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             SchemaDefs_OSTypeId_Fedora,          "Fedora",
       VBOXOSTYPE_FedoraCore,      VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
-       512,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       768,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             SchemaDefs_OSTypeId_Fedora_64,       "Fedora (64 bit)",
       VBOXOSTYPE_FedoraCore_x64,  VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
-       512,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       768,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             SchemaDefs_OSTypeId_Gentoo,          "Gentoo",
       VBOXOSTYPE_Gentoo,          VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
