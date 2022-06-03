@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 41811 2012-06-18 09:50:23Z vboxsync $ */
+/* $Id: DevATA.cpp 41815 2012-06-18 13:29:27Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5743,14 +5743,6 @@ PDMBOTHCBDECL(int) ataBMDMAIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
     PCIATAState   *pThis = PDMINS_2_DATA(pDevIns, PCIATAState *);
     PATACONTROLLER pCtl = &pThis->aCts[i];
 
-    bool fBm = PCIDevIsBusmaster(&pThis->dev);
-#ifdef DEBUG_andy
-    Log2(("%s: Ctl#%d: Bus master = %RTbool\n",
-          __FUNCTION__, ATACONTROLLER_IDX(pCtl), fBm));
-#endif
-    if (!fBm)
-        return VINF_SUCCESS; /** @todo Correct? */
-
     int rc = PDMCritSectEnter(&pCtl->lock, VINF_IOM_R3_IOPORT_READ);
     if (rc != VINF_SUCCESS)
         return rc;
@@ -5783,14 +5775,6 @@ PDMBOTHCBDECL(int) ataBMDMAIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPOR
     uint32_t       i = (uint32_t)(uintptr_t)pvUser;
     PCIATAState   *pThis = PDMINS_2_DATA(pDevIns, PCIATAState *);
     PATACONTROLLER pCtl = &pThis->aCts[i];
-
-    bool fBm = PCIDevIsBusmaster(&pThis->dev);
-#ifdef DEBUG_andy
-    Log2(("%s: Ctl#%d: Bus master = %RTbool\n",
-          __FUNCTION__, ATACONTROLLER_IDX(pCtl), fBm));
-#endif
-    if (!fBm)
-        return VINF_SUCCESS; /** @todo Correct? */
 
     int rc = PDMCritSectEnter(&pCtl->lock, VINF_IOM_R3_IOPORT_WRITE);
     if (rc != VINF_SUCCESS)
