@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 40658 2012-03-27 10:22:07Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 40662 2012-03-27 12:50:17Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -627,11 +627,10 @@ static DECLCALLBACK(int) drvHostParallelSetPortDirection(PPDMIHOSTPARALLELCONNEC
 {
     PDRVHOSTPARALLEL    pThis   = RT_FROM_MEMBER(pInterface, DRVHOSTPARALLEL, CTX_SUFF(IHostParallelConnector));
     int rc = VINF_SUCCESS;
-
+    int iMode = 0;
     if (!fForward)
         iMode = 1;
 # ifndef VBOX_WITH_WIN_PARPORT_SUP
-    int iMode = 0;                      /** @todo r=bird: unused . */
     int rcLnx = ioctl(RTFileToNative(pThis->hFileDevice), PPDATADIR, &iMode);
     if (RT_UNLIKELY(rcLnx < 0))
         rc = RTErrConvertFromErrno(errno);
