@@ -1,4 +1,4 @@
-/* $Id: tftp.c 39101 2011-10-25 02:44:01Z vboxsync $ */
+/* $Id: tftp.c 40115 2012-02-14 02:56:52Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -178,7 +178,6 @@ static int tftp_send_error(PNATState pData,
     struct sockaddr_in saddr, daddr;
     struct mbuf *m;
     struct tftp_t *tp;
-    int nobytes;
 
     m = slirpTftpMbufAlloc(pData);
     if (!m)
@@ -198,8 +197,6 @@ static int tftp_send_error(PNATState pData,
 
     daddr.sin_addr = spt->client_ip;
     daddr.sin_port = spt->client_port;
-
-    nobytes = 2;
 
     m->m_len = sizeof(struct tftp_t)
              - 514
