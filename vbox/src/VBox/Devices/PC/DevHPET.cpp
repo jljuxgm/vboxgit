@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevHPET.cpp 41983 2012-07-02 12:23:44Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -442,7 +442,8 @@ static int hpetTimerRegRead32(HpetState const *pThis, uint32_t iTimerNo, uint32_
 {
     Assert(PDMCritSectIsOwner(&pThis->csLock));
 
-    if (iTimerNo >= HPET_CAP_GET_TIMERS(pThis->u32Capabilities))
+    if (   iTimerNo >= RT_ELEMENTS(pThis->aTimers) /* parfait */
+        || iTimerNo >= HPET_CAP_GET_TIMERS(pThis->u32Capabilities))
     {
         static unsigned s_cOccurences = 0;
         if (s_cOccurences++ < 10)
@@ -510,7 +511,8 @@ static int hpetTimerRegWrite32(HpetState *pThis, uint32_t iTimerNo, uint32_t iTi
 {
     Assert(!PDMCritSectIsOwner(&pThis->csLock) || TMTimerIsLockOwner(pThis->aTimers[0].CTX_SUFF(pTimer)));
 
-    if (iTimerNo >= HPET_CAP_GET_TIMERS(pThis->u32Capabilities))
+    if (   iTimerNo >= RT_ELEMENTS(pThis->aTimers) /* parfait */
+        || iTimerNo >= HPET_CAP_GET_TIMERS(pThis->u32Capabilities))
     {
         static unsigned s_cOccurences = 0;
         if (s_cOccurences++ < 10)
