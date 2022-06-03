@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40826 2012-04-08 18:41:46Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40830 2012-04-08 19:51:45Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -424,7 +424,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40826 2012-04-08 18:41:46Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40830 2012-04-08 19:51:45Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -742,6 +742,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                                 "        test    byte [rdi+3], 0x80 ; fEnabled == true?\n"
                                 "        jz      .return            ; jump on false\n");
 
+#if 0
             /*
              * Shuffle the arguments around, replacing the location pointer with the probe ID.
              */
@@ -772,7 +773,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                                 "        jmp     rax\n"
                                 :
                                 "        mov     ecx, [rcx + 4]     ; idProbe replaces pVTGProbeLoc.\n"
-                                "        jmp     NAME(SUPR0FireProbe)\n"
+                                "        jmp     NAME(%s)\n"
                                 , g_pszProbeFnName);
             else
                 ScmStreamPrintf(pStrm, g_fProbeFnImported ?
@@ -781,8 +782,34 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                                 "        jmp     rax\n"
                                 :
                                 "        mov     edi, [rdi + 4]     ; idProbe replaces pVTGProbeLoc.\n"
-                                "        jmp     NAME(SUPR0FireProbe)\n"
+                                "        jmp     NAME(%s)\n"
                                 , g_pszProbeFnName);
+#else
+            /*
+             * Jump to the fire-probe function.
+             */
+            if (g_cBits == 32)
+                ScmStreamPrintf(pStrm, g_fProbeFnImported ?
+                                "        mov     ecx, IMP2(%s)\n"
+                                "        jmp     ecx\n"
+                                :
+                                "        jmp     NAME(%s)\n"
+                                , g_pszProbeFnName);
+            else if (fWin64)
+                ScmStreamPrintf(pStrm, g_fProbeFnImported ?
+                                "        mov     rax, IMP2(%s)\n"
+                                "        jmp     rax\n"
+                                :
+                                "        jmp     NAME(%s)\n"
+                                , g_pszProbeFnName);
+            else
+                ScmStreamPrintf(pStrm, g_fProbeFnImported ?
+                                "        lea     rax, [IMP2(%s)]\n" //??? macho64?
+                                "        jmp     rax\n"
+                                :
+                                "        jmp     NAME(%s)\n"
+                                , g_pszProbeFnName);
+#endif
 
             ScmStreamPrintf(pStrm,
                             ".return:\n"
@@ -863,7 +890,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40826 2012-04-08 18:41:46Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40830 2012-04-08 19:51:45Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -1958,7 +1985,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40826 $";
+                static const char s_szRev[] = "$Revision: 40830 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
