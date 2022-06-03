@@ -1,4 +1,4 @@
-/* $Id: pipe-posix.cpp 33104 2010-10-13 12:46:59Z vboxsync $ */
+/* $Id: pipe-posix.cpp 39489 2011-12-01 13:06:21Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, POSIX Implementation.
  */
@@ -100,7 +100,7 @@ static int my_pipe_wrapper(int *paFds, int *piNewPipeSyscall)
 {
     if (*piNewPipeSyscall >= 0)
     {
-#if defined(RT_OS_LINUX) && defined(__NR_pipe2)
+#if defined(RT_OS_LINUX) && defined(__NR_pipe2) && defined(O_CLOEXEC)
         long rc = syscall(__NR_pipe2, paFds, O_CLOEXEC);
         if (rc >= 0)
         {
