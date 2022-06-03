@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 36151 2011-03-03 14:42:53Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -2472,35 +2472,19 @@ static void pdmBlkCacheIoXferCompleteEntry(PPDMBLKCACHE pBlkCache, PPDMBLKCACHEI
                 AssertRC(rc);
             }
 
-            /*
-             * The entry is still marked as dirty which prevents eviction.
-             * Add the waiters to the list again.
-             */
-            pEntry->fFlags &= ~PDMBLKCACHE_ENTRY_IS_DIRTY; /* Clear so it gets added to the list again. */
+            /* Mark the entry as dirty again to get it added to the list later on. */
             fDirty = true;
-
-            if (pComplete)
-            {
-                pEntry->pWaitingHead = pComplete;
-                while (pComplete->pNext)
-                    pComplete = pComplete->pNext;
-                pEntry->pWaitingTail = pComplete;
-                pComplete = NULL;
-            }
         }
-        else
+
+        pEntry->fFlags &= ~PDMBLKCACHE_ENTRY_IS_DIRTY;
+
+        while (pCurr)
         {
-            pEntry->fFlags &= ~PDMBLKCACHE_ENTRY_IS_DIRTY;
+            AssertMsg(pCurr->fWrite, ("Completed write entries should never have read tasks attached\n"));
 
-            while (pCurr)
-            {
-                AssertMsg(pCurr->fWrite, ("Completed write entries should never have read tasks attached\n"));
-
-                RTSgBufCopyToBuf(&pCurr->SgBuf, pEntry->pbData + pCurr->offCacheEntry, pCurr->cbTransfer);
-                fDirty = true;
-
-                pCurr = pCurr->pNext;
-            }
+            RTSgBufCopyToBuf(&pCurr->SgBuf, pEntry->pbData + pCurr->offCacheEntry, pCurr->cbTransfer);
+            fDirty = true;
+            pCurr = pCurr->pNext;
         }
     }
     else
