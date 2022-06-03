@@ -1,4 +1,4 @@
-/* $Id: precomp.h 38412 2011-08-11 09:50:04Z vboxsync $*/
+/* $Id: precomp.h 38703 2011-09-09 11:42:58Z vboxsync $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -167,7 +167,6 @@
 #if 0
 #include "QIHotKeyEdit.h"
 #endif
-#include "QIHttp.h"
 #include "QILabel.h"
 #include "QILabelSeparator.h"
 #include "QILineEdit.h"
@@ -232,7 +231,6 @@
 #include "VBoxOSTypeSelectorWidget.h"
 #include "UIMessageCenter.h"
 #include "VBoxProgressDialog.h"
-#include "VBoxRegistrationDlg.h"
 #include "VBoxSelectorWnd.h"
 #include "UISettingsDialog.h"
 #include "UISettingsDialogSpecific.h"
