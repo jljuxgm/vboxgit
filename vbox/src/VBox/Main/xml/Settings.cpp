@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 37869 2011-07-11 12:42:46Z vboxsync $ */
+/* $Id: Settings.cpp 37927 2011-07-13 15:48:41Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -327,7 +327,7 @@ ConfigFileBase::ConfigFileBase(const com::Utf8Str *pstrFilename)
             else if (ulMajor > 1)
                 m->sv = SettingsVersion_Future;
 
-            LogRel(("Parsed settings version %d.%d to enum value %d\n", ulMajor, ulMinor, m->sv));
+            Log(("Parsed settings version %d.%d to enum value %d\n", ulMajor, ulMinor, m->sv));
         }
 
         if (m->sv == SettingsVersion_Null)
