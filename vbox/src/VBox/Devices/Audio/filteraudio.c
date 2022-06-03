@@ -1,4 +1,4 @@
-/* $Id: filteraudio.c 35487 2011-01-11 13:45:20Z vboxsync $ */
+/* $Id: filteraudio.c 36327 2011-03-21 15:49:12Z vboxsync $ */
 /** @file
  * VBox audio devices: filter driver, which sits between the host audio driver
  * and the virtual audio device and intercept all host driver operations.
@@ -602,6 +602,13 @@ static int filteraudio_run_in(HWVoiceIn *phw)
 
     if (!pVoice->fIntercepted)
     {
+        if (!pVoice->fHostOK)
+        {
+            /* Host did not initialize the voice. */
+            Log(("FilterAudio: [Input]: run_in voice %p (hw %p) not available on host\n", pVoice, pVoice->phw));
+            return -1;
+        }
+
         Log(("FilterAudio: [Input]: forwarding run_in for voice %p (hw %p)\n", pVoice, pVoice->phw));
         return filter_conf.pDrv->pcm_ops->run_in(phw);
     }
