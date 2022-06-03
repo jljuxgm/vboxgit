@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36871 2011-04-28 07:57:12Z vboxsync $
+# $Id: Makefile.kmk 40814 2012-04-07 19:20:23Z vboxsync $
 ## @file
 # Sub-Makefile for Windows driver tooling lib.
 #
@@ -23,6 +23,13 @@ VBoxDrvCfg_TEMPLATE       = VBOXR3STATIC
 VBoxDrvCfg_SDKS           = WINPSDK W2K3DDK
 VBoxDrvCfg_DEFS           = _WIN32_WINNT=0x0501 _UNICODE UNICODE
 VBoxDrvCfg_SOURCES        = cfg/VBoxDrvCfg.cpp
+
+
+INSTALLS += HostDrivers-scripts
+HostDrivers-scripts_INST = $(INST_DIST)
+HostDrivers-scripts_EXEC_SOURCES = \
+	loadall.sh \
+	loadall.cmd
 
 # generate rules
 include $(KBUILD_PATH)/subfooter.kmk
