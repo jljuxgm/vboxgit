@@ -1,4 +1,4 @@
-/* $Id: slirp.c 36353 2011-03-23 07:08:02Z vboxsync $ */
+/* $Id: slirp.c 36358 2011-03-23 09:48:41Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -2072,7 +2072,7 @@ int slirp_arp_cache_update_or_add(PNATState pData, uint32_t dst, const uint8_t *
         static bool fBroadcastEtherAddReported;
         if (!fBroadcastEtherAddReported)
         {
-            LogRel(("NAT: Attept to add pair [%R[ether]:%R[IP4]] was ignored\n",
+            LogRel(("NAT: Attempt to add pair [%R[ether]:%R[IP4]] in ARP cache was ignored\n",
                     mac, &dst));
             fBroadcastEtherAddReported = true;
         }
