@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36727 2011-04-19 12:52:03Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36839 2011-04-25 17:29:21Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10561,13 +10561,22 @@ void SessionMachine::uninit(Uninit::Reason aReason)
     if (mCollectorGuest)
     {
         mParent->performanceCollector()->unregisterGuest(mCollectorGuest);
-        delete mCollectorGuest;
+        // delete mCollectorGuest; => CollectorGuestManager::destroyUnregistered()
         mCollectorGuest = NULL;
     }
+#if 0
     // Trigger async cleanup tasks, avoid doing things here which are not
     // vital to be done immediately and maybe need more locks. This calls
     // Machine::unregisterMetrics().
     mParent->onMachineUninit(mPeer);
+#else
+    /*
+     * It is safe to call Machine::unregisterMetrics() here because
+     * PerformanceCollector::samplerCallback no longer accesses guest methods
+     * holding the lock.
+     */
+    unregisterMetrics(mParent->performanceCollector(), mPeer);
+#endif
 
     if (aReason == Uninit::Abnormal)
     {
