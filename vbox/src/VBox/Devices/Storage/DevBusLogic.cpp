@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 38481 2011-08-16 15:37:19Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 38482 2011-08-16 15:57:05Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -938,7 +938,7 @@ static void buslogicIntiateHardReset(PBUSLOGIC pBusLogic)
  * Send a mailbox with set status codes to the guest.
  *
  * @returns nothing.
- * @param   pBusLogicR                Pointer to the BubLogic device instance.
+ * @param   pBusLogic                 Pointer to the BusLogic device instance.
  * @param   pTaskState                Pointer to the task state with the mailbox to send.
  * @param   uHostAdapterStatus        The host adapter status code to set.
  * @param   uDeviceStatus             The target device status to set.
