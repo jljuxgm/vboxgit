@@ -1,4 +1,4 @@
-/* $Id: socket.h 39287 2011-11-14 09:41:52Z vboxsync $ */
+/* $Id: socket.h 39299 2011-11-15 06:59:33Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -105,6 +105,10 @@ struct socket
 #endif
     /* required for port-forwarding */
     struct libalias *so_la;
+#ifdef VBOX_WITH_NAT_UDP_SOCKET_CLONE
+    struct socket *so_cloneOf; /* pointer to master instance */
+    int so_cCloneCounter;      /* number of clones */
+#endif
 };
 
 #ifdef VBOX_WITH_SLIRP_MT
@@ -193,10 +197,12 @@ void sofwdrain (struct socket *);
 
 /**
  * Creates copy of UDP socket with specified addr
+ * fBindSocket - in case we want bind a real socket.
  * @return copy of the socket with f_addr equal to u32ForeignAddr
  */
 #ifdef VBOX_WITH_NAT_UDP_SOCKET_CLONE
-struct socket * soCloneUDPSocketWithForegnAddr(PNATState pData, const struct socket *so, uint32_t u32ForeignAddr);
+struct socket * soCloneUDPSocketWithForegnAddr(PNATState pData, bool fBindSocket, struct socket *pSo, uint32_t u32ForeignAddr);
+struct socket *soLookUpClonedUDPSocket(PNATState pData, const struct socket *pcSo, uint32_t u32ForeignAddress);
 #endif
 
 #endif /* _SOCKET_H_ */
