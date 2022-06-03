@@ -1,10 +1,10 @@
-/* $Id: GuestCtrlImpl.cpp 40744 2012-04-02 13:02:01Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42084 2012-07-10 10:17:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -2657,6 +2657,48 @@ STDMETHODIMP Guest::UpdateGuestAdditions(IN_BSTR aSource, ULONG aFlags, IProgres
         progress.queryInterfaceTo(aProgress);
     }
     return rc;
+#endif /* VBOX_WITH_GUEST_CONTROL */
+}
+
+STDMETHODIMP Guest::OpenSession(IN_BSTR aUser, IN_BSTR aPassword, IN_BSTR aDomain, IN_BSTR aSessionName, IGuestSession **aGuestSession)
+{
+#ifndef VBOX_WITH_GUEST_CONTROL
+    ReturnComNotImplemented();
+#else /* VBOX_WITH_GUEST_CONTROL */
+
+    /* Do not allow anonymous sessions (with system rights). */
+    if (RT_UNLIKELY((aUser) == NULL || *(aUser) == '\0'))
+        return setError(E_INVALIDARG, tr("No user name specified"));
+    CheckComArgOutPointerValid(aSessionName);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    HRESULT hr;
+    ComObjPtr<GuestSession> pGuestSession;
+    try
+    {
+        /* Create the session object. */
+        hr = pGuestSession.createObject();
+        if (FAILED(hr)) throw hr;
+
+        hr = pGuestSession->init(static_cast<IGuest*>(this),
+                                 aUser, aPassword, aDomain, aSessionName);
+        if (FAILED(hr)) throw hr;
+
+        mData.mGuestSessions.push_back(pGuestSession);
+
+        /* Return guest session to the caller. */
+        hr = pGuestSession.queryInterfaceTo(aGuestSession);
+    }
+    catch (HRESULT aRC)
+    {
+        hr = aRC;
+    }
+
+    return hr;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
