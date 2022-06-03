@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 37712 2011-06-30 14:11:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -565,13 +565,18 @@ public:
             VBoxGlobal::tr("Enabled", "nested paging") :
             VBoxGlobal::tr("Disabled", "nested paging");
 
-        QString tip(QApplication::translate("UIIndicatorsPool", "Indicates the status of the hardware virtualization "
-                       "features used by this virtual machine:"
-                       "<br><nobr><b>%1:</b>&nbsp;%2</nobr>"
-                       "<br><nobr><b>%3:</b>&nbsp;%4</nobr>",
-                       "Virtualization Stuff LED")
-                       .arg(VBoxGlobal::tr("VT-x/AMD-V", "details report"), virtualization)
-                       .arg(VBoxGlobal::tr("Nested Paging"), nestedPaging));
+        QString strCPUExecCap = QString::number(console.GetMachine().GetCPUExecutionCap());
+
+        QString tip(QApplication::translate("UIIndicatorsPool",
+                                            "Indicates the status of different "
+                                            "features used by this virtual machine:"
+                                            "<br><nobr><b>%1:</b>&nbsp;%2</nobr>"
+                                            "<br><nobr><b>%3:</b>&nbsp;%4</nobr>"
+                                            "<br><nobr><b>%5:</b>&nbsp;%6%</nobr>",
+                                            "Virtualization Stuff LED")
+                    .arg(VBoxGlobal::tr("VT-x/AMD-V", "details report"), virtualization)
+                    .arg(VBoxGlobal::tr("Nested Paging"), nestedPaging)
+                    .arg(VBoxGlobal::tr("CPU Execution Cap", "details report"), strCPUExecCap));
 
         int cpuCount = console.GetMachine().GetCPUCount();
         if (cpuCount > 1)

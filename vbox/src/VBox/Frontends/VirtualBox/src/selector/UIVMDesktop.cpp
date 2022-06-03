@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 37592 2011-06-22 16:01:17Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 37712 2011-06-30 14:11:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -594,6 +594,16 @@ void UIDetailsPagePrivate::sltUpdateSystem()
                 item += sSectionItemTpl2.arg(tr("Processors", "details report"),
                                              tr("<nobr>%1</nobr>", "details report"))
                     .arg(cCPU);
+
+#ifdef VBOX_WITH_FULL_DETAILS_REPORT
+            /* CPU Execution Cap
+             * is NOT such important attribute to be reflected in details page... */
+            int iCPUExecCap = m_machine.GetCPUExecutionCap();
+            if (iCPUExecCap < 100)
+                item += sSectionItemTpl2.arg(tr("CPU Execution Cap", "details report"),
+                                             tr("<nobr>%1%</nobr>", "details report"))
+                    .arg(iCPUExecCap);
+#endif /* VBOX_WITH_FULL_DETAILS_REPORT */
 
             /* Boot order */
             QStringList bootOrder;

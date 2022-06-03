@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 36364 2011-03-23 11:35:44Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 37712 2011-06-30 14:11:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -190,7 +190,6 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         }
         case KVBoxEventType_OnSharedFolderChanged:
         {
-            CSharedFolderChangedEvent es(pEvent);
             emit sigSharedFolderChange();
             break;
         }
@@ -218,6 +217,11 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
             LONG64 winId;
             emit sigShowWindow(winId);
             es.SetWinId(winId);
+            break;
+        }
+        case KVBoxEventType_OnCPUExecutionCapChanged:
+        {
+            emit sigCPUExecutionCapChange();
             break;
         }
         default: break;

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 37585 2011-06-22 09:57:30Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 37712 2011-06-30 14:11:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1649,6 +1649,9 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
                      + QString (sSectionItemTpl2).arg (tr ("Processor(s)", "details report"),
                                                        tr ("<nobr>%1</nobr>", "details report"))
                        .arg (aMachine.GetCPUCount())
+                     + QString (sSectionItemTpl2).arg (tr ("CPU Execution Cap", "details report"),
+                                                       tr ("<nobr>%1%</nobr>", "details report"))
+                       .arg (aMachine.GetCPUExecutionCap())
                      + QString (sSectionItemTpl2).arg (tr ("Boot Order", "details report"), bootOrder)
 #ifdef VBOX_WITH_FULL_DETAILS_REPORT
                      + QString (sSectionItemTpl2).arg (tr ("ACPI", "details report"), acpi)

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 37525 2011-06-17 10:09:21Z vboxsync $ */
+/* $Id: UISession.cpp 37712 2011-06-30 14:11:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -135,6 +135,9 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
             this, SIGNAL(sigShowWindows()),
             Qt::QueuedConnection);
 #endif /* Q_WS_MAC */
+
+    connect(gConsoleEvents, SIGNAL(sigCPUExecutionCapChange()),
+            this, SIGNAL(sigCPUExecutionCapChange()));
 
     /* Prepare main menu: */
     prepareMenuPool();
