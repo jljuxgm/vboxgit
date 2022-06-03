@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 38112 2011-07-22 13:26:19Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 38117 2011-07-22 14:47:43Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -289,6 +289,7 @@ extern DWORD g_VBoxVDbgPid;
 #define VBOXVDBG_DUMP_FLUSH(_pDevice) do { } while (0)
 #define VBOXVDBG_DUMP_LOCK_ST(_pData) do { } while (0)
 #define VBOXVDBG_DUMP_UNLOCK_ST(_pData) do { } while (0)
+#define VBOXVDBG_BREAK_SHARED(_pRc) do { } while (0)
 #endif
 
 
