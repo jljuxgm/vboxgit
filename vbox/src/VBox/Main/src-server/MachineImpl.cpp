@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37162 2011-05-20 11:45:40Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37412 2011-06-10 15:41:33Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9607,8 +9607,8 @@ HRESULT Machine::createImplicitDiffs(IProgress *aProgress,
     {
         ErrorInfoKeeper eik;
 
-        rc = lockedMediaMap->Clear();
-        AssertComRC(rc);
+        HRESULT rc1 = lockedMediaMap->Clear();
+        AssertComRC(rc1);
     }
 
     if (FAILED(rc))
