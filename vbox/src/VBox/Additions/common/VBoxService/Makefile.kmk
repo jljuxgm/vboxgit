@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39279 2011-11-11 17:50:19Z vboxsync $
+# $Id: Makefile.kmk 39314 2011-11-15 15:07:39Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -68,7 +68,7 @@ VBoxService_SOURCES       = \
 ifdef VBOX_WITH_GUEST_CONTROL
  VBoxService_SOURCES    += \
  	VBoxServiceControl.cpp \
-	VBoxServiceControlExecThread.cpp
+	VBoxServiceControlThread.cpp
 endif
 
 ifdef VBOX_WITH_MEMBALLOON
