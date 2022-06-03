@@ -1,4 +1,4 @@
-; $Id: SUPR0.def 38960 2011-10-06 12:55:19Z vboxsync $
+; $Id: SUPR0.def 40753 2012-04-03 07:44:36Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Exports.
 ;
@@ -134,6 +134,7 @@ EXPORTS
     RTTimeMilliTS
     RTTimeSystemNanoTS
     RTTimeSystemMilliTS
+    RTTimeNow
     RTThreadSelf
     RTThreadNativeSelf
     RTThreadSleep
@@ -187,6 +188,7 @@ EXPORTS
     RTAssertMayPanic
     RTAssertSetMayPanic
     RTAssertAreQuiet
+    RTR0AssertPanicSystem
 
     RTNetIPv4AddDataChecksum
     RTNetIPv4AddTCPChecksum
