@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 39581 2011-12-12 13:34:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1145,6 +1145,8 @@ void UIMachineLogic::sltPrepareStorageMenu()
                         pChooseRecentMediumAction->setChecked(!currentMedium.isNull() && strRecentMediumLocation == strCurrentLocation);
                         pChooseRecentMediumAction->setData(QVariant::fromValue(RecentMediumTarget(controller.GetName(), attachment.GetPort(),
                                                                                                   attachment.GetDevice(), strRecentMediumLocation, mediumType)));
+                        pChooseRecentMediumAction->setToolTip(strRecentMediumLocation);
+
                     }
                 }
             }
