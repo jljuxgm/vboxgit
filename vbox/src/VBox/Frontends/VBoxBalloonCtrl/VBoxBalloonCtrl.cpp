@@ -1,4 +1,4 @@
-/* $Id: VBoxBalloonCtrl.cpp 36710 2011-04-18 12:44:24Z vboxsync $ */
+/* $Id: VBoxBalloonCtrl.cpp 36711 2011-04-18 12:58:42Z vboxsync $ */
 /** @file
  * VBoxBalloonCtrl - VirtualBox Ballooning Control Service.
  */
@@ -415,10 +415,13 @@ bool machineIsRunning(MachineState_T enmState)
     switch (enmState)
     {
         case MachineState_Running:
+#if 0
+        /* Not required for ballooning. */
         case MachineState_Teleporting:
         case MachineState_LiveSnapshotting:
         case MachineState_Paused:
         case MachineState_TeleportingPausedVM:
+#endif
             return true;
         default:
             break;
