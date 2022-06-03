@@ -1,4 +1,4 @@
-/* $Id: tstDir.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstDir.cpp 38735 2011-09-13 13:25:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing.
  */
@@ -161,7 +161,7 @@ int main(int argc, char **argv)
                                  DirEntry.Info.ModificationTime,
                                  DirEntry.Info.AccessTime);
                         if (fShortName && DirEntry.cwcShortName)
-                            RTPrintf(" %2d %lS\n", DirEntry.cwcShortName, DirEntry.wszShortName);
+                            RTPrintf(" %2d %ls\n", DirEntry.cwcShortName, DirEntry.wszShortName);
                         else
                             RTPrintf(" %2d %s\n", DirEntry.cbName, DirEntry.szName);
                         if (rc != VINF_SUCCESS)

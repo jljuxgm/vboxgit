@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 38735 2011-09-13 13:25:16Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1198,7 +1198,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 com::ProgressErrorInfo info(progress);
                 if (info.isBasicAvailable())
                 {
-                    RTPrintf("Error: failed to start machine. Error message: %lS\n", info.getText().raw());
+                    RTPrintf("Error: failed to start machine. Error message: %ls\n", info.getText().raw());
                 }
                 else
                 {
