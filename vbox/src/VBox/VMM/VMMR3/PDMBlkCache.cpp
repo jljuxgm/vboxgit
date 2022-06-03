@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 36568 2011-04-06 08:51:17Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 37072 2011-05-13 14:18:14Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -2568,6 +2568,8 @@ VMMR3DECL(int) PDMR3BlkCacheSuspend(PPDMBLKCACHE pBlkCache)
 
     AssertPtrReturn(pBlkCache, VERR_INVALID_POINTER);
 
+    if (!ASMAtomicReadBool(&pBlkCache->pCache->fIoErrorVmSuspended))
+        pdmBlkCacheCommit(pBlkCache); /* Can issue new I/O requests. */
     ASMAtomicXchgBool(&pBlkCache->fSuspended, true);
 
     /* Wait for all I/O to complete. */
