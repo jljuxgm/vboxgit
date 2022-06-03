@@ -1,4 +1,4 @@
-/* $Id: circbuf.cpp 38305 2011-08-04 08:18:54Z vboxsync $ */
+/* $Id: circbuf.cpp 38862 2011-09-26 12:33:21Z vboxsync $ */
 /** @file
  * IPRT - Lock Free Circular Buffer
  */
@@ -183,7 +183,7 @@ RTDECL(void) RTCircBufAcquireWriteBlock(PRTCIRCBUF pBuf, size_t cbReqSize, void 
     size_t cbFree = pBuf->cbBuf - ASMAtomicReadZ(&pBuf->cbUsed);
     if (cbFree > 0)
     {
-        /* Get the size out of the requested size, the write block till the end
+        /* Get the size out of the requested size, then write block till the end
          * of the buffer & the currently free size. */
         size_t cbSize = RT_MIN(cbReqSize, RT_MIN(pBuf->cbBuf - pBuf->offWrite, cbFree));
         if (cbSize > 0)
