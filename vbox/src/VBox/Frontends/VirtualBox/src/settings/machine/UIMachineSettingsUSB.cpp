@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 38575 2011-08-30 16:03:26Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 38913 2011-09-30 09:53:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -469,6 +469,8 @@ void UIMachineSettingsUSB::setValidator (QIWidgetValidator *aVal)
 bool UIMachineSettingsUSB::revalidate(QString &strWarningText, QString& /* strTitle */)
 {
     /* USB 2.0 Extension Pack presence test: */
+    NOREF(strWarningText);
+#ifdef VBOX_WITH_EXTPACK
     CExtPack extPack = vboxGlobal().virtualBox().GetExtensionPackManager().Find(UI_ExtPackName);
     if (mGbUSB->isChecked() && mCbUSB2->isChecked() && (extPack.isNull() || !extPack.GetUsable()))
     {
@@ -481,6 +483,7 @@ bool UIMachineSettingsUSB::revalidate(QString &strWarningText, QString& /* strTi
         msgCenter().remindAboutUnsupportedUSB2(UI_ExtPackName, this);
         return true;
     }
+#endif
     return true;
 }
 

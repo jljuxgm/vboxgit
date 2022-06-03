@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 38911 2011-09-30 09:52:40Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 38913 2011-09-30 09:53:47Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6427,7 +6427,9 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
         rc = consoleInitReleaseLog(mMachine);
         if (FAILED(rc))
             throw rc;
+#ifdef VBOX_WITH_EXTPACK
         mptrExtPackManager->dumpAllToReleaseLog();
+#endif
 
 #ifdef RT_OS_SOLARIS
         /* setup host core dumper for the VM */
