@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<!-- $Id: xpcidl.xsl 32404 2010-09-10 13:17:42Z vboxsync $ -->
+<!-- $Id: xpcidl.xsl 39885 2012-01-26 15:02:48Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
  *  from the generic interface definition expressed in XML.
 
-     Copyright (C) 2008-2010 Oracle Corporation
+     Copyright (C) 2008-2012 Oracle Corporation
 
      This file is part of VirtualBox Open Source Edition (OSE), as
      available from http://www.virtualbox.org. This file is free software;
@@ -115,12 +115,12 @@
  *      xpcom/include/nsprpub/prtypes.h
  *      xpcom/include/xpcom/nsISupportsBase.h
  *
- * These files were originally triple-licensed (MPL/GPL2/LGPL2.1). Sun
+ * These files were originally triple-licensed (MPL/GPL2/LGPL2.1). Oracle
  * elects to distribute this derived work under the LGPL2.1 only.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of a free software library; you can redistribute
  * it and/or modify it under the terms of the GNU Lesser General
