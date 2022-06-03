@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 36893 2011-04-29 13:26:46Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 36894 2011-04-29 13:46:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -197,7 +197,7 @@ PPGMRAMRANGE pgmPhysGetRangeAtOrAboveSlow(PVM pVM, RTGCPHYS GCPhys)
         if (!pRam)
             return NULL;
     }
-    pVM->pgm.s.CTX_SUFF(apRamRangesTlb)[PGM_RAMRANGE_TLB_IDX(pRam->GCPhys)] = pRam;
+    pVM->pgm.s.CTX_SUFF(apRamRangesTlb)[PGM_RAMRANGE_TLB_IDX(GCPhys)] = pRam;
     return pRam;
 }
 
