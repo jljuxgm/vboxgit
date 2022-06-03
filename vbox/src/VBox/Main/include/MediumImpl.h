@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 40466 2012-03-14 14:34:15Z vboxsync $ */
+/* $Id: MediumImpl.h 41231 2012-05-10 11:27:52Z vboxsync $ */
 
 /** @file
  *
@@ -181,6 +181,7 @@ public:
     bool removeRegistry(const Guid& id, bool fRecurse);
     bool isInRegistry(const Guid& id);
     bool getFirstRegistryMachineId(Guid &uuid) const;
+    void markRegistriesModified();
 
     HRESULT addBackReference(const Guid &aMachineId,
                              const Guid &aSnapshotId = Guid::Empty);
@@ -267,7 +268,6 @@ private:
 
     HRESULT canClose();
     HRESULT unregisterWithVirtualBox();
-    void markRegistriesModified();
 
     HRESULT setStateError();
 

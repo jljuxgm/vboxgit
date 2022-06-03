@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 41003 2012-04-20 08:05:06Z vboxsync $ */
+/* $Id: MediumImpl.cpp 41231 2012-05-10 11:27:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3599,9 +3599,12 @@ HRESULT Medium::updatePath(const Utf8Str &strOldPath, const Utf8Str &strNewPath)
         unconst(m->strLocationFull) = newPath;
 
         LogFlowThisFunc(("locationFull.after='%s'\n", m->strLocationFull.c_str()));
+        // we changed something
+        return S_OK;
     }
 
-    return S_OK;
+    // no change was necessary, signal error which the caller needs to interpret
+    return VBOX_E_FILE_ERROR;
 }
 
 /**
