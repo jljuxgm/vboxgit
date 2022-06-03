@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39252 2011-11-09 14:00:21Z vboxsync $
+# $Id: Makefile.kmk 40498 2012-03-16 10:45:05Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -40,7 +40,8 @@ VBoxTray_SOURCES  = \
 ifdef VBOX_WITH_GUEST_PROPS
  VBoxTray_DEFS     +=  _WIN32_IE=0x500 VBOX_WITH_GUEST_PROPS
  VBoxTray_SOURCES  += \
-	VBoxHostVersion.cpp
+	VBoxHostVersion.cpp \
+	VBoxLA.cpp
 endif
 ifdef VBOX_WITH_SHARED_FOLDERS
  VBoxTray_DEFS     +=  VBOX_WITH_SHARED_FOLDERS

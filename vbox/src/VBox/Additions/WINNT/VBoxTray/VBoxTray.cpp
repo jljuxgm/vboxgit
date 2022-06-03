@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: VBoxTray.cpp 40498 2012-03-16 10:45:05Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -30,6 +30,7 @@
 #include "VBoxHostVersion.h"
 #include "VBoxSharedFolders.h"
 #include "VBoxIPC.h"
+#include "VBoxLA.h"
 #include <VBoxHook.h>
 #include "resource.h"
 #include <malloc.h>
@@ -105,6 +106,12 @@ static VBOXSERVICEINFO vboxServiceTable[] =
         VBoxIPCInit,
         VBoxIPCThread,
         VBoxIPCDestroy
+    },
+    {
+        "Location Awareness",
+        VBoxLAInit,
+        VBoxLAThread,
+        VBoxLADestroy
     },
     {
         NULL
