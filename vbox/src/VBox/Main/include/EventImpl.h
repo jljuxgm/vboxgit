@@ -1,10 +1,10 @@
+/* $Id: EventImpl.h 39714 2012-01-07 02:04:33Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM IEvent implementation
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
