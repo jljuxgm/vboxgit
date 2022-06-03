@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 39776 2012-01-17 12:15:29Z vboxsync $ */
+/* $Id: alias_dns.c 39861 2012-01-24 17:03:15Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -381,7 +381,7 @@ static bool isDnsMappingEntryMatchOrEqual2Str(const PDNSMAPPINGENTRY pDNSMapingE
     return (    (   pDNSMapingEntry->pszCName
                  && !strcmp(pDNSMapingEntry->pszCName, pcszString))
             || (   pDNSMapingEntry->pszPattern
-                && RTStrSimplePatternMatch(pDNSMapingEntry->pszPattern, pcszString)));
+                && RTStrSimplePatternMultiMatch(pDNSMapingEntry->pszPattern, RTSTR_MAX, pcszString, RTSTR_MAX, NULL)));
 }
 
 static void alterHostentWithDataFromDNSMap(PNATState pData, struct hostent *pHostent)
