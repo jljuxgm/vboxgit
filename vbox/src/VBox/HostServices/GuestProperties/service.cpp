@@ -1,4 +1,4 @@
-/* $Id: service.cpp 39232 2011-11-08 12:44:08Z vboxsync $ */
+/* $Id: service.cpp 39236 2011-11-08 13:05:10Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -591,14 +591,16 @@ int Service::getProperty(uint32_t cParms, VBOXHGCMSVCPARM paParms[])
         if (RT_SUCCESS(rc))
         {
             /* Check that the buffer is big enough */
-            size_t cchBufActual = pProp->mValue.size() + 1 + strlen(szFlags);   /** @todo r=bird: Buffer overflow bug here? size() == strlen(). */
-            paParms[3].setUInt32((uint32_t)cchBufActual);
-            if (cchBufActual <= cbBuf)
+            size_t const cbFlags  = strlen(szFlags) + 1;
+            size_t const cbValue  = pProp->mValue.size() + 1;
+            size_t const cbNeeded = cbValue + cbFlags;
+            paParms[3].setUInt32((uint32_t)cbNeeded);
+            if (cbBuf >= cbNeeded)
             {
                 /* Write the value, flags and timestamp */
-                pProp->mValue.copy(pchBuf, cbBuf, 0);
-                pchBuf[pProp->mValue.size()] = '\0'; /* Terminate the value */
-                strcpy(pchBuf + pProp->mValue.size() + 1, szFlags);
+                memcpy(pchBuf, pProp->mValue.c_str(), cbValue);
+                memcpy(pchBuf + cbValue, szFlags, cbFlags);
+
                 paParms[2].setUInt64(pProp->mTimestamp);
 
                 /*
