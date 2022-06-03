@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 36891 2011-04-29 13:22:57Z vboxsync $ */
+/* $Id: PGMMap.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1016,7 +1016,9 @@ static void pgmR3MapClearPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iOldPDE)
 static void pgmR3MapSetPDEs(PVM pVM, PPGMMAPPING pMap, unsigned iNewPDE)
 {
     PPGM   pPGM  = &pVM->pgm.s;
+#ifdef VBOX_STRICT
     PVMCPU pVCpu = VMMGetCpu(pVM);
+#endif
     pgmLock(pVM);                           /* to avoid assertions */
 
     Assert(!pgmMapAreMappingsEnabled(pVM) || PGMGetGuestMode(pVCpu) <= PGMMODE_PAE_NX);

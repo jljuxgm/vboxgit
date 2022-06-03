@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 39031 2011-10-19 11:01:20Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1084,7 +1084,9 @@ static int pdmacFileEpRead(PPDMASYNCCOMPLETIONTASK pTask,
                            PCRTSGSEG paSegments, size_t cSegments,
                            size_t cbRead)
 {
+#ifdef VBOX_WITH_STATISTICS
     PPDMASYNCCOMPLETIONENDPOINTFILE pEpFile = (PPDMASYNCCOMPLETIONENDPOINTFILE)pEndpoint;
+#endif
 
     LogFlowFunc(("pTask=%#p pEndpoint=%#p off=%RTfoff paSegments=%#p cSegments=%zu cbRead=%zu\n",
                  pTask, pEndpoint, off, paSegments, cSegments, cbRead));

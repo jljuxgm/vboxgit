@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 38536 2011-08-25 17:09:48Z vboxsync $ */
+/* $Id: GMMR0.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -4208,8 +4208,8 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, VBOXOSFAMILY en
                 pRecVM->aRegions[i].paHCPhysPageID    = NULL; /* unused */
             }
 
-            bool ret = RTAvlGCPtrInsert(&pGVM->gmm.s.pSharedModuleTree, &pRecVM->Core);
-            Assert(ret);
+            bool fInsert = RTAvlGCPtrInsert(&pGVM->gmm.s.pSharedModuleTree, &pRecVM->Core);
+            Assert(fInsert); NOREF(fInsert);
 
             Log(("GMMR0RegisterSharedModule: new local module %s\n", pszModuleName));
             fNewModule = true;
@@ -4280,8 +4280,8 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, VBOXOSFAMILY en
             pGlobalModule->cUsers++;
             rc = VINF_SUCCESS;
 
-            bool ret = RTAvlGCPtrInsert(&pGMM->pGlobalSharedModuleTree, &pGlobalModule->Core);
-            Assert(ret);
+            bool fInsert = RTAvlGCPtrInsert(&pGMM->pGlobalSharedModuleTree, &pGlobalModule->Core);
+            Assert(fInsert); NOREF(fInsert);
 
             Log(("GMMR0RegisterSharedModule: new global module %s\n", pszModuleName));
         }
@@ -4696,8 +4696,8 @@ end:
  */
 static DECLCALLBACK(int) gmmR0CleanupSharedModule(PAVLGCPTRNODECORE pNode, void *pvGVM)
 {
-    PGVM                    pGVM   = (PGVM)pvGVM;
-    PGMMSHAREDMODULEPERVM   pRecVM = (PGMMSHAREDMODULEPERVM)pNode;
+    PGMMSHAREDMODULEPERVM pRecVM = (PGMMSHAREDMODULEPERVM)pNode;
+    NOREF(pvGVM);
 
     Assert(pRecVM->pGlobalModule || pRecVM->fCollision);
     if (pRecVM->pGlobalModule)

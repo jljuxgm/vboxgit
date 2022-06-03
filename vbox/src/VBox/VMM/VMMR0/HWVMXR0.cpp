@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 38707 2011-09-09 14:10:18Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -4405,7 +4405,7 @@ static void hmR0VmxFlushVPID(PVM pVM, PVMCPU pVCpu, VMX_FLUSH enmFlush, RTGCPTR 
         Assert(pVM->hwaccm.s.vmx.fVPID);
         descriptor[0] = pVCpu->hwaccm.s.uCurrentASID;
         descriptor[1] = GCPtr;
-        int rc = VMXR0InvVPID(enmFlush, &descriptor[0]);
+        int rc = VMXR0InvVPID(enmFlush, &descriptor[0]); NOREF(rc);
         AssertMsg(rc == VINF_SUCCESS, ("VMXR0InvVPID %x %x %RGv failed with %d\n", enmFlush, pVCpu->hwaccm.s.uCurrentASID, GCPtr, rc));
     }
 }

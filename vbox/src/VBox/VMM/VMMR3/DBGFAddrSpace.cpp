@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -395,8 +395,7 @@ VMMR3DECL(int) DBGFR3AsSetAlias(PVM pVM, RTDBGAS hAlias, RTDBGAS hAliasFor)
         RTDBGAS hAsOld;
         ASMAtomicXchgHandle(&pVM->dbgf.s.ahAsAliases[DBGF_AS_ALIAS_2_INDEX(hAlias)], hRealAliasFor, &hAsOld);
         uint32_t cRefs = RTDbgAsRelease(hAsOld);
-        Assert(cRefs > 0);
-        Assert(cRefs != UINT32_MAX);
+        Assert(cRefs > 0); Assert(cRefs != UINT32_MAX); NOREF(cRefs);
         rc = VINF_SUCCESS;
     }
     DBGF_AS_DB_UNLOCK_WRITE(pVM);

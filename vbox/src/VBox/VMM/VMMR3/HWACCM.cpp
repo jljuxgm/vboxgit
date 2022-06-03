@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: HWACCM.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1559,7 +1559,7 @@ static int hwaccmR3TermCPU(PVM pVM)
 {
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
-        PVMCPU pVCpu = &pVM->aCpus[i];
+        PVMCPU pVCpu = &pVM->aCpus[i]; NOREF(pVCpu);
 
 #ifdef VBOX_WITH_STATISTICS
         if (pVCpu->hwaccm.s.paStatExitReason)

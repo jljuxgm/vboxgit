@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 38956 2011-10-06 12:43:01Z vboxsync $ */
+/* $Id: PGMPhys.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4261,7 +4261,6 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
         VM_FF_CLEAR(pVM, VM_FF_PGM_NO_MEMORY);
 
 #ifdef VBOX_STRICT
-        bool fOk = true;
         uint32_t i;
         for (i = iClear; i < pVM->pgm.s.cHandyPages; i++)
             if (   pVM->pgm.s.aHandyPages[i].idPage == NIL_GMM_PAGEID

@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 38965 2011-10-07 08:18:37Z vboxsync $ */
+/* $Id: PGMInline.h 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -678,7 +678,7 @@ DECLINLINE(PX86PDPT) pgmGstGetPaePDPTPtr(PVMCPU pVCpu)
 {
     PX86PDPT pGuestPdpt;
     int rc = pgmGstGetPaePDPTPtrEx(pVCpu, &pGuestPdpt);
-    AssertMsg(RT_SUCCESS(rc) || rc == VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS, ("%Rrc\n", rc));
+    AssertMsg(RT_SUCCESS(rc) || rc == VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS, ("%Rrc\n", rc)); NOREF(rc);
     return pGuestPdpt;
 }
 

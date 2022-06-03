@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 38677 2011-09-07 14:45:22Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1352,7 +1352,7 @@ VMMDECL(int) IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore,
  */
 VMMDECL(VBOXSTRICTRC) IOMMMIOPhysHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore, RTGCPHYS GCPhysFault)
 {
-    int rc2 = IOM_LOCK(pVM);
+    int rc2 = IOM_LOCK(pVM); NOREF(rc2);
 #ifndef IN_RING3
     if (rc2 == VERR_SEM_BUSY)
         return VINF_IOM_HC_MMIO_READ_WRITE;

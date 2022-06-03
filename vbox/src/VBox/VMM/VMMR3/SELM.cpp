@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: SELM.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -1839,7 +1839,6 @@ VMMR3DECL(bool) SELMR3CheckTSS(PVM pVM)
     /*
      * Figure out the size of what need to monitor.
      */
-    bool fNoRing1Stack = true;
     /* We're not interested in any 16-bit TSSes. */
     uint32_t cbMonitoredTss = cbTss;
     if (    trHid.Attr.n.u4Type != X86_SEL_TYPE_SYS_386_TSS_AVAIL

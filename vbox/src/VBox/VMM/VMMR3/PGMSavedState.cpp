@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 38953 2011-10-06 08:49:36Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3096,8 +3096,7 @@ static int pgmR3LoadFinalLocked(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
  */
 static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass)
 {
-    int     rc;
-    PPGM    pPGM = &pVM->pgm.s;
+    int rc;
 
     /*
      * Validate version.

@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: PGMPool.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -852,7 +852,7 @@ DECLCALLBACK(VBOXSTRICTRC) pgmR3PoolClearAllRendezvous(PVM pVM, PVMCPU pVCpu, vo
 
         /* First write protect the page again to catch all write accesses. (before checking for changes -> SMP) */
         int rc = PGMHandlerPhysicalReset(pVM, pPage->GCPhys & PAGE_BASE_GC_MASK);
-        Assert(rc == VINF_SUCCESS);
+        AssertRCSuccess(rc);
         pPage->fDirty = false;
 
         pPool->aDirtyPages[i].uIdx = NIL_PGMPOOL_IDX;

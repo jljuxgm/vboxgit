@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 38953 2011-10-06 08:49:36Z vboxsync $ */
+/* $Id: PGM.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3295,7 +3295,9 @@ static PGMMODE pgmR3CalcShadowMode(PVM pVM, PGMMODE enmGuestMode, SUPPAGINGMODE 
  */
 VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
 {
+#if HC_ARCH_BITS == 32
     bool fIsOldGuestPagingMode64Bits = (pVCpu->pgm.s.enmGuestMode >= PGMMODE_AMD64);
+#endif
     bool fIsNewGuestPagingMode64Bits = (enmGuestMode >= PGMMODE_AMD64);
 
     Log(("PGMR3ChangeMode: Guest mode: %s -> %s\n", PGMGetModeName(pVCpu->pgm.s.enmGuestMode), PGMGetModeName(enmGuestMode)));

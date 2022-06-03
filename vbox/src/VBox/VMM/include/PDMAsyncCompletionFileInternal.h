@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -327,10 +327,7 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
     unsigned                               fFlags;
     /** File handle. */
     RTFILE                                 hFile;
-    /**
-     * Real size of the file. Only updated if
-     * data is appended.
-     */
+    /** Real size of the file. Only updated if data is appended. */
     volatile uint64_t                      cbFile;
     /** List of new tasks. */
     R3PTRTYPE(volatile PPDMACTASKFILE)     pTasksNewHead;

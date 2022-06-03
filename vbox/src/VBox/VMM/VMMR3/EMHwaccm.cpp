@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -181,7 +181,9 @@ static int emR3ExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcGC, const c
 static int emR3ExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcGC)
 #endif
 {
+#ifdef LOG_ENABLED
     PCPUMCTX pCtx = pVCpu->em.s.pCtx;
+#endif
     int      rc;
 
     /*

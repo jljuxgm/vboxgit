@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 38954 2011-10-06 11:28:41Z vboxsync $ */
+/* $Id: VMMR0.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1436,7 +1436,6 @@ VMMR0DECL(size_t) vmmR0LoggerPrefix(PRTLOGGER pLogger, char *pchBuf, size_t cchB
  */
 VMMR0DECL(void) VMMR0LogFlushDisable(PVMCPU pVCpu)
 {
-    PVM pVM = pVCpu->pVMR0;
     if (pVCpu->vmm.s.pR0LoggerR0)
         pVCpu->vmm.s.pR0LoggerR0->fFlushingDisabled = true;
 }
@@ -1449,7 +1448,6 @@ VMMR0DECL(void) VMMR0LogFlushDisable(PVMCPU pVCpu)
  */
 VMMR0DECL(void) VMMR0LogFlushEnable(PVMCPU pVCpu)
 {
-    PVM pVM = pVCpu->pVMR0;
     if (pVCpu->vmm.s.pR0LoggerR0)
         pVCpu->vmm.s.pR0LoggerR0->fFlushingDisabled = false;
 }
