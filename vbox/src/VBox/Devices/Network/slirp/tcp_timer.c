@@ -1,4 +1,4 @@
-/* $Id: tcp_timer.c 37936 2011-07-14 03:54:41Z vboxsync $ */
+/* $Id: tcp_timer.c 41408 2012-05-22 18:05:05Z vboxsync $ */
 /** @file
  * NAT - TCP timers.
  */
@@ -157,8 +157,16 @@ struct tcpcb *
 tcp_timers(PNATState pData, register struct tcpcb *tp, int timer)
 {
     register int rexmt;
+    int fUninitiolizedTemplate = 0;
 
     LogFlowFunc(("ENTER: tp:%R[tcpcb793], timer:%d\n", tp, timer));
+    fUninitiolizedTemplate = RT_BOOL((   tp->t_template.ti_src.s_addr == INADDR_ANY
+                                          || tp->t_template.ti_dst.s_addr == INADDR_ANY));
+    if (fUninitiolizedTemplate)
+    {
+        tp = tcp_drop(pData, tp, 0);
+        return tp;
+    }
 
     switch (timer)
     {
