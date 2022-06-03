@@ -1,4 +1,4 @@
-# $Id: VBoxPkg.dsc 33540 2010-10-28 09:27:05Z vboxsync $
+# $Id: VBoxPkg.dsc 38951 2011-10-06 05:26:43Z vboxsync $
 ## @file
 # VBoxPkg.dsc - VirtualBox Flash Device.
 #
@@ -102,6 +102,8 @@
   DevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
   NvVarsFileLib|OvmfPkg/Library/NvVarsFileLib/NvVarsFileLib.inf
   FileHandleLib|ShellPkg/Library/BaseFileHandleLib/BaseFileHandleLib.inf
+  UefiCpuLib|UefiCpuPkg/Library/BaseUefiCpuLib/BaseUefiCpuLib.inf
+  #SecurityManagementLib|MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf
 
 [LibraryClasses.common.SEC]
   #DebugLib|MdePkg/Library/BaseDebugLibSerialPort/BaseDebugLibSerialPort.inf
@@ -316,8 +318,8 @@
   UefiCpuPkg/CpuDxe/CpuDxe.inf
   PcAtChipsetPkg/8254TimerDxe/8254Timer.inf
   PcAtChipsetPkg/PciHostBridgeDxe/PciHostBridgeDxe.inf
-  IntelFrameworkModulePkg/Bus/Pci/PciBusDxe/PciBusDxe.inf
   PcAtChipsetPkg/KbcResetDxe/Reset.inf
+  MdeModulePkg/Bus/Pci/PciBusDxe/PciBusDxe.inf
   MdeModulePkg/Universal/Metronome/Metronome.inf {
     <LibraryClasses>
       TimerLib|OvmfPkg/Library/AcpiTimerLib/AcpiTimerLib.inf
