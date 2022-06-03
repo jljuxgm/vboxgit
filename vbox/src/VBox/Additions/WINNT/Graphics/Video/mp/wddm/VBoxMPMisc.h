@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 37626 2011-06-24 12:01:33Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 37734 2011-07-01 16:36:39Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -147,7 +147,7 @@ NTSTATUS vboxVideoAMgrCtxAllocDestroy(PVBOXVIDEOCM_ALLOC_CONTEXT pContext, VBOXD
 NTSTATUS vboxVideoAMgrCtxAllocSubmit(PVBOXMP_DEVEXT pDevExt, PVBOXVIDEOCM_ALLOC_CONTEXT pContext, UINT cBuffers, VBOXWDDM_UHGSMI_BUFFER_UI_INFO_ESCAPE *paBuffers);
 #endif
 
-
+VOID vboxWddmSleep(uint32_t u32Val);
 VOID vboxWddmCounterU32Wait(uint32_t volatile * pu32, uint32_t u32Val);
 
 #endif /* #ifndef ___VBoxMPMisc_h__ */

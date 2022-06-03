@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCm.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPCm.h 37734 2011-07-01 16:36:39Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -55,6 +55,9 @@ typedef FNVBOXVIDEOCMCMDVISITOR *PFNVBOXVIDEOCMCMDVISITOR;
 NTSTATUS vboxVideoCmCmdVisit(PVBOXVIDEOCM_CTX pContext, BOOL bEntireSession, PFNVBOXVIDEOCMCMDVISITOR pfnVisitor, PVOID pvVisitor);
 
 NTSTATUS vboxVideoCmEscape(PVBOXVIDEOCM_CTX pContext, PVBOXDISPIFESCAPE_GETVBOXVIDEOCMCMD pCmd, uint32_t cbCmd);
+
+NTSTATUS vboxVideoCmWaitCompletedCmds(PVBOXVIDEOCM_MGR pMgr, uint32_t msTimeout);
+
 VOID vboxVideoCmLock(PVBOXVIDEOCM_CTX pContext);
 VOID vboxVideoCmUnlock(PVBOXVIDEOCM_CTX pContext);
 

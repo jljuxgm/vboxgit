@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 37626 2011-06-24 12:01:33Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 37734 2011-07-01 16:36:39Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1459,8 +1459,7 @@ NTSTATUS DxgkDdiSetPowerState(
 
     LOGF(("ENTER, context(0x%x)", MiniportDeviceContext));
 
-    /* @todo: */
-//    vboxVDbgBreakF();
+    vboxVDbgBreakFv();
 
     LOGF(("LEAVE, context(0x%x)", MiniportDeviceContext));
 
@@ -2672,6 +2671,7 @@ DxgkDdiSubmitCommand(
             PVBOXWDDM_DMA_PRIVATEDATA_BLT pBlt = (PVBOXWDDM_DMA_PRIVATEDATA_BLT)pPrivateData;
             PVBOXWDDM_ALLOCATION pDstAlloc = pBlt->Blt.DstAlloc.pAlloc;
             PVBOXWDDM_ALLOCATION pSrcAlloc = pBlt->Blt.SrcAlloc.pAlloc;
+
             uint32_t cContexts3D = ASMAtomicReadU32(&pDevExt->cContexts3D);
             BOOLEAN bComplete = TRUE;
             switch (pDstAlloc->enmType)
@@ -3722,7 +3722,11 @@ DxgkDdiEscape(
                     PVBOXDISPIFESCAPE_DBGPRINT pDbgPrint = (PVBOXDISPIFESCAPE_DBGPRINT)pEscapeHdr;
                     /* ensure the last char is \0*/
                     *((uint8_t*)pDbgPrint + pEscape->PrivateDriverDataSize - 1) = '\0';
+#ifdef DEBUG_misha
+                    DbgPrint("%s", pDbgPrint->aStringBuf);
+#else
                     LOGREL(("%s", pDbgPrint->aStringBuf));
+#endif
                 }
                 Status = STATUS_SUCCESS;
                 break;
