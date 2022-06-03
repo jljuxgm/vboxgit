@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 40471 2012-03-15 06:22:17Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 40541 2012-03-19 14:36:29Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -96,7 +96,6 @@ static RTEXITCODE handleBandwidthControlAdd(HandlerArg *a, ComPtr<IBandwidthCont
             }
         }
     }
-    RTPrintf("Adding bwgroup: name=%ls type=%s limit=%u\n", name.raw(), pszType, cMaxMbPerSec);
 
     BandwidthGroupType_T enmType;
 
@@ -158,7 +157,6 @@ static RTEXITCODE handleBandwidthControlSet(HandlerArg *a, ComPtr<IBandwidthCont
             }
         }
     }
-    RTPrintf("Updating bwgroup: name=%ls limit=%u\n", name.raw(), cMaxMbPerSec);
 
     
     if (cMaxMbPerSec != UINT32_MAX)
