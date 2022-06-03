@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 37014 2011-05-09 14:06:20Z vboxsync $ */
+/* $Id: HostImpl.cpp 37095 2011-05-16 08:21:19Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1658,9 +1658,8 @@ HRESULT Host::getDrives(DeviceType_T mediumType,
             // list was built, and this was a subsequent call: then compare the old and the new lists
 
             // remove drives from the cached list which are no longer present
-            for (MediaList::iterator itCached = pllCached->begin();
-                 itCached != pllCached->end();
-                 ++itCached)
+            MediaList::iterator itCached = pllCached->begin();
+            while (itCached != pllCached->end())
             {
                 Medium *pCached = *itCached;
                 const Utf8Str strLocationCached = pCached->getLocationFull();
@@ -1679,6 +1678,8 @@ HRESULT Host::getDrives(DeviceType_T mediumType,
                 }
                 if (!fFound)
                     itCached = pllCached->erase(itCached);
+                else
+                    ++itCached;
             }
 
             // add drives to the cached list that are not on there yet
