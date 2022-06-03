@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 41659 2012-06-12 01:19:14Z vboxsync $ */
+/* $Id: CSAM.cpp 41662 2012-06-12 08:29:07Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1332,7 +1332,7 @@ static int csamAnalyseCodeStream(PVM pVM, RCPTRTYPE(uint8_t *) pInstrGC, RCPTRTY
                 &&  cpu.param1.flags == USE_DISPLACEMENT32)
             {
                 addr = 0;
-                PGMPhysSimpleReadGCPtr(pVCpu, &addr, (RTRCUINTPTR)cpu.param1.disp32, sizeof(addr));
+                PGMPhysSimpleReadGCPtr(pVCpu, &addr, (RTRCUINTPTR)cpu.param1.uDisp.i32, sizeof(addr));
             }
             else
                 addr = CSAMResolveBranch(&cpu, pCurInstrGC);
