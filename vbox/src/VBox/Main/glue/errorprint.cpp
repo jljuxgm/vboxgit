@@ -1,4 +1,4 @@
-/* $Id: errorprint.cpp 38509 2011-08-23 15:07:55Z vboxsync $ */
+/* $Id: errorprint.cpp 38510 2011-08-23 15:12:29Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer:
@@ -21,6 +21,8 @@
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
 #include <VBox/log.h>
+
+#include <ProgressImpl.h>
 
 #include <iprt/stream.h>
 #include <iprt/message.h>
