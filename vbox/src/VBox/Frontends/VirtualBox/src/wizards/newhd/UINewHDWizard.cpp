@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 38569 2011-08-30 12:58:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -371,6 +371,14 @@ QString UINewHDWizardPageFormat::fullFormatName(const QString &strBaseFormatName
         return UINewHDWizard::tr("V&MDK (Virtual Machine Disk)");
     else if (strBaseFormatName == "VHD")
         return UINewHDWizard::tr("V&HD (Virtual Hard Disk)");
+    else if (strBaseFormatName == "VHD")
+        return UINewHDWizard::tr("V&HD (Virtual Hard Disk)");
+    else if (strBaseFormatName == "Parallels")
+        return UINewHDWizard::tr("&Parallels (Parallels Hard Disk)");
+    else if (strBaseFormatName == "QED")
+        return UINewHDWizard::tr("Q&ED (QEMU enhanced disk)");
+    else if (strBaseFormatName == "QCOW")
+        return UINewHDWizard::tr("&QCOW (QEMU Copy-On-Write)");
     return strBaseFormatName;
 }
 
