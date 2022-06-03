@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 39983 2012-02-03 12:47:16Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 40192 2012-02-21 10:46:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -841,8 +841,7 @@ void UIDetailsBlock::sltUpdateDisplay()
             if (m_machine.GetAccelerate2DVideoEnabled())
                 accel << tr("2D Video", "details report");
 #endif /* VBOX_WITH_VIDEOHWACCEL */
-            if (   vboxGlobal().is3DAvailable()
-                && m_machine.GetAccelerate3DEnabled())
+            if (m_machine.GetAccelerate3DEnabled())
                 accel << tr("3D", "details report");
 
             if (!accel.isEmpty())
