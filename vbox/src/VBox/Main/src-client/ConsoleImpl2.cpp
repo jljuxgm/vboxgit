@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36082 2011-02-25 12:21:57Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 36107 2011-02-28 18:24:32Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -531,7 +531,7 @@ static HRESULT attachRawPciDevices(BusAssignmentManager* BusMgr,
 
         GuestPciAddress.fromLong(guest);
         Assert(GuestPciAddress.valid());
-        hrc = BusMgr->assignPciDevice("pciraw", pInst, GuestPciAddress, true);
+        hrc = BusMgr->assignHostPciDevice("pciraw", pInst, HostPciAddress, GuestPciAddress, true);
         if (hrc != S_OK)
             return hrc;
 
