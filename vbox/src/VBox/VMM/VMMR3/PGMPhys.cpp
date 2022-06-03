@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 41394 2012-05-22 14:23:54Z vboxsync $ */
+/* $Id: PGMPhys.cpp 41395 2012-05-22 14:29:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3716,6 +3716,10 @@ VMMDECL(void) PGMR3PhysSetA20(PVMCPU pVCpu, bool fEnable)
         REMR3A20Set(pVCpu->pVMR3, pVCpu, fEnable);
 #endif
         /** @todo we're not handling this correctly for VT-x / AMD-V. See #2911 */
+#ifdef PGM_WITH_A20
+        pVCpu->pgm.s.fSyncFlags |= PGM_SYNC_CLEAR_PGM_POOL | PGM_SYNC_UPDATE_PAGE_BIT_VIRTUAL;
+        VMCPU_FF_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3);
+#endif
     }
 }
 
