@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 41919 2012-06-27 08:06:27Z vboxsync $ */
+/* $Id: process-win.cpp 42077 2012-07-10 08:37:08Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -1428,9 +1428,8 @@ RTR3DECL(uint64_t) RTProcGetAffinityMask(void)
 RTR3DECL(int) RTProcQueryUsername(RTPROCESS hProcess, char *pszUser, size_t cbUser,
                                   size_t *pcbUser)
 {
-    AssertPtrReturn(pszUser, VERR_INVALID_POINTER);
-    AssertReturn(cbUser > 0, VERR_INVALID_PARAMETER);
-    AssertPtrReturn(pcbUser, VERR_INVALID_POINTER);
+    AssertReturn(   (pszUser && cbUser > 0)
+                 || (!pszUser && !cbUser), VERR_INVALID_PARAMETER);
 
     if (hProcess != RTProcSelf())
         return VERR_NOT_SUPPORTED;
@@ -1447,7 +1446,8 @@ RTR3DECL(int) RTProcQueryUsername(RTPROCESS hProcess, char *pszUser, size_t cbUs
     {
         size_t cbUserName = strlen(pszUserName) + 1;
 
-        *pcbUser = cbUserName;
+        if (pcbUser)
+            *pcbUser = cbUserName;
 
         if (cbUserName > cbUser)
             rc = VERR_BUFFER_OVERFLOW;
