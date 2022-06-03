@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37228 2011-05-26 19:25:54Z vboxsync $
+# $Id: Makefile.kmk 37477 2011-06-15 17:18:33Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -238,6 +238,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  VBoxDD2_SOURCES         = \
  	build/VBoxDD2.cpp  \
  	PC/DevAPIC.cpp \
+ 	PC/DevIoApic.cpp \
  	PC/DevSMC.cpp  \
  	PC/DevLPC.cpp
  VBoxDD2_LIBS            = \
@@ -756,6 +757,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   VBoxDD2GC_INCS           = build
   VBoxDD2GC_SOURCES        = \
   	PC/DevAPIC.cpp \
+  	PC/DevIoApic.cpp \
   	PC/DevSMC.cpp
   if1of ($(VBOX_LDR_FMT32), pe lx)
    VBoxDD2GC_LIBS          = \
@@ -773,6 +775,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  VBoxDD2R0_SOURCES        = \
  	build/VBoxDD2R0.cpp \
  	PC/DevAPIC.cpp \
+ 	PC/DevIoApic.cpp \
  	PC/DevSMC.cpp
 
  if1of ($(VBOX_LDR_FMT), pe lx)

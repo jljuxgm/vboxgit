@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 36268 2011-03-11 16:37:25Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 37477 2011-06-15 17:18:33Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -54,6 +54,8 @@
 #include "../PC/DevRTC.cpp"
 #undef LOG_GROUP
 #include "../PC/DevAPIC.cpp"
+#undef LOG_GROUP
+#include "../PC/DevIoApic.cpp"
 #undef LOG_GROUP
 #include "../PC/DevHPET.cpp"
 #undef LOG_GROUP

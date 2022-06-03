@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 37444 2011-06-14 14:34:52Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 37477 2011-06-15 17:18:33Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -55,6 +55,8 @@
 #include "../PC/DevRTC.cpp"
 #undef LOG_GROUP
 #include "../PC/DevAPIC.cpp"
+#undef LOG_GROUP
+#include "../PC/DevIoApic.cpp"
 #undef LOG_GROUP
 #include "../Storage/DevATA.cpp"
 #ifdef VBOX_WITH_USB
@@ -618,7 +620,7 @@ int main()
     GEN_CHECK_OFF(RTCState, CurLogPeriod);
     GEN_CHECK_OFF(RTCState, CurHintPeriod);
 
-    /* PC/apic.c */
+    /* PC/DevAPIC.cpp */
     GEN_CHECK_SIZE(APICState);
     GEN_CHECK_OFF(APICState, apicbase);
     GEN_CHECK_OFF(APICState, id);
@@ -677,6 +679,7 @@ int main()
     GEN_CHECK_OFF(APICDeviceInfo, StatMMIOWriteHC);
 #endif
 
+    /* PC/DevIoApic.cpp */
     GEN_CHECK_SIZE(IOAPICState);
     GEN_CHECK_OFF(IOAPICState, id);
     GEN_CHECK_OFF(IOAPICState, ioregsel);
