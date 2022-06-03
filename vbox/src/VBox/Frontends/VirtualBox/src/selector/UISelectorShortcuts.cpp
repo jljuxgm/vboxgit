@@ -1,4 +1,4 @@
-/* $Id: UISelectorShortcuts.cpp 38487 2011-08-17 13:57:13Z vboxsync $ */
+/* $Id: UISelectorShortcuts.cpp 38800 2011-09-20 11:51:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -45,6 +45,7 @@ UISelectorShortcuts::UISelectorShortcuts()
     m_Shortcuts[ShowVMLogShortcut]           = UIKeySequence("ShowVMLog",           "Ctrl+L");
     m_Shortcuts[ShowVMInFileManagerShortcut] = UIKeySequence("ShowVMInFileManager");
     m_Shortcuts[CreateVMAliasShortcut]       = UIKeySequence("CreateVMAlias");
+    m_Shortcuts[ResortVMList]                = UIKeySequence("ResortVMList");
     m_Shortcuts[HelpShortcut]                = UIKeySequence("Help",                QKeySequence::HelpContents);
     m_Shortcuts[WebShortcut]                 = UIKeySequence("Web");
     m_Shortcuts[ResetWarningsShortcut]       = UIKeySequence("ResetWarnings");

@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UIVMListView.cpp 38800 2011-09-20 11:51:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -148,7 +148,7 @@ QStringList UIVMItemModel::idList() const
     return list;
 }
 
-void UIVMItemModel::sortByIdList(const QStringList &list)
+void UIVMItemModel::sortByIdList(const QStringList &list, Qt::SortOrder order /* = Qt::AscendingOrder */)
 {
     emit layoutAboutToBeChanged();
     QList<UIVMItem*> tmpVMItemList(m_VMItemList);
@@ -174,7 +174,7 @@ void UIVMItemModel::sortByIdList(const QStringList &list)
        old behavior of VBox is respected. */
     if (tmpVMItemList.count() > 0)
     {
-        qSort(tmpVMItemList.begin(), tmpVMItemList.end(), UIVMItemNameCompareLessThan);
+        qSort(tmpVMItemList.begin(), tmpVMItemList.end(), order == Qt::AscendingOrder ? UIVMItemNameCompareLessThan : UIVMItemNameCompareMoreThan);
         QListIterator<UIVMItem*> it(tmpVMItemList);
         while (it.hasNext())
             m_VMItemList << it.next();
@@ -290,6 +290,13 @@ bool UIVMItemModel::UIVMItemNameCompareLessThan(UIVMItem* aItem1, UIVMItem* aIte
     Assert(aItem1);
     Assert(aItem2);
     return aItem1->name().toLower() < aItem2->name().toLower();
+}
+
+bool UIVMItemModel::UIVMItemNameCompareMoreThan(UIVMItem* aItem1, UIVMItem* aItem2)
+{
+    Assert(aItem1);
+    Assert(aItem2);
+    return aItem1->name().toLower() > aItem2->name().toLower();
 }
 
 Qt::ItemFlags UIVMItemModel::flags(const QModelIndex &index) const
