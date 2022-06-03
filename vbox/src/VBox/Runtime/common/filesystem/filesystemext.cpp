@@ -1,4 +1,4 @@
-/* $Id: filesystemext.cpp 41549 2012-06-01 17:29:05Z vboxsync $ */
+/* $Id: filesystemext.cpp 41552 2012-06-01 18:03:46Z vboxsync $ */
 /** @file
  * IPRT Filesystem API (FileSys) - ext2/3 format.
  */
@@ -231,7 +231,7 @@ static int rtFsExtLoadBlkGrpDesc(PRTFILESYSTEMEXT pThis, uint32_t iBlkGrp)
 }
 
 static bool rtFsExtIsBlockRangeInUse(PRTFILESYSTEMEXTBLKGRP pBlkGrpDesc,
-                                     uint32_t offBlockStart, uint32_t cBlocks)
+                                     uint32_t offBlockStart, size_t cBlocks)
 {
     bool fUsed = false;
 
