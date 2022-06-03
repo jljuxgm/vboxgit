@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 40192 2012-02-21 10:46:37Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 40323 2012-03-02 13:27:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2023,7 +2023,7 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
             InsertConfigInteger(pCfg,   "IOBase", ulIOBase);
             InsertConfigNode(pInst,     "LUN#0", &pLunL0);
             InsertConfigString(pLunL0,  "Driver", "HostParallel");
-            InsertConfigNode(pLunL0,    "AttachedDriver", &pLunL1);
+            InsertConfigNode(pLunL0,    "Config", &pLunL1);
             hrc = parallelPort->COMGETTER(Path)(bstr.asOutParam());                         H();
             InsertConfigString(pLunL1,  "DevicePath", bstr);
         }
