@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 37041 2011-05-11 16:54:32Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 37055 2011-05-12 15:16:56Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -36,6 +36,7 @@
 # include <iprt/asm-amd64-x86.h>
 #endif
 #include <iprt/assert.h>
+#include <iprt/cpuset.h>
 #include <iprt/err.h>
 #include <iprt/mp.h>
 
@@ -56,7 +57,7 @@ typedef RTDARWINPREEMPTHACK *PRTDARWINPREEMPTHACK;
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
-static RTDARWINPREEMPTHACK  g_aPreemptHacks[16]; /* see MAX_CPUS in i386/mp.h */
+static RTDARWINPREEMPTHACK  g_aPreemptHacks[RTCPUSET_MAX_CPUS];
 
 
 /**
