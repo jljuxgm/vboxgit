@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 36829 2011-04-24 13:45:25Z vboxsync $ */
+/* $Id: IEMInternal.h 36849 2011-04-26 15:41:32Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -347,7 +347,7 @@ typedef IEMCPU *PIEMCPU;
  * should therefore cause the compiler to eliminate the verification branch
  * of an if statement.  */
 #ifdef IEM_VERIFICATION_MODE
-# define IEM_VERIFICATION_ENABLED(a_pIemCpu)    ((a_pIemCpu)->fNoRem)
+# define IEM_VERIFICATION_ENABLED(a_pIemCpu)    (!(a_pIemCpu)->fNoRem)
 #else
 # define IEM_VERIFICATION_ENABLED(a_pIemCpu)    (false)
 #endif
