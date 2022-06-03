@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 38883 2011-09-27 09:56:58Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 38886 2011-09-27 10:03:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1229,17 +1229,9 @@ static int pdmacFileEpRead(PPDMASYNCCOMPLETIONTASK pTask,
                  pTask, pEndpoint, off, paSegments, cSegments, cbRead));
 
     STAM_PROFILE_ADV_START(&pEpFile->StatRead, Read);
-
-    if (RT_LIKELY(off + cbRead <= (RTFOFF)pEpFile->cbFile))
-    {
-        pdmacFileEpTaskInit(pTask, cbRead);
-
-        rc = pdmacFileEpTaskInitiate(pTask, pEndpoint, off, paSegments, cSegments, cbRead,
-                                     PDMACTASKFILETRANSFER_READ);
-    }
-    else
-        rc = VERR_EOF;
-
+    pdmacFileEpTaskInit(pTask, cbRead);
+    rc = pdmacFileEpTaskInitiate(pTask, pEndpoint, off, paSegments, cSegments, cbRead,
+                                 PDMACTASKFILETRANSFER_READ);
     STAM_PROFILE_ADV_STOP(&pEpFile->StatRead, Read);
 
     return rc;
