@@ -1,4 +1,4 @@
-/* $Id: tstRTStrFormat.cpp 30088 2010-06-08 13:15:44Z vboxsync $ */
+/* $Id: tstRTStrFormat.cpp 37965 2011-07-14 13:28:24Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -587,6 +587,15 @@ int main()
                 ,
                 &s_abHex1[0], &s_abHex1[0x10]);
     CHECKSTR(pszBuf2);
+
+    /*
+     * x86 register formatting.
+     */
+    RTTestSub(hTest, "x86 register format types (%RAx86[*])");
+    CHECK42("%'RU64", _1E, "1 152 921 504 606 846 976");
+    CHECK42("%RAx86[cr0]", UINT64_C(0x80000011),    "80000011{PE,ET,PG}");
+    CHECK42("%RAx86[cr4]", UINT64_C(0x80000001),    "80000001{VME,unkn=80000000}");
+    CHECK42("%#RAx86[cr4]", UINT64_C(0x80000001),    "0x80000001{VME,unkn=0x80000000}");
 
     /*
      * Custom types.
