@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41382 2012-05-21 21:21:33Z vboxsync $
+# $Id: Config.kmk 41383 2012-05-22 06:18:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -466,6 +466,8 @@ VBOX_WITH_MSI_DEVICES = 1
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_HOSTNETIF_API = 1
 endif
+# Emulated USB smart card reader
+VBOX_WITH_USB_CARDREADER = 1
 ## @}
 
 
@@ -5092,7 +5094,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41382 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41383 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
