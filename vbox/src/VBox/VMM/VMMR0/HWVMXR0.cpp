@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 40450 2012-03-13 15:56:22Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 40451 2012-03-13 16:13:54Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -3334,7 +3334,7 @@ ResumeExecution:
                     }
 
                     default:
-                        rc = EMInterpretInstructionCpuUpdtPC(pVCpu, pDis, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR);
+                        rc = EMInterpretInstructionDisasState(pVCpu, pDis, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR);
                         fUpdateRIP = false;
                         break;
                     }

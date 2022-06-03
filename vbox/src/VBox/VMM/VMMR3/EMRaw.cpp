@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 40450 2012-03-13 15:56:22Z vboxsync $ */
+/* $Id: EMRaw.cpp 40451 2012-03-13 16:13:54Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -604,7 +604,7 @@ static int emR3RawGuestTrap(PVM pVM, PVMCPU pVCpu)
                 rc = TRPMResetTrap(pVCpu);
                 AssertRC(rc);
 
-                rc = VBOXSTRICTRC_TODO(EMInterpretInstructionCpuUpdtPC(pVCpu, &cpu, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR));
+                rc = VBOXSTRICTRC_TODO(EMInterpretInstructionDisasState(pVCpu, &cpu, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR));
                 if (RT_SUCCESS(rc))
                     return rc;
                 return emR3ExecuteInstruction(pVM, pVCpu, "Monitor: ");
@@ -1093,7 +1093,7 @@ static int emR3RawPrivileged(PVM pVM, PVMCPU pVCpu)
                     }
 #endif
 
-                    rc = VBOXSTRICTRC_TODO(EMInterpretInstructionCpuUpdtPC(pVCpu, &Cpu, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR));
+                    rc = VBOXSTRICTRC_TODO(EMInterpretInstructionDisasState(pVCpu, &Cpu, CPUMCTX2CORE(pCtx), 0, EMCODETYPE_SUPERVISOR));
                     if (RT_SUCCESS(rc))
                     {
                         STAM_PROFILE_STOP(&pVCpu->em.s.StatPrivEmu, a);
