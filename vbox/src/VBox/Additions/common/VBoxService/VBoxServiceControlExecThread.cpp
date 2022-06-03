@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExecThread.cpp 36548 2011-04-05 09:27:33Z vboxsync $ */
+/* $Id: VBoxServiceControlExecThread.cpp 36550 2011-04-05 09:41:05Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for an executed guest process.
  */
@@ -27,7 +27,7 @@
 #include <iprt/semaphore.h>
 #include <iprt/string.h>
 
-#include "VboxServicePipeBuf.h"
+#include "VBoxServicePipeBuf.h"
 #include "VBoxServiceControlExecThread.h"
 
 extern RTLISTNODE g_GuestControlExecThreads;
