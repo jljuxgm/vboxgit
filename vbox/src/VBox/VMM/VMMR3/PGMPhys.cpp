@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 37355 2011-06-07 16:19:43Z vboxsync $ */
+/* $Id: PGMPhys.cpp 37942 2011-07-14 09:08:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4255,7 +4255,9 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
             PGMMPAGEDESC pPage = &pVM->pgm.s.aHandyPages[iClear];
             void *pv;
             rc = pgmPhysPageMapByPageID(pVM, pPage->idPage, pPage->HCPhysGCPhys, &pv);
-            AssertLogRelMsgBreak(RT_SUCCESS(rc), ("idPage=%#x HCPhysGCPhys=%RHp rc=%Rrc\n", pPage->idPage, pPage->HCPhysGCPhys, rc));
+            AssertLogRelMsgBreak(RT_SUCCESS(rc),
+                                 ("%u/%u: idPage=%#x HCPhysGCPhys=%RHp rc=%Rrc\n",
+                                  iClear, pVM->pgm.s.cHandyPages, pPage->idPage, pPage->HCPhysGCPhys, rc));
             ASMMemZeroPage(pv);
             iClear++;
             Log3(("PGMR3PhysAllocateHandyPages: idPage=%#x HCPhys=%RGp\n", pPage->idPage, pPage->HCPhysGCPhys));
