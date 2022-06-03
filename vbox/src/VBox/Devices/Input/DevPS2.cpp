@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 39967 2012-02-02 18:27:18Z vboxsync $ */
+/* $Id: DevPS2.cpp 39972 2012-02-02 21:38:21Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -235,9 +235,13 @@ typedef struct KBDState {
     PDMCRITSECT                 CritSect;
 
     /** Keyboard state (implemented in separate PS2K module). */
+#ifdef VBOX_DEVICE_STRUCT_TESTCASE
+    uint8_t                     KbdFiller[PS2K_STRUCT_FILLER];
+#else
     PS2K                        Kbd;
+#endif
 
-#if 1 //OLD_KBD
+#if OLD_KBD
     /**
      * Keyboard port - LUN#0.
      *

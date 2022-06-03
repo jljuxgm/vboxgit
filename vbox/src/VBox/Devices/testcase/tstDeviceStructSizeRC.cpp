@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 39684 2011-12-29 17:50:00Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 39972 2012-02-02 21:38:21Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -43,6 +43,8 @@
 #include "../Graphics/DevVGA.cpp"
 #undef LOG_GROUP
 #include "../Input/DevPS2.cpp"
+#undef LOG_GROUP
+#include "../Input/PS2K.cpp"
 #undef LOG_GROUP
 #include "../Network/DevPCNet.cpp"
 #undef LOG_GROUP
@@ -363,8 +365,6 @@ int main()
     GEN_CHECK_OFF(KBDState, write_cmd);
     GEN_CHECK_OFF(KBDState, status);
     GEN_CHECK_OFF(KBDState, mode);
-    GEN_CHECK_OFF(KBDState, kbd_write_cmd);
-    GEN_CHECK_OFF(KBDState, scan_enabled);
     GEN_CHECK_OFF(KBDState, mouse_write_cmd);
     GEN_CHECK_OFF(KBDState, mouse_status);
     GEN_CHECK_OFF(KBDState, mouse_resolution);
@@ -380,10 +380,25 @@ int main()
     GEN_CHECK_OFF(KBDState, pDevInsR3);
     GEN_CHECK_OFF(KBDState, pDevInsR0);
     GEN_CHECK_OFF(KBDState, pDevInsRC);
-    GEN_CHECK_OFF(KBDState, Keyboard.IBase);
-    GEN_CHECK_OFF(KBDState, Keyboard.IPort);
-    GEN_CHECK_OFF(KBDState, Keyboard.pDrvBase);
-    GEN_CHECK_OFF(KBDState, Keyboard.pDrv);
+    GEN_CHECK_OFF(KBDState, CritSect);
+    GEN_CHECK_OFF(PS2K, fScanning);
+    GEN_CHECK_OFF(PS2K, fNumLockOn);
+    GEN_CHECK_OFF(PS2K, u8ScanSet);
+    GEN_CHECK_OFF(PS2K, u8Typematic);
+    GEN_CHECK_OFF(PS2K, enmTypematicState);
+    GEN_CHECK_OFF(PS2K, keyQ);
+    GEN_CHECK_OFF(PS2K, cmdQ);
+    GEN_CHECK_OFF(PS2K, uTypematicDelay);
+    GEN_CHECK_OFF(PS2K, pKbdDelayTimerRC);
+    GEN_CHECK_OFF(PS2K, pKbdDelayTimerR3);
+    GEN_CHECK_OFF(PS2K, pKbdDelayTimerR0);
+    GEN_CHECK_OFF(PS2K, pKbdTypematicTimerRC);
+    GEN_CHECK_OFF(PS2K, pKbdTypematicTimerR3);
+    GEN_CHECK_OFF(PS2K, pKbdTypematicTimerR0);
+    GEN_CHECK_OFF(PS2K, Keyboard.IBase);
+    GEN_CHECK_OFF(PS2K, Keyboard.IPort);
+    GEN_CHECK_OFF(PS2K, Keyboard.pDrvBase);
+    GEN_CHECK_OFF(PS2K, Keyboard.pDrv);
     GEN_CHECK_OFF(KBDState, Mouse.IBase);
     GEN_CHECK_OFF(KBDState, Mouse.IPort);
     GEN_CHECK_OFF(KBDState, Mouse.pDrvBase);
