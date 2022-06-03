@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 39188 2011-11-03 14:19:00Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 39190 2011-11-03 14:49:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -149,6 +149,8 @@ void UIUpdateManager::checkIfUpdateIsNecessaryForExtensionPack(bool /* fForceCal
     {
         /* Inform the user that he should update the extension pack: */
         msgCenter().requestUserDownloadExtensionPack(UI_ExtPackName, strExtPackVersion, strVBoxVersion);
+        /* Never try to download here! */
+        return;
     }
     else
     {
