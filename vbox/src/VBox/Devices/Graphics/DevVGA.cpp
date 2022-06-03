@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: DevVGA.cpp 41974 2012-06-30 20:20:08Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6610,7 +6610,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 #endif /* VBOX_WITH_HGSMI */
 
 #ifdef VBOX_WITH_VDMA
-    if(rc == VINF_SUCCESS)
+    if (rc == VINF_SUCCESS)
     {
         rc = vboxVDMAConstruct(pThis, 1024);
         AssertRC(rc);
