@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37532 2011-06-17 12:16:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37547 2011-06-17 14:34:13Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6083,7 +6083,12 @@ STDMETHODIMP Machine::CloneTo(IMachine *pTarget, CloneMode_T mode, ComSafeArrayI
     /* Convert the options. */
     RTCList<CloneOptions_T> optList;
     if (options != NULL)
-        optList = SafeArrayToRTCList<CloneOptions_T>(ComSafeArrayInArg(options));
+    {
+         com::SafeArray<CloneOptions_T> sfaOpts(ComSafeArrayInArg(options));
+         for (size_t i = 0; i < sfaOpts.size(); ++i)
+             optList.append(sfaOpts[i]);
+//        optList = SafeArrayToRTCList<CloneOptions_T>(ComSafeArrayInArg(options));
+    }
     AssertReturn(!optList.contains(CloneOptions_Link), E_NOTIMPL);
     AssertReturn(!(optList.contains(CloneOptions_KeepAllMACs) && optList.contains(CloneOptions_KeepNATMACs)), E_FAIL);
 
