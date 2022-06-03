@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36008 2011-02-17 09:43:07Z vboxsync $
+# $Id: Makefile.kmk 36020 2011-02-18 14:18:51Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -17,6 +17,11 @@
 
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
+
+#
+# Include sub-makefile(s).
+#
+include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 
 #
 # vboxvideo_drv
@@ -72,6 +77,7 @@ vboxvideo_drv_INCS = \
 vboxvideo_drv_INCS += $(PATH_ROOT)/src/VBox/Runtime/include
 vboxvideo_drv_SOURCES = \
 	pointer.c \
+	setmode.c \
 	vboxutils.c \
 	vboxvideo.c \
 	vbva.c \
