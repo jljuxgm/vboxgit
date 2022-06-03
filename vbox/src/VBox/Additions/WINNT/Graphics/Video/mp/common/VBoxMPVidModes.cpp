@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 38112 2011-07-22 13:26:19Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 40842 2012-04-10 08:47:25Z vboxsync $ */
 
 /** @file
  * VBox Miniport video modes related functions
@@ -535,7 +535,7 @@ VBoxMPValidateVideoModeParams(PVBOXMP_DEVEXT pExt, uint32_t iDisplay, uint32_t &
     /* Check if host likes this mode */
     if (!VBoxLikesVideoMode(iDisplay, xres, yres, bpp))
     {
-        WARN(("host does not like special mode %dx%d:%d for display %d", xres, yres, bpp, iDisplay));
+        WARN_NOBP(("host does not like special mode %dx%d:%d for display %d", xres, yres, bpp, iDisplay));
         return FALSE;
     }
 

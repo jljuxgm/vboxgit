@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 40747 2012-04-02 17:07:43Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 40842 2012-04-10 08:47:25Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -141,6 +141,7 @@ typedef struct VBOXWDDM_ALLOCATION
     DXGK_ALLOCATIONUSAGEHINT UsageHint;
     uint32_t iIndex;
     uint32_t cOpens;
+    KSPIN_LOCK OpenLock;
     LIST_ENTRY OpenList;
     /* helps tracking when to release wine shared resource */
     uint32_t cShRcRefs;
@@ -286,6 +287,7 @@ typedef struct VBOXWDDM_OPENALLOCATION
     PVBOXWDDM_ALLOCATION pAllocation;
     PVBOXWDDM_DEVICE pDevice;
     uint32_t cShRcRefs;
+    uint32_t cOpens;
 } VBOXWDDM_OPENALLOCATION, *PVBOXWDDM_OPENALLOCATION;
 
 #define VBOXWDDM_MAX_VIDEOMODES 128
