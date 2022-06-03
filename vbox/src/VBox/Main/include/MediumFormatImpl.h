@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: MediumFormatImpl.h 37586 2011-06-22 11:49:40Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -64,7 +64,7 @@ public:
         const Utf8Str        strName;
         const StrList        llFileExtensions;
         const DeviceTypeList llDeviceTypes;
-        const uint64_t       capabilities;
+        const MediumFormatCapabilities_T capabilities;
         const PropertyList   llProperties;
     };
 
@@ -111,7 +111,7 @@ public:
     /** Const, no need to lock */
     const StrList& getFileExtensions() const { return m.llFileExtensions; }
     /** Const, no need to lock */
-    uint64_t getCapabilities() const { return m.capabilities; }
+    MediumFormatCapabilities_T getCapabilities() const { return m.capabilities; }
     /** Const, no need to lock */
     const PropertyList& getProperties() const { return m.llProperties; }
 
