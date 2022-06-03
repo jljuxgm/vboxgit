@@ -1,4 +1,4 @@
-/* $Id: VBoxBalloonCtrl.cpp 36709 2011-04-18 12:35:15Z vboxsync $ */
+/* $Id: VBoxBalloonCtrl.cpp 36710 2011-04-18 12:44:24Z vboxsync $ */
 /** @file
  * VBoxBalloonCtrl - VirtualBox Ballooning Control Service.
  */
@@ -777,7 +777,7 @@ int vmListBuild()
                     {
                         serviceLogVerbose(("Machine \"%s\" is inaccessible, skipping\n",
                                            Utf8Str(strUUID).c_str()));
-                        break;
+                        continue;
                     }
 
                     MachineState_T machineState;
