@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40619 2012-03-25 19:55:20Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40636 2012-03-26 12:14:18Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -159,7 +159,7 @@ static const char          *g_pszAssemblerIncVal        = __FILE__ "/../../../in
 static const char          *g_pszAssemblerOutputOpt     = "-o";
 static unsigned             g_cAssemblerOptions         = 0;
 static const char          *g_apszAssemblerOptions[32];
-static const char          *g_pszProbeFnName            = "SUPR0FireProbe";
+static const char          *g_pszProbeFnName            = "SUPR0VtgFireProbe";
 static bool                 g_fProbeFnImported          = true;
 /** @} */
 
@@ -424,7 +424,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40619 2012-03-25 19:55:20Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40636 2012-03-26 12:14:18Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -856,7 +856,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40619 2012-03-25 19:55:20Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40636 2012-03-26 12:14:18Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -929,7 +929,8 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
             }
             ScmStreamPrintf(pStrm,
                             "); \\\n"
-                            "        } \\\n");
+                            "        } \\\n"
+                            "        { \\\n" );
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
                 ScmStreamPrintf(pStrm,
@@ -939,6 +940,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
                                 pArg->pszType);
             }
             ScmStreamPrintf(pStrm,
+                            "        } \\\n"
                             "    } while (0)\n"
                             "\n");
         }
@@ -1944,7 +1946,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40619 $";
+                static const char s_szRev[] = "$Revision: 40636 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;

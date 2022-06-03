@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40595 2012-03-23 14:54:46Z vboxsync $
+# $Id: Makefile.kmk 40636 2012-03-26 12:14:18Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -465,8 +465,8 @@ ifndef VBOX_ONLY_EXTPACKS
  	PATM
 
  VMMR0_SOURCES   = \
- 	VMMR0/CPUMR0.cpp \
  	VBoxVMM.d \
+ 	VMMR0/CPUMR0.cpp \
  	VMMR0/CPUMR0A.asm \
  	VMMR0/GMMR0.cpp \
  	VMMR0/GVMMR0.cpp \
