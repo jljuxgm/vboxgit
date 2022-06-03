@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 36140 2011-03-03 13:48:16Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 36144 2011-03-03 14:02:19Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -20,7 +20,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_REM
-#include "vl.h"
 #include "osdep.h"
 #include "exec-all.h"
 #include "config.h"
