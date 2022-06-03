@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 40234 2012-02-23 14:48:24Z vboxsync $ */
+/* $Id: CPUM.cpp 41310 2012-05-15 12:43:18Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2638,7 +2638,7 @@ static void cpumR3InfoParseArg(const char *pszArgs, CPUMDUMPTYPE *penmType, cons
     {
         if (!strncmp(pszArgs, "verbose", sizeof("verbose") - 1))
         {
-            pszArgs += 5;
+            pszArgs += 7;
             *penmType = CPUMDUMPTYPE_VERBOSE;
         }
         else if (!strncmp(pszArgs, "terse", sizeof("terse") - 1))
