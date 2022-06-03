@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 40076 2012-02-11 02:48:43Z vboxsync $ */
+/* $Id: DBGFReg.cpp 41545 2012-06-01 14:32:36Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -1253,6 +1253,37 @@ static PCDBGFREGLOOKUP dbgfR3RegResolve(PVM pVM, VMCPUID idDefCpu, const char *p
 
     DBGF_REG_DB_UNLOCK_READ(pVM);
     return pLookupRec;
+}
+
+
+/**
+ * Validates the register name.
+ *
+ * @returns VBox status code.
+ * @retval  VINF_SUCCESS if the register was found.
+ * @retval  VERR_DBGF_REGISTER_NOT_FOUND if not found.
+ *
+ * @param   pVM                 The VM handle.
+ * @param   idDefCpu            The default CPU.
+ * @param   pszReg              The registe name.
+ */
+VMMR3DECL(int) DBGFR3RegNmValidate(PVM pVM, VMCPUID idDefCpu, const char *pszReg)
+{
+    /*
+     * Validate input.
+     */
+    VM_ASSERT_VALID_EXT_RETURN(pVM, VERR_INVALID_VM_HANDLE);
+    AssertReturn((idDefCpu & ~DBGFREG_HYPER_VMCPUID) < pVM->cCpus || idDefCpu == VMCPUID_ANY, VERR_INVALID_CPU_ID);
+    AssertPtrReturn(pszReg, VERR_INVALID_POINTER);
+
+    /*
+     * Resolve the register.
+     */
+    bool const fGuestRegs = !(idDefCpu & DBGFREG_HYPER_VMCPUID) && idDefCpu != VMCPUID_ANY;
+    PCDBGFREGLOOKUP pLookupRec = dbgfR3RegResolve(pVM, idDefCpu, pszReg, fGuestRegs);
+    if (!pLookupRec)
+        return VERR_DBGF_REGISTER_NOT_FOUND;
+    return VINF_SUCCESS;
 }
 
 
