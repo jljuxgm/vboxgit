@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 39296 2011-11-14 13:24:53Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 39298 2011-11-14 19:04:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -263,7 +263,7 @@ void UIMachineWindowNormal::updateAppearanceOf(int iElement)
         if (uisession()->isPaused() && m_pIdleTimer->isActive())
             m_pIdleTimer->stop();
         else if (uisession()->isRunning() && !m_pIdleTimer->isActive())
-            m_pIdleTimer->start(500);
+            m_pIdleTimer->start(100);
         sltUpdateIndicators();
     }
     if (iElement & UIVisualElement_HDStuff)
@@ -450,7 +450,7 @@ void UIMachineWindowNormal::prepareStatusBar()
     /* Create & start timer to update LEDs: */
     m_pIdleTimer = new QTimer(this);
     connect(m_pIdleTimer, SIGNAL(timeout()), this, SLOT(sltUpdateIndicators()));
-    m_pIdleTimer->start(500);
+    m_pIdleTimer->start(100);
 
 #ifdef Q_WS_MAC
     /* For the status bar on Cocoa: */
