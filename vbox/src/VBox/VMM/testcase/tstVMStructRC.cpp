@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 36629 2011-04-08 16:01:17Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 36669 2011-04-14 12:21:43Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -1171,6 +1171,7 @@ int main()
     GEN_CHECK_OFF(PATCHINFO, unused.pGuestLoc);
     GEN_CHECK_OFF(PATCHINFO, unused.opsize);
     GEN_CHECK_OFF(PATCHINFO, pTempInfo);
+    GEN_CHECK_OFF(PATCHINFO, pTrampolinePatchesHead);
     GEN_CHECK_OFF(PATCHINFO, cCodeWrites);
     GEN_CHECK_OFF(PATCHINFO, cTraps);
     GEN_CHECK_OFF(PATCHINFO, cInvalidWrites);
