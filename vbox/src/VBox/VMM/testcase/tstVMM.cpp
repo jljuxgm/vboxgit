@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: tstVMM.cpp 41293 2012-05-15 08:54:14Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -290,6 +290,9 @@ int main(int argc, char **argv)
         /*
          * Cleanup.
          */
+        rc = VMR3PowerOff(pVM);
+        if (RT_FAILURE(rc))
+            RTTestFailed(hTest, "VMR3PowerOff failed: rc=%Rrc\n", rc);
         rc = VMR3Destroy(pVM);
         if (RT_FAILURE(rc))
             RTTestFailed(hTest, "VMR3Destroy failed: rc=%Rrc\n", rc);
