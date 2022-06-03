@@ -1,4 +1,4 @@
-/* $Id: tftp.c 42010 2012-07-04 05:12:26Z vboxsync $ */
+/* $Id: tftp.c 42012 2012-07-04 06:02:44Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -503,9 +503,8 @@ DECLINLINE(int) tftpReadDataBlock(PNATState pData,
     AssertPtrReturn(pcTftpSession, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pu8Data, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pcbReadData, VERR_INVALID_PARAMETER);
-    LogFlowFunc(("pcTftpSession:%p, u16BlockNr:%RX16, pu8Data:%p, pcbReadData:%p\n",
+    LogFlowFunc(("pcTftpSession:%p, pu8Data:%p, pcbReadData:%p\n",
                     pcTftpSession,
-                    u16BlockNr,
                     pu8Data,
                     pcbReadData));
 
