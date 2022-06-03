@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39951 2012-02-02 10:24:28Z vboxsync $
+# $Id: Makefile.kmk 40029 2012-02-07 23:17:33Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -283,6 +283,8 @@ RuntimeR3_SOURCES       = \
 	common/err/errmsg.cpp \
 	common/err/RTErrConvertFromErrno.cpp \
 	common/err/RTErrConvertToErrno.cpp \
+	common/filesystem/filesystem.cpp \
+	common/filesystem/filesystemext.cpp \
 	common/ldr/ldr.cpp \
 	common/ldr/ldrELF.cpp \
 	common/ldr/ldrEx.cpp \
