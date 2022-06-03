@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceLinux.cpp 36995 2011-05-06 22:49:41Z vboxsync $ */
+/* $Id: USBProxyServiceLinux.cpp 36997 2011-05-06 23:30:23Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -140,6 +140,7 @@ HRESULT USBProxyServiceLinux::init(void)
             LogRel(("Invalid VBOX_USB environment variable setting \"%s\"\n",
                     pcszUsbFromEnv));
             fValidVBoxUSB = false;
+            pcszUsbFromEnv = NULL;
         }
         if (!fValidVBoxUSB && pcszUsbRoot)
             pcszUsbRoot = NULL;
@@ -159,6 +160,8 @@ HRESULT USBProxyServiceLinux::init(void)
             pcszUsbRoot = "/proc/bus/usb";
         }
     }
+    else if (!USBProxyLinuxCheckDeviceRoot(pcszUsbRoot, fSysfsChosen))
+        pcszUsbRoot = NULL;
     if (pcszUsbRoot)
     {
         mUsingUsbfsDevices = fUsbfsChosen;
@@ -175,7 +178,8 @@ HRESULT USBProxyServiceLinux::init(void)
         mLastError = rc;
     }
     else
-        mLastError =   RTDirExists("/dev/vboxusb") ? VERR_VUSB_USB_DEVICE_PERMISSION
+        mLastError =   pcszUsbFromEnv ? VERR_NOT_FOUND
+                     : RTDirExists("/dev/vboxusb") ? VERR_VUSB_USB_DEVICE_PERMISSION
                      : RTFileExists("/proc/bus/usb/devices") ? VERR_VUSB_USBFS_PERMISSION
                      : VERR_NOT_FOUND;
     return S_OK;
