@@ -1,4 +1,4 @@
-/* $Id: Logging.h 37666 2011-06-28 12:33:34Z vboxsync $ */
+/* $Id: Logging.h 38037 2011-07-18 17:31:38Z vboxsync $ */
 
 /** @file
  *
@@ -39,13 +39,6 @@
 # define LOG_GROUP LOG_GROUP_MAIN_OVERRIDE
 #else
 # define LOG_GROUP LOG_GROUP_MAIN
-#endif
-
-/* Ensure log macros are enabled if release logging is requested */
-#if defined (VBOX_MAIN_RELEASE_LOG) && !defined (DEBUG)
-# ifndef LOG_ENABLED
-#  define LOG_ENABLED
-# endif
 #endif
 
 #include <VBox/log.h>

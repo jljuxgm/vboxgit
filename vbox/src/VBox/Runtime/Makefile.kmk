@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37733 2011-07-01 15:41:37Z vboxsync $
+# $Id: Makefile.kmk 38037 2011-07-18 17:31:38Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -217,9 +217,6 @@ RuntimeR3_DEFS          = IN_RT_R3 IN_SUP_R3 LDR_WITH_NATIVE LDR_WITH_ELF32 LDR_
 #RuntimeR3_DEFS         += RTMEM_WRAP_TO_EF_APIS
 ifdef IPRT_WITH_KSTUFF
  RuntimeR3_DEFS        += LDR_WITH_KLDR
-endif
-ifdef VBOX_MAIN_RELEASE_LOG ## @todo (dmik): temporary, until RTThreadSelf/RTThreadAdopt are properly updated
- RuntimeR3_DEFS        += RTCRITSECT_STRICT
 endif
 ifdef IPRT_WITH_LZJB
  RuntimeR3_DEFS        += RTZIP_USE_LZJB
