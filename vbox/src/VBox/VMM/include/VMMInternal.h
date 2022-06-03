@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 38954 2011-10-06 11:28:41Z vboxsync $ */
+/* $Id: VMMInternal.h 39303 2011-11-15 10:55:12Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -504,6 +504,9 @@ typedef enum VMMGCOPERATION
 
 
 RT_C_DECLS_BEGIN
+
+int  vmmInitFormatTypes(void);
+void vmmTermFormatTypes(void);
 
 #ifdef IN_RING3
 int  vmmR3SwitcherInit(PVM pVM);

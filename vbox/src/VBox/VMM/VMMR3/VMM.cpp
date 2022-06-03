@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 39283 2011-11-11 21:33:59Z vboxsync $ */
+/* $Id: VMM.cpp 39303 2011-11-15 10:55:12Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -255,6 +255,7 @@ VMMR3_INT_DECL(int) VMMR3Init(PVM pVM)
                  */
                 DBGFR3InfoRegisterInternal(pVM, "ff", "Displays the current Forced actions Flags.", vmmR3InfoFF);
                 vmmR3InitRegisterStats(pVM);
+                vmmInitFormatTypes();
 
                 return VINF_SUCCESS;
             }
@@ -766,6 +767,8 @@ VMMR3_INT_DECL(int) VMMR3Term(PVM pVM)
         pVM->vmm.s.fStackGuardsStationed = false;
     }
 #endif
+
+    vmmTermFormatTypes();
     return rc;
 }
 

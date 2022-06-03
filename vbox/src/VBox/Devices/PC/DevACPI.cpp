@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
+/* $Id: DevACPI.cpp 39303 2011-11-15 10:55:12Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -22,6 +22,7 @@
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/dbgftrace.h>
+#include <VBox/vmm/vmcpuset.h>
 #include <VBox/log.h>
 #include <VBox/param.h>
 #include <iprt/assert.h>
