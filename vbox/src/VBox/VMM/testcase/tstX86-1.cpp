@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 40199 2012-02-21 14:07:05Z vboxsync $ */
+/* $Id: tstX86-1.cpp 40209 2012-02-22 12:14:21Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -254,11 +254,11 @@ int main()
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test5 -> %d", rc);
 
+#endif
         RTTestSub(hTest, "Floating point exceptions ++");
         rc = x861_Test7();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test6 -> %d", rc);
-#endif
 
         rc = x861_TestFPUInstr1();
         if (rc != 0)
