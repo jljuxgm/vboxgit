@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 38742 2011-09-13 14:50:51Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38745 2011-09-13 15:01:08Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6300,7 +6300,7 @@ void Machine::setModified(uint32_t fl)
 void Machine::setModifiedLock(uint32_t fModification)
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    mData->flModifications |= fModification;
+    setModified(fModification);
 }
 
 /**
