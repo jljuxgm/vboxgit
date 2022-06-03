@@ -1,4 +1,4 @@
-; $Id: TRPMRCHandlersA.asm 37955 2011-07-14 12:23:02Z vboxsync $
+; $Id: TRPMRCHandlersA.asm 38867 2011-09-26 14:31:16Z vboxsync $
 ;; @file
 ; TRPM - Guest Context Trap Handlers
 ;
@@ -848,6 +848,17 @@ ti_SkipV86Entry:
     ; zero out the high dword
     mov     dword [eax + TRPMCPU.uActiveErrorCode + 4], 0
     mov     dword [eax + TRPMCPU.uActiveCR2 + 4], 0
+%endif
+
+%ifdef VBOX_WITH_STATISTICS
+    ;
+    ; Update statistics.
+    ;
+    mov     eax, IMP(g_TRPM)
+    movzx   edx, byte [esp + 0h + ESPOFF]   ; vector number
+    imul    edx, edx, byte STAMCOUNTER_size
+    add     edx, [eax + TRPM.paStatHostIrqRC]
+    STAM_COUNTER_INC edx
 %endif
 
     ;

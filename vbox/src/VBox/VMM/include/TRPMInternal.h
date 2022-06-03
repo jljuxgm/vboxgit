@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: TRPMInternal.h 38867 2011-09-26 14:31:16Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -155,12 +155,20 @@ typedef struct TRPM
     STAMCOUNTER             StatTrap0dRdTsc;    /**< Number of RDTSC #GPs. */
 
 #ifdef VBOX_WITH_STATISTICS
-    /* R3: Statistics for interrupt handlers (allocated on the hypervisor heap). */
+    /** Statistics for interrupt handlers (allocated on the hypervisor heap) - R3
+     * pointer. */
     R3PTRTYPE(PSTAMCOUNTER) paStatForwardedIRQR3;
-    /* R0: Statistics for interrupt handlers (allocated on the hypervisor heap). */
+    /** Statistics for interrupt handlers - R0 pointer. */
     R0PTRTYPE(PSTAMCOUNTER) paStatForwardedIRQR0;
-    /* RC: Statistics for interrupt handlers (allocated on the hypervisor heap). */
+    /** Statistics for interrupt handlers - RC pointer. */
     RCPTRTYPE(PSTAMCOUNTER) paStatForwardedIRQRC;
+
+    /** Host interrupt statistics (allocated on the hypervisor heap) - RC ptr. */
+    RCPTRTYPE(PSTAMCOUNTER) paStatHostIrqRC;
+    /** Host interrupt statistics (allocated on the hypervisor heap) - R3 ptr. */
+    R3PTRTYPE(PSTAMCOUNTER) paStatHostIrqR3;
+    /** Host interrupt statistics (allocated on the hypervisor heap) - R0 ptr. */
+    R0PTRTYPE(PSTAMCOUNTER) paStatHostIrqR0;
 #endif
 } TRPM;
 
