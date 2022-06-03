@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 41847 2012-06-20 13:43:46Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1062,6 +1062,22 @@ static DECLCALLBACK(void) pdmR3DevHlp_STAMRegisterV(PPDMDEVINS pDevIns, void *pv
     AssertRC(rc);
 
     NOREF(pVM);
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnPCIDevPhysRead} */
+static DECLCALLBACK(int) pdmR3DevHlp_PCIPhysRead(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    return PDMDevHlpPCIDevPhysRead(pDevIns->Internal.s.pPciDeviceR3, GCPhys, pvBuf, cbRead);
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnPCIDevPhysWrite} */
+static DECLCALLBACK(int) pdmR3DevHlp_PCIPhysWrite(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    return PDMDevHlpPCIDevPhysWrite(pDevIns->Internal.s.pPciDeviceR3, GCPhys, pvBuf, cbWrite);
 }
 
 
@@ -3343,6 +3359,8 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_STAMRegister,
     pdmR3DevHlp_STAMRegisterF,
     pdmR3DevHlp_STAMRegisterV,
+    pdmR3DevHlp_PCIPhysRead,
+    pdmR3DevHlp_PCIPhysWrite,
     pdmR3DevHlp_PCIRegister,
     pdmR3DevHlp_PCIRegisterMsi,
     pdmR3DevHlp_PCIIORegionRegister,
@@ -3562,6 +3580,8 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_STAMRegister,
     pdmR3DevHlp_STAMRegisterF,
     pdmR3DevHlp_STAMRegisterV,
+    pdmR3DevHlp_PCIPhysRead,
+    pdmR3DevHlp_PCIPhysWrite,
     pdmR3DevHlp_PCIRegister,
     pdmR3DevHlp_PCIRegisterMsi,
     pdmR3DevHlp_PCIIORegionRegister,
