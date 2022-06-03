@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePipeBuf.cpp 38437 2011-08-12 15:05:41Z vboxsync $ */
+/* $Id: VBoxServicePipeBuf.cpp 38493 2011-08-19 07:05:37Z vboxsync $ */
 /** @file
  * VBoxServicePipeBuf - Pipe buffering.
  */
@@ -401,7 +401,8 @@ bool VBoxServicePipeBufIsEnabled(PVBOXSERVICECTRLEXECPIPEBUF pBuf)
     if (RT_SUCCESS(rc))
     {
         fEnabled = pBuf->fEnabled;
-        RTCritSectLeave(&pBuf->CritSect);
+        rc = RTCritSectLeave(&pBuf->CritSect);
+        AssertRC(rc);
     }
     return fEnabled;
 }
@@ -452,6 +453,11 @@ int VBoxServicePipeBufSetStatus(PVBOXSERVICECTRLEXECPIPEBUF pBuf, bool fEnabled)
         if (   pBuf->fEnabled != fEnabledOld
             && pBuf->hEventSem)
         {
+#ifdef DEBUG_andy
+            VBoxServiceVerbose(4, "Pipe [%u %u] status %s -> %s\n",
+                               pBuf->uPID, pBuf->uPipeId,
+                               fEnabledOld ? "EN" : "DIS", pBuf->fEnabled ? "EN" : "DIS");
+#endif
             /* Let waiter know that something has changed ... */
             RTSemEventSignal(pBuf->hEventSem);
         }
