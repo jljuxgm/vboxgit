@@ -1,4 +1,4 @@
-# $Revision: 36293 $
+# $Revision: 36408 $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -111,6 +111,7 @@ OBJS   = \
 	common/misc/assert.o \
 	common/misc/thread.o \
 	common/string/RTStrCopy.o \
+	common/string/RTStrCopyP.o \
 	common/string/strformat.o \
 	common/string/strformatrt.o \
 	common/string/strformattype.o \
