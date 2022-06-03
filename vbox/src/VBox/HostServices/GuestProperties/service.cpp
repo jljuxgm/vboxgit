@@ -1,4 +1,4 @@
-/* $Id: service.cpp 39228 2011-11-08 11:06:20Z vboxsync $ */
+/* $Id: service.cpp 39230 2011-11-08 11:09:17Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -63,7 +63,7 @@ namespace guestProp {
  */
 struct Property
 {
-//#define USE_STRSPACE - later.
+#define USE_STRSPACE
 #ifdef USE_STRSPACE
     /** The string space core record. */
     RTSTRSPACECORE mStrCore;
