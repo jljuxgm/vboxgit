@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41343 2012-05-16 20:07:33Z vboxsync $
+# $Id: Config.kmk 41344 2012-05-16 23:13:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2701,6 +2701,7 @@ define TOOL_DTraceAndVBoxTpG_DTRACE_HDR_CMDS
 	$(SED) -e 's/\(#define.*\)(arg0/\1_ORIGINAL(arg0/' --append "$(out).tmp" "$(out)"
 	$(MV) -f -- "$(out).tmp" "$(out)"
 endef
+TOOL_DTraceAndVBoxTpG_DTRACE_OBJ_NOT_NEEDED = $(TOOL_StandardDTrace_DTRACE_OBJ_NOT_NEEDED)
 TOOL_DTraceAndVBoxTpG_DTRACE_OBJ_CMDS = $(TOOL_StandardDTrace_DTRACE_OBJ_CMDS)
 
 
@@ -5089,7 +5090,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41343 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41344 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
