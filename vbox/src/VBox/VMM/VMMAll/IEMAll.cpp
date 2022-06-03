@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 36812 2011-04-22 12:31:21Z vboxsync $ */
+/* $Id: IEMAll.cpp 36813 2011-04-22 12:50:09Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2625,6 +2625,10 @@ static VBOXSTRICTRC iemMemFetchDataS32SxU64(PIEMCPU pIemCpu, uint64_t *pu64Dst, 
         *pu64Dst = *pi32Src;
         rc = iemMemCommitAndUnmap(pIemCpu, (void *)pi32Src, IEM_ACCESS_DATA_R);
     }
+#ifdef __GNUC__ /* warning: GCC may be a royal pain */
+    else
+        *pu64Dst = 0;
+#endif
     return rc;
 }
 
