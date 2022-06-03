@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 41637 2012-06-09 12:57:58Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 41858 2012-06-21 11:30:30Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -292,11 +292,7 @@ typedef struct VBOXWDDMDISP_QUERY
 {
     D3DDDIQUERYTYPE enmType;
     D3DDDI_ISSUEQUERYFLAGS fQueryState;
-    union
-    {
-        BOOL bData;
-        UINT u32Data;
-    } data ;
+    IDirect3DQuery9 *pQueryIf;
 } VBOXWDDMDISP_QUERY, *PVBOXWDDMDISP_QUERY;
 
 typedef struct VBOXWDDMDISP_TSS_LOOKUP
