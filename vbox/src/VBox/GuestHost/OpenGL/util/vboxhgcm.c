@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 37490 2011-06-16 10:58:27Z vboxsync $ */
+/* $Id: vboxhgcm.c 37714 2011-06-30 15:26:38Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -1833,7 +1833,7 @@ _crVBoxHGSMIWriteReadExact(CRConnection *conn, PCRVBOXHGSMI_CLIENT pClient, void
     {
         void *pvBuf;
         pBuf = _crVBoxHGSMIBufAlloc(pClient, len);
-        CRASSERT(pBuf);
+
         if (!pBuf)
         {
             /* fallback */
