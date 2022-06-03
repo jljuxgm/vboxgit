@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37163 2011-05-20 11:46:18Z vboxsync $
+# $Id: Makefile.kmk 40249 2012-02-24 19:37:34Z vboxsync $
 ## @file
 # Makefile for the Windows Guest Additions Mouse Driver
 #
@@ -19,6 +19,7 @@ SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
 # Include Sub-Makefiles.
+include $(PATH_SUB_CURRENT)/NT4/Makefile.kmk
 include $(PATH_SUB_CURRENT)/NT5/Makefile.kmk
 
 include	$(KBUILD_PATH)/subfooter.kmk
