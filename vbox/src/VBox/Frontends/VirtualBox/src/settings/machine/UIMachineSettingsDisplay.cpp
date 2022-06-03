@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 39800 2012-01-18 17:54:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -522,7 +522,13 @@ void UIMachineSettingsDisplay::polishPage()
     mSlMonitors->setEnabled(isMachineOffline());
     mLeMonitors->setEnabled(isMachineOffline());
     mLbOptions->setEnabled(isMachineOffline());
-    mCb3D->setEnabled(isMachineOffline() && vboxGlobal().virtualBox().GetHost().GetAcceleration3DAvailable());
+    if (vboxGlobal().is3DAvailable())
+        mCb3D->setEnabled(isMachineOffline());
+    else
+    {
+        mCb3D->setEnabled(false);
+        mCb3D->setChecked(false);
+    }
 #ifdef VBOX_WITH_VIDEOHWACCEL
     mCb2DVideo->setEnabled(isMachineOffline() && VBoxGlobal::isAcceleration2DVideoAvailable());
 #endif /* VBOX_WITH_VIDEOHWACCEL */
