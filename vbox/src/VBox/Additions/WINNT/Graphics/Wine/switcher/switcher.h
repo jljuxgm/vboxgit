@@ -1,4 +1,4 @@
-/* $Id: switcher.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: switcher.h 40587 2012-03-23 09:08:44Z vboxsync $ */
 
 /** @file
  * VBox D3D8/9 dll switcher
@@ -22,7 +22,7 @@
 typedef BOOL (APIENTRY *DrvValidateVersionProc)(DWORD version);
 
 #define SW_FILLPROC(dispatch, hdll, name) \
-    dispatch.p##name = (name##Proc) GetProcAddress(hdll, #name);
+    dispatch.p##name = ((hdll) != NULL) ? (name##Proc) GetProcAddress((hdll), #name) : vbox##name##Stub;
 
 #define SW_DISPINIT(dispatch)                                   \
     {                                                           \
