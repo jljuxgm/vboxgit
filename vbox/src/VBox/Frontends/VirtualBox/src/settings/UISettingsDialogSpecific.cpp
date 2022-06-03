@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 36594 2011-04-06 16:22:58Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 37027 2011-05-10 13:12:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1021,7 +1021,7 @@ bool UISettingsDialogMachine::isPageAvailable(int iPageId)
             /* Get the USB controller object: */
             CUSBController controller = m_machine.GetUSBController();
             /* Show the machine error message if any: */
-            if (!m_machine.isReallyOk())
+            if (!m_machine.isReallyOk() && !controller.isNull() && controller.GetEnabled())
                 vboxProblem().cannotAccessUSB(m_machine);
             /* Check if USB is implemented: */
             if (controller.isNull() || !controller.GetProxyAvailable())
