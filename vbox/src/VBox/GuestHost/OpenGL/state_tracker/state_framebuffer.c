@@ -1,4 +1,4 @@
-/* $Id: state_framebuffer.c 39815 2012-01-20 09:32:29Z vboxsync $ */
+/* $Id: state_framebuffer.c 39833 2012-01-23 10:03:39Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object state tracking
@@ -789,6 +789,12 @@ crStateFramebufferObjectReenableHW(CRContext *fromCtx, CRContext *toCtx)
     {
         diff_api.DrawBuffer(toCtx->framebufferobject.drawFB?toCtx->framebufferobject.drawFB->drawbuffer[0]:toCtx->buffer.drawBuffer);
         diff_api.ReadBuffer(toCtx->framebufferobject.readFB?toCtx->framebufferobject.readFB->readbuffer:toCtx->buffer.readBuffer);
+    }
+
+    if (fromCtx->framebufferobject.renderbuffer
+            && fromCtx->framebufferobject.renderbuffer==toCtx->framebufferobject.renderbuffer)
+    {
+        diff_api.BindRenderbufferEXT(GL_RENDERBUFFER_EXT, toCtx->framebufferobject.renderbuffer->hwid);
     }
 }
 
