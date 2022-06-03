@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 40059 2012-02-10 14:00:10Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 40060 2012-02-10 14:01:37Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -1014,10 +1014,12 @@ VBOXSERVICE g_Control =
     "              [--control-procs-mem-std[in|out|err] <KB>]"
     ,
     /* pszOptions. */
+#ifdef DEBUG
     "    --control-dump-stderr   Dumps all guest proccesses stderr data to the\n"
     "                            temporary directory.\n"
     "    --control-dump-stdout   Dumps all guest proccesses stdout data to the\n"
     "                            temporary directory.\n"
+#endif
     "    --control-interval      Specifies the interval at which to check for\n"
     "                            new control commands. The default is 1000 ms.\n"
     "    --control-procs-max-kept\n"
