@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 36849 2011-04-26 15:41:32Z vboxsync $ */
+/* $Id: IEMInternal.h 36851 2011-04-27 09:08:01Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -463,6 +463,22 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u8, (uint8_t  *pu8Mem,  uint8_t  *pu8Reg))
 IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u16,(uint16_t *pu16Mem, uint16_t *pu16Reg));
 IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u32,(uint32_t *pu32Mem, uint32_t *pu32Reg));
 IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u64,(uint64_t *pu64Mem, uint64_t *pu64Reg));
+/** @}  */
+
+/** @name Double precision shifts
+ * @{ */
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLSHIFTDBLU16,(uint16_t *pu16Dst, uint16_t u16Src, uint8_t cShift, uint32_t *pEFlags));
+typedef FNIEMAIMPLSHIFTDBLU16  *PFNIEMAIMPLSHIFTDBLU16;
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLSHIFTDBLU32,(uint32_t *pu32Dst, uint32_t u32Src, uint8_t cShift, uint32_t *pEFlags));
+typedef FNIEMAIMPLSHIFTDBLU32  *PFNIEMAIMPLSHIFTDBLU32;
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLSHIFTDBLU64,(uint64_t *pu64Dst, uint64_t u64Src, uint8_t cShift, uint32_t *pEFlags));
+typedef FNIEMAIMPLSHIFTDBLU64  *PFNIEMAIMPLSHIFTDBLU64;
+FNIEMAIMPLSHIFTDBLU16 iemAImpl_shld_u16;
+FNIEMAIMPLSHIFTDBLU32 iemAImpl_shld_u32;
+FNIEMAIMPLSHIFTDBLU64 iemAImpl_shld_u64;
+FNIEMAIMPLSHIFTDBLU16 iemAImpl_shrd_u16;
+FNIEMAIMPLSHIFTDBLU32 iemAImpl_shrd_u32;
+FNIEMAIMPLSHIFTDBLU64 iemAImpl_shrd_u64;
 /** @}  */
 
 /** @name Signed multiplication operations (thrown in with the binary ops).
