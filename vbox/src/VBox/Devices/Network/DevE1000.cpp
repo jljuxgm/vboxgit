@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 38549 2011-08-26 13:26:07Z vboxsync $ */
+/* $Id: DevE1000.cpp 38980 2011-10-12 15:33:40Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2512,9 +2512,9 @@ static int e1kRegWriteIMS(E1KSTATE* pState, uint32_t offset, uint32_t index, uin
     {
         E1kLog2(("%s e1kRegWriteIMS: IRQ pending (%08x), arming late int timer...\n",
                  INSTANCE(pState), ICR));
-        //TMTimerSet(pState->CTX_SUFF(pIntTimer), TMTimerFromNano(pState->CTX_SUFF(pIntTimer), ITR * 256) +
-        //        TMTimerGet(pState->CTX_SUFF(pIntTimer)));
-        e1kRaiseInterrupt(pState, VERR_SEM_BUSY);
+        /* Raising an interrupt immediately causes win7 to hang upon NIC reconfiguration (#5023) */
+        TMTimerSet(pState->CTX_SUFF(pIntTimer), TMTimerFromNano(pState->CTX_SUFF(pIntTimer), ITR * 256) +
+                   TMTimerGet(pState->CTX_SUFF(pIntTimer)));
     }
 
     return VINF_SUCCESS;
