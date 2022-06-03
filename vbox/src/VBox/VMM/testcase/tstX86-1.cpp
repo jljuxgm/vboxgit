@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 36864 2011-04-28 00:55:05Z vboxsync $ */
+/* $Id: tstX86-1.cpp 36865 2011-04-28 00:59:50Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -103,7 +103,7 @@ static void sigHandler(int iSig, siginfo_t *pSigInfo, void *pvSigCtx)
 
 # elif defined(RT_ARCH_AMD64)
     uintptr_t  *puPC    = (uintptr_t *)&pCtx->uc_mcontext.gregs[REG_RIP];
-    uintptr_t  *puSP    = &pCtx->uc_mcontext.gregs[REG_RSP];
+    uintptr_t  *puSP    = (uintptr_t *)&pCtx->uc_mcontext.gregs[REG_RSP];
     uintptr_t   uTrapNo = pCtx->uc_mcontext.gregs[REG_TRAPNO];
     uintptr_t   uErr    = pCtx->uc_mcontext.gregs[REG_ERR];
 
