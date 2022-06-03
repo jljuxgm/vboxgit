@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 38982 2011-10-12 20:20:21Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 38983 2011-10-13 07:35:22Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -32,7 +32,7 @@
 #define VBOXWDDMDISP_MAX_SWAPCHAIN_SIZE 16
 /* maximum number of direct render targets to be used before
  * switching to offscreen rendering */
-#define VBOXWDDMDISP_MAX_DIRECT_RTS      0
+#define VBOXWDDMDISP_MAX_DIRECT_RTS      3
 
 #define VBOXWDDMDISP_IS_TEXTURE(_f) ((_f).Texture || (_f).Value == 0)
 
