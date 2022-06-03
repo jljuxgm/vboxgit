@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 36025 2011-02-21 09:20:11Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 36026 2011-02-21 09:22:06Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -1373,8 +1373,8 @@ static int VBoxServiceControlExecCreateProcess(const char *pszExec, const char *
                                 strlen(pszAsUser) ? pszAsUser : NULL,
                                 strlen(pszPassword) ? pszPassword : NULL,
                                 phProcess);
+            RTGetOptArgvFree(papszArgsExp);
         }
-        RTGetOptArgvFree(papszArgsExp);
     }
     return rc;
 }
