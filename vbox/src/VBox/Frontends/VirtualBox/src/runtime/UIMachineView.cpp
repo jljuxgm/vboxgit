@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 39110 2011-10-25 14:03:49Z vboxsync $ */
+/* $Id: UIMachineView.cpp 39156 2011-10-31 23:35:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -635,7 +635,7 @@ void UIMachineView::setMaxGuestSize()
             maxSize = QSize(0, 0);
     }
     ASMAtomicWriteU64(&m_u64MaxGuestSize,
-                      RT_MAKE_U64(maxSize.width(), maxSize.height()));
+                      RT_MAKE_U64(maxSize.height(), maxSize.width()));
 }
 
 QSize UIMachineView::maxGuestSize()
