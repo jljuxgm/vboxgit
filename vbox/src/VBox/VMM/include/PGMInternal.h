@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PGMInternal.h 39154 2011-10-31 15:36:29Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3990,7 +3990,7 @@ int             pgmGstLazyMapPaePDPT(PVMCPU pVCpu, PX86PDPT *ppPdpt);
 int             pgmGstLazyMapPaePD(PVMCPU pVCpu, uint32_t iPdpt, PX86PDPAE *ppPd);
 int             pgmGstLazyMapPml4(PVMCPU pVCpu, PX86PML4 *ppPml4);
 
-# if defined(VBOX_STRICT) && HC_ARCH_BITS == 64
+# if defined(VBOX_STRICT) && HC_ARCH_BITS == 64 && defined(IN_RING3)
 DECLCALLBACK(int)  pgmR3CmdCheckDuplicatePages(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs);
 DECLCALLBACK(int)  pgmR3CmdShowSharedModules(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, unsigned cArgs);
 # endif

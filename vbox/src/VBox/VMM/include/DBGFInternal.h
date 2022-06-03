@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 37410 2011-06-10 15:11:40Z vboxsync $ */
+/* $Id: DBGFInternal.h 39154 2011-10-31 15:36:29Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -103,6 +103,7 @@ typedef enum DBGFINFOTYPE
 /** Pointer to info structure. */
 typedef struct DBGFINFO *PDBGFINFO;
 
+#ifdef IN_RING3
 /**
  * Info structure.
  */
@@ -159,6 +160,7 @@ typedef struct DBGFINFO
     /** The identifier name. (Extends 'beyond' the struct as usual.) */
     char            szName[1];
 } DBGFINFO;
+#endif /* IN_RING3 */
 
 
 /**
