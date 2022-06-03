@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 41977 2012-07-02 08:52:58Z vboxsync $ */
+/* $Id: slirp_dns.c 41979 2012-07-02 09:16:39Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -322,10 +322,10 @@ int slirpInitializeDnsSettings(PNATState pData)
 
 int slirpReleaseDnsSettings(PNATState pData)
 {
-    AssertPtrReturn(pData, VERR_INVALID_PARAMETER);
     struct dns_entry *pDns = NULL;
     struct dns_domain_entry *pDomain = NULL;
     int rc = VINF_SUCCESS;
+    AssertPtrReturn(pData, VERR_INVALID_PARAMETER);
     LogFlowFuncEnter();
 
     while (!TAILQ_EMPTY(&pData->pDnsList))
