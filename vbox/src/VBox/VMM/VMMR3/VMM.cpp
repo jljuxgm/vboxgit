@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 37595 2011-06-22 18:27:14Z vboxsync $ */
+/* $Id: VMM.cpp 37699 2011-06-29 21:50:17Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -364,7 +364,7 @@ static int vmmR3InitLoggers(PVM pVM)
                 return rc;
             pVCpu->vmm.s.pR0LoggerR3->pVM        = pVM->pVMR0;
             //pVCpu->vmm.s.pR0LoggerR3->fCreated = false;
-            pVCpu->vmm.s.pR0LoggerR3->cbLogger   = cbLogger;
+            pVCpu->vmm.s.pR0LoggerR3->cbLogger   = (uint32_t)cbLogger;
             pVCpu->vmm.s.pR0LoggerR0 = MMHyperR3ToR0(pVM, pVCpu->vmm.s.pR0LoggerR3);
         }
 # endif
