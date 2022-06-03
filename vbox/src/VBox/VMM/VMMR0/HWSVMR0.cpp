@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41336 2012-05-16 12:56:34Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41645 2012-06-11 11:17:14Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3100,6 +3100,11 @@ VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
 
     /* Disable interrupts. */
     uOldEFlags = ASMIntDisableFlags();
+
+#ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
+    RTCPUID idHostCpu = RTMpCpuId();
+    CPUMR0SetLApic(pVM, idHostCpu);
+#endif
 
     CPUMSetHyperESP(pVCpu, VMMGetStackRC(pVCpu));
     CPUMSetHyperEIP(pVCpu, pfnHandler);

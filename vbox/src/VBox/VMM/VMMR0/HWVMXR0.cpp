@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41332 2012-05-16 11:41:39Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41645 2012-06-11 11:17:14Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -5340,6 +5340,11 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, R
 
     /* Disable interrupts. */
     uOldEFlags = ASMIntDisableFlags();
+
+#ifdef VBOX_WITH_VMMR0_DISABLE_LAPIC_NMI
+    RTCPUID idHostCpu = RTMpCpuId();
+    CPUMR0SetLApic(pVM, idHostCpu);
+#endif
 
     pCpu = HWACCMR0GetCurrentCpu();
     HCPhysCpuPage = RTR0MemObjGetPagePhysAddr(pCpu->hMemObj, 0);
