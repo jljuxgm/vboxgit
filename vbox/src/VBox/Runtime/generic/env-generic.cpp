@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 36576 2011-04-06 13:28:12Z vboxsync $ */
+/* $Id: env-generic.cpp 41670 2012-06-12 14:26:17Z vboxsync $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -239,16 +239,27 @@ RTDECL(int) RTEnvClone(PRTENV pEnv, RTENV EnvToClone)
         if (EnvToClone == RTENV_DEFAULT)
         {
             /* ASSUMES the default environment is in the current codepage. */
-            for (size_t iVar = 0; iVar < cVars; iVar++)
+            bool fNoTranslation = false;
+            size_t iDst = 0;
+            for (size_t iSrc = 0; iSrc < cVars; iSrc++)
             {
-                int rc2 = RTStrCurrentCPToUtf8(&pIntEnv->papszEnv[iVar], papszEnv[iVar]);
+                int rc2 = RTStrCurrentCPToUtf8(&pIntEnv->papszEnv[iDst], papszEnv[iSrc]);
+                if (rc2 == VERR_NO_TRANSLATION)
+                {
+                    fNoTranslation = true;
+                    continue;
+                }
                 if (RT_FAILURE(rc2))
                 {
-                    pIntEnv->cVars = iVar;
+                    pIntEnv->cVars = iDst;
                     RTEnvDestroy(pIntEnv);
                     return rc2;
                 }
+                iDst++;
             }
+            pIntEnv->cVars = iDst;
+            if (fNoTranslation)
+                rc = VWRN_NO_TRANSLATION;
         }
         else
         {
