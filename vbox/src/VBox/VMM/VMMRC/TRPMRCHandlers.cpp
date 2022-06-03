@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 41737 2012-06-15 01:01:49Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 41738 2012-06-15 01:25:47Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -991,7 +991,7 @@ static int trpmGCTrap0dHandler(PVM pVM, PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFram
      * Deal with I/O port access.
      */
     if (    pVCpu->trpm.s.uActiveErrorCode == 0
-        &&  (Cpu.pCurInstr->optype & DISOPTYPE_PORTIO))
+        &&  (Cpu.pCurInstr->fOpType & DISOPTYPE_PORTIO))
     {
         VBOXSTRICTRC rcStrict = IOMRCIOPortHandler(pVM, pRegFrame, &Cpu);
         if (IOM_SUCCESS(rcStrict))

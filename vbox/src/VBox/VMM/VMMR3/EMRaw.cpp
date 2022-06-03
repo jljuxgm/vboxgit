@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 41737 2012-06-15 01:01:49Z vboxsync $ */
+/* $Id: EMRaw.cpp 41738 2012-06-15 01:25:47Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -621,7 +621,7 @@ static int emR3RawGuestTrap(PVM pVM, PVMCPU pVCpu)
         DISCPUSTATE cpu;
         rc = CPUMR3DisasmInstrCPU(pVM, pVCpu, pCtx, pCtx->rip, &cpu, "Guest Trap: ");
         if (    RT_SUCCESS(rc)
-            &&  (cpu.pCurInstr->optype & DISOPTYPE_PORTIO))
+            &&  (cpu.pCurInstr->fOpType & DISOPTYPE_PORTIO))
         {
             /*
              * We should really check the TSS for the IO bitmap, but it's not like this

@@ -1,4 +1,4 @@
-/* $Id: PATMGuest.cpp 41737 2012-06-15 01:01:49Z vboxsync $ */
+/* $Id: PATMGuest.cpp 41738 2012-06-15 01:25:47Z vboxsync $ */
 /** @file
  * PATMGuest - Guest OS Patching Manager (non-generic)
  */
@@ -234,7 +234,7 @@ int PATMInstallGuestSpecificPatch(PVM pVM, PDISCPUSTATE pCpu, RTGCPTR32 pInstrGC
          *  push esi
          *  cli
          */
-        if (pCpu->pCurInstr->param1 == OP_PARM_REG_CS)
+        if (pCpu->pCurInstr->fParam1 == OP_PARM_REG_CS)
             return PATMPatchOpenBSDHandlerPrefix(pVM, pCpu, pInstrGC, pInstrHC, pPatchRec);
 
         return VERR_PATCHING_REFUSED;
