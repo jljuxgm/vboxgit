@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-solaris.c 40969 2012-04-17 17:38:28Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-solaris.c 41946 2012-06-28 04:49:50Z vboxsync $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
@@ -140,6 +140,7 @@ RTR0DECL(int) RTR0DbgKrnlInfoOpen(PRTDBGKRNLINFO phKrnlInfo, uint32_t fFlags)
     AssertPtrReturn(phKrnlInfo, VERR_INVALID_POINTER);
     RT_ASSERT_PREEMPTIBLE();
 
+    *phKrnlInfo = NIL_RTDBGKRNLINFO;
     PRTDBGKRNLINFOINT pThis = (PRTDBGKRNLINFOINT)RTMemAllocZ(sizeof(*pThis));
     if (!pThis)
         return VERR_NO_MEMORY;
