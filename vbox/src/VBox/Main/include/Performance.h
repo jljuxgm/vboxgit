@@ -1,4 +1,4 @@
-/* $Id: Performance.h 35964 2011-02-14 17:06:48Z vboxsync $ */
+/* $Id: Performance.h 36036 2011-02-21 15:03:32Z vboxsync $ */
 
 /** @file
  *
@@ -342,7 +342,7 @@ namespace pm
     class HostRamUsage : public BaseMetric
     {
     public:
-    HostRamUsage(CollectorHAL *hal, ComPtr<IUnknown> object, SubMetric *total, SubMetric *used, SubMetric *available)
+        HostRamUsage(CollectorHAL *hal, ComPtr<IUnknown> object, SubMetric *total, SubMetric *used, SubMetric *available)
         : BaseMetric(hal, "RAM/Usage", object), mTotal(total), mUsed(used), mAvailable(available) {};
         ~HostRamUsage() { delete mTotal; delete mUsed; delete mAvailable; };
 
