@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36400 2011-03-24 13:14:26Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 36434 2011-03-25 14:55:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2039,7 +2039,7 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
         /*
          * AC'97 ICH / SoundBlaster16 audio / Intel HD Audio
          */
-        BOOL fAudioEnabled;
+        BOOL fAudioEnabled = FALSE;
         ComPtr<IAudioAdapter> audioAdapter;
         hrc = pMachine->COMGETTER(AudioAdapter)(audioAdapter.asOutParam());                 H();
         if (audioAdapter)
