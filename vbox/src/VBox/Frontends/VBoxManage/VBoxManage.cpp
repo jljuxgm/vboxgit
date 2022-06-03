@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 37101 2011-05-16 11:56:39Z vboxsync $ */
+/* $Id: VBoxManage.cpp 37172 2011-05-20 17:15:55Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -470,7 +470,19 @@ int main(int argc, char *argv[])
             }
         }
         if (!s_commandHandlers[commandIndex].command)
-            rcExit = errorSyntax(USAGE_ALL, "Invalid command '%s'", Utf8Str(argv[iCmd]).c_str());
+        {
+            /* Help topics. */
+            if (fShowHelp && !strcmp(argv[iCmd], "commands"))
+            {
+                RTPrintf("commands:\n");
+                for (unsigned i = 0; i < RT_ELEMENTS(s_commandHandlers) - 1; i++)
+                    if (   i ==  0  /* skip backwards compatibility entries */
+                        || s_commandHandlers[i].help != s_commandHandlers[i - 1].help)
+                        RTPrintf("    %s\n", s_commandHandlers[i].command);
+            }
+            else
+                rcExit = errorSyntax(USAGE_ALL, "Invalid command '%s'", Utf8Str(argv[iCmd]).c_str());
+        }
 
         /* Although all handlers should always close the session if they open it,
          * we do it here just in case if some of the handlers contains a bug --
