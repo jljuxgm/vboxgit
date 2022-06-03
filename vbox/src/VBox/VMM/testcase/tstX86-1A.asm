@@ -1,6 +1,6 @@
-; $Id: tstX86-1A.asm 39996 2012-02-04 15:55:51Z vboxsync $
+; $Id: tstX86-1A.asm 39997 2012-02-04 15:56:18Z vboxsync $
 ;; @file
-; X86 instruction set testcase #1.
+; X86 instruction set exploration/testcase #1.
 ;
 
 ;
