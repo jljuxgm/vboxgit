@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 38982 2011-10-12 20:20:21Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 40388 2012-03-07 12:44:46Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -80,10 +80,10 @@ HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D)
             break;
         }
 
-        pD3D->pfnVBoxWineExD3DRc9SetDontDeleteGl = (PFNVBOXWINEEXD3DRC9_SETDONTDELETEGL)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DRc9SetDontDeleteGl");
-        if (!pD3D->pfnVBoxWineExD3DRc9SetDontDeleteGl)
+        pD3D->pfnVBoxWineExD3DRc9SetShRcState = (PFNVBOXWINEEXD3DRC9_SETSHRCSTATE)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DRc9SetShRcState");
+        if (!pD3D->pfnVBoxWineExD3DRc9SetShRcState)
         {
-            WARN(("no VBoxWineExD3DRc9SetDontDeleteGl"));
+            WARN(("no VBoxWineExD3DRc9SetShRcState"));
             break;
         }
 

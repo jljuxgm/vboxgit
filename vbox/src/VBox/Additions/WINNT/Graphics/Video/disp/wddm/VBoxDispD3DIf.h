@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 38982 2011-10-12 20:20:21Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.h 40388 2012-03-07 12:44:46Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -44,7 +44,7 @@ typedef struct VBOXDISPD3D
 
     PFNVBOXWINEEXD3DDEV9_UPDATE pfnVBoxWineExD3DDev9Update;
 
-    PFNVBOXWINEEXD3DRC9_SETDONTDELETEGL pfnVBoxWineExD3DRc9SetDontDeleteGl;
+    PFNVBOXWINEEXD3DRC9_SETSHRCSTATE pfnVBoxWineExD3DRc9SetShRcState;
 
     PFNVBOXWINEEXD3DSWAPCHAIN9_PRESENT pfnVBoxWineExD3DSwapchain9Present;
 
