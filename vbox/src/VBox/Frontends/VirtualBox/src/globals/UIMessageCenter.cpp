@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 41600 2012-06-06 14:27:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -58,6 +58,9 @@
 #include "CExtPackManager.h"
 #include "CExtPackFile.h"
 #include "CHostNetworkInterface.h"
+#ifdef VBOX_WITH_DRAG_AND_DROP
+# include "CGuest.h"
+#endif /* VBOX_WITH_DRAG_AND_DROP */
 
 /* Other VBox includes: */
 #include <iprt/err.h>
