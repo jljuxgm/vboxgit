@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic5.cpp 40870 2012-04-11 15:44:29Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic5.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -23,17 +23,23 @@
 #include "VBoxGlobal.h"
 #include "QIRichTextLabel.h"
 
+UIWizardCloneVDPage5::UIWizardCloneVDPage5()
+{
+}
+
 UIWizardCloneVDPageBasic5::UIWizardCloneVDPageBasic5()
 {
     /* Create widgets: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
+    {
         m_pLabel1 = new QIRichTextLabel(this);
         m_pSummaryText = new QIRichTextLabel(this);
         m_pLabel2 = new QIRichTextLabel(this);
-    pMainLayout->addWidget(m_pLabel1);
-    pMainLayout->addWidget(m_pSummaryText);
-    pMainLayout->addWidget(m_pLabel2);
-    pMainLayout->addStretch();
+        pMainLayout->addWidget(m_pLabel1);
+        pMainLayout->addWidget(m_pSummaryText);
+        pMainLayout->addWidget(m_pLabel2);
+        pMainLayout->addStretch();
+    }
 }
 
 void UIWizardCloneVDPageBasic5::retranslateUi()
@@ -80,10 +86,20 @@ void UIWizardCloneVDPageBasic5::initializePage()
 
 bool UIWizardCloneVDPageBasic5::validatePage()
 {
-    /* Try to copy virtual-disk: */
+    /* Initial result: */
+    bool fResult = true;
+
+    /* Lock finish button: */
     startProcessing();
-    bool fResult = qobject_cast<UIWizardCloneVD*>(wizard())->copyVirtualDisk();
+
+    /* Try to copy virtual-disk: */
+    if (fResult)
+        fResult = qobject_cast<UIWizardCloneVD*>(wizard())->copyVirtualDisk();
+
+    /* Unlock finish button: */
     endProcessing();
+
+    /* Return result: */
     return fResult;
 }
 

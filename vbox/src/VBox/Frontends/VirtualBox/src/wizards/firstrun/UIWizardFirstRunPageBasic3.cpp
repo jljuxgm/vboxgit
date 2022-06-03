@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic3.cpp 40870 2012-04-11 15:44:29Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic3.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -25,18 +25,25 @@
 #include "UIWizardFirstRun.h"
 #include "QIRichTextLabel.h"
 
-UIWizardFirstRunPageBasic3::UIWizardFirstRunPageBasic3(bool fBootHardDiskWasSet)
+UIWizardFirstRunPage3::UIWizardFirstRunPage3(bool fBootHardDiskWasSet)
     : m_fBootHardDiskWasSet(fBootHardDiskWasSet)
+{
+}
+
+UIWizardFirstRunPageBasic3::UIWizardFirstRunPageBasic3(bool fBootHardDiskWasSet)
+    : UIWizardFirstRunPage3(fBootHardDiskWasSet)
 {
     /* Create widgets: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
+    {
         m_pLabel1 = new QIRichTextLabel(this);
         m_pSummaryText = new QIRichTextLabel(this);
         m_pLabel2 = new QIRichTextLabel(this);
-    pMainLayout->addWidget(m_pLabel1);
-    pMainLayout->addWidget(m_pSummaryText);
-    pMainLayout->addWidget(m_pLabel2);
-    pMainLayout->addStretch();
+        pMainLayout->addWidget(m_pLabel1);
+        pMainLayout->addWidget(m_pSummaryText);
+        pMainLayout->addWidget(m_pLabel2);
+        pMainLayout->addStretch();
+    }
 }
 
 void UIWizardFirstRunPageBasic3::retranslateUi()
@@ -92,10 +99,20 @@ void UIWizardFirstRunPageBasic3::initializePage()
 
 bool UIWizardFirstRunPageBasic3::validatePage()
 {
-    /* Insert chosen medium: */
+    /* Initial result: */
+    bool fResult = true;
+
+    /* Lock finish button: */
     startProcessing();
-    bool fResult = qobject_cast<UIWizardFirstRun*>(wizard())->insertMedium();
+
+    /* Try to insert chosen medium: */
+    if (fResult)
+        fResult = qobject_cast<UIWizardFirstRun*>(wizard())->insertMedium();
+
+    /* Unlock finish button: */
     endProcessing();
+
+    /* Return result: */
     return fResult;
 }
 

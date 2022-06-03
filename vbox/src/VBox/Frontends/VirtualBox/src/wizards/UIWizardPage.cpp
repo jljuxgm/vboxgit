@@ -1,4 +1,4 @@
-/* $Id: UIWizardPage.cpp 40870 2012-04-11 15:44:29Z vboxsync $ */
+/* $Id: UIWizardPage.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -25,8 +25,43 @@
 #include "UIWizard.h"
 #include "VBoxGlobal.h"
 
-UIWizardPage::UIWizardPage()
+UIWizard* UIWizardPageBase::wizardImp()
 {
+    /* Should be reimplemented in sub-class to enable access to wizard! */
+    AssertMsgFailed(("UIWizardPageBase::wizardImp() should be reimplemented!"));
+    return 0;
+}
+
+UIWizardPage* UIWizardPageBase::thisImp()
+{
+    /* Should be reimplemented in sub-class to enable access to wizard page! */
+    AssertMsgFailed(("UIWizardPageBase::thisImp() should be reimplemented!"));
+    return 0;
+}
+
+QVariant UIWizardPageBase::fieldImp(const QString &) const
+{
+    /* Should be reimplemented in sub-class to enable access to wizard field! */
+    AssertMsgFailed(("UIWizardPageBase::fieldImp(const QString &) should be reimplemented!"));
+    return QVariant();
+}
+
+UIWizardPage::UIWizardPage()
+    : m_fReady(false)
+{
+}
+
+void UIWizardPage::markReady()
+{
+    m_fReady = true;
+    QWizardPage::setTitle(m_strTitle);
+}
+
+void UIWizardPage::setTitle(const QString &strTitle)
+{
+    m_strTitle = strTitle;
+    if (m_fReady)
+        QWizardPage::setTitle(m_strTitle);
 }
 
 UIWizard* UIWizardPage::wizard() const
