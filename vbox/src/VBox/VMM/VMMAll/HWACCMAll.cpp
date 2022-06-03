@@ -1,4 +1,4 @@
-/* $Id: HWACCMAll.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
+/* $Id: HWACCMAll.cpp 39038 2011-10-19 14:36:27Z vboxsync $ */
 /** @file
  * HWACCM - All contexts.
  */
@@ -74,10 +74,11 @@ VMMDECL(int) HWACCMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCVirt)
 
     Assert(pVM->hwaccm.s.svm.fSupported);
     return SVMR0InvalidatePage(pVM, pVCpu, GCVirt);
-#endif
 
+#else
     hwaccmQueueInvlPage(pVCpu, GCVirt);
     return VINF_SUCCESS;
+#endif
 }
 
 /**

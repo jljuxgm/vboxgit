@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
+/* $Id: EMAll.cpp 39038 2011-10-19 14:36:27Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -629,8 +629,8 @@ static int emInterpretXchg(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXCOR
 #ifdef IN_RC
         }
     }
-#endif
     return VERR_EM_INTERPRETER;
+#endif
 }
 
 
@@ -698,8 +698,8 @@ static int emInterpretIncDec(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXC
 #ifdef IN_RC
         }
     }
-#endif
     return VERR_EM_INTERPRETER;
+#endif
 }
 
 
@@ -778,8 +778,8 @@ static int emInterpretPop(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXCORE
 #ifdef IN_RC
         }
     }
-#endif
     return VERR_EM_INTERPRETER;
+#endif
 }
 
 
@@ -1326,8 +1326,8 @@ static int emInterpretMov(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXCORE
         return VINF_SUCCESS;
 #ifdef IN_RC
     }
-#endif
     return VERR_EM_INTERPRETER;
+#endif
 }
 
 
@@ -2208,7 +2208,6 @@ static int emInterpretMovCRx(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXC
         return EMInterpretCRxWrite(pVM, pVCpu, pRegFrame, pDis->param1.base.reg_ctrl, pDis->param2.base.reg_gen);
 
     AssertMsgFailedReturn(("Unexpected control register move\n"), VERR_EM_INTERPRETER);
-    return VERR_EM_INTERPRETER;
 }
 
 
@@ -3065,8 +3064,7 @@ DECLINLINE(VBOXSTRICTRC) emInterpretInstructionCPU(PVM pVM, PVMCPU pVCpu, PDISCP
 #undef INTERPRET_CASE_EX
 #undef INTERPRET_CASE
     } /* switch (opcode) */
-    AssertFailed();
-    return VERR_INTERNAL_ERROR;
+    /* not reached */
 }
 
 

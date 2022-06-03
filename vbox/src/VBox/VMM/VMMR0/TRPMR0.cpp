@@ -1,4 +1,4 @@
-/* $Id: TRPMR0.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: TRPMR0.cpp 39038 2011-10-19 14:36:27Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor - HC Ring 0
  */
@@ -43,7 +43,7 @@ VMMR0DECL(void) TRPMR0DispatchHostInterrupt(PVM pVM)
      */
     PVMCPU pVCpu = VMMGetCpu0(pVM);
     RTUINT uActiveVector = pVCpu->trpm.s.uActiveVector;
-    pVCpu->trpm.s.uActiveVector = ~0;
+    pVCpu->trpm.s.uActiveVector = UINT32_MAX;
     AssertMsgReturnVoid(uActiveVector < 256, ("uActiveVector=%#x is invalid! (More assertions to come, please enjoy!)\n", uActiveVector));
 
 #if HC_ARCH_BITS == 64 && defined(RT_OS_DARWIN)

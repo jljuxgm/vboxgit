@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: PGMAllShw.h 39038 2011-10-19 14:36:27Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -299,6 +299,7 @@ PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, P
 # if    PGM_SHW_TYPE == PGM_TYPE_AMD64 \
      || PGM_SHW_TYPE == PGM_TYPE_EPT
         AssertFailed(); /* can't happen */
+        pPT = NULL;     /* shut up MSC */
 # else
         Assert(pgmMapAreMappingsEnabled(pVM));
 

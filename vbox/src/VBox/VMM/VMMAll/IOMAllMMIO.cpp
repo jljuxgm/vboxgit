@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 39038 2011-10-19 14:36:27Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -57,14 +57,14 @@
  */
 static const unsigned g_aSize2Shift[] =
 {
-    ~0,    /* 0 - invalid */
+    ~0U,   /* 0 - invalid */
     0,     /* *1 == 2^0 */
     1,     /* *2 == 2^1 */
-    ~0,    /* 3 - invalid */
+    ~0U,   /* 3 - invalid */
     2,     /* *4 == 2^2 */
-    ~0,    /* 5 - invalid */
-    ~0,    /* 6 - invalid */
-    ~0,    /* 7 - invalid */
+    ~0U,   /* 5 - invalid */
+    ~0U,   /* 6 - invalid */
+    ~0U,   /* 7 - invalid */
     3      /* *8 == 2^3 */
 };
 
