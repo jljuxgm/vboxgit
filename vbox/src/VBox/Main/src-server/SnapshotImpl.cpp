@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 40487 2012-03-15 15:45:42Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 40492 2012-03-15 20:53:37Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -1164,7 +1164,9 @@ HRESULT SnapshotMachine::initFromSettings(Machine *aMachine,
 
     if (SUCCEEDED(rc))
         /* commit all changes made during the initialization */
-        commit();   // @todo r=dj why do we need a commit in init?!? this is very expensive
+        commit();   /// @todo r=dj why do we need a commit in init?!? this is very expensive
+        /// @todo r=klaus for some reason the settings loading logic backs up
+        // the settings, and therefore a commit is needed. Should probably be changed.
 
     /* Confirm a successful initialization when it's the case */
     if (SUCCEEDED(rc))
