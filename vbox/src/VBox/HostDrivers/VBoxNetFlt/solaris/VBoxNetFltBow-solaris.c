@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 38640 2011-09-05 14:34:18Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 38736 2011-09-13 13:58:47Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -19,6 +19,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_NET_FLT_DRV
+#ifdef DEBUG_ramshankar
+# define LOG_INSTANCE       RTLogRelDefaultInstance()
+#endif
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/intnetinline.h>
@@ -74,15 +77,6 @@
 # define LOCAL                          static
 /** VBOXNETFLTVNIC::u32Magic */
 # define VBOXNETFLTVNIC_MAGIC           0x0ddfaced
-
-#if defined(DEBUG_ramshankar)
-# undef Log
-# define Log        LogRel
-# undef LogFlow
-# define LogFlow    LogRel
-# undef LOCAL
-# define LOCAL
-#endif
 
 /** VLAN tag masking, should probably be in IPRT? */
 #define VLAN_ID(vlan)          (((vlan) >>  0) & 0x0fffu)

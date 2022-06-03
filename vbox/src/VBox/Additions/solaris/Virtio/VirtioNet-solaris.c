@@ -1,6 +1,6 @@
-/* $Id: VirtioNet-solaris.c 34143 2010-11-17 20:05:36Z vboxsync $ */
+/* $Id: VirtioNet-solaris.c 38736 2011-09-13 13:58:47Z vboxsync $ */
 /** @file
- * VirtualBox Guest Additions: Virtio Network Driver for Solaris.
+ * VirtualBox Guest Additions - Virtio Network Driver for Solaris.
  */
 
 /*
@@ -27,6 +27,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#ifdef DEBUG_ramshankar
+# define LOG_INSTANCE       RTLogRelDefaultInstance()
+#endif
 #include "Virtio-solaris.h"
 #include "VirtioPci-solaris.h"
 
@@ -74,14 +77,6 @@
 #define VIRTIO_NET_CTRL_RX        0x00040000      /* Control channel RX mode support */
 #define VIRTIO_NET_CTRL_VLAN      0x00080000      /* Control channel VLAN filtering */
 
-#if defined(DEBUG_ramshankar)
-# undef LogFlowFunc
-# define LogFlowFunc        LogRel
-# undef Log
-# define Log                LogRel
-# undef LogFlow
-# define LogFlow            LogRel
-#endif
 
 /*******************************************************************************
 *   Internal Functions                                                         *

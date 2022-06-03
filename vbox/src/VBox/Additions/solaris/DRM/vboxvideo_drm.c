@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 33656 2010-11-01 14:18:11Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 38736 2011-09-13 13:58:47Z vboxsync $ */
 /** @file
  * vboxvideo_drm - Direct Rendering Module, Solaris Specific Code.
  */
@@ -28,6 +28,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#ifdef DEBUG_ramshankar
+# define LOG_INSTANCE       RTLogRelDefaultInstance()
+#endif
 #undef offsetof     /* This gets redefined in drmP.h */
 #include "include/drmP.h"
 #include "include/drm.h"
@@ -37,12 +40,6 @@
 #include <VBox/log.h>
 #include <VBox/version.h>
 
-#ifdef DEBUG_ramshankar
-# undef LogFlow
-# undef Log
-# define LogFlow LogRel
-# define Log     LogRel
-#endif
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *

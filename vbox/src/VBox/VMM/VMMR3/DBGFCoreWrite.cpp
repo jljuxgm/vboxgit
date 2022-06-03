@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 38736 2011-09-13 13:58:47Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -70,10 +70,6 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-#ifdef DEBUG_ramshankar
-# undef Log
-# define Log LogRel
-#endif
 #define DBGFLOG_NAME           "DBGFCoreWrite"
 
 
