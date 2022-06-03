@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 37615 2011-06-23 14:37:32Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 37649 2011-06-27 12:31:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -389,8 +389,8 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent)
                 case GLSettingsPage_Proxy:
                 {
                     pSettingsPage = new UIGlobalSettingsProxy;
-                    addItem(":/extension_pack_32px.png", ":/extension_pack_disabled_32px.png",
-                            ":/extension_pack_16px.png", ":/extension_pack_disabled_16px.png",
+                    addItem(":/proxy_32px.png", ":/proxy_disabled_32px.png",
+                            ":/proxy_16px.png", ":/proxy_disabled_16px.png",
                             iPageIndex, "#proxy", pSettingsPage);
                     break;
                 }
