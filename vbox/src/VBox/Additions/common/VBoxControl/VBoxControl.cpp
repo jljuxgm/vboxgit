@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 41443 2012-05-25 07:52:59Z vboxsync $ */
+/* $Id: VBoxControl.cpp 41972 2012-06-29 13:35:30Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1486,6 +1486,39 @@ static RTEXITCODE handleHelp(int argc, char *argv[])
     return RTEXITCODE_SUCCESS;
 }
 
+#ifdef VBOX_WITH_DPC_LATENCY_CHECKER
+#include "..\VBoxGuestLib\VBGLR3Internal.h"
+
+static RTEXITCODE handleDpc(int argc, char *argv[])
+{
+#ifndef VBOX_CONTROL_TEST
+    int rc = VINF_SUCCESS;
+    int i;
+    for (i = 0; i < 30; i++)
+    {
+        rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_DPC, NULL, 0);
+        if (RT_FAILURE(rc))
+        {
+            break;
+        }
+        RTPrintf("%d\n", i);
+    }
+#else
+    int rc = VERR_NOT_IMPLEMENTED;
+#endif
+    if (RT_SUCCESS(rc))
+    {
+        RTPrintf("Samples collection completed.\n");
+        return RTEXITCODE_SUCCESS;
+    }
+    else
+    {
+        VBoxControlError("Error. rc=%Rrc\n", rc);
+        return RTEXITCODE_FAILURE;
+    }
+}
+#endif /* VBOX_WITH_DPC_LATENCY_CHECKER */
+
 /** command handler type */
 typedef DECLCALLBACK(RTEXITCODE) FNVBOXCTRLCMDHANDLER(int argc, char *argv[]);
 typedef FNVBOXCTRLCMDHANDLER *PFNVBOXCTRLCMDHANDLER;
@@ -1522,6 +1555,9 @@ struct COMMANDHANDLER
     { "powerdown",              handlePowerOff },
     { "getversion",             handleVersion },
     { "version",                handleVersion },
+#ifdef VBOX_WITH_DPC_LATENCY_CHECKER
+    { "dpc",                    handleDpc },
+#endif /* VBOX_WITH_DPC_LATENCY_CHECKER */
     { "help",                   handleHelp }
 };
 
