@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 38841 2011-09-23 11:39:15Z vboxsync $ */
+/* $Id: VMInternal.h 38940 2011-10-05 12:58:33Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -182,7 +182,7 @@ typedef struct VMINTUSERPERVM
     /** Number of free request packets. */
     volatile uint32_t               cReqFree;
     /** Array of pointers to lists of free request packets. Atomic. */
-    volatile PVMREQ                 apReqFree[16-4];
+    volatile PVMREQ                 apReqFree[16 - (HC_ARCH_BITS == 32 ? 5 : 4)];
 
     /** The reference count of the UVM handle. */
     volatile uint32_t               cUvmRefs;
@@ -304,6 +304,7 @@ typedef struct VMINTUSERPERVM
     /** The VM UUID. (Set after the config constructure has been called.) */
     RTUUID                          Uuid;
 } VMINTUSERPERVM;
+AssertCompileMemberAlignment(VMINTUSERPERVM, StatReqAllocNew, 8);
 
 /** Pointer to the VM internal data kept in the UVM. */
 typedef VMINTUSERPERVM *PVMINTUSERPERVM;
