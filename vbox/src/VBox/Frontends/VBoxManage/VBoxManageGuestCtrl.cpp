@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 38437 2011-08-12 15:05:41Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 38446 2011-08-12 20:44:32Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1594,14 +1594,14 @@ static int handleCtrlCopyTo(ComPtr<IGuest> guest, HandlerArg *pArg,
                 if (fIsFile)
                 {
                     /* Single file. */
-                    char *pszDest;
+                    char *pszDestFile;
                     vrc = ctrlCopyTranslatePath(pContext, pszSourceRoot, pszSource,
-                                                Utf8Dest.c_str(), &pszDest);
+                                                Utf8Dest.c_str(), &pszDestFile);
                     if (RT_SUCCESS(vrc))
                     {
                         vrc = ctrlCopyFileToTarget(pContext, pszSource,
-                                                   pszDest, fFlags);
-                        RTStrFree(pszDest);
+                                                   pszDestFile, fFlags);
+                        RTStrFree(pszDestFile);
                     }
                     else
                     {
