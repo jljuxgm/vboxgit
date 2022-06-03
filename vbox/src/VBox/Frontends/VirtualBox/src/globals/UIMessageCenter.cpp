@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 39096 2011-10-24 16:18:17Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 39188 2011-11-03 14:19:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1829,6 +1829,19 @@ bool UIMessageCenter::proposeDownloadExtensionPack(const QString &strExtPackName
                               .arg(strExtPackVersion).arg(strExtPackName),
                            0, /* Auto-confirm Id */
                            tr("Download", "extension pack"));
+}
+
+bool UIMessageCenter::requestUserDownloadExtensionPack(const QString &strExtPackName, const QString &strExtPackVersion, const QString &strVBoxVersion)
+{
+    return message(mainWindowShown(), Info,
+                   tr("<p>You have version %1 of the <b><nobr>%2</nobr></b> installed.</p>"
+                      "<p>You should download and install version %3 of this extension pack from Oracle!</p>")
+                      .arg(strExtPackVersion).arg(strExtPackName).arg(strVBoxVersion),
+                      0, /* Auto-confirm Id */
+                      QIMessageBox::Ok | QIMessageBox::Default,
+                      0,
+                      0,
+                      tr("Ok", "extension pack"));
 }
 
 bool UIMessageCenter::confirmDownloadExtensionPack(const QString &strExtPackName, const QString &strURL, qulonglong uSize)
