@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 39650 2011-12-16 23:27:51Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 39668 2011-12-20 21:46:30Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -651,6 +651,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            osinfo |\n"
                      "                            getregisters [--cpu <id>] <reg>|all ... |\n"
                      "                            setregisters [--cpu <id>] <reg>=<value> ... |\n"
+                     "                            show <logdbg-settings|logrel-settings> |\n"
                      "                            statistics [--reset] [--pattern <pattern>]\n"
                      "                            [--descriptions]\n"
                      "\n");
