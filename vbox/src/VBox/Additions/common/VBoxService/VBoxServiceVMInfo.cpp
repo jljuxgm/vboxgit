@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 36249 2011-03-10 12:18:20Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 37019 2011-05-10 08:20:35Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -189,15 +189,19 @@ static void vboxserviceVMInfoWriteFixedProperties(void)
      * Retrieve version information about Guest Additions and installed files (components).
      */
     char *pszAddVer;
+    char *pszAddVerEx;
     char *pszAddRev;
-    rc = VbglR3GetAdditionsVersion(&pszAddVer, &pszAddRev);
+    rc = VbglR3GetAdditionsVersion(&pszAddVer, &pszAddVerEx, &pszAddRev);
     VBoxServiceWritePropF(g_uVMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/Version",
                           "%s", RT_FAILURE(rc) ? "" : pszAddVer);
+    VBoxServiceWritePropF(g_uVMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/VersionEx",
+                          "%s", RT_FAILURE(rc) ? "" : pszAddVerEx);
     VBoxServiceWritePropF(g_uVMInfoGuestPropSvcClientID, "/VirtualBox/GuestAdd/Revision",
                           "%s", RT_FAILURE(rc) ? "" : pszAddRev);
     if (RT_SUCCESS(rc))
     {
         RTStrFree(pszAddVer);
+        RTStrFree(pszAddVerEx);
         RTStrFree(pszAddRev);
     }
 
