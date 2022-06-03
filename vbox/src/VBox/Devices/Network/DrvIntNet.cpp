@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 36080 2011-02-24 18:17:37Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 36081 2011-02-25 11:02:30Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1352,6 +1352,7 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
                                   "|PromiscPolicyWire"
                                   "|PromiscPolicyFixed"
                                   "|IfPolicyPromisc"
+                                  "|IfPolicyPromiscTrunk"
                                   "|IfPolicyFixed"
                                   "|TrunkPolicyHost"
                                   "|TrunkPolicyWire"
