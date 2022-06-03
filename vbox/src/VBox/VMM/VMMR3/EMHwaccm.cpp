@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -81,7 +81,7 @@ static int emR3HwaccmForcedActions(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
 #include "EMHandleRCTmpl.h"
 
 
-#ifdef DEBUG
+#if defined(DEBUG) && defined(SOME_UNUSED_FUNCTIONS)
 
 /**
  * Steps hardware accelerated mode.

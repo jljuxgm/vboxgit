@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38152 2011-07-25 12:19:13Z vboxsync $
+# $Id: Makefile.kmk 39070 2011-10-21 09:41:18Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -194,6 +194,9 @@ tstGlobalConfig_LIBS    = $(LIB_RUNTIME)
 tstIEMCheckMc_TEMPLATE  = VBOXR3TSTEXE
 tstIEMCheckMc_SOURCES   = tstIEMCheckMc.cpp
 tstIEMCheckMc_LIBS      = $(LIB_RUNTIME)
+ifneq ($(KBUILD_TARGET),win)
+tstIEMCheckMc_CXXFLAGS  = -Wno-unused-parameter
+endif
 
 tstMMHyperHeap_TEMPLATE = VBOXR3TSTEXE
 tstMMHyperHeap_SOURCES  = tstMMHyperHeap.cpp

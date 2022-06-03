@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 35696 2011-01-24 18:03:33Z vboxsync $ */
+/* $Id: STAM.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -502,6 +502,7 @@ VMMR3DECL(int)  STAMR3RegisterCallbackV(PVM pVM, void *pvSample, STAMVISIBILITY 
 }
 
 
+#ifdef VBOX_STRICT
 /**
  * Divide the strings into sub-strings using '/' as delimiter
  * and then compare them in strcmp fashion.
@@ -535,6 +536,7 @@ static int stamR3SlashCompare(const char *psz1, const char *psz2)
             return 0;
     }
 }
+#endif /* VBOX_STRICT */
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: tstVMM.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -205,7 +205,6 @@ int main(int argc, char **argv)
     } enmTestOpt = kTstVMMTest_VMM;
 
     int ch;
-    int i = 1;
     RTGETOPTUNION ValueUnion;
     RTGETOPTSTATE GetState;
     RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1, 0);

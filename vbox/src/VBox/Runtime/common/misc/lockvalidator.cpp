@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 39029 2011-10-19 10:08:23Z vboxsync $ */
+/* $Id: lockvalidator.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1845,6 +1845,7 @@ static uint32_t rtLockValidatorStackDepth(PRTTHREADINT pThread)
 }
 
 
+#ifdef VBOX_STRICT
 /**
  * Checks if the stack contains @a pRec.
  *
@@ -1883,6 +1884,7 @@ static bool rtLockValidatorStackContainsRec(PRTTHREADINT pThreadSelf, PRTLOCKVAL
     }
     return false;
 }
+#endif /* VBOX_STRICT */
 
 
 /**

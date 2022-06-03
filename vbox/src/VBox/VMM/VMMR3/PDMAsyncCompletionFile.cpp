@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -49,7 +49,9 @@
 *******************************************************************************/
 #ifdef VBOX_WITH_DEBUGGER
 static DECLCALLBACK(int) pdmacEpFileErrorInject(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR pArgs, unsigned cArgs);
+# ifdef PDM_ASYNC_COMPLETION_FILE_WITH_DELAY
 static DECLCALLBACK(int) pdmacEpFileDelayInject(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR pArgs, unsigned cArgs);
+# endif
 #endif
 
 /*******************************************************************************
@@ -235,6 +237,7 @@ int pdmacFileAioMgrAddEndpoint(PPDMACEPFILEMGR pAioMgr, PPDMASYNCCOMPLETIONENDPO
     return rc;
 }
 
+#ifdef SOME_UNUSED_FUNCTION
 static int pdmacFileAioMgrRemoveEndpoint(PPDMACEPFILEMGR pAioMgr, PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint)
 {
     int rc = RTCritSectEnter(&pAioMgr->CritSectBlockingEvent);
@@ -248,6 +251,7 @@ static int pdmacFileAioMgrRemoveEndpoint(PPDMACEPFILEMGR pAioMgr, PPDMASYNCCOMPL
 
     return rc;
 }
+#endif
 
 static int pdmacFileAioMgrCloseEndpoint(PPDMACEPFILEMGR pAioMgr, PPDMASYNCCOMPLETIONENDPOINTFILE pEndpoint)
 {

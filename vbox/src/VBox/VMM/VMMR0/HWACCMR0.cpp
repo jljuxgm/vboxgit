@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 38684 2011-09-08 08:36:48Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -221,6 +221,7 @@ static int hmR0FirstRcGetStatus(PHMR0FIRSTRC pFirstRc)
 }
 
 
+#ifdef VBOX_STRICT
 /**
  * Get the CPU ID on which the failure status code was reported.
  *
@@ -231,6 +232,7 @@ static RTCPUID hmR0FirstRcGetCpuId(PHMR0FIRSTRC pFirstRc)
 {
     return pFirstRc->idCpu;
 }
+#endif /* VBOX_STRICT */
 
 
 /** @name Dummy callback handlers.

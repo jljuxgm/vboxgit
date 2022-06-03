@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 39038 2011-10-19 14:36:27Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2019,7 +2019,7 @@ VMMDECL(int) PGMPhysGCPtr2HCPhys(PVMCPU pVCpu, RTGCPTR GCPtr, PRTHCPHYS pHCPhys)
 #define LOG_GROUP LOG_GROUP_PGM_PHYS_ACCESS
 
 
-#ifdef IN_RING3
+#if defined(IN_RING3) && defined(SOME_UNUSED_FUNCTION)
 /**
  * Cache PGMPhys memory access
  *
