@@ -1,4 +1,4 @@
-/* $Id: socket.c 38968 2011-10-10 02:27:41Z vboxsync $ */
+/* $Id: socket.c 39085 2011-10-24 06:58:33Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -98,7 +98,6 @@ socreate()
 void
 sofree(PNATState pData, struct socket *so)
 {
-    struct socket *so_prev = NULL;
     if (so == tcp_last_so)
         tcp_last_so = &tcb;
     else if (so == udp_last_so)
@@ -724,7 +723,6 @@ sorecvfrom(PNATState pData, struct socket *so)
         struct mbuf *m;
         ssize_t len;
         u_long n = 0;
-        int size;
         int rc = 0;
         static int signalled = 0;
         char *pchBuffer = NULL;

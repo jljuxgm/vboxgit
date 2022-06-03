@@ -1,4 +1,4 @@
-/* $Id: ip_input.c 37936 2011-07-14 03:54:41Z vboxsync $ */
+/* $Id: ip_input.c 39085 2011-10-24 06:58:33Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
@@ -87,8 +87,6 @@ ip_init(PNATState pData)
 static struct libalias *select_alias(PNATState pData, struct mbuf* m)
 {
     struct libalias *la = pData->proxy_alias;
-    struct udphdr *udp = NULL;
-    struct ip *pip = NULL;
 
     struct m_tag *t;
     if ((t = m_tag_find(m, PACKET_TAG_ALIAS, NULL)) != 0)

@@ -1,4 +1,4 @@
-/* $Id: misc.c 38492 2011-08-19 03:24:58Z vboxsync $ */
+/* $Id: misc.c 39085 2011-10-24 06:58:33Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -207,7 +207,6 @@ static void slirp_uma_free(void *item, int size, uint8_t flags)
 {
     struct item *it;
     uma_zone_t zone;
-    uma_zone_t master_zone;
 
     Assert(item);
     it = &((struct item *)item)[-1];

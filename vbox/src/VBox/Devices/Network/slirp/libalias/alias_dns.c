@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 37746 2011-07-04 06:07:37Z vboxsync $ */
+/* $Id: alias_dns.c 39085 2011-10-24 06:58:33Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -190,8 +190,6 @@ protohandler(struct libalias *la, struct ip *pip, struct alias_data *ah)
     int i;
     /* Parse dns request */
     char *qw_qname = NULL;
-    uint16_t *qw_qtype = NULL;
-    uint16_t *qw_qclass = NULL;
     struct hostent *h = NULL;
     char cname[255];
     int cname_len = 0;

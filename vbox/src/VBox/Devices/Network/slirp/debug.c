@@ -1,4 +1,4 @@
-/* $Id: debug.c 38492 2011-08-19 03:24:58Z vboxsync $ */
+/* $Id: debug.c 39085 2011-10-24 06:58:33Z vboxsync $ */
 /** @file
  * NAT - debug helpers.
  */
@@ -201,6 +201,7 @@ mbufstats(PNATState pData)
      * (vvl) this static code can't work with mbuf zone anymore
      * @todo: make statistic correct
      */
+    NOREF(pData);
 }
 
 void
@@ -252,11 +253,14 @@ print_socket(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput,
              void *pvUser)
 {
     struct socket *so = (struct socket*)pvValue;
-    uint32_t ip;
     struct sockaddr addr;
     struct sockaddr_in *in_addr;
     socklen_t socklen = sizeof(struct sockaddr);
     int status = 0;
+    NOREF(cchWidth);
+    NOREF(cchPrecision);
+    NOREF(fFlags);
+    NOREF(pvUser);
 
     AssertReturn(strcmp(pszType, "natsock") == 0, 0);
     if (so == NULL)

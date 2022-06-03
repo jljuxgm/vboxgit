@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 39024 2011-10-19 06:07:09Z vboxsync $ */
+/* $Id: ip_icmp.c 39085 2011-10-24 06:58:33Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -780,7 +780,6 @@ icmp_reflect(PNATState pData, struct mbuf *m)
 {
     register struct ip *ip = mtod(m, struct ip *);
     int hlen = ip->ip_hl << 2;
-    int optlen = hlen - sizeof(struct ip);
     register struct icmp *icp;
     LogFlowFunc(("ENTER: m:%p\n", m));
 

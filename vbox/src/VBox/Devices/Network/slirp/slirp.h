@@ -1,4 +1,4 @@
-/* $Id: slirp.h 36901 2011-04-29 18:03:48Z vboxsync $ */
+/* $Id: slirp.h 39085 2011-10-24 06:58:33Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -476,6 +476,7 @@ static inline size_t slirp_size(PNATState pData)
 static inline bool slirpMbufTagService(PNATState pData, struct mbuf *m, uint8_t u8ServiceId)
 {
     struct m_tag * t = NULL;
+    NOREF(pData);
     /* if_encap assumes that all packets goes through aliased address(gw) */
     if (u8ServiceId == CTL_ALIAS)
         return true;

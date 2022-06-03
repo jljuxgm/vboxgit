@@ -1,4 +1,4 @@
-/* $Id: bootp.c 37746 2011-07-04 06:07:37Z vboxsync $ */
+/* $Id: bootp.c 39085 2011-10-24 06:58:33Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -344,8 +344,8 @@ skip_dns_servers:
 static int dhcp_send_nack(PNATState pData, struct bootp_t *bp, BOOTPClient *bc, struct mbuf *m)
 {
     struct bootp_t *rbp;
-    uint8_t *q = NULL;
     rbp = mtod(m, struct bootp_t *);
+    NOREF(bc);
 
     dhcp_create_msg(pData, bp, m, DHCPNAK);
     return 7;
