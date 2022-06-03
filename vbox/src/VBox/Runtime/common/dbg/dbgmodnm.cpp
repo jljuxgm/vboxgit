@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 39389 2011-11-21 16:59:27Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 41493 2012-05-30 13:47:41Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -91,11 +91,11 @@ static DECLCALLBACK(int) rtDbgModNm_LineAdd(PRTDBGMODINT pMod, const char *pszFi
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnSymbolByAddr} */
-static DECLCALLBACK(int) rtDbgModNm_SymbolByAddr(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off,
+static DECLCALLBACK(int) rtDbgModNm_SymbolByAddr(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, uint32_t fFlags,
                                                  PRTINTPTR poffDisp, PRTDBGSYMBOL pSymInfo)
 {
     PRTDBGMODNM pThis = (PRTDBGMODNM)pMod->pvDbgPriv;
-    return RTDbgModSymbolByAddr(pThis->hCnt, iSeg, off, poffDisp, pSymInfo);
+    return RTDbgModSymbolByAddr(pThis->hCnt, iSeg, off, fFlags, poffDisp, pSymInfo);
 }
 
 

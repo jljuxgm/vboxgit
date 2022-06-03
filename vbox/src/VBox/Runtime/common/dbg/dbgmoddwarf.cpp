@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 41493 2012-05-30 13:47:41Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -3300,11 +3300,11 @@ static DECLCALLBACK(int) rtDbgModDwarf_LineAdd(PRTDBGMODINT pMod, const char *ps
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnSymbolByAddr} */
-static DECLCALLBACK(int) rtDbgModDwarf_SymbolByAddr(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off,
+static DECLCALLBACK(int) rtDbgModDwarf_SymbolByAddr(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, uint32_t fFlags,
                                                     PRTINTPTR poffDisp, PRTDBGSYMBOL pSymInfo)
 {
     PRTDBGMODDWARF pThis = (PRTDBGMODDWARF)pMod->pvDbgPriv;
-    return RTDbgModSymbolByAddr(pThis->hCnt, iSeg, off, poffDisp, pSymInfo);
+    return RTDbgModSymbolByAddr(pThis->hCnt, iSeg, off, fFlags, poffDisp, pSymInfo);
 }
 
 

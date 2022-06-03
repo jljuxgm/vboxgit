@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 41493 2012-05-30 13:47:41Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -287,7 +287,7 @@ static DECLCALLBACK(int) rtDbgModContainer_LineAdd(PRTDBGMODINT pMod, const char
 
 
 /** @copydoc RTDBGMODVTDBG::pfnSymbolByAddr */
-static DECLCALLBACK(int) rtDbgModContainer_SymbolByAddr(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off,
+static DECLCALLBACK(int) rtDbgModContainer_SymbolByAddr(PRTDBGMODINT pMod, RTDBGSEGIDX iSeg, RTUINTPTR off, uint32_t fFlags,
                                                         PRTINTPTR poffDisp, PRTDBGSYMBOL pSymInfo)
 {
     PRTDBGMODCTN pThis = (PRTDBGMODCTN)pMod->pvDbgPriv;
@@ -311,7 +311,7 @@ static DECLCALLBACK(int) rtDbgModContainer_SymbolByAddr(PRTDBGMODINT pMod, RTDBG
                                                             ? &pThis->AbsAddrTree
                                                             : &pThis->paSegs[iSeg].SymAddrTree,
                                                             off,
-                                                            false /*fAbove*/);
+                                                            fFlags == RTDBGSYMADDR_FLAGS_GREATER_OR_EQUAL /*fAbove*/);
     if (!pAvlCore)
         return VERR_SYMBOL_NOT_FOUND;
     PCRTDBGMODCTNSYMBOL pMySym = RT_FROM_MEMBER(pAvlCore, RTDBGMODCTNSYMBOL const, AddrCore);

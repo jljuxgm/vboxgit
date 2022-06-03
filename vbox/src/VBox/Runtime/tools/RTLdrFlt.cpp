@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 41493 2012-05-30 13:47:41Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -176,7 +176,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 38636 $\n");
+                RTPrintf("$Revision: 41493 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -321,7 +321,7 @@ int main(int argc, char **argv)
                      */
                     RTDBGSYMBOL Symbol;
                     RTINTPTR    offSym;
-                    rc = RTDbgAsSymbolByAddr(hDbgAs, u64Address, &offSym, &Symbol, NULL);
+                    rc = RTDbgAsSymbolByAddr(hDbgAs, u64Address, RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL, &offSym, &Symbol, NULL);
                     if (RT_SUCCESS(rc))
                     {
                         if (!offSym)
