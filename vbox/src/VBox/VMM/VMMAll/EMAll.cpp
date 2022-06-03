@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 41729 2012-06-14 23:24:17Z vboxsync $ */
+/* $Id: EMAll.cpp 41731 2012-06-14 23:41:13Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -285,7 +285,7 @@ VMMDECL(int) EMRemTryLock(PVM pVM)
  */
 static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDisState, uint8_t *pbDst, RTUINTPTR uSrcAddr, uint32_t cbToRead)
 {
-    PEMDISSTATE   pState = (PEMDISSTATE)pDisState->apvUserData[0];
+    PEMDISSTATE   pState = (PEMDISSTATE)pDisState->pvUser;
 # ifndef IN_RING0
     PVM           pVM    = pState->pVM;
 # endif

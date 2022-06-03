@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 41727 2012-06-14 22:49:03Z vboxsync $ */
+/* $Id: PATM.cpp 41731 2012-06-14 23:41:13Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -535,7 +535,7 @@ VMMR3DECL(int) PATMR3Reset(PVM pVM)
 
 DECLCALLBACK(int) patmReadBytes(PDISCPUSTATE pDisState, uint8_t *pbDst, RTUINTPTR uSrcAddr, uint32_t cbToRead)
 {
-    PATMDISASM   *pDisInfo = (PATMDISASM *)pDisState->apvUserData[0];
+    PATMDISASM   *pDisInfo = (PATMDISASM *)pDisState->pvUser;
     int           orgsize  = cbToRead;
 
     Assert(cbToRead);

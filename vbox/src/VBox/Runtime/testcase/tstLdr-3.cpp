@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 41692 2012-06-13 19:32:54Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 41731 2012-06-14 23:41:13Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -148,7 +148,7 @@ static DECLCALLBACK(int) MyGetSymbol(PCDISCPUSTATE pCpu, uint32_t u32Sel, RTUINT
  */
 static DECLCALLBACK(int) MyReadBytes(PDISCPUSTATE pDisState, uint8_t *pbDst, RTUINTPTR uSrcAddr, uint32_t cbToRead)
 {
-    memcpy(pbDst, (uint8_t const *)((uintptr_t)uSrcAddr + (uintptr_t)pDisState->apvUserData[0]), cbToRead);
+    memcpy(pbDst, (uint8_t const *)((uintptr_t)uSrcAddr + (uintptr_t)pDisState->pvUser), cbToRead);
     return VINF_SUCCESS;
 }
 
