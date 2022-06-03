@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 41561 2012-06-04 12:10:19Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 41571 2012-06-04 19:49:03Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1059,6 +1059,13 @@ static DECLCALLBACK(int) dbgcCmdFormat(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM 
             case DBGCVAR_TYPE_STRING:
                 rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL,
                     "String, %lld bytes long: %s\n",
+                    paArgs[iArg].u64Range,
+                    paArgs[iArg].u.pszString);
+                break;
+
+            case DBGCVAR_TYPE_SYMBOL:
+                rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL,
+                    "Symbol, %lld bytes long: %s\n",
                     paArgs[iArg].u64Range,
                     paArgs[iArg].u.pszString);
                 break;

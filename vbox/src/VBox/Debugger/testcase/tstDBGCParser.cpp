@@ -1,4 +1,4 @@
-/* $Id: tstDBGCParser.cpp 41561 2012-06-04 12:10:19Z vboxsync $ */
+/* $Id: tstDBGCParser.cpp 41571 2012-06-04 19:49:03Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser.
  */
@@ -1139,6 +1139,8 @@ static void testBasicsFundametalParsing(PDBGC pDbgc)
     tstTry(pDbgc, "format nosuchfunction(1,2,3)\n", VERR_DBGC_PARSE_FUNCTION_NOT_FOUND);
     tstTry(pDbgc, "format nosuchfunction()\n", VERR_DBGC_PARSE_FUNCTION_NOT_FOUND);
     tstTry(pDbgc, "format randu32()\n", VINF_SUCCESS);
+    tstTryEx(pDbgc, "format %0\n", VINF_SUCCESS, false, "Guest flat address: %00000000", -1);
+    tstTryEx(pDbgc, "format %eax\n", VINF_SUCCESS, false, "Guest flat address: %cafebabe", -1);
     tstTry(pDbgc, "sa 3 23 4 'q' \"21123123\" 'b' \n", VINF_SUCCESS);
     tstTry(pDbgc, "sa 3,23, 4,'q' ,\"21123123\" , 'b' \n", VINF_SUCCESS);
 }
