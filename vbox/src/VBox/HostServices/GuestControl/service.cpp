@@ -1,4 +1,4 @@
-/* $Id: service.cpp 39440 2011-11-28 14:06:19Z vboxsync $ */
+/* $Id: service.cpp 39441 2011-11-28 14:08:46Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -421,7 +421,7 @@ int Service::paramBufferAssign(VBOXHGCMSVCPARM paDstParms[], uint32_t cDstParms,
     if (cDstParms != pSrcBuf->uParmCount)
     {
         LogFlowFunc(("Parameter count does not match (got %u, expected %u)\n",
-                     pSrcBuf->uParmCount, cDstParms));
+                     cDstParms, pSrcBuf->uParmCount));
         rc = VERR_INVALID_PARAMETER;
     }
     else
