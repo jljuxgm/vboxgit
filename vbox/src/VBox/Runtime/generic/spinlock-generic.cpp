@@ -1,4 +1,4 @@
-/* $Id: spinlock-generic.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: spinlock-generic.cpp 40951 2012-04-16 19:25:26Z vboxsync $ */
 /** @file
  * IPRT - Spinlock, generic implementation.
  */
@@ -135,7 +135,9 @@ RTDECL(void) RTSpinlockAcquire(RTSPINLOCK Spinlock)
 #if RT_CFG_SPINLOCK_GENERIC_DO_SLEEP
         for (;;)
         {
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
             ASMIntDisable();
+#endif
             for (int c = RT_CFG_SPINLOCK_GENERIC_DO_SLEEP; c > 0; c--)
             {
                 if (ASMAtomicCmpXchgU32(&pThis->fLocked, 1, 0))
@@ -147,13 +149,17 @@ RTDECL(void) RTSpinlockAcquire(RTSPINLOCK Spinlock)
                 }
                 ASMNopPause();
             }
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
             ASMSetFlags(fIntSaved);
+#endif
             RTThreadYield();
         }
 #else
         for (;;)
         {
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
             ASMIntDisable();
+#endif
             if (ASMAtomicCmpXchgU32(&pThis->fLocked, 1, 0))
             {
 # if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
@@ -161,7 +167,9 @@ RTDECL(void) RTSpinlockAcquire(RTSPINLOCK Spinlock)
 # endif
                 return;
             }
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
             ASMSetFlags(fIntSaved);
+#endif
             ASMNopPause();
         }
 #endif
