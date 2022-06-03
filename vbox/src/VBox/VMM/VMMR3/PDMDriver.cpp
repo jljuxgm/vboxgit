@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 40652 2012-03-26 16:36:16Z vboxsync $ */
+/* $Id: PDMDriver.cpp 40920 2012-04-14 11:51:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -690,6 +690,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                      * Initialize the instance structure (declaration order).
                      */
                     pNew->u32Version                = PDM_DRVINS_VERSION;
+                    pNew->iInstance                 = pDrv->iNextInstance;
                     pNew->Internal.s.pUp            = pDrvAbove ? pDrvAbove : NULL;
                     //pNew->Internal.s.pDown          = NULL;
                     pNew->Internal.s.pLun           = pLun;
@@ -705,11 +706,12 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                     pNew->Internal.s.pCfgHandle     = pNode;
                     pNew->pReg                      = pDrv->pReg;
                     pNew->pCfg                      = pConfigNode;
-                    pNew->iInstance                 = pDrv->iNextInstance;
                     pNew->pUpBase                   = pBaseInterface;
                     Assert(!pDrvAbove || pBaseInterface == &pDrvAbove->IBase);
                     //pNew->pDownBase                 = NULL;
                     //pNew->IBase.pfnQueryInterface   = NULL;
+                    //pNew->fTracing                  = 0;
+                    pNew->idTracing                 = ++pVM->pdm.s.idTracingOther;
                     pNew->pHlpR3                    = &g_pdmR3DrvHlp;
                     pNew->pvInstanceDataR3          = &pNew->achInstanceData[0];
                     if (pDrv->pReg->fFlags & PDM_DRVREG_FLAGS_R0)

@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 39839 2012-01-23 16:05:57Z vboxsync $ */
+/* $Id: PDMUsb.cpp 40920 2012-04-14 11:51:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -576,6 +576,8 @@ static int pdmR3UsbCreateDevice(PVM pVM, PPDMUSBHUB pHub, PPDMUSB pUsbDev, int i
     pUsbIns->iInstance                      = iInstance;
     pUsbIns->pvInstanceDataR3               = &pUsbIns->achInstanceData[0];
     pUsbIns->pszName                        = RTStrDup(pUsbDev->pReg->szName);
+    //pUsbIns->fTracing                       = 0;
+    pUsbIns->idTracing                      = ++pVM->pdm.s.idTracingOther;
 
     /*
      * Link it into all the lists.

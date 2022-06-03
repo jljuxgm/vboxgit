@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 40652 2012-03-26 16:36:16Z vboxsync $ */
+/* $Id: PDM.cpp 40920 2012-04-14 11:51:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -366,6 +366,8 @@ VMMR3DECL(int) PDMR3Init(PVM pVM)
      * Init the structure.
      */
     pVM->pdm.s.GCPhysVMMDevHeap = NIL_RTGCPHYS;
+    //pVM->pdm.s.idTracingDev = 0;
+    pVM->pdm.s.idTracingOther = 1024;
 
     /*
      * Initialize critical sections first.
