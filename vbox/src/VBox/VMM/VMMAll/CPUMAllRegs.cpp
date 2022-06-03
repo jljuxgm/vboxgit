@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 42024 2012-07-05 12:10:53Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 42033 2012-07-06 03:27:36Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1845,6 +1845,14 @@ VMMDECL(void) CPUMClearGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
         {
             if (pVM->cpum.s.aGuestCpuIdExt[0].eax >= 0x80000001)
                 pVM->cpum.s.aGuestCpuIdExt[1].ecx &= ~X86_CPUID_EXT_FEATURE_ECX_LAHF_SAHF;
+            break;
+        }
+
+        case CPUMCPUIDFEATURE_RDTSCP:
+        {
+            if (pVM->cpum.s.aGuestCpuIdExt[0].eax >= 0x80000001)
+                pVM->cpum.s.aGuestCpuIdExt[1].edx &= ~X86_CPUID_EXT_FEATURE_EDX_RDTSCP;
+            LogRel(("CPUMClearGuestCpuIdFeature: Disabled RDTSCP!\n"));
             break;
         }
 
