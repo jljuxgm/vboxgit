@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 37791 2011-07-06 09:14:14Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 37796 2011-07-06 10:30:41Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -643,7 +643,6 @@ static int VBoxServiceToolboxLsHandleDir(const char *pszDir, uint32_t uFlags)
             && (uFlags & VBOXSERVICETOOLBOXLSFLAG_RECURSIVE))
         {
             /* Process all sub-directories. */
-            PVBOXSERVICETOOLBOXDIRENTRY pNodeIt;
             RTListForEach(&dirList, pNodeIt, VBOXSERVICETOOLBOXDIRENTRY, Node)
             {
                 RTFMODE fMode = pNodeIt->dirEntry.Info.Attr.fMode;
