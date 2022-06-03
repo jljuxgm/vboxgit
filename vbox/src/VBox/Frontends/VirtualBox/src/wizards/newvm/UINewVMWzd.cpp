@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 40245 2012-02-24 11:54:42Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 40350 2012-03-05 12:16:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -185,7 +185,12 @@ UINewVMWzdPage1::UINewVMWzdPage1()
     Ui::UINewVMWzdPage1::setupUi(this);
 
     /* Register 'message-box-warning-icon' image in m_pPage1Text1 as 'image': */
-    m_pPage1Text1->registerImage(UIIconPool::defaultIcon(UIIconPool::MessageBoxWarningIcon).pixmap(256, 256).toImage(), "image");
+    QSize wSize(64, 64);
+    QPixmap wPixmap = UIIconPool::defaultIcon(UIIconPool::MessageBoxWarningIcon).pixmap(wSize);
+    if (wPixmap.width() != wSize.width())
+        wPixmap = wPixmap.scaled(wSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QImage wImage = wPixmap.toImage();
+    m_pPage1Text1->registerImage(wImage, "image");
 
     /* Prepare table template: */
     QString strTable("<table cellspacing=0 cellpadding=0>%1</table>");
