@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 36523 2011-04-04 12:40:10Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -931,7 +931,7 @@ HRESULT Appliance::readFSImpl(TaskOVF *pTask, PVDINTERFACEIO pCallbacks, PSHA1ST
         /* Read & parse the XML structure of the OVF file */
         m->pReader = new ovf::OVFReader(pvTmpBuf, cbSize, pTask->locInfo.strPath);
     }
-    catch (iprt::Error &x)      // includes all XML exceptions
+    catch (RTCError &x)      // includes all XML exceptions
     {
         rc = setError(VBOX_E_FILE_ERROR,
                       x.what());

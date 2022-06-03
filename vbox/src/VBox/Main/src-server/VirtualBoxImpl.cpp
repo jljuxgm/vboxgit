@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 36439 2011-03-25 16:19:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 36523 2011-04-04 12:40:10Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3889,7 +3889,7 @@ HRESULT VirtualBox::handleUnexpectedExceptions(RT_SRC_POS_DECL)
         /* re-throw the current exception */
         throw;
     }
-    catch (const iprt::Error &err)      // includes all XML exceptions
+    catch (const RTCError &err)      // includes all XML exceptions
     {
         return setErrorStatic(E_FAIL,
                               Utf8StrFmt(tr("%s.\n%s[%d] (%s)"),
