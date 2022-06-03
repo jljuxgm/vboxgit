@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbTool.cpp 37047 2011-05-12 10:29:26Z vboxsync $ */
+/* $Id: VBoxUsbTool.cpp 37065 2011-05-13 10:58:58Z vboxsync $ */
 /** @file
  * Windows USB R0 Tooling.
  */
@@ -237,7 +237,7 @@ VBOXUSBTOOL_DECL(NTSTATUS) VBoxUsbToolGetDeviceSpeed(PDEVICE_OBJECT pDevObj, BOO
     pIrp->IoStatus.Status = STATUS_NOT_SUPPORTED;
 
     NTSTATUS Status = VBoxDrvToolIoPostSync(pDevObj, pIrp);
-    Assert(NT_SUCCESS(Status));
+    Assert(NT_SUCCESS(Status) || Status == STATUS_NOT_SUPPORTED);
     if (NT_SUCCESS(Status))
     {
         *pbIsHigh = BusIf.IsDeviceHighSpeed(BusIf.BusContext);

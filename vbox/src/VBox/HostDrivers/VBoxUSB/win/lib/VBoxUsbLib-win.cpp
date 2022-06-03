@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 37064 2011-05-13 10:27:17Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 37065 2011-05-13 10:58:58Z vboxsync $ */
 /** @file
  * VBox USB R3 Driver Interface library
  */
@@ -739,7 +739,7 @@ static int usbLibDevGetHubPortDevices(HANDLE hHub, LPCSTR lpcszHubName, ULONG iP
                                   &cbReturned, NULL))
     {
         DWORD winEr = GetLastError();
-        AssertMsgFailed((__FUNCTION__": DeviceIoControl failed winEr (%d)\n", winEr));
+        AssertMsg(winEr == ERROR_DEVICE_NOT_CONNECTED, (__FUNCTION__": DeviceIoControl failed winEr (%d)\n", winEr));
         return VERR_GENERAL_FAILURE;
     }
 
