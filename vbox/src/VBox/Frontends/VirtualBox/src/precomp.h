@@ -1,4 +1,4 @@
-/* $Id: precomp.h 38977 2011-10-12 11:44:56Z vboxsync $*/
+/* $Id: precomp.h 41387 2012-05-22 10:42:51Z vboxsync $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -228,7 +228,7 @@
 #include "VBoxNewHDWzd.h"
 #include "VBoxNewVMWzd.h"
 #include "VBoxOSTypeSelectorButton.h"
-#include "VBoxOSTypeSelectorWidget.h"
+#include "UINameAndSystemEditor.h"
 #include "UIMessageCenter.h"
 #include "VBoxProgressDialog.h"
 #include "UISelectorWindow.h"
