@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37976 2011-07-15 11:12:48Z vboxsync $
+# $Id: Makefile.kmk 38004 2011-07-18 10:17:18Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -267,7 +267,7 @@ vboxdrv-mod_SOURCES += \
 vboxdrv-mod_CLEAN   = \
 	$(vboxdrv-mod_0_OUTDIR)/Makefile
 
-vboxdrv-sh_INST     = bin/src/vboxdrv
+vboxdrv-sh_INST     = bin/src/vboxdrv/
 vboxdrv-sh_MODE     = a+rx,u+w
 vboxdrv-sh_SOURCES  = $(subst ",,$(FILES_VBOXDRV_BIN)) #"
 vboxdrv-sh_SOURCES += \
