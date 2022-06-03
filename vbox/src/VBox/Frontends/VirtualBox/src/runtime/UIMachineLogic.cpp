@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 37109 2011-05-16 15:31:23Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 37992 2011-07-18 09:39:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1210,6 +1210,12 @@ void UIMachineLogic::sltMountStorageMedium()
             if (attachment != currentAttachment && !medium.isNull() && !medium.GetHostDrive())
                 usedImages << medium.GetId();
         }
+        /* To that moment application focus already returned to machine-view,
+         * so the keyboard already captured too.
+         * We should clear application focus from machine-view now
+         * to let file-open dialog get it. That way the keyboard will be released too: */
+        if (QApplication::focusWidget())
+            QApplication::focusWidget()->clearFocus();
         /* Call for file-open window: */
         QString strMachineFolder(QFileInfo(machine.GetSettingsFilePath()).absolutePath());
         QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(target.type, defaultMachineWindow()->machineWindow(),
