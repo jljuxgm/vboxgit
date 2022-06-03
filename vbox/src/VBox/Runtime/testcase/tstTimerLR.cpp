@@ -1,4 +1,4 @@
-/* $Id: tstTimerLR.cpp 39910 2012-01-30 16:05:58Z vboxsync $ */
+/* $Id: tstTimerLR.cpp 39935 2012-02-01 14:36:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - Low Resolution Timers.
  */
@@ -215,7 +215,7 @@ int main()
         rc = RTTimerLRCreateEx(&hTimerLR, aTests[0].uMilliesInterval * (uint64_t)1000000, 0, TimerLRCallback, NULL);
         if (RT_FAILURE(rc))
         {
-            RTPrintf("RTTimerLRCreateEX(,%u*1M,,,) -> %d\n", aTests[i].uMilliesInterval, rc);
+            RTPrintf("RTTimerLRCreateEX(,%u*1M,,,) -> %d\n", aTests[0].uMilliesInterval, rc);
             cErrors++;
             continue;
         }
