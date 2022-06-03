@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 37133 2011-05-18 13:51:06Z vboxsync $ */
+/* $Id: CPUM.cpp 37136 2011-05-18 14:45:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -934,6 +934,13 @@ static int cpumR3CpuIdInit(PVM pVM)
     if (fEnable)
         CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NXE);
 
+    /*
+     * We don't enable the Hypervisor Present bit by default, but it may
+     * be needed by some guests.
+     */
+    rc = CFGMR3QueryBoolDef(pCpumCfg, "EnableHVP", &fEnable, false);                AssertRCReturn(rc, rc);
+    if (fEnable)
+        CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP);
     /*
      * Log the cpuid and we're good.
      */

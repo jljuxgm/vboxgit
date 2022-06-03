@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 36861 2011-04-27 17:38:26Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 37136 2011-05-18 14:45:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1645,6 +1645,15 @@ VMMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
             break;
         }
 
+       /*
+        * Set the Hypervisor Present bit in the standard feature mask.
+        */
+        case CPUMCPUIDFEATURE_HVP:
+            if (pVM->cpum.s.aGuestCpuIdStd[0].eax >= 1)
+                pVM->cpum.s.aGuestCpuIdStd[1].ecx |= X86_CPUID_FEATURE_ECX_HVP;
+            LogRel(("CPUMSetGuestCpuIdFeature: Enabled Hypervisor Present bit\n"));
+            break;
+
         default:
             AssertMsgFailed(("enmFeature=%d\n", enmFeature));
             break;
@@ -1769,6 +1778,11 @@ VMMDECL(void) CPUMClearGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
                 pVM->cpum.s.aGuestCpuIdExt[1].ecx &= ~X86_CPUID_AMD_FEATURE_ECX_LAHF_SAHF;
             break;
         }
+
+        case CPUMCPUIDFEATURE_HVP:
+            if (pVM->cpum.s.aGuestCpuIdExt[0].eax >= 1)
+                pVM->cpum.s.aGuestCpuIdExt[1].ecx &= ~X86_CPUID_FEATURE_ECX_HVP;
+            break;
 
         default:
             AssertMsgFailed(("enmFeature=%d\n", enmFeature));
