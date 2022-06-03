@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 40054 2012-02-09 15:37:11Z vboxsync $ */
+/* $Id: PGMR0SharedPage.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -38,7 +38,7 @@
  *
  * @returns The following VBox status codes.
  *
- * @param   pVM                 The VM handle.
+ * @param   pVM                 Pointer to the VM.
  * @param   pGVM                Pointer to the GVM instance data.
  * @param   idCpu               The ID of the calling virtual CPU.
  * @param   pModule             Global module description

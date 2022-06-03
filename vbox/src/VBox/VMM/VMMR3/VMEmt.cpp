@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
+/* $Id: VMEmt.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -404,7 +404,7 @@ static DECLCALLBACK(int) vmR3HaltOldDoHalt(PUVMCPU pUVCpu, const uint32_t fMask,
  * Initialize the configuration of halt method 1 & 2.
  *
  * @return VBox status code. Failure on invalid CFGM data.
- * @param   pVM     The VM handle.
+ * @param   pVM     Pointer to the VM.
  */
 static int vmR3HaltMethod12ReadConfigU(PUVM pUVM)
 {

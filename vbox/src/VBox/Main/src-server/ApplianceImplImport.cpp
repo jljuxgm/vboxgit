@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 40432 2012-03-12 16:04:28Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -191,7 +191,7 @@ STDMETHODIMP Appliance::Interpret()
                 nameVBox = pNewDesc->m->pConfig->machineUserData.strName;
             else
                 nameVBox = vsysThis.strName;
-            /* If the there isn't any name specified create a default one out
+            /* If there isn't any name specified create a default one out
              * of the OS type */
             if (nameVBox.isEmpty())
                 nameVBox = strOsTypeVBox;

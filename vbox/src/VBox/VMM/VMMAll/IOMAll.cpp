@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 41744 2012-06-15 02:29:09Z vboxsync $ */
+/* $Id: IOMAll.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -1042,7 +1042,7 @@ VMMDECL(VBOXSTRICTRC) IOMInterpretOUT(PVM pVM, PCPUMCTXCORE pRegFrame, PDISCPUST
 /**
  * Fress an MMIO range after the reference counter has become zero.
  *
- * @param   pVM                 The VM handle.
+ * @param   pVM                 Pointer to the VM.
  * @param   pRange              The range to free.
  */
 void iomMmioFreeRange(PVM pVM, PIOMMMIORANGE pRange)

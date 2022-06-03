@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: VMMRZ.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -37,7 +37,7 @@
  *          needs to change it into an assertion.
  *
  *
- * @param   pVM             The VM handle.
+ * @param   pVM             Pointer to the VM.
  * @param   pVCpu           The virtual CPU handle of the calling EMT.
  * @param   enmOperation    The operation.
  * @param   uArg            The argument to the operation.
@@ -99,7 +99,7 @@ VMMRZDECL(int) VMMRZCallRing3(PVM pVM, PVMCPU pVCpu, VMMCALLRING3 enmOperation, 
  *          be passed up the stack, or if that isn't possible then VMMRZCallRing3
  *          needs to change it into an assertion.
  *
- * @param   pVM             The VM handle.
+ * @param   pVM             Pointer to the VM.
  * @param   enmOperation    The operation.
  * @param   uArg            The argument to the operation.
  */

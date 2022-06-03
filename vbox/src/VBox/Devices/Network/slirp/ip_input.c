@@ -1,4 +1,4 @@
-/* $Id: ip_input.c 39259 2011-11-10 08:29:39Z vboxsync $ */
+/* $Id: ip_input.c 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
@@ -400,7 +400,7 @@ found:
      * segment.  If it provides all of our data, drop us, otherwise
      * stick new segment in the proper place.
      *
-     * If some of the data is dropped from the the preceding
+     * If some of the data is dropped from the preceding
      * segment, then it's checksum is invalidated.
      */
     if (p)

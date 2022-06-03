@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 41293 2012-05-15 08:54:14Z vboxsync $ */
+/* $Id: tstVMM.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -70,7 +70,7 @@ static DECLCALLBACK(void) tstTMDummyCallback(PVM pVM, PTMTIMER pTimer, void *pvU
  * This is called on each EMT and will beat TM.
  *
  * @returns VINF_SUCCESS, test failure is reported via RTTEST.
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   hTest       The test handle.
  */
 DECLCALLBACK(int) tstTMWorker(PVM pVM, RTTEST hTest)

@@ -1,4 +1,4 @@
-/* $Id: CPUMRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: CPUMRC.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * CPUM - Guest Context Code.
  */
@@ -43,7 +43,7 @@ RT_C_DECLS_END
  * when resuming guest context.
  *
  * @returns VBox status code.
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pRegFrame   The register frame.
  * @param   uUser       User argument. In this case a combination of the
  *                      CPUM_HANDLER_* \#defines.

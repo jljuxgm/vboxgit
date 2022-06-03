@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 41009 2012-04-20 13:15:21Z vboxsync $ */
+/* $Id: CFGM.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -1180,7 +1180,7 @@ static int cfgmR3ResolveLeaf(PCFGMNODE pNode, const char *pszName, PCFGMLEAF *pp
  * correct location.
  *
  * @returns Pointer to the root node.
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  */
 VMMR3DECL(PCFGMNODE) CFGMR3CreateTree(PVM pVM)
 {
@@ -2984,7 +2984,7 @@ VMMR3DECL(void) CFGMR3Dump(PCFGMNODE pRoot)
 /**
  * Info handler, internal version.
  *
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pHlp        Callback functions for doing output.
  * @param   pszArgs     Argument string. Optional and specific to the handler.
  */

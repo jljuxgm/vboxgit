@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -103,7 +103,7 @@ int tmCpuTickPause(PVMCPU pVCpu)
  *
  * Used by TMCpuTickCanUseRealTSC and TMCpuTickGetDeadlineAndTscOffset.
  *
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The current CPU.
  */
 DECLINLINE(void) tmCpuTickRecordOffsettedTscRefusal(PVM pVM, PVMCPU pVCpu)
@@ -362,7 +362,7 @@ VMM_INT_DECL(uint64_t) TMCpuTickGetNoCheck(PVMCPU pVCpu)
  * Sets the current CPU timestamp counter.
  *
  * @returns VBox status code.
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The virtual CPU to operate on.
  * @param   u64Tick     The new timestamp value.
  *

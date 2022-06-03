@@ -1,4 +1,4 @@
-/* $Id: PDMInline.h 40926 2012-04-14 18:02:39Z vboxsync $ */
+/* $Id: PDMInline.h 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * PDM - Internal header file containing the inlined functions.
  */
@@ -22,7 +22,7 @@
  * Calculates the next IRQ tag.
  *
  * @returns IRQ tag.
- * @param   pVM                 The VM handle.
+ * @param   pVM                 Pointer to the VM.
  * @param   idTracer            The ID of the source device.
  */
 DECLINLINE(uint32_t) pdmCalcIrqTag(PVM pVM, uint32_t idTracer)

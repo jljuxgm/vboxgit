@@ -1,4 +1,4 @@
-/* $Id: TRPMRC.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
+/* $Id: TRPMRC.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -75,7 +75,7 @@ VMMRCDECL(int) TRPMGCSetTempHandler(PVM pVM, unsigned iTrap, PFNTRPMGCTRAPHANDLE
  * This function will *never* return.
  * It will also reset any traps that are pending.
  *
- * @param   pVM     The VM handle.
+ * @param   pVM     Pointer to the VM.
  * @param   rc      The return code for host context.
  */
 VMMRCDECL(void) TRPMGCHyperReturnToHost(PVM pVM, int rc)

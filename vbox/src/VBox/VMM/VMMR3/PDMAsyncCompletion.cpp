@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -768,7 +768,7 @@ void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, int rc, boo
  * @returns VBox status code.
  * @param   pVM        Pointer to the shared VM instance data.
  * @param   pEpClass   Pointer to the endpoint class structure.
- * @param   pCfgHandle Pointer to the the CFGM tree.
+ * @param   pCfgHandle Pointer to the CFGM tree.
  */
 int pdmR3AsyncCompletionEpClassInit(PVM pVM, PCPDMASYNCCOMPLETIONEPCLASSOPS pEpClassOps, PCFGMNODE pCfgHandle)
 {

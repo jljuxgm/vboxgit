@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 41727 2012-06-14 22:49:03Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -144,7 +144,7 @@ int emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          * bird: Since the clearing is global and done via a rendezvous any CPU can do
          *       it. They would have to choose who to call VMMR3EmtRendezvous and send
          *       the rest to VMMR3EmtRendezvousFF ... Hmm ... that's not going to work
-         *       all that well since the the latter will race the setup done by the
+         *       all that well since the latter will race the setup done by the
          *       first.  Guess that means we need some new magic in that area for
          *       handling this case. :/
          */

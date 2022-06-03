@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: PDMQueue.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -596,7 +596,7 @@ VMMR3_INT_DECL(int) PDMR3QueueDestroyDriver(PVM pVM, PPDMDRVINS pDrvIns)
 /**
  * Relocate the queues.
  *
- * @param   pVM             The VM handle.
+ * @param   pVM             Pointer to the VM.
  * @param   offDelta        The relocation delta.
  */
 void pdmR3QueueRelocate(PVM pVM, RTGCINTPTR offDelta)

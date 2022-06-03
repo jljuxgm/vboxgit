@@ -1,4 +1,4 @@
-/* $Id: RTAssertShouldPanic-vbox.cpp 37233 2011-05-27 13:31:57Z vboxsync $ */
+/* $Id: RTAssertShouldPanic-vbox.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * IPRT - Assertions, generic RTAssertShouldPanic.
  */
@@ -144,7 +144,7 @@ static bool rtAssertShouldPanicWorker(void)
 RTDECL(bool) RTAssertShouldPanic(void)
 {
     /*
-     * Check if panicing is excluded by the the RTAssert settings first.
+     * Check if panicing is excluded by the RTAssert settings first.
      */
     if (!RTAssertMayPanic())
         return false;

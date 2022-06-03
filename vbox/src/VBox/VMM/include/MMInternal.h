@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 37935 2011-07-13 23:12:42Z vboxsync $ */
+/* $Id: MMInternal.h 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -400,7 +400,7 @@ typedef MMHYPERHEAP *PMMHYPERHEAP;
 #define MMHYPER_HEAP_ALIGN_MIN          16
 
 /**
- * The aligned size of the the MMHYPERHEAP structure.
+ * The aligned size of the MMHYPERHEAP structure.
  */
 #define MMYPERHEAP_HDR_SIZE             RT_ALIGN_Z(sizeof(MMHYPERHEAP), MMHYPER_HEAP_ALIGN_MIN * 4)
 

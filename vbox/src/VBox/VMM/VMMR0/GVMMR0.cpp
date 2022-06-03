@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
+/* $Id: GVMMR0.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -21,7 +21,7 @@
  * The Global VM Manager lives in ring-0.  Its main function at the moment is
  * to manage a list of all running VMs, keep a ring-0 only structure (GVM) for
  * each of them, and assign them unique identifiers (so GMM can track page
- * owners).  The GVMM also manage some of the host CPU resources, like the the
+ * owners).  The GVMM also manage some of the host CPU resources, like the
  * periodic preemption timer.
  *
  * The GVMM will create a ring-0 object for each VM when it is registered, this

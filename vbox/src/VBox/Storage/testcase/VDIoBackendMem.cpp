@@ -1,4 +1,4 @@
-/** $Id: VDIoBackendMem.cpp 36131 2011-03-02 21:56:42Z vboxsync $ */
+/** $Id: VDIoBackendMem.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
@@ -68,7 +68,7 @@ typedef struct VDIOBACKENDMEM
     unsigned    cReqsRing;
     /** Event semaphore the thread waits on for more work. */
     RTSEMEVENT  EventSem;
-    /** Flag whether the the server should be still running. */
+    /** Flag whether the server should be still running. */
     volatile bool fRunning;
     /** Number of requests waiting in the request buffer. */
     volatile uint32_t cReqsWaiting;

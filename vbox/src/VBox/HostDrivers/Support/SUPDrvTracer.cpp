@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 41338 2012-05-16 14:39:21Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1751,7 +1751,7 @@ static int supdrvVtgCreateObjectCopy(PSUPDRVDEVEXT pDevExt, PCVTGOBJHDR pVtgHdr,
             pThis->Hdr.cBits              = ARCH_BITS;
 
             /*
-             * Copy, convert and fix up the the probe location table.
+             * Copy, convert and fix up the probe location table.
              */
             if (pVtgHdr->cBits == 32)
             {

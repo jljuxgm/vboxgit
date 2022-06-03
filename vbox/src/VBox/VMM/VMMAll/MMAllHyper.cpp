@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -153,7 +153,7 @@ static void mmHyperHeapCheck(PMMHYPERHEAP pHeap);
  * Locks the hypervisor heap.
  * This might call back to Ring-3 in order to deal with lock contention in GC and R3.
  *
- * @param   pVM     The VM handle.
+ * @param   pVM     Pointer to the VM.
  */
 static int mmHyperLock(PVM pVM)
 {
@@ -178,7 +178,7 @@ static int mmHyperLock(PVM pVM)
 /**
  * Unlocks the hypervisor heap.
  *
- * @param   pVM     The VM handle.
+ * @param   pVM     Pointer to the VM.
  */
 static void mmHyperUnlock(PVM pVM)
 {

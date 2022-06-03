@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: DevAPIC.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  */
@@ -2367,7 +2367,7 @@ static DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     pDev->pCritSectR3 = pDev->pApicHlpR3->pfnGetR3CritSect(pDevIns);
 
     /*
-     * The the CPUID feature bit.
+     * The CPUID feature bit.
      */
     /** @todo r=bird: See remark in the apicR3Reset. */
     uint32_t u32Eax, u32Ebx, u32Ecx, u32Edx;

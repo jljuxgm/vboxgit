@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: PGMR0.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -59,7 +59,7 @@
  * @retval  VINF_SUCCESS on success. FF cleared.
  * @retval  VINF_EM_NO_MEMORY if we're out of memory. The FF is set in this case.
  *
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The VMCPU handle.
  *
  * @remarks Must be called from within the PGM critical section. The caller
@@ -174,7 +174,7 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
  * @retval  VINF_SUCCESS on success.
  * @retval  VINF_EM_NO_MEMORY if we're out of memory.
  *
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The VMCPU handle.
  *
  * @remarks Must be called from within the PGM critical section. The caller
@@ -320,7 +320,7 @@ VMMR0_INT_DECL(int) GPciRawR0GuestPageUpdate(PGVM pGVM, RTGCPHYS GCPhys, RTHCPHY
  *
  * @returns VBox status code.
  *
- * @param   pVM                 The VM handle.
+ * @param   pVM                 Pointer to the VM.
  */
 VMMR0_INT_DECL(int) PGMR0PhysSetupIommu(PVM pVM)
 {
@@ -502,7 +502,7 @@ VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PVMCPU pVCpu, PGMMODE enm
  * employed for MMIO pages.
  *
  * @returns VBox status code (appropriate for trap handling and GC return).
- * @param   pVM                 The VM Handle.
+ * @param   pVM                 Pointer to the VM.
  * @param   pVCpu               The current CPU.
  * @param   enmShwPagingMode    Paging mode for the nested page tables.
  * @param   pRegFrame           Trap register frame.

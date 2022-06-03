@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: MM.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -781,7 +781,7 @@ VMMR3DECL(int) MMR3HCPhys2HCVirt(PVM pVM, RTHCPHYS HCPhys, void **ppv)
  * This usually means the size of the first contiguous block of physical memory.
  *
  * @returns The guest base RAM size.
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @thread  Any.
  *
  * @deprecated

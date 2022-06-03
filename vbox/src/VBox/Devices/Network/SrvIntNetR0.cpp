@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -125,7 +125,7 @@ typedef struct INTNETMACTAB
     /** Whether the wire is active. */
     bool                    fWireActive;
 
-    /** Pointer to the the trunk interface. */
+    /** Pointer to the trunk interface. */
     struct INTNETTRUNKIF   *pTrunk;
 } INTNETMACTAB;
 /** Pointer to a MAC address .  */

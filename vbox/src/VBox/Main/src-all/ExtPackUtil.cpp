@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 39878 2012-01-25 16:30:07Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -96,7 +96,7 @@ void VBoxExtPackInitDesc(PVBOXEXTPACKDESC a_pExtPackDesc)
  *
  * @returns NULL on success, pointer to an error message on failure (caller
  *          deletes it).
- * @param   a_pDoc              Pointer to the the XML document.
+ * @param   a_pDoc              Pointer to the XML document.
  * @param   a_pExtPackDesc      Where to store the extension pack descriptor.
  */
 static RTCString *vboxExtPackLoadDescFromDoc(xml::Document *a_pDoc, PVBOXEXTPACKDESC a_pExtPackDesc)

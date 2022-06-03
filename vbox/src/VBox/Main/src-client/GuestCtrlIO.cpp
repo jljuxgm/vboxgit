@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlIO.cpp 39843 2012-01-23 18:38:18Z vboxsync $ */
+/* $Id: GuestCtrlIO.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  *
  * IO helper for IGuest COM class implementations.
@@ -308,7 +308,7 @@ int GuestProcessStream::AddData(const BYTE *pbData, size_t cbData)
 }
 
 /**
- * Destroys the the internal data buffer.
+ * Destroys the internal data buffer.
  */
 void GuestProcessStream::Destroy()
 {

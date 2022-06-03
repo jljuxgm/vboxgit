@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -274,7 +274,7 @@ void vmmR3SwitcherRelocate(PVM pVM, RTGCINTPTR offDelta)
 /**
  * Generic switcher code relocator.
  *
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pSwitcher   The switcher definition.
  * @param   pu8CodeR3   Pointer to the core code block for the switcher, ring-3 mapping.
  * @param   R0PtrCode   Pointer to the core code block for the switcher, ring-0 mapping.

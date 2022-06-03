@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: EM.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -458,7 +458,7 @@ VMMR3DECL(void) EMR3ResetCpu(PVMCPU pVCpu)
 /**
  * Reset notification.
  *
- * @param   pVM                 The VM handle.
+ * @param   pVM                 Pointer to the VM.
  */
 VMMR3DECL(void) EMR3Reset(PVM pVM)
 {
@@ -926,7 +926,7 @@ static int emR3RemStep(PVM pVM, PVMCPU pVCpu)
  * critical section.
  *
  * @returns false - new fInREMState value.
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The virtual CPU handle.
  */
 DECLINLINE(bool) emR3RemExecuteSyncBack(PVM pVM, PVMCPU pVCpu)

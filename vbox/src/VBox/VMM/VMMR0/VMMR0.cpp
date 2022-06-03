@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 41147 2012-05-03 20:15:27Z vboxsync $ */
+/* $Id: VMMR0.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -402,7 +402,7 @@ VMMR0DECL(int) VMMR0TermVM(PVM pVM, PGVM pGVM)
 #ifdef VBOX_WITH_STATISTICS
 /**
  * Record return code statistics
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The VMCPU handle.
  * @param   rc          The status code.
  */

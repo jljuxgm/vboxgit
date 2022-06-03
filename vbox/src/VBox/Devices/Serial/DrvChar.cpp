@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DrvChar.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMICHARCONNECTOR / PDMICHARPORT.
  *
@@ -308,7 +308,7 @@ static DECLCALLBACK(void) drvCharDestruct(PPDMDRVINS pDrvIns)
 
     /*
      * Wait for the threads.
-     * ASSUMES that PDM destroys the driver chain from the the bottom and up.
+     * ASSUMES that PDM destroys the driver chain from the bottom and up.
      */
     if (pThis->ReceiveThread != NIL_RTTHREAD)
     {

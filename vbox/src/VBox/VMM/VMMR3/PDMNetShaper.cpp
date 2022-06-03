@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaper.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
+/* $Id: PDMNetShaper.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth
  * group settings.
@@ -403,7 +403,7 @@ VMMR3DECL(int) PDMR3NsBwGroupSetLimit(PVM pVM, const char *pcszBwGroup, uint32_t
  * I/O thread for pending TX.
  *
  * @returns VINF_SUCCESS (ignored).
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pThread     The PDM thread data.
  */
 static DECLCALLBACK(int) pdmR3NsTxThread(PVM pVM, PPDMTHREAD pThread)

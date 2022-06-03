@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 41737 2012-06-15 01:01:49Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -75,7 +75,7 @@ static int emR3HwaccmForcedActions(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
  * Steps hardware accelerated mode.
  *
  * @returns VBox status code.
- * @param   pVM     The VM handle.
+ * @param   pVM     Pointer to the VM.
  * @param   pVCpu   The VMCPU handle.
  */
 static int emR3HwAccStep(PVM pVM, PVMCPU pVCpu)
@@ -387,7 +387,7 @@ static int emR3ExecuteIOInstruction(PVM pVM, PVMCPU pVCpu)
  *
  * @returns VBox status code. May return VINF_EM_NO_MEMORY but none of the other
  *          EM statuses.
- * @param   pVM         The VM handle.
+ * @param   pVM         Pointer to the VM.
  * @param   pVCpu       The VMCPU handle.
  * @param   pCtx        The guest CPUM register context.
  */

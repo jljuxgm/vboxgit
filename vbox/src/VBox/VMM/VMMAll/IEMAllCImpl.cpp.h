@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 40396 2012-03-07 21:51:59Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2397,7 +2397,7 @@ IEM_CIMPL_DEF_2(iemCImpl_LoadSReg, uint8_t, iSegReg, uint16_t, uSel)
         return iemRaiseSelectorNotPresentBySelector(pIemCpu, uSel);
     }
 
-    /* The the base and limit. */
+    /* The base and limit. */
     uint64_t u64Base;
     uint32_t cbLimit = X86DESC_LIMIT(Desc.Legacy);
     if (Desc.Legacy.Gen.u1Granularity)

@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 39519 2011-12-02 21:12:21Z vboxsync $ */
+/* $Id: DMG.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -1012,7 +1012,7 @@ static const char *dmgXmlParseData(const char **ppszCur, uint8_t **ppbData, size
  * @returns NULL on success, pointer to the problematic text on failure.
  * @param   pThis       The DMG instance data.
  * @param   pszXml      The XML text to parse, UTF-8.
- * @param   cch         The size of the the XML text.
+ * @param   cch         The size of the XML text.
  */
 static const char *dmgOpenXmlToRsrc(PDMGIMAGE pThis, char const *pszXml)
 {

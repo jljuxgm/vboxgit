@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 41493 2012-05-30 13:47:41Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -222,7 +222,7 @@ static int rtDbgModNmScanFile(PRTDBGMODNM pThis, PRTSTREAM pStrm, bool fAddSymbo
             /*
              * This is really what C was made for, string parsing.
              */
-            /* The the symbol value (address). */
+            /* The symbol value (address). */
             uint64_t u64Addr;
             char    *psz;
             rc = RTStrToUInt64Ex(szLine, &psz, 16, &u64Addr);

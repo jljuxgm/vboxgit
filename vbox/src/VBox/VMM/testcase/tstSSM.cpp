@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 41295 2012-05-15 09:14:23Z vboxsync $ */
+/* $Id: tstSSM.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -623,7 +623,7 @@ DECLCALLBACK(int) Item04Load(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t uVers
  * Creates a mockup VM structure for testing SSM.
  *
  * @returns 0 on success, 1 on failure.
- * @param   ppVM    Where to store the VM handle.
+ * @param   ppVM    Where to store Pointer to the VM.
  *
  * @todo    Move this to VMM/VM since it's stuff done by several testcases.
  */

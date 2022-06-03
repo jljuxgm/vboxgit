@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -1252,7 +1252,7 @@ static void pgmR0DynMapTearDown(PPGMRZDYNMAP pThis)
  * Initializes the dynamic mapping cache in raw-mode context.
  *
  * @returns VBox status code.
- * @param   pVM                 The VM handle.
+ * @param   pVM                 Pointer to the VM.
  */
 VMMRCDECL(int) PGMRCDynMapInit(PVM pVM)
 {
@@ -1554,7 +1554,7 @@ DECLINLINE(uint32_t) pgmR0DynMapPage(PPGMRZDYNMAP pThis, RTHCPHYS HCPhys, int32_
 
 
 /**
- * Assert the the integrity of the pool.
+ * Assert the integrity of the pool.
  *
  * @returns VBox status code.
  */
@@ -1686,7 +1686,7 @@ static int pgmRZDynMapAssertIntegrity(PPGMRZDYNMAP pThis)
 
 #ifdef IN_RING0
 /**
- * Assert the the integrity of the pool.
+ * Assert the integrity of the pool.
  *
  * @returns VBox status code.
  */
@@ -1698,7 +1698,7 @@ VMMR0DECL(int) PGMR0DynMapAssertIntegrity(void)
 
 #ifdef IN_RC
 /**
- * Assert the the integrity of the pool.
+ * Assert the integrity of the pool.
  *
  * @returns VBox status code.
  */

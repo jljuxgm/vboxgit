@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 41764 2012-06-15 17:36:56Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -49,7 +49,7 @@ typedef struct
 {
     /** The core structure. */
     DISCPUSTATE     Cpu;
-    /** The VM handle. */
+    /** Pointer to the VM. */
     PVM             pVM;
     /** The VMCPU handle. */
     PVMCPU          pVCpu;
@@ -321,7 +321,7 @@ static DECLCALLBACK(int) dbgfR3DisasGetSymbol(PCDISCPUSTATE pCpu, uint32_t u32Se
  * address, internal worker executing on the EMT of the specified virtual CPU.
  *
  * @returns VBox status code.
- * @param       pVM             The VM handle.
+ * @param       pVM             Pointer to the VM.
  * @param       pVCpu           The virtual CPU handle.
  * @param       Sel             The code selector. This used to determine the 32/16 bit ness and
  *                              calculation of the actual instruction address.

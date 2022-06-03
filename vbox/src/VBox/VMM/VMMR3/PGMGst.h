@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PGMGst.h 41783 2012-06-16 19:24:15Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -37,7 +37,7 @@ RT_C_DECLS_END
  * Initializes the guest bit of the paging mode data.
  *
  * @returns VBox status code.
- * @param   pVM             The VM handle.
+ * @param   pVM             Pointer to the VM.
  * @param   fResolveGCAndR0 Indicate whether or not GC and Ring-0 symbols can be resolved now.
  *                          This is used early in the init process to avoid trouble with PDM
  *                          not being initialized yet.
