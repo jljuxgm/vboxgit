@@ -1,4 +1,4 @@
-/* $Id: MakeDebianBiosAssembly.cpp 41507 2012-05-30 19:28:15Z vboxsync $ */
+/* $Id: MakeDebianBiosAssembly.cpp 41508 2012-05-30 19:30:54Z vboxsync $ */
 /** @file
  * MakeDebianBiosAssembly - Generate Assembly Source for Debian-minded Distros.
  */
@@ -171,7 +171,7 @@ static bool disError(const char *pszFormat, ...)
  */
 static bool disFileHeader(void)
 {
-    return outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41507 2012-05-30 19:28:15Z vboxsync $ \n"
+    return outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41508 2012-05-30 19:30:54Z vboxsync $ \n"
                         ";; @file\n"
                         "; Auto Generated source file. Do not edit.\n"
                         ";\n"
@@ -769,6 +769,7 @@ static size_t disHandleYasmDifferences(PDISCPUSTATE pCpuState, uint32_t uFlatAdd
     /*
      * Switch table fun (.sym may help):
      */
+#if 0
     else if (   pb[0] == 0x64
              && pb[1] == 0x65
              && pb[2] == 0x05
@@ -784,6 +785,7 @@ static size_t disHandleYasmDifferences(PDISCPUSTATE pCpuState, uint32_t uFlatAdd
              && pb[1] == 0xe7
              /*&& pb[2] == 0x67*/)
         fDifferent = true; /* out 067h, ax - switch table or smth. */
+#endif
 
 
     /*
