@@ -1,4 +1,4 @@
-/* $Id: slirp.c 39555 2011-12-08 05:52:20Z vboxsync $ */
+/* $Id: slirp.c 39599 2011-12-13 17:51:02Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1721,9 +1721,7 @@ static uint32_t find_guest_ip(PNATState pData, const uint8_t *eth_addr)
 static void activate_port_forwarding(PNATState pData, const uint8_t *h_source)
 {
     struct port_forward_rule *rule, *tmp;
-    const uint8_t *pu8EthSource;
-    if (!h_source)
-        pu8EthSource = h_source;
+    const uint8_t *pu8EthSource = h_source;
 
     /* check mac here */
     LIST_FOREACH_SAFE(rule, &pData->port_forward_rule_head, list, tmp)
@@ -1843,7 +1841,7 @@ int slirp_add_redirect(PNATState pData, int is_udp, struct in_addr host_addr, in
             && rule->guest_port == guest_port
             && rule->guest_addr.s_addr == guest_addr.s_addr
             )
-                return 0; /* rule has been already registered */
+            return 0; /* rule has been already registered */
     }
 
     rule = RTMemAllocZ(sizeof(struct port_forward_rule));
