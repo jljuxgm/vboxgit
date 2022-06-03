@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 40290 2012-02-29 11:15:22Z vboxsync $ */
+/* $Id: Global.cpp 40671 2012-03-27 20:21:37Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -194,7 +194,7 @@ const Global::OSType Global::sOSTypes[] =
        384,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Ubuntu",             "Ubuntu",
-      VBOXOSTYPE_Ubuntu,          VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
+      VBOXOSTYPE_Ubuntu,          VBOXOSHINT_RTCUTC | VBOXOSHINT_PAE | VBOXOSHINT_USBTABLET,
        512,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Ubuntu_64",          "Ubuntu (64 bit)",
