@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 38926 2011-09-30 21:09:25Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 38974 2011-10-10 14:15:31Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2104,7 +2104,6 @@ static int VBoxGuestCommonIOCtl_SetMouseStatus(PVBOXGUESTDEVEXT pDevExt, PVBOXGU
  * code. */
 static void testSetMouseStatus(void)
 {
-    int cFailures = 0;
     uint32_t u32Data;
     int rc;
     RTSPINLOCK Spinlock;
