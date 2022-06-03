@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 39742 2012-01-10 17:47:55Z vboxsync $ */
+/* $Id: VBoxWindowsAdditions.cpp 39743 2012-01-10 17:48:22Z vboxsync $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -228,7 +228,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                               NULL /*pProcessAttributes*/,
                               NULL /*pThreadAttributes*/,
                               TRUE /*fInheritHandles*/,
-                              0 /*dwCreationFlags*/,
+                              0    /*dwCreationFlags*/,
                               NULL /*pEnvironment*/,
                               NULL /*pCurrentDirectory*/,
                               &StartupInfo,
