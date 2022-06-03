@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 40688 2012-03-28 15:02:42Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 40744 2012-04-02 13:02:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -257,7 +257,7 @@ void Guest::callbackFreeUserData(void *pvData)
  */
 uint32_t Guest::callbackGetHostPID(uint32_t uContextID)
 {
-    AssertReturn(uContextID, VERR_INVALID_PARAMETER);
+    AssertReturn(uContextID, 0);
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -1125,7 +1125,7 @@ int Guest::notifyCtrlClientDisconnected(uint32_t                        u32Funct
 
 uint32_t Guest::processGetGuestPID(uint32_t uHostPID)
 {
-    AssertReturn(uHostPID, VERR_INVALID_PARAMETER);
+    AssertReturn(uHostPID, 0);
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
