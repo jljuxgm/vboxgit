@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 38235 2011-07-29 10:07:03Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 38290 2011-08-03 09:22:12Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1202,6 +1202,9 @@ static int ctrlCopyDirToHost(PCOPYCONTEXT pContext,
     int rc = RTStrCopy(szCurDir, sizeof(szCurDir), pszSource);
     if (RT_SUCCESS(rc) && pszSubDir)
         rc = RTPathAppend(szCurDir, sizeof(szCurDir), pszSubDir);
+
+    if (RT_FAILURE(rc))
+        return rc;
 
     /* Flag indicating whether the current directory was created on the
      * target or not. */

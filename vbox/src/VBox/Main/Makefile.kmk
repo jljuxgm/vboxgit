@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38235 2011-07-29 10:07:03Z vboxsync $
+# $Id: Makefile.kmk 38290 2011-08-03 09:22:12Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -676,7 +676,8 @@ VBoxC_SOURCES.win = \
 
 ifdef VBOX_WITH_GUEST_CONTROL
 VBoxC_SOURCES += \
-	src-client/GuestCtrlImplTasks.cpp
+	src-client/GuestCtrlImplTasks.cpp \
+	src-client/GuestDirEntryImpl.cpp
 endif
 
 ifdef VBOX_WITH_XPCOM
