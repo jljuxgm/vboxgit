@@ -1,4 +1,4 @@
-/* $Id: ahci.c 39590 2011-12-12 18:07:45Z vboxsync $ */
+/* $Id: ahci.c 39591 2011-12-12 18:09:12Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -506,7 +506,7 @@ uint16_t ahci_cmd_packet(uint16_t device_id, uint8_t cmdlen, char __far *cmdbuf,
 
     bios_dsk->drqp.lba     = (uint32_t)length << 8;     //@todo: xfer length limit
     bios_dsk->drqp.buffer  = buffer;
-//    bios_dsk->drqp.nsect   = length / 2048;
+    bios_dsk->drqp.nsect   = length / bios_dsk->drqp.sect_sz;
 //    bios_dsk->drqp.sect_sz = 2048;
 
     ahci_port_init(bios_dsk->ahci_seg :> 0, bios_dsk->ahcidev[device_id].port);
