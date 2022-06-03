@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 40163 2012-02-16 20:28:18Z vboxsync $ */
+/* $Id: IEMInternal.h 40164 2012-02-17 00:36:19Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -730,6 +730,21 @@ FNIEMAIMPLFPUR64  iemAImpl_fsub_r80_by_r64;
 FNIEMAIMPLFPUR64  iemAImpl_fsubr_r80_by_r64;
 FNIEMAIMPLFPUR64  iemAImpl_fdiv_r80_by_r64;
 FNIEMAIMPLFPUR64  iemAImpl_fdivr_r80_by_r64;
+
+/** @} */
+
+/** @name FPU operations taking a 80-bit float argument
+ * @{ */
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLFPUR80,(PCX86FXSTATE pFpuState, PIEMFPURESULT pFpuRes,
+                                                   PCRTFLOAT80U pr80Val1, PCRTFLOAT80U pr80Val2));
+typedef FNIEMAIMPLFPUR80  *PFNIEMAIMPLFPUR80;
+FNIEMAIMPLFPUR80  iemAImpl_fadd_r80_by_r80;
+FNIEMAIMPLFPUR80  iemAImpl_fmul_r80_by_r80;
+FNIEMAIMPLFPUR80  iemAImpl_fcom_r80_by_r80;
+FNIEMAIMPLFPUR80  iemAImpl_fsub_r80_by_r80;
+FNIEMAIMPLFPUR80  iemAImpl_fsubr_r80_by_r80;
+FNIEMAIMPLFPUR80  iemAImpl_fdiv_r80_by_r80;
+FNIEMAIMPLFPUR80  iemAImpl_fdivr_r80_by_r80;
 
 /** @} */
 
