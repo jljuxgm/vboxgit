@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 37900 2011-07-12 13:31:46Z vboxsync $ */
+/* $Id: MediumImpl.cpp 37941 2011-07-14 08:56:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1830,7 +1830,7 @@ STDMETHODIMP Medium::COMGETTER(ReadOnly)(BOOL *aReadOnly)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    /* isRadOnly() will do locking */
+    /* isReadOnly() will do locking */
 
     *aReadOnly = isReadOnly();
 
