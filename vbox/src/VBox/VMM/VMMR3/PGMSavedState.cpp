@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -764,7 +764,7 @@ static int pgmR3LoadMmio2Ranges(PVM pVM, PSSMHANDLE pSSM)
  *
  * @returns True if changed, false if unchanged.
  *
- * @param   pVM                 The VM handle
+ * @param   pVM                 Pointer to the VM.
  * @param   pbPage              The page bits.
  * @param   pLSPage             The live save tracking structure for the page.
  *
@@ -2331,7 +2331,7 @@ static int pgmR3LoadShadowedRomPageOld(PVM pVM, PSSMHANDLE pSSM, PPGMPAGE pPage,
  *
  * @returns VBox status code.
  *
- * @param   pVM         The VM handle
+ * @param   pVM         Pointer to the VM.
  * @param   pSSM        The SSM handle.
  * @param   uVersion    The saved state version.
  */

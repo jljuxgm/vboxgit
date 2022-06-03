@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -547,7 +547,7 @@ void pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAPPING pMap, 
  * Clears all PDEs involved with the mapping in the shadow page table.
  *
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VMCPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   pShwPageCR3 CR3 root page
  * @param   pMap        Pointer to the mapping in question.
  * @param   iPDE        The index of the 32-bit PDE corresponding to the base of the mapping.

@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: VM.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3506,7 +3506,7 @@ static int vmR3TrySetState(PVM pVM, const char *pszWho, unsigned cTransitions, .
 /**
  * Flag a guru meditation ... a hack.
  *
- * @param   pVM             The VM handle
+ * @param   pVM             Pointer to the VM.
  *
  * @todo    Rewrite this part. The guru meditation should be flagged
  *          immediately by the VMM and not by VMEmt.cpp when it's all over.

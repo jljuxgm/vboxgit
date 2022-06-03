@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: TRPM.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -970,7 +970,7 @@ static DECLCALLBACK(int) trpmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion,
  *
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VMCPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  */
 VMMR3DECL(int) TRPMR3SyncIDT(PVM pVM, PVMCPU pVCpu)
 {

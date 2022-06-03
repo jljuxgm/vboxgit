@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -738,7 +738,7 @@ DECLINLINE(bool) pgmPoolMonitorIsForking(PPGMPOOL pPool, PDISCPUSTATE pDis, unsi
  * @returns true if we consider the page as being reused for a different purpose.
  * @returns false if we consider it to still be a paging page.
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       VMCPU Handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   pRegFrame   Trap register frame.
  * @param   pDis        The disassembly info for the faulting instruction.
  * @param   pvFault     The fault address.
@@ -820,7 +820,7 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
  *
  * @returns VBox status code suitable for scheduling.
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VMCPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   pPool       The pool.
  * @param   pPage       The pool page (head).
  * @param   pDis        The disassembly of the write instruction.
@@ -947,7 +947,7 @@ DECLINLINE(int) pgmPoolAccessHandlerSTOSD(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE 
  *
  * @returns VBox status code suitable for scheduling.
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VMCPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   pPool       The pool.
  * @param   pPage       The pool page (head).
  * @param   pDis        The disassembly of the write instruction.
@@ -2702,7 +2702,7 @@ static void pgmPoolMonitorModifiedClearAll(PVM pVM)
  * @returns VBox status code.
  * @retval  VINF_SUCCESS if successfully added.
  * @retval  VINF_PGM_SYNC_CR3 is it needs to be deferred to ring 3 (GC only)
- * @param   pVCpu     The VMCPU handle.
+ * @param   pVCpu     Pointer to the VMCPU.
  * @remark  Should only be used when monitoring is available, thus placed in
  *          the PGMPOOL_WITH_MONITORING #ifdef.
  */

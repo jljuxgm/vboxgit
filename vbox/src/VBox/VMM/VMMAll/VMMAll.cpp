@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: VMMAll.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -171,7 +171,7 @@ void vmmTermFormatTypes(void)
  * by a push/ret/whatever does it become writable.)
  *
  * @returns bottom of the stack.
- * @param   pVCpu       The VMCPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  */
 VMMDECL(RTRCPTR) VMMGetStackRC(PVMCPU pVCpu)
 {

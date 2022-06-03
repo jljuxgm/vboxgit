@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: PGMR0.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -60,7 +60,7 @@
  * @retval  VINF_EM_NO_MEMORY if we're out of memory. The FF is set in this case.
  *
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VMCPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  *
  * @remarks Must be called from within the PGM critical section. The caller
  *          must clear the new pages.
@@ -175,7 +175,7 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
  * @retval  VINF_EM_NO_MEMORY if we're out of memory.
  *
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The VMCPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  *
  * @remarks Must be called from within the PGM critical section. The caller
  *          must clear the new pages.
@@ -379,7 +379,7 @@ VMMR0_INT_DECL(int) PGMR0PhysSetupIommu(PVM pVM)
  *
  * @returns VBox status code (appropriate for trap handling and GC return).
  * @param   pVM                 Pointer to the VM.
- * @param   pVCpu               VMCPU Handle.
+ * @param   pVCpu               Pointer to the VMCPU.
  * @param   enmShwPagingMode    Paging mode for the nested page tables.
  * @param   uErr                The trap error code.
  * @param   pRegFrame           Trap register frame.
