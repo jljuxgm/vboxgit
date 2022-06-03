@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 37282 2011-06-01 02:56:05Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 37809 2011-07-07 08:15:02Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2137,7 +2137,7 @@ AuthResult ConsoleVRDPServer::Authenticate(const Guid &uuid, AuthGuestJudgement 
 
         if (RT_SUCCESS(rc))
         {
-            typedef struct AuthEntryInfo
+            typedef struct AuthEntryInfoStruct
             {
                 const char *pszName;
                 void **ppvAddress;
