@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 38534 2011-08-25 15:50:21Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 38535 2011-08-25 15:52:12Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1224,7 +1224,7 @@ HRESULT MachineCloneVM::run()
                 const MEDIUMTASK &mt = mtc.chain.first();
                 ComObjPtr<Medium> pLMedium = static_cast<Medium*>((IMedium*)mt.pMedium);
                 if (pLMedium.isNull())
-                    throw p->setError(E_POINTER, "Returned object is empty");
+                    throw p->setError(VBOX_E_OBJECT_NOT_FOUND);
                 ComObjPtr<Medium> pBase = pLMedium->getBase();
                 if (pBase->isReadOnly())
                 {
