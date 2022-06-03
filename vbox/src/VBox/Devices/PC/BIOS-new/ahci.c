@@ -1,4 +1,4 @@
-/* $Id: ahci.c 38899 2011-09-29 09:20:08Z vboxsync $ */
+/* $Id: ahci.c 38997 2011-10-14 13:48:03Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -44,13 +44,6 @@
 #endif
 
 #define AHCI_MAX_STORAGE_DEVICES 4
-
-/* Because we don't tell the recompiler when guest's physical memory 
- * is written, it can incorrectly cache guest code overwritten by
- * bus master DMA. We just re-write the memory block to flush any of
- * its caches. This is not exactly efficient, but works!
- */
-#define DMA_WORKAROUND      1
 
 /* Number of S/G table entries in EDDS. */
 #define NUM_EDDS_SG         16
