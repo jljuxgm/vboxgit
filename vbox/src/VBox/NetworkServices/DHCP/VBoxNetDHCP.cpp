@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 36469 2011-03-30 08:52:15Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -974,7 +974,7 @@ int VBoxNetDhcp::run(void)
         int rc = SUPR3CallVMMR0Ex(NIL_RTR0PTR, NIL_VMCPUID, VMMR0_DO_INTNET_IF_WAIT, 0, &WaitReq.Hdr);
         if (RT_FAILURE(rc))
         {
-            if (rc == VERR_TIMEOUT)
+            if (rc == VERR_TIMEOUT || rc == VERR_INTERRUPTED)
                 continue;
             RTStrmPrintf(g_pStdErr, "VBoxNetDHCP: VMMR0_DO_INTNET_IF_WAIT returned %Rrc\n", rc);
             return 1;
