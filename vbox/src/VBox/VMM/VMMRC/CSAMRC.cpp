@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: CSAMRC.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -101,7 +101,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
     if (pRegFrame->eflags.Bits.u1VM)
         cpl = 3;
     else
-        cpl = (pRegFrame->ss & X86_SEL_RPL);
+        cpl = (pRegFrame->ss.Sel & X86_SEL_RPL);
 
     Log(("CSAMGCCodePageWriteHandler: code page write at %RGv original address %RGv (cpl=%d)\n", pvFault, (RTGCUINTPTR)pvRange + offRange, cpl));
 

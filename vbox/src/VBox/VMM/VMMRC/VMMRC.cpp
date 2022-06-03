@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: VMMRC.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -370,7 +370,7 @@ static DECLCALLBACK(int) vmmGCTestTmpPFHandler(PVM pVM, PCPUMCTXCORE pRegFrame)
 static DECLCALLBACK(int) vmmGCTestTmpPFHandlerCorruptFS(PVM pVM, PCPUMCTXCORE pRegFrame)
 {
     int rc = vmmGCTestTmpPFHandler(pVM, pRegFrame);
-    pRegFrame->fs = 0x30;
+    pRegFrame->fs.Sel = 0x30;
     return rc;
 }
 

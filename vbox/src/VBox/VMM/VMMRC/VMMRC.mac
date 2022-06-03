@@ -1,4 +1,4 @@
-; $Id: VMMRC.mac 35335 2010-12-27 12:34:40Z vboxsync $
+; $Id: VMMRC.mac 41906 2012-06-24 15:44:03Z vboxsync $
 ;; @file
 ; VMMGC - Raw-mode Context Assembly Macros.
 ;
@@ -38,7 +38,7 @@
    %define DEFINED_VMMR0_SEG.%1 1
    [section .VMMR0.%1 progbits alloc noexec nowrite align=1 ]
   %else
-   [section .VMMR0.%1 align=1 ]
+   [section .VMMR0.%1 ]
   %endif
  %endmacro
  %define VMMR0_SEG_DEFINED

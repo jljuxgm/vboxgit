@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
+/* $Id: SELMAll.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -113,7 +113,7 @@ VMMDECL(RTGCPTR) SELMToFlat(PVM pVM, DISSELREG SelReg, PCPUMCTXCORE pCtxCore, RT
 #endif
 
     /* 64 bits mode: CS, DS, ES and SS are treated as if each segment base is 0 (Intel® 64 and IA-32 Architectures Software Developer's Manual: 3.4.2.1). */
-    if (    pCtxCore->csHid.Attr.n.u1Long
+    if (    pCtxCore->cs.Attr.n.u1Long
         &&  CPUMIsGuestInLongMode(pVCpu))
     {
         switch (SelReg)
@@ -195,7 +195,7 @@ VMMDECL(int) SELMToFlatEx(PVMCPU pVCpu, DISSELREG SelReg, PCCPUMCTXCORE pCtxCore
         u32Limit      = pHiddenSel->u32Limit;
 
         /* 64 bits mode: CS, DS, ES and SS are treated as if each segment base is 0 (Intel® 64 and IA-32 Architectures Software Developer's Manual: 3.4.2.1). */
-        if (    pCtxCore->csHid.Attr.n.u1Long
+        if (    pCtxCore->cs.Attr.n.u1Long
             &&  CPUMIsGuestInLongMode(pVCpu))
         {
             fCheckLimit = false;
