@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 39250 2011-11-09 13:21:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -509,7 +509,7 @@ HRESULT Console::init(IMachine *aMachine, IInternalMachineControl *aControl)
     if (pSystemProperties)
         pSystemProperties->GetMaxNetworkAdapters(chipsetType, &maxNetworkAdapters);
     meAttachmentType.resize(maxNetworkAdapters);
-    for (ULONG slot = 0; slot < SchemaDefs::NetworkAdapterCount; ++slot)
+    for (ULONG slot = 0; slot < maxNetworkAdapters; ++slot)
         meAttachmentType[slot] = NetworkAttachmentType_Null;
 
 
