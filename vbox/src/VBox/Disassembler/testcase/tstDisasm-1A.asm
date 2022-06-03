@@ -1,4 +1,4 @@
-; $Id: tstDisasm-1A.asm 41751 2012-06-15 10:36:07Z vboxsync $
+; $Id: tstDisasm-1A.asm 41863 2012-06-21 15:46:24Z vboxsync $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -84,6 +84,8 @@ BEGINPROC   TestProc32
 
         pause
         nop
+        ;pfmulhrw mm0, qword [ds:ebp+edi*8+00f000001h]
+        db 0x3e, 0xf, 0xf, 0x84, 0xfd, 0x1, 0x0, 0x0, 0xf, 0xb7
 ENDPROC   TestProc32
 
 
