@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37438 2011-06-14 13:45:54Z vboxsync $
+# $Id: Makefile.kmk 37455 2011-06-14 20:09:32Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Clipboard Host Service testcases.
 #
@@ -25,7 +25,7 @@ if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBO
  endif
 
  tstClipboardServiceHost_TEMPLATE = VBOXR3TSTEXE
- tstClipboardServiceHost_DEFS     = VBOX_WITH_HGCM
+ tstClipboardServiceHost_DEFS     = VBOX_WITH_HGCM UNIT_TEST
  tstClipboardServiceHost_SOURCES  = \
 	../service.cpp \
 	tstClipboardServiceHost.cpp
