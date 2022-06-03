@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 35829 2011-02-03 10:18:53Z vboxsync $ */
+/* $Id: DBGConsole.cpp 41546 2012-06-01 14:34:33Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -215,7 +215,7 @@ int dbgcSymbolGet(PDBGC pDbgc, const char *pszSymbol, DBGCVARTYPE enmType, PDBGC
         {
             DBGCVAR Var;
             DBGCVAR_INIT_STRING(&Var, pszSymbol);
-            rc = dbgcOpRegister(pDbgc, &Var, pResult);
+            rc = dbgcOpRegister(pDbgc, &Var, DBGCVAR_CAT_ANY, pResult);
             if (RT_SUCCESS(rc))
                 return DBGCCmdHlpConvert(&pDbgc->CmdHlp, &Var, enmType, false /*fConvSyms*/, pResult);
         }

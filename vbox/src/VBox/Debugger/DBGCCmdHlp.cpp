@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 40097 2012-02-13 17:32:25Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 41546 2012-06-01 14:34:33Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -369,7 +369,7 @@ static DECLCALLBACK(int) dbgcHlpMemRead(PDBGCCMDHLP pCmdHlp, PVM pVM, void *pvBu
             case DBGCVAR_TYPE_HC_FLAT:
             {
                 DBGCVAR Var2;
-                rc = dbgcOpAddrFlat(pDbgc, &Var, &Var2);
+                rc = dbgcOpAddrFlat(pDbgc, &Var, DBGCVAR_CAT_ANY, &Var2);
                 if (RT_SUCCESS(rc))
                 {
                     /** @todo protect this!!! */
@@ -518,7 +518,7 @@ static DECLCALLBACK(int) dbgcHlpMemWrite(PDBGCCMDHLP pCmdHlp, PVM pVM, const voi
             {
                 /* convert to flat address */
                 DBGCVAR Var2;
-                rc = dbgcOpAddrFlat(pDbgc, &Var, &Var2);
+                rc = dbgcOpAddrFlat(pDbgc, &Var, DBGCVAR_CAT_ANY, &Var2);
                 if (RT_FAILURE(rc))
                 {
                     if (pcbWritten && *pcbWritten)

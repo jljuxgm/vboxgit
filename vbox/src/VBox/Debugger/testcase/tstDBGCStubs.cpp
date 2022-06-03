@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 41546 2012-06-01 14:34:33Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -193,6 +193,10 @@ VMMDECL(int) DBGFR3PagingDumpEx(PVM pVM, VMCPUID idCpu, uint32_t fFlags, uint64_
                                 uint64_t u64LastAddr, uint32_t cMaxDepth, PCDBGFINFOHLP pHlp)
 {
     return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3RegNmValidate(PVM pVM, VMCPUID idDefCpu, const char *pszReg)
+{
+    return VINF_SUCCESS;
 }
 VMMR3DECL(int) DBGFR3RegCpuQueryU8(  PVM pVM, VMCPUID idCpu, DBGFREG enmReg, uint8_t     *pu8)
 {

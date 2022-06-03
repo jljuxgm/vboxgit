@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 35694 2011-01-24 17:35:59Z vboxsync $ */
+/* $Id: DBGCInternal.h 41546 2012-06-01 14:34:33Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -277,9 +277,10 @@ typedef DBGCEXTCMDS *PDBGCEXTCMDS;
  *          The caller does the bitching.
  * @param   pDbgc       Debugger console instance data.
  * @param   pArg        The argument.
+ * @param   enmCat      The desired result category. Can be ignored.
  * @param   pResult     Where to store the result.
  */
-typedef DECLCALLBACK(int) FNDBGCOPUNARY(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
+typedef DECLCALLBACK(int) FNDBGCOPUNARY(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat, PDBGCVAR pResult);
 /** Pointer to a unary operator handler function. */
 typedef FNDBGCOPUNARY *PFNDBGCOPUNARY;
 
@@ -403,11 +404,11 @@ PCDBGCSYM   dbgcLookupRegisterSymbol(PDBGC pDbgc, const char *pszSymbol);
 PCDBGCOP    dbgcOperatorLookup(PDBGC pDbgc, const char *pszExpr, bool fPreferBinary, char chPrev);
 PCDBGCCMD   dbgcRoutineLookup(PDBGC pDbgc, const char *pachName, size_t cchName, bool fExternal);
 
-DECLCALLBACK(int) dbgcOpRegister(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
-DECLCALLBACK(int) dbgcOpAddrFlat(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
-DECLCALLBACK(int) dbgcOpAddrHost(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
-DECLCALLBACK(int) dbgcOpAddrPhys(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
-DECLCALLBACK(int) dbgcOpAddrHostPhys(PDBGC pDbgc, PCDBGCVAR pArg, PDBGCVAR pResult);
+DECLCALLBACK(int) dbgcOpRegister(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat, PDBGCVAR pResult);
+DECLCALLBACK(int) dbgcOpAddrFlat(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat, PDBGCVAR pResult);
+DECLCALLBACK(int) dbgcOpAddrHost(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat, PDBGCVAR pResult);
+DECLCALLBACK(int) dbgcOpAddrPhys(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat, PDBGCVAR pResult);
+DECLCALLBACK(int) dbgcOpAddrHostPhys(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat, PDBGCVAR pResult);
 
 void    dbgcInitCmdHlp(PDBGC pDbgc);
 
