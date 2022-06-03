@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 34579 2010-12-01 15:45:02Z vboxsync $ */
+/* $Id: fileio-win.cpp 36123 2011-03-01 15:38:35Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -659,7 +659,13 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE File, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD
      */
     BY_HANDLE_FILE_INFORMATION Data;
     if (!GetFileInformationByHandle((HANDLE)File, &Data))
-        return RTErrConvertFromWin32(GetLastError());
+    {
+        DWORD dwErr = GetLastError();
+        /* Only return if we *really* don't have a valid handle value,
+         * everything else is fine here ... */
+        if (dwErr != ERROR_INVALID_HANDLE)
+            return RTErrConvertFromWin32(dwErr);
+    }
 
     /*
      * Setup the returned data.
