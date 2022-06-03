@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 40005 2012-02-06 10:47:20Z vboxsync $ */
+/* $Id: GMMR0.cpp 40006 2012-02-06 10:49:51Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -4191,6 +4191,7 @@ GMMR0DECL(int) GMMR0RegisterSharedModule(PVM pVM, VMCPUID idCpu, VBOXOSFAMILY en
 
     AssertPtrReturn(pszModuleName, VERR_INVALID_POINTER);
     AssertPtrReturn(pszVersion, VERR_INVALID_POINTER);
+
 
     Log(("GMMR0RegisterSharedModule %s %s base %RGv size %x\n", pszModuleName, pszVersion, GCBaseAddr, cbModule));
 
