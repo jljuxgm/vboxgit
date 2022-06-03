@@ -1,4 +1,4 @@
-/* $Id: pipe-posix.cpp 39692 2011-12-30 13:20:49Z vboxsync $ */
+/* $Id: pipe-posix.cpp 40102 2012-02-13 17:50:04Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, POSIX Implementation.
  */
@@ -635,7 +635,7 @@ RTDECL(int) RTPipeSelectOne(RTPIPE hPipe, RTMSINTERVAL cMillies)
     else
         timeout = cMillies;
 
-    int rc = poll(&PollFd, 1, 0);
+    int rc = poll(&PollFd, 1, timeout);
     if (rc == -1)
         return RTErrConvertFromErrno(errno);
     return rc > 0 ? VINF_SUCCESS : VERR_TIMEOUT;
