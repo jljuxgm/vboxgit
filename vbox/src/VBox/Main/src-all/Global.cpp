@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 38770 2011-09-16 06:42:57Z vboxsync $ */
+/* $Id: Global.cpp 38780 2011-09-16 15:07:54Z vboxsync $ */
 
 /** @file
  *
@@ -101,7 +101,7 @@ const Global::OSType Global::sOSTypes[SchemaDefs::OSTypeId_COUNT] =
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA  },
     { "Windows", "Microsoft Windows", SchemaDefs_OSTypeId_Windows8,        "Windows 8",
       VBOXOSTYPE_Win8,            VBOXOSHINT_NONE | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET,
-       1536,  16, 20 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       1024,  16, 20 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA  },
     { "Windows", "Microsoft Windows", SchemaDefs_OSTypeId_Windows8_64,     "Windows 8 (64 bit)",
       VBOXOSTYPE_Win8_x64,        VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET,
