@@ -1,4 +1,4 @@
-/* $Id: config-host.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: config-host.h 36170 2011-03-04 12:49:02Z vboxsync $ */
 /** @file
  * Sun host config - maintained by hand
  */
@@ -29,6 +29,7 @@
 # elif defined(RT_OS_DARWIN)
 #  define CONFIG_DARWIN
 # elif defined(RT_OS_FREEBSD) || defined(RT_OS_NETBSD) || defined(RT_OS_OPENBSD)
+#  define HAVE_MACHINE_BSWAP_H
 /*#  define CONFIG_BSD*/
 # elif defined(RT_OS_SOLARIS)
 #  define CONFIG_SOLARIS

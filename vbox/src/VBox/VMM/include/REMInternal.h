@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: REMInternal.h 36170 2011-03-04 12:49:02Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -245,7 +245,6 @@ void    remR3DmaRun(CPUState *env);
 void    remR3TimersRun(CPUState *env);
 int     remR3NotifyTrap(CPUState *env, uint32_t uTrap, uint32_t uErrorCode, RTGCPTR pvNextEIP);
 void    remR3TrapStat(CPUState *env, uint32_t uTrap);
-void    remR3CpuId(CPUState *env, unsigned uOperator, void *pvEAX, void *pvEBX, void *pvECX, void *pvEDX);
 void    remR3RecordCall(CPUState *env);
 #endif /* REM_INCLUDE_CPU_H */
 void    remR3TrapClear(PVM pVM);
