@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40204 2012-02-22 02:02:10Z vboxsync $
+# $Id: Makefile.kmk 40220 2012-02-22 16:49:27Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1211,7 +1211,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 
 endif # !VBOX_ONLY_EXTPACKS
 
-ifdef VBOX_WITH_EXTPACK_PUEL
+if defined(VBOX_WITH_EXTPACK_PUEL) && defined(VBOX_WITH_EXTPACK_PUEL_BUILD)
  #
  # The EHCI (USB 2.0) Extension Pack Modules.
  #
