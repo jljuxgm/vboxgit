@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 36366 2011-03-23 13:28:01Z vboxsync $ */
+/* $Id: thread-win.cpp 36368 2011-03-23 15:05:14Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -102,7 +102,7 @@ int rtThreadNativeAdopt(PRTTHREADINT pThread)
  */
 static void rtThreadNativeUninitComAndOle(void)
 {
-#if 0 /* experimental code */
+#if 1 /* experimental code */
     /*
      * Read the counters.
      */
