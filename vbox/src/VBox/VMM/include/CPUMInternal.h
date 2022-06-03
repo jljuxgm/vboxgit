@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 41931 2012-06-27 16:12:16Z vboxsync $ */
+/* $Id: CPUMInternal.h 41932 2012-06-27 17:35:44Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -393,7 +393,7 @@ typedef struct CPUMCPU
     bool                    fRemEntered;
 
     /** Align the structure on a 64-byte boundary. */
-    uint8_t                 abPadding2[HC_ARCH_BITS == 32 ? 48 : 46];
+    uint8_t                 abPadding2[64 - 16 - 2];
 } CPUMCPU;
 /** Pointer to the CPUMCPU instance data residing in the shared VMCPU structure. */
 typedef CPUMCPU *PCPUMCPU;

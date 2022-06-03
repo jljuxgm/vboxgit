@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 41931 2012-06-27 16:12:16Z vboxsync $
+; $Id: CPUMInternal.mac 41932 2012-06-27 17:35:44Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -429,13 +429,7 @@ struc CPUMCPU
     .u32RetCode           resd    1
     .fRawEntered          resb    1
     .fRemEntered          resb    1
-
-%if RTHCPTR_CB == 8
-    .abPadding2           resb    46
-%else
-    .abPadding2           resb    48
-%endif
-
+    .abPadding2           resb    (64 - 16 - 2)
 endstruc
 
 
