@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFolders.cpp 34613 2010-12-02 14:08:02Z vboxsync $ */
+/* $Id: VBoxSharedFolders.cpp 41441 2012-05-24 17:26:51Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */
@@ -35,7 +35,7 @@ int VBoxSharedFoldersAutoMount(void)
 
         rc = VbglR3SharedFolderGetMappings(u32ClientId, true /* Only process auto-mounted folders */,
                                            &paMappings, &cMappings);
-        if (RT_SUCCESS(rc))
+        if (RT_SUCCESS(rc) && cMappings)
         {
 #if 0
             /* Check for a fixed/virtual auto-mount share. */
@@ -143,7 +143,7 @@ int VBoxSharedFoldersAutoUnmount(void)
 
         rc = VbglR3SharedFolderGetMappings(u32ClientId, true /* Only process auto-mounted folders */,
                                            &paMappings, &cMappings);
-        if (RT_SUCCESS(rc))
+        if (RT_SUCCESS(rc) && cMappings)
         {
             for (uint32_t i = 0; i < cMappings && RT_SUCCESS(rc); i++)
             {
