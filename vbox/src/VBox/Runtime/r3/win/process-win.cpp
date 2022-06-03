@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 39864 2012-01-24 21:24:52Z vboxsync $ */
+/* $Id: process-win.cpp 39865 2012-01-25 01:04:59Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -857,7 +857,7 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
                     }
                     else
                         dwErr = GetLastError(); /* LookupAccountNameW() failed. */
-                    RTMemFree(pSID);
+                    RTMemFree(pSid);
                     RTMemFree(pwszDomain);
                 }
             }
