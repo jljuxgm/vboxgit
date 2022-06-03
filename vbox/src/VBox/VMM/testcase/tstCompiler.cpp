@@ -1,4 +1,4 @@
-/* $Id: tstCompiler.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
+/* $Id: tstCompiler.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Testing how the compiler deals with various things.
  *
@@ -224,7 +224,7 @@ static void DisasFunction(const char *pszName, PFNRT pv)
 
 int main()
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitExeNoArguments(0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 

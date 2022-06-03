@@ -1,4 +1,4 @@
-/* $Id: tstVMMFork.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: tstVMMFork.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VMM Fork Test.
  */
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
     /*
      * Initialize the runtime.
      */
-    RTR3InitAndSUPLib();
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
 
 #ifndef AUTO_TEST_ARGS
     if (argc < 2)

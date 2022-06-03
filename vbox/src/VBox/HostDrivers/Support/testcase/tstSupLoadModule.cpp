@@ -1,4 +1,4 @@
-/* $Id: tstSupLoadModule.cpp 35188 2010-12-16 15:13:07Z vboxsync $ */
+/* $Id: tstSupLoadModule.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3LoadModule.
  */
@@ -44,12 +44,9 @@ int main(int argc, char **argv)
     /*
      * Init.
      */
-    int rc = RTR3InitAndSUPLib();
+    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
     if (RT_FAILURE(rc))
-    {
-        RTMsgError("RTR3InitAndSUPLib failed with rc=%Rrc\n", rc);
-        return 1;
-    }
+        return RTMsgInitFailure(rc);
 
     /*
      * Process arguments.
@@ -94,7 +91,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 35188 $\n");
+                RTPrintf("$Revision: 38636 $\n");
                 return 0;
 
             default:

@@ -1,4 +1,4 @@
-/* $Id: tstPageFusion.cpp 37955 2011-07-14 12:23:02Z vboxsync $ */
+/* $Id: tstPageFusion.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing testcase
  */
@@ -22,6 +22,7 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/mem.h>
+#include <iprt/messages.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 #include <iprt/initterm.h>
@@ -348,11 +349,12 @@ static DECLCALLBACK(void) VBoxServicePageSharingTerm(void)
 
 int main(int argc, char **argv)
 {
-    int rc = VINF_SUCCESS;
     /*
      * Init globals and such.
      */
-    RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
+    if (RT_FAILURE(rc))
+        return RTMsgInitFailure(rc);
 
     /*
      * Connect to the kernel part before daemonizing so we can fail

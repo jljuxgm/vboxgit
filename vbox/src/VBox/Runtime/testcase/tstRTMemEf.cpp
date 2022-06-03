@@ -1,4 +1,4 @@
-/* $Id: tstRTMemEf.cpp 36580 2011-04-06 13:52:10Z vboxsync $ */
+/* $Id: tstRTMemEf.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTMemEf* functions.
  */
@@ -59,7 +59,7 @@ static int tstMemAllocEfAccess()
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     RTPrintf("tstRTMemEf: TESTING...\n");
 
 #define CHECK_EXPR(expr) \

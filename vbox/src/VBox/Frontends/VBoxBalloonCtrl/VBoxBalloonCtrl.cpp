@@ -1,4 +1,4 @@
-/* $Id: VBoxBalloonCtrl.cpp 37103 2011-05-16 12:59:24Z vboxsync $ */
+/* $Id: VBoxBalloonCtrl.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBoxBalloonCtrl - VirtualBox Ballooning Control Service.
  */
@@ -1272,7 +1272,7 @@ int main(int argc, char *argv[])
      * Before we do anything, init the runtime without loading
      * the support driver.
      */
-    int rc = RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 

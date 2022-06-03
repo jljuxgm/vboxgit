@@ -1,4 +1,4 @@
-/* $Id: tstErrUnique.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstErrUnique.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Error Messages.
  */
@@ -62,7 +62,7 @@ static bool strIsPermissibleDuplicate(const RTSTATUSMSG *msg)
 int main()
 {
     int         cErrors = 0;
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     RTPrintf("tstErrUnique: TESTING\n");
 
     for (uint32_t i = 0; i < RT_ELEMENTS(g_aErrorMessages) - 1; i++)

@@ -1,4 +1,4 @@
-/* $Id: tstSupSem-Zombie.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstSupSem-Zombie.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface - Zombie bugs.
  */
@@ -94,10 +94,10 @@ static int mainChild(void)
     /*
      * Init.
      */
-    int rc = RTR3InitAndSUPLib();
+    int rc = RTR3InitExeNoArguments(RTR3INIT_FLAGS_SUPLIB);
     if (RT_FAILURE(rc))
     {
-        RTPrintf("tstSupSem-Zombie-Child: fatal error: RTR3InitAndSUPLib failed with rc=%Rrc\n", rc);
+        RTPrintf("tstSupSem-Zombie-Child: fatal error: RTR3InitExeNoArguments failed with rc=%Rrc\n", rc);
         return 1;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: tstLog.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstLog.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Log Formatting.
  */
@@ -35,7 +35,7 @@
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     printf("tstLog: Requires manual inspection of the log output!\n");
     RTLogPrintf("%%Rrc %d: %Rrc\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);
     RTLogPrintf("%%Rrs %d: %Rrs\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);

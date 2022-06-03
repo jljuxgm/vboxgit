@@ -1,4 +1,4 @@
-/* $Id: tstRand.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRand.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTRand API.
  */
@@ -353,7 +353,7 @@ static int tstRandAdv(RTRAND hRand)
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     RTPrintf("tstRand: TESTING...\n");
 
     /*

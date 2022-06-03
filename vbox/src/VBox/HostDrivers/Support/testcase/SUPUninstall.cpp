@@ -1,4 +1,4 @@
-/* $Id: SUPUninstall.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: SUPUninstall.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * SUPUninstall - Driver Uninstall.
  */
@@ -36,7 +36,7 @@
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     int rc = SUPR3Uninstall();
     if (RT_SUCCESS(rc))
     {

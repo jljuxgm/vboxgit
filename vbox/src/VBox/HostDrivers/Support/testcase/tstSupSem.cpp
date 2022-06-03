@@ -1,4 +1,4 @@
-/* $Id: tstSupSem.cpp 33383 2010-10-24 14:33:13Z vboxsync $ */
+/* $Id: tstSupSem.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface.
  */
@@ -33,6 +33,7 @@
 #include <VBox/param.h>
 #include <iprt/err.h>
 #include <iprt/initterm.h>
+#include <iprt/message.h>
 #include <iprt/stream.h>
 #include <iprt/test.h>
 #include <iprt/thread.h>
@@ -78,12 +79,9 @@ int main(int argc, char **argv)
     /*
      * Init.
      */
-    int rc = RTR3InitAndSUPLib();
+    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
     if (RT_FAILURE(rc))
-    {
-        RTPrintf("tstSupSem: fatal error: RTR3InitAndSUPLib failed with rc=%Rrc\n", rc);
-        return 1;
-    }
+        return RTMsgInitFailure(rc);
 
     if (argc == 2 && !strcmp(argv[1], "child"))
     {

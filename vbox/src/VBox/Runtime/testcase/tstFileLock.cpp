@@ -1,4 +1,4 @@
-/* $Id: tstFileLock.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstFileLock.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Locks.
  */
@@ -47,7 +47,7 @@ static bool fRun = false;
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     RTPrintf("tstFileLock: TESTING\n");
 
     RTFILE File;

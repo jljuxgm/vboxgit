@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -804,7 +804,7 @@ static int Usage(const char *argv0)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     const char * const argv0 = RTPathFilename(argv[0]);
 
     /* options */

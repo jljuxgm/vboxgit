@@ -1,4 +1,4 @@
-/* $Id: tstRTProcIsRunningByName.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: tstRTProcIsRunningByName.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcIsRunningByName
  */
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 {
     int cErrors = 0;
 
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     RTPrintf("tstRTPRocIsRunningByName: TESTING...\n");
 
     /*

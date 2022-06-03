@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxTray.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -679,7 +679,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
     LogRel(("VBoxTray: %s r%s\n", RTBldCfgVersion(), RTBldCfgRevisionStr()));
 
-    int rc = RTR3Init();
+    int rc = RTR3InitExeNoArguments(0);
     if (RT_SUCCESS(rc))
     {
         rc = VbglR3Init();

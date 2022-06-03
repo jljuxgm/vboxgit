@@ -1,4 +1,4 @@
-/* $Id: tstNoCrt-1.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
+/* $Id: tstNoCrt-1.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Testcase for the No-CRT assembly bits.
  */
@@ -118,7 +118,7 @@ int main()
     /*
      * Prologue.
      */
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     RTPrintf("tstNoCrt-1: TESTING...\n");
 
     /*

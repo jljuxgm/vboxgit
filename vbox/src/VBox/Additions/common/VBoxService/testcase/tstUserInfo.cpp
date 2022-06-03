@@ -1,4 +1,4 @@
-/* $Id: tstUserInfo.cpp 32652 2010-09-21 07:04:49Z vboxsync $ */
+/* $Id: tstUserInfo.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Test case for correct user environment.
  */
@@ -40,7 +40,7 @@ int main()
     /*
      * Init globals and such.
      */
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
 
     int rc = VbglR3Init();
     if (RT_FAILURE(rc))

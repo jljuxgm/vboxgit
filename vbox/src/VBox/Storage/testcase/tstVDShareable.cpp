@@ -1,4 +1,4 @@
-/* $Id: tstVDShareable.cpp 38469 2011-08-16 10:34:32Z vboxsync $ */
+/* $Id: tstVDShareable.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility for shareable images.
  */
@@ -118,7 +118,7 @@ static int tstVDCreateShareDelete(const char *pszBackend, const char *pszFilenam
 
 int main(int argc, char *argv[])
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     int rc;
 
     RTPrintf("tstVD: TESTING...\n");

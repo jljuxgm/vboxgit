@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 38621 2011-09-04 16:56:56Z vboxsync $ */
+/* $Id: tstVDIo.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -3196,7 +3196,7 @@ static const RTGETOPTDEF g_aOptions[] =
 
 int main(int argc, char *argv[])
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     int rc;
     RTGETOPTUNION ValueUnion;
     RTGETOPTSTATE GetState;

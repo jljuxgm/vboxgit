@@ -1,4 +1,4 @@
-/* $Id: tstRTDigest.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: tstRTDigest.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSha*, RTMd5, RTCrc*.
  */
@@ -62,7 +62,7 @@ static int Error(const char *pszFormat, ...)
 
 int main(int argc, char **argv)
 {
-     RTR3Init();
+     RTR3InitExe(argc, &argv, 0);
 
      enum
      {

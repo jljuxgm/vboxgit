@@ -1,4 +1,4 @@
-/* $Id: tstStrToNum.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstStrToNum.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - String To Number Conversion.
  */
@@ -91,7 +91,7 @@ struct TstU32
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
 
     int cErrors = 0;
     static const struct TstU64 aTstU64[] =

@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -216,7 +216,7 @@ static int testLdrOne(const char *pszFilename)
 int main(int argc, char **argv)
 {
     int cErrors = 0;
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     /*
      * Sanity check.

@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: iokit.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1682,7 +1682,7 @@ PDARWINETHERNIC DarwinGetEthernetControllers(void)
  */
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     if (1)
     {

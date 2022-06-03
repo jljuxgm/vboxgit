@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 32878 2010-10-03 20:30:49Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -165,7 +165,7 @@ static DECLCALLBACK(int) testEnumSymbol2(RTLDRMOD hLdrMod, const char *pszSymbol
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     int rcRet = 0;
     if (argc <= 2)

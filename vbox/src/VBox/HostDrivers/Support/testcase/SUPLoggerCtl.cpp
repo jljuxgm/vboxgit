@@ -1,4 +1,4 @@
-/* $Id: SUPLoggerCtl.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: SUPLoggerCtl.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * SUPLoggerCtl - Support Driver Logger Control.
  */
@@ -57,7 +57,7 @@ static int usage(void)
 
 int main(int argc, char **argv)
 {
-    RTR3InitAndSUPLib();
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
 
     /*
      * Options are mandatory.

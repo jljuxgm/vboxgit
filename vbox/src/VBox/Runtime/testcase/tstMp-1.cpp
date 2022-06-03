@@ -1,4 +1,4 @@
-/* $Id: tstMp-1.cpp 33814 2010-11-05 21:28:14Z vboxsync $ */
+/* $Id: tstMp-1.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMp.
  */
@@ -43,7 +43,7 @@ static unsigned g_cErrors = 0;
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     RTPrintf("tstMp-1: TESTING...\n");
 
     /*

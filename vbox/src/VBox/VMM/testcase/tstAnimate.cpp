@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 38324 2011-08-05 14:02:53Z vboxsync $ */
+/* $Id: tstAnimate.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -614,7 +614,7 @@ int main(int argc, char **argv)
 {
     int rcRet = 1;
     int rc;
-    RTR3InitAndSUPLib();
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
 
     /*
      * Parse input.

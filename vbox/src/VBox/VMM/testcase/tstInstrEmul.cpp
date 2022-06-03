@@ -1,4 +1,4 @@
-/* $Id: tstInstrEmul.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: tstInstrEmul.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Micro Testcase, checking emulation of certain instructions
  */
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 {
     int     rcRet = 0;                  /* error count. */
 
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     RTPrintf("tstInstrEmul: TESTING...\n");
 
     uint32_t eax, edx, ebx, ecx, eflags;

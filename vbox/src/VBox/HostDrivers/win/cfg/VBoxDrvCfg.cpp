@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg.cpp 36941 2011-05-03 14:56:08Z vboxsync $ */
+/* $Id: VBoxDrvCfg.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBoxDrvCfg.cpp - Windows Driver Manipulation API implementation
  */
@@ -534,7 +534,7 @@ static HRESULT vboxDrvCfgCollectInfsSetupDi(const GUID * pGuid, LPCWSTR pPnPId, 
 #if 0
 VBOXDRVCFG_DECL(HRESULT) VBoxDrvCfgInit()
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitDll(0);
     if (rc != VINF_SUCCESS)
     {
         LogRel(("Could not init IPRT!, rc (%d)\n", rc));

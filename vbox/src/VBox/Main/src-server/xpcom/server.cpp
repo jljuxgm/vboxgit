@@ -1,4 +1,4 @@
-/* $Id: server.cpp 37666 2011-06-28 12:33:34Z vboxsync $ */
+/* $Id: server.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -788,7 +788,9 @@ int main(int argc, char **argv)
      * Initialize the VBox runtime without loading
      * the support driver
      */
-    RTR3Init();
+    int vrc = RTR3InitExe(argc, &argv, 0);
+    if (RT_FAILURE(vrc))
+        return RTMsgInitFailure(vrc);
 
     static const RTGETOPTDEF s_aOptions[] =
     {
@@ -810,7 +812,7 @@ int main(int argc, char **argv)
     PRFileDesc      *daemon_pipe_wr = nsnull;
 
     RTGETOPTSTATE   GetOptState;
-    int vrc = RTGetOptInit(&GetOptState, argc, argv, &s_aOptions[0], RT_ELEMENTS(s_aOptions), 1, 0 /*fFlags*/);
+    vrc = RTGetOptInit(&GetOptState, argc, argv, &s_aOptions[0], RT_ELEMENTS(s_aOptions), 1, 0 /*fFlags*/);
     AssertRC(vrc);
 
     RTGETOPTUNION   ValueUnion;

@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 35404 2011-01-05 11:32:29Z vboxsync $ */
+/* $Id: scm.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -3972,7 +3972,7 @@ static int scmProcessSomething(const char *pszSomething, PSCMSETTINGS pSettingsS
 
 int main(int argc, char **argv)
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
         return 1;
 
@@ -4090,7 +4090,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 35404 $";
+                static const char s_szRev[] = "$Revision: 38636 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

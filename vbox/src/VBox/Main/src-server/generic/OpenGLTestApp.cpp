@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 36344 2011-03-22 14:29:37Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -210,7 +210,7 @@ int main(int argc, char **argv)
 {
     int rc = 0;
 
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     if(argc < 2)
     {

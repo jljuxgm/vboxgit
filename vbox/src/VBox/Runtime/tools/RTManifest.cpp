@@ -1,4 +1,4 @@
-/* $Id: RTManifest.cpp 34466 2010-11-29 15:00:56Z vboxsync $ */
+/* $Id: RTManifest.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - Manifest Utility.
  */
@@ -276,7 +276,7 @@ static RTEXITCODE rtManifestDoCreate(const char *pszManifest, bool fStdFormat, c
 
 int main(int argc, char **argv)
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 

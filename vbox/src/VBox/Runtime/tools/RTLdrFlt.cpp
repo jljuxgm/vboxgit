@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 38619 2011-09-03 19:51:02Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -116,7 +116,7 @@ static bool TryParseAddress(const char *psz, size_t *pcchAddress, uint64_t *pu64
 
 int main(int argc, char **argv)
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 
@@ -176,7 +176,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 38619 $\n");
+                RTPrintf("$Revision: 38636 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:

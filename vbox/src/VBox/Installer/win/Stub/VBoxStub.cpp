@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 37989 2011-07-18 08:51:46Z vboxsync $ */
+/* $Id: VBoxStub.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -345,7 +345,7 @@ int WINAPI WinMain(HINSTANCE  hInstance,
     }
 
     /* Init IPRT. */
-    int vrc = RTR3Init();
+    int vrc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(vrc))
         return vrc;
 

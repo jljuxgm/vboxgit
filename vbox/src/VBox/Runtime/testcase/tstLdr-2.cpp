@@ -1,4 +1,4 @@
-/* $Id: tstLdr-2.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstLdr-2.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -172,7 +172,7 @@ static int testLdrOne(const char *pszFilename)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     int rcRet = 0;
     if (argc <= 1)

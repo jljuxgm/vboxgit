@@ -1,4 +1,4 @@
-/* $Id: tstDir-2.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstDir-2.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing & filtering .
  */
@@ -32,7 +32,7 @@
 int main(int argc, char **argv)
 {
     int rcRet = 0;
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     /*
      * Iterate arguments.

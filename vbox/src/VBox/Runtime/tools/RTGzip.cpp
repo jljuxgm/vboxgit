@@ -1,4 +1,4 @@
-/* $Id: RTGzip.cpp 34464 2010-11-29 13:45:37Z vboxsync $ */
+/* $Id: RTGzip.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - GZIP Utility.
  */
@@ -207,7 +207,7 @@ static RTEXITCODE gzipListFile(const char *pszFile, bool fForce)
 
 int main(int argc, char **argv)
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 

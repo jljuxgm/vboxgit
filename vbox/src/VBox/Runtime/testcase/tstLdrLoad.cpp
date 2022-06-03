@@ -1,4 +1,4 @@
-/* $Id: tstLdrLoad.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstLdrLoad.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Native Loader.
  */
@@ -30,10 +30,10 @@
 #include <iprt/initterm.h>
 #include <iprt/err.h>
 
-int main(int argc, const char * const *argv)
+int main(int argc, char **argv)
 {
     int rcRet = 0;
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     /*
      * If no args, display usage.

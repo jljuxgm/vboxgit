@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 36469 2011-03-30 08:52:15Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -30,6 +30,7 @@
 #include <iprt/net.h>                   /* must come before getopt */
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
+#include <iprt/message.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/stream.h>
@@ -2037,12 +2038,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
 int main(int argc, char **argv, char **envp)
 {
-    int rc = RTR3InitAndSUPLib();
+    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
     if (RT_FAILURE(rc))
-    {
-        RTStrmPrintf(g_pStdErr, "VBoxNetDHCP: RTR3InitAndSupLib failed, rc=%Rrc\n", rc);
-        return 1;
-    }
+        return RTMsgInitFailure(rc);
 
     return TrustedMain(argc, argv, envp);
 }

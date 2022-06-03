@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -913,9 +913,9 @@ int main(int argc, char **argv)
     /*
      * Before we do *anything*, we initialize the runtime.
      */
-    int rc = RTR3Init();
+    int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
-        return FatalError("RTR3Init failed rc=%Rrc\n", rc);
+        return FatalError("RTR3InitExe failed rc=%Rrc\n", rc);
 
     return TrustedMain(argc, argv, NULL);
 }

@@ -1,4 +1,4 @@
-/* $Id: main.cpp 38476 2011-08-16 13:25:17Z vboxsync $ */
+/* $Id: main.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -567,11 +567,7 @@ int main (int argc, char **argv, char **envp)
         }
     }
 
-    int rc;
-    if (!fInitSUPLib)
-        rc = RTR3Init();
-    else
-        rc = RTR3InitAndSUPLib();
+    int rc = RTR3InitExe(argc, &argv, fInitSUPLib ? RTR3INIT_FLAGS_SUPLIB : 0);
     if (RT_FAILURE(rc))
     {
         QApplication a (argc, &argv[0]);

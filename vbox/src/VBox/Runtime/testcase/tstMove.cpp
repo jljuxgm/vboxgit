@@ -1,4 +1,4 @@
-/* $Id: tstMove.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstMove.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - RTFileMove & RTDirMove test program.
  */
@@ -54,7 +54,7 @@ static bool HasHelpOption(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     /*
      * Arguments or any -? or --help?

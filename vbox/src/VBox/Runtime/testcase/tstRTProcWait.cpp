@@ -1,4 +1,4 @@
-/* $Id: tstRTProcWait.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTProcWait.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcWait.
  */
@@ -58,7 +58,7 @@ DECLCALLBACK(int) SpawnerThread(RTTHREAD Thread, void *pvUser)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     if (argc == 2 && !strcmp(argv[1], "child"))
         return 42;
 

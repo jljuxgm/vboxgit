@@ -1,4 +1,4 @@
-/* $Id: tstTimerLR.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstTimerLR.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Low Resolution Timers.
  */
@@ -31,6 +31,7 @@
 #include <iprt/time.h>
 #include <iprt/thread.h>
 #include <iprt/initterm.h>
+#include <iprt/message.h>
 #include <iprt/stream.h>
 #include <iprt/err.h>
 
@@ -67,12 +68,9 @@ int main()
      * Init runtime
      */
     unsigned cErrors = 0;
-    int rc = RTR3Init();
+    int rc = RTR3InitExeNoArguments(0);
     if (RT_FAILURE(rc))
-    {
-        RTPrintf("tstTimer: RTR3Init() -> %d\n", rc);
-        return 1;
-    }
+        return RTMsgInitFailure(rc);
 
     /*
      * Check that the clock is reliable.

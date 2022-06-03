@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 37862 2011-07-11 10:09:29Z vboxsync $ */
+/* $Id: tstOVF.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -281,7 +281,7 @@ void copyDummyDiskImage(const char *pcszPrefix,
  */
 int main(int argc, char *argv[])
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     HRESULT rc = S_OK;
 

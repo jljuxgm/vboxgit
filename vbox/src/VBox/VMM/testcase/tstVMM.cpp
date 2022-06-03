@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: tstVMM.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -30,6 +30,7 @@
 #include <iprt/ctype.h>
 #include <iprt/getopt.h>
 #include <iprt/initterm.h>
+#include <iprt/message.h>
 #include <iprt/semaphore.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
@@ -179,12 +180,9 @@ int main(int argc, char **argv)
     /*
      * Init runtime and the test environment.
      */
-    int rc = RTR3InitAndSUPLib();
+    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
     if (RT_FAILURE(rc))
-    {
-        RTPrintf("tstVMM: RTR3InitAndSUPLib failed: %Rrc\n", rc);
-        return 1;
-    }
+        return RTMsgInitFailure(rc);
     RTTEST hTest;
     rc = RTTestCreate("tstVMM", &hTest);
     if (RT_FAILURE(rc))

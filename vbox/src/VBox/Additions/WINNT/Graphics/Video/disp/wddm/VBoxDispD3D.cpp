@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 38565 2011-08-30 09:28:15Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -2830,7 +2830,7 @@ BOOL WINAPI DllMain(HINSTANCE hInstance,
 #ifdef VBOXWDDMDISP_DEBUG_VEHANDLER
             vboxVDbgVEHandlerRegister();
 #endif
-            int rc = RTR3Init();
+            int rc = RTR3InitDll(0);
             AssertRC(rc);
             if (RT_SUCCESS(rc))
             {

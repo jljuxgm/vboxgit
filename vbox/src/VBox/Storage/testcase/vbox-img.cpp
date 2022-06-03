@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 38469 2011-08-16 10:34:32Z vboxsync $ */
+/* $Id: vbox-img.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1025,9 +1025,11 @@ int handleCreateCache(HandlerArg *a)
 
 int main(int argc, char *argv[])
 {
-    RTR3Init();
-    int rc;
     int exitcode = 0;
+
+    int rc = RTR3InitExe(argc, &argv, 0);
+    if (RT_FAILURE(rc))
+        return RTMsgInitFailure(rc);
 
     g_pszProgName = RTPathFilename(argv[0]);
 

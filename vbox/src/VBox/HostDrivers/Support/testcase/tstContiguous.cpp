@@ -1,4 +1,4 @@
-/* $Id: tstContiguous.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstContiguous.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * SUP Testcase - Contiguous Memory Interface (ring-3).
  */
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     int rc;
     int rcRet = 0;
 
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     rc = SUPR3Init(NULL);
     RTPrintf("tstContiguous: SUPR3Init -> rc=%Rrc\n", rc);
     rcRet += rc != 0;

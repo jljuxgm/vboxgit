@@ -1,4 +1,4 @@
-/* $Id: pam_vbox.cpp 38548 2011-08-26 13:25:29Z vboxsync $ */
+/* $Id: pam_vbox.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
@@ -226,7 +226,7 @@ static int pam_vbox_init(pam_handle_t *hPAM)
      * This could result in not able to log into the system anymore. */
     RTAssertSetMayPanic(false);
 
-    int rc = RTR3Init();
+    int rc = RTR3InitDll(0);
     if (RT_FAILURE(rc))
     {
         pam_vbox_error(hPAM, "pam_vbox_init: could not init runtime! rc=%Rrc. Aborting\n", rc);

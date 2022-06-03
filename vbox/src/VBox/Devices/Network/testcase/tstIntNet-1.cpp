@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 36470 2011-03-30 09:36:09Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -601,7 +601,7 @@ int main(int argc, char **argv)
     /*
      * Init the runtime and parse the arguments.
      */
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     static RTGETOPTDEF const s_aOptions[] =
     {
@@ -749,7 +749,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 36470 $\n");
+                RTPrintf("$Revision: 38636 $\n");
                 return 0;
 
             default:

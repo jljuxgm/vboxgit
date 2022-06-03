@@ -1,4 +1,4 @@
-/* $Id: timeprog.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: timeprog.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT - Time Relative to Program Start.
  */
@@ -79,7 +79,7 @@ RT_EXPORT_SYMBOL(RTTimeProgramMilliTS);
  */
 RTDECL(uint32_t)  RTTimeProgramSecTS(void)
 {
-    AssertMsg(g_u64ProgramStartMilliTS, ("RTR3Init hasn't been called!\n"));
+    AssertMsg(g_u64ProgramStartMilliTS, ("rtR3Init hasn't been called!\n"));
     return (uint32_t)(RTTimeProgramMilliTS() / 1000);
 }
 RT_EXPORT_SYMBOL(RTTimeProgramSecTS);

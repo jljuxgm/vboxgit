@@ -1,4 +1,4 @@
-/* $Id: tstDir-3.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
+/* $Id: tstDir-3.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing & filtering (no parameters needed).
  */
@@ -79,7 +79,7 @@ int main(int argc, char **argv)
     int rcRet2;
     int rc;
     unsigned cMatch;
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     const char *pszTestDir = ".";
 

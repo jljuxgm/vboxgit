@@ -1,4 +1,4 @@
-/** $Id: tstUSBFilter.cpp 31898 2010-08-24 09:28:43Z vboxsync $ */
+/** $Id: tstUSBFilter.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VirtualBox USB filter abstraction - testcase.
  */
@@ -77,7 +77,7 @@ static const char g_szString256[256+1] =
 int main()
 {
     unsigned cErrors = 0;
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
 
     /*
      * Basic property setting and simple matching.

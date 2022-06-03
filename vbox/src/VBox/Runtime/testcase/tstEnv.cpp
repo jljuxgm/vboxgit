@@ -1,4 +1,4 @@
-/* $Id: tstEnv.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstEnv.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Environment.
  */
@@ -36,7 +36,7 @@
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
     RTPrintf("tstEnv: TESTING...\n");
 
     int cErrors = 0;

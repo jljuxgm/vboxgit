@@ -1,4 +1,4 @@
-/* $Id: tstOnce.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstOnce.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTOnce.
  */
@@ -104,7 +104,7 @@ static DECLCALLBACK(int) Once2Thread(RTTHREAD hThread, void *pvUser)
 
 int main()
 {
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
 
     /*
      * Just a simple testcase.

@@ -1,4 +1,4 @@
-/* $Id: tstTSC.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstTSC.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - SMP TSC testcase.
  */
@@ -405,7 +405,7 @@ static int tstTSCCalcFrequency(uint32_t cMsDuration)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     /*
      * Parse arguments.

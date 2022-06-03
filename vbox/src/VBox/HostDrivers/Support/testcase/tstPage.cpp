@@ -1,4 +1,4 @@
-/* $Id: tstPage.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstPage.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * SUP Testcase - Page allocation interface (ring 3).
  */
@@ -38,9 +38,9 @@
 int main(int argc, char **argv)
 {
     int cErrors = 0;
-    int rc = 0;
-    RTR3InitAndSUPLib();
-    rc = SUPR3Init(NULL);
+
+    RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
+    int rc = SUPR3Init(NULL);
     cErrors += rc != 0;
     if (!rc)
     {

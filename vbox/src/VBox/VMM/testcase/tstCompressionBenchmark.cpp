@@ -1,4 +1,4 @@
-/* $Id: tstCompressionBenchmark.cpp 33550 2010-10-28 10:53:57Z vboxsync $ */
+/* $Id: tstCompressionBenchmark.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Compression Benchmark for SSM and PGM.
  */
@@ -232,7 +232,7 @@ static int Error(const char *pszMsgFmt, ...)
 
 int main(int argc, char **argv)
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
 
     /*
      * Parse arguments.

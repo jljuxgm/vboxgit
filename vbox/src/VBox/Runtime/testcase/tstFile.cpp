@@ -1,4 +1,4 @@
-/* $Id: tstFile.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstFile.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - File I/O.
  */
@@ -39,7 +39,7 @@ int main()
 {
     int         cErrors = 0;
     RTPrintf("tstFile: TESTING\n");
-    RTR3Init();
+    RTR3InitExeNoArguments(0);
 
     RTFILE    File;
     int rc = RTFileOpen(&File, "tstFile#1.tst", RTFILE_O_READWRITE | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_NONE);

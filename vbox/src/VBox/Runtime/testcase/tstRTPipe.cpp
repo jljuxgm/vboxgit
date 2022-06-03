@@ -1,4 +1,4 @@
-/* $Id: tstRTPipe.cpp 33806 2010-11-05 17:20:15Z vboxsync $ */
+/* $Id: tstRTPipe.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTPipe.
  */
@@ -50,7 +50,7 @@ static const char g_szTest5Message[] = "This is test #5, everything is working f
 
 static RTEXITCODE tstRTPipe5Child(const char *pszPipe)
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitExeNoArguments(0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 
@@ -127,7 +127,7 @@ static void tstRTPipe5(void)
 
 static RTEXITCODE tstRTPipe4Child(const char *pszPipe)
 {
-    int rc = RTR3Init();
+    int rc = RTR3InitExeNoArguments(0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 38626 2011-09-05 09:53:39Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1351,7 +1351,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 int main(int argc, char **argv, char **envp)
 {
     // initialize VBox Runtime
-    int rc = RTR3InitAndSUPLib();
+    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
     if (RT_FAILURE(rc))
     {
         RTPrintf("VBoxHeadless: Runtime Error:\n"

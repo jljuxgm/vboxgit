@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: SUPLibInternal.h 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -276,7 +276,7 @@ int     suplibOsQueryVTxSupported(void);
  * Performs the pre-initialization of the support library.
  *
  * This is dynamically resolved and invoked by the static library before it
- * calls RTR3Init and thereby SUPR3Init.
+ * calls RTR3InitEx and thereby SUPR3Init.
  *
  * @returns IPRT status code.
  * @param   pPreInitData    The pre init data.

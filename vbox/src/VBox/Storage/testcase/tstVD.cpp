@@ -1,4 +1,4 @@
-/* $Id: tstVD.cpp 38469 2011-08-16 10:34:32Z vboxsync $ */
+/* $Id: tstVD.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility.
  */
@@ -842,7 +842,7 @@ static void tstVmdk()
 
 int main(int argc, char *argv[])
 {
-    RTR3Init();
+    RTR3InitExe(argc, &argv, 0);
     int rc;
 
     uint32_t u32Seed = 0; // Means choose random
