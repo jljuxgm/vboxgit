@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: thread.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -384,7 +384,7 @@ PRTTHREADINT rtThreadAlloc(RTTHREADTYPE enmType, unsigned fFlags, uint32_t fIntF
         }
         RTMemFree(pThread);
     }
-    return NULL;
+    return (PRTTHREADINT)NULL;
 }
 
 
@@ -537,7 +537,7 @@ DECLHIDDEN(PRTTHREADINT) rtThreadGet(RTTHREAD Thread)
     }
 
     AssertMsgFailed(("Thread=%RTthrd\n", Thread));
-    return NULL;
+    return (PRTTHREADINT)NULL;
 }
 
 /**
@@ -905,7 +905,7 @@ RTDECL(const char *) RTThreadSelfName(void)
             return szName;
         }
     }
-    return NULL;
+    return (char *)NULL;
 }
 RT_EXPORT_SYMBOL(RTThreadSelfName);
 
@@ -921,7 +921,7 @@ RTDECL(const char *) RTThreadGetName(RTTHREAD Thread)
 {
     PRTTHREADINT pThread;
     if (Thread == NIL_RTTHREAD)
-        return NULL;
+        return (char *)NULL;
     pThread = rtThreadGet(Thread);
     if (pThread)
     {
@@ -929,7 +929,7 @@ RTDECL(const char *) RTThreadGetName(RTTHREAD Thread)
         rtThreadRelease(pThread);
         return szName;
     }
-    return NULL;
+    return (char *)NULL;
 }
 RT_EXPORT_SYMBOL(RTThreadGetName);
 

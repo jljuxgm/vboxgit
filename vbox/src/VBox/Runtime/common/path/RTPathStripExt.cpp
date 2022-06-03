@@ -1,4 +1,4 @@
-/* $Id: RTPathStripExt.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTPathStripExt.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - RTPathStripExt
  */
@@ -41,7 +41,7 @@
  */
 RTDECL(void) RTPathStripExt(char *pszPath)
 {
-    char *pszDot = NULL;
+    char *pszDot = (char *)NULL;
     for (;; pszPath++)
     {
         switch (*pszPath)
@@ -52,7 +52,7 @@ RTDECL(void) RTPathStripExt(char *pszPath)
             case '\\':
 #endif
             case '/':
-                pszDot = NULL;
+                pszDot = (char *)NULL;
                 break;
             case '.':
                 pszDot = pszPath;

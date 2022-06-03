@@ -1,4 +1,4 @@
-/* $Id: stringalloc.cpp 40798 2012-04-06 16:44:13Z vboxsync $ */
+/* $Id: stringalloc.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - String Manipulation.
  */
@@ -70,7 +70,7 @@ RTDECL(int) RTStrReallocTag(char **ppsz, size_t cbNew, const char *pszTag)
     if (!cbNew)
     {
         RTMemFree(pszOld);
-        *ppsz = NULL;
+        *ppsz = (char *)NULL;
     }
     else if (pszOld)
     {

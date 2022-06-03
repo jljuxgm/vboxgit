@@ -1,4 +1,4 @@
-/* $Id: RTPathExt.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTPathExt.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - RTPathExt
  */
@@ -42,7 +42,7 @@
 RTDECL(char *) RTPathExt(const char *pszPath)
 {
     const char *psz = pszPath;
-    const char *pszExt = NULL;
+    const char *pszExt = (char *)NULL;
 
     for (;; psz++)
     {
@@ -51,13 +51,13 @@ RTDECL(char *) RTPathExt(const char *pszPath)
             /* handle separators. */
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
             case ':':
-                pszExt = NULL;
+                pszExt = (char *)NULL;
                 break;
 
             case '\\':
 #endif
             case '/':
-                pszExt = NULL;
+                pszExt = (char *)NULL;
                 break;
             case '.':
                 pszExt = psz;
@@ -67,11 +67,11 @@ RTDECL(char *) RTPathExt(const char *pszPath)
             case '\0':
                 if (pszExt)
                     return (char *)(void *)pszExt;
-                return NULL;
+                return (char *)NULL;
         }
     }
 
     /* will never get here */
-    return NULL;
+    return (char *)NULL;
 }
 

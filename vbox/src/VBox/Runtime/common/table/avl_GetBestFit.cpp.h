@@ -1,4 +1,4 @@
-/* $Id: avl_GetBestFit.cpp.h 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: avl_GetBestFit.cpp.h 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * kAVLGetBestFit - Get Best Fit routine for AVL trees.
  *                  Intended specially on heaps. The tree should allow duplicate keys.
@@ -46,7 +46,7 @@ KAVL_DECL(PKAVLNODECORE) KAVL_FN(GetBestFit)(PPKAVLNODECORE ppTree, KAVLKEY Key,
     register PKAVLNODECORE  pNode = KAVL_GET_POINTER_NULL(ppTree);
     if (pNode)
     {
-        PKAVLNODECORE           pNodeLast = NULL;
+        PKAVLNODECORE           pNodeLast = KAVL_NULL;
         if (fAbove)
         {   /* pNode->Key >= Key */
             while (KAVL_NE(pNode->Key, Key))

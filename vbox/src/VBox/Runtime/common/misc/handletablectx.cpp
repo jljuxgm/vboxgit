@@ -1,4 +1,4 @@
-/* $Id: handletablectx.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: handletablectx.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -120,7 +120,7 @@ RTDECL(int)     RTHandleTableAllocWithCtx(RTHANDLETABLE hHandleTable, void *pvOb
              * Do the allocation(s).
              */
             rc = VERR_TRY_AGAIN;
-            papvLevel1 = NULL;
+            papvLevel1 = (void **)NULL;
             if (cLevel1)
             {
                 papvLevel1 = (void **)RTMemAlloc(sizeof(void *) * cLevel1);

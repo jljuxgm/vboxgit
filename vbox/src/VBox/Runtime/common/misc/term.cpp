@@ -1,4 +1,4 @@
-/* $Id: term.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: term.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - Common Termination Code.
  */
@@ -68,7 +68,7 @@ static RTSEMFASTMUTEX       g_hFastMutex = NIL_RTSEMFASTMUTEX;
 /** Number of registered callbacks.  */
 static uint32_t             g_cCallbacks = 0;
 /** The callback head. */
-static PRTTERMCALLBACKREC   g_pCallbackHead = NULL;
+static PRTTERMCALLBACKREC   g_pCallbackHead = (PRTTERMCALLBACKREC)NULL;
 
 
 
@@ -160,7 +160,7 @@ RTDECL(int) RTTermDeregisterCallback(PFNRTTERMCALLBACK pfnCallback, void *pvUser
         /*
          * Search for the specified pfnCallback/pvUser pair.
          */
-        PRTTERMCALLBACKREC pPrev = NULL;
+        PRTTERMCALLBACKREC pPrev = (PRTTERMCALLBACKREC)NULL;
         PRTTERMCALLBACKREC pCur  = g_pCallbackHead;
         while (pCur)
         {
@@ -174,7 +174,7 @@ RTDECL(int) RTTermDeregisterCallback(PFNRTTERMCALLBACK pfnCallback, void *pvUser
                 g_cCallbacks--;
                 RTSemFastMutexRelease(hFastMutex);
 
-                pCur->pfnCallback = NULL;
+                pCur->pfnCallback = (PFNRTTERMCALLBACK)NULL;
                 RTMemFree(pCur);
                 return VINF_SUCCESS;
             }

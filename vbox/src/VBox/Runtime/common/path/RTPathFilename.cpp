@@ -1,4 +1,4 @@
-/* $Id: RTPathFilename.cpp 39243 2011-11-08 15:36:46Z vboxsync $ */
+/* $Id: RTPathFilename.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - RTPathFilename
  */
@@ -66,7 +66,7 @@ RTDECL(char *) RTPathFilename(const char *pszPath)
             case '\0':
                 if (*pszName)
                     return (char *)(void *)pszName;
-                return NULL;
+                return (char *)NULL;
         }
     }
 

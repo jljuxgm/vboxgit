@@ -1,4 +1,4 @@
-/* $Id: straprintf.cpp 33464 2010-10-26 12:27:50Z vboxsync $ */
+/* $Id: straprintf.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - Allocating String Formatters.
  */
@@ -131,7 +131,7 @@ static DECLCALLBACK(size_t) strallocoutput(void *pvArg, const char *pachChars, s
         /* else wrap around */
 
         /* failure */
-        pArg->psz = NULL;
+        pArg->psz = (char *)NULL;
     }
     return 0;
 }
@@ -152,7 +152,7 @@ RTDECL(int) RTStrAPrintfVTag(char **ppszBuffer, const char *pszFormat, va_list a
     Arg.psz         = szBuf;
     Arg.pszTag      = pszTag;
     szBuf[0] = '\0';
-    int cbRet = (int)RTStrFormatV(strallocoutput, &Arg, NULL, NULL, pszFormat, args);
+    int cbRet = (int)RTStrFormatV(strallocoutput, &Arg, (PFNSTRFORMAT)NULL, NULL, pszFormat, args);
     if (Arg.psz)
     {
         if (!Arg.fAllocated)
@@ -174,7 +174,7 @@ RTDECL(int) RTStrAPrintfVTag(char **ppszBuffer, const char *pszFormat, va_list a
     else
     {
         /* allocation error */
-        *ppszBuffer = NULL;
+        *ppszBuffer = (char *)NULL;
         cbRet = -1;
 
         /* free any allocated buffer */

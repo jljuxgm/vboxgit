@@ -1,4 +1,4 @@
-/* $Id: randparkmiller.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: randparkmiller.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers, Park-Miller Pseudo Random.
  */
@@ -151,7 +151,7 @@ static DECLCALLBACK(int) rtRandParkMillerRestoreState(PRTRANDINT pThis, char con
     pszState += 3;
 
     /* u32Ctx */
-    char *pszNext = NULL;
+    char *pszNext = (char *)NULL;
     uint32_t u32Ctx;
     int rc = RTStrToUInt32Ex(pszState, &pszNext, 16, &u32Ctx);
     if (    rc != VWRN_TRAILING_CHARS

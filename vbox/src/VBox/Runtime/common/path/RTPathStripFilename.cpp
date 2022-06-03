@@ -1,4 +1,4 @@
-/* $Id: RTPathStripFilename.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTPathStripFilename.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
 /** @file
  * IPRT - RTPathStripFilename
  */
@@ -43,7 +43,7 @@
 RTDECL(void) RTPathStripFilename(char *pszPath)
 {
     char *psz = pszPath;
-    char *pszLastSep = NULL;
+    char *pszLastSep = (char *)NULL;
 
 
     for (;; psz++)
