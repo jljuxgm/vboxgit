@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbHook.cpp 38262 2011-08-01 14:10:21Z vboxsync $ */
+/* $Id: VBoxUsbHook.cpp 38356 2011-08-08 15:49:01Z vboxsync $ */
 /** @file
  * Driver Dispatch Table Hooking API
  */
@@ -179,7 +179,7 @@ VOID VBoxUsbHookVerifyCompletion(PVBOXUSBHOOK_ENTRY pHook, PVBOXUSBHOOK_REQUEST 
             continue;
         if (pCur->pIrp != pIrp)
             continue;
-        AssertFailed();
+        WARN(("found pending IRP(0x%p) when it should not be", pIrp));
     }
     KeReleaseSpinLock(&pHook->Lock, oldIrql);
 

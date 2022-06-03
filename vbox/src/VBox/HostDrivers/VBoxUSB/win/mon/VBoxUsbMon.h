@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.h 38262 2011-08-01 14:10:21Z vboxsync $ */
+/* $Id: VBoxUsbMon.h 38356 2011-08-08 15:49:01Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -30,7 +30,6 @@
 //#define VBOXUSBMON_DBG_NO_PNPHOOK
 #endif
 
-#define VBOX_DBG_LOG_NAME "USBMon"
 #include "../../../win/VBoxDbgLog.h"
 #include "../cmn/VBoxDrvTool.h"
 #include "../cmn/VBoxUsbTool.h"
