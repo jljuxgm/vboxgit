@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 38655 2011-09-06 10:54:10Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 38668 2011-09-06 18:23:28Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -191,7 +191,6 @@ AssertCompileMemberOffset(VBOXGUESTDEVEXT, win, 384);
 AssertCompileMemberOffset(VBOXGUESTDEVEXT, win, 320);
 #endif
 AssertCompileMemberAlignment(VBOXGUESTDEVEXT, win, 64);
-AssertCompileMembersSameSize(VBOXGUESTDEVEXT, win, VBOXGUESTDEVEXT, win.padding);
 
 /**
  * The VBoxGuest per session data.
