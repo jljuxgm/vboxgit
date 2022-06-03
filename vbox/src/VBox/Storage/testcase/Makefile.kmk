@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 41576 2012-06-05 12:08:04Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -79,6 +79,7 @@ ifdef VBOX_WITH_TESTCASES
  vbox-img_SOURCES = \
 	vbox-img.cpp \
 	$(VBOX_PATH_STORAGE_SRC)/VD.cpp \
+	$(VBOX_PATH_STORAGE_SRC)/VDVfs.cpp \
 	$(VBOX_PATH_STORAGE_SRC)/VDI.cpp \
 	$(VBOX_PATH_STORAGE_SRC)/VMDK.cpp \
 	$(VBOX_PATH_STORAGE_SRC)/VHD.cpp \
