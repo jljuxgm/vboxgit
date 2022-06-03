@@ -1,4 +1,4 @@
-/* $Id: scmstream.h 41186 2012-05-07 13:42:20Z vboxsync $ */
+/* $Id: scmstream.h 41194 2012-05-07 20:23:52Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -101,6 +101,7 @@ int         ScmStreamWriteToStdOut(PSCMSTREAM pStream);
 
 size_t      ScmStreamTell(PSCMSTREAM pStream);
 size_t      ScmStreamTellLine(PSCMSTREAM pStream);
+size_t      ScmStreamTellOffsetOfLine(PSCMSTREAM pStream, size_t iLine);
 size_t      ScmStreamSize(PSCMSTREAM pStream);
 size_t      ScmStreamCountLines(PSCMSTREAM pStream);
 int         ScmStreamSeekAbsolute(PSCMSTREAM pStream, size_t offAbsolute);
