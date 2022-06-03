@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 38348 2011-08-08 12:09:18Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 38351 2011-08-08 14:00:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -690,7 +690,7 @@ protected:
 };
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 
-#ifdef Q_WS_MAC
+#ifdef RT_OS_DARWIN
 class DockMenuAction : public UIMenuAction
 {
     Q_OBJECT;
