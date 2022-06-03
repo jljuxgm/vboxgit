@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 40091 2012-02-13 10:14:00Z vboxsync $ */
+/* $Id: utf-8.cpp 40123 2012-02-14 11:16:58Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -364,9 +364,12 @@ RTDECL(ssize_t) RTStrPurgeComplementSet(char *psz, PCRTUNICP puszValidSet, char 
             return -1;
         if (!Cp)
             break;
-        for (pCp = puszValidSet; ; ++pCp)
-            if (!*pCp || *pCp == Cp)
+        for (pCp = puszValidSet; *pCp; pCp += 2)
+        {
+            AssertReturn(*(pCp + 1), -1);
+            if (*pCp <= Cp && *(pCp + 1) >= Cp) /* No, I won't do * and ++. */
                 break;
+        }
         if (!*pCp)
         {
             for (; pszOld != psz; ++pszOld)
