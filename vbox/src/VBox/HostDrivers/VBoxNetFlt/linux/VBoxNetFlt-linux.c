@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 36100 2011-02-28 14:31:24Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 36115 2011-03-01 09:35:29Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1004,7 +1004,7 @@ static void vboxNetFltLinuxUnhookDev(PVBOXNETFLTINS pThis, struct net_device *pD
 # if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 29)
             ASMAtomicWritePtr((void * volatile *)&pDev->hard_start_xmit, pOverride->pfnStartXmit);
 # endif /* LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 29) */
-            ASMAtomicWritePtr((void * volatile *)&pDev->OVR_OPS, pOverride->pOrgOps);
+            ASMAtomicWritePtr((void const * volatile *)&pDev->OVR_OPS, pOverride->pOrgOps);
             ASMAtomicWriteU32(&pOverride->u32Magic, 0);
         }
         else
