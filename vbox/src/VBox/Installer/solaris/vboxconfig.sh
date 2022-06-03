@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 39780 2012-01-17 13:54:16Z vboxsync $
+# $Id: vboxconfig.sh 39782 2012-01-17 18:34:27Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -936,7 +936,9 @@ postinstall()
                             warnprint "VirtualBox installers incorrectly overwrote. Now the contents"
                             warnprint "of /etc/netmasks and /etc/inet/netmasks differ, therefore "
                             warnprint "VirtualBox will not attempt to overwrite /etc/netmasks as a"
-                            warnprint "symlink to /etc/inet/netmasks. Please resolve this manually."
+                            warnprint "symlink to /etc/inet/netmasks. Please resolve this manually"
+                            warnprint "by updating /etc/inet/netmasks and creating /etc/netmasks as a"
+                            warnprint "symlink to /etc/inet/netmasks"
                         fi
                     fi
                 else
