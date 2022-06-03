@@ -1,4 +1,4 @@
-/* $Id: dbg.h 40668 2012-03-27 17:30:51Z vboxsync $ */
+/* $Id: dbg.h 40705 2012-03-29 10:56:16Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -31,6 +31,8 @@
 #include <iprt/stdarg.h>
 
 RT_C_DECLS_BEGIN
+
+# ifdef IN_RING3
 
 /** @defgroup grp_rt_dbg    RTDbg - Debugging Routines
  * @ingroup grp_rt
@@ -1146,6 +1148,9 @@ RTDECL(int)         RTDbgModLineByAddr(RTDBGMOD hDbgMod, RTDBGSEGIDX iSeg, RTUIN
 RTDECL(int)         RTDbgModLineByAddrA(RTDBGMOD hDbgMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTINTPTR poffDisp, PRTDBGLINE *ppLineInfo);
 /** @} */
 
+# endif /* IN_RING3 */
+
+# ifdef IN_RING0
 
 /** @name Kernel Debug Info API
  *
@@ -1234,6 +1239,7 @@ RTR0DECL(int)       RTR0DbgKrnlInfoQuerySymbol(RTDBGKRNLINFO hKrnlInfo, const ch
                                                const char *pszSymbol, void **ppvSymbol);
 /** @} */
 
+# endif /* IN_RING0 */
 
 /** @} */
 
