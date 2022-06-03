@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 34941 2010-12-10 10:58:06Z vboxsync $ */
+/* $Id: manifest2.cpp 39080 2011-10-21 14:26:05Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -225,6 +225,7 @@ static DECLCALLBACK(int) rtManifestDestroyAttribute(PRTSTRSPACECORE pStr, void *
     RTStrFree(pAttr->pszValue);
     pAttr->pszValue = NULL;
     RTMemFree(pAttr);
+    NOREF(pvUser);
     return 0;
 }
 
@@ -299,6 +300,7 @@ static DECLCALLBACK(int) rtManifestAttributeClearVisited(PRTSTRSPACECORE pStr, v
 {
     PRTMANIFESTATTR pAttr = RT_FROM_MEMBER(pStr, RTMANIFESTATTR, StrCore);
     pAttr->fVisited = false;
+    NOREF(pvUser);
     return 0;
 }
 
@@ -311,6 +313,7 @@ static DECLCALLBACK(int) rtManifestEntryClearVisited(PRTSTRSPACECORE pStr, void 
     PRTMANIFESTENTRY pEntry = RT_FROM_MEMBER(pStr, RTMANIFESTENTRY, StrCore);
     RTStrSpaceEnumerate(&pEntry->Attributes, rtManifestAttributeClearVisited, NULL);
     pEntry->fVisited = false;
+    NOREF(pvUser);
     return 0;
 }
 

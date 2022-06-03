@@ -1,4 +1,4 @@
-/* $Id: memtracker.cpp 36674 2011-04-14 16:03:06Z vboxsync $ */
+/* $Id: memtracker.cpp 39080 2011-10-21 14:26:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Tracker & Leak Detector.
  */
@@ -634,6 +634,7 @@ static void *rtMemTrackerHdrFreeCommon(PRTMEMTRACKERINT pTracker, void *pvUser, 
         /** @todo we're currently ignoring pszTag, consider how to correctly
          *        attribute the free operation if the tags differ - it
          *        makes sense at all... */
+        NOREF(pszTag);
         if (pHdr->pTag)
             rtMemTrackerStateRecordFree(&pHdr->pTag->Stats, pHdr->cbUser, enmMethod);
 
@@ -930,6 +931,7 @@ static void rtMemTrackerDumpStatsWorker(PRTMEMTRACKERINT pTracker, PRTMEMTRACKER
  */
 static DECLCALLBACK(void) rtMemTrackerDumpLogOutput(PRTMEMTRACKEROUTPUT pThis, const char *pszFormat, ...)
 {
+    NOREF(pThis);
     va_list va;
     va_start(va, pszFormat);
     RTLogPrintfV(pszFormat, va);
@@ -971,6 +973,7 @@ static void rtMemTrackerDumpStatsToLogEx(PRTMEMTRACKERINT pTracker, bool fVerbos
  */
 static DECLCALLBACK(void) rtMemTrackerDumpLogRelOutput(PRTMEMTRACKEROUTPUT pThis, const char *pszFormat, ...)
 {
+    NOREF(pThis);
     va_list va;
     va_start(va, pszFormat);
     RTLogRelPrintfV(pszFormat, va);

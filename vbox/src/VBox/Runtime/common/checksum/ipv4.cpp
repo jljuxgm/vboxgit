@@ -1,4 +1,4 @@
-/* $Id: ipv4.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: ipv4.cpp 39080 2011-10-21 14:26:05Z vboxsync $ */
 /** @file
  * IPRT - IPv4 Checksum calculation and validation.
  */
@@ -650,9 +650,10 @@ RT_EXPORT_SYMBOL(RTNetIPv4IsTCPValid);
  */
 RTDECL(bool) RTNetIPv4IsDHCPValid(PCRTNETUDP pUdpHdr, PCRTNETBOOTP pDhcp, size_t cbDhcp, uint8_t *pMsgType)
 {
-    ssize_t cbLeft;
-    uint8_t MsgType;
-    PCRTNETDHCPOPT pOpt;
+    ssize_t         cbLeft;
+    uint8_t         MsgType;
+    PCRTNETDHCPOPT  pOpt;
+    NOREF(pUdpHdr); /** @todo rainy-day: Why isn't the UDP header used? */
 
     AssertPtrNull(pMsgType);
     if (pMsgType)
