@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 36989 2011-05-06 16:15:15Z vboxsync $ */
+/* $Id: DevPS2.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1778,7 +1778,7 @@ static DECLCALLBACK(int) kbdConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     /*
      * Initialize the critical section.
      */
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "PS2KM#%d", iInstance);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "PS2KM#%u", iInstance);
     if (RT_FAILURE(rc))
         return rc;
 

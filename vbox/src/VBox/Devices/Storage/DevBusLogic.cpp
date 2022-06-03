@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 36039 2011-02-21 16:01:08Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -3135,7 +3135,7 @@ static DECLCALLBACK(int) buslogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
     pThis->pNotifierQueueR0 = PDMQueueR0Ptr(pThis->pNotifierQueueR3);
     pThis->pNotifierQueueRC = PDMQueueRCPtr(pThis->pNotifierQueueR3);
 
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSectIntr, RT_SRC_POS, "BusLogic-Intr");
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSectIntr, RT_SRC_POS, "BusLogic-Intr#%u", pDevIns->iInstance);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("BusLogic: cannot create critical section"));

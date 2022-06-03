@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 37324 2011-06-03 16:28:03Z vboxsync $ */
+/* $Id: DevPCNet.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -5174,7 +5174,7 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
      * This must be done before register the critsect with the timer code, and also before
      * attaching drivers or anything else that may call us back.
      */
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "PCNet#%d", iInstance);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "PCNet#%u", iInstance);
     if (RT_FAILURE(rc))
         return rc;
 

@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 37264 2011-05-30 14:47:02Z vboxsync $ */
+/* $Id: ATAController.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -5580,7 +5580,7 @@ int ataControllerInit(PPDMDEVINS pDevIns, PAHCIATACONTROLLER pCtl,
                       bool fNonRotationalSlave,
                       uint32_t *pcbSSMState, const char *szName)
 {
-    int      rc;
+    int rc;
 
     AssertMsg(pcbSSMState, ("pcbSSMState is invalid\n"));
 

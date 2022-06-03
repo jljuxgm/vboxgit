@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 37452 2011-06-14 18:13:48Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1136,7 +1136,7 @@ static int iomMMIOHandler(PVM pVM, uint32_t uErrorCode, PCPUMCTXCORE pCtxCore, R
      */
     iomMmioRetainRange(pRange);
     PPDMDEVINS pDevIns = pRange->CTX_SUFF(pDevIns);
-    PPDMCRITSECT pLock = pDevIns->CTX_SUFF(pCritSect);
+    PPDMCRITSECT pLock = pDevIns->CTX_SUFF(pCritSectRo);
     if (!pLock)
         pLock = &pVM->iom.s.EmtLock;
     else
@@ -1375,7 +1375,7 @@ DECLCALLBACK(int) IOMR3MMIOHandler(PVM pVM, RTGCPHYS GCPhysFault, void *pvPhys, 
      */
     iomMmioRetainRange(pRange);
     PPDMDEVINS pDevIns = pRange->CTX_SUFF(pDevIns);
-    PPDMCRITSECT pLock = pDevIns->CTX_SUFF(pCritSect);
+    PPDMCRITSECT pLock = pDevIns->CTX_SUFF(pCritSectRo);
     if (!pLock)
         pLock = &pVM->iom.s.EmtLock;
     else
@@ -1459,7 +1459,7 @@ VMMDECL(VBOXSTRICTRC) IOMMMIORead(PVM pVM, RTGCPHYS GCPhys, uint32_t *pu32Value,
          */
         iomMmioRetainRange(pRange);
         PPDMDEVINS pDevIns = pRange->CTX_SUFF(pDevIns);
-        PPDMCRITSECT pLock = pDevIns->CTX_SUFF(pCritSect);
+        PPDMCRITSECT pLock = pDevIns->CTX_SUFF(pCritSectRo);
         if (!pLock)
             pLock = &pVM->iom.s.EmtLock;
         else
@@ -1609,7 +1609,7 @@ VMMDECL(VBOXSTRICTRC) IOMMMIOWrite(PVM pVM, RTGCPHYS GCPhys, uint32_t u32Value, 
          */
         iomMmioRetainRange(pRange);
         PPDMDEVINS pDevIns = pRange->CTX_SUFF(pDevIns);
-        PPDMCRITSECT pLock = pDevIns->CTX_SUFF(pCritSect);
+        PPDMCRITSECT pLock = pDevIns->CTX_SUFF(pCritSectRo);
         if (!pLock)
             pLock = &pVM->iom.s.EmtLock;
         else

@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 37453 2011-06-14 18:15:11Z vboxsync $ */
+/* $Id: DevAPIC.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -2377,7 +2377,8 @@ static DECLCALLBACK(int) apicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     pThis->enmVersion = PDMAPICVERSION_APIC;
 
     /* Disable locking in this device. */
-    pDevIns->pCritSectR3 = PDMDevHlpCritSectGetNop(pDevIns);
+    rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
+    AssertRCReturn(rc, rc);
 
     PVM pVM = PDMDevHlpGetVM(pDevIns);
 

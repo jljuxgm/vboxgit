@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 37324 2011-06-03 16:28:03Z vboxsync $ */
+/* $Id: DevHPET.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * HPET virtual device - high precision event timer emulation
  */
@@ -1312,7 +1312,7 @@ static DECLCALLBACK(int) hpetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     /*
      * Initialize critical section.
      */
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->csLock, RT_SRC_POS, "HPET");
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->csLock, RT_SRC_POS, "HPET#%u", pDevIns->iInstance);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("HPET cannot initialize critical section"));
 

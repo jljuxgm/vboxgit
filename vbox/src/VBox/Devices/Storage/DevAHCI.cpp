@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 37324 2011-06-03 16:28:03Z vboxsync $ */
+/* $Id: DevAHCI.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -8336,7 +8336,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("AHCI cannot register PCI memory region for registers"));
 
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->lock, RT_SRC_POS, "AHCI%d", pDevIns->iInstance);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->lock, RT_SRC_POS, "AHCI#%u", iInstance);
     if (RT_FAILURE(rc))
     {
         Log(("%s: Failed to create critical section.\n", __FUNCTION__));

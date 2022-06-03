@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 37264 2011-05-30 14:47:02Z vboxsync $ */
+/* $Id: DevATA.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -7031,7 +7031,7 @@ static DECLCALLBACK(int)   ataR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 #endif /* VBOX_WITH_STATISTICS */
 
         /* Initialize per-controller critical section */
-        rc = PDMDevHlpCritSectInit(pDevIns, &pThis->aCts[i].lock, RT_SRC_POS, "ATA%u", i);
+        rc = PDMDevHlpCritSectInit(pDevIns, &pThis->aCts[i].lock, RT_SRC_POS, "ATA#%u", i);
         if (RT_FAILURE(rc))
             return PDMDEV_SET_ERROR(pDevIns, rc, N_("PIIX3 cannot initialize critical section"));
     }
