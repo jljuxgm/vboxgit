@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 36843 2011-04-26 08:33:19Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 36856 2011-04-27 14:39:42Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1775,7 +1775,7 @@ typedef struct H3DORInstance
     if (index == H3DOR_PROP_FORMATS)
     {
         /* Return a comma separated list of supported formats. */
-        static char *pszSupportedFormats = H3DOR_FMT_RGBA_TOPDOWN;
+        static const char *pszSupportedFormats = H3DOR_FMT_RGBA_TOPDOWN;
         uint32_t cbOut = (uint32_t)strlen(pszSupportedFormats) + 1;
         if (cbOut <= cbBuffer)
         {
