@@ -1,4 +1,4 @@
-/* $Id: slirp.h 39085 2011-10-24 06:58:33Z vboxsync $ */
+/* $Id: slirp.h 39101 2011-10-25 02:44:01Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -292,7 +292,7 @@ void if_start (PNATState);
 
 #define DEFAULT_BAUD 115200
 
-int get_dns_addr(PNATState pData, struct in_addr *pdns_addr);
+int get_dns_addr(PNATState pData);
 
 /* cksum.c */
 typedef uint16_t u_short;

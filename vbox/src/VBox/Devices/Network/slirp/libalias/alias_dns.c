@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 39085 2011-10-24 06:58:33Z vboxsync $ */
+/* $Id: alias_dns.c 39101 2011-10-25 02:44:01Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -75,6 +75,8 @@ static int
 fingerprint(struct libalias *la, struct ip *pip, struct alias_data *ah)
 {
 
+    NOREF(la);
+    NOREF(pip);
     if (!ah->dport || !ah->sport || !ah->lnk)
         return -1;
 
@@ -90,7 +92,7 @@ fingerprint(struct libalias *la, struct ip *pip, struct alias_data *ah)
     return -1;
 }
 
-static void doanswer(struct libalias *la, union dnsmsg_header *hdr, struct dns_meta_data *pReqMeta, char *qname, struct ip *pip, struct hostent *h)
+static void doanswer(union dnsmsg_header *hdr, struct dns_meta_data *pReqMeta, char *qname, struct ip *pip, struct hostent *h)
 {
     int i;
 
@@ -184,6 +186,7 @@ static void doanswer(struct libalias *la, union dnsmsg_header *hdr, struct dns_m
         pip->ip_len = htons(packet_len);
     }
 }
+
 static int
 protohandler(struct libalias *la, struct ip *pip, struct alias_data *ah)
 {
@@ -197,6 +200,8 @@ protohandler(struct libalias *la, struct ip *pip, struct alias_data *ah)
 
     struct udphdr *udp = NULL;
     union dnsmsg_header *hdr = NULL;
+    NOREF(la);
+    NOREF(ah);
     udp = (struct udphdr *)ip_next(pip);
     hdr = (union dnsmsg_header *)udp_next(udp);
 
@@ -238,7 +243,7 @@ protohandler(struct libalias *la, struct ip *pip, struct alias_data *ah)
         }
         h = gethostbyname(cname);
         fprintf(stderr, "cname:%s\n", cname);
-        doanswer(la, hdr, meta, qw_qname, pip, h);
+        doanswer(hdr, meta, qw_qname, pip, h);
     }
 
     /*

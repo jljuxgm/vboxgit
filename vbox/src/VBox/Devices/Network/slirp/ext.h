@@ -1,4 +1,4 @@
-/** $Id: ext.h 39085 2011-10-24 06:58:33Z vboxsync $ */
+/** $Id: ext.h 39101 2011-10-25 02:44:01Z vboxsync $ */
 /** @file
  * NAT - some externals helpers
  */
@@ -63,7 +63,7 @@ static void vbox_slirp_printV(char *format, va_list args)
 }
 #endif
 
-#ifndef vbox_slirp_printf
+# ifndef vbox_slirp_printf
 static void vbox_slirp_printf(char *format, ...)
 {
     va_list args;
@@ -71,18 +71,18 @@ static void vbox_slirp_printf(char *format, ...)
     vbox_slirp_printV(format, args);
     va_end(args);
 }
-#endif
+# endif
 
-#ifndef vbox_slirp_fprintf
+# ifndef vbox_slirp_fprintf
 static void vbox_slirp_fprintf(void *ignored, char *format, ...)
 {
-# ifdef LOG_ENABLED
+#  ifdef LOG_ENABLED
     va_list args;
     NOREF(ignored);
     va_start(args, format);
     vbox_slirp_printV(format, args);
     va_end(args);
-# endif
+#  endif
 }
-#endif
+# endif
 #endif

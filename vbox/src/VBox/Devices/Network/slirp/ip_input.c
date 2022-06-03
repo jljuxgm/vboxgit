@@ -1,4 +1,4 @@
-/* $Id: ip_input.c 39085 2011-10-24 06:58:33Z vboxsync $ */
+/* $Id: ip_input.c 39101 2011-10-25 02:44:01Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
@@ -625,6 +625,7 @@ ip_stripoptions(struct mbuf *m, struct mbuf *mopt)
     struct ip *ip = mtod(m, struct ip *);
     register caddr_t opts;
     int olen;
+    NOREF(mopt); /* @todo: do we really will need this options buffer? */
 
     olen = (ip->ip_hl<<2) - sizeof(struct ip);
     opts = (caddr_t)(ip + 1);

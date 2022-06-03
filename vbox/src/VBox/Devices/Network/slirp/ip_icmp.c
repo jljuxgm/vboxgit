@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 39085 2011-10-24 06:58:33Z vboxsync $ */
+/* $Id: ip_icmp.c 39101 2011-10-25 02:44:01Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -53,6 +53,7 @@
  * ip_icmp.c,v 1.7 1995/05/30 08:09:42 rgrimes Exp
  */
 
+#define NEED_SOME_m_getjcl
 #include "slirp.h"
 #include "ip_icmp.h"
 #ifdef RT_OS_WINDOWS
@@ -747,9 +748,6 @@ void icmp_error(PNATState pData, struct mbuf *msrc, u_char type, u_char code, in
     m_freem(pData, msrc);
     LogFlowFuncLeave();
     return;
-
-end_error_free_m:
-    m_freem(pData, m);
 
 end_error:
 

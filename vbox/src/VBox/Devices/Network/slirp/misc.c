@@ -1,4 +1,4 @@
-/* $Id: misc.c 39085 2011-10-24 06:58:33Z vboxsync $ */
+/* $Id: misc.c 39101 2011-10-25 02:44:01Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -60,6 +60,7 @@ insque(PNATState pData, void *a, void *b)
 {
     register struct quehead *element = (struct quehead *) a;
     register struct quehead *head = (struct quehead *) b;
+    NOREF(pData);
     element->qh_link = head->qh_link;
     head->qh_link = (struct quehead *)element;
     element->qh_rlink = (struct quehead *)head;
@@ -70,6 +71,7 @@ void
 remque(PNATState pData, void *a)
 {
     register struct quehead *element = (struct quehead *) a;
+    NOREF(pData);
     ((struct quehead *)(element->qh_link))->qh_rlink = element->qh_rlink;
     ((struct quehead *)(element->qh_rlink))->qh_link = element->qh_link;
     element->qh_rlink = NULL;

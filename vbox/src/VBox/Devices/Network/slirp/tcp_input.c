@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 37936 2011-07-14 03:54:41Z vboxsync $ */
+/* $Id: tcp_input.c 39101 2011-10-25 02:44:01Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -856,8 +856,7 @@ cont_conn:
                 LogFlowFunc(("%d -> dropwithreset\n", __LINE__));
                 goto dropwithreset;
             }
-cont_input:
-            LogFlowFunc(("cont_input:\n"));
+
             tcp_template(tp);
 
             if (optp)
