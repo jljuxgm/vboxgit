@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 41130 2012-05-03 11:35:25Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 41133 2012-05-03 13:19:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -421,7 +421,6 @@ static void     vboxDtPOps_Disable(void *pvProv, dtrace_id_t idProbe, void *pvPr
     PSUPDRVVDTPROVIDERCORE  pProv  = (PSUPDRVVDTPROVIDERCORE)pvProv;
     AssertPtrReturnVoid(pProv);
     LOG_DTRACE(("%s: %p / %p - %#x / %p\n", __FUNCTION__, pProv, pProv->TracerData.DTrace.idProvider, idProbe, pvProbe));
-    AssertPtrReturnVoid(pvProbe);
     AssertPtrReturnVoid(pProv->TracerData.DTrace.idProvider);
 
     if (!pProv->TracerData.DTrace.fZombie)
@@ -469,7 +468,6 @@ static void     vboxDtPOps_GetArgDesc(void *pvProv, dtrace_id_t idProbe, void *p
     pArgDesc->dtargd_ndx = DTRACE_ARGNONE;
     AssertPtrReturnVoid(pProv);
     LOG_DTRACE(("%s: %p / %p - %#x / %p uArg=%d\n", __FUNCTION__, pProv, pProv->TracerData.DTrace.idProvider, idProbe, pvProbe, uArg));
-    AssertPtrReturnVoid(pvProbe);
     AssertPtrReturnVoid(pProv->TracerData.DTrace.idProvider);
 
     if (!pProv->TracerData.DTrace.fZombie)
