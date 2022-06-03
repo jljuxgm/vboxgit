@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 40257 2012-02-27 09:25:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 40260 2012-02-27 13:24:29Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3199,7 +3199,7 @@ HRESULT VirtualBox::checkMediaForConflicts(const Guid &aId,
                                            ComObjPtr<Medium> *ppMedium)
 {
     AssertReturn(!aId.isEmpty() && !aLocation.isEmpty(), E_FAIL);
-    AssertReturn(!ppMedium, E_INVALIDARG);
+    AssertReturn(ppMedium, E_INVALIDARG);
 
     aConflict.setNull();
     ppMedium->setNull();
