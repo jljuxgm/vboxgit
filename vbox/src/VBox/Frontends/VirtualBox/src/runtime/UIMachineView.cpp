@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 39094 2011-10-24 15:46:58Z vboxsync $ */
+/* $Id: UIMachineView.cpp 39095 2011-10-24 15:49:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -898,7 +898,7 @@ bool UIMachineView::isFullscreenOrSeamless()
 {
     UIVisualStateType type = machineLogic()->visualStateType();
     return    type == UIVisualStateType_Fullscreen
-           || type == UIVisualStateType_Fullscreen;
+           || type == UIVisualStateType_Seamless;
 }
 
 QString UIMachineView::makeExtraDataKeyPerMonitor(QString base) const
