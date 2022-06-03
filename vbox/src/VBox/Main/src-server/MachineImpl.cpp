@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37092 2011-05-15 12:04:28Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37162 2011-05-20 11:45:40Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8339,6 +8339,8 @@ HRESULT Machine::loadStorageDevices(StorageController *aStorageController,
                 rc = medium->addBackReference(mData->mUuid, *puuidSnapshot);
             else
                 rc = medium->addBackReference(mData->mUuid);
+            /* If the medium->addBackReference fails it sets an appropriate
+             * error message, so no need to do any guesswork here. */
 
             if (puuidRegistry)
                 // caller wants registry ID to be set on all attached media (OVF import case)
