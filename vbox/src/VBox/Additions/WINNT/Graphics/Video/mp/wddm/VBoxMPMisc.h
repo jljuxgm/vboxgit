@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 38982 2011-10-12 20:20:21Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 39160 2011-11-01 14:35:23Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -149,6 +149,8 @@ NTSTATUS vboxVideoAMgrCtxAllocSubmit(PVBOXMP_DEVEXT pDevExt, PVBOXVIDEOCM_ALLOC_
 
 VOID vboxWddmSleep(uint32_t u32Val);
 VOID vboxWddmCounterU32Wait(uint32_t volatile * pu32, uint32_t u32Val);
+
+NTSTATUS vboxUmdDumpBuf(PVBOXDISPIFESCAPE_DBGDUMPBUF pBuf, uint32_t cbBuffer);
 
 #if 0
 /* wine shrc handle -> allocation map */
