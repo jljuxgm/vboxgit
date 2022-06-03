@@ -1,4 +1,4 @@
-/* $Id: VBoxSharedFolders.cpp 41441 2012-05-24 17:26:51Z vboxsync $ */
+/* $Id: VBoxSharedFolders.cpp 41442 2012-05-24 17:34:09Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */
@@ -123,7 +123,7 @@ int VBoxSharedFoldersAutoMount(void)
 #endif
             RTMemFree(paMappings);
         }
-        else
+        else if (RT_FAILURE(rc))
             Log(("VBoxTray: Error while getting the shared folder mappings, rc = %Rrc\n", rc));
         VbglR3SharedFolderDisconnect(u32ClientId);
     }
@@ -191,7 +191,7 @@ int VBoxSharedFoldersAutoUnmount(void)
             }
             RTMemFree(paMappings);
         }
-        else
+        else if (cMappings)
             Log(("VBoxTray: Error while getting the shared folder mappings, rc = %Rrc\n", rc));
         VbglR3SharedFolderDisconnect(u32ClientId);
     }
