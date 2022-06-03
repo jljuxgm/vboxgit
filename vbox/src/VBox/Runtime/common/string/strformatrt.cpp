@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 33496 2010-10-27 12:15:28Z vboxsync $ */
+/* $Id: strformatrt.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -63,7 +63,8 @@
  * @param   fFlags          Flags (RTSTR_NTFS_*).
  * @param   chArgSize       The argument size specifier, 'l' or 'L'.
  */
-size_t rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs, int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize)
+DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, const char **ppszFormat, va_list *pArgs,
+                                 int cchWidth, int cchPrecision, unsigned fFlags, char chArgSize)
 {
     const char *pszFormatOrg = *ppszFormat;
     char ch = *(*ppszFormat)++;

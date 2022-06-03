@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-darwin.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: initterm-r0drv-darwin.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Darwin.
  */
@@ -43,7 +43,7 @@
 lck_grp_t *g_pDarwinLockGroup = NULL;
 
 
-int rtR0InitNative(void)
+DECLHIDDEN(int) rtR0InitNative(void)
 {
     /*
      * Create the lock group.
@@ -62,7 +62,7 @@ int rtR0InitNative(void)
 }
 
 
-void rtR0TermNative(void)
+DECLHIDDEN(void) rtR0TermNative(void)
 {
     /*
      * Preemption hacks before the lock group.

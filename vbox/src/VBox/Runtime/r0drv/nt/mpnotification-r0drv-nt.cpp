@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-nt.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: mpnotification-r0drv-nt.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, NT.
  */
@@ -124,7 +124,7 @@ static VOID __stdcall rtMpNotificationNtCallback(PVOID pvUser,
 }
 
 
-int rtR0MpNotificationNativeInit(void)
+DECLHIDDEN(int) rtR0MpNotificationNativeInit(void)
 {
     /*
      * Try resolve the symbols.
@@ -163,7 +163,7 @@ int rtR0MpNotificationNativeInit(void)
 }
 
 
-void rtR0MpNotificationNativeTerm(void)
+DECLHIDDEN(void) rtR0MpNotificationNativeTerm(void)
 {
     if (    g_pfnKeDeregisterProcessorChangeCallback
         &&  g_hCallback)
@@ -175,12 +175,12 @@ void rtR0MpNotificationNativeTerm(void)
 
 #else   /* Not supported */
 
-int rtR0MpNotificationNativeInit(void)
+DECLHIDDEN(int) rtR0MpNotificationNativeInit(void)
 {
     return VINF_SUCCESS;
 }
 
-void rtR0MpNotificationNativeTerm(void)
+DECLHIDDEN(void) rtR0MpNotificationNativeTerm(void)
 {
 }
 

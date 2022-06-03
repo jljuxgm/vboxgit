@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-solaris.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: mpnotification-r0drv-solaris.c 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Solaris.
  */
@@ -66,7 +66,7 @@ static void rtMpNotificationSolarisCallback(void *pvUser, int iCpu, int online)
 }
 
 
-int rtR0MpNotificationNativeInit(void)
+DECLHIDDEN(int) rtR0MpNotificationNativeInit(void)
 {
     if (vbi_revision_level < 2)
         return VERR_NOT_SUPPORTED;
@@ -84,7 +84,7 @@ int rtR0MpNotificationNativeInit(void)
 }
 
 
-void rtR0MpNotificationNativeTerm(void)
+DECLHIDDEN(void) rtR0MpNotificationNativeTerm(void)
 {
     if (vbi_revision_level >= 2 && g_hVbiCpuWatch != NULL)
         vbi_ignore_cpus(g_hVbiCpuWatch);

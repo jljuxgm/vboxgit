@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv.c 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: mpnotification-r0drv.c 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Event Notifications.
  */
@@ -89,7 +89,7 @@ static uint32_t volatile g_iRTMpGeneration;
  * @param   idCpu           The CPU id the event applies to.
  * @param   enmEvent        The event.
  */
-void rtMpNotificationDoCallbacks(RTMPEVENT enmEvent, RTCPUID idCpu)
+DECLHIDDEN(void) rtMpNotificationDoCallbacks(RTMPEVENT enmEvent, RTCPUID idCpu)
 {
     PRTMPNOTIFYREG  pCur;
     RTSPINLOCK      hSpinlock;
@@ -277,7 +277,7 @@ RTDECL(int) RTMpNotificationDeregister(PFNRTMPNOTIFICATION pfnCallback, void *pv
 RT_EXPORT_SYMBOL(RTMpNotificationDeregister);
 
 
-int rtR0MpNotificationInit(void)
+DECLHIDDEN(int) rtR0MpNotificationInit(void)
 {
     int rc = RTSpinlockCreate((PRTSPINLOCK)&g_hRTMpNotifySpinLock);
     if (RT_SUCCESS(rc))
@@ -293,7 +293,7 @@ int rtR0MpNotificationInit(void)
 }
 
 
-void rtR0MpNotificationTerm(void)
+DECLHIDDEN(void) rtR0MpNotificationTerm(void)
 {
     PRTMPNOTIFYREG  pHead;
     RTSPINLOCKTMP   Tmp       = RTSPINLOCKTMP_INITIALIZER;

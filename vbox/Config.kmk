@@ -1,4 +1,4 @@
-# $Id: Config.kmk 36269 2011-03-12 19:43:52Z vboxsync $
+# $Id: Config.kmk 36555 2011-04-05 12:34:09Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2735,7 +2735,7 @@ endif
 
 ifeq ($(KBUILD_TARGET),darwin)
 TEMPLATE_VBOXR0DRV_TOOL                = GXX4MACHO
-TEMPLATE_VBOXR0DRV_DEFS               += $(VBOX_DARWIN_DEF_SDK_DEFS) KERNEL KERNEL_PRIVATE DRIVER_PRIVATE APPLE NeXT RT_USE_VISIBILITY_HIDDEN
+TEMPLATE_VBOXR0DRV_DEFS               += $(VBOX_DARWIN_DEF_SDK_DEFS) KERNEL KERNEL_PRIVATE DRIVER_PRIVATE APPLE NeXT
 TEMPLATE_VBOXR0DRV_INCS               += $(VBOX_PATH_MACOSX_SDK)/System/Library/Frameworks/Kernel.framework/Headers
 ## @todo try use VBOX_GCC_PEDANTIC_CXX
 TEMPLATE_VBOXR0DRV_CXXFLAGS            = $(VBOX_DARWIN_DEF_SDK_CXXFLAGS) \
@@ -4680,7 +4680,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 36269 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 36555 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

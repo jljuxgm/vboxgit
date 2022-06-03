@@ -1,4 +1,4 @@
-/* $Id: time.cpp 34999 2010-12-13 12:58:47Z vboxsync $ */
+/* $Id: time.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -419,7 +419,7 @@ RT_EXPORT_SYMBOL(RTTimeImplode);
  * Internal worker for RTTimeNormalize and RTTimeLocalNormalize.
  * It doesn't adjust the UCT offset but leaves that for RTTimeLocalNormalize.
  */
-PRTTIME rtTimeNormalizeInternal(PRTTIME pTime)
+static PRTTIME rtTimeNormalizeInternal(PRTTIME pTime)
 {
     unsigned    uSecond;
     unsigned    uMinute;

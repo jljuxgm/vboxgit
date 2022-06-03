@@ -1,4 +1,4 @@
-/* $Id: process.h 36549 2011-04-05 09:28:24Z vboxsync $ */
+/* $Id: process.h 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - Internal RTProc header.
  */
@@ -49,7 +49,7 @@ extern DECLHIDDEN(bool volatile)    g_frtAtExitCalled;
  * @param   enmPriority     The priority to validate and set.
  * @remark  Located in sched.
  */
-int rtProcNativeSetPriority(RTPROCPRIORITY enmPriority);
+DECLHIDDEN(int) rtProcNativeSetPriority(RTPROCPRIORITY enmPriority);
 
 /**
  * Determines the full path to the executable image.

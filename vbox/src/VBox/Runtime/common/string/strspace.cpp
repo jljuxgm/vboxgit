@@ -1,4 +1,4 @@
-/* $Id: strspace.cpp 35464 2011-01-10 16:30:27Z vboxsync $ */
+/* $Id: strspace.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - Unique String Spaces.
  */
@@ -40,6 +40,7 @@
 /*
  * AVL configuration.
  */
+#define KAVL_DECL(a_Type)           static a_Type
 #define KAVL_FN(a)                  rtstrspace##a
 #define KAVL_MAX_STACK              27  /* Up to 2^24 nodes. */
 #define KAVL_EQUAL_ALLOWED          1

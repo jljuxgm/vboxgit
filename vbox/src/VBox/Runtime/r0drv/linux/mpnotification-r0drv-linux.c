@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-linux.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: mpnotification-r0drv-linux.c 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Linux.
  */
@@ -139,7 +139,7 @@ static int rtMpNotificationLinuxCallback(struct notifier_block *pNotifierBlock, 
 }
 
 
-int rtR0MpNotificationNativeInit(void)
+DECLHIDDEN(int) rtR0MpNotificationNativeInit(void)
 {
     int rc;
 
@@ -153,19 +153,19 @@ int rtR0MpNotificationNativeInit(void)
 }
 
 
-void rtR0MpNotificationNativeTerm(void)
+DECLHIDDEN(void) rtR0MpNotificationNativeTerm(void)
 {
     unregister_cpu_notifier(&g_NotifierBlock);
 }
 
 #else   /* Not supported / Not needed */
 
-int rtR0MpNotificationNativeInit(void)
+DECLHIDDEN(int) rtR0MpNotificationNativeInit(void)
 {
     return VINF_SUCCESS;
 }
 
-void rtR0MpNotificationNativeTerm(void)
+DECLHIDDEN(void) rtR0MpNotificationNativeTerm(void)
 {
 }
 

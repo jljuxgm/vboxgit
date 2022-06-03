@@ -1,4 +1,4 @@
-/* $Id: avl_Base.cpp.h 36233 2011-03-09 17:05:12Z vboxsync $ */
+/* $Id: avl_Base.cpp.h 36555 2011-04-05 12:34:09Z vboxsync $ */
 /** @file
  * kAVLBase - basic routines for all AVL trees.
  */
@@ -126,6 +126,12 @@
 # define KAVL_R_IS_IDENTICAL(key1B, key2B, key1E, key2E)    KAVL_E(key1B, key2B)
 #endif
 
+/** @def KAVL_DECL
+ * Function declation macro in the RTDECL tradition.
+ * @param   a_Type      The function return type.  */
+#ifndef KAVL_DECL
+# define KAVL_DECL(a_Type)  RTDECL(a_Type)
+#endif
 
 
 /*******************************************************************************
@@ -290,7 +296,7 @@ DECLINLINE(void) KAVL_FN(Rebalance)(PKAVLSTACK pStack)
  *            Fill in leaf node and insert it.
  *            Rebalance the tree.
  */
-RTDECL(bool) KAVL_FN(Insert)(PPKAVLNODECORE ppTree, PKAVLNODECORE pNode)
+KAVL_DECL(bool) KAVL_FN(Insert)(PPKAVLNODECORE ppTree, PKAVLNODECORE pNode)
 {
     KAVLSTACK               AVLStack;
     PPKAVLNODECORE          ppCurNode = ppTree;
@@ -390,7 +396,7 @@ RTDECL(bool) KAVL_FN(Insert)(PPKAVLNODECORE ppTree, PKAVLNODECORE pNode)
  *            END
  *            return pointer to the removed node (if found).
  */
-RTDECL(PKAVLNODECORE) KAVL_FN(Remove)(PPKAVLNODECORE ppTree, KAVLKEY Key)
+KAVL_DECL(PKAVLNODECORE) KAVL_FN(Remove)(PPKAVLNODECORE ppTree, KAVLKEY Key)
 {
     KAVLSTACK                AVLStack;
     PPKAVLNODECORE           ppDeleteNode = ppTree;
