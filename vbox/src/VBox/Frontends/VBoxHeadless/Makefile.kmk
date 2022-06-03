@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 41956 2012-06-28 11:15:26Z vboxsync $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -46,7 +46,8 @@ VBoxHeadlessHardened_NAME = VBoxHeadless
 # VBoxHeadless
 #
 VBoxHeadless_TEMPLATE  := $(if $(VBOX_WITH_HARDENING),VBOXMAINCLIENTDLL,VBOXMAINCLIENTEXE)
-VBoxHeadless_DEFS       = VBOX_FFMPEG
+VBoxHeadless_DEFS      += \
+                 VBOX_WITH_VIDEO_REC 
 VBoxHeadless_SOURCES    = VBoxHeadless.cpp
 VBoxHeadless_SOURCES  += Framebuffer.cpp
 ifdef VBOX_WITH_GUEST_PROPS
