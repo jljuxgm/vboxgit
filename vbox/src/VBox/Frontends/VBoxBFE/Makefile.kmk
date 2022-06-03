@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35380 2010-12-30 16:06:17Z vboxsync $
+# $Id: Makefile.kmk 36149 2011-03-03 14:34:33Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -17,6 +17,12 @@
 
 SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
+
+#
+# Include sub-makefile(s).
+#
+include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
+
 if !defined(VBOX_WITH_HARDENING) || "$(KBUILD_TARGET)" != "darwin"  # No hardened VBoxBFE on darwin (.m).
 
 #
