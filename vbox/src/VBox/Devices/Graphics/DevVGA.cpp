@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 37128 2011-05-17 15:10:06Z vboxsync $ */
+/* $Id: DevVGA.cpp 37129 2011-05-18 09:12:44Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6145,6 +6145,9 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
                 pixelWidth = (pDefMode->info.BitsPerPixel + 7) / 8;
             reqSize = pDefMode->info.XResolution * pDefMode->info.YResolution *  pixelWidth;
             if (reqSize >= pThis->vram_size)
+                continue;
+            if (   pDefMode->info.XResolution > maxBiosXRes
+                || pDefMode->info.YResolution > maxBiosYRes)
                 continue;
             *pCurMode = *pDefMode;
             pCurMode->mode += 0x30;
