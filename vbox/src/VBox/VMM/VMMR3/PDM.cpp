@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: PDM.cpp 39652 2011-12-19 08:12:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1278,9 +1278,9 @@ DECLINLINE(bool) pdmR3ResetDrv(PPDMDRVINS pDrvIns, PPDMNOTIFYASYNCSTATS pAsync,
             }
             else if (pDrvIns->Internal.s.pfnAsyncNotify(pDrvIns))
             {
-                pDrvIns->Internal.s.pfnAsyncNotify = false;
                 LogFlow(("PDMR3Reset: Async notification completed - driver '%s'/%d on LUN#%d of device '%s'/%d\n",
                          pDrvIns->pReg->szName, pDrvIns->iInstance, iLun, pszDevName, iDevInstance));
+                pDrvIns->Internal.s.pfnAsyncNotify = NULL;
             }
             if (pDrvIns->Internal.s.pfnAsyncNotify)
             {
@@ -1511,9 +1511,9 @@ DECLINLINE(bool) pdmR3SuspendDrv(PPDMDRVINS pDrvIns, PPDMNOTIFYASYNCSTATS pAsync
             }
             else if (pDrvIns->Internal.s.pfnAsyncNotify(pDrvIns))
             {
-                pDrvIns->Internal.s.pfnAsyncNotify = NULL;
                 LogFlow(("PDMR3Suspend: Async notification completed - driver '%s'/%d on LUN#%d of device '%s'/%d\n",
                          pDrvIns->pReg->szName, pDrvIns->iInstance, iLun, pszDevName, iDevInstance));
+                pDrvIns->Internal.s.pfnAsyncNotify = NULL;
             }
 
             cNsElapsed = RTTimeNanoTS() - cNsElapsed;
