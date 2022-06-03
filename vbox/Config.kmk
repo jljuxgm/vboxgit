@@ -1,4 +1,4 @@
-# $Id: Config.kmk 40378 2012-03-06 15:02:05Z vboxsync $
+# $Id: Config.kmk 40383 2012-03-06 16:14:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -560,8 +560,8 @@ VBOX_WITH_MEMBALLOON = 1
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_CROGL = 1
 endif
-# Enable the VNC server in VBoxHeadless (GPL only).
-#VBOX_WITH_VNC = 1
+# Enable the VNC server extension pack (GPL only).
+#VBOX_WITH_EXTPACK_VNC = 1
 # Enable S3 support (requires libcurl)
 VBOX_WITH_S3 = 1
 ## @}
@@ -4926,7 +4926,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40378 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 40383 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
