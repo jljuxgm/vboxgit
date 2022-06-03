@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 41678 2012-06-13 09:37:47Z vboxsync $ */
+/* $Id: DisasmReg.cpp 41690 2012-06-13 18:12:25Z vboxsync $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -29,7 +29,6 @@
 #include <iprt/string.h>
 #include <iprt/stdarg.h>
 #include "DisasmInternal.h"
-#include "DisasmTables.h"
 
 
 /*******************************************************************************

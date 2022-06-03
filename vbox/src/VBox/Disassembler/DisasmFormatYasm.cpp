@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 41678 2012-06-13 09:37:47Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 41690 2012-06-13 18:12:25Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -266,7 +266,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
     if (fFlags & DIS_FMT_FLAGS_BYTES_COMMENT)
         fFlags = (fFlags & ~DIS_FMT_FLAGS_BYTES_LEFT) | DIS_FMT_FLAGS_BYTES_RIGHT;
 
-    PCOPCODE const  pOp = pCpu->pCurInstr;
+    PCDISOPCODE const pOp = pCpu->pCurInstr;
 
     /*
      * Output macros

@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 41676 2012-06-12 20:53:40Z vboxsync $ */
+/* $Id: Disasm.cpp 41690 2012-06-13 18:12:25Z vboxsync $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -26,7 +26,6 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include "DisasmInternal.h"
-#include "DisasmTables.h"
 
 
 /**

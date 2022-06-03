@@ -1,11 +1,10 @@
+/* $Id: DisasmTestCore.cpp 41690 2012-06-13 18:12:25Z vboxsync $ */
 /** @file
- *
- * VBox disassembler:
- * Test application for core.
+ * VBox disassembler - Test application for core. 
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
