@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 36009 2011-02-17 10:15:02Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 36639 2011-04-11 10:10:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -543,7 +543,7 @@ int pgmPhysAllocLargePage(PVM pVM, RTGCPHYS GCPhys)
             && PGM_PAGE_GET_STATE(pFirstPage) == PGM_PAGE_STATE_ZERO)
         {
             /* Lazy approach: check all pages in the 2 MB range.
-             * The whole range must be ram and unallocated. */ 
+             * The whole range must be ram and unallocated. */
             GCPhys = GCPhysBase;
             unsigned iPage;
             for (iPage = 0; iPage < _2M/PAGE_SIZE; iPage++)
