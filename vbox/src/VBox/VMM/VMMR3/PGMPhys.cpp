@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 38080 2011-07-20 13:02:03Z vboxsync $ */
+/* $Id: PGMPhys.cpp 38300 2011-08-03 11:58:41Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3680,7 +3680,6 @@ VMMDECL(void) PGMR3PhysSetA20(PVMCPU pVCpu, bool fEnable)
     {
         pVCpu->pgm.s.fA20Enabled = fEnable;
         pVCpu->pgm.s.GCPhysA20Mask = ~(RTGCPHYS)(!fEnable << 20);
-        REMR3A20Set(pVCpu->pVMR3, pVCpu, fEnable);
         /** @todo we're not handling this correctly for VT-x / AMD-V. See #2911 */
     }
 }

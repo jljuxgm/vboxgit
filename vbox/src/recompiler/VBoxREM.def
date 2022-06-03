@@ -1,10 +1,10 @@
-; $Id: VBoxREM.def 28800 2010-04-27 08:22:32Z vboxsync $
+; $Id: VBoxREM.def 38300 2011-08-03 11:58:41Z vboxsync $
 ;; @file
 ; VBoxREM Definition File.
 ;
 
 ;
-; Copyright (C) 2006-2007 Oracle Corporation
+; Copyright (C) 2006-2011 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
@@ -30,7 +30,6 @@ EXPORTS
     REMR3State
     REMR3StateBack
     REMR3StateUpdate
-    REMR3A20Set
     REMR3DisasEnableStepping
     REMR3ReplayHandlerNotifications
     REMR3NotifyPhysRamRegister
