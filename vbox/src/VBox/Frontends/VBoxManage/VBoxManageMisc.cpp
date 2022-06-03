@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 37449 2011-06-14 16:34:16Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 37531 2011-06-17 12:12:29Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -391,10 +391,16 @@ int handleCloneVM(HandlerArg *a)
                                                  FALSE,
                                                  trgMachine.asOutParam()),
                     RTEXITCODE_FAILURE);
+
+    /* Clone options */
+    com::SafeArray<CloneOptions_T> options;
+    options.push_back(CloneOptions_KeepNATMACs);
+
+    /* Start the cloning */
     ComPtr<IProgress> progress;
     CHECK_ERROR_RET(srcMachine, CloneTo(trgMachine,
                                         mode,
-                                        FALSE,
+                                        ComSafeArrayAsInParam(options),
                                         progress.asOutParam()),
                     RTEXITCODE_FAILURE);
     rc = showProgress(progress);

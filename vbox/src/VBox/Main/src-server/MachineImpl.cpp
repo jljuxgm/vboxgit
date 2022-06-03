@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37491 2011-06-16 12:23:34Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37531 2011-06-17 12:12:29Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6073,18 +6073,24 @@ STDMETHODIMP Machine::COMGETTER(BandwidthControl)(IBandwidthControl **aBandwidth
     return S_OK;
 }
 
-STDMETHODIMP Machine::CloneTo(IMachine *pTarget, CloneMode_T mode, BOOL fFullClone, IProgress **pProgress)
+STDMETHODIMP Machine::CloneTo(IMachine *pTarget, CloneMode_T mode, ComSafeArrayIn(CloneOptions_T, options), IProgress **pProgress)
 {
     LogFlowFuncEnter();
 
     CheckComArgNotNull(pTarget);
     CheckComArgOutPointerValid(pProgress);
-    AssertReturn(!fFullClone, E_NOTIMPL);
+
+    /* Convert the options. */
+    RTCList<CloneOptions_T> optList;
+    if (options != NULL)
+        optList = SafeArrayToRTCList(ComSafeArrayInArg(options));
+    AssertReturn(!optList.contains(CloneOptions_Link), E_NOTIMPL);
+    AssertReturn(!(optList.contains(CloneOptions_KeepAllMACs) && optList.contains(CloneOptions_KeepNATMACs)), E_FAIL);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    MachineCloneVM *pWorker = new MachineCloneVM(this, static_cast<Machine*>(pTarget), mode, fFullClone);
+    MachineCloneVM *pWorker = new MachineCloneVM(this, static_cast<Machine*>(pTarget), mode, optList);
 
     HRESULT rc = pWorker->start(pProgress);
 

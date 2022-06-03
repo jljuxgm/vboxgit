@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 37492 2011-06-16 12:25:36Z vboxsync $ */
+/* $Id: MachineImpl.h 37531 2011-06-17 12:12:29Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -528,7 +528,7 @@ public:
     STDMETHOD(ReadLog(ULONG aIdx, LONG64 aOffset, LONG64 aSize, ComSafeArrayOut(BYTE, aData)));
     STDMETHOD(AttachHostPciDevice(LONG hostAddress, LONG desiredGuestAddress, BOOL tryToUnbind));
     STDMETHOD(DetachHostPciDevice(LONG hostAddress));
-    STDMETHOD(CloneTo(IMachine *aTarget, CloneMode_T mode, BOOL aFullClone, IProgress **aProgress));
+    STDMETHOD(CloneTo(IMachine *pTarget, CloneMode_T mode, ComSafeArrayIn(CloneOptions_T, options), IProgress **pProgress));
     // public methods only for internal purposes
 
     virtual bool isSnapshotMachine() const
