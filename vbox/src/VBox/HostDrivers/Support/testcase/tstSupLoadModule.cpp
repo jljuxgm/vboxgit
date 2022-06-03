@@ -1,4 +1,4 @@
-/* $Id: tstSupLoadModule.cpp 40810 2012-04-06 23:04:11Z vboxsync $ */
+/* $Id: tstSupLoadModule.cpp 40812 2012-04-07 10:13:10Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3LoadModule.
  */
@@ -53,7 +53,8 @@ int main(int argc, char **argv)
      */
     static const RTGETOPTDEF s_aOptions[] =
     {
-        { "--keep",             'k', RTGETOPT_REQ_NOTHING }
+        { "--keep",             'k', RTGETOPT_REQ_NOTHING },
+        { "--no-keep",          'n', RTGETOPT_REQ_NOTHING },
     };
 
     bool fKeepLoaded = false;
@@ -95,12 +96,16 @@ int main(int argc, char **argv)
                 fKeepLoaded = true;
                 break;
 
+            case 'n':
+                fKeepLoaded = false;
+                break;
+
             case 'h':
                 RTPrintf("%s [mod1 [mod2...]]\n");
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 40810 $\n");
+                RTPrintf("$Revision: 40812 $\n");
                 return 0;
 
             default:
