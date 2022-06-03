@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 38755 2011-09-15 08:24:23Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 38774 2011-09-16 10:04:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -4882,8 +4882,8 @@ void VBoxGlobal::init()
         {"Windows2008_64",  ":/os_win2k8_64.png"},
         {"Windows7",        ":/os_win7.png"},
         {"Windows7_64",     ":/os_win7_64.png"},
-        {"Windows8",        ":/os_win7.png"},
-        {"Windows8_64",     ":/os_win7_64.png"},
+        {"Windows8",        ":/os_win8.png"},
+        {"Windows8_64",     ":/os_win8_64.png"},
         {"WindowsNT",       ":/os_win_other.png"},
         {"OS2Warp3",        ":/os_os2warp3.png"},
         {"OS2Warp4",        ":/os_os2warp4.png"},
