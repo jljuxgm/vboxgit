@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -52,7 +52,7 @@ UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &sourceVirtua
                 m_pSourceDiskSelector = new VBoxMediaComboBox(m_pSourceDiskCnt);
                 {
                     m_pSourceDiskSelector->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
-                    m_pSourceDiskSelector->setType(VBoxDefs::MediumType_HardDisk);
+                    m_pSourceDiskSelector->setType(UIMediumType_HardDisk);
                     m_pSourceDiskSelector->setCurrentItem(sourceVirtualDisk.GetId());
                     m_pSourceDiskSelector->repopulate();
                 }

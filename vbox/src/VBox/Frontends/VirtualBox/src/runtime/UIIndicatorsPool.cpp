@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 41610 2012-06-07 12:12:48Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -88,7 +88,7 @@ public:
                     continue;
                 strAttData += QString("<br>&nbsp;<nobr>%1:&nbsp;%2</nobr>")
                     .arg(vboxGlobal().toString(StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice())))
-                    .arg(VBoxMedium(attachment.GetMedium(), VBoxDefs::MediumType_HardDisk).location());
+                    .arg(UIMedium(attachment.GetMedium(), UIMediumType_HardDisk).location());
                 fAttachmentsPresent = true;
             }
             if (!strAttData.isNull())
@@ -154,7 +154,7 @@ public:
             {
                 if (attachment.GetType() != KDeviceType_DVD)
                     continue;
-                VBoxMedium vboxMedium(attachment.GetMedium(), VBoxDefs::MediumType_DVD);
+                UIMedium vboxMedium(attachment.GetMedium(), UIMediumType_DVD);
                 strAttData += QString("<br>&nbsp;<nobr>%1:&nbsp;%2</nobr>")
                     .arg(vboxGlobal().toString(StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice())))
                     .arg(vboxMedium.isNull() || vboxMedium.isHostDrive() ? vboxMedium.name() : vboxMedium.location());
@@ -225,7 +225,7 @@ public:
             {
                 if (attachment.GetType() != KDeviceType_Floppy)
                     continue;
-                VBoxMedium vboxMedium(attachment.GetMedium(), VBoxDefs::MediumType_Floppy);
+                UIMedium vboxMedium(attachment.GetMedium(), UIMediumType_Floppy);
                 strAttData += QString("<br>&nbsp;<nobr>%1:&nbsp;%2</nobr>")
                     .arg(vboxGlobal().toString(StorageSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice())))
                     .arg(vboxMedium.isNull() || vboxMedium.isHostDrive() ? vboxMedium.name() : vboxMedium.location());

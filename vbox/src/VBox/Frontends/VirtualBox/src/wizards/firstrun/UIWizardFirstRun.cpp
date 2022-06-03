@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -73,7 +73,7 @@ bool UIWizardFirstRun::insertMedium()
     AssertMsg(!cda.isNull(), ("Storage Controller is NOT properly configured!\n"));
     /* Get chosen 'dvd' medium to mount: */
     QString mediumId = field("id").toString();
-    VBoxMedium vmedium = vboxGlobal().findMedium(mediumId);
+    UIMedium vmedium = vboxGlobal().findMedium(mediumId);
     CMedium medium = vmedium.medium(); // @todo r=dj can this be cached somewhere?
     /* Mount medium to the predefined port/device: */
     m_machine.MountMedium(cda.GetController(), cda.GetPort(), cda.GetDevice(), medium, false /* force */);

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.cpp 41398 2012-05-22 14:45:37Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic1.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -36,7 +36,7 @@ UIWizardCloneVDPage1::UIWizardCloneVDPage1()
 void UIWizardCloneVDPage1::onHandleOpenSourceDiskClick()
 {
     /* Get source virtual-disk using file-open dialog: */
-    QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(VBoxDefs::MediumType_HardDisk, thisImp());
+    QString strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_HardDisk, thisImp());
     if (!strMediumId.isNull())
     {
         /* Update medium-combo if necessary: */
@@ -67,7 +67,7 @@ UIWizardCloneVDPageBasic1::UIWizardCloneVDPageBasic1(const CMedium &sourceVirtua
             m_pSourceDiskSelector = new VBoxMediaComboBox(this);
             {
                 m_pSourceDiskSelector->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
-                m_pSourceDiskSelector->setType(VBoxDefs::MediumType_HardDisk);
+                m_pSourceDiskSelector->setType(UIMediumType_HardDisk);
                 m_pSourceDiskSelector->setCurrentItem(sourceVirtualDisk.GetId());
                 m_pSourceDiskSelector->repopulate();
             }

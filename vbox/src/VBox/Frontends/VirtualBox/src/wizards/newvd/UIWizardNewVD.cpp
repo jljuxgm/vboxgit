@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -95,7 +95,7 @@ bool UIWizardNewVD::createVirtualDisk()
     m_virtualDisk = virtualDisk;
 
     /* Inform everybody there is a new medium: */
-    vboxGlobal().addMedium(VBoxMedium(m_virtualDisk, VBoxDefs::MediumType_HardDisk, KMediumState_Created));
+    vboxGlobal().addMedium(UIMedium(m_virtualDisk, UIMediumType_HardDisk, KMediumState_Created));
 
     return true;
 }
