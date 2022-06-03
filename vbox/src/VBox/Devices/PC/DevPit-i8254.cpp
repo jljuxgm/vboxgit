@@ -1,10 +1,10 @@
-/* $Id: DevPit-i8254.cpp 35853 2011-02-04 14:38:31Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 37475 2011-06-15 16:42:55Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
