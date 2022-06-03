@@ -1,4 +1,4 @@
-/* $Id: string.h 40418 2012-03-09 22:00:56Z vboxsync $ */
+/* $Id: string.h 40875 2012-04-11 17:51:17Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -165,7 +165,13 @@ public:
         return *this;
     }
 
+#ifdef _MSC_VER
+# if _MSC_VER >= 1400
     RTMEMEF_NEW_AND_DELETE_OPERATORS();
+# endif
+#else
+    RTMEMEF_NEW_AND_DELETE_OPERATORS();
+#endif
 
     /** Case sensitivity selector. */
     enum CaseSensitivity
