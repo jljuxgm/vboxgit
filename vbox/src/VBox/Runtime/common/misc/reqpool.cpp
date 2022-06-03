@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 39632 2011-12-15 16:37:48Z vboxsync $ */
+/* $Id: reqpool.cpp 39634 2011-12-15 20:50:46Z vboxsync $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -688,7 +688,7 @@ RTDECL(int) RTReqPoolCreate(uint32_t cMaxThreads, RTMSINTERVAL cMsMinIdle,
     pPool->cCurActiveRequests   = 0;
     pPool->cReqSubmitted        = 0;
     pPool->pFreeRequests        = NULL;
-    pPool->cCurFreeRequests     = NULL;
+    pPool->cCurFreeRequests     = 0;
 
     int rc = RTSemEventMultiCreate(&pPool->hThreadTermEvt);
     if (RT_SUCCESS(rc))
