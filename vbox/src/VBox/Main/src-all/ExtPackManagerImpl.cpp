@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 37767 2011-07-04 14:20:42Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 37843 2011-07-08 12:34:18Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -3029,6 +3029,47 @@ bool ExtPackManager::isExtPackUsable(const char *a_pszExtPack)
     ExtPack *pExtPack = findExtPack(a_pszExtPack);
     return pExtPack != NULL
         && pExtPack->m->fUsable;
+}
+
+/**
+ * Dumps all extension packs to the release log.
+ */
+void ExtPackManager::dumpAllToReleaseLog(void)
+{
+    AutoCaller autoCaller(this);
+    HRESULT hrc = autoCaller.rc();
+    if (FAILED(hrc))
+        return;
+    AutoReadLock autoLock(this COMMA_LOCKVAL_SRC_POS);
+
+    LogRel(("Installed Extension Packs:\n"));
+    for (ExtPackList::iterator it = m->llInstalledExtPacks.begin();
+         it != m->llInstalledExtPacks.end();
+         it++)
+    {
+        ExtPack::Data *pExtPackData = (*it)->m;
+        if (pExtPackData)
+        {
+            if (pExtPackData->fUsable)
+                LogRel(("  %s (Version: %s r%u; VRDE Module: %s)\n",
+                        pExtPackData->Desc.strName.c_str(),
+                        pExtPackData->Desc.strVersion.c_str(),
+                        pExtPackData->Desc.uRevision,
+                        pExtPackData->Desc.strVrdeModule.c_str() ));
+            else
+                LogRel(("  %s (Version: %s r%u; VRDE Module: %s unusable because of '%s')\n",
+                        pExtPackData->Desc.strName.c_str(),
+                        pExtPackData->Desc.strVersion.c_str(),
+                        pExtPackData->Desc.uRevision,
+                        pExtPackData->Desc.strVrdeModule.c_str(),
+                        pExtPackData->strWhyUnusable.c_str() ));
+        }
+        else
+            LogRel(("  pExtPackData is NULL\n"));
+    }
+
+    if (!m->llInstalledExtPacks.size())
+        LogRel(("  None installed!\n"));
 }
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.h 36527 2011-04-04 13:16:09Z vboxsync $ */
+/* $Id: ExtPackUtil.h 37843 2011-07-08 12:34:18Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -84,17 +84,17 @@ typedef VBOXEXTPACKPLUGINDESC *PVBOXEXTPACKPLUGINDESC;
 typedef struct VBOXEXTPACKDESC
 {
     /** The name. */
-    RTCString        strName;
+    RTCString               strName;
     /** The description. */
-    RTCString        strDescription;
+    RTCString               strDescription;
     /** The version string. */
-    RTCString        strVersion;
+    RTCString               strVersion;
     /** The internal revision number. */
     uint32_t                uRevision;
     /** The name of the main module. */
-    RTCString        strMainModule;
+    RTCString               strMainModule;
     /** The name of the VRDE module, empty if none. */
-    RTCString        strVrdeModule;
+    RTCString               strVrdeModule;
     /** The number of plug-in descriptors. */
     uint32_t                cPlugIns;
     /** Pointer to an array of plug-in descriptors. */
