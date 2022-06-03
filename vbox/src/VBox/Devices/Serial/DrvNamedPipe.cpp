@@ -1,4 +1,4 @@
-/* $Id: DrvNamedPipe.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvNamedPipe.cpp 39855 2012-01-24 16:40:14Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -50,9 +50,6 @@
 *******************************************************************************/
 /** Converts a pointer to DRVNAMEDPIPE::IMedia to a PDRVNAMEDPIPE. */
 #define PDMISTREAM_2_DRVNAMEDPIPE(pInterface) ( (PDRVNAMEDPIPE)((uintptr_t)pInterface - RT_OFFSETOF(DRVNAMEDPIPE, IStream)) )
-
-/** Converts a pointer to PDMDRVINS::IBase to a PPDMDRVINS. */
-#define PDMIBASE_2_DRVINS(pInterface)   ( (PPDMDRVINS)((uintptr_t)pInterface - RT_OFFSETOF(PDMDRVINS, IBase)) )
 
 
 /*******************************************************************************
@@ -285,7 +282,7 @@ static DECLCALLBACK(int) drvNamedPipeWrite(PPDMISTREAM pInterface, const void *p
  */
 static DECLCALLBACK(void *) drvNamedPipeQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
-    PPDMDRVINS      pDrvIns = PDMIBASE_2_DRVINS(pInterface);
+    PPDMDRVINS      pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PDRVNAMEDPIPE   pThis   = PDMINS_2_DATA(pDrvIns, PDRVNAMEDPIPE);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMISTREAM, &pThis->IStream);

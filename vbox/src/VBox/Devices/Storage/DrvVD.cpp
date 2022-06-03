@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 39414 2011-11-24 21:52:15Z vboxsync $ */
+/* $Id: DrvVD.cpp 39855 2012-01-24 16:40:14Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -61,14 +61,6 @@ extern bool DevINIPConfigured(void);
 /** Converts a pointer to VBOXDISK::IMedia to a PVBOXDISK. */
 #define PDMIMEDIA_2_VBOXDISK(pInterface) \
     ( (PVBOXDISK)((uintptr_t)pInterface - RT_OFFSETOF(VBOXDISK, IMedia)) )
-
-/** Converts a pointer to PDMDRVINS::IBase to a PPDMDRVINS. */
-#define PDMIBASE_2_DRVINS(pInterface) \
-    ( (PPDMDRVINS)((uintptr_t)pInterface - RT_OFFSETOF(PDMDRVINS, IBase)) )
-
-/** Converts a pointer to PDMDRVINS::IBase to a PVBOXDISK. */
-#define PDMIBASE_2_VBOXDISK(pInterface) \
-    ( PDMINS_2_DATA(PDMIBASE_2_DRVINS(pInterface), PVBOXDISK) )
 
 /** Converts a pointer to VBOXDISK::IMediaAsync to a PVBOXDISK. */
 #define PDMIMEDIAASYNC_2_VBOXDISK(pInterface) \
@@ -1872,7 +1864,7 @@ static int drvvdBlkCacheXferEnqueueDiscard(PPDMDRVINS pDrvIns, PCRTRANGE paRange
  */
 static DECLCALLBACK(void *) drvvdQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
-    PPDMDRVINS  pDrvIns = PDMIBASE_2_DRVINS(pInterface);
+    PPDMDRVINS  pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
     PVBOXDISK   pThis   = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
 
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
