@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 41387 2012-05-22 10:42:51Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 41390 2012-05-22 13:09:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -86,7 +86,7 @@ UINameAndSystemEditor::UINameAndSystemEditor(QWidget *pParent)
         pMainLayout->addWidget(m_pFamilyCombo, 1, 1);
         pMainLayout->addWidget(m_pTypeLabel, 2, 0);
         pMainLayout->addWidget(m_pTypeCombo, 2, 1);
-        pMainLayout->addItem(pIconLayout, 1, 2, 2, 1);
+        pMainLayout->addLayout(pIconLayout, 1, 2, 2, 1);
     }
 
     /* Check if host supports (AMD-V or VT-x) and long mode: */
