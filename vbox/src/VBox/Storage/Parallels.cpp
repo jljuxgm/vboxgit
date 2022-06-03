@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 38469 2011-08-16 10:34:32Z vboxsync $ */
+/* $Id: Parallels.cpp 40948 2012-04-16 18:50:31Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -26,6 +26,7 @@
 #include <iprt/uuid.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+#include <iprt/asm.h>
 
 #define PARALLELS_HEADER_MAGIC "WithoutFreeSpace"
 #define PARALLELS_DISK_VERSION 2
