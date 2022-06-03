@@ -1,4 +1,4 @@
-/* $Id: FramebufferImpl.h 41184 2012-05-07 13:28:04Z vboxsync $ */
+/* $Id: FramebufferImpl.h 41187 2012-05-07 15:12:10Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -25,7 +25,6 @@
 
 class ATL_NO_VTABLE Framebuffer :
     public VirtualBoxBase,
-    public VirtualBoxSupportTranslation<Framebuffer>,
     VBOX_SCRIPTABLE_IMPL(IFramebuffer)
 {
 public:
