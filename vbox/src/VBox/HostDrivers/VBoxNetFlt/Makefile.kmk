@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36121 2011-03-01 15:25:18Z vboxsync $
+# $Id: Makefile.kmk 36385 2011-03-24 06:15:17Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -424,10 +424,14 @@ $(PATH_OUT)/opt_netgraph.h:
 		$(PATH_SUB_CURRENT)/freebsd/Makefile \
 		$$(if $$(eq $$(VBoxNetFlt/freebsd/Makefile_VBOX_HARDENED),$$(VBOX_WITH_HARDENING)),,FORCE) \
 		| $$(dir $$@)
- ifndef VBOX_WITH_HARDENING
-	$(QUIET)$(SED) -e "s;-DVBOX_WITH_HARDENING;;g" --output $@ $<
- else
 	$(QUIET)$(CP) -f $< $@
+ ifndef VBOX_WITH_HARDENING
+	$(QUIET)$(SED) -e "s;-DVBOX_WITH_HARDENING;;g" --output $@.tmp $@
+	${QUIET}$(MV) -f $@.tmp $@
+ endif
+ ifndef VBOX_WITH_NETFLT_VIMAGE
+	$(QUIET)$(SED) -e "s;-DVIMAGE;;g" --output $@.tmp $@
+	${QUIET}$(MV) -f $@.tmp $@
  endif
 endif # freebsd
 
