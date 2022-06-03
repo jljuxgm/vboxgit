@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37075 2011-05-13 14:43:27Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37092 2011-05-15 12:04:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9536,7 +9536,8 @@ HRESULT Machine::createImplicitDiffs(IProgress *aProgress,
             // (this cannot fail here because we can't create implicit diffs for
             // unregistered images)
             Guid uuidRegistryParent;
-            Assert(pMedium->getFirstRegistryMachineId(uuidRegistryParent));
+            bool fInRegistry = pMedium->getFirstRegistryMachineId(uuidRegistryParent);
+            Assert(fInRegistry); NOREF(fInRegistry);
             rc = diff->init(mParent,
                             pMedium->getPreferredDiffFormat(),
                             strFullSnapshotFolder.append(RTPATH_SLASH_STR),
