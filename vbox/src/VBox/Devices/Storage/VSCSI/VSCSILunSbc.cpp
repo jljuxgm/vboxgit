@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 38694 2011-09-08 21:44:08Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 38702 2011-09-09 11:33:13Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -146,7 +146,7 @@ static int vscsiLunSbcInit(PVSCSILUNINT pVScsiLun)
         PVSCSIVPDPAGESUPPORTEDPAGES pVpdPages;
 
         rc = vscsiVpdPagePoolAllocNewPage(&pVScsiLunSbc->VpdPagePool, VSCSI_VPD_SUPPORTED_PAGES_NUMBER,
-                                          VSCSI_VPD_SUPPORTED_PAGES_SIZE + cVpdPages - 1, (uint8_t **)&pVpdPages);
+                                          VSCSI_VPD_SUPPORTED_PAGES_SIZE + cVpdPages, (uint8_t **)&pVpdPages);
         if (RT_SUCCESS(rc))
         {
             unsigned idxVpdPage = 0;
