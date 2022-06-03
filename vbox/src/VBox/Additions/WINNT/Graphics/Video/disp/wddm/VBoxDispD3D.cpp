@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 41471 2012-05-29 07:12:09Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 41475 2012-05-29 10:14:42Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -1084,9 +1084,8 @@ static VOID vboxWddmDalCheckAddRtsSamplers(PVBOXWDDMDISP_DEVICE pDevice)
         Assert(i < RT_ELEMENTS(pDevice->aSamplerTextures));
         if (!pDevice->aSamplerTextures[i]) continue;
         vboxWddmDalCheckAddRc(pDevice, pDevice->aSamplerTextures[i], FALSE);
-        ++iSampler; \
-    } \
-
+        ++iSampler;
+    }
 }
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
