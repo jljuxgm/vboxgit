@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: COMDefs.cpp 37015 2011-05-09 14:11:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -267,7 +267,7 @@ void COMErrorInfo::init(const CVirtualBoxErrorInfo &info)
     mIsBasicAvailable = gotSomething;
     mIsFullAvailable = gotAll;
 
-    mIsNull = gotSomething;
+    mIsNull = !gotSomething;
 
     AssertMsg (gotSomething, ("Nothing to fetch!\n"));
 }
@@ -281,7 +281,7 @@ void COMErrorInfo::copyFrom(const COMErrorInfo &x)
     mResultCode = x.mResultCode;
     mInterfaceID = x.mInterfaceID;
     mComponent = x.mComponent;
-    mText = mText;
+    mText = x.mText;
 
     if (x.m_pNext)
         m_pNext = new COMErrorInfo(*x.m_pNext);
@@ -362,7 +362,7 @@ void COMErrorInfo::fetchFromCurrentThread(IUnknown *callee, const GUID *calleeII
             if (gotSomething)
                 mIsBasicAvailable = true;
 
-            mIsNull = gotSomething;
+            mIsNull = !gotSomething;
 
             AssertMsg (gotSomething, ("Nothing to fetch!\n"));
         }
@@ -406,7 +406,7 @@ void COMErrorInfo::fetchFromCurrentThread(IUnknown *callee, const GUID *calleeII
                     if (gotSomething)
                         mIsBasicAvailable = true;
 
-                    mIsNull = gotSomething;
+                    mIsNull = !gotSomething;
 
                     AssertMsg (gotSomething, ("Nothing to fetch!\n"));
                 }
