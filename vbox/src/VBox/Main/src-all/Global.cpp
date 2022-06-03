@@ -1,13 +1,12 @@
-/* $Id: Global.cpp 40041 2012-02-08 19:46:28Z vboxsync $ */
+/* $Id: Global.cpp 40066 2012-02-10 14:52:47Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM global definitions
  *
  * NOTE: This file is part of both VBoxC.dll and VBoxSVC.exe.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -535,6 +534,5 @@ Global::vboxStatusCodeToCOM(int aVBoxStatus)
             return E_FAIL;
     }
 }
-
 
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

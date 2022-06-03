@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 39926 2012-01-31 20:45:46Z vboxsync $ */
+/* $Id: MachineImpl.cpp 40066 2012-02-10 14:52:47Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -59,6 +59,7 @@
 #endif
 
 #include "AutoCaller.h"
+#include "HashedPw.h"
 #include "Performance.h"
 
 #include <iprt/asm.h>
@@ -69,6 +70,7 @@
 #include <iprt/process.h>
 #include <iprt/cpp/utils.h>
 #include <iprt/cpp/xml.h>               /* xml::XmlFileWriter::s_psz*Suff. */
+#include <iprt/sha.h>
 #include <iprt/string.h>
 
 #include <VBox/com/array.h>
@@ -2695,30 +2697,47 @@ STDMETHODIMP Machine::COMGETTER(TeleporterPassword)(BSTR *aPassword)
     CheckComArgOutPointerValid(aPassword);
 
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    HRESULT hrc = autoCaller.rc();
+    if (SUCCEEDED(hrc))
+    {
+        AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+        mUserData->s.strTeleporterPassword.cloneTo(aPassword);
+    }
 
-    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
-
-    mUserData->s.strTeleporterPassword.cloneTo(aPassword);
-
-    return S_OK;
+    return hrc;
 }
 
 STDMETHODIMP Machine::COMSETTER(TeleporterPassword)(IN_BSTR aPassword)
 {
+    /*
+     * Hash the password first.
+     */
+    Utf8Str strPassword(aPassword);
+    if (!strPassword.isEmpty())
+    {
+        if (VBoxIsPasswordHashed(&strPassword))
+            return setError(E_INVALIDARG, tr("Cannot set an already hashed password, only plain text password please"));
+        VBoxHashPassword(&strPassword);
+    }
+
+    /*
+     * Do the update.
+     */
     AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    HRESULT hrc = autoCaller.rc();
+    if (SUCCEEDED(hrc))
+    {
+        AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+        hrc = checkStateDependency(MutableStateDep);
+        if (SUCCEEDED(hrc))
+        {
+            setModified(IsModified_MachineData);
+            mUserData.backup();
+            mUserData->s.strTeleporterPassword = strPassword;
+        }
+    }
 
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
-    HRESULT rc = checkStateDependency(MutableStateDep);
-    if (FAILED(rc)) return rc;
-
-    setModified(IsModified_MachineData);
-    mUserData.backup();
-    mUserData->s.strTeleporterPassword = aPassword;
-
-    return S_OK;
+    return hrc;
 }
 
 STDMETHODIMP Machine::COMGETTER(FaultToleranceState)(FaultToleranceState_T *aState)

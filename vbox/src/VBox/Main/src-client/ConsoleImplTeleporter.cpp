@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 36041 2011-02-21 16:04:53Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 40066 2012-02-10 14:52:47Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -25,6 +25,7 @@
 
 #include "AutoCaller.h"
 #include "Logging.h"
+#include "HashedPw.h"
 
 #include <iprt/asm.h>
 #include <iprt/err.h>
@@ -931,9 +932,17 @@ Console::Teleport(IN_BSTR aHostname, ULONG aPort, IN_BSTR aPassword, ULONG aMaxD
      */
     CheckComArgOutPointerValid(aProgress);
     CheckComArgStrNotEmptyOrNull(aHostname);
-    CheckComArgStrNotEmptyOrNull(aHostname);
+    CheckComArgStrNotEmptyOrNull(aPassword);
     CheckComArgExprMsg(aPort, aPort > 0 && aPort <= 65535, ("is %u", aPort));
     CheckComArgExprMsg(aMaxDowntime, aMaxDowntime > 0, ("is %u", aMaxDowntime));
+
+    Utf8Str strPassword(aPassword);
+    if (!strPassword.isEmpty())
+    {
+        if (VBoxIsPasswordHashed(&strPassword))
+            return setError(E_INVALIDARG, tr("The specified password resembles a hashed password, expected plain text"));
+        VBoxHashPassword(&strPassword);
+    }
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -970,7 +979,7 @@ Console::Teleport(IN_BSTR aHostname, ULONG aPort, IN_BSTR aPassword, ULONG aMaxD
         return hrc;
 
     TeleporterStateSrc *pState = new TeleporterStateSrc(this, mpUVM, ptrProgress, mMachineState);
-    pState->mstrPassword    = aPassword;
+    pState->mstrPassword    = strPassword;
     pState->mstrHostname    = aHostname;
     pState->muPort          = aPort;
     pState->mcMsMaxDowntime = aMaxDowntime;
