@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36163 2011-03-04 11:15:36Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36165 2011-03-04 11:29:37Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6135,7 +6135,7 @@ void Machine::composeSavedStateFilename(Utf8Str &strStateFilePath)
     RTTimeExplode(&time, &ts);
 
     strStateFilePath += RTPATH_DELIMITER;
-    strStateFilePath += Utf8StrFmt("%04ld-%02u-%02uT%02u-%02u-%02u-%09luZ.sav",
+    strStateFilePath += Utf8StrFmt("%04ld-%02u-%02uT%02u-%02u-%02u-%09uZ.sav",
                                    time.i32Year,
                                    time.u8Month,
                                    time.u8MonthDay,
