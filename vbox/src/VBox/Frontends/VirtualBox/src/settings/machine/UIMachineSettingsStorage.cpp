@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 37824 2011-07-07 15:29:03Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 37825 2011-07-07 18:16:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -3547,7 +3547,7 @@ bool UIMachineSettingsStorage::updateStorageAttachment(const UICacheSettingsMach
                 }
                 if (fSuccess)
                 {
-                    if (attachmentDeviceType == KDeviceType_DVD)
+                    if (attachmentDeviceType == KDeviceType_HardDisk)
                     {
                         m_machine.NonRotationalDevice(strControllerName, iAttachmentPort, iAttachmentDevice, fAttachmentNonRotational);
                         /* Check that machine is OK: */
