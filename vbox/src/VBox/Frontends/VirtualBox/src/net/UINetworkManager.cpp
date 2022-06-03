@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 41235 2012-05-10 13:20:09Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 41433 2012-05-24 13:10:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -780,14 +780,6 @@ void UINetworkManager::cleanupNetworkRequests()
     for (int i = 0; i < uuids.size(); ++i)
         cleanupNetworkRequest(uuids[i]);
 }
-
-#if 0
-/* Downloader creation notificator: */
-void UINetworkManager::notifyDownloaderCreated(UIDownloadType downloaderType)
-{
-    emit sigDownloaderCreated(downloaderType);
-}
-#endif
 
 /* Slot to handle network-request progress: */
 void UINetworkManager::sltHandleNetworkRequestProgress(const QUuid &uuid, qint64 iReceived, qint64 iTotal)
