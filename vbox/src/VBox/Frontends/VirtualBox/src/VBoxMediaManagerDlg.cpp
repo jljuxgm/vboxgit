@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 41611 2012-06-07 13:01:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -49,6 +49,7 @@
 
 /* COM includes: */
 #include "COMEnums.h"
+#include "CMediumFormat.h"
 #include "CStorageController.h"
 #include "CMediumAttachment.h"
 
