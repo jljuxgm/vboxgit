@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 36138 2011-03-03 10:44:55Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 36157 2011-03-04 08:26:26Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1205,7 +1205,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_PCIIORegionRegister(PPDMDEVINS pDevIns, int
         LogFlow(("pdmR3DevHlp_PCIIORegionRegister: caller='%s'/%d: returns %Rrc (iRegion)\n", pDevIns->pReg->szName, pDevIns->iInstance, VERR_INVALID_PARAMETER));
         return VERR_INVALID_PARAMETER;
     }
-    switch (enmType)
+    switch ((int)enmType)
     {
         case PCI_ADDRESS_SPACE_IO:
             /*
