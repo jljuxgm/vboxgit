@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: zip.cpp 40098 2012-02-13 17:33:43Z vboxsync $ */
 /** @file
  * IPRT - Compression.
  */
@@ -563,7 +563,7 @@ static DECLCALLBACK(int) rtZipZlibCompInit(PRTZIPCOMP pZip, RTZIPLEVEL enmLevel)
     pZip->u.Zlib.avail_out = sizeof(pZip->abBuffer) - 1;
     pZip->u.Zlib.opaque    = pZip;
 
-    int rc = deflateInit(&pZip->u.Zlib, enmLevel);
+    int rc = deflateInit(&pZip->u.Zlib, iLevel);
     return rc >= 0 ? rc = VINF_SUCCESS : zipErrConvertFromZlib(rc, true /*fCompressing*/);
 }
 
