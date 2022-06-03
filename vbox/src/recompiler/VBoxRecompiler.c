@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 38300 2011-08-03 11:58:41Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 38320 2011-08-04 19:16:53Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2951,6 +2951,33 @@ REMR3DECL(void) REMR3StateUpdate(PVM pVM, PVMCPU pVCpu)
 
 #undef LOG_GROUP
 #define LOG_GROUP LOG_GROUP_REM
+
+
+/**
+ * Notify the recompiler about Address Gate 20 state change.
+ *
+ * This notification is required since A20 gate changes are
+ * initialized from a device driver and the VM might just as
+ * well be in REM mode as in RAW mode.
+ *
+ * @param   pVM         VM handle.
+ * @param   pVCpu       VMCPU handle.
+ * @param   fEnable     True if the gate should be enabled.
+ *                      False if the gate should be disabled.
+ */
+REMR3DECL(void) REMR3A20Set(PVM pVM, PVMCPU pVCpu, bool fEnable)
+{
+    LogFlow(("REMR3A20Set: fEnable=%d\n", fEnable));
+    VM_ASSERT_EMT(pVM);
+
+    /** @todo SMP and the A20 gate... */
+    if (pVM->rem.s.Env.pVCpu == pVCpu)
+    {
+        ASMAtomicIncU32(&pVM->rem.s.cIgnoreAll);
+        cpu_x86_set_a20(&pVM->rem.s.Env, fEnable);
+        ASMAtomicDecU32(&pVM->rem.s.cIgnoreAll);
+    }
+}
 
 
 /**
