@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 39636 2011-12-16 00:19:35Z vboxsync $ */
+/* $Id: reqpool.cpp 39639 2011-12-16 00:30:47Z vboxsync $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -459,9 +459,8 @@ static void rtReqPoolCreateNewWorker(RTREQPOOL pPool)
     pPool->cCurThreads++;
     pPool->cThreadsCreated++;
 
-    static uint32_t s_idThread = 0;
     int rc = RTThreadCreateF(&pThread->hThread, rtReqPoolThreadProc, pThread, 0 /*default stack size*/,
-                             pPool->enmThreadType, 0 /*fFlags*/, "REQPT%02u", ++s_idThread);
+                             pPool->enmThreadType, 0 /*fFlags*/, "%s%02u", pPool->szName, pPool->cThreadsCreated);
     if (RT_SUCCESS(rc))
         pPool->uLastThreadCreateNanoTs = pThread->uBirthNanoTs;
     else
