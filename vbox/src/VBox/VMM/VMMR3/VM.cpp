@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 37465 2011-06-15 10:07:58Z vboxsync $ */
+/* $Id: VM.cpp 37794 2011-07-06 10:24:07Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -341,6 +341,14 @@ VMMR3DECL(int)   VMR3Create(uint32_t cCpus, PCVMM2USERMETHODS pVmm2UserMethods,
                                   "that as of VirtualBox 4.0, certain features (for example USB 2.0 "
                                   "support and remote desktop) are only available from an 'extension "
                                   "pack' which must be downloaded and installed separately");
+                    break;
+
+                case VERR_PCI_PASSTHROUGH_NO_HWACCM:
+                    pszError = N_("PCI passthrough requires VT-x/AMD-V");
+                    break;
+
+                case VERR_PCI_PASSTHROUGH_NO_NESTED_PAGING:
+                    pszError = N_("PCI passthrough requires nested paging");
                     break;
 
                 default:
