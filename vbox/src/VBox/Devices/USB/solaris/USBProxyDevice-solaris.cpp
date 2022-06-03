@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-solaris.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: USBProxyDevice-solaris.cpp 37811 2011-07-07 08:37:58Z vboxsync $ */
 /** @file
  * USB device proxy - the Solaris backend.
  */
@@ -593,16 +593,6 @@ static int usbProxySolarisUrbQueue(PVUSBURB pUrb)
 
     LogFlowFunc((USBPROXY ": usbProxySolarisUrbQueue: pProxyDev=%s pUrb=%p EndPt=%#x enmDir=%d cbData=%d pvData=%p\n",
              pProxyDev->pUsbIns->pszName, pUrb, pUrb->EndPt, pUrb->enmDir, pUrb->cbData, pUrb->abData));
-
-    // Enable Isoc. Xfers
-#if 0
-    if (pUrb->enmType == VUSBXFERTYPE_ISOC)
-    {
-        /* Not yet complete (disabled for now) */
-        LogFlow((USBPROXY ":usbProxySolarisUrbQueue: Isoc. Xfers not supported\n"));
-        return false;
-    }
-#endif
 
     PUSBPROXYURBSOL pUrbSol = usbProxySolarisUrbAlloc(pDevSol);
     if (RT_UNLIKELY(!pUrbSol))
