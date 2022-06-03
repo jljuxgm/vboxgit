@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: env-generic.cpp 36576 2011-04-06 13:28:12Z vboxsync $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -508,6 +508,7 @@ RTDECL(int) RTEnvGetEx(RTENV Env, const char *pszVar, char *pszValue, size_t cbV
                         else
                             rc = VERR_BUFFER_OVERFLOW;
                     }
+                    RTStrFree(pszValueUtf8);
                 }
             }
             else
