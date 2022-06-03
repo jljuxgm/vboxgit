@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 41811 2012-06-18 09:50:23Z vboxsync $ */
+/* $Id: DevPCI.cpp 41816 2012-06-18 14:07:17Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -243,7 +243,7 @@ RT_C_DECLS_END
 #ifdef IN_RING3
 /**
  * Reads data via bus mastering, if enabled. If no bus mastering is available,
- * this function does nothing and returns VINF_SUCCESS.
+ * this function does nothing and returns VINF_NOT_SUPPORTED.
  *
  * @return  IPRT status code.
  */
@@ -259,7 +259,7 @@ int PCIDevPhysRead(PPCIDEVICE pPciDev, RTGCPHYS GCPhys, void *pvBuf, size_t cbRe
         Log2(("%s: %RU16:%RU16: No bus master (anymore), skipping read %p (%z)\n", __FUNCTION__,
               PCIDevGetVendorId(pPciDev), PCIDevGetDeviceId(pPciDev), pvBuf, cbRead));
 #endif
-        return VINF_SUCCESS;
+        return VINF_NOT_SUPPORTED;
     }
 
     return PDMDevHlpPhysRead(pPciDev->pDevIns, GCPhys, pvBuf, cbRead);
@@ -267,7 +267,7 @@ int PCIDevPhysRead(PPCIDEVICE pPciDev, RTGCPHYS GCPhys, void *pvBuf, size_t cbRe
 
 /**
  * Writes data via bus mastering, if enabled. If no bus mastering is available,
- * this function does nothing and returns VINF_SUCCESS.
+ * this function does nothing and returns VINF_NOT_SUPPORTED.
  *
  * @return  IPRT status code.
  */
@@ -283,7 +283,7 @@ int PCIDevPhysWrite(PPCIDEVICE pPciDev, RTGCPHYS GCPhys, const void *pvBuf, size
         Log2(("%s: %RU16:%RU16: No bus master (anymore), skipping write %p (%z)\n", __FUNCTION__,
               PCIDevGetVendorId(pPciDev), PCIDevGetDeviceId(pPciDev), pvBuf, cbWrite));
 #endif
-        return VINF_SUCCESS;
+        return VINF_NOT_SUPPORTED;
     }
 
     return PDMDevHlpPhysWrite(pPciDev->pDevIns, GCPhys, pvBuf, cbWrite);
