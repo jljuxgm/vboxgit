@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 39568 2011-12-09 13:52:31Z vboxsync $ */
+/* $Id: state_glsl.c 39602 2011-12-14 11:12:17Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -174,9 +174,9 @@ DECLEXPORT(void) STATE_APIENTRY crStateGLSLDestroy(CRContext *ctx)
       as the current context isn't the one being destroyed*/
 #ifdef CHROMIUM_THREADSAFE
     CRASSERT(g != ctx);
-    crTSDRefAddRef(ctx); /* <- this is a hack to avoid subsequent SetCurrentContext(g) do recursive Destroy for ctx */
+    VBoxTlsRefAddRef(ctx); /* <- this is a hack to avoid subsequent SetCurrentContext(g) do recursive Destroy for ctx */
     if (g)
-        crTSDRefAddRef(g); /* <- ensure the g is not destroyed by the following SetCurrentContext call */
+        VBoxTlsRefAddRef(g); /* <- ensure the g is not destroyed by the following SetCurrentContext call */
     SetCurrentContext(ctx);
 #else
     __currentContext = ctx;
@@ -188,8 +188,8 @@ DECLEXPORT(void) STATE_APIENTRY crStateGLSLDestroy(CRContext *ctx)
 #ifdef CHROMIUM_THREADSAFE
     SetCurrentContext(g);
     if (g)
-        crTSDRefRelease(g);
-    crTSDRefRelease(ctx); /* <- restore back the cRefs (see above) */
+        VBoxTlsRefRelease(g);
+    VBoxTlsRefRelease(ctx); /* <- restore back the cRefs (see above) */
 #else
     __currentContext = g;
 #endif
