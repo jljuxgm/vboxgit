@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36021 2011-02-18 14:59:37Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 36024 2011-02-21 09:07:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1130,6 +1130,7 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
             InsertConfigNode(pDev,     "0", &pInst);
             InsertConfigInteger(pInst, "Trusted",          1); /* boolean */
             InsertConfigNode(pInst,    "Config", &pCfg);
+            InsertConfigInteger(pCfg,  "NumCPUs", cCpus);
         }
 
         /*
