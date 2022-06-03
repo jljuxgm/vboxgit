@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 38516 2011-08-24 14:37:08Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 38531 2011-08-25 14:30:23Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -109,6 +109,8 @@ DECL_HIDDEN_CONST(RTDBGMODVTIMG) const g_rtDbgModVtImgLdr =
     /*.pfnTryOpen = */          rtDbgModLdr_TryOpen,
     /*.pfnClose = */            rtDbgModLdr_Close,
     /*.pfnEnumDbgInfo = */      rtDbgModLdr_EnumDbgInfo,
+    /*.pfnMapPart = */          NULL /** @todo*/,
+    /*.pfnUnmapPart = */        NULL /** @todo*/,
 
     /*.u32EndMagic = */         RTDBGMODVTIMG_MAGIC
 };
