@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 37419 2011-06-11 20:25:37Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -122,7 +122,8 @@ VMMDECL(int) PDMR3CritSectTerm(PVM pVM)
  *                          statistics and lock validation.
  * @param   va              Arguments for the format string.
  */
-static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey, RT_SRC_POS_DECL, const char *pszNameFmt, va_list va)
+static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey, RT_SRC_POS_DECL,
+                                const char *pszNameFmt, va_list va)
 {
     VM_ASSERT_EMT(pVM);
 
@@ -458,6 +459,7 @@ VMMR3DECL(bool) PDMR3CritSectYield(PPDMCRITSECT pCritSect)
     AssertPtrReturn(pCritSect, false);
     AssertReturn(pCritSect->s.Core.u32Magic == RTCRITSECT_MAGIC, false);
     Assert(pCritSect->s.Core.NativeThreadOwner == RTThreadNativeSelf());
+    Assert(!(pCritSect->s.Core.fFlags & RTCRITSECT_FLAGS_NOP));
 
     /* No recursion allowed here. */
     int32_t const cNestings = pCritSect->s.Core.cNestings;
@@ -515,6 +517,8 @@ VMMR3DECL(bool) PDMR3CritSectYield(PPDMCRITSECT pCritSect)
  */
 VMMR3DECL(int) PDMR3CritSectScheduleExitEvent(PPDMCRITSECT pCritSect, RTSEMEVENT EventToSignal)
 {
+    AssertPtr(pCritSect);
+    Assert(!(pCritSect->s.Core.fFlags & RTCRITSECT_FLAGS_NOP));
     Assert(EventToSignal != NIL_RTSEMEVENT);
     if (RT_UNLIKELY(!RTCritSectIsOwner(&pCritSect->s.Core)))
         return VERR_NOT_OWNER;
