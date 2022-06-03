@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 40907 2012-04-13 20:50:14Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 41385 2012-05-22 07:51:07Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -3792,7 +3792,7 @@ void remR3PhysWriteU64(RTGCPHYS DstGCPhys, uint64_t val)
     PGMR3PhysWriteU64(cpu_single_env->pVM, DstGCPhys, val);
     STAM_PROFILE_ADV_STOP(&gStatMemWrite, a);
 #ifdef VBOX_DEBUG_PHYS
-    LogRel(("writeu64: %llx -> %08x\n", val, (uint32_t)SrcGCPhys));
+    LogRel(("writeu64: %llx -> %08x\n", val, (uint32_t)DstGCPhys));
 #endif
 }
 
