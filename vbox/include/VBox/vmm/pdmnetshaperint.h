@@ -1,4 +1,4 @@
-/* $Id: pdmnetshaperint.h 42062 2012-07-09 15:10:00Z vboxsync $ */
+/* $Id: pdmnetshaperint.h 42064 2012-07-09 15:31:05Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Internal data structures and functions common for both
  * R0 and R3 parts.
@@ -45,7 +45,7 @@ typedef struct PDMNSBWGROUP
 /** Pointer to a bandwidth group. */
 typedef PDMNSBWGROUP *PPDMNSBWGROUP;
 
-DECLINLINE(bool) pdmNsAllocateBandwidth(PPDMNSFILTER pFilter, uint32_t cbTransfer)
+DECLINLINE(bool) pdmNsAllocateBandwidth(PPDMNSFILTER pFilter, size_t cbTransfer)
 {
     AssertPtrReturn(pFilter, true);
     if (!VALID_PTR(pFilter->CTX_SUFF(pBwGroup)))

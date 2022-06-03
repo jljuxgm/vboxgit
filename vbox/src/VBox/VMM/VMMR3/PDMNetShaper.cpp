@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaper.cpp 42062 2012-07-09 15:10:00Z vboxsync $ */
+/* $Id: PDMNetShaper.cpp 42064 2012-07-09 15:31:05Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth
  * group settings.
@@ -336,7 +336,7 @@ VMMR3DECL(int) PDMR3NsDetach(PVM pVM, PPDMDRVINS pDrvIns, PPDMNSFILTER pFilter)
     return rc;
 }
 
-VMMR3DECL(bool) PDMR3NsAllocateBandwidth(PPDMNSFILTER pFilter, uint32_t cbTransfer)
+VMMR3DECL(bool) PDMR3NsAllocateBandwidth(PPDMNSFILTER pFilter, size_t cbTransfer)
 {
     return pdmNsAllocateBandwidth(pFilter, cbTransfer);
 }
