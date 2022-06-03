@@ -1,4 +1,4 @@
-/* $Id: STAMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: STAMInternal.h 39917 2012-01-31 14:04:52Z vboxsync $ */
 /** @file
  * STAM Internal Header.
  */
@@ -22,6 +22,7 @@
 #include <VBox/types.h>
 #include <VBox/vmm/stam.h>
 #include <VBox/vmm/gvmm.h>
+#include <VBox/vmm/gmm.h>
 #include <iprt/semaphore.h>
 
 
@@ -68,6 +69,8 @@ typedef struct STAMDESC
         uint64_t       *pu64;
         /** Simple void pointer. */
         void           *pv;
+        /** Boolean. */
+        bool           *pf;
         /** */
         struct STAMDESCSAMPLEDATACALLBACKS
         {
@@ -104,6 +107,9 @@ typedef struct STAMUSERPERVM
     GVMMSTATS               GVMMStats;
     /** The number of registered host CPU leaves. */
     uint32_t                cRegisteredHostCpus;
+
+    /** The copy of the GMM statistics. */
+    GMMSTATS                GMMStats;
 } STAMUSERPERVM;
 /** Pointer to the STAM data kept in the UVM. */
 typedef STAMUSERPERVM *PSTAMUSERPERVM;

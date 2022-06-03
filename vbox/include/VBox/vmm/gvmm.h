@@ -1,4 +1,4 @@
-/* $Id: gvmm.h 35361 2010-12-28 08:38:42Z vboxsync $ */
+/* $Id: gvmm.h 39917 2012-01-31 14:04:52Z vboxsync $ */
 /** @file
  * GVMM - The Global VM Manager.
  */
@@ -126,7 +126,7 @@ typedef struct GVMMSTATSHOSTCPU
 typedef GVMMSTATSHOSTCPU *PGVMMSTATSHOSTCPU;
 
 /**
- * The GMM statistics.
+ * The GVMM statistics.
  */
 typedef struct GVMMSTATS
 {

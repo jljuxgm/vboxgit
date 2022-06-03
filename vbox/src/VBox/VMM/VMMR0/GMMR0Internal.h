@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 37248 2011-05-30 10:02:24Z vboxsync $ */
+/* $Id: GMMR0Internal.h 39917 2012-01-31 14:04:52Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -20,22 +20,6 @@
 
 #include <VBox/vmm/gmm.h>
 #include <iprt/avl.h>
-
-/**
- * The allocation sizes.
- */
-typedef struct GMMVMSIZES
-{
-    /** The number of pages of base memory.
-     * This is the sum of RAM, ROMs and handy pages. */
-    uint64_t        cBasePages;
-    /** The number of pages for the shadow pool. (Can be squeezed for memory.) */
-    uint32_t        cShadowPages;
-    /** The number of pages for fixed allocations like MMIO2 and the hyper heap. */
-    uint32_t        cFixedPages;
-} GMMVMSIZES;
-/** Pointer to a GMMVMSIZES. */
-typedef GMMVMSIZES *PGMMVMSIZES;
 
 
 /**
@@ -98,51 +82,12 @@ typedef struct GMMPERVM
 {
     /** Free set for use in bound mode. */
     GMMCHUNKFREESET     Private;
-
-    /** The reservations. */
-    GMMVMSIZES          Reserved;
-    /** The actual allocations.
-     * This includes both private and shared page allocations. */
-    GMMVMSIZES          Allocated;
-
-    /** The current number of private pages. */
-    uint64_t            cPrivatePages;
-    /** The current number of shared pages. */
-    uint64_t            cSharedPages;
-    /** The current over-commitment policy. */
-    GMMOCPOLICY         enmPolicy;
-    /** The VM priority for arbitrating VMs in low and out of memory situation.
-     * Like which VMs to start squeezing first. */
-    GMMPRIORITY         enmPriority;
-    /** Hints at the last chunk we allocated some memory from. */
-    uint32_t            idLastChunkHint;
-
-    /** The current number of ballooned pages. */
-    uint64_t            cBalloonedPages;
-    /** The max number of pages that can be ballooned. */
-    uint64_t            cMaxBalloonedPages;
-    /** The number of pages we've currently requested the guest to give us.
-     * This is 0 if no pages currently requested. */
-    uint64_t            cReqBalloonedPages;
-    /** The number of pages the guest has given us in response to the request.
-     * This is not reset on request completed and may be used in later decisions. */
-    uint64_t            cReqActuallyBalloonedPages;
-    /** The number of pages we've currently requested the guest to take back. */
-    uint64_t            cReqDeflatePages;
-
+    /** The VM statistics. */
+    GMMVMSTATS          Stats;
     /** Shared module tree (per-vm). */
     PAVLGCPTRNODECORE   pSharedModuleTree;
-
-    /** Whether ballooning is enabled or not. */
-    bool                fBallooningEnabled;
-
-    /** Whether shared paging is enabled or not. */
-    bool                fSharedPagingEnabled;
-
-    /** Whether the VM is allowed to allocate memory or not.
-     * This is used when the reservation update request fails or when the VM has
-     * been told to suspend/save/die in an out-of-memory case. */
-    bool                fMayAllocate;
+    /** Hints at the last chunk we allocated some memory from. */
+    uint32_t            idLastChunkHint;
 } GMMPERVM;
 /** Pointer to the per-VM GMM data. */
 typedef GMMPERVM *PGMMPERVM;
