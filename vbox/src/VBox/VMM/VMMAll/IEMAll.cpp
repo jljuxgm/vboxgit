@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 39958 2012-02-02 16:48:02Z vboxsync $ */
+/* $Id: IEMAll.cpp 39962 2012-02-02 17:27:43Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -6372,7 +6372,8 @@ static void iemExecVerificationModeCheck(PIEMCPU pIemCpu)
         CHECK_FIELD(dr[2]);
         CHECK_FIELD(dr[3]);
         CHECK_FIELD(dr[6]);
-        CHECK_FIELD(dr[7]);
+        if ((pOrgCtx->dr[7] & ~X86_DR7_MB1_MASK) != (pDebugCtx->dr[7] & ~X86_DR7_MB1_MASK)) /* REM 'mov drX,greg' bug.*/
+            CHECK_FIELD(dr[7]);
         CHECK_FIELD(gdtr.cbGdt);
         CHECK_FIELD(gdtr.pGdt);
         CHECK_FIELD(idtr.cbIdt);
