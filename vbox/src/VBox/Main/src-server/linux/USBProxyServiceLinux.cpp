@@ -1,10 +1,10 @@
-/* $Id: USBProxyServiceLinux.cpp 36491 2011-04-01 12:38:26Z vboxsync $ */
+/* $Id: USBProxyServiceLinux.cpp 36727 2011-04-19 12:52:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -62,7 +62,7 @@ USBProxyServiceLinux::USBProxyServiceLinux(Host *aHost)
       mWakeupPipeW(NIL_RTFILE), mUsingUsbfsDevices(true /* see init */),
       mUdevPolls(0), mpWaiter(NULL)
 {
-    LogFlowThisFunc(("aHost=%p:{%s}\n", aHost));
+    LogFlowThisFunc(("aHost=%p\n", aHost));
 }
 
 

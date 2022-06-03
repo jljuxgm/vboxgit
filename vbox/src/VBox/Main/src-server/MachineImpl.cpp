@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36683 2011-04-15 12:32:02Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36727 2011-04-19 12:52:03Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3377,7 +3377,7 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
                                    DeviceType_T aType,
                                    IMedium *aMedium)
 {
-    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%d aDevice=%d aType=%d aId=\"%ls\"\n",
+    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%d aDevice=%d aType=%d aMedium=%p\n",
                      aControllerName, aControllerPort, aDevice, aType, aMedium));
 
     CheckComArgStrNotEmptyOrNull(aControllerName);
