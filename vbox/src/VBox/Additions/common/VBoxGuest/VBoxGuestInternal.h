@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 38855 2011-09-23 19:31:35Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 38856 2011-09-23 19:43:00Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -144,10 +144,6 @@ typedef struct VBOXGUESTDEVEXT
 
     /** Spinlock various items in the VBOXGUESTSESSION. */
     RTSPINLOCK                  SessionSpinlock;
-
-    /** The current clipboard client ID, 0 if no client.
-     * For implementing the VBOXGUEST_IOCTL_CLIPBOARD_CONNECT interface. */
-    uint32_t                    u32ClipboardClientId;
 #ifdef VBOX_WITH_VRDP_SESSION_HANDLING
     BOOL                        fVRDPEnabled;
 #endif
