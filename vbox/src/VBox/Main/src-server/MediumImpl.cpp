@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 37586 2011-06-22 11:49:40Z vboxsync $ */
+/* $Id: MediumImpl.cpp 37625 2011-06-24 11:51:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -5683,7 +5683,8 @@ HRESULT Medium::setLocation(const Utf8Str &aLocation,
         }
 
         // we must always have full paths now (if it refers to a file)
-        if (   (m->formatObj->getCapabilities() & MediumFormatCapabilities_File)
+        if (   (   m->formatObj.isNull()
+                || m->formatObj->getCapabilities() & MediumFormatCapabilities_File)
             && !RTPathStartsWithRoot(locationFull.c_str()))
             return setError(VBOX_E_FILE_ERROR,
                             tr("The given path '%s' is not fully qualified"),
