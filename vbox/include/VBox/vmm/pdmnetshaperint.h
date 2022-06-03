@@ -1,4 +1,4 @@
-/* $Id: pdmnetshaperint.h 42064 2012-07-09 15:31:05Z vboxsync $ */
+/* $Id: pdmnetshaperint.h 42066 2012-07-09 16:39:22Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Internal data structures and functions common for both
  * R0 and R3 parts.
@@ -71,7 +71,7 @@ DECLINLINE(bool) pdmNsAllocateBandwidth(PPDMNSFILTER pFilter, size_t cbTransfer)
         else
         {
             pBwGroup->tsUpdatedLast = tsNow;
-            pBwGroup->cbTokensLast = uTokens - cbTransfer;
+            pBwGroup->cbTokensLast = uTokens - (uint32_t)cbTransfer;
         }
         Log2((LOG_FN_FMT "BwGroup=%#p{%s} cbTransfer=%u uTokens=%u uTokensAdded=%u fAllowed=%RTbool\n",
               __PRETTY_FUNCTION__, pBwGroup, pBwGroup->pszName, cbTransfer, uTokens, uTokensAdded, fAllowed));
