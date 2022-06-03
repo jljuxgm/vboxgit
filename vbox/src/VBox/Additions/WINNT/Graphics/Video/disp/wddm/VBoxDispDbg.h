@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 37216 2011-05-26 08:50:49Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 37300 2011-06-01 19:45:51Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -75,6 +75,17 @@ void vboxVDbgVEHandlerUnregister();
 # define DbgPrintUsrRel(_m) do { } while (0)
 # define DbgPrintUsrFlow(_m) do { } while (0)
 #endif
+#ifdef DEBUG_misha
+# define WARN_BREAK() do { AssertFailed(); } while (0)
+#else
+# define WARN_BREAK() do { } while (0)
+#endif
+#define WARN(_m) do { \
+        Log(_m); \
+        DbgPrintUsr(_m); \
+        DbgPrintDrv(_m); \
+        WARN_BREAK(); \
+    } while (0)
 #define vboxVDbgPrint(_m) do { \
         Log(_m); \
         DbgPrintUsr(_m); \

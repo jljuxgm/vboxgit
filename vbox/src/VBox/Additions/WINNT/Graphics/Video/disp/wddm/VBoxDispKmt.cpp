@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 37300 2011-06-01 19:45:51Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -148,12 +148,15 @@ HRESULT vboxDispKmtAdpHdcCreate(HDC *phDc)
         else
         {
             DWORD winEr = GetLastError();
-#ifdef DEBUG_misha
-            Assert(0);
-#endif
-            Log((__FUNCTION__": EnumDisplayDevices failed, winEr (%d)\n", winEr));
+            WARN_BREAK();
             hr = HRESULT_FROM_WIN32(winEr);
+#ifdef DEBUG_misha
             Assert(FAILED(hr));
+#endif
+            if (!FAILED(hr))
+            {
+                hr = E_FAIL;
+            }
             break;
         }
     }

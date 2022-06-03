@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.cpp 37300 2011-06-01 19:45:51Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -411,33 +411,43 @@ DECLCALLBACK(int) vboxUhgsmiKmtEscBufferSubmitAsynch(PVBOXUHGSMI pHgsmi, PVBOXUH
 static HRESULT vboxUhgsmiKmtEngineCreate(PVBOXUHGSMI_PRIVATE_KMT pHgsmi, BOOL bD3D)
 {
     HRESULT hr = vboxDispKmtCallbacksInit(&pHgsmi->Callbacks);
-    Assert(hr == S_OK);
     if (hr == S_OK)
     {
         hr = vboxDispKmtOpenAdapter(&pHgsmi->Callbacks, &pHgsmi->Adapter);
-#ifdef DEBUG_misha
-        /* may fail with xpdm driver */
-        Assert(hr == S_OK);
-#endif
         if (hr == S_OK)
         {
             hr = vboxDispKmtCreateDevice(&pHgsmi->Adapter, &pHgsmi->Device);
-            Assert(hr == S_OK);
             if (hr == S_OK)
             {
                 hr = vboxDispKmtCreateContext(&pHgsmi->Device, &pHgsmi->Context,
                         bD3D ? VBOXWDDM_CONTEXT_TYPE_CUSTOM_UHGSMI_3D : VBOXWDDM_CONTEXT_TYPE_CUSTOM_UHGSMI_GL,
                                 NULL, 0);
-                Assert(hr == S_OK);
                 if (hr == S_OK)
                 {
                     return S_OK;
                 }
+                else
+                {
+                    WARN(("vboxDispKmtCreateContext failed, hr(0x%x)", hr));
+                }
                 vboxDispKmtDestroyDevice(&pHgsmi->Device);
+            }
+            else
+            {
+                WARN(("vboxDispKmtCreateDevice failed, hr(0x%x)", hr));
             }
             vboxDispKmtCloseAdapter(&pHgsmi->Adapter);
         }
+        else
+        {
+            WARN(("vboxDispKmtOpenAdapter failed, hr(0x%x)", hr));
+        }
+
         vboxDispKmtCallbacksTerm(&pHgsmi->Callbacks);
+    }
+    else
+    {
+        WARN(("vboxDispKmtCallbacksInit failed, hr(0x%x)", hr));
     }
     return hr;
 }

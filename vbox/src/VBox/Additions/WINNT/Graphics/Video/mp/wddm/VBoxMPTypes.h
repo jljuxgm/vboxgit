@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 37300 2011-06-01 19:45:51Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -196,7 +196,6 @@ typedef struct VBOXWDDM_CONTEXT
     UINT  NodeOrdinal;
     UINT  EngineAffinity;
 //    UINT uLastCompletedCmdFenceId;
-    FAST_MUTEX SwapchainMutex;
     VBOXWDDM_HTABLE Swapchains;
     VBOXVIDEOCM_CTX CmContext;
     VBOXVIDEOCM_ALLOC_CONTEXT AllocContext;
