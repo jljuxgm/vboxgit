@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 37987 2011-07-18 08:11:16Z vboxsync $ */
+/* $Id: VBoxStub.cpp 37989 2011-07-18 08:51:46Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -574,6 +574,9 @@ int WINAPI WinMain(HINSTANCE  hInstance,
                          * styles (XP+). Also, an integrated manifest is required. */
                         INITCOMMONCONTROLSEX ccEx;
                         ccEx.dwSize = sizeof(INITCOMMONCONTROLSEX);
+                        ccEx.dwICC = ICC_LINK_CLASS | ICC_LISTVIEW_CLASSES | ICC_PAGESCROLLER_CLASS |
+                                     ICC_PROGRESS_CLASS | ICC_STANDARD_CLASSES | ICC_TAB_CLASSES | ICC_TREEVIEW_CLASSES |
+                                     ICC_UPDOWN_CLASS | ICC_USEREX_CLASSES | ICC_WIN95_CLASSES;
                         InitCommonControlsEx(&ccEx); /* Ignore failure. */
 
                         UINT uStatus = ::MsiInstallProductA(pszTempFile, szMSIArgs);
