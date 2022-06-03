@@ -1,4 +1,4 @@
-; $Id: VMMRC.def 37414 2011-06-10 15:53:59Z vboxsync $
+; $Id: VMMRC.def 37454 2011-06-14 19:18:56Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -38,6 +38,9 @@ EXPORTS
     RTLogDefaultInstance
     RTLogRelDefaultInstance
     RTTimeMilliTS
+    RTTraceBufAddMsgF
+    RTTraceBufAddPos
+    RTTraceBufAddPosMsgF
     SELMGetHyperCS
     TMTimerFromMilli
     TMTimerFromMicro
