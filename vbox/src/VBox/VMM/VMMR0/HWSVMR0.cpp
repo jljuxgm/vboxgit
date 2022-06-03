@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 40645 2012-03-26 13:21:44Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 40655 2012-03-26 19:51:05Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring 0.
  */
@@ -1605,7 +1605,9 @@ ResumeExecution:
                       exitCode, pCtx->cs, pCtx->rip,
                       pVMCB->ctrl.u64ExitInfo1, pVMCB->ctrl.u64ExitInfo2, pVMCB->ctrl.ExitIntInfo.au64[0]);
 #endif
+#if ARCH_BITS == 64 /* for the time being */
     VBOXVMM_R0_HMSVM_VMEXIT(pVCpu, pCtx, exitCode, pVMCB->ctrl.u64ExitInfo1, pVMCB->ctrl.u64ExitInfo2, pVMCB->ctrl.ExitIntInfo.au64[0], UINT64_MAX);
+#endif
     STAM_PROFILE_ADV_STOP_START(&pVCpu->hwaccm.s.StatExit1, &pVCpu->hwaccm.s.StatExit2, x);
 
     /* Deal with the reason of the VM-exit. */
