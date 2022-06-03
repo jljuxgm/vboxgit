@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 38222 2011-07-28 14:22:17Z vboxsync $ */
+/* $Id: UIDownloader.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,7 +24,7 @@
 /* Local includes: */
 #include "UIDownloader.h"
 #include "VBoxGlobal.h"
-#include "VBoxProblemReporter.h"
+#include "UIMessageCenter.h"
 #include "UISpecialControls.h"
 #include "VBoxUtils.h"
 

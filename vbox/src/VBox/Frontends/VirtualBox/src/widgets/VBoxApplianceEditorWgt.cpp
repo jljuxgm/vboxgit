@@ -1,4 +1,4 @@
-/* $Id: VBoxApplianceEditorWgt.cpp 37862 2011-07-11 10:09:29Z vboxsync $ */
+/* $Id: VBoxApplianceEditorWgt.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -20,7 +20,7 @@
 /* VBox includes */
 #include "VBoxApplianceEditorWgt.h"
 #include "VBoxGlobal.h"
-#include "VBoxProblemReporter.h"
+#include "UIMessageCenter.h"
 #include "VBoxOSTypeSelectorButton.h"
 #include "VBoxLineTextEdit.h"
 

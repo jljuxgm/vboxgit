@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 37716 2011-06-30 16:34:13Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -22,7 +22,7 @@
 
 /* Local includes */
 #include "VBoxGlobal.h"
-#include "VBoxProblemReporter.h"
+#include "UIMessageCenter.h"
 #include "UIActionsPool.h"
 #include "UIKeyboardHandlerNormal.h"
 #include "UIKeyboardHandlerFullscreen.h"
@@ -887,7 +887,7 @@ bool UIKeyboardHandler::eventFilter(QObject *pWatchedObject, QEvent *pEvent)
                     {
                         /* If the reminder is disabled we pass the event to Qt to enable normal
                          * keyboard functionality (for example, menu access with Alt+Letter): */
-                        if (!vboxProblem().remindAboutPausedVMInput())
+                        if (!msgCenter().remindAboutPausedVMInput())
                             break;
                     }
                 }
@@ -1250,7 +1250,7 @@ void UIKeyboardHandler::keyEventHandleHostComboRelease(ulong uScreenId)
                      * defined by the dialog result itself: */
                     setAutoCaptureDisabled(true);
                     bool fIsAutoConfirmed = false;
-                    ok = vboxProblem().confirmInputCapture(&fIsAutoConfirmed);
+                    ok = msgCenter().confirmInputCapture(&fIsAutoConfirmed);
                     if (fIsAutoConfirmed)
                         setAutoCaptureDisabled(false);
                     /* Otherwise, the disable flag will be reset in the next

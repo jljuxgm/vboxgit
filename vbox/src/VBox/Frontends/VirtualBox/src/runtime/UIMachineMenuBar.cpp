@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 36364 2011-03-23 11:35:44Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -22,7 +22,7 @@
 #include "UISession.h"
 #include "UIActionsPool.h"
 #include "VBoxGlobal.h"
-#include "VBoxProblemReporter.h"
+#include "UIMessageCenter.h"
 #include "UIExtraDataEventHandler.h"
 #include "UIImageTools.h"
 
@@ -292,7 +292,7 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu, UIActionsPool *pActionsPool
     {
 #endif
         VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_About), SIGNAL(triggered()),
-                            &vboxProblem(), SLOT(showHelpAboutDialog()));
+                            &msgCenter(), SLOT(sltShowHelpAboutDialog()));
         VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_Update), SIGNAL(triggered()),
                             &vboxGlobal(), SLOT(showUpdateDialog()));
 #if defined(Q_WS_MAC) && (QT_VERSION < 0x040700)
@@ -300,11 +300,11 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu, UIActionsPool *pActionsPool
 #endif
 
     VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_Help), SIGNAL(triggered()),
-                        &vboxProblem(), SLOT(showHelpHelpDialog()));
+                        &msgCenter(), SLOT(sltShowHelpHelpDialog()));
     VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_Web), SIGNAL(triggered()),
-                        &vboxProblem(), SLOT(showHelpWebDialog()));
+                        &msgCenter(), SLOT(sltShowHelpWebDialog()));
     VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_ResetWarnings), SIGNAL(triggered()),
-                        &vboxProblem(), SLOT(resetSuppressedMessages()));
+                        &msgCenter(), SLOT(sltResetSuppressedMessages()));
 #ifdef VBOX_WITH_REGISTRATION
     VBoxGlobal::connect(pActionsPool->action(UIActionIndex_Simple_Register), SIGNAL(triggered()),
                         &vboxGlobal(), SLOT(showRegistrationDialog()));

@@ -1,4 +1,4 @@
-/* $Id: main.cpp 35652 2011-01-20 14:16:38Z vboxsync $ */
+/* $Id: main.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,7 +24,7 @@
 #endif /* Q_WS_MAC */
 #else /* !VBOX_WITH_PRECOMPILED_HEADERS */
 #include "VBoxGlobal.h"
-#include "VBoxProblemReporter.h"
+#include "UIMessageCenter.h"
 #include "VBoxSelectorWnd.h"
 #include "VBoxUtils.h"
 #ifdef Q_WS_MAC
@@ -457,7 +457,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
             if (vboxGlobal().processArgs())
                 return 0;
 
-            vboxProblem().checkForMountedWrongUSB();
+            msgCenter().checkForMountedWrongUSB();
 
             VBoxGlobalSettings settings = vboxGlobal().settings();
             /* Process known keys */
@@ -479,12 +479,12 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
             }
             else if (noSelector)
             {
-                vboxProblem().cannotRunInSelectorMode();
+                msgCenter().cannotRunInSelectorMode();
             }
             else
             {
 #ifdef VBOX_BLEEDING_EDGE
-                vboxProblem().showBEBWarning();
+                msgCenter().showBEBWarning();
 #else
 # ifndef DEBUG
                 /* Check for BETA version */
@@ -495,7 +495,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
                     QString str = vboxGlobal().virtualBox().
                         GetExtraData (VBoxDefs::GUI_PreventBetaWarning);
                     if (str != vboxVersion)
-                        vboxProblem().showBETAWarning();
+                        msgCenter().showBETAWarning();
                 }
 # endif
 #endif

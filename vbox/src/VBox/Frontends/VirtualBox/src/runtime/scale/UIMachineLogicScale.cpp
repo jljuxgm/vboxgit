@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 34984 2010-12-13 10:29:58Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -20,7 +20,7 @@
 /* Local includes */
 #include "COMDefs.h"
 #include "VBoxGlobal.h"
-#include "VBoxProblemReporter.h"
+#include "UIMessageCenter.h"
 
 #include "UISession.h"
 #include "UIActionsPool.h"
@@ -68,7 +68,7 @@ bool UIMachineLogicScale::checkAvailability()
     Assert(!strHotKey.isEmpty());
 
     /* Show the info message. */
-    if (!vboxProblem().confirmGoingScale(strHotKey))
+    if (!msgCenter().confirmGoingScale(strHotKey))
         return false;
 
     return true;
