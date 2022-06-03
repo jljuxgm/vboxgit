@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 39206 2011-11-04 15:16:16Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 40697 2012-03-28 16:37:33Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1616,7 +1616,7 @@
 * OpenGL context management
 *
 ********************************************************************************/
-void cocoaGLCtxCreate(NativeNSOpenGLContextRef *ppCtx, GLbitfield fVisParams)
+void cocoaGLCtxCreate(NativeNSOpenGLContextRef *ppCtx, GLbitfield fVisParams, NativeNSOpenGLContextRef pSharedCtx)
 {
     NSOpenGLPixelFormat *pFmt = nil;
 
