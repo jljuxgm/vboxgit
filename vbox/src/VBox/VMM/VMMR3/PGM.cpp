@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: PGM.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2468,7 +2468,7 @@ static DECLCALLBACK(int) pgmR3RelocateHyperVirtHandler(PAVLROGCPTRNODECORE pNode
  * Resets a virtual CPU when unplugged.
  *
  * @param   pVM                 Pointer to the VM.
- * @param   pVCpu               The virtual CPU handle.
+ * @param   pVCpu               Pointer to the VMCPU.
  */
 VMMR3DECL(void) PGMR3ResetUnpluggedCpu(PVM pVM, PVMCPU pVCpu)
 {

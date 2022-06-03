@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: DBGFReg.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -497,7 +497,7 @@ static int dbgfR3RegRegisterCommon(PVM pVM, PCDBGFREGDESC paRegisters, DBGFREGSE
  *
  * @returns VBox status code.
  * @param   pVM             Pointer to the VM.
- * @param   pVCpu           The virtual CPU handle.
+ * @param   pVCpu           Pointer to the VMCPU.
  * @param   paRegisters     The register descriptors.
  * @param   fGuestRegs      Set if it's the guest registers, clear if
  *                          hypervisor registers.

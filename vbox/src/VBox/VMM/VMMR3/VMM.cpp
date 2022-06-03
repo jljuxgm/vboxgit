@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
+/* $Id: VMM.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2042,7 +2042,7 @@ VMMR3DECL(int) VMMR3ResumeHyper(PVM pVM, PVMCPU pVCpu)
  *
  * @returns VBox status code.
  * @param   pVM     Pointer to the VM.
- * @param   pVCpu   VMCPU handle
+ * @param   pVCpu   Pointer to the VMCPU.
  * @remark  Careful with critsects.
  */
 static int vmmR3ServiceCallRing3Request(PVM pVM, PVMCPU pVCpu)

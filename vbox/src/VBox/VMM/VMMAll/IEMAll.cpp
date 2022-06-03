@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 41779 2012-06-16 18:53:29Z vboxsync $ */
+/* $Id: IEMAll.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2805,7 +2805,7 @@ static uint64_t iemGRegFetchU64(PIEMCPU pIemCpu, uint8_t iReg)
  * Is the FPU state in FXSAVE format or not.
  *
  * @returns true if it is, false if it's in FNSAVE.
- * @param   pVCpu               The virtual CPU handle.
+ * @param   pVCpu               Pointer to the VMCPU.
  */
 DECLINLINE(bool) iemFRegIsFxSaveFormat(PIEMCPU pIemCpu)
 {

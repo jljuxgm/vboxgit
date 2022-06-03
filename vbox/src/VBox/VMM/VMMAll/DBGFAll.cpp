@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: DBGFAll.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -118,7 +118,7 @@ VMMDECL(RTGCUINTREG) DBGFBpGetDR3(PVM pVM)
  *
  * @returns stepping (true) or not (false).
  *
- * @param   pVCpu       The virtual CPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  */
 VMMDECL(bool) DBGFIsStepping(PVMCPU pVCpu)
 {

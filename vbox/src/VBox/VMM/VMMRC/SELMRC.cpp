@@ -1,4 +1,4 @@
-/* $Id: SELMRC.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: SELMRC.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
@@ -258,7 +258,7 @@ VMMRCDECL(int) selmRCGuestLDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
 /**
  * Read wrapper used by selmRCGuestTSSWriteHandler.
  * @returns VBox status code (appropriate for trap handling and GC return).
- * @param   pVM         The VM handle
+ * @param   pVM         Pointer to the VM.
  * @param   pvDst       Where to put the bits we read.
  * @param   pvSrc       Guest address to read from.
  * @param   cb          The number of bytes to read.

@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: PDM.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1402,7 +1402,7 @@ DECLINLINE(void) pdmR3ResetDev(PPDMDEVINS pDevIns, PPDMNOTIFYASYNCSTATS pAsync)
  *
  * Used by PDMR3Reset and CPU hot plugging.
  *
- * @param   pVCpu               The virtual CPU handle.
+ * @param   pVCpu               Pointer to the VMCPU.
  */
 VMMR3DECL(void) PDMR3ResetCpu(PVMCPU pVCpu)
 {

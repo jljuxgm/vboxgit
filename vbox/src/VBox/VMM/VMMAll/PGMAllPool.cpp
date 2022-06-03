@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -166,7 +166,7 @@ DECLINLINE(int) pgmPoolPhysSimpleReadGCPhys(PVM pVM, void *pvDst, CTXTYPE(RTGCPT
  * For PT entries we will clear them. For PD entries, we'll simply check
  * for mapping conflicts and set the SyncCR3 FF if found.
  *
- * @param   pVCpu       VMCPU handle
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   pPool       The pool.
  * @param   pPage       The head page.
  * @param   GCPhysFault The guest physical fault address.

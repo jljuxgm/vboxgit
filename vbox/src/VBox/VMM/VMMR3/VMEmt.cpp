@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
+/* $Id: VMEmt.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -1189,7 +1189,7 @@ VMMR3_INT_DECL(void) VMR3AsyncPdmNotificationWakeupU(PUVM pUVM)
  *
  * @returns VBox strict status code.
  * @param   pVM                 Pointer to the VM.
- * @param   pVCpu               The VMCPU handle for the calling EMT.
+ * @param   pVCpu               Pointer to the VMCPU of the calling EMT.
  * @param   pvUser              The new g_aHaltMethods index.
  */
 static DECLCALLBACK(VBOXSTRICTRC) vmR3SetHaltMethodCallback(PVM pVM, PVMCPU pVCpu, void *pvUser)

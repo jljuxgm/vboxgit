@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -692,7 +692,7 @@ VMMDECL(bool) PDMCritSectIsOwner(PCPDMCRITSECT pCritSect)
  * @returns true if owner.
  * @returns false if not owner.
  * @param   pCritSect   The critical section.
- * @param   pVCpu       The virtual CPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  */
 VMMDECL(bool) PDMCritSectIsOwnerEx(PCPDMCRITSECT pCritSect, PVMCPU pVCpu)
 {

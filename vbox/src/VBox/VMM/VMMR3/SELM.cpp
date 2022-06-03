@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 41802 2012-06-17 17:01:56Z vboxsync $ */
+/* $Id: SELM.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -2299,7 +2299,7 @@ static int selmR3GetSelectorInfo32(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PDBGFSELINF
  * @returns Other VBox status code on other errors.
  *
  * @param   pVM         Pointer to the VM.
- * @param   pVCpu       The virtual CPU handle.
+ * @param   pVCpu       Pointer to the VMCPU.
  * @param   Sel         The selector to get info about.
  * @param   pSelInfo    Where to store the information.
  */
