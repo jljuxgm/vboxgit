@@ -1,4 +1,4 @@
-/* $Id: VBoxCredPoller.cpp 30252 2010-06-16 13:48:29Z vboxsync $ */
+/* $Id: VBoxCredPoller.cpp 39759 2012-01-12 11:58:14Z vboxsync $ */
 /** @file
  * VBoxCredPoller - Thread for retrieving user credentials.
  */
@@ -140,6 +140,9 @@ int VBoxCredPoller::credentialsRetrieve(void)
              m_pszUser ? m_pszUser : "<empty>",
              m_pszPw ? m_pszPw : "<empty>",
              m_pszDomain ? m_pszDomain : "NULL"));
+
+        /* Let the release log know that we got something. */
+        LogRel(("VBoxCredProv: Credentials from host retrieved\n"));
 
         AssertPtr(m_pProv);
         m_pProv->OnCredentialsProvided();

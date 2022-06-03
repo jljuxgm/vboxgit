@@ -1,4 +1,4 @@
-/* $Id: Helper.cpp 38313 2011-08-04 13:14:56Z vboxsync $ */
+/* $Id: Helper.cpp 39759 2012-01-12 11:58:14Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Helper Functions.
  */
@@ -197,6 +197,10 @@ bool credentialsRetrieve(void)
     }
     Log(("VBoxGINA::credentialsRetrieve: returning user '%s', password '%s', domain '%s'\n",
          vmmreqCredentials.szUserName, vmmreqCredentials.szPassword, vmmreqCredentials.szDomain));
+
+    /* Let the release log know that we got something. */
+    LogRel(("VBoxGINA: Credentials from host retrieved\n"));
+
     return true;
 }
 
