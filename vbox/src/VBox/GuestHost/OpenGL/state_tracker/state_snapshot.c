@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 41132 2012-05-03 12:02:49Z vboxsync $ */
+/* $Id: state_snapshot.c 41403 2012-05-22 16:40:29Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1660,8 +1660,6 @@ int32_t crStateLoadContext(CRContext *pContext, CRHashTable * pCtxTable, PFNCRST
             VBOXTLSREFDATA
         } tlsRef;
     } bitid;
-
-    Assert(0);
 
     CRASSERT(pContext && pSSM);
 
