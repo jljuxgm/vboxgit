@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvFactory.h 40271 2012-02-28 11:22:04Z vboxsync $ */
+/* $Id: VBoxCredProvFactory.h 40393 2012-03-07 14:41:37Z vboxsync $ */
 /** @file
  * VBoxCredentialProvFactory - The VirtualBox Credential Provider factory.
  */
@@ -46,7 +46,7 @@ class VBoxCredProvFactory : public IClassFactory
 
     private:
 
-        ULONG m_cRefCount;
+        LONG m_cRefCount;
         friend HRESULT VBoxCredentialProviderCreate(REFCLSID rclsid, REFIID riid, void** ppv);
 };
 #endif /* !__VBOX_CREDPROV_FACTORY_H__ */

@@ -1,4 +1,4 @@
-/* $Id: VBoxCredentialProvider.h 40271 2012-02-28 11:22:04Z vboxsync $ */
+/* $Id: VBoxCredentialProvider.h 40393 2012-03-07 14:41:37Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */
@@ -70,8 +70,8 @@ static const VBOXCREDPROV_FIELD s_VBoxCredProvFields[] =
 };
 
 /** Prototypes. */
-LONG VBoxCredentialProviderAcquire(void);
-LONG VBoxCredentialProviderRelease(void);
+void VBoxCredentialProviderAcquire(void);
+void VBoxCredentialProviderRelease(void);
 LONG VBoxCredentialProviderRefCount(void);
 
 HRESULT VBoxCredentialProviderCreate(REFCLSID classID,

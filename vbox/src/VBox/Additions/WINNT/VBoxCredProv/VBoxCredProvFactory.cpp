@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvFactory.cpp 40271 2012-02-28 11:22:04Z vboxsync $ */
+/* $Id: VBoxCredProvFactory.cpp 40393 2012-03-07 14:41:37Z vboxsync $ */
 /** @file
  * VBoxCredentialProvFactory - The VirtualBox Credential Provider factory.
  */
@@ -34,18 +34,17 @@ VBoxCredProvFactory::~VBoxCredProvFactory(void)
 /** IUnknown overrides. */
 ULONG VBoxCredProvFactory::AddRef(void)
 {
-    VBoxCredProvVerbose(0, "VBoxCredProvFactory: Increasing reference from %ld to %ld\n",
-                        m_cRefCount, m_cRefCount + 1);
-
-    return m_cRefCount++;
+    LONG cRefCount = InterlockedIncrement(&m_cRefCount);
+    VBoxCredProvVerbose(0, "VBoxCredProvFactory: AddRef: Returning refcount=%ld\n",
+                        cRefCount);
+    return cRefCount;
 }
 
 ULONG VBoxCredProvFactory::Release(void)
 {
-    VBoxCredProvVerbose(0, "VBoxCredProvFactory: Decreasing reference from %ld to %ld\n",
-                        m_cRefCount, m_cRefCount - 1);
-
-    ULONG cRefCount = --m_cRefCount;
+    LONG cRefCount = InterlockedDecrement(&m_cRefCount);
+    VBoxCredProvVerbose(0, "VBoxCredProvFactory: Release: Returning refcount=%ld\n",
+                        cRefCount);
     if (!cRefCount)
     {
         VBoxCredProvVerbose(0, "VBoxCredProvFactory: Calling destructor\n");
@@ -56,6 +55,8 @@ ULONG VBoxCredProvFactory::Release(void)
 
 HRESULT VBoxCredProvFactory::QueryInterface(REFIID interfaceID, void **ppvInterface)
 {
+    VBoxCredProvVerbose(0, "VBoxCredProvFactory: QueryInterface\n");
+
     HRESULT hr = S_OK;
     if (ppvInterface)
     {
