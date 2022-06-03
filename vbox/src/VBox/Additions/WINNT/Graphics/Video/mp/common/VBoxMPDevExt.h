@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 37626 2011-06-24 12:01:33Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 38982 2011-10-12 20:20:21Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -104,6 +104,11 @@ typedef struct _VBOXMP_DEVEXT
    VBOXSHGSMILIST VhwaCmdList;
 #endif
    BOOL bNotifyDxDpc;
+
+#if 0
+   FAST_MUTEX ShRcTreeMutex;
+   AVLPVTREE ShRcTree;
+#endif
 
    VBOXWDDM_SOURCE aSources[VBOX_VIDEO_MAX_SCREENS];
    VBOXWDDM_TARGET aTargets[VBOX_VIDEO_MAX_SCREENS];
