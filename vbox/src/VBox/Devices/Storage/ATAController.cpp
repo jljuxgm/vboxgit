@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: ATAController.cpp 40999 2012-04-20 07:01:49Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -3026,10 +3026,10 @@ static int ataTrimSectors(AHCIATADevState *s, uint64_t u64Sector, uint32_t cSect
 
 static bool ataTrimSS(AHCIATADevState *s)
 {
-    int rc;
+    int rc = VERR_GENERAL_FAILURE;
     uint32_t cRangesMax;
     uint64_t *pu64Range = (uint64_t *)s->CTX_SUFF(pbIOBuffer);
-    bool fRedo;
+    bool fRedo = false;
 
     cRangesMax = s->cbElementaryTransfer / sizeof(uint64_t);
     Assert(cRangesMax);
