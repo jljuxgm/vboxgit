@@ -1,10 +1,10 @@
-/* $Id: USBProxyService.h 37618 2011-06-23 17:16:39Z vboxsync $ */
+/* $Id: USBProxyService.h 41528 2012-05-31 16:48:33Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2005-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -78,6 +78,7 @@ public:
      * @{ */
     virtual int captureDevice(HostUSBDevice *aDevice);
     virtual void captureDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
+    /** @todo unused */
     virtual void detachingDevice(HostUSBDevice *aDevice);
     virtual int releaseDevice(HostUSBDevice *aDevice);
     virtual void releaseDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
@@ -159,6 +160,7 @@ public:
 
     virtual int captureDevice(HostUSBDevice *aDevice);
     virtual void captureDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
+    /** @todo unused */
     virtual void detachingDevice(HostUSBDevice *aDevice);
     virtual int releaseDevice(HostUSBDevice *aDevice);
     virtual void releaseDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
