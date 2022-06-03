@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42057 2012-07-09 12:54:37Z vboxsync $
+# $Id: Makefile.kmk 42062 2012-07-09 15:10:00Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -970,6 +970,12 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   VBoxDDR0_SOURCES      += \
 	VirtIO/Virtio.cpp \
   	Network/DevVirtioNet.cpp
+ endif
+
+ ifdef VBOX_WITH_NETSHAPER
+  VBoxDDR0_DEFS         += VBOX_WITH_NETSHAPER
+  VBoxDDR0_SOURCES      += \
+ 	Network/DrvNetShaper.cpp
  endif
 
  ifdef VBOX_WITH_HGSMI
