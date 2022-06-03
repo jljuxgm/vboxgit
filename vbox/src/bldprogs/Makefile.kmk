@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41179 2012-05-06 20:31:02Z vboxsync $
+# $Id: Makefile.kmk 41186 2012-05-07 13:42:20Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -49,7 +49,7 @@ if  !defined(VBOX_ONLY_ADDITIONS) \
  	VBoxTpG.cpp \
  	scmstream.cpp
 
- BLDPROGS += VBoxCPP
+ #BLDPROGS += VBoxCPP
  VBoxCPP_TEMPLATE = VBoxAdvBldProg
  VBoxCPP_SOURCES = \
  	VBoxCPP.cpp \
