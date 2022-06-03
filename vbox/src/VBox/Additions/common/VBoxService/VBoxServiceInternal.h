@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 36182 2011-03-07 10:35:35Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 36330 2011-03-21 17:20:05Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -91,9 +91,9 @@ typedef VBOXSERVICE *PVBOXSERVICE;
 /** Pointer to a const VBOXSERVICE. */
 typedef VBOXSERVICE const *PCVBOXSERVICE;
 
-/** The service name (needed for mutex creation on Windows). */
+/** The service name.
+ * @note Used on windows to name the service as well as the global mutex. */
 #define VBOXSERVICE_NAME            "VBoxService"
-#define VBOXSERVICE_NAME_GLOBAL     "Global\\VBoxService"
 
 #ifdef RT_OS_WINDOWS
 /** The friendly service name. */

@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 36328 2011-03-21 16:45:21Z vboxsync $ */
+/* $Id: VBoxService.cpp 36330 2011-03-21 17:20:05Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -739,7 +739,7 @@ int main(int argc, char **argv)
     if (    GetVersionEx((LPOSVERSIONINFO)&OSInfoEx)
         &&  OSInfoEx.dwPlatformId == VER_PLATFORM_WIN32_NT
         &&  OSInfoEx.dwMajorVersion >= 5 /* NT 5.0 a.k.a W2K */)
-        hMutexAppRunning = CreateMutex(NULL, FALSE, VBOXSERVICE_NAME_GLOBAL);
+        hMutexAppRunning = CreateMutex(NULL, FALSE, "Global\\" VBOXSERVICE_NAME);
     else
         hMutexAppRunning = CreateMutex(NULL, FALSE, VBOXSERVICE_NAME);
     if (hMutexAppRunning == NULL)
