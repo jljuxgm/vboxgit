@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 36502 2011-04-01 13:45:14Z vboxsync $ */
+/* $Id: DevE1000.cpp 36977 2011-05-06 11:41:36Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -3532,7 +3532,7 @@ static void e1kDescReport(E1KSTATE* pState, E1KTXDESC* pDesc, RTGCPHYS addr)
      * processed.
      */
     /* Let's pretend we process descriptors. Write back with DD set. */
-    if (pDesc->legacy.cmd.fRS || (GET_BITS(TXDCTL, WTHRESH) > 0))
+    if (pDesc->legacy.cmd.fRS)
     {
         pDesc->legacy.dw3.fDD = 1; /* Descriptor Done */
         e1kWriteBackDesc(pState, pDesc, addr);
