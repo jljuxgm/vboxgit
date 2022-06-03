@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPUtils.h 38112 2011-07-22 13:26:19Z vboxsync $ */
 
 /** @file
  * VBox Miniport common utils header
@@ -102,11 +102,18 @@ RT_C_DECLS_END
 
 #define VBE_DISPI_TOTAL_VIDEO_MEMORY_BYTES 4*_1M
 
+#define VBOXMP_WARN_VPS_NOBP(_vps)     \
+if ((_vps) != NO_ERROR)           \
+{                                 \
+    WARN_NOBP(("vps(%#x)!=NO_ERROR", _vps)); \
+}
+
 #define VBOXMP_WARN_VPS(_vps)     \
 if ((_vps) != NO_ERROR)           \
 {                                 \
-    WARN(("vps(%#x)!=NO_ERROR")); \
+    WARN(("vps(%#x)!=NO_ERROR", _vps)); \
 }
+
 
 #define VBOXMP_CHECK_VPS_BREAK(_vps)    \
 if ((_vps) != NO_ERROR)                 \

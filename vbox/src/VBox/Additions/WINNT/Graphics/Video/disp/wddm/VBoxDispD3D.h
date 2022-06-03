@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 37840 2011-07-08 11:53:53Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 38112 2011-07-22 13:26:19Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -206,6 +206,9 @@ typedef struct VBOXWDDMDISP_LOCKINFO
     };
     D3DDDI_LOCKFLAGS fFlags;
     D3DLOCKED_RECT LockedRect;
+#ifdef VBOXWDDMDISP_DEBUG
+    PVOID pvData;
+#endif
 } VBOXWDDMDISP_LOCKINFO;
 
 typedef enum

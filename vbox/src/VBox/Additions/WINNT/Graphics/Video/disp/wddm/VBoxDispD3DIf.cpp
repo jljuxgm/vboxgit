@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 38112 2011-07-22 13:26:19Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -268,7 +268,7 @@ HRESULT vboxDispWndDoCreate(DWORD w, DWORD h, HWND *phWnd)
     WNDCLASS wc;
     if (!GetClassInfo(hInstance, VBOXDISPWND_NAME, &wc))
     {
-        wc.style = CS_OWNDC;
+        wc.style = 0;//CS_OWNDC;
         wc.lpfnWndProc = WindowProc;
         wc.cbClsExtra = 0;
         wc.cbWndExtra = 0;

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 37490 2011-06-16 10:58:27Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 38112 2011-07-22 13:26:19Z vboxsync $ */
 
 /** @file
  * VBox Miniport video modes related functions
@@ -155,24 +155,24 @@ void VBoxMPCmnInitCustomVideoModes(PVBOXMP_DEVEXT pExt)
         {
             /*First name without a suffix*/
             rc = VBoxMPCmnRegQueryDword(Registry, L"CustomXRes", &CustomXRes);
-            VBOXMP_WARN_VPS(rc);
+            VBOXMP_WARN_VPS_NOBP(rc);
             rc = VBoxMPCmnRegQueryDword(Registry, L"CustomYRes", &CustomYRes);
-            VBOXMP_WARN_VPS(rc);
+            VBOXMP_WARN_VPS_NOBP(rc);
             rc = VBoxMPCmnRegQueryDword(Registry, L"CustomBPP", &CustomBPP);
-            VBOXMP_WARN_VPS(rc);
+            VBOXMP_WARN_VPS_NOBP(rc);
         }
         else
         {
             wchar_t keyname[32];
             swprintf(keyname, L"CustomXRes%d", iMode);
             rc = VBoxMPCmnRegQueryDword(Registry, keyname, &CustomXRes);
-            VBOXMP_WARN_VPS(rc);
+            VBOXMP_WARN_VPS_NOBP(rc);
             swprintf(keyname, L"CustomYRes%d", iMode);
             rc = VBoxMPCmnRegQueryDword(Registry, keyname, &CustomYRes);
-            VBOXMP_WARN_VPS(rc);
+            VBOXMP_WARN_VPS_NOBP(rc);
             swprintf(keyname, L"CustomBPP%d", iMode);
             rc = VBoxMPCmnRegQueryDword(Registry, keyname, &CustomBPP);
-            VBOXMP_WARN_VPS(rc);
+            VBOXMP_WARN_VPS_NOBP(rc);
         }
 
         LOG(("got stored custom resolution[%d] %dx%dx%d", iMode, CustomXRes, CustomYRes, CustomBPP));

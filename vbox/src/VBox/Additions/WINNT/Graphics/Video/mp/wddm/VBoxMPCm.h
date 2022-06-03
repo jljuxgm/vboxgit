@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCm.h 37734 2011-07-01 16:36:39Z vboxsync $ */
+/* $Id: VBoxMPCm.h 38112 2011-07-22 13:26:19Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -41,6 +41,7 @@ NTSTATUS vboxVideoCmCtxRemove(PVBOXVIDEOCM_MGR pMgr, PVBOXVIDEOCM_CTX pContext);
 NTSTATUS vboxVideoCmInit(PVBOXVIDEOCM_MGR pMgr);
 NTSTATUS vboxVideoCmTerm(PVBOXVIDEOCM_MGR pMgr);
 
+NTSTATUS vboxVideoCmCmdSubmitCompleteEvent(PVBOXVIDEOCM_CTX pContext, PKEVENT pEvent);
 void* vboxVideoCmCmdCreate(PVBOXVIDEOCM_CTX pContext, uint32_t cbSize);
 void* vboxVideoCmCmdReinitForContext(void *pvCmd, PVBOXVIDEOCM_CTX pContext);
 void vboxVideoCmCmdRetain(void *pvCmd);
@@ -48,11 +49,11 @@ void vboxVideoCmCmdRelease(void *pvCmd);
 #define VBOXVIDEOCM_SUBMITSIZE_DEFAULT (~0UL)
 void vboxVideoCmCmdSubmit(void *pvCmd, uint32_t cbSize);
 
-#define VBOXVIDEOCMCMDVISITOR_RETURN_CONTINUE 0x00000001
+#define VBOXVIDEOCMCMDVISITOR_RETURN_BREAK    0x00000001
 #define VBOXVIDEOCMCMDVISITOR_RETURN_RMCMD    0x00000002
 typedef DECLCALLBACK(UINT) FNVBOXVIDEOCMCMDVISITOR(PVBOXVIDEOCM_CTX pContext, PVOID pvCmd, uint32_t cbCmd, PVOID pvVisitor);
 typedef FNVBOXVIDEOCMCMDVISITOR *PFNVBOXVIDEOCMCMDVISITOR;
-NTSTATUS vboxVideoCmCmdVisit(PVBOXVIDEOCM_CTX pContext, BOOL bEntireSession, PFNVBOXVIDEOCMCMDVISITOR pfnVisitor, PVOID pvVisitor);
+NTSTATUS vboxVideoCmCmdVisit(PVBOXVIDEOCM_CTX pContext, BOOLEAN bEntireSession, PFNVBOXVIDEOCMCMDVISITOR pfnVisitor, PVOID pvVisitor);
 
 NTSTATUS vboxVideoCmEscape(PVBOXVIDEOCM_CTX pContext, PVBOXDISPIFESCAPE_GETVBOXVIDEOCMCMD pCmd, uint32_t cbCmd);
 
