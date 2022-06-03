@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 36003 2011-02-16 21:22:22Z vboxsync $ */
+/* $Id: DrvVD.cpp 36022 2011-02-18 15:00:20Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -748,7 +748,7 @@ static DECLCALLBACK(int) drvvdINIPSelectOne(VDSOCKET Sock, RTMSINTERVAL cMillies
     PINIPSOCKET pSocketInt = (PINIPSOCKET)Sock;
     fd_set fdsetR;
     FD_ZERO(&fdsetR);
-    FD_SET((uintptr_t)Sock, &fdsetR);
+    FD_SET((uintptr_t)pSocketInt->hSock, &fdsetR);
     fd_set fdsetE = fdsetR;
 
     int rc;
