@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 38565 2011-08-30 09:28:15Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 38660 2011-09-06 15:04:56Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -3732,7 +3732,7 @@ DxgkDdiEscape(
                     PVBOXDISPIFESCAPE_DBGPRINT pDbgPrint = (PVBOXDISPIFESCAPE_DBGPRINT)pEscapeHdr;
                     /* ensure the last char is \0*/
                     *((uint8_t*)pDbgPrint + pEscape->PrivateDriverDataSize - 1) = '\0';
-#ifdef DEBUG_misha
+#if defined(DEBUG_misha) || defined(DEBUG_leo)
                     DbgPrint("%s", pDbgPrint->aStringBuf);
 #else
                     LOGREL(("%s", pDbgPrint->aStringBuf));
