@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 40697 2012-03-28 16:37:33Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 40703 2012-03-28 18:45:48Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1687,7 +1687,7 @@ void cocoaGLCtxCreate(NativeNSOpenGLContextRef *ppCtx, GLbitfield fVisParams, Na
 
     if (pFmt)
     {
-        *ppCtx = [[OverlayOpenGLContext alloc] initWithFormat:pFmt shareContext:nil];
+        *ppCtx = [[OverlayOpenGLContext alloc] initWithFormat:pFmt shareContext:pSharedCtx];
 
         /* Enable multi threaded OpenGL engine */
         /*
