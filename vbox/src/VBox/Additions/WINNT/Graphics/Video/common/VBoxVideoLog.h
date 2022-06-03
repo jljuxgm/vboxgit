@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoLog.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxVideoLog.h 37207 2011-05-24 23:11:29Z vboxsync $ */
 
 /** @file
  * VBox Video drivers, logging helper
@@ -37,6 +37,12 @@
 # define VBOX_VIDEO_LOG_SUFFIX_PARMS
 #endif
 
+#ifdef DEBUG_misha
+# define BREAK_WARN() AssertFailed()
+#else
+# define BREAK_WARN() do {} while(0)
+#endif
+
 #define _LOGMSG(_logger, _a)                                                \
     do                                                                      \
     {                                                                       \
@@ -51,6 +57,7 @@
         Log((VBOX_VIDEO_LOG_PREFIX_FMT"WARNING! ", VBOX_VIDEO_LOG_PREFIX_PARMS)); \
         Log(_a);                                                                  \
         Log((VBOX_VIDEO_LOG_SUFFIX_FMT VBOX_VIDEO_LOG_SUFFIX_PARMS));             \
+        BREAK_WARN(); \
     } while (0)
 
 #define LOG(_a) _LOGMSG(Log, _a)
