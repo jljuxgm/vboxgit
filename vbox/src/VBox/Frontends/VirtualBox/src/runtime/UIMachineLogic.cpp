@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 38477 2011-08-16 13:46:03Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 38479 2011-08-16 14:11:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -896,9 +896,9 @@ void UIMachineLogic::sltTakeScreenshot()
     int i = filters.indexOf(QRegExp(".*png.*", Qt::CaseInsensitive));
     if (i == -1)
     {
-        i = filters.indexOf(QRegExp(".*jpe+g*", Qt::CaseInsensitive));
+        i = filters.indexOf(QRegExp(".*jpe+g.*", Qt::CaseInsensitive));
         if (i == -1)
-            i = filters.indexOf(QRegExp(".*bmp*", Qt::CaseInsensitive));
+            i = filters.indexOf(QRegExp(".*bmp.*", Qt::CaseInsensitive));
     }
     if (i != -1)
         strFilter = filters.at(i);
