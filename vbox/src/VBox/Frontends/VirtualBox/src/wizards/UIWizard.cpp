@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 41399 2012-05-22 16:03:22Z vboxsync $ */
+/* $Id: UIWizard.cpp 41400 2012-05-22 16:15:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -204,9 +204,6 @@ void UIWizard::resizeToGoldenRatio()
             maxOfSizeHints.rheight() = pPage->sizeHint().height() > maxOfSizeHints.height() ?
                                        pPage->sizeHint().height() : maxOfSizeHints.height();
         }
-        /* Minimum height to 350pix: */
-        if (maxOfSizeHints.height() < 350)
-            maxOfSizeHints.setHeight(350);
         /* Feat corresponding height: */
         maxOfSizeHints.setWidth(qMax((int)(1.5 * maxOfSizeHints.height()), maxOfSizeHints.width()));
         /* Use that size-hint for all the pages: */
