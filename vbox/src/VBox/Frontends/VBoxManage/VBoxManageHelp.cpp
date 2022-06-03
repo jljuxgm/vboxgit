@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 36657 2011-04-12 14:48:17Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 36720 2011-04-18 17:17:07Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -398,6 +398,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            vrdevideochannelquality <percent>\n");
         RTStrmPrintf(pStrm,
                      "                            setvideomodehint <xres> <yres> <bpp> [display] |\n"
+                     "                            screenshotpng <file> [display] |\n"
                      "                            setcredentials <username> <password> <domain>\n"
                      "                                           [--allowlocallogon <yes|no>] |\n"
                      "                            teleport --host <name> --port <port>\n"
