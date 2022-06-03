@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37675 2011-06-29 07:07:14Z vboxsync $
+# $Id: Makefile.kmk 37692 2011-06-29 16:19:17Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -79,9 +79,8 @@ VBoxRemPrimary_INCS            = \
 	fpu \
 	$(VBoxRemPrimary_0_OUTDIR) \
 	$(PATH_ROOT)/src/VBox/VMM/include \
+	tcg/i386 \
 	.
-VBoxRemPrimary_INCS.amd64     += tcg/x86_64
-VBoxRemPrimary_INCS.x86       += tcg/i386
 ifn1of ($(VBoxRemPrimary_DEFS),DEBUG_TMP_LOGGING)
  VBoxRemPrimary_DEFS          += LOG_USE_C99
  VBoxRemPrimary_INCS          <= \
