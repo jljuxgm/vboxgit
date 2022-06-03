@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 36465 2011-03-29 16:22:33Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 36474 2011-03-30 12:20:50Z vboxsync $ */
 /** @file
  * IPRT Testcase - Core Dumper.
  */
@@ -902,7 +902,7 @@ static int ProcReadThreads(PVBOXCORE pVBoxCore)
                     }
                 }
                 else
-                    CORELOGRELSYS((CORELOG_NAME "ProcReadThreads: Invalid state information for threads.\n", rc));
+                    CORELOGRELSYS((CORELOG_NAME "ProcReadThreads: Invalid state information for threads. rc=%Rrc\n", rc));
             }
             else
             {
