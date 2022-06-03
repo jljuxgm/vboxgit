@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 36561 2011-04-05 13:42:59Z vboxsync $ */
+/* $Id: ministring.cpp 39277 2011-11-11 16:22:46Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -327,7 +327,7 @@ int RTCString::toInt(uint32_t &i) const
 }
 
 RTCList<RTCString, RTCString *>
-RTCString::split(const RTCString &a_rstrSep, SplitMode mode /* = RemoveEmptyParts */)
+RTCString::split(const RTCString &a_rstrSep, SplitMode mode /* = RemoveEmptyParts */) const
 {
     RTCList<RTCString> strRet;
     if (!m_psz)
