@@ -1,4 +1,4 @@
-/* $Id: ATAController.cpp 37687 2011-06-29 15:22:11Z vboxsync $ */
+/* $Id: ATAController.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller code (disk and cdrom).
  *
@@ -2407,9 +2407,9 @@ static void atapiParseCmdVirtualATAPI(AHCIATADevState *s)
                         PPDMDEVINS pDevIns = ATADEVSTATE_2_DEVINS(s);
 
                         PDMCritSectLeave(&pCtl->lock);
-                        rc = VMR3ReqCallWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                                             (PFNRT)s->pDrvMount->pfnUnmount, 3, s->pDrvMount,
-                                             false /*=fForce*/, true /*=fEeject*/);
+                        rc = VMR3ReqPriorityCallWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
+                                                     (PFNRT)s->pDrvMount->pfnUnmount, 3, s->pDrvMount,
+                                                     false /*=fForce*/, true /*=fEeject*/);
                         Assert(RT_SUCCESS(rc) || (rc == VERR_PDM_MEDIA_LOCKED) || (rc = VERR_PDM_MEDIA_NOT_MOUNTED));
                         if (RT_SUCCESS(rc) && pCtl->pMediaNotify)
                         {

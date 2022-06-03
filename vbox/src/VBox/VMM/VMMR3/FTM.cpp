@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 38614 2011-09-02 12:33:03Z vboxsync $ */
+/* $Id: FTM.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -1328,7 +1328,7 @@ VMMR3DECL(int) FTMR3SetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmCheckpoint)
 
             if (VM_FF_ISPENDING(pVM, VM_FF_REQUEST))
             {
-                rc = VMR3ReqProcessU(pVM->pUVM, VMCPUID_ANY);
+                rc = VMR3ReqProcessU(pVM->pUVM, VMCPUID_ANY, true /*fPriorityOnly*/);
                 AssertRC(rc);
             }
         }

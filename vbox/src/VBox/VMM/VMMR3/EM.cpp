@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 38612 2011-09-02 12:31:33Z vboxsync $ */
+/* $Id: EM.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1488,7 +1488,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
          */
         if (VM_FF_IS_PENDING_EXCEPT(pVM, VM_FF_REQUEST, VM_FF_PGM_NO_MEMORY))
         {
-            rc2 = VMR3ReqProcessU(pVM->pUVM, VMCPUID_ANY);
+            rc2 = VMR3ReqProcessU(pVM->pUVM, VMCPUID_ANY, false /*fPriorityOnly*/);
             if (rc2 == VINF_EM_OFF || rc2 == VINF_EM_TERMINATE) /** @todo this shouldn't be necessary */
             {
                 Log2(("emR3ForcedActions: returns %Rrc\n", rc2));
@@ -1540,7 +1540,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
          */
         if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_REQUEST))
         {
-            rc2 = VMR3ReqProcessU(pVM->pUVM, pVCpu->idCpu);
+            rc2 = VMR3ReqProcessU(pVM->pUVM, pVCpu->idCpu, false /*fPriorityOnly*/);
             if (rc2 == VINF_EM_OFF || rc2 == VINF_EM_TERMINATE || rc2 == VINF_EM_RESET)
             {
                 Log2(("emR3ForcedActions: returns %Rrc\n", rc2));

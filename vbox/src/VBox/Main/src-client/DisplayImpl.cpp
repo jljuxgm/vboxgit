@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 38642 2011-09-05 15:06:34Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2287,8 +2287,11 @@ static int displayTakeScreenshot(PVM pVM, Display *pDisplay, struct DRVMAINDISPL
 
     while (cRetries-- > 0)
     {
-        vrc = VMR3ReqCallWait(pVM, VMCPUID_ANY, (PFNRT)Display::displayTakeScreenshotEMT, 6,
-                              pDisplay, aScreenId, &pu8Data, &cbData, &cx, &cy);
+        /* Note! Not sure if the priority call is such a good idea here, but
+                 it would be nice to have an accurate screenshot for the bug
+                 report if the VM deadlocks. */
+        vrc = VMR3ReqPriorityCallWait(pVM, VMCPUID_ANY, (PFNRT)Display::displayTakeScreenshotEMT, 6,
+                                      pDisplay, aScreenId, &pu8Data, &cbData, &cx, &cy);
         if (vrc != VERR_TRY_AGAIN)
         {
             break;

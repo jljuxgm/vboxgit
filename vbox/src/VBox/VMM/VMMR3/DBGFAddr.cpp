@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -273,8 +273,8 @@ VMMR3DECL(int)  DBGFR3AddrToPhys(PVM pVM, VMCPUID idCpu, PDBGFADDRESS pAddress, 
         if (VMCPU_IS_EMT(pVCpu))
             rc = dbgfR3AddrToPhysOnVCpu(pVCpu, pAddress, pGCPhys);
         else
-            rc = VMR3ReqCallWait(pVCpu->pVMR3, pVCpu->idCpu,
-                                 (PFNRT)dbgfR3AddrToPhysOnVCpu, 3, pVCpu, pAddress, pGCPhys);
+            rc = VMR3ReqPriorityCallWait(pVCpu->pVMR3, pVCpu->idCpu,
+                                         (PFNRT)dbgfR3AddrToPhysOnVCpu, 3, pVCpu, pAddress, pGCPhys);
     }
     return rc;
 }
@@ -431,7 +431,7 @@ VMMR3DECL(int)  DBGFR3AddrToVolatileR3Ptr(PVM pVM, VMCPUID idCpu, PDBGFADDRESS p
     /*
      * Convert it.
      */
-    return VMR3ReqCallWait(pVM, idCpu, (PFNRT)dbgfR3AddrToVolatileR3PtrOnVCpu, 5, pVM, idCpu, pAddress, fReadOnly, ppvR3Ptr);
+    return VMR3ReqPriorityCallWait(pVM, idCpu, (PFNRT)dbgfR3AddrToVolatileR3PtrOnVCpu, 5, pVM, idCpu, pAddress, fReadOnly, ppvR3Ptr);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGFStack.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -453,9 +453,9 @@ static int dbgfR3StackWalkBeginCommon(PVM pVM,
         default:
             AssertFailedReturn(VERR_INVALID_PARAMETER);
     }
-    return VMR3ReqCallWait(pVM, idCpu, (PFNRT)dbgfR3StackWalkCtxFull, 10,
-                           pVM, idCpu, pCtxCore, hAs, enmCodeType,
-                           pAddrFrame, pAddrStack, pAddrPC, enmReturnType, ppFirstFrame);
+    return VMR3ReqPriorityCallWait(pVM, idCpu, (PFNRT)dbgfR3StackWalkCtxFull, 10,
+                                   pVM, idCpu, pCtxCore, hAs, enmCodeType,
+                                   pAddrFrame, pAddrStack, pAddrPC, enmReturnType, ppFirstFrame);
 }
 
 

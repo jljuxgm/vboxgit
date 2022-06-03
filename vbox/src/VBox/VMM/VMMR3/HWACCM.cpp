@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 37323 2011-06-03 16:20:06Z vboxsync $ */
+/* $Id: HWACCM.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1747,12 +1747,13 @@ int hwaccmR3EnablePatching(PVM pVM, VMCPUID idCpu, RTRCPTR pPatchMem, unsigned c
  */
 VMMR3DECL(int)  HWACMMR3EnablePatching(PVM pVM, RTGCPTR pPatchMem, unsigned cbPatchMem)
 {
+    VM_ASSERT_EMT(pVM);
     Log(("HWACMMR3EnablePatching %RGv size %x\n", pPatchMem, cbPatchMem));
     if (pVM->cCpus > 1)
     {
         /* We own the IOM lock here and could cause a deadlock by waiting for a VCPU that is blocking on the IOM lock. */
-        int rc = VMR3ReqCallNoWaitU(pVM->pUVM, VMCPUID_ANY_QUEUE,
-                                    (PFNRT)hwaccmR3EnablePatching, 4, pVM, VMMGetCpuId(pVM), (RTRCPTR)pPatchMem, cbPatchMem);
+        int rc = VMR3ReqCallNoWait(pVM, VMCPUID_ANY_QUEUE,
+                                   (PFNRT)hwaccmR3EnablePatching, 4, pVM, VMMGetCpuId(pVM), (RTRCPTR)pPatchMem, cbPatchMem);
         AssertRC(rc);
         return rc;
     }

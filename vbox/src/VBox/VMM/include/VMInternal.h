@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 36041 2011-02-21 16:04:53Z vboxsync $ */
+/* $Id: VMInternal.h 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -173,8 +173,10 @@ typedef VMINT *PVMINT;
  */
 typedef struct VMINTUSERPERVM
 {
-    /** Head of the request queue. Atomic. */
-    volatile PVMREQ                 pReqs;
+    /** Head of the standard request queue. Atomic. */
+    volatile PVMREQ                 pNormalReqs;
+    /** Head of the priority request queue. Atomic. */
+    volatile PVMREQ                 pPriorityReqs;
     /** The last index used during alloc/free. */
     volatile uint32_t               iReqFree;
     /** Number of free request packets. */
@@ -314,8 +316,10 @@ typedef VMINTUSERPERVM *PVMINTUSERPERVM;
  */
 typedef struct VMINTUSERPERVMCPU
 {
-    /** Head of the request queue. Atomic. */
-    volatile PVMREQ                 pReqs;
+    /** Head of the normal request queue. Atomic. */
+    volatile PVMREQ                 pNormalReqs;
+    /** Head of the priority request queue. Atomic. */
+    volatile PVMREQ                 pPriorityReqs;
 
     /** The handle to the EMT thread. */
     RTTHREAD                        ThreadEMT;

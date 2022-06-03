@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 35629 2011-01-19 15:15:21Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -103,6 +103,10 @@ VMMR3DECL(int) DBGFR3Halt(PVM pVM)
     return VERR_INTERNAL_ERROR;
 }
 VMMR3DECL(int) DBGFR3Info(PVM pVM, const char *pszName, const char *pszArgs, PCDBGFINFOHLP pHlp)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3InfoEx(PVM pVM, VMCPUID idCpu, const char *pszName, const char *pszArgs, PCDBGFINFOHLP pHlp)
 {
     return VERR_INTERNAL_ERROR;
 }
@@ -404,7 +408,3 @@ VMMDECL(PVMCPU) VMMGetCpuById(PVM pVM, RTCPUID idCpu)
     return NULL;
 }
 
-VMMR3DECL(int) VMR3ReqCallWait(PVM pVm, VMCPUID idDstCpu, PFNRT pfnFunction, unsigned cArgs, ...)
-{
-    return VERR_INTERNAL_ERROR;
-}

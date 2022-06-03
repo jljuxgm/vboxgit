@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstVMM.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -273,7 +273,7 @@ int main(int argc, char **argv)
                 RTTestSub(hTest, "TM");
                 for (VMCPUID idCpu = 1; idCpu < g_cCpus; idCpu++)
                 {
-                    rc = VMR3ReqCallNoWaitU(pVM->pUVM, idCpu, (PFNRT)tstTMWorker, 2, pVM, hTest);
+                    rc = VMR3ReqCallNoWait(pVM, idCpu, (PFNRT)tstTMWorker, 2, pVM, hTest);
                     if (RT_FAILURE(rc))
                         RTTestFailed(hTest, "VMR3ReqCall failed: rc=%Rrc\n", rc);
                 }

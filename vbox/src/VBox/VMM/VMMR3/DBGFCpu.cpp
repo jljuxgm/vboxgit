@@ -1,4 +1,4 @@
-/* $Id: DBGFCpu.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGFCpu.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, CPU State Accessors.
  */
@@ -60,7 +60,7 @@ VMMR3DECL(CPUMMODE) DBGFR3CpuGetMode(PVM pVM, VMCPUID idCpu)
     AssertReturn(idCpu < pVM->cCpus, CPUMMODE_INVALID);
 
     CPUMMODE enmMode;
-    int rc = VMR3ReqCallWait(pVM, idCpu, (PFNRT)dbgfR3CpuGetMode, 3, pVM, idCpu, &enmMode);
+    int rc = VMR3ReqPriorityCallWait(pVM, idCpu, (PFNRT)dbgfR3CpuGetMode, 3, pVM, idCpu, &enmMode);
     if (RT_FAILURE(rc))
         return CPUMMODE_INVALID;
     return enmMode;

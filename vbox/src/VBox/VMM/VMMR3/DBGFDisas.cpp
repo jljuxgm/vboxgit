@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -592,8 +592,8 @@ VMMR3DECL(int) DBGFR3DisasInstrEx(PVM pVM, VMCPUID idCpu, RTSEL Sel, RTGCPTR GCP
         &&  pVCpu->idCpu == idCpu)
         rc = dbgfR3DisasInstrExOnVCpu(pVM, pVCpu, Sel, &GCPtr, fFlags, pszOutput, cbOutput, pcbInstr);
     else
-        rc = VMR3ReqCallWait(pVM, idCpu, (PFNRT)dbgfR3DisasInstrExOnVCpu, 8,
-                             pVM, VMMGetCpuById(pVM, idCpu), Sel, &GCPtr, fFlags, pszOutput, cbOutput, pcbInstr);
+        rc = VMR3ReqPriorityCallWait(pVM, idCpu, (PFNRT)dbgfR3DisasInstrExOnVCpu, 8,
+                                     pVM, VMMGetCpuById(pVM, idCpu), Sel, &GCPtr, fFlags, pszOutput, cbOutput, pcbInstr);
     return rc;
 }
 
