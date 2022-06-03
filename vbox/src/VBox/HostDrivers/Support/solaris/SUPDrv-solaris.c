@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 38895 2011-09-28 12:04:39Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 40607 2012-03-24 21:48:27Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -64,6 +64,8 @@
 #include <iprt/alloc.h>
 #include <iprt/string.h>
 #include <iprt/err.h>
+
+#include "dtrace/SUPDrv.h"
 
 
 /*******************************************************************************
