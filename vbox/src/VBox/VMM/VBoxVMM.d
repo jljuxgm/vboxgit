@@ -1,4 +1,4 @@
-/* $Id: VBoxVMM.d 40517 2012-03-17 19:30:54Z vboxsync $ */
+/* $Id: VBoxVMM.d 40595 2012-03-23 14:54:46Z vboxsync $ */
 /** @file
  * VBoxVMM - Static ring-3 dtrace probes.
  */
@@ -26,6 +26,7 @@ provider vboxvmm
     probe em__ff__all_ret(void *a_pVCpu, int a_rc);
     probe em__ff__raw(void *a_pVCpu, unsigned int a_fGlobal, unsigned int a_fLocal);
     probe em__ff__raw_ret(void *a_pVCpu, int a_rc);
+    probe r0__gvmm__vm__created(void *a_pGVM, void *a_pVM, unsigned int a_Pid, void *a_hEMT0, unsigned int a_cCpus);
 };
 
 #pragma D attributes Evolving/Evolving/Common provider vboxvmm provider
