@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 36275 2011-03-14 18:01:34Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 36276 2011-03-14 18:41:06Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1120,8 +1120,6 @@ int handleModifyVM(HandlerArg *a)
                 {
                     /* Just remove the bandwidth group. */
                     CHECK_ERROR(nic, COMSETTER(BandwidthGroup)(NULL));
-                    //CHECK_ERROR(nic, COMSETTER(BandwidthGroup)(bwGroup));
-                    //CHECK_ERROR(machine, SetBandwidthGroupForNetworkAdapter(GetOptState.uIndex - 1, NULL));
                 }
                 else
                 {
