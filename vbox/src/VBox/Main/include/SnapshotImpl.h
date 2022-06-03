@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: SnapshotImpl.h 36074 2011-02-24 15:38:25Z vboxsync $ */
 
 /** @file
  *
@@ -97,8 +97,7 @@ public:
     const ComObjPtr<Snapshot>& getParent() const;
     const ComObjPtr<Snapshot> getFirstChild() const;
 
-    const Utf8Str& stateFilePath() const;
-    HRESULT deleteStateFile();
+    const Utf8Str& getStateFilePath() const;
 
     ULONG getChildrenCount();
     ULONG getAllChildrenCount();
@@ -117,6 +116,9 @@ public:
                                const Utf8Str &strNewPath);
     void updateSavedStatePathsImpl(const Utf8Str &strOldPath,
                                    const Utf8Str &strNewPath);
+
+    bool sharesSavedStateFile(const Utf8Str &strPath,
+                              Snapshot *pSnapshotToIgnore);
 
     HRESULT saveSnapshot(settings::Snapshot &data, bool aAttrsOnly);
     HRESULT saveSnapshotImpl(settings::Snapshot &data, bool aAttrsOnly);

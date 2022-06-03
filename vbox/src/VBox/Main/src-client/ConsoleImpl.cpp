@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 36041 2011-02-21 16:04:53Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 36074 2011-02-24 15:38:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3075,12 +3075,9 @@ STDMETHODIMP Console::TakeSnapshot(IN_BSTR aName,
 
     LogFlowFunc(("fTakingSnapshotOnline = %d, mMachineState = %d\n", fTakingSnapshotOnline, mMachineState));
 
-    if (    fTakingSnapshotOnline
-         || mMachineState == MachineState_Saved
-       )
+    if (fTakingSnapshotOnline)
     {
         ++cOperations;
-
         ulTotalOperationsWeight += ulMemSize;
     }
 
