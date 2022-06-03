@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 41727 2012-06-14 22:49:03Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -282,7 +282,7 @@ static DECLCALLBACK(int) dbgfR3DisasGetSymbol(PCDISCPUSTATE pCpu, uint32_t u32Se
     int             rc;
 
     if (   DIS_FMT_SEL_IS_REG(u32Sel)
-        ?  DIS_FMT_SEL_GET_REG(u32Sel) == DIS_SELREG_CS
+        ?  DIS_FMT_SEL_GET_REG(u32Sel) == DISSELREG_CS
         :  pSelInfo->Sel == DIS_FMT_SEL_GET_VALUE(u32Sel))
     {
         rc = DBGFR3AddrFromSelInfoOff(pState->pVM, &Addr, pSelInfo, uAddress);

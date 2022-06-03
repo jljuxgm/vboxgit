@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 41675 2012-06-12 20:27:37Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 41727 2012-06-14 22:49:03Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -110,7 +110,7 @@ int emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          * Memory mapped I/O access - attempt to patch the instruction
          */
         case VINF_PATM_HC_MMIO_PATCH_READ:
-            rc = PATMR3InstallPatch(pVM, SELMToFlat(pVM, DIS_SELREG_CS, CPUMCTX2CORE(pCtx), pCtx->eip),
+            rc = PATMR3InstallPatch(pVM, SELMToFlat(pVM, DISSELREG_CS, CPUMCTX2CORE(pCtx), pCtx->eip),
                                     PATMFL_MMIO_ACCESS | ((SELMGetCpuModeFromSelector(pVCpu, pCtx->eflags, pCtx->cs, &pCtx->csHid) == DISCPUMODE_32BIT) ? PATMFL_CODE32 : 0));
             if (RT_FAILURE(rc))
                 rc = emR3ExecuteInstruction(pVM, pVCpu, "MMIO");
