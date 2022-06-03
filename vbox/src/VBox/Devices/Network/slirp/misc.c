@@ -1,4 +1,4 @@
-/* $Id: misc.c 39101 2011-10-25 02:44:01Z vboxsync $ */
+/* $Id: misc.c 39362 2011-11-18 10:40:56Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -499,12 +499,14 @@ static void zone_destroy(uma_zone_t zone)
 void m_fini(PNATState pData)
 {
     LogFlowFuncEnter();
-    zone_destroy(pData->zone_mbuf);
-    zone_destroy(pData->zone_clust);
-    zone_destroy(pData->zone_pack);
-    zone_destroy(pData->zone_jumbop);
-    zone_destroy(pData->zone_jumbo9);
-    zone_destroy(pData->zone_jumbo16);
+#define ZONE_DESTROY(zone) do { zone_destroy((zone)); (zone) = NULL;} while (0)
+    ZONE_DESTROY(pData->zone_clust);
+    ZONE_DESTROY(pData->zone_pack);
+    ZONE_DESTROY(pData->zone_mbuf);
+    ZONE_DESTROY(pData->zone_jumbop);
+    ZONE_DESTROY(pData->zone_jumbo9);
+    ZONE_DESTROY(pData->zone_jumbo16);
+#undef ZONE_DESTROY
     /** @todo do finalize here.*/
     LogFlowFuncLeave();
 }
