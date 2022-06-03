@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 41915 2012-06-26 09:18:41Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 41916 2012-06-26 09:58:05Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2377,6 +2377,12 @@ int handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_AUTOSTART_DELAY:
             {
+                CHECK_ERROR(machine, COMSETTER(AutostartDelay)(ValueUnion.u32));
+                break;
+            }
+
+            case MODIFYVM_AUTOSTOP_TYPE:
+            {
                 AutostopType_T enmAutostopType = AutostopType_Disabled;
 
                 if (!RTStrICmp(ValueUnion.psz, "disabled"))
@@ -2395,12 +2401,6 @@ int handleModifyVM(HandlerArg *a)
 
                 if (SUCCEEDED(rc))
                     CHECK_ERROR(machine, COMSETTER(AutostopType)(enmAutostopType));
-                break;
-            }
-
-            case MODIFYVM_AUTOSTOP_TYPE:
-            {
-                CHECK_ERROR(machine, COMSETTER(AutostopType)(ValueUnion.u32));
                 break;
             }
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
