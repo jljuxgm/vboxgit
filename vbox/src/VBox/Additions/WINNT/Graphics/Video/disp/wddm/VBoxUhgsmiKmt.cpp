@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.cpp 37300 2011-06-01 19:45:51Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.cpp 39215 2011-11-07 13:28:31Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -289,7 +289,7 @@ DECLCALLBACK(int) vboxUhgsmiKmtEscBufferCreate(PVBOXUHGSMI pHgsmi, uint32_t cbBu
     Assert(cPages);
 
     PVBOXUHGSMI_PRIVATE_KMT pPrivate = VBOXUHGSMIKMT_GET(pHgsmi);
-    PVBOXUHGSMI_BUFFER_PRIVATE_KMT_ESC pBuf = (PVBOXUHGSMI_BUFFER_PRIVATE_KMT_ESC)RTMemAllocZ(RT_OFFSETOF(VBOXUHGSMI_BUFFER_PRIVATE_KMT, aLockPageIndices[cPages]));
+    PVBOXUHGSMI_BUFFER_PRIVATE_KMT_ESC pBuf = (PVBOXUHGSMI_BUFFER_PRIVATE_KMT_ESC)RTMemAllocZ(sizeof (VBOXUHGSMI_BUFFER_PRIVATE_KMT_ESC));
     Assert(pBuf);
     if (pBuf)
     {
