@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 40442 2012-03-13 11:40:27Z vboxsync $ */
+/* $Id: EMAll.cpp 40446 2012-03-13 15:16:30Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -62,7 +62,7 @@
 # define EM_ASSERT_FAULT_RETURN(expr, rc) do { } while (0)
 #endif
 
-/* Used to pass information during instruction disassembly. */
+/** Used to pass information during instruction disassembly. */
 typedef struct
 {
     PVM         pVM;
