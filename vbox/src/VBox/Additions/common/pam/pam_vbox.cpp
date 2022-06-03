@@ -1,4 +1,4 @@
-/* $Id: pam_vbox.cpp 38473 2011-08-16 12:41:44Z vboxsync $ */
+/* $Id: pam_vbox.cpp 38474 2011-08-16 12:49:20Z vboxsync $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
@@ -38,10 +38,7 @@
 
 #include <pwd.h>
 #include <syslog.h>
-#ifdef RT_OS_SOLARIS
-# include <mem.h>
-# include <stdlib.h>
-#endif
+#include <stdlib.h>
 
 #include <iprt/assert.h>
 #include <iprt/env.h>
