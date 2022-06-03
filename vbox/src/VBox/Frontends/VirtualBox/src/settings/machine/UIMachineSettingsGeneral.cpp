@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 36519 2011-04-04 10:44:58Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 36916 2011-05-03 06:40:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -218,6 +218,6 @@ void UIMachineSettingsGeneral::polishPage()
     mCbSaveMounted->setEnabled(isMachineInValidMode());
     mLbToolBar->setEnabled(isMachineInValidMode());
     mCbShowToolBar->setEnabled(isMachineInValidMode());
-    mCbToolBarAlignment->setEnabled(isMachineInValidMode());
+    mCbToolBarAlignment->setEnabled(mCbShowToolBar->isChecked() && isMachineInValidMode());
 }
 
