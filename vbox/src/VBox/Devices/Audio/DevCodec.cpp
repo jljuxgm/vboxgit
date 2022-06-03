@@ -1,4 +1,4 @@
-/* $Id: DevCodec.cpp 39368 2011-11-18 15:19:35Z vboxsync $ */
+/* $Id: DevCodec.cpp 40110 2012-02-14 01:43:27Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -1271,7 +1271,8 @@ static int codecReset(struct CODECState *pState, uint32_t cmd, uint64_t *pResp)
         Assert(pState->pfnCodecNodeReset);
         for (i = 0; i < pState->cTotalNodes; ++i)
         {
-            pState->pfnCodecNodeReset(pState, i, &pState->pNodes[i]);
+            if (pState->pfnCodecNodeReset)
+                pState->pfnCodecNodeReset(pState, i, &pState->pNodes[i]);
         }
         pState->fInReset = false;
         Log(("HDAcodec: exits reset\n"));
