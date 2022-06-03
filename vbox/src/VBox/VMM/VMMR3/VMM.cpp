@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 37818 2011-07-07 13:25:03Z vboxsync $ */
+/* $Id: VMM.cpp 37846 2011-07-08 13:00:14Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -512,7 +512,7 @@ VMMR3_INT_DECL(int) VMMR3InitR0(PVM pVM)
 #ifdef LOG_ENABLED
         if (    pVCpu->vmm.s.pR0LoggerR3
             &&  pVCpu->vmm.s.pR0LoggerR3->Logger.offScratch > 0)
-            RTLogFlushToLogger(&pVCpu->vmm.s.pR0LoggerR3->Logger, NULL);
+            RTLogFlushR0(NULL, &pVCpu->vmm.s.pR0LoggerR3->Logger);
 #endif
         if (rc != VINF_VMM_CALL_HOST)
             break;
