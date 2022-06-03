@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 38408 2011-08-10 20:07:04Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 41289 2012-05-14 17:12:36Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -404,7 +404,7 @@ static int VBoxNetAdpDarwinIOCtl(dev_t Dev, u_long iCmd, caddr_t pData, int fFla
                                   pReq->szName[0] && RTStrEnd(pReq->szName, RT_MIN(cbReq, sizeof(pReq->szName))) ?
                                   pReq->szName : NULL);
             if (RT_FAILURE(rc))
-                return EINVAL;
+                return rc == VERR_OUT_OF_RESOURCES ? ENOMEM : EINVAL;
 
             Assert(strlen(pReq->szName) < sizeof(pReq->szName));
             strncpy(pReq->szName, pNew->szName, sizeof(pReq->szName) - 1);
