@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39333 2011-11-16 15:19:21Z vboxsync $
+# $Id: Makefile.kmk 41093 2012-04-27 23:38:44Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Adapter Driver (VBoxNetAdp).
 #
@@ -26,7 +26,8 @@ if1of ($(KBUILD_TARGET), solaris darwin linux freebsd)
  ifdef VBOX_WITH_VBOXDRV
   SYSMODS += VBoxNetAdp
   VBoxNetAdp_TEMPLATE         = VBOXR0DRV
-  VBoxNetAdp_INST = $(INST_VBOXNETADP)$(if $(eq $(KBUILD_TARGET),darwin),Contents/MacOS/)
+  VBoxNetAdp_INST             = $(INST_VBOXNETADP)$(if $(eq $(KBUILD_TARGET),darwin),Contents/MacOS/)
+  VBoxNetAdp_DEBUG_INST.darwin= $(patsubst %/,%,$(INST_VBOXNETADP))
   VBoxNetAdp_NAME.solaris     = vboxnet
   VBoxNetAdp_NAME.linux       = vboxnetadp
   VBoxNetAdp_NAME.freebsd     = vboxnetadp

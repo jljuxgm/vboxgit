@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38286 2011-08-02 18:51:11Z vboxsync $
+# $Id: Makefile.kmk 41093 2012-04-27 23:38:44Z vboxsync $
 ## @file
 # Sub-Makefile for the Darwin VBoxUSB kernel extension.
 #
@@ -25,6 +25,8 @@ include	$(KBUILD_PATH)/subheader.kmk
 # Leopard (x86) and Snow Leopard (x86/amd64)
 SYSMODS.darwin       += VBoxUSB
 VBoxUSB_TEMPLATE      = VBOXR0DRV
+VBoxUSB_INST          = $(INST_VBOXUSB)Contents/MacOS/
+VBoxUSB_DEBUG_INST.darwin = $(patsubst %/,%,$(INST_VBOXUSB))
 VBoxUSB_INCS          = \
 	. \
 	..
@@ -33,7 +35,6 @@ VBoxUSB_SOURCES      := \
 	VBoxUSB.cpp \
 	../USBFilter.cpp \
 	../VBoxUSBFilterMgr.cpp
-VBoxUSB_INST          = $(INST_VBOXUSB)Contents/MacOS/
 
 INSTALLS += VBoxUSB.kext
 VBoxUSB.kext_INST     = $(INST_VBOXUSB)Contents/

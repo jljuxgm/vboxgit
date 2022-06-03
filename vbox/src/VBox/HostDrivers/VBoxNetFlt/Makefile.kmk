@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40993 2012-04-19 14:25:38Z vboxsync $
+# $Id: Makefile.kmk 41093 2012-04-27 23:38:44Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -26,6 +26,7 @@ if1of ($(KBUILD_TARGET), darwin win) # this ifeq must go, see @todo around elif
  SYSMODS += VBoxNetFlt
  VBoxNetFlt_TEMPLATE = VBOXR0DRV
  VBoxNetFlt_INST = $(INST_VBOXNETFLT)$(if $(eq $(KBUILD_TARGET),darwin),Contents/MacOS/)
+ VBoxNetFlt_DEBUG_INST.darwin = $(patsubst %/,%,$(INST_VBOXNETFLT))
  if defined(VBOX_SIGNING_MODE) && "$(KBUILD_TARGET)" == "win"
   VBoxNetFlt_INSTTYPE = none
   VBoxNetFlt_DEBUG_INSTTYPE = both
