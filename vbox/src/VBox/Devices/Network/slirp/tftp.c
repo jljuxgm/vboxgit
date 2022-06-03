@@ -1,4 +1,4 @@
-/* $Id: tftp.c 41994 2012-07-03 10:10:13Z vboxsync $ */
+/* $Id: tftp.c 41995 2012-07-03 10:20:10Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -460,7 +460,7 @@ DECLINLINE(int) tftpSessionEvaluateBlkSize(PNATState pData, PTFTPSESSION pTftpSe
     }
     cBlockSessionFile = ASMDivU64ByU32RetU32(cbSessionFile, pTftpSession->u16BlkSize);
     while (   cBlockSessionFile >= UINT16_MAX
-           && idxRFC2348TftpSessionBlkSize <= RT_ELEMENTS(g_au16RFC2348TftpSessionBlkSize))
+           && idxRFC2348TftpSessionBlkSize < RT_ELEMENTS(g_au16RFC2348TftpSessionBlkSize))
     {
         if (pTftpSession->u16BlkSize > g_au16RFC2348TftpSessionBlkSize[idxRFC2348TftpSessionBlkSize])
         {
@@ -471,7 +471,7 @@ DECLINLINE(int) tftpSessionEvaluateBlkSize(PNATState pData, PTFTPSESSION pTftpSe
 
         idxRFC2348TftpSessionBlkSize++;
         /* No bigger values in RFC2348 */
-        AssertReturn(idxRFC2348TftpSessionBlkSize <= RT_ELEMENTS(g_au16RFC2348TftpSessionBlkSize), VERR_INTERNAL_ERROR);
+        AssertReturn(idxRFC2348TftpSessionBlkSize < RT_ELEMENTS(g_au16RFC2348TftpSessionBlkSize), VERR_INTERNAL_ERROR);
         if (g_au16RFC2348TftpSessionBlkSize[idxRFC2348TftpSessionBlkSize] >= if_maxlinkhdr)
         {
             /* Buffer size is too large for current settings */
