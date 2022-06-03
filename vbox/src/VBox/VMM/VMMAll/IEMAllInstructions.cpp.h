@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 40072 2012-02-10 21:49:12Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 40077 2012-02-11 02:49:12Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -10396,11 +10396,14 @@ FNIEMOP_DEF_1(iemOp_fld_m32r, uint8_t, bRm)
     IEM_MC_ARG_LOCAL_REF(PIEMFPURESULT, pFpuRes,    FpuRes, 0);
     IEM_MC_ARG(RTFLOAT32U,              r32Val,             1);
 
+#ifdef LOG_ENABLED
+Log(("r32Val=%#x\n", r32Val.u32));
+#endif
     IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm);
     IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE();
     IEM_MC_MAYBE_RAISE_FPU_XCPT();
     IEM_MC_FETCH_MEM_R32(r32Val, pIemCpu->iEffSeg, GCPtrEffSrc);
-//    IEM_MC_CALL_FPU_AIMPL_2(iemAImpl_fpu_r32_to_r80, pFpuRes, r32Val);
+    IEM_MC_CALL_FPU_AIMPL_2(iemAImpl_fpu_r32_to_r80, pFpuRes, r32Val);
 
     IEM_MC_PUSH_FPU_RESULT(FpuRes);
     IEM_MC_ADVANCE_RIP();

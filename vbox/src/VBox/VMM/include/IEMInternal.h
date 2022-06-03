@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 40072 2012-02-10 21:49:12Z vboxsync $ */
+/* $Id: IEMInternal.h 40077 2012-02-11 02:49:12Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -77,8 +77,9 @@ typedef struct IEMFPURESULT
     /** The output value. */
     RTFLOAT80U      r80Result;
     /** The output status. */
-    uint16_t        u16FSW;
+    uint16_t        FSW;
 } IEMFPURESULT;
+AssertCompileMemberOffset(IEMFPURESULT, FSW, 10);
 /** Pointer to a FPU result. */
 typedef IEMFPURESULT *PIEMFPURESULT;
 /** Pointer to a const FPU result. */
