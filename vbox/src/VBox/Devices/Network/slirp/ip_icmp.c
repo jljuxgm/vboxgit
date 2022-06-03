@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 37724 2011-07-01 09:45:11Z vboxsync $ */
+/* $Id: ip_icmp.c 37746 2011-07-04 06:07:37Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -262,7 +262,7 @@ icmp_find_original_mbuf(PNATState pData, struct ip *ip)
             for (so = head_socket->so_prev; so != head_socket; so = so->so_prev)
             {
                 /* Should be reaplaced by hash here */
-                Log(("trying:%R[natsock] against %R[naipv4]:%d lport=%d hlport=%d\n", so, &faddr, fport, lport, so->so_hlport));
+                Log(("trying:%R[natsock] against %RTnaipv4:%d lport=%d hlport=%d\n", so, &faddr, fport, lport, so->so_hlport));
                 if (   so->so_faddr.s_addr == faddr.s_addr
                     && so->so_fport == fport
                     && so->so_hlport == lport)
