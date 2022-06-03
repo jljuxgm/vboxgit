@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 39893 2012-01-26 21:24:35Z vboxsync $ */
+/* $Id: VD.cpp 39927 2012-01-31 23:35:08Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -5081,6 +5081,7 @@ VBOXDDU_DECL(int) VDCreate(PVDINTERFACE pVDIfsDisk, VDTYPE enmType, PVBOXHDD *pp
             pDisk->pInterfaceThreadSync = NULL;
             pDisk->fLocked = false;
             pDisk->pIoCtxLockOwner = NULL;
+            pDisk->pIoCtxHead      = NULL;
             RTListInit(&pDisk->ListWriteLocked);
 
             /* Create the I/O ctx cache */
