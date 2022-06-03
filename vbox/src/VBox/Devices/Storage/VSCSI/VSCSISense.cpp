@@ -1,4 +1,4 @@
-/* $Id: VSCSISense.cpp 38530 2011-08-25 14:26:49Z vboxsync $ */
+/* $Id: VSCSISense.cpp 38678 2011-09-07 17:33:13Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Sense handling
  */
@@ -60,7 +60,7 @@ int vscsiReqSenseErrorSet(PVSCSISENSE pVScsiSense, PVSCSIREQINT pVScsiReq, uint8
 int vscsiReqSenseCmd(PVSCSISENSE pVScsiSense, PVSCSIREQINT pVScsiReq)
 {
     /* Copy the current sense data to the buffer. */
-    vscsiCopyToIoMemCtx(&pVScsiReq->IoMemCtx, pVScsiSense->abSenseBuf, sizeof(pVScsiSense->abSenseBuf));
+    RTSgBufCopyFromBuf(&pVScsiReq->SgBuf, pVScsiSense->abSenseBuf, sizeof(pVScsiSense->abSenseBuf));
     return vscsiReqSenseOkSet(pVScsiSense, pVScsiReq);
 }
 

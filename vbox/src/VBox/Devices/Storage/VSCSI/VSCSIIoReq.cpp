@@ -1,4 +1,4 @@
-/* $Id: VSCSIIoReq.cpp 38530 2011-08-25 14:26:49Z vboxsync $ */
+/* $Id: VSCSIIoReq.cpp 38678 2011-09-07 17:33:13Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: I/O request handling.
  */
@@ -70,8 +70,8 @@ int vscsiIoReqTransferEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
     pVScsiIoReq->enmTxDir   = enmTxDir;
     pVScsiIoReq->uOffset    = uOffset;
     pVScsiIoReq->cbTransfer = cbTransfer;
-    pVScsiIoReq->paSeg      = pVScsiReq->IoMemCtx.paDataSeg;
-    pVScsiIoReq->cSeg       = pVScsiReq->IoMemCtx.cSegments;
+    pVScsiIoReq->paSeg      = pVScsiReq->SgBuf.paSegs;
+    pVScsiIoReq->cSeg       = pVScsiReq->SgBuf.cSegs;
 
     ASMAtomicIncU32(&pVScsiLun->IoReq.cReqOutstanding);
 
