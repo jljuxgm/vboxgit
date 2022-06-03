@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 42125 2012-07-12 10:39:18Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 42129 2012-07-12 17:32:31Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -814,6 +814,8 @@ RTEXITCODE errorGetOpt(USAGECATEGORY fUsageCategory, int rc, union RTGETOPTUNION
     }
     if (rc == VERR_GETOPT_UNKNOWN_OPTION)
         return RTMsgErrorExit(RTEXITCODE_SYNTAX, "Unknown option: %s", pValueUnion->psz);
+    if (rc == VERR_GETOPT_INVALID_ARGUMENT_FORMAT)
+        return RTMsgErrorExit(RTEXITCODE_SYNTAX, "Invalid argument format: %s", pValueUnion->psz);
     if (pValueUnion->pDef)
         return RTMsgErrorExit(RTEXITCODE_SYNTAX, "%s: %Rrs", pValueUnion->pDef->pszLong, rc);
     return RTMsgErrorExit(RTEXITCODE_SYNTAX, "%Rrs", rc);

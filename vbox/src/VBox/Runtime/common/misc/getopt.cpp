@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 40598 2012-03-23 18:08:59Z vboxsync $ */
+/* $Id: getopt.cpp 42129 2012-07-12 17:32:31Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -790,6 +790,9 @@ RTDECL(RTEXITCODE) RTGetOptPrintError(int ch, PCRTGETOPTUNION pValueUnion)
     }
     else if (ch == VERR_GETOPT_UNKNOWN_OPTION)
         RTMsgError("Unknown option: '%s'", pValueUnion->psz);
+    else if (ch == VERR_GETOPT_INVALID_ARGUMENT_FORMAT)
+        /** @todo r=klaus not really ideal, as the option isn't available */
+        RTMsgError("Invalid argument format: '%s'", pValueUnion->psz);
     else if (pValueUnion->pDef)
         RTMsgError("%s: %Rrs\n", pValueUnion->pDef->pszLong, ch);
     else

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 42129 2012-07-12 17:32:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -112,8 +112,8 @@ bool UIWizardCloneVM::cloneVM()
     }
 
     /* Create a new machine object. */
-    const QString &strSettingsFile = vbox.ComposeMachineFilename(strName, QString::null);
-    CMachine cloneMachine = vbox.CreateMachine(strSettingsFile, strName, QString::null, QString::null, false);
+    const QString &strSettingsFile = vbox.ComposeMachineFilename(strName, QString::null /**< @todo group support */, QString::null);
+    CMachine cloneMachine = vbox.CreateMachine(strSettingsFile, strName, QVector<QString>(), QString::null, QString::null, false);
     if (!vbox.isOk())
     {
         msgCenter().cannotCreateMachine(vbox, this);
