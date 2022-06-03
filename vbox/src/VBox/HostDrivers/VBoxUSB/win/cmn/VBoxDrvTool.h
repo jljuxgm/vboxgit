@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvTool.h 36968 2011-05-05 08:55:16Z vboxsync $ */
+/* $Id: VBoxDrvTool.h 37047 2011-05-12 10:29:26Z vboxsync $ */
 /** @file
  * Windows Driver R0 Tooling.
  */
@@ -75,6 +75,7 @@ VBOXDRVTOOL_DECL(NTSTATUS) VBoxDrvToolRegSetValueDword(IN HANDLE hKey, IN PWCHAR
 
 VBOXDRVTOOL_DECL(NTSTATUS) VBoxDrvToolIoPostAsync(PDEVICE_OBJECT pDevObj, PIRP pIrp, PKEVENT pEvent);
 VBOXDRVTOOL_DECL(NTSTATUS) VBoxDrvToolIoPostSync(PDEVICE_OBJECT pDevObj, PIRP pIrp);
+VBOXDRVTOOL_DECL(NTSTATUS) VBoxDrvToolIoPostSyncWithTimeout(PDEVICE_OBJECT pDevObj, PIRP pIrp, ULONG dwTimeoutMs);
 DECLINLINE(NTSTATUS) VBoxDrvToolIoComplete(PIRP pIrp, NTSTATUS Status, ULONG ulInfo)
 {
     pIrp->IoStatus.Status = Status;
