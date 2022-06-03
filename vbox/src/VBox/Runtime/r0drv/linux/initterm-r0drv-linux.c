@@ -1,10 +1,10 @@
-/* $Id: initterm-r0drv-linux.c 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: initterm-r0drv-linux.c 39004 2011-10-17 14:12:14Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -36,6 +36,17 @@
 
 
 /*******************************************************************************
+*   Global Variables                                                           *
+*******************************************************************************/
+/** The IPRT work queue. */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 41)
+static struct workqueue_struct *g_prtR0LnxWorkQueue;
+#else
+static DECLARE_TASK_QUEUE(g_rtR0LnxWorkQueue);
+#endif
+
+
+/*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
 #ifdef RT_ARCH_AMD64
@@ -44,14 +55,59 @@ DECLHIDDEN(void) rtR0MemExecCleanup(void);
 #endif
 
 
+/**
+ * Pushes an item onto the IPRT work queue.
+ *
+ * @param   pWork               The work item.
+ * @param   pfnWorker           The callback function.  It will be called back
+ *                              with @a pWork as argument.
+ */
+DECLHIDDEN(void) rtR0LnxWorkqueuePush(RTR0LNXWORKQUEUEITEM *pWork, void (*pfnWorker)(RTR0LNXWORKQUEUEITEM *))
+{
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 41)
+    INIT_WORK(pWork, pfnWorker);
+    queue_work(g_prtR0LnxWorkQueue, pWork);
+#else
+    INIT_TQUEUE(pWork, pfnWorker, pWork);
+    queue_task(pWork, &g_rtR0LnxWorkQueue);
+#endif
+}
+
+
+/**
+ * Flushes all items in the IPRT work queue.
+ *
+ * @remarks This is mostly for 2.4.x compatability.  Must not be called from
+ *          atomic contexts or with unncessary locks held.
+ */
+DECLHIDDEN(void) rtR0LnxWorkqueueFlush(void)
+{
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 41)
+    flush_workqueue(g_prtR0LnxWorkQueue);
+#else
+    run_task_queue(&g_rtR0LnxWorkQueue);
+#endif
+}
+
+
 DECLHIDDEN(int) rtR0InitNative(void)
 {
+    g_prtR0LnxWorkQueue = create_workqueue("iprt");
+    if (!g_prtR0LnxWorkQueue)
+        return VERR_NO_MEMORY;
+
     return VINF_SUCCESS;
 }
 
 
 DECLHIDDEN(void) rtR0TermNative(void)
 {
+    rtR0LnxWorkqueueFlush();
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 41)
+    destroy_workqueue(g_prtR0LnxWorkQueue);
+    g_prtR0LnxWorkQueue = NULL;
+#endif
+
 #ifdef RT_ARCH_AMD64
     rtR0MemExecCleanup();
 #endif
