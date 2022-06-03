@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 39521 2011-12-03 22:59:46Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 39522 2011-12-05 10:19:31Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -186,7 +186,7 @@ static int VBoxDrvFreeBSDUnload(void)
     Log(("VBoxDrvFreeBSDUnload:\n"));
 
     if (g_cUsers > 0)
-        return EBUSY;
+        return VERR_RESOURCE_BUSY;
 
     /*
      * Reserve what we did in VBoxDrvFreeBSDInit.
