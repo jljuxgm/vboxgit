@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 41790 2012-06-16 20:33:45Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 41792 2012-06-16 23:41:11Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -499,7 +499,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, ui
                 {
                     Assert(pDis->cbInstr >= 3);
                     PUT_SZ("db 00fh, 01fh,");
-                    PUT_NUM_8(pDis->ModRM.u);
+                    PUT_NUM_8(MAKE_MODRM(pDis->ModRM.Bits.Mod, pDis->ModRM.Bits.Reg, pDis->ModRM.Bits.Rm));
                     for (unsigned i = 3; i < pDis->cbInstr; i++)
                     {
                         PUT_C(',');
