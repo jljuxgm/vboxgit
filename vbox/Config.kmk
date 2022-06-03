@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38082 2011-07-20 14:26:24Z vboxsync $
+# $Id: Config.kmk 38088 2011-07-21 10:06:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -150,7 +150,7 @@ ifndef VBOX_WITH_0_2_0_KBUILD
  PATH_SYS             = $(patsubst %/,%,$(PATH_STAGE)/$(INST_SYS))
  PATH_LIB             = $(patsubst %/,%,$(PATH_STAGE)/$(INST_LIB))
  PATH_DOC             = $(patsubst %/,%,$(PATH_STAGE)/$(INST_DOC))
- $(foreach path, BIN DLL SYS LIB DOC, $(eval PATH_STAGE_$(path) = $(PATH_$(path))))
+ $(foreach path, BIN DLL SYS LIB DOC, $(eval PATH_STAGE_$(path) = $$(PATH_$(path))))
 endif
 VBOX_PATH_SDK         = $(patsubst %/,%,$(PATH_STAGE)/$(INST_SDK))
 VBOX_PATH_DIST        = $(patsubst %/,%,$(PATH_STAGE)/$(INST_DIST))
@@ -4811,7 +4811,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38082 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38088 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
