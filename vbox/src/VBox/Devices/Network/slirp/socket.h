@@ -1,4 +1,4 @@
-/* $Id: socket.h 41453 2012-05-26 03:40:24Z vboxsync $ */
+/* $Id: socket.h 41855 2012-06-21 05:46:27Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -193,5 +193,12 @@ void sofwdrain (struct socket *);
 struct socket * soCloneUDPSocketWithForegnAddr(PNATState pData, bool fBindSocket, struct socket *pSo, uint32_t u32ForeignAddr);
 struct socket *soLookUpClonedUDPSocket(PNATState pData, const struct socket *pcSo, uint32_t u32ForeignAddress);
 #endif
+
+static inline int soIgnorableErrorCode(int iErrorCode)
+{
+    return (   iErrorCode == EINPROGRESS
+            || iErrorCode == EAGAIN
+            || iErrorCode == EWOULDBLOCK);
+}
 
 #endif /* _SOCKET_H_ */
