@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 38208 2011-07-28 06:20:50Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 38280 2011-08-02 13:12:56Z vboxsync $ */
 /** @file
  * VBox USB R3 Driver Interface library
  */
@@ -1422,7 +1422,10 @@ USBLIB_DECL(int) USBLibInit(void)
                     }
                     else
                     {
-                        AssertMsgFailed((__FUNCTION__": Monitor driver version mismatch!!\n"));
+                        LogRel((__FUNCTION__": Monitor driver version mismatch!!\n"));
+#ifdef VBOX_WITH_ANNOYING_USB_ASSERTIONS
+                        AssertFailed();
+#endif
                         rc = VERR_VERSION_MISMATCH;
                     }
                 }
