@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 40084 2012-02-12 14:01:47Z vboxsync $ */
+/* $Id: SessionImpl.cpp 40177 2012-02-19 21:06:09Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -841,6 +841,8 @@ STDMETHODIMP Session::EnableVMMStatistics(BOOL aEnable)
     AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
 
     mConsole->enableVMMStatistics(aEnable);
+
+    return S_OK;
 }
 
 // private methods
