@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 38058 2011-07-19 09:20:42Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 38061 2011-07-19 09:50:33Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -798,7 +798,7 @@ HRESULT MachineCloneVM::run()
                         if (FAILED(rc)) throw rc;
                         if (   !bstrSrcPath.isEmpty()
                             &&  RTPathStartsWith(Utf8Str(bstrSrcPath).c_str(), Utf8Str(bstrSrcSnapshotFolder).c_str())
-                            && !(!fKeepDiskNames && !mt.strBaseName.isEmpty()))
+                            && (fKeepDiskNames || mt.strBaseName.isEmpty()))
                             strFile = Utf8StrFmt("%s%c%s", strTrgSnapshotFolder.c_str(), RTPATH_DELIMITER, strNewName.c_str());
 
                         /* Start creating the clone. */
