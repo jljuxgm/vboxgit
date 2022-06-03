@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 37709 2011-06-30 13:51:51Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37763 2011-07-04 13:39:55Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -705,7 +705,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
     if (u64Cmd & USAGE_EXTPACK)
     {
         RTStrmPrintf(pStrm,
-                     "VBoxManage extpack          install <tarball> |\n"
+                     "VBoxManage extpack          install [--replace] <tarball> |\n"
                      "                            uninstall [--force] <name> |\n"
                      "                            cleanup\n"
                      "\n");
