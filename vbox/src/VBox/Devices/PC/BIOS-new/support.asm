@@ -1,4 +1,4 @@
-; $Id: support.asm 41605 2012-06-07 01:14:38Z vboxsync $
+; $Id: support.asm 41606 2012-06-07 01:17:36Z vboxsync $
 ;; @file
 ; Compiler support routines.
 ;
@@ -19,7 +19,6 @@
 ;*******************************************************************************
 ;*  Exported Symbols                                                           *
 ;*******************************************************************************
-public          _small_code_
 public          __U4D
 public          __I4D
 public          __U4M
