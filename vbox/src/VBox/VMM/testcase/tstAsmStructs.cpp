@@ -1,4 +1,4 @@
-/* $Id: tstAsmStructs.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: tstAsmStructs.cpp 41154 2012-05-03 23:22:07Z vboxsync $ */
 /** @file
  * Testcase for checking offsets in the assembly structures shared with C/C++.
  */
@@ -29,6 +29,9 @@
 
 #include "tstHelp.h"
 #include <stdio.h>
+
+#define SUPDRVTRACERUSRCTX32 SUPDRVTRACERUSRCTX
+#define SUPDRVTRACERUSRCTX64 SUPDRVTRACERUSRCTX
 
 
 int main()
