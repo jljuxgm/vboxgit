@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg-win.h 36277 2011-03-14 18:46:49Z vboxsync $ */
+/* $Id: VBoxNetCfg-win.h 36487 2011-04-01 08:21:30Z vboxsync $ */
 /** @file
  * VBoxNetCfg-win.h - Network Configuration API for Windows platforms.
  */
@@ -57,9 +57,6 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinCreateHostOnlyNetworkInterface (IN LPCW
         OUT GUID *pGuid, OUT BSTR *lppszName, OUT BSTR *pErrMsg);
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinRemoveHostOnlyNetworkInterface (IN const GUID *pGUID, OUT BSTR *pErrMsg);
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinRemoveAllNetDevicesOfId(IN LPCWSTR lpszPnPId);
-
-VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinInfInstall(IN LPCWSTR lpszInfPath);
-VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinInfUninstallAll(IN const GUID * pGuidClass, IN LPCWSTR lpszClassName, IN LPCWSTR lpszPnPId, IN DWORD Flags);
 
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinGenHostOnlyNetworkNetworkIp(OUT PULONG pNetIp, OUT PULONG pNetMask);
 

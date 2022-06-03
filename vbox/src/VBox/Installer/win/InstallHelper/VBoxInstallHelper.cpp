@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 36452 2011-03-29 07:26:50Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 36487 2011-04-01 08:21:30Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -17,6 +17,7 @@
 
 #ifdef VBOX_WITH_NETFLT
 # include "VBox/VBoxNetCfg-win.h"
+# include "VBox/VBoxDrvCfg-win.h"
 #endif /* VBOX_WITH_NETFLT */
 
 #include <VBox/version.h>
@@ -898,7 +899,7 @@ UINT __stdcall CreateHostOnlyInterface(MSIHANDLE hModule)
     /* make sure the inf file is installed */
     if(!!pInfPath && bIsFile)
     {
-        HRESULT tmpHr = VBoxNetCfgWinInfInstall(pInfPath);
+        HRESULT tmpHr = VBoxDrvCfgInfInstall(pInfPath);
         Assert(tmpHr == S_OK);
     }
 
@@ -948,7 +949,7 @@ UINT __stdcall RemoveHostOnlyInterfaces(MSIHANDLE hModule)
     HRESULT hr = VBoxNetCfgWinRemoveAllNetDevicesOfId(NETADP_ID);
     if(hr == S_OK)
     {
-        hr = VBoxNetCfgWinInfUninstallAll(&GUID_DEVCLASS_NET, NETADP_ID, L"Net", 0/* could be SUOI_FORCEDELETE */);
+        hr = VBoxDrvCfgInfUninstallAllSetupDi(&GUID_DEVCLASS_NET, NETADP_ID, L"Net", 0/* could be SUOI_FORCEDELETE */);
         if(hr != S_OK)
         {
             LogString(hModule, TEXT("NetAdp uninstalled successfully, but failed to remove infs\n"));
