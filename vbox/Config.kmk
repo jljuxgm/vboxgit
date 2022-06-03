@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38031 2011-07-18 15:43:25Z vboxsync $
+# $Id: Config.kmk 38040 2011-07-18 20:28:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -575,10 +575,8 @@ VBOX_WITH_S3 = 1
 if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_NETFLT = 1
  ifeq ($(KBUILD_TARGET),solaris)
- # Disable for OSE, requires snv_159+.
-  ifndef VBOX_OSE
-   VBOX_WITH_NETFLT_CROSSBOW = 1
-  endif
+  # requires snv_159+.
+  VBOX_WITH_NETFLT_CROSSBOW = 1
  endif
  # Use VBoxNetAdp for host only networking.
  if1of ($(KBUILD_TARGET), darwin freebsd linux solaris) ## @todo this should be set and used on windows too.
@@ -966,6 +964,8 @@ ifdef VBOX_OSE
  VBOX_WITH_TESTSUITE=
  VBOX_WITH_INTEL_PXE=
  VBOX_WITH_FFMPEG=
+ # Disable for OSE, requires snv_159+.
+ VBOX_WITH_NETFLT_CROSSBOW=
  ifn1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_INSTALLER=
  endif
@@ -4801,7 +4801,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38031 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38040 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
