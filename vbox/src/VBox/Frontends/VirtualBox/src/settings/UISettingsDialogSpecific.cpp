@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 38497 2011-08-19 10:57:54Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 39779 2012-01-17 13:22:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -37,6 +37,7 @@
 #include "UIGlobalSettingsInput.h"
 #include "UIGlobalSettingsUpdate.h"
 #include "UIGlobalSettingsLanguage.h"
+#include "UIGlobalSettingsDisplay.h"
 #include "UIGlobalSettingsNetwork.h"
 #include "UIGlobalSettingsExtension.h"
 #include "UIGlobalSettingsProxy.h"
@@ -358,6 +359,15 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent)
                             iPageIndex, "#language", pSettingsPage);
                     break;
                 }
+                /* Display page: */
+                case GLSettingsPage_Display:
+                {
+                    pSettingsPage = new UIGlobalSettingsDisplay;
+                    addItem(":/vrdp_32px.png", ":/vrdp_disabled_32px.png",
+                            ":/vrdp_16px.png", ":/vrdp_disabled_16px.png",
+                            iPageIndex, "#display", pSettingsPage);
+                    break;
+                }
                 /* USB page: */
                 case GLSettingsPage_USB:
                 {
@@ -480,6 +490,9 @@ void UISettingsDialogGlobal::retranslateUi()
 
     /* Language page: */
     m_pSelector->setItemText(GLSettingsPage_Language, tr("Language"));
+
+    /* Display page: */
+    m_pSelector->setItemText(GLSettingsPage_Display, tr("Display"));
 
     /* USB page: */
     m_pSelector->setItemText(GLSettingsPage_USB, tr("USB"));
