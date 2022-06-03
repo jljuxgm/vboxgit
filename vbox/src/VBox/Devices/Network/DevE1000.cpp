@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 36977 2011-05-06 11:41:36Z vboxsync $ */
+/* $Id: DevE1000.cpp 36980 2011-05-06 12:01:28Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -3532,6 +3532,18 @@ static void e1kDescReport(E1KSTATE* pState, E1KTXDESC* pDesc, RTGCPHYS addr)
      * processed.
      */
     /* Let's pretend we process descriptors. Write back with DD set. */
+    /*
+     * Prior to r71586 we tried to accomodate the case when write-back bursts
+     * are enabled without actually implementing bursting by writing back all
+     * descriptors, even the ones that do not have RS set. This caused kernel
+     * panics with Linux SMP kernels, as the e1000 driver tried to free up skb
+     * associated with written back descriptor if it happened to be a context
+     * descriptor since context descriptors do not have skb associated to them.
+     * Starting from r71586 we write back only the descriptors with RS set,
+     * which is a little bit different from what the real hardware does in
+     * case there is a chain of data descritors where some of them have RS set
+     * and others do not. It is very uncommon scenario imho.
+     */
     if (pDesc->legacy.cmd.fRS)
     {
         pDesc->legacy.dw3.fDD = 1; /* Descriptor Done */
