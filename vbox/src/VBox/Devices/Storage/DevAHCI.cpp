@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 38622 2011-09-04 17:05:03Z vboxsync $ */
+/* $Id: DevAHCI.cpp 38674 2011-09-07 12:51:11Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -7982,6 +7982,8 @@ static int ahciR3ConfigureLUN(PPDMDEVINS pDevIns, PAHCIPort pAhciPort)
                  pAhciPort->iLUN, pAhciPort->PCHSGeometry.cCylinders,
                  pAhciPort->PCHSGeometry.cHeads, pAhciPort->PCHSGeometry.cSectors,
                  pAhciPort->cTotalSectors));
+        if (pAhciPort->pDrvBlock->pfnDiscard)
+            LogRel(("AHCI: LUN#%d: Enabled TRIM support\n"));
     }
     return rc;
 }
