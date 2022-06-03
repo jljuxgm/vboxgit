@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevATA.cpp 40773 2012-04-05 12:27:25Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1577,10 +1577,10 @@ static void ataReadWriteSectorsBT(ATADevState *s)
 
 static bool ataReadSectorsSS(ATADevState *s)
 {
-    int rc;
+    int rc = VERR_GENERAL_FAILURE;
     uint32_t cSectors;
     uint64_t iLBA;
-    bool fRedo;
+    bool fRedo = false;
 
     cSectors = s->cbElementaryTransfer / 512;
     Assert(cSectors);
