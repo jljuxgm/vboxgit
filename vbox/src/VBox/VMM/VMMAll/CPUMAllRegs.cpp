@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 36762 2011-04-20 16:52:26Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 36861 2011-04-27 17:38:26Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -492,8 +492,6 @@ VMMDECL(int) CPUMSetGuestIDTR(PVMCPU pVCpu, uint64_t GCPtrBase, uint16_t cbLimit
 
 VMMDECL(int) CPUMSetGuestTR(PVMCPU pVCpu, uint16_t tr)
 {
-    AssertMsgFailed(("Need to load the hidden bits too!\n"));
-
     pVCpu->cpum.s.Guest.tr  = tr;
     pVCpu->cpum.s.fChanged |= CPUM_CHANGED_TR;
     return VINF_SUCCESS;
