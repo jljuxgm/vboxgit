@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 38920 2011-09-30 13:41:48Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 39055 2011-10-20 14:02:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -835,6 +835,13 @@ bool UINewVMWzdPage5::constructMachine()
 
     /* Set UTC flags */
     m_Machine.SetRTCUseUTC(type.GetRecommendedRtcUseUtc());
+
+    /* Set graphic bits. */
+    if (type.GetRecommended2DVideoAcceleration())
+        m_Machine.SetAccelerate2DVideoEnabled(type.GetRecommended2DVideoAcceleration());
+
+    if (type.GetRecommended3DAcceleration())
+        m_Machine.SetAccelerate3DEnabled(type.GetRecommended3DAcceleration());
 
     /* Register the VM prior to attaching hard disks */
     vbox.RegisterMachine(m_Machine);
