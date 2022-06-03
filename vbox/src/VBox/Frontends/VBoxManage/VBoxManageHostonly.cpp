@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 41174 2012-05-04 17:02:07Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 41324 2012-05-16 08:26:41Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -77,11 +77,9 @@ static int handleCreate(HandlerArg *a, int iStart, int *pcProcessed)
 
 static int handleRemove(HandlerArg *a, int iStart, int *pcProcessed)
 {
+    *pcProcessed = 0;
     if (a->argc - iStart < 1)
-    {
-        *pcProcessed = 0;
         return errorSyntax(USAGE_HOSTONLYIFS, "Not enough parameters");
-    }
 
     int index = iStart;
     HRESULT rc;
