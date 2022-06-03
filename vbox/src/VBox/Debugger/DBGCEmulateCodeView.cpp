@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 36252 2011-03-10 14:06:02Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 36640 2011-04-11 11:44:08Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1743,7 +1743,7 @@ static int dbgcCmdDumpDTWorker64(PDBGCCMDHLP pCmdHlp, PCX86DESC64 pDesc, unsigne
             "DownRO", /* 4 Expand-down, Read-Only  */
             "DownRO", /* 5 Expand-down, Read-Only - Accessed */
             "DownRW", /* 6 Expand-down, Read/Write  */
-            "DownRO", /* 7 Expand-down, Read/Write - Accessed */
+            "DownRW", /* 7 Expand-down, Read/Write - Accessed */
             "CodeEO", /* 8 Execute-Only */
             "CodeEO", /* 9 Execute-Only - Accessed */
             "CodeER", /* A Execute/Readable */
@@ -1892,7 +1892,7 @@ static int dbgcCmdDumpDTWorker32(PDBGCCMDHLP pCmdHlp, PCX86DESC pDesc, unsigned 
             "DownRO", /* 4 Expand-down, Read-Only  */
             "DownRO", /* 5 Expand-down, Read-Only - Accessed */
             "DownRW", /* 6 Expand-down, Read/Write  */
-            "DownRO", /* 7 Expand-down, Read/Write - Accessed */
+            "DownRW", /* 7 Expand-down, Read/Write - Accessed */
             "CodeEO", /* 8 Execute-Only */
             "CodeEO", /* 9 Execute-Only - Accessed */
             "CodeER", /* A Execute/Readable */
