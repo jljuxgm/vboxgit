@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 39646 2011-12-16 11:14:19Z vboxsync $ */
+/* $Id: vbsf.cpp 40108 2012-02-13 20:33:20Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -1178,6 +1178,7 @@ void testCreate(RTTEST hTest)
     /* Simple opening of an existing file. */
     testCreateFileSimple(hTest);
     /* Simple opening of an existing directory. */
+    /** @todo How do wildcards in the path name work? */
     testCreateDirSimple(hTest);
     /* If the number or types of parameters are wrong the API should fail. */
     testCreateBadParameters(hTest);

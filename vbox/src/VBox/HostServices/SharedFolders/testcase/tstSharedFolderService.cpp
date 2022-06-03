@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 40108 2012-02-13 20:33:20Z vboxsync $ */
 /** @file
  *
  * Testcase for the shared folder service vbsf API.
@@ -136,6 +136,16 @@ static char testRTDirOpenName[256];
 static PRTDIR testRTDirOpenpDir;
 
 extern int testRTDirOpen(PRTDIR *ppDir, const char *pszPath)
+{
+ /* RTPrintf("%s: pszPath=%s\n", __PRETTY_FUNCTION__, pszPath); */
+    ARRAY_FROM_PATH(testRTDirOpenName, pszPath);
+    *ppDir = testRTDirOpenpDir;
+    testRTDirOpenpDir = 0;
+    return VINF_SUCCESS;
+}
+
+/** @todo Do something useful with the last two arguments. */
+extern int testRTDirOpenFiltered(PRTDIR *ppDir, const char *pszPath, RTDIRFILTER, uint32_t)
 {
  /* RTPrintf("%s: pszPath=%s\n", __PRETTY_FUNCTION__, pszPath); */
     ARRAY_FROM_PATH(testRTDirOpenName, pszPath);
