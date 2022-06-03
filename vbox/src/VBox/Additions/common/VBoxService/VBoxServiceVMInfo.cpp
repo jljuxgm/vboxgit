@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 39106 2011-10-25 09:45:40Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 39129 2011-10-27 15:46:00Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -881,7 +881,7 @@ static DECLCALLBACK(void) VBoxServiceVMInfoTerm(void)
 
 #ifdef RT_OS_WINDOWS
 # ifndef RT_OS_NT4
-    /* Install console control handler. */
+    /* Uninstall console control handler. */
     if (!SetConsoleCtrlHandler((PHANDLER_ROUTINE)NULL, FALSE /* Remove handler */))
     {
         VBoxServiceError("VMInfo: Unable to remove console control handler, error=%ld\n", GetLastError());
