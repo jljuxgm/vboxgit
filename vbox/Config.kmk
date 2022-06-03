@@ -1,4 +1,4 @@
-# $Id: Config.kmk 37289 2011-06-01 11:59:23Z vboxsync $
+# $Id: Config.kmk 37420 2011-06-12 17:43:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4768,7 +4768,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37289 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37420 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -4830,6 +4830,8 @@ VBOX_XIDL_FILE         = $(PATH_OUT)/obj/VirtualBox_stripped.xidl
 ifeq ($(KBUILD_TARGET), darwin)
  VBOX_JAVA_COMMANDS = $(firstword $(wildcard \
         /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Commands \
+        /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Commands \
+        $(if-expr $(VBOX_XCODE_VERSION_MAJOR) >= 4,/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands,) \
         ) /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Commands)
  VBOX_JAVAC     = $(VBOX_JAVA_COMMANDS)/javac
  VBOX_JAVAH     = $(VBOX_JAVA_COMMANDS)/javah
