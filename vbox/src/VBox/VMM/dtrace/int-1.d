@@ -1,4 +1,4 @@
-/* $Id: int-1.d 40923 2012-04-14 15:28:25Z vboxsync $ */
+/* $Id: int-1.d 40924 2012-04-14 16:55:55Z vboxsync $ */
 /** @file
  * DTracing VBox - Interrupt Experiment #1.
  */
@@ -15,22 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#pragma D option quiet
+
 uint64_t        g_aStarts[uint32_t];
 unsigned int    g_cHits;
 
-vboxvmm*:::pdm-irq-high
-/* /args[1] != 0/ */
+vboxvmm*:::pdm-irq-high,vboxvmm*:::pdm-irq-hilo
+/args[1] != 0/
 {
-    printf("high: tag=%#x %llx -> %llx", args[1], g_aStarts[args[1]], timestamp);
+    /*printf("high: tag=%#x src=%d %llx -> %llx\n", args[1], args[2], g_aStarts[args[1]], timestamp);*/
     g_aStarts[args[1]] = timestamp;
 }
 
 vboxvmm*:::pdm-irq-get
-/g_aStarts[args[1]] > 0/
-/* /args[1] != 0/ */
+/g_aStarts[args[1]] > 0 && args[1] != 0/
 {
     @interrupts[args[3]] = count();
-    printf("get:  tag=%#x %llx - %llx = %llx", args[1], timestamp, g_aStarts[args[1]], timestamp - g_aStarts[args[1]]);
+    /*printf("get:  tag=%#x src=%d %llx - %llx = %llx\n", args[1], args[2], timestamp, g_aStarts[args[1]], timestamp - g_aStarts[args[1]]);*/
     @dispavg[args[3]]  = avg(timestamp - g_aStarts[args[1]]);
     @dispmax[args[3]]  = max(timestamp - g_aStarts[args[1]]);
     @dispmin[args[3]]  = min(timestamp - g_aStarts[args[1]]);
@@ -51,8 +52,8 @@ END
     printa(@interrupts);
     printf("Average dispatch latency:");
     printa(@dispavg);
-    printf("Minimum dispatch latency:");
-    printa(@dispavg);
-    printf("Maximum dispatch latency:");
+    printf("Minimax dispatch latency:");
     printa(@dispmax);
+    printf("Maximum dispatch latency:");
+    printa(@dispmin);
 }
