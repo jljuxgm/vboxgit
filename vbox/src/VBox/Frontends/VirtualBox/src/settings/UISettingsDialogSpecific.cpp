@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 39779 2012-01-17 13:22:08Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -532,7 +532,7 @@ bool UISettingsDialogGlobal::isPageAvailable(int iPageId)
         {
 #ifdef ENABLE_GLOBAL_USB
             /* Get the host object: */
-            CHost host = vboxGlobal().virtualBox().GetHost();
+            CHost host = vboxGlobal().host();
             /* Show the host error message if any: */
             if (!host.isReallyOk())
                 msgCenter().cannotAccessUSB(host);

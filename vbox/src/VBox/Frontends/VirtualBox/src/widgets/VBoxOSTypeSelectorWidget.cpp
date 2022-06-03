@@ -1,4 +1,4 @@
-/* $Id: VBoxOSTypeSelectorWidget.cpp 33781 2010-11-04 15:59:35Z vboxsync $ */
+/* $Id: VBoxOSTypeSelectorWidget.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,7 +53,7 @@ VBoxOSTypeSelectorWidget::VBoxOSTypeSelectorWidget (QWidget *aParent)
     mPxTypeIcon->setFixedSize (32, 32);
 
     /* Check if host supports (AMD-V or VT-x) and long mode */
-    CHost host = vboxGlobal().virtualBox().GetHost();
+    CHost host = vboxGlobal().host();
     m_fSupportsHWVirtEx = host.GetProcessorFeature(KProcessorFeature_HWVirtEx);
     m_fSupportsLongMode = host.GetProcessorFeature(KProcessorFeature_LongMode);
 

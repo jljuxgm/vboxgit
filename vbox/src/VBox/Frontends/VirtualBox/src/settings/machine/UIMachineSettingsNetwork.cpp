@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 37945 2011-07-14 09:40:35Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -479,7 +479,7 @@ void UIMachineSettingsNetwork::sltHandleAdvancedButtonStateChange()
 
 void UIMachineSettingsNetwork::sltGenerateMac()
 {
-    m_pMACEditor->setText(vboxGlobal().virtualBox().GetHost().GenerateMACAddress());
+    m_pMACEditor->setText(vboxGlobal().host().GenerateMACAddress());
 }
 
 void UIMachineSettingsNetwork::sltOpenPortForwardingDlg()
@@ -1000,7 +1000,7 @@ void UIMachineSettingsNetworkPage::refreshBridgedAdapterList()
 {
     /* Reload bridged interface list: */
     m_bridgedAdapterList.clear();
-    const CHostNetworkInterfaceVector &ifaces = vboxGlobal().virtualBox().GetHost().GetNetworkInterfaces();
+    const CHostNetworkInterfaceVector &ifaces = vboxGlobal().host().GetNetworkInterfaces();
     for (int i = 0; i < ifaces.size(); ++i)
     {
         const CHostNetworkInterface &iface = ifaces[i];
@@ -1033,7 +1033,7 @@ void UIMachineSettingsNetworkPage::refreshHostInterfaceList()
 {
     /* Reload host-only interface list: */
     m_hostInterfaceList.clear();
-    const CHostNetworkInterfaceVector &ifaces = vboxGlobal().virtualBox().GetHost().GetNetworkInterfaces();
+    const CHostNetworkInterfaceVector &ifaces = vboxGlobal().host().GetNetworkInterfaces();
     for (int i = 0; i < ifaces.size(); ++i)
     {
         const CHostNetworkInterface &iface = ifaces[i];

@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 39800 2012-01-18 17:54:06Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -274,6 +274,7 @@ private:
 
     /* Variables: */
     CVirtualBox m_vbox;
+    CHost m_host;
     UIDetails *m_pUIDetails;
     int m_iBlockNumber;
     int m_cSectionCount;
@@ -624,6 +625,7 @@ void UIDetails::layoutBlock(int iBlockNumber)
 UIDetailsBlock::UIDetailsBlock(UIDetails *pParent, const QList<Section> &sections, int iBlockNumber)
     : QWidget(pParent)
     , m_vbox(vboxGlobal().virtualBox())
+    , m_host(vboxGlobal().host())
     , m_pUIDetails(pParent)
     , m_iBlockNumber(iBlockNumber)
     , m_cSectionCount(0)

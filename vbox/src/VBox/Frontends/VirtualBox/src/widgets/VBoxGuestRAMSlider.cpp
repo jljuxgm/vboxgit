@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestRAMSlider.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxGuestRAMSlider.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -63,7 +63,7 @@ uint VBoxGuestRAMSlider::maxRAM() const
 
 void VBoxGuestRAMSlider::init()
 {
-    ulong fullSize = vboxGlobal().virtualBox().GetHost().GetMemorySize();
+    ulong fullSize = vboxGlobal().host().GetMemorySize();
     CSystemProperties sys = vboxGlobal().virtualBox().GetSystemProperties();
     mMinRAM = sys.GetMinGuestRAM();
     mMaxRAM = RT_MIN (RT_ALIGN (fullSize, _1G / _1M), sys.GetMaxGuestRAM());

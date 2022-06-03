@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 39074 2011-10-21 11:52:15Z vboxsync $ */
+/* $Id: UISession.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -269,7 +269,7 @@ void UISession::powerUp()
     {
         bool fShouldWeClose;
 
-        bool fVTxAMDVSupported = vboxGlobal().virtualBox().GetHost().GetProcessorFeature(KProcessorFeature_HWVirtEx);
+        bool fVTxAMDVSupported = vboxGlobal().host().GetProcessorFeature(KProcessorFeature_HWVirtEx);
 
         QApplication::processEvents();
         setPause(true);

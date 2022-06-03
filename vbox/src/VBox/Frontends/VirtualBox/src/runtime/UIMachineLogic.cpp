@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 39932 2012-02-01 13:33:09Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1076,11 +1076,11 @@ void UIMachineLogic::sltPrepareStorageMenu()
             switch (mediumType)
             {
                 case VBoxDefs::MediumType_DVD:
-                    mediums = vboxGlobal().virtualBox().GetHost().GetDVDDrives();
+                    mediums = vboxGlobal().host().GetDVDDrives();
                     strRecentMediumAddress = VBoxDefs::GUI_RecentListCD;
                     break;
                 case VBoxDefs::MediumType_Floppy:
-                    mediums = vboxGlobal().virtualBox().GetHost().GetFloppyDrives();
+                    mediums = vboxGlobal().host().GetFloppyDrives();
                     strRecentMediumAddress = VBoxDefs::GUI_RecentListFD;
                     break;
                 default:
@@ -1365,7 +1365,7 @@ void UIMachineLogic::sltPrepareUSBMenu()
     pMenu->clear();
 
     /* Get current host: */
-    CHost host = vboxGlobal().virtualBox().GetHost();
+    CHost host = vboxGlobal().host();
 
     /* Get host USB device list: */
     CHostUSBDeviceVector devices = host.GetUSBDevices();
@@ -1434,7 +1434,7 @@ void UIMachineLogic::sltAttachUSBDevice()
         if (!console.isOk())
         {
             /* Get current host: */
-            CHost host = vboxGlobal().virtualBox().GetHost();
+            CHost host = vboxGlobal().host();
             /* Search the host for the corresponding USB device: */
             CHostUSBDevice hostDevice = host.FindUSBDeviceById(target.id);
             /* Get USB device from host USB device: */
