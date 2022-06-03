@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38290 2011-08-03 09:22:12Z vboxsync $
+# $Id: Makefile.kmk 38788 2011-09-19 10:15:08Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -906,10 +906,10 @@ VBoxJMscom-inst-jar_CLEAN = \
 	)
 VBoxJMscom-inst-jar_BLDDIRS += $(VBOX_JMSCOM_GEN)/java
 
-$(VBOX_JMSCOM_GEN)/jmscomglue.list:  \
-		$(VBOX_XIDL_FILE)    \
-                $(VBOX_GLUE_XSLT_DIR)/glue-java.xsl \
-                $(VBOX_FILESPLIT)    \
+$(VBOX_JMSCOM_GEN)/jmscomglue.list: \
+		$(VBOX_XIDL_FILE) \
+		$(VBOX_GLUE_XSLT_DIR)/glue-java.xsl \
+		$(VBOX_FILESPLIT) \
 		| $(VBOX_JMSCOM_GEN)/java/
 	$(call MSG_L1,Generating Java MSCOM glue files from XIDL)
 	$(QUIET)$(RM) -f $(wildcard $(VBOX_JMSCOM_GEN)/java/*.java)
