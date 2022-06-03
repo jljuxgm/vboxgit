@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 36079 2011-02-24 17:10:31Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 36268 2011-03-11 16:37:25Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -37,6 +37,8 @@
 #define VBOX_WITH_HGCM                  /* grumble */
 #undef LOG_GROUP
 #include "../Bus/DevPCI.cpp" /* must be first! */
+#undef LOG_GROUP
+#include "../Bus/DevPciIch9.cpp"
 #undef LOG_GROUP
 #include "../Graphics/DevVGA.cpp"
 #undef LOG_GROUP
@@ -172,6 +174,34 @@ int main()
     GEN_CHECK_OFF(PCIGLOBALS, pDevInsRC);
     GEN_CHECK_OFF(PCIGLOBALS, PIIX3State);
     GEN_CHECK_OFF(PCIGLOBALS, PciBus);
+
+    /* DevPciIch9.cpp */
+    GEN_CHECK_SIZE(ICH9PCIBUS);
+    GEN_CHECK_OFF(ICH9PCIBUS, iBus);
+    GEN_CHECK_OFF(ICH9PCIBUS, cBridges);
+    GEN_CHECK_OFF(ICH9PCIBUS, apDevices);
+    GEN_CHECK_OFF(ICH9PCIBUS, apDevices[1]);
+    GEN_CHECK_OFF(ICH9PCIBUS, pDevInsR3);
+    GEN_CHECK_OFF(ICH9PCIBUS, pPciHlpR3);
+    GEN_CHECK_OFF(ICH9PCIBUS, papBridgesR3);
+    GEN_CHECK_OFF(ICH9PCIBUS, pDevInsR0);
+    GEN_CHECK_OFF(ICH9PCIBUS, pPciHlpR0);
+    GEN_CHECK_OFF(ICH9PCIBUS, pDevInsRC);
+    GEN_CHECK_OFF(ICH9PCIBUS, pPciHlpRC);
+    GEN_CHECK_OFF(ICH9PCIBUS, aPciDev);
+    GEN_CHECK_SIZE(ICH9PCIGLOBALS);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, pDevInsR3);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, pDevInsR0);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, pDevInsRC);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, uConfigReg);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, uaPciApicIrqLevels);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, uaPciApicIrqLevels[1]);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, uPciBiosIo);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, uPciBiosMmio);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, uBus);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, u64PciConfigMMioAddress);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, u64PciConfigMMioLength);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, aPciBus);
 
     /* DevVGA.cpp */
     GEN_CHECK_SIZE(VGASTATE);
