@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36884 2011-04-29 09:46:16Z vboxsync $
+# $Id: Makefile.kmk 37999 2011-07-18 10:14:45Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -310,7 +310,7 @@ VBOX_JWS_JDEST  := $(VBOX_JWS_TARGET)/jdest
 VBOX_GLUE_XSLT_DIR := $(PATH_ROOT)/src/VBox/Main/glue
 VBOX_JAXLIB_DIR    := $(PATH_ROOT)/src/VBox/Main/webservice/jaxlibs
 
-VBoxJWs-inst-jar_INST = $(INST_SDK)bindings/webservice/java/jax-ws
+VBoxJWs-inst-jar_INST = $(INST_SDK)bindings/webservice/java/jax-ws/
 VBoxJWs-inst-jar_SOURCES = \
 	$(VBOX_JWS_JAR)
 VBoxJWs-inst-jar_CLEAN = \
