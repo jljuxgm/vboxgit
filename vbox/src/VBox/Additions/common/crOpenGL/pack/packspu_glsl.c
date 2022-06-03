@@ -1,4 +1,4 @@
-/* $Id: packspu_glsl.c 33988 2010-11-11 13:03:17Z vboxsync $ */
+/* $Id: packspu_glsl.c 39012 2011-10-18 08:11:32Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related functions
@@ -86,8 +86,12 @@ GLint PACKSPU_APIENTRY packspu_GetUniformLocation(GLuint program, const char * n
     {
         GET_THREAD(thread);
         int writeback = 1;
-        GLsizei maxcbData = 16*1024*sizeof(char);
+        GLsizei maxcbData;
         GLsizei *pData;
+        GLint mu;
+
+        packspu_GetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS_ARB, &mu);
+        maxcbData = 16*mu*sizeof(char);
 
         pData = (GLsizei *) crAlloc(maxcbData+sizeof(GLsizei));
         if (!pData)
