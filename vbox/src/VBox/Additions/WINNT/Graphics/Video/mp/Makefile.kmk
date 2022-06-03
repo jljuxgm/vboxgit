@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42054 2012-07-09 12:44:47Z vboxsync $
+# $Id: Makefile.kmk 42091 2012-07-10 12:20:16Z vboxsync $
 ## @file
 # Makefile for the Windows guest miniport driver.
 #
@@ -181,6 +181,10 @@ ifdef VBOX_SIGN_ADDITIONS
  ifdef VBOX_WITH_WDDM
   VBoxVideoWddm_INSTTYPE       = none
   VBoxVideoWddm_DEBUG_INSTTYPE = both
+  ifdef VBOX_WDDM_WIN8
+   VBoxVideoW8_INSTTYPE       = none
+   VBoxVideoW8_DEBUG_INSTTYPE = both
+  endif
  endif
 endif # VBOX_SIGN_ADDITIONS
 
