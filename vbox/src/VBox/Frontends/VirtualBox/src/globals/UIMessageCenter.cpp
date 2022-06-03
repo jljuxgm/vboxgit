@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 40002 2012-02-06 09:35:16Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 40003 2012-02-06 09:51:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1261,7 +1261,7 @@ int UIMessageCenter::confirmMachineDeletion(const QList<CMachine> &machines)
         }
 
         /* Compose VM name list: */
-        strVMNames += QString(strVMNames.isEmpty() ? "<b>%1</b>" : "<br><b>%1</b>").arg(strMachineName);
+        strVMNames += QString(strVMNames.isEmpty() ? "<b>%1</b>" : ", <b>%1</b>").arg(strMachineName);
     }
 
     /* Prepare message text: */
