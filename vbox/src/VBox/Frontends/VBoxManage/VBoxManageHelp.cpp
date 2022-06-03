@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 41371 2012-05-21 15:23:40Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 41842 2012-06-20 11:46:31Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -513,10 +513,11 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
     if (u64Cmd & USAGE_BANDWIDTHCONTROL)
         RTStrmPrintf(pStrm,
                      "VBoxManage bandwidthctl     <uuid|vmname>\n"
-                     "                            add <name> --type <disk|network> --limit <megabytes per second> |\n"
-                     "                            set <name> --limit <megabytes per second> |\n"
+                     "                            add <name> --type disk|network --limit <megabytes per second>[k|m|g|K|M|G] |\n"
+                     "                            set <name> --limit <megabytes per second>[k|m|g|K|M|G] |\n"
                      "                            remove <name> |\n"
                      "                            list [--machinereadable]\n"
+                     "                            (limit units: k=kilobit, m=megabit, g=gigabit, K=kilobyte, M=megabyte, G=gigabyte)\n"
                      "\n");
 
     if (u64Cmd & USAGE_SHOWHDINFO)
