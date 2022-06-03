@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 36592 2011-04-06 15:48:47Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 37109 2011-05-16 15:31:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -951,39 +951,10 @@ void UIMachineLogic::sltOpenVMSettingsDialog(const QString &strCategory /* = QSt
     if (!isMachineWindowsCreated())
         return;
 
-    /* Open shared session: */
-    CSession sharedSession = vboxGlobal().openSession(session().GetMachine().GetId(), true);
-    if (sharedSession.isNull())
-        return;
-
-    /* Get machine: */
-    CMachine sharedMachine = sharedSession.GetMachine();
-    if (sharedMachine.isNull())
-        return;
-
-    /* Prepare VM settings dialog: */
-    UISettingsDialog *pDlg = new UISettingsDialogMachine(defaultMachineWindow()->machineWindow(),
-                                                         SettingsDialogType_Online,
-                                                         sharedMachine, session().GetConsole(),
-                                                         strCategory, QString());
-    pDlg->loadData();
-
-    /* Show VM settings dialog: */
-    if (pDlg->exec() == QDialog::Accepted)
-    {
-        /* If dialog was accepted => save changed settings: */
-        pDlg->saveData();
-        sharedMachine.SaveSettings();
-        /* If settings were failed to be saved => show the error: */
-        if (!sharedMachine.isOk())
-            vboxProblem().cannotSaveMachineSettings(sharedMachine);
-    }
-
-    /* Delete VM settings dialog: */
-    delete pDlg;
-
-    /* Unlock machine: */
-    sharedSession.UnlockMachine();
+    /* Create and execute current VM settings dialog: */
+    UISettingsDialogMachine dlg(defaultMachineWindow()->machineWindow(),
+                                session().GetMachine().GetId(), strCategory, QString());
+    dlg.execute();
 }
 
 void UIMachineLogic::sltOpenNetworkAdaptersDialog()
