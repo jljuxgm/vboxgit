@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 41350 2012-05-18 10:43:04Z vboxsync $ */
+/* $Id: VHDX.cpp 41353 2012-05-19 15:06:15Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -23,6 +23,7 @@
 #include <VBox/err.h>
 
 #include <VBox/log.h>
+#include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
 #include <iprt/path.h>
