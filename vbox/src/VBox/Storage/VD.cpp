@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 41244 2012-05-10 16:40:28Z vboxsync $ */
+/* $Id: VD.cpp 41315 2012-05-15 14:40:24Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -517,6 +517,7 @@ extern VBOXHDDBACKEND g_DmgBackend;
 extern VBOXHDDBACKEND g_ISCSIBackend;
 extern VBOXHDDBACKEND g_QedBackend;
 extern VBOXHDDBACKEND g_QCowBackend;
+extern VBOXHDDBACKEND g_VhdxBackend;
 
 static unsigned g_cBackends = 0;
 static PVBOXHDDBACKEND *g_apBackends = NULL;
@@ -529,6 +530,7 @@ static PVBOXHDDBACKEND aStaticBackends[] =
     &g_DmgBackend,
     &g_QedBackend,
     &g_QCowBackend,
+    &g_VhdxBackend,
     &g_RawBackend,
     &g_ISCSIBackend
 };

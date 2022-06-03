@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38563 2011-08-29 19:33:42Z vboxsync $
+# $Id: Makefile.kmk 41315 2012-05-15 14:40:24Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -45,6 +45,7 @@ StorageLib_SOURCES  = \
 	RAW.cpp \
 	QED.cpp \
 	QCOW.cpp \
+	VHDX.cpp \
 	VCICache.cpp
 
 #StorageLibNoDB_TEMPLATE = VBOXR3
