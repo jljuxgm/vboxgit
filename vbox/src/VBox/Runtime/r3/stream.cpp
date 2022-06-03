@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 38658 2011-09-06 14:22:53Z vboxsync $ */
+/* $Id: stream.cpp 38904 2011-09-29 19:40:11Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -313,6 +313,7 @@ RTR3DECL(int) RTStrmOpen(const char *pszFilename, const char *pszMode, PRTSTREAM
             *ppStream = pStream;
             return VINF_SUCCESS;
         }
+        RTMemFree(pStream);
         return RTErrConvertFromErrno(errno);
     }
     return VERR_NO_MEMORY;
