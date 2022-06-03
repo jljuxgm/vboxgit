@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 41393 2012-05-22 14:23:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3014,6 +3014,12 @@ static int pgmR3LoadFinalLocked(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
             return VERR_SSM_DATA_UNIT_FORMAT_CHANGED;
         }
     }
+
+    /*
+     * Fix the A20 mask.
+     */
+    for (VMCPUID i = 0; i < pVM->cCpus; i++)
+        pVM->aCpus[i].pgm.s.GCPhysA20Mask = ~(RTGCPHYS)(!pVM->aCpus[i].pgm.s.fA20Enabled << 20);
 
     /*
      * The guest mappings - skipped now, see re-fixation in the caller.

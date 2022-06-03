@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
+/* $Id: PGM.cpp 41393 2012-05-22 14:23:13Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1250,6 +1250,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
         }
 
         pPGM->fA20Enabled      = true;
+        pPGM->GCPhysA20Mask    = ~(RTGCPHYS)(!pPGM->fA20Enabled << 20);
     }
 
     pVM->pgm.s.enmHostMode      = SUPPAGINGMODE_INVALID;
