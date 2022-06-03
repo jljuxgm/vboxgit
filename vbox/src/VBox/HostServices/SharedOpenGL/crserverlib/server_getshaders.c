@@ -1,4 +1,4 @@
-/* $Id: server_getshaders.c 33045 2010-10-11 16:57:21Z vboxsync $ */
+/* $Id: server_getshaders.c 40094 2012-02-13 13:39:42Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related get functions
@@ -128,7 +128,7 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchGetInfoLogARB(GLhandleARB obj, GLs
     hwid = crStateGetProgramHWID(obj);
     if (!hwid) hwid = crStateGetShaderHWID(obj);
     cr_server.head_spu->dispatch_table.GetInfoLogARB(hwid, maxLength, pLocal, (char*)&pLocal[1]);
-    crServerReturnValue(pLocal, (*pLocal)+1+sizeof(GLsizei));
+    crServerReturnValue(pLocal, (*pLocal)+sizeof(GLsizei));
     crFree(pLocal);
 }
 
