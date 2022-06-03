@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
+/* $Id: PDMDevice.cpp 37812 2011-07-07 09:56:42Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -191,7 +191,7 @@ int pdmR3DevInit(PVM pVM)
 
         /* Find the device. */
         PPDMDEV pDev = pdmR3DevLookup(pVM, szName);
-        AssertMsgReturn(pDev, ("Configuration error: device '%s' not found!\n", szName), VERR_PDM_DEVICE_NOT_FOUND);
+        AssertLogRelMsgReturn(pDev, ("Configuration error: device '%s' not found!\n", szName), VERR_PDM_DEVICE_NOT_FOUND);
 
         /* Configured priority or use default based on device class? */
         uint32_t u32Order;
