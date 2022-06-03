@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 37525 2011-06-17 10:09:21Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 37779 2011-07-05 12:13:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -119,6 +119,8 @@ public:
     STDMETHOD(COMGETTER(DHCPServers))           (ComSafeArrayOut(IDHCPServer *, aDHCPServers));
     STDMETHOD(COMGETTER(EventSource))           (IEventSource ** aEventSource);
     STDMETHOD(COMGETTER(ExtensionPackManager))  (IExtPackManager **aExtPackManager);
+    STDMETHOD(COMGETTER(InternalNetworks))      (ComSafeArrayOut(BSTR, aInternalNetworks));
+    STDMETHOD(COMGETTER(GenericNetworkDrivers)) (ComSafeArrayOut(BSTR, aGenericNetworkDrivers));
 
     /* IVirtualBox methods */
     STDMETHOD(ComposeMachineFilename) (IN_BSTR aName, IN_BSTR aBaseFolder, BSTR *aFilename);
