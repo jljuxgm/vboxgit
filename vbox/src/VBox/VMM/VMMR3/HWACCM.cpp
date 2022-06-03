@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 36441 2011-03-25 21:11:56Z vboxsync $ */
+/* $Id: HWACCM.cpp 36442 2011-03-25 21:13:29Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -643,7 +643,7 @@ VMMR3_INT_DECL(int) HWACCMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
         case VMINITCOMPLETED_RING3:
             return hwaccmR3InitCPU(pVM);
         case VMINITCOMPLETED_RING0:
-            return HWACCMR3InitFinalizeR0(pVM);
+            return hwaccmR3InitFinalizeR0(pVM);
         default:
             return VINF_SUCCESS;
     }
