@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38078 2011-07-19 17:24:10Z vboxsync $
+# $Id: Makefile.kmk 41427 2012-05-24 08:57:47Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris Shared folder kernel module.
 #
@@ -27,9 +27,9 @@
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
-ifneq ($(KBUILD_HOST),solaris)
-$(error "The Solaris guest additions can only be built on Solaris!")
-endif
+#ifneq ($(KBUILD_HOST),solaris)
+#$(error "The Solaris guest additions can only be built on Solaris!")
+#endif
 
 #
 # vboxfs - The Shared Folder Driver

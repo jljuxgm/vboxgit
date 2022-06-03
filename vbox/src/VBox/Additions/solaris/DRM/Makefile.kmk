@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 33656 2010-11-01 14:18:11Z vboxsync $
+# $Id: Makefile.kmk 41427 2012-05-24 08:57:47Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (Solaris kernel OpenGL module).
 #
@@ -28,9 +28,9 @@
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
 
-ifneq ($(KBUILD_HOST),solaris)
-$(error "The Solaris guest additions can only be built on Solaris!")
-endif
+#ifneq ($(KBUILD_HOST),solaris)
+#$(error "The Solaris guest additions can only be built on Solaris!")
+#endif
 
 #
 # vboxvideo - The Video DRM (Direct Rendering Module) kernel module
