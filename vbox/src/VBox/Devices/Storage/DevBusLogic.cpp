@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 36030 2011-02-21 11:26:58Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 36039 2011-02-21 16:01:08Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -1674,8 +1674,6 @@ static int buslogicRegisterWrite(PBUSLOGIC pBusLogic, unsigned iRegister, uint8_
             /* Fast path for mailbox execution command. */
             if ((uVal == BUSLOGICCOMMAND_EXECUTE_MAILBOX_COMMAND) && (pBusLogic->uOperationCode == 0xff))
             {
-                AssertMsg(pBusLogic->cMailboxesReady < pBusLogic->cMailbox,
-                          ("Mailbox count exceeded, max is %u\n", pBusLogic->cMailbox));
                 ASMAtomicIncU32(&pBusLogic->cMailboxesReady);
                 if (!ASMAtomicXchgBool(&pBusLogic->fNotificationSend, true))
                 {
