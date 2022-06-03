@@ -1,4 +1,4 @@
-/* $Id: MakeDebianBiosAssembly.cpp 41508 2012-05-30 19:30:54Z vboxsync $ */
+/* $Id: MakeDebianBiosAssembly.cpp 41509 2012-05-30 20:05:12Z vboxsync $ */
 /** @file
  * MakeDebianBiosAssembly - Generate Assembly Source for Debian-minded Distros.
  */
@@ -171,7 +171,7 @@ static bool disError(const char *pszFormat, ...)
  */
 static bool disFileHeader(void)
 {
-    return outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41508 2012-05-30 19:30:54Z vboxsync $ \n"
+    return outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41509 2012-05-30 20:05:12Z vboxsync $ \n"
                         ";; @file\n"
                         "; Auto Generated source file. Do not edit.\n"
                         ";\n"
@@ -1034,12 +1034,18 @@ static RTEXITCODE DisassembleBiosImage(void)
  */
 static RTEXITCODE ParseSymFile(const char *pszBiosSym)
 {
+#if 1
     /** @todo use RTDbg* later. (Just checking for existance currently.) */
     PRTSTREAM hStrm;
     int rc = RTStrmOpen(pszBiosSym, "rb", &hStrm);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Error opening '%s': %Rrc", pszBiosSym, rc);
     RTStrmClose(hStrm);
+#else
+    RTDBGMOD hDbgMod;
+    int rc = RTDbgModCreateFromImage(&hDbgMod, pszBiosSym, "VBoxBios", 0 /*fFlags*/);
+    RTMsgInfo("RTDbgModCreateFromImage -> %Rrc\n", rc);
+#endif
     return RTEXITCODE_SUCCESS;
 }
 
