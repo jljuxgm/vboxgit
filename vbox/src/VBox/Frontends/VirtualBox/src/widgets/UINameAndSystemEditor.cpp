@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 41390 2012-05-22 13:09:00Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 41832 2012-06-19 15:21:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -41,6 +41,7 @@ UINameAndSystemEditor::UINameAndSystemEditor(QWidget *pParent)
     /* Create widgets: */
     QGridLayout *pMainLayout = new QGridLayout(this);
     {
+        pMainLayout->setContentsMargins(0, 0, 0, 0);
         m_pNameLabel = new QLabel(this);
         {
             m_pNameLabel->setAlignment(Qt::AlignRight);
