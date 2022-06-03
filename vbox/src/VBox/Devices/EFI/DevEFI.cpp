@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 39707 2012-01-06 12:16:54Z vboxsync $ */
+/* $Id: DevEFI.cpp 40277 2012-02-28 14:10:07Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1198,9 +1198,11 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 
     /*
      * Plant DMI and MPS tables
+     * XXX I wonder if we really need these tables as there is no SMBIOS header...
      */
-    rc = FwCommonPlantDMITable(pDevIns, pThis->au8DMIPage,
-                               VBOX_DMI_TABLE_SIZE, &pThis->aUuid, pDevIns->pCfg, pThis->cCpus);
+    uint16_t cbDmiTablesDummy;
+    rc = FwCommonPlantDMITable(pDevIns, pThis->au8DMIPage, VBOX_DMI_TABLE_SIZE, &pThis->aUuid,
+                               pDevIns->pCfg, pThis->cCpus, &cbDmiTablesDummy);
     AssertRCReturn(rc, rc);
     if (pThis->u8IOAPIC)
         FwCommonPlantMpsTable(pDevIns,

@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.h 40019 2012-02-07 13:46:41Z vboxsync $ */
+/* $Id: DevPcBios.h 40277 2012-02-28 14:10:07Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device, header shared with the BIOS code.
  */
@@ -27,15 +27,14 @@
  * This is the number of DMI structures.
  */
 #define VBOX_DMI_TABLE_ENTR         9
+#define VBOX_DMI_TABLE_OFFSET       0xff40
 
 /** def VBOX_DMI_TABLE_SIZE
  *
- * Must not be bigger than the minimal size of the DMI tables + 255 because
- * the length field of the the DMI end-of-table marker is 8 bits only. And
- * the size should be at least 16-byte aligned for a proper alignment of
+ * The size should be at least 16-byte aligned for a proper alignment of
  * the MPS table.
  */
-#define VBOX_DMI_TABLE_SIZE         512
+#define VBOX_DMI_TABLE_SIZE         768
 
 
 /** @def VBOX_LANBOOT_SEG
