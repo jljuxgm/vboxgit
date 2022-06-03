@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40830 2012-04-08 19:51:45Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40839 2012-04-09 14:18:19Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -424,7 +424,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40830 2012-04-08 19:51:45Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40839 2012-04-09 14:18:19Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -488,7 +488,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                     "VTG_GLOBAL g_VTGObjHeader, data\n"
                     "                ;0         1         2         3\n"
                     "                ;012345678901234567890123456789012\n"
-                    "    db          'VTG Object Header v1.0', 0, 0\n"
+                    "    db          'VTG Object Header v1.1', 0, 0\n"
                     "    dd          %u\n"
                     "    dd          0\n"
                     "    RTCCPTR_DEF NAME(g_aVTGProviders)\n"
@@ -890,7 +890,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40830 2012-04-08 19:51:45Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40839 2012-04-09 14:18:19Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -957,7 +957,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
                             "        if (RT_UNLIKELY(g_fVTGProbeEnabled_%s_%s)) \\\n"
                             "        { \\\n"
                             "            VTG_DECL_VTGPROBELOC(s_VTGProbeLoc) = \\\n"
-                            "            { __LINE__, 0, UINT32_MAX, __PRETTY_FUNCTION__, __FILE__, &g_VTGProbeData_%s_%s }; \\\n"
+                            "            { __LINE__, 0, UINT32_MAX, __FUNCTION__, &g_VTGProbeData_%s_%s }; \\\n"
                             "            VTGProbeStub_%s_%s(&s_VTGProbeLoc",
                             pProv->pszName, pProbe->pszMangledName,
                             pProv->pszName, pProbe->pszMangledName,
@@ -1985,7 +1985,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40830 $";
+                static const char s_szRev[] = "$Revision: 40839 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;

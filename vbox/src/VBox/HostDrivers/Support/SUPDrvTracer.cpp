@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40831 2012-04-08 19:54:34Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 40839 2012-04-09 14:18:19Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -310,7 +310,6 @@ static int supdrvVtgValidate(PVTGOBJHDR pVtgHdr, size_t cbVtgObj, const uint8_t 
         if (pVtgHdr->paProbLocs[i].idProbe != UINT32_MAX)
             return VERR_SUPDRV_VTG_BAD_PROBE_LOC;
         MY_WITHIN_IMAGE(pVtgHdr->paProbLocs[i].pszFunction, VERR_SUPDRV_VTG_BAD_PROBE_LOC);
-        MY_WITHIN_IMAGE(pVtgHdr->paProbLocs[i].pszFile,     VERR_SUPDRV_VTG_BAD_PROBE_LOC);
         offTmp = (uintptr_t)pVtgHdr->paProbLocs[i].pbProbe - (uintptr_t)pVtgHdr->paProbes;
         if (offTmp >= pVtgHdr->cbProbes)
             return VERR_SUPDRV_VTG_BAD_PROBE_LOC;
