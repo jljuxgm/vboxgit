@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 38469 2011-08-16 10:34:32Z vboxsync $ */
+/* $Id: MediumImpl.cpp 38475 2011-08-16 12:56:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4237,6 +4237,11 @@ HRESULT Medium::deleteStorage(ComObjPtr<Progress> *aProgress,
 
         /* Undo deleting state if necessary. */
         AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+        /* Make sure that any error signalled by unmarkForDeletion() is not
+         * ending up in the error list (if the caller uses MultiResult). It
+         * usually is spurious, as in most cases the medium hasn't been marked
+         * for deletion when the error was thrown above. */
+        ErrorInfoKeeper eik;
         unmarkForDeletion();
     }
 
