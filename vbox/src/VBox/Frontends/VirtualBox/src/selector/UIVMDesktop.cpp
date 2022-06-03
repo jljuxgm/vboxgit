@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 37200 2011-05-24 15:34:06Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 37463 2011-06-15 10:02:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -715,6 +715,26 @@ void UIDetailsPagePrivate::sltUpdateAudio()
     }
 }
 
+/**
+ * Return a text summary of the properties of a generic network adapter
+ */
+QString summarizeGenericProperties(const CNetworkAdapter &adapter)
+{
+    QVector<QString> names;
+    QVector<QString> props;
+    props = adapter.GetProperties(QString(), names); // all properties, please
+
+    QString result;
+    for (int i = 0; i < names.size(); i++)
+    {
+        result += names[i] + "=" + props[i];
+        if (i != names.size() - 1)
+            result += ", ";
+    }
+
+    return result;
+}
+
 void UIDetailsPagePrivate::sltUpdateNetwork()
 {
     m_secBoxes.value(NetworkSec)->setTitleLinkEnabled(m_fChangeable);
@@ -747,8 +767,8 @@ void UIDetailsPagePrivate::sltUpdateNetwork()
                         attType = attType.arg(tr("Host-only adapter, '%1'",
                                                  "details report (network)").arg(adapter.GetHostOnlyInterface()));
                     else if (type == KNetworkAttachmentType_Generic)
-                        attType = attType.arg(tr("Generic, '%1'",
-                                                 "details report (network)").arg(adapter.GetGenericDriver()));
+                        attType = attType.arg(tr("Generic, '%1' {&nbsp;%2&nbsp;}",
+                                                 "details report (network)").arg(adapter.GetGenericDriver(), summarizeGenericProperties(adapter)));
                     else
                         attType = attType.arg(vboxGlobal().toString(type));
 
