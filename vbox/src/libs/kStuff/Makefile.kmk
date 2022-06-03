@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 42074 2012-07-10 08:08:02Z vboxsync $
 ## @file
 # Sub-Makefile for kStuff, for statically linking into VBoxRT.
 #
@@ -77,6 +77,11 @@ VBox-kStuff_SOURCES = \
 LIBRARIES += VBox-kStuffStatic
 VBox-kStuffStatic_TEMPLATE = VBoxR3Static
 VBox-kStuffStatic_EXTENDS = VBox-kStuff
+
+
+LIBRARIES += VBox-kStuffStaticBldProg
+VBox-kStuffStaticBldProg_TEMPLATE = VBOXBLDPROG
+VBox-kStuffStaticBldProg_EXTENDS = VBox-kStuff
 
 
 #
