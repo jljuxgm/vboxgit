@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 39639 2011-12-16 00:30:47Z vboxsync $ */
+/* $Id: reqpool.cpp 39640 2011-12-16 01:00:31Z vboxsync $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -318,7 +318,7 @@ static void rtReqPoolThreadProcessRequest(PRTREQPOOLINT pPool, PRTREQPOOLTHREAD 
     pThread->pPendingReq    = NULL;
     uint64_t const uNsTsEnd = RTTimeNanoTS();
     pThread->cNsTotalReqProcessing += uNsTsEnd - pThread->uProcessingNanoTs;
-    pThread->cNsTotalReqQueued     += uNsTsEnd - pThread->uPendingNanoTs;
+    pThread->cNsTotalReqQueued     += pThread->uProcessingNanoTs - pThread->uPendingNanoTs;
     pThread->cReqProcessed++;
 }
 
