@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 36288 2011-03-15 15:16:17Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 36663 2011-04-13 15:57:33Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  */
@@ -890,14 +890,14 @@ static DECLCALLBACK(int) ich9pciRegisterMsi(PPDMDEVINS pDevIns, PPCIDEVICE pPciD
     int rc;
 
     rc = MsiInit(pPciDev, pMsiReg);
-    if (rc != VINF_SUCCESS)
+    if (RT_FAILURE(rc))
         return rc;
 
     rc = MsixInit(pPciDev->Int.s.CTX_SUFF(pBus)->CTX_SUFF(pPciHlp), pPciDev, pMsiReg);
-    if (rc != VINF_SUCCESS)
+    if (RT_FAILURE(rc))
         return rc;
 
-    return rc;
+    return VINF_SUCCESS;
 }
 
 
@@ -1873,10 +1873,10 @@ static DECLCALLBACK(uint32_t) ich9pciConfigReadDev(PCIDevice *aDev, uint32_t u32
 {
     if ((u32Address + len) > 256 && (u32Address + len) < 4096)
     {
-        AssertMsgReturn(false, ("Read from extended registers falled back to generic code\n"), 0);
+        AssertMsgReturn(false, ("Read from extended registers fallen back to generic code\n"), 0);
     }
 
-    AssertMsgReturn(u32Address + len <= 256, ("Read after end of PCI config space\n"),
+    AssertMsgReturn(u32Address + len <= 256, ("Read after the end of PCI config space\n"),
                     0);
     if (   pciDevIsMsiCapable(aDev)
         && (u32Address >= aDev->Int.s.u8MsiCapOffset)
@@ -1955,7 +1955,7 @@ static DECLCALLBACK(void) ich9pciConfigWriteDev(PCIDevice *aDev, uint32_t u32Add
 
     if ((u32Address + len) > 256 && (u32Address + len) < 4096)
     {
-        AssertMsgReturnVoid(false, ("Write to extended registers falled back to generic code\n"));
+        AssertMsgReturnVoid(false, ("Write to extended registers fallen back to generic code\n"));
     }
 
     AssertMsgReturnVoid(u32Address + len <= 256, ("Write after end of PCI config space\n"));
