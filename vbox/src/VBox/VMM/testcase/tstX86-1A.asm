@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 40159 2012-02-16 18:20:29Z vboxsync $
+; $Id: tstX86-1A.asm 40160 2012-02-16 18:20:43Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -2268,7 +2268,7 @@ CheckOpcodeCsIp:
         cmp     ax, [xBP + xS*2 + 512 + X86FSTENV32P.FOP]
         je      .success
 
-;        xor        ax, ax
+;        xor     ax, ax
 ;        cmp     ax, [xBP + xS*2 + X86FXSTATE.FOP]
 ;        jne     .failure3
 
