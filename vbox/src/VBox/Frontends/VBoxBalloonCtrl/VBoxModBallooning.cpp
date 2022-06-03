@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 39942 2012-02-01 19:50:46Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 39943 2012-02-01 19:59:10Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -63,7 +63,7 @@ using namespace com;
 /**
  * The module's RTGetOpt-IDs for the command line.
  */
-static enum GETOPTDEF_BALLOONCTRL
+enum GETOPTDEF_BALLOONCTRL
 {
     GETOPTDEF_BALLOONCTRL_BALLOOINC = 1000,
     GETOPTDEF_BALLOONCTRL_BALLOONDEC,

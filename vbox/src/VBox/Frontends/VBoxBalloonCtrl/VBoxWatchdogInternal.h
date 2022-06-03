@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdogInternal.h 39942 2012-02-01 19:50:46Z vboxsync $ */
+/* $Id: VBoxWatchdogInternal.h 39943 2012-02-01 19:59:10Z vboxsync $ */
 /** @file
  * VBoxWatchdog - VirtualBox Watchdog Service.
  */
@@ -105,14 +105,14 @@ typedef struct
 {
     /** The short module name. */
     const char *pszName;
+    /** The longer module name. */
+    const char *pszDescription;
     /** A comma-separated list of modules this module
      *  depends on. Might be NULL if no dependencies. */
     const char *pszDepends;
     /** Priority (lower is higher, 0 is invalid) of
      *  module execution. */
     uint32_t    uPriority;
-    /** The longer module name. */
-    const char *pszDescription;
     /** The usage options stuff for the --help screen. */
     const char *pszUsage;
     /** The option descriptions for the --help screen. */
