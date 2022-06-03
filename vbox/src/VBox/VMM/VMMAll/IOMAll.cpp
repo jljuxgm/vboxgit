@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 37424 2011-06-12 19:28:11Z vboxsync $ */
+/* $Id: IOMAll.cpp 37443 2011-06-14 14:34:11Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -261,6 +261,8 @@ bool iomSaveDataToReg(PDISCPUSTATE pCpu, PCOP_PARAMETER pParam, PCPUMCTXCORE pRe
  */
 VMMDECL(VBOXSTRICTRC) IOMIOPortRead(PVM pVM, RTIOPORT Port, uint32_t *pu32Value, size_t cbValue)
 {
+/** @todo should initialize *pu32Value here because it can happen that some
+ *        handle is buggy and doesn't handle all cases. */
     /* Take the IOM lock before performing any device I/O. */
     int rc2 = iomLock(pVM);
 #ifndef IN_RING3

@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 37441 2011-06-14 14:32:21Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 37443 2011-06-14 14:34:11Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -289,7 +289,9 @@ int main()
     GEN_CHECK_OFF(MMLOOKUPHYPER, pszDesc);
 
     GEN_CHECK_SIZE(PDM);
-    GEN_CHECK_OFF(PDM, offVM);
+    GEN_CHECK_OFF(PDM, CritSect);
+    GEN_CHECK_OFF(PDM, GiantDevCritSect);
+    GEN_CHECK_OFF(PDM, NopCritSect);
     GEN_CHECK_OFF(PDM, pDevs);
     GEN_CHECK_OFF(PDM, pDevInstances);
     GEN_CHECK_OFF(PDM, pUsbDevs);
@@ -363,7 +365,6 @@ int main()
     GEN_CHECK_OFF(PDMCPU, apQueuedCritSectsLeaves);
     GEN_CHECK_OFF(PDM, pQueueFlushR0);
     GEN_CHECK_OFF(PDM, pQueueFlushRC);
-    GEN_CHECK_OFF(PDM, CritSect);
     GEN_CHECK_OFF(PDM, StatQueuedCritSectLeaves);
 
     GEN_CHECK_SIZE(PDMDEVINSINT);

@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 37410 2011-06-10 15:11:40Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 37443 2011-06-14 14:34:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -1540,6 +1540,48 @@ static DECLCALLBACK(int) pdmR3DevHlp_CritSectInit(PPDMDEVINS pDevIns, PPDMCRITSE
 
     LogFlow(("pdmR3DevHlp_CritSectInit: caller='%s'/%d: returns %Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
     return rc;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnCritSectGetNop} */
+static DECLCALLBACK(PPDMCRITSECT) pdmR3DevHlp_CritSectGetNop(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    PVM pVM = pDevIns->Internal.s.pVMR3;
+    VM_ASSERT_EMT(pVM);
+
+    PPDMCRITSECT pCritSect = PDMR3CritSectGetNop(pVM);
+    LogFlow(("pdmR3DevHlp_CritSectGetNop: caller='%s'/%d: return %p\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, pCritSect));
+    return pCritSect;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnCritSectGetNopR0} */
+static DECLCALLBACK(R0PTRTYPE(PPDMCRITSECT)) pdmR3DevHlp_CritSectGetNopR0(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    PVM pVM = pDevIns->Internal.s.pVMR3;
+    VM_ASSERT_EMT(pVM);
+
+    R0PTRTYPE(PPDMCRITSECT) pCritSect = PDMR3CritSectGetNopR0(pVM);
+    LogFlow(("pdmR3DevHlp_CritSectGetNopR0: caller='%s'/%d: return %RHv\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, pCritSect));
+    return pCritSect;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnCritSectGetNopRC} */
+static DECLCALLBACK(RCPTRTYPE(PPDMCRITSECT)) pdmR3DevHlp_CritSectGetNopRC(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    PVM pVM = pDevIns->Internal.s.pVMR3;
+    VM_ASSERT_EMT(pVM);
+
+    RCPTRTYPE(PPDMCRITSECT) pCritSect = PDMR3CritSectGetNopRC(pVM);
+    LogFlow(("pdmR3DevHlp_CritSectGetNopRC: caller='%s'/%d: return %RRv\n",
+             pDevIns->pReg->szName, pDevIns->iInstance, pCritSect));
+    return pCritSect;
 }
 
 
@@ -3217,6 +3259,9 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_DriverAttach,
     pdmR3DevHlp_QueueCreate,
     pdmR3DevHlp_CritSectInit,
+    pdmR3DevHlp_CritSectGetNop,
+    pdmR3DevHlp_CritSectGetNopR0,
+    pdmR3DevHlp_CritSectGetNopRC,
     pdmR3DevHlp_ThreadCreate,
     pdmR3DevHlp_SetAsyncNotification,
     pdmR3DevHlp_AsyncNotificationCompleted,
@@ -3429,6 +3474,9 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_DriverAttach,
     pdmR3DevHlp_QueueCreate,
     pdmR3DevHlp_CritSectInit,
+    pdmR3DevHlp_CritSectGetNop,
+    pdmR3DevHlp_CritSectGetNopR0,
+    pdmR3DevHlp_CritSectGetNopRC,
     pdmR3DevHlp_ThreadCreate,
     pdmR3DevHlp_SetAsyncNotification,
     pdmR3DevHlp_AsyncNotificationCompleted,
