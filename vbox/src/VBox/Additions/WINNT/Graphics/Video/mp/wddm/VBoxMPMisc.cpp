@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 38144 2011-07-25 11:01:10Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 38405 2011-08-10 15:04:33Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -374,27 +374,24 @@ VOID vboxWddmSwapchainCtxRemove(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pConte
 VOID vboxWddmSwapchainCtxDestroyAll(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pContext)
 {
     VBOXWDDM_HTABLE_ITERATOR Iter;
-    bool fRestart = false;
     do
     {
         ExAcquireFastMutex(&pDevExt->ContextMutex);
         vboxWddmHTableIterInit(&pContext->Swapchains, &Iter);
-        do
-        {
-            PVBOXWDDM_SWAPCHAIN pSwapchain = (PVBOXWDDM_SWAPCHAIN)vboxWddmHTableIterNext(&Iter, NULL);
-            if (!pSwapchain)
-                break;
+        PVBOXWDDM_SWAPCHAIN pSwapchain = (PVBOXWDDM_SWAPCHAIN)vboxWddmHTableIterNext(&Iter, NULL);
+        if (!pSwapchain)
+            break;
 
-            /* yes, we can call remove locked even when using iterator */
-            vboxWddmSwapchainCtxRemoveLocked(pDevExt, pContext, pSwapchain);
-    //        vboxWddmHTableIterRemoveCur(&Iter);
+        /* yes, we can call remove locked even when using iterator */
+        vboxWddmSwapchainCtxRemoveLocked(pDevExt, pContext, pSwapchain);
 
-            ExReleaseFastMutex(&pDevExt->ContextMutex);
-            /* we must not do vboxWddmSwapchainDestroy inside a context mutex */
-            vboxWddmSwapchainDestroy(pDevExt, pSwapchain);
-            fRestart = true;
-        } while (1);
-    } while (fRestart);
+        ExReleaseFastMutex(&pDevExt->ContextMutex);
+        /* we must not do vboxWddmSwapchainDestroy inside a context mutex */
+        vboxWddmSwapchainDestroy(pDevExt, pSwapchain);
+        /* start from the very beginning, we will quit the loop when no swapchains left */
+    } while (1);
+
+    /* no swapchains left, we exiteed the while loop via the "break", and we still owning the mutex */
     ExReleaseFastMutex(&pDevExt->ContextMutex);
 }
 

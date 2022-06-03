@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 37889 2011-07-12 11:18:46Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 38405 2011-08-10 15:04:33Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -5499,6 +5499,11 @@ DxgkDdiDestroyContext(
         Assert(cContexts < UINT32_MAX/2);
     }
 
+    /* first terminate the swapchain, this will also ensure
+     * all currently pending driver->user Cm commands
+     * (i.e. visible regions commands) are completed */
+    vboxWddmSwapchainCtxTerm(pDevExt, pContext);
+
     NTSTATUS Status = vboxVideoAMgrCtxDestroy(&pContext->AllocContext);
     Assert(Status == STATUS_SUCCESS);
     if (Status == STATUS_SUCCESS)
@@ -5507,7 +5512,6 @@ DxgkDdiDestroyContext(
         Assert(Status == STATUS_SUCCESS);
         if (Status == STATUS_SUCCESS)
         {
-            vboxWddmSwapchainCtxTerm(pDevExt, pContext);
             vboxWddmMemFree(pContext);
         }
     }
