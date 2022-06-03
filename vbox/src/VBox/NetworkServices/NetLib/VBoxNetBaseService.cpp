@@ -1,11 +1,11 @@
-/* $Id: VBoxNetBaseService.cpp 39557 2011-12-08 05:55:10Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 39685 2011-12-30 01:29:33Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
 /** @todo r=bird: Cut&Past rules... Please fix DHCP refs! */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -14,12 +14,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- */
-
-/** @page pg_net_dhcp       VBoxNetDHCP
- *
- * Write a few words...
- *
  */
 
 /*******************************************************************************
