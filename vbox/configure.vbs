@@ -1,4 +1,4 @@
-' $Id: configure.vbs 37199 2011-05-24 15:17:03Z vboxsync $
+' $Id: configure.vbs 37204 2011-05-24 16:28:51Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -2393,6 +2393,7 @@ Sub Main
    end if
    if blnOptDisableUDPTunnel = True then
       DisableUDPTunnel "--disable-udptunnel"
+   end if
    CheckSourcePath
    CheckForkBuild strOptkBuild
    CheckForWin2k3DDK strOptDDK
