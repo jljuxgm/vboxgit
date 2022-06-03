@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41344 2012-05-16 23:13:59Z vboxsync $
+# $Id: Config.kmk 41358 2012-05-20 01:14:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -616,7 +616,7 @@ VBOX_WITH_ALL_DOXYGEN_TARGETS = 1
 # Good for debugging and analysis.  Experimental.
 #VBOX_WITH_NATIVE_SOLARIS_LOADING = 1
 # Set this to enable user mode dtrace probes.
-if1of ($(KBUILD_TARGET), darwin solaris)
+if1of ($(KBUILD_TARGET), darwin linux solaris)
  VBOX_WITH_DTRACE_R3 = 1
 endif
 # Set this to enable kernel driver dtrace probes.
@@ -5090,7 +5090,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41344 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41358 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
