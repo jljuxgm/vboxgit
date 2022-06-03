@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 41065 2012-04-26 09:55:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -398,6 +398,7 @@ Display::displaySSMLoad(PSSMHANDLE pSSM, void *pvUser, uint32_t uVersion, uint32
             that->maFramebuffers[i].xOrigin = xOrigin;
             that->maFramebuffers[i].yOrigin = yOrigin;
             that->maFramebuffers[i].flags = (uint16_t)flags;
+            that->maFramebuffers[i].fDisabled = (that->maFramebuffers[i].flags & VBVA_SCREEN_F_DISABLED) != 0;
         }
     }
 
