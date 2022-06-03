@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42058 2012-07-09 13:27:29Z vboxsync $
+# $Id: Config.kmk 42075 2012-07-10 08:08:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4577,7 +4577,7 @@ TEMPLATE_VBoxAdvBldProg_DEFS    = $(TEMPLATE_VBOXBLDPROG_DEFS) IN_RT_R3
 TEMPLATE_VBoxAdvBldProg_LIBS    = \
 	$(PATH_STAGE_LIB)/RuntimeBldProg$(VBOX_SUFF_LIB) \
 	$(if-expr defined(IPRT_WITH_KSTUFF), \
-		$(PATH_STAGE_LIB)/VBox-kStuffStatic$(VBOX_SUFF_LIB) \
+		$(PATH_STAGE_LIB)/VBox-kStuffStaticBldProg$(VBOX_SUFF_LIB) \
 		$(PATH_STAGE_LIB)/RuntimeBldProg$(VBOX_SUFF_LIB) \
 	,) \
 	$(TEMPLATE_VBOXBLDPROG_LIBS)
@@ -5144,7 +5144,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42058 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42075 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
