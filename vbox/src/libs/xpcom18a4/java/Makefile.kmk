@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38093 2011-07-21 12:45:30Z vboxsync $
+# $Id: Makefile.kmk 38796 2011-09-19 17:11:11Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -175,6 +175,7 @@ $(VBOX_JXPCOM_GEN)/jxpcomglue.list:  \
 	$(QUIET)$(VBOX_XSLTPROC)   \
               --stringparam G_vboxApiSuffix $(VBOX_API_SUFFIX) \
               --stringparam G_vboxGlueStyle xpcom              \
+              --stringparam G_vboxDirPrefix ""                 \
               -o $(VBOX_JXPCOM_GEN)/java/glue/merged.file $(VBOX_GLUE_XSLT_DIR)/glue-java.xsl $<
 	$(QUIET)$(VBOX_FILESPLIT) $(VBOX_JXPCOM_GEN)/java/glue/merged.file $(VBOX_JXPCOM_GEN)/java/glue/
 	$(QUIET)echo $(VBOX_JXPCOM_GEN)/java/glue/*.java > $@
