@@ -1,4 +1,4 @@
-/* $Id: VSCSIVpdPages.h 38682 2011-09-08 08:26:25Z vboxsync $ */
+/* $Id: VSCSIVpdPages.h 38694 2011-09-08 21:44:08Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Definitions for VPD pages.
  */
@@ -18,6 +18,30 @@
 #define ___VSCSIVpdPages_h
 
 #include <iprt/stdint.h>
+
+/** VPD device identification page number. */
+#define VSCSI_VPD_DEVID_NUMBER 0x83
+/** VPD device identification size. */
+#define VSCSI_VPD_DEVID_SIZE   4
+/**
+ * Device identification VPD page data.
+ */
+#pragma pack(1)
+typedef struct VSCSIVPDPAGEDEVID
+{
+    /** Device type. */
+    unsigned u5PeripheralDeviceType : 5;    /**< 0x00 / 00 */
+    /** Qualifier. */
+    unsigned u3PeripheralQualifier  : 3;
+    /** Page number. */
+    unsigned u8PageCode             : 8;
+    /** Page size (Big endian) */
+    unsigned u16PageLength          : 16;
+} VSCSIVPDPAGEDEVID;
+#pragma pack()
+AssertCompileSize(VSCSIVPDPAGEDEVID, VSCSI_VPD_DEVID_SIZE);
+typedef VSCSIVPDPAGEDEVID *PVSCSIVPDPAGEDEVID;
+typedef const VSCSIVPDPAGEDEVID *PCVSCSIVPDPAGEDEVID;
 
 /** VPD supported VPD pages page number. */
 #define VSCSI_VPD_SUPPORTED_PAGES_NUMBER 0x00
