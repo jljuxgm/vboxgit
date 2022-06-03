@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAutoLogon.cpp 40415 2012-03-09 15:44:31Z vboxsync $ */
+/* $Id: VBoxGuestR3LibAutoLogon.cpp 41474 2012-05-29 10:05:03Z vboxsync $ */
 /** @file
  * VBoxGuestR3LibAutoLogon - Ring-3 utility functions for auto-logon modules
  *                           (VBoxGINA / VBoxCredProv / pam_vbox).
@@ -61,6 +61,7 @@ VBGLR3DECL(int) VbglR3AutoLogonReportStatus(VBoxGuestFacilityStatus enmStatus)
              * VMMDevReportGuestStatus implemented we set the appropriate status via
              * guest property to have at least something.
              */
+#ifdef VBOX_WITH_GUEST_PROPS
             uint32_t u32ClientId = 0;
             rc = VbglR3GuestPropConnect(&u32ClientId);
             if (RT_SUCCESS(rc))
@@ -94,6 +95,7 @@ VBGLR3DECL(int) VbglR3AutoLogonReportStatus(VBoxGuestFacilityStatus enmStatus)
 
                 VbglR3GuestPropDisconnect(u32ClientId);
             }
+#endif
         }
 
         s_enmLastStatus = enmStatus;
