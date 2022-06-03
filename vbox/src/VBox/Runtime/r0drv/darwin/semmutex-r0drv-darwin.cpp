@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-darwin.cpp 29255 2010-05-09 18:11:24Z vboxsync $ */
+/* $Id: semmutex-r0drv-darwin.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Darwin.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMMULTI_WITHOUT_REMAPPING
 #include "the-darwin-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
@@ -300,7 +301,6 @@ DECLINLINE(int) rtR0SemMutexDarwinRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMi
 }
 
 
-#undef RTSemMutexRequest
 RTDECL(int) RTSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies)
 {
     return rtR0SemMutexDarwinRequest(hMutexSem, cMillies, THREAD_UNINT);
@@ -313,7 +313,6 @@ RTDECL(int) RTSemMutexRequestDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, 
 }
 
 
-#undef RTSemMutexRequestNoResume
 RTDECL(int) RTSemMutexRequestNoResume(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies)
 {
     return rtR0SemMutexDarwinRequest(hMutexSem, cMillies, THREAD_ABORTSAFE);

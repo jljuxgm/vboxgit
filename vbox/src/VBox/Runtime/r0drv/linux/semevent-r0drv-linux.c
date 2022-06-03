@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-linux.c 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: semevent-r0drv-linux.c 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMEVENT_WITHOUT_REMAPPING
 #include "the-linux-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
@@ -236,7 +237,6 @@ static int rtR0SemEventLnxWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, uint6
 }
 
 
-#undef RTSemEventWaitEx
 RTDECL(int)  RTSemEventWaitEx(RTSEMEVENT hEventSem, uint32_t fFlags, uint64_t uTimeout)
 {
 #ifndef RTSEMEVENT_STRICT

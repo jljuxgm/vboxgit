@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-darwin.cpp 33158 2010-10-15 12:15:13Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-darwin.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMEVENTMULTI_WITHOUT_REMAPPING
 #include "the-darwin-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
@@ -383,7 +384,6 @@ static int rtR0SemEventMultiDarwinWait(PRTSEMEVENTMULTIINTERNAL pThis, uint32_t 
     return rc;
 }
 
-#undef RTSemEventMultiWaitEx
 RTDECL(int)  RTSemEventMultiWaitEx(RTSEMEVENTMULTI hEventMultiSem, uint32_t fFlags, uint64_t uTimeout)
 {
 #ifndef RTSEMEVENT_STRICT

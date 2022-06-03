@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 33676 2010-11-02 09:48:24Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMEVENT_WITHOUT_REMAPPING
 #include "the-solaris-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
@@ -315,7 +316,6 @@ static int rtR0SemEventSolWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, uint6
 }
 
 
-#undef RTSemEventWaitEx
 RTDECL(int)  RTSemEventWaitEx(RTSEMEVENT hEventSem, uint32_t fFlags, uint64_t uTimeout)
 {
 #ifndef RTSEMEVENT_STRICT

@@ -1,4 +1,4 @@
-/* $Id: alloc.cpp 31157 2010-07-28 03:15:35Z vboxsync $ */
+/* $Id: alloc.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation.
  */
@@ -28,16 +28,12 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTMEM_NO_WRAP_TO_EF_APIS
 #include <iprt/mem.h>
 #include "internal/iprt.h"
 
 #include <iprt/assert.h>
 #include <iprt/string.h>
-
-#undef RTMemDup
-#undef RTMemDupTag
-#undef RTMemDupEx
-#undef RTMemDupExTag
 
 
 

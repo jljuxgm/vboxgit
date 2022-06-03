@@ -1,4 +1,4 @@
-/* $Id: RTSemEventWait-2-ex-generic.cpp 33676 2010-11-02 09:48:24Z vboxsync $ */
+/* $Id: RTSemEventWait-2-ex-generic.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - RTSemEventWait, implementation based on RTSemEventWaitEx.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_SEM
+#define RTSEMEVENT_WITHOUT_REMAPPING
 #include <iprt/semaphore.h>
 #include "internal/iprt.h"
 
@@ -36,7 +37,6 @@
 #include <iprt/assert.h>
 
 
-#undef RTSemEventWait                   /* undo debug mapping */
 RTDECL(int)  RTSemEventWait(RTSEMEVENT hEventSem, RTMSINTERVAL cMillies)
 {
     int rc;

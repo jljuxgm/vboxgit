@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-darwin.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: semevent-r0drv-darwin.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMEVENT_WITHOUT_REMAPPING
 #include "the-darwin-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
@@ -370,7 +371,6 @@ static int rtR0SemEventDarwinWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, ui
 }
 
 
-#undef RTSemEventWaitEx
 RTDECL(int)  RTSemEventWaitEx(RTSEMEVENT hEventSem, uint32_t fFlags, uint64_t uTimeout)
 {
 #ifndef RTSEMEVENT_STRICT

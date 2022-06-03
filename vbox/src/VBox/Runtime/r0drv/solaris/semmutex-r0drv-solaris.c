@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-solaris.c 30013 2010-06-03 14:40:59Z vboxsync $ */
+/* $Id: semmutex-r0drv-solaris.c 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Solaris.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMMUTEX_WITHOUT_REMAPPING
 #include "the-solaris-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
@@ -301,7 +302,6 @@ DECLINLINE(int) rtSemMutexSolarisRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMil
 }
 
 
-#undef RTSemMutexRequest
 RTDECL(int) RTSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies)
 {
     return rtSemMutexSolarisRequest(hMutexSem, cMillies, false /*fInterruptible*/);
@@ -314,7 +314,6 @@ RTDECL(int) RTSemMutexRequestDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, 
 }
 
 
-#undef RTSemMutexRequestNoResume
 RTDECL(int) RTSemMutexRequestNoResume(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies)
 {
     return rtSemMutexSolarisRequest(hMutexSem, cMillies, true /*fInterruptible*/);

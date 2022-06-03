@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 33269 2010-10-20 15:42:28Z vboxsync $ */
+/* $Id: alloc-r0drv.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTMEM_NO_WRAP_TO_EF_APIS
 #include <iprt/mem.h>
 #include "internal/iprt.h"
 
@@ -56,31 +57,6 @@
 #else
 # define RTR0MEM_FENCE_EXTRA    0
 #endif
-
-
-#undef RTMemTmpAlloc
-#undef RTMemTmpAllocTag
-#undef RTMemTmpAllocZ
-#undef RTMemTmpAllocZTag
-#undef RTMemTmpFree
-#undef RTMemAlloc
-#undef RTMemAllocTag
-#undef RTMemAllocZ
-#undef RTMemAllocZTag
-#undef RTMemAllocVar
-#undef RTMemAllocVarTag
-#undef RTMemAllocZVar
-#undef RTMemAllocZVarTag
-#undef RTMemRealloc
-#undef RTMemReallocTag
-#undef RTMemFree
-#undef RTMemDup
-#undef RTMemDupTag
-#undef RTMemDupEx
-#undef RTMemDupExTag
-#undef rtR0MemAllocEx
-#undef rtR0MemAllocExTag
-#undef rtR0MemFreeEx
 
 
 /*******************************************************************************

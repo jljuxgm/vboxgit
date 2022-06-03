@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-linux.c 35051 2010-12-14 08:14:36Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-linux.c 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Linux.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMEVENTMULTI_WITHOUT_REMAPPING
 #include "the-linux-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
@@ -301,7 +302,6 @@ static int rtR0SemEventMultiLnxWait(PRTSEMEVENTMULTIINTERNAL pThis, uint32_t fFl
 }
 
 
-#undef RTSemEventMultiWaitEx
 RTDECL(int)  RTSemEventMultiWaitEx(RTSEMEVENTMULTI hEventMultiSem, uint32_t fFlags, uint64_t uTimeout)
 {
 #ifndef RTSEMEVENT_STRICT

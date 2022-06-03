@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-freebsd.c 33376 2010-10-24 12:55:23Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-freebsd.c 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, FreeBSD.
  */
@@ -31,6 +31,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMEVENTMULTI_WITHOUT_REMAPPING
 #include "the-freebsd-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/semaphore.h>
@@ -288,7 +289,6 @@ static int rtR0SemEventMultiBsdWait(PRTSEMEVENTMULTIINTERNAL pThis, uint32_t fFl
 }
 
 
-#undef RTSemEventMultiWaitEx
 RTDECL(int)  RTSemEventMultiWaitEx(RTSEMEVENTMULTI hEventMultiSem, uint32_t fFlags, uint64_t uTimeout)
 {
 #ifndef RTSEMEVENT_STRICT

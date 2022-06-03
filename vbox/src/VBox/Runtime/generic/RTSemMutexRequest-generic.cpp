@@ -1,4 +1,4 @@
-/* $Id: RTSemMutexRequest-generic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTSemMutexRequest-generic.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - RTSemMutexRequest, generic RTSemMutexRequestNoResume wrapper.
  */
@@ -28,6 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define RTSEMMUTEX_WITHOUT_REMAPPING
 #define LOG_GROUP RTLOGGROUP_SEM
 #include <iprt/semaphore.h>
 #include "internal/iprt.h"
@@ -37,7 +38,6 @@
 #include <iprt/assert.h>
 
 
-#undef RTSemMutexRequest                /* undo debug mapping */
 RTDECL(int) RTSemMutexRequest(RTSEMMUTEX Mutex, RTMSINTERVAL cMillies)
 {
     int rc;

@@ -1,4 +1,4 @@
-/* $Id: RTSemEventMultiWaitNoResume-2-ex-generic.cpp 33010 2010-10-08 15:07:52Z vboxsync $ */
+/* $Id: RTSemEventMultiWaitNoResume-2-ex-generic.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
 /** @file
  * IPRT - RTSemEventMultiWaitNoResume, generic implementation based
  *        on RTSemEventMultiWaitEx.
@@ -30,6 +30,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_SEM
+#define RTSEMEVENTMULTI_WITHOUT_REMAPPING
 #include <iprt/semaphore.h>
 #include "internal/iprt.h"
 
@@ -37,7 +38,6 @@
 #include <iprt/assert.h>
 
 
-#undef RTSemEventMultiWaitNoResume          /* undo debug mapping */
 RTDECL(int) RTSemEventMultiWaitNoResume(RTSEMEVENTMULTI hEventMultiSem, RTMSINTERVAL cMillies)
 {
     int rc;
