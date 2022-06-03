@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 42071 2012-07-10 07:21:50Z vboxsync $ */
+/* $Id: DrvVD.cpp 42073 2012-07-10 07:41:06Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -2297,7 +2297,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns,
             if (RT_FAILURE(rc))
             {
                 rc = PDMDRV_SET_ERROR(pDrvIns, rc,
-                                      N_("DrvVD: Configuration error: Querying \"Discard\" as boolean failed"));
+                                      N_("DrvVD: Configuration error: Querying \"InformAboutZeroBlocks\" as boolean failed"));
                 break;
             }
 
