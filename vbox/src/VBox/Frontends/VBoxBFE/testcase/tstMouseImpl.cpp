@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 36158 2011-03-04 08:51:37Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 36162 2011-03-04 10:43:19Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -15,9 +15,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/******************************************************************************
+*   Header Files                                                              *
+******************************************************************************/
 #include "MouseImpl.h"
 #include "VMMDev.h"
 #include "DisplayImpl.h"
@@ -27,6 +27,10 @@
 #include <VBox/VMMDev.h>
 #include <iprt/assert.h>
 #include <iprt/test.h>
+
+/******************************************************************************
+*   Test infrastructure                                                       *
+******************************************************************************/
 
 class TestConsole : public Console
 {
@@ -214,6 +218,10 @@ DECLEXPORT(int) CFGMR3QueryPtr(PCFGMNODE, const char *, void **pv)
     *pv = pMouse;
     return VINF_SUCCESS;
 }
+
+/******************************************************************************
+*   Main test code                                                            *
+******************************************************************************/
 
 static int setup(void)
 {
