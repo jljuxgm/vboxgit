@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.cpp 40387 2012-03-06 20:38:49Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.cpp 41109 2012-05-02 08:37:46Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -160,6 +160,28 @@ void VBoxSHGSMIHeapFree(PVBOXSHGSMI pHeap, void *pvBuffer)
     Assert(KeGetCurrentIrql() <= DISPATCH_LEVEL);
     KeAcquireSpinLock(&pHeap->HeapLock, &OldIrql);
     HGSMIHeapFree(&pHeap->Heap, pvBuffer);
+    KeReleaseSpinLock(&pHeap->HeapLock, OldIrql);
+}
+
+void* VBoxSHGSMIHeapBufferAlloc(PVBOXSHGSMI pHeap, HGSMISIZE cbData)
+{
+    KIRQL OldIrql;
+    void* pvData;
+    Assert(KeGetCurrentIrql() <= DISPATCH_LEVEL);
+    KeAcquireSpinLock(&pHeap->HeapLock, &OldIrql);
+    pvData = HGSMIHeapBufferAlloc(&pHeap->Heap, cbData);
+    KeReleaseSpinLock(&pHeap->HeapLock, OldIrql);
+    if (!pvData)
+        WARN(("HGSMIHeapAlloc failed!"));
+    return pvData;
+}
+
+void VBoxSHGSMIHeapBufferFree(PVBOXSHGSMI pHeap, void *pvBuffer)
+{
+    KIRQL OldIrql;
+    Assert(KeGetCurrentIrql() <= DISPATCH_LEVEL);
+    KeAcquireSpinLock(&pHeap->HeapLock, &OldIrql);
+    HGSMIHeapBufferFree(&pHeap->Heap, pvBuffer);
     KeReleaseSpinLock(&pHeap->HeapLock, OldIrql);
 }
 
