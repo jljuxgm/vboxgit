@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 35761 2011-01-28 13:19:26Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 36357 2011-03-23 09:36:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -981,14 +981,7 @@ void UIDetailsPagePrivate::sltContextMenuRequested(const QPoint &pos)
 void UIDetailsPagePrivate::setMachine(const CMachine& machine)
 {
     m_machine = machine;
-    if (m_machine.isNull())
-        m_fChangeable = false;
-    else
-    {
-        KMachineState state = m_machine.GetState();
-        bool running = m_machine.GetSessionState() != KSessionState_Unlocked;
-        m_fChangeable = !running && state != KMachineState_Saved;
-    }
+    m_fChangeable = m_machine.isNull() ? false : m_machine.GetState() != KMachineState_Stuck;
 
     sltUpdateGeneral();
     sltUpdateSystem();

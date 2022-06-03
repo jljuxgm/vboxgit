@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 33882 2010-11-09 09:32:27Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 36357 2011-03-23 09:36:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -72,11 +72,24 @@ void UIMachineSettingsAudio::saveFromCacheTo(QVariant &data)
     /* Fetch data to machine: */
     UISettingsPageMachine::fetchData(data);
 
-    /* Gather corresponding values from internal variables: */
-    CAudioAdapter audio = m_machine.GetAudioAdapter();
-    audio.SetEnabled(m_cache.m_fAudioEnabled);
-    audio.SetAudioDriver(m_cache.m_audioDriverType);
-    audio.SetAudioController(m_cache.m_audioControllerType);
+    /* Save settings depending on dialog type: */
+    switch (dialogType())
+    {
+        /* Here come the properties which could be changed only in offline state: */
+        case VBoxDefs::SettingsDialogType_Offline:
+        {
+            CAudioAdapter audio = m_machine.GetAudioAdapter();
+            audio.SetEnabled(m_cache.m_fAudioEnabled);
+            audio.SetAudioDriver(m_cache.m_audioDriverType);
+            audio.SetAudioController(m_cache.m_audioControllerType);
+            break;
+        }
+        /* Here come the properties which could be changed at runtime too: */
+        case VBoxDefs::SettingsDialogType_Runtime:
+            break;
+        default:
+            break;
+    }
 
     /* Upload machine to data: */
     UISettingsPageMachine::uploadData(data);
@@ -147,5 +160,24 @@ void UIMachineSettingsAudio::prepareComboboxes()
         vboxGlobal().toString (KAudioControllerType_SB16));
     /* Set the old value */
     mCbAudioController->setCurrentIndex (currentController);
+}
+
+void UIMachineSettingsAudio::polishPage()
+{
+    /* Polish page depending on dialog type: */
+    switch (dialogType())
+    {
+        case VBoxDefs::SettingsDialogType_Offline:
+            break;
+        case VBoxDefs::SettingsDialogType_Runtime:
+            mGbAudio->setEnabled(false);
+            mLbAudioDriver->setEnabled(false);
+            mCbAudioDriver->setEnabled(false);
+            mLbAudioController->setEnabled(false);
+            mCbAudioController->setEnabled(false);
+            break;
+        default:
+            break;
+    }
 }
 
