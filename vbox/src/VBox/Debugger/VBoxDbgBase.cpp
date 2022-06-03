@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 31530 2010-08-10 12:24:45Z vboxsync $ */
+/* $Id: VBoxDbgBase.cpp 38812 2011-09-21 11:56:33Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -150,12 +150,7 @@ unsigned VBoxDbgBaseWindow::m_cyBorder = 0;
 
 
 VBoxDbgBaseWindow::VBoxDbgBaseWindow(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent)
-    : QWidget(a_pParent, Qt::Window), VBoxDbgBase(a_pDbgGui),
-#ifdef Q_WS_X11
-    m_fPolished(false),
-#else
-    m_fPolished(true),
-#endif
+    : QWidget(a_pParent, Qt::Window), VBoxDbgBase(a_pDbgGui), m_fPolished(false), 
     m_x(INT_MAX), m_y(INT_MAX), m_cx(0), m_cy(0)
 {
 }
