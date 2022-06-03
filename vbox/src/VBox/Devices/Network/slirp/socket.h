@@ -1,4 +1,4 @@
-/* $Id: socket.h 39299 2011-11-15 06:59:33Z vboxsync $ */
+/* $Id: socket.h 40621 2012-03-26 01:18:08Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -105,11 +105,16 @@ struct socket
 #endif
     /* required for port-forwarding */
     struct libalias *so_la;
+    /* libalias might attach the socket and we want to notify libalias we're freeing it */
+    void *so_pvLnk;
 #ifdef VBOX_WITH_NAT_UDP_SOCKET_CLONE
     struct socket *so_cloneOf; /* pointer to master instance */
     int so_cCloneCounter;      /* number of clones */
 #endif
 };
+
+/* this function inform libalias about socket close */
+void slirpDeleteLinkSocket(void *pvLnk);
 
 #ifdef VBOX_WITH_SLIRP_MT
 # define SOCKET_LOCK(so)                                                \
