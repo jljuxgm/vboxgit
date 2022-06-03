@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 38072 2011-07-19 14:53:11Z vboxsync $ */
+/* $Id: GMMR0.cpp 38536 2011-08-25 17:09:48Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2550,6 +2550,9 @@ static int gmmR0AllocatePagesNew(PGMM pGMM, PGVM pGVM, uint32_t cPages, PGMMPAGE
 
         /* Free empty chunks. */
         /** @todo  */
+
+        /* return the fail status on failure */
+        return rc;
     }
     return VINF_SUCCESS;
 }
