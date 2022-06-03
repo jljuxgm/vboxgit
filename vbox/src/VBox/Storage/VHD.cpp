@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 40240 2012-02-23 20:51:34Z vboxsync $ */
+/* $Id: VHD.cpp 40843 2012-04-10 08:53:19Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2143,7 +2143,7 @@ static void vhdDump(void *pBackendData)
     AssertPtr(pImage);
     if (pImage)
     {
-        vdIfErrorMessage(pImage->pIfError, "Header: Geometry PCHS=%u/%u/%u LCHS=%u/%u/%u cbSector=%llu\n",
+        vdIfErrorMessage(pImage->pIfError, "Header: Geometry PCHS=%u/%u/%u LCHS=%u/%u/%u cbSector=%u\n",
                          pImage->PCHSGeometry.cCylinders, pImage->PCHSGeometry.cHeads, pImage->PCHSGeometry.cSectors,
                          pImage->LCHSGeometry.cCylinders, pImage->LCHSGeometry.cHeads, pImage->LCHSGeometry.cSectors,
                          VHD_SECTOR_SIZE);
