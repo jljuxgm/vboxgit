@@ -1,4 +1,4 @@
-/* $Id: tcp_output.c 35163 2010-12-16 07:37:00Z vboxsync $ */
+/* $Id: tcp_output.c 37936 2011-07-14 03:54:41Z vboxsync $ */
 /** @file
  * NAT - TCP output.
  */
@@ -101,7 +101,7 @@ tcp_output(PNATState pData, register struct tcpcb *tp)
     int idle, sendalot;
     int size = 0;
 
-    LogFlow(("tcp_output: tp = %lx\n", (long)tp));
+    LogFlow(("ENTER: tcp_output: tp = %R[tcpcb793]\n", tp));
 
     /*
      * Determine length of data that should be transmitted,

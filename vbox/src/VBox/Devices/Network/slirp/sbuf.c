@@ -1,4 +1,4 @@
-/* $Id: sbuf.c 34103 2010-11-16 11:18:55Z vboxsync $ */
+/* $Id: sbuf.c 37936 2011-07-14 03:54:41Z vboxsync $ */
 /** @file
  * NAT - sbuf implemenation.
  */
@@ -283,7 +283,7 @@ sbappend (PNATState pData, struct socket *so, struct mbuf *m)
     caddr_t buf = NULL;
 
     STAM_PROFILE_START(&pData->StatIOSBAppend_pf, a);
-    LogFlow(("sbappend: so = %lx, m = %lx, m->m_len = %d\n", (long)so, (long)m, m ? m->m_len : 0));
+    LogFlow(("sbappend: so = %R[natsock], m = %lx, m->m_len = %d\n", so, (long)m, m ? m->m_len : 0));
 
     STAM_COUNTER_INC(&pData->StatIOSBAppend);
     mlen = m_length(m, NULL);
