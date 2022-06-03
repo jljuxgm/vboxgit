@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 37900 2011-07-12 13:31:46Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 37971 2011-07-14 15:01:07Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -310,8 +310,9 @@ static int parseCloneOptions(const char *psz, com::SafeArray<CloneOptions_T> *op
                 options->push_back(CloneOptions_KeepNATMACs);
             else if (!RTStrNICmp(psz, "KeepDiskNames", len))
                 options->push_back(CloneOptions_KeepDiskNames);
-//            else if (!RTStrNICmp(psz, "Link", len))
-//                options->push_back(CloneOptions_Link)
+            else if (   !RTStrNICmp(psz, "Link", len)
+                     || !RTStrNICmp(psz, "Linked", len))
+                options->push_back(CloneOptions_Link);
             else
                 rc = VERR_PARSE_ERROR;
         }
