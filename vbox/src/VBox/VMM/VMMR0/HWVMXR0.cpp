@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41189 2012-05-07 15:39:30Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41193 2012-05-07 16:55:23Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring 0.
  */
@@ -4503,7 +4503,7 @@ static void hmR0VmxFlushEPT(PVM pVM, PVMCPU pVCpu, VMX_FLUSH_EPT enmFlush)
 {
     uint64_t descriptor[2];
 
-    LogFlow(("hmR0VmxFlushEPT %d %RGv\n", enmFlush, GCPhys));
+    LogFlow(("hmR0VmxFlushEPT %d\n", enmFlush));
     Assert(pVM->hwaccm.s.fNestedPaging);
     descriptor[0] = pVCpu->hwaccm.s.vmx.GCPhysEPTP;
     descriptor[1] = 0; /* MBZ. Intel spec. 33.3 VMX Instructions */
