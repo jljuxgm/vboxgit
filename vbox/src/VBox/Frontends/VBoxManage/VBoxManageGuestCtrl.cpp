@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 38400 2011-08-10 14:00:00Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 38403 2011-08-10 14:55:28Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1593,22 +1593,25 @@ static int handleCtrlCopyTo(ComPtr<IGuest> guest, HandlerArg *pArg,
                 }
                 else
                 {
-#if 0
-                    if (   (RT_SUCCESS(ctrlCopyDirExistsOnSource(pContext, pszSource, &fExists))
-                            && fExists)
-                        || (   RT_SUCCESS(ctrlCopyDirExistsOnSource(pContext, pszSourceRoot, &fExists))
-                            && fExists
-                            && pszFilter)
-                       )
+                    if (!pContext->fHostToGuest)
                     {
-                        /* Directory (with filter?). */
-                        vrc = ctrlCopyDirToTarget(pContext, pszSource, pszFilter,
-                                                  Utf8Dest.c_str(), fFlags, NULL /* Subdir */);
+                        RTMsgError("Copying of guest directories to the host is not supported yet!\n");
+                        vrc = VERR_NOT_IMPLEMENTED;
                     }
-#else
-                    RTMsgError("Copying of guest directories to the host is not supported yet!\n");
-                    vrc = VERR_NOT_IMPLEMENTED;
-#endif
+                    else
+                    {
+                        if (   (RT_SUCCESS(ctrlCopyDirExistsOnSource(pContext, pszSource, &fExists))
+                                && fExists)
+                            || (   RT_SUCCESS(ctrlCopyDirExistsOnSource(pContext, pszSourceRoot, &fExists))
+                                && fExists
+                                && pszFilter)
+                           )
+                        {
+                            /* Directory (with filter?). */
+                            vrc = ctrlCopyDirToTarget(pContext, pszSource, pszFilter,
+                                                      Utf8Dest.c_str(), fFlags, NULL /* Subdir */);
+                        }
+                    }
                 }
             }
 
