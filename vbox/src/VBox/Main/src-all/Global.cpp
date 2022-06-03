@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: Global.cpp 40041 2012-02-08 19:46:28Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM global definitions
@@ -39,16 +39,16 @@ const Global::OSType Global::sOSTypes[] =
         32,   4,  1 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_SB16  },
     { "Windows", "Microsoft Windows", "Windows95",          "Windows 95",
-      VBOXOSTYPE_Win95,           VBOXOSHINT_NONE,
+      VBOXOSTYPE_Win95,           VBOXOSHINT_NONE | VBOXOSHINT_FLOPPY,
         64,   4,  2 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
-        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
+        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_SB16  },
     { "Windows", "Microsoft Windows", "Windows98",          "Windows 98",
-      VBOXOSTYPE_Win98,           VBOXOSHINT_NONE,
+      VBOXOSTYPE_Win98,           VBOXOSHINT_NONE | VBOXOSHINT_FLOPPY,
         64,   4,  2 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
-        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
+        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_SB16  },
     { "Windows", "Microsoft Windows", "WindowsMe",          "Windows ME",
-      VBOXOSTYPE_WinMe,           VBOXOSHINT_NONE,
-        64,   4,  4 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+      VBOXOSTYPE_WinMe,           VBOXOSHINT_NONE | VBOXOSHINT_FLOPPY | VBOXOSHINT_USBTABLET,
+        128,  4,  4 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Windows", "Microsoft Windows", "WindowsNT4",         "Windows NT 4",
       VBOXOSTYPE_WinNT4,          VBOXOSHINT_NONE,
