@@ -1,4 +1,4 @@
-/* $Revision: 40981 $ */
+/* $Revision: 41067 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -599,6 +599,16 @@ int  VBOXCALL   supdrvOSEnableVTx(bool fEnabled);
  *                              slashes on non-UNIX systems.
  */
 int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const char *pszFilename);
+
+/**
+ * Notification call indicating that a image is being opened for the first time.
+ *
+ * Can be used to log the load address of the image.
+ *
+ * @param   pDevExt             The device globals.
+ * @param   pImage              The image handle.
+ */
+void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage);
 
 /**
  * Validates an entry point address.

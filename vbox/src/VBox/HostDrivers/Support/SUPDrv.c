@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 40981 2012-04-18 18:56:50Z vboxsync $ */
+/* $Id: SUPDrv.c 41067 2012-04-26 11:36:57Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3952,11 +3952,9 @@ static int supdrvIOCtl_LdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
     pReq->u.Out.pvImageBase   = pImage->pvImage;
     pReq->u.Out.fNeedsLoading = true;
     pReq->u.Out.fNativeLoader = pImage->fNative;
-    supdrvLdrUnlock(pDevExt);
+    supdrvOSLdrNotifyOpened(pDevExt, pImage);
 
-#if defined(RT_OS_WINDOWS) && defined(DEBUG)
-    SUPR0Printf("VBoxDrv: windbg> .reload /f %s=%#p\n", pImage->szName, pImage->pvImage);
-#endif
+    supdrvLdrUnlock(pDevExt);
     return VINF_SUCCESS;
 }
 
