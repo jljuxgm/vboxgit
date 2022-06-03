@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 37046 2011-05-12 10:16:29Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 37253 2011-05-30 11:56:34Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -211,7 +211,7 @@ Var g_strAddVerBuild                    ; Installed Guest Additions: Build numbe
 Var g_strAddVerRev                      ; Installed Guest Additions: SVN revision
 Var g_strWinVersion                     ; Current Windows version we're running on
 Var g_bLogEnable                        ; Do logging when installing? "true" or "false"
-Var g_bWithWDDM                         ; Install the WDDM driver instead of the normal one
+Var g_bWithWDDM                         ; Install the WDDM driver instead of the XPDM one
 Var g_bCapWDDM                          ; Capability: Is the guest able to handle/use our WDDM driver?
 
 ; Command line parameters - these can be set/modified
@@ -964,9 +964,18 @@ Function .onSelChange
     ; If we're able to use the WDDM driver just use it instead of the replaced
     ; D3D components below
     ${If} $g_bCapWDDM == "true"
+      ;
+      ; Temporary solution: Since WDDM is marked as experimental yet we notify the user
+      ; that WDDM (Aero) support is available but not recommended for production use. He now
+      ; can opt-in for installing WDDM or still go for the old (XPDM) way -- safe mode still required!
+      ;
+      MessageBox MB_ICONQUESTION|MB_YESNO $(VBOX_COMPONENT_D3D_OR_WDDM) /SD IDNO IDYES d3d_install
       StrCpy $g_bWithWDDM "true"
       Goto exit
     ${EndIf}
+
+d3d_install:
+
 !endif
 
     ${If} $g_bForceInstall != "true"
