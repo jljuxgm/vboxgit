@@ -1,4 +1,4 @@
-/* $Id: VBoxVMM.d 40827 2012-04-08 18:42:20Z vboxsync $ */
+/* $Id: VBoxVMM.d 40832 2012-04-08 19:55:07Z vboxsync $ */
 /** @file
  * VBoxVMM - Static dtrace probes.
  */
@@ -48,6 +48,7 @@ provider vboxvmm
     probe r0__hmsvm__vmexit(struct VMCPU *a_pVM, struct CPUMCTX *a_pCtx, uint64_t a_ExitCode,
                             uint64_t a_ExitInfo1, uint64_t a_ExitInfo2, uint64_t a_ExitIntInfo,
                             uint64_t a_TestArgument);
+    probe r0__hmvmx__vmexit(struct VMCPU *a_pVM, struct CPUMCTX *a_pCtx, uint64_t a_ExitReason);
 
 };
 
