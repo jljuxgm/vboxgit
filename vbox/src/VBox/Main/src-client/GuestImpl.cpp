@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 40205 2012-02-22 08:30:14Z vboxsync $ */
+/* $Id: GuestImpl.cpp 40288 2012-02-29 09:11:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -332,7 +332,8 @@ STDMETHODIMP Guest::COMGETTER(AdditionsVersion)(BSTR *a_pbstrAdditionsVersion)
 
             Bstr bstr;
             hrc = ptrMachine->GetGuestPropertyValue(Bstr("/VirtualBox/GuestAdd/Version").raw(), bstr.asOutParam());
-            if (SUCCEEDED(hrc))
+            if (   SUCCEEDED(hrc)
+                && !bstr.isEmpty())
             {
                 Utf8Str str(bstr);
                 if (str.count('.') == 0)
