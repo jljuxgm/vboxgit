@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 38013 2011-07-18 12:02:49Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38014 2011-07-18 12:36:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7515,7 +7515,9 @@ HRESULT Machine::loadMachineDataFromSettings(const settings::MachineConfigFile &
     rc = COMSETTER(SnapshotFolder)(Bstr(config.machineUserData.strSnapshotFolder).raw());
     if (FAILED(rc)) return rc;
 
-    /* Read the extra data items. */
+    /* Copy the extra data items (Not in any case config is already the same as
+     * mData->pMachineConfigFile, like when the xml files are read from disk. So
+     * make sure the extra data map is copied). */
     mData->pMachineConfigFile->mapExtraDataItems = config.mapExtraDataItems;
 
     /* currentStateModified (optional, default is true) */
