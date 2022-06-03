@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 36056 2011-02-22 18:19:03Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 36066 2011-02-23 17:42:02Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1129,7 +1129,8 @@ static int remR3RunLoggingStep(PVM pVM, PVMCPU pVCpu)
 #else
         pVM->rem.s.Env.interrupt_request = CPU_INTERRUPT_SINGLE_INSTR;
 #endif
-        if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
+        if (   VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)
+            || pVM->rem.s.u32PendingInterrupt != REM_NO_PENDING_IRQ)
             pVM->rem.s.Env.interrupt_request |= CPU_INTERRUPT_HARD;
         RTLogPrintf("remR3RunLoggingStep: interrupt_request=%#x halted=%d exception_index=%#x\n", rc,
                     pVM->rem.s.Env.interrupt_request,
