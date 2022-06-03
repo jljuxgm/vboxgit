@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 38981 2011-10-12 19:19:08Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 38987 2011-10-13 15:24:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -127,8 +127,6 @@ bool UIMachineViewFullscreen::eventFilter(QObject *pWatched, QEvent *pEvent)
             {
                 /* Send guest-resize hint only if top window resizing to required dimension: */
                 QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
-                /** @todo why is this here?  If it is a workaround
-                 * for some situation that should be documented. */
                 if (pResizeEvent->size() != workingArea().size())
                     break;
                 /* Store the new size */
