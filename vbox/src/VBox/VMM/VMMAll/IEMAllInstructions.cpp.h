@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 40242 2012-02-23 21:58:44Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 40243 2012-02-23 22:05:00Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -11062,7 +11062,7 @@ FNIEMOP_DEF(iemOp_f2xm1)
 FNIEMOP_DEF(iemOp_fylx2)
 {
     IEMOP_MNEMONIC("fylx2 st0");
-    return FNIEMOP_CALL_1(iemOpHlpFpu_st0, iemAImpl_fylx2_r80);
+    return FNIEMOP_CALL_1(iemOpHlpFpu_st0, iemAImpl_fyl2x_r80);
 }
 
 
