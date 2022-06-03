@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 37477 2011-06-15 17:18:33Z vboxsync $ */
+/* $Id: DevIoApic.cpp 37481 2011-06-15 18:59:27Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -13,7 +13,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- *
  * --------------------------------------------------------------------
  *
  * This code is based on:
