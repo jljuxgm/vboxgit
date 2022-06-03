@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 37134 2011-05-18 14:01:05Z vboxsync $ */
+/* $Id: DevVGA.cpp 37324 2011-06-03 16:28:03Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6038,7 +6038,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
      * Create the refresh timer.
      */
     rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_REAL, vgaTimerRefresh,
-                                pThis, TMTIMER_FLAGS_DEFAULT_CRIT_SECT, /** @todo This needs to be fixed! We cannot take the I/O lock at this point! */
+                                pThis, TMTIMER_FLAGS_NO_CRIT_SECT,
                                 "VGA Refresh Timer", &pThis->RefreshTimer);
     if (RT_FAILURE(rc))
         return rc;

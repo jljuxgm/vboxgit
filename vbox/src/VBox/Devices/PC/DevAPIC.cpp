@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 36024 2011-02-21 09:07:19Z vboxsync $ */
+/* $Id: DevAPIC.cpp 37324 2011-06-03 16:28:03Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1426,6 +1426,7 @@ static DECLCALLBACK(void) apicTimerCallback(PPDMDEVINS pDevIns, PTMTIMER pTimer,
     APICState      *pThis = (APICState *)pvUser;
     Assert(pThis->pTimerR3 == pTimer);
     Assert(pThis->fTimerArmed);
+    Assert(PDMCritSectIsOwned(dev->pCritSectR3));
 
     if (!(pThis->lvt[APIC_LVT_TIMER] & APIC_LVT_MASKED)) {
         LogFlow(("apic_timer: trigger irq\n"));

@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 37269 2011-05-30 21:15:14Z vboxsync $ */
+/* $Id: DevAHCI.cpp 37324 2011-06-03 16:28:03Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -8348,7 +8348,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
      *        Currently not an issue as this feature isn't used by any guest
      *        yet. */
     rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, ahciCccTimer, pThis,
-                                TMTIMER_FLAGS_DEFAULT_CRIT_SECT, "AHCI CCC Timer", &pThis->pHbaCccTimerR3);
+                                TMTIMER_FLAGS_NO_CRIT_SECT, "AHCI CCC Timer", &pThis->pHbaCccTimerR3);
     if (RT_FAILURE(rc))
     {
         AssertMsgFailed(("pfnTMTimerCreate -> %Rrc\n", rc));
