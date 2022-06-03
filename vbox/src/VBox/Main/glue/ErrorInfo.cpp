@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 33782 2010-11-04 16:23:22Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 38508 2011-08-23 14:48:39Z vboxsync $ */
 
 /** @file
  *
@@ -254,7 +254,7 @@ void ErrorInfo::init(IVirtualBoxErrorInfo *info)
     rc = info->COMGETTER(Next)(next.asOutParam());
     if (SUCCEEDED(rc) && !next.isNull())
     {
-        m_pNext = new ErrorInfo(false /* aDummy */);
+        m_pNext = new ErrorInfo(next);
         Assert(m_pNext != NULL);
         if (!m_pNext)
             rc = E_OUTOFMEMORY;
