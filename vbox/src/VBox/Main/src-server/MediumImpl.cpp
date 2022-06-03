@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 38641 2011-09-05 14:43:10Z vboxsync $ */
+/* $Id: MediumImpl.cpp 38695 2011-09-09 06:25:57Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1764,6 +1764,7 @@ STDMETHODIMP Medium::COMSETTER(Type)(MediumType_T aType)
 STDMETHODIMP Medium::COMGETTER(AllowedTypes)(ComSafeArrayOut(MediumType_T, aAllowedTypes))
 {
     CheckComArgOutSafeArrayPointerValid(aAllowedTypes);
+    NOREF(aAllowedTypes); NOREF(aAllowedTypesSize);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
