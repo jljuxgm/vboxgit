@@ -1,4 +1,4 @@
-# $Id: Config.kmk 37180 2011-05-23 10:11:49Z vboxsync $
+# $Id: Config.kmk 37181 2011-05-23 11:11:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -545,7 +545,7 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  VBOX_WITH_NETFLT = 1
  ifeq ($(KBUILD_TARGET),solaris)
  # Disabled until some Nevada version ships the required headers.
-   VBOX_WITH_NETFLT_CROSSBOW = 1
+ #  VBOX_WITH_NETFLT_CROSSBOW = 1
  endif
  # Use VBoxNetAdp for host only networking.
  if1of ($(KBUILD_TARGET), darwin freebsd linux solaris) ## @todo this should be set and used on windows too.
@@ -4746,7 +4746,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37180 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37181 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
