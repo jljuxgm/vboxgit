@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 41122 2012-05-02 15:58:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -601,14 +601,6 @@ void UISettingsDialog::showEvent(QShowEvent *pEvent)
         s.setWidth(iMinWidth);
     resize(s);
 #endif /* Q_WS_MAC */
-}
-
-void UISettingsDialog::closeEvent(QCloseEvent *pEvent)
-{
-    if (m_fLoaded)
-        QIMainDialog::closeEvent(pEvent);
-    else
-        pEvent->ignore();
 }
 
 void UISettingsDialog::assignValidator(UISettingsPage *pPage)
