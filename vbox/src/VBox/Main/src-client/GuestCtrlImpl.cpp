@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 37375 2011-06-08 10:51:26Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 37447 2011-06-14 15:46:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1802,7 +1802,8 @@ HRESULT Guest::executeProcessInternal(IN_BSTR aCommand, ULONG aFlags,
     {
         if (   !(aFlags & ExecuteProcessFlag_IgnoreOrphanedProcesses)
             && !(aFlags & ExecuteProcessFlag_WaitForProcessStartOnly)
-            && !(aFlags & ExecuteProcessFlag_Hidden))
+            && !(aFlags & ExecuteProcessFlag_Hidden)
+            && !(aFlags & ExecuteProcessFlag_NoProfile))
         {
             if (pRC)
                 *pRC = VERR_INVALID_PARAMETER;
