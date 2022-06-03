@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 38947 2011-10-05 20:22:07Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 38948 2011-10-05 20:45:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -202,8 +202,7 @@ bool UIMachineViewSeamless::eventFilter(QObject *pWatched, QEvent *pEvent)
                 if (pResizeEvent->size() != workingArea().size())
                     break;
 
-                /* Set the "guest needs to resize" hint.
-                 * This hint is acted upon when (and only when) the autoresize property is "true": */
+                /* Set the "guest needs to resize" hint. */
                 m_fShouldWeDoResize = uisession()->isGuestSupportsGraphics();
                 if (m_fShouldWeDoResize)
                     QTimer::singleShot(0, this, SLOT(sltPerformGuestResize()));
