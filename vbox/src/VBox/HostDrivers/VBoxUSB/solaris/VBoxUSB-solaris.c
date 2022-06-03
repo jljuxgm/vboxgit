@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB-solaris.c 39354 2011-11-17 17:03:18Z vboxsync $ */
+/* $Id: VBoxUSB-solaris.c 40200 2012-02-21 14:41:43Z vboxsync $ */
 /** @file
  * VirtualBox USB Client Driver, Solaris Hosts.
  */
@@ -47,6 +47,8 @@
 #include <sys/archsystm.h>
 #include <sys/disp.h>
 
+/** @todo review the locking here, verify assumptions about code executed
+ *        without the vboxusb_state_t::Mtx mutex */
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
