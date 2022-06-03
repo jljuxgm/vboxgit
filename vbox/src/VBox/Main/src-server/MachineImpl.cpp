@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 41914 2012-06-26 09:17:43Z vboxsync $ */
+/* $Id: MachineImpl.cpp 41921 2012-06-27 12:00:07Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -194,7 +194,7 @@ Machine::HWData::HWData()
     for (size_t i = 3; i < RT_ELEMENTS(mBootOrder); ++i)
         mBootOrder[i] = DeviceType_Null;
 
-    mClipboardMode = ClipboardMode_Bidirectional;
+    mClipboardMode = ClipboardMode_Disabled;
     mGuestPropertyNotificationPatterns = "";
 
     mFirmwareType = FirmwareType_BIOS;
