@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 36101 2011-02-28 14:34:48Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 36189 2011-03-07 15:22:23Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -125,7 +125,7 @@ void usageGuestControl(PRTSTREAM pStrm)
                  "                            [--dos2unix]\n"
                  "                            [--environment \"<NAME>=<VALUE> [<NAME>=<VALUE>]\"]\n"
                  "                            [--timeout <msec>] [--unix2dos] [--verbose]\n"
-                 "                            [--wait-exit] [--wait-stdout] [--wait-stdout]"
+                 "                            [--wait-exit] [--wait-stdout] [--wait-stdout]\n"
                  //"                          [--output-format=<dos>|<unix>]\n"
                  "                            [--output-type=<binary>|<text>]\n"
                  "                            [-- [<argument1>] ... [<argumentN>]\n"
