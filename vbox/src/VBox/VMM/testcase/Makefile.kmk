@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39070 2011-10-21 09:41:18Z vboxsync $
+# $Id: Makefile.kmk 41150 2012-05-03 20:39:26Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -89,7 +89,7 @@ endif
 OTHER_CLEAN += \
 	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.run \
 	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstVMStructSize.run \
-        $(VBOX_VMM_TESTCASE_OUT_DIR)/tstInstrEmul.run \
+	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstInstrEmul.run \
 	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructs.h \
 	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructsAsm.o \
 	$(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructsAsm.mac \

@@ -1,4 +1,4 @@
-; $Id: VMMRCA.asm 41147 2012-05-03 20:15:27Z vboxsync $
+; $Id: VMMRCA.asm 41150 2012-05-03 20:39:26Z vboxsync $
 ;; @file
 ; VMMGC - Raw-mode Context Virtual Machine Monitor assembly routines.
 ;
@@ -241,10 +241,10 @@ EXPORTEDNAME VMMRCProbeFire
         ; that host calls hasn't been disabled.
         ;
         mov     edx, IMP(g_VM)
-        add     edx, [ecx + VM.offVMCPU]
-        cmp     dword [edx + VMMCPU.cCallRing3Disabled], 0
+        add     edx, [edx + VM.offVMCPU]
+        cmp     dword [edx + VMCPU.vmm + VMMCPU.cCallRing3Disabled], 0
         jnz     .return
-        add     edx, [VMCPU.vmm + VMMCPU.TracerCtx]
+        add     edx, VMCPU.vmm + VMMCPU.TracerCtx
 
         ;
         ; Save the X86 context.
