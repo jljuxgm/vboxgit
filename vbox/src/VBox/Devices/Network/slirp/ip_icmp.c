@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 38971 2011-10-10 08:28:30Z vboxsync $ */
+/* $Id: ip_icmp.c 39024 2011-10-19 06:07:09Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -170,7 +170,7 @@ icmp_init(PNATState pData, int iIcmpCacheLimit)
 /**
  * Cleans ICMP cache.
  */
-int
+void
 icmp_finit(PNATState pData)
 {
     icmp_cache_clean(pData, -1);
