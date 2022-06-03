@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 41090 2012-04-27 23:26:51Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 42024 2012-07-05 12:10:53Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -262,8 +262,8 @@ static uint64_t rtR0MemObjDarwinGetPTE(void *pvPage)
     if (cr4 & RT_BIT(5) /*X86_CR4_PAE*/)
     {
         fPAE = true;
-        uint32_t fAmdFeatures = ASMCpuId_EDX(0x80000001);
-        if (fAmdFeatures & RT_BIT(29) /*X86_CPUID_AMD_FEATURE_EDX_LONG_MODE*/)
+        uint32_t fExtFeatures = ASMCpuId_EDX(0x80000001);
+        if (fExtFeatures & RT_BIT(29) /* X86_CPUID_EXT_FEATURE_EDX_LONG_MODE */)
         {
             uint64_t efer = ASMRdMsr(0xc0000080 /*MSR_K6_EFER*/);
             if (efer & RT_BIT(10) /*MSR_K6_EFER_LMA*/)

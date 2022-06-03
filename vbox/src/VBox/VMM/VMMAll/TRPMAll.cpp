@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: TRPMAll.cpp 42024 2012-07-05 12:10:53Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -214,7 +214,7 @@ VMMDECL(void)  TRPMSetErrorCode(PVMCPU pVCpu, RTGCUINT uErrorCode)
             AssertMsg(uErrorCode != ~(RTGCUINT)0, ("Invalid uErrorCode=%#x u8TrapNo=%d\n", uErrorCode, pVCpu->trpm.s.uActiveVector));
             break;
         case 0x11: case 0x08:
-            AssertMsg(uErrorCode == 0,              ("Invalid uErrorCode=%#x u8TrapNo=%d\n", uErrorCode, pVCpu->trpm.s.uActiveVector));
+            AssertMsg(uErrorCode == 0,            ("Invalid uErrorCode=%#x u8TrapNo=%d\n", uErrorCode, pVCpu->trpm.s.uActiveVector));
             break;
         default:
             AssertMsg(uErrorCode == ~(RTGCUINT)0, ("Invalid uErrorCode=%#x u8TrapNo=%d\n", uErrorCode, pVCpu->trpm.s.uActiveVector));

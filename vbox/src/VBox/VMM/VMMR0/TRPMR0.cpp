@@ -1,4 +1,4 @@
-/* $Id: TRPMR0.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: TRPMR0.cpp 42024 2012-07-05 12:10:53Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor - HC Ring 0
  */
@@ -61,7 +61,7 @@ VMMR0DECL(void) TRPMR0DispatchHostInterrupt(PVM pVM)
     /*
      * Check if we're in long mode or not.
      */
-    if (    (ASMCpuId_EDX(0x80000001) & X86_CPUID_AMD_FEATURE_EDX_LONG_MODE)
+    if (    (ASMCpuId_EDX(0x80000001) & X86_CPUID_EXT_FEATURE_EDX_LONG_MODE)
         &&  (ASMRdMsr(MSR_K6_EFER) & MSR_K6_EFER_LMA))
     {
         trpmR0DispatchHostInterruptSimple(uActiveVector);
