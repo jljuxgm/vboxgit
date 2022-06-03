@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 38130 2011-07-25 08:36:41Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 38131 2011-07-25 08:38:59Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -538,7 +538,7 @@ int VBoxServiceVMInfoWinWriteUsers(char **ppszUserList, uint32_t *pcUsersInList)
     if (RT_FAILURE(rc))
     {
         if (rc == VERR_NO_MEMORY)
-            VBoxServiceError("VMInfo/Users: Not enough memory to enumerate processes for a session!\n");
+            VBoxServiceVerbose(3, "VMInfo/Users: Not enough memory to enumerate processes for a session!\n");
         else
             VBoxServiceError("VMInfo/Users: Failed to enumerate processes for a session, rc=%Rrc\n", rc);
     }
