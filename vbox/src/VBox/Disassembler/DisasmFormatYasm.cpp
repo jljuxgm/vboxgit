@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 41742 2012-06-15 01:54:42Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 41743 2012-06-15 02:00:58Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -207,24 +207,24 @@ static const char *disasmFormatYasmIndexReg(PCDISCPUSTATE pCpu, PCDISOPPARAM pPa
     {
         case DISCPUMODE_16BIT:
         {
-            Assert(pParam->index.reg_gen < RT_ELEMENTS(g_aszYasmRegGen16));
-            const char *psz = g_aszYasmRegGen16[pParam->index.reg_gen];
+            Assert(pParam->Index.idxGenReg < RT_ELEMENTS(g_aszYasmRegGen16));
+            const char *psz = g_aszYasmRegGen16[pParam->Index.idxGenReg];
             *pcchReg = 2 + !!psz[2] + !!psz[3];
             return psz;
         }
 
         case DISCPUMODE_32BIT:
         {
-            Assert(pParam->index.reg_gen < RT_ELEMENTS(g_aszYasmRegGen32));
-            const char *psz = g_aszYasmRegGen32[pParam->index.reg_gen];
+            Assert(pParam->Index.idxGenReg < RT_ELEMENTS(g_aszYasmRegGen32));
+            const char *psz = g_aszYasmRegGen32[pParam->Index.idxGenReg];
             *pcchReg = 2 + !!psz[2] + !!psz[3];
             return psz;
         }
 
         case DISCPUMODE_64BIT:
         {
-            Assert(pParam->index.reg_gen < RT_ELEMENTS(g_aszYasmRegGen64));
-            const char *psz = g_aszYasmRegGen64[pParam->index.reg_gen];
+            Assert(pParam->Index.idxGenReg < RT_ELEMENTS(g_aszYasmRegGen64));
+            const char *psz = g_aszYasmRegGen64[pParam->Index.idxGenReg];
             *pcchReg = 2 + !!psz[2] + !!psz[3];
             return psz;
         }
