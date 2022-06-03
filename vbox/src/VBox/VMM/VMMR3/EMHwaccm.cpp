@@ -1,10 +1,10 @@
-/* $Id: EMHwaccm.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 40375 2012-03-06 13:37:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -45,6 +45,7 @@
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
 #include <VBox/vmm/dbgf.h>
+#include "VMMTracing.h"
 
 #include <iprt/asm.h>
 
@@ -583,6 +584,7 @@ int emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
             ||  VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_ALL_MASK))
         {
             rc = emR3ForcedActions(pVM, pVCpu, rc);
+            VBOXVMMR3_EM_FF_ALL_RET(pVCpu, rc);
             if (    rc != VINF_SUCCESS
                 &&  rc != VINF_EM_RESCHEDULE_HWACC)
             {
