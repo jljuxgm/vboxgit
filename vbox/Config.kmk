@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38125 2011-07-24 19:08:48Z vboxsync $
+# $Id: Config.kmk 38148 2011-07-25 11:16:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -132,6 +132,8 @@ else
  INST_TESTCASE        = $(INST_BIN)testcase/
  INST_ADDITIONS       = $(INST_BIN)additions/
  INST_ADDITIONS_ISO   = $(INST_ADDITIONS)
+ 
+ INST_VBOXNETADP      = $(INST_BIN)
 
  INST_TESTSUITE       = testsuite/
  INST_LIB             = lib/
@@ -4814,7 +4816,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38125 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38148 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
