@@ -1,4 +1,4 @@
-# $Id: tstVDIo.vd 38204 2011-07-27 16:14:59Z vboxsync $
+# $Id: tstVDIo.vd 38413 2011-08-11 11:18:44Z vboxsync $
 #
 # Storage: Simple I/O testing for most backends.
 #
@@ -57,6 +57,21 @@ io disk=test async=yes max-reqs=32 mode=seq blocksize=64k off=0-200M size=200M w
 create disk=test mode=diff name=tstShared2.vhd type=dynamic backend=VHD size=200M
 io disk=test async=yes max-reqs=32 mode=rnd blocksize=64k off=0-200M size=200M writes=50
 create disk=test mode=diff name=tstShared3.vhd type=dynamic backend=VHD size=200M
+io disk=test async=yes max-reqs=32 mode=rnd blocksize=64k off=0-200M size=200M writes=50
+close disk=test mode=single delete=yes
+close disk=test mode=single delete=yes
+close disk=test mode=single delete=yes
+destroydisk name=test
+
+# Parallels disk
+print msg=Testing_Parallels
+createdisk name=test verify=yes
+create disk=test mode=base name=tstShared.hdd type=dynamic backend=Parallels size=200M
+io disk=test async=yes max-reqs=32 mode=seq blocksize=64k off=0-200M size=200M writes=100
+io disk=test async=yes max-reqs=32 mode=seq blocksize=64k off=0-200M size=200M writes=0
+create disk=test mode=diff name=tstShared2.hdd type=dynamic backend=Parallels size=200M
+io disk=test async=yes max-reqs=32 mode=rnd blocksize=64k off=0-200M size=200M writes=50
+create disk=test mode=diff name=tstShared3.hdd type=dynamic backend=Parallels size=200M
 io disk=test async=yes max-reqs=32 mode=rnd blocksize=64k off=0-200M size=200M writes=50
 close disk=test mode=single delete=yes
 close disk=test mode=single delete=yes
