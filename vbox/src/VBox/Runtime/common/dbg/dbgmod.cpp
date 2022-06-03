@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 38515 2011-08-24 14:33:32Z vboxsync $ */
+/* $Id: dbgmod.cpp 38553 2011-08-26 14:34:38Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -1476,7 +1476,6 @@ RTDECL(int) RTDbgModLineByAddr(RTDBGMOD hDbgMod, RTDBGSEGIDX iSeg, RTUINTPTR off
      */
     PRTDBGMODINT pDbgMod = hDbgMod;
     RTDBGMOD_VALID_RETURN_RC(pDbgMod, VERR_INVALID_HANDLE);
-    RTDBGMOD_LOCK(pDbgMod);
     AssertPtrNull(poffDisp);
     AssertPtr(pLineInfo);
 
