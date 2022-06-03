@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40846 2012-04-10 13:24:15Z vboxsync $
+# $Id: Makefile.kmk 40847 2012-04-10 13:27:12Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -584,7 +584,6 @@ endif
 ifdef VBOX_WITH_CROGL
  VBoxC_LIBS += $(VBoxOGLTest_1_TARGET)
  VBoxC_LDFLAGS.darwin += -framework OpenGL
-endif 
 endif
 
 
