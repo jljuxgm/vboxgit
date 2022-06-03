@@ -1,10 +1,10 @@
-/* $Id: DrvHostDVD.cpp 37601 2011-06-22 22:11:50Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 39731 2012-01-08 21:17:16Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -115,8 +115,9 @@
 #include "DrvHostBase.h"
 
 
-/* Forward declarations. */
-
+/*******************************************************************************
+*   Internal Functions                                                         *
+*******************************************************************************/
 static DECLCALLBACK(int) drvHostDvdDoLock(PDRVHOSTBASE pThis, bool fLock);
 #ifdef VBOX_WITH_SUID_WRAPPER
 static int solarisCheckUserAuth();
