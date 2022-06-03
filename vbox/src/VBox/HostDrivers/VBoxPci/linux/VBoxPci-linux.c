@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 38299 2011-08-03 11:35:54Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 39224 2011-11-08 09:23:51Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -33,14 +33,22 @@
 #include "VBoxPciInternal.h"
 
 #ifdef VBOX_WITH_IOMMU
-#include <linux/dmar.h>
-#include <linux/intel-iommu.h>
-#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 1, 0)
-# include <asm/amd_iommu.h>
-#else
-# include <linux/amd-iommu.h>
-#endif
-#endif
+# include <linux/dmar.h>
+# include <linux/intel-iommu.h>
+# include <linux/pci.h>
+# if LINUX_VERSION_CODE < KERNEL_VERSION(3, 1, 0)
+#  include <asm/amd_iommu.h>
+# else
+#  include <linux/amd-iommu.h>
+# endif
+# if LINUX_VERSION_CODE < KERNEL_VERSION(3, 2, 0)
+#  define IOMMU_PRESENT()      iommu_found()
+#  define IOMMU_DOMAIN_ALLOC() iommu_domain_alloc()
+# else
+#  define IOMMU_PRESENT()      iommu_present(&pci_bus_type)
+#  define IOMMU_DOMAIN_ALLOC() iommu_domain_alloc(&pci_bus_type)
+# endif
+#endif /* VBOX_WITH_IOMMU */
 
 
 /*******************************************************************************
@@ -146,7 +154,7 @@ static int __init VBoxPciLinuxInit(void)
 #endif
 
 #ifdef VBOX_WITH_IOMMU
-    if (iommu_found())
+    if (IOMMU_PRESENT())
         printk(KERN_INFO "vboxpci: IOMMU found\n");
     else
         printk(KERN_INFO "vboxpci: IOMMU not found (not registered)\n");
@@ -984,9 +992,9 @@ int  vboxPciOsInitVm(PVBOXRAWPCIDRVVM pThis, PVM pVM, PRAWPCIPERVM pVmData)
     printk(KERN_DEBUG "vboxPciOsInitVm: %p\n", pThis);
 #endif
 #ifdef VBOX_WITH_IOMMU
-    if (iommu_found())
+    if (IOMMU_PRESENT())
     {
-        pThis->pIommuDomain = iommu_domain_alloc();
+        pThis->pIommuDomain = IOMMU_DOMAIN_ALLOC();
         if (!pThis->pIommuDomain)
         {
             printk(KERN_DEBUG "cannot allocate IOMMU domain\n");
