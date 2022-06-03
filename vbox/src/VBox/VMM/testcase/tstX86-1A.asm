@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 40082 2012-02-12 13:40:29Z vboxsync $
+; $Id: tstX86-1A.asm 40083 2012-02-12 13:51:58Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -1450,6 +1450,24 @@ BEGINPROC   x861_Test5
         ShouldTrap X86_XCPT_UD, db 0dbh, 023h
         ShouldTrap X86_XCPT_UD, db 0dbh, 030h
         ShouldTrap X86_XCPT_UD, db 0dbh, 032h
+
+        ; the 0xdc block
+        db 0dbh, 0d0h ; fnop?
+        db 0dbh, 0d1h ; fnop?
+        db 0dbh, 0d2h ; fnop?
+        db 0dbh, 0d3h ; fnop?
+        db 0dbh, 0d4h ; fnop?
+        db 0dbh, 0d5h ; fnop?
+        db 0dbh, 0d6h ; fnop?
+        db 0dbh, 0d7h ; fnop?
+        db 0dbh, 0d8h ; fnop?
+        db 0dbh, 0d9h ; fnop?
+        db 0dbh, 0dah ; fnop?
+        db 0dbh, 0dbh ; fnop?
+        db 0dbh, 0dch ; fnop?
+        db 0dbh, 0ddh ; fnop?
+        db 0dbh, 0deh ; fnop?
+        db 0dbh, 0dfh ; fnop?
 
         ; the 0xdd block
         db 0ddh, 0c0h ; fnop?
