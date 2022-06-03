@@ -1,10 +1,10 @@
-/* $Id: VBoxManage.h 37074 2011-05-13 14:32:50Z vboxsync $ */
+/* $Id: VBoxManage.h 37525 2011-06-17 10:09:21Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -226,7 +226,7 @@ HRESULT findMedium(HandlerArg *a, const char *pszFilenameOrUuid,
                    ComPtr<IMedium> &pMedium);
 HRESULT findOrOpenMedium(HandlerArg *a, const char *pszFilenameOrUuid,
                          DeviceType_T enmDevType, ComPtr<IMedium> &pMedium,
-                         bool *pfWasUnknown);
+                         bool fForceNewUuidOnOpen, bool *pfWasUnknown);
 int handleCreateHardDisk(HandlerArg *a);
 int handleModifyHardDisk(HandlerArg *a);
 int handleCloneHardDisk(HandlerArg *a);

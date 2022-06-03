@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 35982 2011-02-15 16:02:28Z vboxsync $ */
+/* $Id: MediumImpl.h 37525 2011-06-17 10:09:21Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -77,6 +77,7 @@ public:
     HRESULT init(VirtualBox *aVirtualBox,
                  const Utf8Str &aLocation,
                  HDDOpenMode enOpenMode,
+                 bool fForceNewUuid,
                  DeviceType_T aDeviceType);
 
     // initializer used when loading settings

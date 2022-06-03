@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 37450 2011-06-14 16:44:47Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37525 2011-06-17 10:09:21Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -461,6 +461,8 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--mtype normal|writethrough|immutable|shareable|\n"
                      "                                     readonly|multiattach]\n"
                      "                            [--comment <text>]\n"
+                     "                            [--setuuid <uuid>]\n"
+                     "                            [--setparentuuid <uuid>]\n"
                      "                            [--passthrough on|off]\n"
                      "                            [--bandwidthgroup <name>]\n"
                      "                            [--forceunmount]\n"

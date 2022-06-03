@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 37374 2011-06-08 10:08:19Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 37525 2011-06-17 10:09:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2753,7 +2753,7 @@ QString VBoxGlobal::openMedium(VBoxDefs::MediumType mediumType, QString strMediu
     vbox.SetExtraData(strRecentListKey, recentMediumList.join(";"));
 
     /* Open corresponding medium: */
-    CMedium comMedium = vbox.OpenMedium(strMediumLocation, mediumTypeToGlobal(mediumType), KAccessMode_ReadWrite);
+    CMedium comMedium = vbox.OpenMedium(strMediumLocation, mediumTypeToGlobal(mediumType), KAccessMode_ReadWrite, false);
 
     if (vbox.isOk())
     {

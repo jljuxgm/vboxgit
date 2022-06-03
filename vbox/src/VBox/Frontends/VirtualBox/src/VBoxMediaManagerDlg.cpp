@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 37470 2011-06-15 14:43:55Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 37525 2011-06-17 10:09:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1650,7 +1650,7 @@ void VBoxMediaManagerDlg::addMediumToList(const QString &aLocation, VBoxDefs::Me
             AssertMsgFailedReturnVoid (("Invalid aType %d\n", aType));
     }
 
-    CMedium med = mVBox.OpenMedium(aLocation, devType, KAccessMode_ReadWrite);
+    CMedium med = mVBox.OpenMedium(aLocation, devType, KAccessMode_ReadWrite, false /* fForceNewUuid */);
     if (mVBox.isOk())
         medium = VBoxMedium(CMedium(med), aType, KMediumState_Created);
 

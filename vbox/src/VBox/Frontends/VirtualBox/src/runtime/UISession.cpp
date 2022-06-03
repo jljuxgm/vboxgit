@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 36364 2011-03-23 11:35:44Z vboxsync $ */
+/* $Id: UISession.cpp 37525 2011-06-17 10:09:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -425,7 +425,7 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
         CMedium image = vbox.FindMedium(strSource, KDeviceType_DVD);
         if (image.isNull())
         {
-            image = vbox.OpenMedium(strSource, KDeviceType_DVD, KAccessMode_ReadWrite);
+            image = vbox.OpenMedium(strSource, KDeviceType_DVD, KAccessMode_ReadWrite, false /* fForceNewUuid */);
             if (vbox.isOk())
                 strUuid = image.GetId();
         }
