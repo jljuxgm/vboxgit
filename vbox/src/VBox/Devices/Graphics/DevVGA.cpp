@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 38804 2011-09-20 14:34:02Z vboxsync $ */
+/* $Id: DevVGA.cpp 38805 2011-09-20 14:39:50Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4752,7 +4752,7 @@ static DECLCALLBACK(int) vgaPortTakeScreenshot(PPDMIDISPLAYPORT pInterface, uint
 
     PDMCritSectLeave(&pThis->lock);
 
-    LogFlow(("vgaPortTakeScreenshot: returns %Rrc (cbData=%d cx=%d cy=%d)\n", rc, cbRequired, Connector.cx, Connector.cy));
+    LogFlow(("vgaPortTakeScreenshot: returns %Rrc (cbData=%d cx=%d cy=%d)\n", rc, *pcbData, *pcx, *pcy));
     return rc;
 }
 
