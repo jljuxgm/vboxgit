@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 36178 2011-03-07 09:45:24Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 36179 2011-03-07 09:53:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -675,7 +675,7 @@ void Console::uninit()
 /**
  * Handles guest properties on a VM reset.
  * At the moment we only delete properties which have the flag
- * "TRARESET".
+ * "TRANSIENT_RESET".
  */
 void Console::guestPropertiesHandleVMReset(void)
 {
@@ -692,7 +692,7 @@ void Console::guestPropertiesHandleVMReset(void)
     {
         for (size_t i = 0; i < arrFlags.size(); i++)
         {
-            /* Delete all properties which have the flag "TRARESET". */
+            /* Delete all properties which have the flag "TRANSIENT_RESET". */
             if (Utf8Str(arrFlags[i]).contains("TRANSIENT_RESET", Utf8Str::CaseInsensitive))
             {
                 hrc = mMachine->SetGuestProperty(arrNames[i], Bstr("").raw() /* Value */,
