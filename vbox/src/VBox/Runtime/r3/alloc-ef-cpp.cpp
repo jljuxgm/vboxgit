@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-cpp.cpp 39089 2011-10-24 12:04:14Z vboxsync $ */
+/* $Id: alloc-ef-cpp.cpp 39092 2011-10-24 14:00:33Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
@@ -55,11 +55,7 @@
 /** The hint that we're throwing std::bad_alloc is not apprecitated by MSC. */
 #ifdef RT_EXCEPTIONS_ENABLED
 # ifdef _MSC_VER
-#  if _MSC_VER >= 1400
-#   define RT_EF_THROWS_BAD_ALLOC
-#  else
-#   define RT_EF_THROWS_BAD_ALLOC    throw(std::bad_alloc)
-#  endif
+#  define RT_EF_THROWS_BAD_ALLOC
 # else
 #  define RT_EF_THROWS_BAD_ALLOC     throw(std::bad_alloc)
 # endif
