@@ -1,4 +1,4 @@
-/* $Id: fdc.c 36781 2011-04-21 06:18:43Z vboxsync $ */
+/* $Id: fdc.c 37205 2011-05-24 16:43:35Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -1673,7 +1673,7 @@ static void fdctrl_handle_version(fdctrl_t *fdctrl, int direction)
 
 static void fdctrl_handle_partid(fdctrl_t *fdctrl, int direction)
 {
-    fdctrl->fifo[0] = 0x41; /* Stepping 1 */
+    fdctrl->fifo[0] = 0x01; /* Stepping 1 */
     fdctrl_set_fifo(fdctrl, 1, 0);
 }
 
