@@ -1,10 +1,10 @@
-/* $Id: IEMAll.cpp 40161 2012-02-16 19:10:17Z vboxsync $ */
+/* $Id: IEMAll.cpp 40162 2012-02-16 19:28:18Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

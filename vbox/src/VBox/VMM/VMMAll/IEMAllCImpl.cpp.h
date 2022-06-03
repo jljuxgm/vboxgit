@@ -1,10 +1,10 @@
-/* $Id: IEMAllCImpl.cpp.h 40022 2012-02-07 20:29:04Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 40162 2012-02-16 19:28:18Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
