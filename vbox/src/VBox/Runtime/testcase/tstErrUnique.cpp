@@ -1,4 +1,4 @@
-/* $Id: tstErrUnique.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstErrUnique.cpp 41296 2012-05-15 09:25:23Z vboxsync $ */
 /** @file
  * IPRT Testcase - Error Messages.
  */
@@ -77,7 +77,7 @@ int main()
 
             if (g_aErrorMessages[i].iCode == g_aErrorMessages[j].iCode)
             {
-                RTPrintf("tstErrUnique: status code %d can mean '%s' or '%s'\n", g_aErrorMessages[i].iCode, g_aErrorMessages[i].pszMsgShort, g_aErrorMessages[j]);
+                RTPrintf("tstErrUnique: status code %d\n  can mean '%s'\n  or '%s'\n", g_aErrorMessages[i].iCode, g_aErrorMessages[i].pszMsgShort, g_aErrorMessages[j].pszMsgShort);
                 cErrors++;
             }
         }
