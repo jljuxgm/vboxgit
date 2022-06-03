@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 36273 2011-03-14 13:32:15Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 36870 2011-04-28 07:44:09Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1674,6 +1674,8 @@ int main()
     GEN_CHECK_OFF(HpetState, u64HpetConfig);
     GEN_CHECK_OFF(HpetState, u64Isr);
     GEN_CHECK_OFF(HpetState, u64HpetCounter);
+    GEN_CHECK_OFF(HpetState, csLock);
+    GEN_CHECK_OFF(HpetState, fIch9);
 
     GEN_CHECK_SIZE(HpetTimer);
     GEN_CHECK_OFF(HpetTimer, pTimerR3);
