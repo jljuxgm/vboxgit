@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 34341 2010-11-24 20:14:36Z vboxsync $ */
+/* $Id: USBProxyService.h 36418 2011-03-24 22:53:13Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -211,7 +211,13 @@ public:
     virtual int releaseDevice(HostUSBDevice *aDevice);
 
 protected:
+#ifdef TESTCASE
+    virtual
+#endif
     int initUsbfs(void);
+#ifdef TESTCASE
+    virtual
+#endif
     int initSysfs(void);
     void doUsbfsCleanupAsNeeded(void);
     virtual int wait(RTMSINTERVAL aMillies);
