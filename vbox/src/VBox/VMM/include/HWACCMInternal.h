@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 41189 2012-05-07 15:39:30Z vboxsync $ */
+/* $Id: HWACCMInternal.h 41190 2012-05-07 15:42:59Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -39,8 +39,6 @@
 
 #define VMX_USE_CACHED_VMCS_ACCESSES
 #define HWACCM_VMX_EMULATE_REALMODE
-#define HWACCM_VTX_WITH_EPT
-#define HWACCM_VTX_WITH_VPID
 
 
 #if 0
