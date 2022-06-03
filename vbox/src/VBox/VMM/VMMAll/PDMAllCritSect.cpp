@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 36251 2011-03-10 13:42:19Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
@@ -489,6 +489,7 @@ VMMDECL(void) PDMCritSectLeave(PPDMCRITSECT pCritSect)
         ASMAtomicDecS32(&pCritSect->s.Core.cNestings);
         Assert(pCritSect->s.Core.cNestings >= 1);
         ASMAtomicDecS32(&pCritSect->s.Core.cLockers);
+        Assert(pCritSect->s.Core.cLockers >= 0);
         return;
     }
 
