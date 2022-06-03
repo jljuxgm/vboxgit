@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 41980 2012-07-02 09:20:28Z vboxsync $ */
+/* $Id: slirp_dns.c 42137 2012-07-13 09:41:27Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -318,6 +318,17 @@ int slirpInitializeDnsSettings(PNATState pData)
             pData->fUseHostResolver = 1;
         else
             dnsproxy_init(pData);
+
+        if (!pData->fUseHostResolver)
+        {
+            struct dns_entry *pDNSEntry = NULL;
+            int cDNSListEntry = 0;
+            TAILQ_FOREACH_REVERSE(pDNSEntry, &pData->pDnsList, dns_list_head, de_list)
+            {
+                LogRel(("NAT: DNS#%i: %RTnaipv4\n", cDNSListEntry, pDNSEntry->de_addr.s_addr));
+                cDNSListEntry++;
+            }
+        }
     }
 
     LogFlowFuncLeaveRC(rc);
