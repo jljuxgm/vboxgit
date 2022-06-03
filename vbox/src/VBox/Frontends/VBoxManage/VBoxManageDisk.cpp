@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 40736 2012-04-02 04:04:25Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 40905 2012-04-13 16:06:50Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -496,7 +496,7 @@ int handleModifyHardDisk(HandlerArg *a)
                 if (!FilenameOrUuid)
                     FilenameOrUuid = ValueUnion.psz;
                 else
-                    return errorSyntax(USAGE_CREATEHD, "Invalid parameter '%s'", ValueUnion.psz);
+                    return errorSyntax(USAGE_MODIFYHD, "Invalid parameter '%s'", ValueUnion.psz);
                 break;
 
             default:
