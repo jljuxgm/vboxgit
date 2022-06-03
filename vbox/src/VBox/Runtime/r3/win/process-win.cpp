@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 39842 2012-01-23 18:21:18Z vboxsync $ */
+/* $Id: process-win.cpp 39846 2012-01-23 23:50:24Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -945,7 +945,7 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
                                         /* In case there were some handles left open, we want to know about
                                          * that -- can be tricky to debug later! */
                                         DWORD dwErr2 = GetLastError();
-                                        AssertMsgFailed(("Unloading user profile failed with error %ld", dwErr2));
+                                        AssertMsgFailed(("Unloading user profile failed with error %u (%#x)", dwErr2, dwErr2));
                                         if (dwErr == NO_ERROR)
                                             dwErr = dwErr2;
                                     }
@@ -964,9 +964,8 @@ static int rtProcCreateAsUserHlp(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUT
 
     if (   RT_SUCCESS(rc)
         && dwErr != NO_ERROR)
-    {
         rc = rtProcMapErrorCodes(dwErr);
-    }
+
     return rc;
 }
 
