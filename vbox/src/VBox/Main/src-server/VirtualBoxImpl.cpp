@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 40179 2012-02-20 15:03:06Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 40180 2012-02-20 15:04:04Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1373,7 +1373,7 @@ void sanitiseMachineFilename(Utf8Str &strName)
         { ' ', ' ', '(', ')', '-', '.', '0', '9', 'A', 'Z', 'a', 'z', '_', '_',
           0xa0, 0xd7af, '\0' };
     char *pszName = strName.mutableRaw();
-    Assert(RTStrPurgeComplementSet(pszName, aCpSet, '_') > 0);
+    Assert(RTStrPurgeComplementSet(pszName, aCpSet, '_') >= 0);
     /* No leading dot or dash. */
     if (pszName[0] == '.' || pszName[0] == '-')
         pszName[0] = '_';
