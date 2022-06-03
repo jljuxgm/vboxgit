@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 39021 2011-10-18 15:10:13Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 39022 2011-10-18 16:17:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -218,7 +218,9 @@ void UIMachineViewNormal::maybeResendResizeHint()
 
         /* We send a guest size hint if needed to reverse a transition
          * to fullscreen or seamless. */
-        QString strHintSent = machine.GetExtraData(VBoxDefs::GUI_LastGuestSizeHintWasFullscreen);
+        QString strKey = makeExtraDataKeyPerMonitor
+                             (VBoxDefs::GUI_LastGuestSizeHintWasFullscreen);
+        QString strHintSent = machine.GetExtraData(strKey);
         if (!strHintSent.isEmpty())
             sltPerformGuestResize(guestSizeHint());
     }
