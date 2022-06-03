@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 37076 2011-05-13 15:09:20Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -459,7 +459,7 @@ static int vboxNetAdpSolarisSetMacAddress(gld_mac_info_t *pMacInfo, unsigned cha
 
 static int vboxNetAdpSolarisSend(gld_mac_info_t *pMacInfo, mblk_t *pMsg)
 {
-    freemsg(pMsg);
+    freemsgchain(pMsg);
     return GLD_SUCCESS;
 }
 
