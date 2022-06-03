@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39959 2012-02-02 17:11:50Z vboxsync $
+# $Id: Makefile.kmk 40019 2012-02-07 13:46:41Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -271,6 +271,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	VBOX_HGCM_HOST_CODE \
  	VBOX_WITH_HGCM \
  	$(if $(VBOX_BIOS_DMI_FALLBACK),VBOX_BIOS_DMI_FALLBACK,) \
+	VBOX_WITH_DMI_CHASSIS \
 	VBOX_WITH_DMI_OEMSTRINGS
 
  DevicesR3_DEFS.linux   += _GNU_SOURCE
