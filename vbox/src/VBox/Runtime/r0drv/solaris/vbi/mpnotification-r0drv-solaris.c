@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-solaris.c 37274 2011-05-31 11:47:51Z vboxsync $ */
+/* $Id: mpnotification-r0drv-solaris.c 40227 2012-02-23 11:15:37Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Solaris.
  */
@@ -92,7 +92,20 @@ static void rtMpNotificationSolarisCallback(void *pvUser, int iCpu, int online)
     if (fRunningOnTargetCpu)
         rtMpNotificationSolarisOnCurrentCpu(&Args, NULL /* pvIgnored1 */, NULL /* pvIgnored2 */);
     else
-        vbi_execute_on_one(rtMpNotificationSolarisOnCurrentCpu, &Args, iCpu);
+    {
+        if (online)
+            vbi_execute_on_one(rtMpNotificationSolarisOnCurrentCpu, &Args, iCpu);
+        else
+        {
+            /*
+             * Since we don't absolutely need to do CPU bound code in any of the CPU offline
+             * notification hooks, run it on the current CPU. Scheduling a callback to execute
+             * on the CPU going offline at this point is too late and will not work reliably.
+             */
+            RTCpuSetDel(&g_rtMpSolarisCpuSet, iCpu);
+            rtMpNotificationDoCallbacks(RTMPEVENT_OFFLINE, iCpu);
+        }
+    }
 
     vbi_preempt_enable();
 }
