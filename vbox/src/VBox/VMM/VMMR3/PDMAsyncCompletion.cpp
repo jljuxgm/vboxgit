@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 39717 2012-01-07 02:05:36Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1488,8 +1488,8 @@ VMMR3DECL(int) PDMR3AsyncCompletionBwMgrSetMaxForFile(PVM pVM, const char *pcszB
          * Set the new value for the start and max value to let the manager pick up
          * the new limit immediately.
          */
-        ASMAtomicXchgU32(&pBwMgr->cbTransferPerSecMax, cbMaxNew);
-        ASMAtomicXchgU32(&pBwMgr->cbTransferPerSecStart, cbMaxNew);
+        ASMAtomicWriteU32(&pBwMgr->cbTransferPerSecMax, cbMaxNew);
+        ASMAtomicWriteU32(&pBwMgr->cbTransferPerSecStart, cbMaxNew);
     }
     else
         rc = VERR_NOT_FOUND;
