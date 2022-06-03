@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.h 36993 2011-05-06 21:53:21Z vboxsync $ */
+/* $Id: USBGetDevices.h 37618 2011-06-23 17:16:39Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -83,6 +83,26 @@ RT_C_DECLS_BEGIN
 extern bool USBProxyLinuxCheckDeviceRoot(const char *pcszRoot,
                                          bool fIsDeviceNodes);
 
+#ifdef UNIT_TEST
+void TestUSBSetupInit(const char *pcszUsbfsRoot, bool fUsbfsAccessible,
+                      const char *pcszDevicesRoot, bool fDevicesAccessible,
+                      int rcMethodInitResult);
+void TestUSBSetEnv(const char *pcszEnvUsb, const char *pcszEnvUsbRoot);
+#endif
+
+/**
+ * Selects the access method that will be used to access USB devices based on
+ * what is available on the host and what if anything the user has specified
+ * in the environment.
+ * @returns iprt status value
+ * @param  pfUsingUsbfsDevices  on success this will be set to true if 
+ *                              the prefered access method is USBFS-like and to
+ *                              false if it is sysfs/device node-like
+ * @param  ppcszDevicesRoot     on success the root of the tree of USBFS-like
+ *                              device nodes will be stored here
+ */
+extern int USBProxyLinuxChooseMethod(bool *pfUsingUsbfsDevices,
+                                     const char **ppcszDevicesRoot);
 #ifdef UNIT_TEST
 /**
  * Specify the list of devices that will appear to be available through
