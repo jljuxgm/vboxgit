@@ -1,4 +1,4 @@
-/* $Id: ip_output.c 38069 2011-07-19 12:44:28Z vboxsync $ */
+/* $Id: ip_output.c 38110 2011-07-22 04:52:59Z vboxsync $ */
 /** @file
  * NAT - IP output.
  */
@@ -141,6 +141,7 @@ ip_output0(PNATState pData, struct socket *so, struct mbuf *m0, int urg)
     }
 #endif
     ip = mtod(m, struct ip *);
+    LogFunc(("ip(src:%RTnaipv4, dst:%RTnaipv4)\n", ip->ip_src, ip->ip_dst));
     /*
      * Fill in IP header.
      */

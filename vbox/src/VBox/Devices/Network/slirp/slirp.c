@@ -1,4 +1,4 @@
-/* $Id: slirp.c 38109 2011-07-22 03:42:21Z vboxsync $ */
+/* $Id: slirp.c 38110 2011-07-22 04:52:59Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -2080,7 +2080,7 @@ void slirp_arp_who_has(PNATState pData, uint32_t dst)
     struct mbuf *m;
     struct ethhdr *ehdr;
     struct arphdr *ahdr;
-    LogFunc(("ENTER: %RTnaipv4\n", dst));
+    LogFlowFunc(("ENTER: %RTnaipv4\n", dst));
 
     m = m_getcl(pData, M_NOWAIT, MT_HEADER, M_PKTHDR);
     if (m == NULL)
