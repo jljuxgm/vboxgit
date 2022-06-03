@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 40829 2012-04-08 19:22:23Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 40907 2012-04-13 20:50:14Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -762,7 +762,8 @@ static const REMPARMDESC g_aArgsPDMIsaSetIrq[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t),            NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t),            NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t),            NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t),           NULL }
 };
 static const REMPARMDESC g_aArgsPDMR3CritSectInit[] =
 {

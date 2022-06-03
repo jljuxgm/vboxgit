@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 40907 2012-04-13 20:50:14Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4451,7 +4451,7 @@ uint64_t cpu_get_tsc(CPUX86State *env)
 
 void cpu_set_ferr(CPUX86State *env)
 {
-    int rc = PDMIsaSetIrq(env->pVM, 13, 1);
+    int rc = PDMIsaSetIrq(env->pVM, 13, 1, 0 /*uTagSrc*/);
     LogFlow(("cpu_set_ferr: rc=%d\n", rc)); NOREF(rc);
 }
 
