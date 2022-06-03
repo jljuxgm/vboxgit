@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40366 2012-03-05 20:09:02Z vboxsync $
+# $Id: Makefile.kmk 41188 2012-05-07 15:13:59Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -152,7 +152,7 @@ VBOX_ADD_STRIP_MOD.linux = \
 	vboxvideo_drv_110.so \
 	vboxvideo_drv_111.so \
 	vboxvideo_drv_112.so \
-	pam_vbox.so \
+	$(if $(VBOX_WITH_PAM),pam_vbox.so,) \
 	mount.vboxsf
 
 VBOX_ADD_MOD.linux = \
