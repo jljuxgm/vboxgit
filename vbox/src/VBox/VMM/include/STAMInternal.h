@@ -1,4 +1,4 @@
-/* $Id: STAMInternal.h 39917 2012-01-31 14:04:52Z vboxsync $ */
+/* $Id: STAMInternal.h 39947 2012-02-02 00:48:42Z vboxsync $ */
 /** @file
  * STAM Internal Header.
  */
@@ -108,9 +108,13 @@ typedef struct STAMUSERPERVM
     /** The number of registered host CPU leaves. */
     uint32_t                cRegisteredHostCpus;
 
+    /** Explicit alignment padding. */
+    uint32_t                uAlignment;
     /** The copy of the GMM statistics. */
     GMMSTATS                GMMStats;
 } STAMUSERPERVM;
+AssertCompileMemberAlignment(STAMUSERPERVM, GMMStats, 8);
+
 /** Pointer to the STAM data kept in the UVM. */
 typedef STAMUSERPERVM *PSTAMUSERPERVM;
 
