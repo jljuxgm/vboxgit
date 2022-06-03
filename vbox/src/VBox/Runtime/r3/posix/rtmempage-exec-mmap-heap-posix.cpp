@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-heap-posix.cpp 40306 2012-03-01 01:16:36Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-heap-posix.cpp 40307 2012-03-01 01:17:46Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with heap.
  */
@@ -150,8 +150,11 @@ static RTHEAPPAGE   g_MemExecPosixHeap;
  */
 # define INCL_BASE
 # include <os2.h>
+# undef  MAP_PRIVATE    
 # define MAP_PRIVATE    0
+# undef  MAP_ANONYMOUS  
 # define MAP_ANONYMOUS  0
+# undef  MAP_FAILED
 # define MAP_FAILED  (void *)-1
 # undef mmap
 # define mmap   iprt_mmap  
