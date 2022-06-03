@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 36768 2011-04-20 18:33:29Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 36769 2011-04-20 18:51:05Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -7712,7 +7712,6 @@ FNIEMOP_DEF(iemOp_std)
 FNIEMOP_DEF(iemOp_Grp4)
 {
     uint8_t bRm; IEM_OPCODE_GET_NEXT_BYTE(pIemCpu, &bRm);
-    PCIEMOPUNARYSIZES pImpl;
     switch ((bRm >> X86_MODRM_REG_SHIFT) & X86_MODRM_REG_SMASK)
     {
         case 0:
