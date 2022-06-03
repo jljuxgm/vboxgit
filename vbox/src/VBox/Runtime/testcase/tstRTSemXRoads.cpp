@@ -1,4 +1,4 @@
-/* $Id: tstRTSemXRoads.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTSemXRoads.cpp 41001 2012-04-20 07:07:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads.
  */
@@ -124,13 +124,13 @@ static void tstTraffic(unsigned cThreads, unsigned cSecs)
     int rc = VINF_SUCCESS;
     for (unsigned i = 0; i < cThreads && RT_SUCCESS(rc); i++)
     {
-        rc = RTThreadCreateF(&ahThreadsX[i], tstTrafficNSThread, (void *)i, 0, RTTHREADTYPE_DEFAULT, RTTHREADFLAGS_WAITABLE, "NS-%u", i);
+        rc = RTThreadCreateF(&ahThreadsX[i], tstTrafficNSThread, (void *)(uintptr_t)i, 0, RTTHREADTYPE_DEFAULT, RTTHREADFLAGS_WAITABLE, "NS-%u", i);
         RTTEST_CHECK_RC_OK(g_hTest, rc);
     }
 
     for (unsigned i = 0; i < cThreads && RT_SUCCESS(rc); i++)
     {
-        rc = RTThreadCreateF(&ahThreadsX[i], tstTrafficEWThread, (void *)i, 0, RTTHREADTYPE_DEFAULT, RTTHREADFLAGS_WAITABLE, "NS-%u", i);
+        rc = RTThreadCreateF(&ahThreadsX[i], tstTrafficEWThread, (void *)(uintptr_t)i, 0, RTTHREADTYPE_DEFAULT, RTTHREADFLAGS_WAITABLE, "NS-%u", i);
         RTTEST_CHECK_RC_OK(g_hTest, rc);
     }
 
