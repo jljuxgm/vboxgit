@@ -1,4 +1,4 @@
-/* $Id: ministring.cpp 39903 2012-01-27 19:05:59Z vboxsync $ */
+/* $Id: ministring.cpp 40417 2012-03-09 21:55:31Z vboxsync $ */
 /** @file
  * IPRT - Mini C++ string class.
  *
@@ -234,10 +234,13 @@ size_t RTCString::count(char ch) const
 
     size_t      c   = 0;
     const char *psz = m_psz;
-    char        chCur;
-    while ((chCur = *psz++) != '\0')
-        if (chCur == ch)
-            c++;
+    if (psz)
+    {
+        char    chCur;
+        while ((chCur = *psz++) != '\0')
+            if (chCur == ch)
+                c++;
+    }
     return c;
 }
 
