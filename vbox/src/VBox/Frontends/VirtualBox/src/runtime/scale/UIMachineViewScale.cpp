@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 38962 2011-10-06 20:37:52Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 38963 2011-10-06 21:16:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -174,9 +174,6 @@ bool UIMachineViewScale::event(QEvent *pEvent)
             /* Perform framebuffer resize: */
             frameBuffer()->setScaledSize(size());
             frameBuffer()->resizeEvent(pResizeEvent);
-
-            /* Store the new size to prevent unwanted resize hints being sent back: */
-            storeConsoleSize(pResizeEvent->width(), pResizeEvent->height());
 
             /* Let our toplevel widget calculate its sizeHint properly: */
             QCoreApplication::sendPostedEvents(0, QEvent::LayoutRequest);
@@ -354,7 +351,7 @@ void UIMachineViewScale::prepareConnections()
 
 void UIMachineViewScale::saveMachineViewSettings()
 {
-    /* Store guest size hint: */
+    /* Store guest size in case we are switching to fullscreen: */
     storeGuestSizeHint(QSize(frameBuffer()->width(), frameBuffer()->height()));
 }
 
