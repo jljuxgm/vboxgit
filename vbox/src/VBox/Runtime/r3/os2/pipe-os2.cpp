@@ -1,4 +1,4 @@
-/* $Id: pipe-os2.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: pipe-os2.cpp 39690 2011-12-30 13:06:50Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, OS/2 Implementation.
  */
@@ -90,6 +90,12 @@ RTDECL(int) RTPipeFlush(RTPIPE hPipe)
 
 
 RTDECL(int) RTPipeSelectOne(RTPIPE hPipe, RTMSINTERVAL cMillies)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
+RTDECL(int) RTPipeQueryReadable(RTPIPE hPipe, size_t *pcbReadable)
 {
     return VERR_NOT_IMPLEMENTED;
 }

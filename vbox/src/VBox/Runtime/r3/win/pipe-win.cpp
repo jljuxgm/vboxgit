@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 34119 2010-11-16 15:33:25Z vboxsync $ */
+/* $Id: pipe-win.cpp 39690 2011-12-30 13:06:50Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -1141,6 +1141,29 @@ RTDECL(int) RTPipeSelectOne(RTPIPE hPipe, RTMSINTERVAL cMillies)
 
     if (rc == VERR_BROKEN_PIPE)
         pThis->fBrokenPipe = true;
+
+    RTCritSectLeave(&pThis->CritSect);
+    return rc;
+}
+
+
+RTDECL(int) RTPipeQueryReadable(RTPIPE hPipe, size_t *pcbReadable)
+{
+    RTPIPEINTERNAL *pThis = hPipe;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTPIPE_MAGIC, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->fRead, VERR_PIPE_NOT_READ);
+    AssertPtrReturn(pcbReadable, VERR_INVALID_POINTER);
+
+    int rc = RTCritSectEnter(&pThis->CritSect);
+    if (RT_FAILURE(rc))
+        return rc;
+
+    DWORD cbAvailable = 0;
+    if (PeekNamedPipe(pThis->hPipe, NULL, 0, NULL, &cbAvailable, NULL)
+        *pcbReadable = cbAvailable;
+    else
+        rc = RTErrConvertFromWin32(GetLastError());
 
     RTCritSectLeave(&pThis->CritSect);
     return rc;
