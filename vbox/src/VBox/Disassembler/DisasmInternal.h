@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 41790 2012-06-16 20:33:45Z vboxsync $ */
+/* $Id: DisasmInternal.h 41796 2012-06-17 01:40:36Z vboxsync $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -70,7 +70,8 @@
 #define IDX_ParseThreeByteEsc4      38
 #define IDX_ParseThreeByteEsc5      39
 #define IDX_ParseImmAddrF           40
-#define IDX_ParseMax                (IDX_ParseImmAddrF+1)
+#define IDX_ParseInvOpModRM         41
+#define IDX_ParseMax                (IDX_ParseInvOpModRM+1)
 /** @}  */
 
 
