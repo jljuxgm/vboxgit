@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 36405 2011-03-24 15:57:03Z vboxsync $ */
+/* $Id: Settings.cpp 36521 2011-04-04 12:24:23Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -693,7 +693,7 @@ void ConfigFileBase::readMedium(MediaType t,
             // DVD and floppy images before 1.11 had no format attribute. assign the default.
             med.strFormat = "RAW";
         }
-    
+
         if (t == DVDImage)
             med.hdType = MediumType_Readonly;
         else if (t == FloppyImage)
@@ -4458,9 +4458,9 @@ AudioDriverType_T MachineConfigFile::getHostDefaultAudioDriver()
     return AudioDriverType_SolAudio;
 #elif defined(RT_OS_LINUX)
     // on Linux, we need to check at runtime what's actually supported...
-    static RTLockMtx s_mtx;
+    static RTCLockMtx s_mtx;
     static AudioDriverType_T s_linuxDriver = -1;
-    RTLock lock(s_mtx);
+    RTCLock lock(s_mtx);
     if (s_linuxDriver == (AudioDriverType_T)-1)
     {
 # if defined(VBOX_WITH_PULSE)
@@ -4472,9 +4472,9 @@ AudioDriverType_T MachineConfigFile::getHostDefaultAudioDriver()
 # endif /* VBOX_WITH_PULSE */
 # if defined(VBOX_WITH_ALSA)
             /* Check if we can load the ALSA library */
-            if (RTLdrIsLoadable("libasound.so.2"))
+             if (RTLdrIsLoadable("libasound.so.2"))
                 s_linuxDriver = AudioDriverType_ALSA;
-       else
+        else
 # endif /* VBOX_WITH_ALSA */
             s_linuxDriver = AudioDriverType_OSS;
     }
