@@ -1,4 +1,4 @@
-/* $Id: udp.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: udp.h 39894 2012-01-27 06:35:38Z vboxsync $ */
 /** @file
  * NAT - UDP protocol (declarations/defines).
  */
@@ -124,7 +124,7 @@ struct mbuf;
 void udp_init (PNATState);
 void udp_input (PNATState, register struct mbuf *, int);
 int udp_output (PNATState, struct socket *, struct mbuf *, struct sockaddr_in *);
-int udp_attach (PNATState, struct socket *, int service_port);
+int udp_attach (PNATState, struct socket *);
 void udp_detach (PNATState, struct socket *);
 u_int8_t udp_tos (struct socket *);
 void udp_emu (PNATState, struct socket *, struct mbuf *);

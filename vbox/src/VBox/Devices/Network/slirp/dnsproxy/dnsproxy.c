@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 37746 2011-07-04 06:07:37Z vboxsync $ */
+/* $Id: dnsproxy.c 39894 2012-01-27 06:35:38Z vboxsync $ */
 /*
  * Copyright (c) 2003,2004,2005 Armin Wolfermann
  *
@@ -126,7 +126,7 @@ timeout(PNATState pData, struct socket *so, void *arg)
             LogRel(("NAT: can't create DNS socket\n"));
             return;
         }
-        if(udp_attach(pData, so1, 0) == -1)
+        if(udp_attach(pData, so1) == -1)
         {
             LogRel(("NAT: can't attach udp socket\n"));
             sofree(pData, so1);
