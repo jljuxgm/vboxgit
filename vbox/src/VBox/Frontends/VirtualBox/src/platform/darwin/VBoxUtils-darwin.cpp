@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 35865 2011-02-07 11:44:20Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 36534 2011-04-04 15:00:49Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -20,6 +20,7 @@
 #include "UICocoaApplication.h"
 
 #include <iprt/mem.h>
+#include <iprt/assert.h>
 
 #include <QMainWindow>
 #include <QApplication>
