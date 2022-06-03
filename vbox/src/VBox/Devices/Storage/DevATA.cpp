@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 38661 2011-09-06 15:18:07Z vboxsync $ */
+/* $Id: DevATA.cpp 38664 2011-09-06 16:11:24Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3769,11 +3769,15 @@ static void ataParseCmd(ATADevState *s, uint8_t cmd)
                 if (s->fATAPI)
                     ataSetSignature(s);
                 ataCmdError(s, ABRT_ERR);
+                ataUnsetStatus(s, ATA_STAT_READY);
                 ataSetIRQ(s); /* Shortcut, do not use AIO thread. */
             }
             break;
-        case ATA_INITIALIZE_DEVICE_PARAMETERS:
         case ATA_RECALIBRATE:
+            if (s->fATAPI)
+                goto abort_cmd;
+            /* fall through */
+        case ATA_INITIALIZE_DEVICE_PARAMETERS:
             ataCmdOK(s, ATA_STAT_SEEK);
             ataSetIRQ(s); /* Shortcut, do not use AIO thread. */
             break;
@@ -3990,6 +3994,8 @@ static void ataParseCmd(ATADevState *s, uint8_t cmd)
         default:
         abort_cmd:
             ataCmdError(s, ABRT_ERR);
+            if (s->fATAPI)
+                ataUnsetStatus(s, ATA_STAT_READY);
             ataSetIRQ(s); /* Shortcut, do not use AIO thread. */
             break;
     }
