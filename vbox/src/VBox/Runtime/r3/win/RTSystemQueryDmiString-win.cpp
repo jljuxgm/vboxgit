@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-win.cpp 34510 2010-11-30 13:22:33Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-win.cpp 36438 2011-03-25 16:11:44Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, windows ring-3.
  */
@@ -61,6 +61,8 @@ static HRESULT rtSystemDmiWinInitialize(void)
                                    NULL);                       /* Reserved. */
         if (hrc == RPC_E_TOO_LATE)
             hrc = S_OK;
+        else if (FAILED())
+            CoUninitialize();
     }
     return hrc;
 }
