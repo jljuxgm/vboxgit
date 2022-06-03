@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 40081 2012-02-12 12:57:42Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 40358 2012-03-05 14:40:52Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
@@ -302,6 +302,9 @@ static int handleMetricsSetup(int argc, char *argv[],
         SetupMetrics(ComSafeArrayAsInParam(metrics),
                      ComSafeArrayAsInParam(objects), period, samples,
                      ComSafeArrayAsOutParam(affectedMetrics)));
+    if (FAILED(rc))
+        return 2;
+
     if (listMatches)
         listAffectedMetrics(aVirtualBox,
                             ComSafeArrayAsInParam(affectedMetrics));
@@ -474,6 +477,9 @@ static int handleMetricsCollect(int argc, char *argv[],
         SetupMetrics(ComSafeArrayAsInParam(baseMetrics),
                      ComSafeArrayAsInParam(objects), period, samples,
                      ComSafeArrayAsOutParam(affectedMetrics)));
+    if (FAILED(rc))
+        return 2;
+
     if (listMatches)
         listAffectedMetrics(aVirtualBox,
                             ComSafeArrayAsInParam(affectedMetrics));
@@ -580,6 +586,9 @@ static int handleMetricsEnable(int argc, char *argv[],
         EnableMetrics(ComSafeArrayAsInParam(metrics),
                       ComSafeArrayAsInParam(objects),
                       ComSafeArrayAsOutParam(affectedMetrics)));
+    if (FAILED(rc))
+        return 2;
+
     if (listMatches)
         listAffectedMetrics(aVirtualBox,
                             ComSafeArrayAsInParam(affectedMetrics));
@@ -622,6 +631,9 @@ static int handleMetricsDisable(int argc, char *argv[],
         DisableMetrics(ComSafeArrayAsInParam(metrics),
                        ComSafeArrayAsInParam(objects),
                        ComSafeArrayAsOutParam(affectedMetrics)));
+    if (FAILED(rc))
+        return 2;
+
     if (listMatches)
         listAffectedMetrics(aVirtualBox,
                             ComSafeArrayAsInParam(affectedMetrics));

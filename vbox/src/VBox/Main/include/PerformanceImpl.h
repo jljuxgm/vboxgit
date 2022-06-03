@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 36128 2011-03-02 05:44:04Z vboxsync $ */
+/* $Id: PerformanceImpl.h 40358 2012-03-05 14:40:52Z vboxsync $ */
 
 /** @file
  *
@@ -194,6 +194,8 @@ private:
     static void staticSamplerCallback (RTTIMERLR hTimerLR, void *pvUser, uint64_t iTick);
     void samplerCallback(uint64_t iTick);
 
+    const Utf8Str& getFailedGuestName();
+
     typedef std::list<pm::Metric*> MetricList;
     typedef std::list<pm::BaseMetric*> BaseMetricList;
 
@@ -203,6 +205,7 @@ private:
     };
 
     unsigned int mMagic;
+    const Utf8Str mUnknownGuest;
 
     struct Data
     {
