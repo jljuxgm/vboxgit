@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 38070 2011-07-19 14:04:25Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 38099 2011-07-21 13:39:27Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -281,8 +281,8 @@ static int parseCloneMode(const char *psz, CloneMode_T *pMode)
 {
     if (!RTStrICmp(psz, "machine"))
         *pMode = CloneMode_MachineState;
-//    else if (!RTStrICmp(psz, "machineandchildren"))
-//        *pMode = CloneMode_MachineAndChildStates;
+    else if (!RTStrICmp(psz, "machineandchildren"))
+        *pMode = CloneMode_MachineAndChildStates;
     else if (!RTStrICmp(psz, "all"))
         *pMode = CloneMode_AllStates;
     else

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 38056 2011-07-19 09:03:26Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38099 2011-07-21 13:39:27Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6253,12 +6253,6 @@ STDMETHODIMP Machine::CloneTo(IMachine *pTarget, CloneMode_T mode, ComSafeArrayI
 
     CheckComArgNotNull(pTarget);
     CheckComArgOutPointerValid(pProgress);
-
-    /** @todo r=klaus disabled as there are apparently still cases which are
-     * not handled correctly */
-    if (mode == CloneMode_MachineAndChildStates)
-        return setError(VBOX_E_NOT_SUPPORTED,
-                        tr("The clone mode \"Machine and child states\" is not yet supported. Please try again in the next VirtualBox maintenance update"));
 
     /* Convert the options. */
     RTCList<CloneOptions_T> optList;
