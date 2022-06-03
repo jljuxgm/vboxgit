@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 39264 2011-11-10 15:15:21Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -898,8 +898,8 @@ void FwCommonPlantMpsTable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, 
         pProcEntry++;
     }
 
-    uint32_t iBusIdPci0 = 0;
-    uint32_t iBusIdIsa  = 1;
+    uint32_t iBusIdIsa  = 0;
+    uint32_t iBusIdPci0 = 1;
 
     /* ISA bus */
     PMPSBUSENTRY pBusEntry         = (PMPSBUSENTRY)pProcEntry;
