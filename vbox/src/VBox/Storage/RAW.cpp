@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 39519 2011-12-02 21:12:21Z vboxsync $ */
+/* $Id: RAW.cpp 40399 2012-03-08 13:08:13Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -71,8 +71,8 @@ typedef struct RAWIMAGE
 /** Size of write operations when filling an image with zeroes. */
 #define RAW_FILL_SIZE (128 * _1K)
 
-/** The maximum reasonable size of a floppy image. */
-#define RAW_MAX_FLOPPY_IMG_SIZE (512 * 82 * 24 * 2)
+/** The maximum reasonable size of a floppy image (big format 2.88MB medium). */
+#define RAW_MAX_FLOPPY_IMG_SIZE (512 * 82 * 48 * 2)
 
 /*******************************************************************************
 *   Static Variables                                                           *
