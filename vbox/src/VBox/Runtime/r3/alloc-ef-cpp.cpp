@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-cpp.cpp 31252 2010-07-30 15:38:52Z vboxsync $ */
+/* $Id: alloc-ef-cpp.cpp 39087 2011-10-24 10:05:00Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
@@ -28,9 +28,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "alloc-ef.h"
-
-#if defined(RTALLOC_EFENCE_CPP) \
- || (defined(RTMEM_WRAP_TO_EF_APIS) && !defined(RTMEM_NO_WRAP_TO_EF_APIS)) /* rest of the file */
 
 #include <iprt/asm.h>
 #include <new>
@@ -119,4 +116,4 @@ void RT_EF_CDECL operator delete[](void *pv, const std::nothrow_t &) throw()
     rtR3MemFree("delete[] nothrow", RTMEMTYPE_DELETE_ARRAY, pv, ASMReturnAddress(), NULL, 0, NULL);
 }
 
-#endif /* RTALLOC_EFENCE_CPP || RTMEM_WRAP_TO_EF_APIS */
+
