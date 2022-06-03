@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 39898 2012-01-27 15:27:29Z vboxsync $ */
+/* $Id: GuestImpl.cpp 40020 2012-02-07 16:02:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -117,10 +117,12 @@ void Guest::uninit()
 {
     LogFlowThisFunc(("\n"));
 
+    /* Enclose the state transition Ready->InUninit->NotReady */
+    AutoUninitSpan autoUninitSpan(this);
+    if (autoUninitSpan.uninitDone())
+        return;
+
 #ifdef VBOX_WITH_GUEST_CONTROL
-    /* r=poetzsch: Not sure if this is really right. Please note that
-     * IGuest::uninit is called twice (which I also consider a bug). So the
-     * test for uninitDone should be always first! */
     /* Scope write lock as much as possible. */
     {
         /*
@@ -143,15 +145,10 @@ void Guest::uninit()
         for (it = mCallbackMap.begin(); it != mCallbackMap.end(); it++)
             callbackDestroy(it->first);
 
-        /* Clear process map. */
+        /* Clear process map (remove all callbacks). */
         mGuestProcessMap.clear();
     }
 #endif
-
-    /* Enclose the state transition Ready->InUninit->NotReady */
-    AutoUninitSpan autoUninitSpan(this);
-    if (autoUninitSpan.uninitDone())
-        return;
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
     delete m_pGuestDnD;
