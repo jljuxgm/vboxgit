@@ -1,4 +1,4 @@
-/* $Id: cr_framebuffer.h 34107 2010-11-16 11:37:51Z vboxsync $ */
+/* $Id: cr_framebuffer.h 39815 2012-01-20 09:32:29Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: FBO related state info
@@ -66,6 +66,10 @@ typedef struct {
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectInit(CRContext *ctx);
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectDestroy(CRContext *ctx);
 DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectSwitch(CRContext *from, CRContext *to);
+
+DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectDisableHW(CRContext *ctx);
+DECLEXPORT(void) STATE_APIENTRY crStateFramebufferObjectReenableHW(CRContext *fromCtx, CRContext *toCtx);
+
 DECLEXPORT(GLuint) STATE_APIENTRY crStateGetFramebufferHWID(GLuint id);
 DECLEXPORT(GLuint) STATE_APIENTRY crStateGetRenderbufferHWID(GLuint id);
 
