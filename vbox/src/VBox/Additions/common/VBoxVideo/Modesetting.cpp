@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 35948 2011-02-11 23:24:57Z vboxsync $ */
+/* $Id: Modesetting.cpp 35999 2011-02-16 17:38:01Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -112,7 +112,7 @@ RTDECL(void) VBoxVideoSetModeRegisters(uint16_t cWidth, uint16_t cHeight,
     VBoxVideoCmnPortWriteUshort(VBE_DISPI_IOPORT_DATA, cBPP);
     /* enable the mode */
     VBoxVideoCmnPortWriteUshort(VBE_DISPI_IOPORT_INDEX,
-                                VBE_DISPI_INDEX_ENABLE | VBE_DISPI_LFB_ENABLED);
+                                VBE_DISPI_INDEX_ENABLE);
     VBoxVideoCmnPortWriteUshort(VBE_DISPI_IOPORT_DATA,
                                 fFlags | VBE_DISPI_ENABLED);
     /* Panning registers */
