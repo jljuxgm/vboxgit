@@ -1,4 +1,4 @@
-# $Id: VBoxPkg.dsc 39145 2011-10-31 02:51:46Z vboxsync $
+# $Id: VBoxPkg.dsc 39148 2011-10-31 11:03:45Z vboxsync $
 ## @file
 # VBoxPkg.dsc - VirtualBox Flash Device.
 #
@@ -314,7 +314,7 @@
   IntelFrameworkModulePkg/Universal/DataHubDxe/DataHubDxe.inf
   MdeModulePkg/Universal/EbcDxe/EbcDxe.inf
   PcAtChipsetPkg/8259InterruptControllerDxe/8259.inf
-  UefiCpuPkg/CpuIoDxe/CpuIo.inf
+  UefiCpuPkg/CpuIo2Dxe/CpuIo2Dxe.inf
   UefiCpuPkg/CpuDxe/CpuDxe.inf
   PcAtChipsetPkg/8254TimerDxe/8254Timer.inf
   PcAtChipsetPkg/PciHostBridgeDxe/PciHostBridgeDxe.inf
