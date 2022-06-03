@@ -1,4 +1,4 @@
-/* $Id: udp.c 39174 2011-11-02 12:16:09Z vboxsync $ */
+/* $Id: udp.c 39259 2011-11-10 08:29:39Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -403,7 +403,19 @@ int udp_output(PNATState pData, struct socket *so, struct mbuf *m,
         saddr.sin_addr.s_addr = so->so_faddr.s_addr;
         if ((so->so_faddr.s_addr & RT_H2N_U32(~pData->netmask)) == RT_H2N_U32(~pData->netmask))
         {
-            saddr.sin_addr.s_addr = addr->sin_addr.s_addr;
+            /**
+             * We haven't got real firewall but have got its submodule libalias.
+             */
+            m->m_flags |= M_SKIP_FIREWALL;
+            /**
+             * udp/137 port is used for NetBIOS lookup. for some reasons Windows guest rejects
+             * accept data from non-aliased server.
+             */
+            if (   (so->so_fport == so->so_lport)
+                && (so->so_fport == RT_H2N_U16(137)))
+                saddr.sin_addr.s_addr = alias_addr.s_addr;
+            else
+                saddr.sin_addr.s_addr = addr->sin_addr.s_addr;
             so->so_faddr.s_addr = addr->sin_addr.s_addr;
         }
     }
