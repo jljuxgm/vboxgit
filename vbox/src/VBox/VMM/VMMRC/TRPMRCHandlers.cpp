@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 40451 2012-03-13 16:13:54Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 40453 2012-03-13 18:38:06Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -520,8 +520,8 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         if (    Cpu.pCurInstr->opcode == OP_ILLUD2
             &&  PATMIsPatchGCAddr(pVM, pRegFrame->eip))
         {
-            LogFlow(("TRPMGCTrap06Handler: -> PATMGCHandleIllegalInstrTrap\n"));
-            rc = PATMGCHandleIllegalInstrTrap(pVM, pRegFrame);
+            LogFlow(("TRPMGCTrap06Handler: -> PATMRCHandleIllegalInstrTrap\n"));
+            rc = PATMRCHandleIllegalInstrTrap(pVM, pRegFrame);
             /** @todo  These tests are completely unnecessary, should just follow the
              *         flow and return at the end of the function. */
             if (    rc == VINF_SUCCESS
