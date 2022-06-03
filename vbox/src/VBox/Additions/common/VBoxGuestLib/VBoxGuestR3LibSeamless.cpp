@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSeamless.cpp 37174 2011-05-21 20:49:15Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSeamless.cpp 37378 2011-06-08 14:18:45Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
@@ -147,6 +147,9 @@ VBGLR3DECL(int) VbglR3SeamlessSendRects(uint32_t cRects, PRTRECT pRects)
     int rc;
 
     AssertReturn(pRects || (cRects == 0), VERR_INVALID_PARAMETER);
+    AssertReturn(sizeof(VMMDevVideoSetVisibleRegion)+(cRects-1)*sizeof(RTRECT)
+                 == ((uint64_t)sizeof(VMMDevVideoSetVisibleRegion))+(cRects-1)*sizeof(RTRECT), VERR_INVALID_PARAMETER);
+
     rc = vbglR3GRAlloc((VMMDevRequestHeader **)&pReq,
                          sizeof(VMMDevVideoSetVisibleRegion)
                        + cRects * sizeof(RTRECT) - sizeof(RTRECT),
