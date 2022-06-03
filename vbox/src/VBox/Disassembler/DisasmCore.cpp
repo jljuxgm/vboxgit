@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 41787 2012-06-16 20:08:56Z vboxsync $ */
+/* $Id: DisasmCore.cpp 41788 2012-06-16 20:11:35Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -2624,7 +2624,8 @@ static int disInstrWorker(PDISCPUSTATE pCpu, PCDISOPCODE paOneByteMap, uint32_t 
         }
 
         /* first opcode byte. */
-        pCpu->bOpCode = codebyte;
+        pCpu->bOpCode  = codebyte;
+        pCpu->cbPrefix = (uint8_t)offInstr - 1;
         offInstr += disParseInstruction(offInstr, &paOneByteMap[pCpu->bOpCode], pCpu);
         break;
     }
