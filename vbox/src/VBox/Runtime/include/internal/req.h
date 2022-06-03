@@ -1,4 +1,4 @@
-/* $Id: req.h 39499 2011-12-01 20:00:46Z vboxsync $ */
+/* $Id: req.h 39500 2011-12-01 20:26:48Z vboxsync $ */
 /** @file
  * IPRT - Internal RTReq header.
  */
@@ -36,7 +36,10 @@ RT_C_DECLS_BEGIN
  */
 typedef struct RTREQQUEUEINT
 {
-    /** @todo magic  */
+    /** Magic value (RTREQQUEUE_MAGIC). */
+    uint32_t                u32Magic;
+    /** Set if busy (pending or processing requests). */
+    bool volatile           fBusy;
     /** Head of the request queue. Atomic. */
     volatile PRTREQ         pReqs;
     /** The last index used during alloc/free. */
@@ -49,13 +52,14 @@ typedef struct RTREQQUEUEINT
      * The request can use this event semaphore to wait/poll for new requests.
      */
     RTSEMEVENT              EventSem;
-    /** Set if busy (pending or processing requests). */
-    bool volatile           fBusy;
 } RTREQQUEUEINT;
 
 /** Pointer to an internal queue instance. */
 typedef RTREQQUEUEINT *PRTREQQUEUEINT;
 
+
+
+DECLHIDDEN(int) rtReqProcessOne(PRTREQ pReq);
 
 RT_C_DECLS_END
 
