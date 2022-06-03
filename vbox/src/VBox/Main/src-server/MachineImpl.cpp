@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 41925 2012-06-27 14:04:09Z vboxsync $ */
+/* $Id: MachineImpl.cpp 41926 2012-06-27 14:38:52Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2556,17 +2556,25 @@ STDMETHODIMP Machine::COMGETTER(ClipboardMode)(ClipboardMode_T *aClipboardMode)
 STDMETHODIMP
 Machine::COMSETTER(ClipboardMode)(ClipboardMode_T aClipboardMode)
 {
+    HRESULT rc = S_OK;
+
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
+    alock.release();
+    rc = onClipboardModeChange(aClipboardMode);
+    alock.acquire();
+    if (FAILED(rc)) return rc;
+
     setModified(IsModified_MachineData);
     mHWData.backup();
     mHWData->mClipboardMode = aClipboardMode;
-
-    alock.release();
-    onClipboardModeChange(aClipboardMode);
+    
+    /* Save settings if online - todo why is this required?? */
+    if (Global::IsOnline(mData->mMachineState))
+        saveSettings(NULL);
 
     return S_OK;
 }
