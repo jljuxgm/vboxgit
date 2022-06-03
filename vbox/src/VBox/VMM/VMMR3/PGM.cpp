@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 36441 2011-03-25 21:11:56Z vboxsync $ */
+/* $Id: PGM.cpp 36627 2011-04-08 15:38:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2275,8 +2275,9 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 
         for (uint32_t iPage = 0; iPage < pDynMap->cPages; iPage++)
         {
-            paPages[iPage].pvPage  += offDelta;
-            paPages[iPage].uPte.pv += offDelta;
+            paPages[iPage].pvPage       += offDelta;
+            paPages[iPage].uPte.pLegacy += offDelta;
+            paPages[iPage].uPte.pPae    += offDelta;
         }
     }
 
