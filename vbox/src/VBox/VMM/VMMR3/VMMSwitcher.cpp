@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 41679 2012-06-13 10:12:23Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -838,10 +838,10 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
                 if (RT_SUCCESS(rc))
                 {
                     Cpu.uInstrAddr += uBase - (uintptr_t)pu8CodeR3;
-                    rc = DISFormatYasmEx(&Cpu, szDisas, sizeof(szDisas),
-                                         DIS_FMT_FLAGS_ADDR_LEFT | DIS_FMT_FLAGS_BYTES_LEFT | DIS_FMT_FLAGS_BYTES_SPACED
-                                         | DIS_FMT_FLAGS_RELATIVE_BRANCH,
-                                         NULL, NULL);
+                    DISFormatYasmEx(&Cpu, szDisas, sizeof(szDisas),
+                                    DIS_FMT_FLAGS_ADDR_LEFT | DIS_FMT_FLAGS_BYTES_LEFT | DIS_FMT_FLAGS_BYTES_SPACED
+                                    | DIS_FMT_FLAGS_RELATIVE_BRANCH,
+                                    NULL, NULL);
                 }
                 if (RT_SUCCESS(rc))
                     RTLogPrintf("  %04x: %s\n", offCode, szDisas);
