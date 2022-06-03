@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 39388 2011-11-21 15:54:36Z vboxsync $ */
+/* $Id: stream.cpp 39395 2011-11-22 13:19:22Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -683,7 +683,7 @@ static int rtStrmWriteLocked(PRTSTREAM pStream, const void *pvBuf, size_t cbWrit
                                 rc = RTErrConvertFromErrno(GetLastError());
                             break;
                         }
-                        if (cwcThis != 0)
+                        if (cwcThis != 1) /* Unable to write current char (amount)? */
                             break;
                         cwcWritten++;
                     }
