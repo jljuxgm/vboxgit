@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 39775 2012-01-17 11:03:12Z vboxsync $ */
+/* $Id: alias_dns.c 39776 2012-01-17 12:15:29Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -420,6 +420,9 @@ static void alterHostentWithDataFromDNSMap(PNATState pData, struct hostent *pHos
                     return;
                 }
                 LIST_INSERT_HEAD(&pData->DNSMapHead, pDnsMapping, MapList);
+                LogRel(("NAT: user-defined mapping %s: %RTnaipv4 is registered\n",
+                        pDnsMapping->pszCName ? pDnsMapping->pszCName : pDnsMapping->pszPattern,
+                        pDnsMapping->u32IpAddress));
             }
         }
         if (fMatch)
