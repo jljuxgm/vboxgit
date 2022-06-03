@@ -1,4 +1,4 @@
-/* $Revision: 42005 $ */
+/* $Revision: 42006 $ */
 /** @file
  * VBoxGuestLibR0 - IDC with VBoxGuest and HGCM helpers.
  */
@@ -174,7 +174,7 @@ bool vbglDriverIsOpened (VBGLDRIVER *pDriver)
 # ifdef RT_OS_WINDOWS
     return pDriver->pFileObject != NULL;
 # elif defined (RT_OS_OS2)
-    return pDriver->u32Session != UINT32_MAX;
+    return pDriver->u32Session != UINT32_MAX && pDriver->u32Session != 0;
 # else
     return pDriver->pvOpaque != NULL;
 # endif
