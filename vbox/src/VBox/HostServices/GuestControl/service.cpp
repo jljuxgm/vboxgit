@@ -1,4 +1,4 @@
-/* $Id: service.cpp 35035 2010-12-13 16:49:53Z vboxsync $ */
+/* $Id: service.cpp 36529 2011-04-04 13:54:13Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -149,7 +149,7 @@ typedef std::list< HostCmd >::const_iterator HostCmdListIterConst;
 /**
  * Class containing the shared information service functionality.
  */
-class Service : public iprt::non_copyable
+class Service : public RTCNonCopyable
 {
 private:
     /** Type definition for use in callback functions. */

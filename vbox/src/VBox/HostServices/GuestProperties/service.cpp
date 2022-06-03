@@ -1,4 +1,4 @@
-/* $Id: service.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: service.cpp 36529 2011-04-04 13:54:13Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -146,7 +146,7 @@ typedef std::list <GuestCall> CallList;
 /**
  * Class containing the shared information service functionality.
  */
-class Service : public iprt::non_copyable
+class Service : public RTCNonCopyable
 {
 private:
     /** Type definition for use in callback functions */
