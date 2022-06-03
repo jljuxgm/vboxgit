@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 38996 2011-10-14 12:59:50Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38999 2011-10-17 07:41:42Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -479,7 +479,6 @@ HRESULT Machine::init(VirtualBox *aParent,
     return rc;
 }
 
-#include <iprt/cpp/autores.h>
 /**
  *  Initializes a new instance from a machine config that is already in memory
  *  (import OVF case). Since we are importing, the UUID in the machine
