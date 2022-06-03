@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 38453 2011-08-15 09:06:02Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 38456 2011-08-15 10:16:40Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1633,10 +1633,22 @@ static int handleCtrlCopyTo(ComPtr<IGuest> guest, HandlerArg *pArg,
             if (   Utf8CurSource.endsWith("/")
                 || Utf8CurSource.endsWith("\\"))
             {
-                if (pszFilter) /* Directory with filter. */
-                    vrc = ctrlCopyDirExistsOnSource(pContext, pszSourceRoot, &fExists);
-                else /* Regular directory without filter. */
-                    vrc = ctrlCopyDirExistsOnSource(pContext, pszSource, &fExists);
+#ifndef DEBUG_andy
+                if (pContext->fHostToGuest)
+                {
+#endif
+                    if (pszFilter) /* Directory with filter. */
+                        vrc = ctrlCopyDirExistsOnSource(pContext, pszSourceRoot, &fExists);
+                    else /* Regular directory without filter. */
+                        vrc = ctrlCopyDirExistsOnSource(pContext, pszSource, &fExists);
+#ifndef DEBUG_andy
+                }
+                else
+                {
+                    RTMsgError("Copying of guest directories to the host is not supported yet!\n");
+                    vrc = VERR_NOT_IMPLEMENTED;
+                }
+#endif
             }
             else
             {
