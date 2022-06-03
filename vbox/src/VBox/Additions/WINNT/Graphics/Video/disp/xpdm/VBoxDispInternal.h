@@ -1,4 +1,4 @@
-/* $Id: VBoxDispInternal.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispInternal.h 39606 2011-12-14 11:23:58Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver, internal header
@@ -87,6 +87,15 @@ typedef struct _VBOXDISPDEV *PVBOXDISPDEV;
             WARN(("RT_FAILURE rc(%#x)", _rc)); \
         }                                      \
     } while (0)
+
+#define VBOX_WARNRC_NOBP(_rc)                       \
+    do {                                       \
+        if (RT_FAILURE(_rc))                   \
+        {                                      \
+            WARN_NOBP(("RT_FAILURE rc(%#x)", _rc)); \
+        }                                      \
+    } while (0)
+
 
 #define VBOX_WARN_IOCTLCB_RETRC(_ioctl, _cbreturned, _cbexpected, _rc)                   \
     do {                                                                                 \

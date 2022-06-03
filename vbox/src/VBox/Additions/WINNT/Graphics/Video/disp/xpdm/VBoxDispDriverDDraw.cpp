@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriverDDraw.cpp 38840 2011-09-23 11:34:44Z vboxsync $ */
+/* $Id: VBoxDispDriverDDraw.cpp 39606 2011-12-14 11:23:58Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver interface functions related to DirectDraw
@@ -76,7 +76,7 @@ VBoxDispDrvGetDirectDrawInfo(DHPDEV dhpdev, DD_HALINFO *pHalInfo, DWORD *pdwNumH
     if (!pvmList && !pdwFourCC) /* first call */
     {
         rc = VBoxDispVHWAInitHostInfo1(pDev);
-        VBOX_WARNRC(rc);
+        VBOX_WARNRC_NOBP(rc);
     }
 
     if (pDev->vhwa.bEnabled)
