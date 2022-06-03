@@ -1,4 +1,4 @@
-/* $Id: dvm.cpp 37024 2011-05-10 11:23:44Z vboxsync $ */
+/* $Id: dvm.cpp 37270 2011-05-30 21:25:42Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
@@ -82,6 +82,7 @@ typedef RTDVMVOLUMEINTERNAL *PRTDVMVOLUMEINTERNAL;
 *******************************************************************************/
 extern RTDVMFMTOPS g_rtDvmFmtMbr;
 extern RTDVMFMTOPS g_rtDvmFmtGpt;
+extern RTDVMFMTOPS g_rtDvmFmtBsdLbl;
 
 /**
  * Supported volume formats.
@@ -89,7 +90,8 @@ extern RTDVMFMTOPS g_rtDvmFmtGpt;
 static PCRTDVMFMTOPS g_aDvmFmts[] =
 {
     &g_rtDvmFmtMbr,
-    &g_rtDvmFmtGpt
+    &g_rtDvmFmtGpt,
+    &g_rtDvmFmtBsdLbl
 };
 
 /**
@@ -232,7 +234,7 @@ RTDECL(int) RTDvmMapOpen(RTDVM hVolMgr)
                 pThis->pDvmFmtOps = pDvmFmtOpsMatch;
         }
         else
-            rc = VERR_NOT_FOUND;
+            rc = VERR_NOT_SUPPORTED;
     }
 
     return rc;

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37254 2011-05-30 12:09:59Z vboxsync $
+# $Id: Makefile.kmk 37270 2011-05-30 21:25:42Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -278,6 +278,7 @@ RuntimeR3_SOURCES       = \
 	common/dbg/dbgmodcontainer.cpp \
 	common/dbg/dbgmodnm.cpp \
 	common/dvm/dvm.cpp \
+	common/dvm/dvmbsdlabel.cpp \
 	common/dvm/dvmgpt.cpp \
 	common/dvm/dvmmbr.cpp \
 	common/err/errinfo.cpp \

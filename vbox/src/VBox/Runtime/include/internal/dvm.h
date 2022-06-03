@@ -1,4 +1,4 @@
-/* $Id: dvm.h 37024 2011-05-10 11:23:44Z vboxsync $ */
+/* $Id: dvm.h 37270 2011-05-30 21:25:42Z vboxsync $ */
 /** @file
  * IPRT - Disk Volume Management Internals.
  */
@@ -225,6 +225,11 @@ typedef struct RTDVMFMTOPS
 typedef RTDVMFMTOPS *PRTDVMFMTOPS;
 /** Pointer to a const DVM ops table. */
 typedef const RTDVMFMTOPS *PCRTDVMFMTOPS;
+
+/** Converts a LBA number to the byte offset. */
+#define RTDVM_LBA2BYTE(lba, disk) ((lba) * (disk)->cbSector)
+/** Converts a Byte offset to the LBA number. */
+#define RTDVM_BYTE2LBA(off, disk) ((off) / (disk)->cbSector)
 
 /**
  * Returns the number of sectors in the disk.
