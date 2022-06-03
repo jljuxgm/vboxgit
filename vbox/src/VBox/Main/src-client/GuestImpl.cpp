@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 36891 2011-04-29 13:22:57Z vboxsync $ */
+/* $Id: GuestImpl.cpp 37589 2011-06-22 13:20:06Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -122,7 +122,7 @@ void Guest::uninit()
         /* Clean up callback data. */
         CallbackMapIter it;
         for (it = mCallbackMap.begin(); it != mCallbackMap.end(); it++)
-            destroyCtrlCallbackContext(it);
+            callbackDestroy(it->first);
 
         /* Clear process map. */
         mGuestProcessMap.clear();
