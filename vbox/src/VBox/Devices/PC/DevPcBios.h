@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.h 34081 2010-11-15 17:18:30Z vboxsync $ */
+/* $Id: DevPcBios.h 39707 2012-01-06 12:16:54Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device, header shared with the BIOS code.
  */
@@ -21,7 +21,7 @@
 /** @def VBOX_DMI_TABLE_BASE */
 #define VBOX_DMI_TABLE_BASE         0xe1000
 #define VBOX_DMI_TABLE_VER          0x25
-#define VBOX_DMI_TABLE_ENTR         5
+#define VBOX_DMI_TABLE_ENTR         8
 
 /** def VBOX_DMI_TABLE_SIZE
  *
@@ -30,7 +30,7 @@
  * the size should be at least 16-byte aligned for a proper alignment of
  * the MPS table.
  */
-#define VBOX_DMI_TABLE_SIZE         352
+#define VBOX_DMI_TABLE_SIZE         496
 
 
 /** @def VBOX_LANBOOT_SEG

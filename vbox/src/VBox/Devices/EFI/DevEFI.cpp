@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 35431 2011-01-07 15:19:34Z vboxsync $ */
+/* $Id: DevEFI.cpp 39707 2012-01-06 12:16:54Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1015,6 +1015,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 #endif
                               "DmiUseHostInfo\0"
                               "DmiExposeMemoryTable\0"
+                              "DmiExposeProcInf\0"
                               "64BitEntry\0"
                               "BootArgs\0"
                               "DeviceProps\0"
@@ -1198,17 +1199,13 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     /*
      * Plant DMI and MPS tables
      */
-    rc = FwCommonPlantDMITable(pDevIns,
-                               pThis->au8DMIPage,
-                               VBOX_DMI_TABLE_SIZE,
-                               &pThis->aUuid,
-                               pDevIns->pCfg);
+    rc = FwCommonPlantDMITable(pDevIns, pThis->au8DMIPage,
+                               VBOX_DMI_TABLE_SIZE, &pThis->aUuid, pDevIns->pCfg, pThis->cCpus);
     AssertRCReturn(rc, rc);
     if (pThis->u8IOAPIC)
         FwCommonPlantMpsTable(pDevIns,
                               pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE,
-                              _4K - VBOX_DMI_TABLE_SIZE,
-                              pThis->cCpus);
+                              _4K - VBOX_DMI_TABLE_SIZE, pThis->cCpus);
     rc = PDMDevHlpROMRegister(pDevIns, VBOX_DMI_TABLE_BASE, _4K, pThis->au8DMIPage, _4K,
                               PGMPHYS_ROM_FLAGS_PERMANENT_BINARY, "DMI tables");
 
