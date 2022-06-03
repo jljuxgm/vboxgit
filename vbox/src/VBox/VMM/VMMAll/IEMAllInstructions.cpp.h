@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 40141 2012-02-15 21:34:51Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 40143 2012-02-16 10:08:06Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -10841,8 +10841,8 @@ FNIEMOP_DEF_1(iemOp_fdiv_m64r,  uint8_t, bRm)
     IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE();
     IEM_MC_MAYBE_RAISE_FPU_XCPT();
     IEM_MC_FETCH_MEM_R64(r64Divisor, pIemCpu->iEffSeg, GCPtrEffSrc);
-    IEM_MC_REF_FPUREG_R80(pr80Dividend, 0);
-//    IEM_MC_CALL_FPU_AIMPL_3(iemAImpl_fpu_fdiv_r80_by_r64, pFpuRes, pr80Dividend, pr64Divisor);
+    IEM_MC_REF_FPUREG_R80(pr80Dividend, 0); /** @todo Check for and handle stack underflow! */
+    IEM_MC_CALL_FPU_AIMPL_3(iemAImpl_fpu_fdiv_r80_by_r64, pFpuRes, pr80Dividend, pr64Divisor);
 
     IEM_MC_STORE_FPU_RESULT_MEM_OP(FpuRes, 0, pIemCpu->iEffSeg, GCPtrEffSrc);
     IEM_MC_ADVANCE_RIP();
