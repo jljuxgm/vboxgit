@@ -1,10 +1,10 @@
-/* $Id: VBoxManageDisk.cpp 40502 2012-03-16 16:23:10Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 40503 2012-03-16 16:24:43Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
