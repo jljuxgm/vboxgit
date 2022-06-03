@@ -1,4 +1,4 @@
-/* $Id: list.h 36655 2011-04-12 12:43:41Z vboxsync $ */
+/* $Id: list.h 36656 2011-04-12 13:16:57Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - List classes declaration.
  */
@@ -116,6 +116,18 @@ public:
         m_guard.leaveWrite();
 
         return *this;
+    }
+
+    /**
+     * Implicit conversion to a RTCString list.
+     *
+     * This allows the usage of the RTCString::join method with this list type.
+     *
+     * @return  a converted const reference to this list.
+     */
+    operator const RTCList<RTCString, RTCString*>&()
+    {
+        return static_cast<const RTCList<RTCString, RTCString*>&>(*this);
     }
 
     /* Define our own new and delete. */
