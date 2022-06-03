@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 40418 2012-03-09 22:00:56Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 40633 2012-03-26 12:00:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3269,7 +3269,7 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
                           uMergeSource,
                           uMergeTarget,
                           strBwGroup.isEmpty() ? NULL : Utf8Str(strBwGroup).c_str(),
-                          fDiscard,
+                          !!fDiscard,
                           pMedium,
                           aMachineState,
                           phrc);

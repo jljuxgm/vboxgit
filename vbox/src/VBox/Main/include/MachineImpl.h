@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 40432 2012-03-12 16:04:28Z vboxsync $ */
+/* $Id: MachineImpl.h 40633 2012-03-26 12:00:16Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -593,7 +593,7 @@ public:
      * used by ready Machine children (whose readiness is bound to the parent's
      * one) or after doing addCaller() manually.
      */
-    bool isAccessible() const { return mData->mAccessible; }
+    bool isAccessible() const { return !!mData->mAccessible; }
 
     /**
      * Returns this machine ID.

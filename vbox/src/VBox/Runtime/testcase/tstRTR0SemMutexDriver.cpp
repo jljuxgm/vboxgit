@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutexDriver.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstRTR0SemMutexDriver.cpp 40633 2012-03-26 12:00:16Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -116,7 +116,7 @@ static bool tstDoThreadedTest(TSTRTR0SEMMUTEX enmSetup, TSTRTR0SEMMUTEX enmDo, T
     RTTESTI_CHECK_RC_RET(SUPR3CallR0Service("tstRTR0SemMutex", sizeof("tstRTR0SemMutex") - 1, enmSetup, 0, &pReq->Hdr),
                          VINF_SUCCESS, false);
     if (pReq->szMsg[0] == '!')
-        return RTTestIFailedRc(false, "%s", &pReq->szMsg[1]);
+        return !!RTTestIFailedRc(false, "%s", &pReq->szMsg[1]);
     if (pReq->szMsg[0])
         RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", pReq->szMsg);
 
@@ -155,7 +155,7 @@ static bool tstDoThreadedTest(TSTRTR0SEMMUTEX enmSetup, TSTRTR0SEMMUTEX enmDo, T
     RTTESTI_CHECK_RC_RET(rc = SUPR3CallR0Service("tstRTR0SemMutex", sizeof("tstRTR0SemMutex") - 1, enmCleanup, 0, &pReq->Hdr),
                          VINF_SUCCESS, false);
     if (pReq->szMsg[0] == '!')
-        return RTTestIFailedRc(false, "%s", &pReq->szMsg[1]);
+        return !!RTTestIFailedRc(false, "%s", &pReq->szMsg[1]);
     if (pReq->szMsg[0])
         RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", pReq->szMsg);
 
