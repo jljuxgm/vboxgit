@@ -1,4 +1,4 @@
-/* $Id: timerlr-generic.cpp 39910 2012-01-30 16:05:58Z vboxsync $ */
+/* $Id: timerlr-generic.cpp 40320 2012-03-02 09:17:31Z vboxsync $ */
 /** @file
  * IPRT - Low Resolution Timers, Generic.
  *
@@ -171,7 +171,7 @@ RTDECL(int) RTTimerLRDestroy(RTTIMERLR hTimerLR)
         AssertRC(rc);
     }
 
-    RTThreadWait(hThread, 250, NULL);
+    RTThreadWait(hThread, 500, NULL); /* 250 ms was not enough for valgrind! */
     return VINF_SUCCESS;
 }
 RT_EXPORT_SYMBOL(RTTimerLRDestroy);
