@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 38336 2011-08-08 09:02:14Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 38337 2011-08-08 09:05:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2205,7 +2205,7 @@ void UIMessageCenter::cannotRunInSelectorMode()
 {
     message(mainWindowShown(), Critical,
         tr("<p>Cannot run VirtualBox in <i>VM Selector</i> "
-           "mode due to local refStrictions.</p>"
+           "mode due to local restrictions.</p>"
            "<p>The application will now terminate.</p>"));
 }
 
