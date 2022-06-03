@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 41595 2012-06-06 09:58:30Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 41597 2012-06-06 13:19:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3674,6 +3674,22 @@ DECLCALLBACK(void) Display::displayVBVADisable(PPDMIDISPLAYCONNECTOR pInterface,
     Display *pThis = pDrv->pDisplay;
 
     DISPLAYFBINFO *pFBInfo = &pThis->maFramebuffers[uScreenId];
+
+    if (uScreenId == VBOX_VIDEO_PRIMARY_SCREEN)
+    {
+        /* Make sure that the primary screen is visible now.
+         * The guest can't use VBVA anymore, so only only the VGA device output works.
+         */
+        if (pFBInfo->fDisabled)
+        {
+            pFBInfo->fDisabled = false;
+            fireGuestMonitorChangedEvent(pThis->mParent->getEventSource(),
+                                         GuestMonitorChangedEventType_Enabled,
+                                         uScreenId,
+                                         pFBInfo->xOrigin, pFBInfo->yOrigin,
+                                         pFBInfo->w, pFBInfo->h);
+        }
+    }
 
     pFBInfo->fVBVAEnabled = false;
 
