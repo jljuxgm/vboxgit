@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36275 2011-03-14 18:01:34Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36365 2011-03-23 12:26:45Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4993,6 +4993,12 @@ HRESULT Machine::setGuestPropertyToService(IN_BSTR aName, IN_BSTR aValue,
 HRESULT Machine::setGuestPropertyToVM(IN_BSTR aName, IN_BSTR aValue,
                                       IN_BSTR aFlags)
 {
+    CheckComArgStrNotEmptyOrNull(aName);
+    if ((aValue != NULL) && !VALID_PTR(aValue))
+        return E_INVALIDARG;
+    if ((aFlags != NULL) && !VALID_PTR(aFlags))
+        return E_INVALIDARG;
+
     HRESULT rc;
 
     try {
@@ -5008,7 +5014,7 @@ HRESULT Machine::setGuestPropertyToVM(IN_BSTR aName, IN_BSTR aValue,
                      (aName,
                       /** @todo Fix when adding DeleteGuestProperty(),
                                    see defect. */
-                      *aValue ? aValue : NULL, *aFlags ? aFlags : NULL,
+                      aValue, aFlags,
                       true /* isSetter */,
                       &dummy, &dummy64, &dummy);
     }
