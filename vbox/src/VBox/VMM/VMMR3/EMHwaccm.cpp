@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 40375 2012-03-06 13:37:23Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 40377 2012-03-06 15:00:44Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -584,7 +584,7 @@ int emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
             ||  VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_ALL_MASK))
         {
             rc = emR3ForcedActions(pVM, pVCpu, rc);
-            VBOXVMMR3_EM_FF_ALL_RET(pVCpu, rc);
+            VBOXVMM_EM_FF_ALL_RET(pVCpu, rc);
             if (    rc != VINF_SUCCESS
                 &&  rc != VINF_EM_RESCHEDULE_HWACC)
             {
