@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 35132 2010-12-15 13:23:25Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 36323 2011-03-21 12:13:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -41,7 +41,7 @@
 #endif /* Q_WS_MAC */
 
 /* Settings Dialog Constructor: */
-UISettingsDialog::UISettingsDialog(QWidget *pParent /* = 0 */)
+UISettingsDialog::UISettingsDialog(QWidget *pParent)
     /* Parent class: */
     : QIWithRetranslateUI<QIMainDialog>(pParent)
     /* Protected variables: */
