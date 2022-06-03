@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 42025 2012-07-05 12:52:41Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 42035 2012-07-06 03:58:54Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -220,7 +220,7 @@ static void rtR0MemObjDarwinReadPhys(RTHCPHYS HCPhys, size_t cb, void *pvDst)
 {
     memset(pvDst, '\0', cb);
 
-    IOAddressRange      aRanges[1]  = { { (mach_vm_address_t)HCPhys, RT_ALIGN(cb, PAGE_SIZE) } };
+    IOAddressRange      aRanges[1]  = { { (mach_vm_address_t)HCPhys, RT_ALIGN_Z(cb, PAGE_SIZE) } };
     IOMemoryDescriptor *pMemDesc    = IOMemoryDescriptor::withAddressRanges(&aRanges[0], RT_ELEMENTS(aRanges),
                                                                             kIODirectionIn, NULL /*task*/);
     if (pMemDesc)
