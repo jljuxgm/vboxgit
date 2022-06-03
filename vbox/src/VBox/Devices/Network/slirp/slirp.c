@@ -1,4 +1,4 @@
-/* $Id: slirp.c 39776 2012-01-17 12:15:29Z vboxsync $ */
+/* $Id: slirp.c 39883 2012-01-26 08:11:00Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -2127,7 +2127,25 @@ void slirp_arp_who_has(PNATState pData, uint32_t dst)
     struct mbuf *m;
     struct ethhdr *ehdr;
     struct arphdr *ahdr;
+    static bool   fWarned = false;
     LogFlowFunc(("ENTER: %RTnaipv4\n", dst));
+
+    /* ARP request WHO HAS 0.0.0.0 is one of the signals
+     * that something has been broken at Slirp. Investigating
+     * pcap dumps it's easy to miss warning ARP requests being
+     * focused on investigation of other protocols flow.
+     */
+#ifdef DEBUG_vvl
+    Assert((dst != INADDR_ANY));
+    NOREF(fWarned);
+#else
+    if (   dst == INADDR_ANY
+        && !fWarned)
+    {
+        LogRel(("NAT:ARP: \"WHO HAS INADDR_ANY\" request has been detected\n"));
+        fWarned = true;
+    }
+#endif /* !DEBUG_vvl */
 
     m = m_getcl(pData, M_NOWAIT, MT_HEADER, M_PKTHDR);
     if (m == NULL)
