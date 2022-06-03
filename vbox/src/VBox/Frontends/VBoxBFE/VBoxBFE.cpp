@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 39955 2012-02-02 12:19:41Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1725,10 +1725,6 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
 
 #elif defined(RT_OS_SOLARIS)
                     rc = CFGMR3InsertString(pCfg, "Device", g_aNetDevs[ulInstance].pszName); UPDATE_RC();
-# ifdef VBOX_WITH_CROSSBOW
-                    rc = CFGMR3InsertBytes(pCfg, "MAC", &g_aNetDevs[ulInstance].Mac, sizeof(g_aNetDevs[ulInstance].Mac));
-                    UPDATE_RC();
-# endif
 
 #elif defined(RT_OS_OS2)
                     /*

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39716 2012-01-07 02:05:16Z vboxsync $
+# $Id: Makefile.kmk 39955 2012-02-02 12:19:41Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -580,7 +580,6 @@ VBoxC_DEFS = \
 	$(if $(VBOX_WITH_PULSE),VBOX_WITH_PULSE,) \
 	$(if $(VBOX_WITH_WINMM),VBOX_WITH_WINMM,) \
 	$(if $(VBOX_WITH_SOLARIS_OSS),VBOX_WITH_SOLARIS_OSS,) \
-	$(if $(VBOX_WITH_CROSSBOW),VBOX_WITH_CROSSBOW,) \
 	$(if $(VBOX_WITH_E1000),VBOX_WITH_E1000,) \
 	$(if $(VBOX_WITH_VIRTIO),VBOX_WITH_VIRTIO,) \
 	$(if $(VBOX_WITH_EFI),VBOX_WITH_EFI,) \
