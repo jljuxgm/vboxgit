@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 39007 2011-10-17 14:51:37Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 39008 2011-10-17 14:54:31Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -1454,7 +1454,11 @@ RTDECL(int) RTTimerDestroy(PRTTIMER pTimer)
     {
         /* For paranoid reasons, defer actually destroying the semaphore when
            in atomic or interrupt context. */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 32)
         if (in_atomic() || in_interrupt())
+#else
+        if (in_interrupt())
+#endif
             rtR0LnxWorkqueuePush(&pTimer->DtorWorkqueueItem, rtTimerLnxDestroyDeferred);
         else
             rtTimerLnxDestroyIt(pTimer);
