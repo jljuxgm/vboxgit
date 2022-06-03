@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.cpp 40271 2012-02-28 11:22:04Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.cpp 40348 2012-03-05 09:10:24Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed
  *                          credentials.
@@ -225,8 +225,6 @@ void VBoxCredProvCredential::Reset(void)
 
 int VBoxCredProvCredential::RetrieveCredentials(void)
 {
-    VBoxCredProvVerbose(0, "VBoxCredProvCredential: Checking for credentials ...\n");
-
     int rc = VbglR3CredentialsQueryAvailability();
     if (RT_SUCCESS(rc))
     {
@@ -295,6 +293,7 @@ int VBoxCredProvCredential::RetrieveCredentials(void)
         }
     }
 
+    VBoxCredProvVerbose(0, "VBoxCredProvCredential: Checking credentials returned with rc=%Rrc\n", rc);
     return rc;
 }
 
