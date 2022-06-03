@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 34885 2010-12-09 13:56:03Z vboxsync $ */
+/* $Id: VMDK.cpp 35987 2011-02-15 17:55:22Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -4501,16 +4501,13 @@ static int vmdkFreeImage(PVMDKIMAGE pImage, bool fDelete)
             {
                 PVMDKEXTENT pExtent = &pImage->pExtents[0];
                 uint32_t uLastGDEntry = pExtent->uLastGrainAccess / pExtent->cGTEntries;
-                if (uLastGDEntry != pExtent->cGDEntries - 1)
+                rc = vmdkStreamFlushGT(pImage, pExtent, uLastGDEntry);
+                AssertRC(rc);
+                vmdkStreamClearGT(pImage, pExtent);
+                for (uint32_t i = uLastGDEntry + 1; i < pExtent->cGDEntries; i++)
                 {
-                    rc = vmdkStreamFlushGT(pImage, pExtent, uLastGDEntry);
+                    rc = vmdkStreamFlushGT(pImage, pExtent, i);
                     AssertRC(rc);
-                    vmdkStreamClearGT(pImage, pExtent);
-                    for (uint32_t i = uLastGDEntry + 1; i < pExtent->cGDEntries; i++)
-                    {
-                        rc = vmdkStreamFlushGT(pImage, pExtent, i);
-                        AssertRC(rc);
-                    }
                 }
 
                 uint64_t uFileOffset = pExtent->uAppendPosition;
