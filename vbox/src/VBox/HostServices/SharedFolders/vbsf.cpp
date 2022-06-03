@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 39629 2011-12-15 15:38:42Z vboxsync $ */
+/* $Id: vbsf.cpp 39630 2011-12-15 15:52:31Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -2179,8 +2179,10 @@ int vbsfRemove(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLSTRING *pPath, uint32
         {
             if (flags & SHFL_REMOVE_SYMLINK)
                 rc = RTSymlinkDelete(pszFullPath, RTSYMLINKDELETE_FLAGS_NO_SYMLINKS);
+            else if (flags & SHFL_REMOVE_FILE)
+                rc = RTFileDelete(pszFullPath);
             else
-                rc = RTPathUnlink(pszFullPath, RTPATHUNLINK_FLAGS_NO_SYMLINKS);
+                rc = RTDirRemove(pszFullPath);
         }
 
 #ifndef DEBUG_dmik
