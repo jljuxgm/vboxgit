@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36776 2011-04-20 19:26:22Z vboxsync $
+# $Id: Makefile.kmk 36858 2011-04-27 15:05:06Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -339,6 +339,7 @@ $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructsAsm.mac: \
 		$(DEPTH)/include/VBox/vmm/cpum.mac \
 		$(DEPTH)/include/VBox/vmm/vm.mac \
 		$(DEPTH)/include/VBox/sup.mac \
+		$(DEPTH)/include/VBox/x86.mac \
 		$(VBOX_PATH_VMM_SRC)/include/CPUMInternal.mac \
 		$(VBOX_PATH_VMM_SRC)/include/TRPMInternal.mac \
 		$(VBOX_PATH_VMM_SRC)/include/HWACCMInternal.mac \

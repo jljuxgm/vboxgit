@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 36857 2011-04-27 14:54:49Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 36858 2011-04-27 15:05:06Z vboxsync $ */
 /** @file
  * HWACCM - Host Context Ring 0.
  */
@@ -1755,7 +1755,7 @@ VMMR0DECL(void) HWACCMDumpRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
     Log(("FPU:\n"
         "FCW=%04x FSW=%04x FTW=%02x\n"
-        "FOP=%04x FPUIP=%08x CS=%04x Rsvrd1=%04x\n"
+        "FOP=%04x FPUIP=%08x CS=%04x Rsrvd1=%04x\n"
         "FPUDP=%04x DS=%04x Rsvrd2=%04x MXCSR=%08x MXCSR_MASK=%08x\n"
         ,
         pCtx->fpu.FCW, pCtx->fpu.FSW, pCtx->fpu.FTW,
