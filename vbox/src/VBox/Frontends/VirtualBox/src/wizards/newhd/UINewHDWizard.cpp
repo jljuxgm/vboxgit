@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 39593 2011-12-13 09:26:40Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 40044 2012-02-09 09:12:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -947,9 +947,6 @@ UINewHDWizardPageSummary::UINewHDWizardPageSummary()
 
     /* Register 'hardDisk' field: */
     registerField("hardDisk", this, "hardDisk");
-
-    /* Disable the background painting of the summary widget: */
-    m_pSummaryText->viewport()->setAutoFillBackground(false);
 }
 
 void UINewHDWizardPageSummary::retranslateUi()
@@ -995,6 +992,7 @@ void UINewHDWizardPageSummary::retranslateUi()
     .arg(UINewHDWizard::tr("Location", "summary"), strMediumPath)
     .arg(UINewHDWizard::tr("Size", "summary"), sizeFormatted, sizeUnformatted);
 
+    m_pSummaryText->setMinimumTextWidth(wizard()->minimumContentWidth());
     m_pSummaryText->setText("<table cellspacing=0 cellpadding=0>" + strSummary + "</table>");
 }
 
@@ -1003,8 +1001,6 @@ void UINewHDWizardPageSummary::initializePage()
     /* Retranslate page: */
     retranslateUi();
 
-    /* Update summary geometry: */
-    m_pSummaryText->updateGeometry();
     /* Summary should have focus initially: */
     m_pSummaryText->setFocus();
 }
