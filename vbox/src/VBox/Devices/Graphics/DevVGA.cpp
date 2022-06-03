@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 35759 2011-01-28 13:06:58Z vboxsync $ */
+/* $Id: DevVGA.cpp 37128 2011-05-17 15:10:06Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5677,7 +5677,9 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
                                           "CustomVideoMode13\0"
                                           "CustomVideoMode14\0"
                                           "CustomVideoMode15\0"
-                                          "CustomVideoMode16\0"))
+                                          "CustomVideoMode16\0"
+                                          "MaxBiosXRes\0"
+                                          "MaxBiosYRes\0"))
         return PDMDEV_SET_ERROR(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
                                 N_("Invalid configuration for vga device"));
 
@@ -6055,6 +6057,14 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     AssertLogRelRCReturn(rc, rc);
 
 #ifdef VBE_NEW_DYN_LIST
+
+    uint16_t maxBiosXRes;
+    rc = CFGMR3QueryU16Def(pCfg, "MaxBiosXRes", &maxBiosXRes, UINT16_MAX);
+    AssertLogRelRCReturn(rc, rc);
+    uint16_t maxBiosYRes;
+    rc = CFGMR3QueryU16Def(pCfg, "MaxBiosYRes", &maxBiosYRes, UINT16_MAX);
+    AssertLogRelRCReturn(rc, rc);
+
     /*
      * Compute buffer size for the VBE BIOS Extra Data.
      */
@@ -6101,6 +6111,9 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
                 * mode_info_list[i].info.YResolution
                 * pixelWidth;
         if (reqSize >= pThis->vram_size)
+            continue;
+        if (   mode_info_list[i].info.XResolution > maxBiosXRes
+            || mode_info_list[i].info.YResolution > maxBiosYRes)
             continue;
         *pCurMode = mode_info_list[i];
         vgaAdjustModeInfo(pThis, pCurMode);
