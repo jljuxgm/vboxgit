@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 36303 2011-03-17 12:41:26Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 36527 2011-04-04 13:16:09Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1927,11 +1927,11 @@ int CmdDebugLog(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox, ComPtr<I
     bool                fEnablePresent = false;
     bool                fEnable        = false;
     bool                fFlagsPresent  = false;
-    iprt::MiniString    strFlags;
+    RTCString    strFlags;
     bool                fGroupsPresent = false;
-    iprt::MiniString    strGroups;
+    RTCString    strGroups;
     bool                fDestsPresent  = false;
-    iprt::MiniString    strDests;
+    RTCString    strDests;
 
     static const RTGETOPTDEF s_aOptions[] =
     {
