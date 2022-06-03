@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 36716 2011-04-18 14:17:17Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 36836 2011-04-25 07:09:56Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  */
@@ -1868,7 +1868,9 @@ static DECLCALLBACK(uint32_t) ich9pciConfigReadDev(PCIDevice *aDev, uint32_t u32
 {
     if ((u32Address + len) > 256 && (u32Address + len) < 4096)
     {
-        AssertMsgReturn(false, ("Read from extended registers fallen back to generic code\n"), 0);
+        LogRel(("Read from extended register %d fallen back to generic code\n",
+                u32Address));
+        return 0;
     }
 
     AssertMsgReturn(u32Address + len <= 256, ("Read after the end of PCI config space\n"),
@@ -1959,7 +1961,9 @@ static DECLCALLBACK(void) ich9pciConfigWriteDev(PCIDevice *aDev, uint32_t u32Add
 
     if ((u32Address + len) > 256 && (u32Address + len) < 4096)
     {
-        AssertMsgReturnVoid(false, ("Write to extended registers fallen back to generic code\n"));
+        LogRel(("Write to extended register %d fallen back to generic code\n",
+                u32Address));
+        return;
     }
 
     AssertMsgReturnVoid(u32Address + len <= 256, ("Write after end of PCI config space\n"));
