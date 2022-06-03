@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 41144 2012-05-03 16:18:51Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 41164 2012-05-04 13:10:35Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -589,7 +589,7 @@ static uint64_t vboxDtPOps_GetArgVal(void *pvProv, dtrace_id_t idProbe, void *pv
                 || iArg >= pArgList->cArgs)
             {
                 if (iArg + offArg < (int)RT_ELEMENTS(pCtx->u.X86.aArgs))
-                    u64Ret = pCtx->u.Amd64.aArgs[iArg + offArg];
+                    u64Ret = pCtx->u.X86.aArgs[iArg + offArg];
                 else
                     u64Ret = UINT64_MAX;
             }
