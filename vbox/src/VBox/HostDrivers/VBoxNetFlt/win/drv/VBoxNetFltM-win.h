@@ -1,8 +1,8 @@
-/* $Id: VBoxNetFltM-win.h 36184 2011-03-07 10:57:04Z vboxsync $ */
+/* $Id: VBoxNetFltM-win.h 36207 2011-03-08 17:12:10Z vboxsync $ */
 /** @file
- * VBoxNetFltM-win.h - Bridged Networking Driver, Windows Specific Code.
- * Miniport edge API
+ * VBoxNetFltM-win.h - Bridged Networking Driver, Windows Specific Code - Miniport edge API
  */
+
 /*
  * Copyright (C) 2011 Oracle Corporation
  *
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef ___VBoxNetFltM_win_h___
 #define ___VBoxNetFltM_win_h___
 
@@ -37,4 +38,5 @@ DECLINLINE(VOID) vboxNetFltWinMpRequestStateComplete(PVBOXNETFLTINS pNetFlt)
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinMpRequestPost(PVBOXNETFLTINS pNetFlt);
 #endif
 
-#endif /* #ifndef ___VBoxNetFltM_win_h___ */
+#endif /* !___VBoxNetFltM_win_h___ */
+
