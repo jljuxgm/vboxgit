@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 38018 2011-07-18 13:43:36Z vboxsync $
+; $Id: IEMAllAImpl.asm 38019 2011-07-18 13:46:41Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -175,7 +175,7 @@
 ;         escaping (or whatever the dollar is good for here).  Thus the ugly
 ;         prefix argument.
 ;
-%define NAME_FASTCALL(a_Name, a_cbArgs, a_Dollar)   NAME(a_aName)
+%define NAME_FASTCALL(a_Name, a_cbArgs, a_Dollar)   NAME(a_Name)
 %ifdef RT_ARCH_X86
  %ifdef RT_OS_WINDOWS                                 
   %undef NAME_FASTCALL
