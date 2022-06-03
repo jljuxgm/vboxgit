@@ -1,4 +1,4 @@
-/* $Id: mach_kernel-r0drv-darwin.cpp 37577 2011-06-21 13:01:00Z vboxsync $ */
+/* $Id: mach_kernel-r0drv-darwin.cpp 37578 2011-06-21 13:14:30Z vboxsync $ */
 /** @file
  * IPRT - mach_kernel symbol resolving hack, R0 Driver, Darwin.
  */
@@ -508,7 +508,10 @@ static int rtR0MachKernelCheckStandardSymbols(RTR0MACHKERNELINT *pThis)
         KNOWN_ENTRY(vfs_flags),
         KNOWN_ENTRY(vfs_name),
         KNOWN_ENTRY(vfs_statfs),
-        KNOWN_ENTRY(vn_rdwr),
+        KNOWN_ENTRY(VNOP_READ),
+        KNOWN_ENTRY(uio_create),
+        KNOWN_ENTRY(uio_addiov),
+        KNOWN_ENTRY(uio_free),
         KNOWN_ENTRY(vnode_get),
         KNOWN_ENTRY(vnode_open),
         KNOWN_ENTRY(vnode_ref),
