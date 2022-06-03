@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 41436 2012-05-24 14:47:09Z vboxsync $ */
+/* $Id: EM.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -972,7 +972,7 @@ static int emR3RemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
 
 #if defined(VBOX_STRICT) && defined(DEBUG_bird)
     AssertMsg(   VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL)
-              || !MMHyperIsInsideArea(pVM, CPUMGetGuestEIP(pVCpu)),  /** @todo #1419 - get flat address. */
+              || !MMHyperIsInsideArea(pVM, CPUMGetGuestEIP(pVCpu)),  /** @todo @bugref{1419} - get flat address. */
               ("cs:eip=%RX16:%RX32\n", CPUMGetGuestCS(pVCpu), CPUMGetGuestEIP(pVCpu)));
 #endif
 

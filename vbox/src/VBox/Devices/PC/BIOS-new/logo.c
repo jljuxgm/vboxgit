@@ -1,4 +1,4 @@
-/* $Id: logo.c 39375 2011-11-18 20:19:01Z vboxsync $ */
+/* $Id: logo.c 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
@@ -384,7 +384,7 @@ done:
     write_byte(ebda_seg, (uint16_t)&EbdaData->uForceBootDevice, 0);
 
     // Don't restore previous video mode
-    // The default text mode should be set up. (defect #1235)
+    // The default text mode should be set up. (defect @bugref{1235})
     set_mode(0x0003);
 
     // If Setup menu enabled

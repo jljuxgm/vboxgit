@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: iokit.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -609,7 +609,7 @@ void *DarwinSubscribeUSBNotifications(void)
         if (pNotify->NotifyRLSrc)
         {
             CFRunLoopRef RunLoopRef = CFRunLoopGetCurrent();
-            CFRetain(RunLoopRef); /* Workaround for crash when cleaning up the TLS / runloop((sub)mode). See #2807. */
+            CFRetain(RunLoopRef); /* Workaround for crash when cleaning up the TLS / runloop((sub)mode). See @bugref{2807}. */
             CFRunLoopAddSource(RunLoopRef, pNotify->NotifyRLSrc, CFSTR(VBOX_IOKIT_MODE_STRING));
 
             /*

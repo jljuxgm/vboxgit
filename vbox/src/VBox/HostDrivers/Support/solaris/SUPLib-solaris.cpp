@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 37611 2011-06-23 12:32:04Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -78,7 +78,7 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited)
         return VINF_SUCCESS;
 
     /*
-     * Open dummy files to preallocate file descriptors, see #4650.
+     * Open dummy files to preallocate file descriptors, see @bugref{4650}.
      */
     for (int i = 0; i < SUPLIB_FLT_DUMMYFILES; i++)
     {

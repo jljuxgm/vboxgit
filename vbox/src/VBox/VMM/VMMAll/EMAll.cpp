@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 41771 2012-06-15 20:08:45Z vboxsync $ */
+/* $Id: EMAll.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -338,7 +338,7 @@ static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_
                     /*
                      * If we fail to find the page via the guest's page tables
                      * we invalidate the page in the host TLB (pertaining to
-                     * the guest in the NestedPaging case). See #6043.
+                     * the guest in the NestedPaging case). See @bugref{6043}.
                      */
                     if (rc == VERR_PAGE_TABLE_NOT_PRESENT || rc == VERR_PAGE_NOT_PRESENT)
                     {

@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DevOHCI.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -2405,7 +2405,7 @@ static void ohciRhXferCompleteGeneralURB(POHCI pOhci, PVUSBURB pUrb, POHCIED pEd
          * The reason for this is that while we can have more than one TD in a URB, real
          * OHCI hardware will only deal with one TD at the time and it's therefore incorrect
          * to retire TDs after the endpoint has been halted. Win2k will crash or enter infinite
-         * kernel loop if we don't behave correctly. (See #1646.)
+         * kernel loop if we don't behave correctly. (See @bugref{1646}.)
          */
         if (pEd->HeadP & ED_HEAD_HALTED)
             break;
@@ -4554,7 +4554,7 @@ static DECLCALLBACK(void) uchi_port_reset_done(PVUSBIDEVICE pDev, int rc, void *
         }
     if (!pPort)
     {
-        Assert(pPort); /* sometimes happens because of #1510 */
+        Assert(pPort); /* sometimes happens because of @bugref{1510} */
         return;
     }
 

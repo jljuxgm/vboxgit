@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-linux.cpp 37211 2011-05-25 11:37:52Z vboxsync $ */
+/* $Id: semeventmulti-linux.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, Linux (2.6.x+).
  */
@@ -31,7 +31,7 @@
 /*
  * glibc 2.6 fixed a serious bug in the mutex implementation. We wrote this
  * linux specific event semaphores code in order to work around the bug. As it
- * turns out, this code seems to have an unresolved issue (#2599), so we'll
+ * turns out, this code seems to have an unresolved issue (@bugref{2599}), so we'll
  * fall back on the pthread based implementation if glibc is known to contain
  * the bug fix.
  *

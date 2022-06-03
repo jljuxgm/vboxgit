@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: mp-darwin.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -90,7 +90,7 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 #if 0
     return RTMpIsCpuPossible(idCpu);
 #else
-    /** @todo proper ring-3 support on darwin, see #3014. */
+    /** @todo proper ring-3 support on darwin, see @bugref{3014}. */
     natural_t nCpus;
     processor_basic_info_t pinfo;
     mach_msg_type_number_t count;

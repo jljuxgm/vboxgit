@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 41765 2012-06-15 17:37:31Z vboxsync $ */
+/* $Id: CPUM.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -454,7 +454,7 @@ static int cpumR3CpuIdInit(PVM pVM)
                                   | X86_CPUID_FEATURE_EDX_MCE
                                   | X86_CPUID_FEATURE_EDX_CX8
                                   //| X86_CPUID_FEATURE_EDX_APIC  - set by the APIC device if present.
-                                  /* Note! we don't report sysenter/sysexit support due to our inability to keep the IOPL part of eflags in sync while in ring 1 (see #1757) */
+                                  /* Note! we don't report sysenter/sysexit support due to our inability to keep the IOPL part of eflags in sync while in ring 1 (see @bugref{1757}) */
                                   //| X86_CPUID_FEATURE_EDX_SEP
                                   | X86_CPUID_FEATURE_EDX_MTRR
                                   | X86_CPUID_FEATURE_EDX_PGE
@@ -551,7 +551,7 @@ static int cpumR3CpuIdInit(PVM pVM)
                                   //| X86_CPUID_AMD_FEATURE_EDX_MCE    - not virtualized yet.
                                   | X86_CPUID_AMD_FEATURE_EDX_CX8
                                   //| X86_CPUID_AMD_FEATURE_EDX_APIC   - set by the APIC device if present.
-                                  /* Note! we don't report sysenter/sysexit support due to our inability to keep the IOPL part of eflags in sync while in ring 1 (see #1757) */
+                                  /* Note! we don't report sysenter/sysexit support due to our inability to keep the IOPL part of eflags in sync while in ring 1 (see @bugref{1757}) */
                                   //| X86_CPUID_AMD_FEATURE_EDX_SEP
                                   | X86_CPUID_AMD_FEATURE_EDX_MTRR
                                   | X86_CPUID_AMD_FEATURE_EDX_PGE

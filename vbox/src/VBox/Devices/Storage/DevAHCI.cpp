@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 41467 2012-05-28 22:49:45Z vboxsync $ */
+/* $Id: DevAHCI.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -5709,7 +5709,7 @@ static int ahciTransferComplete(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, int rcRe
                 /*
                  * Always raise an interrupt after task completion; delaying
                  * this (interrupt coalescing) increases latency and has a significant
-                 * impact on performance (see #5071)
+                 * impact on performance (see @bugref{5071})
                  */
                 ahciSendSDBFis(pAhciPort, 0, true);
             }

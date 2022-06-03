@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 41596 2012-06-06 11:20:14Z vboxsync $ */
+/* $Id: MachineImpl.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11301,7 +11301,7 @@ void SessionMachine::uninit(Uninit::Reason aReason)
      */
     unregisterMetrics(mParent->performanceCollector(), mPeer);
 #endif
-    /* The guest must be unregistered after its metrics (#5949). */
+    /* The guest must be unregistered after its metrics (@bugref{5949}). */
     LogAleksey(("{%p} " LOG_FN_FMT ": mCollectorGuest=%p\n",
                 this, __PRETTY_FUNCTION__, mCollectorGuest));
     if (mCollectorGuest)

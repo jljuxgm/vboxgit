@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 41548 2012-06-01 16:46:34Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -382,7 +382,7 @@ static void vboxNetFltLinuxHookDev(PVBOXNETFLTINS pThis, struct net_device *pDev
 {
     PVBOXNETDEVICEOPSOVERRIDE   pOverride;
 
-    /* Cancel override if ethtool_ops is missing (host-only case, #5712) */
+    /* Cancel override if ethtool_ops is missing (host-only case, @bugref{5712}) */
     if (!VALID_PTR(pDev->OVR_OPS))
         return;
     pOverride = RTMemAlloc(sizeof(*pOverride));

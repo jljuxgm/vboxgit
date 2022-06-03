@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 37702 2011-06-30 10:09:59Z vboxsync $ */
+/* $Id: REMInternal.h 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -42,7 +42,7 @@
 
 /** @def REM_MONITOR_CODE_PAGES
  * Enable to monitor code pages that have been translated by the recompiler. */
-/** Currently broken and interferes with CSAM monitoring (see #2784) */
+/** Currently broken and interferes with CSAM monitoring (see @bugref{2784}) */
 ////#define REM_MONITOR_CODE_PAGES
 #ifdef DOXYGEN_RUNNING
 # define REM_MONITOR_CODE_PAGES

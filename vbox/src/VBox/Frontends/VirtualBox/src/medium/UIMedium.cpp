@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 41650 2012-06-11 13:12:44Z vboxsync $ */
+/* $Id: UIMedium.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -409,7 +409,7 @@ QString UIMedium::details (bool aNoDiffs /* = false */,
     // after the discard operation is finished, so the user will eventually see
     // correct data), but in order to solve the problem properly we need to use
     // exceptions everywhere (or check the result after every method call). See
-    // also Defect #2149.
+    // @bugref{2149}.
 
     if (mMedium.isNull() || mIsHostDrive)
         return mName;

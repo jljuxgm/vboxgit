@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 41675 2012-06-12 20:27:37Z vboxsync $ */
+/* $Id: PGMAllBth.h 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3622,7 +3622,7 @@ PGM_BTH_DECL(int, SyncCR3)(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr
      * @note SvL: There's no need for that. Just invalidate the virtual range(s).
      *      bird: Yes, but that won't work for aliases.
      */
-    /** @todo this MUST go away. See #1557. */
+    /** @todo this MUST go away. See @bugref{1557}. */
     STAM_PROFILE_START(&pVCpu->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,SyncCR3Handlers), h);
     PGM_GST_NAME(HandlerVirtualUpdate)(pVM, cr4);
     STAM_PROFILE_STOP(&pVCpu->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,SyncCR3Handlers), h);

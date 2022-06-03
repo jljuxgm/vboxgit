@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 41741 2012-06-15 01:50:13Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -147,7 +147,7 @@ static int trpmGCExitTrap(PVM pVM, PVMCPU pVCpu, int rc, PCPUMCTXCORE pRegFrame)
     /*
      * We should poll the timers occasionally.
      * We must *NOT* do this too frequently as it adds a significant overhead
-     * and it'll kill us if the trap load is high. (See #1354.)
+     * and it'll kill us if the trap load is high. (See @bugref{1354}.)
      * (The heuristic is not very intelligent, we should really check trap
      * frequency etc. here, but alas, we lack any such information atm.)
      */

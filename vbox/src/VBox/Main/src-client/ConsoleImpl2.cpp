@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 41371 2012-05-21 15:23:40Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3953,14 +3953,14 @@ int Console::configNetwork(const char *pszDevice,
                 char szTrunk[8];
                 RTStrCopy(szTrunk, sizeof(szTrunk), pszBridgedIfName);
                 char *pszColon = (char *)memchr(szTrunk, ':', sizeof(szTrunk));
-// Quick fix for #5633
+// Quick fix for @bugref{5633}
 //                 if (!pszColon)
 //                 {
 //                     /*
 //                     * Dynamic changing of attachment causes an attempt to configure
 //                     * network with invalid host adapter (as it is must be changed before
 //                     * the attachment), calling Detach here will cause a deadlock.
-//                     * See #4750.
+//                     * See @bugref{4750}.
 //                     * hrc = aNetworkAdapter->Detach();                                   H();
 //                     */
 //                     return VMSetError(pVM, VERR_INTERNAL_ERROR, RT_SRC_POS,

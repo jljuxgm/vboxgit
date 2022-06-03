@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 40237 2012-02-23 16:50:30Z vboxsync $ */
+/* $Id: GMMR0.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -772,7 +772,7 @@ GMMR0DECL(int) GMMR0Init(void)
             /*
              * Check and see if RTR0MemObjAllocPhysNC works.
              */
-#if 0 /* later, see #3170. */
+#if 0 /* later, see @bufref{3170}. */
             RTR0MEMOBJ MemObj;
             rc = RTR0MemObjAllocPhysNC(&MemObj, _64K, NIL_RTHCPHYS);
             if (RT_SUCCESS(rc))
