@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 40656 2012-03-26 20:07:36Z vboxsync $ */
+/* $Id: HWACCMInternal.h 41189 2012-05-07 15:39:30Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -418,8 +418,8 @@ typedef struct HWACCM
         } msr;
 
         /** Flush types for invept & invvpid; they depend on capabilities. */
-        VMX_FLUSH                   enmFlushPage;
-        VMX_FLUSH                   enmFlushContext;
+        VMX_FLUSH_EPT               enmFlushEPT;
+        VMX_FLUSH_VPID              enmFlushVPID;
     } vmx;
 
     struct
