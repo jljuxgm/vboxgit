@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 41642 2012-06-11 10:30:54Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 41644 2012-06-11 10:44:26Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1252,7 +1252,7 @@ int VBoxGuestCommonIOCtl_SetMouseNotifyCallback(PVBOXGUESTDEVEXT pDevExt, VBoxGu
     pDevExt->MouseNotifyCallback = *pNotify;
     RTSpinlockReleaseNoInts(pDevExt->EventSpinlock);
 
-    /* Make sure an active ISR is referencing the old data - hacky but should be
+    /* Make sure no active ISR is referencing the old data - hacky but should be
      * effective. */
     while (pDevExt->cISR > 0)
         ASMNopPause();
