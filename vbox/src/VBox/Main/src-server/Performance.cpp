@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 35971 2011-02-15 10:37:27Z vboxsync $ */
+/* $Id: Performance.cpp 36070 2011-02-24 14:13:20Z vboxsync $ */
 
 /** @file
  *
@@ -346,7 +346,14 @@ void HostRamVmm::init(ULONG period, ULONG length)
 
 void HostRamVmm::preCollect(CollectorHints& /* hints */, uint64_t /* iTick */)
 {
-    /* Guest RAM metrics do not use hints */
+    /*
+     * This is an ugly ugly hack to force VMM metrics to 0s if no VM is
+     * running. The reason it should work is that the VMM stats are
+     * stored in CollectorHAL in preCollect methods of guest base metrics
+     * which are always added after HostRamVmm. So each pass of collector
+     * first clears the metrics then gets new values.
+     */
+    mHAL->setMemHypervisorStats(0 /* ulMemAllocTotal */, 0 /* ulMemFreeTotal */, 0 /* ulMemBalloonTotal */, 0 /* ulMemSharedTotal */);
 }
 
 void HostRamVmm::collect()
