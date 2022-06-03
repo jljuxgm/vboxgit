@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 42101 2012-07-11 10:25:42Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 42124 2012-07-12 10:19:00Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -17,6 +17,12 @@
 
 #ifndef ___VBoxMPWddm_h___
 #define ___VBoxMPWddm_h___
+
+#ifdef VBOX_WDDM_WIN8
+# define VBOX_WDDM_DRIVERNAME L"VBoxVideoW8"
+#else
+# define VBOX_WDDM_DRIVERNAME L"VBoxVideoWddm"
+#endif
 
 #ifndef DEBUG_misha
 # ifdef Assert

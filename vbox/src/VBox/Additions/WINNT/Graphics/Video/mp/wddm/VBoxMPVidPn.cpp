@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 42093 2012-07-10 12:42:52Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 42124 2012-07-12 10:19:00Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -206,7 +206,7 @@ NTSTATUS vboxVidPnCheckSourceModeSet(const D3DKMDT_HVIDPN hDesiredVidPn,
     else if (Status == STATUS_GRAPHICS_DATASET_IS_EMPTY)
         Status = STATUS_SUCCESS;
     else
-        LOGREL(("VBoxVideoWddm: pfnAcquireFirstModeInfo failed Status(0x%x)", Status));
+        LOGREL(("pfnAcquireFirstModeInfo failed Status(0x%x)", Status));
 
     *pbSupported = bSupported;
     return Status;
