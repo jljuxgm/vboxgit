@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 41741 2012-06-15 01:50:13Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 41742 2012-06-15 01:54:42Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -731,7 +731,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
                             if (fUse & DISUSE_SCALE)
                             {
                                 PUT_C('*');
-                                PUT_C('0' + pParam->scale);
+                                PUT_C('0' + pParam->uScale);
                             }
                         }
                         else
