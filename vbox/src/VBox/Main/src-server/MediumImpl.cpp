@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 37941 2011-07-14 08:56:35Z vboxsync $ */
+/* $Id: MediumImpl.cpp 37985 2011-07-15 15:04:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3277,7 +3277,7 @@ HRESULT Medium::addToRegistryIDList(GuidList &llRegistryIDs)
          it != m->llRegistryIDs.end();
          ++it)
     {
-        m->pVirtualBox->addGuidToListUniquely(llRegistryIDs, *it);
+        VirtualBox::addGuidToListUniquely(llRegistryIDs, *it);
     }
 
     return S_OK;

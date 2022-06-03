@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 37928 2011-07-13 15:54:30Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 37985 2011-07-15 15:04:39Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3837,7 +3837,7 @@ HRESULT VirtualBox::unregisterMachine(Machine *pMachine,
                     // 2) better registry found: then use that
                     pMedium->addRegistry(*puuidBetter, true /* fRecurse */);
                     // 3) and make sure the registry is saved below
-                    addGuidToListUniquely(llRegistriesThatNeedSaving, *puuidBetter);
+                    VirtualBox::addGuidToListUniquely(llRegistriesThatNeedSaving, *puuidBetter);
                 }
             }
         }
@@ -3859,6 +3859,7 @@ HRESULT VirtualBox::unregisterMachine(Machine *pMachine,
  * @param llRegistriesThatNeedSaving
  * @param uuid
  */
+/* static */
 void VirtualBox::addGuidToListUniquely(GuidList &llRegistriesThatNeedSaving,
                                        const Guid &uuid)
 {

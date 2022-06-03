@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37971 2011-07-14 15:01:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37985 2011-07-15 15:04:39Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6259,7 +6259,15 @@ STDMETHODIMP Machine::CloneTo(IMachine *pTarget, CloneMode_T mode, ComSafeArrayI
     if (options != NULL)
         optList = com::SafeArray<CloneOptions_T>(ComSafeArrayInArg(options)).toList();
 
-    AssertReturn(!optList.contains(CloneOptions_Link) || (isSnapshotMachine() && mode == CloneMode_MachineState), E_INVALIDARG);
+    if (optList.contains(CloneOptions_Link))
+    {
+        if (!isSnapshotMachine())
+            return setError(E_INVALIDARG,
+                            tr("Linked clone can only be created from a snapshot\n"));
+        if (mode != CloneMode_MachineState)
+            return setError(E_INVALIDARG,
+                            tr("Linked clone can only be created for a single machine state\n"));
+    }
     AssertReturn(!(optList.contains(CloneOptions_KeepAllMACs) && optList.contains(CloneOptions_KeepNATMACs)), E_INVALIDARG);
 
     AutoCaller autoCaller(this);
@@ -9201,7 +9209,7 @@ void Machine::addMediumToRegistry(ComObjPtr<Medium> &pMedium,
 
     if (pMedium->addRegistry(uuid, false /* fRecurse */))
         // registry actually changed:
-        mParent->addGuidToListUniquely(llRegistriesThatNeedSaving, uuid);
+        VirtualBox::addGuidToListUniquely(llRegistriesThatNeedSaving, uuid);
 
     if (puuid)
         *puuid = uuid;
