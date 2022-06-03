@@ -1,4 +1,4 @@
-/* $Id: rand.cpp 40798 2012-04-06 16:44:13Z vboxsync $ */
+/* $Id: rand.cpp 41887 2012-06-22 14:06:22Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers.
  */
@@ -61,7 +61,9 @@ static RTRAND g_hRand = NIL_RTRAND;
 static DECLCALLBACK(int) rtRandInitOnce(void *pvUser1, void *pvUser2)
 {
     RTRAND hRand;
-    int rc = RTRandAdvCreateSystemFaster(&hRand);
+    int rc = RTRandAdvCreateOpenssl(&hRand);
+    if (RT_FAILURE(rc))
+        rc = RTRandAdvCreateSystemFaster(&hRand);
     if (RT_FAILURE(rc))
         rc = RTRandAdvCreateParkMiller(&hRand);
     if (RT_SUCCESS(rc))
