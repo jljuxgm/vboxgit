@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 41338 2012-05-16 14:39:21Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 41339 2012-05-16 14:49:58Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -435,7 +435,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 41338 2012-05-16 14:39:21Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 41339 2012-05-16 14:49:58Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -944,7 +944,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
         AssertFailed();
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 41338 2012-05-16 14:39:21Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 41339 2012-05-16 14:49:58Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -971,6 +971,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
                     g_pszScript,
                     szTmp,
                     szTmp,
+                    pszCtxDefine,
                     pszCtxDefine);
 
     /*
@@ -2173,7 +2174,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 41338 $";
+                static const char s_szRev[] = "$Revision: 41339 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
