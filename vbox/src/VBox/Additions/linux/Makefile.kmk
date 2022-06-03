@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38162 2011-07-25 14:47:46Z vboxsync $
+# $Id: Makefile.kmk 38174 2011-07-26 08:55:37Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -275,7 +275,9 @@ endif
 
 # pattern rule for copying the VBOX_LNX_ADD_KMOD files to the installation directory
 $(addprefix $(VBOX_LNX_ADD_INST_KMOD_DIR),$(VBOX_LNX_ADD_KMOD_DIRS) $(VBOX_LNX_ADD_KMOD_FILES)): \
-		$(VBOX_LNX_ADD_INST_KMOD_DIR_MOD)% : $(PATH_STAGE_BIN)/additions/src/% | $$(dir $$@)
+		$(VBOX_LNX_ADD_INST_KMOD_DIR_MOD)% : \
+		$(PATH_STAGE_BIN)/additions/src/% \
+		| $$(dir $$(patsubst %/,%,$$@))
 	$(call MSG_INST_DIR,$<,$@)
 	$(QUIET)$(RM) -Rf $@
 	$(QUIET)cp -af $< $@
