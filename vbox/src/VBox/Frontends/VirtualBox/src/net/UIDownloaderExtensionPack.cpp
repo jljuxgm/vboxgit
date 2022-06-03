@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 39337 2011-11-16 15:51:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -51,16 +51,17 @@ void UIMiniProgressWidgetExtension::retranslateUi()
 UIDownloaderExtensionPack* UIDownloaderExtensionPack::m_pInstance = 0;
 
 /* static */
-void UIDownloaderExtensionPack::download(QObject *pListener)
+UIDownloaderExtensionPack* UIDownloaderExtensionPack::create()
 {
-    /* Create and configure the Extension Pack downloader: */
-    UIDownloaderExtensionPack *pDownloader = new UIDownloaderExtensionPack;
-    pDownloader->setParentWidget(msgCenter().mainWindowShown());
-    /* After downloading finished => propose to install the Extension Pack: */
-    connect(pDownloader, SIGNAL(sigNotifyAboutExtensionPackDownloaded(const QString &, const QString &)),
-            pListener, SLOT(sltHandleDownloadedExtensionPack(const QString &, const QString &)));
-    /* Start downloading: */
-    pDownloader->start();
+    if (!m_pInstance)
+        m_pInstance = new UIDownloaderExtensionPack;
+    return m_pInstance;
+}
+
+/* static */
+UIDownloaderExtensionPack* UIDownloaderExtensionPack::current()
+{
+    return m_pInstance;
 }
 
 void UIDownloaderExtensionPack::start()
