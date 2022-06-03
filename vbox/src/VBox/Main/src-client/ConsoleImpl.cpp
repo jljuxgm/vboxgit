@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 37380 2011-06-08 14:44:32Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 37471 2011-06-15 16:13:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -375,6 +375,7 @@ Console::Console()
 #endif
     , mBusMgr(NULL)
     , mVMStateChangeCallbackDisabled(false)
+    , mfUseHostClipboard(true)
     , mMachineState(MachineState_PoweredOff)
 {
     for (ULONG slot = 0; slot < SchemaDefs::NetworkAdapterCount; ++slot)
@@ -1802,6 +1803,32 @@ STDMETHODIMP Console::COMGETTER(AttachedPciDevices)(ComSafeArrayOut(IPciDeviceAt
         com::SafeIfaceArray<IPciDeviceAttachment> result((size_t)0);
         result.detachTo(ComSafeArrayOutArg(aAttachments));
     }
+
+    return S_OK;
+}
+
+STDMETHODIMP Console::COMGETTER(UseHostClipboard)(BOOL *aUseHostClipboard)
+{
+    CheckComArgOutPointerValid(aUseHostClipboard);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aUseHostClipboard = mfUseHostClipboard;
+
+    return S_OK;
+}
+
+STDMETHODIMP Console::COMSETTER(UseHostClipboard)(BOOL aUseHostClipboard)
+{
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    mfUseHostClipboard = aUseHostClipboard;
 
     return S_OK;
 }

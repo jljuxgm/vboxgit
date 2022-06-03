@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 37283 2011-06-01 03:04:10Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 37471 2011-06-15 16:13:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -2421,6 +2421,10 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
                     }
 
                     pVMMDev->hgcmHostCall("VBoxSharedClipboard", VBOX_SHARED_CLIPBOARD_HOST_FN_SET_MODE, 1, &parm);
+
+                    parm.setUInt32(!useHostClipboard());
+                    
+                    pVMMDev->hgcmHostCall("VBoxSharedClipboard", VBOX_SHARED_CLIPBOARD_HOST_FN_SET_HEADLESS, 1, &parm);
 
                     Log(("Set VBoxSharedClipboard mode\n"));
                 }

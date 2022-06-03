@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 37380 2011-06-08 14:44:32Z vboxsync $ */
+/* $Id: ConsoleImpl.h 37471 2011-06-15 16:13:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -127,6 +127,8 @@ public:
     STDMETHOD(COMGETTER(SharedFolders))(ComSafeArrayOut(ISharedFolder *, aSharedFolders));
     STDMETHOD(COMGETTER(EventSource)) (IEventSource ** aEventSource);
     STDMETHOD(COMGETTER(AttachedPciDevices))(ComSafeArrayOut(IPciDeviceAttachment *, aAttachments));
+    STDMETHOD(COMGETTER(UseHostClipboard))(BOOL *aUseHostClipboard);
+    STDMETHOD(COMSETTER(UseHostClipboard))(BOOL aUseHostClipboard);
 
     // IConsole methods
     STDMETHOD(PowerUp)(IProgress **aProgress);
@@ -172,6 +174,8 @@ public:
     AudioSniffer *getAudioSniffer() const { return mAudioSniffer; }
 
     const ComPtr<IMachine> &machine() const { return mMachine; }
+
+    bool useHostClipboard() { return mfUseHostClipboard; }
 
     /** Method is called only from ConsoleVRDPServer */
     IVRDEServer *getVRDEServer() const { return mVRDEServer; }
@@ -753,6 +757,8 @@ private:
 #endif
 
     bool mVMStateChangeCallbackDisabled;
+
+    bool mfUseHostClipboard;
 
     /** Local machine state value. */
     MachineState_T mMachineState;
