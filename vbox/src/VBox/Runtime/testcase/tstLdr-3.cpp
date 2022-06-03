@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 41059 2012-04-26 00:52:15Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 41078 2012-04-27 08:44:35Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -44,6 +44,7 @@
 static RTUINTPTR g_uLoadAddr;
 static RTLDRMOD  g_hLdrMod;
 static void     *g_pvBits;
+static uint8_t   g_cBits;
 
 /**
  * Current nearest symbol.
@@ -203,6 +204,8 @@ static DECLCALLBACK(int) testGetImport(RTLDRMOD hLdrMod, const char *pszModule, 
 #else
     *pValue = UINT64_C(0xffffff7f820df000);
 #endif
+    if (g_cBits == 32)
+        *pValue &= UINT32_MAX;
     return VINF_SUCCESS;
 }
 
@@ -277,6 +280,7 @@ int main(int argc, char **argv)
         RTPrintf("tstLdr-3: Failed to open '%s': %Rra\n", argv[2], rc);
         return 1;
     }
+    g_cBits = ARCH_BITS;
 
     g_pvBits = RTMemAlloc(RTLdrSize(g_hLdrMod));
     rc = RTLdrGetBits(g_hLdrMod, g_pvBits, g_uLoadAddr, testGetImport, &g_uLoadAddr);
