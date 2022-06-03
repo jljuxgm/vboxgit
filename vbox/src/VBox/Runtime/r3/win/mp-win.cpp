@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 36232 2011-03-09 16:41:09Z vboxsync $ */
+/* $Id: mp-win.cpp 36262 2011-03-11 14:50:45Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -95,9 +95,7 @@ RTDECL(PRTCPUSET) RTMpGetOnlineSet(PRTCPUSET pSet)
 {
     SYSTEM_INFO SysInfo;
     GetSystemInfo(&SysInfo);
-#ifdef RT_WITH_LOTS_OF_CPUS
-# error "port me"
-#endif
+/** @todo port to W2K8 / W7 w/ > 64 CPUs & grouping. */
     return RTCpuSetFromU64(pSet, SysInfo.dwActiveProcessorMask);
 }
 

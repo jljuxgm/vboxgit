@@ -1,4 +1,4 @@
-; $Id: timesupA.mac 36254 2011-03-10 17:22:08Z vboxsync $
+; $Id: timesupA.mac 36262 2011-03-11 14:50:45Z vboxsync $
 ;; @file
 ; IPRT - Time using SUPLib, the Assembly Code Template.
 ;
@@ -96,11 +96,7 @@ BEGINPROC rtTimeNanoTSInternalAsm
  %endif
     ; pGipCpu = &pGip->aCPU[pGip->aiCpuFromApicId[u8ApicId]];
     shr     ebx, 24
- %ifdef SUP_WITH_LOTS_OF_CPUS
     movzx   ebx, word [esi + ebx * 2 + SUPGLOBALINFOPAGE.aiCpuFromApicId]
- %else
-    and     ebx, SUPGLOBALINFOPAGE_CPUS - 1
- %endif
     mov     eax, SUPGIPCPU_size
     mul     ebx
     lea     edi, [esi + eax + SUPGLOBALINFOPAGE.aCPUs]  ; edi == &pGip->aCPU[u8ApicId];
@@ -522,12 +518,7 @@ BEGINPROC rtTimeNanoTSInternalAsm
  %endif
     ; pGipCpu = &pGip->aCPU[pGip->aiCpuFromApicId[u8ApicId]];
     shr     ebx, 24
- %ifdef SUP_WITH_LOTS_OF_CPUS
     movzx   eax, word [pGip + rbx * 2 + SUPGLOBALINFOPAGE.aiCpuFromApicId]
- %else
-    mov     eax, ebx
-    and     eax, SUPGLOBALINFOPAGE_CPUS - 1
- %endif
     imul    eax, SUPGIPCPU_size
     lea     pGipCPU, [pGip + rax + SUPGLOBALINFOPAGE.aCPUs]
 %else
