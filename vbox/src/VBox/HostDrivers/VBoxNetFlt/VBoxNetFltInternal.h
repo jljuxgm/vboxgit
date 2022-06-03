@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 38408 2011-08-10 20:07:04Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 41548 2012-06-01 16:46:34Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -164,6 +164,8 @@ typedef struct VBOXNETFLTINS
             bool volatile fPromiscuousSet;
             /** Whether device exists and physically attached. */
             bool volatile fRegistered;
+            /** Whether our packet handler is installed. */
+            bool volatile fPacketHandler;
             /** The MAC address of the interface. */
             RTMAC MacAddr;
             struct notifier_block Notifier;
