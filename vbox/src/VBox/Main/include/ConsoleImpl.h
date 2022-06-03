@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 40499 2012-03-16 12:33:28Z vboxsync $ */
+/* $Id: ConsoleImpl.h 40767 2012-04-05 09:47:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -579,7 +579,7 @@ private:
                       PCFGMNODE pLunL0, PCFGMNODE pInst,
                       bool fAttachDetach, bool fIgnoreConnectFailure);
 
-    static DECLCALLBACK(int) configGuestProperties(void *pvConsole);
+    static DECLCALLBACK(int) configGuestProperties(void *pvConsole, PVM pVM);
     static DECLCALLBACK(int) configGuestControl(void *pvConsole);
     static DECLCALLBACK(void) vmstateChangeCallback(PVM aVM, VMSTATE aState,
                                                     VMSTATE aOldState, void *aUser);
