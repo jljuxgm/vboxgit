@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 37570 2011-06-21 10:31:26Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 37901 2011-07-12 13:46:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -739,6 +739,20 @@ bool VBoxProblemReporter::confirmedSettingsReloading(QWidget *pParent)
                      QIMessageBox::Yes, QIMessageBox::No | QIMessageBox::Default | QIMessageBox::Escape, 0,
                      tr("Reload settings"), tr("Keep changes"), 0);
     return rc == QIMessageBox::Yes;
+}
+
+void VBoxProblemReporter::warnAboutStateChange(QWidget *pParent)
+{
+    if (isAlreadyShown("warnAboutStateChange"))
+        return;
+    setShownStatus("warnAboutStateChange");
+
+    message(pParent ? pParent : mainWindowShown(), Warning,
+            tr("The state of the virtual machine you currently edit has changed. "
+               "Only settings which are editable at runtime are saved when you press OK. "
+               "All changes to other settings will be lost."));
+
+    clearShownStatus("warnAboutStateChange");
 }
 
 void VBoxProblemReporter::cannotStartMachine (const CConsole &console)
