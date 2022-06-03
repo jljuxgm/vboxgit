@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 39245 2011-11-08 16:46:46Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 39315 2011-11-15 18:17:16Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -3216,6 +3216,9 @@ static HRESULT vboxWddmGetD3D9Caps(PVBOXWDDMDISP_ADAPTER pAdapter, D3DCAPS9 *pCa
         Assert(0);
     }
 #endif
+
+    /* needed for Windows Media Player to work properly */
+    pCaps->Caps |= D3DCAPS_READ_SCANLINE;
 
     vboxDispDumpD3DCAPS9(pCaps);
 
