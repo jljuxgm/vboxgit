@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
+/* $Id: DevVGA.cpp 37647 2011-06-27 12:17:04Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -713,6 +713,7 @@ static void vga_ioport_write(void *opaque, uint32_t addr, uint32_t val)
         s->msr = val & ~0x10;
         if (s->fRealRetrace)
             vga_update_retrace_state(s);
+        s->st00 = (s->st00 & ~0x10) | (0x90 >> ((val >> 2) & 0x3));
         break;
     case 0x3c4:
         s->sr_index = val & 7;
