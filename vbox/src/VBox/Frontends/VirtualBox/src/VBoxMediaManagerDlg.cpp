@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 37874 2011-07-11 14:34:40Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 37891 2011-07-12 11:53:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1416,7 +1416,8 @@ void VBoxMediaManagerDlg::processCurrentChanged (QTreeWidgetItem *aItem,
     /* New and Add are now enabled even when enumerating since it should be safe */
     bool newEnabled     = currentTreeWidgetType() == VBoxDefs::MediumType_HardDisk;
     bool addEnabled     = true;
-    bool copyEnabled    = notInEnum && item && checkMediumFor (item, Action_Copy);
+    bool copyEnabled    = currentTreeWidgetType() == VBoxDefs::MediumType_HardDisk &&
+                          notInEnum && item && checkMediumFor (item, Action_Copy);
     bool removeEnabled  = notInEnum && item && checkMediumFor (item, Action_Remove);
     bool releaseEnabled = item && checkMediumFor (item, Action_Release);
 
