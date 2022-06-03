@@ -1,4 +1,4 @@
-/* $Id: process.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: process.h 36363 2011-03-23 10:55:39Z vboxsync $ */
 /** @file
  * IPRT - Internal RTProc header.
  */
@@ -38,6 +38,7 @@ extern char             g_szrtProcExePath[RTPATH_MAX];
 extern size_t           g_cchrtProcExePath;
 extern size_t           g_cchrtProcDir;
 extern size_t           g_offrtProcName;
+extern bool volatile    g_frtAtExitCalled;
 
 /**
  * Validates and sets the process priority.
