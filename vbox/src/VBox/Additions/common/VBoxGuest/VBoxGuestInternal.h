@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 38856 2011-09-23 19:43:00Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 38857 2011-09-23 19:46:38Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -181,7 +181,6 @@ typedef struct VBOXGUESTDEVEXT
 /** Pointer to the VBoxGuest driver data. */
 typedef VBOXGUESTDEVEXT *PVBOXGUESTDEVEXT;
 
-AssertCompileMemberSizeAlignment(VBOXGUESTDEVEXT, win, 64);
 
 /**
  * The VBoxGuest per session data.
