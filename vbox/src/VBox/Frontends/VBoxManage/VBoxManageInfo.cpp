@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 41842 2012-06-20 11:46:31Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 41890 2012-06-22 15:00:19Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -273,7 +273,12 @@ HRESULT showBandwidthGroups(ComPtr<IBandwidthControl> &bwCtrl,
         {
             const char *pszUnits = "";
             LONG64 cBytes = cMaxBytesPerSec;
-            if (!(cBytes % _1G))
+            if (cBytes == 0)
+            {
+                RTPrintf("Name: '%ls', Type: %s, Limit: none (disabled)\n", strName.raw(), pszType);
+                continue;
+            }
+            else if (!(cBytes % _1G))
             {
                 pszUnits = "G";
                 cBytes /= _1G;
