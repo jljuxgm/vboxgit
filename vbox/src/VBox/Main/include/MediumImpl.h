@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 40432 2012-03-12 16:04:28Z vboxsync $ */
+/* $Id: MediumImpl.h 40466 2012-03-14 14:34:15Z vboxsync $ */
 
 /** @file
  *
@@ -264,8 +264,6 @@ public:
 private:
 
     HRESULT queryInfo(bool fSetImageId, bool fSetParentId);
-    HRESULT lockRead(MediumState_T *aState, bool fWithinQueryInfo);
-    HRESULT lockWrite(MediumState_T *aState, bool fWithinQueryInfo);
 
     HRESULT canClose();
     HRESULT unregisterWithVirtualBox();
