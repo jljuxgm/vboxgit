@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
+/* $Id: DevAHCI.cpp 37496 2011-06-16 14:02:29Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -8344,10 +8344,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     }
 
     /* Create the timer for command completion coalescing feature. */
-    /** @todo r=bird: Using the virtual sync clock needs some justification.
-     *        Currently not an issue as this feature isn't used by any guest
-     *        yet. */
-    rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL_SYNC, ahciCccTimer, pThis,
+    rc = PDMDevHlpTMTimerCreate(pDevIns, TMCLOCK_VIRTUAL, ahciCccTimer, pThis,
                                 TMTIMER_FLAGS_NO_CRIT_SECT, "AHCI CCC Timer", &pThis->pHbaCccTimerR3);
     if (RT_FAILURE(rc))
     {
