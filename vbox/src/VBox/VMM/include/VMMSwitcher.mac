@@ -1,4 +1,4 @@
-; $Id: VMMSwitcher.mac 35333 2010-12-27 12:10:56Z vboxsync $
+; $Id: VMMSwitcher.mac 41933 2012-06-27 18:37:33Z vboxsync $
 ;; @file
 ; VMM - World Switchers.
 ;
@@ -49,8 +49,6 @@ struc VMMSWITCHERDEF
     .offGCGuestToHost:              resd 1
     .offGCCallTrampoline:           resd 1
     .offGCGuestToHostAsm:           resd 1
-    .offGCGuestToHostAsmHyperCtx:   resd 1
-    .offGCGuestToHostAsmGuestCtx:   resd 1
     ; disasm help
     .offHCCode0:                    resd 1
     .cbHCCode0:                     resd 1

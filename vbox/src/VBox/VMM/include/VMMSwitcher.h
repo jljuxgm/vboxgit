@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.h 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: VMMSwitcher.h 41933 2012-06-27 18:37:33Z vboxsync $ */
 /** @file
  * VMM - World Switchers.
  */
@@ -105,10 +105,6 @@ typedef struct VMMSWITCHERDEF
     uint32_t    offGCCallTrampoline;
     /** vmmGCGuestToHostAsm assembly entrypoint. */
     uint32_t    offGCGuestToHostAsm;
-    /** vmmGCGuestToHostAsmHyperCtx assembly entrypoint taking HyperCtx. */
-    uint32_t    offGCGuestToHostAsmHyperCtx;
-    /** vmmGCGuestToHostAsmGuestCtx assembly entrypoint taking GuestCtx. */
-    uint32_t    offGCGuestToHostAsmGuestCtx;
     /** @name Disassembly Regions.
      * @{ */
     uint32_t    offHCCode0;
