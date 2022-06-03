@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: state_glsl.c 37772 2011-07-04 18:03:21Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -641,6 +641,8 @@ DECLEXPORT(GLint) STATE_APIENTRY crStateGetUniformSize(GLenum type)
         case GL_SAMPLER_CUBE:
         case GL_SAMPLER_1D_SHADOW:
         case GL_SAMPLER_2D_SHADOW:
+        case GL_SAMPLER_2D_RECT_ARB:
+        case GL_SAMPLER_2D_RECT_SHADOW_ARB:
             size = 1;
             break;
 #ifdef CR_OPENGL_VERSION_2_1
