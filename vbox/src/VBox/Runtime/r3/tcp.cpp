@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 39801 2012-01-18 18:01:11Z vboxsync $ */
+/* $Id: tcp.cpp 39802 2012-01-18 18:15:47Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -823,15 +823,12 @@ RTR3DECL(int) RTTcpClientConnect(const char *pszAddress, uint32_t uPort, PRTSOCK
      * Create the socket and connect.
      */
     RTSOCKET Sock;
-Log(("Calling rtSocketCreate\n"));
     rc = rtSocketCreate(&Sock, PF_INET, SOCK_STREAM, 0);
     if (RT_SUCCESS(rc))
     {
         RTSocketSetInheritance(Sock, false /*fInheritable*/);
 
-Log(("Calling rtSocketConnect\n"));
         rc = rtSocketConnect(Sock, &Addr);
-Log(("rtSocketConnect returned\n"));
         if (RT_SUCCESS(rc))
         {
             *pSock = Sock;
