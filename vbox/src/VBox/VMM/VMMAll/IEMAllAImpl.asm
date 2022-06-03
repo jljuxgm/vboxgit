@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 40077 2012-02-11 02:49:12Z vboxsync $
+; $Id: IEMAllAImpl.asm 40093 2012-02-13 13:05:21Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -1359,4 +1359,26 @@ BEGINPROC_FASTCALL iemAImpl_fpu_r32_to_r80, 12
         add     xSP, 20h
         EPILOGUE_3_ARGS 0
 ENDPROC iemAImpl_fpu_r32_to_r80
+
+
+;;
+; Converts a 64-bit floating point value to a 80-bit one (fpu register).
+;
+; @param    A0      FPU context (fxsave).
+; @param    A1      Pointer to a IEMFPURESULT for the output.
+; @param    A2      Pointer to the 32-bit floating point value to convert.
+;
+BEGINPROC_FASTCALL iemAImpl_fpu_r64_to_r80, 12
+        PROLOGUE_3_ARGS
+        sub     xSP, 20h
+
+        FPU_SAFE_INIT A0
+        fld     qword [A2]
+
+        fnstsw  word  [A1 + IEMFPURESULT.FSW]
+        fstp    tword [A1 + IEMFPURESULT.r80Result]
+
+        add     xSP, 20h
+        EPILOGUE_3_ARGS 0
+ENDPROC iemAImpl_fpu_r64_to_r80
 

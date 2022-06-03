@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 40082 2012-02-12 13:40:29Z vboxsync $ */
+/* $Id: IEMInternal.h 40093 2012-02-13 13:05:21Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -713,6 +713,13 @@ IEM_DECL_IMPL_TYPE(void, iemAImpl_bswap_u64,(uint64_t *pu64Dst));
 typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLFPUR32,(PCX86FXSTATE pFpuState, PIEMFPURESULT pFpuRes, RTFLOAT32U r32Val));
 typedef FNIEMAIMPLFPUR32  *PFNIEMAIMPLFPUR32;
 FNIEMAIMPLFPUR32 iemAImpl_fpu_r32_to_r80;
+/** @} */
+
+/** @name FPU operations taking a 64-bit float argument
+ * @{ */
+typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLFPUR64,(PCX86FXSTATE pFpuState, PIEMFPURESULT pFpuRes, PCRTFLOAT64U pr64Val));
+typedef FNIEMAIMPLFPUR64  *PFNIEMAIMPLFPUR64;
+FNIEMAIMPLFPUR64 iemAImpl_fpu_r64_to_r80;
 /** @} */
 
 
