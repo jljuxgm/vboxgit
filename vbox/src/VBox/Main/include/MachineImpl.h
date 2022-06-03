@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 36074 2011-02-24 15:38:25Z vboxsync $ */
+/* $Id: MachineImpl.h 36082 2011-02-25 12:21:57Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -620,6 +620,7 @@ public:
     };
 
     void setModified(uint32_t fl);
+    void setModifiedLock(uint32_t fl);
 
     // callback handlers
     virtual HRESULT onNetworkAdapterChange(INetworkAdapter * /* networkAdapter */, BOOL /* changeAdapter */) { return S_OK; }

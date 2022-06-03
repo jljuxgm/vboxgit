@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 36081 2011-02-25 11:02:30Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 36082 2011-02-25 12:21:57Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1352,7 +1352,6 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
                                   "|PromiscPolicyWire"
                                   "|PromiscPolicyFixed"
                                   "|IfPolicyPromisc"
-                                  "|IfPolicyPromiscTrunk"
                                   "|IfPolicyFixed"
                                   "|TrunkPolicyHost"
                                   "|TrunkPolicyWire"
@@ -1514,25 +1513,14 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
 
     /** @cfgm{IfPolicyPromisc, string, "none"}
      * The promiscuous mode policy for this
-     * interface: allow, deny, none. */
+     * interface: deny, allow-all, allow-network, none. */
     static const DRVINTNETFLAG s_aIfPolicyPromisc[] =
     {
-        { "allow",         INTNET_OPEN_FLAGS_IF_PROMISC_ALLOW           },
+        { "allow-all",     INTNET_OPEN_FLAGS_IF_PROMISC_ALLOW | INTNET_OPEN_FLAGS_IF_PROMISC_SEE_TRUNK },
+        { "allow-network", INTNET_OPEN_FLAGS_IF_PROMISC_ALLOW | INTNET_OPEN_FLAGS_IF_PROMISC_NO_TRUNK  },
         { "deny",          INTNET_OPEN_FLAGS_IF_PROMISC_DENY            }
     };
     rc = drvIntNetR3CfgGetPolicy(pDrvIns, "IfPolicyPromisc", &s_aIfPolicyPromisc[0], RT_ELEMENTS(s_aIfPolicyPromisc),
-                                 &OpenReq.fFlags);
-    AssertRCReturn(rc, rc);
-
-    /** @cfgm{IfPolicyPromiscTrunk, string, "none"}
-     * The promiscuous mode policy for this interface with regard to unrelated
-     * trunk traffic: see-trunk, no-trunk, none. */
-    static const DRVINTNETFLAG s_aIfPolicyPromiscTrunk[] =
-    {
-        { "see-trunk",      INTNET_OPEN_FLAGS_IF_PROMISC_SEE_TRUNK      },
-        { "no-trunk",       INTNET_OPEN_FLAGS_IF_PROMISC_NO_TRUNK       }
-    };
-    rc = drvIntNetR3CfgGetPolicy(pDrvIns, "IfPolicyPromiscTrunk", &s_aIfPolicyPromiscTrunk[0], RT_ELEMENTS(s_aIfPolicyPromiscTrunk),
                                  &OpenReq.fFlags);
     AssertRCReturn(rc, rc);
 

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36074 2011-02-24 15:38:25Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36082 2011-02-25 12:21:57Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5970,6 +5970,18 @@ STDMETHODIMP Machine::COMGETTER(BandwidthControl)(IBandwidthControl **aBandwidth
 void Machine::setModified(uint32_t fl)
 {
     mData->flModifications |= fl;
+}
+
+/**
+ * Adds the given IsModified_* flag to the dirty flags of the machine, taking
+ * care of the write locking.
+ *
+ * @param   fModifications      The flag to add.
+ */
+void Machine::setModifiedLock(uint32_t fModification)
+{
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    mData->flModifications |= fModification;
 }
 
 /**
