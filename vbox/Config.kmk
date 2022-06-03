@@ -1,4 +1,4 @@
-# $Id: Config.kmk 39482 2011-11-30 20:50:12Z vboxsync $
+# $Id: Config.kmk 39667 2011-12-20 21:00:20Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -198,6 +198,9 @@ VBOX_VERSION_BUILD = 51
 # comparison.
 VBOX_VERSION_STRING_RAW = $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)
 # Full version string (may include more than just x.y.z, but no spaces or other problematic chars).
+# Note! The BETA[n],ALPHA[n],RC[n] indicators should be inserted before the
+#       publisher so that RTStrVersionCompare have a chance of comparing
+#       prerelease from different publishers correctly.
 VBOX_BUILD_PUBLISHER =
 if $(int-gt $(length $(VBOX_BUILD_PUBLISHER)),10)
   $(error VBOX_BUILD_PUBLISHER must not be longer than 10 characters!)
@@ -4877,7 +4880,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39482 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39667 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
