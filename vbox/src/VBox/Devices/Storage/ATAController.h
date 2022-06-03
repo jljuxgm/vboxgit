@@ -1,4 +1,4 @@
-/* $Id: ATAController.h 37687 2011-06-29 15:22:11Z vboxsync $ */
+/* $Id: ATAController.h 37690 2011-06-29 16:05:54Z vboxsync $ */
 /** @file
  * DevATA, DevAHCI - Shared ATA/ATAPI controller types.
  */
@@ -388,7 +388,7 @@ typedef struct AHCIATACONTROLLER
     RTSEMEVENT          SuspendIOSem;
     /** Pointer to Media Notify interface. */
     R3PTRTYPE(PPDMIMEDIANOTIFY) pMediaNotify;
-#if 0 /*HC_ARCH_BITS == 32*/
+#if HC_ARCH_BITS == 32
     uint32_t            Alignment0;
 #endif
 

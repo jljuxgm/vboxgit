@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 37687 2011-06-29 15:22:11Z vboxsync $ */
+/* $Id: DevAHCI.cpp 37690 2011-06-29 16:05:54Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -577,8 +577,8 @@ typedef struct AHCI
     /** Status LUN: Media Notifys. */
     R3PTRTYPE(PPDMIMEDIANOTIFY)     pMediaNotify;
 
-#if HC_ARCH_BITS == 64
-    uint32_t                        Alignment1[2];
+#if HC_ARCH_BITS == 32
+    uint32_t                        Alignment1;
 #endif
 
     /** Base address of the MMIO region. */
