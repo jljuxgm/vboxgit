@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 36218 2011-03-09 09:32:02Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 36253 2011-03-10 15:59:21Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -23,6 +23,17 @@
 #include <iprt/semaphore.h>
 #include <iprt/assert.h>
 
+#ifdef RT_OS_LINUX
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 31)
+#define VBOX_WITH_IOMMU
+#endif
+
+#ifdef VBOX_WITH_IOMMU
+#include <linux/iommu.h>
+#endif
+
+#endif
 
 RT_C_DECLS_BEGIN
 
