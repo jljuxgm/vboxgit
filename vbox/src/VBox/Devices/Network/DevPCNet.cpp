@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 40764 2012-04-04 16:09:59Z vboxsync $ */
+/* $Id: DevPCNet.cpp 40766 2012-04-05 08:07:30Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4676,7 +4676,7 @@ static DECLCALLBACK(int) pcnetNetworkDown_Receive(PPDMINETWORKDOWN pInterface, c
     {
         static bool s_fFirstBigFrameLoss = true;
         unsigned cbMaxFrame = ((PCRTNETETHERHDR)pvBuf)->EtherType == RT_H2BE_U16_C(RTNET_ETHERTYPE_VLAN)
-                            ? 1518 : 1514;
+                            ? 1522 : 1518;
         if (s_fFirstBigFrameLoss)
         {
             s_fFirstBigFrameLoss = false;
