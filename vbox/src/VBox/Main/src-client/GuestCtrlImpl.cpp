@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 37863 2011-07-11 11:09:33Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 37930 2011-07-13 19:56:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2388,7 +2388,7 @@ HRESULT Guest::executeProcessInternal(IN_BSTR aCommand, ULONG aFlags,
 
             if (RT_SUCCESS(vrc))
             {
-                LogFlowFunc(("Waiting for HGCM callback (timeout=%ldms) ...\n", aTimeoutMS));
+                LogFlowFunc(("Waiting for HGCM callback (timeout=%dms) ...\n", aTimeoutMS));
 
                 /*
                  * Wait for the HGCM low level callback until the process
@@ -2756,7 +2756,7 @@ STDMETHODIMP Guest::GetProcessOutput(ULONG aPID, ULONG aFlags, ULONG aTimeoutMS,
 
             if (RT_SUCCESS(vrc))
             {
-                LogFlowFunc(("Waiting for HGCM callback (timeout=%ldms) ...\n", aTimeoutMS));
+                LogFlowFunc(("Waiting for HGCM callback (timeout=%dms) ...\n", aTimeoutMS));
 
                 /*
                  * Wait for the HGCM low level callback until the process
