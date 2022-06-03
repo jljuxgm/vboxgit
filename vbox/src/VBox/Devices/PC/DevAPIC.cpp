@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 39306 2011-11-15 13:14:13Z vboxsync $ */
+/* $Id: DevAPIC.cpp 39369 2011-11-18 15:23:46Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1298,12 +1298,8 @@ static PVMCPUSET apic_get_delivery_bitmask(APICDeviceInfo *pDev, uint8_t dest, u
 
     if (dest_mode == 0)
     {
-        if (dest == 0xff)
-        {
-            /* was: mask = 0xff; - weird */ /** @todo check this; could this (1) differ on X2APIC and (2) actully mean a broadcast? */
-            for (VMCPUID iCpu = 0; iCpu < 8; iCpu++)
-                VMCPUSET_ADD(pDstSet, iCpu);
-        }
+        if (dest == 0xff) /* The broadcast ID. */
+            VMCPUSET_FILL(pDstSet);
         else
             VMCPUSET_ADD(pDstSet, dest);
     }
