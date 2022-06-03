@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36158 2011-03-04 08:51:37Z vboxsync $
+# $Id: Makefile.kmk 36159 2011-03-04 09:58:49Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -80,7 +80,7 @@ VBoxBFE_SOURCES = \
 	VMControl.cpp \
 	$(addprefix $(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_SRCS)))
 
-$(addprefix $$(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_SRCS))): \
+$(addprefix $$(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_SRCS)))_DEPS = \
     $(addprefix $$(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_HDRS)))
 
 ifdef VBOX_WITH_HGCM
