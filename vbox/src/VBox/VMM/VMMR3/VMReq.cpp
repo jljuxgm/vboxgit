@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMReq.cpp 38613 2011-09-02 12:32:23Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1067,10 +1067,10 @@ VMMR3DECL(int) VMR3ReqProcessU(PUVM pUVM, VMCPUID idDstCpu)
      * Process loop.
      *
      * We do not repeat the outer loop if we've got an informational status code
-     * since that code needs processing by our caller.
+     * since that code needs processing by our caller (usually EM).
      */
     int rc = VINF_SUCCESS;
-    while (rc <= VINF_SUCCESS)
+    for (;;)
     {
         /*
          * Get the pending requests.
@@ -1100,20 +1100,16 @@ VMMR3DECL(int) VMR3ReqProcessU(PUVM pUVM, VMCPUID idDstCpu)
             pReq = vmR3ReqProcessUTooManyHelper(pUVM, idDstCpu, pReq, ppReqs);
 
         /*
-         * Process the request.
-         * Note! The status code handling here extremely important and yet very
-         *       fragile.
+         * Process the request
          */
         STAM_COUNTER_INC(&pUVM->vm.s.StatReqProcessed);
         int rc2 = vmR3ReqProcessOneU(pUVM, pReq);
         if (    rc2 >= VINF_EM_FIRST
-            &&  rc2 <= VINF_EM_LAST
-            &&  (   rc == VINF_SUCCESS
-                 || rc2 < rc) )
+            &&  rc2 <= VINF_EM_LAST)
+        {
             rc = rc2;
-        /** @todo may have to abort processing to propagate EM scheduling status codes
-         *        up to the caller... See the ugly hacks after VMMR3EmtRendezvousFF
-         *        and VMR3ReqProcessU in EM.cpp. */
+            break;
+        }
     }
 
     LogFlow(("VMR3ReqProcess: returns %Rrc (enmVMState=%d)\n", rc, pUVM->pVM ? pUVM->pVM->enmVMState : VMSTATE_CREATING));
