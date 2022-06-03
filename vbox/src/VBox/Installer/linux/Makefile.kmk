@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42119 2012-07-11 19:45:32Z vboxsync $
+# $Id: Makefile.kmk 42121 2012-07-11 20:22:03Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -125,6 +125,7 @@ VBOX_LNX_STRIP_BIN = \
 	$(if $(VBOX_WITH_GUEST_PROPS),VBoxGuestPropSvc.so,) \
 	$(if $(VBOX_WITH_GUEST_CONTROL),VBoxGuestControlSvc.so,) \
 	$(if $(VBOX_WITH_MAIN), \
+		VBoxAutostart \
 		VBoxBalloonCtrl \
 		VBoxManage \
 		VBoxNetDHCP $(if $(VBOX_WITH_HARDENING),VBoxNetDHCP.so,) \
