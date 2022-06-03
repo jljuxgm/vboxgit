@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 41065 2012-04-26 09:55:15Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 41240 2012-05-10 14:36:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2646,6 +2646,10 @@ int Display::drawToScreenEMT(Display *pDisplay, ULONG aScreenId, BYTE *address, 
     {
         rc = VERR_INVALID_PARAMETER;
     }
+
+    if (RT_SUCCESS(rc) && pDisplay->maFramebuffers[aScreenId].u32ResizeStatus == ResizeStatus_Void)
+        pDisplay->mParent->consoleVRDPServer()->SendUpdateBitmap(aScreenId, x, y, width, height);
+
     pDisplay->vbvaUnlock();
     return rc;
 }
