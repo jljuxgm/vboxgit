@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 41815 2012-06-18 13:29:27Z vboxsync $ */
+/* $Id: DevATA.cpp 41825 2012-06-19 14:14:28Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -5016,9 +5016,9 @@ static void ataDMATransfer(PATACONTROLLER pCtl)
                 PCIATAState *pATAState = PDMINS_2_DATA(pDevIns, PCIATAState *);
                 AssertPtr(pATAState);
                 if (uTxDir == PDMBLOCKTXDIR_FROM_DEVICE)
-                    PCIDevPhysWrite(&pATAState->dev, pBuffer, s->CTX_SUFF(pbIOBuffer) + iIOBufferCur, dmalen);
+                    PDMDevHlpPCIDevPhysWrite(&pATAState->dev, pBuffer, s->CTX_SUFF(pbIOBuffer) + iIOBufferCur, dmalen);
                 else
-                    PCIDevPhysRead(&pATAState->dev, pBuffer, s->CTX_SUFF(pbIOBuffer) + iIOBufferCur, dmalen);
+                    PDMDevHlpPCIDevPhysRead(&pATAState->dev, pBuffer, s->CTX_SUFF(pbIOBuffer) + iIOBufferCur, dmalen);
 
                 iIOBufferCur += dmalen;
                 cbTotalTransfer -= dmalen;
