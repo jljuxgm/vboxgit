@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 36998 2011-05-07 20:19:55Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 36999 2011-05-07 20:40:48Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -517,8 +517,13 @@ static bool vboxUsbFltDevCheckReplugLocked(PVBOXUSBFLT_DEVICE pDevice, PVBOXUSBF
         }
         else
         {
-            /* the device is currently filtered, we should release it only if it is NOT grabbed by a one-shot filter */
-            if (!pDevice->pOwner || !pDevice->fIsFilterOneShot)
+            /* the device is currently filtered, we should release it only if
+             * 1. device does not have an owner
+             * or
+             * 2. it should be released bue to a one-shot filter
+             * or
+             * 3. it is NOT grabbed by a one-shot filter */
+            if (!pDevice->pOwner || fIsOneShot || !pDevice->fIsFilterOneShot)
             {
                 bNeedReplug = true;
             }
@@ -555,8 +560,14 @@ static bool vboxUsbFltDevCheckReplugLocked(PVBOXUSBFLT_DEVICE pDevice, PVBOXUSBF
         }
         else
         {
-            /* the device is currently NOT filtered, we should replug it only if it is NOT grabbed by a one-shot filter */
-            if (!pDevice->pOwner || !pDevice->fIsFilterOneShot)
+            /* the device is currently NOT filtered,
+             * we should replug it only if
+             * 1. device does not have an owner
+             * or
+             * 2. it should be captured due to a one-shot filter
+             * or
+             * 3. it is NOT released by a one-shot filter */
+            if (!pDevice->pOwner || fIsOneShot || !pDevice->fIsFilterOneShot)
             {
                 bNeedReplug = true;
             }
