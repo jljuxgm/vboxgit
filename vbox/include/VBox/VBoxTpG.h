@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 40594 2012-03-23 14:53:06Z vboxsync $ */
+/* $Id: VBoxTpG.h 40601 2012-03-24 09:31:11Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -133,11 +133,44 @@ typedef VTGDESCPROBE       *PVTGDESCPROBE;
 
 
 /**
+ * Code/data stability.
+ */
+typedef enum kVTGStability
+{
+    kVTGStability_Invalid = 0,
+    kVTGStability_Internal,
+    kVTGStability_Private,
+    kVTGStability_Obsolete,
+    kVTGStability_External,
+    kVTGStability_Unstable,
+    kVTGStability_Evolving,
+    kVTGStability_Stable,
+    kVTGStability_Standard,
+    kVTGStability_End
+} kVTGStability;
+
+/**
+ * Data dependency.
+ */
+typedef enum kVTGClass
+{
+    kVTGClass_Invalid = 0,
+    kVTGClass_Unknown,
+    kVTGClass_Cpu,
+    kVTGClass_Platform,
+    kVTGClass_Group,
+    kVTGClass_Isa,
+    kVTGClass_Common,
+    kVTGClass_End
+} kVTGClass;
+
+
+/**
  * VTG provider attributes.
  */
 typedef struct VTGDESCATTR
 {
-    uint8_t         u8Class;
+    uint8_t         u8Code;
     uint8_t         u8Data;
     uint8_t         u8DataDep;
 } VTGDESCATTR;

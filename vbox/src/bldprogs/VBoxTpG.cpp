@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40597 2012-03-23 18:08:21Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40601 2012-03-24 09:31:11Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -43,35 +43,6 @@
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
-/**
- * Code/data stability.
- */
-typedef enum kVTGStability
-{
-    kVTGStability_Invalid = 0,
-    kVTGStability_Internal,
-    kVTGStability_Private,
-    kVTGStability_Obsolete,
-    kVTGStability_External,
-    kVTGStability_Unstable,
-    kVTGStability_Evolving,
-    kVTGStability_Stable,
-    kVTGStability_Standard
-} kVTGStability;
-
-/**
- * Data dependency.
- */
-typedef enum kVTGClass
-{
-    kVTGClass_Invalid = 0,
-    kVTGClass_Unknown,
-    kVTGClass_Cpu,
-    kVTGClass_Platform,
-    kVTGClass_Group,
-    kVTGClass_Isa,
-    kVTGClass_Common
-} kVTGClass;
 
 typedef struct VTGATTRS
 {
@@ -452,7 +423,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40597 2012-03-23 18:08:21Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40601 2012-03-24 09:31:11Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -884,7 +855,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40597 2012-03-23 18:08:21Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40601 2012-03-24 09:31:11Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -1936,7 +1907,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40597 $";
+                static const char s_szRev[] = "$Revision: 40601 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
