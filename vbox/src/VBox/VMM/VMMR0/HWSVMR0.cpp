@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41282 2012-05-14 12:43:35Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41302 2012-05-15 10:03:37Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring 0.
  */
@@ -339,9 +339,9 @@ VMMR0DECL(int) SVMR0SetupVM(PVM pVM)
                                         | SVM_CTRL1_INTERCEPT_SHUTDOWN      /* fatal */
                                         | SVM_CTRL1_INTERCEPT_FERR_FREEZE;  /* Legacy FPU FERR handling. */
                                         ;
-        /* With nested paging we don't care about invlpg anymore. */
+        /* With nested paging we don't care about invlpg or task switches anymore. */
         if (pVM->hwaccm.s.fNestedPaging)
-            pVMCB->ctrl.u32InterceptCtrl1 &= ~SVM_CTRL1_INTERCEPT_INVLPG;
+            pVMCB->ctrl.u32InterceptCtrl1 &= ~(SVM_CTRL1_INTERCEPT_INVLPG | SVM_CTRL1_INTERCEPT_TASK_SWITCH);
 
         pVMCB->ctrl.u32InterceptCtrl2 =   SVM_CTRL2_INTERCEPT_VMRUN         /* required */
                                         | SVM_CTRL2_INTERCEPT_VMMCALL
