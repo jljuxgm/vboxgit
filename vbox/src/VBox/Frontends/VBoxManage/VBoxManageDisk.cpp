@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 37525 2011-06-17 10:09:21Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 38469 2011-08-16 10:34:32Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -770,15 +770,12 @@ RTEXITCODE handleConvertFromRaw(int argc, char *argv[])
     PVBOXHDD pDisk = NULL;
 
     PVDINTERFACE     pVDIfs = NULL;
-    VDINTERFACE      vdInterfaceError;
-    VDINTERFACEERROR vdInterfaceErrorCallbacks;
-    vdInterfaceErrorCallbacks.cbSize       = sizeof(VDINTERFACEERROR);
-    vdInterfaceErrorCallbacks.enmInterface = VDINTERFACETYPE_ERROR;
-    vdInterfaceErrorCallbacks.pfnError     = handleVDError;
-    vdInterfaceErrorCallbacks.pfnMessage   = NULL;
+    VDINTERFACEERROR vdInterfaceError;
+    vdInterfaceError.pfnError     = handleVDError;
+    vdInterfaceError.pfnMessage   = NULL;
 
-    rc = VDInterfaceAdd(&vdInterfaceError, "VBoxManage_IError", VDINTERFACETYPE_ERROR,
-                        &vdInterfaceErrorCallbacks, NULL, &pVDIfs);
+    rc = VDInterfaceAdd(&vdInterfaceError.Core, "VBoxManage_IError", VDINTERFACETYPE_ERROR,
+                        NULL, sizeof(VDINTERFACEERROR), &pVDIfs);
     AssertRC(rc);
 
     /* open raw image file. */

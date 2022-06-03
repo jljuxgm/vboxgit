@@ -1,4 +1,4 @@
-/* $Id: tstVDShareable.cpp 33567 2010-10-28 15:37:21Z vboxsync $ */
+/* $Id: tstVDShareable.cpp 38469 2011-08-16 10:34:32Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility for shareable images.
  */
@@ -67,8 +67,7 @@ static int tstVDCreateShareDelete(const char *pszBackend, const char *pszFilenam
     VDGEOMETRY       PCHS = { 0, 0, 0 };
     VDGEOMETRY       LCHS = { 0, 0, 0 };
     PVDINTERFACE     pVDIfs = NULL;
-    VDINTERFACE      VDIError;
-    VDINTERFACEERROR VDIErrorCallbacks;
+    VDINTERFACEERROR VDIfError;
 
 #define CHECK(str) \
     do \
@@ -82,18 +81,16 @@ static int tstVDCreateShareDelete(const char *pszBackend, const char *pszFilenam
     } while (0)
 
     /* Create error interface. */
-    VDIErrorCallbacks.cbSize = sizeof(VDINTERFACEERROR);
-    VDIErrorCallbacks.enmInterface = VDINTERFACETYPE_ERROR;
-    VDIErrorCallbacks.pfnError = tstVDError;
-    VDIErrorCallbacks.pfnMessage = tstVDMessage;
+    VDIfError.pfnError = tstVDError;
+    VDIfError.pfnMessage = tstVDMessage;
 
-    rc = VDInterfaceAdd(&VDIError, "tstVD_Error", VDINTERFACETYPE_ERROR, &VDIErrorCallbacks,
-                        NULL, &pVDIfs);
+    rc = VDInterfaceAdd(&VDIfError.Core, "tstVD_Error", VDINTERFACETYPE_ERROR,
+                        NULL, sizeof(VDINTERFACEERROR), &pVDIfs);
     AssertRC(rc);
 
-    rc = VDCreate(&VDIError, VDTYPE_HDD, &pVD);
+    rc = VDCreate(pVDIfs, VDTYPE_HDD, &pVD);
     CHECK("VDCreate()");
-    rc = VDCreate(&VDIError, VDTYPE_HDD, &pVD2);
+    rc = VDCreate(pVDIfs, VDTYPE_HDD, &pVD2);
     CHECK("VDCreate() #2");
 
     rc = VDCreateBase(pVD, pszBackend, pszFilename, cbSize,

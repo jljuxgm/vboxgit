@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 38420 2011-08-11 14:30:48Z vboxsync $ */
+/* $Id: MediumImpl.h 38469 2011-08-16 10:34:32Z vboxsync $ */
 
 /** @file
  *
@@ -253,12 +253,12 @@ public:
     HRESULT exportFile(const char *aFilename,
                        const ComObjPtr<MediumFormat> &aFormat,
                        MediumVariant_T aVariant,
-                       void *aVDImageIOCallbacks, void *aVDImageIOUser,
+                       PVDINTERFACEIO aVDImageIOIf, void *aVDImageIOUser,
                        const ComObjPtr<Progress> &aProgress);
     HRESULT importFile(const char *aFilename,
                        const ComObjPtr<MediumFormat> &aFormat,
                        MediumVariant_T aVariant,
-                       void *aVDImageIOCallbacks, void *aVDImageIOUser,
+                       PVDINTERFACEIO aVDImageIOIf, void *aVDImageIOUser,
                        const ComObjPtr<Medium> &aParent,
                        const ComObjPtr<Progress> &aProgress);
 
