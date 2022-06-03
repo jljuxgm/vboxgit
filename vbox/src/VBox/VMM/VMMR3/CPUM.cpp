@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: CPUM.cpp 41671 2012-06-12 15:22:43Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3675,12 +3675,13 @@ VMMR3DECL(int) CPUMR3DisasmInstrCPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, RTGCPT
      */
     uint32_t cbInstr;
 #ifndef LOG_ENABLED
-    rc = DISInstrWithReader(GCPtrPC, enmDisCpuMode, cpumR3DisasInstrRead, &State, pCpu, &cbInstr, NULL);
+    rc = DISCoreOneWithReader(GCPtrPC, enmDisCpuMode, cpumR3DisasInstrRead, &State, pCpu, &cbInstr);
     if (RT_SUCCESS(rc))
     {
 #else
     char szOutput[160];
-    rc = DISInstrWithReader(GCPtrPC, enmDisCpuMode, cpumR3DisasInstrRead, &State, pCpu, &cbInstr, szOutput);
+    rc = DISInstrToStrWithReader(GCPtrPC, enmDisCpuMode, cpumR3DisasInstrRead, &State,
+                                 pCpu, &cbInstr, szOutput, sizeof(szOutput));
     if (RT_SUCCESS(rc))
     {
         /* log it */

@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: PATMInternal.h 41671 2012-06-12 15:22:43Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -676,40 +676,6 @@ VMMDECL(const char *) patmGetInstructionString(uint32_t opcode, uint32_t fPatchF
 
 FNDISREADBYTES patmReadBytes;
 
-
-#ifndef IN_RC
-
-#define PATMREAD_RAWCODE        1  /* read code as-is */
-#define PATMREAD_ORGCODE        2  /* read original guest opcode bytes; not the patched bytes */
-#define PATMREAD_NOCHECK        4  /* don't check for patch conflicts */
-
-/*
- * Private structure used during disassembly
- */
-typedef struct
-{
-    PVM                  pVM;
-    PPATCHINFO           pPatchInfo;
-    R3PTRTYPE(uint8_t *) pInstrHC;
-    RTRCPTR              pInstrGC;
-    uint32_t             fReadFlags;
-} PATMDISASM, *PPATMDISASM;
-
-DECLINLINE(bool) PATMR3DISInstr(PVM pVM, PPATCHINFO pPatch, PDISCPUSTATE pCpu, RTRCPTR InstrGC,
-                                uint8_t *InstrHC, uint32_t *pOpsize, char *pszOutput,
-                                uint32_t fReadFlags = PATMREAD_ORGCODE)
-{
-    PATMDISASM disinfo;
-    disinfo.pVM         = pVM;
-    disinfo.pPatchInfo  = pPatch;
-    disinfo.pInstrHC    = InstrHC;
-    disinfo.pInstrGC    = InstrGC;
-    disinfo.fReadFlags  = fReadFlags;
-    (pCpu)->pfnReadBytes = patmReadBytes;
-    (pCpu)->apvUserData[0] = &disinfo;
-    return RT_SUCCESS(DISInstrWithReader(InstrGC, pCpu->mode, patmReadBytes, &disinfo, pCpu, pOpsize, pszOutput));
-}
-#endif /* !IN_RC */
 
 RT_C_DECLS_BEGIN
 /**

@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 41668 2012-06-12 13:15:51Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 41671 2012-06-12 15:22:43Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -328,9 +328,8 @@ static int MyDisasmBlock(const char *argv0, DISCPUMODE enmCpuMode, uint64_t uAdd
         State.uNextAddr = State.uAddress;
         State.pbNext = State.pbInstr;
 
-
-        int rc = DISInstrWithReader(State.uAddress, enmCpuMode, MyDisasInstrRead, &State,
-                                    &State.Cpu, &State.cbInstr, State.szLine);
+        int rc = DISInstrToStrWithReader(State.uAddress, enmCpuMode, MyDisasInstrRead, &State,
+                                         &State.Cpu, &State.cbInstr, State.szLine, sizeof(State.szLine));
         if (    RT_SUCCESS(rc)
             ||  (   (   rc == VERR_DIS_INVALID_OPCODE
                      || rc == VERR_DIS_GEN_FAILURE)
