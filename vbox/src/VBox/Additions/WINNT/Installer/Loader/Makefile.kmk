@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35380 2010-12-30 16:06:17Z vboxsync $
+# $Id: Makefile.kmk 38154 2011-07-25 12:30:55Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Additions loader.
 #
@@ -33,9 +33,9 @@ if "$(KBUILD_TARGET_ARCH)" == "x86"
  	/DISALLOWLIB:libcmt.lib
 
  VBoxWindowsAdditions_LIBS     = \
- 	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.$(BUILD_TARGET_ARCH))_LIB)/oldnames.lib \
- 	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.$(BUILD_TARGET_ARCH))_LIB)/libcmt.lib \
-	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.$(BUILD_TARGET_ARCH))_LIB)/libcpmt.lib
+ 	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.$(KBUILD_TARGET_ARCH))_LIB)/oldnames.lib \
+ 	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.$(KBUILD_TARGET_ARCH))_LIB)/libcmt.lib \
+	$(PATH_TOOL_$(TEMPLATE_VBOXR3EXE_TOOL.win.$(KBUILD_TARGET_ARCH))_LIB)/libcpmt.lib
 
  # Version stuff.
  VBoxWindowsAdditions.cpp_DEFS += VBOX_SVN_REV=$(VBOX_SVN_REV)

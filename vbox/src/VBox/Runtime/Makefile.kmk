@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38082 2011-07-20 14:26:24Z vboxsync $
+# $Id: Makefile.kmk 38154 2011-07-25 12:30:55Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1562,7 +1562,7 @@ RuntimeR0Drv_DEFS.linux = MODULE KBUILD_MODNAME=KBUILD_STR\(vboxdrv\) KBUILD_BAS
 
 RuntimeR0Drv_INCS      := $(PATH_SUB_CURRENT) include
 RuntimeR0Drv_INCS.freebsd = \
-	$(PATH_INS)/gen-sys-hdrs
+	$(PATH_STAGE)/gen-sys-hdrs
 RuntimeR0Drv_INCS.linux = \
 	r0drv/linux
 RuntimeR0Drv_INCS.solaris = \
@@ -1899,8 +1899,8 @@ RuntimeR0Drv_SOURCES.solaris = \
 ## PORTME: Porters create and add their selection of platform specific Ring-0 Driver files here.
 
 RuntimeR0Drv_ORDERDEPS.freebsd = \
-  	$(PATH_INS)/gen-sys-hdrs/bus_if.h \
-  	$(PATH_INS)/gen-sys-hdrs/device_if.h
+  	$(PATH_STAGE)/gen-sys-hdrs/bus_if.h \
+  	$(PATH_STAGE)/gen-sys-hdrs/device_if.h
 
 
 #
