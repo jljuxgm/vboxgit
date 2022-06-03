@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 41195 2012-05-08 00:51:07Z vboxsync $ */
+/* $Id: scmstream.cpp 41217 2012-05-08 20:18:36Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -639,6 +639,24 @@ int ScmStreamSeekByLine(PSCMSTREAM pStream, size_t iLine)
         pStream->iLine = pStream->cLines;
     }
     return VINF_SUCCESS;
+}
+
+/**
+ * Checks if the stream position is at the start of a line.
+ *
+ * @returns @c true if at the start, @c false if not.
+ * @param   pStream             The stream.
+ */
+bool ScmStreamIsAtStartOfLine(PSCMSTREAM pStream)
+{
+    if (   !pStream->fFullyLineated
+        && !pStream->fWriteOrRead)
+    {
+        int rc = scmStreamLineate(pStream);
+        if (RT_FAILURE(rc))
+            return false;
+    }
+    return pStream->off == pStream->paLines[pStream->iLine].off;
 }
 
 /**
