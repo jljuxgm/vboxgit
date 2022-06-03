@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 35625 2011-01-19 11:17:34Z vboxsync $ */
+/* $Id: DBGFReg.cpp 36826 2011-04-23 23:12:54Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -2215,9 +2215,9 @@ dbgfR3RegPrintfCbOutput(void *pvArg, const char *pachChars, size_t cbChars)
     }
     if (cbToCopy > 0)
     {
-        memcpy(&pArgs->pszBuf[pArgs->offBuf], pachChars, cbChars);
-        pArgs->offBuf     += cbChars;
-        pArgs->cchLeftBuf -= cbChars;
+        memcpy(&pArgs->pszBuf[pArgs->offBuf], pachChars, cbToCopy);
+        pArgs->offBuf     += cbToCopy;
+        pArgs->cchLeftBuf -= cbToCopy;
         pArgs->pszBuf[pArgs->offBuf] = '\0';
     }
     return cbToCopy;
