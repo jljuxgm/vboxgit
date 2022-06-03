@@ -1,4 +1,4 @@
-/* $Id: tstVMMFork.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstVMMFork.cpp 41294 2012-05-15 09:02:16Z vboxsync $ */
 /** @file
  * VMM Fork Test.
  */
@@ -145,16 +145,22 @@ int main(int argc, char* argv[])
         /*
          * Cleanup.
          */
+        rc = VMR3PowerOff(pVM);
+        if (!RT_SUCCESS(rc))
+        {
+            RTPrintf(TESTCASE ": error: failed to power off vm! rc=%Rrc\n", rc);
+            rcErrors++;
+        }
         rc = VMR3Destroy(pVM);
         if (!RT_SUCCESS(rc))
         {
-            RTPrintf(TESTCASE ": error: failed to destroy vm! rc=%d\n", rc);
+            RTPrintf(TESTCASE ": error: failed to destroy vm! rc=%Rrc\n", rc);
             rcErrors++;
         }
     }
     else
     {
-        RTPrintf(TESTCASE ": fatal error: failed to create vm! rc=%d\n", rc);
+        RTPrintf(TESTCASE ": fatal error: failed to create vm! rc=%Rrc\n", rc);
         rcErrors++;
     }
 

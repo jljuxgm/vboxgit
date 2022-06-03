@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 41294 2012-05-15 09:02:16Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -283,6 +283,12 @@ int main(int argc, char **argv)
         /*
          * Cleanup.
          */
+        rc = VMR3PowerOff(pVM);
+        if (!RT_SUCCESS(rc))
+        {
+            RTPrintf(TESTCASE ": error: failed to power off vm! rc=%Rrc\n", rc);
+            g_cErrors++;
+        }
         rc = VMR3Destroy(pVM);
         if (!RT_SUCCESS(rc))
         {
