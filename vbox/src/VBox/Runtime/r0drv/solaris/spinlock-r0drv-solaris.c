@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-solaris.c 39460 2011-11-29 14:20:11Z vboxsync $ */
+/* $Id: spinlock-r0drv-solaris.c 40149 2012-02-16 14:07:37Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Solaris.
  */
@@ -125,6 +125,15 @@ RTDECL(void) RTSpinlockAcquireNoInts(RTSPINLOCK Spinlock, PRTSPINLOCKTMP pTmp)
     pTmp->uFlags = 0;
 #endif
     mutex_enter(&pThis->Mtx);
+
+    /*
+     * Solaris 10 doesn't preserve the interrupt flag, but since we're at PIL_MAX we should be
+     * fine and not get interrupts while lock is held. Re-disable interrupts to not upset
+     * assertions & assumptions callers might have.
+     */
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+    ASMIntDisable();
+#endif
 
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
     Assert(!ASMIntAreEnabled());
