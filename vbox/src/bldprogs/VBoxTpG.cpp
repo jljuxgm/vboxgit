@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40878 2012-04-11 20:44:41Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40882 2012-04-11 23:42:42Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -452,7 +452,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40878 2012-04-11 20:44:41Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40882 2012-04-11 23:42:42Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -607,8 +607,9 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
             ScmStreamPrintf(pStrm,
                             "    ; off=%u\n"
                             "    db   %2u     ; Argument count\n"
+                            "    db   %u      ; fHaveLargeArgs"
                             "    db  0, 0, 0 ; Reserved\n"
-                            , off, pProbe->cArgs);
+                            , off, pProbe->cArgs, pProbe->fHaveLargeArgs);
             off += 4;
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
@@ -889,7 +890,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40878 2012-04-11 20:44:41Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40882 2012-04-11 23:42:42Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -976,8 +977,8 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
                 {
                     if (pArg->fType & VTG_TYPE_FIXED_SIZED)
                         ScmStreamPrintf(pStrm,
-                                        "        AssertCompile(sizeof(%s) <= sizeof(uint32_t)); \\\n"
-                                        "        AssertCompile(sizeof(%s) <= sizeof(uint32_t)); \\\n",
+                                        "        /*AssertCompile(sizeof(%s) <= sizeof(uint32_t));*/ \\\n"
+                                        "        /*AssertCompile(sizeof(%s) <= sizeof(uint32_t));*/ \\\n",
                                         pArg->pszName,
                                         pArg->pszType);
                     else
@@ -1591,6 +1592,10 @@ static uint32_t parseTypeExpression(const char *pszType)
      * It's important that we catch all types larger than 32-bit here or we'll
      * screw up the probe argument handling.
      */
+    if (MY_STRMATCH("int"))             return VTG_TYPE_FIXED_SIZED | sizeof(int)   | VTG_TYPE_SIGNED;
+    if (MY_STRMATCH("uintptr_t"))       return VTG_TYPE_HC_ARCH_SIZED | VTG_TYPE_UNSIGNED;
+    if (MY_STRMATCH("intptr_t"))        return VTG_TYPE_HC_ARCH_SIZED | VTG_TYPE_SIGNED;
+
     //if (MY_STRMATCH("uint128_t"))       return VTG_TYPE_FIXED_SIZED | sizeof(uint128_t) | VTG_TYPE_UNSIGNED;
     if (MY_STRMATCH("uint64_t"))        return VTG_TYPE_FIXED_SIZED | sizeof(uint64_t)  | VTG_TYPE_UNSIGNED;
     if (MY_STRMATCH("uint32_t"))        return VTG_TYPE_FIXED_SIZED | sizeof(uint32_t)  | VTG_TYPE_UNSIGNED;
@@ -1609,6 +1614,7 @@ static uint32_t parseTypeExpression(const char *pszType)
 
     if (MY_STRMATCH("RTMSINTERVAL"))    return VTG_TYPE_FIXED_SIZED | sizeof(RTMSINTERVAL) | VTG_TYPE_UNSIGNED;
     if (MY_STRMATCH("RTTIMESPEC"))      return VTG_TYPE_FIXED_SIZED | sizeof(RTTIMESPEC)   | VTG_TYPE_SIGNED;
+    if (MY_STRMATCH("RTPROCESS"))       return VTG_TYPE_FIXED_SIZED | sizeof(RTPROCESS)    | VTG_TYPE_UNSIGNED;
     if (MY_STRMATCH("RTHCPHYS"))        return VTG_TYPE_FIXED_SIZED | sizeof(RTHCPHYS)     | VTG_TYPE_UNSIGNED | VTG_TYPE_PHYS;
 
     if (MY_STRMATCH("RTR3PTR"))         return VTG_TYPE_CTX_POINTER | VTG_TYPE_CTX_R3;
@@ -1672,7 +1678,6 @@ static uint32_t parseTypeExpression(const char *pszType)
 
     if (   MY_STRMATCH("unsigned")
         || MY_STRMATCH("signed")
-        || MY_STRMATCH("int")
         || MY_STRMATCH("signed int")
         || MY_STRMATCH("unsigned int")
         || MY_STRMATCH("short")
@@ -1682,7 +1687,6 @@ static uint32_t parseTypeExpression(const char *pszType)
         RTMsgWarning("Please avoid using the type '%s' for probe arguments!", pszType);
     if (MY_STRMATCH("unsigned"))        return VTG_TYPE_FIXED_SIZED | sizeof(int)   | VTG_TYPE_UNSIGNED;
     if (MY_STRMATCH("unsigned int"))    return VTG_TYPE_FIXED_SIZED | sizeof(int)   | VTG_TYPE_UNSIGNED;
-    if (MY_STRMATCH("int"))             return VTG_TYPE_FIXED_SIZED | sizeof(int)   | VTG_TYPE_SIGNED;
     if (MY_STRMATCH("signed"))          return VTG_TYPE_FIXED_SIZED | sizeof(int)   | VTG_TYPE_SIGNED;
     if (MY_STRMATCH("signed int"))      return VTG_TYPE_FIXED_SIZED | sizeof(int)   | VTG_TYPE_SIGNED;
     if (MY_STRMATCH("short"))           return VTG_TYPE_FIXED_SIZED | sizeof(short) | VTG_TYPE_SIGNED;
@@ -1805,6 +1809,7 @@ static RTEXITCODE parseProbe(PSCMSTREAM pStrm, PVTGPROVIDER pProv)
                     pArg->fType   = parseTypeExpression(pArg->pszType);
                     if (VTG_TYPE_IS_LARGE(pArg->fType))
                         pProbe->fHaveLargeArgs = true;
+
                     pArg = NULL;
                     cchName = cchArg = 0;
                 }
@@ -2144,7 +2149,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40878 $";
+                static const char s_szRev[] = "$Revision: 40882 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
