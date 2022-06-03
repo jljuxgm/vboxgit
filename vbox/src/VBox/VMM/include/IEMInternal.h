@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 37091 2011-05-14 07:06:09Z vboxsync $ */
+/* $Id: IEMInternal.h 37232 2011-05-27 11:38:30Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -514,7 +514,6 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u8_locked, (uint8_t  *pu8Dst,  uint8_t  *p
 IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u16_locked,(uint16_t *pu16Dst, uint16_t *pu16Reg, uint32_t *pEFlags));
 IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u32_locked,(uint32_t *pu32Dst, uint32_t *pu32Reg, uint32_t *pEFlags));
 IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u64_locked,(uint64_t *pu64Dst, uint64_t *pu64Reg, uint32_t *pEFlags));
-
 /** @}  */
 
 /** @name Double precision shifts
