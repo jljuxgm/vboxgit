@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: GVMMR0.cpp 36235 2011-03-09 17:22:38Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -2413,6 +2413,8 @@ GVMMR0DECL(int) GVMMR0QueryStatistics(PGVMMSTATS pStats, PSUPDRVSESSION pSession
             pStats->aHostCpus[iDstCpu].cStarts    = 0;
 #endif
             iDstCpu++;
+            if (iDstCpu >= RT_ELEMENTS(pStats->aHostCpus))
+                break;
         }
     }
     pStats->cHostCpus = iDstCpu;
