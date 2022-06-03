@@ -1,4 +1,4 @@
-/* $Id: tcp_output.c 38110 2011-07-22 04:52:59Z vboxsync $ */
+/* $Id: tcp_output.c 39848 2012-01-24 14:54:25Z vboxsync $ */
 /** @file
  * NAT - TCP output.
  */
@@ -486,6 +486,8 @@ send:
         m->m_data += if_maxlinkhdr;
         m->m_pkthdr.header = mtod(m, void *);
         m->m_len = hdrlen;
+        /* fill template from socket structure */
+        tcp_template(tp);
     }
 
     ti = mtod(m, struct tcpiphdr *);
