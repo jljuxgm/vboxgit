@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 38813 2011-09-21 12:28:27Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 38814 2011-09-21 12:45:15Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -280,6 +280,7 @@ VBoxDbgConsole::VBoxDbgConsole(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent/* = NUL
      * The tab order is from input to output, not the other way around as it is by default.
      */
     setTabOrder(m_pInput, m_pOutput);
+    m_fInputRestoreFocus = true; /* hack */
 
     /*
      * Setup the timer.
