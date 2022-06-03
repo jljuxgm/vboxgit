@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 37730 2011-07-01 13:45:50Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 37732 2011-07-01 14:11:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6404,6 +6404,7 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
         if (FAILED(rc))
             throw rc;
 
+#if 0
         LogRel(("Installed Extension Packs:\n"));
         com::SafeIfaceArray<IExtPack> extPacks;
         HRESULT rc2 = mptrExtPackManager->COMGETTER(InstalledExtPacks)(ComSafeArrayAsOutParam(extPacks));
@@ -6439,6 +6440,7 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
         }
         else
             LogRel(("  Cannot retrieve this information (%Rhrc)!\n", rc2));
+#endif
 
 #ifdef RT_OS_SOLARIS
         /* setup host core dumper for the VM */
