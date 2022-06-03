@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41616 2012-06-07 18:11:28Z vboxsync $
+# $Id: Makefile.kmk 41621 2012-06-08 11:57:04Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -736,19 +736,19 @@ VirtualBox_CLEAN         += $(wildcard $(VirtualBox_0_OUTDIR)/include/*)
 VirtualBox_SOURCES       += $(VirtualBox_0_OUTDIR)/include/COMWrappers.cpp
 
 $$(VirtualBox_0_OUTDIR)/include/COMWrappers \
-+| $$(VirtualBox_0_OUTDIR)/include/COMEnums.h \
-+| $$(VirtualBox_0_OUTDIR)/include/COMWrappers.cpp: \
++ $$(VirtualBox_0_OUTDIR)/include/COMEnums.h \
++ $$(VirtualBox_0_OUTDIR)/include/COMWrappers.cpp: \
 		$(VBOX_XIDL_FILE) \
 		$(VBOX_VIRTUALBOX4_SRC)/src/globals/COMWrappers.xsl \
 		$(VBOX_FILESPLIT) \
 		| $$(dir $$@)
 	$(call MSG_GENERATE,VirtualBox,$<,$@)
-	$(QUIET)$(RM) -f COMWrappers* COMEnums.h C*.h
+	$(QUIET)$(RM) -f $(wildcard $(@D)/COMWrappers $(@D)/COMEnums.h $(@D)/C*.h)
 	$(QUIET)$(VBOX_XSLTPROC) -o $@ $(VBOX_VIRTUALBOX4_SRC)/src/globals/COMWrappers.xsl $<
 	$(QUIET)$(VBOX_FILESPLIT) $@ $(VirtualBox_0_OUTDIR)/include
 
 # alias for generating the COM Wrappers file.
-testwrappers:: $$(VirtualBox_0_OUTDIR)/include/COMWrappers.h
+testwrappers:: $$(VirtualBox_0_OUTDIR)/include/COMWrappers
 
 
 #
