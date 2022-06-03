@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 38512 2011-08-24 09:35:09Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 38513 2011-08-24 11:12:07Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -353,7 +353,7 @@ static bool vboxUsbFltDevCanBeCaptured(PVBOXUSBFLT_DEVICE pDevice)
 {
     if (pDevice->bClass == USB_DEVICE_CLASS_HUB)
     {
-        LOG(("device (0x%p), pdo (0x%p) is a hub, can not be captured", pDevice, pDevoce->Pdo));
+        LOG(("device (0x%p), pdo (0x%p) is a hub, can not be captured", pDevice, pDevice->Pdo));
         return false;
     }
     return true;
