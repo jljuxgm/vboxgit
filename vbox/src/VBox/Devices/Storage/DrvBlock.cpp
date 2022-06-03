@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 35560 2011-01-14 13:37:32Z vboxsync $ */
+/* $Id: DrvBlock.cpp 38622 2011-09-04 17:05:03Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -283,6 +283,13 @@ static DECLCALLBACK(int) drvblockGetUuid(PPDMIBLOCK pInterface, PRTUUID pUuid)
      */
     *pUuid = pThis->Uuid;
     return VINF_SUCCESS;
+}
+
+static DECLCALLBACK(int) drvblockDiscard(PPDMIBLOCK pInterface, PPDMRANGE paRanges, unsigned cRanges)
+{
+    PDRVBLOCK pThis = PDMIBLOCK_2_DRVBLOCK(pInterface);
+
+    return pThis->pDrvMedia->pfnDiscard(pThis->pDrvMedia, paRanges, cRanges);
 }
 
 /* -=-=-=-=- IBlockAsync -=-=-=-=- */
@@ -967,6 +974,9 @@ static DECLCALLBACK(int) drvblockConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, u
     if (!pThis->pDrvMedia)
         return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_MISSING_INTERFACE_BELOW,
                                 N_("No media or async media interface below"));
+
+    if (pThis->pDrvMedia->pfnDiscard)
+        pThis->IBlock.pfnDiscard = drvblockDiscard;
 
     /* Try to get the optional async interface. */
     pThis->pDrvMediaAsync = PDMIBASE_QUERY_INTERFACE(pBase, PDMIMEDIAASYNC);

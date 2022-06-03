@@ -1,4 +1,4 @@
-/* $Id: Debug.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: Debug.cpp 38622 2011-09-04 17:05:03Z vboxsync $ */
 /** @file
  * VBox storage devices: debug helpers
  */
@@ -32,7 +32,7 @@ static const char * const g_apszATACmdNames[256] =
     "CFA REQUEST EXTENDED ERROR CODE",     /* 0x03 */
     "",                                    /* 0x04 */
     "",                                    /* 0x05 */
-    "",                                    /* 0x06 */
+    "DATA SET MANAGEMENT",                 /* 0x06 */
     "",                                    /* 0x07 */
     "DEVICE RESET",                        /* 0x08 */
     "",                                    /* 0x09 */
