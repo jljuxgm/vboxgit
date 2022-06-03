@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 40248 2012-02-24 16:12:05Z vboxsync $ */
+/* $Id: IEMInternal.h 40250 2012-02-24 20:28:08Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -843,6 +843,10 @@ typedef FNIEMAIMPLFPUR80UNARYTWO *PFNIEMAIMPLFPUR80UNARYTWO;
 FNIEMAIMPLFPUR80UNARYTWO    iemAImpl_fptan_r80_r80;
 FNIEMAIMPLFPUR80UNARYTWO    iemAImpl_fxtract_r80_r80;
 FNIEMAIMPLFPUR80UNARYTWO    iemAImpl_fsincos_r80_r80;
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_fld_r80_from_r80,(PCX86FXSTATE pFpuState, PIEMFPURESULT pFpuRes, PCRTFLOAT80U pr80Val));
+IEM_DECL_IMPL_DEF(void, iemAImpl_fst_r80_to_r80,(PCX86FXSTATE pFpuState, uint16_t *pu16FSW,
+                                                 PRTFLOAT80U pr80Dst, PCRTFLOAT80U pr80Src));
 
 /** @} */
 
