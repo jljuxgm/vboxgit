@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 41739 2012-06-15 01:31:29Z vboxsync $ */
+/* $Id: IOMAll.cpp 41741 2012-06-15 01:50:13Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -108,28 +108,28 @@ bool iomGetRegImmData(PDISCPUSTATE pCpu, PCDISOPPARAM pParam, PCPUMCTXCORE pRegF
         if (pParam->fUse & (DISUSE_IMMEDIATE64 | DISUSE_IMMEDIATE64_SX8))
         {
             *pcbSize  = 8;
-            *pu64Data = pParam->parval;
+            *pu64Data = pParam->uValue;
             return true;
         }
 
         if (pParam->fUse & (DISUSE_IMMEDIATE32 | DISUSE_IMMEDIATE32_SX8))
         {
             *pcbSize  = 4;
-            *pu64Data = (uint32_t)pParam->parval;
+            *pu64Data = (uint32_t)pParam->uValue;
             return true;
         }
 
         if (pParam->fUse & (DISUSE_IMMEDIATE16 | DISUSE_IMMEDIATE16_SX8))
         {
             *pcbSize  = 2;
-            *pu64Data = (uint16_t)pParam->parval;
+            *pu64Data = (uint16_t)pParam->uValue;
             return true;
         }
 
         if (pParam->fUse & DISUSE_IMMEDIATE8)
         {
             *pcbSize  = 1;
-            *pu64Data = (uint8_t)pParam->parval;
+            *pu64Data = (uint8_t)pParam->uValue;
             return true;
         }
 

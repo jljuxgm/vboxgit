@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 41739 2012-06-15 01:31:29Z vboxsync $ */
+/* $Id: PATM.cpp 41741 2012-06-15 01:50:13Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -3948,9 +3948,9 @@ int patmPatchJump(PVM pVM, RTRCPTR pInstrGC, R3PTRTYPE(uint8_t *) pInstrHC, DISC
      * A conflict jump patch needs to be treated differently; we'll just replace the relative jump address with one that
      * references the target instruction in the conflict patch.
      */
-    RTRCPTR pJmpDest = PATMR3GuestGCPtrToPatchGCPtr(pVM, pInstrGC + pCpu->cbInstr + (int32_t)pCpu->Param1.parval);
+    RTRCPTR pJmpDest = PATMR3GuestGCPtrToPatchGCPtr(pVM, pInstrGC + pCpu->cbInstr + (int32_t)pCpu->Param1.uValue);
 
-    AssertMsg(pJmpDest, ("PATMR3GuestGCPtrToPatchGCPtr failed for %RRv\n", pInstrGC + pCpu->cbInstr + (int32_t)pCpu->Param1.parval));
+    AssertMsg(pJmpDest, ("PATMR3GuestGCPtrToPatchGCPtr failed for %RRv\n", pInstrGC + pCpu->cbInstr + (int32_t)pCpu->Param1.uValue));
     pPatch->pPatchJumpDestGC = pJmpDest;
 
     PATMP2GLOOKUPREC cacheRec;
