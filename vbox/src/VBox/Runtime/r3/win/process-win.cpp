@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 41056 2012-04-25 16:25:51Z vboxsync $ */
+/* $Id: process-win.cpp 41182 2012-05-07 10:17:23Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -298,6 +298,10 @@ static int rtProcWinMapErrorCodes(DWORD dwError)
 
         case ERROR_FILE_CORRUPT:
             rc = VERR_BAD_EXE_FORMAT;
+            break;
+
+        case ERROR_BAD_DEVICE: /* Can happen when opening funny things like "CON". */
+            rc = VERR_INVALID_NAME;
             break;
 
         default:
