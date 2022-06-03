@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 33149 2010-10-15 11:26:24Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 40669 2012-03-27 17:31:20Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -88,4 +88,5 @@ extern uintptr_t                kernelbase;
 
 RT_C_DECLS_END
 
-#endif
+#endif /* ___the_solaris_kernel_h */
+
