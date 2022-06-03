@@ -1,4 +1,4 @@
-/* $Id: DrvNetShaper.cpp 40652 2012-03-26 16:36:16Z vboxsync $ */
+/* $Id: DrvNetShaper.cpp 40706 2012-03-29 12:16:40Z vboxsync $ */
 /** @file
  * NetShaperFilter - Network shaper filter driver.
  */
@@ -402,6 +402,7 @@ static DECLCALLBACK(int) drvNetShaperConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCf
     else
         rc = VINF_SUCCESS;
 
+    pThis->Filter.pIDrvNet = &pThis->INetworkDown;
     rc = PDMDrvHlpNetShaperAttach(pDrvIns, pThis->pszBwGroup, &pThis->Filter);
     if (RT_FAILURE(rc))
     {

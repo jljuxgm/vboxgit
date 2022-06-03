@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40066 2012-02-10 14:52:47Z vboxsync $
+# $Id: Makefile.kmk 40706 2012-03-29 12:16:40Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -707,6 +707,10 @@ endif
 ifdef VBOX_WITH_USB
 VBoxC_SOURCES += \
 	src-client/RemoteUSBBackend.cpp
+endif
+
+ifdef VBOX_WITH_NETSHAPER
+VBoxC_DEFS += VBOX_WITH_NETSHAPER
 endif
 
 ifeq ($(KBUILD_TARGET),darwin)
