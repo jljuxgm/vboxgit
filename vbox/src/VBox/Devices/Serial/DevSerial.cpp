@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 35772 2011-01-28 19:47:43Z vboxsync $ */
+/* $Id: DevSerial.cpp 37094 2011-05-16 06:56:22Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  * (taken from hw/serial.c 2010/05/15 with modifications)
@@ -277,7 +277,7 @@ static int fifo_put(SerialState *s, int fifo, uint8_t chr)
     if (f->count < UART_FIFO_LENGTH)
         f->count++;
     else if (fifo == XMIT_FIFO) /* need to at least adjust tail to maintain pipe state consistency */
-    	++f->tail;
+        ++f->tail;
     else if (fifo == RECV_FIFO)
         s->lsr |= UART_LSR_OE;
 
