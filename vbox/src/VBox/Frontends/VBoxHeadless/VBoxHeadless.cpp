@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 37473 2011-06-15 16:16:31Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 38607 2011-09-02 11:03:22Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1345,10 +1345,10 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
 
 #ifndef VBOX_WITH_HARDENING
-/**
- * Main entry point.
+/*
+ * Used by windows exe stub code
  */
-int main(int argc, char **argv, char **envp)
+extern "C" DECLEXPORT(int) ExecTrustedMain(int argc, char **argv, char **envp)
 {
     // initialize VBox Runtime
     int rc = RTR3InitAndSUPLib();
@@ -1369,6 +1369,14 @@ int main(int argc, char **argv, char **envp)
     }
 
     return TrustedMain(argc, argv, envp);
+}
+
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return ExecTrustedMain(argc, argv, envp);
 }
 #endif /* !VBOX_WITH_HARDENING */
 
