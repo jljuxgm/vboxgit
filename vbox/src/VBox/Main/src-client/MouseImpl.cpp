@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 38590 2011-08-31 19:36:39Z vboxsync $ */
+/* $Id: MouseImpl.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -830,7 +830,7 @@ const PDMDRVREG Mouse::DrvReg =
     /* fClass. */
     PDM_DRVREG_CLASS_MOUSE,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMAINMOUSE),
     /* pfnConstruct */

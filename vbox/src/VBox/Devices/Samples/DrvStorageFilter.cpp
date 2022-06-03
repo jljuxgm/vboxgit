@@ -1,4 +1,4 @@
-/* $Id: DrvStorageFilter.cpp 39857 2012-01-24 16:41:13Z vboxsync $ */
+/* $Id: DrvStorageFilter.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox Sample Driver.
  */
@@ -364,7 +364,7 @@ static const PDMDRVREG g_DrvStorageFilter =
     /* fClass. */
     PDM_DRVREG_CLASS_MEDIA,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVSTORAGEFILTER),
     /* pfnConstruct */

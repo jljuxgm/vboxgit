@@ -1,4 +1,4 @@
-/* $Id: DrvVDE.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: DrvVDE.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VDE network transport driver.
  */
@@ -631,7 +631,7 @@ const PDMDRVREG g_DrvVDE =
     /* fClass. */
     PDM_DRVREG_CLASS_NETWORK,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVVDE),
     /* pfnConstruct */

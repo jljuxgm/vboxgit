@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -3229,7 +3229,7 @@ const PDMDEVREG g_DeviceBusLogic =
     /* fClass */
     PDM_DEVREG_CLASS_STORAGE,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(BUSLOGIC),
     /* pfnConstruct */

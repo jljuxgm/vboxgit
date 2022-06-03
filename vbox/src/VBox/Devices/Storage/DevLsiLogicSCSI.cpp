@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5293,7 +5293,7 @@ const PDMDEVREG g_DeviceLsiLogicSCSI =
     /* fClass */
     PDM_DEVREG_CLASS_STORAGE,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(LSILOGICSCSI),
     /* pfnConstruct */
@@ -5349,7 +5349,7 @@ const PDMDEVREG g_DeviceLsiLogicSAS =
     /* fClass */
     PDM_DEVREG_CLASS_STORAGE,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(LSILOGICSCSI),
     /* pfnConstruct */

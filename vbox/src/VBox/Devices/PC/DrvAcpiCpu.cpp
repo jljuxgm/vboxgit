@@ -1,4 +1,4 @@
-/* $Id: DrvAcpiCpu.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvAcpiCpu.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * DrvAcpiCpu - ACPI CPU dummy driver for hotplugging.
  */
@@ -104,7 +104,7 @@ const PDMDRVREG g_DrvAcpiCpu =
     /* fClass. */
     PDM_DRVREG_CLASS_ACPI,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(PDMDRVINS),
     /* pfnConstruct */

@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 36479 2011-03-31 11:34:56Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -1076,7 +1076,7 @@ const PDMUSBREG g_UsbDevProxy =
     /* fFlags */
     0,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(USBPROXYDEV),
     /* pfnConstruct */

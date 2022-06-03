@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 39890 2012-01-26 19:42:19Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -909,7 +909,7 @@ const PDMDRVREG VMMDev::DrvReg =
     /* fClass. */
     PDM_DRVREG_CLASS_VMMDEV,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMAINVMMDEV),
     /* pfnConstruct */

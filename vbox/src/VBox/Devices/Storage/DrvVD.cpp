@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 39855 2012-01-24 16:40:14Z vboxsync $ */
+/* $Id: DrvVD.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -2812,7 +2812,7 @@ const PDMDRVREG g_DrvVD =
     /* fClass. */
     PDM_DRVREG_CLASS_MEDIA,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(VBOXDISK),
     /* pfnConstruct */

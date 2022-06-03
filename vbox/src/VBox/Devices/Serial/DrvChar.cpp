@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 37114 2011-05-16 16:34:49Z vboxsync $ */
+/* $Id: DrvChar.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMICHARCONNECTOR / PDMICHARPORT.
  *
@@ -427,7 +427,7 @@ const PDMDRVREG g_DrvChar =
     /* fClass. */
     PDM_DRVREG_CLASS_CHAR,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVCHAR),
     /* pfnConstruct */

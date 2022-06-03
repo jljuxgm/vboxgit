@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 40276 2012-02-28 13:50:09Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9818,7 +9818,7 @@ const PDMDRVREG Console::DrvStatusReg =
     /* fClass. */
     PDM_DRVREG_CLASS_STATUS,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMAINSTATUS),
     /* pfnConstruct */

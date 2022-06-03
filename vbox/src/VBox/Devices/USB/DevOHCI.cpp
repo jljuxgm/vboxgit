@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevOHCI.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5549,7 +5549,7 @@ const PDMDEVREG g_DeviceOHCI =
     /* fClass */
     PDM_DEVREG_CLASS_BUS_USB,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(OHCI),
     /* pfnConstruct */

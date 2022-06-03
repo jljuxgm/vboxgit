@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -370,7 +370,7 @@ const PDMDRVREG g_DrvMouseQueue =
     /* fClass. */
     PDM_DRVREG_CLASS_MOUSE,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMOUSEQUEUE),
     /* pfnConstruct */

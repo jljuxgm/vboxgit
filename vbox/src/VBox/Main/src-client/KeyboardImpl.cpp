@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 36724 2011-04-19 08:57:30Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -415,7 +415,7 @@ const PDMDRVREG Keyboard::DrvReg =
     /* fClass. */
     PDM_DRVREG_CLASS_KEYBOARD,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMAINKEYBOARD),
     /* pfnConstruct */

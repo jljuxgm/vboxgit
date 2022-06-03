@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 39764 2012-01-13 15:18:05Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -971,7 +971,7 @@ const PDMDRVREG g_DrvSCSI =
     /* fClass. */
     PDM_DRVREG_CLASS_SCSI,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVSCSI),
     /* pfnConstruct */

@@ -1,4 +1,4 @@
-/* $Id: DrvDedicatedNic.cpp 39059 2011-10-20 14:48:56Z vboxsync $ */
+/* $Id: DrvDedicatedNic.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * DrvDedicatedNic - Experimental network driver for using a dedicated (V)NIC.
  */
@@ -526,7 +526,7 @@ const PDMDRVREG g_DrvDedicatedNic =
     /* fClass. */
     PDM_DRVREG_CLASS_NETWORK,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVDEDICATEDNIC),
     /* pfnConstruct */

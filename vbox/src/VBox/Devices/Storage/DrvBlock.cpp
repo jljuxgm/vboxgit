@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 38878 2011-09-27 09:07:07Z vboxsync $ */
+/* $Id: DrvBlock.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -1033,7 +1033,7 @@ const PDMDRVREG g_DrvBlock =
     /* fClass. */
     PDM_DRVREG_CLASS_BLOCK,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVBLOCK),
     /* pfnConstruct */

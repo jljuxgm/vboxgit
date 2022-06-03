@@ -1,4 +1,4 @@
-/* $Id: DrvRawImage.cpp 39855 2012-01-24 16:40:14Z vboxsync $ */
+/* $Id: DrvRawImage.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox storage devices: Raw image driver
  */
@@ -338,7 +338,7 @@ const PDMDRVREG g_DrvRawImage =
     /* fClass. */
     PDM_DRVREG_CLASS_MEDIA,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVRAWIMAGE),
     /* pfnConstruct */

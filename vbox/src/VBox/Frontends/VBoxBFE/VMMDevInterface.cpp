@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 39892 2012-01-26 20:22:33Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of VMMDev: driver interface to VMM device
@@ -443,7 +443,7 @@ const PDMDRVREG VMMDev::DrvReg =
     /* fClass. */
     PDM_DRVREG_CLASS_VMMDEV,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMAINVMMDEV),
     /* pfnConstruct */

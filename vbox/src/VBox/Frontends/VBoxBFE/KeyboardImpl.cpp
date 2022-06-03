@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of Keyboard class and related things
@@ -271,7 +271,7 @@ const PDMDRVREG Keyboard::DrvReg =
     /* fClass. */
     PDM_DRVREG_CLASS_KEYBOARD,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMAINKEYBOARD),
     /* pfnConstruct */

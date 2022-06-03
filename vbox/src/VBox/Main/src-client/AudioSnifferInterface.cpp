@@ -1,4 +1,4 @@
-/* $Id: AudioSnifferInterface.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: AudioSnifferInterface.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to Audio Sniffer device
  */
@@ -250,7 +250,7 @@ const PDMDRVREG AudioSniffer::DrvReg =
     /* fClass. */
     PDM_DRVREG_CLASS_AUDIO,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVAUDIOSNIFFER),
     /* pfnConstruct */

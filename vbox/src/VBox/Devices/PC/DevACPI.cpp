@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevACPI.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -3367,7 +3367,7 @@ const PDMDEVREG g_DeviceACPI =
     /* fClass */
     PDM_DEVREG_CLASS_ACPI,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(ACPIState),
     /* pfnConstruct */

@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 39855 2012-01-24 16:40:14Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -211,7 +211,7 @@ const PDMDRVREG g_DrvRawFile =
     /* fClass. */
     PDM_DRVREG_CLASS_STREAM,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVRAWFILE),
     /* pfnConstruct */

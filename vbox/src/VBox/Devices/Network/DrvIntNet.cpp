@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 38630 2011-09-05 10:52:26Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1840,7 +1840,7 @@ const PDMDRVREG g_DrvIntNet =
     /* fClass. */
     PDM_DRVREG_CLASS_NETWORK,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVINTNET),
     /* pfnConstruct */

@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 39498 2011-12-01 19:59:21Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
@@ -512,7 +512,7 @@ const PDMDRVREG g_DrvSCSIHost =
     /* fClass. */
     PDM_DRVREG_CLASS_SCSI,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVSCSIHOST),
     /* pfnConstruct */

@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 39518 2011-12-02 21:10:13Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -1387,7 +1387,7 @@ const PDMDRVREG g_DrvDiskIntegrity =
     /* fClass. */
     PDM_DRVREG_CLASS_BLOCK,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVDISKINTEGRITY),
     /* pfnConstruct */

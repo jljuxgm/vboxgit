@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -2092,7 +2092,7 @@ const PDMDEVREG g_DeviceVirtioNet =
     /* Device class(es), combination of the PDM_DEVREG_CLASS_* \#defines. */
     PDM_DEVREG_CLASS_NETWORK,
     /* Maximum number of instances (per VM). */
-    ~0,
+    ~0U,
     /* Size of the instance data. */
     sizeof(VNETSTATE),
 

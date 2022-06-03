@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 40257 2012-02-27 09:25:12Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4196,7 +4196,7 @@ const PDMDRVREG Display::DrvReg =
     /* fClass. */
     PDM_DRVREG_CLASS_DISPLAY,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(DRVMAINDISPLAY),
     /* pfnConstruct */

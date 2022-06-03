@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 37795 2011-07-06 10:28:24Z vboxsync $ */
+/* $Id: UsbKbd.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -1450,7 +1450,7 @@ const PDMUSBREG g_UsbHidKbd =
     /* fFlags */
     0,
     /* cMaxInstances */
-    ~0,
+    ~0U,
     /* cbInstance */
     sizeof(USBHID),
     /* pfnConstruct */
