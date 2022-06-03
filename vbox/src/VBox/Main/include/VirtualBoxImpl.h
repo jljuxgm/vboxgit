@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 40257 2012-02-27 09:25:12Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 40262 2012-02-27 14:14:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -259,7 +259,7 @@ public:
     int calculateFullPath(const Utf8Str &strPath, Utf8Str &aResult);
     void copyPathRelativeToConfig(const Utf8Str &strSource, Utf8Str &strTarget);
 
-    HRESULT registerMedium(Medium *pMedium, ComObjPtr<Medium> *ppMedium, DeviceType_T argType, GuidList *pllRegistriesThatNeedSaving);
+    HRESULT registerMedium(const ComObjPtr<Medium> &pMedium, ComObjPtr<Medium> *ppMedium, DeviceType_T argType, GuidList *pllRegistriesThatNeedSaving);
     HRESULT unregisterMedium(Medium *pMedium, GuidList *pllRegistriesThatNeedSaving);
 
     void pushMediumToListWithChildren(MediaList &llMedia, Medium *pMedium);
