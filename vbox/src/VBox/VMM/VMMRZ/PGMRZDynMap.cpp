@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 41805 2012-06-17 17:29:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -303,7 +303,7 @@ typedef CTX_MID(PGM,DYNMAPENTRY) PGMRZDYNMAPENTRY;
  * @sa PGMR0DYNMAPENTRY, PGMRCDYNMAPENTRY  */
 typedef PGMRZDYNMAPENTRY *PPGMRZDYNMAPENTRY;
 
-/** Pointer the mapping cache instance for the current context.
+/** Pointer to the mapping cache instance for the current context.
  * @sa PGMR0DYNMAP, PGMRCDYNMAP  */
 typedef CTX_MID(PGM,DYNMAP) *PPGMRZDYNMAP;
 

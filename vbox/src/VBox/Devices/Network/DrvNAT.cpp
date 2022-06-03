@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 41453 2012-05-26 03:40:24Z vboxsync $ */
+/* $Id: DrvNAT.cpp 41805 2012-06-17 17:29:20Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -196,7 +196,7 @@ typedef struct DRVNAT
     RTCRITSECT              XmitLock;
 } DRVNAT;
 AssertCompileMemberAlignment(DRVNAT, StatNATRecvWakeups, 8);
-/** Pointer the NAT driver instance data. */
+/** Pointer to the NAT driver instance data. */
 typedef DRVNAT *PDRVNAT;
 
 
