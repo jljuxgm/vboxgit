@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 38765 2011-09-15 14:11:47Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 38930 2011-10-03 08:45:54Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -479,7 +479,8 @@ NTSTATUS vboxWddmSwapchainCtxEscape(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pC
             break;
         }
 
-        memset(&pSwapchain->ViewRect, 0, sizeof (pSwapchain->ViewRect));
+        /* do not zero up the view rect since it may still be valid */
+//        memset(&pSwapchain->ViewRect, 0, sizeof (pSwapchain->ViewRect));
         if (pSwapchain->pLastReportedRects)
         {
             vboxVideoCmCmdRelease(pSwapchain->pLastReportedRects);
