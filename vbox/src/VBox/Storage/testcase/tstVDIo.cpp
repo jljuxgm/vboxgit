@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 38876 2011-09-27 09:03:15Z vboxsync $ */
+/* $Id: tstVDIo.cpp 39912 2012-01-30 18:53:11Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2733,7 +2733,7 @@ static int tstVDIoTestInit(PVDIOTEST pIoTest, PVDTESTGLOB pGlob, bool fRandomAcc
             rc = VERR_NO_MEMORY;
     }
     else
-        pIoTest->u.offNext = pIoTest->offEnd < pIoTest->offStart ? pIoTest->offStart - cbBlkSize : 0;
+        pIoTest->u.offNext = pIoTest->offEnd < pIoTest->offStart ? pIoTest->offStart - cbBlkSize : offStart;
 
     return rc;
 }
