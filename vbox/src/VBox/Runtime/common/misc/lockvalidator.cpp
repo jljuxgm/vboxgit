@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 36597 2011-04-06 19:46:15Z vboxsync $ */
+/* $Id: lockvalidator.cpp 39029 2011-10-19 10:08:23Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -3462,7 +3462,7 @@ RTDECL(void) RTLockValidatorRecSharedDelete(PRTLOCKVALRECSHRD pRec)
         ASMAtomicUoWriteNullPtr(&pRec->papOwners);
         ASMAtomicUoWriteU32(&pRec->cAllocated, 0);
 
-        RTMemFree((void *)pRec->papOwners);
+        RTMemFree((void *)papOwners);
     }
     if (pRec->pSibling)
         rtLockValidatorUnlinkAllSiblings(&pRec->Core);
