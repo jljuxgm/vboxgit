@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 38957 2011-10-06 12:49:05Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 38961 2011-10-06 13:00:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -125,9 +125,6 @@ bool UIMachineViewFullscreen::event(QEvent *pEvent)
             /* Reapply maximum size restriction for machine-view: */
             setMaximumSize(sizeHint());
 
-            /* Store the new size to prevent unwanted resize hints being sent back: */
-            storeConsoleSize(pResizeEvent->width(), pResizeEvent->height());
-
             /* Perform machine-view resize: */
             resize(pResizeEvent->width(), pResizeEvent->height());
 
@@ -185,6 +182,8 @@ bool UIMachineViewFullscreen::eventFilter(QObject *pWatched, QEvent *pEvent)
                 QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
                 if (pResizeEvent->size() != workingArea().size())
                     break;
+                /* Store the new size */
+                storeConsoleSize(pResizeEvent->size().width(), pResizeEvent->size().height());
 
                 if (m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
                     QTimer::singleShot(0, this, SLOT(sltPerformGuestResize()));

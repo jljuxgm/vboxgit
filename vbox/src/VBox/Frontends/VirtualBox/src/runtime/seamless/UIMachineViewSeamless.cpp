@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 38957 2011-10-06 12:49:05Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 38961 2011-10-06 13:00:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -136,9 +136,6 @@ bool UIMachineViewSeamless::event(QEvent *pEvent)
             /* Reapply maximum size restriction for machine-view: */
             setMaximumSize(sizeHint());
 
-            /* Store the new size to prevent unwanted resize hints being sent back: */
-            storeConsoleSize(pResizeEvent->width(), pResizeEvent->height());
-
             /* Perform machine-view resize: */
             resize(pResizeEvent->width(), pResizeEvent->height());
 
@@ -193,6 +190,8 @@ bool UIMachineViewSeamless::eventFilter(QObject *pWatched, QEvent *pEvent)
                 QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
                 if (pResizeEvent->size() != workingArea().size())
                     break;
+                /* Store the new size to prevent unwanted resize hints being sent back: */
+                storeConsoleSize(pResizeEvent->size().width(), pResizeEvent->size().height());
 
                 if (uisession()->isGuestSupportsGraphics())
                     QTimer::singleShot(0, this, SLOT(sltPerformGuestResize()));
