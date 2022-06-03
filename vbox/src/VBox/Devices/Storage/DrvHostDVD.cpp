@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 37601 2011-06-22 22:11:50Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -188,7 +188,7 @@ static DECLCALLBACK(int) drvHostDvdUnmount(PPDMIMOUNT pInterface, bool fForce, b
             {
                 /* do ioctl */
                 DWORD cbReturned;
-                if (DeviceIoControl(RTFileToNative(hFileDevice), IOCTL_STORAGE_EJECT_MEDIA,
+                if (DeviceIoControl((HANDLE)RTFileToNative(hFileDevice), IOCTL_STORAGE_EJECT_MEDIA,
                                     NULL, 0,
                                     NULL, 0, &cbReturned,
                                     NULL))
@@ -273,7 +273,7 @@ static DECLCALLBACK(int) drvHostDvdDoLock(PDRVHOSTBASE pThis, bool fLock)
     PREVENT_MEDIA_REMOVAL PreventMediaRemoval = {fLock};
     DWORD cbReturned;
     int rc;
-    if (DeviceIoControl(RTFileToNative(pThis->hFileDevice), IOCTL_STORAGE_MEDIA_REMOVAL,
+    if (DeviceIoControl((HANDLE)RTFileToNative(pThis->hFileDevice), IOCTL_STORAGE_MEDIA_REMOVAL,
                         &PreventMediaRemoval, sizeof(PreventMediaRemoval),
                         NULL, 0, &cbReturned,
                         NULL))
@@ -619,7 +619,7 @@ static int drvHostDvdSendCmd(PPDMIBLOCK pInterface, const uint8_t *pbCmd,
     Assert(cbSense <= sizeof(Req.aSense));
     Req.spt.SenseInfoLength = (UCHAR)RT_MIN(sizeof(Req.aSense), cbSense);
     Req.spt.SenseInfoOffset = RT_OFFSETOF(struct _REQ, aSense);
-    if (DeviceIoControl(RTFileToNative(pThis->hFileDevice), IOCTL_SCSI_PASS_THROUGH_DIRECT,
+    if (DeviceIoControl((HANDLE)RTFileToNative(pThis->hFileDevice), IOCTL_SCSI_PASS_THROUGH_DIRECT,
                         &Req, sizeof(Req), &Req, sizeof(Req), &cbReturned, NULL))
     {
         if (cbReturned > RT_OFFSETOF(struct _REQ, aSense))
