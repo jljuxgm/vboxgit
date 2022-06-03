@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 39189 2011-11-03 14:23:26Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 39191 2011-11-03 15:23:54Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -347,7 +347,14 @@ static int usbLibDevPopulate(PUSBDEVICE pDev, PUSB_NODE_CONNECTION_INFORMATION_E
  *  http://vbox.innotek.de/pipermail/vbox-dev/2011-August/004516.html
  *
  *  */
-            RTUtf16ToUtf8((PCRTUTF16)pDrList->StrDr.bString, lppszString);
+            int rc = RTUtf16ToUtf8((PCRTUTF16)pDrList->StrDr.bString, lppszString);
+            if (RT_FAILURE(rc))
+            {
+                AssertMsgFailed(("RTUtf16ToUtf8 failed, rc (%d), resuming\n", rc));
+                continue;
+            }
+
+            Assert(lppszString);
             if (pDrList->iDr == pConInfo->DeviceDescriptor.iSerialNumber)
             {
                 pDev->u64SerialHash = USBLibHashSerial(pDev->pszSerialNumber);
