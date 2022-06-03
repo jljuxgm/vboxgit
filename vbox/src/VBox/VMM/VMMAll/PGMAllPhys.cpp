@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 41733 2012-06-15 00:11:28Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -109,7 +109,7 @@ VMMDECL(int) pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE p
                 &&   pDis->mode == DISCPUMODE_32BIT  /** @todo why does this matter? */
                 &&  !(pDis->prefix & (DISPREFIX_REPNE | DISPREFIX_REP | DISPREFIX_SEG)))
             {
-                switch (pDis->opcode)
+                switch (pDis->bOpCode)
                 {
                     /** @todo Find other instructions we can safely skip, possibly
                      * adding this kind of detection to DIS or EM. */
