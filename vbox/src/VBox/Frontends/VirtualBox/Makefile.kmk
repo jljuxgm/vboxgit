@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37874 2011-07-11 14:34:40Z vboxsync $
+# $Id: Makefile.kmk 38002 2011-07-18 10:16:41Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -921,7 +921,7 @@ vmstarter_LDFLAGS += -framework AppKit
 vmstarter_INST = $(INST_BIN)vmstarter
 
 INSTALLS += vmstarter.app
-vmstarter.app_INST = $(VirtualBox.app_INST)Resources/vmstarter.app/Contents
+vmstarter.app_INST = $(VirtualBox.app_INST)Resources/vmstarter.app/Contents/
 vmstarter.app_MODE = 644
 vmstarter.app_SOURCES = \
 	src/platform/darwin/vmstarter-PkgInfo=>PkgInfo \
