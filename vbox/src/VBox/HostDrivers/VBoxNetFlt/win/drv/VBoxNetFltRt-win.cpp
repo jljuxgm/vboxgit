@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 41005 2012-04-20 13:09:52Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime
@@ -1677,10 +1677,10 @@ DECLHIDDEN(VOID) vboxNetFltWinUnload(IN PDRIVER_OBJECT DriverObject)
 
     vboxNetFltWinMpDeregister(&g_VBoxNetFltGlobalsWin.Mp);
 
+    LogFlow((__FUNCTION__" <== DO (0x%x)\n", DriverObject));
+
     vboxNetFltWinFiniNetFltBase();
     /* don't use logging or any RT after de-init */
-
-    LogFlow((__FUNCTION__" <== DO (0x%x)\n", DriverObject));
 }
 
 RT_C_DECLS_BEGIN
