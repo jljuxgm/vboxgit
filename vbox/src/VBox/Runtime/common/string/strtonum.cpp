@@ -1,4 +1,4 @@
-/* $Id: strtonum.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
+/* $Id: strtonum.cpp 42072 2012-07-10 07:39:22Z vboxsync $ */
 /** @file
  * IPRT - String To Number Conversion.
  */
@@ -971,17 +971,22 @@ RT_EXPORT_SYMBOL(RTStrToInt8);
 
 RTDECL(int) RTStrConvertHexBytes(char const *pszHex, void *pv, size_t cb, uint32_t fFlags)
 {
+    size_t      cbDst;
+    uint8_t    *pbDst;
+    const char *pszSrc;
+
     AssertPtrReturn(pszHex, VERR_INVALID_POINTER);
     AssertReturn(!fFlags, VERR_INVALID_PARAMETER);
 
-    size_t      cbDst   = cb;
-    uint8_t    *pbDst   = (uint8_t *)pv;
-    const char *pszSrc  = pszHex;
+    cbDst  = cb;
+    pbDst  = (uint8_t *)pv;
+    pszSrc = pszHex;
     for (;;)
     {
         /* Pick the next two digit from the string. */
         char ch = *pszSrc++;
         unsigned char uchDigit1 = g_auchDigits[(unsigned char)ch];
+        unsigned char uchDigit2;
         if (uchDigit1 >= 16)
         {
             if (!ch)
@@ -993,7 +998,7 @@ RTDECL(int) RTStrConvertHexBytes(char const *pszHex, void *pv, size_t cb, uint32
         }
 
         ch = *pszSrc++;
-        unsigned char uchDigit2 = g_auchDigits[(unsigned char)ch];
+        uchDigit2 = g_auchDigits[(unsigned char)ch];
         if (uchDigit2 >= 16)
             return VERR_UNEVEN_INPUT;
 
