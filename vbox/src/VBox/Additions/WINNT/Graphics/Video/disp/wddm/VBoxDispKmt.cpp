@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 37626 2011-06-24 12:01:33Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 39161 2011-11-01 14:37:37Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -148,7 +148,7 @@ HRESULT vboxDispKmtAdpHdcCreate(HDC *phDc)
         else
         {
             DWORD winEr = GetLastError();
-            WARN_BREAK();
+//            BP_WARN();
             hr = HRESULT_FROM_WIN32(winEr);
 #ifdef DEBUG_misha
             Assert(FAILED(hr));
