@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 40996 2012-04-19 17:42:18Z vboxsync $ */
+/* $Id: DevE1000.cpp 40998 2012-04-20 06:29:19Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4500,7 +4500,7 @@ static int e1kXmitPacket(E1KSTATE *pState, bool fOnWorkerThread)
  */
 static int e1kXmitPending(E1KSTATE *pState, bool fOnWorkerThread)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
 
     /*
      * Grab the xmit lock of the driver as well as the E1K device state.
@@ -4561,7 +4561,7 @@ static int e1kXmitPending(E1KSTATE *pState, bool fOnWorkerThread)
  */
 static int e1kXmitPending(E1KSTATE *pState, bool fOnWorkerThread)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
 
     /*
      * Grab the xmit lock of the driver as well as the E1K device state.
