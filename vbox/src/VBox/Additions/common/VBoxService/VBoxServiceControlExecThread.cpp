@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExecThread.cpp 36887 2011-04-29 10:04:52Z vboxsync $ */
+/* $Id: VBoxServiceControlExecThread.cpp 38085 2011-07-21 07:29:54Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for an executed guest process.
  */
@@ -272,7 +272,8 @@ int VBoxServiceControlExecThreadSetInput(uint32_t uPID, bool fPendingClose, uint
 int VBoxServiceControlExecThreadGetOutput(uint32_t uPID, uint32_t uHandleId, uint32_t uTimeout,
                                           uint8_t *pBuf, uint32_t cbSize, uint32_t *pcbRead)
 {
-    AssertPtrReturn(pBuf, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pBuf, VERR_INVALID_POINTER);
+    AssertReturn(cbSize, VERR_INVALID_PARAMETER);
 
     int rc = RTCritSectEnter(&g_GuestControlExecThreadsCritSect);
     if (RT_SUCCESS(rc))

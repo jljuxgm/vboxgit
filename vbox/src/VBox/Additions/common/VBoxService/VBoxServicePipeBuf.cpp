@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePipeBuf.cpp 36880 2011-04-29 09:16:41Z vboxsync $ */
+/* $Id: VBoxServicePipeBuf.cpp 38085 2011-07-21 07:29:54Z vboxsync $ */
 /** @file
  * VBoxServicePipeBuf - Pipe buffering.
  */
@@ -111,6 +111,11 @@ int VBoxServicePipeBufRead(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
                 rc = RTSemEventSignal(pBuf->hEventSem);
                 AssertRC(rc);
             }
+
+#ifdef DEBUG_andy
+            VBoxServiceVerbose(4, "PipeBuf[0x%p]: read=%u, size=%u, alloc=%u, off=%u\n",
+                                   pBuf, *pcbToRead, pBuf->cbSize, pBuf->cbAllocated, pBuf->cbOffset);
+#endif
         }
         else
         {
@@ -268,6 +273,11 @@ int VBoxServicePipeBufWriteToBuf(PVBOXSERVICECTRLEXECPIPEBUF pBuf,
                     rc = RTSemEventSignal(pBuf->hEventSem);
                     AssertRC(rc);
                 }
+
+#ifdef DEBUG_andy
+                VBoxServiceVerbose(4, "PipeBuf[0x%p]: written=%u, size=%u, alloc=%u, off=%u\n",
+                                   pBuf, cbData, pBuf->cbSize, pBuf->cbAllocated, pBuf->cbOffset);
+#endif
             }
         }
         else
