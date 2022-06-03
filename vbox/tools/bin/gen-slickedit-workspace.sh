@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 39075 2011-10-21 12:06:20Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 39394 2011-11-22 10:30:31Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -456,7 +456,7 @@ my_abs_dir "tools"
 if test -n "${MY_WINDOWS_HOST}"; then
     MY_KMK_INVOCATION="${MY_ABS_DIR}/win.x86/bin/rexx.exe ${MY_ABS_DIR}/envSub.cmd kmk.exe"
 else
-    MY_KMK_INVOCATION="${MY_ABS_DIR}/env.sh --quiet kmk"
+    MY_KMK_INVOCATION="${MY_ABS_DIR}/env.sh --quiet --no-wine kmk"
 fi
 
 
