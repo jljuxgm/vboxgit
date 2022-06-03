@@ -1,4 +1,4 @@
-/* $Id: UICloneVMWizard.cpp 37531 2011-06-17 12:12:29Z vboxsync $ */
+/* $Id: UICloneVMWizard.cpp 37849 2011-07-08 15:15:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -64,6 +64,8 @@ void UICloneVMWizard::retranslateUi()
 {
     /* Assign wizard title: */
     setWindowTitle(tr("Clone a virtual machine"));
+
+    setButtonText(QWizard::FinishButton, tr("Clone"));
 }
 
 bool UICloneVMWizard::createClone(const QString &strName, KCloneMode mode)

@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 37838 2011-07-08 11:27:16Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 37849 2011-07-08 15:15:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -233,9 +233,11 @@ void UINewHDWizard::retranslateUi()
     {
         case UINewHDWizardType_Creating:
             setWindowTitle(tr("Create New Virtual Disk"));
+            setButtonText(QWizard::FinishButton, tr("Create"));
             break;
         case UINewHDWizardType_Copying:
             setWindowTitle(tr("Copy Virtual Disk"));
+            setButtonText(QWizard::FinishButton, tr("Copy"));
             break;
         default:
             break;

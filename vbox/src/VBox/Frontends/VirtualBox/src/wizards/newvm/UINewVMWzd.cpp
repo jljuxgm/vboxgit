@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 37331 2011-06-06 16:30:51Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 37849 2011-07-08 15:15:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -166,6 +166,8 @@ void UINewVMWzd::retranslateUi()
 {
     /* Wizard title */
     setWindowTitle(tr("Create New Virtual Machine"));
+
+    setButtonText(QWizard::FinishButton, tr("Create"));
 }
 
 UINewVMWzdPage1::UINewVMWzdPage1()
