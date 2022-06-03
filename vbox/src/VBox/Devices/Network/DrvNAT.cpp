@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 39778 2012-01-17 12:30:57Z vboxsync $ */
+/* $Id: DrvNAT.cpp 39784 2012-01-17 18:47:26Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1019,8 +1019,7 @@ static int drvNATConstructDNSMappings(unsigned iInstance, PDRVNAT pThis, PCFGMNO
             return PDMDRV_SET_ERROR(pThis->pDrvIns, VERR_PDM_DRVINS_UNKNOWN_CFG_VALUES,
                                     N_("Unknown configuration in dns mapping"));
         char szHostNameOrPattern[255];
-        /* fMatch = false used for equal matching, and true if regex is used */
-        bool fMatch = false;
+        bool fMatch = false;    /* false used for equal matching, and true if wildcard pattern is used. */
         RT_ZERO(szHostNameOrPattern);
         GET_STRING(rc, pThis, pNode, "HostName", szHostNameOrPattern[0], sizeof(szHostNameOrPattern));
         if (rc == VERR_CFGM_VALUE_NOT_FOUND)
