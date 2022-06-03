@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 40482 2012-03-15 14:20:01Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 40563 2012-03-21 12:13:24Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4407,6 +4407,8 @@ HRESULT Console::onNetworkAdapterChange(INetworkAdapter *aNetworkAdapter, BOOL c
 
                 if (RT_FAILURE(vrc))
                     rc = E_FAIL;
+
+                alock.acquire();
             }
         }
         ptrVM.release();
