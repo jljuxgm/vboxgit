@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 35715 2011-01-25 14:34:26Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 36331 2011-03-21 19:17:12Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -344,7 +344,12 @@ static int vboxServiceWinStart(void)
             VBoxServiceMainWait();
         }
         else
+        {
             vboxServiceWinSetStatus(SERVICE_STOPPED, 0);
+#if 0 /** @todo r=bird: Enable this if SERVICE_CONTROL_STOP isn't triggered automatically */
+            VBoxServiceStopServices();
+#endif
+        }
     }
     /**@todo r=bird: else vboxServiceWinSetStatus(SERVICE_STOPPED, 0); ? */
 
