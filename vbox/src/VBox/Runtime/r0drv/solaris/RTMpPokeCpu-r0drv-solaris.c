@@ -1,10 +1,10 @@
-/* $Id: time-r0drv-solaris.c 40966 2012-04-17 16:43:28Z vboxsync $ */
+/* $Id: RTMpPokeCpu-r0drv-solaris.c 40968 2012-04-17 17:35:53Z vboxsync $ */
 /** @file
- * IPRT - Time, Ring-0 Driver, Solaris.
+ * IPRT - RTMpPokeCpu, Solaris Implementation.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2009 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -28,43 +28,23 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define RTTIME_INCL_TIMESPEC
-#include "../the-solaris-kernel.h"
+#include "the-solaris-kernel.h"
 #include "internal/iprt.h"
-#include <iprt/time.h>
+#include <iprt/mp.h>
+
+#if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
+# include <iprt/asm-amd64-x86.h>
+#endif
+#include <iprt/assert.h>
+#include <iprt/err.h>
 
 
-RTDECL(uint64_t) RTTimeNanoTS(void)
+
+RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
 {
-    return (uint64_t)gethrtime();
-}
-
-
-RTDECL(uint64_t) RTTimeMilliTS(void)
-{
-    return RTTimeNanoTS() / 1000000;
-}
-
-
-RTDECL(uint64_t) RTTimeSystemNanoTS(void)
-{
-    return RTTimeNanoTS();
-}
-
-
-RTDECL(uint64_t) RTTimeSystemMilliTS(void)
-{
-    return RTTimeNanoTS() / 1000000;
-}
-
-
-RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
-{
-    timestruc_t TimeSpec;
-
-    mutex_enter(&tod_lock);
-    TimeSpec = tod_get();
-    mutex_exit(&tod_lock);
-    return RTTimeSpecSetNano(pTime, (uint64_t)TimeSpec.tv_sec * 1000000000 + TimeSpec.tv_nsec);
+    RT_ASSERT_INTS_ON();
+    if (idCpu < ncpus)
+        poke_cpu(idCpu);
+    return VINF_SUCCESS;
 }
 

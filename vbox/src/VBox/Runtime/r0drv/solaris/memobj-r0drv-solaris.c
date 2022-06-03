@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 40967 2012-04-17 17:17:10Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 40968 2012-04-17 17:35:53Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -28,7 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "../the-solaris-kernel.h"
+#include "the-solaris-kernel.h"
 #include "internal/iprt.h"
 #include <iprt/memobj.h>
 
