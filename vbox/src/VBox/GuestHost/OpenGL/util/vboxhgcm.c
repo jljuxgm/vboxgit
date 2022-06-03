@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 40483 2012-03-15 14:20:20Z vboxsync $ */
+/* $Id: vboxhgcm.c 40485 2012-03-15 14:56:43Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -598,12 +598,14 @@ static bool _crVBoxHGCMWriteBytes(CRConnection *conn, const void *buf, uint32_t 
 static int crVBoxHGCMCall(CRConnection *conn, void *pvData, unsigned cbData)
 {
 #ifdef IN_GUEST
+# if defined(VBOX_WITH_CRHGSMI)
     PCRVBOXHGSMI_CLIENT pClient = _crVBoxHGSMIClientGet(conn);
     if (pClient)
     {
         return VBoxCrHgsmiCtlConCall(pClient->pHgsmi, (struct VBoxGuestHGCMCallInfo *)pvData, cbData);
     }
     else
+# endif
     {
 # ifdef RT_OS_WINDOWS
     DWORD cbReturned, lerr;
