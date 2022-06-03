@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 41287 2012-05-14 15:11:05Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 41360 2012-05-21 11:01:31Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -386,7 +386,7 @@ static int machineAdd(const Bstr &strUuid)
             }
             else
                 itGroups->second.push_back(strUuid);
-            serviceLogVerbose(("Group \"%ls\" now has %ld machine(s)\n",
+            serviceLogVerbose(("Group \"%s\" has now %ld machine(s)\n",
                                itGroup->first.c_str(), itGroups->second.size()));
             itGroup++;
         }

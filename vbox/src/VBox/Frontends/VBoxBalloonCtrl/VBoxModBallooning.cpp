@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 41286 2012-05-14 14:46:29Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 41360 2012-05-21 11:01:31Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -490,7 +490,10 @@ static DECLCALLBACK(int) VBoxModBallooningOnMachineStateChanged(const Bstr &strU
                                                                 MachineState_T enmState)
 {
     PVBOXWATCHDOG_MACHINE pMachine = getMachine(strUuid);
-    AssertPtrReturn(pMachine, VERR_INVALID_PARAMETER);
+    /* Note: The machine state will change to "setting up" when machine gets deleted,
+     *       so pMachine might be NULL here. */
+    if (!pMachine)
+        return VINF_SUCCESS;
 
     return balloonMachineUpdate(strUuid, pMachine);
 }
