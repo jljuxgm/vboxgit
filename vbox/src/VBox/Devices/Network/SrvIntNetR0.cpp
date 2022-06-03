@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 36077 2011-02-24 16:43:27Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 36087 2011-02-25 13:50:07Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -1622,6 +1622,10 @@ static INTNETSWDECISION intnetR0NetworkSwitchUnicast(PINTNETNETWORK pNetwork, ui
             }
         }
     }
+    /** @todo Interfaces with fPromiscuousEff && !fPromiscuousSeeTrunk needs to
+     *        be added if there are exact matches and fSrc != 0.  This means
+     *        we need to count interfaces in this state to avoid traversing
+     *        the table a second time for no good reason. */
 
     /* Does it match the host, or is the host promiscuous? */
     if (   fSrc != INTNETTRUNKDIR_HOST
