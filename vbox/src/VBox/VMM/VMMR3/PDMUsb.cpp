@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 40920 2012-04-14 11:51:38Z vboxsync $ */
+/* $Id: PDMUsb.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -917,7 +917,7 @@ VMMR3DECL(int) PDMR3USBCreateProxyDevice(PVM pVM, PCRTUUID pUuid, bool fRemote, 
  *
  * The device must be detached from the HUB at this point.
  *
- * @param   pVM             Pointer to the shared VM structure.
+ * @param   pVM             Pointer to the VM.
  * @param   pUsbIns         The USB device instance to destroy.
  * @thread  EMT
  */
@@ -1064,7 +1064,7 @@ VMMR3DECL(int) PDMR3USBDetachDevice(PVM pVM, PCRTUUID pUuid)
  * Checks if there are any USB hubs attached.
  *
  * @returns true / false accordingly.
- * @param   pVM     Pointer to the shared VM structure.
+ * @param   pVM     Pointer to the VM.
  */
 VMMR3DECL(bool) PDMR3USBHasHub(PVM pVM)
 {

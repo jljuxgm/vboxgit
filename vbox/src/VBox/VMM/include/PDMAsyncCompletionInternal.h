@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 39014 2011-10-18 10:18:06Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -169,7 +169,7 @@ typedef struct PDMACBWMGR *PPDMACBWMGR;
  */
 typedef struct PDMASYNCCOMPLETIONEPCLASS
 {
-    /** Pointer to the shared VM structure. */
+    /** Pointer to the VM. */
     PVM                                         pVM;
     /** Critical section protecting the lists below. */
     RTCRITSECT                                  CritSect;

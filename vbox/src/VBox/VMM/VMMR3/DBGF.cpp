@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
+/* $Id: DBGF.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -873,7 +873,7 @@ VMMR3DECL(int) DBGFR3Attach(PVM pVM)
  * EMT worker for DBGFR3Attach.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the shared VM structure.
+ * @param   pVM     Pointer to the VM.
  */
 static DECLCALLBACK(int) dbgfR3Attach(PVM pVM)
 {

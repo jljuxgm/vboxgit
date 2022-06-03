@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 40958 2012-04-17 09:58:54Z vboxsync $ */
+/* $Id: PDM.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -569,7 +569,7 @@ VMMR3DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
 /**
  * Worker for pdmR3Term that terminates a LUN chain.
  *
- * @param   pVM         Pointer to the shared VM structure.
+ * @param   pVM         Pointer to the VM.
  * @param   pLun        The head of the chain.
  * @param   pszDevice   The name of the device (for logging).
  * @param   iInstance   The device instance number (for logging).

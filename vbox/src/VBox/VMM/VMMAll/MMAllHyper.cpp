@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -1186,7 +1186,7 @@ static void mmHyperHeapCheck(PMMHYPERHEAP pHeap)
  * Performs consistency checks on the heap if MMHYPER_HEAP_STRICT was
  * defined at build time.
  *
- * @param   pVM         Pointer to the shared VM structure.
+ * @param   pVM         Pointer to the VM.
  */
 VMMDECL(void) MMHyperHeapCheck(PVM pVM)
 {

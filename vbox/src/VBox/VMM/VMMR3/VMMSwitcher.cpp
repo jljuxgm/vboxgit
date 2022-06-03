@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 41679 2012-06-13 10:12:23Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -95,7 +95,7 @@ static PVMMSWITCHERDEF s_apSwitchers[VMMSWITCHER_MAX] =
  * put on linear contiguous backing.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the shared VM structure.
+ * @param   pVM     Pointer to the VM.
  */
 int vmmR3SwitcherInit(PVM pVM)
 {
@@ -228,7 +228,7 @@ int vmmR3SwitcherInit(PVM pVM)
 /**
  * Relocate the switchers, called by VMMR#Relocate.
  *
- * @param   pVM         Pointer to the shared VM structure.
+ * @param   pVM         Pointer to the VM.
  * @param   offDelta    The relocation delta.
  */
 void vmmR3SwitcherRelocate(PVM pVM, RTGCINTPTR offDelta)

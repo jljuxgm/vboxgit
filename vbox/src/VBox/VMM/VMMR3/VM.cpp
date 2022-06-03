@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 41532 2012-06-01 10:00:22Z vboxsync $ */
+/* $Id: VM.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2951,7 +2951,7 @@ VMMR3DECL(PUVM) VMR3GetUVM(PVM pVM)
  * Gets the shared VM structure pointer given the pointer to the user mode VM
  * structure.
  *
- * @returns Pointer to the shared VM structure.
+ * @returns Pointer to the VM.
  *          NULL if @a pUVM is invalid (asserted) or if no shared VM structure
  *          is currently associated with it.
  * @param   pUVM                The user mode VM handle.

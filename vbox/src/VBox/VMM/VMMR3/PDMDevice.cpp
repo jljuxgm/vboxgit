@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 40920 2012-04-14 11:51:38Z vboxsync $ */
+/* $Id: PDMDevice.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -468,7 +468,7 @@ PPDMDEV pdmR3DevLookup(PVM pVM, const char *pszName)
  * Loads the device modules.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the shared VM structure.
+ * @param   pVM     Pointer to the VM.
  */
 static int pdmR3DevLoadModules(PVM pVM)
 {

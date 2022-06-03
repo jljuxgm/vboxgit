@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 40652 2012-03-26 16:36:16Z vboxsync $ */
+/* $Id: MMAll.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -244,7 +244,7 @@ DECLINLINE(RTR3PTR) mmHyperLookupCalcR3(PMMLOOKUPHYPER pLookup, uint32_t off)
  * Calculate the host context ring-0 address of an offset into the HMA memory chunk.
  *
  * @returns the host context ring-0 address.
- * @param   pVM         Pointer to the shared VM structure.
+ * @param   pVM         Pointer to the VM.
  * @param   pLookup     The HMA lookup record.
  * @param   off         The offset into the HMA memory chunk.
  */

@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: MMHyper.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -526,7 +526,7 @@ VMMR3DECL(int) MMR3HyperMapGCPhys(PVM pVM, RTGCPHYS GCPhys, size_t cb, const cha
  *
  * @return VBox status code.
  *
- * @param   pVM         Pointer to the shared VM structure.
+ * @param   pVM         Pointer to the VM.
  * @param   pDevIns     The device owning the MMIO2 memory.
  * @param   iRegion     The region.
  * @param   off         The offset into the region. Will be rounded down to closest page boundary.

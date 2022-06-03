@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 41777 2012-06-16 18:49:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -465,7 +465,7 @@ VMMR0DECL(void) PGMR0DynMapTerm(void)
  * Initializes the dynamic mapping cache for a new VM.
  *
  * @returns VBox status code.
- * @param   pVM         Pointer to the shared VM structure.
+ * @param   pVM         Pointer to the VM.
  */
 VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
 {
@@ -520,7 +520,7 @@ VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
 /**
  * Terminates the dynamic mapping cache usage for a VM.
  *
- * @param   pVM         Pointer to the shared VM structure.
+ * @param   pVM         Pointer to the VM.
  */
 VMMR0DECL(void) PGMR0DynMapTermVM(PVM pVM)
 {
