@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 38947 2011-10-05 20:22:07Z vboxsync $ */
+/* $Id: UIMachineView.cpp 38949 2011-10-05 22:00:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -247,7 +247,6 @@ UIMachineView::UIMachineView(  UIMachineWindow *pMachineWindow
     , m_pFrameBuffer(0)
     , m_previousState(KMachineState_Null)
     , m_desktopGeometryType(DesktopGeo_Invalid)
-    , m_bIsMachineWindowResizeIgnored(false)
     , m_fShouldWeDoResize(false)
 #ifdef VBOX_WITH_VIDEOHWACCEL
     , m_fAccelerate2DVideo(bAccelerate2DVideo)

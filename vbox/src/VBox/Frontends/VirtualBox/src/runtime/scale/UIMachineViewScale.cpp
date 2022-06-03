@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 33595 2010-10-29 10:35:00Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 38949 2011-10-05 22:00:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -168,11 +168,6 @@ bool UIMachineViewScale::event(QEvent *pEvent)
             if (uisession()->isGuestResizeIgnored())
                 return true;
 
-            /* We are starting to perform machine-view resize,
-             * we should temporary ignore other if they are trying to be: */
-            bool fWasMachineWindowResizeIgnored = isMachineWindowResizeIgnored();
-            setMachineWindowResizeIgnored(true);
-
             /* Get guest resize-event: */
             UIResizeEvent *pResizeEvent = static_cast<UIResizeEvent*>(pEvent);
 
@@ -192,9 +187,6 @@ bool UIMachineViewScale::event(QEvent *pEvent)
 
             /* Report to the VM thread that we finished resizing: */
             session().GetConsole().GetDisplay().ResizeCompleted(screenId());
-
-            /* We are finishing to perform machine-view resize: */
-            setMachineWindowResizeIgnored(fWasMachineWindowResizeIgnored);
 
             /* We also recalculate the desktop geometry if this is determined
              * automatically.  In fact, we only need this on the first resize,
