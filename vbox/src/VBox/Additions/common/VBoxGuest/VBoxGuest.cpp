@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 38655 2011-09-06 10:54:10Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 38807 2011-09-20 15:24:25Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -985,6 +985,7 @@ void VBoxGuestCloseSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
     pSession->Process = NIL_RTPROCESS;
     pSession->R0Process = NIL_RTR0PROCESS;
     vboxGuestCloseMemBalloon(pDevExt, pSession);
+    /* Reset any mouse status flags which the session may have set. */
     VBoxGuestCommonIOCtl_SetMouseStatus(pDevExt, pSession, 0);
     RTMemFree(pSession);
 }
