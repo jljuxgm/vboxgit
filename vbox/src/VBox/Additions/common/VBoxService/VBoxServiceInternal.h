@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 38157 2011-07-25 13:10:12Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 38180 2011-07-26 12:26:34Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -310,7 +310,8 @@ extern int          VBoxServiceControlThreadWaitForShutdown(const PVBOXSERVICECT
 extern int          VBoxServiceControlExecHandleCmdStartProcess(uint32_t u32ClientId, uint32_t uNumParms);
 extern int          VBoxServiceControlExecHandleCmdSetInput(uint32_t u32ClientId, uint32_t uNumParms, size_t cbMaxBufSize);
 extern int          VBoxServiceControlExecHandleCmdGetOutput(uint32_t u32ClientId, uint32_t uNumParms);
-extern int          VBoxServiceControlExecProcess(uint32_t uContext, const char *pszCmd, uint32_t uFlags,
+extern int          VBoxServiceControlExecProcess(uint32_t uClientID, uint32_t uContext,
+                                                  const char *pszCmd, uint32_t uFlags,
                                                   const char *pszArgs, uint32_t uNumArgs,
                                                   const char *pszEnv, uint32_t cbEnv, uint32_t uNumEnvVars,
                                                   const char *pszUser, const char *pszPassword, uint32_t uTimeLimitMS);
