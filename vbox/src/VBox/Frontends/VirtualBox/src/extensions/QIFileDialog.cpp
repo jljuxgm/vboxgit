@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 38477 2011-08-16 13:46:03Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 38478 2011-08-16 13:50:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -430,7 +430,7 @@ QString QIFileDialog::getSaveFileName (const QString &aStartWith,
                 const QString &aCaption, bool fConfirmOverwrite) :
                 mParent (aParent), mTarget (aTarget),
                 mStartWith (aStartWith), mFilters (aFilters),
-                mCaption (aCaption)
+                mCaption (aCaption),
                 m_fConfirmOverwrite(fConfirmOverwrite) {}
 
         virtual void run()
