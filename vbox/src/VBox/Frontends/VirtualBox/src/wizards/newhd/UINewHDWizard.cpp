@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 37659 2011-06-28 11:15:20Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 37682 2011-06-29 11:38:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -189,6 +189,9 @@ UINewHDWizard::UINewHDWizard(QWidget *pParent, const QString &strDefaultName, co
     : QIWizard(pParent)
     , m_wizardType(sourceHardDisk.isNull() ? UINewHDWizardType_Creating : UINewHDWizardType_Copying)
 {
+    /* Hide window icon: */
+    setWindowIcon(QIcon());
+
     /* Create & add pages: */
     if (wizardType() == UINewHDWizardType_Copying)
         addPage(new UINewHDWizardPageWelcome(sourceHardDisk));
