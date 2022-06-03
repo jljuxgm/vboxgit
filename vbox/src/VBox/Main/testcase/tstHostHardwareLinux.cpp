@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 34341 2010-11-24 20:14:36Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 36348 2011-03-22 15:27:01Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -63,9 +63,17 @@ void printDevices(PUSBDEVICE pDevices,
     RTPrintf("Enumerating usb devices using %s at %s\n", pcszMethod, pcszDevices);
     while (pDevice)
     {
-        RTPrintf("  Manufacturer: %s, product: %s, serial number string: %s\n",
+        const char *pcszState = 
+              pDevice->enmState == USBDEVICESTATE_UNSUPPORTED   ? "UNSUPPORTED"
+            : pDevice->enmState == USBDEVICESTATE_USED_BY_HOST  ? "USED_BY_HOST"
+            : pDevice->enmState == USBDEVICESTATE_USED_BY_HOST_CAPTURABLE ? "USED_BY_HOST_CAPTURABLE"
+            : pDevice->enmState == USBDEVICESTATE_UNUSED        ? "UNUSED"
+            : pDevice->enmState == USBDEVICESTATE_HELD_BY_PROXY ? "held by proxy"
+            : pDevice->enmState == USBDEVICESTATE_USED_BY_GUEST ? "used by guest"
+            :                                                     "invalid";
+        RTPrintf("  Manufacturer: %s, product: %s, serial number string: %s, state: %s\n",
                     pDevice->pszManufacturer, pDevice->pszProduct,
-                    pDevice->pszSerialNumber);
+                    pDevice->pszSerialNumber, pcszState);
         RTPrintf("    Device address: %s\n", pDevice->pszAddress);
         pDevice = pDevice->pNext;
     }
