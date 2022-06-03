@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 41326 2012-05-16 08:51:28Z vboxsync $ */
+/* $Id: EM.cpp 41436 2012-05-24 14:47:09Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1312,7 +1312,7 @@ EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         }
     }
 
-    Assert(PGMPhysIsA20Enabled(pVCpu));
+    /*Assert(PGMPhysIsA20Enabled(pVCpu));*/
     return EMSTATE_RAW;
 #endif /* !IEM_VERIFICATION_MODE */
 
