@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 37481 2011-06-15 18:59:27Z vboxsync $ */
+/* $Id: DevAPIC.cpp 37526 2011-06-17 10:17:38Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1958,7 +1958,8 @@ static DECLCALLBACK(int) apicLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint3
 static DECLCALLBACK(void) apicReset(PPDMDEVINS pDevIns)
 {
     APICDeviceInfo *pDev = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
-    APIC_LOCK_VOID(pDev, VERR_INTERNAL_ERROR);
+    TMTimerLock(pDev->paLapicsR3[0].pTimerR3, VERR_IGNORED);
+    APIC_LOCK_VOID(pDev, VERR_IGNORED);
 
     /* Reset all APICs. */
     for (VMCPUID i = 0; i < pDev->cCpus; i++) {
@@ -1983,6 +1984,7 @@ static DECLCALLBACK(void) apicReset(PPDMDEVINS pDevIns)
     pDev->pApicHlpR3->pfnChangeFeature(pDev->pDevInsR3, pDev->enmVersion);
 
     APIC_UNLOCK(pDev);
+    TMTimerUnlock(pDev->paLapicsR3[0].pTimerR3);
 }
 
 /**
