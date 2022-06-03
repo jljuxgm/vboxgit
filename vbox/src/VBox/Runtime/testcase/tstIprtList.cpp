@@ -1,4 +1,4 @@
-/* $Id: tstIprtList.cpp 36524 2011-04-04 12:46:30Z vboxsync $ */
+/* $Id: tstIprtList.cpp 36525 2011-04-04 12:59:38Z vboxsync $ */
 /** @file
  * IPRT Testcase - iprt::list.
  */
@@ -32,6 +32,7 @@
 #include <iprt/cpp/ministring.h>
 #include <iprt/test.h>
 #include <iprt/rand.h>
+#include <iprt/thread.h>
 
 
 /*******************************************************************************
