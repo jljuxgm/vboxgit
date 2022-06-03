@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExecThread.cpp 36550 2011-04-05 09:41:05Z vboxsync $ */
+/* $Id: VBoxServiceControlExecThread.cpp 36732 2011-04-19 15:55:23Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for an executed guest process.
  */
@@ -288,12 +288,9 @@ int VBoxServiceControlExecThreadGetOutput(uint32_t uPID, uint32_t uHandleId, uin
                     pPipeBuf = &pData->stdErr;
                     break;
 
-                case 0: /* StdIn */
-                    pPipeBuf = &pData->stdOut;
-                    break;
-
+                case 0: /* StdOut */
                 default:
-                    AssertMsgFailed(("Invalid pipe buffer ID %u specified!\n", uHandleId));
+                    pPipeBuf = &pData->stdOut;
                     break;
             }
             AssertPtr(pPipeBuf);
