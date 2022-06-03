@@ -1,4 +1,4 @@
-# $Id: Config.kmk 37263 2011-05-30 14:33:05Z vboxsync $
+# $Id: Config.kmk 37271 2011-05-30 21:55:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2680,7 +2680,7 @@ TEMPLATE_VBoxR0_CXXFLAGS            = -Zi -Zl -GR- -EHs- -GF -W3 -wd4244 -GS- -w
 TEMPLATE_VBoxR0_CXXFLAGS            = -Zi -Zl -GR- -EHs- -GF -W3 -wd4244 $(VBOX_VCC_OPT) $(VBOX_VCC_FP)	$(VBOX_VCC_WERR)
  endif
 TEMPLATE_VBoxR0_CFLAGS              = $(TEMPLATE_VBoxR0_CXXFLAGS)
-TEMPLATE_VBoxR0_LDFLAGS             = -Driver -Subsystem:NATIVE -Incremental:NO -Align:64 -MapInfo:Exports -NoD $(VBOX_VCC_LD_WERR) -Debug
+TEMPLATE_VBoxR0_LDFLAGS             = -Driver -Subsystem:NATIVE -Incremental:NO -Align:4096 -MapInfo:Exports -NoD $(VBOX_VCC_LD_WERR) -Debug
 TEMPLATE_VBoxR0_LIBS                = \
 	$(PATH_LIB)/RuntimeR0Stub$(VBOX_SUFF_LIB)
  ifdef VBOX_USE_WINDDK
@@ -2774,7 +2774,7 @@ ifeq ($(KBUILD_TARGET),win)
   TEMPLATE_VBOXR0DRV_CXXFLAGS          = -Zi -Zl -GR- -EHs- -GF -Gz -W3 $(VBOX_VCC_OPT) $(VBOX_VCC_FP)
  endif
  TEMPLATE_VBOXR0DRV_CFLAGS             = $(TEMPLATE_VBOXR0DRV_CXXFLAGS)
- TEMPLATE_VBOXR0DRV_LDFLAGS            = -Driver -Subsystem:NATIVE -Incremental:NO -Align:64 -MapInfo:Exports -NoD -Debug
+ TEMPLATE_VBOXR0DRV_LDFLAGS            = -Driver -Subsystem:NATIVE -Incremental:NO -Align:4096 -MapInfo:Exports -NoD -Debug
  TEMPLATE_VBOXR0DRV_POST_CMDS          = $(VBOX_SIGN_DRIVER_CMDS)
  ifdef VBOX_USE_VCC100 # HACK ALERT!
   TEMPLATE_VBOXR0DRV_CINCS             = $(TOOL_$(VBOX_VCC_TOOL)_CINCS)
@@ -4762,7 +4762,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37263 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37271 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
