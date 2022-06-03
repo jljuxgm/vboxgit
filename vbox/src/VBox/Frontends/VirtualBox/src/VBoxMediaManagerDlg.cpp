@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 37331 2011-06-06 16:30:51Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 37374 2011-06-08 10:08:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -107,6 +107,8 @@ public:
 
     QString hardDiskFormat() const { return mMedium.hardDiskFormat (!mManager->showDiffs()); }
     QString hardDiskType() const { return mMedium.hardDiskType (!mManager->showDiffs()); }
+
+    QString details() const { return mMedium.storageDetails(); }
 
     QString usage() const { return mMedium.usage (!mManager->showDiffs()); }
 
@@ -614,16 +616,6 @@ void VBoxMediaManagerDlg::retranslateUi()
         QString (" (%1)").arg (mReleaseAction->shortcut().toString()));
     mRefreshAction->setToolTip (mRefreshAction->text().remove ('&') +
         QString (" (%1)").arg (mRefreshAction->shortcut().toString()));
-
-    mLbHD1->setText (QString ("<nobr>%1:</nobr>").arg (tr ("Location")));
-    mLbHD2->setText (QString ("<nobr>%1:</nobr>").arg (tr ("Type (Format)")));
-    mLbHD3->setText (QString ("<nobr>%1:</nobr>").arg (tr ("Attached to", "VMM: Virtual Disk")));
-
-    mLbCD1->setText (QString ("<nobr>%1:</nobr>").arg (tr ("Location")));
-    mLbCD2->setText (QString ("<nobr>%1:</nobr>").arg (tr ("Attached to", "VMM: CD/DVD Image")));
-
-    mLbFD1->setText (QString ("<nobr>%1:</nobr>").arg (tr ("Location")));
-    mLbFD2->setText (QString ("<nobr>%1:</nobr>").arg (tr ("Attached to", "VMM: Floppy Image")));
 
     mProgressBar->setText (tr ("Checking accessibility"));
 #ifdef Q_WS_MAC
@@ -1406,6 +1398,7 @@ void VBoxMediaManagerDlg::processCurrentChanged (QTreeWidgetItem *aItem,
 
     if (item)
     {
+        QString details = item->details();
         QString usage = item->usage().isNull() ?
                         formatPaneText (tr ("<i>Not&nbsp;Attached</i>"), false) :
                         formatPaneText (item->usage());
@@ -1415,7 +1408,8 @@ void VBoxMediaManagerDlg::processCurrentChanged (QTreeWidgetItem *aItem,
             mIpHD1->setText (formatPaneText (item->location(), true, "end"));
             mIpHD2->setText (formatPaneText (QString ("%1 (%2)").arg (item->hardDiskType())
                                                                 .arg (item->hardDiskFormat()), false));
-            mIpHD3->setText (usage);
+            mIpHD3->setText (details);
+            mIpHD4->setText (usage);
         }
         else if (item->treeWidget() == mTwCD)
         {
@@ -1783,7 +1777,7 @@ void VBoxMediaManagerDlg::addDndUrls (const QList <QUrl> &aUrls)
 
 void VBoxMediaManagerDlg::clearInfoPanes()
 {
-    mIpHD1->clear(); mIpHD2->clear(); mIpHD3->clear();
+    mIpHD1->clear(); mIpHD2->clear(); mIpHD3->clear(); mIpHD4->clear();
     mIpCD1->clear(); mIpCD2->clear();
     mIpFD1->clear(); mIpFD2->clear();
 }

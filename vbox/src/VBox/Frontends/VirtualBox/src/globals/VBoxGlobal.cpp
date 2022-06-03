@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 37200 2011-05-24 15:34:06Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 37374 2011-06-08 10:08:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1236,6 +1236,24 @@ StorageSlot VBoxGlobal::toStorageSlot (const QString &aSlot) const
             break;
     }
     return result;
+}
+
+QString VBoxGlobal::toString(KMediumVariant mediumVariant) const
+{
+    switch (mediumVariant)
+    {
+        case KMediumVariant_Standard:
+            return tr("Dynamically expanding storage");
+        case (KMediumVariant)(KMediumVariant_Standard | KMediumVariant_Fixed):
+            return tr("Fixed size storage");
+        case (KMediumVariant)(KMediumVariant_Standard | KMediumVariant_VmdkSplit2G):
+            return tr("Dynamically expanding storage split into files of less than 2GB");
+        case (KMediumVariant)(KMediumVariant_Standard | KMediumVariant_Fixed | KMediumVariant_VmdkSplit2G):
+            return tr("Fixed size storage split into files of less than 2GB");
+        default:
+            break;
+    }
+    return QString();
 }
 
 /**
