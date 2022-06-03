@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 36609 2011-04-07 09:20:29Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 36610 2011-04-07 09:23:22Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -529,7 +529,7 @@ static int handleCtrlExecProgram(ComPtr<IGuest> guest, HandlerArg *pArg)
     uint64_t u64StartMS = RTTimeMilliTS();
 
     /* Execute the process. */
-    int rcProc; /** @todo: Not always initialized! */
+    int rcProc = RTEXITCODE_FAILURE;
     ComPtr<IProgress> progress;
     ULONG uPID = 0;
     rc = guest->ExecuteProcess(Bstr(Utf8Cmd).raw(),
