@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 39711 2012-01-06 17:58:41Z vboxsync $ */
+/* $Id: ConsoleImpl.h 39720 2012-01-07 02:56:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -693,6 +693,9 @@ private:
     const ComObjPtr<Display> mDisplay;
     const ComObjPtr<MachineDebugger> mDebugger;
     const ComObjPtr<VRDEServerInfo> mVRDEServerInfo;
+    /** This can safely be used without holding any locks.
+     * An AutoCaller suffices to prevent it being destroy while in use and
+     * internally there is a lock providing the necessary serialization. */
     const ComObjPtr<EventSource> mEventSource;
 #ifdef VBOX_WITH_EXTPACK
     const ComObjPtr<ExtPackManager> mptrExtPackManager;
