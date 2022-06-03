@@ -1,4 +1,4 @@
-/* $Id: vmexit-rip-aggregation-1.d 41273 2012-05-14 09:03:06Z vboxsync $ */
+/* $Id: vmexit-rip-aggregation-1.d 41274 2012-05-14 09:06:05Z vboxsync $ */
 /** @file
  * DTracing VBox - vmexit rip aggregation test \#1.
  */
@@ -21,6 +21,7 @@ vboxvmm:::r0-hmsvm-vmexit,vboxvmm:::r0-hmvmx-vmexit
 {
     /* printf("cs:rip=%02x:%08llx", args[1]->cs, args[1]->rip.rip);*/
     @g_aRips[args[1]->rip.rip] = count();
+    /*@g_aRips[args[0]->cpum.s.Guest.rip.rip] = count(); - alternative access route */
 }
 
 END
