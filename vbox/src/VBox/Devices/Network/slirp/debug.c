@@ -1,4 +1,4 @@
-/* $Id: debug.c 37937 2011-07-14 04:01:13Z vboxsync $ */
+/* $Id: debug.c 37938 2011-07-14 04:28:46Z vboxsync $ */
 /** @file
  * NAT - debug helpers.
  */
@@ -297,7 +297,7 @@ printTcpcbRfc793(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput,
 {
     size_t cb = 0;
     const struct tcpcb *tp = (const struct tcpcb *)pvValue;
-    AssertReturn(RTStrCmp(pszType, "tcpcb793") == 0 && tp, 0);
+    AssertReturn(RTStrCmp(pszType, "tcpcb793") == 0, 0);
     if (tp)
     {
         cb += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0, "TCB793[ state:%R[tcpstate] SND(UNA: %x, NXT: %x, UP: %x, WND: %x, WL1:%x, WL2:%x, ISS:%x), ",
