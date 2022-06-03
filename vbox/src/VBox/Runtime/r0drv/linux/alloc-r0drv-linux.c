@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 36962 2011-05-04 17:43:50Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -239,11 +239,25 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
     }
     else
     {
-        if (cb <= PAGE_SIZE || (fFlags & RTMEMHDR_FLAG_ANY_CTX))
+        if (
+#if 1 /* vmalloc has serious performance issues, avoid it. */
+               cb <= PAGE_SIZE*16 - sizeof(*pHdr)
+#else
+               cb <= PAGE_SIZE
+#endif
+            || (fFlags & RTMEMHDR_FLAG_ANY_CTX)
+           )
         {
             fFlags |= RTMEMHDR_FLAG_KMALLOC;
             pHdr = kmalloc(cb + sizeof(*pHdr),
                            (fFlags & RTMEMHDR_FLAG_ANY_CTX_ALLOC) ? GFP_ATOMIC : GFP_KERNEL);
+            if (RT_UNLIKELY(   !pHdr
+                            && cb > PAGE_SIZE
+                            && !(fFlags & RTMEMHDR_FLAG_ANY_CTX) ))
+            {
+                fFlags &= ~RTMEMHDR_FLAG_KMALLOC;
+                pHdr = vmalloc(cb + sizeof(*pHdr));
+            }
         }
         else
             pHdr = vmalloc(cb + sizeof(*pHdr));
