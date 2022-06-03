@@ -1,4 +1,4 @@
-/* $Id: dbg.h 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: dbg.h 40661 2012-03-27 12:43:28Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -1145,6 +1145,22 @@ RTDECL(int)         RTDbgModLineByAddr(RTDBGMOD hDbgMod, RTDBGSEGIDX iSeg, RTUIN
  */
 RTDECL(int)         RTDbgModLineByAddrA(RTDBGMOD hDbgMod, RTDBGSEGIDX iSeg, RTUINTPTR off, PRTINTPTR poffDisp, PRTDBGLINE *ppLineInfo);
 /** @} */
+
+
+/** @name Proposed Kernel Structure API
+ * @{ */
+/** Handle to the kernel structures database. */
+typedef struct RTDBGKRNLSTRUCTSINT *RTDBGKRNLSTRUCTS;
+/** Pointer to a kernel structures database handle. */
+typedef RTDBGKRNLSTRUCTS           *PRTDBGKRNLSTRUCTS;
+
+RTR0DECL(int)       RTR0DbgKrnlStructsOpen(PRTDBGKRNLSTRUCTS phKrnlStructs, uint32_t fFlags);
+RTR0DECL(uint32_t)  RTR0DbgKrnlStructsRetain(RTDBGKRNLSTRUCTS hKrnlStructs);
+RTR0DECL(uint32_t)  RTR0DbgKrnlStructsRelease(RTDBGKRNLSTRUCTS hKrnlStructs);
+RTR0DECL(int)       RTR0DbgKrnlStructsQueryMember(RTDBGKRNLSTRUCTS hKrnlStructs, const char *pszStructure,
+                                                  const char *pszMember, size_t *poffMember);
+/** @} */
+
 
 /** @} */
 
