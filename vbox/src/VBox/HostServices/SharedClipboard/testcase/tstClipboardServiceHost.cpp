@@ -1,4 +1,4 @@
-/* $Id: tstClipboardServiceHost.cpp 37458 2011-06-14 21:15:32Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 37472 2011-06-15 16:15:34Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
 int vboxClipboardInit() { return VINF_SUCCESS; }
 void vboxClipboardDestroy() { AssertFailed(); }
 void vboxClipboardDisconnect(_VBOXCLIPBOARDCLIENTDATA*) { AssertFailed(); }
-int vboxClipboardConnect(_VBOXCLIPBOARDCLIENTDATA*)
+int vboxClipboardConnect(_VBOXCLIPBOARDCLIENTDATA*, bool)
 { AssertFailed(); return VERR_WRONG_ORDER; }
 void vboxClipboardFormatAnnounce(_VBOXCLIPBOARDCLIENTDATA*, unsigned int)
 { AssertFailed(); }
