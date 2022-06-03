@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40604 2012-03-24 13:39:19Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40619 2012-03-25 19:55:20Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -64,7 +64,8 @@ typedef VTGARG *PVTGARG;
 typedef struct VTGPROBE
 {
     RTLISTNODE      ListEntry;
-    const char     *pszName;
+    char           *pszMangledName;
+    const char     *pszUnmangledName;
     RTLISTANCHOR    ArgHead;
     uint32_t        cArgs;
     uint32_t        offArgList;
@@ -423,7 +424,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40604 2012-03-24 13:39:19Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40619 2012-03-25 19:55:20Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -521,7 +522,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
             ScmStreamPrintf(pStrm,
                             "VTG_GLOBAL g_fVTGProbeEnabled_%s_%s, data\n"
                             "    db 0\n",
-                            pProvider->pszName, pProbe->pszName);
+                            pProvider->pszName, pProbe->pszMangledName);
             cProbes++;
         }
     }
@@ -637,10 +638,10 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                             "    dw %6u  ; provider index\n"
                             "    dd 0       ; for the application\n"
                             ,
-                            pProvider->pszName, pProbe->pszName, iProbe,
-                            strtabGetOff(pProbe->pszName),
+                            pProvider->pszName, pProbe->pszMangledName, iProbe,
+                            strtabGetOff(pProbe->pszUnmangledName),
                             pProbe->offArgList,
-                            pProvider->pszName, pProbe->pszName,
+                            pProvider->pszName, pProbe->pszMangledName,
                             iProvider);
             pProbe->iProbe = iProbe;
             iProbe++;
@@ -706,7 +707,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
             ScmStreamPrintf(pStrm,
                             "\n"
                             "VTG_GLOBAL VTGProbeStub_%s_%s, function; (VBOXTPGPROBELOC pVTGProbeLoc",
-                            pProvider->pszName, pProbe->pszName);
+                            pProvider->pszName, pProbe->pszMangledName);
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
                 ScmStreamPrintf(pStrm, ", %s %s", pArg->pszType, pArg->pszName);
@@ -855,7 +856,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40604 2012-03-24 13:39:19Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40619 2012-03-25 19:55:20Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -888,21 +889,21 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
                             "extern bool    g_fVTGProbeEnabled_%s_%s;\n"
                             "extern uint8_t g_VTGProbeData_%s_%s;\n"
                             "DECLASM(void)  VTGProbeStub_%s_%s(PVTGPROBELOC",
-                            pProv->pszName, pProbe->pszName,
-                            pProv->pszName, pProbe->pszName,
-                            pProv->pszName, pProbe->pszName);
+                            pProv->pszName, pProbe->pszMangledName,
+                            pProv->pszName, pProbe->pszMangledName,
+                            pProv->pszName, pProbe->pszMangledName);
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
                 ScmStreamPrintf(pStrm, ", %s", pArg->pszType);
             }
-            generateProbeDefineName(szTmp, sizeof(szTmp), pProv->pszName, pProbe->pszName);
+            generateProbeDefineName(szTmp, sizeof(szTmp), pProv->pszName, pProbe->pszMangledName);
             ScmStreamPrintf(pStrm,
                             ");\n"
                             "# define %s_ENABLED() \\\n"
                             "    (RT_UNLIKELY(g_fVTGProbeEnabled_%s_%s)) \n"
                             "# define %s("
                             , szTmp,
-                            pProv->pszName, pProbe->pszName,
+                            pProv->pszName, pProbe->pszMangledName,
                             szTmp);
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
@@ -919,9 +920,9 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
                             "            VTG_DECL_VTGPROBELOC(s_VTGProbeLoc) = \\\n"
                             "            { __LINE__, 0, UINT32_MAX, __PRETTY_FUNCTION__, __FILE__, &g_VTGProbeData_%s_%s }; \\\n"
                             "            VTGProbeStub_%s_%s(&s_VTGProbeLoc",
-                            pProv->pszName, pProbe->pszName,
-                            pProv->pszName, pProbe->pszName,
-                            pProv->pszName, pProbe->pszName);
+                            pProv->pszName, pProbe->pszMangledName,
+                            pProv->pszName, pProbe->pszMangledName,
+                            pProv->pszName, pProbe->pszMangledName);
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
                 ScmStreamPrintf(pStrm, ", %s", pArg->pszName);
@@ -951,7 +952,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     {
         RTListForEach(&pProv->ProbeHead, pProbe, VTGPROBE, ListEntry)
         {
-            generateProbeDefineName(szTmp, sizeof(szTmp), pProv->pszName, pProbe->pszName);
+            generateProbeDefineName(szTmp, sizeof(szTmp), pProv->pszName, pProbe->pszMangledName);
             ScmStreamPrintf(pStrm,
                             "# define %s_ENABLED() (false)\n"
                             "# define %s("
@@ -1513,6 +1514,37 @@ static RTEXITCODE parsePragma(PSCMSTREAM pStrm)
 
 
 /**
+ * Unmangles the probe name. 
+ *  
+ * This involves translating double underscore to dash.
+ *  
+ * @returns Pointer to the unmangled name in the string table.
+ * @param   pszMangled          The mangled name.
+ */
+static const char *parseUnmangleProbeName(const char *pszMangled)
+{
+    size_t      cchMangled = strlen(pszMangled);
+    char       *pszTmp     = (char *)alloca(cchMangled + 2);
+    const char *pszSrc     = pszMangled;
+    char       *pszDst     = pszTmp;
+
+    while (*pszSrc)
+    {
+        if (pszSrc[0] == '_' && pszSrc[1] == '_' && pszSrc[2] != '_')
+        {
+            *pszDst++ = '-';
+            pszSrc   += 2;
+        }
+        else
+            *pszDst++ = *pszSrc++;
+    }
+    *pszDst = '\0';
+
+    return strtabInsertN(pszTmp, pszDst - pszTmp);
+}
+
+
+/**
  * Parses a D probe statement.
  *
  * @returns Suitable exit code, errors message already written on failure.
@@ -1541,10 +1573,13 @@ static RTEXITCODE parseProbe(PSCMSTREAM pStrm, PVTGPROVIDER pProv)
     RTListInit(&pProbe->ArgHead);
     RTListAppend(&pProv->ProbeHead, &pProbe->ListEntry);
     pProbe->offArgList = UINT32_MAX;
-    pProbe->pszName    = strtabInsertN(pszProbe, cchProbe);
-    if (!pProbe->pszName)
+    pProbe->pszMangledName = RTStrDupN(pszProbe, cchProbe);
+    if (!pProbe->pszMangledName)
         return parseError(pStrm, 0, "Out of memory");
-
+    pProbe->pszUnmangledName = parseUnmangleProbeName(pProbe->pszMangledName);
+    if (!pProbe->pszUnmangledName)
+        return parseError(pStrm, 0, "Out of memory");
+    
     /*
      * Parse loop for the argument.
      */
@@ -1909,7 +1944,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40604 $";
+                static const char s_szRev[] = "$Revision: 40619 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
