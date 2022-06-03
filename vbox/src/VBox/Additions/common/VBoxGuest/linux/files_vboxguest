@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 36408 2011-03-24 16:25:47Z vboxsync $
+# $Id: files_vboxguest 36510 2011-04-01 15:37:35Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -81,6 +81,8 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuestLib/VBGLInternal.h=>VBGLInternal.h \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuestLib/VBoxGuestLog.h=>VBoxGuestLog.h \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxGuestLib/VMMDev.cpp=>VMMDev.c \
+    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile.include.header \
+    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile.include.footer \
     ${PATH_ROOT}/src/VBox/Runtime/include/internal/assert.h=>include/internal/assert.h \
     ${PATH_ROOT}/src/VBox/Runtime/include/internal/initterm.h=>include/internal/initterm.h \
     ${PATH_ROOT}/src/VBox/Runtime/include/internal/iprt.h=>include/internal/iprt.h \
