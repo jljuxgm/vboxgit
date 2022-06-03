@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceSolaris.cpp 41528 2012-05-31 16:48:33Z vboxsync $ */
+/* $Id: USBProxyServiceSolaris.cpp 41529 2012-05-31 17:13:58Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -443,7 +443,7 @@ void USBProxyServiceSolaris::releaseDeviceCompleted(HostUSBDevice *aDevice, bool
 bool USBProxyServiceSolaris::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice, bool *aRunFilters, SessionMachine **aIgnoreMachine)
 {
     AssertReturn(aDevice, false);
-    AssertReturn(!aDevice->isWriteLockOnCurrentThread(), false)
+    AssertReturn(!aDevice->isWriteLockOnCurrentThread(), false);
     return USBProxyService::updateDeviceState(aDevice, aUSBDevice, aRunFilters, aIgnoreMachine);
 }
 
