@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 36079 2011-02-24 17:10:31Z vboxsync $ */
+/* $Id: DevPCI.cpp 38852 2011-09-23 14:02:30Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2097,6 +2097,10 @@ static DECLCALLBACK(int)   pciConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
 
     pBus->pPciHlpRC = pBus->pPciHlpR3->pfnGetRCHelpers(pDevIns);
     pBus->pPciHlpR0 = pBus->pPciHlpR3->pfnGetR0Helpers(pDevIns);
+
+    /* Disable default device locking. */
+    rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
+    AssertRCReturn(rc, rc);
 
     /*
      * Fill in PCI configs and add them to the bus.
