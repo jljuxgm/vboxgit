@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 36931 2011-05-03 13:34:43Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 36940 2011-05-03 14:55:19Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -497,6 +497,21 @@ int main()
     CHECK_EXPR(PGM_PAGE_HAS_ANY_HANDLERS(&Page) == true);
     CHECK_EXPR(PGM_PAGE_HAS_ACTIVE_HANDLERS(&Page) == true);
     CHECK_EXPR(PGM_PAGE_HAS_ACTIVE_ALL_HANDLERS(&Page) == false);
+
+    PGM_PAGE_CLEAR(&Page);
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS(&Page) == 0);
+    PGM_PAGE_SET_HCPHYS(&Page, UINT64_C(0x0000fffeff1ff000));
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS(&Page) == UINT64_C(0x0000fffeff1ff000));
+    PGM_PAGE_SET_HCPHYS(&Page, UINT64_C(0x0000000000001000));
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS(&Page) == UINT64_C(0x0000000000001000));
+
+#undef AssertFatal
+#define AssertFatal(expr) do { } while (0)
+    PGM_PAGE_INIT(&Page, UINT64_C(0x0000feedfacef000), UINT32_C(0x12345678), PGMPAGETYPE_RAM, PGM_PAGE_STATE_ALLOCATED);
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS(&Page) == UINT64_C(0x0000feedfacef000));
+    CHECK_EXPR(PGM_PAGE_GET_PAGEID(&Page) == UINT32_C(0x12345678));
+    CHECK_EXPR(PGM_PAGE_GET_TYPE(&Page)   == PGMPAGETYPE_RAM);
+    CHECK_EXPR(PGM_PAGE_GET_STATE(&Page)  == PGM_PAGE_STATE_ALLOCATED);
 
 
     /*

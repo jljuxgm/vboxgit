@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 36938 2011-05-03 14:16:56Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 36940 2011-05-03 14:55:19Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -690,7 +690,6 @@ int main()
     GEN_CHECK_OFF(PGMVIRTHANDLER, cPages);
     GEN_CHECK_OFF(PGMVIRTHANDLER, aPhysToVirt);
     GEN_CHECK_SIZE(PGMPAGE);
-    GEN_CHECK_OFF(PGMPAGE, s.HCPhysAndPageID);
     GEN_CHECK_OFF(PGMPAGE, s.cReadLocksY);
     GEN_CHECK_OFF(PGMPAGE, s.cWriteLocksY);
     GEN_CHECK_OFF(PGMPAGE, s.u16TrackingY);
