@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg-win.h 37479 2011-06-15 18:56:52Z vboxsync $ */
+/* $Id: VBoxDrvCfg-win.h 40993 2012-04-19 14:25:38Z vboxsync $ */
 /** @file
  * Windows Driver Manipulation API.
  */
@@ -68,6 +68,8 @@ VBOXDRVCFG_DECL(HRESULT) VBoxDrvCfgInfUninstallAllF(IN LPCWSTR lpszClassName, IN
 
 /* Service API */
 VBOXDRVCFG_DECL(HRESULT) VBoxDrvCfgSvcStart(LPCWSTR lpszSvcName);
+
+HRESULT VBoxDrvCfgDrvUpdate(LPCWSTR pcszwHwId, LPCWSTR pcsxwInf, BOOL *pbRebootRequired);
 
 RT_C_DECLS_END
 

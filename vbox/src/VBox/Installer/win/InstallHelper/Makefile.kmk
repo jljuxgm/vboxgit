@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38082 2011-07-20 14:26:24Z vboxsync $
+# $Id: Makefile.kmk 40993 2012-04-19 14:25:38Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxInstallHelper.dll.
 #
@@ -39,6 +39,7 @@ ifdef VBOX_WITH_NETFLT
  VBoxInstallHelper_LIBS   += \
 	$(PATH_STAGE_LIB)/WinNetConfig.lib \
 	$(PATH_STAGE_LIB)/VBoxDrvCfg.lib \
+	$(PATH_SDK_W2K3DDK_LIB)/Newdev.lib \
  	$(PATH_TOOL_$(VBOX_VCC_TOOL)_LIB)/comsupp.lib \
  	$(PATH_SDK_WINPSDK_LIB)/WbemUuid.Lib
 endif

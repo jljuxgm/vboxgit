@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg.cpp 38731 2011-09-13 13:05:12Z vboxsync $ */
+/* $Id: VBoxDrvCfg.cpp 40993 2012-04-19 14:25:38Z vboxsync $ */
 /** @file
  * VBoxDrvCfg.cpp - Windows Driver Manipulation API implementation
  */
@@ -23,6 +23,8 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <stdio.h>
+
+#include <Newdev.h>
 
 static PFNVBOXDRVCFG_LOG g_pfnVBoxDrvCfgLog;
 static void *g_pvVBoxDrvCfgLog;
@@ -809,4 +811,43 @@ VBOXDRVCFG_DECL(HRESULT) VBoxDrvCfgSvcStart(LPCWSTR lpszSvcName)
     CloseServiceHandle(hMgr);
 
     return hr;
+}
+
+
+HRESULT VBoxDrvCfgDrvUpdate(LPCWSTR pcszwHwId, LPCWSTR pcsxwInf, BOOL *pbRebootRequired)
+{
+    if (pbRebootRequired)
+        *pbRebootRequired = FALSE;
+    BOOL bRebootRequired = FALSE;
+    WCHAR InfFullPath[MAX_PATH];
+    DWORD dwChars = GetFullPathNameW(pcsxwInf,
+            sizeof (InfFullPath) / sizeof (InfFullPath[0]),
+            InfFullPath,
+            NULL /* LPTSTR *lpFilePart */
+            );
+    if (!dwChars || dwChars >= MAX_PATH)
+    {
+        NonStandardLogCrap(("GetFullPathNameW failed, WinEr(%d), dwChars(%d)\n", GetLastError(), dwChars));
+        return E_INVALIDARG;
+    }
+
+
+    if (!UpdateDriverForPlugAndPlayDevicesW(NULL, /* HWND hwndParent */
+            pcszwHwId,
+            InfFullPath,
+            INSTALLFLAG_FORCE,
+            &bRebootRequired))
+    {
+        NonStandardLogCrap(("UpdateDriverForPlugAndPlayDevicesW failed, WinEr(%d)\n", GetLastError(), dwChars));
+        return E_FAIL;
+    }
+
+
+    if (bRebootRequired)
+        NonStandardLogCrap(("!!Driver Update: REBOOT REQUIRED!!\n", GetLastError(), dwChars));
+
+    if (pbRebootRequired)
+        *pbRebootRequired = bRebootRequired;
+
+    return S_OK;
 }
