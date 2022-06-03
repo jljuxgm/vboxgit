@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41544 2012-06-01 13:46:39Z vboxsync $
+# $Id: Makefile.kmk 41601 2012-06-06 15:26:43Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -37,7 +37,7 @@ ifdef VBOX_WITH_OPEN_WATCOM
  TEMPLATE_VBoxBios_DEFS    = \
  	VBOX_PC_BIOS \
  	VBOX_LANBOOT_SEG=0xE200 \
- 	VBOX_VERSION_STRING=\"VBOX_VERSION_STRING\" \
+ 	VBOX_VERSION_STRING=\"$(VBOX_VERSION_STRING)\" \
  	VBOX_WITH_SCSI \
  	VBOX_WITH_AHCI
  TEMPLATE_VBoxBios_LDFLAGS = system dos  \
