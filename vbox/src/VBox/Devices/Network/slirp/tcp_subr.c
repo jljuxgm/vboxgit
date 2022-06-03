@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 40422 2012-03-11 02:37:03Z vboxsync $ */
+/* $Id: tcp_subr.c 40423 2012-03-11 03:22:22Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -61,7 +61,6 @@
  * terms and conditions of the copyright.
  */
 
-#define WANT_SYS_IOCTL_H
 #include <slirp.h>
 
 

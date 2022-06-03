@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 40421 2012-03-11 02:28:13Z vboxsync $ */
+/* $Id: ip_icmp.c 40423 2012-03-11 03:22:22Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -53,7 +53,6 @@
  * ip_icmp.c,v 1.7 1995/05/30 08:09:42 rgrimes Exp
  */
 
-#define NEED_SOME_m_getjcl
 #include "slirp.h"
 #include "ip_icmp.h"
 #ifdef RT_OS_WINDOWS

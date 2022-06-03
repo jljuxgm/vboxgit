@@ -1,4 +1,4 @@
-/* $Id: socket.c 40120 2012-02-14 07:22:20Z vboxsync $ */
+/* $Id: socket.c 40423 2012-03-11 03:22:22Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -24,7 +24,6 @@
  * terms and conditions of the copyright.
  */
 
-#define WANT_SYS_IOCTL_H
 #include <slirp.h>
 #include "ip_icmp.h"
 #include "main.h"

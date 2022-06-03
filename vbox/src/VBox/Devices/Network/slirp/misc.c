@@ -1,4 +1,4 @@
-/* $Id: misc.c 40204 2012-02-22 02:02:10Z vboxsync $ */
+/* $Id: misc.c 40423 2012-03-11 03:22:22Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -24,7 +24,6 @@
  * terms and conditions of the copyright.
  */
 
-#define WANT_SYS_IOCTL_H
 #include <slirp.h>
 #include "zone.h"
 

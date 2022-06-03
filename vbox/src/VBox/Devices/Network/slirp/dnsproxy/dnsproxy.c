@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 39894 2012-01-27 06:35:38Z vboxsync $ */
+/* $Id: dnsproxy.c 40423 2012-03-11 03:22:22Z vboxsync $ */
 /*
  * Copyright (c) 2003,2004,2005 Armin Wolfermann
  *
@@ -78,10 +78,9 @@ signal_event(void)
     return 0;
 }
 
-#else
+#else /* VBOX */
 
 # define RD(x) (*(x + 2) & 0x01)
-# define MAX_BUFSPACE 512
 
 # define QUERYID queryid++
 
