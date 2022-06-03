@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36703 2011-04-18 11:06:52Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 36837 2011-04-25 08:41:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -1071,6 +1071,8 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
             InsertConfigNode(pDevices, "hpet", &pDev);
             InsertConfigNode(pDev,     "0", &pInst);
             InsertConfigInteger(pInst, "Trusted",   1); /* boolean */
+            InsertConfigNode(pInst,    "Config", &pCfg);
+            InsertConfigInteger(pCfg,  "ICH9", (chipsetType == ChipsetType_ICH9) ? 1 : 0);  /* boolean */
         }
 
         /*
