@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-solaris.c 29281 2010-05-09 23:40:43Z vboxsync $ */
+/* $Id: spinlock-r0drv-solaris.c 39460 2011-11-29 14:20:11Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Solaris.
  */
@@ -82,7 +82,7 @@ RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock)
      * Initialize & return.
      */
     pThis->u32Magic = RTSPINLOCK_MAGIC;
-    mutex_init(&pThis->Mtx, "IPRT Spinlock", MUTEX_SPIN, (void *)ipltospl(DISP_LEVEL));
+    mutex_init(&pThis->Mtx, "IPRT Spinlock", MUTEX_SPIN, (void *)ipltospl(PIL_MAX));
     *pSpinlock = pThis;
     return VINF_SUCCESS;
 }
