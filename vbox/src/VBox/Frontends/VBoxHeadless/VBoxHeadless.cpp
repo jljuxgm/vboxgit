@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 36249 2011-03-10 12:18:20Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 36280 2011-03-15 10:47:13Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -212,24 +212,25 @@ public:
                         Bstr value;
                         gpcev->COMGETTER(Value)(value.asOutParam());
                         Utf8Str utf8Value = value;
-                        if (utf8Value == "true")
+
+                        if (!mfNoLoggedInUsers) /* Only if the property really changes. */
                         {
-                            if (!mfNoLoggedInUsers) /* Only if the property really changes. */
+                            if (   utf8Value == "true"
+                                /* Guest property got deleted due to hard reset,
+                                 * so it has no value anymore. */
+                                || utf8Value.isEmpty())
                             {
                                 mfNoLoggedInUsers = true;
                                 fDropConnection = true;
                             }
                         }
-                        /* Guest property got deleted due to hard reset,
-                         * so it has no value anymore. */
-                        else if (utf8Value.isEmpty())
-                        {
-                            fDropConnection = true;
-                        }
-                        else
-                        {
+                        else if (utf8Value == "false")
                             mfNoLoggedInUsers = false;
-                        }
+                        /* Guest property got deleted due to hard reset,
+                         * take the shortcut without touching the mfNoLoggedInUsers
+                         * state. */
+                        else if (utf8Value.isEmpty())
+                            fDropConnection = true;
 
                         if (fDropConnection)
                         {
