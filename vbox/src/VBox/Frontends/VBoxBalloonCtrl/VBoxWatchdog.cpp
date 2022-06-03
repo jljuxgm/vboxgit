@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 39986 2012-02-03 14:21:28Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 39988 2012-02-03 16:23:24Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -826,7 +826,7 @@ static void displayHelp(const char *pszImage)
                  " [-I|--loginterval=<seconds>]\n", pszImage);
     for (unsigned j = 0; j < RT_ELEMENTS(g_aModules); j++)
         if (g_aModules[j].pDesc->pszUsage)
-            RTStrmPrintf(g_pStdErr, "%s\n", g_aModules[j].pDesc->pszUsage);
+            RTStrmPrintf(g_pStdErr, "%s", g_aModules[j].pDesc->pszUsage);
 
     RTStrmPrintf(g_pStdErr, "\n"
                  "Options:\n");

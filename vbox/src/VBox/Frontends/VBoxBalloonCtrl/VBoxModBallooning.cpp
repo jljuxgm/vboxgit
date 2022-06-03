@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 39986 2012-02-03 14:21:28Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 39988 2012-02-03 16:23:24Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -541,9 +541,9 @@ VBOXMODULE g_ModBallooning =
     /* uPriority. */
     0 /* Not used */,
     /* pszUsage. */
-    " [--balloon-dec <MB>] [--balloon-groups <string>] [--balloon-inc <MB>]\n"
-    " [--balloon-interval <ms>] [--balloon-lower-limit <MB>]\n"
-    " [--balloon-max <MB>]\n",
+    " [--balloon-dec=<MB>] [--balloon-groups=<string>] [--balloon-inc=<MB>]\n"
+    " [--balloon-interval=<ms>] [--balloon-lower-limit=<MB>]\n"
+    " [--balloon-max=<MB>]\n",
     /* pszOptions. */
     "--balloon-dec          Sets the ballooning decrement in MB (128 MB).\n"
     "--balloon-groups       Sets the VM groups for ballooning (all).\n"
