@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 41760 2012-06-15 15:56:20Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 41781 2012-06-16 19:02:30Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -165,7 +165,7 @@ static bool MyDisasIsValidInstruction(DISCPUSTATE const *pCpu)
 
 
 /**
- * Callback for reading bytes.
+ * @interface_method_impl{FNDISREADBYTES}
  */
 static DECLCALLBACK(int) MyDisasInstrRead(PDISCPUSTATE pDis, uint8_t offInstr, uint8_t cbMinRead, uint8_t cbMaxRead)
 {
