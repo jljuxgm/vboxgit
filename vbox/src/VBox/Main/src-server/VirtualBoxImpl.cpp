@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 42129 2012-07-12 17:32:31Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 42131 2012-07-12 18:16:06Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3035,7 +3035,7 @@ HRESULT VirtualBox::convertMachineGroups(ComSafeArrayIn(IN_BSTR, aMachineGroups)
     pllMachineGroups->clear();
     if (aMachineGroups)
     {
-        com::SafeArray<BSTR> machineGroups(ComSafeArrayInArg(aMachineGroups));
+        com::SafeArray<IN_BSTR> machineGroups(ComSafeArrayInArg(aMachineGroups));
         for (size_t i = 0; i < machineGroups.size(); i++)
             pllMachineGroups->push_back(machineGroups[i]);
         pllMachineGroups->sort();
