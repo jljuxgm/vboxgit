@@ -1,4 +1,4 @@
-/* $Id: vfschain.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: vfschain.cpp 39438 2011-11-28 13:55:27Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
@@ -505,9 +505,12 @@ RTDECL(int)     RTVfsChainSpecParse(const char *pszSpec, uint32_t fFlags, RTVFSC
     }
 
     /*
-     * Cleanup and set the error indicator on failure.
+     * Return the chain on success; Cleanup and set the error indicator on
+     * failure.
      */
-    if (RT_FAILURE(rc))
+    if (RT_SUCCESS(rc))
+        *ppSpec = pSpec;
+    else
     {
         if (ppszError)
             *ppszError = pszSrc;
