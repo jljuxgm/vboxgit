@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 40703 2012-03-28 18:45:48Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 41865 2012-06-21 19:58:18Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1783,7 +1783,7 @@ void cocoaViewDestroy(NativeNSViewRef pView)
     for (; a > 1; --a)
         [pWin performSelector:@selector(release)]
     */
-    [pWin performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:YES];
+    [pWin performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:NO];
     /*
     [pWin release];
     */
@@ -1796,7 +1796,7 @@ void cocoaViewDestroy(NativeNSViewRef pView)
     a = [pView retainCount];
     for (; a > 1; --a)
     */
-    [pView performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:YES];
+    [pView performSelectorOnMainThread:@selector(release) withObject:nil waitUntilDone:NO];
     /*
     [pView release];
     */
