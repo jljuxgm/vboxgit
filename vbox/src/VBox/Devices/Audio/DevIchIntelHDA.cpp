@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 39368 2011-11-18 15:19:35Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 40112 2012-02-14 02:05:25Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -882,6 +882,7 @@ static int hdaCORBCmdProcess(INTELHDLinkState *pState)
     {
         uint32_t cmd;
         uint64_t resp;
+        pfn = (PFNCODECVERBPROCESSOR)NULL;
         corbRp++;
         cmd = pState->pu32CorbBuf[corbRp];
         rc = (pState)->Codec.pfnLookup(&pState->Codec, cmd, &pfn);
@@ -889,7 +890,12 @@ static int hdaCORBCmdProcess(INTELHDLinkState *pState)
             AssertRCReturn(rc, rc);
         Assert(pfn);
         (rirbWp)++;
-        rc = pfn(&pState->Codec, cmd, &resp);
+
+        if (RT_LIKELY(pfn))
+            rc = pfn(&pState->Codec, cmd, &resp);
+        else
+            rc = VERR_INVALID_FUNCTION;
+
         if (RT_FAILURE(rc))
             AssertRCReturn(rc, rc);
         Log(("hda: verb:%08x->%016lx\n", cmd, resp));
