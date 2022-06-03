@@ -1,4 +1,4 @@
-/* $Id: tstDir-2.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstDir-2.cpp 38651 2011-09-06 07:40:23Z vboxsync $ */
 /** @file
  * IPRT Testcase - Directory listing & filtering .
  */
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
                         RTPrintf("?");
                         break;
                 }
-                RTPrintf(" %#18llx  %3d %s\n", (uint64_t)DirEntry.INodeId,
+                RTPrintf(" %#18llx  %3d %S\n", (uint64_t)DirEntry.INodeId,
                          DirEntry.cbName, DirEntry.szName);
             }
 
