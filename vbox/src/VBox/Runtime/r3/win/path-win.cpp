@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 36614 2011-04-07 10:41:56Z vboxsync $ */
+/* $Id: path-win.cpp 36675 2011-04-14 16:15:16Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -180,6 +180,7 @@ RTDECL(int) RTPathUserHome(char *pszPath, size_t cchPath)
      */
     return RTUtf16ToUtf8Ex(&wszPath[0], RTSTR_MAX, &pszPath, cchPath, NULL);
 }
+
 
 RTDECL(int) RTPathUserDocuments(char *pszPath, size_t cchPath)
 {
