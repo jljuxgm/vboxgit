@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 36627 2011-04-08 15:38:47Z vboxsync $ */
+/* $Id: PGMInternal.h 36629 2011-04-08 16:01:17Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1683,8 +1683,6 @@ typedef struct PGMRCDYNMAPENTRY
         /** PTE pointer, PAE version. */
         RCPTRTYPE(PX86PTEPAE)   pPae;
     } uPte;
-    /** Alignment padding. */
-    RTRCPTR                     RCPtrAlignment;
 } PGMRCDYNMAPENTRY;
 /** Pointer to a dynamic mapping cache entry for the raw-mode context. */
 typedef PGMRCDYNMAPENTRY *PPGMRCDYNMAPENTRY;
