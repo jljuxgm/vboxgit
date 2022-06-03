@@ -1,4 +1,4 @@
-/* $Id: slirp.c 38101 2011-07-21 14:16:20Z vboxsync $ */
+/* $Id: slirp.c 38109 2011-07-22 03:42:21Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -2080,11 +2080,13 @@ void slirp_arp_who_has(PNATState pData, uint32_t dst)
     struct mbuf *m;
     struct ethhdr *ehdr;
     struct arphdr *ahdr;
+    LogFunc(("ENTER: %RTnaipv4\n", dst));
 
     m = m_getcl(pData, M_NOWAIT, MT_HEADER, M_PKTHDR);
     if (m == NULL)
     {
         Log(("NAT: Can't alloc mbuf for ARP request\n"));
+        LogFlowFuncLeave();
         return;
     }
     ehdr = mtod(m, struct ethhdr *);
@@ -2106,6 +2108,7 @@ void slirp_arp_who_has(PNATState pData, uint32_t dst)
     m->m_data += ETH_HLEN;
     m->m_len -= ETH_HLEN;
     if_encap(pData, ETH_P_ARP, m, ETH_ENCAP_URG);
+    LogFlowFuncLeave();
 }
 
 /* updates the arp cache
