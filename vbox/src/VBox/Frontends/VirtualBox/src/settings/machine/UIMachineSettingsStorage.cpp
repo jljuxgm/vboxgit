@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 37331 2011-06-06 16:30:51Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 37341 2011-06-07 12:02:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -3162,6 +3162,13 @@ bool UIMachineSettingsStorage::createStorageController(const UICacheSettingsMach
                 controller.SetControllerType(controllerType);
                 controller.SetUseHostIOCache(fUseHostIOCache);
 
+                /* Set port count to max possible initially: */
+                if (controllerData.m_controllerBus == KStorageBus_SATA)
+                {
+                    CSystemProperties properties = vboxGlobal().virtualBox().GetSystemProperties();
+                    controller.SetPortCount(properties.GetMaxPortCountForStorageBus(KStorageBus_SATA));
+                }
+
                 /* Prepare max used port for SATA controller: */
                 int cMaxUsedPort = -1;
 
@@ -3224,6 +3231,13 @@ bool UIMachineSettingsStorage::updateStorageController(const UICacheSettingsMach
             /* Set storage controller attributes: */
             controller.SetControllerType(controllerType);
             controller.SetUseHostIOCache(fUseHostIOCache);
+
+            /* Set port count to max possible initially: */
+            if (controllerData.m_controllerBus == KStorageBus_SATA)
+            {
+                CSystemProperties properties = vboxGlobal().virtualBox().GetSystemProperties();
+                controller.SetPortCount(properties.GetMaxPortCountForStorageBus(KStorageBus_SATA));
+            }
 
             /* Prepare max used port for SATA controller: */
             int cMaxUsedPort = -1;
