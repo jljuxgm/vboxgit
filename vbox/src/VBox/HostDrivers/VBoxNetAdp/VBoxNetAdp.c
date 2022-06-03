@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp.c 38370 2011-08-09 08:37:03Z vboxsync $ */
+/* $Id: VBoxNetAdp.c 38408 2011-08-10 20:07:04Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Common Code.
  */
@@ -1196,7 +1196,6 @@ int  vboxNetAdpInit(void)
     memset(g_aAdapters, 0, sizeof(g_aAdapters));
     for (i = 0; i < RT_ELEMENTS(g_aAdapters); i++)
     {
-        g_aAdapters[i].uMagic   = VBOXNETADP_MAGIC;
         g_aAdapters[i].enmState = kVBoxNetAdpState_Invalid;
         g_aAdapters[i].iUnit    = -1;
         vboxNetAdpOsInit(&g_aAdapters[i]);

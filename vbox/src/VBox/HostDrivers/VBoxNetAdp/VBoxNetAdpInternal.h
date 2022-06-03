@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 38389 2011-08-09 21:24:21Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 38408 2011-08-10 20:07:04Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -29,9 +29,6 @@ RT_C_DECLS_BEGIN
 /** Pointer to the globals. */
 typedef struct VBOXNETADPGLOBALS *PVBOXNETADPGLOBALS;
 
-/* WARNING! There a copy of VBOXNETADP_MAGIC in VBoxNetFlt/VBoxNetFltInternal.h! */
-/*                                   v b n a */
-#define VBOXNETADP_MAGIC           0x56424e41
 #define VBOXNETADP_MAX_INSTANCES   8
 #define VBOXNETADP_MAX_UNITS       128
 #define VBOXNETADP_NAME            "vboxnet"
@@ -85,8 +82,6 @@ typedef enum VBoxNetAdpState VBOXNETADPSTATE;
 
 struct VBoxNetAdapter
 {
-    /** Magic id to tell vboxnetX interfaces apart. */
-    uint32_t          uMagic;
     /** Denotes availability of this slot in adapter array. */
     VBOXNETADPSTATE   enmState;
     /** Corresponds to the digit at the end of device name. */
