@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 32174 2010-09-01 12:52:17Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 37148 2011-05-19 09:19:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -320,6 +320,7 @@ void UIMachineViewNormal::setGuestAutoresizeEnabled(bool fEnabled)
 
 void UIMachineViewNormal::normalizeGeometry(bool bAdjustPosition)
 {
+#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
     QWidget *pTopLevelWidget = window();
 
     /* Make no normalizeGeometry in case we are in manual resize mode or main window is maximized: */
@@ -364,6 +365,10 @@ void UIMachineViewNormal::normalizeGeometry(bool bAdjustPosition)
 
     /* Finally, set the frame geometry */
     pTopLevelWidget->setGeometry(frameGeo.left() + dl, frameGeo.top() + dt, frameGeo.width() - dl - dr, frameGeo.height() - dt - db);
+
+#else /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
+    Q_UNUSED(bAdjustPosition);
+#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
 
 QRect UIMachineViewNormal::workingArea()
