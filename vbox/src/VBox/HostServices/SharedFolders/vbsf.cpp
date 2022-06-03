@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 39643 2011-12-16 10:54:38Z vboxsync $ */
+/* $Id: vbsf.cpp 39646 2011-12-16 11:14:19Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -2285,10 +2285,6 @@ int vbsfSymlink(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLSTRING *pNewPath, SH
     /* XXX: no support for UCS2 at the moment. */
     if (!BIT_FLAG(pClient->fu32Flags, SHFL_CF_UTF8))
         return VERR_NOT_IMPLEMENTED;
-
-    /* don't allow absolute targets */
-    if (RTPathStartsWithRoot(pszOldPath))
-        return VERR_INVALID_NAME;
 
     bool fSymlinksCreate;
     rc = vbsfMappingsQuerySymlinksCreate(pClient, root, &fSymlinksCreate);
