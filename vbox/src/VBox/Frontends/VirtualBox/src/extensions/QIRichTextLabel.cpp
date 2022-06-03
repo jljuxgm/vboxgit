@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 40145 2012-02-16 11:05:02Z vboxsync $ */
+/* $Id: QIRichTextLabel.cpp 41151 2012-05-03 21:43:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -56,6 +56,18 @@ void QIRichTextLabel::registerImage(const QImage &image, const QString &strName)
 {
     /* Register passed image in internal text-document: */
     m_pTextEdit->document()->addResource(QTextDocument::ImageResource, QUrl(strName), QVariant(image));
+}
+
+/* Word-wrap mode getter: */
+QTextOption::WrapMode QIRichTextLabel::wordWrapMode() const
+{
+    return m_pTextEdit->wordWrapMode();
+}
+
+/* Word-wrap mode setter: */
+void QIRichTextLabel::setWordWrapMode(QTextOption::WrapMode policy)
+{
+    m_pTextEdit->setWordWrapMode(policy);
 }
 
 /* Minimum text-width setter: */
