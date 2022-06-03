@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 38849 2011-09-23 13:31:23Z vboxsync $ */
+/* $Id: DevPIC.cpp 38921 2011-09-30 14:10:04Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -425,8 +425,8 @@ PDMBOTHCBDECL(int) picGetInterrupt(PPDMDEVINS pDevIns)
             }
             else
             {
-                /* spurious IRQ on slave controller (impossible) */
-                AssertMsgFailed(("picGetInterrupt: spurious IRQ on slave controller\n"));
+                /* Interrupt went away or is now masked. */
+                Log(("picGetInterrupt: spurious IRQ on slave controller, converted to IRQ15\n"));
                 irq2 = 7;
             }
             intno = pThis->aPics[1].irq_base + irq2;
@@ -440,8 +440,8 @@ PDMBOTHCBDECL(int) picGetInterrupt(PPDMDEVINS pDevIns)
     }
     else
     {
-        /* spurious IRQ on host controller (impossible) */
-        AssertMsgFailed(("picGetInterrupt: spurious IRQ on master controller\n"));
+        /* Interrupt went away or is now masked. */
+        Log(("picGetInterrupt: spurious IRQ on master controller, converted to IRQ7\n"));
         irq = 7;
         intno = pThis->aPics[0].irq_base + irq;
     }
