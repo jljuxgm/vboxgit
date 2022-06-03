@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 41386 2012-05-22 09:04:47Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 41388 2012-05-22 12:36:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -89,6 +89,8 @@ VMMDECL(int) pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE p
     uint32_t        iPage = (GCPhysFault - pRom->GCPhys) >> PAGE_SHIFT;
     PVMCPU          pVCpu = VMMGetCpu(pVM);
     NOREF(uErrorCode); NOREF(pvFault);
+
+    Assert(!(uErrorCode & X86_TRAP_PF_RW)); /* This shall not be used for write access! */
 
     Assert(iPage < (pRom->cb >> PAGE_SHIFT));
     switch (pRom->aPages[iPage].enmProt)

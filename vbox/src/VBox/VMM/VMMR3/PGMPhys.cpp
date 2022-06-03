@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 41386 2012-05-22 09:04:47Z vboxsync $ */
+/* $Id: PGMPhys.cpp 41388 2012-05-22 12:36:00Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3197,22 +3197,14 @@ static int pgmR3PhysRomRegister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GCPhys, RT
 #ifdef VBOX_WITH_REM
                 REMR3NotifyPhysRomRegister(pVM, GCPhys, cb, NULL, true /* fShadowed */);
 #endif
-                rc = PGMR3HandlerPhysicalRegister(pVM,
-                                                  fFlags & PGMPHYS_ROM_FLAGS_SHADOWED
-                                                  ? PGMPHYSHANDLERTYPE_PHYSICAL_ALL
-                                                  : PGMPHYSHANDLERTYPE_PHYSICAL_WRITE,
-                                                  GCPhys, GCPhysLast,
+                rc = PGMR3HandlerPhysicalRegister(pVM, PGMPHYSHANDLERTYPE_PHYSICAL_WRITE, GCPhys, GCPhysLast,
                                                   pgmR3PhysRomWriteHandler, pRomNew,
                                                   NULL, "pgmPhysRomWriteHandler", MMHyperCCToR0(pVM, pRomNew),
                                                   NULL, "pgmPhysRomWriteHandler", MMHyperCCToRC(pVM, pRomNew), pszDesc);
             }
             else
             {
-                rc = PGMR3HandlerPhysicalRegister(pVM,
-                                                  fFlags & PGMPHYS_ROM_FLAGS_SHADOWED
-                                                  ? PGMPHYSHANDLERTYPE_PHYSICAL_ALL
-                                                  : PGMPHYSHANDLERTYPE_PHYSICAL_WRITE,
-                                                  GCPhys, GCPhysLast,
+                rc = PGMR3HandlerPhysicalRegister(pVM, PGMPHYSHANDLERTYPE_PHYSICAL_WRITE, GCPhys, GCPhysLast,
                                                   pgmR3PhysRomWriteHandler, pRomNew,
                                                   NULL, "pgmPhysRomWriteHandler", MMHyperCCToR0(pVM, pRomNew),
                                                   NULL, "pgmPhysRomWriteHandler", MMHyperCCToRC(pVM, pRomNew), pszDesc);
