@@ -1,4 +1,4 @@
-/* $Id: memtracker.cpp 36605 2011-04-06 23:03:15Z vboxsync $ */
+/* $Id: memtracker.cpp 36674 2011-04-14 16:03:06Z vboxsync $ */
 /** @file
  * IPRT - Memory Tracker & Leak Detector.
  */
@@ -155,8 +155,9 @@ typedef struct RTMEMTRACKERINT
     AVLU32TREE          TagDbRoot;
     /** List of RTMEMTRACKERTAG records. */
     RTLISTNODE          TagList;
-#ifdef RT_ARCH_X86
-    uint32_t            dummy;
+#if ARCH_BITS == 32
+    /** Alignment padding. */
+    uint32_t            u32Alignment;
 #endif
     /** The global user record (fallback). */
     RTMEMTRACKERUSER    FallbackUser;
