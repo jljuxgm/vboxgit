@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 36527 2011-04-04 13:16:09Z vboxsync $ */
+/* $Id: xml.cpp 37493 2011-06-16 13:18:11Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1332,6 +1332,11 @@ struct Document::Data
         {
             delete pRootElement;
             pRootElement = NULL;
+        }
+        if (pComment)
+        {
+            delete pComment;
+            pComment = NULL;
         }
     }
 
