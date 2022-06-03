@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 39307 2011-11-15 13:46:46Z vboxsync $ */
+/* $Id: DevIoApic.cpp 39311 2011-11-15 14:17:09Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -541,7 +541,7 @@ static DECLCALLBACK(int) ioapicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("Configuration error: Failed to query integer value \"NumCPUs\""));
-    if (cCpus > UINT8_MAX - 1)
+    if (cCpus > UINT8_MAX - 2) /* ID 255 is broadcast and the IO-APIC needs one (ID=cCpus). */
         return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
                                    N_("Configuration error: Max %u CPUs, %u specified"), UINT8_MAX - 1, cCpus);
 
