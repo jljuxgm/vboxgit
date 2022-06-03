@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 37200 2011-05-24 15:34:06Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37272 2011-05-31 10:17:18Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -136,7 +136,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "VBoxManage createvm         --name <name>\n"
                      "                            [--ostype <ostype>]\n"
                      "                            [--register]\n"
-                     "                            [--basefolder <path> | --settingsfile <path>]\n"
+                     "                            [--basefolder <path>]\n"
                      "                            [--uuid <uuid>]\n"
                      "\n");
 
