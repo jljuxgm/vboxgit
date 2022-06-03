@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxMFInternal.cpp 41642 2012-06-11 10:30:54Z vboxsync $ */
 
 /** @file
  * VBox Mouse filter internal functions
@@ -149,7 +149,7 @@ static NTSTATUS vboxNewProtRegisterMouseEventCb(BOOLEAN fRegister)
     VBoxGuestMouseSetNotifyCallback CbInfo = {};
     CbInfo.pfnNotify = fRegister ? vboxNewProtMouseEventCb : NULL;
 
-    NTSTATUS Status = vboxGdcSubmit(VBOXGUEST_IOCTL_INTERNAL_SET_MOUSE_NOTIFY_CALLBACK, &CbInfo, sizeof (CbInfo));
+    NTSTATUS Status = vboxGdcSubmit(VBOXGUEST_IOCTL_SET_MOUSE_NOTIFY_CALLBACK, &CbInfo, sizeof (CbInfo));
     if (!NT_SUCCESS(Status))
     {
         WARN(("vboxGdcSubmit failed Status(0x%x)", Status));
