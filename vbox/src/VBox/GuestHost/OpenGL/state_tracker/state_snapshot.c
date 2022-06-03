@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 39849 2012-01-24 15:19:47Z vboxsync $ */
+/* $Id: state_snapshot.c 40691 2012-03-28 15:48:51Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1380,13 +1380,14 @@ int32_t crStateSaveContext(CRContext *pContext, PSSMHANDLE pSSM)
 }
 
 typedef struct _crFindSharedCtxParms {
+    PFNCRSTATE_CONTEXT_GET pfnCtxGet;
     CRContext *pSrcCtx, *pDstCtx;
 } crFindSharedCtxParms_t;
 
 static void crStateFindSharedCB(unsigned long key, void *data1, void *data2)
 {
-    CRContext *pContext = (CRContext *) data1;
     crFindSharedCtxParms_t *pParms = (crFindSharedCtxParms_t *) data2;
+    CRContext *pContext = pParms->pfnCtxGet(data1);
     (void) key;
 
     if (pContext!=pParms->pSrcCtx && pContext->shared->id==pParms->pSrcCtx->shared->id)
@@ -1402,7 +1403,7 @@ AssertCompile(VBOXTLSREFDATA_SIZE() <= CR_MAX_BITARRAY);
 AssertCompile(VBOXTLSREFDATA_STATE_INITIALIZED != 0);
 AssertCompile(RT_OFFSETOF(CRContext, shared) >= VBOXTLSREFDATA_OFFSET(CRContext) + VBOXTLSREFDATA_SIZE() + RT_SIZEOFMEMB(CRContext, bitid) + RT_SIZEOFMEMB(CRContext, neg_bitid));
 
-int32_t crStateLoadContext(CRContext *pContext, CRHashTable * pCtxTable, PSSMHANDLE pSSM)
+int32_t crStateLoadContext(CRContext *pContext, CRHashTable * pCtxTable, PFNCRSTATE_CONTEXT_GET pfnCtxGet, PSSMHANDLE pSSM)
 {
     CRContext* pTmpContext;
     int32_t rc, i, j;
@@ -1487,6 +1488,7 @@ int32_t crStateLoadContext(CRContext *pContext, CRHashTable * pCtxTable, PSSMHAN
         AssertRCReturn(rc, rc);
 
         pTmpContext->shared = NULL;
+        parms.pfnCtxGet = pfnCtxGet;
         parms.pSrcCtx = pContext;
         parms.pDstCtx = pTmpContext;
         crHashtableWalk(pCtxTable, crStateFindSharedCB, &parms);
