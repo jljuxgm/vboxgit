@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
+/* $Id: CPUM.cpp 40075 2012-02-11 02:47:21Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1113,8 +1113,11 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVMCPU pVCpu)
     pCtx->fpu.FTW                   = 0x00;         /* All empty (abbridged tag reg edition). */
     pCtx->fpu.FCW                   = 0x37f;
 
-    /* Intel 64 and IA-32 Architectures Software Developer's Manual Volume 3A, Table 8-1. IA-32 Processor States Following Power-up, Reset, or INIT */
+    /* Intel 64 and IA-32 Architectures Software Developer's Manual Volume 3A, Table 8-1.
+       IA-32 Processor States Following Power-up, Reset, or INIT */
     pCtx->fpu.MXCSR                 = 0x1F80;
+    pCtx->fpu.MXCSR_MASK            = 0xffff; /** @todo REM always changed this for us. Should probably check if the HW really
+                                                        supports all bits, since a zero value here should be read as 0xffbf. */
 
     /* Init PAT MSR */
     pCtx->msrPAT                    = UINT64_C(0x0007040600070406); /** @todo correct? */
