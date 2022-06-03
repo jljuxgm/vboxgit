@@ -1,10 +1,10 @@
-/* $Id: zip.cpp 39049 2011-10-20 09:39:22Z vboxsync $ */
+/* $Id: zip.cpp 39050 2011-10-20 09:40:52Z vboxsync $ */
 /** @file
  * IPRT - Compression.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

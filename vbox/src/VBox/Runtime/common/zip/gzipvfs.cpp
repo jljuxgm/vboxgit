@@ -1,10 +1,10 @@
-/* $Id: gzipvfs.cpp 39049 2011-10-20 09:39:22Z vboxsync $ */
+/* $Id: gzipvfs.cpp 39050 2011-10-20 09:40:52Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
