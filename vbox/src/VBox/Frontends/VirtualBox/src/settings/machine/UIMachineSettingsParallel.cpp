@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 36930 2011-05-03 12:50:20Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 37051 2011-05-12 13:48:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -201,6 +201,9 @@ void UIMachineSettingsParallelPage::loadToCacheFrom(QVariant &data)
 {
     /* Fetch data to machine: */
     UISettingsPageMachine::fetchData(data);
+
+    /* Clear cache initially: */
+    m_cache.clear();
 
     /* For each parallel port: */
     for (int iSlot = 0; iSlot < mTabWidget->count(); ++iSlot)

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 36936 2011-05-03 13:56:14Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 37051 2011-05-12 13:48:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -152,6 +152,9 @@ void UIMachineSettingsUSB::loadToCacheFrom(QVariant &data)
     /* Fetch data to properties & settings or machine: */
     fetchData(data);
 
+    /* Clear cache initially: */
+    m_cache.clear();
+
     /* Depending on page type: */
     switch (pageType())
     {
@@ -256,6 +259,10 @@ void UIMachineSettingsUSB::loadToCacheFrom(QVariant &data)
  * this task SHOULD be performed in GUI thread only: */
 void UIMachineSettingsUSB::getFromCache()
 {
+    /* Clear list initially: */
+    mTwFilters->clear();
+    m_filters.clear();
+
     /* Depending on page type: */
     switch (pageType())
     {

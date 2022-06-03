@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 36919 2011-05-03 06:58:25Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 37051 2011-05-12 13:48:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -168,6 +168,9 @@ void UIMachineSettingsSystem::loadToCacheFrom(QVariant &data)
 {
     /* Fetch data to machine: */
     UISettingsPageMachine::fetchData(data);
+
+    /* Clear cache initially: */
+    m_cache.clear();
 
     /* Prepare system data: */
     UIDataSettingsMachineSystem systemData;

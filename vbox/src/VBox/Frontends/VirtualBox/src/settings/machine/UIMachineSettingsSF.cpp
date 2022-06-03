@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 36932 2011-05-03 13:40:33Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 37051 2011-05-12 13:48:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -222,6 +222,9 @@ void UIMachineSettingsSF::loadToCacheFrom(QVariant &data)
     /* Fetch data to machine: */
     UISettingsPageMachine::fetchData(data);
 
+    /* Clear cache initially: */
+    m_cache.clear();
+
     /* Load machine (permanent) shared folders into shared folders cache if possible: */
     if (isSharedFolderTypeSupported(MachineType))
         loadToCacheFrom(MachineType);
@@ -268,6 +271,9 @@ void UIMachineSettingsSF::loadToCacheFrom(UISharedFolderType sharedFoldersType)
  * this task SHOULD be performed in GUI thread only: */
 void UIMachineSettingsSF::getFromCache()
 {
+    /* Clear list initially: */
+    mTwFolders->clear();
+
     /* Update root items visibility: */
     updateRootItemsVisibility();
 
@@ -683,6 +689,12 @@ void UIMachineSettingsSF::setRootItemVisible(UISharedFolderType sharedFolderType
     pRootItem->setExpanded(fVisible);
     /* And hide/show it if necessary: */
     pRootItem->setHidden(!fVisible);
+}
+
+void UIMachineSettingsSF::polishPage()
+{
+    /* Update root items visibility: */
+    updateRootItemsVisibility();
 }
 
 CSharedFolderVector UIMachineSettingsSF::getSharedFolders(UISharedFolderType sharedFoldersType)
