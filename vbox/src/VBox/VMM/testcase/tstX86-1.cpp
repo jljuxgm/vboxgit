@@ -1,10 +1,10 @@
-/* $Id: tstX86-1.cpp 39993 2012-02-03 19:30:47Z vboxsync $ */
+/* $Id: tstX86-1.cpp 39995 2012-02-04 13:47:46Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
