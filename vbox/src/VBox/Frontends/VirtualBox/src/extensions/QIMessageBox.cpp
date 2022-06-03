@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 38977 2011-10-12 11:44:56Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 41175 2012-05-05 14:29:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -136,6 +136,7 @@ QIMessageBox::QIMessageBox (const QString &aCaption, const QString &aText,
     mDetailsSplitter = new QIArrowSplitter (mDetailsText);
     connect (mDetailsSplitter, SIGNAL (showBackDetails()), this, SLOT (detailsBack()));
     connect (mDetailsSplitter, SIGNAL (showNextDetails()), this, SLOT (detailsNext()));
+    connect (mDetailsSplitter, SIGNAL (sigSizeChanged()), this, SLOT (sltUpdateSize()));
     detailsVBoxLayout->addWidget (mDetailsSplitter);
 
     mFlagCB_Details = new QCheckBox();
@@ -368,10 +369,8 @@ void QIMessageBox::showEvent (QShowEvent *e)
     {
         /* Polishing sub-widgets */
         resize (minimumSizeHint());
-        qApp->processEvents();
         mTextLabel->useSizeHintForWidth (mTextLabel->width());
         mTextLabel->updateGeometry();
-        qApp->processEvents();
         setFixedWidth (width());
         mDetailsSplitter->toggleWidget();
         mWasPolished = true;
@@ -433,6 +432,22 @@ void QIMessageBox::setDetailsShown (bool aShown)
         mFlagCB = mFlagCB_Main;
         mSpacer->changeSize (0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
     }
+}
+
+void QIMessageBox::sltUpdateSize()
+{
+    /* Update/activate all the layouts of the message-box: */
+    QList<QLayout*> layouts = findChildren<QLayout*>();
+    for (int i = 0; i < layouts.size(); ++i)
+    {
+        QLayout *pItem = layouts.at(i);
+        pItem->update();
+        pItem->activate();
+    }
+    QCoreApplication::sendPostedEvents(0, QEvent::LayoutRequest);
+
+    /* Now resize message-box to the minimum possible size: */
+    resize(minimumSizeHint());
 }
 
 void QIMessageBox::detailsBack()
