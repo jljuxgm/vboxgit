@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 40845 2012-04-10 13:07:39Z vboxsync $ */
+/* $Id: HostImpl.cpp 41025 2012-04-23 12:59:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -397,7 +397,7 @@ HRESULT Host::init(VirtualBox *aParent)
                                                     progress.asOutParam(),
                                                     it->c_str());
         if (RT_FAILURE(r))
-            LogRel(("failed to get to create %s, error (0x%x)", it->c_str(), r));
+            LogRel(("failed to create %s, error (0x%x)\n", it->c_str(), r));
     }
 
 #endif /* defined (RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD) */
@@ -685,7 +685,7 @@ STDMETHODIMP Host::COMGETTER(NetworkInterfaces)(ComSafeArrayOut(IHostNetworkInte
         }
         else
         {
-            LogRel(("failed to get the sun_VBoxNetFlt component, error (0x%x)", hr));
+            LogRel(("failed to get the sun_VBoxNetFlt component, error (0x%x)\n", hr));
         }
 
         VBoxNetCfgWinReleaseINetCfg(pNc, FALSE);
