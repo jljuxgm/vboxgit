@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 39040 2011-10-19 14:47:48Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 39041 2011-10-19 14:49:55Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -448,12 +448,6 @@ g_afIntNetOpenNetworkIfFlags[] =
     { INTNET_OPEN_FLAGS_IF_PROMISC_NO_TRUNK,    INTNET_OPEN_FLAGS_IF_PROMISC_SEE_TRUNK,      INTNET_OPEN_FLAGS_IF_FIXED,      INTNET_OPEN_FLAGS_IF_PROMISC_NO_TRUNK     | INTNET_OPEN_FLAGS_IF_PROMISC_SEE_TRUNK     },
 };
 
-
-/*******************************************************************************
-*   Internal Functions                                                         *
-*******************************************************************************/
-static PINTNETTRUNKIF intnetR0TrunkIfRetain(PINTNETTRUNKIF pThis);
-static void intnetR0TrunkIfRelease(PINTNETTRUNKIF pThis);
 
 
 /**
@@ -4923,38 +4917,6 @@ static DECLCALLBACK(void) intnetR0TrunkIfPortSGRelease(PINTNETTRUNKSWPORT pSwitc
     {
         /** @todo later */
     }
-}
-
-
-/**
- * Retain the trunk interface.
- *
- * @returns pThis if retained.
- *
- * @param   pThis       The trunk.
- *
- * @remarks Any locks.
- */
-static PINTNETTRUNKIF intnetR0TrunkIfRetain(PINTNETTRUNKIF pThis)
-{
-    if (pThis && pThis->pIfPort)
-    {
-        pThis->pIfPort->pfnRetain(pThis->pIfPort);
-        return pThis;
-    }
-    return NULL;
-}
-
-
-/**
- * Release the trunk interface.
- *
- * @param   pThis       The trunk.
- */
-static void intnetR0TrunkIfRelease(PINTNETTRUNKIF pThis)
-{
-    if (pThis && pThis->pIfPort)
-        pThis->pIfPort->pfnRelease(pThis->pIfPort);
 }
 
 
