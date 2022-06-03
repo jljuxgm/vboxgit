@@ -1,4 +1,4 @@
-/* $Id: int-1.d 40955 2012-04-16 22:57:44Z vboxsync $ */
+/* $Id: int-1.d 40974 2012-04-18 14:48:31Z vboxsync $ */
 /** @file
  * DTracing VBox - Interrupt Experiment #1.
  */
@@ -41,7 +41,7 @@ vboxvmm*:::pdm-irq-high,vboxvmm*:::pdm-irq-hilo
     g_cUntaggedHighs++;
 }
 
-/* 
+/*
  * Catch the CPU getting the IRQ from the (A)PIC and preparing for injection.
  */
 vboxvmm*:::pdm-irq-get
