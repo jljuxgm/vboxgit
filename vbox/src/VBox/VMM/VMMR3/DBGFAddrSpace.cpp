@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 41493 2012-05-30 13:47:41Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 41497 2012-05-30 13:54:20Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -1010,7 +1010,7 @@ VMMR3DECL(int) DBGFR3AsSymbolByAddr(PVM pVM, RTDBGAS hDbgAs, PCDBGFADDRESS pAddr
      * Do the lookup.
      */
     RTDBGMOD hMod;
-    int rc = RTDbgAsSymbolByAddr(hRealAS, pAddress->FlatPtr, poffDisp, RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL, pSymbol, &hMod);
+    int rc = RTDbgAsSymbolByAddr(hRealAS, pAddress->FlatPtr, RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL, poffDisp, pSymbol, &hMod);
     if (RT_SUCCESS(rc))
     {
         dbgfR3AsSymbolJoinNames(pSymbol, hMod);
