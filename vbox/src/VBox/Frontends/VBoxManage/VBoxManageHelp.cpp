@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 41842 2012-06-20 11:46:31Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 41915 2012-06-26 09:18:41Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -338,6 +338,9 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #ifdef VBOX_WITH_USB_CARDREADER
                      "                            [--usbcardreader on|off]\n"
 #endif
+                     "                            [--autostart-enabled on|off]\n"
+                     "                            [--autostart-delay <seconds>]\n"
+                     "                            [--autostop-type disabled|savestate|poweroff|acpishutdown]\n"
                      "\n");
     }
 
