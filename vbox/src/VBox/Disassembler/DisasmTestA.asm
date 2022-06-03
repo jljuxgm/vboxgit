@@ -1,4 +1,4 @@
-; $Id: DisasmTestA.asm 37955 2011-07-14 12:23:02Z vboxsync $
+; $Id: DisasmTestA.asm 41714 2012-06-14 16:12:57Z vboxsync $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -29,7 +29,7 @@ BITS 32
 BEGINCODE
 
 align 16
-BEGINPROC   TestProc
+BEGINPROC   TestProc32
     xor eax, eax
     mov al, 4
     lea edx, [4]
@@ -81,7 +81,7 @@ BEGINPROC   TestProc
 
       pause
 
-ENDPROC   TestProc
+ENDPROC   TestProc32
 
 %ifndef RT_OS_OS2
 BITS 64
