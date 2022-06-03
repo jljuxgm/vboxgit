@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: QITreeWidget.cpp 37610 2011-06-23 12:26:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,6 +29,12 @@ QITreeWidget::QITreeWidget (QWidget *aParent)
 {
 }
 
+void QITreeWidget::setSizeHintForItems(const QSize &sizeHint)
+{
+    for (int i = 0; i < topLevelItemCount(); ++i)
+        topLevelItem(i)->setSizeHint(0, sizeHint);
+}
+
 void QITreeWidget::paintEvent (QPaintEvent *aEvent)
 {
     /* Opens Items Painter */
@@ -57,15 +63,5 @@ void QITreeWidget::resizeEvent (QResizeEvent *aEvent)
 
     /* Notify connected objects about resize */
     emit resized (aEvent->size(), aEvent->oldSize());
-}
-
-void QITreeWidget::addTopBottomMarginToItems (int aMargin)
-{
-    for (int i = 0; i < topLevelItemCount(); ++ i)
-    {
-        QTreeWidgetItem *item = topLevelItem (i);
-        QSize s = item->sizeHint (0);
-        item->setSizeHint (0, QSize (s.width(), s.height() + 2 * aMargin));
-    }
 }
 
