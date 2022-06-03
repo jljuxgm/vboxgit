@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 37097 2011-05-16 10:28:37Z vboxsync $ */
+/* $Id: VBoxManage.cpp 37098 2011-05-16 10:29:28Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -48,7 +48,7 @@
 /*******************************************************************************
 *   Global Variables                                                           *
 *******************************************************************************/
-/*extern*/ bool         g_fDetailedProgress = true;
+/*extern*/ bool         g_fDetailedProgress = false;
 
 #ifndef VBOX_ONLY_DOCS
 /** Set by the signal handler. */
