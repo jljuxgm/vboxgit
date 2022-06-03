@@ -1,4 +1,4 @@
-/* $Id: process-r0drv-solaris.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: process-r0drv-solaris.c 40966 2012-04-17 16:43:28Z vboxsync $ */
 /** @file
  * IPRT - Process Management, Ring-0 Driver, Solaris.
  */
@@ -42,6 +42,8 @@ RTDECL(RTPROCESS) RTProcSelf(void)
 
 RTR0DECL(RTR0PROCESS) RTR0ProcHandleSelf(void)
 {
-    return (RTR0PROCESS)vbi_proc();
+    proc_t *pProcess = NULL;
+    drv_getparm(UPROCP, &pProcess);
+    return (RTR0PROCESS)pProcess;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: semeventwait-r0drv-solaris.h 36392 2011-03-24 11:20:37Z vboxsync $ */
+/* $Id: semeventwait-r0drv-solaris.h 40966 2012-04-17 16:43:28Z vboxsync $ */
 /** @file
  * IPRT - Solaris Ring-0 Driver Helpers for Event Semaphore Waits.
  */
@@ -228,7 +228,7 @@ static void rtR0SemSolWaitTimeout(void *pvUser)
 {
     PRTR0SEMSOLWAIT pWait   = (PRTR0SEMSOLWAIT)pvUser;
     kthread_t      *pThread = pWait->pThread;
-    kmutex_t       *pMtx    = (kmutex_t *)ASMAtomicReadPtr(&pWait->pvMtx);
+    kmutex_t       *pMtx    = (kmutex_t *)ASMAtomicReadPtr((void * volatile *)&pWait->pvMtx);
     if (VALID_PTR(pMtx))
     {
         /* Enter the mutex here to make sure the thread has gone to sleep
@@ -486,4 +486,5 @@ DECLINLINE(uint32_t) rtR0SemSolWaitGetResolution(void)
          : cyclic_getres();
 }
 
-#endif
+#endif /* ___r0drv_solaris_semeventwait_r0drv_solaris_h */
+

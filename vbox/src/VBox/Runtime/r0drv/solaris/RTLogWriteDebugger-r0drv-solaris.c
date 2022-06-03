@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-solaris.c 29281 2010-05-09 23:40:43Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-solaris.c 40966 2012-04-17 16:43:28Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Solaris.
  */
@@ -44,7 +44,7 @@ RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 {
     if (pch[cb] != '\0')
         AssertBreakpoint();
-    if (    !g_frtSolarisSplSetsEIF
+    if (    !g_frtSolSplSetsEIF
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
         ||  ASMIntAreEnabled()
 #else

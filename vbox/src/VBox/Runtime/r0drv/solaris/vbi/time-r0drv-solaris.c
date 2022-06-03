@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-solaris.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: time-r0drv-solaris.c 40966 2012-04-17 16:43:28Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Solaris.
  */
@@ -60,6 +60,11 @@ RTDECL(uint64_t) RTTimeSystemMilliTS(void)
 
 RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
 {
-    return RTTimeSpecSetNano(pTime, vbi_tod());
+    timestruc_t TimeSpec;
+
+    mutex_enter(&tod_lock);
+    TimeSpec = tod_get();
+    mutex_exit(&tod_lock);
+    return RTTimeSpecSetNano(pTime, (uint64_t)TimeSpec.tv_sec * 1000000000 + TimeSpec.tv_nsec);
 }
 
