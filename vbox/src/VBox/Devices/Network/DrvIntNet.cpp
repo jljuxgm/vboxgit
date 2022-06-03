@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 36075 2011-02-24 16:36:48Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 36080 2011-02-24 18:17:37Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1444,6 +1444,7 @@ static DECLCALLBACK(int) drvR3IntNetConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg
             OpenReq.fFlags |= INTNET_OPEN_FLAGS_ACCESS_RESTRICTED;
         else
             OpenReq.fFlags |= INTNET_OPEN_FLAGS_ACCESS_PUBLIC;
+        OpenReq.fFlags |= INTNET_OPEN_FLAGS_ACCESS_FIXED;
     }
     else if (rc != VERR_CFGM_VALUE_NOT_FOUND)
         return PDMDRV_SET_ERROR(pDrvIns, rc,
