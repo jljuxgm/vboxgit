@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 36322 2011-03-21 10:53:25Z vboxsync $ */
+/* $Id: UsbKbd.cpp 36421 2011-03-25 03:17:58Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -1225,7 +1225,7 @@ static int usbHidHandleDefaultPipe(PUSBHID pThis, PUSBHIDEP pEp, PVUSBURB pUrb)
 
 
 /**
- * @copydoc PDMUSBREG::pfnQueue
+ * @copydoc PDMUSBREG::pfnUrbQueue
  */
 static DECLCALLBACK(int) usbHidQueue(PPDMUSBINS pUsbIns, PVUSBURB pUrb)
 {
@@ -1474,7 +1474,7 @@ const PDMUSBREG g_UsbHidKbd =
     usbHidUsbClearHaltedEndpoint,
     /* pfnUrbNew */
     NULL/*usbHidUrbNew*/,
-    /* pfnQueue */
+    /* pfnUrbQueue */
     usbHidQueue,
     /* pfnUrbCancel */
     usbHidUrbCancel,
