@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 40226 2012-02-23 11:05:45Z vboxsync $ */
+/* $Id: GMMR0.cpp 40228 2012-02-23 12:14:06Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3287,7 +3287,7 @@ DECLINLINE(void) gmmR0FreeSharedPage(PGMM pGMM, PGVM pGVM, uint32_t idPage, PGMM
     Assert(pGMM->cSharedPages > 0);
     Assert(pGMM->cAllocatedPages > 0);
     Assert(!pPage->Shared.cRefs);
-#ifdef VBOX_STRICT
+#if defined(VBOX_STRICT) && HC_ARCH_BITS == 64
     if (pPage->Shared.u14Checksum)
     {
         uint32_t uChecksum = gmmR0StrictPageChecksum(pGMM, pGVM, idPage);
