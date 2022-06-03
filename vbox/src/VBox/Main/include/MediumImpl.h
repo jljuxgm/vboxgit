@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 38469 2011-08-16 10:34:32Z vboxsync $ */
+/* $Id: MediumImpl.h 38499 2011-08-19 12:02:55Z vboxsync $ */
 
 /** @file
  *
@@ -176,10 +176,9 @@ public:
     MediumType_T getType() const;
     Utf8Str getName();
 
+    /* handles caller/locking itself */
     bool addRegistry(const Guid& id, bool fRecurse);
-private:
-    void addRegistryImpl(const Guid& id, bool fRecurse);
-public:
+    /* handles caller/locking itself */
     bool removeRegistry(const Guid& id, bool fRecurse);
     bool isInRegistry(const Guid& id);
     bool getFirstRegistryMachineId(Guid &uuid) const;
