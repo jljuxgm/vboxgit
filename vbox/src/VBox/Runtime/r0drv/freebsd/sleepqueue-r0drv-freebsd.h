@@ -1,4 +1,4 @@
-/* $Id: sleepqueue-r0drv-freebsd.h 33527 2010-10-27 17:09:25Z vboxsync $ */
+/* $Id: sleepqueue-r0drv-freebsd.h 37305 2011-06-02 12:32:20Z vboxsync $ */
 /** @file
  * IPRT - FreeBSD Ring-0 Driver Helpers for Abstracting Sleep Queues,
  */
@@ -313,7 +313,9 @@ DECLINLINE(void) rtR0SemBsdBroadcast(void *pvWaitChan)
 {
     sleepq_lock(pvWaitChan);
     sleepq_broadcast(pvWaitChan, SLEEPQ_CONDVAR, 0, 0);
+#if __FreeBSD_version >= 800000 /* Broadcast releases the sleep queue lock on FreeBSD 7.x */
     sleepq_release(pvWaitChan);
+#endif
 }
 
 /**
