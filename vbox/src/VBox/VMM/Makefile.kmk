@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41260 2012-05-11 23:29:22Z vboxsync $
+# $Id: Makefile.kmk 41271 2012-05-14 08:47:06Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -588,6 +588,7 @@ if !defined(VBOX_ONLY_EXTPACKS) \
 	$(VBOX_VBOXCPP) -d \
 		-D VBOX_FOR_DTRACE_LIB \
 		-D VBOX_FOR_DTRACE_LIB_$(toupper $(KBUILD_TARGET_ARCH)) \
+		-D IN_RING0 \
 		-D RT_C_DECLS_BEGIN= \
 		-D RT_C_DECLS_END= \
 		-D 'RCPTRTYPE(a_Type)=RTRCPTR' \
