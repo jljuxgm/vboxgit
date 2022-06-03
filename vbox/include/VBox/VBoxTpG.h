@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 40839 2012-04-09 14:18:19Z vboxsync $ */
+/* $Id: VBoxTpG.h 40851 2012-04-10 14:13:26Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -35,7 +35,11 @@ typedef struct VTGPROBELOC
     uint32_t    idProbe;
     const char *pszFunction;
     uint8_t    *pbProbe;
+#if ARCH_BITS == 64
+    uintptr_t   uAlignment;
+#endif
 } VTGPROBELOC;
+AssertCompileSizeAlignment(VTGPROBELOC, 16);
 /** Pointer to a probe location. */
 typedef VTGPROBELOC *PVTGPROBELOC;
 
@@ -223,7 +227,7 @@ typedef struct VTGOBJHDR
 typedef VTGOBJHDR          *PVTGOBJHDR;
 
 /** The current VTGOBJHDR::szMagic value. */
-#define VTGOBJHDR_MAGIC     "VTG Object Header v1.1\0"
+#define VTGOBJHDR_MAGIC     "VTG Object Header v1.2\0"
 
 /** The name of the VTG data object header symbol in the object file. */
 extern VTGOBJHDR            g_VTGObjHeader;
