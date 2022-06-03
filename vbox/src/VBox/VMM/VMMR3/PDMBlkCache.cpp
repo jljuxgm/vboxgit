@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 38877 2011-09-27 09:04:46Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 38880 2011-09-27 09:23:03Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -2444,7 +2444,7 @@ VMMR3DECL(int) PDMR3BlkCacheDiscard(PPDMBLKCACHE pBlkCache, PCRTRANGE paRanges,
 
         while (cbLeft)
         {
-            size_t cbThisDiscard;
+            size_t cbThisDiscard = 0;
 
             pEntry = pdmBlkCacheGetCacheEntryByOffset(pBlkCache, offCur);
 
