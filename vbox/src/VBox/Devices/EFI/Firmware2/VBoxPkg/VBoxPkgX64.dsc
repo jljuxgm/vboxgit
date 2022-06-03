@@ -1,4 +1,4 @@
-# $Id: VBoxPkgX64.dsc 38951 2011-10-06 05:26:43Z vboxsync $
+# $Id: VBoxPkgX64.dsc 39145 2011-10-31 02:51:46Z vboxsync $
 
 #
 # Copyright (C) 2009-2010 Oracle Corporation
@@ -90,7 +90,7 @@
   NvVarsFileLib|OvmfPkg/Library/NvVarsFileLib/NvVarsFileLib.inf
   FileHandleLib|ShellPkg/Library/BaseFileHandleLib/BaseFileHandleLib.inf
   UefiCpuLib|UefiCpuPkg/Library/BaseUefiCpuLib/BaseUefiCpuLib.inf
-  #SecurityManagementLib|MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf
+  SecurityManagementLib|MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf
 
 [LibraryClasses.common.SEC]
   #DebugLib|MdePkg/Library/BaseDebugLibSerialPort/BaseDebugLibSerialPort.inf
