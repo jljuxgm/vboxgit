@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 40971 2012-04-17 17:57:29Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 41776 2012-06-16 18:36:56Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -334,7 +334,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
         pSingleTimer->hFireTime.cyt_when = u64First + RTTimeNanoTS();
         if (pTimer->interval == 0)
         {
-            /* @todo use gethrtime_max instead of LLONG_MAX? */
+            /** @todo use gethrtime_max instead of LLONG_MAX? */
             AssertCompileSize(pSingleTimer->hFireTime.cyt_interval, sizeof(long long));
             pSingleTimer->hFireTime.cyt_interval = LLONG_MAX - pSingleTimer->hFireTime.cyt_when;
         }
