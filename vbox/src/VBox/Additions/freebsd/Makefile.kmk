@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38082 2011-07-20 14:26:24Z vboxsync $
+# $Id: Makefile.kmk 38152 2011-07-25 12:19:13Z vboxsync $
 ## @file
 # Sub-Makefile for the FreeBSD guest additions base directory.
 #
@@ -173,8 +173,8 @@ include	$(KBUILD_PATH)/subfooter.kmk
 #        we've got everything included.
 #
 $(PATH_STAGE_BIN)/additions/VBoxFreeBSDAdditions.tbz: \
-		$(INSTARGET_fbsd_add_inst-nobin) \
-		$(INSTARGET_fbsd_add_inst-bin) \
+		$$(fbsd_add_inst-nobin_2_STAGE_TARGET) \
+		$$(fbsd_add_inst-bin_2_STAGE_TARGET) \
 		$(VBOX_FBSD_ADD_INS_FILES) \
 		$(VBOX_FBSD_ADD_INS_MODULES) \
 		$(VBOX_FBSD_ADD_INS_OUT_DIR)/install.sh \
