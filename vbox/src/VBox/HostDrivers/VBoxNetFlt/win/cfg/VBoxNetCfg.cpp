@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 37289 2011-06-01 11:59:23Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 37301 2011-06-01 19:57:39Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -362,7 +362,7 @@ static HRESULT vboxNetCfgWinEnumNetCfgComponents(IN INetCfg *pNetCfg,
         do
         {
             hr = pEnumComponent->Next(1, &pNetCfgComponent, NULL);
-            if (SUCCEEDED(hr))
+            if (hr == S_OK)
             {
 //                ULONG uComponentStatus;
 //                hr = pNcc->GetDeviceStatus(&uComponentStatus);
