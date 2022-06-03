@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless-win.cpp 38607 2011-09-02 11:03:22Z vboxsync $ */
+/* $Id: VBoxHeadless-win.cpp 38615 2011-09-02 12:34:49Z vboxsync $ */
 /** @file
  * VBoxHeadless-win - The VirtualBox Headless frontend for running VMs on servers.
  *                    windows exe stub.
@@ -26,6 +26,8 @@ int main(int argc, char **argv, char **envp)
 {
     return ExecTrustedMain(argc, argv, envp);
 }
+
+#ifdef VBOX_HEADLESS_SVC
 
 static LRESULT CALLBACK WindowProc(HWND hwnd,
     UINT uMsg,
@@ -120,3 +122,5 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     return main(__argc, __argv, environ);
 }
+
+#endif /* #ifdef VBOX_HEADLESS_SVC */

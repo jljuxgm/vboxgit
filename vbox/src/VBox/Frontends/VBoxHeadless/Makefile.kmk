@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38608 2011-09-02 11:07:17Z vboxsync $
+# $Id: Makefile.kmk 38615 2011-09-02 12:34:49Z vboxsync $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -63,6 +63,7 @@ VBoxHeadlessC_LIBS += $(PATH_STAGE_LIB)/VBoxHeadless$(VBOX_SUFF_LIB)
 VBoxHeadlessSVC_EXTENDS = VBoxHeadlessC
 VBoxHeadlessSVC_NAME = VBoxHeadlessSVC
 VBoxHeadlessSVC_LDFLAGS.win = /SUBSYSTEM:windows
+VBoxHeadlessSVC_DEFS = VBOX_HEADLESS_SVC
 
 #
 # VBoxHeadless
