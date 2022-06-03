@@ -1,4 +1,4 @@
-# $Id: Config.kmk 39247 2011-11-09 11:29:36Z vboxsync $
+# $Id: Config.kmk 39252 2011-11-09 14:00:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2887,6 +2887,7 @@ endif
 
 ifeq ($(KBUILD_TARGET),linux)
 TEMPLATE_VBOXR0DRV_TOOL                = $(VBOX_GCC_TOOL)
+TEMPLATE_VBOXR0DRV_INSTTYPE.linux      = none
 TEMPLATE_VBOXR0DRV_DEFS                = __KERNEL__ MODULE IN_RING0 IN_RT_R0
 TEMPLATE_VBOXR0DRV_INCS                = $(VBOX_LINUX_INCS)
 TEMPLATE_VBOXR0DRV_CFLAGS              = -nostdinc -iwithprefix include $(VBOX_LINUX_INCLUDE) \
@@ -4866,7 +4867,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39247 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39252 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

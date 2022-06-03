@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39160 2011-11-01 14:35:23Z vboxsync $
+# $Id: Makefile.kmk 39252 2011-11-09 14:00:21Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -69,9 +69,11 @@ VBoxDisp_LIBS = \
 # Signing requires both miniport and display drivers
 # so it'd be dealt with in the parent makefile.
 ifdef VBOX_SIGN_ADDITIONS
- VBoxDisp_NOINST     = true
+ VBoxDisp_INSTTYPE           = none
+ VBoxDisp_DEBUG_INSTTYPE     = both
  ifdef VBOX_WITH_WDDM
-  VBoxDispD3D_NOINST = true
+  VBoxDispD3D_INSTTYPE       = none
+  VBoxDispD3D_DEBUG_INSTTYPE = both
  endif
 endif
 

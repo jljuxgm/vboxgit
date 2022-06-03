@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36899 2011-04-29 15:52:47Z vboxsync $
+# $Id: Makefile.kmk 39252 2011-11-09 14:00:21Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -21,7 +21,8 @@ include	$(KBUILD_PATH)/subheader.kmk
 PROGRAMS += VBoxTray
 VBoxTray_TEMPLATE = VBOXGUESTR3EXE
 ifdef VBOX_SIGN_ADDITIONS # (See the parent makefile.)
- VBoxTray_NOINST  = true
+ VBoxTray_INSTTYPE = none
+ VBoxTray_DEBUG_INSTTYPE = both
 endif
 VBoxTray_DEFS     = VBOX_WITH_HGCM LOG_TO_BACKDOOR
 VBoxTray_INCS     = ../include

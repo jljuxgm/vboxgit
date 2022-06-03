@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39246 2011-11-09 10:25:42Z vboxsync $
+# $Id: Makefile.kmk 39252 2011-11-09 14:00:21Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -182,7 +182,7 @@ endif
 #
 
 tstRTAssertCompile_TEMPLATE = VBOXR3TSTEXE
-tstRTAssertCompile_NOINST = true
+tstRTAssertCompile_INSTTYPE = none
 tstRTAssertCompile_SOURCES = tstRTAssertCompile.cpp
 
 tstRTAvl_TEMPLATE = VBOXR3TSTEXE
