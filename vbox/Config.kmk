@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38277 2011-08-02 12:08:11Z vboxsync $
+# $Id: Config.kmk 38279 2011-08-02 13:09:04Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -148,10 +148,10 @@ if  $(KBUILD_VERSION_MAJOR) == 0 \
  && (   $(KBUILD_VERSION_MINOR) >= 2 \
      || (   $(KBUILD_VERSION_MINOR) == 1 \
          && $(KBUILD_VERSION_PATCH) >= 999))
- if $(KMK_REVISION) >= 2528
+ if $(KMK_REVISION) >= 2533
   # OK.
  else
-  $(error You must update kBuild! Requires kBuild revision 2528 or later, found $(KMK_REVISION) ($(KBUILD_VERSION)))
+  $(error You must update kBuild! Requires kBuild revision 2533 or later, found $(KMK_REVISION) ($(KBUILD_VERSION)))
  endif
 else
  $(error You must update kBuild! Requires 0.1.999 or later, found $(KBUILD_VERSION))
@@ -4822,7 +4822,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38277 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38279 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
