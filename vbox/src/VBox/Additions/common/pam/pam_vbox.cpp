@@ -1,4 +1,4 @@
-/* $Id: pam_vbox.cpp 38471 2011-08-16 11:50:02Z vboxsync $ */
+/* $Id: pam_vbox.cpp 38472 2011-08-16 12:05:05Z vboxsync $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
@@ -38,6 +38,7 @@
 
 #include <pwd.h>
 #include <syslog.h>
+#include <stdlib.h>
 
 #include <iprt/assert.h>
 #include <iprt/env.h>
