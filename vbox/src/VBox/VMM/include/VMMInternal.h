@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 38839 2011-09-23 11:30:22Z vboxsync $ */
+/* $Id: VMMInternal.h 38954 2011-10-06 11:28:41Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -601,6 +601,11 @@ VMMR0DECL(void) vmmR0LoggerFlush(PRTLOGGER pLogger);
  * @param   pvUser      User argument (ignored).
  */
 VMMR0DECL(size_t) vmmR0LoggerPrefix(PRTLOGGER pLogger, char *pchBuf, size_t cchBuf, void *pvUser);
+
+# ifdef VBOX_WITH_TRIPLE_FAULT_HACK
+int  vmmR0TripleFaultHackInit(void);
+void vmmR0TripleFaultHackTerm(void);
+# endif
 
 #endif /* IN_RING0 */
 #ifdef IN_RC
