@@ -1,4 +1,4 @@
-/* $Id: init.cpp 39751 2012-01-11 16:07:37Z vboxsync $ */
+/* $Id: init.cpp 39752 2012-01-11 16:12:23Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -330,7 +330,7 @@ static int rtR3InitBody(uint32_t fFlags, int cArgs, char ***papszArgs, const cha
      * Disable error popups.
      */
 #ifdef RT_OS_WINDOWS
-    SetErrorMode(GetErrorMode() | SEM_FAILCRITICALERRORS);
+    SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOOPENFILEERRORBOX);
 #elif defined(RT_OS_OS2)
 # error "FIXME"
 #endif
