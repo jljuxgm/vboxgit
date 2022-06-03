@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceClipboard-os2.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/** $Id: VBoxServiceClipboard-os2.cpp 40128 2012-02-14 12:56:40Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Clipboard Service, OS/2.
  */
@@ -133,6 +133,11 @@ static DECLCALLBACK(int) VBoxServiceClipboardOS2PreInit(void)
 /** @copydoc VBOXSERVICE::pfnOption */
 static DECLCALLBACK(int) VBoxServiceClipboardOS2Option(const char **ppszShort, int argc, char **argv, int *pi)
 {
+    NOREF(ppszShort);
+    NOREF(argc);
+    NOREF(argv);
+    NOREF(pi);
+
     return -1;
 }
 

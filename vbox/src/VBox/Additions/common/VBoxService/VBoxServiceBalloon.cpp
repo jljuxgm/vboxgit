@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 32813 2010-09-29 11:50:19Z vboxsync $ */
+/* $Id: VBoxServiceBalloon.cpp 40128 2012-02-14 12:56:40Z vboxsync $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -240,7 +240,8 @@ static DECLCALLBACK(int) VBoxServiceBalloonOption(const char **ppszShort, int ar
     NOREF(argc);
     NOREF(argv);
     NOREF(pi);
-    return VINF_SUCCESS;
+
+    return -1;
 }
 
 

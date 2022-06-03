@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 38898 2011-09-28 15:17:01Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 40128 2012-02-14 12:56:40Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -82,7 +82,8 @@ static DECLCALLBACK(int) VBoxServiceAutoMountOption(const char **ppszShort, int 
     NOREF(argc);
     NOREF(argv);
     NOREF(pi);
-    return VINF_SUCCESS;
+
+    return -1;
 }
 
 

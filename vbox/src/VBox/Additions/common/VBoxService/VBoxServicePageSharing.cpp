@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 40054 2012-02-09 15:37:11Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 40128 2012-02-14 12:56:40Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -538,7 +538,8 @@ static DECLCALLBACK(int) VBoxServicePageSharingOption(const char **ppszShort, in
     NOREF(argc);
     NOREF(argv);
     NOREF(pi);
-    return VINF_SUCCESS;
+
+    return -1;
 }
 
 
