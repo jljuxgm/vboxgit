@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 39679 2011-12-27 21:14:19Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1096,6 +1096,9 @@ static int pdmacFileEpRead(PPDMASYNCCOMPLETIONTASK pTask,
     LogFlowFunc(("pTask=%#p pEndpoint=%#p off=%RTfoff paSegments=%#p cSegments=%zu cbRead=%zu\n",
                  pTask, pEndpoint, off, paSegments, cSegments, cbRead));
 
+    if (RT_UNLIKELY(off + cbRead > pEpFile->cbFile))
+        return VERR_EOF;
+
     STAM_PROFILE_ADV_START(&pEpFile->StatRead, Read);
     pdmacFileEpTaskInit(pTask, cbRead);
     int rc = pdmacFileEpTaskInitiate(pTask, pEndpoint, off, paSegments, cSegments, cbRead,
@@ -1162,10 +1165,14 @@ static int pdmacFileEpGetSize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, uint64_t *p
 
 static int pdmacFileEpSetSize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, uint64_t cbSize)
 {
+    int rc;
     PPDMASYNCCOMPLETIONENDPOINTFILE pEpFile = (PPDMASYNCCOMPLETIONENDPOINTFILE)pEndpoint;
 
-    ASMAtomicWriteU64(&pEpFile->cbFile, cbSize);
-    return RTFileSetSize(pEpFile->hFile, cbSize);
+    rc = RTFileSetSize(pEpFile->hFile, cbSize);
+    if (RT_SUCCESS(rc))
+        ASMAtomicWriteU64(&pEpFile->cbFile, cbSize);
+
+    return rc;
 }
 
 const PDMASYNCCOMPLETIONEPCLASSOPS g_PDMAsyncCompletionEndpointClassFile =
