@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 40240 2012-02-23 20:51:34Z vboxsync $ */
+/* $Id: vbox-img.cpp 40821 2012-04-07 21:15:33Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -441,6 +441,8 @@ static int convInRead(void *pvUser, void *pStorage, uint64_t uOffset,
 
         pFS->offBuffer = 0;
         pFS->cbBuffer = cbSumRead;
+        if (!cbSumRead && !pcbRead) /* Caller can't handle partial reads. */
+            return VERR_EOF;
     }
 
     /* Read several blocks and assemble the result if necessary */
@@ -483,6 +485,8 @@ static int convInRead(void *pvUser, void *pStorage, uint64_t uOffset,
         pvBuffer = (uint8_t *)pvBuffer + cbThisRead;
         cbBuffer -= cbThisRead;
         cbTotalRead += cbThisRead;
+        if (!cbTotalRead && !pcbRead) /* Caller can't handle partial reads. */
+            return VERR_EOF;
     } while (cbBuffer > 0);
 
     if (pcbRead)
