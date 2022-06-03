@@ -1,4 +1,4 @@
-# $Id: VBoxPkg.dsc 39171 2011-11-02 08:38:16Z vboxsync $
+# $Id: VBoxPkg.dsc 39183 2011-11-03 09:13:14Z vboxsync $
 ## @file
 # VBoxPkg.dsc - VirtualBox Flash Device.
 #
@@ -110,8 +110,6 @@
   DebugLib|VBoxPkg/Library/VBoxDebugLib/VBoxDebugLib.inf
   # r9628
   ReportStatusCodeLib|MdeModulePkg/Library/PeiReportStatusCodeLib/PeiReportStatusCodeLib.inf
-  # r9668
-  ExtractGuidedSectionLib|OvmfPkg/Library/SecExtractGuidedSectionLib/SecExtractGuidedSectionLib.inf
 
 [LibraryClasses.common.PEI_CORE]
   BaseMemoryLib|MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf

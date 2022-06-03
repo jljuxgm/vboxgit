@@ -1,4 +1,4 @@
-# $Id: VBoxPkgX64.dsc 39171 2011-11-02 08:38:16Z vboxsync $
+# $Id: VBoxPkgX64.dsc 39183 2011-11-03 09:13:14Z vboxsync $
 
 #
 # Copyright (C) 2009-2010 Oracle Corporation
@@ -98,8 +98,6 @@
   DebugLib|VBoxPkg/Library/VBoxDebugLib/VBoxDebugLib.inf
   # r9628
   ReportStatusCodeLib|MdeModulePkg/Library/PeiReportStatusCodeLib/PeiReportStatusCodeLib.inf
-  # r9668
-  ExtractGuidedSectionLib|OvmfPkg/Library/SecExtractGuidedSectionLib/SecExtractGuidedSectionLib.inf
 
 [LibraryClasses.common.PEI_CORE]
   BaseMemoryLib|MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf
