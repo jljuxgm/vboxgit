@@ -1,6 +1,6 @@
-/* $Id: kAvlGetWithParent.h 34 2009-11-08 19:38:40Z bird $ */
+/* $Id: kRbGetWithParent.h 35 2009-11-08 19:39:03Z bird $ */
 /** @file
- * kAvlTmpl - Templated AVL Trees, Get Node With Parent.
+ * kRbTmpl - Templated Red-Black Trees, Get Node With Parent.
  */
 
 /*
@@ -33,31 +33,31 @@
  * The tree remains unchanged.
  *
  * @returns Pointer to the node holding the given key.
- * @param   pRoot       Pointer to the AVL-tree root structure.
+ * @param   pRoot       Pointer to the Red-Back tree's root structure.
  * @param   ppParent    Pointer to a variable which will hold the pointer to the partent node on
  *                      return. When no node is found, this will hold the last searched node.
  * @param   Key         Key value of the node which is to be found.
  */
-KAVL_DECL(KAVLNODE *) KAVL_FN(GetWithParent)(KAVLROOT *pRoot, KAVLNODE **ppParent, KAVLKEY Key)
+KRB_DECL(KRBNODE *) KRB_FN(GetWithParent)(KRBROOT *pRoot, KRBNODE **ppParent, KRBKEY Key)
 {
-    register KAVLNODE *pNode;
-    register KAVLNODE *pParent;
+    register KRBNODE *pNode;
+    register KRBNODE *pParent;
 
-    KAVL_READ_LOCK(pRoot);
+    KRB_READ_LOCK(pRoot);
 
     pParent = NULL;
-    pNode = KAVL_GET_POINTER_NULL(&pRoot->mpRoot);
+    pNode = KRB_GET_POINTER_NULL(&pRoot->mpRoot);
     while (     pNode != NULL
-           &&   KAVL_NE(pNode->mKey, Key))
+           &&   KRB_CMP_NE(pNode->mKey, Key))
     {
         pParent = pNode;
-        if (KAVL_G(pNode->mKey, Key))
-            pNode = KAVL_GET_POINTER_NULL(&pNode->mpLeft);
+        if (KRB_CMP_G(pNode->mKey, Key))
+            pNode = KRB_GET_POINTER_NULL(&pNode->mpLeft);
         else
-            pNode = KAVL_GET_POINTER_NULL(&pNode->mpRight);
+            pNode = KRB_GET_POINTER_NULL(&pNode->mpRight);
     }
 
-    KAVL_READ_UNLOCK(pRoot);
+    KRB_READ_UNLOCK(pRoot);
 
     *ppParent = pParent;
     return pNode;

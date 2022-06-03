@@ -1,6 +1,6 @@
-/* $Id: kAvlRemove2.h 34 2009-11-08 19:38:40Z bird $ */
+/* $Id: kRbRemove2.h 35 2009-11-08 19:39:03Z bird $ */
 /** @file
- * kAvlTmpl - Templated AVL Trees, Remove A Specific Node.
+ * kRbTmpl - Templated Red-Black Trees, Remove A Specific Node.
  */
 
 /*
@@ -32,42 +32,42 @@
  * Removes the specified node from the tree.
  *
  * @returns Pointer to the removed node (NULL if not in the tree)
- * @param   pRoot       Pointer to the AVL-tree root structure.
+ * @param   pRoot       Pointer to the Red-Back tree's root structure.
  * @param   Key         The Key of which is to be found a best fitting match for..
  *
  * @remark  This implementation isn't the most efficient, but this short and
  *          easier to manage.
  */
-KAVL_DECL(KAVLNODE *) KAVL_FN(Remove2)(KAVLROOT *pRoot, KAVLNODE *pNode)
+KRB_DECL(KRBNODE *) KRB_FN(Remove2)(KRBROOT *pRoot, KRBNODE *pNode)
 {
-#ifdef KAVL_EQUAL_ALLOWED
+#ifdef KRB_EQUAL_ALLOWED
     /*
      * Find the right node by key and see if it's what we want.
      */
-    KAVLNODE *pParent;
-    KAVLNODE *pCurNode = KAVL_FN(GetWithParent)(pRoot, pNode->mKey, &pParent);
+    KRBNODE *pParent;
+    KRBNODE *pCurNode = KRB_FN(GetWithParent)(pRoot, pNode->mKey, &pParent);
     if (!pCurNode)
         return NULL;
-    KAVL_WRITE_LOCK(pRoot); /** @todo the locking here isn't 100% sane. The only way to archive that is by no calling worker functions. */
+    KRB_WRITE_LOCK(pRoot); /** @todo the locking here isn't 100% sane. The only way to archive that is by no calling worker functions. */
     if (pCurNode != pNode)
     {
         /*
          * It's not the one we want, but it could be in the duplicate list.
          */
-        while (pCurNode->mpList != KAVL_NULL)
+        while (pCurNode->mpList != KRB_NULL)
         {
-            KAVLNODE *pNext = KAVL_GET_POINTER(&pCurNode->mpList);
+            KRBNODE *pNext = KRB_GET_POINTER(&pCurNode->mpList);
             if (pNext == pNode)
             {
-                KAVL_SET_POINTER_NULL(&pCurNode->mpList, KAVL_GET_POINTER_NULL(&pNode->mpList));
-                pNode->mpList = KAVL_NULL;
-                KAVL_LOOKTHRU_INVALIDATE_NODE(pRoot, pNode, pNode->mKey);
-                KAVL_WRITE_UNLOCK(pRoot);
+                KRB_SET_POINTER_NULL(&pCurNode->mpList, KRB_GET_POINTER_NULL(&pNode->mpList));
+                pNode->mpList = KRB_NULL;
+                KRB_CACHE_INVALIDATE_NODE(pRoot, pNode, pNode->mKey);
+                KRB_WRITE_UNLOCK(pRoot);
                 return pNode;
             }
             pCurNode = pNext;
         }
-        KAVL_WRITE_UNLOCK(pRoot);
+        KRB_WRITE_UNLOCK(pRoot);
         return NULL;
     }
 
@@ -78,39 +78,39 @@ KAVL_DECL(KAVLNODE *) KAVL_FN(Remove2)(KAVLROOT *pRoot, KAVLNODE *pNode)
      * if there are duplicates we'll have to unlink it and
      * insert the first duplicate in our place.
      */
-    if (pNode->mpList == KAVL_NULL)
+    if (pNode->mpList == KRB_NULL)
     {
-        KAVL_WRITE_UNLOCK(pRoot);
-        KAVL_FN(Remove)(pRoot, pNode->mKey);
+        KRB_WRITE_UNLOCK(pRoot);
+        KRB_FN(Remove)(pRoot, pNode->mKey);
     }
     else
     {
-        KAVLNODE *pNewUs = KAVL_GET_POINTER(&pNode->mpList);
+        KRBNODE *pNewUs = KRB_GET_POINTER(&pNode->mpList);
 
         pNewUs->mHeight = pNode->mHeight;
 
-        if (pNode->mpLeft != KAVL_NULL)
-            KAVL_SET_POINTER(&pNewUs->mpLeft, KAVL_GET_POINTER(&pNode->mpLeft))
+        if (pNode->mpLeft != KRB_NULL)
+            KRB_SET_POINTER(&pNewUs->mpLeft, KRB_GET_POINTER(&pNode->mpLeft))
         else
-            pNewUs->mpLeft = KAVL_NULL;
+            pNewUs->mpLeft = KRB_NULL;
 
-        if (pNode->mpRight != KAVL_NULL)
-            KAVL_SET_POINTER(&pNewUs->mpRight, KAVL_GET_POINTER(&pNode->mpRight))
+        if (pNode->mpRight != KRB_NULL)
+            KRB_SET_POINTER(&pNewUs->mpRight, KRB_GET_POINTER(&pNode->mpRight))
         else
-            pNewUs->mpRight = KAVL_NULL;
+            pNewUs->mpRight = KRB_NULL;
 
         if (pParent)
         {
-            if (KAVL_GET_POINTER_NULL(&pParent->mpLeft) == pNode)
-                KAVL_SET_POINTER(&pParent->mpLeft, pNewUs);
+            if (KRB_GET_POINTER_NULL(&pParent->mpLeft) == pNode)
+                KRB_SET_POINTER(&pParent->mpLeft, pNewUs);
             else
-                KAVL_SET_POINTER(&pParent->mpRight, pNewUs);
+                KRB_SET_POINTER(&pParent->mpRight, pNewUs);
         }
         else
-            KAVL_SET_POINTER(&pRoot->mpRoot, pNewUs);
+            KRB_SET_POINTER(&pRoot->mpRoot, pNewUs);
 
-        KAVL_LOOKTHRU_INVALIDATE_NODE(pRoot, pNode, pNode->mKey);
-        KAVL_WRITE_UNLOCK(pRoot);
+        KRB_CACHE_INVALIDATE_NODE(pRoot, pNode, pNode->mKey);
+        KRB_WRITE_UNLOCK(pRoot);
     }
 
     return pNode;
@@ -122,11 +122,11 @@ KAVL_DECL(KAVLNODE *) KAVL_FN(Remove2)(KAVLROOT *pRoot, KAVLNODE *pNode)
      * This ASSUMS that the caller is NOT going to hand us a lot
      * of wrong nodes but just uses this API for his convenience.
      */
-    KAVLNODE *pRemovedNode = KAVL_FN(Remove)(pRoot, pNode->mKey);
+    KRBNODE *pRemovedNode = KRB_FN(Remove)(pRoot, pNode->mKey);
     if (pRemovedNode == pNode)
         return pRemovedNode;
 
-    KAVL_FN(Insert)(pRoot, pRemovedNode);
+    KRB_FN(Insert)(pRoot, pRemovedNode);
     return NULL;
 #endif
 }

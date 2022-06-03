@@ -1,4 +1,4 @@
-/* $Id: kLdrModMachO.c 29 2009-07-01 20:30:29Z bird $ */
+/* $Id: kLdrModMachO.c 42 2011-08-25 14:25:05Z bird $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -329,7 +329,10 @@ static int kldrModMachODoCreate(PKRDR pRdr, KLDRFOFF offImage, PKLDRMODMACHO *pp
         default:
             return KLDR_ERR_MACHO_UNSUPPORTED_MACHINE;
     }
-    if (s.Hdr32.filetype != MH_OBJECT)
+    if (   s.Hdr32.filetype != MH_OBJECT
+        && s.Hdr32.filetype != MH_EXECUTE
+        && s.Hdr32.filetype != MH_DYLIB
+        && s.Hdr32.filetype != MH_DSYM)
         return KLDR_ERR_MACHO_UNSUPPORTED_FILE_TYPE;
 
     /*
@@ -431,9 +434,10 @@ static int kldrModMachODoCreate(PKRDR pRdr, KLDRFOFF offImage, PKLDRMODMACHO *pp
     pMod->enmFmt = KLDRFMT_MACHO;
     switch (s.Hdr32.filetype)
     {
-        case MH_OBJECT:
-            pMod->enmType = KLDRTYPE_OBJECT;
-            break;
+        case MH_OBJECT:     pMod->enmType = KLDRTYPE_OBJECT; break;
+        case MH_EXECUTE:    pMod->enmType = KLDRTYPE_EXECUTABLE_FIXED; break;
+        case MH_DYLIB:      pMod->enmType = KLDRTYPE_SHARED_LIBRARY_RELOCATABLE; break;
+        case MH_DSYM:       pMod->enmType = KLDRTYPE_DEBUG_INFO; break;
         default:
             return KLDR_ERR_MACHO_UNSUPPORTED_FILE_TYPE;
     }
@@ -676,6 +680,9 @@ static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_hea
                     switch (pHdr->filetype)
                     {
                         case MH_OBJECT:
+                        case MH_EXECUTE:
+                        case MH_DYLIB:
+                        case MH_DSYM:
                         {
                             cSections++;
 
@@ -851,6 +858,9 @@ static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_hea
                     switch (pHdr->filetype)
                     {
                         case MH_OBJECT:
+                        case MH_EXECUTE:
+                        case MH_DYLIB:
+                        case MH_DSYM:
                         {
                             cSections++;
 
@@ -999,6 +1009,9 @@ static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_hea
     switch (pHdr->filetype)
     {
         case MH_OBJECT:
+        case MH_EXECUTE:
+        case MH_DYLIB:
+        case MH_DSYM:
             if (!cSegments)
                 return KLDR_ERR_MACHO_BAD_OBJECT_FILE;
             break;
@@ -1072,6 +1085,9 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                     switch (pModMachO->Hdr.filetype)
                     {
                         case MH_OBJECT:
+                        case MH_EXECUTE:
+                        case MH_DYLIB:
+                        case MH_DSYM:
                         {
                             /* Section data extract. */
                             pSectExtra->cb = pSect->size;
@@ -1203,6 +1219,9 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                     switch (pModMachO->Hdr.filetype)
                     {
                         case MH_OBJECT:
+                        case MH_EXECUTE:
+                        case MH_DYLIB:
+                        case MH_DSYM:
                         {
                             /* Section data extract. */
                             pSectExtra->cb = pSect->size;
@@ -1320,6 +1339,9 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                 switch (pModMachO->Hdr.filetype)
                 {
                     case MH_OBJECT:
+                    case MH_EXECUTE:
+                    case MH_DYLIB: /** @todo ??? */
+                    case MH_DSYM:
                         pModMachO->offSymbols = u.pSymTab->symoff + pModMachO->offImage;
                         pModMachO->cSymbols = u.pSymTab->nsyms;
                         pModMachO->offStrings = u.pSymTab->stroff + pModMachO->offImage;
@@ -1395,6 +1417,9 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
     switch (pModMachO->Hdr.filetype)
     {
         case MH_OBJECT:
+        case MH_EXECUTE:
+        case MH_DYLIB: /** @todo dylib */
+        case MH_DSYM:
         {
             KLDRADDR cb1;
             KSIZE cb2;
@@ -1504,7 +1529,10 @@ static int kldrModMachOQuerySymbol(PKLDRMOD pMod, const void *pvBits, KLDRADDR B
     /*
      * Take action according to file type.
      */
-    if (pModMachO->Hdr.filetype == MH_OBJECT)
+    if (   pModMachO->Hdr.filetype == MH_OBJECT
+        || pModMachO->Hdr.filetype == MH_EXECUTE /** @todo dylib, execute, dsym: symbols */
+        || pModMachO->Hdr.filetype == MH_DYLIB
+        || pModMachO->Hdr.filetype == MH_DSYM)
     {
         rc = kldrModMachOLoadObjSymTab(pModMachO);
         if (!rc)
@@ -1796,7 +1824,10 @@ static int kldrModMachOEnumSymbols(PKLDRMOD pMod, const void *pvBits, KLDRADDR B
     /*
      * Take action according to file type.
      */
-    if (pModMachO->Hdr.filetype == MH_OBJECT)
+    if (   pModMachO->Hdr.filetype == MH_OBJECT
+        || pModMachO->Hdr.filetype == MH_EXECUTE /** @todo dylib, execute, dsym: symbols */
+        || pModMachO->Hdr.filetype == MH_DYLIB
+        || pModMachO->Hdr.filetype == MH_DSYM)
     {
         rc = kldrModMachOLoadObjSymTab(pModMachO);
         if (!rc)
@@ -2109,75 +2140,31 @@ static int kldrModMachOQueryMainEntrypoint(PKLDRMOD pMod, const void *pvBits, KL
 /** @copydoc kLdrModEnumDbgInfo */
 static int kldrModMachOEnumDbgInfo(PKLDRMOD pMod, const void *pvBits, PFNKLDRENUMDBG pfnCallback, void *pvUser)
 {
-#if 0
-    PKLDRMODMACHO                      pModMachO = (PKLDRMODMACHO)pMod->pvData;
-    const IMAGE_DEBUG_DIRECTORY    *pDbgDir;
-    KU32                            iDbgInfo;
-    KU32                            cb;
-    int                             rc;
+    PKLDRMODMACHO pModMachO = (PKLDRMODMACHO)pMod->pvData;
+    int rc = 0;
+    KU32 iSect;
 
-    /*
-     * Check that there is a debug directory first.
-     */
-    cb = pModMachO->Hdrs.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].Size;
-    if (    cb < sizeof(IMAGE_DEBUG_DIRECTORY) /* screw borland linkers */
-        ||  !pModMachO->Hdrs.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].VirtualAddress)
-        return 0;
-
-    /*
-     * Make sure we've got mapped bits.
-     */
-    rc = kldrModMachOBitsAndBaseAddress(pModMachO, &pvBits, NULL);
-    if (rc)
-        return rc;
-
-    /*
-     * Enumerate the debug directory.
-     */
-    pDbgDir = KLDRMODMACHO_RVA2TYPE(pvBits,
-                                 pModMachO->Hdrs.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].VirtualAddress,
-                                 const IMAGE_DEBUG_DIRECTORY *);
-    for (iDbgInfo = 0;; iDbgInfo++, pDbgDir++, cb -= sizeof(IMAGE_DEBUG_DIRECTORY))
+    for (iSect = 0; iSect < pModMachO->cSections; iSect++)
     {
-        KLDRDBGINFOTYPE     enmDbgInfoType;
+        section_32_t *pMachOSect = pModMachO->paSections[iSect].pvMachoSection; /* (32-bit & 64-bit starts the same way) */
+        char          szTmp[sizeof(pMachOSect->sectname) + 1];
 
-        /* convert the type. */
-        switch (pDbgDir->Type)
-        {
-            case IMAGE_DEBUG_TYPE_UNKNOWN:
-            case IMAGE_DEBUG_TYPE_FPO:
-            case IMAGE_DEBUG_TYPE_COFF: /*stabs dialect??*/
-            case IMAGE_DEBUG_TYPE_MISC:
-            case IMAGE_DEBUG_TYPE_EXCEPTION:
-            case IMAGE_DEBUG_TYPE_FIXUP:
-            case IMAGE_DEBUG_TYPE_BORLAND:
-            default:
-                enmDbgInfoType = KLDRDBGINFOTYPE_UNKNOWN;
-                break;
-            case IMAGE_DEBUG_TYPE_CODEVIEW:
-                enmDbgInfoType = KLDRDBGINFOTYPE_CODEVIEW;
-                break;
-        }
+        if (kHlpStrComp(pMachOSect->segname, "__DWARF"))
+            continue;
 
-        rc = pfnCallback(pMod, iDbgInfo,
-                         enmDbgInfoType, pDbgDir->MajorVersion, pDbgDir->MinorVersion,
-                         pDbgDir->PointerToRawData ? pDbgDir->PointerToRawData : -1,
-                         pDbgDir->AddressOfRawData ? pDbgDir->AddressOfRawData : NIL_KLDRADDR,
-                         pDbgDir->SizeOfData,
-                         NULL,
-                         pvUser);
-        if (rc)
-            break;
+        kHlpMemCopy(szTmp, pMachOSect->sectname, sizeof(pMachOSect->sectname));
+        szTmp[sizeof(pMachOSect->sectname)] = '\0';
 
-        /* next */
-        if (cb <= sizeof(IMAGE_DEBUG_DIRECTORY))
+        rc = pfnCallback(pMod, iSect, KLDRDBGINFOTYPE_DWARF, 0, 0, szTmp,
+                         pModMachO->paSections[iSect].offFile,
+                         pModMachO->paSections[iSect].LinkAddress,
+                         pModMachO->paSections[iSect].cb,
+                         NULL, pvUser);
+        if (rc != 0)
             break;
     }
 
     return rc;
-#else
-    return 0;
-#endif
 }
 
 
@@ -3391,7 +3378,7 @@ static int kldrModMachOMakeGOT(PKLDRMODMACHO pModMachO, void *pvBits, KLDRADDR N
 
         if (pModMachO->JmpStubsRVA != NIL_KLDRADDR)
         {
-            KU32  iSym = pModMachO->cSymbols;
+            iSym = pModMachO->cSymbols;
             switch (pModMachO->Hdr.cputype)
             {
                 /*
