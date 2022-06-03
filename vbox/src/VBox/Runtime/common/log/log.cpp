@@ -1,4 +1,4 @@
-/* $Id: log.cpp 37591 2011-06-22 15:58:22Z vboxsync $ */
+/* $Id: log.cpp 37593 2011-06-22 16:08:27Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -133,10 +133,6 @@ typedef struct RTLOGGERINTERNAL
         RTFILE              hFile;
         RTHCUINTPTR         uPaddingForNewRTFILE;
     } u;
-# if ARCH_BITS == 32
-    /** Alignment padding.  */
-    uint32_t                u32Padding;
-# endif
     /** Log file history settings: maximum amount of data to put in a file. */
     uint64_t                cbHistoryFileMax;
     /** Log file history settings: current amount of data in a file. */
