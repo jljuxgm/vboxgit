@@ -1,4 +1,4 @@
-/* $Id: Helper.cpp 40214 2012-02-22 14:36:09Z vboxsync $ */
+/* $Id: Helper.cpp 40947 2012-04-16 18:04:08Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Helper Functions.
  */
@@ -130,7 +130,9 @@ bool VBoxGINAHandleCurrentSession(void)
     else /* No remote session. */
         fHandle = true;
 
+#ifdef DEBUG
     VBoxGINAVerbose(3, "VBoxGINA::handleCurrentSession: Handling current session=%RTbool\n", fHandle);
+#endif
     return fHandle;
 }
 
