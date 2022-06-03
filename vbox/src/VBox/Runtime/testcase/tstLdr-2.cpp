@@ -1,4 +1,4 @@
-/* $Id: tstLdr-2.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstLdr-2.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -45,7 +45,7 @@ bool MyDisBlock(PDISCPUSTATE pCpu, RTHCUINTPTR pvCodeBlock, int32_t cbMax, RTUIN
     {
         char        szOutput[256];
         uint32_t    cbInstr;
-        if (RT_FAILURE(DISInstr(pCpu, pvCodeBlock + i, off, &cbInstr, szOutput)))
+        if (RT_FAILURE(DISInstrWithOff(pCpu, pvCodeBlock + i, off, &cbInstr, szOutput)))
             return false;
 
         RTPrintf("%s", szOutput);

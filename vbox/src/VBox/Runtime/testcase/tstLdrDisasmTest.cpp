@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -79,16 +79,20 @@ static const uint8_t g_ab32BitCode[] =
 };
 
 
-DECLCALLBACK(int) DisasmTest1ReadCode(RTUINTPTR SrcAddr, uint8_t *pbDst, uint32_t cb, void *pvUser)
+/**
+ * @callback_method_impl{FNDISREADBYTES}
+ */
+static DECLCALLBACK(int) DisasmTest1ReadCode(PDISCPUSTATE pDisState, uint8_t *pbDst, RTUINTPTR uSrcAddr, uint32_t cbToRead)
 {
-    NOREF(pvUser);
-    while (cb > 0)
+    NOREF(pDisState);
+    while (cbToRead > 0)
     {
-        *pbDst = g_ab32BitCode[SrcAddr];
+        *pbDst = g_ab32BitCode[uSrcAddr];
+
         /* next */
         pbDst++;
-        SrcAddr++;
-        cb--;
+        uSrcAddr++;
+        cbToRead--;
     }
     return 0;
 }

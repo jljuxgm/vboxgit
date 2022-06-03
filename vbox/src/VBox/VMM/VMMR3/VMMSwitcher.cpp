@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -836,7 +836,8 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR
                 /* disas */
                 uint32_t cbInstr = 0;
                 char szDisas[256];
-                if (RT_SUCCESS(DISInstr(&Cpu, (uintptr_t)pu8CodeR3 + offCode, uBase - (uintptr_t)pu8CodeR3, &cbInstr, szDisas)))
+                if (RT_SUCCESS(DISInstrWithOff(&Cpu, (uintptr_t)pu8CodeR3 + offCode, uBase - (uintptr_t)pu8CodeR3,
+                                               &cbInstr, szDisas)))
                     RTLogPrintf("  %04x: %s", offCode, szDisas); //for whatever reason szDisas includes '\n'.
                 else
                 {
