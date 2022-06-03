@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic2.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic2.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -37,7 +37,7 @@ void UIWizardExportAppPage2::chooseDefaultStorageType()
 #if 0
     /* Load storage-type from GUI extra data: */
     bool ok;
-    StorageType storageType = StorageType(vboxGlobal().virtualBox().GetExtraData(VBoxDefs::GUI_Export_StorageType).toInt(&ok));
+    StorageType storageType = StorageType(vboxGlobal().virtualBox().GetExtraData(GUI_Export_StorageType).toInt(&ok));
     if (ok)
         setStorageType(storageType);
 #else

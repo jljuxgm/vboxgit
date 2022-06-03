@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -123,10 +123,10 @@ bool UIWizardExportApp::exportAppliance()
 #if 0
         /* Save attributes to GUI extra data: */
         StorageType storageType = field("storageType").value<StorageType>();
-        vboxGlobal().virtualBox().SetExtraData(VBoxDefs::GUI_Export_StorageType, QString::number(storageType));
-        vboxGlobal().virtualBox().SetExtraData(VBoxDefs::GUI_Export_Username, m_pLeUsername->text());
-        vboxGlobal().virtualBox().SetExtraData(VBoxDefs::GUI_Export_Hostname, m_pLeHostname->text());
-        vboxGlobal().virtualBox().SetExtraData(VBoxDefs::GUI_Export_Bucket, m_pLeBucket->text());
+        vboxGlobal().virtualBox().SetExtraData(GUI_Export_StorageType, QString::number(storageType));
+        vboxGlobal().virtualBox().SetExtraData(GUI_Export_Username, m_pLeUsername->text());
+        vboxGlobal().virtualBox().SetExtraData(GUI_Export_Hostname, m_pLeHostname->text());
+        vboxGlobal().virtualBox().SetExtraData(GUI_Export_Bucket, m_pLeBucket->text());
 #endif
         return true;
     }

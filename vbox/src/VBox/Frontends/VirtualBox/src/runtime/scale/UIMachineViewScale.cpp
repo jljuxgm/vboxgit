@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -160,7 +160,7 @@ bool UIMachineViewScale::event(QEvent *pEvent)
 {
     switch (pEvent->type())
     {
-        case VBoxDefs::ResizeEventType:
+        case ResizeEventType:
         {
             /* Some situations require framebuffer resize events to be ignored at all,
              * leaving machine-window, machine-view and framebuffer sizes preserved: */
@@ -191,7 +191,7 @@ bool UIMachineViewScale::event(QEvent *pEvent)
             return true;
         }
 
-        case VBoxDefs::RepaintEventType:
+        case RepaintEventType:
         {
             UIRepaintEvent *pPaintEvent = static_cast<UIRepaintEvent*>(pEvent);
             QSize scaledSize = frameBuffer()->scaledSize();

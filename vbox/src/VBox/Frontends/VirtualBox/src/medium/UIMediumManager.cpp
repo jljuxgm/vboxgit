@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 41650 2012-06-11 13:12:44Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -64,7 +64,7 @@ class AddVDMUrlsEvent: public QEvent
 public:
 
     AddVDMUrlsEvent (const QList <QUrl> &aUrls)
-        : QEvent (static_cast <QEvent::Type> (VBoxDefs::AddVDMUrlsEventType))
+        : QEvent (static_cast <QEvent::Type> (AddVDMUrlsEventType))
         , mUrls (aUrls)
     {}
 
@@ -747,7 +747,7 @@ bool UIMediumManager::eventFilter (QObject *aObject, QEvent *aEvent)
             return true;
             break;
         }
-        case VBoxDefs::AddVDMUrlsEventType:
+        case AddVDMUrlsEventType:
         {
             if (aObject == currentTreeWidget())
             {

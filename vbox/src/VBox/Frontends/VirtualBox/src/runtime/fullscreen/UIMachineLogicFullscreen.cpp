@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -208,7 +208,7 @@ void UIMachineLogicFullscreen::setPresentationModeEnabled(bool fEnabled)
     if (   fEnabled
         && m_pScreenLayout->isHostTaskbarCovert())
     {
-        QString testStr = vboxGlobal().virtualBox().GetExtraData(VBoxDefs::GUI_PresentationModeEnabled).toLower();
+        QString testStr = vboxGlobal().virtualBox().GetExtraData(GUI_PresentationModeEnabled).toLower();
         /* Default to false if it is an empty value */
         if (testStr.isEmpty() || testStr == "false")
             SetSystemUIMode(kUIModeAllHidden, 0);

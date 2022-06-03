@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 41610 2012-06-07 12:12:48Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -58,7 +58,7 @@ void UIWizardExportAppPage1::populateVMSelectorItems(const QStringList &selected
         {
             QString settingsFile = machine.GetSettingsFilePath();
             QFileInfo fi(settingsFile);
-            strName = VBoxGlobal::hasAllowedExtension(fi.completeSuffix(), VBoxDefs::VBoxFileExts) ? fi.completeBaseName() : fi.fileName();
+            strName = VBoxGlobal::hasAllowedExtension(fi.completeSuffix(), VBoxFileExts) ? fi.completeBaseName() : fi.fileName();
             pixIcon = QPixmap(":/os_other.png").scaled(16, 16, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
         }
         QListWidgetItem *pItem = new VMListWidgetItem(pixIcon, strName, strUuid, fInSaveState, m_pVMSelector);

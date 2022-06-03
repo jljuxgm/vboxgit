@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 41175 2012-05-05 14:29:39Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,16 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* VBox includes */
-#include "VBoxDefs.h"
-#include "VBoxGlobal.h"
-#include "QIArrowSplitter.h"
-#include "QIMessageBox.h"
-#include "QILabel.h"
-#include "QIDialogButtonBox.h"
-#include "UIIconPool.h"
-
-/* Qt includes */
+/* Qt includes: */
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
@@ -36,6 +27,13 @@
 #include <QKeyEvent>
 #include <QClipboard>
 
+/* GUI includes: */
+#include "VBoxGlobal.h"
+#include "QIArrowSplitter.h"
+#include "QIMessageBox.h"
+#include "QILabel.h"
+#include "QIDialogButtonBox.h"
+#include "UIIconPool.h"
 #ifdef Q_WS_MAC
 # include "UIMachineWindowFullscreen.h"
 # include "UIMachineWindowSeamless.h"

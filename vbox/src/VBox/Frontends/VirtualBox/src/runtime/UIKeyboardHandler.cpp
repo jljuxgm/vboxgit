@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 41591 2012-06-06 07:04:53Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -708,7 +708,7 @@ void UIKeyboardHandler::loadSettings()
     /* Extra data settings: */
     {
         /* CAD settings: */
-        QString passCAD = session().GetConsole().GetMachine().GetExtraData(VBoxDefs::GUI_PassCAD);
+        QString passCAD = session().GetConsole().GetMachine().GetExtraData(GUI_PassCAD);
         if (!passCAD.isEmpty() && passCAD != "false" && passCAD != "no")
             m_fPassCAD = true;
     }

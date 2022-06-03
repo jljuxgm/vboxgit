@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 41608 2012-06-07 02:02:19Z vboxsync $ */
+/* $Id: UIVMItem.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -263,7 +263,7 @@ bool UIVMItem::recache()
         /* this should be in sync with
          * UIMessageCenter::confirm_machineDeletion() */
         QFileInfo fi(m_strSettingsFile);
-        QString name = VBoxGlobal::hasAllowedExtension(fi.completeSuffix(), VBoxDefs::VBoxFileExts) ?
+        QString name = VBoxGlobal::hasAllowedExtension(fi.completeSuffix(), VBoxFileExts) ?
                        fi.completeBaseName() : fi.fileName();
         needsResort = name != m_strName;
         m_strName = name;

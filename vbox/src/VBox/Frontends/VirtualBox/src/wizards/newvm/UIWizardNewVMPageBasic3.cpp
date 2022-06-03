@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -26,7 +26,6 @@
 /* Local includes: */
 #include "UIWizardNewVMPageBasic3.h"
 #include "UIWizardNewVM.h"
-#include "VBoxDefs.h"
 #include "UIMessageCenter.h"
 #include "UIIconPool.h"
 #include "VBoxMediaComboBox.h"

@@ -1,4 +1,4 @@
-/* $Id: main.cpp 41355 2012-05-19 22:16:49Z vboxsync $ */
+/* $Id: main.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -503,7 +503,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
                 {
                     /* Allow to prevent this message */
                     QString str = vboxGlobal().virtualBox().
-                        GetExtraData (VBoxDefs::GUI_PreventBetaWarning);
+                        GetExtraData(GUI_PreventBetaWarning);
                     if (str != vboxVersion)
                         msgCenter().showBETAWarning();
                 }

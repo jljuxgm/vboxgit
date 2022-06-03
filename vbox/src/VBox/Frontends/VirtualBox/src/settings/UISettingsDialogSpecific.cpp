@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -844,7 +844,7 @@ void UISettingsDialogMachine::saveData()
         /* Clear the "GUI_FirstRun" extra data key in case if
          * the boot order or disk configuration were changed: */
         if (m_fResetFirstRunFlag)
-            m_machine.SetExtraData(VBoxDefs::GUI_FirstRun, QString::null);
+            m_machine.SetExtraData(GUI_FirstRun, QString::null);
 
         /* Save settings finally: */
         m_machine.SaveSettings();

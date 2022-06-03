@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -76,7 +76,7 @@ void UIWizardImportAppPageBasic1::initializePage()
 bool UIWizardImportAppPageBasic1::isComplete() const
 {
     /* Make sure appliance file has allowed extension and exists: */
-    return VBoxGlobal::hasAllowedExtension(m_pFileSelector->path().toLower(), VBoxDefs::OVFFileExts) &&
+    return VBoxGlobal::hasAllowedExtension(m_pFileSelector->path().toLower(), OVFFileExts) &&
            QFileInfo(m_pFileSelector->path()).exists();
 }
 

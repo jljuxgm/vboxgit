@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -23,7 +23,6 @@
 #include "UIWizardNewVMPageBasic2.h"
 #include "UIWizardNewVMPageBasic3.h"
 #include "UIWizardNewVMPageExpert.h"
-#include "VBoxDefs.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 
@@ -32,9 +31,6 @@
 #include "CUSBController.h"
 #include "CExtPackManager.h"
 #include "CStorageController.h"
-
-/* Using declarations: */
-using namespace VBoxGlobalDefs;
 
 UIWizardNewVM::UIWizardNewVM(QWidget *pParent)
     : UIWizard(pParent, UIWizardType_NewVM)
@@ -75,7 +71,7 @@ bool UIWizardNewVM::createVM()
         /* The FirstRun wizard is to be shown only when we don't attach any virtual hard drive or attach a new (empty) one.
          * Selecting an existing virtual hard drive will cancel the FirstRun wizard. */
         if (field("virtualDiskId").toString().isNull() || !field("virtualDisk").value<CMedium>().isNull())
-            m_machine.SetExtraData(VBoxDefs::GUI_FirstRun, "yes");
+            m_machine.SetExtraData(GUI_FirstRun, "yes");
     }
 
     /* RAM size: */
@@ -103,7 +99,7 @@ bool UIWizardNewVM::createVM()
          * necessary evil to patch over legacy compatability issues
          * introduced by the new distribution model. */
         CExtPackManager manager = vboxGlobal().virtualBox().GetExtensionPackManager();
-        if (manager.IsExtPackUsable(UI_ExtPackName))
+        if (manager.IsExtPackUsable(GUI_ExtPackName))
             usbController.SetEnabledEhci(true);
     }
 

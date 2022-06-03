@@ -1,4 +1,4 @@
-/* $Id: QIListView.cpp 34064 2010-11-15 11:12:37Z vboxsync $ */
+/* $Id: QIListView.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,18 +17,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include "QIListView.h"
-#include "VBoxDefs.h"
-
 #if MAC_LEOPARD_STYLE
-/* Qt includes */
+/* Qt includes: */
 # include <QPainter>
 # include <QApplication>
 # include <qmacstyle_mac.h>
 #endif /* MAC_LEOPARD_STYLE */
 
-
-/* QIListView class */
+/* GUI includes: */
+#include "QIListView.h"
 
 QIListView::QIListView (QWidget *aParent /* = 0 */)
     :QListView (aParent)

@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 35862 2011-02-07 08:57:38Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,7 +19,6 @@
 
 /* Local includes */
 #include "UIHotKeyEditor.h"
-#include "VBoxDefs.h"
 #include "VBoxGlobal.h"
 
 /* Global includes */
