@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 40503 2012-03-16 16:24:43Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 40736 2012-04-02 04:04:25Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -563,8 +563,10 @@ int handleModifyHardDisk(HandlerArg *a)
                 RTMsgError("Compact hard disk operation is not implemented!");
             else if (rc == VBOX_E_NOT_SUPPORTED)
                 RTMsgError("Compact hard disk operation for this format is not implemented yet!");
-            else
+            else if (!progress.isNull())
                 CHECK_PROGRESS_ERROR(progress, ("Failed to compact hard disk"));
+            else
+                RTMsgError("Failed to compact hard disk!");
         }
     }
 
