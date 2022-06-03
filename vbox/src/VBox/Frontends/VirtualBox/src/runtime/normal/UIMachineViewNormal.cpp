@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 39066 2011-10-20 22:09:47Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 39077 2011-10-21 13:40:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -223,6 +223,10 @@ void UIMachineViewNormal::maybeResendResizeHint()
         if (!strHintSent.isEmpty())
         {
             QSize hint = guestSizeHint();
+            /* Temporarily restrict the size to prevent a brief resize to the
+             * framebuffer dimensions (see @a UIMachineView::sizeHint()) before
+             * the following resize() is acted upon. */
+            setMaximumSize(hint);
             resize(hint);
             sltPerformGuestResize(hint);
         }
