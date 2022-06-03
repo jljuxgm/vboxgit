@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: thread-win.cpp 37154 2011-05-19 12:54:32Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -280,10 +280,10 @@ static int rtThreadGetCurrentProcessorNumber(void)
 #endif
 
 
-RTR3DECL(int) RTThreadSetAffinity(uint64_t u64Mask)
+RTR3DECL(int) RTThreadSetAffinity(PCRTCPUSET pCpuSet)
 {
-    Assert((DWORD_PTR)u64Mask == u64Mask || u64Mask == ~(uint64_t)0);
-    DWORD_PTR dwRet = SetThreadAffinityMask(GetCurrentThread(), (DWORD_PTR)u64Mask);
+    DWORD_PTR fNewMask = pCpuSet ? RTCpuSetToU64(pCpuSet) : ~(DWORD_PTR)0;
+    DWORD_PTR dwRet = SetThreadAffinityMask(GetCurrentThread(), fNewMask);
     if (dwRet)
         return VINF_SUCCESS;
 
@@ -293,7 +293,7 @@ RTR3DECL(int) RTThreadSetAffinity(uint64_t u64Mask)
 }
 
 
-RTR3DECL(uint64_t) RTThreadGetAffinity(void)
+RTR3DECL(int) RTThreadGetAffinity(PRTCPUSET pCpuSet)
 {
     /*
      * Haven't found no query api, but the set api returns the old mask, so let's use that.
@@ -308,7 +308,9 @@ RTR3DECL(uint64_t) RTThreadGetAffinity(void)
         {
             DWORD_PTR dwSet = SetThreadAffinityMask(hThread, dwRet);
             Assert(dwSet == dwProcAff); NOREF(dwRet);
-            return dwRet;
+
+            RTCpuSetFromU64(pCpuSet, (uint64_t)dwSet);
+            return VINF_SUCCESS;
         }
     }
 

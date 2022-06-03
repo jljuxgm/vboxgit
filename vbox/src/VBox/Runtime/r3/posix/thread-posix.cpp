@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 36912 2011-05-02 14:23:01Z vboxsync $ */
+/* $Id: thread-posix.cpp 37154 2011-05-19 12:54:32Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -380,20 +380,6 @@ RTDECL(bool) RTThreadYield(void)
     bool fRc = true; /* PORTME: Add heuristics for determining whether the cpus was yielded. */
 #endif
     return fRc;
-}
-
-
-RTR3DECL(uint64_t) RTThreadGetAffinity(void)
-{
-    return 1;
-}
-
-
-RTR3DECL(int) RTThreadSetAffinity(uint64_t u64Mask)
-{
-    if (u64Mask != 1)
-        return VERR_INVALID_PARAMETER;
-    return VINF_SUCCESS;
 }
 
 
