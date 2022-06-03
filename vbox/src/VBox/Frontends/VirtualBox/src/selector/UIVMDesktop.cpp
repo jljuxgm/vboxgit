@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 37585 2011-06-22 09:57:30Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 37592 2011-06-22 16:01:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -841,8 +841,13 @@ void UIDetailsPagePrivate::sltUpdateNetwork()
                         attType = attType.arg(tr("Host-only adapter, '%1'",
                                                  "details report (network)").arg(adapter.GetHostOnlyInterface()));
                     else if (type == KNetworkAttachmentType_Generic)
-                        attType = attType.arg(tr("Generic driver, '%1' {&nbsp;%2&nbsp;}",
-                                                 "details report (network)").arg(adapter.GetGenericDriver(), summarizeGenericProperties(adapter)));
+                    {
+                        QString strGenericDriverProperties(summarizeGenericProperties(adapter));
+                        attType = strGenericDriverProperties.isNull() ?
+                                  attType.arg(tr("Generic driver, '%1'", "details report (network)").arg(adapter.GetGenericDriver())) :
+                                  attType.arg(tr("Generic driver, '%1' {&nbsp;%2&nbsp;}", "details report (network)")
+                                              .arg(adapter.GetGenericDriver(), strGenericDriverProperties));
+                    }
                     else
                         attType = attType.arg(vboxGlobal().toString(type));
 
