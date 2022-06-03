@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExecThread.cpp 38180 2011-07-26 12:26:34Z vboxsync $ */
+/* $Id: VBoxServiceControlExecThread.cpp 38437 2011-08-12 15:05:41Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for an executed guest process.
  */
@@ -372,8 +372,8 @@ int VBoxServiceControlExecThreadGetOutput(uint32_t uPID, uint32_t uHandleId, uin
             if (fEnabled)
             {
 #ifdef DEBUG_andy
-                VBoxServiceVerbose(4, "ControlExec: [PID %u]: Waiting for pipe buffer %u\n",
-                                   uPID, pPipeBuf->uPipeId);
+                VBoxServiceVerbose(4, "ControlExec: [PID %u]: Waiting for pipe buffer %u (%ums)\n",
+                                   uPID, pPipeBuf->uPipeId, uTimeout);
 #endif
                 rc = VBoxServicePipeBufWaitForEvent(pPipeBuf, uTimeout);
             }
@@ -384,8 +384,8 @@ int VBoxServiceControlExecThreadGetOutput(uint32_t uPID, uint32_t uHandleId, uin
                 if (RT_SUCCESS(rc))
                 {
                     if (fEnabled && !cbRead)
-                        AssertMsgFailed(("Waited for pipe buffer %u, but nothing read!\n",
-                                         pPipeBuf->uPipeId));
+                        AssertMsgFailed(("[PID %u]: Waited (%ums) for pipe buffer %u (%u bytes left) , but nothing read!\n",
+                                         uPID, uTimeout, pPipeBuf->uPipeId, pPipeBuf->cbSize - pPipeBuf->cbOffset));
                     if (pcbRead)
                         *pcbRead = cbRead;
                 }
