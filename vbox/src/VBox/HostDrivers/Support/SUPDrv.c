@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 40798 2012-04-06 16:44:13Z vboxsync $ */
+/* $Id: SUPDrv.c 40800 2012-04-06 16:54:17Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -204,7 +204,12 @@ static SUPFUNC g_aFunctions[] =
     { "SUPSemEventMultiGetResolution",          (void *)SUPSemEventMultiGetResolution },
     { "SUPR0GetPagingMode",                     (void *)SUPR0GetPagingMode },
     { "SUPR0EnableVTx",                         (void *)SUPR0EnableVTx },
+    { "SUPR0TracerRegisterImpl",                (void *)SUPR0TracerRegisterImpl },
+    { "SUPR0TracerDeregisterImpl",              (void *)SUPR0TracerDeregisterImpl },
+    { "SUPR0TracerRegisterDrv",                 (void *)SUPR0TracerRegisterDrv },
+    { "SUPR0TracerDeregisterDrv",               (void *)SUPR0TracerDeregisterDrv },
     { "SUPR0TracerRegisterModule",              (void *)SUPR0TracerRegisterModule },
+    { "SUPR0TracerFireProbe",                   (void *)SUPR0TracerFireProbe },
     { "SUPGetGIP",                              (void *)SUPGetGIP },
     { "g_pSUPGlobalInfoPage",                   (void *)&g_pSUPGlobalInfoPage },            /* SED: DATA */
     { "RTMemAllocTag",                          (void *)RTMemAllocTag },
@@ -215,6 +220,8 @@ static SUPFUNC g_aFunctions[] =
     { "RTMemDupTag",                            (void *)RTMemDupTag },
     { "RTMemDupExTag",                          (void *)RTMemDupExTag },
     { "RTMemReallocTag",                        (void *)RTMemReallocTag },
+    { "RTMemAllocExTag",                        (void *)RTMemAllocExTag },
+    { "RTMemFreeEx",                            (void *)RTMemFreeEx },
     { "RTR0MemObjAllocLowTag",                  (void *)RTR0MemObjAllocLowTag },
     { "RTR0MemObjAllocPageTag",                 (void *)RTR0MemObjAllocPageTag },
     { "RTR0MemObjAllocPhysTag",                 (void *)RTR0MemObjAllocPhysTag },
