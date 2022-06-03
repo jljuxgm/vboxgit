@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 38982 2011-10-12 20:20:21Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 40387 2012-03-06 20:38:49Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -290,8 +290,7 @@ typedef struct VBOXVDMAGG
 typedef struct VBOXVDMAINFO
 {
 #ifdef VBOX_WITH_VDMA
-    KSPIN_LOCK HeapLock;
-    HGSMIHEAP CmdHeap;
+    VBOXSHGSMI CmdHeap;
 #endif
     UINT      uLastCompletedPagingBufferCmdFenceId;
     BOOL      fEnabled;

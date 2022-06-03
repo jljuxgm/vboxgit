@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 39981 2012-02-03 12:13:33Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 40387 2012-03-06 20:38:49Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -177,11 +177,11 @@ DECLINLINE(ULONG) vboxWddmVramCpuVisibleSize(PVBOXMP_DEVEXT pDevExt)
     return (ULONG)(pDevExt->aSources[0].Vbva.offVBVA & ~0xfffULL);
 #else
     /* all memory layout info should be initialized */
-    Assert(pDevExt->u.primary.Vdma.CmdHeap.area.offBase);
+    Assert(pDevExt->u.primary.Vdma.CmdHeap.Heap.area.offBase);
     /* page aligned */
-    Assert(!(pDevExt->u.primary.Vdma.CmdHeap.area.offBase & 0xfff));
+    Assert(!(pDevExt->u.primary.Vdma.CmdHeap.Heap.area.offBase & 0xfff));
 
-    return pDevExt->u.primary.Vdma.CmdHeap.area.offBase & ~0xfffUL;
+    return pDevExt->u.primary.Vdma.CmdHeap.Heap.area.offBase & ~0xfffUL;
 #endif
 }
 

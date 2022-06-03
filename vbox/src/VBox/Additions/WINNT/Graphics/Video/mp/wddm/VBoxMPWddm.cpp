@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 39981 2012-02-03 12:13:33Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 40387 2012-03-06 20:38:49Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -287,13 +287,13 @@ bool vboxWddmCheckUpdateShadowAddress(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SOURCE p
 }
 #endif
 
-HGSMIHEAP* vboxWddmHgsmiGetHeapFromCmdOffset(PVBOXMP_DEVEXT pDevExt, HGSMIOFFSET offCmd)
+PVBOXSHGSMI vboxWddmHgsmiGetHeapFromCmdOffset(PVBOXMP_DEVEXT pDevExt, HGSMIOFFSET offCmd)
 {
 #ifdef VBOX_WITH_VDMA
-    if(HGSMIAreaContainsOffset(&pDevExt->u.primary.Vdma.CmdHeap.area, offCmd))
+    if(HGSMIAreaContainsOffset(&pDevExt->u.primary.Vdma.CmdHeap.Heap.area, offCmd))
         return &pDevExt->u.primary.Vdma.CmdHeap;
 #endif
-    if (HGSMIAreaContainsOffset(&VBoxCommonFromDeviceExt(pDevExt)->guestCtx.heapCtx.area, offCmd))
+    if (HGSMIAreaContainsOffset(&VBoxCommonFromDeviceExt(pDevExt)->guestCtx.heapCtx.Heap.area, offCmd))
         return &VBoxCommonFromDeviceExt(pDevExt)->guestCtx.heapCtx;
     return NULL;
 }
@@ -310,10 +310,10 @@ typedef enum
 VBOXWDDM_HGSMICMD_TYPE vboxWddmHgsmiGetCmdTypeFromOffset(PVBOXMP_DEVEXT pDevExt, HGSMIOFFSET offCmd)
 {
 #ifdef VBOX_WITH_VDMA
-    if(HGSMIAreaContainsOffset(&pDevExt->u.primary.Vdma.CmdHeap.area, offCmd))
+    if(HGSMIAreaContainsOffset(&pDevExt->u.primary.Vdma.CmdHeap.Heap.area, offCmd))
         return VBOXWDDM_HGSMICMD_TYPE_DMACMD;
 #endif
-    if (HGSMIAreaContainsOffset(&VBoxCommonFromDeviceExt(pDevExt)->guestCtx.heapCtx.area, offCmd))
+    if (HGSMIAreaContainsOffset(&VBoxCommonFromDeviceExt(pDevExt)->guestCtx.heapCtx.Heap.area, offCmd))
         return VBOXWDDM_HGSMICMD_TYPE_CTL;
     return VBOXWDDM_HGSMICMD_TYPE_UNDEFINED;
 }
@@ -1170,7 +1170,7 @@ BOOLEAN DxgkDdiInterruptRoutine(
                 {
                     VBOXWDDM_HGSMICMD_TYPE enmType = vboxWddmHgsmiGetCmdTypeFromOffset(pDevExt, offCmd);
                     PVBOXVTLIST pList;
-                    HGSMIHEAP * pHeap = NULL;
+                    PVBOXSHGSMI pHeap = NULL;
                     switch (enmType)
                     {
 #ifdef VBOX_WITH_VDMA
@@ -1190,7 +1190,7 @@ BOOLEAN DxgkDdiInterruptRoutine(
                     if (pHeap)
                     {
                         uint16_t chInfo;
-                        uint8_t *pvCmd = HGSMIBufferDataAndChInfoFromOffset (&pHeap->area, offCmd, &chInfo);
+                        uint8_t *pvCmd = HGSMIBufferDataAndChInfoFromOffset (&pHeap->Heap.area, offCmd, &chInfo);
                         Assert(pvCmd);
                         if (pvCmd)
                         {

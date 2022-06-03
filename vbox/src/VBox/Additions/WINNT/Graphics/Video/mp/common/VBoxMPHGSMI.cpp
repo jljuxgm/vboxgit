@@ -1,4 +1,4 @@
-/* $Id: VBoxMPHGSMI.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPHGSMI.cpp 40387 2012-03-06 20:38:49Z vboxsync $ */
 
 /** @file
  * VBox Miniport HGSMI related functions
@@ -153,7 +153,11 @@ static bool VBoxUnmapAdpInfoCallback(void *pvCommon)
 void VBoxFreeDisplaysHGSMI(PVBOXMP_COMMON pCommon)
 {
     VBoxMPCmnUnmapAdapterMemory(pCommon, &pCommon->pvMiniportHeap);
+#ifdef VBOX_WDDM_MINIPORT
+    VBoxSHGSMITerm(&pCommon->guestCtx.heapCtx);
+#else
     HGSMIHeapDestroy(&pCommon->guestCtx.heapCtx);
+#endif
 
     /* Unmap the adapter information needed for HGSMI IO. */
     VBoxMPCmnSyncToVideoIRQ(pCommon, VBoxUnmapAdpInfoCallback, pCommon);
