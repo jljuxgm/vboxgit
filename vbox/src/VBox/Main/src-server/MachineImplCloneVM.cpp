@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 38048 2011-07-19 08:01:59Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 38049 2011-07-19 08:16:57Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -877,9 +877,7 @@ HRESULT MachineCloneVM::run()
             if (mtc.fCreateDiffs)
             {
                 const MEDIUMTASK &mt = mtc.chain.first();
-                ComPtr<IMedium> pMedium = mt.pMedium;
-                IMedium *pTmp = pMedium;
-                ComObjPtr<Medium> pLMedium = static_cast<Medium*>(pTmp);
+                ComObjPtr<Medium> pLMedium = static_cast<Medium*>((IMedium*)mt.pMedium);
                 if (pLMedium.isNull())
                     throw E_POINTER;
                 ComObjPtr<Medium> pBase = pLMedium->getBase();
