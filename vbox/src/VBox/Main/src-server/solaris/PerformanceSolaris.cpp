@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 36078 2011-02-24 17:09:42Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 36090 2011-02-25 15:53:28Z vboxsync $ */
 
 /** @file
  *
@@ -202,7 +202,7 @@ int CollectorSolaris::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *avail
                      * for "size" to shrink below "c_min" (e.g: during boot & high memory consumption).
                      */
                     ulong_t ulMin = kn->value.ul;
-                    *available += ulSize > ulMin ? ulSize - ulMin : 0;
+                    *available += ulSize > ulMin ? (ulSize - ulMin) / 1024 : 0;
                 }
                 else
                     Log(("kstat_data_lookup(c_min) ->%d\n", errno));
