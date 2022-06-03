@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 38567 2011-08-30 11:44:18Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 38568 2011-08-30 12:20:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2896,7 +2896,7 @@ void UIMessageCenter::sltShowHelpHelpDialog()
         UIDownloaderUserManual *pDl = UIDownloaderUserManual::create();
         /* Configure User Manual downloader: */
         CVirtualBox vbox = vboxGlobal().virtualBox();
-        pDl->addSource(QString("http://download.virtualbox.org/virtualbox/%1/").arg(vbox.GetVersion().remove(VBOX_BUILD_PUBLISHER)) + strShortFileName);
+        pDl->addSource(QString("http://download.virtualbox.org/virtualbox/%1/").arg(vboxGlobal().vboxVersionStringNormalized()) + strShortFileName);
         pDl->addSource(QString("http://download.virtualbox.org/virtualbox/") + strShortFileName);
         pDl->setTarget(strUserManualFileName2);
         pDl->setParentWidget(mainWindowShown());

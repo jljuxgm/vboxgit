@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 38476 2011-08-16 13:25:17Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 38568 2011-08-30 12:20:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -373,6 +373,16 @@ uint VBoxGlobal::qtCTVersion()
     return (ct_ver_str.section ('.', 0, 0).toInt() << 16) +
            (ct_ver_str.section ('.', 1, 1).toInt() << 8) +
            ct_ver_str.section ('.', 2, 2).toInt();
+}
+
+QString VBoxGlobal::vboxVersionString() const
+{
+    return mVBox.GetVersion();
+}
+
+QString VBoxGlobal::vboxVersionStringNormalized() const
+{
+    return vboxVersionString().remove(VBOX_BUILD_PUBLISHER);
 }
 
 bool VBoxGlobal::isBeta() const

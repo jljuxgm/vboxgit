@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 38476 2011-08-16 13:25:17Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 38568 2011-08-30 12:20:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -22,6 +22,8 @@
 #include <QNetworkReply>
 #include <QTimer>
 #include <QDir>
+
+#include <VBox/version.h>
 
 /* Local includes: */
 #include "UIUpdateManager.h"
@@ -130,9 +132,9 @@ void UIUpdateManager::checkIfUpdateIsNecessaryForExtensionPack(bool /* fForceCal
         return;
 
     /* Get VirtualBox version: */
-    VBoxVersion vboxVersion(vboxGlobal().virtualBox().GetVersion().remove("_OSE"));
+    VBoxVersion vboxVersion(vboxGlobal().vboxVersionStringNormalized());
     /* Get extension pack version: */
-    VBoxVersion expackVersion(extPack.GetVersion().remove("_OSE"));
+    VBoxVersion expackVersion(extPack.GetVersion().remove(VBOX_BUILD_PUBLISHER));
     /* Check if extension pack version less than required: */
     if ((vboxVersion.z() % 2 != 0) /* Skip unstable VBox version */ ||
         !(expackVersion < vboxVersion) /* Ext Pack version more or equal to VBox version */)
