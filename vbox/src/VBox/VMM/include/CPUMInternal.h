@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 37955 2011-07-14 12:23:02Z vboxsync $ */
+/* $Id: CPUMInternal.h 40170 2012-02-17 14:22:26Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -362,7 +362,7 @@ typedef struct CPUMCPU
      * Guest context - misc MSRs
      * Aligned on a 64-byte boundary.
      */
-    CPUMCTXMSR              GuestMsr;
+    CPUMCTXMSRS             GuestMsrs;
 
     /** Pointer to the current hypervisor core context - R3Ptr. */
     R3PTRTYPE(PCPUMCTXCORE) pHyperCoreR3;

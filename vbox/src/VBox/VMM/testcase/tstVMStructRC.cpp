@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 39111 2011-10-25 14:47:02Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 40170 2012-02-17 14:22:26Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -97,7 +97,7 @@ int main()
     GEN_CHECK_SIZE(CPUMCPU); // has .mac
     GEN_CHECK_SIZE(CPUMHOSTCTX);
     GEN_CHECK_SIZE(CPUMCTX);
-    GEN_CHECK_SIZE(CPUMCTXMSR);
+    GEN_CHECK_SIZE(CPUMCTXMSRS);
     GEN_CHECK_SIZE(CPUMCTXCORE);
     GEN_CHECK_SIZE(STAMRATIOU32);
     GEN_CHECK_SIZE(AVLOHCPHYSNODECORE);
