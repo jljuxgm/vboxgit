@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 40785 2012-04-06 05:42:14Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 42026 2012-07-05 15:21:52Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -324,7 +324,7 @@ void vboxVdmaCBufDrFree(PVBOXVDMAINFO pInfo, struct VBOXVDMACBUF_DR* pDr);
 
 AssertCompile(sizeof (VBOXVDMADDI_CMD) <= RT_SIZEOFMEMB(VBOXVDMACBUF_DR, aGuestData));
 #define VBOXVDMADDI_CMD_FROM_BUF_DR(_pDr) ((PVBOXVDMADDI_CMD)(_pDr)->aGuestData)
-#define VBOXVDMACBUF_DR_FROM_DDI_CMD(_pCmd) ((PVBOXVDMACBUF_DR)(((uint_8*)(_pCmd)) - RT_OFFSETOF(VBOXVDMACBUF_DR, aGuestData)))
+#define VBOXVDMACBUF_DR_FROM_DDI_CMD(_pCmd) ((PVBOXVDMACBUF_DR)(((uint8_t*)(_pCmd)) - RT_OFFSETOF(VBOXVDMACBUF_DR, aGuestData)))
 
 #endif
 NTSTATUS vboxVdmaGgCmdSubmit(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAPIPE_CMD_DR pCmd);
