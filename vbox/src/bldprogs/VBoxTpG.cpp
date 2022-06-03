@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40884 2012-04-11 23:53:10Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40887 2012-04-12 00:31:45Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -452,7 +452,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40884 2012-04-11 23:53:10Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40887 2012-04-12 00:31:45Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -638,8 +638,8 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                     pArg2 = RTListNodeGetNext(&pProbe2->ArgHead, VTGARG, ListEntry);
                     int32_t cArgs = pProbe->cArgs;
                     while (   cArgs-- > 0
-                           && pArg2->pszType == pArg2->pszType
-                           && pArg2->fType   == pArg2->fType )
+                           && pArg2->pszType == pArg->pszType
+                           && pArg2->fType   == pArg->fType)
                     {
                         pArg  = RTListNodeGetNext(&pArg->ListEntry, VTGARG, ListEntry);
                         pArg2 = RTListNodeGetNext(&pArg2->ListEntry, VTGARG, ListEntry);
@@ -890,7 +890,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40884 2012-04-11 23:53:10Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40887 2012-04-12 00:31:45Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -2149,7 +2149,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40884 $";
+                static const char s_szRev[] = "$Revision: 40887 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
