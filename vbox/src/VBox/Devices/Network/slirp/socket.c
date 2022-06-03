@@ -1,4 +1,4 @@
-/* $Id: socket.c 39268 2011-11-11 07:23:43Z vboxsync $ */
+/* $Id: socket.c 39269 2011-11-11 09:46:10Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -855,8 +855,7 @@ sorecvfrom(PNATState pData, struct socket *so)
             }
 #endif
 
-            /* aliasing fragmented packets insult the receiver on guest
-             */
+            /* packets definetly will be fragmented, could confuse receiver peer. */
             if (m_length(m, NULL) > if_mtu)
                 m->m_flags |= M_SKIP_FIREWALL;
             /*
