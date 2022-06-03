@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxvideo_drm 36198 2011-03-07 19:20:42Z vboxsync $
+# $Id: files_vboxvideo_drm 36602 2011-04-06 21:41:35Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -21,6 +21,8 @@ FILES_VBOXVIDEO_DRM_NOBIN=" \
     ${PATH_ROOT}/include/VBox/VBoxGuestMangling.h=>include/VBox/VBoxGuestMangling.h \
     ${PATH_ROOT}/src/VBox/Additions/linux/drm/vboxvideo_drm.c=>vboxvideo_drm.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/drm/vboxvideo_drm.h=>vboxvideo_drm.h \
+    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile.include.header \
+    ${PATH_ROOT}/src/VBox/Installer/linux/Makefile.include.footer \
     ${PATH_OUT}/version-generated.h=>version-generated.h \
     ${PATH_OUT}/product-generated.h=>product-generated.h \
     ${PATH_ROOT}/src/VBox/Additions/linux/drm/Makefile.module=>Makefile \
