@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: fileio-posix.cpp 37679 2011-06-29 08:24:44Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -392,7 +392,7 @@ RTFILE rtFileGetStandard(RTHANDLESTD enmStdHandle)
     int rc = fstat(fd, &st);
     if (rc == -1)
         return NIL_RTFILE;
-    return (RTFILE)fd;
+    return (RTFILE)(intptr_t)fd;
 }
 
 
