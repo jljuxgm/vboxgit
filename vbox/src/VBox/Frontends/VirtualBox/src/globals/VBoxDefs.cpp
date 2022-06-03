@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 38900 2011-09-29 11:57:37Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 38978 2011-10-12 13:33:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,6 +32,7 @@ const char* VBoxDefs::GUI_LastNormalWindowPosition = "GUI/LastNormalWindowPositi
 const char* VBoxDefs::GUI_LastScaleWindowPosition = "GUI/LastScaleWindowPosition";
 const char* VBoxDefs::GUI_LastWindowState_Max = "max";
 const char* VBoxDefs::GUI_LastGuestSizeHint = "GUI/LastGuestSizeHint";
+const char* VBoxDefs::GUI_LastGuestSizeHintWasFullscreen = "GUI/LastGuestSizeHintWasFullscreen";
 const char* VBoxDefs::GUI_Toolbar = "GUI/Toolbar";
 const char* VBoxDefs::GUI_Statusbar = "GUI/Statusbar";
 const char* VBoxDefs::GUI_SplitterSizes = "GUI/SplitterSizes";
