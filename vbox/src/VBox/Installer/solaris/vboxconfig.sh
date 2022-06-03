@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 37789 2011-07-06 09:09:09Z vboxsync $
+# $Id: vboxconfig.sh 37790 2011-07-06 09:12:21Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -877,7 +877,7 @@ postinstall()
 
                         # Recreate /etc/netmasks as a link if necessary
                         if test $recreatelink -eq 1; then
-                            rm -f "$PKG_INSTALL_ROOT/etc/netmasks"
+                            cp -f "$PKG_INSTALL_ROOT/etc/netmasks" "$PKG_INSTALL_ROOT/etc/inet/netmasks"
                             ln -sf ./inet/netmasks "$PKG_INSTALL_ROOT/etc/netmasks"
                         elif test $recreatelink -eq 2; then
                             warnprint "/etc/netmasks is a symlink (to /etc/inet/netmasks) that older"
