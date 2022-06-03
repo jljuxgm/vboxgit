@@ -1,4 +1,4 @@
-/* $Id: VDDbgIoLog.cpp 38876 2011-09-27 09:03:15Z vboxsync $ */
+/* $Id: VDDbgIoLog.cpp 40990 2012-04-19 13:28:59Z vboxsync $ */
 /** @file
  *
  * VD Debug library - I/O logger.
@@ -28,6 +28,7 @@
 #include <iprt/file.h>
 #include <iprt/string.h>
 #include <iprt/semaphore.h>
+#include <iprt/asm.h>
 
 /*******************************************************************************
 *   Structures in a I/O log file, little endian                                *
@@ -369,7 +370,7 @@ VBOXDDU_DECL(uint32_t) VDDbgIoLogGetFlags(VDIOLOGGER hIoLogger)
 {
     PVDIOLOGGERINT pIoLogger = hIoLogger;
 
-    AssertPtrReturn(pIoLogger, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pIoLogger, 0);
 
     return pIoLogger->fFlags;
 }
