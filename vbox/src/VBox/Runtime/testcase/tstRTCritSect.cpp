@@ -1,4 +1,4 @@
-/* $Id: tstRTCritSect.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTCritSect.cpp 36472 2011-03-30 09:59:55Z vboxsync $ */
 /** @file
  * IPRT Testcase - Critical Sections.
  */
@@ -30,6 +30,7 @@
 #ifdef TRY_WIN32_CRIT
 # include <Windows.h>
 #endif
+#define CRITSECT_WITHOUT_REMAPPING
 #include <iprt/critsect.h>
 
 #include <iprt/asm.h>
@@ -58,14 +59,12 @@
 #define PRTCRITSECT     LPCRITICAL_SECTION
 #define LOCKERS(sect)   (*(LONG volatile *)&(sect).LockCount)
 
-#undef RTCritSectInit
 DECLINLINE(int) RTCritSectInit(PCRITICAL_SECTION pCritSect)
 {
     InitializeCriticalSection(pCritSect);
     return VINF_SUCCESS;
 }
 
-#undef RTCritSectEnter
 DECLINLINE(int) RTCritSectEnter(PCRITICAL_SECTION pCritSect)
 {
     EnterCriticalSection(pCritSect);
