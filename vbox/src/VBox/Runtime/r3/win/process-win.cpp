@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 41182 2012-05-07 10:17:23Z vboxsync $ */
+/* $Id: process-win.cpp 41919 2012-06-27 08:06:27Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -37,6 +37,7 @@
 #include <process.h>
 #include <errno.h>
 #include <Strsafe.h>
+#include <Lmcons.h>
 
 #include <iprt/process.h>
 #include "internal/iprt.h"
@@ -1421,5 +1422,44 @@ RTR3DECL(uint64_t) RTProcGetAffinityMask(void)
     Assert(fRc);
 
     return dwProcessAffinityMask;
+}
+
+
+RTR3DECL(int) RTProcQueryUsername(RTPROCESS hProcess, char *pszUser, size_t cbUser,
+                                  size_t *pcbUser)
+{
+    AssertPtrReturn(pszUser, VERR_INVALID_POINTER);
+    AssertReturn(cbUser > 0, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pcbUser, VERR_INVALID_POINTER);
+
+    if (hProcess != RTProcSelf())
+        return VERR_NOT_SUPPORTED;
+
+    RTUTF16 awszUserName[UNLEN + 1];
+    DWORD   cchUserName = UNLEN + 1;
+
+    if (!GetUserNameW(&awszUserName[0], &cchUserName))
+        return RTErrConvertFromWin32(GetLastError());
+
+    char *pszUserName = NULL;
+    int rc = RTUtf16ToUtf8(awszUserName, &pszUserName);
+    if (RT_SUCCESS(rc))
+    {
+        size_t cbUserName = strlen(pszUserName) + 1;
+
+        *pcbUser = cbUserName;
+
+        if (cbUserName > cbUser)
+            rc = VERR_BUFFER_OVERFLOW;
+        else
+        {
+            memcpy(pszUser, pszUserName, cbUserName);
+            rc = VINF_SUCCESS;
+        }
+
+        RTStrFree(pszUserName);
+    }
+
+    return rc;
 }
 
