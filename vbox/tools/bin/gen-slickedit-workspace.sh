@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 39403 2011-11-23 16:27:46Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 39422 2011-11-25 11:00:00Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -20,6 +20,7 @@
 # Some constants.
 #
 MY_CAT="kmk_cat"
+MY_CP="kmk_cp"
 MY_MKDIR="kmk_mkdir"
 MY_MV="kmk_mv"
 MY_SED="kmk_sed"
