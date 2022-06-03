@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VUSBInternal.h 37359 2011-06-07 17:12:57Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -211,6 +211,8 @@ typedef struct VUSBDEV
     RTTHREAD            hResetThread;
     /** Pointer to the reset thread arguments. */
     void               *pvResetArgs;
+    /** The reset timer handle. */
+    PTMTIMER            pResetTimer;
 } VUSBDEV;
 
 
