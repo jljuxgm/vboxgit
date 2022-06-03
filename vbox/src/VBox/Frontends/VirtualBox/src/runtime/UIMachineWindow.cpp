@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 34983 2010-12-13 10:14:08Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 36127 2011-03-01 21:08:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -145,11 +145,7 @@ void UIMachineWindow::setMask(const QRegion &region)
 
 void UIMachineWindow::retranslateUi()
 {
-#ifdef VBOX_OSE
-    m_strWindowTitlePrefix = UIMachineLogic::tr("VirtualBox OSE");
-#else
     m_strWindowTitlePrefix = VBOX_PRODUCT;
-#endif
 #ifdef VBOX_BLEEDING_EDGE
     m_strWindowTitlePrefix += UIMachineLogic::tr(" EXPERIMENTAL build %1r%2 - %3")
                               .arg(RTBldCfgVersion())
