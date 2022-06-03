@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 37256 2011-05-30 12:39:03Z vboxsync $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 37257 2011-05-30 12:46:19Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -84,9 +84,8 @@ static int vbglR3GetAdditionsCompileTimeVersion(char **ppszVer, char **ppszVerEx
  * Looks up the storage path handle (registry).
  *
  * @returns IPRT status value
- * @param   hKey        Receives pointer of allocated version string. NULL is
- *                      accepted. The returned pointer must be closed by
- *                      vbglR3CloseAdditionsWinStoragePath().
+ * @param   hKey        Receives storage path handle on success.
+ *                      The returned handle must be closed by vbglR3CloseAdditionsWinStoragePath().
  */
 static int vbglR3QueryAdditionsWinStoragePath(PHKEY phKey)
 {
@@ -178,6 +177,15 @@ VBGLR3DECL(int) VbglR3ReportAdditionsStatus(VBoxGuestFacilityType enmFacility,
 }
 
 
+/**
+ * Queries a string value from a specified registry key.
+ *
+ * @return  IPRT status code.
+ * @param   hKey                    Handle of registry key to use.
+ * @param   pszValName              Value name to query value from.
+ * @param   pszBuffer               Pointer to buffer which the queried string value gets stored into.
+ * @param   cchBuffer               Size (in bytes) of buffer.
+ */
 int vbglR3QueryRegistryString(HKEY hKey, const char *pszValName, char *pszBuffer, size_t cchBuffer)
 {
     AssertReturn(pszValName, VERR_INVALID_PARAMETER);
