@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: runasroot.sh 36658 2011-04-12 15:40:51Z vboxsync $
+# $Id: runasroot.sh 36667 2011-04-14 10:19:53Z vboxsync $
 ## @file
 # VirtualBox privileged execution helper script for Linux and Solaris
 #
@@ -53,6 +53,13 @@ case "$DISPLAY" in ?*)
     KDESUDO="`mywhich kdesudo`"
     case "$KDESUDO" in ?*)
         eval "`quotify "$KDESUDO"` --comment `quotify "$DESCRIPTION"` -- $COMMAND"
+        exit
+        ;;
+    esac
+
+    KDESU="`mywhich kdesu`"
+    case "$KDESU" in ?*)
+        "$KDESU" -c "$COMMAND"
         exit
         ;;
     esac
