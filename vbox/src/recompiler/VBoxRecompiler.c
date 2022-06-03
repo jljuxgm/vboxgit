@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 37675 2011-06-29 07:07:14Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 37676 2011-06-29 07:10:23Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -418,7 +418,6 @@ REMR3DECL(int) REMR3Init(PVM pVM)
 #ifdef DEBUG_ALL_LOGGING
     loglevel = ~0;
 #endif
-//loglevel = CPU_LOG_EXEC | CPU_LOG_INT | CPU_LOG_PCALL | CPU_LOG_TB_CPU; /// DONT COMMIT ME
 
     /*
      * Init the handler notification lists.
