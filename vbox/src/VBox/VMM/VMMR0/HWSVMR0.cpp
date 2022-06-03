@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 40449 2012-03-13 15:51:02Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 40450 2012-03-13 15:56:22Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring 0.
  */
@@ -2056,7 +2056,7 @@ ResumeExecution:
     {
         Log2(("SVM: %RGv mov cr%d, \n", (RTGCPTR)pCtx->rip, exitCode - SVM_EXIT_WRITE_CR0));
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitCRxWrite[exitCode - SVM_EXIT_WRITE_CR0]);
-        rc = EMInterpretInstruction(pVM, pVCpu, CPUMCTX2CORE(pCtx), 0);
+        rc = EMInterpretInstruction(pVCpu, CPUMCTX2CORE(pCtx), 0);
 
         switch (exitCode - SVM_EXIT_WRITE_CR0)
         {
@@ -2095,7 +2095,7 @@ ResumeExecution:
     {
         Log2(("SVM: %RGv mov x, cr%d\n", (RTGCPTR)pCtx->rip, exitCode - SVM_EXIT_READ_CR0));
         STAM_COUNTER_INC(&pVCpu->hwaccm.s.StatExitCRxRead[exitCode - SVM_EXIT_READ_CR0]);
-        rc = EMInterpretInstruction(pVM, pVCpu, CPUMCTX2CORE(pCtx), 0);
+        rc = EMInterpretInstruction(pVCpu, CPUMCTX2CORE(pCtx), 0);
         if (rc == VINF_SUCCESS)
         {
             /* EIP has been updated already. */
@@ -2130,7 +2130,7 @@ ResumeExecution:
             goto ResumeExecution;
         }
 
-        rc = EMInterpretInstruction(pVM, pVCpu, CPUMCTX2CORE(pCtx), 0);
+        rc = EMInterpretInstruction(pVCpu, CPUMCTX2CORE(pCtx), 0);
         if (rc == VINF_SUCCESS)
         {
             /* EIP has been updated already. */
@@ -2165,7 +2165,7 @@ ResumeExecution:
             goto ResumeExecution;
         }
 
-        rc = EMInterpretInstruction(pVM, pVCpu, CPUMCTX2CORE(pCtx), 0);
+        rc = EMInterpretInstruction(pVCpu, CPUMCTX2CORE(pCtx), 0);
         if (rc == VINF_SUCCESS)
         {
             /* EIP has been updated already. */
@@ -2449,7 +2449,7 @@ ResumeExecution:
         /* Note: the intel manual claims there's a REX version of RDMSR that's slightly different, so we play safe by completely disassembling the instruction. */
         STAM_COUNTER_INC((pVMCB->ctrl.u64ExitInfo1 == 0) ? &pVCpu->hwaccm.s.StatExitRdmsr : &pVCpu->hwaccm.s.StatExitWrmsr);
         Log(("SVM: %s\n", (pVMCB->ctrl.u64ExitInfo1 == 0) ? "rdmsr" : "wrmsr"));
-        rc = EMInterpretInstruction(pVM, pVCpu, CPUMCTX2CORE(pCtx), 0);
+        rc = EMInterpretInstruction(pVCpu, CPUMCTX2CORE(pCtx), 0);
         if (rc == VINF_SUCCESS)
         {
             /* EIP has been updated already. */

@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 40447 2012-03-13 15:30:35Z vboxsync $ */
+/* $Id: PGMAll.cpp 40450 2012-03-13 15:56:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -806,7 +806,7 @@ VMMDECL(int) PGMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCPtrPage)
  */
 VMMDECL(VBOXSTRICTRC) PGMInterpretInstruction(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault)
 {
-    VBOXSTRICTRC rc = EMInterpretInstruction(pVM, pVCpu, pRegFrame, pvFault);
+    VBOXSTRICTRC rc = EMInterpretInstruction(pVCpu, pRegFrame, pvFault);
     if (rc == VERR_EM_INTERPRETER)
         rc = VINF_EM_RAW_EMULATE_INSTR;
     if (rc != VINF_SUCCESS)
