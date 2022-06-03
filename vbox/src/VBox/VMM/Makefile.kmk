@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40356 2012-03-05 13:51:50Z vboxsync $
+# $Id: Makefile.kmk 40376 2012-03-06 14:24:30Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -215,6 +215,14 @@ ifdef VBOX_WITH_RAW_MODE
  	VMMSwitcher/AMD64ToPAE.asm
  VMMR3_SOURCES.darwin.x86 += \
  	VMMSwitcher/AMD64ToPAE.asm
+endif
+
+ifdef VBOX_WITH_DTRACE_R3
+ VMMR3_DEFS += VBOX_WITH_DTRACE
+ VMMR3_INCS          += $(VMMR3_0_OUTDIR)
+ VMMR3_INTERMEDIATES += $(VMMR3_0_OUTDIR)/VBoxVMMR3-dtrace.h
+ $$(VMMR3_0_OUTDIR)/VBoxVMMR3-dtrace.h: $(PATH_SUB_CURRENT)/VBoxVMMR3-dtrace.d | $$(dir $$@)
+	dtrace -C -h -o $@ -s $<
 endif
 
 
