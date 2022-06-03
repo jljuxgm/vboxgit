@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 39498 2011-12-01 19:59:21Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 39550 2011-12-07 20:28:23Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -507,7 +507,7 @@ static bool drvscsiAsyncIOLoopNoPendingDummy(PDRVSCSI pThis, uint32_t cMillies)
     int rc = RTReqWait(pThis->pPendingDummyReq, cMillies);
     if (RT_FAILURE(rc))
         return false;
-    RTReqFree(pThis->pPendingDummyReq);
+    RTReqRelease(pThis->pPendingDummyReq);
     pThis->pPendingDummyReq = NULL;
     return true;
 }
@@ -528,7 +528,7 @@ static int drvscsiAsyncIOLoopWakeup(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
 
     rc = RTReqQueueCall(pThis->hQueueRequests, &pReq, 10000 /* 10 sec. */, (PFNRT)drvscsiAsyncIOLoopWakeupFunc, 1, pThis);
     if (RT_SUCCESS(rc))
-        RTReqFree(pReq);
+        RTReqRelease(pReq);
     else
     {
         pThis->pPendingDummyReq = pReq;
@@ -650,7 +650,7 @@ static void drvscsiR3ResetOrSuspendOrPowerOff(PPDMDRVINS pDrvIns, PFNPDMDRVASYNC
             if (RT_SUCCESS(rc))
             {
                 ASMAtomicWriteBool(&pThis->fDummySignal, false);
-                RTReqFree(pReq);
+                RTReqRelease(pReq);
                 return;
             }
 

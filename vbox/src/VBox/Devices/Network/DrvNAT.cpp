@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 39498 2011-12-01 19:59:21Z vboxsync $ */
+/* $Id: DrvNAT.cpp 39550 2011-12-07 20:28:23Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -646,7 +646,7 @@ static DECLCALLBACK(void) drvNATNetworkUp_NotifyLinkChanged(PPDMINETWORKUP pInte
     }
     else
         AssertRC(rc);
-    RTReqFree(pReq);
+    RTReqRelease(pReq);
 }
 
 static void drvNATNotifyApplyPortForwardCommand(PDRVNAT pThis, bool fRemove,
@@ -695,7 +695,7 @@ DECLCALLBACK(int) drvNATNetworkNatConfig_RedirectRuleCommand(PPDMINETWORKNATCONF
     else
         AssertRC(rc);
 
-    RTReqFree(pReq);
+    RTReqRelease(pReq);
     port_forwarding_done:
     return rc;
 }
