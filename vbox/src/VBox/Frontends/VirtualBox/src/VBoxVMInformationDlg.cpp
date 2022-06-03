@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 41819 2012-06-18 17:59:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -33,6 +33,7 @@
 #include "UISession.h"
 #include "VBoxGlobal.h"
 #include "VBoxVMInformationDlg.h"
+#include "UIConverter.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -663,7 +664,7 @@ QString VBoxVMInformationDlg::formatMedium (const QString &aCtrName,
 
     QString header = "<tr><td></td><td colspan=2><nobr>&nbsp;&nbsp;%1:</nobr></td></tr>";
     CStorageController ctr = mSession.GetMachine().GetStorageControllerByName (aCtrName);
-    QString name = vboxGlobal().toString (StorageSlot (ctr.GetBus(), aPort, aDevice));
+    QString name = gpConverter->toString (StorageSlot (ctr.GetBus(), aPort, aDevice));
     return header.arg (name) + composeArticle (aBelongsTo, 2);
 }
 

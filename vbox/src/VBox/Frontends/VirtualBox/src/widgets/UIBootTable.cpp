@@ -1,4 +1,4 @@
-/* $Id: UIBootTable.cpp 41608 2012-06-07 02:02:19Z vboxsync $ */
+/* $Id: UIBootTable.cpp 41819 2012-06-18 17:59:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -22,7 +22,7 @@
 
 /* Local includes */
 #include "UIBootTable.h"
-#include "COMEnumsWrapper.h"
+#include "UIConverter.h"
 
 UIBootTableItem::UIBootTableItem(KDeviceType type)
   : m_type(type)
@@ -61,7 +61,7 @@ KDeviceType UIBootTableItem::type() const
 
 void UIBootTableItem::retranslateUi()
 {
-    setText(gCOMenum->toString(m_type));
+    setText(gpConverter->toString(m_type));
 }
 
 UIBootTable::UIBootTable(QWidget *pParent /* = 0 */)
