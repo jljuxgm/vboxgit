@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 40554 2012-03-20 18:07:34Z vboxsync $ */
+/* $Id: scmstream.cpp 40557 2012-03-20 22:24:36Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -710,7 +710,7 @@ unsigned ScmStreamPeekCh(PSCMSTREAM pStream)
         return ~(unsigned)0;
 
     /* Peek at the next character. */
-    char ch = pStream->pch[pStream->off++];
+    char ch = pStream->pch[pStream->off];
     return (unsigned)ch;
 }
 

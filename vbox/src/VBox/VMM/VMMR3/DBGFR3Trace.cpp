@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Trace.cpp 40413 2012-03-09 11:38:34Z vboxsync $ */
+/* $Id: DBGFR3Trace.cpp 40557 2012-03-20 22:24:36Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
@@ -51,17 +51,17 @@ static DECLCALLBACK(void) dbgfR3TraceInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
  */
 static const struct
 {
-    /** The mask. */
-    uint32_t    fMask;
-    /** The name length. */
-    uint32_t    cchName;
     /** The group name. */
     const char *pszName;
+    /** The name length. */
+    uint32_t    cchName;
+    /** The mask. */
+    uint32_t    fMask;
 }   g_aVmmTpGroups[] =
 {
-    {  VMMTPGROUP_EM,   RT_STR_TUPLE("em")  },
-    {  VMMTPGROUP_HM,   RT_STR_TUPLE("hm")  },
-    {  VMMTPGROUP_TM,   RT_STR_TUPLE("tm")  },
+    {  RT_STR_TUPLE("em"), VMMTPGROUP_EM },
+    {  RT_STR_TUPLE("hm"), VMMTPGROUP_HM },
+    {  RT_STR_TUPLE("tm"), VMMTPGROUP_TM },
 };
 
 
