@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 40250 2012-02-24 20:28:08Z vboxsync $ */
+/* $Id: IEMInternal.h 40251 2012-02-24 21:24:23Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -810,6 +810,12 @@ typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLFPUR80FSW,(PCX86FXSTATE pFpuState, ui
 typedef FNIEMAIMPLFPUR80FSW *PFNIEMAIMPLFPUR80FSW;
 FNIEMAIMPLFPUR80FSW         iemAImpl_fcom_r80_by_r80;
 FNIEMAIMPLFPUR80FSW         iemAImpl_fucom_r80_by_r80;
+
+typedef IEM_DECL_IMPL_TYPE(uint32_t, FNIEMAIMPLFPUR80EFL,(PCX86FXSTATE pFpuState, uint16_t *pu16Fsw,
+                                                          PCRTFLOAT80U pr80Val1, PCRTFLOAT80U pr80Val2));
+typedef FNIEMAIMPLFPUR80EFL *PFNIEMAIMPLFPUR80EFL;
+FNIEMAIMPLFPUR80EFL         iemAImpl_fcomi_r80_by_r80;
+FNIEMAIMPLFPUR80EFL         iemAImpl_fucomi_r80_by_r80;
 
 typedef IEM_DECL_IMPL_TYPE(void, FNIEMAIMPLFPUR80UNARY,(PCX86FXSTATE pFpuState, PIEMFPURESULT pFpuRes, PCRTFLOAT80U pr80Val));
 typedef FNIEMAIMPLFPUR80UNARY *PFNIEMAIMPLFPUR80UNARY;
