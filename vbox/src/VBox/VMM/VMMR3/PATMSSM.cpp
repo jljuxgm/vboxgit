@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: PATMSSM.cpp 41899 2012-06-23 19:07:03Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -23,6 +23,7 @@
 #define LOG_GROUP LOG_GROUP_PATM
 #include <VBox/vmm/patm.h>
 #include <VBox/vmm/cpum.h>
+#include <VBox/vmm/cpumctx-v1_6.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/ssm.h>
 #include <VBox/param.h>
@@ -48,7 +49,7 @@
  * the difference is the missing pTrampolinePatchesHead member
  * to avoid changing the saved state version for now (will come later).
  */
-typedef struct _PATCHINFOSSM
+typedef struct PATCHINFOSSM
 {
     uint32_t              uState;
     uint32_t              uOldState;

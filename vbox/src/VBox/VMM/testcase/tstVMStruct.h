@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 41739 2012-06-15 01:31:29Z vboxsync $ */
+/* $Id: tstVMStruct.h 41899 2012-06-23 19:07:03Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -1297,7 +1297,7 @@
     GEN_CHECK_OFF(PATMPATCHPAGE, pHighestAddrGC);
     GEN_CHECK_OFF(PATMPATCHPAGE, cCount);
     GEN_CHECK_OFF(PATMPATCHPAGE, cMaxPatches);
-    GEN_CHECK_OFF(PATMPATCHPAGE, aPatch);
+    GEN_CHECK_OFF(PATMPATCHPAGE, papPatch);
 #endif
 
 
