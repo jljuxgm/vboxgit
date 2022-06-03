@@ -1,4 +1,4 @@
-/* $Id: socket.c 41453 2012-05-26 03:40:24Z vboxsync $ */
+/* $Id: socket.c 41455 2012-05-28 02:31:25Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -340,11 +340,18 @@ soread(PNATState pData, struct socket *so)
         }
         else
         {
+            int fUninitiolizedTemplate = 0;
+            fUninitiolizedTemplate = RT_BOOL((   sototcpcb(so)
+                                              && (  sototcpcb(so)->t_template.ti_src.s_addr == INADDR_ANY
+                                                 || sototcpcb(so)->t_template.ti_dst.s_addr == INADDR_ANY)));
             /* nn == 0 means peer has performed an orderly shutdown */
             Log2(("%s: disconnected, nn = %d, errno = %d (%s)\n",
                   __PRETTY_FUNCTION__, nn, errno, strerror(errno)));
             sofcantrcvmore(so);
-            tcp_sockclosed(pData, sototcpcb(so));
+            if (!fUninitiolizedTemplate)
+                tcp_sockclosed(pData, sototcpcb(so));
+            else
+                tcp_drop(pData, sototcpcb(so), errno);
             SOCKET_UNLOCK(so);
             STAM_PROFILE_STOP(&pData->StatIOread, a);
             return -1;
