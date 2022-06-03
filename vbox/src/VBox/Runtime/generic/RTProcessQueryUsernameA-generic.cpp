@@ -1,4 +1,4 @@
-/* $Id: RTProcessQueryUsernameA-generic.cpp 42067 2012-07-09 17:49:58Z vboxsync $ */
+/* $Id: RTProcessQueryUsernameA-generic.cpp 42078 2012-07-10 08:41:02Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -52,7 +52,7 @@ RTR3DECL(int)   RTProcQueryUsernameA(RTPROCESS hProcess, char **ppszUser)
         char *pszUser = (char *)RTStrAlloc(cbUser);
         if (pszUser)
         {
-            rc = RTProcQueryUsername(RTProcSelf(), pszUser, cbUser, NULL);
+            rc = RTProcQueryUsername(hProcess, pszUser, cbUser, NULL);
             Assert(rc != VERR_BUFFER_OVERFLOW);
             if (RT_SUCCESS(rc))
                 *ppszUser = pszUser;
