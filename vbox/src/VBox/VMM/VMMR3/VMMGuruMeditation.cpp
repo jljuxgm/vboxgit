@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 39678 2011-12-26 21:46:15Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -166,6 +166,8 @@ static void vmmR3FatalDumpInfoHlpInit(PVMMR3FATALDUMPINFOHLP pHlp)
         pHlp->pRelLogger->fFlags &= ~(RTLOGFLAGS_BUFFERED | RTLOGFLAGS_DISABLED);
     }
 
+    /** @todo don't create a debug logger in release builds if we already
+     *        have a release logger! */
     if (pHlp->pLogger)
     {
         pHlp->fLoggerFlags     = pHlp->pLogger->fFlags;
