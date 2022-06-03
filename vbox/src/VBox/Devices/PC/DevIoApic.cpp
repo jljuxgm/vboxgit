@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 37637 2011-06-24 15:06:23Z vboxsync $ */
+/* $Id: DevIoApic.cpp 38850 2011-09-23 13:35:29Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -595,12 +595,15 @@ static DECLCALLBACK(int) ioapicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     /*
      * Initialize the state data.
      */
-
     s->pDevInsR3 = pDevIns;
     s->pDevInsR0 = PDMDEVINS_2_R0PTR(pDevIns);
     s->pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
     ioapic_reset(s);
     s->id = cCpus;
+
+    /* PDM provides locking via the IOAPIC helpers. */
+    rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
+    AssertRCReturn(rc, rc);
 
     /*
      * Register the IOAPIC and get helpers.
