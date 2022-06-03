@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 38363 2011-08-08 19:01:30Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 38903 2011-09-29 16:20:22Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -30,6 +30,9 @@
 
 #define VBOXWDDMDISP_MAX_VERTEX_STREAMS 16
 #define VBOXWDDMDISP_MAX_SWAPCHAIN_SIZE 16
+/* maximum number of direct render targets to be used before
+ * switching to offscreen rendering */
+#define VBOXWDDMDISP_MAX_DIRECT_RTS      3
 
 #define VBOXWDDMDISP_IS_TEXTURE(_f) ((_f).Texture || (_f).Value == 0)
 
@@ -128,8 +131,10 @@ typedef struct VBOXWDDMDISP_SWAPCHAIN_FLAGS
     {
         struct
         {
-            UINT bChanged : 1;
-            UINT Reserved : 31;
+            UINT bChanged                : 1;
+            UINT bRtReportingPresent     : 1; /* use VBox extension method for performing present */
+            UINT bSwitchReportingPresent : 1; /* switch to use VBox extension method for performing present on next present */
+            UINT Reserved                : 30;
         };
         uint32_t Value;
     };

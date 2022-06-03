@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 38117 2011-07-22 14:47:43Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 38903 2011-09-29 16:20:22Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -33,6 +33,8 @@
 #  define VBOXWDDMDISP_DEBUG_PRINT
 /* adds vectored exception handler to be able to catch non-debug UM exceptions in kernel debugger */
 #  define VBOXWDDMDISP_DEBUG_VEHANDLER
+/* disable shared resource creation with wine */
+//#  define VBOXWDDMDISP_DEBUG_NOSHARED
 # endif
 #endif
 

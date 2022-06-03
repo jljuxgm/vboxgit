@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 38363 2011-08-08 19:01:30Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 38903 2011-09-29 16:20:22Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -58,7 +58,12 @@ HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D)
                         Assert(pD3D->pfnVBoxWineExD3DDev9Update);
                         if (pD3D->pfnVBoxWineExD3DDev9Update)
                         {
-                            return S_OK;
+                            pD3D->pfnVBoxWineExD3DSwapchain9Present = (PFNVBOXWINEEXD3DSWAPCHAIN9_PRESENT)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DSwapchain9Present");
+                            Assert(pD3D->pfnVBoxWineExD3DSwapchain9Present);
+                            if (pD3D->pfnVBoxWineExD3DSwapchain9Present)
+                            {
+                                return S_OK;
+                            }
                         }
                     }
                 }
