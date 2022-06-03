@@ -1,4 +1,4 @@
-; $Id: VBoxRT-openssl-ose.def 37277 2011-05-31 14:38:12Z vboxsync $
+; $Id: VBoxRT-openssl-ose.def 38036 2011-07-18 16:36:29Z vboxsync $
 ;; @file
 ; IPRT - Windows OpenSSL exports.
 ;
@@ -1341,6 +1341,7 @@
     SSL_CTX_use_certificate_file
     SSL_CTX_use_PrivateKey_file
     SSL_free
+    SSL_get_certificate
     SSL_library_init
     SSL_new
     SSL_pending
