@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 37626 2011-06-24 12:01:33Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 37640 2011-06-26 14:13:00Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -81,7 +81,6 @@ VBOXWDDM_HANDLE vboxWddmHTablePut(PVBOXWDDM_HTABLE pTbl, PVOID pvData)
 {
     if (pTbl->cSize == pTbl->cData)
     {
-        Assert(0);
         NTSTATUS Status = vboxWddmHTableRealloc(pTbl, pTbl->cSize + RT_MAX(10, pTbl->cSize/4));
         Assert(Status == STATUS_SUCCESS);
         if (Status != STATUS_SUCCESS)

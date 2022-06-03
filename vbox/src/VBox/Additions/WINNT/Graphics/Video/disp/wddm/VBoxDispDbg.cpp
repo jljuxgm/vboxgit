@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 37300 2011-06-01 19:45:51Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 37640 2011-06-26 14:13:00Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -447,6 +447,7 @@ LONG WINAPI vboxVDbgVectoredHandler(struct _EXCEPTION_POINTERS *pExceptionInfo)
         case 0xe06d7363: /* <- ms compiler - generated exception related to C++ exception */
         case 0x000006d9: /* <- RPC exception, ignore */
         case 0x406d1388: /* <- VS/WinDbg thread naming exception, ignore */
+        case 0xe0434f4d: /* <- CLR exception */
             break;
         default:
             AssertRelease(0);
