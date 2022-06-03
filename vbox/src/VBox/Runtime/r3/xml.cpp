@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: xml.cpp 39933 2012-02-01 13:45:02Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1500,7 +1500,7 @@ void XmlMemParser::read(const void* pvBuf, size_t cbSize,
                                                   (int)cbSize,
                                                   pcszFilename,
                                                   NULL,       // encoding = auto
-                                                  XML_PARSE_NOBLANKS)))
+                                                  XML_PARSE_NOBLANKS | XML_PARSE_NONET)))
         throw XmlError(xmlCtxtGetLastError(m_ctxt));
 
     doc.refreshInternals();
@@ -1630,7 +1630,7 @@ void XmlFileParser::read(const RTCString &strFilename,
                                               &context,
                                               pcszFilename,
                                               NULL,       // encoding = auto
-                                              XML_PARSE_NOBLANKS)))
+                                              XML_PARSE_NOBLANKS | XML_PARSE_NONET)))
         throw XmlError(xmlCtxtGetLastError(m_ctxt));
 
     doc.refreshInternals();
