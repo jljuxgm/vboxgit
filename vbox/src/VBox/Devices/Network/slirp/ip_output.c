@@ -1,4 +1,4 @@
-/* $Id: ip_output.c 34103 2010-11-16 11:18:55Z vboxsync $ */
+/* $Id: ip_output.c 36965 2011-05-05 03:03:22Z vboxsync $ */
 /** @file
  * NAT - IP output.
  */
@@ -280,27 +280,26 @@ ip_output0(PNATState pData, struct socket *so, struct mbuf *m0, int urg)
         ip->ip_sum = cksum(m, mhlen);
 
 send_or_free:
+        {
+            /* We're aliasing all fragments */
+            struct m_tag *t;
+            int rcLa;
+            if ((t = m_tag_find(m, PACKET_TAG_ALIAS, NULL)) != 0)
+                rcLa = LibAliasOut((struct libalias *)&t[1], mtod(m, char *), m->m_len);
+            else
+                rcLa = LibAliasOut(pData->proxy_alias, mtod(m, char *), m->m_len);
+
+            if (rcLa == PKT_ALIAS_IGNORED)
+            {
+                Log(("NAT: packet was droppped\n"));
+                goto exit_drop_package;
+            }
+            Log2(("NAT: LibAlias return %d\n", rcLa));
+        }
         for (m = m0; m; m = m0)
         {
             m0 = m->m_nextpkt;
             m->m_nextpkt = 0;
-            {
-                /* We're aliasing all fragments */
-                struct m_tag *t;
-                int rcLa;
-
-                if ((t = m_tag_find(m, PACKET_TAG_ALIAS, NULL)) != 0)
-                    rcLa = LibAliasOut((struct libalias *)&t[1], mtod(m, char *), m->m_len);
-                else
-                    rcLa = LibAliasOut(pData->proxy_alias, mtod(m, char *), m->m_len);
-
-                if (rcLa == PKT_ALIAS_IGNORED)
-                {
-                    Log(("NAT: packet was droppped\n"));
-                    goto exit_drop_package;
-                }
-                Log2(("NAT: LibAlias return %d\n", rcLa));
-            }
             if (error == 0)
             {
                 m->m_data -= ETH_HLEN;
