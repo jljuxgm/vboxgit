@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvNetSniffer.cpp 37461 2011-06-15 09:32:14Z vboxsync $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -490,7 +490,8 @@ static DECLCALLBACK(int) drvNetSnifferConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
 
     /*
      * Write pcap header.
-     * Some time is done since capturing pThis->StartNanoTS so capture the current time again.
+     * Some time has gone by since capturing pThis->StartNanoTS so get the
+     * current time again.
      */
     PcapFileHdr(pThis->File, RTTimeNanoTS());
 
