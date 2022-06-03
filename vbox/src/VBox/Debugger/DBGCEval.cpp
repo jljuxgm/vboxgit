@@ -1,4 +1,4 @@
-/* $Id: DBGCEval.cpp 41573 2012-06-04 21:13:23Z vboxsync $ */
+/* $Id: DBGCEval.cpp 41780 2012-06-16 18:53:58Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, command evaluator.
  */
@@ -996,7 +996,7 @@ static int dbgcCheckAndTypePromoteArgument(PDBGC pDbgc, DBGCVARCAT enmCategory, 
                     break;
             }
 
-            /* Stringify numeric and poitner values. */
+            /* Stringify numeric and pointer values. */
             size_t cbScratch = sizeof(pDbgc->achScratch) - (pDbgc->pszScratch - &pDbgc->achScratch[0]);
             size_t cch = pDbgc->CmdHlp.pfnStrPrintf(&pDbgc->CmdHlp, pDbgc->pszScratch, cbScratch, "%Dv", pArg);
             if (cch + 1 >= cbScratch)
