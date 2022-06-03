@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: ProgressProxyImpl.h 41184 2012-05-07 13:28:04Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -27,7 +27,6 @@
  * attributes to a different IProgress object for a period of time.
  */
 class ATL_NO_VTABLE ProgressProxy :
-    //public com::SupportErrorInfoDerived<Progress, ProgressProxy, IProgress>,
     public Progress
 {
 public:
@@ -92,9 +91,6 @@ public:
                            const char *pcszComponent,
                            const char *aText, ...);
     bool setOtherProgressObject(IProgress *pOtherProgress);
-
-    /** For com::SupportErrorInfoImpl. */
-    static const char *ComponentName() { return "ProgressProxy"; }
 
 protected:
     void clearOtherProgressObjectInternal(bool fEarly);

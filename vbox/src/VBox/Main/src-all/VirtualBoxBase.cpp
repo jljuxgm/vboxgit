@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 41104 2012-05-01 07:36:35Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 41184 2012-05-07 13:28:04Z vboxsync $ */
 
 /** @file
  *
@@ -738,7 +738,7 @@ AutoInitSpan::AutoInitSpan(VirtualBoxBase *aObj,
 }
 
 /**
- * Places the managed VirtualBoxBase object to  Ready/Limited state if the
+ * Places the managed VirtualBoxBase object to Ready/Limited state if the
  * initialization succeeded or partly succeeded, or places it to InitFailed
  * state and calls the object's uninit() method.
  *

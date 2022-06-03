@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 40257 2012-02-27 09:25:12Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 41184 2012-05-07 13:28:04Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -1234,7 +1234,7 @@ HRESULT Progress::notifyComplete(HRESULT aResultCode,
 /**
  * Marks the operation as complete and attaches full error info.
  *
- * See com::SupportErrorInfoImpl::setError(HRESULT, const GUID &, const wchar_t
+ * See VirtualBoxBase::setError(HRESULT, const GUID &, const wchar_t
  * *, const char *, ...) for more info.
  *
  * @param aResultCode   Operation result (error) code, must not be S_OK.

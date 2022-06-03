@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41040 2012-04-24 10:13:40Z vboxsync $
+# $Id: Makefile.kmk 41184 2012-05-07 13:28:04Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -705,8 +705,7 @@ VBoxCOM_SOURCES         = \
 	glue/AutoLock.cpp \
 	glue/EventQueue.cpp \
 	glue/ErrorInfo.cpp \
-	glue/errorprint.cpp \
-	glue/VirtualBoxErrorInfo.cpp
+	glue/errorprint.cpp
 VBoxCOM_INCS          += \
 	include
 ifeq ($(KBUILD_TARGET),win)
