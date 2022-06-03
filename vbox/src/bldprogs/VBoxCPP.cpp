@@ -1,4 +1,4 @@
-/* $Id: VBoxCPP.cpp 41297 2012-05-15 09:28:05Z vboxsync $ */
+/* $Id: VBoxCPP.cpp 41301 2012-05-15 10:01:07Z vboxsync $ */
 /** @file
  * VBox Build Tool - A mini C Preprocessor.
  *
@@ -110,8 +110,10 @@ typedef struct VBCPPMACRO
 {
     /** The string space core. */
     RTSTRSPACECORE      Core;
+#if 0
     /** For linking macros that have the fExpanding flag set. */
     struct VBCPPMACRO  *pUpExpanding;
+#endif
     /** Whether it's a function. */
     bool                fFunction;
     /** Variable argument count. */
@@ -143,8 +145,10 @@ typedef struct VBCPPMACROEXP
 {
     /** The expansion buffer. */
     VBCPPSTRBUF     StrBuf;
+#if 0
     /** List of expanding macros (Stack). */
     PVBCPPMACRO     pMacroStack;
+#endif
     /** The input stream (in case we want to look for parameter lists). */
     PSCMSTREAM      pStrmInput;
     /** Array of argument values.  Used when expanding function style macros.  */
@@ -1563,7 +1567,9 @@ static RTEXITCODE vbcppProcessIdentifier(PVBCPP pThis, PSCMSTREAM pStrmInput, ch
          * Expand it.
          */
         VBCPPMACROEXP ExpCtx;
+#if 0
         ExpCtx.pMacroStack    = NULL;
+#endif
         ExpCtx.pStrmInput     = pStrmInput;
         ExpCtx.papszArgs      = NULL;
         ExpCtx.cArgs          = 0;
@@ -2238,12 +2244,14 @@ static RTEXITCODE vbcppMacroExpandIt(PVBCPP pThis, PVBCPPMACROEXP pExp, size_t o
         rcExit = vbcppMacroExpandReplace(pThis, pExp, offMacro, pMacro->Core.cchString, pMacro->szValue, pMacro->cchValue);
     if (rcExit == RTEXITCODE_SUCCESS)
     {
+#if 0 /* wrong */
         /*
          * Push the macro onto the stack.
          */
         pMacro->fExpanding   = true;
         pMacro->pUpExpanding = pExp->pMacroStack;
         pExp->pMacroStack    = pMacro;
+#endif
     }
 
     return rcExit;
@@ -2470,6 +2478,7 @@ static RTEXITCODE vbcppMacroExpandReScan(PVBCPP pThis, PVBCPPMACROEXP pExp, VBCP
  */
 static void vbcppMacroExpandCleanup(PVBCPPMACROEXP pExp)
 {
+#if 0
     while (pExp->pMacroStack)
     {
         PVBCPPMACRO pMacro = pExp->pMacroStack;
@@ -2478,6 +2487,7 @@ static void vbcppMacroExpandCleanup(PVBCPPMACROEXP pExp)
         pMacro->fExpanding   = false;
         pMacro->pUpExpanding = NULL;
     }
+#endif
 
     while (pExp->cArgs > 0)
     {
@@ -4451,7 +4461,9 @@ static RTEXITCODE vbcppDirectiveIfOrElif(PVBCPP pThis, PSCMSTREAM pStrmInput, si
     const char         *pchCondition = ScmStreamGetCur(pStrmInput);
     size_t              offComment;
     VBCPPMACROEXP       ExpCtx;
+#if 0
     ExpCtx.pMacroStack    = NULL;
+#endif
     ExpCtx.pStrmInput     = NULL;
     ExpCtx.papszArgs      = NULL;
     ExpCtx.cArgs          = 0;
@@ -5351,7 +5363,7 @@ static RTEXITCODE vbcppParseOptions(PVBCPP pThis, int argc, char **argv, bool *p
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 41297 $";
+                static const char s_szRev[] = "$Revision: 41301 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 *pfExit = true;
