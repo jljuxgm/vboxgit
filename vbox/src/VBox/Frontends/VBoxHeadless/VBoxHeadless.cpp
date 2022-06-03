@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 36380 2011-03-23 18:00:10Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 37473 2011-06-15 16:16:31Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -576,12 +576,6 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     char pszMPEGFile[RTPATH_MAX];
     const char *pszFileNameParam = "VBox-%d.vob";
 #endif /* VBOX_FFMPEG */
-
-
-    /* Make sure that DISPLAY is unset, so that X11 bits do not get initialised
-     * on X11-using OSes. */
-    /** @todo this should really be taken care of in Main. */
-    RTEnvUnset("DISPLAY");
 
     LogFlow (("VBoxHeadless STARTED.\n"));
     RTPrintf (VBOX_PRODUCT " Headless Interface " VBOX_VERSION_STRING "\n"
@@ -1162,6 +1156,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 CHECK_ERROR_BREAK(vrdeServer, COMSETTER(Enabled)(FALSE));
             }
         }
+
+        /* Disable the host clipboard before powering up */
+        console->COMSETTER(UseHostClipboard)(false);
 
         Log(("VBoxHeadless: Powering up the machine...\n"));
 
