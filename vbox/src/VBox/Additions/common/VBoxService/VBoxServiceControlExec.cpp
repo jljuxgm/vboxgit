@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 38493 2011-08-19 07:05:37Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 38587 2011-08-31 15:09:45Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -1410,7 +1410,6 @@ int VBoxServiceControlExecHandleCmdGetOutput(uint32_t u32ClientId, uint32_t uNum
             else
                 VBoxServiceError("ControlExec: [PID %u]: Failed to retrieve output, CID=%u, uHandle=%u, rc=%Rrc\n",
                                  uPID, uContextID, uHandleID, rc);
-
             /* Note: Since the context ID is unique the request *has* to be completed here,
              *       regardless whether we got data or not! Otherwise the progress object
              *       on the host never will get completed! */
