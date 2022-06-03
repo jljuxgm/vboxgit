@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 38895 2011-09-28 12:04:39Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 38896 2011-09-28 13:32:03Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -375,7 +375,6 @@ int _info(struct modinfo *pModInfo)
 LOCAL int VBoxNetFltSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
 {
     Log((DEVICE_NAME ":VBoxNetFltSolarisAttach pDip=%p enmCmd=%d\n", pDip, enmCmd));
-    LogRel((DEVICE_NAME ":blah\n"));
 
     switch (enmCmd)
     {
