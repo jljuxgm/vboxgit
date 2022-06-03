@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36260 2011-03-11 12:57:35Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 36400 2011-03-24 13:14:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -508,7 +508,19 @@ static HRESULT attachRawPciDevices(BusAssignmentManager* BusMgr,
     PCFGMNODE pPciDevs = NULL;
 
     if (assignments.size() > 0)
+    {
         InsertConfigNode(pDevices,     "pciraw",  &pPciDevs);
+
+        /*
+         * Currently, using IOMMU needed for PCI passthrough
+         * requires RAM preallocation.
+         * @todo: check if we can lift this requirement
+         */
+        PCFGMNODE pRoot = CFGMR3GetParent(pDevices);
+        Assert(pRoot);
+        CFGMR3RemoveValue(pRoot, "RamPreAlloc");
+        CFGMR3InsertInteger(pRoot, "RamPreAlloc",    1);
+    }
 
     for (size_t iDev = 0; iDev < assignments.size(); iDev++)
     {
