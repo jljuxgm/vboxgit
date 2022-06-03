@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 36640 2011-04-11 11:44:08Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 38537 2011-08-25 18:36:39Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3895,7 +3895,8 @@ static int dbgcCmdWorkerSearchMemResume(PDBGCCMDHLP pCmdHlp, PVM pVM, PDBGCVAR p
 static int dbgcCmdWorkerSearchMem(PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR pAddress, uint64_t cMaxHits, char chType,
                                   PCDBGCVAR paPatArgs, unsigned cPatArgs, PDBGCVAR pResult)
 {
-    DBGCVAR_INIT_GC_FLAT(pResult, 0);
+    if (pResult)
+        DBGCVAR_INIT_GC_FLAT(pResult, 0);
 
     /*
      * Convert the search pattern into bytes and DBGFR3MemScan can deal with.
