@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 35696 2011-01-24 18:03:33Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 35994 2011-02-16 13:30:53Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1933,9 +1933,18 @@ REMR3DECL(int)  REMR3State(PVM pVM, PVMCPU pVCpu)
      */
     fFlags = CPUMR3RemEnter(pVCpu, &uCpl);
     LogFlow(("CPUMR3RemEnter %x %x\n", fFlags, uCpl));
-    if (fFlags & (  CPUM_CHANGED_CR4  | CPUM_CHANGED_CR3  | CPUM_CHANGED_CR0
-                  | CPUM_CHANGED_GDTR | CPUM_CHANGED_IDTR | CPUM_CHANGED_LDTR
-                  | CPUM_CHANGED_FPU_REM | CPUM_CHANGED_SYSENTER_MSR | CPUM_CHANGED_CPUID))
+    if (fFlags & (  CPUM_CHANGED_GLOBAL_TLB_FLUSH
+                  | CPUM_CHANGED_CR4
+                  | CPUM_CHANGED_CR0
+                  | CPUM_CHANGED_CR3
+                  | CPUM_CHANGED_GDTR
+                  | CPUM_CHANGED_IDTR
+                  | CPUM_CHANGED_SYSENTER_MSR
+                  | CPUM_CHANGED_LDTR
+                  | CPUM_CHANGED_CPUID
+                  | CPUM_CHANGED_FPU_REM
+                 )
+        )
     {
         if (fFlags & CPUM_CHANGED_GLOBAL_TLB_FLUSH)
         {
