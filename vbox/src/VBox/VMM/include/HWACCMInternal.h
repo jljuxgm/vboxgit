@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 42045 2012-07-09 06:45:52Z vboxsync $ */
+/* $Id: HWACCMInternal.h 42056 2012-07-09 12:52:22Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -630,6 +630,9 @@ typedef struct HWACCMCPU
         /* Number of automatically loaded/restored MSRs. */
         uint32_t                    cCachedMSRs;
         uint32_t                    uAlignement;
+
+        /* Host's IA32_TSC_AUX MSR (for RDTSCP in VMX non-root). */
+        uint64_t                    u64HostTSCAux;
 
         /* Last use TSC offset value. (cached) */
         uint64_t                    u64TSCOffset;
