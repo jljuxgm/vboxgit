@@ -1,4 +1,4 @@
-/* $Id: UINewVMWzd.cpp 38496 2011-08-19 09:45:38Z vboxsync $ */
+/* $Id: UINewVMWzd.cpp 38575 2011-08-30 16:03:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -27,6 +27,10 @@
 #include "QIFileDialog.h"
 #include "UIMessageCenter.h"
 #include "UIMachineSettingsStorage.h"
+#include "VBoxDefs.h"
+
+/* Using declarations: */
+using namespace VBoxGlobalDefs;
 
 /* Globals */
 struct osTypePattern
@@ -763,9 +767,8 @@ bool UINewVMWzdPage5::constructMachine()
          * necessary evil to patch over legacy compatability issues
          * introduced by the new distribution model.
          */
-        static const char *s_pszUsbExtPackName = "Oracle VM VirtualBox Extension Pack";
         CExtPackManager manager = vboxGlobal().virtualBox().GetExtensionPackManager();
-        if (manager.IsExtPackUsable(s_pszUsbExtPackName))
+        if (manager.IsExtPackUsable(UI_ExtPackName))
             usbController.SetEnabledEhci(true);
     }
 

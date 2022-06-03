@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 35897 2011-02-08 13:25:30Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 38575 2011-08-30 16:03:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -23,6 +23,10 @@
 /* Global includes */
 #include <QStringList>
 
+/* VBoxGlobalDefs stuff: */
+const char* VBoxGlobalDefs::UI_ExtPackName = "Oracle VM VirtualBox Extension Pack";
+
+/* VBoxDefs stuff: */
 const char* VBoxDefs::GUI_LastWindowPosition = "GUI/LastWindowPosition";
 const char* VBoxDefs::GUI_LastNormalWindowPosition = "GUI/LastNormalWindowPosition";
 const char* VBoxDefs::GUI_LastScaleWindowPosition = "GUI/LastScaleWindowPosition";
