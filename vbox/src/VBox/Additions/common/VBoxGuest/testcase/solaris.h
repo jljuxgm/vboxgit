@@ -1,4 +1,4 @@
-/* $Id: solaris.h 41020 2012-04-23 09:07:36Z vboxsync $ */
+/* $Id: solaris.h 41212 2012-05-08 15:55:06Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver for Solaris - testcase stubs.
  */
@@ -139,6 +139,8 @@
 #define FE_PAIR_SET             1
 #define FE_PAIR_DELTA           2
 #define FE_PAIR_ABSOLUTE        3
+
+typedef struct __ldi_handle             *ldi_handle_t;
 
 typedef enum
 {
