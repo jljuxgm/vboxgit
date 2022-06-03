@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 38388 2011-08-09 21:21:55Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 38389 2011-08-09 21:24:21Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -127,8 +127,9 @@ struct VBoxNetAdapter
 # endif
         } s;
 #endif
-        /** Padding + union alignment to a pointer. */
+        /** Union alignment to a pointer. */
         void *pvAlign;
+        /** Padding. */
 #if defined(RT_OS_WINDOWS)
 # if defined(VBOX_NETFLT_ONDEMAND_BIND)
         uint8_t abPadding[192];
