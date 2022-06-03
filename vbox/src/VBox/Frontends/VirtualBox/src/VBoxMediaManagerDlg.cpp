@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 37525 2011-06-17 10:09:21Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 37655 2011-06-28 09:50:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1096,7 +1096,7 @@ void VBoxMediaManagerDlg::doCopyMedium()
     MediaItem *pItem = toMediaItem(pTree->currentItem());
 
     UINewHDWizard wizard(this /* parent dialog */,
-                         tr("%1_copy", "copied virtual disk name").arg(QFileInfo(pItem->text(0)).baseName()) /* default name */,
+                         UINewHDWizard::tr("%1_copy", "copied virtual disk name").arg(QFileInfo(pItem->text(0)).baseName()) /* default name */,
                          QFileInfo(pItem->location()).absolutePath() /* default path */,
                          0 /* default size, not important for copying */,
                          pItem->medium().medium() /* base medium for copying */);
