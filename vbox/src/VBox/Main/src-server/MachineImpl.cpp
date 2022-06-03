@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36058 2011-02-22 23:11:22Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36072 2011-02-24 15:02:14Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8305,7 +8305,7 @@ void Machine::copyMachineDataToSettings(settings::MachineConfigFile &config)
     }
     else
     {
-        Assert(mSSData->mStateFilePath.isEmpty());
+        Assert(mSSData->mStateFilePath.isEmpty() || mData->mMachineState == MachineState_Saving);
         config.strStateFile.setNull();
     }
 
