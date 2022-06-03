@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 39819 2012-01-20 13:12:27Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 39820 2012-01-20 13:16:27Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -3191,16 +3191,6 @@ static HRESULT vboxWddmGetD3D9Caps(PVBOXWDDMDISP_ADAPTER pAdapter, D3DCAPS9 *pCa
         WARN(("GetDeviceCaps failed hr(0x%x)",hr));
         return hr;
     }
-
-#if 0
-    pCaps->RasterCaps |= D3DPRASTERCAPS_FOGRANGE;
-    pCaps->MaxTextureWidth = 8192; // 4096
-    pCaps->MaxTextureHeight = 8192; // 4096
-    pCaps->MaxVolumeExtent = 2048; // 512
-    pCaps->MaxTextureAspectRatio = 8192; // 4096
-    pCaps->MaxUserClipPlanes = 8; // 6
-    pCaps->MaxPointSize = 63.000000; // 64.000000
-#endif
 
     vboxDispDumpD3DCAPS9(pCaps);
 
