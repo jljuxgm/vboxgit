@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 39959 2012-02-02 17:11:50Z vboxsync $ */
+/* $Id: DevPS2.cpp 39964 2012-02-02 17:50:36Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -205,7 +205,7 @@ typedef struct KBDState {
     int32_t scan_enabled;
     int32_t translate;
     int32_t scancode_set;   /* 1=XT, 2=AT, 3=PS/2 */
-    xlat_state_t    xlat_state;
+    int32_t xlat_state;
     /* mouse state */
     int32_t mouse_write_cmd;
     uint8_t mouse_status;
