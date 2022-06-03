@@ -1,4 +1,4 @@
-/* $Id: tstVBoxGuest-solaris.h 40488 2012-03-15 16:57:11Z vboxsync $ */
+/* $Id: tstVBoxGuest-solaris.h 40501 2012-03-16 15:04:26Z vboxsync $ */
 /** @file
  *
  * Test cases for VBoxGuest-solaris, declarations.
@@ -24,6 +24,7 @@
 RT_C_DECLS_BEGIN
 
 extern void test_init(RTTEST hTest);
+extern void testOpenClose(RTTEST hTest);
 
 RT_C_DECLS_END
 

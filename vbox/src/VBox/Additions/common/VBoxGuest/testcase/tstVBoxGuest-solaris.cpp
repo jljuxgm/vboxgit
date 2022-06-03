@@ -1,4 +1,4 @@
-/* $Id: tstVBoxGuest-solaris.cpp 40488 2012-03-15 16:57:11Z vboxsync $ */
+/* $Id: tstVBoxGuest-solaris.cpp 40501 2012-03-16 15:04:26Z vboxsync $ */
 /** @file
  *
  * Test cases for VBoxGuest-solaris.
@@ -26,6 +26,7 @@ int main()
         return rc;
     RTTestBanner(hTest);
     test_init(hTest);
+    testOpenClose(hTest);
 
     /*
      * Summary.
