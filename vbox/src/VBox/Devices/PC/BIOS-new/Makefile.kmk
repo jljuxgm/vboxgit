@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41604 2012-06-07 01:08:37Z vboxsync $
+# $Id: Makefile.kmk 41605 2012-06-07 01:14:38Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -33,7 +33,7 @@ ifdef VBOX_WITH_OPEN_WATCOM
  TEMPLATE_VBoxBios_BINSUFF = .rom
  TEMPLATE_VBoxBios_INCS    = .
  TEMPLATE_VBoxBios_ASFLAGS = -q -3 -wx
- TEMPLATE_VBoxBios_CFLAGS  = -q -3 -wx -zu -s -oas -d1+ -ms
+ TEMPLATE_VBoxBios_CFLAGS  = -q -3 -wx -zl -zu -s -oas -d1+ -ms
  TEMPLATE_VBoxBios_DEFS    = \
  	VBOX_PC_BIOS \
  	VBOX_LANBOOT_SEG=0xE200 \

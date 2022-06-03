@@ -1,4 +1,4 @@
-; $Id: support.asm 41604 2012-06-07 01:08:37Z vboxsync $
+; $Id: support.asm 41605 2012-06-07 01:14:38Z vboxsync $
 ;; @file
 ; Compiler support routines.
 ;
@@ -32,14 +32,6 @@ public          _fmemcpy_
 
 _TEXT           segment public 'CODE' use16
                 assume cs:_TEXT
-
-
-;
-; A symbol the compiler uses to make sure it drags in the right clibs.
-;
-_small_code_:
-                cli
-                hlt
 
 
 ;;
