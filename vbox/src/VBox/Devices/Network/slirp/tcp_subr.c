@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 39101 2011-10-25 02:44:01Z vboxsync $ */
+/* $Id: tcp_subr.c 39409 2011-11-24 15:28:32Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -243,6 +243,9 @@ struct tcpcb *tcp_drop(PNATState pData, struct tcpcb *tp, int err)
         int errno;
 {
 */
+#ifndef LOG_ENABLED
+    NOREF(err);
+#endif
     LogFlowFunc(("ENTER: tp = %R[tcpcb793], errno = %d\n", tp, err));
 
     if (TCPS_HAVERCVDSYN(tp->t_state))

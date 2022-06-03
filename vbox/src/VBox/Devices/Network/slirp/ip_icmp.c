@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 39101 2011-10-25 02:44:01Z vboxsync $ */
+/* $Id: ip_icmp.c 39409 2011-11-24 15:28:32Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -721,6 +721,8 @@ void icmp_error(PNATState pData, struct mbuf *msrc, u_char type, u_char code, in
         cpnt = (char *)m->m_data+m->m_len;
         m_append(pData, m, message_len, message);
     }
+#else
+    NOREF(message);
 #endif
 
     icp->icmp_cksum = 0;

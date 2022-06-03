@@ -1,4 +1,4 @@
-/* $Id: sbuf.c 39101 2011-10-25 02:44:01Z vboxsync $ */
+/* $Id: sbuf.c 39409 2011-11-24 15:28:32Z vboxsync $ */
 /** @file
  * NAT - sbuf implemenation.
  */
@@ -202,6 +202,9 @@ void
 sbappendsb(PNATState pData, struct sbuf *sb, struct mbuf *m)
 {
     int len, n,  nn;
+#ifndef VBOX_WITH_STATISTICS
+    NOREF(pData);
+#endif
 
     len = m_length(m, NULL);
 
