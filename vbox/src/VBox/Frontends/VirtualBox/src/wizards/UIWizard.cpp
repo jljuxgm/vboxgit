@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 41400 2012-05-22 16:15:20Z vboxsync $ */
+/* $Id: UIWizard.cpp 41401 2012-05-22 16:23:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -409,7 +409,7 @@ double UIWizard::ratio()
             dRatio += 0.3;
             break;
         case UIWizardType_FirstRun:
-            dRatio += 0.4;
+            dRatio += 0.3;
             break;
         default:
             break;
