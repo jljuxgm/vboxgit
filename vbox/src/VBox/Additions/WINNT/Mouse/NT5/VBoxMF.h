@@ -1,4 +1,4 @@
-/* $Id: VBoxMF.h 37221 2011-05-26 10:33:21Z vboxsync $ */
+/* $Id: VBoxMF.h 37225 2011-05-26 14:49:59Z vboxsync $ */
 
 /** @file
  * VBox Mouse filter header
@@ -46,6 +46,7 @@ typedef struct _INTERNAL_MOUSE_CONNECT_DATA
 
 typedef struct _VBOXMOUSE_DEVEXT
 {
+    LIST_ENTRY ListEntry;
     PDEVICE_OBJECT pdoMain;           /* PDO passed to VBoxDrvAddDevice */
     PDEVICE_OBJECT pdoSelf;           /* our PDO created in VBoxDrvAddDevice*/
     PDEVICE_OBJECT pdoParent;         /* Highest PDO in chain before we've attached our filter */
@@ -75,6 +76,9 @@ NTSTATUS VBoxIrpPnP(IN PDEVICE_OBJECT DeviceObject, IN PIRP Irp);
 VOID VBoxDeviceAdded(PVBOXMOUSE_DEVEXT pDevExt);
 VOID VBoxInformHost(PVBOXMOUSE_DEVEXT pDevExt);
 VOID VBoxDeviceRemoved(PVBOXMOUSE_DEVEXT pDevExt);
+
+NTSTATUS VBoxNewProtInit();
+NTSTATUS VBoxNewProtTerm();
 
 VOID VBoxDrvNotifyServiceCB(PVBOXMOUSE_DEVEXT pDevExt, PMOUSE_INPUT_DATA InputDataStart, PMOUSE_INPUT_DATA InputDataEnd, PULONG  InputDataConsumed);
 
