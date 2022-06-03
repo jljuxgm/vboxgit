@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 40883 2012-04-11 23:43:48Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 40884 2012-04-11 23:53:10Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -452,7 +452,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 40883 2012-04-11 23:43:48Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 40884 2012-04-11 23:53:10Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -607,9 +607,9 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
             ScmStreamPrintf(pStrm,
                             "    ; off=%u\n"
                             "    db   %2u     ; Argument count\n"
-                            "    db   %u      ; fHaveLargeArgs"
+                            "    db   %u      ; fHaveLargeArgs\n"
                             "    db  0, 0    ; Reserved\n"
-                            , off, pProbe->cArgs, pProbe->fHaveLargeArgs);
+                            , off, pProbe->cArgs, (int)pProbe->fHaveLargeArgs);
             off += 4;
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
@@ -890,7 +890,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 40883 2012-04-11 23:43:48Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 40884 2012-04-11 23:53:10Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -1772,7 +1772,7 @@ static RTEXITCODE parseProbe(PSCMSTREAM pStrm, PVTGPROVIDER pProv)
         return parseError(pStrm, 0, "Out of memory");
     RTListInit(&pProbe->ArgHead);
     RTListAppend(&pProv->ProbeHead, &pProbe->ListEntry);
-    pProbe->offArgList = UINT32_MAX;
+    pProbe->offArgList     = UINT32_MAX;
     pProbe->pszMangledName = RTStrDupN(pszProbe, cchProbe);
     if (!pProbe->pszMangledName)
         return parseError(pStrm, 0, "Out of memory");
@@ -2149,7 +2149,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 40883 $";
+                static const char s_szRev[] = "$Revision: 40884 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
