@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 36968 2011-05-05 08:55:16Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 36998 2011-05-07 20:19:55Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -861,7 +861,7 @@ static int VBoxUsbMonFltRemove(PVBOXUSBMONCTX pContext, uintptr_t uId)
 
 static NTSTATUS VBoxUsbMonRunFilters(PVBOXUSBMONCTX pContext)
 {
-    NTSTATUS Status = VBoxUsbFltFilterCheck();
+    NTSTATUS Status = VBoxUsbFltFilterCheck(&pContext->FltCtx);
     return Status;
 }
 

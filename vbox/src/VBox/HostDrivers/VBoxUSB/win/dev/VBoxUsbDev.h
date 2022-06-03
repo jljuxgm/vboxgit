@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbDev.h 36968 2011-05-05 08:55:16Z vboxsync $ */
+/* $Id: VBoxUsbDev.h 36998 2011-05-07 20:19:55Z vboxsync $ */
 /** @file
  * VBoxUsbDev.h - USB device.
  */
@@ -26,11 +26,6 @@ typedef struct VBOXUSB_GLOBALS
 } VBOXUSB_GLOBALS, *PVBOXUSB_GLOBALS;
 
 extern VBOXUSB_GLOBALS g_VBoxUsbGlobals;
-
-typedef struct VBOXUSB_IOSTATE
-{
-    volatile uint32_t cRefs;
-} VBOXUSB_IOSTATE, *PVBOXUSB_IOSTATE;
 
 /* pnp state decls */
 typedef enum

@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.h 36968 2011-05-05 08:55:16Z vboxsync $ */
+/* $Id: VBoxUsbFlt.h 36998 2011-05-07 20:19:55Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -37,7 +37,7 @@ NTSTATUS VBoxUsbFltClose(PVBOXUSBFLTCTX pContext);
 int VBoxUsbFltAdd(PVBOXUSBFLTCTX pContext, PUSBFILTER pFilter, uintptr_t *pId);
 int VBoxUsbFltRemove(PVBOXUSBFLTCTX pContext, uintptr_t uId);
 NTSTATUS VBoxUsbFltSetNotifyEvent(PVBOXUSBFLTCTX pContext, HANDLE hEvent);
-NTSTATUS VBoxUsbFltFilterCheck();
+NTSTATUS VBoxUsbFltFilterCheck(PVBOXUSBFLTCTX pContext);
 
 NTSTATUS VBoxUsbFltGetDevice(PVBOXUSBFLTCTX pContext, HVBOXUSBDEVUSR hDevice, PUSBSUP_GETDEV_MON pInfo);
 
