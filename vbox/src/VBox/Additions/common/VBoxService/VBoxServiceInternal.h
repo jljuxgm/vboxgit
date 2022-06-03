@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 36331 2011-03-21 19:17:12Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 36338 2011-03-22 10:57:01Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -26,6 +26,8 @@
 
 #include <iprt/list.h>
 #include <iprt/critsect.h>
+
+#include <VBox/VBoxGuestLib.h>
 
 /**
  * A service descriptor.
@@ -277,6 +279,7 @@ extern int          VBoxServiceArgUInt32(int argc, char **argv, const char *psz,
 extern int          VBoxServiceStartServices(void);
 extern int          VBoxServiceStopServices(void);
 extern void         VBoxServiceMainWait(void);
+extern int          VBoxServiceReportStatus(VBoxGuestFacilityStatus enmStatus);
 #ifdef RT_OS_WINDOWS
 extern RTEXITCODE   VBoxServiceWinInstall(void);
 extern RTEXITCODE   VBoxServiceWinUninstall(void);
