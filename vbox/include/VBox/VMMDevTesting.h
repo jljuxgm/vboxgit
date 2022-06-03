@@ -1,10 +1,10 @@
-/* $Id: VMMDevTesting.h 38309 2011-08-04 11:00:18Z vboxsync $ */
+/* $Id: VMMDevTesting.h 41416 2012-05-23 13:04:53Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -76,6 +76,8 @@
 /** Report a value, sending the 64-bit value (2x4), the 32-bit unit (4), and
  * finally the name (zero terminated string).  (RTTestValue) */
 #define VMMDEV_TESTING_CMD_VALUE        UINT32_C(0xcab1e005)
+/** Report a failure, sending reason (zero terminated string). (RTTestSkipped) */
+#define VMMDEV_TESTING_CMD_SKIPPED      UINT32_C(0xcab1e006)
 /** @} */
 
 /** @name Value units
