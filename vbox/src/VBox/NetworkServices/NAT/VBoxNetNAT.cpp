@@ -1,4 +1,4 @@
-/* $Id: VBoxNetNAT.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxNetNAT.cpp 36217 2011-03-09 03:22:09Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -46,8 +46,8 @@
 #include <VBox/sup.h>
 #include <VBox/intnet.h>
 #include <VBox/intnetinline.h>
-#include <VBox/pdmnetinline.h>
-#include <VBox/vmm.h>
+#include <VBox/vmm/pdmnetinline.h>
+#include <VBox/vmm/vmm.h>
 #include <VBox/version.h>
 
 #include <vector>
@@ -367,6 +367,11 @@ extern "C" void slirp_output(void *pvUser, struct mbuf *m, const uint8_t *pu8Buf
     ASMAtomicIncU32(&g_pNAT->cPkt);
     RTSemEventSignal(g_pNAT->m_EventSend);
     AssertReleaseRC(rc);
+}
+
+extern "C" void slirp_output_pending(void *pvUser)
+{
+  AssertMsgFailed(("Unimplemented"));
 }
 
 /**
