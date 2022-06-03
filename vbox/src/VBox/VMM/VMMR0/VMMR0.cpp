@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 37228 2011-05-26 19:25:54Z vboxsync $ */
+/* $Id: VMMR0.cpp 37320 2011-06-03 15:05:36Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -920,12 +920,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
          * Setup the hardware accelerated session.
          */
         case VMMR0_DO_HWACC_SETUP_VM:
-        {
-            RTCCUINTREG fFlags = ASMIntDisableFlags();
-            int rc = HWACCMR0SetupVM(pVM);
-            ASMSetFlags(fFlags);
-            return rc;
-        }
+            return HWACCMR0SetupVM(pVM);
 
         /*
          * Switch to RC to execute Hypervisor function.
