@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 39640 2011-12-16 01:00:31Z vboxsync $ */
+/* $Id: reqpool.cpp 40100 2012-02-13 17:45:33Z vboxsync $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -1085,7 +1085,7 @@ RTDECL(int) RTReqPoolAlloc(RTREQPOOL hPool, RTREQTYPE enmType, PRTREQ *phReq)
      */
     int rc = rtReqAlloc(enmType, true /*fPoolOrQueue*/, pPool, phReq);
     LogFlow(("RTReqPoolAlloc: returns %Rrc *phReq=%p\n", rc, *phReq));
-    return VINF_SUCCESS;
+    return rc;
 }
 RT_EXPORT_SYMBOL(RTReqPoolAlloc);
 
