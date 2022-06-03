@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 36022 2011-02-18 15:00:20Z vboxsync $ */
+/* $Id: DrvVD.cpp 37641 2011-06-26 17:16:35Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -320,7 +320,7 @@ static DECLCALLBACK(void) drvvdAsyncTaskCompleted(PPDMDRVINS pDrvIns, void *pvTe
     PVBOXDISK pThis = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
     PDRVVDSTORAGEBACKEND pStorageBackend = (PDRVVDSTORAGEBACKEND)pvTemplateUser;
 
-    LogFlowFunc(("pDrvIns=%#p pvTemplateUser=%#p pvUser=%#p rcReq\n",
+    LogFlowFunc(("pDrvIns=%#p pvTemplateUser=%#p pvUser=%#p rcReq=%d\n",
                  pDrvIns, pvTemplateUser, pvUser, rcReq));
 
     if (pStorageBackend->fSyncIoPending)
