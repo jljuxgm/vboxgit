@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 37045 2011-05-12 09:27:45Z vboxsync $ */
+/* $Id: VD.cpp 37073 2011-05-13 14:19:03Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1714,7 +1714,7 @@ static int vdSetModifiedFlagAsync(PVBOXHDD pDisk, PVDIOCTX pIoCtx)
                     rc = vdIoCtxProcess(pIoCtxFlush);
                     if (rc == VINF_VD_ASYNC_IO_FINISHED)
                     {
-                        vdIoCtxUnlockDisk(pDisk, pIoCtxFlush, false /* fProcessDeferredReqs */);
+                        vdIoCtxUnlockDisk(pDisk, pIoCtx, false /* fProcessDeferredReqs */);
                         vdIoCtxFree(pDisk, pIoCtxFlush);
                     }
                     else if (rc == VERR_VD_ASYNC_IO_IN_PROGRESS)
