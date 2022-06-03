@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMouse.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxDispMouse.cpp 38506 2011-08-23 11:46:43Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver, mouse pointer related functions
@@ -487,8 +487,8 @@ VBoxDispDrvSetPointerShape(SURFOBJ *pso, SURFOBJ *psoMask, SURFOBJ *psoColor, XL
     pDev->pointer.pAttrs->Row = (SHORT) (y - yHot);
 
     pDev->pointer.pAttrs->Enable = VBOX_MOUSE_POINTER_SHAPE;
-    pDev->pointer.pAttrs->Enable |= (xHot & 0xFF) << 24;
-    pDev->pointer.pAttrs->Enable |= (yHot & 0xFF) << 16;
+    pDev->pointer.pAttrs->Enable |= (yHot & 0xFF) << 24;
+    pDev->pointer.pAttrs->Enable |= (xHot & 0xFF) << 16;
 
     if (x!=-1)
     {
