@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 37246 2011-05-30 08:33:24Z vboxsync $ */
+/* $Id: VMDK.cpp 37483 2011-06-16 07:49:36Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5776,6 +5776,13 @@ static int vmdkCreate(const char *pszFilename, uint64_t cbSize,
         pCbProgress = VDGetInterfaceProgress(pIfProgress);
         pfnProgress = pCbProgress->pfnProgress;
         pvUser = pIfProgress->pvUser;
+    }
+
+    /* Check the image flags. */
+    if ((uImageFlags & ~VD_VMDK_IMAGE_FLAGS_MASK) != 0)
+    {
+        rc = VERR_VD_INVALID_TYPE;
+        goto out;
     }
 
     /* Check open flags. All valid flags are supported. */
