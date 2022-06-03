@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
+/* $Id: DBGFReg.cpp 40076 2012-02-11 02:48:43Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -1867,7 +1867,7 @@ DECLINLINE(ssize_t) dbgfR3RegFormatValueInt(char *pszTmp, size_t cbTmp, PCDBGFRE
         case DBGFREGVALTYPE_U128:
             return RTStrFormatU128(pszTmp, cbTmp, &pValue->u128, uBase, cchWidth, cchPrecision, fFlags);
         case DBGFREGVALTYPE_R80:
-            return RTStrFormatR80u2(pszTmp, cbTmp, &pValue->r80, cchWidth, cchPrecision, fFlags);
+            return RTStrFormatR80u2(pszTmp, cbTmp, &pValue->r80Ex, cchWidth, cchPrecision, fFlags);
         case DBGFREGVALTYPE_DTR:
         {
             ssize_t cch = RTStrFormatU64(pszTmp, cbTmp, pValue->dtr.u64Base,
