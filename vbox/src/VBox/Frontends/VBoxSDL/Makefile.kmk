@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 35385 2010-12-30 16:35:31Z vboxsync $
+# $Id: Makefile.kmk 37037 2011-05-11 12:53:40Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -64,10 +64,6 @@ VBoxSDL_DEFS.linux = _GNU_SOURCE VBOXSDL_WITH_X11
 VBoxSDL_DEFS.solaris = VBOXSDL_WITH_X11
 ifdef VBOX_OPENGL
  #VBoxSDL_DEFS.linux += VBOX_OPENGL
-endif
-ifndef VBOX_OSE
-# disable for now as this customer-specific GUI
-# VBoxSDL_DEFS.win  = VBOX_WIN32_UI
 endif
 VBoxSDL_DEFS.win.x86 = _WIN32_WINNT=0x0500
 VBoxSDL_DEFS.win.amd64 = _WIN32_WINNT=0x0510
