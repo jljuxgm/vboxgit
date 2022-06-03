@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 41837 2012-06-19 20:26:46Z vboxsync $ */
+/* $Id: IEMAll.cpp 41838 2012-06-19 20:40:54Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4863,7 +4863,7 @@ static VBOXSTRICTRC iemMemMap(PIEMCPU pIemCpu, void **ppvMem, size_t cbMem, uint
 
     if (   (fAccess & (IEM_ACCESS_WHAT_MASK | IEM_ACCESS_TYPE_WRITE)) == (IEM_ACCESS_WHAT_STACK | IEM_ACCESS_TYPE_WRITE)
         || (fAccess & (IEM_ACCESS_WHAT_MASK | IEM_ACCESS_TYPE_WRITE)) == (IEM_ACCESS_WHAT_DATA | IEM_ACCESS_TYPE_WRITE) )
-        pIemCpu->cbWritten += cbMem;
+        pIemCpu->cbWritten += (uint32_t)cbMem;
     *ppvMem = pvMem;
     return VINF_SUCCESS;
 }
