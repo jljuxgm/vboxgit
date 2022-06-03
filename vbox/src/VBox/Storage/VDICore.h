@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 38876 2011-09-27 09:03:15Z vboxsync $ */
+/* $Id: VDICore.h 40713 2012-03-29 16:06:14Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -553,6 +553,8 @@ typedef struct VDIIMAGEDESC
     PVDINTERFACEERROR       pIfError;
     /** I/O interface. */
     PVDINTERFACEIOINT       pIfIo;
+    /** Current size of the image (used for range validation when reading). */
+    uint64_t                cbImage;
 } VDIIMAGEDESC, *PVDIIMAGEDESC;
 
 /**
@@ -590,6 +592,17 @@ typedef struct VDIBLOCKDISCARDASYNC
     /** Index of the last block in the block table (gathered from the reverse block table). */
     unsigned                uBlockLast;
 } VDIBLOCKDISCARDASYNC, *PVDIBLOCKDISCARDASYNC;
+
+/**
+ * Async image expansion state.
+ */
+typedef struct VDIASYNCBLOCKALLOC
+{
+    /** Number of blocks allocated. */
+    unsigned                cBlocksAllocated;
+    /** Block index to allocate. */
+    unsigned                uBlock;
+} VDIASYNCBLOCKALLOC, *PVDIASYNCBLOCKALLOC;
 
 #endif
 
