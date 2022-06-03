@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 41130 2012-05-03 11:35:25Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 41176 2012-05-05 20:53:28Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -454,7 +454,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 41130 2012-05-03 11:35:25Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 41176 2012-05-05 20:53:28Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -933,7 +933,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 41130 2012-05-03 11:35:25Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 41176 2012-05-05 20:53:28Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -2099,7 +2099,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
         { "--output",                           'o',                                    RTGETOPT_REQ_STRING  },
         { "--script",                           's',                                    RTGETOPT_REQ_STRING  },
         { "--verbose",                          'v',                                    RTGETOPT_REQ_NOTHING },
-        /* out stuff */
+        /* our stuff */
         { "--assembler",                        kVBoxTpGOpt_Assembler,                  RTGETOPT_REQ_STRING  },
         { "--assembler-fmt-opt",                kVBoxTpGOpt_AssemblerFmtOpt,            RTGETOPT_REQ_STRING  },
         { "--assembler-fmt-val",                kVBoxTpGOpt_AssemblerFmtVal,            RTGETOPT_REQ_STRING  },
@@ -2118,7 +2118,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
     AssertReleaseRCReturn(rc, RTEXITCODE_FAILURE);
 
     /*
-     * Process \the options.
+     * Process the options.
      */
     while ((rc = RTGetOpt(&GetOptState, &ValueUnion)) != 0)
     {
@@ -2193,7 +2193,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 41130 $";
+                static const char s_szRev[] = "$Revision: 41176 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
