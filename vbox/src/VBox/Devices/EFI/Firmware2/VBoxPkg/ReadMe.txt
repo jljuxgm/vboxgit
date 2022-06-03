@@ -1,4 +1,4 @@
-$Id: ReadMe.txt 40895 2012-04-12 16:23:49Z vboxsync $
+$Id: ReadMe.txt 40896 2012-04-12 16:36:58Z vboxsync $
 
 Setting up the source trees
 ===========================
@@ -9,6 +9,8 @@ creates an edk2 subdirectory):
   svn checkout \
     --username guest --password guest \
     -r9572 https://edk2.svn.sourceforge.net/svnroot/edk2/trunk/edk2 edk2
+
+Note for giters: r9572 = 1dba456e1a72a3c2d896f25f94ddeaa64d10a3be
 
 Enter into the edk2 directory and check out EFI/Firmware2/VBoxPkg into a
 VBoxPkg subdirectory:
