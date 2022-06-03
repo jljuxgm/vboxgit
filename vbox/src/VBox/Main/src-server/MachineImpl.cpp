@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37687 2011-06-29 15:22:11Z vboxsync $ */
+/* $Id: MachineImpl.cpp 37695 2011-06-29 18:53:37Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11690,6 +11690,7 @@ STDMETHODIMP SessionMachine::EjectMedium(IMediumAttachment *aAttachment,
             oldmedium->removeBackReference(mData->mUuid);
 
         pAttach->updateMedium(NULL);
+        pAttach->updateEjected();
 
         pAttach.queryInterfaceTo(aNewAttachment);
     }
