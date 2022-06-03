@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 41458 2012-05-28 10:36:04Z vboxsync $ */
+/* $Id: PGMAllBth.h 41675 2012-06-12 20:27:37Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -917,7 +917,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                     /* For now we'll restrict this to rep movsw/d instructions */
                     if (    rc == VINF_SUCCESS
                         &&  pDis->pCurInstr->opcode == OP_MOVSWD
-                        &&  (pDis->prefix & PREFIX_REP))
+                        &&  (pDis->prefix & DISPREFIX_REP))
                     {
                         CSAMMarkPossibleCodePage(pVM, pvFault);
                     }

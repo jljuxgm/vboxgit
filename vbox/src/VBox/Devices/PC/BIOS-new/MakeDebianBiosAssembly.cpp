@@ -1,4 +1,4 @@
-/* $Id: MakeDebianBiosAssembly.cpp 41674 2012-06-12 20:16:31Z vboxsync $ */
+/* $Id: MakeDebianBiosAssembly.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
 /** @file
  * MakeDebianBiosAssembly - Generate Assembly Source for Debian-minded Distros.
  */
@@ -188,7 +188,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41674 2012-06-12 20:16:31Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeDebianBiosAssembly.cpp 41675 2012-06-12 20:27:37Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -967,7 +967,7 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
         {
             unsigned    cbInstr;
             DISCPUSTATE CpuState;
-            int rc = DISInstrWithReader(uFlatAddr, fIs16Bit ? CPUMODE_16BIT : CPUMODE_32BIT,
+            int rc = DISInstrWithReader(uFlatAddr, fIs16Bit ? DISCPUMODE_16BIT : DISCPUMODE_32BIT,
                                         disReadOpcodeBytes, NULL, &CpuState, &cbInstr);
             if (   RT_SUCCESS(rc)
                 && cbInstr <= cb)

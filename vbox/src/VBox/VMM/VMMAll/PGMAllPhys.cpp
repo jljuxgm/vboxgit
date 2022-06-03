@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 41446 2012-05-25 09:55:44Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -106,8 +106,8 @@ VMMDECL(int) pgmPhysRomWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE p
             PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
             rc = EMInterpretDisasOne(pVM, pVCpu, pRegFrame, pDis, &cbOp);
             if (     RT_SUCCESS(rc)
-                &&   pDis->mode == CPUMODE_32BIT  /** @todo why does this matter? */
-                &&  !(pDis->prefix & (PREFIX_REPNE | PREFIX_REP | PREFIX_SEG)))
+                &&   pDis->mode == DISCPUMODE_32BIT  /** @todo why does this matter? */
+                &&  !(pDis->prefix & (DISPREFIX_REPNE | DISPREFIX_REP | DISPREFIX_SEG)))
             {
                 switch (pDis->opcode)
                 {

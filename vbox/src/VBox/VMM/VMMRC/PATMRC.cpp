@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 41674 2012-06-12 20:16:31Z vboxsync $ */
+/* $Id: PATMRC.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -510,7 +510,7 @@ VMMRCDECL(int) PATMRCHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
             }
 
             cpu.mode = SELMGetCpuModeFromSelector(VMMGetCpu0(pVM), pRegFrame->eflags, pRegFrame->cs, 0);
-            if (cpu.mode != CPUMODE_32BIT)
+            if (cpu.mode != DISCPUMODE_32BIT)
             {
                 AssertFailed();
                 return VINF_EM_RAW_EMULATE_INSTR;

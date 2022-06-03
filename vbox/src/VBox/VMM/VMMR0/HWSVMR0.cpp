@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41645 2012-06-11 11:17:14Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2971,7 +2971,7 @@ static int hmR0SvmInterpretInvpg(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, 
      * Only allow 32 & 64 bit code.
      */
     DISCPUMODE enmMode = SELMGetCpuModeFromSelector(pVCpu, pRegFrame->eflags, pRegFrame->cs, &pRegFrame->csHid);
-    if (enmMode != CPUMODE_16BIT)
+    if (enmMode != DISCPUMODE_16BIT)
     {
         RTGCPTR pbCode;
         int rc = SELMValidateAndConvertCSAddr(pVCpu, pRegFrame->eflags, pRegFrame->ss, pRegFrame->cs,

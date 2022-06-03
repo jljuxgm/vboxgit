@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 41669 2012-06-12 13:34:07Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 41675 2012-06-12 20:27:37Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4071,9 +4071,9 @@ void disas(FILE *phFile, void *pvCode, unsigned long cb)
         char            szOutput[256];
         DISCPUSTATE     Cpu;
 #ifdef RT_ARCH_X86
-        DISCPUMODE      enmCpuMode = CPUMODE_32BIT;
+        DISCPUMODE      enmCpuMode = DISCPUMODE_32BIT;
 #else
-        DISCPUMODE      enmCpuMode = CPUMODE_64BIT;
+        DISCPUMODE      enmCpuMode = DISCPUMODE_64BIT;
 #endif
 
         RTLogPrintf("Recompiled Code: %p %#lx (%ld) bytes\n", pvCode, cb, cb);

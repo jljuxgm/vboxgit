@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41645 2012-06-11 11:17:14Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41675 2012-06-12 20:27:37Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3584,7 +3584,7 @@ ResumeExecution:
                         uint32_t  uMask;
                         X86EFLAGS eflags;
 
-                        if (pDis->prefix & PREFIX_OPSIZE)
+                        if (pDis->prefix & DISPREFIX_OPSIZE)
                         {
                             cbParm = 4;
                             uMask  = 0xffffffff;
@@ -3626,7 +3626,7 @@ ResumeExecution:
                         uint32_t  uMask;
                         X86EFLAGS eflags;
 
-                        if (pDis->prefix & PREFIX_OPSIZE)
+                        if (pDis->prefix & DISPREFIX_OPSIZE)
                         {
                             cbParm = 4;
                             uMask  = 0xffffffff;
@@ -3668,7 +3668,7 @@ ResumeExecution:
                         uint32_t  uMask = 0xffff;
                         uint16_t  aIretFrame[3];
 
-                        if (pDis->prefix & (PREFIX_OPSIZE | PREFIX_ADDRSIZE))
+                        if (pDis->prefix & (DISPREFIX_OPSIZE | DISPREFIX_ADDRSIZE))
                         {
                             rc = VERR_EM_INTERPRETER;
                             break;
