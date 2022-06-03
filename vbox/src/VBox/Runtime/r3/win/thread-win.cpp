@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 37155 2011-05-19 13:04:32Z vboxsync $ */
+/* $Id: thread-win.cpp 37309 2011-06-03 08:36:12Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -87,6 +87,12 @@ DECLHIDDEN(void) rtThreadNativeDestroy(PRTTHREADINT pThread)
 {
     if (pThread == (PRTTHREADINT)TlsGetValue(g_dwSelfTLS))
         TlsSetValue(g_dwSelfTLS, NULL);
+
+    if (pThread->hThread != INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(pThread->hThread);
+        pThread->hThread = INVALID_HANDLE_VALUE;
+    }
 }
 
 
