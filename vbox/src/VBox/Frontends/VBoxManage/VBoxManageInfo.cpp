@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 36114 2011-03-01 09:10:40Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 36630 2011-04-08 18:41:51Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -28,6 +28,10 @@
 #include <VBox/com/errorprint.h>
 
 #include <VBox/com/VirtualBox.h>
+
+#ifdef VBOX_WITH_PCI_PASSTHROUGH
+#include <VBox/pci.h>
+#endif
 
 #include <VBox/log.h>
 #include <iprt/stream.h>
@@ -1801,6 +1805,46 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
             }
         }
     } /* USB */
+
+#ifdef VBOX_WITH_PCI_PASSTHROUGH
+    /* Host PCI passthrough devices */
+    {
+         SafeIfaceArray <IPciDeviceAttachment> assignments;
+         rc = machine->COMGETTER(PciDeviceAssignments)(ComSafeArrayAsOutParam(assignments));
+         if (SUCCEEDED(rc))
+         {
+             if (assignments.size() > 0 && (details != VMINFO_MACHINEREADABLE))
+             {
+                 RTPrintf("\nAttached physical PCI devices:\n\n");
+             }
+             
+             for (size_t index = 0; index < assignments.size(); ++index)
+             {
+                 ComPtr<IPciDeviceAttachment> Assignment = assignments[index];
+                 char szHostPciAddress[32], szGuestPciAddress[32];
+                 int32_t iHostPciAddress = -1, iGuestPciAddress = -1;
+                 Bstr DevName;
+
+                 Assignment->COMGETTER(Name)(DevName.asOutParam());
+                 Assignment->COMGETTER(HostAddress)(&iHostPciAddress);
+                 Assignment->COMGETTER(GuestAddress)(&iGuestPciAddress);
+                 PciBusAddress().fromLong(iHostPciAddress).format(szHostPciAddress, sizeof(szHostPciAddress));
+                 PciBusAddress().fromLong(iGuestPciAddress).format(szGuestPciAddress, sizeof(szGuestPciAddress));
+
+                 if (details == VMINFO_MACHINEREADABLE)
+                     RTPrintf("AttachedHostPci=%s,%s\n", szHostPciAddress, szGuestPciAddress);
+                 else
+                     RTPrintf("   Host device %lS at %s attached as %s\n", DevName.raw(), szHostPciAddress, szGuestPciAddress);
+             }
+             
+             if (assignments.size() > 0 && (details != VMINFO_MACHINEREADABLE))
+             {
+                 RTPrintf("\n");
+             }
+         }
+    }
+    /* Host PCI passthrough devices */
+#endif
 
     /*
      * Shared folders
