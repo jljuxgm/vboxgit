@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41993 2012-07-03 09:24:32Z vboxsync $
+# $Id: Config.kmk 42048 2012-07-09 10:13:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1728,6 +1728,9 @@ VBOX_BIOSSUMS   ?= $(PATH_OBJ)/biossums/biossums$(HOSTSUFF_EXE)
 
 # RTManifest (extension pack manifest utility)
 VBOX_RTMANIFEST ?= $(PATH_OBJ)/bldRTManifest/bldRTManifest$(HOSTSUFF_EXE)
+
+# VBoxCmp (simple /bin/cmp with more sensible output)
+VBOX_VBOXCMP    ?= $(PATH_OBJ)/VBoxCmp/VBoxCmp$(HOSTSUFF_EXE)
 
 # VBoxCPP (special purpose C preprocessor)
 VBOX_VBOXCPP    ?= $(PATH_OBJ)/VBoxCPP/VBoxCPP$(HOSTSUFF_EXE)
@@ -5139,7 +5142,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41993 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42048 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

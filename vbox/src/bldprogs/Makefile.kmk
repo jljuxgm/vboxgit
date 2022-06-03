@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 42048 2012-07-09 10:13:46Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -18,7 +18,7 @@
 SUB_DEPTH = ../..
 include $(KBUILD_PATH)/subheader.kmk
 
-BLDPROGS += bin2c biossums filesplitter
+BLDPROGS += bin2c biossums filesplitter VBoxCmp
 
 bin2c_TEMPLATE = VBOXBLDPROG
 bin2c_SOURCES = bin2c.c
@@ -28,6 +28,9 @@ biossums_SOURCES = biossums.c
 
 filesplitter_TEMPLATE = VBOXBLDPROG
 filesplitter_SOURCES = filesplitter.cpp
+
+VBoxCmp_TEMPLATE = VBOXBLDPROG
+VBoxCmp_SOURCES = VBoxCmp.cpp
 
 if  !defined(VBOX_ONLY_ADDITIONS) \
  && !defined(VBOX_ONLY_DOCS) \
