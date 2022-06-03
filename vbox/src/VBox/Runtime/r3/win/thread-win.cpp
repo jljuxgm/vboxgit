@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 36368 2011-03-23 15:05:14Z vboxsync $ */
+/* $Id: thread-win.cpp 36387 2011-03-24 09:01:51Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -170,10 +170,7 @@ static void rtThreadNativeUninitComAndOle(void)
         AssertReturnVoid(pfnCoUninitialize);
 
         while (cOleInits-- > 0)
-        {
             pfnOleUninitialize();
-            cComInits--;
-        }
 
         while (cComInits-- > 0)
             pfnCoUninitialize();
