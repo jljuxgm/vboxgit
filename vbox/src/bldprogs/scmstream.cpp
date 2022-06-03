@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 41194 2012-05-07 20:23:52Z vboxsync $ */
+/* $Id: scmstream.cpp 41195 2012-05-08 00:51:07Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -1285,7 +1285,7 @@ const char *ScmStreamCGetWord(PSCMSTREAM pStream, size_t *pcchWord)
     const char     *psz     = &pStream->pch[pStream->off];
 
     /* Is it a leading C character. */
-    if (!RT_C_IS_ALPHA(*psz) && *psz == '_')
+    if (!RT_C_IS_ALPHA(*psz) && *psz != '_')
         return NULL;
 
     /* Find the end of the word. */
@@ -1324,7 +1324,7 @@ const char *ScmStreamCGetWordM1(PSCMSTREAM pStream, size_t *pcchWord)
     const char     *psz     = &pStream->pch[pStream->off - 1];
 
     /* Is it a leading C character. */
-    if (!RT_C_IS_ALPHA(*psz) && *psz == '_')
+    if (!RT_C_IS_ALPHA(*psz) && *psz != '_')
         return NULL;
 
     /* Find the end of the word. */
