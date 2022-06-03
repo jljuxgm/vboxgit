@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 38631 2011-09-05 10:53:16Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 38644 2011-09-05 16:45:44Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -1161,7 +1161,7 @@ static DECLCALLBACK(int) drvdiskintConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg,
     if (pszIoLogFilename)
     {
         rc = VDDbgIoLogCreate(&pThis->hIoLogger, pszIoLogFilename, VDDBG_IOLOG_LOG_DATA);
-        RTStrFree(pszIoLogFilename);
+        MMR3HeapFree(pszIoLogFilename);
     }
 
     return rc;
