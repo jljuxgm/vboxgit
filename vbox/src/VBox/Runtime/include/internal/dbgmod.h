@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 38547 2011-08-26 12:58:47Z vboxsync $ */
+/* $Id: dbgmod.h 38581 2011-08-31 12:43:26Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -125,6 +125,19 @@ typedef struct RTDBGMODVTIMG
      * @param   pMod            Pointer to the module structure.
      */
     DECLCALLBACKMEMBER(RTUINTPTR, pfnImageSize)(PRTDBGMODINT pMod);
+
+    /**
+     * Converts a link address to a segment:offset address (RVA included).
+     *
+     * @returns IPRT status code.
+     *
+     * @param   pMod            Pointer to the module structure.
+     * @param   LinkAddress     The link address to convert.
+     * @param   piSeg           The segment index.
+     * @param   poffSeg         Where to return the segment offset.
+     */
+    DECLCALLBACKMEMBER(int, pfnLinkAddressToSegOffset)(PRTDBGMODINT pMod, RTLDRADDR LinkAddress,
+                                                       PRTDBGSEGIDX piSeg, PRTLDRADDR poffSeg);
 
     /**
      * Creates a read-only mapping of a part of the image file.
