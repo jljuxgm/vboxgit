@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 38393 2011-08-10 10:25:56Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 40870 2012-04-11 15:44:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -26,7 +26,7 @@
 #include "VBoxSnapshotDetailsDlg.h"
 #include "VBoxSnapshotsWgt.h"
 #include "VBoxTakeSnapshotDlg.h"
-#include "UICloneVMWizard.h"
+#include "UIWizardCloneVM.h"
 #include "UIToolBar.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UISelectorShortcuts.h"
@@ -696,7 +696,8 @@ void VBoxSnapshotsWgt::sltCloneSnapshot()
     }
     AssertReturn(!machine.isNull(), (void)0);
 
-    UICloneVMWizard wzd(this, machine, snapshot);
+    /* Show Clone VM wizard: */
+    UIWizardCloneVM wzd(this, machine, snapshot);
     wzd.exec();
 }
 
