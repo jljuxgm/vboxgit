@@ -1,4 +1,4 @@
-/* $Id: MsixCommon.cpp 36079 2011-02-24 17:10:31Z vboxsync $ */
+/* $Id: MsixCommon.cpp 36574 2011-04-06 12:30:18Z vboxsync $ */
 /** @file
  * MSI-X support routines
  */
@@ -37,6 +37,7 @@ typedef struct {
 AssertCompileSize(MsixTableRecord, VBOX_MSIX_ENTRY_SIZE);
 #pragma pack()
 
+/** @todo: use accessors so that raw PCI devices work correctly with MSI-X. */
 DECLINLINE(uint16_t)  msixGetMessageControl(PPCIDEVICE pDev)
 {
     return PCIDevGetWord(pDev, pDev->Int.s.u8MsixCapOffset + VBOX_MSIX_CAP_MESSAGE_CONTROL);
