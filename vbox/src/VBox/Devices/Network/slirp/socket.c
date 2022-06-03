@@ -1,4 +1,4 @@
-/* $Id: socket.c 39299 2011-11-15 06:59:33Z vboxsync $ */
+/* $Id: socket.c 39556 2011-12-08 05:53:00Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -1212,8 +1212,10 @@ soisfconnecting(struct socket *so)
 void
 soisfconnected(struct socket *so)
 {
+    LogFlowFunc(("ENTER: so:%R[natsock]\n", so));
     so->so_state &= ~(SS_ISFCONNECTING|SS_FWDRAIN|SS_NOFDREF);
     so->so_state |= SS_ISFCONNECTED; /* Clobber other states */
+    LogFlowFunc(("LEAVE: so:%R[natsock]\n", so));
 }
 
 void
