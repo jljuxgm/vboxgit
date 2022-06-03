@@ -1,10 +1,10 @@
-/* $Id: server.cpp 36466 2011-03-29 17:40:35Z vboxsync $ */
+/* $Id: server.cpp 36478 2011-03-30 18:39:29Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -858,7 +858,7 @@ int main(int argc, char **argv)
 
     const nsModuleComponentInfo VirtualBoxInfo = {
         "VirtualBox component",
-        CLSID_VirtualBox,
+        NS_VIRTUALBOX_CID,
         NS_VIRTUALBOX_CONTRACTID,
         VirtualBoxConstructor, // constructor function
         NULL, // registration function
