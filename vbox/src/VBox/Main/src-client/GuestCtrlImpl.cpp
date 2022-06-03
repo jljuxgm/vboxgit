@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 38437 2011-08-12 15:05:41Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 38439 2011-08-12 15:29:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1298,33 +1298,6 @@ int Guest::executeStreamDrain(ULONG aPID, GuestProcessStream &stream)
     }
 
     return rc;
-}
-
-/**
- * Frees a guest stream objects vector.
- *
- * @param   streamObjects           Vector to free.
- */
-void Guest::executeStreamFree(GuestCtrlStreamObjects &streamObjects)
-{
-    /*for (GuestCtrlStreamObjectsIter it = streamObjects.begin();
-         it != streamObjects.end(); it++)
-    {
-        executeStreamFreeBlock(*it);
-    }*/
-    streamObjects.clear();
-}
-
-/**
- * Frees a guest stream block. Pure convenience function for
- * GuestProcessStream::FreeBlock().
- *
- * @return  IPRT status code.
- * @param   pBlock
- */
-void Guest::executeStreamFreeBlock(GuestProcessStreamBlock *pBlock)
-{
-    GuestProcessStream::FreeBlock(pBlock);
 }
 
 /**
