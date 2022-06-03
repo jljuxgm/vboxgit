@@ -1,4 +1,4 @@
-/* $Id: logrel.cpp 40933 2012-04-16 04:12:45Z vboxsync $ */
+/* $Id: logrel.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * Runtime VBox - Release Logger.
  */
@@ -141,7 +141,7 @@ RT_EXPORT_SYMBOL(RTLogRelLoggerV);
  */
 RTDECL(void) RTLogRelPrintfV(const char *pszFormat, va_list args)
 {
-    RTLogRelLoggerV((PRTLOGGER)NULL, 0, ~0U, pszFormat, args);
+    RTLogRelLoggerV(NULL, 0, ~0U, pszFormat, args);
 }
 RT_EXPORT_SYMBOL(RTLogRelPrintfV);
 

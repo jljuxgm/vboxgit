@@ -1,4 +1,4 @@
-/* $Id: strpbrk.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
+/* $Id: strpbrk.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * IPRT - strpbrk().
  */
@@ -59,6 +59,6 @@ char *strpbrk(const char *pszStr, const char *pszChars)
                 return (char *)(pszStr - 1);
 
     }
-    return (char *)NULL;
+    return NULL;
 }
 

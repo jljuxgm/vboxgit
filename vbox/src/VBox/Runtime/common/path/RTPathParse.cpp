@@ -1,4 +1,4 @@
-/* $Id: RTPathParse.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
+/* $Id: RTPathParse.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * IPRT - RTPathParse
  */
@@ -55,7 +55,7 @@ RTDECL(size_t) RTPathParse(const char *pszPath, size_t *pcchDir, ssize_t *poffNa
     const char *psz = pszPath;
     ssize_t     offRoot = 0;
     const char *pszName = pszPath;
-    const char *pszLastDot = (char *)NULL;
+    const char *pszLastDot = NULL;
 
     for (;; psz++)
     {

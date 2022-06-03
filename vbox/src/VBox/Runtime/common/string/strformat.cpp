@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
+/* $Id: strformat.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -781,7 +781,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
         cch += pfnOutput(pvArgOutput, pszStartOutput, pszFormat - pszStartOutput);
 
     /* terminate the output */
-    pfnOutput(pvArgOutput, (const char *)NULL, 0);
+    pfnOutput(pvArgOutput, NULL, 0);
 
     return cch;
 }

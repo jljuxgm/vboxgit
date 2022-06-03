@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
+/* $Id: alloc-r0drv.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -84,7 +84,7 @@ DECLINLINE(PRTMEMHDR) rtR0MemAlloc(size_t cb, uint32_t fFlags)
     PRTMEMHDR pHdr;
     int rc = rtR0MemAllocEx(cb, fFlags, &pHdr);
     if (RT_FAILURE(rc))
-        return (PRTMEMHDR)NULL;
+        return NULL;
     return pHdr;
 }
 

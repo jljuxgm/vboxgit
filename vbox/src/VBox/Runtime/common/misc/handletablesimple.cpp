@@ -1,4 +1,4 @@
-/* $Id: handletablesimple.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
+/* $Id: handletablesimple.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -112,7 +112,7 @@ RTDECL(int)     RTHandleTableAlloc(RTHANDLETABLE hHandleTable, void *pvObj, uint
              * Do the allocation(s).
              */
             rc = VERR_TRY_AGAIN;
-            void **papvLevel1 = (void **)NULL;
+            void **papvLevel1 = NULL;
             if (cLevel1)
             {
                 papvLevel1 = (void **)RTMemAlloc(sizeof(void *) * cLevel1);

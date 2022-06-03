@@ -1,4 +1,4 @@
-/* $Id: RTPathAbsExDup.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
+/* $Id: RTPathAbsExDup.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbsExDup
  */
@@ -52,6 +52,6 @@ RTDECL(char *) RTPathAbsExDup(const char *pszBase, const char *pszPath)
     int rc = RTPathAbsEx(pszBase, pszPath, szPath, sizeof(szPath));
     if (RT_SUCCESS(rc))
         return RTStrDup(szPath);
-    return (char *)NULL;
+    return NULL;
 }
 

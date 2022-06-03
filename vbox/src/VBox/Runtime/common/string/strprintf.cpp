@@ -1,4 +1,4 @@
-/* $Id: strprintf.cpp 40934 2012-04-16 05:53:05Z vboxsync $ */
+/* $Id: strprintf.cpp 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * IPRT - String Formatters.
  */
@@ -99,7 +99,7 @@ RT_EXPORT_SYMBOL(RTStrPrintfExV);
 
 RTDECL(size_t) RTStrPrintfV(char *pszBuffer, size_t cchBuffer, const char *pszFormat, va_list args)
 {
-    return RTStrPrintfExV((PFNSTRFORMAT)NULL, NULL, pszBuffer, cchBuffer, pszFormat, args);
+    return RTStrPrintfExV(NULL, NULL, pszBuffer, cchBuffer, pszFormat, args);
 }
 RT_EXPORT_SYMBOL(RTStrPrintfV);
 

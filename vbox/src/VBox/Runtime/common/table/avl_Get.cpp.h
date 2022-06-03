@@ -1,4 +1,4 @@
-/* $Id: avl_Get.cpp.h 40934 2012-04-16 05:53:05Z vboxsync $ */
+/* $Id: avl_Get.cpp.h 40938 2012-04-16 11:58:26Z vboxsync $ */
 /** @file
  * kAVLGet - get routine for AVL trees.
  */
@@ -48,14 +48,14 @@ KAVL_DECL(PKAVLNODECORE) KAVL_FN(Get)(PPKAVLNODECORE ppTree, KAVLKEY Key)
                 if (pNode->pLeft != KAVL_NULL)
                     pNode = KAVL_GET_POINTER(&pNode->pLeft);
                 else
-                    return KAVL_NULL;
+                    return NULL;
             }
             else
             {
                 if (pNode->pRight != KAVL_NULL)
                     pNode = KAVL_GET_POINTER(&pNode->pRight);
                 else
-                    return KAVL_NULL;
+                    return NULL;
             }
         }
     }

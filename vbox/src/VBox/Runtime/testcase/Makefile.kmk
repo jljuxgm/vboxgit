@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40934 2012-04-16 05:53:05Z vboxsync $
+# $Id: Makefile.kmk 40938 2012-04-16 11:58:26Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -292,8 +292,7 @@ tstRTInlineAsmPIC_DEFS = PIC
 
 tstRTInlineAsmPIC3_TEMPLATE = VBOXR3TSTEXE
 tstRTInlineAsmPIC3_SOURCES = tstRTInlineAsm.cpp
-# with -O3 gcc-4.8 asserts
-tstRTInlineAsmPIC3_CXXFLAGS = -fPIC -fomit-frame-pointer #-O3
+tstRTInlineAsmPIC3_CXXFLAGS = -fPIC -fomit-frame-pointer -O3
 tstRTInlineAsmPIC3_DEFS = PIC
 
 tstIprtList_TEMPLATE = VBOXR3TSTEXE
