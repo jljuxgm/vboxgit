@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMEmt.cpp 36255 2011-03-10 18:38:52Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -1134,7 +1134,7 @@ VMMR3DECL(int) VMR3WaitU(PUVMCPU pUVCpu)
      */
     PUVM pUVM = pUVCpu->pUVM;
     int rc = g_aHaltMethods[pUVM->vm.s.iHaltMethod].pfnWait(pUVCpu);
-    LogFlow(("VMR3WaitU: returns %Rrc (FF %#x)\n", rc, pVM ? pVM->fGlobalForcedActions : 0));
+    LogFlow(("VMR3WaitU: returns %Rrc (FF %#x)\n", rc, pUVM->pVM ? pUVM->pVM->fGlobalForcedActions : 0));
     return rc;
 }
 
