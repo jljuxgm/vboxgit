@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38136 2011-07-25 09:10:40Z vboxsync $
+# $Id: Makefile.kmk 39333 2011-11-16 15:19:21Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -63,11 +63,12 @@ if  !defined(VBOX_ONLY_DOCS) \
  endif
 
  if1of ($(KBUILD_TARGET),linux)
-  INSTALLS += HostDrivers-dkms-sh
-  HostDrivers-dkms-sh_INST    = bin/src/
-  HostDrivers-dkms-sh_MODE    = a+rx,u+w
-  HostDrivers-dkms-sh_SOURCES = $(HostDrivers-dkms-sh_0_OUTDIR)/do_dkms
-  HostDrivers-dkms-sh_CLEAN   = $(HostDrivers-dkms-sh_0_OUTDIR)/do_dkms
+  INSTALLS += HostDrivers-scripts
+  HostDrivers-scripts_INST    = bin/src/
+  HostDrivers-scripts_MODE    = a+rx,u+w
+  HostDrivers-scripts_SOURCES = $(HostDrivers-scripts_0_OUTDIR)/do_dkms \
+                                linux/build_in_tmp
+  HostDrivers-scripts_CLEAN   = $(HostDrivers-scripts_0_OUTDIR)/do_dkms
 
   INSTALLS += HostDrivers-dkms-src
   HostDrivers-dkms-src_INST    = bin/src/
@@ -87,7 +88,7 @@ $$(HostDrivers-dkms-src_0_OUTDIR)/dkms.conf: \
 		-e "s;_OMIT_VBOXPCI_;$(if $(VBOX_WITH_PCI_PASSTHROUGH),,#);g" \
 		--output $@ $<
 
-$$(HostDrivers-dkms-sh_0_OUTDIR)/do_dkms: \
+$$(HostDrivers-scripts_0_OUTDIR)/do_dkms: \
 		$(PATH_SUB_CURRENT)/linux/do_dkms \
 		$(VBOX_VERSION_STAMP) \
 		| $$(dir $$@)
