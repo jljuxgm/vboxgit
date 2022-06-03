@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 37430 2011-06-13 20:08:06Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 37444 2011-06-14 14:34:52Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -480,9 +480,9 @@ int main()
     GEN_CHECK_OFF(ACPIState, pm1a_sts);
     GEN_CHECK_OFF(ACPIState, pm1a_ctl);
     GEN_CHECK_OFF(ACPIState, u64PmTimerInitial);
-    GEN_CHECK_OFF(ACPIState, tsR3);
-    GEN_CHECK_OFF(ACPIState, tsR0);
-    GEN_CHECK_OFF(ACPIState, tsRC);
+    GEN_CHECK_OFF(ACPIState, pPmTimerR3);
+    GEN_CHECK_OFF(ACPIState, pPmTimerR0);
+    GEN_CHECK_OFF(ACPIState, pPmTimerRC);
     GEN_CHECK_OFF(ACPIState, gpe0_en);
     GEN_CHECK_OFF(ACPIState, gpe0_sts);
     GEN_CHECK_OFF(ACPIState, uBatteryIndex);
