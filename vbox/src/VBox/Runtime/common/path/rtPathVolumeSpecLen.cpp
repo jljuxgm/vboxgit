@@ -1,4 +1,4 @@
-/* $Id: rtPathVolumeSpecLen.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: rtPathVolumeSpecLen.cpp 40686 2012-03-28 14:49:47Z vboxsync $ */
 /** @file
  * IPRT - rtPathVolumeSpecLen
  */
@@ -44,7 +44,7 @@ DECLHIDDEN(size_t) rtPathVolumeSpecLen(const char *pszPath)
 #if defined (RT_OS_OS2) || defined (RT_OS_WINDOWS)
     if (pszPath && *pszPath)
     {
-        /* UTC path. */
+        /* UNC path. */
         /** @todo r=bird: it's UNC and we have to check that the next char isn't a
          *        slash, then skip both the server and the share name. */
         if (    (pszPath[0] == '\\' || pszPath[0] == '/')
