@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 40267 2012-02-28 07:09:18Z vboxsync $ */
+/* $Id: icd_drv.c 41971 2012-06-29 12:31:04Z vboxsync $ */
 
 /** @file
  * VBox OpenGL windows ICD driver functions
@@ -38,8 +38,22 @@ static ICDTABLE icdTable = { 336, {
 #undef ICD_ENTRY
 } };
 
-static GLuint desiredVisual = CR_RGB_BIT;
+/* Currently host part will misbehave re-creating context with proper visual bits
+ * if contexts with alternative visual bits is requested.
+ * For now we just report a superset of all visual bits to avoid that.
+ * Better to it on the host side as well?
+ * We could also implement properly multiple pixel formats,
+ * which should be done by implementing offscreen rendering or multiple host contexts.
+ * */
+#define VBOX_CROGL_USE_VBITS_SUPERSET
 
+#ifdef VBOX_CROGL_USE_VBITS_SUPERSET
+static GLuint desiredVisual = CR_RGB_BIT | CR_ALPHA_BIT | CR_DEPTH_BIT | CR_STENCIL_BIT | CR_ACCUM_BIT | CR_DOUBLE_BIT;
+#else
+static GLuint desiredVisual = CR_RGB_BIT;
+#endif
+
+#ifndef VBOX_CROGL_USE_VBITS_SUPERSET
 /**
  * Compute a mask of CR_*_BIT flags which reflects the attributes of
  * the pixel format of the given hdc.
@@ -71,6 +85,7 @@ static GLuint ComputeVisBits( HDC hdc )
 
     return b;
 }
+#endif
 
 void APIENTRY DrvReleaseContext(HGLRC hglrc)
 {
@@ -143,8 +158,10 @@ HGLRC APIENTRY DrvCreateContext(HDC hdc)
     CRASSERT(stub.contextTable);
 
     sprintf(dpyName, "%d", hdc);
+#ifndef VBOX_CROGL_USE_VBITS_SUPERSET
     if (stub.haveNativeOpenGL)
         desiredVisual |= ComputeVisBits( hdc );
+#endif
 
     context = stubNewContext(dpyName, desiredVisual, UNDECIDED, 0);
     if (!context)
