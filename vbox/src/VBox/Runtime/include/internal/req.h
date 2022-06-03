@@ -1,4 +1,4 @@
-/* $Id: req.h 39504 2011-12-01 21:39:09Z vboxsync $ */
+/* $Id: req.h 39510 2011-12-02 10:58:29Z vboxsync $ */
 /** @file
  * IPRT - Internal RTReq header.
  */
@@ -106,6 +106,10 @@ struct RTREQ
     } u;
 };
 
+/** Internal request representation. */
+typedef RTREQ       RTREQINT;
+/** Pointer to an internal request representation. */
+typedef RTREQINT   *PRTREQINT;
 
 /**
  * Internal queue instance.
