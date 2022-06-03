@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36082 2011-02-25 12:21:57Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36086 2011-02-25 13:43:26Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2021,6 +2021,9 @@ STDMETHODIMP Machine::GetHWVirtExProperty(HWVirtExPropertyType_T property, BOOL 
 
         case HWVirtExPropertyType_LargePages:
             *aVal = mHWData->mHWVirtExLargePagesEnabled;
+#if defined(DEBUG_bird) && defined(RT_OS_LINUX) /* This feature is deadly here */
+            *aVal = FALSE;
+#endif
             break;
 
         case HWVirtExPropertyType_Force:
