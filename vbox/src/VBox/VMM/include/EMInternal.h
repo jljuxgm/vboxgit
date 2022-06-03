@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 41692 2012-06-13 19:32:54Z vboxsync $ */
+/* $Id: EMInternal.h 41728 2012-06-14 23:04:57Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -271,8 +271,8 @@ typedef struct EMSTATS
     STAMCOUNTER             StatOut;
     STAMCOUNTER             StatInvlpg;
     STAMCOUNTER             StatHlt;
-    STAMCOUNTER             StatMovReadCR[USE_REG_CR4 + 1];
-    STAMCOUNTER             StatMovWriteCR[USE_REG_CR4 + 1];
+    STAMCOUNTER             StatMovReadCR[DISCREG_CR4 + 1];
+    STAMCOUNTER             StatMovWriteCR[DISCREG_CR4 + 1];
     STAMCOUNTER             StatMovDRx;
     STAMCOUNTER             StatIret;
     STAMCOUNTER             StatMovLgdt;

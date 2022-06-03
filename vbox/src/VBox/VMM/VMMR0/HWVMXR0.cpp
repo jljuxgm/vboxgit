@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41727 2012-06-14 22:49:03Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41728 2012-06-14 23:04:57Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -4168,7 +4168,7 @@ ResumeExecution:
 
                 Assert(   !pVM->hwaccm.s.fNestedPaging
                        || !CPUMIsGuestInPagedProtectedModeEx(pCtx)
-                       || VMX_EXIT_QUALIFICATION_CRX_REGISTER(exitQualification) != USE_REG_CR3);
+                       || VMX_EXIT_QUALIFICATION_CRX_REGISTER(exitQualification) != DISCREG_CR3);
 
                 /* CR8 reads only cause an exit when the TPR shadow feature isn't present. */
                 Assert(   VMX_EXIT_QUALIFICATION_CRX_REGISTER(exitQualification) != 8

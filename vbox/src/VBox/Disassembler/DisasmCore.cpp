@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 41727 2012-06-14 22:49:03Z vboxsync $ */
+/* $Id: DisasmCore.cpp 41728 2012-06-14 23:04:57Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -742,7 +742,7 @@ unsigned UseModRM(RTUINTPTR uCodePtr, PCDISOPCODE pOp, PDISOPPARAM pParam, PDISC
                     &&  (pCpu->prefix & DISPREFIX_LOCK))
                 {
                     pCpu->prefix &= ~DISPREFIX_LOCK;
-                    pParam->base.reg_ctrl = USE_REG_CR8;
+                    pParam->base.reg_ctrl = DISCREG_CR8;
                 }
                 else
                     pParam->base.reg_ctrl = reg;
