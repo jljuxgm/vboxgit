@@ -1,6 +1,6 @@
-/* $Id: reqqueue.cpp 39500 2011-12-01 20:26:48Z vboxsync $ */
+/* $Id: reqqueue.cpp 39502 2011-12-01 21:25:15Z vboxsync $ */
 /** @file
- * IPRT - Request packets
+ * IPRT - Request Queue.
  */
 
 /*
@@ -78,6 +78,23 @@ RTDECL(int) RTReqQueueDestroy(RTREQQUEUE hQueue)
 
     RTSemEventDestroy(pQueue->EventSem);
     pQueue->EventSem = NIL_RTSEMEVENT;
+
+    for (unsigned i = 0; i < RT_ELEMENTS(pQueue->apReqFree); i++)
+    {
+        PRTREQ pReq = (PRTREQ)ASMAtomicXchgPtr(&pQueue->apReqFree[i], NULL);
+        while (pReq)
+        {
+            PRTREQ pNext = pReq->pNext;
+
+            pReq->u32Magic = RTREQ_MAGIC_DEAD;
+            RTSemEventDestroy(pReq->EventSem);
+            pReq->EventSem = NIL_RTSEMEVENT;
+            RTMemFree(pReq);
+
+            pReq = pNext;
+        }
+    }
+
     RTMemFree(pQueue);
     return VINF_SUCCESS;
 }
