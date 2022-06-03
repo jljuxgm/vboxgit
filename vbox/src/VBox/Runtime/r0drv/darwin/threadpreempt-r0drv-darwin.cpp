@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 29255 2010-05-09 18:11:24Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 37040 2011-05-11 16:42:48Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -107,11 +107,12 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 
     /* HACK ALERT! This ASSUMES that the cpu_pending_ast member of cpu_data_t doesn't move. */
     uint32_t ast_pending;
-#if 1
+#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
     __asm__ volatile("movl %%gs:%P1,%0\n\t"
                      : "=r" (ast_pending)
-                     : "i"  (7*sizeof(void*) + 7*sizeof(int)));
+                     : "i"  (7*sizeof(void*) + (7 + (ARCH_BITS == 64)) *sizeof(int)) );
 #else
+# error fixme.
     cpu_data_t *pCpu = current_cpu_datap(void);
     AssertCompileMemberOffset(cpu_data_t, cpu_pending_ast, 7*sizeof(void*) + 7*sizeof(int));
     cpu_pending_ast = pCpu->cpu_pending_ast;
@@ -123,7 +124,7 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 
 RTDECL(bool) RTThreadPreemptIsPendingTrusty(void)
 {
-    /* yes, we think thaat RTThreadPreemptIsPending is reliable... */
+    /* yes, we think that RTThreadPreemptIsPending is reliable... */
     return true;
 }
 
