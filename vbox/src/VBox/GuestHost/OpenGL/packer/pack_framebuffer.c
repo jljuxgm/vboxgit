@@ -1,4 +1,4 @@
-/* $Id: pack_framebuffer.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: pack_framebuffer.c 41136 2012-05-03 13:30:02Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object
@@ -47,7 +47,7 @@ crPackDeleteFramebuffersEXT(GLsizei n, const GLuint * framebuffers)
         return;
 
     data_ptr = (unsigned char *) crPackAlloc(packet_length);
-    WRITE_DATA(0, GLenum, CR_DELETERENDERBUFFERSEXT_EXTEND_OPCODE);
+    WRITE_DATA(0, GLenum, CR_DELETEFRAMEBUFFERSEXT_EXTEND_OPCODE);
     WRITE_DATA(4, GLsizei, n);
     crMemcpy(data_ptr + 8, framebuffers, n* sizeof(*framebuffers));
     crHugePacket(CR_EXTEND_OPCODE, data_ptr);
