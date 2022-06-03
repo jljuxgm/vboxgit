@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 38874 2011-09-27 08:59:11Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 38887 2011-09-27 12:08:50Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -817,13 +817,13 @@ int handleStorageAttach(HandlerArg *a)
             {
                 if (!RTStrICmp(pszDiscard, "on"))
                 {
-                    CHECK_ERROR(machine, DiscardDevice(Bstr(pszCtl).raw(),
-                                                       port, device, TRUE));
+                    CHECK_ERROR(machine, SetAutoDiscardForDevice(Bstr(pszCtl).raw(),
+                                                                 port, device, TRUE));
                 }
                 else if (!RTStrICmp(pszDiscard, "off"))
                 {
-                    CHECK_ERROR(machine, DiscardDevice(Bstr(pszCtl).raw(),
-                                                       port, device, FALSE));
+                    CHECK_ERROR(machine, SetAutoDiscardForDevice(Bstr(pszCtl).raw(),
+                                                                 port, device, FALSE));
                 }
                 else
                     throw Utf8StrFmt("Invalid --nonrotational argument '%s'", pszNonRotational);
