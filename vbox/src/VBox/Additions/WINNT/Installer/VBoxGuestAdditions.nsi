@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 37253 2011-05-30 11:56:34Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 37326 2011-06-06 08:09:44Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -970,6 +970,10 @@ Function .onSelChange
       ; can opt-in for installing WDDM or still go for the old (XPDM) way -- safe mode still required!
       ;
       MessageBox MB_ICONQUESTION|MB_YESNO $(VBOX_COMPONENT_D3D_OR_WDDM) /SD IDNO IDYES d3d_install
+      ; Display an uncoditional hint about needed VRAM sizes
+      ; Note: We also could use the PCI configuration space (WMI: Win32_SystemSlot Class) for querying
+      ;       the current VRAM size, but let's keep it simple for now
+      MessageBox MB_ICONINFORMATION|MB_OK $(VBOX_COMPONENT_D3D_HINT_VRAM) /SD IDOK
       StrCpy $g_bWithWDDM "true"
       Goto exit
     ${EndIf}
