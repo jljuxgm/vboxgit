@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -280,15 +280,15 @@ void UIWizardNewVMPageBasic2::sltOsTypeChanged()
 void UIWizardNewVMPageBasic2::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardNewVM::tr("VM Name and OS Type"));
+    setTitle(UIWizardNewVM::tr("Name and operating system"));
 
     /* Translate widgets: */
-    m_pLabel->setText(UIWizardNewVM::tr("<p>Enter a name for the new virtual machine and select the type of the guest operating system "
-                                        "you plan to install onto the virtual machine.</p><p>The name of the virtual machine usually "
-                                        "indicates its software and hardware configuration. It will be used by all VirtualBox components "
-                                        "to identify your virtual machine.</p>"));
+    m_pLabel->setText(UIWizardNewVM::tr("Please choose a descriptive name for the new virtual machine "
+                                        "and select the type of operating system you intend to install on it. "
+                                        "The name you choose will be used throughout VirtualBox "
+                                        "to identify this machine."));
     m_pNameCnt->setTitle(UIWizardNewVM::tr("&Name"));
-    m_pTypeCnt->setTitle(UIWizardNewVM::tr("OS &Type"));
+    m_pTypeCnt->setTitle(UIWizardNewVM::tr("Operating system"));
 }
 
 void UIWizardNewVMPageBasic2::initializePage()

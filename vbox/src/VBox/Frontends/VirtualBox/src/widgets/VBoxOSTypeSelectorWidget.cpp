@@ -1,4 +1,4 @@
-/* $Id: VBoxOSTypeSelectorWidget.cpp 39968 2012-02-02 19:26:12Z vboxsync $ */
+/* $Id: VBoxOSTypeSelectorWidget.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -151,7 +151,7 @@ void VBoxOSTypeSelectorWidget::activateLayout()
 
 void VBoxOSTypeSelectorWidget::retranslateUi()
 {
-    mTxFamilyName->setText (tr ("Operating &System:"));
+    mTxFamilyName->setText (tr ("&Type:"));
     mCbFamily->setWhatsThis (tr ("Displays the operating system family that "
                                  "you plan to install into this virtual machine."));
     mTxTypeName->setText (tr ("&Version:"));

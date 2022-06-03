@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -19,10 +19,7 @@
 
 /* Local includes: */
 #include "UIWizardFirstRun.h"
-#include "UIWizardFirstRunPageBasic1.h"
 #include "UIWizardFirstRunPageBasic2.h"
-#include "UIWizardFirstRunPageBasic3.h"
-#include "UIWizardFirstRunPageExpert.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 
@@ -91,7 +88,7 @@ void UIWizardFirstRun::retranslateUi()
     UIWizard::retranslateUi();
 
     /* Translate wizard: */
-    setWindowTitle(tr("First Run Wizard"));
+    setWindowTitle(tr("Select start-up disk"));
     setButtonText(QWizard::FinishButton, tr("Start"));
 }
 
@@ -102,14 +99,12 @@ void UIWizardFirstRun::prepare()
     {
         case UIWizardMode_Basic:
         {
-            setPage(Page1, new UIWizardFirstRunPageBasic1(m_fHardDiskWasSet));
-            setPage(Page2, new UIWizardFirstRunPageBasic2(m_machine.GetId(), m_fHardDiskWasSet));
-            setPage(Page3, new UIWizardFirstRunPageBasic3(m_fHardDiskWasSet));
+            setPage(Page1, new UIWizardFirstRunPageBasic2(m_machine.GetId(), m_fHardDiskWasSet));
             break;
         }
         case UIWizardMode_Expert:
         {
-            setPage(PageExpert, new UIWizardFirstRunPageExpert(m_machine.GetId(), m_fHardDiskWasSet));
+            AssertMsgFailed(("First-run wizard has no expert-mode!"));
             break;
         }
     }

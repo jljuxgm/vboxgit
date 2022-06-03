@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic3.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic3.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -91,16 +91,16 @@ UIWizardCloneVMPageBasic3::UIWizardCloneVMPageBasic3(bool fShowChildsOption)
 void UIWizardCloneVMPageBasic3::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardCloneVM::tr("Cloning Configuration"));
+    setTitle(UIWizardCloneVM::tr("Mode"));
 
     /* Translate widgets: */
-    const QString strGeneral = UIWizardCloneVM::tr("Please choose which parts of the virtual machine should be cloned.");
-    const QString strOpt1    = UIWizardCloneVM::tr("If you select <b>Current machine state</b>, only the current state "
-                                                   "of the virtual machine is cloned.");
-    const QString strOpt2    = UIWizardCloneVM::tr("If you select <b>Current machine and all child states</b> the current state "
-                                                   "of the virtual machine and any states of child snapshots are cloned.");
-    const QString strOpt3    = UIWizardCloneVM::tr("If you select <b>All states</b>, the current machine state "
-                                                   "and all snapshots are cloned.");
+    const QString strGeneral = UIWizardCloneVM::tr("<p>Please choose which parts of the virtual machine should be cloned.</p>");
+    const QString strOpt1    = UIWizardCloneVM::tr("<p>If you select <b>Current machine state</b>, "
+                                                   "only the current state of the virtual machine is cloned.</p>");
+    const QString strOpt2    = UIWizardCloneVM::tr("<p>If you select <b>Current machine and all child states</b>, "
+                                                   "the current state of the virtual machine and any states of child snapshots are cloned.</p>");
+    const QString strOpt3    = UIWizardCloneVM::tr("<p>If you select <b>All states</b>, "
+                                                   "the current machine state and all snapshots are cloned.</p>");
     if (m_fShowChildsOption)
         m_pLabel->setText(QString("<p>%1</p><p>%2 %3 %4</p>")
                           .arg(strGeneral)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -209,7 +209,7 @@ void UIWizardImportApp::retranslateUi()
     UIWizard::retranslateUi();
 
     /* Translate wizard: */
-    setWindowTitle(tr("Appliance Import Wizard"));
+    setWindowTitle(tr("Import Virtual Applicance"));
     setButtonText(QWizard::CustomButton2, tr("Restore Defaults"));
     setButtonText(QWizard::FinishButton, tr("Import"));
 }

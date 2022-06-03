@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 41331 2012-05-16 11:41:06Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -25,7 +25,6 @@
 #include "UIWizardNewVDPageBasic1.h"
 #include "UIWizardNewVDPageBasic2.h"
 #include "UIWizardNewVDPageBasic3.h"
-#include "UIWizardNewVDPageBasic4.h"
 #include "UIWizardNewVDPageExpert.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
@@ -101,7 +100,7 @@ void UIWizardNewVD::retranslateUi()
     UIWizard::retranslateUi();
 
     /* Translate wizard: */
-    setWindowTitle(tr("Create New Virtual Disk"));
+    setWindowTitle(tr("Create Virtual Hard Drive"));
     setButtonText(QWizard::FinishButton, tr("Create"));
 }
 
@@ -115,7 +114,6 @@ void UIWizardNewVD::prepare()
             setPage(Page1, new UIWizardNewVDPageBasic1);
             setPage(Page2, new UIWizardNewVDPageBasic2);
             setPage(Page3, new UIWizardNewVDPageBasic3(m_strDefaultName, m_strDefaultPath, m_uDefaultSize));
-            setPage(Page4, new UIWizardNewVDPageBasic4);
             break;
         }
         case UIWizardMode_Expert:

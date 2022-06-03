@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 41331 2012-05-16 11:41:06Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -190,7 +190,7 @@ void UIWizardCloneVDPageExpert::sltHandleSourceDiskChange()
     /* Get default path for virtual-disk copy: */
     m_strDefaultPath = sourceFileInfo.absolutePath();
     /* Compose name for virtual-disk copy: */
-    QString strMediumName = UIWizardCloneVD::tr("%1_copy", "copied virtual disk name").arg(sourceFileInfo.baseName());
+    QString strMediumName = UIWizardCloneVD::tr("%1_copy", "copied virtual hard drive name").arg(sourceFileInfo.baseName());
     /* Set text to location editor: */
     m_pDestinationDiskEditor->setText(strMediumName);
 
@@ -202,6 +202,9 @@ void UIWizardCloneVDPageExpert::sltHandleOpenSourceDiskClick()
 {
     /* Call to base-class: */
     onHandleOpenSourceDiskClick();
+
+    /* Broadcast complete-change: */
+    emit completeChanged();
 }
 
 void UIWizardCloneVDPageExpert::sltMediumFormatChanged()
@@ -234,10 +237,10 @@ void UIWizardCloneVDPageExpert::sltSelectLocationButtonClicked()
 void UIWizardCloneVDPageExpert::retranslateUi()
 {
     /* Translate widgets: */
-    m_pSourceDiskCnt->setTitle(UIWizardCloneVD::tr("&Source virtual disk"));
-    m_pSourceDiskOpenButton->setToolTip(UIWizardCloneVD::tr("Choose a virtual hard disk file..."));
-    m_pDestinationCnt->setTitle(UIWizardCloneVD::tr("&Destination virtual disk"));
-    m_pDestinationDiskOpenButton->setToolTip(UIWizardCloneVD::tr("Choose a virtual hard disk file..."));
+    m_pSourceDiskCnt->setTitle(UIWizardCloneVD::tr("Hard drive to &copy"));
+    m_pSourceDiskOpenButton->setToolTip(UIWizardCloneVD::tr("Choose a virtual hard drive file to copy..."));
+    m_pDestinationCnt->setTitle(UIWizardCloneVD::tr("Copy &location"));
+    m_pDestinationDiskOpenButton->setToolTip(UIWizardCloneVD::tr("Choose a location for new virtual hard drive file..."));
     m_pFormatCnt->setTitle(UIWizardCloneVD::tr("File &type"));
     QList<QAbstractButton*> buttons = m_pFormatButtonGroup->buttons();
     for (int i = 0; i < buttons.size(); ++i)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 41331 2012-05-16 11:41:06Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -255,7 +255,7 @@ void UIWizardNewVDPageExpert::retranslateUi()
 {
     /* Translate widgets: */
     m_pLocationCnt->setTitle(UIWizardNewVD::tr("&Location"));
-    m_pLocationOpenButton->setToolTip(UIWizardNewVD::tr("Choose a virtual hard disk file..."));
+    m_pLocationOpenButton->setToolTip(UIWizardNewVD::tr("Choose a virtual hard drive file..."));
     m_pSizeCnt->setTitle(UIWizardNewVD::tr("&Size"));
     m_pFormatCnt->setTitle(UIWizardNewVD::tr("File &type"));
     QList<QAbstractButton*> buttons = m_pFormatButtonGroup->buttons();

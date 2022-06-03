@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -53,7 +53,7 @@ UIWizardImportAppPageBasic2::UIWizardImportAppPageBasic2(const QString &strFileN
 void UIWizardImportAppPageBasic2::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardImportApp::tr("Appliance Import Settings"));
+    setTitle(UIWizardImportApp::tr("Appliance settings"));
 
     /* Translate widgets: */
     m_pLabel->setText(UIWizardImportApp::tr("These are the virtual machines contained in the appliance "
