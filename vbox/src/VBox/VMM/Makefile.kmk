@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36768 2011-04-20 18:33:29Z vboxsync $
+# $Id: Makefile.kmk 36824 2011-04-23 22:39:21Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -559,6 +559,16 @@ VMMAll/VMMAll.cpp_DEFS = VBOX_SVN_REV=$(VBOX_SVN_REV)
 #
 VMMR3/PGMPool.cpp_CXXFLAGS = $(if-expr $(KBUILD_TARGET) == "win",,$(VBOX_GCC_Wno-array_bounds))
 VMMAll/PGMAllPool.cpp_CXXFLAGS = $(if-expr $(KBUILD_TARGET) == "win",,$(VBOX_GCC_Wno-array_bounds))
+
+#
+# Always optimize the interpreter.
+#
+if1of ($(KBUILD_TARGET), win)
+#VMMAll/IEMAll.cpp_CXXFLAGS = TODO
+else
+VMMAll/IEMAll.cpp_CXXFLAGS = -O2 #-fomit-frame-pointer - latter causes trouble on mac.
+endif
+
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
