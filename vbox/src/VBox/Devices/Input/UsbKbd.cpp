@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 36421 2011-03-25 03:17:58Z vboxsync $ */
+/* $Id: UsbKbd.cpp 36445 2011-03-28 06:25:41Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -604,11 +604,11 @@ static int usbHidCompleteOk(PUSBHID pThis, PVUSBURB pUrb, size_t cbData)
 
 /**
  * Reset worker for usbHidUsbReset, usbHidUsbSetConfiguration and
- * usbHidUrbHandleDefaultPipe.
+ * usbHidHandleDefaultPipe.
  *
  * @returns VBox status code.
  * @param   pThis               The HID instance.
- * @param   pUrb                Set when usbHidUrbHandleDefaultPipe is the
+ * @param   pUrb                Set when usbHidHandleDefaultPipe is the
  *                              caller.
  * @param   fSetConfig          Set when usbHidUsbSetConfiguration is the
  *                              caller.
