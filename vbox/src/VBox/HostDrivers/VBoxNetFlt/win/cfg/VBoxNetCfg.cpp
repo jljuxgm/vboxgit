@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 40993 2012-04-19 14:25:38Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 41007 2012-04-20 13:13:04Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -632,7 +632,20 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinPropChangeAllNetDevicesOfId(IN LPCWSTR 
     VBOXNECTFGWINPROPCHANGE Pc;
     Pc.enmPcType = enmPcType;
     Pc.hr = S_OK;
-    return VBoxNetCfgWinEnumNetDevices(lpszPnPId, vboxNetCfgWinPropChangeAllNetDevicesOfIdCallback, &Pc);
+    HRESULT hr = VBoxNetCfgWinEnumNetDevices(lpszPnPId, vboxNetCfgWinPropChangeAllNetDevicesOfIdCallback, &Pc);
+    if (!SUCCEEDED(hr))
+    {
+        NonStandardLogFlow(("VBoxNetCfgWinEnumNetDevices failed 0x%x\n", hr));
+        return hr;
+    }
+
+    if (!SUCCEEDED(Pc.hr))
+    {
+        NonStandardLogFlow(("vboxNetCfgWinPropChangeAllNetDevicesOfIdCallback failed 0x%x\n", Pc.hr));
+        return Pc.hr;
+    }
+
+    return S_OK;
 }
 
 /*
