@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 36350 2011-03-22 21:53:31Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 36417 2011-03-24 22:49:51Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1442,17 +1442,7 @@ PCUSBDEVTREELOCATION USBProxyLinuxGetDeviceRoot(bool fPreferSysfs)
             if (   fHaveInotify
                 && !pcBestSysfs
                 && RTPathExists(s_aTreeLocations[i].szDevicesRoot))
-            {
-                PUSBDEVICE pDevices;
-
-                pDevices = getDevicesFromSysfs(s_aTreeLocations[i].szDevicesRoot,
-                                               true);
-                if (pDevices)
-                {
-                    pcBestSysfs = &s_aTreeLocations[i];
-                    deviceListFree(&pDevices);
-                }
-            }
+                pcBestSysfs = &s_aTreeLocations[i];
         }
     if (pcBestUsbfs && !fPreferSysfs)
         return pcBestUsbfs;
