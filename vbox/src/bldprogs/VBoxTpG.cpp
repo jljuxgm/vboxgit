@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 41186 2012-05-07 13:42:20Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 41311 2012-05-15 13:12:02Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -411,7 +411,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 41186 2012-05-07 13:42:20Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 41311 2012-05-15 13:12:02Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -438,7 +438,13 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                     "  global NAME(%%1)\n"
                     "  NAME(%%1):\n"
                     " %%endmacro\n"
-                    " [section __VTG __VTGObj        align=64]\n"
+                    " ; Section order hack!\n"
+                    " ; With the ld64-97.17 linker there was a problem with it determin the section\n"
+                    " ; order based on symbol references. The references to the start and end of the\n"
+                    " ; __VTGPrLc section forced it in front of __VTGObj. \n"
+                    " extern section$start$__VTG$__VTGObj\n"
+                    " extern section$end$__VTG$__VTGObj\n"
+                    " [section __VTG __VTGObj        align=1024]\n"
                     "\n"
                     "%%elifdef ASM_FORMAT_PE\n"
                     " %%macro VTG_GLOBAL 2\n"
@@ -521,7 +527,15 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTUuidCreate failed: %Rrc", rc);
     ScmStreamPrintf(pStrm,
                     "    dd 0%08xh, 0%08xh, 0%08xh, 0%08xh\n"
-                    "    dd 0, 0, 0, 0\n"
+                    "%%ifdef ASM_FORMAT_MACHO\n"
+                    "    RTCCPTR_DEF section$start$__VTG$__VTGObj\n"
+                    " %%if ARCH_BITS == 32\n"
+                    "    dd          0\n"
+                    " %%endif\n"
+                    "%%else\n"
+                    "    dd 0, 0\n"
+                    "%%endif\n"
+                    "    dd 0, 0\n"
                     , Uuid.au32[0], Uuid.au32[1], Uuid.au32[2], Uuid.au32[3]);
 
     /*
@@ -890,7 +904,7 @@ static RTEXITCODE generateHeaderInner(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 41186 2012-05-07 13:42:20Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 41311 2012-05-15 13:12:02Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s. Do NOT edit!\n"
                     " */\n"
@@ -2029,7 +2043,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 41186 $";
+                static const char s_szRev[] = "$Revision: 41311 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
