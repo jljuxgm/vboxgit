@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 39561 2011-12-08 16:42:22Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 39562 2011-12-08 17:05:52Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -1258,6 +1258,10 @@ proceed:
 
   ; Set system directory
   StrCpy $g_strSystemDir "$SYSDIR"
+
+  ; We need a special directory set to SysWOW64 because some
+  ; shell operations don't support file redirection (yet)
+  StrCpy $g_strSysWow64 "$WINDIR\SysWOW64"
 
   ; Retrieve Windows version we're running on and store it in $g_strWinVersion
   Call un.GetWindowsVer
