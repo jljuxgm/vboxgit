@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 36821 2011-04-22 21:35:32Z vboxsync $ */
+/* $Id: IEMAll.cpp 36823 2011-04-23 22:32:27Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -6278,6 +6278,9 @@ static void iemExecVerificationModeSetup(PIEMCPU pIemCpu)
     {
         Log(("Injecting trap %#x\n", TRPMGetTrapNo(pVCpu)));
         iemCImpl_int(pIemCpu, 0, TRPMGetTrapNo(pVCpu), false);
+# ifdef IEM_VERIFICATION_MODE_NO_REM
+        TRPMResetTrap(pVCpu);
+# endif
     }
 
     /*

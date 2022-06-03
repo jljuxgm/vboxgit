@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 36787 2011-04-21 09:32:17Z vboxsync $ */
+/* $Id: EM.cpp 36823 2011-04-23 22:32:27Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2013,7 +2013,13 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  */
                 case EMSTATE_REM:
 #ifdef IEM_VERIFICATION_MODE
+# if 1
                     rc = VBOXSTRICTRC_TODO(IEMExecOne(pVCpu)); fFFDone = false;
+# else
+                    rc = VBOXSTRICTRC_TODO(REMR3EmulateInstruction(pVM, pVCpu)); fFFDone = false;
+                    if (rc == VINF_EM_RESCHEDULE)
+                        rc = VINF_SUCCESS;
+# endif
 #else
                     rc = emR3RemExecute(pVM, pVCpu, &fFFDone);
 #endif
