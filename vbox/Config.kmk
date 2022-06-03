@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41923 2012-06-27 13:28:15Z vboxsync $
+# $Id: Config.kmk 41941 2012-06-28 01:46:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2590,6 +2590,16 @@ else
  SDK_VBOX_FFMPEG_LIBS ?= avutil avcodec avformat
 endif
 
+#VPXLIB
+SDK_VBOX_VPX       = .
+if1of ($(KBUILD_TARGET), darwin linux os2 solaris win)
+ SDK_VBOX_VPX_INCS ?=  \
+     $(PATH_ROOT)/src/libs/libvpx/vpx \
+     $(PATH_ROOT)/src/libs/libvpx/vp8 \
+     $(PATH_ROOT)/src/libs/libvpx/vpx_mem
+SDK_VBOX_VPX_LIBS ?=  $(PATH_STAGE_BIN)/VBox-libvpx.so
+endif
+
 SDK_VBOX_BOOST        = .
 SDK_VBOX_BOOST_DEFS  ?= BOOST_DISABLE_ASSERTS
 SDK_VBOX_BOOST_INCS  ?= $(PATH_ROOT)/src/libs/boost-1.37.0
@@ -5123,7 +5133,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41923 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41941 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
