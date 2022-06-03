@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 40489 2012-03-15 17:14:31Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 40566 2012-03-21 14:12:23Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -38,6 +38,10 @@ typedef struct VBOXMP_COMMON
     int cDisplays;                      /* Number of displays. */
 
     uint32_t cbVRAM;                    /* The VRAM size. */
+
+    PHYSICAL_ADDRESS phVRAM;            /* Physical VRAM base. */
+
+    ULONG ulApertureSize;               /* Size of the LFB aperture (>= VRAM size). */
 
     uint32_t cbMiniportHeap;            /* The size of reserved VRAM for miniport driver heap.
                                          * It is at offset:
@@ -127,8 +131,6 @@ typedef struct _VBOXMP_DEVEXT
                                                 */
            ULONG ulVbvaEnabled;                /* Indicates that VBVA mode is enabled. */
            ULONG ulMaxFrameBufferSize;         /* The size of the VRAM allocated for the a single framebuffer. */
-           PHYSICAL_ADDRESS physLFBBase;       /* Physical linear framebuffer base. */
-           ULONG ulApertureSize;               /* Size of the LFB aperture (>= VRAM size). */
            BOOLEAN fMouseHidden;               /* Has the mouse cursor been hidden by the guest? */
            VBOXMP_COMMON commonInfo;
 #ifdef VBOX_XPDM_MINIPORT

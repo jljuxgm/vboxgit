@@ -1,4 +1,4 @@
-/* $Id: VBoxMPHGSMI.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPHGSMI.h 40566 2012-03-21 14:12:23Z vboxsync $ */
 
 /** @file
  * VBox Miniport HGSMI related header
@@ -22,7 +22,7 @@
 #include "VBoxMPDevExt.h"
 
 RT_C_DECLS_BEGIN
-void VBoxSetupDisplaysHGSMI(PVBOXMP_COMMON pCommon, uint32_t AdapterMemorySize, uint32_t fCaps);
+void VBoxSetupDisplaysHGSMI(PVBOXMP_COMMON pCommon, PHYSICAL_ADDRESS phVRAM, uint32_t ulApertureSize, uint32_t cbVRAM, uint32_t fCaps);
 void VBoxFreeDisplaysHGSMI(PVBOXMP_COMMON pCommon);
 RT_C_DECLS_END
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 40373 2012-03-06 10:55:53Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 40566 2012-03-21 14:12:23Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1385,7 +1385,7 @@ NTSTATUS vboxVideoAMgrCreate(PVBOXMP_DEVEXT pDevExt, PVBOXVIDEOCM_ALLOC_MGR pMgr
         if (Status == STATUS_SUCCESS)
         {
             PHYSICAL_ADDRESS PhysicalAddress = {0};
-            PhysicalAddress.QuadPart = VBE_DISPI_LFB_PHYSICAL_ADDRESS + offData;
+            PhysicalAddress.QuadPart = VBoxCommonFromDeviceExt(pDevExt)->phVRAM.QuadPart + offData;
             pMgr->pvData = (uint8_t*)MmMapIoSpace(PhysicalAddress, cbData, MmNonCached);
             Assert(pMgr->pvData);
             if (pMgr->pvData)

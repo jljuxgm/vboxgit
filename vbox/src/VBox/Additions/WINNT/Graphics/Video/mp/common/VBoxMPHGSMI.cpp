@@ -1,4 +1,4 @@
-/* $Id: VBoxMPHGSMI.cpp 40387 2012-03-06 20:38:49Z vboxsync $ */
+/* $Id: VBoxMPHGSMI.cpp 40566 2012-03-21 14:12:23Z vboxsync $ */
 
 /** @file
  * VBox Miniport HGSMI related functions
@@ -28,8 +28,8 @@
  * HGSMI variant is a bit different because it uses only HGSMI interface (VBVA channel)
  * to talk to the host.
  */
-void VBoxSetupDisplaysHGSMI(PVBOXMP_COMMON pCommon,
-                            uint32_t AdapterMemorySize, uint32_t fCaps)
+void VBoxSetupDisplaysHGSMI(PVBOXMP_COMMON pCommon, PHYSICAL_ADDRESS phVRAM, uint32_t ulApertureSize,
+                            uint32_t cbVRAM, uint32_t fCaps)
 {
     /** @todo I simply converted this from Windows error codes.  That is wrong,
      * but we currently freely mix and match those (failure == rc > 0) and iprt
@@ -41,7 +41,9 @@ void VBoxSetupDisplaysHGSMI(PVBOXMP_COMMON pCommon,
     LOGF_ENTER();
 
     memset(pCommon, 0, sizeof(*pCommon));
-    pCommon->cbVRAM    = AdapterMemorySize;
+    pCommon->phVRAM = phVRAM;
+    pCommon->ulApertureSize = ulApertureSize;
+    pCommon->cbVRAM    = cbVRAM;
     pCommon->cDisplays = 1;
     pCommon->bHGSMI    = VBoxHGSMIIsSupported();
 
