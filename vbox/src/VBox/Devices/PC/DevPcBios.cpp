@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 38220 2011-07-28 14:09:57Z vboxsync $ */
+/* $Id: DevPcBios.cpp 38698 2011-09-09 09:01:56Z vboxsync $ */
 /** @file
  * PC BIOS Device.
  */
@@ -265,7 +265,7 @@ static void pcbiosCmosInitHardDisk(PPDMDEVINS pDevIns, int offType, int offInfo,
 {
     Log2(("%s: offInfo=%#x: LCHS=%d/%d/%d\n", __FUNCTION__, offInfo, pLCHSGeometry->cCylinders, pLCHSGeometry->cHeads, pLCHSGeometry->cSectors));
     if (offType)
-        pcbiosCmosWrite(pDevIns, offType, 48);
+        pcbiosCmosWrite(pDevIns, offType, 47);
     /* Cylinders low */
     pcbiosCmosWrite(pDevIns, offInfo + 0, RT_MIN(pLCHSGeometry->cCylinders, 1024) & 0xff);
     /* Cylinders high */
