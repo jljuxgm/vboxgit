@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 41133 2012-05-03 13:19:10Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 41135 2012-05-03 13:25:57Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1842,7 +1842,7 @@ static void supdrvTracerUmodClearProbeIds(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION 
     {
         if (pSession->cTpProbesFiring > 0)
         {
-            uint32_t i = 0;
+            i = 0;
             while (pSession->cTpProbesFiring > 0)
             {
                 RTSemFastMutexRelease(pDevExt->mtxTracer);
