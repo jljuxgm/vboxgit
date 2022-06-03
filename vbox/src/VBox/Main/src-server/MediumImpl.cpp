@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 36653 2011-04-12 12:27:10Z vboxsync $ */
+/* $Id: MediumImpl.cpp 36975 2011-05-05 19:12:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -7000,7 +7000,7 @@ HRESULT Medium::taskCloneHandler(Medium::CloneTask &task)
         // save the settings
         GuidList llRegistriesThatNeedSaving;
         addToRegistryIDList(llRegistriesThatNeedSaving);
-        rc = m->pVirtualBox->saveRegistries(llRegistriesThatNeedSaving);
+        HRESULT rc1 = m->pVirtualBox->saveRegistries(llRegistriesThatNeedSaving);
     }
 
     /* Everything is explicitly unlocked when the task exits,
@@ -7764,7 +7764,7 @@ HRESULT Medium::taskImportHandler(Medium::ImportTask &task)
         // save the settings
         GuidList llRegistriesThatNeedSaving;
         addToRegistryIDList(llRegistriesThatNeedSaving);
-        rc = m->pVirtualBox->saveRegistries(llRegistriesThatNeedSaving);
+        HRESULT rc1 = m->pVirtualBox->saveRegistries(llRegistriesThatNeedSaving);
     }
 
     /* Everything is explicitly unlocked when the task exits,
