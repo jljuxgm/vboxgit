@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstGuestPropSvc.cpp 36259 2011-03-11 10:56:54Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -71,7 +71,9 @@ validFlagStrings[] =
     { "transient, ", "TRANSIENT" },
     { "  rdOnLyHOST, transIENT  ,     READONLY    ", "TRANSIENT, READONLY" },
     { " rdonlyguest", "RDONLYGUEST" },
-    { "rdonlyhost     ", "RDONLYHOST" }
+    { "rdonlyhost     ", "RDONLYHOST" },
+    { "transient, transreset, rdonlyhost",
+       "TRANSIENT, RDONLYHOST, TRANSRESET" }
 };
 
 /**
