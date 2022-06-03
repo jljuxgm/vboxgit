@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 37803 2011-07-06 14:45:27Z vboxsync $ */
+/* $Id: PGMR0.cpp 37950 2011-07-14 10:13:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -86,6 +86,7 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
     int rc = GMMR0AllocateHandyPages(pVM, pVCpu->idCpu, cPages, cPages, &pVM->pgm.s.aHandyPages[iFirst]);
     if (RT_SUCCESS(rc))
     {
+#ifdef VBOX_STRICT
         for (uint32_t i = 0; i < RT_ELEMENTS(pVM->pgm.s.aHandyPages); i++)
         {
             Assert(pVM->pgm.s.aHandyPages[i].idPage != NIL_GMM_PAGEID);
@@ -94,6 +95,7 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
             Assert(pVM->pgm.s.aHandyPages[i].HCPhysGCPhys != NIL_RTHCPHYS);
             Assert(!(pVM->pgm.s.aHandyPages[i].HCPhysGCPhys & ~X86_PTE_PAE_PG_MASK));
         }
+#endif
 
         pVM->pgm.s.cHandyPages = RT_ELEMENTS(pVM->pgm.s.aHandyPages);
     }
