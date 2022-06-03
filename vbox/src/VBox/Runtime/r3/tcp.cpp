@@ -1,4 +1,4 @@
-/* $Id: tcp.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: tcp.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - TCP/IP.
  */
@@ -962,7 +962,7 @@ static int rtTcpSetBlockingMode(RTHCUINTPTR hSocket, bool fBlocking)
  */
 static int rtTcpClose(RTSOCKET Sock, const char *pszMsg, bool fTryGracefulShutdown)
 {
-    int rc;
+    NOREF(pszMsg); /** @todo drop this parameter? */
 
     /* ignore nil handles. */
     if (Sock == NIL_RTSOCKET)
@@ -971,6 +971,7 @@ static int rtTcpClose(RTSOCKET Sock, const char *pszMsg, bool fTryGracefulShutdo
     /*
      * Try to gracefully shut it down.
      */
+    int rc;
     if (fTryGracefulShutdown)
     {
         rc = RTSocketShutdown(Sock, false /*fRead*/, true /*fWrite*/);

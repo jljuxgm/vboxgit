@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-posix.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
@@ -428,6 +428,7 @@ static int rtSemEventMultiPosixWaitIndefinite(struct RTSEMEVENTMULTIINTERNAL *pT
         RTTHREAD hThreadSelf = RTThreadSelf();
 #endif
         RTThreadBlocking(hThreadSelf, RTTHREADSTATE_EVENT_MULTI, true);
+        /** @todo interruptible wait is not implementable... */ NOREF(fFlags);
         rc = pthread_cond_wait(&pThis->Cond, &pThis->Mutex);
         RTThreadUnblocked(hThreadSelf, RTTHREADSTATE_EVENT_MULTI);
         if (RT_UNLIKELY(rc))

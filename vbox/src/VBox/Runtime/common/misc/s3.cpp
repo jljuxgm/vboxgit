@@ -1,4 +1,4 @@
-/* $Id: s3.cpp 38734 2011-09-13 13:21:21Z vboxsync $ */
+/* $Id: s3.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - S3 communication API.
  */
@@ -280,9 +280,10 @@ static int rtS3Perform(PRTS3INTERNAL pS3Int)
     return rc;
 }
 
-static size_t rtS3WriteNothingCallback(void *pvBuf, size_t cSize, size_t cBSize, void *pvUser)
+static size_t rtS3WriteNothingCallback(void *pvBuf, size_t cbItem, size_t cItems, void *pvUser)
 {
-    return cSize*cBSize;
+    NOREF(pvBuf); NOREF(pvUser);
+    return cbItem * cItems;
 }
 
 static size_t rtS3WriteMemoryCallback(void *pvBuf, size_t cSize, size_t cBSize, void *pvUser)

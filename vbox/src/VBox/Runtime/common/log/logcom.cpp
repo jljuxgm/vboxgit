@@ -1,4 +1,4 @@
-/* $Id: logcom.cpp 29271 2010-05-09 21:25:16Z vboxsync $ */
+/* $Id: logcom.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Logging to Serial Port.
  */
@@ -101,6 +101,7 @@ RT_EXPORT_SYMBOL(RTLogComPrintfV);
  */
 static DECLCALLBACK(size_t) rtLogComOutput(void *pv, const char *pachChars, size_t cbChars)
 {
+    NOREF(pv);
     if (cbChars)
         RTLogWriteCom(pachChars, cbChars);
     return cbChars;

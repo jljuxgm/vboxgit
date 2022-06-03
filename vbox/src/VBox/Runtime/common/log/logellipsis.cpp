@@ -1,4 +1,4 @@
-/* $Id: logellipsis.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: logellipsis.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger, the ellipsis variants.
  */
@@ -56,6 +56,7 @@ RTDECL(void) RTLogLogger(PRTLOGGER pLogger, void *pvCallerRet, const char *pszFo
     RTLogLoggerExV(pLogger, 0, ~0U, pszFormat, args);
 #endif
     va_end(args);
+    NOREF(pvCallerRet);
 }
 RT_EXPORT_SYMBOL(RTLogLogger);
 

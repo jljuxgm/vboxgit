@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 38581 2011-08-31 12:43:26Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -63,6 +63,7 @@ typedef RTDBGMODLDR *PRTDBGMODLDR;
 /** @interface_method_impl{RTDBGMODVTIMG,pfnUnmapPart} */
 static DECLCALLBACK(int) rtDbgModLdr_UnmapPart(PRTDBGMODINT pMod, size_t cb, void const **ppvMap)
 {
+    NOREF(pMod); NOREF(cb);
     RTMemFree((void *)*ppvMap);
     *ppvMap = NULL;
     return VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: fileaio-posix.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: fileaio-posix.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for POSIX compliant host platforms.
  */
@@ -578,12 +578,12 @@ RTDECL(uint32_t) RTFileAioCtxGetMaxReqCount(RTFILEAIOCTX hAioCtx)
 
     if (hAioCtx == NIL_RTFILEAIOCTX)
         return RTFILEAIO_UNLIMITED_REQS;
-    else
-        return pCtxInt->cMaxRequests;
+    return pCtxInt->cMaxRequests;
 }
 
 RTDECL(int) RTFileAioCtxAssociateWithFile(RTFILEAIOCTX hAioCtx, RTFILE hFile)
 {
+    NOREF(hAioCtx); NOREF(hFile);
     return VINF_SUCCESS;
 }
 

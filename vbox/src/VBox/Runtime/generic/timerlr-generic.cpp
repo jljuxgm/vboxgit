@@ -1,4 +1,4 @@
-/* $Id: timerlr-generic.cpp 34507 2010-11-30 13:14:14Z vboxsync $ */
+/* $Id: timerlr-generic.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Low Resolution Timers, Generic.
  *
@@ -236,9 +236,10 @@ RTDECL(int) RTTimerLRStop(RTTIMERLR hTimerLR)
 RT_EXPORT_SYMBOL(RTTimerLRStop);
 
 
-static DECLCALLBACK(int) rtTimerLRThread(RTTHREAD hThread, void *pvUser)
+static DECLCALLBACK(int) rtTimerLRThread(RTTHREAD hThreadSelf, void *pvUser)
 {
     PRTTIMERLRINT pThis = (PRTTIMERLRINT)pvUser;
+    NOREF(hThreadSelf);
 
     /*
      * The loop.

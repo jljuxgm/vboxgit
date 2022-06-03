@@ -1,4 +1,4 @@
-/* $Id: sched-darwin.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: sched-darwin.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, Darwin.
  */
@@ -236,7 +236,6 @@ DECLHIDDEN(int) rtSchedNativeCalcDefaultPriority(RTTHREADTYPE enmType)
     int offBest = RT_ABS(g_pProcessPriority->aTypes[enmType].iBasePriority - iBasePriority);
     if (offBest)
     {
-        const PROCPRIORITY *pProcessPriority = &g_aDefaultPriority;
         for (unsigned i = 0; i < RT_ELEMENTS(g_aPriorities); i++)
         {
             int off = RT_ABS(g_aPriorities[i].aTypes[enmType].iBasePriority - iBasePriority);

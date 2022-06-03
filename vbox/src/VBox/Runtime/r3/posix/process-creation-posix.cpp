@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -84,7 +84,7 @@
  * @param    uid         where to store the UID of the user
  * @returns IPRT status code
  */
-static int rtCheckCredentials(const char *pszUser, const char *pszPasswd, gid_t *gid, uid_t *uid)
+static int rtCheckCredentials(const char *pszUser, const char *pszPasswd, gid_t *pGid, uid_t *pUid)
 {
 #if defined(RT_OS_LINUX)
     struct passwd *pw;
@@ -110,8 +110,8 @@ static int rtCheckCredentials(const char *pszUser, const char *pszPasswd, gid_t 
     if (!fCorrect)
         return VERR_PERMISSION_DENIED;
 
-    *gid = pw->pw_gid;
-    *uid = pw->pw_uid;
+    *pGid = pw->pw_gid;
+    *pUid = pw->pw_uid;
     return VINF_SUCCESS;
 
 #elif defined(RT_OS_SOLARIS)
@@ -134,11 +134,12 @@ static int rtCheckCredentials(const char *pszUser, const char *pszPasswd, gid_t 
     if (strcmp(pszEncPasswd, ppw->pw_passwd))
         return VERR_PERMISSION_DENIED;
 
-    *gid = ppw->pw_gid;
-    *uid = ppw->pw_uid;
+    *pGid = ppw->pw_gid;
+    *pUid = ppw->pw_uid;
     return VINF_SUCCESS;
 
 #else
+    NOREF(pszUser); NOREF(pszPasswd); NOREF(pGid); NOREF(pUid);
     return VERR_PERMISSION_DENIED;
 #endif
 }

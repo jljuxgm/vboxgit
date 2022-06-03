@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: tar.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -994,8 +994,11 @@ RTR3DECL(int) RTTarFileSeek(RTTARFILE hFile, uint64_t offSeek, unsigned uMethod,
             pFileInt->offCurrent = pFileInt->cbSize - offSeek;
             break;
         }
-        default: AssertFailedReturn(VERR_INVALID_PARAMETER); break;
+        default: AssertFailedReturn(VERR_INVALID_PARAMETER);
     }
+
+    if (poffActual)
+        *poffActual = pFileInt->offCurrent;
 
     return VINF_SUCCESS;
 }

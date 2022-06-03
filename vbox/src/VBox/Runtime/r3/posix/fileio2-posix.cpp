@@ -1,4 +1,4 @@
-/* $Id: fileio2-posix.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: fileio2-posix.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 2.
  */
@@ -134,6 +134,8 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE hFile, PRTFSOBJINFO pObjInfo, RTFSOBJATTRAD
 RTR3DECL(int) RTFileSetTimes(RTFILE hFile, PCRTTIMESPEC pAccessTime, PCRTTIMESPEC pModificationTime,
                              PCRTTIMESPEC pChangeTime, PCRTTIMESPEC pBirthTime)
 {
+    NOREF(pChangeTime); NOREF(pBirthTime);
+
     /*
      * We can only set AccessTime and ModificationTime, so if neither
      * are specified we can return immediately.

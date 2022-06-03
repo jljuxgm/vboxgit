@@ -1,4 +1,4 @@
-/* $Id: udp.cpp 37197 2011-05-24 14:56:02Z vboxsync $ */
+/* $Id: udp.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - UDP/IP.
  */
@@ -669,6 +669,8 @@ RTR3DECL(int) RTUdpServerDestroy(PRTUDPSERVER pServer)
  */
 static int rtUdpClose(RTSOCKET Sock, const char *pszMsg)
 {
+    NOREF(pszMsg); /** @todo drop this parameter? */
+
     /* ignore nil handles. */
     if (Sock == NIL_RTSOCKET)
         return VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: thread.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -1325,6 +1325,7 @@ static DECLCALLBACK(int) rtThreadSetPriorityOne(PAVLPVNODECORE pNode, void *pvUs
     int rc = rtThreadNativeSetPriority(pThread, pThread->enmType);
     if (RT_SUCCESS(rc)) /* hide any warnings */
         return VINF_SUCCESS;
+    NOREF(pvUser);
     return rc;
 }
 

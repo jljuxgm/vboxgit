@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -327,6 +327,7 @@ DECLCALLBACK(int) rtDvmFmtBsdLblOpen(PCRTDVMDISK pDisk, PRTDVMFMT phVolMgrFmt)
 
 DECLCALLBACK(int) rtDvmFmtBsdLblInitialize(PCRTDVMDISK pDisk, PRTDVMFMT phVolMgrFmt)
 {
+    NOREF(pDisk); NOREF(phVolMgrFmt);
     return VERR_NOT_IMPLEMENTED;
 }
 
@@ -448,12 +449,13 @@ DECLCALLBACK(uint64_t) rtDvmFmtBsdLblVolumeGetSize(RTDVMVOLUMEFMT hVolFmt)
 
 DECLCALLBACK(int) rtDvmFmtBsdLblVolumeQueryName(RTDVMVOLUMEFMT hVolFmt, char **ppszVolName)
 {
-    NOREF(hVolFmt);
+    NOREF(hVolFmt); NOREF(ppszVolName);
     return VERR_NOT_SUPPORTED;
 }
 
 DECLCALLBACK(RTDVMVOLTYPE) rtDvmFmtBsdLblVolumeGetType(RTDVMVOLUMEFMT hVolFmt)
 {
+    NOREF(hVolFmt);
     return RTDVMVOLTYPE_UNKNOWN;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.cpp 29250 2010-05-09 17:53:58Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -49,6 +49,7 @@
 DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOperation,
                                                    uint64_t u64Arg, PSUPR0SERVICEREQHDR pReqHdr)
 {
+    NOREF(pSession);
     if (u64Arg)
         return VERR_INVALID_PARAMETER;
     if (!VALID_PTR(pReqHdr))

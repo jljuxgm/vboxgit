@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 36167 2011-03-04 12:33:39Z vboxsync $ */
+/* $Id: dir-posix.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -195,6 +195,8 @@ RTDECL(int) RTDirFlush(const char *pszPath)
 
 int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
 {
+    NOREF(pszPathBuf); /* only used on windows */
+
     /*
      * Convert to a native path and try opendir.
      */

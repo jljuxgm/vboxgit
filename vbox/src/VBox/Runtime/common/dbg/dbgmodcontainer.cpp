@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -399,7 +399,7 @@ static DECLCALLBACK(int) rtDbgModContainer_SymbolAdd(PRTDBGMODINT pMod, const ch
     pSymbol->iSeg               = iSeg;
     pSymbol->cb                 = cb;
     pSymbol->fFlags             = fFlags;
-    pSymbol->NameCore.pszString = RTStrCacheEnter(g_hDbgModStrCache, pszSymbol);
+    pSymbol->NameCore.pszString = RTStrCacheEnterN(g_hDbgModStrCache, pszSymbol, cchSymbol);
     int rc;
     if (pSymbol->NameCore.pszString)
     {
@@ -603,6 +603,7 @@ static DECLCALLBACK(int)  rtDbgModContainer_DestroyTreeNode(PAVLRUINTPTRNODECORE
     RTStrCacheRelease(g_hDbgModStrCache, pSym->NameCore.pszString);
     pSym->NameCore.pszString = NULL;
     RTMemFree(pSym);
+    NOREF(pvUser);
     return 0;
 }
 
@@ -637,6 +638,7 @@ static DECLCALLBACK(int) rtDbgModContainer_Close(PRTDBGMODINT pMod)
 /** @copydoc RTDBGMODVTDBG::pfnTryOpen */
 static DECLCALLBACK(int) rtDbgModContainer_TryOpen(PRTDBGMODINT pMod)
 {
+    NOREF(pMod);
     return VERR_INTERNAL_ERROR_5;
 }
 

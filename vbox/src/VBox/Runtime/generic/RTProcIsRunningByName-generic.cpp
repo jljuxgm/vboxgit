@@ -1,4 +1,4 @@
-/* $Id: RTProcIsRunningByName-generic.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: RTProcIsRunningByName-generic.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - RTProcIsRunningByName, generic stub.
  */
@@ -37,6 +37,7 @@ RTR3DECL(bool) RTProcIsRunningByName(const char *pszName)
     /*
      * No other info here, so return false;
      */
+    NOREF(pszName);
     return false;
 }
 

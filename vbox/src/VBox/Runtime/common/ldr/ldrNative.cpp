@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 38581 2011-08-31 12:43:26Z vboxsync $ */
+/* $Id: ldrNative.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -43,9 +43,10 @@
 
 
 /** @copydoc RTLDROPS::pfnEnumSymbols */
-static DECLCALLBACK(int) rtldrNativeEnumSymbols(PRTLDRMODINTERNAL pMod, unsigned fFlags, const void *pvBits, RTUINTPTR BaseAddress,
-                                                PFNRTLDRENUMSYMS pfnCallback, void *pvUser)
+static DECLCALLBACK(int) rtldrNativeEnumSymbols(PRTLDRMODINTERNAL pMod, unsigned fFlags, const void *pvBits,
+                                                RTUINTPTR BaseAddress, PFNRTLDRENUMSYMS pfnCallback, void *pvUser)
 {
+    NOREF(pMod); NOREF(fFlags); NOREF(pvBits); NOREF(BaseAddress); NOREF(pfnCallback); NOREF(pvUser);
     return VERR_NOT_SUPPORTED;
 }
 
@@ -53,6 +54,7 @@ static DECLCALLBACK(int) rtldrNativeEnumSymbols(PRTLDRMODINTERNAL pMod, unsigned
 /** @copydoc RTLDROPS::pfnDone */
 static DECLCALLBACK(int) rtldrNativeDone(PRTLDRMODINTERNAL pMod)
 {
+    NOREF(pMod);
     return VINF_SUCCESS;
 }
 

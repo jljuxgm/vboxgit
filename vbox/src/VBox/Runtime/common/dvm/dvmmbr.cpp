@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 37024 2011-05-10 11:23:44Z vboxsync $ */
+/* $Id: dvmmbr.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -322,7 +322,7 @@ static DECLCALLBACK(uint64_t) rtDvmFmtMbrVolumeGetSize(RTDVMVOLUMEFMT hVolFmt)
 
 static DECLCALLBACK(int) rtDvmFmtMbrVolumeQueryName(RTDVMVOLUMEFMT hVolFmt, char **ppszVolName)
 {
-    NOREF(hVolFmt);
+    NOREF(hVolFmt); NOREF(ppszVolName);
     return VERR_NOT_SUPPORTED;
 }
 

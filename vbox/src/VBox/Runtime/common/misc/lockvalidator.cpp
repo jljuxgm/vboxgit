@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 39071 2011-10-21 10:21:06Z vboxsync $ */
+/* $Id: lockvalidator.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1391,6 +1391,7 @@ DECL_FORCE_INLINE(bool) rtLockValidatorClassIsPriorClass(RTLOCKVALCLASSINT *pCla
 static int rtLockValidatorClassAddPriorClass(RTLOCKVALCLASSINT *pClass, RTLOCKVALCLASSINT *pPriorClass,
                                              bool fAutodidacticism, PCRTLOCKVALSRCPOS pSrcPos)
 {
+    NOREF(pSrcPos);
     if (!RTCritSectIsInitialized(&g_LockValClassTeachCS))
         rtLockValidatorLazyInit();
     int rcLock = RTCritSectEnter(&g_LockValClassTeachCS);

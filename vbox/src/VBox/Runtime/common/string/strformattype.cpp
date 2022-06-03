@@ -1,4 +1,4 @@
-/* $Id: strformattype.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: strformattype.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions, Dynamic Types.
  */
@@ -424,6 +424,7 @@ DECLHIDDEN(size_t) rtstrFormatType(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, 
     char const *pszType;
     char        ch;
     void       *pvValue = va_arg(*pArgs, void *);
+    NOREF(chArgSize);
 
     /*
      * Parse out the type.

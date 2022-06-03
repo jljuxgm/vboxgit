@@ -1,4 +1,4 @@
-/* $Id: gzipvfs.cpp 39050 2011-10-20 09:40:52Z vboxsync $ */
+/* $Id: gzipvfs.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -357,6 +357,7 @@ static DECLCALLBACK(int) rtZipGzip_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSgB
     PRTZIPGZIPSTREAM pThis = (PRTZIPGZIPSTREAM)pvThis;
     int              rc;
 
+    AssertReturn(off == -1, VERR_INVALID_PARAMETER);
     if (!pThis->fDecompress)
         return VERR_ACCESS_DENIED;
 
@@ -397,11 +398,13 @@ static DECLCALLBACK(int) rtZipGzip_Write(void *pvThis, RTFOFF off, PCRTSGBUF pSg
     PRTZIPGZIPSTREAM pThis = (PRTZIPGZIPSTREAM)pvThis;
     //int              rc;
 
+    AssertReturn(off == -1, VERR_INVALID_PARAMETER);
     NOREF(fBlocking);
     if (pThis->fDecompress)
         return VERR_ACCESS_DENIED;
 
     /** @todo implement compression. */
+    NOREF(pSgBuf); NOREF(pcbWritten);
     return VERR_NOT_IMPLEMENTED;
 }
 

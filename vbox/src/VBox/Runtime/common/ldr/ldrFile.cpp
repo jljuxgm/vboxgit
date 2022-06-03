@@ -1,4 +1,4 @@
-/* $Id: ldrFile.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: ldrFile.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The File Oriented Parts.
  */
@@ -175,6 +175,7 @@ static DECLCALLBACK(int) rtldrFileUnmap(PRTLDRREADER pReader, const void *pvBits
         pFileReader->pvMapping = NULL;
     }
 
+    NOREF(pvBits);
     return VINF_SUCCESS;
 }
 

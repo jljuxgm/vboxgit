@@ -1,4 +1,4 @@
-/* $Id: tstLdrObjR0.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstLdrObjR0.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -70,18 +70,21 @@ extern "C" DECLEXPORT(int) Entrypoint(void)
 
 extern "C" DECLEXPORT(uint32_t) SomeExportFunction1(void *pvBuf)
 {
+    NOREF(pvBuf);
     return achBss[0] + achBss[16384];
 }
 
 
 extern "C" DECLEXPORT(char *) SomeExportFunction2(void *pvBuf)
 {
+    NOREF(pvBuf);
     return (char *)memcpy(achBss, szStr1, sizeof(szStr1));
 }
 
 
 extern "C" DECLEXPORT(char *) SomeExportFunction3(void *pvBuf)
 {
+    NOREF(pvBuf);
     return (char *)memcpy(achBss, szStr2, strlen(szStr2));
 }
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTR0MemUserKernel.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTR0MemUserKernel.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -49,6 +49,7 @@
 DECLEXPORT(int) TSTRTR0MemUserKernelSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOperation,
                                                   uint64_t u64Arg, PSUPR0SERVICEREQHDR pReqHdr)
 {
+    NOREF(pSession);
     if (!VALID_PTR(pReqHdr))
         return VERR_INVALID_PARAMETER;
     char   *pszErr = (char *)(pReqHdr + 1);

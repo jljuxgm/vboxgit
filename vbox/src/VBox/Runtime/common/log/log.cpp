@@ -1,4 +1,4 @@
-/* $Id: log.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: log.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -307,6 +307,8 @@ DECLINLINE(int) rtlogLock(PRTLOGGER pLogger)
         if (RT_FAILURE(rc))
             return rc;
     }
+#else
+    NOREF(pLogger);
 #endif
     return VINF_SUCCESS;
 }
@@ -321,6 +323,8 @@ DECLINLINE(void) rtlogUnlock(PRTLOGGER pLogger)
 #ifndef IN_RC
     if (pLogger->pInt->hSpinMtx != NIL_RTSEMSPINMUTEX)
         RTSemSpinMutexRelease(pLogger->pInt->hSpinMtx);
+#else
+    NOREF(pLogger);
 #endif
     return;
 }

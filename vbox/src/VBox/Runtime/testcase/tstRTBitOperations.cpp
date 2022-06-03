@@ -1,4 +1,4 @@
-/* $Id: tstRTBitOperations.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTBitOperations.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - Inlined Bit Operations.
  */
@@ -130,7 +130,6 @@ int main()
         return rc;
     RTTestBanner(hTest);
 
-    int rcRet = 0;
     int i;
     int j;
     int k;

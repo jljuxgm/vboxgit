@@ -1,4 +1,4 @@
-/* $Id: tstRTAssertCompile.cpp 37809 2011-07-07 08:15:02Z vboxsync $ */
+/* $Id: tstRTAssertCompile.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - AssertCompile* - A Compile Time Testcase.
  */
@@ -34,6 +34,7 @@
 int main(int argc, char **argv)
 {
     /* Only positive tests here. */
+    NOREF(argc); NOREF(argv);
 
     AssertCompile(true);
     AssertCompile(1);

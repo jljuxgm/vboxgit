@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 37493 2011-06-16 13:18:11Z vboxsync $ */
+/* $Id: xml.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1659,6 +1659,7 @@ int XmlFileParser::ReadCallback(void *aCtxt, char *aBuf, int aLen)
 int XmlFileParser::CloseCallback(void *aCtxt)
 {
     /// @todo to be written
+    NOREF(aCtxt);
 
     return -1;
 }
@@ -1784,6 +1785,7 @@ int XmlFileWriter::WriteCallback(void *aCtxt, const char *aBuf, int aLen)
 int XmlFileWriter::CloseCallback(void *aCtxt)
 {
     /// @todo to be written
+    NOREF(aCtxt);
 
     return -1;
 }

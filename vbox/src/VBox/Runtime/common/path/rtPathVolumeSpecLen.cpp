@@ -1,4 +1,4 @@
-/* $Id: rtPathVolumeSpecLen.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: rtPathVolumeSpecLen.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - rtPathVolumeSpecLen
  */
@@ -62,6 +62,7 @@ DECLHIDDEN(size_t) rtPathVolumeSpecLen(const char *pszPath)
     /* This isn't quite right when looking at the above stuff, but it works assuming that '//' does not mean UNC. */
     /// @todo (dmik) well, it's better to consider there's no volume name
     //  at all on *nix systems
+    NOREF(pszPath);
     return 0;
 //    return pszPath && pszPath[0] == '/';
 #endif

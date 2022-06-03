@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -81,6 +81,7 @@ static const uint8_t g_ab32BitCode[] =
 
 DECLCALLBACK(int) DisasmTest1ReadCode(RTUINTPTR SrcAddr, uint8_t *pbDst, uint32_t cb, void *pvUser)
 {
+    NOREF(pvUser);
     while (cb > 0)
     {
         *pbDst = g_ab32BitCode[SrcAddr];

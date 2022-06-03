@@ -1,4 +1,4 @@
-/* $Id: logformat.cpp 33496 2010-10-27 12:15:28Z vboxsync $ */
+/* $Id: logformat.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Log Formatter.
  */
@@ -93,6 +93,8 @@ static DECLCALLBACK(size_t) rtlogFormatStr(void *pvArg, PFNRTSTROUTPUT pfnOutput
 
     AssertMsgFailed(("Invalid logger format type '%%%c%.10s'!\n", ch, *ppszFormat)); NOREF(ch);
 
+    NOREF(pvArg); NOREF(pfnOutput); NOREF(pvArgOutput); NOREF(pArgs); NOREF(cchWidth);
+    NOREF(cchPrecision); NOREF(fFlags); NOREF(chArgSize);
     return 0;
 }
 

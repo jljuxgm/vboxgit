@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 39032 2011-10-19 11:08:50Z vboxsync $ */
+/* $Id: vfsmemory.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -547,6 +547,7 @@ static DECLCALLBACK(int) rtVfsMemFile_Flush(void *pvThis)
 static DECLCALLBACK(int) rtVfsMemFile_PollOne(void *pvThis, uint32_t fEvents, RTMSINTERVAL cMillies, bool fIntr,
                                               uint32_t *pfRetEvents)
 {
+    NOREF(pvThis);
     int rc;
     if (fEvents != RTPOLL_EVT_ERROR)
     {
