@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 41844 2012-06-20 13:08:28Z vboxsync $
 ## @file
 # Sub-makefile for the Linux host driver helper scripts.
 #
@@ -25,6 +25,7 @@ HostDrivers-scripts_SOURCES     = \
 	$(HostDrivers-scripts_0_OUTDIR)/dkms.conf=>src/dkms.conf
 HostDrivers-scripts_EXEC_SOURCES = \
 	loadall.sh \
+	load.sh \
 	do_dkms=>src/do_dkms \
 	build_in_tmp=>src/build_in_tmp
 HostDrivers-scripts_CLEAN       = \
