@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 41668 2012-06-12 13:15:51Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -104,7 +104,7 @@ static DECLCALLBACK(int) DisasmTest1ReadCode(PDISCPUSTATE pDisState, uint8_t *pb
 inline int MyDisasm(uintptr_t CodeIndex, PDISCPUSTATE pCpu, uint32_t *pcb)
 {
     uint32_t cb;
-    int rc = DISCoreOneEx(CodeIndex, CPUMODE_32BIT, DisasmTest1ReadCode, 0, pCpu, &cb);
+    int rc = DISCoreOneWithReader(CodeIndex, CPUMODE_32BIT, DisasmTest1ReadCode, 0, pCpu, &cb);
     *pcb = cb;
     MY_PRINTF(("DISCoreOneEx -> rc=%d cb=%d  Cpu: opcode=%#x pCurInstr=%p (42=%d)\n", \
                rc, cb, pCpu->opcode, pCpu->pCurInstr, 42)); \

@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: PATMRC.cpp 41668 2012-06-12 13:15:51Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -522,8 +522,7 @@ VMMRCDECL(int) PATMRCHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
                                              pRec->patch.aPrivInstr, pRec->patch.cbPrivInstr);
             rc = VBOXSTRICTRC_TODO(rcStrict);
 #else
-            rc = DISCoreOneEx((uintptr_t)&pRec->patch.aPrivInstr[0], cpu.mode, NULL /*pfnReadBytes*/, NULL /*pvUser*/,
-                              &cpu, &cbOp);
+            rc = DISCoreOne((uintptr_t)&pRec->patch.aPrivInstr[0], cpu.mode, &cpu, &cbOp);
             if (RT_FAILURE(rc))
             {
                 Log(("DISCoreOne failed with %Rrc\n", rc));

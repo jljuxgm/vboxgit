@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 41668 2012-06-12 13:15:51Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -139,12 +139,12 @@ static int dbgfR3DisasInstrFirst(PVM pVM, PVMCPU pVCpu, PDBGFSELINFO pSelInfo, P
     }
 
     uint32_t cbInstr;
-    int rc = DISCoreOneEx(GCPtr,
-                          enmCpuMode,
-                          dbgfR3DisasInstrRead,
-                          &pState->Cpu,
-                          &pState->Cpu,
-                          &cbInstr);
+    int rc = DISCoreOneWithReader(GCPtr,
+                                  enmCpuMode,
+                                  dbgfR3DisasInstrRead,
+                                  &pState->Cpu,
+                                  &pState->Cpu,
+                                  &cbInstr);
     if (RT_SUCCESS(rc))
     {
         pState->GCPtrNext = GCPtr + cbInstr;

@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 41668 2012-06-12 13:15:51Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -163,9 +163,9 @@ static bool MyDisBlock(PDISCPUSTATE pCpu, RTHCUINTPTR pvCodeBlock, int32_t cbMax
         bool        fMayPanic = RTAssertSetMayPanic(false);
         char        szOutput[256];
         unsigned    cbInstr;
-        int rc = DISCoreOneEx(uNearAddr + i, pCpu->mode,
-                              MyReadBytes, (uint8_t *)pvCodeBlock - (uintptr_t)uNearAddr,
-                              pCpu, &cbInstr);
+        int rc = DISCoreOneWithReader(uNearAddr + i, pCpu->mode,
+                                      MyReadBytes, (uint8_t *)pvCodeBlock - (uintptr_t)uNearAddr,
+                                      pCpu, &cbInstr);
         RTAssertSetMayPanic(fMayPanic);
         RTAssertSetQuiet(fQuiet);
         if (RT_FAILURE(rc))

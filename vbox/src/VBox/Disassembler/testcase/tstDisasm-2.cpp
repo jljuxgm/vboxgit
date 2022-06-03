@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 41668 2012-06-12 13:15:51Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -102,7 +102,7 @@ static void MyDisasYasmFormatter(PMYDISSTATE pState)
     szTmp[cch] = '\0';
 #endif
 
-    RTPrintf("    %s ; %08llu %s", szTmp, pState->uAddress, pState->szLine);
+    RTPrintf("    %s ; %s", szTmp, pState->szLine);
 }
 
 
