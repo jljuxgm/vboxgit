@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: Makefile.kmk 40315 2012-03-01 20:51:53Z vboxsync $
 ## @file
 # Sub-Makefile for the OS/2 specific part of the guest additions.
 #
@@ -27,10 +27,11 @@ endif
 # The sub-makefiles.
 #
 ifndef VBOX_OSE
- include $(PATH_SUB_CURRENT)/VBoxGradd/Makefile.kmk
- include $(PATH_SUB_CURRENT)/VBoxGrext/Makefile.kmk
+# include $(PATH_SUB_CURRENT)/VBoxGradd/Makefile.kmk
+# include $(PATH_SUB_CURRENT)/VBoxGrext/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/Bin/Makefile.kmk
 endif
-include $(PATH_SUB_CURRENT)/VBoxSF/Makefile.kmk
+#include $(PATH_SUB_CURRENT)/VBoxSF/Makefile.kmk
 
 include	$(KBUILD_PATH)/subfooter.kmk
 
