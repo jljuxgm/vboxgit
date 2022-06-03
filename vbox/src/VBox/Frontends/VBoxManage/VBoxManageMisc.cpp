@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 37074 2011-05-13 14:32:50Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 37118 2011-05-17 06:26:55Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -988,7 +988,7 @@ int handleExtPack(HandlerArg *a)
 
         static const RTGETOPTDEF s_aUninstallOptions[] =
         {
-            { "--forced",  'f', RTGETOPT_REQ_NOTHING },
+            { "--force",  'f', RTGETOPT_REQ_NOTHING },
         };
 
         RTGetOptInit(&GetState, a->argc, a->argv, s_aUninstallOptions, RT_ELEMENTS(s_aUninstallOptions), 1, 0);
