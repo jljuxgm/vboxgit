@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 38141 2011-07-25 10:27:35Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 38145 2011-07-25 11:02:02Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -927,7 +927,11 @@ HRESULT MachineCloneVM::run()
          * with the stuff from the snapshot. */
         settings::Snapshot sn;
         if (!d->snapshotId.isEmpty())
-            d->findSnapshot(trgMCF.llFirstSnapshot, d->snapshotId, sn);
+            if (!d->findSnapshot(trgMCF.llFirstSnapshot, d->snapshotId, sn))
+                throw p->setError(E_FAIL,
+                                  p->tr("Could not find data to snapshots '%s'"), d->snapshotId.toString().c_str());
+
+
 
         if (d->mode == CloneMode_MachineState)
         {
