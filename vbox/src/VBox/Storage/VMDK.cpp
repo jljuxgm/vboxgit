@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 36633 2011-04-08 21:43:41Z vboxsync $ */
+/* $Id: VMDK.cpp 37100 2011-05-16 11:01:03Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -19,6 +19,8 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD_VMDK
+#define RT_STRICT
+#define LOG_ENABLED
 #include <VBox/vd-plugin.h>
 #include <VBox/err.h>
 
@@ -6622,7 +6624,7 @@ static unsigned vmdkGetOpenFlags(void *pBackendData)
 /** @copydoc VBOXHDDBACKEND::pfnSetOpenFlags */
 static int vmdkSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
 {
-    LogFlowFunc(("pBackendData=%#p\n uOpenFlags=%#x", pBackendData, uOpenFlags));
+    LogFlowFunc(("pBackendData=%#p uOpenFlags=%#x\n", pBackendData, uOpenFlags));
     PVMDKIMAGE pImage = (PVMDKIMAGE)pBackendData;
     int rc;
 

@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 37073 2011-05-13 14:19:03Z vboxsync $ */
+/* $Id: VD.cpp 37100 2011-05-16 11:01:03Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -20,6 +20,7 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD
 #define RT_STRICT
+#define LOG_ENABLED
 #include <VBox/vd.h>
 #include <VBox/err.h>
 #include <VBox/sup.h>
