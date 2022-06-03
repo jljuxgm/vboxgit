@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 38565 2011-08-30 09:28:15Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 41319 2012-05-15 18:09:25Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2122,6 +2122,13 @@ NTSTATUS vboxVidPnCommitSourceModeForSrcId(PVBOXMP_DEVEXT pDevExt, const D3DKMDT
 {
     D3DKMDT_HVIDPNSOURCEMODESET hCurVidPnSourceModeSet;
     const DXGK_VIDPNSOURCEMODESET_INTERFACE *pCurVidPnSourceModeSetInterface;
+
+#ifdef DEBUG_misha
+    if (pAllocation)
+    {
+        Assert(pAllocation->SurfDesc.VidPnSourceId == srcId);
+    }
+#endif
 
     NTSTATUS Status = pVidPnInterface->pfnAcquireSourceModeSet(hDesiredVidPn,
                 srcId,
