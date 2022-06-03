@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 39930 2012-02-01 13:20:43Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 39931 2012-02-01 13:26:38Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -3544,7 +3544,6 @@ FNIEMOP_DEF(iemOp_Grp8)
         case 7: pImpl = &g_iemAImpl_btc; IEMOP_MNEMONIC("btc Ev,Ib"); break;
         IEM_NOT_REACHED_DEFAULT_CASE_RET();
     }
-    IEMOP_HLP_NO_LOCK_PREFIX();
     IEMOP_VERIFICATION_UNDEFINED_EFLAGS(X86_EFL_OF | X86_EFL_SF | X86_EFL_ZF | X86_EFL_AF | X86_EFL_PF);
 
     if ((bRm & X86_MODRM_MOD_MASK) == (3 << X86_MODRM_MOD_SHIFT))
