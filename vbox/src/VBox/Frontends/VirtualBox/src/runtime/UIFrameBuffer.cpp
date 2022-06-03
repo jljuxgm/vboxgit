@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 39063 2011-10-20 16:41:44Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 41201 2012-05-08 08:56:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2004-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
