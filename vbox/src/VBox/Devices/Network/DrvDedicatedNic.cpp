@@ -1,4 +1,4 @@
-/* $Id: DrvDedicatedNic.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvDedicatedNic.cpp 39059 2011-10-20 14:48:56Z vboxsync $ */
 /** @file
  * DrvDedicatedNic - Experimental network driver for using a dedicated (V)NIC.
  */
@@ -325,6 +325,7 @@ PDMBOTHCBDECL(void) drvDedicatedNicUp_SetPromiscuousMode(PPDMINETWORKUP pInterfa
 {
     PDRVDEDICATEDNIC pThis = RT_FROM_MEMBER(pInterface, DRVDEDICATEDNIC, CTX_SUFF(INetworkUp));
     /** @todo enable/disable promiscuous mode (should be easy) */
+    NOREF(pThis);
 }
 
 #ifdef IN_RING3
