@@ -1,4 +1,4 @@
-/* $Id: tstIprtList.cpp 36563 2011-04-05 15:28:31Z vboxsync $ */
+/* $Id: tstIprtList.cpp 37861 2011-07-11 10:03:22Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTCList/RTCMTList.
  */
@@ -361,6 +361,20 @@ static void test1(const char *pcszDesc, T3 paTestData[], size_t cTestItems)
     RTTESTI_CHECK_RETV(testList.isEmpty());
     RTTESTI_CHECK_RETV(testList.size() == 0);
     RTTESTI_CHECK(testList.capacity()  == defCap);
+
+
+    /* Copy empty lists. */
+    L<T1, T2> testList5(testList);
+    RTTESTI_CHECK_RETV(testList5.isEmpty());
+    RTTESTI_CHECK_RETV(testList5.size() == 0);
+    RTTESTI_CHECK(testList5.capacity()  == 0);
+
+    testList5.append(paTestData[0]);
+    testList5 = testList;
+    RTTESTI_CHECK_RETV(testList5.isEmpty());
+    RTTESTI_CHECK_RETV(testList5.size() == 0);
+    RTTESTI_CHECK(testList5.capacity()  == 0);
+
 }
 
 /* define RTCList here to see what happens without MT support ;)
