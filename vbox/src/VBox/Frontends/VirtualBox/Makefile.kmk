@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38384 2011-08-09 16:07:54Z vboxsync $
+# $Id: Makefile.kmk 38410 2011-08-11 09:34:18Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -344,7 +344,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/widgets/UISpacerWidgets.h \
 	src/widgets/UISpecialControls.h \
 	src/widgets/UIApplianceEditorWidget.h \
-	src/widgets/VBoxExportApplianceWgt.h \
+	src/widgets/UIApplianceExportEditorWidget.h \
 	src/widgets/VBoxFilePathSelectorWidget.h \
 	src/widgets/VBoxImportApplianceWgt.h \
 	src/widgets/UILineTextEdit.h \
@@ -515,7 +515,7 @@ VirtualBox_SOURCES = \
 	src/widgets/UISpecialControls.cpp \
 	src/widgets/UIToolBar.cpp \
 	src/widgets/UIApplianceEditorWidget.cpp \
-	src/widgets/VBoxExportApplianceWgt.cpp \
+	src/widgets/UIApplianceExportEditorWidget.cpp \
 	src/widgets/VBoxFilePathSelectorWidget.cpp \
 	src/widgets/VBoxGuestRAMSlider.cpp \
 	src/widgets/VBoxImportApplianceWgt.cpp \
