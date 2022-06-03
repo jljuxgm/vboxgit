@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: UsbMsd.cpp 37795 2011-07-06 10:28:24Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1578,7 +1578,7 @@ static DECLCALLBACK(int) usbMsdConstruct(PPDMUSBINS pUsbIns, int iInstance, PCFG
     /*
      * Attach the SCSI driver.
      */
-    rc = pUsbIns->pHlpR3->pfnDriverAttach(pUsbIns, 0 /*iLun*/, &pThis->Lun0.IBase, &pThis->Lun0.pIBase, "SCSI Port");
+    rc = PDMUsbHlpDriverAttach(pUsbIns, 0 /*iLun*/, &pThis->Lun0.IBase, &pThis->Lun0.pIBase, "SCSI Port");
     if (RT_FAILURE(rc))
         return PDMUsbHlpVMSetError(pUsbIns, rc, RT_SRC_POS, N_("MSD failed to attach SCSI driver"));
     pThis->Lun0.pIScsiConnector = PDMIBASE_QUERY_INTERFACE(pThis->Lun0.pIBase, PDMISCSICONNECTOR);

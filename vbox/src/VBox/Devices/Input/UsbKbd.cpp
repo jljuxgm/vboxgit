@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 37388 2011-06-08 15:49:55Z vboxsync $ */
+/* $Id: UsbKbd.cpp 37795 2011-07-06 10:28:24Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -1424,7 +1424,7 @@ static DECLCALLBACK(int) usbHidConstruct(PPDMUSBINS pUsbIns, int iInstance, PCFG
     /*
      * Attach the keyboard driver.
      */
-    rc = pUsbIns->pHlpR3->pfnDriverAttach(pUsbIns, 0 /*iLun*/, &pThis->Lun0.IBase, &pThis->Lun0.pDrvBase, "Keyboard Port");
+    rc = PDMUsbHlpDriverAttach(pUsbIns, 0 /*iLun*/, &pThis->Lun0.IBase, &pThis->Lun0.pDrvBase, "Keyboard Port");
     if (RT_FAILURE(rc))
         return PDMUsbHlpVMSetError(pUsbIns, rc, RT_SRC_POS, N_("HID failed to attach keyboard driver"));
 
