@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 40491 2012-03-15 20:52:05Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 40505 2012-03-16 16:49:59Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -1176,13 +1176,13 @@ HRESULT NetworkAdapter::loadSettings(BandwidthControl *bwctl,
     /* boot priority (defaults to 0, i.e. lowest) */
     mData->mBootPriority = data.ulBootPriority;
     /* bandwidth group */
-    if (data.strBandwidthGroup.isEmpty())
-        updateBandwidthGroup(NULL);
-    else
+    mData->mBandwidthGroup = data.strBandwidthGroup;
+    if (mData->mBandwidthGroup.isNotEmpty())
     {
         ComObjPtr<BandwidthGroup> group;
         rc = bwctl->getBandwidthGroupByName(data.strBandwidthGroup, group, true);
         if (FAILED(rc)) return rc;
+        group->reference();
     }
 
     mNATEngine->loadSettings(data.nat);
@@ -1441,8 +1441,6 @@ STDMETHODIMP NetworkAdapter::COMSETTER(BandwidthGroup)(IBandwidthGroup *aBwGroup
 
             Assert(SUCCEEDED(hrc)); /* This is not allowed to fail because the existence of the group was checked when it was attached. */
         }
-
-        mData.backup();
 
         updateBandwidthGroup(pBwGroup);
 
