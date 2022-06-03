@@ -1,4 +1,4 @@
-/* $Id: tstSetModeXOrg.c 36020 2011-02-18 14:18:51Z vboxsync $ */
+/* $Id: tstSetModeXOrg.c 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * vboxvideo unit test - modesetting.
  */
@@ -73,7 +73,7 @@ RTDECL(void) VBoxVideoSetModeRegisters(uint16_t cWidth, uint16_t cHeight,
     s_ModeRegs.cy         = cy;
 }
 
-static struct 
+static struct
 {
     PHGSMIGUESTCOMMANDCONTEXT pCtx;
     uint32_t cDisplay;

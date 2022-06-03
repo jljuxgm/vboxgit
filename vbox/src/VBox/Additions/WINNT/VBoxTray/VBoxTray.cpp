@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 37422 2011-06-12 18:31:16Z vboxsync $ */
+/* $Id: VBoxTray.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -523,7 +523,7 @@ static void vboxTrayShutdownSeamless(void)
 {
     if (ghSeamlessNotifyEvent)
     {
-    	CloseHandle(ghSeamlessNotifyEvent);
+        CloseHandle(ghSeamlessNotifyEvent);
         ghSeamlessNotifyEvent = NULL;
     }
 }

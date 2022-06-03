@@ -1,4 +1,4 @@
-/* $Id: VBoxMFDriver.cpp 37225 2011-05-26 14:49:59Z vboxsync $ */
+/* $Id: VBoxMFDriver.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  * VBox Mouse filter interface functions
@@ -144,7 +144,7 @@ NTSTATUS VBoxIrpPassthrough(IN PDEVICE_OBJECT DeviceObject, IN PIRP Irp)
 }
 
 static void
-VBoxServiceCB(PDEVICE_OBJECT DeviceObject, PMOUSE_INPUT_DATA InputDataStart, 
+VBoxServiceCB(PDEVICE_OBJECT DeviceObject, PMOUSE_INPUT_DATA InputDataStart,
               PMOUSE_INPUT_DATA InputDataEnd, PULONG InputDataConsumed)
 {
     PVBOXMOUSE_DEVEXT pDevExt;

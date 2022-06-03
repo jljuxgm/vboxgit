@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoPortAPI.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxVideoPortAPI.h 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  * VBox video port functions header
@@ -77,7 +77,7 @@ typedef struct VBOXVIDEOPORTPROCS
     PFNFREEPOOL pfnFreePool;
 
     PFNQUEUEDPC pfnQueueDpc;
-    
+
     PFNCREATESECONDARYDISPLAY pfnCreateSecondaryDisplay;
 } VBOXVIDEOPORTPROCS;
 

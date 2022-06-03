@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDDraw.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispDDraw.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver, DirectDraw callbacks
@@ -247,7 +247,7 @@ DWORD APIENTRY VBoxDispDDCreateSurface(PDD_CREATESURFACEDATA lpCreateSurface)
     return DDHAL_DRIVER_NOTHANDLED;
 }
 
-/* Called to destroy DirectDraw surface, 
+/* Called to destroy DirectDraw surface,
  * in particular we should free vhwa resources allocated on VBoxDispDDCreateSurface.
  * Note: we're always returning DDHAL_DRIVER_NOTHANDLED because we rely on DirectDraw memory manager.
  */
@@ -498,7 +498,7 @@ DWORD APIENTRY VBoxDispDDUnlock(PDD_UNLOCKDATA lpUnlock)
 
             VBoxVBVABufferEndUpdate(&pDev->vbvaCtx);
         }
-        else if ((pSurf->ddsCaps.dwCaps & DDSCAPS_VISIBLE) 
+        else if ((pSurf->ddsCaps.dwCaps & DDSCAPS_VISIBLE)
                  || ((pSurf->ddsCaps.dwCaps & DDSCAPS_OVERLAY) && pDesc->bVisible))
         {
             VBOXVHWACMD *pCmd;

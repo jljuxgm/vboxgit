@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 37216 2011-05-26 08:50:49Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -4954,7 +4954,7 @@ static HRESULT APIENTRY vboxWddmDDevCreateResource(HANDLE hDevice, D3DDDIARG_CRE
             /*@fixme: Those formats are actually blocks of 4x4 pixels,
              * for some reason we're getting pSurf->SysMemPitch as if took 4x1 column from this block,
              * which leads us to having 4x times bigger pitch than actual line takes.
-             * Simply trying to read here provided pointer 
+             * Simply trying to read here provided pointer
              * at (byte*)pSurf->pSysMem + pSurf->pSurf->SysMemPitch*pSurf->Height - 1 causes access violation.
              */
             if (pResource->Format == D3DDDIFMT_DXT1

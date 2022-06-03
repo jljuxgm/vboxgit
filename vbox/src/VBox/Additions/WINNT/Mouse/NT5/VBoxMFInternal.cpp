@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 37226 2011-05-26 17:06:02Z vboxsync $ */
+/* $Id: VBoxMFInternal.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  * VBox Mouse filter internal functions
@@ -365,7 +365,7 @@ VOID VBoxDeviceAdded(PVBOXMOUSE_DEVEXT pDevExt)
         }
 
         LOG(("Number of descriptors: %d", pResourceList->Count));
-        
+
         /* Check if device claims IO port 0x60 or int12 */
         for (ULONG i=0; i<pResourceList->Count; ++i)
         {
@@ -428,7 +428,7 @@ VOID VBoxDeviceAdded(PVBOXMOUSE_DEVEXT pDevExt)
 VOID VBoxInformHost(PVBOXMOUSE_DEVEXT pDevExt)
 {
     LOGF_ENTER();
-    
+
     if (!vboxIsVBGLInited())
     {
         WARN(("!vboxIsVBGLInited"));
@@ -485,7 +485,7 @@ VOID VBoxInformHost(PVBOXMOUSE_DEVEXT pDevExt)
             WARN(("VbglGRAlloc for service callback failed with rc=%#x", rc));
         }
     }
-    
+
     LOGF_LEAVE();
 }
 

@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 36630 2011-04-08 18:41:51Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  *
@@ -405,8 +405,8 @@ void BusAssignmentManager::State::listAttachedPciDevices(ComSafeArrayOut(IPciDev
     {
         dev.createObject();
         com::Bstr devname(it->second.szDevName);
-        dev->init(NULL, devname, 
-                  it->second.HostAddress.valid() ? it->second.HostAddress.asLong() : -1, 
+        dev->init(NULL, devname,
+                  it->second.HostAddress.valid() ? it->second.HostAddress.asLong() : -1,
                   it->first.asLong(), it->second.HostAddress.valid());
         result.setElement(iIndex++, dev);
     }

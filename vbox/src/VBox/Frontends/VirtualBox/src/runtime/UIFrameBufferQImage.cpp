@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -93,7 +93,7 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
 
     QPainter painter(m_pMachineView->viewport());
 
-    
+
     if ((ulong)r.width() < m_width * 2 / 3)
     {
         /* This method is faster for narrow updates */

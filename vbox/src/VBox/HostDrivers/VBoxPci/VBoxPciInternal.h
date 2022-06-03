@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 37009 2011-05-09 09:07:56Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -43,7 +43,7 @@ typedef struct VBOXRAWPCIGLOBALS *PVBOXRAWPCIGLOBALS;
 typedef struct VBOXRAWPCIDRVVM   *PVBOXRAWPCIDRVVM;
 typedef struct VBOXRAWPCIINS     *PVBOXRAWPCIINS;
 
-typedef struct VBOXRAWPCIISRDESC 
+typedef struct VBOXRAWPCIISRDESC
 {
     /** Handler function. */
     PFNRAWPCIISR       pfnIrqHandler;

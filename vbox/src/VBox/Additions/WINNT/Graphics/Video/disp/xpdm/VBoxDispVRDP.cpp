@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVRDP.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispVRDP.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -928,7 +928,7 @@ void vrdpReset(PVBOXDISPDEV pDev)
  * VRDP driver functions.
  */
 
-void vrdpDrvLineTo(SURFOBJ *pso, CLIPOBJ *pco, BRUSHOBJ *pbo, 
+void vrdpDrvLineTo(SURFOBJ *pso, CLIPOBJ *pco, BRUSHOBJ *pbo,
                    LONG x1, LONG y1, LONG x2, LONG y2, RECTL *prclBounds, MIX mix)
 {
     PVBOXDISPDEV pDev = (PVBOXDISPDEV)pso->dhpdev;
@@ -1230,7 +1230,7 @@ void vrdpDrvTextOut(SURFOBJ *pso, STROBJ *pstro, FONTOBJ *pfo, CLIPOBJ *pco,
         /* Unknown/unsupported parameters. */
         WARN(("unsupported: pstro->pwszOrg=%p, prclExtra=%p, pfo->flFontType & FO_TYPE_RASTER = 0x%08X, "
               "pstro->cGlyphs = %d, pboOpaque->iSolidColor %p, pfo->iUniq = %p",
-              pstro->pwszOrg, prclExtra, pfo->flFontType & FO_TYPE_RASTER, pstro->cGlyphs, 
+              pstro->pwszOrg, prclExtra, pfo->flFontType & FO_TYPE_RASTER, pstro->cGlyphs,
               pboOpaque? pboOpaque->iSolidColor: 0, pfo->iUniq));
         vrdpReportDirtyRects(pDev, &clipRects);
     }

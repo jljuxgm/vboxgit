@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDDraw.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispDDraw.h 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver, direct draw callbacks

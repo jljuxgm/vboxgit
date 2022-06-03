@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 36991 2011-05-06 19:16:50Z vboxsync $ */
+/* $Id: SessionImpl.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -57,9 +57,9 @@ HRESULT Session::FinalConstruct()
     LogFlowThisFunc(("\n"));
 
     HRESULT rc = init();
-    
-    BaseFinalConstruct(); 
-  
+
+    BaseFinalConstruct();
+
     return rc;
 }
 
@@ -68,7 +68,7 @@ void Session::FinalRelease()
     LogFlowThisFunc(("\n"));
 
     uninit();
-      
+
     BaseFinalRelease();
 }
 
@@ -189,7 +189,7 @@ STDMETHODIMP Session::COMGETTER(Machine)(IMachine **aMachine)
     if (mConsole)
        rc = mConsole->machine().queryInterfaceTo(aMachine);
     else
-       rc = mRemoteMachine.queryInterfaceTo(aMachine);   
+       rc = mRemoteMachine.queryInterfaceTo(aMachine);
     if (FAILED(rc))
     {
         /** @todo VBox 3.3: replace E_FAIL with rc here. */

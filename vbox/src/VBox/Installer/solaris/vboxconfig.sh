@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 37371 2011-06-08 08:41:31Z vboxsync $
+# $Id: vboxconfig.sh 37423 2011-06-12 18:37:56Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -756,7 +756,7 @@ cleanup_install()
 # !! failure is always fatal
 postinstall()
 {
-    infoprint "Detected Solaris $HOST_OS_MAJORVERSION Version $HOST_OS_MINORVERSION" 
+    infoprint "Detected Solaris $HOST_OS_MAJORVERSION Version $HOST_OS_MINORVERSION"
     infoprint "Loading VirtualBox kernel modules..."
     install_drivers
 

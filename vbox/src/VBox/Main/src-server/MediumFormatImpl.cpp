@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: MediumFormatImpl.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -37,7 +37,7 @@ HRESULT MediumFormat::FinalConstruct()
 void MediumFormat::FinalRelease()
 {
     uninit();
-    
+
     BaseFinalRelease();
 }
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36941 2011-05-03 14:56:08Z vboxsync $
+# $Id: Makefile.kmk 37423 2011-06-12 18:37:56Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -101,7 +101,7 @@ USBInstall_LIBS = \
 	$(LIB_RUNTIME) \
 	$(PATH_LIB)/SUPR3$(VBOX_SUFF_LIB) \
 	$(TARGET_VBoxDrvCfg)
-	
+
 
 #
 # USBUninstall
@@ -134,7 +134,7 @@ USBTest_LIBS = \
 	$(LIB_RUNTIME) \
 	$(PATH_LIB)/SUPR3$(VBOX_SUFF_LIB) \
 	$(TARGET_VBoxDrvCfg)
-	
+
 #
 # Install the INF files.
 #

@@ -1,4 +1,4 @@
-/* $Id: PCIInternal.h 36562 2011-04-05 13:56:34Z vboxsync $ */
+/* $Id: PCIInternal.h 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * DevPCI - PCI Internal header - Only for hiding bits of PCIDEVICE.
  */
@@ -90,7 +90,7 @@ enum {
     PCIDEV_FLAG_PASSTHROUGH        = 1<<5,
     /** Flag whether the device is capable of MSI using 64-bit address.  */
     PCIDEV_FLAG_MSI64_CAPABLE      = 1<<6
-    
+
 };
 
 /**

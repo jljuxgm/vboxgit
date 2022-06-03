@@ -1,4 +1,4 @@
-/* $Id: VBoxMF.h 37225 2011-05-26 14:49:59Z vboxsync $ */
+/* $Id: VBoxMF.h 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  * VBox Mouse filter header
@@ -35,7 +35,7 @@ RT_C_DECLS_END
 
 #define IOCTL_INTERNAL_MOUSE_CONNECT CTL_CODE(FILE_DEVICE_MOUSE, 0x0080, METHOD_NEITHER, FILE_ANY_ACCESS)
 
-typedef VOID (*PFNSERVICECB)(PDEVICE_OBJECT DeviceObject, PMOUSE_INPUT_DATA InputDataStart, 
+typedef VOID (*PFNSERVICECB)(PDEVICE_OBJECT DeviceObject, PMOUSE_INPUT_DATA InputDataStart,
                              PMOUSE_INPUT_DATA InputDataEnd, PULONG InputDataConsumed);
 
 typedef struct _INTERNAL_MOUSE_CONNECT_DATA

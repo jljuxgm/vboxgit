@@ -1,4 +1,4 @@
-/* $Id: dllmain-win.cpp 36362 2011-03-23 10:53:35Z vboxsync $ */
+/* $Id: dllmain-win.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * IPRT - Win32 DllMain (Ring-3).
  */
@@ -43,7 +43,7 @@ BOOL __stdcall DllMain(HANDLE hModule, DWORD dwReason, PVOID pvReserved)
     switch (dwReason)
     {
         /*
-         * When attaching to a process, we'd like to make sure IPRT stays put 
+         * When attaching to a process, we'd like to make sure IPRT stays put
          * and doesn't get unloaded.
          */
         case DLL_PROCESS_ATTACH:

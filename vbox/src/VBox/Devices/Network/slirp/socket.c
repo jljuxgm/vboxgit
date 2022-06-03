@@ -1,4 +1,4 @@
-/* $Id: socket.c 35923 2011-02-10 03:48:27Z vboxsync $ */
+/* $Id: socket.c 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -920,7 +920,7 @@ sosendto(PNATState pData, struct socket *so, struct mbuf *m)
 
     /* Don't care what port we get */
     /*
-     * > nmap -sV -T4 -O -A -v -PU3483 255.255.255.255 
+     * > nmap -sV -T4 -O -A -v -PU3483 255.255.255.255
      * generates bodyless messages, annoying memmory management system.
      */
     mlen = m_length(m, NULL);

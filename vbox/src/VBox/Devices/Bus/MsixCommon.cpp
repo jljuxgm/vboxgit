@@ -1,4 +1,4 @@
-/* $Id: MsixCommon.cpp 36663 2011-04-13 15:57:33Z vboxsync $ */
+/* $Id: MsixCommon.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * MSI-X support routines
  */
@@ -169,7 +169,7 @@ int MsixInit(PCPDMPCIHLP pPciHlp, PPCIDEVICE pDev, PPDMMSIREG pMsiReg)
      /* We cannot init MSI-X on raw devices yet. */
     Assert(!pciDevIsPassthrough(pDev));
 
-    uint16_t   cVectors    = pMsiReg->cMsixVectors;   
+    uint16_t   cVectors    = pMsiReg->cMsixVectors;
     uint8_t    iCapOffset  = pMsiReg->iMsixCapOffset;
     uint8_t    iNextOffset = pMsiReg->iMsixNextOffset;
     uint8_t    iBar        = pMsiReg->iMsixBar;

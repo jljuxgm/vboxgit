@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 37232 2011-05-27 11:38:30Z vboxsync $ */
+/* $Id: IEMInternal.h 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1001,5 +1001,4 @@ typedef IEMOPSHIFTDBLSIZES const *PCIEMOPSHIFTDBLSIZES;
 RT_C_DECLS_END
 
 #endif
-
 

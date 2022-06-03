@@ -1,4 +1,4 @@
-/* $Id: tstUSBProxyLinux.cpp 37086 2011-05-13 20:44:24Z vboxsync $ */
+/* $Id: tstUSBProxyLinux.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  * USBProxyServiceLinux test case.
  */
@@ -72,7 +72,7 @@ void SysFreeString(BSTR bstr)
     Assert(0);
 }
 
-static struct 
+static struct
 {
     const char *pcszEnvUsb;
     const char *pcszEnvUsbRoot;
@@ -162,7 +162,7 @@ static void testInit(RTTEST hTest)
     }
 }
 
-static struct 
+static struct
 {
     const char *pacszDeviceAddresses[16];
     const char *pacszAccessibleFiles[16];

@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 37367 2011-06-07 20:46:45Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1357,7 +1357,7 @@ bool UIKeyboardHandler::keyEvent(int iKey, uint8_t uScan, int fFlags, ulong uScr
             if (keyEventHandleNormal(iKey, uScan, fFlags, pCodes, &uCodesCount))
                 return true;
     }
-    
+
     /* This must come before host key handling */
     keyEventHandleCapturing(uScan, fFlags, uScreenId);
 

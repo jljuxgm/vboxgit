@@ -1,4 +1,4 @@
-/* $Id: tstHostHardwareLinux.cpp 36958 2011-05-04 14:50:32Z vboxsync $ */
+/* $Id: tstHostHardwareLinux.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 /** @file
  *
  * Test executable for quickly excercising/debugging the Linux host hardware
@@ -63,7 +63,7 @@ void printDevices(PUSBDEVICE pDevices,
     RTPrintf("Enumerating usb devices using %s at %s\n", pcszMethod, pcszDevices);
     while (pDevice)
     {
-        const char *pcszState = 
+        const char *pcszState =
               pDevice->enmState == USBDEVICESTATE_UNSUPPORTED   ? "UNSUPPORTED"
             : pDevice->enmState == USBDEVICESTATE_USED_BY_HOST  ? "USED_BY_HOST"
             : pDevice->enmState == USBDEVICESTATE_USED_BY_HOST_CAPTURABLE ? "USED_BY_HOST_CAPTURABLE"

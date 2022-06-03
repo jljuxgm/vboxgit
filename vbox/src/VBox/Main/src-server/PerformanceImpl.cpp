@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 36842 2011-04-26 07:54:09Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
 
 /** @file
  *
@@ -216,13 +216,13 @@ void PerformanceCollector::uninit()
     /* Destroy unregistered metrics */
     BaseMetricList::iterator it;
     for (it = m.baseMetrics.begin(); it != m.baseMetrics.end();)
-	if ((*it)->isUnregistered())
-	{
-	    delete *it;
-	    it = m.baseMetrics.erase(it);
-	}
-	else
-	    ++it;
+        if ((*it)->isUnregistered())
+        {
+            delete *it;
+            it = m.baseMetrics.erase(it);
+        }
+        else
+            ++it;
     Assert(m.baseMetrics.size() == 0);
     /*
      * Now when we have destroyed all base metrics that could
