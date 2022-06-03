@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 39130 2011-10-27 16:36:48Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 39132 2011-10-27 17:27:09Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -580,6 +580,7 @@ BOOL vboxVDbgDoCheckLRects(D3DLOCKED_RECT *pDstLRect, const RECT *pDstRect, D3DL
     return fMatch;
 }
 
+#ifndef IN_VBOXCRHGSMI
 BOOL vboxVDbgDoCheckRectsMatch(const PVBOXWDDMDISP_RESOURCE pDstRc, uint32_t iDstAlloc,
                             const PVBOXWDDMDISP_RESOURCE pSrcRc, uint32_t iSrcAlloc,
                             const RECT *pDstRect,
@@ -669,6 +670,7 @@ BOOL vboxVDbgDoCheckRectsMatch(const PVBOXWDDMDISP_RESOURCE pDstRc, uint32_t iDs
 
     return fMatch;
 }
+#endif
 
 void vboxVDbgDoPrintAlloc(const char * pPrefix, const PVBOXWDDMDISP_RESOURCE pRc, uint32_t iAlloc, const char * pSuffix)
 {
