@@ -1,4 +1,4 @@
-; $Id: VBoxRT-openssl.def 40131 2012-02-14 19:04:48Z vboxsync $
+; $Id: VBoxRT-openssl.def 40132 2012-02-14 19:20:21Z vboxsync $
 ;; @file
 ; IPRT - Windows OpenSSL exports.
 ;
@@ -2183,6 +2183,7 @@
     dtls1_handle_timeout
     dtls1_is_timer_expired
     dtls1_listen
+    dtls1_min_mtu
     dtls1_new
     dtls1_output_cert_chain
     dtls1_read_bytes
