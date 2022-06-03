@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 40183 2012-02-20 15:27:25Z vboxsync $ */
+/* $Id: HostImpl.cpp 40581 2012-03-22 16:53:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1089,6 +1089,7 @@ STDMETHODIMP Host::CreateHostOnlyNetworkInterface(IHostNetworkInterface **aHostN
                                                   IProgress **aProgress)
 {
     CheckComArgOutPointerValid(aHostNetworkInterface);
+    CheckComArgNotNull(*aHostNetworkInterface);
     CheckComArgOutPointerValid(aProgress);
 
     AutoCaller autoCaller(this);
