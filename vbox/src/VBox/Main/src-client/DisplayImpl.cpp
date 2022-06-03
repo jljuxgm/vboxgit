@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 38505 2011-08-23 04:26:21Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 38642 2011-09-05 15:06:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2192,7 +2192,8 @@ int Display::displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_
 {
     int rc;
     pDisplay->vbvaLock();
-    if (aScreenId == VBOX_VIDEO_PRIMARY_SCREEN)
+    if (   aScreenId == VBOX_VIDEO_PRIMARY_SCREEN
+        && pDisplay->maFramebuffers[aScreenId].fVBVAEnabled == false) /* A non-VBVA mode. */
     {
         rc = pDisplay->mpDrv->pUpPort->pfnTakeScreenshot(pDisplay->mpDrv->pUpPort, ppu8Data, pcbData, pu32Width, pu32Height);
     }
