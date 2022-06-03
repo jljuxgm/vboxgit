@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: VBoxCredentialProvider.cpp 40271 2012-02-28 11:22:04Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 65483 2010-09-02 08:35:30Z michael $
+# $Id: Makefile.kmk 40271 2012-02-28 11:22:04Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxCredProv.
 #

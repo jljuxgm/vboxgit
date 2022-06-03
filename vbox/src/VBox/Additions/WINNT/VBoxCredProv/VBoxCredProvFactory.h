@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: VBoxCredProvFactory.h 40271 2012-02-28 11:22:04Z vboxsync $ */
 /** @file
  * VBoxCredentialProvFactory - The VirtualBox Credential Provider factory.
  */

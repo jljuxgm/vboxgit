@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: VBoxCredProvCredential.cpp 40271 2012-02-28 11:22:04Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed
  *                          credentials.
