@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 40329 2012-03-02 16:13:50Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 41105 2012-05-01 18:14:46Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -794,7 +794,15 @@ void Appliance::buildXML(AutoWriteLockBase& writeLock,
         ComPtr<IMedium> pSourceDisk;
 
         Log(("Finding source disk \"%ls\"\n", bstrSrcFilePath.raw()));
+
+#if 0 // Substitute call to FindMedium to OpenMedium
         HRESULT rc = mVirtualBox->FindMedium(bstrSrcFilePath.raw(), DeviceType_HardDisk, pSourceDisk.asOutParam());
+#endif
+	HRESULT rc  = mVirtualBox->OpenMedium(bstrSrcFilePath.raw(),
+                                            DeviceType_HardDisk,
+                                            AccessMode_ReadWrite,
+                                            FALSE /* fForceNewUuid */,
+                                            pSourceDisk.asOutParam());
         if (FAILED(rc)) throw rc;
 
         Bstr uuidSource;

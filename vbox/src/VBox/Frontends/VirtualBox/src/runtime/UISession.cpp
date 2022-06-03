@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 41051 2012-04-25 12:48:17Z vboxsync $ */
+/* $Id: UISession.cpp 41105 2012-05-01 18:14:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -424,7 +424,11 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
     if (fDoMount) /* Fallback to only mounting the .ISO file. */
     {
         QString strUuid;
+#if 0 // Substitute call to FindMedium to OpenMedium
         CMedium image = vbox.FindMedium(strSource, KDeviceType_DVD);
+#endif
+
+        CMedium image = vbox.OpenMedium(strSource, KDeviceType_DVD, KAccessMode_ReadWrite, false /* fForceNewUuid */);
         if (image.isNull())
         {
             image = vbox.OpenMedium(strSource, KDeviceType_DVD, KAccessMode_ReadWrite, false /* fForceNewUuid */);
