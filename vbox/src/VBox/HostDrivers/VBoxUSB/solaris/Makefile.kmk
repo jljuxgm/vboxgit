@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 31911 2010-08-24 11:56:45Z vboxsync $
+# $Id: Makefile.kmk 37149 2011-05-19 11:59:08Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris VBoxUSB kernel extension.
 #
@@ -17,14 +17,6 @@
 
 SUB_DEPTH = ../../../../..
 include	$(KBUILD_PATH)/subheader.kmk
-
-#
-# VBoxUSBHelper - Setuid binary helper for updating driver alias.
-#
-PROGRAMS.solaris      += VBoxUSBHelper
-VBoxUSBHelper_TEMPLATE = VBOXR3EXE
-VBoxUSBHelper_SOURCES  = VBoxUSBHelper.cpp
-VBoxUSBHelper_LIBS     = nvpair device
 
 #
 # vboxusbmon - The Solaris USB Monitor Kernel module.
