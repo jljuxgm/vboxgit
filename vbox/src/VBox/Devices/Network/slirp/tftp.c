@@ -1,4 +1,4 @@
-/* $Id: tftp.c 42009 2012-07-04 04:57:11Z vboxsync $ */
+/* $Id: tftp.c 42010 2012-07-04 05:12:26Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -67,7 +67,7 @@ typedef struct TFTPSESSION
     struct      in_addr IpClientAddress;
     uint16_t    u16ClientPort;
     int         iTimestamp;
-    int         cbTransfered;
+    uint64_t    cbTransfered;
     ENMTFTPSESSIONFMT enmTftpFmt;
     TFPTPSESSIONOPTDESC OptionBlkSize;
     TFPTPSESSIONOPTDESC OptionTSize;
