@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 40517 2012-03-17 19:30:54Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -31,7 +31,7 @@
 #include "VMMDevHGCM.h"
 
 #ifdef VBOX_WITH_DTRACE
-# include "VBoxDD-dtrace.h"
+# include "dtrace/VBoxDD.h"
 #else
 # define VBOXDD_HGCMCALL_ENTER(a,b,c,d)             do { } while (0)
 # define VBOXDD_HGCMCALL_COMPLETED_REQ(a,b)         do { } while (0)
