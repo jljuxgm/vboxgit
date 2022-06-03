@@ -1,4 +1,4 @@
-# $Id: Config.kmk 38461 2011-08-15 15:37:23Z vboxsync $
+# $Id: Config.kmk 38523 2011-08-25 10:20:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -329,10 +329,6 @@ endif
 #VBOX_ONLY_DOCS = 1
 ifdef VBOX_DOCS_ONLY # typical mistake.
  $(error It is VBOX_ONLY_DOCS=1 not VBOX_DOCS_ONLY!)
-endif
-ifdef VBOX_OSE
- # Enable any translations in OSE, even partial ones.
- VBOX_WITH_DOCS_TRANSLATIONS=1
 endif
 ## @}
 
@@ -965,6 +961,8 @@ ifdef VBOX_OSE
   VBOX_WITH_DOCS=
   VBOX_WITH_DOCS_PACKING=
  endif
+ # Enable any translations in OSE, even partial ones.
+ VBOX_WITH_DOCS_TRANSLATIONS=1
  VBOX_WITH_TESTSUITE=
  VBOX_WITH_INTEL_PXE=
  VBOX_WITH_FFMPEG=
@@ -4833,7 +4831,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38461 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 38523 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
