@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 36183 2011-03-07 10:55:00Z vboxsync $ */
+/* $Id: VBoxService.cpp 36185 2011-03-07 11:07:35Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -565,7 +565,13 @@ int main(int argc, char **argv)
     VBoxServiceVerbose(2, "Calling VbgR3Init()\n");
     rc = VbglR3Init();
     if (RT_FAILURE(rc))
-        return VBoxServiceError("VbglR3Init failed with rc=%Rrc.\n", rc);
+    {
+        if (rc == VERR_ACCESS_DENIED)
+            return VBoxServiceError("Not enough rights to start %s! Please start with Administrator/root privileges!\n",
+                                    g_pszProgName);
+        else
+            return VBoxServiceError("VbglR3Init failed with rc=%Rrc.\n", rc);
+    }
 
 #ifdef RT_OS_WINDOWS
     /*
