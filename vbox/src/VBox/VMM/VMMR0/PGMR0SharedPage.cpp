@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: PGMR0SharedPage.cpp 39909 2012-01-30 15:32:01Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -43,7 +43,8 @@
  * @param   cRegions    Number of regions
  * @param   pRegions    Region array
  */
-VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PGVM pGVM, VMCPUID idCpu, PGMMSHAREDMODULE pModule, uint32_t cRegions, PGMMSHAREDREGIONDESC pRegions)
+VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PGVM pGVM, VMCPUID idCpu, PGMMSHAREDMODULE pModule,
+                                      uint32_t cRegions, PGMMSHAREDREGIONDESC pRegions)
 {
     int                rc = VINF_SUCCESS;
     GMMSHAREDPAGEDESC  PageDesc;
