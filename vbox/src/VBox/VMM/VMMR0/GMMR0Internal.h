@@ -1,4 +1,4 @@
-/* $Id: GMMR0Internal.h 37242 2011-05-27 16:17:12Z vboxsync $ */
+/* $Id: GMMR0Internal.h 37248 2011-05-30 10:02:24Z vboxsync $ */
 /** @file
  * GMM - The Global Memory Manager, Internal Header.
  */
@@ -114,6 +114,8 @@ typedef struct GMMPERVM
     /** The VM priority for arbitrating VMs in low and out of memory situation.
      * Like which VMs to start squeezing first. */
     GMMPRIORITY         enmPriority;
+    /** Hints at the last chunk we allocated some memory from. */
+    uint32_t            idLastChunkHint;
 
     /** The current number of ballooned pages. */
     uint64_t            cBalloonedPages;
