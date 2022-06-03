@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 37768 2011-07-04 14:49:46Z vboxsync $ */
+/* $Id: MachineImpl.h 37777 2011-07-05 09:36:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -826,7 +826,6 @@ protected:
                          Snapshot *pSnapshot,
                          GuidList *pllRegistriesThatNeedSaving);
 
-    HRESULT searchAndAddImplicitParents(ComObjPtr<Medium> p, MediaList &llMedia) const;
     HRESULT detachAllMedia(AutoWriteLock &writeLock,
                            Snapshot *pSnapshot,
                            CleanupMode_T cleanupMode,
