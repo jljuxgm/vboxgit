@@ -1,10 +1,10 @@
-/* $Id: clipboard-helper.h 41083 2012-04-27 12:14:34Z vboxsync $ */
+/* $Id: clipboard-helper.h 41086 2012-04-27 13:36:29Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
 
 /*
- * Copyright (C) 2006-2008 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -92,6 +92,8 @@ int vboxClipboardUtf16GetLinSize(PRTUTF16 pwszSrc, size_t cwSrc, size_t *pcwDest
 int vboxClipboardUtf16WinToLin(PRTUTF16 pwszSrc, size_t cwSrc, PRTUTF16 pu16Dest, size_t cwDest);
 
 #pragma pack(1)
+/** @todo r=bird: Why duplicate these structures here, we've got them in
+ *        DevVGA.cpp already! */
 /**
  * Bitmap File Header. Official win32 name is BITMAPFILEHEADER
  * Always Little Endian.
