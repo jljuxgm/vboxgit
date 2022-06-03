@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 38994 2011-10-14 09:10:48Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 39464 2011-11-29 21:55:26Z vboxsync $
 ;; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -858,9 +858,9 @@ Section /o $(VBOX_COMPONENT_D3D) SEC03
 
     ; Save original DLLs (only if msd3d*.dll does not exist) ...
     SetOutPath $SYSDIR
-    IfFileExists "$SYSDIR\dllcache\msd3d8.dll" +1
+    IfFileExists "$SYSDIR\msd3d8.dll" +1
       CopyFiles /SILENT "$SYSDIR\d3d8.dll" "$SYSDIR\msd3d8.dll"
-    IfFileExists "$SYSDIR\dllcache\msd3d9.dll" +1
+    IfFileExists "$SYSDIR\msd3d9.dll" +1
       CopyFiles /SILENT "$SYSDIR\d3d9.dll" "$SYSDIR\msd3d9.dll"
 
     Push "$SYSDIR\d3d8.dll"
