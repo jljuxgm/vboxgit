@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 37098 2011-05-16 10:29:28Z vboxsync $ */
+/* $Id: VBoxManage.cpp 37099 2011-05-16 10:54:30Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -299,6 +299,13 @@ int main(int argc, char *argv[])
         {
             /* suppress the logo */
             fShowLogo = false;
+            iCmd++;
+        }
+        else if (   !strcmp(argv[i], "--detailprogress")
+                 || !strcmp(argv[i], "-d"))
+        {
+            /* detailed progress report */
+            g_fDetailedProgress = true;
             iCmd++;
         }
         else
