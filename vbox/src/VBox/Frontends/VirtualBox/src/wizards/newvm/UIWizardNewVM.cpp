@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 41373 2012-05-21 17:41:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -19,9 +19,9 @@
 
 /* Local includes: */
 #include "UIWizardNewVM.h"
+#include "UIWizardNewVMPageBasic1.h"
 #include "UIWizardNewVMPageBasic2.h"
 #include "UIWizardNewVMPageBasic3.h"
-#include "UIWizardNewVMPageBasic4.h"
 #include "UIWizardNewVMPageExpert.h"
 #include "VBoxDefs.h"
 #include "VBoxGlobal.h"
@@ -270,9 +270,9 @@ void UIWizardNewVM::prepare()
     {
         case UIWizardMode_Basic:
         {
-            setPage(Page1, new UIWizardNewVMPageBasic2);
-            setPage(Page2, new UIWizardNewVMPageBasic3);
-            setPage(Page3, new UIWizardNewVMPageBasic4);
+            setPage(Page1, new UIWizardNewVMPageBasic1);
+            setPage(Page2, new UIWizardNewVMPageBasic2);
+            setPage(Page3, new UIWizardNewVMPageBasic3);
             break;
         }
         case UIWizardMode_Expert:

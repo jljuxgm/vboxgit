@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 41372 2012-05-21 16:53:33Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 41373 2012-05-21 17:41:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -19,7 +19,7 @@
 
 /* Local includes: */
 #include "UIWizardFirstRun.h"
-#include "UIWizardFirstRunPageBasic2.h"
+#include "UIWizardFirstRunPageBasic.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 
@@ -99,7 +99,7 @@ void UIWizardFirstRun::prepare()
     {
         case UIWizardMode_Basic:
         {
-            setPage(Page1, new UIWizardFirstRunPageBasic2(m_machine.GetId(), m_fHardDiskWasSet));
+            setPage(Page, new UIWizardFirstRunPageBasic(m_machine.GetId(), m_fHardDiskWasSet));
             break;
         }
         case UIWizardMode_Expert:
