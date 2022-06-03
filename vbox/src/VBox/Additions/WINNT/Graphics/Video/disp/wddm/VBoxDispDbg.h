@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 41637 2012-06-09 12:57:58Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 42027 2012-07-05 15:22:12Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -77,8 +77,6 @@ extern DWORD g_VBoxVDbgFSkipCheckTexBltDwmWndUpdate;
 extern DWORD g_VBoxVDbgFLogRel;
 extern DWORD g_VBoxVDbgFLog;
 extern DWORD g_VBoxVDbgFLogFlow;
-
-extern LONG g_VBoxVDbgFIsDwm;
 
 extern DWORD g_VBoxVDbgCfgMaxDirectRts;
 extern DWORD g_VBoxVDbgCfgForceDummyDevCreate;
@@ -169,6 +167,13 @@ void vboxVDbgVEHandlerUnregister();
         ); \
     } while (0)
 
+#if defined(VBOXWDDMDISP_DEBUG) || defined(VBOX_WDDMDISP_WITH_PROFILE)
+extern DWORD g_VBoxVDbgPid;
+extern LONG g_VBoxVDbgFIsDwm;
+#define VBOXVDBG_CHECK_EXE(_pszName) (vboxVDbgDoCheckExe(_pszName))
+#define VBOXVDBG_IS_DWM() (!!(g_VBoxVDbgFIsDwm >=0 ? g_VBoxVDbgFIsDwm : (g_VBoxVDbgFIsDwm = VBOXVDBG_CHECK_EXE("dwm.exe"))))
+BOOL vboxVDbgDoCheckExe(const char * pszName);
+#endif
 #if defined(VBOXWDDMDISP_DEBUG) || defined(LOG_TO_BACKDOOR_DRV)
 
 #define VBOXVDBG_STRCASE(_t) \
@@ -258,19 +263,13 @@ BOOL vboxVDbgDoCheckRectsMatch(const PVBOXWDDMDISP_RESOURCE pDstRc, uint32_t iDs
                             const RECT *pSrcRect,
                             BOOL fBreakOnMismatch);
 
-BOOL vboxVDbgDoCheckExe(const char * pszName);
-
 VOID vboxVDbgDoPrintLopLastCmd(const char* pszDesc);
 
 HRESULT vboxVDbgTimerStart(HANDLE hTimerQueue, HANDLE *phTimer, DWORD msTimeout);
 HRESULT vboxVDbgTimerStop(HANDLE hTimerQueue, HANDLE hTimer);
 
-extern DWORD g_VBoxVDbgPid;
 #define VBOXVDBG_IS_PID(_pid) ((_pid) == (g_VBoxVDbgPid ? g_VBoxVDbgPid : (g_VBoxVDbgPid = GetCurrentProcessId())))
 #define VBOXVDBG_IS_DUMP_ALLOWED_PID(_pid) (((int)(_pid)) > 0 ? VBOXVDBG_IS_PID(_pid) : !VBOXVDBG_IS_PID(-((int)(_pid))))
-
-#define VBOXVDBG_CHECK_EXE(_pszName) (vboxVDbgDoCheckExe(_pszName))
-#define VBOXVDBG_IS_DWM() (!!(g_VBoxVDbgFIsDwm >=0 ? g_VBoxVDbgFIsDwm : (g_VBoxVDbgFIsDwm = VBOXVDBG_CHECK_EXE("dwm.exe"))))
 
 #define VBOXVDBG_ASSERT_IS_DWM(_bDwm) do { \
         Assert((!VBOXVDBG_IS_DWM()) == (!(_bDwm))); \
