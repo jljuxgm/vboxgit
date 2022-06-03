@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic4.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic4.cpp 41610 2012-06-07 12:12:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -30,6 +30,7 @@
 
 /* COM includes: */
 #include "CAppliance.h"
+#include "CMachine.h"
 
 UIWizardExportAppPage4::UIWizardExportAppPage4()
 {

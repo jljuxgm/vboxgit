@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotDetailsDlg.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: VBoxSnapshotDetailsDlg.cpp 41610 2012-06-07 12:12:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -20,16 +20,21 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include "precomp.h"
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-/* Global includes */
+
+/* Qt includes: */
 #include <QDateTime>
 #include <QPushButton>
 #include <QScrollArea>
 
-/* Local includes */
+/* GUI includes: */
 #include <VBoxGlobal.h>
 #include <UIMessageCenter.h>
 #include <VBoxSnapshotDetailsDlg.h>
 #include <VBoxUtils.h>
+
+/* COM includes: */
+#include "CMachine.h"
+
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 VBoxSnapshotDetailsDlg::VBoxSnapshotDetailsDlg (QWidget *aParent)

@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 41047 2012-04-24 15:56:03Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 41610 2012-06-07 12:12:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,7 +17,13 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes */
+/* Qt includes: */
+#include <QMenuBar>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QPixmapCache>
+
+/* GUI includes: */
 #include "UIMachineMenuBar.h"
 #include "UISession.h"
 #include "UIActionPoolRuntime.h"
@@ -27,11 +33,8 @@
 #include "UIImageTools.h"
 #include "UINetworkManager.h"
 
-/* Global includes */
-#include <QMenuBar>
-#include <QPainter>
-#include <QPaintEvent>
-#include <QPixmapCache>
+/* COM includes: */
+#include "CMachine.h"
 
 /* Helper QMenu reimplementation which allows
  * to highlight first menu item for popped up menu: */

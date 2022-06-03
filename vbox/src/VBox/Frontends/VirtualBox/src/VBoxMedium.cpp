@@ -1,4 +1,4 @@
-/* $Id: VBoxMedium.cpp 41608 2012-06-07 02:02:19Z vboxsync $ */
+/* $Id: VBoxMedium.cpp 41610 2012-06-07 12:12:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -31,6 +31,7 @@
 #include "COMEnumsWrapper.h"
 
 /* COM includes: */
+#include "CMachine.h"
 #include "CSnapshot.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
