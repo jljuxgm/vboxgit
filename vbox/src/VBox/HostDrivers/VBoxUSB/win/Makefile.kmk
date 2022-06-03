@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38284 2011-08-02 18:19:00Z vboxsync $
+# $Id: Makefile.kmk 38289 2011-08-03 07:45:20Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows USB drivers.
 #
@@ -85,7 +85,7 @@ VBoxUSBMon_LIBS        = \
 	$(PATH_SDK_W2K3DDK_LIB)/hal.lib \
 	$(PATH_STAGE_LIB)/RuntimeR0Drv$(VBOX_SUFF_LIB) \
 	$(usbd_1_TARGET)
-#VBoxUSBMon_DEFS      += LOG_ENABLED
+VBoxUSBMon_DEFS      += LOG_ENABLED
 
 #
 # USBInstall
