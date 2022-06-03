@@ -1,4 +1,4 @@
-/* $Id: slirp.c 39466 2011-11-30 01:25:55Z vboxsync $ */
+/* $Id: slirp.c 39467 2011-11-30 01:43:01Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -2015,11 +2015,21 @@ void slirp_set_dhcp_dns_proxy(PNATState pData, bool fDNSProxy)
 void slirp_set_somaxconn(PNATState pData, int iSoMaxConn)
 {
     LogFlowFunc(("iSoMaxConn:d\n", iSoMaxConn));
+    /* Conditions */
     if (iSoMaxConn > SOMAXCONN)
     {
         LogRel(("NAT: value of somaxconn(%d) bigger than SOMAXCONN(%d)\n", iSoMaxConn, SOMAXCONN));
         iSoMaxConn = SOMAXCONN;
     }
+
+    if (iSoMaxConn < 1)
+    {
+        LogRel(("NAT: proposed value(%d) of somaxconn is invalid, default value is used (%d)\n", iSoMaxConn, pData->soMaxConn));
+        LogFlowFuncLeave();
+        return;
+    }
+
+    /* Asignment */
     if (pData->soMaxConn != iSoMaxConn)
     {
         LogRel(("NAT: value of somaxconn has been changed from %d to %d\n",
