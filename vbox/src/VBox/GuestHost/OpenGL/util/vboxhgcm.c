@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 40708 2012-03-29 14:12:11Z vboxsync $ */
+/* $Id: vboxhgcm.c 40961 2012-04-17 13:56:40Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -2022,7 +2022,6 @@ _crVBoxHGSMIWriteReadExact(CRConnection *conn, PCRVBOXHGSMI_CLIENT pClient, void
                 rc = pClient->pHgsmi->pfnBufferCreate(pClient->pHgsmi, CRVBOXHGSMI_PAGE_ALIGN(cbWriteback),
                                 VBOXUHGSMI_SYNCHOBJECT_TYPE_NONE, NULL, &pClient->pHGBuffer);
                 AssertRC(rc);
-                CRASSERT(RT_SUCCESS(rc));
                 if (RT_SUCCESS(rc))
                 {
                     rc = pOldBuf->pfnDestroy(pOldBuf);
