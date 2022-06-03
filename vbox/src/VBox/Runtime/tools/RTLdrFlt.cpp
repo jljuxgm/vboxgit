@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 38573 2011-08-30 14:36:20Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 38619 2011-09-03 19:51:02Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -139,9 +139,9 @@ int main(int argc, char **argv)
         { "--verbose", 'v', RTGETOPT_REQ_NOTHING },
     };
 
-    PRTSTREAM       pInput   = g_pStdIn;
-    PRTSTREAM       pOutput  = g_pStdOut;
-    bool            fVerbose = false;
+    PRTSTREAM       pInput          = g_pStdIn;
+    PRTSTREAM       pOutput         = g_pStdOut;
+    unsigned        cVerbosityLevel = 0;
 
     RTGETOPTUNION   ValueUnion;
     RTGETOPTSTATE   GetState;
@@ -157,7 +157,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'v':
-                fVerbose = true;
+                cVerbosityLevel++;
                 break;
 
             case 'h':
@@ -176,7 +176,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 38573 $\n");
+                RTPrintf("$Revision: 38619 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -208,7 +208,7 @@ int main(int argc, char **argv)
     /*
      * Display the address space.
      */
-    if (fVerbose)
+    if (cVerbosityLevel)
     {
         RTPrintf("*** Address Space Dump ***\n");
         uint32_t cModules = RTDbgAsModuleCount(hDbgAs);
@@ -241,6 +241,21 @@ int main(int argc, char **argv)
                                      SegInfo.iSeg, SegInfo.szName);
                         else
                             RTPrintf("  mapping #%u: %RTptr-???????? (segment #%u)", iMapping, aMappings[iMapping].Address);
+                    }
+
+                    if (cVerbosityLevel > 1)
+                    {
+                        uint32_t cSymbols = RTDbgModSymbolCount(hDbgMod);
+                        RTPrintf("    %u symbols\n", cSymbols);
+                        for (uint32_t iSymbol = 0; iSymbol < cSymbols; iSymbol++)
+                        {
+                            RTDBGSYMBOL SymInfo;
+                            rc = RTDbgModSymbolByOrdinal(hDbgMod, iSymbol, &SymInfo);
+                            if (RT_SUCCESS(rc))
+                                RTPrintf("    #%04u at %08x:%RTptr %05llx %s\n",
+                                         SymInfo.iOrdinal, SymInfo.iSeg, SymInfo.offSeg,
+                                         (uint64_t)SymInfo.cb, SymInfo.szName);
+                        }
                     }
                 }
             }
