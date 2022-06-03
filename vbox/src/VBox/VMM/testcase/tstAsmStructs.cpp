@@ -1,10 +1,10 @@
-/* $Id: tstAsmStructs.cpp 41154 2012-05-03 23:22:07Z vboxsync $ */
+/* $Id: tstAsmStructs.cpp 41155 2012-05-03 23:33:24Z vboxsync $ */
 /** @file
  * Testcase for checking offsets in the assembly structures shared with C/C++.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,8 +30,10 @@
 #include "tstHelp.h"
 #include <stdio.h>
 
-#define SUPDRVTRACERUSRCTX32 SUPDRVTRACERUSRCTX
-#define SUPDRVTRACERUSRCTX64 SUPDRVTRACERUSRCTX
+
+/* For sup.mac simplifications. */
+#define SUPDRVTRACERUSRCTX32    SUPDRVTRACERUSRCTX
+#define SUPDRVTRACERUSRCTX64    SUPDRVTRACERUSRCTX
 
 
 int main()
