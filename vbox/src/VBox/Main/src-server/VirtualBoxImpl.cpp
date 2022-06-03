@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 40201 2012-02-21 14:44:43Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 40205 2012-02-22 08:30:14Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1369,9 +1369,11 @@ void sanitiseMachineFilename(Utf8Str &strName)
      * *nix, or be otherwise difficult for shells to handle (I would have
      * preferred to remove the space and brackets too).  We also remove all
      * characters which need UTF-16 surrogate pairs for Windows's benefit. */
+#ifdef RT_STRICT
     RTUNICP aCpSet[] =
         { ' ', ' ', '(', ')', '-', '.', '0', '9', 'A', 'Z', 'a', 'z', '_', '_',
           0xa0, 0xd7af, '\0' };
+#endif
     char *pszName = strName.mutableRaw();
     Assert(RTStrPurgeComplementSet(pszName, aCpSet, '_') >= 0);
     /* No leading dot or dash. */
@@ -1387,6 +1389,7 @@ void sanitiseMachineFilename(Utf8Str &strName)
        pszName[i] = '_';
 }
 
+#ifdef DEBUG
 /** Simple unit test/operation examples for sanitiseMachineFilename(). */
 static unsigned testSanitiseMachineFilename(void (*pfnPrintf)(const char *, ...))
 {
@@ -1423,7 +1426,6 @@ static unsigned testSanitiseMachineFilename(void (*pfnPrintf)(const char *, ...)
     return cErrors;
 }
 
-#ifdef DEBUG
 /** @todo Proper testcase. */
 /** @todo Do we have a better method of doing init functions? */
 namespace

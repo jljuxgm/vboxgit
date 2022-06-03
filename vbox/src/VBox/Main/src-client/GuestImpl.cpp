@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 40084 2012-02-12 14:01:47Z vboxsync $ */
+/* $Id: GuestImpl.cpp 40205 2012-02-22 08:30:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -195,6 +195,7 @@ void Guest::updateStats(uint64_t iTick)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     ULONG aGuestStats[GUESTSTATTYPE_MAX];
+    RT_ZERO(aGuestStats);
     ULONG validStats = mGuestValidStats;
     /* Check if we have anything to report */
     if (validStats)
