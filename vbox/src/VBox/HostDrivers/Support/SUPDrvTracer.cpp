@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40823 2012-04-08 12:51:43Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 40831 2012-04-08 19:54:34Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -802,8 +802,9 @@ SUPR0DECL(int) SUPR0TracerRegisterImpl(void *hMod, PSUPDRVSESSION pSession, PCSU
             pDevExt->pTracerSession = pSession;
             pDevExt->pTracerImage   = pImage;
 
-            *ppHlp = &pDevExt->TracerHlp;
+            g_pfnSupdrvProbeFireKernel = (PFNRT)pDevExt->pTracerOps->pfnProbeFireKernel;
 
+            *ppHlp = &pDevExt->TracerHlp;
             rc = VINF_SUCCESS;
 
             /*
@@ -846,6 +847,11 @@ static void supdrvTracerCommonDeregisterImpl(PSUPDRVDEVEXT pDevExt)
     PSUPDRVTPPROVIDER   pProvNext;
 
     RTSemFastMutexRequest(pDevExt->mtxTracer);
+
+    /*
+     * Reinstall the stub probe-fire function.
+     */
+    g_pfnSupdrvProbeFireKernel = supdrvTracerProbeFireStub;
 
     /*
      * Disassociate the tracer implementation from all providers.
