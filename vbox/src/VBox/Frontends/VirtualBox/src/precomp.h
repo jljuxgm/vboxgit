@@ -1,4 +1,4 @@
-/* $Id: precomp.h 38410 2011-08-11 09:34:18Z vboxsync $*/
+/* $Id: precomp.h 38412 2011-08-11 09:50:04Z vboxsync $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -218,7 +218,7 @@
 #ifdef Q_WS_MAC
 # include "VBoxIChatTheaterWrapper.h"
 #endif
-#include "VBoxImportApplianceWgt.h"
+#include "UIApplianceImportEditorWidget.h"
 #include "VBoxImportApplianceWzd.h"
 #include "VBoxLicenseViewer.h"
 #include "UILineTextEdit.h"
