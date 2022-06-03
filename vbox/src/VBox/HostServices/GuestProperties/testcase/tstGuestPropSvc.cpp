@@ -1,4 +1,4 @@
-/* $Id: tstGuestPropSvc.cpp 36375 2011-03-23 17:00:53Z vboxsync $ */
+/* $Id: tstGuestPropSvc.cpp 36412 2011-03-24 17:25:33Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest property service.
@@ -80,8 +80,10 @@ g_validFlagStrings[] =
     { " rdonlyguest",                                   "RDONLYGUEST" },
     { "rdonlyhost     ",                                "RDONLYHOST" },
     { "transient, transreset, rdonlyhost",              "TRANSIENT, RDONLYHOST, TRANSRESET" },
-    { "transient, transreset, rdonlyguest",             "TRANSIENT, RDONLYGUEST, TRANSRESET" },
-    { "rdonlyguest, rdonlyhost",                        "READONLY" }
+    { "transient, transreset, rdonlyguest",             "TRANSIENT, RDONLYGUEST, TRANSRESET" },     /* max length */
+    { "rdonlyguest, rdonlyhost",                        "READONLY" },
+    { "transient,   transreset, ",                      "TRANSIENT, TRANSRESET" }, /* Don't combine them ... */
+    { "transreset, ",                                   "TRANSIENT, TRANSRESET" }, /* ... instead expand transreset for old adds. */
 };
 
 /**
