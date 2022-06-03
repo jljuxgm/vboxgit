@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 40801 2012-04-06 16:57:15Z vboxsync $ */
+/* $Id: SUPDrv.c 40804 2012-04-06 17:22:00Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -223,6 +223,8 @@ static SUPFUNC g_aFunctions[] =
     { "RTCrc32Finish",                          (void *)RTCrc32Finish },
     { "RTCrc32Process",                         (void *)RTCrc32Process },
     { "RTCrc32Start",                           (void *)RTCrc32Start },
+    { "RTErrConvertFromErrno",                  (void *)RTErrConvertFromErrno },
+    { "RTErrConvertToErrno",                    (void *)RTErrConvertToErrno },
     { "RTHandleTableAllocWithCtx",              (void *)RTHandleTableAllocWithCtx },
     { "RTHandleTableCreate",                    (void *)RTHandleTableCreate },
     { "RTHandleTableCreateEx",                  (void *)RTHandleTableCreateEx },
@@ -408,8 +410,6 @@ static SUPFUNC g_aFunctions[] =
  */
 PFNRT g_apfnVBoxDrvIPRTDeps[] =
 {
-    /* VBoxNetFlt */
-    (PFNRT)RTErrConvertFromErrno,
     /* VBoxNetAdp */
     (PFNRT)RTRandBytes,
     /* VBoxUSB */
