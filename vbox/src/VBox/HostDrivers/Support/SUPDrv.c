@@ -1,4 +1,4 @@
-/* $Revision: 37066 $ */
+/* $Revision: 37067 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5643,6 +5643,7 @@ static void supdrvGipUpdatePerCpu(PSUPGLOBALINFOPAGE pGip, uint64_t u64NanoTS, u
      * Avoid a potential race when a CPU online notification doesn't fire on the onlined CPU
      * but the tick creeps in before the event notification is run.
      */
+    unsigned iCpu = 0;
     if (iTick == 1)
     {
         uint32_t i = supdrvGipCpuIndexFromCpuId(pGip, idCpu);
@@ -5650,7 +5651,7 @@ static void supdrvGipUpdatePerCpu(PSUPGLOBALINFOPAGE pGip, uint64_t u64NanoTS, u
             supdrvGipMpEventOnline(pGip, idCpu);
     }
 
-    unsigned iCpu = pGip->aiCpuFromApicId[idApic];
+    iCpu = pGip->aiCpuFromApicId[idApic];
 
     if (RT_LIKELY(iCpu < pGip->cCpus))
     {
