@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlIO.cpp 38085 2011-07-21 07:29:54Z vboxsync $ */
+/* $Id: GuestCtrlIO.cpp 38182 2011-07-26 12:38:36Z vboxsync $ */
 /** @file
  *
  * IO helper for IGuest COM class implementations.
@@ -217,8 +217,8 @@ int GuestProcessStream::AddData(const BYTE *pbData, size_t cbData)
 
 int GuestProcessStream::Parse()
 {
-    AssertPtrReturn(m_pbBuffer, VERR_INVALID_POINTER);
-    AssertReturn(m_cbSize, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(m_pbBuffer, VINF_SUCCESS);
+    AssertReturn(m_cbSize, VINF_SUCCESS);
     AssertReturn(m_cbParserOffset < m_cbSize, VERR_INVALID_PARAMETER);
 
     int rc = VINF_SUCCESS;

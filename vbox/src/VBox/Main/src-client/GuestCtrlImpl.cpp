@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 38133 2011-07-25 09:02:17Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 38182 2011-07-26 12:38:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2050,6 +2050,9 @@ HRESULT Guest::executeProcessResult(const char *pszCommand, const char *pszUser,
                 else if (vrc == VERR_PERMISSION_DENIED)
                     rc = setErrorNoLog(VBOX_E_IPRT_ERROR,
                                        tr("Invalid user/password credentials"));
+                else if (vrc == VERR_MAX_PROCS_REACHED)
+                    rc = setErrorNoLog(VBOX_E_IPRT_ERROR,
+                                       tr("Concurrent guest process limit is reached"));
                 else
                 {
                     if (pExecStatus && pExecStatus->u32Status == PROC_STS_ERROR)
