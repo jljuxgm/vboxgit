@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
+/* $Id: tstX86-1.cpp 39989 2012-02-03 16:31:04Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -65,6 +65,7 @@ RT_C_DECLS_END
 *   Internal Functions                                                         *
 *******************************************************************************/
 DECLASM(int32_t) x861_Test1(void);
+DECLASM(int32_t) x861_Test2(void);
 
 
 
@@ -200,6 +201,11 @@ int main()
         int32_t rc = x861_Test1();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test1 -> %d", rc);
+
+        RTTestSub(hTest, "part 2");
+        rc = x861_Test2();
+        if (rc != 0)
+            RTTestFailed(hTest, "x861_Test2 -> %d", rc);
     }
 
     return RTTestSummaryAndDestroy(hTest);
