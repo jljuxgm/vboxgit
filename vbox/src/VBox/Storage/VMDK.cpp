@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 36173 2011-03-04 13:36:54Z vboxsync $ */
+/* $Id: VMDK.cpp 36514 2011-04-01 17:07:15Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -3303,6 +3303,13 @@ static int vmdkOpenImage(PVMDKIMAGE pImage, unsigned uOpenFlags)
                                  VMDK_SECTOR2BYTE(pExtent->cDescriptorSectors));
         if (RT_FAILURE(rc))
             goto out;
+
+        if (   pImage->uImageFlags & VD_VMDK_IMAGE_FLAGS_STREAM_OPTIMIZED
+            && uOpenFlags & VD_OPEN_FLAGS_ASYNC_IO)
+        {
+            rc = VERR_NOT_SUPPORTED;
+            goto out;
+        }
 
         rc = vmdkReadMetaExtent(pImage, pExtent);
         if (RT_FAILURE(rc))
