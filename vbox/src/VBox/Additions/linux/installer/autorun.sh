@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autorun.sh 36684 2011-04-15 13:09:20Z vboxsync $
+# $Id: autorun.sh 36759 2011-04-20 16:40:13Z vboxsync $
 #
 # VirtualBox Guest Additions installation script for *nix guests
 #
@@ -50,7 +50,7 @@ if test "$ostype" = "Linux"; then
             case "$gxtpath" in ?*)
                 TITLE="VirtualBox Guest Additions installation"
                 BINARY="`quotify "$i"`"
-                exec "$gxtpath" "$gxttitle" "$TITLE" "$gxtexec" "$path/runasroot.sh" --has-terminal "$TITLE" "$BINARY --xwin" "Please try running "\""$i"\"" manually."
+                exec "$gxtpath" "$gxttitle" "$TITLE" "$gxtexec" /bin/sh "$path/runasroot.sh" --has-terminal "$TITLE" "/bin/sh $BINARY --xwin" "Please try running "\""$i"\"" manually."
                 exit
                 ;;
             esac
