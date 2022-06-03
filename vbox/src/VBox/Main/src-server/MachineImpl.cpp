@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: MachineImpl.cpp 39511 2011-12-02 11:05:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6704,7 +6704,6 @@ HRESULT Machine::launchVMProcess(IInternalSessionControl *aControl,
 
         Utf8Str idStr = mData->mUuid.toString();
         const char * args[] = {szPath, "--comment", mUserData->s.strName.c_str(), "--startvm", idStr.c_str(), 0 };
-        fprintf(stderr, "SDL=%s\n",  szPath);
         vrc = RTProcCreate(szPath, args, env, 0, &pid);
     }
 #else /* !VBOX_WITH_VBOXSDL */
