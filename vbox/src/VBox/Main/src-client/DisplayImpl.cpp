@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 39288 2011-11-14 09:58:38Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 39391 2011-11-22 09:31:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2948,7 +2948,6 @@ void Display::setupCrHgsmiData(void)
         Completion.hCompletion = mpDrv->pVBVACallbacks;
         Completion.pfnCompletion = mpDrv->pVBVACallbacks->pfnCrHgsmiCommandCompleteAsync;
 
-        int rc = VERR_INVALID_FUNCTION;
         VBOXHGCMSVCPARM parm;
         parm.type = VBOX_HGCM_SVC_PARM_PTR;
         parm.u.pointer.addr = &Completion;
