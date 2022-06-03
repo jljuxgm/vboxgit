@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 39948 2012-02-02 01:37:32Z vboxsync $ */
+/* $Id: IEMAll.cpp 39953 2012-02-02 10:39:16Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -1537,7 +1537,7 @@ static VBOXSTRICTRC iemRaiseLoadStackFromTss32Or16(PIEMCPU pIemCpu, PCCPUMCTX pC
                 return iemRaiseTaskSwitchFaultCurrentTSS(pIemCpu);
             }
 
-            uint32_t u32Tmp;
+            uint32_t u32Tmp = 0; /* gcc maybe... */
             rcStrict = iemMemFetchSysU32(pIemCpu, &u32Tmp, UINT8_MAX, pCtx->trHid.u64Base + off);
             if (rcStrict == VINF_SUCCESS)
             {
