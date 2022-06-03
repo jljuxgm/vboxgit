@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 36137 2011-03-03 09:50:40Z vboxsync $ */
+/* $Id: VMDK.cpp 36173 2011-03-04 13:36:54Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -2451,9 +2451,7 @@ static int vmdkParseDescriptor(PVMDKIMAGE pImage, char *pDescData,
             RTUuidClear(&pImage->ParentModificationUuid);
         else
         {
-            rc = RTUuidCreate(&pImage->ParentModificationUuid);
-            if (RT_FAILURE(rc))
-                return rc;
+            RTUuidClear(&pImage->ParentModificationUuid);
             rc = vmdkDescDDBSetUuid(pImage, &pImage->Descriptor,
                                     VMDK_DDB_PARENT_MODIFICATION_UUID,
                                     &pImage->ParentModificationUuid);
