@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 37198 2011-05-24 15:10:40Z vboxsync $ */
+/* $Id: VBoxDD.cpp 37752 2011-07-04 10:02:23Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -132,7 +132,7 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     if (RT_FAILURE(rc))
         return rc;
 #endif
-#ifdef VBOX_WITH_EHCI
+#ifdef VBOX_WITH_EHCI_IMPL
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceEHCI);
     if (RT_FAILURE(rc))
         return rc;

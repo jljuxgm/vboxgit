@@ -1,4 +1,4 @@
-# $Id: Config.kmk 37718 2011-06-30 20:24:25Z vboxsync $
+# $Id: Config.kmk 37752 2011-07-04 10:02:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -408,6 +408,9 @@ VBOX_WITH_PDM_ASYNC_COMPLETION = 1
 VBOX_WITH_NEW_USB_CODE_ON_DARWIN = 1
 ifdef VBOX_WITH_USB
  VBOX_WITH_VUSB = 1
+endif
+ifdef VBOX_WITH_EHCI
+ VBOX_WITH_EHCI_IMPL = 1
 endif
 # Enable the hal/sysfs USB code on Linux.
 ifeq ($(KBUILD_TARGET),linux)
@@ -920,7 +923,7 @@ endif
 #
 ifdef VBOX_OSE
  VBOX_WITH_VRDP=
- VBOX_WITH_EHCI=
+ VBOX_WITH_EHCI_IMPL=
  VBOX_WITH_EXTPACK_PUEL=
  VBOX_WITH_PCI_PASSTHROUGH=
  VBOX_WITH_OS2_ADDITIONS_BIN=
@@ -4768,7 +4771,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37718 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37752 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
