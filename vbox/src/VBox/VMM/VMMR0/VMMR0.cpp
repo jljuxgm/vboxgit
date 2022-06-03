@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 40644 2012-03-26 13:21:14Z vboxsync $ */
+/* $Id: VMMR0.cpp 40763 2012-04-04 14:40:09Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -106,10 +106,10 @@ DECLEXPORT(int) ModuleInit(void *hMod)
 {
 #ifdef VBOX_WITH_DTRACE_R0
     /*
-     * The first thing to do is register the static tracepoints. 
-     * (Deregistration is automatic.) 
+     * The first thing to do is register the static tracepoints.
+     * (Deregistration is automatic.)
      */
-    int rc2 = SUPR0VtgRegisterModule(hMod, &g_VTGObjHeader);
+    int rc2 = SUPR0TracerRegisterModule(hMod, &g_VTGObjHeader);
     if (RT_FAILURE(rc2))
         return rc2;
 #endif
@@ -193,8 +193,8 @@ DECLEXPORT(int) ModuleInit(void *hMod)
 
 /**
  * Terminate the module.
- * This is called when we're finally unloaded. 
- *  
+ * This is called when we're finally unloaded.
+ *
  * @param   hMod        Image handle for use in APIs.
  */
 DECLEXPORT(void) ModuleTerm(void *hMod)
