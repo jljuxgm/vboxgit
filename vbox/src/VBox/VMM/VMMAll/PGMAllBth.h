@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 38082 2011-07-20 14:26:24Z vboxsync $ */
+/* $Id: PGMAllBth.h 38086 2011-07-21 08:55:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -2457,10 +2457,8 @@ static int PGM_BTH_NAME(CheckDirtyPageFault)(PVMCPU pVCpu, uint32_t uErr, PSHWPD
                     {
                         if (PGM_PAGE_HAS_ACTIVE_HANDLERS(pPage))
                         {
-#if 0 /* DONT COMMIT THIS!!!!!!!! It needs fixing! */
                             AssertMsgFailed(("%R[pgmpage] - we don't set PGM_PTFLAGS_TRACK_DIRTY for these pages\n", pPage));
                             Assert(!PGM_PAGE_HAS_ACTIVE_ALL_HANDLERS(pPage));
-#endif
                             /* Assuming write handlers here as the PTE is present (otherwise we wouldn't be here). */
                             SHW_PTE_SET_RO(PteDst);
                         }
