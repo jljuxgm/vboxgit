@@ -1,4 +1,4 @@
-/* $Id: VBoxCmp.cpp 42049 2012-07-09 12:35:40Z vboxsync $ */
+/* $Id: VBoxCmp.cpp 42079 2012-07-10 08:47:16Z vboxsync $ */
 /** @file
  * File Compare - Compares two files byte by byte.
  */
@@ -69,7 +69,7 @@ static RTEXITCODE compareFiles(FILE *pFile1, FILE *pFile2)
 
     uint32_t    cMismatches = 1;
     RTEXITCODE  rcRet       = RTEXITCODE_SUCCESS;
-    uint64_t    off;
+    uint64_t    off         = 0;
     for (;;)
     {
         uint8_t b1;
