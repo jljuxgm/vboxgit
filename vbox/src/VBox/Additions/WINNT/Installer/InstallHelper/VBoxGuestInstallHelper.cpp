@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 39548 2011-12-07 15:34:34Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 42134 2012-07-12 19:12:48Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  */
@@ -21,8 +21,8 @@
 #include <windows.h>
 #include <atlconv.h>
 #include <stdlib.h>
-#include <Strsafe.h>
 #include <tchar.h>
+#include <strsafe.h>
 #include "exdll.h"
 
 /* Required structures/defines of VBoxTray. */
