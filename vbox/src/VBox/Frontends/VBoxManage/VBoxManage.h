@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 41120 2012-05-02 14:55:59Z vboxsync $ */
+/* $Id: VBoxManage.h 41232 2012-05-10 12:08:43Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -225,8 +225,8 @@ int handleExtPack(HandlerArg *a);
 
 /* VBoxManageDisk.cpp */
 HRESULT findMedium(HandlerArg *a, const char *pszFilenameOrUuid,
-		                   DeviceType_T enmDevType, bool fSilent,
-				                      ComPtr<IMedium> &pMedium);
+                   DeviceType_T enmDevType, bool fSilent,
+                   ComPtr<IMedium> &pMedium);
 HRESULT findOrOpenMedium(HandlerArg *a, const char *pszFilenameOrUuid,
                          DeviceType_T enmDevType, ComPtr<IMedium> &pMedium,
                          bool fForceNewUuidOnOpen, bool *pfWasUnknown);
