@@ -1,10 +1,10 @@
-/* $Id: rtFileNativeSetAttributes-win.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: rtFileNativeSetAttributes-win.cpp 37600 2011-06-22 22:05:01Z vboxsync $ */
 /** @file
  * IPRT - NtSetInformationFile wrapper.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -59,7 +59,7 @@ int rtFileNativeSetAttributes(HANDLE hFile, ULONG fAttributes)
     Info.FileAttributes = fAttributes;
 
     /** @todo resolve dynamically to avoid dragging in NtDll? */
-    NTSTATUS Status = NtSetInformationFile(RTFileToNative(hFile),
+    NTSTATUS Status = NtSetInformationFile(hFile,
                                            &IoStatusBlock,
                                            &Info,
                                            sizeof(Info),
