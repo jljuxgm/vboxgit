@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 41644 2012-06-11 10:44:26Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 41649 2012-06-11 12:53:56Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -579,7 +579,7 @@ static int vboxGuestSetBalloonSizeFromUser(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTS
 
     if (fInflate)
     {
-        rc = RTR0MemObjLockUser(pMemObj, u64ChunkAddr, VMMDEV_MEMORY_BALLOON_CHUNK_SIZE,
+        rc = RTR0MemObjLockUser(pMemObj, (RTR3PTR)u64ChunkAddr, VMMDEV_MEMORY_BALLOON_CHUNK_SIZE,
                                 RTMEM_PROT_READ | RTMEM_PROT_WRITE, NIL_RTR0PROCESS);
         if (RT_SUCCESS(rc))
         {
@@ -2683,7 +2683,9 @@ bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt)
              */
             if (fEvents & VMMDEV_EVENT_MOUSE_POSITION_CHANGED)
             {
+#ifndef RT_OS_WINDOWS
                 MouseNotifyCallback = pDevExt->MouseNotifyCallback;
+#endif
                 fMousePositionChanged = true;
                 fEvents &= ~VMMDEV_EVENT_MOUSE_POSITION_CHANGED;
             }
