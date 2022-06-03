@@ -1,4 +1,4 @@
-# $Id: Config.kmk 37183 2011-05-23 14:30:24Z vboxsync $
+# $Id: Config.kmk 37186 2011-05-23 15:29:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4744,7 +4744,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37183 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 37186 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -4811,7 +4811,11 @@ ifeq ($(KBUILD_TARGET), darwin)
  VBOX_JAVAH     = $(VBOX_JAVA_COMMANDS)/javah
  VBOX_JAR       = $(VBOX_JAVA_COMMANDS)/jar
  VBOX_WSIMPORT  = $(VBOX_JAVA_COMMANDS)/wsimport
- VBOX_JAVA_INC  = $(VBOX_PATH_MACOSX_SDK)/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Headers
+ if $(VBOX_XCODE_VERSION_MAJOR) >= 4 # Lion (4.1-preview 5) has a broken CurrentJDK link.  Blindly applying it to 4.0.
+  VBOX_JAVA_INC  = $(VBOX_PATH_MACOSX_SDK)/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers
+ else
+  VBOX_JAVA_INC  = $(VBOX_PATH_MACOSX_SDK)/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Headers
+ endif
 
 else
 
