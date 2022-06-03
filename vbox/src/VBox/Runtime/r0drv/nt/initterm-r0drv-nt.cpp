@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 30362 2010-06-22 11:14:16Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 36232 2011-03-09 16:41:09Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -82,6 +82,9 @@ int rtR0InitNative(void)
     KAFFINITY ActiveProcessors = KeQueryActiveProcessors();
 #endif
     RTCpuSetEmpty(&g_rtMpNtCpuSet);
+#ifdef RT_WITH_LOTS_OF_CPUS
+# error "port me"
+#endif
     RTCpuSetFromU64(&g_rtMpNtCpuSet, ActiveProcessors);
 
 #ifdef IPRT_TARGET_NT4

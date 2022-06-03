@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 29284 2010-05-10 00:22:16Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 36232 2011-03-09 16:41:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -56,7 +56,7 @@ RTDECL(RTCPUID) RTMpCpuId(void)
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
-    return idCpu < vbi_cpu_maxcount() ? idCpu : -1;
+    return idCpu < RTCPUSET_MAX_CPUS && idCpu < vbi_cpu_maxcount() ? idCpu : -1;
 }
 
 

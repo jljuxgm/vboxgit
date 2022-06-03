@@ -1,4 +1,4 @@
-/* $Id: mp-freebsd.cpp 34170 2010-11-18 13:19:08Z vboxsync $ */
+/* $Id: mp-freebsd.cpp 36232 2011-03-09 16:41:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, FreeBSD.
  */
@@ -65,7 +65,7 @@ static RTCPUID rtMpFreeBsdMaxCpus(void)
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
-    return idCpu < rtMpFreeBsdMaxCpus() ? idCpu : -1;
+    return idCpu < RTCPUSET_MAX_CPUS && idCpu < rtMpFreeBsdMaxCpus() ? idCpu : -1;
 }
 
 

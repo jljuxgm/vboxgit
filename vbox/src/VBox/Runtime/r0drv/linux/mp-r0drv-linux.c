@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-linux.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: mp-r0drv-linux.c 36232 2011-03-09 16:41:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Linux.
  */
@@ -47,7 +47,7 @@ RT_EXPORT_SYMBOL(RTMpCpuId);
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
-    return idCpu < NR_CPUS ? (int)idCpu : -1;
+    return idCpu < RTCPUSET_MAX_CPUS && idCpu < NR_CPUS ? (int)idCpu : -1;
 }
 RT_EXPORT_SYMBOL(RTMpCpuIdToSetIndex);
 

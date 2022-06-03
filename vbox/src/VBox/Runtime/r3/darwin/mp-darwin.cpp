@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: mp-darwin.cpp 36232 2011-03-09 16:41:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -69,7 +69,7 @@ static RTCPUID rtMpDarwinMaxCpus(void)
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
-    return idCpu < rtMpDarwinMaxCpus() ? idCpu : -1;
+    return idCpu < RTCPUSET_MAX_CPUS && idCpu < rtMpDarwinMaxCpus() ? idCpu : -1;
 }
 
 

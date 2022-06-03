@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-freebsd.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: mp-r0drv-freebsd.c 36232 2011-03-09 16:41:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, FreeBSD.
  */
@@ -45,7 +45,7 @@ RTDECL(RTCPUID) RTMpCpuId(void)
 
 RTDECL(int) RTMpCpuIdToSetIndex(RTCPUID idCpu)
 {
-    return idCpu <= mp_maxid ? (int)idCpu : -1;
+    return idCpu < RTCPUSET_MAX_CPUS && idCpu <= mp_maxid ? (int)idCpu : -1;
 }
 
 
