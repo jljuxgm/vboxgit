@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 37734 2011-07-01 16:36:39Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 37840 2011-07-08 11:53:53Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -54,7 +54,10 @@ DWORD g_VBoxVDbgFDumpDrawPrim = 0;
 DWORD g_VBoxVDbgFDumpTexBlt = 0;
 DWORD g_VBoxVDbgFDumpBlt = 0;
 DWORD g_VBoxVDbgFDumpRtSynch = 0;
+DWORD g_VBoxVDbgFDumpFlush = 0;
+DWORD g_VBoxVDbgFDumpShared = 0;
 
+DWORD g_VBoxVDbgPid = 0;
 typedef enum
 {
     VBOXDISPDBG_STATE_UNINITIALIZED = 0,
