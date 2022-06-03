@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 41462 2012-05-28 11:42:50Z vboxsync $ */
+/* $Id: PGMInternal.h 41692 2012-06-13 19:32:54Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3829,15 +3829,8 @@ typedef struct PGMCPU
     /** @} */
 
     /** For saving stack space, the disassembler state is allocated here instead of
-     * on the stack.
-     * @note The DISCPUSTATE structure is not R3/R0/RZ clean!  */
-    union
-    {
-        /** The disassembler scratch space. */
-        DISCPUSTATE                 DisState;
-        /** Padding. */
-        uint8_t                     abDisStatePadding[DISCPUSTATE_PADDING_SIZE];
-    };
+     * on the stack. */
+    DISCPUSTATE                     DisState;
 
     /** Count the number of pgm pool access handler calls. */
     uint64_t                        cPoolAccessHandler;

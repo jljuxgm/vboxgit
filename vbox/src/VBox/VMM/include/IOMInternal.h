@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 39111 2011-10-25 14:47:02Z vboxsync $ */
+/* $Id: IOMInternal.h 41692 2012-06-13 19:32:54Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -402,16 +402,8 @@ typedef IOM *PIOM;
 typedef struct IOMCPU
 {
     /** For saving stack space, the disassembler state is allocated here instead of
-     * on the stack.
-     * @note The DISCPUSTATE structure is not R3/R0/RZ clean!  */
-    union
-    {
-        /** The disassembler scratch space. */
-        DISCPUSTATE                 DisState;
-        /** Padding. */
-        uint8_t                     abDisStatePadding[DISCPUSTATE_PADDING_SIZE];
-    };
-    uint8_t                         Dummy[16];
+     * on the stack. */
+    DISCPUSTATE                     DisState;
 } IOMCPU;
 /** Pointer to IOM per virtual CPU instance data. */
 typedef IOMCPU *PIOMCPU;

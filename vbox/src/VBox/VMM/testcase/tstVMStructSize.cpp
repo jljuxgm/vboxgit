@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 40907 2012-04-13 20:50:14Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 41692 2012-06-13 19:32:54Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -56,6 +56,7 @@
 #include <VBox/vmm/uvm.h>
 #include <VBox/vmm/gvm.h>
 #include <VBox/param.h>
+#include <VBox/dis.h>
 #include <iprt/x86.h>
 
 #include "tstHelp.h"
@@ -405,12 +406,6 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, vmx.HCPhysVMCS, sizeof(RTHCPHYS));
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, vmx.proc_ctls, 8);
     CHECK_MEMBER_ALIGNMENT(HWACCMCPU, Event.intInfo, 8);
-
-    /* The various disassembler state members.  */
-    CHECK_PADDING3(EMCPU, DisState, abDisStatePadding);
-    CHECK_PADDING3(HWACCMCPU, DisState, abDisStatePadding);
-    CHECK_PADDING3(IOMCPU, DisState, abDisStatePadding);
-    CHECK_PADDING3(PGMCPU, DisState, abDisStatePadding);
 
     /* Make sure the set is large enough and has the correct size. */
     CHECK_SIZE(VMCPUSET, 32);

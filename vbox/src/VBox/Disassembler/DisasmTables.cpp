@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 41690 2012-06-13 18:12:25Z vboxsync $ */
+/* $Id: DisasmTables.cpp 41692 2012-06-13 19:32:54Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -663,7 +663,7 @@ const DISOPCODE g_aTwoByteMapX86[256] =
     INVALID_OPCODE,
 };
 
-/* Two byte opcode map with prefix 0x66 */
+/** Two byte opcode map with prefix 0x66 */
 const DISOPCODE g_aTwoByteMapX86_PF66[256] =
 {
     /* 0 */
