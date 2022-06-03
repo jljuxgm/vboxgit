@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 37738 2011-07-03 11:41:17Z vboxsync $ */
+/* $Id: tcp_input.c 37841 2011-07-08 12:26:43Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -1326,7 +1326,7 @@ close:
                 break;
             }
 synrx_to_est:
-            LogFlowFunc(("%d -> synrx_to_est:\n"));
+            LogFlowFunc(("synrx_to_est:\n"));
             /*
              * If the congestion window was inflated to account
              * for the other side's cached packets, retract it.
