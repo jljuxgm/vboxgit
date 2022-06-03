@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 42084 2012-07-10 10:17:20Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 42095 2012-07-10 12:58:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -52,11 +52,11 @@ public:
     STDMETHOD(COMGETTER(ExecutablePath))(BSTR *aExecutablePath);
     STDMETHOD(COMGETTER(ExitCode))(LONG *aExitCode);
     STDMETHOD(COMGETTER(PID))(ULONG *aPID);
-    STDMETHOD(COMGETTER(Status))(ProcessStatus *aStatus);
+    STDMETHOD(COMGETTER(Status))(ProcessStatus_T *aStatus);
 
     STDMETHOD(Read)(ULONG aHandle, ULONG aSize, ULONG aTimeoutMS, ComSafeArrayOut(BYTE, aData));
     STDMETHOD(Terminate)(void);
-    STDMETHOD(WaitFor)(ComSafeArrayOut(ProcessWaitForFlag, aFlags), ULONG aTimeoutMS, ProcessWaitReason *aReason);
+    STDMETHOD(WaitFor)(ComSafeArrayOut(ProcessWaitForFlag_T, aFlags), ULONG aTimeoutMS, ProcessWaitReason_T *aReason);
     STDMETHOD(Write)(ULONG aHandle, ComSafeArrayIn(BYTE, aData), ULONG aTimeoutMS, ULONG *aWritten);
     /** @}  */
 

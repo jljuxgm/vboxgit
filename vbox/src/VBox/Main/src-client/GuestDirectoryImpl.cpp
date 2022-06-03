@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 42084 2012-07-10 10:17:20Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 42095 2012-07-10 12:58:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -34,7 +34,7 @@
 
 DEFINE_EMPTY_CTOR_DTOR(GuestDirectory)
 
-HRESULT GuestDirectory::FinalConstruct()
+HRESULT GuestDirectory::FinalConstruct(void)
 {
     LogFlowThisFunc(("\n"));
     return BaseFinalConstruct();

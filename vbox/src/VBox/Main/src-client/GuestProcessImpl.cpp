@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 42084 2012-07-10 10:17:20Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 42095 2012-07-10 12:58:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -142,7 +142,7 @@ STDMETHODIMP GuestProcess::COMGETTER(PID)(ULONG *aPID)
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
-STDMETHODIMP GuestProcess::COMGETTER(Status)(ProcessStatus *aStatus)
+STDMETHODIMP GuestProcess::COMGETTER(Status)(ProcessStatus_T *aStatus)
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
@@ -181,7 +181,7 @@ STDMETHODIMP GuestProcess::Terminate(void)
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
-STDMETHODIMP GuestProcess::WaitFor(ComSafeArrayOut(ProcessWaitForFlag, aFlags), ULONG aTimeoutMS, ProcessWaitReason *aReason)
+STDMETHODIMP GuestProcess::WaitFor(ComSafeArrayOut(ProcessWaitForFlag_T, aFlags), ULONG aTimeoutMS, ProcessWaitReason_T *aReason)
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();

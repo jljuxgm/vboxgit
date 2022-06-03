@@ -1,5 +1,5 @@
 
-/* $Id: GuestFsObjInfoImpl.h 42084 2012-07-10 10:17:20Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.h 42095 2012-07-10 12:58:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -63,7 +63,7 @@ public:
     STDMETHOD(COMGETTER(NodeID))(LONG64 *aNodeID);
     STDMETHOD(COMGETTER(NodeIDDevice))(ULONG *aNodeIDDevice);
     STDMETHOD(COMGETTER(ObjectSize))(ULONG *aObjectSize);
-    STDMETHOD(COMGETTER(Type))(FsObjType *aType);
+    STDMETHOD(COMGETTER(Type))(FsObjType_T *aType);
     STDMETHOD(COMGETTER(UID))(ULONG *aUID);
     STDMETHOD(COMGETTER(UserFlags))(ULONG *aUserFlags);
     STDMETHOD(COMGETTER(UserName))(BSTR *aUserName);
