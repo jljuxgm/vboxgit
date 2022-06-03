@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 36302 2011-03-17 12:17:18Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 36568 2011-04-06 08:51:17Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1916,6 +1916,8 @@ static bool pdmBlkCacheReqUpdate(PPDMBLKCACHE pBlkCache, PPDMBLKCACHEREQ pReq,
     {
         if (fCallHandler)
             pdmBlkCacheReqComplete(pBlkCache, pReq);
+        else
+            RTMemFree(pReq);
         return true;
     }
 
@@ -2525,6 +2527,7 @@ VMMR3DECL(void) PDMR3BlkCacheIoXferComplete(PPDMBLKCACHE pBlkCache, PPDMBLKCACHE
         pdmBlkCacheIoXferCompleteEntry(pBlkCache, hIoXfer, rcIoXfer);
     else
         pdmBlkCacheReqUpdate(pBlkCache, hIoXfer->pReq, rcIoXfer, true);
+    RTMemFree(hIoXfer);
 }
 
 /**
