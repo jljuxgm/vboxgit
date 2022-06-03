@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 38587 2011-08-31 15:09:45Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 38629 2011-09-05 10:06:58Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -611,6 +611,7 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
                                                         cbOffset, &cbRead, &cbLeft))
                    && cbRead)
             {
+                VBoxServiceVerbose(5, "[%u]: %s\n", pData->uPID, szBuf);
                 cbOffset += cbRead;
                 if (!cbLeft)
                     break;
