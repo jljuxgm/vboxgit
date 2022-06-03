@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbHook.h 36968 2011-05-05 08:55:16Z vboxsync $ */
+/* $Id: VBoxUsbHook.h 37042 2011-05-11 19:04:07Z vboxsync $ */
 /** @file
  * Driver Dispatch Table Hooking API impl
  */
@@ -69,5 +69,6 @@ NTSTATUS VBoxUsbHookRequestPassDownHookCompletion(PVBOXUSBHOOK_ENTRY pHook, PDEV
 NTSTATUS VBoxUsbHookRequestPassDownHookSkip(PVBOXUSBHOOK_ENTRY pHook, PDEVICE_OBJECT pDevObj, PIRP pIrp);
 NTSTATUS VBoxUsbHookRequestMoreProcessingRequired(PVBOXUSBHOOK_ENTRY pHook, PDEVICE_OBJECT pDevObj, PIRP pIrp, PVBOXUSBHOOK_REQUEST pRequest);
 NTSTATUS VBoxUsbHookRequestComplete(PVBOXUSBHOOK_ENTRY pHook, PDEVICE_OBJECT pDevObj, PIRP pIrp, PVBOXUSBHOOK_REQUEST pRequest);
+VOID VBoxUsbHookVerifyCompletion(PVBOXUSBHOOK_ENTRY pHook, PVBOXUSBHOOK_REQUEST pRequest, PIRP pIrp);
 
 #endif /* #ifndef ___VBoxUsbHook_h___ */

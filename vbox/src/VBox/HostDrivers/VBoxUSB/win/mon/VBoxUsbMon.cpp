@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 37038 2011-05-11 14:57:23Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 37042 2011-05-11 19:04:07Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -624,7 +624,14 @@ NTSTATUS _stdcall VBoxUsbMonPnPHook(IN PDEVICE_OBJECT pDevObj, IN PIRP pIrp)
 
     Log(("==>PnP: Mn(%s), PDO(0x%p), IRP(0x%p), Status(0x%x)\n", vboxUsbDbgStrPnPMn(IoGetCurrentIrpStackLocation(pIrp)->MinorFunction), pDevObj, pIrp, pIrp->IoStatus.Status));
 
-    return VBoxUsbHookRequestPassDownHookCompletion(&g_VBoxUsbMonGlobals.UsbHubPnPHook.Hook, pDevObj, pIrp, VBoxUsbPnPCompletion, &pCompletion->Rq);
+    NTSTATUS Status = VBoxUsbHookRequestPassDownHookCompletion(&g_VBoxUsbMonGlobals.UsbHubPnPHook.Hook, pDevObj, pIrp, VBoxUsbPnPCompletion, &pCompletion->Rq);
+#ifdef DEBUG
+    if (Status != STATUS_PENDING)
+    {
+        VBoxUsbHookVerifyCompletion(&g_VBoxUsbMonGlobals.UsbHubPnPHook.Hook, &pCompletion->Rq, pIrp);
+    }
+#endif
+    return Status;
 }
 
 

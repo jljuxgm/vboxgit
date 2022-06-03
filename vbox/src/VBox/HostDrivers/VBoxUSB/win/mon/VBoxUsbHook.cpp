@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbHook.cpp 36968 2011-05-05 08:55:16Z vboxsync $ */
+/* $Id: VBoxUsbHook.cpp 37042 2011-05-11 19:04:07Z vboxsync $ */
 /** @file
  * Driver Dispatch Table Hooking API
  */
@@ -163,3 +163,21 @@ NTSTATUS VBoxUsbHookRequestComplete(PVBOXUSBHOOK_ENTRY pHook, PDEVICE_OBJECT pDe
     return Status;
 }
 
+#define PVBOXUSBHOOK_REQUEST_FROM_LE(_pLe) ( (PVBOXUSBHOOK_REQUEST)( ((uint8_t*)(_pLe)) - RT_OFFSETOF(VBOXUSBHOOK_REQUEST, ListEntry) ) )
+
+VOID VBoxUsbHookVerifyCompletion(PVBOXUSBHOOK_ENTRY pHook, PVBOXUSBHOOK_REQUEST pRequest, PIRP pIrp)
+{
+    KIRQL oldIrql;
+    KeAcquireSpinLock(&pHook->Lock, &oldIrql);
+    for (PLIST_ENTRY pLe = pHook->RequestList.Flink; pLe != &pHook->RequestList; pLe = pLe->Flink)
+    {
+        PVBOXUSBHOOK_REQUEST pCur = PVBOXUSBHOOK_REQUEST_FROM_LE(pLe);
+        if (pCur != pRequest)
+            continue;
+        if (pCur->pIrp != pIrp)
+            continue;
+        AssertFailed();
+    }
+    KeReleaseSpinLock(&pHook->Lock, oldIrql);
+
+}
