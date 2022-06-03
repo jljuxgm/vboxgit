@@ -1,4 +1,4 @@
-/* $Id: UISelectorShortcuts.cpp 38800 2011-09-20 11:51:31Z vboxsync $ */
+/* $Id: UISelectorShortcuts.cpp 39932 2012-02-01 13:33:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,6 +49,7 @@ UISelectorShortcuts::UISelectorShortcuts()
     m_Shortcuts[HelpShortcut]                = UIKeySequence("Help",                QKeySequence::HelpContents);
     m_Shortcuts[WebShortcut]                 = UIKeySequence("Web");
     m_Shortcuts[ResetWarningsShortcut]       = UIKeySequence("ResetWarnings");
+    m_Shortcuts[NetworkAccessManager]        = UIKeySequence("NetworkAccessManager");
 #ifdef VBOX_WITH_REGISTRATION
     m_Shortcuts[RegisterShortcut]            = UIKeySequence("Register");
 #endif /* VBOX_WITH_REGISTRATION */

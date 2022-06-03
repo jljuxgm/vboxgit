@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 38476 2011-08-16 13:25:17Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 39932 2012-02-01 13:33:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -96,14 +96,6 @@ void UIMachineLogicScale::initialize()
 
     /* Prepare scale machine window: */
     prepareMachineWindows();
-
-    /* If there is an Additions download running, update the parent window information. */
-    if (UIDownloaderAdditions *pDl = UIDownloaderAdditions::current())
-        pDl->setParentWidget(mainMachineWindow()->machineWindow());
-
-    /* If there is an Extension Pack download running, update the parent window information. */
-    if (UIDownloaderExtensionPack *pDl = UIDownloaderExtensionPack::current())
-        pDl->setParentWidget(mainMachineWindow()->machineWindow());
 
 #ifdef Q_WS_MAC
     /* Prepare dock: */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 39932 2012-02-01 13:33:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -77,18 +77,6 @@ void UIMachineLogicNormal::initialize()
 
     /* Prepare normal machine window: */
     prepareMachineWindows();
-
-    /* If there is an Additions download running, update the parent window information. */
-    if (UIDownloaderAdditions *pDl = UIDownloaderAdditions::current())
-        pDl->setParentWidget(mainMachineWindow()->machineWindow());
-
-    /* If there is an User Manual download running, update the parent window information. */
-    if (UIDownloaderUserManual *pDl = UIDownloaderUserManual::current())
-        pDl->setParentWidget(mainMachineWindow()->machineWindow());
-
-    /* If there is an Extension Pack download running, update the parent window information. */
-    if (UIDownloaderExtensionPack *pDl = UIDownloaderExtensionPack::current())
-        pDl->setParentWidget(mainMachineWindow()->machineWindow());
 
 #ifdef Q_WS_MAC
     /* Prepare dock: */

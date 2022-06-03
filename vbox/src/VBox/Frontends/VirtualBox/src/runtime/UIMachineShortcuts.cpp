@@ -1,4 +1,4 @@
-/* $Id: UIMachineShortcuts.cpp 38477 2011-08-16 13:46:03Z vboxsync $ */
+/* $Id: UIMachineShortcuts.cpp 39932 2012-02-01 13:33:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -57,6 +57,7 @@ UIMachineShortcuts::UIMachineShortcuts()
     m_Shortcuts[HelpShortcut]                  = UIKeySequence("Help");
     m_Shortcuts[WebShortcut]                   = UIKeySequence("Web");
     m_Shortcuts[ResetWarningsShortcut]         = UIKeySequence("ResetWarnings");
+    m_Shortcuts[NetworkAccessManager]          = UIKeySequence("NetworkAccessManager");
 #ifdef VBOX_WITH_REGISTRATION
     m_Shortcuts[RegisterShortcut]              = UIKeySequence("Register");
 #endif /* VBOX_WITH_REGISTRATION */
