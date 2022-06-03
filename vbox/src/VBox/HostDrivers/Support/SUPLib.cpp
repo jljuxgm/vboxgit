@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 40820 2012-04-07 21:01:54Z vboxsync $ */
+/* $Id: SUPLib.cpp 40975 2012-04-18 14:49:24Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -2384,5 +2384,17 @@ SUPR3DECL(int) SUPR3TracerIoCtl(uintptr_t uCmd, uintptr_t uArg, int32_t *piRetVa
         *piRetVal = Req.u.Out.iRetVal;
     }
     return rc;
+}
+
+extern "C"
+{
+    SUPDECL(void) SUPTracerFireProbe(uint32_t idProbe, uintptr_t uArg0, uintptr_t uArg1, uintptr_t uArg2,
+                                     uintptr_t uArg3, uintptr_t uArg4);
+}
+
+SUPDECL(void) SUPTracerFireProbe(uint32_t idProbe, uintptr_t uArg0, uintptr_t uArg1, uintptr_t uArg2,
+                                 uintptr_t uArg3, uintptr_t uArg4)
+{
+    /* C and stubbed for now. */
 }
 

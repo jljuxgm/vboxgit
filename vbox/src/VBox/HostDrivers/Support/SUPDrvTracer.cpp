@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40892 2012-04-12 12:12:40Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 40975 2012-04-18 14:49:24Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1423,7 +1423,7 @@ int VBOXCALL supdrvTracerInit(PSUPDRVDEVEXT pDevExt)
         RTListInit(&pDevExt->TracerProviderList);
         RTListInit(&pDevExt->TracerProviderZombieList);
 
-#ifdef VBOX_WITH_NATIVE_DTRACE_R0DRV
+#ifdef VBOX_WITH_NATIVE_DTRACE
         pDevExt->pTracerOps = supdrvDTraceInit();
         if (pDevExt->pTracerOps)
             g_pfnSupdrvProbeFireKernel = (PFNRT)pDevExt->pTracerOps->pfnProbeFireKernel;

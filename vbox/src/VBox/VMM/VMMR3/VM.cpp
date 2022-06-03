@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
+/* $Id: VM.cpp 40975 2012-04-18 14:49:24Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -71,6 +71,9 @@
 #include <VBox/vmm/uvm.h>
 
 #include <VBox/sup.h>
+#if defined(VBOX_WITH_DTRACE_R3) && !defined(VBOX_WITH_NATIVE_DTRACE)
+# include <VBox/VBoxTpG.h>
+#endif
 #include <VBox/dbg.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
@@ -155,13 +158,16 @@ VMMR3DECL(int)   VMR3GlobalInit(void)
     if (s_fDone)
         return VINF_SUCCESS;
 
+#if defined(VBOX_WITH_DTRACE_R3) && !defined(VBOX_WITH_NATIVE_DTRACE)
+    //SUPR3TracerRegisterModule(&g_VTGObjHeader, "VBoxVMM");
+#endif
+
     /*
      * We're done.
      */
     s_fDone = true;
     return VINF_SUCCESS;
 }
-
 
 
 /**

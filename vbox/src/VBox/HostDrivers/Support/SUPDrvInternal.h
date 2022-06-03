@@ -1,4 +1,4 @@
-/* $Revision: 40851 $ */
+/* $Revision: 40975 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -660,7 +660,7 @@ int  VBOXCALL   supdrvIOCtl_TracerIOCtl(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pS
 extern PFNRT    g_pfnSupdrvProbeFireKernel;
 DECLASM(void)   supdrvTracerProbeFireStub(void);
 
-#ifdef VBOX_WITH_NATIVE_DTRACE_R0DRV
+#ifdef VBOX_WITH_NATIVE_DTRACE
 const SUPDRVTRACERREG * VBOXCALL supdrvDTraceInit(void);
 #endif
 
