@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 37803 2011-07-06 14:45:27Z vboxsync $ */
+/* $Id: GMMR0.cpp 37804 2011-07-06 14:57:54Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -2542,6 +2542,9 @@ static int gmmR0AllocatePagesNew(PGMM pGMM, PGVM pGVM, uint32_t cPages, PGMMPAGE
             }
             else
                 AssertMsgFailed(("idPage=%#x\n", idPage));
+            paPages[iPage].idPage       = NIL_GMM_PAGEID;
+            paPages[iPage].idSharedPage = NIL_GMM_PAGEID;
+            paPages[iPage].HCPhysGCPhys = NIL_RTHCPHYS;
         }
 
         /* Free empty chunks. */
