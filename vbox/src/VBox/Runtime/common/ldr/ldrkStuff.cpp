@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 39436 2011-11-28 13:17:04Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -422,7 +422,7 @@ static int rtkldrEnumSymbolsWrapper(PKLDRMOD pMod, uint32_t iSymbol,
     const char *pszSymbol = pchSymbol;
     if (pchSymbol && pchSymbol[cchSymbol])
     {
-        char *psz = (char *)alloca(cchSymbol) + 1;
+        char *psz = (char *)alloca(cchSymbol + 1);
         memcpy(psz, pchSymbol, cchSymbol);
         psz[cchSymbol] = '\0';
         pszSymbol = psz;
@@ -482,7 +482,7 @@ static int rtkldrGetImportWrapper(PKLDRMOD pMod, uint32_t iImport, uint32_t iSym
     const char *pszSymbol = pchSymbol;
     if (pchSymbol && pchSymbol[cchSymbol])
     {
-        char *psz = (char *)alloca(cchSymbol) + 1;
+        char *psz = (char *)alloca(cchSymbol + 1);
         memcpy(psz, pchSymbol, cchSymbol);
         psz[cchSymbol] = '\0';
         pszSymbol = psz;
