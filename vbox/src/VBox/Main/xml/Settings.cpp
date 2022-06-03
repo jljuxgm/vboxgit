@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 38873 2011-09-27 08:58:22Z vboxsync $ */
+/* $Id: Settings.cpp 38893 2011-09-28 10:34:51Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2984,6 +2984,9 @@ void MachineConfigFile::readStorageControllers(const xml::ElementNode &elmStorag
             AttachedDevice att;
             Utf8Str strTemp;
             pelmAttached->getAttributeValue("type", strTemp);
+
+            att.fDiscard = false;
+            att.fNonRotational = false;
 
             if (strTemp == "HardDisk")
             {
