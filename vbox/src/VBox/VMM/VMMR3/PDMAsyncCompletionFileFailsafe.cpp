@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 36001 2011-02-16 21:21:39Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Simple File I/O manager.
@@ -77,7 +77,7 @@ static int pdmacFileAioMgrFailsafeProcessEndpointTaskList(PPDMACEPFILEMGR pAioMg
         {
             case PDMACTASKFILETRANSFER_FLUSH:
             {
-                rc = RTFileFlush(pEndpoint->File);
+                rc = RTFileFlush(pEndpoint->hFile);
                 break;
             }
             case PDMACTASKFILETRANSFER_READ:
@@ -85,7 +85,7 @@ static int pdmacFileAioMgrFailsafeProcessEndpointTaskList(PPDMACEPFILEMGR pAioMg
             {
                 if (pCurr->enmTransferType == PDMACTASKFILETRANSFER_READ)
                 {
-                    rc = RTFileReadAt(pEndpoint->File, pCurr->Off,
+                    rc = RTFileReadAt(pEndpoint->hFile, pCurr->Off,
                                       pCurr->DataSeg.pvSeg,
                                       pCurr->DataSeg.cbSeg,
                                       NULL);
@@ -95,10 +95,10 @@ static int pdmacFileAioMgrFailsafeProcessEndpointTaskList(PPDMACEPFILEMGR pAioMg
                     if (RT_UNLIKELY((uint64_t)pCurr->Off + pCurr->DataSeg.cbSeg > pEndpoint->cbFile))
                     {
                         ASMAtomicWriteU64(&pEndpoint->cbFile, pCurr->Off + pCurr->DataSeg.cbSeg);
-                        RTFileSetSize(pEndpoint->File, pCurr->Off + pCurr->DataSeg.cbSeg);
+                        RTFileSetSize(pEndpoint->hFile, pCurr->Off + pCurr->DataSeg.cbSeg);
                     }
 
-                    rc = RTFileWriteAt(pEndpoint->File, pCurr->Off,
+                    rc = RTFileWriteAt(pEndpoint->hFile, pCurr->Off,
                                        pCurr->DataSeg.pvSeg,
                                        pCurr->DataSeg.cbSeg,
                                        NULL);

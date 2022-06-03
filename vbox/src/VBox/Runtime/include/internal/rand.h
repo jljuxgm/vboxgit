@@ -1,4 +1,4 @@
-/* $Id: rand.h 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: rand.h 37596 2011-06-22 19:30:06Z vboxsync $ */
 /** @file
  * IPRT - Internal RTRand header
  */
@@ -149,8 +149,8 @@ typedef struct RTRANDINT
 
         struct RTRandFile
         {
-            /** The file handle. */
-            RTFILE      hFile;
+            /** The file handle (native). */
+            intptr_t    hFile;
         } File;
     } u;
 } RTRANDINT;

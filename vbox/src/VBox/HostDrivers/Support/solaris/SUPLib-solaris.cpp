@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -161,7 +161,7 @@ int suplibOsTerm(PSUPLIBDATA pThis)
     {
         if (close(pThis->hDevice))
             AssertFailed();
-        pThis->hDevice = NIL_RTFILE;
+        pThis->hDevice = (intptr_t)NIL_RTFILE;
     }
 
     return VINF_SUCCESS;

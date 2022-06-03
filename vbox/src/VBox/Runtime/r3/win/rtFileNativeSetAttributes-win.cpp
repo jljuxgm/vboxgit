@@ -1,4 +1,4 @@
-/* $Id: rtFileNativeSetAttributes-win.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: rtFileNativeSetAttributes-win.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
 /** @file
  * IPRT - NtSetInformationFile wrapper.
  */
@@ -59,7 +59,7 @@ int rtFileNativeSetAttributes(HANDLE hFile, ULONG fAttributes)
     Info.FileAttributes = fAttributes;
 
     /** @todo resolve dynamically to avoid dragging in NtDll? */
-    NTSTATUS Status = NtSetInformationFile(hFile,
+    NTSTATUS Status = NtSetInformationFile(RTFileToNative(hFile),
                                            &IoStatusBlock,
                                            &Info,
                                            sizeof(Info),

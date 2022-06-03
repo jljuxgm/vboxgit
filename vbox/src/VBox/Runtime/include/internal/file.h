@@ -1,4 +1,4 @@
-/* $Id: file.h 36597 2011-04-06 19:46:15Z vboxsync $ */
+/* $Id: file.h 37596 2011-06-22 19:30:06Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFile header.
  */
@@ -41,7 +41,7 @@ RT_C_DECLS_BEGIN
  *                      Updated on successful return.
  * @internal
  */
-int rtFileRecalcAndValidateFlags(uint32_t *pfOpen);
+int rtFileRecalcAndValidateFlags(uint64_t *pfOpen);
 
 
 /**
