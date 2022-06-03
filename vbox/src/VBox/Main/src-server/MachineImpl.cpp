@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 37985 2011-07-15 15:04:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38013 2011-07-18 12:02:49Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7514,6 +7514,9 @@ HRESULT Machine::loadMachineDataFromSettings(const settings::MachineConfigFile &
     // snapshot folder needs special processing so set it again
     rc = COMSETTER(SnapshotFolder)(Bstr(config.machineUserData.strSnapshotFolder).raw());
     if (FAILED(rc)) return rc;
+
+    /* Read the extra data items. */
+    mData->pMachineConfigFile->mapExtraDataItems = config.mapExtraDataItems;
 
     /* currentStateModified (optional, default is true) */
     mData->mCurrentStateModified = config.fCurrentStateModified;
