@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 36357 2011-03-23 09:36:05Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 36589 2011-04-06 15:24:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,6 +26,7 @@
 
 /* Local includes */
 #include "UISettingsDialogSpecific.h"
+#include "UISettingsDefs.h"
 #include "VBoxGlobal.h"
 #include "VBoxProblemReporter.h"
 #include "QIWidgetValidator.h"
@@ -287,8 +288,8 @@ protected:
 
 UISettingsSerializer* UISettingsSerializer::m_pInstance = 0;
 
-UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent, VBoxDefs::SettingsDialogType type)
-    : UISettingsDialog(pParent, type)
+UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent, SettingsDialogType settingsDialogType)
+    : UISettingsDialog(pParent, settingsDialogType)
 {
     /* Window icon: */
 #ifndef Q_WS_MAC
@@ -506,10 +507,10 @@ bool UISettingsDialogGlobal::isAvailable(int id)
     return true;
 }
 
-UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, VBoxDefs::SettingsDialogType type,
+UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, SettingsDialogType settingsDialogType,
                                                  const CMachine &machine, const CConsole &console,
                                                  const QString &strCategory, const QString &strControl)
-    : UISettingsDialog(pParent, type)
+    : UISettingsDialog(pParent, settingsDialogType)
     , m_machine(machine)
     , m_console(console)
     , m_fAllowResetFirstRunFlag(false)

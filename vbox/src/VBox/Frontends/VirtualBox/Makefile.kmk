@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36357 2011-03-23 09:36:05Z vboxsync $
+# $Id: Makefile.kmk 36589 2011-04-06 15:24:00Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -457,6 +457,7 @@ VirtualBox_SOURCES = \
 	src/extensions/QITreeWidget.cpp \
 	src/extensions/QIWidgetValidator.cpp \
 	src/extensions/QIWizard.cpp \
+	src/settings/UISettingsDefs.cpp \
 	src/settings/UISettingsDialog.cpp \
 	src/settings/UISettingsDialogSpecific.cpp \
 	src/settings/UISettingsPage.cpp \

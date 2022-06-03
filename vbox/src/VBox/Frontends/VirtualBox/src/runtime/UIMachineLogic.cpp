@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 36357 2011-03-23 09:36:05Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 36589 2011-04-06 15:24:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -963,7 +963,7 @@ void UIMachineLogic::sltOpenVMSettingsDialog(const QString &strCategory /* = QSt
 
     /* Prepare VM settings dialog: */
     UISettingsDialog *pDlg = new UISettingsDialogMachine(defaultMachineWindow()->machineWindow(),
-                                                         VBoxDefs::SettingsDialogType_Runtime,
+                                                         SettingsDialogType_Online,
                                                          sharedMachine, session().GetConsole(),
                                                          strCategory, QString());
     pDlg->getFrom();

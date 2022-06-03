@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 36357 2011-03-23 09:36:05Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 36589 2011-04-06 15:24:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -41,14 +41,14 @@
 #endif /* Q_WS_MAC */
 
 /* Settings Dialog Constructor: */
-UISettingsDialog::UISettingsDialog(QWidget *pParent, VBoxDefs::SettingsDialogType dialogType)
+UISettingsDialog::UISettingsDialog(QWidget *pParent, SettingsDialogType settingsDialogType)
     /* Parent class: */
     : QIWithRetranslateUI<QIMainDialog>(pParent)
     /* Protected variables: */
     , m_pSelector(0)
     , m_pStack(0)
     /* Common variables: */
-    , m_dialogType(dialogType)
+    , m_dialogType(settingsDialogType)
     , m_fPolished(false)
     /* Loading stuff: */
     , m_fProcessed(false)

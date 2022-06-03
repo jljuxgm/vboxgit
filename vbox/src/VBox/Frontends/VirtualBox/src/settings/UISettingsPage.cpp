@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 36357 2011-03-23 09:36:05Z vboxsync $ */
+/* $Id: UISettingsPage.cpp 36589 2011-04-06 15:24:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -23,7 +23,7 @@
 /* Settings page constructor, hidden: */
 UISettingsPage::UISettingsPage(UISettingsPageType pageType)
     : m_pageType(pageType)
-    , m_dialogType(VBoxDefs::SettingsDialogType_Wrong)
+    , m_dialogType(SettingsDialogType_Wrong)
     , m_cId(-1)
     , m_fPolished(false)
     , m_fProcessed(false)
