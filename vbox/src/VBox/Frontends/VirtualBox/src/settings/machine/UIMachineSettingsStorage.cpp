@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 37168 2011-05-20 16:56:46Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 37331 2011-06-06 16:30:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -20,7 +20,7 @@
 /* Local Includes */
 #include "QIWidgetValidator.h"
 #include "UIIconPool.h"
-#include "UINewHDWzd.h"
+#include "UINewHDWizard.h"
 #include "VBoxGlobal.h"
 #include "QIFileDialog.h"
 #include "VBoxProblemReporter.h"
@@ -2917,13 +2917,11 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType deviceType)
 
 QString UIMachineSettingsStorage::getWithNewHDWizard()
 {
-    /* Run New HD Wizard */
-    UINewHDWzd dlg(this);
     /* Initialize variables: */
     CGuestOSType guestOSType = vboxGlobal().virtualBox().GetGuestOSType(m_strMachineGuestOSTypeId);
-    dlg.setRecommendedSize(guestOSType.GetRecommendedHDD());
     QFileInfo fileInfo(m_strMachineSettingsFilePath);
-    dlg.setDefaultPath(fileInfo.absolutePath());
+    /* Run New HD Wizard: */
+    UINewHDWizard dlg(this, QString(), fileInfo.absolutePath(), guestOSType.GetRecommendedHDD());
 
     return dlg.exec() == QDialog::Accepted ? dlg.hardDisk().GetId() : QString();
 }

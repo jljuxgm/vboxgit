@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaManagerDlg.cpp 34983 2010-12-13 10:14:08Z vboxsync $ */
+/* $Id: VBoxMediaManagerDlg.cpp 37331 2011-06-06 16:30:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -36,7 +36,7 @@
 /* Local includes */
 #include "VBoxGlobal.h"
 #include "VBoxMediaManagerDlg.h"
-#include "UINewHDWzd.h"
+#include "UINewHDWizard.h"
 #include "VBoxProblemReporter.h"
 #include "UIToolBar.h"
 #include "QIFileDialog.h"
@@ -951,7 +951,7 @@ void VBoxMediaManagerDlg::doNewMedium()
 {
     AssertReturnVoid (currentTreeWidgetType() == VBoxDefs::MediumType_HardDisk);
 
-    UINewHDWzd dlg (this);
+    UINewHDWizard dlg (this);
 
     if (dlg.exec() == QDialog::Accepted)
     {
