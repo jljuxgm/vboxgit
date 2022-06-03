@@ -1,10 +1,10 @@
-/* $Id: DrvVUSBRootHub.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 41517 2012-05-31 08:37:58Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2005-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -803,6 +803,7 @@ static void vusbRhHubOpDetach(PVUSBHUB pHub, PVUSBDEV pDev)
      */
     unsigned uPort = pDev->i16Port;
     pRh->pIRhPort->pfnDetach(pRh->pIRhPort, &pDev->IDevice, uPort);
+    LogRel(("VUSB: detached '%s' from port %u\n", pDev->pUsbIns->pszName, uPort));
     ASMBitSet(&pRh->Bitmap, uPort);
     pHub->cDevices--;
 }
