@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 38764 2011-09-15 14:09:40Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 39926 2012-01-31 20:45:46Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1285,7 +1285,7 @@ HRESULT MachineCloneVM::run()
         if (   !d->llSaveStateFiles.isEmpty()
             && !RTDirExists(strTrgSnapshotFolder.c_str()))
         {
-            int vrc = RTDirCreateFullPath(strTrgSnapshotFolder.c_str(), 0777);
+            int vrc = RTDirCreateFullPath(strTrgSnapshotFolder.c_str(), 0700);
             if (RT_FAILURE(vrc))
                 throw p->setError(VBOX_E_IPRT_ERROR,
                                   p->tr("Could not create snapshots folder '%s' (%Rrc)"), strTrgSnapshotFolder.c_str(), vrc);

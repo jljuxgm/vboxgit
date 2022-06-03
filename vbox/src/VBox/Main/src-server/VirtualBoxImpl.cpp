@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 39926 2012-01-31 20:45:46Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3913,7 +3913,7 @@ HRESULT VirtualBox::ensureFilePathExists(const Utf8Str &strFileName, bool fCreat
     {
         if (fCreate)
         {
-            int vrc = RTDirCreateFullPath(strDir.c_str(), 0777);
+            int vrc = RTDirCreateFullPath(strDir.c_str(), 0700);
             if (RT_FAILURE(vrc))
                 return setErrorStatic(VBOX_E_IPRT_ERROR,
                                       Utf8StrFmt(tr("Could not create the directory '%s' (%Rrc)"),

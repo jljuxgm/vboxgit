@@ -1,4 +1,4 @@
-/* $Id: com.cpp 30632 2010-07-05 19:36:40Z vboxsync $ */
+/* $Id: com.cpp 39926 2012-01-31 20:45:46Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -205,7 +205,7 @@ int GetVBoxUserHomeDirectory(char *aDir, size_t aDirLen)
         /* ensure the home directory exists */
         if (RT_SUCCESS(vrc))
             if (!RTDirExists(aDir))
-                vrc = RTDirCreateFullPath(aDir, 0777);
+                vrc = RTDirCreateFullPath(aDir, 0700);
     }
 
     return vrc;
