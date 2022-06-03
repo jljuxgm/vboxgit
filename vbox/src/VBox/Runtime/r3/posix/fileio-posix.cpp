@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 34579 2010-12-01 15:45:02Z vboxsync $ */
+/* $Id: fileio-posix.cpp 36597 2011-04-06 19:46:15Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -372,6 +372,27 @@ RTR3DECL(RTHCINTPTR) RTFileToNative(RTFILE File)
 {
     AssertReturn(File != NIL_RTFILE, -1);
     return (RTHCINTPTR)File;
+}
+
+
+RTFILE rtFileGetStandard(RTHANDLESTD enmStdHandle)
+{
+    int fd;
+    switch (enmStdHandle)
+    {
+        case RTHANDLESTD_INPUT:  fd = 0; break;
+        case RTHANDLESTD_OUTPUT: fd = 1; break;
+        case RTHANDLESTD_ERROR:  fd = 2; break;
+            break;
+        default:
+            AssertFailedReturn(NIL_RTFILE);
+    }
+
+    struct stat st;
+    int rc = fstat(fd, &st);
+    if (rc == -1)
+        return NIL_RTFILE;
+    return (RTFILE)fd;
 }
 
 

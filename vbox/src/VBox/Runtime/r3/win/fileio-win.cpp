@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 36367 2011-03-23 15:04:52Z vboxsync $ */
+/* $Id: fileio-win.cpp 36597 2011-04-06 19:46:15Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -348,6 +348,29 @@ RTR3DECL(int)  RTFileClose(RTFILE File)
 }
 
 
+RTFILE rtFileGetStandard(RTHANDLESTD enmStdHandle)
+{
+    DWORD dwStdHandle;
+    switch (enmStdHandle)
+    {
+        case RTHANDLESTD_INPUT:     dwStdHandle = STD_INPUT_HANDLE;  break;
+        case RTHANDLESTD_OUTPUT:    dwStdHandle = STD_OUTPUT_HANDLE; break;
+        case RTHANDLESTD_ERROR:     dwStdHandle = STD_ERROR_HANDLE;  break;
+            break;
+        default:
+            AssertFailedReturn(NIL_RTFILE);
+    }
+
+    HANDLE hHandle = GetStdHandle(dwStdHandle);
+    if (hNative == INVALID_HANDLE_VALUE)
+        return NIL_RTFILE;
+
+    RTFILE hFile = (RTFILE)(uintptr_t)hHandle;
+    AssertReturn((HANDLE)(uintptr_t)hFile == hHandle, NIL_RTFILE);
+    return hFile;
+}
+
+
 RTR3DECL(int)  RTFileSeek(RTFILE File, int64_t offSeek, unsigned uMethod, uint64_t *poffActual)
 {
     static ULONG aulSeekRecode[] =
@@ -404,9 +427,9 @@ RTR3DECL(int)  RTFileRead(RTFILE File, void *pvBuf, size_t cbToRead, size_t *pcb
         return VINF_SUCCESS;
     }
 
-    /* 
-     * If it's a console, we might bump into out of memory conditions in the 
-     * ReadConsole call.  
+    /*
+     * If it's a console, we might bump into out of memory conditions in the
+     * ReadConsole call.
      */
     DWORD dwErr = GetLastError();
     if (dwErr == ERROR_NOT_ENOUGH_MEMORY)
@@ -449,7 +472,7 @@ RTR3DECL(int)  RTFileRead(RTFILE File, void *pvBuf, size_t cbToRead, size_t *pcb
         }
         return VINF_SUCCESS;
     }
-    
+
     return RTErrConvertFromWin32(dwErr);
 }
 
@@ -490,9 +513,9 @@ RTR3DECL(int)  RTFileWrite(RTFILE File, const void *pvBuf, size_t cbToWrite, siz
         return VINF_SUCCESS;
     }
 
-    /* 
-     * If it's a console, we might bump into out of memory conditions in the 
-     * WriteConsole call.  
+    /*
+     * If it's a console, we might bump into out of memory conditions in the
+     * WriteConsole call.
      */
     DWORD dwErr = GetLastError();
     if (dwErr == ERROR_NOT_ENOUGH_MEMORY)

@@ -1,4 +1,4 @@
-/* $Id: file.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: file.h 36597 2011-04-06 19:46:15Z vboxsync $ */
 /** @file
  * IPRT - Internal RTFile header.
  */
@@ -42,6 +42,18 @@ RT_C_DECLS_BEGIN
  * @internal
  */
 int rtFileRecalcAndValidateFlags(uint32_t *pfOpen);
+
+
+/**
+ * Internal interface for getting the RTFILE handle of stdin, stdout or stderr.
+ *
+ * This interface will not be exposed and is purely for internal IPRT use.
+ *
+ * @returns Handle or NIL_RTFILE.
+ *
+ * @param   enmStdHandle    The standard handle.
+ */
+RTFILE rtFileGetStandard(RTHANDLESTD enmStdHandle);
 
 RT_C_DECLS_END
 
