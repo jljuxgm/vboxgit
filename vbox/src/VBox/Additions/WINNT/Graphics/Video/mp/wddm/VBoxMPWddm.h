@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 42081 2012-07-10 09:47:29Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 42083 2012-07-10 09:53:08Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -89,7 +89,7 @@ DECLINLINE(bool) vboxWddmAddrVramEqual(PVBOXWDDM_ADDR pAddr1, PVBOXWDDM_ADDR pAd
 DECLINLINE(VBOXVIDEOOFFSET) vboxWddmVramAddrToOffset(PVBOXMP_DEVEXT pDevExt, PHYSICAL_ADDRESS Addr)
 {
     PVBOXMP_COMMON pCommon = VBoxCommonFromDeviceExt(pDevExt);
-    AssertRelease(pCommon->phVRAM.QuadPart < Addr.QuadPart);
+    AssertRelease(pCommon->phVRAM.QuadPart <= Addr.QuadPart);
     return (VBOXVIDEOOFFSET)Addr.QuadPart - pCommon->phVRAM.QuadPart;
 }
 
