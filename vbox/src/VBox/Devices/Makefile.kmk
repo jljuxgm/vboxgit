@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41758 2012-06-15 15:51:12Z vboxsync $
+# $Id: Makefile.kmk 41924 2012-06-27 13:59:56Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -377,6 +377,9 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Network/lwip/src/netif/etharp.c \
  	Network/lwip/vbox/sys_arch.c \
  	Network/DevINIP.cpp
+  ifneq ($(KBUILD_TARGET),win)
+   Network/lwip/src/api/sockets.c_CFLAGS = $(VBOX_GCC_Wno-address)
+  endif
  endif
 
  ifdef VBOX_WITH_E1000
