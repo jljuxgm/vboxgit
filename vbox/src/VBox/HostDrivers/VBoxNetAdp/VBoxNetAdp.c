@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp.c 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: VBoxNetAdp.c 41272 2012-05-14 09:02:00Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Common Code.
  */
@@ -1184,6 +1184,8 @@ int  vboxNetAdpInit(void)
      */
     memset(g_aUnits, 0, sizeof(g_aUnits));
     memset(g_aAdapters, 0, sizeof(g_aAdapters));
+    LogFlow(("vboxnetadp: max host-only interfaces supported: %d (%d bytes)\n",
+             VBOXNETADP_MAX_INSTANCES, sizeof(g_aAdapters)));
     for (i = 0; i < RT_ELEMENTS(g_aAdapters); i++)
     {
         g_aAdapters[i].enmState = kVBoxNetAdpState_Invalid;
