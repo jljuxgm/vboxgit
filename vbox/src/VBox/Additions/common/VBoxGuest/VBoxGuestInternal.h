@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 40369 2012-03-06 04:58:16Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 41619 2012-06-08 10:40:09Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -162,7 +162,7 @@ typedef struct VBOXGUESTDEVEXT
      * requested it. */
     /** @todo can we programmatically determine the size of the array and
      * still get the following alignment right? */
-    uint32_t volatile           cMouseFeatureUsage[32];
+    uint32_t volatile           acMouseFeatureUsage[32];
     /** The mouse feature status matching the counts above.  These are updated
      * together inside the session spinlock. */
     uint32_t volatile           fMouseStatus;
