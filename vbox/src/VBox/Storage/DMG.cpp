@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 38621 2011-09-04 16:56:56Z vboxsync $ */
+/* $Id: DMG.cpp 38623 2011-09-04 17:23:24Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -18,7 +18,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEFAULT /** @todo log group */
+#define LOG_GROUP LOG_GROUP_VD_DMG
 #include <VBox/vd-plugin.h>
 #include <VBox/log.h>
 #include <VBox/err.h>

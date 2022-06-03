@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 38621 2011-09-04 16:56:56Z vboxsync $ */
+/* $Id: QED.cpp 38623 2011-09-04 17:23:24Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -18,7 +18,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP LOG_GROUP_VD_RAW /** @todo: log group */
+#define LOG_GROUP LOG_GROUP_VD_QED
 #include <VBox/vd-plugin.h>
 #include <VBox/err.h>
 

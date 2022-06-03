@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 38621 2011-09-04 16:56:56Z vboxsync $ */
+/* $Id: QCOW.cpp 38623 2011-09-04 17:23:24Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -18,7 +18,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP LOG_GROUP_VD_RAW /** @todo: log group */
+#define LOG_GROUP LOG_GROUP_VD_QCOW
 #include <VBox/vd-plugin.h>
 #include <VBox/err.h>
 
