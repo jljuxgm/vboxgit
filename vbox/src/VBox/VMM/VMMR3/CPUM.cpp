@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 36858 2011-04-27 15:05:06Z vboxsync $ */
+/* $Id: CPUM.cpp 36863 2011-04-27 18:34:01Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -999,7 +999,8 @@ VMMR3DECL(void) CPUMR3SetHWVirtEx(PVM pVM, bool fHWVirtExEnabled)
      */
     if (!fHWVirtExEnabled)
     {
-        Assert(pVM->cpum.s.aGuestCpuIdStd[4].eax == 0);
+        Assert(   pVM->cpum.s.aGuestCpuIdStd[4].eax == 0
+               || pVM->cpum.s.aGuestCpuIdStd[0].eax < 0x4);
         pVM->cpum.s.aGuestCpuIdStd[4].eax = 0;
     }
 }
