@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: VBoxManage.cpp 39793 2012-01-18 12:53:33Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -98,6 +98,12 @@ HRESULT showProgress(ComPtr<IProgress> progress)
         RTStrmFlush(g_pStdErr);
         return hrc;
     }
+
+    /*
+     * Note: Outputting the progress info to stderr (g_pStdErr) is intentional
+     *       to not get intermixed with other (raw) stdout data which might get
+     *       written in the meanwhile.
+     */
 
     if (!g_fDetailedProgress)
     {
