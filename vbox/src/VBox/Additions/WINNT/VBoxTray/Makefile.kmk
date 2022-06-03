@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 42003 2012-07-03 14:57:45Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -49,6 +49,11 @@ ifdef VBOX_WITH_SHARED_FOLDERS
 	VBoxSharedFolders.cpp
  VBoxTray_LIBS.win += \
 	mpr.lib
+endif
+ifdef VBOX_WITH_MMR
+ VBoxTray_DEFS     += VBOX_WITH_MMR
+ VBoxTray_SOURCES  += \
+        VBoxMMR.cpp
 endif
 
 VBoxTray_LIBS     = \
