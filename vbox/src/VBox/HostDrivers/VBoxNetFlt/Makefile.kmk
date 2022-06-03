@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36496 2011-04-01 13:17:23Z vboxsync $
+# $Id: Makefile.kmk 37982 2011-07-15 14:35:40Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -330,7 +330,7 @@ vboxnetflt_INCS.linux   := \
 	$(PATH_ROOT)/src/VBox/Runtime/r0drv/linux
 vboxnetflt_INCS         := \
 	$(PATH_SUB_CURRENT)
-vboxnetflt_LDFLAGS.solaris += -N drv/vboxdrv
+vboxnetflt_LDFLAGS.solaris += -N drv/vboxdrv -N misc/ctf
 vboxnetflt_LIBS = \
 	$(PATH_LIB)/SUPR0IdcClient$(VBOX_SUFF_LIB)
 ## @todo vboxflt should resolves all the IPRT bits from vboxdrv.
