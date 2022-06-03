@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 41105 2012-05-01 18:14:46Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 41106 2012-05-01 20:02:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -144,11 +144,9 @@ public:
                           AccessMode_T accessMode,
                           BOOL fForceNewUuid,
                           IMedium **aMedium);
-#if 0 // Remove def of fineMedium
-     STDMETHOD(FindMedium)(IN_BSTR aLocation,
-                           DeviceType_T deviceType,
-                           IMedium **aMedium);
-#endif
+    STDMETHOD(FindMedium)(IN_BSTR aLocation,
+                          DeviceType_T deviceType,
+                          IMedium **aMedium);
 
     STDMETHOD(GetGuestOSType)(IN_BSTR aId, IGuestOSType **aType);
     STDMETHOD(CreateSharedFolder)(IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable, BOOL aAutoMount);

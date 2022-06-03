@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 41105 2012-05-01 18:14:46Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 41106 2012-05-01 20:02:21Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -170,23 +170,11 @@ HRESULT findMedium(HandlerArg *a, const char *pszFilenameOrUuid,
     }
 
     if (!fSilent)
- #if 0 // Substitute call to FindMedium to OpenMedium
         CHECK_ERROR(a->virtualBox, FindMedium(Bstr(pszFilenameOrUuid).raw(),
                                               enmDevType, pMedium.asOutParam()));
- #endif
-        CHECK_ERROR(a->virtualBox, OpenMedium(Bstr(pszFilenameOrUuid).raw(),
-                                              enmDevType, AccessMode_ReadWrite,
-                                              /* fForceNewUuidOnOpen */ false,
-                                              pMedium.asOutParam()));
     else
- #if 0 // Substitute call to FindMedium to OpenMedium
         rc = a->virtualBox->FindMedium(Bstr(pszFilenameOrUuid).raw(),
-                                        enmDevType, pMedium.asOutParam());
- #endif
-        rc = a->virtualBox->OpenMedium(Bstr(pszFilenameOrUuid).raw(),
-                                            enmDevType, AccessMode_ReadWrite,
-                                            /* fForceNewUuidOnOpen */ false,
-                                            pMedium.asOutParam());
+                                       enmDevType, pMedium.asOutParam());
     return rc;
 }
 
@@ -211,15 +199,8 @@ HRESULT findOrOpenMedium(HandlerArg *a, const char *pszFilenameOrUuid,
         pszFilenameOrUuid = szFilenameAbs;
     }
 
-#if 0 // Substitute call to FindMedium to OpenMedium
     rc = a->virtualBox->FindMedium(Bstr(pszFilenameOrUuid).raw(), enmDevType,
                                    pMedium.asOutParam());
-#endif
-
-    rc = a->virtualBox->OpenMedium(Bstr(pszFilenameOrUuid).raw(),
-                                        enmDevType, AccessMode_ReadWrite,
-                                        fForceNewUuidOnOpen,
-                                        pMedium.asOutParam());
     /* If the medium is unknown try to open it. */
     if (!pMedium)
     {
