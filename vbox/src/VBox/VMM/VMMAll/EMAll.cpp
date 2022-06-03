@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 41766 2012-06-15 18:36:19Z vboxsync $ */
+/* $Id: EMAll.cpp 41771 2012-06-15 20:08:45Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -352,7 +352,7 @@ static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_
         }
     }
 
-    pDis->cbCachedInstr = offInstr + cbToRead;
+    pDis->cbCachedInstr = offInstr + (uint8_t)cbToRead;
     return rc;
 }
 
