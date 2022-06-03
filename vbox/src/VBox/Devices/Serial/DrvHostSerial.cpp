@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 40438 2012-03-13 09:50:47Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -694,6 +694,16 @@ static DECLCALLBACK(int) drvHostSerialRecvThread(PPDMDRVINS pDrvIns, PPDMTHREAD 
             if (rc < 0)
             {
                 int err = errno;
+                if (err == EINTR)
+                {
+                    /*
+                     * EINTR errors should be harmless, even if they are not supposed to occur in our setup.
+                     */
+                    Log(("rc=%d revents=%#x,%#x errno=%p %s\n", rc, aFDs[0].revents, aFDs[1].revents, err, strerror(err)));
+                    RTThreadYield();
+                    continue;
+                }
+
                 rcThread = RTErrConvertFromErrno(err);
                 LogRel(("HostSerial#%d: poll failed with errno=%d / %Rrc, terminating the worker thread.\n", pDrvIns->iInstance, err, rcThread));
                 break;
