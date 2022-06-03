@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 38421 2011-08-11 14:55:02Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -58,16 +58,10 @@ void UIDownloaderUserManual::addSource(const QString &strSource)
 
 void UIDownloaderUserManual::start()
 {
-    /* If at least one source to try left: */
-    if (!m_sourcesList.isEmpty())
-    {
-        /* Set the first of left sources as current one: */
-        UIDownloader::setSource(m_sourcesList.takeFirst());
-        /* Warn process-bar(s) about source was changed: */
-        emit sigSourceChanged(source());
-        /* Try to download: */
-        startDelayedAcknowledging();
-    }
+    /* Start downloading: */
+    startDownloading();
+    /* Notify about downloading started: */
+    emit sigDownloadingStarted(UIDownloadType_UserManual);
 }
 
 UIDownloaderUserManual::UIDownloaderUserManual()
@@ -81,13 +75,27 @@ UIDownloaderUserManual::~UIDownloaderUserManual()
         m_pInstance = 0;
 }
 
+void UIDownloaderUserManual::startDownloading()
+{
+    /* If at least one source to try left: */
+    if (!m_sourcesList.isEmpty())
+    {
+        /* Set the first of left sources as current one: */
+        UIDownloader::setSource(m_sourcesList.takeFirst());
+        /* Warn process-bar(s) about source was changed: */
+        emit sigSourceChanged(source());
+        /* Try to download: */
+        startDelayedAcknowledging();
+    }
+}
+
 void UIDownloaderUserManual::handleError(QNetworkReply *pReply)
 {
     /* Check if other sources present: */
     if (!m_sourcesList.isEmpty())
     {
         /* Restart acknowledging: */
-        start();
+        startDownloading();
     }
     else
     {

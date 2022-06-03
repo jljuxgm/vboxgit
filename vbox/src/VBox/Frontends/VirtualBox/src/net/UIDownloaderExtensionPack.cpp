@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 38575 2011-08-30 16:03:26Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,15 +53,22 @@ UIDownloaderExtensionPack* UIDownloaderExtensionPack::m_pInstance = 0;
 /* static */
 void UIDownloaderExtensionPack::download(QObject *pListener)
 {
-    /* Create downloader instance: */
+    /* Create and configure the Extension Pack downloader: */
     UIDownloaderExtensionPack *pDownloader = new UIDownloaderExtensionPack;
     pDownloader->setParentWidget(msgCenter().mainWindowShown());
-
-    /* Configure connections for the passed listener: */
-    connect(pDownloader, SIGNAL(sigToStartAcknowledging()),
-            pListener, SIGNAL(sigDownloaderCreatedForExtensionPack()));
+    /* After downloading finished => propose to install the Extension Pack: */
     connect(pDownloader, SIGNAL(sigNotifyAboutExtensionPackDownloaded(const QString &, const QString &)),
             pListener, SLOT(sltHandleDownloadedExtensionPack(const QString &, const QString &)));
+    /* Start downloading: */
+    pDownloader->start();
+}
+
+void UIDownloaderExtensionPack::start()
+{
+    /* Call for base-class: */
+    UIDownloader::start();
+    /* Notify about downloading started: */
+    emit sigDownloadingStarted(UIDownloadType_ExtensionPack);
 }
 
 UIDownloaderExtensionPack::UIDownloaderExtensionPack()
@@ -84,9 +91,6 @@ UIDownloaderExtensionPack::UIDownloaderExtensionPack()
     /* Set source/target: */
     setSource(strSource);
     setTarget(strTarget);
-
-    /* Start downloading: */
-    start();
 }
 
 UIDownloaderExtensionPack::~UIDownloaderExtensionPack()

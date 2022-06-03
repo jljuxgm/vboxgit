@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.cpp 38421 2011-08-11 14:55:02Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -52,6 +52,14 @@ void UIDownloaderAdditions::setAction(QAction *pAction)
 QAction *UIDownloaderAdditions::action() const
 {
     return m_pAction;
+}
+
+void UIDownloaderAdditions::start()
+{
+    /* Call for base-class: */
+    UIDownloader::start();
+    /* Notify about downloading started: */
+    emit sigDownloadingStarted(UIDownloadType_Additions);
 }
 
 UIDownloaderAdditions::UIDownloaderAdditions()

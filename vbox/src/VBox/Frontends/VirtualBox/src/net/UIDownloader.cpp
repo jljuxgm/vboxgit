@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 38421 2011-08-11 14:55:02Z vboxsync $ */
+/* $Id: UIDownloader.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -126,6 +126,7 @@ UIDownloader::UIDownloader()
 {
     connect(this, SIGNAL(sigToStartAcknowledging()), this, SLOT(sltStartAcknowledging()), Qt::QueuedConnection);
     connect(this, SIGNAL(sigToStartDownloading()), this, SLOT(sltStartDownloading()), Qt::QueuedConnection);
+    connect(this, SIGNAL(sigDownloadingStarted(UIDownloadType)), gNetworkManager, SIGNAL(sigDownloaderCreated(UIDownloadType)));
 }
 
 /* Start acknowledging: */

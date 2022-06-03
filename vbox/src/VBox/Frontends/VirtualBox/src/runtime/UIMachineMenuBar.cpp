@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 38477 2011-08-16 13:46:03Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 39326 2011-11-16 10:44:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,7 +25,6 @@
 #include "UIMessageCenter.h"
 #include "UIExtraDataEventHandler.h"
 #include "UIImageTools.h"
-#include "UIUpdateManager.h"
 
 /* Global includes */
 #include <QMenuBar>
@@ -274,10 +273,6 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu)
     pMenu->addAction(gActionPool->action(UIActionIndex_Simple_Register));
 #endif
 
-#if defined(Q_WS_MAC) && (QT_VERSION < 0x040700)
-    if (m_fIsFirstTime)
-# endif
-        pMenu->addAction(gActionPool->action(UIActionIndex_Simple_Update));
 #ifndef Q_WS_MAC
     pMenu->addSeparator();
 #endif /* !Q_WS_MAC */
@@ -285,7 +280,6 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu)
     if (m_fIsFirstTime)
 # endif
         pMenu->addAction(gActionPool->action(UIActionIndex_Simple_About));
-
 
 #if defined(Q_WS_MAC) && (QT_VERSION < 0x040700)
     /* Because this connections are done to VBoxGlobal, they are needed once only.
@@ -295,8 +289,6 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu)
 #endif
         VBoxGlobal::connect(gActionPool->action(UIActionIndex_Simple_About), SIGNAL(triggered()),
                             &msgCenter(), SLOT(sltShowHelpAboutDialog()));
-        VBoxGlobal::connect(gActionPool->action(UIActionIndex_Simple_Update), SIGNAL(triggered()),
-                            gUpdateManager, SLOT(sltForceCheck()));
 #if defined(Q_WS_MAC) && (QT_VERSION < 0x040700)
     }
 #endif
