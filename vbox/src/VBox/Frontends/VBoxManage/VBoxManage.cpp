@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 39793 2012-01-18 12:53:33Z vboxsync $ */
+/* $Id: VBoxManage.cpp 41100 2012-04-30 15:18:06Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -37,6 +37,7 @@
 #include <iprt/asm.h>
 #include <iprt/buildconfig.h>
 #include <iprt/initterm.h>
+#include <iprt/path.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
 
@@ -332,6 +333,15 @@ int main(int argc, char *argv[])
      */
     using namespace com;
     HRESULT hrc = com::Initialize();
+# ifdef VBOX_WITH_XPCOM
+    if (hrc == NS_ERROR_FILE_ACCESS_DENIED)
+    {
+        char szHome[RTPATH_MAX] = "";
+        com::GetVBoxUserHomeDirectory(szHome, sizeof(szHome));
+        return RTMsgErrorExit(RTEXITCODE_FAILURE,
+               "Failed to initialize COM because the global settings directory '%s' is not accessible!", szHome);
+    }
+# endif
     if (FAILED(hrc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to initialize COM!");
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 41043 2012-04-24 11:35:31Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 41100 2012-04-30 15:18:06Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -1091,6 +1091,15 @@ int main(int argc, char *argv[])
      */
     using namespace com;
     HRESULT hrc = com::Initialize();
+# ifdef VBOX_WITH_XPCOM
+    if (hrc == NS_ERROR_FILE_ACCESS_DENIED)
+    {
+        char szHome[RTPATH_MAX] = "";
+        com::GetVBoxUserHomeDirectory(szHome, sizeof(szHome));
+        return RTMsgErrorExit(RTEXITCODE_FAILURE,
+               "Failed to initialize COM because the global settings directory '%s' is not accessible!", szHome);
+    }
+# endif
     if (FAILED(hrc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to initialize COM (%Rhrc)!", hrc);
 

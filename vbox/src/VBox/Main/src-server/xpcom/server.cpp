@@ -1,4 +1,4 @@
-/* $Id: server.cpp 41040 2012-04-24 10:13:40Z vboxsync $ */
+/* $Id: server.cpp 41100 2012-04-30 15:18:06Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -883,12 +883,16 @@ int main(int argc, char **argv)
 
     if (!pszLogFile)
     {
-        char szLogFile[RTPATH_MAX];
+        char szLogFile[RTPATH_MAX] = "";
         vrc = com::GetVBoxUserHomeDirectory(szLogFile, sizeof(szLogFile));
+        if (vrc == VERR_ACCESS_DENIED)
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open global settings directory '%s'", szLogFile);
         if (RT_SUCCESS(vrc))
             vrc = RTPathAppend(szLogFile, sizeof(szLogFile), "VBoxSVC.log");
         if (RT_SUCCESS(vrc))
             pszLogFile = RTStrDup(szLogFile);
+        if (RT_FAILURE(vrc))
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to determine release log file (%Rrc)", vrc);
     }
     char szError[RTPATH_MAX + 128];
     vrc = com::VBoxLogRelCreate("XPCOM Server", pszLogFile,
