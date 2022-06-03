@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 41315 2012-05-15 14:40:24Z vboxsync $ */
+/* $Id: VHDX.cpp 41317 2012-05-15 14:51:45Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -581,7 +581,8 @@ DECLINLINE(void) vhdxConvUuidEndianess(VHDXECONV enmConv, PRTUUID pUuidConv, PRT
     pUuidConv->Gen.u16TimeHiAndVersion     = SET_ENDIAN_U16(pUuid->Gen.u16TimeHiAndVersion);
     pUuidConv->Gen.u8ClockSeqHiAndReserved = pUuid->Gen.u8ClockSeqHiAndReserved;
     pUuidConv->Gen.u8ClockSeqLow           = pUuid->Gen.u8ClockSeqLow;
-    bcopy(pUuidConv->Gen.au8Node, pUuid->Gen.au8Node, sizeof(pUuid->Gen.au8Node));
+    for (unsigned i = 0; i < RT_ELEMENTS(pUuidConv->Gen.au8Node); i++)
+        pUuidConv->Gen.au8Node[i] = pUuid->Gen.au8Node[i];
 }
 
 /**
