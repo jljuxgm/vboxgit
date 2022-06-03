@@ -1,4 +1,4 @@
-/* $Id: VBoxMPRegistry.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPRegistry.cpp 37127 2011-05-17 14:14:53Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport registry related functions
@@ -52,6 +52,9 @@ VP_STATUS VBoxMPCmnRegFini(IN VBOXMPCMNREGISTRY Reg)
 
 VP_STATUS VBoxMPCmnRegQueryDword(IN VBOXMPCMNREGISTRY Reg, PWSTR pName, uint32_t *pVal)
 {
+    /* seems like the new code assumes the Reg functions zeroes up the value on failure */
+    *pVal = 0;
+
     if (!Reg)
     {
         return ERROR_INVALID_PARAMETER;

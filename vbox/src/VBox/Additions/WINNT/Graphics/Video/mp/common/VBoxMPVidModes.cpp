@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 37127 2011-05-17 14:14:53Z vboxsync $ */
 
 /** @file
  * VBox Miniport video modes related functions
@@ -117,7 +117,7 @@ void VBoxMPCmnInitCustomVideoModes(PVBOXMP_DEVEXT pExt)
     /* Read stored custom resolution info from registry */
     for (iMode=0; iMode<VBoxCommonFromDeviceExt(pExt)->cDisplays; ++iMode)
     {
-        uint32_t CustomXRes, CustomYRes, CustomBPP;
+        uint32_t CustomXRes = 0, CustomYRes = 0, CustomBPP = 0;
 
         if (iMode==0)
         {
