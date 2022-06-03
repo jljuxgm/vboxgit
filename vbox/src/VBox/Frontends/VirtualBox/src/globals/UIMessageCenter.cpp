@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 40003 2012-02-06 09:51:17Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 40864 2012-04-11 08:36:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2383,10 +2383,9 @@ bool UIMessageCenter::confirmExportMachinesInSaveState(const QStringList &strMac
                                                        QWidget *pParent /* = NULL */) const
 {
     return messageOkCancel(pParent ? pParent : mainWindowShown(), Warning,
-        tr("<p>The virtual machine(s) <b>%1</b> are currently in a saved state.</p>"
+        tr("<p>The %n following virtual machine(s) are currently in a saved state: <b>%1</b></p>"
            "<p>If you continue the runtime state of the exported machine(s) "
-           "will be discarded. Note that the existing machine(s) are not "
-           "changed.</p>", "",
+           "will be discarded. The other machine(s) will not be changed.</p>", "",
            strMachineNames.size()).arg(VBoxGlobal::toHumanReadableList(strMachineNames)),
         0 /* pcszAutoConfirmId */,
         tr("Continue"), tr("Cancel"));
