@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: VM.cpp 39916 2012-01-31 14:03:13Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3047,8 +3047,9 @@ VMMR3DECL(PRTUUID) VMR3GetUuid(PUVM pUVM, PRTUUID pUuid)
  */
 VMMR3DECL(VMSTATE) VMR3GetState(PVM pVM)
 {
-    VM_ASSERT_VALID_EXT_RETURN(pVM, VMSTATE_TERMINATED);
-    return pVM->enmVMState;
+    AssertMsgReturn(RT_VALID_ALIGNED_PTR(pVM, PAGE_SIZE), ("%p\n", pVM), VMSTATE_TERMINATED);
+    VMSTATE enmVMState = pVM->enmVMState;
+    return enmVMState >= VMSTATE_CREATING && enmVMState <= VMSTATE_TERMINATED ? enmVMState : VMSTATE_TERMINATED;
 }
 
 
