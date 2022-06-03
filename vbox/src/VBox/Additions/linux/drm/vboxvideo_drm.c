@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 39708 2012-01-06 12:42:49Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 39762 2012-01-12 15:29:12Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -127,7 +127,7 @@ static struct drm_driver driver =
     .patchlevel = DRIVER_PATCHLEVEL,
 };
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION (2, 6, 39) && !defined(DRM_RHEL61)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION (2, 6, 39) || defined(DRM_RHEL61)
 static struct pci_driver pci_driver =
 {
     .name = DRIVER_NAME,
