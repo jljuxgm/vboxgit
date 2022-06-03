@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 39315 2011-11-15 18:17:16Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 39463 2011-11-29 20:34:17Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -3130,6 +3130,10 @@ BOOL WINAPI DllMain(HINSTANCE hInstance,
                     VbglR3Term();
                 }
             }
+
+#ifdef VBOXWDDMDISP_DEBUG_VEHANDLER
+            vboxVDbgVEHandlerUnregister();
+#endif
             break;
         }
 
