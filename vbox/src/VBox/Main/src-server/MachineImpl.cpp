@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 38534 2011-08-25 15:50:21Z vboxsync $ */
+/* $Id: MachineImpl.cpp 38583 2011-08-31 13:51:16Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6289,6 +6289,7 @@ STDMETHODIMP Machine::CloneTo(IMachine *pTarget, CloneMode_T mode, ComSafeArrayI
 void Machine::setModified(uint32_t fl)
 {
     mData->flModifications |= fl;
+    mData->mCurrentStateModified = true;
 }
 
 /**
