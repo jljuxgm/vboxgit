@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 36122 2011-03-01 15:36:22Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 37572 2011-06-21 11:37:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -247,7 +247,7 @@ void UIProgressDialog::timerEvent(QTimerEvent * /* pEvent */)
         else if (days > 0)
             m_pEtaLbl->setText(strOneComp.arg(strDays));
         else if (hours > 2)
-            m_pEtaLbl->setText(strTwoComp.arg(strHours));
+            m_pEtaLbl->setText(strOneComp.arg(strHours));
         else if (hours > 0 && minutes > 0)
             m_pEtaLbl->setText(strTwoComp.arg(strHours).arg(strMinutes));
         else if (hours > 0)
