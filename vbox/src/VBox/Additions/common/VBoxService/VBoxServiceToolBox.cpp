@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 36331 2011-03-21 19:17:12Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 36369 2011-03-23 15:44:30Z vboxsync $ */
 /** @file
  * VBoxServiceToolBox - Internal (BusyBox-like) toolbox.
  */
@@ -194,7 +194,8 @@ static int VBoxServiceToolboxCatOutput(RTFILE hInput, RTFILE hOutput)
             {
                 if (rc == VERR_BROKEN_PIPE)
                     rc = VINF_SUCCESS;
-                break;
+                else
+                    RTMsgError("cat: Error while reading input, rc=%Rrc\n", rc);
             }
         }
     }
