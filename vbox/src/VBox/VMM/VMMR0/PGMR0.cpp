@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: PGMR0.cpp 37582 2011-06-22 09:24:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -67,7 +67,7 @@
  */
 VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
 {
-    Assert(PDMCritSectIsOwnerEx(&pVM->pgm.s.CritSect, pVCpu->idCpu));
+    Assert(PDMCritSectIsOwnerEx(&pVM->pgm.s.CritSect, pVCpu));
 
     /*
      * Check for error injection.
@@ -180,7 +180,7 @@ VMMR0DECL(int) PGMR0PhysAllocateHandyPages(PVM pVM, PVMCPU pVCpu)
  */
 VMMR0DECL(int) PGMR0PhysAllocateLargeHandyPage(PVM pVM, PVMCPU pVCpu)
 {
-    Assert(PDMCritSectIsOwnerEx(&pVM->pgm.s.CritSect, pVCpu->idCpu));
+    Assert(PDMCritSectIsOwnerEx(&pVM->pgm.s.CritSect, pVCpu));
 
     Assert(!pVM->pgm.s.cLargeHandyPages);
     int rc = GMMR0AllocateLargePage(pVM, pVCpu->idCpu, _2M, &pVM->pgm.s.aLargeHandyPage[0].idPage, &pVM->pgm.s.aLargeHandyPage[0].HCPhysGCPhys);
