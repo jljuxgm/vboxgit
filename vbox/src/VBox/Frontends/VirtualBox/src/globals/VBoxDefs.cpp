@@ -1,4 +1,4 @@
-/* $Id: VBoxDefs.cpp 38978 2011-10-12 13:33:28Z vboxsync $ */
+/* $Id: VBoxDefs.cpp 39349 2011-11-17 14:58:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -62,7 +62,6 @@ const char* VBoxDefs::GUI_LicenseKey = "GUI/LicenseAgreed";
 #endif
 const char* VBoxDefs::GUI_RegistrationDlgWinID = "GUI/RegistrationDlgWinID";
 const char* VBoxDefs::GUI_RegistrationData = "GUI/SUNOnlineData";
-const char* VBoxDefs::GUI_UpdateDlgWinID = "GUI/UpdateDlgWinID";
 const char* VBoxDefs::GUI_UpdateDate = "GUI/UpdateDate";
 const char* VBoxDefs::GUI_UpdateCheckCount = "GUI/UpdateCheckCount";
 const char* VBoxDefs::GUI_LastVMSelected = "GUI/LastVMSelected";
