@@ -1,4 +1,4 @@
-; $Id: SUPDrvTracerA.asm 40779 2012-04-05 15:37:50Z vboxsync $
+; $Id: SUPDrvTracerA.asm 40781 2012-04-05 16:12:25Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Tracer Interface, Assembly bits.
 ;
@@ -48,7 +48,7 @@ EXPORTEDNAME SUPR0TracerFireProbe
         mov     rax, [NAME(g_pfnSupdrvProbeFireKernel) wrt rip]
         jmp     rax
 %else
-        mov     eax, [NAME(g_g_pfnSupdrvProbeFireKernel)]
+        mov     eax, [NAME(g_pfnSupdrvProbeFireKernel)]
         jmp     eax
 %endif
 ENDPROC SUPR0TracerFireProbe

@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40780 2012-04-05 16:05:06Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 40781 2012-04-05 16:12:25Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -91,7 +91,9 @@ typedef SUPDRVTPPROVIDER *PSUPDRVTPPROVIDER;
 *   Global Variables                                                           *
 *******************************************************************************/
 /** The address of the current probe fire routine for kernel mode. */
-/*PFNRT       g_pfnSupdrvProbeFireKernel = supdrvTracerProbeFireStub;*/
+#if !defined(RT_OS_LINUX) && !defined(RT_OS_FREEBSD)
+PFNRT       g_pfnSupdrvProbeFireKernel = supdrvTracerProbeFireStub;
+#endif
 
 
 
