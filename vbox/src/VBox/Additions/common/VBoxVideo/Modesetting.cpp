@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 38207 2011-07-27 21:56:28Z vboxsync $ */
+/* $Id: Modesetting.cpp 38923 2011-09-30 15:13:35Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -80,6 +80,9 @@ RTDECL(bool) VBoxVideoAnyWidthAllowed(void)
  *
  * @returns iprt status code, either VERR_NO_MEMORY or the status returned by
  *          @a pfnFill
+ * @todo  What was I thinking of with that callback function?  It
+ *        would be much simpler to just pass in a structure in normal
+ *        memory and copy it.
  * @param  pCtx      the context containing the heap to use
  * @param  u32Count  the number of screens we are activating
  * @param  pfnFill   a callback which initialises the VBVAINFOVIEW structures
