@@ -1,4 +1,4 @@
-/* $Id: reqpool.cpp 39616 2011-12-14 16:35:38Z vboxsync $ */
+/* $Id: reqpool.cpp 39617 2011-12-14 16:45:01Z vboxsync $ */
 /** @file
  * IPRT - Request Pool.
  */
@@ -562,6 +562,8 @@ DECLHIDDEN(bool) rtReqPoolRecycle(PRTREQPOOLINT pPool, PRTREQINT pReq)
     return false;
 }
 
+#if 0 /* later */
+
 typedef enum RTREQPOOLCFGVAR
 {
     RTREQPOOLCFGVAR_INVALID = 0,
@@ -595,6 +597,7 @@ RTDECL(uint64_t) RTReqPoolGetStat(RTREQPOOL hPool, RTREQPOOLSTAT enmStat)
     return UINT64_MAX;
 }
 
+#endif /* later */
 
 RTDECL(uint32_t) RTReqPoolRetain(RTREQPOOL hPool)
 {
