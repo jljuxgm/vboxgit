@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 38185 2011-07-26 13:46:39Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 38373 2011-08-09 10:25:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -469,7 +469,7 @@ void QIMessageBox::copy() const
 {
     /* Create the error string with all errors. First the html version. */
     QString strError = "<html><body><p>" + mText + "</p>";
-    for (size_t i = 0; i < mDetailsList.size(); ++i)
+    for (int i = 0; i < mDetailsList.size(); ++i)
         strError += mDetailsList.at(i).first + mDetailsList.at(i).second + "<br>";
     strError += "</body></html>";
     strError.remove(QRegExp("</+qt>"));
