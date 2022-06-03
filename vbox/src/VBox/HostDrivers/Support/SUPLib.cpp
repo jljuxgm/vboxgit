@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 36262 2011-03-11 14:50:45Z vboxsync $ */
+/* $Id: SUPLib.cpp 37228 2011-05-26 19:25:54Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1686,6 +1686,29 @@ static DECLCALLBACK(int) supLoadModuleResolveImport(RTLDRMOD hLdrMod, const char
         *pValue = (uintptr_t)g_pSUPGlobalInfoPageR0;
         return VINF_SUCCESS;
     }
+
+    /*
+     * Symbols that are undefined by convention.
+     */
+#ifdef RT_OS_SOLARIS
+    static const char * const s_apszConvSyms[] =
+    {
+        "", "mod_getctl",
+        "", "mod_install",
+        "", "mod_remove",
+        "", "mod_info",
+        "", "mod_miscops",
+    };
+    for (unsigned i = 0; i < RT_ELEMENTS(s_apszConvSyms); i += 2)
+    {
+        if (   !RTStrCmp(s_apszConvSyms[i],     pszModule)
+            && !RTStrCmp(s_apszConvSyms[i + 1], pszSymbol))
+        {
+            *pValue = ~(uintptr_t)0;
+            return VINF_SUCCESS;
+        }
+    }
+#endif
 
     /*
      * Despair.

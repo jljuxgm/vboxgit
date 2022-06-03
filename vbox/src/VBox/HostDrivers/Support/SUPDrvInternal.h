@@ -1,4 +1,4 @@
-/* $Revision: 36191 $ */
+/* $Revision: 37228 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -297,6 +297,12 @@ typedef struct SUPDRVLDRIMAGE
     void                           *pvNtSectionObj;
     /** Lock object. */
     RTR0MEMOBJ                      hMemLock;
+#endif
+#if defined(RT_OS_SOLARIS) && defined(VBOX_WITH_NATIVE_SOLARIS_LOADING)
+    /** The Solaris module ID. */
+    int                             idSolMod;
+    /** Pointer to the module control structure. */
+    struct modctl                  *pSolModCtl;
 #endif
     /** Whether it's loaded by the native loader or not. */
     bool                            fNative;

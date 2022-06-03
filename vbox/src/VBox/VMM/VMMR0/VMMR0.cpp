@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 36441 2011-03-25 21:11:56Z vboxsync $ */
+/* $Id: VMMR0.cpp 37228 2011-05-26 19:25:54Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -86,6 +86,12 @@ PFNRT g_VMMGCDeps[] =
 #endif // RT_ARCH_X86 && (RT_OS_SOLARIS || RT_OS_FREEBSD)
     NULL
 };
+
+#ifdef RT_OS_SOLARIS
+/* Dependency information for the native solaris loader. */
+extern "C" { char _depends_on[] = "vboxdrv"; }
+#endif
+
 
 
 #if defined(RT_OS_WINDOWS) && defined(RT_ARCH_AMD64)
@@ -1572,3 +1578,4 @@ DECLEXPORT(void) RTCALL RTAssertMsg2WeakV(const char *pszFormat, va_list va)
      */
     RTAssertMsg2V(pszFormat, va);
 }
+
