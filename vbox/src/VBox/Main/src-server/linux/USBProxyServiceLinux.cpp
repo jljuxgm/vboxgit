@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceLinux.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: USBProxyServiceLinux.cpp 37599 2011-06-22 21:06:38Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -103,12 +103,6 @@ USBProxyServiceLinux::USBProxyServiceLinux(Host *aHost)
  */
 HRESULT USBProxyServiceLinux::init(void)
 {
-    /*
-     * Call the superclass method first.
-     */
-    HRESULT hrc = USBProxyService::init();
-    AssertComRCReturn(hrc, hrc);
-
     /*
      * We have two methods available for getting host USB device data - using
      * USBFS and using sysfs.  The default choice is sysfs; if that is not

@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceFreeBSD.cpp 34014 2010-11-11 21:34:56Z vboxsync $ */
+/* $Id: USBProxyServiceFreeBSD.cpp 37599 2011-06-22 21:06:38Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, FreeBSD Specialization.
  */
@@ -72,12 +72,6 @@ USBProxyServiceFreeBSD::USBProxyServiceFreeBSD(Host *aHost)
  */
 HRESULT USBProxyServiceFreeBSD::init(void)
 {
-    /*
-     * Call the superclass method first.
-     */
-    HRESULT hrc = USBProxyService::init();
-    AssertComRCReturn(hrc, hrc);
-
     /*
      * Create semaphore.
      */

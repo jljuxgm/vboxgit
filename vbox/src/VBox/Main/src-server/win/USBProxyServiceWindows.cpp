@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceWindows.cpp 36941 2011-05-03 14:56:08Z vboxsync $ */
+/* $Id: USBProxyServiceWindows.cpp 37599 2011-06-22 21:06:38Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -51,12 +51,6 @@ USBProxyServiceWindows::USBProxyServiceWindows(Host *aHost)
  */
 HRESULT USBProxyServiceWindows::init(void)
 {
-    /*
-     * Call the superclass method first.
-     */
-    HRESULT hrc = USBProxyService::init();
-    AssertComRCReturn(hrc, hrc);
-
     /*
      * Create the semaphore (considered fatal).
      */
