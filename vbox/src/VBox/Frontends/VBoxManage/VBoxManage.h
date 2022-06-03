@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 37525 2011-06-17 10:09:21Z vboxsync $ */
+/* $Id: VBoxManage.h 39119 2011-10-26 13:07:47Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -188,11 +188,11 @@ extern int handleGuestProperty(HandlerArg *a);
 extern int handleGuestControl(HandlerArg *a);
 
 /* VBoxManageVMInfo.cpp */
-void showSnapshots(ComPtr<ISnapshot> &rootSnapshot,
-                   ComPtr<ISnapshot> &currentSnapshot,
-                   VMINFO_DETAILS details,
-                   const com::Bstr &prefix = "",
-                   int level = 0);
+HRESULT showSnapshots(ComPtr<ISnapshot> &rootSnapshot,
+                      ComPtr<ISnapshot> &currentSnapshot,
+                      VMINFO_DETAILS details,
+                      const com::Bstr &prefix = "",
+                      int level = 0);
 int handleShowVMInfo(HandlerArg *a);
 HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                    ComPtr<IMachine> machine,

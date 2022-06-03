@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 38874 2011-09-27 08:59:11Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 39119 2011-10-26 13:07:47Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -445,6 +445,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            edit <uuid>|<name>|--current\n"
                      "                                 [--name <name>]\n"
                      "                                 [--description <desc>] |\n"
+                     "                            list [--details|--machinereadable]\n"
                      "                            showvminfo <uuid>|<name>\n"
                      "\n");
 
