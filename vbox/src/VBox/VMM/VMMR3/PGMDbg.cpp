@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 36891 2011-04-29 13:22:57Z vboxsync $ */
+/* $Id: PGMDbg.cpp 37187 2011-05-23 16:11:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -1558,7 +1558,7 @@ static int pgmR3DumpHierarchyShwDoIt(PPGMR3DUMPHIERARCHYSTATE pState, uint64_t c
         pState->pHlp->pfnPrintf(pState->pHlp, "cr3=%0*llx", cch, cr3);
         if (pState->fDumpPageInfo)
             pgmR3DumpHierarchyShwTablePageInfo(pState, cr3 & X86_CR3_AMD64_PAGE_MASK);
-        pState->pHlp->pfnPrintf(pState->pHlp, " %s%s\n",
+        pState->pHlp->pfnPrintf(pState->pHlp, " %s%s%s\n",
                                 pszMode,
                                 pState->fNp  ? " + Nested Paging" : "",
                                 pState->fNxe ? " + NX" : "");
