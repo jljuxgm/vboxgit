@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlExec.cpp 38113 2011-07-22 13:57:35Z vboxsync $ */
+/* $Id: VBoxServiceControlExec.cpp 38115 2011-07-22 14:00:50Z vboxsync $ */
 /** @file
  * VBoxServiceControlExec - Utility functions for process execution.
  */
@@ -384,8 +384,6 @@ static int VBoxServiceControlExecProcLoop(PVBOXSERVICECTRLTHREAD pThread,
 #endif
                     rc = VBoxServiceControlExecProcHandleOutputEvent(hPollSet, fPollEvt, phStdOutR,
                                                                      VBOXSERVICECTRLPIPEID_STDOUT, &pData->stdOut);
-// TEST!!!
-VBoxServicePipeBufIsEnabled(&pData->stdOut);
                     break;
 
                 case VBOXSERVICECTRLPIPEID_STDERR:
