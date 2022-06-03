@@ -1,4 +1,4 @@
-/* $Id: QIWizard.cpp 40142 2012-02-16 09:42:38Z vboxsync $ */
+/* $Id: QIWizard.cpp 40146 2012-02-16 11:11:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -62,7 +62,7 @@ void QIWizard::retranslateAllPages()
         qobject_cast<QIWizardPage*>(pages.at((i)))->retranslate();
 }
 
-void QIWizard::resizeToGoldenRatio()
+void QIWizard::resizeToGoldenRatio(double dRatio)
 {
     /* Use some small (!) initial QIRichTextLabel width: */
     int iInitialLabelWidth = 200;
@@ -95,7 +95,7 @@ void QIWizard::resizeToGoldenRatio()
     int iWatermarkWidth = watermarkPixmap.width();
     iCurrentWizardWidth += iWatermarkWidth;
 #endif /* !Q_WS_MAC */
-    int iGoldenRatioWidth = (int)qSqrt((float)1.6 * iCurrentWizardWidth * iCurrentWizardHeight);
+    int iGoldenRatioWidth = (int)qSqrt(dRatio * iCurrentWizardWidth * iCurrentWizardHeight);
     int iProposedLabelWidth = iGoldenRatioWidth - iMarginsLength;
 #ifndef Q_WS_MAC
     /* We should take into account watermar thought its not assigned yet: */
