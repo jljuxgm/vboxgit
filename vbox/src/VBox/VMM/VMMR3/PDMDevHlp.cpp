@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 36157 2011-03-04 08:26:26Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 36437 2011-03-25 15:36:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -3028,7 +3028,8 @@ static DECLCALLBACK(int) pdmR3DevHlp_VMSuspendSaveAndPowerOffWorker(PVM pVM, PPD
     int rc = VMR3Suspend(pVM);
     if (RT_SUCCESS(rc))
     {
-        rc = pVM->pUVM->pVmm2UserMethods->pfnSaveState(pVM->pUVM->pVmm2UserMethods, pVM);
+        PUVM pUVM = pVM->pUVM;
+        rc = pUVM->pVmm2UserMethods->pfnSaveState(pVM->pUVM->pVmm2UserMethods, pUVM);
 
         /*
          * On success, power off the VM, on failure we'll leave it suspended.

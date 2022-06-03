@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 36255 2011-03-10 18:38:52Z vboxsync $ */
+/* $Id: VMEmt.cpp 36437 2011-03-25 15:36:59Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -79,6 +79,10 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
 
     rc = RTTlsSet(pUVM->vm.s.idxTLS, pUVCpu);
     AssertReleaseMsgRCReturn(rc, ("RTTlsSet %x failed with %Rrc\n", pUVM->vm.s.idxTLS, rc), rc);
+
+    if (   pUVM->pVmm2UserMethods
+        && pUVM->pVmm2UserMethods->pfnNotifyEmtInit)
+        pUVM->pVmm2UserMethods->pfnNotifyEmtInit(pUVM->pVmm2UserMethods, pUVM, pUVCpu);
 
     /*
      * The request loop.
@@ -253,6 +257,10 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
         int rc2 = SUPR3CallVMMR0Ex(pVM->pVMR0, 0 /*idCpu*/, VMMR0_DO_GVMM_DESTROY_VM, 0, NULL);
         AssertLogRelRC(rc2);
     }
+
+    if (   pUVM->pVmm2UserMethods
+        && pUVM->pVmm2UserMethods->pfnNotifyEmtTerm)
+        pUVM->pVmm2UserMethods->pfnNotifyEmtTerm(pUVM->pVmm2UserMethods, pUVM, pUVCpu);
 
     pUVCpu->vm.s.NativeThreadEMT = NIL_RTNATIVETHREAD;
     Log(("vmR3EmulationThread: EMT is terminated.\n"));
