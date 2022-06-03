@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 41040 2012-04-24 10:13:40Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 41043 2012-04-24 11:35:31Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -83,10 +83,8 @@ static uint32_t      g_cHistory = 10;                   /* Enable log rotation, 
 static uint32_t      g_uHistoryFileTime = RT_SEC_1DAY;  /* Max 1 day per file. */
 static uint64_t      g_uHistoryFileSize = 100 * _1M;    /* Max 100MB per file. */
 
-#if defined(RT_OS_DARWIN) || defined(RT_OS_LINUX) || defined (RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
 /** Run in background. */
 static bool          g_fDaemonize = false;
-#endif
 
 /**
  * The details of the services that has been compiled in.
