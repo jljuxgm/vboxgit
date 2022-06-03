@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 37481 2011-06-15 18:59:27Z vboxsync $ */
+/* $Id: DevIoApic.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -393,7 +393,7 @@ PDMBOTHCBDECL(int) ioapicMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCP
     return VINF_SUCCESS;
 }
 
-PDMBOTHCBDECL(int) ioapicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void *pv, unsigned cb)
+PDMBOTHCBDECL(int) ioapicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
 {
     IOAPICState *s = PDMINS_2_DATA(pDevIns, IOAPICState *);
 
@@ -403,7 +403,7 @@ PDMBOTHCBDECL(int) ioapicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GC
     case 2:
     case 4:
         IOAPIC_LOCK(s, VINF_IOM_HC_MMIO_WRITE);
-        ioapic_mem_writel(s, GCPhysAddr, *(uint32_t *)pv);
+        ioapic_mem_writel(s, GCPhysAddr, *(uint32_t *)pv); /** @todo r=bird: This cannot be right for cb!=4. */
         IOAPIC_UNLOCK(s);
         break;
 

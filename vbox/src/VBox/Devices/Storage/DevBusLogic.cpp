@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -777,17 +777,6 @@ typedef struct BUSLOGICTASKSTATE
 } BUSLOGICTASKSTATE;
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
-
-RT_C_DECLS_BEGIN
-PDMBOTHCBDECL(int) buslogicIOPortWrite (PPDMDEVINS pDevIns, void *pvUser,
-                                        RTIOPORT Port, uint32_t u32, unsigned cb);
-PDMBOTHCBDECL(int) buslogicIOPortRead (PPDMDEVINS pDevIns, void *pvUser,
-                                       RTIOPORT Port, uint32_t *pu32, unsigned cb);
-PDMBOTHCBDECL(int) buslogicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser,
-                                     RTGCPHYS GCPhysAddr, void *pv, unsigned cb);
-PDMBOTHCBDECL(int) buslogicMMIORead(PPDMDEVINS pDevIns, void *pvUser,
-                                    RTGCPHYS GCPhysAddr, void *pv, unsigned cb);
-RT_C_DECLS_END
 
 #define PDMIBASE_2_PBUSLOGICDEVICE(pInterface)     ( (PBUSLOGICDEVICE)((uintptr_t)(pInterface) - RT_OFFSETOF(BUSLOGICDEVICE, IBase)) )
 #define PDMISCSIPORT_2_PBUSLOGICDEVICE(pInterface) ( (PBUSLOGICDEVICE)((uintptr_t)(pInterface) - RT_OFFSETOF(BUSLOGICDEVICE, ISCSIPort)) )
@@ -1798,7 +1787,7 @@ PDMBOTHCBDECL(int) buslogicMMIORead(PPDMDEVINS pDevIns, void *pvUser,
  * @param   cb          Number of bytes to write.
  */
 PDMBOTHCBDECL(int) buslogicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser,
-                                     RTGCPHYS GCPhysAddr, void *pv, unsigned cb)
+                                     RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
 {
     /* the linux driver does not make use of the MMIO area. */
     AssertMsgFailed(("MMIO Write\n"));

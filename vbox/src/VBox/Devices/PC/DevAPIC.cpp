@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 37582 2011-06-22 09:24:45Z vboxsync $ */
+/* $Id: DevAPIC.cpp 37636 2011-06-24 14:59:59Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device and
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
@@ -1707,7 +1707,7 @@ PDMBOTHCBDECL(int) apicMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhy
     return VINF_SUCCESS;
 }
 
-PDMBOTHCBDECL(int) apicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void *pv, unsigned cb)
+PDMBOTHCBDECL(int) apicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
 {
     APICDeviceInfo *pDev = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
     APICState *s = getLapic(pDev);
