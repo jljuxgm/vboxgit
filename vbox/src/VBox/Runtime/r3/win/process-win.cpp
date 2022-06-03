@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 40825 2012-04-08 17:06:59Z vboxsync $ */
+/* $Id: process-win.cpp 41055 2012-04-25 16:22:12Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -294,6 +294,10 @@ static int rtProcWinMapErrorCodes(DWORD dwError)
         case ERROR_ACCOUNT_RESTRICTION: /* See: http://support.microsoft.com/kb/303846/ */
         case ERROR_PASSWORD_RESTRICTION:
             rc = VERR_AUTHENTICATION_FAILURE;
+            break;
+
+        case ERROR_FILE_CORRUPT:
+            rc = VERR_INVALID_EXE_SIGNATURE;
             break;
 
         default:
