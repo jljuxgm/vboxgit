@@ -1,4 +1,4 @@
-/* $Id: UINewHDWizard.cpp 40044 2012-02-09 09:12:30Z vboxsync $ */
+/* $Id: UINewHDWizard.cpp 40095 2012-02-13 16:29:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -562,7 +562,7 @@ void UINewHDWizardPageVariant::retranslateUi()
     QString strText = m_pLabel->text();
     CMediumFormat mediumFormat = field("mediumFormat").value<CMediumFormat>();
     if (mediumFormat.isNull() || (mediumFormat.GetCapabilities() & KMediumFormatCapabilities_CreateDynamic))
-        strText += UINewHDWizard::tr("<p>A <b>dynamically allocated</b> virtual disk file will only use space on your physical hard disk as it fills up, "
+        strText += UINewHDWizard::tr("<p>A <b>dynamically allocated</b> virtual disk file will only use space on your physical hard disk as it fills up (up to a <b>fixed maximum size</b>), "
                                      "although it will not shrink again automatically when space on it is freed.</p>");
     if (mediumFormat.isNull() || (mediumFormat.GetCapabilities() & KMediumFormatCapabilities_CreateFixed))
         strText += UINewHDWizard::tr("<p>A <b>fixed size</b> virtual disk file may take longer to create on some systems but is often faster to use.</p>");
