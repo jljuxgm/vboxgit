@@ -1,4 +1,4 @@
-/* $Id: VBoxMFDriver.cpp 38931 2011-10-03 10:59:12Z vboxsync $ */
+/* $Id: VBoxMFDriver.cpp 38932 2011-10-03 11:22:39Z vboxsync $ */
 
 /** @file
  * VBox Mouse filter interface functions
@@ -121,7 +121,6 @@ NTSTATUS VBoxDrvAddDevice(IN PDRIVER_OBJECT Driver, IN PDEVICE_OBJECT PDO)
     pDevExt->pdoMain   = PDO;
     pDevExt->pdoSelf   = pDO;
     pDevExt->pdoParent = pDOParent;
-	pDevExt->DeviceState = PowerDeviceD0;
 
     VBoxDeviceAdded(pDevExt);
 
@@ -250,33 +249,12 @@ NTSTATUS VBoxIrpPnP(IN PDEVICE_OBJECT DeviceObject, IN PIRP Irp)
 
 NTSTATUS VBoxIrpPower(IN PDEVICE_OBJECT DeviceObject, IN PIRP Irp)
 {
-    PIO_STACK_LOCATION  irpSp;    
-	PVBOXMOUSE_DEVEXT   devExt;
-    POWER_STATE         powerState;
-    POWER_STATE_TYPE    powerType;
-
+	PVBOXMOUSE_DEVEXT pDevExt;
     PAGED_CODE();
-
-    devExt = (PVBOXMOUSE_DEVEXT) DeviceObject->DeviceExtension;
-    irpSp = IoGetCurrentIrpStackLocation(Irp);
-
-    powerType = irpSp->Parameters.Power.Type;
-    powerState = irpSp->Parameters.Power.State;
-
-    switch (irpSp->MinorFunction) {
-    case IRP_MN_SET_POWER:
-        if (powerType  == DevicePowerState) {
-            devExt->DeviceState = powerState.DeviceState;
-        }
-
-    case IRP_MN_QUERY_POWER:
-    case IRP_MN_WAIT_WAKE:
-    case IRP_MN_POWER_SEQUENCE:
-    default:
-        break;
-    }
-
+    LOGF_ENTER();
+    pDevExt = (PVBOXMOUSE_DEVEXT) DeviceObject->DeviceExtension;
     PoStartNextPowerIrp(Irp);
     IoSkipCurrentIrpStackLocation(Irp);
-    return PoCallDriver(devExt->pdoParent, Irp);
+    LOGF_LEAVE();
+    return PoCallDriver(pDevExt->pdoParent, Irp);
 }

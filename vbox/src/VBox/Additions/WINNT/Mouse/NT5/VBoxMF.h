@@ -1,4 +1,4 @@
-/* $Id: VBoxMF.h 38931 2011-10-03 10:59:12Z vboxsync $ */
+/* $Id: VBoxMF.h 38932 2011-10-03 11:22:39Z vboxsync $ */
 
 /** @file
  * VBox Mouse filter header
@@ -57,8 +57,6 @@ typedef struct _VBOXMOUSE_DEVEXT
     VMMDevReqMouseStatus       *pSCReq;              /* Preallocated request to use in pfnServiceCB */
 
     IO_REMOVE_LOCK RemoveLock;
-    
-    DEVICE_POWER_STATE DeviceState;   /* current power state of the device */
 } VBOXMOUSE_DEVEXT, *PVBOXMOUSE_DEVEXT;
 
 /* Interface functions */
