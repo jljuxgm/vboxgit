@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 38969 2011-10-10 08:14:03Z vboxsync $ */
+/* $Id: DevAHCI.cpp 38970 2011-10-10 08:22:32Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -6015,6 +6015,8 @@ static bool ahciCancelActiveTasks(PAHCIPort pAhciPort)
                  * a new task structure for this tag.
                  */
                 ASMAtomicWriteNullPtr(&pAhciPort->aCachedTasks[i]);
+                LogRel(("AHCI#%dP%d: Cancelled task %u\n", pAhciPort->CTX_SUFF(pDevIns)->iInstance,
+                        pAhciPort->iLUN, pAhciPortTaskState->uTag));
             }
             else
                 AssertMsg(pAhciPortTaskState->enmTxState == AHCITXSTATE_FREE,
