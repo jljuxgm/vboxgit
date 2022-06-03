@@ -1,4 +1,4 @@
-# $Id: Config.kmk 39876 2012-01-25 15:57:58Z vboxsync $
+# $Id: Config.kmk 39879 2012-01-25 17:18:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2615,8 +2615,6 @@ ifeq ($(KBUILD_TARGET),solaris)
 
   # OSS audio support for Solaris
  VBOX_WITH_SOLARIS_OSS := $(if-expr $(VBOX_SOLARIS_11_VERSION) >= 115,1,)
- else
-  $(error Unsupported Solaris host version $(VBOX_SOLARIS_VERSION))
  endif
 endif
 
@@ -4883,7 +4881,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39876 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 39879 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
