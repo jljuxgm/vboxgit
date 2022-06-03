@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41087 2012-04-27 14:05:28Z vboxsync $
+# $Id: Makefile.kmk 41088 2012-04-27 14:42:40Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -91,6 +91,14 @@ $$(PcBiosBin_0_OUTDIR)/PcBiosBin.c: $$(VBoxPcBios_1_TARGET) $(VBOX_BIN2C) | $$(d
 	$(call MSG_TOOL,bin2c,PcBiosBin,$<,$@)
 	$(QUIET)$(VBOX_BIN2C) -min 64 -max 256 -mask 0xffff -ascii -export PcBiosBinary $< $@
 
+
+#
+# MakeDebianBiosAssembly - For distros without OpenWatcom.
+#
+PROGRAMS += MakeDebianBiosAssembly ## TODO this is build program, really. later.
+MakeDebianBiosAssembly_TEMPLATE = VBOXR3EXE
+MakeDebianBiosAssembly_SOURCES = MakeDebianBiosAssembly.cpp
+MakeDebianBiosAssembly_LIBS = $(LIB_RUNTIME)
 
 
 include $(KBUILD_PATH)/subfooter.kmk
