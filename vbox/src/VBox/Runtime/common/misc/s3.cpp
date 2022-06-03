@@ -1,4 +1,4 @@
-/* $Id: s3.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: s3.cpp 39985 2012-02-03 13:40:39Z vboxsync $ */
 /** @file
  * IPRT - S3 communication API.
  */
@@ -390,7 +390,7 @@ static xmlNodePtr rtS3FindNode(xmlNodePtr pNode, const char *pszName)
 
 static int rtS3ReadXmlFromMemory(PRTS3TMPMEMCHUNK pChunk, const char* pszRootElement, xmlDocPtr *ppDoc, xmlNodePtr *ppCur)
 {
-    *ppDoc = xmlReadMemory(pChunk->pszMem, (int)pChunk->cSize, "", "ISO-8859-1", XML_PARSE_NOBLANKS);
+    *ppDoc = xmlReadMemory(pChunk->pszMem, (int)pChunk->cSize, "", "ISO-8859-1", XML_PARSE_NOBLANKS | XML_PARSE_NONET);
     if (*ppDoc == NULL)
         return VERR_PARSE_ERROR;
 
