@@ -1,4 +1,4 @@
-/* $Id: avllu32.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: avllu32.cpp 40053 2012-02-09 15:36:48Z vboxsync $ */
 /** @file
  * IPRT - AVL tree, uint32_t, unique keys.
  */
@@ -70,6 +70,7 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.4 2003/02/13 02:02:38 bird E
 #include "avl_Base.cpp.h"
 #include "avl_Get.cpp.h"
 #include "avl_GetBestFit.cpp.h"
+#include "avl_RemoveNode.cpp.h"
 #include "avl_RemoveBestFit.cpp.h"
 #include "avl_DoWithAll.cpp.h"
 #include "avl_Destroy.cpp.h"
