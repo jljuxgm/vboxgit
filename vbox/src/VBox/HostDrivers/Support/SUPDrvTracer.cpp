@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 40822 2012-04-08 12:42:25Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 40823 2012-04-08 12:51:43Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1261,6 +1261,7 @@ int  VBOXCALL   supdrvIOCtl_TracerIOCtl(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pS
     RTNATIVETHREAD  hNativeSelf = RTThreadNativeSelf();
     int             rc;
 
+    *piRetVal = 0;
     RTSemFastMutexRequest(pDevExt->mtxTracer);
 
     if (pSession->uTracerData)
