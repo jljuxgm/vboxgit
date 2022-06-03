@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40435 2012-03-12 18:01:39Z vboxsync $
+# $Id: Makefile.kmk 40939 2012-04-16 13:10:30Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxCredProv.
 #
@@ -20,7 +20,7 @@ include	$(KBUILD_PATH)/subheader.kmk
 
 DLLS += VBoxCredProv
 VBoxCredProv_TEMPLATE    = VBOXGUESTR3DLL
-VBoxCredProv_DEFS        = VBGL_VBOXGUEST VBOX_WITH_HGCM UNICODE
+VBoxCredProv_DEFS        = VBGL_VBOXGUEST VBOX_WITH_HGCM VBOX_WITH_SENS UNICODE
 VBoxCredProv_SDKS.x86    = WINDDK
 VBoxCredProv_SOURCES  = \
 	VBoxCredentialProvider.cpp \
