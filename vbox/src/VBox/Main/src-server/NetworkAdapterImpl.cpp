@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 40505 2012-03-16 16:49:59Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 40536 2012-03-19 13:37:04Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -1438,7 +1438,7 @@ STDMETHODIMP NetworkAdapter::COMSETTER(BandwidthGroup)(IBandwidthGroup *aBwGroup
         if (!strBwGroup.isEmpty())
         {
             HRESULT hrc = mParent->getBandwidthGroup(strBwGroup, pBwGroup, false /* fSetError */);
-
+            NOREF(hrc);
             Assert(SUCCEEDED(hrc)); /* This is not allowed to fail because the existence of the group was checked when it was attached. */
         }
 
@@ -1469,7 +1469,7 @@ void NetworkAdapter::updateBandwidthGroup(BandwidthGroup *aBwGroup)
     if (!mData->mBandwidthGroup.isEmpty())
         {
             HRESULT hrc = mParent->getBandwidthGroup(mData->mBandwidthGroup, pOldBwGroup, false /* fSetError */);
-
+            NOREF(hrc);
             Assert(SUCCEEDED(hrc)); /* This is not allowed to fail because the existence of the group was checked when it was attached. */
         }
 

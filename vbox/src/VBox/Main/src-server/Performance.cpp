@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 40358 2012-03-05 14:40:52Z vboxsync $ */
+/* $Id: Performance.cpp 40536 2012-03-19 13:37:04Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -162,6 +162,9 @@ int CGRQEnable::execute()
 
 void CGRQEnable::debugPrint(void *aObject, const char *aFunction, const char *aText)
 {
+    NOREF(aObject);
+    NOREF(aFunction);
+    NOREF(aText);
     LogAleksey(("{%p} " LOG_FN_FMT ": CGRQEnable(mask=0x%x) %s\n",
                 aObject, aFunction, mMask, aText));
 }
@@ -174,6 +177,9 @@ int CGRQDisable::execute()
 
 void CGRQDisable::debugPrint(void *aObject, const char *aFunction, const char *aText)
 {
+    NOREF(aObject);
+    NOREF(aFunction);
+    NOREF(aText);
     LogAleksey(("{%p} " LOG_FN_FMT ": CGRQDisable(mask=0x%x) %s\n",
                 aObject, aFunction, mMask, aText));
 }
@@ -185,6 +191,9 @@ int CGRQAbort::execute()
 
 void CGRQAbort::debugPrint(void *aObject, const char *aFunction, const char *aText)
 {
+    NOREF(aObject);
+    NOREF(aFunction);
+    NOREF(aText);
     LogAleksey(("{%p} " LOG_FN_FMT ": CGRQAbort %s\n",
                 aObject, aFunction, aText));
 }
@@ -362,6 +371,7 @@ CollectorGuestManager::CollectorGuestManager()
     int rc = RTThreadCreate(&mThread, CollectorGuestManager::requestProcessingThread,
                             this, 0, RTTHREADTYPE_MAIN_WORKER, RTTHREADFLAGS_WAITABLE,
                             "CGMgr");
+    NOREF(rc);
     LogAleksey(("{%p} " LOG_FN_FMT ": RTThreadCreate returned %u (mThread=%p)\n",
                 this, __PRETTY_FUNCTION__, rc));
 }
