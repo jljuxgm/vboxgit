@@ -1,4 +1,4 @@
-/* $Id: vboxext.h 39602 2011-12-14 11:12:17Z vboxsync $ */
+/* $Id: vboxext.h 39648 2011-12-16 18:50:12Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D
@@ -19,7 +19,6 @@
 #ifdef VBOX_WINE_WITHOUT_LIBWINE
 # include <windows.h>
 #endif
-#include <iprt/cdefs.h>
 
 HRESULT VBoxExtCheckInit();
 HRESULT VBoxExtCheckTerm();

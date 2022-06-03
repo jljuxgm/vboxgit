@@ -1,4 +1,4 @@
-/* $Id: vboxsharedrc.h 38982 2011-10-12 20:20:21Z vboxsync $ */
+/* $Id: vboxsharedrc.h 39648 2011-12-16 18:50:12Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D - shared resource
@@ -51,12 +51,5 @@
 #define VBOXSHRC_IS_LOCKED(_o) ( \
         !!((_o)->resource.sharerc_locks) \
         )
-#ifdef VBOX_WINE_WITH_IPRT
-# include <iprt/assert.h>
-#else
-# define AssertBreakpoint() do { } while (0)
-# define Assert(_expr) do { } while (0)
-#endif
-
 
 #endif /* #ifndef ___vboxsharedrc_h___ */
