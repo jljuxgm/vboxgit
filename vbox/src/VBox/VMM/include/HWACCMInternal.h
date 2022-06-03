@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 37298 2011-06-01 16:30:11Z vboxsync $ */
+/* $Id: HWACCMInternal.h 37319 2011-06-03 13:12:37Z vboxsync $ */
 /** @file
  * HWACCM - Internal header file.
  */
@@ -153,12 +153,15 @@ RT_C_DECLS_BEGIN
 #endif
 #define HWACCM_SSM_VERSION_2_0_X            3
 
-/* Per-cpu information. (host) */
+/**
+ * Global per-cpu information. (host)
+ */
 typedef struct
 {
+    /** The CPU ID. */
     RTCPUID             idCpu;
-
-    RTR0MEMOBJ          pMemObj;
+    /** The memory object   */
+    RTR0MEMOBJ          hMemObj;
     /* Current ASID (AMD-V)/VPID (Intel) */
     uint32_t            uCurrentASID;
     /* TLB flush count */
@@ -882,7 +885,7 @@ typedef HWACCMCPU *PHWACCMCPU;
 
 #ifdef IN_RING0
 
-VMMR0DECL(PHWACCM_CPUINFO) HWACCMR0GetCurrentCpu();
+VMMR0DECL(PHWACCM_CPUINFO) HWACCMR0GetCurrentCpu(void);
 VMMR0DECL(PHWACCM_CPUINFO) HWACCMR0GetCurrentCpuEx(RTCPUID idCpu);
 
 
