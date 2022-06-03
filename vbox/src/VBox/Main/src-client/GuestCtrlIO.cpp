@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlIO.cpp 39418 2011-11-25 10:11:06Z vboxsync $ */
+/* $Id: GuestCtrlIO.cpp 39791 2012-01-18 10:50:49Z vboxsync $ */
 /** @file
  *
  * IO helper for IGuest COM class implementations.
@@ -354,12 +354,14 @@ int GuestProcessStream::ParseBlock(GuestProcessStreamBlock &streamBlock)
 
     int rc = VINF_SUCCESS;
 
-    char *pszOff   = (char*)&m_pbBuffer[m_cbOffset];
-    char *pszStart = pszOff;
+    char    *pszOff    = (char*)&m_pbBuffer[m_cbOffset];
+    char    *pszStart  = pszOff;
+    uint32_t uDistance;
     while (*pszStart)
     {
         size_t pairLen = strlen(pszStart);
-        if ((pszStart - pszOff) + pairLen + 1 >= m_cbSize)
+        uDistance = (pszStart - pszOff);
+        if (m_cbOffset + uDistance + pairLen + 1 >= m_cbSize)
         {
             rc = VERR_MORE_DATA;
             break;
@@ -392,7 +394,7 @@ int GuestProcessStream::ParseBlock(GuestProcessStreamBlock &streamBlock)
     /* If we did not do any movement but we have stuff left
      * in our buffer just skip the current termination so that
      * we can try next time. */
-    uint32_t uDistance = (pszStart - pszOff);
+    uDistance = (pszStart - pszOff);
     if (   !uDistance
         && *pszStart == '\0'
         && m_cbOffset < m_cbSize)
