@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 38940 2011-10-05 12:58:33Z vboxsync $ */
+/* $Id: VMInternal.h 38941 2011-10-05 13:09:59Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -304,7 +304,9 @@ typedef struct VMINTUSERPERVM
     /** The VM UUID. (Set after the config constructure has been called.) */
     RTUUID                          Uuid;
 } VMINTUSERPERVM;
+#ifdef VBOX_WITH_STATISTICS
 AssertCompileMemberAlignment(VMINTUSERPERVM, StatReqAllocNew, 8);
+#endif
 
 /** Pointer to the VM internal data kept in the UVM. */
 typedef VMINTUSERPERVM *PVMINTUSERPERVM;
