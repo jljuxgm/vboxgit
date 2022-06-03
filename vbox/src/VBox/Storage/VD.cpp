@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 39927 2012-01-31 23:35:08Z vboxsync $ */
+/* $Id: VD.cpp 39928 2012-01-31 23:49:55Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -9321,7 +9321,11 @@ VBOXDDU_DECL(int) VDAsyncRead(PVBOXHDD pDisk, uint64_t uOffset, size_t cbRead,
             break;
         }
 
+#if 0
         rc = vdIoCtxProcessTryLockDefer(pIoCtx);
+#else
+        rc = vdIoCtxProcess(pIoCtx);
+#endif
         if (rc == VINF_VD_ASYNC_IO_FINISHED)
         {
             if (ASMAtomicCmpXchgBool(&pIoCtx->fComplete, true, false))
@@ -9392,7 +9396,11 @@ VBOXDDU_DECL(int) VDAsyncWrite(PVBOXHDD pDisk, uint64_t uOffset, size_t cbWrite,
             break;
         }
 
+#if 0
         rc = vdIoCtxProcessTryLockDefer(pIoCtx);
+#else
+        rc = vdIoCtxProcess(pIoCtx);
+#endif
         if (rc == VINF_VD_ASYNC_IO_FINISHED)
         {
             if (ASMAtomicCmpXchgBool(&pIoCtx->fComplete, true, false))
@@ -9448,7 +9456,11 @@ VBOXDDU_DECL(int) VDAsyncFlush(PVBOXHDD pDisk, PFNVDASYNCTRANSFERCOMPLETE pfnCom
             break;
         }
 
+#if 0
         rc = vdIoCtxProcessTryLockDefer(pIoCtx);
+#else
+        rc = vdIoCtxProcess(pIoCtx);
+#endif
         if (rc == VINF_VD_ASYNC_IO_FINISHED)
         {
             if (ASMAtomicCmpXchgBool(&pIoCtx->fComplete, true, false))
@@ -9503,7 +9515,11 @@ VBOXDDU_DECL(int) VDAsyncDiscardRanges(PVBOXHDD pDisk, PCRTRANGE paRanges, unsig
             break;
         }
 
+#if 0
         rc = vdIoCtxProcessTryLockDefer(pIoCtx);
+#else
+        rc = vdIoCtxProcess(pIoCtx);
+#endif
         if (rc == VINF_VD_ASYNC_IO_FINISHED)
         {
             if (ASMAtomicCmpXchgBool(&pIoCtx->fComplete, true, false))
