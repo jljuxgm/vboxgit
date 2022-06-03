@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbHook.cpp 37083 2011-05-13 19:24:39Z vboxsync $ */
+/* $Id: VBoxUsbHook.cpp 38262 2011-08-01 14:10:21Z vboxsync $ */
 /** @file
  * Driver Dispatch Table Hooking API
  */
@@ -23,7 +23,7 @@ NTSTATUS VBoxUsbHookInstall(PVBOXUSBHOOK_ENTRY pHook)
     KeAcquireSpinLock(&pHook->Lock, &Irql);
     if (pHook->fIsInstalled)
     {
-        AssertFailed();
+        WARN(("hook is marked installed, returning failure"));
         KeReleaseSpinLock(&pHook->Lock, Irql);
         return STATUS_UNSUCCESSFUL;
     }
