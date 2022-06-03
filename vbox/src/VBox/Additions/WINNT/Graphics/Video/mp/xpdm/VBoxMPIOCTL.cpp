@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 40489 2012-03-15 17:14:31Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport IOCTL handlers
@@ -74,7 +74,7 @@ BOOLEAN VBoxMPMapVideoMemory(PVBOXMP_DEVEXT pExt, PVIDEO_MEMORY pRequestedAddres
 
     LOGF(("framebuffer offset %#x", pExt->ulFrameBufferOffset));
 
-    framebuffer.QuadPart = VBE_DISPI_LFB_PHYSICAL_ADDRESS + pExt->ulFrameBufferOffset;
+    framebuffer.QuadPart = pExt->u.primary.physLFBBase.QuadPart + pExt->ulFrameBufferOffset;
 
     pMapInfo->VideoRamBase = pRequestedAddress->RequestedVirtualAddress;
     VBOXMPIOCTL_HIDE(pRequestedAddress);
@@ -144,7 +144,7 @@ BOOLEAN VBoxMPShareVideoMemory(PVBOXMP_DEVEXT pExt, PVIDEO_SHARE_MEMORY pShareMe
         return FALSE;
     }
 
-    shareAddress.QuadPart = VBE_DISPI_LFB_PHYSICAL_ADDRESS + pExt->ulFrameBufferOffset;
+    shareAddress.QuadPart = pExt->u.primary.physLFBBase.QuadPart + pExt->ulFrameBufferOffset;
 
     pStatus->Status = VideoPortMapMemory(pExt, shareAddress, &size, &inIoSpace, &virtualAddress);
 
