@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 39418 2011-11-25 10:11:06Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 39424 2011-11-25 11:16:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1168,11 +1168,11 @@ HRESULT Guest::executeAndWaitForTool(IN_BSTR aTool, IN_BSTR aDescription,
         {
             BOOL fCanceled;
             rc = progressTool->COMGETTER(Canceled)(&fCanceled);
-            ComAssertRC(rc);
+            AssertComRC(rc);
             if (fCanceled)
             {
-                rc = setError(VBOX_E_IPRT_ERROR,
-                              tr("%s was cancelled"), Utf8Str(aDescription));
+                rc = setErrorNoLog(VBOX_E_IPRT_ERROR,
+                                   tr("%s was cancelled"), Utf8Str(aDescription).c_str());
                 break;
             }
 
