@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41374 2012-05-21 18:04:03Z vboxsync $
+# $Id: Makefile.kmk 41377 2012-05-21 18:31:07Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -149,10 +149,10 @@ VBoxOGLhostcrutil_LIBS.win = $(VBoxOGLcrutil_LIBS.win)
 VBoxOGLhostcrutil_LIBS     = $(LIB_RUNTIME)
 ifdef VBOX_WITH_CRHGSMI
 VBoxOGLhostcrutil_DEFS    += VBOX_WITH_CRHGSMI
-VBoxOGLhostcrutil_LIBS.win = $(subst $(VBOX_PATH_ADDITIONS_LIB)/VBoxCrHgsmi$(VBOX_SUFF_LIB),,$(VBoxOGLcrutil_LIBS.win))
+VBoxOGLhostcrutil_LIBS.win = $(subst $(VBOX_PATH_ADDITIONS_LIB)/VBoxCrHgsmi$(VBOX_SUFF_LIB),,$(VBoxOGLhostcrutil_LIBS.win))
 endif
 ifdef VBOX_WITH_WDDM
-VBoxOGLhostcrutil_LIBS.win = $(subst $(VBOX_PATH_ADDITIONS_LIB)/VBoxDispMpLogger$(VBOX_SUFF_LIB),,$(VBoxOGLcrutil_LIBS.win))
+VBoxOGLhostcrutil_LIBS.win = $(subst $(VBOX_PATH_ADDITIONS_LIB)/VBoxDispMpLogger$(VBOX_SUFF_LIB),,$(VBoxOGLhostcrutil_LIBS.win))
 VBoxOGLhostcrutil_INCS.win = $(NO_SUCH_VARIABLE)
 VBoxOGLhostcrutil_DEFS.win = $(NO_SUCH_VARIABLE)
 endif
