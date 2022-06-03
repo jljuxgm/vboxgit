@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40515 2012-03-17 02:17:50Z vboxsync $
+# $Id: Makefile.kmk 40516 2012-03-17 02:23:13Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -226,6 +226,12 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	-framework DiskArbitration
  VBoxDD_LDFLAGS.linux    = -Wl,--no-undefined
  VBoxDD_LDFLAGS.l4       = -Wl,--no-undefined
+
+ ifdef VBOX_WITH_DTRACE_R3
+  if1of ($(KBUILD_TARGET), solaris)
+   VBoxDD_SOURCES       += $(DevicesR3_0_OUTDIR)/VBoxDD-dtrace.o
+  endif
+ endif
 
 
  #
