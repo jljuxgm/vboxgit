@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-linux.c 38199 2011-07-27 13:51:34Z vboxsync $ */
+/* $Id: mpnotification-r0drv-linux.c 38232 2011-07-28 18:32:16Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Linux.
  */
@@ -77,7 +77,7 @@ static RTCPUSET g_MpPendingOfflineSet;
  * @param pvUser2           The notification event.
  * @remarks This can be invoked in interrupt context.
  */
-static void rtMpNotificationLinuxOnCurrentCpu(RTCPUID idCpu, void *pvUser1, void *pvUser2)
+static DECLCALLBACK(void) rtMpNotificationLinuxOnCurrentCpu(RTCPUID idCpu, void *pvUser1, void *pvUser2)
 {
     unsigned long ulNativeEvent = *(unsigned long *)pvUser2;
     NOREF(pvUser1);
