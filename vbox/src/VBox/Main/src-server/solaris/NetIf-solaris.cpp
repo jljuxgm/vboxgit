@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 35958 2011-02-14 13:03:19Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 36248 2011-03-10 11:00:18Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -64,6 +64,7 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
         SolarisNICMap.insert(NICPair("aggr", "Link Aggregation Interface"));
         SolarisNICMap.insert(NICPair("bge", "Broadcom BCM57xx Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("bnx", "Broadcom NetXtreme Gigabit Ethernet"));
+        SolarisNICMap.insert(NICPair("bnxe", "Broadcom NetXtreme II 10 Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("ce", "Cassini Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("chxge", "Chelsio Ethernet"));
         SolarisNICMap.insert(NICPair("dmfe", "Davicom Fast Ethernet"));
