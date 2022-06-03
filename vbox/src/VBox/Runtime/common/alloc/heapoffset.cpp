@@ -1,4 +1,4 @@
-/* $Id: heapoffset.cpp 35525 2011-01-13 14:00:37Z vboxsync $ */
+/* $Id: heapoffset.cpp 40930 2012-04-16 03:27:57Z vboxsync $ */
 /** @file
  * IPRT - An Offset Based Heap.
  */
@@ -507,10 +507,10 @@ RT_EXPORT_SYMBOL(RTHeapOffsetAllocZ);
  */
 static PRTHEAPOFFSETBLOCK rtHeapOffsetAllocBlock(PRTHEAPOFFSETINTERNAL pHeapInt, size_t cb, size_t uAlignment)
 {
-    PRTHEAPOFFSETBLOCK  pRet = NULL;
+    PRTHEAPOFFSETBLOCK  pRet = (PRTHEAPOFFSETBLOCK)NULL;
     PRTHEAPOFFSETFREE   pFree;
 
-    AssertReturn((pHeapInt)->u32Magic == RTHEAPOFFSET_MAGIC, NULL);
+    AssertReturn((pHeapInt)->u32Magic == RTHEAPOFFSET_MAGIC, (PRTHEAPOFFSETBLOCK)NULL);
 #ifdef RTHEAPOFFSET_STRICT
     rtHeapOffsetAssertAll(pHeapInt);
 #endif
@@ -703,8 +703,8 @@ static void rtHeapOffsetFreeBlock(PRTHEAPOFFSETINTERNAL pHeapInt, PRTHEAPOFFSETB
      * Look for the closest free list blocks by walking the blocks right
      * of us (both lists are sorted by address).
      */
-    pLeft = NULL;
-    pRight = NULL;
+    pLeft = (PRTHEAPOFFSETFREE)NULL;
+    pRight = (PRTHEAPOFFSETFREE)NULL;
     if (pHeapInt->offFreeTail)
     {
         pRight = RTHEAPOFF_TO_PTR_N(pHeapInt, pFree->Core.offNext, PRTHEAPOFFSETFREE);
@@ -813,8 +813,8 @@ static void rtHeapOffsetFreeBlock(PRTHEAPOFFSETINTERNAL pHeapInt, PRTHEAPOFFSETB
  */
 static void rtHeapOffsetAssertAll(PRTHEAPOFFSETINTERNAL pHeapInt)
 {
-    PRTHEAPOFFSETFREE pPrev = NULL;
-    PRTHEAPOFFSETFREE pPrevFree = NULL;
+    PRTHEAPOFFSETFREE pPrev = (PRTHEAPOFFSETFREE)NULL;
+    PRTHEAPOFFSETFREE pPrevFree = (PRTHEAPOFFSETFREE)NULL;
     PRTHEAPOFFSETFREE pBlock;
     for (pBlock = (PRTHEAPOFFSETFREE)(pHeapInt + 1);
          pBlock;
