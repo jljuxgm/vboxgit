@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40756 2012-04-03 14:47:33Z vboxsync $
+# $Id: Makefile.kmk 40759 2012-04-03 19:57:32Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -309,8 +309,9 @@ endif # freebsd
 # New VBoxDrv target. TODO: Convert all the above to use this!
 #
 if1of ($(KBUILD_TARGET), darwin linux solaris)
- # Leopard (x86) and Snow Leopard (x86/amd64)
- SYSMODS += VBoxDrv
+ ifdef VBOX_WITH_VBOXDRV
+  SYSMODS += VBoxDrv
+ endif
  VBoxDrv_TEMPLATE         = VBOXR0DRV
  VBoxDrv_NAME.freebsd     = vboxdrv
  VBoxDrv_NAME.linux       = vboxdrv
