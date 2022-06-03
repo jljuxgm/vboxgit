@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 39381 2011-11-21 12:59:39Z vboxsync $ */
+/* $Id: stream.cpp 39382 2011-11-21 13:32:04Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -442,9 +442,9 @@ RTR3DECL(int) RTStrmSetMode(PRTSTREAM pStream, int fBinary, int fCurrentCodeSet)
     rtStrmLock(pStream);
 
     if (fBinary != -1)
-        pStream->fBinary = fBinary != 0 /* false */;
+        pStream->fBinary = RT_BOOL(fBinary);
     if (fCurrentCodeSet != -1)
-        pStream->fCurrentCodeSet = fCurrentCodeSet != 0 /* false */;
+        pStream->fCurrentCodeSet = RT_BOOL(fCurrentCodeSet);
 
     rtStrmUnlock(pStream);
 
