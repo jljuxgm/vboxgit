@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevPS2.cpp 41560 2012-06-04 12:07:32Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -491,6 +491,7 @@ static int kbd_write_command(void *opaque, uint32_t addr, uint32_t val)
 #ifndef IN_RING3
         rc = VINF_IOM_R3_IOPORT_WRITE;
 #else /* IN_RING3 */
+        LogRel(("Reset initiated by keyboard controller\n"));
         rc = PDMDevHlpVMReset(s->CTX_SUFF(pDevIns));
 #endif /* !IN_RING3 */
         break;

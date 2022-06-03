@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 41252 2012-05-11 12:09:57Z vboxsync $ */
+/* $Id: DevACPI.cpp 41560 2012-06-04 12:07:32Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1752,7 +1752,10 @@ PDMBOTHCBDECL(int) acpiResetWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Por
     /* No state locking required. */
     int rc = VINF_SUCCESS;
     if (u32 == ACPI_RESET_REG_VAL)
+    {
+        LogRel(("Reset initiated by ACPI\n"));
         rc = PDMDevHlpVMReset(pDevIns);
+    }
     else
         Log(("acpiResetWrite: %#x <- unknown value\n", u32));
 

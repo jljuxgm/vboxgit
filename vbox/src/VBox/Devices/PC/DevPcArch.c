@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.c 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DevPcArch.c 41560 2012-06-04 12:07:32Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -197,7 +197,10 @@ static DECLCALLBACK(int) pcarchIOPortPS2SysControlPortAWrite(PPDMDEVINS pDevIns,
          * Fast reset?
          */
         if (u32 & 1)
+        {
+            LogRel(("Reset initiated by system port A\n"));
             return PDMDevHlpVMReset(pDevIns);
+        }
 
         /*
          * A20 is the only thing we care about of the other stuff.
