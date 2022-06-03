@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 36086 2011-02-25 13:43:26Z vboxsync $ */
+/* $Id: MachineImpl.cpp 36091 2011-02-25 17:25:07Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6306,7 +6306,11 @@ HRESULT Machine::openRemoteSession(IInternalSessionControl *aControl,
 
         Utf8Str idStr = mData->mUuid.toString();
         /* Leave space for "--capture" arg. */
-        const char * args[] = {szPath, "--comment", mUserData->s.strName.c_str(), "--startvm", idStr.c_str(), 0, 0 };
+        const char * args[] = {szPath, "--comment", mUserData->s.strName.c_str(),
+                                       "--startvm", idStr.c_str(),
+                                       "--vrde", "config",
+                                       0, /* For "--capture". */
+                                       0 };
         if (strType == "capture")
         {
             unsigned pos = RT_ELEMENTS(args) - 2;
