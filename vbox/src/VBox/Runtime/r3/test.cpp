@@ -1,4 +1,4 @@
-/* $Id: test.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: test.cpp 40105 2012-02-13 18:45:32Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -625,7 +625,7 @@ RTR3DECL(int) RTTestGuardedFree(RTTEST hTest, void *pv)
     }
     RTCritSectLeave(&pTest->Lock);
 
-    return VINF_SUCCESS;
+    return rc;
 }
 
 
