@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris-streams.c 40311 2012-03-01 12:09:56Z vboxsync $ */
+/* $Id: VBoxGuest-solaris-streams.c 40325 2012-03-02 14:44:43Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -1314,5 +1314,6 @@ void VBoxGuestVUIDPutAbsEvent(ushort_t cEvent, int cValue)
 
 
 /* Common code that depends on g_DevExt. */
-#include "VBoxGuestIDC-unix.c.h"
-
+#ifndef TESTCASE
+# include "VBoxGuestIDC-unix.c.h"
+#endif
