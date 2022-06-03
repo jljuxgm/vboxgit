@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePipeBuf.cpp 36749 2011-04-20 11:50:36Z vboxsync $ */
+/* $Id: VBoxServicePipeBuf.cpp 36880 2011-04-29 09:16:41Z vboxsync $ */
 /** @file
  * VBoxServicePipeBuf - Pipe buffering.
  */
@@ -363,7 +363,7 @@ int VBoxServicePipeBufWriteToPipe(PVBOXSERVICECTRLEXECPIPEBUF pBuf, RTPIPE hPipe
  */
 bool VBoxServicePipeBufIsEnabled(PVBOXSERVICECTRLEXECPIPEBUF pBuf)
 {
-    AssertPtrReturn(pBuf, VERR_INVALID_POINTER);
+    AssertPtrReturn(pBuf, false);
 
     bool fEnabled = false;
     if (   RTCritSectIsInitialized(&pBuf->CritSect)
@@ -387,7 +387,7 @@ bool VBoxServicePipeBufIsEnabled(PVBOXSERVICECTRLEXECPIPEBUF pBuf)
  */
 bool VBoxServicePipeBufIsClosing(PVBOXSERVICECTRLEXECPIPEBUF pBuf)
 {
-    AssertPtrReturn(pBuf, VERR_INVALID_POINTER);
+    AssertPtrReturn(pBuf, false);
 
     bool fClosing = false;
     if (   RTCritSectIsInitialized(&pBuf->CritSect)
