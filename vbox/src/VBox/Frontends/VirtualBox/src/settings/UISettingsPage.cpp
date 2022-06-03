@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 36589 2011-04-06 15:24:00Z vboxsync $ */
+/* $Id: UISettingsPage.cpp 36594 2011-04-06 16:22:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -25,23 +25,10 @@ UISettingsPage::UISettingsPage(UISettingsPageType pageType)
     : m_pageType(pageType)
     , m_dialogType(SettingsDialogType_Wrong)
     , m_cId(-1)
-    , m_fPolished(false)
     , m_fProcessed(false)
     , m_fFailed(false)
     , m_pFirstWidget(0)
 {
-}
-
-void UISettingsPage::showEvent(QShowEvent *pEvent)
-{
-    /* Polish page if necessary: */
-    if (!m_fPolished)
-    {
-        m_fPolished = true;
-        polishPage();
-    }
-    /* Call for base-class: */
-    QIWithRetranslateUI<QWidget>::showEvent(pEvent);
 }
 
 /* Global settings page constructor, hidden: */

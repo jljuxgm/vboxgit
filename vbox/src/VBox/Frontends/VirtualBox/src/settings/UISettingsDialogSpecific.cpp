@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 36593 2011-04-06 16:08:49Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 36594 2011-04-06 16:22:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -183,7 +183,10 @@ protected slots:
         {
             /* If such page present we should fetch internal page cache: */
             if (m_pages.contains(iPageId))
+            {
                 m_pages[iPageId]->getFromCache();
+                m_pages[iPageId]->polishPage();
+            }
         }
         /* If thats the page we are waiting for,
          * we should flag GUI thread to unlock itself: */
