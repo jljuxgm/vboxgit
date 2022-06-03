@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 39405 2011-11-23 19:30:29Z vboxsync $ */
+/* $Id: HWACCM.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -31,7 +31,9 @@
 #include <VBox/vmm/patm.h>
 #include <VBox/vmm/csam.h>
 #include <VBox/vmm/selm.h>
-#include <VBox/vmm/rem.h>
+#ifdef VBOX_WITH_REM
+# include <VBox/vmm/rem.h>
+#endif
 #include <VBox/vmm/hwacc_vmx.h>
 #include <VBox/vmm/hwacc_svm.h>
 #include "HWACCMInternal.h"

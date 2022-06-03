@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 39907 2012-01-30 15:31:38Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -24,7 +24,9 @@
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/rem.h>
+#ifdef VBOX_WITH_REM
+# include <VBox/vmm/rem.h>
+#endif
 #include "PGMInternal.h"
 #include <VBox/vmm/vm.h>
 #include "PGMInline.h"
@@ -504,7 +506,9 @@ static int pgmPhysEnsureHandyPage(PVM pVM)
                 Assert(VM_FF_ISSET(pVM, VM_FF_PGM_NEED_HANDY_PAGES));
                 Assert(VM_FF_ISSET(pVM, VM_FF_PGM_NO_MEMORY));
 #ifdef IN_RING3
-                REMR3NotifyFF(pVM);
+# ifdef VBOX_WITH_REM
+                 REMR3NotifyFF(pVM);
+# endif
 #else
                 VMCPU_FF_SET(VMMGetCpu(pVM), VMCPU_FF_TO_R3); /* paranoia */
 #endif

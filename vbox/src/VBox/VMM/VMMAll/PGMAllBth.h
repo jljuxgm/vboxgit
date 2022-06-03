@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 39908 2012-01-30 15:31:54Z vboxsync $ */
+/* $Id: PGMAllBth.h 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -4576,7 +4576,9 @@ PGM_BTH_DECL(int, MapCR3)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
      *          state will be inconsistent! Flush important things now while
      *          we still can and then make sure there are no ring-3 calls.
      */
+#   ifdef VBOX_WITH_REM
     REMNotifyHandlerPhysicalFlushIfAlmostFull(pVM, pVCpu);
+#   endif
     VMMRZCallRing3Disable(pVCpu);
 #  endif
 

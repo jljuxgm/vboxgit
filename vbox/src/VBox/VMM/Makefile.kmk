@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39320 2011-11-16 00:37:38Z vboxsync $
+# $Id: Makefile.kmk 40274 2012-02-28 13:17:35Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -31,6 +31,9 @@ include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 VMM_COMMON_DEFS ?= VBOX_IN_VMM
 ifdef VBOX_WITH_RAW_MODE
  VMM_COMMON_DEFS += VBOX_WITH_RAW_MODE
+endif
+ifdef VBOX_WITH_REM
+ VMM_COMMON_DEFS += VBOX_WITH_REM
 endif
 ifdef VBOX_WITH_MULTI_CORE
  VMM_COMMON_DEFS += VBOX_WITH_MULTI_CORE

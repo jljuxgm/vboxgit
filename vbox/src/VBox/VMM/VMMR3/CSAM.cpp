@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: CSAM.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -29,7 +29,9 @@
 #include <VBox/sup.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/rem.h>
+#ifdef VBOX_WITH_REM
+# include <VBox/vmm/rem.h>
+#endif
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/trpm.h>
 #include <VBox/vmm/cfgm.h>
@@ -2338,8 +2340,10 @@ static int csamR3FlushDirtyPages(PVM pVM)
 
         GCPtr = GCPtr & PAGE_BASE_GC_MASK;
 
-        /* Notify the recompiler that this page has been changed. */
+#ifdef VBOX_WITH_REM
+         /* Notify the recompiler that this page has been changed. */
         REMR3NotifyCodePageChanged(pVM, pVCpu, GCPtr);
+#endif
 
         /* Enable write protection again. (use the fault address as it might be an alias) */
         rc = PGMShwMakePageReadonly(pVCpu, pVM->csam.s.pvDirtyFaultPage[i], 0 /*fFlags*/);

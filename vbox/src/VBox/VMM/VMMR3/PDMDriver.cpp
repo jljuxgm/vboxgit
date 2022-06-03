@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 39858 2012-01-24 16:43:12Z vboxsync $ */
+/* $Id: PDMDriver.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -662,7 +662,6 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
     if (RT_SUCCESS(rc))
     {
         PPDMDRV pDrv = pdmR3DrvLookup(pVM, pszName);
-        MMR3HeapFree(pszName);
         if (    pDrv
             &&  pDrv->cInstances < pDrv->pReg->cMaxInstances)
         {
@@ -792,6 +791,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
             AssertMsgFailed(("Driver '%s' wasn't found!\n", pszName));
             rc = VERR_PDM_DRIVER_NOT_FOUND;
         }
+        MMR3HeapFree(pszName);
     }
     else
     {

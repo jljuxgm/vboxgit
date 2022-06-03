@@ -1,4 +1,4 @@
-/* $Id: REMAll.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: REMAll.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * REM - Recompiled Execution Monitor, all Contexts part.
  */
@@ -20,7 +20,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_REM
-#include <VBox/vmm/rem.h>
+#ifdef VBOX_WITH_REM
+# include <VBox/vmm/rem.h>
+#endif
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/vmm.h>
 #include "REMInternal.h"

@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 39839 2012-01-23 16:05:57Z vboxsync $ */
+/* $Id: PDMDevice.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -26,7 +26,9 @@
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/cfgm.h>
-#include <VBox/vmm/rem.h>
+#ifdef VBOX_WITH_REM
+# include <VBox/vmm/rem.h>
+#endif
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmm.h>

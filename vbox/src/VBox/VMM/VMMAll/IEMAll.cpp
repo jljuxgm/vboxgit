@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 40266 2012-02-27 22:09:01Z vboxsync $ */
+/* $Id: IEMAll.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7842,6 +7842,13 @@ VMMDECL(VBOXSTRICTRC) IEMExecOne(PVMCPU pVCpu)
 }
 
 
+VMMDECL(VBOXSTRICTRC) IEMExecLots(PVMCPU pVCpu)
+{
+    return IEMExecOne(pVCpu);
+}
+
+
+
 /**
  * Injects a trap, fault, abort, software interrupt or external interrupt.
  *
@@ -7896,5 +7903,17 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMInjectTrap(PVMCPU pVCpu, uint8_t u8TrapNo, TRPMEVE
     }
 
     return iemRaiseXcptOrInt(&pVCpu->iem.s, 0, u8TrapNo, fFlags, uErrCode, uCr2);
+}
+
+
+VMM_INT_DECL(int) IEMBreakpointSet(PVM pVM, RTGCPTR GCPtrBp)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
+VMM_INT_DECL(int) IEMBreakpointClear(PVM pVM, RTGCPTR GCPtrBp)
+{
+    return VERR_NOT_IMPLEMENTED;
 }
 

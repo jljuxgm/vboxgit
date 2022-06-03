@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 40054 2012-02-09 15:37:11Z vboxsync $ */
+/* $Id: PGM.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -581,7 +581,9 @@
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/stam.h>
-#include <VBox/vmm/rem.h>
+#ifdef VBOX_WITH_REM
+# include <VBox/vmm/rem.h>
+#endif
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/ssm.h>
 #include <VBox/vmm/hwaccm.h>

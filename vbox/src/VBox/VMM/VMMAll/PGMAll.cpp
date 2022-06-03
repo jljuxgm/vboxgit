@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 39402 2011-11-23 16:25:04Z vboxsync $ */
+/* $Id: PGMAll.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -29,7 +29,9 @@
 #include <VBox/vmm/csam.h>
 #include <VBox/vmm/patm.h>
 #include <VBox/vmm/trpm.h>
-#include <VBox/vmm/rem.h>
+#ifdef VBOX_WITH_REM
+# include <VBox/vmm/rem.h>
+#endif
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/hwaccm.h>
 #include <VBox/vmm/hwacc_vmx.h>
@@ -721,7 +723,7 @@ VMMDECL(int) PGMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCPtrPage)
     int rc;
     Log3(("PGMInvalidatePage: GCPtrPage=%RGv\n", GCPtrPage));
 
-#ifndef IN_RING3
+#if !defined(IN_RING3) && defined(VBOX_WITH_REM)
     /*
      * Notify the recompiler so it can record this instruction.
      */
