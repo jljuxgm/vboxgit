@@ -1,4 +1,4 @@
-/* $Id: RTMpGetArraySize-generic.cpp 36254 2011-03-10 17:22:08Z vboxsync $ */
+/* $Id: RTMpGetArraySize-generic.cpp 40902 2012-04-13 14:05:26Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetArraySize.
  */
@@ -51,7 +51,7 @@ RTDECL(uint32_t) RTMpGetArraySize(void)
         RTCPUSET    CpuSet;
         uint32_t    cCpus1 = RTCpuLastIndex(RTMpGetSet(&CpuSet)) + 1;
         uint32_t    cCpus2 = RTMpGetCount();
-        uint32_t    cCpus  = RT_MAX(cCpus1, cCpus2);
+        cCpus              = RT_MAX(cCpus1, cCpus2);
         ASMAtomicCmpXchgU32(&s_cMaxCpus, cCpus, 0);
         return cCpus;
     }
