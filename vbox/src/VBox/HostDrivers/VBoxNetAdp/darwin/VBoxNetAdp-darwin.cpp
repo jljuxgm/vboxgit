@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 38370 2011-08-09 08:37:03Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 38371 2011-08-09 08:50:45Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -207,7 +207,7 @@ static errno_t vboxNetAdpDarwinDemux(ifnet_t pIface, mbuf_t pMBuf,
 {
     PVBOXNETADP pThis = VBOXNETADP_FROM_IFACE(pIface);
     Assert(pThis);
-    Log2(("vboxNetAdpDarwinDemux: mode=%d\n", nMode));
+    Log2(("vboxNetAdpDarwinDemux: mode=%d\n", pThis->u.s.nTapMode));
     if (pThis->u.s.nTapMode & BPF_MODE_INPUT)
     {
         Log2(("vboxnetadp: in len=%d\n%.*Rhxd\n", mbuf_len(pMBuf), 14, pFrameHeader));
