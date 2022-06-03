@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 41590 2012-06-06 06:15:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -23,6 +23,7 @@
 #include <QFileInfo>
 #include <QLocale>
 #include <QThread>
+#include <QProcess>
 #ifdef Q_WS_MAC
 # include <QPushButton>
 #endif /* Q_WS_MAC */
