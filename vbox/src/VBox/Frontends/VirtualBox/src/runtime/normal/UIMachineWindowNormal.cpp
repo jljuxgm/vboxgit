@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 37712 2011-06-30 14:11:14Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 38222 2011-07-28 14:22:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -171,14 +171,14 @@ void UIMachineWindowNormal::sltDownloaderAdditionsEmbed()
 {
     /* If there is an additions download running show the process bar: */
     if (UIDownloaderAdditions *pDl = UIDownloaderAdditions::current())
-        statusBar()->addWidget(pDl->processWidget(this), 0);
+        statusBar()->addWidget(pDl->progressWidget(this), 0);
 }
 
 void UIMachineWindowNormal::sltDownloaderUserManualEmbed()
 {
     /* If there is an additions download running show the process bar: */
     if (UIDownloaderUserManual *pDl = UIDownloaderUserManual::current())
-        statusBar()->addWidget(pDl->processWidget(this), 0);
+        statusBar()->addWidget(pDl->progressWidget(this), 0);
 }
 
 void UIMachineWindowNormal::sltUpdateIndicators()

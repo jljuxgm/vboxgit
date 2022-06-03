@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 38168 2011-07-25 20:53:29Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 38222 2011-07-28 14:22:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1706,6 +1706,13 @@ bool VBoxProblemReporter::confirmMountAdditions (const QString &aURL,
         tr ("Mount", "additions"));
 }
 
+void VBoxProblemReporter::warnAboutAdditionsCantBeSaved(const QString &strTarget)
+{
+    message(mainWindowShown(), Error,
+            tr("<p>Failed to save the downloaded file as <nobr><b>%1</b>.</nobr></p>")
+               .arg(QDir::toNativeSeparators(strTarget)));
+}
+
 bool VBoxProblemReporter::askAboutUserManualDownload(const QString &strMissedLocation)
 {
     return messageOkCancel(mainWindowShown(), Question,
@@ -2799,7 +2806,7 @@ void VBoxProblemReporter::showHelpHelpDialog()
         /* Notify listeners: */
         emit sigDownloaderUserManualCreated();
         /* Start the downloader: */
-        pDl->startDownload();
+        pDl->start();
     }
 #endif /* #ifdef VBOX_OSE */
 }
