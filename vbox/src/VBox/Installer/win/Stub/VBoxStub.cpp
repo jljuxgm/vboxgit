@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: VBoxStub.cpp 39613 2011-12-14 15:16:15Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -474,7 +474,7 @@ int WINAPI WinMain(HINSTANCE  hInstance,
         }
         if (!RTDirExists(szExtractPath))
         {
-            vrc = RTDirCreate(szExtractPath, 0700);
+            vrc = RTDirCreate(szExtractPath, 0700, 0);
             AssertMsgRCBreak(vrc, ("Could not create temp directory!\n"));
         }
 
