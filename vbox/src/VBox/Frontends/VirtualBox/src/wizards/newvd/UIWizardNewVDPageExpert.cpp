@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 41230 2012-05-10 10:38:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -294,13 +294,11 @@ bool UIWizardNewVDPageExpert::validatePage()
     /* Lock finish button: */
     startProcessing();
 
-    /* Make sure that virtual-disk doesn't exists: */
+    /* Make sure such virtual-disk doesn't exists: */
     QString strMediumPath(mediumPath());
-    if (fResult && QFileInfo(strMediumPath).exists())
-    {
+    fResult = !QFileInfo(strMediumPath).exists();
+    if (!fResult)
         msgCenter().sayCannotOverwriteHardDiskStorage(this, strMediumPath);
-        fResult = false;
-    }
 
     /* Try to create virtual-disk: */
     if (fResult)
