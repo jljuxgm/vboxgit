@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 41364 2012-05-21 12:47:04Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 41368 2012-05-21 13:11:24Z vboxsync $ */
 
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
@@ -149,13 +149,13 @@ static DECLCALLBACK(void) drvCardReaderCmdStatus(PUSBCARDREADER pThis,
 }
 
 static DECLCALLBACK(void) drvCardReaderCmdConnect(PUSBCARDREADER pThis,
-                                                  const char *pcszCardReaderName,
                                                   void *pvUser,
+                                                  const char *pcszCardReaderName,
                                                   uint32_t u32ShareMode,
                                                   uint32_t u32PreferredProtocols)
 {
-    LogFlowFunc(("ENTER: pcszCardReaderName:%s, pvUser:%p, u32ShareMode:%RX32, u32PreferredProtocols:%RX32\n",
-                 pcszCardReaderName, pvUser, u32ShareMode, u32PreferredProtocols));
+    LogFlowFunc(("ENTER: pvUser:%p, pcszCardReaderName:%s, u32ShareMode:%RX32, u32PreferredProtocols:%RX32\n",
+                 pvUser, pcszCardReaderName, u32ShareMode, u32PreferredProtocols));
 
     UsbCardReader *pUsbCardReader = pThis->pUsbCardReader;
     if (!pUsbCardReader)
