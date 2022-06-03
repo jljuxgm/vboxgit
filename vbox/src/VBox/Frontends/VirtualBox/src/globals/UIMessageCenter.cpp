@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 38337 2011-08-08 09:05:36Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 38476 2011-08-16 13:25:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1785,6 +1785,59 @@ void UIMessageCenter::warnAboutUserManualCantBeSaved(const QString &strURL, cons
                "but can't be saved locally as <nobr><b>%3</b>.</nobr></p>"
                "<p>Please choose another location for that file.</p>")
                .arg(strURL).arg(strURL).arg(strTarget));
+}
+
+bool UIMessageCenter::proposeDownloadExtensionPack()
+{
+    return messageOkCancel(mainWindowShown(), Question,
+                           tr("<p>You have an old "
+                              "VirtualBox Extension Pack installed.</p>"
+                              "<p>Do you wish to download latest one from the Internet?</p>"),
+                           0, /* Auto-confirm Id */
+                           tr("Download", "extension pack"));
+}
+
+bool UIMessageCenter::confirmDownloadExtensionPack(const QString &strURL, ulong uSize)
+{
+    return messageOkCancel(mainWindowShown(), Question,
+                           tr("<p>Are you sure you want to download the "
+                              "VirtualBox Extension Pack from "
+                              "<nobr><a href=\"%1\">%2</a></nobr> "
+                              "(size %3 bytes)?</p>").arg(strURL).arg(strURL).arg(uSize),
+                           0, /* Auto-confirm Id */
+                           tr("Download", "extension pack"));
+}
+
+bool UIMessageCenter::proposeInstallExtentionPack(const QString &strFrom, const QString &strTo)
+{
+    return messageOkCancel(mainWindowShown(), Question,
+                           tr("<p>The VirtualBox Extension Pack has been "
+                              "successfully downloaded from "
+                              "<nobr><a href=\"%1\">%2</a></nobr> "
+                              "and saved locally as <nobr><b>%3</b>.</nobr></p>"
+                              "<p>Do you wish to install this extension pack?</p>")
+                              .arg(strFrom).arg(strFrom).arg(strTo),
+                           0, /* Auto-confirm Id */
+                           tr ("Install", "extension pack"));
+}
+
+void UIMessageCenter::warnAboutExtentionPackCantBeSaved(const QString &strFrom, const QString &strTo)
+{
+    message(mainWindowShown(), Error,
+            tr("<p>The VirtualBox Extension Pack has been "
+               "successfully downloaded from "
+               "<nobr><a href=\"%1\">%2</a></nobr> "
+               "but can't be saved locally as <nobr><b>%3</b>.</nobr></p>"
+               "<p>Please choose another location for that file.</p>")
+               .arg(strFrom).arg(strFrom).arg(strTo));
+}
+
+void UIMessageCenter::cannotDownloadExtensionPack(const QString &strFrom, const QString &strError)
+{
+    message(mainWindowShown(), Error,
+            tr("<p>Failed to download the VirtualBox Extension Pack "
+               "from <nobr><a href=\"%1\">%2</a>.</nobr></p><p>%3</p>")
+               .arg(strFrom).arg(strFrom).arg(strError));
 }
 
 void UIMessageCenter::cannotConnectRegister(QWidget *pParent,
