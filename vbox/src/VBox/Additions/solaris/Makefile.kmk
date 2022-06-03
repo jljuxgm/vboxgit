@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41704 2012-06-14 11:19:20Z vboxsync $
+# $Id: Makefile.kmk 41705 2012-06-14 11:41:34Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -33,6 +33,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 ifeq ($(KBUILD_TARGET),solaris)
  include $(PATH_SUB_CURRENT)/SharedFolders/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/Mouse/Makefile.kmk
  include $(PATH_SUB_CURRENT)/DRM/Makefile.kmk
 endif
 
