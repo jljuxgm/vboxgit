@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 36635 2011-04-08 23:25:37Z vboxsync $ */
+/* $Id: tstVDIo.cpp 36637 2011-04-09 12:17:40Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -1360,7 +1360,7 @@ static DECLCALLBACK(int) vdScriptHandlerIoPatternCreateFromNumber(PVDTESTGLOB pG
             {
                 *((uint64_t*)pv)     = u64Pattern;
                 pPattern->cbPattern -= sizeof(uint64_t);
-                pv                   = (uint64_t *)pv + sizeof(uint64_t);
+                pv                   = (uint64_t *)pv + 1;
             }
             pPattern->cbPattern = cbPattern; /* Set to the desired size. (could be unaligned) */
 
