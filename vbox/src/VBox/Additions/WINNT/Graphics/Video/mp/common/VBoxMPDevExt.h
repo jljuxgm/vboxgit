@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 40566 2012-03-21 14:12:23Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 40747 2012-04-02 17:07:43Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -98,7 +98,11 @@ typedef struct _VBOXMP_DEVEXT
    FAST_MUTEX ContextMutex;
    KSPIN_LOCK SynchLock;
    volatile uint32_t cContexts3D;
+   volatile uint32_t cContexts2D;
+   volatile uint32_t cRenderFromShadowDisabledContexts;
    volatile uint32_t cUnlockedVBVADisabled;
+   /* this is examined and swicthed by DxgkDdiSubmitCommand only! */
+   volatile BOOLEAN fRenderToShadowDisabled;
 
    HVBOXCRCTL hCrCtl;
    uint32_t cCrCtlRefs;
