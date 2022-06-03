@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 40087 2012-02-13 01:12:06Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 40088 2012-02-13 01:21:43Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -10993,7 +10993,7 @@ FNIEMOP_DEF(iemOp_EscF6)
         {
             case 0: return FNIEMOP_CALL_1(iemOp_faddp_stN_st0, bRm);
             case 1: return FNIEMOP_CALL_1(iemOp_fmulp_stN_st0, bRm);
-            case 2: return FNIEMOP_CALL(iemOp_fnop);
+            case 2: return FNIEMOP_CALL_1(iemOp_fcomp_stN, bRm);
             case 3: if (bRm == 0xd9)
                         return FNIEMOP_CALL(iemOp_fcompp);
                     return IEMOP_RAISE_INVALID_OPCODE();
