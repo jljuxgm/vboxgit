@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibCredentials.cpp 40211 2012-02-22 14:25:36Z vboxsync $ */
+/* $Id: VBoxGuestR3LibCredentials.cpp 40263 2012-02-27 14:51:39Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, user credentials.
  */
@@ -198,11 +198,11 @@ VBGLR3DECL(void) VbglR3CredentialsDestroyUtf16(PRTUTF16 pwszUser, PRTUTF16 pwszP
 {
     /* wipe first */
     if (pwszUser)
-        RTMemWipeThoroughly(pwszUser,     RTUtf16Len(pwszUser) + 1,     cPasses);
+        RTMemWipeThoroughly(pwszUser,     RTUtf16Len(pwszUser) + sizeof(RTUTF16),     cPasses);
     if (pwszPassword)
-        RTMemWipeThoroughly(pwszPassword, RTUtf16Len(pwszPassword) + 1, cPasses);
+        RTMemWipeThoroughly(pwszPassword, RTUtf16Len(pwszPassword) + sizeof(RTUTF16), cPasses);
     if (pwszDomain)
-        RTMemWipeThoroughly(pwszDomain,   RTUtf16Len(pwszDomain) + 1,   cPasses);
+        RTMemWipeThoroughly(pwszDomain,   RTUtf16Len(pwszDomain) + sizeof(RTUTF16),   cPasses);
 
     /* then free. */
     RTUtf16Free(pwszUser);
