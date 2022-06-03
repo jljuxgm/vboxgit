@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 38140 2011-07-25 10:01:03Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 38370 2011-08-09 08:37:03Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -23,6 +23,8 @@
 #include <iprt/semaphore.h>
 #include <iprt/assert.h>
 
+/* Copied from VBoxNetAdp/VBoxNetAdpInternal.h */
+#define VBOXNETADP_MAGIC           0x56424e41
 
 RT_C_DECLS_BEGIN
 
