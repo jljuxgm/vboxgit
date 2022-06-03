@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37052 2011-05-12 14:18:38Z vboxsync $
+# $Id: Makefile.kmk 37053 2011-05-12 14:19:25Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxInstallHelper.dll.
 #
@@ -33,7 +33,6 @@ VBoxInstallHelper_SOURCES  = \
 ifndef VBOX_OSE
  VBoxInstallHelper_SOURCES += internal/VBoxSerial.cpp
 endif
-
 VBoxInstallHelper_SDKS     = WINPSDK W2K3DDK
 VBoxInstallHelper_LIBS     = $(PATH_SDK_W2K3DDK_LIB)/Msi.lib
 ifdef VBOX_WITH_NETFLT
