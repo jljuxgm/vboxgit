@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 40557 2012-03-20 22:24:36Z vboxsync $ */
+/* $Id: scmstream.cpp 40558 2012-03-21 01:54:03Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -993,7 +993,8 @@ int ScmStreamWrite(PSCMSTREAM pStream, const char *pchBuf, size_t cchBuf)
             pStream->paLines[iLine].enmEol = SCMEOL_NONE;
 
             size_t cchLeft = cchBuf - offBuf;
-            pchLF = (const char *)memchr(pchLF + 1, '\n', cchLeft);
+            pchLine = pchLF + 1;
+            pchLF = (const char *)memchr(pchLine, '\n', cchLeft);
             if (!pchLF)
             {
                 pStream->paLines[iLine].cch = cchLeft;
