@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 39998 2012-02-04 16:06:05Z vboxsync $
+; $Id: tstX86-1A.asm 40001 2012-02-05 21:30:40Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -1216,6 +1216,58 @@ BEGINPROC   x861_Test3
         ret
 ENDPROC     x861_Test3
 
+
+;;
+; Tests various multibyte NOP sequences.
+;
+BEGINPROC   x861_Test4
+        SAVE_ALL_PROLOGUE
+        call    x861_ClearRegisters
+
+        ; Intel recommended sequences.
+        nop
+        db 066h, 090h
+        db 00fh, 01fh, 000h
+        db 00fh, 01fh, 040h, 000h
+        db 00fh, 01fh, 044h, 000h, 000h
+        db 066h, 00fh, 01fh, 044h, 000h, 000h
+        db 00fh, 01fh, 080h, 000h, 000h, 000h, 000h
+        db 00fh, 01fh, 084h, 000h, 000h, 000h, 000h, 000h
+        db 066h, 00fh, 01fh, 084h, 000h, 000h, 000h, 000h, 000h
+
+        ; Check that the NOPs are allergic to lock prefixing.
+        ShouldTrap X86_XCPT_UD, db 0f0h, 090h               ; lock prefixed NOP.
+        ShouldTrap X86_XCPT_UD, db 0f0h, 066h, 090h         ; lock prefixed two byte NOP.
+        ShouldTrap X86_XCPT_UD, db 0f0h, 00fh, 01fh, 000h   ; lock prefixed three byte NOP.
+
+        ; Check the range of instructions that AMD marks as NOPs.
+%macro TST_NOP 1
+        db 00fh, %1, 000h
+        db 00fh, %1, 040h, 000h
+        db 00fh, %1, 044h, 000h, 000h
+        db 066h, 00fh, %1, 044h, 000h, 000h
+        db 00fh, %1, 080h, 000h, 000h, 000h, 000h
+        db 00fh, %1, 084h, 000h, 000h, 000h, 000h, 000h
+        db 066h, 00fh, %1, 084h, 000h, 000h, 000h, 000h, 000h
+        ShouldTrap X86_XCPT_UD, db 0f0h, 00fh, %1, 000h
+%endmacro
+        TST_NOP 019h
+        TST_NOP 01ah
+        TST_NOP 01bh
+        TST_NOP 01ch
+        TST_NOP 01dh
+        TST_NOP 01eh
+        TST_NOP 01fh
+
+        ; The AMD P group, intel marks this as a NOP.
+        TST_NOP 00dh
+
+.success:
+        xor     eax, eax
+.return:
+        SAVE_ALL_EPILOGUE
+        ret
+ENDPROC     x861_Test4
 
 ;;
 ; Terminate the trap info array with a NIL entry.

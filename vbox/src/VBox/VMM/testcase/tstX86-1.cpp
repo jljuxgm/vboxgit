@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 39999 2012-02-04 22:22:43Z vboxsync $ */
+/* $Id: tstX86-1.cpp 40001 2012-02-05 21:30:40Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -68,6 +68,7 @@ RT_C_DECLS_END
 DECLASM(int32_t) x861_Test1(void);
 DECLASM(int32_t) x861_Test2(void);
 DECLASM(int32_t) x861_Test3(void);
+DECLASM(int32_t) x861_Test4(void);
 
 
 
@@ -226,11 +227,15 @@ int main()
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test2 -> %d", rc);
 
-#endif
         RTTestSub(hTest, "fxsave / fxrstor and #PFs");
         rc = x861_Test3();
         if (rc != 0)
             RTTestFailed(hTest, "x861_Test3 -> %d", rc);
+#endif
+        RTTestSub(hTest, "Multibyte NOPs");
+        rc = x861_Test4();
+        if (rc != 0)
+            RTTestFailed(hTest, "x861_Test4 -> %d", rc);
     }
 
     return RTTestSummaryAndDestroy(hTest);
