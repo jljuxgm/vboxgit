@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 36204 2011-03-08 16:12:19Z vboxsync $ */
+/* $Id: DevDMA.cpp 36228 2011-03-09 14:11:57Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -375,7 +375,7 @@ static DECLCALLBACK(int) dmaReadCtl(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT p
     if (cb == 1)
     {
         DMAControl  *dc = (DMAControl *)pvUser;
-        uint8_t     val;
+        uint8_t     val = 0;
         int         reg;
 
         reg = ((port >> dc->is16bit) & 0x0f) - 8;
@@ -409,7 +409,6 @@ static DECLCALLBACK(int) dmaReadCtl(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT p
             break;
         default:
             Assert(0);
-            val = 0;
             break;
         }
 
