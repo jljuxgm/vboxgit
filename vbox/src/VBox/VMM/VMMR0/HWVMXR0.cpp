@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 41735 2012-06-15 00:26:44Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 41737 2012-06-15 01:01:49Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3553,7 +3553,7 @@ ResumeExecution:
 
                     rc = VINF_SUCCESS;
                     Assert(cbOp == pDis->cbInstr);
-                    switch (pDis->pCurInstr->opcode)
+                    switch (pDis->pCurInstr->uOpcode)
                     {
                     case OP_CLI:
                         pCtx->eflags.Bits.u1IF = 0;

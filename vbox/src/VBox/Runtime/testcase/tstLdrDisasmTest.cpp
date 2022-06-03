@@ -1,4 +1,4 @@
-/* $Id: tstLdrDisasmTest.cpp 41736 2012-06-15 00:39:37Z vboxsync $ */
+/* $Id: tstLdrDisasmTest.cpp 41737 2012-06-15 01:01:49Z vboxsync $ */
 /** @file
  * IPRT - RTLdr test object.
  *
@@ -127,7 +127,7 @@ extern "C" DECLEXPORT(int) DisasmTest1(void)
             rc = MyDisasm(CodeIndex, &Cpu, &cb); \
             if (RT_FAILURE(rc)) \
                 return CodeIndex | 0xf000; \
-            if (Cpu.pCurInstr->opcode != (enmOp)) \
+            if (Cpu.pCurInstr->uOpcode != (enmOp)) \
                 return CodeIndex| 0xe000; \
             if (cb != (cbInstr)) \
                 return CodeIndex | 0xd000; \
