@@ -1,4 +1,4 @@
-; $Id: sup.mac 36262 2011-03-11 14:50:45Z vboxsync $
+; $Id: sup.mac 40740 2012-04-02 11:54:41Z vboxsync $
 ;; @file
 ; SUP - Support Library, assembly definitions.
 ;
@@ -62,7 +62,9 @@ struc SUPGLOBALINFOPAGE
     .cPossibleCpus              resw 1
     .u16Padding0                resw 1
     .idCpuMax                   resd 1
-    .au32Padding1               resd 29
+    .au16Padding1               resw 2
+    .Spinlock                   RTR0PTR_RES 1
+    .au32Padding1               resd 26
     .aiCpuFromApicId            resw 256
     .aiCpuFromCpuSetIdx         resw 256
     .aCPUs                      resb SUPGIPCPU_size
