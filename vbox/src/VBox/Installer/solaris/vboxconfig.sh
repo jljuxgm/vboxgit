@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 37790 2011-07-06 09:12:21Z vboxsync $
+# $Id: vboxconfig.sh 37792 2011-07-06 09:14:42Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -858,7 +858,7 @@ postinstall()
                         if test $recreatelink -eq 1; then
                             # Check after removing our settings if /etc/netmasks is identifcal to /etc/inet/netmasks 
                             anydiff=`diff $nmaskbackupfile "$PKG_INSTALL_ROOT/etc/inet/netmasks"`
-                            if test ! -z $anydiff; then
+                            if test ! -z "$anydiff"; then
                                 # User may have some custom settings in /etc/netmasks, don't overwrite /etc/netmasks!
                                 recreatelink=2
                             fi
