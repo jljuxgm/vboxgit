@@ -1,4 +1,4 @@
-/* $Id: service.cpp 40657 2012-03-27 08:24:39Z vboxsync $ */
+/* $Id: service.cpp 40681 2012-03-28 14:33:04Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -635,6 +635,15 @@ int Service::assignHostCmdToGuest(HostCmd *pCmd, VBOXHGCMCALLHANDLE callHandle, 
     else
     {
         rc = paramBufferAssign(paParms, cParms, &pCmd->mParmBuf);
+
+        /* Has there been enough parameter space but the wrong parameter types
+         * were submitted -- maybe the client was just asking for the next upcoming
+         * host message?
+         *
+         * Note: To keep this compatible to older clients we return VERR_TOO_MUCH_DATA
+         *       in every case. */
+        if (RT_FAILURE(rc))
+            rc = VERR_TOO_MUCH_DATA;
     }
 
     LogFlowFunc(("Returned with rc=%Rrc\n", rc));
