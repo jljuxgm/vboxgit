@@ -1,4 +1,4 @@
-/* $Revision: 39744 $ */
+/* $Revision: 39808 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -835,7 +835,9 @@ static struct page *rtR0MemObjLinuxVirtToPage(void *pv)
     if (RT_UNLIKELY(!pEntry))
         return NULL;
     u.Entry = *pEntry;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 5) || defined(pte_offset_map)
     pte_unmap(pEntry);
+#endif
 
     if (RT_UNLIKELY(!pte_present(u.Entry)))
         return NULL;
