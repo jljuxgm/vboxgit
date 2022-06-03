@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 38119 2011-07-22 14:57:03Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 38120 2011-07-22 15:05:21Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -823,10 +823,6 @@ HRESULT MachineCloneVM::start(IProgress **pProgress)
                 }
             }
         }
-
-        /* If we want to create a linked clone just attach the medium
-         * associated with the snapshot. The rest is taken care of by
-         * attach already, so no need to duplicate this. */
 
         /* We have different approaches for getting the medias which needs to
          * be replicated based on the clone mode the user requested (this is
