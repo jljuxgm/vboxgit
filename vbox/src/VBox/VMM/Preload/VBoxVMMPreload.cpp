@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMPreload.cpp 41074 2012-04-26 23:11:45Z vboxsync $ */
+/* $Id: VBoxVMMPreload.cpp 41075 2012-04-26 23:28:21Z vboxsync $ */
 /** @file
  * VBoxVMMPreload - Preload VBox the ring-0 modules.
  */
@@ -42,13 +42,12 @@ static struct
 {
     const char     *pszName;
     bool            fPreload;
-    bool            fVMM;
     void           *pvImageBase;
 } g_aModules[] =
 {
-    { "VMMR0.r0",       true,  true,  NULL },
-    { "VBoxDDR0.r0",    false, true,  NULL },
-    { "VBoxDD2R0.r0",   false, true,  NULL },
+    { "VMMR0.r0",       true,  NULL },
+    { "VBoxDDR0.r0",    true,  NULL },
+    { "VBoxDD2R0.r0",   true,  NULL },
 };
 
 static uint32_t     g_cVerbose = 1;
@@ -163,11 +162,12 @@ static RTEXITCODE LoadModules(void)
             if (RT_FAILURE(rc))
                 return RTMsgErrorExit(RTEXITCODE_FAILURE, "SUPR3LoadModule failed for %s (%s): %s (rc=%Rrc)",
                                       g_aModules[i].pszName, szPath, ErrInfo.Core.pszMsg, rc);
-            if (g_cVerbose > 1)
+            if (g_cVerbose >= 1)
                 RTMsgInfo("Loaded '%s' ('%s') at %p\n", szPath, g_aModules[i].pszName, g_aModules[i].pvImageBase);
         }
     }
 
+    RTStrmFlush(g_pStdOut);
     return RTEXITCODE_SUCCESS;
 }
 
