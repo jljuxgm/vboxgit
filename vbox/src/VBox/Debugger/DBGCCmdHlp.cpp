@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 36032 2011-02-21 12:46:48Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 40097 2012-02-13 17:32:25Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -761,7 +761,7 @@ static DECLCALLBACK(int) dbgcHlpVarToNumber(PDBGCCMDHLP pCmdHlp, PCDBGCVAR pVar,
             break;
         case DBGCVAR_TYPE_NUMBER:
             u64Number = (uintptr_t)pVar->u.u64Number;
-            return VINF_SUCCESS;
+            break;
         case DBGCVAR_TYPE_GC_FAR:
             u64Number = (uintptr_t)pVar->u.GCFar.off;
             break;
