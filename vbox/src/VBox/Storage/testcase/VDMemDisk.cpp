@@ -1,4 +1,4 @@
-/** $Id: VDMemDisk.cpp 36134 2011-03-02 23:31:06Z vboxsync $ */
+/** $Id: VDMemDisk.cpp 36635 2011-04-08 23:25:37Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, memory disk/file.
@@ -249,10 +249,15 @@ int VDMemDiskSetSize(PVDMEMDISK pMemDisk, uint64_t cbSize)
         PVDMEMDISKSEG pSeg = (PVDMEMDISKSEG)RTAvlrU64Get(pMemDisk->pTreeSegments, cbSize);
         if (pSeg)
         {
+            RTAvlrU64Remove(pMemDisk->pTreeSegments, pSeg->Core.Key);
             if (pSeg->Core.Key < cbSize)
             {
                 /* Cut off the part which is not in the file anymore. */
                 pSeg->pvSeg = RTMemRealloc(pSeg->pvSeg, pSeg->Core.KeyLast - cbSize + 1);
+                pSeg->Core.KeyLast = cbSize - pSeg->Core.Key - 1;
+
+                bool fInserted = RTAvlrU64Insert(pMemDisk->pTreeSegments, &pSeg->Core);
+                AssertMsg(fInserted, ("Bug!\n"));
             }
             else
             {
