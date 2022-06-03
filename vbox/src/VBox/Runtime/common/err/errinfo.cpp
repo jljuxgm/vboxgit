@@ -1,4 +1,4 @@
-/* $Id: errinfo.cpp 35182 2010-12-16 13:57:44Z vboxsync $ */
+/* $Id: errinfo.cpp 40099 2012-02-13 17:40:24Z vboxsync $ */
 /** @file
  * IPRT - Error Info.
  */
@@ -54,7 +54,7 @@ RTDECL(int)         RTErrInfoAllocEx(size_t cbMsg, PRTERRINFO *ppErrInfo)
 
     PRTERRINFO pErrInfo;
     *ppErrInfo = pErrInfo = (PRTERRINFO)RTMemTmpAlloc(sizeof(*pErrInfo) + cbMsg);
-    if (RT_UNLIKELY(pErrInfo))
+    if (RT_UNLIKELY(!pErrInfo))
         return VERR_NO_TMP_MEMORY;
 
     RTErrInfoInit(pErrInfo, (char *)(pErrInfo + 1), cbMsg);
