@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36159 2011-03-04 09:58:49Z vboxsync $
+# $Id: Makefile.kmk 36160 2011-03-04 10:22:56Z vboxsync $
 ## @file
 # Sub-Makefile for the VBoxBFE testcases.
 #
@@ -37,6 +37,8 @@ tstMouseImpl_DEFS += VBOXBFE_WITHOUT_COM
 tstMouseImpl_SOURCES  = \
 	tstMouseImpl.cpp \
 	$(addprefix $(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_SRCS)))
+$(tstMouseImpl_SOURCES): \
+    $(addprefix $$(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_HDRS)))
 tstMouseImpl_INCS     = \
 	$(VBoxBFE_0_OUTDIR) \
 	$(VBOX_PATH_SDK)/include \
