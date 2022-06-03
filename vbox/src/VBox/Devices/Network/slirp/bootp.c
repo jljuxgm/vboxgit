@@ -1,4 +1,4 @@
-/* $Id: bootp.c 39768 2012-01-16 02:25:22Z vboxsync $ */
+/* $Id: bootp.c 40113 2012-02-14 02:23:50Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -744,7 +744,7 @@ static void dhcp_decode(PNATState pData, struct bootp_t *bp, const uint8_t *buf,
             break;
 
         case DHCPRELEASE:
-            rc = dhcp_decode_release(pData, bp);
+            dhcp_decode_release(pData, bp);
             /* no reply required */
             break;
 
