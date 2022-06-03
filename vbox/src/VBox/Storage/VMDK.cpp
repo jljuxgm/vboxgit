@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 36514 2011-04-01 17:07:15Z vboxsync $ */
+/* $Id: VMDK.cpp 36633 2011-04-08 21:43:41Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -6969,15 +6969,6 @@ static void vmdkDump(void *pBackendData)
     }
 }
 
-/** @copydoc VBOXHDDBACKEND::pfnIsAsyncIOSupported */
-static bool vmdkIsAsyncIOSupported(void *pBackendData)
-{
-    PVMDKIMAGE pImage = (PVMDKIMAGE)pBackendData;
-
-    /* We do not support async I/O for stream optimized VMDK images. */
-    return (pImage->uImageFlags & VD_VMDK_IMAGE_FLAGS_STREAM_OPTIMIZED) == 0;
-}
-
 /** @copydoc VBOXHDDBACKEND::pfnAsyncRead */
 static int vmdkAsyncRead(void *pBackendData, uint64_t uOffset, size_t cbRead,
                          PVDIOCTX pIoCtx, size_t *pcbActuallyRead)
@@ -7364,8 +7355,6 @@ VBOXHDDBACKEND g_VmdkBackend =
     NULL,
     /* pfnSetParentFilename */
     NULL,
-    /* pfnIsAsyncIOSupported */
-    vmdkIsAsyncIOSupported,
     /* pfnAsyncRead */
     vmdkAsyncRead,
     /* pfnAsyncWrite */

@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 35486 2011-01-11 13:44:31Z vboxsync $ */
+/* $Id: Parallels.cpp 36633 2011-04-08 21:43:41Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -1195,16 +1195,6 @@ static void parallelsDump(void *pBackendData)
     }
 }
 
-/** @copydoc VBOXHDDBACKEND::pfnIsAsyncIOSupported */
-static bool parallelsIsAsyncIOSupported(void *pBackendData)
-{
-#if 0 /** @todo: Remove when tested */
-    return true;
-#else
-    return false;
-#endif
-}
-
 /** @copydoc VBOXHDDBACKEND::pfnAsyncRead */
 static int parallelsAsyncRead(void *pBackendData, uint64_t uOffset, size_t cbToRead,
                               PVDIOCTX pIoCtx, size_t *pcbActuallyRead)
@@ -1431,8 +1421,6 @@ VBOXHDDBACKEND g_ParallelsBackend =
     NULL,
     /* pfnSetParentFilename */
     NULL,
-    /* pfnIsAsyncIOSupported */
-    parallelsIsAsyncIOSupported,
     /* pfnAsyncRead */
     parallelsAsyncRead,
     /* pfnAsyncWrite */

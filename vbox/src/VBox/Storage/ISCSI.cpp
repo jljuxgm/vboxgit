@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 36230 2011-03-09 14:34:53Z vboxsync $ */
+/* $Id: ISCSI.cpp 36633 2011-04-08 21:43:41Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -5175,13 +5175,6 @@ static void iscsiDump(void *pBackendData)
     }
 }
 
-/** @copydoc VBOXHDDBACKEND::pfnIsAsyncIOSupported */
-static bool iscsiIsAsyncIOSupported(void *pBackendData)
-{
-    PISCSIIMAGE pImage = (PISCSIIMAGE)pBackendData;
-    return pImage->fCmdQueuingSupported;
-}
-
 /** @copydoc VBOXHDDBACKEND::pfnAsyncRead */
 static int iscsiAsyncRead(void *pBackendData, uint64_t uOffset, size_t cbToRead,
                           PVDIOCTX pIoCtx, size_t *pcbActuallyRead)
@@ -5628,8 +5621,6 @@ VBOXHDDBACKEND g_ISCSIBackend =
     NULL,
     /* pfnSetParentFilename */
     NULL,
-    /* pfnIsAsyncIOSupported */
-    iscsiIsAsyncIOSupported,
     /* pfnAsyncRead */
     iscsiAsyncRead,
     /* pfnAsyncWrite */
