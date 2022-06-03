@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInstall.cpp 41011 2012-04-20 13:20:01Z vboxsync $ */
+/* $Id: VBoxNetAdpInstall.cpp 41110 2012-05-02 08:42:00Z vboxsync $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
@@ -209,7 +209,7 @@ static void printUsage(void)
     printf("host-only network adapter configuration tool\n"
             "  Usage: VBoxNetAdpInstall [cmd]\n"
             "    cmd can be one of the following values:\n"
-            "       i  - install a new host-only interface\n"
+            "       i  - install a new host-only interface (default command)\n"
             "       u  - uninstall all host-only interfaces\n"
             "       a  - update the host-only driver\n"
             "       d  - disable all host-only interfaces\n"
