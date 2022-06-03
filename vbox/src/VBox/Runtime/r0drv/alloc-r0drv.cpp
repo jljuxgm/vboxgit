@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 36982 2011-05-06 13:46:03Z vboxsync $ */
+/* $Id: alloc-r0drv.cpp 37672 2011-06-28 19:48:17Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -179,6 +179,8 @@ RT_EXPORT_SYMBOL(RTMemAllocZVarTag);
 
 RTDECL(void *) RTMemReallocTag(void *pvOld, size_t cbNew, const char *pszTag) RT_NO_THROW
 {
+    PRTMEMHDR pHdrOld;
+
     /* Free. */
     if (!cbNew && pvOld)
     {
@@ -193,7 +195,7 @@ RTDECL(void *) RTMemReallocTag(void *pvOld, size_t cbNew, const char *pszTag) RT
     /*
      * Realloc.
      */
-    PRTMEMHDR pHdrOld = (PRTMEMHDR)pvOld - 1;
+    pHdrOld = (PRTMEMHDR)pvOld - 1;
     RT_ASSERT_PREEMPTIBLE();
 
     if (pHdrOld->u32Magic == RTMEMHDR_MAGIC)

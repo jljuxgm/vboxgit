@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-linux.c 37297 2011-06-01 16:18:21Z vboxsync $ */
+/* $Id: mpnotification-r0drv-linux.c 37672 2011-06-28 19:48:17Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Linux.
  */
@@ -189,7 +189,7 @@ static int rtMpNotificationLinuxCallback(struct notifier_block *pNotifierBlock, 
      * Reschedule the callbacks to fire on the specific CPU with preemption disabled.
      */
     rc = RTMpOnSpecific(idCpu, rtMpNotificationLinuxOnCurrentCpu, pNotifierBlock, &ulNativeEvent);
-    Assert(RT_SUCCESS(rc));
+    Assert(RT_SUCCESS(rc)); NOREF(rc);
     return NOTIFY_DONE;
 }
 
