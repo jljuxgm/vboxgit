@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 38587 2011-08-31 15:09:45Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 38633 2011-09-05 11:33:01Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -274,6 +274,9 @@ extern VBOXSERVICE  g_PageSharing;
 #endif
 #ifdef VBOX_WITH_SHARED_FOLDERS
 extern VBOXSERVICE  g_AutoMount;
+#endif
+#ifdef DEBUG
+extern RTCRITSECT   g_csLog; /* For guest process stdout dumping. */
 #endif
 
 extern RTEXITCODE   VBoxServiceSyntax(const char *pszFormat, ...);
