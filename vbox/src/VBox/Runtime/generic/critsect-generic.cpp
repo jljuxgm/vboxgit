@@ -1,4 +1,4 @@
-/* $Id: critsect-generic.cpp 37419 2011-06-11 20:25:37Z vboxsync $ */
+/* $Id: critsect-generic.cpp 40420 2012-03-10 19:40:57Z vboxsync $ */
 /** @file
  * IPRT - Critical Section, Generic.
  */
@@ -454,7 +454,7 @@ RTDECL(int) RTCritSectEnterMultiple(size_t cCritSects, PRTCRITSECT *papCritSects
 RT_EXPORT_SYMBOL(RTCritSectEnterMultiple);
 
 
-RTDECL(int) RTCritSectEnterMultipleDebug(size_t cCritSects, PRTCRITSECT *papCritSects, RTUINTPTR uId, RT_SRC_POS_DECL)
+RTDECL(int) RTCritSectEnterMultipleDebug(size_t cCritSects, PRTCRITSECT *papCritSects, RTHCUINTPTR uId, RT_SRC_POS_DECL)
 {
     RTLOCKVALSRCPOS SrcPos = RTLOCKVALSRCPOS_INIT_DEBUG_API();
     return rtCritSectEnterMultiple(cCritSects, papCritSects, &SrcPos);
