@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1470,6 +1470,7 @@ VMMR3DECL(int) PDMR3AsyncCompletionEpSetBwMgr(PPDMASYNCCOMPLETIONENDPOINT pEndpo
 
 VMMR3DECL(int) PDMR3AsyncCompletionTaskCancel(PPDMASYNCCOMPLETIONTASK pTask)
 {
+    NOREF(pTask);
     return VERR_NOT_IMPLEMENTED;
 }
 

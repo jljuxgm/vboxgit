@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 39038 2011-10-19 14:36:27Z vboxsync $ */
+/* $Id: GVMMR0.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -2158,6 +2158,7 @@ GVMMR0DECL(int) GVMMR0SchedPoll(PVM pVM, VMCPUID idCpu, bool fYield)
 static DECLCALLBACK(void) gvmmR0SchedPeriodicPreemptionTimerCallback(PRTTIMER pTimer, void *pvUser, uint64_t iTick)
 {
     PGVMMHOSTCPU pCpu = (PGVMMHOSTCPU)pvUser;
+    NOREF(pTimer); NOREF(iTick);
 
     /*
      * Termination check
@@ -2243,6 +2244,7 @@ static DECLCALLBACK(void) gvmmR0SchedPeriodicPreemptionTimerCallback(PRTTIMER pT
  */
 GVMMR0DECL(void) GVMMR0SchedUpdatePeriodicPreemptionTimer(PVM pVM, RTCPUID idHostCpu, uint32_t uHz)
 {
+    NOREF(pVM);
 #ifdef GVMM_SCHED_WITH_PPT
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     Assert(RTTimerCanDoHighResolution());
@@ -2308,7 +2310,9 @@ GVMMR0DECL(void) GVMMR0SchedUpdatePeriodicPreemptionTimer(PVM pVM, RTCPUID idHos
             RTSpinlockReleaseNoInts(pCpu->Ppt.hSpinlock, &Tmp);
         }
     }
-#endif /* GVMM_SCHED_WITH_PPT */
+#else  /* !GVMM_SCHED_WITH_PPT */
+    NOREF(idHostCpu); NOREF(uHz);
+#endif /* !GVMM_SCHED_WITH_PPT */
 }
 
 

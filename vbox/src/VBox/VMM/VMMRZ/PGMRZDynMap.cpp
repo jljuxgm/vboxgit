@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -1527,6 +1527,8 @@ DECLINLINE(uint32_t) pgmR0DynMapPage(PPGMRZDYNMAP pThis, RTHCPHYS HCPhys, int32_
     bool fInvalidateIt = RTCpuSetIsMemberByIndex(&paPages[iPage].PendingSet, iRealCpu);
     if (RT_UNLIKELY(fInvalidateIt))
         RTCpuSetDelByIndex(&paPages[iPage].PendingSet, iRealCpu);
+#else
+    NOREF(iRealCpu);
 #endif
 
     PGMRZDYNMAP_SPINLOCK_RELEASE(pThis);

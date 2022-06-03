@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: CSAMRC.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -65,6 +65,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
     bool         fPatchCode = PATMIsPatchGCAddr(pVM, pRegFrame->eip);
     int          rc;
     PVMCPU       pVCpu = VMMGetCpu0(pVM);
+    NOREF(uErrorCode);
 
     Assert(pVM->csam.s.cDirtyPages < CSAM_MAX_DIRTY_PAGES);
 

@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: VMMAll.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -89,6 +89,7 @@ VMMDECL(VMCPUID) VMMGetCpuId(PVM pVM)
     return NIL_VMCPUID;
 
 #else /* RC: Always EMT(0) */
+    NOREF(pVM);
     return 0;
 #endif
 }

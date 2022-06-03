@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 38867 2011-09-26 14:31:16Z vboxsync $ */
+/* $Id: TRPM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1127,10 +1127,13 @@ VMMR3DECL(void) TRPMR3DisableMonitoring(PVM pVM)
  * @param   enmAccessType   The access type.
  * @param   pvUser          User argument.
  */
-static DECLCALLBACK(int) trpmR3GuestIDTWriteHandler(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser)
+static DECLCALLBACK(int) trpmR3GuestIDTWriteHandler(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf,
+                                                    PGMACCESSTYPE enmAccessType, void *pvUser)
 {
-    Assert(enmAccessType == PGMACCESSTYPE_WRITE);
-    Log(("trpmR3GuestIDTWriteHandler: write to %RGv size %d\n", GCPtr, cbBuf));
+    Assert(enmAccessType == PGMACCESSTYPE_WRITE); NOREF(enmAccessType);
+    Log(("trpmR3GuestIDTWriteHandler: write to %RGv size %d\n", GCPtr, cbBuf)); NOREF(GCPtr); NOREF(cbBuf);
+    NOREF(pvPtr); NOREF(pvUser); NOREF(pvBuf);
+
     VMCPU_FF_SET(VMMGetCpu(pVM), VMCPU_FF_TRPM_SYNC_IDT);
     return VINF_PGM_HANDLER_DO_DEFAULT;
 }

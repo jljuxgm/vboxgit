@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: VM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1144,6 +1144,7 @@ static DECLCALLBACK(size_t) vmR3LogPrefixCallback(PRTLOGGER pLogger, char *pchBu
         pchBuf[1] = 'y';
     }
 
+    NOREF(pLogger);
     return 2;
 }
 #endif /* LOG_ENABLED */
@@ -2830,7 +2831,6 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3Reset(PVM pVM, PVMCPU pVCpu, void *pvUser)
  *
  * @bugref{4467}
  */
-        MMR3Reset(pVM);
         PDMR3Reset(pVM);
         SELMR3Reset(pVM);
         TRPMR3Reset(pVM);

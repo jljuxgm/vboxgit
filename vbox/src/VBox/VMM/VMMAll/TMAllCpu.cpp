@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -83,11 +83,10 @@ int tmCpuTickResume(PVM pVM, PVMCPU pVCpu)
  * Pauses the CPU timestamp counter ticking.
  *
  * @returns VBox status code.
- * @param   pVM         The VM to operate on.
  * @param   pVCpu       The VMCPU to operate on.
  * @internal
  */
-int tmCpuTickPause(PVM pVM, PVMCPU pVCpu)
+int tmCpuTickPause(PVMCPU pVCpu)
 {
     if (pVCpu->tm.s.fTSCTicking)
     {

@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: MM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -498,17 +498,6 @@ VMMR3DECL(void) MMR3TermUVM(PUVM pUVM)
     }
     mmR3HeapDestroy(pUVM->mm.s.pHeap);
     pUVM->mm.s.pHeap = NULL;
-}
-
-
-/**
- * Reset notification.
- *
- * @param   pVM             The VM handle.
- */
-VMMR3DECL(void) MMR3Reset(PVM pVM)
-{
-    /* nothing to do anylonger. */
 }
 
 

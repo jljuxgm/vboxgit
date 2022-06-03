@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: VMEmt.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -664,6 +664,7 @@ static DECLCALLBACK(int) vmR3HaltGlobal1Halt(PUVMCPU pUVCpu, const uint32_t fMas
     PVMCPU  pVCpu = pUVCpu->pVCpu;
     PVM     pVM   = pUVCpu->pVM;
     Assert(VMMGetCpu(pVM) == pVCpu);
+    NOREF(u64Now);
 
     /*
      * Halt loop.

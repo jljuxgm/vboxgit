@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
+/* $Id: PDMUsb.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -467,10 +467,12 @@ static int pdmR3UsbFindHub(PVM pVM, uint32_t iUsbVersion, PPDMUSBHUB *ppHub)
  *
  * @parma   iUsbVersion     The USB version preferred by the device.
  */
-static int pdmR3UsbCreateDevice(PVM pVM, PPDMUSBHUB pHub, PPDMUSB pUsbDev, int iInstance, PCRTUUID pUuid, PCFGMNODE pInstanceNode, PCFGMNODE *ppConfig, uint32_t iUsbVersion)
+static int pdmR3UsbCreateDevice(PVM pVM, PPDMUSBHUB pHub, PPDMUSB pUsbDev, int iInstance, PCRTUUID pUuid,
+                                PCFGMNODE pInstanceNode, PCFGMNODE *ppConfig, uint32_t iUsbVersion)
 {
     const bool fAtRuntime = pInstanceNode == NULL;
     int rc;
+    NOREF(iUsbVersion);
 
     /*
      * If not called by pdmR3UsbInstantiateDevices(), we'll have to fix

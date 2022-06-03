@@ -1,4 +1,4 @@
-/* $Id: PDMAllQueue.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMAllQueue.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -123,6 +123,7 @@ VMMDECL(void) PDMQueueInsert(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem)
  */
 VMMDECL(void) PDMQueueInsertEx(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem, uint64_t NanoMaxDelay)
 {
+    NOREF(NanoMaxDelay);
     PDMQueueInsert(pQueue, pItem);
 #ifdef IN_RC
     PVM pVM = pQueue->CTX_SUFF(pVM);

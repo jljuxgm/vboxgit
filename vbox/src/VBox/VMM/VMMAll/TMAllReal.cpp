@@ -1,4 +1,4 @@
-/* $Id: TMAllReal.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: TMAllReal.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Real Time, All Contexts.
  */
@@ -34,6 +34,7 @@
  */
 VMM_INT_DECL(uint64_t) TMRealGet(PVM pVM)
 {
+    NOREF(pVM);
     return RTTimeMilliTS();
 }
 
@@ -46,6 +47,7 @@ VMM_INT_DECL(uint64_t) TMRealGet(PVM pVM)
  */
 VMM_INT_DECL(uint64_t) TMRealGetFreq(PVM pVM)
 {
+    NOREF(pVM);
     return TMCLOCK_FREQ_REAL;
 }
 

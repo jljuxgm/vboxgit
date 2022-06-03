@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 37527 2011-06-17 10:18:02Z vboxsync $ */
+/* $Id: TMInternal.h 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -727,7 +727,7 @@ void                    tmTimerQueueSchedule(PVM pVM, PTMTIMERQUEUE pQueue);
 void                    tmTimerQueuesSanityChecks(PVM pVM, const char *pszWhere);
 #endif
 
-int                     tmCpuTickPause(PVM pVM, PVMCPU pVCpu);
+int                     tmCpuTickPause(PVMCPU pVCpu);
 int                     tmCpuTickResume(PVM pVM, PVMCPU pVCpu);
 
 int                     tmVirtualPauseLocked(PVM pVM);

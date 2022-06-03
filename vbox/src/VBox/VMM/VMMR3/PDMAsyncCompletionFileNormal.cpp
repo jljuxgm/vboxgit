@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -1573,14 +1573,15 @@ static void pdmacFileAioMgrNormalReqCompleteRc(PPDMACEPFILEMGR pAioMgr, RTFILEAI
  * The normal I/O manager using the RTFileAio* API
  *
  * @returns VBox status code.
- * @param ThreadSelf    Handle of the thread.
+ * @param hThreadSelf   Handle of the thread.
  * @param pvUser        Opaque user data.
  */
-int pdmacFileAioMgrNormal(RTTHREAD ThreadSelf, void *pvUser)
+DECLCALLBACK(int) pdmacFileAioMgrNormal(RTTHREAD hThreadSelf, void *pvUser)
 {
     int             rc          = VINF_SUCCESS;
     PPDMACEPFILEMGR pAioMgr     = (PPDMACEPFILEMGR)pvUser;
     uint64_t        uMillisEnd  = RTTimeMilliTS() + PDMACEPFILEMGR_LOAD_UPDATE_PERIOD;
+    NOREF(hThreadSelf);
 
     while (   pAioMgr->enmState == PDMACEPFILEMGRSTATE_RUNNING
            || pAioMgr->enmState == PDMACEPFILEMGRSTATE_SUSPENDING

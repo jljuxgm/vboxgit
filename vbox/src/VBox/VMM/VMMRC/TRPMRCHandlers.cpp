@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 39038 2011-10-19 14:36:27Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -366,6 +366,7 @@ DECLASM(int) TRPMGCTrap02Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
 {
     LogFlow(("TRPMGCTrap02Handler: cs:eip=%04x:%08x\n", pRegFrame->cs, pRegFrame->eip));
     RTLogComPrintf("TRPMGCTrap02Handler: cs:eip=%04x:%08x\n", pRegFrame->cs, pRegFrame->eip);
+    NOREF(pTrpmCpu);
     return VERR_TRPM_DONT_PANIC;
 }
 
@@ -389,6 +390,7 @@ DECLASM(int) TRPMGCHyperTrap02Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
 {
     LogFlow(("TRPMGCHyperTrap02Handler: cs:eip=%04x:%08x\n", pRegFrame->cs, pRegFrame->eip));
     RTLogComPrintf("TRPMGCHyperTrap02Handler: cs:eip=%04x:%08x\n", pRegFrame->cs, pRegFrame->eip);
+    NOREF(pTrpmCpu);
     return VERR_TRPM_DONT_PANIC;
 }
 

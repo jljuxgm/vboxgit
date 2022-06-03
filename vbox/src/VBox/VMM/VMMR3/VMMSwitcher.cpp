@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 36415 2011-03-24 18:20:04Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -264,7 +264,10 @@ void vmmR3SwitcherRelocate(PVM pVM, RTGCINTPTR offDelta)
     pVM->pfnVMMGCGuestToHostAsmGuestCtx = RCPtr + pSwitcher->offGCGuestToHostAsmGuestCtx;
 
 //    AssertFailed();
+#else
+    NOREF(pVM);
 #endif
+    NOREF(offDelta);
 }
 
 

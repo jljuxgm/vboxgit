@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 35810 2011-02-01 13:00:24Z vboxsync $ */
+/* $Id: VMMRC.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -341,6 +341,7 @@ static DECLCALLBACK(int) vmmGCTestTmpPFHandler(PVM pVM, PCPUMCTXCORE pRegFrame)
         pRegFrame->eip = (uintptr_t)vmmGCTestTrap0e_ResumeEIP;
         return VINF_SUCCESS;
     }
+    NOREF(pVM);
     return VERR_INTERNAL_ERROR;
 }
 

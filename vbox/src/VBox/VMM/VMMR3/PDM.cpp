@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 38847 2011-09-23 13:19:23Z vboxsync $ */
+/* $Id: PDM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -796,6 +796,7 @@ static DECLCALLBACK(int) pdmR3LoadPrep(PVM pVM, PSSMHANDLE pSSM)
                 VMCPU_FF_ISSET(pVCpu, VMCPU_FF_INTERRUPT_PIC)  ? " VMCPU_FF_INTERRUPT_PIC" : ""));
     }
 #endif
+    NOREF(pSSM);
 
     /*
      * In case there is work pending that will raise an interrupt,

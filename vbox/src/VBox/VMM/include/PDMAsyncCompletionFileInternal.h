@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 39034 2011-10-19 11:43:52Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -499,8 +499,8 @@ typedef struct PDMASYNCCOMPLETIONTASKFILE
     volatile int          rc;
 } PDMASYNCCOMPLETIONTASKFILE;
 
-int pdmacFileAioMgrFailsafe(RTTHREAD ThreadSelf, void *pvUser);
-int pdmacFileAioMgrNormal(RTTHREAD ThreadSelf, void *pvUser);
+DECLCALLBACK(int) pdmacFileAioMgrFailsafe(RTTHREAD hThreadSelf, void *pvUser);
+DECLCALLBACK(int) pdmacFileAioMgrNormal(RTTHREAD hThreadSelf, void *pvUser);
 
 int pdmacFileAioMgrNormalInit(PPDMACEPFILEMGR pAioMgr);
 void pdmacFileAioMgrNormalDestroy(PPDMACEPFILEMGR pAioMgr);

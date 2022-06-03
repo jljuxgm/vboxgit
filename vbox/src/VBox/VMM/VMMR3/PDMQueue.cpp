@@ -1,4 +1,4 @@
-/* $Id: PDMQueue.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PDMQueue.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
@@ -894,7 +894,7 @@ DECLINLINE(void) pdmR3QueueFree(PPDMQUEUE pQueue, PPDMQUEUEITEMCORE pItem)
 static DECLCALLBACK(void) pdmR3QueueTimer(PVM pVM, PTMTIMER pTimer, void *pvUser)
 {
     PPDMQUEUE pQueue = (PPDMQUEUE)pvUser;
-    Assert(pTimer == pQueue->pTimer); NOREF(pTimer);
+    Assert(pTimer == pQueue->pTimer); NOREF(pTimer); NOREF(pVM);
 
     if (   pQueue->pPendingR3
         || pQueue->pPendingR0

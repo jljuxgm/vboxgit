@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 39034 2011-10-19 11:43:52Z vboxsync $ */
+/* $Id: HWACCM.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -2197,7 +2197,10 @@ DECLCALLBACK(VBOXSTRICTRC) hwaccmR3PatchTprInstr(PVM pVM, PVMCPU pVCpu, void *pv
  */
 VMMR3DECL(int) HWACCMR3PatchTprInstr(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
-    int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ONE_BY_ONE, (pVM->hwaccm.s.pGuestPatchMem) ? hwaccmR3PatchTprInstr : hwaccmR3ReplaceTprInstr, (void *)(uintptr_t)pVCpu->idCpu);
+    NOREF(pCtx);
+    int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ONE_BY_ONE,
+                                pVM->hwaccm.s.pGuestPatchMem ? hwaccmR3PatchTprInstr : hwaccmR3ReplaceTprInstr,
+                                (void *)(uintptr_t)pVCpu->idCpu);
     AssertRC(rc);
     return rc;
 }

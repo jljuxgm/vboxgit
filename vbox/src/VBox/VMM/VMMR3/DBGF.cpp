@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: DBGF.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -739,6 +739,8 @@ static int dbgfR3VMMCmd(PVM pVM, DBGFCMD enmCmd, PDBGFCMDDATA pCmdData, bool *pf
     bool    fSendEvent;
     bool    fResume;
     int     rc = VINF_SUCCESS;
+
+    NOREF(pCmdData); /* for later */
 
     switch (enmCmd)
     {

@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Trace.cpp 37410 2011-06-10 15:11:40Z vboxsync $ */
+/* $Id: DBGFR3Trace.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
@@ -196,5 +196,6 @@ static DECLCALLBACK(void) dbgfR3TraceInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
                         hTraceBuf, RTTraceBufGetEntryCount(hTraceBuf), RTTraceBufGetEntrySize(hTraceBuf));
         RTTraceBufEnumEntries(hTraceBuf, dbgfR3TraceInfoDumpEntry, (void *)pHlp);
     }
+    NOREF(pszArgs);
 }
 

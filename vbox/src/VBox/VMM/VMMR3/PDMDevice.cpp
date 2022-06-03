@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 38847 2011-09-23 13:19:23Z vboxsync $ */
+/* $Id: PDMDevice.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -1050,6 +1050,8 @@ VMMR3DECL(int)  PDMR3DriverReattach(PVM pVM, const char *pszDevice, unsigned iDe
                                     const char *pszDriver, unsigned iOccurance, uint32_t fFlags,
                                     PCFGMNODE pCfg, PPPDMIBASE ppBase)
 {
+    NOREF(pVM); NOREF(pszDevice); NOREF(iDevIns); NOREF(iLun); NOREF(pszDriver); NOREF(iOccurance);
+    NOREF(fFlags); NOREF(pCfg); NOREF(ppBase);
     return VERR_NOT_IMPLEMENTED;
 }
 

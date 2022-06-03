@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 39070 2011-10-21 09:41:18Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1040,6 +1040,7 @@ static int pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndpoint,
 
 static int pdmacFileEpRangesLockedDestroy(PAVLRFOFFNODECORE pNode, void *pvUser)
 {
+    NOREF(pNode); NOREF(pvUser);
     AssertMsgFailed(("The locked ranges tree should be empty at that point\n"));
     return VINF_SUCCESS;
 }

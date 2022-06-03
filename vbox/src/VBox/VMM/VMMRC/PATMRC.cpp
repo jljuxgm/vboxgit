@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: PATMRC.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Guest Context
  */
@@ -58,6 +58,7 @@
  */
 VMMRCDECL(int) PATMGCMonitorPage(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange)
 {
+    NOREF(uErrorCode); NOREF(pRegFrame); NOREF(pvFault); NOREF(pvRange); NOREF(offRange);
     pVM->patm.s.pvFaultMonitor = (RTRCPTR)(RTRCUINTPTR)pvFault;
     return VINF_PATM_CHECK_PATCH_PAGE;
 }

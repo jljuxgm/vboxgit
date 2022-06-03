@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 35348 2010-12-27 16:35:23Z vboxsync $ */
+/* $Id: PATMPatch.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -1514,6 +1514,7 @@ int patmPatchGenCpuid(PVM pVM, PPATCHINFO pPatch, RTRCPTR pCurInstrGC)
     size = patmPatchGenCode(pVM, pPatch, pPB, &PATMCpuidRecord, 0, false);
 
     PATCHGEN_EPILOG(pPatch, size);
+    NOREF(pCurInstrGC);
     return VINF_SUCCESS;
 }
 

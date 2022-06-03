@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 38838 2011-09-23 11:21:55Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -181,6 +181,7 @@ VMMR3DECL(PDBGFADDRESS) DBGFR3AddrFromFlat(PVM pVM, PDBGFADDRESS pAddress, RTGCU
  */
 VMMR3DECL(PDBGFADDRESS) DBGFR3AddrFromPhys(PVM pVM, PDBGFADDRESS pAddress, RTGCPHYS PhysAddr)
 {
+    NOREF(pVM);
     pAddress->Sel     = DBGF_SEL_FLAT;
     pAddress->off     = PhysAddr;
     pAddress->FlatPtr = PhysAddr;
@@ -199,6 +200,7 @@ VMMR3DECL(PDBGFADDRESS) DBGFR3AddrFromPhys(PVM pVM, PDBGFADDRESS pAddress, RTGCP
  */
 VMMR3DECL(bool) DBGFR3AddrIsValid(PVM pVM, PCDBGFADDRESS pAddress)
 {
+    NOREF(pVM);
     if (!VALID_PTR(pAddress))
         return false;
     if (!DBGFADDRESS_IS_VALID(pAddress))

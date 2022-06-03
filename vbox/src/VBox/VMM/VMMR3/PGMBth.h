@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 35333 2010-12-27 12:10:56Z vboxsync $ */
+/* $Id: PGMBth.h 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -187,6 +187,7 @@ PGM_BTH_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
     pgmUnlock(pVM);
     return rc;
 #else
+    NOREF(pVCpu); NOREF(GCPhysCR3);
     return VINF_SUCCESS;
 #endif
 }
@@ -203,6 +204,7 @@ PGM_BTH_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
 PGM_BTH_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)
 {
     /* nothing special to do here - InitData does the job. */
+    NOREF(pVCpu); NOREF(offDelta);
     return VINF_SUCCESS;
 }
 

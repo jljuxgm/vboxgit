@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 39038 2011-10-19 14:36:27Z vboxsync $ */
+/* $Id: TRPMAll.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -709,6 +709,7 @@ VMMDECL(int) TRPMForwardTrap(PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t iGat
                     pRegFrame->ss         = ss_r0 & ~X86_SEL_RPL;     /* set rpl to ring 0 */
                     STAM_PROFILE_ADV_STOP(&pVM->trpm.s.CTX_SUFF_Z(StatForwardProf), a);
                     PGMPhysReleasePageMappingLock(pVM, &PageMappingLock);
+                    NOREF(iOrgTrap);
                     return VINF_SUCCESS;
 #endif
                 }

@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileFailsafe.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileFailsafe.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  * Simple File I/O manager.
@@ -151,10 +151,11 @@ static int pdmacFileAioMgrFailsafeProcessEndpoint(PPDMACEPFILEMGR pAioMgr,
  * A fallback method in case something goes wrong with the normal
  * I/O manager.
  */
-int pdmacFileAioMgrFailsafe(RTTHREAD ThreadSelf, void *pvUser)
+DECLCALLBACK(int) pdmacFileAioMgrFailsafe(RTTHREAD hThreadSelf, void *pvUser)
 {
-    int rc = VINF_SUCCESS;
+    int             rc      = VINF_SUCCESS;
     PPDMACEPFILEMGR pAioMgr = (PPDMACEPFILEMGR)pvUser;
+    NOREF(hThreadSelf);
 
     while (   (pAioMgr->enmState == PDMACEPFILEMGRSTATE_RUNNING)
            || (pAioMgr->enmState == PDMACEPFILEMGRSTATE_SUSPENDING))

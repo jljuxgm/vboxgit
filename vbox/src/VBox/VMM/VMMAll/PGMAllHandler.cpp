@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1483,6 +1483,8 @@ static DECLCALLBACK(int) pgmHandlerVirtualDumpPhysPagesCallback(PAVLROGCPHYSNODE
 {
     PPGMPHYS2VIRTHANDLER pCur = (PPGMPHYS2VIRTHANDLER)pNode;
     PPGMVIRTHANDLER      pVirt = (PPGMVIRTHANDLER)((uintptr_t)pCur + pCur->offVirtHandler);
+    NOREF(pvUser); NOREF(pVirt);
+
     Log(("PHYS2VIRT: Range %RGp-%RGp for virtual handler: %s\n", pCur->Core.Key, pCur->Core.KeyLast, pVirt->pszDesc));
     return 0;
 }
