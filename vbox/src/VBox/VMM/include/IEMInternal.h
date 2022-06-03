@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 40022 2012-02-07 20:29:04Z vboxsync $ */
+/* $Id: IEMInternal.h 40042 2012-02-08 21:16:33Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -31,6 +31,15 @@ RT_C_DECLS_BEGIN
  * @internal
  * @{
  */
+
+
+/** Finish and move to types.h */
+typedef union
+{
+    uint32_t u32;
+} RTFLOAT32U;
+typedef RTFLOAT32U *PRTFLOAT32U;
+typedef RTFLOAT32U const *PCRTFLOAT32U;
 
 
 /**
