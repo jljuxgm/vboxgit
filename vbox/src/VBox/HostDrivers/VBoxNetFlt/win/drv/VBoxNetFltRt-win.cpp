@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 36184 2011-03-07 10:57:04Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 37161 2011-05-20 07:28:21Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime
@@ -2962,6 +2962,7 @@ static NDIS_STATUS vboxNetFltWinDevDestroy(PVBOXNETFLTGLOBALS_WIN pGlobals)
     if (Status == NDIS_STATUS_SUCCESS)
     {
         pGlobals->hDevice = NULL;
+        pGlobals->pDevObj = NULL;
     }
     return Status;
 }
