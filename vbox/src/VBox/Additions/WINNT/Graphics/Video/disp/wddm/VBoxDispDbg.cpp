@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 38112 2011-07-22 13:26:19Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 38238 2011-07-29 11:12:40Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -49,7 +49,7 @@
 #include <iprt/asm.h>
 
 #ifdef VBOXWDDMDISP_DEBUG
-#define VBOXWDDMDISP_DEBUG_DUMP_DEFAULT 1
+#define VBOXWDDMDISP_DEBUG_DUMP_DEFAULT 0
 DWORD g_VBoxVDbgFDumpSetTexture = VBOXWDDMDISP_DEBUG_DUMP_DEFAULT;
 DWORD g_VBoxVDbgFDumpDrawPrim = VBOXWDDMDISP_DEBUG_DUMP_DEFAULT;
 DWORD g_VBoxVDbgFDumpTexBlt = VBOXWDDMDISP_DEBUG_DUMP_DEFAULT;
