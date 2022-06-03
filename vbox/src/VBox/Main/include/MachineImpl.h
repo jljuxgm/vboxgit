@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 38887 2011-09-27 12:08:50Z vboxsync $ */
+/* $Id: MachineImpl.h 38996 2011-10-14 12:59:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -161,6 +161,7 @@ public:
         // machine settings XML file
         settings::MachineConfigFile *pMachineConfigFile;
         uint32_t            flModifications;
+        bool                m_fAllowStateModification;
 
         BOOL                mAccessible;
         com::ErrorInfo      mAccessError;
@@ -647,8 +648,12 @@ public:
      */
     ChipsetType_T getChipsetType() const { return mHWData->mChipsetType; }
 
-    void setModified(uint32_t fl);
-    void setModifiedLock(uint32_t fl);
+    void setModified(uint32_t fl, bool fAllowStateModification = true);
+    void setModifiedLock(uint32_t fl, bool fAllowStateModification = true);
+
+    bool isStateModificationAllowed() const { return mData->m_fAllowStateModification; }
+    void allowStateModification()           { mData->m_fAllowStateModification = true; }
+    void disallowStateModification()        { mData->m_fAllowStateModification = false; }
 
     // callback handlers
     virtual HRESULT onNetworkAdapterChange(INetworkAdapter * /* networkAdapter */, BOOL /* changeAdapter */) { return S_OK; }

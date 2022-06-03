@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 38818 2011-09-21 17:10:25Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 38996 2011-10-14 12:59:50Z vboxsync $ */
 
 /** @file
  *
@@ -1224,8 +1224,10 @@ HRESULT SnapshotMachine::onSnapshotChange(Snapshot *aSnapshot)
          uuidSnapshot(aSnapshot->getId());
     bool fNeedsGlobalSaveSettings = false;
 
-    // flag the machine as dirty or change won't get saved
-    mPeer->setModified(Machine::IsModified_Snapshots);
+    /* Flag the machine as dirty or change won't get saved. We disable the
+     * modification of the current state flag, cause this snapshot data isn't
+     * related to the current state. */
+    mPeer->setModified(Machine::IsModified_Snapshots, false /* fAllowStateModification */);
     HRESULT rc = mPeer->saveSettings(&fNeedsGlobalSaveSettings,
                                      SaveS_Force);        // we know we need saving, no need to check
     mlock.leave();
