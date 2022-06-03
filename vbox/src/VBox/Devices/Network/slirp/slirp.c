@@ -1,4 +1,4 @@
-/* $Id: slirp.c 39299 2011-11-15 06:59:33Z vboxsync $ */
+/* $Id: slirp.c 39360 2011-11-18 09:08:55Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -630,7 +630,7 @@ int slirp_init(PNATState *ppData, uint32_t u32NetAddr, uint32_t u32Netmask,
         *ppData = NULL;
         return rc;
     }
-    debug_init();
+    debug_init(pData);
     if_init(pData);
     ip_init(pData);
     icmp_init(pData, iIcmpCacheLimit);

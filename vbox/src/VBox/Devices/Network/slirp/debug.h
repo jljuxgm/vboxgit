@@ -1,4 +1,4 @@
-/* $Id: debug.h 37738 2011-07-03 11:41:17Z vboxsync $ */
+/* $Id: debug.h 39360 2011-11-18 09:08:55Z vboxsync $ */
 /** @file
  * NAT - debug helpers (declarations/defines).
  */
@@ -31,7 +31,7 @@
 /* we've excluded stdio.h */
 #define FILE void
 
-int debug_init (void);
+int debug_init (PNATState);
 void ipstats (PNATState);
 void tcpstats (PNATState);
 void udpstats (PNATState);
