@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 38356 2011-08-08 15:49:01Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 38425 2011-08-11 20:22:34Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -1338,7 +1338,7 @@ NTSTATUS _stdcall DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
     RTLogDestinations(0, "debugger");
 #endif
 
-    LOG(("VBoxUSBMon::DriverEntry\n"));
+    LOGREL(("Built %s %s", __DATE__, __TIME__));
 
     memset (&g_VBoxUsbMonGlobals, 0, sizeof (g_VBoxUsbMonGlobals));
     KeInitializeEvent(&g_VBoxUsbMonGlobals.OpenSynchEvent, SynchronizationEvent, TRUE /* signaled */);
