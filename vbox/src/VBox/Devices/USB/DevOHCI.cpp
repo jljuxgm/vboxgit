@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 39154 2011-10-31 15:36:29Z vboxsync $ */
+/* $Id: DevOHCI.cpp 39179 2011-11-02 15:48:26Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -4202,7 +4202,7 @@ static int HcDoneHead_r(PCOHCI pOhci, uint32_t iReg, uint32_t *pu32Value)
 static int HcDoneHead_w(POHCI pOhci, uint32_t iReg, uint32_t val)
 {
     Log2(("HcDoneHead_w(0x%#08x) - denied!!!\n", val));
-    AssertMsgFailed(("Illegal operation!!! val=%#010x\n", val));
+    /*AssertMsgFailed(("Illegal operation!!! val=%#010x\n", val)); - OS/2 does this */
     return VINF_SUCCESS;
 }
 
