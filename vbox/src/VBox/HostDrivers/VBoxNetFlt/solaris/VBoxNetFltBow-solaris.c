@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 38140 2011-07-25 10:01:03Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 38160 2011-07-25 13:47:04Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -883,7 +883,7 @@ LOCAL int vboxNetFltSolarisInitVNIC(PVBOXNETFLTINS pThis, PVBOXNETFLTVNIC pVNIC)
  */
 LOCAL int vboxNetFltSolarisInitVNICTemplate(PVBOXNETFLTINS pThis, PVBOXNETFLTVNICTEMPLATE pVNICTemplate)
 {
-    LogFlow((DEVICE_NAME ":vboxNetFltSolarisInitVNICTemplate pThis=%p pVNIC=%p pVNICTemplate=%p\n", pThis, pVNIC, pVNICTemplate));
+    LogFlow((DEVICE_NAME ":vboxNetFltSolarisInitVNICTemplate pThis=%p pVNICTemplate=%p\n", pThis, pVNICTemplate));
 
     AssertReturn(pVNICTemplate, VERR_INVALID_PARAMETER);
     AssertReturn(pThis->u.s.fIsVNICTemplate == true, VERR_INVALID_STATE);
