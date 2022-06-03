@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 36485 2011-04-01 05:04:35Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 36719 2011-04-18 15:56:31Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -79,6 +79,7 @@ typedef struct VBOXRAWPCIINS
 
 #ifdef RT_OS_LINUX
     struct pci_dev  *  pPciDev;
+    char               szPrevDriver[64];
 #endif
     bool               fMsiUsed;
     bool               fMsixUsed;
