@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 36066 2011-02-23 17:42:02Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 36140 2011-03-03 13:48:16Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2099,11 +2099,13 @@ REMR3DECL(int)  REMR3State(PVM pVM, PVMCPU pVCpu)
     for (i=0;i<8;i++)
         pVM->rem.s.Env.dr[i] = pCtx->dr[i];
 
+#ifdef HF_HALTED_MASK /** @todo remove me when we're up to date again. */
     /*
      * Clear the halted hidden flag (the interrupt waking up the CPU can
      * have been dispatched in raw mode).
      */
     pVM->rem.s.Env.hflags      &= ~HF_HALTED_MASK;
+#endif
 
     /*
      * Replay invlpg?
