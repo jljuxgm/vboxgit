@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 39279 2011-11-11 17:50:19Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 39281 2011-11-11 18:04:49Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -334,7 +334,6 @@ extern int          VBoxServiceControlThreadStart(uint32_t uClientID, uint32_t u
                                                   const char *pszUser, const char *pszPassword, uint32_t uTimeLimitMS,
                                                   PRTLISTNODE *ppNode);
 extern void         VBoxServiceControlThreadSignalShutdown(const PVBOXSERVICECTRLTHREAD pThread);
-extern int          VBoxServiceControlThreadWaitForShutdown(const PVBOXSERVICECTRLTHREAD pThread);
 #endif /* VBOX_WITH_GUEST_CONTROL */
 
 #ifdef VBOXSERVICE_MANAGEMENT
