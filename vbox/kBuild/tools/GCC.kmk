@@ -1,4 +1,4 @@
-# $Id: GCC.kmk 2431 2010-11-19 11:06:42Z bird $
+# $Id: GCC.kmk 2545 2011-09-13 19:09:05Z bird $
 ## @file
 # kBuild Tool Config - Generic GCC Using The System GCC.
 #
