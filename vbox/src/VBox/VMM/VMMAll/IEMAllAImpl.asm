@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 40093 2012-02-13 13:05:21Z vboxsync $
+; $Id: IEMAllAImpl.asm 40138 2012-02-15 16:40:03Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -1276,50 +1276,6 @@ BEGINPROC_FASTCALL iemAImpl_bswap_u64, 4
 %endif
 ENDPROC iemAImpl_bswap_u64
 
-
-;;
-; The state saved by FXSAVE.
-; @todo move to x86.mac.
-;
-struc X86FXSTATE
-    .FCW            resw 1
-    .FSW            resw 1
-    .FTW            resw 1
-    .FOP            resw 1
-    .FPUIP          resd 1
-    .CS             resw 1
-    .Rsrvd1         resw 1
-    .FPUDP          resd 1
-    .DS             resw 1
-    .Rsrvd2         resw 1
-    .MXCSR          resd 1
-    .MXCSR_MASK     resd 1
-    .r0             resd 4
-    .r1             resd 4
-    .r2             resd 4
-    .r3             resd 4
-    .r4             resd 4
-    .r5             resd 4
-    .r6             resd 4
-    .r7             resd 4
-    .xmm0           resd 4
-    .xmm1           resd 4
-    .xmm2           resd 4
-    .xmm3           resd 4
-    .xmm4           resd 4
-    .xmm5           resd 4
-    .xmm6           resd 4
-    .xmm7           resd 4
-    .xmm8           resd 4
-    .xmm9           resd 4
-    .xmm10          resd 4
-    .xmm11          resd 4
-    .xmm12          resd 4
-    .xmm13          resd 4
-    .xmm14          resd 4
-    .xmm15          resd 4
-    .au32RsrvdRest  resd 24
-endstruc
 
 %macro FPU_SAFE_INIT 1
         fninit

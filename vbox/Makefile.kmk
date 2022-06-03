@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39785 2012-01-17 20:13:57Z vboxsync $
+# $Id: Makefile.kmk 40138 2012-02-15 16:40:03Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1487,6 +1487,7 @@ incs:
 	$(APPEND) include/VBox/err.mac '%include "iprt/err.mac"'
 	$(SED) -f include/VBox/err.sed     --output include/iprt/err.mac           include/iprt/err.h
 	$(SED) -f include/VBox/various.sed --output include/iprt/x86.mac           include/iprt/x86.h
+	$(APPEND) include/iprt/x86.mac '%include "iprt/x86extra.mac"'
 	$(SED) -f include/VBox/various.sed --output include/VBox/apic.mac          include/VBox/apic.h
 	$(SED) -f include/VBox/various.sed --output include/VBox/param.mac         include/VBox/param.h
 	$(SED) -f include/VBox/various.sed --output include/VBox/VMMDevTesting.mac include/VBox/VMMDevTesting.h
