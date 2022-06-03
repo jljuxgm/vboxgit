@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 38480 2011-08-16 14:17:12Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 38498 2011-08-19 11:24:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -91,7 +91,7 @@ class PerformTakeScreenshotAction : public UISimpleAction
 public:
 
     PerformTakeScreenshotAction(QObject *pParent)
-        : UISimpleAction(pParent, ":/take_snapshot_16px.png", ":/take_snapshot_dis_16px.png")
+        : UISimpleAction(pParent, ":/take_screenshot_16px.png", ":/take_screenshot_disabled_16px.png")
     {
         retranslateUi();
     }
