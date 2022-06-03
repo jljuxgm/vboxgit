@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40269 2012-02-28 10:47:33Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest Shared Folders Network Provider.
 #
@@ -16,7 +16,7 @@
 #
 
 SUB_DEPTH = ../../../../../..
-include	$(KBUILD_PATH)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 DLLS += VBoxMRXNP
 VBoxMRXNP_TEMPLATE    = VBOXGUESTR3DLL
@@ -45,4 +45,4 @@ VBoxMRXNP-x86_LIBS = \
 	$(VBOX_LIB_VBGL_R3_X86)
 VBoxMRXNP-x86_DEFS = $(VBoxMRXNP_DEFS) VBOX_WOW64
 
-include	$(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)

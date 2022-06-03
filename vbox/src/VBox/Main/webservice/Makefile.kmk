@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41040 2012-04-24 10:13:40Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -738,4 +738,4 @@ $(VBOXWEB_METRICSAMPLE): $(VBOX_PATH_WEBSERVICE)/samples/java/jax-ws/metrictest.
 
 endif # VBOX_ONLY_SDK
 
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)

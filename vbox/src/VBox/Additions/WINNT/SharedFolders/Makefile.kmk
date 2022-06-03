@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40269 2012-02-28 10:47:33Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows guest shared folders.
 #
@@ -16,10 +16,10 @@
 #
 
 SUB_DEPTH = ../../../../..
-include	$(KBUILD_PATH)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefile(s).
 include $(PATH_SUB_CURRENT)/np/Makefile.kmk
 include $(PATH_SUB_CURRENT)/driver/Makefile.kmk
 
-include	$(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)

@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 41101 2012-04-30 15:27:15Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
 
 #
-# Copyright (C) 2007-2011 Oracle Corporation
+# Copyright (C) 2007-2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -517,7 +517,7 @@ SOLARIS_TAR_GZ_FILES := \
 	autoresponse \
 	ReadMe.txt
 
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 
 #
 # -=-=-=-=-=-=-=- Main package -=-=-=-=-=-=-=-

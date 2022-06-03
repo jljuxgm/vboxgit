@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41461 2012-05-28 10:45:44Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1033,7 +1033,7 @@ IMAGES :=
 
 # Commit the magic.
 # (note: before custom rules that make usage of generated variables!).
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 
 #
 # Update all known NLS translation (.ts) files in the nls/ subdirectory.

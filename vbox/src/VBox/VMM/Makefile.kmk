@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41275 2012-05-14 09:07:47Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -16,7 +16,7 @@
 #
 
 SUB_DEPTH = ../../..
-include	$(KBUILD_PATH)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefiles.
 ifndef VBOX_ONLY_EXTPACKS
@@ -647,7 +647,7 @@ else
 endif
 
 
-include	$(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 
 
 # Alias the PGM templates to the object in which they are defined.

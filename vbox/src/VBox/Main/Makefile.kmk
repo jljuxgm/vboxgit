@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41412 2012-05-23 09:45:06Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -769,7 +769,7 @@ endif
 
 
 # generate rules
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 
 
 

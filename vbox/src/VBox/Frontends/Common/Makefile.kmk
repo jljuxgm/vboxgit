@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 30054 2010-06-07 08:13:46Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Top-level makefile for VBox frontends shared bits
 #
 
 #
-# Copyright (C) 2010 Oracle Corporation
+# Copyright (C) 2010-2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -25,5 +25,5 @@ ifneq ($(VBOX_WITH_QTGUI)$(VBOX_WITH_VBOXSDL),)
  endif
 endif
 
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

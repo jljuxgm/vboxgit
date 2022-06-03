@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 39895 2012-01-27 09:58:56Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -138,5 +138,5 @@ if !defined(VBOX_ONLY_SDK) && defined(VBOX_WITH_XPCOM)
 endif # ! VBOX_ONLY_SDK
 
 # generate rules.
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

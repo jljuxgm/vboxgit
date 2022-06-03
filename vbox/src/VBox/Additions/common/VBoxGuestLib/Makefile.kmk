@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40483 2012-03-15 14:20:20Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
@@ -25,7 +25,7 @@
 #
 
 SUB_DEPTH = ../../../../..
-include	$(KBUILD_PATH)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 #
 # Target config.
@@ -190,5 +190,5 @@ VBoxGuestR3LibXFree86_INCS     = \
 
 VBoxGuestR3LibRuntimeXF86.cpp_CXXFLAGS = -Wno-shadow
 
-include	$(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41194 2012-05-07 20:23:52Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -57,5 +57,5 @@ if  !defined(VBOX_ONLY_ADDITIONS) \
 
 endif
 
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

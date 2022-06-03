@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41088 2012-04-27 14:42:40Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -101,5 +101,5 @@ MakeDebianBiosAssembly_SOURCES = MakeDebianBiosAssembly.cpp
 MakeDebianBiosAssembly_LIBS = $(LIB_RUNTIME)
 
 
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

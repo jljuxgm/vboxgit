@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40986 2012-04-19 10:32:03Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the Extension Packs.
 #
@@ -25,5 +25,5 @@ ifdef VBOX_WITH_EXTPACK_VNC
  include $(PATH_SUB_CURRENT)/VNC/Makefile.kmk
 endif
 
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

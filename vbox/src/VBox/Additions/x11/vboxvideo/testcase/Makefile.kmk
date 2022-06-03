@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 37520 2011-06-16 20:57:39Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo testcases.
 #
 
 #
-# Copyright (C) 2006-2007 Oracle Corporation
+# Copyright (C) 2006-2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -44,5 +44,5 @@ tstSetModeXOrg_INCS = $(vboxvideo_drv_15_INCS)
 
 
 # generate rules.
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

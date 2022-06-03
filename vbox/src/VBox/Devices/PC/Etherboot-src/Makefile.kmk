@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 35399 2011-01-04 09:40:13Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # VBox Etherboot Network boot ROM makefile.
 #
 
 #
-# Copyright (C) 2006-2010 Oracle Corporation
+# Copyright (C) 2006-2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -806,5 +806,5 @@ include/pxe_export.h:
 include/mii.h:
 
 endif # build it
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

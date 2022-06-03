@@ -1,5 +1,5 @@
 
-# $Id: Makefile.kmk 41074 2012-04-26 23:11:45Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -50,5 +50,5 @@ ifdef VBOX_WITH_HARDENING
 endif
 
 
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

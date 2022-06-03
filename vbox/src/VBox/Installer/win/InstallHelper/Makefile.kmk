@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40997 2012-04-19 19:54:24Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxInstallHelper.dll.
 #
@@ -16,7 +16,7 @@
 #
 
 SUB_DEPTH = ../../../../..
-include	$(KBUILD_PATH)/subheader.kmk
+include $(KBUILD_PATH)/subheader.kmk
 
 DLLS += VBoxInstallHelper
 VBoxInstallHelper_TEMPLATE = VBOXR3STATIC
@@ -52,5 +52,5 @@ ifeq ($(KBUILD_TARGET),win)
  endif
 endif
 
-include	$(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 

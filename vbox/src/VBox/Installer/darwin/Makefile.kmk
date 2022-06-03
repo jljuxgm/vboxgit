@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 41048 2012-04-24 19:19:14Z vboxsync $
+# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
 
 #
-# Copyright (C) 2006-2011 Oracle Corporation
+# Copyright (C) 2006-2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -106,7 +106,7 @@ endif
 #OTHER_CLEAN = TODO
 
 
-include $(KBUILD_PATH)/subfooter.kmk
+include $(FILE_KBUILD_SUB_FOOTER)
 
 
 #
