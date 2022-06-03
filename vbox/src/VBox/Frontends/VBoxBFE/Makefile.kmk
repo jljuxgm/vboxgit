@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36149 2011-03-03 14:34:33Z vboxsync $
+# $Id: Makefile.kmk 36158 2011-03-04 08:51:37Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBFE (a basic frontend which doesn't make use of Main).
 #
@@ -79,6 +79,9 @@ VBoxBFE_SOURCES = \
 	MachineDebuggerImpl.cpp \
 	VMControl.cpp \
 	$(addprefix $(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_SRCS)))
+
+$(addprefix $$(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_SRCS))): \
+    $(addprefix $$(VBoxBFE_0_OUTDIR)/,$(notdir $(VBOXBFE_MAIN_HDRS)))
 
 ifdef VBOX_WITH_HGCM
 VBoxBFE_DEFS += VBOX_WITH_HGCM
@@ -173,7 +176,7 @@ $$(VBoxBFE_0_OUTDIR)/Ico64x01.h: $(PATH_ROOT)/src/VBox/Frontends/VBoxBFE/ico64x0
 
 # Files we share with Main needs to be copied into the output dir.
 VBoxBFE_INTERMEDIATES += $(addprefix $(VBoxBFE_0_OUTDIR)/,$(VBOXBFE_MAIN_HDRS))
-VBoxBFE_CLEAN         += $(addprefix $(VBoxBFE_0_OUTDIR)/, $(VBOXBFE_MAIN_HDRS) $(VBOXBFE_MAIN_SRCS))
+VBoxBFE_CLEAN         += $(addprefix $(VBoxBFE_0_OUTDIR)/, $(VBOXBFE_MAIN_HDRS) $(notdir $(VBOXBFE_MAIN_SRCS)))
 
 define def_copy_main_file
 $$(VBoxBFE_0_OUTDIR)/$(notdir $(file)): $(PATH_ROOT)/src/VBox/Main/$(file) | $$(dir $$@)

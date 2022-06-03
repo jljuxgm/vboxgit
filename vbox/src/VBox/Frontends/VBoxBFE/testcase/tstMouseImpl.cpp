@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 36156 2011-03-03 19:52:32Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 36158 2011-03-04 08:51:37Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -129,10 +129,10 @@ static struct PDMDRVINS pdmdrvInsCore =
 {
     PDM_DRVINS_VERSION,
     0,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
+    NIL_RTRCPTR,
+    NIL_RTRCPTR,
+    NIL_RTR0PTR,
+    NIL_RTR0PTR,
     &pdmHlpR3,
     NULL,
     NULL,
