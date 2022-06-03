@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 38878 2011-09-27 09:07:07Z vboxsync $ */
+/* $Id: DevAHCI.cpp 38969 2011-10-10 08:14:03Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -1168,7 +1168,10 @@ static int PortSControl_w(PAHCI ahci, PAHCIPort pAhciPort, uint32_t iReg, uint32
         fAllTasksCanceled = ahciCancelActiveTasks(pAhciPort);
         Assert(fAllTasksCanceled);
 
-        ASMAtomicXchgBool(&pAhciPort->fPortReset, true);
+        if (!ASMAtomicXchgBool(&pAhciPort->fPortReset, true))
+            LogRel(("AHCI#%d: Port %d reset\n", ahci->CTX_SUFF(pDevIns)->iInstance,
+                    pAhciPort->iLUN));
+
         pAhciPort->regSSTS = 0;
         pAhciPort->regSIG  = ~0;
         pAhciPort->regTFD  = 0x7f;
@@ -2014,7 +2017,7 @@ static void ahciHBAReset(PAHCI pThis)
     unsigned i;
     int rc = VINF_SUCCESS;
 
-    LogFlow(("Reset the HBA controller\n"));
+    LogRel(("AHCI#%d: Reset the HBA\n", pThis->CTX_SUFF(pDevIns)->iInstance));
 
     /* Stop the CCC timer. */
     if (pThis->regHbaCccCtl & AHCI_HBA_CCC_CTL_EN)
