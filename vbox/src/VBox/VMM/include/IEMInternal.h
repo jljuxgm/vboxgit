@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 37079 2011-05-13 15:35:03Z vboxsync $ */
+/* $Id: IEMInternal.h 37085 2011-05-13 19:53:12Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -498,6 +498,19 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u8, (uint8_t  *pu8Mem,  uint8_t  *pu8Reg))
 IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u16,(uint16_t *pu16Mem, uint16_t *pu16Reg));
 IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u32,(uint32_t *pu32Mem, uint32_t *pu32Reg));
 IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u64,(uint64_t *pu64Mem, uint64_t *pu64Reg));
+/** @}  */
+
+/** @name Exchange and add operations.
+ * @{ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u8, (uint8_t  *pu8Dst,  uint8_t  *pu8Reg,  uint32_t *pEFlags));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u16,(uint16_t *pu16Dst, uint16_t *pu16Reg, uint32_t *pEFlags));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u32,(uint32_t *pu32Dst, uint32_t *pu32Reg, uint32_t *pEFlags));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u64,(uint64_t *pu64Dst, uint64_t *pu64Reg, uint32_t *pEFlags));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u8_locked, (uint8_t  *pu8Dst,  uint8_t  *pu8Reg,  uint32_t *pEFlags));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u16_locked,(uint16_t *pu16Dst, uint16_t *pu16Reg, uint32_t *pEFlags));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u32_locked,(uint32_t *pu32Dst, uint32_t *pu32Reg, uint32_t *pEFlags));
+IEM_DECL_IMPL_DEF(void, iemAImpl_xadd_u64_locked,(uint64_t *pu64Dst, uint64_t *pu64Reg, uint32_t *pEFlags));
+
 /** @}  */
 
 /** @name Double precision shifts
