@@ -1,4 +1,4 @@
-/* $Id: VBoxProblemReporter.cpp 36553 2011-04-05 11:28:35Z vboxsync $ */
+/* $Id: VBoxProblemReporter.cpp 36558 2011-04-05 13:02:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2085,9 +2085,9 @@ void VBoxProblemReporter::warnAboutCannotCreateMachineFolder(QWidget *pParent, c
 {
     QFileInfo fi(strFolderName);
     message(pParent ? pParent : mainWindowShown(), Critical,
-            tr("<p>Cannot create the machine folder <b>%1</b> in the parent directory <nobr><b>%2</b>.</nobr></p>"
-               "<p>Please check what the parent directory is really exists and "
-               "you have the permissions required to do so.</p>").arg(fi.fileName()).arg(fi.absolutePath()));
+            tr("<p>Cannot create the machine folder <b>%1</b> in the parent folder <nobr><b>%2</b>.</nobr></p>"
+               "<p>Please check that the parent really exists and that you have permissions to create the machine folder.</p>")
+               .arg(fi.fileName()).arg(fi.absolutePath()));
 }
 
 /**
