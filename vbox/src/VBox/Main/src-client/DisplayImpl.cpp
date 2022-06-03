@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 38275 2011-08-02 11:14:44Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 38505 2011-08-23 04:26:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2990,6 +2990,19 @@ DECLCALLBACK(int) Display::changeFramebuffer (Display *that, IFramebuffer *aFB,
     {
         /* Setup the new framebuffer, the resize will lead to an updateDisplayData call. */
         DISPLAYFBINFO *pFBInfo = &that->maFramebuffers[uScreenId];
+
+#if defined(VBOX_WITH_CROGL)
+        /* Leave the lock, because SHCRGL_HOST_FN_SCREEN_CHANGED will read current framebuffer */
+        {
+            BOOL is3denabled;
+            that->mParent->machine()->COMGETTER(Accelerate3DEnabled)(&is3denabled);
+
+            if (is3denabled)
+            {
+                alock.leave ();
+            }
+        }
+#endif
 
         if (pFBInfo->fVBVAEnabled && pFBInfo->pu8FramebufferVRAM)
         {
