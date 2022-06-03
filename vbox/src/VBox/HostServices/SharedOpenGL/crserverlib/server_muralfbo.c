@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 36843 2011-04-26 08:33:19Z vboxsync $ */
+/* $Id: server_muralfbo.c 36845 2011-04-26 08:48:39Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -71,7 +71,7 @@ void crServerSetupOutputRedirect(CRMuralInfo *mural)
                                                                   pachFormats, cbFormats, &cbFormats);
             if (RT_SUCCESS(rc))
             {
-                if (strstr(pachFormats, "H3DOR_FMT_RGBA_TOPDOWN"))
+                if (RTStrStr(pachFormats, "H3DOR_FMT_RGBA_TOPDOWN"))
                 {
                     cr_server.outputRedirect.CRORBegin(cr_server.outputRedirect.pvContext,
                                                        &mural->pvOutputRedirectInstance,
