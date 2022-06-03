@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 41692 2012-06-13 19:32:54Z vboxsync $ */
+/* $Id: tstVMStruct.h 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -1403,4 +1403,6 @@
     GEN_CHECK_OFF(DISCPUSTATE, i32SibDisp);
     GEN_CHECK_OFF(DISCPUSTATE, fFilter);
     GEN_CHECK_OFF(DISCPUSTATE, uInstrAddr);
-#endif    
+    GEN_CHECK_OFF(DISCPUSTATE, abInstr);
+    GEN_CHECK_OFF(DISCPUSTATE, pvUser);
+#endif

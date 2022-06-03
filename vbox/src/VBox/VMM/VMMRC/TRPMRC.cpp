@@ -1,4 +1,4 @@
-/* $Id: TRPMRC.cpp 40449 2012-03-13 15:51:02Z vboxsync $ */
+/* $Id: TRPMRC.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -186,7 +186,7 @@ VMMRCDECL(int) trpmRCShadowIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
         if (rc == VINF_SUCCESS)
         {
             /* Just ignore the write. */
-            pRegFrame->eip += Cpu.opsize;
+            pRegFrame->eip += Cpu.cbInstr;
             return VINF_SUCCESS;
         }
     }

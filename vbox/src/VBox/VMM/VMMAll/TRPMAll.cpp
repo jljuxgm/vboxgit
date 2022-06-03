@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 40449 2012-03-13 15:51:02Z vboxsync $ */
+/* $Id: TRPMAll.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -351,13 +351,13 @@ VMMDECL(void) TRPMRestoreTrap(PVMCPU pVCpu)
  * @param   pVM         The VM to operate on.
  * @param   pRegFrame   Pointer to the register frame for the trap.
  * @param   iGate       Trap or interrupt gate number
- * @param   opsize      Instruction size (only relevant for software interrupts)
+ * @param   cbInstr     Instruction size (only relevant for software interrupts)
  * @param   enmError    TRPM_TRAP_HAS_ERRORCODE or TRPM_TRAP_NO_ERRORCODE.
  * @param   enmType     TRPM event type
  * @param   iOrgTrap    The original trap.
  * @internal
  */
-VMMDECL(int) TRPMForwardTrap(PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t iGate, uint32_t opsize,
+VMMDECL(int) TRPMForwardTrap(PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t iGate, uint32_t cbInstr,
                              TRPMERRORCODE enmError, TRPMEVENT enmType, int32_t iOrgTrap)
 {
 #ifdef TRPM_FORWARD_TRAPS_IN_GC
@@ -638,8 +638,8 @@ VMMDECL(int) TRPMForwardTrap(PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t iGat
 
                     if (enmType == TRPM_SOFTWARE_INT)
                     {
-                        Assert(opsize);
-                        pTrapStack[--idx] = pRegFrame->eip + opsize;    /* return address = next instruction */
+                        Assert(cbInstr);
+                        pTrapStack[--idx] = pRegFrame->eip + cbInstr;    /* return address = next instruction */
                     }
                     else
                         pTrapStack[--idx] = pRegFrame->eip;

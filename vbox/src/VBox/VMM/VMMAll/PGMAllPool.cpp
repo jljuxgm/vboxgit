@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 41727 2012-06-14 22:49:03Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -935,7 +935,7 @@ DECLINLINE(int) pgmPoolAccessHandlerSTOSD(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE 
         pRegFrame->rdi += uIncrement;
         pRegFrame->rcx--;
     }
-    pRegFrame->rip += pDis->opsize;
+    pRegFrame->rip += pDis->cbInstr;
 
     LogFlow(("pgmPoolAccessHandlerSTOSD: returns\n"));
     return VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 41730 2012-06-14 23:28:16Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -499,10 +499,10 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
                     pszFmt = "prefetch %Eb";
                 else if (pCpu->opcode == 0x1f)
                 {
-                    Assert(pCpu->opsize >= 3);
+                    Assert(pCpu->cbInstr >= 3);
                     PUT_SZ("db 00fh, 01fh,");
                     PUT_NUM_8(pCpu->ModRM.u);
-                    for (unsigned i = 3; i < pCpu->opsize; i++)
+                    for (unsigned i = 3; i < pCpu->cbInstr; i++)
                     {
                         PUT_C(',');
                         PUT_NUM_8(0x90); ///@todo fixme.
@@ -906,7 +906,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISCPUSTATE pCpu, char *pszBuf, size_t cchBuf,
                         if (fFlags & DIS_FMT_FLAGS_RELATIVE_BRANCH)
                             PUT_SZ(" (");
 
-                        RTUINTPTR uTrgAddr = pCpu->uInstrAddr + pCpu->opsize + offDisplacement;
+                        RTUINTPTR uTrgAddr = pCpu->uInstrAddr + pCpu->cbInstr + offDisplacement;
                         if (pCpu->mode == DISCPUMODE_16BIT)
                             PUT_NUM_16(uTrgAddr);
                         else if (pCpu->mode == DISCPUMODE_32BIT)

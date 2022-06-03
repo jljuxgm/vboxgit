@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 41678 2012-06-13 09:37:47Z vboxsync $ */
+/* $Id: PATMInternal.h 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -780,9 +780,9 @@ inline RTRCPTR PATMResolveBranch(PDISCPUSTATE pCpu, RTRCPTR pBranchInstrGC)
         return 0;
     }
 #ifdef IN_RC
-    return (RTRCPTR)((uint8_t *)pBranchInstrGC + pCpu->opsize + disp);
+    return (RTRCPTR)((uint8_t *)pBranchInstrGC + pCpu->cbInstr + disp);
 #else
-    return pBranchInstrGC + pCpu->opsize + disp;
+    return pBranchInstrGC + pCpu->cbInstr + disp;
 #endif
 }
 

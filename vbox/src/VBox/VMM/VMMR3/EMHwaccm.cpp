@@ -1,4 +1,4 @@
-/* $Id: EMHwaccm.cpp 41727 2012-06-14 22:49:03Z vboxsync $ */
+/* $Id: EMHwaccm.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -353,7 +353,7 @@ static int emR3ExecuteIOInstruction(PVM pVM, PVMCPU pVCpu)
          */
         if (IOM_SUCCESS(rcStrict))
         {
-            pCtx->rip += Cpu.opsize;
+            pCtx->rip += Cpu.cbInstr;
             STAM_PROFILE_STOP(&pVCpu->em.s.StatIOEmu, a);
             return VBOXSTRICTRC_TODO(rcStrict);
         }

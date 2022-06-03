@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 41729 2012-06-14 23:24:17Z vboxsync $ */
+/* $Id: DisasmReg.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -624,7 +624,7 @@ DISDECL(int) DISQueryParamVal(PCPUMCTXCORE pCtx, PDISCPUSTATE pCpu, PDISOPPARAM 
         {
             Assert(pCpu->mode == DISCPUMODE_64BIT);
             /* Relative to the RIP of the next instruction. */
-            pParamVal->val.val64 += pParam->uDisp.i32 + pCtx->rip + pCpu->opsize;
+            pParamVal->val.val64 += pParam->uDisp.i32 + pCtx->rip + pCpu->cbInstr;
         }
         return VINF_SUCCESS;
     }

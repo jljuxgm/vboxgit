@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41729 2012-06-14 23:24:17Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2986,7 +2986,7 @@ static int hmR0SvmInterpretInvpg(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, 
             Assert(RT_FAILURE(rc) || pDis->pCurInstr->opcode == OP_INVLPG);
             if (RT_SUCCESS(rc) && pDis->pCurInstr->opcode == OP_INVLPG)
             {
-                Assert(cbOp == pDis->opsize);
+                Assert(cbOp == pDis->cbInstr);
                 rc = hmR0svmInterpretInvlPg(pVCpu, pDis, pRegFrame, uASID);
                 if (RT_SUCCESS(rc))
                     pRegFrame->rip += cbOp; /* Move on to the next instruction. */

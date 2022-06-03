@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatBytes.cpp 41658 2012-06-11 22:21:44Z vboxsync $ */
+/* $Id: DisasmFormatBytes.cpp 41732 2012-06-14 23:57:45Z vboxsync $ */
 /** @file
  * VBox Disassembler - Helper for formatting the opcode bytes.
  */
@@ -38,7 +38,7 @@
 size_t disFormatBytes(PCDISCPUSTATE pCpu, char *pszDst, size_t cchDst, uint32_t fFlags)
 {
     size_t      cchOutput = 0;
-    uint32_t    cb        = pCpu->opsize;
+    uint32_t    cb        = pCpu->cbInstr;
     AssertStmt(cb <= 16, cb = 16);
 
 #define PUT_C(ch) \
