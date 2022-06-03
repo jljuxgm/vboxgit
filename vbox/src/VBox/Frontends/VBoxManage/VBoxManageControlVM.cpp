@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 41097 2012-04-30 10:30:09Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 41885 2012-06-22 12:55:10Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1128,7 +1128,7 @@ int handleControlVM(HandlerArg *a)
             com::SafeArray<BYTE> saScreenshot;
             CHECK_ERROR_BREAK(pDisplay, TakeScreenShotPNGToArray(displayIdx, width, height, ComSafeArrayAsOutParam(saScreenshot)));
             RTFILE pngFile = NIL_RTFILE;
-            vrc = RTFileOpen(&pngFile, a->argv[2], RTFILE_O_OPEN_CREATE | RTFILE_O_WRITE | RTFILE_O_TRUNCATE);
+            vrc = RTFileOpen(&pngFile, a->argv[2], RTFILE_O_OPEN_CREATE | RTFILE_O_WRITE | RTFILE_O_TRUNCATE | RTFILE_O_DENY_ALL);
             if (RT_FAILURE(vrc))
             {
                 RTMsgError("Failed to create file '%s'. rc=%Rrc", a->argv[2], vrc);
