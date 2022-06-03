@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 37624 2011-06-24 08:57:35Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 41578 2012-06-05 14:01:18Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -873,7 +873,9 @@ static int addIfDevice(const char *pcszDevicesRoot,
     unsigned bus = usbGetBusFromSysfsPath(pcszNode);
     if (!bus)
         return VINF_SUCCESS;
-    unsigned device = RTLinuxSysFsReadIntFile(10, "%s/devnum", pcszNode);
+    int device = RTLinuxSysFsReadIntFile(10, "%s/devnum", pcszNode);
+    if (device < 0)
+        return VINF_SUCCESS;
     dev_t devnum = usbMakeDevNum(bus, device);
     if (!devnum)
         return VINF_SUCCESS;
