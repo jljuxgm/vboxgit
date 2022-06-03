@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 37466 2011-06-15 12:44:16Z vboxsync $ */
+/* $Id: DevATA.cpp 37653 2011-06-27 19:36:30Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3123,7 +3123,7 @@ static void atapiParseCmdVirtualATAPI(ATADevState *s)
                         PDMCritSectLeave(&pCtl->lock);
                         rc = VMR3ReqCallWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
                                              (PFNRT)s->pDrvMount->pfnUnmount, 3,
-                                             s->pDrvMount /*=fForce*/, true /*=fEject*/);
+                                             s->pDrvMount, false /*=fForce*/, true /*=fEject*/);
                         Assert(RT_SUCCESS(rc) || (rc == VERR_PDM_MEDIA_LOCKED) || (rc = VERR_PDM_MEDIA_NOT_MOUNTED));
                         {
                             STAM_PROFILE_START(&pCtl->StatLockWait, a);
