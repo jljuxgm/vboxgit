@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DevACPI.cpp 41252 2012-05-11 12:09:57Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -749,7 +749,7 @@ static int acpiPlantTables(ACPIState *pThis);
 DECLINLINE(void) acpiSetIrq(ACPIState *pThis, int level)
 {
     if (pThis->pm1a_ctl & SCI_EN)
-        PDMDevHlpPCISetIrq(pThis->pDevIns, -1, level);
+        PDMDevHlpPCISetIrq(pThis->pDevIns, 0, level);
 }
 
 DECLINLINE(uint32_t) pm1a_pure_en(uint32_t en)
