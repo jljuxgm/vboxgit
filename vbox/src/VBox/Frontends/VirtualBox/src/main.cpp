@@ -1,4 +1,4 @@
-/* $Id: main.cpp 38977 2011-10-12 11:44:56Z vboxsync $ */
+/* $Id: main.cpp 39121 2011-10-26 13:57:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -76,8 +76,8 @@ QString g_QStrHintLinuxNoDriver = QApplication::tr(
   "there is a permission problem with /dev/vboxdrv. Please reinstall the kernel "
   "module by executing<br/><br/>"
   "  <font color=blue>'/etc/init.d/vboxdrv setup'</font><br/><br/>"
-  "as root. Users of Ubuntu, Fedora or Mandriva should install the DKMS "
-  "package first. This package keeps track of Linux kernel changes and "
+  "as root. If it is available in your distribution, you should install the "
+  "DKMS package first. This package keeps track of Linux kernel changes and "
   "recompiles the vboxdrv kernel module if necessary."
   );
 
