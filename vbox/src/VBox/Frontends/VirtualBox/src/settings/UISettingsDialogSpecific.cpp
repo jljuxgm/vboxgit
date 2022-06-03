@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 37027 2011-05-10 13:12:48Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 37036 2011-05-11 12:43:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -749,7 +749,6 @@ void UISettingsDialogMachine::saveData()
         }
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 
-#ifndef VBOX_OSE
         /* Enable OHCI controller if HID is enabled: */
         if (pSystemPage && pSystemPage->isHIDEnabled())
         {
@@ -757,7 +756,6 @@ void UISettingsDialogMachine::saveData()
             if (!controller.isNull())
                 controller.SetEnabled(true);
         }
-#endif /* !VBOX_OSE */
 
         /* Clear the "GUI_FirstRun" extra data key in case if
          * the boot order or disk configuration were changed: */
@@ -899,7 +897,6 @@ bool UISettingsDialogMachine::recorrelate(QWidget *pPage, QString &strWarning)
     }
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 
-#ifndef VBOX_OSE
     if (pPage == m_pSelector->idToPage(VMSettingsPage_System))
     {
         /* Get System & USB pages: */
@@ -918,7 +915,6 @@ bool UISettingsDialogMachine::recorrelate(QWidget *pPage, QString &strWarning)
             return true;
         }
     }
-#endif /* !VBOX_OSE */
 
     if (pPage == m_pSelector->idToPage(VMSettingsPage_Storage))
     {
