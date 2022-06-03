@@ -1,4 +1,4 @@
-/* $Id: Helper.cpp 36446 2011-03-28 09:42:12Z vboxsync $ */
+/* $Id: Helper.cpp 36447 2011-03-28 10:03:32Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Helper Functions.
  */
@@ -87,7 +87,8 @@ DWORD loadConfiguration(void)
         }
         RegCloseKey(hKey);
     }
-    return dwRet;
+    /* Do not report back an error here yet. */
+    return ERROR_SUCCESS;
 }
 
 /**
