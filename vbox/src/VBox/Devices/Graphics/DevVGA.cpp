@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 40472 2012-03-15 08:26:21Z vboxsync $ */
+/* $Id: DevVGA.cpp 41256 2012-05-11 14:46:25Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5282,7 +5282,7 @@ static DECLCALLBACK(int) vgaR3IORegionMap(PPCIDEVICE pPciDev, /*unsigned*/ int i
         rc = PGMHandlerPhysicalDeregister(PDMDevHlpGetVM(pDevIns), pThis->GCPhysVRAM);
         AssertRC(rc);
         pThis->GCPhysVRAM = 0;
-        pThis->vbe_regs[VBE_DISPI_INDEX_FB_BASE_HI];
+        /* NB: VBE_DISPI_INDEX_FB_BASE_HI is left unchanged here. */
     }
     return rc;
 }
@@ -5477,6 +5477,7 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
 #ifdef CONFIG_BOCHS_VBE
     pThis->vbe_regs[VBE_DISPI_INDEX_ID] = VBE_DISPI_ID0;
     pThis->vbe_regs[VBE_DISPI_INDEX_VBOX_VIDEO] = 0;
+    pThis->vbe_regs[VBE_DISPI_INDEX_FB_BASE_HI] = pThis->GCPhysVRAM >> 16;
     pThis->vbe_bank_max   = (pThis->vram_size >> 16) - 1;
 #endif /* CONFIG_BOCHS_VBE */
 
