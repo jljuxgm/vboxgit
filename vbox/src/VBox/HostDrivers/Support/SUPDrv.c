@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 40795 2012-04-06 16:22:40Z vboxsync $ */
+/* $Id: SUPDrv.c 40796 2012-04-06 16:23:55Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -274,7 +274,7 @@ static SUPFUNC g_aFunctions[] =
     { "RTSpinlockRelease",                      (void *)RTSpinlockRelease },
     { "RTSpinlockAcquireNoInts",                (void *)RTSpinlockAcquireNoInts },
     { "RTSpinlockReleaseNoInts",                (void *)RTSpinlockReleaseNoInts },
-    /*{ "RTTimeNow",                              (void *)RTTimeNow },*/
+    { "RTTimeNow",                              (void *)RTTimeNow },
     { "RTTimeNanoTS",                           (void *)RTTimeNanoTS },
     { "RTTimeMilliTS",                          (void *)RTTimeMilliTS },
     { "RTTimeSystemNanoTS",                     (void *)RTTimeSystemNanoTS },
