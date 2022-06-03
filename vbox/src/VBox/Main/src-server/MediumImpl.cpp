@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 35988 2011-02-15 17:57:28Z vboxsync $ */
+/* $Id: MediumImpl.cpp 36243 2011-03-09 18:40:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3580,6 +3580,9 @@ bool Medium::isReadOnly()
                  it != m->backRefs.end(); ++it)
                 if (it->llSnapshotIds.size() != 0)
                     return true;
+
+            if (m->variant & MediumVariant_VmdkStreamOptimized)
+                return true;
 
             return false;
         }
