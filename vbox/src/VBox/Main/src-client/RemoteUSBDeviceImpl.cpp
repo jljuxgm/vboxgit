@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 38911 2011-09-30 09:52:40Z vboxsync $ */
 
 /** @file
  *
@@ -54,7 +54,7 @@ void RemoteUSBDevice::FinalRelease()
 /**
  * Initializes the remote USB device object.
  */
-HRESULT RemoteUSBDevice::init (uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc)
+HRESULT RemoteUSBDevice::init (uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc, bool fDescExt)
 {
     LogFlowThisFunc(("u32ClientId=%d,pDevDesc=%p\n", u32ClientId, pDevDesc));
 
@@ -78,7 +78,29 @@ HRESULT RemoteUSBDevice::init (uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc
 
     unconst(mData.port)         = pDevDesc->idPort;
     unconst(mData.version)      = pDevDesc->bcdUSB >> 8;
-    unconst(mData.portVersion)  = mData.version; /** @todo fix this */
+    if (fDescExt)
+    {
+        VRDEUSBDEVICEDESCEXT *pDevDescExt = (VRDEUSBDEVICEDESCEXT *)pDevDesc;
+        switch (pDevDescExt->u16DeviceSpeed)
+        {
+            default:
+            case VRDE_USBDEVICESPEED_UNKNOWN:
+            case VRDE_USBDEVICESPEED_LOW:
+            case VRDE_USBDEVICESPEED_FULL:
+                unconst(mData.portVersion) = 1;
+                break;
+
+            case VRDE_USBDEVICESPEED_HIGH:
+            case VRDE_USBDEVICESPEED_VARIABLE:
+            case VRDE_USBDEVICESPEED_SUPERSPEED:
+                unconst(mData.portVersion) = 2;
+                break;
+        }
+    }
+    else
+    {
+        unconst(mData.portVersion)  = mData.version;
+    }
 
     mData.state                  = USBDeviceState_Available;
 

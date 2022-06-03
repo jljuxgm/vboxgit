@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 38873 2011-09-27 08:58:22Z vboxsync $ */
+/* $Id: ConsoleImpl.h 38911 2011-09-30 09:52:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -227,7 +227,7 @@ public:
     void VRDPInterceptUSB(uint32_t u32ClientId, void **ppvIntercept);
     void VRDPInterceptClipboard(uint32_t u32ClientId);
 
-    void processRemoteUSBDevices(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevList, uint32_t cbDevList);
+    void processRemoteUSBDevices(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevList, uint32_t cbDevList, bool fDescExt);
 
     // callback callers (partly; for some events console callbacks are notified
     // directly from IInternalSessionControl event handlers declared above)

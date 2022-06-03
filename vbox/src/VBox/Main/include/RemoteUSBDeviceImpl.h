@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 38911 2011-09-30 09:52:40Z vboxsync $ */
 
 /** @file
  *
@@ -49,7 +49,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc);
+    HRESULT init(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevDesc, bool fDescExt);
     void uninit();
 
     // IUSBDevice properties
