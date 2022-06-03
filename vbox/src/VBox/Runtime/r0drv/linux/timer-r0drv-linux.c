@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 39004 2011-10-17 14:12:14Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 39007 2011-10-17 14:51:37Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -1405,6 +1405,7 @@ RTDECL(int) RTTimerDestroy(PRTTIMER pTimer)
     AssertPtrReturn(pTimer, VERR_INVALID_HANDLE);
     AssertReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
     RTTIMERLNX_LOG(("destroy %p\n", pTimer));
+/** @todo We should invalidate the magic here! */
 
     /*
      * Stop the timer if it's still active, then destroy it if we can.
@@ -1450,7 +1451,14 @@ RTDECL(int) RTTimerDestroy(PRTTIMER pTimer)
     }
 
     if (fCanDestroy)
-        rtTimerLnxDestroyIt(pTimer);
+    {
+        /* For paranoid reasons, defer actually destroying the semaphore when
+           in atomic or interrupt context. */
+        if (in_atomic() || in_interrupt())
+            rtR0LnxWorkqueuePush(&pTimer->DtorWorkqueueItem, rtTimerLnxDestroyDeferred);
+        else
+            rtTimerLnxDestroyIt(pTimer);
+    }
 
     return VINF_SUCCESS;
 }
