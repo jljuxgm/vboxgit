@@ -1,4 +1,4 @@
-/* $Id: solaudio.c 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: solaudio.c 40844 2012-04-10 10:37:46Z vboxsync $ */
 /** @file
  * VirtualBox Audio Driver - Solaris host.
  */
@@ -843,7 +843,7 @@ static struct audio_pcm_ops solaudio_pcm_ops =
 
 static struct audio_option solaudio_options[] =
 {
-    {"PLAY_BUFFER_SIZE", AUD_OPT_INT, &conf.cbPlayBuffer,
+    {"PlayBufferSize", AUD_OPT_INT, &conf.cbPlayBuffer,
      "Size of the buffer in bytes", NULL, 0},
 #if 0
     {"RECORD_BUFFER_SIZE", AUD_OPT_INT, &conf.cbRecordBuffer,
