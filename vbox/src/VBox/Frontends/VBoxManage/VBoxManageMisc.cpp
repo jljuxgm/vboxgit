@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 39445 2011-11-29 09:17:36Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 39888 2012-01-26 18:05:46Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1010,7 +1010,7 @@ int handleSharedFolder(HandlerArg *a)
         }
     }
     else
-        return errorSyntax(USAGE_SETPROPERTY, "Invalid parameter '%s'", Utf8Str(a->argv[0]).c_str());
+        return errorSyntax(USAGE_SHAREDFOLDER, "Invalid parameter '%s'", Utf8Str(a->argv[0]).c_str());
 
     return 0;
 }
