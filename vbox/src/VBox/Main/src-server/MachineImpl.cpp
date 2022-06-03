@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 41595 2012-06-06 09:58:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 41596 2012-06-06 11:20:14Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6043,9 +6043,9 @@ STDMETHODIMP Machine::ReadSavedThumbnailPNGToArray(ULONG aScreenId, ULONG *aWidt
     {
         if (pu8PNG)
             RTMemFree(pu8PNG);
-            return setError(VBOX_E_IPRT_ERROR,
-                            tr("Could not convert screenshot to PNG (%Rrc)"),
-                            vrc);
+        return setError(VBOX_E_IPRT_ERROR,
+                        tr("Could not convert screenshot to PNG (%Rrc)"),
+                        vrc);
     }
 
     freeSavedDisplayScreenshot(pu8Data);
