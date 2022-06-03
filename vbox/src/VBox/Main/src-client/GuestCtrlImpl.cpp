@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 36101 2011-02-28 14:34:48Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 36103 2011-02-28 15:04:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1114,7 +1114,7 @@ int Guest::notifyCtrlExecStatus(uint32_t                u32Function,
                 {
                     /* Not found, add to map. */
                     GuestProcess newProcess;
-                    newProcess.mStatus = (ExecuteProcessStatus)pCBData->u32Status;
+                    newProcess.mStatus = (ExecuteProcessStatus_T)pCBData->u32Status;
                     newProcess.mExitCode = pCBData->u32Flags; /* Contains exit code. */
                     newProcess.mFlags = 0;
 
@@ -1122,7 +1122,7 @@ int Guest::notifyCtrlExecStatus(uint32_t                u32Function,
                 }
                 else /* Update map. */
                 {
-                    it_proc->second.mStatus = (ExecuteProcessStatus)pCBData->u32Status;
+                    it_proc->second.mStatus = (ExecuteProcessStatus_T)pCBData->u32Status;
                     it_proc->second.mExitCode = pCBData->u32Flags; /* Contains exit code. */
                     it_proc->second.mFlags = 0;
                 }
