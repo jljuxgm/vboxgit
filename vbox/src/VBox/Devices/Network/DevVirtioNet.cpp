@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -417,7 +417,7 @@ PDMBOTHCBDECL(int) vnetReset(void *pvState)
     memset(pState->aVlanFilter, 0, sizeof(pState->aVlanFilter));
     pState->uIsTransmitting   = 0;
 #ifndef IN_RING3
-    return VINF_IOM_HC_IOPORT_WRITE;
+    return VINF_IOM_R3_IOPORT_WRITE;
 #else
     if (pState->pDrv)
         pState->pDrv->pfnSetPromiscuousMode(pState->pDrv, true);

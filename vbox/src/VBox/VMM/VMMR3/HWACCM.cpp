@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 40274 2012-02-28 13:17:35Z vboxsync $ */
+/* $Id: HWACCM.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1864,10 +1864,10 @@ DECLCALLBACK(VBOXSTRICTRC) hwaccmR3ReplaceTprInstr(PVM pVM, PVMCPU pVCpu, void *
             Assert(pDis->param1.flags == USE_REG_GEN32);
 
             /* Found:
-                *   mov eax, dword [fffe0080]        (5 bytes)
-                * Check if next instruction is:
-                *   shr eax, 4
-                */
+             *   mov eax, dword [fffe0080]        (5 bytes)
+             * Check if next instruction is:
+             *   shr eax, 4
+             */
             pCtx->rip += cbOp;
             rc = EMInterpretDisasOne(pVM, pVCpu, CPUMCTX2CORE(pCtx), pDis, &cbOp);
             pCtx->rip = oldrip;

@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
+/* $Id: DevPIC.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -670,7 +670,7 @@ PDMBOTHCBDECL(int) picIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port
     if (cb == 1)
     {
         int rc;
-        PIC_LOCK(pThis, VINF_IOM_HC_IOPORT_READ);
+        PIC_LOCK(pThis, VINF_IOM_R3_IOPORT_READ);
         *pu32 = pic_ioport_read(&pThis->aPics[iPic], Port, &rc);
         PIC_UNLOCK(pThis);
         return rc;
@@ -699,7 +699,7 @@ PDMBOTHCBDECL(int) picIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Por
     if (cb == 1)
     {
         int rc;
-        PIC_LOCK(pThis, VINF_IOM_HC_IOPORT_WRITE);
+        PIC_LOCK(pThis, VINF_IOM_R3_IOPORT_WRITE);
         rc = pic_ioport_write(&pThis->aPics[iPic], Port, u32);
         PIC_UNLOCK(pThis);
         return rc;
@@ -724,7 +724,7 @@ PDMBOTHCBDECL(int) picIOPortElcrRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT 
     if (cb == 1)
     {
         PicState *s = (PicState*)pvUser;
-        PIC_LOCK(PDMINS_2_DATA(pDevIns, PDEVPIC), VINF_IOM_HC_IOPORT_READ);
+        PIC_LOCK(PDMINS_2_DATA(pDevIns, PDEVPIC), VINF_IOM_R3_IOPORT_READ);
         *pu32 = s->elcr;
         PIC_UNLOCK(PDMINS_2_DATA(pDevIns, PDEVPIC));
         return VINF_SUCCESS;
@@ -749,7 +749,7 @@ PDMBOTHCBDECL(int) picIOPortElcrWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
     if (cb == 1)
     {
         PicState *s = (PicState*)pvUser;
-        PIC_LOCK(PDMINS_2_DATA(pDevIns, PDEVPIC), VINF_IOM_HC_IOPORT_WRITE);
+        PIC_LOCK(PDMINS_2_DATA(pDevIns, PDEVPIC), VINF_IOM_R3_IOPORT_WRITE);
         s->elcr = u32 & s->elcr_mask;
         PIC_UNLOCK(PDMINS_2_DATA(pDevIns, PDEVPIC));
     }

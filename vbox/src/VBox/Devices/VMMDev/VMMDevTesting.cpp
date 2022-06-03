@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 39136 2011-10-28 10:13:34Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
@@ -174,7 +174,7 @@ PDMBOTHCBDECL(int) vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
                                     break;
                             }
 #else
-                            return VINF_IOM_HC_IOPORT_WRITE;
+                            return VINF_IOM_R3_IOPORT_WRITE;
 #endif
                         }
                         return VINF_SUCCESS;
@@ -194,7 +194,7 @@ PDMBOTHCBDECL(int) vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
                             RTPrintf("testing: SUB_DONE - %u errors\n", u32);
                         return VINF_SUCCESS;
 #else
-                        return VINF_IOM_HC_IOPORT_WRITE;
+                        return VINF_IOM_R3_IOPORT_WRITE;
 #endif
                     }
                     break;
@@ -231,7 +231,7 @@ PDMBOTHCBDECL(int) vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
                                      pThis->TestingData.Value.u64Value.u, pThis->TestingData.Value.u64Value.u,
                                      pThis->TestingData.Value.u32Unit);
 #else
-                            return VINF_IOM_HC_IOPORT_WRITE;
+                            return VINF_IOM_R3_IOPORT_WRITE;
 #endif
                         }
                         return VINF_SUCCESS;
@@ -244,7 +244,7 @@ PDMBOTHCBDECL(int) vmmdevTestingIoWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
                             RTPrintf("testing: SUB_DONE - %u errors\n", u32);
                         return VINF_SUCCESS;
 #else
-                        return VINF_IOM_HC_IOPORT_WRITE;
+                        return VINF_IOM_R3_IOPORT_WRITE;
 #endif
                     }
                     break;
