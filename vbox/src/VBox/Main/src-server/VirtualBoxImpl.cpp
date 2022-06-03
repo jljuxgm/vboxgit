@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 36027 2011-02-21 09:22:52Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 36439 2011-03-25 16:19:12Z vboxsync $ */
 
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
@@ -3954,12 +3954,11 @@ DECLCALLBACK(int) VirtualBox::ClientWatcher(RTTHREAD /* thread */, void *pvUser)
     size_t cnt = 0;
     size_t cntSpawned = 0;
 
+    VirtualBoxBase::initializeComForThread();
+
 #if defined(RT_OS_WINDOWS)
 
-    HRESULT hrc = CoInitializeEx(NULL,
-                                 COINIT_MULTITHREADED | COINIT_DISABLE_OLE1DDE |
-                                 COINIT_SPEED_OVER_MEMORY);
-    AssertComRC(hrc);
+    HRESULT hrc;
 
     /// @todo (dmik) processes reaping!
 
@@ -4412,6 +4411,7 @@ DECLCALLBACK(int) VirtualBox::ClientWatcher(RTTHREAD /* thread */, void *pvUser)
 # error "Port me!"
 #endif
 
+    VirtualBoxBase::uninitializeComForThread();
     LogFlowFuncLeave();
     return 0;
 }
