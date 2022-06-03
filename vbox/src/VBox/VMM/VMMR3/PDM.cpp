@@ -1,10 +1,10 @@
-/* $Id: PDM.cpp 39653 2011-12-19 08:28:54Z vboxsync $ */
+/* $Id: PDM.cpp 39839 2012-01-23 16:05:57Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -266,6 +266,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
+#include <iprt/ctype.h>
 #include <iprt/ldr.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
@@ -2357,5 +2358,25 @@ VMMR3DECL(int) PDMR3VMMDevHeapFree(PVM pVM, RTR3PTR pv)
     /** @todo not a real heap as there's currently only one user. */
     pVM->pdm.s.cbVMMDevHeapLeft = pVM->pdm.s.cbVMMDevHeap;
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Checks that a PDMDRVREG::szName, PDMDEVREG::szName or PDMUSBREG::szName
+ * field contains only a limited set of ASCII characters.
+ *
+ * @returns true / false.
+ * @param   pszName             The name to validate.
+ */
+bool pdmR3IsValidName(const char *pszName)
+{
+    char ch;
+    while (   (ch = *pszName) != '\0'
+           && (   RT_C_IS_ALNUM(ch)
+               || ch == '-'
+               || ch == ' ' /** @todo disallow this! */
+               || ch == '_') )
+        pszName++;
+    return ch == '\0';
 }
 

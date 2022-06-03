@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PDMDevice.cpp 39839 2012-01-23 16:05:57Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -630,8 +630,9 @@ static DECLCALLBACK(int) pdmR3DevReg_Register(PPDMDEVREGCB pCallbacks, PCPDMDEVR
                     VERR_PDM_UNKNOWN_DEVREG_VERSION);
 
     AssertMsgReturn(    pReg->szName[0]
-                    &&  strlen(pReg->szName) < sizeof(pReg->szName),
-                    ("Invalid name '%s'\n", pReg->szName),
+                    &&  strlen(pReg->szName) < sizeof(pReg->szName)
+                    &&  pdmR3IsValidName(pReg->szName),
+                    ("Invalid name '%.s'\n", sizeof(pReg->szName), pReg->szName),
                     VERR_PDM_INVALID_DEVICE_REGISTRATION);
     AssertMsgReturn(   !(pReg->fFlags & PDM_DEVREG_FLAGS_RC)
                     || (   pReg->szRCMod[0]
