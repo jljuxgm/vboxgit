@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41084 2012-04-27 13:05:09Z vboxsync $
+# $Id: Makefile.kmk 41087 2012-04-27 14:05:28Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -84,7 +84,6 @@ VBoxPcBios_SOURCES = \
 LIBRARIES += PcBiosBin
 PcBiosBin_TEMPLATE  = VBOXR3
 PcBiosBin_DEFS      = IN_VBOXDD2
-PcBiosBin_INCS      = $(VBOX_PATH_DEVICES_SRC)
 PcBiosBin_SOURCES   = $(PcBiosBin_0_OUTDIR)/PcBiosBin.c
 PcBiosBin_CLEAN     = $(PcBiosBin_0_OUTDIR)/PcBiosBin.c
 
