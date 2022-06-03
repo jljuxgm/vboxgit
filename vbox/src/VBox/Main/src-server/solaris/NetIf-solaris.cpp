@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 37662 2011-06-28 11:41:49Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 40068 2012-02-10 15:45:18Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -81,10 +81,14 @@ static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNe
         SolarisNICMap.insert(NICPair("igb", "Intel 82575 PCI-E Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("ipge", "PCI-E Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("iprb", "Intel 82557/58/59 Ethernet"));
+        SolarisNICMap.insert(NICPair("ixgb", "Intel 82597ex 10 Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("ixgbe", "Intel 10 Gigabit PCI-E Ethernet"));
+        SolarisNICMap.insert(NICPair("mcxe", "Mellanox ConnectX-2 10 Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("mxfe", "Macronix 98715 Fast Ethernet"));
         SolarisNICMap.insert(NICPair("nfo", "Nvidia Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("nge", "Nvidia Gigabit Ethernet"));
+        SolarisNICMap.insert(NICPair("ntxn", "NetXen 10/1 Gigabit Ethernet"));
+        SolarisNICMap.insert(NICPair("nxge", "Sun 10/1 Gigabit Ethernet"));
         SolarisNICMap.insert(NICPair("pcelx", "3COM EtherLink III PCMCIA Ethernet"));
         SolarisNICMap.insert(NICPair("pcn", "AMD PCnet Ethernet"));
         SolarisNICMap.insert(NICPair("qfe", "SUNW,qfe Quad Fast-Ethernet"));
