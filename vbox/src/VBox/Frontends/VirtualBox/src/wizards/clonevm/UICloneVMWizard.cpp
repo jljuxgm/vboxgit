@@ -1,4 +1,4 @@
-/* $Id: UICloneVMWizard.cpp 37899 2011-07-12 13:25:38Z vboxsync $ */
+/* $Id: UICloneVMWizard.cpp 38055 2011-07-19 08:55:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -39,7 +39,8 @@ UICloneVMWizard::UICloneVMWizard(QWidget *pParent, CMachine machine, bool fShowC
     /* If the machine has no snapshots, we don't bother the user about options
      * for it. */
     if (machine.GetSnapshotCount() > 0)
-        addPage(new UICloneVMWizardPage2(fShowChildsOption));
+//        addPage(new UICloneVMWizardPage2(fShowChildsOption));
+        addPage(new UICloneVMWizardPage2(false));
 
     /* Translate wizard: */
     retranslateUi();
