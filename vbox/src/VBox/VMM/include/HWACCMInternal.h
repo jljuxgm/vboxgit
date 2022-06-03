@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 41190 2012-05-07 15:42:59Z vboxsync $ */
+/* $Id: HWACCMInternal.h 41205 2012-05-08 13:01:09Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -164,6 +164,9 @@ typedef struct HMGLOBLCPUINFO
     uint32_t            uCurrentASID;
     /** TLB flush count. */
     uint32_t            cTLBFlushes;
+
+    /** Whether to flush each new ASID/VPID before use. */
+    bool                fFlushASIDBeforeUse;
 
     /** Set the first time a cpu is used to make sure we start with a clean TLB. */
     bool                fFlushTLB;
