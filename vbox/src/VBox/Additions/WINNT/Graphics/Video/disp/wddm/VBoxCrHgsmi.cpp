@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.cpp 40483 2012-03-15 14:20:20Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.cpp 41374 2012-05-21 18:04:03Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -250,11 +250,6 @@ VBOXCRHGSMI_DECL(int) VBoxCrHgsmiTerm()
         vboxDispKmtCallbacksTerm(&g_VBoxCrHgsmiKmtCallbacks);
     }
     return VINF_SUCCESS;
-}
-
-VBOXCRHGSMI_DECL(void) VBoxCrHgsmiLog(char * szString)
-{
-    vboxVDbgPrint(("%s", szString));
 }
 
 VBOXCRHGSMI_DECL(int) VBoxCrHgsmiCtlConGetClientID(PVBOXUHGSMI pHgsmi, uint32_t *pu32ClientID)

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMp.cpp 38112 2011-07-22 13:26:19Z vboxsync $ */
+/* $Id: VBoxDispMp.cpp 41374 2012-05-21 18:04:03Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -192,7 +192,6 @@ VBOXDISPMP_DECL(HRESULT) VBoxDispMpGetCallbacks(uint32_t u32Version, PVBOXDISPMP
     pCallbacks->pfnEnableEvents = vboxDispMpEnableEvents;
     pCallbacks->pfnDisableEvents = vboxDispMpDisableEvents;
     pCallbacks->pfnGetRegions = vboxDispMpGetRegions;
-    pCallbacks->pfnLog = vboxDispMpLog;
     return S_OK;
 }
 
