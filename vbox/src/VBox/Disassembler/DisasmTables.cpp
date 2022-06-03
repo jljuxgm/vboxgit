@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 41863 2012-06-21 15:46:24Z vboxsync $ */
+/* $Id: DisasmTables.cpp 41867 2012-06-21 21:08:19Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -1594,7 +1594,7 @@ const DISOPCODE g_aTwoByteMapX86_3DNow[256] =
     OP("pfmax %Pq,%Qq",      IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFMAX,   OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE_MOD_RM(0xa5),
     OP("pfrcpit1 %Pq,%Qq",   IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFRCPIT1,OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("pfrsqrtit1 %Pq,%Qq", IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFRSQRTIT1,  OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("pfrsqit1 %Pq,%Qq", IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFRSQRTIT1,  OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE_MOD_RM(0xa8),
     INVALID_OPCODE_MOD_RM(0xa9),
     OP("pfsubr %Pq,%Qq",     IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFSUBR,  OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
@@ -1612,7 +1612,7 @@ const DISOPCODE g_aTwoByteMapX86_3DNow[256] =
     OP("pfmul %Pq,%Qq",      IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFMUL,   OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE_MOD_RM(0xb5),
     OP("pfrcpit2 %Pq,%Qq",   IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFRCPIT2,OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("pfmulhrw %Pq,%Qq",   IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFMULHRW,OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("pmulhrwa %Pq,%Qq",   IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFMULHRW,OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE_MOD_RM(0xb8),
     INVALID_OPCODE_MOD_RM(0xb9),
     INVALID_OPCODE_MOD_RM(0xba),
