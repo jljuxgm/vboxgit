@@ -1,4 +1,4 @@
-/* $Id: thread2-win.cpp 39327 2011-11-16 10:52:07Z vboxsync $ */
+/* $Id: thread2-win.cpp 39443 2011-11-28 15:01:21Z vboxsync $ */
 /** @file
  * IPRT - Threads part 2, Windows.
  */
@@ -51,6 +51,13 @@ RTR3DECL(int)   RTThreadSleep(RTMSINTERVAL cMillies)
     LogFlow(("RTThreadSleep: cMillies=%d\n", cMillies));
     Sleep(cMillies);
     LogFlow(("RTThreadSleep: returning %Rrc (cMillies=%d)\n", VINF_SUCCESS, cMillies));
+    return VINF_SUCCESS;
+}
+
+
+RTR3DECL(int)   RTThreadSleepNoLog(RTMSINTERVAL cMillies)
+{
+    Sleep(cMillies);
     return VINF_SUCCESS;
 }
 

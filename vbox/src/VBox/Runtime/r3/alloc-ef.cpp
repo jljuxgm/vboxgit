@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 39091 2011-10-24 13:58:22Z vboxsync $ */
+/* $Id: alloc-ef.cpp 39443 2011-11-28 15:01:21Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -110,7 +110,7 @@ DECLINLINE(void) rtmemBlockLock(void)
 {
     unsigned c = 0;
     while (!ASMAtomicCmpXchgU32(&g_BlocksLock, 1, 0))
-        RTThreadSleep(((++c) >> 2) & 31);
+        RTThreadSleepNoLog(((++c) >> 2) & 31);
 }
 
 

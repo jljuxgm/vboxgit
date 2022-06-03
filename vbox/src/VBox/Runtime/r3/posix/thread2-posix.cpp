@@ -1,4 +1,4 @@
-/* $Id: thread2-posix.cpp 37733 2011-07-01 15:41:37Z vboxsync $ */
+/* $Id: thread2-posix.cpp 39443 2011-11-28 15:01:21Z vboxsync $ */
 /** @file
  * IPRT - Threads part 2, POSIX.
  */
@@ -89,6 +89,37 @@ RTDECL(int) RTThreadSleep(RTMSINTERVAL cMillies)
     int rc = RTErrConvertFromErrno(errno);
     LogFlow(("RTThreadSleep: returning %Rrc (cMillies=%d)\n", rc, cMillies));
     return rc;
+}
+
+
+RTDECL(int) RTThreadSleepNoLog(RTMSINTERVAL cMillies)
+{
+    if (!cMillies)
+    {
+        /* pthread_yield() isn't part of SuS, thus this fun. */
+#ifdef RT_OS_DARWIN
+        pthread_yield_np();
+#elif defined(RT_OS_FREEBSD) /* void pthread_yield */
+        pthread_yield();
+#elif defined(RT_OS_SOLARIS)
+        sched_yield();
+#else
+        if (!pthread_yield())
+#endif
+            return VINF_SUCCESS;
+    }
+    else
+    {
+        struct timespec ts;
+        struct timespec tsrem = {0,0};
+
+        ts.tv_nsec = (cMillies % 1000) * 1000000;
+        ts.tv_sec  = cMillies / 1000;
+        if (!nanosleep(&ts, &tsrem))
+            return VINF_SUCCESS;
+    }
+
+    return RTErrConvertFromErrno(errno);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 37154 2011-05-19 12:54:32Z vboxsync $ */
+/* $Id: thread-os2.cpp 39443 2011-11-28 15:01:21Z vboxsync $ */
 /** @file
  * IPRT - Threads, OS/2.
  */
@@ -183,6 +183,13 @@ RTDECL(int)   RTThreadSleep(RTMSINTERVAL cMillies)
     LogFlow(("RTThreadSleep: cMillies=%d\n", cMillies));
     DosSleep(cMillies);
     LogFlow(("RTThreadSleep: returning (cMillies=%d)\n", cMillies));
+    return VINF_SUCCESS;
+}
+
+
+RTDECL(int)   RTThreadSleepNoLog(RTMSINTERVAL cMillies)
+{
+    DosSleep(cMillies);
     return VINF_SUCCESS;
 }
 
