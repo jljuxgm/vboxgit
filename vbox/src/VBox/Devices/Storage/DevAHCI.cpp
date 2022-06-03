@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 36972 2011-05-05 14:51:09Z vboxsync $ */
+/* $Id: DevAHCI.cpp 36990 2011-05-06 19:10:27Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -1904,6 +1904,7 @@ static void ahciPortSwReset(PAHCIPort pAhciPort)
     pAhciPort->regIS   = 0;
     pAhciPort->regIE   = 0;
     pAhciPort->regCMD  = AHCI_PORT_CMD_CPD  | /* Cold presence detection */
+                         AHCI_PORT_CMD_HPCP | /* Hotplugging supported. */
                          AHCI_PORT_CMD_SUD  | /* Device has spun up. */
                          AHCI_PORT_CMD_POD;   /* Port is powered on. */
     pAhciPort->regTFD  = (1 << 8) | ATA_STAT_SEEK | ATA_STAT_WRERR;
@@ -7924,6 +7925,21 @@ static DECLCALLBACK(void) ahciR3Detach(PPDMDEVINS pDevIns, unsigned iLUN, uint32
     if (pAhciPort->fATAPI)
         ahciMediumRemoved(pAhciPort);
 
+    if (!(fFlags & PDM_TACH_FLAGS_NOT_HOT_PLUG))
+    {
+        /*
+         * Inform the guest about the removed device.
+         */
+        pAhciPort->regSSTS = 0;
+        ASMAtomicAndU32(&pAhciPort->regCMD, ~AHCI_PORT_CMD_CPS);
+        ASMAtomicOrU32(&pAhciPort->regIS, AHCI_PORT_IS_CPDS | AHCI_PORT_IS_PRCS);
+        ASMAtomicOrU32(&pAhciPort->regSERR, AHCI_PORT_SERR_N);
+        if (   (pAhciPort->regIE & AHCI_PORT_IE_CPDE)
+            || (pAhciPort->regIE & AHCI_PORT_IE_PCE)
+            || (pAhciPort->regIE & AHCI_PORT_IE_PRCE))
+            ahciHbaSetInterrupt(pAhciPort->CTX_SUFF(pAhci), pAhciPort->iLUN, VERR_IGNORED);
+    }
+
     /*
      * Zero some important members.
      */
@@ -8029,6 +8045,22 @@ static DECLCALLBACK(int)  ahciR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, uint32
 
             if (RT_SUCCESS(rc) && pAhciPort->fATAPI)
                 ahciMediumInserted(pAhciPort);
+
+            /* Inform the guest about the added device in case of hotplugging. */
+            if (   RT_SUCCESS(rc)
+                && !(fFlags & PDM_TACH_FLAGS_NOT_HOT_PLUG))
+            {
+                /*
+                 * Initialize registers
+                 */
+                ASMAtomicOrU32(&pAhciPort->regCMD, AHCI_PORT_CMD_CPS);
+                ASMAtomicOrU32(&pAhciPort->regIS, AHCI_PORT_IS_CPDS | AHCI_PORT_IS_PRCS | AHCI_PORT_IS_PCS);
+                ASMAtomicOrU32(&pAhciPort->regSERR, AHCI_PORT_SERR_X | AHCI_PORT_SERR_N);
+                if (   (pAhciPort->regIE & AHCI_PORT_IE_CPDE)
+                    || (pAhciPort->regIE & AHCI_PORT_IE_PCE)
+                    || (pAhciPort->regIE & AHCI_PORT_IE_PRCE))
+                    ahciHbaSetInterrupt(pAhciPort->CTX_SUFF(pAhci), pAhciPort->iLUN, VERR_IGNORED);
+            }
         }
     }
 
