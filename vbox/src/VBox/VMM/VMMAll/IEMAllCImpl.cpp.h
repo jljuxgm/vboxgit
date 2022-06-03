@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 37079 2011-05-13 15:35:03Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 37918 2011-07-13 13:38:33Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -43,6 +43,60 @@ DECLINLINE(VBOXSTRICTRC) iemHlpCheckPortIOPermission(PIEMCPU pIemCpu, PCCPUMCTX 
     }
     return VINF_SUCCESS;
 }
+
+
+#if 0
+/**
+ * Calculates the parity bit.
+ *
+ * @returns true if the bit is set, false if not.
+ * @param   u8Result            The least significant byte of the result.
+ */
+static bool iemHlpCalcParityFlag(uint8_t u8Result)
+{
+    /*
+     * Parity is set if the number of bits in the least significant byte of
+     * the result is even.
+     */
+    uint8_t cBits;
+    cBits  = u8Result & 1;              /* 0 */
+    u8Result >>= 1;
+    cBits += u8Result & 1;
+    u8Result >>= 1;
+    cBits += u8Result & 1;
+    u8Result >>= 1;
+    cBits += u8Result & 1;
+    u8Result >>= 1;
+    cBits += u8Result & 1;              /* 4 */
+    u8Result >>= 1;
+    cBits += u8Result & 1;
+    u8Result >>= 1;
+    cBits += u8Result & 1;
+    u8Result >>= 1;
+    cBits += u8Result & 1;
+    return !(cBits & 1);
+}
+#endif /* not used */
+
+
+/**
+ * Updates the specified flags according to a 8-bit result.
+ *
+ * @param   pIemCpu             The.
+ * @param   u8Result            The result to set the flags according to.
+ * @param   fToUpdate           The flags to update.
+ * @param   fUndefined          The flags that are specified as undefined.
+ */
+static void iemHlpUpdateArithEFlagsU8(PIEMCPU pIemCpu, uint8_t u8Result, uint32_t fToUpdate, uint32_t fUndefined)
+{
+    PCPUMCTX pCtx = pIemCpu->CTX_SUFF(pCtx);
+
+    uint32_t fEFlags = pCtx->eflags.u;
+    iemAImpl_test_u8(&u8Result, u8Result, &fEFlags);
+    pCtx->eflags.u &= ~(fToUpdate | fUndefined);
+    pCtx->eflags.u |= (fToUpdate | fUndefined) & fEFlags;
+}
+
 
 /** @} */
 
@@ -2875,6 +2929,29 @@ IEM_CIMPL_DEF_0(iemCImpl_cpuid)
     iemRegAddToRip(pIemCpu, cbInstr);
     return VINF_SUCCESS;
 }
+
+
+/**
+ * Implements 'AAD'.
+ *
+ * @param   enmEffOpSize    The effective operand size.
+ */
+IEM_CIMPL_DEF_1(iemCImpl_aad, uint8_t, bImm)
+{
+    PCPUMCTX pCtx = pIemCpu->CTX_SUFF(pCtx);
+
+    uint16_t const ax = pCtx->ax;
+    uint8_t const  al = (uint8_t)ax + (uint8_t)(ax >> 8) * bImm;
+    pCtx->ax = al;
+    iemHlpUpdateArithEFlagsU8(pIemCpu, al,
+                              X86_EFL_SF | X86_EFL_SF | X86_EFL_PF,
+                              X86_EFL_OF | X86_EFL_AF | X86_EFL_CF);
+
+    iemRegAddToRip(pIemCpu, cbInstr);
+    return VINF_SUCCESS;
+}
+
+
 
 
 /*
