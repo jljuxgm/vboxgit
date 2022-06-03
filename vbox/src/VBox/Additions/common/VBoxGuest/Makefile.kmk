@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37981 2011-07-15 14:19:10Z vboxsync $
+# $Id: Makefile.kmk 38093 2011-07-21 12:45:30Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
@@ -186,6 +186,7 @@ ifeq ($(KBUILD_TARGET),linux)
 		-e "s;_MODULE_;vboxguest;g" \
 		-e "s;_OLDMODULES_;vboxguest vboxadd vboxsf vboxvfs vboxvideo;g" \
 		--output $@ $<
+	$(QUIET)$(CHMOD) a+rx,u+w $@
 
  # scripts.
  INSTALLS += vboxguest-sh

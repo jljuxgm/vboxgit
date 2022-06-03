@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38001 2011-07-18 10:16:11Z vboxsync $
+# $Id: Makefile.kmk 38093 2011-07-21 12:45:30Z vboxsync $
 ## @file
 # Common installer stuff.
 #
@@ -29,6 +29,7 @@ ifdef VBOX_WITH_PYTHON
 INSTALLS += VBox-python-glue-installer
 
 VBox-python-glue-installer_INST = $(INST_SDK)/installer/
+VBox-python-glue-installer_MODE = a+r,u+w
 VBox-python-glue-installer_SOURCES = vboxapisetup.py
 
 endif # VBOX_WITH_PYTHON

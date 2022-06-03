@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 36889 2011-04-29 12:03:16Z vboxsync $
+# $Id: Makefile.kmk 38093 2011-07-21 12:45:30Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -96,6 +96,7 @@ $$(HostDrivers-dkms-sh_0_OUTDIR)/do_dkms: \
 		-e "s;_MODULE_;vboxhost;g" \
 		-e "s;_OLDMODULES_;vboxhost vboxdrv vboxnetflt vboxnetadp;g" \
 		--output $@ $<
+	$(QUIET)$(CHMOD) a+rx,u+w $@
 
  endif
 

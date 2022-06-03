@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 38082 2011-07-20 14:26:24Z vboxsync $
+# $Id: Makefile.kmk 38093 2011-07-21 12:45:30Z vboxsync $
 ## @file
 # Sub-Makefile for Java bindings
 #
@@ -89,6 +89,7 @@ VBOX_JXPCOM_GEN     = $(VBOX_JXPCOM_TARGET)/jxpcomgen-idl
 endif
 
 VBoxJXpcom-inst-jar_INST = $(INST_SDK)bindings/xpcom/java/
+VBoxJXpcom-inst-jar_MODE = a+r,u+w
 VBoxJXpcom-inst-jar_SOURCES = \
 	$(VBOX_JXPCOM_JAR)
 VBoxJXpcom-inst-jar_CLEAN = \
