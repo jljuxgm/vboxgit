@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 36057 2011-02-22 20:56:44Z vboxsync $ */
+/* $Id: HostImpl.cpp 36121 2011-03-01 15:25:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -51,7 +51,7 @@
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
 #if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT)
-# include <VBox/WinNetConfig.h>
+# include <VBox/VBoxNetCfg-win.h>
 #endif /* #if defined(RT_OS_WINDOWS) && defined(VBOX_WITH_NETFLT) */
 
 #ifdef RT_OS_LINUX

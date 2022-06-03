@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 33141 2010-10-14 16:35:21Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 36121 2011-03-01 15:25:18Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -240,7 +240,7 @@ typedef struct VBOXNETFLTINS
             /** @name Windows instance data.
              * @{ */
             /** Filter driver device context. */
-            ADAPT IfAdaptor;
+            VBOXNETFLTWIN WinIf;
 
             volatile uint32_t cModeNetFltRefs;
             volatile uint32_t cModePassThruRefs;
@@ -250,8 +250,8 @@ typedef struct VBOXNETFLTINS
 #endif
             /** The MAC address of the interface. Caching MAC for performance reasons. */
             RTMAC MacAddr;
-            /** mutex used to synchronize ADAPT init/deinit */
-            RTSEMMUTEX hAdaptMutex;
+            /** mutex used to synchronize WinIf init/deinit */
+            RTSEMMUTEX hWinIfMutex;
             /** @}  */
 # else
 #  error "PORTME"
