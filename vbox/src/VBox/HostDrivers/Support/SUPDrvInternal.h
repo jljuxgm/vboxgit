@@ -1,4 +1,4 @@
-/* $Revision: 40777 $ */
+/* $Revision: 40806 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -516,7 +516,7 @@ typedef struct SUPDRVDEVEXT
     RTSEMFASTMUTEX                  mtxGip;
 #endif
     /** GIP spinlock protecting GIP members during Mp events. */
-    RTSPINLOCK                      spinGip;
+    RTSPINLOCK                      hGipSpinlock;
     /** Pointer to the Global Info Page (GIP). */
     PSUPGLOBALINFOPAGE              pGip;
     /** The physical address of the GIP. */

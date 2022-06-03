@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltM-win.h 36207 2011-03-08 17:12:10Z vboxsync $ */
+/* $Id: VBoxNetFltM-win.h 40806 2012-04-06 21:05:19Z vboxsync $ */
 /** @file
  * VBoxNetFltM-win.h - Bridged Networking Driver, Windows Specific Code - Miniport edge API
  */
@@ -25,16 +25,19 @@ DECLHIDDEN(VOID) vboxNetFltWinMpReturnPacket(IN NDIS_HANDLE hMiniportAdapterCont
 #ifdef VBOXNETADP
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinMpDoInitialization(PVBOXNETFLTINS pThis, NDIS_HANDLE hMiniportAdapter, NDIS_HANDLE hWrapperConfigurationContext);
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinMpDoDeinitialization(PVBOXNETFLTINS pThis);
+
 #else
+
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinMpInitializeDevideInstance(PVBOXNETFLTINS pThis);
 DECLHIDDEN(bool) vboxNetFltWinMpDeInitializeDeviceInstance(PVBOXNETFLTINS pThis, PNDIS_STATUS pStatus);
+
 DECLINLINE(VOID) vboxNetFltWinMpRequestStateComplete(PVBOXNETFLTINS pNetFlt)
 {
-    RTSPINLOCKTMP Tmp = RTSPINLOCKTMP_INITIALIZER;
-    RTSpinlockAcquireNoInts(pNetFlt->hSpinlock, &Tmp);
+    RTSpinlockAcquire(pNetFlt->hSpinlock);
     pNetFlt->u.s.WinIf.StateFlags.fRequestInfo = 0;
-    RTSpinlockReleaseNoInts(pNetFlt->hSpinlock, &Tmp);
+    RTSpinlockRelease(pNetFlt->hSpinlock);
 }
+
 DECLHIDDEN(NDIS_STATUS) vboxNetFltWinMpRequestPost(PVBOXNETFLTINS pNetFlt);
 #endif
 

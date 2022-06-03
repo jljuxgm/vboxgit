@@ -1,4 +1,4 @@
-/* $Id: handletable.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: handletable.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
 /** @file
  * IPRT - Handle Tables.
  */
@@ -102,7 +102,7 @@ RTDECL(int) RTHandleTableCreateEx(PRTHANDLETABLE phHandleTable, uint32_t fFlags,
     pThis->iFreeTail = NIL_RTHT_INDEX;
     if (fFlags & RTHANDLETABLE_FLAGS_LOCKED)
     {
-        int rc = RTSpinlockCreate(&pThis->hSpinlock);
+        int rc = RTSpinlockCreate(&pThis->hSpinlock, RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE, "RTHandleTableCreateEx");
         if (RT_FAILURE(rc))
         {
             RTMemFree(pThis);
@@ -126,7 +126,6 @@ RT_EXPORT_SYMBOL(RTHandleTableCreate);
 RTDECL(int) RTHandleTableDestroy(RTHANDLETABLE hHandleTable, PFNRTHANDLETABLEDELETE pfnDelete, void *pvUser)
 {
     PRTHANDLETABLEINT   pThis;
-    RTSPINLOCKTMP       Tmp = RTSPINLOCKTMP_INITIALIZER;
     uint32_t            i1;
     uint32_t            i;
 
@@ -144,14 +143,14 @@ RTDECL(int) RTHandleTableDestroy(RTHANDLETABLE hHandleTable, PFNRTHANDLETABLEDEL
      * Mark the thing as invalid / deleted.
      * Then kill the lock.
      */
-    rtHandleTableLock(pThis, &Tmp);
+    rtHandleTableLock(pThis);
     ASMAtomicWriteU32(&pThis->u32Magic, ~RTHANDLETABLE_MAGIC);
-    rtHandleTableUnlock(pThis, &Tmp);
+    rtHandleTableUnlock(pThis);
 
     if (pThis->hSpinlock != NIL_RTSPINLOCK)
     {
-        rtHandleTableLock(pThis, &Tmp);
-        rtHandleTableUnlock(pThis, &Tmp);
+        rtHandleTableLock(pThis);
+        rtHandleTableUnlock(pThis);
 
         RTSpinlockDestroy(pThis->hSpinlock);
         pThis->hSpinlock = NIL_RTSPINLOCK;

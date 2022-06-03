@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 40231 2012-02-23 13:13:32Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 40806 2012-04-06 21:05:19Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1080,11 +1080,10 @@ static int VBoxNetFltSolarisModReadPut(queue_t *pQueue, mblk_t *pMsg)
              * The reason being even when we are inactive we reference the instance (e.g
              * the promiscuous OFF acknowledgement case).
              */
-            RTSPINLOCKTMP Tmp = RTSPINLOCKTMP_INITIALIZER;
-            RTSpinlockAcquireNoInts(pThis->hSpinlock, &Tmp);
+            RTSpinlockAcquire(pThis->hSpinlock);
             const bool fActive = pThis->enmTrunkState == INTNETTRUNKIFSTATE_ACTIVE;
             vboxNetFltRetain(pThis, true /* fBusy */);
-            RTSpinlockReleaseNoInts(pThis->hSpinlock, &Tmp);
+            RTSpinlockReleaseNoInts(pThis->hSpinlock);
 
             vboxnetflt_promisc_stream_t *pPromiscStream = (vboxnetflt_promisc_stream_t *)pStream;
 

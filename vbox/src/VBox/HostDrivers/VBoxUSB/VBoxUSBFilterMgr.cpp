@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.cpp 36941 2011-05-03 14:56:08Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.cpp 40806 2012-04-06 21:05:19Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -45,11 +45,10 @@
 #ifdef VBOXUSBFILTERMGR_USB_SPINLOCK
 
 # define VBOXUSBFILTERMGR_LOCK() \
-    RTSPINLOCKTMP Tmp = RTSPINLOCKTMP_INITIALIZER; \
-    RTSpinlockAcquireNoInts(g_Spinlock, &Tmp)
+    RTSpinlockAcquire(g_Spinlock)
 
 # define VBOXUSBFILTERMGR_UNLOCK() \
-    RTSpinlockReleaseNoInts(g_Spinlock, &Tmp)
+    RTSpinlockRelease(g_Spinlock)
 
 #else
 
@@ -123,7 +122,7 @@ static VBOXUSBFILTERLIST    g_aLists[USBFILTERTYPE_END];
 int VBoxUSBFilterInit(void)
 {
 #ifdef VBOXUSBFILTERMGR_USB_SPINLOCK
-    int rc = RTSpinlockCreate(&g_Spinlock);
+    int rc = RTSpinlockCreate(&g_Spinlock, RTSPINLOCK_FLAGS_INTERRUPT_SAFE, "VBoxUSBFilter");
 #else
     int rc = RTSemFastMutexCreate(&g_Mtx);
 #endif
