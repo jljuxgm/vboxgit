@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 36891 2011-04-29 13:22:57Z vboxsync $ */
+/* $Id: PGMR0.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -465,7 +465,7 @@ VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PVMCPU pVCpu, PGMMODE enm
     }
     if (fLockTaken)
     {
-        Assert(PGMIsLockOwner(pVM));
+        PGM_LOCK_ASSERT_OWNER(pVM);
         pgmUnlock(pVM);
     }
 

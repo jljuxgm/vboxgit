@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 37323 2011-06-03 16:20:06Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 37354 2011-06-07 15:05:32Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -500,19 +500,21 @@ int main()
 
 #undef AssertFatal
 #define AssertFatal(expr) do { } while (0)
+#undef Assert
+#define Assert(expr)      do { } while (0)
 
     PGM_PAGE_CLEAR(&Page);
-    CHECK_EXPR(PGM_PAGE_GET_HCPHYS(&Page) == 0);
-    PGM_PAGE_SET_HCPHYS(&Page, UINT64_C(0x0000fffeff1ff000));
-    CHECK_EXPR(PGM_PAGE_GET_HCPHYS(&Page) == UINT64_C(0x0000fffeff1ff000));
-    PGM_PAGE_SET_HCPHYS(&Page, UINT64_C(0x0000000000001000));
-    CHECK_EXPR(PGM_PAGE_GET_HCPHYS(&Page) == UINT64_C(0x0000000000001000));
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == 0);
+    PGM_PAGE_SET_HCPHYS(NULL, &Page, UINT64_C(0x0000fffeff1ff000));
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == UINT64_C(0x0000fffeff1ff000));
+    PGM_PAGE_SET_HCPHYS(NULL, &Page, UINT64_C(0x0000000000001000));
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == UINT64_C(0x0000000000001000));
 
     PGM_PAGE_INIT(&Page, UINT64_C(0x0000feedfacef000), UINT32_C(0x12345678), PGMPAGETYPE_RAM, PGM_PAGE_STATE_ALLOCATED);
-    CHECK_EXPR(PGM_PAGE_GET_HCPHYS(&Page) == UINT64_C(0x0000feedfacef000));
+    CHECK_EXPR(PGM_PAGE_GET_HCPHYS_NA(&Page) == UINT64_C(0x0000feedfacef000));
     CHECK_EXPR(PGM_PAGE_GET_PAGEID(&Page) == UINT32_C(0x12345678));
-    CHECK_EXPR(PGM_PAGE_GET_TYPE(&Page)   == PGMPAGETYPE_RAM);
-    CHECK_EXPR(PGM_PAGE_GET_STATE(&Page)  == PGM_PAGE_STATE_ALLOCATED);
+    CHECK_EXPR(PGM_PAGE_GET_TYPE_NA(&Page)   == PGMPAGETYPE_RAM);
+    CHECK_EXPR(PGM_PAGE_GET_STATE_NA(&Page)  == PGM_PAGE_STATE_ALLOCATED);
 
 
     /*
