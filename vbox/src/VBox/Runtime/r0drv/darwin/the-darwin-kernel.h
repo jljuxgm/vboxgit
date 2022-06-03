@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 37041 2011-05-11 16:54:32Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 37569 2011-06-21 10:19:16Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -67,6 +67,8 @@
 #include <sys/ioccom.h>
 #include <sys/malloc.h>
 #include <sys/proc.h>
+#include <sys/vnode.h>
+#include <sys/fcntl.h>
 #include <IOKit/IOTypes.h>
 #include <IOKit/IOLib.h>
 #include <IOKit/IOMemoryDescriptor.h>
