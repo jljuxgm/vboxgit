@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 41392 2012-05-22 14:13:30Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -362,8 +362,9 @@ void UIWizardNewVDPageBasic3::retranslateUi()
     m_pLocationLabel->setText(UIWizardNewVD::tr("Please type the name of the new virtual hard drive file into the box below or "
                                                 "click on the folder icon to select a different folder to create the file in."));
     m_pLocationOpenButton->setToolTip(UIWizardNewVD::tr("Choose a location for new virtual hard drive file..."));
-    m_pSizeLabel->setText(UIWizardNewVD::tr("Select the size of the virtual hard drive in megabytes. This size will be reported "
-                                            "to the Guest OS as the maximum size of this hard drive."));
+    m_pSizeLabel->setText(UIWizardNewVD::tr("Select the size of the virtual hard drive in megabytes. "
+                                            "This size is the limit on the amount of file data "
+                                            "that a virtual machine will be able to store on the hard drive."));
 }
 
 void UIWizardNewVDPageBasic3::initializePage()

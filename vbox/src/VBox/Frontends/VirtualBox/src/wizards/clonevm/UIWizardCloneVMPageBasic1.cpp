@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 41399 2012-05-22 16:03:22Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -77,7 +77,7 @@ UIWizardCloneVMPageBasic1::UIWizardCloneVMPageBasic1(const QString &strOriginalN
 void UIWizardCloneVMPageBasic1::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardCloneVM::tr("Name"));
+    setTitle(UIWizardCloneVM::tr("New machine name"));
 
     /* Translate widgets: */
     m_pLabel->setText(UIWizardCloneVM::tr("<p>Please choose a name for the new virtual machine. "

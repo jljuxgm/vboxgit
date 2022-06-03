@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic4.cpp 41398 2012-05-22 14:45:37Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic4.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -191,7 +191,7 @@ void UIWizardCloneVDPageBasic4::sltSelectLocationButtonClicked()
 void UIWizardCloneVDPageBasic4::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardCloneVD::tr("Copy location"));
+    setTitle(UIWizardCloneVD::tr("New hard drive to create"));
 
     /* Translate widgets: */
     m_pLabel->setText(UIWizardCloneVD::tr("Please type the name of the new virtual hard drive file into the box below or "

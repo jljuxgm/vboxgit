@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.cpp 41398 2012-05-22 14:45:37Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.cpp 41479 2012-05-29 13:42:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -115,7 +115,7 @@ UIWizardCloneVDPageBasic2::UIWizardCloneVDPageBasic2()
 void UIWizardCloneVDPageBasic2::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardCloneVD::tr("File type"));
+    setTitle(UIWizardCloneVD::tr("Hard drive file type"));
 
     /* Translate widgets: */
     m_pLabel->setText(UIWizardCloneVD::tr("Please choose the type of file that you would like to use "
