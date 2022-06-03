@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 40528 2012-03-19 11:04:34Z vboxsync $
+# $Id: Makefile.kmk 40530 2012-03-19 11:13:17Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -37,7 +37,8 @@ if  !defined(VBOX_ONLY_ADDITIONS) \
  scm_TEMPLATE = VBOXR3EXE
  scm_SOURCES = \
 	scm.cpp \
-	scmstream.cpp 
+	scmstream.cpp \
+	scmdiff.cpp 
  scm_LIBS = \
  	$(LIB_RUNTIME)
 endif
