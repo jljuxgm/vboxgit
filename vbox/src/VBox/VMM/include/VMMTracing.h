@@ -1,4 +1,4 @@
-/* $Id: VMMTracing.h 40377 2012-03-06 15:00:44Z vboxsync $ */
+/* $Id: VMMTracing.h 40380 2012-03-06 15:50:48Z vboxsync $ */
 /** @file
  * VBoxVMM - Trace point macros for the VMM.
  */
@@ -51,7 +51,6 @@
 #  include "VBoxVMM-dtrace.h"
 
 # elif defined(DBGFTRACE_ENABLED)
-# error
 #  define VBOXVMM_EM_STATE_CHANGED(a_pVCpu, a_enmOldState, a_enmNewState, a_rc) \
         RTTraceBufAddMsgF(VMCPU_TO_HTB(a_pVCpu), "em-state-changed %d -> %d (rc=%d)", a_enmOldState, a_enmNewState, a_rc)
 #  define VBOXVMM_EM_STATE_UNCHANGED(a_pVCpu, a_enmState, a_rc) \
