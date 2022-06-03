@@ -1,4 +1,4 @@
-/* $Id: thread.h 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: thread.h 39456 2011-11-29 13:31:29Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -193,7 +193,7 @@ DECLHIDDEN(void) rtThreadNativeDetach(void);
 
 
 /* thread.cpp */
-DECLHIDDEN(int)          rtThreadMain(PRTTHREADINT pThread, RTNATIVETHREAD NativeThread, const char *pszThreadName);
+DECLCALLBACK(DECLHIDDEN(int)) rtThreadMain(PRTTHREADINT pThread, RTNATIVETHREAD NativeThread, const char *pszThreadName);
 DECLHIDDEN(uint32_t)     rtThreadRelease(PRTTHREADINT pThread);
 DECLHIDDEN(void)         rtThreadTerminate(PRTTHREADINT pThread, int rc);
 DECLHIDDEN(PRTTHREADINT) rtThreadGetByNative(RTNATIVETHREAD NativeThread);

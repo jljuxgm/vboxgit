@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: thread.cpp 39456 2011-11-29 13:31:29Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -676,7 +676,7 @@ DECLHIDDEN(void) rtThreadTerminate(PRTTHREADINT pThread, int rc)
  * @param   NativeThread    The native thread id.
  * @param   pszThreadName   The name of the thread (purely a dummy for backtrace).
  */
-DECLHIDDEN(int) rtThreadMain(PRTTHREADINT pThread, RTNATIVETHREAD NativeThread, const char *pszThreadName)
+DECLCALLBACK(DECLHIDDEN(int)) rtThreadMain(PRTTHREADINT pThread, RTNATIVETHREAD NativeThread, const char *pszThreadName)
 {
     int rc;
     NOREF(pszThreadName);
