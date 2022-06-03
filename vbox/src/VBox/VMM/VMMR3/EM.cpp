@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 36780 2011-04-21 00:38:30Z vboxsync $ */
+/* $Id: EM.cpp 36787 2011-04-21 09:32:17Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1995,7 +1995,6 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  */
                 case EMSTATE_RAW:
 #ifndef IEM_VERIFICATION_MODE /* remove later */
-                    AssertFailed();
                     rc = emR3RawExecute(pVM, pVCpu, &fFFDone);
                     break;
 #endif
@@ -2005,7 +2004,6 @@ VMMR3DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  */
                 case EMSTATE_HWACC:
 #ifndef IEM_VERIFICATION_MODE /* remove later */
-                    AssertFailed();
                     rc = emR3HwAccExecute(pVM, pVCpu, &fFFDone);
                     break;
 #endif
