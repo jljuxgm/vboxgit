@@ -1,4 +1,4 @@
-/* $Id: mtlist.h 36656 2011-04-12 13:16:57Z vboxsync $ */
+/* $Id: mtlist.h 36659 2011-04-12 15:53:44Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Thread-safe list classes declaration.
  */
@@ -127,7 +127,7 @@ public:
      */
     operator const RTCMTList<RTCString, RTCString*>&()
     {
-        return static_cast<const RTCList<RTCString, RTCString*>&>(*this);
+        return *reinterpret_cast<RTCMTList<RTCString, RTCString*> *>(this);
     }
 
     /* Define our own new and delete. */

@@ -1,4 +1,4 @@
-/* $Id: list.h 36656 2011-04-12 13:16:57Z vboxsync $ */
+/* $Id: list.h 36659 2011-04-12 15:53:44Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - List classes declaration.
  */
@@ -127,7 +127,7 @@ public:
      */
     operator const RTCList<RTCString, RTCString*>&()
     {
-        return static_cast<const RTCList<RTCString, RTCString*>&>(*this);
+        return *reinterpret_cast<RTCList<RTCString, RTCString*> *>(this);
     }
 
     /* Define our own new and delete. */
