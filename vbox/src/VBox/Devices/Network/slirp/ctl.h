@@ -1,4 +1,4 @@
-/* $Id: ctl.h 40283 2012-02-29 02:21:42Z vboxsync $ */
+/* $Id: ctl.h 40285 2012-02-29 05:00:37Z vboxsync $ */
 /** @file
  * NAT - IP subnet constants.
  */
@@ -25,4 +25,4 @@
 #define CTL_BROADCAST   255
 
 #define CTL_CHECK(x, ctl) ((RT_N2H_U32((x)) & ~pData->netmask) == (ctl) \
-                           && (((x) & ~pData->netmask) == (pData->special_addr.s_addr & ~pData->netmask)))
+                           && (((x) & ~pData->netmask) == pData->special_addr.s_addr))
