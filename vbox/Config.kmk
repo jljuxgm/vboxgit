@@ -1,4 +1,4 @@
-# $Id: Config.kmk 41530 2012-05-31 17:28:34Z vboxsync $
+# $Id: Config.kmk 41531 2012-05-31 19:12:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -457,9 +457,7 @@ VBOX_WITH_LSILOGIC = 1
 # Enable SCSI drivers
 VBOX_WITH_SCSI = 1
 # Enable the new BIOS code.
-if1of ($(KBUILD_TARGET), darwin linux win) # freebsd linux solaris)
- VBOX_WITH_NEW_BIOS = 1
-endif
+VBOX_WITH_NEW_BIOS = 1
 # Enable this setting to force a fallback to default DMI data on configuration errors
 VBOX_BIOS_DMI_FALLBACK =
 # Enable the builtin PXE ROM
@@ -5102,7 +5100,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41530 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 41531 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
