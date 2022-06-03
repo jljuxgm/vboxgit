@@ -1,4 +1,4 @@
-/* $Id: solaris.h 40345 2012-03-02 23:12:40Z vboxsync $ */
+/* $Id: solaris.h 40368 2012-03-06 04:57:23Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver for Solaris - testcase stubs.
  */
@@ -21,6 +21,7 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>  /* RT_ZERO */
 #include <errno.h>
+#include <time.h>  /* struct timeval */
 
 /* Const#define MOD_NOAUTOUNLOAD        0x1ants */
 #define DDI_FAILURE (-1)
@@ -233,7 +234,7 @@ struct copyresp
     uint_t   cp_id;
     uint_t   cp_flag;
     mblk_t   *cp_private;
-    caddr_t  cp_rval;
+    char     *cp_rval;  /* Was caddr_t */
 };
 
 typedef struct modctl
