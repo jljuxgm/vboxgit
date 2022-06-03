@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 35969 2011-02-15 09:46:49Z vboxsync $ */
+/* $Id: crservice.cpp 36290 2011-03-15 19:47:32Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1223,7 +1223,7 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                     {
                         CHECK_ERROR_RET(pDisplay, GetFramebuffer(i, pFramebuffer.asOutParam(), &xo, &yo), rc);
 
-                        if (!pDisplay)
+                        if (!pFramebuffer)
                         {
                             rc = crVBoxServerUnmapScreen(i);
                             AssertRCReturn(rc, rc);
