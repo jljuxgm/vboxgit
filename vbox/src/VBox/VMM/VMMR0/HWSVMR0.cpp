@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41692 2012-06-13 19:32:54Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41729 2012-06-14 23:24:17Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2918,19 +2918,19 @@ VMMR0DECL(int) SVMR0Leave(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
  */
 static int hmR0svmInterpretInvlPg(PVMCPU pVCpu, PDISCPUSTATE pCpu, PCPUMCTXCORE pRegFrame, uint32_t uASID)
 {
-    OP_PARAMVAL param1;
+    DISQPVPARAMVAL param1;
     RTGCPTR     addr;
     NOREF(uASID);
 
-    int rc = DISQueryParamVal(pRegFrame, pCpu, &pCpu->param1, &param1, PARAM_SOURCE);
-    if(RT_FAILURE(rc))
+    int rc = DISQueryParamVal(pRegFrame, pCpu, &pCpu->param1, &param1, DISQPVWHICH_SRC);
+    if (RT_FAILURE(rc))
         return VERR_EM_INTERPRETER;
 
-    switch(param1.type)
+    switch (param1.type)
     {
-        case PARMTYPE_IMMEDIATE:
-        case PARMTYPE_ADDRESS:
-            if(!(param1.flags & (PARAM_VAL32|PARAM_VAL64)))
+        case DISQPV_TYPE_IMMEDIATE:
+        case DISQPV_TYPE_ADDRESS:
+            if (!(param1.flags & (DISQPV_FLAG_32 | DISQPV_FLAG_64)))
                 return VERR_EM_INTERPRETER;
             addr = param1.val.val64;
             break;
