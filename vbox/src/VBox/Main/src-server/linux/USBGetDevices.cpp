@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 36994 2011-05-06 22:20:05Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 37000 2011-05-07 20:52:00Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1498,16 +1498,19 @@ bool USBProxyLinuxCheckDeviceRoot(const char *pcszRoot, bool fIsDeviceNodes)
     {
         PUSBDEVICE pDevices;
 
-        fOK = true;
-        pDevices = getDevicesFromUsbfs(pcszRoot, true);
-        if (pDevices)
+        if (!access(pcszRoot, R_OK | X_OK))
         {
-            PUSBDEVICE pDevice;
+            fOK = true;
+            pDevices = getDevicesFromUsbfs(pcszRoot, true);
+            if (pDevices)
+            {
+                PUSBDEVICE pDevice;
 
-            for (pDevice = pDevices; pDevice && fOK; pDevice = pDevice->pNext)
-                if (access(pDevice->pszAddress, R_OK | W_OK))
-                    fOK = false;
-            deviceListFree(&pDevices);
+                for (pDevice = pDevices; pDevice && fOK; pDevice = pDevice->pNext)
+                    if (access(pDevice->pszAddress, R_OK | W_OK))
+                        fOK = false;
+                deviceListFree(&pDevices);
+            }
         }
     }
     else  /* device nodes */
