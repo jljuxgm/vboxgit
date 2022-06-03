@@ -1,4 +1,4 @@
-/* $Id: IOMInline.h 37424 2011-06-12 19:28:11Z vboxsync $ */
+/* $Id: IOMInline.h 37425 2011-06-12 19:33:00Z vboxsync $ */
 /** @file
  * IOM - Inlined functions.
  */
@@ -83,6 +83,7 @@ DECLINLINE(PIOMMMIORANGE) iomMMIOGetRange(PVM pVM, RTGCPHYS GCPhys)
             = (PIOMMMIORANGE)RTAvlroGCPhysRangeGet(&pVM->iom.s.CTX_SUFF(pTrees)->MMIOTree, GCPhys);
     return pRange;
 }
+
 
 #ifdef VBOX_STRICT
 /**

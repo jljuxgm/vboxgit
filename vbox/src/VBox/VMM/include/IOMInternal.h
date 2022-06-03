@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 37424 2011-06-12 19:28:11Z vboxsync $ */
+/* $Id: IOMInternal.h 37425 2011-06-12 19:33:00Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -418,13 +418,15 @@ typedef IOMCPU *PIOMCPU;
 RT_C_DECLS_BEGIN
 
 #ifdef IN_RING3
-PIOMIOPORTSTATS iomR3IOPortStatsCreate(PVM pVM, RTIOPORT Port, const char *pszDesc);
-PIOMMMIOSTATS   iomR3MMIOStatsCreate(PVM pVM, RTGCPHYS GCPhys, const char *pszDesc);
+PIOMIOPORTSTATS     iomR3IOPortStatsCreate(PVM pVM, RTIOPORT Port, const char *pszDesc);
+PIOMMMIOSTATS       iomR3MMIOStatsCreate(PVM pVM, RTGCPHYS GCPhys, const char *pszDesc);
 #endif /* IN_RING3 */
 
-VMMDECL(int)        IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser);
+VMMDECL(int)        IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, 
+                                   RTGCPHYS GCPhysFault, void *pvUser);
 #ifdef IN_RING3
-DECLCALLBACK(int)   IOMR3MMIOHandler(PVM pVM, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser);
+DECLCALLBACK(int)   IOMR3MMIOHandler(PVM pVM, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf, 
+                                     PGMACCESSTYPE enmAccessType, void *pvUser);
 #endif
 
 /* IOM locking helpers. */
@@ -445,4 +447,5 @@ RT_C_DECLS_END
 
 /** @} */
 
-#endif /* ___IOMInternal_h */
+#endif /* !___IOMInternal_h */
+
