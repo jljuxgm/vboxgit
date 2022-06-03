@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 37088 2011-05-13 21:17:29Z vboxsync $
+# $Id: Makefile.kmk 38001 2011-07-18 10:16:11Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux installer testcase.
 #
@@ -20,7 +20,7 @@ include	$(KBUILD_PATH)/subheader.kmk
 
 INSTALLS += tstInstallerLinux
 TESTING += tstInstallerLinux
-tstInstallerLinux_INST    = bin/testcase
+tstInstallerLinux_INST    = $(INST_TESTCASE)
 tstInstallerLinux_MODE    = a+rx,u+w
 tstInstallerLinux_SOURCES = $(tstInstallerLinux_0_OUTDIR)/tstInstallerLinux.sh
 tstInstallerLinux_CLEAN   = $(tstInstallerLinux_0_OUTDIR)/tstInstallerLinux.sh
