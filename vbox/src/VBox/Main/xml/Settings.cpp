@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 37709 2011-06-30 13:51:51Z vboxsync $ */
+/* $Id: Settings.cpp 37824 2011-07-07 15:29:03Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1691,6 +1691,7 @@ bool AttachedDevice::operator==(const AttachedDevice &a) const
              || (    (deviceType                == a.deviceType)
                   && (fPassThrough              == a.fPassThrough)
                   && (fTempEject                == a.fTempEject)
+                  && (fNonRotational            == a.fNonRotational)
                   && (lPort                     == a.lPort)
                   && (lDevice                   == a.lDevice)
                   && (uuid                      == a.uuid)
@@ -2983,7 +2984,10 @@ void MachineConfigFile::readStorageControllers(const xml::ElementNode &elmStorag
             pelmAttached->getAttributeValue("type", strTemp);
 
             if (strTemp == "HardDisk")
+            {
                 att.deviceType = DeviceType_HardDisk;
+                pelmAttached->getAttributeValue("nonrotational", att.fNonRotational);
+            }
             else if (m->sv >= SettingsVersion_v1_9)
             {
                 // starting with 1.9 we list DVD and floppy drive info + attachments under <StorageControllers>
@@ -4228,6 +4232,8 @@ void MachineConfigFile::buildStorageControllersXML(xml::ElementNode &elmParent,
             {
                 case DeviceType_HardDisk:
                     pcszType = "HardDisk";
+                    if (att.fNonRotational)
+                        pelmDevice->setAttribute("nonrotational", att.fNonRotational);
                 break;
 
                 case DeviceType_DVD:
