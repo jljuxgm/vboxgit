@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 37831 2011-07-08 10:10:41Z vboxsync $ */
+/* $Id: MediumImpl.h 37900 2011-07-12 13:31:46Z vboxsync $ */
 
 /** @file
  *
@@ -204,6 +204,7 @@ public:
     ComObjPtr<Medium> getBase(uint32_t *aLevel = NULL);
 
     bool isReadOnly();
+    void updateId(const Guid &id);
 
     HRESULT saveSettings(settings::Medium &data,
                          const Utf8Str &strHardDiskFolder);

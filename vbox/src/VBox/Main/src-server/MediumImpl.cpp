@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 37831 2011-07-08 10:10:41Z vboxsync $ */
+/* $Id: MediumImpl.cpp 37900 2011-07-12 13:31:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3639,6 +3639,15 @@ bool Medium::isReadOnly()
     }
 
     AssertFailedReturn(false);
+}
+
+/**
+ * Internal method to return the medium's size. Must have caller + locking!
+ * @return
+ */
+void Medium::updateId(const Guid &id)
+{
+    unconst(m->id) = id;
 }
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 37862 2011-07-11 10:09:29Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 37900 2011-07-12 13:31:46Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -335,7 +335,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "VBoxManage clonevm          <uuid>|<name>\n"
                      "                            [--snapshot <uuid>|<name>]\n"
                      "                            [--mode machine|machineandchilds|all]\n"
-                     "                            [--options keepallmacs|keepnatmacs]\n"
+                     "                            [--options keepallmacs|keepnatmacs|keepdisknames]\n"
                      "                            [--name <name>]\n"
                      "                            [--basefolder <basefolder>]\n"
                      "                            [--uuid <uuid>]\n"
