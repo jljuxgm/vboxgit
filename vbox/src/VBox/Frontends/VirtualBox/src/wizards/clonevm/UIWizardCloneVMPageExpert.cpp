@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageExpert.cpp 41021 2012-04-23 11:02:30Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageExpert.cpp 41399 2012-05-22 16:03:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -18,7 +18,7 @@
  */
 
 /* Global includes: */
-#include <QVBoxLayout>
+#include <QGridLayout>
 #include <QButtonGroup>
 #include <QGroupBox>
 #include <QLineEdit>
@@ -35,7 +35,7 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
     , UIWizardCloneVMPage3(fShowChildsOption)
 {
     /* Create widgets: */
-    QVBoxLayout *pMainLayout = new QVBoxLayout(this);
+    QGridLayout *pMainLayout = new QGridLayout(this);
     {
         pMainLayout->setContentsMargins(8, 6, 8, 6);
         m_pNameCnt = new QGroupBox(this);
@@ -87,11 +87,11 @@ UIWizardCloneVMPageExpert::UIWizardCloneVMPageExpert(const QString &strOriginalN
             }
         }
         m_pReinitMACsCheckBox = new QCheckBox(this);
-        pMainLayout->addWidget(m_pNameCnt);
-        pMainLayout->addWidget(m_pCloneTypeCnt);
-        pMainLayout->addWidget(m_pCloneModeCnt);
-        pMainLayout->addWidget(m_pReinitMACsCheckBox);
-        pMainLayout->addStretch();
+        pMainLayout->addWidget(m_pNameCnt, 0, 0, 1, 2);
+        pMainLayout->addWidget(m_pCloneTypeCnt, 1, 0, Qt::AlignTop);
+        pMainLayout->addWidget(m_pCloneModeCnt, 1, 1, Qt::AlignTop);
+        pMainLayout->addWidget(m_pReinitMACsCheckBox, 2, 0, 1, 2);
+        pMainLayout->setRowStretch(3, 1);
         sltButtonClicked(m_pFullCloneRadio);
     }
 
