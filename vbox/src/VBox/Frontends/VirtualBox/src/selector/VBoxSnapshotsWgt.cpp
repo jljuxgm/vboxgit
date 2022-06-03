@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 37468 2011-06-15 13:39:42Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 37588 2011-06-22 12:38:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -450,7 +450,7 @@ void VBoxSnapshotsWgt::retranslateUi()
     mDeleteSnapshotAction->setText (tr ("&Delete Snapshot"));
     mShowSnapshotDetailsAction->setText (tr ("S&how Details"));
     mTakeSnapshotAction->setText (tr ("Take &Snapshot"));
-    mCloneSnapshotAction->setText(tr("&Clone"));
+    mCloneSnapshotAction->setText(tr("&Clone..."));
 
 
     mRestoreSnapshotAction->setStatusTip (tr ("Restore the selected snapshot of the virtual machine"));
