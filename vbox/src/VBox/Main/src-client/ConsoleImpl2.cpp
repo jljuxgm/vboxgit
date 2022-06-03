@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 39303 2011-11-15 10:55:12Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 39450 2011-11-29 10:30:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -30,6 +30,9 @@
 #include "DisplayImpl.h"
 #ifdef VBOX_WITH_GUEST_CONTROL
 # include "GuestImpl.h"
+#endif
+#ifdef VBOX_WITH_DRAG_AND_DROP
+# include "GuestDnDImpl.h"
 #endif
 #include "VMMDev.h"
 #include "Global.h"
@@ -2453,6 +2456,34 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
                 }
             }
         }
+
+#ifdef VBOX_WITH_DRAG_AND_DROP
+        /*
+         * Drag & Drop
+         */
+        {
+            /* Load the service */
+            rc = pVMMDev->hgcmLoadService("VBoxDragAndDropSvc", "VBoxDragAndDropSvc");
+
+            if (RT_FAILURE(rc))
+            {
+                LogRel(("VBoxDragAndDropService is not available. rc = %Rrc\n", rc));
+                /* That is not a fatal failure. */
+                rc = VINF_SUCCESS;
+            }
+            else
+            {
+                HGCMSVCEXTHANDLE hDummy;
+                rc = HGCMHostRegisterServiceExtension(&hDummy, "VBoxDragAndDropSvc",
+                                                      &GuestDnD::notifyGuestDragAndDropEvent,
+                                                      getGuest());
+                if (RT_FAILURE(rc))
+                    Log(("Cannot register VBoxDragAndDropSvc extension!\n"));
+                else
+                    Log(("VBoxDragAndDropSvc loaded\n"));
+            }
+        }
+#endif /* VBOX_WITH_DRAG_AND_DROP */
 
 #ifdef VBOX_WITH_CROGL
         /*
