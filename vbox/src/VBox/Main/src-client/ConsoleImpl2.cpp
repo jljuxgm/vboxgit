@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 37215 2011-05-26 03:21:11Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 37241 2011-05-27 15:37:48Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -620,6 +620,9 @@ DECLCALLBACK(int) Console::configConstructor(PVM pVM, void *pvConsole)
  *
  * @return  VBox status code.
  * @param   pVM         The VM handle.
+ * @param   pAlock      The automatic lock instance.  This is for when we have
+ *                      to leave it in order to avoid deadlocks (ext packs and
+ *                      more).
  */
 int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
 {
@@ -2593,6 +2596,8 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
 
 #undef H
 
+    pAlock->release(); /* Avoid triggering the lock order inversion check. */
+
     /*
      * Register VM state change handler.
      */
@@ -2608,6 +2613,8 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
     AssertRC(rc2);
     if (RT_SUCCESS(rc))
         rc = rc2;
+
+    pAlock->acquire();
 
     LogFlowFunc(("vrc = %Rrc\n", rc));
     LogFlowFuncLeave();
