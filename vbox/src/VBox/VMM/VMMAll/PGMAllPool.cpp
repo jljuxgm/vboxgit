@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -763,7 +763,7 @@ DECLINLINE(bool) pgmPoolMonitorIsReused(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
     LogFlow(("Reused instr %RGv %d at %RGv param1.fUse=%llx param1.reg=%d\n", pRegFrame->rip, pDis->pCurInstr->uOpcode, pvFault, pDis->Param1.fUse,  pDis->Param1.Base.idxGenReg));
 
     /* Non-supervisor mode write means it's used for something else. */
-    if (CPUMGetGuestCPL(pVCpu, pRegFrame) != 0)
+    if (CPUMGetGuestCPL(pVCpu) != 0)
         return true;
 
     switch (pDis->pCurInstr->uOpcode)

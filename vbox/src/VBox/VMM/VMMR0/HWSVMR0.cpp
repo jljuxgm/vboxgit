@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1894,7 +1894,7 @@ ResumeExecution:
             if (    pVM->hwaccm.s.fTRPPatchingAllowed
                 &&  (uFaultAddress & 0xfff) == 0x080
                 &&  !(errCode & X86_TRAP_PF_P)  /* not present */
-                &&  CPUMGetGuestCPL(pVCpu, CPUMCTX2CORE(pCtx)) == 0
+                &&  CPUMGetGuestCPL(pVCpu) == 0
                 &&  !CPUMIsGuestInLongModeEx(pCtx)
                 &&  pVM->hwaccm.s.cPatches < RT_ELEMENTS(pVM->hwaccm.s.aPatches))
             {
@@ -2060,7 +2060,7 @@ ResumeExecution:
             &&  (GCPhysFault & PAGE_OFFSET_MASK) == 0x080
             &&  (   !(errCode & X86_TRAP_PF_P)  /* not present */
                  || (errCode & (X86_TRAP_PF_P | X86_TRAP_PF_RSVD)) == (X86_TRAP_PF_P | X86_TRAP_PF_RSVD) /* mmio optimization */)
-            &&  CPUMGetGuestCPL(pVCpu, CPUMCTX2CORE(pCtx)) == 0
+            &&  CPUMGetGuestCPL(pVCpu) == 0
             &&  !CPUMIsGuestInLongModeEx(pCtx)
             &&  pVM->hwaccm.s.cPatches < RT_ELEMENTS(pVM->hwaccm.s.aPatches))
         {

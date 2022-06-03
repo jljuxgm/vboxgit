@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: PATM.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -4082,7 +4082,7 @@ VMMR3DECL(int) PATMR3InstallPatch(PVM pVM, RTRCPTR pInstrGC, uint64_t flags)
 
     /* Make sure the code selector is wide open; otherwise refuse. */
     pCtx = CPUMQueryGuestCtxPtr(pVCpu);
-    if (CPUMGetGuestCPL(pVCpu, CPUMCTX2CORE(pCtx)) == 0)
+    if (CPUMGetGuestCPL(pVCpu) == 0)
     {
         RTRCPTR pInstrGCFlat = SELMToFlat(pVM, DISSELREG_CS, CPUMCTX2CORE(pCtx), pInstrGC);
         if (pInstrGCFlat != pInstrGC)

@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 41931 2012-06-27 16:12:16Z vboxsync $ */
+/* $Id: CPUM.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4148,7 +4148,7 @@ VMMR3DECL(uint32_t) CPUMR3RemEnter(PVMCPU pVCpu, uint32_t *puCpl)
     /*
      * Get the CPL first.
      */
-    *puCpl = CPUMGetGuestCPL(pVCpu, CPUMCTX2CORE(&pVCpu->cpum.s.Guest));
+    *puCpl = CPUMGetGuestCPL(pVCpu);
 
     /*
      * Get and reset the flags, leaving CPUM_CHANGED_HIDDEN_SEL_REGS_INVALID set.

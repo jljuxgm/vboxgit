@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: TRPMAll.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -437,7 +437,7 @@ VMMDECL(int) TRPMForwardTrap(PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t iGat
             goto failure;
 
         /* Get the current privilege level. */
-        cpl = CPUMGetGuestCPL(pVCpu, pRegFrame);
+        cpl = CPUMGetGuestCPL(pVCpu);
 
         /*
          * BIG TODO: The checks are not complete. see trap and interrupt dispatching section in Intel docs for details

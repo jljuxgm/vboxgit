@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: IOMAll.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -853,7 +853,7 @@ VMMDECL(VBOXSTRICTRC) IOMInterpretCheckPortIOAccess(PVM pVM, PCPUMCTXCORE pCtxCo
      * If this isn't ring-0, we have to check for I/O privileges.
      */
     uint32_t efl = CPUMRawGetEFlags(pVCpu, pCtxCore);
-    uint32_t cpl = CPUMGetGuestCPL(pVCpu, pCtxCore);
+    uint32_t cpl = CPUMGetGuestCPL(pVCpu);
 
     if (    (    cpl > 0
              &&  X86_EFL_GET_IOPL(efl) < cpl)

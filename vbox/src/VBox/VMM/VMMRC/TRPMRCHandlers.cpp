@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
 /** @file
  * TRPM - Guest Context Trap Handlers, CPP part
  */
@@ -490,7 +490,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
     int     rc;
     PGMRZDynMapStartAutoSet(pVCpu);
 
-    if (CPUMGetGuestCPL(pVCpu, pRegFrame) == 0)
+    if (CPUMGetGuestCPL(pVCpu) == 0)
     {
         /*
          * Decode the instruction.

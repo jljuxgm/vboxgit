@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 41669 2012-06-12 13:34:07Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -536,7 +536,6 @@ static const REMPARMDESC g_aArgsIsPageAccessHandled[] =
 static const REMPARMDESC g_aArgsCPUMGetGuestCpl[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU),             NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(PCPUMCTXCORE),       NULL },
 };
 
 /* CPUMQueryGuestMsr args */
