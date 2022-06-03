@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 41585 2012-06-05 20:38:26Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 41938 2012-06-27 23:56:53Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -472,7 +472,7 @@ static int dbgcCmdHelpCmdOrFunc(PDBGCCMDHLP pCmdHlp, const char *pszName, bool f
         ssize_t cchCurWidth = cchMaxWidth - off - 1;
         if (cchCurWidth != (ssize_t)cchCol3)
             DBGCCmdHlpPrintf(pCmdHlp, "\n");
-        else if (cchDesc <= cchCurWidth)
+        else if ((ssize_t)cchDesc <= cchCurWidth)
             return DBGCCmdHlpPrintf(pCmdHlp, "%*s %s\n", cchPadding, "", pszDescription);
         else
         {
