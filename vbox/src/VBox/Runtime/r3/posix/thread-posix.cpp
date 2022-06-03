@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: thread-posix.cpp 36912 2011-05-02 14:23:01Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -258,8 +258,8 @@ static void *rtThreadNativeMain(void *pvArgs)
     rc = rtThreadMain(pThread, (uintptr_t)Self, &pThread->szName[0]);
 
     pthread_setspecific(g_SelfKey, NULL);
-    pthread_exit((void *)rc);
-    return (void *)rc;
+    pthread_exit((void *)(intptr_t)rc);
+    return (void *)(intptr_t)rc;
 }
 
 
