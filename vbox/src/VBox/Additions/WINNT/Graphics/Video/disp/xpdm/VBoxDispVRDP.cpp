@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVRDP.cpp 38045 2011-07-19 07:11:45Z vboxsync $ */
+/* $Id: VBoxDispVRDP.cpp 40064 2012-02-10 14:14:58Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -46,7 +46,7 @@ typedef struct _VRDPBRUSH
    } u;
 } VRDPBRUSH;
 
-#if 0
+#if 1
 #define dumpPCO(a, b) do {} while (0)
 #else
 static void dumpPCO(RECTL *prclTrg, CLIPOBJ *pco)
