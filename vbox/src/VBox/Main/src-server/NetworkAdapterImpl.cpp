@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 36082 2011-02-25 12:21:57Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 36105 2011-02-28 18:00:41Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdaptor in VBoxSVC.
  */
@@ -1388,6 +1388,7 @@ HRESULT NetworkAdapter::saveSettings(settings::NetworkAdapter &data)
     data.strMACAddress = mData->mMACAddress;
     data.fCableConnected = !!mData->mCableConnected;
 
+    data.enmPromiscModePolicy = mData->mPromiscModePolicy;
     data.ulLineSpeed = mData->mLineSpeed;
 
     data.fTraceEnabled = !!mData->mTraceEnabled;
