@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 36075 2011-02-24 16:36:48Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 36076 2011-02-24 16:37:51Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  *
@@ -3478,9 +3478,9 @@ int Console::configNetwork(const char *pszDevice,
         hrc = aNetworkAdapter->COMGETTER(TraceEnabled)(&fSniffer);
         H();
 
-        hrc = pMachine->GetExtraData(Bstr("AllowPromiscousGuests").raw(), bstr.asOutParam());
+        hrc = pMachine->GetExtraData(Bstr("VBoxInternal2/AllowPromiscousGuests").raw(), bstr.asOutParam());
         if (SUCCEEDED(hrc) && bstr.isEmpty())
-            hrc = virtualBox->GetExtraData(Bstr("AllowPromiscousGuests").raw(), bstr.asOutParam());
+            hrc = virtualBox->GetExtraData(Bstr("VBoxInternal2/AllowPromiscousGuests").raw(), bstr.asOutParam());
         H();
         const char * const pszPromiscuousGuestPolicy = bstr.isNotEmpty() ? "allow" : "deny";
 
