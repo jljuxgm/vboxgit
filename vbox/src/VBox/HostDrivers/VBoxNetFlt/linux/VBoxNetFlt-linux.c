@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 40854 2012-04-10 15:07:40Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -778,6 +778,16 @@ static int vboxNetFltLinuxPacketHandler(struct sk_buff *pBuf,
      */
     if (!pBuf)
         return 0;
+
+    if (pBuf->pkt_type == PACKET_LOOPBACK)
+    {
+        /*
+         * We are not interested in loopbacked packets as they will always have
+         * another copy going to the wire.
+         */
+        Log2(("vboxNetFltLinuxPacketHandler: dropped loopback packet (cb=%u)\n", pBuf->len));
+        return 0;
+    }
 
     pThis = VBOX_FLT_PT_TO_INST(pPacketType);
     pDev = ASMAtomicUoReadPtrT(&pThis->u.s.pDev, struct net_device *);
