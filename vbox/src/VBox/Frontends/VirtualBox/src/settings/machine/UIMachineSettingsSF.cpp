@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 36357 2011-03-23 09:36:05Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 36519 2011-04-04 10:44:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -703,6 +703,6 @@ SFoldersNameList UIMachineSettingsSF::usedList (bool aIncludeSelected)
 void UIMachineSettingsSF::setDialogType(VBoxDefs::SettingsDialogType settingsDialogType)
 {
     UISettingsPageMachine::setDialogType(settingsDialogType);
-    m_type = dialogType() == VBoxDefs::SettingsDialogType_Runtime ? ConsoleType : MachineType;
+    m_type = isMachineSaved() || isMachineOnline() ? ConsoleType : MachineType;
 }
 
