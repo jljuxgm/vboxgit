@@ -1,4 +1,4 @@
-/* $Id: VBoxDispCm.cpp 37626 2011-06-24 12:01:33Z vboxsync $ */
+/* $Id: VBoxDispCm.cpp 38565 2011-08-30 09:28:15Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -224,6 +224,12 @@ static HRESULT vboxDispCmSessionCmdQueryData(PVBOXDISPCM_SESSION pSession, PVBOX
     return hr;
 }
 
+HRESULT vboxDispCmCmdSessionInterruptWait(PVBOXDISPCM_SESSION pSession)
+{
+    SetEvent(pSession->hEvent);
+    return S_OK;
+}
+
 HRESULT vboxDispCmSessionCmdGet(PVBOXDISPCM_SESSION pSession, PVBOXDISPIFESCAPE_GETVBOXVIDEOCMCMD pCmd, uint32_t cbCmd, DWORD dwMilliseconds)
 {
     Assert(cbCmd >= sizeof (VBOXDISPIFESCAPE_GETVBOXVIDEOCMCMD));
@@ -272,6 +278,11 @@ HRESULT vboxDispCmSessionCmdGet(PVBOXDISPCM_SESSION pSession, PVBOXDISPIFESCAPE_
 HRESULT vboxDispCmCmdGet(PVBOXDISPIFESCAPE_GETVBOXVIDEOCMCMD pCmd, uint32_t cbCmd, DWORD dwMilliseconds)
 {
     return vboxDispCmSessionCmdGet(&g_pVBoxCmMgr.Session, pCmd, cbCmd, dwMilliseconds);
+}
+
+HRESULT vboxDispCmCmdInterruptWait()
+{
+    return vboxDispCmCmdSessionInterruptWait(&g_pVBoxCmMgr.Session);
 }
 
 void vboxDispCmLog(LPCSTR pszMsg)

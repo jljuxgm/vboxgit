@@ -1,4 +1,4 @@
-/* $Id: VBoxDispCm.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispCm.h 38565 2011-08-30 09:28:15Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -29,6 +29,8 @@ HRESULT vboxDispCmCtxDestroy(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_CONTEXT
 HRESULT vboxDispCmCtxCreate(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_CONTEXT pContext);
 
 HRESULT vboxDispCmCmdGet(PVBOXDISPIFESCAPE_GETVBOXVIDEOCMCMD pCmd, uint32_t cbCmd, DWORD dwMilliseconds);
+
+HRESULT vboxDispCmCmdInterruptWait();
 
 void vboxDispCmLog(LPCSTR pszMsg);
 

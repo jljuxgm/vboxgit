@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 37490 2011-06-16 10:58:27Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 38565 2011-08-30 09:28:15Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1531,7 +1531,7 @@ DECLCALLBACK(BOOLEAN) vboxVidPnCofuncModalityPathEnum(D3DKMDT_HVIDPNTOPOLOGY hVi
         const D3DKMDT_VIDPN_PRESENT_PATH *pNewVidPnPresentPathInfo, PVOID pContext)
 {
     PVBOXVIDPNCOFUNCMODALITY pCbContext = (PVBOXVIDPNCOFUNCMODALITY)pContext;
-    D3DKMDT_VIDPN_PRESENT_PATH AdjustedPath = {};
+    D3DKMDT_VIDPN_PRESENT_PATH AdjustedPath = {0};
     NTSTATUS Status = STATUS_SUCCESS;
     bool bUpdatePath = false;
     AdjustedPath.VidPnSourceId = pNewVidPnPresentPathInfo->VidPnSourceId;
@@ -1770,7 +1770,7 @@ NTSTATUS vboxVidPnCheckTopology(D3DKMDT_HVIDPNTOPOLOGY hVidPnTopology, const DXG
     {
         paItems[i].enmState = VBOXVIDPNPATHITEM_STATE_NOT_EXISTS;
     }
-    VBOXVIDPNGETPATHSINFO CbContext = {};
+    VBOXVIDPNGETPATHSINFO CbContext = {0};
     CbContext.Status = STATUS_SUCCESS;
     CbContext.fBreakOnDisabled = fBreakOnDisabled;
     CbContext.fDisabledFound = FALSE;

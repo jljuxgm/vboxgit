@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 38405 2011-08-10 15:04:33Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 38565 2011-08-30 09:28:15Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -516,7 +516,7 @@ static NTSTATUS vboxWddmChildStatusReportReconnected(PVBOXMP_DEVEXT pDevExt, D3D
 static NTSTATUS vboxWddmChildStatusCheck(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_VIDEOMODES_INFO paInfos)
 {
     NTSTATUS Status = STATUS_SUCCESS;
-    bool bChanged[VBOX_VIDEO_MAX_SCREENS] = {};
+    bool bChanged[VBOX_VIDEO_MAX_SCREENS] = {0};
     int i;
 
     Assert(!bChanged[0]);
