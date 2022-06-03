@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 37306 2011-06-02 12:35:02Z vboxsync $ */
+/* $Id: HostImpl.cpp 37307 2011-06-02 12:48:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1692,7 +1692,7 @@ HRESULT Host::getDrives(DeviceType_T mediumType,
                 Medium *pNew = *itNew;
                 const Utf8Str strLocationNew = pNew->getLocationFull();
                 bool fFound = false;
-                for (itCached = pllCached->begin();
+                for (MediaList::iterator itCached = pllCached->begin();
                      itCached != pllCached->end();
                      ++itCached)
                 {
