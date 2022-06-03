@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 39847 2012-01-24 09:39:23Z vboxsync $ */
+/* $Id: state_snapshot.c 39849 2012-01-24 15:19:47Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1442,7 +1442,7 @@ int32_t crStateLoadContext(CRContext *pContext, CRHashTable * pCtxTable, PSSMHAN
     {
         /* VBOXTLSREFDATA is stored, skip it */
         crMemcpy(&pTmpContext->bitid, ((uint8_t*)&bitid) + VBOXTLSREFDATA_SIZE(), sizeof (bitid) - VBOXTLSREFDATA_SIZE());
-        rc = SSMR3GetMem(pSSM, ((uint8_t*)&pTmpContext->bitid) + VBOXTLSREFDATA_SIZE(), sizeof (pTmpContext->bitid) + sizeof (pTmpContext->neg_bitid) - VBOXTLSREFDATA_SIZE());
+        rc = SSMR3GetMem(pSSM, ((uint8_t*)&pTmpContext->bitid) + sizeof (pTmpContext->bitid) - VBOXTLSREFDATA_SIZE(), sizeof (pTmpContext->neg_bitid) + VBOXTLSREFDATA_SIZE());
         AssertRCReturn(rc, rc);
 
         ui = VBOXTLSREFDATA_OFFSET(CRContext) + VBOXTLSREFDATA_SIZE() + sizeof (pTmpContext->bitid) + sizeof (pTmpContext->neg_bitid);
