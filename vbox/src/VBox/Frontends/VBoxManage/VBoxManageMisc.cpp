@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 38055 2011-07-19 08:55:42Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 38070 2011-07-19 14:04:25Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1034,7 +1034,7 @@ int handleExtPack(HandlerArg *a)
         {
             switch (ch)
             {
-                case 'f':
+                case 'r':
                     fReplace = true;
                     break;
 
