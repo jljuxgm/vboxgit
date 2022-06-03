@@ -1,4 +1,4 @@
-/* $Revision: 40474 $ */
+/* $Revision: 40518 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -62,7 +62,7 @@
 #include <VBox/vmm/hwacc_svm.h>
 #include <VBox/vmm/hwacc_vmx.h>
 
-#ifdef VBOX_WITH_DTRACE
+#if 0 /*def VBOX_WITH_DTRACE*/
 # include "SUPDrv-dtrace.h"
 #else
 # define VBOXDRV_SUPDRV_SESSION_CREATE(pvSession, fUser) do { } while (0)
