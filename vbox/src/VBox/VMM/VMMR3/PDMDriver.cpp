@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 35810 2011-02-01 13:00:24Z vboxsync $ */
+/* $Id: PDMDriver.cpp 37418 2011-06-11 08:22:10Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -71,15 +71,14 @@ static DECLCALLBACK(int) pdmR3DrvRegister(PCPDMDRVREGCB pCallbacks, PCPDMDRVREG 
 static int pdmR3DrvLoad(PVM pVM, PPDMDRVREGCBINT pRegCB, const char *pszFilename, const char *pszName);
 
 
-
 /**
- * Register external drivers
+ * Register drivers in a statically linked environment.
  *
  * @returns VBox status code.
  * @param   pVM         The VM to operate on.
  * @param   pfnCallback Driver registration callback
  */
-VMMR3DECL(int) PDMR3RegisterDrivers(PVM pVM, FNPDMVBOXDRIVERSREGISTER pfnCallback)
+VMMR3DECL(int) PDMR3DrvStaticRegistration(PVM pVM, FNPDMVBOXDRIVERSREGISTER pfnCallback)
 {
     /*
      * The registration callbacks.
@@ -88,6 +87,7 @@ VMMR3DECL(int) PDMR3RegisterDrivers(PVM pVM, FNPDMVBOXDRIVERSREGISTER pfnCallbac
     RegCB.Core.u32Version   = PDM_DRVREG_CB_VERSION;
     RegCB.Core.pfnRegister  = pdmR3DrvRegister;
     RegCB.pVM               = pVM;
+    RegCB.pCfgNode          = NULL;
 
     int rc = pfnCallback(&RegCB.Core, VBOX_VERSION);
     if (RT_FAILURE(rc))
@@ -95,6 +95,7 @@ VMMR3DECL(int) PDMR3RegisterDrivers(PVM pVM, FNPDMVBOXDRIVERSREGISTER pfnCallbac
 
     return rc;
 }
+
 
 /**
  * This function will initialize the drivers for this VM instance.

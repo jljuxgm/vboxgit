@@ -1,4 +1,4 @@
-/* $Id: VBoxBFE.cpp 36590 2011-04-06 15:35:26Z vboxsync $ */
+/* $Id: VBoxBFE.cpp 37418 2011-06-11 08:22:10Z vboxsync $ */
 /** @file
  * Basic Frontend (BFE): VBoxBFE main routines.
  *
@@ -1276,7 +1276,7 @@ static DECLCALLBACK(int) vboxbfeConfigConstructor(PVM pVM, void *pvUser)
     /*
      * PDM.
      */
-    rc = PDMR3RegisterDrivers(pVM, VBoxDriversRegister);                            UPDATE_RC();
+    rc = PDMR3DrvStaticRegistration(pVM, VBoxDriversRegister);                      UPDATE_RC();
 
     /*
      * Devices
