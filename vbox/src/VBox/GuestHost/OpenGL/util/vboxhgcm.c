@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 40544 2012-03-19 19:15:51Z vboxsync $ */
+/* $Id: vboxhgcm.c 40708 2012-03-29 14:12:11Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -2332,12 +2332,10 @@ static int crVBoxHGSMIDoConnect( CRConnection *conn )
     VBOXCRHGSMIPROFILE_FUNC_PROLOGUE();
 
     pClient = _crVBoxHGSMIClientGet(conn);
-    CRASSERT(pClient);
     if (pClient)
-    {
         rc = VBoxCrHgsmiCtlConGetClientID(pClient->pHgsmi, &conn->u32ClientID);
-        CRASSERT(RT_SUCCESS(rc));
-    }
+    else
+        rc = VERR_GENERAL_FAILURE;
 
     VBOXCRHGSMIPROFILE_FUNC_EPILOGUE();
 
