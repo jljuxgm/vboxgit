@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 35353 2010-12-27 17:25:52Z vboxsync $ */
+/* $Id: DrvChar.cpp 37102 2011-05-16 12:43:13Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMICHARCONNECTOR / PDMICHARPORT.
  *
@@ -173,7 +173,10 @@ static DECLCALLBACK(int) drvCharSendLoop(RTTHREAD ThreadSelf, void *pvUser)
         {
             /* Normal case, just means that the stream didn't accept a new
              * character before the timeout elapsed. Just retry. */
-            rc = VINF_SUCCESS;
+
+            /* do not change the rc status here, otherwise the (rc == VERR_TIMEOUT) branch
+             * in the wait above will never get executed */
+            /* rc = VINF_SUCCESS; */
         }
         else
         {
