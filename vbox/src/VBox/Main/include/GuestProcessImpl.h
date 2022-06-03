@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 42095 2012-07-10 12:58:13Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 42105 2012-07-11 11:53:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -21,6 +21,8 @@
 
 #include "VirtualBoxBase.h"
 
+class GuestSession;
+
 /**
  * TODO
  */
@@ -39,7 +41,11 @@ public:
         COM_INTERFACE_ENTRY(IProcess)
     END_COM_MAP()
     DECLARE_EMPTY_CTOR_DTOR(GuestProcess)
-    HRESULT init(void);
+
+    int     init(GuestSession *pSession,
+                 const Utf8Str &aCommand, ComSafeArrayIn(Utf8Str, aArguments), ComSafeArrayIn(Utf8Str, aEnvironment),
+                 ComSafeArrayIn(ProcessCreateFlag_T, aFlags), ULONG aTimeoutMS,
+                 ProcessPriority_T aPriority, ComSafeArrayIn(LONG, aAffinity));
     void    uninit(void);
     HRESULT FinalConstruct(void);
     void    FinalRelease(void);
@@ -51,12 +57,12 @@ public:
     STDMETHOD(COMGETTER(Environment))(ComSafeArrayOut(BSTR, aEnvironment));
     STDMETHOD(COMGETTER(ExecutablePath))(BSTR *aExecutablePath);
     STDMETHOD(COMGETTER(ExitCode))(LONG *aExitCode);
-    STDMETHOD(COMGETTER(PID))(ULONG *aPID);
+    STDMETHOD(COMGETTER(Pid))(ULONG *aPID);
     STDMETHOD(COMGETTER(Status))(ProcessStatus_T *aStatus);
 
     STDMETHOD(Read)(ULONG aHandle, ULONG aSize, ULONG aTimeoutMS, ComSafeArrayOut(BYTE, aData));
     STDMETHOD(Terminate)(void);
-    STDMETHOD(WaitFor)(ComSafeArrayOut(ProcessWaitForFlag_T, aFlags), ULONG aTimeoutMS, ProcessWaitReason_T *aReason);
+    STDMETHOD(WaitFor)(ComSafeArrayIn(ProcessWaitForFlag_T, aFlags), ULONG aTimeoutMS, ProcessWaitReason_T *aReason);
     STDMETHOD(Write)(ULONG aHandle, ComSafeArrayIn(BYTE, aData), ULONG aTimeoutMS, ULONG *aWritten);
     /** @}  */
 
@@ -71,6 +77,7 @@ private:
 
     struct Data
     {
+        GuestSession        *mParent;
         Bstr                 mName;
     } mData;
 };
