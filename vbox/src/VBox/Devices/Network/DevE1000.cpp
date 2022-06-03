@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 41426 2012-05-23 20:00:18Z vboxsync $ */
+/* $Id: DevE1000.cpp 41431 2012-05-24 11:51:53Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -6598,7 +6598,7 @@ static DECLCALLBACK(void) e1kInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const 
     /*
      * Show info.
      */
-    pHlp->pfnPrintf(pHlp, "E1000 #%d: port=%RTiop mmio=%RX32 mac-cfg=%RTmac %s%s%s\n",
+    pHlp->pfnPrintf(pHlp, "E1000 #%d: port=%RTiop mmio=%RGp mac-cfg=%RTmac %s%s%s\n",
                     pDevIns->iInstance, pState->addrIOPort, pState->addrMMReg,
                     &pState->macConfigured, g_Chips[pState->eChip].pcszName,
                     pState->fGCEnabled ? " GC" : "", pState->fR0Enabled ? " R0" : "");
