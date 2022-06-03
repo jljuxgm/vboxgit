@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 41831 2012-06-19 15:07:16Z vboxsync $ */
+/* $Id: IEMAll.cpp 41837 2012-06-19 20:26:46Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7940,7 +7940,7 @@ VMMDECL(VBOXSTRICTRC)       IEMExecOneWithPrefetchedByPC(PVMCPU pVCpu, PCPUMCTXC
         && pCtx->rip == OpcodeBytesPC)
     {
         iemInitDecoder(pIemCpu);
-        pIemCpu->cbOpcode = RT_MIN(cbOpcodeBytes, sizeof(pIemCpu->abOpcode));
+        pIemCpu->cbOpcode = (uint8_t)RT_MIN(cbOpcodeBytes, sizeof(pIemCpu->abOpcode));
         memcpy(pIemCpu->abOpcode, pvOpcodeBytes, pIemCpu->cbOpcode);
         rcStrict = VINF_SUCCESS;
     }
