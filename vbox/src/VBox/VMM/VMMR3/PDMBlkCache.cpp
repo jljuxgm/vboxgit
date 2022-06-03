@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 39078 2011-10-21 14:18:22Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 39356 2011-11-17 19:03:25Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -680,6 +680,7 @@ static void pdmBlkCacheCommit(PPDMBLKCACHE pBlkCache)
         /* Commit the last endpoint */
         Assert(RTListNodeIsLast(&ListDirtyNotCommitted, &pEntry->NodeNotCommitted));
         pdmBlkCacheEntryCommit(pEntry);
+        cbCommitted += pEntry->cbData;
         RTListNodeRemove(&pEntry->NodeNotCommitted);
         AssertMsg(RTListIsEmpty(&ListDirtyNotCommitted),
                   ("Committed all entries but list is not empty\n"));
