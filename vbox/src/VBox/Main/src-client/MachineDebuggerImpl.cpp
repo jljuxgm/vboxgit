@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 44375 2013-01-25 12:41:24Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 44385 2013-01-25 18:00:16Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -386,18 +386,12 @@ STDMETHODIMP MachineDebugger::COMSETTER(CSAMEnabled) (BOOL aEnable)
     }
 
     Console::SafeVMPtr ptrVM(mParent);
-    if (FAILED(ptrVM.rc())) return ptrVM.rc();
+    if (FAILED(ptrVM.rc()))
+        return ptrVM.rc();
 
-    int vrc;
-    if (aEnable)
-        vrc = CSAMEnableScanning(ptrVM);
-    else
-        vrc = CSAMDisableScanning(ptrVM);
-
+    int vrc = CSAMR3SetScanningEnabled(ptrVM.rawUVM(), aEnable != FALSE);
     if (RT_FAILURE(vrc))
-    {
-        /** @todo handle error case */
-    }
+        return setError(VBOX_E_VM_ERROR, tr("CSAMR3SetScanningEnabled returned %Rrc"), vrc);
 
     return S_OK;
 }
