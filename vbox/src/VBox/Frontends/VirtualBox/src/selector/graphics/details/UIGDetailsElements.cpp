@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 42827 2012-08-15 15:21:45Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 42855 2012-08-16 18:42:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -116,10 +116,24 @@ void UIGDetailsUpdateThreadGeneral::run()
             m_text << UITextTableLine(QApplication::translate("UIGDetails", "Operating System", "details (general)"),
                                        vboxGlobal().vmGuestOSTypeDescription(machine().GetOSTypeId()));
 
-            /* Groups: */
+            /* Get groups: */
             QStringList groups = machine().GetGroups().toList();
-            if (!groups.contains("/") || groups.size() > 1)
+            /* Do not show groups for machine which is in root group only: */
+            if (groups.size() == 1)
+                groups.removeAll("/");
+            /* If group list still not empty: */
+            if (!groups.isEmpty())
+            {
+                /* For every group: */
+                for (int i = 0; i < groups.size(); ++i)
+                {
+                    /* Trim first '/' symbol: */
+                    QString &strGroup = groups[i];
+                    if (strGroup.startsWith("/") && strGroup != "/")
+                        strGroup.remove(0, 1);
+                }
                 m_text << UITextTableLine(QApplication::translate("UIGDetails", "Groups", "details (general)"), groups.join(", "));
+            }
         }
         else
             m_text << UITextTableLine(QApplication::translate("UIGDetails", "Information Inaccessible", "details"), QString());
