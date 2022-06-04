@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: strformatrt.cpp 44927 2013-03-05 17:31:42Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -141,7 +141,7 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                     { STRMEM("Gx"),      sizeof(RTGCUINT),       16, RTSF_INT,   0 },
                     { STRMEM("Hi"),      sizeof(RTHCINT),        10, RTSF_INT,   RTSTR_F_VALSIGNED },
                     { STRMEM("Hp"),      sizeof(RTHCPHYS),       16, RTSF_INTW,  0 },
-                    { STRMEM("Hr"),      sizeof(RTGCUINTREG),    16, RTSF_INTW,  0 },
+                    { STRMEM("Hr"),      sizeof(RTHCUINTREG),    16, RTSF_INTW,  0 },
                     { STRMEM("Hu"),      sizeof(RTHCUINT),       10, RTSF_INT,   0 },
                     { STRMEM("Hv"),      sizeof(RTHCPTR),        16, RTSF_INTW,  0 },
                     { STRMEM("Hx"),      sizeof(RTHCUINT),       16, RTSF_INT,   0 },
