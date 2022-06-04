@@ -1,4 +1,4 @@
-/* $Id: Disasm.cpp 41886 2012-06-22 13:24:38Z vboxsync $ */
+/* $Id: Disasm.cpp 42284 2012-07-20 15:33:48Z vboxsync $ */
 /** @file
  * VBox disassembler - Disassemble and optionally format.
  */
@@ -96,7 +96,7 @@ DISDECL(int) DISInstrToStrEx(RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode,
 {
     /* Don't filter if formatting is desired. */
     if (uFilter !=  DISOPTYPE_ALL && pszOutput && cbOutput)
-        uFilter == DISOPTYPE_ALL;
+        uFilter = DISOPTYPE_ALL;
 
     int rc = DISInstrEx(uInstrAddr, enmCpuMode, uFilter, pfnReadBytes, pvUser, pDis, pcbInstr);
     if (RT_SUCCESS(rc) && pszOutput && cbOutput)
