@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 42881 2012-08-20 12:33:22Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 43982 2012-11-28 13:32:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,9 +26,6 @@
 #include "UIGDetailsModel.h"
 #include "UIConverter.h"
 #include "VBoxGlobal.h"
-
-/* Other VBox includes: */
-#include <iprt/assert.h>
 
 UIGDetailsGroup::UIGDetailsGroup()
     : UIGDetailsItem(0)

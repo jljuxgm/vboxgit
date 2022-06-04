@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 43982 2012-11-28 13:32:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -82,6 +82,7 @@ UIGDetailsItem* UIGDetailsItem::parentItem() const
 
 void UIGDetailsItem::updateSizeHint()
 {
+    /* Update the geometry: */
     updateGeometry();
 }
 
