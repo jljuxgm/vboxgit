@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 46172 2013-05-20 12:03:09Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -194,10 +194,6 @@ static HRESULT vboxDispKmtOpenAdapterViaHdc(PVBOXDISPKMT_CALLBACKS pCallbacks, P
 
     Assert(OpenAdapterData.hDc);
     NTSTATUS Status = pCallbacks->pfnD3DKMTOpenAdapterFromHdc(&OpenAdapterData);
-#ifdef DEBUG_misha
-    /* may fail with xpdm driver */
-    Assert(NT_SUCCESS(Status));
-#endif
     if (NT_SUCCESS(Status))
     {
         pAdapter->hAdapter = OpenAdapterData.hAdapter;
