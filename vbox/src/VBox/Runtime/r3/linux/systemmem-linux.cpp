@@ -1,4 +1,4 @@
-/* $Id: systemmem-linux.cpp 43548 2012-10-05 10:30:12Z vboxsync $ */
+/* $Id: systemmem-linux.cpp 45099 2013-03-20 08:27:15Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryTotalRam, Linux ring-3.
  */
@@ -50,7 +50,7 @@ RTDECL(int) RTSystemQueryTotalRam(uint64_t *pcb)
     int rc = sysinfo(&info);
     if (rc == 0)
     {
-        *pcb = (uint64_t)(info.totalram * (unsigned long)info.mem_unit);
+        *pcb = (uint64_t)info.totalram * info.mem_unit;
         return VINF_SUCCESS;
     }
     return RTErrConvertFromErrno(errno);
@@ -67,7 +67,7 @@ RTDECL(int) RTSystemQueryAvailableRam(uint64_t *pcb)
     {
         /* XXX Actually this is not quite correct. We would also need to add the cached
          *     RAM but this information is not available in sysinfo. */
-        *pcb = (uint64_t)((info.freeram + info.bufferram) * (unsigned long)info.mem_unit);
+        *pcb = ((uint64_t)info.freeram + info.bufferram) * info.mem_unit;
         return VINF_SUCCESS;
     }
     return RTErrConvertFromErrno(errno);
