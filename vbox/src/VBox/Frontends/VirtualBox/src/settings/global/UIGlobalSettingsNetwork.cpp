@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 45219 2013-03-28 04:20:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -228,9 +228,6 @@ UIGlobalSettingsNetwork::UIGlobalSettingsNetwork()
     m_pActionsToolbar->addAction(m_pAddAction);
     m_pActionsToolbar->addAction(m_pDelAction);
     m_pActionsToolbar->addAction(m_pEditAction);
-    m_pActionsToolbar->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::MinimumExpanding);
-    m_pActionsToolbar->updateGeometry();
-    m_pActionsToolbar->setMinimumHeight(m_pActionsToolbar->sizeHint().height());
 
     /* Setup connections: */
     connect(m_pAddAction, SIGNAL(triggered(bool)), this, SLOT(sltAddInterface()));
