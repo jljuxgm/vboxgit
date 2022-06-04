@@ -1,4 +1,4 @@
-/* $Id: dump.cpp 46368 2013-06-03 17:24:51Z vboxsync $ */
+/* $Id: dump.cpp 46370 2013-06-03 17:45:51Z vboxsync $ */
 
 /** @file
  * Blitter API implementation
@@ -30,6 +30,8 @@
 #include <iprt/mem.h>
 
 #include <stdio.h>
+
+#ifdef VBOX_WITH_CRDUMPER
 
 /* dump stuff */
 #pragma pack(1)
@@ -139,8 +141,6 @@ void* crDmpHashtableSearchByHwid(CRHashTable *pHash, GLuint hwid, PFNCRDUMPGETHW
     return Data.pvObj;
 }
 
-
-#ifdef VBOX_WITH_CRDUMPER
 #if 0
 typedef struct CR_SERVER_DUMP_FIND_TEX
 {
