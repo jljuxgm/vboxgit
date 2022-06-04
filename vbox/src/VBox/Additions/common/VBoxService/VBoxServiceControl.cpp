@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 47551 2013-08-06 09:37:11Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 47622 2013-08-08 21:10:54Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -344,10 +344,7 @@ static int gstcntlHandleSessionOpen(PVBGLR3GUESTCTRLCMDCTX pHostCtx)
         int rc2 = VbglR3GuestCtrlSessionNotify(pHostCtx,
                                                GUEST_SESSION_NOTIFYTYPE_ERROR, rc /* uint32_t vs. int */);
         if (RT_FAILURE(rc2))
-        {
             VBoxServiceError("Reporting session error status on open failed with rc=%Rrc\n", rc2);
-            rc = rc2;
-        }
     }
 
     VBoxServiceVerbose(3, "Opening a new guest session returned rc=%Rrc\n", rc);
