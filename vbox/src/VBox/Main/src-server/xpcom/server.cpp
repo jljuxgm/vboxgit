@@ -1,4 +1,4 @@
-/* $Id: server.cpp 47376 2013-07-24 15:13:52Z vboxsync $ */
+/* $Id: server.cpp 47525 2013-08-02 17:07:41Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -902,7 +902,7 @@ int main(int argc, char **argv)
     char szError[RTPATH_MAX + 128];
     vrc = com::VBoxLogRelCreate("XPCOM Server", szLogFile,
                                 RTLOGFLAGS_PREFIX_THREAD | RTLOGFLAGS_PREFIX_TIME_PROG,
-                                "all", "VBOXSVC_RELEASE_LOG",
+                                VBOXSVC_LOG_DEFAULT, "VBOXSVC_RELEASE_LOG",
                                 RTLOGDEST_FILE, UINT32_MAX /* cMaxEntriesPerGroup */,
                                 cHistory, uHistoryFileTime, uHistoryFileSize,
                                 szError, sizeof(szError));

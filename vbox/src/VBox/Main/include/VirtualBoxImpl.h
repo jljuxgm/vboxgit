@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 45138 2013-03-22 11:52:24Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 47525 2013-08-02 17:07:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -221,12 +221,12 @@ public:
                                    IN_BSTR aGuestIp, uint16_t aGuestPort);
     void onNATNetworkChange(IN_BSTR aNetworkName);
     void onNATNetworkStartStop(IN_BSTR aNetworkName, BOOL aStart);
-    void onNATNetworkSetting(IN_BSTR aNetworkName, BOOL aEnabled, IN_BSTR aNetwork, 
-                             IN_BSTR aGateway, BOOL aAdvertiseDefaultIpv6RouteEnabled, 
+    void onNATNetworkSetting(IN_BSTR aNetworkName, BOOL aEnabled, IN_BSTR aNetwork,
+                             IN_BSTR aGateway, BOOL aAdvertiseDefaultIpv6RouteEnabled,
                              BOOL fNeedDhcpServer);
-    void onNATNetworkPortForward(IN_BSTR aNetworkName, BOOL create, BOOL fIpv6, 
-                                 IN_BSTR aRuleName, NATProtocol_T proto, 
-                                 IN_BSTR aHostIp, LONG aHostPort, 
+    void onNATNetworkPortForward(IN_BSTR aNetworkName, BOOL create, BOOL fIpv6,
+                                 IN_BSTR aRuleName, NATProtocol_T proto,
+                                 IN_BSTR aHostIp, LONG aHostPort,
                                  IN_BSTR aGuestIp, LONG aGuestPort);
 
     ComObjPtr<GuestOSType> getUnknownOSType();
