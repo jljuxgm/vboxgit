@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 45533 2013-04-13 16:13:22Z vboxsync $ */
+/* $Id: VMM.cpp 45611 2013-04-18 14:24:58Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -683,7 +683,7 @@ VMMR3_INT_DECL(int) VMMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
             break;
         }
 
-        case VMINITCOMPLETED_RING0:
+        case VMINITCOMPLETED_HM:
         {
             /*
              * Disable the periodic preemption timers if we can use the
