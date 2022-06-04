@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 42719 2012-08-09 17:23:46Z vboxsync $ */
+/* $Id: DisasmTables.cpp 46950 2013-07-03 19:22:51Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -1612,7 +1612,7 @@ const DISOPCODE g_aTwoByteMapX86_3DNow[256] =
     OP("pfmul %Pq,%Qq",      IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFMUL,   OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE_MOD_RM(0xb5),
     OP("pfrcpit2 %Pq,%Qq",   IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFRCPIT2,OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("pmulhrwa %Pq,%Qq",   IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFMULHRW,OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("pmulhrw %Pq,%Qq",    IDX_ParseModRM,     IDX_UseModRM,   0,          OP_PFMULHRW,OP_PARM_Pq,         OP_PARM_Qq,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE_MOD_RM(0xb8),
     INVALID_OPCODE_MOD_RM(0xb9),
     INVALID_OPCODE_MOD_RM(0xba),
