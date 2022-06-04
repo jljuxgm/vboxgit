@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 46248 2013-05-23 19:20:58Z vboxsync $ */
+/* $Id: fileio.cpp 46251 2013-05-24 07:38:51Z vboxsync $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -235,7 +235,8 @@ RTR3DECL(int)  RTFileSgReadAt(RTFILE hFile, RTFOFF off, PRTSGBUF pSgBuf, size_t 
             cbRead += cbThisRead;
 
         if (   RT_FAILURE(rc)
-            || cbThisRead < cbBuf)
+            || (   cbThisRead < cbBuf
+                && pcbRead))
             break;
 
         cbToRead -= cbBuf;
@@ -298,7 +299,8 @@ RTR3DECL(int)  RTFileSgWriteAt(RTFILE hFile, RTFOFF off, PRTSGBUF pSgBuf, size_t
             cbWritten += cbThisWritten;
 
         if (   RT_FAILURE(rc)
-            || cbThisWritten < cbBuf)
+            || (   cbThisWritten < cbBuf
+                && pcbWritten))
             break;
 
         cbToWrite -= cbBuf;
