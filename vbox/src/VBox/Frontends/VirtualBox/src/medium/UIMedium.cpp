@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 41819 2012-06-18 17:59:30Z vboxsync $ */
+/* $Id: UIMedium.cpp 44111 2012-12-12 16:10:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -201,6 +201,13 @@ void UIMedium::refresh()
             for (QVector <QString>::ConstIterator it = machineIds.begin(); it != machineIds.end(); ++ it)
             {
                 CMachine machine = vbox.FindMachine(*it);
+
+                /* UIMedium object can wrap newly created CMedium object which belongs to
+                 * not yet registered machine, like while creating VM clone.
+                 * We can skip such a machines in usage string.
+                 * CVirtualBox::FindMachine() will return null machine for such case. */
+                if (machine.isNull())
+                    continue;
 
                 QString sName = machine.GetName();
                 QString sSnapshots;
