@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 46016 2013-05-13 13:07:36Z vboxsync $ */
+/* $Id: UIMachineView.cpp 46017 2013-05-13 13:29:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -217,11 +217,9 @@ void UIMachineView::sltMachineStateChanged()
         case KMachineState_Paused:
         case KMachineState_TeleportingPausedVM:
         {
-            if (   vboxGlobal().vmRenderMode() != TimerMode
-                && m_pFrameBuffer
-                &&
-                (   state           != KMachineState_TeleportingPausedVM
-                 || m_previousState != KMachineState_Teleporting))
+            if (   m_pFrameBuffer
+                && (   state           != KMachineState_TeleportingPausedVM
+                    || m_previousState != KMachineState_Teleporting))
             {
                 takePauseShotLive();
                 /* Fully repaint to pick up m_pauseShot: */
@@ -246,7 +244,7 @@ void UIMachineView::sltMachineStateChanged()
                 || m_previousState == KMachineState_TeleportingPausedVM
                 || m_previousState == KMachineState_Restoring)
             {
-                if (vboxGlobal().vmRenderMode() != TimerMode && m_pFrameBuffer)
+                if (m_pFrameBuffer)
                 {
                     /* Reset the pixmap to free memory: */
                     resetPauseShot();
