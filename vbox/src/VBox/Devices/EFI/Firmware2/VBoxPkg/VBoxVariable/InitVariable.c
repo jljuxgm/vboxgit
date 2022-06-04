@@ -1,4 +1,4 @@
-/* $Id: InitVariable.c 44608 2013-02-08 15:44:09Z vboxsync $ */
+/* $Id: InitVariable.c 44611 2013-02-09 13:17:44Z vboxsync $ */
 /** @file
  * InitVariable.h
  */
@@ -228,8 +228,10 @@ RuntimeServiceGetNextVariableName (
     uint32_t    u32Rc;
     EFI_STATUS  rc;
     LogFlowFuncEnter();
-    DebugPrint(DEBUG_INFO, "GetNextVariableName: input - cbName=%x Name=%s VendorGuid=%g\n", *VariableNameSize, VariableName, VendorGuid);
 
+    /*
+     * Validate inputs.
+     */
     if (!VariableNameSize || !VariableName || !VendorGuid)
     {
         LogFlowFuncLeaveRC(EFI_INVALID_PARAMETER);
@@ -286,9 +288,6 @@ RuntimeServiceGetNextVariableName (
         rc = EFI_NOT_FOUND; /* whatever */
 
     LogFlowFuncLeaveRC(rc);
-    // Temporary - start
-    DebugPrint(DEBUG_INFO, "GetNextVariableName: returns %x cbName=%x Name=%s VendorGuid=%g\n", rc, *VariableNameSize, VariableName, VendorGuid);
-    // Temporary - end
     return rc;
 #endif
 }
