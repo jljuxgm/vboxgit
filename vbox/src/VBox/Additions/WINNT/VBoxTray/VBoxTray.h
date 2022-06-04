@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxTray.h 45760 2013-04-26 07:40:05Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -80,6 +80,7 @@
  * Timer IDs.
  */
 #define TIMERID_VBOXTRAY_CHECK_HOSTVERSION      1000
+#define TIMERID_VBOXTRAY_CAPS_TIMER             1001
 
 /* The environment information for services. */
 typedef struct _VBOXSERVICEENV

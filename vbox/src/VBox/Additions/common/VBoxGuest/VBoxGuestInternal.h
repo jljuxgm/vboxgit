@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 45459 2013-04-10 15:24:23Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 45760 2013-04-26 07:40:05Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -180,6 +180,11 @@ typedef struct VBOXGUESTDEVEXT
     uint32_t volatile           cISR;
     /** Callback and user data for a kernel mouse handler. */
     VBoxGuestMouseSetNotifyCallback MouseNotifyCallback;
+    /* true if the driver is in caps acquire mode,
+     * i.e. no seamless of resize events are reported unless the driver has acquired the corresponding guest caps */
+    uint32_t                    u32GuestCapsAcquireMode;
+    /* currently acquired (and reported) guest caps */
+    uint32_t                    u32GuestCaps;
 } VBOXGUESTDEVEXT;
 /** Pointer to the VBoxGuest driver data. */
 typedef VBOXGUESTDEVEXT *PVBOXGUESTDEVEXT;
@@ -229,6 +234,8 @@ typedef struct VBOXGUESTSESSION
     /** Whether this session has been opened or not. */
     bool                        fOpened;
 #endif
+    /* Guest Caps Acquired & Reported by this session */
+    uint32_t                    u32AquiredGuestCaps;
 } VBOXGUESTSESSION;
 
 RT_C_DECLS_BEGIN
