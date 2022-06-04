@@ -1,4 +1,4 @@
-/* $Id: QILabel.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: QILabel.cpp 46834 2013-06-27 12:19:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -182,11 +182,7 @@ void QILabel::mouseMoveEvent (QMouseEvent *aEvent)
         mimeData->setText (removeHtmlTags (mText));
         drag->setMimeData (mimeData);
         /* Start the dragging */
-#if QT_VERSION >= 0x040300
         drag->exec();
-#else /* QT_VERSION >= 0x040300 */
-        drag->start (Qt::MoveAction);
-#endif /* QT_VERSION >= 0x040300 */
     }
     else
         QLabel::mouseMoveEvent (aEvent);
