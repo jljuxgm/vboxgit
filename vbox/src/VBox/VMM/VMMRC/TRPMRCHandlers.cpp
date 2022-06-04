@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 47660 2013-08-12 00:37:34Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -322,7 +322,7 @@ DECLASM(int) TRPMGCTrap01Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
     PGMRZDynMapStartAutoSet(pVCpu);
     int rc = DBGFRZTrap01Handler(pVM, pVCpu, pRegFrame, uDr6);
     if (rc == VINF_EM_RAW_GUEST_TRAP)
-        CPUMSetGuestDR6(pVCpu, uDr6);
+        CPUMSetGuestDR6(pVCpu, CPUMGetGuestDR6(pVCpu) | uDr6);
 
     rc = trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
     Log6(("TRPMGC01: %Rrc (%04x:%08x %RTreg %EFlag=%#x)\n", rc, pRegFrame->cs.Sel, pRegFrame->eip, uDr6, CPUMRawGetEFlags(pVCpu)));
