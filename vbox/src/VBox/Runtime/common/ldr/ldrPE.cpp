@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 46131 2013-05-16 17:07:57Z vboxsync $ */
+/* $Id: ldrPE.cpp 46133 2013-05-16 17:58:42Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -985,7 +985,7 @@ static int rtldrPEEnumSymbolsSlow(PRTLDRMODPE pThis, unsigned fFlags, RTUINTPTR 
                 const char *pszName = NULL;
                 if (uRvaName != UINT32_MAX)
                 {
-                    size_t cbName = 0x1000 - (uRvaName & 0xfff);
+                    uint32_t cbName = 0x1000 - (uRvaName & 0xfff);
                     if (cbName < 10 || cbName > 512)
                         cbName = 128;
                     rc = rtldrPEReadPartByRva(pThis, NULL, uRvaName, cbName, (void const **)&pszName);
