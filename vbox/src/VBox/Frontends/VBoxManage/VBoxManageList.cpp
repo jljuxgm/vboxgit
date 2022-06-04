@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 42748 2012-08-10 09:33:34Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 43876 2012-11-15 13:44:09Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -182,7 +182,7 @@ static HRESULT listHostInfo(const ComPtr<IVirtualBox> pVirtualBox)
         if (processorSpeed)
             RTPrintf("Processor#%u speed: %lu MHz\n", i, processorSpeed);
         else
-            RTPrintf("Processor#%u speed: unknown\n", i, processorSpeed);
+            RTPrintf("Processor#%u speed: unknown\n", i);
         CHECK_ERROR(Host, GetProcessorDescription(i, processorDescription.asOutParam()));
         RTPrintf("Processor#%u description: %ls\n", i, processorDescription.raw());
     }

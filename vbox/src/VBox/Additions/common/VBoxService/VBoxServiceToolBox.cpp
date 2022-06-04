@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 43202 2012-09-05 12:50:13Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 43876 2012-11-15 13:44:09Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -632,10 +632,10 @@ static int VBoxServiceToolboxPrintFsInfo(const char *pszName, uint16_t cbName,
                      pObjInfo->Attr.u.Unix.gid,
                      pObjInfo->cbObject,
                      pObjInfo->cbAllocated,
-                     pObjInfo->BirthTime,
-                     pObjInfo->ChangeTime,
-                     pObjInfo->ModificationTime,
-                     pObjInfo->AccessTime);
+                     RTTimeSpecGetNano(pObjInfo->BirthTime), /** @todo really ns? */
+                     RTTimeSpecGetNano(pObjInfo->ChangeTime), /** @todo really ns? */
+                     RTTimeSpecGetNano(pObjInfo->ModificationTime), /** @todo really ns? */
+                     RTTimeSpecGetNano(pObjInfo->AccessTime)); /** @todo really ns? */
             RTPrintf(" %2d %s\n", cbName, pszName);
         }
     }

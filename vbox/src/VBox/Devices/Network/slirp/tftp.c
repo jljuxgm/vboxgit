@@ -1,4 +1,4 @@
-/* $Id: tftp.c 43233 2012-09-06 20:21:37Z vboxsync $ */
+/* $Id: tftp.c 43876 2012-11-15 13:44:09Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -546,7 +546,7 @@ DECLINLINE(int) tftpAddOptionToOACK(PNATState pData, struct mbuf *pMBuf, const c
 
     RT_ZERO(aszOptionBuffer);
     iOptLength += RTStrPrintf(aszOptionBuffer, 256 , "%s", pszOptName) + 1;
-    iOptLength += RTStrPrintf(aszOptionBuffer + iOptLength, 256 - iOptLength , "%u", u64OptValue) + 1;
+    iOptLength += RTStrPrintf(aszOptionBuffer + iOptLength, 256 - iOptLength , "%llu", u64OptValue) + 1;
     if (iOptLength > M_TRAILINGSPACE(pMBuf))
         rc = VERR_BUFFER_OVERFLOW; /* buffer too small */
     else

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 43639 2012-10-15 12:13:31Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 43876 2012-11-15 13:44:09Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -780,7 +780,7 @@ static int handleCtrlExecProgram(ComPtr<IGuest> pGuest, HandlerArg *pArg)
                 uint64_t u64Elapsed = RTTimeMilliTS() - u64StartMS;
                 /* Is timeout still bigger than current difference? */
                 if (cMsTimeout > u64Elapsed)
-                    RTPrintf("Waiting for process to exit (%ums left) ...\n", cMsTimeout - u64Elapsed);
+                    RTPrintf("Waiting for process to exit (%llums left) ...\n", cMsTimeout - u64Elapsed);
                 else
                     RTPrintf("No time left to wait for process!\n"); /** @todo a bit misleading ... */
             }

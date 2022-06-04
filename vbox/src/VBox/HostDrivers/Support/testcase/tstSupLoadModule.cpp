@@ -1,4 +1,4 @@
-/* $Id: tstSupLoadModule.cpp 40812 2012-04-07 10:13:10Z vboxsync $ */
+/* $Id: tstSupLoadModule.cpp 43876 2012-11-15 13:44:09Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3LoadModule.
  */
@@ -101,11 +101,11 @@ int main(int argc, char **argv)
                 break;
 
             case 'h':
-                RTPrintf("%s [mod1 [mod2...]]\n");
+                RTPrintf("%s [mod1 [mod2...]]\n", argv[0]);
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 40812 $\n");
+                RTPrintf("$Revision: 43876 $\n");
                 return 0;
 
             default:

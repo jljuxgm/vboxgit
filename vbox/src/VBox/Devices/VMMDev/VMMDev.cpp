@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 43320 2012-09-13 14:28:30Z vboxsync $ */
+/* $Id: VMMDev.cpp 43876 2012-11-15 13:44:09Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -972,10 +972,10 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                             if (i == 0)
                                 RTStrCopy(szFilePathOld, sizeof(szFilePathOld), szCorePath);
                             else
-                                RTStrPrintf(szFilePathOld, sizeof(szFilePathOld), "%s.%d", szCorePath, i);
+                                RTStrPrintf(szFilePathOld, sizeof(szFilePathOld), "%s.%lld", szCorePath, i);
 
                             char szFilePathNew[RTPATH_MAX];
-                            RTStrPrintf(szFilePathNew, sizeof(szFilePathNew), "%s.%d", szCorePath, i + 1);
+                            RTStrPrintf(szFilePathNew, sizeof(szFilePathNew), "%s.%lld", szCorePath, i + 1);
                             int vrc = RTFileMove(szFilePathOld, szFilePathNew, RTFILEMOVE_FLAGS_REPLACE);
                             if (vrc == VERR_FILE_NOT_FOUND)
                                 RTFileDelete(szFilePathNew);

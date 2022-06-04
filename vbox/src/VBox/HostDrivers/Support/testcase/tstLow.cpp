@@ -1,4 +1,4 @@
-/* $Id: tstLow.cpp 38636 2011-09-05 13:49:45Z vboxsync $  */
+/* $Id: tstLow.cpp 43876 2012-11-15 13:44:09Z vboxsync $  */
 /** @file
  * SUP Testcase - Low (<4GB) Memory Allocate interface (ring 3).
  */
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
                     for (uint8_t *pu8 = (uint8_t *)pvPages0 + iPage * PAGE_SIZE, *pu8End = pu8 + PAGE_SIZE; pu8 < pu8End; pu8++)
                         if (*pu8 != (uint8_t)iPage)
                         {
-                            RTPrintf("tstLow: error: invalid page content %02x != %02x. iPage=%p off=%#x\n",
+                            RTPrintf("tstLow: error: invalid page content %02x != %02x. iPage=%u off=%#x\n",
                                      *pu8, (uint8_t)iPage, iPage, (uintptr_t)pu8 & PAGE_OFFSET_MASK);
                             rcRet++;
                         }

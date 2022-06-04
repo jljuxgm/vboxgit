@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 41414 2012-05-23 12:37:28Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 43876 2012-11-15 13:44:09Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -749,7 +749,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 41414 $\n");
+                RTPrintf("$Revision: 43876 $\n");
                 return 0;
 
             default:
@@ -891,14 +891,14 @@ int main(int argc, char **argv)
                         if (   fXmitTest
                             && !g_fDhcpReply)
                         {
-                            RTPrintf("tstIntNet-1: Error! The DHCP server didn't reply... (Perhaps you don't have one?)\n", rc);
+                            RTPrintf("tstIntNet-1: Error! The DHCP server didn't reply... (Perhaps you don't have one?)\n");
                             g_cErrors++;
                         }
 
                         if (   fPingTest
                             && !g_fPingReply)
                         {
-                            RTPrintf("tstIntNet-1: Error! No reply for ping request...\n", rc);
+                            RTPrintf("tstIntNet-1: Error! No reply for ping request...\n");
                             g_cErrors++;
                         }
                     }

@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInOS2.cpp 40728 2012-03-30 14:42:08Z vboxsync $ */
+/* $Id: DBGPlugInOS2.cpp 43876 2012-11-15 13:44:09Z vboxsync $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
@@ -147,12 +147,12 @@ static DECLCALLBACK(int)  dbgDiggerOS2QueryVersion(PVM pVM, void *pvData, char *
         }
         else if (pThis->OS2MinorVersion < 40) 
         {
-            RTStrPrintf(pszOS2ProductType, sizeof(achOS2ProductType), "OS/2 Warp", pThis->OS2MinorVersion);
+            RTStrPrintf(pszOS2ProductType, sizeof(achOS2ProductType), "OS/2 Warp");
             pThis->enmVer = DBGDIGGEROS2VER_3_0;
         }
         else if (pThis->OS2MinorVersion == 40) 
         {
-            RTStrPrintf(pszOS2ProductType, sizeof(achOS2ProductType), "OS/2 Warp 4", pThis->OS2MinorVersion);
+            RTStrPrintf(pszOS2ProductType, sizeof(achOS2ProductType), "OS/2 Warp 4");
             pThis->enmVer = DBGDIGGEROS2VER_4_0;
         }
         else
