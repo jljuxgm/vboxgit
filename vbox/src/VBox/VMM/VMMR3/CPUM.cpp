@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 42504 2012-08-01 12:35:11Z vboxsync $ */
+/* $Id: CPUM.cpp 42505 2012-08-01 12:36:44Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1254,7 +1254,7 @@ static int cpumR3CpuIdInit(PVM pVM)
      * AMD:               EBX, EDX - reserved
      *                    EAX: Virtual/Physical/Guest address Size
      *                    ECX: Number of cores + APICIdCoreIdSize
-     * VIA:               EAX: Virtual/Physical address size
+     * VIA:               EAX: Virtual/Physical address Size
      *                    EBX, ECX, EDX - reserved
      */
     if (pCPUM->aGuestCpuIdExt[0].eax >= UINT32_C(0x80000008))
