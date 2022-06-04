@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdogInternal.h 42211 2012-07-18 14:24:58Z vboxsync $ */
+/* $Id: VBoxWatchdogInternal.h 43734 2012-10-25 06:58:17Z vboxsync $ */
 /** @file
  * VBoxWatchdog - VirtualBox Watchdog Service.
  */
@@ -144,7 +144,7 @@ typedef struct
      * @param   argc        Argument count.
      * @param   argv        Arguments.
      */
-    DECLCALLBACKMEMBER(int, pfnOption)(int argc, char **argv);
+    DECLCALLBACKMEMBER(int, pfnOption)(int argc, char *argv[]);
 
     /**
      * Called before parsing arguments.
