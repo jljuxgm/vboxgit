@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 46147 2013-05-17 15:35:09Z vboxsync $
+# $Id: Makefile.kmk 47294 2013-07-22 11:19:20Z vboxsync $
 ## @file
 # Sub-Makefile for the common guest addition code library.
 #
 
 #
-# Copyright (C) 2006-2012 Oracle Corporation
+# Copyright (C) 2006-2013 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -111,6 +111,7 @@ VBoxGuestR3Lib_SOURCES     = \
 	VBoxGuestR3LibCpuHotPlug.cpp \
 	VBoxGuestR3LibCredentials.cpp \
 	VBoxGuestR3LibEvent.cpp \
+	VBoxGuestR3LibGuestUser.cpp \
 	VBoxGuestR3LibGR.cpp \
 	VBoxGuestR3LibHostChannel.cpp \
 	VBoxGuestR3LibLog.cpp \

@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 46376 2013-06-04 11:46:07Z vboxsync $ */
+/* $Id: VMMDevState.h 47294 2013-07-22 11:19:20Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -95,6 +95,7 @@ typedef struct VMMDEVFACILITYSTATUSENTRY
     /** The facility, see VBoxGuestFacilityType. */
     uint32_t    uFacility;
     /** The status, see VBoxGuestFacilityStatus. */
+    /** @todo r=andy uint16_t vs. uint32_t (VBoxGuestFacilityStatus enum). */
     uint16_t    uStatus;
     /** Whether this entry is fixed and cannot be reused when inactive. */
     bool        fFixed;

@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 45030 2013-03-13 20:58:12Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 47294 2013-07-22 11:19:20Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -174,6 +174,30 @@ DECLCALLBACK(void) vmmdevUpdateGuestStatus(PPDMIVMMDEVCONNECTOR pInterface, uint
 
     guest->setAdditionsStatus((VBoxGuestFacilityType)uFacility, (VBoxGuestFacilityStatus)uStatus, fFlags, pTimeSpecTS);
     pConsole->onAdditionsStateChange();
+}
+
+
+/**
+ * @interface_method_impl{PDMIVMMDEVCONNECTOR,pfnUpdateGuestUserState}
+ */
+DECLCALLBACK(void) vmmdevUpdateGuestUserState(PPDMIVMMDEVCONNECTOR pInterface,
+                                              const char *pszUser, const char *pszDomain,
+                                              uint32_t uState,
+                                              uint8_t *puDetails, uint32_t cbDetails)
+{
+    PDRVMAINVMMDEV pDrv = PDMIVMMDEVCONNECTOR_2_MAINVMMDEV(pInterface);
+    AssertPtr(pDrv);
+    Console *pConsole = pDrv->pVMMDev->getParent();
+    AssertPtr(pConsole);
+
+    /* Store that information in IGuest. */
+    Guest* pGuest = pConsole->getGuest();
+    AssertPtr(pGuest);
+    if (!pGuest)
+        return;
+
+    pGuest->onUserStateChange(Bstr(pszUser), Bstr(pszDomain), (VBoxGuestUserState)uState,
+                              puDetails, cbDetails);
 }
 
 
@@ -795,6 +819,7 @@ DECLCALLBACK(int) VMMDev::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle,
     pDrvIns->IBase.pfnQueryInterface                  = VMMDev::drvQueryInterface;
 
     pThis->Connector.pfnUpdateGuestStatus             = vmmdevUpdateGuestStatus;
+    pThis->Connector.pfnUpdateGuestUserState          = vmmdevUpdateGuestUserState;
     pThis->Connector.pfnUpdateGuestInfo               = vmmdevUpdateGuestInfo;
     pThis->Connector.pfnUpdateGuestInfo2              = vmmdevUpdateGuestInfo2;
     pThis->Connector.pfnUpdateGuestCapabilities       = vmmdevUpdateGuestCapabilities;

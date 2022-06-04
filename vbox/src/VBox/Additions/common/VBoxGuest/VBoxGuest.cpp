@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest.cpp 46428 2013-06-07 08:26:18Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 47294 2013-07-22 11:19:20Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1592,6 +1592,7 @@ static int VBoxGuestCheckIfVMMReqAllowed(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSES
         case VMMDevReq_GetPageSharingStatus:
         case VMMDevReq_DebugIsPageShared:
         case VMMDevReq_ReportGuestStats:
+        case VMMDevReq_ReportGuestUserState:
         case VMMDevReq_GetStatisticsChangeRequest:
         case VMMDevReq_ChangeMemBalloon:
             enmRequired = kLevel_TrustedUsers;
