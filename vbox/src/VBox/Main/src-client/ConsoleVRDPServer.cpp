@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 46291 2013-05-28 07:38:04Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 46295 2013-05-28 13:06:10Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1803,7 +1803,7 @@ typedef struct H3DORInstance
         else
         {
             int rc = p->fFallback?
-                        rc = VERR_NOT_SUPPORTED: /* Try to go out of fallback mode. */
+                        VERR_NOT_SUPPORTED: /* Try to go out of fallback mode. */
                         p->pThis->m_interfaceImage.VRDEImageGeometrySet(p->hImageBitmap, &rect);
             if (RT_SUCCESS(rc))
             {
