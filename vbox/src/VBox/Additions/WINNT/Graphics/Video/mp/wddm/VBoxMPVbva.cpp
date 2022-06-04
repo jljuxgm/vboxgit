@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 44116 2012-12-13 11:50:06Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -290,7 +290,7 @@ static int vboxHwBufferWrite (PVBOXMP_DEVEXT pDevExt, VBOXVBVAINFO *pVbva, const
 
         if (cbChunk >= cbHwBufferAvail)
         {
-            LOGF(("1) avail %d, chunk %d", cbHwBufferAvail, cbChunk));
+            LOG(("1) avail %d, chunk %d", cbHwBufferAvail, cbChunk));
 
             vboxHwBufferFlush (pDevExt, pVbva);
 

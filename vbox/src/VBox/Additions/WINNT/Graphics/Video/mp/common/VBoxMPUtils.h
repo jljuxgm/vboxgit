@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.h 42151 2012-07-13 16:45:06Z vboxsync $ */
+/* $Id: VBoxMPUtils.h 44116 2012-12-13 11:50:06Z vboxsync $ */
 /** @file
  * VBox Miniport common utils header
  */
@@ -27,6 +27,11 @@
 #define LOG_GROUP LOG_GROUP_DRV_MINIPORT
 #include <VBox/log.h>
 #define VBOX_VIDEO_LOG_NAME "VBoxMP"
+#ifdef VBOX_WDDM_MINIPORT
+# ifndef VBOX_WDDM_MINIPORT_WITH_FLOW_LOGGING
+#  define VBOX_VIDEO_LOGFLOW_LOGGER(_m) do {} while (0)
+# endif
+#endif
 #include "common/VBoxVideoLog.h"
 #include <iprt/err.h>
 #include <iprt/assert.h>

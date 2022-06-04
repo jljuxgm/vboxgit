@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 43489 2012-10-01 11:55:58Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 44116 2012-12-13 11:50:06Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1528,8 +1528,6 @@ int vboxVdmaCreate(PVBOXMP_DEVEXT pDevExt, VBOXVDMAINFO *pInfo
 
 int vboxVdmaDisable (PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo)
 {
-    LOGF(("."));
-
     Assert(pInfo->fEnabled);
     if (!pInfo->fEnabled)
         return VINF_ALREADY_INITIALIZED;
@@ -1547,8 +1545,6 @@ int vboxVdmaDisable (PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo)
 
 int vboxVdmaEnable (PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo)
 {
-    LOGF(("."));
-
     Assert(!pInfo->fEnabled);
     if (pInfo->fEnabled)
         return VINF_ALREADY_INITIALIZED;
@@ -1567,8 +1563,6 @@ int vboxVdmaEnable (PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo)
 #ifdef VBOX_WITH_VDMA
 int vboxVdmaFlush (PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo)
 {
-    LOGF(("."));
-
     Assert(pInfo->fEnabled);
     if (!pInfo->fEnabled)
         return VINF_ALREADY_INITIALIZED;
