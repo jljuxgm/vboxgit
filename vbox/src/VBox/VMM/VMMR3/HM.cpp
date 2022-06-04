@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45235 2013-03-28 14:36:52Z vboxsync $ */
+/* $Id: HM.cpp 45240 2013-03-28 16:15:10Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -484,8 +484,10 @@ static int hmR3InitCPU(PVM pVM)
         AssertRC(rc);
         rc = STAMR3RegisterF(pVM, &pVCpu->hm.s.StatEntry, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL,
                              "Profiling of VMXR0RunGuestCode entry",
-                             "/PROF/HM/CPU%d/SwitchToGC", i);
+                             "/PROF/HM/CPU%d/StatEntry", i);
         AssertRC(rc);
+        /** @todo r=ramshankar: should be sorted out for the new-code which doesn't
+         *        have 2 exit parts. */
         rc = STAMR3RegisterF(pVM, &pVCpu->hm.s.StatExit1, STAMTYPE_PROFILE, STAMVISIBILITY_USED, STAMUNIT_TICKS_PER_CALL,
                              "Profiling of VMXR0RunGuestCode exit part 1",
                              "/PROF/HM/CPU%d/SwitchFromGC_1", i);
