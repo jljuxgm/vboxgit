@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneTextPane.cpp 47043 2013-07-08 14:29:53Z vboxsync $ */
+/* $Id: UIPopupPaneTextPane.cpp 47455 2013-07-29 12:07:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -50,19 +50,6 @@ void UIPopupPaneTextPane::setText(const QString &strText)
     /* Fetch new text: */
     m_strText = strText;
     m_pLabel->setText(m_strText);
-
-    /* Update size-hint: */
-    updateSizeHint();
-}
-
-void UIPopupPaneTextPane::setDesiredWidth(int iDesiredWidth)
-{
-    /* Make sure the desired-width has changed: */
-    if (m_iDesiredLabelWidth == iDesiredWidth)
-        return;
-
-    /* Fetch new desired-width: */
-    m_iDesiredLabelWidth = iDesiredWidth;
 
     /* Update size-hint: */
     updateSizeHint();
@@ -148,6 +135,19 @@ void UIPopupPaneTextPane::layoutContent()
     }
     else if (!m_pAutoConfirmCheckBox->isHidden())
         m_pAutoConfirmCheckBox->hide();
+}
+
+void UIPopupPaneTextPane::sltHandleProposalForWidth(int iWidth)
+{
+    /* Make sure the desired-width has changed: */
+    if (m_iDesiredLabelWidth == iWidth)
+        return;
+
+    /* Fetch new desired-width: */
+    m_iDesiredLabelWidth = iWidth;
+
+    /* Update size-hint: */
+    updateSizeHint();
 }
 
 void UIPopupPaneTextPane::sltFocusEnter()

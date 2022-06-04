@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 47230 2013-07-18 11:53:24Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 47455 2013-07-29 12:07:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -316,12 +316,14 @@ void UIPopupCenter::raisePopupStack(QWidget *pParent)
     if (!m_stacks.contains(strPopupStackID))
         return;
 
-    /* Just raise, its:
-     * useful for Win host,
-     * do not work on Mac host and
-     * need to check for x11/KDE still. */
-    UIPopupStack *pPopupStack = m_stacks[strPopupStackID];
-    pPopupStack->raise();
+    /* Remove stack: */
+    hidePopupStack(pParent);
+
+    /* Make sure integration type is correct: */
+    setStackIntegrationType(UIPopupIntegrationType_Toplevel);
+
+    /* Return stack again: */
+    showPopupStack(pParent);
 }
 
 void UIPopupCenter::assignPopupStackParent(UIPopupStack *pPopupStack, QWidget *pParent)
