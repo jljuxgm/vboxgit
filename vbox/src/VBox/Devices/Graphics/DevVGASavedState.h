@@ -1,4 +1,4 @@
-/* $Id: DevVGASavedState.h 37770 2011-07-04 17:43:06Z vboxsync $ */
+/* $Id: DevVGASavedState.h 44000 2012-11-30 10:03:19Z vboxsync $ */
 /** @file
  * DevVGA - Saved state versions.
  *
@@ -22,7 +22,8 @@
 #ifndef Graphics_DevVGASavedState_h
 #define Graphics_DevVGASavedState_h
 
-#define VGA_SAVEDSTATE_VERSION              8
+#define VGA_SAVEDSTATE_VERSION              9
+#define VGA_SAVEDSTATE_VERSION_INV_GCMDFIFO 8 /* <- states upto and including this version may contain invalid completed Guest Commands fifo entries */
 #define VGA_SAVEDSTATE_VERSION_INV_VHEIGHT  8 /* <- states upto and including this version may contain invalid vbe_regs[VBE_DISPI_INDEX_VIRT_HEIGHT] value */
 #define VGA_SAVEDSTATE_VERSION_WDDM         7
 #define VGA_SAVEDSTATE_VERSION_PRE_WDDM     6
