@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 45452 2013-04-10 10:19:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -69,6 +69,42 @@
 #include <iprt/err.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
+
+/* static */
+UIMessageCenter* UIMessageCenter::m_spInstance = 0;
+UIMessageCenter* UIMessageCenter::instance() { return m_spInstance; }
+
+/* static */
+void UIMessageCenter::create()
+{
+    /* Make sure instance is NOT created yet: */
+    if (m_spInstance)
+    {
+        AssertMsgFailed(("UIMessageCenter instance is already created!"));
+        return;
+    }
+
+    /* Create instance: */
+    new UIMessageCenter;
+    /* Prepare instance: */
+    m_spInstance->prepare();
+}
+
+/* static */
+void UIMessageCenter::destroy()
+{
+    /* Make sure instance is NOT destroyed yet: */
+    if (!m_spInstance)
+    {
+        AssertMsgFailed(("UIMessageCenter instance is already destroyed!"));
+        return;
+    }
+
+    /* Cleanup instance: */
+    m_spInstance->cleanup();
+    /* Destroy instance: */
+    delete m_spInstance;
+}
 
 bool UIMessageCenter::warningShown(const QString &strWarningName) const
 {
@@ -2533,6 +2569,18 @@ void UIMessageCenter::sltRemindAboutWrongColorDepth(ulong uRealBPP, ulong uWante
 
 UIMessageCenter::UIMessageCenter()
 {
+    /* Assign instance: */
+    m_spInstance = this;
+}
+
+UIMessageCenter::~UIMessageCenter()
+{
+    /* Unassign instance: */
+    m_spInstance = 0;
+}
+
+void UIMessageCenter::prepare()
+{
     /* Register required objects as meta-types: */
     qRegisterMetaType<CProgress>();
     qRegisterMetaType<CHost>();
@@ -2569,11 +2617,9 @@ UIMessageCenter::UIMessageCenter()
     tr("Could not load the Host USB Proxy service");
 }
 
-/* Returns a reference to the global VirtualBox message center instance: */
-UIMessageCenter &UIMessageCenter::instance()
+void UIMessageCenter::cleanup()
 {
-    static UIMessageCenter global_instance;
-    return global_instance;
+     /* Nothing for now... */
 }
 
 QString UIMessageCenter::errorInfoToString(const COMErrorInfo &info,

@@ -1,4 +1,4 @@
-/* $Id: main.cpp 45448 2013-04-10 07:59:40Z vboxsync $ */
+/* $Id: main.cpp 45452 2013-04-10 10:19:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -411,11 +411,11 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         QString currentFamily(QApplication::font().family());
         bool isCurrentScaleable = fontDataBase.isScalable(currentFamily);
 
-        QString subFamily (QFont::substitute (currentFamily));
-        bool isSubScaleable = fontDataBase.isScalable (subFamily);
+        QString subFamily(QFont::substitute(currentFamily));
+        bool isSubScaleable = fontDataBase.isScalable(subFamily);
 
         if (isCurrentScaleable && !isSubScaleable)
-            QFont::removeSubstitution (currentFamily);
+            QFont::removeSubstitution(currentFamily);
 # endif /* Q_OS_SOLARIS */
 #endif /* Q_WS_X11 */
 
@@ -445,14 +445,15 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
             QMessageBox::critical(0, QApplication::tr("Incompatible Qt Library Error"),
                                   strMsg, QMessageBox::Abort, 0);
             qFatal("%s", strMsg.toAscii().constData());
+            break;
         }
 #endif /* Q_WS_X11 */
 
         /* Create modal-window manager: */
         UIModalWindowManager::create();
 
-        /* Load a translation based on the current locale: */
-        VBoxGlobal::loadLanguage();
+        /* Create global UI instance: */
+        VBoxGlobal::create();
 
         /* Simulate try-catch block: */
         do
@@ -517,6 +518,9 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
             }
         }
         while (0);
+
+        /* Destroy global UI instance: */
+        VBoxGlobal::destroy();
 
         /* Destroy modal-window manager: */
         UIModalWindowManager::destroy();
