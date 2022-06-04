@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 43162 2012-09-04 13:53:59Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 43165 2012-09-04 14:31:29Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -1686,7 +1686,7 @@ STDMETHODIMP GuestSession::FileOpen(IN_BSTR aPath, IN_BSTR aOpenMode, IN_BSTR aD
                 break;
 
             default:
-                hr = setError(VBOX_E_IPRT_ERROR, tr("Creating directory \"%s\" failed: %Rrc"),
+                hr = setError(VBOX_E_IPRT_ERROR, tr("Opening file \"%s\" failed: %Rrc"),
                               Utf8Str(aPath).c_str(), vrc);
                 break;
         }
