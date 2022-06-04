@@ -1,10 +1,10 @@
-/* $Id: string.h 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: string.h 43171 2012-09-04 17:07:27Z vboxsync $ */
 /** @file
  * IPRT - Internal RTStr header.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -79,6 +79,8 @@ DECLHIDDEN(int) rtStrConvert(const char *pchInput, size_t cchInput, const char *
                              unsigned cFactor, RTSTRICONV enmCacheIdx);
 DECLHIDDEN(const char *) rtStrGetLocaleCodeset(void);
 DECLHIDDEN(int) rtUtf8Length(const char *psz, size_t cch, size_t *pcuc, size_t *pcchActual);
+
+DECLHIDDEN(int) rtStrToIpAddr6Str(const char *psz, char *pszAddrOut, size_t addrOutSize, char *pszPortOut, size_t portOutSize, bool followRfc);
 
 RT_C_DECLS_END
 
