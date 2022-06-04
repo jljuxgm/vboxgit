@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 43104 2012-08-30 14:02:28Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 43127 2012-08-30 19:26:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1840,7 +1840,12 @@ CSession VBoxGlobal::openSession(const QString &aId, KLockType aLockType /* = KL
         }
     }
 
-    if (!mVBox.isOk())
+    if (!foundMachine.isOk())
+    {
+        msgCenter().cannotOpenSession(foundMachine);
+        session.detach();
+    }
+    else if (!mVBox.isOk())
     {
         msgCenter().cannotOpenSession(mVBox, foundMachine);
         session.detach();
