@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 47740 2013-08-14 19:55:03Z vboxsync $ */
+/* $Id: IEMInternal.h 47754 2013-08-15 11:41:03Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -511,6 +511,9 @@ typedef IEMCPU const *PCIEMCPU;
 #define IEMOPFORM_M_MEM         (IEMOPFORM_M | IEMOPFORM_NOT_MOD3)
 /** ModR/M: reg only */
 #define IEMOPFORM_R             3
+
+/** Fixed register instruction, no R/M. */
+#define IEMOPFORM_FIXED         4
 
 /** The r/m is a register. */
 #define IEMOPFORM_MOD3          RT_BIT_32(8)
