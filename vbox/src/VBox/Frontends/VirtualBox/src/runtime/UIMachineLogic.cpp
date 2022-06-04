@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 44827 2013-02-26 12:22:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -435,6 +435,32 @@ void UIMachineLogic::sltShowWindows()
 }
 #endif /* Q_WS_MAC */
 
+void UIMachineLogic::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect)
+{
+    /* Ignore KGuestMonitorChangedEventType_NewOrigin change event: */
+    if (changeType == KGuestMonitorChangedEventType_NewOrigin)
+        return;
+    /* Ignore KGuestMonitorChangedEventType_Disabled event if there is only one window visible: */
+    AssertMsg(uisession()->countOfVisibleWindows() > 0, ("All machine windows are hidden!"));
+    if (   changeType == KGuestMonitorChangedEventType_Disabled
+        && uisession()->countOfVisibleWindows() == 1
+        && uisession()->isScreenVisible(uScreenId))
+        return;
+
+    /* Process KGuestMonitorChangedEventType_Enabled change event: */
+    if (   !uisession()->isScreenVisible(uScreenId)
+        && changeType == KGuestMonitorChangedEventType_Enabled)
+        uisession()->setScreenVisible(uScreenId, true);
+    /* Process KGuestMonitorChangedEventType_Disabled change event: */
+    else if (   uisession()->isScreenVisible(uScreenId)
+             && changeType == KGuestMonitorChangedEventType_Disabled)
+        uisession()->setScreenVisible(uScreenId, false);
+
+    /* Deliver event to corresponding machine-window: */
+    if (uScreenId < (ulong)machineWindows().size())
+        machineWindows()[uScreenId]->handleGuestMonitorChange();
+}
+
 UIMachineLogic::UIMachineLogic(QObject *pParent, UISession *pSession, UIVisualStateType visualStateType)
     : QIWithRetranslateUI3<QObject>(pParent)
     , m_pSession(pSession)
@@ -562,6 +588,10 @@ void UIMachineLogic::prepareSessionConnections()
     /* Show windows: */
     connect(uisession(), SIGNAL(sigShowWindows()), this, SLOT(sltShowWindows()));
 #endif /* Q_WS_MAC */
+
+    /* Guest monitor-change updater: */
+    connect(uisession(), SIGNAL(sigGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)),
+            this, SLOT(sltGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)));
 }
 
 void UIMachineLogic::prepareActionGroups()
