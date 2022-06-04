@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 45137 2013-03-22 10:52:19Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 45140 2013-03-22 12:15:11Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -160,8 +160,10 @@ BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam)
         szWindowText[0] = 0;
         GetWindowText(hwnd, szWindowText, sizeof(szWindowText));
 
+#ifdef LOG_ENABLED
         DWORD pid = 0;
         DWORD tid = GetWindowThreadProcessId(hwnd, &pid);
+#endif
 
         /* Filter out Windows XP shadow windows */
         /** @todo still shows inside the guest */
