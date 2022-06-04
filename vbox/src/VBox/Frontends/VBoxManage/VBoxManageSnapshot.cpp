@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 39120 2011-10-26 13:08:13Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 43664 2012-10-17 10:16:02Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -189,12 +189,17 @@ static RTEXITCODE handleSnapshotList(HandlerArg *pArgs, ComPtr<IMachine> &rptrMa
 
     /* See showVMInfo. */
     ComPtr<ISnapshot> ptrSnapshot;
-    CHECK_ERROR2_RET(rptrMachine, FindSnapshot(Bstr().raw(), ptrSnapshot.asOutParam()), RTEXITCODE_FAILURE);
+    HRESULT hrc = rptrMachine->FindSnapshot(Bstr().raw(), ptrSnapshot.asOutParam());
+    if (FAILED(hrc))
+    {
+        RTPrintf("This machine does not have any snapshots\n");
+        return RTEXITCODE_FAILURE;
+    }
     if (ptrSnapshot)
     {
         ComPtr<ISnapshot> ptrCurrentSnapshot;
         CHECK_ERROR2_RET(rptrMachine,COMGETTER(CurrentSnapshot)(ptrCurrentSnapshot.asOutParam()), RTEXITCODE_FAILURE);
-        HRESULT hrc = showSnapshots(ptrSnapshot, ptrCurrentSnapshot, enmDetails);
+        hrc = showSnapshots(ptrSnapshot, ptrCurrentSnapshot, enmDetails);
         if (FAILED(hrc))
             return RTEXITCODE_FAILURE;
     }
