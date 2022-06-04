@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PGMBth.h 45103 2013-03-20 11:13:27Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -152,20 +152,16 @@ PGM_BTH_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
         pgmMapDeactivateCR3(pVM, pVCpu->pgm.s.CTX_SUFF(pShwPageCR3));
 # endif
 
-        pgmPoolFreeByPage(pPool, pVCpu->pgm.s.pShwPageCR3R3, pVCpu->pgm.s.iShwUser, pVCpu->pgm.s.iShwUserTable);
+        pgmPoolFreeByPage(pPool, pVCpu->pgm.s.pShwPageCR3R3, NIL_PGMPOOL_IDX, UINT32_MAX);
         pVCpu->pgm.s.pShwPageCR3R3 = 0;
         pVCpu->pgm.s.pShwPageCR3RC = 0;
         pVCpu->pgm.s.pShwPageCR3R0 = 0;
-        pVCpu->pgm.s.iShwUser      = 0;
-        pVCpu->pgm.s.iShwUserTable = 0;
     }
 
     /* construct a fake address. */
     GCPhysCR3 = RT_BIT_64(63);
-    pVCpu->pgm.s.iShwUser      = SHW_POOL_ROOT_IDX;
-    pVCpu->pgm.s.iShwUserTable = GCPhysCR3 >> PAGE_SHIFT;
     int rc = pgmPoolAlloc(pVM, GCPhysCR3, BTH_PGMPOOLKIND_ROOT, PGMPOOLACCESS_DONTCARE, PGM_A20_IS_ENABLED(pVCpu),
-                          pVCpu->pgm.s.iShwUser, pVCpu->pgm.s.iShwUserTable, false /*fLockPage*/,
+                          NIL_PGMPOOL_IDX, UINT32_MAX, false /*fLockPage*/,
                           &pVCpu->pgm.s.pShwPageCR3R3);
     if (rc == VERR_PGM_POOL_FLUSHED)
     {
