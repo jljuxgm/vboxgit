@@ -1,4 +1,4 @@
-; $Id: VMMRC.def 41147 2012-05-03 20:15:27Z vboxsync $
+; $Id: VMMRC.def 43390 2012-09-21 10:04:33Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -77,9 +77,9 @@ EXPORTS
     VMSetErrorV
     VMXGCStartVM64
     SVMGCVMRun64
-    HWACCMSaveGuestFPU64
-    HWACCMSaveGuestDebug64
-    HWACCMTestSwitcher64
+    HMSaveGuestFPU64
+    HMSaveGuestDebug64
+    HMTestSwitcher64
 
     ; runtime
     nocrt_memchr
