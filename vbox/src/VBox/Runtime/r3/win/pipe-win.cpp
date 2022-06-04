@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 44469 2013-01-30 15:37:55Z vboxsync $ */
+/* $Id: pipe-win.cpp 44494 2013-01-31 14:09:13Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -1388,6 +1388,7 @@ uint32_t rtPipePollDone(RTPIPE hPipe, uint32_t fEvents, bool fFinalEntry, bool f
 
     /* update counters. */
     pThis->cUsers--;
+    /** @todo This isn't sane, or is it? See OS/2 impl. */
     if (!pThis->cUsers)
         pThis->hPollSet = NIL_RTPOLLSET;
 
