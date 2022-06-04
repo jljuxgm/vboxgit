@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 45069 2013-03-18 17:33:34Z vboxsync $ */
+/* $Id: VDI.cpp 45486 2013-04-11 14:52:10Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -1128,7 +1128,6 @@ static DECLCALLBACK(int) vdiDiscardBlockAsyncUpdate(void *pBackendData, PVDIOCTX
         case VDIBLOCKDISCARDSTATE_UPDATE_METADATA:
         {
             int rc2;
-            uint64_t cbImage;
 
             /* Block write complete. Update metadata. */
             pImage->paBlocksRev[pDiscardAsync->idxLastBlock] = VDI_IMAGE_BLOCK_FREE;

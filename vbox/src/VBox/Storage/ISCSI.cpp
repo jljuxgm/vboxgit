@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ISCSI.cpp 45486 2013-04-11 14:52:10Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4427,7 +4427,6 @@ return the status of target and will clear any unit attention condition that it 
             ASMBitSet(&aCachingModePage[Offset + 2], 2);
             ASMBitClear(&aCachingModePage[Offset + 2], 0);
 
-            uint8_t aCDBCaching[6];
             sr.abCDB[0] = SCSI_MODE_SELECT_6;
             sr.abCDB[1] = 0; /* Don't write the page into NV RAM. */
             sr.abCDB[2] = 0;
