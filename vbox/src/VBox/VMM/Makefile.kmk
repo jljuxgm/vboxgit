@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46111 2013-05-15 21:56:53Z vboxsync $
+# $Id: Makefile.kmk 46135 2013-05-16 23:32:47Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -177,6 +177,7 @@ VBoxVMM_SOURCES  = \
 	VMMR3/PATMGuest.cpp \
 	VMMR3/PATMA.asm \
 	VMMR3/PATMSSM.cpp \
+	VMMR3/PATMR3Dbg.cpp \
        ,) \
 	VMMAll/CPUMAllRegs.cpp \
 	VMMAll/CPUMStack.cpp \
