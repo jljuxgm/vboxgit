@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 42128 2012-07-12 16:31:42Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 42158 2012-07-16 11:28:07Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1570,7 +1570,7 @@ static BOOLEAN vboxVidPnIsPathSupported(const D3DKMDT_VIDPN_PRESENT_PATH *pNewVi
 {
     if (pNewVidPnPresentPathInfo->VidPnSourceId != pNewVidPnPresentPathInfo->VidPnTargetId)
     {
-        WARN(("unsupported source(%d)->target(%d) pair", pNewVidPnPresentPathInfo->VidPnSourceId, pNewVidPnPresentPathInfo->VidPnTargetId));
+        LOG(("unsupported source(%d)->target(%d) pair", pNewVidPnPresentPathInfo->VidPnSourceId, pNewVidPnPresentPathInfo->VidPnTargetId));
         return FALSE;
     }
 
