@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 43557 2012-10-05 12:42:40Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 43638 2012-10-15 11:21:38Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -894,6 +894,8 @@ static int handleCtrlExecProgram(ComPtr<IGuest> pGuest, HandlerArg *pArg)
             return EXITCODEEXEC_TERM_ABEND;
         }
     }
+
+    pGuestSession->Close();
 
     return RT_FAILURE(vrc) || FAILED(rc) ? RTEXITCODE_FAILURE : RTEXITCODE_SUCCESS;
 }
