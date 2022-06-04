@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 43141 2012-08-31 16:33:59Z vboxsync $ */
+/* $Id: VD.cpp 43739 2012-10-25 13:51:28Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -6853,15 +6853,27 @@ VBOXDDU_DECL(int) VDMerge(PVBOXHDD pDisk, unsigned nImageFrom,
         AssertRC(rc2);
         fLockWrite = true;
 
-        /* Update parent UUID so that image chain is consistent. */
+        /* Update parent UUID so that image chain is consistent.
+         * The two attempts work around the problem that some backends
+         * (e.g. iSCSI) do not support UUIDs, so we exploit the fact that
+         * so far there can only be one such image in the chain. */
+        /** @todo needs a better long-term solution, passing the UUID
+         * knowledge from the caller or some such */
         RTUUID Uuid;
         PVDIMAGE pImageChild = NULL;
         if (nImageFrom < nImageTo)
         {
             if (pImageFrom->pPrev)
             {
+                /* plan A: ask the parent itself for its UUID */
                 rc = pImageFrom->pPrev->Backend->pfnGetUuid(pImageFrom->pPrev->pBackendData,
                                                             &Uuid);
+                if (RT_FAILURE(rc))
+                {
+                    /* plan B: ask the child of the parent for parent UUID */
+                    rc = pImageFrom->Backend->pfnGetParentUuid(pImageFrom->pBackendData,
+                                                               &Uuid);
+                }
                 AssertRC(rc);
             }
             else
@@ -6875,8 +6887,15 @@ VBOXDDU_DECL(int) VDMerge(PVBOXHDD pDisk, unsigned nImageFrom,
             /* Update the parent uuid of the child of the last merged image. */
             if (pImageFrom->pNext)
             {
+                /* plan A: ask the parent itself for its UUID */
                 rc = pImageTo->Backend->pfnGetUuid(pImageTo->pBackendData,
                                                    &Uuid);
+                if (RT_FAILURE(rc))
+                {
+                    /* plan B: ask the child of the parent for parent UUID */
+                    rc = pImageTo->pNext->Backend->pfnGetParentUuid(pImageTo->pNext->pBackendData,
+                                                                    &Uuid);
+                }
                 AssertRC(rc);
 
                 rc = pImageFrom->Backend->pfnSetParentUuid(pImageFrom->pNext->pBackendData,
