@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 42272 2012-07-20 14:42:40Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 42274 2012-07-20 14:53:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -778,7 +778,7 @@ int GuestProcess::signalWaiters(int rc, const Utf8Str strMessage)
     if (RT_FAILURE(rc))
     {
         HRESULT hr = setError(VBOX_E_IPRT_ERROR, strMessage.c_str());
-        ComAssertRC(hr);
+        ComAssertComRC(hr);
     }
 
     int rc2 = VINF_SUCCESS;
