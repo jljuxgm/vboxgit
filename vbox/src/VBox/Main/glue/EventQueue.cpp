@@ -1,4 +1,4 @@
-/* $Id: EventQueue.cpp 43943 2012-11-22 17:00:42Z vboxsync $ */
+/* $Id: EventQueue.cpp 43944 2012-11-22 20:16:49Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer:
  * Event and EventQueue class declaration
@@ -25,6 +25,8 @@
 #if defined(VBOX_WITH_XPCOM) && !defined(RT_OS_DARWIN) && !defined(RT_OS_OS2)
 # define USE_XPCOM_QUEUE
 #endif
+
+#include <new> /* For bad_alloc. */
 
 #include <iprt/err.h>
 #include <iprt/time.h>
@@ -234,7 +236,7 @@ int EventQueue::init()
         Assert(NS_SUCCEEDED(rv) && fIsNative);
 #endif // VBOX_WITH_XPCOM
     }
-    catch (bad_alloc &ba)
+    catch (std::bad_alloc &)
     {
         return VERR_NO_MEMORY;
     }
@@ -619,7 +621,7 @@ BOOL EventQueue::postEvent(Event *pEvent)
         HRESULT rc = mEventQ->PostEvent(pMyEvent);
         return NS_SUCCEEDED(rc);
     }
-    catch (bad_alloc &ba)
+    catch (std::bad_alloc &ba)
     {
         AssertMsgFailed(("Out of memory while allocating memory for event=%p: %s\n",
                          pEvent, ba.what()));
