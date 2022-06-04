@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 45315 2013-04-03 17:30:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1167,15 +1167,24 @@ void UIMediumManager::doRemoveMedium()
 
             if (deleteStorage)
             {
+                /* Remember virtual-disk attributes: */
+                QString strLocation = hardDisk.GetLocation();
+                /* Prepare delete storage progress: */
                 CProgress progress = hardDisk.DeleteStorage();
                 if (hardDisk.isOk())
                 {
+                    /* Show delete storage progress: */
                     msgCenter().showModalProgressDialog(progress, windowTitle(), ":/progress_media_delete_90px.png", this);
-                    if (!(progress.isOk() && progress.GetResultCode() == S_OK))
+                    if (!progress.isOk() || progress.GetResultCode() != 0)
                     {
-                        msgCenter().cannotDeleteHardDiskStorage(hardDisk, progress, this);
+                        msgCenter().cannotDeleteHardDiskStorage(progress, strLocation, this);
                         return;
                     }
+                }
+                else
+                {
+                    msgCenter().cannotDeleteHardDiskStorage(hardDisk, strLocation, this);
+                    return;
                 }
             }
 
