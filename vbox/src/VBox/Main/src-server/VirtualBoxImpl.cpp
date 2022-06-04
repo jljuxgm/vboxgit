@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 42178 2012-07-17 12:35:07Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 42208 2012-07-18 13:22:38Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -204,7 +204,8 @@ struct VirtualBox::Data
           threadClientWatcher(NIL_RTTHREAD),
           threadAsyncEvent(NIL_RTTHREAD),
           pAsyncEventQ(NULL),
-          pAutostartDb(NULL)
+          pAutostartDb(NULL),
+          fSettingsCipherKeySet(false)
     {
     }
 
@@ -2168,7 +2169,7 @@ int VirtualBox::encryptSettingBytes(const uint8_t *aPlaintext, uint8_t *aCiphert
             j = 0;
     }
 
-    /* fill with random data to have a minimal length */
+    /* fill with random data to have a minimal length (salt) */
     if (i < aCiphertextSize)
     {
         RTRandBytes(aBytes, aCiphertextSize - i);
