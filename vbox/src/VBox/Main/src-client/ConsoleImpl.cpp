@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 42907 2012-08-21 13:53:54Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 43064 2012-08-29 10:09:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3334,9 +3334,10 @@ STDMETHODIMP Console::TakeSnapshot(IN_BSTR aName,
     // finally, create the progress object
     ComObjPtr<Progress> pProgress;
     pProgress.createObject();
-    rc = pProgress->init(static_cast<IConsole*>(this),
+    rc = pProgress->init(static_cast<IConsole *>(this),
                          Bstr(tr("Taking a snapshot of the virtual machine")).raw(),
-                         mMachineState == MachineState_Running /* aCancelable */,
+                            (mMachineState >= MachineState_FirstOnline)
+                         && (mMachineState <= MachineState_LastOnline) /* aCancelable */,
                          cOperations,
                          ulTotalOperationsWeight,
                          Bstr(tr("Setting up snapshot operation")).raw(),      // first sub-op description
