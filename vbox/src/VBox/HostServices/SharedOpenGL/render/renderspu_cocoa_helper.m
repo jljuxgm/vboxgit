@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 44740 2013-02-18 17:02:47Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 44756 2013-02-19 17:10:41Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1074,8 +1074,10 @@ static void vboxCtxSetCurrent(NSOpenGLContext * pCtx)
                 const RTRECT * pSrcRect = &paSrcRegions[i];
                 const RTRECT * pDstRect = &paDstRegions[i];
                        
-                glBlitFramebufferEXT(pSrcRect->xLeft, pSrcRect->yTop, pSrcRect->xRight, pSrcRect->yBottom,
-                                            pDstRect->xLeft, pDstRect->yTop, pDstRect->xRight, pDstRect->yBottom,
+                glBlitFramebufferEXT(pSrcRect->xLeft, pSrcRect->yTop + m_RootShift.y,
+                						 pSrcRect->xRight, pSrcRect->yBottom + m_RootShift.y,
+                                         pDstRect->xLeft - m_RootShift.x, pDstRect->yTop,
+                                         pDstRect->xRight - m_RootShift.x, pDstRect->yBottom,
                                             GL_COLOR_BUFFER_BIT, GL_LINEAR);
             }
         }
@@ -1209,9 +1211,11 @@ static void vboxCtxSetCurrent(NSOpenGLContext * pCtx)
                         const RTRECT * pSrcRect = &paSrcRegions[i];
                         const RTRECT * pDstRect = &paDstRegions[i];
                        
-                        glBlitFramebufferEXT(pSrcRect->xLeft, pSrcRect->yTop, pSrcRect->xRight, pSrcRect->yBottom,
-                                            pDstRect->xLeft * m_FBOThumbScaleX, pDstRect->yTop * m_FBOThumbScaleY, pDstRect->xRight * m_FBOThumbScaleX, pDstRect->yBottom * m_FBOThumbScaleY,
-                                            GL_COLOR_BUFFER_BIT, GL_LINEAR);
+                        glBlitFramebufferEXT(pSrcRect->xLeft, pSrcRect->yTop + m_RootShift.y, 
+                        						pSrcRect->xRight, pSrcRect->yBottom + m_RootShift.y,
+                                            	pDstRect->xLeft * m_FBOThumbScaleX, pDstRect->yTop * m_FBOThumbScaleY,
+                                            	pDstRect->xRight * m_FBOThumbScaleX, pDstRect->yBottom * m_FBOThumbScaleY,
+                                            	GL_COLOR_BUFFER_BIT, GL_LINEAR);
                     }
                 }
                 else
