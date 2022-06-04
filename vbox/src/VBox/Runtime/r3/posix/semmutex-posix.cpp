@@ -1,4 +1,4 @@
-/* $Id: semmutex-posix.cpp 43558 2012-10-08 05:18:32Z vboxsync $ */
+/* $Id: semmutex-posix.cpp 43559 2012-10-08 05:21:36Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, POSIX.
  */
@@ -274,9 +274,9 @@ DECL_FORCE_INLINE(int) rtSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMil
     }
     else
     {
+        struct timespec     ts = {0,0};
 #if defined(RT_OS_DARWIN) || defined(RT_OS_HAIKU)
 
-        struct timespec     ts = {0,0};
         struct timeval      tv = {0,0};
         gettimeofday(&tv, NULL);
         ts.tv_sec = tv.tv_sec;
