@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 45780 2013-04-26 15:19:33Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 45782 2013-04-26 15:26:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -135,7 +135,7 @@ private:
 };
 typedef ListenerImpl<GuestSessionListener, GuestSession*> GuestSessionListenerImpl;
 
-VBOX_LISTENER_DECLARE(GuestProcessListenerImpl)
+VBOX_LISTENER_DECLARE(GuestSessionListenerImpl)
 
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
