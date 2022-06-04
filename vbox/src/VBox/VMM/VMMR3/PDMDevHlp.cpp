@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 44902 2013-03-02 02:28:37Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 45645 2013-04-19 13:46:48Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -669,6 +669,20 @@ static DECLCALLBACK(uint64_t) pdmR3DevHlp_TMTimeVirtGetNano(PPDMDEVINS pDevIns)
 
     LogFlow(("pdmR3DevHlp_TMTimeVirtGetNano: caller='%s'/%d: returns %RU64\n", pDevIns->pReg->szName, pDevIns->iInstance, u64Nano));
     return u64Nano;
+}
+
+
+/** @interface_method_impl{PDMDEVHLPR3,pfnGetSupDrvSession} */
+static DECLCALLBACK(PSUPDRVSESSION) pdmR3DevHlp_GetSupDrvSession(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    LogFlow(("pdmR3DevHlp_GetSupDrvSession: caller='%s'\n",
+             pDevIns->pReg->szName, pDevIns->iInstance));
+
+    PSUPDRVSESSION pSession = pDevIns->Internal.s.pVMR3->pSession;
+
+    LogFlow(("pdmR3DevHlp_GetSupDrvSession: caller='%s'/%d: returns %#p\n", pDevIns->pReg->szName, pDevIns->iInstance, pSession));
+    return pSession;
 }
 
 
@@ -3492,6 +3506,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpTrusted =
     pdmR3DevHlp_TMTimeVirtGet,
     pdmR3DevHlp_TMTimeVirtGetFreq,
     pdmR3DevHlp_TMTimeVirtGetNano,
+    pdmR3DevHlp_GetSupDrvSession,
     PDM_DEVHLPR3_VERSION /* the end */
 };
 
@@ -3609,6 +3624,15 @@ static DECLCALLBACK(void) pdmR3DevHlp_Untrusted_GetCpuId(PPDMDEVINS pDevIns, uin
 }
 
 
+/** @interface_method_impl{PDMDEVHLPR3,pfnGetSupDrvSession} */
+static DECLCALLBACK(PSUPDRVSESSION) pdmR3DevHlp_Untrusted_GetSupDrvSession(PPDMDEVINS pDevIns)
+{
+    PDMDEV_ASSERT_DEVINS(pDevIns);
+    AssertReleaseMsgFailed(("Untrusted device called trusted helper! '%s'/%d\n", pDevIns->pReg->szName, pDevIns->iInstance));
+    return (PSUPDRVSESSION)0;
+}
+
+
 /**
  * The device helper structure for non-trusted devices.
  */
@@ -3723,6 +3747,7 @@ const PDMDEVHLPR3 g_pdmR3DevHlpUnTrusted =
     pdmR3DevHlp_TMTimeVirtGet,
     pdmR3DevHlp_TMTimeVirtGetFreq,
     pdmR3DevHlp_TMTimeVirtGetNano,
+    pdmR3DevHlp_Untrusted_GetSupDrvSession,
     PDM_DEVHLPR3_VERSION /* the end */
 };
 
