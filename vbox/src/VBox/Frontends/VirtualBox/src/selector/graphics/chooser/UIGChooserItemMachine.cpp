@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 42564 2012-08-03 02:27:38Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 42581 2012-08-03 14:18:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -182,7 +182,7 @@ QVariant UIGChooserItemMachine::data(int iKey) const
         case MachineItemData_NameSize:
         {
             QFontMetrics fm(data(MachineItemData_NameFont).value<QFont>());
-            return QSize(fm.width(data(MachineItemData_Name).toString()), fm.height());
+            return QSize(fm.width(data(MachineItemData_Name).toString()) + 1, fm.height());
         }
         case MachineItemData_MinimumSnapshotNameSize:
         {
@@ -195,7 +195,7 @@ QVariant UIGChooserItemMachine::data(int iKey) const
         case MachineItemData_SnapshotNameSize:
         {
             QFontMetrics fm(data(MachineItemData_SnapshotNameFont).value<QFont>());
-            return QSize(fm.width(QString("(%1)").arg(data(MachineItemData_SnapshotName).toString())), fm.height());
+            return QSize(fm.width(QString("(%1)").arg(data(MachineItemData_SnapshotName).toString())) + 1, fm.height());
         }
         case MachineItemData_FirstRowMaximumWidth:
         {
@@ -218,7 +218,7 @@ QVariant UIGChooserItemMachine::data(int iKey) const
         case MachineItemData_StateTextSize:
         {
             QFontMetrics fm(data(MachineItemData_StateTextFont).value<QFont>());
-            return QSize(fm.width(data(MachineItemData_StateText).toString()), fm.height());
+            return QSize(fm.width(data(MachineItemData_StateText).toString()) + 1, fm.height());
         }
         case MachineItemData_ToolBarSize:
         {
