@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 47582 2013-08-07 11:08:34Z vboxsync $ */
+/* $Id: MouseImpl.cpp 47701 2013-08-13 16:25:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -737,7 +737,7 @@ HRESULT Mouse::putEventMultiTouch(LONG aCount,
                 bool fInRange     = (RT_BYTE2(u32Hi) & 0x2) != 0;
 
                 LogRel3(("%s: [%d] %d,%d id %d, inContact %d, inRange %d\n",
-                         __FUNCTION__, i, x, y, fInContact, fInRange));
+                         __FUNCTION__, i, x, y, contactId, fInContact, fInRange));
 
                 /* Framebuffer dimensions are 0,0 width, height, that is x2,y2 are exclusive,
                  * while coords are inclusive.
