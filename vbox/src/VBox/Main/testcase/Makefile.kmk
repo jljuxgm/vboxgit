@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41528 2012-05-31 16:48:33Z vboxsync $
+# $Id: Makefile.kmk 42160 2012-07-16 11:41:10Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -150,9 +150,10 @@ tstCollector_LDFLAGS.win     += psapi.lib powrprof.lib
 # tstGuestCtrlParseBuffer
 #
 tstGuestCtrlParseBuffer_TEMPLATE = VBOXMAINCLIENTEXE
+tstGuestCtrlParseBuffer_DEFS    += VBOX_WITH_HGCM VBOX_WITH_GUEST_CONTROL
 tstGuestCtrlParseBuffer_SOURCES  = \
 	tstGuestCtrlParseBuffer.cpp \
-	../src-client/GuestCtrlIO.cpp
+	../src-client/GuestCtrlPrivate.cpp
 tstGuestCtrlParseBuffer_INCS     = ../include
 ifeq ($(KBUILD_TARGET),win) ## @todo just add this to the template.
  tstGuestCtrlParseBuffer_DEPS    = $(VBOX_PATH_SDK)/bindings/mscom/include/VirtualBox.h
