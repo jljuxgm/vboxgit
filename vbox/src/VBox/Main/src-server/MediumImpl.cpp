@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 45518 2013-04-12 12:01:02Z vboxsync $ */
+/* $Id: MediumImpl.cpp 45597 2013-04-17 19:01:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6944,7 +6944,7 @@ HRESULT Medium::taskCreateDiffHandler(Medium::CreateDiffTask &task)
                 vrc = VDOpen(hdd,
                              pMedium->m->strFormat.c_str(),
                              pMedium->m->strLocationFull.c_str(),
-                             VD_OPEN_FLAGS_READONLY | m->uOpenFlagsDef,
+                             VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO | m->uOpenFlagsDef,
                              pMedium->m->vdImageIfaces);
                 if (RT_FAILURE(vrc))
                     throw setError(VBOX_E_FILE_ERROR,
