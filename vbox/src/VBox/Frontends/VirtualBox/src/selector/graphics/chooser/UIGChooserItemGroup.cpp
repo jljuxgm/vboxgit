@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43954 2012-11-26 07:47:25Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43955 2012-11-26 08:46:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -927,16 +927,6 @@ void UIGChooserItemGroup::sortItems()
     /* Update model: */
     model()->updateNavigation();
     model()->updateLayout();
-}
-
-void UIGChooserItemGroup::updateGeometry()
-{
-    /* Call to base-class: */
-    UIGChooserItem::updateGeometry();
-
-    /* Update parent's geometry: */
-    if (parentItem())
-        parentItem()->updateGeometry();
 }
 
 void UIGChooserItemGroup::updateLayout()

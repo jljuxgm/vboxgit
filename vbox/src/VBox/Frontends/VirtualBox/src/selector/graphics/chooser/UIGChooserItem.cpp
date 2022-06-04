@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 43955 2012-11-26 08:46:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -156,7 +156,12 @@ void UIGChooserItem::setHovered(bool fHovered)
 
 void UIGChooserItem::updateGeometry()
 {
+    /* Call to base-class: */
     QIGraphicsWidget::updateGeometry();
+
+    /* Update parent's geometry: */
+    if (parentItem())
+        parentItem()->updateGeometry();
 }
 
 void UIGChooserItem::makeSureItsVisible()
