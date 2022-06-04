@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46589 2013-06-17 13:56:23Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46590 2013-06-17 14:04:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2028,6 +2028,9 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
         PVMCPU pVCpu = &pVM->aCpus[i];
         AssertPtr(pVCpu);
         AssertPtr(pVCpu->hm.s.vmx.pvVmcs);
+
+        /* Log the VCPU pointers, useful for debugging SMP VMs. */
+        Log4(("VMXR0SetupVM: pVCpu=%p idCpu=%RU32\n", pVCpu, pVCpu->idCpu));
 
         /* Set revision dword at the beginning of the VMCS structure. */
         *(uint32_t *)pVCpu->hm.s.vmx.pvVmcs = MSR_IA32_VMX_BASIC_INFO_VMCS_ID(pVM->hm.s.vmx.msr.vmx_basic_info);
