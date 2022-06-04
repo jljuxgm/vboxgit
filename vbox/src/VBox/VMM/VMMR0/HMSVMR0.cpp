@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 46784 2013-06-25 16:27:59Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 46785 2013-06-25 16:28:50Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2688,8 +2688,6 @@ DECLINLINE(void) hmR0SvmPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, 
     pSvmTransient->u64ExitCode  = pVmcb->ctrl.u64ExitCode;      /* Save the #VMEXIT reason. */
     pSvmTransient->fVectoringPF = false;                        /* Vectoring page-fault needs to be determined later. */
     hmR0SvmSaveGuestState(pVCpu, pMixedCtx);                    /* Save the guest state from the VMCB to the guest-CPU context. */
-
-    Log4(("Vintr Intercept=%RTbool\n", !!(pVmcb->ctrl.u32InterceptCtrl1 & SVM_CTRL1_INTERCEPT_VINTR)));
 
     if (RT_LIKELY(pSvmTransient->u64ExitCode != (uint64_t)SVM_EXIT_INVALID))
     {
