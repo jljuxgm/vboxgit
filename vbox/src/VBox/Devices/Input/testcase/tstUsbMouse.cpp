@@ -1,4 +1,4 @@
-/* $Id: tstUsbMouse.cpp 47796 2013-08-16 10:31:34Z vboxsync $ */
+/* $Id: tstUsbMouse.cpp 47855 2013-08-19 18:48:51Z vboxsync $ */
 /** @file
  * tstUsbMouse.cpp - testcase USB mouse and tablet devices.
  */
@@ -214,7 +214,7 @@ static void testSendPositionAbs(RTTEST hTest)
     {
         if (s_drvTstMouse.pDrv)
             s_drvTstMouse.pDrv->pfnPutEventAbs(s_drvTstMouse.pDrv, 300, 200, 1,
-                                               0, 3);
+                                               3, 3);
         else
             rc = VERR_PDM_MISSING_INTERFACE;
     }
@@ -230,9 +230,11 @@ static void testSendPositionAbs(RTTEST hTest)
         {
             if (pUrb == &Urb)
             {
-                if (   *(uint16_t *)&Urb.abData[2] != 150  /* x >> 1 */
-                    || *(uint16_t *)&Urb.abData[4] != 100  /* y >> 1 */
-                    || Urb.abData[0] != 3                  /* Buttons */)
+                if (   Urb.abData[0] != 3                  /* Buttons */
+                    || (int8_t)Urb.abData[1] != -1         /* dz */
+                    || (int8_t)Urb.abData[2] != -3         /* dw */
+                    || *(uint16_t *)&Urb.abData[4] != 150  /* x >> 1 */
+                    || *(uint16_t *)&Urb.abData[6] != 100  /* y >> 1 */)
                     rc = VERR_GENERAL_FAILURE;
             }
             else
