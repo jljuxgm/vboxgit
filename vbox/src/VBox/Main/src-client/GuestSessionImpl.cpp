@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 47627 2013-08-09 08:31:24Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 47698 2013-08-13 14:50:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -655,7 +655,11 @@ int GuestSession::closeSession(uint32_t uFlags, uint32_t uTimeoutMS, int *pGuest
     /** @todo uFlags validation. */
 
     if (mData.mStatus != GuestSessionStatus_Started)
+    {
+        LogFlowThisFunc(("Session ID=%RU32 not started (anymore), status now is: %ld\n",
+                         mData.mSession.mID, mData.mStatus));
         return VINF_SUCCESS;
+    }
 
     int vrc;
 
