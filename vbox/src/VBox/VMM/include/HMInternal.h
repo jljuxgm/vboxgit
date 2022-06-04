@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45517 2013-04-12 11:23:56Z vboxsync $ */
+/* $Id: HMInternal.h 45531 2013-04-13 09:01:30Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -733,6 +733,7 @@ typedef struct HMCPU
         uint32_t                    cbInstr;
         uint32_t                    u32Padding; /**< Explicit alignment padding. */
         uint64_t                    u64IntrInfo;
+        RTGCUINTPTR                 GCPtrFaultAddress;
     } Event;
 
     /** IO Block emulation state. */

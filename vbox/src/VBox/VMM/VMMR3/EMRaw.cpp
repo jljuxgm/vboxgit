@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
+/* $Id: EMRaw.cpp 45531 2013-04-13 09:01:30Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -517,7 +517,7 @@ static int emR3RawGuestTrap(PVM pVM, PVMCPU pVCpu)
     TRPMEVENT       enmType;
     RTGCUINT        uErrorCode;
     RTGCUINTPTR     uCR2;
-    int rc = TRPMQueryTrapAll(pVCpu, &u8TrapNo, &enmType, &uErrorCode, &uCR2);
+    int rc = TRPMQueryTrapAll(pVCpu, &u8TrapNo, &enmType, &uErrorCode, &uCR2, NULL /* pu8InstrLen */);
     if (RT_FAILURE(rc))
     {
         AssertReleaseMsgFailed(("No trap! (rc=%Rrc)\n", rc));
@@ -753,7 +753,7 @@ static int emR3PatchTrap(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int gcret)
     }
     else
     {
-        rc = TRPMQueryTrapAll(pVCpu, &u8TrapNo, &enmType, &uErrorCode, &uCR2);
+        rc = TRPMQueryTrapAll(pVCpu, &u8TrapNo, &enmType, &uErrorCode, &uCR2, NULL /* pu8InstrLen */);
         if (RT_FAILURE(rc))
         {
             AssertReleaseMsgFailed(("emR3PatchTrap: no trap! (rc=%Rrc) gcret=%Rrc\n", rc, gcret));

@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 43872 2012-11-15 08:52:11Z vboxsync $ */
+/* $Id: TRPMInternal.h 45531 2013-04-13 09:01:30Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -233,6 +233,16 @@ typedef struct TRPMCPU
 
     /** Previous trap vector # - for debugging. */
     RTGCUINT                uPrevVector;
+
+    /** Instruction length for software interrupts and software exceptions (#BP,
+     *  #OF) */
+    uint8_t                 cbInstr;
+
+    /** Saved instruction length. */
+    uint8_t                 cbSavedInstr;
+
+    /** Padding. */
+    uint8_t                 au8Padding[2];
 } TRPMCPU;
 
 /** Pointer to TRPMCPU Data. */
