@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: DBGConsole.cpp 45006 2013-03-12 14:58:51Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -737,11 +737,11 @@ static int dbgcProcessEvent(PDBGC pDbgc, PCDBGFEVENT pEvent)
             break;
         }
 
-        case DBGFEVENT_TERMINATING:
+        case DBGFEVENT_POWERING_OFF:
         {
             pDbgc->fReady = false;
             pDbgc->pBack->pfnSetReady(pDbgc->pBack, false);
-            pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, "\nVM is terminating!\n");
+            pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, "\nVM is powering off!\n");
             fPrintPrompt = false;
             rc = VERR_GENERAL_FAILURE;
             break;
@@ -807,11 +807,14 @@ int dbgcRun(PDBGC pDbgc)
      * debug events. If we're forwarding the log we cannot wait for long
      * before we must flush the log.
      */
-    int rc = VINF_SUCCESS;
+    int rc;
     for (;;)
     {
-        if (    pDbgc->pUVM
-            &&  DBGFR3CanWait(pDbgc->pUVM))
+        rc = VERR_SEM_OUT_OF_TURN;
+        if (pDbgc->pUVM)
+            rc = DBGFR3QueryWaitable(pDbgc->pUVM);
+
+        if (RT_SUCCESS(rc))
         {
             /*
              * Wait for a debug event.
@@ -837,7 +840,7 @@ int dbgcRun(PDBGC pDbgc)
                     break;
             }
         }
-        else
+        else if (rc == VERR_SEM_OUT_OF_TURN)
         {
             /*
              * Wait for input. If Logging is enabled we'll only wait very briefly.
@@ -849,6 +852,8 @@ int dbgcRun(PDBGC pDbgc)
                     break;
             }
         }
+        else
+            break;
 
         /*
          * Forward log output.

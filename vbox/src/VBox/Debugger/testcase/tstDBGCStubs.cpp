@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 45006 2013-03-12 14:58:51Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -80,9 +80,9 @@ VMMR3DECL(int) DBGFR3BpSetREM(PUVM pUVM, PCDBGFADDRESS pAddress, uint64_t iHitTr
 {
     return VERR_INTERNAL_ERROR;
 }
-VMMR3DECL(bool) DBGFR3CanWait(PUVM pUVM)
+VMMR3DECL(int) DBGFR3QueryWaitable(PUVM pUVM)
 {
-    return true;
+    return VINF_SUCCESS;
 }
 VMMR3DECL(int) DBGFR3Detach(PUVM pUVM)
 {

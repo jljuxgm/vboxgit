@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 44730 2013-02-18 12:43:02Z vboxsync $ */
+/* $Id: VM.cpp 45006 2013-03-12 14:58:51Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2256,6 +2256,7 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3PowerOff(PVM pVM, PVMCPU pVCpu, void *pvUs
          * Off or OffLS.
          */
         PDMR3PowerOff(pVM);
+        DBGFR3PowerOff(pVM);
 
         PUVM pUVM = pVM->pUVM;
         RTCritSectEnter(&pUVM->vm.s.AtStateCritSect);
