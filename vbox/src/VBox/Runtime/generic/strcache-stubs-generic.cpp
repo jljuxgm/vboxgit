@@ -1,4 +1,4 @@
-/* $Id: strcache-stubs-generic.cpp 46208 2013-05-22 09:26:27Z vboxsync $ */
+/* $Id: strcache-stubs-generic.cpp 46211 2013-05-22 11:00:02Z vboxsync $ */
 /** @file
  * IPRT - String Cache, stub implementation.
  */
@@ -129,4 +129,13 @@ RTDECL(bool) RTStrCacheIsRealImpl(void)
     return false;
 }
 RT_EXPORT_SYMBOL(RTStrCacheIsRealImpl);
+
+
+RTDECL(uint32_t) RTStrCacheGetStats(RTSTRCACHE hStrCache, size_t *pcbStrings, size_t *pcbChunks, size_t *pcbBigEntries,
+                                    uint32_t *pcHashCollisions, uint32_t *pcHashCollisions2, uint32_t *pcHashInserts,
+                                    uint32_t *pcRehashes)
+{
+    return UINT32_MAX;
+}
+RT_EXPORT_SYMBOL(RTStrCacheGetStats);
 
