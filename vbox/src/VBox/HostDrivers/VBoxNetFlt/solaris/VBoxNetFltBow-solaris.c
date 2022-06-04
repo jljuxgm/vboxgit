@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 44203 2012-12-25 16:24:32Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 45143 2013-03-22 13:58:03Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -1513,7 +1513,7 @@ void vboxNetFltPortOsNotifyMacAddress(PVBOXNETFLTINS pThis, void *pvIfData, PCRT
                 /*
                  * Set the RX receive function.
                  * This shouldn't be necessary as vboxNetFltPortOsSetActive() will be invoked after this, but in the future,
-                 * if the guest NIC changes MAC address this may not be followed by a vboxNetFltPortOsSetActive() call, 
+                 * if the guest NIC changes MAC address this may not be followed by a vboxNetFltPortOsSetActive() call,
                  * so set it here anyway.
                  */
                 mac_rx_set(pVNIC->hClient, vboxNetFltSolarisRecv, pThis);
@@ -1653,9 +1653,10 @@ int vboxNetFltPortOsDisconnectInterface(PVBOXNETFLTINS pThis, void *pvIfData)
                      pVNIC ? pVNIC->u32Magic : 0, VBOXNETFLTVNIC_MAGIC), VERR_INVALID_POINTER);
 
     /*
-     * If the underlying interface is not a VNIC, we need to delete the created VNIC.
+     * If the underlying interface is a physical interface or a VNIC template, we need to delete the created VNIC.
      */
-    if (!pThis->u.s.fIsVNIC)
+    if (   !pThis->u.s.fIsVNIC
+        || pThis->u.s.fIsVNICTemplate)
     {
         /*
          * Remove the VNIC from the list, destroy and free it.
