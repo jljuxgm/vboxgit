@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 45434 2013-04-09 13:51:55Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 45697 2013-04-24 13:30:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1357,19 +1357,15 @@ int GuestSession::processRemoveFromList(GuestProcess *pProcess)
             LogFlowFunc(("Removing process ID=%RU32 (Session: %RU32), guest PID=%RU32 (now total %ld processes, %ld objects)\n",
                          pCurProc->getObjectID(), mData.mSession.mID, uPID, mData.mProcesses.size() - 1, mData.mNumObjects - 1));
 
-            LogFlowFunc(("1\n"));
             mData.mProcesses.erase(itProcs);
             mData.mNumObjects--;
 
-            LogFlowFunc(("2\n"));
             fireGuestProcessRegisteredEvent(mEventSource, this /* Session */, NULL /* Process */,
                                             uPID, false /* Process unregistered */);
-            LogFlowFunc(("3\n"));
             rc = VINF_SUCCESS;
             break;
         }
 
-        LogFlowFunc(("4\n"));
         itProcs++;
     }
 
