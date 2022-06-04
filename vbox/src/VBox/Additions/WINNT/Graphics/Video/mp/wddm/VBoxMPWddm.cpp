@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 46801 2013-06-26 13:01:07Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 46852 2013-06-27 16:56:53Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -6699,12 +6699,12 @@ DriverEntry(
         }
         else if (major == 6)
         {
-            if (minor > 2)
+            if (minor > 3)
             {
                 WARN(("Unknow win version, newer minor release, assuming 3D check is required"));
                 f3DRequired = TRUE;
             }
-            else if (minor == 2)
+            else if (minor >= 2)
             {
                 LOG(("3D check is required!"));
                 f3DRequired = TRUE;
