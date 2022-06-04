@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 46475 2013-06-10 16:08:43Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 46559 2013-06-14 13:25:48Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -427,8 +427,8 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
             "    push    rcx\n"
             "    push    rdx\n"
             " %%ifdef ASM_CALL64_GCC\n"
-            "    push    rdi\n"
             "    push    rsi\n"
+            "    push    rdi\n"
             " %%else\n"
             "    sub     rsp, 20h\n"
             " %%endif\n"
@@ -534,7 +534,7 @@ static RTEXITCODE generateOutput(void)
  */
 static int usage(const char *pszArgv0)
 {
-    printf("usage: %s --libary <loadname> --output <lazyload.asm> <input.def>\n",
+    printf("usage: %s --libary <loadname> --output <lazyload.asm> <input.def>\n"
            "\n"
            "Copyright (C) 2013 Oracle Corporation\n"
            , pszArgv0);
@@ -581,7 +581,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 46475 $\n");
+                printf("$Revision: 46559 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
