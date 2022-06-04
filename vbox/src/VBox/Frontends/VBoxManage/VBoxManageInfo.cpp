@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 47246 2013-07-19 09:43:01Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 47376 2013-07-24 15:13:52Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1769,9 +1769,14 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
             RTPrintf("ehci=\"%s\"\n", fEHCIEnabled ? "on" : "off");
         else
             RTPrintf("EHCI:            %s\n", fEHCIEnabled ? "enabled" : "disabled");
+    }
 
+    ComPtr<IUSBDeviceFilters> USBFlts;
+    rc = machine->COMGETTER(USBDeviceFilters)(USBFlts.asOutParam());
+    if (SUCCEEDED(rc))
+    {
         SafeIfaceArray <IUSBDeviceFilter> Coll;
-        rc = USBCtl->COMGETTER(DeviceFilters)(ComSafeArrayAsOutParam(Coll));
+        rc = USBFlts->COMGETTER(DeviceFilters)(ComSafeArrayAsOutParam(Coll));
         if (SUCCEEDED(rc))
         {
         if (details != VMINFO_MACHINEREADABLE)

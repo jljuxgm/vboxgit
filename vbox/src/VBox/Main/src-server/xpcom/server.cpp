@@ -1,4 +1,4 @@
-/* $Id: server.cpp 47018 2013-07-06 17:31:11Z vboxsync $ */
+/* $Id: server.cpp 47376 2013-07-24 15:13:52Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -84,6 +84,7 @@
 #include "StorageControllerImpl.h"
 #include "SystemPropertiesImpl.h"
 #include "USBControllerImpl.h"
+#include "USBDeviceFiltersImpl.h"
 #include "VFSExplorerImpl.h"
 #include "VirtualBoxImpl.h"
 #include "VRDEServerImpl.h"
@@ -172,6 +173,9 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ParallelPort, IParallelPort)
 
 NS_DECL_CLASSINFO(USBController)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(USBController, IUSBController)
+
+NS_DECL_CLASSINFO(USBDeviceFilters)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(USBDeviceFilters, IUSBDeviceFilters)
 
 NS_DECL_CLASSINFO(StorageController)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(StorageController, IStorageController)
