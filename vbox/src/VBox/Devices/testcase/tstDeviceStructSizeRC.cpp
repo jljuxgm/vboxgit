@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 44804 2013-02-22 19:46:32Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 44806 2013-02-22 20:47:57Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -391,7 +391,6 @@ int main()
     GEN_CHECK_OFF(KBDState, pDevInsR3);
     GEN_CHECK_OFF(KBDState, pDevInsR0);
     GEN_CHECK_OFF(KBDState, pDevInsRC);
-    GEN_CHECK_OFF(KBDState, CritSect);
     GEN_CHECK_SIZE(KbdKeyQ);
     GEN_CHECK_OFF(KbdCmdQ, rpos);
     GEN_CHECK_OFF(KbdCmdQ, wpos);
@@ -413,6 +412,7 @@ int main()
     GEN_CHECK_OFF(PS2K, pKbdTypematicTimerRC);
     GEN_CHECK_OFF(PS2K, pKbdTypematicTimerR3);
     GEN_CHECK_OFF(PS2K, pKbdTypematicTimerR0);
+    GEN_CHECK_OFF(PS2K, pCritSectR3);
     GEN_CHECK_OFF(PS2K, Keyboard.IBase);
     GEN_CHECK_OFF(PS2K, Keyboard.IPort);
     GEN_CHECK_OFF(PS2K, Keyboard.pDrvBase);
