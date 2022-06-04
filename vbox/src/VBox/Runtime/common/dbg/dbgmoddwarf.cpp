@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 45936 2013-05-07 13:35:58Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -1811,7 +1811,7 @@ static int rtDwarfLine_RunProgram(PRTDWARFLINESTATE pLnState, PRTDWARFCURSOR pCu
             int32_t const cLineDelta = bOpCode % pLnState->Hdr.u8LineRange + (int32_t)pLnState->Hdr.s8LineBase;
             bOpCode /= pLnState->Hdr.u8LineRange;
 
-            uint64_t uTmp = bOpCode + pLnState->Regs.idxOp + bOpCode;
+            uint64_t uTmp = bOpCode + pLnState->Regs.idxOp;
             uint64_t const cAddressDelta = uTmp / pLnState->Hdr.cMaxOpsPerInstr * pLnState->Hdr.cbMinInstr;
             uint64_t const cOpIndexDelta = uTmp % pLnState->Hdr.cMaxOpsPerInstr;
 
