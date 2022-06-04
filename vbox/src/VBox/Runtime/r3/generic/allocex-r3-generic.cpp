@@ -1,4 +1,4 @@
-/* $Id: allocex-r3-generic.cpp 46740 2013-06-23 16:43:50Z vboxsync $ */
+/* $Id: allocex-r3-generic.cpp 46743 2013-06-23 17:00:49Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc Workers, generic.
  */
@@ -32,6 +32,7 @@
 #include <iprt/mem.h>
 #include "internal/iprt.h"
 
+#include <iprt/assert.h>
 #include <iprt/err.h>
 #include "../allocex.h"
 
