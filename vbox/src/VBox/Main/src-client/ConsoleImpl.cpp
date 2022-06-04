@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 47174 2013-07-16 03:27:24Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 47190 2013-07-16 13:44:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4419,6 +4419,15 @@ HRESULT Console::onNATRedirectRuleChange(ULONG ulInstance, BOOL aNatRuleRemove,
     return rc;
 }
 
+VMMDevMouseInterface *Console::getVMMDevMouseInterface()
+{
+    return m_pVMMDev;
+}
+
+DisplayMouseInterface *Console::getDisplayMouseInterface()
+{
+    return mDisplay;
+}
 
 /**
  * Process a network adaptor change.

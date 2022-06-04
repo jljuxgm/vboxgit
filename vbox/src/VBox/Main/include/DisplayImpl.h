@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 46523 2013-06-13 12:02:48Z vboxsync $ */
+/* $Id: DisplayImpl.h 47190 2013-07-16 13:44:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -103,10 +103,20 @@ typedef struct _DISPLAYFBINFO
 #endif /* VBOX_WITH_HGSMI */
 } DISPLAYFBINFO;
 
+class DisplayMouseInterface
+{
+public:
+    virtual int getScreenResolution(uint32_t cScreen, uint32_t *pcx,
+                                    uint32_t *pcy, uint32_t *pcBPP) = 0;
+    virtual void getFramebufferDimensions(int32_t *px1, int32_t *py1,
+                                          int32_t *px2, int32_t *py2) = 0;
+};
+
 class ATL_NO_VTABLE Display :
     public VirtualBoxBase,
     VBOX_SCRIPTABLE_IMPL(IEventListener),
-    VBOX_SCRIPTABLE_IMPL(IDisplay)
+    VBOX_SCRIPTABLE_IMPL(IDisplay),
+    public DisplayMouseInterface
 {
 public:
 
@@ -150,6 +160,11 @@ public:
         return maFramebuffers[VBOX_VIDEO_PRIMARY_SCREEN].pFramebuffer;
     }
     void getFramebufferDimensions(int32_t *px1, int32_t *py1, int32_t *px2, int32_t *py2);
+    int getScreenResolution(uint32_t cScreen, uint32_t *pcx, uint32_t *pcy,
+                            uint32_t *pcBPP)
+    {
+        return GetScreenResolution(cScreen, pcx, pcy, pcBPP);
+    }
 
     int  handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect);
     int  handleQueryVisibleRegion(uint32_t *pcRect, PRTRECT pRect);
