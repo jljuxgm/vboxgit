@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45690 2013-04-24 09:34:24Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 46015 2013-05-13 12:23:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2415,7 +2415,19 @@ QString UIMessageCenter::formatRC(HRESULT rc)
 /* static */
 QString UIMessageCenter::formatErrorInfo(const CProgress &progress)
 {
-    return !progress.isOk() ? formatErrorInfo(static_cast<COMBaseWithEI>(progress)) : formatErrorInfo(progress.GetErrorInfo());
+    /* Check for API errors first: */
+    if (!progress.isOk())
+        return formatErrorInfo(static_cast<COMBaseWithEI>(progress));
+
+    /* For progress errors otherwise: */
+    CVirtualBoxErrorInfo errorInfo = progress.GetErrorInfo();
+    /* Handle valid error-info first: */
+    if (!errorInfo.isNull())
+        return formatErrorInfo(errorInfo);
+    /* Handle NULL error-info otherwise: */
+    return tr("Progress result-code: %1")
+             .arg(QString::number(progress.GetResultCode(), 16 /* hex */))
+             .prepend("<!--EOM-->") /* move to details instead of mesasage body */;
 }
 
 /* static */
