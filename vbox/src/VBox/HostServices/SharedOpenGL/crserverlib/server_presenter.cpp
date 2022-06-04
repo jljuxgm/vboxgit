@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 46060 2013-05-14 12:22:03Z vboxsync $ */
+/* $Id: server_presenter.cpp 46061 2013-05-14 12:24:46Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -316,7 +316,6 @@ void CrHlpPutTexImage(CRContext *pCurCtx, PVBOXVR_TEXTURE pTexture, GLenum enmFo
         crStateGetTextureObjectAndImage(pCurCtx, pTexture->target, 0, &pTObj, &pTImg);
 
         GLuint uid = pTObj->hwid;
-        CRASSERT(uid);
         cr_server.head_spu->dispatch_table.BindTexture(pTexture->target, uid);
     }
     else
