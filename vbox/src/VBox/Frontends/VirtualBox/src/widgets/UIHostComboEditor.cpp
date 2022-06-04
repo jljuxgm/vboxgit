@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 45867 2013-05-01 21:07:12Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 45869 2013-05-02 08:51:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -398,6 +398,7 @@ void UIHostComboEditor::sltClear()
 static bool isSyntheticLCtrl(MSG *pMsg)
 {
     MSG peekMsg;
+    /** Keyboard state array with VK_CONTROL and VK_MENU depressed. */
     const BYTE auKeyStates[256] =
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0x80 };
     WORD ach;
@@ -406,15 +407,29 @@ static bool isSyntheticLCtrl(MSG *pMsg)
     if ((pMsg->lParam & 0x01FF0000) >> 16 != 0x1d /* LCtrl */)
         return false;
     LogRel(("Got an LCtrl event.\n"));
-    for (i = '0'; i <= '9'; ++i)
+    for (i = '0'; i <= VK_OEM_102; ++i)
+    {
         if (ToAscii(i, 0, auKeyStates, &ach, 0))
             break;
-    if (i > '9')
+        /* Skip ranges of virtual keys which are undefined or not relevant. */
+        if (i == '9')
+            i = 'A' - 1;
+        if (i == 'Z')
+            i = 'VK_OEM_1' - 1;
+        if (i == 'VK_OEM_3')
+            i = 'VK_OEM_4' - 1;
+        if (i == 'VK_OEM_8')
+            i = 'VK_OEM_102' - 1;
+    }
+    if (i > VK_OEM_102)
         return false;
-    LogRel(("One of the number keys has an AltGr state.\n"));
+    LogRel(("Virtual key %d has an AltGr state.\n", i));
     if (!PeekMessage(&peekMsg, NULL, WM_KEYFIRST, WM_KEYLAST, PM_NOREMOVE))
         return false;
-    LogRel(("Followed by another keyboard event.\n"));
+    LogRel(("Another keyboard event follows.\n"));
+    if (pMsg->time != peekMsg.time)
+       return false;
+    LogRel(("Both events have the same time stamp.\n"))
     if (   (pMsg->message == WM_KEYDOWN || pMsg->message == WM_SYSKEYDOWN)
         && (peekMsg.message != WM_KEYDOWN && peekMsg.message != WM_SYSKEYDOWN))
         return false;
