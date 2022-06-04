@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
+/* $Id: UIDefs.cpp 46647 2013-06-19 11:01:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -86,10 +86,6 @@ const char* UIDefs::GUI_Export_Bucket = "GUI/Export/Bucket";
 /* Message-center definitions: */
 const char* UIDefs::GUI_SuppressMessages = "GUI/SuppressMessages";
 const char* UIDefs::GUI_InvertMessageOption = "GUI/InvertMessageOption";
-
-/* Registration dialog definitions: */
-const char* UIDefs::GUI_RegistrationDlgWinID = "GUI/RegistrationDlgWinID";
-const char* UIDefs::GUI_RegistrationData = "GUI/SUNOnlineData";
 
 /* Update manager definitions: */
 const char* UIDefs::GUI_UpdateDate = "GUI/UpdateDate";
