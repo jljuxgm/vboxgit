@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 43659 2012-10-16 16:25:26Z vboxsync $ */
+/* $Id: VBoxSCSI.h 43661 2012-10-16 17:22:59Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -58,7 +58,7 @@
  *
  * Any write to the register at offset 3 causes the interface to be reset. A read returns
  * the SCSI status code of the last operation.
- * 
+ *
  * This part has no R0 or GC components.
  */
 
@@ -115,7 +115,10 @@ typedef struct VBOXSCSI
     /** Current position in the buffer. */
     uint32_t             iBuf;
     /** The result code of last operation. */
-    int                  rcCompletion;
+    int32_t              rcCompletion;
+#if HC_ARCH_BITS == 64
+    uint32_t             Alignment1;
+#endif
     /** Flag whether a request is pending. */
     volatile bool        fBusy;
     /** The state we are in when fetching a command from the BIOS. */
