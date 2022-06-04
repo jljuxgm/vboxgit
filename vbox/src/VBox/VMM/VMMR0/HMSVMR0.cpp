@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47660 2013-08-12 00:37:34Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47670 2013-08-12 11:12:40Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4574,7 +4574,8 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptDB(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
 
     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitGuestDB);
 
-    /* If we sat the trap flag above, we have to clear it. */ /** @todo HM should remember what it does and possibly do this elsewhere! */
+    /* If we set the trap flag above, we have to clear it. */
+    /** @todo HM should remember what it does and possibly do this elsewhere! */
     if (pVCpu->hm.s.fSingleInstruction || DBGFIsStepping(pVCpu))
         pCtx->eflags.Bits.u1TF = 0;
 
