@@ -1,4 +1,4 @@
-; $Id: floorf.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: floorf.asm 46548 2013-06-14 09:42:21Z vboxsync $
 ;; @file
 ; IPRT - No-CRT floorf - AMD64 & X86.
 ;
@@ -41,7 +41,7 @@ BEGINPROC RT_NOCRT(floorf)
     movss   [xSP], xmm0
     fld     dword [xSP]
 %else
-    fld     dword [xBP + xS*2]
+    fld     dword [xBP + xCB*2]
 %endif
 
     ; Make it round down by modifying the fpu control word.

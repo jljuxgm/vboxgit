@@ -1,4 +1,4 @@
-; $Id: cosl.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: cosl.asm 46548 2013-06-14 09:42:21Z vboxsync $
 ;; @file
 ; IPRT - No-CRT cosl - AMD64 & X86.
 ;
@@ -31,13 +31,13 @@ BEGINCODE
 ;;
 ; compute the cosine of ldr, measured in radians.
 ; @returns st(0)
-; @param    lrd     [rbp + xS*2]
+; @param    lrd     [rbp + xCB*2]
 BEGINPROC RT_NOCRT(cosl)
     push    xBP
     mov     xBP, xSP
     sub     xSP, 10h
 
-    fld     tword [xBP + xS*2]
+    fld     tword [xBP + xCB*2]
     fcos
     fnstsw  ax
     test    ah, 4

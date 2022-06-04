@@ -1,4 +1,4 @@
-; $Id: fabs.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: fabs.asm 46548 2013-06-14 09:42:21Z vboxsync $
 ;; @file
 ; IPRT - No-CRT fabs - AMD64 & X86.
 ;
@@ -48,7 +48,7 @@ BEGINPROC RT_NOCRT(fabs)
     movsd   xmm0, [xSP]
 
 %else
-    fld     qword [xBP + xS*2]
+    fld     qword [xBP + xCB*2]
     fabs
 %endif
 

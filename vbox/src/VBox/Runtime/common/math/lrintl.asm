@@ -1,4 +1,4 @@
-; $Id: lrintl.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: lrintl.asm 46548 2013-06-14 09:42:21Z vboxsync $
 ;; @file
 ; IPRT - No-CRT lrintl - AMD64 & X86.
 ;
@@ -31,13 +31,13 @@ BEGINCODE
 ;;
 ; Round rd to the nearest integer value, rounding according to the current rounding direction.
 ; @returns 32-bit: eax  64-bit: rax
-; @param    lrd     [rbp + xS*2]
+; @param    lrd     [rbp + xCB*2]
 BEGINPROC RT_NOCRT(lrintl)
     push    xBP
     mov     xBP, xSP
     sub     xSP, 10h
 
-    fld     tword [xBP + xS*2]
+    fld     tword [xBP + xCB*2]
 %ifdef RT_ARCH_AMD64
     fistp   qword [xSP]
     fwait

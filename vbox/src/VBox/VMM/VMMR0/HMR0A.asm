@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 46312 2013-05-29 14:08:18Z vboxsync $
+; $Id: HMR0A.asm 46548 2013-06-14 09:42:21Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -1583,7 +1583,7 @@ ENDPROC   SVMR0VMRun64
  %define RT_ARCH_AMD64
  %undef  ASM_CALL64_MSC
  %define ASM_CALL64_GCC
- %define xS             8
+ %define xCB             8
  %define xSP            rsp
  %define xBP            rbp
  %define xAX            rax

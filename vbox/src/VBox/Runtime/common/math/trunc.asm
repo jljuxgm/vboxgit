@@ -1,4 +1,4 @@
-; $Id: trunc.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: trunc.asm 46548 2013-06-14 09:42:21Z vboxsync $
 ;; @file
 ; IPRT - No-CRT trunc - AMD64 & X86.
 ;
@@ -42,7 +42,7 @@ BEGINPROC RT_NOCRT(trunc)
     movsd   [xSP], xmm0
     fld     qword [xSP]
 %else
-    fld     qword [xBP + xS*2]
+    fld     qword [xBP + xCB*2]
 %endif
 
     ; Make it truncate up by modifying the fpu control word.

@@ -1,4 +1,4 @@
-; $Id: sinl.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: sinl.asm 46548 2013-06-14 09:42:21Z vboxsync $
 ;; @file
 ; IPRT - No-CRT sinl - AMD64 & X86.
 ;
@@ -31,13 +31,13 @@ BEGINCODE
 ;;
 ; Compute the sine of lrd
 ; @returns st(0)
-; @param    lrd     [xSP + xS*2]
+; @param    lrd     [xSP + xCB*2]
 BEGINPROC RT_NOCRT(sinl)
     push    xBP
     mov     xBP, xSP
     sub     xSP, 10h
 
-    fld     tword [xBP + xS*2]
+    fld     tword [xBP + xCB*2]
     fsin
     fnstsw  ax
     test    ah, 04h
