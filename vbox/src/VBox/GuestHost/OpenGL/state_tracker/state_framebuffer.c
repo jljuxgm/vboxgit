@@ -1,4 +1,4 @@
-/* $Id: state_framebuffer.c 44108 2012-12-12 14:21:32Z vboxsync $ */
+/* $Id: state_framebuffer.c 44125 2012-12-13 18:02:35Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object state tracking
@@ -43,6 +43,18 @@ void STATE_APIENTRY crStateGenRenderbuffersEXT(GLsizei n, GLuint *buffers)
 {
     CRContext *g = GetCurrentContext();
     crStateGenNames(g, g->shared->rbTable, n, buffers);
+}
+
+void crStateRegFramebuffers(GLsizei n, GLuint *buffers)
+{
+    CRContext *g = GetCurrentContext();
+    crStateRegNames(g, g->shared->fbTable, n, buffers);
+}
+
+void crStateRegRenderbuffers(GLsizei n, GLuint *buffers)
+{
+    CRContext *g = GetCurrentContext();
+    crStateRegNames(g, g->shared->rbTable, n, buffers);
 }
 
 static void crStateInitFrameBuffer(CRFramebufferObject *fbo);

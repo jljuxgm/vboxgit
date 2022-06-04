@@ -1,4 +1,4 @@
-/* $Id: packspu_framebuffer.c 42499 2012-08-01 10:26:43Z vboxsync $ */
+/* $Id: packspu_framebuffer.c 44125 2012-12-13 18:02:35Z vboxsync $ */
 
 /** @file
  * VBox OpenGL FBO related functions
@@ -96,4 +96,48 @@ packspu_CheckFramebufferStatusEXT(GLenum target)
 
     crStateSetFramebufferStatus(target, status);
     return status;
+}
+
+void PACKSPU_APIENTRY packspu_GenFramebuffersEXT( GLsizei n, GLuint * framebuffers )
+{
+    GET_THREAD(thread);
+    int writeback = 1;
+    if (!CRPACKSPU_IS_WDDM_CRHGSMI() && !(pack_spu.thread[pack_spu.idxThreadInUse].netServer.conn->actual_network))
+    {
+        crError( "packspu_GenFramebuffersEXT doesn't work when there's no actual network involved!\nTry using the simplequery SPU in your chain!" );
+    }
+    if (pack_spu.swap)
+    {
+        crPackGenFramebuffersEXTSWAP( n, framebuffers, &writeback );
+    }
+    else
+    {
+        crPackGenFramebuffersEXT( n, framebuffers, &writeback );
+    }
+    packspuFlush( (void *) thread );
+    CRPACKSPU_WRITEBACK_WAIT(thread, writeback);
+
+    crStateRegFramebuffers(n, framebuffers);
+}
+
+void PACKSPU_APIENTRY packspu_GenRenderbuffersEXT( GLsizei n, GLuint * renderbuffers )
+{
+    GET_THREAD(thread);
+    int writeback = 1;
+    if (!CRPACKSPU_IS_WDDM_CRHGSMI() && !(pack_spu.thread[pack_spu.idxThreadInUse].netServer.conn->actual_network))
+    {
+        crError( "packspu_GenRenderbuffersEXT doesn't work when there's no actual network involved!\nTry using the simplequery SPU in your chain!" );
+    }
+    if (pack_spu.swap)
+    {
+        crPackGenRenderbuffersEXTSWAP( n, renderbuffers, &writeback );
+    }
+    else
+    {
+        crPackGenRenderbuffersEXT( n, renderbuffers, &writeback );
+    }
+    packspuFlush( (void *) thread );
+    CRPACKSPU_WRITEBACK_WAIT(thread, writeback);
+
+    crStateRegRenderbuffers(n, renderbuffers);
 }
