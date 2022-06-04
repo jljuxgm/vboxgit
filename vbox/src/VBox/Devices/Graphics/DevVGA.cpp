@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 42416 2012-07-26 16:00:23Z vboxsync $ */
+/* $Id: DevVGA.cpp 43526 2012-10-03 12:20:28Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4416,7 +4416,7 @@ static DECLCALLBACK(void) vgaInfoAR(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, cons
     pHlp->pfnPrintf(pHlp, " Palette:");
     for (i = 0; i < 0x10; ++i)
     {
-        pHlp->pfnPrintf(pHlp, " %02X", i, s->ar[i]);
+        pHlp->pfnPrintf(pHlp, " %02X", s->ar[i]);
     }
     pHlp->pfnPrintf(pHlp, "\n");
     for (i = 0x10; i <= 0x14; ++i)
