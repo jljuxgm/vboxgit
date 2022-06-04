@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.cpp 44758 2013-02-20 11:45:18Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 44759 2013-02-20 11:54:38Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
@@ -65,10 +65,11 @@ static DECLCALLBACK(int) drvEmWebcamControl(PPDMIWEBCAMDOWN pInterface,
 
 
 EmWebcam::EmWebcam(Console *console)
-    : mpDrv(NULL),
-      mParent(console),
-      mpRemote(NULL),
-      mu64DeviceIdSrc(0)
+    :
+    mParent(console),
+    mpDrv(NULL),
+    mpRemote(NULL),
+    mu64DeviceIdSrc(0)
 {
 }
 
