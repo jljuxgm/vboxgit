@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 43207 2012-09-05 15:32:05Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 45596 2013-04-17 18:59:52Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -672,7 +672,7 @@ static int CmdSetHDUUID(int argc, char **argv, ComPtr<IVirtualBox> aVirtualBox, 
     }
 
     /* Open the image */
-    rc = VDOpen(pDisk, pszFormat, argv[1], VD_OPEN_FLAGS_NORMAL, NULL);
+    rc = VDOpen(pDisk, pszFormat, argv[1], VD_OPEN_FLAGS_NORMAL | VD_OPEN_FLAGS_INFO, NULL);
     if (RT_FAILURE(rc))
     {
         RTMsgError("Cannot open the image: %Rrc", rc);
