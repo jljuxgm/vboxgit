@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42154 2012-07-13 23:00:53Z vboxsync $
+# $Id: Makefile.kmk 42310 2012-07-22 14:39:13Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -131,7 +131,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  # VBoxDD (shared object)
  #
  VBoxDD_TEMPLATE         = VBoxR3DllWarnNoPic
- VBoxDD_SDKS.win         = ReorderCompilerIncs $(VBOX_WINPSDK) DXSDK $(VBOX_WINDDK) VBOX_NTDLL
+ VBoxDD_SDKS.win         = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK) VBOX_NTDLL
  Storage/DrvHostDVD.cpp_SDKS.win = ReorderCompilerIncs $(VBOX_WINDDK)
  VBoxDD_INCS             = \
  	build \
@@ -688,7 +688,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   VBoxDD_LIBS           += \
  	$(LIB_DDU) \
  	$(PATH_STAGE_LIB)/VBoxDD2.lib \
- 	$(PATH_SDK_DXSDK_LIB)/dxguid.lib
+ 	$(PATH_SDK_$(VBOX_WINDDK)_LIB)/dxguid.lib
  else
   VBoxDD_LIBS           += \
  	$(VBoxDDU_1_STAGE_TARGET) \
