@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 46199 2013-05-21 19:49:19Z vboxsync $ */
+/* $Id: dbgmod.cpp 46266 2013-05-25 19:51:19Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -279,6 +279,10 @@ static DECLCALLBACK(int) rtDbgModInitOnce(void *pvUser)
         rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgNm);
         if (RT_SUCCESS(rc))
             rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgDwarf);
+#if 0 /* NOTE!! EXPERIMENTAL, SHOULDN'T BE ENABLED IN SVN YET!! */
+        if (RT_SUCCESS(rc))
+            rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgCodeView);
+#endif
 #ifdef RT_OS_WINDOWS
         if (RT_SUCCESS(rc))
             rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgDbgHelp);

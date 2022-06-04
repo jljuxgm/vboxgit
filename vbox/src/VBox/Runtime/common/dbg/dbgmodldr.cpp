@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 46266 2013-05-25 19:51:19Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -73,6 +73,14 @@ static DECLCALLBACK(RTLDRFMT) rtDbgModLdr_GetFormat(PRTDBGMODINT pMod)
 {
     PRTDBGMODLDR pThis = (PRTDBGMODLDR)pMod->pvImgPriv;
     return RTLdrGetFormat(pThis->hLdrMod);
+}
+
+
+/** @interface_method_impl{RTDBGMODVTIMG,pfnReadAt} */
+static DECLCALLBACK(int) rtDbgModLdr_ReadAt(PRTDBGMODINT pMod, uint32_t iDbgInfoHint, RTFOFF off, void *pvBuf, size_t cb)
+{
+    PRTDBGMODLDR pThis = (PRTDBGMODLDR)pMod->pvImgPriv;
+    return rtLdrReadAt(pThis->hLdrMod, pvBuf, UINT32_MAX /** @todo iDbgInfo*/, off, cb);
 }
 
 
@@ -204,6 +212,7 @@ DECL_HIDDEN_CONST(RTDBGMODVTIMG) const g_rtDbgModVtImgLdr =
     /*.pfnRvaToSegOffset= */            rtDbgModLdr_RvaToSegOffset,
     /*.pfnMapPart = */                  rtDbgModLdr_MapPart,
     /*.pfnUnmapPart = */                rtDbgModLdr_UnmapPart,
+    /*.pfnReadAt = */                   rtDbgModLdr_ReadAt,
     /*.pfnGetFormat = */                rtDbgModLdr_GetFormat,
     /*.pfnGetArch = */                  rtDbgModLdr_GetArch,
 
