@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 47724 2013-08-14 13:12:05Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 47728 2013-08-14 14:03:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -910,6 +910,10 @@ bool UIMouseHandler::multiTouchEvent(QTouchEvent *pTouchEvent, ulong uScreenId)
 
     QVector<LONG64> contacts(pTouchEvent->touchPoints().size());
 
+    CFramebuffer framebuffer;
+    LONG xShift = 0, yShift = 0;
+    session().GetConsole().GetDisplay().GetFramebuffer(uScreenId, framebuffer, xShift, yShift);
+
     /* Pass all multi-touch events into guest: */
     int iTouchPointIndex = 0;
     foreach (const QTouchEvent::TouchPoint &touchPoint, pTouchEvent->touchPoints())
@@ -934,8 +938,8 @@ bool UIMouseHandler::multiTouchEvent(QTouchEvent *pTouchEvent, ulong uScreenId)
         LogRelFlow(("UIMouseHandler::multiTouchEvent: Origin: %dx%d, Id: %d, State: %d\n",
                     currentTouchPoint.x(), currentTouchPoint.y(), touchPoint.id(), iTouchPointState));
 
-        contacts[iTouchPointIndex] = RT_MAKE_U64_FROM_U16((uint16_t)currentTouchPoint.x() + 1,
-                                                          (uint16_t)currentTouchPoint.y() + 1,
+        contacts[iTouchPointIndex] = RT_MAKE_U64_FROM_U16((uint16_t)currentTouchPoint.x() + 1 + xShift,
+                                                          (uint16_t)currentTouchPoint.y() + 1 + yShift,
                                                           RT_MAKE_U16(touchPoint.id(), iTouchPointState),
                                                           0);
 
