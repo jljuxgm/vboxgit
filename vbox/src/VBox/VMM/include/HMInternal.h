@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 44036 2012-12-05 08:45:57Z vboxsync $ */
+/* $Id: HMInternal.h 44089 2012-12-11 12:14:58Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -610,9 +610,9 @@ typedef struct HMCPU
         struct
         {
             uint64_t                u64VMCSPhys;
-            uint32_t                ulVMCSRevision;
-            uint32_t                ulInstrError;
-            uint32_t                ulExitReason;
+            uint32_t                u32VMCSRevision;
+            uint32_t                u32InstrError;
+            uint32_t                u32ExitReason;
             RTCPUID                 idEnteredCpu;
             RTCPUID                 idCurrentCpu;
             uint32_t                padding;
