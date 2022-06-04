@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku-stubs.c 43366 2012-09-20 12:31:54Z vboxsync $ */
+/* $Id: VBoxGuest-haiku-stubs.c 43411 2012-09-22 18:42:16Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, stubs.
  */
@@ -445,3 +445,4 @@ void RTHeapSimpleFree(RTHEAPSIMPLE Heap, void *pv)
 {
     g_VBoxGuest->_RTHeapSimpleFree(Heap, pv);
 }
+
