@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 43960 2012-11-26 12:01:53Z vboxsync $ */
+/* $Id: UsbKbd.cpp 44022 2012-12-03 17:51:50Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -1040,7 +1040,7 @@ static int usbHidHandleIntrDevToHost(PUSBHID pThis, PUSBHIDEP pEp, PVUSBURB pUrb
 
         case USBHIDREQSTATE_READY:
             usbHidQueueAddTail(&pThis->ToHostQueue, pUrb);
-            /* If device was not set idle, sent the current report right away. */
+            /* If device was not set idle, send the current report right away. */
             if (pThis->bIdle != 0 || pThis->fHasPendingChanges)
                 usbHidSendReport(pThis);
             LogFlow(("usbHidHandleIntrDevToHost: Sent report via %p:%s\n", pUrb, pUrb->pszDesc));
