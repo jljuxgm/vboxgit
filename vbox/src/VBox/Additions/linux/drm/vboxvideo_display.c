@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_display.c 44529 2013-02-04 15:54:15Z vboxsync $
+/** @file $Id: vboxvideo_display.c 47341 2013-07-23 12:54:56Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -79,6 +79,9 @@ int vboxvideo_modeset_init(struct vboxvideo_device *gdev)
         VBOXVIDEO_ERROR("vboxvideo_vga_init failed\n");
         return -1;
     }
+
+    drm_mode_connector_attach_encoder(connector, encoder);
+
     return 0;
 }
 

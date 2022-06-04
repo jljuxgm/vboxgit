@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_vga.c 44529 2013-02-04 15:54:15Z vboxsync $
+/** @file $Id: vboxvideo_vga.c 47341 2013-07-23 12:54:56Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver, VGA functions
  */
@@ -81,7 +81,11 @@ struct drm_encoder *vboxvideo_connector_best_encoder(struct drm_connector
 }
 
 static enum drm_connector_status vboxvideo_vga_detect(struct drm_connector
-                                                            *connector)
+                                                            *connector
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 36)
+                                                      , bool force
+#endif
+                                                      )
 {
     return connector_status_connected;
 }
