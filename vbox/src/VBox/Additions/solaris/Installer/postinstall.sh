@@ -1,8 +1,11 @@
 #!/bin/sh
+# $Id: postinstall.sh 47318 2013-07-22 16:41:22Z vboxsync $
+## @file
+# VirtualBox postinstall script for Solaris Guest Additions.
 #
-# VirtualBox postinstall script for Solaris.
+
 #
-# Copyright (C) 2008-2012 Oracle Corporation
+# Copyright (C) 2008-2013 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
