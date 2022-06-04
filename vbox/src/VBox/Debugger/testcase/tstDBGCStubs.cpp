@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 45006 2013-03-12 14:58:51Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 46074 2013-05-14 16:25:57Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -132,6 +132,10 @@ VMMR3DECL(int) DBGFR3LogModifyGroups(PUVM pUVM, const char *pszGroupSettings)
 VMMR3DECL(int) DBGFR3ModuleLoad(PUVM pUVM, const char *pszFilename, RTGCUINTPTR AddressDelta, const char *pszName, RTGCUINTPTR ModuleAddress, unsigned cbImage)
 {
     return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(RTDBGCFG) DBGFR3AsGetConfig(PUVM pUVM)
+{
+    return NIL_RTDBGCFG;
 }
 VMMR3DECL(int) DBGFR3AsLoadImage(PUVM pUVM, RTDBGAS hAS, const char *pszFilename, const char *pszModName, PCDBGFADDRESS pModAddress, RTDBGSEGIDX iModSeg, uint32_t fFlags)
 {
