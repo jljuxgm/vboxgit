@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 46724 2013-06-21 12:48:38Z vboxsync $ */
+/* $Id: HM.cpp 46753 2013-06-24 12:28:12Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1436,7 +1436,7 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
 
     if (pVM->hm.s.fNestedPaging)
     {
-        LogRel(("HM:    Enabled nested paging!\n"));
+        LogRel(("HM:    Nested paging enabled!\n"));
 
         /*
          * Enable large pages (2 MB) if applicable.
