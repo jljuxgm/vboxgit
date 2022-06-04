@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42530 2012-08-02 12:11:44Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42546 2012-08-02 14:45:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -130,6 +130,7 @@ public:
     int                     fileQuerySizeInternal(const Utf8Str &strPath, int64_t *pllSize);
     const GuestCredentials &getCredentials(void);
     const GuestEnvironment &getEnvironment(void);
+    Utf8Str                 getName(void);
     uint32_t                getProtocolVersion(void) { return mData.mProtocolVersion; }
     int                     processClose(ComObjPtr<GuestProcess> pProcess);
     int                     processCreateExInteral(GuestProcessInfo &procInfo, ComObjPtr<GuestProcess> &pProgress);

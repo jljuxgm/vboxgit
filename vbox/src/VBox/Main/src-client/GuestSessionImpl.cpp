@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42531 2012-08-02 12:18:31Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42546 2012-08-02 14:45:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -593,6 +593,11 @@ const GuestCredentials& GuestSession::getCredentials(void)
 const GuestEnvironment& GuestSession::getEnvironment(void)
 {
     return mData.mEnvironment;
+}
+
+Utf8Str GuestSession::getName(void)
+{
+    return mData.mName;
 }
 
 int GuestSession::processClose(ComObjPtr<GuestProcess> pProcess)
