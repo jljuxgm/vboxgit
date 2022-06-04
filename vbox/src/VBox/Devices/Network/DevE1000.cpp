@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 42934 2012-08-23 09:57:31Z vboxsync $ */
+/* $Id: DevE1000.cpp 42936 2012-08-23 10:16:52Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -1042,7 +1042,7 @@ struct E1kState_st
     RCPTRTYPE(PPDMSCATTERGATHER) pTxSgRC;
     RTRCPTR                 RCPtrAlignment;
 
-#if HC_ARCH_BITS == 32
+#if HC_ARCH_BITS != 32
     uint32_t                Alignment1;
 #endif
     PDMCRITSECT cs;                  /**< Critical section - what is it protecting? */
