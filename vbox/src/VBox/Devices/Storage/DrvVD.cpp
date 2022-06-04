@@ -1,10 +1,10 @@
-/* $Id: DrvVD.cpp 43923 2012-11-21 08:47:57Z vboxsync $ */
+/* $Id: DrvVD.cpp 44358 2013-01-24 16:05:55Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

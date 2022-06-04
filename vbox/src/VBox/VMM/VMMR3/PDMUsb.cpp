@@ -1,10 +1,10 @@
-/* $Id: PDMUsb.cpp 44351 2013-01-24 12:04:39Z vboxsync $ */
+/* $Id: PDMUsb.cpp 44358 2013-01-24 16:05:55Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -969,6 +969,9 @@ static void pdmR3UsbDestroyDevice(PVM pVM, PPDMUSBINS pUsbIns)
     TMR3TimerDestroyUsb(pVM, pUsbIns);
     //SSMR3DeregisterUsb(pVM, pUsbIns, NULL, 0);
     pdmR3ThreadDestroyUsb(pVM, pUsbIns);
+#ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
+    pdmR3AsyncCompletionTemplateDestroyUsb(pVM, pUsbIns);
+#endif
 
     /*
      * Unlink it.
