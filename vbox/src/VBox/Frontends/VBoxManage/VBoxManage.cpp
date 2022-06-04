@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 45356 2013-04-05 07:01:27Z vboxsync $ */
+/* $Id: VBoxManage.cpp 46649 2013-06-19 11:47:32Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -26,7 +26,7 @@
 # include <VBox/com/array.h>
 # include <VBox/com/ErrorInfo.h>
 # include <VBox/com/errorprint.h>
-# include <VBox/com/EventQueue.h>
+# include <VBox/com/NativeEventQueue.h>
 
 # include <VBox/com/VirtualBox.h>
 #endif /* !VBOX_ONLY_DOCS */
@@ -90,7 +90,7 @@ HRESULT showProgress(ComPtr<IProgress> progress)
     ULONG ulLastOperation = (ULONG)-1;
     Bstr bstrOperationDescription;
 
-    EventQueue::getMainEventQueue()->processEventQueue(0);
+    NativeEventQueue::getMainEventQueue()->processEventQueue(0);
 
     ULONG cOperations = 1;
     HRESULT hrc = progress->COMGETTER(OperationCount)(&cOperations);
@@ -198,7 +198,7 @@ HRESULT showProgress(ComPtr<IProgress> progress)
         /* make sure the loop is not too tight */
         progress->WaitForCompletion(100);
 
-        EventQueue::getMainEventQueue()->processEventQueue(0);
+        NativeEventQueue::getMainEventQueue()->processEventQueue(0);
         hrc = progress->COMGETTER(Completed(&fCompleted));
     }
 
@@ -584,7 +584,7 @@ int main(int argc, char *argv[])
          * state file (if the machine was in the Saved state before). */
         session->UnlockMachine();
 
-        EventQueue::getMainEventQueue()->processEventQueue(0);
+        NativeEventQueue::getMainEventQueue()->processEventQueue(0);
 
     // end "all-stuff" scope
     ///////////////////////////////////////////////////////////////////////////

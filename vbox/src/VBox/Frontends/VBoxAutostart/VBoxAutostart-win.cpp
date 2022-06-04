@@ -1,10 +1,10 @@
-/* $Id: VBoxAutostart-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxAutostart-win.cpp 46649 2013-06-19 11:47:32Z vboxsync $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
 
-#include <VBox/com/EventQueue.h>
+#include <VBox/com/NativeEventQueue.h>
 #include <VBox/com/listeners.h>
 #include <VBox/com/VirtualBox.h>
 
@@ -92,7 +92,7 @@ DECLHIDDEN(HRESULT) showProgress(ComPtr<IProgress> progress)
     ULONG ulLastOperation = (ULONG)-1;
     Bstr bstrOperationDescription;
 
-    EventQueue::getMainEventQueue()->processEventQueue(0);
+    NativeEventQueue::getMainEventQueue()->processEventQueue(0);
 
     ULONG cOperations = 1;
     HRESULT hrc = progress->COMGETTER(OperationCount)(&cOperations);
@@ -125,7 +125,7 @@ DECLHIDDEN(HRESULT) showProgress(ComPtr<IProgress> progress)
         /* make sure the loop is not too tight */
         progress->WaitForCompletion(100);
 
-        EventQueue::getMainEventQueue()->processEventQueue(0);
+        NativeEventQueue::getMainEventQueue()->processEventQueue(0);
         hrc = progress->COMGETTER(Completed(&fCompleted));
     }
 
