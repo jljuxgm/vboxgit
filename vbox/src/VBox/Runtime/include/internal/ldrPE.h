@@ -1,4 +1,4 @@
-/* $Id: ldrPE.h 46115 2013-05-15 23:53:03Z vboxsync $ */
+/* $Id: ldrPE.h 46131 2013-05-16 17:07:57Z vboxsync $ */
 /** @file
  * IPRT - Windows NT PE Structures and Constants.
  */
@@ -379,7 +379,9 @@ typedef struct _IMAGE_EXPORT_DIRECTORY
     uint32_t  AddressOfFunctions;
     uint32_t  AddressOfNames;
     uint32_t  AddressOfNameOrdinals;
-} IMAGE_EXPORT_DIRECTORY, *PIMAGE_EXPORT_DIRECTORY;
+} IMAGE_EXPORT_DIRECTORY;
+typedef IMAGE_EXPORT_DIRECTORY *PIMAGE_EXPORT_DIRECTORY;
+typedef IMAGE_EXPORT_DIRECTORY const *PCIMAGE_EXPORT_DIRECTORY;
 
 
 typedef struct _IMAGE_IMPORT_DESCRIPTOR
