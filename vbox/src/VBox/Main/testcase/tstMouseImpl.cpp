@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 47273 2013-07-19 17:39:38Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 47275 2013-07-19 17:43:28Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -203,7 +203,7 @@ static int setup(void)
 {
     VMMDevPort.pfnSetAbsoluteMouse = setAbsoluteMouse;
     VMMDevPort.pfnUpdateMouseCapabilities = updateMouseCapabilities;
-    HRESULT hrc = pMouse.createInstance();
+    HRESULT hrc = pMouse.createObject();
     AssertComRC(hrc);
     if (FAILED(hrc))
         return VERR_GENERAL_FAILURE;
