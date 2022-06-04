@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 46582 2013-06-17 10:47:06Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 46626 2013-06-18 14:00:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -145,8 +145,8 @@ void UIMachineWindowNormal::sltShowIndicatorsContextMenu(QIStateIndicator *pIndi
     /* Show network adapter LED context menu: */
     else if (pIndicator == indicatorsPool()->indicator(UIIndicatorIndex_NetworkAdapters))
     {
-        if (gActionPool->action(UIActionIndexRuntime_Menu_NetworkAdapters)->isEnabled())
-            gActionPool->action(UIActionIndexRuntime_Menu_NetworkAdapters)->menu()->exec(pEvent->globalPos());
+        if (gActionPool->action(UIActionIndexRuntime_Menu_Network)->isEnabled())
+            gActionPool->action(UIActionIndexRuntime_Menu_Network)->menu()->exec(pEvent->globalPos());
     }
     /* Show shared-folders LED context menu: */
     else if (pIndicator == indicatorsPool()->indicator(UIIndicatorIndex_SharedFolders))

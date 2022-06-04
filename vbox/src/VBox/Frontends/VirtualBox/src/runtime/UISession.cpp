@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 46582 2013-06-17 10:47:06Z vboxsync $ */
+/* $Id: UISession.cpp 46626 2013-06-18 14:00:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -994,9 +994,9 @@ void UISession::updateSessionSettings()
 {
     bool fAllowReconfiguration = m_machineState != KMachineState_Stuck && m_fReconfigurable;
     gActionPool->action(UIActionIndexRuntime_Simple_SettingsDialog)->setEnabled(fAllowReconfiguration);
-    gActionPool->action(UIActionIndexRuntime_Simple_SharedFoldersDialog)->setEnabled(fAllowReconfiguration);
-    gActionPool->action(UIActionIndexRuntime_Simple_VideoCaptureOptions)->setEnabled(fAllowReconfiguration);
-    gActionPool->action(UIActionIndexRuntime_Simple_NetworkAdaptersDialog)->setEnabled(fAllowReconfiguration);
+    gActionPool->action(UIActionIndexRuntime_Simple_SharedFoldersSettings)->setEnabled(fAllowReconfiguration);
+    gActionPool->action(UIActionIndexRuntime_Simple_VideoCaptureSettings)->setEnabled(fAllowReconfiguration);
+    gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings)->setEnabled(fAllowReconfiguration);
 }
 
 WId UISession::winId() const
@@ -1280,7 +1280,7 @@ void UISession::reinitMenuPool()
             }
         }
         /* Show/Hide Network Adapters action depending on overall adapters activity status: */
-        gActionPool->action(UIActionIndexRuntime_Simple_NetworkAdaptersDialog)->setVisible(fAtLeastOneAdapterActive);
+        gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings)->setVisible(fAtLeastOneAdapterActive);
     }
 
     /* USB stuff: */
