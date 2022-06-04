@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 43245 2012-09-07 14:48:54Z vboxsync $ */
+/* $Id: vboxvideo.c 43249 2012-09-07 19:19:36Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1237,14 +1237,6 @@ VBOXSwitchMode(int scrnIndex, DisplayModePtr pMode, int flags)
     pVBox->aScreenLocation[0].cy = pMode->VDisplay;
     pVBox->aScreenLocation[0].x = pScrn->frameX0;
     pVBox->aScreenLocation[0].y = pScrn->frameY0;
-    if (rc)
-    {
-        vboxWriteHostModes(pScrn, pMode);
-        xf86PrintModes(pScrn);
-    }
-    if (rc && !vboxGuestIsSeamless(pScrn))
-        vboxSaveVideoMode(pScrn, pMode->HDisplay, pMode->VDisplay,
-                          pScrn->bitsPerPixel);
 #endif
     if (!pScrn->vtSema)
     {
@@ -1258,6 +1250,14 @@ VBOXSwitchMode(int scrnIndex, DisplayModePtr pMode, int flags)
     VBOXAdjustScreenPixmap(pScrn, pMode->HDisplay, pMode->VDisplay);
     rc = VBOXSetMode(pScrn, 0, pMode->HDisplay, pMode->VDisplay,
                      pScrn->frameX0, pScrn->frameY0);
+    if (rc)
+    {
+        vboxWriteHostModes(pScrn, pMode);
+        xf86PrintModes(pScrn);
+    }
+    if (rc && !vboxGuestIsSeamless(pScrn))
+        vboxSaveVideoMode(pScrn, pMode->HDisplay, pMode->VDisplay,
+                          pScrn->bitsPerPixel);
 #endif
     TRACE_LOG("returning %s\n", rc ? "TRUE" : "FALSE");
     return rc;
