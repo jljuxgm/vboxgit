@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 44310 2013-01-18 12:59:37Z vboxsync $ */
+/* $Id: DevAPIC.cpp 44311 2013-01-18 13:00:22Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  */
@@ -2024,7 +2024,7 @@ static DECLCALLBACK(void) apicR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, con
     APICDeviceInfo  *pDev  = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
     APICState       *pApic = getLapic(pDev);
 
-    if (   pszArgs == NULL || !*pszArgs || !strcmp(pszArgs, "basic"))
+    if (pszArgs == NULL || !*pszArgs || !strcmp(pszArgs, "basic"))
         apicR3InfoBasic(pDev, pApic, pHlp);
     else if (!strcmp(pszArgs, "lvt"))
         apicR3InfoLVT(pDev, pApic, pHlp);
