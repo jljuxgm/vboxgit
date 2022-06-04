@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 42813 2012-08-14 17:38:46Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 42827 2012-08-15 15:21:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -231,7 +231,7 @@ void UIGDetailsElementPreview::updateLayout()
     /* Show/hide preview: */
     if (closed() && m_pPreview->isVisible())
         m_pPreview->hide();
-    if (opened() && !m_pPreview->isVisible())
+    if (opened() && !m_pPreview->isVisible() && !m_fAnimationRunning)
         m_pPreview->show();
 }
 
