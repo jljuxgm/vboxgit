@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 45145 2013-03-22 15:03:53Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 45157 2013-03-25 08:16:28Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -5729,7 +5729,8 @@ HRESULT VirtualBox::registerNATNetwork(NATNetwork *aNATNetwork,
 #else
     NOREF(aNATNetwork);
     NOREF(aSaveSettings);
-    return E_NOTIMPL;
+    /* No panic please (silently ignore) */
+    return S_OK;
 #endif
 }
 
