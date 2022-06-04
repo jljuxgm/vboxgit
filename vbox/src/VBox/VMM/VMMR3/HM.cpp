@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45879 2013-05-02 14:19:15Z vboxsync $ */
+/* $Id: HM.cpp 45897 2013-05-03 13:01:23Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1177,11 +1177,11 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
             /* We convert it here every time as pci regions could be reconfigured. */
             rc = PDMVmmDevHeapR3ToGCPhys(pVM, pVM->hm.s.vmx.pRealModeTSS, &GCPhys);
             AssertRCReturn(rc, rc);
-            LogRel(("HM: Real Mode TSS guest physaddr      = %RGp\n", GCPhys));
+            LogRel(("HM: Real Mode TSS guest physaddr  = %RGp\n", GCPhys));
 
             rc = PDMVmmDevHeapR3ToGCPhys(pVM, pVM->hm.s.vmx.pNonPagingModeEPTPageTable, &GCPhys);
             AssertRCReturn(rc, rc);
-            LogRel(("HM: Non-Paging Mode EPT CR3           = %RGp\n", GCPhys));
+            LogRel(("HM: Non-Paging Mode EPT CR3       = %RGp\n", GCPhys));
         }
         else
         {
