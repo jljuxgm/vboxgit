@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 43856 2012-11-12 12:26:28Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -1557,7 +1557,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
      */
     if (cCpus > 1)
     {
-        int rc = RTSpinlockCreate(&pTimer->hSpinlock, RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE, "RTTimerLnx");
+        int rc = RTSpinlockCreate(&pTimer->hSpinlock, RTSPINLOCK_FLAGS_INTERRUPT_SAFE, "RTTimerLnx");
         if (RT_SUCCESS(rc))
             rc = RTMpNotificationRegister(rtTimerLinuxMpEvent, pTimer);
         else
