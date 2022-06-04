@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 44060 2012-12-07 13:43:35Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 44064 2012-12-07 15:10:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -146,13 +146,19 @@ void UIGDetailsItem::paintPixmap(QPainter *pPainter, const QRect &rect, const QP
 }
 
 /* static */
-void UIGDetailsItem::paintText(QPainter *pPainter, const QRect &rect, const QFont &font,
+void UIGDetailsItem::paintText(QPainter *pPainter, QPoint point,
+                               const QFont &font, QPaintDevice *pPaintDevice,
                                const QString &strText, const QColor &color)
 {
+    /* Prepare variables: */
+    QFontMetrics fm(font, pPaintDevice);
+    point += QPoint(0, fm.ascent());
+
+    /* Draw text: */
     pPainter->save();
     pPainter->setFont(font);
     pPainter->setPen(color);
-    pPainter->drawText(rect, strText);
+    pPainter->drawText(point, strText);
     pPainter->restore();
 }
 
