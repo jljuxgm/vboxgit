@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 42529 2012-08-02 11:53:21Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 42558 2012-08-02 20:55:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -313,6 +313,32 @@ void UIGChooserItem::paintText(QPainter *pPainter, const QRect &rect, const QFon
     pPainter->setFont(font);
     pPainter->drawText(rect, strText);
     pPainter->restore();
+}
+
+/* static */
+int UIGChooserItem::textWidth(const QFont &font, int iCount)
+{
+    /* Return text width: */
+    QFontMetrics fm(font);
+    QString strString;
+    strString.fill('_', iCount);
+    return fm.width(strString);
+}
+
+/* static */
+QString UIGChooserItem::compressText(const QFont &font, QString strText, int iWidth)
+{
+    /* Check if passed text feats maximum width: */
+    QFontMetrics fm(font);
+    if (fm.width(strText) <= iWidth)
+        return strText;
+
+    /* Truncate otherwise: */
+    QString strEllipsis = QString("...");
+    int iEllipsisWidth = fm.width(strEllipsis + " ");
+    while (!strText.isEmpty() && fm.width(strText) + iEllipsisWidth > iWidth)
+        strText.truncate(strText.size() - 1);
+    return strText + strEllipsis;
 }
 
 UIGChooserItemMimeData::UIGChooserItemMimeData(UIGChooserItem *pItem)
