@@ -1,11 +1,11 @@
-/* $Id: ApplianceImplExport.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 45068 2013-03-18 17:27:22Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -57,7 +57,7 @@ using namespace std;
 * @param appliance
 * @return
 */
-STDMETHODIMP Machine::Export(IAppliance *aAppliance, IN_BSTR location, IVirtualSystemDescription **aDescription)
+STDMETHODIMP Machine::ExportTo(IAppliance *aAppliance, IN_BSTR location, IVirtualSystemDescription **aDescription)
 {
     HRESULT rc = S_OK;
 

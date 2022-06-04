@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 45068 2013-03-18 17:27:22Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1212,7 +1212,7 @@ HRESULT Appliance::importFS(TaskOVF *pTask)
                 SafeIfaceArray<IMedium> aMedia;
                 rc2 = failedMachine->Unregister(CleanupMode_DetachAllReturnHardDisksOnly, ComSafeArrayAsOutParam(aMedia));
                 ComPtr<IProgress> pProgress2;
-                rc2 = failedMachine->Delete(ComSafeArrayAsInParam(aMedia), pProgress2.asOutParam());
+                rc2 = failedMachine->DeleteConfig(ComSafeArrayAsInParam(aMedia), pProgress2.asOutParam());
                 pProgress2->WaitForCompletion(-1);
             }
         }

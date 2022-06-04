@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 44948 2013-03-07 10:36:42Z vboxsync $ */
+/* $Id: MachineImpl.cpp 45068 2013-03-18 17:27:22Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5073,7 +5073,7 @@ struct Machine::DeleteTask
     ComObjPtr<Progress>         pProgress;
 };
 
-STDMETHODIMP Machine::Delete(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProgress)
+STDMETHODIMP Machine::DeleteConfig(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProgress)
 {
     LogFlowFuncEnter();
 

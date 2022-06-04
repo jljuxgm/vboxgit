@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 44948 2013-03-07 10:36:42Z vboxsync $ */
+/* $Id: MachineImpl.h 45068 2013-03-18 17:27:22Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -551,8 +551,8 @@ public:
     STDMETHOD(SaveSettings)();
     STDMETHOD(DiscardSettings)();
     STDMETHOD(Unregister)(CleanupMode_T cleanupMode, ComSafeArrayOut(IMedium*, aMedia));
-    STDMETHOD(Delete)(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProgress);
-    STDMETHOD(Export)(IAppliance *aAppliance, IN_BSTR location, IVirtualSystemDescription **aDescription);
+    STDMETHOD(DeleteConfig)(ComSafeArrayIn(IMedium*, aMedia), IProgress **aProgress);
+    STDMETHOD(ExportTo)(IAppliance *aAppliance, IN_BSTR location, IVirtualSystemDescription **aDescription);
     STDMETHOD(FindSnapshot)(IN_BSTR aNameOrId, ISnapshot **aSnapshot);
     STDMETHOD(CreateSharedFolder)(IN_BSTR aName, IN_BSTR aHostPath, BOOL aWritable, BOOL aAutoMount);
     STDMETHOD(RemoveSharedFolder)(IN_BSTR aName);

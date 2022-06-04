@@ -1,11 +1,11 @@
-/* $Id: tstOVF.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: tstOVF.cpp 45068 2013-03-18 17:27:22Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -355,7 +355,7 @@ int main(int argc, char *argv[])
             if (FAILED(rc)) throw MyError(rc, "Machine::Unregister() failed\n");
 
             ComPtr<IProgress> pProgress;
-            rc = pMachine->Delete(ComSafeArrayAsInParam(sfaMedia), pProgress.asOutParam());
+            rc = pMachine->DeleteConfig(ComSafeArrayAsInParam(sfaMedia), pProgress.asOutParam());
             if (FAILED(rc)) throw MyError(rc, "Machine::DeleteSettings() failed\n");
             rc = pProgress->WaitForCompletion(-1);
             if (FAILED(rc)) throw MyError(rc, "Progress::WaitForCompletion() failed\n");
