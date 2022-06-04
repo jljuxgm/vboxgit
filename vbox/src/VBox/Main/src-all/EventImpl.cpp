@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 39714 2012-01-07 02:04:33Z vboxsync $ */
+/* $Id: EventImpl.cpp 43898 2012-11-16 14:14:48Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -708,6 +708,8 @@ static BOOL implies(VBoxEventType_T who, VBoxEventType_T what)
         default:
             return who == what;
     }
+
+    return FALSE; /* Never reached. */
 }
 
 ListenerRecord::ListenerRecord(IEventListener*                  aListener,
