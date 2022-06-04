@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DBGFReg.cpp 44689 2013-02-14 13:22:44Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -305,7 +305,8 @@ static int dbgfR3RegRegisterCommon(PUVM pUVM, PCDBGFREGDESC paRegisters, DBGFREG
                         ("%#x (#%u)\n", paRegisters[iDesc].fFlags, iDesc),
                         VERR_INVALID_PARAMETER);
         AssertPtrReturn(paRegisters[iDesc].pfnGet, VERR_INVALID_PARAMETER);
-        AssertPtrReturn(paRegisters[iDesc].pfnSet, VERR_INVALID_PARAMETER);
+        AssertReturn(RT_VALID_PTR(paRegisters[iDesc].pfnSet) || (paRegisters[iDesc].fFlags & DBGFREG_FLAGS_READ_ONLY),
+                     VERR_INVALID_PARAMETER);
 
         uint32_t        iAlias    = 0;
         PCDBGFREGALIAS  paAliases = paRegisters[iDesc].paAliases;
@@ -528,7 +529,7 @@ VMMR3_INT_DECL(int) DBGFR3RegRegisterCpu(PVM pVM, PVMCPU pVCpu, PCDBGFREGDESC pa
  *                              aliases.  Pass DBGFREGVALTYPE_INVALID to get
  *                              the standard name.
  */
-VMMR3_INT_DECL(int) DBGFR3RegRegisterDevice(PVM pVM, PCDBGFREGDESC paRegisters, PPDMDEVINS pDevIns, const char *pszPrefix,
+VMMR3DECL(int) DBGFR3RegRegisterDevice(PVM pVM, PCDBGFREGDESC paRegisters, PPDMDEVINS pDevIns, const char *pszPrefix,
                                             uint32_t iInstance)
 {
     AssertPtrReturn(paRegisters, VERR_INVALID_POINTER);
