@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45548 2013-04-14 23:20:51Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45552 2013-04-15 14:54:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5881,8 +5881,8 @@ static int hmR0VmxInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
 {
     /* Get the current interruptibility-state of the guest and then figure out what can be injected. */
     uint32_t uIntrState    = hmR0VmxGetGuestIntrState(pVCpu, pMixedCtx);
-    const bool fBlockMovSS = (uIntrState & VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE_BLOCK_MOVSS);
-    const bool fBlockSti   = (uIntrState & VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE_BLOCK_STI);
+    const bool fBlockMovSS = !!(uIntrState & VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE_BLOCK_MOVSS);
+    const bool fBlockSti   = !!(uIntrState & VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE_BLOCK_STI);
 
     Assert(!fBlockSti || (pVCpu->hm.s.vmx.fUpdatedGuestState & VMX_UPDATED_GUEST_RFLAGS));
     Assert(   !(uIntrState & VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE_BLOCK_NMI)      /* We don't support block-by-NMI and SMI yet.*/
