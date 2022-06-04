@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45288 2013-04-02 13:27:59Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 45289 2013-04-02 15:08:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -616,7 +616,7 @@ bool UIMessageCenter::remindAboutInaccessibleMedia() const
                               "see what media are inaccessible, or press <b>Ignore</b> to "
                               "ignore this message.</p>"),
                            "remindAboutInaccessibleMedia",
-                           tr("Check", "inaccessible media message box"));
+                           tr("Check", "inaccessible media message box"), tr("Cancel"), false);
 }
 
 bool UIMessageCenter::confirmDiscardSavedState(const QString &strNames) const
