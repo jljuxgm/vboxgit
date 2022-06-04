@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 46290 2013-05-27 15:26:15Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 46523 2013-06-13 12:02:48Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -469,8 +469,8 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                                            [[<display>] [<enabled:yes|no> |\n"
                      "                                              [<xorigin> <yorigin>]]] |\n"
                      "                            screenshotpng <file> [display] |\n"
-                     "                            enablevideocapture <screen>,[<screen>...]\n"
-                     "                            disablevideocapture <screen>,[<screen>...]\n"
+                     "                            vcpenabled on|off |\n"
+                     "                            vcpscreens all|none|<screen>,[<screen>...] |\n"
                      "                            setcredentials <username>\n"
                      "                                           --passwordfile <file> | <password>\n"
                      "                                           <domain>\n"

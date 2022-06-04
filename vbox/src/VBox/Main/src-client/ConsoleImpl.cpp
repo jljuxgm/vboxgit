@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 46465 2013-06-10 14:11:26Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 46523 2013-06-13 12:02:48Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5107,14 +5107,27 @@ HRESULT Console::onVideoCaptureChange()
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
+    BOOL fEnabled;
+    HRESULT rc = mMachine->COMGETTER(VideoCaptureEnabled)(&fEnabled);
     SafeArray<BOOL> screens;
-    HRESULT rc = mMachine->COMGETTER(VideoCaptureScreens)(ComSafeArrayAsOutParam(screens));
+    if (SUCCEEDED(rc))
+        rc = mMachine->COMGETTER(VideoCaptureScreens)(ComSafeArrayAsOutParam(screens));
     if (mDisplay)
     {
+        int vrc = VINF_SUCCESS;
         if (SUCCEEDED(rc))
-            rc = mDisplay->EnableVideoCaptureScreens(ComSafeArrayAsInParam(screens));
-        if (SUCCEEDED(rc))
-            fireVideoCaptureChangedEvent(mEventSource);
+            vrc = mDisplay->VideoCaptureEnableScreens(ComSafeArrayAsInParam(screens));
+        if (RT_SUCCESS(vrc))
+        {
+            if (fEnabled)
+                vrc = mDisplay->VideoCaptureStart();
+            else
+                mDisplay->VideoCaptureStop();
+            if (RT_SUCCESS(vrc))
+                fireVideoCaptureChangedEvent(mEventSource);
+            else
+                rc = E_FAIL;
+        }
     }
 
     return rc;
