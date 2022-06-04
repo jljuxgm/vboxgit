@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46484 2013-06-10 18:18:18Z vboxsync $
+# $Id: Makefile.kmk 47392 2013-07-25 13:02:07Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -599,7 +599,7 @@ $(VBOXWEB_WSDL): $(VBOXWEB_IDL_SRC) $(VBOX_PATH_WEBSERVICE)/websrv-wsdl.xsl $(VB
 	$(QUIET)$(RM) -f -- $@
 	$(QUIET)$(VBOX_XSLTPROC) $(VBOXWEB_XSLTPROC_VERBOSE) -o $@ $(VBOX_PATH_WEBSERVICE)/websrv-wsdl.xsl $<
 
-$(VBOXWEBSERVICE_WSDL): $(VBOXWEB_IDL_SRC) $(VBOX_PATH_WEBSERVICE)/websrv-wsdl-service.xsl $(VBOX_PATH_IDL)/typemap-shared.inc.xsl $(RECOMPILE_ON_MAKEFILE_CURRENT) $$(dir $$@)
+$(VBOXWEBSERVICE_WSDL): $(VBOXWEB_IDL_SRC) $(VBOX_PATH_WEBSERVICE)/websrv-wsdl-service.xsl $(VBOX_PATH_IDL)/typemap-shared.inc.xsl $(RECOMPILE_ON_MAKEFILE_CURRENT) | $$(dir $$@)
 	$(call MSG_GENERATE,,$@,$(VBOXWEB_IDL_SRC) using websrv-wsdl-service.xsl)
 	$(QUIET)$(RM) -f -- $@
 	$(QUIET)$(VBOX_XSLTPROC) $(VBOXWEB_XSLTPROC_VERBOSE) -o $@ $(VBOX_PATH_WEBSERVICE)/websrv-wsdl-service.xsl $<
