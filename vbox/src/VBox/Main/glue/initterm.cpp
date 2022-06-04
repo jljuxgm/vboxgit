@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 47777 2013-08-15 17:42:39Z vboxsync $ */
+/* $Id: initterm.cpp 47800 2013-08-16 11:15:56Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -494,7 +494,9 @@ HRESULT Initialize(bool fGui)
         }
 
         /* clean up before the new try */
-        rc = NS_ShutdownXPCOM(nsnull);
+        HRESULT rc2 = NS_ShutdownXPCOM(nsnull);
+        if (SUCCEEDED(rc))
+            rc = rc2;
 
         if (i == 0)
         {
@@ -505,12 +507,12 @@ HRESULT Initialize(bool fGui)
 
 #endif /* !defined (VBOX_WITH_XPCOM) */
 
+    AssertComRCReturnRC(rc);
+
     // for both COM and XPCOM, we only get here if this is the main thread;
     // only then initialize the autolock system (AutoLock.cpp)
     Assert(RTThreadIsMain(RTThreadSelf()));
     util::InitAutoLockSystem();
-
-    AssertComRC(rc);
 
     /*
      * Init the main event queue (ASSUMES it cannot fail).
