@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: EM.cpp 45301 2013-04-03 09:51:13Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1693,7 +1693,7 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
             /* Try not to cause deadlocks. */
             if (    pVM->cCpus == 1
                 ||  (   !PGMIsLockOwner(pVM)
-                     && !IOMIsLockOwner(pVM))
+                     && !IOMIsLockWriteOwner(pVM))
                )
             {
                 EMRemLock(pVM);

@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: EMAll.cpp 45301 2013-04-03 09:51:13Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -250,7 +250,7 @@ VMMDECL(void) EMRemLock(PVM pVM)
         return;     /* early init */
 
     Assert(!PGMIsLockOwner(pVM));
-    Assert(!IOMIsLockOwner(pVM));
+    Assert(!IOMIsLockWriteOwner(pVM));
     int rc = PDMCritSectEnter(&pVM->em.s.CritSectREM, VERR_SEM_BUSY);
     AssertRCSuccess(rc);
 #endif
