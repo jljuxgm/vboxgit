@@ -1,4 +1,4 @@
-# $Id: AcpiTimerLib.inf 42400 2012-07-26 03:49:09Z vboxsync $
+# $Id: AcpiTimerLib.inf 42401 2012-07-26 03:54:58Z vboxsync $
 ## @file
 # AcpiTimerLib.inf
 #
@@ -34,7 +34,7 @@
 [Defines]
   INF_VERSION                    = 0x00010005
   BASE_NAME                      = AcpiTimerLib
-  FILE_GUID                      = CDD9D74F-213E-4c28-98F7-8B4A167DB936
+  FILE_GUID                      = 9BB3B519-89A2-4E65-A226-D3B8BDE7F877
   MODULE_TYPE                    = BASE
   VERSION_STRING                 = 1.0
   LIBRARY_CLASS                  = TimerLib
