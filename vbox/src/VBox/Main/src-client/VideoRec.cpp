@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 46555 2013-06-14 12:33:55Z vboxsync $ */
+/* $Id: VideoRec.cpp 46578 2013-06-17 10:05:38Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -499,6 +499,7 @@ int VideoRecStrmInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen, const char *pszFil
     pStrm->VpxConfig.g_timebase.den = 1000;
     /* disable multithreading */
     pStrm->VpxConfig.g_threads = 0;
+//    pStrm->VpxConfig.kf_max_dist = 1;
     pStrm->uDelay = 1000 / uFps;
 
     struct vpx_rational arg_framerate = { 30, 1 };
