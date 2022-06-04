@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 44468 2013-01-30 14:58:07Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 44525 2013-02-04 07:59:59Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -669,7 +669,6 @@ DECLCALLBACK(int)  ConsoleVRDPServer::VRDPCallbackQueryProperty(void *pvCallback
             *pcbOut = (uint32_t)cbPortRange;
         } break;
 
-#ifdef VBOX_WITH_VRDP_VIDEO_CHANNEL
         case VRDE_QP_VIDEO_CHANNEL:
         {
             com::Bstr bstr;
@@ -753,7 +752,6 @@ DECLCALLBACK(int)  ConsoleVRDPServer::VRDPCallbackQueryProperty(void *pvCallback
 
             *pcbOut = sizeof(uint32_t);
         } break;
-#endif /* VBOX_WITH_VRDP_VIDEO_CHANNEL */
 
         case VRDE_QP_FEATURE:
         {
