@@ -1,4 +1,4 @@
-/* $Id: dbgmoddeferred.cpp 46113 2013-05-15 22:39:43Z vboxsync $ */
+/* $Id: dbgmoddeferred.cpp 46115 2013-05-15 23:53:03Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Deferred Loading Stub.
  */
@@ -334,6 +334,7 @@ static DECLCALLBACK(int) rtDbgModDeferredDbg_SegmentByIndex(PRTDBGMODINT pMod, R
         pSegInfo->fFlags    = 0;
         pSegInfo->iSeg      = 0;
         memcpy(pSegInfo->szName, RT_STR_TUPLE("LATER"));
+        rc = VINF_SUCCESS;
     }
     else
         rc = VERR_DBG_INVALID_SEGMENT_INDEX;
