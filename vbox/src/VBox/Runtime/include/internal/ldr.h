@@ -1,4 +1,4 @@
-/* $Id: ldr.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ldr.h 46083 2013-05-14 23:39:28Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -402,6 +402,8 @@ typedef struct RTLDRMODINTERNAL
     RTLDRSTATE              eState;
     /** Loader ops. */
     PCRTLDROPS              pOps;
+    /** Pointer to the reader instance. This is NULL for native image. */
+    PRTLDRREADER            pReader;
 } RTLDRMODINTERNAL;
 
 
@@ -454,6 +456,8 @@ int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTL
 /*int rtldrLXOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTFOFF offLX, PRTLDRMOD phLdrMod);
 int rtldrMachoOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTFOFF offSomething, PRTLDRMOD phLdrMod);*/
 
+
+DECLHIDDEN(int) rtLdrReadAt(RTLDRMOD hLdrMod, void *pvBuf, RTFOFF off, size_t cb);
 
 RT_C_DECLS_END
 

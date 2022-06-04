@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ldrNative.cpp 46083 2013-05-14 23:39:28Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -130,6 +130,7 @@ RTDECL(int) RTLdrLoadEx(const char *pszFilename, PRTLDRMOD phLdrMod, uint32_t fF
         pMod->Core.u32Magic = RTLDRMOD_MAGIC;
         pMod->Core.eState   = LDR_STATE_LOADED;
         pMod->Core.pOps     = &s_rtldrNativeOps;
+        pMod->Core.pReader  = NULL;
         pMod->hNative       = ~(uintptr_t)0;
 
         /*

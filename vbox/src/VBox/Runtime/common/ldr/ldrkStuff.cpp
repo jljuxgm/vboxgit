@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 45994 2013-05-12 19:16:16Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 46083 2013-05-14 23:39:28Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -240,9 +240,10 @@ static int      rtkldrRdr_Create(  PPKRDR ppRdr, const char *pszFilename)
 /** @copydoc KLDRRDROPS::pfnDestroy */
 static int      rtkldrRdr_Destroy( PKRDR pRdr)
 {
-    PRTLDRREADER pReader = ((PRTKLDRRDR)pRdr)->pReader;
-    int rc = pReader->pfnDestroy(pReader);
-    return rtkldrConvertErrorFromIPRT(rc);
+    PRTKLDRRDR pThis = (PRTKLDRRDR)pRdr;
+    pThis->pReader = NULL;
+    RTMemFree(pThis);
+    return 0;
 }
 
 
@@ -876,9 +877,10 @@ int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTL
         if (pNewMod)
         {
             pNewMod->Core.u32Magic = RTLDRMOD_MAGIC;
-            pNewMod->Core.eState = LDR_STATE_OPENED;
-            pNewMod->Core.pOps = &g_rtkldrOps;
-            pNewMod->pMod = pMod;
+            pNewMod->Core.eState   = LDR_STATE_OPENED;
+            pNewMod->Core.pOps     = &g_rtkldrOps;
+            pNewMod->Core.pReader  = pReader;
+            pNewMod->pMod          = pMod;
             *phLdrMod = &pNewMod->Core;
 
 #ifdef LOG_ENABLED
@@ -895,9 +897,14 @@ int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTL
 #endif
             return VINF_SUCCESS;
         }
+
+        /* bail out */
         kLdrModClose(pMod);
         krc = KERR_NO_MEMORY;
     }
+    else
+        RTMemFree(pRdr);
+
     return rtkldrConvertError(krc);
 }
 

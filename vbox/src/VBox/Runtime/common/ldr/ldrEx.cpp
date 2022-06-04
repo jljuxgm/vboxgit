@@ -1,4 +1,4 @@
-/* $Id: ldrEx.cpp 46080 2013-05-14 20:09:08Z vboxsync $ */
+/* $Id: ldrEx.cpp 46083 2013-05-14 23:39:28Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Extended Features.
  */
@@ -537,4 +537,24 @@ RTDECL(int) RTLdrRvaToSegOffset(RTLDRMOD hLdrMod, RTLDRADDR Rva, uint32_t *piSeg
     return rc;
 }
 RT_EXPORT_SYMBOL(RTLdrRvaToSegOffset);
+
+
+/**
+ * Internal method used by the IPRT debug bits.
+ *
+ * @returns IPRT status code.
+ * @param   hLdrMod             The loader handle which executable we wish to
+ *                              read from.
+ * @param   pvBuf               The output buffer.
+ * @param   off                 Where in the executable file to start reading.
+ * @param   cb                  The number of bytes to read.
+ */
+DECLHIDDEN(int) rtLdrReadAt(RTLDRMOD hLdrMod, void *pvBuf, RTFOFF off, size_t cb)
+{
+    AssertMsgReturn(rtldrIsValid(hLdrMod), ("hLdrMod=%p\n", hLdrMod), VERR_INVALID_HANDLE);
+    PRTLDRMODINTERNAL pMod = (PRTLDRMODINTERNAL)hLdrMod;
+    AssertReturn(pMod->pReader, VERR_INVALID_HANDLE);
+
+    return pMod->pReader->pfnRead(pMod->pReader, pvBuf, cb, off);
+}
 

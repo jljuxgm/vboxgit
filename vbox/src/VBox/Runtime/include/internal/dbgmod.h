@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 46048 2013-05-14 07:44:30Z vboxsync $ */
+/* $Id: dbgmod.h 46083 2013-05-14 23:39:28Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -565,6 +565,8 @@ DECLHIDDEN(int) rtDbgModContainerCreate(PRTDBGMODINT pMod, RTUINTPTR cbSeg);
 DECLHIDDEN(int) rtDbgModCreateForExports(PRTDBGMODINT pDbgMod);
 DECLHIDDEN(int) rtDbgModDeferredCreate(PRTDBGMODINT pDbgMod, PFNRTDBGMODDEFERRED pfnDeferred, RTUINTPTR cbImage,
                                        RTDBGCFG hDbgCfg, PRTDBGMODDEFERRED *ppDeferred);
+
+DECLHIDDEN(int) rtDbgModLdrOpenFromHandle(PRTDBGMODINT pDbgMod, RTLDRMOD hLdrMod);
 
 /** @} */
 
