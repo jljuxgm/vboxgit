@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41576 2012-06-05 12:08:04Z vboxsync $
+# $Id: Makefile.kmk 47345 2013-07-23 15:29:30Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -37,6 +37,7 @@ StorageLib_DEFS     = IN_VBOXDDU
 StorageLib_SOURCES  = \
 	VD.cpp \
 	VDVfs.cpp \
+	VDIfVfs.cpp \
 	VDI.cpp \
 	VMDK.cpp \
 	VHD.cpp \
