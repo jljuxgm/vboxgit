@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 44037 2012-12-05 09:43:18Z vboxsync $ */
+/* $Id: TRPM.cpp 44118 2012-12-13 12:21:12Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -476,7 +476,7 @@ VMMR3DECL(int) TRPMR3Init(PVM pVM)
     }
 
     pVM->trpm.s.GuestIdtr.pIdt     = RTRCPTR_MAX;
-    pVM->trpm.s.pvMonShwIdtRC            = RTRCPTR_MAX;
+    pVM->trpm.s.pvMonShwIdtRC      = RTRCPTR_MAX;
     pVM->trpm.s.fDisableMonitoring = false;
     pVM->trpm.s.fSafeToDropGuestIDTMonitoring = false;
 
