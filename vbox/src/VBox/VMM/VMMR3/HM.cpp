@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 46871 2013-06-28 16:25:06Z vboxsync $ */
+/* $Id: HM.cpp 46975 2013-07-04 10:25:38Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -442,7 +442,7 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
     /** @cfgm{/HM/MaxResumeLoops, uint32_t}
      * The number of times to resume guest execution before we forcibly return to
      * ring-3.  The return value of RTThreadPreemptIsPendingTrusty in ring-0
-     * determins the default value. */
+     * determines the default value. */
     rc = CFGMR3QueryU32Def(pCfgHM, "MaxResumeLoops", &pVM->hm.s.cMaxResumeLoops, 0 /* set by R0 later */);
     AssertLogRelRCReturn(rc, rc);
 
