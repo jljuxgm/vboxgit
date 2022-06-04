@@ -1,4 +1,4 @@
-# $Id: Config.kmk 44914 2013-03-05 08:52:13Z vboxsync $
+# $Id: Config.kmk 45063 2013-03-18 15:56:10Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1120,6 +1120,7 @@ endif
 ifdef VBOX_WITHOUT_DOCS
  # Zap anything that could be contradicting this.
  VBOX_WITH_DOCS :=
+ VBOX_WITH_DOCS_CHM :=
 endif
 
 #
@@ -1641,7 +1642,12 @@ ifeq ($(KBUILD_HOST),os2)
  #fixme! export BEGINLIBPATH:=$(PATH_STAGE_BIN);$(PATH_STAGE_LIB);$(BEGINLIBPATH)
 endif
 ifeq ($(KBUILD_HOST),win)
- export PATH:=$(PATH_STAGE_BIN);$(PATH_STAGE_LIB);$(PATH)
+  # This check is a bit hacky, but avoids problems with PATH being changed
+  # again when the makefiles are reread because some automatically generated
+  # makefile has been modified.
+  ifeq ($(findstring $(PATH_STAGE_BIN);$(PATH_STAGE_LIB);,$(PATH)),)
+   export PATH:=$(PATH_STAGE_BIN);$(PATH_STAGE_LIB);$(PATH)
+  endif
 endif
 
 #
@@ -5312,7 +5318,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 44914 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45063 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
