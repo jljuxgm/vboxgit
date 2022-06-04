@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 46885 2013-07-01 14:02:37Z vboxsync $ */
+/* $Id: server_muralfbo.c 46989 2013-07-05 06:57:09Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -765,9 +765,9 @@ DECLEXPORT(void) crServerVBoxCompositionSetEnableStateGlobal(GLboolean fEnable)
     if (!fEnable)
         ++cr_server.cDisableEvent;
 
-    crHashtableWalk(cr_server.muralTable, crServerVBoxCompositionSetEnableStateGlobalCB, (void*)fEnable);
+    crHashtableWalk(cr_server.muralTable, crServerVBoxCompositionSetEnableStateGlobalCB, (void*)(uintptr_t)fEnable);
 
-    crHashtableWalk(cr_server.dummyMuralTable, crServerVBoxCompositionSetEnableStateGlobalCB, (void*)fEnable);
+    crHashtableWalk(cr_server.dummyMuralTable, crServerVBoxCompositionSetEnableStateGlobalCB, (void*)(uintptr_t)fEnable);
 
     if (fEnable)
     {
