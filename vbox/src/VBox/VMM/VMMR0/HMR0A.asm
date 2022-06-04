@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 46548 2013-06-14 09:42:21Z vboxsync $
+; $Id: HMR0A.asm 46905 2013-07-02 13:11:06Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -69,10 +69,6 @@
 ;; The offset of the XMM registers in X86FXSTATE.
 ; Use define because I'm too lazy to convert the struct.
 %define XMM_OFF_IN_X86FXSTATE   160
-
-
-;; This is too risky wrt. stability, performance and correctness.
-;%define VBOX_WITH_DR6_EXPERIMENT 1
 
 ;; @def MYPUSHAD
 ; Macro generating an equivalent to pushad
