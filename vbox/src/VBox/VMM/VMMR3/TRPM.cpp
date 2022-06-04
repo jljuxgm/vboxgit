@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 42762 2012-08-10 18:26:31Z vboxsync $ */
+/* $Id: TRPM.cpp 43079 2012-08-29 14:38:33Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -800,12 +800,12 @@ VMMR3_INT_DECL(int) TRPMR3GetImportRC(PVM pVM, const char *pszSymbol, PRTRCPTR p
         *pRCPtrValue = VM_RC_ADDR(pVM, &pVM->aCpus[0].trpm);
     else if (!strcmp(pszSymbol, "g_trpmGuestCtxCore"))
     {
-        PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(VMMGetCpu0(pVM));
+        PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(VMMGetCpuById(pVM, 0));
         *pRCPtrValue = VM_RC_ADDR(pVM, CPUMCTX2CORE(pCtx));
     }
     else if (!strcmp(pszSymbol, "g_trpmHyperCtxCore"))
     {
-        PCPUMCTX pCtx = CPUMGetHyperCtxPtr(VMMGetCpu0(pVM));
+        PCPUMCTX pCtx = CPUMGetHyperCtxPtr(VMMGetCpuById(pVM, 0));
         *pRCPtrValue = VM_RC_ADDR(pVM, CPUMCTX2CORE(pCtx));
     }
     else
