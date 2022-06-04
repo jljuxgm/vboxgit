@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44528 2013-02-04 14:27:54Z vboxsync $
+# $Id: Makefile.kmk 45131 2013-03-21 15:41:17Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -50,6 +50,7 @@ PROGRAMS += \
 	tstRTBitOperations \
 	tstRTCidr \
 	tstRTCritSect \
+	tstRTCritSectRw \
 	tstRTCType \
 	tstRTDigest \
 	tstDir \
@@ -215,6 +216,9 @@ tstRTCidr_SOURCES = tstRTCidr.cpp
 
 tstRTCritSect_TEMPLATE = VBOXR3TSTEXE
 tstRTCritSect_SOURCES = tstRTCritSect.cpp
+
+tstRTCritSectRw_TEMPLATE = VBOXR3TSTEXE
+tstRTCritSectRw_SOURCES = tstRTCritSectRw.cpp
 
 tstRTCritSectW32_TEMPLATE = VBOXR3TSTEXE
 tstRTCritSectW32_SOURCES = tstRTCritSect.cpp
