@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43273 2012-09-10 19:29:40Z vboxsync $
+# $Id: Makefile.kmk 43293 2012-09-11 11:58:53Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -70,6 +70,7 @@ if1of ($(KBUILD_TARGET), linux solaris freebsd)
 	$(VBOX_PATH_X11_ROOT)/compositeproto-0.4 \
 	$(VBOX_PATH_X11_ROOT)/fixesproto-4.0 \
 	$(VBOX_PATH_X11_ROOT)/libx11-1.1.5-other \
+	$(VBOX_PATH_X11_ROOT)/xproto-7.0.18 \
 	$(VBOX_MESA_INCS) \
 	$(PATH_ROOT)/src/VBox/Additions/x11/x11include/libdrm-2.4.13
  VBoxOGL_DEFS     += VBOX_NO_NATIVEGL
