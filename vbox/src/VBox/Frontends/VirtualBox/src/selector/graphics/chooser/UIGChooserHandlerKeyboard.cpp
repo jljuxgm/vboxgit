@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerKeyboard.cpp 43564 2012-10-08 11:20:40Z vboxsync $ */
+/* $Id: UIGChooserHandlerKeyboard.cpp 43614 2012-10-11 11:28:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -338,7 +338,7 @@ bool UIGChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
         case Qt::Key_Space:
         {
             /* If model is performing lookup: */
-            if (model()->isPerformingLookup())
+            if (model()->isLookupInProgress())
             {
                 /* Continue lookup: */
                 QString strText = pEvent->text();
