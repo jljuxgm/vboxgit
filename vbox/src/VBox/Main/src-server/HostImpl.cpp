@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 44174 2012-12-19 18:14:39Z vboxsync $ */
+/* $Id: HostImpl.cpp 44179 2012-12-19 18:32:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -312,7 +312,7 @@ HRESULT Host::init(VirtualBox *aParent)
             ASMCpuId(0x80000000, &uExtMaxId, &uDummy, &uDummy, &uDummy);
             ASMCpuId(0x80000001, &uDummy, &uDummy, &fExtFeaturesEcx, &fExtFeaturesEdx);
             m->fLongModeSupported = ASMIsValidExtRange(uExtMaxId)
-                                 && (u32ExtFeatureEDX & X86_CPUID_EXT_FEATURE_EDX_LONG_MODE);
+                                 && (fExtFeaturesEdx & X86_CPUID_EXT_FEATURE_EDX_LONG_MODE);
 
             /* VT-x? */
             if (   ASMIsIntelCpuEx(uVendorEBX, uVendorECX, uVendorEDX)
