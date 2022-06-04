@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 46149 2013-05-17 17:21:23Z vboxsync $ */
+/* $Id: dbgmod.h 46161 2013-05-19 13:31:13Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -74,8 +74,9 @@ typedef struct RTDBGMODVTIMG
      *
      *                      Upon successful return the method is expected to
      *                      initialize pImgOps and pvImgPriv.
+     * @param   enmArch     The desired architecture.
      */
-    DECLCALLBACKMEMBER(int, pfnTryOpen)(PRTDBGMODINT pMod);
+    DECLCALLBACKMEMBER(int, pfnTryOpen)(PRTDBGMODINT pMod, RTLDRARCH enmArch);
 
     /**
      * Close the interpreter, freeing all associated resources.
@@ -195,6 +196,13 @@ typedef struct RTDBGMODVTIMG
      */
     DECLCALLBACKMEMBER(int, pfnUnmapPart)(PRTDBGMODINT pMod, size_t cb, void const **ppvMap);
 
+    /**
+     * Gets the loader format.
+     *
+     * @returns Valid loader format on success, RTLDRFMT_INVALID if not supported.
+     * @param   pMod            Pointer to the module structure.
+     */
+    DECLCALLBACKMEMBER(RTLDRFMT, pfnGetFormat)(PRTDBGMODINT pMod);
 
     /** For catching initialization errors (RTDBGMODVTIMG_MAGIC). */
     uint32_t    u32EndMagic;

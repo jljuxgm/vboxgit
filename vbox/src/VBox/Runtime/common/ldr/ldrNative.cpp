@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 46149 2013-05-17 17:21:23Z vboxsync $ */
+/* $Id: ldrNative.cpp 46161 2013-05-19 13:31:13Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -128,11 +128,18 @@ RTDECL(int) RTLdrLoadEx(const char *pszFilename, PRTLDRMOD phLdrMod, uint32_t fF
     PRTLDRMODNATIVE pMod = (PRTLDRMODNATIVE)RTMemAlloc(sizeof(*pMod));
     if (pMod)
     {
-        pMod->Core.u32Magic = RTLDRMOD_MAGIC;
-        pMod->Core.eState   = LDR_STATE_LOADED;
-        pMod->Core.pOps     = &s_rtldrNativeOps;
-        pMod->Core.pReader  = NULL;
-        pMod->hNative       = ~(uintptr_t)0;
+        pMod->Core.u32Magic     = RTLDRMOD_MAGIC;
+        pMod->Core.eState       = LDR_STATE_LOADED;
+        pMod->Core.pOps         = &s_rtldrNativeOps;
+        pMod->Core.pReader      = NULL;
+        pMod->Core.enmFormat    = RTLDRFMT_NATIVE;
+        pMod->Core.enmType      = RTLDRTYPE_SHARED_LIBRARY_RELOCATABLE; /* approx */
+#ifdef RT_BIG_ENDIAN
+        pMod->Core.enmEndian    = RTLDRENDIAN_BIG;
+#else
+        pMod->Core.enmEndian    = RTLDRENDIAN_LITTLE;
+#endif
+        pMod->hNative           = ~(uintptr_t)0;
 
         /*
          * Attempt to open the module.

@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 46152 2013-05-17 19:29:35Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 46161 2013-05-19 13:31:13Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -1436,6 +1436,9 @@ static int RTLDRELF_NAME(Open)(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH 
     pModElf->Core.u32Magic  = RTLDRMOD_MAGIC;
     pModElf->Core.eState    = LDR_STATE_INVALID;
     pModElf->Core.pReader   = pReader;
+    pModElf->Core.enmFormat = RTLDRFMT_ELF;
+    pModElf->Core.enmType   = RTLDRTYPE_OBJECT;
+    pModElf->Core.enmEndian = RTLDRENDIAN_LITTLE;
     //pModElf->pvBits         = NULL;
     //pModElf->Ehdr           = {0};
     //pModElf->paShdrs        = NULL;

@@ -1,4 +1,4 @@
-/* $Id: ldr.h 46149 2013-05-17 17:21:23Z vboxsync $ */
+/* $Id: ldr.h 46161 2013-05-19 13:31:13Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -422,6 +422,12 @@ typedef struct RTLDRMODINTERNAL
     PCRTLDROPS              pOps;
     /** Pointer to the reader instance. This is NULL for native image. */
     PRTLDRREADER            pReader;
+    /** Image format.  */
+    RTLDRFMT                enmFormat;
+    /** Image type.  */
+    RTLDRTYPE               enmType;
+    /** Image endianness.  */
+    RTLDRENDIAN             enmEndian;
 } RTLDRMODINTERNAL;
 
 
