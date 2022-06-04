@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43236 2012-09-07 09:32:42Z vboxsync $
+# $Id: Makefile.kmk 43589 2012-10-10 10:26:19Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -103,6 +103,9 @@ ifdef VBOXWDDM_TEST_UHGSMI
 endif
 ifdef VBOX_WITH_CROGL
  VBoxDispD3D_DEFS   += VBOX_WITH_CROGL
+endif
+ifdef VBOX_WITH_NEW_WINE
+ VBoxDispD3D_DEFS   += VBOX_WITH_NEW_WINE
 endif
 VBoxDispD3D_INCS     = \
 	../../../include \
