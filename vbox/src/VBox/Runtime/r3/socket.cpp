@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 43174 2012-09-04 17:34:51Z vboxsync $ */
+/* $Id: socket.cpp 43176 2012-09-04 17:50:31Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -778,14 +778,14 @@ RTDECL(int) RTSocketGetAddrInfo(const char *psz, char *pszResult, size_t *result
         {
             memset(szDummy, '\0', 10);
 
-            rc = RTStrPrintf(szDummy, 10, "%u", *pubDummy);
+            size_t cb = RTStrPrintf(szDummy, 10, "%u", *pubDummy);
 
-            if (!rc || rc > 3 || rc < 1)
+            if (!cb || cb > 3 || cb < 1)
                 return VERR_NET_ADDRESS_NOT_AVAILABLE;
 
-            memcpy(pszIpV4Address, szDummy, rc);
+            memcpy(pszIpV4Address, szDummy, cb);
 
-            pszIpV4Address = (pszIpV4Address + rc);
+            pszIpV4Address = (pszIpV4Address + cb);
 
             if (i < 3)
             {
@@ -826,14 +826,14 @@ RTDECL(int) RTSocketGetAddrInfo(const char *psz, char *pszResult, size_t *result
         {
             memset(szDummy, '\0', 10);
 
-            rc = RTStrPrintf(szDummy, 10, "%02x", *pubDummy);
+            size_t cb = RTStrPrintf(szDummy, 10, "%02x", *pubDummy);
 
-            if (rc != 2)
+            if (cb != 2)
                 return VERR_NET_ADDRESS_NOT_AVAILABLE;
 
-            memcpy(pszIpV6Address, szDummy, rc);
+            memcpy(pszIpV6Address, szDummy, cb);
 
-            pszIpV6Address = pszIpV6Address + rc;
+            pszIpV6Address = pszIpV6Address + cb;
             pubDummy++;
         }
 
