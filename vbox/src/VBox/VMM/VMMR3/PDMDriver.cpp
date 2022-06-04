@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 42140 2012-07-13 09:59:27Z vboxsync $ */
+/* $Id: PDMDriver.cpp 42141 2012-07-13 10:05:11Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -395,8 +395,8 @@ static int pdmR3DrvMaybeTransformChain(PVM pVM, PPDMDRVINS pDrvAbove, PPDMLUN pL
      * Gather the attributes used in the matching process.
      */
     const char *pszDevice = pLun->pDevIns
-                          ? pLun->pDevIns->pReg->szName
-                          : pLun->pUsbIns->pReg->szName;
+                          ? pLun->pDevIns->Internal.s.pDevR3->pReg->szName
+                          : pLun->pUsbIns->Internal.s.pUsbDev->pReg->szName;
     char        szLun[32];
     RTStrPrintf(szLun, sizeof(szLun), "%u", pLun->iLun);
     const char *pszAbove  = pDrvAbove ? pDrvAbove->Internal.s.pDrv->pReg->szName : "<top>";
