@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 45299 2013-04-03 09:47:49Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 45306 2013-04-03 11:47:56Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -498,7 +498,7 @@ VMMDECL(int) PDMCritSectRwTryEnterSharedDebug(PPDMCRITSECTRW pThis, RTHCUINTPTR 
  */
 VMMR3DECL(int) PDMR3CritSectRwEnterSharedEx(PPDMCRITSECTRW pThis, bool fCallRing3)
 {
-    return pdmCritSectRwEnterShared(pThis, VERR_SEM_BUSY, NULL, false /*fTryAgain*/, fCallRing3);
+    return pdmCritSectRwEnterShared(pThis, VERR_SEM_BUSY, false /*fTryAgain*/, NULL, fCallRing3);
 }
 #endif
 
@@ -1003,7 +1003,7 @@ VMMDECL(int) PDMCritSectRwTryEnterExclDebug(PPDMCRITSECTRW pThis, RTHCUINTPTR uI
  */
 VMMR3DECL(int) PDMR3CritSectRwEnterExclEx(PPDMCRITSECTRW pThis, bool fCallRing3)
 {
-    return pdmCritSectRwEnterExcl(pThis, VERR_SEM_BUSY, NULL, false /*fTryAgain*/, fCallRing3 /*fNoVal*/);
+    return pdmCritSectRwEnterExcl(pThis, VERR_SEM_BUSY, false /*fTryAgain*/, NULL, fCallRing3 /*fNoVal*/);
 }
 #endif /* IN_RING3 */
 
