@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 42318 2012-07-23 09:27:05Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 42323 2012-07-23 12:33:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -56,32 +56,10 @@ UIMachineViewSeamless::UIMachineViewSeamless(  UIMachineWindow *pMachineWindow
 #endif
                     )
 {
-    /* Load machine view settings: */
-    loadMachineViewSettings();
-
-    /* Prepare viewport: */
-    prepareViewport();
-
-    /* Prepare frame buffer: */
-    prepareFrameBuffer();
-
-    /* Prepare common things: */
-    prepareCommon();
-
-    /* Prepare event-filters: */
-    prepareFilters();
-
-    /* Prepare connections: */
-    prepareConnections();
-
-    /* Prepare console connections: */
-    prepareConsoleConnections();
-
     /* Prepare seamless view: */
     prepareSeamless();
 
     /* Initialization: */
-    sltMachineStateChanged();
     sltAdditionsStateChanged();
 }
 
