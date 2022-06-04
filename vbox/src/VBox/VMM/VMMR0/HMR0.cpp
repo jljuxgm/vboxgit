@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 47802 2013-08-16 11:27:27Z vboxsync $ */
+/* $Id: HMR0.cpp 47803 2013-08-16 11:58:57Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1481,7 +1481,6 @@ VMMR0_INT_DECL(int) HMR0Enter(PVM pVM, PVMCPU pVCpu)
  *
  * @returns VBox status code.
  * @param   pVCpu       Pointer to the VMCPU.
- * @param   idCpu       The identifier for the CPU the function is called on.
  */
 VMMR0_INT_DECL(int) HMR0LeaveEx(PVMCPU pVCpu)
 {
