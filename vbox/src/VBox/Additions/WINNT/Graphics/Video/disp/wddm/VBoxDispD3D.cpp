@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 43490 2012-10-01 11:56:39Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 43606 2012-10-11 06:25:18Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -1054,7 +1054,7 @@ static HRESULT vboxWddmSwapchainRtSynch(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMD
         }
         else
         {
-            WARN(("GetFrontBufferData failed, hr (0x%x)", hr));
+            WARN(("GetFrontBufferData failed, hr (0x%x)", tmpHr));
         }
     }
 #endif
