@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 46465 2013-06-10 14:11:26Z vboxsync $ */
+/* $Id: MachineImpl.h 46667 2013-06-19 15:30:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -261,8 +261,8 @@ public:
         ULONG               mVideoCaptureWidth;
         ULONG               mVideoCaptureHeight;
         ULONG               mVideoCaptureRate;
-        ULONG               mVideoCaptureFps;
-        Bstr                mVideoCaptureFile;
+        ULONG               mVideoCaptureFPS;
+        Utf8Str             mVideoCaptureFile;
         BOOL                mVideoCaptureEnabled;
         BOOL                maVideoCaptureScreens[SchemaDefs::MaxGuestMonitors];
         ULONG               mMonitorCount;
@@ -447,8 +447,8 @@ public:
     STDMETHOD(COMSETTER(VideoCaptureHeight))(ULONG aVertRes);
     STDMETHOD(COMGETTER(VideoCaptureRate))(ULONG *aRate);
     STDMETHOD(COMSETTER(VideoCaptureRate))(ULONG aRate);
-    STDMETHOD(COMGETTER(VideoCaptureFps))(ULONG *aFps);
-    STDMETHOD(COMSETTER(VideoCaptureFps))(ULONG aFps);
+    STDMETHOD(COMGETTER(VideoCaptureFPS))(ULONG *aFPS);
+    STDMETHOD(COMSETTER(VideoCaptureFPS))(ULONG aFPS);
     STDMETHOD(COMGETTER(BIOSSettings))(IBIOSSettings **biosSettings);
     STDMETHOD(COMGETTER(SnapshotFolder))(BSTR *aSavedStateFolder);
     STDMETHOD(COMSETTER(SnapshotFolder))(IN_BSTR aSavedStateFolder);
@@ -751,6 +751,8 @@ public:
     Utf8Str queryLogFilename(ULONG idx);
 
     void composeSavedStateFilename(Utf8Str &strStateFilePath);
+
+    void getDefaultVideoCaptureFile(Utf8Str &strFile);
 
     HRESULT launchVMProcess(IInternalSessionControl *aControl,
                             const Utf8Str &strType,

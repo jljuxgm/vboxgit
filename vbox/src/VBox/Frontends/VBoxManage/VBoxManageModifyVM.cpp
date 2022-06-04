@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 46667 2013-06-19 15:30:23Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2516,7 +2516,7 @@ int handleModifyVM(HandlerArg *a)
             }
             case MODIFYVM_VCP_FPS:
             {
-                CHECK_ERROR(machine, COMSETTER(VideoCaptureFps)(ValueUnion.u32));
+                CHECK_ERROR(machine, COMSETTER(VideoCaptureFPS)(ValueUnion.u32));
                 break;
             }
 #endif

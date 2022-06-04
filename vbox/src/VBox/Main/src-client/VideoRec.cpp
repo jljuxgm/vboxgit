@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 46578 2013-06-17 10:05:38Z vboxsync $ */
+/* $Id: VideoRec.cpp 46667 2013-06-19 15:30:23Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -473,11 +473,14 @@ int VideoRecStrmInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen, const char *pszFil
     pStrm->pu8RgbBuf = (uint8_t *)RTMemAllocZ(uWidth * uHeight * 4);
     AssertReturn(pStrm->pu8RgbBuf, VERR_NO_MEMORY);
 
+    /* Play safe: the file must not exist, overwriting is potentially
+     * hazardous as nothing prevents the user from picking a file name of some
+     * other important file, causing unintentional data loss. */
     int rc = RTFileOpen(&pStrm->Ebml.file, pszFile,
-                        RTFILE_O_CREATE_REPLACE | RTFILE_O_WRITE | RTFILE_O_DENY_NONE);
+                        RTFILE_O_CREATE | RTFILE_O_WRITE | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
     {
-        LogFlow(("Failed to open the video capture output File (%Rrc)\n", rc));
+        LogRel(("Failed to create the video capture output file \"%s\" (%Rrc)\n", pszFile, rc));
         return rc;
     }
 
@@ -499,7 +502,7 @@ int VideoRecStrmInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen, const char *pszFil
     pStrm->VpxConfig.g_timebase.den = 1000;
     /* disable multithreading */
     pStrm->VpxConfig.g_threads = 0;
-//    pStrm->VpxConfig.kf_max_dist = 1;
+
     pStrm->uDelay = 1000 / uFps;
 
     struct vpx_rational arg_framerate = { 30, 1 };

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 46622 2013-06-18 12:32:09Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 46667 2013-06-19 15:30:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -118,7 +118,7 @@ void UIMachineSettingsDisplay::loadToCacheFrom(QVariant &data)
     displayData.m_strVideoCaptureFilePath = m_machine.GetVideoCaptureFile();
     displayData.m_iVideoCaptureFrameWidth = m_machine.GetVideoCaptureWidth();
     displayData.m_iVideoCaptureFrameHeight = m_machine.GetVideoCaptureHeight();
-    displayData.m_iVideoCaptureFrameRate = m_machine.GetVideoCaptureFps();
+    displayData.m_iVideoCaptureFrameRate = m_machine.GetVideoCaptureFPS();
     displayData.m_iVideoCaptureBitRate = m_machine.GetVideoCaptureRate();
     displayData.m_screens = m_machine.GetVideoCaptureScreens();
 
@@ -274,7 +274,7 @@ void UIMachineSettingsDisplay::saveFromCacheTo(QVariant &data)
                 m_machine.SetVideoCaptureFile(displayData.m_strVideoCaptureFilePath);
                 m_machine.SetVideoCaptureWidth(displayData.m_iVideoCaptureFrameWidth);
                 m_machine.SetVideoCaptureHeight(displayData.m_iVideoCaptureFrameHeight);
-                m_machine.SetVideoCaptureFps(displayData.m_iVideoCaptureFrameRate);
+                m_machine.SetVideoCaptureFPS(displayData.m_iVideoCaptureFrameRate);
                 m_machine.SetVideoCaptureRate(displayData.m_iVideoCaptureBitRate);
                 m_machine.SetVideoCaptureScreens(displayData.m_screens);
                 /* Finally we should *enable* Video Capture if necessary: */
@@ -289,7 +289,7 @@ void UIMachineSettingsDisplay::saveFromCacheTo(QVariant &data)
             m_machine.SetVideoCaptureFile(displayData.m_strVideoCaptureFilePath);
             m_machine.SetVideoCaptureWidth(displayData.m_iVideoCaptureFrameWidth);
             m_machine.SetVideoCaptureHeight(displayData.m_iVideoCaptureFrameHeight);
-            m_machine.SetVideoCaptureFps(displayData.m_iVideoCaptureFrameRate);
+            m_machine.SetVideoCaptureFPS(displayData.m_iVideoCaptureFrameRate);
             m_machine.SetVideoCaptureRate(displayData.m_iVideoCaptureBitRate);
             m_machine.SetVideoCaptureScreens(displayData.m_screens);
         }
