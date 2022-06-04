@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 42393 2012-07-25 13:47:59Z vboxsync $ */
+/* $Id: DevAHCI.cpp 42522 2012-08-02 09:20:50Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -7844,7 +7844,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     PCIDevSetCommand     (&pThis->dev, 0x0000);
 #ifdef VBOX_WITH_MSI_DEVICES
     PCIDevSetStatus      (&pThis->dev, VBOX_PCI_STATUS_CAP_LIST);
-    PCIDevSetCapabilityList(&pThis->dev, 0xa0);
+    PCIDevSetCapabilityList(&pThis->dev, 0x80);
 #else
     PCIDevSetCapabilityList(&pThis->dev, 0x70);
 #endif
@@ -7884,7 +7884,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
 
     RT_ZERO(aMsiReg);
     aMsiReg.cMsiVectors = 1;
-    aMsiReg.iMsiCapOffset = 0xa0;
+    aMsiReg.iMsiCapOffset = 0x80;
     aMsiReg.iMsiNextOffset = 0x70;
     rc = PDMDevHlpPCIRegisterMsi(pDevIns, &aMsiReg);
     if (RT_FAILURE (rc))
