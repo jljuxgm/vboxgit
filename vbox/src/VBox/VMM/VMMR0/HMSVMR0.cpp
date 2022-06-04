@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 46790 2013-06-25 17:52:11Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 46794 2013-06-26 09:34:52Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3139,7 +3139,11 @@ DECLINLINE(void) hmR0SvmSetPendingXcptPF(PVMCPU pVCpu, PCPUMCTX pCtx, uint32_t u
     Event.n.u32ErrorCode     = u32ErrCode;
 
     /* Update CR2 of the guest. */
-    pCtx->cr2 = uFaultAddress;
+    if (pCtx->cr2 != uFaultAddress)
+    {
+        pCtx->cr2 = uFaultAddress;
+        pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_CR2;
+    }
 
     hmR0SvmSetPendingEvent(pVCpu, &Event, uFaultAddress);
 }
@@ -4228,7 +4232,8 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptPF(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     TRPMAssertXcptPF(pVCpu, uFaultAddress, u32ErrCode);
     int rc = PGMTrap0eHandler(pVCpu, u32ErrCode, CPUMCTX2CORE(pCtx), (RTGCPTR)uFaultAddress);
 
-    Log2(("#PF rc=%Rrc\n", rc));
+    Log4(("#PF rc=%Rrc\n", rc));
+
     if (rc == VINF_SUCCESS)
     {
         /* Successfully synced shadow pages tables or emulated an MMIO instruction. */
