@@ -1,4 +1,4 @@
-/* $Id: comparepaths.cpp 42978 2012-08-24 14:01:48Z vboxsync $ */
+/* $Id: comparepaths.cpp 42980 2012-08-24 15:43:52Z vboxsync $ */
 /** @file
  * IPRT - Path Comparison.
  */
@@ -175,7 +175,7 @@ RTDECL(bool) RTPathStartsWith(const char *pszPath, const char *pszParentPath)
         return true;
 
     /* Deal with pszParentPath = root (or having a trailing slash). */
-    if (   pszParentPath > 0
+    if (   cchParentPath > 0
         && RTPATH_IS_SLASH(pszParentPath[cchParentPath - 1])
         && RTPATH_IS_SLASH(pszPath[cchParentPath - 1]))
         return true;
