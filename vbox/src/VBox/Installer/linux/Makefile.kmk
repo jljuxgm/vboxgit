@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44092 2012-12-11 14:43:49Z vboxsync $
+# $Id: Makefile.kmk 44344 2013-01-23 20:21:05Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -296,12 +296,12 @@ ifdef VBOX_WITH_HEADLESS
 	$(if $(VBOX_WITH_HARDENING),VBoxHeadless.so)
 endif
 
-# BFE
-ifdef VBOX_WITH_BFE
- VBOX_LNX_STRIP_BIN += \
- 	VBoxBFE \
- 	$(if $(VBOX_WITH_HARDENING),VBoxBFE.so)
-endif
+## VBoxBFE - Not shipped on linux due to a typo (VBOX_WITH_BFE), let's keep it that way as it doesn't get enough testing.
+#ifdef VBOX_WITH_VBOXBFE
+# VBOX_LNX_STRIP_BIN += \
+# 	VBoxBFE \
+# 	$(if $(VBOX_WITH_HARDENING),VBoxBFE.so)
+#endif
 
 # Webservices
 ifdef VBOX_WITH_WEBSERVICES
