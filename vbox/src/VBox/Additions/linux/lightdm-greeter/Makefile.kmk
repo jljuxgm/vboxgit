@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45170 2013-03-25 13:35:53Z vboxsync $
+# $Id: Makefile.kmk 45511 2013-04-12 09:55:52Z vboxsync $
 ## @file
 # Makefile for VBox LightDM greeter for providing automated logons.
 #
@@ -64,6 +64,7 @@ vbox-greeter_LIBS = \
 	$(if $(VBOX_OSE),lightdm-gobject-1,$(VBOX_PATH_ADDITIONS_LIB)/VBox-liblightdm-gobject$(VBOX_SUFF_LIB)) \
 	glib-2.0 \
 	gio-2.0 \
+	gobject-2.0 \
 	$(VBOX_LIB_IPRT_GUEST_R3_SHARED) \
 	$(VBOX_LIB_VBGL_R3_SHARED) \
 	$(VBOX_LIB_IPRT_GUEST_R3_SHARED)
