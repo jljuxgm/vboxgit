@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 42137 2012-07-13 09:41:27Z vboxsync $ */
+/* $Id: slirp_dns.c 43641 2012-10-15 12:58:23Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -258,7 +258,19 @@ static int get_dns_addr_domain(PNATState pData, const char **ppszDomain)
             pDns->de_addr.s_addr = tmp_addr.s_addr;
             if ((pDns->de_addr.s_addr & RT_H2N_U32_C(IN_CLASSA_NET)) == RT_N2H_U32_C(INADDR_LOOPBACK & IN_CLASSA_NET))
             {
-                pDns->de_addr.s_addr = RT_H2N_U32(RT_N2H_U32(pData->special_addr.s_addr) | CTL_ALIAS);
+                if ((pDns->de_addr.s_addr) == RT_N2H_U32_C(INADDR_LOOPBACK))
+                    pDns->de_addr.s_addr = RT_H2N_U32(RT_N2H_U32(pData->special_addr.s_addr) | CTL_ALIAS);
+                else
+                {
+                    /* Modern Ubuntu register 127.0.1.1 as DNS server */
+                    LogRel(("NAT: DNS server %RTnaipv4 registration detected switching to host resolver case forcebly.\n",
+                            pDns->de_addr.s_addr));
+                    RTMemFree(pDns);
+                    /* Releasing fetched DNS information. */
+                    slirpReleaseDnsSettings(pData);
+                    pData->fUseHostResolver = 1;
+                    return VINF_SUCCESS;
+                }
             }
             TAILQ_INSERT_HEAD(&pData->pDnsList, pDns, de_list);
             cNameserversFound++;
