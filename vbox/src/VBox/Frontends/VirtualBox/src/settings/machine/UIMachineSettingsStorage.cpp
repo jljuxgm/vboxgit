@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 42017 2012-07-04 09:19:44Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 43132 2012-08-31 11:36:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1924,8 +1924,19 @@ void UIMachineSettingsStorage::loadToCacheFrom(QVariant &data)
             storageControllerData.m_uPortCount = controller.GetPortCount();
             storageControllerData.m_fUseHostIOCache = controller.GetUseHostIOCache();
 
+            /* Sort attachments before caching/fetching: */
+            const CMediumAttachmentVector &attachmentVector =
+                    m_machine.GetMediumAttachmentsOfController(storageControllerData.m_strControllerName);
+            QMap<StorageSlot, CMediumAttachment> attachmentMap;
+            foreach (const CMediumAttachment &attachment, attachmentVector)
+            {
+                StorageSlot storageSlot(storageControllerData.m_controllerBus,
+                                        attachment.GetPort(), attachment.GetDevice());
+                attachmentMap.insert(storageSlot, attachment);
+            }
+            const QList<CMediumAttachment> &attachments = attachmentMap.values();
+
             /* For each attachment: */
-            const CMediumAttachmentVector &attachments = m_machine.GetMediumAttachmentsOfController(storageControllerData.m_strControllerName);
             for (int iAttachmentIndex = 0; iAttachmentIndex < attachments.size(); ++iAttachmentIndex)
             {
                 /* Prepare storage attachment data: */
