@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 43655 2012-10-16 11:27:17Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 44131 2012-12-14 10:32:23Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -505,7 +505,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--port <number>]\n"
                      "                            [--device <number>]\n"
                      "                            [--type dvddrive|hdd|fdd]\n"
-                     "                            [--medium none|emptydrive|\n"
+                     "                            [--medium none|emptydrive|additions|\n"
                      "                                      <uuid>|<filename>|host:<drive>|iscsi]\n"
                      "                            [--mtype normal|writethrough|immutable|shareable|\n"
                      "                                     readonly|multiattach]\n"
