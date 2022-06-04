@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 42040 2012-07-06 13:54:59Z vboxsync $ */
+/* $Id: VD.cpp 43141 2012-08-31 16:33:59Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2983,7 +2983,8 @@ static int vdWriteHelperAsync(PVDIOCTX pIoCtx)
          * Tell the caller that we don't need to go back here because all
          * writes are initiated.
          */
-        if (!cbWrite)
+        if (   !cbWrite
+            && rc != VERR_VD_IOCTX_HALT)
             rc = VINF_SUCCESS;
 
         pIoCtx->Req.Io.uOffset    = uOffset;
