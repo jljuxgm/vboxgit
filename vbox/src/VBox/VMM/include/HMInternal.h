@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 46871 2013-06-28 16:25:06Z vboxsync $ */
+/* $Id: HMInternal.h 46945 2013-07-03 15:52:35Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -706,6 +706,8 @@ typedef struct HMCPU
         /** Whether VTPR with V_INTR_MASKING set is in effect, indicating
          *  we should check if the VTPR changed on every VM-exit. */
         bool                        fSyncVTpr;
+        uint8_t                     u8Align[7];
+
         /** Alignment padding. */
         uint32_t                    u32Padding;
     } svm;
