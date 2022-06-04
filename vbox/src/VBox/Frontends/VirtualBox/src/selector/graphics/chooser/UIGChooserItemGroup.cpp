@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 42922 2012-08-22 14:36:27Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43009 2012-08-27 19:10:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -205,6 +205,19 @@ bool UIGChooserItemGroup::contains(const QString &strId, bool fRecursively /* = 
         foreach (UIGChooserItem *pItem, m_groupItems)
             if (pItem->toGroupItem()->contains(strId, fRecursively))
                 return true;
+    return false;
+}
+
+bool UIGChooserItemGroup::isContainsLockedMachine()
+{
+    /* For each machine item: */
+    foreach (UIGChooserItem *pItem, items(UIGChooserItemType_Machine))
+        if (pItem->toMachineItem()->isLockedMachine())
+            return true;
+    /* For each group item: */
+    foreach (UIGChooserItem *pItem, items(UIGChooserItemType_Group))
+        if (pItem->toGroupItem()->isContainsLockedMachine())
+            return true;
     return false;
 }
 
@@ -874,6 +887,9 @@ bool UIGChooserItemGroup::isDropAllowed(QGraphicsSceneDragDropEvent *pEvent, Dra
         const UIGChooserItemMimeData *pCastedMimeData = qobject_cast<const UIGChooserItemMimeData*>(pMimeData);
         AssertMsg(pCastedMimeData, ("Can't cast passed mime-data to UIGChooserItemMimeData!"));
         UIGChooserItem *pItem = pCastedMimeData->item();
+        /* Make sure passed group contains only mutable machines: */
+        if (pItem->toGroupItem()->isContainsLockedMachine())
+            return false;
         /* Make sure passed group is not 'this': */
         if (pItem == this)
             return false;
@@ -893,6 +909,9 @@ bool UIGChooserItemGroup::isDropAllowed(QGraphicsSceneDragDropEvent *pEvent, Dra
         const UIGChooserItemMimeData *pCastedMimeData = qobject_cast<const UIGChooserItemMimeData*>(pMimeData);
         AssertMsg(pCastedMimeData, ("Can't cast passed mime-data to UIGChooserItemMimeData!"));
         UIGChooserItem *pItem = pCastedMimeData->item();
+        /* Make sure passed machine is mutable: */
+        if (pItem->toMachineItem()->isLockedMachine())
+            return false;
         switch (pEvent->proposedAction())
         {
             case Qt::MoveAction:
