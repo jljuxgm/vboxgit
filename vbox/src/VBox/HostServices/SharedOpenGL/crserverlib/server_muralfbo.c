@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 44766 2013-02-20 15:43:52Z vboxsync $ */
+/* $Id: server_muralfbo.c 44886 2013-03-01 14:11:35Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -278,6 +278,13 @@ void crServerRedirMuralFBO(CRMuralInfo *mural, GLubyte redir)
     }
     else
     {
+        if (redir == CR_SERVER_REDIR_NONE)
+        {
+            /* tell renderspu we do not want compositor presentation anymore
+             * renderspu will ensure its redraw thread is done with using the compositor, etc. */
+            cr_server.head_spu->dispatch_table.VBoxPresentComposition(mural->spuWindow, NULL, NULL);
+        }
+
         if (mural->fUseFBO == CR_SERVER_REDIR_FBO_RAM)
             cr_server.head_spu->dispatch_table.WindowShow(mural->spuWindow, mural->bVisible);
 
