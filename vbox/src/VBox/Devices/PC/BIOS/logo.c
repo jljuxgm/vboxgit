@@ -1,4 +1,4 @@
-/* $Id: logo.c 42260 2012-07-20 13:22:19Z vboxsync $ */
+/* $Id: logo.c 42370 2012-07-24 14:03:21Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
@@ -58,7 +58,7 @@ uint16_t vesa_get_mode(uint16_t __far *mode);
     "mov    ax, 4F03h"      \
     "int    10h"            \
     "mov    es:[di], bx"    \
-    parm [es di] modify [ax] nomemory;
+    parm [es di] modify [ax bx] nomemory;
 
 
 /**
