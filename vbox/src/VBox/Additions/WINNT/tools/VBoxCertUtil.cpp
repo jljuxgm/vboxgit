@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtil.cpp 42977 2012-08-24 14:00:25Z vboxsync $ */
+/* $Id: VBoxCertUtil.cpp 42991 2012-08-27 07:41:56Z vboxsync $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
@@ -220,10 +220,10 @@ static bool readCertFile(const char *pszCertFile, PCCERT_CONTEXT *ppOutCtx, HCER
             RTMsgError("CertCreateCertificateContext returned %s parsing the content of '%s'",
                        errorToString(GetLastError()), pszCertFile);
         }
+        RTFileReadAllFree(pvFile, cbFile);
     }
     else
         RTMsgError("RTFileReadAll failed on '%s': %Rrc", pszCertFile, rc);
-    RTFileReadAllFree(pvFile, cbFile);
     return fRc;
 }
 
