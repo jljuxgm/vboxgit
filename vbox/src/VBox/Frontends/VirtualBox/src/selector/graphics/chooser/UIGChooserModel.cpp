@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42767 2012-08-10 22:34:00Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42802 2012-08-14 10:40:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -349,6 +349,9 @@ void UIGChooserModel::setFocusItem(UIGChooserItem *pItem, bool fWithSelection /*
             connect(m_pFocusItem, SIGNAL(destroyed(QObject*)), this, SLOT(sltFocusItemDestroyed()));
             m_pFocusItem->update();
         }
+
+        /* Notify focus changed: */
+        emit sigFocusChanged(m_pFocusItem);
     }
 }
 
