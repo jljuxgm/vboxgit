@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 44173 2012-12-19 18:12:31Z vboxsync $ */
+/* $Id: SUPLib.cpp 44246 2013-01-08 07:58:46Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -234,7 +234,7 @@ SUPR3DECL(int) SUPR3InitEx(bool fUnrestricted, PSUPDRVSESSION *ppSession)
         {
             g_cInits--;
             if (ppSession)
-                *ppSession = NULL;
+                *ppSession = NIL_RTR0PTR;
             return VERR_VM_DRIVER_NOT_ACCESSIBLE; /** @todo different status code? */
         }
         return VINF_SUCCESS;
