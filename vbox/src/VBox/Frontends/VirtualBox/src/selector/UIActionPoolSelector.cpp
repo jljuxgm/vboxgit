@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 47149 2013-07-15 10:02:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -470,7 +470,7 @@ class UIActionSimpleMachineAddGroup : public UIActionSimple
 public:
 
     UIActionSimpleMachineAddGroup(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/add_shared_folder_16px.png")
+        : UIActionSimple(pParent, ":/sf_add_16px.png")
     {
         retranslateUi();
     }

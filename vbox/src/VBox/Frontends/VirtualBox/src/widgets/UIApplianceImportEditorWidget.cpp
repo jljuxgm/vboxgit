@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 45424 2013-04-09 08:21:25Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 47149 2013-07-15 10:02:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -66,7 +66,7 @@ bool UIApplianceImportEditorWidget::setFile(const QString& strFile)
             if (fResult)
             {
                 /* Show some progress, so the user know whats going on */
-                msgCenter().showModalProgressDialog(progress, tr("Reading Appliance ..."), ":/shared_folder_32px.png", this);
+                msgCenter().showModalProgressDialog(progress, tr("Reading Appliance ..."), ":/sf_32px.png", this);
                 if (!progress.isOk() || progress.GetResultCode() != 0)
                     fResult = false;
                 else

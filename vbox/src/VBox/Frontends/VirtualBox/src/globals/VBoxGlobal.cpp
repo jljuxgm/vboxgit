@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 46876 2013-07-01 10:09:35Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 47149 2013-07-15 10:02:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1559,7 +1559,7 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
 
         report += sectionTpl
             .arg (2 + 1) /* rows */
-            .arg (":/shared_folder_16px.png", /* icon */
+            .arg (":/sf_16px.png", /* icon */
                   "#sfolders", /* link */
                   tr ("Shared Folders", "details report"), /* title */
                   item); /* items */

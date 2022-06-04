@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 46912 2013-07-02 15:06:34Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 47149 2013-07-15 10:02:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -975,7 +975,7 @@ UIGDetailsElementSF::UIGDetailsElementSF(UIGDetailsSet *pParent, bool fOpened)
     : UIGDetailsElementInterface(pParent, DetailsElementType_SF, fOpened)
 {
     /* Icon: */
-    setIcon(UIIconPool::iconSet(":/shared_folder_16px.png"));
+    setIcon(UIIconPool::iconSet(":/sf_16px.png"));
 
     /* Translate: */
     retranslateUi();
