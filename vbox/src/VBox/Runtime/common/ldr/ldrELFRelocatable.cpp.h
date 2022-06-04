@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 46149 2013-05-17 17:21:23Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 46151 2013-05-17 19:28:09Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -1032,8 +1032,8 @@ static DECLCALLBACK(int) RTLDRELF_NAME(ReadDbgInfo)(PRTLDRMODINTERNAL pMod, uint
         iRelocs = 0;
         while (   iRelocs < pThis->Ehdr.e_shnum
                && (   pThis->paShdrs[iRelocs].sh_info != iDbgInfo
-                   || pThis->paShdrs[iRelocs].sh_type != SHT_REL
-                   || pThis->paShdrs[iRelocs].sh_type != SHT_RELA))
+                   || (   pThis->paShdrs[iRelocs].sh_type != SHT_REL
+                       && pThis->paShdrs[iRelocs].sh_type != SHT_RELA)) )
             iRelocs++;
     }
     if (   iRelocs < pThis->Ehdr.e_shnum
