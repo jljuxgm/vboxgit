@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 46820 2013-06-27 07:58:37Z vboxsync $ */
+/* $Id: MachineImpl.cpp 46825 2013-06-27 10:23:20Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1734,7 +1734,17 @@ STDMETHODIMP Machine::COMSETTER(VideoCaptureEnabled)(BOOL fEnabled)
     alock.release();
     rc = onVideoCaptureChange();
     alock.acquire();
-    if (FAILED(rc)) return rc;
+    if (FAILED(rc))
+    {
+        /*
+         * Normally we would do the actual change _after_ onVideoCaptureChange() succeeded.
+         * We cannot do this because that function uses Machine::GetVideoCaptureEnabled to
+         * determine if it should start or stop capturing. Therefore we need to manually
+         * undo change.
+         */
+        mHWData->mVideoCaptureEnabled = mHWData.backedUpData()->mVideoCaptureEnabled;
+        return rc;
+    }
 
     /** Save settings if online - @todo why is this required? -- @bugref{6818} */
     if (Global::IsOnline(mData->mMachineState))
