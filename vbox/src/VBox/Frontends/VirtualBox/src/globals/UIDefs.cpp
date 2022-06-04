@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 45374 2013-04-05 14:22:14Z vboxsync $ */
+/* $Id: UIDefs.cpp 45402 2013-04-08 12:32:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -60,6 +60,7 @@ const char* UIDefs::GUI_Seamless = "GUI/Seamless";
 const char* UIDefs::GUI_Scale = "GUI/Scale";
 const char* UIDefs::GUI_VirtualScreenToHostScreen = "GUI/VirtualScreenToHostScreen";
 const char* UIDefs::GUI_AutoresizeGuest = "GUI/AutoresizeGuest";
+const char* UIDefs::GUI_AutomountGuestScreens = "GUI/AutomountGuestScreens";
 const char* UIDefs::GUI_SaveMountedAtRuntime = "GUI/SaveMountedAtRuntime";
 const char* UIDefs::GUI_PassCAD = "GUI/PassCAD";
 

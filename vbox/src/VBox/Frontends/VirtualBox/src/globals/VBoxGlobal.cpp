@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45377 2013-04-05 14:41:52Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45402 2013-04-08 12:32:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3734,6 +3734,27 @@ bool VBoxGlobal::shouldWeShowDetails(CMachine &machine,
 
     /* 'true' if hiding is not approved by the extra-data: */
     return !isApprovedByExtraData(machine, GUI_HideDetails);
+}
+
+/* static */
+bool VBoxGlobal::shouldWeAutoMountGuestScreens(CMachine &machine,
+                                               bool fIncludingSanityCheck /*= true*/)
+{
+    if (fIncludingSanityCheck)
+    {
+        /* 'false' for null machines,
+         * there is nothing to start anyway: */
+        if (machine.isNull())
+            return false;
+
+        /* 'false' for inaccessible machines,
+         * we can't start them anyway: */
+        if (!machine.GetAccessible())
+            return false;
+    }
+
+    /* 'true' if guest-screen auto-mounting approved by the extra-data: */
+    return isApprovedByExtraData(machine, GUI_AutomountGuestScreens);
 }
 
 #ifdef RT_OS_LINUX
