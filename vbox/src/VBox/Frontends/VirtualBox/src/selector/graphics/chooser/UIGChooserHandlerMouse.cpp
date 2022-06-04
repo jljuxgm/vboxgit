@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerMouse.cpp 43554 2012-10-05 11:07:09Z vboxsync $ */
+/* $Id: UIGChooserHandlerMouse.cpp 43564 2012-10-08 11:20:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -205,7 +205,7 @@ bool UIGChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pE
                 else if (pItemUnderMouse->type() == UIGChooserItemType_Machine)
                 {
                     /* Activate machine item: */
-                    model()->activate();
+                    model()->activateMachineItem();
                 }
                 break;
             }
