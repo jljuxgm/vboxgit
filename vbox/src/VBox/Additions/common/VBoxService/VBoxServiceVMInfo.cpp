@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 44570 2013-02-06 14:04:14Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 44595 2013-02-08 09:40:06Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -587,7 +587,7 @@ static int vboxserviceVMInfoWriteUsers(void)
 
                                     /** @todo Add support for getting UID_MIN (/etc/login.defs on
                                      *        Debian). */
-                                    int uid_min = 1000;
+                                    uint32_t uid_min = 1000;
 
                                     /* Look up user name (realname) from uid. */
                                     setpwent();
