@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 45913 2013-05-06 15:01:27Z vboxsync $ */
+/* $Id: EbmlWriter.h 45914 2013-05-06 15:11:12Z vboxsync $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -252,7 +252,7 @@ enum mkv
 
 struct cue_entry
 {
-    uint64_t    time;
+    uint32_t    time;
     uint64_t    loc;
 };
 
@@ -275,7 +275,7 @@ struct EbmlGlobal
     uint64_t    startSegment;
     uint64_t    startCluster;
 
-    uint64_t    cluster_timecode;
+    uint32_t    cluster_timecode;
     int         cluster_open;
 
     struct cue_entry *cue_list;

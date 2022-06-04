@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45890 2013-05-03 09:57:44Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 45914 2013-05-06 15:11:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3929,7 +3929,7 @@ DECLCALLBACK(void) Display::displayVBVAUpdateProcess(PPDMIDISPLAYCONNECTOR pInte
         pHdrUnconst->y -= (int16_t)pFBInfo->yOrigin;
 
         /* @todo new SendUpdate entry which can get a separate cmd header or coords. */
-        pThis->mParent->consoleVRDPServer()->SendUpdate (uScreenId, pCmd, cbCmd);
+        pThis->mParent->consoleVRDPServer()->SendUpdate (uScreenId, pCmd, (uint32_t)cbCmd);
 
         *pHdrUnconst = hdrSaved;
     }

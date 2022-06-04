@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 45913 2013-05-06 15:01:27Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 45914 2013-05-06 15:11:12Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container
  */
@@ -389,7 +389,7 @@ int Ebml_WriteWebMBlock(EbmlGlobal                *glob,
         /* Open the new cluster */
         block_timecode = 0;
         glob->cluster_open = 1;
-        glob->cluster_timecode = pts_ms;
+        glob->cluster_timecode = (uint32_t)pts_ms;
         glob->cluster_pos = RTFileTell(glob->file);
         if (RT_SUCCESS(rc))
             rc = Ebml_StartSubElement(glob, &glob->startCluster, Cluster); //cluster
