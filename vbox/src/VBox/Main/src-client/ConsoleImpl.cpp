@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 44421 2013-01-28 12:42:07Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 45029 2013-03-13 20:57:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9901,9 +9901,9 @@ DECLCALLBACK(void *)  Console::drvStatus_QueryInterface(PPDMIBASE pInterface, co
  */
 DECLCALLBACK(void) Console::drvStatus_Destruct(PPDMDRVINS pDrvIns)
 {
+    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
     PDRVMAINSTATUS pData = PDMINS_2_DATA(pDrvIns, PDRVMAINSTATUS);
     LogFlowFunc(("iInstance=%d\n", pDrvIns->iInstance));
-    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
     if (pData->papLeds)
     {
@@ -9921,9 +9921,9 @@ DECLCALLBACK(void) Console::drvStatus_Destruct(PPDMDRVINS pDrvIns)
  */
 DECLCALLBACK(int) Console::drvStatus_Construct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
+    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
     PDRVMAINSTATUS pData = PDMINS_2_DATA(pDrvIns, PDRVMAINSTATUS);
     LogFlowFunc(("iInstance=%d\n", pDrvIns->iInstance));
-    PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*
      * Validate configuration.
