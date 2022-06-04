@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 42147 2012-07-13 13:59:20Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 42369 2012-07-24 13:55:34Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 42147 2012-07-13 13:59:20Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 42369 2012-07-24 13:55:34Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -807,6 +807,7 @@ static bool disIsCodeAndAdjustSize(uint32_t uFlatAddr, PRTDBGSYMBOL pSym, PBIOSS
                     || !strcmp(pSym->szName, "bios_string")
                     || !strcmp(pSym->szName, "vector_table")
                     || !strcmp(pSym->szName, "pci_routing_table_structure")
+                    || !strcmp(pSym->szName, "_pci_routing_table")
                     )
                     return false;
             }
