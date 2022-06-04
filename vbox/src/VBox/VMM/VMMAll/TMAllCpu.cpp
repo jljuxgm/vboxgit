@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 44932 2013-03-06 14:49:23Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 44933 2013-03-06 15:08:46Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -320,15 +320,15 @@ DECLINLINE(uint64_t) tmCpuTickGetInternal(PVMCPU pVCpu, bool fCheckTimers)
         else
             u64 = ASMReadTSC();
 
-        /* Never return a value lower than what the guest has already seen. */
-        if (u64 < pVCpu->tm.s.u64TSCLastSeen)
+        /* Always return a value higher than what the guest has already seen. */
+        if (RT_LIKELY(u64 > pVCpu->tm.s.u64TSCLastSeen))
+            pVCpu->tm.s.u64TSCLastSeen = u64;
+        else
         {
             STAM_COUNTER_INC(&pVM->tm.s.StatTSCUnderflow);
             pVCpu->tm.s.u64TSCLastSeen += 64;   /* @todo choose a good increment here */
             u64 = pVCpu->tm.s.u64TSCLastSeen;
         }
-        else
-            pVCpu->tm.s.u64TSCLastSeen = u64;
     }
     else
         u64 = pVCpu->tm.s.u64TSC;
