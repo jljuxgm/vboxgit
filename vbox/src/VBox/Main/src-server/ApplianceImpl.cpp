@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 46581 2013-06-17 10:43:54Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 46822 2013-06-27 09:32:25Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1004,6 +1004,16 @@ void Appliance::disksWeight()
         /* One for every hard disk of the Virtual System */
         std::list<VirtualSystemDescriptionEntry*> avsdeHDs = vsdescThis->findByType(VirtualSystemDescriptionType_HardDiskImage);
         std::list<VirtualSystemDescriptionEntry*>::const_iterator itH;
+        for (itH = avsdeHDs.begin();
+             itH != avsdeHDs.end();
+             ++itH)
+        {
+            const VirtualSystemDescriptionEntry *pHD = *itH;
+            m->ulTotalDisksMB += pHD->ulSizeMB;
+            ++m->cDisks;
+        }
+
+        avsdeHDs = vsdescThis->findByType(VirtualSystemDescriptionType_CDROM);
         for (itH = avsdeHDs.begin();
              itH != avsdeHDs.end();
              ++itH)
