@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45953 2013-05-08 15:33:54Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45954 2013-05-08 15:37:29Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1681,7 +1681,7 @@ static int hmR0VmxSetupProcCtls(PVM pVM, PVMCPU pVCpu)
         AssertRCReturn(rc, rc);
 
         val |= VMX_VMCS_CTRL_PROC_EXEC_USE_TPR_SHADOW;         /* CR8 reads from the Virtual-APIC page. */
-                                                                        /* CR8 writes causes a VM-exit based on TPR threshold. */
+                                                               /* CR8 writes causes a VM-exit based on TPR threshold. */
         Assert(!(val & VMX_VMCS_CTRL_PROC_EXEC_CR8_STORE_EXIT));
         Assert(!(val & VMX_VMCS_CTRL_PROC_EXEC_CR8_LOAD_EXIT));
     }
