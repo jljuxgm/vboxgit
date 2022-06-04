@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 45701 2013-04-24 14:21:09Z vboxsync $ */
+/* $Id: PGM.cpp 45739 2013-04-25 19:44:05Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1225,9 +1225,6 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     /*
      * Init the structure.
      */
-#ifdef PGM_WITHOUT_MAPPINGS
-    pVM->pgm.s.fMappingsDisabled = true;
-#endif
     pVM->pgm.s.offVM       = RT_OFFSETOF(VM, pgm.s);
     pVM->pgm.s.offVCpuPGM  = RT_OFFSETOF(VMCPU, pgm.s);
 

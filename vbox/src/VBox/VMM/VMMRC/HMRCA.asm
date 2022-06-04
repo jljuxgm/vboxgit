@@ -1,4 +1,4 @@
-; $Id: HMRCA.asm 45711 2013-04-24 16:24:19Z vboxsync $
+; $Id: HMRCA.asm 45739 2013-04-25 19:44:05Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -139,18 +139,18 @@ BEGINPROC VMXGCStartVM64
     ; Flush the VMCS write cache first (before any other vmreads/vmwrites!)
     mov     rbx, [rbp + 24 + 8]                             ; pCache
 
-%ifdef VBOX_WITH_CRASHDUMP_MAGIC
+ %ifdef VBOX_WITH_CRASHDUMP_MAGIC
     mov     qword [rbx + VMCSCACHE.uPos], 2
-%endif
+ %endif
 
-%ifdef DEBUG
+ %ifdef DEBUG
     mov     rax, [rbp + 8 + 8]                              ; HCPhysCpuPage
     mov     [rbx + VMCSCACHE.TestIn.HCPhysCpuPage], rax
     mov     rax, [rbp + 16 + 8]                             ; HCPhysVmcs
     mov     [rbx + VMCSCACHE.TestIn.HCPhysVmcs], rax
     mov     [rbx + VMCSCACHE.TestIn.pCache], rbx
     mov     [rbx + VMCSCACHE.TestIn.pCtx], rsi
-%endif
+ %endif
 
     mov     ecx, [rbx + VMCSCACHE.Write.cValidEntries]
     cmp     ecx, 0
@@ -598,3 +598,4 @@ BEGINPROC HMTestSwitcher64
     mov eax, [rsp+8]
     ret
 ENDPROC HMTestSwitcher64
+

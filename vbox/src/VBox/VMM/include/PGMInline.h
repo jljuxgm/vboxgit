@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PGMInline.h 45739 2013-04-25 19:44:05Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1484,10 +1484,11 @@ DECL_FORCE_INLINE(bool) pgmMapAreMappingsEnabled(PVM pVM)
 {
 #ifdef PGM_WITHOUT_MAPPINGS
     /* There are no mappings in VT-x and AMD-V mode. */
-    Assert(pVM->pgm.s.fMappingsDisabled);
+    Assert(HMIsEnabled(pVM));
     return false;
 #else
-    return !pVM->pgm.s.fMappingsDisabled;
+    Assert(pVM->cCpus == 1);
+    return !HMIsEnabled(pVM);
 #endif
 }
 
@@ -1502,11 +1503,11 @@ DECL_FORCE_INLINE(bool) pgmMapAreMappingsFloating(PVM pVM)
 {
 #ifdef PGM_WITHOUT_MAPPINGS
     /* There are no mappings in VT-x and AMD-V mode. */
-    Assert(pVM->pgm.s.fMappingsDisabled);
+    Assert(HMIsEnabled(pVM));
     return false;
 #else
-    return !pVM->pgm.s.fMappingsDisabled
-        && !pVM->pgm.s.fMappingsFixed;
+    return !pVM->pgm.s.fMappingsFixed
+        && pgmMapAreMappingsEnabled(pVM);
 #endif
 }
 
