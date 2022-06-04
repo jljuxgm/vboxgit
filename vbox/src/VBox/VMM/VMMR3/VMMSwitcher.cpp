@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 43864 2012-11-13 14:16:42Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 44168 2012-12-19 17:49:07Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -287,7 +287,8 @@ void vmmR3SwitcherRelocate(PVM pVM, RTGCINTPTR offDelta)
  * @param   GCPtrGDT    The GC address of the hypervisor GDT.
  * @param   SelCS64     The 64-bit mode hypervisor CS selector.
  */
-static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher, RTR0PTR R0PtrCode, uint8_t *pu8CodeR3, RTGCPTR GCPtrCode, uint32_t u32IDCode,
+static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher,
+                                         RTR0PTR R0PtrCode, uint8_t *pu8CodeR3, RTGCPTR GCPtrCode, uint32_t u32IDCode,
                                          RTSEL SelCS, RTSEL SelDS, RTSEL SelTSS, RTGCPTR GCPtrGDT, RTSEL SelCS64)
 {
     union
