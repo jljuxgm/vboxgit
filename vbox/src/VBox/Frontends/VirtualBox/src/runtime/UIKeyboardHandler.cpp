@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 45730 2013-04-25 13:49:42Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 47099 2013-07-11 15:16:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,6 +26,7 @@
 /* GUI includes: */
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+#include "UIPopupCenter.h"
 #include "UIActionPool.h"
 #include "UIKeyboardHandlerNormal.h"
 #include "UIKeyboardHandlerFullscreen.h"
@@ -913,7 +914,7 @@ bool UIKeyboardHandler::eventFilter(QObject *pWatchedObject, QEvent *pEvent)
                 {
                     /* Show a possible warning on key release which seems to be more expected by the end user: */
                     if (uisession()->isPaused())
-                        msgCenter().remindAboutPausedVMInput();
+                        popupCenter().remindAboutPausedVMInput(machineLogic()->activeMachineWindow());
                 }
                 break;
             }
