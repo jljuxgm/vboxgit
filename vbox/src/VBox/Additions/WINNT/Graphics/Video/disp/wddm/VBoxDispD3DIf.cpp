@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 42557 2012-08-02 20:31:05Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 43334 2012-09-14 17:34:33Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -65,10 +65,31 @@ HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D)
             break;
         }
 
+        pD3D->pfnVBoxWineExD3DDev9CreateVolumeTexture = (PFNVBOXWINEEXD3DDEV9_CREATEVOLUMETEXTURE)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DDev9CreateVolumeTexture");
+        if (!pD3D->pfnVBoxWineExD3DDev9CreateVolumeTexture)
+        {
+            WARN(("no VBoxWineExD3DDev9CreateVolumeTexture"));
+            break;
+        }
+
         pD3D->pfnVBoxWineExD3DDev9Flush = (PFNVBOXWINEEXD3DDEV9_FLUSH)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DDev9Flush");
         if (!pD3D->pfnVBoxWineExD3DDev9Flush)
         {
             WARN(("no VBoxWineExD3DDev9Flush"));
+            break;
+        }
+
+        pD3D->pfnVBoxWineExD3DDev9VolBlt = (PFNVBOXWINEEXD3DDEV9_VOLBLT)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DDev9VolBlt");
+        if (!pD3D->pfnVBoxWineExD3DDev9VolBlt)
+        {
+            WARN(("no VBoxWineExD3DDev9VolBlt"));
+            break;
+        }
+
+        pD3D->pfnVBoxWineExD3DDev9VolTexBlt = (PFNVBOXWINEEXD3DDEV9_VOLTEXBLT)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DDev9VolTexBlt");
+        if (!pD3D->pfnVBoxWineExD3DDev9VolTexBlt)
+        {
+            WARN(("no VBoxWineExD3DDev9VolTexBlt"));
             break;
         }
 

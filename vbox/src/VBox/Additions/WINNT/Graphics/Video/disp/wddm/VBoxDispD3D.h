@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 43236 2012-09-07 09:32:42Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 43334 2012-09-14 17:34:33Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -233,7 +233,10 @@ typedef struct VBOXWDDMDISP_LOCKINFO
         D3DDDIBOX  Box;
     };
     D3DDDI_LOCKFLAGS fFlags;
-    D3DLOCKED_RECT LockedRect;
+    union {
+        D3DLOCKED_RECT LockedRect;
+        D3DLOCKED_BOX LockedBox;
+    };
 #ifdef VBOXWDDMDISP_DEBUG
     PVOID pvData;
 #endif
@@ -245,6 +248,7 @@ typedef enum
     VBOXDISP_D3DIFTYPE_SURFACE,
     VBOXDISP_D3DIFTYPE_TEXTURE,
     VBOXDISP_D3DIFTYPE_CUBE_TEXTURE,
+    VBOXDISP_D3DIFTYPE_VOLUME_TEXTURE,
     VBOXDISP_D3DIFTYPE_VERTEXBUFFER,
     VBOXDISP_D3DIFTYPE_INDEXBUFFER
 } VBOXDISP_D3DIFTYPE;

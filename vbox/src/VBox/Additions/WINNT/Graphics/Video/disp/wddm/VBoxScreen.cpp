@@ -1,4 +1,4 @@
-/* $Id: VBoxScreen.cpp 38112 2011-07-22 13:26:19Z vboxsync $ */
+/* $Id: VBoxScreen.cpp 43334 2012-09-14 17:34:33Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -16,6 +16,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include "VBoxDispD3DCmn.h"
 #include "VBoxScreen.h"
 
 #include <iprt/log.h>

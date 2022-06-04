@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoTools.h 39992 2012-02-03 16:54:10Z vboxsync $ */
+/* $Id: VBoxVideoTools.h 43334 2012-09-14 17:34:33Z vboxsync $ */
 
 /** @file
  * VBox Video tooling
@@ -226,6 +226,95 @@ DECLINLINE(void) vboxWddmRectMoved(RECT *pDst, const RECT * pRect, int x, int y)
 {
     *pDst = *pRect;
     vboxWddmRectMove(pDst, x, y);
+}
+
+typedef struct VBOXPOINT3D
+{
+    UINT x;
+    UINT y;
+    UINT z;
+} VBOXPOINT3D, *PVBOXPOINT3D;
+
+typedef struct VBOXBOX3D
+{
+    UINT Left;
+    UINT Top;
+    UINT Right;
+    UINT Bottom;
+    UINT Front;
+    UINT Back;
+} VBOXBOX3D, *PVBOXBOX3D;
+
+DECLINLINE(void) vboxWddmBoxTranslate(VBOXBOX3D * pBox, int x, int y, int z)
+{
+    pBox->Left   += x;
+    pBox->Top    += y;
+    pBox->Right  += x;
+    pBox->Bottom += y;
+    pBox->Front  += z;
+    pBox->Back   += z;
+}
+
+DECLINLINE(void) vboxWddmBoxMove(VBOXBOX3D * pBox, int x, int y, int z)
+{
+    LONG w = pBox->Right - pBox->Left;
+    LONG h = pBox->Bottom - pBox->Top;
+    LONG d = pBox->Back - pBox->Front;
+    pBox->Left   = x;
+    pBox->Top    = y;
+    pBox->Right  = w + x;
+    pBox->Bottom = h + y;
+    pBox->Front  = z;
+    pBox->Back   = d + z;
+}
+
+#define VBOXWDDM_BOXDIV_U(_v, _d, _nz) do { \
+        UINT tmp = (_v) / (_d); \
+        if (!tmp && (_v) && (_nz)) \
+            (_v) = 1; \
+        else \
+            (_v) = tmp; \
+    } while (0)
+
+DECLINLINE(void) vboxWddmBoxDivide(VBOXBOX3D * pBox, int div, bool fDontReachZero)
+{
+    VBOXWDDM_BOXDIV_U(pBox->Left, div, fDontReachZero);
+    VBOXWDDM_BOXDIV_U(pBox->Top, div, fDontReachZero);
+    VBOXWDDM_BOXDIV_U(pBox->Right, div, fDontReachZero);
+    VBOXWDDM_BOXDIV_U(pBox->Bottom, div, fDontReachZero);
+    VBOXWDDM_BOXDIV_U(pBox->Front, div, fDontReachZero);
+    VBOXWDDM_BOXDIV_U(pBox->Back, div, fDontReachZero);
+}
+
+DECLINLINE(void) vboxWddmPoint3DDivide(VBOXPOINT3D * pPoint, int div, bool fDontReachZero)
+{
+    VBOXWDDM_BOXDIV_U(pPoint->x, div, fDontReachZero);
+    VBOXWDDM_BOXDIV_U(pPoint->y, div, fDontReachZero);
+    VBOXWDDM_BOXDIV_U(pPoint->y, div, fDontReachZero);
+}
+
+DECLINLINE(void) vboxWddmBoxTranslated(VBOXBOX3D * pDst, const VBOXBOX3D * pBox, int x, int y, int z)
+{
+    *pDst = *pBox;
+    vboxWddmBoxTranslate(pDst, x, y, z);
+}
+
+DECLINLINE(void) vboxWddmBoxMoved(VBOXBOX3D * pDst, const VBOXBOX3D * pBox, int x, int y, int z)
+{
+    *pDst = *pBox;
+    vboxWddmBoxMove(pDst, x, y, z);
+}
+
+DECLINLINE(void) vboxWddmBoxDivided(VBOXBOX3D * pDst, const VBOXBOX3D * pBox, int div, bool fDontReachZero)
+{
+    *pDst = *pBox;
+    vboxWddmBoxDivide(pDst, div, fDontReachZero);
+}
+
+DECLINLINE(void) vboxWddmPoint3DDivided(VBOXPOINT3D * pDst, const VBOXPOINT3D * pPoint, int div, bool fDontReachZero)
+{
+    *pDst = *pPoint;
+    vboxWddmPoint3DDivide(pDst, div, fDontReachZero);
 }
 
 /* the dirty rect info is valid */
