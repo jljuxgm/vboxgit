@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 46486 2013-06-10 22:14:40Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 46487 2013-06-10 23:35:44Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6815,7 +6815,8 @@ FNIEMOP_STUB(iemOp_arpl_Ew_Gw);
 
 /** Opcode 0x63.
  * @note This is a weird one. It works like a regular move instruction if
- *       REX.W isn't set, at least according to AMD docs (rev 3.15, 2009-11). */
+ *       REX.W isn't set, at least according to AMD docs (rev 3.15, 2009-11).
+ * @todo This definitely needs a testcase to verify the odd cases.  */
 FNIEMOP_DEF(iemOp_movsxd_Gv_Ev)
 {
     Assert(pIemCpu->enmEffOpSize == IEMMODE_64BIT); /* Caller branched already . */
