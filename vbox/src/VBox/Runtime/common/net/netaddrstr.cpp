@@ -1,4 +1,4 @@
-/* $Id: netaddrstr.cpp 43221 2012-09-06 10:16:14Z vboxsync $ */
+/* $Id: netaddrstr.cpp 45115 2013-03-21 08:01:54Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -1284,3 +1284,37 @@ RTDECL(bool) RTNetIsIPv4AddrStr(const char *pszAddress)
 }
 RT_EXPORT_SYMBOL(RTNetIsIPv4AddrStr);
 
+RTDECL(int) RTNetStrToIPv4Addr(const char *pszAddr, PRTNETADDRIPV4 pAddr)
+{
+    char *pszNext;
+    AssertPtrReturn(pszAddr, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pAddr, VERR_INVALID_PARAMETER);
+
+    int rc = RTStrToUInt8Ex(RTStrStripL(pszAddr), &pszNext, 10, &pAddr->au8[0]);
+    if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_CHARS)
+        return VERR_INVALID_PARAMETER;
+    if (*pszNext++ != '.')
+        return VERR_INVALID_PARAMETER;
+
+    rc = RTStrToUInt8Ex(pszNext, &pszNext, 10, &pAddr->au8[1]);
+    if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_CHARS)
+        return VERR_INVALID_PARAMETER;
+    if (*pszNext++ != '.')
+        return VERR_INVALID_PARAMETER;
+
+    rc = RTStrToUInt8Ex(pszNext, &pszNext, 10, &pAddr->au8[2]);
+    if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_CHARS)
+        return VERR_INVALID_PARAMETER;
+    if (*pszNext++ != '.')
+        return VERR_INVALID_PARAMETER;
+
+    rc = RTStrToUInt8Ex(pszNext, &pszNext, 10, &pAddr->au8[3]);
+    if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_SPACES)
+        return VERR_INVALID_PARAMETER;
+    pszNext = RTStrStripL(pszNext);
+    if (*pszNext)
+        return VERR_INVALID_PARAMETER;
+
+    return VINF_SUCCESS;
+}
+RT_EXPORT_SYMBOL(RTNetStrToIPv4Addr);
