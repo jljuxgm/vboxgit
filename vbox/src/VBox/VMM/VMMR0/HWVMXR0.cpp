@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 43496 2012-10-01 17:28:22Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 43497 2012-10-01 18:35:31Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -4996,7 +4996,7 @@ static void hmR0VmxFlushEPT(PVM pVM, PVMCPU pVCpu, VMX_FLUSH_EPT enmFlush)
     int rc = VMXR0InvEPT(enmFlush, &descriptor[0]);
     AssertMsg(rc == VINF_SUCCESS, ("VMXR0InvEPT %x %RGv failed with %d\n", enmFlush, pVCpu->hm.s.vmx.GCPhysEPTP, rc));
 #ifdef VBOX_WITH_STATISTICS
-    STAM_COUNTER_INC(&pVCpu->hm.s.StatFlushNP);
+    STAM_COUNTER_INC(&pVCpu->hm.s.StatFlushNestedPaging);
 #endif
 }
 
