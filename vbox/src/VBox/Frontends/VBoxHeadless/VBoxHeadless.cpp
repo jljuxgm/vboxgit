@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 44074 2012-12-10 11:45:04Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 44158 2012-12-19 10:01:34Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -1286,6 +1286,11 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             vboxListener = listener;
             com::SafeArray<VBoxEventType_T> eventTypes;
             eventTypes.push_back(VBoxEventType_OnGuestPropertyChanged);
+
+            /* Set the notification pattern to not cause too much load.
+             * Remove (or extend) this pattern when more guest properties need to be handled. */
+            CHECK_ERROR(machine, COMSETTER(GuestPropertyNotificationPatterns)(Bstr("/VirtualBox/GuestInfo/OS/*Logged*").raw()));
+
             CHECK_ERROR(es, RegisterListener(vboxListener, ComSafeArrayAsInParam(eventTypes), true));
         }
 
