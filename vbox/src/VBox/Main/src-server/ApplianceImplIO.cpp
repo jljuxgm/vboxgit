@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 46518 2013-06-13 10:07:09Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 46611 2013-06-18 09:23:54Z vboxsync $ */
 /** @file
  *
  * IO helper for IAppliance COM class implementations.
@@ -1327,7 +1327,7 @@ int ShaWriteBuf(const char *pcszFilename, void *pvBuf, size_t cbSize, PVDINTERFA
         cbAllWritten += cbWritten;
     }
 
-    pIfIo->pfnClose(pvUser, pvStorage);
+    rc = pIfIo->pfnClose(pvUser, pvStorage);
 
     return rc;
 }
