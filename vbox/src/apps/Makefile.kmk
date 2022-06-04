@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 43715 2012-10-24 08:32:14Z vboxsync $
 ## @file
 # Sub-Makefile for the external apps.
 #
@@ -31,6 +31,11 @@ endif
 if1of ($(KBUILD_TARGET),darwin solaris linux freebsd)
  ifneq ($(wildcard $(PATH_SUB_CURRENT)/adpctl),)
   include $(PATH_SUB_CURRENT)/adpctl/Makefile.kmk
+ endif
+endif
+ifdef VBOX_WITH_DEVMAPPER
+ ifneq ($(wildcard $(PATH_SUB_CURRENT)/volinfo),)
+  include $(PATH_SUB_CURRENT)/volinfo/Makefile.kmk
  endif
 endif
 

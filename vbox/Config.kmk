@@ -1,4 +1,4 @@
-# $Id: Config.kmk 43683 2012-10-18 16:12:04Z vboxsync $
+# $Id: Config.kmk 43715 2012-10-24 08:32:14Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -457,6 +457,10 @@ ifeq ($(KBUILD_TARGET),linux)
 endif
 # Enable performance API.
 VBOX_WITH_RESOURCE_USAGE_API = 1
+# Use VBoxVolInfo for getting FS dependecies.
+if1of ($(KBUILD_TARGET), linux)
+ VBOX_WITH_DEVMAPPER = 1
+endif
 # Enable BusLogic SCSI host adapter
 VBOX_WITH_BUSLOGIC = 1
 # Enable LsiLogic SCSI host adapter
@@ -5299,7 +5303,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43683 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43715 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
