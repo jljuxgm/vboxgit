@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
+/* $Id: PATMPatch.cpp 46150 2013-05-17 17:21:45Z vboxsync $ */
 /** @file
  * PATMPatch - Dynamic Guest OS Instruction patches
  *
@@ -22,29 +22,25 @@
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_PATM
 #include <VBox/vmm/patm.h>
-#include <VBox/vmm/stam.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/trpm.h>
-#include <VBox/param.h>
-#include <iprt/avl.h>
+#include <VBox/vmm/csam.h>
 #include "PATMInternal.h"
 #include <VBox/vmm/vm.h>
-#include <VBox/vmm/csam.h>
+#include <VBox/param.h>
 
-#include <VBox/dbg.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
-#include <iprt/assert.h>
-#include <iprt/asm.h>
-#include <iprt/string.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <iprt/assert.h>
+#include <iprt/asm.h>
+#include <iprt/string.h>
+
 #include "PATMA.h"
 #include "PATMPatch.h"
 

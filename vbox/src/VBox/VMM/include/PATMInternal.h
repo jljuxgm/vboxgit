@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 46135 2013-05-16 23:32:47Z vboxsync $ */
+/* $Id: PATMInternal.h 46150 2013-05-17 17:21:45Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -656,6 +656,6 @@ int patmr3DisasmCodeStream(PVM pVM, RCPTRTYPE(uint8_t *) pInstrGC, RCPTRTYPE(uin
 void patmR3DbgInit(PVM pVM);
 void patmR3DbgTerm(PVM pVM);
 void patmR3DbgReset(PVM pVM);
-//void patmR3DbgNewPatch(PVM pVM, );
+void patmR3DbgAddPatch(PVM pVM, PPATMPATCHREC pPatchRec);
 
 #endif
