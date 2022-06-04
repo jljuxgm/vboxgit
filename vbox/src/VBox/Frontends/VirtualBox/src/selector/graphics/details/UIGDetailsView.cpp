@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsView.cpp 44061 2012-12-07 14:46:43Z vboxsync $ */
+/* $Id: UIGDetailsView.cpp 44294 2013-01-15 12:02:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -23,7 +23,6 @@
 
 /* GUI includes: */
 #include "UIGDetailsView.h"
-#include "UIGChooserModel.h"
 
 UIGDetailsView::UIGDetailsView(QWidget *pParent)
     : QGraphicsView(pParent)
@@ -84,8 +83,6 @@ void UIGDetailsView::preparePalette()
 
 void UIGDetailsView::resizeEvent(QResizeEvent*)
 {
-    /* Update scene-rect: */
-    updateSceneRect();
     /* Notify listeners: */
     emit sigResized();
 }
