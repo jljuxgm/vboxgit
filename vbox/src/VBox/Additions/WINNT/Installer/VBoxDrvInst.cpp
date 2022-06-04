@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 42154 2012-07-13 23:00:53Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 43032 2012-08-28 12:07:32Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -235,9 +235,12 @@ int VBoxInstallDriver(const BOOL fInstall, const _TCHAR *pszDriverPath, BOOL fSi
             }
 
             if (fSilent)
-            {
                 _tprintf(_T("Installation is silent ...\n"));
-                dwFlags |= DRIVER_PACKAGE_SILENT;
+                /*
+                 * Don't add DRIVER_PACKAGE_SILENT to dwFlags here, otherwise
+                 * installation will fail because we (still) don't have WHQL certified
+                 * drivers. See CERT_E_WRONG_USAGE on MSDN for more information.
+                 */
             }
 
             BOOL fReboot;
