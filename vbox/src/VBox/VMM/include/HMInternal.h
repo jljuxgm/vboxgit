@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 44033 2012-12-04 18:25:40Z vboxsync $ */
+/* $Id: HMInternal.h 44036 2012-12-05 08:45:57Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -657,8 +657,8 @@ typedef struct HMCPU
     struct
     {
         uint32_t                    fPending;
-        uint32_t                    uErrCode;
-        uint64_t                    uIntrInfo;
+        uint32_t                    u32ErrCode;
+        uint64_t                    u64IntrInfo;
     } Event;
 
     /** IO Block emulation state. */
