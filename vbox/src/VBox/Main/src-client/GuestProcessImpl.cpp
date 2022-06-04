@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 42507 2012-08-01 12:40:05Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 42508 2012-08-01 13:05:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -1143,7 +1143,7 @@ int GuestProcess::startProcessAsync(void)
 
 DECLCALLBACK(int) GuestProcess::startProcessThread(RTTHREAD Thread, void *pvUser)
 {
-    LogFlowFuncEnter(("pvUser=%p\n", pvUser));
+    LogFlowFunc(("pvUser=%p\n", pvUser));
 
     std::auto_ptr<GuestProcessStartTask> pTask(static_cast<GuestProcessStartTask*>(pvUser));
     AssertPtr(pTask.get());
