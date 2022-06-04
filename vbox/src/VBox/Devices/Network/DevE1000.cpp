@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 47499 2013-07-31 17:36:16Z vboxsync $ */
+/* $Id: DevE1000.cpp 47580 2013-08-07 10:36:00Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -1703,8 +1703,8 @@ DECLINLINE(void) e1kPacketDump(PE1KSTATE pThis, const uint8_t *cpPacket, size_t 
         }
         else if (ntohs(*(uint16_t*)(cpPacket+12)) == 0x800)
         {
-            Log4(("%s --- IPv4:: %RTnaipv4 => %RTnaipv4\n",
-                  pThis->szPrf, cpPacket+14+12, cpPacket+14+16));
+            Log4(("%s --- IPv4: %RTnaipv4 => %RTnaipv4\n",
+                  pThis->szPrf, *(uint32_t*)(cpPacket+14+12), *(uint32_t*)(cpPacket+14+16)));
             if (*(cpPacket+14+6) == 0x6)
                 Log4(("%s --- TCP: seq=%x ack=%x\n", pThis->szPrf,
                       ntohl(*(uint32_t*)(cpPacket+14+20+4)), ntohl(*(uint32_t*)(cpPacket+14+20+8))));
@@ -1721,7 +1721,8 @@ DECLINLINE(void) e1kPacketDump(PE1KSTATE pThis, const uint8_t *cpPacket, size_t 
                        ntohl(*(uint32_t*)(cpPacket+14+40+4)), ntohl(*(uint32_t*)(cpPacket+14+40+8))));
         else
             E1kLogRel(("E1000: %s packet #%d, %RTmac => %RTmac, %RTnaipv4 => %RTnaipv4, seq=%x ack=%x\n",
-                       cszText, ++pThis->u32PktNo, cpPacket+6, cpPacket, cpPacket+14+12, cpPacket+14+16,
+                       cszText, ++pThis->u32PktNo, cpPacket+6, cpPacket,
+                       *(uint32_t*)(cpPacket+14+12), *(uint32_t*)(cpPacket+14+16),
                        ntohl(*(uint32_t*)(cpPacket+14+20+4)), ntohl(*(uint32_t*)(cpPacket+14+20+8))));
         e1kCsLeave(pThis);
     }
