@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 43765 2012-10-29 12:31:30Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -664,7 +664,7 @@ static DECLCALLBACK(uint64_t) pdmR3DevHlp_TMTimeVirtGetNano(PPDMDEVINS pDevIns)
     LogFlow(("pdmR3DevHlp_TMTimeVirtGetNano: caller='%s'\n",
              pDevIns->pReg->szName, pDevIns->iInstance));
 
-    uint64_t u64Time = TMVirtualSyncGet(pDevIns->Internal.s.pVMR3);
+    uint64_t u64Time = TMVirtualGet(pDevIns->Internal.s.pVMR3);
     uint64_t u64Nano = TMVirtualToNano(pDevIns->Internal.s.pVMR3, u64Time);
 
     LogFlow(("pdmR3DevHlp_TMTimeVirtGetNano: caller='%s'/%d: returns %RU64\n", pDevIns->pReg->szName, pDevIns->iInstance, u64Nano));
