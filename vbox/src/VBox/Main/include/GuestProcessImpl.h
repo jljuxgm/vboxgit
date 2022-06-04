@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 44935 2013-03-06 16:40:36Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 45010 2013-03-12 17:47:56Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -112,9 +112,9 @@ private:
         ULONG                    mPID;
         /** The current process status. */
         ProcessStatus_T          mStatus;
+        /** The last returned process status
+         *  returned from the guest side. */
         int                      mRC;
-        /** The mutex for protecting the waiter(s). */
-        RTSEMMUTEX               mWaitMutex;
         /** How many waiters? At the moment there can only
          *  be one. */
         uint32_t                 mWaitCount;
