@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 43623 2012-10-11 20:33:20Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 43624 2012-10-11 20:40:21Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -44,7 +44,7 @@
  */
 
 /** Enable for delay injection from the debugger. */
-#if 1
+#if 0
 # define PDM_ASYNC_COMPLETION_FILE_WITH_DELAY
 #endif
 
