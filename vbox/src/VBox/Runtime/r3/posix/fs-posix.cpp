@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 40101 2012-02-13 17:48:39Z vboxsync $ */
+/* $Id: fs-posix.cpp 43046 2012-08-28 14:42:11Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -241,6 +241,8 @@ RTR3DECL(int) RTFsQueryType(const char *pszFsPath, PRTFSTYPE penmType)
                                 *penmType = RTFSTYPE_NFS;
                             else if (!strcmp("nfs4", mntEnt.mnt_type))
                                 *penmType = RTFSTYPE_NFS;
+                            else if (!strcmp("ocfs2", mntEnt.mnt_type))
+                                *penmType = RTFSTYPE_OCFS2;
                             else if (!strcmp("sysfs", mntEnt.mnt_type))
                                 *penmType = RTFSTYPE_SYSFS;
                             else if (!strcmp("proc", mntEnt.mnt_type))
