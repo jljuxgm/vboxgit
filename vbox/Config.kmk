@@ -1,4 +1,4 @@
-# $Id: Config.kmk 43873 2012-11-15 10:51:48Z vboxsync $
+# $Id: Config.kmk 44025 2012-12-04 01:33:34Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3670,6 +3670,7 @@ endif
 #
 TEMPLATE_VBOXR3STATIC                  = VBox Static Ring 3 EXE
 TEMPLATE_VBOXR3STATIC_EXTENDS          = VBOXR3EXE
+TEMPLATE_VBOXR3STATIC_DEFS             = IN_RT_STATIC $(TEMPLATE_VBOXR3EXE_DEFS)
 ifeq ($(KBUILD_TARGET),win)
  TEMPLATE_VBOXR3STATIC_CFLAGS          = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBOXR3EXE_CFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
  TEMPLATE_VBOXR3STATIC_CXXFLAGS        = $(filter-out -MD$(VBOX_VCC_CRT_TYPE), $(TEMPLATE_VBOXR3EXE_CFLAGS)) -MT$(VBOX_VCC_CRT_TYPE)
@@ -5310,7 +5311,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43873 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 44025 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
