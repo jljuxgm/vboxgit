@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 45356 2013-04-05 07:01:27Z vboxsync $ */
+/* $Id: DevINIP.cpp 46132 2013-05-16 17:20:36Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -313,7 +313,9 @@ static DECLCALLBACK(err_t) devINIPInterface(struct netif *netif)
     netif_create_ip6_linklocal_address(netif, 0);
     netif_ip6_addr_set_state(netif, 0, IP6_ADDR_VALID);
     netif->output_ip6 = ethip6_output;
+#if LWIP_IPV6_AUTOCONFIG
     netif->ip6_autoconfig_enabled=1;
+#endif
     LogFunc(("netif: ipv6:%RTnaipv6\n", &netif->ip6_addr[0].addr[0]));
     netif->output = lwip_etharp_output;
 #else
