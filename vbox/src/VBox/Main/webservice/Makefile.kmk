@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43585 2012-10-09 15:49:40Z vboxsync $
+# $Id: Makefile.kmk 45034 2013-03-14 07:43:37Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -483,7 +483,7 @@ $$(VBOX_JWSSRC_JAR): $$(VBOX_JWS_JAR) | $$(dir $$@)
 endif # VBOX_GSOAP_INSTALLED
 
 
-ifdef VBOX_ONLY_SDK
+if defined(VBOX_ONLY_SDK) && "$(KBUILD_TARGET)" != "win"
  #
  # Globals relevant to the SDK.
  #
