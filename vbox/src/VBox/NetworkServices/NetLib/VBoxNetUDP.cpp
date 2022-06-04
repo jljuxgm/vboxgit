@@ -1,4 +1,4 @@
-/* $Id: VBoxNetUDP.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxNetUDP.cpp 46904 2013-07-02 12:59:56Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet UDP Client Routines.
  */
@@ -61,14 +61,14 @@ void *VBoxNetUDPMatch(PINTNETBUF pBuf, unsigned uDstPort, PCRTMAC pDstMac, uint3
      */
     PCINTNETHDR pHdr = IntNetRingGetNextFrameToRead(&pBuf->Recv);
     if (    !pHdr
-        ||  (   pHdr->u16Type != INTNETHDR_TYPE_FRAME
-             && pHdr->u16Type != INTNETHDR_TYPE_GSO))
+        ||  (   pHdr->u8Type != INTNETHDR_TYPE_FRAME
+             && pHdr->u8Type != INTNETHDR_TYPE_GSO))
         return NULL;
 
     size_t          cbFrame = pHdr->cbFrame;
     const void     *pvFrame = IntNetHdrGetFramePtr(pHdr, pBuf);
     PCPDMNETWORKGSO pGso    = NULL;
-    if (pHdr->u16Type == INTNETHDR_TYPE_GSO)
+    if (pHdr->u8Type == INTNETHDR_TYPE_GSO)
     {
         pGso = (PCPDMNETWORKGSO)pvFrame;
         if (!PDMNetGsoIsValid(pGso, cbFrame, cbFrame - sizeof(*pGso)))

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetARP.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxNetARP.cpp 46904 2013-07-02 12:59:56Z vboxsync $ */
 /** @file
  * VBoxNetARP - IntNet ARP Client Routines.
  */
@@ -43,7 +43,7 @@ bool VBoxNetArpHandleIt(PSUPDRVSESSION pSession, INTNETIFHANDLE hIf, PINTNETBUF 
      */
     PCINTNETHDR pHdr = IntNetRingGetNextFrameToRead(&pBuf->Recv);
     if (   !pHdr
-        || pHdr->u16Type != INTNETHDR_TYPE_FRAME)
+        || pHdr->u8Type != INTNETHDR_TYPE_FRAME)
         return false;
 
     size_t          cbFrame = pHdr->cbFrame;

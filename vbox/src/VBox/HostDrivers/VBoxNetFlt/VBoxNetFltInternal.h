@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 46904 2013-07-02 12:59:56Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -159,6 +159,8 @@ typedef struct VBOXNETFLTINS
              * @{ */
             /** Pointer to the device. */
             struct net_device * volatile pDev;
+            /** MTU of host's interface. */
+            uint32_t cbMtu;
             /** Whether we've successfully put the interface into to promiscuous mode.
              * This is for dealing with the ENETDOWN case. */
             bool volatile fPromiscuousSet;
