@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 44421 2013-01-28 12:42:07Z vboxsync $ */
+/* $Id: ConsoleImpl.h 44425 2013-01-28 14:16:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -413,17 +413,18 @@ private:
 
 public:
 
-    /**
+    /*
      *  Helper class that safely manages the Console::mpUVM pointer
      *  by calling addVMCaller() on construction and releaseVMCaller() on
      *  destruction. Intended for Console children. The usage pattern is:
      *  <code>
-     *      Console::SaveVMPtr pVM(mParent);
-     *      if (FAILED(pVM.rc())) return pVM.rc();
+     *      Console::SaveVMPtr ptrVM(mParent);
+     *      if (!ptrVM.isOk())
+     *          return ptrVM.rc();
      *      ...
-     *      VMR3ReqCall(pVM, ...
+     *      VMR3ReqCall(ptrVM.rawUVM(), ...
      *      ...
-     *      printf("%p\n", pVM.raw());
+     *      printf("%p\n", ptrVM.rawUVM());
      *  </code>
      *
      *  @note Temporarily locks the argument for writing.
