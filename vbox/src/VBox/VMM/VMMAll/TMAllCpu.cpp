@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 44932 2013-03-06 14:49:23Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -327,6 +327,8 @@ DECLINLINE(uint64_t) tmCpuTickGetInternal(PVMCPU pVCpu, bool fCheckTimers)
             pVCpu->tm.s.u64TSCLastSeen += 64;   /* @todo choose a good increment here */
             u64 = pVCpu->tm.s.u64TSCLastSeen;
         }
+        else
+            pVCpu->tm.s.u64TSCLastSeen = u64;
     }
     else
         u64 = pVCpu->tm.s.u64TSC;
