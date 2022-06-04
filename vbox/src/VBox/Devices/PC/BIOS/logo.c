@@ -1,4 +1,4 @@
-/* $Id: logo.c 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: logo.c 42260 2012-07-20 13:22:19Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
@@ -48,6 +48,17 @@ uint16_t vesa_set_mode(uint16_t mode);
     "mov    ax, 4F02h"      \
     "int    10h"            \
     parm [bx] modify [ax] nomemory;
+
+/**
+ * Get current VESA video mode.
+ * @params    New video mode.
+ */
+uint16_t vesa_get_mode(uint16_t __far *mode);
+#pragma aux vesa_get_mode = \
+    "mov    ax, 4F03h"      \
+    "int    10h"            \
+    "mov    es:[di], bx"    \
+    parm [es di] modify [ax] nomemory;
 
 
 /**
@@ -316,15 +327,19 @@ void show_logo(void)
     LOGOHDR     *logo_hdr = 0;
     uint8_t     is_fade_in, is_fade_out, uBootMenu;
     uint16_t    logo_time;
+    uint16_t    old_mode;
 
 
     // Set PIT to 1ms ticks
     wait_init();
 
-
     // Get main signature
     tmp = read_logo_word((uint8_t)&logo_hdr->u16Signature);
     if (tmp != 0x66BB)
+        goto done;
+
+    // If there is no VBE, just skip this
+    if (vesa_get_mode(&old_mode) != 0x004f )
         goto done;
 
     // Get options
