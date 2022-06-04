@@ -1,4 +1,4 @@
-/* $Id: DevIchIntelHDA.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DevIchIntelHDA.cpp 44571 2013-02-06 14:10:37Z vboxsync $ */
 /** @file
  * DevIchIntelHD - VBox ICH Intel HD Audio Controller.
  */
@@ -2603,13 +2603,12 @@ static DECLCALLBACK(int) hdaConstruct (PPDMDEVINS pDevIns, int iInstance,
         return rc;
 
 #ifdef VBOX_WITH_MSI_DEVICES
-    PDMMSIREG aMsiReg;
-
-    RT_ZERO(aMsiReg);
-    aMsiReg.cMsiVectors = 1;
-    aMsiReg.iMsiCapOffset = 0x60;
-    aMsiReg.iMsiNextOffset = 0x50;
-    rc = PDMDevHlpPCIRegisterMsi(pDevIns, &aMsiReg);
+    PDMMSIREG MsiReg;
+    RT_ZERO(MsiReg);
+    MsiReg.cMsiVectors    = 1;
+    MsiReg.iMsiCapOffset  = 0x60;
+    MsiReg.iMsiNextOffset = 0x50;
+    rc = PDMDevHlpPCIRegisterMsi(pDevIns, &MsiReg);
     if (RT_FAILURE (rc))
     {
         LogRel(("Chipset cannot do MSI: %Rrc\n", rc));
