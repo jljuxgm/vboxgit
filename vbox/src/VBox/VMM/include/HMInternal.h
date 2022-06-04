@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45623 2013-04-18 22:05:35Z vboxsync $ */
+/* $Id: HMInternal.h 45637 2013-04-19 10:21:54Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -48,8 +48,6 @@
 #if 0
 # define HM_PROFILE_EXIT_DISPATCH
 #endif
-
-#define HM_VMX_EMULATE_REALMODE
 
 /* The MSR auto load/store does not work for KERNEL_GS_BASE MSR, thus we
  * handle this MSR manually. See @bugref{6208}. This is clearly visible while
