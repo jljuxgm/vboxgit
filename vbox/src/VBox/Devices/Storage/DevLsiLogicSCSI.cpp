@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 44697 2013-02-14 20:00:24Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 44779 2013-02-21 13:44:32Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3032,7 +3032,7 @@ static void lsilogicR3InitializeConfigurationPagesSpi(PLSILOGICSCSI pThis)
     LogFlowFunc(("pThis=%#p\n", pThis));
 
     /* Clear everything first. */
-    memset(pPages, 0, sizeof(PMptConfigurationPagesSpi));
+    memset(pPages, 0, sizeof(MptConfigurationPagesSpi));
 
     for (unsigned i = 0; i < RT_ELEMENTS(pPages->aPortPages); i++)
     {
