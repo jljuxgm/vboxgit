@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 45674 2013-04-23 08:45:54Z vboxsync $ */
+/* $Id: Settings.cpp 45731 2013-04-25 14:33:35Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -5081,7 +5081,8 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
     if (m->sv < SettingsVersion_v1_12)
     {
         // VirtualBox 4.1 adds PCI passthrough.
-        if (hardwareMachine.pciAttachments.size())
+        if (   hardwareMachine.pciAttachments.size()
+            || hardwareMachine.fVideoCaptureEnabled)
             m->sv = SettingsVersion_v1_12;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 45674 2013-04-23 08:45:54Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 45731 2013-04-25 14:33:35Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -366,6 +366,12 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #if 0 /* Disabled until the feature is implemented. */
                      "                            [--autostop-type disabled|savestate|poweroff|\n"
                      "                                             acpishutdown]\n"
+#endif
+#ifdef VBOX_WITH_VPX
+                     "                            [--vcpenabled on|off]\n"
+                     "                            [--vcpfile <filename>]\n"
+                     "                            [--vcpwidth <width>]\n"
+                     "                            [--vcpheight <height>]\n"
 #endif
                      "                            [--defaultfrontend default|<name]\n"
                      "\n");
