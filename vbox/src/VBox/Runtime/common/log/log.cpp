@@ -1,4 +1,4 @@
-/* $Id: log.cpp 45807 2013-04-29 12:39:36Z vboxsync $ */
+/* $Id: log.cpp 46054 2013-05-14 10:38:52Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -3258,7 +3258,7 @@ static DECLCALLBACK(size_t) rtLogOutputPrefixed(void *pv, const char *pachChars,
 #define CCH_PREFIX_16   CCH_PREFIX_15 + 17
 
 #define CCH_PREFIX      ( CCH_PREFIX_16 )
-                AssertCompile(CCH_PREFIX < 256);
+                { AssertCompile(CCH_PREFIX < 256); }
 
                 /*
                  * Done, figure what we've used and advance the buffer and free size.
