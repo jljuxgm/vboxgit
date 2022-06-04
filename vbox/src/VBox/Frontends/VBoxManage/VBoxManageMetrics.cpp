@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMetrics.cpp 43629 2012-10-12 09:26:07Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 43933 2012-11-22 07:43:47Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
@@ -103,11 +103,18 @@ static int parseFilterParameters(int argc, char *argv[],
 static Bstr toBaseName(Utf8Str& aFullName)
 {
     char *pszRaw = aFullName.mutableRaw();
-    char *pszSlash = strrchr(pszRaw, '/');
-    if (pszSlash)
+    /*
+     * Currently there are two metrics which base name is the same as the
+     * sub-metric name: CPU/MHz and Net/<iface>/LinkSpeed.
+     */
+    if (strcmp(pszRaw, "CPU/MHz") && !RTStrSimplePatternMatch("Net/*/LinkSpeed", pszRaw))
     {
-        *pszSlash = 0;
-        aFullName.jolt();
+        char *pszSlash = strrchr(pszRaw, '/');
+        if (pszSlash)
+        {
+            *pszSlash = 0;
+            aFullName.jolt();
+        }
     }
     return Bstr(aFullName);
 }
