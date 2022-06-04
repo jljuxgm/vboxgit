@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: EMAll.cpp 44266 2013-01-10 11:38:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -3496,8 +3496,6 @@ static const char *emMSRtoString(uint32_t uMsr)
  */
 VMMDECL(int) EMInterpretRdmsr(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
 {
-    /** @todo According to the Intel manuals, there's a REX version of RDMSR that is slightly different.
-     *  That version clears the high dwords of both RDX & RAX */
     NOREF(pVM);
 
     /* Get the current privilege level. */
