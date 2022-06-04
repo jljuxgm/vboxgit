@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceUtils.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxServiceUtils.h 44097 2012-12-11 17:06:02Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Guest Additions Services (Utilities).
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -23,6 +23,7 @@
 #ifdef VBOX_WITH_GUEST_PROPS
 int VBoxServiceReadProp(uint32_t u32ClientId, const char *pszPropName, char **ppszValue, char **ppszFlags, uint64_t *puTimestamp);
 int VBoxServiceReadPropUInt32(uint32_t u32ClientId, const char *pszPropName, uint32_t *pu32, uint32_t u32Min, uint32_t u32Max);
+int VBoxServiceReadHostProp(uint32_t u32ClientId, const char *pszPropName, bool fReadOnly, char **ppszValue, char **ppszFlags, uint64_t *puTimestamp);
 int VBoxServiceWritePropF(uint32_t u32ClientId, const char *pszName, const char *pszValueFormat, ...);
 #endif
 
