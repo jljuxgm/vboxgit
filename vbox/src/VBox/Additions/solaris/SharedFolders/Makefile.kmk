@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41860 2012-06-21 13:31:04Z vboxsync $
+# $Id: Makefile.kmk 42239 2012-07-19 20:40:31Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris Shared folder kernel module.
 #
@@ -90,7 +90,7 @@ endif # VBOX_OSE
 # mount - Userland mount wrapper for vboxfs
 #
 PROGRAMS                += vboxfsmount
-vboxfsmount_TEMPLATE    = VBOXGUESTR3EXE
+vboxfsmount_TEMPLATE    = NewVBoxGuestR3Exe
 vboxfsmount_SOURCES     = vboxfs_mount.c
 
 include $(FILE_KBUILD_SUB_FOOTER)

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 42239 2012-07-19 20:40:31Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service testcases.
 #
@@ -25,7 +25,7 @@ ifdef VBOX_WITH_TESTCASES
 #
 PROGRAMS += tstHook
 
-tstHook_TEMPLATE = VBOXGUESTR3EXE
+tstHook_TEMPLATE = NewVBoxGuestR3Exe
 tstHook_DEFS     = VBOX_WITH_HGCM
 tstHook_SOURCES  = tstHook.cpp
 tstHook_INCS     = ../../include
