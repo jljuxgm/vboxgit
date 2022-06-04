@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 44788 2013-02-21 17:05:42Z vboxsync $ */
+/* $Id: VMMDev.cpp 44790 2013-02-21 17:13:55Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2506,7 +2506,13 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
             pRequestHeader = (VMMDevRequestHeader *)RTMemAlloc(requestHeader.size);
             if (pRequestHeader)
             {
-                PDMDevHlpPhysRead(pDevIns, (RTGCPHYS)u32, pRequestHeader, requestHeader.size);
+                memcpy(pRequestHeader, &requestHeader, sizeof(VMMDevRequestHeader));
+                size_t cbLeft = requestHeader.size - sizeof(VMMDevRequestHeader);
+                if (cbLeft)
+                    PDMDevHlpPhysRead(pDevIns,
+                                      (RTGCPHYS)u32             + sizeof(VMMDevRequestHeader),
+                                      (uint8_t *)pRequestHeader + sizeof(VMMDevRequestHeader),
+                                      cbLeft);
 
                 PDMCritSectEnter(&pThis->CritSect, VERR_IGNORED);
                 rcRet = vmmdevReqDispatcher(pThis, pRequestHeader, u32, &fDelayedUnlock);
