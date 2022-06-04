@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -83,7 +83,7 @@ bool UIWizardCloneVM::cloneVM()
         if (console.isOk())
         {
             /* Show the "Taking Snapshot" progress dialog: */
-            msgCenter().showModalProgressDialog(progress, m_machine.GetName(), ":/progress_snapshot_create_90px.png", this, true);
+            msgCenter().showModalProgressDialog(progress, m_machine.GetName(), ":/progress_snapshot_create_90px.png", this);
 
             if (!progress.isOk() || progress.GetResultCode() != 0)
             {
@@ -136,7 +136,7 @@ bool UIWizardCloneVM::cloneVM()
     }
 
     /* Wait until done. */
-    msgCenter().showModalProgressDialog(progress, windowTitle(), ":/progress_clone_90px.png", this, true);
+    msgCenter().showModalProgressDialog(progress, windowTitle(), ":/progress_clone_90px.png", this);
     if (progress.GetCanceled())
         return false;
     if (!progress.isOk() || progress.GetResultCode() != 0)

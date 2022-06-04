@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 45068 2013-03-18 17:27:22Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1469,7 +1469,7 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
                     CProgress progress = machine.DeleteConfig(mediums);
                     if (machine.isOk())
                     {
-                        msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_delete_90px.png", 0, true);
+                        msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_delete_90px.png", msgCenter().mainWindowShown());
                         if (progress.GetResultCode() != 0)
                             msgCenter().cannotDeleteMachine(machine, progress);
                     }

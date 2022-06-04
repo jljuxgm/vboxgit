@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -422,7 +422,7 @@ void UIGlobalSettingsNetwork::sltAddInterface()
     if (host.isOk())
     {
         msgCenter().showModalProgressDialog(progress, tr("Networking"),
-                                              ":/nw_32px.png", this, true, 0);
+                                            ":/nw_32px.png", window(), 0);
         if (progress.GetResultCode() == 0)
         {
             /* Create DHCP server: */
@@ -475,7 +475,7 @@ void UIGlobalSettingsNetwork::sltDelInterface()
     if (host.isOk())
     {
         msgCenter().showModalProgressDialog(progress, tr("Networking"),
-                                              ":/nw_32px.png", this, true, 0);
+                                            ":/nw_32px.png", window(), 0);
         if (progress.GetResultCode() == 0)
         {
             /* Remove list item: */

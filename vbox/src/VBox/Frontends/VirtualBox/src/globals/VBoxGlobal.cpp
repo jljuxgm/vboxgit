@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45192 2013-03-26 13:37:41Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -5003,7 +5003,7 @@ bool VBoxGlobal::launchMachine(CMachine &machine, bool fHeadless /* = false */)
     /* Hide the "VM spawning" progress dialog */
     /* I hope 1 minute will be enough to spawn any running VM silently, isn't it? */
     int iSpawningDuration = 60000;
-    msgCenter().showModalProgressDialog(progress, machine.GetName(), "", 0, false, iSpawningDuration);
+    msgCenter().showModalProgressDialog(progress, machine.GetName(), "", mainWindow(), iSpawningDuration);
     if (progress.GetResultCode() != 0)
         msgCenter().cannotOpenSession(vbox, machine, progress);
 

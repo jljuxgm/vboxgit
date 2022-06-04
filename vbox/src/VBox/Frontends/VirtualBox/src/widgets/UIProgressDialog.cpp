@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 45192 2013-03-26 13:37:41Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,7 +44,6 @@ const char *UIProgressDialog::m_spcszOpDescTpl = "%1 ... (%2/%3)";
 UIProgressDialog::UIProgressDialog(CProgress &progress,
                                    const QString &strTitle,
                                    QPixmap *pImage /* = 0 */,
-                                   bool fSheetOnDarwin /* = false */,
                                    int cMinDuration /* = 2000 */,
                                    QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI2<QIDialog>(pParent, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint)
@@ -70,7 +69,6 @@ UIProgressDialog::UIProgressDialog(CProgress &progress,
     else
         pMainLayout->setContentsMargins(6, 6, 6, 6);
 #endif /* Q_WS_MAC */
-    NOREF(fSheetOnDarwin);
 
     /* Create image: */
     if (pImage)

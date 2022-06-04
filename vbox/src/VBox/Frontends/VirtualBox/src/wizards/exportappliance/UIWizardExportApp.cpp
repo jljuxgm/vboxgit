@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -143,7 +143,7 @@ bool UIWizardExportApp::exportVMs(CAppliance &appliance)
     {
         /* Show some progress, so the user know whats going on: */
         msgCenter().showModalProgressDialog(progress, QApplication::translate("UIWizardExportApp", "Exporting Appliance ..."),
-                                            ":/progress_export_90px.png", this, true);
+                                            ":/progress_export_90px.png", this);
         if (progress.GetCanceled())
             return false;
         if (!progress.isOk() || progress.GetResultCode() != 0)

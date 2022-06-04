@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -146,7 +146,7 @@ bool UIApplianceImportEditorWidget::import()
         if (fResult)
         {
             /* Show some progress, so the user know whats going on */
-            msgCenter().showModalProgressDialog(progress, tr("Importing Appliance ..."), ":/progress_import_90px.png", this, true);
+            msgCenter().showModalProgressDialog(progress, tr("Importing Appliance ..."), ":/progress_import_90px.png", this);
             if (progress.GetCanceled())
                 return false;
             if (!progress.isOk() || progress.GetResultCode() != 0)

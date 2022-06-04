@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -88,7 +88,7 @@ bool UIWizardCloneVD::copyVirtualDisk()
     }
 
     /* Show creation progress: */
-    msgCenter().showModalProgressDialog(progress, windowTitle(), ":/progress_media_create_90px.png", this, true);
+    msgCenter().showModalProgressDialog(progress, windowTitle(), ":/progress_media_create_90px.png", this);
     if (progress.GetCanceled())
         return false;
     if (!progress.isOk() || progress.GetResultCode() != 0)
