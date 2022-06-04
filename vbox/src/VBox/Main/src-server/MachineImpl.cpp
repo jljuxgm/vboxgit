@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 44274 2013-01-11 10:00:48Z vboxsync $ */
+/* $Id: MachineImpl.cpp 44490 2013-01-31 13:28:16Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10406,6 +10406,30 @@ HRESULT Machine::deleteImplicitDiffs(bool aOnline)
 
     /* We absolutely must have backed up state. */
     AssertReturn(mMediaData.isBackedUp(), E_FAIL);
+
+    /* Check if there are any implicitly created diff images. */
+    bool fImplicitDiffs = false;
+    for (MediaData::AttachmentList::const_iterator it = mMediaData->mAttachments.begin();
+         it != mMediaData->mAttachments.end();
+         ++it)
+    {
+        const ComObjPtr<MediumAttachment> &pAtt = *it;
+        if (pAtt->isImplicit())
+        {
+            fImplicitDiffs = true;
+            break;
+        }
+    }
+    /* If there is nothing to do, leave early. This saves lots of image locking
+     * effort. It also avoids a MachineStateChanged event without real reason.
+     * This is important e.g. when loading a VM config, because there should be
+     * no events. Otherwise API clients can become thoroughly confused for
+     * inaccessible VMs (the code for loading VM configs uses this method for
+     * cleanup if the config makes no sense), as they take such events as an
+     * indication that the VM is alive, and they would force the VM config to
+     * be reread, leading to an endless loop. */
+    if (!fImplicitDiffs)
+        return S_OK;
 
     HRESULT rc = S_OK;
     MachineState_T oldState = mData->mMachineState;
