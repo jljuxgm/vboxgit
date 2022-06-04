@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 43448 2012-09-27 10:43:52Z vboxsync $ */
+/* $Id: ISCSI.cpp 43925 2012-11-21 09:23:59Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -1138,7 +1138,10 @@ static int iscsiTransportOpen(PISCSIIMAGE pImage)
             rc = VERR_NO_MEMORY;
         else
         {
-            memcpy(pImage->pszHostname, pImage->pszTargetAddress, cbHostname);
+            if (pImage->pszTargetAddress[0] == '[')
+                memcpy(pImage->pszHostname, pImage->pszTargetAddress + 1, cbHostname);
+            else
+                memcpy(pImage->pszHostname, pImage->pszTargetAddress, cbHostname);
             pImage->pszHostname[cbHostname] = '\0';
             if (pcszPort != NULL)
             {
