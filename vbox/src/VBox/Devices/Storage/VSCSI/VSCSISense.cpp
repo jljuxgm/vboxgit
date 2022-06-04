@@ -1,4 +1,4 @@
-/* $Id: VSCSISense.cpp 38680 2011-09-08 07:52:08Z vboxsync $ */
+/* $Id: VSCSISense.cpp 43691 2012-10-19 14:10:27Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Sense handling
  */
@@ -24,6 +24,12 @@
 void vscsiSenseInit(PVSCSISENSE pVScsiSense)
 {
     memset(pVScsiSense->abSenseBuf, 0, sizeof(pVScsiSense->abSenseBuf));
+
+    /* Fill in valid sense information (can't be just zeros). */
+    pVScsiSense->abSenseBuf[0]  = (1 << 7) | SCSI_SENSE_RESPONSE_CODE_CURR_FIXED; /* Fixed format */
+    pVScsiSense->abSenseBuf[2]  = SCSI_SENSE_NONE;
+    pVScsiSense->abSenseBuf[7]  = 10;
+    pVScsiSense->abSenseBuf[12] = SCSI_ASC_NONE;
 }
 
 int vscsiReqSenseOkSet(PVSCSISENSE pVScsiSense, PVSCSIREQINT pVScsiReq)
