@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 46322 2013-05-30 10:45:53Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 46364 2013-06-03 15:02:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -177,16 +177,16 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
     }
 }
 
-void UIFrameBufferQImage::applyVisibleRegionEvent(UISetRegionEvent *pEvent)
+void UIFrameBufferQImage::applyVisibleRegion(const QRegion &region)
 {
     /* Make sure async visible-region changed: */
-    if (m_asyncVisibleRegion == pEvent->region())
+    if (m_asyncVisibleRegion == region)
         return;
 
     /* We are accounting async visible-regions one-by-one
      * to keep corresponding viewport area always updated! */
-    m_pMachineView->viewport()->update(pEvent->region() + m_asyncVisibleRegion);
-    m_asyncVisibleRegion = pEvent->region();
+    m_pMachineView->viewport()->update(region + m_asyncVisibleRegion);
+    m_asyncVisibleRegion = region;
 
 #ifdef Q_WS_X11
     /* Qt 4.8.3 under X11 has Qt::WA_TranslucentBackground window attribute broken,

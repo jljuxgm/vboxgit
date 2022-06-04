@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 46361 2013-06-03 13:34:22Z vboxsync $ */
+/* $Id: UIMachineView.cpp 46364 2013-06-03 15:02:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -282,6 +282,12 @@ void UIMachineView::sltHandleNotifyUpdate(int iX, int iY, int iWidth, int iHeigh
 {
     /* Update corresponding viewport part: */
     viewport()->update(iX - contentsX(), iY - contentsY(), iWidth, iHeight);
+}
+
+void UIMachineView::sltHandleSetVisibleRegion(QRegion region)
+{
+    /* Used only in seamless-mode. */
+    Q_UNUSED(region);
 }
 
 void UIMachineView::sltDesktopResized()
