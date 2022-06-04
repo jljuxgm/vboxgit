@@ -1,4 +1,4 @@
-/* $Id: service.cpp 44156 2012-12-18 20:16:59Z vboxsync $ */
+/* $Id: service.cpp 44356 2013-01-24 15:16:13Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1096,7 +1096,7 @@ int Service::getNotification(uint32_t u32ClientId, VBOXHGCMCALLHANDLE callHandle
         else
         {
             int rc2 = getNotificationWriteOut(cParms, paParms, prop);
-            if (RT_SUCCESS(rc))
+            if (RT_FAILURE(rc2))
                 rc = rc2;
         }
     }
