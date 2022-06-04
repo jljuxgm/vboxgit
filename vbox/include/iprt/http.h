@@ -1,4 +1,4 @@
-/* $Id: http.h 46050 2013-05-14 08:41:11Z vboxsync $ */
+/* $Id: http.h 46070 2013-05-14 15:21:57Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP Communication API.
  */
@@ -94,6 +94,14 @@ RTR3DECL(int) RTHttpGetFile(RTHTTP hHttp, const char *pszUrl, const char *pszDst
  * @param    hHttp         HTTP interface handle.
  */
 RTR3DECL(int) RTHttpAbort(RTHTTP hHttp);
+
+/**
+ * Tells the HTTP interface to use the system proxy configuration.
+ *
+ * @returns iprt status code.
+ * @param   hHttp           HTTP interface handle.
+ */
+RTR3DECL(int) RTHttpUseSystemProxySettings(RTHTTP hHttp);
 
 /**
  * Specify proxy settings.

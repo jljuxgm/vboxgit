@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 46050 2013-05-14 08:41:11Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 46070 2013-05-14 15:21:57Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -144,6 +144,8 @@ int main(int argc, char **argv)
     static const RTGETOPTDEF s_aOptions[] =
     {
         { "--input",        'i', RTGETOPT_REQ_STRING },
+        { "--local-file",   'l', RTGETOPT_REQ_NOTHING },
+        { "--cache-file",   'c', RTGETOPT_REQ_NOTHING },
         { "--pe-image",     'p', RTGETOPT_REQ_NOTHING },
         { "--verbose",      'v', RTGETOPT_REQ_NOTHING },
     };
@@ -155,6 +157,7 @@ int main(int argc, char **argv)
         kOpenMethod_FromImage,
         kOpenMethod_FromPeImage
     }               enmOpenMethod   = kOpenMethod_FromImage;
+    bool            fCacheFile      = false;
 
     RTGETOPTUNION   ValueUnion;
     RTGETOPTSTATE   GetState;
@@ -167,6 +170,14 @@ int main(int argc, char **argv)
                 rc = RTStrmOpen(ValueUnion.psz, "r", &pInput);
                 if (RT_FAILURE(rc))
                     return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to open '%s' for reading: %Rrc", ValueUnion.psz, rc);
+                break;
+
+            case 'c':
+                fCacheFile = true;
+                break;
+
+            case 'l':
+                fCacheFile = false;
                 break;
 
             case 'p':
@@ -195,7 +206,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 46050 $\n");
+                RTPrintf("$Revision: 46070 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -208,11 +219,26 @@ int main(int argc, char **argv)
                     return RTGetOptPrintError(rc, &ValueUnion);
                 uint64_t u64Address = ValueUnion.u64;
 
+                uint32_t cbImage    = 0;
+                uint32_t uTimestamp = 0;
+                if (fCacheFile)
+                {
+                    rc = RTGetOptFetchValue(&GetState, &ValueUnion, RTGETOPT_REQ_UINT32 | RTGETOPT_FLAG_HEX);
+                    if (RT_FAILURE(rc))
+                        return RTGetOptPrintError(rc, &ValueUnion);
+                    cbImage = ValueUnion.u32;
+
+                    rc = RTGetOptFetchValue(&GetState, &ValueUnion, RTGETOPT_REQ_UINT32 | RTGETOPT_FLAG_HEX);
+                    if (RT_FAILURE(rc))
+                        return RTGetOptPrintError(rc, &ValueUnion);
+                    uTimestamp = ValueUnion.u32;
+                }
+
                 RTDBGMOD hMod;
                 if (enmOpenMethod == kOpenMethod_FromImage)
                     rc = RTDbgModCreateFromImage(&hMod, pszModule, NULL, hDbgCfg);
                 else
-                    rc = RTDbgModCreateFromPeImage(&hMod, pszModule, NULL, 0, 0, hDbgCfg);
+                    rc = RTDbgModCreateFromPeImage(&hMod, pszModule, NULL, cbImage, uTimestamp, hDbgCfg);
                 if (RT_FAILURE(rc))
                     return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTDbgModCreateFromImage(,%s,,) -> %Rrc", pszModule, rc);
 
