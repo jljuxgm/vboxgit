@@ -1,4 +1,4 @@
-/* $Id: precomp.h 44528 2013-02-04 14:27:54Z vboxsync $*/
+/* $Id: precomp.h 46224 2013-05-22 17:46:22Z vboxsync $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -224,7 +224,7 @@
 //#include "VBoxMediaComboBox.h"
 #include "VBoxMediaManagerDlg.h"
 //#include "VBoxMedium.h"               /* Expensive? Or what? */
-#include "VBoxMiniToolBar.h"
+#include "UIMiniToolBar.h"
 #include "VBoxNewHDWzd.h"
 #include "VBoxNewVMWzd.h"
 #include "VBoxOSTypeSelectorButton.h"

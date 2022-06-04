@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 46069 2013-05-14 15:03:23Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 46224 2013-05-22 17:46:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -33,7 +33,7 @@
 #include "UIMachineWindowSeamless.h"
 #include "UIMachineViewSeamless.h"
 #ifndef Q_WS_MAC
-# include "VBoxMiniToolBar.h"
+# include "UIMiniToolBar.h"
 #endif /* !Q_WS_MAC */
 #ifdef Q_WS_MAC
 # include "VBoxUtils.h"
@@ -133,9 +133,9 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
     bool fIsAtTop = m.GetExtraData(GUI_MiniToolBarAlignment) == "top";
     /* Get the mini-toolbar auto-hide feature availability: */
     bool fIsAutoHide = m.GetExtraData(GUI_MiniToolBarAutoHide) != "off";
-    m_pMiniToolBar = new VBoxMiniToolBar(centralWidget(),
-                                         fIsAtTop ? VBoxMiniToolBar::AlignTop : VBoxMiniToolBar::AlignBottom,
-                                         true, fIsAutoHide);
+    m_pMiniToolBar = new UIMiniToolBar(centralWidget(),
+                                       fIsAtTop ? UIMiniToolBar::AlignTop : UIMiniToolBar::AlignBottom,
+                                       true, fIsAutoHide);
     m_pMiniToolBar->setSeamlessMode(true);
     m_pMiniToolBar->updateDisplay(true, true);
     QList<QMenu*> menus;
