@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 47681 2013-08-12 22:51:55Z vboxsync $ */
+/* $Id: DBGFAll.cpp 47682 2013-08-12 22:57:18Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -176,7 +176,6 @@ VMM_INT_DECL(bool) DBGFBpIsHwIoArmed(PVM pVM)
  */
 VMM_INT_DECL(VBOXSTRICTRC)  DBGFBpCheckIo(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, RTIOPORT uIoPort, uint8_t cbValue)
 {
-    static uint8_t const s_abInvAlign[4] = { 0, 1, 7, 3 };
     uint32_t const uIoPortFirst = uIoPort;
     uint32_t const uIoPortLast  = uIoPortFirst + cbValue - 1;
 
