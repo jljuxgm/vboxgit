@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 44864 2013-02-28 12:18:42Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 44871 2013-02-28 16:34:05Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -581,6 +581,20 @@ Function CheckForInstalledComponents
     StrCpy $g_bWithAutoLogon "true" ; Force update
   ${Else}
     ${LogVerbose} "Auto-logon support was not installed previously"
+  ${EndIf}
+
+  ; Check for installed MMR support and enable updating
+  ; those modules if needed
+  ${If}    ${FileExists} "$g_strSystemDir\VBoxMMR.exe"
+!if $%BUILD_TARGET_ARCH% == "amd64"
+  ${AndIf} ${FileExists} "$g_strSysWow64\VBoxMMRHook.dll"
+!else
+  ${AndIf} ${FileExists} "$g_strSystemDir\VBoxMMRHook.dll"
+!endif
+    ${LogVerbose} "MultiMedia Redirection support (MMR) was installed previously"
+    StrCpy $g_bWithVBoxMMR "true" ; Force update
+  ${Else}
+    ${LogVerbose} "MultiMedia Redirection support (MMR) support was not installed previously"
   ${EndIf}
 
   Pop $1
