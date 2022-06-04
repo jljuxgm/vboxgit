@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42897 2012-08-21 10:03:52Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42919 2012-08-22 13:11:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -262,7 +262,7 @@ int Guest::sessionRemove(GuestSession *pSession)
         if (pSession == itSessions->second)
         {
             LogFlowFunc(("Removing session (pSession=%p, ID=%RU32) (now total %ld sessions)\n",
-                         itSessions->second, itSessions->second->getId(), mData.mGuestSessions.size() - 1));
+                         (GuestSession *)itSessions->second, itSessions->second->getId(), mData.mGuestSessions.size() - 1));
 
             mData.mGuestSessions.erase(itSessions);
 
@@ -318,7 +318,7 @@ int Guest::sessionCreate(const Utf8Str &strUser, const Utf8Str &strPassword, con
         mData.mGuestSessions[uNewSessionID] = pGuestSession;
 
         LogFlowFunc(("Added new session (pSession=%p, ID=%RU32), now %ld sessions total\n",
-                     pGuestSession, uNewSessionID, mData.mGuestSessions.size()));
+                     (GuestSession *)pGuestSession, uNewSessionID, mData.mGuestSessions.size()));
     }
     catch (int rc2)
     {
