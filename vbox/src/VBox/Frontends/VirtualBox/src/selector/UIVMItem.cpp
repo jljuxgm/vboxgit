@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: UIVMItem.cpp 43447 2012-09-27 10:18:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -197,7 +197,7 @@ QString UIVMItem::toolTipText() const
             .arg(toolTip)
             .arg(gpConverter->toString(m_machineState))
             .arg(dateTime)
-            .arg(gpConverter->toString(m_sessionState));
+            .arg(gpConverter->toString(m_sessionState).toLower());
     }
     else
     {

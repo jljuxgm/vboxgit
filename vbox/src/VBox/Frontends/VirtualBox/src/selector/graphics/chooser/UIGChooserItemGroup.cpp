@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43210 2012-09-05 18:15:30Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43447 2012-09-27 10:18:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -57,6 +57,9 @@ UIGChooserItemGroup::UIGChooserItemGroup(QGraphicsScene *pScene)
     /* Add item to the scene: */
     if (pScene)
         pScene->addItem(this);
+
+    /* Translate finally: */
+    retranslateUi();
 }
 
 UIGChooserItemGroup::UIGChooserItemGroup(QGraphicsScene *pScene,
@@ -84,6 +87,9 @@ UIGChooserItemGroup::UIGChooserItemGroup(QGraphicsScene *pScene,
 
     /* Copy content to 'this': */
     copyContent(pCopyFrom, this);
+
+    /* Translate finally: */
+    retranslateUi();
 }
 
 UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
@@ -112,6 +118,9 @@ UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
     setZValue(parentItem()->zValue() + 1);
     connect(this, SIGNAL(sigToggleStarted()), model(), SIGNAL(sigToggleStarted()));
     connect(this, SIGNAL(sigToggleFinished()), model(), SIGNAL(sigToggleFinished()), Qt::QueuedConnection);
+
+    /* Translate finally: */
+    retranslateUi();
 }
 
 UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
@@ -142,6 +151,9 @@ UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
 
     /* Copy content to 'this': */
     copyContent(pCopyFrom, this);
+
+    /* Translate finally: */
+    retranslateUi();
 }
 
 UIGChooserItemGroup::~UIGChooserItemGroup()
@@ -483,6 +495,10 @@ QVariant UIGChooserItemGroup::data(int iKey) const
         default: break;
     }
     return QVariant();
+}
+
+void UIGChooserItemGroup::retranslateUi()
+{
 }
 
 void UIGChooserItemGroup::show()

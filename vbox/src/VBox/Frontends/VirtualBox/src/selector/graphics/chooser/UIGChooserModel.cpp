@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43444 2012-09-27 07:18:12Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 43447 2012-09-27 10:18:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1694,6 +1694,7 @@ void UIGChooserModel::updateMachineItems(const QString &strId, UIGChooserItem *p
             if (pMachineItem->id() == strId)
             {
                 pMachineItem->recache();
+                pMachineItem->updateToolTip();
                 pMachineItem->update();
             }
 }
