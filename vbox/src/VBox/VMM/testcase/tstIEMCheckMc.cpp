@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 40266 2012-02-27 22:09:01Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 42437 2012-07-27 14:51:48Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -76,6 +76,9 @@ typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
     static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu, a_Type0 a_Name0, a_Type1 a_Name1) RT_NO_THROW
 
 #define IEM_NOT_REACHED_DEFAULT_CASE_RET()                  default: return VERR_IPE_NOT_REACHED_DEFAULT_CASE
+#define IEM_RETURN_ASPECT_NOT_IMPLEMENTED()                 return IEM_RETURN_ASPECT_NOT_IMPLEMENTED
+#define IEM_RETURN_ASPECT_NOT_IMPLEMENTED_LOG(a_LoggerArgs) return IEM_RETURN_ASPECT_NOT_IMPLEMENTED
+
 
 #define IEM_OPCODE_GET_NEXT_U8(a_pu8)                       do { *(a_pu8)  = g_bRandom; CHK_PTYPE(uint8_t  *, a_pu8);  } while (0)
 #define IEM_OPCODE_GET_NEXT_U16(a_pu16)                     do { *(a_pu16) = g_bRandom; CHK_PTYPE(uint16_t *, a_pu16); } while (0)
@@ -98,6 +101,7 @@ typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
 #define IEMOP_RAISE_INVALID_LOCK_PREFIX()                   VERR_TRPM_ACTIVE_TRAP
 #define IEMOP_MNEMONIC(a_szMnemonic)                        do { } while (0)
 #define IEMOP_MNEMONIC2(a_szMnemonic, a_szOps)              do { } while (0)
+#define IEMOP_BITCH_ABOUT_STUB()                            do { } while (0)
 #define FNIEMOP_STUB(a_Name) \
     FNIEMOP_DEF(a_Name) { return VERR_NOT_IMPLEMENTED; } \
     typedef int ignore_semicolon

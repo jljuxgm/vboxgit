@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 42193 2012-07-17 14:34:30Z vboxsync $ */
+/* $Id: IEMInternal.h 42437 2012-07-27 14:51:48Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -230,6 +230,14 @@ typedef struct IEMCPU
     /** The number of bytes data or stack written (mostly for IEMExecOneEx).
      * This may contain uncommitted writes.  */
     uint32_t                cbWritten;
+    /** Counts the VERR_IEM_INSTR_NOT_IMPLEMENTED returns. */
+    uint32_t                cRetInstrNotImplemented;
+    /** Counts the VERR_IEM_ASPECT_NOT_IMPLEMENTED returns. */
+    uint32_t                cRetAspectNotImplemented;
+    /** Counts informational statuses returned (other than VINF_SUCCESS). */
+    uint32_t                cRetInfStatuses;
+    /** Counts other error statuses returned. */
+    uint32_t                cRetErrStatuses;
 #ifdef IEM_VERIFICATION_MODE
     /** The Number of I/O port reads that has been performed. */
     uint32_t                cIOReads;
