@@ -1,4 +1,4 @@
-; $Id: VBoxDispD3D64.def 36867 2011-04-28 07:27:03Z vboxsync $
+; $Id: VBoxDispD3D64.def 42501 2012-08-01 10:48:53Z vboxsync $
 ; @file
 ;
 ; VBoxDispD3D 64bit
@@ -19,6 +19,3 @@ LIBRARY VBoxDispD3D64
 EXPORTS
 	OpenAdapter
 	VBoxDispMpGetCallbacks
-    VBoxDispCrHgsmiInit
-    VBoxDispCrHgsmiTerm
-    VBoxDispCrHgsmiQueryClient

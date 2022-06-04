@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiDisp.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxUhgsmiDisp.h 42501 2012-08-01 10:48:53Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -28,8 +28,10 @@ typedef struct VBOXUHGSMI_PRIVATE_D3D
     struct VBOXWDDMDISP_DEVICE *pDevice;
 } VBOXUHGSMI_PRIVATE_D3D, *PVBOXUHGSMI_PRIVATE_D3D;
 
-HRESULT vboxUhgsmiD3DInit(PVBOXUHGSMI_PRIVATE_D3D pHgsmi, struct VBOXWDDMDISP_DEVICE *pDevice);
+#if 0
+void vboxUhgsmiD3DInit(PVBOXUHGSMI_PRIVATE_D3D pHgsmi, struct VBOXWDDMDISP_DEVICE *pDevice);
+#endif
 
-
+void vboxUhgsmiD3DEscInit(PVBOXUHGSMI_PRIVATE_D3D pHgsmi, struct VBOXWDDMDISP_DEVICE *pDevice);
 
 #endif /* #ifndef ___VBoxUhgsmiDisp_h__ */

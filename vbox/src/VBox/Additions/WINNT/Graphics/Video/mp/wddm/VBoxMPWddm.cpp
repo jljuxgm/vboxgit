@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 42232 2012-07-19 16:06:17Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 42501 2012-08-01 10:48:53Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3923,7 +3923,7 @@ DxgkDdiEscape(
 #ifdef VBOX_WITH_CRHGSMI
             case VBOXESC_UHGSMI_SUBMIT:
             {
-                /* submit UHGSMI command */
+                /* submit VBOXUHGSMI command */
                 PVBOXWDDM_CONTEXT pContext = (PVBOXWDDM_CONTEXT)pEscape->hContext;
                 PVBOXDISPIFESCAPE_UHGSMI_SUBMIT pSubmit = (PVBOXDISPIFESCAPE_UHGSMI_SUBMIT)pEscapeHdr;
                 Assert(pEscape->PrivateDriverDataSize >= sizeof (VBOXDISPIFESCAPE_UHGSMI_SUBMIT)
@@ -3942,7 +3942,7 @@ DxgkDdiEscape(
 #endif
             case VBOXESC_UHGSMI_ALLOCATE:
             {
-                /* allocate UHGSMI buffer */
+                /* allocate VBOXUHGSMI buffer */
                 PVBOXWDDM_CONTEXT pContext = (PVBOXWDDM_CONTEXT)pEscape->hContext;
                 PVBOXDISPIFESCAPE_UHGSMI_ALLOCATE pAlocate = (PVBOXDISPIFESCAPE_UHGSMI_ALLOCATE)pEscapeHdr;
                 Assert(pEscape->PrivateDriverDataSize == sizeof (VBOXDISPIFESCAPE_UHGSMI_ALLOCATE));
@@ -3959,7 +3959,7 @@ DxgkDdiEscape(
 
             case VBOXESC_UHGSMI_DEALLOCATE:
             {
-                /* deallocate UHGSMI buffer */
+                /* deallocate VBOXUHGSMI buffer */
                 PVBOXWDDM_CONTEXT pContext = (PVBOXWDDM_CONTEXT)pEscape->hContext;
                 PVBOXDISPIFESCAPE_UHGSMI_DEALLOCATE pDealocate = (PVBOXDISPIFESCAPE_UHGSMI_DEALLOCATE)pEscapeHdr;
                 Assert(pEscape->PrivateDriverDataSize == sizeof (VBOXDISPIFESCAPE_UHGSMI_DEALLOCATE));
