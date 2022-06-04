@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 44498 2013-01-31 15:48:05Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 47720 2013-08-14 10:41:56Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -47,7 +47,7 @@ using namespace com;
 
 static DECLCALLBACK(void) handleVDError(void *pvUser, int rc, RT_SRC_POS_DECL, const char *pszFormat, va_list va)
 {
-    RTMsgError(pszFormat, va);
+    RTMsgErrorV(pszFormat, va);
     RTMsgError("Error code %Rrc at %s(%u) in function %s", rc, RT_SRC_POS_ARGS);
 }
 
