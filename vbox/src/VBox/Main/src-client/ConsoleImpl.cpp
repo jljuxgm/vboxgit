@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 46451 2013-06-07 19:42:04Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 46465 2013-06-10 14:11:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5100,6 +5100,25 @@ void Console::onVRDEServerInfoChange()
     fireVRDEServerInfoChangedEvent(mEventSource);
 }
 
+HRESULT Console::onVideoCaptureChange()
+{
+    AutoCaller autoCaller(this);
+    AssertComRCReturnRC(autoCaller.rc());
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    SafeArray<BOOL> screens;
+    HRESULT rc = mMachine->COMGETTER(VideoCaptureScreens)(ComSafeArrayAsOutParam(screens));
+    if (mDisplay)
+    {
+        if (SUCCEEDED(rc))
+            rc = mDisplay->EnableVideoCaptureScreens(ComSafeArrayAsInParam(screens));
+        if (SUCCEEDED(rc))
+            fireVideoCaptureChangedEvent(mEventSource);
+    }
+
+    return rc;
+}
 
 /**
  * Called by IInternalSessionControl::OnUSBControllerChange().

@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 45814 2013-04-29 14:10:00Z vboxsync $ */
+/* $Id: SessionImpl.cpp 46465 2013-06-10 14:11:26Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -641,6 +641,21 @@ STDMETHODIMP Session::OnVRDEServerChange(BOOL aRestart)
     AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
 
     return mConsole->onVRDEServerChange(aRestart);
+}
+
+STDMETHODIMP Session::OnVideoCaptureChange()
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+    AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->onVideoCaptureChange();
 }
 
 STDMETHODIMP Session::OnUSBControllerChange()

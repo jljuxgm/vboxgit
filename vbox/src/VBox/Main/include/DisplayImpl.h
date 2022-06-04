@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 46123 2013-05-16 13:40:20Z vboxsync $ */
+/* $Id: DisplayImpl.h 46465 2013-06-10 14:11:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -169,8 +169,7 @@ public:
     STDMETHOD(TakeScreenShot)(ULONG aScreenId, BYTE *address, ULONG width, ULONG height);
     STDMETHOD(TakeScreenShotToArray)(ULONG aScreenId, ULONG width, ULONG height, ComSafeArrayOut(BYTE, aScreenData));
     STDMETHOD(TakeScreenShotPNGToArray)(ULONG aScreenId, ULONG width, ULONG height, ComSafeArrayOut(BYTE, aScreenData));
-    STDMETHOD(EnableVideoCapture)(ComSafeArrayIn(BOOL, aScreens));
-    STDMETHOD(DisableVideoCapture)(ComSafeArrayIn(BOOL, aScreens));
+    STDMETHOD(EnableVideoCaptureScreens)(ComSafeArrayIn(BOOL, aScreens));
     STDMETHOD(DrawToScreen)(ULONG aScreenId, BYTE *address, ULONG x, ULONG y, ULONG width, ULONG height);
     STDMETHOD(InvalidateAndUpdate)();
     STDMETHOD(ResizeCompleted)(ULONG aScreenId);
