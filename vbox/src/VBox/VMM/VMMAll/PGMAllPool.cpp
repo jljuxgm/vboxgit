@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 42185 2012-07-17 13:28:39Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -3163,7 +3163,7 @@ static bool pgmPoolTrackFlushGCPhysPTInt(PVM pVM, PCPGMPAGE pPhysPage, bool fFlu
             /* Update the counter if we're removing references. */
             if (!u32AndMask)
             {
-                Assert(pPage->cPresent );
+                Assert(pPage->cPresent);
                 Assert(pPool->cPresent);
                 pPage->cPresent--;
                 pPool->cPresent--;
