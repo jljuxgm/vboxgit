@@ -1,4 +1,4 @@
-/* $Id: DevEEPROM.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: DevEEPROM.h 44542 2013-02-05 13:16:16Z vboxsync $ */
 /** @file
  * DevEEPROM - Microware-compatible 64x16-bit 93C46 EEPROM Emulation, Header.
  */
@@ -29,7 +29,8 @@
  *          device supports GC execution. This is why it is a
  *          plain-old-data structure.
  */
-struct EEPROM93C46 {
+struct EEPROM93C46
+{
     /** General definitions */
     enum {
         /** Size of EEPROM in words */
