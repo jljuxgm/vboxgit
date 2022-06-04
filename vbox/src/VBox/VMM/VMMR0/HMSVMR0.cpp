@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47080 2013-07-10 14:32:58Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47089 2013-07-11 11:29:17Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3049,6 +3049,7 @@ DECLINLINE(int) hmR0SvmHandleExit(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
 
                         default:
                             AssertMsgFailed(("hmR0SvmHandleExit: Unexpected exit caused by exception %#x\n", Event.n.u8Vector));
+                            pVCpu->hm.s.u32HMError = Event.n.u8Vector;
                             return VERR_SVM_UNEXPECTED_XCPT_EXIT;
                     }
 
@@ -3061,6 +3062,7 @@ DECLINLINE(int) hmR0SvmHandleExit(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
                 default:
                 {
                     AssertMsgFailed(("hmR0SvmHandleExit: Unknown exit code %#x\n", u32ExitCode));
+                    pVCpu->hm.s.u32HMError = u32ExitCode;
                     return VERR_SVM_UNKNOWN_EXIT;
                 }
             }
@@ -3346,8 +3348,9 @@ static int hmR0SvmEmulateMovTpr(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             }
 
             default:
-                AssertMsgFailedReturn(("Unexpected patch type %d\n", pPatch->enmType), VERR_SVM_UNEXPECTED_PATCH_TYPE);
-                break;
+                AssertMsgFailed(("Unexpected patch type %d\n", pPatch->enmType));
+                pVCpu->hm.s.u32HMError = pPatch->enmType;
+                return VERR_SVM_UNEXPECTED_PATCH_TYPE;
         }
     }
 

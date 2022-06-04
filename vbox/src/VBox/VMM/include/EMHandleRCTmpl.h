@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 47089 2013-07-11 11:29:17Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -346,6 +346,10 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VERR_VMX_UNEXPECTED_EXIT_CODE:
         case VERR_VMX_INVALID_GUEST_STATE:
         case VERR_VMX_UNABLE_TO_START_VM:
+        case VERR_SVM_UNKNOWN_EXIT:
+        case VERR_SVM_UNEXPECTED_EXIT:
+        case VERR_SVM_UNEXPECTED_PATCH_TYPE:
+        case VERR_SVM_UNEXPECTED_XCPT_EXIT:
             HMR3CheckError(pVM, rc);
             break;
 
