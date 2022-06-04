@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 42686 2012-08-08 15:24:24Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 44304 2013-01-16 11:54:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -47,7 +47,7 @@ UpdateIntervalMap CreateUpdateIntervalMap()
 UpdateIntervalMap UIGMachinePreview::m_intervals = CreateUpdateIntervalMap();
 
 UIGMachinePreview::UIGMachinePreview(QIGraphicsWidget *pParent)
-    : QIGraphicsWidget(pParent)
+    : QIWithRetranslateUI4<QIGraphicsWidget>(pParent)
     , m_machineState(KMachineState_Null)
     , m_pUpdateTimer(new QTimer(this))
     , m_pUpdateTimerMenu(0)
