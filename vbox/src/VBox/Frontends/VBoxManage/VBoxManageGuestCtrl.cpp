@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 47872 2013-08-20 06:53:35Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 47874 2013-08-20 07:33:42Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -3113,9 +3113,7 @@ static RTEXITCODE handleCtrlList(ComPtr<IGuest> guest, HandlerArg *pArg)
                                 ComPtr<IGuestFile> pCurFile = collFiles[a];
                                 if (!pCurFile.isNull())
                                 {
-                                    ULONG uID;
                                     CHECK_ERROR_BREAK(pCurFile, COMGETTER(Id)(&uID));
-                                    Bstr strName;
                                     CHECK_ERROR_BREAK(pCurFile, COMGETTER(FileName)(strName.asOutParam()));
                                     FileStatus_T fileStatus;
                                     CHECK_ERROR_BREAK(pCurFile, COMGETTER(Status)(&fileStatus));

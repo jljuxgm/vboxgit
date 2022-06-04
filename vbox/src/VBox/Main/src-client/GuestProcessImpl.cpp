@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 47817 2013-08-16 15:30:15Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 47874 2013-08-20 07:33:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -991,7 +991,6 @@ int GuestProcess::setProcessStatus(ProcessStatus_T procStatus, int procRc)
 
         /* Copy over necessary data before releasing lock again. */
         uint32_t uPID =  mData.mPID;
-        ProcessStatus_T procStatus = mData.mStatus;
         /** @todo Also handle mSession? */
 
         alock.release(); /* Release lock before firing off event. */

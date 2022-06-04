@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 47858 2013-08-19 20:48:58Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 47874 2013-08-20 07:33:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -943,9 +943,6 @@ int GuestFile::setFileStatus(FileStatus_T fileStatus, int fileRc)
                                    guestErrorToString(fileRc));
             ComAssertComRC(hr);
         }
-
-        /* Copy over necessary data before releasing lock again. */
-        FileStatus_T fileStatus = mData.mStatus;
 
         alock.release(); /* Release lock before firing off event. */
 
