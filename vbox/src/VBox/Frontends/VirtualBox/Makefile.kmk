@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47012 2013-07-05 15:56:59Z vboxsync $
+# $Id: Makefile.kmk 47087 2013-07-11 07:21:50Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -76,9 +76,6 @@ ifndef VBOX_WITH_HARDENING      # For the launch trick we need different inode n
  VirtualBox_INST.darwin = $(INST_BIN)VirtualBox $(INST_BIN)VirtualBoxVM
 endif
 VirtualBox_SDKS.win = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK)
-if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd os2) # X11 + os2 ## @todo solaris
- VirtualBox_SDKS += LIBSDL
-endif
 
 VirtualBox_DEFS           =
 VirtualBox_DEFS.debug     = VBOX_CHECK_STATE # QT_FATAL_ASSERT
