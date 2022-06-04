@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43617 2012-10-11 12:59:41Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43619 2012-10-11 14:07:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -733,9 +733,16 @@ void UIGChooserItemGroup::clearItems(UIGChooserItemType type /* = UIGChooserItem
 
 void UIGChooserItemGroup::updateAll(const QString &strId)
 {
-    /* Update all the items: */
+    /* Update all the required items recursively: */
     foreach (UIGChooserItem *pItem, items())
         pItem->updateAll(strId);
+}
+
+void UIGChooserItemGroup::removeAll(const QString &strId)
+{
+    /* Remove all the required items recursively: */
+    foreach (UIGChooserItem *pItem, items())
+        pItem->removeAll(strId);
 }
 
 UIGChooserItem* UIGChooserItemGroup::searchForItem(const QString &strSearchTag, int iItemSearchFlags)

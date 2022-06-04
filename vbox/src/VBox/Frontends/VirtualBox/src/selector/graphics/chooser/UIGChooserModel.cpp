@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43617 2012-10-11 12:59:41Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 43619 2012-10-11 14:07:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -620,7 +620,7 @@ void UIGChooserModel::sltMachineRegistered(QString strId, bool fRegistered)
     else
     {
         /* Remove machine-items with passed id: */
-        removeMachineItems(strId, mainRoot());
+        mainRoot()->removeAll(strId);
         /* Update model: */
         cleanupGroupTree();
         updateNavigation();
@@ -884,7 +884,7 @@ void UIGChooserModel::sltGroupSelectedMachines()
 void UIGChooserModel::sltReloadMachine(const QString &strId)
 {
     /* Remove all the items first: */
-    removeMachineItems(strId, mainRoot());
+    mainRoot()->removeAll(strId);
 
     /* Check if such machine still present: */
     CMachine machine = vboxGlobal().virtualBox().FindMachine(strId);
@@ -1417,17 +1417,6 @@ void UIGChooserModel::cleanupGroupTree(UIGChooserItem *pParent)
         else if (root() != mainRoot())
             unindentRoot();
     }
-}
-
-void UIGChooserModel::removeMachineItems(const QString &strId, UIGChooserItem *pParent)
-{
-    /* For each group-item in passed parent: */
-    foreach (UIGChooserItem *pItem, pParent->items(UIGChooserItemType_Group))
-        removeMachineItems(strId, pItem->toGroupItem());
-    /* For each machine-item in passed parent: */
-    foreach (UIGChooserItem *pItem, pParent->items(UIGChooserItemType_Machine))
-        if (pItem->toMachineItem()->id() == strId)
-            delete pItem;
 }
 
 void UIGChooserModel::removeItems(const QList<UIGChooserItem*> &itemsToRemove)

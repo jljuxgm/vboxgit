@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43617 2012-10-11 12:59:41Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43619 2012-10-11 14:07:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -373,6 +373,16 @@ void UIGChooserItemMachine::updateAll(const QString &strId)
     /* Update parent group-item: */
     parentItem()->updateToolTip();
     parentItem()->update();
+}
+
+void UIGChooserItemMachine::removeAll(const QString &strId)
+{
+    /* Skip wrong id: */
+    if (id() != strId)
+        return;
+
+    /* Remove item: */
+    delete this;
 }
 
 UIGChooserItem* UIGChooserItemMachine::searchForItem(const QString &strSearchTag, int iItemSearchFlags)
