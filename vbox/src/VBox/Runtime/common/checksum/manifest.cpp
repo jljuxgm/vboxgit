@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 41170 2012-05-04 14:58:29Z vboxsync $ */
+/* $Id: manifest.cpp 44218 2012-12-31 12:28:59Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling.
  */
@@ -252,10 +252,13 @@ RTR3DECL(int) RTManifestWriteFiles(const char *pszManifestFile, RTDIGESTTYPE enm
     /* Cleanup */
     if (pvBuf)
         RTMemFree(pvBuf);
-    for (size_t i = 0; i < cFiles; ++i)
-        if (paFiles[i].pszTestDigest)
-            RTStrFree((char*)paFiles[i].pszTestDigest);
-    RTMemFree(paFiles);
+    if (paFiles)
+    {
+        for (size_t i = 0; i < cFiles; ++i)
+            if (paFiles[i].pszTestDigest)
+                RTStrFree((char*)paFiles[i].pszTestDigest);
+        RTMemFree(paFiles);
+    }
 
     /* Delete the manifest file on failure */
     if (RT_FAILURE(rc))
