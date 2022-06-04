@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 47489 2013-07-31 13:06:26Z vboxsync $
+# $Id: vboxconfig.sh 47882 2013-08-20 09:55:57Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -959,6 +959,7 @@ cleanup_install()
 
     # Stop our other daemons, non-fatal
     stop_process "VBoxNetDHCP"
+    stop_process "VBoxNetLwipNAT"
 
    # Stop VBoxSVC quickly using SIGUSR1
     procname="VBoxSVC"

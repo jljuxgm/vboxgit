@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: makepackage.sh 44580 2013-02-07 11:35:37Z vboxsync $
+# $Id: makepackage.sh 47882 2013-08-20 09:55:57Z vboxsync $
 ## @file
 # VirtualBox package creation script, Solaris hosts.
 #
@@ -205,6 +205,8 @@ $VBOX_AWK 'NF == 6 \
         ||  $3 == "opt/VirtualBox/i386/VBoxNetAdpCtl" \
         ||  $3 == "opt/VirtualBox/amd64/VBoxNetDHCP" \
         ||  $3 == "opt/VirtualBox/i386/VBoxNetDHCP" \
+        ||  $3 == "opt/VirtualBox/amd64/VBoxNetLwipNAT" \
+        ||  $3 == "opt/VirtualBox/i386/VBoxNetLwipNAT" \
         ) \
    { $4 = "4755" } { print }' prototype > prototype2
 mv -f prototype2 prototype
