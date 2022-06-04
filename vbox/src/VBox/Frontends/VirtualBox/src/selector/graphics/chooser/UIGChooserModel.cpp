@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42879 2012-08-20 11:34:13Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42909 2012-08-21 15:46:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -137,6 +137,13 @@ void UIGChooserModel::cleanup()
 QGraphicsScene* UIGChooserModel::scene() const
 {
     return m_pScene;
+}
+
+QPaintDevice* UIGChooserModel::paintDevice() const
+{
+    if (!m_pScene || m_pScene->views().isEmpty())
+        return 0;
+    return m_pScene->views().first();
 }
 
 UIGChooserItem* UIGChooserModel::mainRoot() const

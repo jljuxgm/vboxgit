@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 42906 2012-08-21 13:32:51Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 42909 2012-08-21 15:46:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -63,6 +63,13 @@ UIGDetailsModel::~UIGDetailsModel()
 QGraphicsScene* UIGDetailsModel::scene() const
 {
     return m_pScene;
+}
+
+QPaintDevice* UIGDetailsModel::paintDevice() const
+{
+    if (!m_pScene || m_pScene->views().isEmpty())
+        return 0;
+    return m_pScene->views().first();
 }
 
 QGraphicsItem* UIGDetailsModel::itemAt(const QPointF &position, const QTransform &deviceTransform /* = QTransform() */) const

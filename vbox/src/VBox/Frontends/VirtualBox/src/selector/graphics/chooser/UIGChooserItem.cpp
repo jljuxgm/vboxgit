@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 42873 2012-08-18 14:37:25Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 42909 2012-08-21 15:46:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -336,24 +336,24 @@ void UIGChooserItem::paintText(QPainter *pPainter, const QRect &rect, const QFon
 }
 
 /* static */
-int UIGChooserItem::textWidth(const QFont &font, int iCount)
+int UIGChooserItem::textWidth(const QFont &font, QPaintDevice *pPaintDevice, int iCount)
 {
     /* Return text width: */
-    QFontMetrics fm(font);
+    QFontMetrics fm(font, pPaintDevice);
     QString strString;
     strString.fill('_', iCount);
     return fm.width(strString);
 }
 
 /* static */
-QString UIGChooserItem::compressText(const QFont &font, QString strText, int iWidth)
+QString UIGChooserItem::compressText(const QFont &font, QPaintDevice *pPaintDevice, QString strText, int iWidth)
 {
     /* Check if passed text is empty: */
     if (strText.isEmpty())
         return strText;
 
     /* Check if passed text feats maximum width: */
-    QFontMetrics fm(font);
+    QFontMetrics fm(font, pPaintDevice);
     if (fm.width(strText) <= iWidth)
         return strText;
 
