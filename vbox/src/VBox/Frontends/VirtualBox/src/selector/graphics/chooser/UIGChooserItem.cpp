@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 42558 2012-08-02 20:55:58Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 42593 2012-08-04 15:46:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,7 +43,7 @@ UIGChooserItem::UIGChooserItem(UIGChooserItem *pParent)
     , m_pForwardAnimation(0)
     , m_pBackwardAnimation(0)
     , m_iAnimationDuration(300)
-    , m_iDefaultDarkness(115)
+    , m_iDefaultDarkness(103)
     , m_iHighlightDarkness(90)
     , m_iGradient(m_iDefaultDarkness)
 {
@@ -172,7 +172,7 @@ DragToken UIGChooserItem::dragTokenPlace() const
     return m_dragTokenPlace;
 }
 
-void UIGChooserItem::hoverEnterEvent(QGraphicsSceneHoverEvent*)
+void UIGChooserItem::hoverMoveEvent(QGraphicsSceneHoverEvent*)
 {
     if (m_fHovered != true)
     {
@@ -328,6 +328,10 @@ int UIGChooserItem::textWidth(const QFont &font, int iCount)
 /* static */
 QString UIGChooserItem::compressText(const QFont &font, QString strText, int iWidth)
 {
+    /* Check if passed text is empty: */
+    if (strText.isEmpty())
+        return strText;
+
     /* Check if passed text feats maximum width: */
     QFontMetrics fm(font);
     if (fm.width(strText) <= iWidth)
