@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 43908 2012-11-19 05:36:43Z vboxsync $ */
+/* $Id: MachineImpl.h 43915 2012-11-19 19:07:10Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1064,8 +1064,8 @@ public:
               ComSafeArrayOut(LONG64, aTimestamps), ComSafeArrayOut(BSTR, aFlags));
     STDMETHOD(PushGuestProperty)(IN_BSTR aName, IN_BSTR aValue,
                                   LONG64 aTimestamp, IN_BSTR aFlags);
-    STDMETHOD(LockMedia)()   { return lockMedia(); }
-    STDMETHOD(UnlockMedia)() { unlockMedia(); return S_OK; }
+    STDMETHOD(LockMedia)();
+    STDMETHOD(UnlockMedia)();
     STDMETHOD(EjectMedium)(IMediumAttachment *aAttachment,
                            IMediumAttachment **aNewAttachment);
     STDMETHOD(ReportVmStatistics)(ULONG aValidStats, ULONG aCpuUser,
@@ -1109,6 +1109,9 @@ public:
     HRESULT onStorageDeviceChange(IMediumAttachment *aMediumAttachment, BOOL aRemove);
 
     bool hasMatchingUSBFilter(const ComObjPtr<HostUSBDevice> &aDevice, ULONG *aMaskedIfs);
+
+    HRESULT lockMedia();
+    void unlockMedia();
 
 private:
 
@@ -1176,9 +1179,6 @@ private:
                               MediumLockList *aMediumLockList,
                               ComObjPtr<Progress> &aProgress,
                               bool *pfNeedsMachineSaveSettings);
-
-    HRESULT lockMedia();
-    void unlockMedia();
 
     HRESULT setMachineState(MachineState_T aMachineState);
     HRESULT updateMachineStateOnClient();

@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 43870 2012-11-14 18:04:07Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 43915 2012-11-19 19:07:10Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -1640,10 +1640,9 @@ STDMETHODIMP SessionMachine::EndTakingSnapshot(BOOL aSuccess)
     mConsoleTaskData.mLastState = MachineState_Null;
     mConsoleTaskData.mSnapshot.setNull();
 
-    // machineLock.release();
+    /* machineLock has been released already */
 
     mParent->saveModifiedRegistries();
-
 
     return rc;
 }

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 43669 2012-10-17 13:20:03Z vboxsync $ */
+/* $Id: MediumImpl.cpp 43915 2012-11-19 19:07:10Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3479,7 +3479,8 @@ HRESULT Medium::addBackReference(const Guid &aMachineId,
     }
 
     it->llSnapshotIds.push_back(aSnapshotId);
-    it->fInCurState = false;
+    // Do not touch fInCurState, as the image may be attached to the current
+    // state *and* a snapshot, otherwise we lose the current state association!
 
     LogFlowThisFuncLeave();
 
