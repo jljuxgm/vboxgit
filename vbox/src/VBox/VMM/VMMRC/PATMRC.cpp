@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
+/* $Id: PATMRC.cpp 44363 2013-01-24 22:33:41Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -75,7 +75,7 @@ VMMRCDECL(int) PATMGCMonitorPage(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pReg
  * @param   cbWrite     Nr of bytes to write
  *
  */
-VMMRCDECL(int) PATMRCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RTRCPTR GCPtr, uint32_t cbWrite)
+VMMRC_INT_DECL(int) PATMRCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE pRegFrame, RTRCPTR GCPtr, uint32_t cbWrite)
 {
     RTGCUINTPTR          pWritePageStart, pWritePageEnd;
     PPATMPATCHPAGE       pPatchPage;
