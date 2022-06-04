@@ -1,4 +1,4 @@
-/* $Id: tstLog.cpp 45173 2013-03-25 14:04:00Z vboxsync $ */
+/* $Id: tstLog.cpp 45174 2013-03-25 14:05:19Z vboxsync $ */
 /** @file
  * IPRT Testcase - Log Formatting.
  */
@@ -30,15 +30,12 @@
 #include <iprt/log.h>
 #include <iprt/initterm.h>
 #include <iprt/err.h>
-#include <iprt/stream.h>
 
 #include <stdio.h>
 
 int main()
 {
     RTR3InitExeNoArguments(0);
-    uint32_t a = 0x80000000, b = 0x80000000, c = 0x80000000;
-    RTPrintf("%d %d", 0x80000000, 0x80000000);
     printf("tstLog: Requires manual inspection of the log output!\n");
     RTLogPrintf("%%Rrc %d: %Rrc\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);
     RTLogPrintf("%%Rrs %d: %Rrs\n", VERR_INVALID_PARAMETER, VERR_INVALID_PARAMETER);
