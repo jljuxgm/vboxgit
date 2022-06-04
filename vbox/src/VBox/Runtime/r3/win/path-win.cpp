@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: path-win.cpp 46624 2013-06-18 13:17:23Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -195,7 +195,7 @@ RTDECL(int) RTPathUserDocuments(char *pszPath, size_t cchPath)
     AssertReturn(cchPath, VERR_INVALID_PARAMETER);
 
     RTLDRMOD hShell32;
-    int rc = RTLdrLoad("Shell32.dll", &hShell32);
+    int rc = RTLdrLoadSystem("Shell32.dll", true /*fNoUnload*/, &hShell32);
     if (RT_SUCCESS(rc))
     {
         PFNSHGETFOLDERPATHW pfnSHGetFolderPathW;
