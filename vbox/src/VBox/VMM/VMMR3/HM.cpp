@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 44035 2012-12-04 18:30:44Z vboxsync $ */
+/* $Id: HM.cpp 44085 2012-12-10 18:06:14Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2675,7 +2675,7 @@ VMMR3DECL(VBOXSTRICTRC) HMR3RestartPendingIOInstr(PVM pVM, PVMCPU pVCpu, PCPUMCT
 /**
  * Inject an NMI into a running VM (only VCPU 0!)
  *
- * @returns boolean
+ * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
  */
 VMMR3DECL(int)  HMR3InjectNMI(PVM pVM)
