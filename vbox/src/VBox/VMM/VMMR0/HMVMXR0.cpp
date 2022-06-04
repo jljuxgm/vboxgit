@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46463 2013-06-10 13:17:18Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46464 2013-06-10 13:49:58Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1273,8 +1273,9 @@ static void hmR0VmxFlushTaggedTlbBoth(PVM pVM, PVMCPU pVCpu)
          * invalidated. We don't need to flush-by-VPID here as flushing by EPT covers it. See @bugref{6568}.
          */
         hmR0VmxFlushEpt(pVM, pVCpu, pVM->hm.s.vmx.enmFlushEpt);
-        STAM_COUNTER_INC(&pVCpu->hm.s.StatFlushTlb);
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatFlushTlbWorldSwitch);
         HMVMX_SET_TAGGED_TLB_FLUSHED();
+        VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_TLB_FLUSH);  /* Already flushed-by-EPT, skip doing it again below. */
     }
 
     /* Check for explicit TLB shootdowns. */
