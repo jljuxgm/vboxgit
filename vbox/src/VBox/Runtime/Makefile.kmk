@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45350 2013-04-04 20:22:25Z vboxsync $
+# $Id: Makefile.kmk 45353 2013-04-04 21:47:12Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2501,7 +2501,7 @@ endif
 #
 # Windows build tool.
 #
-BLDPROGS.win = ntBldSymDb
+BLDPROGS.win += ntBldSymDb
 ntBldSymDb_TEMPLATE = VBoxAdvBldProg
 ntBldSymDb_INCS = .
 ntBldSymDb_SOURCES = r0drv/nt/ntBldSymDb.cpp
