@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewer.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIVMLogViewer.cpp 47169 2013-07-15 15:35:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -385,7 +385,7 @@ UIVMLogViewer::UIVMLogViewer(QWidget *pParent, Qt::WindowFlags flags, const CMac
     /* Apply window icons: */
     setWindowIcon(UIIconPool::iconSetFull(QSize(32, 32), QSize(16, 16),
                                           ":/vm_show_logs_32px.png",
-                                          ":/show_logs_16px.png"));
+                                          ":/vm_show_logs_16px.png"));
 
     /* Create VM Log Vewer container: */
     m_pViewerContainer = new QITabWidget(centralWidget());

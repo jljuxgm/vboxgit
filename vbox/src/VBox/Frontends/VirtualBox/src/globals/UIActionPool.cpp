@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
+/* $Id: UIActionPool.cpp 47169 2013-07-15 15:35:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -293,8 +293,8 @@ public:
 
     UIActionSimpleLogDialog(UIActionPool *pParent)
         : UIActionSimple(pParent, QSize(32, 32), QSize(16, 16),
-                         ":/vm_show_logs_32px.png", ":/show_logs_16px.png",
-                         ":/vm_show_logs_disabled_32px.png", ":/show_logs_disabled_16px.png")
+                         ":/vm_show_logs_32px.png", ":/vm_show_logs_16px.png",
+                         ":/vm_show_logs_disabled_32px.png", ":/vm_show_logs_disabled_16px.png")
     {
         retranslateUi();
     }
