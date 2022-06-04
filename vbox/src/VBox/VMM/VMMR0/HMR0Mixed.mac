@@ -1,4 +1,4 @@
-; $Id: HMR0Mixed.mac 47608 2013-08-08 10:24:29Z vboxsync $
+; $Id: HMR0Mixed.mac 47610 2013-08-08 11:47:16Z vboxsync $
 ;; @file
 ; HM - Ring-0 Host 32/64, Guest 32/64 world-switch routines
 ;
@@ -24,7 +24,10 @@
   ; Keep these macro definitions in this file as it gets included and compiled
   ; with RT_ARCH_AMD64 once and RT_ARCH_X86 once.
   %define VMX_SKIP_GDTR
-  %define VMX_SKIP_IDTR
+  %ifndef RT_OS_DARWIN
+   ; Darwin (Mavericks) uses IDTR limit to store the CPUID so we need to restore it always. See @bugref{6875}.
+   %define VMX_SKIP_IDTR
+  %endif
   %define VMX_SKIP_TR
  %endif
 %endif
