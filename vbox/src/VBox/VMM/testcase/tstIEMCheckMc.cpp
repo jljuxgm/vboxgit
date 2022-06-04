@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 42487 2012-07-31 16:23:27Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 42610 2012-08-06 00:44:09Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -96,6 +96,7 @@ typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
 #define IEM_OPCODE_GET_NEXT_U64(a_pu64)                     do { *(a_pu64) = g_bRandom; CHK_PTYPE(uint64_t *, a_pu64); } while (0)
 #define IEMOP_HLP_NO_LOCK_PREFIX()                          do { } while (0)
 #define IEMOP_HLP_NO_64BIT()                                do { } while (0)
+#define IEMOP_HLP_64BIT_OP_SIZE()                           do { } while (0)
 #define IEMOP_HLP_DEFAULT_64BIT_OP_SIZE()                   do { } while (0)
 #define IEMOP_HLP_DONE_DECODING()                           do { } while (0)
 #define IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX()            do { } while (0)
@@ -519,7 +520,7 @@ IEMOPSHIFTDBLSIZES g_iemAImpl_shrd;
 #define IEM_MC_FPU_STACK_UNDERFLOW_MEM_OP(a_iStReg, a_iEffSeg, a_GCPtrEff)                      do { } while (0)
 #define IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP(a_iStReg)                                           do { } while (0)
 #define IEM_MC_FPU_STACK_UNDERFLOW_MEM_OP_THEN_POP(a_iStReg, a_iEffSeg, a_GCPtrEff)             do { } while (0)
-#define IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP_POP(a_iStReg)                                       do { } while (0)
+#define IEM_MC_FPU_STACK_UNDERFLOW_THEN_POP_POP()                                               do { } while (0)
 #define IEM_MC_FPU_STACK_PUSH_UNDERFLOW()                                                       do { } while (0)
 #define IEM_MC_FPU_STACK_PUSH_UNDERFLOW_TWO()                                                   do { } while (0)
 #define IEM_MC_FPU_STACK_PUSH_OVERFLOW()                                                        do { } while (0)
