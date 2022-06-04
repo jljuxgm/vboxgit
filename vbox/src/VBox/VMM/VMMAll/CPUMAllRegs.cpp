@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 43860 2012-11-12 17:12:37Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 43974 2012-11-27 14:52:12Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1068,8 +1068,8 @@ VMMDECL(int) CPUMQueryGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
             /*
              * Hand the X2APIC range to PDM and the APIC.
              */
-            if (    idMsr >= MSR_IA32_APIC_START
-                &&  idMsr <  MSR_IA32_APIC_END)
+            if (    idMsr >= MSR_IA32_X2APIC_START
+                &&  idMsr <= MSR_IA32_X2APIC_END)
             {
                 rc = PDMApicReadMSR(pVCpu->CTX_SUFF(pVM), pVCpu->idCpu, idMsr, puValue);
                 if (RT_SUCCESS(rc))
@@ -1310,8 +1310,8 @@ VMMDECL(int) CPUMSetGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t uValue)
             /*
              * Hand the X2APIC range to PDM and the APIC.
              */
-            if (    idMsr >= MSR_IA32_APIC_START
-                &&  idMsr <  MSR_IA32_APIC_END)
+            if (    idMsr >= MSR_IA32_X2APIC_START
+                &&  idMsr <= MSR_IA32_X2APIC_END)
             {
                 rc = PDMApicWriteMSR(pVCpu->CTX_SUFF(pVM), pVCpu->idCpu, idMsr, uValue);
                 if (rc != VINF_SUCCESS)
