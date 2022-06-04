@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 45727 2013-04-25 11:15:38Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 45751 2013-04-26 01:25:24Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2678,7 +2678,8 @@ REMR3DECL(int) REMR3StateBack(PVM pVM, PVMCPU pVCpu)
         pCtx->idtr.pIdt = pVM->rem.s.Env.idt.base;
         STAM_COUNTER_INC(&gStatREMIDTChange);
 #ifdef VBOX_WITH_RAW_MODE
-        VMCPU_FF_SET(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
+        if (!HMIsEnabled(pVM))
+            VMCPU_FF_SET(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
 #endif
     }
 
@@ -2917,7 +2918,8 @@ static void remR3StateUpdate(PVM pVM, PVMCPU pVCpu)
         pCtx->idtr.pIdt     = (RTGCPTR)pVM->rem.s.Env.idt.base;
         STAM_COUNTER_INC(&gStatREMIDTChange);
 #ifdef VBOX_WITH_RAW_MODE
-        VMCPU_FF_SET(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
+        if (!HMIsEnabled(pVM))
+            VMCPU_FF_SET(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
 #endif
     }
 
