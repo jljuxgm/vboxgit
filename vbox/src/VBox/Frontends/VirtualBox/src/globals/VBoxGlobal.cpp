@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 46797 2013-06-26 11:10:15Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 46837 2013-06-27 12:27:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3540,22 +3540,15 @@ QList <QPair <QString, QString> > VBoxGlobal::FloppyBackends()
 /* static */
 QString VBoxGlobal::documentsPath()
 {
-    QString path;
-#if QT_VERSION < 0x040400
-    path = QDir::homePath();
-#else
-    path = QDesktopServices::storageLocation (QDesktopServices::DocumentsLocation);
-#endif
-
-    /* Make sure the path exists */
-    QDir dir (path);
+    QString path = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
+    QDir dir(path);
     if (dir.exists())
-        return QDir::cleanPath (dir.canonicalPath());
+        return QDir::cleanPath(dir.canonicalPath());
     else
     {
-        dir.setPath (QDir::homePath() + "/Documents");
+        dir.setPath(QDir::homePath() + "/Documents");
         if (dir.exists())
-            return QDir::cleanPath (dir.canonicalPath());
+            return QDir::cleanPath(dir.canonicalPath());
         else
             return QDir::homePath();
     }
