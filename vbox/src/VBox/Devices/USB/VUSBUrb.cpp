@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 45755 2013-04-26 04:04:44Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 46806 2013-06-26 14:24:17Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -989,6 +989,7 @@ static int vusbUrbErrorRh(PVUSBURB pUrb)
 {
     PVUSBDEV pDev = pUrb->VUsb.pDev;
     PVUSBROOTHUB pRh = vusbDevGetRh(pDev);
+    AssertPtrReturn(pRh, VERR_VUSB_DEVICE_NOT_ATTACHED);
     LogFlow(("%s: vusbUrbErrorRh: pDev=%p[%s] rh=%p\n", pUrb->pszDesc, pDev, pDev->pUsbIns ? pDev->pUsbIns->pszName : "", pRh));
     return pRh->pIRhPort->pfnXferError(pRh->pIRhPort, pUrb);
 }
@@ -1011,6 +1012,7 @@ void vusbUrbCompletionRh(PVUSBURB pUrb)
      * Total and per-type submit statistics.
      */
     PVUSBROOTHUB pRh = vusbDevGetRh(pUrb->VUsb.pDev);
+    AssertPtrReturnVoid(pRh);
     if (pUrb->enmType != VUSBXFERTYPE_MSG)
     {
         Assert(pUrb->enmType >= 0 && pUrb->enmType < (int)RT_ELEMENTS(pRh->aTypes));
@@ -1114,6 +1116,7 @@ void vusbUrbCompletionRh(PVUSBURB pUrb)
 #endif
 #ifndef VBOX_WITH_STATISTICS
     PVUSBROOTHUB pRh = vusbDevGetRh(pUrb->VUsb.pDev);
+    AssertPtrReturnVoid(pRh);
 #endif
 
     /** @todo explain why we do this pDev change. */

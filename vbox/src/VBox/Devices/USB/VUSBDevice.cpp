@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 45755 2013-04-26 04:04:44Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 46806 2013-06-26 14:24:17Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -995,6 +995,7 @@ void vusbDevSetAddress(PVUSBDEV pDev, uint8_t u8Address)
         return;
 
     PVUSBROOTHUB pRh = vusbDevGetRh(pDev);
+    AssertPtrReturnVoid(pRh);
     if (pDev->u8Address == VUSB_DEFAULT_ADDRESS)
         pRh->pDefaultAddress = NULL;
 
@@ -1034,6 +1035,7 @@ void vusbDevSetAddress(PVUSBDEV pDev, uint8_t u8Address)
 static void vusbDevCancelAllUrbs(PVUSBDEV pDev, bool fDetaching)
 {
     PVUSBROOTHUB pRh = vusbDevGetRh(pDev);
+    AssertPtrReturnVoid(pRh);
 
     /*
      * Iterate the URBs and cancel them.
