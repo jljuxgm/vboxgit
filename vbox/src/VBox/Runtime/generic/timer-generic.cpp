@@ -1,4 +1,4 @@
-/* $Id: timer-generic.cpp 43533 2012-10-04 09:45:31Z vboxsync $ */
+/* $Id: timer-generic.cpp 47552 2013-08-06 10:02:19Z vboxsync $ */
 /** @file
  * IPRT - Timers, Generic.
  */
@@ -256,18 +256,15 @@ static DECLCALLBACK(int) rtTimerThread(RTTHREAD hThreadSelf, void *pvUser)
             if (u64NanoTS >= pTimer->u64NextTS)
             {
                 pTimer->iTick++;
+
+                /* one shot? */
+                if (!pTimer->u64NanoInterval)
+                    ASMAtomicXchgU8(&pTimer->fSuspended, true);
                 pTimer->pfnTimer(pTimer, pTimer->pvUser, pTimer->iTick);
 
                 /* status changed? */
                 if (pTimer->fSuspended || pTimer->fDestroyed)
                     continue;
-
-                /* one shot? */
-                if (!pTimer->u64NanoInterval)
-                {
-                    ASMAtomicXchgU8(&pTimer->fSuspended, true);
-                    continue;
-                }
 
                 /* calc the next time we should fire. */
                 pTimer->u64NextTS = pTimer->u64StartTS + pTimer->iTick * pTimer->u64NanoInterval;
