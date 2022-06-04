@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 44863 2013-02-28 12:18:17Z vboxsync $ */
+/* $Id: VBoxService.cpp 44872 2013-02-28 16:48:03Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -802,6 +802,7 @@ int main(int argc, char **argv)
         return VBoxServicePageSharingInitFork();
 #endif
 
+#ifdef VBOX_WITH_GUEST_CONTROL
     /*
      * Check if we're the specially spawned VBoxService.exe process that
      * handles a guest control session.
@@ -809,6 +810,7 @@ int main(int argc, char **argv)
     if (    argc >= 2
         &&  !RTStrICmp(argv[1], "guestsession"))
         return VBoxServiceControlSessionForkInit(argc, argv);
+#endif
 
     /*
      * Parse the arguments.
