@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 43526 2012-10-03 12:20:28Z vboxsync $ */
+/* $Id: DevVGA.cpp 44055 2012-12-06 17:03:49Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1813,7 +1813,7 @@ static int vga_draw_text(VGAState *s, bool full_update, bool fFailOnResize, bool
     cx_max_upd = -1;
     cx_min_upd = width;
 
-    for(cy = 0; cy < height; cy = cy + (1 << dscan)) {
+    for(cy = 0; cy < (height - dscan); cy = cy + (1 << dscan)) {
         d1 = dest;
         src = s1;
         cx_min = width;
