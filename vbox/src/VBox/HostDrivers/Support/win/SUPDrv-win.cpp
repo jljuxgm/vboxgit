@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 44173 2012-12-19 18:12:31Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -264,7 +264,7 @@ NTSTATUS _stdcall VBoxDrvNtCreate(PDEVICE_OBJECT pDevObj, PIRP pIrp)
          */
         pFileObj->FsContext = NULL;
         PSUPDRVSESSION pSession;
-        int rc = supdrvCreateSession(pDevExt, true /*fUser*/, &pSession);
+        int rc = supdrvCreateSession(pDevExt, true /*fUser*/, true /*fUnrestricted*/, &pSession);
         if (!rc)
             pFileObj->FsContext = pSession;
         rcNt = pIrp->IoStatus.Status = VBoxDrvNtErr2NtStatus(rc);

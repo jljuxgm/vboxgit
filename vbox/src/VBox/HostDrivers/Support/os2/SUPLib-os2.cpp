@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 44173 2012-12-19 18:12:31Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - OS/2 specific parts.
  */
@@ -65,7 +65,7 @@
 
 
 
-int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited)
+int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted)
 {
     /*
      * Nothing to do if pre-inited.
@@ -100,6 +100,7 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited)
     }
 
     pThis->hDevice = hDevice;
+    pThis->fUnrestricted = true;
     return VINF_SUCCESS;
 }
 

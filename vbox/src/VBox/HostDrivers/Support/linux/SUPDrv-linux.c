@@ -1,4 +1,4 @@
-/* $Rev: 43394 $ */
+/* $Rev: 44173 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -435,7 +435,7 @@ static int VBoxDrvLinuxCreate(struct inode *pInode, struct file *pFilp)
     /*
      * Call common code for the rest.
      */
-    rc = supdrvCreateSession(&g_DevExt, true /* fUser */, &pSession);
+    rc = supdrvCreateSession(&g_DevExt, true /* fUser */, true /*fUnrestricted*/, &pSession);
     if (!rc)
     {
         pSession->Uid = vboxdrvLinuxUid();

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 41067 2012-04-26 11:36:57Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 44173 2012-12-19 18:12:31Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -150,7 +150,7 @@ DECLASM(int) VBoxDrvOpen(uint16_t sfn)
     /*
      * Create a new session.
      */
-    rc = supdrvCreateSession(&g_DevExt, true /* fUser */, &pSession);
+    rc = supdrvCreateSession(&g_DevExt, true /* fUser */, true /*fUnrestricted*/, &pSession);
     if (RT_SUCCESS(rc))
     {
         pSession->sfn = sfn;

@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 39538 2011-12-06 09:47:20Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 44173 2012-12-19 18:12:31Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -577,7 +577,7 @@ static size_t supR3HardenedStrPrintf(char *pszDst, size_t cchDst, const char *ps
  */
 static void supR3HardenedMainOpenDevice(void)
 {
-    int rc = suplibOsInit(&g_SupPreInitData.Data, false);
+    int rc = suplibOsInit(&g_SupPreInitData.Data, false /*fPreInit*/, true /*fUnrestricted*/);
     if (RT_SUCCESS(rc))
         return;
 

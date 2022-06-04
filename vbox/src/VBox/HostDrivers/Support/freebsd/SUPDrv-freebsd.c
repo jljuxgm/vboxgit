@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 43435 2012-09-26 09:31:17Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 44173 2012-12-19 18:12:31Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -229,7 +229,7 @@ static int VBoxDrvFreeBSDOpen(struct cdev *pDev, int fOpen, int iDevtype, struct
     /*
      * Create a new session.
      */
-    rc = supdrvCreateSession(&g_VBoxDrvFreeBSDDevExt, true /* fUser */, &pSession);
+    rc = supdrvCreateSession(&g_VBoxDrvFreeBSDDevExt, true /* fUser */, true /*fUnrestricted*/, &pSession);
     if (RT_SUCCESS(rc))
     {
         /** @todo get (r)uid and (r)gid.
