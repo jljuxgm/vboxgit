@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 44948 2013-03-07 10:36:42Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 45021 2013-03-13 14:54:05Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -440,6 +440,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            nictrace<1-N> on|off\n"
                      "                            nictracefile<1-N> <filename>\n"
                      "                            nicproperty<1-N> name=[value]\n"
+                     "                            nicpromisc<1-N> deny|allow-vms|allow-all]\n"
                      "                            natpf<1-N> [<rulename>],tcp|udp,[<hostip>],\n"
                      "                                          <hostport>,[<guestip>],<guestport>\n"
                      "                            natpf<1-N> delete <rulename>\n"

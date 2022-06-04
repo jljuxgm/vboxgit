@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 45021 2013-03-13 14:54:05Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -618,6 +618,53 @@ int handleControlVM(HandlerArg *a)
                 }
                 else
                     RTMsgError("The NIC %d is currently disabled and thus its properties can't be changed", n);
+            }
+        }
+        else if (!strncmp(a->argv[1], "nicpromisc", 10))
+        {
+            /* Get the number of network adapters */
+            ULONG NetworkAdapterCount = getMaxNics(a->virtualBox,sessionMachine) ;
+            unsigned n = parseNum(&a->argv[1][10], NetworkAdapterCount, "NIC");
+            if (!n)
+            {
+                rc = E_FAIL;
+                break;
+            }
+            if (a->argc <= 2)
+            {
+                errorArgument("Missing argument to '%s'", a->argv[1]);
+                rc = E_FAIL;
+                break;
+            }
+
+            /* get the corresponding network adapter */
+            ComPtr<INetworkAdapter> adapter;
+            CHECK_ERROR_BREAK(sessionMachine, GetNetworkAdapter(n - 1, adapter.asOutParam()));
+            if (adapter)
+            {
+                BOOL fEnabled;
+                adapter->COMGETTER(Enabled)(&fEnabled);
+                if (fEnabled)
+                {
+                    NetworkAdapterPromiscModePolicy_T enmPromiscModePolicy;
+                    if (!strcmp(a->argv[2], "deny"))
+                        enmPromiscModePolicy = NetworkAdapterPromiscModePolicy_Deny;
+                    else if (  !strcmp(a->argv[2], "allow-vms")
+                            || !strcmp(a->argv[2], "allow-network"))
+                        enmPromiscModePolicy = NetworkAdapterPromiscModePolicy_AllowNetwork;
+                    else if (!strcmp(a->argv[2], "allow-all"))
+                        enmPromiscModePolicy = NetworkAdapterPromiscModePolicy_AllowAll;
+                    else
+                    {
+                        errorArgument("Unknown promiscuous mode policy '%s'", a->argv[2]);
+                        rc = E_INVALIDARG;
+                        break;
+                    }
+
+                    CHECK_ERROR(adapter, COMSETTER(PromiscModePolicy)(enmPromiscModePolicy));
+                }
+                else
+                    RTMsgError("The NIC %d is currently disabled and thus its promiscuous mode can't be changed", n);
             }
         }
         else if (!strncmp(a->argv[1], "nic", 3))
