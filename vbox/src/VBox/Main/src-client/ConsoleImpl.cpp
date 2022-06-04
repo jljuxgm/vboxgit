@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 42907 2012-08-21 13:53:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7726,7 +7726,7 @@ void Console::changeClipboardMode(ClipboardMode_T aClipboardMode)
     {
         default:
         case ClipboardMode_Disabled:
-            LogRel(("Shared cipboard mode: Off\n"));
+            LogRel(("Shared clipboard mode: Off\n"));
             parm.u.uint32 = VBOX_SHARED_CLIPBOARD_MODE_OFF;
             break;
         case ClipboardMode_GuestToHost:
