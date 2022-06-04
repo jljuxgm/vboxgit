@@ -1,4 +1,4 @@
-/* $Id: vboxms.c 42424 2012-07-26 19:34:30Z vboxsync $ */
+/* $Id: vboxms.c 42456 2012-07-30 16:17:41Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
@@ -63,7 +63,7 @@
 ******************************************************************************/
 
 /** The module name. */
-#define DEVICE_NAME              "vboxmouse"
+#define DEVICE_NAME              "vboxms"
 /** The module description as seen in 'modinfo'. */
 #define DEVICE_DESC              "VBoxMouseIntegr"
 
