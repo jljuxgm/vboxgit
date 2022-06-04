@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44905 2013-03-04 10:24:49Z vboxsync $
+# $Id: Makefile.kmk 44907 2013-03-04 10:57:17Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -383,7 +383,7 @@ LnxAdd-scripts_EXEC_SOURCES  = \
 	$(VBOX_REL_LNX_ADD_INST)vboxadd-service.sh=>vboxadd-service \
 	$(VBOX_REL_LNX_ADD_INST)vboxadd-x11.sh=>vboxadd-x11
 
-ifdef VBOX_WITH_LIGHTDM_GREETER
+ifdef VBOX_WITH_LIGHTDM_GREETER_PACKING
  LnxAdd-scripts_EXEC_SOURCES += \
 	$(VBOX_REL_LNX_ADD_INST)module-autologon.sh=>installer/module-autologon
 endif
