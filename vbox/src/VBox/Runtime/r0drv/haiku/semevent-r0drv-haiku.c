@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
+/* $Id: semevent-r0drv-haiku.c 43403 2012-09-22 11:48:24Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Haiku.
  */
@@ -261,3 +261,4 @@ RTDECL(uint32_t) RTSemEventGetResolution(void)
     /* At least that's what the API supports. */
     return 1000;
 }
+

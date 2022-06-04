@@ -1,4 +1,4 @@
-/* $Id: process-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: process-r0drv-haiku.c 43403 2012-09-22 11:48:24Z vboxsync $ */
 /** @file
  * IPRT - Process, Ring-0 Driver, Haiku.
  */
@@ -43,3 +43,4 @@ RTR0DECL(RTR0PROCESS) RTR0ProcHandleSelf(void)
 {
     return (RTR0PROCESS)(team_id)getpid();
 }
+

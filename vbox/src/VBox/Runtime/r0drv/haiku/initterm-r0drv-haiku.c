@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
+/* $Id: initterm-r0drv-haiku.c 43403 2012-09-22 11:48:24Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Haiku.
  */
@@ -45,3 +45,4 @@ int rtR0InitNative(void)
 void rtR0TermNative(void)
 {
 }
+

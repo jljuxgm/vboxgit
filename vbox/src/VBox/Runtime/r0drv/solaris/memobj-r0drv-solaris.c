@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-solaris.c 41968 2012-06-29 03:36:30Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 43403 2012-09-22 11:48:24Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
@@ -143,6 +143,10 @@ static page_t *rtR0MemObjSolPageAlloc(caddr_t virtAddr)
     u_offset_t      offPage;
     seg_t           KernelSeg;
 
+    /*
+     * 16777215 terabytes of total memory for all VMs or
+     * restart 8000 1GB VMs 2147483 times until wraparound!
+     */
     mutex_enter(&g_OffsetMtx);
     AssertCompileSize(u_offset_t, sizeof(uint64_t)); NOREF(RTASSERTVAR);
     g_offPage = RT_ALIGN_64(g_offPage, PAGE_SIZE) + PAGE_SIZE;

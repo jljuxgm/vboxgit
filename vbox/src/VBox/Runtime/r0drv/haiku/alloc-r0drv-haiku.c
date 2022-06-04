@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
+/* $Id: alloc-r0drv-haiku.c 43403 2012-09-22 11:48:24Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Haiku.
  */
@@ -88,10 +88,8 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb) RT_NO_THROW
      */
     cb = RT_ALIGN_Z(cb, PAGE_SIZE);
     void *pv;
-    area_id area = create_area("VirtualBox Contig Alloc", &pv,
-                               B_ANY_KERNEL_ADDRESS, cb, B_32_BIT_CONTIGUOUS,
+    area_id area = create_area("VirtualBox Contig Alloc", &pv, B_ANY_KERNEL_ADDRESS, cb, B_32_BIT_CONTIGUOUS,
                                B_READ_AREA | B_WRITE_AREA);
-
     if (area >= 0)
     {
         physical_entry physMap[2];

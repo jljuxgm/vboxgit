@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
+/* $Id: semmutex-r0drv-haiku.c 43403 2012-09-22 11:48:24Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Haiku.
  */
@@ -103,7 +103,15 @@ RTDECL(int)  RTSemMutexDestroy(RTSEMMUTEX hMutexSem)
 }
 
 
-/** @todo doxygen */
+/**
+ * Worker function for acquiring the mutex.
+ *
+ * @param hMutexSem     The mutex object.
+ * @param fFlags        Mutex flags (see RTSEMWAIT_FLAGS_*)
+ * @param uTimeout      Timeout in units specified by the flags.
+ *
+ * @return IPRT status code.
+ */
 static int rtSemMutexRequestEx(RTSEMMUTEX hMutexSem, uint32_t fFlags, uint64_t uTimeout)
 {
     PRTSEMMUTEXINTERNAL pThis = hMutexSem;
