@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 46331 2013-05-30 12:56:52Z vboxsync $ */
+/* $Id: HostImpl.cpp 46340 2013-05-31 12:13:15Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -371,7 +371,7 @@ HRESULT Host::init(VirtualBox *aParent)
             else
             {
                 LogRel(("SUPR0QueryVTCaps -> %Rrc\n", rc));
-                m->fVTSupported = m->fNestedPagingSupported = true;
+                m->fVTSupported = m->fNestedPagingSupported = false;
             }
         }
         else
