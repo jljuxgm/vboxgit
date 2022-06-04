@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45424 2013-04-09 08:21:25Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45431 2013-04-09 12:34:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -53,6 +53,7 @@
 #include "VBoxUtils.h"
 #include "UISelectorWindow.h"
 #include "UIMessageCenter.h"
+#include "UIPopupCenter.h"
 #include "QIMessageBox.h"
 #include "QIDialogButtonBox.h"
 #include "UIIconPool.h"
@@ -4019,6 +4020,9 @@ bool VBoxGlobal::processArgs()
 
 void VBoxGlobal::init()
 {
+    /* Create popup-center: */
+    UIPopupCenter::prepare();
+
 #ifdef DEBUG
     mVerString += " [DEBUG]";
 #endif
@@ -4521,6 +4525,9 @@ void VBoxGlobal::cleanup()
     QApplication::removePostedEvents (this);
 
     COMBase::CleanupCOM();
+
+    /* Destroy popup-center: */
+    UIPopupCenter::cleanup();
 
     mValid = false;
 }
