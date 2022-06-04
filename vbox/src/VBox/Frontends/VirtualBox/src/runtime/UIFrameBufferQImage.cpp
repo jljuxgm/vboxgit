@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 46283 2013-05-27 11:22:29Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 46322 2013-05-30 10:45:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -302,10 +302,10 @@ void UIFrameBufferQImage::drawImageRectNarrow(QPainter &painter, const QImage &i
 
 /* static */
 void UIFrameBufferQImage::drawImageRectWide(QPainter &painter, const QImage &image,
-                                            const QRect &rect, int iContentsShiftX, int /*iContentsShiftY*/)
+                                            const QRect &rect, int iContentsShiftX, int iContentsShiftY)
 {
     /* This method is faster for wide updates: */
-    QPixmap pm = QPixmap::fromImage(QImage(image.scanLine(rect.y() + iContentsShiftX),
+    QPixmap pm = QPixmap::fromImage(QImage(image.scanLine(rect.y() + iContentsShiftY),
                                            image.width(), rect.height(), image.bytesPerLine(),
                                            QImage::Format_RGB32));
     painter.drawPixmap(rect.x(), rect.y(), pm, rect.x() + iContentsShiftX, 0, 0, 0);
