@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 45374 2013-04-05 14:22:14Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 45377 2013-04-05 14:41:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1023,13 +1023,6 @@ void UISelectorWindow::polishEvent(QShowEvent*)
     /* Make sure user warned about inaccessible medium(s)
      * even if enumeration had finished before selector window shown: */
     QTimer::singleShot(0, this, SLOT(sltMediumEnumFinished()));
-}
-
-void UISelectorWindow::closeEvent(QCloseEvent *pEvent)
-{
-    // TODO: Such things are obsolete, rework required!
-    emit closing();
-    QMainWindow::closeEvent(pEvent);
 }
 
 #ifdef Q_WS_MAC

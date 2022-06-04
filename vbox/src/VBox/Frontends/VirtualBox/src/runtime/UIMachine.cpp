@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 45224 2013-03-28 10:12:52Z vboxsync $ */
+/* $Id: UIMachine.cpp 45377 2013-04-05 14:41:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -414,13 +414,13 @@ UIMachine::~UIMachine()
     QApplication::quit();
 }
 
-QWidget* UIMachine::mainWindow() const
+QWidget* UIMachine::activeWindow() const
 {
     /* Null if machine-logic not yet created: */
     if (!machineLogic())
         return 0;
-    /* Main machine-window otherwise: */
-    return machineLogic()->mainMachineWindow();
+    /* Active machine-window otherwise: */
+    return machineLogic()->activeMachineWindow();
 }
 
 void UIMachine::sltChangeVisualState(UIVisualStateType newVisualStateType)

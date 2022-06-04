@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.cpp 45342 2013-04-04 17:21:13Z vboxsync $ */
+/* $Id: UINetworkManagerDialog.cpp 45377 2013-04-05 14:41:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -167,7 +167,7 @@ void UINetworkManagerDialog::showEvent(QShowEvent *pShowEvent)
     resize(minimumSizeHint());
 
     /* Center according current main application window: */
-    vboxGlobal().centerWidget(this, vboxGlobal().mainWindow(), false);
+    vboxGlobal().centerWidget(this, msgCenter().mainWindowShown(), false);
 
     /* Pass event to the base-class: */
     QMainWindow::showEvent(pShowEvent);

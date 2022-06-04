@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45374 2013-04-05 14:22:14Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45377 2013-04-05 14:41:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -269,7 +269,6 @@ VBoxGlobal::VBoxGlobal()
     : mValid (false)
     , mSelectorWnd (NULL)
     , m_pVirtualMachine(0)
-    , mMainWindow (NULL)
     , mMediaEnumThread (NULL)
     , mIsKWinManaged (false)
     , mDisablePatm(false)
@@ -456,13 +455,13 @@ UIMachine* VBoxGlobal::virtualMachine()
     return m_pVirtualMachine;
 }
 
-QWidget* VBoxGlobal::vmWindow()
+QWidget* VBoxGlobal::activeMachineWindow()
 {
     /* Null if that is NOT console-process or machine not yet created: */
     if (!isVMConsoleProcess() || !m_pVirtualMachine)
         return 0;
-    /* Main machine-window otherwise: */
-    return m_pVirtualMachine->mainWindow();
+    /* Active machine-window otherwise: */
+    return m_pVirtualMachine->activeWindow();
 }
 
 #ifdef VBOX_GUI_WITH_PIDFILE

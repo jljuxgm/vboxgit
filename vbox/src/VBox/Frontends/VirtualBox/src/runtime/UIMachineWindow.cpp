@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 45224 2013-03-28 10:12:52Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 45377 2013-04-05 14:41:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -181,10 +181,6 @@ UIMachineWindow::UIMachineWindow(UIMachineLogic *pMachineLogic, ulong uScreenId)
     /* Set VM-specific application icon: */
     setWindowIcon(vboxGlobal().vmGuestOSTypeIcon(machine().GetOSTypeId()));
 #endif /* !Q_WS_MAC */
-
-    /* Set the main application window for VBoxGlobal: */
-    if (m_uScreenId == 0)
-        vboxGlobal().setMainWindow(this);
 }
 
 UISession* UIMachineWindow::uisession() const
