@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
+/* $Id: DevPS2.cpp 46932 2013-07-03 13:02:28Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -704,7 +704,7 @@ static void kbd_mouse_update_downstream_status(KBDState *pThis)
 {
     PPDMIMOUSECONNECTOR pDrv = pThis->Mouse.pDrv;
     bool fEnabled = !!(pThis->mouse_status & MOUSE_STATUS_ENABLED);
-    pDrv->pfnReportModes(pDrv, fEnabled, false);
+    pDrv->pfnReportModes(pDrv, fEnabled, false, false);
 }
 
 #endif /* IN_RING3 */

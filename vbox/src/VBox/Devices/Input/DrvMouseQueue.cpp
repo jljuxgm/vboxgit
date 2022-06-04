@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 46932 2013-07-03 13:02:28Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -161,12 +161,14 @@ static DECLCALLBACK(int) drvMouseQueuePutEventAbs(PPDMIMOUSEPORT pInterface, uin
  * driver.
  *
  * @param   pInterface  Pointer to the mouse connector interface structure.
- * @param   fAbs        The new absolute mode state.
+ * @param   fRel        Is relative reporting supported?
+ * @param   fAbs        Is absolute reporting supported?
+ * @param   fMT         Is multi-touch reporting supported?
  */
-static DECLCALLBACK(void) drvMousePassThruReportModes(PPDMIMOUSECONNECTOR pInterface, bool fRel, bool fAbs)
+static DECLCALLBACK(void) drvMousePassThruReportModes(PPDMIMOUSECONNECTOR pInterface, bool fRel, bool fAbs, bool fMT)
 {
     PDRVMOUSEQUEUE pDrv = PPDMIMOUSECONNECTOR_2_DRVMOUSEQUEUE(pInterface);
-    pDrv->pDownConnector->pfnReportModes(pDrv->pDownConnector, fRel, fAbs);
+    pDrv->pDownConnector->pfnReportModes(pDrv->pDownConnector, fRel, fAbs, fMT);
 }
 
 
