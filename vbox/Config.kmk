@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46865 2013-06-28 13:16:14Z vboxsync $
+# $Id: Config.kmk 46873 2013-06-28 19:16:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1682,7 +1682,7 @@ endif
 # Note! Yes, --max-branchs is a typo, but not by me.
 #
 ifndef VBOX_PYLINT
- VBOX_PYLINT        := $(firstword $(which pylint-2.7) $(which pylint-2.6) $(which pylint))
+ VBOX_PYLINT        := $(firstword $(which pylint-2.7) $(which pylint-2.6) $(which pylint2) $(which pylint))
  ifdef VBOX_PYLINT
   VBOX_PYLINT       := $(VBOX_BLD_PYTHON) $(VBOX_PYLINT)
  endif
@@ -5335,7 +5335,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46865 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46873 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
