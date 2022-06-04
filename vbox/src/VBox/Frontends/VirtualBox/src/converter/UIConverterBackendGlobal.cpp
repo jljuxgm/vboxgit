@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 47594 2013-08-07 14:37:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -464,7 +464,6 @@ template<> QString toInternalString(const GlobalSettingsPageType &globalSettings
         case GlobalSettingsPageType_Update:     strResult = "Update"; break;
         case GlobalSettingsPageType_Language:   strResult = "Language"; break;
         case GlobalSettingsPageType_Display:    strResult = "Display"; break;
-        case GlobalSettingsPageType_USB:        strResult = "USB"; break;
         case GlobalSettingsPageType_Network:    strResult = "Network"; break;
         case GlobalSettingsPageType_Extensions: strResult = "Extensions"; break;
         case GlobalSettingsPageType_Proxy:      strResult = "Proxy"; break;
@@ -488,7 +487,6 @@ template<> GlobalSettingsPageType fromInternalString<GlobalSettingsPageType>(con
     keys << "Update";     values << GlobalSettingsPageType_Update;
     keys << "Language";   values << GlobalSettingsPageType_Language;
     keys << "Display";    values << GlobalSettingsPageType_Display;
-    keys << "USB";        values << GlobalSettingsPageType_USB;
     keys << "Network";    values << GlobalSettingsPageType_Network;
     keys << "Extensions"; values << GlobalSettingsPageType_Extensions;
     keys << "Proxy";      values << GlobalSettingsPageType_Proxy;
