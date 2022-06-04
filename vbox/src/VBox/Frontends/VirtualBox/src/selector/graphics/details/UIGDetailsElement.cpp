@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 42608 2012-08-05 21:52:41Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 42609 2012-08-06 00:22:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -257,6 +257,8 @@ QVariant UIGDetailsElement::data(int iKey) const
                 iMaximumFirstLineWidth = qMax(iMaximumFirstLineWidth, fm.width(strFirstLine));
                 iMaximumSecondLineWidth = qMax(iMaximumSecondLineWidth, fm.width(strSecondLine));
             }
+            iMaximumFirstLineWidth += 1;
+            iMaximumSecondLineWidth += 1;
 
             /* Calculate column widths: */
             int iFirstColumnWidth = iMaximumTextWidth / 2;
@@ -566,6 +568,8 @@ void UIGDetailsElement::paintElementInfo(QPainter *pPainter, const QStyleOptionG
             iMaximumFirstLineWidth = qMax(iMaximumFirstLineWidth, fm.width(strFirstLine));
             iMaximumSecondLineWidth = qMax(iMaximumSecondLineWidth, fm.width(strSecondLine));
         }
+        iMaximumFirstLineWidth += 1;
+        iMaximumSecondLineWidth += 1;
 
         /* Calculate column widths: */
         int iFirstColumnWidth = iMaximumTextWidth / 2;
