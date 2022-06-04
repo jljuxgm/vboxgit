@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 44448 2013-01-29 18:37:30Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 44560 2013-02-06 11:32:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -619,7 +619,7 @@ protected:
     {
         switch (m_iState)
         {
-            case 1:
+            case 0:
             {
                 setName(QApplication::translate("UIActionPool", "S&tart"));
                 setStatusTip(QApplication::translate("UIActionPool", "Start the selected virtual machines"));
@@ -627,7 +627,7 @@ protected:
                            (shortcut().toString().isEmpty() ? "" : QString(" (%1)").arg(shortcut().toString())));
                 break;
             }
-            case 2:
+            case 1:
             {
                 setName(QApplication::translate("UIActionPool", "S&how"));
                 setStatusTip(QApplication::translate("UIActionPool", "Switch to the windows of the selected virtual machines"));
