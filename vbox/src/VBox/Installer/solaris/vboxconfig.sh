@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 44500 2013-01-31 17:48:31Z vboxsync $
+# $Id: vboxconfig.sh 44501 2013-01-31 18:56:26Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -923,11 +923,10 @@ cleanup_install()
     fi
 
     # stop the services
-    # Temporarily disabled for testing.
-    # stop_service "Web service" "virtualbox/webservice" "svc:/application/virtualbox/webservice:default"
-    # stop_service "Balloon control service" "virtualbox/balloonctrl" "svc:/application/virtualbox/balloonctrl:default"
-    # stop_service "Autostart service" "virtualbox/autostart" "svc:/application/virtualbox/autostart:default"
-    # stop_service "Zone access service" "virtualbox/zoneaccess" "svc:/application/virtualbox/zoneaccess:default"
+    stop_service "Web service" "virtualbox/webservice" "svc:/application/virtualbox/webservice:default"
+    stop_service "Balloon control service" "virtualbox/balloonctrl" "svc:/application/virtualbox/balloonctrl:default"
+    stop_service "Autostart service" "virtualbox/autostart" "svc:/application/virtualbox/autostart:default"
+    stop_service "Zone access service" "virtualbox/zoneaccess" "svc:/application/virtualbox/zoneaccess:default"
 
     # unplumb all vboxnet instances for non-remote installs
     inst=0
