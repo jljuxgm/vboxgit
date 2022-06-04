@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VM.cpp 44730 2013-02-18 12:43:02Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -4281,7 +4281,7 @@ static DECLCALLBACK(int) vmR3HotUnplugCpu(PVM pVM, VMCPUID idCpu)
      * even without this.
      */
     Log(("vmR3HotUnplugCpu for VCPU %u\n", idCpu));
-    PGMR3ResetUnpluggedCpu(pVM, pVCpu);
+    PGMR3ResetCpu(pVM, pVCpu);
     PDMR3ResetCpu(pVCpu);
     TRPMR3ResetCpu(pVCpu);
     CPUMR3ResetCpu(pVCpu);

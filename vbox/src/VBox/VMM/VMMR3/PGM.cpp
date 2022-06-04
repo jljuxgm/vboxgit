@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: PGM.cpp 44730 2013-02-18 12:43:02Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2468,7 +2468,7 @@ static DECLCALLBACK(int) pgmR3RelocateHyperVirtHandler(PAVLROGCPTRNODECORE pNode
  * @param   pVM                 Pointer to the VM.
  * @param   pVCpu               Pointer to the VMCPU.
  */
-VMMR3DECL(void) PGMR3ResetUnpluggedCpu(PVM pVM, PVMCPU pVCpu)
+VMMR3DECL(void) PGMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
 {
     int rc = PGM_GST_PFN(Exit, pVCpu)(pVCpu);
     AssertRC(rc);
