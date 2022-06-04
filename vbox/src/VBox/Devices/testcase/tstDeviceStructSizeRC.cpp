@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 44852 2013-02-27 20:27:33Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 44876 2013-02-28 20:56:09Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -312,7 +312,7 @@ int main()
     GEN_CHECK_OFF(VGASTATE, fRemappedVGA);
     GEN_CHECK_OFF(VGASTATE, fRenderVRAM);
     GEN_CHECK_OFF(VGASTATE, GCPhysVRAM);
-    GEN_CHECK_OFF(VGASTATE, lock);
+    GEN_CHECK_OFF(VGASTATE, CritSect);
     GEN_CHECK_OFF(VGASTATE, Dev);
     GEN_CHECK_OFF(VGASTATE, StatRZMemoryRead);
     GEN_CHECK_OFF(VGASTATE, StatR3MemoryRead);

@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DevVGA.h 44876 2013-02-28 20:56:09Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -316,8 +316,8 @@ typedef struct VGAState {
 
     /** The physical address the VRAM was assigned. */
     RTGCPHYS                    GCPhysVRAM;
-    /** The critical section. */
-    PDMCRITSECT                 lock;
+    /** The critical section protect the instance data. */
+    PDMCRITSECT                 CritSect;
     /** The PCI device. */
     PCIDEVICE                   Dev;
 
