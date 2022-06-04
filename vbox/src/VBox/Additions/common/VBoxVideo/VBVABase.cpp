@@ -1,4 +1,4 @@
-/* $Id: VBVABase.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBVABase.cpp 46857 2013-06-28 07:42:39Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - VBVA initialisation and helper
  * functions.
@@ -301,7 +301,7 @@ static bool vboxHwBufferWrite(PVBVABUFFERCONTEXT pCtx,
     pRecord = pCtx->pRecord;
     Assert(pRecord && (pRecord->cbRecord & VBVA_F_RECORD_PARTIAL));
 
-    LogFunc(("%d\n", cb));
+    // LogFunc(("%d\n", cb));
 
     cbHwBufferAvail = vboxHwBufferAvail (pVBVA);
 
