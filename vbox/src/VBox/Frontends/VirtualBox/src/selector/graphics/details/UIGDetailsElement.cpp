@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 42529 2012-08-02 11:53:21Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 42535 2012-08-02 13:04:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -184,7 +184,8 @@ QVariant UIGDetailsElement::data(int iKey) const
             return textFont;
         }
         /* Sizes: */
-        case ElementData_PixmapSize: return m_icon.availableSizes().at(0);
+        case ElementData_PixmapSize:
+            return m_icon.isNull() ? QSize(0, 0) : m_icon.availableSizes().at(0);
         case ElementData_NameSize:
         {
             QFontMetrics fm(data(ElementData_NameFont).value<QFont>());
