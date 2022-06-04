@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 47060 2013-07-09 17:05:16Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 47339 2013-07-23 11:57:38Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -890,10 +890,8 @@ int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTL
             return VERR_INVALID_PARAMETER;
     }
     KU32 fKFlags = 0;
-#ifdef KLDRMOD_OPEN_FLAGS_FOR_INFO
     if (fFlags & RTLDR_O_FOR_DEBUG)
         fKFlags |= KLDRMOD_OPEN_FLAGS_FOR_INFO;
-#endif
 
     /* Create a rtkldrRdr_ instance. */
     PRTKLDRRDR pRdr = (PRTKLDRRDR)RTMemAllocZ(sizeof(*pRdr));
