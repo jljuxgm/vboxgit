@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-solaris.c 47373 2013-07-24 13:05:53Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-solaris.c 47380 2013-07-24 17:45:21Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Solaris.
  */
@@ -137,7 +137,7 @@ static void rtThreadCtxHooksSolFree(void *pvThreadCtxInt, int fIsExec)
         return;
     }
 
-    cRefs = ASMAtomicDecU32(&pThis->cRefs)
+    cRefs = ASMAtomicDecU32(&pThis->cRefs);
     if (!cRefs)
     {
         Assert(!pThis->fRegistered);
