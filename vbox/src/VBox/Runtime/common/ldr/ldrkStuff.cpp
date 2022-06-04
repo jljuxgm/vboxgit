@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -811,6 +811,15 @@ static DECLCALLBACK(int) rtkldr_RvaToSegOffset(PRTLDRMODINTERNAL pMod, RTLDRADDR
 }
 
 
+/** @copydoc RTLDROPS::pfnReadDbgInfo. */
+static DECLCALLBACK(int) rtkldr_ReadDbgInfo(PRTLDRMODINTERNAL pMod, uint32_t iDbgInfo, RTFOFF off, size_t cb, void *pvBuf)
+{
+    PRTLDRMODKLDR   pThis = (PRTLDRMODKLDR)pMod;
+    /** @todo May have to apply fixups here. */
+    return pThis->Core.pReader->pfnRead(pThis->Core.pReader, pvBuf, cb, off);
+}
+
+
 /**
  * Operations for a kLdr module.
  */
@@ -832,7 +841,7 @@ static const RTLDROPS g_rtkldrOps =
     rtkldr_LinkAddressToRva,
     rtkldr_SegOffsetToRva,
     rtkldr_RvaToSegOffset,
-    NULL,
+    rtkldr_ReadDbgInfo,
     42
 };
 

@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
+/* $Id: dbgmod.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -485,7 +485,8 @@ static int rtDbgModOpenDebugInfoInsideImage(PRTDBGMODINT pDbgMod)
                 RTSemRWReleaseRead(g_hDbgModRWSem);
                 return VINF_SUCCESS;
             }
-            pDbgMod->pDbgVt    = NULL;
+
+            pDbgMod->pDbgVt = NULL;
             Assert(pDbgMod->pvDbgPriv == NULL);
         }
         RTSemRWReleaseRead(g_hDbgModRWSem);
@@ -529,13 +530,14 @@ static DECLCALLBACK(int) rtDbgModExtDbgInfoOpenCallback(RTDBGCFG hDbgCfg, const 
                 RTSemRWReleaseRead(g_hDbgModRWSem);
                 return VINF_CALLBACK_RETURN;
             }
-            pDbgMod->pDbgVt    = NULL;
+
+            pDbgMod->pDbgVt = NULL;
             Assert(pDbgMod->pvDbgPriv == NULL);
         }
+        RTSemRWReleaseRead(g_hDbgModRWSem);
     }
 
     /* No joy. */
-    RTSemRWReleaseRead(g_hDbgModRWSem);
     RTStrCacheRelease(g_hDbgModStrCache, pDbgMod->pszDbgFile);
     pDbgMod->pszDbgFile = NULL;
     return rc;
@@ -842,6 +844,12 @@ RTDECL(int) RTDbgModCreateFromImage(PRTDBGMOD phDbgMod, const char *pszFilename,
                                 rc = rtDbgModCreateForExports(pDbgMod);
                             if (RT_SUCCESS(rc))
                             {
+                                /*
+                                 * We're done!
+                                 */
+                                ASMAtomicIncU32(&pImg->cUsers);
+                                RTSemRWReleaseRead(g_hDbgModRWSem);
+
                                 *phDbgMod = pDbgMod;
                                 return VINF_SUCCESS;
                             }

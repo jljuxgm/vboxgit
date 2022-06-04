@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46137 2013-05-17 08:09:59Z vboxsync $
+# $Id: Makefile.kmk 46165 2013-05-19 19:07:50Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -682,6 +682,7 @@ ifneq ($(KBUILD_TARGET),win)
  VMMAll/IEMAll.cpp_CXXFLAGS     = -Wno-unused-parameter
 endif
 
+ifneq ($(USERNAME),bird) # Not opts for me atm.
 #
 # Always optimize the interpreter.
 #
@@ -696,7 +697,7 @@ else
  #VMMAll/IEMAll.cpp_CXXFLAGS += -fno-reorder-blocks    # Saves one or two percent ... never mind.
  VMMAll/IEMAll.cpp_CXXFLAGS += -fomit-frame-pointer # Omitting the frame pointer results in larger code, but it might be worth it. (esp addressing vs ebp?)
 endif
-
+endif # No optimizations for me atm.
 
 include $(FILE_KBUILD_SUB_FOOTER)
 

@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 45830 2013-04-30 10:16:10Z vboxsync $ */
+/* $Id: PDMLdr.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -215,8 +215,6 @@ VMMR3_INT_DECL(void) PDMR3LdrRelocateU(PUVM pUVM, RTGCINTPTR offDelta)
                 int rc = RTLdrRelocate(pCur->hLdrMod, pCur->pvBits, pCur->ImageBase, pCur->OldImageBase,
                                        pdmR3GetImportRC, &Args);
                 AssertFatalMsgRC(rc, ("RTLdrRelocate failed, rc=%d\n", rc));
-                DBGFR3ModuleRelocate(pUVM->pVM, pCur->OldImageBase, pCur->ImageBase, RTLdrSize(pCur->hLdrMod),
-                                     pCur->szFilename, pCur->szName);
             }
         }
     }

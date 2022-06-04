@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 46156 2013-05-18 01:35:16Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -113,10 +113,6 @@ VMMR3DECL(bool) DBGFR3IsHalted(PUVM pUVM)
 {
     return true;
 }
-VMMR3DECL(int) DBGFR3LineByAddr(PUVM pUVM, RTGCUINTPTR Address, PRTGCINTPTR poffDisplacement, PDBGFLINE pLine)
-{
-    return VERR_INTERNAL_ERROR;
-}
 VMMR3DECL(int) DBGFR3LogModifyDestinations(PUVM pUVM, const char *pszDestSettings)
 {
     return VERR_INTERNAL_ERROR;
@@ -148,6 +144,11 @@ VMMR3DECL(int) DBGFR3AsLoadMap(PUVM pUVM, RTDBGAS hAS, const char *pszFilename, 
 VMMR3DECL(RTDBGAS) DBGFR3AsResolveAndRetain(PUVM pUVM, RTDBGAS hAlias)
 {
     return NIL_RTDBGAS;
+}
+VMMR3DECL(int) DBGFR3AsLineByAddr(PUVM pUVM, RTDBGAS hDbgAs, PCDBGFADDRESS pAddress,
+                                  PRTGCINTPTR poffDisp, PRTDBGLINE pLine, PRTDBGMOD phMod)
+{
+    return VERR_DBG_LINE_NOT_FOUND;
 }
 VMMR3DECL(int) DBGFR3Resume(PUVM pUVM)
 {

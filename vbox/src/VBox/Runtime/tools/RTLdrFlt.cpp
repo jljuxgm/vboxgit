@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 46161 2013-05-19 13:31:13Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -206,7 +206,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 46161 $\n");
+                RTPrintf("$Revision: 46165 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -387,7 +387,7 @@ int main(int argc, char **argv)
                      */
                     RTDBGLINE   Line;
                     RTINTPTR    offLine;
-                    rc = RTDbgAsLineByAddr(hDbgAs, u64Address, &offLine, &Line);
+                    rc = RTDbgAsLineByAddr(hDbgAs, u64Address, &offLine, &Line, NULL);
                     if (RT_SUCCESS(rc))
                         RTStrmPrintf(pOutput, " %Rbn(%u)", Line.szFilename, Line.uLineNo);
 
