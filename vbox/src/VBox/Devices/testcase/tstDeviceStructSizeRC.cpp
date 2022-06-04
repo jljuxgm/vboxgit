@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 46272 2013-05-26 18:02:48Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 46376 2013-06-04 11:46:07Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1480,6 +1480,7 @@ int main()
     GEN_CHECK_OFF(VMMDEV, StatMemBalloonChunks);
     GEN_CHECK_OFF(VMMDEV, fRZEnabled);
     GEN_CHECK_OFF(VMMDEV, fTestingEnabled);
+    GEN_CHECK_OFF(VMMDEV, fTestingMMIO);
     GEN_CHECK_OFF(VMMDEV, u32TestingHighTimestamp);
     GEN_CHECK_OFF(VMMDEV, u32TestingCmd);
     GEN_CHECK_OFF(VMMDEV, offTestingData);
