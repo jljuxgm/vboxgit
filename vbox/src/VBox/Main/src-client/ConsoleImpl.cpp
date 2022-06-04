@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 47174 2013-07-16 03:27:24Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6096,7 +6096,8 @@ void Console::onMousePointerShapeChange(bool fVisible, bool fAlpha,
  * @note Locks this object for writing.
  */
 #endif
-void Console::onMouseCapabilityChange(BOOL supportsAbsolute, BOOL supportsRelative, BOOL needsHostCursor)
+void Console::onMouseCapabilityChange(BOOL supportsAbsolute, BOOL supportsRelative,
+                                      BOOL supportsMT, BOOL needsHostCursor)
 {
     LogFlowThisFunc(("supportsAbsolute=%d supportsRelative=%d needsHostCursor=%d\n",
                       supportsAbsolute, supportsRelative, needsHostCursor));

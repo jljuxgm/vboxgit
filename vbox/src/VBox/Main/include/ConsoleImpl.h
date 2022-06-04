@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 47106 2013-07-12 09:36:54Z vboxsync $ */
+/* $Id: ConsoleImpl.h 47174 2013-07-16 03:27:24Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -268,7 +268,8 @@ public:
                                    uint32_t xHot, uint32_t yHot,
                                    uint32_t width, uint32_t height,
                                    ComSafeArrayIn(uint8_t, aShape));
-    void onMouseCapabilityChange(BOOL supportsAbsolute, BOOL supportsRelative, BOOL needsHostCursor);
+    void onMouseCapabilityChange(BOOL supportsAbsolute, BOOL supportsRelative,
+                                 BOOL supportsMT, BOOL needsHostCursor);
     void onStateChange(MachineState_T aMachineState);
     void onAdditionsStateChange();
     void onAdditionsOutdated();
