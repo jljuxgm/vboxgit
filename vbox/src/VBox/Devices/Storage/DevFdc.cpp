@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 47036 2013-07-08 12:26:47Z vboxsync $ */
+/* $Id: DevFdc.cpp 47522 2013-08-02 12:21:23Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -1884,7 +1884,6 @@ static void fdctrl_handle_sense_interrupt_status(fdctrl_t *fdctrl, int direction
 
     fdctrl->fifo[1] = cur_drv->track;
     fdctrl_set_fifo(fdctrl, 2, 0);
-    fdctrl_reset_irq(fdctrl);
     fdctrl->status0 = FD_SR0_RDYCHG;
 }
 
@@ -2082,6 +2081,7 @@ static void fdctrl_write_data(fdctrl_t *fdctrl, uint32_t value)
     }
     if (fdctrl->data_pos == 0) {
         /* Command */
+        fdctrl_reset_irq(fdctrl);   /* If pending from previous seek/recalibrate. */
         pos = command_to_handler[value & 0xff];
         FLOPPY_DPRINTF("%s command\n", handlers[pos].name);
         fdctrl->data_len = handlers[pos].parameters + 1;
