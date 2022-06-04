@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 46216 2013-05-22 12:59:59Z vboxsync $ */
+/* $Id: PGMDbg.cpp 46220 2013-05-22 15:26:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -661,7 +661,7 @@ VMMR3_INT_DECL(int) PGMR3DbgScanPhysical(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cbRa
                 if (   (   !PGM_PAGE_IS_ZERO(pPage)
                         || fAllZero)
                     && !PGM_PAGE_IS_MMIO(pPage)
-                    && PGM_PAGE_GET_STATE(pPage) != PGMPAGETYPE_MMIO2_ALIAS_MMIO
+                    && PGM_PAGE_GET_TYPE(pPage) != PGMPAGETYPE_MMIO2_ALIAS_MMIO
                     && !PGM_PAGE_IS_BALLOONED(pPage))
                 {
                     void const     *pvPage;
