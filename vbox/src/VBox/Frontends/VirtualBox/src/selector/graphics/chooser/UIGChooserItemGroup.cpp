@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43177 2012-09-04 17:56:30Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43210 2012-09-05 18:15:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -898,8 +898,9 @@ bool UIGChooserItemGroup::isDropAllowed(QGraphicsSceneDragDropEvent *pEvent, Dra
         const UIGChooserItemMimeData *pCastedMimeData = qobject_cast<const UIGChooserItemMimeData*>(pMimeData);
         AssertMsg(pCastedMimeData, ("Can't cast passed mime-data to UIGChooserItemMimeData!"));
         UIGChooserItem *pItem = pCastedMimeData->item();
-        /* Make sure passed group contains only mutable machines: */
-        if (pItem->toGroupItem()->isContainsLockedMachine())
+        /* Make sure passed group is mutable within this group: */
+        if (pItem->toGroupItem()->isContainsLockedMachine() &&
+            !items(UIGChooserItemType_Group).contains(pItem))
             return false;
         /* Make sure passed group is not 'this': */
         if (pItem == this)
@@ -920,8 +921,9 @@ bool UIGChooserItemGroup::isDropAllowed(QGraphicsSceneDragDropEvent *pEvent, Dra
         const UIGChooserItemMimeData *pCastedMimeData = qobject_cast<const UIGChooserItemMimeData*>(pMimeData);
         AssertMsg(pCastedMimeData, ("Can't cast passed mime-data to UIGChooserItemMimeData!"));
         UIGChooserItem *pItem = pCastedMimeData->item();
-        /* Make sure passed machine is mutable: */
-        if (pItem->toMachineItem()->isLockedMachine())
+        /* Make sure passed machine is mutable within this group: */
+        if (pItem->toMachineItem()->isLockedMachine() &&
+            !items(UIGChooserItemType_Machine).contains(pItem))
             return false;
         switch (pEvent->proposedAction())
         {
