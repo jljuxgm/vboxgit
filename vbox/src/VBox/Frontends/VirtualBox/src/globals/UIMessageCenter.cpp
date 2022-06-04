@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 45297 2013-04-03 08:58:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -3017,7 +3017,7 @@ int UIMessageCenter::showMessageBox(QWidget *pParent, MessageType type,
     QWidget *pMessageBoxParent = mwManager().realParentWindow(pParent);
     QPointer<QIMessageBox> pMessageBox = new QIMessageBox(title, strMessage, icon,
                                                           iButton1, iButton2, iButton3,
-                                                          pMessageBoxParent, strAutoConfirmId.toAscii().constData());
+                                                          pMessageBoxParent);
     mwManager().registerNewParent(pMessageBox, pMessageBoxParent);
 
     /* Prepare auto-confirmation check-box: */
