@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
+/* $Id: VD.cpp 46679 2013-06-19 16:51:37Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2680,6 +2680,7 @@ static int vdWriteHelperAsync(PVDIOCTX pIoCtx)
 
                 pIoCtxWrite->Type.Child.cbPreRead  = cbPreRead;
                 pIoCtxWrite->Type.Child.cbPostRead = cbPostRead;
+                pIoCtxWrite->Req.Io.pImageParentOverride = pIoCtx->Req.Io.pImageParentOverride;
 
                 /* Process the write request */
                 rc = vdIoCtxProcessLocked(pIoCtxWrite);
