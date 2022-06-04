@@ -1,10 +1,10 @@
-/* $Id: semrw-lockless-generic.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: semrw-lockless-generic.cpp 44858 2013-02-28 02:03:08Z vboxsync $ */
 /** @file
- * IPRT Testcase - RTSemXRoads, generic implementation.
+ * IPRT - Read-Write Semaphore, Generic, lockless variant.
  */
 
 /*
- * Copyright (C) 2009-2011 Oracle Corporation
+ * Copyright (C) 2009-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -68,7 +68,8 @@ typedef struct RTSEMRWINTERNAL
     RTNATIVETHREAD volatile hNativeWriter;
     /** The number of reads made by the current writer. */
     uint32_t volatile       cWriterReads;
-    /** The number of reads made by the current writer. */
+    /** The number of recursions made by the current writer. (The initial grabbing
+     *  of the lock counts as the first one.) */
     uint32_t volatile       cWriteRecursions;
 
     /** What the writer threads are blocking on. */
