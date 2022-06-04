@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 45191 2013-03-26 11:04:35Z vboxsync $ */
+/* $Id: DevRTC.cpp 45208 2013-03-27 13:03:13Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -184,7 +184,8 @@ typedef struct RTCSTATE
     int32_t CurLogPeriod;
     /** The current/previous hinted timer period. */
     int32_t CurHintPeriod;
-    uint32_t u32AlignmentPadding;
+    /** How many consecutive times the UIP has been seen. */
+    int32_t cUipSeen;
 
     /** HPET legacy mode notification interface. */
     PDMIHPETLEGACYNOTIFY  IHpetLegacyNotify;
@@ -314,6 +315,15 @@ PDMBOTHCBDECL(int) rtcIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port
                 break;
 
             case RTC_REG_A:
+                if (pThis->cmos_data[RTC_REG_A] & REG_A_UIP)
+                    ++pThis->cUipSeen;
+                else
+                    pThis->cUipSeen = 0;
+                if (pThis->cUipSeen >= 250)
+                {
+                    pThis->cmos_data[pThis->cmos_index[0]] &= ~REG_A_UIP;
+                    pThis->cUipSeen = 0;
+                }
                 *pu32 = pThis->cmos_data[pThis->cmos_index[0]];
                 break;
 
