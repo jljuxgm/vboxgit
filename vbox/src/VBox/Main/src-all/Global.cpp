@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: Global.cpp 46341 2013-05-31 12:13:49Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -31,6 +31,10 @@ const Global::OSType Global::sOSTypes[] =
      *        '2GB' looks better than '1.95GB' (= 2000MB) */
     { "Other",   "Other",             "Other",              "Other/Unknown",
       VBOXOSTYPE_Unknown,         VBOXOSHINT_NONE,
+        64,   4,  2 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+      StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97 },
+    { "Other",   "Other",             "Other_64",           "Other/Unknown (64-bit)",
+      VBOXOSTYPE_Unknown_x64,      VBOXOSHINT_64BIT | VBOXOSHINT_PAE | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC,
         64,   4,  2 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
       StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97 },
     { "Windows", "Microsoft Windows", "Windows31",          "Windows 3.1",
@@ -112,6 +116,10 @@ const Global::OSType Global::sOSTypes[] =
     { "Windows", "Microsoft Windows", "WindowsNT",          "Other Windows",
       VBOXOSTYPE_WinNT,           VBOXOSHINT_NONE,
        512,  16, 20 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
+    { "Windows", "Microsoft Windows", "WindowsNT_64",       "Other Windows (64-bit)",
+      VBOXOSTYPE_WinNT_x64,       VBOXOSHINT_64BIT | VBOXOSHINT_PAE | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET,
+       512,  16, 20 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Linux22",            "Linux 2.2",
       VBOXOSTYPE_Linux22,         VBOXOSHINT_RTCUTC,
@@ -224,6 +232,10 @@ const Global::OSType Global::sOSTypes[] =
     { "Linux",   "Linux",             "Linux",              "Other Linux",
       VBOXOSTYPE_Linux,           VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
        256,  12,  8 * _1G64, NetworkAdapterType_Am79C973, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+        StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
+    { "Linux",   "Linux",             "Linux_64",           "Other Linux (64-bit)",
+      VBOXOSTYPE_Linux_x64,       VBOXOSHINT_64BIT | VBOXOSHINT_PAE | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
+       512,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Solaris", "Solaris",           "Solaris",            "Oracle Solaris 10 5/09 and earlier",
       VBOXOSTYPE_Solaris,         VBOXOSHINT_NONE,

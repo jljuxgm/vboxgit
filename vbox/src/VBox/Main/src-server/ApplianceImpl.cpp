@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 45625 2013-04-18 23:33:59Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 46341 2013-05-31 12:13:49Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -238,7 +238,10 @@ void convertCIMOSType2VBoxOSType(Utf8Str &strType, ovf::CIMOSType_T c, const Utf
         }
     }
 
-    strType = Global::OSTypeId(VBOXOSTYPE_Unknown);
+    if (c == ovf::CIMOSType_CIMOS_Other_64)
+        strType = Global::OSTypeId(VBOXOSTYPE_Unknown_x64);
+    else
+        strType = Global::OSTypeId(VBOXOSTYPE_Unknown);
 }
 
 /**
