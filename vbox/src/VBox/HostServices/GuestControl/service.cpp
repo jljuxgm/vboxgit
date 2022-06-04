@@ -1,4 +1,4 @@
-/* $Id: service.cpp 46306 2013-05-29 10:32:33Z vboxsync $ */
+/* $Id: service.cpp 47488 2013-07-31 13:05:52Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -1041,7 +1041,7 @@ int Service::clientConnect(uint32_t u32ClientID, void *pvClient)
  */
 int Service::clientDisconnect(uint32_t u32ClientID, void *pvClient)
 {
-    LogFlowFunc(("[Client %RU32] Disonnected (%zu clients total)\n",
+    LogFlowFunc(("[Client %RU32] Disconnected (%zu clients total)\n",
                  u32ClientID, mClientStateMap.size()));
 
     AssertMsg(mClientStateMap.size(),
