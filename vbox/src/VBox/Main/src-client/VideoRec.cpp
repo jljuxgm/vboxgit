@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 45883 2013-05-02 18:49:40Z vboxsync $ */
+/* $Id: VideoRec.cpp 45891 2013-05-03 10:34:51Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -427,7 +427,7 @@ int VideoRecContextInit(PVIDEORECCONTEXT pVideoRecCtx, com::Bstr strFile,
 {
     pVideoRecCtx->uTargetWidth  = uWidth;
     pVideoRecCtx->uTargetHeight = uHeight;
-    pVideoRecCtx->pu8RgbBuf = (uint8_t *)RTMemAlloc(uWidth * uHeight * 4);
+    pVideoRecCtx->pu8RgbBuf = (uint8_t *)RTMemAllocZ(uWidth * uHeight * 4);
     AssertReturn(pVideoRecCtx->pu8RgbBuf, VERR_NO_MEMORY);
 
     pVideoRecCtx->ebml.stream = fopen(com::Utf8Str(strFile).c_str(), "wb");
