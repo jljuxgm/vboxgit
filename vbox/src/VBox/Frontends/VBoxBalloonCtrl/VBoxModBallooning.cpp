@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 41602 2012-06-06 16:44:14Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 43728 2012-10-24 14:32:37Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -345,7 +345,7 @@ static DECLCALLBACK(int) VBoxModBallooningPreInit(void)
     return VINF_SUCCESS;
 }
 
-static DECLCALLBACK(int) VBoxModBallooningOption(int argc, char **argv)
+static DECLCALLBACK(int) VBoxModBallooningOption(int argc, char *argv[])
 {
     if (!argc) /* Take a shortcut. */
         return -1;
