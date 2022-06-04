@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43447 2012-09-27 10:18:22Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43461 2012-09-28 10:04:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -238,6 +238,55 @@ bool UIGChooserItemGroup::isContainsLockedMachine()
         if (pItem->toGroupItem()->isContainsLockedMachine())
             return true;
     return false;
+}
+
+void UIGChooserItemGroup::updateToolTip()
+{
+    /* Prepare variables: */
+    QStringList toolTipInfo;
+
+    /* Should we add name? */
+    if (!name().isEmpty())
+    {
+        /* Template: */
+        QString strTemplateForName = tr("<b>%1</b>", "Group item tool-tip / Group name");
+
+        /* Append value: */
+        toolTipInfo << strTemplateForName.arg(name());
+    }
+
+    /* Should we add group info? */
+    if (!items(UIGChooserItemType_Group).isEmpty())
+    {
+        /* Template: */
+        QString strGroupCount = tr("%n group(s)", "Group item tool-tip / Group info", items(UIGChooserItemType_Group).size());
+
+        /* Append value: */
+        QString strValue = tr("<nobr>%1</nobr>", "Group item tool-tip / Group info wrapper").arg(strGroupCount);
+        toolTipInfo << strValue;
+    }
+
+    /* Should we add machine info? */
+    if (!items(UIGChooserItemType_Machine).isEmpty())
+    {
+        /* Check if 'this' group contains started VMs: */
+        int iCountOfStartedMachineItems = 0;
+        foreach (UIGChooserItem *pItem, items(UIGChooserItemType_Machine))
+            if (UIVMItem::isItemStarted(pItem->toMachineItem()))
+                ++iCountOfStartedMachineItems;
+        /* Template: */
+        QString strMachineCount = tr("%n machine(s)", "Group item tool-tip / Machine info", items(UIGChooserItemType_Machine).size());
+        QString strStartedMachineCount = tr("(%n running)", "Group item tool-tip / Running machine info", iCountOfStartedMachineItems);
+
+        /* Append value: */
+        QString strValue = !iCountOfStartedMachineItems ?
+                           tr("<nobr>%1</nobr>", "Group item tool-tip / Machine info wrapper").arg(strMachineCount) :
+                           tr("<nobr>%1 %2</nobr>", "Group item tool-tip / Machine info wrapper, including running").arg(strMachineCount).arg(strStartedMachineCount);
+        toolTipInfo << strValue;
+    }
+
+    /* Set tool-tip: */
+    setToolTip(toolTipInfo.join("<br>"));
 }
 
 void UIGChooserItemGroup::sltNameEditingFinished()
@@ -499,6 +548,7 @@ QVariant UIGChooserItemGroup::data(int iKey) const
 
 void UIGChooserItemGroup::retranslateUi()
 {
+    updateToolTip();
 }
 
 void UIGChooserItemGroup::show()
@@ -567,6 +617,8 @@ void UIGChooserItemGroup::addItem(UIGChooserItem *pItem, int iPosition)
             break;
         }
     }
+
+    updateToolTip();
 }
 
 void UIGChooserItemGroup::removeItem(UIGChooserItem *pItem)
@@ -594,6 +646,8 @@ void UIGChooserItemGroup::removeItem(UIGChooserItem *pItem)
             break;
         }
     }
+
+    updateToolTip();
 }
 
 void UIGChooserItemGroup::setItems(const QList<UIGChooserItem*> &items, UIGChooserItemType type)
@@ -605,6 +659,8 @@ void UIGChooserItemGroup::setItems(const QList<UIGChooserItem*> &items, UIGChoos
         case UIGChooserItemType_Machine: m_machineItems = items; break;
         default: AssertMsgFailed(("Invalid item type!")); break;
     }
+
+    updateToolTip();
 }
 
 QList<UIGChooserItem*> UIGChooserItemGroup::items(UIGChooserItemType type /* = UIGChooserItemType_Any */) const
@@ -656,6 +712,8 @@ void UIGChooserItemGroup::clearItems(UIGChooserItemType type /* = UIGChooserItem
             break;
         }
     }
+
+    updateToolTip();
 }
 
 void UIGChooserItemGroup::updateSizeHint()
