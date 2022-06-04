@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 42220 2012-07-19 01:11:05Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -87,7 +87,7 @@ endif
 
 ifdef VBOX_WITH_WDDM
  VBoxOGL_DEFS.win += VBOX_WITH_WDDM
- VBoxOGL_SDKS.win += WINDDKWLH
+ VBoxOGL_SDKS.win += $(VBOX_WINDDK_GST_WLH)
 endif
 
 ifeq ($(KBUILD_TARGET),win)
