@@ -1,4 +1,4 @@
-/* $Id: service.cpp 42272 2012-07-20 14:42:40Z vboxsync $ */
+/* $Id: service.cpp 42354 2012-07-24 12:13:00Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -751,7 +751,6 @@ int Service::retrieveNextHostCmd(uint32_t u32ClientID, VBOXHGCMCALLHANDLE callHa
  */
 int Service::cancelHostCmd(uint32_t u32ContextID)
 {
-    AssertReturn(u32ContextID, VERR_INVALID_PARAMETER);
     Assert(mpfnHostCallback);
 
     LogFlowFunc(("Cancelling CID=%u ...\n", u32ContextID));
