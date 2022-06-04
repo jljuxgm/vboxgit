@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 42382 2012-07-25 09:35:56Z vboxsync $ */
+/* $Id: SessionImpl.cpp 45284 2013-04-02 11:55:41Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -774,7 +774,7 @@ STDMETHODIMP Session::OnBandwidthGroupChange(IBandwidthGroup *aBandwidthGroup)
     return mConsole->onBandwidthGroupChange(aBandwidthGroup);
 }
 
-STDMETHODIMP Session::OnStorageDeviceChange(IMediumAttachment *aMediumAttachment, BOOL aRemove)
+STDMETHODIMP Session::OnStorageDeviceChange(IMediumAttachment *aMediumAttachment, BOOL aRemove, BOOL aSilent)
 {
     LogFlowThisFunc(("\n"));
 
@@ -786,7 +786,7 @@ STDMETHODIMP Session::OnStorageDeviceChange(IMediumAttachment *aMediumAttachment
     AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
     AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
 
-    return mConsole->onStorageDeviceChange(aMediumAttachment, aRemove);
+    return mConsole->onStorageDeviceChange(aMediumAttachment, aRemove, aSilent);
 }
 
 STDMETHODIMP Session::AccessGuestProperty(IN_BSTR aName, IN_BSTR aValue, IN_BSTR aFlags,
