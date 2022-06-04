@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 43888 2012-11-15 21:23:50Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 43892 2012-11-16 08:55:44Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -301,6 +301,9 @@ private:
     static DECLCALLBACK(int) tsmfHostChannelControl(void *pvInstance, uint32_t u32Code,
                                                     const void *pvParm, uint32_t cbParm,
                                                     const void *pvData, uint32_t cbData, uint32_t *pcbDataReturned);
+    int tsmfLock(void);
+    void tsmfUnlock(void);
+    RTCRITSECT mTSMFLock;
 };
 
 
