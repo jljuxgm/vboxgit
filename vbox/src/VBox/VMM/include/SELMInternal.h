@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 45705 2013-04-24 14:37:42Z vboxsync $ */
+/* $Id: SELMInternal.h 45725 2013-04-25 10:19:31Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -99,7 +99,6 @@ typedef struct SELM
      * See SELM2VM(). */
     RTINT                   offVM;
 
-/** @todo #ifdef VBOX_WITH_RAW_MODE */
     /** Flat CS, DS, 64 bit mode CS, TSS & trap 8 TSS. */
     RTSEL                   aHyperSel[SELM_HYPER_SEL_MAX];
 

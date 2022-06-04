@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 45701 2013-04-24 14:21:09Z vboxsync $ */
+/* $Id: SELMAll.cpp 45725 2013-04-25 10:19:31Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -187,7 +187,6 @@ VMMDECL(int) SELMToFlatEx(PVMCPU pVCpu, DISSELREG SelReg, PCPUMCTXCORE pCtxCore,
         }
         return VINF_SUCCESS;
     }
-
 
 #ifdef VBOX_WITH_RAW_MODE_NOT_R0
     if (!CPUMSELREG_ARE_HIDDEN_PARTS_VALID(pVCpu, pSReg))
