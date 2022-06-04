@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 44948 2013-03-07 10:36:42Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45049 2013-03-15 12:52:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3916,6 +3916,39 @@ QString VBoxGlobal::fullMediumFormatName(const QString &strBaseMediumFormatName)
     else if (strBaseMediumFormatName == "QCOW")
         return tr("QCOW (QEMU Copy-On-Write)");
     return strBaseMediumFormatName;
+}
+
+/* static */
+bool VBoxGlobal::isApprovedByExtraData(CMachine &machine, const QString &strExtraDataKey)
+{
+    /* Load corresponding extra-data value: */
+    QString strExtraDataValue(machine.GetExtraData(strExtraDataKey));
+
+    /* 'false' if value was not set: */
+    if (strExtraDataValue.isEmpty())
+        return false;
+
+    /* Handle particular values: */
+    return    strExtraDataValue.compare("true", Qt::CaseInsensitive) == 0
+           || strExtraDataValue.compare("yes", Qt::CaseInsensitive) == 0
+           || strExtraDataValue.compare("on", Qt::CaseInsensitive) == 0
+           || strExtraDataValue == "1";
+}
+
+/* static */
+bool VBoxGlobal::shouldWeShowMachine(CMachine &machine)
+{
+    /* 'false' for null machines: */
+    if (machine.isNull())
+        return false;
+
+    /* 'true' for inaccessible machines,
+     * because we can't verify anything in that case: */
+    if (!machine.GetAccessible())
+        return true;
+
+    /* 'true' if hiding is not approved by the extra-data: */
+    return !isApprovedByExtraData(machine, GUI_HideFromManager);
 }
 
 // Public slots

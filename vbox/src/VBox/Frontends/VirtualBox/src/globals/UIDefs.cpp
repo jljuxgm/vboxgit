@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 45040 2013-03-14 13:46:26Z vboxsync $ */
+/* $Id: UIDefs.cpp 45049 2013-03-15 12:52:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,6 +44,7 @@ const char* UIDefs::GUI_SelectorVMPositions = "GUI/SelectorVMPositions";
 const char* UIDefs::GUI_LastVMSelected = "GUI/LastVMSelected";
 const char* UIDefs::GUI_LastItemSelected = "GUI/LastItemSelected";
 const char* UIDefs::GUI_GroupDefinitions = "GUI/GroupDefinitions";
+const char* UIDefs::GUI_HideFromManager = "GUI/HideFromManager";
 
 /* Machine-window definitions: */
 const char* UIDefs::GUI_Input_MachineShortcuts = "GUI/Input/MachineShortcuts";
