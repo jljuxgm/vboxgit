@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.h 42818 2012-08-15 09:45:06Z vboxsync $ */
+/* $Id: GuestFileImpl.h 42897 2012-08-21 10:03:52Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -82,9 +82,7 @@ private:
     struct Data
     {
         /** The associate session this file belongs to. */
-        ComObjPtr<GuestSession> mSession;
-        /** The process object this file is bound to. */
-        ComObjPtr<GuestProcess> mProcess;
+        GuestSession           *mSession;
         uint32_t                mCreationMode;
         uint32_t                mDisposition;
         Utf8Str                 mFileName;

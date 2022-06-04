@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 42716 2012-08-09 15:49:46Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 42897 2012-08-21 10:03:52Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -26,6 +26,12 @@
 #ifdef DEBUG
 # include <iprt/file.h>
 #endif /* DEBUG */
+
+#ifdef LOG_GROUP
+ #undef LOG_GROUP
+#endif
+#define LOG_GROUP LOG_GROUP_GUEST_CONTROL
+#include <VBox/log.h>
 
 /******************************************************************************
  *   Structures and Typedefs                                                  *

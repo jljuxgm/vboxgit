@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.h 42673 2012-08-08 08:07:09Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.h 42897 2012-08-21 10:03:52Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -72,7 +72,7 @@ private:
 
     struct Data
     {
-        GuestSession              *mParent;
+        GuestSession              *mSession;
         Utf8Str                    mName;
         Utf8Str                    mFilter;
         uint32_t                   mFlags;
@@ -82,7 +82,7 @@ private:
         GuestProcessStream         mStream;
         /** The guest process which is responsible for
          *  getting the stdout stream. */
-        ComObjPtr<GuestProcess>    mProcess;
+        GuestProcess              *mProcess;
     } mData;
 };
 

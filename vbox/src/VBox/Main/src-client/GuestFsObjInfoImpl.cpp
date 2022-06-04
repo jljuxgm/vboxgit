@@ -1,5 +1,5 @@
 
-/* $Id: GuestFsObjInfoImpl.cpp 42673 2012-08-08 08:07:09Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.cpp 42897 2012-08-21 10:03:52Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -27,6 +27,12 @@
 #include "AutoCaller.h"
 
 #include <VBox/com/array.h>
+
+#ifdef LOG_GROUP
+ #undef LOG_GROUP
+#endif
+#define LOG_GROUP LOG_GROUP_GUEST_CONTROL
+#include <VBox/log.h>
 
 
 // constructor / destructor
