@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42543 2012-08-02 14:15:34Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42547 2012-08-02 14:49:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -117,6 +117,7 @@ void UIGChooserModel::indentRoot(UIGChooserItem *pNewRootItem)
 
     /* We are sliding: */
     m_fSliding = true;
+    emit sigSlidingStarted();
 
     /* Hiding root: */
     root()->hide();
@@ -148,6 +149,7 @@ void UIGChooserModel::unindentRoot()
 
     /* We are sliding: */
     m_fSliding = true;
+    emit sigSlidingStarted();
 
     /* Hiding root: */
     root()->hide();
