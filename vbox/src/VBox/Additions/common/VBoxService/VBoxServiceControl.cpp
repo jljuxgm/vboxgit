@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 44863 2013-02-28 12:18:17Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 44869 2013-02-28 15:42:02Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -454,7 +454,7 @@ static int gstcntlHandleProcTerminate(PVBGLR3GUESTCTRLHOSTCTX pHostCtx)
     {
         PVBOXSERVICECTRLREQUEST pRequest;
         rc = GstCntlProcessRequestAllocEx(&pRequest, VBOXSERVICECTRLREQUEST_PROC_TERM,
-                                          NULL /* pvBuf */, NULL /* cbBuf */, pHostCtx->uContextID);
+                                          NULL /* pvBuf */, 0 /* cbBuf */, pHostCtx->uContextID);
         if (RT_SUCCESS(rc))
         {
             rc = GstCntlProcessPerform(uPID, pRequest);

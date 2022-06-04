@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 44863 2013-02-28 12:18:17Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 44869 2013-02-28 15:42:02Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -227,7 +227,7 @@ typedef struct VBOXSERVICECTRLFILE
      *  list node.
      *  @todo Would be nice to have a RTListGetAnchor(). */
     PRTLISTANCHOR                   pAnchor;
-    /** Node to global guest control file list.
+    /** Node to global guest control file list. */
     /** @todo Use a map later? */
     RTLISTNODE                      Node;
     /** The file name. */
@@ -265,7 +265,7 @@ typedef VBOXSERVICECTRLSESSIONSTARTUPINFO *PVBOXSERVICECTRLSESSIONSTARTUPINFO;
  */
 typedef struct VBOXSERVICECTRLSESSION
 {
-    /** Node to global guest control session list.
+    /** Node to global guest control session list. */
     /** @todo Use a map later? */
     RTLISTNODE                      Node;
     /** The sessions's startup info. */
