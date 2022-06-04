@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 44164 2012-12-19 13:06:25Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 44474 2013-01-30 16:47:30Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -920,15 +920,12 @@ int VBoxServiceVMInfoWinWriteUsers(char **ppszUserList, uint32_t *pcUsersInList)
                                       s_uIter, pUserInfo[i].wszUser, pUserInfo[i].ulSession, pUserInfo[i].ulNumProcs);
 #endif
                 bool fAddUser = true;
-                if (   pUserInfo[i].ulNumProcs
-                       /* If we have session 0 separation, add the user regardless of the
-                        * attached processes. */
-                    || vboxServiceVMInfoSession0Separation())
+                if (pUserInfo[i].ulNumProcs)
                     fAddUser = true;
 
                 if (fAddUser)
                 {
-                    VBoxServiceVerbose(3, "User %ls has %ld processes (session %u)\n",
+                    VBoxServiceVerbose(3, "User %ls has %ld interactive processes (session %u)\n",
                                        pUserInfo[i].wszUser, pUserInfo[i].ulNumProcs, pUserInfo[i].ulSession);
 
                     if (*pcUsersInList > 0)
