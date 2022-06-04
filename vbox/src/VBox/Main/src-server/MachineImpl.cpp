@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 46667 2013-06-19 15:30:23Z vboxsync $ */
+/* $Id: MachineImpl.cpp 46734 2013-06-22 19:39:58Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4516,24 +4516,27 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
 
     if (fHotplug || fSilent)
     {
-        MediumLockList *pMediumLockList(new MediumLockList());
-
-        rc = medium->createMediumLockList(true /* fFailIfInaccessible */,
-                                          true /* fMediumLockWrite */,
-                                          NULL,
-                                          *pMediumLockList);
-        alock.acquire();
-        if (FAILED(rc))
-            delete pMediumLockList;
-        else
+        if (!medium.isNull())
         {
-            mData->mSession.mLockedMedia.Unlock();
-            alock.release();
-            rc = mData->mSession.mLockedMedia.Insert(attachment, pMediumLockList);
-            mData->mSession.mLockedMedia.Lock();
+            MediumLockList *pMediumLockList(new MediumLockList());
+
+            rc = medium->createMediumLockList(true /* fFailIfInaccessible */,
+                                              true /* fMediumLockWrite */,
+                                              NULL,
+                                              *pMediumLockList);
             alock.acquire();
+            if (FAILED(rc))
+                delete pMediumLockList;
+            else
+            {
+                mData->mSession.mLockedMedia.Unlock();
+                alock.release();
+                rc = mData->mSession.mLockedMedia.Insert(attachment, pMediumLockList);
+                mData->mSession.mLockedMedia.Lock();
+                alock.acquire();
+            }
+            alock.release();
         }
-        alock.release();
 
         if (SUCCEEDED(rc))
         {
