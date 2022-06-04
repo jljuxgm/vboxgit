@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 46255 2013-05-24 12:44:24Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 46361 2013-06-03 13:34:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -86,11 +86,6 @@ bool UIMachineViewSeamless::event(QEvent *pEvent)
             /* Apply new seamless-region: */
             m_pFrameBuffer->applyVisibleRegionEvent(static_cast<UISetRegionEvent*>(pEvent));
             return true;
-        }
-
-        case ResizeEventType:
-        {
-            return guestResizeEvent(pEvent, true);
         }
 
         default:

@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 46020 2013-05-13 15:09:16Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 46361 2013-06-03 13:34:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -69,21 +69,6 @@ void UIMachineViewNormal::sltAdditionsStateChanged()
      * mode initially after the transition this happens when we
      * switch. */
     maybeResendResizeHint();
-}
-
-bool UIMachineViewNormal::event(QEvent *pEvent)
-{
-    switch (pEvent->type())
-    {
-        case ResizeEventType:
-        {
-            return guestResizeEvent(pEvent, false);
-        }
-
-        default:
-            break;
-    }
-    return UIMachineView::event(pEvent);
 }
 
 bool UIMachineViewNormal::eventFilter(QObject *pWatched, QEvent *pEvent)

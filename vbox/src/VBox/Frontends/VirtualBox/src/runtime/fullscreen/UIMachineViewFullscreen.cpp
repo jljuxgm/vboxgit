@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 46020 2013-05-13 15:09:16Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 46361 2013-06-03 13:34:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -67,21 +67,6 @@ void UIMachineViewFullscreen::sltAdditionsStateChanged()
         (int)frameBuffer()->height() != workingArea().size().height())
         if (m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
             sltPerformGuestResize(workingArea().size());
-}
-
-bool UIMachineViewFullscreen::event(QEvent *pEvent)
-{
-    switch (pEvent->type())
-    {
-        case ResizeEventType:
-        {
-            return guestResizeEvent(pEvent, true);
-        }
-
-        default:
-            break;
-    }
-    return UIMachineView::event(pEvent);
 }
 
 bool UIMachineViewFullscreen::eventFilter(QObject *pWatched, QEvent *pEvent)
