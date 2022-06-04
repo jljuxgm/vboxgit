@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 45603 2013-04-18 10:11:03Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 47088 2013-07-11 08:35:29Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -90,6 +90,8 @@
 static struct pci_device_id pciidlist[] = {
         vboxvideo_PCI_IDS
 };
+
+MODULE_DEVICE_TABLE(pci, pciidlist);
 
 int vboxvideo_driver_load(struct drm_device * dev, unsigned long flags)
 {

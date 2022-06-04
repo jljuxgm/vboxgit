@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drv.c 44529 2013-02-04 15:54:15Z vboxsync $
+/** @file $Id: vboxvideo_drv.c 47088 2013-07-11 08:35:29Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -61,6 +61,8 @@
 static struct pci_device_id pciidlist[] = {
         vboxvideo_PCI_IDS
 };
+
+MODULE_DEVICE_TABLE(pci, pciidlist);
 
 static struct drm_driver driver =
 {
