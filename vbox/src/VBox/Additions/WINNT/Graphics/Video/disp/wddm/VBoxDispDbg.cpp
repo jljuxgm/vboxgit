@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 42027 2012-07-05 15:22:12Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 42683 2012-08-08 14:16:44Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -115,7 +115,7 @@ DWORD g_VBoxVDbgFLogRel = 1;
 DWORD g_VBoxVDbgFLog = 1;
 DWORD g_VBoxVDbgFLogFlow = 0;
 
-DWORD g_VBoxVDbgCfgMaxDirectRts = 0;
+DWORD g_VBoxVDbgCfgMaxDirectRts = 3;
 DWORD g_VBoxVDbgCfgForceDummyDevCreate = 0;
 
 PVBOXWDDMDISP_DEVICE g_VBoxVDbgInternalDevice = NULL;
