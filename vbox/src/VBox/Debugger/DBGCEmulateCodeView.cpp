@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 46217 2013-05-22 13:02:37Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 46221 2013-05-22 15:30:41Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3896,8 +3896,8 @@ static int dbgcDoListNear(PDBGCCMDHLP pCmdHlp, PUVM pUVM, PCDBGCVAR pArg)
             rc = DBGCCmdHlpPrintf(pCmdHlp, "%DV %s + %RGv", &AddrVar, Symbol.szName, offDisp);
         else
             rc = DBGCCmdHlpPrintf(pCmdHlp, "%DV %s - %RGv", &AddrVar, Symbol.szName, -offDisp);
-        if ((RTGCINTPTR)Symbol.cb > -offDisp)
-            rc = DBGCCmdHlpPrintf(pCmdHlp, " LB %RGv\n", Symbol.cb + offDisp);
+        if (Symbol.cb > 0)
+            rc = DBGCCmdHlpPrintf(pCmdHlp, " (LB %RGv)\n", Symbol.cb);
         else
             rc = DBGCCmdHlpPrintf(pCmdHlp, "\n");
     }
