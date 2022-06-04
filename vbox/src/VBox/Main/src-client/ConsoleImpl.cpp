@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 43161 2012-09-04 13:26:13Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 43168 2012-09-04 15:13:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6055,7 +6055,10 @@ HRESULT Console::addVMCaller(bool aQuiet /* = false */,
                              bool aAllowNullVM /* = false */)
 {
     AutoCaller autoCaller(this);
-    AssertComRCReturnRC(autoCaller.rc());
+    /** @todo Fix race during console/VM reference destruction, refer @bugref{6318}
+     *        comment 25. */
+    if (FAILED(autoCaller.rc()))
+        return autoCaller.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
