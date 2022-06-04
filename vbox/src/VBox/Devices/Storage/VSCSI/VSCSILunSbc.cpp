@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 39566 2011-12-09 13:27:31Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 43640 2012-10-15 12:39:52Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -166,6 +166,9 @@ static int vscsiLunSbcInit(PVSCSILUNINT pVScsiLun)
                 pVpdPages->abVpdPages[idxVpdPage++] = VSCSI_VPD_BLOCK_CHARACTERISTICS_NUMBER;
         }
     }
+
+    /* For SBC LUNs, there will be no ready state transitions. */
+    pVScsiLunSbc->Core.fReady = true;
 
     return rc;
 }
@@ -445,7 +448,7 @@ static int vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
                     && cbCopied == sizeof(abHdr)
                     && cbList >= 8)
                 {
-                    size_t cBlkDesc = vscsiBE2HU16(&abHdr[2]) / 16;
+                    uint32_t    cBlkDesc = vscsiBE2HU16(&abHdr[2]) / 16;
 
                     if (cBlkDesc)
                     {

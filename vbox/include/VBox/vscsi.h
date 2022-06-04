@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 39566 2011-12-09 13:27:31Z vboxsync $ */
+/* $Id: vscsi.h 43640 2012-10-15 12:39:52Z vboxsync $ */
 /** @file
  * VBox storage drivers: Virtual SCSI driver
  */
@@ -268,6 +268,22 @@ VBOXDDU_DECL(int) VSCSILunCreate(PVSCSILUN phVScsiLun, VSCSILUNTYPE enmLunType,
  * @param   hVScsiLun               The virtual SCSI LUN handle to destroy.
  */
 VBOXDDU_DECL(int) VSCSILunDestroy(VSCSILUN hVScsiLun);
+
+/**
+ * Notify virtual SCSI LUN of medium being mounted.
+ *
+ * @returns VBox status code.
+ * @param   hVScsiLun               The virtual SCSI LUN handle to destroy.
+ */
+VBOXDDU_DECL(int) VSCSILunMountNotify(VSCSILUN hVScsiLun);
+
+/**
+ * Notify virtual SCSI LUN of medium being unmounted.
+ *
+ * @returns VBox status code.
+ * @param   hVScsiLun               The virtual SCSI LUN handle to destroy.
+ */
+VBOXDDU_DECL(int) VSCSILunUnmountNotify(VSCSILUN hVScsiLun);
 
 /**
  * Notify a that a I/O request completed.

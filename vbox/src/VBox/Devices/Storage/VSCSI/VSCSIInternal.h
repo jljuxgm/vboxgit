@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 39515 2011-12-02 13:41:07Z vboxsync $ */
+/* $Id: VSCSIInternal.h 43640 2012-10-15 12:39:52Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -85,6 +85,10 @@ typedef struct VSCSILUNINT
     PVSCSILUNIOCALLBACKS pVScsiLunIoCallbacks;
     /** Pointer to the LUN type descriptor. */
     PVSCSILUNDESC        pVScsiLunDesc;
+    /** Flag indicating whether LUN is ready. */
+    bool                 fReady;
+    /** Flag indicating media presence in LUN. */
+    bool                 fMediaPresent;
     /** Flags of supported features. */
     uint64_t             fFeatures;
     /** I/O request processing data */
