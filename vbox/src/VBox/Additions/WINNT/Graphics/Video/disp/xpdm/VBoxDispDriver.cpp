@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriver.cpp 38840 2011-09-23 11:34:44Z vboxsync $ */
+/* $Id: VBoxDispDriver.cpp 42232 2012-07-19 16:06:17Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver interface functions
@@ -997,6 +997,21 @@ ULONG APIENTRY VBoxDispDrvEscape(SURFOBJ *pso, ULONG iEsc, ULONG cjIn, PVOID pvI
                           lpRgnData->rdh.dwSize, lpRgnData->rdh.iType, cjIn,
                           lpRgnData->rdh.nCount * sizeof(RECT) + sizeof(RGNDATAHEADER)));
                 }
+            }
+            break;
+        }
+        case VBOXESC_ISANYX:
+        {
+            if (pvOut && cjOut == sizeof(DWORD))
+            {
+                /* @todo: impl */
+                *(DWORD *)pvOut = TRUE;
+                return 1;
+            }
+            else
+            {
+                WARN(("VBOXESC_ISANYX invalid parms"));
+                return 0;
             }
             break;
         }

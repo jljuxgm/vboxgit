@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 42228 2012-07-19 12:55:52Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 42232 2012-07-19 16:06:17Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -4263,6 +4263,20 @@ DxgkDdiEscape(
                 }
 
                 pShRcRef->EscapeHdr.u32CmdSpecific = pAlloc->cShRcRefs;
+                Status = STATUS_SUCCESS;
+                break;
+            }
+            case VBOXESC_ISANYX:
+            {
+                if (pEscape->PrivateDriverDataSize != sizeof (VBOXDISPIFESCAPE_ISANYX))
+                {
+                    WARN(("invalid private driver size %d", pEscape->PrivateDriverDataSize));
+                    Status = STATUS_INVALID_PARAMETER;
+                    break;
+                }
+
+                PVBOXDISPIFESCAPE_ISANYX pIsAnyX = (PVBOXDISPIFESCAPE_ISANYX)pEscapeHdr;
+                pIsAnyX->u32IsAnyX = pDevExt->fAnyX;
                 Status = STATUS_SUCCESS;
                 break;
             }
