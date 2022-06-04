@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45400 2013-04-08 12:08:00Z vboxsync $
+# $Id: Makefile.kmk 45723 2013-04-25 10:05:52Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1333,7 +1333,8 @@ VBoxRT_SOURCES                := \
 	VBox/VBoxRTDeps.cpp \
 	r3/xml.cpp \
 	$(filter-out common/checksum/crc32.cpp, $(RuntimeR3_SOURCES)) \
-	common/checksum/crc32-zlib.cpp
+	common/checksum/crc32-zlib.cpp \
+	common/misc/aiomgr.cpp
 ifdef VBOX_WITH_LIBCURL
  VBoxRT_SOURCES               += common/misc/s3.cpp
  VBoxRT_SOURCES               += common/misc/http.cpp
