@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 43920 2012-11-21 00:21:24Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 44434 2013-01-28 16:48:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -38,7 +38,6 @@
 #include "UIWizardCloneVM.h"
 #include "UIToolBar.h"
 #include "UIVirtualBoxEventHandler.h"
-#include "UISelectorShortcuts.h"
 #include "UIConverter.h"
 
 /* COM includes: */

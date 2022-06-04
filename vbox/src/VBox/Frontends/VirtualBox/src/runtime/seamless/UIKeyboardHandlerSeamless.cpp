@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerSeamless.cpp 41107 2012-05-02 00:14:21Z vboxsync $ */
+/* $Id: UIKeyboardHandlerSeamless.cpp 44434 2013-01-28 16:48:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,7 +25,7 @@
 /* Local includes */
 #include "UIKeyboardHandlerSeamless.h"
 #include "UIMachineWindow.h"
-#include "UIMachineShortcuts.h"
+#include "UIShortcuts.h"
 
 /* Fullscreen keyboard-handler constructor: */
 UIKeyboardHandlerSeamless::UIKeyboardHandlerSeamless(UIMachineLogic* pMachineLogic)
@@ -55,7 +55,7 @@ bool UIKeyboardHandlerSeamless::eventFilter(QObject *pWatchedObject, QEvent *pEv
                 /* Get key-event: */
                 QKeyEvent *pKeyEvent = static_cast<QKeyEvent*>(pEvent);
                 /* Process Host+Home for menu popup: */
-                if (isHostKeyPressed() && pKeyEvent->key() == gMS->keySequence(UIMachineShortcuts::PopupMenuShortcut))
+                if (isHostKeyPressed() && pKeyEvent->key() == gShortcutPool->shortcut(GUI_Input_MachineShortcuts, QString("PopupMenu")).sequence())
                 {
                     /* Post request to show popup-menu: */
                     QTimer::singleShot(0, m_windows[uScreenId], SLOT(sltPopupMainMenu()));
