@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 43462 2012-09-28 10:46:41Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 43888 2012-11-15 21:23:50Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1835,7 +1835,7 @@ typedef struct H3DORInstance
 }
 
 /* static */ DECLCALLBACK(void) ConsoleVRDPServer::H3DORVisibleRegion(void *pvInstance,
-                                                                      uint32_t cRects, RTRECT *paRects)
+                                                                      uint32_t cRects, const RTRECT *paRects)
 {
     LogFlowFunc(("ins %p %d\n", pvInstance, cRects));
 

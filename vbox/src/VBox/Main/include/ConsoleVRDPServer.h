@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 43350 2012-09-18 14:39:14Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 43888 2012-11-15 21:23:50Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -242,7 +242,7 @@ private:
     static DECLCALLBACK(void) H3DORGeometry(void *pvInstance,
                                             int32_t x, int32_t y, uint32_t w, uint32_t h);
     static DECLCALLBACK(void) H3DORVisibleRegion(void *pvInstance,
-                                                 uint32_t cRects, RTRECT *paRects);
+                                                 uint32_t cRects, const RTRECT *paRects);
     static DECLCALLBACK(void) H3DORFrame(void *pvInstance,
                                          void *pvData, uint32_t cbData);
     static DECLCALLBACK(void) H3DOREnd(void *pvInstance);
