@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 44726 2013-02-18 06:38:05Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 44742 2013-02-18 17:26:05Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -492,3 +492,17 @@ int NetIfGetConfigByName(PNETIFINFO pInfo)
     return VERR_NOT_IMPLEMENTED;
 }
 
+/**
+ * Retrieve the physical link speed in megabits per second. If the interface is
+ * not up or otherwise unavailable the zero speed is returned.
+ *
+ * @returns VBox status code.
+ *
+ * @param   pcszIfName  Interface name.
+ * @param   puMbits     Where to store the link speed.
+ */
+int NetIfGetLinkSpeed(const char *pcszIfName, uint32_t *puMbits)
+{
+    *puMbits =  kstatGet(pcszIfName);
+    return VINF_SUCCESS;
+}

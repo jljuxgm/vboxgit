@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 44742 2013-02-18 17:26:05Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -528,4 +528,17 @@ int NetIfGetConfigByName(PNETIFINFO pInfo)
     return rc;
 }
 
+/**
+ * Retrieve the physical link speed in megabits per second. If the interface is
+ * not up or otherwise unavailable the zero speed is returned.
+ *
+ * @returns VBox status code.
+ *
+ * @param   pcszIfName  Interface name.
+ * @param   puMbits     Where to store the link speed.
+ */
+int NetIfGetLinkSpeed(const char * /*pcszIfName*/, uint32_t * /*puMbits*/)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
 #endif

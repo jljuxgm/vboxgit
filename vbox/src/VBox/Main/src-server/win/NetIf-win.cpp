@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: NetIf-win.cpp 44742 2013-02-18 17:26:05Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1078,6 +1078,33 @@ int NetIfGetConfig(HostNetworkInterface * pIf, NETIFINFO *pInfo)
 }
 
 int NetIfGetConfigByName(PNETIFINFO)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+/**
+ * Obtain the current state of the interface.
+ *
+ * @returns VBox status code.
+ *
+ * @param   pcszIfName  Interface name.
+ * @param   penmState   Where to store the retrieved state.
+ */
+int NetIfGetState(const char *pcszIfName, NETIFSTATUS *penmState)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+/**
+ * Retrieve the physical link speed in megabits per second. If the interface is
+ * not up or otherwise unavailable the zero speed is returned.
+ *
+ * @returns VBox status code.
+ *
+ * @param   pcszIfName  Interface name.
+ * @param   puMbits     Where to store the link speed.
+ */
+int NetIfGetLinkSpeed(const char * /*pcszIfName*/, uint32_t * /*puMbits*/)
 {
     return VERR_NOT_IMPLEMENTED;
 }
