@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.cpp 45538 2013-04-14 01:21:56Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.cpp 45539 2013-04-14 11:02:12Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -92,7 +92,7 @@ DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint
         }
 
         case TSTR0THREADPREMEPTION_IS_TRUSTY:
-            if (RTThreadPreemptIsPendingTrusty())
+            if (!RTThreadPreemptIsPendingTrusty())
                 RTStrPrintf(pszErr, cchErr, "!Untrusty");
             break;
 
