@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 46759 2013-06-24 16:00:15Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 46761 2013-06-24 17:03:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -380,13 +380,13 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent)
                             iPageIndex, "#language", pSettingsPage);
                     break;
                 }
-                /* Extension page: */
-                case GlobalSettingsPageType_Extension:
+                /* Extensions page: */
+                case GlobalSettingsPageType_Extensions:
                 {
                     pSettingsPage = new UIGlobalSettingsExtension;
                     addItem(":/extension_pack_32px.png", ":/extension_pack_disabled_32px.png",
                             ":/extension_pack_16px.png", ":/extension_pack_disabled_16px.png",
-                            iPageIndex, "#extension", pSettingsPage);
+                            iPageIndex, "#extensions", pSettingsPage);
                     break;
                 }
                 /* Proxy page: */
@@ -498,7 +498,7 @@ void UISettingsDialogGlobal::retranslateUi()
     m_pSelector->setItemText(GlobalSettingsPageType_Network, tr("Network"));
 
     /* Extension page: */
-    m_pSelector->setItemText(GlobalSettingsPageType_Extension, tr("Extensions"));
+    m_pSelector->setItemText(GlobalSettingsPageType_Extensions, tr("Extensions"));
 
     /* Proxy page: */
     m_pSelector->setItemText(GlobalSettingsPageType_Proxy, tr("Proxy"));
