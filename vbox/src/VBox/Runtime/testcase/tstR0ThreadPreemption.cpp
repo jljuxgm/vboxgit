@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.cpp 47520 2013-08-02 11:27:22Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.cpp 47521 2013-08-02 12:11:14Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -68,7 +68,7 @@ typedef struct TSTRTR0THREADCTXDATA
  * @param   enmEvent    The thread-context event.
  * @param   pvUser      Pointer to the user argument.
  */
-static void tstR0ThreadCtxHook(RTTHREADCTXEVENT enmEvent, void *pvUser)
+static DECLCALLBACK(void) tstR0ThreadCtxHook(RTTHREADCTXEVENT enmEvent, void *pvUser)
 {
     PTSTRTR0THREADCTXDATA pData = (PTSTRTR0THREADCTXDATA)pvUser;
     AssertPtrReturnVoid(pData);
