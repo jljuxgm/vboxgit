@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 42453 2012-07-30 15:23:18Z vboxsync $ */
+/* $Id: IEMInternal.h 42621 2012-08-06 13:39:55Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -257,7 +257,10 @@ typedef struct IEMCPU
     /** Indicates that RAX and RDX differences should be ignored since RDTSC
      *  and RDTSCP are timing sensitive.  */
     bool                    fIgnoreRaxRdx;
-    bool                    afAlignment2[2];
+    /** Indicates that a MOVS instruction with overlapping source and destination
+     *  was executed, causing the memory write records to be incorrrect. */
+    bool                    fOverlappingMovs;
+    bool                    afAlignment2[1];
     /** Mask of undefined eflags.
      * The verifier will any difference in these flags. */
     uint32_t                fUndefinedEFlags;
