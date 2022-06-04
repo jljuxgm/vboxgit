@@ -1,4 +1,4 @@
-; $Id: tstAsmStructsAsm.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: tstAsmStructsAsm.asm 46312 2013-05-29 14:08:18Z vboxsync $
 ;; @file
 ; Assembly / C structure layout testcase.
 ;
@@ -28,6 +28,7 @@ BITS 64
 %include "VMMInternal.mac"
 %include "VBox/vmm/cpum.mac"
 %include "VBox/vmm/vm.mac"
+%include "VBox/vmm/hm_vmx.mac"
 %include "VBox/sup.mac"
 %include "VMMSwitcher.mac"
 %ifdef DO_GLOBALS
