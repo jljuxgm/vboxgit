@@ -1,4 +1,4 @@
-/* $Id: dbgmoddbghelp.cpp 46127 2013-05-16 14:11:26Z vboxsync $ */
+/* $Id: dbgmoddbghelp.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
@@ -385,8 +385,10 @@ static DECLCALLBACK(int) rtDbgModDbgHelpAddSegmentsCallback(RTLDRMOD hLdrMod, PC
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnTryOpen} */
-static DECLCALLBACK(int) rtDbgModDbgHelp_TryOpen(PRTDBGMODINT pMod)
+static DECLCALLBACK(int) rtDbgModDbgHelp_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
 {
+    NOREF(enmArch);
+
     /*
      * Currently only support external files with a executable already present.
      */

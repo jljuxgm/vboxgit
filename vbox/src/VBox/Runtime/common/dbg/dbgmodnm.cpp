@@ -1,4 +1,4 @@
-/* $Id: dbgmodnm.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: dbgmodnm.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
 /** @file
  * IPRT - Debug Map Reader For NM Like Mapfiles.
  */
@@ -477,8 +477,10 @@ static int rtDbgModNmScanFile(PRTDBGMODNM pThis, PRTSTREAM pStrm, bool fAddSymbo
 
 
 /** @interface_method_impl{RTDBGMODVTDBG,pfnTryOpen} */
-static DECLCALLBACK(int) rtDbgModNm_TryOpen(PRTDBGMODINT pMod)
+static DECLCALLBACK(int) rtDbgModNm_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
 {
+    NOREF(enmArch);
+
     /*
      * Fend off images.
      */

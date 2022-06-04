@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 46161 2013-05-19 13:31:13Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -58,6 +58,14 @@ typedef struct RTDBGMODLDR
 /** Pointer to instance data NM map reader. */
 typedef RTDBGMODLDR *PRTDBGMODLDR;
 
+
+
+/** @interface_method_impl{RTDBGMODVTIMG,pfnGetArch} */
+static DECLCALLBACK(RTLDRARCH) rtDbgModLdr_GetArch(PRTDBGMODINT pMod)
+{
+    PRTDBGMODLDR pThis = (PRTDBGMODLDR)pMod->pvImgPriv;
+    return RTLdrGetArch(pThis->hLdrMod);
+}
 
 
 /** @interface_method_impl{RTDBGMODVTIMG,pfnGetFormat} */
@@ -197,6 +205,7 @@ DECL_HIDDEN_CONST(RTDBGMODVTIMG) const g_rtDbgModVtImgLdr =
     /*.pfnMapPart = */                  rtDbgModLdr_MapPart,
     /*.pfnUnmapPart = */                rtDbgModLdr_UnmapPart,
     /*.pfnGetFormat = */                rtDbgModLdr_GetFormat,
+    /*.pfnGetArch = */                  rtDbgModLdr_GetArch,
 
     /*.u32EndMagic = */                 RTDBGMODVTIMG_MAGIC
 };

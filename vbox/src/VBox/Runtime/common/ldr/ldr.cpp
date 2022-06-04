@@ -1,4 +1,4 @@
-/* $Id: ldr.cpp 46161 2013-05-19 13:31:13Z vboxsync $ */
+/* $Id: ldr.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
@@ -118,6 +118,15 @@ RTDECL(RTLDRENDIAN) RTLdrGetEndian(RTLDRMOD hLdrMod)
     return pMod->enmEndian;
 }
 RT_EXPORT_SYMBOL(RTLdrGetEndian);
+
+
+RTDECL(RTLDRARCH) RTLdrGetArch(RTLDRMOD hLdrMod)
+{
+    AssertMsgReturn(rtldrIsValid(hLdrMod), ("hLdrMod=%p\n", hLdrMod), RTLDRARCH_INVALID);
+    PRTLDRMODINTERNAL pMod = (PRTLDRMODINTERNAL)hLdrMod;
+    return pMod->enmArch;
+}
+RT_EXPORT_SYMBOL(RTLdrGetArch);
 
 
 RTDECL(int) RTLdrClose(RTLDRMOD hLdrMod)

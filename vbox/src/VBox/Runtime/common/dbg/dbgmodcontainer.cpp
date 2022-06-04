@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 46149 2013-05-17 17:21:23Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -675,9 +675,9 @@ static DECLCALLBACK(int) rtDbgModContainer_Close(PRTDBGMODINT pMod)
 
 
 /** @copydoc RTDBGMODVTDBG::pfnTryOpen */
-static DECLCALLBACK(int) rtDbgModContainer_TryOpen(PRTDBGMODINT pMod)
+static DECLCALLBACK(int) rtDbgModContainer_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmArch)
 {
-    NOREF(pMod);
+    NOREF(pMod); NOREF(enmArch);
     return VERR_INTERNAL_ERROR_5;
 }
 

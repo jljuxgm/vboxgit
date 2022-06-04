@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 46161 2013-05-19 13:31:13Z vboxsync $ */
+/* $Id: ldrNative.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -138,6 +138,13 @@ RTDECL(int) RTLdrLoadEx(const char *pszFilename, PRTLDRMOD phLdrMod, uint32_t fF
         pMod->Core.enmEndian    = RTLDRENDIAN_BIG;
 #else
         pMod->Core.enmEndian    = RTLDRENDIAN_LITTLE;
+#endif
+#ifdef RT_ARCH_AMD64
+        pMod->Core.enmArch      = RTLDRARCH_AMD64;
+#elif defined(RT_ARCH_X86)
+        pMod->Core.enmArch      = RTLDRARCH_X86_32;
+#else
+        pMod->Core.enmArch      = RTLDRARCH_HOST;
 #endif
         pMod->hNative           = ~(uintptr_t)0;
 

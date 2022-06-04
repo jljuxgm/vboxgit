@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 46161 2013-05-19 13:31:13Z vboxsync $ */
+/* $Id: ldrPE.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -2292,6 +2292,11 @@ int rtldrPEOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, RTFOFF
                                         ? RTLDRTYPE_SHARED_LIBRARY_FIXED
                                         : RTLDRTYPE_SHARED_LIBRARY_RELOCATABLE;
                 pModPe->Core.enmEndian= RTLDRENDIAN_LITTLE;
+                pModPe->Core.enmArch  = FileHdr.Machine == IMAGE_FILE_MACHINE_I386
+                                      ? RTLDRARCH_X86_32
+                                      : FileHdr.Machine == IMAGE_FILE_MACHINE_AMD64
+                                      ? RTLDRARCH_AMD64
+                                      : RTLDRARCH_WHATEVER;
                 pModPe->pvBits        = NULL;
                 pModPe->offNtHdrs     = offNtHdrs;
                 pModPe->offEndOfHdrs  = offNtHdrs + 4 + sizeof(IMAGE_FILE_HEADER) + FileHdr.SizeOfOptionalHeader + cbSections;
