@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 46994 2013-07-05 09:31:09Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 46996 2013-07-05 09:39:52Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -419,7 +419,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
         if (!rc)
         {
             int cbIfaces = IfNum.lifn_count * sizeof(struct lifreq);
-            struct lifreq *Ifaces = (struct lifreq *Ifaces)RTMemTmpAlloc(cbIfaces);
+            struct lifreq *Ifaces = (struct lifreq *)RTMemTmpAlloc(cbIfaces);
             if (Ifaces)
             {
                 struct lifconf IfConfig;
