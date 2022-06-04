@@ -1,4 +1,4 @@
-/* $Id: server_glsl.c 46368 2013-06-03 17:24:51Z vboxsync $ */
+/* $Id: server_glsl.c 46453 2013-06-07 21:27:03Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL related functions
@@ -37,6 +37,7 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchShaderSource(GLuint shader, GLsize
     err = cr_server.head_spu->dispatch_table.GetError();
     CRASSERT(err == GL_NO_ERROR);
 #endif
+    CR_SERVER_DUMP_SHADER_SOURCE(shader);
 }
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchCompileShader(GLuint shader)
