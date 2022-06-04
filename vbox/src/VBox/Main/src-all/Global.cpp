@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 42339 2012-07-24 08:52:22Z vboxsync $ */
+/* $Id: Global.cpp 42911 2012-08-22 00:58:51Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -287,12 +287,12 @@ const Global::OSType Global::sOSTypes[] =
         StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_SB16  },
     { "MacOS",   "Mac OS X",          "MacOS",              "Mac OS X",
       VBOXOSTYPE_MacOS,           VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_EFI | VBOXOSHINT_PAE | VBOXOSHINT_USBHID | VBOXOSHINT_HPET | VBOXOSHINT_USBTABLET,
-      1024,   4, 20 * _1G64, NetworkAdapterType_I82543GC, 0,
+      2048,   4, 20 * _1G64, NetworkAdapterType_I82543GC, 0,
        StorageControllerType_ICH6, StorageBus_IDE, StorageControllerType_IntelAhci, StorageBus_SATA,
       ChipsetType_ICH9, AudioControllerType_HDA  },
     { "MacOS",   "Mac OS X",          "MacOS_64",           "Mac OS X (64 bit)",
       VBOXOSTYPE_MacOS_x64,       VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_EFI | VBOXOSHINT_PAE |  VBOXOSHINT_64BIT | VBOXOSHINT_USBHID | VBOXOSHINT_HPET | VBOXOSHINT_USBTABLET,
-      1024,   4, 20 * _1G64, NetworkAdapterType_I82543GC, 0,
+      2048,   4, 20 * _1G64, NetworkAdapterType_I82543GC, 0,
       StorageControllerType_ICH6, StorageBus_IDE, StorageControllerType_IntelAhci, StorageBus_SATA,
       ChipsetType_ICH9, AudioControllerType_HDA  },
     { "Other",   "Other",             "DOS",                "DOS",
