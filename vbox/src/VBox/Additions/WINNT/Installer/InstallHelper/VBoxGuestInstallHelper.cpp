@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 47232 2013-07-18 12:00:49Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 47234 2013-07-18 15:36:30Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  */
@@ -478,7 +478,7 @@ VBOXINSTALLHELPER_EXPORT VBoxTrayShowBallonMsg(HWND hwndParent, int string_size,
                 int rc = vboxConnectToVBoxTray(hSession);
                 if (RT_SUCCESS(rc))
                 {
-                    VBOXTRAYIPCHEADER ipcHdr = { 0 /* Header version */,
+                    VBOXTRAYIPCHEADER ipcHdr = { VBOXTRAY_IPC_HDR_MAGIC, 0 /* Header version */,
                                                  VBOXTRAYIPCMSGTYPE_SHOWBALLOONMSG, cbMsg };
 
                     rc = RTLocalIpcSessionWrite(hSession, &ipcHdr, sizeof(ipcHdr));

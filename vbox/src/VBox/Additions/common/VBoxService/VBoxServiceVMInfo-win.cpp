@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 47232 2013-07-18 12:00:49Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 47234 2013-07-18 15:36:30Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -821,7 +821,7 @@ static int vboxServiceVMInfoWinWriteLastInput(char *pszUser)
         rc = RTLocalIpcSessionConnect(&hSession, szPipeName, 0 /* Flags */);
         if (RT_SUCCESS(rc))
         {
-            VBOXTRAYIPCHEADER ipcHdr = { 0 /* Header version */,
+            VBOXTRAYIPCHEADER ipcHdr = { VBOXTRAY_IPC_HDR_MAGIC, 0 /* Header version */,
                                          VBOXTRAYIPCMSGTYPE_USERLASTINPUT, 0 /* No msg */ };
 
             rc = RTLocalIpcSessionWrite(hSession, &ipcHdr, sizeof(ipcHdr));
