@@ -1,4 +1,4 @@
-/* $Id: state_framebuffer.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: state_framebuffer.c 44947 2013-03-07 10:05:20Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object state tracking
@@ -911,8 +911,11 @@ static void crStateSyncRenderbuffersCB(unsigned long key, void *data1, void *dat
 
     diff_api.GenRenderbuffersEXT(1, &pRBO->hwid);
 
-    diff_api.BindRenderbufferEXT(GL_RENDERBUFFER_EXT, pRBO->hwid);
-    diff_api.RenderbufferStorageEXT(GL_RENDERBUFFER_EXT, pRBO->internalformat, pRBO->width, pRBO->height);
+    if (pRBO->width && pRBO->height)
+    {
+        diff_api.BindRenderbufferEXT(GL_RENDERBUFFER_EXT, pRBO->hwid);
+        diff_api.RenderbufferStorageEXT(GL_RENDERBUFFER_EXT, pRBO->internalformat, pRBO->width, pRBO->height);
+    }
 }
 
 static void crStateSyncAP(CRFBOAttachmentPoint *pAP, GLenum ap, CRContext *ctx)
