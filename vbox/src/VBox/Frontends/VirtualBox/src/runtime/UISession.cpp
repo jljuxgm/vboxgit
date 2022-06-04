@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
+/* $Id: UISession.cpp 45314 2013-04-03 17:18:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -390,14 +390,14 @@ bool UISession::powerOff(bool fIncludingDiscard, bool &fServerCrashed)
                     if (progress.GetResultCode() != 0)
                     {
                         /* Failed in progress: */
-                        msgCenter().cannotRestoreSnapshot(progress, snapshot.GetName());
+                        msgCenter().cannotRestoreSnapshot(progress, snapshot.GetName(), machine.GetName(), machineLogic()->activeMachineWindow());
                         return false;
                     }
                 }
                 else
                 {
                     /* Failed in console: */
-                    msgCenter().cannotRestoreSnapshot(console, snapshot.GetName());
+                    msgCenter().cannotRestoreSnapshot(console, snapshot.GetName(), machine.GetName(), machineLogic()->activeMachineWindow());
                     return false;
                 }
             }
