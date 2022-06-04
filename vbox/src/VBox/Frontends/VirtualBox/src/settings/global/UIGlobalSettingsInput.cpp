@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 44754 2013-02-19 15:42:13Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 47188 2013-07-16 13:21:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -46,7 +46,7 @@ UIGlobalSettingsInput::UIGlobalSettingsInput()
     /* Create tab widget: */
     m_pTabWidget = new QTabWidget(this);
     m_pTabWidget->setMinimumWidth(400);
-    m_pMainLayout->addWidget(m_pTabWidget, 0, 0);
+    m_pMainLayout->addWidget(m_pTabWidget, 0, 0, 1, 2);
 
     /* Create selector tab: */
     QWidget *pSelectorTab = new QWidget;
