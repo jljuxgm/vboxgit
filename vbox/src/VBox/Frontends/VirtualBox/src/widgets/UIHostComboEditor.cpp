@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 44753 2013-02-19 14:57:00Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 44797 2013-02-21 20:40:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -416,7 +416,11 @@ bool UIHostComboEditor::x11Event(XEvent *pEvent)
         {
             /* Get key-code: */
             XKeyEvent *pKeyEvent = (XKeyEvent*)pEvent;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
             KeySym ks = ::XKeycodeToKeysym(pKeyEvent->display, pKeyEvent->keycode, 0);
+#pragma GCC diagnostic pop
+
             int iKeySym = (int)ks;
 
             /* Process the key event: */

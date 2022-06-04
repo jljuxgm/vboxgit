@@ -1,4 +1,4 @@
-/* $Id: keyboard.c 44783 2013-02-21 14:53:31Z vboxsync $ */
+/* $Id: keyboard.c 44797 2013-02-21 20:40:14Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard handler library.
  */
@@ -53,6 +53,10 @@
 #include <stdio.h>
 
 #include <VBox/VBoxKeyboard.h>
+
+/* VBoxKeyboard uses the deprecated XKeycodeToKeysym(3) API, but uses it safely.
+ */
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 #define KEYC2SCAN_SIZE 256
 
