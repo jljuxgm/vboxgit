@@ -1,4 +1,4 @@
-# $Id: Config.kmk 45456 2013-04-10 12:32:39Z vboxsync $
+# $Id: Config.kmk 45458 2013-04-10 13:55:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1507,7 +1507,7 @@ USES += dtrace
 #
 # Compiler optimization flags.
 #
-VBOX_GCC_WARN     ?= -Wall $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) -Wno-unused -Wno-trigraphs $(VBOX_GCC_fdiagnostics-show-option) $(VBOX_GCC_no-unused-parameter)
+VBOX_GCC_WARN     ?= -Wall $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) -Wno-unused -Wno-trigraphs $(VBOX_GCC_fdiagnostics-show-option) $(VBOX_GCC_Wno-unused-parameter)
 VBOX_GCC_WARN_PEDANTIC = -Wshadow $(VBOX_GCC_WARN) -Wno-long-long
 ifdef VBOX_WITH_MASOCHISTIC_WARNINGS
  VBOX_GCC_WARN_PEDANTIC += -Wunused-variable -Wunused-function -Wunused-label -Wunused-parameter
@@ -2292,7 +2292,7 @@ endif
 # Prevent warnings about unused parameters as of gcc-4.8 as this warning is now very verbose
 	$(QUIET)$(APPEND) '$@' 'ifneq ($$(VBOX_GCC_VERSION_CXX),)'
 	$(QUIET)$(APPEND) '$@' ' ifneq ($$(int-ge $$(VBOX_GCC_VERSION_CXX),40800),)'
-	$(QUIET)$(APPEND) '$@' '  VBOX_GCC_no-unused-parameter ?= -Wno-unused-parameter'
+	$(QUIET)$(APPEND) '$@' '  VBOX_GCC_Wno-unused-parameter ?= -Wno-unused-parameter'
 	$(QUIET)$(APPEND) '$@' ' endif'
 	$(QUIET)$(APPEND) '$@' 'endif'
 ifeq ($(KBUILD_TARGET),solaris)
@@ -5326,7 +5326,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45456 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45458 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
