@@ -1,4 +1,4 @@
-# $Id: Config.kmk 47779 2013-08-15 17:59:50Z vboxsync $
+# $Id: Config.kmk 47799 2013-08-16 11:15:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -721,7 +721,7 @@ ifdef VBOX_WITH_HARDENING
  if1of ($(KBUILD_TARGET), solaris)
   VBOX_PATH_APP_PRIVATE_ARCH_TOP = $(VBOX_PATH_APP_PRIVATE)
   VBOX_PATH_APP_PRIVATE_ARCH = $(VBOX_PATH_APP_PRIVATE_ARCH_TOP)/$(if-expr $(KBUILD_TARGET_ARCH) == "amd64",amd64,i386)
- else if1of ($(KBUILD_TARGET), darwin)
+ else ifdef VBOX_PATH_APP_PRIVATE
   VBOX_PATH_APP_PRIVATE_ARCH = $(VBOX_PATH_APP_PRIVATE)
  endif
 endif
@@ -730,14 +730,14 @@ endif
 ifdef VBOX_WITH_HARDENING
  if1of ($(KBUILD_TARGET), solaris)
   VBOX_PATH_SHARED_LIBS      = $(VBOX_PATH_APP_PRIVATE)/$(if-expr $(KBUILD_TARGET_ARCH) == "amd64",amd64,i386)
- else if1of ($(KBUILD_TARGET), darwin)
+ else ifdef VBOX_PATH_APP_PRIVATE
   VBOX_PATH_SHARED_LIBS      = $(VBOX_PATH_APP_PRIVATE)
  endif
 endif
 # Where the documentation is (going to be) installed.
 #VBOX_PATH_APP_DOCS         = /usr/share/doc/virtualbox
 ifdef VBOX_WITH_HARDENING
- if1of ($(KBUILD_TARGET), darwin solaris)
+ ifdef VBOX_PATH_APP_PRIVATE
   VBOX_PATH_APP_DOCS         = $(VBOX_PATH_APP_PRIVATE)
  endif
 endif
@@ -5395,7 +5395,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47779 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47799 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
