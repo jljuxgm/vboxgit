@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 43690 2012-10-19 14:06:13Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 44206 2012-12-27 14:44:35Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -58,7 +58,7 @@
  * probing. Addresses in the 300h-340h range should be especially avoided.
  */
 
-#define BUSLOGIC_BIOS_IO_PORT   0x330
+#define BUSLOGIC_BIOS_IO_PORT   0x430
 
 /** State saved version. */
 #define BUSLOGIC_SAVED_STATE_MINOR_VERSION 2
