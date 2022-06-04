@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 46849 2013-06-27 15:02:00Z vboxsync $ */
+/* $Id: HMInternal.h 46871 2013-06-28 16:25:06Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -791,7 +791,9 @@ typedef struct HMCPU
     STAMPROFILEADV          StatSpinPoke;
     STAMPROFILEADV          StatSpinPokeFailed;
 
-    STAMCOUNTER             StatIntInject;
+    STAMCOUNTER             StatInjectInterrupt;
+    STAMCOUNTER             StatInjectXcpt;
+    STAMCOUNTER             StatInjectPendingReflect;
 
     STAMCOUNTER             StatExitShadowNM;
     STAMCOUNTER             StatExitGuestNM;
@@ -847,7 +849,6 @@ typedef struct HMCPU
     STAMCOUNTER             StatExitTaskSwitch;
     STAMCOUNTER             StatExitMtf;
     STAMCOUNTER             StatExitApicAccess;
-    STAMCOUNTER             StatIntReinject;
     STAMCOUNTER             StatPendingHostIrq;
 
     STAMCOUNTER             StatFlushPage;
