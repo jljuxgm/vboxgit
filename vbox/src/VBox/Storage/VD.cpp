@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 44430 2013-01-28 15:31:18Z vboxsync $ */
+/* $Id: VD.cpp 44431 2013-01-28 15:54:46Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3956,7 +3956,6 @@ static void vdIoCtxProcessHaltedList(PVBOXHDD pDisk)
     pCur = pIoCtxHead;
     while (pCur)
     {
-        int rcTmp;
         PVDIOCTX pTmp = pCur;
 
         pCur = pCur->pIoCtxNext;
