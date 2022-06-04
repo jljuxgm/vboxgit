@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 44403 2013-01-27 23:20:07Z vboxsync $ */
+/* $Id: DBGF.cpp 44404 2013-01-27 23:22:15Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -137,6 +137,9 @@ DECLINLINE(DBGFCMD) dbgfR3SetCmd(PVM pVM, DBGFCMD enmCmd)
 VMMR3_INT_DECL(int) DBGFR3Init(PVM pVM)
 {
     PUVM pUVM = pVM->pUVM;
+    AssertCompile(sizeof(pUVM->dbgf.s)          <= sizeof(pUVM->dbgf.padding));
+    AssertCompile(sizeof(pUVM->aCpus[0].dbgf.s) <= sizeof(pUVM->aCpus[0].dbgf.padding));
+
     int rc = dbgfR3InfoInit(pUVM);
     if (RT_SUCCESS(rc))
         rc = dbgfR3TraceInit(pVM);
