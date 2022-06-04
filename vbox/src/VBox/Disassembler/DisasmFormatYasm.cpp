@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 46949 2013-07-03 19:22:34Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 47330 2013-07-23 00:17:22Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -253,6 +253,7 @@ static const char *disasmFormatYasmIndexReg(PCDISSTATE pDis, PCDISOPPARAM pParam
 DISDECL(size_t) DISFormatYasmEx(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, uint32_t fFlags,
                                 PFNDISGETSYMBOL pfnGetSymbol, void *pvUser)
 {
+/** @todo monitor and mwait aren't formatted correctly in 64-bit mode. */
     /*
      * Input validation and massaging.
      */
