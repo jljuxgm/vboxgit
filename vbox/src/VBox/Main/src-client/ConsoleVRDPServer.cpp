@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 43384 2012-09-21 08:27:06Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 43388 2012-09-21 09:51:44Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2120,6 +2120,7 @@ typedef struct TSMFHOSTCHANNELCTX
 
     if (RT_SUCCESS(rc))
     {
+        /* @todo contexts should be in a list for accounting. */
         *ppvChannel = pCtx;
     }
     else
@@ -2135,6 +2136,8 @@ typedef struct TSMFHOSTCHANNELCTX
     LogFlowFunc(("\n"));
 
     TSMFHOSTCHANNELCTX *pCtx = (TSMFHOSTCHANNELCTX *)pvChannel;
+
+    pCtx->pThis->m_interfaceTSMF.VRDETSMFChannelClose(pCtx->pThis->mhServer, pCtx->u32ChannelHandle);
     /* @todo */
 }
 
