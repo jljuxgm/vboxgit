@@ -1,4 +1,4 @@
-/* $Id: UIFilmContainer.cpp 46537 2013-06-13 15:19:13Z vboxsync $ */
+/* $Id: UIFilmContainer.cpp 46605 2013-06-17 18:25:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -61,7 +61,7 @@ void UIFilmContainer::setValue(const QVector<BOOL> &value)
         if (QHBoxLayout *pWidgetLayout = new QHBoxLayout(pWidget))
         {
             /* Configure viewport layout: */
-            pWidgetLayout->setMargin(4);
+            pWidgetLayout->setMargin(0);
             pWidgetLayout->setSpacing(4);
             /* Create new widgets according passed vector: */
             for (int iScreenIndex = 0; iScreenIndex < value.size(); ++iScreenIndex)
