@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 42693 2012-08-08 22:37:51Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 42759 2012-08-10 15:53:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -237,7 +237,8 @@ STDMETHODIMP GuestDirectory::Read(IFsObjInfo **aInfo)
                 || waitRes.mResult == ProcessWaitResult_Error
                 || waitRes.mResult == ProcessWaitResult_Timeout)
             {
-                rc = waitRes.mRC;
+                if (RT_FAILURE(waitRes.mRC))
+                    rc = waitRes.mRC;
                 break;
             }
 
