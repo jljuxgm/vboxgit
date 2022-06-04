@@ -1,4 +1,4 @@
-/* $Id: RTPathCalcRelative.cpp 44623 2013-02-11 10:14:24Z vboxsync $ */
+/* $Id: RTPathCalcRelative.cpp 46187 2013-05-21 06:30:59Z vboxsync $ */
 /** @file
  * IPRT - RTPathCreateRelative.
  */
@@ -86,8 +86,6 @@ RTDECL(int) RTPathCalcRelative(char *pszPathDst, size_t cbPathDst,
     pszPathTo++; /* Skip path separator. */
 
     /* Paths point to the first non equal component now. */
-
-    /* Count the number of remaining path components of the from path. */
     char aszPathTmp[RTPATH_MAX + 1];
     unsigned offPathTmp = 0;
 
