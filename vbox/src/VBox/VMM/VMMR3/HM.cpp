@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45786 2013-04-26 22:35:59Z vboxsync $ */
+/* $Id: HM.cpp 45804 2013-04-29 12:03:31Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -397,6 +397,11 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
     /** @cfgm{/HM/EnableNestedPaging, bool, false}
      * Enables nested paging (aka extended page tables). */
     rc = CFGMR3QueryBoolDef(pCfgHM, "EnableNestedPaging", &pVM->hm.s.fAllowNestedPaging, false);
+    AssertRCReturn(rc, rc);
+
+    /** @cfgm{/HM/EnableUnrestrictedExec, bool, true}
+     * Enables the VT-x unrestricted execution feature. */
+    rc = CFGMR3QueryBoolDef(pCfgHM, "EnableUnrestrictedExec", &pVM->hm.s.vmx.fAllowUnrestricted, true);
     AssertRCReturn(rc, rc);
 
     /** @cfgm{/HM/EnableLargePages, bool, false}
@@ -1126,8 +1131,9 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
         LogRel(("HM: Disabled RDTSCP\n"));
     }
 
-    /* Unrestricted guest execution relies on EPT. */
-    if (    pVM->hm.s.fNestedPaging
+    /* Unrestricted guest execution also requires EPT. */
+    if (    pVM->hm.s.vmx.fAllowUnrestricted
+        &&  pVM->hm.s.fNestedPaging
         &&  (pVM->hm.s.vmx.msr.vmx_proc_ctls2.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC2_UNRESTRICTED_GUEST))
         pVM->hm.s.vmx.fUnrestrictedGuest = true;
 
