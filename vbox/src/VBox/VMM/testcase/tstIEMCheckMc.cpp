@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 47568 2013-08-07 03:11:58Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 47744 2013-08-14 23:49:48Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -544,6 +544,7 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
 
 #define IEM_MC_PUSH_U16(a_u16Value)                                     do {} while (0)
 #define IEM_MC_PUSH_U32(a_u32Value)                                     do {} while (0)
+#define IEM_MC_PUSH_U32_SREG(a_u32Value)                                do {} while (0)
 #define IEM_MC_PUSH_U64(a_u64Value)                                     do {} while (0)
 #define IEM_MC_POP_U16(a_pu16Value)                                     do {} while (0)
 #define IEM_MC_POP_U32(a_pu32Value)                                     do {} while (0)
