@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 46122 2013-05-16 11:42:23Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 47483 2013-07-31 07:48:03Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -1026,12 +1026,12 @@ static HRESULT produceList(enum enmListType enmCommand, bool fOptLong, const Com
                 RTPrintf("Network:        %ls\n", network.raw());
                 BOOL fEnabled;
                 net->COMGETTER(IPv6Enabled)(&fEnabled);
-                RTPrintf("IPv6 Enabled:    %s\n", fEnabled ? "Yes" : "No");
+                RTPrintf("IPv6 Enabled:   %s\n", fEnabled ? "Yes" : "No");
                 Bstr ipv6prefix;
                 net->COMGETTER(Network)(network.asOutParam());
                 RTPrintf("IPv6 Prefix:    %ls\n", ipv6prefix.raw());
                 net->COMGETTER(NeedDhcpServer)(&fEnabled);
-                RTPrintf("DHCP Server Enabled: %s\n", fEnabled ? "Yes" : "No");
+                RTPrintf("DHCP Enabled:   %s\n", fEnabled ? "Yes" : "No");
                 net->COMGETTER(Enabled)(&fEnabled);
                 RTPrintf("Enabled:        %s\n", fEnabled ? "Yes" : "No");
                 RTPrintf("\n");
