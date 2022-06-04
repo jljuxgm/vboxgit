@@ -1,4 +1,4 @@
-/* $Id: tstMp-1.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: tstMp-1.cpp 46144 2013-05-17 14:46:57Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMp.
  */
@@ -57,6 +57,16 @@ int main()
         RTPrintf("tstMp-1: FAILURE: RTMpGetCount -> %d\n", (int)cCpus);
         g_cErrors++;
         cCpus = 1;
+    }
+
+    RTCPUID cCoreCpus = RTMpGetCoreCount();
+    if (cCoreCpus > 0)
+        RTPrintf("tstMp-1: RTMpGetCoreCount -> %d\n", (int)cCoreCpus);
+    else
+    {
+        RTPrintf("tstMp-1: FAILURE: RTMpGetCoreCount -> %d\n", (int)cCoreCpus);
+        g_cErrors++;
+        cCoreCpus = 1;
     }
 
     RTCPUSET Set;

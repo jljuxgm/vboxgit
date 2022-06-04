@@ -1,4 +1,4 @@
-/* $Id: mp-linux.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: mp-linux.cpp 46144 2013-05-17 14:46:57Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Linux.
  */
@@ -174,6 +174,34 @@ RTDECL(RTCPUID) RTMpGetCount(void)
     RTCPUSET Set;
     RTMpGetSet(&Set);
     return RTCpuSetCount(&Set);
+}
+
+
+RTDECL(RTCPUID) RTMpGetCoreCount(void)
+{
+    RTCPUID cMax = rtMpLinuxMaxCpus();
+    uint32_t aCores[256];
+    RT_ZERO(aCores);
+    uint32_t cCores = 0;
+    for (RTCPUID idCpu = 0; idCpu < cMax; idCpu++)
+    {
+        if (RTMpIsCpuPossible(idCpu))
+        {
+            uint32_t idCore =
+                (uint32_t)RTLinuxSysFsReadIntFile(0, "devices/system/cpu/cpu%d/topology/core_id", (int)idCpu);
+            unsigned i;
+            for (i = 0; i < cCores; i++)
+                if (aCores[i] == idCore)
+                    break;
+            if (   i >= cCores
+                && cCores < RT_ELEMENTS(aCores))
+            {
+                aCores[cCores] = idCore;
+                cCores++;
+            }
+        }
+    }
+    return cCores;
 }
 
 
