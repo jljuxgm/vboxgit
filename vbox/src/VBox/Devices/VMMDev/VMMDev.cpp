@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 47301 2013-07-22 14:07:57Z vboxsync $ */
+/* $Id: VMMDev.cpp 47450 2013-07-29 08:07:32Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -697,7 +697,7 @@ static int vmmdevReqHandler_ReportGuestUserState(PVMMDEV pThis, VMMDevRequestHea
         /* Note: pszDomain can be NULL. */
 
         pvDynamic += pStatus->cbDomain; /* Advance to next field. */
-        const uint8_t *puDetails = (uint8_t *)pStatus->cbDetails
+        const uint8_t *puDetails = pStatus->cbDetails
                                  ? pvDynamic : NULL;
         /* Note: puDetails can be NULL. */
 
