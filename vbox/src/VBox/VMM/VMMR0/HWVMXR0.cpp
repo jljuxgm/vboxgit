@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44769 2013-02-20 17:20:27Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 44791 2013-02-21 17:31:39Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -603,7 +603,7 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
                 val |= VMX_VMCS_CTRL_PROC_EXEC2_VIRT_APIC;
 
             if (pVM->hm.s.vmx.fUnrestrictedGuest)
-                val |= VMX_VMCS_CTRL_PROC_EXEC2_REAL_MODE;
+                val |= VMX_VMCS_CTRL_PROC_EXEC2_UNRESTRICTED_GUEST;
 
             if (pVM->hm.s.vmx.msr.vmx_proc_ctls2.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC2_RDTSCP)
                 val |= VMX_VMCS_CTRL_PROC_EXEC2_RDTSCP;
