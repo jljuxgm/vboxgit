@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 45591 2013-04-17 16:56:35Z vboxsync $ */
+/* $Id: MachineImpl.cpp 45598 2013-04-17 19:03:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4187,7 +4187,38 @@ STDMETHODIMP Machine::AttachDevice(IN_BSTR aControllerName,
     alock.release();
 
     if (fHotplug || fSilent)
-        rc = onStorageDeviceChange(attachment, FALSE /* aRemove */, fSilent);
+    {
+        MediumLockList *pMediumLockList(new MediumLockList());
+
+        rc = medium->createMediumLockList(true /* fFailIfInaccessible */,
+                                          true /* fMediumLockWrite */,
+                                          NULL,
+                                          *pMediumLockList);
+        alock.acquire();
+        if (FAILED(rc))
+            delete pMediumLockList;
+        else
+        {
+            mData->mSession.mLockedMedia.Unlock();
+            alock.release();
+            rc = mData->mSession.mLockedMedia.Insert(attachment, pMediumLockList);
+            mData->mSession.mLockedMedia.Lock();
+            alock.acquire();
+        }
+        alock.release();
+
+        if (SUCCEEDED(rc))
+        {
+            rc = onStorageDeviceChange(attachment, FALSE /* aRemove */, fSilent);
+            /* Remove lock list in case of error. */
+            if (FAILED(rc))
+            {
+                mData->mSession.mLockedMedia.Unlock();
+                mData->mSession.mLockedMedia.Remove(attachment);
+                mData->mSession.mLockedMedia.Lock();
+            }
+        }
+    }
 
     mParent->saveModifiedRegistries();
 
