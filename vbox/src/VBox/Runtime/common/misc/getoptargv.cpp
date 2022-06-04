@@ -1,4 +1,4 @@
-/* $Id: getoptargv.cpp 38083 2011-07-20 16:24:38Z vboxsync $ */
+/* $Id: getoptargv.cpp 43031 2012-08-28 11:42:23Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing, Argument Vector.
  */
@@ -318,6 +318,10 @@ RTDECL(void) RTGetOptArgvFree(char **papszArgv)
 {
     if (papszArgv)
     {
+        /*
+         * We've really only _two_ allocations here. Check the code in
+         * RTGetOptArgvFromString for the particulars.
+         */
         RTMemFree(papszArgv[0]);
         RTMemFree(papszArgv);
     }
