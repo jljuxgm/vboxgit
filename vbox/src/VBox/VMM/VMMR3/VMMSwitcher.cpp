@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 45721 2013-04-25 08:11:30Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 45726 2013-04-25 10:21:25Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -39,8 +39,6 @@
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>
 #include <iprt/ctype.h>
-
-#include "HMInternal.h" /* for VBOX_ENABLE_64_BITS_GUESTS */
 
 
 /*******************************************************************************
@@ -104,7 +102,7 @@ static PVMMSWITCHERDEF g_apRawModeSwitchers[VMMSWITCHER_MAX] =
 static PVMMSWITCHERDEF g_apHmSwitchers[VMMSWITCHER_MAX] =
 {
     NULL, /* invalid entry */
-#if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+#if HC_ARCH_BITS == 32 && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
     NULL,   //&vmmR3Switcher32BitTo32Bit_Def,
     NULL,   //&vmmR3Switcher32BitToPAE_Def,
     &vmmR3Switcher32BitToAMD64_Def,
