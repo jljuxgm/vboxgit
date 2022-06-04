@@ -1,4 +1,4 @@
-;$Id: HWACCMInternal.mac 42821 2012-08-15 11:11:03Z vboxsync $
+;$Id: HWACCMInternal.mac 42822 2012-08-15 11:13:30Z vboxsync $
 ;; @file
 ; HWACCM - Internal header file.
 ;
@@ -16,7 +16,7 @@
 
 %define VMX_USE_CACHED_VMCS_ACCESSES
 
-/** @todo: Broken on OS X Snow Leopard @bugref{6313}. */
+; @todo: Broken on OS X Snow Leopard @bugref{6313}.
 %ifndef VBOX_WITH_HYBRID_32BIT_KERNEL
 %define VBOX_WITH_AUTO_MSR_LOAD_RESTORE
 %endif
