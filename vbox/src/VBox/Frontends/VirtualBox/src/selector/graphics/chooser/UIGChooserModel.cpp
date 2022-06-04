@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42542 2012-08-02 14:04:02Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42543 2012-08-02 14:15:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -169,6 +169,11 @@ void UIGChooserModel::unindentRoot()
 
     /* Slide root: */
     slideRoot(false);
+}
+
+bool UIGChooserModel::isSlidingInProgress() const
+{
+    return m_fSliding;
 }
 
 void UIGChooserModel::setCurrentItem(int iItemIndex)

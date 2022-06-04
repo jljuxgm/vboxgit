@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerKeyboard.cpp 42529 2012-08-02 11:53:21Z vboxsync $ */
+/* $Id: UIGChooserHandlerKeyboard.cpp 42543 2012-08-02 14:15:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -55,6 +55,10 @@ bool UIGChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
         /* Key UP? */
         case Qt::Key_Up:
         {
+            /* Not during sliding: */
+            if (model()->isSlidingInProgress())
+                return false;
+
             /* Determine focus item position: */
             int iPosition = model()->navigationList().indexOf(model()->focusItem());
             /* Determine 'previous' item: */
@@ -110,6 +114,10 @@ bool UIGChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
         /* Key DOWN? */
         case Qt::Key_Down:
         {
+            /* Not during sliding: */
+            if (model()->isSlidingInProgress())
+                return false;
+
             /* Determine focus item position: */
             int iPosition = model()->navigationList().indexOf(model()->focusItem());
             /* Determine 'next' item: */
