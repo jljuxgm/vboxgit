@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 46518 2013-06-13 10:07:09Z vboxsync $ */
+/* $Id: ovfreader.cpp 46534 2013-06-13 14:06:54Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -856,7 +856,7 @@ void VirtualHardwareItem::fillItem(const xml::ElementNode *item)
             resourceType = (ResourceType_T)ulType;
             fResourceRequired = true;
             const char *pcszAttValue;
-            if (pelmItemChild->getAttributeValue("required", pcszAttValue))
+            if (item->getAttributeValue("required", pcszAttValue))
             {
                 if (!strcmp(pcszAttValue, "false"))
                     fResourceRequired = false;
