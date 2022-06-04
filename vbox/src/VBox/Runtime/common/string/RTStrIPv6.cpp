@@ -1,4 +1,4 @@
-/* $Id: RTStrIPv6.cpp 43215 2012-09-06 09:21:12Z vboxsync $ */
+/* $Id: RTStrIPv6.cpp 43220 2012-09-06 10:13:14Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -1220,7 +1220,7 @@ static int rtNetIpv6CheckAddrStr(const char *psz, char *pszResultAddress, size_t
 
 RTDECL(bool) RTNetIsIPv6AddrStr(const char *pszAddress)
 {
-    return rtNetIpv6CheckAddrStr(pszAddress, NULL, 0, true, true);
+    return rtNetIpv6CheckAddrStr(pszAddress, NULL, 0, true, true) >= 0;
 }
 RT_EXPORT_SYMBOL(RTNetIsIPv6AddrStr);
 
