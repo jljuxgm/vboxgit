@@ -1,4 +1,4 @@
-/* $Id: packspu_framebuffer.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: packspu_framebuffer.c 42499 2012-08-01 10:26:43Z vboxsync $ */
 
 /** @file
  * VBox OpenGL FBO related functions
@@ -92,8 +92,7 @@ packspu_CheckFramebufferStatusEXT(GLenum target)
     crPackCheckFramebufferStatusEXT(target, &status, &writeback);
 
 	packspuFlush((void *) thread);
-	while (writeback)
-		crNetRecv();
+    CRPACKSPU_WRITEBACK_WAIT(thread, writeback);
 
     crStateSetFramebufferStatus(target, status);
     return status;

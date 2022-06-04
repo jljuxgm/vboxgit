@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMp.cpp 41374 2012-05-21 18:04:03Z vboxsync $ */
+/* $Id: VBoxDispMp.cpp 42499 2012-08-01 10:26:43Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -73,9 +73,6 @@ DECLCALLBACK(HRESULT) vboxDispMpEnableEvents()
     g_VBoxDispMp.pEscapeCmd = NULL;
     g_VBoxDispMp.cbEscapeCmd = 0;
     vboxVideoCmIterInit(&g_VBoxDispMp.Iterator, NULL, 0);
-#ifdef VBOX_WITH_CRHGSMI
-    vboxUhgsmiGlobalSetCurrent();
-#endif
     LeaveCriticalSection(&g_VBoxDispMp.CritSect);
     return S_OK;
 }
@@ -89,9 +86,6 @@ DECLCALLBACK(HRESULT) vboxDispMpDisableEvents()
         RTMemFree(g_VBoxDispMp.pEscapeCmd);
         g_VBoxDispMp.pEscapeCmd = NULL;
     }
-#ifdef VBOX_WITH_CRHGSMI
-    vboxUhgsmiGlobalClearCurrent();
-#endif
     LeaveCriticalSection(&g_VBoxDispMp.CritSect);
     return S_OK;
 }

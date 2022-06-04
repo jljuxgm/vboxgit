@@ -1,4 +1,4 @@
-/* $Id: packspu_glsl.c 39012 2011-10-18 08:11:32Z vboxsync $ */
+/* $Id: packspu_glsl.c 42499 2012-08-01 10:26:43Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related functions
@@ -41,8 +41,7 @@ GLuint PACKSPU_APIENTRY packspu_CreateProgram(void)
         crPackCreateProgram(&return_val, &writeback);
     }
     packspuFlush((void *) thread);
-    while (writeback)
-        crNetRecv();
+    CRPACKSPU_WRITEBACK_WAIT(thread, writeback);
     if (pack_spu.swap)
     {
         return_val = (GLuint) SWAP32(return_val);
@@ -71,8 +70,7 @@ static GLint packspu_GetUniformLocationUncached(GLuint program, const char * nam
         crPackGetUniformLocation(program, name, &return_val, &writeback);
     }
     packspuFlush((void *) thread);
-    while (writeback)
-        crNetRecv();
+    CRPACKSPU_WRITEBACK_WAIT(thread, writeback);
     if (pack_spu.swap)
     {
         return_val = (GLint) SWAP32(return_val);
@@ -103,8 +101,7 @@ GLint PACKSPU_APIENTRY packspu_GetUniformLocation(GLuint program, const char * n
         crPackGetUniformsLocations(program, maxcbData, pData, NULL, &writeback);
 
         packspuFlush((void *) thread);
-        while (writeback)
-            crNetRecv();
+        CRPACKSPU_WRITEBACK_WAIT(thread, writeback);
 
         crStateGLSLProgramCacheUniforms(program, pData[0], &pData[1]);
 
@@ -135,6 +132,8 @@ void PACKSPU_APIENTRY packspu_DeleteProgram(GLuint program)
 void PACK_APIENTRY packspu_DeleteObjectARB(GLhandleARB obj)
 {
     GLuint hwid = crStateGetProgramHWID(obj);
+
+    CRASSERT(obj);
 
     if (hwid)
     {

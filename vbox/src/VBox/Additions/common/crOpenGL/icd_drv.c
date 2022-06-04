@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 41971 2012-06-29 12:31:04Z vboxsync $ */
+/* $Id: icd_drv.c 42499 2012-08-01 10:26:43Z vboxsync $ */
 
 /** @file
  * VBox OpenGL windows ICD driver functions
@@ -163,7 +163,11 @@ HGLRC APIENTRY DrvCreateContext(HDC hdc)
         desiredVisual |= ComputeVisBits( hdc );
 #endif
 
-    context = stubNewContext(dpyName, desiredVisual, UNDECIDED, 0);
+    context = stubNewContext(dpyName, desiredVisual, UNDECIDED, 0
+#if defined(VBOX_WITH_CRHGSMI) && defined(IN_GUEST)
+        , NULL
+#endif
+            );
     if (!context)
         return 0;
 
