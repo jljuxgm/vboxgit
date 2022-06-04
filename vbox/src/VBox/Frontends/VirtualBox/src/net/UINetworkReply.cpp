@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 43710 2012-10-23 12:48:57Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 43733 2012-10-24 17:47:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -67,6 +67,25 @@ private:
             RTHttpSetProxy(hHttp,
                            proxyManager.proxyHost().toAscii().constData(),
                            proxyManager.proxyPort().toUInt(), 0, 0);
+        }
+
+        /* Do we have raw headers? */
+        QList<QByteArray> rawHeaders = m_request.rawHeaderList();
+        if (!rawHeaders.isEmpty())
+        {
+            /* We should format them first: */
+            QVector<QByteArray> formattedHeaderVector;
+            QVector<const char*> formattedHeaderPointerVector;
+            /* For each existing raw-header: */
+            foreach (const QByteArray &rawHeader, rawHeaders)
+            {
+                /* Prepare formatted representation: */
+                QString strFormattedString = QString("%1: %2").arg(QString(rawHeader), QString(m_request.rawHeader(rawHeader)));
+                formattedHeaderVector << strFormattedString.toAscii();
+                formattedHeaderPointerVector << formattedHeaderVector.last().constData();
+            }
+            const char **ppFormattedHeaders = formattedHeaderPointerVector.data();
+            RTHttpSetHeaders(hHttp, formattedHeaderPointerVector.size(), ppFormattedHeaders);
         }
 
         /* Acquire: */
