@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerNormal.cpp 44434 2013-01-28 16:48:34Z vboxsync $ */
+/* $Id: UIKeyboardHandlerNormal.cpp 44436 2013-01-28 18:21:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,7 +25,7 @@
 /* Local includes */
 #include "UIKeyboardHandlerNormal.h"
 #include "UIMachineWindow.h"
-#include "UIShortcuts.h"
+#include "UIShortcutPool.h"
 
 /* Fullscreen keyboard-handler constructor: */
 UIKeyboardHandlerNormal::UIKeyboardHandlerNormal(UIMachineLogic* pMachineLogic)

@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 44434 2013-01-28 16:48:34Z vboxsync $ */
+/* $Id: UIActionPool.cpp 44436 2013-01-28 18:21:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,8 +26,8 @@
 #include "UIActionPoolSelector.h"
 #include "UIActionPoolRuntime.h"
 #include "UIIconPool.h"
+#include "UIShortcutPool.h"
 #include "VBoxGlobal.h"
-#include "UIShortcuts.h"
 
 /* Action activation event: */
 class ActivateActionEvent : public QEvent

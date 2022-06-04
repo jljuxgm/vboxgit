@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 44434 2013-01-28 16:48:34Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 44436 2013-01-28 18:21:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -56,7 +56,7 @@
 #include "QIMessageBox.h"
 #include "QIDialogButtonBox.h"
 #include "UIIconPool.h"
-#include "UIShortcuts.h"
+#include "UIShortcutPool.h"
 #include "UIActionPoolSelector.h"
 #include "UIActionPoolRuntime.h"
 #include "UIExtraDataEventHandler.h"
