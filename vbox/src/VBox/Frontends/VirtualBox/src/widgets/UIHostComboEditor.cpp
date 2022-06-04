@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 44663 2013-02-12 17:16:09Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 44737 2013-02-18 14:08:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -309,7 +309,6 @@ UIHostComboEditor::UIHostComboEditor(QWidget *pParent)
 {
     /* Configure widget: */
     setAttribute(Qt::WA_NativeWindow);
-    setAlignment(Qt::AlignCenter);
     setContextMenuPolicy(Qt::NoContextMenu);
     connect(this, SIGNAL(selectionChanged()), this, SLOT(sltDeselect()));
 
