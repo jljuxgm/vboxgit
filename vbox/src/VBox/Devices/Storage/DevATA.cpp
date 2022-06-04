@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 47784 2013-08-16 08:46:08Z vboxsync $ */
+/* $Id: DevATA.cpp 47785 2013-08-16 08:50:39Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -986,6 +986,7 @@ static void ataPIOTransferStart(ATADevState *s, uint32_t start, uint32_t size)
     s->iIOBufferPIODataStart = start;
     s->iIOBufferPIODataEnd = start + size;
     ataSetStatus(s, ATA_STAT_DRQ | ATA_STAT_SEEK);
+    ataUnsetStatus(s, ATA_STAT_BUSY);
 }
 
 
