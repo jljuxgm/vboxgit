@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 43618 2012-10-11 13:59:10Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 43629 2012-10-12 09:26:07Z vboxsync $ */
 
 /** @file
  *
@@ -326,6 +326,11 @@ int CollectorSolaris::getRawHostNetworkLoad(const char *name, uint64_t *rx, uint
     }
     *tx = kn->value.ul;
     return VINF_SUCCESS;
+}
+
+int getDiskListByFs(const char *name, DiskList& list)
+{
+    return VERR_NOT_IMPLEMENTED;
 }
 
 }

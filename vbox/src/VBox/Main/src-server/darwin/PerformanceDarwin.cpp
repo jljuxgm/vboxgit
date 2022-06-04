@@ -1,4 +1,4 @@
-/* $Id: PerformanceDarwin.cpp 43556 2012-10-05 11:57:08Z vboxsync $ */
+/* $Id: PerformanceDarwin.cpp 43629 2012-10-12 09:26:07Z vboxsync $ */
 /** @file
  * VBox Darwin-specific Performance Classes implementation.
  */
@@ -159,6 +159,11 @@ int CollectorDarwin::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
         *used = tinfo.pti_resident_size / 1024;
     }
     return rc;
+}
+
+int getDiskListByFs(const char *name, DiskList& list)
+{
+    return VERR_NOT_IMPLEMENTED;
 }
 
 }

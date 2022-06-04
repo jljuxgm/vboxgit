@@ -1,4 +1,4 @@
-/* $Id: PerformanceOs2.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: PerformanceOs2.cpp 43629 2012-10-12 09:26:07Z vboxsync $ */
 
 /** @file
  *
@@ -60,6 +60,11 @@ int CollectorOS2::getProcessCpuLoad(RTPROCESS process, ULONG *user, ULONG *kerne
 int CollectorOS2::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
 {
     return E_NOTIMPL;
+}
+
+int getDiskListByFs(const char *name, DiskList& list)
+{
+    return VERR_NOT_IMPLEMENTED;
 }
 
 }

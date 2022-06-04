@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 43618 2012-10-11 13:59:10Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 43629 2012-10-12 09:26:07Z vboxsync $ */
 
 /** @file
  *
@@ -94,9 +94,9 @@ void HostNetworkInterface::registerMetrics(PerformanceCollector *aCollector, Com
     /* Create sub metrics */
     Utf8StrFmt strName("Net/%ls/Load", mShortName.raw());
     pm::SubMetric *networkLoadRx   = new pm::SubMetric(strName + "/Rx",
-        "Percentage of network interface bandwidth used.");
+        "Percentage of network interface receive bandwidth used.");
     pm::SubMetric *networkLoadTx   = new pm::SubMetric(strName + "/Tx",
-        "Percentage of network interface bandwidth used.");
+        "Percentage of network interface transmit bandwidth used.");
 
     /* Create and register base metrics */
     pm::BaseMetric *networkLoad = new pm::HostNetworkLoadRaw(hal, objptr, strName, Utf8Str(mShortName), Utf8Str(mInterfaceName), m.speedMbits, networkLoadRx, networkLoadTx);
