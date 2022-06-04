@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 44373 2013-01-25 12:19:29Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 44375 2013-01-25 12:41:24Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -214,7 +214,7 @@ STDMETHODIMP MachineDebugger::COMSETTER(RecompileUser)(BOOL aEnable)
             hrc = ptrVM.rc();
             if (SUCCEEDED(hrc))
             {
-                int vrc = EMR3SetExecutionPolicy(ptrVM.raw(), EMEXECPOLICY_RECOMPILE_RING3, RT_BOOL(aEnable));
+                int vrc = EMR3SetExecutionPolicy(ptrVM.rawUVM(), EMEXECPOLICY_RECOMPILE_RING3, RT_BOOL(aEnable));
                 if (RT_FAILURE(vrc))
                     hrc = setError(VBOX_E_VM_ERROR, tr("EMR3SetExecutionPolicy failed with %Rrc"), vrc);
             }
@@ -271,7 +271,7 @@ STDMETHODIMP MachineDebugger::COMSETTER(RecompileSupervisor)(BOOL aEnable)
             hrc = ptrVM.rc();
             if (SUCCEEDED(hrc))
             {
-                int vrc = EMR3SetExecutionPolicy(ptrVM.raw(), EMEXECPOLICY_RECOMPILE_RING0, RT_BOOL(aEnable));
+                int vrc = EMR3SetExecutionPolicy(ptrVM.rawUVM(), EMEXECPOLICY_RECOMPILE_RING0, RT_BOOL(aEnable));
                 if (RT_FAILURE(vrc))
                     hrc = setError(VBOX_E_VM_ERROR, tr("EMR3SetExecutionPolicy failed with %Rrc"), vrc);
             }

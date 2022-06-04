@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
+/* $Id: EMRaw.cpp 44375 2013-01-25 12:41:24Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -1192,7 +1192,7 @@ int emR3RawUpdateForceFlag(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
  * @param   pVM         Pointer to the VM.
  * @param   pVCpu       Pointer to the VMCPU.
  */
-VMMR3DECL(int) EMR3CheckRawForcedActions(PVM pVM, PVMCPU pVCpu)
+VMMR3_INT_DECL(int) EMR3CheckRawForcedActions(PVM pVM, PVMCPU pVCpu)
 {
     int rc = emR3RawForcedActions(pVM, pVCpu, pVCpu->em.s.pCtx);
     VBOXVMM_EM_FF_RAW_RET(pVCpu, rc);
