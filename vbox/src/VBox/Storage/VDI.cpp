@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 42914 2012-08-22 09:38:41Z vboxsync $ */
+/* $Id: VDI.cpp 42915 2012-08-22 09:46:03Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -19,7 +19,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_VD_VDI
-#  define RTMEM_TAG   (__FILE__ ":" RT_XSTR(__LINE__))
 #include <VBox/vd-plugin.h>
 #include "VDICore.h"
 #include <VBox/err.h>
