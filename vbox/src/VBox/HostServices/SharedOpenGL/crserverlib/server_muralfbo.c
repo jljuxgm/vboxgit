@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 47116 2013-07-12 12:35:16Z vboxsync $ */
+/* $Id: server_muralfbo.c 47158 2013-07-15 12:37:15Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -102,6 +102,8 @@ void crServerSetupOutputRedirect(CRMuralInfo *mural)
             // @todo the code assumes that RTRECT == four of GLInts
             cr_server.outputRedirect.CRORVisibleRegion(mural->pvOutputRedirectInstance,
                                                        mural->cVisibleRects, (RTRECT *)mural->pVisibleRects);
+
+            crServerPresentFBO(mural);
         }
     }
 }

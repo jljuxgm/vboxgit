@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 46097 2013-05-15 13:11:39Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 47158 2013-07-15 12:37:15Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -247,6 +247,8 @@ private:
 
     uint32_t volatile mu32AudioInputClientId;
 
+    int32_t volatile mcClients;
+
     static DECLCALLBACK(void) H3DORBegin(const void *pvContext, void **ppvInstance,
                                          const char *pszFormat);
     static DECLCALLBACK(void) H3DORGeometry(void *pvInstance,
@@ -259,7 +261,7 @@ private:
     static DECLCALLBACK(int)  H3DORContextProperty(const void *pvContext, uint32_t index,
                                                    void *pvBuffer, uint32_t cbBuffer, uint32_t *pcbOut);
 
-    void remote3DRedirect(void);
+    void remote3DRedirect(bool fEnable);
 
     /*
      * VRDE server optional interfaces.

@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 46783 2013-06-25 16:09:37Z vboxsync $ */
+/* $Id: crservice.cpp 47158 2013-07-15 12:37:15Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1242,19 +1242,28 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                 }
                 else /* Execute the function. */
                 {
-                    rc = crVBoxServerSetOffscreenRendering(GL_TRUE);
-
-                    if (RT_SUCCESS(rc))
+                    if (pOutputRedirect->H3DORBegin != NULL)
                     {
-                        CROutputRedirect outputRedirect;
-                        outputRedirect.pvContext = pOutputRedirect->pvContext;
-                        outputRedirect.CRORBegin = pOutputRedirect->H3DORBegin;
-                        outputRedirect.CRORGeometry = pOutputRedirect->H3DORGeometry;
-                        outputRedirect.CRORVisibleRegion = pOutputRedirect->H3DORVisibleRegion;
-                        outputRedirect.CRORFrame = pOutputRedirect->H3DORFrame;
-                        outputRedirect.CROREnd = pOutputRedirect->H3DOREnd;
-                        outputRedirect.CRORContextProperty = pOutputRedirect->H3DORContextProperty;
-                        rc = crVBoxServerOutputRedirectSet(&outputRedirect);
+                        rc = crVBoxServerSetOffscreenRendering(GL_TRUE);
+
+                        if (RT_SUCCESS(rc))
+                        {
+                            CROutputRedirect outputRedirect;
+                            outputRedirect.pvContext = pOutputRedirect->pvContext;
+                            outputRedirect.CRORBegin = pOutputRedirect->H3DORBegin;
+                            outputRedirect.CRORGeometry = pOutputRedirect->H3DORGeometry;
+                            outputRedirect.CRORVisibleRegion = pOutputRedirect->H3DORVisibleRegion;
+                            outputRedirect.CRORFrame = pOutputRedirect->H3DORFrame;
+                            outputRedirect.CROREnd = pOutputRedirect->H3DOREnd;
+                            outputRedirect.CRORContextProperty = pOutputRedirect->H3DORContextProperty;
+                            rc = crVBoxServerOutputRedirectSet(&outputRedirect);
+                        }
+                    }
+                    else
+                    {
+                        /* Redirection is disabled. */
+                        crVBoxServerSetOffscreenRendering(GL_FALSE);
+                        crVBoxServerOutputRedirectSet(NULL);
                     }
                 }
             }
