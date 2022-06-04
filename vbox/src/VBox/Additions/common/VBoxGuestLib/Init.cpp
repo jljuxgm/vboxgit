@@ -1,4 +1,4 @@
-/* $Revision: 42465 $ */
+/* $Revision: 42466 $ */
 /** @file
  * VBoxGuestLibR0 - Library initialization.
  */
@@ -270,11 +270,6 @@ DECLVBGL(int) VbglInit (void)
     }
 
     return rc;
-}
-
-DECLVBGL(bool) VbglIsReady(void)
-{
-    return(g_vbgldata.status == VbglStatusReady);
 }
 
 DECLVBGL(void) VbglTerminate (void)
