@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45977 2013-05-10 09:51:35Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45978 2013-05-10 09:53:14Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7797,7 +7797,7 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
             pVmxTransient->fUpdateTscOffsettingAndPreemptTimer = true;
 
         /* Update MSRs that are part of the VMCS when MSR-bitmaps are not supported. */
-        if (RT_UNLIKELY(!(pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_USE_MSR_BITMAPS)))
+        if (!(pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_USE_MSR_BITMAPS))
         {
             switch (pMixedCtx->ecx)
             {
