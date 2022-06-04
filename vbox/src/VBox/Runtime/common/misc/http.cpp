@@ -1,5 +1,5 @@
 
-/* $Id: http.cpp 43645 2012-10-15 14:10:03Z vboxsync $ */
+/* $Id: http.cpp 43651 2012-10-16 09:25:28Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -92,7 +92,7 @@ RTR3DECL(int) RTHttpCreate(PRTHTTP phHttp)
     if (!pCurl)
         return VERR_INTERNAL_ERROR;
 
-    PRTHTTPINTERNAL pHttpInt = (PRTHTTPINTERNAL)RTMemAllocZ(sizeof(PRTHTTPINTERNAL));
+    PRTHTTPINTERNAL pHttpInt = (PRTHTTPINTERNAL)RTMemAllocZ(sizeof(RTHTTPINTERNAL));
     if (!pHttpInt)
         return VERR_NO_MEMORY;
 
