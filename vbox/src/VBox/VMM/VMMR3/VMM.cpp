@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 44076 2012-12-10 12:36:48Z vboxsync $ */
+/* $Id: VMM.cpp 44078 2012-12-10 13:19:18Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -693,9 +693,7 @@ VMMR3_INT_DECL(int) VMMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
             /*
              * CPUM's post-initialization (print CPUIDs).
              */
-            rc = CPUMR3LogCpuIds(pVM);
-            AssertRCReturn(rc, rc);
-
+            CPUMR3LogCpuIds(pVM);
             break;
         }
 
