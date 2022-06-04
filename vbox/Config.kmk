@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42514 2012-08-01 16:07:34Z vboxsync $
+# $Id: Config.kmk 42545 2012-08-02 14:39:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -838,11 +838,6 @@ ifeq ($(KBUILD_TARGET),darwin)
  # Permanent (no working SDL).
  VBOX_WITH_VBOXSDL=
  VBOX_WITH_VBOXBFE=
-
- # Temporary while Lion is being worked on by apple and others (mac ports).
- if "$(VBOX_DARWIN_HOST_VERSION_MAJOR)" == "7" # Lion
-  VBOX_WITH_DOCS=
- endif
 endif
 
 ifeq ($(KBUILD_TARGET),freebsd)
@@ -5116,7 +5111,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42514 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42545 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
