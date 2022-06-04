@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 47401 2013-07-25 19:12:24Z vboxsync $ */
+/* $Id: MachineImpl.h 47408 2013-07-25 19:41:10Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -31,6 +31,7 @@
 #include "ParallelPortImpl.h"
 #include "BIOSSettingsImpl.h"
 #include "StorageControllerImpl.h"          // required for MachineImpl.h to compile on Windows
+#include "USBControllerImpl.h"              // required for MachineImpl.h to compile on Windows
 #include "BandwidthControlImpl.h"
 #include "BandwidthGroupImpl.h"
 #include "VBox/settings.h"
