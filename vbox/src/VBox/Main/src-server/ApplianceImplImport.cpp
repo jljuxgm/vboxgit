@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 46067 2013-05-14 14:41:26Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 46169 2013-05-20 07:57:55Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -686,9 +686,6 @@ STDMETHODIMP Appliance::Interpret()
                                            strTargetPath,
                                            di.ulSuggestedSizeMB,
                                            strExtraConfig);
-                    }//url specifier for VHD
-                    else if (!di.strFormat.compare("http://go.microsoft.com/fwlink/?LinkId=137171", Utf8Str::CaseInsensitive))
-                    {
                     }
                     else
                         throw setError(VBOX_E_FILE_ERROR,

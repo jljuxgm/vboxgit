@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 46067 2013-05-14 14:41:26Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 46169 2013-05-20 07:57:55Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -708,15 +708,15 @@ void Appliance::buildXML(AutoWriteLockBase& writeLock,
 
     if (enFormat == ovf::OVFVersion_0_9)
     {
-        strNamespace = "http://www.vmware.com/schema/ovf/1/envelope";
+        strNamespace = ovf::OVF09_URI_string;
     }
     else if (enFormat == ovf::OVFVersion_1_0)
     {
-        strNamespace = "http://schemas.dmtf.org/ovf/envelope/1";
+        strNamespace = ovf::OVF10_URI_string;
     }
     else
     {
-        strNamespace = "http://schemas.dmtf.org/ovf/envelope/2";
+        strNamespace = ovf::OVF20_URI_string;
     }
 
     pelmRoot->setAttribute("xmlns", strNamespace);
