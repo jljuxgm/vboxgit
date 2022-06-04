@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 47537 2013-08-05 10:00:02Z vboxsync $ */
+/* $Id: SUPDrv.c 47540 2013-08-05 10:22:24Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -994,10 +994,11 @@ static void supdrvCloseSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession)
  */
 uint32_t VBOXCALL supdrvSessionRetain(PSUPDRVSESSION pSession)
 {
+    uint32_t cRefs;
     AssertPtrReturn(pSession, UINT32_MAX);
     AssertReturn(SUP_IS_SESSION_VALID(pSession), UINT32_MAX);
 
-    uint32_t cRefs = ASMAtomicIncU32(&pSession->cRefs);
+    cRefs = ASMAtomicIncU32(&pSession->cRefs);
     AssertMsg(cRefs > 1 && cRefs < _1M, ("%#x %p\n", cRefs, pSession));
     return cRefs;
 }
@@ -1010,10 +1011,11 @@ uint32_t VBOXCALL supdrvSessionRetain(PSUPDRVSESSION pSession)
  */
 uint32_t VBOXCALL supdrvSessionRelease(PSUPDRVSESSION pSession)
 {
+    uint32_t cRefs;
     AssertPtrReturn(pSession, UINT32_MAX);
     AssertReturn(SUP_IS_SESSION_VALID(pSession), UINT32_MAX);
 
-    uint32_t cRefs = ASMAtomicDecU32(&pSession->cRefs);
+    cRefs = ASMAtomicDecU32(&pSession->cRefs);
     AssertMsg(cRefs < _1M, ("%#x %p\n", cRefs, pSession));
     if (cRefs == 0)
         supdrvCloseSession(pSession->pDevExt, pSession);
