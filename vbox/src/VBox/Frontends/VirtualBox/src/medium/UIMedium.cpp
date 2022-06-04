@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 44113 2012-12-13 09:20:03Z vboxsync $ */
+/* $Id: UIMedium.cpp 44365 2013-01-25 10:24:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -141,7 +141,13 @@ void UIMedium::refresh()
     {
         mHardDiskFormat = mMedium.GetFormat();
         mHardDiskType = vboxGlobal().mediumTypeString (mMedium);
-        mStorageDetails = gpConverter->toString((KMediumVariant)mMedium.GetVariant());
+
+        QVector<KMediumVariant> mediumVariants_QVector = mMedium.GetVariant();
+        qlonglong mediumVariants_qlonglong = 0;
+        for (int i = 0; i < mediumVariants_QVector.size(); i++)
+            mediumVariants_qlonglong |= mediumVariants_QVector[i];
+
+        mStorageDetails = gpConverter->toString((KMediumVariant)mediumVariants_qlonglong);
         mIsReadOnly = mMedium.GetReadOnly();
 
         /* Adjust the parent if its possible */

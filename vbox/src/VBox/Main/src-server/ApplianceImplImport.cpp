@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 44039 2012-12-05 12:08:52Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 44365 2013-01-25 10:24:45Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1869,8 +1869,10 @@ void Appliance::importOneDiskImage(const ovf::DiskImage &di,
     /* If strHref is empty we have to create a new file. */
     if (strSourceOVF.isEmpty())
     {
+        com::SafeArray<MediumVariant_T>  mediumVariant;
+        mediumVariant.push_back(MediumVariant_Standard);
         /* Create a dynamic growing disk image with the given capacity. */
-        rc = pTargetHD->CreateBaseStorage(di.iCapacity / _1M, MediumVariant_Standard, ComPtr<IProgress>(pProgress).asOutParam());
+        rc = pTargetHD->CreateBaseStorage(di.iCapacity / _1M, ComSafeArrayAsInParam(mediumVariant), ComPtr<IProgress>(pProgress).asOutParam());
         if (FAILED(rc)) throw rc;
 
         /* Advance to the next operation. */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 44365 2013-01-25 10:24:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -73,8 +73,17 @@ bool UIWizardNewVD::createVirtualDisk()
         return false;
     }
 
+    QVector<KMediumVariant> l_variants(sizeof(qulonglong)*8);
+
+    for (int i = 0; i < l_variants.size(); ++i)
+    {
+        qulonglong temp = uVariant;
+        l_variants [i] = (KMediumVariant)(temp & (1<<i));
+    }
+
     /* Create base storage for the new hard disk: */
-    progress = virtualDisk.CreateBaseStorage(uSize, uVariant);
+    progress = virtualDisk.CreateBaseStorage(uSize, l_variants);
+
     if (!virtualDisk.isOk())
     {
         msgCenter().cannotCreateHardDiskStorage(this, vbox, strMediumPath, virtualDisk, progress);
