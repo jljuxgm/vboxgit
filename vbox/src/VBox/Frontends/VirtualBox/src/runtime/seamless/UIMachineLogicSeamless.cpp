@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 44825 2013-02-26 11:19:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -86,9 +86,9 @@ bool UIMachineLogicSeamless::checkAvailability()
     return true;
 }
 
-int UIMachineLogicSeamless::hostScreenForGuestScreen(int screenId) const
+int UIMachineLogicSeamless::hostScreenForGuestScreen(int iScreenId) const
 {
-    return m_pScreenLayout->hostScreenForGuestScreen(screenId);
+    return m_pScreenLayout->hostScreenForGuestScreen(iScreenId);
 }
 
 void UIMachineLogicSeamless::prepareActionGroups()
