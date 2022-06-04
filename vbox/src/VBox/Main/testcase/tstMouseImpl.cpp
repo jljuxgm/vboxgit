@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 47404 2013-07-25 19:36:06Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 47405 2013-07-25 19:36:45Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -194,8 +194,8 @@ static struct PDMDRVINS pdmdrvInsCore =
     0,                       /* idTracing */
 #if HC_ARCH_BITS == 32
     {
-        0
-    }                        /* au32Padding */
+        0                    /* au32Padding */
+    },
 #endif
     {
         0                    /* Padding */
