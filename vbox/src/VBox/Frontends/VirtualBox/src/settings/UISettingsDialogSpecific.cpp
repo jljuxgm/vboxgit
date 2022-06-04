@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 47187 2013-07-16 13:15:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -384,7 +384,7 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent)
                     pSettingsPage = new UIGlobalSettingsNetwork;
                     addItem(":/nw_32px.png", ":/nw_disabled_32px.png",
                             ":/nw_16px.png", ":/nw_disabled_16px.png",
-                            iPageIndex, "#language", pSettingsPage);
+                            iPageIndex, "#network", pSettingsPage);
                     break;
                 }
                 /* Extensions page: */
