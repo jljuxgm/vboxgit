@@ -1,4 +1,4 @@
-/* $Id: dbg.h 46025 2013-05-13 15:36:27Z vboxsync $ */
+/* $Id: dbg.h 46050 2013-05-14 08:41:11Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -317,10 +317,12 @@ typedef enum RTDBGCFGOP
  * @param   phDbgCfg            Where to return the configuration handle.
  * @param   pszEnvVarPrefix     The environment variable prefix.  If NULL, the
  *                              environment is not consulted.
+ * @param   fNativePaths        Whether to pick up native paths from the
+ *                              environment.
  *
  * @sa  RTDbgCfgChangeString, RTDbgCfgChangeUInt.
  */
-RTDECL(int) RTDbgCfgCreate(PRTDBGCFG phDbgCfg, const char *pszEnvVarPrefix);
+RTDECL(int) RTDbgCfgCreate(PRTDBGCFG phDbgCfg, const char *pszEnvVarPrefix, bool fNativePaths);
 
 /**
  * Retains a new reference to a debugging config.

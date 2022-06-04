@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 46000 2013-05-13 06:47:16Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 46050 2013-05-14 08:41:11Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -134,7 +134,7 @@ int main(int argc, char **argv)
      * make use of (i.e. test) path searching and such.
      */
     RTDBGCFG hDbgCfg;
-    rc = RTDbgCfgCreate(&hDbgCfg, "IPRT");
+    rc = RTDbgCfgCreate(&hDbgCfg, "IPRT", true /*fNativePaths*/);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTDbgCfgCreate -> %Rrc", rc);
 
@@ -195,7 +195,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 46000 $\n");
+                RTPrintf("$Revision: 46050 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
