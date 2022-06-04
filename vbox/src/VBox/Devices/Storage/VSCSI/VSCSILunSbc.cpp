@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 46400 2013-06-05 19:58:39Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -277,6 +277,35 @@ static int vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
 
             RTSgBufCopyFromBuf(&pVScsiReq->SgBuf, aReply, sizeof(aReply));
             rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
+            break;
+        }
+        case SCSI_MODE_SELECT_6:
+        {
+            uint8_t abParms[12];
+            size_t  cbCopied;
+            size_t  cbList = pVScsiReq->pbCDB[4];
+
+            /* Copy the parameters. */
+            cbCopied = RTSgBufCopyToBuf(&pVScsiReq->SgBuf, &abParms[0], sizeof(abParms));
+
+            /* Handle short LOGICAL BLOCK LENGTH parameter. */
+            if (   !(pVScsiReq->pbCDB[1] & 0x01)
+                && cbCopied == sizeof(abParms)
+                && cbList >= 12
+                && abParms[3] == 8)
+            {
+                uint32_t    cbBlock;
+
+                cbBlock = vscsiBE2HU24(&abParms[4 + 5]);
+                Log2(("SBC: set LOGICAL BLOCK LENGTH to %u\n", cbBlock));
+                if (cbBlock == 512) /* Fixed block size. */
+                {
+                    rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
+                    break;
+                }
+            }
+            /* Fail any other requests. */
+            rcReq = vscsiLunReqSenseErrorSet(pVScsiLun, pVScsiReq, SCSI_SENSE_ILLEGAL_REQUEST, SCSI_ASC_INV_FIELD_IN_CMD_PACKET, 0x00);
             break;
         }
         case SCSI_READ_6:
