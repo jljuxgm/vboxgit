@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 46203 2013-05-21 23:10:26Z vboxsync $ */
+/* $Id: strcache.cpp 46208 2013-05-22 09:26:27Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -1137,4 +1137,11 @@ RTDECL(size_t) RTStrCacheLength(const char *psz)
     return pStr->cchString;
 }
 RT_EXPORT_SYMBOL(RTStrCacheLength);
+
+
+RTDECL(bool) RTStrCacheIsRealImpl(void)
+{
+    return true;
+}
+RT_EXPORT_SYMBOL(RTStrCacheIsRealImpl);
 
