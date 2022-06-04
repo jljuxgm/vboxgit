@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 46922 2013-07-03 09:59:12Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 47484 2013-07-31 09:30:33Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1804,7 +1804,11 @@ static int vboxNetFltLinuxNotifierCallback(struct notifier_block *self, unsigned
 
 {
     PVBOXNETFLTINS      pThis = VBOX_FLT_NB_TO_INST(self);
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 11, 0)
+    struct net_device  *pDev  = netdev_notifier_info_to_dev(ptr);
+#else
     struct net_device  *pDev  = (struct net_device *)ptr;
+#endif
     int                 rc    = NOTIFY_OK;
 
     Log(("VBoxNetFlt: got event %s(0x%lx) on %s, pDev=%p pThis=%p pThis->u.s.pDev=%p\n",
