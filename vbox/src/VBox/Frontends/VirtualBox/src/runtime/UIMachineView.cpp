@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 42350 2012-07-24 11:35:32Z vboxsync $ */
+/* $Id: UIMachineView.cpp 42961 2012-08-23 19:05:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1128,7 +1128,7 @@ void UIMachineView::paintEvent(QPaintEvent *pPaintEvent)
     if (m_pauseShot.isNull())
     {
         /* Delegate the paint function to the VBoxFrameBuffer interface: */
-        if (m_pFrameBuffer && !uisession()->isTurnedOff())
+        if (m_pFrameBuffer)
             m_pFrameBuffer->paintEvent(pPaintEvent);
 #ifdef Q_WS_MAC
         /* Update the dock icon if we are in the running state */
