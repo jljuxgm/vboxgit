@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 44292 2013-01-15 06:10:36Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 44321 2013-01-21 11:24:28Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -445,7 +445,7 @@ static void vboxNetFltLinuxUnhookDev(PVBOXNETFLTINS pThis, struct net_device *pD
 
     if (pOverride)
     {
-        printk("vboxnetflt: dropped %llu out of %llu packets\n", pOverride->cFiltered, pOverride->cTotal);
+        printk("vboxnetflt: %llu out of %llu packets were not sent (directed to host)\n", pOverride->cFiltered, pOverride->cTotal);
         RTMemFree(pOverride);
     }
 }
