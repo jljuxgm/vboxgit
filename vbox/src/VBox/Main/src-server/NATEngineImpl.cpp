@@ -1,10 +1,10 @@
-/* $Id: NATEngineImpl.cpp 45185 2013-03-26 07:52:14Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 46820 2013-06-27 07:58:37Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -26,6 +26,7 @@
 
 #include <VBox/err.h>
 #include <VBox/settings.h>
+#include <VBox/com/array.h>
 
 
 // constructor / destructor

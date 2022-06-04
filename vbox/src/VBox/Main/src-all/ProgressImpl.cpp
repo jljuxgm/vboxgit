@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 46820 2013-06-27 07:58:37Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -27,7 +27,9 @@
 
 #include "ProgressImpl.h"
 
-#include "VirtualBoxImpl.h"
+#if !defined(VBOX_COM_INPROC)
+# include "VirtualBoxImpl.h"
+#endif
 #include "VirtualBoxErrorInfoImpl.h"
 
 #include "Logging.h"
