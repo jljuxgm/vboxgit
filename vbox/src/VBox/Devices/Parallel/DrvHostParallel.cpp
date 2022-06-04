@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 42152 2012-07-13 19:31:42Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 42201 2012-07-18 08:24:31Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -121,7 +121,7 @@ typedef struct DRVHOSTPARALLEL
     uint8_t                       u8ReadInControl;
     /** Status read buffer. */
     uint8_t                       u8ReadInStatus;
-	/** Parallel port name */
+    /** Parallel port name */
     /** @todo r=bird: This is an array, they start with 'a'. However, this seems
      * to be a string, and they are not uint8_t but char and are prefixed with 'sz'
      * in char array form.
