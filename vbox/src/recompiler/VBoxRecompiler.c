@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 46155 2013-05-18 00:30:13Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 46160 2013-05-19 13:30:08Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1125,10 +1125,8 @@ static int remR3RunLoggingStep(PVM pVM, PVMCPU pVCpu)
         szBuf[0] = '\0';
         rc = DBGFR3DisasInstrEx(pVM->pUVM,
                                 pVCpu->idCpu,
-                                0, /* Sel */
-                                0, /* GCPtr */
-                                DBGF_DISAS_FLAGS_CURRENT_GUEST
-                                | DBGF_DISAS_FLAGS_DEFAULT_MODE,
+                                0, /* Sel */  0, /* GCPtr */
+                                DBGF_DISAS_FLAGS_CURRENT_GUEST | DBGF_DISAS_FLAGS_DEFAULT_MODE,
                                 szBuf,
                                 sizeof(szBuf),
                                 NULL);
@@ -4077,10 +4075,8 @@ bool remR3DisasInstr(CPUX86State *env, int f32BitCode, char *pszPrefix)
         szBuf[0] = '\0';
         int rc = DBGFR3DisasInstrEx(pVCpu->pVMR3->pUVM,
                                     pVCpu->idCpu,
-                                    0, /* Sel */
-                                    0, /* GCPtr */
-                                    DBGF_DISAS_FLAGS_CURRENT_GUEST
-                                    | DBGF_DISAS_FLAGS_DEFAULT_MODE,
+                                    0, /* Sel */  0, /* GCPtr */
+                                    DBGF_DISAS_FLAGS_CURRENT_GUEST | DBGF_DISAS_FLAGS_DEFAULT_MODE,
                                     szBuf,
                                     sizeof(szBuf),
                                     NULL);
