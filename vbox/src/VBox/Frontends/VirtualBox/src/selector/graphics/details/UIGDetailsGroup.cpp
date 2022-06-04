@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 42813 2012-08-14 17:38:46Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 42881 2012-08-20 12:33:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -258,6 +258,11 @@ void UIGDetailsGroup::prepareSet(QString strGroupId)
         connect(m_pStep, SIGNAL(sigStepDone(const QString&)), this, SLOT(sltNextStep(const QString&)), Qt::QueuedConnection);
         /* Configure set: */
         pSet->configure(m_items[m_iStep], m_settings, m_items.size() == 1);
+    }
+    else
+    {
+        /* Update model after group update: */
+        model()->updateLayout();
     }
 }
 
