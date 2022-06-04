@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 44580 2013-02-07 11:35:37Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 47883 2013-08-20 10:07:09Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -197,6 +197,11 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
 //#ifdef VBOX_WITH_NETFLT
     {   kSupIFT_Exe,  kSupID_AppBin,             true, "VBoxNetDHCP" SUPLIB_EXE_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArch,        true, "VBoxNetDHCP" SUPLIB_DLL_SUFF },
+//#endif
+
+//#ifdef VBOX_WITH_LWIP_NAT
+    {   kSupIFT_Exe,  kSupID_AppBin,             true, "VBoxNetLwipNAT" SUPLIB_EXE_SUFF },
+    {   kSupIFT_Dll,  kSupID_AppPrivArch,        true, "VBoxNetLwipNAT" SUPLIB_DLL_SUFF },
 //#endif
 };
 
