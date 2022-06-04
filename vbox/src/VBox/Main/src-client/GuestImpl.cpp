@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 46446 2013-06-07 19:00:51Z vboxsync $ */
+/* $Id: GuestImpl.cpp 46448 2013-06-07 19:11:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -297,8 +297,10 @@ void Guest::updateStats(uint64_t iTick)
         uint64_t uRxPrev = mNetStatRx;
         uint64_t uTxPrev = mNetStatTx;
         mNetStatRx = mNetStatTx = 0;
-        /** @todo This can be really expensive as well as horribly wrong! */
-        rc = STAMR3Enum(ptrVM.rawUVM(), "*/ReceiveBytes|*/TransmitBytes", staticEnumStatsCallback, this);
+        /** @todo we should move these statistics to /Network/<dev>#<inst>/ nodes. */
+        rc = STAMR3Enum(ptrVM.rawUVM(), "/Devices/*/ReceiveBytes", staticEnumStatsCallback, this);
+        AssertRC(rc);
+        rc = STAMR3Enum(ptrVM.rawUVM(), "/Devices/*/TransmitBytes", staticEnumStatsCallback, this);
         AssertRC(rc);
 
         uint64_t uTsNow = RTTimeNanoTS();
