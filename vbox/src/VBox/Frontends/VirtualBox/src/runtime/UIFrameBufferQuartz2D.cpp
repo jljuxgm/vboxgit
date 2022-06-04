@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 46366 2013-06-03 15:05:02Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 47067 2013-07-10 11:11:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -465,18 +465,6 @@ void UIFrameBufferQuartz2D::paintEvent(QPaintEvent *aEvent)
             CGImageRelease(subImage);
         }
     }
-}
-
-void UIFrameBufferQuartz2D::applyVisibleRegion(const QRegion &region)
-{
-    /* Make sure async visible-region changed: */
-    if (m_asyncVisibleRegion == region)
-        return;
-
-    /* We are handling the fact of async visible-region change
-     * to invalidate whole the viewport area! */
-    ::darwinWindowInvalidateShape(m_pMachineView->viewport());
-    m_asyncVisibleRegion = region;
 }
 
 void UIFrameBufferQuartz2D::clean(bool fPreserveRegions)

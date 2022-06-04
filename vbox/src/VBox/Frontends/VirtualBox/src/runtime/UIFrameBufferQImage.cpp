@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 47058 2013-07-09 16:18:57Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 47067 2013-07-10 11:11:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -175,25 +175,6 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
             paintDefault(pEvent);
             break;
     }
-}
-
-void UIFrameBufferQImage::applyVisibleRegion(const QRegion &region)
-{
-    /* Make sure async visible-region changed: */
-    if (m_asyncVisibleRegion == region)
-        return;
-
-    /* We are accounting async visible-regions one-by-one
-     * to keep corresponding viewport area always updated! */
-    m_pMachineView->viewport()->update(region + m_asyncVisibleRegion);
-    m_asyncVisibleRegion = region;
-
-#ifdef Q_WS_X11
-    /* Qt 4.8.3 under X11 has Qt::WA_TranslucentBackground window attribute broken,
-     * so we are also have to use async visible-region to apply to [Q]Widget [set]Mask
-     * which internally wraps old one known (approved) Xshape extension: */
-    m_pMachineView->machineWindow()->setMask(m_asyncVisibleRegion);
-#endif /* Q_WS_X11 */
 }
 
 void UIFrameBufferQImage::paintDefault(QPaintEvent *pEvent)
