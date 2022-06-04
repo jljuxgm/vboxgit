@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 47419 2013-07-26 11:13:08Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 47758 2013-08-15 12:39:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2459,6 +2459,7 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 InsertConfigString(pLunL1, "Driver",        "MainMouse");
                 InsertConfigNode(pLunL1,   "Config", &pCfg);
                 InsertConfigInteger(pCfg,  "Object",     (uintptr_t)pMouse);
+                InsertConfigInteger(pCfg,  "Priority",   2);  /* Prefer over PS/2 */
             }
             if (   aPointingHID == PointingHIDType_USBTablet
                 || aPointingHID == PointingHIDType_USBMultiTouch)
