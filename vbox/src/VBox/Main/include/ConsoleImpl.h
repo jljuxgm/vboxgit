@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 43908 2012-11-19 05:36:43Z vboxsync $ */
+/* $Id: ConsoleImpl.h 44151 2012-12-18 15:38:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -523,6 +523,7 @@ private:
     static DECLCALLBACK(int) configConstructor(PVM pVM, void *pvConsole);
     int configConstructorInner(PVM pVM, AutoWriteLock *pAlock);
     int configCfgmOverlay(PVM pVM, IVirtualBox *pVirtualBox, IMachine *pMachine);
+    int configDumpAPISettingsTweaks(IVirtualBox *pVirtualBox, IMachine *pMachine);
 
     int configMediumAttachment(PCFGMNODE pCtlInst,
                                const char *pcszDevice,
