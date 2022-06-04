@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 45358 2013-04-05 08:56:49Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 47191 2013-07-16 13:58:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -508,8 +508,6 @@ void UIGlobalSettingsNetwork::sltUpdateCurrentItem()
 {
     /* Get current item: */
     UIHostInterfaceItem *pItem = static_cast<UIHostInterfaceItem*>(m_pInterfacesTree->currentItem());
-    /* Set the final label text: */
-    m_pInfoLabel->setText(pItem ? pItem->updateInfo() : QString());
     /* Update availability: */
     m_pDelAction->setEnabled(pItem);
     m_pEditAction->setEnabled(pItem);
