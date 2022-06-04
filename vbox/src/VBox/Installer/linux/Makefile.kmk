@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44063 2012-12-07 14:58:52Z vboxsync $
+# $Id: Makefile.kmk 44072 2012-12-09 22:20:39Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -199,7 +199,9 @@ VBOX_LNX_NO_STRIP = \
 	VBoxSysInfo.sh \
 	VBoxCreateUSBNode.sh \
 	VBox.sh \
-	VBox.png
+	VBox.png \
+	helpers \
+	scripts
 
 ifdef VBOX_WITH_EXTPACK
  VBOX_LNX_STRIP_BIN += \
