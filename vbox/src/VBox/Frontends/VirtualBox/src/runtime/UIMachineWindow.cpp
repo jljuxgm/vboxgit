@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 44909 2013-03-04 11:25:30Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 45168 2013-03-25 12:47:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -412,7 +412,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                             if (console.isOk())
                             {
                                 /* Show the saving progress dialog: */
-                                msgCenter().showModalProgressDialog(progress, m.GetName(), ":/progress_state_save_90px.png", 0, true);
+                                msgCenter().showModalProgressDialog(progress, m.GetName(), ":/progress_state_save_90px.png", this, true);
                                 if (progress.GetResultCode() == 0)
                                     fSuccess = true;
                                 else
@@ -445,7 +445,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                             if (console.isOk())
                             {
                                 /* Show the power down progress: */
-                                msgCenter().showModalProgressDialog(progress, m.GetName(), ":/progress_poweroff_90px.png", 0, true);
+                                msgCenter().showModalProgressDialog(progress, m.GetName(), ":/progress_poweroff_90px.png", this, true);
                                 if (progress.GetResultCode() == 0)
                                     fSuccess = true;
                                 else
@@ -471,7 +471,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                                     if (console.isOk())
                                     {
                                         /* Show the snapshot discard progress: */
-                                        msgCenter().showModalProgressDialog(progress, m.GetName(), ":/progress_snapshot_discard_90px.png", 0, true);
+                                        msgCenter().showModalProgressDialog(progress, m.GetName(), ":/progress_snapshot_discard_90px.png", this, true);
                                         if (progress.GetResultCode() != 0)
                                             msgCenter().cannotRestoreSnapshot(progress, snapshot.GetName());
                                     }
