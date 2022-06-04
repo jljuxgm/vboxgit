@@ -1,4 +1,4 @@
-/* $Id: rtPathRootSpecLen.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: rtPathRootSpecLen.cpp 45389 2013-04-07 16:11:30Z vboxsync $ */
 /** @file
  * IPRT - rtPathRootSpecLen (internal).
  */
@@ -54,7 +54,7 @@ DECLHIDDEN(size_t) rtPathRootSpecLen(const char *pszPath)
     size_t off = 0;
     if (RTPATH_IS_SLASH(pszPath[0]))
     {
-#if defined (RT_OS_OS2) || defined (RT_OS_WINDOWS)
+#if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
         if (   RTPATH_IS_SLASH(pszPath[1])
             && !RTPATH_IS_SLASH(pszPath[2])
             && pszPath[2])
@@ -78,7 +78,7 @@ DECLHIDDEN(size_t) rtPathRootSpecLen(const char *pszPath)
         while (RTPATH_IS_SLASH(pszPath[off]))
             off++;
     }
-#if defined (RT_OS_OS2) || defined (RT_OS_WINDOWS)
+#if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
     else if (RT_C_IS_ALPHA(pszPath[0]) && pszPath[1] == ':')
     {
         off = 2;
