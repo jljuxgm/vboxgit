@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaper.cpp 43228 2012-09-06 15:28:12Z vboxsync $ */
+/* $Id: PDMNetShaper.cpp 43229 2012-09-06 15:29:23Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -480,8 +480,8 @@ int pdmR3NetShaperInit(PVM pVM)
                 for (PCFGMNODE pCur = CFGMR3GetFirstChild(pCfgBwGrp); pCur; pCur = CFGMR3GetNextChild(pCur))
                 {
                     uint64_t cbMax;
-                    size_t cchName = CFGMR3GetNameLen(pCur) + 1;
-                    char *pszBwGrpId = (char *)RTMemAllocZ(cchName);
+                    size_t cbName = CFGMR3GetNameLen(pCur) + 1;
+                    char *pszBwGrpId = (char *)RTMemAllocZ(cbName);
 
                     if (!pszBwGrpId)
                     {
@@ -489,7 +489,7 @@ int pdmR3NetShaperInit(PVM pVM)
                         break;
                     }
 
-                    rc = CFGMR3GetName(pCur, pszBwGrpId, cchName);
+                    rc = CFGMR3GetName(pCur, pszBwGrpId, cbName);
                     AssertRC(rc);
 
                     if (RT_SUCCESS(rc))
