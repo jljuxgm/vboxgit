@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 46423 2013-06-06 19:48:27Z vboxsync $ */
+/* $Id: EM.cpp 46486 2013-06-10 22:14:40Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2371,6 +2371,12 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  */
                 case EMSTATE_IEM:
                     rc = VBOXSTRICTRC_TODO(IEMExecLots(pVCpu));
+                    if (pVM->em.s.fIemExecutesAll)
+                    {
+                        Assert(rc != VINF_EM_RESCHEDULE_REM);
+                        Assert(rc != VINF_EM_RESCHEDULE_RAW);
+                        Assert(rc != VINF_EM_RESCHEDULE_HM);
+                    }
                     fFFDone = false;
                     break;
 
