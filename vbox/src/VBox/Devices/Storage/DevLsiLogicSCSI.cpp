@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 44902 2013-03-02 02:28:37Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 44961 2013-03-07 21:36:47Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -4959,7 +4959,7 @@ static DECLCALLBACK(int) lsilogicR3Destruct(PPDMDEVINS pDevIns)
     /* Destroy task cache. */
     if (pThis->hTaskCache != NIL_RTMEMCACHE)
     {
-        int rc = RTMemCacheDestroy(pThis->hTaskCache); Assert(rc);
+        int rc = RTMemCacheDestroy(pThis->hTaskCache); AssertRC(rc);
         pThis->hTaskCache = NIL_RTMEMCACHE;
     }
 
