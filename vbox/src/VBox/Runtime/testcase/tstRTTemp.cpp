@@ -1,4 +1,4 @@
-/* $Id: tstRTTemp.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTTemp.cpp 42708 2012-08-09 10:15:38Z vboxsync $ */
 /** @file
  * IPRT Testcase - Temporary files and directories.
  */
@@ -69,7 +69,7 @@ static void tstDirCreateTemp(const char *pszSubTest, const char *pszTemplate, un
         if (!papszNames[i])
             break;
 
-        rc = RTDirCreateTemp(papszNames[i]);
+        rc = RTDirCreateTemp(papszNames[i], 0700);
         if (rc != VINF_SUCCESS)
         {
             RTTestIFailed("RTDirCreateTemp(%s) call #%u -> %Rrc\n", szName, i, rc);

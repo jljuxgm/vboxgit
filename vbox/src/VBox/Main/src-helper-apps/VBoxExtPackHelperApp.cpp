@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 40104 2012-02-13 18:16:00Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 42708 2012-08-09 10:15:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1569,7 +1569,7 @@ static RTEXITCODE RelaunchElevated(int argc, char **argv, int iCmd, const char *
     rc = RTPathAppend(szTempDir, sizeof(szTempDir), "VBoxExtPackHelper-XXXXXX");
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTPathAppend failed: %Rrc", rc);
-    rc = RTDirCreateTemp(szTempDir);
+    rc = RTDirCreateTemp(szTempDir, 0700);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTDirCreateTemp failed: %Rrc", rc);
 
