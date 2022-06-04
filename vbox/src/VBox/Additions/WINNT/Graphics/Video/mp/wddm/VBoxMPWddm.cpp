@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 42158 2012-07-16 11:28:07Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 42159 2012-07-16 11:30:29Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -177,7 +177,6 @@ NTSTATUS vboxWddmGhDisplayPostInfoScreen(PVBOXMP_DEVEXT pDevExt, const PVBOXWDDM
 
 NTSTATUS vboxWddmGhDisplayHideScreen(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_TARGET_ID VidPnTargetId)
 {
-    Assert(0);
     VBOXWDDM_SURFACE_DESC SurfDesc = {0};
     POINT VScreenPos = {0};
     SurfDesc.VidPnSourceId = VidPnTargetId;
