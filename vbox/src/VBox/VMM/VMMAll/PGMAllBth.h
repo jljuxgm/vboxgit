@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 45103 2013-03-20 11:13:27Z vboxsync $ */
+/* $Id: PGMAllBth.h 45276 2013-04-02 08:17:11Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -351,6 +351,7 @@ static VBOXSTRICTRC PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(PVMCPU pVCpu, RT
                 return rc;
             }
             /* Unhandled part of a monitored page */
+            Log(("Unhandled part of monitored page %RGv\n", pvFault));
         }
         else
         {

@@ -1,4 +1,4 @@
-/* $Id: PATMA.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PATMA.h 45276 2013-04-02 08:17:11Z vboxsync $ */
 /** @file
  * PATM macros & definitions (identical to PATMA.mac!!)
  */
@@ -145,6 +145,7 @@ extern PATCHASMRECORD PATMPopf32Record_NoExit;
 extern PATCHASMRECORD PATMPushf32Record;
 extern PATCHASMRECORD PATMPushf16Record;
 extern PATCHASMRECORD PATMIretRecord;
+extern PATCHASMRECORD PATMIretRing1Record;
 extern PATCHASMRECORD PATMCpuidRecord;
 extern PATCHASMRECORD PATMLoopRecord;
 extern PATCHASMRECORD PATMLoopZRecord;

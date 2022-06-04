@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PGMHandler.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -493,7 +493,9 @@ VMMDECL(int) PGMHandlerVirtualDeregister(PVM pVM, RTGCPTR GCPtr)
         if (RT_UNLIKELY(!pCur))
         {
             pgmUnlock(pVM);
+#ifndef DEBUG_sander
             AssertMsgFailed(("Range %#x not found!\n", GCPtr));
+#endif
             return VERR_INVALID_PARAMETER;
         }
 

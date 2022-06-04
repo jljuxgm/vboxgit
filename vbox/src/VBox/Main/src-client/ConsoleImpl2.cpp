@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 44829 2013-02-26 13:16:47Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -809,6 +809,15 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         InsertConfigInteger(pRoot, "PATMEnabled",          1);     /* boolean */
         InsertConfigInteger(pRoot, "CSAMEnabled",          1);     /* boolean */
 #endif
+
+#ifdef VBOX_WITH_RAW_RING1
+        if (osTypeId == "QNX")
+        {
+            /* QNX needs special treatment in raw mode due to its use of ring-1. */
+            InsertConfigInteger(pRoot, "RawR1Enabled",     1);     /* boolean */
+        }
+#endif
+
         /* Not necessary, but to make sure these two settings end up in the release log. */
         BOOL fPageFusion = FALSE;
         hrc = pMachine->COMGETTER(PageFusionEnabled)(&fPageFusion);                         H();

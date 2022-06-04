@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
+/* $Id: PATMAll.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -626,9 +626,9 @@ const char *patmGetInstructionString(uint32_t opcode, uint32_t fPatchFlags)
         break;
     case OP_MOV:
         if (fPatchFlags & PATMFL_IDTHANDLER)
-        {
             pszInstr = "mov (Int/Trap Handler)";
-        }
+        else
+            pszInstr = "mov (cs)";
         break;
     case OP_SYSENTER:
         pszInstr = "sysenter";

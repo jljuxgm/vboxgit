@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 45152 2013-03-23 20:36:23Z vboxsync $ */
+/* $Id: VMM.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1256,6 +1256,9 @@ VMMR3_INT_DECL(int) VMMR3RawRunGC(PVM pVM, PVMCPU pVCpu)
         if (RT_UNLIKELY(!CPUMGetHyperCR3(pVCpu) || CPUMGetHyperCR3(pVCpu) != PGMGetHyperCR3(pVCpu)))
             EMR3FatalError(pVCpu, VERR_VMM_HYPER_CR3_MISMATCH);
         PGMMapCheck(pVM);
+# ifdef VBOX_WITH_SAFE_STR
+        SELMR3CheckShadowTR(pVM);
+# endif
 #endif
         int rc;
         do
