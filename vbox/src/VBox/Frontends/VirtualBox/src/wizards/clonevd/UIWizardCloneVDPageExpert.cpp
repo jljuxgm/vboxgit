@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 45080 2013-03-19 07:54:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -44,6 +44,7 @@ UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &sourceVirtua
     QGridLayout *pMainLayout = new QGridLayout(this);
     {
         pMainLayout->setContentsMargins(8, 6, 8, 6);
+        pMainLayout->setSpacing(10);
         m_pSourceDiskCnt = new QGroupBox(this);
         {
             m_pSourceDiskCnt->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);

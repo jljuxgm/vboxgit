@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 45080 2013-03-19 07:54:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -49,6 +49,7 @@ UIWizardNewVDPageExpert::UIWizardNewVDPageExpert(const QString &strDefaultName, 
     QGridLayout *pMainLayout = new QGridLayout(this);
     {
         pMainLayout->setContentsMargins(8, 6, 8, 6);
+        pMainLayout->setSpacing(10);
         m_pLocationCnt = new QGroupBox(this);
         {
             m_pLocationCnt->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);

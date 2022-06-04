@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 45080 2013-03-19 07:54:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -42,6 +42,7 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
     QGridLayout *pMainLayout = new QGridLayout(this);
     {
         pMainLayout->setContentsMargins(8, 6, 8, 6);
+        pMainLayout->setSpacing(10);
         m_pVMSelectorLabel = new QILabelSeparator(this);
         m_pVMSelector = new QListWidget(this);
         {

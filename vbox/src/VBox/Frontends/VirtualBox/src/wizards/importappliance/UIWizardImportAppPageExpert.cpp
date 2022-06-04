@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 43426 2012-09-25 10:05:52Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 45080 2013-03-19 07:54:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -35,6 +35,7 @@ UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(const QString &strFileN
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     {
         pMainLayout->setContentsMargins(8, 6, 8, 6);
+        pMainLayout->setSpacing(10);
         m_pVMApplianceLabel = new QILabelSeparator(this);
         m_pFileSelector = new VBoxEmptyFileSelector(this);
         {
