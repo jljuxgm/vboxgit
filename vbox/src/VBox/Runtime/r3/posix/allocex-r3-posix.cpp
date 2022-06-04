@@ -1,4 +1,4 @@
-/* $Id: allocex-r3-posix.cpp 46572 2013-06-14 17:01:33Z vboxsync $ */
+/* $Id: allocex-r3-posix.cpp 46577 2013-06-17 09:23:16Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3, posix.
  */
@@ -70,7 +70,7 @@ typedef RTMEMHDRR3 *PRTMEMHDRR3;
 static void *rtMemAllocExAllocLow(size_t cbAlloc, uint32_t fFlags)
 {
     int   fProt = PROT_READ | PROT_WRITE | (fFlags & RTMEMALLOCEX_FLAGS_EXEC ? PROT_EXEC : 0);
-    void *pv;
+    void *pv    = NULL;
     if (fFlags & RTMEMALLOCEX_FLAGS_16BIT_REACH)
     {
         AssertReturn(cbAlloc < _64K, NULL);
@@ -80,7 +80,7 @@ static void *rtMemAllocExAllocLow(size_t cbAlloc, uint32_t fFlags)
          */
         uintptr_t uAddr     = fFlags & RTMEMALLOCEX_FLAGS_16BIT_REACH ? 0x1000  : _1M;
         uintptr_t uAddrLast = _64K - uAddr - cbAlloc;
-        while (uAddr < uAddrLast)
+        while (uAddr <= uAddrLast)
         {
             pv = mmap((void *)uAddr, cbAlloc, fProt, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
             if (pv && (uintptr_t)pv <= uAddrLast)
