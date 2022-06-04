@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 39627 2011-12-15 11:44:19Z vboxsync $ */
+/* $Id: dir-win.cpp 44231 2013-01-04 02:06:39Z vboxsync $ */
 /** @file
  * IPRT - Directory, win32.
  */
@@ -138,21 +138,21 @@ int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
      * call in rtDirOpenCommon(), so all we gota do is check that we don't overflow
      * it when adding the wildcard expression.
      */
-    size_t cchExpr;
+    size_t cbExpr;
     const char *pszExpr;
     if (pDir->enmFilter == RTDIRFILTER_WINNT)
     {
         pszExpr = pDir->pszFilter;
-        cchExpr = pDir->cchFilter + 1;
+        cbExpr  = pDir->cchFilter + 1;
     }
     else
     {
         pszExpr = "*";
-        cchExpr = sizeof("*");
+        cbExpr  = sizeof("*");
     }
-    if (pDir->cchPath + cchExpr > RTPATH_MAX)
+    if (pDir->cchPath + cbExpr > RTPATH_MAX)
         return VERR_FILENAME_TOO_LONG;
-    memcpy(pszPathBuf + pDir->cchPath, pszExpr, cchExpr);
+    memcpy(pszPathBuf + pDir->cchPath, pszExpr, cbExpr);
 
 
     /*
@@ -166,11 +166,16 @@ int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
         pDir->hDir    = FindFirstFileW((LPCWSTR)pwszName, &pDir->Data);
         if (pDir->hDir != INVALID_HANDLE_VALUE)
             pDir->fDataUnread = true;
-        /* theoretical case of an empty directory. */
-        else if (GetLastError() == ERROR_NO_MORE_FILES)
-            pDir->fDataUnread = false;
         else
-            rc = RTErrConvertFromWin32(GetLastError());
+        {
+            DWORD dwErr = GetLastError();
+            /* Theoretical case of an empty directory or more normal case of no matches. */
+            if (   dwErr == ERROR_FILE_NOT_FOUND
+                || dwErr == ERROR_NO_MORE_FILES /* ???*/)
+                pDir->fDataUnread = false;
+            else
+                rc = RTErrConvertFromWin32(GetLastError());
+        }
         RTUtf16Free(pwszName);
     }
 
