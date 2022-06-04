@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 44853 2013-02-27 20:30:43Z vboxsync $ */
+/* $Id: Virtio.cpp 44854 2013-02-27 20:37:49Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -925,9 +925,7 @@ void vpciRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
     // TBD
 }
 
-PVQUEUE vpciAddQueue(VPCISTATE* pState, unsigned uSize,
-                     void (*pfnCallback)(void *pvState, PVQUEUE pQueue),
-                     const char *pcszName)
+PVQUEUE vpciAddQueue(VPCISTATE* pState, unsigned uSize, PFNVPCIQUEUECALLBACK pfnCallback, const char *pcszName)
 {
     PVQUEUE pQueue = NULL;
     /* Find an empty queue slot */
