@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 47579 2013-08-07 10:29:50Z vboxsync $ */
+/* $Id: UISettingsPage.cpp 47595 2013-08-07 15:00:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -18,6 +18,7 @@
  */
 
 /* GUI includes: */
+#include "UIConverter.h"
 #include "UISettingsPage.h"
 #include "QIWidgetValidator.h"
 
@@ -58,6 +59,21 @@ UISettingsPageGlobal::UISettingsPageGlobal()
 {
 }
 
+GlobalSettingsPageType UISettingsPageGlobal::internalID() const
+{
+    return static_cast<GlobalSettingsPageType>(id());
+}
+
+QString UISettingsPageGlobal::internalName() const
+{
+    return gpConverter->toInternalString(internalID());
+}
+
+QPixmap UISettingsPageGlobal::warningPixmap() const
+{
+    return gpConverter->toWarningPixmap(internalID());
+}
+
 /* Fetch data to m_properties & m_settings: */
 void UISettingsPageGlobal::fetchData(const QVariant &data)
 {
@@ -75,6 +91,21 @@ void UISettingsPageGlobal::uploadData(QVariant &data) const
 UISettingsPageMachine::UISettingsPageMachine()
     : UISettingsPage(UISettingsPageType_Machine)
 {
+}
+
+MachineSettingsPageType UISettingsPageMachine::internalID() const
+{
+    return static_cast<MachineSettingsPageType>(id());
+}
+
+QString UISettingsPageMachine::internalName() const
+{
+    return gpConverter->toInternalString(internalID());
+}
+
+QPixmap UISettingsPageMachine::warningPixmap() const
+{
+    return gpConverter->toWarningPixmap(internalID());
 }
 
 /* Fetch data to m_machine & m_console: */
