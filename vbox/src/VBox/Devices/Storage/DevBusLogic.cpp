@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 44672 2013-02-13 18:03:11Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 44718 2013-02-15 16:00:56Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1184,8 +1184,8 @@ static void buslogicR3SendIncomingMailbox(PBUSLOGIC pBusLogic, PBUSLOGICTASKSTAT
     /* Update CCB. */
     pTaskState->CommandControlBlockGuest.c.uHostAdapterStatus = uHostAdapterStatus;
     pTaskState->CommandControlBlockGuest.c.uDeviceStatus      = uDeviceStatus;
-    /** @todo this is wrong - writing too much! */
-    PDMDevHlpPhysWrite(pBusLogic->CTX_SUFF(pDevIns), GCPhysAddrCCB, &pTaskState->CommandControlBlockGuest, sizeof(CCBC));
+    /* Rewrite CCB up to the CDB; perhaps more than necessary. */
+    PDMDevHlpPhysWrite(pBusLogic->CTX_SUFF(pDevIns), GCPhysAddrCCB, &pTaskState->CommandControlBlockGuest, RT_OFFSETOF(CCBC, abCDB));
 
 # ifdef RT_STRICT
     uint8_t     uCode;
