@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 43507 2012-10-02 13:22:31Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 43522 2012-10-03 04:44:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -84,7 +84,7 @@ int NetIfAdpCtlOut(const char * pcszName, const char * pcszCmd, char *pszBuffer,
     int rc = RTPathExecDir(szAdpCtl, sizeof(szAdpCtl) - sizeof("/" VBOXNETADPCTL_NAME " ") - strlen(pcszCmd));
     if (RT_FAILURE(rc))
     {
-        LogRel(("NetIfAdpCtlStream: Failed to get program path, rc=%Rrc\n", rc));
+        LogRel(("NetIfAdpCtlOut: Failed to get program path, rc=%Rrc\n", rc));
         return VERR_INVALID_PARAMETER;
     }
     strcat(szAdpCtl, "/" VBOXNETADPCTL_NAME " ");
@@ -96,7 +96,7 @@ int NetIfAdpCtlOut(const char * pcszName, const char * pcszCmd, char *pszBuffer,
     }
     else
     {
-        LogRel(("NetIfAdpCtlStream: Command line is too long: %s%s %s\n", szAdpCtl, pcszName, pcszCmd));
+        LogRel(("NetIfAdpCtlOut: Command line is too long: %s%s %s\n", szAdpCtl, pcszName, pcszCmd));
         return VERR_INVALID_PARAMETER;
     }
     if (strlen(szAdpCtl) < RTPATH_MAX - sizeof(" 2>&1"))
@@ -108,13 +108,13 @@ int NetIfAdpCtlOut(const char * pcszName, const char * pcszCmd, char *pszBuffer,
         {
             if (!strncmp(VBOXNETADPCTL_NAME ":", pszBuffer, sizeof(VBOXNETADPCTL_NAME)))
             {
-                LogRel(("NetIfAdpCtlStream: %s", pszBuffer));
+                LogRel(("NetIfAdpCtlOut: %s", pszBuffer));
                 rc = VERR_INTERNAL_ERROR;
             }
         }
         else
         {
-            LogRel(("NetIfAdpCtlStream: No output from " VBOXNETADPCTL_NAME));
+            LogRel(("NetIfAdpCtlOut: No output from " VBOXNETADPCTL_NAME));
             rc = VERR_INTERNAL_ERROR;
         }
         pclose(fp);
