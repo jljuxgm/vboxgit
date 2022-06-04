@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 47507 2013-08-01 12:09:25Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 47523 2013-08-02 13:11:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -90,9 +90,14 @@ bool UIMachineLogicSeamless::hasHostScreenForGuestScreen(int iScreenId) const
 
 void UIMachineLogicSeamless::notifyAbout3DOverlayVisibilityChange(bool)
 {
-    /* Ignore this event in seamless mode.
-     * We have to keep popup-stack integration type 'top-level'.
-     * S.A. UIMachineLogicSeamless::prepareRequiredFeatures(). */
+    /* If active machine-window is defined now: */
+    if (activeMachineWindow())
+    {
+        /* Reinstall corresponding popup-stack and make sure it has proper type: */
+        popupCenter().hidePopupStack(activeMachineWindow());
+        popupCenter().setPopupStackType(activeMachineWindow(), UIPopupStackType_Separate);
+        popupCenter().showPopupStack(activeMachineWindow());
+    }
 }
 
 void UIMachineLogicSeamless::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo)
@@ -117,15 +122,6 @@ void UIMachineLogicSeamless::sltHostScreenCountChanged(int cScreenCount)
 
     /* Call to base-class: */
     UIMachineLogic::sltHostScreenCountChanged(cScreenCount);
-}
-
-void UIMachineLogicSeamless::prepareRequiredFeatures()
-{
-    /* Call to base-class: */
-    UIMachineLogic::prepareRequiredFeatures();
-
-    /* Switch popup-center into 'top-level' integration mode: */
-    popupCenter().setStackIntegrationType(UIPopupIntegrationType_Toplevel);
 }
 
 void UIMachineLogicSeamless::prepareActionGroups()

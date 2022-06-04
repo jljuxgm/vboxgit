@@ -1,4 +1,4 @@
-/* $Id: UIPopupStackViewport.cpp 47461 2013-07-29 13:41:05Z vboxsync $ */
+/* $Id: UIPopupStackViewport.cpp 47523 2013-08-02 13:11:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -154,7 +154,7 @@ void UIPopupStackViewport::sltPopupPaneDone(int iResultCode)
         return;
 
     /* Notify listeners about popup-stack: */
-    emit sigRemove();
+    emit sigPopupPanesRemoved();
 }
 
 void UIPopupStackViewport::updateSizeHint()
