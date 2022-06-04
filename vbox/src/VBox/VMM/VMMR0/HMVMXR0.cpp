@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47743 2013-08-14 23:49:19Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47747 2013-08-15 10:41:39Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5906,10 +5906,8 @@ static void hmR0VmxTrpmTrapToPendingEvent(PVMCPU pVCpu)
         {
             case X86_XCPT_BP:
             case X86_XCPT_OF:
-            {
                 u32IntrInfo |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_SW_XCPT << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
                 break;
-            }
 
             case X86_XCPT_PF:
             case X86_XCPT_DF:
@@ -5921,10 +5919,8 @@ static void hmR0VmxTrpmTrapToPendingEvent(PVMCPU pVCpu)
                 u32IntrInfo |= VMX_EXIT_INTERRUPTION_INFO_ERROR_CODE_VALID;
                 /* no break! */
             default:
-            {
                 u32IntrInfo |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_HW_XCPT << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
                 break;
-            }
         }
     }
     else if (enmTrpmEvent == TRPM_HARDWARE_INT)
@@ -6344,7 +6340,7 @@ static int hmR0VmxInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     if (   fBlockSti
         || fBlockMovSS)
     {
-        if (!DBGFIsStepping(pVCpu))
+        if (!pVCpu->hm.s.fSingleInstruction && !DBGFIsStepping(pVCpu))
         {
             Assert(pVCpu->hm.s.vmx.fUpdatedGuestState & HMVMX_UPDATED_GUEST_RFLAGS);
             if (pMixedCtx->eflags.Bits.u1TF)    /* We don't have any IA32_DEBUGCTL MSR for guests. Treat as all bits 0. */
