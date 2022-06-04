@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42695 2012-08-08 22:56:44Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42702 2012-08-09 06:11:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -133,13 +133,13 @@ HRESULT GuestSessionTask::setProgressErrorMsg(HRESULT hr, const Utf8Str &strMsg)
 
 SessionTaskCopyTo::SessionTaskCopyTo(GuestSession *pSession,
                                      const Utf8Str &strSource, const Utf8Str &strDest, uint32_t uFlags)
-                                     : mSourceFile(NULL),
+                                     : mSource(strSource),
+                                       mDest(strDest),
+                                       mSourceFile(NULL),
                                        mSourceOffset(0),
                                        mSourceSize(0),
                                        GuestSessionTask(pSession)
 {
-    mSource = strSource;
-    mDest   = strDest;
     mCopyFileFlags = uFlags;
 }
 
