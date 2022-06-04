@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 42748 2012-08-10 09:33:34Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 42888 2012-08-20 17:36:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -221,9 +221,12 @@ public:
     HRESULT findMachine(const Guid &aId,
                         bool fPermitInaccessible,
                         bool aSetError,
-                        ComObjPtr<Machine> *machine = NULL);
+                        ComObjPtr<Machine> *aMachine = NULL);
+    HRESULT findMachineByName(const Utf8Str &aName,
+                              bool aSetError,
+                              ComObjPtr<Machine> *aMachine = NULL);
 
-    HRESULT validateMachineGroup(const Utf8Str &aGroup);
+    HRESULT validateMachineGroup(const Utf8Str &aGroup, bool fPrimary);
     HRESULT convertMachineGroups(ComSafeArrayIn(IN_BSTR, aMachineGroups), StringsList *pllMachineGroups);
 
     HRESULT findHardDiskById(const Guid &id,
