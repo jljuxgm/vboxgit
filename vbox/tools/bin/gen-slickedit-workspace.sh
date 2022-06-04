@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 44900 2013-03-01 22:46:01Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 47648 2013-08-09 13:58:38Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -815,7 +815,7 @@ my_generate_project "VMM"           "src/VBox/VMM"                          --be
     "include/VBox/vmm/em.h" \
     "include/VBox/vmm/gmm.*" \
     "include/VBox/vmm/gvm.*" \
-    "include/VBox/vmm/hw*.*" \
+    "include/VBox/vmm/hm*.*" \
     "include/VBox/vmm/iom.h" \
     "include/VBox/vmm/mm.h" \
     "include/VBox/vmm/patm.*" \
