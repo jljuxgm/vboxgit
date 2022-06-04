@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 46523 2013-06-13 12:02:48Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 46584 2013-06-17 12:17:36Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2718,7 +2718,9 @@ STDMETHODIMP Console::SleepButton()
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (mMachineState != MachineState_Running) /** @todo Live Migration: ??? */
+    if (   mMachineState != MachineState_Running
+        && mMachineState != MachineState_Teleporting
+        && mMachineState != MachineState_LiveSnapshotting)
         return setInvalidMachineStateError();
 
     /* get the VM handle. */
@@ -5048,6 +5050,7 @@ HRESULT Console::onVRDEServerChange(BOOL aRestart)
         &&  (   mMachineState == MachineState_Running
              || mMachineState == MachineState_Teleporting
              || mMachineState == MachineState_LiveSnapshotting
+             || mMachineState == MachineState_Paused
             )
        )
     {
@@ -5081,6 +5084,8 @@ HRESULT Console::onVRDEServerChange(BOOL aRestart)
             alock.acquire();
         }
     }
+    else
+        rc = setInvalidMachineStateError();
 
     /* notify console callbacks on success */
     if (SUCCEEDED(rc))
