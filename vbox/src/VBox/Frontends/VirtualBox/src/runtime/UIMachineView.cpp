@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 46058 2013-05-14 11:14:14Z vboxsync $ */
+/* $Id: UIMachineView.cpp 46293 2013-05-28 09:13:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -202,6 +202,12 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
      * fullscreen resize hint was sent: */
     QString strKey = makeExtraDataKeyPerMonitor(GUI_LastGuestSizeHintWasFullscreen);
     machine.SetExtraData(strKey, isFullscreenOrSeamless() ? "true" : "");
+}
+
+void UIMachineView::sltHandleNotifyUpdate(int iX, int iY, int iW, int iH)
+{
+    /* Update corresponding viewport part: */
+    viewport()->update(iX - contentsX(), iY - contentsY(), iW, iH);
 }
 
 void UIMachineView::sltDesktopResized()
@@ -915,14 +921,6 @@ bool UIMachineView::event(QEvent *pEvent)
 {
     switch (pEvent->type())
     {
-        case RepaintEventType:
-        {
-            UIRepaintEvent *pPaintEvent = static_cast<UIRepaintEvent*>(pEvent);
-            viewport()->update(pPaintEvent->x() - contentsX(), pPaintEvent->y() - contentsY(),
-                                pPaintEvent->width(), pPaintEvent->height());
-            return true;
-        }
-
 #ifdef Q_WS_MAC
         /* Event posted OnShowWindow: */
         case ShowWindowEventType:
