@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 45602 2013-04-18 10:02:15Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -244,14 +244,13 @@ void convertCIMOSType2VBoxOSType(Utf8Str &strType, ovf::CIMOSType_T c, const Utf
 /**
  * Private helper func that suggests a VirtualBox guest OS type
  * for the given OVF operating system type.
- * @param osTypeVBox
- * @param c
+ * @param pcszVBox  Our guest OS type identifier string.
  */
-ovf::CIMOSType_T convertVBoxOSType2CIMOSType(const char *pcszVbox)
+ovf::CIMOSType_T convertVBoxOSType2CIMOSType(const char *pcszVBox)
 {
     for (size_t i = 0; i < RT_ELEMENTS(g_osTypes); ++i)
     {
-        if (!RTStrICmp(pcszVbox, Global::OSTypeId(g_osTypes[i].osType)))
+        if (!RTStrICmp(pcszVBox, Global::OSTypeId(g_osTypes[i].osType)))
             return g_osTypes[i].cim;
     }
 
