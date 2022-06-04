@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42634 2012-08-06 17:29:38Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42673 2012-08-08 08:07:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -735,11 +735,16 @@ DECLCALLBACK(int) Guest::notifyCtrlDispatcher(void    *pvExtension,
 #endif
     int rc = VINF_SUCCESS;
     if (fDispatch)
+    {
         rc = pGuest->dispatchToSession(pHeader->u32ContextID, u32Function, pvParms, cbParms);
+        if (RT_SUCCESS(rc))
+            return rc;
+    }
 
-#ifdef VBOX_WITH_GUEST_CONTROL_LEGACY
-    if (RT_SUCCESS(rc))
-        return rc;
+#ifdef DEBUG
+    /* @todo Don't use legacy stuff in debug mode. Remove for final! */
+    return rc;
+#endif
 
     /* Legacy handling. */
     switch (u32Function)
@@ -793,7 +798,6 @@ DECLCALLBACK(int) Guest::notifyCtrlDispatcher(void    *pvExtension,
             rc = VERR_NOT_IMPLEMENTED;
             break;
     }
-#endif /* VBOX_WITH_GUEST_CONTROL_LEGACY */
 
     LogFlowFuncLeaveRC(rc);
     return rc;
