@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 44282 2013-01-14 09:55:31Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 44293 2013-01-15 08:27:06Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -190,13 +190,13 @@ enum
 #ifdef VBOX_WITH_USB_CARDREADER
     MODIFYVM_USBCARDREADER,
 #endif
-    MODIFYVM_CHIPSET,
 #ifdef VBOX_WITH_VPX
     MODIFYVM_VCP,
     MODIFYVM_VCP_FILENAME,
     MODIFYVM_VCP_WIDTH,
-    MODIFYVM_VCP_HEIGHT
+    MODIFYVM_VCP_HEIGHT,
 #endif
+    MODIFYVM_CHIPSET
 };
 
 static const RTGETOPTDEF g_aModifyVMOptions[] =
