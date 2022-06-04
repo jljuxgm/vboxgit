@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 43867 2012-11-13 17:23:34Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 43896 2012-11-16 12:54:38Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1117,7 +1117,7 @@ static void hmR0SvmSetupTLB(PVM pVM, PVMCPU pVCpu)
         /*
          * This is the AMD erratum 170. We need to flush the entire TLB for each world switch. Sad.
          */
-        pCpu->uCurrentAsid               = 1;
+        pCpu->uCurrentAsid           = 1;
         pVCpu->hm.s.uCurrentAsid     = 1;
         pVCpu->hm.s.cTlbFlushes      = pCpu->cTlbFlushes;
         pvVMCB->ctrl.TLBCtrl.n.u8TLBFlush = SVM_TLB_FLUSH_ENTIRE;
