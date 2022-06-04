@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 47396 2013-07-25 13:58:12Z vboxsync $ */
+/* $Id: UIMachineView.cpp 47493 2013-07-31 14:39:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -292,9 +292,9 @@ void UIMachineView::sltHandleSetVisibleRegion(QRegion region)
     Q_UNUSED(region);
 }
 
-void UIMachineView::sltNotify3DEvent()
+void UIMachineView::sltHandle3DOverlayVisibilityChange(bool fVisible)
 {
-    machineLogic()->notifyAbout3DEvent();
+    machineLogic()->notifyAbout3DOverlayVisibilityChange(fVisible);
 }
 
 void UIMachineView::sltDesktopResized()
