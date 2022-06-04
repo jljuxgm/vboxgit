@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -593,7 +593,7 @@ static PUSBDEVICE getDevicesFromUsbfs(const char *pcszUsbfsRoot, bool testfs)
                         deviceFreeMembers(&Dev);
 
                     /* Reset device state */
-                    memset(&Dev, 0, sizeof (Dev));
+                    RT_ZERO(Dev);
                     Dev.enmState = USBDEVICESTATE_UNUSED;
                     cHits = 1;
 

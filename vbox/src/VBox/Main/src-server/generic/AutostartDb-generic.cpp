@@ -1,4 +1,4 @@
-/* $Id: AutostartDb-generic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: AutostartDb-generic.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Autostart implementation.
  */
@@ -78,7 +78,7 @@ int AutostartDb::autostartModifyDb(bool fAutostart, bool fAddVM)
                     char abBuf[16 + 1]; /* trailing \0 */
                     uint32_t cAutostartVms = 0;
 
-                    memset(abBuf, 0, sizeof(abBuf));
+                    RT_ZERO(abBuf);
 
                     /* Check if the file was just created. */
                     if (cbFile)

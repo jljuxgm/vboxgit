@@ -1,4 +1,4 @@
-/* $Id: HostHardwareFreeBSD.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: HostHardwareFreeBSD.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under FreeBSD.
  */
@@ -172,8 +172,8 @@ static int getDVDInfoFromCAM(DriveInfoList *pList, bool *pfSuccess)
         struct dev_match_pattern DeviceMatchPattern;
         struct dev_match_result *paMatches = NULL;
 
-        memset(&DeviceCCB, 0, sizeof(union ccb));
-        memset(&DeviceMatchPattern, 0, sizeof(struct device_match_pattern));
+        RT_ZERO(DeviceCCB);
+        RT_ZERO(DeviceMatchPattern);
 
         /* We want to get all devices. */
         DeviceCCB.ccb_h.func_code  = XPT_DEV_MATCH;
@@ -236,9 +236,9 @@ static int getDVDInfoFromCAM(DriveInfoList *pList, bool *pfSuccess)
                         struct periph_match_result *pPeriphResult = NULL;
                         unsigned iPeriphMatch = 0;
 
-                        memset(&PeriphCCB, 0, sizeof(union ccb));
-                        memset(&PeriphMatchPattern, 0, sizeof(struct dev_match_pattern));
-                        memset(aPeriphMatches, 0, sizeof(aPeriphMatches));
+                        RT_ZERO(PeriphCCB);
+                        RT_ZERO(PeriphMatchPattern);
+                        RT_ZERO(aPeriphMatches);
 
                         /* This time we only want the specific nodes for the device. */
                         PeriphCCB.ccb_h.func_code  = XPT_DEV_MATCH;

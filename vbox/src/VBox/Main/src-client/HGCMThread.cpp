@@ -1,4 +1,4 @@
-/* $Id: HGCMThread.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: HGCMThread.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager Threads
  */
@@ -220,7 +220,7 @@ HGCMThread::HGCMThread ()
     m_pFreeTail (NULL),
     m_handle (0)
 {
-    memset (&m_critsect, 0, sizeof (m_critsect));
+    RT_ZERO(m_critsect);
 }
 
 HGCMThread::~HGCMThread ()
@@ -306,7 +306,7 @@ int HGCMThread::Initialize (HGCMTHREADHANDLE handle, const char *pszThreadName, 
             else
             {
                 Log(("hgcmThreadCreate: FAILURE: Can't init a critical section for a hgcm worker thread.\n"));
-                memset (&m_critsect, 0, sizeof (m_critsect));
+                RT_ZERO(m_critsect);
             }
         }
         else

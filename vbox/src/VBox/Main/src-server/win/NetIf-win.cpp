@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
+/* $Id: NetIf-win.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -954,7 +954,7 @@ static int vboxNetWinAddComponent(std::list<ComObjPtr<HostNetworkInterface> > * 
         if (hr == S_OK)
         {
             NETIFINFO Info;
-            memset(&Info, 0, sizeof(Info));
+            RT_ZERO(Info);
             Info.Uuid = *(Guid(IfGuid).raw());
             rc = collectNetIfInfo(name, Guid(IfGuid), &Info, iDefaultInterface);
             if (RT_FAILURE(rc))

@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 46345 2013-05-31 13:42:37Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -380,8 +380,8 @@ int NetIfGetState(const char *pcszIfName, NETIFSTATUS *penmState)
     if (sock < 0)
         return VERR_OUT_OF_RESOURCES;
     struct ifreq Req;
-    memset(&Req, 0, sizeof(Req));
-    strncpy(Req.ifr_name, pcszIfName, sizeof(Req.ifr_name) - 1);
+    RT_ZERO(Req);
+    RTStrCopy(Req.ifr_name, sizeof(Req.ifr_name), pcszIfName);
     if (ioctl(sock, SIOCGIFFLAGS, &Req) < 0)
     {
         Log(("NetIfGetState: ioctl(SIOCGIFFLAGS) -> %d\n", errno));
