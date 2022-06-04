@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 43041 2012-08-28 13:58:40Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 43063 2012-08-29 09:54:36Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1492,7 +1492,7 @@ STDMETHODIMP VirtualBox::ComposeMachineFilename(IN_BSTR aName,
                                     strBase.c_str(),
                                     strGroup.c_str(),
                                     RTPATH_DELIMITER,
-                                    strName.c_str(),
+                                    strDirName.c_str(),
                                     RTPATH_DELIMITER,
                                     strName.c_str());
 

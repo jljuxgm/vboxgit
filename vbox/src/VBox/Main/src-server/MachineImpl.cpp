@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 43041 2012-08-28 13:58:40Z vboxsync $ */
+/* $Id: MachineImpl.cpp 43063 2012-08-29 09:54:36Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9194,8 +9194,14 @@ HRESULT Machine::prepareSaveSettings(bool *pfNeedsGlobalSaveSettings)
             /* first, rename the directory if it matches the group and machine name */
             Utf8Str groupPlusName = Utf8StrFmt("%s%c%s",
                 group.c_str(), RTPATH_DELIMITER, name.c_str());
+            /** @todo hack, make somehow use of ComposeMachineFilename */
+            if (mUserData->s.fDirectoryIncludesUUID)
+                groupPlusName += Utf8StrFmt(" (%RTuuid)", mData->mUuid.raw());
             Utf8Str newGroupPlusName = Utf8StrFmt("%s%c%s",
                 newGroup.c_str(), RTPATH_DELIMITER, newName.c_str());
+            /** @todo hack, make somehow use of ComposeMachineFilename */
+            if (mUserData->s.fDirectoryIncludesUUID)
+                newGroupPlusName += Utf8StrFmt(" (%RTuuid)", mData->mUuid.raw());
             configDir = configFile;
             configDir.stripFilename();
             newConfigDir = configDir;
