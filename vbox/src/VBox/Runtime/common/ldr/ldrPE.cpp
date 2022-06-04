@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
+/* $Id: ldrPE.cpp 46177 2013-05-20 21:12:43Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -239,7 +239,7 @@ static int rtldrPEReadPartByRva(PRTLDRMODPE pThis, const void *pvBits, uint32_t 
             }
             else
             {
-                offFile  = -1;
+                offFile  = UINT32_MAX;
                 cbToRead = 0;
             }
         }
