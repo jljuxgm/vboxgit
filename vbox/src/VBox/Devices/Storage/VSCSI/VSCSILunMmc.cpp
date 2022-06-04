@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 43662 2012-10-16 20:18:09Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 43693 2012-10-22 09:34:18Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -408,6 +408,7 @@ static int vscsiLunMmcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
         case SCSI_PREVENT_ALLOW_MEDIUM_REMOVAL:
         {
             pVScsiLunMmc->fLocked = pVScsiReq->pbCDB[4] & 1;
+            vscsiLunMediumSetLock(pVScsiLun, pVScsiLunMmc->fLocked);
             rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
             break;
         }

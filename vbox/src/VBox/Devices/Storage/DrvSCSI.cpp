@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 43640 2012-10-15 12:39:52Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 43693 2012-10-22 09:34:18Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -241,6 +241,18 @@ static DECLCALLBACK(int) drvscsiGetSize(VSCSILUN hVScsiLun, void *pvScsiLunUser,
     PDRVSCSI pThis = (PDRVSCSI)pvScsiLunUser;
 
     *pcbSize = pThis->pDrvBlock->pfnGetSize(pThis->pDrvBlock);
+
+    return VINF_SUCCESS;
+}
+
+static DECLCALLBACK(int) drvscsiSetLock(VSCSILUN hVScsiLun, void *pvScsiLunUser, bool fLocked)
+{
+    PDRVSCSI pThis = (PDRVSCSI)pvScsiLunUser;
+
+    if (fLocked)
+        pThis->pDrvMount->pfnLock(pThis->pDrvMount);
+    else
+        pThis->pDrvMount->pfnUnlock(pThis->pDrvMount);
 
     return VINF_SUCCESS;
 }
@@ -960,6 +972,7 @@ LogRelFunc(("pDrvIns=%#p pCfg=%#p\n", pDrvIns, pCfg));
     pThis->VScsiIoCallbacks.pfnVScsiLunMediumGetSize      = drvscsiGetSize;
     pThis->VScsiIoCallbacks.pfnVScsiLunReqTransferEnqueue = drvscsiReqTransferEnqueue;
     pThis->VScsiIoCallbacks.pfnVScsiLunGetFeatureFlags    = drvscsiGetFeatureFlags;
+    pThis->VScsiIoCallbacks.pfnVScsiLunMediumSetLock      = drvscsiSetLock;
 
     rc = VSCSIDeviceCreate(&pThis->hVScsiDevice, drvscsiVScsiReqCompleted, pThis);
     AssertMsgReturn(RT_SUCCESS(rc), ("Failed to create VSCSI device rc=%Rrc\n"), rc);
