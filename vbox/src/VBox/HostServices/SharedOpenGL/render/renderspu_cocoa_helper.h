@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.h 44740 2013-02-18 17:02:47Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.h 44784 2013-02-21 14:56:31Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper definition
  */
@@ -25,6 +25,8 @@
 
 RT_C_DECLS_BEGIN
 
+struct WindowInfo;
+
 ADD_COCOA_NATIVE_REF(NSView);
 ADD_COCOA_NATIVE_REF(NSOpenGLContext);
 
@@ -33,7 +35,7 @@ void cocoaGLCtxCreate(NativeNSOpenGLContextRef *ppCtx, GLbitfield fVisParams, Na
 void cocoaGLCtxDestroy(NativeNSOpenGLContextRef pCtx);
 
 /* View management */
-void cocoaViewCreate(NativeNSViewRef *ppView, NativeNSViewRef pParentView, GLbitfield fVisParams);
+void cocoaViewCreate(NativeNSViewRef *ppView, struct WindowInfo *pWinInfo, NativeNSViewRef pParentView, GLbitfield fVisParams);
 void cocoaViewReparent(NativeNSViewRef pView, NativeNSViewRef pParentView);
 void cocoaViewDestroy(NativeNSViewRef pView);
 void cocoaViewDisplay(NativeNSViewRef pView);
