@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 45573 2013-04-16 14:11:17Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 45574 2013-04-16 15:01:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -289,8 +289,13 @@ int UINetworkReplyPrivateThread::checkCertificates(RTHTTP pHttp, const QString &
     {
         /* Parse the file content: */
         QString strData(file.readAll());
+#ifdef Q_WS_WIN
+        QRegExp regExp("(-{5}BEGIN CERTIFICATE-{5}[\\s\\S\\r\\n]+-{5}END CERTIFICATE-{5})\\r\\n"
+                       "(-{5}BEGIN CERTIFICATE-{5}[\\s\\S\\r\\n]+-{5}END CERTIFICATE-{5})");
+#else /* Q_WS_WIN */
         QRegExp regExp("(-{5}BEGIN CERTIFICATE-{5}[\\s\\S\\n]+-{5}END CERTIFICATE-{5})\\n"
                        "(-{5}BEGIN CERTIFICATE-{5}[\\s\\S\\n]+-{5}END CERTIFICATE-{5})");
+#endif /* !Q_WS_WIN */
         regExp.setMinimal(true);
         int iIndex = regExp.indexIn(strData);
         if (iIndex == -1)
@@ -487,7 +492,11 @@ int UINetworkReplyPrivateThread::saveCertificate(QFile &file, const QByteArray &
 
     /* Add 'new-line' character: */
     if (RT_SUCCESS(rc))
+#ifdef Q_WS_WIN
+        rc = file.write("\r\n") != -1 ? VINF_SUCCESS : VERR_WRITE_ERROR;
+#else /* Q_WS_WIN */
         rc = file.write("\n") != -1 ? VINF_SUCCESS : VERR_WRITE_ERROR;
+#endif /* !Q_WS_WIN */
 
     /* Return result-code: */
     return rc;
