@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 45079 2013-03-19 05:48:07Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 45167 2013-03-25 12:41:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -234,12 +234,11 @@ CSession& UIMachineLogic::session() const
 
 UIMachineWindow* UIMachineLogic::mainMachineWindow() const
 {
-    /* Return null if windows are not created yet: */
+    /* Null if machine-window(s) not yet created: */
     if (!isMachineWindowsCreated())
         return 0;
-
-    /* Otherwise return first of windows: */
-    return machineWindows()[0];
+    /* First machine-window otherwise: */
+    return machineWindows().first();
 }
 
 UIMachineWindow* UIMachineLogic::activeMachineWindow() const
