@@ -1,4 +1,4 @@
-/* $Id: test.cpp 44220 2013-01-01 17:17:26Z vboxsync $ */
+/* $Id: test.cpp 44255 2013-01-08 15:14:06Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -1409,6 +1409,9 @@ static const char *rtTestUnitName(RTTESTUNIT enmUnit)
         case RTTESTUNIT_NS_PER_OCCURRENCE:      return "ns/occurrences";
         case RTTESTUNIT_NS_PER_PACKET:          return "ns/packet";
         case RTTESTUNIT_NS_PER_ROUND_TRIP:      return "ns/roundtrips";
+        case RTTESTUNIT_INSTRS:                 return "ins";
+        case RTTESTUNIT_INSTRS_PER_SEC:         return "ins/sec";
+        case RTTESTUNIT_NONE:                   return "";
         case RTTESTUNIT_PP1K:                   return "pp1k";
         case RTTESTUNIT_PP10K:                  return "pp10k";
         case RTTESTUNIT_PPM:                    return "ppm";
