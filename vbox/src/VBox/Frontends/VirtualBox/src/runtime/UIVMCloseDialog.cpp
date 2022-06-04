@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 46698 2013-06-20 10:18:39Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 46703 2013-06-20 11:54:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -66,7 +66,7 @@ UIVMCloseDialog::UIVMCloseDialog(QWidget *pParent, const CMachine &machine, cons
 /* static */
 MachineCloseAction UIVMCloseDialog::parseResultCode(const QString &strCloseAction)
 {
-    MachineCloseAction closeAction = MachineCloseAction_Cancel;
+    MachineCloseAction closeAction = MachineCloseAction_Invalid;
     if (!strCloseAction.compare("Save", Qt::CaseInsensitive))
         closeAction = MachineCloseAction_Save;
     else if (!strCloseAction.compare("Shutdown", Qt::CaseInsensitive))
@@ -94,7 +94,7 @@ void UIVMCloseDialog::accept()
         if (!m_pDiscardCheckBox->isChecked() || !m_pDiscardCheckBox->isVisible())
             setResult(MachineCloseAction_PowerOff);
         else
-            setResult(MachineCloseAction_PowerOff_Restoring_Snapshot);
+            setResult(MachineCloseAction_PowerOff_RestoringSnapshot);
     }
 
     /* Read the last user's choice for the given VM: */
@@ -121,7 +121,7 @@ void UIVMCloseDialog::accept()
                 strLastAction = m_strExtraDataOptionPowerOff;
             break;
         }
-        case MachineCloseAction_PowerOff_Restoring_Snapshot:
+        case MachineCloseAction_PowerOff_RestoringSnapshot:
         {
             strLastAction = m_strExtraDataOptionPowerOff + "," +
                             m_strExtraDataOptionDiscard;
