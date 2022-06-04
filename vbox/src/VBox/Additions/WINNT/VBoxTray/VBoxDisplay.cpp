@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 44557 2013-02-06 06:36:38Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 44578 2013-02-07 10:44:26Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -267,7 +267,7 @@ static DWORD EnableAndResizeDispDev(ULONG Id, DWORD aWidth, DWORD aHeight,
              ENUM_REGISTRY_SETTINGS, &deviceMode))
         {
             LogRel(("VBoxTray: ENUM_REGISTRY_SETTINGS Failed \n"));
-            return FALSE; // Store default failed
+            return DISP_CHANGE_FAILED; // Store default failed
         }
         /* Save info about primary display */
         if(DispNum == 0)
@@ -355,7 +355,6 @@ static DWORD EnableAndResizeDispDev(ULONG Id, DWORD aWidth, DWORD aHeight,
         displayDevice.cb = sizeof(displayDevice);
         DispNum++;
     }
-    /* we don't want to retry, as it may get stuck in an inifinite loop. */
     return dwStatus;
  }
 
