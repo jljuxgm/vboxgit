@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VSCSIDevice.cpp 46509 2013-06-12 14:41:25Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -101,10 +101,11 @@ static bool vscsiDeviceReqProcess(PVSCSIDEVICEINT pVScsiDevice, PVSCSIREQINT pVS
         }
         case SCSI_TEST_UNIT_READY:
         {
-            if (pVScsiDevice->papVScsiLun[pVScsiReq->iLun]->fReady)
+            if (   vscsiDeviceLunIsPresent(pVScsiDevice, pVScsiReq->iLun)
+                && pVScsiDevice->papVScsiLun[pVScsiReq->iLun]->fReady)
                 *prcReq = vscsiReqSenseOkSet(&pVScsiDevice->VScsiSense, pVScsiReq);
             else
-                fProcessed = false; /* The LUN will provide details. */
+                fProcessed = false; /* The LUN (if present) will provide details. */
             break;
         }
         case SCSI_REQUEST_SENSE:
