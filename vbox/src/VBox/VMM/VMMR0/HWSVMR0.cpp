@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 46557 2013-06-14 12:47:59Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 46659 2013-06-19 13:42:28Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2914,7 +2914,8 @@ VMMR0DECL(int) SVMR0Enter(PVM pVM, PVMCPU pVCpu, PHMGLOBLCPUINFO pCpu)
     pVCpu->hm.s.fResumeVM = false;
 
     /* Force to reload LDTR, so we'll execute VMLoad to load additional guest state. */
-    pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_LDTR;
+    pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_LDTR;  /** @todo r=ramshankar: I can't understand what effect this will have.
+                                                                    Probably a left over? */
 
     return VINF_SUCCESS;
 }
