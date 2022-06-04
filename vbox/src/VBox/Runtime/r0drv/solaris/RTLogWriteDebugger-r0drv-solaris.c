@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-solaris.c 45090 2013-03-19 15:27:30Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-solaris.c 45433 2013-04-09 13:50:03Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Solaris.
  */
@@ -45,7 +45,7 @@ RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 {
     if (pch[cb] != '\0')
         AssertBreakpoint();
-    if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))
+    if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))    /** @todo this will change when preemptions hook are implemented. */
         return;
     if (    !g_frtSolSplSetsEIF
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
