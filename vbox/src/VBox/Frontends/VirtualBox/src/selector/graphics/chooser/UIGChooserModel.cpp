@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43597 2012-10-10 14:37:37Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 43598 2012-10-10 14:43:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -493,6 +493,17 @@ bool UIGChooserModel::isSlidingInProgress() const
     return m_fSliding;
 }
 
+void UIGChooserModel::startEditingGroupItemName()
+{
+    sltEditGroupName();
+}
+
+void UIGChooserModel::cleanupGroupTree()
+{
+    cleanupGroupTree(mainRoot());
+}
+
+/* static */
 QString UIGChooserModel::uniqueGroupName(UIGChooserItem *pRoot)
 {
     /* Enumerate all the group names: */
@@ -522,16 +533,6 @@ QString UIGChooserModel::uniqueGroupName(UIGChooserItem *pRoot)
     if (iMinimumPossibleNumber)
         strResult += " " + QString::number(iMinimumPossibleNumber);
     return strResult;
-}
-
-void UIGChooserModel::startEditingGroupItemName()
-{
-    sltEditGroupName();
-}
-
-void UIGChooserModel::cleanupGroupTree()
-{
-    cleanupGroupTree(mainRoot());
 }
 
 void UIGChooserModel::activateMachineItem()

@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43597 2012-10-10 14:37:37Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43598 2012-10-10 14:43:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -549,7 +549,7 @@ void UIGChooserItemMachine::processDrop(QGraphicsSceneDragDropEvent *pEvent, UIG
 
                 /* Group passed item with current item into the new group: */
                 UIGChooserItemGroup *pNewGroupItem = new UIGChooserItemGroup(parentItem(),
-                                                                             model()->uniqueGroupName(parentItem()),
+                                                                             UIGChooserModel::uniqueGroupName(parentItem()),
                                                                              true);
                 new UIGChooserItemMachine(pNewGroupItem, this);
                 new UIGChooserItemMachine(pNewGroupItem, pItem->toMachineItem());
