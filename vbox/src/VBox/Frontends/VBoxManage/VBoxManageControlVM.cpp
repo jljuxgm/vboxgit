@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 44039 2012-12-05 12:08:52Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 44239 2013-01-07 12:18:37Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1240,6 +1240,12 @@ int handleControlVM(HandlerArg *a)
             }
             ComPtr<IDisplay> pDisplay;
             CHECK_ERROR_BREAK(console, COMGETTER(Display)(pDisplay.asOutParam()));
+            if (!pDisplay)
+            {
+                RTMsgError("Cannot take a screenshot without a display");
+                rc = E_FAIL;
+                break;
+            }
             ULONG width, height, bpp;
             CHECK_ERROR_BREAK(pDisplay, GetScreenResolution(displayIdx, &width, &height, &bpp));
             com::SafeArray<BYTE> saScreenshot;
