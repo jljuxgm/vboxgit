@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 43334 2012-09-14 17:34:33Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 43490 2012-10-01 11:56:39Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -76,6 +76,20 @@ HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D)
         if (!pD3D->pfnVBoxWineExD3DDev9Flush)
         {
             WARN(("no VBoxWineExD3DDev9Flush"));
+            break;
+        }
+
+        pD3D->pfnVBoxWineExD3DDev9FlushToHost = (PFNVBOXWINEEXD3DDEV9_FLUSHTOHOST)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DDev9FlushToHost");
+        if (!pD3D->pfnVBoxWineExD3DDev9FlushToHost)
+        {
+            WARN(("no VBoxWineExD3DDev9FlushToHost"));
+            break;
+        }
+
+        pD3D->pfnVBoxWineExD3DDev9Finish = (PFNVBOXWINEEXD3DDEV9_FINISH)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DDev9Finish");
+        if (!pD3D->pfnVBoxWineExD3DDev9Finish)
+        {
+            WARN(("no VBoxWineExD3DDev9Finish"));
             break;
         }
 
