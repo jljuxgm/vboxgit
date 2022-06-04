@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 44111 2012-12-12 16:10:07Z vboxsync $ */
+/* $Id: UIMedium.cpp 44113 2012-12-13 09:20:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -247,8 +247,8 @@ void UIMedium::refresh()
                     mIsUsedInSnapshots = false;
             }
 
-            Assert (!sUsage.isEmpty());
-            mUsage = sUsage;
+            if (!sUsage.isEmpty())
+                mUsage = sUsage;
         }
     }
 
