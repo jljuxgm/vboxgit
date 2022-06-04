@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
+/* $Id: DevIchHda.cpp 45654 2013-04-20 13:50:02Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -2203,7 +2203,10 @@ PDMBOTHCBDECL(int) hdaMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhy
     else if (cb == 1)   u64Value = *(uint8_t const *)pv;
     else if (cb == 8)   u64Value = *(uint64_t const *)pv;
     else
+    {
+        u64Value = 0;   /* shut up gcc. */
         AssertReleaseMsgFailed(("%d\n", cb));
+    }
 
 #ifdef LOG_ENABLED
     uint32_t const u32LogOldValue = idxReg != -1 ? pThis->au32Regs[idxReg] : UINT32_MAX;
