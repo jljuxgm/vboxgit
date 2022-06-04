@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 47089 2013-07-11 11:29:17Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 47788 2013-08-16 09:00:23Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -17,6 +17,11 @@
 
 #ifndef ___EMHandleRCTmpl_h
 #define ___EMHandleRCTmpl_h
+
+#if defined(EMHANDLERC_WITH_PATM) && defined(EMHANDLERC_WITH_HM)
+# error "Only one define"
+#endif
+
 
 /**
  * Process a subset of the raw-mode and hm return codes.
@@ -81,7 +86,7 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          */
         case VINF_PATM_PATCH_TRAP_PF:
         case VINF_PATM_PATCH_INT3:
-            rc = emR3PatchTrap(pVM, pVCpu, pCtx, rc);
+            rc = emR3RawPatchTrap(pVM, pVCpu, pCtx, rc);
             break;
 
         case VINF_PATM_DUPLICATE_FUNCTION:
