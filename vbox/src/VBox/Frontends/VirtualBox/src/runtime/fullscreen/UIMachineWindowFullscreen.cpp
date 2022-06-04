@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 43666 2012-10-17 11:40:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -175,6 +175,15 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
         /* Make sure the window is placed on valid screen
          * before we are show fullscreen window: */
         sltPlaceOnScreen();
+
+#ifdef Q_WS_WIN
+        /* On Windows we should activate main window first,
+         * because entering fullscreen there doesn't means window will be auto-activated,
+         * so no window-activation event will be received
+         * and no keyboard-hook created otherwise... */
+        if (m_uScreenId == 0)
+            setWindowState(windowState() | Qt::WindowActive);
+#endif /* Q_WS_WIN */
 
         /* Show window fullscreen: */
         showFullScreen();
