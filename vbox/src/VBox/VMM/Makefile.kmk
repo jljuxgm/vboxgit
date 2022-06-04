@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42669 2012-08-07 23:42:25Z vboxsync $
+# $Id: Makefile.kmk 42777 2012-08-11 20:23:48Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -57,7 +57,7 @@ endif
 
 # Special IEM debug mode which compares the result with REM.
 ifdef IEM_VERIFICATION_MODE
- VMM_COMMON_DEFS += IEM_VERIFICATION_MODE
+ VMM_COMMON_DEFS += IEM_VERIFICATION_MODE IEM_VERIFICATION_MODE_FULL
 endif
 
 
