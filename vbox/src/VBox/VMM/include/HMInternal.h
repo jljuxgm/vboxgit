@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45637 2013-04-19 10:21:54Z vboxsync $ */
+/* $Id: HMInternal.h 45684 2013-04-23 15:44:47Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -39,7 +39,7 @@
 
 #ifdef VBOX_WITH_OLD_VTX_CODE
 # define VMX_USE_CACHED_VMCS_ACCESSES
-#elif HC_ARCH_BITS == 32 && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+#elif HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
 # define VMX_USE_CACHED_VMCS_ACCESSES
 #endif
 
