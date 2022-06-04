@@ -1,4 +1,4 @@
-/* $Id: dbgmoddeferred.cpp 46266 2013-05-25 19:51:19Z vboxsync $ */
+/* $Id: dbgmoddeferred.cpp 46281 2013-05-27 10:25:05Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Deferred Loading Stub.
  */
@@ -206,7 +206,7 @@ static int rtDbgModDeferredDbgSymInfo_Start(PRTDBGMODDEFERRED pThis, PRTDBGSYMBO
     pSymInfo->iSeg      = 0;
     pSymInfo->fFlags    = 0;
     pSymInfo->iOrdinal  = 0;
-    memcpy(pSymInfo->szName, RT_STR_TUPLE("DeferredStart"));
+    strcpy(pSymInfo->szName, "DeferredStart");
     return VINF_SUCCESS;
 }
 
@@ -226,7 +226,7 @@ static int rtDbgModDeferredDbgSymInfo_Last(PRTDBGMODDEFERRED pThis, PRTDBGSYMBOL
     pSymInfo->iSeg      = 0;
     pSymInfo->fFlags    = 0;
     pSymInfo->iOrdinal  = 1;
-    memcpy(pSymInfo->szName, RT_STR_TUPLE("DeferredLast"));
+    strcpy(pSymInfo->szName, "DeferredLast");
     return VINF_SUCCESS;
 }
 

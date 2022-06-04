@@ -1,4 +1,4 @@
-/* $Id: dbgas.cpp 46221 2013-05-22 15:30:41Z vboxsync $ */
+/* $Id: dbgas.cpp 46281 2013-05-27 10:25:05Z vboxsync $ */
 /** @file
  * IPRT - Debug Address Space.
  */
@@ -1392,12 +1392,13 @@ RTDECL(int) RTDbgAsSymbolByAddr(RTDBGAS hDbgAs, RTUINTPTR Addr, uint32_t fFlags,
             rc = VERR_NOT_FOUND;
         else
         {
-            rc = RTDbgModSymbolByAddr(pahModules[iBest], RTDBGSEGIDX_ABS, Addr, fFlags, poffDisp, pSymbol);
+            hMod = pahModules[iBest];
+            rc = RTDbgModSymbolByAddr(hMod, RTDBGSEGIDX_ABS, Addr, fFlags, poffDisp, pSymbol);
             if (RT_SUCCESS(rc))
             {
                 rtDbgAsAdjustSymbolValue(pSymbol, hMod, MapAddr, iSeg);
                 if (phMod)
-                    RTDbgModRetain(*phMod = pahModules[iBest]);
+                    RTDbgModRetain(*phMod = hMod);
             }
         }
 
