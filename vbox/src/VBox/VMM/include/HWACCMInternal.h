@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 42156 2012-07-16 06:59:45Z vboxsync $ */
+/* $Id: HWACCMInternal.h 42184 2012-07-17 13:27:53Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -565,6 +565,9 @@ typedef struct HWACCMCPU
 
     uint32_t                    u32Alignment;
 
+    /* Host's TSC_AUX MSR (used when RDTSCP doesn't cause VM-exits). */
+    uint64_t                    u64HostTSCAux;
+
     struct
     {
         /** Physical address of the VM control structure (VMCS). */
@@ -628,9 +631,6 @@ typedef struct HWACCMCPU
         uint32_t                    cCachedMSRs;
         uint32_t                    uAlignement;
 #endif /* VBOX_WITH_AUTO_MSR_LOAD_RESTORE */
-
-        /* Host's IA32_TSC_AUX MSR (for RDTSCP in VMX non-root). */
-        uint64_t                    u64HostTSCAux;
 
         /* Last use TSC offset value. (cached) */
         uint64_t                    u64TSCOffset;
