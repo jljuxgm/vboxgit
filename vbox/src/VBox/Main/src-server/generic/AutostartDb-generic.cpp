@@ -1,4 +1,4 @@
-/* $Id: AutostartDb-generic.cpp 42181 2012-07-17 12:54:11Z vboxsync $ */
+/* $Id: AutostartDb-generic.cpp 42182 2012-07-17 13:01:24Z vboxsync $ */
 /** @file
  * VirtualBox Main - Autostart implementation.
  */
@@ -175,7 +175,7 @@ int AutostartDb::setAutostartDbPath(const char *pszAutostartDbPathNew)
     return VINF_SUCCESS;
 #else
     NOREF(pszAutostartDbPathNew);
-    return VERR_NOT_SUPPORTED
+    return VERR_NOT_SUPPORTED;
 #endif
 }
 
