@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 45437 2013-04-09 14:08:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -266,7 +266,7 @@ QString QIFileDialog::getExistingDirectory (const QString &aDir,
         {
             QString result;
 
-            QWidget *topParent = windowManager().realParentWindow(mParent ? mParent : msgCenter().mainWindowShown());
+            QWidget *topParent = windowManager().realParentWindow(mParent ? mParent : windowManager().mainWindowShown());
             QString title = mCaption.isNull() ? tr ("Select a directory") : mCaption;
 
             TCHAR path [MAX_PATH];
@@ -467,7 +467,7 @@ QString QIFileDialog::getSaveFileName (const QString &aStartWith,
 
             QString title = mCaption.isNull() ? tr ("Select a file") : mCaption;
 
-            QWidget *topParent = windowManager().realParentWindow(mParent ? mParent : msgCenter().mainWindowShown());
+            QWidget *topParent = windowManager().realParentWindow(mParent ? mParent : windowManager().mainWindowShown());
             QString winFilters = winFilter (mFilters);
             AssertCompile (sizeof (TCHAR) == sizeof (QChar));
             TCHAR buf [1024];
@@ -716,7 +716,7 @@ QStringList QIFileDialog::getOpenFileNames (const QString &aStartWith,
 
             QString title = mCaption.isNull() ? tr ("Select a file") : mCaption;
 
-            QWidget *topParent = windowManager().realParentWindow(mParent ? mParent : msgCenter().mainWindowShown());
+            QWidget *topParent = windowManager().realParentWindow(mParent ? mParent : windowManager().mainWindowShown());
             QString winFilters = winFilter (mFilters);
             AssertCompile (sizeof (TCHAR) == sizeof (QChar));
             TCHAR buf [1024];
