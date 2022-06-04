@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 42388 2012-07-25 11:56:53Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 42391 2012-07-25 13:21:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1179,7 +1179,7 @@ HRESULT SystemProperties::setAutostartDatabasePath(const Utf8Str &aPath)
     else
     {
         int vrc = autostartDb->setAutostartDbPath(NULL);
-        if (RT_SUCCESS(vrc))
+        if (RT_SUCCESS(vrc) || vrc == VERR_NOT_SUPPORTED)
             m->strAutostartDatabasePath = "";
         else
             rc = setError(E_FAIL,
