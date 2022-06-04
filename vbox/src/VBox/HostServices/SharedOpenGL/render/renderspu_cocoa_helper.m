@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 45132 2013-03-21 16:11:28Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 45148 2013-03-22 21:28:29Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1085,6 +1085,7 @@ static void vboxCtxLeave(PVBOX_CR_RENDER_CTX_INFO pCtxInfo)
 		        m_fNeedViewportUpdate = true;
 #ifdef CR_RENDER_FORCE_PRESENT_MAIN_THREAD
 				renderspuVBoxCompositorRelease(m_pWinInfo);
+				pCompositor = NULL;
 #endif
 		    }
 		}
@@ -1104,6 +1105,7 @@ static void vboxCtxLeave(PVBOX_CR_RENDER_CTX_INFO pCtxInfo)
 #endif
 			    {
 			        glFlush();
+			            
 			        /* issue to the gui thread */
 			        [self setNeedsDisplay:YES];
 			    }

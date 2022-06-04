@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 45132 2013-03-21 16:11:28Z vboxsync $ */
+/* $Id: crservice.cpp 45148 2013-03-22 21:28:29Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -990,6 +990,8 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                     CHECK_ERROR_BREAK(pMachine, COMGETTER(MonitorCount)(&monitorCount));
                     CHECK_ERROR_BREAK(pConsole, COMGETTER(Display)(pDisplay.asOutParam()));
 
+                    crServerVBoxCompositionSetEnableStateGlobal(GL_FALSE);
+
                     rc = crVBoxServerSetScreenCount(monitorCount);
                     AssertRCReturn(rc, rc);
 
@@ -1014,6 +1016,8 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                     }
 
                     g_pConsole = pConsole;
+
+                    crServerVBoxCompositionSetEnableStateGlobal(GL_TRUE);
 
                     rc = VINF_SUCCESS;
                 }
@@ -1105,6 +1109,8 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                 CHECK_ERROR_RET(g_pConsole, COMGETTER(Display)(pDisplay.asOutParam()), rc);
                 CHECK_ERROR_RET(pDisplay, GetFramebuffer(screenId, pFramebuffer.asOutParam(), &xo, &yo), rc);
 
+                crServerVBoxCompositionSetEnableStateGlobal(GL_FALSE);
+
                 if (!pFramebuffer)
                 {
                     rc = crVBoxServerUnmapScreen(screenId);
@@ -1129,6 +1135,8 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                         AssertRCReturn(rc, rc);
                     }
                 }
+
+                crServerVBoxCompositionSetEnableStateGlobal(GL_TRUE);
 
                 rc = VINF_SUCCESS;
             }
