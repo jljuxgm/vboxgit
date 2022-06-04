@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43822 2012-11-07 08:46:33Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43823 2012-11-07 08:49:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -640,6 +640,16 @@ void UIGChooserItemGroup::updateToolTip()
     setToolTip(toolTipInfo.join("<br>"));
 }
 
+void UIGChooserItemGroup::updateToggleButtonToolTip()
+{
+    /* Is toggle-button created? */
+    if (!m_pToggleButton)
+        return;
+
+    /* Update toggle-button tool-tip: */
+    m_pToggleButton->setToolTip(isOpened() ? tr("Collapse group") : tr("Expand group"));
+}
+
 void UIGChooserItemGroup::retranslateUi()
 {
     /* Update group tool-tip: */
@@ -1145,16 +1155,6 @@ QSizeF UIGChooserItemGroup::sizeHint(Qt::SizeHint which, const QSizeF &constrain
         return minimumSizeHint(isOpened());
     /* Else call to base-class: */
     return UIGChooserItem::sizeHint(which, constraint);
-}
-
-void UIGChooserItemGroup::updateToggleButtonToolTip()
-{
-    /* Is toggle-button created? */
-    if (!m_pToggleButton)
-        return;
-
-    /* Update toggle-button tool-tip: */
-    m_pToggleButton->setToolTip(isOpened() ? tr("Collapse group") : tr("Expand group"));
 }
 
 QPixmap UIGChooserItemGroup::toPixmap()
