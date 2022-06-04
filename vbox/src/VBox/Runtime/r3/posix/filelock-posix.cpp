@@ -1,10 +1,10 @@
-/* $Id: filelock-posix.cpp 37596 2011-06-22 19:30:06Z vboxsync $ */
+/* $Id: filelock-posix.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
 /** @file
  * IPRT - File Locking, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -33,7 +33,6 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/ioctl.h>
-#include <sys/fcntl.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/time.h>

@@ -1,10 +1,10 @@
-/* $Id: thread2-posix.cpp 39443 2011-11-28 15:01:21Z vboxsync $ */
+/* $Id: thread2-posix.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
 /** @file
  * IPRT - Threads part 2, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -62,7 +62,7 @@ RTDECL(int) RTThreadSleep(RTMSINTERVAL cMillies)
         pthread_yield_np();
 #elif defined(RT_OS_FREEBSD) /* void pthread_yield */
         pthread_yield();
-#elif defined(RT_OS_SOLARIS)
+#elif defined(RT_OS_SOLARIS) || defined(RT_OS_HAIKU)
         sched_yield();
 #else
         if (!pthread_yield())
@@ -101,7 +101,7 @@ RTDECL(int) RTThreadSleepNoLog(RTMSINTERVAL cMillies)
         pthread_yield_np();
 #elif defined(RT_OS_FREEBSD) /* void pthread_yield */
         pthread_yield();
-#elif defined(RT_OS_SOLARIS)
+#elif defined(RT_OS_SOLARIS) || defined(RT_OS_HAIKU)
         sched_yield();
 #else
         if (!pthread_yield())
@@ -130,7 +130,7 @@ RTDECL(bool) RTThreadYield(void)
 #endif
 #ifdef RT_OS_DARWIN
     pthread_yield_np();
-#elif defined(RT_OS_SOLARIS)
+#elif defined(RT_OS_SOLARIS) || defined(RT_OS_HAIKU)
     sched_yield();
 #else
     pthread_yield();

@@ -1,10 +1,10 @@
-/* $Id: RTHandleGetStandard-posix.cpp 33973 2010-11-11 11:10:10Z vboxsync $ */
+/* $Id: RTHandleGetStandard-posix.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
 /** @file
  * IPRT - RTHandleGetStandard, POSIX.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,7 +32,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/ioctl.h>
-#include <sys/fcntl.h>
 #include <fcntl.h>
 #ifdef _MSC_VER
 # include <io.h>

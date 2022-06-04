@@ -1,10 +1,10 @@
-/* $Id: semeventmulti-posix.cpp 40103 2012-02-13 17:57:39Z vboxsync $ */
+/* $Id: semeventmulti-posix.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphore, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -481,7 +481,7 @@ static int rtSemEventMultiPosixWaitTimed(struct RTSEMEVENTMULTIINTERNAL *pThis, 
     struct timespec     ts = {0,0};
     if (!pThis->fMonotonicClock)
     {
-#ifdef RT_OS_DARWIN
+#if defined(RT_OS_DARWIN) || defined(RT_OS_HAIKU)
         struct timeval  tv = {0,0};
         gettimeofday(&tv, NULL);
         ts.tv_sec = tv.tv_sec;

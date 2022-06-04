@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceTimeSync.cpp 37608 2011-06-23 11:47:33Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
@@ -410,7 +410,7 @@ static bool VBoxServiceTimeSyncAdjust(PCRTTIMESPEC pDrift)
     else if (g_cTimeSyncErrors++ < 10)
         VBoxServiceError("VBoxServiceTimeSyncAdjust: GetSystemTimeAdjustment failed, error=%ld\n", GetLastError());
 
-#elif defined(RT_OS_OS2)
+#elif defined(RT_OS_OS2) || defined(RT_OS_HAIKU)
     /* No API for doing gradual time adjustments. */
 
 #else /* PORTME */

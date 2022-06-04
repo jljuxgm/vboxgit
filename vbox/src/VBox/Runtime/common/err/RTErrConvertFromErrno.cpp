@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 40824 2012-04-08 16:28:24Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -430,7 +430,9 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         case EPROCLIM:          return VERR_MAX_PROCS_REACHED;
 #endif
 #ifdef EDOOFUS
+# if EDOOFUS != EINVAL
         case EDOOFUS:           return VERR_INTERNAL_ERROR;
+# endif
 #endif
 #ifdef ENOTSUP
 # ifndef EOPNOTSUPP
