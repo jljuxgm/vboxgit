@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42658 2012-08-07 12:33:59Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42659 2012-08-07 12:42:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1497,7 +1497,6 @@ bool UIGChooserModel::processContextMenuEvent(QGraphicsSceneContextMenuEvent *pE
                             popupContextMenu(UIGraphicsSelectorContextMenuType_Group, pEvent->screenPos());
                             return true;
                         }
-                        return false;
                     }
                     case UIGChooserItemType_Machine:
                     {
