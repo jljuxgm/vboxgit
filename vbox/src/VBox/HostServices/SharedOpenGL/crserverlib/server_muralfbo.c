@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 45159 2013-03-25 10:31:13Z vboxsync $ */
+/* $Id: server_muralfbo.c 45179 2013-03-25 17:31:01Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -334,7 +334,6 @@ static void crServerCreateMuralFBO(CRMuralInfo *mural)
     GLenum status;
     SPUDispatchTable *gl = &cr_server.head_spu->dispatch_table;
     CRContextInfo *pMuralContextInfo;
-    VBOXVR_TEXTURE Tex;
 
     CRASSERT(mural->aidFBOs[0]==0);
     CRASSERT(mural->aidFBOs[1]==0);
@@ -440,15 +439,10 @@ static void crServerCreateMuralFBO(CRMuralInfo *mural)
 
     CRASSERT(mural->aidColorTexs[CR_SERVER_FBO_FB_IDX(mural)]);
 
-    Tex.width = mural->width;
-    Tex.height = mural->height;
-    Tex.target = GL_TEXTURE_2D;
-    Tex.hwid = mural->aidColorTexs[CR_SERVER_FBO_FB_IDX(mural)];
-
-    CrVrScrCompositorEntryTexUpdate(&mural->CEntry, &Tex);
+    CrVrScrCompositorEntryTexNameUpdate(&mural->CEntry, mural->aidColorTexs[CR_SERVER_FBO_FB_IDX(mural)]);
 
     if (mural->fRootVrOn)
-        CrVrScrCompositorEntryTexUpdate(&mural->RootVrCEntry, &Tex);
+        CrVrScrCompositorEntryTexNameUpdate(&mural->RootVrCEntry, mural->aidColorTexs[CR_SERVER_FBO_FB_IDX(mural)]);
 }
 
 void crServerDeleteMuralFBO(CRMuralInfo *mural)
