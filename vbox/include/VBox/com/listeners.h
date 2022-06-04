@@ -1,6 +1,6 @@
-/* $Id: listeners.h 36536 2011-04-04 15:43:40Z vboxsync $ */
+/* $Id: listeners.h 45125 2013-03-21 14:09:06Z vboxsync $ */
 /** @file
- * Listeners helpers.
+ * MS COM / XPCOM Abstraction Layer - Listeners helpers.
  */
 
 /*
@@ -169,3 +169,4 @@ public:
 #endif
 
 #endif
+
