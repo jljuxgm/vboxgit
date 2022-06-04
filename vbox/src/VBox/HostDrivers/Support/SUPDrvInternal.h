@@ -1,4 +1,4 @@
-/* $Revision: 41117 $ */
+/* $Revision: 42784 $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -78,7 +78,7 @@
 
 #elif defined(RT_OS_LINUX)
 #   include <linux/version.h>
-#   if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,33)
+#   if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 33)
 #    include <generated/autoconf.h>
 #   else
 #    ifndef AUTOCONF_INCLUDED

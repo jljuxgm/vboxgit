@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 36947 2011-05-03 19:49:12Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 42784 2012-08-12 20:31:36Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -51,7 +51,7 @@ DECLHIDDEN(int) rtThreadNativeInit(void)
 
 DECLHIDDEN(int) rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enmType)
 {
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,11)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 11)
     /* See comment near MAX_RT_PRIO in linux/sched.h for details on
        sched_priority. */
     int                 iSchedClass = SCHED_NORMAL;

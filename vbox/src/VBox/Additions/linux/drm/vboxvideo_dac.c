@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dac.c 39335 2011-11-16 15:37:26Z vboxsync $
+/** @file $Id: vboxvideo_dac.c 42784 2012-08-12 20:31:36Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver, DAC functions
  */
@@ -43,7 +43,7 @@
  */
 
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,33)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 33)
 
 #include "vboxvideo_drv.h"
 
