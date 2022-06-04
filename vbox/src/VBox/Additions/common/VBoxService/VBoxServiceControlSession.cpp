@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 47551 2013-08-06 09:37:11Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 47620 2013-08-08 20:09:42Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles
  *                             the forked session processes.
@@ -1079,12 +1079,15 @@ RTEXITCODE gstcntlSessionForkWorker(PVBOXSERVICECTRLSESSION pSession)
     int rc = VbglR3GuestCtrlConnect(&uClientID);
     if (RT_SUCCESS(rc))
     {
-        /* Set session filter. */
+        /* Set session filter. This prevents the guest control
+         * host service to send messages which belong to another
+         * session we don't want to handle. */
         uint32_t uFilterAdd =
             VBOX_GUESTCTRL_CONTEXTID_MAKE_SESSION(pSession->StartupInfo.uSessionID);
+        uFilterAdd |= 0x7FFFFFF; /* We only want to filter for session IDs. */
 
-        rc = VbglR3GuestCtrlMsgSetFilter(uClientID, uFilterAdd, 0 /* Filter remove */);
-        VBoxServiceVerbose(3, "Setting message filterAdd=%RU32 returned %Rrc\n",
+        rc = VbglR3GuestCtrlMsgFilterSet(uClientID, uFilterAdd, 0 /* Filter remove */);
+        VBoxServiceVerbose(3, "Setting message filterAdd=0x%x returned %Rrc\n",
                            uFilterAdd, rc);
 
         if (   RT_FAILURE(rc)
