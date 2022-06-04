@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43247 2012-09-07 15:03:32Z vboxsync $
+# $Id: Makefile.kmk 43429 2012-09-25 13:57:48Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -411,6 +411,7 @@ VBOX_DI_VBAPP_DYLIBS = \
 	MacOS/VBoxSharedClipboard.dylib \
 	MacOS/VBoxDragAndDropSvc.dylib \
 	MacOS/VBoxGuestPropSvc.dylib \
+	MacOS/VBoxHostChannel.dylib \
 	MacOS/VBoxVMM.dylib \
 	MacOS/VBoxXPCOM.dylib \
 	MacOS/VBoxXPCOMC.dylib \
