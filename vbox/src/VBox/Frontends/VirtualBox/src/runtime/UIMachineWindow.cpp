@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 46704 2013-06-20 12:04:30Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 46898 2013-07-02 10:59:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -327,7 +327,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
     /* Depending on chosen result: */
     switch (closeAction)
     {
-        case MachineCloseAction_Save:
+        case MachineCloseAction_SaveState:
         {
             /* Save VM state: */
             machineLogic()->saveState();
