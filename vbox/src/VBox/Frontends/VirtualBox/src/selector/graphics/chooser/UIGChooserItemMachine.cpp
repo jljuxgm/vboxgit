@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43539 2012-10-04 12:41:57Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43540 2012-10-04 12:56:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -131,6 +131,11 @@ UIGChooserItemMachine::~UIGChooserItemMachine()
 QString UIGChooserItemMachine::name() const
 {
     return UIVMItem::name();
+}
+
+QString UIGChooserItemMachine::definition() const
+{
+    return QString("m=%1").arg(name());
 }
 
 bool UIGChooserItemMachine::isLockedMachine() const

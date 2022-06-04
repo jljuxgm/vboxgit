@@ -1,4 +1,4 @@
-/* $Id: UIGChooser.cpp 43536 2012-10-04 11:53:42Z vboxsync $ */
+/* $Id: UIGChooser.cpp 43540 2012-10-04 12:56:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -148,16 +148,10 @@ void UIGChooser::load()
 {
     /* Prepare model: */
     m_pChooserModel->prepare();
-
-    /* Load last selected item: */
-    m_pChooserModel->setCurrentItemDefinition(vboxGlobal().virtualBox().GetExtraData(GUI_LastItemSelected));
 }
 
 void UIGChooser::save()
 {
-    /* Save last selected item: */
-    vboxGlobal().virtualBox().SetExtraData(GUI_LastItemSelected, m_pChooserModel->currentItemDefinition());
-
     /* Cleanup model: */
     m_pChooserModel->cleanup();
 }
