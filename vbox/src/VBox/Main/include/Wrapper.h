@@ -1,4 +1,4 @@
-/* $Id: Wrapper.h 45518 2013-04-12 12:01:02Z vboxsync $ */
+/* $Id: Wrapper.h 47650 2013-08-09 14:27:21Z vboxsync $ */
 
 /** @file
  *
@@ -23,6 +23,9 @@
 #include <vector>
 #include <VBox/com/ptr.h>
 #include <VBox/com/array.h>
+
+#include "AutoCaller.h"
+
 
 /**
  * Checks that the given pointer to an output argument is valid and throws
