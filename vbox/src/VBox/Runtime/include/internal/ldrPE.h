@@ -1,4 +1,4 @@
-/* $Id: ldrPE.h 46274 2013-05-26 22:40:09Z vboxsync $ */
+/* $Id: ldrPE.h 46278 2013-05-26 23:22:48Z vboxsync $ */
 /** @file
  * IPRT - Windows NT PE Structures and Constants.
  */
@@ -836,7 +836,6 @@ typedef union _IMAGE_AUX_SYMBOL_EX
         uint8_t     rgbReserved[16];
     } CRC;
 } IMAGE_AUX_SYMBOL_EX;
-#pragma pack()
 AssertCompileSize(IMAGE_AUX_SYMBOL_EX, IMAGE_SIZE_OF_SYMBOL_EX);
 typedef IMAGE_AUX_SYMBOL_EX *PIMAGE_AUX_SYMBOL_EX;
 typedef IMAGE_AUX_SYMBOL_EX const *PCIMAGE_AUX_SYMBOL_EX;
