@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43010 2012-08-27 19:25:04Z vboxsync $
+# $Id: Makefile.kmk 43059 2012-08-29 07:48:37Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -97,6 +97,7 @@ ifneq ($(KBUILD_TYPE),release)
  VirtualBox_DEFS.win     += VBOX_GUI_USE_DDRAW
 endif
 VirtualBox_DEFS          += \
+	$(if $(VBOX_WITH_ADDITIONS_AUTOUPDATE_UI),VBOX_WITH_ADDITIONS_AUTOUPDATE_UI) \
 	$(if $(VBOX_WITH_UPDATE_REQUEST),VBOX_WITH_UPDATE_REQUEST) \
 	$(if $(VBOX_WITH_ALSA),VBOX_WITH_ALSA) \
 	$(if $(VBOX_WITH_PULSE),VBOX_WITH_PULSE) \
