@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 42673 2012-08-08 08:07:09Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 42674 2012-08-08 08:14:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -327,7 +327,7 @@ STDMETHODIMP GuestDirectory::Read(IFsObjInfo **aInfo)
 
                 /* Create the object. */
                 ComObjPtr<GuestFsObjInfo> pFsObjInfo;
-                HRESULT hr = pFsObjInfo.createObject();
+                hr = pFsObjInfo.createObject();
                 if (FAILED(hr)) throw VERR_COM_UNEXPECTED;
 
                 rc = pFsObjInfo->init(objData);

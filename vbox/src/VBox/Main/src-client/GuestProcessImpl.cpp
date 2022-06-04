@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 42673 2012-08-08 08:07:09Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 42674 2012-08-08 08:14:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -1370,7 +1370,7 @@ int GuestProcess::waitForStart(uint32_t uTimeoutMS)
         alock.release();
 
         GuestProcessWaitResult waitRes;
-        int rc = waitFor(ProcessWaitForFlag_Start, uTimeoutMS, waitRes);
+        rc = waitFor(ProcessWaitForFlag_Start, uTimeoutMS, waitRes);
         if (   RT_FAILURE(rc)
             || (    waitRes.mResult == ProcessWaitResult_Start
                 &&  waitRes.mResult == ProcessWaitResult_Any

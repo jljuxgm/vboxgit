@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 42673 2012-08-08 08:07:09Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 42674 2012-08-08 08:14:13Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -582,7 +582,7 @@ int GuestEnvironment::appendToEnvBlock(const char *pszEnv, void **ppvList, size_
 
 int GuestFsObjData::FromLs(const GuestProcessStreamBlock &strmBlk)
 {
-    LogFlowFuncEnter(("\n"));
+    LogFlowFunc(("\n"));
 
     int rc = VINF_SUCCESS;
 
@@ -619,7 +619,7 @@ int GuestFsObjData::FromLs(const GuestProcessStreamBlock &strmBlk)
 
 int GuestFsObjData::FromStat(const GuestProcessStreamBlock &strmBlk)
 {
-    LogFlowFuncEnter(("\n"));
+    LogFlowFunc(("\n"));
 
     int rc = VINF_SUCCESS;
 
