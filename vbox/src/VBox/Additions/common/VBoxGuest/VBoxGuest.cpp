@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 45459 2013-04-10 15:24:23Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 45738 2013-04-25 18:51:30Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2280,6 +2280,9 @@ static int VBoxGuestCommonIOCtl_SetMouseStatus(PVBOXGUESTDEVEXT pDevExt, PVBOXGU
 
     RTSpinlockAcquire(pDevExt->SessionSpinlock);
 
+    /* For all the bits which the guest is allowed to set, check whether the
+     * requested value is different to the current one and adjust the global
+     * usage counter and if appropriate the global state if so. */
     for (i = 0; i < sizeof(fFeatures) * 8; i++)
     {
         if (RT_BIT_32(i) & VMMDEV_MOUSE_GUEST_MASK)
