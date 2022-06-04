@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46098 2013-05-15 14:16:27Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46103 2013-05-15 17:02:47Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3468,6 +3468,8 @@ static int hmR0VmxLoadGuestSegmentRegs(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
                                      VMX_VMCS32_GUEST_GS_ACCESS_RIGHTS, &pMixedCtx->gs, pMixedCtx);
         AssertRCReturn(rc, rc);
 
+        Log(("Load: CS=%#RX16 Base=%#RX64 Limit=%#RX32 Attr=%#RX32\n", pMixedCtx->cs.Sel, pMixedCtx->cs.u64Base,
+             pMixedCtx->cs.u32Limit, pMixedCtx->cs.Attr.u));
 #ifdef VBOX_STRICT
         hmR0VmxValidateSegmentRegs(pVM, pVCpu, pMixedCtx);
 #endif
