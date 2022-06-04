@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 42953 2012-08-23 15:26:30Z vboxsync $ */
+/* $Id: DevE1000.cpp 42954 2012-08-23 15:46:26Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -6764,7 +6764,9 @@ static DECLCALLBACK(void) e1kPowerOff(PPDMDEVINS pDevIns)
 static DECLCALLBACK(void) e1kReset(PPDMDEVINS pDevIns)
 {
     E1KSTATE *pState = PDMINS_2_DATA(pDevIns, E1KSTATE*);
+#ifdef E1K_TX_DELAY
     e1kCancelTimer(pState, pState->CTX_SUFF(pTXDTimer));
+#endif /* E1K_TX_DELAY */
     e1kCancelTimer(pState, pState->CTX_SUFF(pIntTimer));
     e1kCancelTimer(pState, pState->CTX_SUFF(pLUTimer));
     e1kXmitFreeBuf(pState);
