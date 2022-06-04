@@ -1,4 +1,4 @@
-# $Id: Config.kmk 45917 2013-05-06 15:33:01Z vboxsync $
+# $Id: Config.kmk 45923 2013-05-06 19:14:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1042,6 +1042,9 @@ ifdef VBOX_OSE
  VBOX_WITH_NETFLT_CROSSBOW=
  ifn1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_INSTALLER=
+ endif
+ if1of ($(KBUILD_TARGET), win)
+  VBOX_WITH_VPX=
  endif
  # branding
  VBOX_BRAND_LICENSE_HTML       := $(PATH_ROOT)/doc/License-gpl-2.0.html
@@ -5300,7 +5303,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45917 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45923 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
