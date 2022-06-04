@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46035 2013-05-13 16:47:40Z vboxsync $
+# $Id: Makefile.kmk 46638 2013-06-18 17:12:16Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -87,7 +87,7 @@ PROGRAMS += \
 	tstRTMemPool \
 	tstRTMemWipe \
 	tstMove \
-	tstMp-1 \
+	tstRTMp-1 \
 	tstOnce \
 	tstRTPath \
 	tstRTPipe \
@@ -423,8 +423,8 @@ tstRTMemWipe_SOURCES = tstRTMemWipe.cpp
 tstMove_TEMPLATE = VBOXR3TSTEXE
 tstMove_SOURCES = tstMove.cpp
 
-tstMp-1_TEMPLATE = VBOXR3TSTEXE
-tstMp-1_SOURCES = tstMp-1.cpp
+tstRTMp-1_TEMPLATE = VBOXR3TSTEXE
+tstRTMp-1_SOURCES = tstRTMp-1.cpp
 
 tstNoCrt-1_TEMPLATE = VBOXR3TSTEXE
 tstNoCrt-1_DEFS = RT_WITHOUT_NOCRT_WRAPPER_ALIASES
