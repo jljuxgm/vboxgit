@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 38478 2011-08-16 13:50:27Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 43763 2012-10-29 07:44:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -403,6 +403,16 @@ QString QIFileDialog::getSaveFileName (const QString &aStartWith,
                                        bool           fConfirmOverwrite /* = false */)
 {
 #if defined Q_WS_WIN
+
+    /* Further code (WinAPI call to GetSaveFileName() in other thread)
+     * seems not necessary any more since the MS COM issue has been fixed,
+     * we can just call for the default QFileDialog::getSaveFileName(): */
+    Q_UNUSED(aResolveSymlinks);
+    QFileDialog::Options o;
+    if (!fConfirmOverwrite)
+        o |= QFileDialog::DontConfirmOverwrite;
+    return QFileDialog::getSaveFileName(aParent, aCaption, aStartWith,
+                                        aFilters, aSelectedFilter, o);
 
     /**
      *  QEvent class reimplementation to carry Win32 API native dialog's
