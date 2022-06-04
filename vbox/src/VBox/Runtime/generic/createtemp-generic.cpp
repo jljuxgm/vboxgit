@@ -1,4 +1,4 @@
-/* $Id: createtemp-generic.cpp 42708 2012-08-09 10:15:38Z vboxsync $ */
+/* $Id: createtemp-generic.cpp 42709 2012-08-09 12:32:18Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateTemp, generic implementation.
  */
@@ -107,8 +107,8 @@ static void rtCreateTempFillTemplate(char *pszX, unsigned cXes)
 
 RTDECL(int) RTDirCreateTemp(char *pszTemplate, RTFMODE fMode)
 {
-    char       *pszX;
-    unsigned    cXes;
+    char       *pszX = NULL;  /* Initialise to make gcc happy. */
+    unsigned    cXes = 0;
     int rc = rtCreateTempValidateTemplate(pszTemplate, &pszX, &cXes);
     if (RT_FAILURE(rc))
     {
