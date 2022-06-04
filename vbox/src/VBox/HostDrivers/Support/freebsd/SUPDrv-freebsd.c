@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 43394 2012-09-21 11:11:17Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 43435 2012-09-26 09:31:17Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -195,11 +195,9 @@ static int VBoxDrvFreeBSDUnload(void)
 
     supdrvDeleteDevExt(&g_VBoxDrvFreeBSDDevExt);
 
-    RTR0Term();
+    RTR0TermForced();
 
     memset(&g_VBoxDrvFreeBSDDevExt, 0, sizeof(g_VBoxDrvFreeBSDDevExt));
-
-    Log(("VBoxDrvFreeBSDUnload: returns\n"));
     return VINF_SUCCESS;
 }
 
