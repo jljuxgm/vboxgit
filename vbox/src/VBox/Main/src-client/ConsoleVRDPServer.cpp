@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 41352 2012-05-18 12:19:49Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 42248 2012-07-20 08:39:45Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1264,7 +1264,9 @@ DECLCALLBACK(void) ConsoleVRDPServer::VRDPCallbackVideoModeHint(void *pvCallback
 {
     ConsoleVRDPServer *server = static_cast<ConsoleVRDPServer*>(pvCallback);
 
-    server->mConsole->getDisplay()->SetVideoModeHint(cWidth, cHeight, cBitsPerPixel, uScreenId);
+    server->mConsole->getDisplay()->SetVideoModeHint(uScreenId, TRUE /*=enabled*/,
+                                                     FALSE /*=changeOrigin*/, 0/*=OriginX*/, 0/*=OriginY*/,
+                                                     cWidth, cHeight, cBitsPerPixel);
 }
 
 DECLCALLBACK(void) ConsoleVRDPServer::VRDECallbackAudioIn(void *pvCallback,

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 41597 2012-06-06 13:19:24Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 42248 2012-07-20 08:39:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2126,8 +2126,9 @@ STDMETHODIMP Display::GetFramebuffer (ULONG aScreenId,
     return S_OK;
 }
 
-STDMETHODIMP Display::SetVideoModeHint(ULONG aWidth, ULONG aHeight,
-    ULONG aBitsPerPixel, ULONG aDisplay)
+STDMETHODIMP Display::SetVideoModeHint(ULONG aDisplay, BOOL aEnabled,
+                                       BOOL aChangeOrigin, LONG aOriginX, LONG aOriginY,
+                                       ULONG aWidth, ULONG aHeight, ULONG aBitsPerPixel)
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -2135,6 +2136,12 @@ STDMETHODIMP Display::SetVideoModeHint(ULONG aWidth, ULONG aHeight,
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     CHECK_CONSOLE_DRV (mpDrv);
+
+    /* XXX Ignore these parameters for now: */
+    NOREF(aChangeOrigin);
+    NOREF(aOriginX);
+    NOREF(aOriginY);
+    NOREF(aEnabled);
 
     /*
      * Do some rough checks for valid input

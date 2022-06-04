@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 42176 2012-07-17 12:23:50Z vboxsync $ */
+/* $Id: VBoxManage.h 42248 2012-07-20 08:39:45Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -242,6 +242,7 @@ RTEXITCODE handleConvertFromRaw(int argc, char *argv[]);
 int handleShowHardDiskInfo(HandlerArg *a);
 int handleCloseMedium(HandlerArg *a);
 int parseDiskType(const char *psz, MediumType_T *pDiskType);
+int parseBool(const char *psz, bool *pb);
 
 /* VBoxManageStorageController.cpp */
 int handleStorageAttach(HandlerArg *a);

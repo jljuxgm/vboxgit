@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 41348 2012-05-17 22:51:54Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 42248 2012-07-20 08:39:45Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -121,7 +121,7 @@ int parseDiskType(const char *psz, MediumType_T *pDiskType)
 }
 
 /** @todo move this into getopt, as getting bool values is generic */
-static int parseBool(const char *psz, bool *pb)
+int parseBool(const char *psz, bool *pb)
 {
     int rc = VINF_SUCCESS;
     if (    !RTStrICmp(psz, "on")

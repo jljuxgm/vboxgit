@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIMachineView.cpp 42248 2012-07-20 08:39:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -175,7 +175,7 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
     AssertMsg(newSize.isValid(), ("Size should be valid!\n"));
 
     /* Send new size-hint to the guest: */
-    session().GetConsole().GetDisplay().SetVideoModeHint(newSize.width(), newSize.height(), 0, screenId());
+    session().GetConsole().GetDisplay().SetVideoModeHint(screenId(), true, false, 0, 0, newSize.width(), newSize.height(), 0);
     /* And track whether we have had a "normal" resize since the last
      * fullscreen resize hint was sent: */
     QString strKey = makeExtraDataKeyPerMonitor(GUI_LastGuestSizeHintWasFullscreen);

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 42236 2012-07-19 17:08:43Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 42248 2012-07-20 08:39:45Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -432,7 +432,9 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            vrdeport <port> |\n"
                      "                            vrdeproperty <name=[value]> |\n"
                      "                            vrdevideochannelquality <percent>\n"
-                     "                            setvideomodehint <xres> <yres> <bpp> [display] |\n"
+                     "                            setvideomodehint <xres> <yres> <bpp>\n"
+                     "                                            [[<display>] [<enabled:yes|no>\n"
+                     "                                              [<xorigin> <yorigin>]]] |\n"
                      "                            screenshotpng <file> [display] |\n"
                      "                            setcredentials <username> <password> <domain>\n"
                      "                                           [--allowlocallogon <yes|no>] |\n"
