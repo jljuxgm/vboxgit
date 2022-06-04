@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerMouse.cpp 42678 2012-08-08 11:25:47Z vboxsync $ */
+/* $Id: UIGChooserHandlerMouse.cpp 43012 2012-08-27 19:44:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -176,14 +176,27 @@ bool UIGChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pE
                     /* If click was at left part: */
                     if (iMouseDoubleClickX < iGroupItemWidth / 2)
                     {
-                        /* Do not allow for unhovered root: */
-                        if (pGroupItem->isRoot() && !pGroupItem->isHovered())
-                            return false;
-                        /* Unindent root if possible: */
-                        if (model()->root() != model()->mainRoot())
+                        /* If it was a root: */
+                        if (pGroupItem->isRoot())
                         {
-                            pGroupItem->setHovered(false);
-                            model()->unindentRoot();
+                            /* Do not allow for unhovered root: */
+                            if (!pGroupItem->isHovered())
+                                return false;
+                            /* Unindent root if possible: */
+                            if (model()->root() != model()->mainRoot())
+                            {
+                                pGroupItem->setHovered(false);
+                                model()->unindentRoot();
+                            }
+                        }
+                        /* For simple group item: */
+                        else
+                        {
+                            /* Toggle it: */
+                            if (pGroupItem->opened())
+                                pGroupItem->close();
+                            else if (pGroupItem->closed())
+                                pGroupItem->open();
                         }
                     }
                     else
