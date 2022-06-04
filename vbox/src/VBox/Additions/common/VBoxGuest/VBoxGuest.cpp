@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 46196 2013-05-21 17:06:17Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 46428 2013-06-07 08:26:18Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2543,6 +2543,8 @@ static int VBoxGuestCommonGuestCapsAcquire(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTS
 {
     uint32_t fSetCaps = 0;
 
+    LogRel(("VBoxGuest: VBoxGuestCommonGuestCapsAcquire: pSession(0x%p), OR(0x%x), NOT(0x%x), flags(0x%x)\n", pSession, fOrMask, fNotMask, enmFlags));
+
     if (!VBoxGuestCommonGuestCapsValidateValues(fOrMask))
     {
         LogRel(("invalid fOrMask 0x%x\n", fOrMask));
@@ -2617,6 +2619,8 @@ static int VBoxGuestCommonGuestCapsAcquire(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTS
     int rc = VBoxGuestSetGuestCapabilities(fSessionOrCaps, fSessionNotCaps);
     if (!RT_SUCCESS(rc))
     {
+        LogRel(("VBoxGuest: VBoxGuestCommonGuestCapsAcquire: VBoxGuestSetGuestCapabilities failed, rc %d\n", rc));
+
         /* Failure branch
          * this is generally bad since e.g. failure to release the caps may result in other sessions not being able to use it
          * so we are not trying to restore the caps back to their values before the VBoxGuestCommonGuestCapsAcquire call,
