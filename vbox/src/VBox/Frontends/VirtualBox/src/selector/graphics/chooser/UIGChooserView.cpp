@@ -1,4 +1,4 @@
-/* $Id: UIGChooserView.cpp 42802 2012-08-14 10:40:22Z vboxsync $ */
+/* $Id: UIGChooserView.cpp 42872 2012-08-18 12:54:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,7 +29,7 @@ UIGChooserView::UIGChooserView(QWidget *pParent)
 {
     /* Fix palette: */
     QPalette pal = palette();
-    pal.setColor(QPalette::Base, pal.color(QPalette::Window));
+    pal.setColor(QPalette::Base, QColor(Qt::white).darker(106));
     setPalette(pal);
 
     /* Scrollbars policy: */
