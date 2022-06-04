@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 45927 2013-05-07 08:05:43Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 45971 2013-05-09 19:46:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -996,6 +996,11 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         BOOL fEnableVPID = false;
         hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_VPID, &fEnableVPID);       H();
         InsertConfigInteger(pHM, "EnableVPID", fEnableVPID);
+
+        /* Unrestricted execution aka UX (VT-x) */
+        BOOL fEnableUX = false;
+        hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_UnrestrictedExecution, &fEnableUX); H();
+        InsertConfigInteger(pHM, "EnableUX", fEnableUX);
 
         /*
          * MM values.

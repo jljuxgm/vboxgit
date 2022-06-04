@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 45971 2013-05-09 19:46:52Z vboxsync $ */
 
 /** @file
  *
@@ -72,6 +72,7 @@ public:
     STDMETHOD(COMGETTER(HWVirtExEnabled))(BOOL *a_pfEnabled);
     STDMETHOD(COMGETTER(HWVirtExNestedPagingEnabled))(BOOL *a_pfEnabled);
     STDMETHOD(COMGETTER(HWVirtExVPIDEnabled))(BOOL *a_pfEnabled);
+    STDMETHOD(COMGETTER(HWVirtExUXEnabled))(BOOL *a_pfEnabled);
     STDMETHOD(COMGETTER(PAEEnabled))(BOOL *a_pfEnabled);
     STDMETHOD(COMGETTER(OSName))(BSTR *a_pbstrName);
     STDMETHOD(COMGETTER(OSVersion))(BSTR *a_pbstrVersion);

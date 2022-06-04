@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 45926 2013-05-06 20:26:43Z vboxsync $ */
+/* $Id: MachineImpl.h 45971 2013-05-09 19:46:52Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -268,6 +268,7 @@ public:
         BOOL                mHWVirtExNestedPagingEnabled;
         BOOL                mHWVirtExLargePagesEnabled;
         BOOL                mHWVirtExVPIDEnabled;
+        BOOL                mHWVirtExUXEnabled;
         BOOL                mHWVirtExForceEnabled;
         BOOL                mAccelerate2DVideoEnabled;
         BOOL                mPAEEnabled;

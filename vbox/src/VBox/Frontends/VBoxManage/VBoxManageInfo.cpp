@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 45926 2013-05-06 20:26:43Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 45971 2013-05-09 19:46:52Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -674,6 +674,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_NestedPaging, &f),"nestedpaging", "Nested Paging");
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_LargePages, &f),  "largepages",   "Large Pages");
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_VPID, &f),        "vtxvpid",      "VT-x VPID");
+    SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_UnrestrictedExecution, &f), "vtxux", "VT-x unr. exec.");
 
     MachineState_T machineState;
     CHECK_ERROR2_RET(machine, COMGETTER(State)(&machineState), hrcCheck);

@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 45528 2013-04-12 17:32:57Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 45971 2013-05-09 19:46:52Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -666,6 +666,32 @@ STDMETHODIMP MachineDebugger::COMGETTER(HWVirtExVPIDEnabled) (BOOL *aEnabled)
 
     if (ptrVM.isOk())
         *aEnabled = HMR3IsVpidActive(ptrVM.rawUVM());
+    else
+        *aEnabled = false;
+
+    return S_OK;
+}
+
+/**
+ * Returns the current unrestricted execution setting.
+ *
+ * @returns COM status code
+ * @param   aEnabled address of result variable
+ */
+STDMETHODIMP MachineDebugger::COMGETTER(HWVirtExUXEnabled) (BOOL *aEnabled)
+{
+    CheckComArgOutPointerValid(aEnabled);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc()))
+        return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    Console::SafeVMPtrQuiet ptrVM(mParent);
+
+    if (ptrVM.isOk())
+        *aEnabled = HMR3IsUXActive(ptrVM.rawUVM());
     else
         *aEnabled = false;
 
