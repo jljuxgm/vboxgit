@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 45808 2013-04-29 12:41:07Z vboxsync $ */
+/* $Id: PGMInternal.h 45826 2013-04-30 00:14:47Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4026,7 +4026,7 @@ void            pgmMapClearShadowPDEs(PVM pVM, PPGMPOOLPAGE pShwPageCR3, PPGMMAP
 int             pgmMapActivateCR3(PVM pVM, PPGMPOOLPAGE pShwPageCR3);
 int             pgmMapDeactivateCR3(PVM pVM, PPGMPOOLPAGE pShwPageCR3);
 
-int             pgmShwMakePageSupervisorAndWritable(PVMCPU pVCpu, RTGCPTR GCPtr, uint32_t fOpFlags);
+int             pgmShwMakePageSupervisorAndWritable(PVMCPU pVCpu, RTGCPTR GCPtr, bool fBigPage, uint32_t fOpFlags);
 int             pgmShwSyncPaePDPtr(PVMCPU pVCpu, RTGCPTR GCPtr, X86PGPAEUINT uGstPdpe, PX86PDPAE *ppPD);
 int             pgmShwSyncNestedPageLocked(PVMCPU pVCpu, RTGCPHYS GCPhysFault, uint32_t cPages, PGMMODE enmShwPagingMode);
 
