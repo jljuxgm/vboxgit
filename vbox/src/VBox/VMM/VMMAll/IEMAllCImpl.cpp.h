@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 47548 2013-08-06 03:58:21Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 47558 2013-08-06 13:50:53Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -3322,6 +3322,75 @@ IEM_CIMPL_DEF_5(iemCImpl_load_SReg_Greg,
     }
 
     return rcStrict;
+}
+
+
+/**
+ * Implements verr (fWrite = false) and verw (fWrite = true).
+ */
+IEM_CIMPL_DEF_2(iemCImpl_VerX, uint16_t, uSel, bool, fWrite)
+{
+    PCPUMCTX pCtx = pIemCpu->CTX_SUFF(pCtx);
+    Assert(!IEM_IS_REAL_OR_V86_MODE(pIemCpu));
+
+    /** @todo figure whether the accessed bit is set or not. */
+
+    bool fAccessible = true;
+    if (!(uSel & X86_SEL_MASK_OFF_RPL))
+        fAccessible = false; /** @todo test this on 64-bit. */
+    else
+    {
+        /* Fetch the descriptor. */
+        RTGCPTR GCPtrBase;
+        if (uSel & X86_SEL_LDT)
+        {
+            if (   !pCtx->ldtr.Attr.n.u1Present
+                || (uSel | X86_SEL_RPL_LDT) > pCtx->ldtr.u32Limit )
+                fAccessible = false;
+            GCPtrBase = pCtx->ldtr.u64Base;
+        }
+        else
+        {
+            if ((uSel | X86_SEL_RPL_LDT) > pCtx->gdtr.cbGdt)
+                fAccessible = false;
+            GCPtrBase = pCtx->gdtr.pGdt;
+        }
+        if (fAccessible)
+        {
+            IEMSELDESC Desc;
+            VBOXSTRICTRC rcStrict = iemMemFetchSysU64(pIemCpu, &Desc.Legacy.u, UINT8_MAX, GCPtrBase + (uSel & X86_SEL_MASK));
+            if (rcStrict != VINF_SUCCESS)
+                return rcStrict;
+
+            /* Check the descriptor, order doesn't matter much here. */
+            if (   !Desc.Legacy.Gen.u1DescType
+                || !Desc.Legacy.Gen.u1Present)
+                fAccessible = false;
+            else
+            {
+                if (  fWrite
+                    ? (Desc.Legacy.Gen.u4Type & (X86_SEL_TYPE_CODE | X86_SEL_TYPE_WRITE)) != X86_SEL_TYPE_WRITE
+                    : (Desc.Legacy.Gen.u4Type & (X86_SEL_TYPE_CODE | X86_SEL_TYPE_READ))  == X86_SEL_TYPE_CODE)
+                    fAccessible = false;
+
+                /** @todo testcase for the conforming behavior. */
+                if (   (Desc.Legacy.Gen.u4Type & (X86_SEL_TYPE_CODE | X86_SEL_TYPE_CONF))
+                    != (X86_SEL_TYPE_CODE | X86_SEL_TYPE_CONF))
+                {
+                    if ((unsigned)(uSel & X86_SEL_RPL) > Desc.Legacy.Gen.u2Dpl)
+                        fAccessible = false;
+                    else if (pIemCpu->uCpl > Desc.Legacy.Gen.u2Dpl)
+                        fAccessible = false;
+                }
+            }
+        }
+    }
+
+    /* commit */
+    pIemCpu->CTX_SUFF(pCtx)->eflags.Bits.u1ZF = fAccessible;
+
+    iemRegAddToRip(pIemCpu, cbInstr);
+    return VINF_SUCCESS;
 }
 
 
