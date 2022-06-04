@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 45536 2013-04-13 16:25:46Z vboxsync $ */
+/* $Id: TRPM.cpp 45618 2013-04-18 18:41:07Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -670,7 +670,7 @@ VMMR3DECL(void) TRPMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     CPUMSetHyperIDTR(pVCpu, VM_RC_ADDR(pVM, &pVM->trpm.s.aIdt[0]), sizeof(pVM->trpm.s.aIdt)-1);
 
     if (    !pVM->trpm.s.fDisableMonitoring
-        &&  !VMMIsHwVirtExtForced(pVM))
+        &&  !HMIsEnabled(pVM))
     {
 #ifdef TRPM_TRACK_SHADOW_IDT_CHANGES
         if (pVM->trpm.s.pvMonShwIdtRC != RTRCPTR_MAX)

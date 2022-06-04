@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 45028 2013-03-13 20:35:58Z vboxsync $ */
+/* $Id: PGM.cpp 45618 2013-04-18 18:41:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2374,7 +2374,7 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      */
     pVM->pgm.s.pvZeroPgR0 = MMHyperR3ToR0(pVM, pVM->pgm.s.pvZeroPgR3);
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    AssertRelease(pVM->pgm.s.pvZeroPgR0 != NIL_RTR0PTR || !VMMIsHwVirtExtForced(pVM));
+    AssertRelease(pVM->pgm.s.pvZeroPgR0 != NIL_RTR0PTR || !HMIsEnabled(pVM));
 #else
     AssertRelease(pVM->pgm.s.pvZeroPgR0 != NIL_RTR0PTR);
 #endif

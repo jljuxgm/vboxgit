@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 45305 2013-04-03 11:15:02Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 45618 2013-04-18 18:41:07Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1237,7 +1237,8 @@ static REMFNDESC g_aVMMImports[] =
     { "EMRemIsLockOwner",                       VMM_FN(EMRemIsLockOwner),               &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_VOID,   sizeof(bool),       NULL },
     { "EMGetInhibitInterruptsPC",               VMM_FN(EMGetInhibitInterruptsPC),       &g_aArgsVMCPU[0],                           RT_ELEMENTS(g_aArgsVMCPU),                             REMFNDESC_FLAGS_RET_INT,    sizeof(RTGCPTR),    NULL },
     { "EMSetInhibitInterruptsPC",               VMM_FN(EMSetInhibitInterruptsPC),       &g_aArgsEMSetInhibitInterruptsPC[0],        RT_ELEMENTS(g_aArgsEMSetInhibitInterruptsPC),          REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
-    { "HMR3CanExecuteGuest",                    VMM_FN(HMR3CanExecuteGuest),            &g_aArgsHMR3CanExecuteGuest[0],             RT_ELEMENTS(g_aArgsHMR3CanExecuteGuest),               REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
+    { "HMIsEnabledNotMacro",                    VMM_FN(HMIsEnabledNotMacro),            &g_aArgsVM[0],                              RT_ELEMENTS(g_aArgsVM),                                REMFNDESC_FLAGS_RET_INT,    sizeof(bool),       NULL },
+    { "HMR3CanExecuteGuest",                    VMM_FN(HMR3CanExecuteGuest),            &g_aArgsHMR3CanExecuteGuest[0],             RT_ELEMENTS(g_aArgsHMR3CanExecuteGuest),               REMFNDESC_FLAGS_RET_INT,    sizeof(bool),       NULL },
     { "IOMIOPortRead",                          VMM_FN(IOMIOPortRead),                  &g_aArgsIOMIOPortRead[0],                   RT_ELEMENTS(g_aArgsIOMIOPortRead),                     REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "IOMIOPortWrite",                         VMM_FN(IOMIOPortWrite),                 &g_aArgsIOMIOPortWrite[0],                  RT_ELEMENTS(g_aArgsIOMIOPortWrite),                    REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },
     { "IOMMMIORead",                            VMM_FN(IOMMMIORead),                    &g_aArgsIOMMMIORead[0],                     RT_ELEMENTS(g_aArgsIOMMMIORead),                       REMFNDESC_FLAGS_RET_INT,    sizeof(int),        NULL },

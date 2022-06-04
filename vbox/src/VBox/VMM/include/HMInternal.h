@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45585 2013-04-17 11:31:45Z vboxsync $ */
+/* $Id: HMInternal.h 45618 2013-04-18 18:41:07Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -265,9 +265,6 @@ typedef struct HM
     /** Set when we've initialized VMX or SVM. */
     bool                        fInitialized;
 
-    /** Set when hardware acceleration is allowed. */
-    bool                        fAllowed;
-
     /** Set if nested paging is enabled. */
     bool                        fNestedPaging;
 
@@ -291,7 +288,7 @@ typedef struct HM
 
     /** Set when TPR patching is active. */
     bool                        fTPRPatchingActive;
-    bool                        u8Alignment[6];
+    bool                        u8Alignment[7];
 
     /** And mask for copying register contents. */
     uint64_t                    u64RegisterMask;
