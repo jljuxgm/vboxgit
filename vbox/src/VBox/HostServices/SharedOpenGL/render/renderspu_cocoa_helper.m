@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 44756 2013-02-19 17:10:41Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 44766 2013-02-20 15:43:52Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1592,8 +1592,15 @@ void cocoaViewMakeCurrentContext(NativeNSViewRef pView, NativeNSOpenGLContextRef
 
     DEBUG_MSG(("cocoaViewMakeCurrentContext(%p, %p)\n", (void*)pView, (void*)pCtx));
 
-    [(OverlayView*)pView setGLCtx:pCtx];
-    [(OverlayView*)pView makeCurrentFBO];
+    if (pView)
+    {
+        [(OverlayView*)pView setGLCtx:pCtx];
+        [(OverlayView*)pView makeCurrentFBO];
+    }
+    else
+    {
+        vboxCtxSetCurrent(NULL);
+    }
 
     [pPool release];
 }
