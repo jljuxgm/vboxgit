@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 45798 2013-04-29 03:40:54Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 45965 2013-05-09 15:32:14Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1531,7 +1531,7 @@ VMMDECL(int) CPUMGetGuestCRx(PVMCPU pVCpu, unsigned iReg, uint64_t *pValue)
         case DISCREG_CR8:
         {
             uint8_t u8Tpr;
-            int rc = PDMApicGetTPR(pVCpu, &u8Tpr, NULL /*pfPending*/);
+            int rc = PDMApicGetTPR(pVCpu, &u8Tpr, NULL /* pfPending */, NULL /* pu8PendingIrq */);
             if (RT_FAILURE(rc))
             {
                 AssertMsg(rc == VERR_PDM_NO_APIC_INSTANCE, ("%Rrc\n", rc));

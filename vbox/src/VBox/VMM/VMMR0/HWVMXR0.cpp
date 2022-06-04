@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 45955 2013-05-08 18:04:10Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 45965 2013-05-09 15:32:14Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3176,7 +3176,7 @@ ResumeExecution:
         /* TPR caching in CR8 */
         bool    fPending;
 
-        rc2 = PDMApicGetTPR(pVCpu, &u8LastTPR, &fPending);
+        rc2 = PDMApicGetTPR(pVCpu, &u8LastTPR, &fPending, NULL /* pu8PendingIrq */);
         AssertRC(rc2);
         /* The TPR can be found at offset 0x80 in the APIC mmio page. */
         pVCpu->hm.s.vmx.pbVirtApic[0x80] = u8LastTPR;

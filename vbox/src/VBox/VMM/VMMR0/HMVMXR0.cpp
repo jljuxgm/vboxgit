@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45963 2013-05-08 23:44:31Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45965 2013-05-09 15:32:14Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2486,7 +2486,7 @@ DECLINLINE(int) hmR0VmxLoadGuestApicState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
 
             bool    fPendingIntr = false;
             uint8_t u8GuestTpr   = 0;
-            rc = PDMApicGetTPR(pVCpu, &u8GuestTpr, &fPendingIntr);
+            rc = PDMApicGetTPR(pVCpu, &u8GuestTpr, &fPendingIntr, NULL /* pu8PendingIntr */);
             AssertRCReturn(rc, rc);
 
             /*
