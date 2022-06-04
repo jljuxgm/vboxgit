@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: pipe-win.cpp 47052 2013-07-09 12:16:12Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -724,7 +724,7 @@ RTDECL(int) RTPipeWrite(RTPIPE hPipe, const void *pvBuf, size_t cbToWrite, size_
     int rc = RTCritSectEnter(&pThis->CritSect);
     if (RT_SUCCESS(rc))
     {
-        /* No concurrent readers, sorry. */
+        /* No concurrent writers, sorry. */
         if (pThis->cUsers == 0)
         {
             pThis->cUsers++;
@@ -839,7 +839,7 @@ RTDECL(int) RTPipeWriteBlocking(RTPIPE hPipe, const void *pvBuf, size_t cbToWrit
     int rc = RTCritSectEnter(&pThis->CritSect);
     if (RT_SUCCESS(rc))
     {
-        /* No concurrent readers, sorry. */
+        /* No concurrent writers, sorry. */
         if (pThis->cUsers == 0)
         {
             pThis->cUsers++;
