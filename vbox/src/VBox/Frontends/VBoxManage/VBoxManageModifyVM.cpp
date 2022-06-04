@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 44028 2012-12-04 08:03:41Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 44191 2012-12-20 17:36:56Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -184,6 +184,9 @@ enum
     MODIFYVM_ATTACH_PCI,
     MODIFYVM_DETACH_PCI,
 #endif
+#ifdef VBOX_WITH_USB_WEBCAM
+    MODIFYVM_USBWEBCAM,
+#endif
 #ifdef VBOX_WITH_USB_CARDREADER
     MODIFYVM_USBCARDREADER,
 #endif
@@ -341,6 +344,9 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
     { "--pciattach",                MODIFYVM_ATTACH_PCI,                RTGETOPT_REQ_STRING },
     { "--pcidetach",                MODIFYVM_DETACH_PCI,                RTGETOPT_REQ_STRING },
+#endif
+#ifdef VBOX_WITH_USB_WEBCAM
+    { "--usbwebcam",                MODIFYVM_USBWEBCAM,                 RTGETOPT_REQ_BOOL_ONOFF },
 #endif
 #ifdef VBOX_WITH_USB_CARDREADER
     { "--usbcardreader",            MODIFYVM_USBCARDREADER,             RTGETOPT_REQ_BOOL_ONOFF },
@@ -2490,6 +2496,15 @@ int handleModifyVM(HandlerArg *a)
                 break;
             }
 #endif
+
+#ifdef VBOX_WITH_USB_WEBCAM
+            case MODIFYVM_USBWEBCAM:
+            {
+                CHECK_ERROR(machine, COMSETTER(EmulatedUSBWebcameraEnabled)(ValueUnion.f));
+                break;
+            }
+#endif /* VBOX_WITH_USB_WEBCAM */
+
 #ifdef VBOX_WITH_USB_CARDREADER
             case MODIFYVM_USBCARDREADER:
             {

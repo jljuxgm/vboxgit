@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 43929 2012-11-21 14:03:55Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 44191 2012-12-20 17:36:56Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -153,7 +153,7 @@ public:
     int VideoInDeviceDetach(const VRDEVIDEOINDEVICEHANDLE *pDeviceHandle);
     int VideoInGetDeviceDesc(void *pvUser, const VRDEVIDEOINDEVICEHANDLE *pDeviceHandle);
     int VideoInControl(void *pvUser, const VRDEVIDEOINDEVICEHANDLE *pDeviceHandle,
-                       VRDEVIDEOINCTRLHDR *pReq, uint32_t cbReq);
+                       const VRDEVIDEOINCTRLHDR *pReq, uint32_t cbReq);
 
 private:
     /* Note: This is not a ComObjPtr here, because the ConsoleVRDPServer object

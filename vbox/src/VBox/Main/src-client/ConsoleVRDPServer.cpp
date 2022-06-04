@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 43929 2012-11-21 14:03:55Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 44191 2012-12-20 17:36:56Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -27,6 +27,9 @@
 #include "VMMDev.h"
 #ifdef VBOX_WITH_USB_CARDREADER
 # include "UsbCardReader.h"
+#endif
+#ifdef VBOX_WITH_USB_VIDEO
+# include "UsbWebcamInterface.h"
 #endif
 
 #include "Global.h"
@@ -2575,8 +2578,8 @@ void ConsoleVRDPServer::setupTSMF(void)
 {
 #ifdef VBOX_WITH_USB_VIDEO
     ConsoleVRDPServer *pThis = static_cast<ConsoleVRDPServer*>(pvCallback);
-    UsbWebcamInterface *pWebCam = pThis->mConsole->getUsbWebcamInterface();
-    return pWebCam->WebCamNotify(u32Id, pvData, cbData);
+    EmWebcam *pWebcam = pThis->mConsole->getEmWebcam();
+    pWebcam->EmWebcamCbNotify(u32Id, pvData, cbData);
 #else
     NOREF(pvCallback);
     NOREF(u32Id);
@@ -2594,8 +2597,8 @@ void ConsoleVRDPServer::setupTSMF(void)
 {
 #ifdef VBOX_WITH_USB_VIDEO
     ConsoleVRDPServer *pThis = static_cast<ConsoleVRDPServer*>(pvCallback);
-    UsbWebcamInterface *pWebCam = pThis->mConsole->getUsbWebcamInterface();
-    return pWebCam->WebCamDeviceDesc(rcRequest, pDeviceCtx, pvUser, pDeviceDesc, cbDevice);
+    EmWebcam *pWebcam = pThis->mConsole->getEmWebcam();
+    pWebcam->EmWebcamCbDeviceDesc(rcRequest, pDeviceCtx, pvUser, pDeviceDesc, cbDevice);
 #else
     NOREF(pvCallback);
     NOREF(rcRequest);
@@ -2615,8 +2618,8 @@ void ConsoleVRDPServer::setupTSMF(void)
 {
 #ifdef VBOX_WITH_USB_VIDEO
     ConsoleVRDPServer *pThis = static_cast<ConsoleVRDPServer*>(pvCallback);
-    UsbWebcamInterface *pWebCam = pThis->mConsole->getUsbWebcamInterface();
-    return pWebCam->WebCamControl(rcRequest, pDeviceCtx, pvUser, pControl, cbControl);
+    EmWebcam *pWebcam = pThis->mConsole->getEmWebcam();
+    pWebcam->EmWebcamCbControl(rcRequest, pDeviceCtx, pvUser, pControl, cbControl);
 #else
     NOREF(pvCallback);
     NOREF(rcRequest);
@@ -2635,8 +2638,8 @@ void ConsoleVRDPServer::setupTSMF(void)
 {
 #ifdef VBOX_WITH_USB_VIDEO
     ConsoleVRDPServer *pThis = static_cast<ConsoleVRDPServer*>(pvCallback);
-    UsbWebcamInterface *pWebCam = pThis->mConsole->getUsbWebcamInterface();
-    return pWebCam->WebCamFrame(rcRequest, pDeviceCtx, pvUser, pFrame, cbFrame);
+    EmWebcam *pWebcam = pThis->mConsole->getEmWebcam();
+    pWebcam->EmWebcamCbFrame(rcRequest, pDeviceCtx, pFrame, cbFrame);
 #else
     NOREF(pvCallback);
     NOREF(rcRequest);
@@ -2695,7 +2698,7 @@ int ConsoleVRDPServer::VideoInGetDeviceDesc(void *pvUser, const VRDEVIDEOINDEVIC
 }
 
 int ConsoleVRDPServer::VideoInControl(void *pvUser, const VRDEVIDEOINDEVICEHANDLE *pDeviceHandle,
-                                      VRDEVIDEOINCTRLHDR *pReq, uint32_t cbReq)
+                                      const VRDEVIDEOINCTRLHDR *pReq, uint32_t cbReq)
 {
     int rc;
 
