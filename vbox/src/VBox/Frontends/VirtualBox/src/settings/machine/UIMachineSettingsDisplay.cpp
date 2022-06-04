@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 46621 2013-06-18 12:13:20Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 46622 2013-06-18 12:32:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -722,6 +722,7 @@ void UIMachineSettingsDisplay::prepareVideoCaptureTab()
     connect(m_pCheckboxVideoCapture, SIGNAL(toggled(bool)), this, SLOT(sltHandleVideoCaptureCheckboxToggle()));
 
     /* Prepare filepath selector: */
+    m_pEditorVideoCapturePath->setEditable(false);
     m_pEditorVideoCapturePath->setMode(VBoxFilePathSelectorWidget::Mode_File_Save);
 
     /* Prepare frame-size combo-box: */
