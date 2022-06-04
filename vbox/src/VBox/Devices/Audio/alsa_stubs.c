@@ -1,4 +1,4 @@
-/* $Id: alsa_stubs.c 34451 2010-11-29 11:00:53Z vboxsync $ */
+/* $Id: alsa_stubs.c 45136 2013-03-22 10:22:57Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -30,7 +30,8 @@
 #define PROXY_STUB(function, rettype, signature, shortsig) \
     static rettype (*pfn_ ## function) signature; \
     \
-    rettype function signature \
+    rettype VBox_##function signature; \
+    rettype VBox_##function signature \
     { \
         return pfn_ ## function shortsig; \
     }

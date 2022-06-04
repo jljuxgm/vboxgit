@@ -1,4 +1,4 @@
-/* $Id: pulse_stubs.c 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: pulse_stubs.c 45136 2013-03-22 10:22:57Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -30,7 +30,8 @@
 #define PROXY_STUB(function, rettype, signature, shortsig) \
     static rettype (*g_pfn_ ## function) signature; \
     \
-    rettype function signature \
+    rettype VBox_##function signature; \
+    rettype VBox_##function signature \
     { \
         return g_pfn_ ## function shortsig; \
     }
@@ -38,7 +39,8 @@
 #define PROXY_STUB_VOID(function, signature, shortsig) \
     static void (*g_pfn_ ## function) signature; \
     \
-    void function signature \
+    void VBox_##function signature; \
+    void VBox_##function signature \
     { \
         g_pfn_ ## function shortsig; \
     }
