@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: ConsoleImpl.h 42382 2012-07-25 09:35:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -113,7 +113,7 @@ public:
     void FinalRelease();
 
     // public initializers/uninitializers for internal purposes only
-    HRESULT init(IMachine *aMachine, IInternalMachineControl *aControl);
+    HRESULT init(IMachine *aMachine, IInternalMachineControl *aControl, LockType_T aLockType);
     void uninit();
 
     // IConsole properties

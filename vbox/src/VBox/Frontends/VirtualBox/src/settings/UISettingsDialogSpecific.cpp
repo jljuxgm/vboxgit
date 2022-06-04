@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 42382 2012-07-25 09:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -747,7 +747,7 @@ void UISettingsDialogMachine::loadData()
     gVBoxEvents->disconnect(this);
 
     /* Prepare session: */
-    m_session = dialogType() == SettingsDialogType_Wrong ? CSession() : vboxGlobal().openSession(m_strMachineId, true /* shared */);
+    m_session = dialogType() == SettingsDialogType_Wrong ? CSession() : vboxGlobal().openExistingSession(m_strMachineId);
     /* Check that session was created: */
     if (m_session.isNull())
         return;
@@ -786,8 +786,12 @@ void UISettingsDialogMachine::saveData()
     gVBoxEvents->disconnect(this);
 
     /* Prepare session: */
-    bool fSessionShared = dialogType() != SettingsDialogType_Offline;
-    m_session = dialogType() == SettingsDialogType_Wrong ? CSession() : vboxGlobal().openSession(m_strMachineId, fSessionShared);
+    if (dialogType() == SettingsDialogType_Wrong)
+        m_session = CSession();
+    else if (dialogType() != SettingsDialogType_Offline)
+        m_session = vboxGlobal().openExistingSession(m_strMachineId);
+    else
+        m_session = vboxGlobal().openSession(m_strMachineId);
     /* Check that session was created: */
     if (m_session.isNull())
         return;
