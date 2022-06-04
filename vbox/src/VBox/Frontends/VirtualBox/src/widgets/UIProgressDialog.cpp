@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 47612 2013-08-08 12:35:01Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 47614 2013-08-08 12:42:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -123,7 +123,7 @@ UIProgressDialog::UIProgressDialog(CProgress &progress,
 
     /* The progress dialog will be shown automatically after
      * the duration is over if progress is not finished yet. */
-    QTimer::singleShot(cMinDuration, this, SLOT(showDialog()));
+    QTimer::singleShot(cMinDuration, this, SLOT(show()));
 }
 
 void UIProgressDialog::retranslateUi()
