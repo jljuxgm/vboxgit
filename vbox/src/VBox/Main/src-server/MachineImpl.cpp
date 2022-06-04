@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 45706 2013-04-24 14:42:02Z vboxsync $ */
+/* $Id: MachineImpl.cpp 45719 2013-04-24 19:48:33Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5884,7 +5884,9 @@ STDMETHODIMP Machine::SetGuestPropertyValue(IN_BSTR aName, IN_BSTR aValue)
 
 STDMETHODIMP Machine::DeleteGuestProperty(IN_BSTR aName)
 {
-    return SetGuestProperty(aName, NULL, NULL);
+    HRESULT hrc = SetGuestProperty(aName, NULL, NULL);
+    LogRel(("DeleteGuestProperty: %ls -> %Rhrc\n", aName, hrc)); /* !REMOVE ME! Debugging testboxes! */
+    return hrc;
 }
 
 #ifdef VBOX_WITH_GUEST_PROPS
