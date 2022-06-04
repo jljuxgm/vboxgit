@@ -1,4 +1,4 @@
-/* $Id: RTPathParse.cpp.h 45394 2013-04-07 19:03:00Z vboxsync $ */
+/* $Id: RTPathParse.cpp.h 45397 2013-04-08 08:37:31Z vboxsync $ */
 /** @file
  * IPRT - RTPathParse - Code Template.
  *
@@ -38,7 +38,7 @@ static int RTPATH_STYLE_FN(rtPathParse)(const char *pszPath, PRTPATHPARSED pPars
      * (keep it on the stack for speed).
      */
     uint32_t const  cMaxComps =  cbParsed < RT_UOFFSETOF(RTPATHPARSED, aComps[0xfff0])
-                              ? (cbParsed - RT_UOFFSETOF(RTPATHPARSED, aComps)) / sizeof(pParsed->aComps[0])
+                              ? (uint32_t)((cbParsed - RT_UOFFSETOF(RTPATHPARSED, aComps)) / sizeof(pParsed->aComps[0]))
                               : 0xfff0;
     uint32_t        idxComp   = 0;
     uint32_t        cchPath;
