@@ -1,4 +1,4 @@
-/* $Id: tstHelp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstHelp.h 47466 2013-07-29 15:14:11Z vboxsync $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
@@ -67,7 +67,7 @@ RT_C_DECLS_END
     { \
         if (RT_OFFSETOF(strct, member) & ((align) - 1) ) \
         { \
-            printf("error! %s::%s offset=%#x (%u) expected alignment %x, meaning %#x (%u) off\n", \
+            printf("error! %s::%s offset=%#x (%u) expected alignment %#x, meaning %#x (%u) off\n", \
                    #strct, #member, \
                    (unsigned)RT_OFFSETOF(strct, member), \
                    (unsigned)RT_OFFSETOF(strct, member), \

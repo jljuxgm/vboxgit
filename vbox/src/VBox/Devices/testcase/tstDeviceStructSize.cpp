@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 46272 2013-05-26 18:02:48Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 47466 2013-07-29 15:14:11Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -147,7 +147,7 @@
     { \
         if (RT_OFFSETOF(strct, member) & ((align) - 1) ) \
         { \
-            printf("tstDeviceStructSize: error! %s::%s offset=%#x (%u) expected alignment %x, meaning %#x (%u) off\n", \
+            printf("tstDeviceStructSize: error! %s::%s offset=%#x (%u) expected alignment %#x, meaning %#x (%u) off\n", \
                    #strct, #member, \
                    (unsigned)RT_OFFSETOF(strct, member), \
                    (unsigned)RT_OFFSETOF(strct, member), \
