@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 44060 2012-12-07 13:43:35Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 44069 2012-12-07 16:17:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -63,9 +63,17 @@ void UIGDetailsSet::buildSet(const CMachine &machine, bool fFullSet, const QStri
 
     /* Cleanup superfluous items: */
     if (!m_fFullSet)
+    {
+        bool fCleanupPerformed = false;
         for (int i = DetailsElementType_Display; i <= DetailsElementType_Description; ++i)
             if (m_elements.contains(i))
+            {
                 delete m_elements[i];
+                fCleanupPerformed = true;
+            }
+        if (fCleanupPerformed)
+            updateGeometry();
+    }
 
     /* Choose last-step number: */
     m_iLastStepNumber = m_fFullSet ? DetailsElementType_Description : DetailsElementType_Preview;
