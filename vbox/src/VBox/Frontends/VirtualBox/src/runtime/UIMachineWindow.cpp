@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 46244 2013-05-23 16:43:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -401,6 +401,9 @@ void UIMachineWindow::prepareMachineView()
 
     /* Add machine-view into main-layout: */
     m_pMainLayout->addWidget(m_pMachineView, 1, 1, viewAlignment(visualStateType));
+
+    /* Install focus-proxy: */
+    setFocusProxy(m_pMachineView);
 }
 
 void UIMachineWindow::prepareHandlers()
