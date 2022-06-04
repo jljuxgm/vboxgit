@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 46243 2013-05-23 16:09:52Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 46397 2013-06-05 15:25:42Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1628,6 +1628,7 @@ static void buslogicR3SenseBufferFree(PBUSLOGICTASKSTATE pTaskState, bool fCopy)
         else
             GCPhysAddrSenseBuffer = pTaskState->CommandControlBlockGuest.n.u32PhysAddrSenseData;
 
+        Log3(("%s: sense buffer: %.*Rhxs\n", __FUNCTION__, cbSenseBuffer, pTaskState->pbSenseBuffer));
         PDMDevHlpPCIPhysWrite(pDevIns, GCPhysAddrSenseBuffer, pTaskState->pbSenseBuffer, cbSenseBuffer);
     }
 
