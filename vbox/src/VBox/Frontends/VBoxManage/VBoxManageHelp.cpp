@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 42395 2012-07-25 14:36:03Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -505,6 +505,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--encodedlun <lun>]\n"
                      "                            [--username <username>]\n"
                      "                            [--password <password>]\n"
+                     "                            [--initiator <initiator>]\n"
                      "                            [--intnet]\n"
                      "\n");
 
