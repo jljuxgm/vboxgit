@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 43618 2012-10-11 13:59:10Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 44134 2012-12-14 12:38:48Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -91,7 +91,7 @@ static uint64_t kstatGet(const char *name)
         uint32_t uInstance = getInstance(name, szModule);
         ksAdapter = kstat_lookup(kc, szModule, uInstance, "phys");
         if (ksAdapter == 0)
-            ksAdapter = kstat_lookup(kc, szModule, uInstance, name);
+            ksAdapter = kstat_lookup(kc, szModule, uInstance, (char*)name);
     }
     if (ksAdapter == 0)
         LogRel(("Failed to get network statistics for %s\n", name));
