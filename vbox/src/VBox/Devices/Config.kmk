@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42363 2012-07-24 12:59:54Z vboxsync $
+# $Id: Config.kmk 46222 2013-05-22 16:26:28Z vboxsync $
 ## @file
 # kBuild Configuration file for the Devices.
 #
@@ -35,7 +35,7 @@ TEMPLATE_VBoxBios_BLD_TRG_ARCH = x86
 TEMPLATE_VBoxBios_BINSUFF      = .rom
 TEMPLATE_VBoxBios_INCS         = .
 TEMPLATE_VBoxBios_ASFLAGS      = -q -wx ## @todo add -0?
-TEMPLATE_VBoxBios_CFLAGS       = -q -3 -wx -zl -zu -s -oas -d1+ -ms
+TEMPLATE_VBoxBios_CFLAGS       = -q -3 -wx -zl -zu -s -oafs -d1+ -ms
 TEMPLATE_VBoxBios_CXXFLAGS     = $(TEMPLATE_VBoxBios_CFLAGS)
 TEMPLATE_VBoxBios_DEPS         = $(VBOX_VERSION_HEADER)
 TEMPLATE_VBoxBios_LDFLAGS      = system dos  \
