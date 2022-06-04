@@ -1,4 +1,4 @@
-/** $Id: USBLib-solaris.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/** $Id: USBLib-solaris.cpp 47496 2013-07-31 15:52:29Z vboxsync $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Solaris flavor.
  */
@@ -57,13 +57,7 @@
 static uint32_t volatile g_cUsers = 0;
 /** VBoxUSB Device handle. */
 static RTFILE g_hFile = NIL_RTFILE;
-/** List of tasks handled by the USB helper. */
-typedef enum USBHELPER_OP
-{
-    ADD_ALIAS = 0,
-    DEL_ALIAS,
-    RESET
-};
+
 
 /*******************************************************************************
 *   Internal Functions                                                         *
