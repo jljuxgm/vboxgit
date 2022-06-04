@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 44769 2013-02-20 17:20:27Z vboxsync $ */
+/* $Id: HMInternal.h 44770 2013-02-20 17:35:56Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -459,13 +459,13 @@ typedef struct VMCSCACHE
     struct
     {
         RTHCPHYS    HCPhysCpuPage;
-        RTHCPHYS    HCPhysVMCS;
+        RTHCPHYS    HCPhysVmcs;
         RTGCPTR     pCache;
         RTGCPTR     pCtx;
     } TestIn;
     struct
     {
-        RTHCPHYS    HCPhysVMCS;
+        RTHCPHYS    HCPhysVmcs;
         RTGCPTR     pCache;
         RTGCPTR     pCtx;
         uint64_t    eflags;
