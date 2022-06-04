@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 47539 2013-08-05 10:22:05Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 47541 2013-08-05 10:24:35Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -385,7 +385,7 @@ NTSTATUS _stdcall VBoxDrvNtCleanup(PDEVICE_OBJECT pDevObj, PIRP pIrp)
     Log(("VBoxDrvNtCleanup: pDevExt=%p pFileObj=%p pSession=%p\n", pDevExt, pFileObj, pSession));
     if (pSession)
     {
-        supdrvSessionRelease((PSUPDRVSESSION)pFileObj->FsContext);
+        supdrvSessionRelease(pSession);
         pFileObj->FsContext = NULL;
     }
 
@@ -413,7 +413,7 @@ NTSTATUS _stdcall VBoxDrvNtClose(PDEVICE_OBJECT pDevObj, PIRP pIrp)
     Log(("VBoxDrvNtClose: pDevExt=%p pFileObj=%p pSession=%p\n", pDevExt, pFileObj, pSession));
     if (pSession)
     {
-        supdrvSessionRelease((PSUPDRVSESSION)pFileObj->FsContext);
+        supdrvSessionRelease(pSession);
         pFileObj->FsContext = NULL;
     }
 
