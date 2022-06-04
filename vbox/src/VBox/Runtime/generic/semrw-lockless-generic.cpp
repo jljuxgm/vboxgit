@@ -1,4 +1,4 @@
-/* $Id: semrw-lockless-generic.cpp 44858 2013-02-28 02:03:08Z vboxsync $ */
+/* $Id: semrw-lockless-generic.cpp 45019 2013-03-13 14:33:25Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic, lockless variant.
  */
@@ -889,7 +889,7 @@ RTDECL(bool)  RTSemRWIsReadOwner(RTSEMRW hRWSem, bool fWannaHear)
          */
         RTNATIVETHREAD hNativeSelf = RTThreadNativeSelf();
         RTNATIVETHREAD hWriter;
-        ASMAtomicUoReadHandle(&pThis->hWriter, &hWriter);
+        ASMAtomicUoReadHandle(&pThis->hNativeWriter, &hWriter);
         return hWriter == hNativeSelf;
     }
 
