@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: vbox-img.cpp 46520 2013-06-13 10:35:56Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -261,8 +261,8 @@ int handleSetUUID(HandlerArg *a)
     if (RT_FAILURE(rc))
         return errorRuntime("Cannot create the virtual disk container: %Rrc\n", rc);
 
-
-    rc = VDOpen(pVD, pszFormat, pszFilename, VD_OPEN_FLAGS_NORMAL, NULL);
+    /* Open in info mode to be able to open diff images without their parent. */
+    rc = VDOpen(pVD, pszFormat, pszFilename, VD_OPEN_FLAGS_INFO, NULL);
     if (RT_FAILURE(rc))
         return errorRuntime("Cannot open the virtual disk image \"%s\": %Rrc\n",
                             pszFilename, rc);
@@ -955,7 +955,7 @@ int handleInfo(HandlerArg *a)
         return errorRuntime("Error while creating the virtual disk container: %Rrc\n", rc);
 
     /* Open the image */
-    rc = VDOpen(pDisk, pszFormat, pszFilename, VD_OPEN_FLAGS_INFO, NULL);
+    rc = VDOpen(pDisk, pszFormat, pszFilename, VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_READONLY, NULL);
     if (RT_FAILURE(rc))
         return errorRuntime("Error while opening the image: %Rrc\n", rc);
 
