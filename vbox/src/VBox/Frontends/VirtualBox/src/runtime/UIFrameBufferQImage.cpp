@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 43040 2012-08-28 13:49:07Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 43160 2012-09-04 13:01:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -72,7 +72,10 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
     /* If the machine is NOT in 'running' state,
      * the link between framebuffer and video memory
      * is broken, we should go fallback now... */
-    if (m_bUsesGuestVRAM && !m_pMachineView->uisession()->isRunning())
+    if (m_bUsesGuestVRAM &&
+        !m_pMachineView->uisession()->isRunning() &&
+        /* Online snapshotting: */
+        m_pMachineView->uisession()->machineState() != KMachineState_Saving)
         goFallback();
 
     /* Scaled image by default is empty: */
