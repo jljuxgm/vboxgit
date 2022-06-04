@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 47660 2013-08-12 00:37:34Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 47671 2013-08-12 11:16:55Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -320,9 +320,11 @@ DECLASM(int) TRPMGCTrap01Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
      * Now leave the rest to the DBGF.
      */
     PGMRZDynMapStartAutoSet(pVCpu);
-    int rc = DBGFRZTrap01Handler(pVM, pVCpu, pRegFrame, uDr6);
+    int rc = DBGFRZTrap01Handler(pVM, pVCpu, pRegFrame, uDr6, false /*fAltStepping*/);
     if (rc == VINF_EM_RAW_GUEST_TRAP)
         CPUMSetGuestDR6(pVCpu, CPUMGetGuestDR6(pVCpu) | uDr6);
+    else if (rc == VINF_EM_DBG_STEPPED)
+        pRegFrame->eflags.Bits.u1TF = 0;
 
     rc = trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
     Log6(("TRPMGC01: %Rrc (%04x:%08x %RTreg %EFlag=%#x)\n", rc, pRegFrame->cs.Sel, pRegFrame->eip, uDr6, CPUMRawGetEFlags(pVCpu)));
@@ -367,8 +369,10 @@ DECLASM(int) TRPMGCHyperTrap01Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
     /*
      * Now leave the rest to the DBGF.
      */
-    int rc = DBGFRZTrap01Handler(pVM, pVCpu, pRegFrame, uDr6);
+    int rc = DBGFRZTrap01Handler(pVM, pVCpu, pRegFrame, uDr6, false /*fAltStepping*/);
     AssertStmt(rc != VINF_EM_RAW_GUEST_TRAP, rc = VERR_TRPM_IPE_1);
+    if (rc == VINF_EM_DBG_STEPPED)
+        pRegFrame->eflags.Bits.u1TF = 0;
 
     Log6(("TRPMGCHyper01: %Rrc (%04x:%08x %RTreg)\n", rc, pRegFrame->cs.Sel, pRegFrame->eip, uDr6));
     TRPM_EXIT_DBG_HOOK_HYPER(1);

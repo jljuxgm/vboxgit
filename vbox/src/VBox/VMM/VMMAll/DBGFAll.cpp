@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 47328 2013-07-22 22:50:49Z vboxsync $ */
+/* $Id: DBGFAll.cpp 47671 2013-08-12 11:16:55Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -110,6 +110,22 @@ VMM_INT_DECL(RTGCUINTREG) DBGFBpGetDR3(PVM pVM)
     PCDBGFBP    pBp = &pVM->dbgf.s.aHwBreakpoints[3];
     Assert(pBp->u.Reg.iReg == 3);
     return pBp->GCPtr;
+}
+
+
+/**
+ * Checks if any of the hardware breakpoints are armed.
+ *
+ * @returns true if armed, false if not.
+ * @param   pVM         The cross context VM structure.
+ */
+VMM_INT_DECL(bool) DBGFBpIsHwArmed(PVM pVM)
+{
+    Assert(RT_ELEMENTS(pVM->dbgf.s.aHwBreakpoints) == 4);
+    return (pVM->dbgf.s.aHwBreakpoints[0].fEnabled && pVM->dbgf.s.aHwBreakpoints[0].enmType == DBGFBPTYPE_REG)
+        || (pVM->dbgf.s.aHwBreakpoints[1].fEnabled && pVM->dbgf.s.aHwBreakpoints[1].enmType == DBGFBPTYPE_REG)
+        || (pVM->dbgf.s.aHwBreakpoints[2].fEnabled && pVM->dbgf.s.aHwBreakpoints[2].enmType == DBGFBPTYPE_REG)
+        || (pVM->dbgf.s.aHwBreakpoints[3].fEnabled && pVM->dbgf.s.aHwBreakpoints[3].enmType == DBGFBPTYPE_REG);
 }
 
 
