@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 45994 2013-05-12 19:16:16Z vboxsync $ */
+/* $Id: dbgmod.h 46048 2013-05-14 07:44:30Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -553,7 +553,11 @@ typedef RTDBGMODINT *PRTDBGMODINT;
 extern DECLHIDDEN(RTSTRCACHE)           g_hDbgModStrCache;
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgDwarf;
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgNm;
+#ifdef RT_OS_WINDOWS
+extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgDbgHelp;
+#endif
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgDeferred;
+
 extern DECLHIDDEN(RTDBGMODVTIMG const)  g_rtDbgModVtImgLdr;
 extern DECLHIDDEN(RTDBGMODVTIMG const)  g_rtDbgModVtImgDeferred;
 

@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 46048 2013-05-14 07:44:30Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -382,9 +382,17 @@ static DECLCALLBACK(int) rtDbgModContainer_SymbolAdd(PRTDBGMODINT pMod, const ch
                     ("iSeg=%#x cSegs=%#x\n", pThis->cSegs),
                     VERR_DBG_INVALID_SEGMENT_INDEX);
     AssertMsgReturn(    iSeg >= RTDBGSEGIDX_SPECIAL_FIRST
-                    ||  off + cb <= pThis->paSegs[iSeg].cb,
+                    ||  off <= pThis->paSegs[iSeg].cb,
                     ("off=%RTptr cb=%RTptr cbSeg=%RTptr\n", off, cb, pThis->paSegs[iSeg].cb),
                     VERR_DBG_INVALID_SEGMENT_OFFSET);
+
+    /* Be a little relaxed wrt to the symbol size. */
+    int rc = VINF_SUCCESS;
+    if (off + cb > pThis->paSegs[iSeg].cb)
+    {
+        cb = pThis->paSegs[iSeg].cb - off;
+        rc = VINF_DBG_ADJUSTED_SYM_SIZE;
+    }
 
     /*
      * Create a new entry.
@@ -400,7 +408,6 @@ static DECLCALLBACK(int) rtDbgModContainer_SymbolAdd(PRTDBGMODINT pMod, const ch
     pSymbol->cb                 = cb;
     pSymbol->fFlags             = fFlags;
     pSymbol->NameCore.pszString = RTStrCacheEnterN(g_hDbgModStrCache, pszSymbol, cchSymbol);
-    int rc;
     if (pSymbol->NameCore.pszString)
     {
         if (RTStrSpaceInsert(&pThis->Names, &pSymbol->NameCore))
@@ -415,7 +422,7 @@ static DECLCALLBACK(int) rtDbgModContainer_SymbolAdd(PRTDBGMODINT pMod, const ch
                     if (piOrdinal)
                         *piOrdinal = pThis->iNextSymbolOrdinal;
                     pThis->iNextSymbolOrdinal++;
-                    return VINF_SUCCESS;
+                    return rc;
                 }
 
                 /* bail out */
