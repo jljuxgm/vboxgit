@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 43945 2012-11-23 09:38:06Z vboxsync $ */
+/* $Id: vreg.cpp 44596 2013-02-08 10:32:22Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API implementation
@@ -1022,7 +1022,7 @@ VBOXVREGDECL(int) VBoxVrCompositorEntryRegionsTranslate(PVBOXVR_COMPOSITOR pComp
     Assert(!VBoxVrListIsEmpty(&pEntry->Vr));
 
     PVBOXVR_COMPOSITOR_ENTRY pCur;
-    uint32_t cRects;
+    uint32_t cRects = 0;
     RTRECT *paRects = NULL;
     int rc = VINF_SUCCESS;
     RTListForEach(&pCompositor->List, pCur, VBOXVR_COMPOSITOR_ENTRY, Node)
