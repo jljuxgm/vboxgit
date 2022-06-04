@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42611 2012-08-06 08:42:23Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42618 2012-08-06 13:31:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -166,6 +166,7 @@ public:
     STDMETHOD(EnvironmentUnset)(IN_BSTR aName);
     STDMETHOD(FileCreateTemp)(IN_BSTR aTemplate, ULONG aMode, IN_BSTR aName, IGuestFile **aFile);
     STDMETHOD(FileExists)(IN_BSTR aPath, BOOL *aExists);
+    STDMETHOD(FileRemove)(IN_BSTR aPath, LONG *aResultCode);
     STDMETHOD(FileOpen)(IN_BSTR aPath, IN_BSTR aOpenMode, IN_BSTR aDisposition, ULONG aCreationMode, LONG64 aOffset, IGuestFile **aFile);
     STDMETHOD(FileQueryInfo)(IN_BSTR aPath, IGuestFsObjInfo **aInfo);
     STDMETHOD(FileQuerySize)(IN_BSTR aPath, LONG64 *aSize);
