@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 47103 2013-07-11 15:52:27Z vboxsync $ */
+/* $Id: UIMachineView.cpp 47396 2013-07-25 13:58:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -93,6 +93,8 @@ public:
     {
         /* No need for background drawing: */
         setAttribute(Qt::WA_OpaquePaintEvent);
+        /* Enable multi-touch support: */
+        setAttribute(Qt::WA_AcceptTouchEvents);
     }
 
     QPaintEngine *paintEngine() const

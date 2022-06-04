@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 46542 2013-06-13 16:49:48Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 47396 2013-07-25 13:58:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -162,7 +162,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         case KVBoxEventType_OnMouseCapabilityChanged:
         {
             CMouseCapabilityChangedEvent es(pEvent);
-            emit sigMouseCapabilityChange(es.GetSupportsAbsolute(), es.GetSupportsRelative(), es.GetNeedsHostCursor());
+            emit sigMouseCapabilityChange(es.GetSupportsAbsolute(), es.GetSupportsRelative(), es.GetSupportsMultiTouch(), es.GetNeedsHostCursor());
             break;
         }
         case KVBoxEventType_OnKeyboardLedsChanged:

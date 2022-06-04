@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 46542 2013-06-13 16:49:48Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 47396 2013-07-25 13:58:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -90,8 +90,8 @@ UIConsoleEventHandler::UIConsoleEventHandler(UISession *pSession)
             this, SIGNAL(sigMousePointerShapeChange(bool, bool, QPoint, QSize, QVector<uint8_t>)),
             Qt::QueuedConnection);
 
-    connect(pListener->getWrapped(), SIGNAL(sigMouseCapabilityChange(bool, bool, bool)),
-            this, SIGNAL(sigMouseCapabilityChange(bool, bool, bool)),
+    connect(pListener->getWrapped(), SIGNAL(sigMouseCapabilityChange(bool, bool, bool, bool)),
+            this, SIGNAL(sigMouseCapabilityChange(bool, bool, bool, bool)),
             Qt::QueuedConnection);
 
     connect(pListener->getWrapped(), SIGNAL(sigKeyboardLedsChangeEvent(bool, bool, bool)),

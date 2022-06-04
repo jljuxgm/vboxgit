@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 47396 2013-07-25 13:58:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -455,7 +455,11 @@ void UIMachineLogic::sltMouseCapabilityChanged()
     /* Variable falgs: */
     bool fIsMouseSupportsAbsolute = uisession()->isMouseSupportsAbsolute();
     bool fIsMouseSupportsRelative = uisession()->isMouseSupportsRelative();
+    bool fIsMouseSupportsMultiTouch = uisession()->isMouseSupportsMultiTouch();
     bool fIsMouseHostCursorNeeded = uisession()->isMouseHostCursorNeeded();
+
+    /* For now MT stuff is not important for MI action: */
+    Q_UNUSED(fIsMouseSupportsMultiTouch);
 
     /* Update action state: */
     QAction *pAction = gActionPool->action(UIActionIndexRuntime_Toggle_MouseIntegration);
