@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 45707 2013-04-24 14:51:46Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 45713 2013-04-24 16:38:41Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -64,7 +64,7 @@ static PVMMSWITCHERDEF g_apRawModeSwitchers[VMMSWITCHER_MAX] =
 #  else
     NULL,   //&vmmR3SwitcherAMD64ToPAE_Def,
 #  endif
-    NULL    //&vmmR3SwitcherAMD64ToAMD64_Def,
+    NULL,   //&vmmR3SwitcherAMD64ToAMD64_Def,
 # else  /* RT_ARCH_AMD64 */
     NULL,   //&vmmR3Switcher32BitTo32Bit_Def,
     NULL,   //&vmmR3Switcher32BitToPAE_Def,
