@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 47245 2013-07-19 08:01:57Z vboxsync $ */
+/* $Id: MouseImpl.cpp 47358 2013-07-23 18:08:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -224,7 +224,7 @@ STDMETHODIMP Mouse::COMGETTER(MultiTouchSupported) (BOOL *multiTouchSupported)
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    *multiTouchSupported = FALSE;
+    *multiTouchSupported = supportsMT();
     return S_OK;
 }
 
@@ -703,6 +703,8 @@ void Mouse::getDeviceCaps(bool *pfAbs, bool *pfRel, bool *pfMT)
         *pfAbs = fAbsDev;
     if (pfRel)
         *pfRel = fRelDev;
+    if (pfMT)
+        *pfMT = fMTDev;
 }
 
 
