@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 47050 2013-07-09 09:25:39Z vboxsync $ */
+/* $Id: HM.cpp 47069 2013-07-10 11:20:36Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1312,6 +1312,9 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
     else if (pVM->hm.s.vmx.enmFlushVpid == VMX_FLUSH_VPID_NOT_SUPPORTED)
         LogRel(("HM: Ignoring VPID capabilities of CPU.\n"));
 
+    /** TPR patching would never have worked on Intel. Leaving it here for the old
+     *  code's sake. See @bugref{6398}. */
+#ifdef VBOX_WITH_OLD_VTX_CODE
     /*
      * TPR patching status logging.
      */
@@ -1338,6 +1341,8 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
         }
     }
     LogRel(("HM: TPR Patching %s.\n", (pVM->hm.s.fTRPPatchingAllowed) ? "enabled" : "disabled"));
+#endif
+
 
     /*
      * Check for preemption timer config override and log the state of it.
