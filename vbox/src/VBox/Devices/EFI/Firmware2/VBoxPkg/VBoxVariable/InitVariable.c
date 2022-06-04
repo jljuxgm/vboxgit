@@ -1,4 +1,4 @@
-/* $Id: InitVariable.c 44601 2013-02-08 12:27:08Z vboxsync $ */
+/* $Id: InitVariable.c 44604 2013-02-08 13:06:07Z vboxsync $ */
 /** @file
  * InitVariable.h
  */
@@ -242,7 +242,7 @@ RuntimeServiceGetNextVariableName (
         VBoxWriteNVRAMNameParam(VariableName);
         u32Rc = VBoxWriteNVRAMDoOp(EFI_VARIABLE_OP_QUERY);
     }
-    //if (u32Rc == EFI_VARIABLE_OP_STATUS_OK) - debug
+    if (u32Rc == EFI_VARIABLE_OP_STATUS_OK)
         u32Rc = VBoxWriteNVRAMDoOp(EFI_VARIABLE_OP_QUERY_NEXT);
 
     if (u32Rc == EFI_VARIABLE_OP_STATUS_OK)
