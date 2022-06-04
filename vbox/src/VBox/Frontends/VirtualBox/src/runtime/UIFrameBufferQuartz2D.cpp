@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 46120 2013-05-16 10:39:25Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 46255 2013-05-24 12:44:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -460,6 +460,18 @@ void UIFrameBufferQuartz2D::paintEvent(QPaintEvent *aEvent)
             CGImageRelease(subImage);
         }
     }
+}
+
+void UIFrameBufferQuartz2D::applyVisibleRegionEvent(UISetRegionEvent *pEvent)
+{
+    /* Make sure visible-region changed: */
+    if (m_visibleRegion == pEvent->region())
+        return;
+
+    /* Remember new visible-region: */
+    m_visibleRegion = pEvent->region();
+    /* Invalidate whole the viewport: */
+    ::darwinWindowInvalidateShape(m_pMachineView->viewport());
 }
 
 void UIFrameBufferQuartz2D::clean(bool fPreserveRegions)
