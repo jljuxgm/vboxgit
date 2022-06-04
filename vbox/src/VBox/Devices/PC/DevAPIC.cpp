@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 47428 2013-07-26 16:19:03Z vboxsync $ */
+/* $Id: DevAPIC.cpp 47840 2013-08-19 11:35:23Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  *
@@ -62,11 +62,9 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-#define MSR_IA32_APICBASE               0x1b
-#define MSR_IA32_APICBASE_BSP           (1<<8)
 #define MSR_IA32_APICBASE_ENABLE        (1<<11)
 #define MSR_IA32_APICBASE_X2ENABLE      (1<<10)
-#define MSR_IA32_APICBASE_BASE          (0xfffff<<12)
+#define MSR_IA32_APICBASE_BASE          (0xfffff<<12) /** @todo r=bird: This is not correct according to current specs! */
 
 #ifdef _MSC_VER
 # pragma warning(disable:4244)
