@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 44848 2013-02-27 18:58:32Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 44859 2013-02-28 10:38:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -91,6 +91,11 @@ int UIMachineLogicSeamless::hostScreenForGuestScreen(int iScreenId) const
     return m_pScreenLayout->hostScreenForGuestScreen(iScreenId);
 }
 
+bool UIMachineLogicSeamless::hasHostScreenForGuestScreen(int iScreenId) const
+{
+    return m_pScreenLayout->hasHostScreenForGuestScreen(iScreenId);
+}
+
 void UIMachineLogicSeamless::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo)
 {
     /* Update multi-screen layout before any window update: */
@@ -144,7 +149,7 @@ void UIMachineLogicSeamless::prepareMachineWindows()
     /* Connect screen-layout change handler: */
     for (int i = 0; i < machineWindows().size(); ++i)
         connect(m_pScreenLayout, SIGNAL(sigScreenLayoutChanged()),
-                static_cast<UIMachineWindowSeamless*>(machineWindows()[i]), SLOT(sltPlaceOnScreen()));
+                static_cast<UIMachineWindowSeamless*>(machineWindows()[i]), SLOT(sltShowInNecessaryMode()));
 
     /* Remember what machine window(s) created: */
     setMachineWindowsCreated(true);

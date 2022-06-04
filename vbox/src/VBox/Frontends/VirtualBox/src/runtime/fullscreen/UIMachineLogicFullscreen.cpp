@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 44848 2013-02-27 18:58:32Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 44859 2013-02-28 10:38:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -105,6 +105,11 @@ int UIMachineLogicFullscreen::hostScreenForGuestScreen(int iScreenId) const
     return m_pScreenLayout->hostScreenForGuestScreen(iScreenId);
 }
 
+bool UIMachineLogicFullscreen::hasHostScreenForGuestScreen(int iScreenId) const
+{
+    return m_pScreenLayout->hasHostScreenForGuestScreen(iScreenId);
+}
+
 #ifdef Q_WS_MAC
 void UIMachineLogicFullscreen::sltChangePresentationMode(bool /* fEnabled */)
 {
@@ -164,7 +169,7 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     /* Connect screen-layout change handler: */
     for (int i = 0; i < machineWindows().size(); ++i)
         connect(m_pScreenLayout, SIGNAL(sigScreenLayoutChanged()),
-                static_cast<UIMachineWindowFullscreen*>(machineWindows()[i]), SLOT(sltPlaceOnScreen()));
+                static_cast<UIMachineWindowFullscreen*>(machineWindows()[i]), SLOT(sltShowInNecessaryMode()));
 
 #ifdef Q_WS_MAC
     /* If the user change the screen, we have to decide again if the
