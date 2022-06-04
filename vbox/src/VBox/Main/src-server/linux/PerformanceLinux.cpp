@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 43843 2012-11-09 05:22:12Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 43845 2012-11-09 06:30:01Z vboxsync $ */
 
 /** @file
  *
@@ -361,7 +361,13 @@ int CollectorLinux::getRawHostDiskLoad(const char *name, uint64_t *disk_ms, uint
         char szBuf[128];
         while (fgets(szBuf, sizeof(szBuf), f))
         {
-            char *pszBufName = &szBuf[13];
+            char *pszBufName = szBuf;
+            while (*pszBufName == ' ')         ++pszBufName; /* Skip spaces */
+            while (RT_C_IS_DIGIT(*pszBufName)) ++pszBufName; /* Skip major */
+            while (*pszBufName == ' ')         ++pszBufName; /* Skip spaces */
+            while (RT_C_IS_DIGIT(*pszBufName)) ++pszBufName; /* Skip minor */
+            while (*pszBufName == ' ')         ++pszBufName; /* Skip spaces */
+
             char *pszBufData = strchr(pszBufName, ' ');
             if (!pszBufData)
             {
