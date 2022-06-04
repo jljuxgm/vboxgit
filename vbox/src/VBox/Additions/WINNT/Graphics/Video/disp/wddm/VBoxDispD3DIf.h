@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 46757 2013-06-24 14:30:18Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.h 46783 2013-06-25 16:09:37Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -79,6 +79,8 @@ typedef struct VBOXDISPD3D
     PFNVBOXWINEEXD3DDEV9_FINISH pfnVBoxWineExD3DDev9Finish;
 
     PFNVBOXWINEEXD3DSURF9_GETHOSTID pfnVBoxWineExD3DSurf9GetHostId;
+
+    PFNVBOXWINEEXD3DSURF9_SYNCTOHOST pfnVBoxWineExD3DSurf9SyncToHost;
 
     PFNVBOXWINEEXD3DSWAPCHAIN9_GETHOSTWINID pfnVBoxWineExD3DSwapchain9GetHostWinID;
 

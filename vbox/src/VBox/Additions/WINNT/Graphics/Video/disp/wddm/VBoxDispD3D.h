@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 46783 2013-06-25 16:09:37Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -78,6 +78,7 @@ typedef struct VBOXWDDMDISP_ADAPTER
     D3DDDI_ADAPTERCALLBACKS RtCallbacks;
     VBOXWDDMDISP_D3D D3D;
     VBOXWDDMDISP_FORMATS Formats;
+    uint32_t u32VBox3DCaps;
 #ifdef VBOX_WDDMDISP_WITH_PROFILE
     VBoxDispProfileFpsCounter ProfileDdiFps;
     VBoxDispProfileSet ProfileDdiFunc;

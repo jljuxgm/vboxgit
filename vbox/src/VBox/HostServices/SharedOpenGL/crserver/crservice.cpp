@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 46656 2013-06-19 12:49:56Z vboxsync $ */
+/* $Id: crservice.cpp 46783 2013-06-25 16:09:37Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -890,6 +890,30 @@ static DECLCALLBACK(void) svcCall (void *, VBOXHGCMCALLHANDLE callHandle, uint32
                 paParms[2].u.uint32 = cbWriteback;
 
                 svcFreeBuffer(pSvcBuffer);
+            }
+
+            break;
+        }
+
+        case SHCRGL_GUEST_FN_GET_CAPS:
+        {
+            Log(("svcCall: SHCRGL_GUEST_FN_GET_CAPS\n"));
+
+            /* Verify parameter count and types. */
+            if (cParms != SHCRGL_CPARMS_GET_CAPS)
+            {
+                rc = VERR_INVALID_PARAMETER;
+            }
+            else
+            if (paParms[0].type != VBOX_HGCM_SVC_PARM_32BIT)
+            {
+                rc = VERR_INVALID_PARAMETER;
+            }
+            else
+            {
+                /* Execute the function. */
+                rc = crVBoxServerClientGetCaps(u32ClientID, &paParms[0].u.uint32);
+                AssertRC(rc);
             }
 
             break;
