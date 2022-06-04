@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 47573 2013-08-07 09:57:28Z vboxsync $ */
+/* $Id: UISettingsPage.cpp 47579 2013-08-07 10:29:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -30,6 +30,7 @@ UISettingsPage::UISettingsPage(UISettingsPageType pageType)
     , m_fFailed(false)
     , m_pFirstWidget(0)
     , m_pValidator(0)
+    , m_fIsValidatorBlocked(true)
 {
 }
 
@@ -47,7 +48,7 @@ void UISettingsPage::setValidator(UIPageValidator *pValidator)
 void UISettingsPage::revalidate()
 {
     /* Revalidate if possible: */
-    if (m_pValidator)
+    if (m_pValidator && !m_fIsValidatorBlocked)
         m_pValidator->revalidate();
 }
 

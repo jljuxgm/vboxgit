@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 47563 2013-08-06 17:13:57Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 47579 2013-08-07 10:29:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -203,7 +203,12 @@ protected slots:
         {
             /* If such page present we should fetch internal page cache: */
             if (m_pages.contains(iPageId))
-                m_pages[iPageId]->getFromCache();
+            {
+                UISettingsPage *pSettingsPage = m_pages[iPageId];
+                pSettingsPage->setValidatorBlocked(true);
+                pSettingsPage->getFromCache();
+                pSettingsPage->setValidatorBlocked(false);
+            }
         }
     }
 
@@ -216,6 +221,13 @@ protected slots:
             /* We should flag GUI thread to unlock itself: */
             if (!m_fSavingComplete)
                 m_fSavingComplete = true;
+        }
+        /* If serializer loads settings: */
+        else
+        {
+            /* We have to do initial validation finally: */
+            foreach (UISettingsPage *pPage, m_pages.values())
+                pPage->revalidate();
         }
     }
 
