@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 46763 2013-06-24 17:21:53Z vboxsync $ */
+/* $Id: UIDefs.cpp 46782 2013-06-25 14:58:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -31,6 +31,7 @@ const char* UIDefs::GUI_RecentFolderFD = "GUI/RecentFolderFD";
 const char* UIDefs::GUI_RecentListHD = "GUI/RecentListHD";
 const char* UIDefs::GUI_RecentListCD = "GUI/RecentListCD";
 const char* UIDefs::GUI_RecentListFD = "GUI/RecentListFD";
+const char* UIDefs::GUI_PreventApplicationUpdate = "GUI/PreventApplicationUpdate";
 
 /* Selector-window definitions: */
 const char* UIDefs::GUI_Input_SelectorShortcuts = "GUI/Input/SelectorShortcuts";
