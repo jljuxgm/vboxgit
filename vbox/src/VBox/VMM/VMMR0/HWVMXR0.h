@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 46090 2013-05-15 09:59:18Z vboxsync $ */
+/* $Id: HWVMXR0.h 46130 2013-05-16 15:54:48Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -74,10 +74,9 @@ DECLINLINE(int) VMXReadCachedVmcsEx(PVMCPU pVCpu, uint32_t idxCache, RTGCUINTREG
                                                             VMXReadVmcs64(idxField, p64Val)                 \
                                                           : (*(p64Val) &= UINT64_C(0xffffffff),             \
                                                              VMXReadVmcs32(idxField, (uint32_t *)(p64Val)))
-#  define VMXReadVmcsGstN(idxField, p64Val)               (pVCpu->CTX_SUFF(pVM)->hm.s.fAllow64BitGuests) ?  \
-                                                            VMXReadVmcs64(idxField, p64Val)                 \
-                                                          : (*(p64Val) &= UINT64_C(0xffffffff),             \
-                                                             VMXReadVmcs32(idxField, (uint32_t *)(p64Val)))
+/* Don't use fAllow64BitGuests for VMXReadVmcsGstN() even though it looks right, as it can be forced to 'true'.
+   HMVMX_IS_64BIT_HOST_MODE() is what we need. */
+#  define VMXReadVmcsGstN                                 VMXReadVmcsHstN
 #  define VMXReadVmcsGstNByIdxVal                         VMXReadVmcsGstN
 # elif HC_ARCH_BITS == 32
 #  define VMXReadVmcsHstN                                 VMXReadVmcs32
