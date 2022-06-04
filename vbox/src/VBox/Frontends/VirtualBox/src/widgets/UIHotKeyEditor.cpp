@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 44562 2013-02-06 12:51:57Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 44589 2013-02-07 15:51:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -52,6 +52,10 @@ private:
 UIHotKeyLineEdit::UIHotKeyLineEdit(QWidget *pParent)
     : QLineEdit(pParent)
 {
+    /* Configure self: */
+    setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+    setContextMenuPolicy(Qt::NoContextMenu);
+
     /* Connect selection preserver: */
     connect(this, SIGNAL(selectionChanged()), this, SLOT(sltDeselect()));
 }
@@ -111,8 +115,6 @@ UIHotKeyEditor::UIHotKeyEditor(QWidget *pParent)
     m_pMainLayout->addWidget(m_pLineEdit);
 
     /* Configure line-edit: */
-    m_pLineEdit->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
-    m_pLineEdit->setContextMenuPolicy(Qt::NoContextMenu);
     m_pLineEdit->installEventFilter(this);
 }
 
