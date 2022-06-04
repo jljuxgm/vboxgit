@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 45251 2013-03-29 17:23:18Z vboxsync $ */
+/* $Id: vreg.cpp 45627 2013-04-19 06:09:30Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API implementation
@@ -434,7 +434,7 @@ static void vboxVrListJoinRectsHV(PVBOXVR_LIST pList, bool fHorizontal)
                         vboxVrDbgListVerify(pList);
                         pReg2->Rect.xLeft = pReg1->Rect.xLeft;
 
-                        vboxVrListRegAddOrder(pList, pReg2->ListEntry.pNext, pReg2);
+                        vboxVrListRegAddOrder(pList, pNext2, pReg2);
 
                         /* restart the pNext1 & pNext2 since regs are splitted into smaller ones in y dimension
                          * and thus can match one of the previous rects */
@@ -450,7 +450,7 @@ static void vboxVrListJoinRectsHV(PVBOXVR_LIST pList, bool fHorizontal)
                         vboxVrDbgListVerify(pList);
                         pReg2->Rect.xRight = pReg1->Rect.xRight;
 
-                        vboxVrListRegAddOrder(pList, pReg2->ListEntry.pNext, pReg2);
+                        vboxVrListRegAddOrder(pList, pNext2, pReg2);
 
                         /* restart the pNext1 & pNext2 since regs are splitted into smaller ones in y dimension
                          * and thus can match one of the previous rects */
