@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 44889 2013-03-01 15:45:44Z vboxsync $ */
+/* $Id: VSCSIInternal.h 47829 2013-08-18 12:30:02Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -360,6 +360,20 @@ DECLINLINE(int) vscsiLunMediumGetSize(PVSCSILUNINT pVScsiLun, uint64_t *pcbSize)
     return pVScsiLun->pVScsiLunIoCallbacks->pfnVScsiLunMediumGetSize(pVScsiLun,
                                                                      pVScsiLun->pvVScsiLunUser,
                                                                      pcbSize);
+}
+
+/**
+ * Wrapper for the get medium sector size I/O callback.
+ *
+ * @returns VBox status code.
+ * @param   pVScsiLun     The LUN.
+ * @param   pcbSectorSize Where to store the sector size on success.
+ */
+DECLINLINE(int) vscsiLunMediumGetSectorSize(PVSCSILUNINT pVScsiLun, uint32_t *pcbSectorSize)
+{
+    return pVScsiLun->pVScsiLunIoCallbacks->pfnVScsiLunMediumGetSectorSize(pVScsiLun,
+                                                                           pVScsiLun->pvVScsiLunUser,
+                                                                           pcbSectorSize);
 }
 
 /**

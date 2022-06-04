@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 47036 2013-07-08 12:26:47Z vboxsync $ */
+/* $Id: DrvBlock.cpp 47829 2013-08-18 12:30:02Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -260,6 +260,23 @@ static DECLCALLBACK(uint64_t) drvblockGetSize(PPDMIBLOCK pInterface)
 
     uint64_t cb = pThis->pDrvMedia->pfnGetSize(pThis->pDrvMedia);
     LogFlow(("drvblockGetSize: returns %llu\n", cb));
+    return cb;
+}
+
+
+/** @copydoc PDMIBLOCK::pfnGetSize */
+static DECLCALLBACK(uint32_t) drvblockGetSectorSize(PPDMIBLOCK pInterface)
+{
+    PDRVBLOCK pThis = PDMIBLOCK_2_DRVBLOCK(pInterface);
+
+    /*
+     * Check the state.
+     */
+    if (!pThis->pDrvMedia)
+        return 0;
+
+    uint32_t cb = pThis->pDrvMedia->pfnGetSectorSize(pThis->pDrvMedia);
+    LogFlowFunc(("returns %u\n", cb));
     return cb;
 }
 
@@ -852,6 +869,7 @@ static DECLCALLBACK(int) drvblockConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, u
     pThis->IBlock.pfnMerge                  = drvblockMerge;
     pThis->IBlock.pfnIsReadOnly             = drvblockIsReadOnly;
     pThis->IBlock.pfnGetSize                = drvblockGetSize;
+    pThis->IBlock.pfnGetSectorSize          = drvblockGetSectorSize;
     pThis->IBlock.pfnGetType                = drvblockGetType;
     pThis->IBlock.pfnGetUuid                = drvblockGetUuid;
 
