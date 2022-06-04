@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 43081 2012-08-29 15:16:49Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 43108 2012-08-30 14:23:41Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -156,11 +156,10 @@ VBOXDoBlockHandler(int screenNum, pointer blockData, pointer pTimeout,
 }
 #endif
 
-Bool VBOXDRIScreenInit(int scrnIndex, ScreenPtr pScreen, VBOXPtr pVBox)
+Bool VBOXDRIScreenInit(ScrnInfoPtr pScrn, ScreenPtr pScreen, VBOXPtr pVBox)
 {
     DRIInfoPtr pDRIInfo = NULL;
     Bool rc = TRUE;
-    ScrnInfoPtr pScrn = xf86Screens[scrnIndex];
 
     TRACE_ENTRY();
     pVBox->drmFD = -1;

@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 43081 2012-08-29 15:16:49Z vboxsync $ */
+/* $Id: vboxvideo.c 43108 2012-08-30 14:23:41Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -960,7 +960,7 @@ VBOXScreenInit(int scrnIndex, ScreenPtr pScreen, int argc, char **argv)
         return (FALSE);
 
 #ifdef VBOX_DRI
-    pVBox->useDRI = VBOXDRIScreenInit(scrnIndex, pScreen, pVBox);
+    pVBox->useDRI = VBOXDRIScreenInit(pScrn, pScreen, pVBox);
 #endif
 
     if (!fbScreenInit(pScreen, pVBox->base,
