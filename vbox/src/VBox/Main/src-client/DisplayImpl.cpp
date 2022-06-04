@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 46006 2013-05-13 09:39:02Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 46007 2013-05-13 10:55:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4242,6 +4242,7 @@ DECLCALLBACK(void) Display::drvDestruct(PPDMDRVINS pDrvIns)
         AutoWriteLock displayLock(pThis->pDisplay COMMA_LOCKVAL_SRC_POS);
 #ifdef VBOX_WITH_VPX
         VideoRecContextClose(pThis->pDisplay->mpVideoRecCtx);
+        pThis->pDisplay->mpVideoRecCtx = NULL;
 #endif
 #ifdef VBOX_WITH_CRHGSMI
         pThis->pDisplay->destructCrHgsmiData();
