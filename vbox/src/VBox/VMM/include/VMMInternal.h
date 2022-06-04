@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 45701 2013-04-24 14:21:09Z vboxsync $ */
+/* $Id: VMMInternal.h 46861 2013-06-28 10:29:10Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -519,6 +519,7 @@ RT_C_DECLS_BEGIN
 
 int  vmmInitFormatTypes(void);
 void vmmTermFormatTypes(void);
+uint32_t vmmGetBuildType(void);
 
 #ifdef IN_RING3
 int  vmmR3SwitcherInit(PVM pVM);

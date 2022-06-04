@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VMMRC.cpp 46861 2013-06-28 10:29:10Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -69,18 +69,23 @@ VMMRCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
         case VMMGC_DO_VMMGC_INIT:
         {
             /*
-             * Validate the svn revision (uArg).
+             * Validate the svn revision (uArg) and build type (ellipsis).
              */
             if (uArg != VMMGetSvnRev())
                 return VERR_VMM_RC_VERSION_MISMATCH;
 
-            /*
-             * Initialize the runtime.
-             * (The program timestamp is found in the elipsis.)
-             */
             va_list va;
             va_start(va, uArg);
+
+            uint32_t uBuildType = va_arg(va, uint32_t);
+            if (uBuildType != vmmGetBuildType())
+                return VERR_VMM_RC_VERSION_MISMATCH;
+
+            /*
+             * Initialize the runtime.
+             */
             uint64_t u64TS = va_arg(va, uint64_t);
+
             va_end(va);
 
             int rc = RTRCInit(u64TS);

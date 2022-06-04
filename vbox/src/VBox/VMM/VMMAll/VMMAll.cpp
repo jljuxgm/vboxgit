@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: VMMAll.cpp 46861 2013-06-28 10:29:10Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -357,5 +357,23 @@ VMM_INT_DECL(bool) VMMIsInRing3Call(PVMCPU pVCpu)
 #else
     return pVCpu->vmm.s.CallRing3JmpBufR0.fInRing3Call;
 #endif
+}
+
+
+/**
+ * Returns the build type for matching components.
+ *
+ * @returns Build type value.
+ */
+uint32_t vmmGetBuildType(void)
+{
+    uint32_t uRet = 0xbeef0000;
+#ifdef DEBUG
+    uRet |= RT_BIT_32(0);
+#endif
+#ifdef VBOX_WITH_STATISTICS
+    uRet |= RT_BIT_32(1);
+#endif
+    return uRet;
 }
 
