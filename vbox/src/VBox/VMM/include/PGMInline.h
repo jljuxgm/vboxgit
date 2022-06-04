@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 45739 2013-04-25 19:44:05Z vboxsync $ */
+/* $Id: PGMInline.h 45831 2013-04-30 11:37:04Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1487,7 +1487,7 @@ DECL_FORCE_INLINE(bool) pgmMapAreMappingsEnabled(PVM pVM)
     Assert(HMIsEnabled(pVM));
     return false;
 #else
-    Assert(pVM->cCpus == 1);
+    Assert(pVM->cCpus == 1 || HMIsEnabled());
     return !HMIsEnabled(pVM);
 #endif
 }
