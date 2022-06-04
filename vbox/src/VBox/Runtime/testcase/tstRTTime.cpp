@@ -1,4 +1,4 @@
-/* $Id: tstRTTime.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstRTTime.cpp 46298 2013-05-28 15:29:05Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime tests (requires GIP).
  */
@@ -40,14 +40,10 @@ int main()
     /*
      * Init.
      */
-    int rc = RTR3InitExeNoArguments(RTR3INIT_FLAGS_SUPLIB);
-    if (RT_FAILURE(rc))
-        return RTMsgInitFailure(rc);
-
     RTTEST hTest;
-    rc = RTTestCreate("tstRTTime", &hTest);
-    if (RT_FAILURE(rc))
-        return RTEXITCODE_FAILURE;
+    RTEXITCODE rcExit = RTTestInitExAndCreate(0, NULL, RTR3INIT_FLAGS_SUPLIB, "tstRTTime", &hTest);
+    if (rcExit != RTEXITCODE_SUCCESS)
+        return rcExit;
     RTTestBanner(hTest);
 
     /*
