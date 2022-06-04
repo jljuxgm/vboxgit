@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 46810 2013-06-26 17:35:03Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 46811 2013-06-26 17:43:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -594,6 +594,9 @@ protected:
         /* Configure painter for *enabled* state: */
         if (state() == UIIndicatorStateVideoCapture_Enabled)
         {
+            /* Configure painter for smooth animation: */
+            painter.setRenderHint(QPainter::Antialiasing);
+            painter.setRenderHint(QPainter::SmoothPixmapTransform);
             /* Shift rotation origin according pixmap center: */
             painter.translate(height() / 2, height() / 2);
             /* Rotate painter: */
