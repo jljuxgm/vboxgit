@@ -1,10 +1,10 @@
-/* $Id: service.cpp 40681 2012-03-28 14:33:04Z vboxsync $ */
+/* $Id: service.cpp 42272 2012-07-20 14:42:40Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -706,8 +706,8 @@ int Service::retrieveNextHostCmd(uint32_t u32ClientID, VBOXHGCMCALLHANDLE callHa
          {
              /* Remember which client processes which context (for
               * later reference & cleanup). */
-             Assert(curCmd.mContextID > 0);
              /// @todo r=bird: check if already in the list.
+             /// @todo Use a map instead of a list?
              it->mContextList.push_back(curCmd.mContextID);
 
              /* Only if the guest really got and understood the message remove it from the list. */
@@ -893,7 +893,6 @@ int Service::processHostCmd(uint32_t eFunction, uint32_t cParms, VBOXHGCMSVCPARM
          * assign the context ID to the command.
          */
         newCmd.mParmBuf.pParms[0].getUInt32(&newCmd.mContextID);
-        Assert(newCmd.mContextID > 0);
     }
     else if (!cParms)
         rc = VERR_INVALID_PARAMETER;

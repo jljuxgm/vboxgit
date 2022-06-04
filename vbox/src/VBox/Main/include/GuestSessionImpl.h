@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42214 2012-07-18 18:02:58Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42272 2012-07-20 14:42:40Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -125,7 +125,7 @@ public:
     const GuestCredentials &getCredentials(void);
     const GuestEnvironment &getEnvironment(void);
     int                     processClose(ComObjPtr<GuestProcess> pProcess);
-    int                     processCreateExInteral(GuestProcessInfo &aProcInfo, IGuestProcess **aProcess);
+    int                     processCreateExInteral(const GuestProcessInfo &aProcInfo, IGuestProcess **aProcess);
     inline bool             processExists(ULONG uProcessID, ComObjPtr<GuestProcess> *pProcess);
     inline int              processGetByPID(ULONG uPID, ComObjPtr<GuestProcess> *pProcess);
     /** @}  */
