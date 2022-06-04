@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46076 2013-05-14 18:00:02Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46079 2013-05-14 19:03:33Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7712,11 +7712,9 @@ HMVMX_EXIT_DECL hmR0VmxExitRdmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
 {
     VMX_VALIDATE_EXIT_HANDLER_PARAMS();
     /* EMInterpretRdmsr() requires CR0, Eflags and SS segment register. */
-    int rc = hmR0VmxSaveGuestCR0(pVCpu, pMixedCtx);
-    AssertRCReturn(rc, rc);
-    rc     = hmR0VmxSaveGuestRflags(pVCpu, pMixedCtx);
-    AssertRCReturn(rc, rc);
-    rc     = hmR0VmxSaveGuestSegmentRegs(pVCpu, pMixedCtx);
+    int rc  = hmR0VmxSaveGuestCR0(pVCpu, pMixedCtx);
+    rc     |= hmR0VmxSaveGuestRflags(pVCpu, pMixedCtx);
+    rc     |= hmR0VmxSaveGuestSegmentRegs(pVCpu, pMixedCtx);
     AssertRCReturn(rc, rc);
 
     PVM pVM = pVCpu->CTX_SUFF(pVM);
