@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 43842 2012-11-08 16:51:46Z vboxsync $ */
+/* $Id: tstCollector.cpp 43844 2012-11-09 05:35:42Z vboxsync $ */
 
 /** @file
  *
@@ -313,7 +313,7 @@ int main(int argc, char *argv[])
         RTPrintf("tstCollector: createMetricFactory() failed\n", rc);
         return 1;
     }
-#if 0
+#if 1
     pm::CollectorHints hints;
     hints.collectHostCpuLoad();
     hints.collectHostRamUsage();
@@ -481,7 +481,7 @@ int main(int argc, char *argv[])
 #if 1
     rc = testDisk(collector);
 #endif
-#if 0
+#if 1
     RTPrintf("tstCollector: TESTING - Performance\n\n");
 
     measurePerformance(collector, argv[0], 100);
