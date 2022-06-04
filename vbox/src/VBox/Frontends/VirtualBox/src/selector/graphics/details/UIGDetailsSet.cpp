@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 45054 2013-03-18 08:53:39Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 45287 2013-04-02 12:19:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -81,9 +81,12 @@ void UIGDetailsSet::buildSet(UIVMItem *pMachineItem, bool fFullSet, const QStrin
             updateGeometry();
     }
 
-    /* Do not build if has no details: */
+    /* Make sure we have details: */
     if (!m_fHasDetails)
     {
+        /* Reset last-step number: */
+        m_iLastStepNumber = -1;
+        /* Notify parent group we are built: */
         emit sigBuildDone();
         return;
     }
@@ -546,6 +549,10 @@ void UIGDetailsSet::updateLayout()
 
 void UIGDetailsSet::rebuildSet()
 {
+    /* Make sure we have details: */
+    if (!m_fHasDetails)
+        return;
+
     /* Cleanup build-step: */
     delete m_pBuildStep;
     m_pBuildStep = 0;
