@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 42909 2012-08-21 15:46:56Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 42922 2012-08-22 14:36:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -327,11 +327,18 @@ void UIGChooserItem::paintPixmap(QPainter *pPainter, const QRect &rect, const QP
 }
 
 /* static */
-void UIGChooserItem::paintText(QPainter *pPainter, const QRect &rect, const QFont &font, const QString &strText)
+void UIGChooserItem::paintText(QPainter *pPainter, QPoint point,
+                               const QFont &font, QPaintDevice *pPaintDevice,
+                               const QString &strText)
 {
+    /* Prepare variables: */
+    QFontMetrics fm(font, pPaintDevice);
+    point += QPoint(0, fm.ascent());
+
+    /* Draw text: */
     pPainter->save();
     pPainter->setFont(font);
-    pPainter->drawText(rect, strText);
+    pPainter->drawText(point, strText);
     pPainter->restore();
 }
 
