@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43131 2012-08-31 11:34:49Z vboxsync $
+# $Id: Makefile.kmk 43831 2012-11-07 13:11:51Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -404,7 +404,7 @@ ifdef VBOX_WITH_RESOURCE_USAGE_API
  VBoxSVC_SOURCES.solaris += src-server/solaris/PerformanceSolaris.cpp
  VBoxSVC_SOURCES.win     +=     src-server/win/PerformanceWin.cpp
  VBoxSVC_LDFLAGS.darwin  += -lproc
- VBoxSVC_LDFLAGS.solaris += -lkstat
+ VBoxSVC_LDFLAGS.solaris += -lkstat -lnvpair
  VBoxSVC_LDFLAGS.win     += psapi.lib powrprof.lib
 endif
 

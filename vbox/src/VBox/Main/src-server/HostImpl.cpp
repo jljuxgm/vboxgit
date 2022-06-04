@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 43629 2012-10-12 09:26:07Z vboxsync $ */
+/* $Id: HostImpl.cpp 43831 2012-11-07 13:11:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2929,7 +2929,7 @@ void Host::registerDiskMetrics(PerformanceCollector *aCollector)
 
     /* For now we are concerned with the root file system only. */
     pm::DiskList disks;
-    int rc = pm::getDiskListByFs("/", disks);
+    int rc = hal->getDiskListByFs("/", disks);
     if (RT_FAILURE(rc) || disks.empty())
         return;
     pm::DiskList::iterator it;

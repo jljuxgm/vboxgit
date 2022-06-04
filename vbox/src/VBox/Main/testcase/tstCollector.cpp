@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 43629 2012-10-12 09:26:07Z vboxsync $ */
+/* $Id: tstCollector.cpp 43831 2012-11-07 13:11:51Z vboxsync $ */
 
 /** @file
  *
@@ -221,7 +221,7 @@ int testDisk(pm::CollectorHAL *collector)
     uint64_t diskMsStop, totalMsStop;
 
     std::list<RTCString> disks;
-    int rc = pm::getDiskListByFs(FSNAME, disks);
+    int rc = collector->getDiskListByFs(FSNAME, disks);
     if (RT_FAILURE(rc))
     {
         RTPrintf("tstCollector: getDiskListByFs(%s) -> %Rrc\n", FSNAME, rc);
@@ -233,7 +233,7 @@ int testDisk(pm::CollectorHAL *collector)
         return 1;
     }
 
-    RTPrintf("tstCollector: TESTING - Disk utilization, sleeping for 5 sec...\n");
+    RTPrintf("tstCollector: TESTING - Disk utilization (%s), sleeping for 5 sec...\n", disks.front().c_str());
 
     hints.collectHostCpuLoad();
     rc = collector->preCollect(hints, 0);
