@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 44573 2013-02-06 15:24:36Z vboxsync $ */
+/* $Id: IOM.cpp 44850 2013-02-27 20:22:20Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -87,6 +87,13 @@
  * of ways thru PGM.
  *
  */
+
+/** @todo MMIO - simplifying the device end.
+ * - Add a return status for doing DBGFSTOP on access where there are no known
+ *   registers.
+ * -
+ *
+ *   */
 
 
 /*******************************************************************************
