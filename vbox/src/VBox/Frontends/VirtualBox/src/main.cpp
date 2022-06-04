@@ -1,4 +1,4 @@
-/* $Id: main.cpp 45267 2013-04-01 10:06:23Z vboxsync $ */
+/* $Id: main.cpp 45268 2013-04-01 10:12:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -496,7 +496,7 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
             }
             else if (noSelector)
             {
-                msgCenter().cannotRunInSelectorMode();
+                msgCenter().cannotStartSelector();
             }
             else
             {

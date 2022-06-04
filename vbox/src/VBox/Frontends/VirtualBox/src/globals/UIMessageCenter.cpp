@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45267 2013-04-01 10:06:23Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 45268 2013-04-01 10:12:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -337,12 +337,11 @@ void UIMessageCenter::warnAboutWrongUSBMounted()
 }
 #endif /* RT_OS_LINUX */
 
-void UIMessageCenter::cannotRunInSelectorMode()
+void UIMessageCenter::cannotStartSelector()
 {
     message(mainWindowShown(), MessageType_Critical,
-        tr("<p>Cannot run VirtualBox in <i>VM Selector</i> "
-           "mode due to local restrictions.</p>"
-           "<p>The application will now terminate.</p>"));
+            tr("<p>Cannot start VirtualBox Manager due to local restrictions.</p>"
+               "<p>The application will now terminate.</p>"));
 }
 
 void UIMessageCenter::showBETAWarning()
