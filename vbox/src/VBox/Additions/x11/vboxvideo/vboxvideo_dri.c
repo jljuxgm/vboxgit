@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 43270 2012-09-10 15:08:03Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 43274 2012-09-10 19:30:24Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -52,7 +52,7 @@
 # include "xf86Pci.h"
 #endif
 #include <dri.h>
-#include <GL/glx.h>
+#include <GL/glxtokens.h>
 #include <GL/glxint.h>
 #include <drm.h>
 
