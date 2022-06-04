@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 42548 2012-08-02 15:30:49Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 43077 2012-08-29 14:33:56Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 42548 2012-08-02 15:30:49Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 43077 2012-08-29 14:33:56Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -868,6 +868,12 @@ static size_t disHandleYasmDifferences(PDISCPUSTATE pCpuState, uint32_t uFlatAdd
              && pb[2] == 0xba)
         fDifferent = true; /* mov ch, 0bah  - yasm uses a short sequence: 0xb5 0xba. */
 
+    /*
+     * 32-bit retf.
+     */
+    else if (   pb[0] == 0x66
+             && pb[1] == 0xcb)
+        fDifferent = true;
 
     /*
      * Handle different stuff.
