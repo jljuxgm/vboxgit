@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 47691 2013-08-13 12:56:34Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 47861 2013-08-20 03:15:35Z vboxsync $ */
 
 /** @file
  *
@@ -473,6 +473,26 @@ STDMETHODIMP NATNetwork::COMSETTER(NeedDhcpServer)(BOOL aNeedDhcpServer)
     rc = mVirtualBox->saveSettings();
 #endif
     return rc;
+}
+
+STDMETHODIMP NATNetwork::COMGETTER(LocalMappings)(ComSafeArrayOut(BSTR, aLocalMappings))
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP NATNetwork::AddLocalMapping(IN_BSTR aHostId, LONG aOffset)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP NATNetwork::GetOffsetForService(NATNetworkServiceType_T service, LONG *aOffset)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP NATNetwork::SetOffsetForService(NATNetworkServiceType_T service, LONG aOffset)
+{
+    return E_NOTIMPL;
 }
 
 STDMETHODIMP NATNetwork::COMGETTER(PortForwardRules4)(ComSafeArrayOut(BSTR, aPortForwardRules4))

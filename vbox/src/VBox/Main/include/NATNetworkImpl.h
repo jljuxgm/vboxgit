@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 47018 2013-07-06 17:31:11Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 47861 2013-08-20 03:15:35Z vboxsync $ */
 
 /** @file
  *
@@ -105,6 +105,11 @@ public:
 
     STDMETHOD(COMGETTER(NeedDhcpServer))(BOOL *aEnabled);
     STDMETHOD(COMSETTER(NeedDhcpServer))(BOOL aEnabled);
+
+    STDMETHOD(COMGETTER(LocalMappings))(ComSafeArrayOut(BSTR, aLocalMappings));
+    STDMETHOD(AddLocalMapping)(IN_BSTR aHostId, LONG aOffset);
+    STDMETHOD(GetOffsetForService)(NATNetworkServiceType_T service, LONG *aOffset);
+    STDMETHOD(SetOffsetForService)(NATNetworkServiceType_T service, LONG aOffset);
 
     STDMETHOD(COMGETTER(PortForwardRules4))(ComSafeArrayOut(BSTR, aPortForwardRules4));
     STDMETHOD(COMGETTER(PortForwardRules6))(ComSafeArrayOut(BSTR, aPortForwardRules6));
