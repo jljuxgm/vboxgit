@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 47594 2013-08-07 14:37:31Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 47846 2013-08-19 15:27:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -412,10 +412,7 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent)
                     break;
             }
             if (pSettingsPage)
-            {
                 pSettingsPage->setDialogType(dialogType());
-                pSettingsPage->setId(iPageIndex);
-            }
         }
     }
 
@@ -682,10 +679,7 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
                     break;
             }
             if (pSettingsPage)
-            {
                 pSettingsPage->setDialogType(dialogType());
-                pSettingsPage->setId(iPageIndex);
-            }
         }
     }
 
