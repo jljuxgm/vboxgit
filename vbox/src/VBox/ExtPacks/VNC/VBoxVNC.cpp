@@ -1,4 +1,4 @@
-/* $Id: VBoxVNC.cpp 43219 2012-09-06 10:06:51Z vboxsync $ */
+/* $Id: VBoxVNC.cpp 43316 2012-09-13 05:03:17Z vboxsync $ */
 /** @file
  * VBoxVNC - VNC VRDE module.
  */
@@ -41,6 +41,11 @@
 #include <VBox/RemoteDesktop/VRDE.h>
 
 #include <rfb/rfb.h>
+
+#ifdef LIBVNCSERVER_IPv6
+// enable manually!
+// #define VBOX_USE_IPV6
+#endif
 
 
 /*******************************************************************************
@@ -264,7 +269,7 @@ DECLCALLBACK(int) VNCServerImpl::VRDEEnableConnections(HVRDESERVER hServer, bool
     vncServer->screenData = (void *)instance;
     vncServer->desktopName = "VBoxVNC";
 
-#ifndef LIBVNCSERVER_IPv6
+#ifndef VBOX_USE_IPV6
 
     // get listen address
     char szAddress[VNC_ADDRESSSIZE + 1] = {0};
