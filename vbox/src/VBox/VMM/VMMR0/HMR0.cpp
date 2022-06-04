@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 45786 2013-04-26 22:35:59Z vboxsync $ */
+/* $Id: HMR0.cpp 45861 2013-05-01 10:55:14Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1399,16 +1399,11 @@ VMMR0_INT_DECL(int) HMR0Enter(PVM pVM, PVMCPU pVCpu)
 
     PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(pVCpu);
 
-#ifdef VBOX_WITH_OLD_VTX_CODE
     /* Always load the guest's FPU/XMM state on-demand. */
     CPUMDeactivateGuestFPUState(pVCpu);
 
     /* Always load the guest's debug state on-demand. */
     CPUMDeactivateGuestDebugState(pVCpu);
-#else
-    Assert(!CPUMIsGuestFPUStateActive(pVCpu));
-    Assert(!CPUMIsGuestDebugStateActive(pVCpu));
-#endif
 
     /* Always reload the host context and the guest's CR0 register (for the FPU bits). */
     pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_CR0 | HM_CHANGED_HOST_CONTEXT;
@@ -1493,6 +1488,10 @@ VMMR0_INT_DECL(int) HMR0Leave(PVM pVM, PVMCPU pVCpu)
         pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_CR0; /** @todo r=bird: Why HM_CHANGED_GUEST_CR0?? */
         Assert(!CPUMIsGuestFPUStateActive(pVCpu));
     }
+#else
+    Assert(!CPUMIsGuestFPUStateActive(pVCpu));
+    Assert(!CPUMIsGuestDebugStateActive(pVCpu));
+    Assert(!CPUMIsHyperDebugStateActive(pVCpu));
 #endif
 
     rc = g_HvmR0.pfnLeaveSession(pVM, pVCpu, pCtx);

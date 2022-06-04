@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45857 2013-05-01 00:17:17Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45861 2013-05-01 10:55:14Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5624,6 +5624,7 @@ static void hmR0VmxLongJmpToRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, int
     else if (CPUMIsHyperDebugStateActive(pVCpu))
     {
         CPUMR0LoadHostDebugState(pVM, pVCpu);
+        Assert(!CPUMIsHyperDebugStateActive(pVCpu));
         Assert(pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_MOV_DR_EXIT);
     }
 
