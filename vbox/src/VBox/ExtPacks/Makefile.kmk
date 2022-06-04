@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 47207 2013-07-17 10:22:20Z vboxsync $
 ## @file
 # Sub-Makefile for the Extension Packs.
 #
@@ -23,6 +23,9 @@ ifdef VBOX_WITH_EXTPACK_PUEL_BUILD
 endif
 ifdef VBOX_WITH_EXTPACK_VNC
  include $(PATH_SUB_CURRENT)/VNC/Makefile.kmk
+endif
+ifdef VBOX_WITH_EXTPACK_BUSMOUSESAMPLE
+ include $(PATH_SUB_CURRENT)/BusMouseSample/Makefile.kmk
 endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
