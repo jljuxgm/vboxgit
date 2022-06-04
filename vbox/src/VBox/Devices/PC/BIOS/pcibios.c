@@ -1,4 +1,4 @@
-/* $Id: pcibios.c 42332 2012-07-23 16:48:01Z vboxsync $ */
+/* $Id: pcibios.c 42392 2012-07-25 13:36:28Z vboxsync $ */
 /** @file
  * PCI BIOS support.
  */
@@ -20,7 +20,6 @@
 #include "biosint.h"
 #include "inlines.h"
 
-//#define DEBUG_PCI  1 //@todo!
 #if DEBUG_PCI
 #  define BX_DEBUG_PCI(...) BX_DEBUG(__VA_ARGS__)
 #else
@@ -279,8 +278,10 @@ uint16_t PCIxx(find_device)(uint32_t search_item, uint16_t index, int search_cla
         if (search_class)
             data >>= 8;
 
+#if 0
         BX_DEBUG_PCI("PCI: Data is %08lX @ %02X:%%02X:%01X\n", data,
                      bus_dev_fn >> 8, bus_dev_fn >> 3 & 31, bus_dev_fn & 7);
+#endif
 
         if (data == search_item)
             found = 1;
@@ -385,6 +386,8 @@ void BIOSCALL PCIxx(function)(volatile pci_regs_t r)
             SET_CF();
         } else {
             rep_movsb(route_buf->buf_ptr, pci_routing_table, pci_routing_table_size);
+            /* IRQs 9 and 11 are PCI only. */
+            BX = (1 << 9) | (1 << 11);
         }
         break;
     default:
