@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 45779 2013-04-26 15:18:59Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 45784 2013-04-26 16:04:10Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2521,7 +2521,8 @@ static void VBoxGuestCommonCheckEvents(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSI
             RTListAppend(&pDevExt->WakeUpList, &pWait->ListNode);
 #else
             RTListAppend(&pDevExt->WokenUpList, &pWait->ListNode);
-            rc |= RTSemEventMultiSignal(pWait->Event);
+            int rc = RTSemEventMultiSignal(pWait->Event);
+            AssertRC(rc);
 #endif
             if (!fEvents)
                 break;
