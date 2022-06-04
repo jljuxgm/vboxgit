@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43594 2012-10-10 13:58:48Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43597 2012-10-10 14:37:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -357,6 +357,11 @@ bool UIGChooserItemMachine::hasItems(UIGChooserItemType) const
 void UIGChooserItemMachine::clearItems(UIGChooserItemType)
 {
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
+}
+
+UIGChooserItemMachine* UIGChooserItemMachine::firstMachineItem()
+{
+    return this;
 }
 
 void UIGChooserItemMachine::updateLayout()
