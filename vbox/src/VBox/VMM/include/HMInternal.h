@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 46724 2013-06-21 12:48:38Z vboxsync $ */
+/* $Id: HMInternal.h 46787 2013-06-25 17:17:25Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -857,6 +857,7 @@ typedef struct HMCPU
     STAMCOUNTER             StatFlushTlbManual;
     STAMCOUNTER             StatFlushTlbWorldSwitch;
     STAMCOUNTER             StatNoFlushTlbWorldSwitch;
+    STAMCOUNTER             StatFlushEntire;
     STAMCOUNTER             StatFlushAsid;
     STAMCOUNTER             StatFlushNestedPaging;
     STAMCOUNTER             StatFlushTlbInvlpgVirt;
