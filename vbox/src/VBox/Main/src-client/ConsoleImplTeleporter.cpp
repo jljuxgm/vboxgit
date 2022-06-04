@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 46788 2013-06-25 17:39:02Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 47528 2013-08-02 18:02:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -933,7 +933,7 @@ Console::Teleport(IN_BSTR aHostname, ULONG aPort, IN_BSTR aPassword, ULONG aMaxD
      */
     CheckComArgOutPointerValid(aProgress);
     CheckComArgStrNotEmptyOrNull(aHostname);
-    CheckComArgStrNotEmptyOrNull(aPassword);
+    CheckComArgNotNull(aPassword);
     CheckComArgExprMsg(aPort, aPort > 0 && aPort <= 65535, ("is %u", aPort));
     CheckComArgExprMsg(aMaxDowntime, aMaxDowntime > 0, ("is %u", aMaxDowntime));
 
