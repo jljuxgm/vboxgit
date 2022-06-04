@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStop.cpp 43656 2012-10-16 15:18:28Z vboxsync $ */
+/* $Id: VBoxAutostartStop.cpp 43909 2012-11-19 10:00:02Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, stop machines during system shutdown.
  */
@@ -195,7 +195,6 @@ DECLHIDDEN(RTEXITCODE) autostartStopMain(PCFGAST pCfgAst)
                         }
                         case AutostopType_AcpiShutdown:
                         {
-                            /** @todo: Wait for VM to change to powered off state. */
                             BOOL fGuestEnteredACPI = false;
                             CHECK_ERROR_BREAK(console, GetGuestEnteredACPIMode(&fGuestEnteredACPI));
                             if (fGuestEnteredACPI && enmMachineState == MachineState_Running)
