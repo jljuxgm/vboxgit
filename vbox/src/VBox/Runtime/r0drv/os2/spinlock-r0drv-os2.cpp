@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-os2.cpp 40871 2012-04-11 16:27:51Z vboxsync $ */
+/* $Id: spinlock-r0drv-os2.cpp 43578 2012-10-09 11:45:20Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, OS/2.
  */
@@ -38,6 +38,9 @@
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
+#ifdef RT_STRICT
+# include <iprt/asm-amd64-x86.h>
+#endif
 
 #include "internal/magics.h"
 
