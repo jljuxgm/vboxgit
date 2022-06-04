@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 43726 2012-10-24 14:08:15Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 43731 2012-10-24 16:09:52Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -2464,12 +2464,12 @@ DECLINLINE(int) VMXR0SaveGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             case MSR_K8_TSC_AUX:
                 CPUMSetGuestMsr(pVCpu, MSR_K8_TSC_AUX, pMsr->u64Value);
                 break;
-#if 0
+
             case MSR_K6_EFER:
                 /* EFER can't be changed without causing a VM-exit. */
                 /* Assert(pCtx->msrEFER == pMsr->u64Value); */
                 break;
-#endif
+
             default:
                 AssertFailed();
                 return VERR_HM_UNEXPECTED_LD_ST_MSR;
