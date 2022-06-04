@@ -1,4 +1,4 @@
-; $Id: env-iprt-r3.mac 46856 2013-06-28 03:03:19Z vboxsync $
+; $Id: env-iprt-r3.mac 47132 2013-07-14 00:06:54Z vboxsync $
 ;; @file
 ; Instruction Test Environment - IPRT, Ring-3, 32-bit and 64-bit.
 ;
@@ -84,6 +84,10 @@ extern NAME(VBInsTstFailure3)
 ;; Call RTTestIFailure like function with format message + 4 args.
 %define VBINSTST_CALL_FN_FAILURE_4  call NAME(VBInsTstFailure4)
 extern NAME(VBInsTstFailure4)
+
+
+;; Cannot do traps yet.
+%undef VBINSTST_CAN_DO_TRAPS
 
 
 ;
