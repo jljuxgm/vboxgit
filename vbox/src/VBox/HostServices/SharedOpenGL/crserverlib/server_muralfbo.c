@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 44886 2013-03-01 14:11:35Z vboxsync $ */
+/* $Id: server_muralfbo.c 44893 2013-03-01 18:58:52Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -181,7 +181,7 @@ void crServerCheckMuralGeometry(CRMuralInfo *mural)
             if (mural->fUseFBO)
             {
                 if (mural->width!=mural->fboWidth
-                    || mural->height!=mural->height)
+                    || mural->height!=mural->fboHeight)
                 {
                     crServerRedirMuralFBO(mural, CR_SERVER_REDIR_NONE);
                     crServerDeleteMuralFBO(mural);
