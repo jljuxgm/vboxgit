@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: mp-darwin.cpp 46668 2013-06-19 15:41:05Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -97,7 +97,7 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
     kern_return_t krc = host_processor_info(mach_host_self(),
         PROCESSOR_BASIC_INFO, &nCpus, (processor_info_array_t*)&pinfo, &count);
     AssertReturn (krc == KERN_SUCCESS, true);
-    bool isOnline = idCpu < nCpus ? pinfo[idCpu].running : true;
+    bool isOnline = idCpu < nCpus ? pinfo[idCpu].running : false;
     vm_deallocate(mach_task_self(), (vm_address_t)pinfo, count * sizeof(*pinfo));
     return isOnline;
 #endif
