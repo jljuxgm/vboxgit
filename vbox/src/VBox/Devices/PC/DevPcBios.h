@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.h 40277 2012-02-28 14:10:07Z vboxsync $ */
+/* $Id: DevPcBios.h 43712 2012-10-23 14:02:24Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device, header shared with the BIOS code.
  */
@@ -27,7 +27,6 @@
  * This is the number of DMI structures.
  */
 #define VBOX_DMI_TABLE_ENTR         9
-#define VBOX_DMI_TABLE_OFFSET       0xff40
 
 /** def VBOX_DMI_TABLE_SIZE
  *
