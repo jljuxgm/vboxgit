@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: VBoxHeadlessXOrg.sh 44081 2012-12-10 14:36:06Z vboxsync $
+# $Id: VBoxHeadlessXOrg.sh 44093 2012-12-11 14:49:11Z vboxsync $
 #
 # VirtualBox X Server auto-start service.
 #
@@ -289,13 +289,12 @@ done
 [ -r "${CONFIGURATION_FILE}" ] && . "${CONFIGURATION_FILE}"
 
 if [ -n "${do_install}" ]; then
-  cd "${SCRIPT_FOLDER}"
-  SCRIPT_FOLDER=$(pwd)"/"
+  SCRIPT_FOLDER=$(cd "${SCRIPT_FOLDER}" && pwd)"/"
   CONFIGURATION_FILE_ESCAPED=$(echo "${CONFIGURATION_FILE}" | sed 's/\([ \%]\)/\\\1/g')
   if [ "x${do_install}" = "xinstall" ]; then
-    ../helpers/install_service --command "${SCRIPT_FOLDER}"$(basename "${SCRIPT_NAME}") --arguments "--conf-file ${CONFIGURATION_FILE_ESCAPED}" --service-name "${SERVICE_NAME}" --description "${SERVICE_DESCRIPTION}" --enable
+    ${SCRIPT_FOLDER}install_service --command "${SCRIPT_FOLDER}"$(basename "${SCRIPT_NAME}") --arguments "--conf-file ${CONFIGURATION_FILE_ESCAPED}" --service-name "${SERVICE_NAME}" --description "${SERVICE_DESCRIPTION}" --enable
   else
-    ../helpers/install_service --service-name "${SERVICE_NAME}" --remove
+    ${SCRIPT_FOLDER}install_service --service-name "${SERVICE_NAME}" --remove
   fi
   exit 0
 fi
