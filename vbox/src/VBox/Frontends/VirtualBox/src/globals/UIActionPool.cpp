@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 46846 2013-06-27 14:25:51Z vboxsync $ */
+/* $Id: UIActionPool.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -412,7 +412,7 @@ class UIActionSimpleResetWarnings : public UIActionSimple
 public:
 
     UIActionSimpleResetWarnings(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/reset_16px.png")
+        : UIActionSimple(pParent, ":/vm_reset_16px.png") // TODO: Change icon!
     {
         retranslateUi();
     }

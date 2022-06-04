@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 45283 2013-04-02 11:36:53Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -189,9 +189,9 @@ QVariant UIGChooserItemMachine::data(int iKey) const
         case MachineItemData_TextSpacing: return 0;
 
         /* Pixmaps: */
-        case MachineItemData_SettingsButtonPixmap: return UIIconPool::iconSet(":/settings_16px.png");
-        case MachineItemData_StartButtonPixmap: return UIIconPool::iconSet(":/start_16px.png");
-        case MachineItemData_PauseButtonPixmap: return UIIconPool::iconSet(":/pause_16px.png");
+        case MachineItemData_SettingsButtonPixmap: return UIIconPool::iconSet(":/vm_settings_16px.png");
+        case MachineItemData_StartButtonPixmap: return UIIconPool::iconSet(":/vm_start_16px.png");
+        case MachineItemData_PauseButtonPixmap: return UIIconPool::iconSet(":/vm_pause_16px.png");
         case MachineItemData_CloseButtonPixmap: return UIIconPool::iconSet(":/exit_16px.png");
 
         /* Sizes: */

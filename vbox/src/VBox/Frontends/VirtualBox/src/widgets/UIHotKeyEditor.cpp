@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 44753 2013-02-19 14:57:00Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -136,7 +136,7 @@ UIHotKeyEditor::UIHotKeyEditor(QWidget *pParent)
     m_pResetButton->setIcon(UIIconPool::iconSet(":/import_16px.png"));
     connect(m_pResetButton, SIGNAL(clicked(bool)), this, SLOT(sltReset()));
     m_pClearButton->removeBorder();
-    m_pClearButton->setIcon(UIIconPool::iconSet(":/delete_16px.png"));
+    m_pClearButton->setIcon(UIIconPool::iconSet(":/eraser_16px.png"));
     connect(m_pClearButton, SIGNAL(clicked(bool)), this, SLOT(sltClear()));
 
     /* Translate finally: */

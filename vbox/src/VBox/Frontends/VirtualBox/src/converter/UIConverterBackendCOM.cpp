@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -110,7 +110,7 @@ template<> QPixmap toPixmap(const KMachineState &state)
         case KMachineState_DeletingSnapshotPaused: return QPixmap(":/state_discarding_16px.png");
         case KMachineState_RestoringSnapshot:      return QPixmap(":/state_discarding_16px.png");
         case KMachineState_DeletingSnapshot:       return QPixmap(":/state_discarding_16px.png");
-        case KMachineState_SettingUp:              return QPixmap(":/settings_16px.png");
+        case KMachineState_SettingUp:              return QPixmap(":/vm_settings_16px.png"); // TODO: Change icon!
         // case KMachineState_FirstOnline:
         // case KMachineState_LastOnline:
         // case KMachineState_FirstTransient:

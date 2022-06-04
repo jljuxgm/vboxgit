@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.cpp 43710 2012-10-23 12:48:57Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -75,7 +75,7 @@ UINetworkRequestWidget::UINetworkRequestWidget(UINetworkManagerDialog *pParent, 
     /* Setup cancel-button: */
     m_pCancelButton->removeBorder();
     m_pCancelButton->setFocusPolicy(Qt::NoFocus);
-    m_pCancelButton->setIcon(UIIconPool::iconSet(":/delete_16px.png"));
+    m_pCancelButton->setIcon(UIIconPool::iconSet(":/cancel_16px.png"));
     connect(m_pCancelButton, SIGNAL(clicked(bool)), this, SIGNAL(sigCancel()));
 
     /* Setup error-label: */

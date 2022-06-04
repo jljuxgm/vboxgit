@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 47149 2013-07-15 10:02:57Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -569,7 +569,7 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
 {
     /* Window icon: */
 #ifndef Q_WS_MAC
-    setWindowIcon(QIcon(":/settings_16px.png"));
+    setWindowIcon(QIcon(":/vm_settings_16px.png"));
 #endif /* Q_WS_MAC */
 
     /* Allow to reset first-run flag just when medium enumeration was finished: */
