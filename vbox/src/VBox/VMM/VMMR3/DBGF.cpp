@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 46159 2013-05-18 19:56:08Z vboxsync $ */
+/* $Id: DBGF.cpp 46167 2013-05-19 22:12:49Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -147,8 +147,6 @@ VMMR3_INT_DECL(int) DBGFR3Init(PVM pVM)
         rc = dbgfR3RegInit(pUVM);
     if (RT_SUCCESS(rc))
         rc = dbgfR3AsInit(pUVM);
-    if (RT_SUCCESS(rc))
-        rc = dbgfR3SymInit(pVM);
     if (RT_SUCCESS(rc))
         rc = dbgfR3BpInit(pVM);
     return rc;

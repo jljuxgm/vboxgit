@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 45739 2013-04-25 19:44:05Z vboxsync $ */
+/* $Id: tstVMStruct.h 46167 2013-05-19 22:12:49Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -220,9 +220,6 @@
     GEN_CHECK_OFF(DBGF, VMMCmdData);
     //GEN_CHECK_OFF(DBGF, pInfoFirst);
     //GEN_CHECK_OFF(DBGF, InfoCritSect);
-    GEN_CHECK_OFF(DBGF, SymbolTree);
-    GEN_CHECK_OFF(DBGF, pSymbolSpace);
-    GEN_CHECK_OFF(DBGF, fSymInited);
     GEN_CHECK_OFF(DBGF, cHwBreakpoints);
     GEN_CHECK_OFF(DBGF, cBreakpoints);
     GEN_CHECK_OFF(DBGF, aHwBreakpoints);

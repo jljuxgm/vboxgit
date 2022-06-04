@@ -1,4 +1,4 @@
-/* $Id: PATMR3Dbg.cpp 46159 2013-05-18 19:56:08Z vboxsync $ */
+/* $Id: PATMR3Dbg.cpp 46167 2013-05-19 22:12:49Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager, Debugger Related Parts.
  */
@@ -190,10 +190,14 @@ void patmR3DbgAddPatch(PVM pVM, PPATMPATCHREC pPatchRec)
         /* If we have a symbol near the guest address, append that. */
         if (off + 8 <= sizeof(szName))
         {
-            DBGFSYMBOL Symbol;
-            RTGCINTPTR offDisp;
+            RTDBGSYMBOL Symbol;
+            RTGCINTPTR  offDisp;
+            DBGFADDRESS Addr;
 
-            int rc = DBGFR3SymbolByAddr(pVM, pPatchRec->patch.pPrivInstrGC, &offDisp, &Symbol);
+            int rc = DBGFR3AsSymbolByAddr(pVM->pUVM, DBGF_AS_GLOBAL,
+                                          DBGFR3AddrFromFlat(pVM->pUVM, &Addr, pPatchRec->patch.pPrivInstrGC),
+                                          RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL,
+                                          &offDisp, &Symbol, NULL /*phMod*/);
             if (RT_SUCCESS(rc))
             {
                 szName[off++] = '_';
