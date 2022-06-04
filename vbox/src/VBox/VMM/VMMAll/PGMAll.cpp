@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: PGMAll.cpp 43953 2012-11-23 15:41:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1661,6 +1661,8 @@ VMM_INT_DECL(int) PGMGstGetPaePdpes(PVMCPU pVCpu, PX86PDPE paPdpes)
  * @param   pVCpu               The virtual CPU.
  * @param   paPdpes             The four PDPE values.  The array pointed to
  *                              must have exactly 4 entries.
+ *
+ * @remarks No-long-jump zone!!!
  */
 VMM_INT_DECL(int) PGMGstUpdatePaePdpes(PVMCPU pVCpu, PCX86PDPE paPdpes)
 {
