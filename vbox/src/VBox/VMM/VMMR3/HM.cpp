@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 47090 2013-07-11 11:34:04Z vboxsync $ */
+/* $Id: HM.cpp 47094 2013-07-11 14:23:32Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2974,6 +2974,7 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
             case VERR_VMX_INVALID_VMXON_PTR:
                 break;
 
+            case VERR_VMX_UNEXPECTED_EXIT_CODE:
             case VERR_SVM_UNKNOWN_EXIT:
             case VERR_SVM_UNEXPECTED_EXIT:
             case VERR_SVM_UNEXPECTED_PATCH_TYPE:
