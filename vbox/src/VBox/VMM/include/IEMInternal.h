@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 47350 2013-07-23 16:14:05Z vboxsync $ */
+/* $Id: IEMInternal.h 47382 2013-07-24 22:31:09Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -489,6 +489,12 @@ typedef IEMCPU const *PCIEMCPU;
 #define IEM_OP_PRF_REX_R                RT_BIT_32(25) /**< REX.R prefix (0x44,0x45,0x46,0x47,0x4c,0x4d,0x4e,0x4f). */
 #define IEM_OP_PRF_REX_B                RT_BIT_32(26) /**< REX.B prefix (0x41,0x43,0x45,0x47,0x49,0x4b,0x4d,0x4f). */
 #define IEM_OP_PRF_REX_X                RT_BIT_32(27) /**< REX.X prefix (0x42,0x43,0x46,0x47,0x4a,0x4b,0x4e,0x4f). */
+/** Mask with all the REX prefix flags.
+ * This is generally for use when needing to undo the REX prefixes when they
+ * are followed legacy prefixes and therefore does not immediately preceed
+ * the first opcode byte.
+ * For testing whether any REX prefix is present, use  IEM_OP_PRF_REX instead. */
+#define IEM_OP_PRF_REX_MASK  (IEM_OP_PRF_REX | IEM_OP_PRF_REX_R | IEM_OP_PRF_REX_B | IEM_OP_PRF_REX_X | IEM_OP_PRF_SIZE_REX_W )
 /** @} */
 
 /**
