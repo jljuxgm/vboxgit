@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 42723 2012-08-09 18:49:59Z vboxsync $ */
+/* $Id: DevAHCI.cpp 42891 2012-08-20 19:08:35Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -5907,6 +5907,7 @@ static AHCITXDIR ahciProcessCmd(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, uint8_t 
             {
                 atapiDoTransfer(pAhciPort, pAhciReq, 512, ATAFN_SS_ATAPI_IDENTIFY);
 
+                pAhciReq->fFlags |= AHCI_REQ_PIO_DATA;
                 pAhciReq->uATARegError = 0;
                 pAhciReq->uATARegStatus = ATA_STAT_READY | ATA_STAT_SEEK;
             }
