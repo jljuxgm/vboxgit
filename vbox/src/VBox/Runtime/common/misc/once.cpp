@@ -1,4 +1,4 @@
-/* $Id: once.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
+/* $Id: once.cpp 43893 2012-11-16 09:30:27Z vboxsync $ */
 /** @file
  * IPRT - Execute Once.
  */
@@ -262,7 +262,7 @@ RTDECL(int) RTOnceSlow(PRTONCE pOnce, PFNRTONCE pfnOnce, PFNRTONCECLEANUP pfnCle
                  , VERR_INTERNAL_ERROR);
 
 #ifndef IN_RING3
-    AssertReturn(pfnCleanUp, VERR_NOT_SUPPORTED);
+    AssertReturn(!pfnCleanUp, VERR_NOT_SUPPORTED);
 #else /* IN_RING3 */
 
     /*
