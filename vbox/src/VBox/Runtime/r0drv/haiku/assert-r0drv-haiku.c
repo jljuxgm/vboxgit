@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: assert-r0drv-haiku.c 43373 2012-09-20 15:04:11Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, Haiku.
  */
@@ -43,9 +43,9 @@
 void rtR0AssertNativeMsg1(const char *pszExpr, unsigned uLine, const char *pszFile, const char *pszFunction)
 {
     dprintf("\r\n!!Assertion Failed!!\r\n"
-           "Expression: %s\r\n"
-           "Location  : %s(%d) %s\r\n",
-           pszExpr, pszFile, uLine, pszFunction);
+            "Expression: %s\r\n"
+            "Location  : %s(%d) %s\r\n",
+            pszExpr, pszFile, uLine, pszFunction);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: mp-r0drv-haiku.c 43373 2012-09-20 15:04:11Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Haiku.
  */
@@ -212,7 +212,7 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
     /* is _sync needed ? */
     call_all_cpus_sync(rtmpOnSpecificHaikuWrapper, &Args);
     return Args.cHits == 1
-         ? VINF_SUCCESS
-         : VERR_CPU_NOT_FOUND;
+           ? VINF_SUCCESS
+           : VERR_CPU_NOT_FOUND;
 }
 
