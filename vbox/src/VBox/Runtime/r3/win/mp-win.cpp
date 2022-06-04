@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 46616 2013-06-18 10:48:34Z vboxsync $ */
+/* $Id: mp-win.cpp 46617 2013-06-18 11:17:06Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -33,6 +33,7 @@
 #include <iprt/mp.h>
 #include <iprt/cpuset.h>
 #include <iprt/assert.h>
+#include <iprt/mem.h>
 
 
 AssertCompile(MAXIMUM_PROCESSORS <= RTCPUSET_MAX_CPUS);
