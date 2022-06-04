@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 42354 2012-07-24 12:13:00Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 42358 2012-07-24 12:35:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -93,7 +93,7 @@ protected:
     int onProcessOutput(GuestCtrlCallback *pCallback, PCALLBACKDATAEXECOUT pData);
     int prepareExecuteEnv(const char *pszEnv, void **ppvList, ULONG *pcbList, ULONG *pcEnvVars);
     int sendCommand(uint32_t uFunction, uint32_t uParms, PVBOXHGCMSVCPARM paParms);
-    int signalWaiters(ProcessWaitResult enmWaitResult, int rc = VINF_SUCCESS);
+    int signalWaiters(ProcessWaitResult_T enmWaitResult, int rc = VINF_SUCCESS);
     static DECLCALLBACK(int) startProcessThread(RTTHREAD Thread, void *pvUser);
     /** @}  */
 
