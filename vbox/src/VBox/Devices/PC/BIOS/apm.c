@@ -1,4 +1,4 @@
-/* $Id: apm.c 42791 2012-08-13 12:38:33Z vboxsync $ */
+/* $Id: apm.c 42935 2012-08-23 10:10:57Z vboxsync $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
@@ -20,7 +20,6 @@
 #include "biosint.h"
 #include "inlines.h"
 
-#define DEBUG_APM  1 //@todo!
 #if DEBUG_APM
 #  define BX_DEBUG_APM(...) BX_DEBUG(__VA_ARGS__)
 #else
