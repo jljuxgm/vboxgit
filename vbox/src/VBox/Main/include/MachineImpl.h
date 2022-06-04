@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 42841 2012-08-16 10:30:24Z vboxsync $ */
+/* $Id: MachineImpl.h 42889 2012-08-20 17:44:10Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -947,7 +947,7 @@ protected:
     pm::CollectorGuest     *mCollectorGuest;
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
 
-    Machine* const          mPeer;
+    Machine * const         mPeer;
 
     VirtualBox * const      mParent;
 
@@ -1273,6 +1273,10 @@ public:
 private:
 
     Guid mSnapshotId;
+    /** This field replaces mPeer for SessionMachine instances, as having
+     * a peer reference is plain meaningless and causes many subtle problems
+     * with saving settings and the like. */
+    Machine * const mMachine;
 
     friend class Snapshot;
 };
