@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46035 2013-05-13 16:47:40Z vboxsync $
+# $Id: Makefile.kmk 46272 2013-05-26 18:02:48Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -734,6 +734,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   VBoxDDGC_DEFS           = VBOX_WITH_HGCM
   VBoxDDGC_INCS           = build
   VBoxDDGC_SOURCES        = \
+ 	Audio/DevIchHda.cpp \
   	Bus/DevPCI.cpp \
  	Bus/DevPciIch9.cpp \
  	Bus/MsiCommon.cpp \
@@ -870,6 +871,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  VBoxDDR0_SDKS.win 	 = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK)
  VBoxDDR0_SOURCES        = \
  	build/VBoxDDR0.cpp \
+ 	Audio/DevIchHda.cpp \
  	Bus/DevPCI.cpp \
  	Bus/DevPciIch9.cpp \
  	Bus/MsiCommon.cpp \
