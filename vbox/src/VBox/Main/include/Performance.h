@@ -1,4 +1,4 @@
-/* $Id: Performance.h 43994 2012-11-29 08:58:17Z vboxsync $ */
+/* $Id: Performance.h 44450 2013-01-30 07:19:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -472,6 +472,7 @@ namespace pm
         HostCpuLoadRaw(CollectorHAL *hal, ComPtr<IUnknown> object, SubMetric *user, SubMetric *kernel, SubMetric *idle)
         : HostCpuLoad(hal, object, user, kernel, idle), mUserPrev(0), mKernelPrev(0), mIdlePrev(0) {};
 
+        void init(ULONG period, ULONG length);
         void preCollect(CollectorHints& hints, uint64_t iTick);
         void collect();
     private:

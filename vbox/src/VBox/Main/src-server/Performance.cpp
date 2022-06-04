@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 44031 2012-12-04 12:19:12Z vboxsync $ */
+/* $Id: Performance.cpp 44450 2013-01-30 07:19:06Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -635,6 +635,12 @@ void HostCpuLoad::collect()
         mKernel->put(kernel);
         mIdle->put(idle);
     }
+}
+
+void HostCpuLoadRaw::init(ULONG period, ULONG length)
+{
+    HostCpuLoad::init(period, length);
+    mHAL->getRawHostCpuLoad(&mUserPrev, &mKernelPrev, &mIdlePrev);
 }
 
 void HostCpuLoadRaw::preCollect(CollectorHints& hints, uint64_t /* iTick */)
