@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 43861 2012-11-13 10:35:55Z vboxsync $ */
+/* $Id: VD.cpp 44226 2013-01-02 12:05:47Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -7623,6 +7623,8 @@ VBOXDDU_DECL(int) VDResize(PVBOXHDD pDisk, uint64_t cbSize,
     {
         if (pIfProgress && pIfProgress->pfnProgress)
             pIfProgress->pfnProgress(pIfProgress->Core.pvUser, 100);
+
+        pDisk->cbSize = cbSize;
     }
 
     LogFlowFunc(("returns %Rrc\n", rc));
