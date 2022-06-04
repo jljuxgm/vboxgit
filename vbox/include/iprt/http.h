@@ -1,4 +1,4 @@
-/* $Id: http.h 43645 2012-10-15 14:10:03Z vboxsync $ */
+/* $Id: http.h 43679 2012-10-18 12:26:04Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP Communication API.
  */
@@ -71,6 +71,20 @@ RTR3DECL(void) RTHttpDestroy(RTHTTP hHttp);
  * @param    ppszResponse  HTTP response.
  */
 RTR3DECL(int) RTHttpGet(RTHTTP hHttp, const char *pcszUrl, char **ppszResponse);
+
+/**
+ * Specify proxy settings.
+ *
+ * @returns iprt status code.
+ *
+ * @param    hHttp         HTTP interface handle.
+ * @param    pcszProxy     URL of the proxy
+ * @param    uPort         port number of the proxy, use 0 for not specifying a port.
+ * @param    pcszUser      username, pass NULL for no authentication
+ * @param    pcszPwd       password, pass NULL for no authentication
+ */
+RTR3DECL(int) RTHttpSetProxy(RTHTTP hHttp, const char *pcszProxyUrl, uint32_t uPort,
+                             const char *pcszProxyUser, const char *pcszProxyPwd);
 
 /** @} */
 
