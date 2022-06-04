@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 43128 2012-08-30 19:30:59Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 43431 2012-09-26 06:48:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -235,6 +235,9 @@ protected:
     /* Settings processor: */
     void run()
     {
+        /* Initialize COM for other thread: */
+        COMBase::InitializeCOM(false);
+
         /* Mark all the pages initially as NOT processed: */
         QList<UISettingsPage*> pageList = m_pages.values();
         for (int iPageNumber = 0; iPageNumber < pageList.size(); ++iPageNumber)
@@ -276,6 +279,9 @@ protected:
         /* If serializer saves settings => wake up GUI thread: */
         if (m_direction == UISettingsSerializeDirection_Save)
             m_condition.wakeAll();
+
+        /* Deinitialize COM for other thread: */
+        COMBase::CleanupCOM();
     }
 
     /* Variables: */
