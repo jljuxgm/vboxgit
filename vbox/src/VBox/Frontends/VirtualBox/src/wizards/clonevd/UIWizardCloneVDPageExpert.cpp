@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 45316 2013-04-03 17:40:32Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 45583 2013-04-17 08:55:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -102,8 +102,11 @@ UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &sourceVirtua
                         if (medFormat.GetName() != "VDI")
                             addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat);
                     }
-                    m_pFormatButtonGroup->button(0)->click();
-                    m_pFormatButtonGroup->button(0)->setFocus();
+                    if (!m_pFormatButtonGroup->buttons().isEmpty())
+                    {
+                        m_pFormatButtonGroup->button(0)->click();
+                        m_pFormatButtonGroup->button(0)->setFocus();
+                    }
                 }
             }
         }
@@ -185,6 +188,11 @@ void UIWizardCloneVDPageExpert::sltMediumFormatChanged()
 {
     /* Get medium format: */
     CMediumFormat mf = mediumFormat();
+    if (mf.isNull())
+    {
+        AssertMsgFailed(("No medium format set!"));
+        return;
+    }
 
     /* Enable/disable widgets: */
     ULONG uCapabilities = 0;
