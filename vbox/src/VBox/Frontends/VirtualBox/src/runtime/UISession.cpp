@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 46795 2013-06-26 10:49:56Z vboxsync $ */
+/* $Id: UISession.cpp 47100 2013-07-11 15:22:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,6 +32,7 @@
 #include "UIMachineWindow.h"
 #include "UIMachineMenuBar.h"
 #include "UIMessageCenter.h"
+#include "UIPopupCenter.h"
 #include "UIWizardFirstRun.h"
 #include "UIConsoleEventHandler.h"
 #include "UIFrameBuffer.h"
@@ -1297,7 +1298,7 @@ bool UISession::preparePowerUp()
 {
     /* Notify user about mouse&keyboard auto-capturing: */
     if (vboxGlobal().settings().autoCapture())
-        msgCenter().remindAboutAutoCapture();
+        popupCenter().remindAboutAutoCapture(machineLogic()->activeMachineWindow());
 
     /* Shows First Run wizard if necessary: */
     const CMachine &machine = session().GetMachine();
