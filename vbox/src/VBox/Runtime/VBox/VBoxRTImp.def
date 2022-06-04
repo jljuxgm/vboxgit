@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 44529 2013-02-04 15:54:15Z vboxsync $
+; $Id: VBoxRTImp.def 45227 2013-03-28 12:22:11Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 
@@ -1007,6 +1007,8 @@ EXPORTS
     RTSha256Init
     RTSha256ToString
     RTSha256Update
+    RTSha256Digest
+    RTSha256DigestFromFile
     RTSha512
     RTSha512Final
     RTSha512FromString

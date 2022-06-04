@@ -1,4 +1,4 @@
-/* $Id: tstRTDigest.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: tstRTDigest.cpp 45227 2013-03-28 12:22:11Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSha*, RTMd5, RTCrc*.
  */
@@ -159,6 +159,16 @@ int main(int argc, char **argv)
                                  break;
                              }
 
+                             case kDigestType_SHA256:
+                             {
+                                 char *pszDigest;
+                                 int rc = RTSha256DigestFromFile(ValueUnion.psz, &pszDigest, NULL, NULL);
+                                 if (RT_FAILURE(rc))
+                                     return Error("RTSha256Digest(%s,) -> %Rrc\n", ValueUnion.psz, rc);
+                                 RTPrintf("%s  %s\n", pszDigest, ValueUnion.psz);
+                                 RTStrFree(pszDigest);
+                                 break;
+                             }
                              default:
                                  return Error("The file method isn't implemented for this digest\n");
                          }
