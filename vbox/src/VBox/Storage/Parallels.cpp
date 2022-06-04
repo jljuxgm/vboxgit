@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 40948 2012-04-16 18:50:31Z vboxsync $ */
+/* $Id: Parallels.cpp 44101 2012-12-12 09:23:40Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -1443,5 +1443,11 @@ VBOXHDDBACKEND g_ParallelsBackend =
     /* pfnCompact */
     NULL,
     /* pfnResize */
+    NULL,
+    /* pfnDiscard */
+    NULL,
+    /* pfnAsyncDiscard */
+    NULL,
+    /* pfnRepair */
     NULL
 };
