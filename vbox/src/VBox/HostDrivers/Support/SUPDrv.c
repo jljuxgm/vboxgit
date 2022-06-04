@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 44177 2012-12-19 18:18:46Z vboxsync $ */
+/* $Id: SUPDrv.c 44188 2012-12-20 10:18:30Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -665,11 +665,16 @@ void VBOXCALL supdrvDeleteDevExt(PSUPDRVDEVEXT pDevExt)
  */
 int VBOXCALL supdrvCreateSession(PSUPDRVDEVEXT pDevExt, bool fUser, bool fUnrestricted, PSUPDRVSESSION *ppSession)
 {
+    int             rc;
+    PSUPDRVSESSION  pSession;
+
+    if (!SUP_IS_DEVEXT_VALID(pDevExt))
+        return VERR_INVALID_PARAMETER;
+
     /*
      * Allocate memory for the session data.
      */
-    int             rc;
-    PSUPDRVSESSION  pSession = *ppSession = (PSUPDRVSESSION)RTMemAllocZ(pDevExt->cbSession);
+    pSession = *ppSession = (PSUPDRVSESSION)RTMemAllocZ(pDevExt->cbSession);
     if (pSession)
     {
         /* Initialize session data. */
