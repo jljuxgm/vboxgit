@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.h 47376 2013-07-24 15:13:52Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.h 47377 2013-07-24 15:22:34Z vboxsync $ */
 
 /** @file
  *
@@ -41,7 +41,7 @@ public:
 
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
-    BEGIN_COM_MAP(USBController)
+    BEGIN_COM_MAP(USBDeviceFilters)
         VBOX_DEFAULT_INTERFACE_ENTRIES(IUSBDeviceFilters)
     END_COM_MAP()
 
