@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 47123 2013-07-12 15:31:44Z vboxsync $ */
+/* $Id: HM.cpp 47202 2013-07-16 16:55:11Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1165,7 +1165,7 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
         rc = PDMR3VmmDevHeapAlloc(pVM, HM_VTX_TOTAL_DEVHEAP_MEM, (RTR3PTR *)&pVM->hm.s.vmx.pRealModeTSS);
         if (RT_SUCCESS(rc))
         {
-            /* The I/O bitmap starts right after the virtual interrupt redirection bitmap.
+            /* The IO bitmap starts right after the virtual interrupt redirection bitmap.
                Refer Intel spec. 20.3.3 "Software Interrupt Handling in Virtual-8086 mode"
                esp. Figure 20-5.*/
             ASMMemZero32(pVM->hm.s.vmx.pRealModeTSS, sizeof(*pVM->hm.s.vmx.pRealModeTSS));
