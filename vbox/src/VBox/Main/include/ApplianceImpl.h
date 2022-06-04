@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 47340 2013-07-23 12:27:35Z vboxsync $ */
+/* $Id: ApplianceImpl.h 47716 2013-08-14 05:33:22Z vboxsync $ */
 
 /** @file
  *
@@ -42,7 +42,7 @@ typedef struct VDINTERFACE   *PVDINTERFACE;
 typedef struct VDINTERFACEIO *PVDINTERFACEIO;
 typedef struct SHASTORAGE    *PSHASTORAGE;
 
-typedef enum applianceIOName { applianceIOTar, applianceIOFile } APPLIANCEIONAME;
+typedef enum applianceIOName { applianceIOTar, applianceIOFile, applianceIOSha } APPLIANCEIONAME;
 
 namespace ovf
 {

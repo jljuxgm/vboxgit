@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs.cpp 47665 2013-08-12 10:11:42Z vboxsync $ */
+/* $Id: VDIfVfs.cpp 47716 2013-08-14 05:33:22Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -153,9 +153,6 @@ static DECLCALLBACK(int) vdIfVfsIos_Tell(void *pvThis, PRTFOFF poffActual)
     return VINF_SUCCESS;
 }
 
-
-
-
 /**
  * Standard file operations.
  */
@@ -163,7 +160,7 @@ DECL_HIDDEN_CONST(const RTVFSIOSTREAMOPS) g_vdIfVfsStdIosOps =
 {
     { /* Obj */
         RTVFSOBJOPS_VERSION,
-        RTVFSOBJTYPE_FILE,
+        RTVFSOBJTYPE_IO_STREAM,
         "VDIfIos",
         vdIfVfsIos_Close,
         vdIfVfsIos_QueryInfo,
@@ -179,8 +176,8 @@ DECL_HIDDEN_CONST(const RTVFSIOSTREAMOPS) g_vdIfVfsStdIosOps =
     NULL /*Skip*/,
     NULL /*ZeroFill*/,
     RTVFSIOSTREAMOPS_VERSION,
-};
 
+};
 
 VBOXDDU_DECL(int) VDIfCreateVfsStream(PVDINTERFACEIO pVDIfsIo, void *pvStorage, uint32_t fFlags, PRTVFSIOSTREAM phVfsIos)
 {
