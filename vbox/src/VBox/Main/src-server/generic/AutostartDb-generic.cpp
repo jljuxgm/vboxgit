@@ -1,4 +1,4 @@
-/* $Id: AutostartDb-generic.cpp 42182 2012-07-17 13:01:24Z vboxsync $ */
+/* $Id: AutostartDb-generic.cpp 42491 2012-08-01 07:09:11Z vboxsync $ */
 /** @file
  * VirtualBox Main - Autostart implementation.
  */
@@ -189,7 +189,7 @@ int AutostartDb::addAutostartVM(const char *pszVMId)
     RTCritSectEnter(&this->CritSect);
     rc = autostartModifyDb(true /* fAutostart */, true /* fAddVM */);
     RTCritSectLeave(&this->CritSect);
-#elif defined(RT_OS_DARWIN)
+#elif defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS)
     NOREF(pszVMId); /* Not needed */
     rc = VINF_SUCCESS;
 #else
@@ -209,7 +209,7 @@ int AutostartDb::removeAutostartVM(const char *pszVMId)
     RTCritSectEnter(&this->CritSect);
     rc = autostartModifyDb(true /* fAutostart */, false /* fAddVM */);
     RTCritSectLeave(&this->CritSect);
-#elif defined(RT_OS_DARWIN)
+#elif defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS)
     NOREF(pszVMId); /* Not needed */
     rc = VINF_SUCCESS;
 #else
