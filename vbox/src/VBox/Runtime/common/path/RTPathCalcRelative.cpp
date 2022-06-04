@@ -1,4 +1,4 @@
-/* $Id: RTPathCreateRelative.cpp 44615 2013-02-10 18:10:50Z vboxsync $ */
+/* $Id: RTPathCalcRelative.cpp 44623 2013-02-11 10:14:24Z vboxsync $ */
 /** @file
  * IPRT - RTPathCreateRelative.
  */
@@ -37,9 +37,9 @@
 
 
 
-RTDECL(int) RTPathCreateRelative(char *pszPathDst, size_t cbPathDst,
-                                 const char *pszPathFrom,
-                                 const char *pszPathTo)
+RTDECL(int) RTPathCalcRelative(char *pszPathDst, size_t cbPathDst,
+                               const char *pszPathFrom,
+                               const char *pszPathTo)
 {
     int rc = VINF_SUCCESS;
 

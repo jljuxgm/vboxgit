@@ -1,4 +1,4 @@
-/* $Id: tstRTPath.cpp 44615 2013-02-10 18:10:50Z vboxsync $ */
+/* $Id: tstRTPath.cpp 44623 2013-02-11 10:14:24Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -554,9 +554,9 @@ int main()
     }
 
     /*
-     * RTPathCreateRelative
+     * RTPathCalcRelative
      */
-    RTTestSub(hTest, "RTPathCreateRelative");
+    RTTestSub(hTest, "RTPathCalcRelative");
     struct
     {
         const char *pszFrom;
@@ -579,7 +579,7 @@ int main()
         const char *pszFrom = s_aRelPath[i].pszFrom;
         const char *pszTo   = s_aRelPath[i].pszTo;
 
-        rc = RTPathCreateRelative(szPath, sizeof(szPath), pszFrom, pszTo);
+        rc = RTPathCalcRelative(szPath, sizeof(szPath), pszFrom, pszTo);
         if (rc != s_aRelPath[i].rc)
             RTTestIFailed("Unexpected return code\n"
                           "     got: %Rrc\n"
