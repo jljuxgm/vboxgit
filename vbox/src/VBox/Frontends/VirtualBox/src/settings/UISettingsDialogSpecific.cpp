@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 47559 2013-08-06 13:58:47Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 47563 2013-08-06 17:13:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -945,7 +945,6 @@ QString UISettingsDialogMachine::title() const
     return strDialogTitle;
 }
 
-#ifdef VBOX_WITH_NEW_SETTINGS_VALIDATOR
 void UISettingsDialogMachine::recorrelate(UISettingsPage *pSettingsPage)
 {
     switch (pSettingsPage->id())
@@ -990,50 +989,6 @@ void UISettingsDialogMachine::recorrelate(UISettingsPage *pSettingsPage)
             break;
     }
 }
-
-#else /* VBOX_WITH_NEW_SETTINGS_VALIDATOR */
-
-void UISettingsDialogMachine::recorrelate(UISettingsPage *pSettingsPage)
-{
-    switch (pSettingsPage->id())
-    {
-        case MachineSettingsPageType_General:
-        {
-            UIMachineSettingsGeneral *pGeneralPage = qobject_cast<UIMachineSettingsGeneral*>(pSettingsPage);
-            UIMachineSettingsSystem *pSystemPage = qobject_cast<UIMachineSettingsSystem*>(m_pSelector->idToPage(MachineSettingsPageType_System));
-            if (pGeneralPage && pSystemPage)
-                pGeneralPage->setHWVirtExEnabled(pSystemPage->isHWVirtExEnabled());
-            break;
-        }
-        case MachineSettingsPageType_Display:
-        {
-            UIMachineSettingsDisplay *pDisplayPage = qobject_cast<UIMachineSettingsDisplay*>(pSettingsPage);
-            UIMachineSettingsGeneral *pGeneralPage = qobject_cast<UIMachineSettingsGeneral*>(m_pSelector->idToPage(MachineSettingsPageType_General));
-            if (pDisplayPage && pGeneralPage)
-                pDisplayPage->setGuestOSType(pGeneralPage->guestOSType());
-            break;
-        }
-        case MachineSettingsPageType_System:
-        {
-            UIMachineSettingsSystem *pSystemPage = qobject_cast<UIMachineSettingsSystem*>(pSettingsPage);
-            UIMachineSettingsUSB *pUsbPage = qobject_cast<UIMachineSettingsUSB*>(m_pSelector->idToPage(MachineSettingsPageType_USB));
-            if (pSystemPage && pUsbPage)
-                pSystemPage->setOHCIEnabled(pUsbPage->isOHCIEnabled());
-            break;
-        }
-        case MachineSettingsPageType_Storage:
-        {
-            UIMachineSettingsStorage *pStoragePage = qobject_cast<UIMachineSettingsStorage*>(pSettingsPage);
-            UIMachineSettingsSystem *pSystemPage = qobject_cast<UIMachineSettingsSystem*>(m_pSelector->idToPage(MachineSettingsPageType_System));
-            if (pStoragePage && pSystemPage)
-                pStoragePage->setChipsetType(pSystemPage->chipsetType());
-            break;
-        }
-        default:
-            break;
-    }
-}
-#endif /* !VBOX_WITH_NEW_SETTINGS_VALIDATOR */
 
 void UISettingsDialogMachine::sltMarkLoaded()
 {

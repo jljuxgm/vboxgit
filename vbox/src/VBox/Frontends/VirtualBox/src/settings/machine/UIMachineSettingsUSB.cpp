@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 47559 2013-08-06 13:58:47Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 47563 2013-08-06 17:13:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -563,11 +563,7 @@ void UIMachineSettingsUSB::saveFromCacheTo(QVariant &data)
     uploadData(data);
 }
 
-#ifdef VBOX_WITH_NEW_SETTINGS_VALIDATOR
 void UIMachineSettingsUSB::setValidator(UIPageValidator *pValidator)
-#else /* VBOX_WITH_NEW_SETTINGS_VALIDATOR */
-void UIMachineSettingsUSB::setValidator(QIWidgetValidator *pValidator)
-#endif /* !VBOX_WITH_NEW_SETTINGS_VALIDATOR */
 {
     /* Configure validation: */
     m_pValidator = pValidator;
@@ -866,14 +862,7 @@ void UIMachineSettingsUSB::delClicked()
     {
         /* Revalidate if possible: */
         if (m_pValidator)
-        {
-#ifdef VBOX_WITH_NEW_SETTINGS_VALIDATOR
             m_pValidator->revalidate();
-#else /* VBOX_WITH_NEW_SETTINGS_VALIDATOR */
-            m_pValidator->rescan();
-            m_pValidator->revalidate();
-#endif /* !VBOX_WITH_NEW_SETTINGS_VALIDATOR */
-        }
     }
 }
 

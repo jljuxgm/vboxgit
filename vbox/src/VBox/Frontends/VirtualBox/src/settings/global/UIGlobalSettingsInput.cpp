@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 47559 2013-08-06 13:58:47Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 47563 2013-08-06 17:13:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -159,11 +159,7 @@ void UIGlobalSettingsInput::saveFromCacheTo(QVariant &data)
     UISettingsPageGlobal::uploadData(data);
 }
 
-#ifdef VBOX_WITH_NEW_SETTINGS_VALIDATOR
 void UIGlobalSettingsInput::setValidator(UIPageValidator *pValidator)
-#else /* VBOX_WITH_NEW_SETTINGS_VALIDATOR */
-void UIGlobalSettingsInput::setValidator(QIWidgetValidator *pValidator)
-#endif /* !VBOX_WITH_NEW_SETTINGS_VALIDATOR */
 {
     /* Configure validation: */
     m_pValidator = pValidator;
