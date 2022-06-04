@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 45940 2013-05-07 20:16:31Z vboxsync $ */
+/* $Id: server_muralfbo.c 45942 2013-05-08 09:14:51Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -193,7 +193,7 @@ void crServerCheckMuralGeometry(CRMuralInfo *mural)
         renderspuReparentWindow(mural->spuWindow);
         renderspuSetWindowId(cr_server.screen[0].winID);
 
-        if (mural->bVisible && (mural->fPresentMode & CR_SERVER_REDIR_F_DISPLAY))
+        if (mural->bVisible && (mural->fPresentMode & CR_SERVER_REDIR_F_DISPLAY) && mural->fHasParentWindow)
             crVBoxServerNotifyEvent(mural->screenId);
     }
 
@@ -350,7 +350,7 @@ static void crServerEnableDisplayMuralFBO(CRMuralInfo *mural, GLboolean fEnable)
     {
         if (!(mural->fPresentMode & CR_SERVER_REDIR_F_DISPLAY))
         {
-            if  (mural->bVisible)
+            if  (mural->bVisible && mural->fHasParentWindow)
             {
                 cr_server.head_spu->dispatch_table.WindowShow(mural->spuWindow, GL_TRUE);
                 crVBoxServerNotifyEvent(mural->screenId);

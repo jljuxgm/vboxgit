@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 45940 2013-05-07 20:16:31Z vboxsync $ */
+/* $Id: crservice.cpp 45942 2013-05-08 09:14:51Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -249,8 +249,6 @@ static DECLCALLBACK(void) svcNotifyEventCB(int32_t screenId, uint32_t uEvent, vo
     ComPtr<IDisplay> pDisplay;
     ComPtr<IFramebuffer> pFramebuffer;
     LONG xo, yo;
-    LONG64 winId = 0;
-    ULONG monitorCount, i, w, h;
 
     if (!g_pConsole)
     {
