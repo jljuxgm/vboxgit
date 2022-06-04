@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 46050 2013-05-14 08:41:11Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 46110 2013-05-15 19:57:26Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -147,9 +147,13 @@ int dbgfR3AsInit(PUVM pUVM)
     AssertRCReturn(rc, rc);
 
     /*
-     * Create the debugging config instance and set it up.
+     * Create the debugging config instance and set it up, defaulting to
+     * deferred loading in order to keep things fast.
      */
     rc = RTDbgCfgCreate(&pUVM->dbgf.s.hDbgCfg, NULL, true /*fNativePaths*/);
+    AssertRCReturn(rc, rc);
+    rc = RTDbgCfgChangeUInt(pUVM->dbgf.s.hDbgCfg, RTDBGCFGPROP_FLAGS, RTDBGCFGOP_PREPEND,
+                            RTDBGCFG_FLAGS_DEFERRED);
     AssertRCReturn(rc, rc);
 
     static struct
