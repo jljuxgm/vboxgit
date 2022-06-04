@@ -1,4 +1,4 @@
-/* $Id: server_getshaders.c 40479 2012-03-15 14:16:50Z vboxsync $ */
+/* $Id: server_getshaders.c 43051 2012-08-28 15:35:26Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related get functions
@@ -254,18 +254,18 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchGetUniformiv(GLuint program, GLint
 
 GLuint SERVER_DISPATCH_APIENTRY crServerDispatchCreateShader(GLenum type)
 {
-    GLuint retval;
-    retval = cr_server.head_spu->dispatch_table.CreateShader(type);
-    crStateCreateShader(retval, type);
+    GLuint retval, hwVal;
+    hwVal = cr_server.head_spu->dispatch_table.CreateShader(type);
+    retval = crStateCreateShader(hwVal, type);
     crServerReturnValue(&retval, sizeof(retval));
     return retval; /* ignored */
 }
 
 GLuint SERVER_DISPATCH_APIENTRY crServerDispatchCreateProgram(void)
 {
-    GLuint retval;
-    retval = cr_server.head_spu->dispatch_table.CreateProgram();
-    crStateCreateProgram(retval);
+    GLuint retval, hwVal;
+    hwVal = cr_server.head_spu->dispatch_table.CreateProgram();
+    retval = crStateCreateProgram(hwVal);
     crServerReturnValue(&retval, sizeof(retval));
     return retval; /* ignored */
 }
