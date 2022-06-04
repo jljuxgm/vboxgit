@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45856 2013-04-30 23:12:38Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45857 2013-05-01 00:17:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1162,7 +1162,7 @@ VMMR0DECL(int) VMXR0InvalidatePhysPage(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys)
  *
  * @remarks Called with interrupts disabled.
  */
-static DECLCALLBACK(void) hmR0VmxFlushTaggedTlbNone(PVM pVM, PVMCPU pVCpu)
+static void hmR0VmxFlushTaggedTlbNone(PVM pVM, PVMCPU pVCpu)
 {
     NOREF(pVM);
     AssertPtr(pVCpu);
@@ -1191,7 +1191,7 @@ static DECLCALLBACK(void) hmR0VmxFlushTaggedTlbNone(PVM pVM, PVMCPU pVCpu)
  *
  * @remarks Called with interrupts disabled.
  */
-static DECLCALLBACK(void) hmR0VmxFlushTaggedTlbBoth(PVM pVM, PVMCPU pVCpu)
+static void hmR0VmxFlushTaggedTlbBoth(PVM pVM, PVMCPU pVCpu)
 {
     AssertPtr(pVM);
     AssertPtr(pVCpu);
@@ -1308,7 +1308,7 @@ static DECLCALLBACK(void) hmR0VmxFlushTaggedTlbBoth(PVM pVM, PVMCPU pVCpu)
  *
  * @remarks Called with interrupts disabled.
  */
-static DECLCALLBACK(void) hmR0VmxFlushTaggedTlbEpt(PVM pVM, PVMCPU pVCpu)
+static void hmR0VmxFlushTaggedTlbEpt(PVM pVM, PVMCPU pVCpu)
 {
     AssertPtr(pVM);
     AssertPtr(pVCpu);
@@ -1374,7 +1374,7 @@ static DECLCALLBACK(void) hmR0VmxFlushTaggedTlbEpt(PVM pVM, PVMCPU pVCpu)
  *
  * @remarks Called with interrupts disabled.
  */
-static DECLCALLBACK(void) hmR0VmxFlushTaggedTlbVpid(PVM pVM, PVMCPU pVCpu)
+static void hmR0VmxFlushTaggedTlbVpid(PVM pVM, PVMCPU pVCpu)
 {
     AssertPtr(pVM);
     AssertPtr(pVCpu);
