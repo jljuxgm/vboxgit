@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 46582 2013-06-17 10:47:06Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 46586 2013-06-17 12:52:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1891,10 +1891,20 @@ void UIMachineLogic::sltChangeDragAndDropType(QAction *pAction)
 
 void UIMachineLogic::sltSwitchVrde(bool fOn)
 {
-    /* Enable VRDE server if possible: */
-    CVRDEServer server = session().GetMachine().GetVRDEServer();
+    /* Prepare variables: */
+    CMachine machine = session().GetMachine();
+    CVRDEServer server = machine.GetVRDEServer();
     AssertMsg(!server.isNull(), ("VRDE server should not be null!\n"));
+
+    /* Toggle VRDE server state: */
     server.SetEnabled(fOn);
+    if (!server.isOk())
+    {
+        /* Notify about the error: */
+        msgCenter().cannotToggleVRDEServer(server, machine.GetName(), fOn);
+        /* Make sure action is updated! */
+        uisession()->updateStatusVRDE();
+    }
 }
 
 void UIMachineLogic::sltToggleVideoCapture(bool fEnabled)
