@@ -1,4 +1,4 @@
-/* $Id: PDMRCDevice.cpp 44898 2013-03-01 22:26:49Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 44899 2013-03-01 22:28:43Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -51,13 +51,6 @@ extern DECLEXPORT(const PDMHPETHLPRC)   g_pdmRCHpetHlp;
 extern DECLEXPORT(const PDMDRVHLPRC)    g_pdmRCDrvHlp;
 /** @todo missing PDMPCIRAWHLPRC  */
 RT_C_DECLS_END
-
-
-/*******************************************************************************
-*   Prototypes                                                                 *
-*******************************************************************************/
-static int pdmRCDevHlp_PhysRead(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead);
-static int pdmRCDevHlp_PhysWrite(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite);
 
 
 /*******************************************************************************
