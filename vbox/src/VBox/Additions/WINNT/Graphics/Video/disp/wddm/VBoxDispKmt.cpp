@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 41984 2012-07-02 14:00:09Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 42315 2012-07-23 05:25:54Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -90,21 +90,12 @@ HRESULT vboxDispKmtCallbacksInit(PVBOXDISPKMT_CALLBACKS pCallbacks)
         /* this present starting win8 release preview only, so keep going if it is not available,
          * i.e. do not clear the bSupported on its absence */
         bSupportedWin8 &= !!(pCallbacks->pfnD3DKMTEnumAdapters);
-#ifdef DEBUG_misha
-        /* just a debug assertion to test it on win8 */
-        Assert(pCallbacks->pfnD3DKMTEnumAdapters);
-#endif
 
         pCallbacks->pfnD3DKMTOpenAdapterFromLuid = (PFND3DKMT_OPENADAPTERFROMLUID)GetProcAddress(pCallbacks->hGdi32, "D3DKMTOpenAdapterFromLuid");
         Log((__FUNCTION__": pfnD3DKMTOpenAdapterFromLuid = %p\n", pCallbacks->pfnD3DKMTOpenAdapterFromLuid));
         /* this present starting win8 release preview only, so keep going if it is not available,
          * i.e. do not clear the bSupported on its absence */
         bSupportedWin8 &= !!(pCallbacks->pfnD3DKMTOpenAdapterFromLuid);
-#ifdef DEBUG_misha
-        /* just a debug assertion to test it on win8 */
-        Assert(pCallbacks->pfnD3DKMTOpenAdapterFromLuid);
-        Assert(bSupportedWin8);
-#endif
 
         /*Assert(bSupported);*/
         if (bSupported)
