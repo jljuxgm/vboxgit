@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 43723 2012-10-24 10:56:20Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 43972 2012-11-27 13:47:28Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -5145,7 +5145,7 @@ DxgkDdiControlInterrupt(
 {
     LOGF(("ENTER, hAdapter(0x%x)", hAdapter));
 
-    NTSTATUS Status = STATUS_SUCCESS;
+    NTSTATUS Status = STATUS_NOT_IMPLEMENTED;
     PVBOXMP_DEVEXT pDevExt = (PVBOXMP_DEVEXT)hAdapter;
 
     switch (InterruptType)
@@ -5153,7 +5153,9 @@ DxgkDdiControlInterrupt(
         case DXGK_INTERRUPT_CRTC_VSYNC:
         {
             Status = VBoxWddmSlEnableVSyncNotification(pDevExt, Enable);
-            if (!NT_SUCCESS(Status))
+            if (NT_SUCCESS(Status))
+                Status = STATUS_SUCCESS; /* <- sanity */
+            else
                 WARN(("VSYNC Interrupt control failed Enable(%d), Status(0x%x)", Enable, Status));
             break;
         }
