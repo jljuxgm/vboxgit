@@ -1,4 +1,4 @@
-/* $Id: GuestDnDImpl.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: GuestDnDImpl.cpp 42278 2012-07-20 15:15:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest Drag and Drop parts
  */
@@ -384,7 +384,7 @@ void GuestDnDPrivate::adjustCoords(ULONG uScreenId, ULONG *puX, ULONG *puY) cons
     if (FAILED(rc)) throw rc;
     ComPtr<IFramebuffer> pFramebuffer;
     LONG xShift, yShift;
-    rc = pDisplay->COMGETTER(Framebuffer)(uScreenId, pFramebuffer.asOutParam(), &xShift, &yShift);
+    rc = pDisplay->GetFramebuffer(uScreenId, pFramebuffer.asOutParam(), &xShift, &yShift);
     if (FAILED(rc)) throw rc;
     *puX += xShift;
     *puY += yShift;
