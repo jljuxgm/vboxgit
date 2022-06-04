@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42147 2012-07-13 13:59:20Z vboxsync $
+# $Id: Makefile.kmk 42351 2012-07-24 11:45:58Z vboxsync $
 ## @file
 # Sub-Makefile for the New VGA BIOS ROM.
 #
@@ -99,6 +99,21 @@ else
 	$(QUIET)$(VBOX_BIN2C) -min 32 -max 36 -mask 0x0fff -ascii -export VgaBiosBinary $(VgaBiosBin_0_OUTDIR)/VBoxVgaBios.rom $@
 	$(QUIET)$(RM) -f -- $$(VgaBiosBin_0_OUTDIR)/VBoxVgaBios.rom
 endif
+
+
+#
+# The VGA BIOS Logo.
+#
+LIBRARIES += VgaDefBiosLogo
+VgaDefBiosLogo_TEMPLATE  = VBOXR3
+VgaDefBiosLogo_INCS      = $(VBOX_PATH_DEVICES_SRC)
+VgaDefBiosLogo_SOURCES   = $(VgaBiosBin_0_OUTDIR)/VgaDefBiosLogo.c
+VgaDefBiosLogo_CLEAN     = $(VgaBiosBin_0_OUTDIR)/VgaDefBiosLogo.c
+
+# Rule for making the bios logo.
+$$(VgaDefBiosLogo_0_OUTDIR)/VgaDefBiosLogo.c: $(VBOX_BRAND_BIOS_LOGO) $(VBOX_BIN2C)
+	$(call MSG_TOOL,bin2c,VgaDefBiosLogo,$<,$@)
+	$(QUIET)$(VBOX_BIN2C) VgaDefBiosLogo $< $@
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
