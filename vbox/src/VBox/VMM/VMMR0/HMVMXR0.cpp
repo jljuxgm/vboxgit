@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46942 2013-07-03 14:53:47Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46973 2013-07-04 09:46:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2021,6 +2021,19 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
     /* Initialize these always, see hmR3InitFinalizeR0().*/
     pVM->hm.s.vmx.enmFlushEpt  = VMX_FLUSH_EPT_NONE;
     pVM->hm.s.vmx.enmFlushVpid = VMX_FLUSH_VPID_NONE;
+
+#ifdef VBOX_WITH_HYBRID_32BIT_KERNEL
+    /*
+     * This is for the darwin 32-bit/PAE kernels trying to execute 64-bit guests. We don't bother with
+     * the 32<->64 switcher in this case. This is a rare, legacy use-case with barely any test coverage.
+     */
+    if (   pVM->hm.s.fAllow64BitGuests
+        && !HMVMX_IS_64BIT_HOST_MODE())
+    {
+        LogRel(("VMXR0SetupVM: Unsupported guest and host paging mode combination.\n"));
+        return VERR_PGM_UNSUPPORTED_HOST_PAGING_MODE;
+    }
+#endif
 
     /* Setup the tagged-TLB flush handlers. */
     int rc = hmR0VmxSetupTaggedTlb(pVM);
