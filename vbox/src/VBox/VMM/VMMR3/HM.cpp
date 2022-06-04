@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45714 2013-04-24 17:07:26Z vboxsync $ */
+/* $Id: HM.cpp 45728 2013-04-25 12:08:17Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -836,11 +836,6 @@ VMMR3_INT_DECL(int) HMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
  */
 static void hmR3DisableRawMode(PVM pVM)
 {
-#ifdef VBOX_WITH_RAW_MODE
-    /* Turn off IDT/LDT/GDT and TSS monitoring and sycing. */
-    TRPMR3DisableMonitoring(pVM);
-#endif
-
     /* Disable mapping of the hypervisor into the shadow page table. */
     PGMR3MappingsDisable(pVM);
 
