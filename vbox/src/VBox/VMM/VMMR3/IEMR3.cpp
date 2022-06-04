@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 47307 2013-07-22 14:34:36Z vboxsync $ */
+/* $Id: IEMR3.cpp 47548 2013-08-06 03:58:21Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -87,6 +87,13 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
             pVCpu->iem.s.fHostCpuIdStdFeaturesEdx = pVM->aCpus[0].iem.s.fHostCpuIdStdFeaturesEdx;
             pVCpu->iem.s.enmHostCpuVendor         = pVM->aCpus[0].iem.s.enmHostCpuVendor;
         }
+
+        /*
+         * Mark all buffers free.
+         */
+        uint32_t iMemMap = RT_ELEMENTS(pVCpu->iem.s.aMemMappings);
+        while (iMemMap-- > 0)
+            pVCpu->iem.s.aMemMappings[iMemMap].fAccess = IEM_ACCESS_INVALID;
     }
     return VINF_SUCCESS;
 }
