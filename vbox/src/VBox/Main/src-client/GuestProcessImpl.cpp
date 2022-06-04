@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 42234 2012-07-19 16:43:43Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 42237 2012-07-19 17:23:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -636,7 +636,7 @@ int GuestProcess::onProcessStatusChange(GuestCtrlCallback *pCallback, PCALLBACKD
                         break;
                 }
 
-                AssertMsg(!strErrDetail.isEmpty());
+                Assert(!strErrDetail.isEmpty());
                 rc = pCallback->Signal(pData->u32Flags /* rc from guest. */, strErrDetail);
             }
             fSignal = mData.mWaitFlags & ProcessWaitForFlag_Status;
