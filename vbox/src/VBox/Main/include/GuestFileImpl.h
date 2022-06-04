@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.h 47817 2013-08-16 15:30:15Z vboxsync $ */
+/* $Id: GuestFileImpl.h 47836 2013-08-19 09:16:40Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -58,12 +58,12 @@ public:
     /** @name IFile interface.
      * @{ */
     STDMETHOD(COMGETTER(CreationMode))(ULONG *aCreationMode);
-    STDMETHOD(COMGETTER(Disposition))(ULONG *aDisposition);
+    STDMETHOD(COMGETTER(Disposition))(BSTR *aDisposition);
     STDMETHOD(COMGETTER(EventSource))(IEventSource ** aEventSource);
     STDMETHOD(COMGETTER(FileName))(BSTR *aFileName);
     STDMETHOD(COMGETTER(InitialSize))(LONG64 *aInitialSize);
     STDMETHOD(COMGETTER(Offset))(LONG64 *aOffset);
-    STDMETHOD(COMGETTER(OpenMode))(ULONG *aOpenMode);
+    STDMETHOD(COMGETTER(OpenMode))(BSTR *aOpenMode);
     STDMETHOD(COMGETTER(Status))(FileStatus_T *aStatus);
 
     STDMETHOD(Close)(void);
