@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42512 2012-08-01 15:22:41Z vboxsync $
+# $Id: Config.kmk 42513 2012-08-01 15:37:47Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2172,7 +2172,7 @@ VBOX_GCC_CHECK_LD = $(2)
 VBOX_GCC32_CHECK_CXX = $(2)
 else
 VBOX_GCC_CHECK_CC = $(shell \
-   if $(TOOL_$(VBOX_GCC_TOOL)_CC) $(1) -S -o /dev/null -xc /dev/null > /dev/null 2>&1; \
+   if $(TOOL_$(VBOX_GCC_TOOL)_CC) $(subst -Wno-,-W,$(1)) -S -o /dev/null -xc /dev/null > /dev/null 2>&1; \
    then echo "$(1)"; \
    else echo "$(2)"; fi; )
 
@@ -5116,7 +5116,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42512 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42513 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
