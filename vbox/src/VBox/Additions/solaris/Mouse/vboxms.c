@@ -1,4 +1,4 @@
-/* $Id: vboxmouse.c 42230 2012-07-19 14:44:57Z vboxsync $ */
+/* $Id: vboxms.c 42368 2012-07-24 13:50:40Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
