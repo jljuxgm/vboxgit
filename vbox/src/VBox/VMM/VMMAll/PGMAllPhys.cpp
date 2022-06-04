@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 42453 2012-07-30 15:23:18Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 42484 2012-07-31 15:23:06Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4105,7 +4105,6 @@ VMM_INT_DECL(int) PGMPhysIemGCPhys2Ptr(PVM pVM, RTGCPHYS GCPhys, bool fWritable,
                 pgmPhysPageMapLockForReading(pVM, pPage, pTlbe, pLock);
             *ppv = (void *)((uintptr_t)pTlbe->pv | (uintptr_t)(GCPhys & PAGE_OFFSET_MASK));
 #endif
-
 
             Log6(("PGMPhysIemGCPhys2Ptr: GCPhys=%RGp rc=%Rrc pPage=%R[pgmpage] *ppv=%p\n", GCPhys, rc, pPage, *ppv));
         }
