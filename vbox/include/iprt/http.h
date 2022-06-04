@@ -1,4 +1,4 @@
-/* $Id: http.h 45339 2013-04-04 14:54:50Z vboxsync $ */
+/* $Id: http.h 45398 2013-04-08 09:32:00Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP Communication API.
  */
@@ -68,7 +68,8 @@ RTR3DECL(void) RTHttpDestroy(RTHTTP hHttp);
  *
  * @param    hHttp         HTTP interface handle.
  * @param    pcszUrl       URL.
- * @param    ppszResponse  HTTP response.
+ * @param    ppszResponse  HTTP response. It is guaranteed that this string is
+ *                         '\0'-terminated.
  */
 RTR3DECL(int) RTHttpGet(RTHTTP hHttp, const char *pcszUrl, char **ppszResponse);
 
