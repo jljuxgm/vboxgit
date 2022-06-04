@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 44722 2013-02-15 18:19:53Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 44725 2013-02-15 19:31:12Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1451,7 +1451,7 @@ int main()
     GEN_CHECK_OFF(VMMDEV, fSeamlessEnabled);
     GEN_CHECK_OFF(VMMDEV, fVRDPEnabled);
     GEN_CHECK_OFF(VMMDEV, uVRDPExperienceLevel);
-#ifdef TIMESYNC_BACKDOOR
+#ifdef VMMDEV_WITH_ALT_TIMESYNC
     GEN_CHECK_OFF(VMMDEV, hostTime);
     GEN_CHECK_OFF(VMMDEV, fTimesyncBackdoorLo);
 #endif
