@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 44183 2012-12-19 19:27:50Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 44186 2012-12-20 01:19:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -454,7 +454,7 @@ static int VBoxDrvSolarisOpen(dev_t *pDev, int fFlag, int fType, cred_t *pCred)
     /*
      * Validate input
      */
-    if (   (getminor(*devp) != 0 && getminor(*devp) != 1)
+    if (   (getminor(*pDev) != 0 && getminor(*pDev) != 1)
         || fType != OTYP_CHR)
         return EINVAL; /* See mmopen for precedent. */
 
