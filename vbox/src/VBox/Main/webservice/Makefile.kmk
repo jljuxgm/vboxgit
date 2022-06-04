@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 42154 2012-07-13 23:00:53Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -206,7 +206,7 @@ ifdef VBOX_GSOAP_INSTALLED
  #
  LIBRARIES += vboxsoap
  vboxsoap_TEMPLATE = VBOXWEBR3EXE
- ifdef VBOX_USE_VCC80
+ ifndef VBOX_USE_VCC70
   vboxsoap_CXXFLAGS.win += -bigobj
  endif
  ifn1of ($(KBUILD_TARGET), win)
@@ -291,7 +291,7 @@ endif
 	$(VBOX_GSOAP_INCS) \
 	$(VBOXWEB_OUT_DIR) \
 	.
- ifdef VBOX_USE_VCC80
+ ifndef VBOX_USE_VCC70
   vboxwebsrv_CXXFLAGS.win += -bigobj
  endif
  ifn1of ($(KBUILD_TARGET), win)
@@ -434,7 +434,7 @@ $$(VBOX_JWSSRC_JAR): $$(VBOX_JWS_JAR) | $$(dir $$@)
  #
  PROGRAMS += webtest
  webtest_TEMPLATE = VBOXWEBR3EXE
- ifdef VBOX_USE_VCC80
+ ifndef VBOX_USE_VCC70
   webtest_CXXFLAGS.win += -bigobj
  endif
  ifn1of ($(KBUILD_TARGET), win)

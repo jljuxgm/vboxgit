@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41948 2012-06-28 06:48:02Z vboxsync $
+# $Id: Makefile.kmk 42154 2012-07-13 23:00:53Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -672,7 +672,7 @@ tstRTDarwinMachKernel_SOURCES  = \
 	../r0drv/darwin/dbgkrnlinfo-r0drv-darwin.cpp
 
 ntGetTimerResolution_SOURCES = ntGetTimerResolution.cpp
-ntGetTimerResolution_SDKS.win = WINPSDK W2K3DDK VBOX_NTDLL
+ntGetTimerResolution_SDKS.win = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK) VBOX_NTDLL
 
 endif # VBOX_WITH_TESTCASES
 

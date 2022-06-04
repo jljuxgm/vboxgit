@@ -1,4 +1,4 @@
-/* $Id: VBoxMFInternal.cpp 41642 2012-06-11 10:30:54Z vboxsync $ */
+/* $Id: VBoxMFInternal.cpp 42154 2012-07-13 23:00:53Z vboxsync $ */
 
 /** @file
  * VBox Mouse filter internal functions
@@ -16,11 +16,12 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define WIN9X_COMPAT_SPINLOCK /* Avoid duplicate _KeInitializeSpinLock@4 error on x86. */
+#include <iprt/asm.h>
 #include "VBoxMF.h"
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/VBoxGuest.h>
 #include <iprt/assert.h>
-#include <iprt/asm.h>
 
 typedef struct VBOXGDC
 {

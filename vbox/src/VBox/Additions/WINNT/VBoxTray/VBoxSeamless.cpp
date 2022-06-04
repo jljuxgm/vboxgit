@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 35863 2011-02-07 10:59:08Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 42154 2012-07-13 23:00:53Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -14,8 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #define _WIN32_WINNT 0x0500
-#include <windows.h>
+#include <Windows.h>
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 #include "VBoxSeamless.h"

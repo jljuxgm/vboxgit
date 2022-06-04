@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoPortAPI.h 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxVideoPortAPI.h 42154 2012-07-13 23:00:53Z vboxsync $ */
 
 /** @file
  * VBox video port functions header
@@ -26,7 +26,11 @@
 
 /*Basic datatypes*/
 typedef long VBOXVP_STATUS;
+#ifndef VBOX_USING_W2K3DDK
+typedef struct _ENG_EVENT *VBOXPEVENT;
+#else
 typedef struct _VIDEO_PORT_EVENT *VBOXPEVENT;
+#endif
 typedef struct _VIDEO_PORT_SPIN_LOCK *VBOXPSPIN_LOCK;
 typedef union _LARGE_INTEGER *VBOXPLARGE_INTEGER;
 
