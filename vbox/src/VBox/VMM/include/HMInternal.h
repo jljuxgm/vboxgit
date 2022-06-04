@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 47770 2013-08-15 14:16:59Z vboxsync $ */
+/* $Id: HMInternal.h 47771 2013-08-15 14:35:16Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -159,7 +159,7 @@ RT_C_DECLS_BEGIN
 /**
  * Global per-cpu information. (host)
  */
-typedef struct HMGLOBLCPUINFO
+typedef struct HMGLOBALCPUINFO
 {
     /** The CPU ID. */
     RTCPUID             idCpu;
@@ -177,9 +177,9 @@ typedef struct HMGLOBLCPUINFO
     bool                fIgnoreAMDVInUseError;
     /** In use by our code. (for power suspend) */
     volatile bool       fInUse;
-} HMGLOBLCPUINFO;
+} HMGLOBALCPUINFO;
 /** Pointer to the per-cpu global information. */
-typedef HMGLOBLCPUINFO *PHMGLOBLCPUINFO;
+typedef HMGLOBALCPUINFO *PHMGLOBALCPUINFO;
 
 typedef enum
 {
@@ -899,8 +899,8 @@ typedef HMCPU *PHMCPU;
 
 #ifdef IN_RING0
 
-VMMR0DECL(PHMGLOBLCPUINFO) HMR0GetCurrentCpu(void);
-VMMR0DECL(PHMGLOBLCPUINFO) HMR0GetCurrentCpuEx(RTCPUID idCpu);
+VMMR0DECL(PHMGLOBALCPUINFO) HMR0GetCurrentCpu(void);
+VMMR0DECL(PHMGLOBALCPUINFO) HMR0GetCurrentCpuEx(RTCPUID idCpu);
 
 
 #ifdef VBOX_STRICT
