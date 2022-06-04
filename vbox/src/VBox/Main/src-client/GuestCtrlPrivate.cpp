@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 42461 2012-07-30 21:28:12Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 42478 2012-07-31 13:20:37Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -24,7 +24,6 @@
 #include <iprt/asm.h>
 #include <iprt/ctype.h>
 #ifdef DEBUG
-# include "Logging.h"
 # include <iprt/file.h>
 #endif /* DEBUG */
 
@@ -73,8 +72,6 @@ bool GuestCtrlEvent::Canceled(void)
 
 void GuestCtrlEvent::Destroy(void)
 {
-    LogFlowThisFuncEnter();
-
     int rc = Cancel();
     AssertRC(rc);
 
@@ -83,8 +80,6 @@ void GuestCtrlEvent::Destroy(void)
         RTSemEventDestroy(hEventSem);
         hEventSem = NIL_RTSEMEVENT;
     }
-
-    LogFlowThisFuncLeave();
 }
 
 int GuestCtrlEvent::Init(void)
@@ -113,6 +108,8 @@ int GuestCtrlEvent::Wait(ULONG uTimeoutMS)
     int rc = RTSemEventWait(hEventSem, msInterval);
     if (RT_SUCCESS(rc))
         ASMAtomicWriteBool(&fCompleted, true);
+
+    LogFlowFuncLeaveRC(rc);
     return rc;
 }
 

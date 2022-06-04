@@ -1,5 +1,5 @@
 
-/* $Id: GuestFsObjInfoImpl.cpp 42095 2012-07-10 12:58:13Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.cpp 42478 2012-07-31 13:20:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -21,10 +21,10 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "GuestFsObjInfoImpl.h"
+#include "GuestCtrlImplPrivate.h"
 
 #include "Global.h"
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <VBox/com/array.h>
 

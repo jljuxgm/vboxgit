@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42461 2012-07-30 21:28:12Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42478 2012-07-31 13:20:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -22,10 +22,10 @@
 *******************************************************************************/
 #include "GuestImpl.h"
 #include "GuestSessionImpl.h"
+#include "GuestCtrlImplPrivate.h"
 
 #include "Global.h"
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <iprt/env.h>
 

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42461 2012-07-30 21:28:12Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42478 2012-07-31 13:20:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -25,7 +25,6 @@
 #include "VMMDev.h"
 
 #include "AutoCaller.h"
-#include "Logging.h"
 
 #include <VBox/VMMDev.h>
 #ifdef VBOX_WITH_GUEST_CONTROL
