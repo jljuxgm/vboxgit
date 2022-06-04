@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 46684 2013-06-19 17:38:27Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 46699 2013-06-20 11:03:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -130,7 +130,7 @@ template<> QString toString(const StorageSlot &storageSlot)
         }
         default:
         {
-            AssertMsgFailed(("No text for bus=%d & port=% & device=%d", storageSlot.bus, storageSlot.port, storageSlot.device));
+            AssertMsgFailed(("No text for bus=%d & port=%d & device=%d", storageSlot.bus, storageSlot.port, storageSlot.device));
             break;
         }
     }
