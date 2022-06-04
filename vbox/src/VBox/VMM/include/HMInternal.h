@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45955 2013-05-08 18:04:10Z vboxsync $ */
+/* $Id: HMInternal.h 46034 2013-05-13 16:45:41Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -497,7 +497,7 @@ typedef struct VMCSCACHE
         uint32_t    aField[VMCSCACHE_MAX_ENTRY];
         uint64_t    aFieldVal[VMCSCACHE_MAX_ENTRY];
     } Read;
-#ifdef DEBUG
+#ifdef VBOX_STRICT
     struct
     {
         RTHCPHYS    HCPhysCpuPage;
