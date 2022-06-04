@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 45209 2013-03-27 13:24:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -355,7 +355,12 @@ void UIMouseHandler::sltMouseCapabilityChanged()
 
     /* Notify user about mouse supports or not absolute pointing if that method was called by signal: */
     if (sender())
-        msgCenter().remindAboutMouseIntegration(uisession()->isMouseSupportsAbsolute());
+    {
+        /* don't annoy the user while restoring a VM */
+        KMachineState state = uisession()->machineState();
+        if (state != KMachineState_Restoring)
+            msgCenter().remindAboutMouseIntegration(uisession()->isMouseSupportsAbsolute());
+    }
 
     /* Notify all listeners: */
     emit mouseStateChanged(mouseState());
