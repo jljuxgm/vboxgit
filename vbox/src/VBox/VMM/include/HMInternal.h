@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 46787 2013-06-25 17:17:25Z vboxsync $ */
+/* $Id: HMInternal.h 46849 2013-06-27 15:02:00Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -230,7 +230,7 @@ typedef struct
     /** Replacement instruction size. */
     uint32_t                cbNewOp;
     /** Instruction type. */
-    HMTPRINSTR          enmType;
+    HMTPRINSTR              enmType;
     /** Source operand. */
     uint32_t                uSrcOperand;
     /** Destination operand. */
