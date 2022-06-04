@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 45789 2013-04-28 09:26:56Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 45790 2013-04-28 09:42:05Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -224,7 +224,9 @@ typedef struct LSILOGICSCSI
     /** Number entries allocated for the outstanding request queue. */
     uint32_t              cRequestQueueEntries;
 
+#if HC_ARCH_BITS == 64
     uint32_t              Alignment3;
+#endif
 
     /** Critical section protecting the reply post queue. */
     PDMCRITSECT           ReplyPostQueueCritSect;
