@@ -1,4 +1,4 @@
-/* $Id: SELMInline.h 45485 2013-04-11 14:46:04Z vboxsync $ */
+/* $Id: SELMInline.h 46168 2013-05-19 22:58:37Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -281,6 +281,7 @@ DECLINLINE(void) selmLoadHiddenSRegFromShadowDesc(PCPUMSELREG pSReg, PCX86DESC p
     pSReg->u32Limit       = X86DESC_LIMIT_G(pShwDesc);
     pSReg->u64Base        = X86DESC_BASE(pShwDesc);
     pSReg->ValidSel       = pSReg->Sel;
+/** @todo VBOX_WITH_RAW_RING1 */
     if (pSReg->Attr.n.u1Available)
         pSReg->ValidSel  &= ~(RTSEL)1;
     pSReg->fFlags         = CPUMSELREG_FLAGS_VALID;
@@ -302,6 +303,7 @@ DECLINLINE(void) selmLoadHiddenSRegFromGuestDesc(PVMCPU pVCpu, PCPUMSELREG pSReg
     pSReg->u32Limit       = X86DESC_LIMIT_G(pGstDesc);
     pSReg->u64Base        = X86DESC_BASE(pGstDesc);
     pSReg->ValidSel       = pSReg->Sel;
+/** @todo VBOX_WITH_RAW_RING1 */
     if ((pSReg->ValidSel & 1) && CPUMIsGuestInRawMode(pVCpu))
         pSReg->ValidSel  &= ~(RTSEL)1;
     pSReg->fFlags         = CPUMSELREG_FLAGS_VALID;

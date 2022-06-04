@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 42778 2012-08-11 22:47:03Z vboxsync $ */
+/* $Id: IEMInternal.h 46168 2013-05-19 22:58:37Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -213,8 +213,10 @@ typedef struct IEMCPU
 
     /** Whether to bypass access handlers or not. */
     bool                    fBypassHandlers;
+    /** Indicates that we're interpreting patch code - RC only! */
+    bool                    fInPatchCode;
     /** Explicit alignment padding. */
-    bool                    afAlignment0[3];
+    bool                    afAlignment0[2];
 
     /** The flags of the current exception / interrupt. */
     uint32_t                fCurXcpt;
