@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 43640 2012-10-15 12:39:52Z vboxsync $ */
+/* $Id: vscsi.h 43694 2012-10-22 09:37:50Z vboxsync $ */
 /** @file
  * VBox storage drivers: Virtual SCSI driver
  */
@@ -120,6 +120,18 @@ typedef struct VSCSILUNIOCALLBACKS
                                                          void *pvScsiLunUser,
                                                          uint64_t *pcbSize));
 
+    /**
+     * Set the lock state of the underlying medium.
+     *
+     * @returns VBox status status code.
+     * @param   hVScsiLun        Virtual SCSI LUN handle.
+     * @param   pvScsiLunUser    Opaque user data which may
+     *                           be used to identify the medium.
+     * @param   fLocked          New lock state (locked/unlocked).
+     */
+    DECLR3CALLBACKMEMBER(int, pfnVScsiLunMediumSetLock, (VSCSILUN hVScsiLun,
+                                                         void *pvScsiLunUser,
+                                                         bool fLocked));
     /**
      * Enqueue a read or write request from the medium.
      *
