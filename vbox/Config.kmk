@@ -1,4 +1,4 @@
-# $Id: Config.kmk 44580 2013-02-07 11:35:37Z vboxsync $
+# $Id: Config.kmk 44864 2013-02-28 12:18:42Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -586,6 +586,10 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
  VBOX_WITH_DRAG_AND_DROP = 1
  # Guest=>Host drag'n'drop doesn't work
  #VBOX_WITH_DRAG_AND_DROP_GH = 1
+endif
+# Enable support for VRDP redirection of Windows Media Player content
+ifeq ($(KBUILD_TARGET),win)
+# VBOX_WITH_MMR = 1
 endif
 ## @}
 
@@ -5308,7 +5312,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 44580 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 44864 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
