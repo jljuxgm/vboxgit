@@ -1,4 +1,4 @@
-/* $Id: init.cpp 44460 2013-01-30 11:30:08Z vboxsync $ */
+/* $Id: init.cpp 44485 2013-01-31 11:55:44Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -343,7 +343,7 @@ static int rtR3InitBody(uint32_t fFlags, int cArgs, char ***papszArgs, const cha
     DosError(FERR_DISABLEHARDERR);
 #endif
 
-    g_fUnobtrusive = !!(fFlags & RTR3INIT_FLAGS_UNOBTRUSIVE);
+    g_fUnobtrusive = RT_BOOL(fFlags & RTR3INIT_FLAGS_UNOBTRUSIVE);
 
 #if !defined(IN_GUEST) && !defined(RT_NO_GIP)
 # ifdef VBOX
