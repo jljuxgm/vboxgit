@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: HMR0.cpp 44577 2013-02-07 08:47:20Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -858,7 +858,7 @@ static DECLCALLBACK(void) hmR0InitAmdCpu(RTCPUID idCpu, void *pvUser1, void *pvU
 
 
 /**
- * Disable VT-x or AMD-V on the current CPU
+ * Enable VT-x or AMD-V on the current CPU
  *
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM (can be 0).

@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 44394 2013-01-26 17:53:53Z vboxsync $ */
+/* $Id: VMM.cpp 44577 2013-02-07 08:47:20Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1368,7 +1368,7 @@ DECLCALLBACK(int) vmmR3SendSipi(PVM pVM, VMCPUID idCpu, uint32_t uVector)
     pCtx->cs.u32Limit   = UINT32_C(0x0000ffff);
     pCtx->rip           = 0;
 
-    Log(("vmmR3SendSipi for VCPU %d with vector %x\n", uVector));
+    Log(("vmmR3SendSipi for VCPU %d with vector %x\n", idCpu, uVector));
 
 # if 1 /* If we keep the EMSTATE_WAIT_SIPI method, then move this to EM.cpp. */
     EMSetState(pVCpu, EMSTATE_HALTED);
