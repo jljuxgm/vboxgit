@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 43881 2012-11-15 15:29:13Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1009,7 +1009,7 @@ static int usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *pszAddress, vo
     /*
      * Init globals once.
      */
-    vrc = RTOnce(&g_usbProxyDarwinOnce, usbProxyDarwinInitOnce, NULL, NULL);
+    vrc = RTOnce(&g_usbProxyDarwinOnce, usbProxyDarwinInitOnce, NULL);
     AssertRCReturn(vrc, vrc);
 
     /*
