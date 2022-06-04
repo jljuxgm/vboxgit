@@ -1,4 +1,4 @@
-/* $Id: kLdrModMachO.c 48 2012-08-26 15:53:57Z bird $ */
+/* $Id: kLdrModMachO.c 49 2012-08-28 23:49:20Z bird $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -1670,7 +1670,7 @@ static int kldrModMachOQueryLinkerSymbol(PKLDRMODMACHO pModMachO, PKLDRMOD pMod,
         if (   pModMachO->Hdr.magic == IMAGE_MACHO32_SIGNATURE
             || pModMachO->Hdr.magic == IMAGE_MACHO32_SIGNATURE_OE)
         {
-            section_64_t *pSect = (section_64_t *)pModMachO->aSegments[iSeg].paSections[iSect].pvMachoSection;
+            section_32_t *pSect = (section_32_t *)pModMachO->aSegments[iSeg].paSections[iSect].pvMachoSection;
             uValue = pSect->addr;
             if (!s_aPrefixes[iPrefix].fStart)
                 uValue += pSect->size;
