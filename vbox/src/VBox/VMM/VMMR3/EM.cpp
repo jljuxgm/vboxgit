@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 45620 2013-04-18 20:07:14Z vboxsync $ */
+/* $Id: EM.cpp 45693 2013-04-24 11:32:42Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2245,6 +2245,7 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                  * Guru mediations.
                  */
                 case VERR_VMM_RING0_ASSERTION:
+                case VINF_EM_TRIPLE_FAULT:
                     Log(("EMR3ExecuteVM: %Rrc: %d -> %d (EMSTATE_GURU_MEDITATION)\n", rc, enmOldState, EMSTATE_GURU_MEDITATION));
                     pVCpu->em.s.enmState = EMSTATE_GURU_MEDITATION;
                     break;

@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 45474 2013-04-10 20:25:33Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 45693 2013-04-24 11:32:42Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -327,6 +327,7 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VERR_TRPM_DONT_PANIC:
         case VERR_TRPM_PANIC:
         case VERR_VMM_RING0_ASSERTION:
+        case VINF_EM_TRIPLE_FAULT:
         case VERR_VMM_HYPER_CR3_MISMATCH:
         case VERR_VMM_RING3_CALL_DISABLED:
         case VERR_IEM_INSTR_NOT_IMPLEMENTED:

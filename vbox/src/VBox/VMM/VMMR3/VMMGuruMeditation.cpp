@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 45531 2013-04-13 09:01:30Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 45693 2013-04-24 11:32:42Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -288,6 +288,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
         case VINF_EM_RAW_IRET_TRAP:
         case VINF_EM_DBG_HYPER_BREAKPOINT:
         case VINF_EM_DBG_HYPER_STEPPED:
+        case VINF_EM_TRIPLE_FAULT:
         case VERR_VMM_HYPER_CR3_MISMATCH:
         {
             /*
