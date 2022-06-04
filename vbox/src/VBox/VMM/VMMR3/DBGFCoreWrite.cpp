@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 45930 2013-05-07 12:14:06Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -539,8 +539,9 @@ static DECLCALLBACK(VBOXSTRICTRC) dbgfR3CoreWriteRendezvous(PVM pVM, PVMCPU pVCp
  *                              dump should be written.
  * @param   fReplaceFile        Whether to replace the file or not.
  *
- * @remarks The VM should be suspended before calling this function or DMA may
- *          interfer with the state.
+ * @remarks The VM may need to be suspended before calling this function in
+ *          order to truly stop all device threads and drivers. This function
+ *          only synchronizes EMTs.
  */
 VMMR3DECL(int) DBGFR3CoreWrite(PUVM pUVM, const char *pszFilename, bool fReplaceFile)
 {
