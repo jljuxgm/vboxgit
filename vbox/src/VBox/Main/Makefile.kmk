@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42551 2012-08-02 16:44:39Z vboxsync $
+# $Id: Makefile.kmk 42810 2012-08-14 14:45:11Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -638,6 +638,7 @@ VBoxC_SOURCES.win = \
 
 ifdef VBOX_WITH_GUEST_CONTROL
 VBoxC_SOURCES += \
+	src-client/GuestSessionImplTasks.cpp \
 	src-client/GuestCtrlPrivate.cpp \
 	src-client/GuestCtrlImplTasks.cpp \
 	src-client/GuestDirEntryImpl.cpp
