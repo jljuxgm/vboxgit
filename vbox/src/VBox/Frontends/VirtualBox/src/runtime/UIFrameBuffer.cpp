@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 41216 2012-05-08 18:05:41Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 43743 2012-10-25 15:22:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -195,9 +195,13 @@ STDMETHODIMP UIFrameBuffer::VideoModeSupported(ULONG uWidth, ULONG uHeight, ULON
     NOREF(uBPP);
     LogFlowThisFunc(("width=%lu, height=%lu, BPP=%lu\n",
                     (unsigned long)uWidth, (unsigned long)uHeight, (unsigned long)uBPP));
+
     if (!pbSupported)
         return E_POINTER;
     *pbSupported = TRUE;
+
+    if (!m_pMachineView)
+        return S_OK;
     QSize screen = m_pMachineView->maxGuestSize();
     if (   (screen.width() != 0)
         && (uWidth > (ULONG)screen.width())
@@ -209,6 +213,7 @@ STDMETHODIMP UIFrameBuffer::VideoModeSupported(ULONG uWidth, ULONG uHeight, ULON
         *pbSupported = FALSE;
     LogFlowThisFunc(("screenW=%lu, screenH=%lu -> aSupported=%s\n",
                     screen.width(), screen.height(), *pbSupported ? "TRUE" : "FALSE"));
+
     return S_OK;
 }
 
