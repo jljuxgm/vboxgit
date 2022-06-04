@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 47177 2013-07-16 08:10:06Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 47365 2013-07-24 10:13:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -295,7 +295,7 @@ class UIActionSimpleGroupRename : public UIActionSimple
 public:
 
     UIActionSimpleGroupRename(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/name_16px.png")
+        : UIActionSimple(pParent, ":/vm_group_name_16px.png", ":/vm_group_name_disabled_16px.png")
     {
         retranslateUi();
     }
@@ -326,9 +326,7 @@ class UIActionSimpleGroupRemove : public UIActionSimple
 public:
 
     UIActionSimpleGroupRemove(UIActionPool *pParent)
-        : UIActionSimple(pParent, QSize(32, 32), QSize(16, 16),
-                         ":/vm_delete_32px.png", ":/vm_delete_16px.png",
-                         ":/vm_delete_disabled_32px.png", ":/vm_delete_disabled_16px.png")
+        : UIActionSimple(pParent, ":/vm_group_remove_16px.png", ":/vm_group_remove_disabled_16px.png")
     {
         retranslateUi();
     }
@@ -470,7 +468,7 @@ class UIActionSimpleMachineAddGroup : public UIActionSimple
 public:
 
     UIActionSimpleMachineAddGroup(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/sf_add_16px.png") // TODO: Change icon!
+        : UIActionSimple(pParent, ":/vm_group_create_16px.png", ":/vm_group_create_disabled_16px.png")
     {
         retranslateUi();
     }
