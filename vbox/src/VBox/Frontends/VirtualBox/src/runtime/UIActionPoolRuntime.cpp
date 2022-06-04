@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 46542 2013-06-13 16:49:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -881,6 +881,33 @@ protected:
     }
 };
 
+class UIActionToggleVideoCapture : public UIActionToggle
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionToggleVideoCapture(UIActionPool *pParent)
+        : UIActionToggle(pParent,
+                         ":/video_capture_16px.png", ":/video_capture_disabled_16px.png")
+    {
+        retranslateUi();
+    }
+
+protected:
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("VideoCapture");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "Enable &Video Capture"));
+        setStatusTip(QApplication::translate("UIActionPool", "Enable video capture"));
+    }
+};
+
 class UIActionSimplePerformInstallGuestTools : public UIActionSimple
 {
     Q_OBJECT;
@@ -1144,6 +1171,7 @@ void UIActionPoolRuntime::createActions()
     m_pool[UIActionIndexRuntime_Simple_NetworkAdaptersDialog] = new UIActionSimpleShowNetworkAdaptersDialog(this);
     m_pool[UIActionIndexRuntime_Simple_SharedFoldersDialog] = new UIActionSimpleShowSharedFoldersDialog(this);
     m_pool[UIActionIndexRuntime_Toggle_VRDEServer] = new UIActionToggleVRDEServer(this);
+    m_pool[UIActionIndexRuntime_Toggle_VideoCapture] = new UIActionToggleVideoCapture(this);
     m_pool[UIActionIndexRuntime_Simple_InstallGuestTools] = new UIActionSimplePerformInstallGuestTools(this);
 
 #ifdef VBOX_WITH_DEBUGGER_GUI

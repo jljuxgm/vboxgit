@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 46542 2013-06-13 16:49:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -206,6 +206,11 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         case KVBoxEventType_OnVRDEServerInfoChanged:
         {
             emit sigVRDEChange();
+            break;
+        }
+        case KVBoxEventType_OnVideoCaptureChanged:
+        {
+            emit sigVideoCaptureChange();
             break;
         }
         case KVBoxEventType_OnUSBControllerChanged:

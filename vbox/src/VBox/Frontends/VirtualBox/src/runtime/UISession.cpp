@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 46524 2013-06-13 12:10:23Z vboxsync $ */
+/* $Id: UISession.cpp 46542 2013-06-13 16:49:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -717,7 +717,7 @@ void UISession::sltStateChange(KMachineState state)
 void UISession::sltVRDEChange()
 {
     /* Get machine: */
-    const CMachine &machine = session().GetMachine();
+    const CMachine machine = session().GetMachine();
     /* Get VRDE server: */
     const CVRDEServer &server = machine.GetVRDEServer();
     bool fIsVRDEServerAvailable = !server.isNull();
@@ -728,6 +728,16 @@ void UISession::sltVRDEChange()
         gActionPool->action(UIActionIndexRuntime_Toggle_VRDEServer)->setChecked(server.GetEnabled());
     /* Notify listeners about VRDE change: */
     emit sigVRDEChange();
+}
+
+void UISession::sltVideoCaptureChange()
+{
+    /* Get machine: */
+    const CMachine machine = session().GetMachine();
+    /* Check/Uncheck Video Capture action depending on feature status: */
+    gActionPool->action(UIActionIndexRuntime_Toggle_VideoCapture)->setChecked(machine.GetVideoCaptureEnabled());
+    /* Notify listeners about Video Capture change: */
+    emit sigVideoCaptureChange();
 }
 
 void UISession::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo)
@@ -805,6 +815,9 @@ void UISession::prepareConsoleEventHandlers()
 
     connect(gConsoleEvents, SIGNAL(sigVRDEChange()),
             this, SLOT(sltVRDEChange()));
+
+    connect(gConsoleEvents, SIGNAL(sigVideoCaptureChange()),
+            this, SLOT(sltVideoCaptureChange()));
 
     connect(gConsoleEvents, SIGNAL(sigNetworkAdapterChange(CNetworkAdapter)),
             this, SIGNAL(sigNetworkAdapterChange(CNetworkAdapter)));

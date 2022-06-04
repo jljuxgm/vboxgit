@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 46542 2013-06-13 16:49:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -72,6 +72,7 @@ UIConsoleEventHandler::UIConsoleEventHandler(UISession *pSession)
         << KVBoxEventType_OnMediumChanged
         << KVBoxEventType_OnVRDEServerChanged
         << KVBoxEventType_OnVRDEServerInfoChanged
+        << KVBoxEventType_OnVideoCaptureChanged
         << KVBoxEventType_OnUSBControllerChanged
         << KVBoxEventType_OnUSBDeviceStateChanged
         << KVBoxEventType_OnSharedFolderChanged
@@ -115,6 +116,10 @@ UIConsoleEventHandler::UIConsoleEventHandler(UISession *pSession)
 
     connect(pListener->getWrapped(), SIGNAL(sigVRDEChange()),
             this, SIGNAL(sigVRDEChange()),
+            Qt::QueuedConnection);
+
+    connect(pListener->getWrapped(), SIGNAL(sigVideoCaptureChange()),
+            this, SIGNAL(sigVideoCaptureChange()),
             Qt::QueuedConnection);
 
     connect(pListener->getWrapped(), SIGNAL(sigUSBControllerChange()),
