@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43831 2012-11-07 13:11:51Z vboxsync $
+# $Id: Makefile.kmk 44371 2013-01-25 11:50:18Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -17,6 +17,7 @@
 
 SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
+
 
 #
 # Target and globals (small mess)
@@ -113,6 +114,7 @@ tstVBoxAPILinux_LDFLAGS.solaris += '$(VBOX_GCC_RPATH_OPT)$$(VBOX_ORIGIN)/../../.
 ifdef VBOX_WITH_XPCOM_NAMESPACE_CLEANUP
  tstVBoxAPILinux_DEFS += VBOX_WITH_XPCOM_NAMESPACE_CLEANUP
 endif
+tstVBoxAPILinux_DEFS += VBOX_WITH_XPCOM
 tstVBoxAPILinux_INCS     = \
 	$(VBOX_XPCOM_INCS) \
 	$(VBOX_PATH_SDK)/bindings/xpcom/include
