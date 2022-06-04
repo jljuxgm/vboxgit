@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 44533 2013-02-04 20:55:12Z vboxsync $ */
+/* $Id: VBoxSCSI.h 44597 2013-02-08 11:06:22Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -21,9 +21,8 @@
  * shared between the BusLogic and the LsiLogic SCSI host adapters to simplify
  * the BIOS part.
  *
- * The BusLogic interface if available will be starting at port 0x330 and the
- * LsiLogic starts at 0x340 and each will have a size of 4 ports. The ports are
- * used as described below:
+ * The first interface (if available) will be starting at port 0x430 and
+ * each will occupy 4 ports. The ports are used as described below:
  *
  * +--------+--------+----------+
  * | Offset | Access | Purpose  |
