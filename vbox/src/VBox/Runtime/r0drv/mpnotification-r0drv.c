@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv.c 40806 2012-04-06 21:05:19Z vboxsync $ */
+/* $Id: mpnotification-r0drv.c 44443 2013-01-29 11:14:20Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Event Notifications.
  */
@@ -276,7 +276,7 @@ RT_EXPORT_SYMBOL(RTMpNotificationDeregister);
 
 DECLHIDDEN(int) rtR0MpNotificationInit(void)
 {
-    int rc = RTSpinlockCreate((PRTSPINLOCK)&g_hRTMpNotifySpinLock, RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE, "RTR0Mp");
+    int rc = RTSpinlockCreate((PRTSPINLOCK)&g_hRTMpNotifySpinLock, RTSPINLOCK_FLAGS_INTERRUPT_SAFE, "RTR0Mp");
     if (RT_SUCCESS(rc))
     {
         rc = rtR0MpNotificationNativeInit();
