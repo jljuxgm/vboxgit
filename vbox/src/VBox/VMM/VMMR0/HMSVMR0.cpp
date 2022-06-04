@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 46892 2013-07-01 16:37:10Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 46900 2013-07-02 12:04:28Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -117,7 +117,7 @@
  * Page fault is deliberately excluded here as it's conditional as to whether
  * it's contributory or benign. Page faults are handled separately.
  */
-#define HMSVM_CONTRIBUTORY_XCPT_MASK  ( RT_BIT(X86_XCPT_GP) | RT_BIT(X86_XCPT_NP) | RT_BIT(X86_XCPT_SS) | RT_BIT(X86_XCPT_TS) \
+#define HMSVM_CONTRIBUTORY_XCPT_MASK  (  RT_BIT(X86_XCPT_GP) | RT_BIT(X86_XCPT_NP) | RT_BIT(X86_XCPT_SS) | RT_BIT(X86_XCPT_TS) \
                                        | RT_BIT(X86_XCPT_DE))
 /** @} */
 
