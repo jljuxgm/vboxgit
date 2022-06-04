@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46498 2013-06-11 15:54:28Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46505 2013-06-11 17:37:54Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -159,10 +159,12 @@ extern "C" uint32_t g_fVMXIs64bitHost;
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
-/**
+/** @name VMX transient.
+ *
  * A state structure for holding miscellaneous information across
  * VMX non-root operation and restored after the transition.
- */
+ *
+ * @{ */
 typedef struct VMXTRANSIENT
 {
     /** The host's rflags/eflags. */
@@ -218,6 +220,7 @@ typedef struct VMXTRANSIENT
 AssertCompileMemberAlignment(VMXTRANSIENT, uExitReason,    sizeof(uint64_t));
 AssertCompileMemberAlignment(VMXTRANSIENT, uExitIntrInfo,  sizeof(uint64_t));
 AssertCompileMemberAlignment(VMXTRANSIENT, uEntryIntrInfo, sizeof(uint64_t));
+/** @} */
 
 
 /**
