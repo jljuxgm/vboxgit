@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 45844 2013-04-30 16:18:32Z vboxsync $ */
+/* $Id: VBoxTray.cpp 45847 2013-04-30 17:25:37Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1089,7 +1089,7 @@ static int vboxStInit(HWND hWnd)
                 WARN(("VBoxTray: WTSRegisterSessionNotification failed, error = %08X\n", dwErr));
                 if (dwErr == RPC_S_INVALID_BINDING)
                 {
-                    gVBoxSt.idDelayedInitTimer = SetTimer(gVBoxSt.hWTSAPIWnd, TIMERID_VBOXTRAY_ST_DELAYED_INIT_TIMER, 500, (TIMERPROC)NULL);
+                    gVBoxSt.idDelayedInitTimer = SetTimer(gVBoxSt.hWTSAPIWnd, TIMERID_VBOXTRAY_ST_DELAYED_INIT_TIMER, 2000, (TIMERPROC)NULL);
                     rc = VINF_SUCCESS;
                 }
                 else
