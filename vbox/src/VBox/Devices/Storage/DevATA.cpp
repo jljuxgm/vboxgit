@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 47830 2013-08-18 12:33:32Z vboxsync $ */
+/* $Id: DevATA.cpp 47838 2013-08-19 10:33:09Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -6204,6 +6204,11 @@ static int ataConfigLun(PPDMDEVINS pDevIns, ATADevState *pIf)
     /*
      * Allocate I/O buffer.
      */
+    if (pIf->fATAPI)
+        pIf->cbSector = 2048;
+    else
+        pIf->cbSector = pIf->pDrvBlock->pfnGetSectorSize(pIf->pDrvBlock);
+
     PVM pVM = PDMDevHlpGetVM(pDevIns);
     if (pIf->cbIOBuffer)
     {
@@ -6236,7 +6241,7 @@ static int ataConfigLun(PPDMDEVINS pDevIns, ATADevState *pIf)
      */
     if (pIf->fATAPI)
     {
-        pIf->cbSector = 2048;
+//        pIf->cbSector = 2048;
         pIf->cTotalSectors = pIf->pDrvBlock->pfnGetSize(pIf->pDrvBlock) / pIf->cbSector;
         pIf->PCHSGeometry.cCylinders = 0; /* dummy */
         pIf->PCHSGeometry.cHeads     = 0; /* dummy */
@@ -6245,7 +6250,7 @@ static int ataConfigLun(PPDMDEVINS pDevIns, ATADevState *pIf)
     }
     else
     {
-        pIf->cbSector = pIf->pDrvBlock->pfnGetSectorSize(pIf->pDrvBlock);
+//        pIf->cbSector = pIf->pDrvBlock->pfnGetSectorSize(pIf->pDrvBlock);
         pIf->cTotalSectors = pIf->pDrvBlock->pfnGetSize(pIf->pDrvBlock) / pIf->cbSector;
         rc = pIf->pDrvBlockBios->pfnGetPCHSGeometry(pIf->pDrvBlockBios,
                                                     &pIf->PCHSGeometry);
