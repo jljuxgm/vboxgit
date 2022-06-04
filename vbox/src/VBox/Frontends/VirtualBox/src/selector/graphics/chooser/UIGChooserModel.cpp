@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42851 2012-08-16 17:06:40Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42853 2012-08-16 18:08:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -978,7 +978,6 @@ void UIGChooserModel::prepareContextMenu()
     m_pContextMenuGroup->addMenu(gActionPool->action(UIActionIndexSelector_Menu_Group_Close)->menu());
     m_pContextMenuGroup->addSeparator();
     m_pContextMenuGroup->addAction(gActionPool->action(UIActionIndexSelector_Simple_Common_Discard));
-    m_pContextMenuGroup->addAction(gActionPool->action(UIActionIndex_Simple_LogDialog));
     m_pContextMenuGroup->addAction(gActionPool->action(UIActionIndexSelector_Simple_Common_Refresh));
     m_pContextMenuGroup->addSeparator();
     m_pContextMenuGroup->addAction(gActionPool->action(UIActionIndexSelector_Simple_Common_ShowInFileManager));
