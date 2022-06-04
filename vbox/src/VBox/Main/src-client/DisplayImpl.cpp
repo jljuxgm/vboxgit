@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45914 2013-05-06 15:11:12Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 45926 2013-05-06 20:26:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -495,9 +495,11 @@ HRESULT Display::init(Console *aParent)
         mParent->machine()->COMGETTER(VideoCaptureHeight)(&ulHeight);
         ULONG ulRate;
         mParent->machine()->COMGETTER(VideoCaptureRate)(&ulRate);
+        ULONG ulFps;
+        mParent->machine()->COMGETTER(VideoCaptureFps)(&ulFps);
         BSTR strFile;
         mParent->machine()->COMGETTER(VideoCaptureFile)(&strFile);
-        if (VideoRecContextInit(mpVideoRecCtx, strFile, ulWidth, ulHeight, ulRate))
+        if (VideoRecContextInit(mpVideoRecCtx, strFile, ulWidth, ulHeight, ulRate, ulFps))
         {
             LogFlow(("Failed to initialize video recording context!\n"));
             return E_FAIL;

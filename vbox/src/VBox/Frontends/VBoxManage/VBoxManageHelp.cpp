@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 45838 2013-04-30 13:54:20Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 45926 2013-05-06 20:26:43Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -373,6 +373,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--vcpwidth <width>]\n"
                      "                            [--vcpheight <height>]\n"
                      "                            [--vcprate <rate>]\n"
+                     "                            [--vcpfps <fps>]\n"
 #endif
                      "                            [--defaultfrontend default|<name]\n"
                      "\n");

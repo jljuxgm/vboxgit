@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 45838 2013-04-30 13:54:20Z vboxsync $ */
+/* $Id: MachineImpl.h 45926 2013-05-06 20:26:43Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -259,6 +259,7 @@ public:
         ULONG               mVideoCaptureWidth;
         ULONG               mVideoCaptureHeight;
         ULONG               mVideoCaptureRate;
+        ULONG               mVideoCaptureFps;
         Bstr                mVideoCaptureFile;
         BOOL                mVideoCaptureEnabled;
         ULONG               mMonitorCount;
@@ -440,6 +441,8 @@ public:
     STDMETHOD(COMSETTER(VideoCaptureHeight))(ULONG aVertRes);
     STDMETHOD(COMGETTER(VideoCaptureRate))(ULONG *aRate);
     STDMETHOD(COMSETTER(VideoCaptureRate))(ULONG aRate);
+    STDMETHOD(COMGETTER(VideoCaptureFps))(ULONG *aFps);
+    STDMETHOD(COMSETTER(VideoCaptureFps))(ULONG aFps);
     STDMETHOD(COMGETTER(BIOSSettings))(IBIOSSettings **biosSettings);
     STDMETHOD(COMGETTER(SnapshotFolder))(BSTR *aSavedStateFolder);
     STDMETHOD(COMSETTER(SnapshotFolder))(IN_BSTR aSavedStateFolder);
