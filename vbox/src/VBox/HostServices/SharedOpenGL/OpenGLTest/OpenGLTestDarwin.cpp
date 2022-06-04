@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 40845 2012-04-10 13:07:39Z vboxsync $ */
+/* $Id: OpenGLTestDarwin.cpp 43098 2012-08-30 11:32:06Z vboxsync $ */
 
 /** @file
  * VBox host opengl support test
@@ -24,11 +24,19 @@
 # include <OpenGL/glu.h>
 # include <iprt/log.h>
 #endif /* VBOX_WITH_COCOA_QT */
+#include <iprt/env.h>
+#include <iprt/log.h>
 
 #include <VBox/VBoxOGLTest.h>
 
 bool RTCALL VBoxOglIs3DAccelerationSupported()
 {
+    if (RTEnvGet("VBOX_CROGL_FORCE_SUPPORTED"))
+    {
+        LogRel(("VBOX_CROGL_FORCE_SUPPORTED is specified, skipping 3D test, and treating as supported\n"));
+        return true;
+    }
+
     CGDirectDisplayID   display = CGMainDisplayID ();
     CGOpenGLDisplayMask cglDisplayMask = CGDisplayIDToOpenGLDisplayMask (display);
     CGLPixelFormatObj   pixelFormat = NULL;
