@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 45024 2013-03-13 15:58:02Z vboxsync $ */
+/* $Id: DevEFI.cpp 46356 2013-06-03 10:10:02Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1747,6 +1747,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
                               "DmiBoardVersion\0"
                               "DmiChassisAssetTag\0"
                               "DmiChassisSerial\0"
+                              "DmiChassisType\0"
                               "DmiChassisVendor\0"
                               "DmiChassisVersion\0"
                               "DmiProcManufacturer\0"

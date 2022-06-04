@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 45298 2013-04-03 09:34:20Z vboxsync $ */
+/* $Id: DevPcBios.cpp 46356 2013-06-03 10:10:02Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -954,6 +954,7 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
                               "DmiBoardVersion\0"
                               "DmiChassisAssetTag\0"
                               "DmiChassisSerial\0"
+                              "DmiChassisType\0"
                               "DmiChassisVendor\0"
                               "DmiChassisVersion\0"
                               "DmiProcManufacturer\0"
