@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 46983 2013-07-04 13:14:35Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 46986 2013-07-04 16:17:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -232,23 +232,21 @@ void UIPopupStack::setDesiredWidth(int iWidth)
 void UIPopupStack::layoutContent()
 {
     /* Get attributes: */
-    const int iWidth = width();
-    const int iHeight = height();
     int iX = m_iLayoutMargin;
-    int iY = iHeight - m_iLayoutMargin;
+    int iY = m_iLayoutMargin;
 
     /* Layout every pane we have: */
     foreach (UIPopupPane *pPane, m_panes)
     {
         /* Get pane attributes: */
-        const int iPaneWidth = iWidth - 2 * m_iLayoutMargin;
+        const int iPaneWidth = width() - 2 * m_iLayoutMargin;
         const int iPaneHeight = pPane->minimumHeightHint();
         /* Adjust geometry for the pane: */
-        pPane->move(iX, iY - iPaneHeight);
+        pPane->move(iX, iY);
         pPane->resize(iPaneWidth, iPaneHeight);
         pPane->layoutContent();
         /* Increment placeholder: */
-        iY -= (iPaneHeight + m_iLayoutSpacing);
+        iY += (iPaneHeight + m_iLayoutSpacing);
     }
 }
 
