@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 46364 2013-06-03 15:02:38Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 46716 2013-06-21 06:00:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -236,17 +236,13 @@ STDMETHODIMP UIFrameBuffer::VideoModeSupported(ULONG uWidth, ULONG uHeight, ULON
     if (   (screen.width() != 0)
         && (uWidth > (ULONG)screen.width())
         && (uWidth > (ULONG)width()))
-    {
-        LogRel(("Host rejected width: %u.\n", uWidth));
         *pbSupported = FALSE;
-    }
+
     if (   (screen.height() != 0)
         && (uHeight > (ULONG)screen.height())
         && (uHeight > (ULONG)height()))
-    {
-        LogRel(("Host rejected height: %u.\n", uHeight));
         *pbSupported = FALSE;
-    }
+
     LogFlowThisFunc(("screenW=%lu, screenH=%lu -> aSupported=%s\n",
                     screen.width(), screen.height(), *pbSupported ? "TRUE" : "FALSE"));
 
