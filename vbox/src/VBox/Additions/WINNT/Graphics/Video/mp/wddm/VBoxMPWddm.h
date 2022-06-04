@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 43489 2012-10-01 11:55:58Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 44038 2012-12-05 09:58:56Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -40,9 +40,6 @@
 #define VBOXWDDM_CFG_LOG_UM_DBGPRINT 0x00000002
 #define VBOXWDDM_CFG_STR_LOG_UM L"VBoxLogUm"
 extern DWORD g_VBoxLogUm;
-#ifdef VBOX_WDDM_WIN8
-extern DWORD g_VBoxDisplayOnly;
-#endif
 
 RT_C_DECLS_BEGIN
 NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING RegistryPath);

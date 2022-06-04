@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 43489 2012-10-01 11:55:58Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 44038 2012-12-05 09:58:56Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -30,6 +30,9 @@
 #endif
 
 #ifdef VBOX_WDDM_MINIPORT
+# ifdef VBOX_WDDM_WIN8
+extern DWORD g_VBoxDisplayOnly;
+# endif
 # include "wddm/VBoxMPTypes.h"
 #endif
 
