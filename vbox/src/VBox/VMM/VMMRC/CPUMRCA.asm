@@ -1,4 +1,4 @@
-; $Id: CPUMRCA.asm 41943 2012-06-28 02:33:43Z vboxsync $
+; $Id: CPUMRCA.asm 42771 2012-08-11 20:15:47Z vboxsync $
 ;; @file
 ; CPUM - Raw-mode Context Assembly Routines.
 ;
@@ -32,6 +32,8 @@
 extern IMPNAME(g_CPUM)                 ; VMM GC Builtin import
 extern IMPNAME(g_VM)                   ; VMM GC Builtin import
 extern NAME(cpumRCHandleNPAndGP)       ; CPUMGC.cpp
+extern NAME(CPUMRCAssertPreExecutionSanity)
+
 
 ;
 ; Enables write protection of Hypervisor memory pages.
@@ -162,6 +164,16 @@ ENDPROC CPUMGCCallV86Code
 ;
 align 16
 BEGINPROC_EXPORTED CPUMGCResumeGuest
+%ifdef VBOX_STRICT
+    ; Call CPUM to check sanity.
+    push    edx
+    mov     edx, IMP(g_VM)
+    push    edx
+    call    NAME(CPUMRCAssertPreExecutionSanity)
+    add     esp, 4
+    pop     edx
+%endif
+
     ; Convert to CPUMCPU pointer
     add     edx, [edx + CPUM.offCPUMCPU0]
     ;
@@ -240,6 +252,16 @@ ENDPROC     CPUMGCResumeGuest
 ;
 align 16
 BEGINPROC_EXPORTED CPUMGCResumeGuestV86
+%ifdef VBOX_STRICT
+    ; Call CPUM to check sanity.
+    push    edx
+    mov     edx, IMP(g_VM)
+    push    edx
+    call    NAME(CPUMRCAssertPreExecutionSanity)
+    add     esp, 4
+    pop     edx
+%endif
+
     ; Convert to CPUMCPU pointer
     add     edx, [edx + CPUM.offCPUMCPU0]
     ;

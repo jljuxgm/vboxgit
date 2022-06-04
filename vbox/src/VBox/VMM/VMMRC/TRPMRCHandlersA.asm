@@ -1,4 +1,4 @@
-; $Id: TRPMRCHandlersA.asm 41985 2012-07-02 15:00:27Z vboxsync $
+; $Id: TRPMRCHandlersA.asm 42771 2012-08-11 20:15:47Z vboxsync $
 ;; @file
 ; TRPM - Raw-mode Context Trap Handlers
 ;
@@ -53,6 +53,7 @@ extern NAME(TRPMGCTrap0dHandler)
 extern NAME(TRPMGCHyperTrap0dHandler)
 extern NAME(TRPMGCTrap0eHandler)
 extern NAME(TRPMGCHyperTrap0eHandler)
+extern NAME(CPUMRCAssertPreExecutionSanity)
 
 
 ;*******************************************************************************
@@ -471,6 +472,14 @@ ALIGNCODE(16)
     add     edx, TRPM.aStatGCTraps
     add     edx, IMP(g_TRPM)
     STAM_PROFILE_ADV_STOP edx
+%endif
+
+%ifdef VBOX_STRICT
+    ; Call CPUM to check sanity.
+    mov     edx, IMP(g_VM)
+    push    edx
+    call    NAME(CPUMRCAssertPreExecutionSanity)
+    add     esp, 4
 %endif
 
     ; enable WP
@@ -922,6 +931,14 @@ ti_GenericInterrupt:
     dec     edx                         ; edx = 0ffffffffh
     xchg    [esi + TRPMCPU.uActiveVector], edx
     mov     [esi + TRPMCPU.uPrevVector], edx
+
+%ifdef VBOX_STRICT
+    ; Call CPUM to check sanity.
+    mov     edx, IMP(g_VM)
+    push    edx
+    call    NAME(CPUMRCAssertPreExecutionSanity)
+    add     esp, 4
+%endif
 
     ; enable WP
     mov     eax, cr0                    ;; @todo try elimiate this read.
