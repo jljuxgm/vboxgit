@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 46433 2013-06-07 11:28:10Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 46502 2013-06-11 16:04:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -268,6 +268,7 @@ VBoxGlobal::VBoxGlobal()
     , mDisableCsam(false)
     , mRecompileSupervisor(false)
     , mRecompileUser(false)
+    , mExecuteAllInIem(false)
     , mWarpPct(100)
     , mVerString("1.0")
     , m3DAvailable(-1)
