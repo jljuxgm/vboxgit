@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45348 2013-04-04 19:46:29Z vboxsync $
+# $Id: Makefile.kmk 46343 2013-05-31 13:27:10Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -151,6 +151,13 @@ endif
 ifdef VBOX_WITH_CRHGSMI
 VBoxOGLcrserverlib_DEFS += ifdef VBOX_WITH_CRHGSMI
 endif
+ifdef VBOX_WITH_CRDUMPER
+VBoxOGLcrserverlib_DEFS        += VBOX_WITH_CRDUMPER
+endif
+ifdef VBOX_WITH_CRSERVER_DUMPER
+VBoxOGLcrserverlib_DEFS        += VBOX_WITH_CRSERVER_DUMPER
+endif
+
 
 #
 # Generate files for VBoxOGLcrserverlib

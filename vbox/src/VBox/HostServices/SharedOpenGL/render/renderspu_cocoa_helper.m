@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 45673 2013-04-23 07:26:14Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 46343 2013-05-31 13:27:10Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1283,7 +1283,7 @@ static void vboxCtxLeave(PVBOX_CR_RENDER_CTX_INFO pCtxInfo)
                         pSrcRect = &SrcRect;
                     }
                     
-                    CrBltBlitTexMural(m_pBlitter, &pEntry->Tex, pSrcRect, pDstRect, 1, CRBLT_F_LINEAR | CRBLT_F_INVERT_YCOORDS);
+                    CrBltBlitTexMural(m_pBlitter, true, &pEntry->Tex, pSrcRect, pDstRect, 1, CRBLT_F_LINEAR | CRBLT_F_INVERT_YCOORDS);
                 }
                 CrBltLeave(m_pBlitter);
             }
@@ -1406,7 +1406,7 @@ static void vboxCtxLeave(PVBOX_CR_RENDER_CTX_INFO pCtxInfo)
                                 pSrcRect = &SrcRect;
                             }
                     
-                            CrBltBlitTexMural(m_pBlitter, &pEntry->Tex, pSrcRect, pDstRect, 1, CRBLT_F_LINEAR | CRBLT_F_INVERT_SRC_YCOORDS);
+                            CrBltBlitTexMural(m_pBlitter, true, &pEntry->Tex, pSrcRect, pDstRect, 1, CRBLT_F_LINEAR | CRBLT_F_INVERT_SRC_YCOORDS);
                         }
                         CrBltLeave(m_pBlitter);
                     }
