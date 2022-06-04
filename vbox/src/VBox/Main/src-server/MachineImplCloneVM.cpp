@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 44480 2013-01-31 08:47:25Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 44503 2013-02-01 06:28:53Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1089,8 +1089,15 @@ HRESULT MachineCloneVM::run()
                         ComPtr<IMediumFormat> pSrcFormat;
                         rc = pMedium->COMGETTER(MediumFormat)(pSrcFormat.asOutParam());
                         ULONG uSrcCaps = 0;
-                        rc = pSrcFormat->COMGETTER(Capabilities)(&uSrcCaps);
+                        com::SafeArray <MediumFormatCapabilities_T> mediumFormatCap;
+                        rc = pSrcFormat->COMGETTER(Capabilities)(ComSafeArrayAsOutParam(mediumFormatCap));
+
                         if (FAILED(rc)) throw rc;
+                        else
+                        {
+                            for (ULONG j = 0; j < mediumFormatCap.size(); j++)
+                                uSrcCaps |= mediumFormatCap[j];
+                        }
 
                         /* Default format? */
                         Utf8Str strDefaultFormat;

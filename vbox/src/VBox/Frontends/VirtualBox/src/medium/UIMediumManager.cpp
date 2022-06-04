@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 43424 2012-09-25 09:01:47Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 44503 2013-02-01 06:28:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1141,8 +1141,15 @@ void UIMediumManager::doRemoveMedium()
              * UIMessageCenter::confirmRemoveMedium() is aware of that and
              * will give a corresponding hint. Therefore, once the code is
              * changed below, the hint should be re-checked for validity. */
+
+            qulonglong caps = 0;
+            QVector<KMediumFormatCapabilities> capabilities;
+            capabilities = item->medium().medium().GetMediumFormat().GetCapabilities();
+            for (int i = 0; i < capabilities.size(); i++)
+                caps |= capabilities[i];
+
             if (item->state() != KMediumState_Inaccessible &&
-                item->medium().medium().GetMediumFormat().GetCapabilities() & MediumFormatCapabilities_File)
+                caps & MediumFormatCapabilities_File)
             {
                 int rc = msgCenter().
                     confirmDeleteHardDiskStorage (this, item->location());

@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 44406 2013-01-28 09:03:20Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 44503 2013-02-01 06:28:53Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -2535,9 +2535,15 @@ void SessionMachine::deleteSnapshotHandler(DeleteSnapshotTask &aTask)
                 if (FAILED(rc))
                     throw rc;
                 ULONG uTargetCaps = 0;
-                rc = pTargetFormat->COMGETTER(Capabilities)(&uTargetCaps);
-                if (FAILED(rc))
-                    throw rc;
+                com::SafeArray <MediumFormatCapabilities_T> mediumFormatCap;
+                rc = pTargetFormat->COMGETTER(Capabilities)(ComSafeArrayAsOutParam(mediumFormatCap));
+
+                if (FAILED(rc)) throw rc;
+                else
+                {
+                    for (ULONG j = 0; j < mediumFormatCap.size(); j++)
+                        uTargetCaps |= mediumFormatCap[j];
+                }
 
                 if (uTargetCaps & MediumFormatCapabilities_File)
                 {

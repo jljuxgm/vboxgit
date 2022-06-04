@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic3.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic3.cpp 44503 2013-02-01 06:28:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -144,7 +144,12 @@ void UIWizardCloneVDPageBasic3::initializePage()
 
     /* Setup visibility: */
     CMediumFormat mediumFormat = field("mediumFormat").value<CMediumFormat>();
-    ULONG uCapabilities = mediumFormat.GetCapabilities();
+    ULONG uCapabilities = 0;
+    QVector<KMediumFormatCapabilities> capabilities;
+    capabilities = mediumFormat.GetCapabilities();
+    for (ULONG i = 0; i < capabilities.size(); i++)
+        uCapabilities |= capabilities[i];
+
     bool fIsCreateDynamicPossible = uCapabilities & KMediumFormatCapabilities_CreateDynamic;
     bool fIsCreateFixedPossible = uCapabilities & KMediumFormatCapabilities_CreateFixed;
     bool fIsCreateSplitPossible = uCapabilities & KMediumFormatCapabilities_CreateSplit2G;

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.cpp 44503 2013-02-01 06:28:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -38,7 +38,13 @@ UIWizardCloneVDPage2::UIWizardCloneVDPage2()
 void UIWizardCloneVDPage2::addFormatButton(QWidget *pParent, QVBoxLayout *pFormatLayout, CMediumFormat medFormat)
 {
     /* Check that medium format supports creation: */
-    ULONG uFormatCapabilities = medFormat.GetCapabilities();
+    //ULONG uFormatCapabilities = medFormat.GetCapabilities();
+    ULONG uFormatCapabilities = 0;
+    QVector<KMediumFormatCapabilities> capabilities;
+    capabilities = medFormat.GetCapabilities();
+    for (ULONG i = 0; i < capabilities.size(); i++)
+        uFormatCapabilities |= capabilities[i];
+
     if (!(uFormatCapabilities & MediumFormatCapabilities_CreateFixed ||
           uFormatCapabilities & MediumFormatCapabilities_CreateDynamic))
         return;
@@ -148,7 +154,13 @@ int UIWizardCloneVDPageBasic2::nextId() const
 {
     /* Show variant page only if there is something to show: */
     CMediumFormat medFormat = mediumFormat();
-    ULONG uCapabilities = medFormat.GetCapabilities();
+//    ULONG uCapabilities = medFormat.GetCapabilities();
+    ULONG uCapabilities = 0;
+    QVector<KMediumFormatCapabilities> capabilities;
+    capabilities = medFormat.GetCapabilities();
+    for (ULONG i = 0; i < capabilities.size(); i++)
+        uCapabilities |= capabilities[i];
+
     int cTest = 0;
     if (uCapabilities & KMediumFormatCapabilities_CreateDynamic)
         ++cTest;

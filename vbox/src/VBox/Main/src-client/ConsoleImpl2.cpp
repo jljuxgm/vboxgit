@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 44425 2013-01-28 14:16:06Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 44503 2013-02-01 06:28:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3243,8 +3243,13 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
              */
             ComPtr<IMediumFormat> pMediumFormat;
             hrc = pMedium->COMGETTER(MediumFormat)(pMediumFormat.asOutParam());             H();
-            ULONG uCaps;
-            hrc = pMediumFormat->COMGETTER(Capabilities)(&uCaps);                           H();
+            ULONG uCaps = 0;
+            com::SafeArray <MediumFormatCapabilities_T> mediumFormatCap;
+            hrc = pMediumFormat->COMGETTER(Capabilities)(ComSafeArrayAsOutParam(mediumFormatCap));    H();
+
+            for (ULONG j = 0; j < mediumFormatCap.size(); j++)
+                uCaps |= mediumFormatCap[j];
+
             if (uCaps & MediumFormatCapabilities_File)
             {
                 Bstr strFile;
@@ -3417,8 +3422,13 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
              */
             ComPtr<IMediumFormat> pMediumFormat;
             hrc = pMedium->COMGETTER(MediumFormat)(pMediumFormat.asOutParam());             H();
-            ULONG uCaps;
-            hrc = pMediumFormat->COMGETTER(Capabilities)(&uCaps);                           H();
+            ULONG uCaps = 0;
+            com::SafeArray <MediumFormatCapabilities_T> mediumFormatCap;
+            hrc = pMediumFormat->COMGETTER(Capabilities)(ComSafeArrayAsOutParam(mediumFormatCap));     H();
+
+            for (ULONG j = 0; j < mediumFormatCap.size(); j++)
+                uCaps |= mediumFormatCap[j];
+
             if (uCaps & MediumFormatCapabilities_File)
             {
                 Bstr strFile;

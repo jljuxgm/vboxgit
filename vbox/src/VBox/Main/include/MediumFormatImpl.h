@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 37587 2011-06-22 12:02:13Z vboxsync $ */
+/* $Id: MediumFormatImpl.h 44503 2013-02-01 06:28:53Z vboxsync $ */
 
 /** @file
  *
@@ -90,7 +90,7 @@ public:
     // IMediumFormat properties
     STDMETHOD(COMGETTER(Id))(BSTR *aId);
     STDMETHOD(COMGETTER(Name))(BSTR *aName);
-    STDMETHOD(COMGETTER(Capabilities))(ULONG *aCaps);
+    STDMETHOD(COMGETTER(Capabilities))(ComSafeArrayOut(MediumFormatCapabilities_T, aCaps));
 
     // IMediumFormat methods
     STDMETHOD(DescribeFileExtensions)(ComSafeArrayOut(BSTR, aFileExtensions),

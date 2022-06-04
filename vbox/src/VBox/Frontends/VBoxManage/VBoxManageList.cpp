@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 44498 2013-01-31 15:48:05Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 44503 2013-02-01 06:28:53Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -270,9 +270,13 @@ static HRESULT listHddBackends(const ComPtr<IVirtualBox> pVirtualBox)
         CHECK_ERROR(mediumFormats[i],
                     COMGETTER(Id)(description.asOutParam()));
 
-        ULONG caps;
+        ULONG caps = 0;
+        com::SafeArray <MediumFormatCapabilities_T> mediumFormatCap;
         CHECK_ERROR(mediumFormats[i],
-                    COMGETTER(Capabilities)(&caps));
+                    COMGETTER(Capabilities)(ComSafeArrayAsOutParam(mediumFormatCap)));
+        for (ULONG j = 0; j < mediumFormatCap.size(); j++)
+            caps |= mediumFormatCap[j];
+
 
         RTPrintf("Backend %u: id='%ls' description='%ls' capabilities=%#06x extensions='",
                 i, id.raw(), description.raw(), caps);
