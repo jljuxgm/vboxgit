@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 45700 2013-04-24 14:17:15Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 46354 2013-06-02 12:17:49Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -53,9 +53,9 @@
 #include <IOKit/IOService.h>
 #include <IOKit/IOUserClient.h>
 #include <IOKit/pwr_mgt/RootDomain.h>
-#include <IOkit/pci/IOPCIDevice.h>
-#include <IOkit/IOBufferMemoryDescriptor.h>
-#include <IOkit/IOFilterInterruptEventSource.h>
+#include <IOKit/pci/IOPCIDevice.h>
+#include <IOKit/IOBufferMemoryDescriptor.h>
+#include <IOKit/IOFilterInterruptEventSource.h>
 #include "VBoxGuestInternal.h"
 
 
