@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46530 2013-06-13 13:32:16Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46552 2013-06-14 12:01:20Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7718,7 +7718,8 @@ HMVMX_EXIT_DECL hmR0VmxExitHlt(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT p
 
 
 /**
- * VM-exit handler for instructions that result in a #UD exception delivered to the guest.
+ * VM-exit handler for instructions that result in a #UD exception delivered to
+ * the guest.
  */
 HMVMX_EXIT_DECL hmR0VmxExitSetPendingXcptUD(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT pVmxTransient)
 {
