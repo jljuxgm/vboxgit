@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45856 2013-04-30 23:12:38Z vboxsync $ */
+/* $Id: HM.cpp 45858 2013-05-01 00:18:53Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -3157,6 +3157,8 @@ static DECLCALLBACK(int) hmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, u
 #endif
 
     /* Recheck all VCPUs if we can go straight into hm execution mode. */
+    /** @todo r=ramshankar: Not sure what this does. HMR3CanExecuteGuest() doesn't
+     *        have any side effects and the return value is not used at all. */
     if (HMIsEnabled(pVM))
     {
         for (VMCPUID i = 0; i < pVM->cCpus; i++)

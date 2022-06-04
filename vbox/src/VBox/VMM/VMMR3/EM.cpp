@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
+/* $Id: EM.cpp 45858 2013-05-01 00:18:53Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1249,9 +1249,6 @@ EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     {
         /*
          * Hardware accelerated raw-mode:
-         *
-         * Typically only 32-bits protected mode, with paging enabled, code is
-         * allowed here.
          */
         if (   EMIsHwVirtExecutionEnabled(pVM)
             && HMR3CanExecuteGuest(pVM, pCtx))
