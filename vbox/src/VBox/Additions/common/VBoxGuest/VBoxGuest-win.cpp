@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 44996 2013-03-11 16:37:13Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 45013 2013-03-13 08:42:43Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -304,7 +304,8 @@ static void vbgdNtShowDeviceResources(PCM_PARTIAL_RESOURCE_LIST pResourceList)
             "CmResourceTypeSubAllocateFrom",
         };
 
-        Log(("VBoxGuest::vbgdNtShowDeviceResources: Type %s", uType < RT_ELEMENTS(s_apszName) ? aszName[uType] : "Unknown"));
+        Log(("VBoxGuest::vbgdNtShowDeviceResources: Type %s",
+             uType < RT_ELEMENTS(s_apszName) ? s_apszName[uType] : "Unknown"));
 
         switch (uType)
         {
@@ -396,8 +397,8 @@ NTSTATUS vbgdNtInit(PDRIVER_OBJECT pDrvObj, PDEVICE_OBJECT pDevObj, PUNICODE_STR
         {
             pDevExt->Core.pVMMDevMemory = (VMMDevMemory *)pvMMIOBase;
 
-            Log(("VBoxGuest::vbgdNtInit: pvMMIOBase = 0x%p, pDevExt = 0x%p, pDevExt->pVMMDevMemory = 0x%p\n",
-                 pvMMIOBase, pDevExt, pDevExt ? pDevExt->pVMMDevMemory : NULL));
+            Log(("VBoxGuest::vbgdNtInit: pvMMIOBase = 0x%p, pDevExt = 0x%p, pDevExt->Core.pVMMDevMemory = 0x%p\n",
+                 pvMMIOBase, pDevExt, pDevExt ? pDevExt->Core.pVMMDevMemory : NULL));
 
             int vrc = VBoxGuestInitDevExt(&pDevExt->Core,
                                           pDevExt->Core.IOPortBase,
