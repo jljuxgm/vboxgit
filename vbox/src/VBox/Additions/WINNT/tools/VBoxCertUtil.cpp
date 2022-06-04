@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtil.cpp 39748 2012-01-11 14:42:05Z vboxsync $ */
+/* $Id: VBoxCertUtil.cpp 42938 2012-08-23 10:33:33Z vboxsync $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
@@ -234,7 +234,7 @@ static bool readCertFile(const char *pszCertFile, PCCERT_CONTEXT *ppOutCtx, HCER
  * @returns true on success, false on failure (error message written).
  * @param   dwDst           The destination, like
  *                          CERT_SYSTEM_STORE_LOCAL_MACHINE or
- *                          ERT_SYSTEM_STORE_CURRENT_USER.
+ *                          CERT_SYSTEM_STORE_CURRENT_USER.
  * @param   pszStoreNm      The store name.
  */
 static HCERTSTORE openCertStore(DWORD dwDst, const char *pszStoreNm)
@@ -267,7 +267,7 @@ static HCERTSTORE openCertStore(DWORD dwDst, const char *pszStoreNm)
  * @returns true on success, false on failure (error message written).
  * @param   dwDst           The destination, like
  *                          CERT_SYSTEM_STORE_LOCAL_MACHINE or
- *                          ERT_SYSTEM_STORE_CURRENT_USER.
+ *                          CERT_SYSTEM_STORE_CURRENT_USER.
  * @param   pszStoreNm      The store name.
  * @param   pszCertFile     The file containing the certificate to add.
  */
@@ -343,7 +343,7 @@ static bool removeCertFromStoreByFile(DWORD dwDst, const char *pszStoreNm, const
  * @returns true on success, false on failure (error message written).
  * @param   dwDst           The destination, like
  *                          CERT_SYSTEM_STORE_LOCAL_MACHINE or
- *                          ERT_SYSTEM_STORE_CURRENT_USER.
+ *                          CERT_SYSTEM_STORE_CURRENT_USER.
  * @param   pszStoreNm      The store name.
  * @param   pszCertFile     The file containing the certificate to add.
  * @param   dwDisposition   The disposition towards existing certificates when
