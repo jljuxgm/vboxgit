@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 43981 2012-11-28 11:44:04Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 44104 2012-12-12 10:21:22Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -432,8 +432,7 @@ static int ctrlPrintProgressError(ComPtr<IProgress> pProgress)
 
     } while(0);
 
-    if (FAILED(rc))
-        AssertMsgStmt(NULL, ("Could not lookup progress information\n"), vrc = VERR_COM_UNEXPECTED);
+    AssertMsgStmt(SUCCEEDED(rc), ("Could not lookup progress information\n"), vrc = VERR_COM_UNEXPECTED);
 
     return vrc;
 }
