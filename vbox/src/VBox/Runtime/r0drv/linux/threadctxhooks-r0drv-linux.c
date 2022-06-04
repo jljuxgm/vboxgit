@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-linux.c 47352 2013-07-23 16:19:20Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-linux.c 47370 2013-07-24 12:35:39Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Linux.
  */
@@ -171,6 +171,7 @@ RTDECL(uint32_t) RTThreadCtxHooksRelease(RTTHREADCTX hThreadCtx)
     PRTTHREADCTXINT pThis = hThreadCtx;
     if (pThis == NIL_RTTHREADCTX)
         return 0;
+
     AssertPtr(pThis);
     AssertMsgReturn(pThis->u32Magic == RTTHREADCTXINT_MAGIC, ("pThis->u32Magic=%RX32 pThis=%p\n", pThis->u32Magic, pThis),
                     UINT32_MAX);
