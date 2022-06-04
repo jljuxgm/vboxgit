@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 41976 2012-07-01 14:16:40Z vboxsync $ */
+/* $Id: VMMRC.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -119,7 +119,7 @@ VMMRCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
         /*
          * Testcase executes a privileged instruction to force a world switch. (in both SVM & VMX)
          */
-        case VMMGC_DO_TESTCASE_HWACCM_NOP:
+        case VMMGC_DO_TESTCASE_HM_NOP:
             ASMRdMsr_Low(MSR_IA32_SYSENTER_CS);
             return 0;
 

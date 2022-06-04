@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 43379 2012-09-20 23:29:12Z vboxsync $ */
+/* $Id: SUPDrv.c 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -59,8 +59,8 @@
 #include <VBox/param.h>
 #include <VBox/log.h>
 #include <VBox/err.h>
-#include <VBox/vmm/hwacc_svm.h>
-#include <VBox/vmm/hwacc_vmx.h>
+#include <VBox/vmm/hm_svm.h>
+#include <VBox/vmm/hm_vmx.h>
 
 #if defined(RT_OS_SOLARIS) || defined(RT_OS_DARWIN)
 # include "dtrace/SUPDrv.h"

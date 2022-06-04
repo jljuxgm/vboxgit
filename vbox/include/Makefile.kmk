@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 43387 2012-09-21 09:40:25Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -23,8 +23,8 @@ LIBRARIES = SyntaxVBoxIncludeR3 SyntaxVBoxIncludeR0 SyntaxVBoxIncludeRC
 
 # Omit headers that are using C++ features and upsets gcc.
 cpp_features_hdrs := \
-	VBox/vmm/hwaccm.h \
-	VBox/vmm/hwacc_vmx.h \
+	VBox/vmm/hm.h \
+	VBox/vmm/hm_vmx.h \
 	VBox/HostServices/GuestControlSvc.h \
 	VBox/VBoxCrHgsmi.h \
 	VBox/VBoxUhgsmi.h

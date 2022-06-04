@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 42833 2012-08-15 23:28:35Z vboxsync $ */
+/* $Id: DBGF.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -76,7 +76,7 @@
 # include <VBox/vmm/rem.h>
 #endif
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/hwaccm.h>
+#include <VBox/vmm/hm.h>
 #include "DBGFInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/err.h>
@@ -252,7 +252,7 @@ bool dbgfR3WaitForAttach(PVM pVM, DBGFEVENTTYPE enmEvent)
 # if !defined(DEBUG) || defined(DEBUG_sandervl) || defined(DEBUG_frank) || defined(IEM_VERIFICATION_MODE)
     int cWait = 10;
 # else
-    int cWait = HWACCMIsEnabled(pVM)
+    int cWait = HMIsEnabled(pVM)
              && (   enmEvent == DBGFEVENT_ASSERTION_HYPER
                  || enmEvent == DBGFEVENT_FATAL_ERROR)
              && !RTEnvExist("VBOX_DBGF_WAIT_FOR_ATTACH")

@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PGMAll.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -33,8 +33,8 @@
 # include <VBox/vmm/rem.h>
 #endif
 #include <VBox/vmm/em.h>
-#include <VBox/vmm/hwaccm.h>
-#include <VBox/vmm/hwacc_vmx.h>
+#include <VBox/vmm/hm.h>
+#include <VBox/vmm/hm_vmx.h>
 #include "PGMInternal.h"
 #include <VBox/vmm/vm.h>
 #include "PGMInline.h"
@@ -957,7 +957,7 @@ int pgmShwSyncPaePDPtr(PVMCPU pVCpu, RTGCPTR GCPtr, X86PGPAEUINT uGstPdpe, PX86P
                     /* PD not present; guest must reload CR3 to change it.
                      * No need to monitor anything in this case.
                      */
-                    Assert(!HWACCMIsEnabled(pVM));
+                    Assert(!HMIsEnabled(pVM));
 
                     GCPdPt  = uGstPdpe & X86_PDPE_PG_MASK;
                     enmKind = PGMPOOLKIND_PAE_PD_PHYS;

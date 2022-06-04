@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -3019,7 +3019,7 @@ DECLINLINE(bool) intnetR0NetworkIsContextOk(PINTNETNETWORK pNetwork, PINTNETIF p
     if ((fTrunkDst & pTrunk->fNoPreemptDsts) == fTrunkDst)
         return true;
 
-    /* ASSUMES: That a preemption test detects HWACCM contexts. (Will work on
+    /* ASSUMES: That a preemption test detects HM contexts. (Will work on
                 non-preemptive systems as well.) */
     if (RTThreadPreemptIsEnabled(NIL_RTTHREAD))
         return true;
@@ -3043,7 +3043,7 @@ DECLINLINE(bool) intnetR0NetworkIsContextOkForBroadcast(PINTNETNETWORK pNetwork,
     if (fSrc)
         return true;
 
-    /* ASSUMES: That a preemption test detects HWACCM contexts. (Will work on
+    /* ASSUMES: That a preemption test detects HM contexts. (Will work on
                 non-preemptive systems as well.) */
     if (RTThreadPreemptIsEnabled(NIL_RTTHREAD))
         return true;

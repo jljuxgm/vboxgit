@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 42222 2012-07-19 09:00:16Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -27,7 +27,7 @@
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmm.h>
 #include <VBox/vmm/patm.h>
-#include <VBox/vmm/hwaccm.h>
+#include <VBox/vmm/hm.h>
 
 #include <VBox/log.h>
 #include <VBox/err.h>
@@ -373,7 +373,7 @@ static DECLCALLBACK(bool) pdmR0DevHlp_CanEmulateIoBlock(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     LogFlow(("pdmR0DevHlp_GetVM: caller='%p'/%d\n", pDevIns, pDevIns->iInstance));
-    return HWACCMCanEmulateIoBlock(VMMGetCpu(pDevIns->Internal.s.pVMR0));
+    return HMCanEmulateIoBlock(VMMGetCpu(pDevIns->Internal.s.pVMR0));
 }
 
 

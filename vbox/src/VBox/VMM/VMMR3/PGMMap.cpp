@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PGMMap.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -511,7 +511,7 @@ VMMR3DECL(int) PGMR3MappingsFix(PVM pVM, RTGCPTR GCPtrBase, uint32_t cb)
      */
     if (!pgmMapAreMappingsEnabled(pVM))
     {
-        Assert(HWACCMIsEnabled(pVM));
+        Assert(HMIsEnabled(pVM));
         return VINF_SUCCESS;
     }
 
@@ -673,7 +673,7 @@ int pgmR3MappingsFixInternal(PVM pVM, RTGCPTR GCPtrBase, uint32_t cb)
 
 
 /**
- * Interface for disabling the guest mappings when switching to HWACCM mode
+ * Interface for disabling the guest mappings when switching to HM mode
  * during VM creation and VM reset.
  *
  * (This doesn't touch the intermediate table!)

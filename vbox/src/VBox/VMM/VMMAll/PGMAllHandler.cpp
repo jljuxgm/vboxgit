@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -436,7 +436,7 @@ void pgmHandlerPhysicalResetAliasedPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys
     if (fFlushTLBs && rc != VINF_PGM_SYNC_CR3)
         PGM_INVL_VCPU_TLBS(VMMGetCpu0(pVM));
 # else
-    HWACCMFlushTLBOnAllVCpus(pVM);
+    HMFlushTLBOnAllVCpus(pVM);
 # endif
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 42780 2012-08-11 22:48:18Z vboxsync $ */
+/* $Id: EMAll.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -33,7 +33,7 @@
 #include "EMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/vmm.h>
-#include <VBox/vmm/hwaccm.h>
+#include <VBox/vmm/hm.h>
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/pdmapi.h>
 #include <VBox/param.h>
@@ -377,9 +377,9 @@ static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_
                      */
                     if (rc == VERR_PAGE_TABLE_NOT_PRESENT || rc == VERR_PAGE_NOT_PRESENT)
                     {
-                        HWACCMInvalidatePage(pVCpu, uSrcAddr);
+                        HMInvalidatePage(pVCpu, uSrcAddr);
                         if (((uSrcAddr + cbToRead - 1) >> PAGE_SHIFT) !=  (uSrcAddr >> PAGE_SHIFT))
-                            HWACCMInvalidatePage(pVCpu, uSrcAddr + cbToRead - 1);
+                            HMInvalidatePage(pVCpu, uSrcAddr + cbToRead - 1);
                     }
 #endif
                 }
@@ -2925,7 +2925,7 @@ static int emInterpretCmpXchg8b(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMC
 }
 
 
-#ifdef IN_RC /** @todo test+enable for HWACCM as well. */
+#ifdef IN_RC /** @todo test+enable for HM as well. */
 /**
  * [LOCK] XADD emulation.
  */

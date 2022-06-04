@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: IOM.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -52,7 +52,7 @@
  * execution.
  *
  *
- * @section sec_iom_hwaccm     Hardware Assisted Virtualization Mode
+ * @section sec_iom_hm     Hardware Assisted Virtualization Mode
  *
  * When running in hardware assisted virtualization mode we'll be doing much the
  * same things as in raw-mode. The main difference is that we're running in the

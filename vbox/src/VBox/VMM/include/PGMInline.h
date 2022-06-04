@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 43303 2012-09-11 23:55:10Z vboxsync $ */
+/* $Id: PGMInline.h 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -31,7 +31,7 @@
 #include <VBox/vmm/dbgf.h>
 #include <VBox/log.h>
 #include <VBox/vmm/gmm.h>
-#include <VBox/vmm/hwaccm.h>
+#include <VBox/vmm/hm.h>
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/avl.h>

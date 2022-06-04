@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: log-vbox.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -253,7 +253,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
     ASSERT_LOG_GROUP(EM);
     ASSERT_LOG_GROUP(GUI);
     ASSERT_LOG_GROUP(HGCM);
-    ASSERT_LOG_GROUP(HWACCM);
+    ASSERT_LOG_GROUP(HM);
     ASSERT_LOG_GROUP(IOM);
     ASSERT_LOG_GROUP(MAIN);
     ASSERT_LOG_GROUP(MM);

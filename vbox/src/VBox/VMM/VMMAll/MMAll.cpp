@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: MMAll.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -639,7 +639,7 @@ const char *mmGetTagName(MMTAG enmTag)
 
         TAG2STR(VMM);
 
-        TAG2STR(HWACCM);
+        TAG2STR(HM);
 
         #undef TAG2STR
 

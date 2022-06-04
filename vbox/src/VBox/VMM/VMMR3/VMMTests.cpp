@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 41985 2012-07-02 15:00:27Z vboxsync $ */
+/* $Id: VMMTests.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -33,7 +33,7 @@
 #include <VBox/vmm/vm.h>
 #include <VBox/err.h>
 #include <VBox/param.h>
-#include <VBox/vmm/hwaccm.h>
+#include <VBox/vmm/hm.h>
 
 #include <iprt/assert.h>
 #include <iprt/asm.h>
@@ -476,7 +476,7 @@ VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM)
     RTGCPHYS CR3Phys = 0x0; /* fake address */
     PVMCPU   pVCpu = &pVM->aCpus[0];
 
-    if (!HWACCMR3IsAllowed(pVM))
+    if (!HMR3IsAllowed(pVM))
     {
         RTPrintf("VMM: Hardware accelerated test not available!\n");
         return VERR_ACCESS_DENIED;
@@ -541,7 +541,7 @@ VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM)
         {
             CPUMSetHyperState(pVCpu, pVM->vmm.s.pfnCallTrampolineRC, pVCpu->vmm.s.pbEMTStackBottomRC, 0, 0);
             CPUMPushHyper(pVCpu, 0);
-            CPUMPushHyper(pVCpu, VMMGC_DO_TESTCASE_HWACCM_NOP);
+            CPUMPushHyper(pVCpu, VMMGC_DO_TESTCASE_HM_NOP);
             CPUMPushHyper(pVCpu, pVM->pVMRC);
             CPUMPushHyper(pVCpu, 3 * sizeof(RTRCPTR));    /* stack frame size */
             CPUMPushHyper(pVCpu, RCPtrEP);                /* what to call */

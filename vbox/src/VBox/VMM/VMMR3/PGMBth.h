@@ -1,4 +1,4 @@
-/* $Id: PGMBth.h 41801 2012-06-17 16:46:51Z vboxsync $ */
+/* $Id: PGMBth.h 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow+Guest Paging Template.
  */
@@ -131,7 +131,7 @@ PGM_BTH_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
 
     PVM pVM = pVCpu->pVMR3;
 
-    Assert(HWACCMIsNestedPagingActive(pVM) == pVM->pgm.s.fNestedPaging);
+    Assert(HMIsNestedPagingActive(pVM) == pVM->pgm.s.fNestedPaging);
     Assert(!pVM->pgm.s.fNestedPaging);
 
     pgmLock(pVM);

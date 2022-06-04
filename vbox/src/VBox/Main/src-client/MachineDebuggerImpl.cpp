@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 39712 2012-01-06 17:59:16Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation.
  */
@@ -28,7 +28,7 @@
 #include <VBox/vmm/csam.h>
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/tm.h>
-#include <VBox/vmm/hwaccm.h>
+#include <VBox/vmm/hm.h>
 #include <VBox/err.h>
 #include <iprt/cpp/utils.h>
 
@@ -606,7 +606,7 @@ STDMETHODIMP MachineDebugger::COMGETTER(HWVirtExEnabled) (BOOL *aEnabled)
     Console::SafeVMPtrQuiet pVM (mParent);
 
     if (pVM.isOk())
-        *aEnabled = HWACCMIsEnabled (pVM.raw());
+        *aEnabled = HMIsEnabled (pVM.raw());
     else
         *aEnabled = false;
 
@@ -631,7 +631,7 @@ STDMETHODIMP MachineDebugger::COMGETTER(HWVirtExNestedPagingEnabled) (BOOL *aEna
     Console::SafeVMPtrQuiet pVM (mParent);
 
     if (pVM.isOk())
-        *aEnabled = HWACCMR3IsNestedPagingActive (pVM.raw());
+        *aEnabled = HMR3IsNestedPagingActive (pVM.raw());
     else
         *aEnabled = false;
 
@@ -656,7 +656,7 @@ STDMETHODIMP MachineDebugger::COMGETTER(HWVirtExVPIDEnabled) (BOOL *aEnabled)
     Console::SafeVMPtrQuiet pVM (mParent);
 
     if (pVM.isOk())
-        *aEnabled = HWACCMR3IsVPIDActive (pVM.raw());
+        *aEnabled = HMR3IsVPIDActive (pVM.raw());
     else
         *aEnabled = false;
 
@@ -1079,11 +1079,11 @@ STDMETHODIMP MachineDebugger::InjectNMI()
         hrc = ptrVM.rc();
         if (SUCCEEDED(hrc))
         {
-            int vrc = HWACCMR3InjectNMI(ptrVM);
+            int vrc = HMR3InjectNMI(ptrVM);
             if (RT_SUCCESS(vrc))
                 hrc = S_OK;
             else
-                hrc = setError(E_FAIL, tr("HWACCMR3InjectNMI failed with %Rrc"), vrc);
+                hrc = setError(E_FAIL, tr("HMR3InjectNMI failed with %Rrc"), vrc);
         }
     }
     return hrc;

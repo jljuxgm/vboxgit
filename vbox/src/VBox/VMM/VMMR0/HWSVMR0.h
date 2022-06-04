@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 43307 2012-09-12 11:13:58Z vboxsync $ */
+/* $Id: HWSVMR0.h 43387 2012-09-21 09:40:25Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -23,9 +23,9 @@
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/stam.h>
 #include <VBox/dis.h>
-#include <VBox/vmm/hwaccm.h>
+#include <VBox/vmm/hm.h>
 #include <VBox/vmm/pgm.h>
-#include <VBox/vmm/hwacc_svm.h>
+#include <VBox/vmm/hm_svm.h>
 
 RT_C_DECLS_BEGIN
 
