@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43847 2012-11-09 11:50:23Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43853 2012-11-09 16:03:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -256,19 +256,6 @@ bool UIGChooserItemGroup::isContainsLockedMachine()
             return true;
     /* Found nothing? */
     return false;
-}
-
-void UIGChooserItemGroup::sltHandleGeometryChange()
-{
-    /* What is the new geometry? */
-    QRectF newGeometry = geometry();
-
-    /* Should we update visible name? */
-    if (previousGeometry().width() != newGeometry.width())
-        updateVisibleName();
-
-    /* Remember the new geometry: */
-    setPreviousGeometry(newGeometry);
 }
 
 void UIGChooserItemGroup::sltNameEditingFinished()
@@ -1375,6 +1362,22 @@ void UIGChooserItemGroup::resetDragToken()
 QMimeData* UIGChooserItemGroup::createMimeData()
 {
     return new UIGChooserItemMimeData(this);
+}
+
+void UIGChooserItemGroup::resizeEvent(QGraphicsSceneResizeEvent *pEvent)
+{
+    /* Call to base-class: */
+    UIGChooserItem::resizeEvent(pEvent);
+
+    /* What is the new geometry? */
+    QRectF newGeometry = geometry();
+
+    /* Should we update visible name? */
+    if (previousGeometry().width() != newGeometry.width())
+        updateVisibleName();
+
+    /* Remember the new geometry: */
+    setPreviousGeometry(newGeometry);
 }
 
 void UIGChooserItemGroup::hoverMoveEvent(QGraphicsSceneHoverEvent *pEvent)
