@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 45463 2013-04-10 16:14:53Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 45700 2013-04-24 14:17:15Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -648,24 +648,31 @@ static int VbgdDarwinErr2DarwinErr(int rc)
  *
  */
 
+/**
+ * Just a plug
+ */
 static void
 interruptHandler(OSObject *pOwner, IOInterruptEventSource *pSrc, int cInts)
 {
-    if (!pSrc)
-        return;
-
-    bool fTaken = VBoxGuestCommonISR(&g_DevExt);
-    if (!fTaken)
-        printf("VBoxGuestCommonISR error\n");
+    NOREF(pOwner);
+    NOREF(pSrc);
+    NOREF(cInts);
 }
 
+/**
+ * Callback triggered when interrupt occurs.
+ */
 static bool
 checkForInterrupt(OSObject *pOwner, IOFilterInterruptEventSource *pSrc)
 {
     if (!pSrc)
         return false;
 
-    return true;
+    bool fTaken = VBoxGuestCommonISR(&g_DevExt);
+    if (!fTaken)
+        printf("VBoxGuestCommonISR error\n");
+
+    return fTaken;
 }
 
 bool
