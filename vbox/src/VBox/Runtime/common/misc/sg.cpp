@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 44241 2013-01-07 20:17:19Z vboxsync $ */
+/* $Id: sg.cpp 44244 2013-01-07 20:24:45Z vboxsync $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
@@ -442,7 +442,7 @@ RTDECL(bool) RTSgBufIsZero(PRTSGBUF pSgBuf, size_t cbCheck)
         if (   !(cbThisCheck % 4)
             && (cbThisCheck * 8 <= UINT32_MAX))
         {
-            if (ASMBitFirstSet((volatile void *)pvBuf, cbThisCheck * 8) != -1)
+            if (ASMBitFirstSet((volatile void *)pvBuf, (uint32_t)cbThisCheck * 8) != -1)
             {
                 fIsZero = false;
                 break;
