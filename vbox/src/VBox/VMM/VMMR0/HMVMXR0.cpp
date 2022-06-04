@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46286 2013-05-27 13:44:19Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46289 2013-05-27 14:02:52Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2326,7 +2326,7 @@ DECLINLINE(int) hmR0VmxSaveHostMsrs(PVM pVM, PVMCPU pVCpu)
 
 #if HC_ARCH_BITS == 64
         /* Paranoia. 64-bit code requires these bits to be set always. */
-        Assert(u64HostEfer & (MSR_K6_EFER_LMA | MSR_K6_EFER_LME) == (MSR_K6_EFER_LMA | MSR_K6_EFER_LME));
+        Assert((u64HostEfer & (MSR_K6_EFER_LMA | MSR_K6_EFER_LME)) == (MSR_K6_EFER_LMA | MSR_K6_EFER_LME));
         /* All our supported 64-bit host platforms must have NXE bit set. Otherwise we can change the below code to save EFER. */
         Assert(u64HostEfer & (MSR_K6_EFER_NXE));
 
