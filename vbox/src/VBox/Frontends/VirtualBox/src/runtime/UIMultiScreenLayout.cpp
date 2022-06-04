@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 45333 2013-04-04 09:59:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -225,7 +225,7 @@ void UIMultiScreenLayout::sltScreenLayoutChanged(QAction *pAction)
             if (m_pMachineLogic->visualStateType() == UIVisualStateType_Seamless)
                 msgCenter().cannotSwitchScreenInSeamless((((usedBits + 7) / 8 + _1M - 1) / _1M) * _1M);
             else
-                fSuccess = msgCenter().cannotSwitchScreenInFullscreen((((usedBits + 7) / 8 + _1M - 1) / _1M) * _1M) != AlertButton_Cancel;
+                fSuccess = msgCenter().cannotSwitchScreenInFullscreen((((usedBits + 7) / 8 + _1M - 1) / _1M) * _1M);
         }
     }
     /* Make sure memory requirements matched: */

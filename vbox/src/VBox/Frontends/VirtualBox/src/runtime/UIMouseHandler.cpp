@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 45209 2013-03-27 13:24:20Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 45333 2013-04-04 09:59:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -876,9 +876,9 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
                     /* Temporarily disable auto capture that will take place after this dialog is dismissed because
                      * the capture state is to be defined by the dialog result itself: */
                     uisession()->setAutoCaptureDisabled(true);
-                    bool autoConfirmed = false;
-                    bool ok = msgCenter().confirmInputCapture(&autoConfirmed);
-                    if (autoConfirmed)
+                    bool fIsAutoConfirmed = false;
+                    bool ok = msgCenter().confirmInputCapture(fIsAutoConfirmed);
+                    if (fIsAutoConfirmed)
                         uisession()->setAutoCaptureDisabled(false);
                     /* Otherwise, the disable flag will be reset in the next console view's focus in event (since
                      * may happen asynchronously on some platforms, after we return from this code): */
@@ -888,7 +888,7 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
                         /* Make sure that pending FocusOut events from the previous message box are handled,
                          * otherwise the mouse is immediately ungrabbed again: */
                         qApp->processEvents();
-#endif
+#endif /* Q_WS_X11 */
                         machineLogic()->keyboardHandler()->captureKeyboard(uScreenId);
                         captureMouse(uScreenId);
                     }

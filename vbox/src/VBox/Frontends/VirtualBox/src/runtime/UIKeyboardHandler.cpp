@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 44797 2013-02-21 20:40:14Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 45333 2013-04-04 09:59:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1284,7 +1284,7 @@ void UIKeyboardHandler::keyEventHandleHostComboRelease(ulong uScreenId)
                      * defined by the dialog result itself: */
                     setAutoCaptureDisabled(true);
                     bool fIsAutoConfirmed = false;
-                    ok = msgCenter().confirmInputCapture(&fIsAutoConfirmed);
+                    ok = msgCenter().confirmInputCapture(fIsAutoConfirmed);
                     if (fIsAutoConfirmed)
                         setAutoCaptureDisabled(false);
                     /* Otherwise, the disable flag will be reset in the next
