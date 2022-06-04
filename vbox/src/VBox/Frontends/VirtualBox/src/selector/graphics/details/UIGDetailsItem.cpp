@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 42608 2012-08-05 21:52:41Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 42689 2012-08-08 18:14:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -84,16 +84,6 @@ void UIGDetailsItem::updateSizeHint()
 {
     updateGeometry();
 }
-
-#if 0
-void UIGDetailsItem::hoverEnterEvent(QGraphicsSceneHoverEvent*)
-{
-}
-
-void UIGDetailsItem::hoverLeaveEvent(QGraphicsSceneHoverEvent*)
-{
-}
-#endif
 
 /* static */
 void UIGDetailsItem::configurePainterShape(QPainter *pPainter,
