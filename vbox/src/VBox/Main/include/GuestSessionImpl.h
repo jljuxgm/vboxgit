@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 45415 2013-04-08 21:40:42Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 45780 2013-04-26 15:19:33Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -370,7 +370,7 @@ public:
     int                     startTaskAsync(const Utf8Str &strTaskDesc, GuestSessionTask *pTask, ComObjPtr<Progress> &pProgress);
     int                     queryInfo(void);
     int                     waitFor(uint32_t fWaitFlags, ULONG uTimeoutMS, GuestSessionWaitResult_T &waitResult, int *pGuestRc);
-    int                     waitForStateChange(uint32_t fWaitFlags, uint32_t uTimeoutMS, GuestSessionStatus_T *pSessionStatus, int *pGuestRc);
+    int                     waitForStatusChange(GuestWaitEvent *pEvent, uint32_t fWaitFlags, uint32_t uTimeoutMS, GuestSessionStatus_T *pSessionStatus, int *pGuestRc);
     /** @}  */
 
 private:
