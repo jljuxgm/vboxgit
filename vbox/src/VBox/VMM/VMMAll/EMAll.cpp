@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 42373 2012-07-25 07:18:33Z vboxsync $ */
+/* $Id: EMAll.cpp 42374 2012-07-25 07:21:57Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -855,6 +855,8 @@ VMMDECL(int) EMInterpretMonitor(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
 }
 
 
+/* VT-x only: */
+
 /**
  * Interpret INVLPG.
  *
@@ -885,8 +887,6 @@ VMMDECL(VBOXSTRICTRC) EMInterpretInvlpg(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
     return rc;
 }
 
-
-/* VT-x only: */
 
 /**
  * Update CRx.
