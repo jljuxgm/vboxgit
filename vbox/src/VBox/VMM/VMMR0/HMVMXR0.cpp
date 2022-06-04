@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45904 2013-05-06 11:53:53Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45905 2013-05-06 12:02:23Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -979,8 +979,7 @@ VMMR0DECL(int) VMXR0DisableCpu(PHMGLOBLCPUINFO pCpu, void *pvCpuPage, RTHCPHYS H
     NOREF(pvCpuPage);
     NOREF(HCPhysCpuPage);
 
-    hmR0VmxLeaveRootMode();
-    return VINF_SUCCESS;
+    return hmR0VmxLeaveRootMode();
 }
 
 
