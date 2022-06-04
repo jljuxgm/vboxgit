@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 42407 2012-07-26 11:41:35Z vboxsync $ */
+/* $Id: SELMAll.cpp 42420 2012-07-26 17:33:01Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -103,10 +103,10 @@ VMMDECL(RTGCPTR) SELMToFlat(PVM pVM, DISSELREG SelReg, PCPUMCTXCORE pCtxCore, RT
         ||  CPUMIsGuestInRealMode(pVCpu))
     {
         RTGCUINTPTR uFlat = (RTGCUINTPTR)Addr & 0xffff;
-        if (CPUMAreHiddenSelRegsValid(pVCpu))
+        if (CPUMSELREG_ARE_HIDDEN_PARTS_VALID(pVCpu, pSReg))
             uFlat += pSReg->u64Base;
         else
-            uFlat += ((RTGCUINTPTR)pSReg->Sel << 4);
+            uFlat += (RTGCUINTPTR)pSReg->Sel << 4;
         return (RTGCPTR)uFlat;
     }
 

@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 42407 2012-07-26 11:41:35Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 42420 2012-07-26 17:33:01Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2529,22 +2529,6 @@ VMMDECL(void) CPUMDeactivateHyperDebugState(PVMCPU pVCpu)
 {
     pVCpu->cpum.s.fUseFlags &= ~CPUM_USE_DEBUG_REGS_HYPER;
 }
-
-/**
- * Checks if the hidden selector registers are valid for the specified CPU.
- *
- * @returns true if they are.
- * @returns false if not.
- * @param   pVCpu     Pointer to the VM.
- */
-VMMDECL(bool) CPUMAreHiddenSelRegsValid(PVMCPU pVCpu)
-{
-    bool const fRc = !(pVCpu->cpum.s.fChanged & CPUM_CHANGED_HIDDEN_SEL_REGS_INVALID);
-    Assert(fRc || !HWACCMIsEnabled(pVCpu->CTX_SUFF(pVM)));
-    Assert(!pVCpu->cpum.s.fRemEntered);
-    return fRc;
-}
-
 
 
 /**
