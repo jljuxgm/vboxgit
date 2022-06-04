@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: fileio-posix.cpp 44298 2013-01-15 14:54:18Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -707,6 +707,19 @@ RTR3DECL(int) RTFileSetMode(RTFILE hFile, RTFMODE fMode)
         Log(("RTFileSetMode(%RTfile,%RTfmode): returns %Rrc\n", hFile, fMode, rc));
         return rc;
     }
+    return VINF_SUCCESS;
+}
+
+
+RTDECL(int) RTFileSetOwner(RTFILE hFile, uint32_t uid, uint32_t gid)
+{
+    uid_t uidNative = uid != NIL_RTUID ? (uid_t)uid : (uid_t)-1;
+    AssertReturn(uid == uidNative, VERR_INVALID_PARAMETER);
+    gid_t gidNative = gid != NIL_RTGID ? (gid_t)gid : (gid_t)-1;
+    AssertReturn(gid == gidNative, VERR_INVALID_PARAMETER);
+
+    if (fchown(RTFileToNative(hFile), uidNative, gidNative))
+        return RTErrConvertFromErrno(errno);
     return VINF_SUCCESS;
 }
 
