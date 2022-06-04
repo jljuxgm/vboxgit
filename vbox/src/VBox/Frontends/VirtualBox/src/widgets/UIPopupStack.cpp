@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 47041 2013-07-08 13:59:23Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 47209 2013-07-17 11:58:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -98,6 +98,7 @@ void UIPopupStack::updatePopupPane(const QString &strPopupPaneID,
 
     /* Get existing popup-pane: */
     UIPopupPane *pPopupPane = m_panes[strPopupPaneID];
+
     /* Update message and details: */
     pPopupPane->setMessage(strMessage);
     pPopupPane->setDetails(strDetails);
@@ -110,6 +111,22 @@ void UIPopupStack::updatePopupPane(const QString &strPopupPaneID,
         /* Adjust geometry: */
         sltAdjustGeometry();
     }
+}
+
+void UIPopupStack::recallPopupPane(const QString &strPopupPaneID)
+{
+    /* Make sure there is such popup-pane already: */
+    if (!m_panes.contains(strPopupPaneID))
+    {
+        AssertMsgFailed(("Popup-pane doesn't exists!"));
+        return;
+    }
+
+    /* Get existing popup-pane: */
+    UIPopupPane *pPopupPane = m_panes[strPopupPaneID];
+
+    /* Recall popup-pane: */
+    pPopupPane->recall();
 }
 
 void UIPopupStack::setParent(QWidget *pParent)
