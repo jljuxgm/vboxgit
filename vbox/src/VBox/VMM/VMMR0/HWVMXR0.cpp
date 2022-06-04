@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44657 2013-02-12 13:22:13Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 44724 2013-02-15 18:28:25Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -1121,6 +1121,8 @@ static int hmR0VmxCheckPendingInterrupt(PVM pVM, PVMCPU pVCpu, CPUMCTX *pCtx)
                 case X86_XCPT_PF:
                 case X86_XCPT_AC:
                 {
+                    /** @todo r=ramshankar: setting this bit would blow up for real-mode guests with
+                     *        unrestricted guest execution. */
                     /* Valid error codes. */
                     intInfo |= VMX_EXIT_INTERRUPTION_INFO_ERROR_CODE_VALID;
                     break;
