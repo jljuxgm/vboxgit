@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: tstVMStruct.h 44508 2013-02-01 12:46:33Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -405,8 +405,6 @@
     GEN_CHECK_OFF_DOT(PDM, aPciBuses[0].pfnSetIrqR3);
     GEN_CHECK_OFF_DOT(PDM, aPciBuses[0].pfnRegisterR3);
     GEN_CHECK_OFF_DOT(PDM, aPciBuses[0].pfnIORegionRegisterR3);
-    GEN_CHECK_OFF_DOT(PDM, aPciBuses[0].pfnSaveExecR3);
-    GEN_CHECK_OFF_DOT(PDM, aPciBuses[0].pfnLoadExecR3);
     GEN_CHECK_OFF_DOT(PDM, aPciBuses[0].pfnFakePCIBIOSR3);
     GEN_CHECK_OFF_DOT(PDM, aPciBuses[0].pDevInsR0);
     GEN_CHECK_OFF_DOT(PDM, aPciBuses[0].pfnSetIrqR0);
