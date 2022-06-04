@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 47660 2013-08-12 00:37:34Z vboxsync $ */
+/* $Id: DBGFBp.cpp 47714 2013-08-13 23:43:24Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -565,7 +565,7 @@ VMMR3DECL(int) DBGFR3BpSetReg(PUVM pUVM, PCDBGFADDRESS pAddress, uint64_t iHitTr
 DECLCALLBACK(VBOXSTRICTRC) dbgfR3BpRegRecalcOnCpu(PVM pVM, PVMCPU pVCpu, void *pvUser)
 {
     NOREF(pVM); NOREF(pvUser);
-    return CPUMRecalcHyperDRx(pVCpu, UINT8_MAX);
+    return CPUMRecalcHyperDRx(pVCpu, UINT8_MAX, false);
 }
 
 

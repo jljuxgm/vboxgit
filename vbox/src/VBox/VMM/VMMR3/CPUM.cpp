@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 47700 2013-08-13 15:15:59Z vboxsync $ */
+/* $Id: CPUM.cpp 47714 2013-08-13 23:43:24Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1412,7 +1412,7 @@ VMMR3DECL(void) CPUMR3Relocate(PVM pVM)
 
     /* Recheck the guest DRx values in raw-mode. */
     for (VMCPUID iCpu = 0; iCpu < pVM->cCpus; iCpu++)
-        CPUMRecalcHyperDRx(&pVM->aCpus[iCpu], UINT8_MAX);
+        CPUMRecalcHyperDRx(&pVM->aCpus[iCpu], UINT8_MAX, false);
 }
 
 
