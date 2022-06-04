@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42572 2012-08-03 10:40:09Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42587 2012-08-03 19:09:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1169,8 +1169,8 @@ int UIGChooserModel::positionFromDefinitions(UIGChooserItem *pParentItem, UIGCho
             strDefinitionTemplateFull = QString("^g(\\S)*=%1$").arg(strName);
             break;
         case UIGChooserItemType_Machine:
-            strDefinitionTemplateShort = QString("m=");
-            strDefinitionTemplateFull = QString("m=%1").arg(strName);
+            strDefinitionTemplateShort = QString("^m=");
+            strDefinitionTemplateFull = QString("^m=%1$").arg(strName);
             break;
         default: return -1;
     }
