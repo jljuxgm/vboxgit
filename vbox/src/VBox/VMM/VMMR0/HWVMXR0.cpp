@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44259 2013-01-09 11:02:53Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 44262 2013-01-09 13:40:33Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -4455,7 +4455,7 @@ ResumeExecution:
     }
 
     /* Note: We'll get a #GP if the IO instruction isn't allowed (IOPL or TSS bitmap); no need to double check. */
-    case VMX_EXIT_PORT_IO:              /* 30 I/O instruction. */
+    case VMX_EXIT_IO_INSTR:              /* 30 I/O instruction. */
     {
         STAM_PROFILE_ADV_START(&pVCpu->hm.s.StatExit2Sub1, y1);
         uint32_t uPort;
@@ -4787,7 +4787,7 @@ ResumeExecution:
     case VMX_EXIT_INVLPG:               /* 14 Guest software attempted to execute INVLPG. */
     case VMX_EXIT_CRX_MOVE:             /* 28 Control-register accesses. */
     case VMX_EXIT_DRX_MOVE:             /* 29 Debug-register accesses. */
-    case VMX_EXIT_PORT_IO:              /* 30 I/O instruction. */
+    case VMX_EXIT_IO_INSTR:             /* 30 I/O instruction. */
     case VMX_EXIT_RDPMC:                /* 15 Guest software attempted to execute RDPMC. */
     case VMX_EXIT_RDTSCP:               /* 51 Guest software attempted to execute RDTSCP. */
         /* already handled above */
