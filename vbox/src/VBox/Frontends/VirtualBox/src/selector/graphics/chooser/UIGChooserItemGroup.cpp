@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43604 2012-10-10 16:19:53Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43615 2012-10-11 11:34:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -776,6 +776,25 @@ UIGChooserItemMachine* UIGChooserItemGroup::firstMachineItem()
         return items(UIGChooserItemType_Group).first()->firstMachineItem();
     /* Found nothing? */
     return 0;
+}
+
+void UIGChooserItemGroup::sortItems()
+{
+    /* Sort group-items: */
+    QMap<QString, UIGChooserItem*> sorter;
+    foreach (UIGChooserItem *pItem, items(UIGChooserItemType_Group))
+        sorter.insert(pItem->name().toLower(), pItem);
+    setItems(sorter.values(), UIGChooserItemType_Group);
+
+    /* Sort machine-items: */
+    sorter.clear();
+    foreach (UIGChooserItem *pItem, items(UIGChooserItemType_Machine))
+        sorter.insert(pItem->name().toLower(), pItem);
+    setItems(sorter.values(), UIGChooserItemType_Machine);
+
+    /* Update model: */
+    model()->updateNavigation();
+    model()->updateLayout();
 }
 
 void UIGChooserItemGroup::updateLayout()
