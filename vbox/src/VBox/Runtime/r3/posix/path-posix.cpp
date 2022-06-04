@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
+/* $Id: path-posix.cpp 42229 2012-07-19 14:18:00Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX, Part 1.
  */
@@ -79,7 +79,7 @@ RTDECL(int) RTPathReal(const char *pszPath, char *pszRealPath, size_t cchRealPat
     }
 
     LogFlow(("RTPathReal(%p:{%s}, %p:{%s}, %u): returns %Rrc\n", pszPath, pszPath,
-             pszRealPath, RT_SUCCESS(rc) ? pszRealPath : "<failed>",  cchRealPath));
+             pszRealPath, RT_SUCCESS(rc) ? pszRealPath : "<failed>",  cchRealPath, rc));
     return rc;
 }
 
