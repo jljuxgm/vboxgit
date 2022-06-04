@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 44570 2013-02-06 14:04:14Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 47335 2013-07-23 10:53:37Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -151,8 +151,7 @@ int VBoxServiceReadPropUInt32(uint32_t u32ClientId, const char *pszPropName,
 /**
  * Reads a guest property from the host side.
  *
- * @returns VBox status code, fully bitched.
- *
+ * @returns IPRT status code, fully bitched.
  * @param   u32ClientId         The HGCM client ID for the guest property session.
  * @param   pszPropName         The property name.
  * @param   fReadOnly           Whether or not this property needs to be read only
