@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 42125 2012-07-12 10:39:18Z vboxsync $ */
+/* $Id: MediumImpl.h 42538 2012-08-02 13:28:40Z vboxsync $ */
 
 /** @file
  *
@@ -153,6 +153,8 @@ public:
     STDMETHOD(MergeTo)(IMedium *aTarget, IProgress **aProgress);
     STDMETHOD(CloneTo)(IMedium *aTarget, ULONG aVariant,
                         IMedium *aParent, IProgress **aProgress);
+    STDMETHOD(CloneToBase)(IMedium *aTarget, ULONG aVariant,
+                           IProgress **aProgress);
     STDMETHOD(Compact)(IProgress **aProgress);
     STDMETHOD(Resize)(LONG64 aLogicalSize, IProgress **aProgress);
     STDMETHOD(Reset)(IProgress **aProgress);
@@ -182,7 +184,7 @@ public:
     bool isInRegistry(const Guid& id);
     bool getFirstRegistryMachineId(Guid &uuid) const;
     void markRegistriesModified();
-    
+
     HRESULT setPropertyDirect(const Utf8Str &aName, const Utf8Str &aValue);
 
     HRESULT addBackReference(const Guid &aMachineId,

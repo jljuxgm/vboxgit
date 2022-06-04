@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42489 2012-07-31 19:02:49Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42538 2012-08-02 13:28:40Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4290,6 +4290,18 @@ STDMETHODIMP Machine::SetAutoDiscardForDevice(IN_BSTR aControllerName, LONG aCon
     return S_OK;
 }
 
+STDMETHODIMP Machine::SetNoBandwidthGroupForDevice(IN_BSTR aControllerName, LONG aControllerPort,
+                                                   LONG aDevice)
+{
+    int rc = S_OK;
+    LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%d aDevice=%d\n",
+                     aControllerName, aControllerPort, aDevice));
+
+    rc = SetBandwidthGroupForDevice(aControllerName, aControllerPort, aDevice, NULL);
+
+    return rc;
+}
+
 STDMETHODIMP Machine::SetBandwidthGroupForDevice(IN_BSTR aControllerName, LONG aControllerPort,
                                                  LONG aDevice, IBandwidthGroup *aBandwidthGroup)
 {
@@ -4352,6 +4364,23 @@ STDMETHODIMP Machine::SetBandwidthGroupForDevice(IN_BSTR aControllerName, LONG a
 
     return S_OK;
 }
+
+STDMETHODIMP Machine::AttachDeviceWithoutMedium(IN_BSTR aControllerName,
+                                                LONG    aControllerPort,
+                                                LONG    aDevice,
+                                                DeviceType_T aType)
+{
+     HRESULT rc = S_OK;
+
+     LogFlowThisFunc(("aControllerName=\"%ls\" aControllerPort=%d aDevice=%d aType=%d aMedium=%p\n",
+                      aControllerName, aControllerPort, aDevice, aType));
+
+     rc = AttachDevice(aControllerName, aControllerPort, aDevice, aType, NULL);
+
+     return rc;
+}
+
+
 
 STDMETHODIMP Machine::UnmountMedium(IN_BSTR aControllerName,
                                     LONG    aControllerPort,

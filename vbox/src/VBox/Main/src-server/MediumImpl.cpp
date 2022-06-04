@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 42208 2012-07-18 13:22:38Z vboxsync $ */
+/* $Id: MediumImpl.cpp 42538 2012-08-02 13:28:40Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2642,6 +2642,17 @@ STDMETHODIMP Medium::MergeTo(IMedium *aTarget, IProgress **aProgress)
         pProgress.queryInterfaceTo(aProgress);
 
     return rc;
+}
+
+STDMETHODIMP Medium::CloneToBase(IMedium   *aTarget,
+                                 ULONG     aVariant,
+                                 IProgress **aProgress)
+{
+     int rc = S_OK;
+     CheckComArgNotNull(aTarget);
+     CheckComArgOutPointerValid(aProgress);
+     rc =  CloneTo(aTarget, aVariant, NULL, aProgress);
+     return rc;
 }
 
 STDMETHODIMP Medium::CloneTo(IMedium *aTarget,
