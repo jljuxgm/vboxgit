@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47643 2013-08-09 13:31:13Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47652 2013-08-09 14:56:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6877,8 +6877,7 @@ static int hmR0VmxLoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     AssertLogRelMsgRCReturn(rc, ("hmR0VmxSetupVMRunHandler! rc=%Rrc (pVM=%p pVCpu=%p)\n", rc, pVM, pVCpu), rc);
 
     /* Clear any unused and reserved bits. */
-    pVCpu->hm.s.fContextUseFlags &= ~(  HM_CHANGED_GUEST_CR2
-                                      | HM_CHANGED_GUEST_MSR  /* legacy */);
+    pVCpu->hm.s.fContextUseFlags &= ~HM_CHANGED_GUEST_CR2;
 
     AssertMsg(!pVCpu->hm.s.fContextUseFlags,
              ("Missed updating flags while loading guest state. pVM=%p pVCpu=%p idCpu=%RU32 fContextUseFlags=%#RX32\n",

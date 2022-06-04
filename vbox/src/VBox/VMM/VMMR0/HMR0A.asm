@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 47608 2013-08-08 10:24:29Z vboxsync $
+; $Id: HMR0A.asm 47652 2013-08-09 14:56:17Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
@@ -60,10 +60,8 @@
  %endif
 %endif
 
-%ifndef VBOX_WITH_OLD_VTX_CODE
- %ifdef RT_ARCH_AMD64
-  %define VBOX_SKIP_RESTORE_SEG
- %endif
+%ifdef RT_ARCH_AMD64
+ %define VBOX_SKIP_RESTORE_SEG
 %endif
 
 ;; The offset of the XMM registers in X86FXSTATE.
