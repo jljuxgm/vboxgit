@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44264 2013-01-09 19:03:33Z vboxsync $
+# $Id: Makefile.kmk 44265 2013-01-10 08:01:58Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -126,7 +126,7 @@ VBOX_ADD_BIN.linux += \
 
 VBOX_ADD_STRIP_SBIN += \
 	VBoxService \
-	$(if $(VBOX_WITH_LIGHTDM_GREETER_PACKING),vbox-greeter)
+	$(if $(VBOX_WITH_LIGHTDM_GREETER),vbox-greeter)
 
 VBOX_ADD_STRIP_LIB += \
 	VBoxOGLarrayspu.so \
