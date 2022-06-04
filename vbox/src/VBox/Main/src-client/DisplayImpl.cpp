@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45991 2013-05-11 23:36:34Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 45992 2013-05-12 16:31:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -126,6 +126,10 @@ HRESULT Display::FinalConstruct()
 
 #ifdef VBOX_WITH_HGSMI
     mu32UpdateVBVAFlags = 0;
+#endif
+
+#ifdef VBOX_WITH_VPX
+    mpVideoRecCtx = NULL;
 #endif
 
     return BaseFinalConstruct();
@@ -4407,8 +4411,6 @@ DECLCALLBACK(int) Display::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
             RTStrFree(pszAbsPath);
         }
     }
-    else
-        pDisplay->mpVideoRecCtx = NULL;
 #endif
 
     return VINF_SUCCESS;
