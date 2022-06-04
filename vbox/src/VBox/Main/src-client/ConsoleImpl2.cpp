@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 46876 2013-07-01 10:09:35Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 46877 2013-07-01 10:12:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -865,8 +865,7 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         }
 
         /* Expose CMPXCHG16B. Currently a hack. */
-        if (   osTypeId == "Windows81"
-            || osTypeId == "Windows81_64"
+        if (   osTypeId == "Windows81_64"
             || osTypeId == "Windows2012_64")
         {
             LogRel(("Enabling CMPXCHG16B for Windows 8.1 / 2k12 guests"));
