@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45457 2013-04-10 12:35:04Z vboxsync $ */
+/* $Id: HM.cpp 45474 2013-04-10 20:25:33Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2631,12 +2631,6 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
                 /** @todo Log VM-entry event injection control fields
                  *        VMX_VMCS_CTRL_ENTRY_IRQ_INFO, VMX_VMCS_CTRL_ENTRY_EXCEPTION_ERRCODE
                  *        and VMX_VMCS_CTRL_ENTRY_INSTR_LENGTH from the VMCS. */
-                break;
-
-            case VERR_VMX_UNABLE_TO_RESUME_VM:
-                LogRel(("HM: VERR_VMX_UNABLE_TO_RESUME_VM:\n"));
-                LogRel(("HM: CPU%d instruction error %x\n", i, pVM->aCpus[i].hm.s.vmx.lasterror.u32InstrError));
-                LogRel(("HM: CPU%d exit reason       %x\n", i, pVM->aCpus[i].hm.s.vmx.lasterror.u32ExitReason));
                 break;
 
             case VERR_VMX_INVALID_VMXON_PTR:

@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 44771 2013-02-20 17:45:39Z vboxsync $
+; $Id: HMR0A.asm 45474 2013-04-10 20:25:33Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -566,7 +566,7 @@ BEGINPROC VMXEnable
 
 .good:
     jnz     .the_end
-    mov     eax, VERR_VMX_GENERIC
+    mov     eax, VERR_VMX_VMXON_FAILED
 
 .the_end:
 %ifdef RT_ARCH_AMD64

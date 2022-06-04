@@ -1,4 +1,4 @@
-; $Id: HMRCA.asm 44771 2013-02-20 17:45:39Z vboxsync $
+; $Id: HMRCA.asm 45474 2013-04-10 20:25:33Z vboxsync $
 ;; @file
 ; VMXM - GC vmx helpers
 ;
@@ -112,7 +112,7 @@ BEGINPROC VMXGCStartVM64
 
 .vmxon_success:
     jnz     .vmxon_success2
-    mov     rax, VERR_VMX_GENERIC
+    mov     rax, VERR_VMX_VMXON_FAILED
     jmp     .vmstart64_vmxon_failed
 
 .vmxon_success2:
@@ -124,7 +124,7 @@ BEGINPROC VMXGCStartVM64
 
 .vmptrld_success:
     jnz     .vmptrld_success2
-    mov     rax, VERR_VMX_GENERIC
+    mov     rax, VERR_VMX_VMPTRLD_FAILED
     jmp     .vmstart64_vmxoff_end
 
 .vmptrld_success2:
