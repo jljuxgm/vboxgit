@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 42188 2012-07-17 13:50:51Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2350,7 +2350,7 @@ VMM_INT_DECL(bool) CPUMIsGuestIn64BitCodeSlow(PCPUMCTX pCtx)
 }
 
 
-#ifndef IN_RING0
+#ifdef VBOX_WITH_RAW_MODE_NOT_R0
 /**
  * Updates the EFLAGS while we're in raw-mode.
  *
@@ -2364,7 +2364,7 @@ VMMDECL(void) CPUMRawSetEFlags(PVMCPU pVCpu, uint32_t fEfl)
     else
         PATMRawSetEFlags(pVCpu->CTX_SUFF(pVM), CPUMCTX2CORE(&pVCpu->cpum.s.Guest), fEfl);
 }
-#endif /* !IN_RING0 */
+#endif /* VBOX_WITH_RAW_MODE_NOT_R0 */
 
 
 /**
@@ -2566,7 +2566,7 @@ VMMDECL(uint32_t) CPUMGetGuestCPL(PVMCPU pVCpu)
             else
             {
                 uCpl = (pVCpu->cpum.s.Guest.ss.Sel & X86_SEL_RPL);
-#ifndef IN_RING0
+#ifdef VBOX_WITH_RAW_MODE_NOT_R0
                 if (uCpl == 1)
                     uCpl = 0;
 #endif
