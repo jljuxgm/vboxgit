@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 43288 2012-09-11 10:36:00Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 43297 2012-09-11 12:41:49Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -604,7 +604,7 @@ Utf8Str GuestProcess::guestErrorToString(int guestRc)
             break;
 
         case VERR_NOT_EQUAL: /** @todo Imprecise to the user; can mean anything and all. */
-            strError += Utf8StrFmt(tr("Unable to retrieving requested information"));
+            strError += Utf8StrFmt(tr("Unable to retrieve requested information"));
             break;
 
         case VERR_NOT_FOUND:
