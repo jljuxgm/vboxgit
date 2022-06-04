@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 45535 2013-04-13 16:21:31Z vboxsync $ */
+/* $Id: TRPM.cpp 45536 2013-04-13 16:25:46Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -425,7 +425,7 @@ static VBOXIDTE_GENERIC     g_aIdt[256] =
 
 #ifdef VBOX_WITH_RAW_MODE
 /** Enable or disable tracking of Guest's IDT. */
-#define TRPM_TRACK_GUEST_IDT_CHANGES
+# define TRPM_TRACK_GUEST_IDT_CHANGES
 /** Enable or disable tracking of Shadow IDT. */
 # define TRPM_TRACK_SHADOW_IDT_CHANGES
 #endif
