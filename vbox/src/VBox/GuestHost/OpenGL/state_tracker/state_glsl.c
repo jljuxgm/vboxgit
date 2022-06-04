@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 45027 2013-03-13 18:17:40Z vboxsync $ */
+/* $Id: state_glsl.c 46462 2013-06-10 12:11:05Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -631,8 +631,7 @@ DECLEXPORT(void) STATE_APIENTRY crStateBindAttribLocation(GLuint program, GLuint
     {
         if (!crStrcmp(pProgram->currentState.pAttribs[i].name, name))
         {
-            crFree(pProgram->currentState.pAttribs[i].name);
-            pProgram->currentState.pAttribs[i].name = crStrdup(name);
+            pProgram->currentState.pAttribs[i].index = index;
             return;
         }
     }
