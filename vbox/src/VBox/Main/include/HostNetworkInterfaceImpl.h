@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 43445 2012-09-27 08:28:59Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 43507 2012-10-02 13:22:31Z vboxsync $ */
 
 /** @file
  *
@@ -109,6 +109,7 @@ private:
         Bstr hardwareAddress;
         HostNetworkInterfaceMediumType_T mediumType;
         HostNetworkInterfaceStatus_T status;
+        ULONG speedMbytes;
     } m;
 
 };
