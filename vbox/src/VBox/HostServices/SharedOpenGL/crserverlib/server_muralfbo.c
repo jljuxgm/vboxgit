@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 44740 2013-02-18 17:02:47Z vboxsync $ */
+/* $Id: server_muralfbo.c 44747 2013-02-19 11:37:13Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -569,7 +569,7 @@ void crServerPresentFBO(CRMuralInfo *mural)
         CRASSERT(mural->fboHeight == mural->height);
     }
 
-    pixels = CrHlpGetTexImage(ctx, &Tex, idPBO);
+    pixels = CrHlpGetTexImage(ctx, &Tex, idPBO, GL_BGRA);
     if (!pixels)
     {
         crWarning("CrHlpGetTexImage failed in crServerPresentFBO");
