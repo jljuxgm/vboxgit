@@ -1,4 +1,4 @@
-/* $Id: tstTime-4.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstTime-4.cpp 46206 2013-05-22 07:02:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime vs. RTTimeSystem test.
  */
@@ -64,11 +64,12 @@ int main()
             cErrors++;
             RTPrintf("tstTime-4: Bad Gip time!\n");
         }
-        int64_t Delta = GipPrevTS - SysPrevTS;
-        if (Delta > 0 ? Delta > 100000000 /* 100 ms */ : Delta < -100000000 /* -100 ms */)
+        uint64_t Delta = GipPrevTS > SysPrevTS ? GipPrevTS - SysPrevTS :
+                                                 SysPrevTS - GipPrevTS;
+        if (Delta > 100000000 /* 100 ms */ )
         {
             cErrors++;
-            RTPrintf("tstTime-4: Delta=%lld!\n", Delta);
+            RTPrintf("tstTime-4: Delta=%llu!\n", Delta);
         }
 
     } while (SysPrevTS - SysStartTS < 2000000000 /* 2s */);
