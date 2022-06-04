@@ -1,4 +1,4 @@
-/* $Id: server_blitter.cpp 43980 2012-11-28 07:10:56Z vboxsync $ */
+/* $Id: server_blitter.cpp 44196 2012-12-21 12:02:47Z vboxsync $ */
 
 /** @file
  * Blitter API
@@ -406,7 +406,7 @@ void CrBltLeave(PCR_BLITTER pBlitter)
         cr_server.head_spu->dispatch_table.MakeCurrent(pBlitter->pRestoreMural->spuWindow, 0,
                 pBlitter->pRestoreCtxInfo->SpuContext >= 0
                     ? pBlitter->pRestoreCtxInfo->SpuContext : cr_server.MainContextInfo.SpuContext);
-        crStateSwichPostprocess(pBlitter->pRestoreCtxInfo->pContext, pBlitter->pRestoreCtxInfo->pContext, idDrawFBO, idReadFBO);
+        crStateSwitchPostprocess(pBlitter->pRestoreCtxInfo->pContext, NULL, idDrawFBO, idReadFBO);
     }
     else
     {
@@ -447,7 +447,7 @@ int CrBltEnter(PCR_BLITTER pBlitter, CRContextInfo *pRestoreCtxInfo, CRMuralInfo
             idDrawFBO = 0;
             idReadFBO = 0;
         }
-        crStateSwichPrepare(NULL, pRestoreCtxInfo->pContext, idDrawFBO, idReadFBO);
+        crStateSwitchPrepare(NULL, pRestoreCtxInfo->pContext, idDrawFBO, idReadFBO);
 
         cr_server.head_spu->dispatch_table.Flush();
     }

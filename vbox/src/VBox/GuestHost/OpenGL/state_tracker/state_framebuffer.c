@@ -1,4 +1,4 @@
-/* $Id: state_framebuffer.c 44125 2012-12-13 18:02:35Z vboxsync $ */
+/* $Id: state_framebuffer.c 44196 2012-12-21 12:02:47Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object state tracking
@@ -1073,6 +1073,8 @@ DECLEXPORT(void) STATE_APIENTRY
 crStateFramebufferObjectReenableHW(CRContext *fromCtx, CRContext *toCtx, GLuint idDrawFBO, GLuint idReadFBO)
 {
     GLuint idReadBuffer = 0, idDrawBuffer = 0;
+    if (!fromCtx)
+        fromCtx = toCtx; /* <- in case fromCtx is zero, set it to toCtx to ensure framebuffer state gets re-enabled correctly */
 
     if ((fromCtx->framebufferobject.drawFB) /* <- the FBO state was reset in crStateFramebufferObjectDisableHW */
             && fromCtx->framebufferobject.drawFB == toCtx->framebufferobject.drawFB)  /* .. and it was NOT restored properly in crStateFramebufferObjectSwitch */
