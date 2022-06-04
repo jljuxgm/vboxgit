@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46975 2013-07-04 10:25:38Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47056 2013-07-09 14:16:53Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9181,10 +9181,11 @@ static int hmR0VmxExitXcptGeneric(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
 
     /* Re-inject the exception into the guest. This cannot be a double-fault condition which would have been handled in
        hmR0VmxCheckExitDueToEventDelivery(). */
-    int rc =  hmR0VmxReadExitIntrErrorCodeVmcs(pVCpu, pVmxTransient);
+    int rc = hmR0VmxReadExitIntrErrorCodeVmcs(pVCpu, pVmxTransient);
     rc    |= hmR0VmxReadExitInstrLenVmcs(pVCpu, pVmxTransient);
     AssertRCReturn(rc, rc);
     Assert(pVmxTransient->fVmcsFieldsRead & HMVMX_UPDATED_TRANSIENT_EXIT_INTERRUPTION_INFO);
+
     hmR0VmxSetPendingEvent(pVCpu, VMX_VMCS_CTRL_ENTRY_IRQ_INFO_FROM_EXIT_INT_INFO(pVmxTransient->uExitIntrInfo),
                            pVmxTransient->cbInstr, pVmxTransient->uExitIntrErrorCode, 0 /* GCPtrFaultAddress */);
     return VINF_SUCCESS;

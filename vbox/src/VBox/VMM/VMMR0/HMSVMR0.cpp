@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47055 2013-07-09 13:00:41Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47056 2013-07-09 14:16:53Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -557,7 +557,7 @@ static void hmR0SvmSetMsrPermission(PVMCPU pVCpu, unsigned uMsr, SVMMSREXITREAD 
     if (uMsr <= 0x00001FFF)
     {
         /* Pentium-compatible MSRs. */
-        ulBit    = uMsr * 2;
+        ulBit = uMsr * 2;
     }
     else if (   uMsr >= 0xC0000000
              && uMsr <= 0xC0001FFF)
