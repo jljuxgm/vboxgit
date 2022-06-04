@@ -1,4 +1,4 @@
-/* $Id: socket.c 43752 2012-10-26 08:19:41Z vboxsync $ */
+/* $Id: socket.c 45261 2013-03-31 02:03:24Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -195,6 +195,9 @@ sofree(PNATState pData, struct socket *so)
      * Check that we don't freeng socket with tcbcb
      */
     Assert(!sototcpcb(so));
+    /* udp checks */
+    Assert(!so->so_timeout);
+    Assert(!so->so_timeout_arg);
     if (so == tcp_last_so)
         tcp_last_so = &tcb;
     else if (so == udp_last_so)

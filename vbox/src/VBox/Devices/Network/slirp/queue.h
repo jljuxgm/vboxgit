@@ -1,10 +1,10 @@
-/* $Id: queue.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: queue.h 45261 2013-03-31 02:03:24Z vboxsync $ */
 /** @file
  * NAT - Queue handling.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
