@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 45841 2013-04-30 14:36:58Z vboxsync $ */
+/* $Id: VideoRec.h 45878 2013-05-02 14:04:57Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -18,25 +18,18 @@
 #ifndef ____H_VIDEOREC
 #define ____H_VIDEOREC
 
-#include <iprt/critsect.h>
-
-#include "EbmlWriter.h"
-
 struct VIDEORECCONTEXT;
 typedef struct VIDEORECCONTEXT *PVIDEORECCONTEXT;
 
-int VideoRecContextCreate(PVIDEORECCONTEXT *ppVideoRecContext);
-int VideoRecContextInit(PVIDEORECCONTEXT pVideoRecContext, com::Bstr mFileName,
-                        uint32_t uWidth, uint32_t uHeight, uint32_t uRate);
+int  VideoRecContextCreate(PVIDEORECCONTEXT *ppVideoRecContext);
+int  VideoRecContextInit(PVIDEORECCONTEXT pVideoRecContext, com::Bstr mFileName,
+                         uint32_t uWidth, uint32_t uHeight, uint32_t uRate);
 void VideoRecContextClose(PVIDEORECCONTEXT pVideoRecContext);
 bool VideoRecIsEnabled(PVIDEORECCONTEXT pVideoRecContext);
-int VideoRecCopyToIntBuffer(PVIDEORECCONTEXT pVideoRecContext, uint32_t x,
-                            uint32_t y, uint32_t uPixelFormat, uint32_t uBitsPerPixel,
-                            uint32_t uBytesPerLine, uint32_t uGuestHeight, uint32_t uGuestWidth,
-                            uint8_t *pu8BufferAddress);
-int VideoRecDoRGBToYUV(PVIDEORECCONTEXT pVideoRecContext, uint32_t u32PixelFormat);
-int VideoRecEncodeAndWrite(PVIDEORECCONTEXT pVideoRecContext,
-                           uint32_t uSourceWidth, uint32_t uSourceHeight);
+int  VideoRecCopyToIntBuf(PVIDEORECCONTEXT pVideoRecContext, uint32_t x,
+                          uint32_t y, uint32_t uPixelFormat, uint32_t uBitsPerPixel,
+                          uint32_t uBytesPerLine, uint32_t uGuestHeight, uint32_t uGuestWidth,
+                          uint8_t *pu8BufferAddress, uint64_t u64TimeStamp);
 
 #endif /* !____H_VIDEOREC */
 
