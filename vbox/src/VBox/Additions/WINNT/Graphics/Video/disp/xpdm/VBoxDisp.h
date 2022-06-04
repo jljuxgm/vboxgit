@@ -1,4 +1,4 @@
-/* $Id: VBoxDisp.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxDisp.h 46896 2013-07-02 08:16:43Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -134,6 +134,8 @@ typedef struct _VBOXDISPDEV
 #ifdef VBOX_WITH_VIDEOHWACCEL
     VBOXDISPVHWAINFO  vhwa;                  /* VHWA Info */
 #endif
+
+    BOOL bBitmapCacheDisabled;
 } VBOXDISPDEV, *PVBOXDISPDEV;
 
 /* -------------------- Driver callbacks -------------------- */

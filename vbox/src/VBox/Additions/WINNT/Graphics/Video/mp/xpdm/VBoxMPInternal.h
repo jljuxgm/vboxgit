@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxMPInternal.h 46896 2013-07-02 08:16:43Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport internal header
@@ -61,5 +61,6 @@ BOOLEAN VBoxMPHGSMIQueryCallbacks(PVBOXMP_DEVEXT pExt, HGSMIQUERYCALLBACKS *pCal
 BOOLEAN VBoxMPQueryHgsmiInfo(PVBOXMP_DEVEXT pExt, QUERYHGSMIRESULT *pResult, PSTATUS_BLOCK pStatus);
 BOOLEAN VBoxMPHgsmiHandlerEnable(PVBOXMP_DEVEXT pExt, HGSMIHANDLERENABLE *pChannel, PSTATUS_BLOCK pStatus);
 BOOLEAN VBoxMPVhwaQueryInfo(PVBOXMP_DEVEXT pExt, VHWAQUERYINFO *pInfo, PSTATUS_BLOCK pStatus);
+BOOLEAN VBoxMPQueryRegistryFlags(PVBOXMP_DEVEXT pExt, ULONG *pulFlags, PSTATUS_BLOCK pStatus);
 
 #endif /*VBOXMPINTERNAL_H*/

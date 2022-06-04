@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDriver.cpp 45037 2013-03-14 11:29:33Z vboxsync $ */
+/* $Id: VBoxMPDriver.cpp 46896 2013-07-02 08:16:43Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport driver interface functions
@@ -542,6 +542,23 @@ VBoxDrvStartIO(PVOID HwDeviceExtension, PVIDEO_REQUEST_PACKET RequestPacket)
             *pu32AnyX = VBoxCommonFromDeviceExt(pExt)->fAnyX;
             pStatus->Information = sizeof (uint32_t);
             bResult = TRUE;
+            break;
+        }
+
+        case IOCTL_VIDEO_QUERY_VBOXVIDEO_INFO:
+        {
+            STARTIO_IN(ULONG, pulInfoLevel);
+            if (*pulInfoLevel == VBOXVIDEO_INFO_LEVEL_REGISTRY_FLAGS)
+            {
+                STARTIO_OUT(ULONG, pulFlags);
+                bResult = VBoxMPQueryRegistryFlags(pExt, pulFlags, pStatus);
+            }
+            else
+            {
+                pStatus->Status = ERROR_INVALID_PARAMETER;
+                bResult = FALSE;
+            }
+                
             break;
         }
 

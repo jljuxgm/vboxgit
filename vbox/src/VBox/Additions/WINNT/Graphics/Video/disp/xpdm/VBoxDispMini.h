@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMini.h 36867 2011-04-28 07:27:03Z vboxsync $ */
+/* $Id: VBoxDispMini.h 46896 2013-07-02 08:16:43Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver, helper functions which interacts with our miniport driver
@@ -38,5 +38,6 @@ int VBoxDispMPSetVisibleRegion(HANDLE hDriver, PRTRECT pRects, DWORD cRects);
 int VBoxDispMPResetDevice(HANDLE hDriver);
 int VBoxDispMPShareVideoMemory(HANDLE hDriver, PVIDEO_SHARE_MEMORY pSMem, PVIDEO_SHARE_MEMORY_INFORMATION pSMemInfo);
 int VBoxDispMPUnshareVideoMemory(HANDLE hDriver, PVIDEO_SHARE_MEMORY pSMem);
+int VBoxDispMPQueryRegistryFlags(HANDLE hDriver, ULONG *pulFlags);
 
 #endif /*VBOXDISPMINI_H*/

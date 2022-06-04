@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVRDP.cpp 45768 2013-04-26 08:24:55Z vboxsync $ */
+/* $Id: VBoxDispVRDP.cpp 46896 2013-07-02 08:16:43Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -1461,7 +1461,8 @@ void vrdpDrvBitBlt(SURFOBJ *psoTrg, SURFOBJ *psoSrc, SURFOBJ *psoMask, CLIPOBJ *
                 int cacheResult;
 
                 LOG(("MEMBLT: bitmap %dx%d.", psoSrc->sizlBitmap.cx, psoSrc->sizlBitmap.cy));
-                if (   (psoSrc->fjBitmap & BMF_DONTCACHE) != 0
+                if (   pDev->bBitmapCacheDisabled
+                    || (psoSrc->fjBitmap & BMF_DONTCACHE) != 0
                     || psoSrc->iUniq == 0
                        /* Bitmaps with hdev == 0 seems to have different RGB layout for 16BPP modes.
                         * Just do not cache these bitmaps and report the dirty display area instead.
