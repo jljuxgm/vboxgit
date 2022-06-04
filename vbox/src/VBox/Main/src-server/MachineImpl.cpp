@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42844 2012-08-16 12:24:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42858 2012-08-17 08:18:32Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4674,7 +4674,12 @@ STDMETHODIMP Machine::GetParallelPort(ULONG slot, IParallelPort **port)
 STDMETHODIMP Machine::GetNetworkAdapter(ULONG slot, INetworkAdapter **adapter)
 {
     CheckComArgOutPointerValid(adapter);
-    CheckComArgExpr(slot, slot < mNetworkAdapters.size());
+    /* Do not assert in debug builds here in case someone iterates over the
+     * slots and relies on the E_INVALIDARG error. */
+    if (slot >= mNetworkAdapters.size())
+        return setError(E_INVALIDARG,
+                        tr("No network adapter in slot %RU32 found (total %RU32 adapters)"),
+                        slot, mNetworkAdapters.size());
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
