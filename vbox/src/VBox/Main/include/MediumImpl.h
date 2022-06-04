@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 42538 2012-08-02 13:28:40Z vboxsync $ */
+/* $Id: MediumImpl.h 42551 2012-08-02 16:44:39Z vboxsync $ */
 
 /** @file
  *
@@ -126,7 +126,7 @@ public:
     STDMETHOD(COMGETTER(MachineIds))(ComSafeArrayOut(BSTR, aMachineIds));
 
     // IMedium methods
-    STDMETHOD(SetIDs)(BOOL aSetImageId, IN_BSTR aImageId,
+    STDMETHOD(SetIds)(BOOL aSetImageId, IN_BSTR aImageId,
                       BOOL aSetParentId, IN_BSTR aParentId);
     STDMETHOD(RefreshState)(MediumState_T *aState);
     STDMETHOD(GetSnapshotIds)(IN_BSTR aMachineId,

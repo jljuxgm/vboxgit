@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 41819 2012-06-18 17:59:30Z vboxsync $ */
+/* $Id: UIVMItem.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -249,7 +249,7 @@ bool UIVMItem::recache()
         }
         else
         {
-            m_pid = m_machine.GetSessionPid();
+            m_pid = m_machine.GetSessionPID();
     /// @todo Remove. See @c todo in #switchTo() below.
 #if 0
             mWinId = FindWindowIdFromPid(m_pid);

@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42546 2012-08-02 14:45:37Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -288,6 +288,34 @@ STDMETHODIMP GuestSession::COMGETTER(Environment)(ComSafeArrayOut(BSTR, aEnviron
 
     LogFlowFuncLeaveRC(S_OK);
     return S_OK;
+#endif /* VBOX_WITH_GUEST_CONTROL */
+}
+
+STDMETHODIMP GuestSession::COMSETTER(Environment)(ComSafeArrayIn(IN_BSTR, aValues))
+{
+#ifndef VBOX_WITH_GUEST_CONTROL
+    ReturnComNotImplemented();
+#else
+    LogFlowThisFuncEnter();
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    com::SafeArray<IN_BSTR> environment(ComSafeArrayInArg(aValues));
+
+    int rc = VINF_SUCCESS;
+    for (size_t i = 0; i < environment.size() && RT_SUCCESS(rc); i++)
+    {
+        Utf8Str strEnv(environment[i]);
+        if (!strEnv.isEmpty()) /* Silently skip empty entries. */
+            rc = mData.mEnvironment.Set(strEnv);
+    }
+
+    HRESULT hr = RT_SUCCESS(rc) ? S_OK : VBOX_E_IPRT_ERROR;
+    LogFlowFuncLeaveRC(hr);
+    return hr;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
@@ -1075,34 +1103,6 @@ STDMETHODIMP GuestSession::EnvironmentSet(IN_BSTR aName, IN_BSTR aValue)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     int rc = mData.mEnvironment.Set(Utf8Str(aName), Utf8Str(aValue));
-
-    HRESULT hr = RT_SUCCESS(rc) ? S_OK : VBOX_E_IPRT_ERROR;
-    LogFlowFuncLeaveRC(hr);
-    return hr;
-#endif /* VBOX_WITH_GUEST_CONTROL */
-}
-
-STDMETHODIMP GuestSession::EnvironmentSetArray(ComSafeArrayIn(IN_BSTR, aValues))
-{
-#ifndef VBOX_WITH_GUEST_CONTROL
-    ReturnComNotImplemented();
-#else
-    LogFlowThisFuncEnter();
-
-    AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
-
-    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-
-    com::SafeArray<IN_BSTR> environment(ComSafeArrayInArg(aValues));
-
-    int rc = VINF_SUCCESS;
-    for (size_t i = 0; i < environment.size() && RT_SUCCESS(rc); i++)
-    {
-        Utf8Str strEnv(environment[i]);
-        if (!strEnv.isEmpty()) /* Silently skip empty entries. */
-            rc = mData.mEnvironment.Set(strEnv);
-    }
 
     HRESULT hr = RT_SUCCESS(rc) ? S_OK : VBOX_E_IPRT_ERROR;
     LogFlowFuncLeaveRC(hr);

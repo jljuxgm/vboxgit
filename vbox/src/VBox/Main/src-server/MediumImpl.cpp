@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 42538 2012-08-02 13:28:40Z vboxsync $ */
+/* $Id: MediumImpl.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1946,7 +1946,7 @@ STDMETHODIMP Medium::COMGETTER(MachineIds)(ComSafeArrayOut(BSTR,aMachineIds))
     return S_OK;
 }
 
-STDMETHODIMP Medium::SetIDs(BOOL aSetImageId,
+STDMETHODIMP Medium::SetIds(BOOL aSetImageId,
                             IN_BSTR aImageId,
                             BOOL aSetParentId,
                             IN_BSTR aParentId)

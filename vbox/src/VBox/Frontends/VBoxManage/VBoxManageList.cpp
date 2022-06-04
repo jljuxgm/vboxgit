@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 42189 2012-07-17 13:55:28Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -488,9 +488,9 @@ static HRESULT produceList(enum enmListType enmCommand, bool fOptLong, const Com
                 Bstr interfaceGuid;
                 networkInterface->COMGETTER(Id)(interfaceGuid.asOutParam());
                 RTPrintf("GUID:            %ls\n", interfaceGuid.raw());
-                BOOL bDhcpEnabled;
-                networkInterface->COMGETTER(DhcpEnabled)(&bDhcpEnabled);
-                RTPrintf("Dhcp:            %s\n", bDhcpEnabled ? "Enabled" : "Disabled");
+                BOOL bDHCPEnabled;
+                networkInterface->COMGETTER(DHCPEnabled)(&bDHCPEnabled);
+                RTPrintf("DHCP:            %s\n", bDHCPEnabled ? "Enabled" : "Disabled");
 
                 Bstr IPAddress;
                 networkInterface->COMGETTER(IPAddress)(IPAddress.asOutParam());

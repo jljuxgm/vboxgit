@@ -1,10 +1,10 @@
-/* $Id: VBoxManageHostonly.cpp 41324 2012-05-16 08:26:41Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -224,14 +224,14 @@ static int handleIpconfig(HandlerArg *a, int iStart, int *pcProcessed)
 
     if (bDhcp)
     {
-        CHECK_ERROR(hif, EnableDynamicIpConfig ());
+        CHECK_ERROR(hif, EnableDynamicIPConfig ());
     }
     else if (pIp)
     {
         if (!pNetmask)
             pNetmask = "255.255.255.0"; /* ?? */
 
-        CHECK_ERROR(hif, EnableStaticIpConfig(Bstr(pIp).raw(),
+        CHECK_ERROR(hif, EnableStaticIPConfig(Bstr(pIp).raw(),
                                               Bstr(pNetmask).raw()));
     }
     else if (pIpv6)
@@ -249,7 +249,7 @@ static int handleIpconfig(HandlerArg *a, int iStart, int *pcProcessed)
 
 
         Bstr ipv6str(pIpv6);
-        CHECK_ERROR(hif, EnableStaticIpConfigV6(ipv6str.raw(),
+        CHECK_ERROR(hif, EnableStaticIPConfigV6(ipv6str.raw(),
                                                 (ULONG)uNetmasklengthv6));
     }
     else

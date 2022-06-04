@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 41520 2012-05-31 13:43:06Z vboxsync $ */
+/* $Id: USBControllerImpl.h 42551 2012-08-02 16:44:39Z vboxsync $ */
 
 /** @file
  *
@@ -59,8 +59,8 @@ public:
     // IUSBController properties
     STDMETHOD(COMGETTER(Enabled))(BOOL *aEnabled);
     STDMETHOD(COMSETTER(Enabled))(BOOL aEnabled);
-    STDMETHOD(COMGETTER(EnabledEhci))(BOOL *aEnabled);
-    STDMETHOD(COMSETTER(EnabledEhci))(BOOL aEnabled);
+    STDMETHOD(COMGETTER(EnabledEHCI))(BOOL *aEnabled);
+    STDMETHOD(COMSETTER(EnabledEHCI))(BOOL aEnabled);
     STDMETHOD(COMGETTER(ProxyAvailable))(BOOL *aEnabled);
     STDMETHOD(COMGETTER(USBStandard))(USHORT *aUSBStandard);
     STDMETHOD(COMGETTER(DeviceFilters))(ComSafeArrayOut(IUSBDeviceFilter *, aDevicesFilters));

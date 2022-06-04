@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 42538 2012-08-02 13:28:40Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -648,7 +648,7 @@ int handleStorageAttach(HandlerArg *a)
             // set medium/parent medium UUID, if so desired
             if (pMedium2Mount && (fSetNewUuid || fSetNewParentUuid))
             {
-                CHECK_ERROR(pMedium2Mount, SetIDs(fSetNewUuid, bstrNewUuid.raw(),
+                CHECK_ERROR(pMedium2Mount, SetIds(fSetNewUuid, bstrNewUuid.raw(),
                                                   fSetNewParentUuid, bstrNewParentUuid.raw()));
                 if (FAILED(rc))
                     throw  Utf8Str("Failed to set the medium/parent medium UUID");

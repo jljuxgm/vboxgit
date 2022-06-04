@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 42525 2012-08-02 10:24:28Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -272,7 +272,7 @@ STDMETHODIMP GuestProcess::COMGETTER(Name)(BSTR *aName)
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
-STDMETHODIMP GuestProcess::COMGETTER(Pid)(ULONG *aPID)
+STDMETHODIMP GuestProcess::COMGETTER(PID)(ULONG *aPID)
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
