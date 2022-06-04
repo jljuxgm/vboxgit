@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 46116 2013-05-16 08:23:06Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 46122 2013-05-16 11:42:23Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -606,7 +606,7 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
 #endif
     systemProperties->COMGETTER(DefaultMachineFolder)(str.asOutParam());
     RTPrintf("Default machine folder:          %ls\n", str.raw());
-    systemProperties->GetDefaultHardDiskFormat(str.asOutParam());
+    systemProperties->COMGETTER(DefaultHardDiskFormat)(str.asOutParam());
     RTPrintf("Default hard disk format:        %ls\n", str.raw());
     systemProperties->COMGETTER(VRDEAuthLibrary)(str.asOutParam());
     RTPrintf("VRDE auth library:               %ls\n", str.raw());
