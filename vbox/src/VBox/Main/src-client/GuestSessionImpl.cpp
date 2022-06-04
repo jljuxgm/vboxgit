@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42693 2012-08-08 22:37:51Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42694 2012-08-08 22:43:49Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -897,12 +897,13 @@ int SessionTaskUpdateAdditions::Run(void)
                                 && exitCode != 0)
                            )
                         {
-                            rc = setProgressErrorMsg(VBOX_E_IPRT_ERROR,
+                            hr = setProgressErrorMsg(VBOX_E_IPRT_ERROR,
                                                      Utf8StrFmt(GuestSession::tr("Updating Guest Additions failed with status %ld, exit code %d"),
                                                                 procStatus, exitCode)); /**@todo Add stringify methods! */
+                            rc = VERR_GENERAL_FAILURE; /* Fudge. */
                         }
                         else /* Yay, success! */
-                            rc = setProgressSuccess();
+                            hr = setProgressSuccess();
                     }
                     else
                     {
@@ -2152,7 +2153,7 @@ STDMETHODIMP GuestSession::DirectoryCreateTemp(IN_BSTR aTemplate, ULONG aMode, I
 
         LogFlowThisFunc(("rc=%Rrc, cbRead=%RU32, cbStreamOut=%RU32\n",
                          rc, cbRead, streamOut.GetSize()));
-    } 
+    }
     else
         return setError(E_FAIL, tr("Error while starting temporary directory creation tool on guest: %Rrc"), rc);
     if (RT_FAILURE(rc))
