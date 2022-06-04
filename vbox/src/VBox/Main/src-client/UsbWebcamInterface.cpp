@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.cpp 45029 2013-03-13 20:57:11Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 47416 2013-07-26 06:55:18Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
@@ -49,6 +49,14 @@ typedef struct EMWEBCAMREQCTX
     void *pvUser;
 } EMWEBCAMREQCTX;
 
+
+static DECLCALLBACK(void) drvEmWebcamReady(PPDMIWEBCAMDOWN pInterface,
+                                           bool fReady)
+{
+    PEMWEBCAMDRV pThis = RT_FROM_MEMBER(pInterface, EMWEBCAMDRV, IWebcamDown);
+    NOREF(pThis);
+    NOREF(fReady);
+}
 
 static DECLCALLBACK(int) drvEmWebcamControl(PPDMIWEBCAMDOWN pInterface,
                                             void *pvUser,
@@ -269,10 +277,19 @@ void EmWebcam::EmWebcamCbFrame(int rcRequest, void *pDeviceCtx,
 
     if (mpDrv && mpDrv->pIWebcamUp)
     {
-        mpDrv->pIWebcamUp->pfnWebcamUpFrame(mpDrv->pIWebcamUp,
-                                            mpRemote->u64DeviceId,
-                                            (const uint8_t *)pFrame,
-                                            cbFrame);
+        if (   cbFrame >= sizeof(VRDEVIDEOINPAYLOADHDR)
+            && cbFrame >= pFrame->u8HeaderLength)
+        {
+            uint32_t cbImage = cbFrame - pFrame->u8HeaderLength;
+            const uint8_t *pu8Image = cbImage > 0? (const uint8_t *)pFrame + pFrame->u8HeaderLength: NULL;
+
+            mpDrv->pIWebcamUp->pfnWebcamUpFrame(mpDrv->pIWebcamUp,
+                                                mpRemote->u64DeviceId,
+                                                (PDMIWEBCAM_FRAMEHDR *)pFrame,
+                                                pFrame->u8HeaderLength,
+                                                pu8Image,
+                                                cbImage);
+        }
     }
 }
 
@@ -379,6 +396,7 @@ int EmWebcam::SendControl(EMWEBCAMDRV *pDrv, void *pvUser, uint64_t u64DeviceId,
 
     pDrvIns->IBase.pfnQueryInterface = drvQueryInterface;
 
+    pThis->IWebcamDown.pfnWebcamDownReady = drvEmWebcamReady;
     pThis->IWebcamDown.pfnWebcamDownControl = drvEmWebcamControl;
 
     return VINF_SUCCESS;
