@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 43235 2012-09-06 23:53:40Z vboxsync $ */
+/* $Id: GMMR0.cpp 44442 2013-01-29 10:39:21Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -1959,7 +1959,7 @@ static uint32_t gmmR0AllocateChunkId(PGMM pGMM)
     if (    (uint32_t)idChunk < GMM_CHUNKID_LAST
         &&  idChunk > NIL_GMM_CHUNKID)
     {
-        idChunk = ASMBitNextClear(&pGMM->bmChunkId[0], GMM_CHUNKID_LAST + 1, idChunk);
+        idChunk = ASMBitNextClear(&pGMM->bmChunkId[0], GMM_CHUNKID_LAST + 1, idChunk - 1);
         if (idChunk > NIL_GMM_CHUNKID)
         {
             AssertMsgReturn(!ASMAtomicBitTestAndSet(&pGMM->bmChunkId[0], idChunk), ("%#x\n", idChunk), NIL_GMM_CHUNKID);
