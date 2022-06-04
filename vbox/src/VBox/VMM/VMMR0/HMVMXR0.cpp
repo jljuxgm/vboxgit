@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46881 2013-07-01 12:10:22Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46882 2013-07-01 12:22:13Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7275,10 +7275,10 @@ HMVMX_EXIT_DECL hmR0VmxExitExtInt(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
     /* 32-bit Windows hosts (4 cores) has trouble with this; causes higher interrupt latency. */
 #if HC_ARCH_BITS == 64 && defined(VBOX_WITH_VMMR0_DISABLE_PREEMPTION)
     Assert(ASMIntAreEnabled());
-    return VINF_SUCCESS;
-#else
-    return VINF_EM_RAW_INTERRUPT;
+    if (pVCpu->CTX_SUFF(pVM)->hm.s.vmx.fUsePreemptTimer)
+        return VINF_SUCCESS;
 #endif
+    return VINF_EM_RAW_INTERRUPT;
 }
 
 
