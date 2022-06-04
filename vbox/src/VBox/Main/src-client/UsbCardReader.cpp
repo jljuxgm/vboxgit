@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 45033 2013-03-13 23:45:23Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 45927 2013-05-07 08:05:43Z vboxsync $ */
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
  */
@@ -1053,7 +1053,7 @@ int UsbCardReader::VRDEResponse(int rcRequest, void *pvUser, uint32_t u32Functio
                 if (pRsp->u32ReturnCode == VRDE_SCARD_S_SUCCESS)
                 {
                     pszReaderName = pRsp->szReader;
-                    cchReaderName = strlen(pRsp->szReader) + 1;
+                    cchReaderName = (uint32_t)strlen(pRsp->szReader) + 1;
                     u32CardState = pRsp->u32State;
                     u32Protocol = pRsp->u32Protocol;
                     u32AtrLength = pRsp->u32AtrLength;

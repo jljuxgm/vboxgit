@@ -1,4 +1,4 @@
-/* $Id: Nvram.cpp 45029 2013-03-13 20:57:11Z vboxsync $ */
+/* $Id: Nvram.cpp 45927 2013-05-07 08:05:43Z vboxsync $ */
 /** @file
  * VBox NVRAM COM Class implementation.
  */
@@ -286,7 +286,7 @@ DECLCALLBACK(int) drvNvram_VarQueryByIndex(PPDMINVRAMCONNECTOR pInterface, uint3
      */
     int rc = CFGMR3QueryString(pVarNode, "Name", pszName, *pcchName);
     AssertRCReturn(rc, rc);
-    *pcchName = strlen(pszName);
+    *pcchName = (uint32_t)strlen(pszName);
 
     char    szUuid[RTUUID_STR_LENGTH];
     rc = CFGMR3QueryString(pVarNode, "Uuid", szUuid, sizeof(szUuid));
@@ -303,7 +303,7 @@ DECLCALLBACK(int) drvNvram_VarQueryByIndex(PPDMINVRAMCONNECTOR pInterface, uint3
     AssertReturn(cbValue <= *pcbValue, VERR_BUFFER_OVERFLOW);
     rc = CFGMR3QueryBytes(pVarNode, "Value", pbValue, cbValue);
     AssertRCReturn(rc, rc);
-    *pcbValue = cbValue;
+    *pcbValue = (uint32_t)cbValue;
 
     return VINF_SUCCESS;
 }
