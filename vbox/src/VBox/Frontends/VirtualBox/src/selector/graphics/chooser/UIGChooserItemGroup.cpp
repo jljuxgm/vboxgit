@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 42593 2012-08-04 15:46:34Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 42630 2012-08-06 16:32:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -154,16 +154,16 @@ bool UIGChooserItemGroup::opened() const
     return !m_fClosed || isRoot();
 }
 
-void UIGChooserItemGroup::close()
+void UIGChooserItemGroup::close(bool fAnimated /* = true */)
 {
     AssertMsg(parentItem(), ("Can't close root-item!"));
-    m_pButton->setToggled(false);
+    m_pButton->setToggled(false ,fAnimated);
 }
 
-void UIGChooserItemGroup::open()
+void UIGChooserItemGroup::open(bool fAnimated /* = true */)
 {
     AssertMsg(parentItem(), ("Can't open root-item!"));
-    m_pButton->setToggled(true);
+    m_pButton->setToggled(true, fAnimated);
 }
 
 bool UIGChooserItemGroup::contains(const QString &strId, bool fRecursively /* = false */) const
