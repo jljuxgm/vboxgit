@@ -1,4 +1,4 @@
-/* $Id: packspu_glsl.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: packspu_glsl.c 45027 2013-03-13 18:17:40Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related functions
@@ -135,6 +135,8 @@ void PACK_APIENTRY packspu_DeleteObjectARB(GLhandleARB obj)
 
     CRASSERT(obj);
 
+    /* we do not track shader creation inside guest since it is not needed currently.
+     * this is why we only care about programs here */
     if (hwid)
     {
         crStateDeleteProgram(obj);
