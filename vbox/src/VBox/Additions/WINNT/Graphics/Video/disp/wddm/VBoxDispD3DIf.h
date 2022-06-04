@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 46783 2013-06-25 16:09:37Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.h 46966 2013-07-04 06:08:11Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -83,6 +83,8 @@ typedef struct VBOXDISPD3D
     PFNVBOXWINEEXD3DSURF9_SYNCTOHOST pfnVBoxWineExD3DSurf9SyncToHost;
 
     PFNVBOXWINEEXD3DSWAPCHAIN9_GETHOSTWINID pfnVBoxWineExD3DSwapchain9GetHostWinID;
+
+    PFNVBOXWINEEXD3DDEV9_GETHOSTID pfnVBoxWineExD3DDev9GetHostId;
 
     /* module handle */
     HMODULE hD3DLib;

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 46876 2013-07-01 10:09:35Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 46966 2013-07-04 06:08:11Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -393,16 +393,27 @@ VOID vboxWddmSwapchainCtxDestroyAll(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pC
 /* process the swapchain info passed from user-mode display driver & synchronizes the driver state with it */
 NTSTATUS vboxWddmSwapchainCtxEscape(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pContext, PVBOXDISPIFESCAPE_SWAPCHAININFO pSwapchainInfo, UINT cbSize)
 {
-    Assert((cbSize >= RT_OFFSETOF(VBOXDISPIFESCAPE_SWAPCHAININFO, SwapchainInfo.ahAllocs[0])));
     if (cbSize < RT_OFFSETOF(VBOXDISPIFESCAPE_SWAPCHAININFO, SwapchainInfo.ahAllocs[0]))
+    {
+        WARN(("invalid cbSize1 %d", cbSize));
         return STATUS_INVALID_PARAMETER;
-    Assert(cbSize >= RT_OFFSETOF(VBOXDISPIFESCAPE_SWAPCHAININFO, SwapchainInfo.ahAllocs[pSwapchainInfo->SwapchainInfo.cAllocs]));
+    }
+
     if (cbSize < RT_OFFSETOF(VBOXDISPIFESCAPE_SWAPCHAININFO, SwapchainInfo.ahAllocs[pSwapchainInfo->SwapchainInfo.cAllocs]))
+    {
         return STATUS_INVALID_PARAMETER;
+        WARN(("invalid cbSize2 %d", cbSize));
+    }
 
     if (!pSwapchainInfo->SwapchainInfo.winHostID)
     {
         WARN(("Zero winHostID specified!"));
+        return STATUS_INVALID_PARAMETER;
+    }
+
+    if (!pContext)
+    {
+        WARN(("vboxWddmSwapchainCtxEscape: no context specified"));
         return STATUS_INVALID_PARAMETER;
     }
 

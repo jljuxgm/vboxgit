@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 46783 2013-06-25 16:09:37Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 46966 2013-07-04 06:08:11Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -159,6 +159,13 @@ HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D)
         if (!pD3D->pfnVBoxWineExD3DSwapchain9GetHostWinID)
         {
             WARN(("no VBoxWineExD3DSwapchain9GetHostWinID"));
+            break;
+        }
+
+        pD3D->pfnVBoxWineExD3DDev9GetHostId = (PFNVBOXWINEEXD3DDEV9_GETHOSTID)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DDev9GetHostId");
+        if (!pD3D->pfnVBoxWineExD3DDev9GetHostId)
+        {
+            WARN(("no VBoxWineExD3DDev9GetHostId"));
             break;
         }
 
