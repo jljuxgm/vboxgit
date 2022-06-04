@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 45868 2013-05-02 07:55:59Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 47658 2013-08-11 14:42:28Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -128,7 +128,7 @@ static void PassVA2(PUVM pUVM, const char *pszFormat, va_list va)
 #else
     va_list va2;
     va_copy(va2, va);
-    void *pvVA = va2;
+    void *pvVA = &va2;
 #endif
 
     int rc = VMR3ReqCallWaitU(pUVM, VMCPUID_ANY, (PFNRT)PassVACallback, 5, pUVM, _4K, _1G, pszFormat, pvVA);
