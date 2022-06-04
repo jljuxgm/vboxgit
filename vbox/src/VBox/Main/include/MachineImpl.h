@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 46123 2013-05-16 13:40:20Z vboxsync $ */
+/* $Id: MachineImpl.h 46348 2013-05-31 17:31:20Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -222,6 +222,8 @@ public:
     struct UserData
     {
         settings::MachineUserData s;
+        typedef  std::vector<uint8_t> IconBlob;
+        IconBlob mIcon;
     };
 
     /**
@@ -522,6 +524,8 @@ public:
     STDMETHOD(COMSETTER(AutostopType))(AutostopType_T enmAutostopType);
     STDMETHOD(COMGETTER(DefaultFrontend))(BSTR *aDefaultFrontend);
     STDMETHOD(COMSETTER(DefaultFrontend))(IN_BSTR aDefaultFrontend);
+    STDMETHOD(COMGETTER(Icon))(ComSafeArrayOut(BYTE, aIcon));
+    STDMETHOD(COMSETTER(Icon))(ComSafeArrayIn(BYTE, aIcon));
 
     // IMachine methods
     STDMETHOD(LockMachine)(ISession *aSession, LockType_T lockType);
