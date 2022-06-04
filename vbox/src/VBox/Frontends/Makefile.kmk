@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44528 2013-02-04 14:27:54Z vboxsync $
+# $Id: Makefile.kmk 44580 2013-02-07 11:35:37Z vboxsync $
 ## @file
 # Top-level makefile for the VBox frontends.
 #
@@ -30,10 +30,6 @@ ifndef VBOX_ONLY_DOCS
  ifdef VBOX_WITH_VBOXSDL
   include $(PATH_SUB_CURRENT)/VBoxSDL/Makefile.kmk
  endif
-# Temporarily disables VBoxBFE as I cannot fix the bustage on a Mac.
-# ifdef VBOX_WITH_VBOXBFE
-#  include $(PATH_SUB_CURRENT)/VBoxBFE/Makefile.kmk
-# endif
  ifdef VBOX_WITH_VBOXFB
   include $(PATH_SUB_CURRENT)/VBoxFB/Makefile.kmk
  endif

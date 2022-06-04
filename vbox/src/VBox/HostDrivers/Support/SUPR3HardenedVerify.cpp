@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 44580 2013-02-07 11:35:37Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -184,11 +184,6 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
 //#ifdef VBOX_WITH_VBOXSDL
     {   kSupIFT_Exe,  kSupID_AppBin,             true, "VBoxSDL" SUPLIB_EXE_SUFF },
     {   kSupIFT_Dll,  kSupID_AppPrivArch,        true, "VBoxSDL" SUPLIB_DLL_SUFF },
-//#endif
-
-//#ifdef VBOX_WITH_VBOXBFE
-    {   kSupIFT_Exe,  kSupID_AppBin,             true, "VBoxBFE" SUPLIB_EXE_SUFF },
-    {   kSupIFT_Dll,  kSupID_AppPrivArch,        true, "VBoxBFE" SUPLIB_DLL_SUFF },
 //#endif
 
 //#ifdef VBOX_WITH_WEBSERVICES

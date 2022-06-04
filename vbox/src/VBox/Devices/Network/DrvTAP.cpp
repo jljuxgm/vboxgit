@@ -1,10 +1,10 @@
-/* $Id: DrvTAP.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DrvTAP.cpp 44580 2013-02-07 11:35:37Z vboxsync $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -901,7 +901,7 @@ static DECLCALLBACK(int) drvTAPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
      * Read the configuration.
      */
     int rc;
-#if defined(RT_OS_SOLARIS)   /** @todo Other platforms' TAP code should be moved here from ConsoleImpl & VBoxBFE. */
+#if defined(RT_OS_SOLARIS)   /** @todo Other platforms' TAP code should be moved here from ConsoleImpl. */
     rc = CFGMR3QueryStringAlloc(pCfg, "TAPSetupApplication", &pThis->pszSetupApplication);
     if (RT_SUCCESS(rc))
     {

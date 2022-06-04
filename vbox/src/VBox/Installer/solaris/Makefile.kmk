@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44528 2013-02-04 14:27:54Z vboxsync $
+# $Id: Makefile.kmk 44580 2013-02-07 11:35:37Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -214,9 +214,6 @@ SOLARIS_STRIP_EXES = \
 	$(if $(VBOX_WITH_CROGL),VBoxTestOGL,) \
 	VBoxXPCOMIPCD \
 	$(if $(VBOX_WITH_KCHMVIEWER),kchmviewer,)
-## Follow the Windows + Linux example of not shipping VBoxBFE.
-#SOLARIS_STRIP_EXES = \
-#	$(if $(VBOX_WITH_VBOXBFE),VBoxBFE,)
 
 SOLARIS_DRIVER_BINS = \
 	vboxdrv \
@@ -273,9 +270,6 @@ SOLARIS_STRIP_BINS += \
 	VBoxNetDHCP.so \
 	$(if $(VBOX_WITH_VBOXSDL),VBoxSDL.so,) \
 	$(if $(VBOX_WITH_QTGUI),VirtualBox.so,)
-## Follow the Windows + Linux example of not shipping VBoxBFE.
-#SOLARIS_STRIP_BINS += \
-#	$(if $(VBOX_WITH_VBOXBFE),VBoxBFE.so,)
 endif
 
 # Do not remove relocation information of these binaries
