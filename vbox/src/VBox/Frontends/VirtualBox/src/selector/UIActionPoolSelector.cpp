@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 42563 2012-08-03 01:42:21Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 42631 2012-08-06 17:01:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -264,9 +264,9 @@ protected:
 
     void retranslateUi()
     {
-        setText(QApplication::translate("UIActionPool", "&Remove group..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Remove the selected virtual machine group"));
-        setShortcut(gSS->keySequence(UISelectorShortcuts::RemoveVMShortcut));
+        setText(QApplication::translate("UIActionPool", "&Break group..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Break the selected virtual machine group"));
+        setShortcut(gSS->keySequence(UISelectorShortcuts::BreakVMGroupShortcut));
     }
 };
 
