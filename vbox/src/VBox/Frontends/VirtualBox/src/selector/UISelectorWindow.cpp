@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 45280 2013-04-02 10:48:56Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 45282 2013-04-02 11:29:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -691,6 +691,8 @@ void UISelectorWindow::sltPerformPowerOffAction()
         CConsole console = session.GetConsole();
         /* Power Off: */
         console.PowerDown();
+        if (!console.isOk())
+            msgCenter().cannotStopMachine(console);
 
         /* Unlock machine finally: */
         session.UnlockMachine();
