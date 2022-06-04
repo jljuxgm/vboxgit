@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 44474 2013-01-30 16:47:30Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 44518 2013-02-01 16:02:28Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -919,7 +919,7 @@ int VBoxServiceVMInfoWinWriteUsers(char **ppszUserList, uint32_t *pcUsersInList)
                                       "%RU32: szName=%ls, sessionID=%RU32, cProcs=%RU32",
                                       s_uIter, pUserInfo[i].wszUser, pUserInfo[i].ulSession, pUserInfo[i].ulNumProcs);
 #endif
-                bool fAddUser = true;
+                bool fAddUser = false;
                 if (pUserInfo[i].ulNumProcs)
                     fAddUser = true;
 
