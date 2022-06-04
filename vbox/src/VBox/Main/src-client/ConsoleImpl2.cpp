@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 46969 2013-07-04 06:35:01Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 47018 2013-07-06 17:31:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -114,7 +114,7 @@
 # endif
 #endif /* VBOX_WITH_NETFLT */
 
-#include "DHCPServerRunner.h"
+#include "NetworkServiceRunner.h"
 #include "BusAssignmentManager.h"
 #ifdef VBOX_WITH_EXTPACK
 # include "ExtPackManagerImpl.h"
