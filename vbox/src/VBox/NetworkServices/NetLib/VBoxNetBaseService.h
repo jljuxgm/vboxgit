@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 44824 2013-02-25 18:30:42Z vboxsync $ */
+/* $Id: VBoxNetBaseService.h 45114 2013-03-21 07:31:35Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -47,6 +47,7 @@ public:
     INTNETTRUNKTYPE     m_enmTrunkType;
     RTMAC               m_MacAddress;
     RTNETADDRIPV4       m_Ipv4Address;
+    RTNETADDRIPV4       m_Ipv4Netmask;
     /* cs for syncing */
     RTCRITSECT          m_csThis;
     /** @} */
