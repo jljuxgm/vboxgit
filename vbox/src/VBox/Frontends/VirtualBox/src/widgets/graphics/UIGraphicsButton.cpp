@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsButton.cpp 42797 2012-08-13 19:20:21Z vboxsync $ */
+/* $Id: UIGraphicsButton.cpp 42798 2012-08-13 19:42:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -102,10 +102,10 @@ void UIGraphicsButton::paint(QPainter *pPainter, const QStyleOptionGraphicsItem*
             QPalette pal = palette();
             QColor backgroundColor = pal.color(m_fParentSelected ? QPalette::Highlight : QPalette::Window);
             QColor buttonColor = pal.color(QPalette::Window);
-            if (backgroundColor.black() > 128)
-                buttonColor = buttonColor.darker(95);
-            else
+            if (backgroundColor.lightness() > 170)
                 buttonColor = buttonColor.darker(160);
+            else
+                buttonColor = buttonColor.darker(95);
 
             /* Setup: */
             pPainter->setRenderHint(QPainter::Antialiasing);
@@ -137,10 +137,10 @@ void UIGraphicsButton::paint(QPainter *pPainter, const QStyleOptionGraphicsItem*
             QPalette pal = palette();
             QColor backgroundColor = pal.color(m_fParentSelected ? QPalette::Highlight : QPalette::Window);
             QColor buttonColor = pal.color(QPalette::Window);
-            if (backgroundColor.black() > 128)
-                buttonColor = buttonColor.darker(95);
-            else
+            if (backgroundColor.lightness() > 170)
                 buttonColor = buttonColor.darker(160);
+            else
+                buttonColor = buttonColor.darker(95);
 
             /* Setup: */
             pPainter->setRenderHint(QPainter::Antialiasing);
