@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 42891 2012-08-20 19:08:35Z vboxsync $ */
+/* $Id: DevAHCI.cpp 42999 2012-08-27 14:13:43Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -3983,7 +3983,9 @@ static int atapiPassthroughSS(PAHCIREQ pAhciReq, PAHCIPort pAhciPort, size_t cbD
                 if (cbTransfer >= 32 + 4)
                     ataSCSIPadStr((uint8_t *)pvBuf + 32, "1.0", 4);
             }
-            else if (pAhciReq->aATAPICmd[0] == SCSI_READ_TOC_PMA_ATIP)
+            else if (   pAhciReq->aATAPICmd[0] == SCSI_READ_TOC_PMA_ATIP
+                     && (pAhciReq->aATAPICmd[2] & 0xf) != 0x05
+                     && pAhciReq->aATAPICmd[6] != 0xaa)
             {
                 /* Set the media type if we can detect it. */
                 uint8_t *pbBuf = (uint8_t *)pvBuf;
