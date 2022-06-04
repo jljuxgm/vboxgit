@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42757 2012-08-10 14:44:08Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42788 2012-08-13 09:49:33Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5944,11 +5944,14 @@ STDMETHODIMP Machine::RemoveStorageController(IN_BSTR aName)
 
     {
         /* find all attached devices to the appropriate storage controller and detach them all*/
-        MediaData::AttachmentList::const_iterator endList = mMediaData->mAttachments.end();
         MediaData::AttachmentList::const_iterator it = mMediaData->mAttachments.begin();
-        for (;it != endList; it++)
+
+        uint16_t howManyAttach = mMediaData->mAttachments.size();
+
+        for (uint16_t i=0;i<howManyAttach; ++i)
         {
-            MediumAttachment *pAttachTemp = *it;
+            MediumAttachment *pAttachTemp = *it++;
+
             AutoCaller localAutoCaller(pAttachTemp);
             if (FAILED(localAutoCaller.rc())) return localAutoCaller.rc();
 
@@ -5958,7 +5961,9 @@ STDMETHODIMP Machine::RemoveStorageController(IN_BSTR aName)
             {
                 LONG port = pAttachTemp->getPort();
                 LONG device = pAttachTemp->getDevice();
-                rc = DetachDevice(aName, port, device);
+
+                //rc = DetachDevice(aName, port, device);
+                rc = detachDevice(pAttachTemp, alock, NULL);
                 if (FAILED(rc)) return rc;
             }
         }
