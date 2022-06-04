@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 46963 2013-07-04 05:52:39Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 46964 2013-07-04 05:53:26Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -297,7 +297,7 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
                                                                       u8Slot)] 
                                        : GlobalDhcpOptions);
                     std::string strVal = ValueUnion.psz;
-                    map.insert(DhcpOptValuePair(u8OptId, strVal);
+                    map.insert(DhcpOptValuePair(u8OptId, strVal));
 
                 }
                 break; // --end of value
