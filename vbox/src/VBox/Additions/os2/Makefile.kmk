@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46683 2013-06-19 17:34:02Z vboxsync $
+# $Id: Makefile.kmk 46692 2013-06-19 19:59:40Z vboxsync $
 ## @file
 # Sub-Makefile for the OS/2 specific part of the guest additions.
 #
@@ -33,6 +33,16 @@ ifndef VBOX_OSE
  include $(PATH_SUB_CURRENT)/Bin/Makefile.kmk
 endif
 #include $(PATH_SUB_CURRENT)/VBoxSF/Makefile.kmk
+
+
+#
+# Installation helper.
+#
+PROGRAMS += VBoxReplaceDll
+VBoxReplaceDll_TEMPLATE = NewVBoxGuestR3Exe
+VBoxReplaceDll_SOURCES = VBoxReplaceDll.cpp
+
+
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
