@@ -1,4 +1,4 @@
-/* $Id: apm.c 42770 2012-08-11 17:03:21Z vboxsync $ */
+/* $Id: apm.c 42791 2012-08-13 12:38:33Z vboxsync $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
@@ -163,6 +163,16 @@ void BIOSCALL apm_function(sys_regs_t r)
         // @todo: validate device ID
         // @todo: validate current connection state
         // @todo: change connection state
+        break;
+    case APM_PM_CONN:
+        // @todo: validate device ID
+        // @todo: validate current connection state
+        // @todo: change connection state
+        AX = APM_BIOS_SEG;              /* 16-bit PM code segment (RM segment base). */
+        BX = (uint16_t)apm_pm16_entry;  /* 16-bit PM entry point offset. */
+        CX = APM_BIOS_SEG;              /* 16-bit data segment. */
+        SI = APM_BIOS_SEG_LEN;          /* 16-bit PM code segment length. */
+        DI = APM_BIOS_SEG_LEN;          /* Data segment length. */
         break;
     case APM_32_CONN:
         // @todo: validate device ID
