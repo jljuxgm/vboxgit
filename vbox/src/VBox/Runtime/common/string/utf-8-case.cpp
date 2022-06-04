@@ -1,4 +1,4 @@
-/* $Id: utf-8-case.cpp 33562 2010-10-28 14:38:50Z vboxsync $ */
+/* $Id: utf-8-case.cpp 46010 2013-05-13 11:28:22Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Case Sensitivity and Folding.
  */
@@ -337,4 +337,84 @@ RTDECL(char *) RTStrToUpper(char *psz)
     return psz;
 }
 RT_EXPORT_SYMBOL(RTStrToUpper);
+
+
+RTDECL(bool) RTStrIsCaseFoldable(const char *psz)
+{
+    /*
+     * Loop the code points in the string, checking them one by one until we
+     * find something that can be folded.
+     */
+    RTUNICP uc;
+    do
+    {
+        int rc = RTStrGetCpEx(&psz, &uc);
+        if (RT_SUCCESS(rc))
+        {
+            if (RTUniCpIsFoldable(uc))
+                return true;
+        }
+        else
+        {
+            /* bad encoding, just skip it quietly (uc == RTUNICP_INVALID (!= 0)). */
+            AssertRC(rc);
+        }
+    } while (uc != 0);
+
+    return false;
+}
+RT_EXPORT_SYMBOL(RTStrIsCaseFoldable);
+
+
+RTDECL(bool) RTStrIsUpperCased(const char *psz)
+{
+    /*
+     * Check that there are no lower case chars in the string.
+     */
+    RTUNICP uc;
+    do
+    {
+        int rc = RTStrGetCpEx(&psz, &uc);
+        if (RT_SUCCESS(rc))
+        {
+            if (RTUniCpIsLower(uc))
+                return false;
+        }
+        else
+        {
+            /* bad encoding, just skip it quietly (uc == RTUNICP_INVALID (!= 0)). */
+            AssertRC(rc);
+        }
+    } while (uc != 0);
+
+    return true;
+}
+RT_EXPORT_SYMBOL(RTStrIsUpperCased);
+
+
+RTDECL(bool) RTStrIsLowerCased(const char *psz)
+{
+    /*
+     * Check that there are no lower case chars in the string.
+     */
+    RTUNICP uc;
+    do
+    {
+        int rc = RTStrGetCpEx(&psz, &uc);
+        if (RT_SUCCESS(rc))
+        {
+            if (RTUniCpIsUpper(uc))
+                return false;
+        }
+        else
+        {
+            /* bad encoding, just skip it quietly (uc == RTUNICP_INVALID (!= 0)). */
+            AssertRC(rc);
+        }
+    } while (uc != 0);
+
+    return true;
+}
+RT_EXPORT_SYMBOL(RTStrIsLowerCased);
+
 
