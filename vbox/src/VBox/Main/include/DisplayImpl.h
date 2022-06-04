@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 45838 2013-04-30 13:54:20Z vboxsync $ */
+/* $Id: DisplayImpl.h 46065 2013-05-14 13:15:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -55,6 +55,10 @@ typedef struct _DISPLAYFBINFO
     uint32_t u32LineSize;
 
     uint16_t flags;
+    
+    /* for saving the rectangles arrived during fb resize is in progress. */
+    PRTRECT mpSavedVisibleRegion;
+    uint32_t mcSavedVisibleRegion;
 
     VBOXVIDEOINFOHOSTEVENTS *pHostEvents;
 
@@ -275,7 +279,11 @@ private:
 
     int vbvaLock(void);
     void vbvaUnlock(void);
-
+    
+    RTCRITSECT mSaveSeamlessRectLock;
+    int SaveSeamlessRectLock(void);
+    void SaveSeamlessRectUnLock(void);
+    
 public:
     static int displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_t **ppu8Data, size_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height);
 
