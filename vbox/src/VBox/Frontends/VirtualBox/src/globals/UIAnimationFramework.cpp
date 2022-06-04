@@ -1,4 +1,4 @@
-/* $Id: UIAnimationFramework.cpp 46809 2013-06-26 17:23:10Z vboxsync $ */
+/* $Id: UIAnimationFramework.cpp 47015 2013-07-05 16:51:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -70,9 +70,12 @@ void UIAnimation::prepare()
 {
     /* Prepare animation-machine: */
     m_pAnimationMachine = new QStateMachine(this);
-    /* Create 'start' and 'final' states: */
-    QState *pStateStart = new QState(m_pAnimationMachine);
-    QState *pStateFinal = new QState(m_pAnimationMachine);
+    /* Create 'start' state: */
+    m_pStateStart = new QState(m_pAnimationMachine);
+    connect(m_pStateStart, SIGNAL(propertiesAssigned()), this, SIGNAL(sigStateEnteredStart()));
+    /* Create 'final' state: */
+    m_pStateFinal = new QState(m_pAnimationMachine);
+    connect(m_pStateFinal, SIGNAL(propertiesAssigned()), this, SIGNAL(sigStateEnteredFinal()));
 
     /* Prepare 'forward' animation: */
     m_pForwardAnimation = new QPropertyAnimation(parent(), m_pszPropertyName, m_pAnimationMachine);
@@ -84,16 +87,16 @@ void UIAnimation::prepare()
     m_pReverseAnimation->setDuration(m_iAnimationDuration);
 
     /* Prepare state-transitions: */
-    QSignalTransition *pStartToFinal = pStateStart->addTransition(parent(), m_pszSignalForward, pStateFinal);
+    QSignalTransition *pStartToFinal = m_pStateStart->addTransition(parent(), m_pszSignalForward, m_pStateFinal);
     pStartToFinal->addAnimation(m_pForwardAnimation);
-    QSignalTransition *pFinalToStart = pStateFinal->addTransition(parent(), m_pszSignalReverse, pStateStart);
+    QSignalTransition *pFinalToStart = m_pStateFinal->addTransition(parent(), m_pszSignalReverse, m_pStateStart);
     pFinalToStart->addAnimation(m_pReverseAnimation);
 
     /* Fetch animation-borders: */
     update();
 
     /* Choose initial state: */
-    m_pAnimationMachine->setInitialState(!m_fReverse ? pStateStart : pStateFinal);
+    m_pAnimationMachine->setInitialState(!m_fReverse ? m_pStateStart : m_pStateFinal);
     /* Start animation-machine: */
     m_pAnimationMachine->start();
 }
@@ -103,9 +106,11 @@ void UIAnimation::update()
     /* Update 'forward' animation: */
     m_pForwardAnimation->setStartValue(parent()->property(m_pszValuePropertyNameStart));
     m_pForwardAnimation->setEndValue(parent()->property(m_pszValuePropertyNameFinal));
+    m_pStateStart->assignProperty(parent(), m_pszPropertyName, parent()->property(m_pszValuePropertyNameStart));
     /* Update 'reverse' animation: */
     m_pReverseAnimation->setStartValue(parent()->property(m_pszValuePropertyNameFinal));
     m_pReverseAnimation->setEndValue(parent()->property(m_pszValuePropertyNameStart));
+    m_pStateFinal->assignProperty(parent(), m_pszPropertyName, parent()->property(m_pszValuePropertyNameFinal));
 }
 
 
