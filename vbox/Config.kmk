@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42262 2012-07-20 13:58:45Z vboxsync $
+# $Id: Config.kmk 42269 2012-07-20 14:37:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -961,6 +961,16 @@ endif
 #
 ifdef VBOX_WITHOUT_LINUX_COMPILER_H
  $(warning VBOX_WITHOUT_LINUX_COMPILER_H was renamed to VBOX_WITH_LINUX_COMPILER_H, the meaning is inverted.)
+endif
+
+#
+# Indicate VBOX_ONLY build if any of the VBOX_ONLY_* variables are set.
+#
+VBOX_ONLY_BUILD := $(strip $(foreach x, ADDITIONS DOCS EXTPACKS SDK TESTSUITE\
+	, $(if-expr defined(VBOX_ONLY_$(x)),VBOX_ONLY_$(x))))
+$(warning VBOX_ONLY_BUILD=$(VBOX_ONLY_BUILD))
+if $(words $(VBOX_ONLY_BUILD)) > 1
+ $(error VBox: More than one VBOX_ONLY build enabled! $(VBOX_ONLY_BUILD))
 endif
 
 #
@@ -5241,7 +5251,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42262 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42269 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
