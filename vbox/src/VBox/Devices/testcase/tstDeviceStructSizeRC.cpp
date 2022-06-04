@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 44720 2013-02-15 17:52:37Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 44722 2013-02-15 18:19:53Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1426,7 +1426,6 @@ int main()
 #endif
     GEN_CHECK_OFF(VMMDEV, szMsg);
     GEN_CHECK_OFF(VMMDEV, iMsg);
-    GEN_CHECK_OFF(VMMDEV, PortBase);
     GEN_CHECK_OFF(VMMDEV, irq);
     GEN_CHECK_OFF(VMMDEV, u32HostEventFlags);
     GEN_CHECK_OFF(VMMDEV, u32GuestFilterMask);

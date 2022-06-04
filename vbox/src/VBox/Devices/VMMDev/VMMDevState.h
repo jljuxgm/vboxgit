@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 44709 2013-02-15 01:50:45Z vboxsync $ */
+/* $Id: VMMDevState.h 44722 2013-02-15 18:19:53Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -157,10 +157,8 @@ typedef struct VMMDevState
     char szMsg[512];
     /** message buffer index. */
     uint32_t iMsg;
-    /** Base port in the assigned I/O space. */
-    RTIOPORT PortBase;
-    /** Alignment padding.  */
-    RTIOPORT PortAlignment2;
+    /** Alignment padding. */
+    uint32_t u32Alignment2;
 
     /** IRQ number assigned to the device */
     uint32_t irq;
