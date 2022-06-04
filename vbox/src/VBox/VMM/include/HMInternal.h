@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 47652 2013-08-09 14:56:17Z vboxsync $ */
+/* $Id: HMInternal.h 47718 2013-08-14 10:33:22Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -523,7 +523,9 @@ typedef struct HMCPU
     volatile bool               fCheckedTLBFlush;
     /** Whether we're executing a single instruction. */
     bool                        fSingleInstruction;
-    uint8_t                     abAlignment[3];
+    /** Set if we need to clear the trap flag because of single stepping. */
+    bool                        fClearTrapFlag;
+    uint8_t                     abAlignment[2];
 
     /** World switch exit counter. */
     volatile uint32_t           cWorldSwitchExits;
