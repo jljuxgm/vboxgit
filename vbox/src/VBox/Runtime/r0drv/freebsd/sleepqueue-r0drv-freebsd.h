@@ -1,4 +1,4 @@
-/* $Id: sleepqueue-r0drv-freebsd.h 37305 2011-06-02 12:32:20Z vboxsync $ */
+/* $Id: sleepqueue-r0drv-freebsd.h 43434 2012-09-26 08:18:31Z vboxsync $ */
 /** @file
  * IPRT - FreeBSD Ring-0 Driver Helpers for Abstracting Sleep Queues,
  */
@@ -36,7 +36,7 @@
 #include <iprt/time.h>
 
 /**
- * Kernel mode Linux wait state structure.
+ * Kernel mode FreeBSD wait state structure.
  */
 typedef struct RTR0SEMBSDSLEEP
 {
@@ -259,7 +259,7 @@ DECLINLINE(void) rtR0SemBsdWaitDoIt(PRTR0SEMBSDSLEEP pWait)
  *
  * @returns true / false
  * @param   pWait               The wait structure.
- * @remarks This shall be called before the first rtR0SemLnxWaitDoIt().
+ * @remarks This shall be called before the first rtR0SemBsdWaitDoIt().
  */
 DECLINLINE(bool) rtR0SemBsdWaitWasInterrupted(PRTR0SEMBSDSLEEP pWait)
 {
