@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46505 2013-06-11 17:37:54Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46507 2013-06-12 13:38:18Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3952,7 +3952,7 @@ DECLINLINE(int) hmR0VmxRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
 
 /**
- * Report world-switch error and dump some useful debug info.
+ * Reports world-switch error and dumps some useful debug info.
  *
  * @param   pVM             Pointer to the VM.
  * @param   pVCpu           Pointer to the VMCPU.
