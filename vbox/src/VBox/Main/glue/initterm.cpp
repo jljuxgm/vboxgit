@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 46649 2013-06-19 11:47:32Z vboxsync $ */
+/* $Id: initterm.cpp 46651 2013-06-19 11:54:43Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -555,7 +555,7 @@ HRESULT Shutdown()
              * init counter drops to zero */
             if (--gXPCOMInitCount == 0)
             {
-                MainEventQueue::uninit();
+                NativeEventQueue::uninit();
                 rc = NS_ShutdownXPCOM(nsnull);
 
                 /* This is a thread initialized XPCOM and set gIsXPCOMInitialized to

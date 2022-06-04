@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 46649 2013-06-19 11:47:32Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 46651 2013-06-19 11:54:43Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -5379,8 +5379,16 @@ DECLCALLBACK(int) VirtualBox::AsyncEventHandler(RTTHREAD thread, void *pvUser)
          * be done ONLY when we stop this loop via interruptEventQueueProcessing().
          * See @bugref{5724}.
          */
-        while (pEventQueue->processEventQueue(RT_INDEFINITE_WAIT) != VERR_INTERRUPTED)
-            /* nothing */ ;
+        for (;;)
+        {
+            rc = pEventQueue->processEventQueue(RT_INDEFINITE_WAIT);
+            if (rc == VERR_INTERRUPTED)
+            {
+                LogFlow(("Event queue processing ended with rc=%Rrc\n", rc));
+                rc = VINF_SUCCESS; /* Set success when exiting. */
+                break;
+            }
+        }
 
         delete pEventQueue;
     }
