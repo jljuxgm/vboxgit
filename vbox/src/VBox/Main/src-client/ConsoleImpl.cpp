@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 45814 2013-04-29 14:10:00Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 45890 2013-05-03 09:57:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5393,9 +5393,9 @@ HRESULT Console::onStorageDeviceChange(IMediumAttachment *aMediumAttachment, BOO
     if (ptrVM.isOk())
     {
         if (aRemove)
-            rc = doStorageDeviceDetach(aMediumAttachment, ptrVM.rawUVM(), aSilent);
+            rc = doStorageDeviceDetach(aMediumAttachment, ptrVM.rawUVM(), RT_BOOL(aSilent));
         else
-            rc = doStorageDeviceAttach(aMediumAttachment, ptrVM.rawUVM(), aSilent);
+            rc = doStorageDeviceAttach(aMediumAttachment, ptrVM.rawUVM(), RT_BOOL(aSilent));
         ptrVM.release();
     }
 

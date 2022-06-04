@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45878 2013-05-02 14:04:57Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 45890 2013-05-03 09:57:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2205,7 +2205,8 @@ STDMETHODIMP Display::SetVideoModeHint(ULONG aDisplay, BOOL aEnabled,
         PPDMIVMMDEVPORT pVMMDevPort = pVMMDev->getVMMDevPort();
         if (pVMMDevPort)
             pVMMDevPort->pfnRequestDisplayChange(pVMMDevPort, aWidth, aHeight, aBitsPerPixel,
-                                                 aDisplay, aOriginX, aOriginY, aEnabled, aChangeOrigin);
+                                                 aDisplay, aOriginX, aOriginY,
+                                                 RT_BOOL(aEnabled), RT_BOOL(aChangeOrigin));
     }
     return S_OK;
 }

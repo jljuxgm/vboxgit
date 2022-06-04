@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 45675 2013-04-23 09:13:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 45890 2013-05-03 09:57:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1328,7 +1328,8 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             case GraphicsControllerType_Null:
                 break;
             case GraphicsControllerType_VBoxVGA:
-                rc = configGraphicsController(pDevices, "vga", pBusMgr, pMachine, biosSettings, fHMEnabled);
+                rc = configGraphicsController(pDevices, "vga", pBusMgr, pMachine, biosSettings,
+                                              RT_BOOL(fHMEnabled));
                 if (FAILED(rc))
                     return rc;
                 break;
