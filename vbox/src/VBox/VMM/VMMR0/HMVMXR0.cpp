@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46714 2013-06-20 16:49:06Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46715 2013-06-20 16:53:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3340,7 +3340,6 @@ static void hmR0VmxValidateSegmentRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         /* SS */
         Assert((pCtx->ss.Sel & X86_SEL_RPL) == (pCtx->cs.Sel & X86_SEL_RPL));
         Assert(pCtx->ss.Attr.n.u2Dpl == (pCtx->ss.Sel & X86_SEL_RPL));
-        Assert(!(pVCpu->hm.s.fContextUseFlags & HM_CHANGED_GUEST_CR0));
         if (   !(pCtx->cr0 & X86_CR0_PE)
             || pCtx->cs.Attr.n.u4Type == 3)
         {
