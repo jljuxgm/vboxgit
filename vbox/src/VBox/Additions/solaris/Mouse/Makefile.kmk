@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41852 2012-06-20 15:59:57Z vboxsync $
+# $Id: Makefile.kmk 42367 2012-07-24 13:49:19Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris Mouse Integration kernel module.
 #
@@ -48,6 +48,11 @@ else
  vboxms_SOURCES         += deps.asm
  vboxms_deps.asm_ASFLAGS = -f bin -g null
 endif
+
+
+PROGRAMS += vboxmslnk
+vboxmslnk_TEMPLATE    = NewVBoxGuestR3Exe
+vboxmslnk_SOURCES     = vboxmslnk.c
 
 
 if 0 # Broken - unresolved externals: vbglDriver*, RTR0AssertPanicSystem.
