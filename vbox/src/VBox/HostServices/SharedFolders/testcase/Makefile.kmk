@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46031 2013-05-13 16:15:16Z vboxsync $
+# $Id: Makefile.kmk 46032 2013-05-13 16:17:45Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -54,7 +54,7 @@ tstShflCase_LIBS     = $(LIB_RUNTIME)
 # HGCM service testcase.
 #
 
-PROGRAMS += tstSharedFolderService \
+PROGRAMS += tstSharedFolderService
 tstSharedFolderService_TEMPLATE = VBOXR3TSTEXE
 tstSharedFolderService_DEFS     = VBOX_WITH_HGCM UNITTEST
 tstSharedFolderService_INCS     = ..
