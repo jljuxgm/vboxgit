@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45537 2013-04-13 22:13:15Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 45690 2013-04-24 09:34:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1791,7 +1791,7 @@ bool UIMessageCenter::confirmInputCapture(bool &fAutoConfirmed) const
                       0,
                       tr("Capture", "do input capture"));
     /* Was the message auto-confirmed? */
-    fAutoConfirmed = (rc & AutoConfirmed);
+    fAutoConfirmed = (rc & AlertOption_AutoConfirmed);
     /* True if "Ok" was pressed: */
     return (rc & AlertButtonMask) == AlertButton_Ok;
 }
@@ -2724,7 +2724,7 @@ int UIMessageCenter::showMessageBox(QWidget *pParent, MessageType type,
         confirmedMessageList = vbox.GetExtraData(GUI_SuppressMessages).split(',');
         if (confirmedMessageList.contains(strAutoConfirmId))
         {
-            int iResultCode = AutoConfirmed;
+            int iResultCode = AlertOption_AutoConfirmed;
             if (iButton1 & AlertButtonOption_Default)
                 iResultCode |= (iButton1 & AlertButtonMask);
             if (iButton2 & AlertButtonOption_Default)
