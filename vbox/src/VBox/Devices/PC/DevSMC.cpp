@@ -1,6 +1,8 @@
-/* $Id: DevSMC.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DevSMC.cpp 44805 2013-02-22 19:54:41Z vboxsync $ */
 /** @file
  * DevSMC - SMC device emulation.
+ *
+ * @todo Rainy day: Rewrite from scratch!!
  */
 
 /*
