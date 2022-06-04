@@ -1,4 +1,4 @@
-/* $Id: rand-posix.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: rand-posix.cpp 45263 2013-03-31 04:29:57Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers and Byte Streams, POSIX.
  */
@@ -56,7 +56,10 @@ static DECLCALLBACK(void) rtRandAdvPosixGetBytes(PRTRANDINT pThis, uint8_t *pb, 
     ssize_t cbRead = read(pThis->u.File.hFile, pb, cb);
     if ((size_t)cbRead != cb)
     {
-        ssize_t cTries = RT_MIN(cb, 256);
+        /* S10 has been observed returning 1040 bytes at the time from /dev/urandom.
+           Which means we need to do than 256 rounds to reach 668171 bytes if
+           that's what demanded by the caller (like tstRTMemWipe.cpp). */
+        ssize_t cTries = RT_MAX(256, cb / 64);
         do
         {
             if (cbRead > 0)
