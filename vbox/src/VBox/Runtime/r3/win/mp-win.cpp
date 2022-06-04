@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 46618 2013-06-18 12:04:42Z vboxsync $ */
+/* $Id: mp-win.cpp 46619 2013-06-18 12:06:16Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -124,7 +124,7 @@ RTDECL(RTCPUID) RTMpGetCoreCount(void)
                 switch (pSysInfoTmp->Relationship)
                 {
                     case RelationProcessorCore:
-                        cCore++;
+                        cCores++;
                         break;
                     case RelationCache:
                     case RelationNumaNode:
