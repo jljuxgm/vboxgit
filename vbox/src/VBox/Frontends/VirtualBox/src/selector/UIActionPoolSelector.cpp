@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 42631 2012-08-06 17:01:21Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 42751 2012-08-10 11:24:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -866,6 +866,28 @@ protected:
     }
 };
 
+class UIActionSimpleSave : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimpleSave(QObject *pParent)
+        : UIActionSimple(pParent, ":/state_saved_16px.png")
+    {
+        retranslateUi();
+    }
+
+protected:
+
+    void retranslateUi()
+    {
+        setText(QApplication::translate("UIActionPool", "Save state"));
+        setStatusTip(QApplication::translate("UIActionPool", "Save the machine state of the selected virtual machine"));
+        setShortcut(gSS->keySequence(UISelectorShortcuts::SaveVMShortcut));
+    }
+};
+
 class UIActionSimpleACPIShutdown : public UIActionSimple
 {
     Q_OBJECT;
@@ -981,6 +1003,7 @@ void UIActionPoolSelector::createActions()
     m_pool[UIActionIndexSelector_Simple_Common_SortParent] = new UIActionSimpleCommonSortParent(this);
 
     /* 'Machine/Close' actions: */
+    m_pool[UIActionIndexSelector_Simple_Machine_Close_Save] = new UIActionSimpleSave(this);
     m_pool[UIActionIndexSelector_Simple_Machine_Close_ACPIShutdown] = new UIActionSimpleACPIShutdown(this);
     m_pool[UIActionIndexSelector_Simple_Machine_Close_PowerOff] = new UIActionSimplePowerOff(this);
 }
