@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 47694 2013-08-13 13:12:05Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 47756 2013-08-15 11:57:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -426,7 +426,7 @@ void UIPopupPane::paintBackground(const QRect &rect, QPainter &painter)
     QColor currentColor(palette().color(QPalette::Window));
     QColor newColor1(currentColor.red(), currentColor.green(), currentColor.blue(), opacity());
     QColor newColor2 = newColor1.darker(115);
-    QLinearGradient headerGradient(rect.topLeft(), rect.topRight());
+    QLinearGradient headerGradient(rect.topLeft(), rect.bottomLeft());
     headerGradient.setColorAt(0, newColor1);
     headerGradient.setColorAt(1, newColor2);
     painter.fillRect(rect, headerGradient);
