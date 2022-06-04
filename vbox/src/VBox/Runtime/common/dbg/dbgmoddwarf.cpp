@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 46260 2013-05-24 19:23:08Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 46261 2013-05-24 19:35:15Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -2344,6 +2344,8 @@ static int rtDwarfLine_AddLine(PRTDWARFLINESTATE pLnState, uint32_t offOpCode)
             if (rc == VERR_DBG_ADDRESS_CONFLICT)
                 rc = VINF_SUCCESS;
         }
+        else
+            rc = VINF_SUCCESS; /* ignore failure */
     }
 
     pLnState->Regs.fBasicBlock    = false;
