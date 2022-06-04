@@ -1,4 +1,4 @@
-/* $Id: server.cpp 45117 2013-03-21 08:16:22Z vboxsync $ */
+/* $Id: server.cpp 45119 2013-03-21 08:38:30Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -95,8 +95,6 @@
 #ifdef VBOX_WITH_EXTPACK
 # include "ExtPackManagerImpl.h"
 #endif
-# include "NATNetworkImpl.h"
-
 
 /* implement nsISupports parts of our objects with support for nsIClassInfo */
 
@@ -153,9 +151,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(HostNetworkInterface, IHostNetworkInterface)
 
 NS_DECL_CLASSINFO(DHCPServer)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(DHCPServer, IDHCPServer)
-
-NS_DECL_CLASSINFO(NATNetwork)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(NATNetwork, INATNetwork)
 
 NS_DECL_CLASSINFO(GuestOSType)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(GuestOSType, IGuestOSType)
