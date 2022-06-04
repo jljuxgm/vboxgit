@@ -1,4 +1,4 @@
-/* $Id: RTPathParsedReassemble.cpp 45400 2013-04-08 12:08:00Z vboxsync $ */
+/* $Id: RTPathParsedReassemble.cpp 46049 2013-05-14 07:56:54Z vboxsync $ */
 /** @file
  * IPRT - RTPathParsedReassemble.
  */
@@ -55,16 +55,14 @@ RTDECL(int) RTPathParsedReassemble(const char *pszSrcPath, PRTPATHPARSED pParsed
     char chSlash;
     switch (fFlags & RTPATH_STR_F_STYLE_MASK)
     {
-#if PATH_STYLE == RTPATH_STR_F_STYLE_DOS
         case RTPATH_STR_F_STYLE_HOST:
-#endif
+            chSlash = RTPATH_SLASH;
+            break;
+
         case RTPATH_STR_F_STYLE_DOS:
             chSlash = '\\';
             break;
 
-#if PATH_STYLE == RTPATH_STR_F_STYLE_UNIX
-        case RTPATH_STR_F_STYLE_HOST:
-#endif
         case RTPATH_STR_F_STYLE_UNIX:
             chSlash = '/';
             break;
