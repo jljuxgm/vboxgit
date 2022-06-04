@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 42200 2012-07-18 08:11:13Z vboxsync $ */
+/* $Id: DevAHCI.cpp 42204 2012-07-18 11:50:59Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -6765,13 +6765,7 @@ int ahciR3LoadLegacyEmulationState(PSSMHANDLE pSSM)
         SSMR3Skip(pSSM, sizeof(PDMLED));
         SSMR3GetU32(pSSM, &u32IOBuffer);
         if (u32IOBuffer)
-        {
-            /* skip the buffer . IO Buffer is not required.. */
-            uint8_t u8Ignored;
-            size_t cbLeft = u32IOBuffer;
-            while (cbLeft-- > 0)
-                SSMR3GetU8(pSSM, &u8Ignored);
-        }
+            SSMR3Skip(pSSM, u32IOBuffer);
     }
 
     rc = SSMR3GetU32(pSSM, &u32);
