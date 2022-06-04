@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 42177 2012-07-17 12:27:22Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 42210 2012-07-18 14:11:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -315,8 +315,8 @@ private:
     HRESULT unregisterDHCPServer(DHCPServer *aDHCPServer,
                                  bool aSaveRegistry = true);
 
-    void decryptSettings();
-    void decryptMediumSettings(Medium *pMedium);
+    int  decryptSettings();
+    int  decryptMediumSettings(Medium *pMedium);
     int  decryptSettingBytes(uint8_t *aPlaintext, const uint8_t *aCiphertext,
                              size_t aCiphertextSize) const;
     int  encryptSettingBytes(const uint8_t *aPlaintext, uint8_t *aCiphertext,
