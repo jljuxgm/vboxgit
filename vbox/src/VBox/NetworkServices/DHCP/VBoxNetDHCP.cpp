@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 47020 2013-07-06 17:42:33Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 47111 2013-07-12 10:37:24Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -625,8 +625,7 @@ bool VBoxNetDhcp::handleDhcpReqDiscover(PCRTNETBOOTP pDhcpMsg, size_t cb)
                                                   pDhcpMsg->bp_chaddr.Mac.au8[2],
                                                   pDhcpMsg->bp_chaddr.Mac.au8[3],
                                                   pDhcpMsg->bp_chaddr.Mac.au8[4],
-                                                  pDhcpMsg->bp_chaddr.Mac.au8[5],
-                                                  pDhcpMsg->bp_chaddr.Mac.au8[6]).raw(),
+                                                  pDhcpMsg->bp_chaddr.Mac.au8[5]).raw(),
                                           ComSafeArrayAsOutParam(sf));
         if (SUCCEEDED(hrc))
         {
