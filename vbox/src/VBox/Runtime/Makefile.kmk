@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44278 2013-01-13 20:52:34Z vboxsync $
+# $Id: Makefile.kmk 44426 2013-01-28 14:28:11Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -715,6 +715,7 @@ RuntimeR3_SOURCES.os2   = \
 	r3/os2/rtProcInitExePath-os2.cpp \
 	r3/os2/sched-os2.cpp \
 	r3/os2/sems-os2.cpp \
+	r3/os2/systemmem-os2.cpp \
 	r3/os2/thread-os2.cpp \
 	r3/os2/time-os2.cpp \
 	r3/posix/RTFileQueryFsSizes-posix.cpp \
