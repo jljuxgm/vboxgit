@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 43531 2012-10-04 06:59:56Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 43532 2012-10-04 07:10:49Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -828,7 +828,7 @@ int handleStorageAttach(HandlerArg *a)
                                                                  port, device, FALSE));
                 }
                 else
-                    throw Utf8StrFmt("Invalid --nonrotational argument '%s'", pszNonRotational);
+                    throw Utf8StrFmt("Invalid --discard argument '%s'", pszDiscard);
             }
             else
                 throw Utf8StrFmt("Couldn't find the controller attachment for the controller '%s'\n", pszCtl);
