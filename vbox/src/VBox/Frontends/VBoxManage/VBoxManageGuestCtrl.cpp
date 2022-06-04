@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 47311 2013-07-22 15:10:45Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 47325 2013-07-22 19:24:08Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2792,12 +2792,16 @@ static RTEXITCODE handleCtrlList(ComPtr<IGuest> guest, HandlerArg *pArg)
 
     RTEXITCODE rcExit = RTEXITCODE_SUCCESS;
 
+    /** Use RTGetOpt here when handling command line args gets more complex. */
+
     bool fListAll = false;
     bool fListSessions = false;
     bool fListProcesses = false;
-    if (!RTStrICmp(pArg->argv[0], "sessions"))
+    if (   !RTStrICmp(pArg->argv[0], "sessions")
+        || !RTStrICmp(pArg->argv[0], "sess"))
         fListSessions = true;
-    else if (!RTStrICmp(pArg->argv[0], "processes"))
+    else if (   !RTStrICmp(pArg->argv[0], "processes")
+             || !RTStrICmp(pArg->argv[0], "procs"))
         fListSessions = fListProcesses = true; /* Showing processes implies showing sessions. */
     else if (!RTStrICmp(pArg->argv[0], "all"))
         fListAll = true;
