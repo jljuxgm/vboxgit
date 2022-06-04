@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.h 45674 2013-04-23 08:45:54Z vboxsync $ */
+/* $Id: VRDEServerImpl.h 45680 2013-04-23 13:00:08Z vboxsync $ */
 
 /** @file
  *
@@ -65,7 +65,6 @@ public:
     void uninit();
 
     // IVRDEServer properties
-    STDMETHOD(COMGETTER(CheckPrerequisites))(BOOL *aCheckPrerequisites);
     STDMETHOD(COMGETTER(Enabled))(BOOL *aEnabled);
     STDMETHOD(COMSETTER(Enabled))(BOOL aEnable);
     STDMETHOD(COMGETTER(AuthType))(AuthType_T *aType);
