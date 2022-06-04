@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxDD.cpp 44575 2013-02-06 18:21:17Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -36,9 +36,6 @@
 *******************************************************************************/
 const void *g_apvVBoxDDDependencies[] =
 {
-#if defined(VBOX_WITH_EFI) && !defined(VBOX_WITH_OVMF)
-    &g_abEfiThunkBinary[0],
-#endif
     NULL,
 };
 
