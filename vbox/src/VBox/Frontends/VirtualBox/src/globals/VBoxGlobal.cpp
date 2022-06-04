@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 44710 2013-02-15 12:29:57Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 44948 2013-03-07 10:36:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4962,7 +4962,7 @@ bool VBoxGlobal::launchMachine(CMachine &machine, bool fHeadless /* = false */)
     if (xauth)
         env.append(QString("XAUTHORITY=%1\n").arg(xauth));
 #endif
-    const QString strType = fHeadless ? "headless" : "GUI/Qt";
+    const QString strType = fHeadless ? "headless" : "";
 
     CProgress progress = machine.LaunchVMProcess(session, strType, env);
     if (   !vbox.isOk()

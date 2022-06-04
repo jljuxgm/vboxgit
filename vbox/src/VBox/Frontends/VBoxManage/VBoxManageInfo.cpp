@@ -1,10 +1,10 @@
-/* $Id: VBoxManageInfo.cpp 44028 2012-12-04 08:03:41Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 44948 2013-03-07 10:36:42Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -712,6 +712,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
     SHOW_STRING_PROP(     machine,  TracingConfig,              "tracing-config",           "Tracing Configuration");
     SHOW_BOOLEAN_PROP(    machine,  AutostartEnabled,           "autostart-enabled",        "Autostart Enabled");
     SHOW_ULONG_PROP(      machine,  AutostartDelay,             "autostart-delay",          "Autostart Delay", "");
+    SHOW_STRING_PROP(     machine,  DefaultFrontend,            "defaultfrontend",          "Default Frontend");
 
 /** @todo Convert the remainder of the function to SHOW_XXX macros and add error
  *        checking where missing. */
@@ -1565,7 +1566,24 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
         if (details == VMINFO_MACHINEREADABLE)
             RTPrintf("draganddrop=\"%s\"\n", psz);
         else
-            RTPrintf("Drag'n'drop Mode:  %s\n", psz);
+            RTPrintf("Drag'n'drop Mode: %s\n", psz);
+    }
+
+    {
+        SessionState_T sessState;
+        rc = machine->COMGETTER(SessionState)(&sessState);
+        if (SUCCEEDED(rc) && sessState != SessionState_Unlocked)
+        {
+            Bstr sessType;
+            rc = machine->COMGETTER(SessionType)(sessType.asOutParam());
+            if (SUCCEEDED(rc) && !sessType.isEmpty())
+            {
+                if (details == VMINFO_MACHINEREADABLE)
+                    RTPrintf("SessionType=\"%ls\"\n", sessType.raw());
+                else
+                    RTPrintf("Session type:    %ls\n", sessType.raw());
+            }
+        }
     }
 
     if (console)
