@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 45050 2013-03-15 13:21:33Z vboxsync $ */
+/* $Id: UIVMItem.cpp 45054 2013-03-18 08:53:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -259,6 +259,9 @@ bool UIVMItem::recache()
         /* Should we allow reconfiguration for this item? */
         m_fReconfigurable = m_machineState != KMachineState_Stuck &&
                             VBoxGlobal::shouldWeAllowMachineReconfiguration(m_machine);
+
+        /* Should we show details for this item? */
+        m_fHasDetails = VBoxGlobal::shouldWeShowDetails(m_machine);
     }
     else
     {
@@ -285,6 +288,9 @@ bool UIVMItem::recache()
 
         /* Should we allow reconfiguration for this item? */
         m_fReconfigurable = false;
+
+        /* Should we show details for this item? */
+        m_fHasDetails = true;
     }
 
     return needsResort;

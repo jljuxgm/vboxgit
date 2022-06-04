@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45050 2013-03-15 13:21:33Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45054 2013-03-18 08:53:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3979,6 +3979,27 @@ bool VBoxGlobal::shouldWeAllowMachineReconfiguration(CMachine &machine,
 
     /* 'true' if reconfiguration is not restricted by the extra-data: */
     return !isApprovedByExtraData(machine, GUI_PreventReconfiguration);
+}
+
+/* static */
+bool VBoxGlobal::shouldWeShowDetails(CMachine &machine,
+                                     bool fIncludingMachineGeneralCheck /*= false*/)
+{
+    /* Should we perform machine general check? */
+    if (fIncludingMachineGeneralCheck)
+    {
+        /* 'false' for null machines: */
+        if (machine.isNull())
+            return false;
+
+        /* 'true' for inaccessible machines,
+         * because we can't verify anything in that case: */
+        if (!machine.GetAccessible())
+            return true;
+    }
+
+    /* 'true' if hiding is not approved by the extra-data: */
+    return !isApprovedByExtraData(machine, GUI_HideDetails);
 }
 
 // Public slots

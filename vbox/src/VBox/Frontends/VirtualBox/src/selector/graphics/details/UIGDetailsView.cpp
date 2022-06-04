@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsView.cpp 45007 2013-03-12 15:16:43Z vboxsync $ */
+/* $Id: UIGDetailsView.cpp 45054 2013-03-18 08:53:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -52,6 +52,8 @@ void UIGDetailsView::sltMinimumWidthHintChanged(int iMinimumWidthHint)
 
     /* Remember new value: */
     m_iMinimumWidthHint = iMinimumWidthHint;
+    if (m_iMinimumWidthHint <= 0)
+        m_iMinimumWidthHint = 1;
 
     /* Set minimum view width according passed width-hint: */
     setMinimumWidth(2 * frameWidth() + iMinimumWidthHint + verticalScrollBar()->sizeHint().width());
@@ -68,6 +70,8 @@ void UIGDetailsView::sltMinimumHeightHintChanged(int iMinimumHeightHint)
 
     /* Remember new value: */
     m_iMinimumHeightHint = iMinimumHeightHint;
+    if (m_iMinimumHeightHint <= 0)
+        m_iMinimumHeightHint = 1;
 
     /* Update scene-rect: */
     updateSceneRect();
