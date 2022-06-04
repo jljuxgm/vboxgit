@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 42170 2012-07-16 20:17:25Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 43298 2012-09-11 13:02:58Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2596,16 +2596,9 @@ static VOID vboxWddmSlVSyncDpc(
                 pDevExt->u.primary.DxgkInterface.DxgkCbNotifyInterrupt(pDevExt->u.primary.DxgkInterface.DeviceHandle, &notify);
                 bNeedDpc = TRUE;
             }
-#ifdef DEBUG_misha
-            else
-                Assert(0);
-#endif
+
             vboxWddmAllocationRelease(pPrimary);
         }
-#ifdef DEBUG_misha
-        else
-            Assert(0);
-#endif
     }
 
     if (bNeedDpc)
