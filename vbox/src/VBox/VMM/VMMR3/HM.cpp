@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 44197 2012-12-21 17:52:16Z vboxsync $ */
+/* $Id: HM.cpp 44201 2012-12-24 11:41:34Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1204,6 +1204,9 @@ static int hmR3InitFinalizeR0(PVM pVM)
                 }
                 else
                 {
+                    /** @todo This cannot possibly work, there are other places which assumes
+                     *        this allocation cannot fail (see HMR3CanExecuteGuest()). Make this
+                     *        a failure case. */
                     LogRel(("HM: No real mode VT-x support (PDMR3VMMDevHeapAlloc returned %Rrc)\n", rc));
                     pVM->hm.s.vmx.pRealModeTSS = NULL;
                     pVM->hm.s.vmx.pNonPagingModeEPTPageTable = NULL;
