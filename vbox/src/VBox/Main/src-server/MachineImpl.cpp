@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 44814 2013-02-25 09:19:08Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12875,15 +12875,12 @@ STDMETHODIMP SessionMachine::PushGuestProperty(IN_BSTR aName,
             case MachineState_DeletingSnapshotOnline:
             case MachineState_DeletingSnapshotPaused:
             case MachineState_Saving:
+            case MachineState_Stopping:
                 break;
 
             default:
-#ifndef DEBUG_sunlover
                 AssertMsgFailedReturn(("%s\n", Global::stringifyMachineState(mData->mMachineState)),
                                       VBOX_E_INVALID_VM_STATE);
-#else
-                return VBOX_E_INVALID_VM_STATE;
-#endif
         }
 
         setModified(IsModified_MachineData);
