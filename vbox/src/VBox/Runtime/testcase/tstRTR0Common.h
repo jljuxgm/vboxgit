@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Common.h 47554 2013-08-06 10:09:20Z vboxsync $ */
+/* $Id: tstRTR0Common.h 47555 2013-08-06 10:28:02Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Common header.
  */
@@ -188,10 +188,11 @@ static uint32_t volatile g_cErrors;
  * Same as RTR0TESTR0_SKIP + break.
  */
 #define RTR0TESTR0_SKIP_BREAK() \
-    do { \
+    if (1) \
+    { \
         RTR0TestR0Skip("line %u: SKIPPED", __LINE__); \
         break; \
-    } while (0)
+    } else do { } while (0)
 
 
 /**
