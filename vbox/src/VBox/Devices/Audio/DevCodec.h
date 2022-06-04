@@ -1,4 +1,4 @@
-/* $Id: DevCodec.h 44637 2013-02-11 15:27:22Z vboxsync $ */
+/* $Id: DevCodec.h 44639 2013-02-11 19:25:42Z vboxsync $ */
 /** @file
  * DevCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -487,7 +487,7 @@ typedef struct CODECState
 #else
     PCODECEMU               pCodecBackend;
 #endif
-    PCODECNODE               pNodes;
+    PCODECNODE              paNodes;
     QEMUSoundCard           card;
     /** PCM in */
     SWVoiceIn               *SwVoiceIn;
