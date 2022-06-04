@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
+/* $Id: UIDefs.cpp 45035 2013-03-14 11:08:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -59,6 +59,7 @@ const char* UIDefs::GUI_VirtualScreenToHostScreen = "GUI/VirtualScreenToHostScre
 const char* UIDefs::GUI_AutoresizeGuest = "GUI/AutoresizeGuest";
 const char* UIDefs::GUI_SaveMountedAtRuntime = "GUI/SaveMountedAtRuntime";
 const char* UIDefs::GUI_PassCAD = "GUI/PassCAD";
+const char* UIDefs::GUI_HideFromManager = "GUI/HideFromManager";
 
 /* Mini tool-bar definitions: */
 const char* UIDefs::GUI_ShowMiniToolBar = "GUI/ShowMiniToolBar";
