@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 43204 2012-09-05 13:24:14Z vboxsync $ */
+/* $Id: socket.cpp 43205 2012-09-05 13:26:16Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -805,7 +805,11 @@ RTDECL(int) RTSocketGetAddrInfo(const char *pszHost, char *pszResult, size_t *pc
         enmAddrType = RTNETADDRTYPE_IPV6;
     }
     else
+    {
         rc = VERR_NET_ADDRESS_NOT_AVAILABLE;
+        szIpAddress[0] = '\0';
+        cchIpAddress = 0;
+    }
     freeaddrinfo(pgrResults);
 
     /*
