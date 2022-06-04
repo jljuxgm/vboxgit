@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 42836 2012-08-16 07:11:15Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -2678,10 +2678,13 @@ static int pgmR3LoadMemory(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t
 
                         AssertLogRelMsgReturn(PGM_PAGE_GET_STATE(pPage) == PGM_PAGE_STATE_ALLOCATED, ("GCPhys=%RGp %R[pgmpage]\n", GCPhys, pPage), VERR_PGM_UNEXPECTED_PAGE_STATE);
 
-                        /* If this is a ROM page, we must clear it and not try
-                           free it... */
+                        /*
+                         * If this is a ROM page, we must clear it and not try to free it.
+                         * If the VM is using RamPreAlloc, don't free the page either (see @bugref{6318}).
+                         */
                         if (   PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_ROM
-                            || PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_ROM_SHADOW)
+                            || PGM_PAGE_GET_TYPE(pPage) == PGMPAGETYPE_ROM_SHADOW
+                            || pVM->pgm.s.fRamPreAlloc)
                         {
                             PGMPAGEMAPLOCK PgMpLck;
                             void          *pvDstPage;
