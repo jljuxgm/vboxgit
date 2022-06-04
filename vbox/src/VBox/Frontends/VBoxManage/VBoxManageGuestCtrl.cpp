@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 42444 2012-07-30 11:56:33Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 42445 2012-07-30 12:55:12Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -223,7 +223,7 @@ void usageGuestControl(PRTSTREAM pStrm)
                  "VBoxManage guestcontrol     <vmname>|<uuid>\n"
                  "                            exec[ute]\n"
                  "                            --image <path to program> --username <name>\n"
-                 "                            --passwordfile <file> | --password <password>\n"
+                 "                            [--passwordfile <file> | --password <password>]\n"
                  "                            [--environment \"<NAME>=<VALUE> [<NAME>=<VALUE>]\"]\n"
                  "                            [--verbose] [--timeout <msec>]\n"
                  "                            [--wait-exit] [--wait-stdout] [--wait-stderr]\n"
@@ -234,22 +234,22 @@ void usageGuestControl(PRTSTREAM pStrm)
                  "\n"
                  "                            copyfrom\n"
                  "                            <guest source> <host dest> --username <name>\n"
-                 "                            --passwordfile <file> | --password <password>\n"
+                 "                            [--passwordfile <file> | --password <password>]\n"
                  "                            [--dryrun] [--follow] [--recursive] [--verbose]\n"
                  "\n"
                  "                            copyto|cp\n"
                  "                            <host source> <guest dest> --username <name>\n"
-                 "                            --passwordfile <file> | --password <password>\n"
+                 "                            [--passwordfile <file> | --password <password>]\n"
                  "                            [--dryrun] [--follow] [--recursive] [--verbose]\n"
                  "\n"
                  "                            createdir[ectory]|mkdir|md\n"
                  "                            <guest directory>... --username <name>\n"
-                 "                            --passwordfile <file> | --password <password>\n"
+                 "                            [--passwordfile <file> | --password <password>]\n"
                  "                            [--parents] [--mode <mode>] [--verbose]\n"
                  "\n"
                  "                            stat\n"
                  "                            <file>... --username <name>\n"
-                 "                            --passwordfile <file> | --password <password>\n"
+                 "                            [--passwordfile <file> | --password <password>]\n"
                  "                            [--verbose]\n"
                  "\n"
                  "                            updateadditions\n"
