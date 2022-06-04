@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 47495 2013-07-31 14:57:04Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 47502 2013-08-01 08:21:41Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1031,7 +1031,7 @@ static RTEXITCODE handleCtrlExecProgram(ComPtr<IGuest> pGuest, HandlerArg *pArg)
      * access and/or kill detached guest process lateron.
      */
     if (   fWaitForExit
-        || rcExit != EXITCODEEXEC_SUCCESS)
+        || rcExit != RTEXITCODE_SUCCESS)
     {
         if (fVerbose)
             RTPrintf("Closing guest session ...\n");
