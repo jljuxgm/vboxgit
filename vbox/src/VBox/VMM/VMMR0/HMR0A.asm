@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 46942 2013-07-03 14:53:47Z vboxsync $
+; $Id: HMR0A.asm 47123 2013-07-12 15:31:44Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -372,6 +372,16 @@ BEGINPROC VMXRestoreHostState
 %endif
     ret
 ENDPROC VMXRestoreHostState
+
+
+;/**
+; * Dispatches an NMI to the host.
+; */
+ALIGNCODE(16)
+BEGINPROC VMXDispatchHostNmi
+    int 2   ; NMI is always vector 2. The IDT[2] IRQ handler cannot be anything else. See Intel spec. 6.3.1 "External Interrupts".
+    ret
+ENDPROC VMXDispatchHostNmi
 
 
 ;/**

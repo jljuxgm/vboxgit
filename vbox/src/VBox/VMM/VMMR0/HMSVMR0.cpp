@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47119 2013-07-12 13:36:37Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47123 2013-07-12 15:31:44Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3531,7 +3531,13 @@ static int hmR0SvmCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMT
 HMSVM_EXIT_DECL hmR0SvmExitIntr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTransient)
 {
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
-    STAM_COUNTER_INC(&pVCpu->hm.s.StatExitExtInt);
+
+#ifdef VBOX_WITH_STATISTICS
+    if (pSvmTransient->u64ExitCode == SVM_EXIT_NMI)
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmi);
+    else if (pSvmTransient->u64ExitCode == SVM_EXIT_INTR)
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatExitExtInt);
+#endif
 
     /*
      * AMD-V has no preemption timer and the generic periodic preemption timer has no way to signal -before- the timer
