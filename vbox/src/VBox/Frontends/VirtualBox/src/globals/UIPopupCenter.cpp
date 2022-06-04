@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 47644 2013-08-09 13:40:03Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 47693 2013-08-13 13:09:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -371,7 +371,7 @@ void UIPopupCenter::assignPopupStackParent(UIPopupStack *pPopupStack, QWidget *p
     AssertPtrReturnVoid(pParent);
 
     /* Assign event-filter: */
-    pParent->installEventFilter(pPopupStack);
+    pParent->window()->installEventFilter(pPopupStack);
 
     /* Assign parent depending on passed *stack* type: */
     switch (stackType)
@@ -400,7 +400,7 @@ void UIPopupCenter::unassignPopupStackParent(UIPopupStack *pPopupStack, QWidget 
     pPopupStack->setParent(0);
 
     /* Unassign event-filter: */
-    pParent->removeEventFilter(pPopupStack);
+    pParent->window()->removeEventFilter(pPopupStack);
 }
 
 void UIPopupCenter::cannotSendACPIToMachine(QWidget *pParent)
