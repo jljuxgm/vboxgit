@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.h 45434 2013-04-09 13:51:55Z vboxsync $ */
+/* $Id: GuestFileImpl.h 45568 2013-04-16 12:26:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -115,8 +115,6 @@ private:
 
     struct Data
     {
-        /** All related callbacks to this file. */
-        GuestCtrlCallbacks      mCallbacks;
         /** The file's open info. */
         GuestFileOpenInfo       mOpenInfo;
         /** The file's initial size on open. */
