@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 46376 2013-06-04 11:46:07Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 46919 2013-07-02 18:46:43Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -479,6 +479,7 @@ void vmmdevTestingTerminate(PPDMDEVINS pDevIns)
 
     if (pThis->hTestingTest != NIL_RTTEST)
     {
+        RTTestFailed(pThis->hTestingTest, "Still open at vmmdev destruction.");
         RTTestSummaryAndDestroy(pThis->hTestingTest);
         pThis->hTestingTest = NIL_RTTEST;
     }
