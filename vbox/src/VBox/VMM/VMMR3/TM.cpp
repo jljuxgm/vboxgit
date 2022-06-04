@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 42492 2012-08-01 07:49:41Z vboxsync $ */
+/* $Id: TM.cpp 42493 2012-08-01 07:56:56Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -814,7 +814,7 @@ static bool tmR3HasFixedTSC(PVM pVM)
              * This only checks for VIA CPU models Nano X2, Nano X3,
              * Eden X2 and QuadCore.
              */
-            ASMCpuId(0, &uEAX, &uEBX, &uECX, &uEDX);
+            ASMCpuId(1, &uEAX, &uEBX, &uECX, &uEDX);
             unsigned uStepping = (uEAX & 0x0f);
             unsigned uModel    = (uEAX >> 4) & 0x0f;
             unsigned uFamily   = (uEAX >> 8) & 0x0f;
