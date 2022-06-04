@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 43844 2012-11-09 05:35:42Z vboxsync $ */
+/* $Id: tstCollector.cpp 43958 2012-11-26 10:37:06Z vboxsync $ */
 
 /** @file
  *
@@ -230,6 +230,15 @@ int testDisk(pm::CollectorHAL *collector)
     if (disks.empty())
     {
         RTPrintf("tstCollector: getDiskListByFs(%s) returned empty list\n", FSNAME);
+        return 1;
+    }
+
+    uint64_t diskSize = 0;
+    rc = collector->getHostDiskSize(disks.front().c_str(), &diskSize);
+    RTPrintf("tstCollector: TESTING - Disk size (%s) = %llu\n", disks.front().c_str(), diskSize);
+    if (RT_FAILURE(rc))
+    {
+        RTPrintf("tstCollector: getHostDiskSize() -> %Rrc\n", rc);
         return 1;
     }
 

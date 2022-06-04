@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 43949 2012-11-23 13:43:19Z vboxsync $ */
+/* $Id: Performance.cpp 43958 2012-11-26 10:37:06Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -81,6 +81,11 @@ int CollectorHAL::getHostMemoryUsage(ULONG * /* total */, ULONG * /* used */, UL
 }
 
 int CollectorHAL::getHostFilesystemUsage(const char * /* name */, ULONG * /* total */, ULONG * /* used */, ULONG * /* available */)
+{
+    return E_NOTIMPL;
+}
+
+int CollectorHAL::getHostDiskSize(const char * /* name */, uint64_t * /* size */)
 {
     return E_NOTIMPL;
 }
@@ -856,6 +861,25 @@ void HostFilesystemUsage::collect()
         mAvailable->put(available);
 
     }
+}
+
+void HostDiskUsage::init(ULONG period, ULONG length)
+{
+    mPeriod = period;
+    mLength = length;
+    mTotal->init(mLength);
+}
+
+void HostDiskUsage::preCollect(CollectorHints& /* hints */, uint64_t /* iTick */)
+{
+}
+
+void HostDiskUsage::collect()
+{
+    uint64_t total;
+    int rc = mHAL->getHostDiskSize(mDiskName.c_str(), &total);
+    if (RT_SUCCESS(rc))
+        mTotal->put((ULONG)(total / (1024*1024)));
 }
 
 #ifndef VBOX_COLLECTOR_TEST_CASE
