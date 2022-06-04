@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 43958 2012-11-26 10:37:06Z vboxsync $ */
+/* $Id: tstCollector.cpp 44031 2012-12-04 12:19:12Z vboxsync $ */
 
 /** @file
  *
@@ -154,6 +154,7 @@ int testNetwork(pm::CollectorHAL *collector)
 
     RTPrintf("tstCollector: TESTING - Network load, sleeping for 5 sec...\n");
 
+    hostRxStart = hostTxStart = 0;
     int rc = collector->preCollect(hints, 0);
     if (RT_FAILURE(rc))
     {
@@ -175,6 +176,8 @@ int testNetwork(pm::CollectorHAL *collector)
         RTPrintf("tstCollector: preCollect() -> %Rrc\n", rc);
         return 1;
     }
+    hostRxStop = hostRxStart;
+    hostTxStop = hostTxStart;
     rc = collector->getRawHostNetworkLoad(NETIFNAME, &hostRxStop, &hostTxStop);
     if (RT_FAILURE(rc))
     {
