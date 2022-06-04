@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVhwa.cpp 42081 2012-07-10 09:47:29Z vboxsync $ */
+/* $Id: VBoxMPVhwa.cpp 43286 2012-09-11 09:36:15Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -338,7 +338,6 @@ int vboxVhwaDisable(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID srcId
     AssertRC(rc);
     if(RT_SUCCESS(rc))
     {
-        AssertRC(pCmd->rc);
         if(RT_SUCCESS(pCmd->rc))
             rc = VINF_SUCCESS;
         else
