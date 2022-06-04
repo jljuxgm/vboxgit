@@ -1,4 +1,4 @@
-/* $Id: filesplitter.cpp 41630 2012-06-08 17:54:54Z vboxsync $ */
+/* $Id: filesplitter.cpp 42414 2012-07-26 15:06:15Z vboxsync $ */
 /** @file
  * File splitter - Splits a text file according to ###### markers in it.
  */
@@ -209,7 +209,6 @@ static int readFile(const char *pcszFile, char **ppszFile, size_t *pcchFile)
 static bool compareSubFile(const char *pcszFilename, const char *pcszSubContent, size_t cchSubContent)
 {
     struct stat     FileStat;             
-    FILE           *pFile;
     if (stat(pcszFilename, &FileStat))
         return false;
     if ((size_t)FileStat.st_size < cchSubContent)
