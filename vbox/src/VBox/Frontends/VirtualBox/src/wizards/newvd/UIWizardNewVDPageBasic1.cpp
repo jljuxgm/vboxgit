@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 45582 2013-04-17 07:59:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -103,8 +103,11 @@ UIWizardNewVDPageBasic1::UIWizardNewVDPageBasic1()
                         addFormatButton(this, pFormatLayout, medFormat);
                 }
             }
-            m_pFormatButtonGroup->button(0)->click();
-            m_pFormatButtonGroup->button(0)->setFocus();
+            if (!m_pFormatButtonGroup->buttons().isEmpty())
+            {
+                m_pFormatButtonGroup->button(0)->click();
+                m_pFormatButtonGroup->button(0)->setFocus();
+            }
         }
         pMainLayout->addWidget(m_pLabel);
         pMainLayout->addLayout(pFormatLayout);
@@ -153,21 +156,28 @@ int UIWizardNewVDPageBasic1::nextId() const
 {
     /* Show variant page only if there is something to show: */
     CMediumFormat mf = mediumFormat();
-    ULONG uCapabilities = 0;
-    QVector<KMediumFormatCapabilities> capabilities;
-    capabilities = mf.GetCapabilities();
-    for (int i = 0; i < capabilities.size(); i++)
-        uCapabilities |= capabilities[i];
+    if (mf.isNull())
+    {
+        AssertMsgFailed(("No medium format set!"));
+    }
+    else
+    {
+        ULONG uCapabilities = 0;
+        QVector<KMediumFormatCapabilities> capabilities;
+        capabilities = mf.GetCapabilities();
+        for (int i = 0; i < capabilities.size(); i++)
+            uCapabilities |= capabilities[i];
 
-    int cTest = 0;
-    if (uCapabilities & KMediumFormatCapabilities_CreateDynamic)
-        ++cTest;
-    if (uCapabilities & KMediumFormatCapabilities_CreateFixed)
-        ++cTest;
-    if (uCapabilities & KMediumFormatCapabilities_CreateSplit2G)
-        ++cTest;
-    if (cTest > 1)
-        return UIWizardNewVD::Page2;
+        int cTest = 0;
+        if (uCapabilities & KMediumFormatCapabilities_CreateDynamic)
+            ++cTest;
+        if (uCapabilities & KMediumFormatCapabilities_CreateFixed)
+            ++cTest;
+        if (uCapabilities & KMediumFormatCapabilities_CreateSplit2G)
+            ++cTest;
+        if (cTest > 1)
+            return UIWizardNewVD::Page2;
+    }
     /* Skip otherwise: */
     return UIWizardNewVD::Page3;
 }
