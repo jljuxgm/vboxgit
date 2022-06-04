@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47432 2013-07-27 00:35:49Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47434 2013-07-27 01:34:28Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8357,7 +8357,13 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
         /** @todo for now manually disassemble later optimize by getting the fields from
          *        the VMCS. VMX_VMCS_RO_EXIT_GUEST_LINEAR_ADDR contains the flat pointer
          *        operand of the instruction. VMX_VMCS32_RO_EXIT_INSTR_INFO contains
-         *        segment prefix info. */
+         *        segment prefix info.
+         *  bird: The linear address isn't worth more than a few ticks, esp. for
+         *        32-bit guests where we'd have to do limit checks.  Main point,
+         *        though, is that AMD doesn't have it. They both have segment reg,
+         *        address mode (size) and operand size. Though, Intel didn't have the
+         *        segment+addrsize on the early models (Footnote 3 on table 27-8, volume
+         *        3, July 2013 edition). */
         PDISCPUSTATE pDis = &pVCpu->hm.s.DisState;
         rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, NULL);
         if (RT_SUCCESS(rc))
