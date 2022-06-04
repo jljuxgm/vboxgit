@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45452 2013-04-10 10:19:38Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 45537 2013-04-13 22:13:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -278,7 +278,7 @@ int UIMessageCenter::messageWithOption(QWidget *pParent, MessageType type,
     }
 
     /* Create message-box: */
-    QWidget *pBoxParent = windowManager().realParentWindow(pParent);
+    QWidget *pBoxParent = windowManager().realParentWindow(pParent ? pParent : windowManager().mainWindowShown());
     QPointer<QIMessageBox> pBox = new QIMessageBox(strTitle, strMessage, icon,
                                                    iButton1, iButton2, iButton3, pBoxParent);
     windowManager().registerNewParent(pBox, pBoxParent);
