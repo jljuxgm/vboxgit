@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 44673 2013-02-13 19:53:27Z vboxsync $ */
+/* $Id: VHD.cpp 44786 2013-02-21 15:58:31Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -299,7 +299,7 @@ out:
 static int vhdLocatorUpdate(PVHDIMAGE pImage, PVHDPLE pLocator, const char *pszFilename)
 {
     int      rc = VINF_SUCCESS;
-    uint32_t cb, cbMaxLen = RT_BE2H_U32(pLocator->u32DataSpace) * VHD_SECTOR_SIZE;
+    uint32_t cb, cbMaxLen = RT_BE2H_U32(pLocator->u32DataSpace);
     void     *pvBuf = RTMemTmpAllocZ(cbMaxLen);
     char     *pszTmp;
 
@@ -394,7 +394,7 @@ static int vhdLocatorUpdate(PVHDIMAGE pImage, PVHDPLE pLocator, const char *pszF
     if (RT_SUCCESS(rc))
         rc = vdIfIoIntFileWriteSync(pImage->pIfIo, pImage->pStorage,
                                     RT_BE2H_U64(pLocator->u64DataOffset),
-                                    pvBuf, RT_BE2H_U32(pLocator->u32DataSpace) * VHD_SECTOR_SIZE);
+                                    pvBuf, cb);
 
     if (pvBuf)
         RTMemTmpFree(pvBuf);
