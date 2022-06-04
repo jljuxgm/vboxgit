@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 45713 2013-04-24 16:38:41Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 45721 2013-04-25 08:11:30Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -39,6 +39,8 @@
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>
 #include <iprt/ctype.h>
+
+#include "HMInternal.h" /* for VBOX_ENABLE_64_BITS_GUESTS */
 
 
 /*******************************************************************************

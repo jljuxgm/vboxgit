@@ -1,4 +1,4 @@
-; $Id: X86Stub.asm 45701 2013-04-24 14:21:09Z vboxsync $
+; $Id: X86Stub.asm 45721 2013-04-25 08:11:30Z vboxsync $
 ;; @file
 ; VMM - World Switchers, X86 Stub.
 ;
@@ -87,7 +87,7 @@ GLOBALNAME Def
         at VMMSWITCHERDEF.pvFixups,                     RTCCPTR_DEF NAME(Fixups)
         at VMMSWITCHERDEF.pszDesc,                      RTCCPTR_DEF NAME(Description)
         at VMMSWITCHERDEF.pfnRelocate,                  RTCCPTR_DEF 0
-        at VMMSWITCHERDEF.enmType,                      dd VMMSWITCHER_AMD64_STUB
+        at VMMSWITCHERDEF.enmType,                      dd VMMSWITCHER_X86_STUB
         at VMMSWITCHERDEF.cbCode,                       dd NAME(End)                        - NAME(Start)
         at VMMSWITCHERDEF.offR0ToRawMode,               dd NAME(vmmR0ToRawMode)             - NAME(Start)
         at VMMSWITCHERDEF.offRCToHost,                  dd NAME(vmmRCToHost)                - NAME(Start)
