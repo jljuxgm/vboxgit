@@ -1,4 +1,4 @@
-/* $Id: InitVariable.c 44605 2013-02-08 15:20:52Z vboxsync $ */
+/* $Id: InitVariable.c 44606 2013-02-08 15:33:59Z vboxsync $ */
 /** @file
  * InitVariable.h
  */
@@ -286,7 +286,7 @@ RuntimeServiceGetNextVariableName (
 
     LogFlowFuncLeaveRC(rc);
     // Temporary - start
-    DebugPrint("GetNextVariableName: rc=%u cbName=%u Name=%s VendorGuid=%g\n", rc, *VariableNameSize, VariableName, VendorGuid);
+    DebugPrint(DEBUG_INFO, "GetNextVariableName: rc=%u cbName=%u Name=%s VendorGuid=%g\n", rc, *VariableNameSize, VariableName, VendorGuid);
     // Temporary - end
     return rc;
 #endif
