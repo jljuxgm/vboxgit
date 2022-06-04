@@ -1,4 +1,4 @@
-/* $Id: dbg.h 45984 2013-05-11 12:46:30Z vboxsync $ */
+/* $Id: dbg.h 45985 2013-05-11 13:14:22Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -866,8 +866,8 @@ RTDECL(int)         RTDbgModCreateFromImage(PRTDBGMOD phDbgMod, const char *pszF
                                             RTDBGCFG hDbgCfg);
 RTDECL(int)         RTDbgModCreateFromMap(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName, RTUINTPTR uSubtrahend,
                                           RTDBGCFG hDbgCfg);
-RTDECL(int)         RTDbgModCreateFromExe(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName, uint32_t cbImage,
-                                          uint32_t uTimeDateStamp, RTDBGCFG pDbgCfg);
+RTDECL(int)         RTDbgModCreateFromPeImage(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName, uint32_t cbImage,
+                                              uint32_t uTimeDateStamp, RTDBGCFG pDbgCfg);
 RTDECL(int)         RTDbgModCreateFromDbg(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName, uint32_t cbImage,
                                           uint32_t uTimeDateStamp, RTDBGCFG pDbgCfg);
 RTDECL(int)         RTDbgModCreateFromPdb(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName, uint32_t cbImage,
