@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 45167 2013-03-25 12:41:25Z vboxsync $ */
+/* $Id: UIMachine.cpp 45224 2013-03-28 10:12:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -485,11 +485,6 @@ void UIMachine::sltChangeVisualState(UIVisualStateType newVisualStateType)
         if (!m_pVisualState)
             deleteLater();
     }
-}
-
-void UIMachine::sltCloseVirtualMachine()
-{
-    delete this;
 }
 
 void UIMachine::enterInitialVisualState()
