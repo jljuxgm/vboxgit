@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 46269 2013-05-26 15:27:31Z vboxsync $ */
+/* $Id: dbgmod.cpp 46276 2013-05-26 22:58:10Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -279,12 +279,12 @@ static DECLCALLBACK(int) rtDbgModInitOnce(void *pvUser)
         rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgNm);
         if (RT_SUCCESS(rc))
             rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgDwarf);
+        if (RT_SUCCESS(rc))
+            rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgCodeView);
 #ifdef RT_OS_WINDOWS
         if (RT_SUCCESS(rc))
             rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgDbgHelp);
 #endif
-        if (RT_SUCCESS(rc))
-            rc = rtDbgModDebugInterpreterRegister(&g_rtDbgModVtDbgCodeView);
         if (RT_SUCCESS(rc))
             rc = rtDbgModImageInterpreterRegister(&g_rtDbgModVtImgLdr);
         if (RT_SUCCESS(rc))
