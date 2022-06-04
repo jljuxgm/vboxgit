@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43957 2012-11-26 10:00:56Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 44051 2012-12-06 14:04:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,9 +53,11 @@ UIGChooserItemGroup::UIGChooserItemGroup(QGraphicsScene *pScene)
     /* Translate finally: */
     retranslateUi();
 
-    /* Prepare connections: */
+    /* Prepare main-root-item connections: */
     connect(this, SIGNAL(sigMinimumWidthHintChanged(int)),
             model(), SIGNAL(sigRootItemMinimumWidthHintChanged(int)));
+    connect(this, SIGNAL(sigMinimumHeightHintChanged(int)),
+            model(), SIGNAL(sigRootItemMinimumHeightHintChanged(int)));
 
     /* Init: */
     updateVisibleName();

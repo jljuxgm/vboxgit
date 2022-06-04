@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 43957 2012-11-26 10:00:56Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 44051 2012-12-06 14:04:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -39,6 +39,7 @@ UIGChooserItem::UIGChooserItem(UIGChooserItem *pParent, bool fTemporary)
     , m_fTemporary(fTemporary)
     , m_pParent(pParent)
     , m_iPreviousMinimumWidthHint(0)
+    , m_iPreviousMinimumHeightHint(0)
     , m_dragTokenPlace(DragToken_Off)
     , m_fHovered(false)
     , m_pHighlightMachine(0)
@@ -174,6 +175,14 @@ void UIGChooserItem::updateGeometry()
             /* Save new minimum-width-hint, notify listener: */
             m_iPreviousMinimumWidthHint = iMinimumWidthHint;
             emit sigMinimumWidthHintChanged(m_iPreviousMinimumWidthHint);
+        }
+        /* Root-item should notify chooser-view if minimum-height-hint was changed: */
+        int iMinimumHeightHint = minimumHeightHint();
+        if (m_iPreviousMinimumHeightHint != iMinimumHeightHint)
+        {
+            /* Save new minimum-height-hint, notify listener: */
+            m_iPreviousMinimumHeightHint = iMinimumHeightHint;
+            emit sigMinimumHeightHintChanged(m_iPreviousMinimumHeightHint);
         }
     }
 }

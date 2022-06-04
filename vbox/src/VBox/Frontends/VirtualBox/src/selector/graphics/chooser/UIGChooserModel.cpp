@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43957 2012-11-26 10:00:56Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 44051 2012-12-06 14:04:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -175,8 +175,6 @@ void UIGChooserModel::updateLayout()
     root()->updateLayout();
     /* Make sure root-item is shown: */
     root()->show();
-    /* Notify listener about root-item relayouted: */
-    emit sigRootItemResized(root()->geometry().size());
 }
 
 const QList<UIGChooserItem*>& UIGChooserModel::navigationList() const
