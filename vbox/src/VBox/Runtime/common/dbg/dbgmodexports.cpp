@@ -1,4 +1,4 @@
-/* $Id: dbgmodexports.cpp 46113 2013-05-15 22:39:43Z vboxsync $ */
+/* $Id: dbgmodexports.cpp 46199 2013-05-21 19:49:19Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Using Image Exports.
  */
@@ -95,6 +95,10 @@ static DECLCALLBACK(int) rtDbgModExportsAddSegmentsCallback(RTLDRMOD hLdrMod, PC
         memcpy(pszName, pSeg->pchName, pSeg->cchName);
         pszName[pSeg->cchName] = '\0';
     }
+
+    /* Add dummy segments for segments that doesn't get mapped. */
+    if (pSeg->LinkAddress == NIL_RTLDRADDR)
+        return RTDbgModSegmentAdd(pArgs->pDbgMod, 0, 0, pszName, 0 /*fFlags*/, NULL);
 
     RTLDRADDR cb = RT_MAX(pSeg->cb, pSeg->cbMapped);
     return RTDbgModSegmentAdd(pArgs->pDbgMod, pSeg->RVA, cb, pszName, 0 /*fFlags*/, NULL);

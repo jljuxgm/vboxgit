@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
+/* $Id: dbgmod.cpp 46199 2013-05-21 19:49:19Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -756,6 +756,7 @@ static int rtDbgModOpenDebugInfoExternalToImage2(PRTDBGMODINT pDbgMod, RTDBGCFG 
             break;
 #endif
         default:
+            rc = VERR_NOT_IMPLEMENTED;
             break;
     }
 
