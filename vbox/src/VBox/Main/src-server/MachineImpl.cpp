@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 44039 2012-12-05 12:08:52Z vboxsync $ */
+/* $Id: MachineImpl.cpp 44091 2012-12-11 13:34:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1000,7 +1000,7 @@ STDMETHODIMP Machine::COMSETTER(Name)(IN_BSTR aName)
     // prohibit setting a UUID only as the machine name, or else it can
     // never be found by findMachine()
     Guid test(aName);
-    //if (test.isNotEmpty())
+
     if (test.isValid())
         return setError(E_INVALIDARG,  tr("A machine cannot have a UUID as its name"));
 

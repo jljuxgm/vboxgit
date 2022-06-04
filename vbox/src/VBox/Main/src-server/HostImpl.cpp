@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 44039 2012-12-05 12:08:52Z vboxsync $ */
+/* $Id: HostImpl.cpp 44091 2012-12-11 13:34:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1537,7 +1537,7 @@ STDMETHODIMP Host::FindUSBDeviceById(IN_BSTR aId,
                                      IHostUSBDevice **aDevice)
 {
 #ifdef VBOX_WITH_USB
-    CheckComArgExpr(aId, Guid (aId).isValid() == true);
+    CheckComArgExpr(aId, Guid (aId).isValid());
     CheckComArgOutPointerValid(aDevice);
 
     *aDevice = NULL;

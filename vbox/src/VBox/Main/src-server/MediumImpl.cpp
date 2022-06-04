@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 44039 2012-12-05 12:08:52Z vboxsync $ */
+/* $Id: MediumImpl.cpp 44091 2012-12-11 13:34:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2060,7 +2060,7 @@ STDMETHODIMP Medium::RefreshState(MediumState_T *aState)
 STDMETHODIMP Medium::GetSnapshotIds(IN_BSTR aMachineId,
                                     ComSafeArrayOut(BSTR, aSnapshotIds))
 {
-    CheckComArgExpr(aMachineId, Guid(aMachineId).isValid() == true);
+    CheckComArgExpr(aMachineId, Guid(aMachineId).isValid());
     CheckComArgOutSafeArrayPointerValid(aSnapshotIds);
 
     AutoCaller autoCaller(this);

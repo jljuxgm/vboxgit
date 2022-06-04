@@ -1,4 +1,4 @@
-/* $Id: Guid.h 44039 2012-12-05 12:08:52Z vboxsync $ */
+/* $Id: Guid.h 44091 2012-12-11 13:34:23Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -419,8 +419,8 @@ private:
     inline void refresh()
     {
 #ifdef DEBUG
-        ::RTUuidToStr(&mUuid, mszUuid, RTUUID_STR_LENGTH);
-        m_pcszUUID = mszUuid;
+//        ::RTUuidToStr(&mUuid, mszUuid, RTUUID_STR_LENGTH);
+//        m_pcszUUID = mszUuid;
 #endif
     }
 
@@ -443,12 +443,12 @@ inline Bstr asGuidStr(const Bstr& str)
    return guid.isEmpty() ? Bstr() : guid.toUtf16();
 }
 */
-inline bool isValidGuid(const Bstr& str)
-{
-   Guid guid(str);
-   return guid.isValid();
-//   return !guid.isEmpty();
-}
+//inline bool isValidGuid(const Bstr& str)
+//{
+//   Guid guid(str);
+//   return guid.isValid();
+////   return !guid.isEmpty();
+//}
 
 } /* namespace com */
 
