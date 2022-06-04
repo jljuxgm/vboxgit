@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43851 2012-11-09 14:37:14Z vboxsync $
+# $Id: Makefile.kmk 44891 2013-03-01 18:35:05Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -54,7 +54,11 @@ ifdef VBOX_WITH_TESTCASES
   tstVDIo_SOURCES  = tstVDIo.cpp \
   	VDIoBackendMem.cpp \
   	VDMemDisk.cpp \
-  	VDIoRnd.cpp
+  	VDIoRnd.cpp \
+  	VDScript.cpp \
+  	VDScriptAst.cpp \
+  	VDScriptChecker.cpp \
+  	VDScriptInterp.cpp
   tstVDIo_LIBS = \
   	$(LIB_DDU) \
   	$(PATH_STAGE_LIB)/StorageDbgLib$(VBOX_SUFF_LIB)
