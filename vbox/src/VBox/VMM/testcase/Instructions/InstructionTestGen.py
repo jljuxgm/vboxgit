@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: InstructionTestGen.py 47017 2013-07-05 17:49:53Z vboxsync $
+# $Id: InstructionTestGen.py 47047 2013-07-08 17:54:36Z vboxsync $
 
 """
 Instruction Test Generator.
@@ -15,7 +15,7 @@ Copyright (C) 2012-2013 Oracle Corporation
 Oracle Corporation confidential
 All rights reserved
 """
-__version__ = "$Revision: 47017 $";
+__version__ = "$Revision: 47047 $";
 
 
 # pylint: disable=C0103,R0913
@@ -387,9 +387,10 @@ class TargetEnv(object):
 
 ## Target environments.
 g_dTargetEnvs = {
-    'iprt-r3-32':   TargetEnv('iprt-r3-32', TargetEnv.ksInstrSet_32, TargetEnv.ksCpuMode_Protect, 3),
-    'iprt-r3-64':   TargetEnv('iprt-r3-64', TargetEnv.ksInstrSet_64, TargetEnv.ksCpuMode_Long,    3),
-    'bs2-r0-64':    TargetEnv('bs2-r0-64',  TargetEnv.ksInstrSet_64, TargetEnv.ksCpuMode_Long,    0),
+    'iprt-r3-32':       TargetEnv('iprt-r3-32',     TargetEnv.ksInstrSet_32, TargetEnv.ksCpuMode_Protect, 3),
+    'iprt-r3-64':       TargetEnv('iprt-r3-64',     TargetEnv.ksInstrSet_64, TargetEnv.ksCpuMode_Long,    3),
+    'bs2-r0-64':        TargetEnv('bs2-r0-64',      TargetEnv.ksInstrSet_64, TargetEnv.ksCpuMode_Long,    0),
+    'bs2-r0-64-big':    TargetEnv('bs2-r0-64-big',  TargetEnv.ksInstrSet_64, TargetEnv.ksCpuMode_Long,    0),
 };
 
 
@@ -1413,7 +1414,7 @@ class InstructionTestGen(object): # pylint: disable=R0902
         Writes the file header.
         Raises exception on trouble.
         """
-        self.write('; $Id: InstructionTestGen.py 47017 2013-07-05 17:49:53Z vboxsync $\n'
+        self.write('; $Id: InstructionTestGen.py 47047 2013-07-08 17:54:36Z vboxsync $\n'
                    ';; @file %s\n'
                    '; Autogenerate by %s %s. DO NOT EDIT\n'
                    ';\n'
