@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 46133 2013-05-16 17:58:42Z vboxsync $ */
+/* $Id: ldrPE.cpp 46149 2013-05-17 17:21:23Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1526,6 +1526,7 @@ static const RTLDROPSPE s_rtldrPE32Ops =
         rtldrPE_LinkAddressToRva,
         rtldrPE_SegOffsetToRva,
         rtldrPE_RvaToSegOffset,
+        NULL,
         42
     },
     rtldrPEResolveImports32,
@@ -1555,6 +1556,7 @@ static const RTLDROPSPE s_rtldrPE64Ops =
         rtldrPE_LinkAddressToRva,
         rtldrPE_SegOffsetToRva,
         rtldrPE_RvaToSegOffset,
+        NULL,
         42
     },
     rtldrPEResolveImports64,

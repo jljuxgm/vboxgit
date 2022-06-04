@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 46083 2013-05-14 23:39:28Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 46149 2013-05-17 17:21:23Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -827,6 +827,7 @@ static const RTLDROPS g_rtkldrOps =
     rtkldr_LinkAddressToRva,
     rtkldr_SegOffsetToRva,
     rtkldr_RvaToSegOffset,
+    NULL,
     42
 };
 
