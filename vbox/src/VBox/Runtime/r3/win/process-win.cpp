@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: process-win.cpp 47596 2013-08-07 15:15:09Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -40,7 +40,7 @@
 #include <Lmcons.h>
 
 #include <iprt/process.h>
-#include "internal/iprt.h"
+#include "internal-r3-win.h"
 
 #include <iprt/assert.h>
 #include <iprt/critsect.h>
@@ -58,7 +58,6 @@
 #include <iprt/string.h>
 #include <iprt/socket.h>
 
-#include "../init.h"
 
 
 /*******************************************************************************

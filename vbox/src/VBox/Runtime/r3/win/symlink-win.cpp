@@ -1,4 +1,4 @@
-/* $Id: symlink-win.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: symlink-win.cpp 47596 2013-08-07 15:15:09Z vboxsync $ */
 /** @file
  * IPRT - Symbolic Links, Windows.
  */
@@ -29,8 +29,10 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP RTLOGGROUP_SYMLINK
+#include <Windows.h>
 
 #include <iprt/symlink.h>
+#include "internal-r3-win.h"
 
 #include <iprt/assert.h>
 #include <iprt/err.h>
@@ -40,8 +42,6 @@
 #include <iprt/string.h>
 #include "internal/path.h"
 
-#include <Windows.h>
-#include "../init.h"
 
 
 /*******************************************************************************
