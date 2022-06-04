@@ -1,4 +1,4 @@
-/* $Id: hash.c 18815 2009-04-07 12:34:27Z vboxsync $ */
+/* $Id: hash.c 45321 2013-04-04 04:47:30Z vboxsync $ */
 /*
  * Copyright (c) 2003,2004 Armin Wolfermann
  *
@@ -29,7 +29,7 @@
 #define HASH(id) (id & ((1 << HASHSIZE) - 1))
 
 static struct request *request_hash[1 << HASHSIZE];
-#else
+#else /* VBOX */
 # include "slirp.h"
 #endif
 
