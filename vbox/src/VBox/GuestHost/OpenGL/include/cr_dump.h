@@ -1,4 +1,4 @@
-/* $Id: cr_dump.h 46368 2013-06-03 17:24:51Z vboxsync $ */
+/* $Id: cr_dump.h 46369 2013-06-03 17:39:51Z vboxsync $ */
 
 /** @file
  * Debugging: Dump API
@@ -126,8 +126,8 @@ VBOXDUMPDECL(void) crRecDumpShader(CR_RECORDER *pRec, CRContext *ctx, GLint id, 
 VBOXDUMPDECL(void) crRecDumpProgram(CR_RECORDER *pRec, CRContext *ctx, GLint id, GLint hwid);
 VBOXDUMPDECL(void) crRecDumpCurrentProgram(CR_RECORDER *pRec, CRContext *ctx);
 
-
-typedef DECLCALLBACKPTR(GLuint, PFNCRDUMPGETHWID)(void *pvObj);
+typedef DECLCALLBACK(GLuint) FNCRDUMPGETHWID(void *pvObj);
+typedef FNCRDUMPGETHWID *PFNCRDUMPGETHWID;
 void* crDmpHashtableSearchByHwid(CRHashTable *pHash, GLuint hwid, PFNCRDUMPGETHWID pfnGetHwid, unsigned long *pKey);
 
 RT_C_DECLS_END
