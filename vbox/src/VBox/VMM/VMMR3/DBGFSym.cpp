@@ -1,4 +1,4 @@
-/* $Id: DBGFSym.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DBGFSym.cpp 45752 2013-04-26 01:32:02Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Symbol Management.
  */
@@ -935,7 +935,8 @@ VMMR3_INT_DECL(int) DBGFR3SymbolByAddr(PVM pVM, RTGCUINTPTR Address, PRTGCINTPTR
     /*
      * Try PDM.
      */
-    if (MMHyperIsInsideArea(pVM, Address))
+    if (   !HMIsEnabled(pVM)
+        && MMHyperIsInsideArea(pVM, Address))
     {
         char        szModName[64];
         RTRCPTR     RCPtrMod;

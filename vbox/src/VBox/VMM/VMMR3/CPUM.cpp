@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 45528 2013-04-12 17:32:57Z vboxsync $ */
+/* $Id: CPUM.cpp 45752 2013-04-26 01:32:02Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3938,8 +3938,8 @@ static DECLCALLBACK(int) cpumR3DisasInstrRead(PDISCPUSTATE pDis, uint8_t offInst
 
             /* translate the address */
             pState->pvPageGC = GCPtr & PAGE_BASE_GC_MASK;
-            if (    MMHyperIsInsideArea(pState->pVM, pState->pvPageGC)
-                &&  !HMIsEnabled(pState->pVM))
+            if (   !HMIsEnabled(pState->pVM)
+                && MMHyperIsInsideArea(pState->pVM, pState->pvPageGC))
             {
                 pState->pvPageR3 = MMHyperRCToR3(pState->pVM, (RTRCPTR)pState->pvPageGC);
                 if (!pState->pvPageR3)
