@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 43707 2012-10-22 16:41:04Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 43709 2012-10-23 12:24:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -20,6 +20,8 @@
 /* GUI includes: */
 #include "UINetworkReply.h"
 #include "UINetworkManager.h"
+#include "VBoxGlobal.h"
+#include "VBoxUtils.h"
 
 /* Other VBox includes; */
 #include <iprt/err.h>
@@ -57,6 +59,15 @@ private:
         /* Create: */
         RTHTTP hHttp;
         m_iError = RTHttpCreate(&hHttp);
+
+        /* Setup proxy: */
+        UIProxyManager proxyManager(vboxGlobal().settings().proxySettings());
+        if (proxyManager.proxyEnabled())
+        {
+            RTHttpSetProxy(hHttp,
+                           proxyManager.proxyHost().toAscii().constData(),
+                           proxyManager.proxyPort().toUInt(), 0, 0);
+        }
 
         /* Acquire: */
         if (RT_SUCCESS(m_iError))
