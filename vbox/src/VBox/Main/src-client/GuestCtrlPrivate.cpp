@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 45780 2013-04-26 15:19:33Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 45783 2013-04-26 15:41:39Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -939,7 +939,8 @@ int GuestBase::waitForEvent(GuestWaitEvent *pEvent, uint32_t uTimeoutMS,
         if (pType)
         {
             HRESULT hr = pThisEvent->COMGETTER(Type)(pType);
-            ComAssertComRC(hr);
+            if (FAILED(hr))
+                vrc = VERR_COM_UNEXPECTED;
         }
         if (ppEvent)
             pThisEvent.queryInterfaceTo(ppEvent);

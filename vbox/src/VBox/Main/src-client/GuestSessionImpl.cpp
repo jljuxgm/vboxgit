@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 45782 2013-04-26 15:26:39Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 45783 2013-04-26 15:41:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -208,7 +208,7 @@ int GuestSession::init(Guest *pGuest, const GuestSessionStartupInfo &ssInfo,
     {
         unconst(mEventSource).createObject();
         Assert(!mEventSource.isNull());
-        HRESULT hr = mEventSource->init(static_cast<IGuestSession*>(this));
+        hr = mEventSource->init(static_cast<IGuestSession*>(this));
         if (FAILED(hr))
             rc = VERR_COM_UNEXPECTED;
     }
