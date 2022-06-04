@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 43139 2012-08-31 14:18:10Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 43934 2012-11-22 08:39:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3202,7 +3202,7 @@ DECLCALLBACK(void) Display::displayRefreshCallback(PPDMIDISPLAYCONNECTOR pInterf
     bool fNoUpdate = false; /* Do not update the display if any of the framebuffers is being resized. */
     unsigned uScreenId;
 
-    LogFlow(("DisplayRefreshCallback\n"));
+    Log2(("DisplayRefreshCallback\n"));
     for (uScreenId = 0; uScreenId < pDisplay->mcMonitors; uScreenId++)
     {
         DISPLAYFBINFO *pFBInfo = &pDisplay->maFramebuffers[uScreenId];
