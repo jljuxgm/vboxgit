@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 46540 2013-06-13 16:38:56Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 46549 2013-06-14 10:08:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2744,7 +2744,7 @@ int Display::VideoCaptureStart()
             rc = VideoRecStrmInit(mpVideoRecCtx, uScreen,
                                   pszName, ulWidth, ulHeight, ulRate, ulFps);
         if (RT_SUCCESS(rc))
-            LogRel(("WebM/VP8 video recording screen #%u with %ux%u @ %u kbps, %u fps to '%s' enabled!\n",
+            LogRel(("WebM/VP8 video recording screen #%u with %ux%u @ %u kbps, %u fps to '%s' enabled.\n",
                    uScreen, ulWidth, ulHeight, ulRate, ulFps, pszName));
         else
             LogRel(("Failed to initialize video recording context #%u (%Rrc)!\n", uScreen, rc));
@@ -2764,6 +2764,8 @@ int Display::VideoCaptureStart()
 void Display::VideoCaptureStop()
 {
 #ifdef VBOX_WITH_VPX
+    if (VideoRecIsEnabled(mpVideoRecCtx))
+        LogRel(("WebM/VP8 video recording stopped.\n"));
     VideoRecContextClose(mpVideoRecCtx);
     mpVideoRecCtx = NULL;
 #endif
@@ -3365,6 +3367,7 @@ DECLCALLBACK(void) Display::displayUpdateCallback(PPDMIDISPLAYCONNECTOR pInterfa
  * Periodic display refresh callback.
  *
  * @see PDMIDISPLAYCONNECTOR::pfnRefresh
+ * @thread EMT
  */
 DECLCALLBACK(void) Display::displayRefreshCallback(PPDMIDISPLAYCONNECTOR pInterface)
 {
