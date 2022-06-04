@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 44654 2013-02-12 13:05:12Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 44661 2013-02-12 16:38:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -263,6 +263,11 @@ void UINativeHotKey::retranslateKeyNames()
 namespace UIHostCombo
 {
     int m_iMaxComboSize = 3;
+}
+
+QString UIHostCombo::hostComboCacheKey()
+{
+    return QString(GUI_Input_MachineShortcuts) + "/" + "HostCombo";
 }
 
 QString UIHostCombo::toReadableString(const QString &strKeyCombo)
