@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 42825 2012-08-15 13:59:01Z vboxsync $ */
 
 /** @file
  *
@@ -89,7 +89,7 @@ public:
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(Machine *aParent, ULONG aSlot);
-    HRESULT init(Machine *aParent, NetworkAdapter *aThat);
+    HRESULT init(Machine *aParent, NetworkAdapter *aThat, bool aReshare = false);
     HRESULT initCopy(Machine *aParent, NetworkAdapter *aThat);
     void uninit();
 
@@ -146,6 +146,8 @@ public:
     void commit();
     void copyFrom(NetworkAdapter *aThat);
     void applyDefaults(GuestOSType *aOsType);
+
+    ComObjPtr<NetworkAdapter> getPeer();
 
 private:
 
