@@ -1,4 +1,4 @@
-/* $Id: NativeEventQueue.cpp 47800 2013-08-16 11:15:56Z vboxsync $ */
+/* $Id: NativeEventQueue.cpp 47801 2013-08-16 11:24:48Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer:
  * Main event queue class declaration
@@ -223,7 +223,7 @@ int NativeEventQueue::init()
            we're called on the right thread. */
         nsCOMPtr<nsIEventQueue> q;
         nsresult rv = NS_GetMainEventQ(getter_AddRefs(q));
-        AssertComRCReturnRC(rv);
+        AssertComRCReturn(rv, VERR_INVALID_POINTER);
         Assert(q == sMainQueue->mEventQ);
 
         /* Check that it's a native queue. */
