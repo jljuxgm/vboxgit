@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 45024 2013-03-13 15:58:02Z vboxsync $ */
+/* $Id: PGM.cpp 45026 2013-03-13 17:08:41Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2504,7 +2504,7 @@ VMMR3DECL(void) PGMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
  */
 VMMR3_INT_DECL(void) PGMR3Reset(PVM pVM)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
 
     LogFlow(("PGMR3Reset:\n"));
     VM_ASSERT_EMT(pVM);
