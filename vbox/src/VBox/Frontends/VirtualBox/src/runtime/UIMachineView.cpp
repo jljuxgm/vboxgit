@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 43014 2012-08-27 21:25:26Z vboxsync $ */
+/* $Id: UIMachineView.cpp 43264 2012-09-10 09:39:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -586,7 +586,7 @@ void UIMachineView::cleanupFrameBuffer()
             /* Temporarily remove the framebuffer in Display while unsetting
              * the view in order to respect the thread synchonisation logic
              * (see UIFrameBuffer.h). */
-            /** @note VBOX_WITH_CROGL additionally requires us to call
+            /* Note! VBOX_WITH_CROGL additionally requires us to call
              * SetFramebuffer to ensure 3D gets notified of view being
              * destroyed */
             display.SetFramebuffer(m_uScreenId, CFramebuffer(NULL));
@@ -883,11 +883,10 @@ CGImageRef UIMachineView::vmContentImage()
             CGImageRetain(image); /* Retain it, cause the consumer will release it. */
             return image;
         }
-        else
 # endif /* VBOX_GUI_USE_QUARTZ2D */
-            /* In image mode we have to create the image ref out of the
-             * framebuffer */
-            return frameBuffertoCGImageRef(m_pFrameBuffer);
+        /* In image mode we have to create the image ref out of the
+         * framebuffer */
+        return frameBuffertoCGImageRef(m_pFrameBuffer);
     }
     return 0;
 }
