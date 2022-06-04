@@ -1,4 +1,4 @@
-/* $Id: server.cpp 46908 2013-07-02 13:28:36Z vboxsync $ */
+/* $Id: server.cpp 46909 2013-07-02 13:30:52Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -879,6 +879,7 @@ int main(int argc, char **argv)
 
     nsresult rc;
 
+    /** @todo Merge this code with svcmain.cpp (use Logging.cpp?). */
     char szLogFile[RTPATH_MAX];
     if (!pszLogFile)
     {
