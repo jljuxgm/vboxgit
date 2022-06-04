@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 45227 2013-03-28 12:22:11Z vboxsync $ */
+/* $Id: manifest.cpp 45354 2013-04-05 06:07:36Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling.
  */
@@ -321,6 +321,9 @@ RTR3DECL(int) RTManifestVerifyDigestType(void *pvBuf, size_t cbSize, RTDIGESTTYP
             digestType = RTDIGESTTYPE_SHA256;
             break;
         }
+
+        pcBuf += cch;
+        cbRead += cch;
     }
 
     return rc;

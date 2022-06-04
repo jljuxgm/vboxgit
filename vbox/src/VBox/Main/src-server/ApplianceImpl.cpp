@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 45354 2013-04-05 06:07:36Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -271,6 +271,16 @@ Utf8Str convertNetworkAttachmentTypeToString(NetworkAttachmentType_T type)
         case NetworkAttachmentType_Null: strType = "Null"; break;
     }
     return strType;
+}
+
+bool checkComplianceDigestAndOVFVersion(bool digestType, ovf::OVFVersion_T ovfVersion)
+{
+    bool res = false;
+    if ((ovfVersion == ovf::OVFVersion_2_0 && digestType == true) ||
+        (ovfVersion == ovf::OVFVersion_1_0 && digestType == false) ||
+        (ovfVersion == ovf::OVFVersion_0_9 && digestType == false))
+        res = true;
+    return res;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
