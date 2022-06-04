@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 43667 2012-10-17 11:54:39Z vboxsync $ */
+/* $Id: VMM.cpp 44076 2012-12-10 12:36:48Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -689,6 +689,13 @@ VMMR3_INT_DECL(int) VMMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
                 && HMR3IsVmxPreemptionTimerUsed(pVM))
                 pVM->vmm.s.fUsePeriodicPreemptionTimers = false;
             LogRel(("VMM: fUsePeriodicPreemptionTimers=%RTbool\n", pVM->vmm.s.fUsePeriodicPreemptionTimers));
+
+            /*
+             * CPUM's post-initialization (print CPUIDs).
+             */
+            rc = CPUMR3LogCpuIds(pVM);
+            AssertRCReturn(rc, rc);
+
             break;
         }
 
