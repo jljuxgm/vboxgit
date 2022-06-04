@@ -1,4 +1,4 @@
-/* $Id: VBoxDispCm.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxDispCm.cpp 45403 2013-04-08 13:00:36Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -206,10 +206,21 @@ static HRESULT vboxDispCmSessionCmdQueryData(PVBOXDISPCM_SESSION pSession, PVBOX
     DdiEscape.PrivateDriverDataSize = cbCmd;
 
     pCmd->EscapeHdr.escapeCode = VBOXESC_GETVBOXVIDEOCMCMD;
+
+    PVBOXWDDMDISP_CONTEXT pContext = NULL, pCurCtx;
+
     /* lock to ensure the context is not destroyed */
     EnterCriticalSection(&pSession->CritSect);
     /* use any context for identifying the kernel CmSession. We're using the first one */
-    PVBOXWDDMDISP_CONTEXT pContext = RTListGetFirst(&pSession->CtxList, VBOXWDDMDISP_CONTEXT, ListNode);
+    RTListForEach(&pSession->CtxList, pCurCtx, VBOXWDDMDISP_CONTEXT, ListNode)
+    {
+        PVBOXWDDMDISP_DEVICE pDevice = pCurCtx->pDevice;
+        if (VBOXDISPMODE_IS_3D(pDevice->pAdapter))
+        {
+            pContext = pCurCtx;
+            break;
+        }
+    }
     if (pContext)
     {
         PVBOXWDDMDISP_DEVICE pDevice = pContext->pDevice;
