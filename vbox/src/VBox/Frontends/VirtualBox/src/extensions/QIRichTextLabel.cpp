@@ -1,4 +1,4 @@
-/* $Id: QIRichTextLabel.cpp 41151 2012-05-03 21:43:01Z vboxsync $ */
+/* $Id: QIRichTextLabel.cpp 45489 2013-04-11 16:39:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -68,6 +68,13 @@ QTextOption::WrapMode QIRichTextLabel::wordWrapMode() const
 void QIRichTextLabel::setWordWrapMode(QTextOption::WrapMode policy)
 {
     m_pTextEdit->setWordWrapMode(policy);
+}
+
+/* API: Event-filter setter: */
+void QIRichTextLabel::installEventFilter(QObject *pFilterObj)
+{
+    QWidget::installEventFilter(pFilterObj);
+    m_pTextEdit->installEventFilter(pFilterObj);
 }
 
 /* Minimum text-width setter: */
