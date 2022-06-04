@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 43340 2012-09-18 11:13:49Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 43607 2012-10-11 07:09:51Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -261,7 +261,6 @@ typedef struct VBOXWDDMDISP_ALLOCATION
     UINT iAlloc;
     struct VBOXWDDMDISP_RESOURCE *pRc;
     void* pvMem;
-    UINT D3DWidth;
     /* object type is defined by enmD3DIfType enum */
     IUnknown *pD3DIf;
     VBOXDISP_D3DIFTYPE enmD3DIfType;

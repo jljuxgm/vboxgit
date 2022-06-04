@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 43606 2012-10-11 06:25:18Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 43607 2012-10-11 07:09:51Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -2920,7 +2920,7 @@ static HRESULT APIENTRY vboxWddmDDevTexBlt(HANDLE hDevice, CONST D3DDDIARG_TEXBL
     VBOXVDBG_CHECK_SMSYNC(pDstRc);
     VBOXVDBG_CHECK_SMSYNC(pSrcRc);
 
-    if (pSrcRc->aAllocations[0].D3DWidth == pDstRc->aAllocations[0].D3DWidth
+    if (pSrcRc->aAllocations[0].SurfDesc.d3dWidth == pDstRc->aAllocations[0].SurfDesc.d3dWidth
             && pSrcRc->aAllocations[0].SurfDesc.height == pDstRc->aAllocations[0].SurfDesc.height
             && pSrcRc->RcDesc.enmFormat == pDstRc->RcDesc.enmFormat
                 &&pData->DstPoint.x == 0 && pData->DstPoint.y == 0
@@ -4112,7 +4112,7 @@ static HRESULT APIENTRY vboxWddmDDevCreateResource(HANDLE hDevice, D3DDDIARG_CRE
         pAllocation->enmType = VBOXWDDM_ALLOC_TYPE_UMD_RC_GENERIC;
         pAllocation->iAlloc = i;
         pAllocation->pRc = pRc;
-        pAllocation->D3DWidth = pSurf->Width;
+        pAllocation->SurfDesc.d3dWidth = pSurf->Width;
         pAllocation->pvMem = (void*)pSurf->pSysMem;
         pAllocation->SurfDesc.slicePitch = pSurf->SysMemSlicePitch;
         pAllocation->SurfDesc.depth = pSurf->Depth;
@@ -4144,14 +4144,14 @@ static HRESULT APIENTRY vboxWddmDDevCreateResource(HANDLE hDevice, D3DDDIARG_CRE
                 if (pAllocation->SurfDesc.pitch != minPitch)
                 {
                     Assert(pAllocation->SurfDesc.pitch > minPitch);
-                    pAllocation->D3DWidth = vboxWddmCalcWidthForPitch(pAllocation->SurfDesc.pitch, pAllocation->SurfDesc.format);
+                    pAllocation->SurfDesc.d3dWidth = vboxWddmCalcWidthForPitch(pAllocation->SurfDesc.pitch, pAllocation->SurfDesc.format);
                     Assert(VBOXWDDMDISP_IS_TEXTURE(pRc->RcDesc.fFlags) && !pRc->RcDesc.fFlags.CubeMap); /* <- tested for textures only! */
                 }
-                Assert(pAllocation->D3DWidth >= pAllocation->SurfDesc.width);
+                Assert(pAllocation->SurfDesc.d3dWidth >= pAllocation->SurfDesc.width);
             }
             else
             {
-                Assert(pAllocation->D3DWidth == pAllocation->SurfDesc.width);
+                Assert(pAllocation->SurfDesc.d3dWidth == pAllocation->SurfDesc.width);
             }
         }
 

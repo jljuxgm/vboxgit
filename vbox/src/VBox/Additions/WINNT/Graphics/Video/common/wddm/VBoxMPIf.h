@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 43360 2012-09-19 17:49:07Z vboxsync $ */
+/* $Id: VBoxMPIf.h 43607 2012-10-11 07:09:51Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -34,7 +34,7 @@
 #include <VBox/VBoxGuest2.h>
 
 /* One would increase this whenever definitions in this file are changed */
-#define VBOXVIDEOIF_VERSION 13
+#define VBOXVIDEOIF_VERSION 14
 
 #define VBOXWDDM_NODE_ID_SYSTEM           0
 #define VBOXWDDM_NODE_ID_3D               (VBOXWDDM_NODE_ID_SYSTEM)
@@ -91,6 +91,7 @@ typedef struct VBOXWDDM_SURFACE_DESC
     UINT pitch;
     UINT depth;
     UINT slicePitch;
+    UINT d3dWidth;
     UINT cbSize;
     D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId;
     D3DDDI_RATIONAL RefreshRate;
