@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 43622 2012-10-11 16:13:29Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 44453 2013-01-30 10:21:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -277,9 +277,6 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu)
     pMenu->addSeparator();
 
     pMenu->addAction(gActionPool->action(UIActionIndex_Simple_NetworkAccessManager));
-#ifdef VBOX_WITH_REGISTRATION
-    pMenu->addAction(gActionPool->action(UIActionIndex_Simple_Register));
-#endif
 
 #ifndef Q_WS_MAC
     pMenu->addSeparator();
@@ -309,12 +306,6 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu)
                         &msgCenter(), SLOT(sltResetSuppressedMessages()));
     VBoxGlobal::connect(gActionPool->action(UIActionIndex_Simple_NetworkAccessManager), SIGNAL(triggered()),
                         gNetworkManager, SLOT(show()));
-#ifdef VBOX_WITH_REGISTRATION
-    VBoxGlobal::connect(gActionPool->action(UIActionIndex_Simple_Register), SIGNAL(triggered()),
-                        &vboxGlobal(), SLOT(showRegistrationDialog()));
-    VBoxGlobal::connect(gEDataEvents, SIGNAL(sigCanShowRegistrationDlg(bool)),
-                        gActionPool->action(UIActionIndex_Simple_Register), SLOT(setEnabled(bool)));
-#endif /* VBOX_WITH_REGISTRATION */
 
     m_fIsFirstTime = false;
 }

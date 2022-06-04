@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 43138 2012-08-31 13:26:04Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 44453 2013-01-30 10:21:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1987,46 +1987,6 @@ void UIMessageCenter::warnAboutExtentionPackCantBeSaved(const QString &strExtPac
                "but can't be saved locally as <nobr><b>%3</b>.</nobr></p>"
                "<p>Please choose another location for that file.</p>")
                .arg(strExtPackName, strFrom, strTo));
-}
-
-void UIMessageCenter::cannotConnectRegister(QWidget *pParent,
-                                            const QString &strUrl,
-                                            const QString &strReason)
-{
-    /* we don't want to expose the registration script URL to the user
-     * if he simply doesn't have an internet connection */
-    Q_UNUSED(strUrl);
-
-    message(pParent, Error,
-            tr("<p>Failed to connect to the VirtualBox online "
-               "registration service due to the following error:</p><p><b>%1</b></p>")
-                 .arg(strReason));
-}
-
-void UIMessageCenter::showRegisterResult(QWidget *pParent,
-                                         const QString &strResult)
-{
-    if (strResult == "OK")
-    {
-        /* On successful registration attempt */
-        message(pParent, Info,
-                tr("<p>Congratulations! You have been successfully registered "
-                   "as a user of VirtualBox.</p>"
-                   "<p>Thank you for finding time to fill out the "
-                   "registration form!</p>"));
-    }
-    else
-    {
-        QString parsed;
-
-        /* Else parse and translate special key-words */
-        if (strResult == "AUTHFAILED")
-            parsed = tr("<p>Invalid e-mail address or password specified.</p>");
-
-        message(pParent, Error,
-                tr("<p>Failed to register the VirtualBox product.</p><p>%1</p>")
-                .arg(parsed.isNull() ? strResult : parsed));
-    }
 }
 
 void UIMessageCenter::showUpdateSuccess(const QString &strVersion, const QString &strLink)

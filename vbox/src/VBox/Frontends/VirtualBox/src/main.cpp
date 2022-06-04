@@ -1,4 +1,4 @@
-/* $Id: main.cpp 42665 2012-08-07 14:55:09Z vboxsync $ */
+/* $Id: main.cpp 44453 2013-01-30 10:21:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -522,9 +522,6 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
                 {
 #endif
                     vboxGlobal().selectorWnd().show();
-#ifdef VBOX_WITH_REGISTRATION_REQUEST
-                    vboxGlobal().showRegistrationDialog (false /* aForce */);
-#endif
 #ifdef VBOX_GUI_WITH_SYSTRAY
                 }
 
