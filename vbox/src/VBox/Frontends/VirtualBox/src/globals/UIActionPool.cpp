@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
+/* $Id: UIActionPool.cpp 42533 2012-08-02 12:58:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -51,6 +51,21 @@ UIAction::UIAction(QObject *pParent, UIActionType type)
     /* By default there is no specific menu role.
      * It will be set explicitly later. */
     setMenuRole(QAction::NoRole);
+}
+
+void UIAction::showShortcut()
+{
+    if (!m_shortcut.isEmpty())
+        setShortcut(m_shortcut);
+}
+
+void UIAction::hideShortcut()
+{
+    if (!shortcut().isEmpty())
+    {
+        m_shortcut = shortcut();
+        setShortcut(QKeySequence());
+    }
 }
 
 QString UIAction::menuText(const QString &strText)
