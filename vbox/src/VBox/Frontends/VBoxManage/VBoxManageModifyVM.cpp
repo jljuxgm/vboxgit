@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 42838 2012-08-16 09:21:09Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 42844 2012-08-16 12:24:54Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -37,12 +37,10 @@
 #include <iprt/string.h>
 #include <iprt/getopt.h>
 #include <VBox/log.h>
-#include <iprt/log.h>
 #include "VBoxManage.h"
 
 #ifndef VBOX_ONLY_DOCS
 using namespace com;
-#define LOG_GROUP LOG_GROUP_MAIN
 /** @todo refine this after HDD changes; MSC 8.0/64 has trouble with handleModifyVM.  */
 #if defined(_MSC_VER)
 # pragma optimize("g", off)
@@ -477,7 +475,6 @@ int handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_VRAM:
             {
-                LogFlow(("Modify VRANM\n"));
                 CHECK_ERROR(machine, COMSETTER(VRAMSize)(ValueUnion.u32));
                 break;
             }

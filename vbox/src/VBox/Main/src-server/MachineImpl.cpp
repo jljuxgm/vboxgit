@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42843 2012-08-16 11:13:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42844 2012-08-16 12:24:54Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1683,23 +1683,23 @@ STDMETHODIMP Machine::COMSETTER(VideoCaptureEnabled)(BOOL  fEnabled)
     return S_OK;
 }
 
-STDMETHODIMP Machine::COMGETTER(VideoCaptureFile)(BSTR * ppChFile)
+STDMETHODIMP Machine::COMGETTER(VideoCaptureFile)(BSTR * apFile)
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
-    mHWData->mVideoCaptureFile.cloneTo(ppChFile);
+    mHWData->mVideoCaptureFile.cloneTo(apFile);
     return S_OK;
 }
 
-STDMETHODIMP Machine::COMSETTER(VideoCaptureFile)(IN_BSTR pChFile)
+STDMETHODIMP Machine::COMSETTER(VideoCaptureFile)(IN_BSTR aFile)
 {
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    mHWData->mVideoCaptureFile = pChFile;
+    mHWData->mVideoCaptureFile = aFile;
     return S_OK;
 }
 
