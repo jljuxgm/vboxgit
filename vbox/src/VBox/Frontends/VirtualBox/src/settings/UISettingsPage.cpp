@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 36594 2011-04-06 16:22:58Z vboxsync $ */
+/* $Id: UISettingsPage.cpp 47573 2013-08-07 09:57:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -17,8 +17,9 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Local includes */
+/* GUI includes: */
 #include "UISettingsPage.h"
+#include "QIWidgetValidator.h"
 
 /* Settings page constructor, hidden: */
 UISettingsPage::UISettingsPage(UISettingsPageType pageType)
@@ -28,7 +29,26 @@ UISettingsPage::UISettingsPage(UISettingsPageType pageType)
     , m_fProcessed(false)
     , m_fFailed(false)
     , m_pFirstWidget(0)
+    , m_pValidator(0)
 {
+}
+
+void UISettingsPage::setValidator(UIPageValidator *pValidator)
+{
+    /* Make sure validator is not yet assigned: */
+    AssertMsg(!m_pValidator, ("Validator already assigned!\n"));
+    if (m_pValidator)
+        return;
+
+    /* Assign validator: */
+    m_pValidator = pValidator;
+}
+
+void UISettingsPage::revalidate()
+{
+    /* Revalidate if possible: */
+    if (m_pValidator)
+        m_pValidator->revalidate();
 }
 
 /* Global settings page constructor, hidden: */

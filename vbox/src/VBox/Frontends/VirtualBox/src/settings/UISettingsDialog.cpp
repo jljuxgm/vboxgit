@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 47563 2013-08-06 17:13:57Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 47573 2013-08-07 09:57:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -336,7 +336,7 @@ void UISettingsDialog::revalidate(UIPageValidator *pValidator)
     UISettingsPage *pSettingsPage = pValidator->page();
     QString strPageTitle = m_pSelector->itemTextByPage(pSettingsPage);
     QString strMessageText;
-    bool fIsValid = pSettingsPage->revalidate(strMessageText, strPageTitle);
+    bool fIsValid = pSettingsPage->validate(strMessageText, strPageTitle);
 
     /* Remember revalidation result: */
     pValidator->setValid(fIsValid);
