@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 45926 2013-05-06 20:26:43Z vboxsync $ */
+/* $Id: VideoRec.h 45941 2013-05-08 08:47:02Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -22,7 +22,7 @@ struct VIDEORECCONTEXT;
 typedef struct VIDEORECCONTEXT *PVIDEORECCONTEXT;
 
 int  VideoRecContextCreate(PVIDEORECCONTEXT *ppVideoRecContext);
-int  VideoRecContextInit(PVIDEORECCONTEXT pVideoRecContext, com::Bstr mFileName,
+int  VideoRecContextInit(PVIDEORECCONTEXT pVideoRecContext, const char *pszFile,
                          uint32_t uWidth, uint32_t uHeight, uint32_t uRate, uint32_t uFps);
 void VideoRecContextClose(PVIDEORECCONTEXT pVideoRecContext);
 bool VideoRecIsEnabled(PVIDEORECCONTEXT pVideoRecContext);
