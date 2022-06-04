@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 44720 2013-02-15 17:52:37Z vboxsync $ */
+/* $Id: VMMDev.cpp 44721 2013-02-15 17:54:02Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2918,14 +2918,9 @@ static DECLCALLBACK(int) vmmdevIPort_SetCredentials(PPDMIVMMDEVPORT pInterface, 
 static DECLCALLBACK(void) vmmdevIPort_VBVAChange(PPDMIVMMDEVPORT pInterface, bool fEnabled)
 {
     PVMMDEV pThis = RT_FROM_MEMBER(pInterface, VMMDEV, IPort);
-
     Log(("vmmdevIPort_VBVAChange: fEnabled = %d\n", fEnabled));
 
-    if (pThis)
-    {
-        pThis->u32VideoAccelEnabled = fEnabled;
-    }
-    return;
+    pThis->u32VideoAccelEnabled = fEnabled;
 }
 
 /**
