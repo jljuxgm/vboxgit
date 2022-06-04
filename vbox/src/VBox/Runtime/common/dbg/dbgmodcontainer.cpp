@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 46204 2013-05-22 00:28:12Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 46215 2013-05-22 12:39:14Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -402,7 +402,7 @@ static DECLCALLBACK(int) rtDbgModContainer_SymbolAdd(PRTDBGMODINT pMod, const ch
 
     /* Be a little relaxed wrt to the symbol size. */
     int rc = VINF_SUCCESS;
-    if (off + cb > pThis->paSegs[iSeg].cb)
+    if (iSeg != RTDBGSEGIDX_ABS && off + cb > pThis->paSegs[iSeg].cb)
     {
         cb = pThis->paSegs[iSeg].cb - off;
         rc = VINF_DBG_ADJUSTED_SYM_SIZE;
