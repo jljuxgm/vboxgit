@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 44016 2012-12-03 15:10:03Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 44061 2012-12-07 14:46:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -85,9 +85,6 @@ void UIGDetailsModel::updateLayout()
     m_pRoot->resize(iViewportWidth, iViewportHeight);
     /* Layout root content: */
     m_pRoot->updateLayout();
-
-    /* Notify view about root minimum-size-hint changed: */
-    emit sigRootMinimumSizeHintChanged(m_pRoot->minimumSizeHint());
 }
 
 void UIGDetailsModel::setItems(const QList<UIVMItem*> &items)
@@ -231,8 +228,7 @@ void UIGDetailsModel::prepareScene()
 
 void UIGDetailsModel::prepareRoot()
 {
-    m_pRoot = new UIGDetailsGroup;
-    scene()->addItem(m_pRoot);
+    m_pRoot = new UIGDetailsGroup(scene());
 }
 
 void UIGDetailsModel::cleanupRoot()

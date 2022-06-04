@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.cpp 43990 2012-11-28 16:49:12Z vboxsync $ */
+/* $Id: UIGDetails.cpp 44061 2012-12-07 14:46:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -90,8 +90,10 @@ void UIGDetails::prepareView()
 void UIGDetails::prepareConnections()
 {
     /* Setup details-model connections: */
-    connect(m_pDetailsModel, SIGNAL(sigRootMinimumSizeHintChanged(const QSizeF&)),
-            m_pDetailsView, SLOT(sltHandleRootItemMinimumSizeHintChanged(const QSizeF&)));
+    connect(m_pDetailsModel, SIGNAL(sigRootItemMinimumWidthHintChanged(int)),
+            m_pDetailsView, SLOT(sltMinimumWidthHintChanged(int)));
+    connect(m_pDetailsModel, SIGNAL(sigRootItemMinimumHeightHintChanged(int)),
+            m_pDetailsView, SLOT(sltMinimumHeightHintChanged(int)));
     connect(m_pDetailsModel, SIGNAL(sigLinkClicked(const QString&, const QString&, const QString&)),
             this, SIGNAL(sigLinkClicked(const QString&, const QString&, const QString&)));
     connect(this, SIGNAL(sigSlidingStarted()),
