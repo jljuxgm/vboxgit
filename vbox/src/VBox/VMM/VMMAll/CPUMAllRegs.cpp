@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 42188 2012-07-17 13:50:51Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 42193 2012-07-17 14:34:30Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -77,8 +77,7 @@
 
 
 
-#if defined(VBOX_WITH_RAW_MODE) && !defined(IN_RING0)
-
+#ifdef VBOX_WITH_RAW_MODE_NOT_R0
 
 /**
  * Does the lazy hidden selector register loading.
@@ -155,7 +154,7 @@ VMM_INT_DECL(void) CPUMGuestLazyLoadHiddenSelectorReg(PVMCPU pVCpu, PCPUMSELREG 
     CPUMSELREG_LAZY_LOAD_HIDDEN_PARTS(pVCpu, pSReg, pSReg == &pVCpu->cpum.s.Guest.cs);
 }
 
-#endif
+#endif /* VBOX_WITH_RAW_MODE_NOT_R0 */
 
 
 /**

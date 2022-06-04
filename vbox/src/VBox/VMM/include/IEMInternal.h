@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 41829 2012-06-19 14:39:48Z vboxsync $ */
+/* $Id: IEMInternal.h 42193 2012-07-17 14:34:30Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -309,6 +309,13 @@ typedef struct IEMCPU
         uint32_t            u32Alignment4; /**< Alignment padding. */
 #endif
     } aMemMappings[3];
+
+    /** Locking records for the mapped memory. */
+    union
+    {
+        PGMPAGEMAPLOCK      Lock;
+        uint64_t            au64Padding[2];
+    } aMemMappingLocks[3];
 
     /** Bounce buffer info.
      * This runs in parallel to aMemMappings. */
