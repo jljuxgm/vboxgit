@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 42727 2012-08-09 19:15:02Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 42728 2012-08-09 19:16:05Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -137,7 +137,7 @@ static void VBoxServiceToolboxShowUsage(void)
              "  rm <general options>       [-r|-R] <file>...\n"
              "  mktemp <general options>   [--directory|-d] [--secure|-s]\n"
              "                             [--mode|-m <mode>] <template>\n"
-             "  mkdir <general options>    [--mode|-m] [--parents|-p]\n"
+             "  mkdir <general options>    [--mode|-m <mode>] [--parents|-p]\n"
              "                             [--verbose|-v] <directory>...\n"
              "  stat <general options>     [--file-system|-f]\n"
              "                             [--dereference|-L] [--terse|-t]\n"
@@ -1330,7 +1330,7 @@ static char g_paszMkDirHelp[] =
     "  VBoxService [--use-toolbox] vbox_mkdir <general options> [options]\n"
     "                                         <directory>...\n\n"
     "Options:\n\n"
-    "  [--mode=<mode>|-m <mode>]  The file mode to set (chmod) on the created\n"
+    "  [--mode|-m <mode>]         The file mode to set (chmod) on the created\n"
     "                             directories.  Default: a=rwx & umask.\n"
     "  [--parents|-p]             Create parent directories as needed, no\n"
     "                             error if the directory already exists.\n"
@@ -1377,11 +1377,9 @@ static RTEXITCODE VBoxServiceToolboxMkDir(int argc, char **argv)
                 break;
 
             case 'm':
-                rc = RTStrToUInt32Ex(ValueUnion.psz, NULL, 8 /* Base */, &fDirMode);
-                if (RT_FAILURE(rc)) /* Only octet based values supported right now! */
-                    return RTMsgErrorExit(RTEXITCODE_SYNTAX,
-                                          "Mode flag strings not implemented yet! Use octal numbers instead. (%s)\n",
-                                          ValueUnion.psz);
+                rc = vboxServiceToolboxParseMode(ValueUnion.psz, &fDirMode);
+                if (RT_FAILURE(rc))
+                    return RTEXITCODE_SYNTAX;
 #ifndef RT_OS_WINDOWS
                 umask(0); /* RTDirCreate workaround */
 #endif
