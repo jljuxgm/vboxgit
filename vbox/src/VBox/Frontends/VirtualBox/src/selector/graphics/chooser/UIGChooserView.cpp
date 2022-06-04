@@ -1,4 +1,4 @@
-/* $Id: UIGChooserView.cpp 43514 2012-10-02 15:08:33Z vboxsync $ */
+/* $Id: UIGChooserView.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -27,11 +27,6 @@
 UIGChooserView::UIGChooserView(QWidget *pParent)
     : QGraphicsView(pParent)
 {
-    /* Fix palette: */
-    QPalette pal = palette();
-    pal.setColor(QPalette::Base, QColor(240, 240, 240));
-    setPalette(pal);
-
     /* Setup frame: */
     setFrameShape(QFrame::NoFrame);
     setFrameShadow(QFrame::Plain);

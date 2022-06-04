@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsView.cpp 42873 2012-08-18 14:37:25Z vboxsync $ */
+/* $Id: UIGDetailsView.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,7 +29,7 @@ UIGDetailsView::UIGDetailsView(QWidget *pParent)
 {
     /* Fix palette: */
     QPalette pal = palette();
-    pal.setColor(QPalette::Base, QColor(240, 240, 240));
+    pal.setColor(QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
     setPalette(pal);
 
     /* Scrollbars policy: */

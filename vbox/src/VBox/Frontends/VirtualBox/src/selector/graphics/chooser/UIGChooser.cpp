@@ -1,4 +1,4 @@
-/* $Id: UIGChooser.cpp 43540 2012-10-04 12:56:22Z vboxsync $ */
+/* $Id: UIGChooser.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -103,7 +103,7 @@ void UIGChooser::preparePalette()
     /* Setup palette: */
     setAutoFillBackground(true);
     QPalette pal = palette();
-    pal.setColor(QPalette::Window, QColor(240, 240, 240));
+    pal.setColor(QPalette::Window, pal.color(QPalette::Active, QPalette::Base));
     setPalette(pal);
 }
 

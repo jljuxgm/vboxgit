@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 42689 2012-08-08 18:14:23Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -123,15 +123,11 @@ void UIGDetailsItem::paintPixmap(QPainter *pPainter, const QRect &rect, const QP
 
 /* static */
 void UIGDetailsItem::paintText(QPainter *pPainter, const QRect &rect, const QFont &font,
-                               const QString &strText, bool fUrl /* = false */)
+                               const QString &strText, const QColor &color)
 {
     pPainter->save();
     pPainter->setFont(font);
-    if (fUrl)
-    {
-        QPalette pal = QApplication::palette();
-        pPainter->setPen(pal.color(QPalette::Link));
-    }
+    pPainter->setPen(color);
     pPainter->drawText(rect, strText);
     pPainter->restore();
 }
