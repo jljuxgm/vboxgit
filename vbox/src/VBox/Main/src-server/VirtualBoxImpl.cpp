@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 45067 2013-03-18 17:25:26Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3911,7 +3911,8 @@ HRESULT VirtualBox::checkMediaForConflicts(const Guid &aId,
  */
 bool VirtualBox::isMediaUuidInUse(const Guid &aId, DeviceType_T deviceType)
 {
-    AssertReturn(!aId.isZero(), E_FAIL);
+    /* A zero UUID is invalid here, always claim that it is already used. */
+    AssertReturn(!aId.isZero(), true);
 
     AutoReadLock alock(getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
 
