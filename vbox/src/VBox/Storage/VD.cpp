@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 45898 2013-05-05 10:29:25Z vboxsync $ */
+/* $Id: VD.cpp 46112 2013-05-15 22:06:35Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1521,6 +1521,15 @@ static int vdDiskProcessWaitingIoCtx(PVBOXHDD pDisk, PVDIOCTX pIoCtxRc)
             vdIoCtxFree(pDisk, pTmp);
         }
     }
+
+    /*
+     * vdIoCtxProcessLocked() never returns VINF_SUCCESS.
+     * If the status code is still set and a valid I/O context was given
+     * it was not found on the list (another thread cleared it already).
+     * Return I/O in progress status code in that case.
+     */
+    if (rc == VINF_SUCCESS && pIoCtxRc)
+        rc = VERR_VD_ASYNC_IO_IN_PROGRESS;
 
     LogFlowFunc(("returns rc=%Rrc\n", rc));
     return rc;
