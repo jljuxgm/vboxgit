@@ -1,4 +1,4 @@
- # $Id: Makefile.kmk 47024 2013-07-06 20:19:26Z vboxsync $
+ # $Id: Makefile.kmk 47025 2013-07-06 20:25:21Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxNetDHCP.
 #
@@ -40,7 +40,7 @@ VBoxNetDHCPHardened_NAME = VBoxNetDHCP
 #
 # VBoxNetDHCP
 #
-VBoxNetDHCP_TEMPLATE := VBOX$(if-expr defined(VBOX_WITH_HARDENING),MAINDLL,MAINCLIENEXE)
+VBoxNetDHCP_TEMPLATE := VBOX$(if-expr defined(VBOX_WITH_HARDENING),MAINDLL,MAINCLIENTEXE)
 VBoxNetDHCP_SOURCES = \
 	VBoxNetDHCP.cpp \
 	Config.cpp \
