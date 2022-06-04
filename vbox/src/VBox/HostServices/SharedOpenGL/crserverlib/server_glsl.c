@@ -1,4 +1,4 @@
-/* $Id: server_glsl.c 45027 2013-03-13 18:17:40Z vboxsync $ */
+/* $Id: server_glsl.c 46368 2013-06-03 17:24:51Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL related functions
@@ -50,6 +50,7 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchCompileShader(GLuint shader)
     cr_server.head_spu->dispatch_table.GetShaderiv(crStateGetShaderHWID(shader), GL_COMPILE_STATUS, &iCompileStatus);
     Assert(iCompileStatus == GL_TRUE);
 #endif
+    CR_SERVER_DUMP_COMPILE_SHADER(shader);
 }
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchDeleteShader(GLuint shader)
@@ -78,6 +79,7 @@ void SERVER_DISPATCH_APIENTRY crServerDispatchLinkProgram(GLuint program)
 {
     crStateLinkProgram(program);
     cr_server.head_spu->dispatch_table.LinkProgram(crStateGetProgramHWID(program));
+    CR_SERVER_DUMP_LINK_PROGRAM(program);
 }
 
 void SERVER_DISPATCH_APIENTRY crServerDispatchUseProgram(GLuint program)
