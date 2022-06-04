@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 43938 2012-11-22 13:50:07Z vboxsync $
+# $Id: vboxconfig.sh 43962 2012-11-26 13:49:51Z vboxsync $
 
 #
 # VirtualBox Configuration Script, Solaris host.
@@ -624,9 +624,10 @@ install_drivers()
 
     # If the force-install files exists, install blindly
     if test -f "$PKG_INSTALL_ROOT/etc/vboxinst_vboxflt"; then
+        subprint "Detected: Force-load file $PKG_INSTALL_ROOT/etc/vboxinst_vboxflt."
         load_vboxflt
     elif test -f "$PKG_INSTALL_ROOT/etc/vboxinst_vboxbow"; then
-        infoprint "here"
+        subprint "Detected: Force-load file $PKG_INSTALL_ROOT/etc/vboxinst_vboxbow."
         load_vboxbow
     else
         # If host is S10 or S11 (< snv_159) or vboxbow isn't shipped, then load vboxflt
