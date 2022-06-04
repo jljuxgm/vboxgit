@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 43047 2012-08-28 14:47:29Z vboxsync $ */
+/* $Id: VMMR0.cpp 43303 2012-09-11 23:55:10Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -165,26 +165,44 @@ DECLEXPORT(int) ModuleInit(void *hMod)
                                         vmmR0TripleFaultHackTerm();
 #endif
                                     }
+                                    else
+                                        LogRel(("ModuleInit: CPUMR0ModuleInit -> %Rrc\n", rc));
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
                                     PciRawR0Term();
 #endif
                                 }
+                                else
+                                    LogRel(("ModuleInit: PciRawR0Init -> %Rrc\n", rc));
                                 IntNetR0Term();
                             }
+                            else
+                                LogRel(("ModuleInit: IntNetR0Init -> %Rrc\n", rc));
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
                             PGMR0DynMapTerm();
 #endif
                         }
+                        else
+                            LogRel(("ModuleInit: PGMR0DynMapInit -> %Rrc\n", rc));
                         PGMDeregisterStringFormatTypes();
                     }
+                    else
+                        LogRel(("ModuleInit: PGMRegisterStringFormatTypes -> %Rrc\n", rc));
                     HWACCMR0Term();
                 }
+                else
+                    LogRel(("ModuleInit: HWACCMR0Init -> %Rrc\n", rc));
                 GMMR0Term();
             }
-           GVMMR0Term();
+            else
+                LogRel(("ModuleInit: GMMR0Init -> %Rrc\n", rc));
+            GVMMR0Term();
         }
+        else
+            LogRel(("ModuleInit: GVMMR0Init -> %Rrc\n", rc));
         vmmTermFormatTypes();
     }
+    else
+        LogRel(("ModuleInit: vmmInitFormatTypes -> %Rrc\n", rc));
 
     LogFlow(("ModuleInit: failed %Rrc\n", rc));
     return rc;
