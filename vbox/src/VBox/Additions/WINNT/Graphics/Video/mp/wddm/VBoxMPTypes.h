@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 46662 2013-06-19 14:22:29Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -159,6 +159,7 @@ typedef struct VBOXWDDM_ALLOCATION
     uint32_t cOpens;
     KSPIN_LOCK OpenLock;
     LIST_ENTRY OpenList;
+    uint32_t hostID;
     /* helps tracking when to release wine shared resource */
     uint32_t cShRcRefs;
     HANDLE hSharedHandle;

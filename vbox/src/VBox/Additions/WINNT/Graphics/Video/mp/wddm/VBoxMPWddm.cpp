@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 45403 2013-04-08 13:00:36Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 46662 2013-06-19 14:22:29Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -2272,6 +2272,7 @@ NTSTATUS vboxWddmAllocationCreate(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_RESOURCE pRe
                 {
                     pAllocation->fRcFlags = pAllocInfo->fFlags;
                     pAllocation->AllocData.SurfDesc = pAllocInfo->SurfDesc;
+                    pAllocation->hostID = pAllocInfo->hostID;
 
                     pAllocationInfo->Size = pAllocInfo->SurfDesc.cbSize;
 

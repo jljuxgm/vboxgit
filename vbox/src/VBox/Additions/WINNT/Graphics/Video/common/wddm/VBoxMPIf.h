@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxMPIf.h 46662 2013-06-19 14:22:29Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -34,7 +34,7 @@
 #include <VBox/VBoxGuest2.h>
 
 /* One would increase this whenever definitions in this file are changed */
-#define VBOXVIDEOIF_VERSION 15
+#define VBOXVIDEOIF_VERSION 16
 
 #define VBOXWDDM_NODE_ID_SYSTEM           0
 #define VBOXWDDM_NODE_ID_3D               (VBOXWDDM_NODE_ID_SYSTEM)
@@ -105,6 +105,8 @@ typedef struct VBOXWDDM_ALLOCINFO
         struct
         {
             D3DDDI_RESOURCEFLAGS fFlags;
+            /* id used to identify the allocation on the host */
+            uint32_t hostID;
             uint64_t hSharedHandle;
             VBOXWDDM_SURFACE_DESC SurfDesc;
         };
