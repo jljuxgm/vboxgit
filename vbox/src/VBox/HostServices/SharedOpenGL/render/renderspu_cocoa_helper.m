@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 45526 2013-04-12 16:48:28Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 45673 2013-04-23 07:26:14Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -18,6 +18,7 @@
 #include "renderspu_cocoa_helper.h"
 
 #import <Cocoa/Cocoa.h>
+#undef PVM
 
 #include "chromium.h" /* For the visual bits of chromium */
 
