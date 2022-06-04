@@ -1,4 +1,4 @@
-/* $Id: UISelectorShortcuts.cpp 42751 2012-08-10 11:24:04Z vboxsync $ */
+/* $Id: UISelectorShortcuts.cpp 42879 2012-08-20 11:34:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -35,7 +35,6 @@ UISelectorShortcuts::UISelectorShortcuts()
     m_Shortcuts[AddVMGroupShortcut]          = UIKeySequence("AddVMGroup",          "Ctrl+U");
     m_Shortcuts[SettingsVMShortcut]          = UIKeySequence("SettingsVM",          "Ctrl+S");
     m_Shortcuts[CloneVMShortcut]             = UIKeySequence("CloneVM",             "Ctrl+O");
-    m_Shortcuts[BreakVMGroupShortcut]        = UIKeySequence("BreakVMGroup",        "Ctrl+B");
     m_Shortcuts[RemoveVMShortcut]            = UIKeySequence("RemoveVM",            "Ctrl+R");
     m_Shortcuts[RenameVMGroupShortcut]       = UIKeySequence("RenameVMGroup",       "Ctrl+M");
     m_Shortcuts[StartVMShortcut]             = UIKeySequence("StartVM");

@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 42873 2012-08-18 14:37:25Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 42879 2012-08-20 11:34:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -165,6 +165,11 @@ UIGChooserItemGroup::~UIGChooserItemGroup()
 QString UIGChooserItemGroup::name() const
 {
     return m_strName;
+}
+
+void UIGChooserItemGroup::setName(const QString &strName)
+{
+    m_strName = strName;
 }
 
 bool UIGChooserItemGroup::closed() const
