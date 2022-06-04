@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 45960 2013-05-08 20:30:49Z vboxsync $ */
+/* $Id: VideoRec.cpp 45962 2013-05-08 20:39:55Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -511,6 +511,7 @@ int VideoRecStrmInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen, const char *pszFil
     }
     pStrm->pu8YuvBuf = pStrm->VpxRawImage.planes[0];
 
+    pCtx->fEnabled = true;
     pStrm->fEnabled = true;
     return VINF_SUCCESS;
 }
