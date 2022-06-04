@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 42184 2012-07-17 13:27:53Z vboxsync $ */
+/* $Id: HWACCMInternal.h 42344 2012-07-24 10:43:33Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -627,7 +627,7 @@ typedef struct HWACCMCPU
         /** Virtual address of the MSR load area (1 page). */
         R0PTRTYPE(uint8_t *)        pHostMSR;
 
-        /* Number of automatically loaded/restored MSRs. */
+        /* Number of automatically loaded/restored guest MSRs during the world switch. */
         uint32_t                    cCachedMSRs;
         uint32_t                    uAlignement;
 #endif /* VBOX_WITH_AUTO_MSR_LOAD_RESTORE */
