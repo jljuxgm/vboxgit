@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 43450 2012-09-27 11:49:53Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 43451 2012-09-27 11:55:26Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -362,7 +362,7 @@ static uint32_t drvHostWinFindIORangeResource(const DEVINST DevInst)
             break;
         }
 
-        pBuf = (uint8_t *)RTMemAlloc(u32Size + 1)
+        pBuf = (uint8_t *)RTMemAlloc(u32Size + 1);
         if (!pBuf)
         {
             LogFlowFunc("Failed to get Buf %d\n", u32Size);
