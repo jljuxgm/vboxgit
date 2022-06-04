@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImplTasks.cpp 43060 2012-08-29 07:51:02Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 43061 2012-08-29 09:23:43Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -860,6 +860,11 @@ int SessionTaskUpdateAdditions::runFileOnGuest(GuestSession *pSession, GuestProc
             {
                 LogFlowThisFunc(("%s successfully completed\n", procInfo.mName.c_str()));
             }
+        }
+        else if (   procInfo.mFlags == ProcessCreateFlag_WaitForProcessStartOnly
+                 && waitRes.mResult == ProcessWaitResult_Start)
+        {
+            LogFlowThisFunc(("%s successfully started\n", procInfo.mName.c_str()));
         }
         else
         {
