@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: QIWidgetValidator.cpp 43126 2012-08-30 19:22:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -152,9 +152,8 @@ bool QIWidgetValidator::isValid() const
 
     foreach (Watched watched, mWatched)
     {
-        if (watched.widget->inherits ("QLineEdit"))
+        if (QLineEdit *le = qobject_cast<QLineEdit*>(watched.widget))
         {
-            QLineEdit *le = ((QLineEdit *) watched.widget);
             Assert (le->validator());
             if (!le->validator() || !le->isEnabled())
                 continue;
@@ -162,9 +161,8 @@ bool QIWidgetValidator::isValid() const
             int pos;
             state = le->validator()->validate (text, pos);
         }
-        else if (watched.widget->inherits ("QComboBox"))
+        else if (QComboBox *cb = qobject_cast<QComboBox*>(watched.widget))
         {
-            QComboBox *cb = ((QComboBox *) watched.widget);
             Assert (cb->validator());
             if (!cb->validator() || !cb->isEnabled())
                 continue;
@@ -298,7 +296,7 @@ QString QIWidgetValidator::warningText() const
         {
             /* Remove '&' symbol from the buddy field name */
             title = VBoxGlobal::
-                removeAccelMark (((QLabel *) mLastInvalid.buddy)->text());
+                removeAccelMark(qobject_cast<QLabel*>(mLastInvalid.buddy)->text());
 
             /* Remove ':' symbol from the buddy field name */
             title = title.remove (':');
