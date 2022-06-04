@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 42837 2012-08-16 07:16:05Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 42894 2012-08-21 08:00:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3279,7 +3279,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
  * Registers the saved state callbacks with SSM.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to VM structure.
+ * @param   pVM     Pointer to VM.
  * @param   cbRam   The RAM size.
  */
 int pgmR3InitSavedState(PVM pVM, uint64_t cbRam)

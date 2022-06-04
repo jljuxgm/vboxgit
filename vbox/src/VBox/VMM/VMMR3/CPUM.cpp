@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 42613 2012-08-06 10:51:26Z vboxsync $ */
+/* $Id: CPUM.cpp 42894 2012-08-21 08:00:10Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1242,10 +1242,13 @@ static int cpumR3CpuIdInit(PVM pVM)
                                             //| X86_CPUID_AMD_ADVPOWER_EDX_STC
                                             //| X86_CPUID_AMD_ADVPOWER_EDX_MC
                                             //| X86_CPUID_AMD_ADVPOWER_EDX_HWPSTATE
-#if 0 /* We don't expose X86_CPUID_AMD_ADVPOWER_EDX_TSCINVAR, because newer
-       * Linux kernels blindly assume that the AMD performance counters work
-       * if this is set for 64 bits guests. (Can't really find a CPUID feature
-       * bit for them though.) */
+#if 0
+        /*
+         * We don't expose X86_CPUID_AMD_ADVPOWER_EDX_TSCINVAR, because newer
+         * Linux kernels blindly assume that the AMD performance counters work
+         * if this is set for 64 bits guests. (Can't really find a CPUID feature
+         * bit for them though.)
+         */
                                             | X86_CPUID_AMD_ADVPOWER_EDX_TSCINVAR
 #endif
                                             | 0;

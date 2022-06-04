@@ -1,4 +1,4 @@
-/* $Id: HWACCMInternal.h 42821 2012-08-15 11:11:03Z vboxsync $ */
+/* $Id: HWACCMInternal.h 42894 2012-08-21 08:00:10Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -631,7 +631,7 @@ typedef struct HWACCMCPU
 
         /* Number of automatically loaded/restored guest MSRs during the world switch. */
         uint32_t                    cCachedMSRs;
-        uint32_t                    uAlignement;
+        uint32_t                    uAlignment;
 #endif /* VBOX_WITH_AUTO_MSR_LOAD_RESTORE */
 
         /* Last use TSC offset value. (cached) */
