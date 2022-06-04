@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 47099 2013-07-11 15:16:32Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 47511 2013-08-01 15:20:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -656,6 +656,13 @@ void UIKeyboardHandler::sltMachineStateChanged()
         default:
             break;
     }
+
+    /* Recall reminder about paused VM input
+     * if we are not in paused VM state already: */
+    if (machineLogic()->activeMachineWindow() &&
+        state != KMachineState_Paused &&
+        state != KMachineState_TeleportingPausedVM)
+        popupCenter().forgetAboutPausedVMInput(machineLogic()->activeMachineWindow());
 }
 
 /* Keyboard-handler constructor: */

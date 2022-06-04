@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 47510 2013-08-01 14:13:16Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 47511 2013-08-01 15:20:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -501,6 +501,11 @@ void UIPopupCenter::remindAboutPausedVMInput(QWidget *pParent)
                                                      "If you want to continue to work inside the VM, you need to resume it by selecting the corresponding action "
                                                      "from the menu bar.</p>"),
           true);
+}
+
+void UIPopupCenter::forgetAboutPausedVMInput(QWidget *pParent)
+{
+    recall(pParent, "remindAboutPausedVMInput");
 }
 
 void UIPopupCenter::remindAboutWrongColorDepth(QWidget *pParent, ulong uRealBPP, ulong uWantedBPP)
