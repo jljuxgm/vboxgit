@@ -1,4 +1,4 @@
-/* $Id: rtpath-expand-template.cpp.h 45391 2013-04-07 17:15:29Z vboxsync $ */
+/* $Id: rtpath-expand-template.cpp.h 45395 2013-04-08 07:26:54Z vboxsync $ */
 /** @file
  * IPRT - RTPath - Internal header that includes RTPATH_TEMPLATE_CPP_H multiple
  *                 times to expand the code for different path styles.
@@ -69,6 +69,7 @@
 #undef RTPATH_STYLE_FN
 #if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
 # undef  RTPATH_STYLE
+# undef  RTPATH_SLASH
 # undef  RTPATH_SLASH_STR
 # undef  RTPATH_IS_SLASH
 # undef  RTPATH_IS_VOLSEP
