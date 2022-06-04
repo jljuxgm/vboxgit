@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43615 2012-10-11 11:34:53Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43617 2012-10-11 12:59:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -145,11 +145,6 @@ bool UIGChooserItemMachine::isLockedMachine() const
            state != KMachineState_Saved &&
            state != KMachineState_Teleported &&
            state != KMachineState_Aborted;
-}
-
-void UIGChooserItemMachine::updateToolTip()
-{
-    setToolTip(toolTipText());
 }
 
 /* static */
@@ -327,6 +322,11 @@ void UIGChooserItemMachine::startEditing()
     AssertMsgFailed(("Machine graphics item do NOT support editing yet!"));
 }
 
+void UIGChooserItemMachine::updateToolTip()
+{
+    setToolTip(toolTipText());
+}
+
 void UIGChooserItemMachine::addItem(UIGChooserItem*, int)
 {
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
@@ -357,6 +357,22 @@ bool UIGChooserItemMachine::hasItems(UIGChooserItemType) const
 void UIGChooserItemMachine::clearItems(UIGChooserItemType)
 {
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
+}
+
+void UIGChooserItemMachine::updateAll(const QString &strId)
+{
+    /* Skip wrong id: */
+    if (id() != strId)
+        return;
+
+    /* Update this machine-item: */
+    recache();
+    updateToolTip();
+    update();
+
+    /* Update parent group-item: */
+    parentItem()->updateToolTip();
+    parentItem()->update();
 }
 
 UIGChooserItem* UIGChooserItemMachine::searchForItem(const QString &strSearchTag, int iItemSearchFlags)
