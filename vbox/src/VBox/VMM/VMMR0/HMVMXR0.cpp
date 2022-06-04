@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46442 2013-06-07 14:34:39Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46445 2013-06-07 17:02:53Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2899,7 +2899,7 @@ static int hmR0VmxLoadGuestControlRegs(PVMCPU pVCpu, PCPUMCTX pCtx)
             AssertRCReturn(rc, rc);
         }
         else
-            u32GuestCR0 |= X86_CR0_WP;     /* Guest CPL 0 writes to its read-only pages should cause a VM-exit. */
+            u32GuestCR0 |= X86_CR0_WP;     /* Guest CPL 0 writes to its read-only pages should cause a #PF VM-exit. */
 
         /*
          * Guest FPU bits.
