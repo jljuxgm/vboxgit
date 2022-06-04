@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 47133 2013-07-14 14:03:06Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 47134 2013-07-14 14:18:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -21,7 +21,6 @@
 #include "UIGlobalSettingsUpdate.h"
 #include "VBoxGlobal.h"
 
-/* Update page constructor: */
 UIGlobalSettingsUpdate::UIGlobalSettingsUpdate()
     : m_pLastChosenRadio(0)
     , m_fChanged(false)
