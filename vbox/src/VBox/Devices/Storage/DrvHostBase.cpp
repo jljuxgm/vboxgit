@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 46625 2013-06-18 13:28:52Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 47036 2013-07-08 12:26:47Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -2079,6 +2079,8 @@ int DRVHostBaseInitFinish(PDRVHOSTBASE pThis)
         case PDMBLOCKTYPE_FLOPPY_1_20:
         case PDMBLOCKTYPE_FLOPPY_1_44:
         case PDMBLOCKTYPE_FLOPPY_2_88:
+        case PDMBLOCKTYPE_FLOPPY_FAKE_15_6:
+        case PDMBLOCKTYPE_FLOPPY_FAKE_63_5:
             if (uDriveType != DRIVE_REMOVABLE)
             {
                 AssertMsgFailed(("Configuration error: '%s' is not a floppy (type=%d)\n",
