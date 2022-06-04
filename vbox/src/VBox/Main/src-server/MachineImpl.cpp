@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 45661 2013-04-22 08:45:15Z vboxsync $ */
+/* $Id: MachineImpl.cpp 45674 2013-04-23 08:45:54Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1808,6 +1808,7 @@ STDMETHODIMP Machine::COMSETTER(GraphicsControllerType)(GraphicsControllerType_T
 {
     switch (aGraphicsControllerType)
     {
+        case GraphicsControllerType_Null:
         case GraphicsControllerType_VBoxVGA:
             break;
         default:

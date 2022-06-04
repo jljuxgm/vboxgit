@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 45674 2013-04-23 08:45:54Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1431,10 +1431,22 @@ int ConsoleVRDPServer::Launch(void)
     AssertReturn(server, VERR_INTERNAL_ERROR_2);
 
     /*
+     * Check if the prerequisites for VRDE are present.
+     */
+    BOOL fPrerequisites;
+    HRESULT hrc = server->COMGETTER(CheckPrerequisites)(&fPrerequisites);
+    AssertComRCReturn(hrc, Global::vboxStatusCodeFromCOM(hrc));
+    if (!fPrerequisites)
+    {
+        LogRel(("VRDE: prerequisite missing, skipped start\n"));
+        return VINF_SUCCESS;
+    }
+
+    /*
      * Check if VRDE is enabled.
      */
     BOOL fEnabled;
-    HRESULT hrc = server->COMGETTER(Enabled)(&fEnabled);
+    hrc = server->COMGETTER(Enabled)(&fEnabled);
     AssertComRCReturn(hrc, Global::vboxStatusCodeFromCOM(hrc));
     if (!fEnabled)
         return VINF_SUCCESS;

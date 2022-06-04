@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 45426 2013-04-09 09:30:55Z vboxsync $ */
+/* $Id: GuestImpl.cpp 45674 2013-04-23 08:45:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -267,7 +267,7 @@ void Guest::updateStats(uint64_t iTick)
      * process. This is why we took a snapshot of currently collected stats
      * and released the lock.
      */
-    Console::SafeVMPtr ptrVM(mParent);
+    Console::SafeVMPtrQuiet ptrVM(mParent);
     if (ptrVM.isOk())
     {
         int rc;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 45190 2013-03-26 10:59:17Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 45674 2013-04-23 08:45:54Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -193,6 +193,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--unplugcpu <id>]\n"
                      "                            [--cpuexecutioncap <1-100>]\n"
                      "                            [--rtcuseutc on|off]\n"
+                     "                            [--graphicscontroller none|vboxvga]\n"
                      "                            [--monitorcount <number>]\n"
                      "                            [--accelerate3d on|off]\n"
 #ifdef VBOX_WITH_VIDEOHWACCEL
