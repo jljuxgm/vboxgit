@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 46667 2013-06-19 15:30:23Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 46839 2013-06-27 12:28:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -659,11 +659,7 @@ void UIMachineSettingsDisplay::prepareVideoTab()
     m_iMinVRAM = sys.GetMinGuestVRAM();
     m_iMaxVRAM = sys.GetMaxGuestVRAM();
     m_iMaxVRAMVisible = m_iMaxVRAM;
-#if (QT_VERSION >= 0x040600)
     const uint cHostScreens = QApplication::desktop()->screenCount();
-#else /* (QT_VERSION >= 0x040600) */
-    const uint cHostScreens = QApplication::desktop()->numScreens();
-#endif /* !(QT_VERSION >= 0x040600) */
     m_pSliderVideoMemorySize->setMinimum(m_iMinVRAM);
     m_pSliderVideoMemorySize->setMaximum(m_iMaxVRAMVisible);
     m_pSliderVideoMemorySize->setPageStep(calcPageStep(m_iMaxVRAMVisible));

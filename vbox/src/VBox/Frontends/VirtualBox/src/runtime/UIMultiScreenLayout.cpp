@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 45402 2013-04-08 12:32:55Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 46839 2013-06-27 12:28:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -272,11 +272,7 @@ void UIMultiScreenLayout::sltScreenLayoutChanged(QAction *pAction)
 
 void UIMultiScreenLayout::calculateHostMonitorCount()
 {
-#if (QT_VERSION >= 0x040600)
     m_cHostScreens = QApplication::desktop()->screenCount();
-#else /* (QT_VERSION >= 0x040600) */
-    m_cHostScreens = QApplication::desktop()->numScreens();
-#endif /* !(QT_VERSION >= 0x040600) */
 }
 
 void UIMultiScreenLayout::calculateGuestScreenCount()
