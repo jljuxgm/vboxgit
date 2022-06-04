@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 45356 2013-04-05 07:01:27Z vboxsync $ */
+/* $Id: getopt.cpp 46489 2013-06-11 03:24:29Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -232,7 +232,7 @@ static PCRTGETOPTDEF rtGetOptSearchLong(const char *pszOption, PCRTGETOPTDEF paO
     if (!(fFlags & RTGETOPTINIT_FLAGS_NO_STD_OPTS))
         for (uint32_t i = 0; i < RT_ELEMENTS(g_aStdOptions); i++)
             if (   !strcmp(pszOption, g_aStdOptions[i].pszLong)
-                || (   pOpt->fFlags & RTGETOPT_FLAG_ICASE
+                || (   g_aStdOptions[i].fFlags & RTGETOPT_FLAG_ICASE
                     && !RTStrICmp(pszOption, g_aStdOptions[i].pszLong)))
                 return &g_aStdOptions[i];
 
