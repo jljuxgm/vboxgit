@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 45842 2013-04-30 15:37:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -207,9 +207,7 @@ void UIMachineMenuBar::prepareMenuMachine(QMenu *pMenu)
     pMenu->addSeparator();
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_Pause));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_Reset));
-    pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_Save));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_Shutdown));
-    pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_PowerOff));
 #ifndef Q_WS_MAC
     pMenu->addSeparator();
 #endif /* !Q_WS_MAC */
