@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43619 2012-10-11 14:07:55Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43620 2012-10-11 14:27:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -184,6 +184,19 @@ UIGChooserItemGroup::~UIGChooserItemGroup()
 QString UIGChooserItemGroup::name() const
 {
     return m_strName;
+}
+
+QString UIGChooserItemGroup::fullName() const
+{
+    /* Return "/" for root-group: */
+    if (!parentItem())
+        return "/";
+    /* Get full parent name, append with '/' if not yet appended: */
+    QString strParentFullName = parentItem()->fullName();
+    if (!strParentFullName.endsWith('/'))
+        strParentFullName.append('/');
+    /* Return full item name based on parent prefix: */
+    return strParentFullName + name();
 }
 
 QString UIGChooserItemGroup::definition() const

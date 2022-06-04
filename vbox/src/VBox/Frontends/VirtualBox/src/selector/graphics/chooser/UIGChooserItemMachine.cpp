@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43619 2012-10-11 14:07:55Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43620 2012-10-11 14:27:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -131,6 +131,16 @@ UIGChooserItemMachine::~UIGChooserItemMachine()
 QString UIGChooserItemMachine::name() const
 {
     return UIVMItem::name();
+}
+
+QString UIGChooserItemMachine::fullName() const
+{
+    /* Get full parent name, append with '/' if not yet appended: */
+    QString strParentFullName = parentItem()->fullName();
+    if (!strParentFullName.endsWith('/'))
+        strParentFullName.append('/');
+    /* Return full item name based on parent prefix: */
+    return strParentFullName + name();
 }
 
 QString UIGChooserItemMachine::definition() const
