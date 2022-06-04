@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 42982 2012-08-24 19:30:14Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 43076 2012-08-29 14:32:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -159,7 +159,9 @@ void UIFrameBufferQuartz2D::paintEvent(QPaintEvent *aEvent)
     /* If the machine is NOT in 'running' state,
      * the link between framebuffer and video memory
      * is broken, we should go fallback now... */
-    if (m_fUsesGuestVRAM && !m_pMachineView->uisession()->isRunning())
+    if (m_fUsesGuestVRAM &&
+        !m_pMachineView->uisession()->isRunning() &&
+        !m_pMachineView->uisession()->isPaused())
     {
         /* Simulate fallback through fake resize-event: */
         UIResizeEvent event(FramebufferPixelFormat_Opaque, NULL, 0, 0, 640, 480);
