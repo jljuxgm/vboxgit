@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45967 2013-05-09 15:49:06Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45976 2013-05-10 09:40:22Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7938,7 +7938,7 @@ HMVMX_EXIT_DECL hmR0VmxExitMovCRx(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
                 case 8: /* CR8 */
                     Assert(!(pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_USE_TPR_SHADOW));
                     /* CR8 contains the APIC TPR. Was updated by EMInterpretCRxWrite(). */
-                    /* We don't need to update HM_CHANGED_VMX_GUEST_APIC_STATE here as this -cannot- happen with TPR shadowing. */
+                    pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_VMX_GUEST_APIC_STATE;
                     break;
                 default:
                     AssertMsgFailed(("Invalid CRx register %#x\n", VMX_EXIT_QUALIFICATION_CRX_REGISTER(uExitQualification)));
