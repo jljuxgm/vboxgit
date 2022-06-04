@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 47021 2013-07-06 17:49:56Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 47451 2013-07-29 08:09:04Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -291,11 +291,8 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
                         return errorSyntax(USAGE_DHCPSERVER,
                                            "--slot wasn't found");
 
-                    DhcpOptMap& map = (fVmOptionRead ?
-                                       VmSlot2Options[
-                                         VmNameSlotKey::VmNameSlotKey(pszVmName,
-                                                                      u8Slot)]
-                                       : GlobalDhcpOptions);
+                    DhcpOptMap& map = fVmOptionRead ? VmSlot2Options[VmNameSlotKey(pszVmName, u8Slot)]
+                                                    : GlobalDhcpOptions;
                     std::string strVal = ValueUnion.psz;
                     map.insert(DhcpOptValuePair((DhcpOpt_T)u8OptId, strVal));
 
