@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 42949 2012-08-23 12:51:31Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 43029 2012-08-28 11:30:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -487,6 +487,12 @@ void UIMachineLogic::retranslateUi()
         }
     }
 #endif /* Q_WS_MAC */
+    /* Shared Clipboard actions: */
+    if (m_pSharedClipboardActions)
+    {
+        foreach (QAction *pAction, m_pSharedClipboardActions->actions())
+            pAction->setText(gpConverter->toString(pAction->data().value<KClipboardMode>()));
+    }
 }
 
 #ifdef Q_WS_MAC
