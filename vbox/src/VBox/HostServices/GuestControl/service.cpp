@@ -1,4 +1,4 @@
-/* $Id: service.cpp 47695 2013-08-13 14:40:20Z vboxsync $ */
+/* $Id: service.cpp 47730 2013-08-14 14:23:17Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -319,6 +319,15 @@ typedef struct HostCommand
                             paDstParms[i].u.uint32 = mpParms[i].u.uint32;
                             break;
 
+
+                        case VBOX_HGCM_SVC_PARM_64BIT:
+#ifdef DEBUG_andy
+                            LogFlowFunc(("\tmpParms[%RU32] = %RU64 (uint64_t)\n",
+                                         i, mpParms[i].u.uint64));
+#endif
+                            paDstParms[i].u.uint64 = mpParms[i].u.uint64;
+                            break;
+
                         case VBOX_HGCM_SVC_PARM_PTR:
                         {
 #ifdef DEBUG_andy
@@ -345,8 +354,6 @@ typedef struct HostCommand
                             break;
                         }
 
-                        case VBOX_HGCM_SVC_PARM_64BIT:
-                            /* Fall through is intentional. */
                         default:
                             LogFlowFunc(("Parameter %RU32 of type %RU32 is not supported yet\n",
                                          i, mpParms[i].type));
