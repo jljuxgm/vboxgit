@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 45083 2013-03-19 09:17:08Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 45085 2013-03-19 09:28:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -212,6 +212,7 @@ void UIWizardExportAppPageExpert::retranslateUi()
     m_pHostnameLabel->setText(UIWizardExportApp::tr("&Hostname:"));
     m_pBucketLabel->setText(UIWizardExportApp::tr("&Bucket:"));
     m_pFileSelectorLabel->setText(UIWizardExportApp::tr("&File:"));
+    m_pFileSelector->setChooseButtonToolTip(tr("Choose a file to export virtual appliance..."));
     m_pFileSelector->setFileDialogTitle(UIWizardExportApp::tr("Please choose a file to export virtual appliance"));
     m_pFileSelector->setFileFilters(UIWizardExportApp::tr("Open Virtualization Format Archive (%1)").arg("*.ova") + ";;" +
                                     UIWizardExportApp::tr("Open Virtualization Format (%1)").arg("*.ovf"));
