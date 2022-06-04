@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 43127 2012-08-30 19:26:29Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 43449 2012-09-27 11:39:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3841,6 +3841,10 @@ bool VBoxGlobal::isWddmCompatibleOsType(const QString &strGuestOSTypeId)
 #ifdef Q_WS_MAC
 bool VBoxGlobal::isSheetWindowAllowed(QWidget *pParent) const
 {
+    /* Disallow for null parent: */
+    if (!pParent)
+        return false;
+
     /* Make sure Mac Sheet is not used for the same parent now. */
     if (sheetWindowUsed(pParent))
         return false;
@@ -3856,6 +3860,10 @@ bool VBoxGlobal::isSheetWindowAllowed(QWidget *pParent) const
 
 void VBoxGlobal::setSheetWindowUsed(QWidget *pParent, bool fUsed)
 {
+    /* Ignore null parent: */
+    if (!pParent)
+        return;
+
     if (fUsed)
     {
         AssertMsg(!m_sheets.contains(pParent), ("Trying to use Mac Sheet for parent which already has one!"));
