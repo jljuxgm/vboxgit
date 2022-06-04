@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 41443 2012-05-25 07:52:59Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 44141 2012-12-17 12:24:48Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -198,6 +198,11 @@ VBGLR3DECL(int) VbglR3SharedFolderGetMappings(uint32_t u32ClientId, bool fAutoMo
         RTMemFree(ppaMappingsTemp);
         ppaMappingsTemp = NULL;
     }
+
+    /* In this case, just return success with 0 mappings */
+    if (   rc == VERR_INVALID_PARAMETER
+        && fAutoMountOnly)
+        rc = VINF_SUCCESS;
 
     *ppaMappings = ppaMappingsTemp;
 
