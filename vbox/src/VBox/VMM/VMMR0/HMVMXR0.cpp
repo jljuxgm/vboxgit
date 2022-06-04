@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47454 2013-07-29 11:03:11Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47458 2013-07-29 12:53:13Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8380,7 +8380,7 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
     AssertReturn(uIOWidth <= 3 && uIOWidth != 2, VERR_HMVMX_IPE_1);
 
     /* I/O operation lookup arrays. */
-    static const uint32_t s_aIOSizes[4]  = { 1, 2, 0, 4 };                   /* Size of the I/O accesses. */
+    static const uint32_t s_aIOSizes[4] = { 1, 2, 0, 4 };                   /* Size of the I/O accesses. */
     static const uint32_t s_aIOOpAnd[4] = { 0xff, 0xffff, 0, 0xffffffff };  /* AND masks for saving the result (in AL/AX/EAX). */
 
     const uint32_t cbValue  = s_aIOSizes[uIOWidth];
