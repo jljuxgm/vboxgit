@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45575 2013-04-16 15:47:57Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45576 2013-04-16 17:02:38Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4740,8 +4740,8 @@ static int hmR0VmxCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pMixedCtx, 
             {
                 enmReflect = VMXREFLECTXCPT_XCPT;
             }
-            if (   hmR0VmxIsContributoryXcpt(uIdtVector)
-                && uExitVector == X86_XCPT_PF)
+            else if (   hmR0VmxIsContributoryXcpt(uIdtVector)
+                     && uExitVector == X86_XCPT_PF)
             {
                 enmReflect = VMXREFLECTXCPT_XCPT;
                 GCPtrFaultAddress = pMixedCtx->cr2;
