@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 44749 2013-02-19 12:11:57Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 44753 2013-02-19 14:57:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -339,10 +339,26 @@ QVariant UIHotKeyTableModel::data(const QModelIndex &index, int iRole /*= Qt::Di
             /* Switch for different columns: */
             switch (index.column())
             {
-                case UIHotKeyTableSection_Name: return m_filteredShortcuts[iIndex].description;
-                case UIHotKeyTableSection_Value: return m_filteredShortcuts[iIndex].key == UIHostCombo::hostComboCacheKey() ?
-                                                        UIHostCombo::toReadableString(m_filteredShortcuts[iIndex].currentSequence) :
-                                                        m_filteredShortcuts[iIndex].currentSequence;
+                case UIHotKeyTableSection_Name:
+                {
+                    /* Return shortcut description: */
+                    return m_filteredShortcuts[iIndex].description;
+                }
+                case UIHotKeyTableSection_Value:
+                {
+                    /* If that is host-combo cell: */
+                    if (m_filteredShortcuts[iIndex].key == UIHostCombo::hostComboCacheKey())
+                        /* We should return host-combo: */
+                        return UIHostCombo::toReadableString(m_filteredShortcuts[iIndex].currentSequence);
+                    /* In other cases we should return hot-combo: */
+                    QString strHotCombo = m_filteredShortcuts[iIndex].currentSequence;
+                    /* But if that is machine table and hot-combo is not empty: */
+                    if (m_type == UIActionPoolType_Runtime && !strHotCombo.isEmpty())
+                        /* We should prepend it with Host+ prefix: */
+                        strHotCombo.prepend(UIHostCombo::hostComboModifierName());
+                    /* Return what we've got: */
+                    return strHotCombo;
+                }
                 default: break;
             }
             /* Invalid for other cases: */
