@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemptionDriver.cpp 45541 2013-04-14 12:42:52Z vboxsync $ */
+/* $Id: tstR0ThreadPreemptionDriver.cpp 45542 2013-04-14 12:43:58Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -67,7 +67,7 @@ static DECLCALLBACK(int) MyThreadProc(RTTHREAD hSelf, void *pvCpuIdx)
         {
             ASMNopPause();
         } while (RTTimeMilliTS() - tsStart < 8);
-        RTThreadSleep(8);
+        RTThreadSleep(4);
     }
 
     return VINF_SUCCESS;
