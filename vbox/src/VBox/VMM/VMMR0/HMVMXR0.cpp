@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45722 2013-04-25 09:18:42Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45732 2013-04-25 14:39:46Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4618,21 +4618,21 @@ static int hmR0VmxCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pMixedCtx, 
 
         /* See Intel spec. 30.7.1.1 "Reflecting Exceptions to Guest Software". */
         VMXREFLECTXCPT enmReflect     = VMXREFLECTXCPT_NONE;
-        RTGCUINTPTR GCPtrFaultAddress = 0;
         if (uIntType == VMX_IDT_VECTORING_INFO_TYPE_HW_XCPT)
         {
             enmReflect = VMXREFLECTXCPT_XCPT;
+#if 0
             if (   hmR0VmxIsContributoryXcpt(uIdtVector)
                 && uExitVector == X86_XCPT_PF)
             {
-                GCPtrFaultAddress = pMixedCtx->cr2;
                 Log(("IDT: Contributory #PF uCR2=%#RGv\n", pMixedCtx->cr2));
             }
-            else if (   uExitVector == X86_XCPT_PF
-                     && uIdtVector == X86_XCPT_PF)
+            else
+#endif
+            if (   uExitVector == X86_XCPT_PF
+                && uIdtVector == X86_XCPT_PF)
             {
                 pVmxTransient->fVectoringPF = true;
-                GCPtrFaultAddress = pMixedCtx->cr2;
                 Log(("IDT: Vectoring #PF uCR2=%#RGv\n", pMixedCtx->cr2));
             }
             else if (   (pVCpu->hm.s.vmx.u32XcptBitmap & HMVMX_CONTRIBUTORY_XCPT_MASK)
@@ -4667,8 +4667,10 @@ static int hmR0VmxCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pMixedCtx, 
                     AssertRCReturn(rc, rc);
                     u32ErrCode = pVmxTransient->uIdtVectoringErrorCode;
                 }
+
+                /* If uExitVector is #PF, CR2 value will be updated from the VMCS if it's a guest #PF. See hmR0VmxExitXcptPF(). */
                 hmR0VmxSetPendingEvent(pVCpu, VMX_ENTRY_INTR_INFO_FROM_EXIT_IDT_INFO(pVmxTransient->uIdtVectoringInfo),
-                                       0 /* cbInstr */,  u32ErrCode, GCPtrFaultAddress);
+                                       0 /* cbInstr */,  u32ErrCode, pMixedCtx->cr2);
                 rc = VINF_SUCCESS;
                 Log(("IDT: Pending vectoring event %#RX64 Err=%#RX32\n", pVCpu->hm.s.Event.u64IntrInfo, pVCpu->hm.s.Event.u32ErrCode));
                 break;
