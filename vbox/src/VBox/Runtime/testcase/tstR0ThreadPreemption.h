@@ -1,10 +1,10 @@
-/* $Id: tstR0ThreadPreemption.h 47199 2013-07-16 15:45:42Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.h 47206 2013-07-17 10:17:13Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, common header.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
