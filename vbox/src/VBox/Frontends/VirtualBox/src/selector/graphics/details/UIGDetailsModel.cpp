@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 42608 2012-08-05 21:52:41Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 42734 2012-08-09 23:51:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -158,6 +158,16 @@ void UIGDetailsModel::sltElementTypeToggled()
 void UIGDetailsModel::sltHandleSlidingStarted()
 {
     m_pRoot->stopPopulatingItems();
+}
+
+void UIGDetailsModel::sltHandleToggleStarted()
+{
+    m_pRoot->stopPopulatingItems();
+}
+
+void UIGDetailsModel::sltHandleToggleFinished()
+{
+    m_pRoot->updateItems();
 }
 
 QVariant UIGDetailsModel::data(int iKey) const
