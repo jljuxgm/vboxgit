@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 44740 2013-02-18 17:02:47Z vboxsync $ */
+/* $Id: server_presenter.cpp 44746 2013-02-19 11:05:23Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -283,6 +283,38 @@ void CrHlpFreeTexImage(CRContext *pCurCtx, GLuint idPBO, void *pvData)
         if (pCurCtx && crStateIsBufferBoundForCtx(pCurCtx, GL_PIXEL_PACK_BUFFER_ARB))
             cr_server.head_spu->dispatch_table.BindBufferARB(GL_PIXEL_PACK_BUFFER_ARB, pCurCtx->bufferobject.packBuffer->hwid);
     }
+}
+
+void CrHlpPutTexImage(CRContext *pCurCtx, PVBOXVR_TEXTURE pTexture, void *pvData)
+{
+    CRASSERT(pTexture->hwid);
+    cr_server.head_spu->dispatch_table.BindTexture(pTexture->target, pTexture->hwid);
+
+    if (!pCurCtx || crStateIsBufferBoundForCtx(pCurCtx, GL_PIXEL_UNPACK_BUFFER_ARB))
+    {
+        cr_server.head_spu->dispatch_table.BindBufferARB(GL_PIXEL_UNPACK_BUFFER_ARB, 0);
+    }
+
+    /*read the texture, note pixels are NULL for PBO case as it's offset in the buffer*/
+    cr_server.head_spu->dispatch_table.TexSubImage2D(GL_TEXTURE_2D,  0 /* level*/,  0 /*xoffset*/,  0 /*yoffset*/,  pTexture->width, pTexture->height, GL_BGRA, GL_UNSIGNED_BYTE, pvData);
+
+    /*restore gl state*/
+    if (pCurCtx)
+    {
+        CRTextureObj *pTObj;
+        CRTextureLevel *pTImg;
+        crStateGetTextureObjectAndImage(pCurCtx, pTexture->target, 0, &pTObj, &pTImg);
+
+        GLuint uid = pTObj->hwid;
+        cr_server.head_spu->dispatch_table.BindTexture(pTexture->target, uid);
+    }
+    else
+    {
+        cr_server.head_spu->dispatch_table.BindTexture(pTexture->target, 0);
+    }
+
+    if (pCurCtx && crStateIsBufferBoundForCtx(pCurCtx, GL_PIXEL_UNPACK_BUFFER_ARB))
+        cr_server.head_spu->dispatch_table.BindBufferARB(GL_PIXEL_UNPACK_BUFFER_ARB, pCurCtx->bufferobject.unpackBuffer->hwid);
 }
 
 void* CrHlpGetTexImage(CRContext *pCurCtx, PVBOXVR_TEXTURE pTexture, GLuint idPBO)
