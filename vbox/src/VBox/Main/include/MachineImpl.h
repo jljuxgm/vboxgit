@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 45971 2013-05-09 19:46:52Z vboxsync $ */
+/* $Id: MachineImpl.h 46123 2013-05-16 13:40:20Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -262,6 +262,7 @@ public:
         ULONG               mVideoCaptureFps;
         Bstr                mVideoCaptureFile;
         BOOL                mVideoCaptureEnabled;
+        BOOL                maVideoCaptureScreens[SchemaDefs::MaxGuestMonitors];
         ULONG               mMonitorCount;
         BOOL                mHWVirtExEnabled;
         BOOL                mHWVirtExExclusive;
@@ -434,6 +435,8 @@ public:
     STDMETHOD(COMSETTER(MonitorCount))(ULONG monitorCount);
     STDMETHOD(COMGETTER(VideoCaptureEnabled))(BOOL *u8VideoRecEnabled);
     STDMETHOD(COMSETTER(VideoCaptureEnabled))(BOOL  u8VideoRecEnabled);
+    STDMETHOD(COMGETTER(VideoCaptureScreens))(ComSafeArrayOut(BOOL, aScreens));
+    STDMETHOD(COMSETTER(VideoCaptureScreens))(ComSafeArrayIn(BOOL, aScreens));
     STDMETHOD(COMGETTER(VideoCaptureFile))(BSTR * ppChVideoRecFilename);
     STDMETHOD(COMSETTER(VideoCaptureFile))(IN_BSTR pChVideoRecFilename);
     STDMETHOD(COMGETTER(VideoCaptureWidth))(ULONG *aHorzRes);

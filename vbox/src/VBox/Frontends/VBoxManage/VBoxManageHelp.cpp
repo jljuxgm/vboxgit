@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 46036 2013-05-13 17:03:47Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 46123 2013-05-16 13:40:20Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -370,6 +370,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #endif
 #ifdef VBOX_WITH_VPX
                      "                            [--vcpenabled on|off]\n"
+                     "                            [--vcpscreens [<display>],...\n"
                      "                            [--vcpfile <filename>]\n"
                      "                            [--vcpwidth <width>]\n"
                      "                            [--vcpheight <height>]\n"
@@ -467,6 +468,8 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                                            [[<display>] [<enabled:yes|no> |\n"
                      "                                              [<xorigin> <yorigin>]]] |\n"
                      "                            screenshotpng <file> [display] |\n"
+                     "                            enablevideocapture <screen>,[<screen>...]\n"
+                     "                            disablevideocapture <screen>,[<screen>...]\n"
                      "                            setcredentials <username>\n"
                      "                                           --passwordfile <file> | <password>\n"
                      "                                           <domain>\n"
