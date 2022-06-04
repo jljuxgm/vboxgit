@@ -1,4 +1,4 @@
-/* $Id: Performance.h 43507 2012-10-02 13:22:31Z vboxsync $ */
+/* $Id: Performance.h 43618 2012-10-11 13:59:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -495,8 +495,8 @@ namespace pm
     class HostNetworkLoadRaw : public BaseMetric
     {
     public:
-        HostNetworkLoadRaw(CollectorHAL *hal, ComPtr<IUnknown> object, com::Utf8Str name, com::Utf8Str ifname, uint32_t speed, SubMetric *rx, SubMetric *tx)
-            : BaseMetric(hal, name, object), mInterfaceName(ifname), mRx(rx), mTx(tx), mRxPrev(0), mTxPrev(0), mRc(VINF_SUCCESS) { mSpeed = (uint64_t)speed * (1000000/8); /* Convert to bytes/sec */ };
+        HostNetworkLoadRaw(CollectorHAL *hal, ComPtr<IUnknown> object, com::Utf8Str name, com::Utf8Str shortname, com::Utf8Str ifname, uint32_t speed, SubMetric *rx, SubMetric *tx)
+            : BaseMetric(hal, name, object), mShortName(shortname), mInterfaceName(ifname), mRx(rx), mTx(tx), mRxPrev(0), mTxPrev(0), mRc(VINF_SUCCESS) { mSpeed = (uint64_t)speed * (1000000/8); /* Convert to bytes/sec */ };
         ~HostNetworkLoadRaw() { delete mRx; delete mTx; };
 
         void init(ULONG period, ULONG length);
@@ -509,6 +509,7 @@ namespace pm
         ULONG getScale() { return PM_NETWORK_LOAD_MULTIPLIER / 100; }
 
     private:
+        com::Utf8Str  mShortName;
         com::Utf8Str  mInterfaceName;
         SubMetric    *mRx;
         SubMetric    *mTx;
