@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42348 2012-07-24 11:10:58Z vboxsync $
+# $Id: Config.kmk 42399 2012-07-25 20:08:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -461,7 +461,7 @@ VBOX_WITH_SCSI = 1
 # Enable this setting to force a fallback to default DMI data on configuration errors
 VBOX_BIOS_DMI_FALLBACK =
 # Enable new VGA BIOS.
-VBOX_WITH_NEW_VGABIOS = 1
+VBOX_WITH_NEW_VGABIOS =
 # Enable the builtin PXE ROM
 VBOX_WITH_PXE_ROM = 1
 # Enable MSI support in devices
@@ -5108,7 +5108,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42348 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42399 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
