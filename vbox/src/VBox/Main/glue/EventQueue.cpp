@@ -1,4 +1,4 @@
-/* $Id: EventQueue.cpp 46717 2013-06-21 08:34:43Z vboxsync $ */
+/* $Id: EventQueue.cpp 46751 2013-06-24 12:13:53Z vboxsync $ */
 /** @file
  * Event queue class declaration.
  */
@@ -113,7 +113,11 @@ int EventQueue::processEventQueue(RTMSINTERVAL cMsTimeout)
     if (RT_SUCCESS(rc))
     {
         if (ASMAtomicReadBool(&mShutdown))
+        {
+            int rc2 = RTCritSectLeave(&mCritSect);
+            AssertRC(rc2);
             return VERR_INTERRUPTED;
+        }
 
         if (RT_SUCCESS(rc))
         {
