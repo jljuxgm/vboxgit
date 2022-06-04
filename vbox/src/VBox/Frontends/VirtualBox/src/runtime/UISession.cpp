@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 43395 2012-09-21 11:38:32Z vboxsync $ */
+/* $Id: UISession.cpp 43396 2012-09-21 12:10:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -152,12 +152,12 @@ void UISession::adjustGuestView()
 {
     foreach(UIMachineWindow *pMachineWindow, machineLogic()->machineWindows())
     {
-        bool bAdjustPosition = True;
+        bool bAdjustPosition = true;
         UIVisualStateType visualStateType = machineLogic()->visualStateType();
 
         if (visualStateType == UIVisualStateType_Normal ||
             visualStateType == UIVisualStateType_Scale)
-            bAdjustPosition = True;
+            bAdjustPosition = true;
 
         /* Normalize view's geometry: */
         pMachineWindow->machineView()->normalizeGeometry(bAdjustPosition);
