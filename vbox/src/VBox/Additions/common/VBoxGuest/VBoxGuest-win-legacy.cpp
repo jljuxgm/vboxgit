@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win-legacy.cpp 44979 2013-03-11 12:10:18Z vboxsync $ */
+/* $Id: VBoxGuest-win-legacy.cpp 44980 2013-03-11 12:11:20Z vboxsync $ */
 /** @file
  * VBoxGuest-win-legacy - Windows NT4 specifics.
  */
@@ -29,10 +29,6 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-
-/* Reenable logging, this was #undef'ed on iprt/log.h for RING0. */
-#define LOG_ENABLED
-
 #ifndef PCI_MAX_BUSES
 # define PCI_MAX_BUSES 256
 #endif
