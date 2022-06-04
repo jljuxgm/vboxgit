@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 46904 2013-07-02 12:59:56Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 46921 2013-07-03 09:46:40Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  */
@@ -2686,9 +2686,8 @@ static int intnetR0TrunkIfSendGsoFallback(PINTNETTRUNKIF pThis, PINTNETIF pIfSen
         INTNETSG    SG;
     } u;
 
-    /*
-     * @todo: We have to adjust MSS so it does not exceed the value configured
-     * for the host's interface.
+    /** @todo We have to adjust MSS so it does not exceed the value configured for
+     * the host's interface.
      */
 
     /*
