@@ -1,4 +1,4 @@
-/* $Id: Performance.h 43958 2012-11-26 10:37:06Z vboxsync $ */
+/* $Id: Performance.h 43994 2012-11-29 08:58:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -527,7 +527,7 @@ namespace pm
 
         void init(ULONG period, ULONG length) { mPeriod = period; mLength = length; mLinkSpeed->init(length); };
         void preCollect(CollectorHints& /* hints */, uint64_t /* iTick */) {};
-        void collect() { mLinkSpeed->put(mSpeed); };
+        void collect() { if (mSpeed) mLinkSpeed->put(mSpeed); };
         const char *getUnit() { return "mbit/s"; };
         ULONG getMinValue() { return 0; };
         ULONG getMaxValue() { return INT32_MAX; };

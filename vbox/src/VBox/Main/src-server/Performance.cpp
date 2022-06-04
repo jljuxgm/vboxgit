@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 43958 2012-11-26 10:37:06Z vboxsync $ */
+/* $Id: Performance.cpp 43994 2012-11-29 08:58:17Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -715,8 +715,10 @@ void HostNetworkLoadRaw::collect()
         if (RT_UNLIKELY(mSpeed * getPeriod() == 0))
         {
             LogFlowThisFunc(("Check cable for %s! speed=%llu period=%d.\n", mShortName.c_str(), mSpeed, getPeriod()));
+            /* We do not collect host network metrics for unplugged interfaces!
             mRx->put(0);
             mTx->put(0);
+            */
         }
         else
         {
