@@ -1,6 +1,6 @@
-/* $Id: RTStrIPv6.cpp 43214 2012-09-06 09:16:55Z vboxsync $ */
+/* $Id: RTStrIPv6.cpp 43215 2012-09-06 09:21:12Z vboxsync $ */
 /** @file
- * IPRT - RTStrIPv6.
+ * IPRT - Network Address String Handling.
  */
 
 /*
@@ -30,10 +30,12 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#include "internal/iprt.h"
+#include <iprt/net.h>
+
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/stream.h>
-#include "internal/iprt.h"
 #include "internal/string.h"
 
 
