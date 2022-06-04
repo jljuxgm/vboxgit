@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 45270 2013-04-01 11:33:42Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 45271 2013-04-01 12:03:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -385,10 +385,17 @@ void UIMessageCenter::cannotSaveGlobalConfig(const CVirtualBox &vbox)
             formatErrorInfo(res));
 }
 
-void UIMessageCenter::cannotFindMachineByName(const CVirtualBox &vbox, const QString &name)
+void UIMessageCenter::cannotFindMachineByName(const CVirtualBox &vbox, const QString &strName)
 {
     message(0, MessageType_Error,
-            tr("There is no virtual machine named <b>%1</b>.").arg(name),
+            tr("There is no virtual machine named <b>%1</b>.").arg(strName),
+            formatErrorInfo(vbox));
+}
+
+void UIMessageCenter::cannotFindMachineById(const CVirtualBox &vbox, const QString &strId)
+{
+    message(0, MessageType_Error,
+            tr("There is no virtual machine with id <b>%1</b>.").arg(strId),
             formatErrorInfo(vbox));
 }
 
