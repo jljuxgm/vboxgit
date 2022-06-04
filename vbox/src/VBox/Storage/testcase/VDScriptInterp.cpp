@@ -1,4 +1,4 @@
-/** $Id: VDScriptInterp.cpp 44964 2013-03-08 21:06:06Z vboxsync $ */
+/** $Id: VDScriptInterp.cpp 46003 2013-05-13 08:44:23Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine, interpreter.
@@ -176,7 +176,11 @@ static int vdScriptInterpreterError(PVDSCRIPTINTERPCTX pThis, int rc, RT_SRC_POS
 DECLINLINE(void) vdScriptInterpreterPopValue(PVDSCRIPTINTERPCTX pThis, PVDSCRIPTARG pVal)
 {
     PVDSCRIPTARG pValStack = (PVDSCRIPTARG)vdScriptStackGetUsed(&pThis->StackValues);
-    AssertPtrReturnVoid(pValStack);
+    if (!pValStack)
+    {
+        RT_ZERO(*pVal);
+        AssertPtrReturnVoid(pValStack);
+    }
 
     *pVal = *pValStack;
     vdScriptStackPop(&pThis->StackValues);
