@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 45604 2013-04-18 12:21:20Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 45610 2013-04-18 13:27:39Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1887,7 +1887,8 @@ int GstCntlProcessPerform(PVBOXSERVICECTRLPROCESS pProcess,
                     ("Another request still is in progress (%p)\n", pProcess->pRequest),
                     VERR_ACCESS_DENIED);
 
-    if (ASMAtomicReadBool(&pProcess->fShutdown))
+    if (   ASMAtomicReadBool(&pProcess->fShutdown)
+        || ASMAtomicReadBool(&pProcess->fStopped))
     {
         rc = VERR_CANCELLED;
     }
