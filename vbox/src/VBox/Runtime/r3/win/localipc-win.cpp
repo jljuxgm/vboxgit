@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 47168 2013-07-15 14:53:55Z vboxsync $ */
+/* $Id: localipc-win.cpp 47185 2013-07-16 12:37:23Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -773,7 +773,7 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuffer, si
 
             /*
              * If pcbRead is non-NULL this indicates the maximum number of bytes to read.
-             * If pcbRead is NULL the this is the exact number of bytes to read.
+             * If pcbRead is NULL then this is the exact number of bytes to read.
              */
             size_t cbToRead = pcbRead ? *pcbRead : cbBuffer;
             size_t cbTotalRead = 0;
