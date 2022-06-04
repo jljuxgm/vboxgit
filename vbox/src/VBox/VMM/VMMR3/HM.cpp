@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45105 2013-03-20 14:11:42Z vboxsync $ */
+/* $Id: HM.cpp 45142 2013-03-22 13:32:06Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1024,6 +1024,7 @@ static int hmR3InitFinalizeR0(PVM pVM)
                 && CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_RDTSCP))
             {
                 CPUMClearGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_RDTSCP);
+                LogRel(("HM: Disabled RDTSCP\n"));
             }
 
             /* Unrestricted guest execution relies on EPT. */
