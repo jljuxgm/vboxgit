@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 45755 2013-04-26 04:04:44Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1101,6 +1101,11 @@ static void vusbDevCancelAllUrbs(PVUSBDEV pDev, bool fDetaching)
                 AssertMsgFailed(("%s: Leaking left over URB! state=%d pDev=%p[%s]\n",
                                  pUrb->pszDesc, pUrb->enmState, pDev, pDev->pUsbIns->pszName));
                 vusbUrbUnlink(pUrb);
+                /* Unlink isn't enough, because boundary timer and detaching will try to reap it. 
+                 * It was tested with MSD & iphone attachment to vSMP guest, if 
+                 * it breaks anything, please add comment here, why we should unlink only.
+                 */
+                pUrb->VUsb.pfnFree(pUrb);
             }
             pUrb = pNext;
         }
