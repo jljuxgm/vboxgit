@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PGM.cpp 42607 2012-08-05 19:27:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1285,7 +1285,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
         }
 
         pPGM->fA20Enabled      = true;
-        pPGM->GCPhysA20Mask    = ~(RTGCPHYS)(!pPGM->fA20Enabled << 20);
+        pPGM->GCPhysA20Mask    = ~((RTGCPHYS)!pPGM->fA20Enabled << 20);
     }
 
     pVM->pgm.s.enmHostMode      = SUPPAGINGMODE_INVALID;
@@ -2486,6 +2486,7 @@ VMMR3DECL(void) PGMR3ResetUnpluggedCpu(PVM pVM, PVMCPU pVCpu)
      * Re-init other members.
      */
     pVCpu->pgm.s.fA20Enabled = true;
+    pVCpu->pgm.s.GCPhysA20Mask = ~((RTGCPHYS)!pVCpu->pgm.s.fA20Enabled << 20);
 
     /*
      * Clear the FFs PGM owns.
@@ -2563,6 +2564,7 @@ VMMR3DECL(void) PGMR3Reset(PVM pVM)
         PVMCPU pVCpu = &pVM->aCpus[i];
 
         pVCpu->pgm.s.fA20Enabled = true;
+        pVCpu->pgm.s.GCPhysA20Mask = ~((RTGCPHYS)!pVCpu->pgm.s.fA20Enabled << 20);
         pVCpu->pgm.s.fGst32BitPageSizeExtension = false;
         PGMNotifyNxeChanged(pVCpu, false);
 
