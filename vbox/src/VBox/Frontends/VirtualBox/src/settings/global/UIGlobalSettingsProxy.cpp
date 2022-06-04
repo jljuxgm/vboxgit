@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 43678 2012-10-18 11:59:24Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 43695 2012-10-22 10:54:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -172,6 +172,10 @@ void UIGlobalSettingsProxy::sltProxyToggled()
     /* Update auth widgets also: */
     sltAuthToggled();
 #endif
+
+    /* Revalidate if possible: */
+    if (m_pValidator)
+        m_pValidator->revalidate();
 }
 
 #if 0
@@ -182,10 +186,6 @@ void UIGlobalSettingsProxy::sltAuthToggled()
     m_pLoginEditor->setEnabled(m_pProxyCheckbox->isChecked() && m_pAuthCheckbox->isChecked());
     m_pPasswordLabel->setEnabled(m_pProxyCheckbox->isChecked() && m_pAuthCheckbox->isChecked());
     m_pPasswordEditor->setEnabled(m_pProxyCheckbox->isChecked() && m_pAuthCheckbox->isChecked());
-
-    /* Revalidate if possible: */
-    if (m_pValidator)
-        m_pValidator->revalidate();
 }
 #endif
 
