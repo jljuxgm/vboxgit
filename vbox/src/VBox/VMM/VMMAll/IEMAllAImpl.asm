@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 42699 2012-08-08 23:38:11Z vboxsync $
+; $Id: IEMAllAImpl.asm 42720 2012-08-09 17:25:25Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -522,7 +522,9 @@ BEGINPROC_FASTCALL iemAImpl_ %+ %1 %+ _u16, 12
         PROLOGUE_3_ARGS
         IEM_MAYBE_LOAD_FLAGS           A2, %2, %3
         %1      T0_16, A1_16
+        jz      .unchanged_dst
         mov     [A0], T0_16
+.unchanged_dst:
         IEM_SAVE_FLAGS                 A2, %2, %3
         EPILOGUE_3_ARGS
 ENDPROC iemAImpl_ %+ %1 %+ _u16
@@ -531,7 +533,9 @@ BEGINPROC_FASTCALL iemAImpl_ %+ %1 %+ _u32, 12
         PROLOGUE_3_ARGS
         IEM_MAYBE_LOAD_FLAGS           A2, %2, %3
         %1      T0_32, A1_32
+        jz      .unchanged_dst
         mov     [A0], T0_32
+.unchanged_dst:
         IEM_SAVE_FLAGS                 A2, %2, %3
         EPILOGUE_3_ARGS
 ENDPROC iemAImpl_ %+ %1 %+ _u32
@@ -541,7 +545,9 @@ BEGINPROC_FASTCALL iemAImpl_ %+ %1 %+ _u64, 16
         PROLOGUE_3_ARGS
         IEM_MAYBE_LOAD_FLAGS           A2, %2, %3
         %1      T0, A1
+        jz      .unchanged_dst
         mov     [A0], T0
+.unchanged_dst:
         IEM_SAVE_FLAGS                 A2, %2, %3
         EPILOGUE_3_ARGS_EX 8
 ENDPROC iemAImpl_ %+ %1 %+ _u64
