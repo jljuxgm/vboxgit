@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 46999 2013-07-05 10:30:22Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestproperty command.
  */
@@ -53,23 +53,23 @@ using namespace com;
 void usageGuestProperty(PRTSTREAM pStrm, const char *pcszSep1, const char *pcszSep2)
 {
     RTStrmPrintf(pStrm,
-                       "%s guestproperty %s   get <vmname>|<uuid>\n"
+                       "%s guestproperty %s   get <vmname|uuid>\n"
                  "                            <property> [--verbose]\n"
                  "\n", pcszSep1, pcszSep2);
     RTStrmPrintf(pStrm,
-                       "%s guestproperty %s   set <vmname>|<uuid>\n"
+                       "%s guestproperty %s   set <vmname|uuid>\n"
                  "                            <property> [<value> [--flags <flags>]]\n"
                  "\n", pcszSep1, pcszSep2);
     RTStrmPrintf(pStrm,
-                       "%s guestproperty %s   delete|unset <vmname>|<uuid>\n"
+                       "%s guestproperty %s   delete|unset <vmname|uuid>\n"
                  "                            <property>\n"
                  "\n", pcszSep1, pcszSep2);
     RTStrmPrintf(pStrm,
-                       "%s guestproperty %s   enumerate <vmname>|<uuid>\n"
+                       "%s guestproperty %s   enumerate <vmname|uuid>\n"
                  "                            [--patterns <patterns>]\n"
                  "\n", pcszSep1, pcszSep2);
     RTStrmPrintf(pStrm,
-                       "%s guestproperty %s   wait <vmname>|<uuid> <patterns>\n"
+                       "%s guestproperty %s   wait <vmname|uuid> <patterns>\n"
                  "                            [--timeout <msec>] [--fail-on-timeout]\n"
                  "\n", pcszSep1, pcszSep2);
 }
