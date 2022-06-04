@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 45674 2013-04-23 08:45:54Z vboxsync $ */
+/* $Id: ConsoleImpl.h 45675 2013-04-23 09:13:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -527,7 +527,8 @@ private:
     int configGraphicsController(PCFGMNODE pDevices, const char *pcszDevice,
                                  BusAssignmentManager *pBusMgr,
                                  const ComPtr<IMachine> &pMachine,
-                                 const ComPtr<IBIOSSettings> &biosSettings);
+                                 const ComPtr<IBIOSSettings> &biosSettings,
+                                 bool fHMEnabled);
     int configMediumAttachment(PCFGMNODE pCtlInst,
                                const char *pcszDevice,
                                unsigned uInstance,
