@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.cpp 45358 2013-04-05 08:56:49Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -22,7 +22,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 #include "VBoxLicenseViewer.h"
 #include "QIDialogButtonBox.h"
-#include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
 
 /* Qt includes */
@@ -58,7 +57,7 @@ VBoxLicenseViewer::VBoxLicenseViewer(QWidget *pParent /* = 0 */)
 
     QVBoxLayout *mainLayout = new QVBoxLayout (this);
     mainLayout->setSpacing (10);
-    VBoxGlobal::setLayoutMargin (mainLayout, 10);
+    mainLayout->setContentsMargins(10, 10, 10, 10);
     mainLayout->addWidget (mLicenseText);
     mainLayout->addWidget (dbb);
 

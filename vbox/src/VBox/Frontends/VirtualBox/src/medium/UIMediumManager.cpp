@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 46756 2013-06-24 14:28:59Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -189,7 +189,7 @@ public:
         mProgressBar->setTextVisible (false);
 
         QHBoxLayout *layout = new QHBoxLayout (this);
-        VBoxGlobal::setLayoutMargin (layout, 0);
+        layout->setContentsMargins(0, 0, 0, 0);
         layout->addWidget (mText);
         layout->addWidget (mProgressBar);
     }
@@ -366,14 +366,14 @@ UIMediumManager::UIMediumManager (QWidget *aParent /* = 0 */, Qt::WindowFlags aF
     addToolBar (mToolBar);
     mToolBar->setMacToolbar();
     /* No spacing/margin on the mac */
-    VBoxGlobal::setLayoutMargin (mainLayout, 0);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->insertSpacing (0, 10);
 #else /* MAC_LEOPARD_STYLE */
     /* Add the toolbar */
     mainLayout->insertWidget (0, mToolBar);
     /* Set spacing/margin like in the selector window */
     mainLayout->setSpacing (5);
-    VBoxGlobal::setLayoutMargin (mainLayout, 5);
+    mainLayout->setContentsMargins(5, 5, 5, 5);
 #endif /* MAC_LEOPARD_STYLE */
 
 //    mToolBar->addAction (mNewAction);

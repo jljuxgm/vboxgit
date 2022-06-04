@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedSlider.cpp 46496 2013-06-11 15:26:17Z vboxsync $ */
+/* $Id: QIAdvancedSlider.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -18,7 +18,6 @@
  */
 
 #include "QIAdvancedSlider.h"
-#include "VBoxGlobal.h"
 
 /* Qt includes */
 #include <QVBoxLayout>
@@ -262,7 +261,7 @@ void QIAdvancedSlider::init(Qt::Orientation fOrientation /* = Qt::Horizontal */)
     m_fSnappingEnabled = false;
 
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
-    VBoxGlobal::setLayoutMargin(pMainLayout, 0);
+    pMainLayout->setContentsMargins(0, 0, 0, 0);
     m_pSlider = new CPrivateSlider(fOrientation, this);
     pMainLayout->addWidget(m_pSlider);
 

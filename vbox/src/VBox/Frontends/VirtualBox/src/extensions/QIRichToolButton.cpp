@@ -1,4 +1,4 @@
-/* $Id: QIRichToolButton.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: QIRichToolButton.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -18,10 +18,10 @@
  */
 
 /* VBox includes */
-#include "VBoxGlobal.h"
 #include "QIRichToolButton.h"
 
 /* Qt includes */
+#include <QApplication>
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QToolButton>
@@ -63,7 +63,7 @@ void QIRichToolButton::init()
 
     /* Setup main-layout */
     QHBoxLayout *mainLayout = new QHBoxLayout (this);
-    VBoxGlobal::setLayoutMargin (mainLayout, 0);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing (0);
     mainLayout->addWidget (mButton);
     mainLayout->addWidget (mLabel);
