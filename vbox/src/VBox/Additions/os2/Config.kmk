@@ -1,4 +1,4 @@
-# $Id: Config.kmk 44528 2013-02-04 14:27:54Z vboxsync $
+# $Id: Config.kmk 46654 2013-06-19 12:45:04Z vboxsync $
 ## @file
 # OpenSSL kBuild Configuration file.
 #
@@ -26,8 +26,8 @@ ifndef VBOX_ROOT_CONFIG_KMK_INCLUDED
 endif
 
 ## FIXME
-PATH_DDKVIDEO = D:/dev/ddk/200402/video
-PATH_DDKBASE  = D:/dev/ddk/200402/base
+PATH_DDKVIDEO ?= D:/dev/ddk/200402/video
+PATH_DDKBASE  ?= D:/dev/ddk/200402/base
 
 #
 # Template for VAC308 Gradd stuff.
