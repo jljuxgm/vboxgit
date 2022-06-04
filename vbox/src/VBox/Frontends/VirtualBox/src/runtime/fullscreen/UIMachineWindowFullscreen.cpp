@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 46797 2013-06-26 11:10:15Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,6 +28,7 @@
 #include "UIActionPoolRuntime.h"
 #include "UIMachineLogicFullscreen.h"
 #include "UIMachineWindowFullscreen.h"
+#include "UIMachineDefs.h"
 #include "UIMiniToolBar.h"
 
 /* COM includes: */

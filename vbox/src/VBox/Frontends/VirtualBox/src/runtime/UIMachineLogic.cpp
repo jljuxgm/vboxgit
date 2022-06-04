@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 47396 2013-07-25 13:58:12Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -447,7 +447,7 @@ void UIMachineLogic::sltAdditionsStateChanged()
 {
     /* Update action states: */
     gActionPool->action(UIActionIndexRuntime_Toggle_GuestAutoresize)->setEnabled(uisession()->isGuestSupportsGraphics());
-    gActionPool->action(UIActionIndexRuntime_Toggle_Seamless)->setEnabled(uisession()->isGuestSupportsSeamless());
+    gActionPool->action(UIActionIndexRuntime_Toggle_Seamless)->setEnabled(uisession()->isVisualStateAllowedSeamless() && uisession()->isGuestSupportsSeamless());
 }
 
 void UIMachineLogic::sltMouseCapabilityChanged()

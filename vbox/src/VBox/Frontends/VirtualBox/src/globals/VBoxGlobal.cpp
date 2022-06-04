@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 47401 2013-07-25 19:12:24Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3778,6 +3778,25 @@ RuntimeMenuType VBoxGlobal::restrictedRuntimeMenuTypes(CMachine &machine)
         RuntimeMenuType value = gpConverter->fromInternalString<RuntimeMenuType>(strValue);
         if (value != RuntimeMenuType_Invalid)
             result = static_cast<RuntimeMenuType>(result | value);
+    }
+    /* Return result: */
+    return result;
+}
+
+/* static */
+UIVisualStateType VBoxGlobal::restrictedVisualStateTypes(CMachine &machine)
+{
+    /* Prepare result: */
+    UIVisualStateType result = UIVisualStateType_Invalid;
+    /* Load restricted visual-state-types: */
+    QString strList(machine.GetExtraData(GUI_RestrictedVisualStates));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        UIVisualStateType value = gpConverter->fromInternalString<UIVisualStateType>(strValue);
+        if (value != UIVisualStateType_Invalid)
+            result = static_cast<UIVisualStateType>(result | value);
     }
     /* Return result: */
     return result;

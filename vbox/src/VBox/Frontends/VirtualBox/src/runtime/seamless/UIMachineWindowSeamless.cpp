@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 46797 2013-06-26 11:10:15Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,6 +30,7 @@
 #include "UIMachineWindowSeamless.h"
 #include "UIMachineViewSeamless.h"
 #ifndef Q_WS_MAC
+# include "UIMachineDefs.h"
 # include "UIMiniToolBar.h"
 #endif /* !Q_WS_MAC */
 #ifdef Q_WS_MAC
