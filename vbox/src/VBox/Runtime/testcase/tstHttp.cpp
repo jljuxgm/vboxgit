@@ -1,4 +1,4 @@
-/* $Id: tstHttp.cpp 45339 2013-04-04 14:54:50Z vboxsync $ */
+/* $Id: tstHttp.cpp 45343 2013-04-04 17:24:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple cURL testcase.
  */
@@ -44,12 +44,14 @@ int main()
     RTR3InitExeNoArguments(RTR3INIT_FLAGS_SUPLIB);
 
     RTHTTP hHttp;
-    int rc = RTHttpCreate(&hHttp);
     char *pszBuf = NULL;
     PRTSTREAM CAFile = NULL;
 
+    int rc = RTHttpCreate(&hHttp);
+
     // create certificate file
-    rc = RTStrmOpen(CAFILE_NAME, "w+b", &CAFile);
+    if (RT_SUCCESS(rc))
+        rc = RTStrmOpen(CAFILE_NAME, "w+b", &CAFile);
 
     // fetch root CA certificate (new one, often avoided in cert chains by
     // using an intermediate cert which is signed by old root)
