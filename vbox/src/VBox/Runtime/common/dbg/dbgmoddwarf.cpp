@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 46204 2013-05-22 00:28:12Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 46205 2013-05-22 00:32:44Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -4521,7 +4521,7 @@ static DECLCALLBACK(int) rtDbgModDwarf_TryOpen(PRTDBGMODINT pMod, RTLDRARCH enmA
     pThis->aDieAllocators[1].cbMax = sizeof(RTDWARFDIECOMPILEUNIT);
     for (uint32_t i = 0; i < RT_ELEMENTS(g_aTagDescs); i++)
         if (g_aTagDescs[i].pDesc && g_aTagDescs[i].pDesc->cbDie > pThis->aDieAllocators[1].cbMax)
-            pThis->aDieAllocators[1].cbMax = g_aTagDescs[i].pDesc->cbDie;
+            pThis->aDieAllocators[1].cbMax = (uint32_t)g_aTagDescs[i].pDesc->cbDie;
     pThis->aDieAllocators[1].cbMax = RT_ALIGN_32(pThis->aDieAllocators[1].cbMax, sizeof(uint64_t));
 
     for (uint32_t i = 0; i < RT_ELEMENTS(pThis->aDieAllocators); i++)
