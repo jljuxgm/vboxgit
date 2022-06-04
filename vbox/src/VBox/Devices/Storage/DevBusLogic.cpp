@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 44533 2013-02-04 20:55:12Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 44672 2013-02-13 18:03:11Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1402,7 +1402,8 @@ static int buslogicR3DataBufferAlloc(PBUSLOGICTASKSTATE pTaskState)
                 return VERR_NO_MEMORY;
 
             /* Copy the data if needed */
-            if (pTaskState->CommandControlBlockGuest.c.uDataDirection == BUSLOGIC_CCB_DIRECTION_OUT)
+            if (   (pTaskState->CommandControlBlockGuest.c.uDataDirection == BUSLOGIC_CCB_DIRECTION_OUT)
+                || (pTaskState->CommandControlBlockGuest.c.uDataDirection == BUSLOGIC_CCB_DIRECTION_UNKNOWN))
             {
                 cScatterGatherGCLeft = cbDataCCB / pTaskState->cbSGEntry;
                 GCPhysAddrScatterGatherCurrent = u32PhysAddrCCB;
