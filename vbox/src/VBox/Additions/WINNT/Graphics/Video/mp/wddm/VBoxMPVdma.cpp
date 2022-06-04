@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 47070 2013-07-10 11:39:19Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 47151 2013-07-15 10:47:42Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1181,7 +1181,7 @@ NTSTATUS vboxVdmaProcessBltCmd(PVBOXMP_DEVEXT pDevExt, VBOXWDDM_CONTEXT *pContex
         if (fVRAMUpdated)
             vboxVdmaBltDirtyRectsUpdate(pDevExt, pSource, pBlt->Blt.DstRects.UpdateRects.cRects, pBlt->Blt.DstRects.UpdateRects.aRects);
 
-        if (pSrcAlloc->AllocData.hostID || pSource->fHas3DVrs)
+        if (pSrcAlloc->AllocData.hostID || (pDevExt->fTexPresentEnabled ? pSource->fHas3DVrs : !!pDevExt->cContexts3D))
         {
             Status = vboxVdmaProcessVRegCmd(pDevExt, pContext, &pBlt->Blt.SrcAlloc, &pBlt->Blt.DstAlloc, &pBlt->Blt.SrcRect, &pBlt->Blt.DstRects);
             if (!NT_SUCCESS(Status))
