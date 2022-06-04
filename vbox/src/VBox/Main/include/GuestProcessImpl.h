@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 45415 2013-04-08 21:40:42Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 45426 2013-04-09 09:30:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -55,6 +55,7 @@ public:
      * @{ */
     STDMETHOD(COMGETTER(Arguments))(ComSafeArrayOut(BSTR, aArguments));
     STDMETHOD(COMGETTER(Environment))(ComSafeArrayOut(BSTR, aEnvironment));
+    STDMETHOD(COMGETTER(EventSource))(IEventSource ** aEventSource);
     STDMETHOD(COMGETTER(ExecutablePath))(BSTR *aExecutablePath);
     STDMETHOD(COMGETTER(ExitCode))(LONG *aExitCode);
     STDMETHOD(COMGETTER(Name))(BSTR *aName);

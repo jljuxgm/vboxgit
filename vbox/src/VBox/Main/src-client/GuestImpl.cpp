@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 45415 2013-04-08 21:40:42Z vboxsync $ */
+/* $Id: GuestImpl.cpp 45426 2013-04-09 09:30:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -486,6 +486,26 @@ STDMETHODIMP Guest::COMGETTER(AdditionsRevision)(ULONG *a_puAdditionsRevision)
         }
     }
     return hrc;
+}
+
+STDMETHODIMP Guest::COMGETTER(EventSource)(IEventSource ** aEventSource)
+{
+#ifndef VBOX_WITH_GUEST_CONTROL
+    ReturnComNotImplemented();
+#else
+    LogFlowThisFuncEnter();
+
+    CheckComArgOutPointerValid(aEventSource);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    // no need to lock - lifetime constant
+    mEventSource.queryInterfaceTo(aEventSource);
+
+    LogFlowFuncLeaveRC(S_OK);
+    return S_OK;
+#endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
 STDMETHODIMP Guest::COMGETTER(Facilities)(ComSafeArrayOut(IAdditionsFacility *, aFacilities))

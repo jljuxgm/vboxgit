@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 45418 2013-04-08 22:10:10Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 45426 2013-04-09 09:30:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -168,6 +168,19 @@ STDMETHODIMP GuestFile::COMGETTER(Disposition)(ULONG *aDisposition)
 
     return S_OK;
 #endif /* VBOX_WITH_GUEST_CONTROL */
+}
+
+STDMETHODIMP GuestFile::COMGETTER(EventSource)(IEventSource ** aEventSource)
+{
+    CheckComArgOutPointerValid(aEventSource);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    // no need to lock - lifetime constant
+    mEventSource.queryInterfaceTo(aEventSource);
+
+    return S_OK;
 }
 
 STDMETHODIMP GuestFile::COMGETTER(FileName)(BSTR *aFileName)
