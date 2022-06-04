@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 43760 2012-10-26 15:52:17Z vboxsync $ */
+/* $Id: UIMachineView.cpp 43761 2012-10-26 16:30:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -927,10 +927,11 @@ bool UIMachineView::guestResizeEvent(QEvent *pEvent,
     bool fResize =    pResizeEvent->width() != frameBuffer()->width()
                    || pResizeEvent->height() != frameBuffer()->height();
 
-    /* Perform framebuffer resize: */
-    frameBuffer()->resizeEvent(pResizeEvent);
+    /* Perform framebuffer resize if parent window is visible: */
+    if (uisession()->isScreenVisible(m_uScreenId))
+        frameBuffer()->resizeEvent(pResizeEvent);
 
-    if (fResize)
+    if (fResize && uisession()->isScreenVisible(m_uScreenId))
     {
         /* Reapply maximum size restriction for machine-view: */
         setMaximumSize(sizeHint());

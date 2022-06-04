@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 43760 2012-10-26 15:52:17Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 43761 2012-10-26 16:30:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -434,15 +434,6 @@ void UIFrameBufferQuartz2D::resizeEvent(UIResizeEvent *aEvent)
     }
     else
     {
-        /* Main (IDisplay) sending guest resize-event thinks that
-         * width and/or height can be zero (0) if this frame-buffer is hidden,
-         * we should just do a fallback to initial blackout
-         * frame-buffer of 640x480 size (like we are doing for QImage frame-buffer): */
-        if (m_width == 0 || m_height == 0)
-        {
-            m_width = 640;
-            m_height = 480;
-        }
         m_fUsesGuestVRAM = false;
         remind = true;
 //        printf ("No VRAM\n");
