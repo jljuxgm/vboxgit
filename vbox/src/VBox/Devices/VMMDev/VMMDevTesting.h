@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.h 30724 2010-07-08 08:30:20Z vboxsync $ */
+/* $Id: VMMDevTesting.h 46300 2013-05-28 15:31:18Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -24,7 +24,8 @@
 
 RT_C_DECLS_BEGIN
 
-int vmmdevTestingInitialize(PPDMDEVINS pDevIns);
+int  vmmdevTestingInitialize(PPDMDEVINS pDevIns);
+void vmmdevTestingTerminate(PPDMDEVINS pDevIns);
 
 RT_C_DECLS_END
 
