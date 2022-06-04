@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 46885 2013-07-01 14:02:37Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 47049 2013-07-09 03:17:08Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -941,6 +941,8 @@ static NTSTATUS vboxVdmaTexPresentSubmit(PVBOXMP_DEVEXT pDevExt,
         uint32_t cRects,
         const RTRECT*paRects)
 {
+    Assert(pDevExt->fTexPresentEnabled);
+
     uint32_t cbCommandBuffer = VBOXMP_CRCMD_HEADER_SIZE + VBOXMP_CRCMD_SIZE_VBOXTEXPRESENT(cRects);
     uint32_t cCommands = 1;
     void *pvCommandBuffer = VBoxMpCrShgsmiTransportBufAlloc(&pDevExt->CrHgsmiTransport, cbCommandBuffer);
@@ -982,6 +984,8 @@ static NTSTATUS vboxVdmaCrCtlGetDefaultClientId(PVBOXMP_DEVEXT pDevExt, uint32_t
 
 NTSTATUS vboxVdmaTexPresentSetAlloc(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId, PVBOXWDDM_ALLOCATION pAllocation)
 {
+    Assert(pDevExt->fTexPresentEnabled);
+
     RTRECT Rect, *pRect = NULL;
     uint32_t cRects = 0;
     uint32_t hostID = 0;

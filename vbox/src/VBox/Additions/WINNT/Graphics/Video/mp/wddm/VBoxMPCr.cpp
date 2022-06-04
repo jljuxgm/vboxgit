@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCr.cpp 46801 2013-06-26 13:01:07Z vboxsync $ */
+/* $Id: VBoxMPCr.cpp 47049 2013-07-09 03:17:08Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -881,7 +881,7 @@ bool VBoxMpCrCtlConIs3DSupported()
         g_VBoxMpCrHostCaps = 0;
     }
 
-#ifndef DEBUG_misha
+#if 1 //ndef DEBUG_misha
     /* zero it up temporary to avoid new code activation */
     g_VBoxMpCrHostCaps = 0;
 #endif
