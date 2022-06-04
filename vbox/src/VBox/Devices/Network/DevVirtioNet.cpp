@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 44925 2013-03-05 13:47:44Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 45005 2013-03-12 13:44:49Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -532,7 +532,7 @@ static DECLCALLBACK(bool) vnetCanRxQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEIT
  *
  * @param   pThis      The device state structure.
  */
-static void vnetIoCb_Ready(void *pvState)
+static DECLCALLBACK(void) vnetIoCb_Ready(void *pvState)
 {
     PVNETSTATE pThis = (PVNETSTATE)pvState;
     Log(("%s Driver became ready, waking up RX thread...\n", INSTANCE(pThis)));
