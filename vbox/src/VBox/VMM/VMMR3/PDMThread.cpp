@@ -1,4 +1,4 @@
-/* $Id: PDMThread.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PDMThread.cpp 43866 2012-11-13 15:28:18Z vboxsync $ */
 /** @file
  * PDM Thread - VM Thread Management.
  */
@@ -957,7 +957,8 @@ VMMR3DECL(int) PDMR3ThreadSuspend(PPDMTHREAD pThread)
     /*
      * Something failed, initialize termination.
      */
-    AssertMsgFailed(("PDMR3ThreadSuspend -> rc=%Rrc enmState=%d\n", rc, pThread->enmState));
+    AssertMsgFailed(("PDMR3ThreadSuspend -> rc=%Rrc enmState=%d suspending '%s'\n",
+                     rc, pThread->enmState, RTThreadGetName(pThread->Thread)));
     pdmR3ThreadBailOut(pThread);
     return rc;
 }
