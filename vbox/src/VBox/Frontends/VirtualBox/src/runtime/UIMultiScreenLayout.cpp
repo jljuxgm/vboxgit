@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 44828 2013-02-26 13:13:46Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 44830 2013-02-26 13:45:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,14 +43,8 @@ UIMultiScreenLayout::UIMultiScreenLayout(UIMachineLogic *pMachineLogic)
     , m_pScreenMap(new QMap<int, int>())
 {
     /* Calculate host/guest screen count: */
-    CMachine machine = m_pMachineLogic->session().GetMachine();
-    /* Get host/guest monitor count: */
-#if (QT_VERSION >= 0x040600)
-    m_cHostScreens = QApplication::desktop()->screenCount();
-#else /* (QT_VERSION >= 0x040600) */
-    m_cHostScreens = QApplication::desktop()->numScreens();
-#endif /* !(QT_VERSION >= 0x040600) */
-    m_cGuestScreens = machine.GetMonitorCount();
+    calculateHostMonitorCount();
+    calculateGuestScreenCount();
 }
 
 UIMultiScreenLayout::~UIMultiScreenLayout()
@@ -272,6 +266,21 @@ void UIMultiScreenLayout::sltScreenLayoutChanged(QAction *pAction)
     /* On success inform the observer. */
     if (fSuccess)
         emit sigScreenLayoutChanged();
+}
+
+void UIMultiScreenLayout::calculateHostMonitorCount()
+{
+#if (QT_VERSION >= 0x040600)
+    m_cHostScreens = QApplication::desktop()->screenCount();
+#else /* (QT_VERSION >= 0x040600) */
+    m_cHostScreens = QApplication::desktop()->numScreens();
+#endif /* !(QT_VERSION >= 0x040600) */
+}
+
+void UIMultiScreenLayout::calculateGuestScreenCount()
+{
+    CMachine machine = m_pMachineLogic->session().GetMachine();
+    m_cGuestScreens = machine.GetMonitorCount();
 }
 
 quint64 UIMultiScreenLayout::memoryRequirements(const QMap<int, int> *pScreenLayout) const
