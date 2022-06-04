@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 46553 2013-06-14 12:15:06Z vboxsync $ */
+/* $Id: VideoRec.cpp 46555 2013-06-14 12:33:55Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -50,6 +50,8 @@ enum
     /* signal that we are terminating */
     VIDREC_TERMINATING = 3
 };
+
+/* Must be always accessible and therefore cannot be part of VIDEORECCONTEXT */
 static uint32_t g_enmState = VIDREC_UNINITIALIZED;
 
 
