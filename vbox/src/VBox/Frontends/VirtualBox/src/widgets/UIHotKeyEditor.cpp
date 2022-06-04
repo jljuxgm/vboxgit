@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 44682 2013-02-14 09:59:17Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 44712 2013-02-15 13:12:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -102,6 +102,7 @@ bool UIHotKeyLineEdit::isKeyEventIgnored(QKeyEvent *pEvent)
 
 UIHotKeyEditor::UIHotKeyEditor(QWidget *pParent)
     : QIWithRetranslateUI<QWidget>(pParent)
+    , m_fIsModifiersAllowed(false)
     , m_pMainLayout(new QHBoxLayout(this))
     , m_pLineEdit(new UIHotKeyLineEdit(this))
     , m_pResetButton(new QIToolButton(this))
@@ -250,6 +251,10 @@ bool UIHotKeyEditor::isKeyEventIgnored(QKeyEvent *pEvent)
 
 void UIHotKeyEditor::fetchModifiersState()
 {
+    /* Make sure modifiers allowed: */
+    if (!m_fIsModifiersAllowed)
+        return;
+
     /* If full sequence was not yet taken: */
     if (!m_fSequenceTaken)
     {
@@ -385,6 +390,7 @@ UIHotKey UIHotKeyEditor::hotKey() const
 
 void UIHotKeyEditor::setHotKey(const UIHotKey &hotKey)
 {
+    m_fIsModifiersAllowed = hotKey.type() == UIHotKeyType_WithModifiers;
     m_hotKey = hotKey;
     m_pLineEdit->setText(hotKey.sequence());
 }

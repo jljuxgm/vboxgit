@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 44711 2013-02-15 12:37:40Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 44712 2013-02-15 13:12:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -259,7 +259,9 @@ QVariant UIHotKeyTableModel::data(const QModelIndex &index, int iRole /*= Qt::Di
             {
                 case UIHotKeyTableSection_Value: return m_filteredShortcuts[iIndex].key == UIHostCombo::hostComboCacheKey() ?
                                                         QVariant::fromValue(UIHostComboWrapper(m_filteredShortcuts[iIndex].currentSequence)) :
-                                                        QVariant::fromValue(UIHotKey(m_filteredShortcuts[iIndex].currentSequence,
+                                                        QVariant::fromValue(UIHotKey(m_type == UIActionPoolType_Runtime ?
+                                                                                     UIHotKeyType_Simple : UIHotKeyType_WithModifiers,
+                                                                                     m_filteredShortcuts[iIndex].currentSequence,
                                                                                      m_filteredShortcuts[iIndex].defaultSequence));
                 default: break;
             }
