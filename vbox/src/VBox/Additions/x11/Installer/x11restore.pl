@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Revision: 32388 $
+# $Revision: 42469 $
 #
 # Restore xorg.conf while removing Guest Additions.
 #
@@ -25,7 +25,7 @@ my $CFG;
 my $BAK;
 
 my $config_count = 0;
-my $vboxpresent = "vboxmouse";
+my $vboxpresent = "vboxvideo";
 
 foreach $cfg (@cfg_files)
 {
