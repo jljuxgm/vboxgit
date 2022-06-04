@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 43299 2012-09-11 13:36:38Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 43301 2012-09-11 14:39:56Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -2019,9 +2019,8 @@ int GuestProcessTool::WaitEx(uint32_t fFlags, GuestProcessStreamBlock *pStreamBl
         switch (waitRes)
         {
             case ProcessWaitResult_StdIn:
-               /* Nothing to do here yet. */
-               fDone = true;
-               break;
+                vrc = VERR_NOT_IMPLEMENTED;
+                break;
 
             case ProcessWaitResult_StdOut:
                 fHandleStdOut = true;
@@ -2053,9 +2052,13 @@ int GuestProcessTool::WaitEx(uint32_t fFlags, GuestProcessStreamBlock *pStreamBl
                 vrc = VERR_TIMEOUT;
                 break;
 
+            case ProcessWaitResult_Start:
+            case ProcessWaitResult_Status:
+                /* Not used here, just skip. */
+                break;
+
             default:
-                AssertMsgFailed(("Unhandled process wait result %ld\n", waitRes));
-                fDone = true;
+                AssertReleaseMsgFailed(("Unhandled process wait result %ld\n", waitRes));
                 break;
         }
 
