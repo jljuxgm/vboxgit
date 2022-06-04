@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 47851 2013-08-19 16:57:24Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 47858 2013-08-19 20:48:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -310,6 +310,24 @@ STDMETHODIMP GuestFile::COMGETTER(FileName)(BSTR *aFileName)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     mData.mOpenInfo.mFileName.cloneTo(aFileName);
+
+    return S_OK;
+#endif /* VBOX_WITH_GUEST_CONTROL */
+}
+
+STDMETHODIMP GuestFile::COMGETTER(Id)(ULONG *aID)
+{
+#ifndef VBOX_WITH_GUEST_CONTROL
+    ReturnComNotImplemented();
+#else
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    CheckComArgOutPointerValid(aID);
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aID = mData.mID;
 
     return S_OK;
 #endif /* VBOX_WITH_GUEST_CONTROL */
