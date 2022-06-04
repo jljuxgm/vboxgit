@@ -1,4 +1,4 @@
-/* $Id: service.cpp 45416 2013-04-08 21:52:26Z vboxsync $ */
+/* $Id: service.cpp 45417 2013-04-08 22:02:14Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -492,7 +492,7 @@ typedef struct ClientState
     {
         HostCmdListIter curItem = mHostCmdList.begin();
         while (curItem != mHostCmdList.end())
-            Dequeue(curItem++);
+            curItem = Dequeue(curItem);
     }
 
     void DequeueCurrent(void)
@@ -502,7 +502,7 @@ typedef struct ClientState
             Dequeue(curCmd);
     }
 
-    void Dequeue(HostCmdListIter &curItem)
+    HostCmdListIter Dequeue(HostCmdListIter &curItem)
     {
         HostCommand *pHostCmd = (*curItem);
         AssertPtr(pHostCmd);
@@ -516,11 +516,13 @@ typedef struct ClientState
             pHostCmd = NULL;
         }
 
-        mHostCmdList.erase(curItem);
+        HostCmdListIter nextItem = mHostCmdList.erase(curItem);
 
         /* Reset everything else. */
         mHostCmdRc    = VINF_SUCCESS;
         mHostCmdTries = 0;
+
+        return nextItem;
     }
 
     int EnqueueCommand(HostCommand *pHostCmd)
