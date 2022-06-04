@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 41686 2012-06-13 16:27:49Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 43684 2012-10-18 17:15:42Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -2116,8 +2116,7 @@ static int rtCoreDumperDestroyCore(PRTSOLCORE pSolCore)
 
 
 /**
- * Takes a core dump. This function has no other parameters than the context
- * because it can be called from signal handlers.
+ * Takes a core dump.
  *
  * @param   pContext            The context of the caller.
  * @param   pszOutputFile       Path of the core file. If NULL is passed, the
