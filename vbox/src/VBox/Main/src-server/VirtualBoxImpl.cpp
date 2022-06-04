@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 43063 2012-08-29 09:54:36Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 43186 2012-09-05 09:01:42Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -4588,7 +4588,11 @@ void VirtualBox::saveModifiedRegistries()
         if (uOld)
         {
             AutoCaller autoCaller(pMachine);
-            if (FAILED(autoCaller.rc())) continue;
+            if (FAILED(autoCaller.rc()))
+                continue;
+            /* object is already dead, no point in saving settings */
+            if (autoCaller.state() != Ready)
+                continue;
             AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
             rc = pMachine->saveSettings(&fNeedsGlobalSettings,
                                         Machine::SaveS_Force);           // caller said save, so stop arguing
