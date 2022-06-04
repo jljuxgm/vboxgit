@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 43657 2012-10-16 15:34:05Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -861,15 +861,23 @@ VMMDECL(int) CPUMQueryGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
             break;
 
         case MSR_IA32_APICBASE:
-            rc = PDMApicGetBase(pVCpu->CTX_SUFF(pVM), puValue);
-            if (RT_SUCCESS(rc))
-                rc = VINF_SUCCESS;
+        {
+            PVM pVM = pVCpu->CTX_SUFF(pVM);
+            if (   (    pVM->cpum.s.aGuestCpuIdStd[0].eax >= 1
+                    && (pVM->cpum.s.aGuestCpuIdStd[1].edx & X86_CPUID_FEATURE_EDX_APIC))
+                || (   pVM->cpum.s.aGuestCpuIdExt[0].eax >= 0x80000001
+                    && pVM->cpum.s.enmGuestCpuVendor == CPUMCPUVENDOR_AMD
+                    && (pVM->cpum.s.aGuestCpuIdExt[1].edx & X86_CPUID_AMD_FEATURE_EDX_APIC)))
+            {
+                *puValue = pVCpu->cpum.s.Guest.msrApicBase;
+            }
             else
             {
                 *puValue = 0;
                 rc = VERR_CPUM_RAISE_GP_0;
             }
             break;
+        }
 
         case MSR_IA32_CR_PAT:
             *puValue = pVCpu->cpum.s.Guest.msrPAT;
@@ -1121,7 +1129,7 @@ VMMDECL(int) CPUMSetGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t uValue)
             break;
 
         case MSR_IA32_APICBASE:
-            rc = PDMApicSetBase(pVCpu->CTX_SUFF(pVM), uValue);
+            rc = PDMApicSetBase(pVCpu, uValue);
             if (rc != VINF_SUCCESS)
                 rc = VERR_CPUM_RAISE_GP_0;
             break;

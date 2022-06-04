@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 43394 2012-09-21 11:11:17Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 43657 2012-10-16 15:34:05Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4463,7 +4463,7 @@ void cpu_set_apic_base(CPUX86State *env, uint64_t val)
 uint64_t cpu_get_apic_base(CPUX86State *env)
 {
     uint64_t u64;
-    int rc = PDMApicGetBase(env->pVM, &u64);
+    int rc = CPUMQueryGuestMsr(env->pVCpu, MSR_IA32_APICBASE, &u64);
     if (RT_SUCCESS(rc))
     {
         LogFlow(("cpu_get_apic_base: returns %#llx \n", u64));

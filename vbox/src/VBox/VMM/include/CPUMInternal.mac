@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 41932 2012-06-27 17:35:44Z vboxsync $
+; $Id: CPUMInternal.mac 43657 2012-10-16 15:34:05Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -195,6 +195,7 @@ struc CPUMCPU
     .Hyper.msrCSTAR           resb    8
     .Hyper.msrSFMASK          resb    8
     .Hyper.msrKERNELGSBASE    resb    8
+    .Hyper.msrApicBase        resb    8
 
     ;
     ; Host context state
@@ -415,6 +416,7 @@ struc CPUMCPU
     .Guest.msrCSTAR           resb    8
     .Guest.msrSFMASK          resb    8
     .Guest.msrKERNELGSBASE    resb    8
+    .Guest.msrApicBase        resb    8
 
 
     alignb 64

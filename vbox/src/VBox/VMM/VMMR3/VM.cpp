@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: VM.cpp 43657 2012-10-16 15:34:05Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2857,7 +2857,6 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3Reset(PVM pVM, PVMCPU pVCpu, void *pvUser)
         IOMR3Reset(pVM);
         CPUMR3Reset(pVM);
     }
-    CPUMR3ResetCpu(pVCpu);
     if (pVCpu->idCpu == 0)
     {
         TMR3Reset(pVM);

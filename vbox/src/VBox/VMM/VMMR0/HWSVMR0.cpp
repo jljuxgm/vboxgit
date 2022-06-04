@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 43509 2012-10-02 14:15:17Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 43657 2012-10-16 15:34:05Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1951,7 +1951,7 @@ ResumeExecution:
                 &&  pVM->hm.s.cPatches < RT_ELEMENTS(pVM->hm.s.aPatches))
             {
                 RTGCPHYS GCPhysApicBase, GCPhys;
-                PDMApicGetBase(pVM, &GCPhysApicBase);   /** @todo cache this */
+                GCPhysApicBase = pCtx->msrApicBase;
                 GCPhysApicBase &= PAGE_BASE_GC_MASK;
 
                 rc = PGMGstGetPage(pVCpu, (RTGCPTR)uFaultAddress, NULL, &GCPhys);
@@ -2116,8 +2116,7 @@ ResumeExecution:
             &&  !CPUMIsGuestInLongModeEx(pCtx)
             &&  pVM->hm.s.cPatches < RT_ELEMENTS(pVM->hm.s.aPatches))
         {
-            RTGCPHYS GCPhysApicBase;
-            PDMApicGetBase(pVM, &GCPhysApicBase);   /** @todo cache this */
+            RTGCPHYS GCPhysApicBase = pCtx->msrApicBase;
             GCPhysApicBase &= PAGE_BASE_GC_MASK;
 
             if (GCPhysFault == GCPhysApicBase + 0x80)
