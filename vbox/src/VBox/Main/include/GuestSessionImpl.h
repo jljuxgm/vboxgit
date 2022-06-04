@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42412 2012-07-26 14:48:08Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42436 2012-07-27 14:03:52Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -116,8 +116,8 @@ private:
     typedef std::vector <ComObjPtr<GuestDirectory> > SessionDirectories;
     typedef std::vector <ComObjPtr<GuestFile> > SessionFiles;
     /** Map of guest processes. The key specifies the internal process number.
-     *  To retrieve the process' guest PID use the Id() method of the IProgress interface. */
-    typedef std::map <ULONG, ComObjPtr<GuestProcess> > SessionProcesses;
+     *  To retrieve the process' guest PID use the Id() method of the IProcess interface. */
+    typedef std::map <uint32_t, ComObjPtr<GuestProcess> > SessionProcesses;
 
 public:
     /** @name Public internal methods.
