@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 43515 2012-10-02 15:19:48Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 43516 2012-10-02 16:06:37Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -287,8 +287,7 @@ int main(int argc, char *argv[])
         {
             pszAdapterName = argv[1];
             memset(&Req, '\0', sizeof(Req));
-#if 0
-//def RT_OS_LINUX
+#ifdef RT_OS_LINUX
             if (strcmp("speed", argv[2]) == 0)
             {
                 /*
