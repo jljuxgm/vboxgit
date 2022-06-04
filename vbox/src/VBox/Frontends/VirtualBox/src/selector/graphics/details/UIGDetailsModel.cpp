@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 42909 2012-08-21 15:46:56Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 43937 2012-11-22 12:24:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -77,11 +77,6 @@ QGraphicsItem* UIGDetailsModel::itemAt(const QPointF &position, const QTransform
     return scene()->itemAt(position, deviceTransform);
 }
 
-void UIGDetailsModel::setItems(const QList<UIVMItem*> &items)
-{
-    m_pRoot->setItems(items);
-}
-
 void UIGDetailsModel::updateLayout()
 {
     /* Initialize variables: */
@@ -97,6 +92,11 @@ void UIGDetailsModel::updateLayout()
     m_pRoot->updateLayout();
     /* Notify listener about root-item relayouted: */
     emit sigRootItemResized(m_pRoot->geometry().size(), m_pRoot->minimumSizeHint().toSize().width());
+}
+
+void UIGDetailsModel::setItems(const QList<UIVMItem*> &items)
+{
+    m_pRoot->setItems(items);
 }
 
 void UIGDetailsModel::sltHandleViewResized()
