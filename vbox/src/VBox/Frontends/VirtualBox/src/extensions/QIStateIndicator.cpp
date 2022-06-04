@@ -1,4 +1,4 @@
-/* $Id: QIStateIndicator.cpp 46648 2013-06-19 11:35:23Z vboxsync $ */
+/* $Id: QIStateIndicator.cpp 46650 2013-06-19 11:49:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,14 +25,8 @@
 # include <QContextMenuEvent>
 #endif
 
-/** @clas QIStateIndicator
- *
- *  The QIStateIndicator class is a simple class that can visually indicate
- *  the state of some thing, as described by the state property.
- */
-
-QIStateIndicator::QIStateIndicator(QWidget *pParent /* = 0 */)
-  : QFrame(pParent)
+QIStateIndicator::QIStateIndicator(QWidget *pParent /*= 0*/)
+  : QIWithRetranslateUI<QFrame>(pParent)
   , mState(0)
   , mSize(0, 0)
 {
