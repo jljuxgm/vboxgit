@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 46533 2013-06-13 14:02:29Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 46535 2013-06-13 14:44:49Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1617,6 +1617,8 @@ void Appliance::buildXMLForOneVirtualSystem(AutoWriteLockBase& writeLock,
                             itemElement = "sasd:";
                             pItem = pelmVirtualHardwareSection->createChild("StorageItem");
                         }
+                        else
+                            pItem = NULL;
                     }
                     else
                     {
