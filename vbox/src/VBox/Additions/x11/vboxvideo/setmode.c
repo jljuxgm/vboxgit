@@ -1,4 +1,4 @@
-/* $Id: setmode.c 36020 2011-02-18 14:18:51Z vboxsync $ */
+/* $Id: setmode.c 43081 2012-08-29 15:16:49Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, mode setting
@@ -53,22 +53,9 @@
 # include <string.h>
 #endif
 #include "vboxvideo.h"
-#include <iprt/asm-math.h>
 #include "version-generated.h"
 #include "product-generated.h"
-#include <xf86.h>
-#include <misc.h>
-
-/* All drivers initialising the SW cursor need this */
-#include "mipointer.h"
-
-/* Colormap handling */
-#include "micmap.h"
-#include "xf86cmap.h"
-
-/* DPMS */
-/* #define DPMS_SERVER
-#include "extensions/dpms.h" */
+#include "xf86.h"
 
 /* VGA hardware functions for setting and restoring text mode */
 #include "vgaHW.h"

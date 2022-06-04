@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 35268 2010-12-20 23:30:58Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 43081 2012-08-29 15:16:49Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -46,6 +46,7 @@
  *   Daryll Strauss <daryll@precisioninsight.com>
  */
 
+#include "xf86.h"
 #include "vboxvideo.h"
 #ifndef PCIACCESS
 # include "xf86Pci.h"
