@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 47523 2013-08-02 13:11:24Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 47609 2013-08-08 10:56:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -339,9 +339,11 @@ void UIPopupCenter::sltRemovePopupStack(QString strPopupStackID)
         return;
     }
 
-    /* Delete popup-stack: */
-    delete m_stacks[strPopupStackID];
+    /* Delete popup-stack asyncronously.
+     * To avoid issues with events which already posted: */
+    UIPopupStack *pPopupStack = m_stacks[strPopupStackID];
     m_stacks.remove(strPopupStackID);
+    pPopupStack->deleteLater();
 }
 
 /* static */

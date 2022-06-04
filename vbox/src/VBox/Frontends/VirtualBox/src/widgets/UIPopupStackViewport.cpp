@@ -1,4 +1,4 @@
-/* $Id: UIPopupStackViewport.cpp 47523 2013-08-02 13:11:24Z vboxsync $ */
+/* $Id: UIPopupStackViewport.cpp 47609 2013-08-08 10:56:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -139,9 +139,10 @@ void UIPopupStackViewport::sltPopupPaneDone(int iResultCode)
     /* Notify listeners about popup-pane removal: */
     emit sigPopupPaneDone(strPopupPaneID, iResultCode);
 
-    /* Cleanup the popup-pane: */
+    /* Delete popup-pane asyncronously.
+     * To avoid issues with events which already posted: */
     m_panes.remove(strPopupPaneID);
-    delete pPopupPane;
+    pPopupPane->deleteLater();
 
     /* Notify listeners about popup-pane removed: */
     emit sigPopupPaneRemoved(strPopupPaneID);
