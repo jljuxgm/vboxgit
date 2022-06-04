@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
+/* $Id: DrvTAP.cpp 46035 2013-05-13 16:47:40Z vboxsync $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
@@ -62,10 +62,6 @@
 #endif
 #include <errno.h>
 #include <unistd.h>
-
-#ifdef RT_OS_L4
-# include <l4/vboxserver/file.h>
-#endif
 
 #include "VBoxDD.h"
 

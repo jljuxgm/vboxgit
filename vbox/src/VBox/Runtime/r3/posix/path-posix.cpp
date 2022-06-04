@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: path-posix.cpp 46035 2013-05-13 16:47:40Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX, Part 1.
  */
@@ -48,11 +48,6 @@
 #include "internal/path.h"
 #include "internal/process.h"
 #include "internal/fs.h"
-
-#ifdef RT_OS_L4
-# include <l4/vboxserver/vboxserver.h>
-#endif
-
 
 
 

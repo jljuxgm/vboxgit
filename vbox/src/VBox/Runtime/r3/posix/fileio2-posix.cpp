@@ -1,4 +1,4 @@
-/* $Id: fileio2-posix.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: fileio2-posix.cpp 46035 2013-05-13 16:47:40Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 2.
  */
@@ -45,11 +45,6 @@
 #endif
 #if defined(RT_OS_OS2) && (!defined(__INNOTEK_LIBC__) || __INNOTEK_LIBC__ < 0x006)
 # include <io.h>
-#endif
-#ifdef RT_OS_L4
-/* This is currently ifdef'ed out in the relevant L4 header file */
-/* Same as `utimes', but takes an open file descriptor instead of a name.  */
-extern int futimes(int __fd, __const struct timeval __tvp[2]) __THROW;
 #endif
 
 #ifdef RT_OS_SOLARIS

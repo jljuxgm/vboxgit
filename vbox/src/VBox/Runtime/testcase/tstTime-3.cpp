@@ -1,4 +1,4 @@
-/* $Id: tstTime-3.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstTime-3.cpp 46035 2013-05-13 16:47:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime test.
  */
@@ -30,8 +30,6 @@
 #ifdef RT_OS_WINDOWS
 # include <Windows.h>
 
-#elif defined RT_OS_L4
-
 #else /* posix */
 # include <sys/time.h>
 #endif
@@ -50,10 +48,6 @@ DECLINLINE(uint64_t) OSNanoTS(void)
     uint64_t u64; /* manual say larger integer, should be safe to assume it's the same. */
     GetSystemTimeAsFileTime((LPFILETIME)&u64);
     return u64 * 100;
-
-#elif defined RT_OS_L4
-    /** @todo fix a different timesource on l4. */
-    return RTTimeNanoTS();
 
 #else /* posix */
 

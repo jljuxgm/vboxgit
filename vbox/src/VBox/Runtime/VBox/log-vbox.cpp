@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 45356 2013-04-05 07:01:27Z vboxsync $ */
+/* $Id: log-vbox.cpp 46035 2013-05-13 16:47:40Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -144,8 +144,6 @@
 #  undef _FILE_OFFSET_BITS /* procfs doesn't like this */
 #  include <sys/procfs.h>
 #  include <unistd.h>
-# elif defined(RT_OS_L4)
-#  include <l4/vboxserver/vboxserver.h>
 # elif defined(RT_OS_OS2)
 #  include <stdlib.h>
 # endif
@@ -412,7 +410,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
             }
         }
 
-#  elif defined(RT_OS_L4) || defined(RT_OS_OS2) || defined(RT_OS_DARWIN)
+#  elif defined(RT_OS_OS2) || defined(RT_OS_DARWIN)
         /* commandline? */
 #  else
 #   error needs porting.
