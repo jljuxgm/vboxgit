@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 42665 2012-08-07 14:55:09Z vboxsync $ */
+/* $Id: UISession.cpp 43004 2012-08-27 16:10:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -351,16 +351,13 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
     fDoMount = true;
 #else
     CGuest guest = session().GetConsole().GetGuest();
-    /* Since we are going to show a modal progress dialog we don't want to wait for the whole
-     * update progress being complete - the user might need to interact with the VM to confirm (WHQL)
-     * popups - instead we only wait until the actual update process was started. */
-    CProgress progressInstall = guest.UpdateGuestAdditions(strSource,
-                                                           AdditionsUpdateFlag_WaitForUpdateStartOnly);
+    QVector<KAdditionsUpdateFlag> flagsUpdate;
+    CProgress progressInstall = guest.UpdateGuestAdditions(strSource, flagsUpdate);
     bool fResult = guest.isOk();
     if (fResult)
     {
-        msgCenter().showModalProgressDialog(progressInstall, tr("Install"), ":/progress_install_guest_additions_90px.png",
-                                              mainMachineWindow(), true, 500 /* 500ms delay. */);
+        msgCenter().showModalProgressDialog(progressInstall, tr("Updating Guest Additions"), ":/progress_install_guest_additions_90px.png",
+                                            mainMachineWindow(), true, 500 /* 500ms delay. */);
         if (progressInstall.GetCanceled())
             return;
 
