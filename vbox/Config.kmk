@@ -1,4 +1,4 @@
-# $Id: Config.kmk 45748 2013-04-25 20:52:31Z vboxsync $
+# $Id: Config.kmk 45759 2013-04-26 07:13:34Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -557,7 +557,7 @@ VBOX_WITH_VDITOOL =
 VBOX_WITH_VBOX_IMG =
 # Enables the VPX module for VM video capturing
 if1of ($(KBUILD_TARGET), linux)
-# VBOX_WITH_VPX = 1
+ VBOX_WITH_VPX = 1
 endif
 # Enable shared folders
 VBOX_WITH_SHARED_FOLDERS = 1
@@ -2735,9 +2735,9 @@ if1of ($(KBUILD_TARGET), darwin linux os2 solaris)
      $(PATH_ROOT)/src/libs/libvpx/vpx \
      $(PATH_ROOT)/src/libs/libvpx/vp8 \
      $(PATH_ROOT)/src/libs/libvpx/vpx_mem
- SDK_VBOX_VPX_LIBS ?= $(PATH_STAGE_BIN)/VBox-libvpx.so
+ SDK_VBOX_VPX_LIBS ?= $(PATH_STAGE_BIN)/VBoxVPX.so
 else
- SDK_VBOX_VPX_LIBS ?= $(PATH_STAGE_BIN)/VBox-libvpx$(SUFF_DLL)
+ SDK_VBOX_VPX_LIBS ?= $(PATH_STAGE_BIN)/VBoxVPX$(SUFF_DLL)
 endif
 
 SDK_VBOX_BOOST       = .
@@ -5307,7 +5307,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45748 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45759 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
