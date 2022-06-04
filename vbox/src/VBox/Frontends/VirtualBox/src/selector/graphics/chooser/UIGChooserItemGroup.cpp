@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 42679 2012-08-08 11:51:49Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 42688 2012-08-08 17:06:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -822,7 +822,9 @@ QPixmap UIGChooserItemGroup::toPixmap()
 {
     QSize minimumSize = minimumSizeHint(true).toSize();
     QPixmap pixmap(minimumSize);
+    pixmap.fill(Qt::transparent);
     QPainter painter(&pixmap);
+    painter.setRenderHint(QPainter::Antialiasing);
     QStyleOptionGraphicsItem options;
     options.rect = QRect(QPoint(0, 0), minimumSize);
     paint(&painter, &options, true);
