@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 45078 2013-03-18 21:09:20Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 45482 2013-04-11 11:11:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -694,7 +694,7 @@ int SessionTaskCopyFrom::Run(void)
                         if (waitRes == ProcessWaitResult_WaitFlagNotSupported)
                             RTThreadSleep(1); /* Optional, don't check rc. */
 
-                        size_t cbRead;
+                        uint32_t cbRead;
                         rc = pProcess->readData(OUTPUT_HANDLE_ID_STDOUT, sizeof(byBuf),
                                                 30 * 1000 /* Timeout */, byBuf, sizeof(byBuf),
                                                 &cbRead, &guestRc);

@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 45434 2013-04-09 13:51:55Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 45482 2013-04-11 11:11:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -769,7 +769,7 @@ int GuestFile::waitForEvents(uint32_t uTimeoutMS, ComSafeArrayIn(VBoxEventType_T
     {
         arrEventTypes.push_back(VBoxEventType_OnGuestFileStateChanged);
         hr = mEventSource->RegisterListener(pListener, ComSafeArrayAsInParam(arrEventTypes),
-                                            TRUE /* Passive listener */);
+                                            FALSE /* Passive listener */);
     }
     else
         vrc = VERR_COM_UNEXPECTED;
@@ -846,8 +846,6 @@ int GuestFile::waitForEvents(uint32_t uTimeoutMS, ComSafeArrayIn(VBoxEventType_T
                     }
                 }
             }
-            else
-                vrc = VERR_COM_UNEXPECTED;
 
         } while (!fSignalled);
 
