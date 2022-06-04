@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42702 2012-08-09 06:11:32Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42716 2012-08-09 15:49:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2673,8 +2673,6 @@ STDMETHODIMP Guest::UpdateGuestAdditions(IN_BSTR aSource, ComSafeArrayIn(Additio
         if (!(fFlags & AdditionsUpdateFlag_WaitForUpdateStartOnly))
             return setError(E_INVALIDARG, tr("Unknown flags (%#x)"), aFlags);
     }
-
-    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     HRESULT hr = S_OK;
 #if 1
