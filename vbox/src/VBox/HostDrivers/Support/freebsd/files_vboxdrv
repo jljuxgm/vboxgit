@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 40917 2012-04-14 08:06:16Z vboxsync $
+# $Id: files_vboxdrv 42596 2012-08-05 08:14:35Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -116,6 +116,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrCopyP.cpp=>common/string/RTStrCopyP.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrCopy.cpp=>common/string/RTStrCopy.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrNCmp.cpp=>common/string/RTStrNCmp.c \
+    ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrNLen.cpp=>common/string/RTStrNLen.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/strformat.cpp=>common/string/strformat.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/strformatrt.cpp=>common/string/strformatrt.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/strformattype.cpp=>common/string/strformattype.c \
