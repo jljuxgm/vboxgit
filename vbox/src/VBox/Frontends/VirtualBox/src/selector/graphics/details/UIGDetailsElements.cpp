@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 42600 2012-08-05 14:32:11Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 42684 2012-08-08 14:53:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -115,6 +115,11 @@ void UIGDetailsUpdateThreadGeneral::run()
             /* Operating system type: */
             m_text << UITextTableLine(tr("Operating system", "details"),
                                        vboxGlobal().vmGuestOSTypeDescription(machine().GetOSTypeId()));
+
+            /* Groups: */
+            QStringList groups = machine().GetGroups().toList();
+            if (!groups.contains("/") || groups.size() > 1)
+                m_text << UITextTableLine(tr("Groups", "details"), groups.join(", "));
         }
         else
             m_text << UITextTableLine(tr("Information inaccessible", "details"), QString());
