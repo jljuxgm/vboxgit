@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: vscsi.h 47830 2013-08-18 12:33:32Z vboxsync $ */
 /** @file
  * VBox storage drivers: Virtual SCSI driver
  */
@@ -119,6 +119,20 @@ typedef struct VSCSILUNIOCALLBACKS
     DECLR3CALLBACKMEMBER(int, pfnVScsiLunMediumGetSize, (VSCSILUN hVScsiLun,
                                                          void *pvScsiLunUser,
                                                          uint64_t *pcbSize));
+
+    /**
+     * Retrieve the sector size of the underlying medium.
+     *
+     * @returns VBox status status code.
+     * @param   hVScsiLun        Virtual SCSI LUN handle.
+     * @param   pvScsiLunUser    Opaque user data which may
+     *                           be used to identify the medium.
+     * @param   pcbSectorSize    Where to store the sector size of the
+     *                           medium.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnVScsiLunMediumGetSectorSize, (VSCSILUN hVScsiLun,
+                                                              void *pvScsiLunUser,
+                                                              uint32_t *pcbSectorSize));
 
     /**
      * Set the lock state of the underlying medium.
