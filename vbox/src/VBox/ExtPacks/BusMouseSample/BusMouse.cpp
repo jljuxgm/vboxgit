@@ -1,4 +1,4 @@
-/* $Id: BusMouse.cpp 47208 2013-07-17 11:01:51Z vboxsync $ */
+/* $Id: BusMouse.cpp 47259 2013-07-19 13:58:26Z vboxsync $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
@@ -612,7 +612,7 @@ static DECLCALLBACK(int) mouPutEventAbs(PPDMIMOUSEPORT pInterface, uint32_t x,
  */
 static DECLCALLBACK(int) mouPutEventMT(PPDMIMOUSEPORT pInterface, uint32_t x,
                                        uint32_t y, uint32_t cContact,
-                                       bool fContact)
+                                       uint32_t fContact)
 {
     AssertFailedReturn(VERR_NOT_SUPPORTED);
 }

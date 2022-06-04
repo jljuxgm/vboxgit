@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 47208 2013-07-17 11:01:51Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 47259 2013-07-19 13:58:26Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -186,7 +186,7 @@ static DECLCALLBACK(int) drvMouseQueuePutEventAbs(PPDMIMOUSEPORT pInterface,
 static DECLCALLBACK(int) drvMouseQueuePutEventMT(PPDMIMOUSEPORT pInterface,
                                                  uint32_t x, uint32_t y,
                                                  uint32_t cContact,
-                                                 bool fContact)
+                                                 uint32_t fContact)
 {
     PDRVMOUSEQUEUE pDrv = IMOUSEPORT_2_DRVMOUSEQUEUE(pInterface);
     if (pDrv->fInactive)
