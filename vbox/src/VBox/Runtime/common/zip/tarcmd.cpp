@@ -1,10 +1,10 @@
-/* $Id: tarcmd.cpp 35351 2010-12-27 17:04:17Z vboxsync $ */
+/* $Id: tarcmd.cpp 44278 2013-01-13 20:52:34Z vboxsync $ */
 /** @file
  * IPRT - TAR Command.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -58,7 +58,7 @@
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
 /**
- * IPT TAR option structure.
+ * IPRT TAR option structure.
  */
 typedef struct RTZIPTARCMDOPS
 {
