@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43717 2012-10-24 08:49:42Z vboxsync $
+# $Id: Makefile.kmk 44049 2012-12-06 11:31:26Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -18,7 +18,8 @@
 SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
-# Include sub-makefile.
+# Include sub-makefiles.
+include $(PATH_SUB_CURRENT)/install_service/Makefile.kmk
 ifdef VBOX_WITH_TESTCASES
  include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 endif
