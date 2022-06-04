@@ -1,4 +1,4 @@
-/* $Id: Performance.h 43453 2012-09-27 12:37:46Z vboxsync $ */
+/* $Id: Performance.h 43456 2012-09-28 06:36:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -496,7 +496,7 @@ namespace pm
     {
     public:
         HostNetworkLoadRaw(CollectorHAL *hal, ComPtr<IUnknown> object, com::Utf8Str name, com::Utf8Str ifname, SubMetric *rx, SubMetric *tx)
-            : BaseMetric(hal, name, object), mInterfaceName(ifname), mRx(rx), mTx(tx), mRxPrev(0), mTxPrev(0) {};
+            : BaseMetric(hal, name, object), mInterfaceName(ifname), mRx(rx), mTx(tx), mRxPrev(0), mTxPrev(0), mRc(VINF_SUCCESS) {};
         ~HostNetworkLoadRaw() { delete mRx; delete mTx; };
 
         void init(ULONG period, ULONG length);
@@ -514,6 +514,7 @@ namespace pm
         SubMetric    *mTx;
         uint64_t      mRxPrev;
         uint64_t      mTxPrev;
+        int           mRc;
     };
 
 
