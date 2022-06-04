@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 45968 2013-05-09 17:12:13Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 45969 2013-05-09 17:14:46Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -757,11 +757,11 @@ static DECLCALLBACK(int) RTLDRELF_NAME(EnumDbgInfo)(PRTLDRMODINTERNAL pMod, cons
         if (   !strncmp(pszSectName, RT_STR_TUPLE(".debug_"))
             || !strcmp(pszSectName, ".WATCOM_references") )
         {
-            int rc = pfnCallback(pMod, iShdr - 1, RTLDRDBGINFOTYPE_DWARF, 0, 0, pszSectName,
-                                 paShdrs[iShdr].sh_offset,
-                                 paShdrs[iShdr].sh_addr,
-                                 paShdrs[iShdr].sh_size,
-                                 NULL, pvUser);
+            rc = pfnCallback(pMod, iShdr - 1, RTLDRDBGINFOTYPE_DWARF, 0, 0, pszSectName,
+                             paShdrs[iShdr].sh_offset,
+                             paShdrs[iShdr].sh_addr,
+                             paShdrs[iShdr].sh_size,
+                             NULL, pvUser);
             if (rc != VINF_SUCCESS)
                 return rc;
         }
@@ -777,11 +777,11 @@ static DECLCALLBACK(int) RTLDRELF_NAME(EnumDbgInfo)(PRTLDRMODINTERNAL pMod, cons
             char    szCrc32[16];
             RTStrPrintf(szCrc32, sizeof(szCrc32), "%#010x", uCrc32);
 
-            int rc = pfnCallback(pMod, iShdr - 1, RTLDRDBGINFOTYPE_DWARF, 0, 0, szCrc32,
-                                 paShdrs[iShdr].sh_offset,
-                                 paShdrs[iShdr].sh_addr,
-                                 paShdrs[iShdr].sh_size,
-                                 pszExtFile, pvUser);
+            rc = pfnCallback(pMod, iShdr - 1, RTLDRDBGINFOTYPE_DWARF, 0, 0, szCrc32,
+                             paShdrs[iShdr].sh_offset,
+                             paShdrs[iShdr].sh_addr,
+                             paShdrs[iShdr].sh_size,
+                             pszExtFile, pvUser);
             if (rc != VINF_SUCCESS)
                 return rc;
         }
@@ -866,7 +866,7 @@ static DECLCALLBACK(int) RTLDRELF_NAME(EnumSegments)(PRTLDRMODINTERNAL pMod, PFN
             Seg.cbFile      = 0;
         }
 
-        int rc = pfnCallback(pMod, &Seg, pvUser);
+        rc = pfnCallback(pMod, &Seg, pvUser);
         if (rc != VINF_SUCCESS)
             return rc;
     }
