@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 46321 2013-05-30 09:30:53Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 46328 2013-05-30 12:37:09Z vboxsync $ */
 
 /** @file
  *
@@ -89,7 +89,7 @@ private:
     PFNNQSI mpfnNtQuerySystemInformation;
     HMODULE mhNtDll;
 
-    ULONG totalRAM;
+    ULONG   totalRAM;
 };
 
 CollectorHAL *createHAL()
@@ -310,6 +310,7 @@ int CollectorWin::getHostCpuMHz(ULONG *mhz)
 
 int CollectorWin::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available)
 {
+    AssertReturn(totalRAM, VERR_INTERNAL_ERROR);
     uint64_t cb;
     int rc = RTSystemQueryAvailableRam(&cb);
     if (RT_SUCCESS(rc))
