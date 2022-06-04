@@ -1,4 +1,4 @@
-﻿/* $Id: dbgcfg.cpp 45984 2013-05-11 12:46:30Z vboxsync $ */
+﻿/* $Id: dbgcfg.cpp 45986 2013-05-11 14:14:11Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -671,7 +671,6 @@ RTDECL(int) RTDbgCfgCreate(PRTDBGCFG phDbgCfg, const char *pszEnvVarPrefix)
             { RTDBGCFGPROP_SUFFIXES,    "SUFFIXES" },
             { RTDBGCFGPROP_SRC_PATH,    "SRC_PATH" },
         };
-        int          rc = VINF_SUCCESS;
         const size_t cbEnvVar = 256;
         const size_t cbEnvVal = 65536 - cbEnvVar;
         char        *pszEnvVar = (char *)RTMemTmpAlloc(cbEnvVar + cbEnvVal);
