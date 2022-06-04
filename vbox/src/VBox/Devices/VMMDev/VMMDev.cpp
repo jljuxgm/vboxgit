@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 44790 2013-02-21 17:13:55Z vboxsync $ */
+/* $Id: VMMDev.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3915,7 +3915,7 @@ extern "C" const PDMDEVREG g_DeviceVMMDev =
     NULL,
     /* pfnRelocate */
     vmmdevRelocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

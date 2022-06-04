@@ -1,4 +1,4 @@
-/* $Id: VBoxSampleDevice.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxSampleDevice.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * VBox Sample Device.
  */
@@ -115,7 +115,7 @@ static const PDMDEVREG g_DeviceSample =
     devSampleDestruct,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

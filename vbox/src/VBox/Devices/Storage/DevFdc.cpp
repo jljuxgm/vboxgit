@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 44808 2013-02-24 18:52:37Z vboxsync $ */
+/* $Id: DevFdc.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -2716,7 +2716,7 @@ const PDMDEVREG g_DeviceFloppyController =
     NULL,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 45024 2013-03-13 15:58:02Z vboxsync $ */
+/* $Id: DevPcBios.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -1455,7 +1455,7 @@ const PDMDEVREG g_DevicePcBios =
     pcbiosDestruct,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     pcbiosMemSetup,
     /* pfnPowerOn */
     NULL,

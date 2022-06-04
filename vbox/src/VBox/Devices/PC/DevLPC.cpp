@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 44693 2013-02-14 17:37:34Z vboxsync $ */
+/* $Id: DevLPC.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  *
@@ -360,7 +360,7 @@ const PDMDEVREG g_DeviceLPC =
     NULL,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

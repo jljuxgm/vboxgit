@@ -1,4 +1,4 @@
-/* $Id: BusMouse.cpp 44626 2013-02-11 10:52:19Z vboxsync $ */
+/* $Id: BusMouse.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
@@ -836,7 +836,7 @@ const PDMDEVREG g_DeviceBusMouse =
     NULL,
     /* pfnRelocate */
     mouRelocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

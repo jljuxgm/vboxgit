@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 44626 2013-02-11 10:52:19Z vboxsync $ */
+/* $Id: DevAPIC.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  *
@@ -2453,7 +2453,7 @@ const PDMDEVREG g_DeviceAPIC =
     NULL,
     /* pfnRelocate */
     apicR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

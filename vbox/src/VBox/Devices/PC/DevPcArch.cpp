@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 44705 2013-02-14 20:51:49Z vboxsync $ */
+/* $Id: DevPcArch.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -249,7 +249,7 @@ const PDMDEVREG g_DevicePcArch =
     NULL,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

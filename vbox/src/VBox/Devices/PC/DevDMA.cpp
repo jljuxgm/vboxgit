@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 44534 2013-02-04 21:16:06Z vboxsync $ */
+/* $Id: DevDMA.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -966,7 +966,7 @@ const PDMDEVREG g_DeviceDMA =
     NULL,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

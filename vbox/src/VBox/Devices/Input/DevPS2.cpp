@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 44806 2013-02-22 20:47:57Z vboxsync $ */
+/* $Id: DevPS2.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1633,7 +1633,7 @@ const PDMDEVREG g_DevicePS2KeyboardMouse =
     NULL,
     /* pfnRelocate */
     kbdRelocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

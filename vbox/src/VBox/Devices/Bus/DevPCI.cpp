@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 44795 2013-02-21 19:49:18Z vboxsync $ */
+/* $Id: DevPCI.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2273,7 +2273,7 @@ const PDMDEVREG g_DevicePCI =
     NULL,
     /* pfnRelocate */
     pciR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,
@@ -2633,7 +2633,7 @@ const PDMDEVREG g_DevicePCIBridge =
     NULL,
     /* pfnRelocate */
     pcibridgeR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

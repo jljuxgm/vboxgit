@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 44670 2013-02-13 15:16:23Z vboxsync $ */
+/* $Id: DevINIP.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -822,7 +822,7 @@ const PDMDEVREG g_DeviceINIP =
     devINIPDestruct,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

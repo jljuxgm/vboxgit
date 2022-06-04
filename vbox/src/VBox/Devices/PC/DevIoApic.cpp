@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 44691 2013-02-14 15:33:24Z vboxsync $ */
+/* $Id: DevIoApic.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -884,7 +884,7 @@ const PDMDEVREG g_DeviceIOAPIC =
     NULL,
     /* pfnRelocate */
     ioapicRelocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 44809 2013-02-24 19:31:54Z vboxsync $ */
+/* $Id: DevSerial.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  * (taken from hw/serial.c 2010/05/15 with modifications)
@@ -1388,7 +1388,7 @@ const PDMDEVREG g_DeviceSerialPort =
     serialDestruct,
     /* pfnRelocate */
     serialRelocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

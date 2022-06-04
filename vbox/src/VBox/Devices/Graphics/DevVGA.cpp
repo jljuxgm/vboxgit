@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 45023 2013-03-13 15:29:58Z vboxsync $ */
+/* $Id: DevVGA.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6327,7 +6327,7 @@ const PDMDEVREG g_DeviceVga =
     vgaR3Destruct,
     /* pfnRelocate */
     vgaR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

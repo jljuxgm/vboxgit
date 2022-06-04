@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 45005 2013-03-12 13:44:49Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -2137,34 +2137,35 @@ const PDMDEVREG g_DeviceVirtioNet =
     /* Size of the instance data. */
     sizeof(VNETSTATE),
 
-    /* Construct instance - required. */
+    /* pfnConstruct */
     vnetConstruct,
-    /* Destruct instance - optional. */
+    /* pfnDestruct */
     vnetDestruct,
-    /* Relocation command - optional. */
+    /* pfnRelocate */
     vnetRelocate,
-    /* I/O Control interface - optional. */
+    /* pfnMemSetup. */
     NULL,
-    /* Power on notification - optional. */
+    /* pfnPowerOn */
     NULL,
-    /* Reset notification - optional. */
+    /* pfnReset */
     NULL,
-    /* Suspend notification  - optional. */
+    /* pfnSuspend */
     vnetSuspend,
-    /* Resume notification - optional. */
+    /* pfnResume */
     NULL,
-    /* Attach command - optional. */
+    /* pfnAttach */
     vnetAttach,
-    /* Detach notification - optional. */
+    /* pfnDetach */
     vnetDetach,
-    /* Query a LUN base interface - optional. */
+    /* pfnQueryInterface */
     NULL,
-    /* Init complete notification - optional. */
+    /* pfnInitComplete */
     NULL,
-    /* Power off notification - optional. */
+    /* pfnPowerOff */
     vnetPowerOff,
     /* pfnSoftReset */
     NULL,
+
     /* u32VersionEnd */
     PDM_DEVREG_VERSION
 };

@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 44897 2013-03-01 21:44:24Z vboxsync $ */
+/* $Id: DevATA.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -7573,7 +7573,7 @@ const PDMDEVREG g_DevicePIIX3IDE =
     ataR3Destruct,
     /* pfnRelocate */
     ataR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

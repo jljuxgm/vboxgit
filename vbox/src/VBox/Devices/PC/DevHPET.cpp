@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 44629 2013-02-11 11:59:14Z vboxsync $ */
+/* $Id: DevHPET.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1486,7 +1486,7 @@ const PDMDEVREG g_DeviceHPET =
     NULL,
     /* pfnRelocate */
     hpetR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

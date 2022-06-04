@@ -1,4 +1,4 @@
-/* $Id: audiosniffer.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: audiosniffer.c 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * VBox audio device: Audio sniffer device
  */
@@ -653,7 +653,7 @@ const PDMDEVREG g_DeviceAudioSniffer =
     audioSnifferR3Destruct,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

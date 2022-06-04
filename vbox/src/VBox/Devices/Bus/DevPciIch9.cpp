@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 44796 2013-02-21 19:52:28Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2822,7 +2822,7 @@ const PDMDEVREG g_DevicePciIch9 =
     NULL,
     /* pfnRelocate */
     ich9pciRelocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,
@@ -2878,7 +2878,7 @@ const PDMDEVREG g_DevicePciIch9Bridge =
     NULL,
     /* pfnRelocate */
     ich9pcibridgeRelocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

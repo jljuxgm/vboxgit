@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 39308 2011-11-15 13:48:17Z vboxsync $ */
+/* $Id: DevSB16.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1989,7 +1989,7 @@ const PDMDEVREG g_DeviceSB16 =
     NULL,
     /* pfnRelocate */
     NULL,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,

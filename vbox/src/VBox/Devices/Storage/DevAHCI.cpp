@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 44902 2013-03-02 02:28:37Z vboxsync $ */
+/* $Id: DevAHCI.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -8211,7 +8211,7 @@ const PDMDEVREG g_DeviceAHCI =
     ahciR3Destruct,
     /* pfnRelocate */
     ahciR3Relocate,
-    /* pfnIOCtl */
+    /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
     NULL,
