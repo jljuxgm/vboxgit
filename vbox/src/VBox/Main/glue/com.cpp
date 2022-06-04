@@ -1,4 +1,4 @@
-/* $Id: com.cpp 44545 2013-02-05 14:19:49Z vboxsync $ */
+/* $Id: com.cpp 44552 2013-02-05 19:49:41Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -61,6 +61,7 @@ const char *apcszUserHome[] =
 { ".VirtualBox" };
 #else
 { ".config/VirtualBox", ".VirtualBox" };
+char szXdgConfigHome[RTPATH_MAX];
 #endif
 
 #include "Logging.h"
@@ -225,7 +226,16 @@ int GetVBoxUserHomeDirectory(char *aDir, size_t aDirLen, bool fCreateDir)
 #if !defined(RT_OS_WINDOWS) && !defined(RT_OS_DARWIN)
             const char *pcszConfigHome = RTEnvGet("XDG_CONFIG_HOME");
             if (pcszConfigHome && pcszConfigHome[0])
-                apcszUserHome[0] = pcszConfigHome;
+            {
+                vrc = RTStrCopy(szXdgConfigHome,
+                                sizeof(szXdgConfigHome),
+                                pcszConfigHome);
+                if (RT_SUCCESS(vrc))
+                    vrc = RTPathAppend(szXdgConfigHome,
+                                       sizeof(szXdgConfigHome),
+                                       "VirtualBox");
+                    apcszUserHome[0] = szXdgConfigHome;
+            }
 #endif
             for (unsigned i = 0; i < RT_ELEMENTS(apcszUserHome); ++i)
             {
