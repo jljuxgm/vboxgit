@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 47558 2013-08-06 13:50:53Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 47562 2013-08-06 15:39:46Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -713,7 +713,7 @@ FNIEMOP_DEF_1(iemOp_Grp6_ltr, uint8_t, bRm)
 
 
 /** Opcode 0x0f 0x00 /3. */
-FNIEMOP_DEF_2(iemOpCommonGrp6VerX, uint8_t, bRm, uint8_t, fWrite)
+FNIEMOP_DEF_2(iemOpCommonGrp6VerX, uint8_t, bRm, bool, fWrite)
 {
     IEMOP_HLP_NO_REAL_OR_V86_MODE();
 
