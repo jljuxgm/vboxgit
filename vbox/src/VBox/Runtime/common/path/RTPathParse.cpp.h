@@ -1,4 +1,4 @@
-/* $Id: RTPathParse.cpp.h 45397 2013-04-08 08:37:31Z vboxsync $ */
+/* $Id: RTPathParse.cpp.h 46179 2013-05-20 21:38:38Z vboxsync $ */
 /** @file
  * IPRT - RTPathParse - Code Template.
  *
@@ -73,11 +73,13 @@ static int RTPATH_STYLE_FN(rtPathParse)(const char *pszPath, PRTPATHPARSED pPars
             {
                 fProps = RTPATH_PROP_ROOT_SLASH | RTPATH_PROP_UNC | RTPATH_PROP_ABSOLUTE;
                 offCur++;
+                cchPath = offCur;
             }
             else
             {
                 fProps = RTPATH_PROP_ROOT_SLASH | RTPATH_PROP_RELATIVE;
                 offCur = 1;
+                cchPath = 1;
             }
         }
 #endif
@@ -89,6 +91,7 @@ static int RTPATH_STYLE_FN(rtPathParse)(const char *pszPath, PRTPATHPARSED pPars
             fProps = RTPATH_PROP_ROOT_SLASH | RTPATH_PROP_ABSOLUTE;
 #endif
             offCur = 1;
+            cchPath = 1;
         }
     }
 #if RTPATH_STYLE == RTPATH_STR_F_STYLE_DOS
@@ -104,6 +107,7 @@ static int RTPATH_STYLE_FN(rtPathParse)(const char *pszPath, PRTPATHPARSED pPars
             fProps = RTPATH_PROP_VOLUME | RTPATH_PROP_ROOT_SLASH | RTPATH_PROP_ABSOLUTE;
             offCur = 3;
         }
+        cchPath = offCur;
     }
 #endif
     else
@@ -113,7 +117,7 @@ static int RTPATH_STYLE_FN(rtPathParse)(const char *pszPath, PRTPATHPARSED pPars
         cchPath = 0;
     }
 
-    /*  Add it to the component array . */
+    /* Add it to the component array . */
     if (offCur && !(fFlags & RTPATH_STR_F_NO_START))
     {
         cchPath = offCur;
