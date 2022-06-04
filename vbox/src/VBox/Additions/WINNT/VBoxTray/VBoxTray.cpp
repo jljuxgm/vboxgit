@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 45843 2013-04-30 15:39:58Z vboxsync $ */
+/* $Id: VBoxTray.cpp 45844 2013-04-30 16:18:32Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1183,6 +1183,7 @@ static BOOL vboxStCheckTimer(WPARAM wEvent)
     }
 
     vboxStCheckState();
+    return TRUE;
 }
 
 
