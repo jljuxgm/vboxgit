@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 45228 2013-03-28 12:49:32Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 45603 2013-04-18 10:11:03Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -81,7 +81,7 @@
 
 # ifndef RHEL_RELEASE_CODE
 #  if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 2, 39) && LINUX_VERSION_CODE < KERNEL_VERSION(3, 3, 0)
-#   ifdef DRM_SWITCH_POWER_ON
+#   if defined(DRM_MODE_OBJECT_PLANE) && defined(DRM_IOCTL_MODE_ADDFB2)
 #    define DRM_DEBIAN_34ON32
 #   endif
 #  endif
