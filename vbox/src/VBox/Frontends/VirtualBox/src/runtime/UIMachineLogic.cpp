@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 44982 2013-03-11 12:58:09Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 45079 2013-03-19 05:48:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -447,11 +447,11 @@ void UIMachineLogic::sltShowWindows()
 }
 #endif /* Q_WS_MAC */
 
-void UIMachineLogic::sltGuestMonitorChange(KGuestMonitorChangedEventType, ulong uScreenId, QRect)
+void UIMachineLogic::sltGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)
 {
-    /* Deliver event to corresponding machine-window: */
-    if (uScreenId < (ulong)machineWindows().size())
-        machineWindows()[uScreenId]->handleScreenCountChange();
+    /* Deliver event to all machine-windows: */
+    foreach (UIMachineWindow *pMachineWindow, machineWindows())
+        pMachineWindow->handleScreenCountChange();
 }
 
 void UIMachineLogic::sltHostScreenCountChanged(int /*cHostScreenCount*/)
