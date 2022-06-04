@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45704 2013-04-24 14:32:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45712 2013-04-24 16:27:16Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -172,6 +172,10 @@ typedef struct VMXTRANSIENT
     uint32_t        uExitIntrErrorCode;
     /** The VM-exit exit qualification. */
     RTGCUINTPTR     uExitQualification;
+#if GC_ARCH_BITS == 32
+    /** Alignment. */
+    uint32_t        u32Alignment1;
+#endif
 
     /** The VM-exit interruption-information field. */
     uint32_t        uExitIntrInfo;
@@ -235,7 +239,7 @@ typedef enum VMXMSREXITWRITE
 *******************************************************************************/
 static void               hmR0VmxFlushVpid(PVM pVM, PVMCPU pVCpu, VMX_FLUSH_VPID enmFlush, RTGCPTR GCPtr);
 static int                hmR0VmxInjectEventVmcs(PVMCPU pVCpu, PCPUMCTX pMixedCtx, uint64_t u64IntrInfo, uint32_t cbInstr,
-                                                 uint32_t u32ErrCode, RTGCUINTREG uCR2, uint32_t *puIntrState);
+                                                 uint32_t u32ErrCode, RTGCUINTREG GCPtrFaultAddress, uint32_t *puIntrState);
 #if HC_ARCH_BITS == 32 && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
 static int                hmR0VmxInitVmcsReadCache(PVM pVM, PVMCPU pVCpu);
 #endif
