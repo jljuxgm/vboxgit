@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 46496 2013-06-11 15:26:17Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 47184 2013-07-16 09:28:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -116,7 +116,7 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
                 m_pVMMButton = new QIToolButton(m_pDiskCnt);
                 {
                     m_pVMMButton->setAutoRaise(true);
-                    m_pVMMButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", ":/select_file_dis_16px.png"));
+                    m_pVMMButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", ":/select_file_disabled_16px.png"));
                 }
                 pDiskCntLayout->addWidget(m_pDiskSkip, 0, 0, 1, 3);
                 pDiskCntLayout->addWidget(m_pDiskCreate, 1, 0, 1, 3);

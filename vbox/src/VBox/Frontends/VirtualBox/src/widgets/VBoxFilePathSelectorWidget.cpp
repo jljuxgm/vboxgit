@@ -1,4 +1,4 @@
-/* $Id: VBoxFilePathSelectorWidget.cpp 45085 2013-03-19 09:28:24Z vboxsync $ */
+/* $Id: VBoxFilePathSelectorWidget.cpp 47184 2013-07-16 09:28:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -574,7 +574,7 @@ VBoxEmptyFileSelector::VBoxEmptyFileSelector (QWidget *aParent /* = NULL */)
     mMainLayout->setMargin (0);
 
     mSelectButton = new QIToolButton(this);
-    mSelectButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", ":/select_file_dis_16px.png"));
+    mSelectButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", ":/select_file_disabled_16px.png"));
     connect(mSelectButton, SIGNAL(clicked()), this, SLOT(choose()));
     mMainLayout->addWidget(mSelectButton);
 

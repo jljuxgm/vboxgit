@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 45368 2013-04-05 13:06:15Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 47184 2013-07-16 09:28:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -112,7 +112,7 @@ PixmapPool::PixmapPool (QObject *aParent)
     mPool [FDAttachmentAddDis]       = QPixmap (":/fd_add_disabled_16px.png");
 
     mPool [ChooseExistingEn]         = QPixmap (":/select_file_16px.png");
-    mPool [ChooseExistingDis]        = QPixmap (":/select_file_dis_16px.png");
+    mPool [ChooseExistingDis]        = QPixmap (":/select_file_disabled_16px.png");
     mPool [HDNewEn]                  = QPixmap (":/hd_new_16px.png");
     mPool [HDNewDis]                 = QPixmap (":/hd_new_disabled_16px.png");
     mPool [CDUnmountEnabled]         = QPixmap (":/cd_unmount_16px.png");

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic4.cpp 45316 2013-04-03 17:40:32Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic4.cpp 47184 2013-07-16 09:28:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -165,7 +165,7 @@ UIWizardCloneVDPageBasic4::UIWizardCloneVDPageBasic4()
             m_pDestinationDiskOpenButton = new QIToolButton(this);
             {
                 m_pDestinationDiskOpenButton->setAutoRaise(true);
-                m_pDestinationDiskOpenButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", "select_file_dis_16px.png"));
+                m_pDestinationDiskOpenButton->setIcon(UIIconPool::iconSet(":/select_file_16px.png", "select_file_disabled_16px.png"));
             }
             pLocationLayout->addWidget(m_pDestinationDiskEditor);
             pLocationLayout->addWidget(m_pDestinationDiskOpenButton);
