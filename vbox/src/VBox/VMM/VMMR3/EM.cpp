@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 47425 2013-07-26 14:32:52Z vboxsync $ */
+/* $Id: EM.cpp 47444 2013-07-29 00:37:31Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1498,9 +1498,7 @@ int emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
             PX86PDPE pPdpes = HMGetPaePdpes(pVCpu);
             AssertPtr(pPdpes);
 
-            int rc2 = PGMGstUpdatePaePdpes(pVCpu, pPdpes);
-            if (RT_FAILURE(rc2))
-                return rc2;
+            PGMGstUpdatePaePdpes(pVCpu, pPdpes);
             Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_HM_UPDATE_PAE_PDPES));
         }
         else
