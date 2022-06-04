@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 46781 2013-06-25 14:04:17Z vboxsync $ */
+/* $Id: tstCFGM.cpp 46791 2013-06-26 09:20:37Z vboxsync $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -132,6 +132,7 @@ static void doStandaloneTests(void)
     PCFGMNODE pRoot;;
     RTTESTI_CHECK_RETV((pRoot = CFGMR3CreateTree(NULL)) != NULL);
     doGeneralTests(pRoot);
+    CFGMR3RemoveNode(pRoot);
 }
 
 int main()

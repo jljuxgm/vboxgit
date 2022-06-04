@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 46781 2013-06-25 14:04:17Z vboxsync $ */
+/* $Id: CFGM.cpp 46791 2013-06-26 09:20:37Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -1939,7 +1939,8 @@ VMMR3DECL(void) CFGMR3RemoveNode(PCFGMNODE pNode)
         {
             if (pNode->pParent)
                 pNode->pParent->pFirstChild = pNode->pNext;
-            else if (pNode == pNode->pVM->cfgm.s.pRoot) /* might be a different tree */
+            else if (   pNode->pVM                         /* might be a different tree */
+                     && pNode == pNode->pVM->cfgm.s.pRoot)
                 pNode->pVM->cfgm.s.pRoot = NULL;
         }
         if (pNode->pNext)
