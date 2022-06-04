@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 45283 2013-04-02 11:36:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -289,7 +289,7 @@ void UIGChooserItemMachine::updateFirstRowMaximumWidth()
     int iToolBarWidth = data(MachineItemData_ToolBarSize).toSize().width();
 
     /* Calculate new maximum width for the first row: */
-    int iFirstRowMaximumWidth = geometry().width();
+    int iFirstRowMaximumWidth = (int)geometry().width();
     iFirstRowMaximumWidth -= iMargin; /* left margin */
     iFirstRowMaximumWidth -= m_pixmapSize.width(); /* pixmap width */
     iFirstRowMaximumWidth -= iMajorSpacing; /* spacing between pixmap and name(s) */
