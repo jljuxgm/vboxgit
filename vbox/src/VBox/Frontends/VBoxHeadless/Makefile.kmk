@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41956 2012-06-28 11:15:26Z vboxsync $
+# $Id: Makefile.kmk 45747 2013-04-25 20:52:00Z vboxsync $
 ## @file
 # Sub-Makefile for the headless frontend.
 #
@@ -19,9 +19,6 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
-ifdef VBOX_WITH_FFMPEG
- include $(PATH_SUB_CURRENT)/VideoCapture/Makefile.kmk
-endif
 
 #
 # Targets.
