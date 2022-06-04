@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 47749 2013-08-15 10:53:43Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 47819 2013-08-16 19:45:01Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -813,6 +813,23 @@ IEM_CIMPL_DEF_1(iemCImpl_call_32, uint32_t, uNewPC)
     VBOXSTRICTRC rcStrict = iemMemStackPushU32(pIemCpu, uOldPC);
     if (rcStrict != VINF_SUCCESS)
         return rcStrict;
+
+#if defined(IN_RING3) && defined(VBOX_WITH_RAW_MODE) && defined(VBOX_WITH_CALL_RECORD)
+    /*
+     * CASM hook for recording interesting indirect calls.
+     */
+    if (   !pCtx->eflags.Bits.u1IF
+        && (pCtx->cr0 & X86_CR0_PG)
+        && !CSAMIsEnabled(IEMCPU_TO_VM(pIemCpu))
+        && pIemCpu->uCpl == 0)
+    {
+        EMSTATE enmState = EMGetState(IEMCPU_TO_VMCPU(pIemCpu));
+        if (   enmState == EMSTATE_IEM_THEN_REM
+            || enmState == EMSTATE_IEM
+            || enmState == EMSTATE_REM)
+            CSAMR3RecordCallAddress(IEMCPU_TO_VM(pIemCpu), pCtx->eip);
+    }
+#endif
 
     pCtx->rip = uNewPC;
     pCtx->eflags.Bits.u1RF = 0;
