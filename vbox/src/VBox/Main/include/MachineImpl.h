@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 43949 2012-11-23 13:43:19Z vboxsync $ */
+/* $Id: MachineImpl.h 44167 2012-12-19 16:40:41Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -238,8 +238,6 @@ public:
          * Data structure to hold information about a guest property.
          */
         struct GuestProperty {
-            /** Property name */
-            Utf8Str strName;
             /** Property value */
             Utf8Str strValue;
             /** Property timestamp */
@@ -290,8 +288,8 @@ public:
         ClipboardMode_T      mClipboardMode;
         DragAndDropMode_T    mDragAndDropMode;
 
-        typedef std::list<GuestProperty> GuestPropertyList;
-        GuestPropertyList    mGuestProperties;
+        typedef std::map<Utf8Str, GuestProperty> GuestPropertyMap;
+        GuestPropertyMap     mGuestProperties;
         Utf8Str              mGuestPropertyNotificationPatterns;
 
         FirmwareType_T       mFirmwareType;
