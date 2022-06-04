@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DBGFStack.cpp 46155 2013-05-18 00:30:13Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -156,7 +156,8 @@ static int dbgfR3StackWalk(PUVM pUVM, VMCPUID idCpu, RTDBGAS hAs, PDBGFSTACKFRAM
         /* Current PC - set by caller, just find symbol & line. */
         if (DBGFADDRESS_IS_VALID(&pFrame->AddrPC))
         {
-            pFrame->pSymPC  = DBGFR3AsSymbolByAddrA(pUVM, hAs, &pFrame->AddrPC, NULL /*offDisp*/, NULL /*phMod*/);
+            pFrame->pSymPC  = DBGFR3AsSymbolByAddrA(pUVM, hAs, &pFrame->AddrPC, RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL,
+                                                    NULL /*offDisp*/, NULL /*phMod*/);
             pFrame->pLinePC = DBGFR3LineByAddrAlloc(pUVM, pFrame->AddrPC.FlatPtr, NULL);
         }
     }
@@ -252,7 +253,8 @@ static int dbgfR3StackWalk(PUVM pUVM, VMCPUID idCpu, RTDBGAS hAs, PDBGFSTACKFRAM
             return VERR_INVALID_PARAMETER;
     }
 
-    pFrame->pSymReturnPC  = DBGFR3AsSymbolByAddrA(pUVM, hAs, &pFrame->AddrReturnPC, NULL /*offDisp*/, NULL /*phMod*/);
+    pFrame->pSymReturnPC  = DBGFR3AsSymbolByAddrA(pUVM, hAs, &pFrame->AddrReturnPC, RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL,
+                                                  NULL /*offDisp*/, NULL /*phMod*/);
     pFrame->pLineReturnPC = DBGFR3LineByAddrAlloc(pUVM, pFrame->AddrReturnPC.FlatPtr, NULL);
 
     /*

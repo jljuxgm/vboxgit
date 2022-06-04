@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 45753 2013-04-26 01:33:30Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 46155 2013-05-18 00:30:13Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -115,20 +115,25 @@ VMMR3DECL(int) DBGFR3AddrFromSelOff(PUVM pUVM, VMCPUID idCpu, PDBGFADDRESS pAddr
     {
         DBGFSELINFO SelInfo;
         int rc = DBGFR3SelQueryInfo(pUVM, idCpu, Sel, DBGFSELQI_FLAGS_DT_GUEST | DBGFSELQI_FLAGS_DT_ADJ_64BIT_MODE, &SelInfo);
+        if (RT_FAILURE(rc) && !HMIsEnabled(pUVM->pVM))
+            rc = DBGFR3SelQueryInfo(pUVM, idCpu, Sel, DBGFSELQI_FLAGS_DT_SHADOW, &SelInfo);
         if (RT_FAILURE(rc))
             return rc;
         rc = dbgfR3AddrFromSelInfoOffWorker(pAddress, &SelInfo, off);
         if (RT_FAILURE(rc))
             return rc;
+        if (   (SelInfo.fFlags & DBGFSELINFO_FLAGS_HYPER)
+            || dbgfR3IsHMA(pUVM, pAddress->FlatPtr))
+            pAddress->fFlags |= DBGFADDRESS_FLAGS_HMA;
     }
     else
     {
         pAddress->FlatPtr = off;
         pAddress->fFlags = DBGFADDRESS_FLAGS_FLAT;
+        if (dbgfR3IsHMA(pUVM, pAddress->FlatPtr))
+            pAddress->fFlags |= DBGFADDRESS_FLAGS_HMA;
     }
     pAddress->fFlags |= DBGFADDRESS_FLAGS_VALID;
-    if (dbgfR3IsHMA(pUVM, pAddress->FlatPtr))
-        pAddress->fFlags |= DBGFADDRESS_FLAGS_HMA;
 
     return VINF_SUCCESS;
 }

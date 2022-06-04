@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 45965 2013-05-09 15:32:14Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 46155 2013-05-18 00:30:13Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -640,6 +640,7 @@ static const REMPARMDESC g_aArgsDBGFR3AsSymbolByAddr[] =
     { REMPARMDESC_FLAGS_INT,        sizeof(PUVM),               NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(RTDBGAS),            NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(PCDBGFADDRESS),      NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t),           NULL },
     { REMPARMDESC_FLAGS_GCPTR,      sizeof(PRTGCINTPTR),        NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(PRTDBGSYMBOL),       NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(PRTDBGMOD),          NULL }
