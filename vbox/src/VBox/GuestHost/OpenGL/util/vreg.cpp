@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 43889 2012-11-15 21:31:24Z vboxsync $ */
+/* $Id: vreg.cpp 43945 2012-11-23 09:38:06Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API implementation
@@ -139,7 +139,7 @@ static void vboxVrDbgListDoVerify(PVBOXVR_LIST pList)
 
 static int vboxVrListUniteIntersection(PVBOXVR_LIST pList, PVBOXVR_LIST pIntersection);
 
-#define VBOXVR_INVALID_COORD (~0UL)
+#define VBOXVR_INVALID_COORD (~0U)
 
 DECLINLINE(void) vboxVrListRegAdd(PVBOXVR_LIST pList, PVBOXVR_REG pReg, PRTLISTNODE pPlace, bool fAfter)
 {
