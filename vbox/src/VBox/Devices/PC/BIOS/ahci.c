@@ -1,4 +1,4 @@
-/* $Id: ahci.c 43433 2012-09-26 08:13:40Z vboxsync $ */
+/* $Id: ahci.c 43438 2012-09-26 11:15:15Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -691,7 +691,7 @@ static void ahci_port_detect_device(ahci_t __far *ahci, uint8_t u8Port)
                 bios_dsk->devices[hd_index].pchs.spt       = spt;
 
                 /* Get logical CHS geometry. */
-                switch (u8Port)
+                switch (devcount_ahci)
                 {
                     case 0:
                         idxCmosChsBase = 0x40;
