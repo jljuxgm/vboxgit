@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 47517 2013-08-02 00:01:17Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 47518 2013-08-02 00:26:46Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 47517 2013-08-02 00:01:17Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 47518 2013-08-02 00:26:46Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -483,14 +483,15 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                     "  [section __VTG __VTGObj        align=16]\n"
                     "VTG_GLOBAL g_aVTGObj_LinkerPleaseNoticeMe, data\n"
                     "  [section __VTG __VTGPrLc.Begin align=16]\n"
+                    "  dq 0, 0 ; Paranoia, related to the fudge below.\n"
                     "VTG_GLOBAL g_aVTGPrLc, data\n"
                     "  [section __VTG __VTGPrLc align=16]\n"
                     "VTG_GLOBAL g_aVTGPrLc_LinkerPleaseNoticeMe, data\n"
                     "  [section __VTG __VTGPrLc.End   align=16]\n"
                     "VTG_GLOBAL g_aVTGPrLc_End, data\n"
-                    "  dq 0, 0 ; Fudge to work around unidentified linker/loader issue, causing a partial address\n"
-                    "          ; to be written to the start of the first entry, generally making the line number\n"
-                    "          ; invalid. (1 byte is actually enough)\n"
+                    "  dq 0, 0 ; Fudge to work around unidentified linker where it would otherwise generate\n"
+                    "          ; a fix up of the first dword in __VTGPrLc.Begin despite the fact that it were\n"
+                    "          ; an empty section with nothing whatsoever to fix up.\n"
                     " %%endif\n"
                     " [section __VTG __VTGObj]\n"
                     "\n"
@@ -940,7 +941,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 47517 2013-08-02 00:01:17Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 47518 2013-08-02 00:26:46Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1116,7 +1117,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 47517 2013-08-02 00:01:17Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 47518 2013-08-02 00:26:46Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2311,7 +2312,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 47517 $";
+                static const char s_szRev[] = "$Revision: 47518 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
