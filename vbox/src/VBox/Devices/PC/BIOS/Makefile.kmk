@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42369 2012-07-24 13:55:34Z vboxsync $
+# $Id: Makefile.kmk 42770 2012-08-11 17:03:21Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -57,11 +57,13 @@ ifdef VBOX_WITH_OPEN_WATCOM
  	logo.c \
  	scsi.c \
  	ahci.c \
+ 	apm.c \
  	pcibios.c \
  	pciutil.c \
  	vds.c \
  	../../BiosCommonCode/support.asm \
  	pcibio32.asm \
+ 	apm_pm.asm \
  	$(VBoxPcBios32_1_TARGET) \
  	orgs.asm
 
