@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46026 2013-05-13 15:54:04Z vboxsync $
+# $Id: Config.kmk 46044 2013-05-13 20:35:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4658,8 +4658,8 @@ ifeq ($(KBUILD_TARGET),win)
  TEMPLATE_VBOXGUESTR3EXE_LNK_DEPS.win.x86   = $(if $(eq $(tool_do),LINK_LIBRARY),,$(VBOX_PE_SET_VERSION))
 else # the gcc guys
  ifneq ($(VBOX_WITH_COMPATIBLE_LINUX_GUEST_PACKAGE),)
-  ifeq ($(KBUILD_TARGET),linux)
-   VBOX_WITH_COMPATIBLE_LINUX_GUEST_PACKAGE :=
+  ifneq ($(KBUILD_TARGET),linux)
+   override VBOX_WITH_COMPATIBLE_LINUX_GUEST_PACKAGE :=
   endif
  endif
  TEMPLATE_VBOXGUESTR3EXE_EXTENDS  = VBOXR3EXE
@@ -5197,7 +5197,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46026 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46044 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
