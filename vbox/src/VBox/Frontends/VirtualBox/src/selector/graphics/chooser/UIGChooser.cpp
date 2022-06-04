@@ -1,4 +1,4 @@
-/* $Id: UIGChooser.cpp 43005 2012-08-27 17:35:33Z vboxsync $ */
+/* $Id: UIGChooser.cpp 43444 2012-09-27 07:18:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -94,9 +94,14 @@ QList<UIVMItem*> UIGChooser::currentItems() const
     return m_pChooserModel->currentItems();
 }
 
-bool UIGChooser::singleGroupSelected() const
+bool UIGChooser::isSingleGroupSelected() const
 {
-    return m_pChooserModel->singleGroupSelected();
+    return m_pChooserModel->isSingleGroupSelected();
+}
+
+bool UIGChooser::isAllItemsOfOneGroupSelected() const
+{
+    return m_pChooserModel->isAllItemsOfOneGroupSelected();
 }
 
 void UIGChooser::setStatusBar(QStatusBar *pStatusBar)
