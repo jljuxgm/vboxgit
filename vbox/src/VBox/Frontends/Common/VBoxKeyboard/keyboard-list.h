@@ -1,4 +1,4 @@
-/* $Id: keyboard-list.h 33656 2010-11-01 14:18:11Z vboxsync $ */
+/* $Id: keyboard-list.h 45100 2013-03-20 09:07:49Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables (keyboard layouts)
  */
@@ -48,6 +48,7 @@
  {"U.S. English, Right handed Dvorak", &main_key_us_dvorak_r},
  {"U.S. English, Classic Dvorak", &main_key_us_dvorak_classic},
  {"U.S. English, Russian phonetic", &main_key_us_rus},
+ {"U.S. English, Colemac", &main_key_us_col},
  {"Afghanistan", &main_key_af},
  {"Afghanistan, Pashto", &main_key_af_ps},
  {"Afghanistan, Southern Uzbek", &main_key_af_uz},
