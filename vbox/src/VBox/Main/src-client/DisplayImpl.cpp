@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 46055 2013-05-14 10:51:49Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 46057 2013-05-14 11:02:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -656,7 +656,8 @@ int Display::handleDisplayResize (unsigned uScreenId, uint32_t bpp, void *pvVRAM
             uScreenId, pvVRAM, w, h, bpp, cbLine, flags));
 
     /* If there is no framebuffer, this call is not interesting. */
-    if (uScreenId >= mcMonitors)
+    if (   uScreenId >= mcMonitors
+        || maFramebuffers[uScreenId].pFramebuffer.isNull())
     {
         return VINF_SUCCESS;
     }
@@ -667,11 +668,6 @@ int Display::handleDisplayResize (unsigned uScreenId, uint32_t bpp, void *pvVRAM
     mLastWidth = w;
     mLastHeight = h;
     mLastFlags = flags;
-
-    if (maFramebuffers[uScreenId].pFramebuffer.isNull())
-    {
-        return VINF_SUCCESS;
-    }
 
     ULONG pixelFormat;
 
