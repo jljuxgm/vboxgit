@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 47190 2013-07-16 13:44:46Z vboxsync $ */
+/* $Id: DisplayImpl.h 47192 2013-07-16 13:59:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -106,8 +106,8 @@ typedef struct _DISPLAYFBINFO
 class DisplayMouseInterface
 {
 public:
-    virtual int getScreenResolution(uint32_t cScreen, uint32_t *pcx,
-                                    uint32_t *pcy, uint32_t *pcBPP) = 0;
+    virtual int getScreenResolution(uint32_t cScreen, ULONG *pcx,
+                                    ULONG *pcy, ULONG *pcBPP) = 0;
     virtual void getFramebufferDimensions(int32_t *px1, int32_t *py1,
                                           int32_t *px2, int32_t *py2) = 0;
 };
@@ -160,8 +160,8 @@ public:
         return maFramebuffers[VBOX_VIDEO_PRIMARY_SCREEN].pFramebuffer;
     }
     void getFramebufferDimensions(int32_t *px1, int32_t *py1, int32_t *px2, int32_t *py2);
-    int getScreenResolution(uint32_t cScreen, uint32_t *pcx, uint32_t *pcy,
-                            uint32_t *pcBPP)
+    int getScreenResolution(uint32_t cScreen, ULONG *pcx, ULONG *pcy,
+                            ULONG *pcBPP)
     {
         return GetScreenResolution(cScreen, pcx, pcy, pcBPP);
     }
