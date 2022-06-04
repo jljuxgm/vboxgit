@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 43131 2012-08-31 11:34:49Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 43256 2012-09-08 03:38:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1517,6 +1517,9 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
             InsertConfigString(pLunL0, "Driver", "NvramStorage");
             InsertConfigNode(pLunL0,   "Config", &pCfg);
             InsertConfigInteger(pCfg,  "Object", (uint64_t)mNvram);
+#ifdef DEBUG_vvl
+            InsertConfigInteger(pCfg,  "PermanentSave", 1);
+#endif
         }
 
         /*
