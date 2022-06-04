@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 46523 2013-06-13 12:02:48Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 46540 2013-06-13 16:38:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4528,7 +4528,10 @@ DECLCALLBACK(int) Display::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
     HRESULT hrc = pMachine->COMGETTER(VideoCaptureEnabled)(&fEnabled);
     AssertComRCReturn(hrc, VERR_COM_UNEXPECTED);
     if (fEnabled)
+    {
         rc = pDisplay->VideoCaptureStart();
+        fireVideoCaptureChangedEvent(pDisplay->mParent->getEventSource());
+    }
 #endif
 
     return rc;
