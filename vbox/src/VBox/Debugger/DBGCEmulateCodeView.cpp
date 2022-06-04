@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 42407 2012-07-26 11:41:35Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 43325 2012-09-13 21:57:31Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1695,7 +1695,7 @@ static DECLCALLBACK(int) dbgcCmdStack(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PVM p
             rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL,
                                     fCurBitFlags & DBGFSTACKFRAME_FLAGS_64BIT
                                     ? " %RTsel:%016RGv"
-                                    : fCurBitFlags & DBGFSTACKFRAME_FLAGS_64BIT
+                                    : fCurBitFlags & DBGFSTACKFRAME_FLAGS_32BIT
                                     ? " %RTsel:%08RGv"
                                     : " %RTsel:%04RGv"
                                     , pFrame->AddrPC.Sel, pFrame->AddrPC.off);
