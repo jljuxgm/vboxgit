@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 43382 2012-09-21 08:00:43Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 43421 2012-09-25 07:00:32Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -224,7 +224,7 @@ static void outputMachineReadableString(const char *pszName, Bstr const *pbstrVa
                 RTPrintf("%s", psz);
                 break;
             }
-            RTPrintf("%.*s\\%c", psz - pszNext, *pszNext);
+            RTPrintf("%.*s\\%c", pszNext - psz, psz, *pszNext);
             psz = pszNext + 1;
         }
         RTPrintf("\"\n");
