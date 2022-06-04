@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 47307 2013-07-22 14:34:36Z vboxsync $ */
+/* $Id: IEMAll.cpp 47319 2013-07-22 16:53:15Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2465,7 +2465,7 @@ iemRaiseXcptOrIntInLongMode(PIEMCPU     pIemCpu,
         rcStrict = iemMemFetchSysU64(pIemCpu, &Idte.au64[1], UINT8_MAX, pCtx->idtr.pIdt + offIdt + 8);
     if (RT_UNLIKELY(rcStrict != VINF_SUCCESS))
         return rcStrict;
-    Log(("iemiemRaiseXcptOrIntInLongMode: vec=%#x P=%u DPL=%u DT=%u:%u IST=%u %04x:%08x%04x%04x\n",
+    Log(("iemRaiseXcptOrIntInLongMode: vec=%#x P=%u DPL=%u DT=%u:%u IST=%u %04x:%08x%04x%04x\n",
          u8Vector, Idte.Gate.u1Present, Idte.Gate.u2Dpl, Idte.Gate.u1DescType, Idte.Gate.u4Type,
          Idte.Gate.u3IST, Idte.Gate.u16Sel, Idte.Gate.u32OffsetTop, Idte.Gate.u16OffsetHigh, Idte.Gate.u16OffsetLow));
 
