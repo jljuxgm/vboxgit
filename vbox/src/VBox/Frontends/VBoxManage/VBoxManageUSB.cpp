@@ -1,10 +1,10 @@
-/* $Id: VBoxManageUSB.cpp 33294 2010-10-21 10:45:26Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 46308 2013-05-29 11:41:54Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -407,7 +407,7 @@ int handleUSBFilter(HandlerArg *a)
     else
     {
         /* open a session for the VM */
-        CHECK_ERROR_RET(cmd.mMachine, LockMachine(a->session, LockType_Write), 1);
+        CHECK_ERROR_RET(cmd.mMachine, LockMachine(a->session, LockType_Shared), 1);
         /* get the mutable session machine */
         a->session->COMGETTER(Machine)(cmd.mMachine.asOutParam());
         /* and get the USB controller */
