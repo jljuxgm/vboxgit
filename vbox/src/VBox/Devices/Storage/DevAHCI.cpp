@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 42196 2012-07-18 06:25:55Z vboxsync $ */
+/* $Id: DevAHCI.cpp 42198 2012-07-18 06:58:40Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -6965,16 +6965,15 @@ static DECLCALLBACK(int) ahciR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
 
         if (uVersion <= AHCI_SAVED_STATE_VERSION_IDE_EMULATION)
         {
-
             for (uint32_t i = 0; i < RT_ELEMENTS(pThis->aCts); i++)
-			{
-				rc = ahciR3LoadLegacyEmulationState(pSSM);
-				if(RT_FAILURE(rc))
-					return rc;
-			}
-		}
+            {
+                rc = ahciR3LoadLegacyEmulationState(pSSM);
+                if(RT_FAILURE(rc))
+                    return rc;
+            }
+        }
 
-		rc = SSMR3GetU32(pSSM, &u32);
+        rc = SSMR3GetU32(pSSM, &u32);
         if (RT_FAILURE(rc))
             return rc;
         AssertMsgReturn(u32 == UINT32_MAX, ("%#x\n", u32), VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
