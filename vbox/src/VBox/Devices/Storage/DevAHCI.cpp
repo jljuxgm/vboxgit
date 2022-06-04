@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 43600 2012-10-10 14:48:28Z vboxsync $ */
+/* $Id: DevAHCI.cpp 43626 2012-10-11 20:57:38Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -1320,6 +1320,7 @@ static int PortCmd_w(PAHCI ahci, PAHCIPort pAhciPort, uint32_t iReg, uint32_t u3
             ahciLog(("%s: Engine stops\n", __FUNCTION__));
             /* Clear command issue register. */
             pAhciPort->regCI = 0;
+            pAhciPort->regSACT = 0;
             /* Clear current command slot. */
             pAhciPort->u32CurrentCommandSlot = 0;
             u32Value &= ~AHCI_PORT_CMD_CR;
