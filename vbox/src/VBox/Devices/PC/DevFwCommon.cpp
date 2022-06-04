@@ -1,4 +1,4 @@
-/* $Id: DevFwCommon.cpp 44821 2013-02-25 15:06:40Z vboxsync $ */
+/* $Id: DevFwCommon.cpp 46355 2013-06-03 10:01:49Z vboxsync $ */
 /** @file
  * FwCommon - Shared firmware code (used by DevPcBios & DevEFI).
  */
@@ -74,6 +74,7 @@ static const char   *s_szDefDmiBoardLocInChass  = "";
 static const int32_t s_iDefDmiBoardBoardType    = 0x0A; /* Motherboard */
 /* type 3 -- DMI chassis information */
 static const char   *s_szDefDmiChassisVendor    = "Oracle Corporation";
+static const int32_t s_iDefDmiChassisType       = 0x01; /* ''other'', no chassis lock present */
 static const char   *s_szDefDmiChassisVersion   = "";
 static const char   *s_szDefDmiChassisSerial    = "";
 static const char   *s_szDefDmiChassisAssetTag  = "";
@@ -716,7 +717,9 @@ int FwCommonPlantDMITable(PPDMDEVINS pDevIns, uint8_t *pTable, unsigned cbMax, P
         pChassis->header.u8Length    = RT_OFFSETOF(DMICHASSIS, u32OEMdefined);
         pChassis->header.u16Handle   = 0x0003;
         READCFGSTR(pChassis->u8Manufacturer, DmiChassisVendor);
-        pChassis->u8Type             = 0x01; /* ''other'', no chassis lock present */
+        int iDmiChassisType;
+        READCFGINT(iDmiChassisType, DmiChassisType);
+        pChassis->u8Type             = iDmiChassisType;
         READCFGSTR(pChassis->u8Version, DmiChassisVersion);
         READCFGSTR(pChassis->u8SerialNumber, DmiChassisSerial);
         READCFGSTR(pChassis->u8AssetTag, DmiChassisAssetTag);
