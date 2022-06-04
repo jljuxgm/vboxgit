@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 44869 2013-02-28 15:42:02Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 44935 2013-03-06 16:40:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -175,7 +175,7 @@ SessionTaskOpen::~SessionTaskOpen(void)
 
 }
 
-int SessionTaskOpen::Run(void)
+int SessionTaskOpen::Run(int *pGuestRc)
 {
     LogFlowThisFuncEnter();
 
@@ -185,8 +185,7 @@ int SessionTaskOpen::Run(void)
     AutoCaller autoCaller(pSession);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-    int vrc = pSession->openSession(mFlags, mTimeoutMS,
-                                    NULL /* Guest rc, ignored */);
+    int vrc = pSession->openSession(pGuestRc);
     /* Nothing to do here anymore. */
 
     LogFlowFuncLeaveRC(vrc);
@@ -214,7 +213,7 @@ int SessionTaskOpen::taskThread(RTTHREAD Thread, void *pvUser)
     AssertReturn(task.get(), VERR_GENERAL_FAILURE);
 
     LogFlowFunc(("pTask=%p\n", task.get()));
-    return task->Run();
+    return task->Run(NULL /* guestRc */);
 }
 
 SessionTaskCopyTo::SessionTaskCopyTo(GuestSession *pSession,

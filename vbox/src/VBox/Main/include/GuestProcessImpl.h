@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 44863 2013-02-28 12:18:17Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 44935 2013-03-06 16:40:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -104,7 +104,7 @@ private:
 
     struct Data
     {
-        /** The process start information. */
+        /** The process startup information. */
         GuestProcessStartupInfo  mProcess;
         /** Exit code if process has been terminated. */
         LONG                     mExitCode;
