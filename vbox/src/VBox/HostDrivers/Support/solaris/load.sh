@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: load.sh 40618 2012-03-25 19:51:16Z vboxsync $
+# $Id: load.sh 44678 2013-02-13 22:51:18Z vboxsync $
 ## @file
 # For development.
 #
@@ -26,7 +26,7 @@
 #
 
 DRVNAME="vboxdrv"
-DRIVERS_USING_IT="vboxusbmon vboxusb vboxnet vboxflt vboxbow"
+DRIVERS_USING_IT="vboxusb vboxusbmon vboxnet vboxflt vboxbow"
 
 DRVFILE=`dirname "$0"`
 DRVFILE=`cd "$DRVFILE" && pwd`
@@ -42,6 +42,9 @@ fi
 
 SUDO=sudo
 #set -x
+
+# Disable the zone access service.
+$SUDO svcadm disable svc:/application/virtualbox/zoneaccess:default
 
 # Unload driver that may depend on the driver we're going to (re-)load 
 # as well as the driver itself.
