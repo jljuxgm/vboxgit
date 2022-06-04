@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 46626 2013-06-18 14:00:20Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 46696 2013-06-20 09:53:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -372,7 +372,7 @@ void UIMachineLogic::sltMachineStateChanged()
             takeScreenshot(strLogFolder + "/VBox.png", "png");
             /* Warn the user about GURU meditation: */
             if (msgCenter().remindAboutGuruMeditation(QDir::toNativeSeparators(strLogFolder)))
-                powerOff(session().GetMachine().GetSnapshotCount() > 0);
+                powerOff(false /* do NOT restore current snapshot */);
             break;
         }
         case KMachineState_Paused:
