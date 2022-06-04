@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: HM.cpp 43391 2012-09-21 10:11:14Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1293,8 +1293,8 @@ static int hmR3InitFinalizeR0(PVM pVM)
                  */
                 if (pVM->hm.s.vmx.fUsePreemptTimer)
                 {
-                    PCFGMNODE pCfgHwAccM = CFGMR3GetChild(CFGMR3GetRoot(pVM), "HM");
-                    int rc2 = CFGMR3QueryBoolDef(pCfgHwAccM, "UsePreemptTimer", &pVM->hm.s.vmx.fUsePreemptTimer, true);
+                    PCFGMNODE pCfgHm = CFGMR3GetChild(CFGMR3GetRoot(pVM), "HM");
+                    int rc2 = CFGMR3QueryBoolDef(pCfgHm, "UsePreemptTimer", &pVM->hm.s.vmx.fUsePreemptTimer, true);
                     AssertLogRelRC(rc2);
                 }
                 if (pVM->hm.s.vmx.fUsePreemptTimer)

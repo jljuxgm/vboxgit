@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: VMMTests.cpp 43391 2012-09-21 10:11:14Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -468,7 +468,7 @@ VMMR3DECL(int) VMMDoTest(PVM pVM)
         }
 
 /* execute the switch. */
-VMMR3DECL(int) VMMDoHwAccmTest(PVM pVM)
+VMMR3DECL(int) VMMDoHmTest(PVM pVM)
 {
     uint32_t i;
     int      rc;
