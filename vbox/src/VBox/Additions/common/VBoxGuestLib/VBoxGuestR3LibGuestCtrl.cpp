@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 44863 2013-02-28 12:18:17Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 45018 2013-03-13 12:52:33Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -925,7 +925,6 @@ VBGLR3DECL(int) VbglR3GuestCtrlFileNotify(uint32_t     uClientId,    uint32_t   
                                           uint32_t     uType,
                                           void        *pvPayload,    uint32_t     cbPayload)
 {
-    AssertPtrReturn(uContext, VERR_INVALID_POINTER);
     AssertPtrReturn(pvPayload, VERR_INVALID_POINTER);
     AssertReturn(cbPayload, VERR_INVALID_PARAMETER);
 
