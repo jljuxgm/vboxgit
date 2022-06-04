@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 41565 2012-06-04 14:07:38Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 42165 2012-07-16 13:36:01Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -957,7 +957,7 @@ static DECLCALLBACK(int) dbgcCmdUnassemble(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
             /** @todo Batch query CS, RIP & CPU mode. */
             PVMCPU pVCpu = VMMGetCpuById(pVM, pDbgc->idCpu);
             if (    pDbgc->fRegCtxGuest
-                &&  CPUMIsGuestIn64BitCodeEx(CPUMQueryGuestCtxPtr(pVCpu)))
+                &&  CPUMIsGuestIn64BitCode(pVCpu))
             {
                 pDbgc->DisasmPos.enmType    = DBGCVAR_TYPE_GC_FLAT;
                 pDbgc->SourcePos.u.GCFlat   = CPUMGetGuestRIP(pVCpu);
@@ -1427,7 +1427,7 @@ static DECLCALLBACK(int) dbgcCmdRegGuest(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PV
         PDBGC       pDbgc      = DBGC_CMDHLP2DBGC(pCmdHlp);
         bool const  f64BitMode = !strcmp(pCmd->pszCmd, "rg64")
                               || (   !strcmp(pCmd->pszCmd, "rg32")
-                                  && CPUMIsGuestIn64BitCodeEx(CPUMQueryGuestCtxPtr(VMMGetCpuById(pVM, pDbgc->idCpu))));
+                                  && CPUMIsGuestIn64BitCode(VMMGetCpuById(pVM, pDbgc->idCpu)));
         char        szDisAndRegs[8192];
         int         rc;
 

@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 42165 2012-07-16 13:36:01Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -938,7 +938,7 @@ static int iomInterpretSTOS(PVM pVM, PCPUMCTXCORE pRegFrame, RTGCPHYS GCPhysFaul
     if (pCpu->fPrefix & DISPREFIX_REP)
     {
 #ifndef IN_RC
-        if (    CPUMIsGuestIn64BitCode(VMMGetCpu(pVM), pRegFrame)
+        if (    CPUMIsGuestIn64BitCode(VMMGetCpu(pVM))
             &&  pRegFrame->rcx >= _4G)
             return VINF_EM_RAW_EMULATE_INSTR;
 #endif
@@ -2043,7 +2043,7 @@ VMMDECL(VBOXSTRICTRC) IOMInterpretINSEx(PVM pVM, PCPUMCTXCORE pRegFrame, uint32_
     if (uPrefix & DISPREFIX_REP)
     {
 #ifndef IN_RC
-        if (    CPUMIsGuestIn64BitCode(pVCpu, pRegFrame)
+        if (    CPUMIsGuestIn64BitCode(pVCpu)
             &&  pRegFrame->rcx >= _4G)
             return VINF_EM_RAW_EMULATE_INSTR;
 #endif
@@ -2205,7 +2205,7 @@ VMMDECL(VBOXSTRICTRC) IOMInterpretOUTSEx(PVM pVM, PCPUMCTXCORE pRegFrame, uint32
     if (uPrefix & DISPREFIX_REP)
     {
 #ifndef IN_RC
-        if (    CPUMIsGuestIn64BitCode(pVCpu, pRegFrame)
+        if (    CPUMIsGuestIn64BitCode(pVCpu)
             &&  pRegFrame->rcx >= _4G)
             return VINF_EM_RAW_EMULATE_INSTR;
 #endif

@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: DBGFStack.cpp 42165 2012-07-16 13:36:01Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -331,7 +331,7 @@ static DECLCALLBACK(int) dbgfR3StackWalkCtxFull(PVM pVM, VMCPUID idCpu, PCCPUMCT
             if (CpuMode == CPUMMODE_REAL)
                 fAddrMask = UINT16_MAX;
             else if (   CpuMode == CPUMMODE_PROTECTED
-                     || !CPUMIsGuestIn64BitCode(pVCpu, pCtxCore))
+                     || !CPUMIsGuestIn64BitCode(pVCpu))
                 fAddrMask = UINT32_MAX;
             else
                 fAddrMask = UINT64_MAX;
