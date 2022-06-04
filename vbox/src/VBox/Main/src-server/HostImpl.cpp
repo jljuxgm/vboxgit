@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 43453 2012-09-27 12:37:46Z vboxsync $ */
+/* $Id: HostImpl.cpp 43470 2012-09-28 18:00:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -2856,10 +2856,13 @@ HRESULT Host::updateNetIfList()
     }
     /* At this point listCopy will contain newly discovered interfaces only. */
     for (itNew = listCopy.begin(); itNew != listCopy.end(); ++itNew)
-    {
-        (*itNew)->setVirtualBox(m->pParent);
         (*itNew)->registerMetrics(aCollector, this);
-    }
+    /*
+     * Need to set the references to VirtualBox object in all interface objects
+     * (see @bugref{6439}).
+     */
+    for (itNew = list.begin(); itNew != list.end(); ++itNew)
+        (*itNew)->setVirtualBox(m->pParent);
     m->llNetIfs = list;
     return S_OK;
 #else
