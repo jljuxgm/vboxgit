@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 47209 2013-07-17 11:58:03Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 47210 2013-07-17 12:11:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -517,7 +517,7 @@ void UIPopupCenter::remindAboutGuestAdditionsAreNotActive(QWidget *pParent)
           true);
 }
 
-void UIPopupCenter::remindAboutWrongColorDepth(QWidget *pParent, ulong uRealBPP, ulong uWantedBPP)
+void UIPopupCenter::updatePopupAboutWrongColorDepth(QWidget *pParent, ulong uRealBPP, ulong uWantedBPP)
 {
     alert(pParent, "remindAboutWrongColorDepth",
           QApplication::translate("UIMessageCenter", "<p>The virtual machine window is optimized to work in <b>%1&nbsp;bit</b> color mode "
@@ -530,5 +530,10 @@ void UIPopupCenter::remindAboutWrongColorDepth(QWidget *pParent, ulong uRealBPP,
                                                      "if you are sure the required color mode (%4&nbsp;bit) is not available in the guest OS.</p>")
                                                      .arg(uWantedBPP).arg(uRealBPP).arg(uWantedBPP).arg(uWantedBPP),
           true);
+}
+
+void UIPopupCenter::recallPopupAboutWrongColorDepth(QWidget *pParent)
+{
+    recall(pParent, "remindAboutWrongColorDepth");
 }
 
