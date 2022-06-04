@@ -1,4 +1,4 @@
-/* $Id: keyboard.c 44765 2013-02-20 15:25:56Z vboxsync $ */
+/* $Id: keyboard.c 44783 2013-02-21 14:53:31Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard handler library.
  */
@@ -636,6 +636,15 @@ unsigned X11DRV_InitKeyboard(Display *display, unsigned *byLayoutOK,
     byXkb = X11DRV_InitKeyboardByXkb(display);
     if (byXkbOK)
         *byXkbOK = byXkb;
+
+    /* Fall back to the one which did work. */
+    if (!byXkb)
+    {
+        if (byType)
+            X11DRV_InitKeyboardByType(display);
+        else
+            X11DRV_InitKeyboardByLayout(display);
+    }
 
     /* Remap keycodes after initialization. Remapping stops after an
        identity mapping is seen */
