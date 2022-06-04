@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedToolBar.cpp 42994 2012-08-27 10:01:39Z vboxsync $ */
+/* $Id: QIAdvancedToolBar.cpp 43003 2012-08-27 16:02:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -40,7 +40,7 @@ public:
     QSize sizeHint() const
     {
         /* Make the button a little bit taller: */
-        return QSize((int)QToolButton::sizeHint().width(), (int)QToolButton::sizeHint().height() * 1.2);
+        return QSize((int)QToolButton::sizeHint().width(), (int)(QToolButton::sizeHint().height() * 1.2));
     }
 
     /* Set the button to ignore mouse-press events if checked: */
