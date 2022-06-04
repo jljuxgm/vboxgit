@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45091 2013-03-19 16:01:32Z vboxsync $ */
+/* $Id: HM.cpp 45105 2013-03-20 14:11:42Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1604,9 +1604,9 @@ VMMR3_INT_DECL(void) HMR3Reset(PVM pVM)
     }
 
     /* Clear all patch information. */
-    pVM->hm.s.pGuestPatchMem         = 0;
-    pVM->hm.s.pFreeGuestPatchMem     = 0;
-    pVM->hm.s.cbGuestPatchMem        = 0;
+    pVM->hm.s.pGuestPatchMem     = 0;
+    pVM->hm.s.pFreeGuestPatchMem = 0;
+    pVM->hm.s.cbGuestPatchMem    = 0;
     pVM->hm.s.cPatches           = 0;
     pVM->hm.s.PatchTree          = 0;
     pVM->hm.s.fTPRPatchingActive = false;
@@ -1747,7 +1747,7 @@ VMMR3_INT_DECL(int)  HMR3DisablePatching(PVM pVM, RTGCPTR pPatchMem, unsigned cb
     pVM->hm.s.pGuestPatchMem      = 0;
     pVM->hm.s.pFreeGuestPatchMem  = 0;
     pVM->hm.s.cbGuestPatchMem     = 0;
-    pVM->hm.s.fTPRPatchingActive = false;
+    pVM->hm.s.fTPRPatchingActive  = false;
     return VINF_SUCCESS;
 }
 
