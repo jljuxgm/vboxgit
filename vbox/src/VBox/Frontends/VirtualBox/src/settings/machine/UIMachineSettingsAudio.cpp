@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 46630 2013-06-18 16:24:28Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 46631 2013-06-18 16:53:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -194,7 +194,7 @@ void UIMachineSettingsAudio::prepareComboboxes()
 
 void UIMachineSettingsAudio::polishPage()
 {
-    setEnabled(isMachineOffline());
+    m_pContainerAudioOptions->setEnabled(isMachineOffline());
     mAudioChild->setEnabled(mGbAudio->isChecked());
 }
 
