@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 47138 2013-07-14 18:05:53Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 47284 2013-07-19 23:31:20Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -133,6 +133,8 @@ typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
 #define IEM_IS_AMD_CPUID_FEATURE_PRESENT_EDX(a_fEdx)        (g_fRandom)
 #define IEM_IS_AMD_CPUID_FEATURES_ANY_PRESENT(a_fEdx, a_fEcx) (g_fRandom)
 #define IEM_IS_INTEL_CPUID_FEATURE_PRESENT_EDX(a_fEdx)      (g_fRandom)
+#define IEM_IS_GUEST_CPU_AMD(a_pIemCpu)                     (g_fRandom)
+#define IEM_IS_GUEST_CPU_INTEL(a_pIemCpu)                   (g_fRandom)
 
 #define iemRecalEffOpSize(a_pIemCpu)                        do { } while (0)
 
