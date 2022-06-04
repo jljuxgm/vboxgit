@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 46724 2013-06-21 12:48:38Z vboxsync $ */
+/* $Id: HMR0.cpp 47472 2013-07-30 11:57:14Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -40,8 +40,8 @@
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include <iprt/x86.h>
-#include "HWVMXR0.h"
-#include "HWSVMR0.h"
+#include "HMVMXR0.h"
+#include "HMSVMR0.h"
 
 
 /*******************************************************************************

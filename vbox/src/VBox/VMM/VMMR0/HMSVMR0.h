@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 46297 2013-05-28 14:38:48Z vboxsync $ */
+/* $Id: HMSVMR0.h 47472 2013-07-30 11:57:14Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */

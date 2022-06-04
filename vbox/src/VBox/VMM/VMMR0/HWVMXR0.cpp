@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 47444 2013-07-29 00:37:31Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 47472 2013-07-30 11:57:14Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -44,7 +44,7 @@
 # include <iprt/thread.h>
 #endif
 #include <iprt/x86.h>
-#include "HWVMXR0.h"
+#include "HMVMXR0.h"
 
 #include "dtrace/VBoxVMM.h"
 

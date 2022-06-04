@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47433 2013-07-27 00:43:07Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47472 2013-07-30 11:57:14Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -24,7 +24,7 @@
 
 #include "HMInternal.h"
 #include <VBox/vmm/vm.h>
-#include "HWSVMR0.h"
+#include "HMSVMR0.h"
 #include <VBox/vmm/pdmapi.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/iom.h>
