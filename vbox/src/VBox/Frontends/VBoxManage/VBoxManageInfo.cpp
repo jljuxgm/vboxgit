@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 43421 2012-09-25 07:00:32Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 43422 2012-09-25 07:10:53Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1154,6 +1154,8 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                     RTPrintf("macaddress%d=\"%ls\"\n", currentNIC + 1, strMACAddress.raw());
                     RTPrintf("cableconnected%d=\"%s\"\n", currentNIC + 1, fConnected ? "on" : "off");
                     RTPrintf("nic%d=\"%s\"\n", currentNIC + 1, strAttachment.c_str());
+                    RTPrintf("nictype%d=\"%s\"\n", currentNIC + 1, pszNICType);
+                    RTPrintf("nicspeed%d=\"%d\"\n", currentNIC + 1, ulLineSpeed);
                 }
                 else
                     RTPrintf("NIC %u:           MAC: %ls, Attachment: %s, Cable connected: %s, Trace: %s (file: %ls), Type: %s, Reported speed: %d Mbps, Boot priority: %d, Promisc Policy: %s, Bandwidth group: %ls\n",
