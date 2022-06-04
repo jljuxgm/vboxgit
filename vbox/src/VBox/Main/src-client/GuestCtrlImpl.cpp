@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42693 2012-08-08 22:37:51Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42695 2012-08-08 22:56:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2724,6 +2724,7 @@ STDMETHODIMP Guest::UpdateGuestAdditions(IN_BSTR aSource, ComSafeArrayIn(Additio
                               tr("Starting task for updating Guest Additions on the guest failed: %Rrc"), rc);
         }
     }
+    return hr;
 #else /* Legacy, can be removed later. */
     ComObjPtr<Progress> progress;
     try

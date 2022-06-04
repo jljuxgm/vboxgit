@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42694 2012-08-08 22:43:49Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42695 2012-08-08 22:56:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -144,7 +144,7 @@ SessionTaskCopyTo::SessionTaskCopyTo(GuestSession *pSession,
 }
 
 SessionTaskCopyTo::SessionTaskCopyTo(GuestSession *pSession,
-                                     PRTFILE pSourceFile, size_t cbSourceOffset, size_t cbSourceSize,
+                                     PRTFILE pSourceFile, size_t cbSourceOffset, uint64_t cbSourceSize,
                                      const Utf8Str &strDest, uint32_t uFlags)
                                      : GuestSessionTask(pSession)
 {

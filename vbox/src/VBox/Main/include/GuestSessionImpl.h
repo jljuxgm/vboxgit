@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42693 2012-08-08 22:37:51Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42695 2012-08-08 22:56:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -86,7 +86,7 @@ protected:
     Utf8Str  mSource;
     PRTFILE  mSourceFile;
     size_t   mSourceOffset;
-    size_t   mSourceSize;
+    uint64_t mSourceSize;
     Utf8Str  mDest;
     uint32_t mCopyFileFlags;
 };
