@@ -1,4 +1,4 @@
-/* $Id: tstUserInfo.cpp 42149 2012-07-13 15:22:03Z vboxsync $ */
+/* $Id: tstUserInfo.cpp 42150 2012-07-13 15:22:54Z vboxsync $ */
 /** @file
  * Test case for correct user environment.
  */
@@ -21,7 +21,6 @@
 *******************************************************************************/
 #ifdef RT_OS_WINDOWS
 # include <Windows.h>
-# include <stdio.h>
 # include <Shlobj.h>
 #endif
 
@@ -44,7 +43,7 @@ int main()
     int rc = VbglR3Init();
     if (RT_FAILURE(rc))
     {
-        printf("VbglR3Init failed with rc=%Rrc.\n", rc);
+        RTPrintf("VbglR3Init failed with rc=%Rrc.\n", rc);
         return -1;
     }
 #ifdef RT_OS_WINDOWS
