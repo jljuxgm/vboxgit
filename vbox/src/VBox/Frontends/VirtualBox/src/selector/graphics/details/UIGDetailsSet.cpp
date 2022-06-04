@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 42626 2012-08-06 14:50:19Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 42678 2012-08-08 11:25:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -105,7 +105,7 @@ QVariant UIGDetailsSet::data(int iKey) const
     {
         /* Layout hints: */
         case SetData_Margin: return 0;
-        case SetData_Spacing: return 1;
+        case SetData_Spacing: return 3;
         /* Default: */
         default: break;
     }

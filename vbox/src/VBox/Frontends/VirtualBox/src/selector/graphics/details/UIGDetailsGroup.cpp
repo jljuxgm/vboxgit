@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 42608 2012-08-05 21:52:41Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 42678 2012-08-08 11:25:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -121,7 +121,7 @@ QVariant UIGDetailsGroup::data(int iKey) const
     switch (iKey)
     {
         /* Layout hints: */
-        case GroupData_Margin: return 1;
+        case GroupData_Margin: return 2;
         case GroupData_Spacing: return 10;
         /* Default: */
         default: break;
