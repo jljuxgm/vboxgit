@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 46926 2013-07-03 11:26:20Z vboxsync $
+; $Id: HMR0A.asm 46942 2013-07-03 14:53:47Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -317,15 +317,9 @@ BEGINPROC VMXRestoreHostState
 
 .test_es:
     test        edi, VMX_RESTORE_HOST_SEL_ES
-    jz          near .test_ldtr
+    jz          near .test_tr
     mov         ax, word [rsi + VMXRESTOREHOST.uHostSelES]
     mov         es, ax
-
-.test_ldtr:
-    test        edi, VMX_RESTORE_HOST_SEL_LDTR
-    jz          near .test_tr
-    mov         ax, word [rsi + VMXRESTOREHOST.uHostSelLDTR]
-    lldt        ax
 
 .test_tr:
     test        edi, VMX_RESTORE_HOST_SEL_TR

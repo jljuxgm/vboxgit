@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 46942 2013-07-03 14:53:47Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -79,6 +79,7 @@ AssertCompileSize(RTHCPHYS, 8);
 #include "IEMInternal.h"
 #include "REMInternal.h"
 #include <VBox/vmm/vm.h>
+#include <VBox/vmm/hm_vmx.h>
 #include <VBox/param.h>
 #include <iprt/x86.h>
 #include <iprt/assert.h>
