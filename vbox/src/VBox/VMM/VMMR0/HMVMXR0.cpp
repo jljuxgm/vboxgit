@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45517 2013-04-12 11:23:56Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45519 2013-04-12 12:47:58Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5748,10 +5748,7 @@ static int hmR0VmxInjectTRPMTrap(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     RTGCUINT  uErrCode     = 0;
 
     int rc = TRPMQueryTrapAll(pVCpu, &u8Vector, &enmTrpmEvent, &uErrCode, NULL /* puCr2 */);
-    AssertRCReturn(rc, rc);
-    Assert(enmTrpmEvent != TRPM_SOFTWARE_INT);
-
-    rc = TRPMResetTrap(pVCpu);
+    rc    |= TRPMResetTrap(pVCpu);
     AssertRCReturn(rc, rc);
 
     /* Refer Intel spec. 24.8.3 "VM-entry Controls for Event Injection" for the format of u32IntrInfo. */
@@ -5788,6 +5785,8 @@ static int hmR0VmxInjectTRPMTrap(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     }
     else if (enmTrpmEvent == TRPM_HARDWARE_INT)
         u32IntrInfo |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_EXT_INT << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
+    else if (enmTrpmEvent == TRPM_SOFTWARE_INT)
+        u32IntrInfo |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_SW_INT << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
     else
         AssertMsgFailed(("Invalid TRPM event type %d\n", enmTrpmEvent));
 
