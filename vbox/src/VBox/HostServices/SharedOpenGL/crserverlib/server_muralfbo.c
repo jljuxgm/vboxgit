@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 45348 2013-04-04 19:46:29Z vboxsync $ */
+/* $Id: server_muralfbo.c 45920 2013-05-06 16:46:15Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -184,7 +184,7 @@ void crServerCheckMuralGeometry(CRMuralInfo *mural)
 
     winID = overlappingScreenCount ? cr_server.screen[primaryS].winID : 0;
 
-    if (!winID == !mural->fHasParentWindow
+    if (!winID != !mural->fHasParentWindow
             || (winID && primaryS!=mural->screenId))
     {
         mural->fHasParentWindow = !!winID;
