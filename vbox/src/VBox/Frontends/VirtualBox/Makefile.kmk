@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46005 2013-05-13 09:37:41Z vboxsync $
+# $Id: Makefile.kmk 46016 2013-05-13 13:07:36Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -536,7 +536,6 @@ VirtualBox_SOURCES = \
 	src/runtime/UIActionPoolRuntime.cpp \
 	src/runtime/UIConsoleEventHandler.cpp \
 	src/runtime/UIFrameBuffer.cpp \
-	src/runtime/UIFrameBufferQGL.cpp \
 	src/runtime/UIFrameBufferQImage.cpp \
 	src/runtime/UIFrameBufferSDL.cpp \
 	src/runtime/UIIndicatorsPool.cpp \
@@ -716,7 +715,6 @@ endif
 if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_GUI_USE_QGL)
  VirtualBox_SOURCES += \
 	src/VBoxFBOverlay.cpp \
-	src/VBoxFBQGL.cpp \
 	src/VBoxGLSupportInfo.cpp
 endif
 
