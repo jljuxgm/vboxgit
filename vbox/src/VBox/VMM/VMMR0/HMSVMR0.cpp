@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47089 2013-07-11 11:29:17Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47092 2013-07-11 13:51:50Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2926,6 +2926,7 @@ DECLINLINE(int) hmR0SvmHandleExit(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
         case SVM_EXIT_INTR:
         case SVM_EXIT_FERR_FREEZE:
         case SVM_EXIT_NMI:
+        case SVM_EXIT_SMI:
         case SVM_EXIT_INIT:
             return hmR0SvmExitIntr(pVCpu, pCtx, pSvmTransient);
 
