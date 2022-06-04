@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 46674 2013-06-19 16:09:41Z vboxsync $ */
+/* $Id: HM.cpp 46675 2013-06-19 16:11:50Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1378,9 +1378,9 @@ static int hmR3InitFinalizeR0Amd(PVM pVM)
     LogRel(("HM: CPUID 0x80000001.u32AMDFeatureECX = %RX32\n", pVM->hm.s.cpuid.u32AMDFeatureECX));
     LogRel(("HM: CPUID 0x80000001.u32AMDFeatureEDX = %RX32\n", pVM->hm.s.cpuid.u32AMDFeatureEDX));
     LogRel(("HM: AMD HWCR MSR                      = %RX64\n", pVM->hm.s.svm.msrHwcr));
-    LogRel(("HM: AMD-V Revision                    = %X\n", pVM->hm.s.svm.u32Rev));
-    LogRel(("HM: AMD-V Max. ASID                   = %RU32\n", pVM->hm.s.uMaxAsid));
-    LogRel(("HM: AMD-V Features                    = %X\n", pVM->hm.s.svm.u32Features));
+    LogRel(("HM: AMD-V revision                    = %X\n", pVM->hm.s.svm.u32Rev));
+    LogRel(("HM: AMD-V max ASID                    = %RU32\n", pVM->hm.s.uMaxAsid));
+    LogRel(("HM: AMD-V features                    = %X\n", pVM->hm.s.svm.u32Features));
 
     /*
      * Enumerate AMD-V features.
