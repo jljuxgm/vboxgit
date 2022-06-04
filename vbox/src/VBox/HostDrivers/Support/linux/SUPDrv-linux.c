@@ -1,4 +1,4 @@
-/* $Rev: 44187 $ */
+/* $Rev: 44190 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -142,9 +142,9 @@ static int                  g_iModuleMajorUsr;
 static int force_async_tsc = 0;
 
 /** The system device name. */
-#define DEVICE_NAME_SYS     "vboxdrvu"
+#define DEVICE_NAME_SYS     "vboxdrv"
 /** The user device name. */
-#define DEVICE_NAME_USR     "vboxdrv"
+#define DEVICE_NAME_USR     "vboxdrvu"
 
 #if defined(RT_ARCH_AMD64) && !defined(CONFIG_DEBUG_SET_MODULE_RONX)
 /**
