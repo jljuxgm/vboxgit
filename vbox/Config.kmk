@@ -1,4 +1,4 @@
-# $Id: Config.kmk 44300 2013-01-15 16:20:58Z vboxsync $
+# $Id: Config.kmk 44423 2013-01-28 13:26:36Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4562,7 +4562,7 @@ TEMPLATE_VBOXBLDPROG_BLD_TRG_ARCH       := $(KBUILD_HOST_ARCH)
 TEMPLATE_VBOXBLDPROG_BLD_TRG_CPU        := $(KBUILD_HOST_CPU)
 TEMPLATE_VBOXBLDPROG_DEFS               := IN_RING3 LOG_DISABLED
 TEMPLATE_VBOXBLDPROG_DEFS.win           := _CRT_SECURE_NO_DEPRECATE
-TEMPLATE_VBOXBLDPROG_ASTOOL             := YASM
+TEMPLATE_VBOXBLDPROG_ASTOOL             := $(VBOX_ASTOOL)
 TEMPLATE_VBOXBLDPROG_ASFLAGS.x86        := $(VBOX_ASFLAGS32)
 TEMPLATE_VBOXBLDPROG_ASFLAGS.amd64      := $(VBOX_ASFLAGS64)
 ifeq ($(KBUILD_HOST),win)
@@ -5321,7 +5321,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 44300 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 44423 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
