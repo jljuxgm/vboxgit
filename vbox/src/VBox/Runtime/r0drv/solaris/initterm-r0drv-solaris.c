@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-solaris.c 47302 2013-07-22 14:18:41Z vboxsync $ */
+/* $Id: initterm-r0drv-solaris.c 47304 2013-07-22 14:23:00Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, Ring-0 Driver, Solaris.
  */
@@ -173,7 +173,7 @@ DECLHIDDEN(int) rtR0InitNative(void)
         if (RT_SUCCESS(rc))
         {
             g_rtSolThreadCtx.Install.pfnSol_installctx = (void *)installctx;
-            g_rtSolThreadCtx.Remove.pfnSol_removectx =   (void *)removectx;
+            g_rtSolThreadCtx.Remove.pfnSol_removectx   = (void *)removectx;
         }
         else
         {
