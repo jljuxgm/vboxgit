@@ -1,4 +1,4 @@
-/* $Id: SELMRC.cpp 42427 2012-07-26 23:48:01Z vboxsync $ */
+/* $Id: SELMRC.cpp 42696 2012-08-08 23:31:46Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
@@ -483,7 +483,7 @@ VMMRCDECL(int) selmRCGuestTSSWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
     }
     else
     {
-        Assert(RT_FAILURE(rc));
+        AssertMsg(RT_FAILURE(rc), ("cb=%u rc=%#x\n", cb, rc));
         VMCPU_FF_SET(pVCpu, VMCPU_FF_SELM_SYNC_TSS);
         STAM_COUNTER_INC(&pVM->selm.s.StatRCWriteGuestTSSUnhandled);
         if (rc == VERR_EM_INTERPRETER)
