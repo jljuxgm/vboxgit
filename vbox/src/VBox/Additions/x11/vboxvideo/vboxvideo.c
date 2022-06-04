@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 43271 2012-09-10 15:19:58Z vboxsync $ */
+/* $Id: vboxvideo.c 43309 2012-09-12 11:28:18Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1113,6 +1113,13 @@ static Bool VBOXScreenInit(ScreenPtr pScreen, int argc, char **argv)
                      pScrn->currentMode->VDisplay, pScrn->frameX0,
                      pScrn->frameY0))
         return FALSE;
+    /* Save the size in case we need to re-set it later. */
+    pVBox->FBSize.cx = pScrn->currentMode->HDisplay;
+    pVBox->FBSize.cy = pScrn->currentMode->VDisplay;
+    pVBox->aScreenLocation[0].cx = pScrn->currentMode->HDisplay;
+    pVBox->aScreenLocation[0].cy = pScrn->currentMode->VDisplay;
+    pVBox->aScreenLocation[0].x = pScrn->frameX0;
+    pVBox->aScreenLocation[0].y = pScrn->frameY0;
     /* And make sure that a non-current dynamic mode is at the front of the
      * list */
     vboxWriteHostModes(pScrn, pScrn->currentMode);
