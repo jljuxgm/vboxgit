@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 46119 2013-05-16 10:07:23Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 46129 2013-05-16 15:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -289,12 +289,6 @@ STDMETHODIMP UIFrameBuffer::Notify3DEvent(ULONG uType, BYTE *pReserved)
         default:
             return E_INVALIDARG;
     }
-}
-
-void UIFrameBuffer::resizeEvent(UIResizeEvent *pEvent)
-{
-    m_width = pEvent->width();
-    m_height = pEvent->height();
 }
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
