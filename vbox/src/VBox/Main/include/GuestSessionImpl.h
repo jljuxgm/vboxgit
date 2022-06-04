@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42171 2012-07-16 20:28:47Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42194 2012-07-17 14:58:32Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -81,6 +81,7 @@ public:
     STDMETHOD(DirectoryRename)(IN_BSTR aSource, IN_BSTR aDest, ComSafeArrayIn(PathRenameFlag_T, aFlags));
     STDMETHOD(DirectorySetACL)(IN_BSTR aPath, IN_BSTR aACL);
     STDMETHOD(EnvironmentClear)(void);
+    STDMETHOD(EnvironmentGet)(IN_BSTR aName, BSTR *aValue);
     STDMETHOD(EnvironmentSet)(IN_BSTR aName, IN_BSTR aValue);
     STDMETHOD(EnvironmentSetArray)(ComSafeArrayIn(IN_BSTR, aValues));
     STDMETHOD(EnvironmentUnset)(IN_BSTR aName);
