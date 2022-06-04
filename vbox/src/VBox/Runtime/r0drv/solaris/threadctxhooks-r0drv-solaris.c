@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-solaris.c 47352 2013-07-23 16:19:20Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-solaris.c 47354 2013-07-23 16:37:59Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Solaris.
  */
@@ -258,6 +258,15 @@ RTDECL(uint32_t) RTThreadCtxHooksRelease(RTTHREADCTX hThreadCtx)
         Assert(!cRefs);
 #endif
         cRefs = 0;
+    }
+    else if (!cRefs)
+    {
+        /*
+         * The ring-0 thread for this hook object has already died. Free up the object as we have no more references.
+         */
+        Assert(pThis->hOwner != RTThreadNativeSelf());
+        ASMAtomicWriteU32(&pThis->u32Magic, ~RTTHREADCTXINT_MAGIC);
+        RTMemFree(pThis);
     }
 
     return cRefs;
