@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIMedium.cpp 46756 2013-06-24 14:28:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -41,6 +41,8 @@ QString UIMedium::mRow = QString ("<tr><td>%1</td></tr>");
 
 UIMedium& UIMedium::operator= (const UIMedium &aOther)
 {
+    m_fAttachedToHiddenMachinesOnly = aOther.isAttachedToHiddenMachinesOnly();
+
     mMedium = aOther.medium();
     mType = aOther.type();
     mState = aOther.state();
@@ -120,6 +122,9 @@ void UIMedium::blockAndQueryState()
  */
 void UIMedium::refresh()
 {
+    /* We assume this flag is 'false' by default: */
+    m_fAttachedToHiddenMachinesOnly = false;
+
     /* Detect basic parameters */
     mId = mMedium.isNull() ? QUuid().toString().remove ('{').remove ('}') : mMedium.GetId();
 
@@ -200,6 +205,9 @@ void UIMedium::refresh()
         QVector <QString> machineIds = mMedium.GetMachineIds();
         if (machineIds.size() > 0)
         {
+            /* We assume this flag is 'true' if at least one machine present: */
+            m_fAttachedToHiddenMachinesOnly = true;
+
             QString sUsage;
 
             CVirtualBox vbox = vboxGlobal().virtualBox();
@@ -213,7 +221,16 @@ void UIMedium::refresh()
                  * We can skip such a machines in usage string.
                  * CVirtualBox::FindMachine() will return null machine for such case. */
                 if (machine.isNull())
+                {
+                    /* We can't decide for that medium yet,
+                     * assume this flag is 'false' for now: */
+                    m_fAttachedToHiddenMachinesOnly = false;
                     continue;
+                }
+
+                /* Finally, we are checking if current machine overrides this flag: */
+                if (m_fAttachedToHiddenMachinesOnly && vboxGlobal().shouldWeShowMachine(machine))
+                    m_fAttachedToHiddenMachinesOnly = false;
 
                 QString sName = machine.GetName();
                 QString sSnapshots;
