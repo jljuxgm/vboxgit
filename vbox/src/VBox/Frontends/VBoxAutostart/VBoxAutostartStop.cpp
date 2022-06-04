@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStop.cpp 43909 2012-11-19 10:00:02Z vboxsync $ */
+/* $Id: VBoxAutostartStop.cpp 43967 2012-11-26 19:35:33Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, stop machines during system shutdown.
  */
@@ -201,7 +201,7 @@ DECLHIDDEN(RTEXITCODE) autostartStopMain(PCFGAST pCfgAst)
                             {
                                 CHECK_ERROR_BREAK(console, PowerButton());
 
-                                serviceLog("Waiting for VM \"%ls\" to power off...\n", (*it).strId.raw());
+                                autostartSvcLogInfo("Waiting for VM \"%ls\" to power off...\n", (*it).strId.raw());
 
                                 do
                                 {
@@ -212,14 +212,14 @@ DECLHIDDEN(RTEXITCODE) autostartStopMain(PCFGAST pCfgAst)
                             else
                             {
                                 /* Use save state instead and log this to the console. */
-                                serviceLog("The guest of VM \"%ls\" does not support ACPI shutdown or is currently paused, saving state...\n",
-                                           (*it).strId.raw());
+                                autostartSvcLogWarning("The guest of VM \"%ls\" does not support ACPI shutdown or is currently paused, saving state...\n",
+                                                       (*it).strId.raw());
                                 rc = autostartSaveVMState(console);
                             }
                             break;
                         }
                         default:
-                            serviceLog("Unknown autostop type for VM \"%ls\"\n", (*it).strId.raw());
+                            autostartSvcLogWarning("Unknown autostop type for VM \"%ls\"\n", (*it).strId.raw());
                     }
                     g_pSession->UnlockMachine();
                 }

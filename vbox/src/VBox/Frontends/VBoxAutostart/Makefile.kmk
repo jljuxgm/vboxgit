@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43909 2012-11-19 10:00:02Z vboxsync $
+# $Id: Makefile.kmk 43967 2012-11-26 19:35:33Z vboxsync $
 ## @file
 # VBoxAutostart - VM autostart service.
 #
@@ -19,13 +19,14 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 ifeq ($(KBUILD_TARGET),win)
-# PROGRAMS += VBoxAutostartSvc
-# VBoxAutostart_TEMPLATE   = VBOXMAINCLIENTEXE
-# VBoxAutostart_SOURCES    = \
-#	VBoxAutostartStart.cpp \
-#	VBoxAutostartStop.cpp \
-#	VBoxAutostartUtils.cpp \
-#	VBoxAutostart-win.cpp
+ PROGRAMS += VBoxAutostartSvc
+ VBoxAutostartSvc_TEMPLATE   = VBOXMAINCLIENTEXE
+ VBoxAutostartSvc_SOURCES    = \
+	VBoxAutostartCfg.cpp \
+	VBoxAutostartStart.cpp \
+	VBoxAutostartStop.cpp \
+	VBoxAutostartUtils.cpp \
+	VBoxAutostart-win.cpp
 else
  PROGRAMS += VBoxAutostart
  VBoxAutostart_TEMPLATE   = VBOXMAINCLIENTEXE
