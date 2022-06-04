@@ -1,4 +1,4 @@
-/* $Id: testmath.c 40504 2012-03-16 16:38:06Z vboxsync $ */
+/* $Id: testmath.c 42474 2012-07-31 11:10:10Z vboxsync $ */
 /** @file
  * Testcase for the no-crt math stuff.
  */
@@ -289,8 +289,23 @@ extern int testmath(void)
     set_cw(0x27f);
 
     CHECK(sinl(1.0L),  0.84147098480789650664L);
+#if 0
     lrd = 180.0L;
     CHECK(sinl(lrd), -0.801152635733830477871L);
+#else
+    lrd = 180.0L;
+    lrdExpect = SIN180a;
+    lrdResult = sinl(lrd);
+    if (lrdResult != lrdExpect)
+    {
+        lrdExpect = SIN180b;
+        if (lrdResult != lrdExpect)
+        {
+            bitch("sinl(lrd)",  &lrdResult, &lrdExpect);
+            cErrors++;
+        }
+    }
+#endif
 #if 0
     CHECK(sinl(180.0L), SIN180);
 #else
