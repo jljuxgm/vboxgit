@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45267 2013-04-01 10:06:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3945,6 +3945,35 @@ bool VBoxGlobal::shouldWeShowDetails(CMachine &machine,
     /* 'true' if hiding is not approved by the extra-data: */
     return !isApprovedByExtraData(machine, GUI_HideDetails);
 }
+
+#ifdef RT_OS_LINUX
+/* static */
+void VBoxGlobal::checkForWrongUSBMounted()
+{
+    /* Make sure '/proc/mounts' exists and can be opened: */
+    QFile file("/proc/mounts");
+    if (!file.exists() || !file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    /* Fetch contents: */
+    QStringList contents;
+    for (;;)
+    {
+        QByteArray line = file.readLine();
+        if (line.isEmpty())
+            break;
+        contents << line;
+    }
+    /* Grep contents for usbfs presence: */
+    QStringList grep1(contents.filter("/sys/bus/usb/drivers"));
+    QStringList grep2(grep1.filter("usbfs"));
+    if (grep2.isEmpty())
+        return;
+
+    /* Show corresponding warning: */
+    msgCenter().warnAboutWrongUSBMounted();
+}
+#endif /* RT_OS_LINUX */
 
 // Public slots
 ////////////////////////////////////////////////////////////////////////////////
