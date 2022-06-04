@@ -1,4 +1,4 @@
-/* $Id: timer-generic.cpp 42235 2012-07-19 17:02:41Z vboxsync $ */
+/* $Id: timer-generic.cpp 43533 2012-10-04 09:45:31Z vboxsync $ */
 /** @file
  * IPRT - Timers, Generic.
  */
@@ -116,7 +116,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
     int rc = RTSemEventCreate(&pTimer->Event);
     if (RT_SUCCESS(rc))
     {
-        rc = RTThreadCreate(&pTimer->Thread, rtTimerThread, pTimer, 0, RTTHREADTYPE_TIMER, RTTHREADFLAGS_WAITABLE, "TIMER");
+        rc = RTThreadCreate(&pTimer->Thread, rtTimerThread, pTimer, 0, RTTHREADTYPE_TIMER, RTTHREADFLAGS_WAITABLE, "Timer");
         if (RT_SUCCESS(rc))
         {
             *ppTimer = pTimer;

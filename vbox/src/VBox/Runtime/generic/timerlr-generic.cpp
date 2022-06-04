@@ -1,4 +1,4 @@
-/* $Id: timerlr-generic.cpp 42235 2012-07-19 17:02:41Z vboxsync $ */
+/* $Id: timerlr-generic.cpp 43533 2012-10-04 09:45:31Z vboxsync $ */
 /** @file
  * IPRT - Low Resolution Timers, Generic.
  *
@@ -122,7 +122,7 @@ RTDECL(int) RTTimerLRCreateEx(RTTIMERLR *phTimerLR, uint64_t u64NanoInterval, ui
     int rc = RTSemEventCreate(&pThis->hEvent);
     if (RT_SUCCESS(rc))
     {
-        rc = RTThreadCreate(&pThis->hThread, rtTimerLRThread, pThis, 0, RTTHREADTYPE_TIMER, RTTHREADFLAGS_WAITABLE, "TIMER");
+        rc = RTThreadCreate(&pThis->hThread, rtTimerLRThread, pThis, 0, RTTHREADTYPE_TIMER, RTTHREADFLAGS_WAITABLE, "TimerLR");
         if (RT_SUCCESS(rc))
         {
             *phTimerLR = pThis;
