@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 45305 2013-04-03 11:15:02Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 45387 2013-04-05 21:37:40Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1375,7 +1375,7 @@ ResumeExecution:
     uOldEFlags = ASMIntDisableFlags();
     if (RTThreadPreemptIsPending(NIL_RTTHREAD))
     {
-        STAM_COUNTER_INC(&pVCpu->hm.s.StatExitPreemptPending);
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatPendingHostIrq);
         rc = VINF_EM_RAW_INTERRUPT;
         goto end;
     }

@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 45378 2013-04-05 14:43:12Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 45387 2013-04-05 21:37:40Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3149,7 +3149,7 @@ ResumeExecution:
     uOldEFlags = ASMIntDisableFlags();
     if (RTThreadPreemptIsPending(NIL_RTTHREAD))
     {
-        STAM_COUNTER_INC(&pVCpu->hm.s.StatExitPreemptPending);
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatPendingHostIrq);
         rc = VINF_EM_RAW_INTERRUPT;
         goto end;
     }
@@ -3526,6 +3526,7 @@ ResumeExecution:
         {
             Assert(exitReason == VMX_EXIT_EXT_INT);
             /* External interrupt; leave to allow it to be dispatched again. */
+            STAM_COUNTER_INC(&pVCpu->hm.s.StatExitExtInt);
             rc = VINF_EM_RAW_INTERRUPT;
             break;
         }
