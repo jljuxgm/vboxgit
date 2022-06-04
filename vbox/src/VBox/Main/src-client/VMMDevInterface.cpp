@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 47294 2013-07-22 11:19:20Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 47308 2013-07-22 14:40:12Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -183,7 +183,7 @@ DECLCALLBACK(void) vmmdevUpdateGuestStatus(PPDMIVMMDEVCONNECTOR pInterface, uint
 DECLCALLBACK(void) vmmdevUpdateGuestUserState(PPDMIVMMDEVCONNECTOR pInterface,
                                               const char *pszUser, const char *pszDomain,
                                               uint32_t uState,
-                                              uint8_t *puDetails, uint32_t cbDetails)
+                                              const uint8_t *puDetails, uint32_t cbDetails)
 {
     PDRVMAINVMMDEV pDrv = PDMIVMMDEVCONNECTOR_2_MAINVMMDEV(pInterface);
     AssertPtr(pDrv);
