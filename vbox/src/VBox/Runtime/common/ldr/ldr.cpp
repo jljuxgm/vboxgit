@@ -1,4 +1,4 @@
-/* $Id: ldr.cpp 46164 2013-05-19 16:58:01Z vboxsync $ */
+/* $Id: ldr.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
@@ -91,6 +91,17 @@ RTDECL(int) RTLdrGetSymbol(RTLDRMOD hLdrMod, const char *pszSymbol, void **ppvVa
     return rc;
 }
 RT_EXPORT_SYMBOL(RTLdrGetSymbol);
+
+
+RTDECL(PFNRT) RTLdrGetFunction(RTLDRMOD hLdrMod, const char *pszSymbol)
+{
+    PFNRT pfn;
+    int rc = RTLdrGetSymbol(hLdrMod, pszSymbol, (void **)&pfn);
+    if (RT_SUCCESS(rc))
+        return pfn;
+    return NULL;
+}
+RT_EXPORT_SYMBOL(RTLdrGetFunction);
 
 
 RTDECL(RTLDRFMT) RTLdrGetFormat(RTLDRMOD hLdrMod)

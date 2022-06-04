@@ -1,4 +1,4 @@
-/* $Id: dllmain.cpp 44864 2013-02-28 12:18:42Z vboxsync $ */
+/* $Id: dllmain.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
 /** @file
  * VBoxMMR - Multimedia Redirection
  */
@@ -44,7 +44,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
             
             if (isWMP)
             {
-                RTR3InitDll(0);
+                RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);
                 VbglR3Init();
                 VBoxMMRHookLog("VBoxMMR: Hooking wmplayer process\n");
             }

@@ -1,4 +1,4 @@
-/* $Id: VBoxCredentialProvider.cpp 46382 2013-06-04 13:32:38Z vboxsync $ */
+/* $Id: VBoxCredentialProvider.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */
@@ -362,7 +362,7 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD dwReason, LPVOID pReserved)
     {
         case DLL_PROCESS_ATTACH:
         {
-            int rc = RTR3InitDll(0 /* Flags */);
+            int rc = RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);
             if (RT_SUCCESS(rc))
                 rc = VbglR3Init();
 

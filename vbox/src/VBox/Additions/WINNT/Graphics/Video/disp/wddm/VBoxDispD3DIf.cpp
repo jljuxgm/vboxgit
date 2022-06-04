@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -27,18 +27,38 @@ void VBoxDispD3DClose(VBOXDISPD3D *pD3D)
     pD3D->hD3DLib = NULL;
 }
 
+/**
+ * Loads a system DLL.
+ *
+ * @returns Module handle or NULL
+ * @param   pszName             The DLL name.
+ */
+static HMODULE loadSystemDll(const char *pszName)
+{
+    char   szPath[MAX_PATH];
+    UINT   cchPath = GetSystemDirectoryA(szPath, sizeof(szPath));
+    size_t cbName  = strlen(pszName) + 1;
+    if (cchPath + 1 + cbName > sizeof(szPath))
+    {
+        SetLastError(ERROR_FILENAME_EXCED_RANGE);
+        return NULL;
+    }
+    szPath[cchPath] = '\\';
+    memcpy(&szPath[cchPath + 1], pszName, cbName);
+    return LoadLibraryA(szPath);
+}
 
 HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D)
 {
 #ifdef VBOX_WDDM_WOW64
-    pD3D->hD3DLib = LoadLibraryW(L"VBoxD3D9wddm-x86.dll");
+    pD3D->hD3DLib = loadSystemDll("VBoxD3D9wddm-x86.dll");
 #else
-    pD3D->hD3DLib = LoadLibraryW(L"VBoxD3D9wddm.dll");
+    pD3D->hD3DLib = loadSystemDll("VBoxD3D9wddm.dll");
 #endif
     if (!pD3D->hD3DLib)
     {
         DWORD winErr = GetLastError();
-        WARN((__FUNCTION__": LoadLibraryW failed, winErr = (%d)", winErr));
+        WARN((__FUNCTION__": LoadLibrary failed, winErr = (%d)", winErr));
         return E_FAIL;
     }
 

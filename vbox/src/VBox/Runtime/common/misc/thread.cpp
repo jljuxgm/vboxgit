@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: thread.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -183,6 +183,20 @@ DECLHIDDEN(int) rtThreadInit(void)
 #endif
     return rc;
 }
+
+
+#ifdef IN_RING3
+/**
+ * Called when IPRT was first initialized in unobtrusive mode and later changed
+ * to obtrustive.
+ *
+ * This is only applicable in ring-3.
+ */
+DECLHIDDEN(void) rtThreadReInitObtrusive(void)
+{
+    rtThreadNativeReInitObtrusive();
+}
+#endif
 
 
 /**

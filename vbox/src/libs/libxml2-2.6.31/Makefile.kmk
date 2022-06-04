@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 46593 2013-06-17 14:32:51Z vboxsync $
 ## @file
 # Sub-Makefile for the libxml2 library.
 #
@@ -64,7 +64,6 @@ VBox-libxml2_SOURCES        = \
 	xmlmemory.c \
 	xmlreader.c \
 	xmlregexp.c \
-	xmlmodule.c \
 	xmlsave.c \
 	xmlschemas.c \
 	xmlschemastypes.c \
@@ -73,6 +72,8 @@ VBox-libxml2_SOURCES        = \
 	xpath.c \
 	xpointer.c \
 	xmlstring.c
+
+# xmlmodule.c - not compiling this.
 
 # For linking:
 # VBox-libxml2_LDFLAGS.win    = /VERSION:$(LIBXML_MAJOR_VERSION).$(LIBXML_MINOR_VERSION)

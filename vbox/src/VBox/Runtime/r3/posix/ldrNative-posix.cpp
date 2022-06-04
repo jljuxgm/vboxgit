@@ -1,4 +1,4 @@
-/* $Id: ldrNative-posix.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ldrNative-posix.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, POSIX native.
  */
@@ -108,12 +108,20 @@ DECLCALLBACK(int) rtldrNativeGetSymbol(PRTLDRMODINTERNAL pMod, const char *pszSy
 DECLCALLBACK(int) rtldrNativeClose(PRTLDRMODINTERNAL pMod)
 {
     PRTLDRMODNATIVE pModNative = (PRTLDRMODNATIVE)pMod;
-    if (!dlclose((void *)pModNative->hNative))
+    if (   (pModNative->fFlags & RTLDRLOAD_FLAGS_NO_UNLOAD)
+        || !dlclose((void *)pModNative->hNative))
     {
         pModNative->hNative = (uintptr_t)0;
         return VINF_SUCCESS;
     }
     Log(("rtldrNativeFree: dlclose(%p) failed: %s\n", pModNative->hNative, dlerror()));
     return VERR_GENERAL_FAILURE;
+}
+
+
+int rtldrNativeLoadSystem(const char *pszFilename, const char *pszExt, uint32_t fFlags, PRTLDRMOD phLdrMod)
+{
+    /** @todo implement this in some sensible fashion. */
+    return VERR_NOT_SUPPORTED;
 }
 

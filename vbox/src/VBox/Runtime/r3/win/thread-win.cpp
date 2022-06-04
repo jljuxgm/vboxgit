@@ -1,4 +1,4 @@
-/* $Id: thread-win.cpp 37733 2011-07-01 15:41:37Z vboxsync $ */
+/* $Id: thread-win.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
 /** @file
  * IPRT - Threads, Windows.
  */
@@ -65,6 +65,12 @@ DECLHIDDEN(int) rtThreadNativeInit(void)
     if (g_dwSelfTLS == TLS_OUT_OF_INDEXES)
         return VERR_NO_TLS_FOR_SELF;
     return VINF_SUCCESS;
+}
+
+
+DECLHIDDEN(void) rtThreadNativeReInitObtrusive(void)
+{
+    /* nothing to do here. */
 }
 
 

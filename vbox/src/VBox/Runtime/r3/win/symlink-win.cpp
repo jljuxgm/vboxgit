@@ -1,4 +1,4 @@
-/* $Id: symlink-win.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: symlink-win.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
 /** @file
  * IPRT - Symbolic Links, Windows.
  */
@@ -41,6 +41,7 @@
 #include "internal/path.h"
 
 #include <Windows.h>
+#include "../init.h"
 
 
 /*******************************************************************************
@@ -133,13 +134,9 @@ RTDECL(int) RTSymlinkCreate(const char *pszSymlink, const char *pszTarget, RTSYM
     static bool                     s_fTried = FALSE;
     if (!s_fTried)
     {
-        HMODULE hmod = LoadLibrary("KERNEL32.DLL");
-        if (hmod)
-        {
-            PFNCREATESYMBOLICLINKW pfn = (PFNCREATESYMBOLICLINKW)GetProcAddress(hmod, "CreateSymbolicLinkW");
-            if (pfn)
-                s_pfnCreateSymbolicLinkW = pfn;
-        }
+        PFNCREATESYMBOLICLINKW pfn = (PFNCREATESYMBOLICLINKW)GetProcAddress(g_hModKernel32, "CreateSymbolicLinkW");
+        if (pfn)
+            s_pfnCreateSymbolicLinkW = pfn;
         s_fTried = true;
     }
     if (!s_pfnCreateSymbolicLinkW)
