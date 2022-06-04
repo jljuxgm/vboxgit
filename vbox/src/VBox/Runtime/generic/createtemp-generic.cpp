@@ -1,4 +1,4 @@
-/* $Id: createtemp-generic.cpp 42712 2012-08-09 14:36:02Z vboxsync $ */
+/* $Id: createtemp-generic.cpp 45375 2013-04-05 14:36:27Z vboxsync $ */
 /** @file
  * IPRT - temporary file and directory creation, generic implementation.
  */
@@ -149,7 +149,7 @@ RTDECL(int) RTDirCreateTempSecure(char *pszTemplate)
     /* bool fSafe; */
 
     /* Temporarily convert pszTemplate to a path. */
-    RTPathParse(pszTemplate, &cchDir, NULL, NULL);
+    RTPathParseSimple(pszTemplate, &cchDir, NULL, NULL);
     chOld = pszTemplate[cchDir];
     pszTemplate[cchDir] = '\0';
     /** @todo Implement this. */
@@ -218,7 +218,7 @@ RTDECL(int) RTFileCreateTempSecure(char *pszTemplate)
     /* bool fSafe; */
 
     /* Temporarily convert pszTemplate to a path. */
-    RTPathParse(pszTemplate, &cchDir, NULL, NULL);
+    RTPathParseSimple(pszTemplate, &cchDir, NULL, NULL);
     chOld = pszTemplate[cchDir];
     pszTemplate[cchDir] = '\0';
     /** @todo Implement this. */

@@ -1,4 +1,4 @@
-/* $Id: init.cpp 45350 2013-04-04 20:22:25Z vboxsync $ */
+/* $Id: init.cpp 45375 2013-04-05 14:36:27Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -231,7 +231,7 @@ static int rtR3InitProgramPath(const char *pszProgramPath)
      * Parse the name.
      */
     ssize_t offName;
-    g_cchrtProcExePath = RTPathParse(g_szrtProcExePath, &g_cchrtProcDir, &offName, NULL);
+    g_cchrtProcExePath = RTPathParseSimple(g_szrtProcExePath, &g_cchrtProcDir, &offName, NULL);
     g_offrtProcName = offName;
     return VINF_SUCCESS;
 }

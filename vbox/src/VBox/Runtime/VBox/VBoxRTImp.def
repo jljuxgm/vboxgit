@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 45354 2013-04-05 06:07:36Z vboxsync $
+; $Id: VBoxRTImp.def 45375 2013-04-05 14:36:27Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 
@@ -803,7 +803,7 @@ EXPORTS
     RTPathJoin
     RTPathJoinA
     RTPathJoinEx
-    RTPathParse
+    RTPathParseSimple
     RTPathQueryInfo
     RTPathQueryInfoEx
     RTPathReal
