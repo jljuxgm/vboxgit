@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 44661 2013-02-12 16:38:19Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 44663 2013-02-12 17:16:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -488,6 +488,12 @@ void UIHostComboEditor::keyPressEvent(QKeyEvent *pEvent)
         case Qt::Key_Backtab:
         case Qt::Key_Escape:
             return QLineEdit::keyPressEvent(pEvent);
+        case Qt::Key_Up:
+        case Qt::Key_Down:
+        case Qt::Key_Left:
+        case Qt::Key_Right:
+            pEvent->ignore();
+            return;
         default:
             break;
     }
@@ -502,6 +508,12 @@ void UIHostComboEditor::keyReleaseEvent(QKeyEvent *pEvent)
         case Qt::Key_Backtab:
         case Qt::Key_Escape:
             return QLineEdit::keyReleaseEvent(pEvent);
+        case Qt::Key_Up:
+        case Qt::Key_Down:
+        case Qt::Key_Left:
+        case Qt::Key_Right:
+            pEvent->ignore();
+            return;
         default:
             break;
     }
