@@ -1,4 +1,4 @@
-# $Id: Config.kmk 47519 2013-08-02 08:36:17Z vboxsync $
+# $Id: Config.kmk 47646 2013-08-09 13:50:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -368,10 +368,6 @@ VBOX_WITH_DEBUGGER_GUI = 1
 # Enable the PDM Lock and let I/O threads call into the PICs.
 # TODO: Eliminate VBOX_WITH_PDM_LOCK.
 VBOX_WITH_PDM_LOCK = 1
-# Activate this to use the old VT-x code.
-VBOX_WITH_OLD_VTX_CODE =
-# Activate this to use the old AMD-V code.
-VBOX_WITH_OLD_AMDV_CODE =
 # Enables the first step using IEM (the interpreter).
 VBOX_WITH_FIRST_IEM_STEP = 1
 ## @}
@@ -5382,7 +5378,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47519 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47646 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

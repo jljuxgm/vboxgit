@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47427 2013-07-26 16:06:01Z vboxsync $
+# $Id: Makefile.kmk 47646 2013-08-09 13:50:41Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -55,12 +55,6 @@ ifdef VBOX_WITH_PCI_PASSTHROUGH
 endif
 ifdef VBOX_WITH_DTRACE_RC
  VMM_COMMON_DEFS += VBOX_WITH_DTRACE_RC
-endif
-ifdef VBOX_WITH_OLD_VTX_CODE
- VMM_COMMON_DEFS += VBOX_WITH_OLD_VTX_CODE
-endif
-ifdef VBOX_WITH_OLD_AMDV_CODE
- VMM_COMMON_DEFS += VBOX_WITH_OLD_AMDV_CODE
 endif
 ifdef VBOX_WITH_SAFE_STR 
  VMM_COMMON_DEFS += VBOX_WITH_SAFE_STR 
