@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 42873 2012-08-18 14:37:25Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 42906 2012-08-21 13:32:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -91,14 +91,14 @@ bool UIGDetailsElement::opened() const
     return !m_fClosed;
 }
 
-void UIGDetailsElement::close()
+void UIGDetailsElement::close(bool fAnimated /* = true */)
 {
-    m_pButton->setToggled(false);
+    m_pButton->setToggled(false, fAnimated);
 }
 
-void UIGDetailsElement::open()
+void UIGDetailsElement::open(bool fAnimated /* = true */)
 {
-    m_pButton->setToggled(true);
+    m_pButton->setToggled(true, fAnimated);
 }
 
 int UIGDetailsElement::minimumWidthHint() const

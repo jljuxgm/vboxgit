@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 42863 2012-08-17 12:38:39Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 42906 2012-08-21 13:32:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -508,6 +508,8 @@ void UIGDetailsSet::prepareElement(QString strSetId)
 
         /* Check if element is present already: */
         UIGDetailsElement *pElement = element(elementType);
+        if (pElement && fOpen)
+            pElement->open(false);
         /* Create element if necessary: */
         bool fJustCreated = false;
         if (!pElement)

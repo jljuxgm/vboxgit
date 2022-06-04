@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 42856 2012-08-17 00:21:30Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 42906 2012-08-21 13:32:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -188,7 +188,7 @@ void UIGDetailsModel::sltElementTypeToggled()
     }
     else
     {
-        detailsSettings.append(strElementTypeClosed);
+        detailsSettings.append(strElementTypeOpened);
     }
     vboxGlobal().virtualBox().SetExtraDataStringList(GUI_DetailsPageBoxes, detailsSettings);
     m_pRoot->updateItems();
