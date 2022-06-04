@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 45739 2013-04-25 19:44:05Z vboxsync $ */
+/* $Id: PGMAll.cpp 45792 2013-04-28 16:28:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -913,6 +913,23 @@ VMMDECL(int) PGMShwMakePageWritable(PVMCPU pVCpu, RTGCPTR GCPtr, uint32_t fOpFla
 VMMDECL(int) PGMShwMakePageNotPresent(PVMCPU pVCpu, RTGCPTR GCPtr, uint32_t fOpFlags)
 {
     return pdmShwModifyPage(pVCpu, GCPtr, 0, 0, fOpFlags);
+}
+
+
+/**
+ * Changing the page flags for a single page in the shadow page tables so as to
+ * make it supervisor and writable.
+ *
+ * This if for dealing with CR0.WP=0 and readonly user pages.
+ *
+ * @returns VBox status code.
+ * @param   pVCpu       Pointer to the VMCPU.
+ * @param   GCPtr       Virtual address of the first page in the range.
+ * @param   fOpFlags    A combination of the PGM_MK_PG_XXX flags.
+ */
+int pgmShwMakePageSupervisorAndWritable(PVMCPU pVCpu, RTGCPTR GCPtr, uint32_t fOpFlags)
+{
+    return pdmShwModifyPage(pVCpu, GCPtr, X86_PTE_RW, ~(uint64_t)X86_PTE_US, fOpFlags);
 }
 
 
