@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 42248 2012-07-20 08:39:45Z vboxsync $ */
+/* $Id: UIMachineView.cpp 42318 2012-07-23 09:27:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -180,6 +180,11 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
      * fullscreen resize hint was sent: */
     QString strKey = makeExtraDataKeyPerMonitor(GUI_LastGuestSizeHintWasFullscreen);
     machine.SetExtraData(strKey, isFullscreenOrSeamless() ? "true" : "");
+}
+
+void UIMachineView::sltDesktopResized()
+{
+    setMaxGuestSize();
 }
 
 void UIMachineView::sltMachineStateChanged()
@@ -491,6 +496,13 @@ void UIMachineView::prepareFilters()
 
     /* We want to be notified on some parent's events: */
     machineWindow()->installEventFilter(this);
+}
+
+void UIMachineView::prepareConnections()
+{
+    /* Desktop resolution change (e.g. monitor hotplug): */
+    connect(QApplication::desktop(), SIGNAL(resized(int)), this,
+            SLOT(sltDesktopResized()));
 }
 
 void UIMachineView::prepareConsoleConnections()
