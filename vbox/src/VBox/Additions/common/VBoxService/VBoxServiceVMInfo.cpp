@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 47335 2013-07-23 10:53:37Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 47336 2013-07-23 11:07:38Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -256,6 +256,7 @@ static DECLCALLBACK(int) VBoxServiceVMInfoInit(void)
         {
             AssertPtr(pszValue);
             g_uVMInfoUserIdleThreshold = RT_CLAMP(RTStrToInt32(pszValue), 1000, UINT32_MAX - 1);
+            RTStrFree(pszValue);
         }
     }
     return rc;
