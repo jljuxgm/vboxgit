@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 43547 2012-10-05 10:26:16Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 43550 2012-10-05 10:32:36Z vboxsync $ */
 
 /** @file
  *
@@ -35,6 +35,7 @@ extern "C" {
 #include <iprt/err.h>
 #include <iprt/mp.h>
 #include <iprt/mem.h>
+#include <iprt/system.h>
 
 #include <map>
 
