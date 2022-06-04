@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 45315 2013-04-03 17:30:17Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 45362 2013-04-05 09:49:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1160,7 +1160,7 @@ void UIMediumManager::doRemoveMedium()
                 int rc = msgCenter().confirmDeleteHardDiskStorage(item->location(), this);
                 if (rc == AlertButton_Cancel)
                     return;
-                deleteStorage = rc == AlertButton_Yes;
+                deleteStorage = rc == AlertButton_Choice1;
             }
 
             CMedium hardDisk = item->medium().medium();
