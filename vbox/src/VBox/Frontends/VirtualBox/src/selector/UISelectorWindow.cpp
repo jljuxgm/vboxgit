@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 46836 2013-06-27 12:24:18Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 47688 2013-08-13 12:51:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -91,6 +91,12 @@ UISelectorWindow::UISelectorWindow(UISelectorWindow **ppSelf, QWidget *pParent,
     /* Remember self: */
     if (ppSelf)
         *ppSelf = this;
+
+#ifdef Q_WS_MAC
+    /* We have to make sure that we are getting the front most process.
+     * This is necessary for Qt versions > 4.3.3: */
+    ::darwinSetFrontMostProcess();
+#endif /* Q_WS_MAC */
 
     /* Prepare: */
     prepareIcon();
