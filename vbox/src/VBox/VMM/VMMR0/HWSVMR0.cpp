@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 45387 2013-04-05 21:37:40Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 45503 2013-04-12 01:17:01Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1180,7 +1180,7 @@ static void hmR0SvmSetupTLB(PVM pVM, PVMCPU pVCpu)
         {
             /* Deal with pending TLB shootdown actions which were queued when we were not executing code. */
             STAM_COUNTER_INC(&pVCpu->hm.s.StatTlbShootdown);
-            for (unsigned i = 0; i < pVCpu->hm.s.TlbShootdown.cPages; i++)
+            for (uint32_t i = 0; i < pVCpu->hm.s.TlbShootdown.cPages; i++)
                 SVMR0InvlpgA(pVCpu->hm.s.TlbShootdown.aPages[i], pvVMCB->ctrl.TLBCtrl.n.u32ASID);
         }
     }
