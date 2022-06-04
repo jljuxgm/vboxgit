@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 46211 2013-05-22 11:00:02Z vboxsync $ */
+/* $Id: strcache.cpp 46212 2013-05-22 11:04:30Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -280,11 +280,11 @@ typedef struct RTSTRCACHEINT
     /** The total size of all the big entries. */
     size_t                  cbBigEntries;
     /** Hash collisions. */
-    size_t                  cHashCollisions;
+    uint32_t                cHashCollisions;
     /** Secondary hash collisions. */
-    size_t                  cHashCollisions2;
+    uint32_t                cHashCollisions2;
     /** The number of inserts to compare cHashCollisions to. */
-    size_t                  cHashInserts;
+    uint32_t                cHashInserts;
     /** The number of rehashes. */
     uint32_t                cRehashes;
     /** @} */
