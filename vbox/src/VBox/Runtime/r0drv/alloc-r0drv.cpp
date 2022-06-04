@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: alloc-r0drv.cpp 46565 2013-06-14 15:32:33Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver.
  */
@@ -336,7 +336,7 @@ RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, cons
     int         rc;
 
     RT_ASSERT_PREEMPT_CPUID_VAR();
-    if (!(fFlags & RTMEMHDR_FLAG_ANY_CTX_ALLOC))
+    if (!(fFlags & RTMEMALLOCEX_FLAGS_ANY_CTX_ALLOC))
         RT_ASSERT_INTS_ON();
 
     /*
