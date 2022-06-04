@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 45345 2013-04-04 17:45:16Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1192,6 +1192,9 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
 {
     va_list     args;
     char        szMsg[512];
+
+    if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))
+        return 0;
 
     va_start(args, pszFormat);
     RTStrPrintfV(szMsg, sizeof(szMsg) - 1, pszFormat, args);
