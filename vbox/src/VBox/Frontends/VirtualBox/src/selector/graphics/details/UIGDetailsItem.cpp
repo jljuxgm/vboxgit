@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 43982 2012-11-28 13:32:14Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 43989 2012-11-28 16:20:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -84,6 +84,16 @@ void UIGDetailsItem::updateSizeHint()
 {
     /* Update the geometry: */
     updateGeometry();
+}
+
+QSizeF UIGDetailsItem::sizeHint(Qt::SizeHint which, const QSizeF &constraint /* = QSizeF() */) const
+{
+    /* If Qt::MinimumSize or Qt::PreferredSize requested: */
+    if (which == Qt::MinimumSize || which == Qt::PreferredSize)
+        /* Return wrappers: */
+        return QSizeF(minimumWidthHint(), minimumHeightHint());
+    /* Call to base-class: */
+    return QIGraphicsWidget::sizeHint(which, constraint);
 }
 
 /* static */

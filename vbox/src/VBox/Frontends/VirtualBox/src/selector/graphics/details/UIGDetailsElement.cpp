@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 43987 2012-11-28 15:08:01Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 43989 2012-11-28 16:20:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -89,27 +89,6 @@ void UIGDetailsElement::close(bool fAnimated /* = true */)
 void UIGDetailsElement::open(bool fAnimated /* = true */)
 {
     m_pButton->setToggled(true, fAnimated);
-}
-
-int UIGDetailsElement::minimumWidthHint() const
-{
-    /* Prepare variables: */
-    int iMargin = data(ElementData_Margin).toInt();
-    int iProposedWidth = 0;
-
-    /* Maximum width: */
-    iProposedWidth = qMax(m_iMinimumHeaderWidth, m_iMinimumTextWidth);
-
-    /* And 4 margins: 2 left and 2 right: */
-    iProposedWidth += 4 * iMargin;
-
-    /* Return result: */
-    return iProposedWidth;
-}
-
-int UIGDetailsElement::minimumHeightHint() const
-{
-    return minimumHeightHint(m_fClosed);
 }
 
 void UIGDetailsElement::updateHoverAccessibility()
@@ -351,45 +330,53 @@ const CMachine& UIGDetailsElement::machine()
     return m_pSet->machine();
 }
 
+int UIGDetailsElement::minimumWidthHint() const
+{
+    /* Prepare variables: */
+    int iMargin = data(ElementData_Margin).toInt();
+    int iMinimumWidthHint = 0;
+
+    /* Maximum width: */
+    iMinimumWidthHint = qMax(m_iMinimumHeaderWidth, m_iMinimumTextWidth);
+
+    /* And 4 margins: 2 left and 2 right: */
+    iMinimumWidthHint += 4 * iMargin;
+
+    /* Return result: */
+    return iMinimumWidthHint;
+}
+
 int UIGDetailsElement::minimumHeightHint(bool fClosed) const
 {
     /* Prepare variables: */
     int iMargin = data(ElementData_Margin).toInt();
-    int iProposedHeight = 0;
+    int iMinimumHeightHint = 0;
 
     /* Two margins: */
-    iProposedHeight += 2 * iMargin;
+    iMinimumHeightHint += 2 * iMargin;
 
     /* Header height: */
-    iProposedHeight += m_iMinimumHeaderHeight;
+    iMinimumHeightHint += m_iMinimumHeaderHeight;
 
     /* Element is opened? */
     if (!fClosed)
     {
         /* Add text height: */
         if (!m_text.isEmpty())
-            iProposedHeight += 2 * iMargin + m_iMinimumTextHeight;
+            iMinimumHeightHint += 2 * iMargin + m_iMinimumTextHeight;
     }
 
     /* Additional height during animation: */
     if (m_fAnimationRunning)
-        iProposedHeight += m_iAdditionalHeight;
+        iMinimumHeightHint += m_iAdditionalHeight;
 
     /* Return value: */
-    return iProposedHeight;
+    return iMinimumHeightHint;
 }
 
-QSizeF UIGDetailsElement::sizeHint(Qt::SizeHint which, const QSizeF &constraint /* = QSizeF() */) const
+int UIGDetailsElement::minimumHeightHint() const
 {
-    /* If Qt::MinimumSize requested: */
-    if (which == Qt::MinimumSize || which == Qt::PreferredSize)
-    {
-        /* Return wrappers: */
-        return QSizeF(minimumWidthHint(), minimumHeightHint());
-    }
-
-    /* Call to base-class: */
-    return UIGDetailsItem::sizeHint(which, constraint);
+    return minimumHeightHint(m_fClosed);
 }
 
 void UIGDetailsElement::updateLayout()
