@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45894 2013-05-03 12:09:43Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45895 2013-05-03 12:13:20Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4579,7 +4579,6 @@ DECLINLINE(void) hmR0VmxSetPendingEvent(PVMCPU pVCpu, uint32_t u32IntrInfo, uint
  */
 DECLINLINE(void) hmR0VmxSetPendingXcptDF(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
 {
-    /* Inject the double-fault. */
     uint32_t u32IntrInfo = X86_XCPT_DF | VMX_EXIT_INTERRUPTION_INFO_VALID;
     u32IntrInfo         |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_HW_XCPT << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
     u32IntrInfo         |= VMX_EXIT_INTERRUPTION_INFO_ERROR_CODE_VALID;
