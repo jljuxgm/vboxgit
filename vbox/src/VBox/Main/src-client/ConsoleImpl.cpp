@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 45284 2013-04-02 11:55:41Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 45336 2013-04-04 11:28:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -778,8 +778,7 @@ void Console::guestPropertiesHandleVMReset(void)
             /* Delete all properties which have the flag "TRANSRESET". */
             if (Utf8Str(arrFlags[i]).contains("TRANSRESET", Utf8Str::CaseInsensitive))
             {
-                hrc = mMachine->SetGuestProperty(arrNames[i], Bstr("").raw() /* Value */,
-                                                 Bstr("").raw() /* Flags */);
+                hrc = mMachine->DeleteGuestProperty(arrNames[i]);
                 if (FAILED(hrc))
                     LogRel(("RESET: Could not delete transient property \"%ls\", rc=%Rhrc\n",
                             arrNames[i], hrc));
