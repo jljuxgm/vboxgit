@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 43907 2012-11-17 14:09:24Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 44029 2012-12-04 08:07:07Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1977,7 +1977,6 @@ STDMETHODIMP VirtualBox::OpenMedium(IN_BSTR aLocation,
         default:
             return setError(E_INVALIDARG, "Device type must be HardDisk, DVD or Floppy %d", deviceType);
     }
-
 
     if (pMedium.isNull())
     {
