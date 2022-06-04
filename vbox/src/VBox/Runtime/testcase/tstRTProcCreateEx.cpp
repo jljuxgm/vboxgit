@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: tstRTProcCreateEx.cpp 44554 2013-02-05 23:37:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -170,8 +170,6 @@ static void tstRTCreateProcEx5(const char *pszUser, const char *pszPassword)
 
     if (ProcStatus.enmReason != RTPROCEXITREASON_NORMAL || ProcStatus.iStatus != 0)
         RTTestIFailed("enmReason=%d iStatus=%d", ProcStatus.enmReason, ProcStatus.iStatus);
-    else
-        RTTestIPassed(NULL);
 }
 
 
@@ -207,8 +205,6 @@ static void tstRTCreateProcEx4(const char *pszAsUser, const char *pszPassword)
 
     if (ProcStatus.enmReason != RTPROCEXITREASON_NORMAL || ProcStatus.iStatus != 0)
         RTTestIFailed("enmReason=%d iStatus=%d", ProcStatus.enmReason, ProcStatus.iStatus);
-    else
-        RTTestIPassed(NULL);
 }
 
 
@@ -277,8 +273,6 @@ static void tstRTCreateProcEx3(const char *pszAsUser, const char *pszPassword)
     else if (   offOutput != sizeof("works") - 1
              || strcmp(szOutput, "works"))
         RTTestIFailed("wrong output: \"%s\" (len=%u)", szOutput, offOutput);
-    else
-        RTTestIPassed(NULL);
 }
 
 
@@ -344,8 +338,6 @@ static void tstRTCreateProcEx2(const char *pszAsUser, const char *pszPassword)
     else if (   offOutput != sizeof("howdy") - 1
              || strcmp(szOutput, "howdy"))
         RTTestIFailed("wrong output: \"%s\" (len=%u)", szOutput, offOutput);
-    else
-        RTTestIPassed(NULL);
 }
 
 
@@ -411,8 +403,6 @@ static void tstRTCreateProcEx1(const char *pszAsUser, const char *pszPassword)
     else if (   offOutput != sizeof("it works") - 1
              || strcmp(szOutput, "it works"))
         RTTestIFailed("wrong output: \"%s\" (len=%u)", szOutput, offOutput);
-    else
-        RTTestIPassed(NULL);
 }
 
 

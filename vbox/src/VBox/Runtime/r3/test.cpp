@@ -1,4 +1,4 @@
-/* $Id: test.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: test.cpp 44554 2013-02-05 23:37:46Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -1332,6 +1332,7 @@ RTR3DECL(int) RTTestSubDone(RTTEST hTest)
 RTR3DECL(int) RTTestPassedV(RTTEST hTest, const char *pszFormat, va_list va)
 {
     PRTTESTINT pTest = hTest;
+    AssertPtr(pszFormat);
     RTTEST_GET_VALID_RETURN_RC(pTest, -1);
 
     int cch = 0;
