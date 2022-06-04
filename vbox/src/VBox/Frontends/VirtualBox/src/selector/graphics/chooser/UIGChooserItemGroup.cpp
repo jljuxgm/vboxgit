@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43153 2012-09-03 17:06:09Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43158 2012-09-04 11:02:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -244,9 +244,9 @@ void UIGChooserItemGroup::sltNameEditingFinished()
     if (strNewName.isEmpty() || groupNames.contains(strNewName))
         return;
 
-    /* Since '/' symbol is forbidden,
-     * we should replace it: */
-    strNewName.replace('/', '_');
+    /* We should replace forbidden symbols
+     * with ... well, probably underscores: */
+    strNewName.replace(QRegExp("[\\\\/:*?\"<>]"), "_");
 
     /* Set new name / update model: */
     m_strName = strNewName;
