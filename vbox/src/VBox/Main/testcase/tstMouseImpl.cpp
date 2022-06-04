@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 47257 2013-07-19 13:37:51Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 47261 2013-07-19 13:59:25Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -28,8 +28,10 @@
 #include <iprt/assert.h>
 #include <iprt/test.h>
 
+#ifndef RT_OS_WINDOWS
 NS_DECL_CLASSINFO(Mouse)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Mouse, IMouse)
+#endif
 
 PDMIVMMDEVPORT VMMDevPort;
 
