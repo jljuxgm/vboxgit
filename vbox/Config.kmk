@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42669 2012-08-07 23:42:25Z vboxsync $
+# $Id: Config.kmk 42675 2012-08-08 08:27:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2737,7 +2737,7 @@ endif
 # VBoxTpG tool.
 #
 TOOL_VBoxTpG = The VirtualBox Tracepoint Generator
-TOOL_VBoxTpG_DTRACE_DEPEND         = $(VBOX_VBOXTPG)
+TOOL_VBoxTpG_DTRACE_DEPORD          = $(VBOX_VBOXTPG)
 TOOL_VBoxTpG_DTRACE_HDR_FLAGS      := \
 		$(if-expr $(intersects $(KBUILD_TARGET_ARCH),$(KBUILD_ARCHES_64)),-64,-32) \
 		-h --host-$(VBOX_HC_ARCH_BITS)-bit #-vvv
@@ -2758,7 +2758,7 @@ endef
 # VBoxTpG tool - Disabled, only generate the header.
 #
 TOOL_VBoxTpG-Disabled = The VirtualBox Tracepoint Generator, disabled.
-TOOL_VBoxTpG-Disabled_DTRACE_DEPEND     = $(VBOX_VBOXTPG)
+TOOL_VBoxTpG-Disabled_DTRACE_DEPORD     = $(VBOX_VBOXTPG)
 TOOL_VBoxTpG-Disabled_DTRACE_HDR_FLAGS := -h
 define TOOL_VBoxTpG-Disabled_DTRACE_HDR_CMDS
 	$(QUIET)$(VBOX_VBOXTPG) $(flags) -o "$(out)" -s "$(source)"
@@ -2771,7 +2771,7 @@ TOOL_VBoxTpG-Disabled_DTRACE_OBJ_NOT_NEEDED := $(KBUILD_OSES)
 #
 TOOL_DTraceAndVBoxTpG = DTrace and the VirtualBox Tracepoint Generator working together on static ring-3 probes.
 TOOL_DTraceAndVBoxTpG_EXTENDS = StandardDTrace
-TOOL_DTraceAndVBoxTpG_DTRACE_DEPEND   = $(VBOX_VBOXTPG)
+TOOL_DTraceAndVBoxTpG_DTRACE_DEPORD   = $(VBOX_VBOXTPG)
 TOOL_DTraceAndVBoxTpG_DTRACE_HDR_CMDS =
 define TOOL_DTraceAndVBoxTpG_DTRACE_HDR_CMDS
 	$(TOOL_StandardDTrace_DTRACE_HDR_CMDS)
@@ -5152,7 +5152,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42669 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42675 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
