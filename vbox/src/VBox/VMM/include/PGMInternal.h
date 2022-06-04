@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 43025 2012-08-28 09:36:14Z vboxsync $ */
+/* $Id: PGMInternal.h 43045 2012-08-28 14:21:43Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3959,6 +3959,7 @@ int             pgmR3PhysRomReset(PVM pVM);
 int             pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk);
 int             pgmR3PhysRamTerm(PVM pVM);
 void            pgmR3PhysRomTerm(PVM pVM);
+void            pgmR3PhysAssertSharedPageChecksums(PVM pVM);
 
 int             pgmR3PoolInit(PVM pVM);
 void            pgmR3PoolRelocate(PVM pVM);

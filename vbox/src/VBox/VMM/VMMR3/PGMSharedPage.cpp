@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 41803 2012-06-17 17:20:33Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 43045 2012-08-28 14:21:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -98,6 +98,7 @@ VMMR3DECL(int) PGMR3SharedModuleRegister(PVM pVM, VBOXOSFAMILY enmGuestOS, char 
             /*
              * Issue the request.  In strict builds, do some local tracking.
              */
+            pgmR3PhysAssertSharedPageChecksums(pVM);
             rc = GMMR3RegisterSharedModule(pVM, pReq);
             if (RT_SUCCESS(rc))
                 rc = pReq->rc;
@@ -164,7 +165,9 @@ VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *p
         rc = RTStrCopy(pReq->szVersion, sizeof(pReq->szVersion), pszVersion);
         if (RT_SUCCESS(rc))
         {
+            pgmR3PhysAssertSharedPageChecksums(pVM);
             rc = GMMR3UnregisterSharedModule(pVM, pReq);
+            pgmR3PhysAssertSharedPageChecksums(pVM);
 
 # ifdef VBOX_STRICT
             /*
@@ -210,16 +213,24 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3SharedModuleRegRendezvous(PVM pVM, PVMCPU
         return VINF_SUCCESS;
     }
 
+
     /* Flush all pending handy page operations before changing any shared page assignments. */
     int rc = PGMR3PhysAllocateHandyPages(pVM);
     AssertRC(rc);
 
-    /* Lock it here as we can't deal with busy locks in this ring-0 path. */
+    /*
+     * Lock it here as we can't deal with busy locks in this ring-0 path.
+     */
+    LogFlow(("pgmR3SharedModuleRegRendezvous: start (%d)\n", pVM->pgm.s.cSharedPages));
+
     pgmLock(pVM);
+    pgmR3PhysAssertSharedPageChecksums(pVM);
     rc = GMMR3CheckSharedModules(pVM);
+    pgmR3PhysAssertSharedPageChecksums(pVM);
     pgmUnlock(pVM);
     AssertLogRelRC(rc);
 
+    LogFlow(("pgmR3SharedModuleRegRendezvous: done (%d)\n", pVM->pgm.s.cSharedPages));
     return rc;
 }
 
