@@ -1,4 +1,4 @@
-/* $Id: Nvram.cpp 43142 2012-09-01 02:48:03Z vboxsync $ */
+/* $Id: Nvram.cpp 43157 2012-09-04 09:00:28Z vboxsync $ */
 
 /** @file
  * VBox NVRAM COM Class implementation
@@ -178,10 +178,12 @@ DECLCALLBACK(int) drvNvram_pfnLoadNvramValue(PPDMINVRAM pInterface,
     hrc = pThis->pNvram->getParent()->machine()->GetExtraData(Bstr(szExtraDataKey).raw(), bstrValue.asOutParam());
     RTUuidFromStr(pVendorUuid, Utf8Str(bstrValue).c_str());
 
+#if 0
     RT_ZERO(szExtraDataKey);
     RTStrPrintf(szExtraDataKey, 256, "VBoxInternal/Devices/efi/0/LUN#0/Config/NVRAM/%d/VariableValueLength", idxVariable);
     hrc = pThis->pNvram->getParent()->machine()->GetExtraData(Bstr(szExtraDataKey).raw(), bstrValue.asOutParam());
     *pcbValue = Utf8Str(bstrValue).toUInt32();
+#endif
 
     RT_ZERO(szExtraDataKey);
     RTStrPrintf(szExtraDataKey, 256, "VBoxInternal/Devices/efi/0/LUN#0/Config/NVRAM/%d/VariableValue", idxVariable);
