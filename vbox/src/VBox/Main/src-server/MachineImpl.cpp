@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42757 2012-08-10 14:44:08Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9092,7 +9092,7 @@ HRESULT Machine::prepareSaveSettings(bool *pfNeedsGlobalSaveSettings)
             configDir.stripFilename();
             newConfigDir = configDir;
             if (   configDir.length() >= groupPlusName.length()
-                && configDir.substr(configDir.length() - groupPlusName.length(), groupPlusName.length()).equals(groupPlusName.c_str()))
+                && !RTPathCompare(configDir.substr(configDir.length() - groupPlusName.length(), groupPlusName.length()).c_str(), groupPlusName.c_str()))
             {
                 newConfigDir = newConfigDir.substr(0, configDir.length() - groupPlusName.length());
                 Utf8Str newConfigBaseDir(newConfigDir);
