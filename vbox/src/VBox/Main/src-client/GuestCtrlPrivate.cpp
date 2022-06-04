@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 44863 2013-02-28 12:18:17Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 44870 2013-02-28 15:51:52Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -1201,8 +1201,7 @@ int GuestObject::callbackAdd(GuestCtrlCallback *pCallback, uint32_t *puContextID
     const ComObjPtr<GuestSession> pSession(mObject.mSession);
     Assert(!pSession.isNull());
     ULONG uSessionID = 0;
-    HRESULT hr = pSession->COMGETTER(Id)(&uSessionID);
-    ComAssertComRC(hr);
+    pSession->COMGETTER(Id)(&uSessionID);
 
     /* Create a new context ID and assign it. */
     int vrc = VERR_NOT_FOUND;
