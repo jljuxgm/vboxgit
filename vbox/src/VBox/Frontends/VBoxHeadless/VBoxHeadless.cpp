@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 42473 2012-07-31 11:07:32Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 42476 2012-07-31 11:15:17Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -470,8 +470,8 @@ static void show_usage()
              "                                         two port numbers to specify a range\n"
              "                                         \"TCP/Address\" - interface IP the VRDE server\n"
              "                                         will bind to\n"
-             "   --settingspw                          Specify the settings password\n"
-             "   --settingspwfile                      Specify a file containing the settings password\n"
+             "   --settingspw <pw>                     Specify the settings password\n"
+             "   --settingspwfile <file>               Specify a file containing the settings password\n"
 #ifdef VBOX_WITH_VIDEO_REC
              "   -c, -capture, --capture               Record the VM screen output to a file\n"
              "   -w, --width                           Frame width when recording\n"
