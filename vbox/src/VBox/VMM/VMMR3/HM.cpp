@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45623 2013-04-18 22:05:35Z vboxsync $ */
+/* $Id: HM.cpp 45665 2013-04-22 12:40:25Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2590,7 +2590,7 @@ VMMR3DECL(bool) HMR3IsEnabled(PUVM pUVM)
     UVM_ASSERT_VALID_EXT_RETURN(pUVM, false);
     PVM pVM = pUVM->pVM;
     VM_ASSERT_VALID_EXT_RETURN(pVM, false);
-    return HMIsEnabled(pVM);
+    return pVM->fHMEnabled; /* Don't use the macro as the GUI may query us very very early. */
 }
 
 
