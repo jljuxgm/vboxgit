@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 47773 2013-08-15 14:53:40Z vboxsync $ */
+/* $Id: HMR0.cpp 47802 2013-08-16 11:27:27Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1407,17 +1407,16 @@ VMMR0_INT_DECL(void) HMR0EnterEx(PVMCPU pVCpu)
     PHMGLOBALCPUINFO pCpu = &g_HvmR0.aCpuInfo[idCpu];
     AssertPtr(pCpu);
 
-    pVCpu->hm.s.idEnteredCpu = idCpu;
-
-    /* Reload the host context and the guest's CR0 register for the FPU bits. */
-    pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_CR0 | HM_CHANGED_HOST_CONTEXT;
-
     /* Enable VT-x or AMD-V if local init is required, or enable if it's a freshly onlined CPU. */
     if (   !pCpu->fConfigured
         || !g_HvmR0.fGlobalInit)
     {
         hmR0EnableCpu(pVCpu->CTX_SUFF(pVM), idCpu);
     }
+
+    /* Reload host-context (back from ring-3/migrated CPUs), reload guest CR0 (for FPU bits). */
+    pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_HOST_CONTEXT | HM_CHANGED_GUEST_CR0;
+    pVCpu->hm.s.idEnteredCpu = idCpu;
 }
 
 
@@ -1450,6 +1449,7 @@ VMMR0_INT_DECL(int) HMR0Enter(PVM pVM, PVMCPU pVCpu)
     PCPUMCTX         pCtx  = CPUMQueryGuestCtxPtr(pVCpu);
     Assert(pCpu);
     Assert(pCtx);
+    Assert(pVCpu->hm.s.fContextUseFlags & (HM_CHANGED_HOST_CONTEXT | HM_CHANGED_GUEST_CR0));
 
     int rc  = g_HvmR0.pfnEnterSession(pVM, pVCpu, pCpu);
     AssertRC(rc);

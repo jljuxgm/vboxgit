@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47771 2013-08-15 14:35:16Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47802 2013-08-16 11:27:27Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1617,8 +1617,7 @@ VMMR0DECL(void) SVMR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPU pVCpu, 
             /* Initialize the bare minimum state required for HM. This takes care of
                initializing AMD-V if necessary (onlined CPUs, local init etc.) */
             HMR0EnterEx(pVCpu);
-
-            pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_HOST_CONTEXT;
+            Assert(pVCpu->hm.s.fContextUseFlags & (HM_CHANGED_HOST_CONTEXT | HM_CHANGED_GUEST_CR0));
 
             RTThreadPreemptRestore(&PreemptState);
             break;
