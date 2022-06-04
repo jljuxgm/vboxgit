@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 41973 2012-06-29 15:08:30Z vboxsync $ */
+/* $Id: Global.cpp 42339 2012-07-24 08:52:22Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -103,7 +103,7 @@ const Global::OSType Global::sOSTypes[] =
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA  },
     { "Windows", "Microsoft Windows", "Windows8_64",        "Windows 8 (64 bit)",
       VBOXOSTYPE_Win8_x64,        VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET | VBOXOSHINT_ACCEL3D,
-       1536,128, 25 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       2048,128, 25 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA  },
     { "Windows", "Microsoft Windows", "WindowsNT",          "Other Windows",
       VBOXOSTYPE_WinNT,           VBOXOSHINT_NONE,
