@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44705 2013-02-14 20:51:49Z vboxsync $
+# $Id: Makefile.kmk 44807 2013-02-22 20:55:58Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -173,7 +173,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	PC/DevHPET.cpp \
  	PC/DevSMC.cpp \
  	PC/DevLPC.cpp \
- 	Storage/fdc.c \
+ 	Storage/DevFdc.cpp \
  	Serial/DevSerial.cpp \
  	Parallel/DevParallel.cpp \
 	\
