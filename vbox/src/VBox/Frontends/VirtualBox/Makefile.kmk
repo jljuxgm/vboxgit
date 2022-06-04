@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45659 2013-04-22 08:14:33Z vboxsync $
+# $Id: Makefile.kmk 46005 2013-05-13 09:37:41Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -91,10 +91,6 @@ VirtualBox_DEFS.solaris   = VBOX_GUI_USE_QIMAGE #VBOX_GUI_USE_SDL
 VirtualBox_DEFS.win       = VBOX_GUI_USE_QIMAGE UNICODE QT_DLL
 ifdef VBOX_WITH_ICHAT_THEATER
  VirtualBox_DEFS.darwin += VBOX_WITH_ICHAT_THEATER
-endif
-ifneq ($(KBUILD_TYPE),release)
- # non-release builds has some extra features.
- VirtualBox_DEFS.win     += VBOX_GUI_USE_DDRAW
 endif
 VirtualBox_DEFS          += \
 	$(if $(VBOX_WITH_ADDITIONS_AUTOUPDATE_UI),VBOX_WITH_ADDITIONS_AUTOUPDATE_UI) \
@@ -681,8 +677,6 @@ VirtualBox_SOURCES = \
 	src/wizards/firstrun/UIWizardFirstRun.cpp \
 	src/wizards/firstrun/UIWizardFirstRunPageBasic.cpp
 
-VirtualBox_SOURCES.win += \
-	src/runtime/UIFrameBufferDirectDraw.cpp
 VirtualBox_SOURCES.darwin += \
 	src/platform/darwin/UIAbstractDockIconPreview.cpp \
 	src/platform/darwin/UICocoaDockIconPreview.mm \

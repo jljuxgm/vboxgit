@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 44952 2013-03-07 13:18:14Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 46005 2013-05-13 09:37:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -109,18 +109,6 @@ bool UIMachineViewNormal::eventFilter(QObject *pWatched, QEvent *pEvent)
                     QTimer::singleShot(300, this, SLOT(sltPerformGuestResize()));
                 break;
             }
-#if defined (Q_WS_WIN32)
-# if defined (VBOX_GUI_USE_DDRAW)
-            case QEvent::Move:
-            {
-                /* Notification from our parent that it has moved. We need this in order
-                 * to possibly adjust the direct screen blitting: */
-                if (frameBuffer())
-                    frameBuffer()->moveEvent(static_cast<QMoveEvent*>(pEvent));
-                break;
-            }
-# endif /* defined (VBOX_GUI_USE_DDRAW) */
-#endif /* defined (Q_WS_WIN32) */
             default:
                 break;
         }

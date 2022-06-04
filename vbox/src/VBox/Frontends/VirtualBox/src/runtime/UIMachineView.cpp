@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 44819 2013-02-25 13:25:13Z vboxsync $ */
+/* $Id: UIMachineView.cpp 46005 2013-05-13 09:37:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -393,20 +393,6 @@ void UIMachineView::prepareFrameBuffer()
             break;
         }
 #endif /* VBOX_GUI_USE_SDL */
-#if 0 // TODO: Enable DDraw frame buffer!
-#ifdef VBOX_GUI_USE_DDRAW
-        case DDRAWMode:
-            m_pFrameBuffer = new UIDDRAWFrameBuffer(this);
-            if (!m_pFrameBuffer || m_pFrameBuffer->address() == NULL)
-            {
-                if (m_pFrameBuffer)
-                    delete m_pFrameBuffer;
-                m_mode = QImageMode;
-                m_pFrameBuffer = new UIFrameBufferQImage(this);
-            }
-            break;
-#endif /* VBOX_GUI_USE_DDRAW */
-#endif
 #ifdef VBOX_GUI_USE_QUARTZ2D
         case Quartz2DMode:
         {

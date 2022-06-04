@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45452 2013-04-10 10:19:38Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 46005 2013-05-13 09:37:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -217,10 +217,6 @@ static RenderMode vboxGetRenderMode (const char *aModeStr)
 #if defined (VBOX_GUI_USE_SDL)
         else if (::strcmp (aModeStr, "sdl") == 0)
             mode = SDLMode;
-#endif
-#if defined (VBOX_GUI_USE_DDRAW)
-        else if (::strcmp (aModeStr, "ddraw") == 0)
-            mode = DDRAWMode;
 #endif
 #if defined (VBOX_GUI_USE_QUARTZ2D)
         else if (::strcmp (aModeStr, "quartz2d") == 0)

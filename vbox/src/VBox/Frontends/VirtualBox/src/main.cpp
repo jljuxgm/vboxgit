@@ -1,4 +1,4 @@
-/* $Id: main.cpp 45452 2013-04-10 10:19:38Z vboxsync $ */
+/* $Id: main.cpp 46005 2013-05-13 09:37:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -229,11 +229,6 @@ static void showHelp()
     if (!mode.isEmpty())
         mode += "|";
     mode += "image";
-#endif
-#ifdef VBOX_GUI_USE_DDRAW
-    if (!mode.isEmpty())
-        mode += "|";
-    mode += "ddraw";
 #endif
 #ifdef VBOX_GUI_USE_QUARTZ2D
     if (!mode.isEmpty())
