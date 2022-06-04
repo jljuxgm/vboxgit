@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 45666 2013-04-22 14:49:34Z vboxsync $ */
+/* $Id: DevOHCI.cpp 45667 2013-04-22 15:15:15Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -297,7 +297,7 @@ typedef struct OHCI
 
     /** Number of in-flight TDs. */
     unsigned            cInFlight;
-    unsigned            Alignment1;    /**< Align aInFlight on a 8 byte boundary. */
+    unsigned            Alignment0;    /**< Align aInFlight on a 8 byte boundary. */
     /** Array of in-flight TDs. */
     struct ohci_td_in_flight
     {
@@ -308,6 +308,10 @@ typedef struct OHCI
         /** Pointer to the URB. */
         R3PTRTYPE(PVUSBURB) pUrb;
     } aInFlight[257];
+
+#if HC_ARCH_BITS == 32
+    uint32_t            Alignment1;
+#endif
 
     /** Number of in-done-queue TDs. */
     unsigned            cInDoneQueue;
