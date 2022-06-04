@@ -1,4 +1,4 @@
-/* $Id: pcibios.c 42392 2012-07-25 13:36:28Z vboxsync $ */
+/* $Id: pcibios.c 42532 2012-08-02 12:28:32Z vboxsync $ */
 /** @file
  * PCI BIOS support.
  */
@@ -307,7 +307,7 @@ void BIOSCALL PCIxx(function)(volatile pci_regs_t r)
     pci_route_buf __far     *route_buf;
     uint16_t                device;
 
-    BX_DEBUG_PCI("PCI: AX=%04X BX=%04X CX=%04X\n", AX, BX, CX);
+    BX_DEBUG_PCI("PCI: AX=%04X BX=%04X CX=%04X DI=%04X\n", AX, BX, CX, DI);
 
     SET_AH(SUCCESSFUL);     /* Assume success. */
     CLEAR_CF();             
