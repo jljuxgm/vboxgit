@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 43788 2012-10-31 18:30:35Z vboxsync $ */
+/* $Id: UsbMsd.cpp 43789 2012-10-31 21:08:52Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1142,7 +1142,7 @@ static int usbMsdHandleBulkHostToDev(PUSBMSD pThis, PUSBMSDEP pEp, PVUSBURB pUrb
                 }
             }
 
-            return usbMsdCompleteOk(pThis, pUrb, 0);
+            return usbMsdCompleteOk(pThis, pUrb, pUrb->cbData);
         }
 
         /*
