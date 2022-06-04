@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 46966 2013-07-04 06:08:11Z vboxsync $ */
+/* $Id: server_presenter.cpp 47116 2013-07-12 12:35:16Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -62,7 +62,7 @@
 int CrDpInit(PCR_DISPLAY pDisplay)
 {
     const GLint visBits = cr_server.MainContextInfo.CreateInfo.visualBits;
-    if (crServerMuralInit(&pDisplay->Mural, "", visBits, -1, GL_FALSE) < 0)
+    if (crServerMuralInit(&pDisplay->Mural, "", visBits, 0, GL_FALSE) < 0)
     {
         crWarning("crServerMuralInit failed!");
         return VERR_GENERAL_FAILURE;

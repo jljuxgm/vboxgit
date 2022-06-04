@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 46989 2013-07-05 06:57:09Z vboxsync $ */
+/* $Id: server_muralfbo.c 47116 2013-07-12 12:35:16Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -378,16 +378,16 @@ static void crServerEnableDisplayMuralFBO(CRMuralInfo *mural, GLboolean fEnable)
 
 void crServerRedirMuralFBO(CRMuralInfo *mural, GLuint redir)
 {
-    if (!mural->CreateInfo.externalID)
-    {
-        crWarning("trying to change redir setting for internal mural %d", mural->spuWindow);
-        return;
-    }
-
     if (mural->fPresentMode == redir)
     {
 //        if (redir)
 //            crWarning("crServerRedirMuralFBO called with the same redir status %d", redir);
+        return;
+    }
+
+    if (!mural->CreateInfo.externalID)
+    {
+        crWarning("trying to change redir setting for internal mural %d", mural->spuWindow);
         return;
     }
 
