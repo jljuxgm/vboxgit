@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 47485 2013-07-31 12:44:53Z vboxsync $ */
+/* $Id: crservice.cpp 47599 2013-08-07 18:02:07Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1197,6 +1197,8 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                 break;
             }
 
+            crServerVBoxCompositionSetEnableStateGlobal(GL_FALSE);
+
             rc = crVBoxServerSetScreenViewport((int)paParms[0].u.uint32,
                     paParms[1].u.uint32, /* x */
                     paParms[2].u.uint32, /* y */
@@ -1205,8 +1207,9 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
             if (!RT_SUCCESS(rc))
             {
                 LogRel(("SHCRGL_HOST_FN_VIEWPORT_CHANGED: crVBoxServerSetScreenViewport failed, rc %d", rc));
-                break;
             }
+
+            crServerVBoxCompositionSetEnableStateGlobal(GL_TRUE);
 
             break;
         }

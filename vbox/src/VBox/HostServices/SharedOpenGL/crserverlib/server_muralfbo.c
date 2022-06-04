@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 47577 2013-08-07 10:13:47Z vboxsync $ */
+/* $Id: server_muralfbo.c 47599 2013-08-07 18:02:07Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -761,7 +761,7 @@ void crServerVBoxCompositionDisableEnter(CRMuralInfo *mural)
 
 void crServerVBoxCompositionDisableLeave(CRMuralInfo *mural, GLboolean fForcePresentOnEnabled)
 {
-    mural->fForcePresentState = fForcePresentOnEnabled;
+    mural->fForcePresentState |= fForcePresentOnEnabled;
     --mural->cDisabled;
     Assert(mural->cDisabled < UINT32_MAX/2);
     if (!mural->cDisabled)
@@ -787,9 +787,23 @@ static void crServerVBoxCompositionSetEnableStateGlobalCB(unsigned long key, voi
 
 DECLEXPORT(void) crServerVBoxCompositionSetEnableStateGlobal(GLboolean fEnable)
 {
+    int i;
+
     crHashtableWalk(cr_server.muralTable, crServerVBoxCompositionSetEnableStateGlobalCB, (void*)(uintptr_t)fEnable);
 
     crHashtableWalk(cr_server.dummyMuralTable, crServerVBoxCompositionSetEnableStateGlobalCB, (void*)(uintptr_t)fEnable);
+
+    for (i = 0; i < cr_server.screenCount; ++i)
+    {
+        PCR_DISPLAY pDisplay = crServerDisplayGetInitialized((uint32_t)i);
+        if (!pDisplay)
+            continue;
+
+        if (!fEnable)
+            CrDpEnter(pDisplay);
+        else
+            CrDpLeave(pDisplay);
+    }
 }
 
 static void crServerPresentMuralVRAM(CRMuralInfo *mural, char *pixels)
