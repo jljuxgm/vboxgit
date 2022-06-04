@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 45907 2013-05-06 12:54:22Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 45991 2013-05-11 23:36:34Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -52,7 +52,7 @@ static void pgmPoolMonitorModifiedRemove(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
 #ifndef IN_RING3
 DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser);
 #endif
-#ifdef LOG_ENABLED
+#if defined(LOG_ENABLED) || defined(VBOX_STRICT)
 static const char *pgmPoolPoolKindToStr(uint8_t enmKind);
 #endif
 #if 0 /*defined(VBOX_STRICT) && defined(PGMPOOL_WITH_OPTIMIZED_DIRTY_PT)*/
@@ -5443,7 +5443,7 @@ void pgmR3PoolReset(PVM pVM)
 
 #endif /* IN_RING3 */
 
-#ifdef LOG_ENABLED
+#if defined(LOG_ENABLED) || defined(VBOX_STRICT)
 /**
  * Stringifies a PGMPOOLKIND value.
  */
@@ -5514,5 +5514,5 @@ static const char *pgmPoolPoolKindToStr(uint8_t enmKind)
     }
     return "Unknown kind!";
 }
-#endif /* LOG_ENABLED*/
+#endif /* LOG_ENABLED || VBOX_STRICT */
 
