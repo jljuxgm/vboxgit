@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 43657 2012-10-16 15:34:05Z vboxsync $ */
+/* $Id: PDMInternal.h 44355 2013-01-24 13:27:28Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1085,12 +1085,13 @@ typedef struct PDMUSERPERVM
     /** Head of the templates. Singly linked, protected by ListCritSect. */
     R3PTRTYPE(PPDMASYNCCOMPLETIONTEMPLATE) pAsyncCompletionTemplates;
     /** @} */
+
+    /** Global block cache data. */
+    R3PTRTYPE(PPDMBLKCACHEGLOBAL)   pBlkCacheGlobal;
 #ifdef VBOX_WITH_NETSHAPER
     /** Pointer to network shaper instance. */
     R3PTRTYPE(PPDMNETSHAPER)        pNetShaper;
 #endif /* VBOX_WITH_NETSHAPER */
-
-    R3PTRTYPE(PPDMBLKCACHEGLOBAL)   pBlkCacheGlobal;
 
 } PDMUSERPERVM;
 /** Pointer to the PDM data kept in the UVM. */

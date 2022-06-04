@@ -1,4 +1,4 @@
-/* $Id: DrvNetShaper.cpp 42102 2012-07-11 10:52:50Z vboxsync $ */
+/* $Id: DrvNetShaper.cpp 44355 2013-01-24 13:27:28Z vboxsync $ */
 /** @file
  * NetShaperFilter - Network shaper filter driver.
  */
@@ -127,16 +127,8 @@ PDMBOTHCBDECL(int) drvNetShaperUp_AllocBuf(PPDMINETWORKUP pInterface, size_t cbM
     //LogFlow(("drvNetShaperUp_AllocBuf: cb=%d\n", cbMin));
     STAM_REL_COUNTER_ADD(&pThis->StatXmitBytesRequested, cbMin);
     STAM_REL_COUNTER_INC(&pThis->StatXmitPktsRequested);
-#ifdef IN_RING3
-    if (!PDMR3NsAllocateBandwidth(&pThis->Filter, cbMin))
-    {
-        STAM_REL_COUNTER_ADD(&pThis->StatXmitBytesDenied, cbMin);
-        STAM_REL_COUNTER_INC(&pThis->StatXmitPktsDenied);
-        return VERR_TRY_AGAIN;
-    }
-#endif
-#ifdef IN_RING0
-    if (!PDMR0NsAllocateBandwidth(&pThis->Filter, cbMin))
+#if defined(IN_RING3) || defined(IN_RING0)
+    if (!PDMNsAllocateBandwidth(&pThis->Filter, cbMin))
     {
         STAM_REL_COUNTER_ADD(&pThis->StatXmitBytesDenied, cbMin);
         STAM_REL_COUNTER_INC(&pThis->StatXmitPktsDenied);
@@ -476,7 +468,7 @@ static DECLCALLBACK(int) drvR3NetShaperConstruct(PPDMDRVINS pDrvIns, PCFGMNODE p
     else
         rc = VINF_SUCCESS;
 
-    pThis->Filter.pIDrvNet = &pThis->INetworkDown;
+    pThis->Filter.pIDrvNetR3 = &pThis->INetworkDown;
     rc = PDMDrvHlpNetShaperAttach(pDrvIns, pThis->pszBwGroup, &pThis->Filter);
     if (RT_FAILURE(rc))
     {
