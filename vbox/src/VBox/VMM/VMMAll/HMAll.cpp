@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: HMAll.cpp 43466 2012-09-28 14:47:29Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -304,7 +304,11 @@ VMMDECL(int) HMInvalidatePhysPage(PVM pVM, RTGCPHYS GCPhys)
             PVMCPU pVCpu = &pVM->aCpus[idCpu];
 
             if (idThisCpu == idCpu)
+            {
+                /** @todo r=ramshankar: Intel does not support flushing by guest physical
+                 *        address either. See comment in VMXR0InvalidatePhysPage(). Fix this. */
                 VMXR0InvalidatePhysPage(pVM, pVCpu, GCPhys);
+            }
             else
             {
                 VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);

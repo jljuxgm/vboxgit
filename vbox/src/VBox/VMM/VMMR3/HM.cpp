@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 43455 2012-09-27 14:00:03Z vboxsync $ */
+/* $Id: HM.cpp 43466 2012-09-28 14:47:29Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -556,6 +556,7 @@ static int hmR3InitCPU(PVM pVM)
         HM_REG_COUNTER(&pVCpu->hm.s.StatFlushTLBWorldSwitch,    "/HM/CPU%d/Flush/TLB/Switch");
         HM_REG_COUNTER(&pVCpu->hm.s.StatNoFlushTLBWorldSwitch,  "/HM/CPU%d/Flush/TLB/Skipped");
         HM_REG_COUNTER(&pVCpu->hm.s.StatFlushASID,              "/HM/CPU%d/Flush/TLB/ASID");
+        HM_REG_COUNTER(&pVCpu->hm.s.StatFlushNP,                "/HM/CPU%d/Flush/TLB/NP");
         HM_REG_COUNTER(&pVCpu->hm.s.StatFlushTLBInvlpga,        "/HM/CPU%d/Flush/TLB/PhysInvl");
         HM_REG_COUNTER(&pVCpu->hm.s.StatTlbShootdown,           "/HM/CPU%d/Flush/Shootdown/Page");
         HM_REG_COUNTER(&pVCpu->hm.s.StatTlbShootdownFlush,      "/HM/CPU%d/Flush/Shootdown/TLB");
