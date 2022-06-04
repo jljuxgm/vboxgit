@@ -1,4 +1,4 @@
-# $Id: Makefile 46646 2013-06-19 09:06:06Z vboxsync $
+# $Id: Makefile 47199 2013-07-16 15:45:42Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -94,6 +94,7 @@ OBJS   = \
 	r0drv/linux/spinlock-r0drv-linux.o \
 	r0drv/linux/thread-r0drv-linux.o \
 	r0drv/linux/thread2-r0drv-linux.o \
+	r0drv/linux/threadctxhooks-r0drv-linux.o \
 	r0drv/linux/time-r0drv-linux.o \
 	r0drv/linux/timer-r0drv-linux.o \
 	r0drv/generic/semspinmutex-r0drv-generic.o \

@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemptionDriver.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: tstR0ThreadPreemptionDriver.cpp 47199 2013-07-16 15:45:42Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -239,6 +239,23 @@ RTThreadSleep(250); /** @todo fix GIP initialization? */
     Req.szMsg[0] = '\0';
     RTTESTI_CHECK_RC(rc = SUPR3CallR0Service("tstR0ThreadPreemption", sizeof("tstR0ThreadPreemption") - 1,
                                              TSTR0THREADPREMEPTION_NESTED, 0, &Req.Hdr), VINF_SUCCESS);
+    if (Req.szMsg[0] == '!')
+        RTTestIFailed("%s", &Req.szMsg[1]);
+    else if (Req.szMsg[0])
+        RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", Req.szMsg);
+
+
+    /*
+     * Test thread-context hooks.
+     */
+    RTTestSub(hTest, "RTThreadCtxHooks");
+    Req.Hdr.u32Magic = SUPR0SERVICEREQHDR_MAGIC;
+    Req.Hdr.cbReq = sizeof(Req);
+    Req.szMsg[0] = '\0';
+    RTTESTI_CHECK_RC(rc = SUPR3CallR0Service("tstR0ThreadPreemption", sizeof("tstR0ThreadPreemption") - 1,
+                                             TSTR0THREADPREEMPTION_CTXHOOKS, 0, &Req.Hdr), VINF_SUCCESS);
+    if (RT_FAILURE(rc))
+        return RTTestSummaryAndDestroy(hTest);
     if (Req.szMsg[0] == '!')
         RTTestIFailed("%s", &Req.szMsg[1]);
     else if (Req.szMsg[0])
