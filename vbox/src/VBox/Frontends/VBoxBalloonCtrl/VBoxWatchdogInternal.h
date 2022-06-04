@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdogInternal.h 43734 2012-10-25 06:58:17Z vboxsync $ */
+/* $Id: VBoxWatchdogInternal.h 43738 2012-10-25 13:09:26Z vboxsync $ */
 /** @file
  * VBoxWatchdog - VirtualBox Watchdog Service.
  */
@@ -143,8 +143,10 @@ typedef struct
      * @returns 0 if we parsed, -1 if it didn't and anything else means exit.
      * @param   argc        Argument count.
      * @param   argv        Arguments.
+     * @param   piConsumed  How many parameters this callback consumed from the
+     *                      remaining arguments passed in.
      */
-    DECLCALLBACKMEMBER(int, pfnOption)(int argc, char *argv[]);
+    DECLCALLBACKMEMBER(int, pfnOption)(int argc, char *argv[], int *piConsumed);
 
     /**
      * Called before parsing arguments.

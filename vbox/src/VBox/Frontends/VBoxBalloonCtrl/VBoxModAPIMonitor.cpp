@@ -1,5 +1,5 @@
 
-/* $Id: VBoxModAPIMonitor.cpp 43734 2012-10-25 06:58:17Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 43738 2012-10-25 13:09:26Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -388,12 +388,13 @@ static DECLCALLBACK(int) VBoxModAPIMonitorPreInit(void)
     return VINF_SUCCESS;
 }
 
-static DECLCALLBACK(int) VBoxModAPIMonitorOption(int argc, char *argv[])
+static DECLCALLBACK(int) VBoxModAPIMonitorOption(int argc, char *argv[], int *piConsumed)
 {
     if (!argc) /* Take a shortcut. */
         return -1;
 
-    AssertPtrReturn(argv, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(argv, VERR_INVALID_POINTER);
+    AssertPtrReturn(piConsumed, VERR_INVALID_POINTER);
 
     RTGETOPTSTATE GetState;
     int rc = RTGetOptInit(&GetState, argc, argv,
@@ -440,7 +441,12 @@ static DECLCALLBACK(int) VBoxModAPIMonitorOption(int argc, char *argv[])
                 rc = -1; /* We don't handle this option, skip. */
                 break;
         }
+
+        /* At the moment we only process one option at a time. */
+        break;
     }
+
+    *piConsumed += GetState.iNext - 1;
 
     return rc;
 }
