@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 46183 2013-05-21 00:26:23Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.h 46385 2013-06-04 14:12:21Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -109,6 +109,8 @@ private:
     PRTUTF16                              m_apwszCredentials[VBOXCREDPROV_NUM_FIELDS];
     /** Pointer to event handler. */
     ICredentialProviderCredentialEvents  *m_pEvents;
+    /** Flag indicating whether credentials already were retrieved. */
+    bool                                  m_fHaveCreds;
 };
 #endif /* !___VBOX_CREDPROV_CREDENTIAL_H___ */
 
