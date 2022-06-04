@@ -1,4 +1,4 @@
-/* $Id: vboxmouse.c 42203 2012-07-18 10:13:39Z vboxsync $ */
+/* $Id: vboxmouse.c 42205 2012-07-18 12:35:41Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -515,7 +515,6 @@ void vbmsSolNotify(void *pvState)
 {
     PVBMSSTATE pState = (PVBMSSTATE)pvState;
     int rc;
-    LogRelFlow((DEVICE_NAME "::NativeISRMousePollEvent:\n"));
 
     pState->pMouseStatusReq->mouseFeatures = 0;
     pState->pMouseStatusReq->pointerXPos = 0;
