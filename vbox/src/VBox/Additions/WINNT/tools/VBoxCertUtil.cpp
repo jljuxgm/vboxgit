@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtil.cpp 42938 2012-08-23 10:33:33Z vboxsync $ */
+/* $Id: VBoxCertUtil.cpp 42974 2012-08-24 12:59:52Z vboxsync $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
@@ -615,7 +615,7 @@ static RTEXITCODE cmdAddTrustedPublisher(int argc, char **argv)
                 if (pszTrustedCert)
                     return RTMsgErrorExit(RTEXITCODE_SUCCESS,
                                           "You've already specified '%s' as trusted certificate.",
-                                          pszRootCert);
+                                          pszTrustedCert);
                 pszTrustedCert = ValueUnion.psz;
                 break;
 
