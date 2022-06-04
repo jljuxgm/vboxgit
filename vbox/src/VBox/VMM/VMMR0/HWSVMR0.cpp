@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 46444 2013-06-07 17:02:46Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -837,11 +837,7 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
                 Log(("Forcing X86_CR0_NE!!!\n"));
 
                 /* Also catch floating point exceptions as we need to report them to the guest in a different way. */
-                if (!pVCpu->hm.s.fFPUOldStyleOverride)
-                {
-                    pVmcb->ctrl.u32InterceptException |= RT_BIT(X86_XCPT_MF);
-                    pVCpu->hm.s.fFPUOldStyleOverride = true;
-                }
+                pVmcb->ctrl.u32InterceptException |= RT_BIT(X86_XCPT_MF);
             }
             val |= X86_CR0_NE;  /* always turn on the native mechanism to report FPU errors (old style uses interrupts) */
         }
