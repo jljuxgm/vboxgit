@@ -1,4 +1,4 @@
-/* $Id: VBoxFilePathSelectorWidget.cpp 41370 2012-05-21 13:57:04Z vboxsync $ */
+/* $Id: VBoxFilePathSelectorWidget.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -130,7 +130,8 @@ void VBoxFilePathSelectorWidget::setEditable (bool aOn)
 
         /* Installing necessary event filters */
         lineEdit()->installEventFilter (this);
-    }else
+    }
+    else
     {
         if (lineEdit())
         {

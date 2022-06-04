@@ -1,10 +1,10 @@
-/* $Id: VBoxUtils-darwin.cpp 36534 2011-04-04 15:00:49Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  * Qt GUI - Utility Classes and Functions specific to Darwin.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -530,7 +530,8 @@ QString darwinResolveAlias(const QString &strFile)
             if ((err = FSRefMakePath(&fileRef, (UInt8*)pszPath, 1024)) != noErr)
                 break;
             strTarget = QString::fromUtf8(pszPath);
-        }else
+        }
+        else
             strTarget = strFile;
     }while(0);
 

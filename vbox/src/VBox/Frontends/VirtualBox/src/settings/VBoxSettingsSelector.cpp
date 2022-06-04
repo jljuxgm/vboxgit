@@ -1,4 +1,4 @@
-/* $Id: VBoxSettingsSelector.cpp 37610 2011-06-23 12:26:14Z vboxsync $ */
+/* $Id: VBoxSettingsSelector.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -437,7 +437,8 @@ QWidget *VBoxSettingsToolBarSelector::addItem (const QString &aBigIcon,
 //                 this, SLOT (settingsGroupChanged (int)));
         item->setTabWidget (tabWidget);
         result = tabWidget;
-    }else
+    }
+    else
     {
         SelectorActionItem *parent = findActionItem (aParentId);
         if (parent)

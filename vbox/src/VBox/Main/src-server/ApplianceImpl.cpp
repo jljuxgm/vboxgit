@@ -1,11 +1,11 @@
-/* $Id: ApplianceImpl.cpp 41232 2012-05-10 12:08:43Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -798,7 +798,8 @@ void Appliance::waitForAsyncProgress(ComObjPtr<Progress> &pProgressThis,
                 rc = pProgressThis->SetNextOperation(bstr.raw(), currentWeight);
                 if (FAILED(rc)) throw rc;
                 ++cOp;
-            }else
+            }
+            else
                 break;
         }
 

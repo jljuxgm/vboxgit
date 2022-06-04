@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 42084 2012-07-10 10:17:20Z vboxsync $ */
+/* $Id: SessionImpl.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -672,6 +672,20 @@ STDMETHODIMP Session::OnClipboardModeChange(ClipboardMode_T aClipboardMode)
     AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
 
     return mConsole->onClipboardModeChange(aClipboardMode);
+}
+
+STDMETHODIMP Session::OnDragAndDropModeChange(DragAndDropMode_T aDragAndDropMode)
+{
+    LogFlowThisFunc(("\n"));
+
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->onDragAndDropModeChange(aDragAndDropMode);
 }
 
 STDMETHODIMP Session::OnUSBDeviceAttach(IUSBDevice *aDevice,

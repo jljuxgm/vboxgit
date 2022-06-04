@@ -1,10 +1,10 @@
-/* $Id: tstRTUri.cpp 39447 2011-11-29 10:02:42Z vboxsync $ */
+/* $Id: tstRTUri.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  * IPRT Testcase - URI parsing and creation.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -205,7 +205,8 @@ static void tstScheme(size_t iCount, const char *pszUri, const char *pszTest)
     {
         RTTESTI_CHECK_MSG_RETV(pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
         RTTESTI_CHECK_MSG(RTStrCmp(pszResult, pszTest) == 0, ("Result '%s' != '%s'", pszResult, pszTest));
-    }else
+    }
+    else
         RTTESTI_CHECK_MSG(!pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
 
     if (pszResult)
@@ -221,7 +222,8 @@ static void tstAuthority(size_t iCount, const char *pszUri, const char *pszTest)
     {
         RTTESTI_CHECK_MSG_RETV(pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
         RTTESTI_CHECK_MSG(RTStrCmp(pszResult, pszTest) == 0, ("Result '%s' != '%s'", pszResult, pszTest));
-    }else
+    }
+    else
         RTTESTI_CHECK_MSG(!pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
 
     if (pszResult)
@@ -237,7 +239,8 @@ static void tstPath(size_t iCount, const char *pszUri, const char *pszTest)
     {
         RTTESTI_CHECK_MSG_RETV(pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
         RTTESTI_CHECK_MSG(RTStrCmp(pszResult, pszTest) == 0, ("Result '%s' != '%s'", pszResult, pszTest));
-    }else
+    }
+    else
         RTTESTI_CHECK_MSG(!pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
 
     if (pszResult)
@@ -253,7 +256,8 @@ static void tstQuery(size_t iCount, const char *pszUri, const char *pszTest)
     {
         RTTESTI_CHECK_MSG_RETV(pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
         RTTESTI_CHECK_MSG(RTStrCmp(pszResult, pszTest) == 0, ("Result '%s' != '%s'", pszResult, pszTest));
-    }else
+    }
+    else
         RTTESTI_CHECK_MSG(!pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
 
     if (pszResult)
@@ -269,7 +273,8 @@ static void tstFragment(size_t iCount, const char *pszUri, const char *pszTest)
     {
         RTTESTI_CHECK_MSG_RETV(pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
         RTTESTI_CHECK_MSG(RTStrCmp(pszResult, pszTest) == 0, ("Result '%s' != '%s'", pszResult, pszTest));
-    }else
+    }
+    else
         RTTESTI_CHECK_MSG(!pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
 
     if (pszResult)
@@ -285,7 +290,8 @@ static void tstCreate(size_t iCount, const char *pszScheme, const char *pszAutho
     {
         RTTESTI_CHECK_MSG_RETV(pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
         RTTESTI_CHECK_MSG(RTStrCmp(pszResult, pszTest) == 0, ("Result '%s' != '%s'", pszResult, pszTest));
-    }else
+    }
+    else
         RTTESTI_CHECK_MSG(!pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
 
     if (pszResult)
@@ -302,7 +308,8 @@ static void tstFileCreate(size_t iCount, const char *pszPath, const char *pszTes
     {
         RTTESTI_CHECK_MSG_RETV(pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
         RTTESTI_CHECK_MSG(RTStrCmp(pszResult, pszTest) == 0, ("Result '%s' != '%s'", pszResult, pszTest));
-    }else
+    }
+    else
         RTTESTI_CHECK_MSG(!pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
 
     if (pszResult)
@@ -319,7 +326,8 @@ static void tstFilePath(size_t iCount, const char *pszUri, const char *pszTest, 
     {
         RTTESTI_CHECK_MSG_RETV(pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
         RTTESTI_CHECK_MSG(RTStrCmp(pszResult, pszTest) == 0, ("Result '%s' != '%s'", pszResult, pszTest));
-    }else
+    }
+    else
         RTTESTI_CHECK_MSG(!pszResult, ("Result '%s' != '%s'", pszResult, pszTest));
 
     if (pszResult)

@@ -1,4 +1,4 @@
-/* $Id: QIStateIndicator.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: QIStateIndicator.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -136,7 +136,8 @@ void QIStateIndicator::mousePressEvent (QMouseEvent *aEv)
             aEv->accept();
         else
             QFrame::mousePressEvent (aEv);
-    }else
+    }
+    else
         QFrame::mousePressEvent (aEv);
 }
 #endif /* Q_WS_MAC */

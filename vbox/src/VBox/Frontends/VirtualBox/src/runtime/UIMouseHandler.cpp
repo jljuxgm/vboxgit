@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -823,6 +823,7 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
             cpnt.setY((int)(cpnt.y() * yRatio));
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
+# ifdef VBOX_WITH_DRAG_AND_DROP_GH
             if (   cpnt.x() < 0
                 || cpnt.x() > iCw - 1
                 || cpnt.y() < 0
@@ -835,6 +836,7 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
                     return false;
                 }
             }
+# endif
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 
             /* Bound coordinates: */

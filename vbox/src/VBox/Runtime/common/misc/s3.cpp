@@ -1,10 +1,10 @@
-/* $Id: s3.cpp 39985 2012-02-03 13:40:39Z vboxsync $ */
+/* $Id: s3.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  * IPRT - S3 communication API.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -257,7 +257,8 @@ static int rtS3Perform(PRTS3INTERNAL pS3Int)
             case 403: rc = VERR_S3_ACCESS_DENIED; break; /* Access denied */
             case 404: rc = VERR_S3_NOT_FOUND; break; /* Site not found */
         }
-    }else
+    }
+    else
     {
         switch(code)
         {

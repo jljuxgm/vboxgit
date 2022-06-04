@@ -1,4 +1,4 @@
-/* $Id: UIVMListView.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIVMListView.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -528,12 +528,14 @@ void UIVMListView::checkDragEvent(QDragMoveEvent *pEvent)
                 pEvent->setDropAction(action);
                 pEvent->accept();
             }
-        }else if (   VBoxGlobal::hasAllowedExtension(file, OVFFileExts)
+        }
+        else if (   VBoxGlobal::hasAllowedExtension(file, OVFFileExts)
                   && pEvent->possibleActions().testFlag(Qt::CopyAction))
         {
             pEvent->setDropAction(Qt::CopyAction);
             pEvent->accept();
-        }else if (   VBoxGlobal::hasAllowedExtension(file, VBoxExtPackFileExts)
+        }
+        else if (   VBoxGlobal::hasAllowedExtension(file, VBoxExtPackFileExts)
                   && pEvent->possibleActions().testFlag(Qt::CopyAction))
         {
             pEvent->setDropAction(Qt::CopyAction);
@@ -933,7 +935,8 @@ QRect UIVMItemPainter::rect(const QStyleOptionViewItem &aOption,
             {
                 QFontMetrics fm(fontMetric(aIndex, UIVMItemModel::SnapShotFontRole));
                 return QRect(QPoint(0, 0), fm.size(0, QString("(%1)").arg(text)));
-            }else
+            }
+            else
                 return QRect();
             break;
         }
