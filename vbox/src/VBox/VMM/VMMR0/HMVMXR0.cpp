@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45945 2013-05-08 11:47:48Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45946 2013-05-08 11:48:30Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5151,7 +5151,7 @@ static int hmR0VmxSaveGuestControlRegs(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
                 if (VMMRZCallRing3IsEnabled(pVCpu))
                 {
                     PGMGstUpdatePaePdpes(pVCpu, &pVCpu->hm.s.aPdpes[0]);
-                    Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_HM_UPDATE_CR3));
+                    Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_HM_UPDATE_PAE_PDPES));
                 }
                 else
                 {
