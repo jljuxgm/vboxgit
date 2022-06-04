@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 44981 2013-03-11 12:15:26Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 44982 2013-03-11 12:58:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -140,11 +140,6 @@ void UIMachineLogicFullscreen::prepareActionGroups()
 
     /* Adjust-window action isn't allowed in fullscreen: */
     gActionPool->action(UIActionIndexRuntime_Simple_AdjustWindow)->setVisible(false);
-
-    /* Add the view menu: */
-    QMenu *pMenu = gActionPool->action(UIActionIndexRuntime_Menu_View)->menu();
-    m_pScreenLayout->setViewMenu(pMenu);
-    pMenu->setVisible(true);
 }
 
 #ifdef Q_WS_MAC
@@ -191,6 +186,15 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
 
     /* Remember what machine window(s) created: */
     setMachineWindowsCreated(true);
+}
+
+void UIMachineLogicFullscreen::prepareMenu()
+{
+    /* Call to base-class: */
+    UIMachineLogic::prepareMenu();
+
+    /* Finally update view-menu: */
+    m_pScreenLayout->setViewMenu(gActionPool->action(UIActionIndexRuntime_Menu_View)->menu());
 }
 
 void UIMachineLogicFullscreen::cleanupMachineWindows()
