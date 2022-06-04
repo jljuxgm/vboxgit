@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 45219 2013-03-28 04:20:50Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 45288 2013-04-02 13:27:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -452,7 +452,7 @@ void UIGlobalSettingsNetwork::sltDelInterface()
     /* Get interface name: */
     QString strInterfaceName(pItem->name());
     /* Asking user about deleting selected network interface: */
-    if (msgCenter().confirmDeletingHostInterface(strInterfaceName, this) == QIMessageBox::Cancel)
+    if (!msgCenter().confirmDeletingHostInterface(strInterfaceName, this))
         return;
 
     /* Prepare useful variables: */

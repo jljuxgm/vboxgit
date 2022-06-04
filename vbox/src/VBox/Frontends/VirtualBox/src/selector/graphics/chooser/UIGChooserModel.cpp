@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 45281 2013-04-02 11:08:27Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 45288 2013-04-02 13:27:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2005,7 +2005,6 @@ void UIGroupDefinitionSaveThread::run()
          * Every of them is mandatory in order to continue
          * with common cleanup in case of failure.
          * We have to simulate a try-catch block. */
-        bool fSuccess = false;
         CSession session;
         CMachine machine;
         do
@@ -2023,24 +2022,23 @@ void UIGroupDefinitionSaveThread::run()
             /* 3. Set new groups: */
             machine.SetGroups(newGroupList.toVector());
             if (!machine.isOk())
+            {
+                msgCenter().cannotSetGroups(machine);
                 break;
+            }
 
             /* 4. Save settings: */
             machine.SaveSettings();
             if (!machine.isOk())
+            {
+                msgCenter().cannotSaveMachineSettings(machine);
                 break;
-
-            /* Transaction complete: */
-            fSuccess = true;
+            }
         } while (0);
 
         /* Cleanup if necessary: */
-        if (!fSuccess)
-        {
-            if (!machine.isNull())
-                msgCenter().cannotSaveMachineSettings(machine);
+        if (machine.isNull() || !machine.isOk())
             emit sigReload(strId);
-        }
         if (!session.isNull())
             session.UnlockMachine();
     }
