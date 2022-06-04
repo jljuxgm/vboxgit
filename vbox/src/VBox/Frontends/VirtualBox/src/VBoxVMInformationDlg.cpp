@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 47162 2013-07-15 14:19:04Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 47617 2013-08-08 18:03:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -531,7 +531,7 @@ void VBoxVMInformationDlg::refreshStatistics()
     {
         QString storageStat;
 
-        result += hdrRow.arg (":/attachment_16px.png").arg (tr ("Storage Statistics"));
+        result += hdrRow.arg (":/hd_16px.png").arg (tr ("Storage Statistics"));
 
         CStorageControllerVector controllers = mSession.GetMachine().GetStorageControllers();
         int ideCount = 0, sataCount = 0, scsiCount = 0;

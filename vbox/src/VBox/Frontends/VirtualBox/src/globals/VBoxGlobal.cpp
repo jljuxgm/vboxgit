@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 47617 2013-08-08 18:03:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1338,7 +1338,7 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
 
         report += sectionTpl
             .arg (rows) /* rows */
-            .arg (":/attachment_16px.png", /* icon */
+            .arg (":/hd_16px.png", /* icon */
                   "#storage", /* link */
                   tr ("Storage", "details report"), /* title */
                   item); /* items */
