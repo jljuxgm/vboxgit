@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 45646 2013-04-19 13:48:09Z vboxsync $ */
+/* $Id: DevAHCI.cpp 45649 2013-04-19 16:05:03Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -1060,8 +1060,6 @@ static int PortCmdIssue_w(PAHCI ahci, PAHCIPort pAhciPort, uint32_t iReg, uint32
     if (   (pAhciPort->regCMD & AHCI_PORT_CMD_CR)
         && u32Value > 0)
     {
-        uint32_t u32Tasks;
-
         /*
          * Clear all tasks which are already marked as busy. The guest
          * shouldn't write already busy tasks actually.
