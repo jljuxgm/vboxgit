@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 45022 2013-03-13 15:06:15Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 45190 2013-03-26 10:59:17Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -267,7 +267,6 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--lptmode<1-N> <devicename>]\n"
 #endif
                      "                            [--guestmemoryballoon <balloonsize in MB>]\n"
-                     "                            [--gueststatisticsinterval <seconds>]\n"
                      "                            [--audio none|null", SEP);
         if (fWin)
         {
@@ -445,7 +444,6 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                                        <hostport>,[<guestip>],<guestport> |\n"
                      "                            natpf<1-N> delete <rulename> |\n"
                      "                            guestmemoryballoon <balloonsize in MB> |\n"
-                     "                            gueststatisticsinterval <seconds> |\n"
                      "                            usbattach <uuid>|<address> |\n"
                      "                            usbdetach <uuid>|<address> |\n"
                      "                            clipboard disabled|hosttoguest|guesttohost|\n"
