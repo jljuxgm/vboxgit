@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 43334 2012-09-14 17:34:33Z vboxsync $ */
+/* $Id: VBoxMPIf.h 43360 2012-09-19 17:49:07Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -575,6 +575,8 @@ DECLINLINE(UINT) vboxWddmCalcBitsPerPixel(D3DDDIFORMAT enmFormat)
             return 8;
         case D3DDDIFMT_INDEX32:
             return 8;
+        case D3DDDIFMT_R32F:
+            return 32;
         default:
             AssertBreakpoint();
             return 0;

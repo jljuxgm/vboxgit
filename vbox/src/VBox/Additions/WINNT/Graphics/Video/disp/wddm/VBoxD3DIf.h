@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.h 43236 2012-09-07 09:32:42Z vboxsync $ */
+/* $Id: VBoxD3DIf.h 43360 2012-09-19 17:49:07Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -103,7 +103,6 @@ DECLINLINE(HRESULT) VBoxD3DIfSurfGet(PVBOXWDDMDISP_RESOURCE pRc, UINT iAlloc, ID
         }
         case VBOXDISP_D3DIFTYPE_CUBE_TEXTURE:
         {
-            Assert(0);
             IDirect3DCubeTexture9 *pD3DIfCubeTex = (IDirect3DCubeTexture9*)pD3DIf;
             IDirect3DSurface9 *pSurfaceLevel;
             Assert(pD3DIfCubeTex);
