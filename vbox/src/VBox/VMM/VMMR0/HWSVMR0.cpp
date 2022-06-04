@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 45786 2013-04-26 22:35:59Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 45957 2013-05-08 20:00:08Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1523,7 +1523,7 @@ ResumeExecution:
     }
 
 #ifdef VBOX_WITH_KERNEL_USING_XMM
-    hmR0SVMRunWrapXMM(pVCpu->hm.s.svm.HCPhysVMCBHost, pVCpu->hm.s.svm.HCPhysVMCB, pCtx, pVM, pVCpu,
+    HMR0SVMRunWrapXMM(pVCpu->hm.s.svm.HCPhysVMCBHost, pVCpu->hm.s.svm.HCPhysVMCB, pCtx, pVM, pVCpu,
                           pVCpu->hm.s.svm.pfnVMRun);
 #else
     pVCpu->hm.s.svm.pfnVMRun(pVCpu->hm.s.svm.HCPhysVMCBHost, pVCpu->hm.s.svm.HCPhysVMCB, pCtx, pVM, pVCpu);
