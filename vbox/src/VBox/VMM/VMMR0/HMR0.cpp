@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: HMR0.cpp 46724 2013-06-21 12:48:38Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1377,7 +1377,7 @@ VMMR0_INT_DECL(int) HMR0SetupVM(PVM pVM)
 
     /* On first entry we'll sync everything. */
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
-        pVM->aCpus[i].hm.s.fContextUseFlags = HM_CHANGED_ALL;
+        pVM->aCpus[i].hm.s.fContextUseFlags = (HM_CHANGED_HOST_CONTEXT | HM_CHANGED_ALL_GUEST);
 
     /* Enable VT-x or AMD-V if local init is required. */
     int rc;

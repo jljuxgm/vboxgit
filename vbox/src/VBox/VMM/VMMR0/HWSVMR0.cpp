@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 46659 2013-06-19 13:42:28Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 46724 2013-06-21 12:48:38Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2810,7 +2810,7 @@ end:
         /* On the next entry we'll sync everything. */
         /** @todo we can do better than this */
         /* Not in the VINF_PGM_CHANGE_MODE though! */
-        pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_ALL;
+        pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_HOST_CONTEXT | HM_CHANGED_ALL_GUEST;
     }
 
     /* Translate into a less severe return code */
