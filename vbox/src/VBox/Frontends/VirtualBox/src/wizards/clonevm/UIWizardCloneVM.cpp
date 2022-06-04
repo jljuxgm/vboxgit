@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 45328 2013-04-04 08:49:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -87,13 +87,13 @@ bool UIWizardCloneVM::cloneVM()
 
             if (!progress.isOk() || progress.GetResultCode() != 0)
             {
-                msgCenter().cannotTakeSnapshot(progress);
+                msgCenter().cannotTakeSnapshot(progress, m_machine.GetName(), this);
                 return false;
             }
         }
         else
         {
-            msgCenter().cannotTakeSnapshot(console);
+            msgCenter().cannotTakeSnapshot(console, m_machine.GetName(), this);
             return false;
         }
 

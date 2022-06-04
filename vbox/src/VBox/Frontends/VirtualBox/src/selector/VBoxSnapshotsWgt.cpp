@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 45314 2013-04-03 17:18:31Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 45328 2013-04-04 08:49:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -858,17 +858,16 @@ bool VBoxSnapshotsWgt::takeSnapshot()
                     if (console.isOk())
                     {
                         /* Show the take-snapshot progress: */
-                        msgCenter().showModalProgressDialog(progress, mMachine.GetName(), ":/progress_snapshot_create_90px.png",
-                                                            msgCenter().mainWindowShown(), true);
-                        if (progress.GetResultCode() != 0)
+                        msgCenter().showModalProgressDialog(progress, mMachine.GetName(), ":/progress_snapshot_create_90px.png");
+                        if (!progress.isOk() || progress.GetResultCode() != 0)
                         {
-                            msgCenter().cannotTakeSnapshot(progress);
+                            msgCenter().cannotTakeSnapshot(progress, mMachine.GetName());
                             fIsValid = false;
                         }
                     }
                     else
                     {
-                        msgCenter().cannotTakeSnapshot(console);
+                        msgCenter().cannotTakeSnapshot(console, mMachine.GetName());
                         fIsValid = false;
                     }
                 }
