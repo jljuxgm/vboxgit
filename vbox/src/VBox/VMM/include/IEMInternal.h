@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 47407 2013-07-25 19:37:36Z vboxsync $ */
+/* $Id: IEMInternal.h 47411 2013-07-25 20:17:43Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1106,6 +1106,11 @@ FNIEMAIMPLMEDIAPSHUF iemAImpl_pshufhw, iemAImpl_pshuflw, iemAImpl_pshufd;
 IEM_DECL_IMPL_DEF(void, iemAImpl_pshufw,(PCX86FXSTATE pFpuState, uint64_t *pu64Dst, uint64_t const *pu64Src, uint8_t bEvil));
 /** @} */
 
+/** @name Media (SSE/MMX/AVX) operation: Move Byte Mask
+ * @{ */
+IEM_DECL_IMPL_DEF(void, iemAImpl_pmovmskb_u64,(PCX86FXSTATE pFpuState, uint64_t *pu64Dst, uint64_t const *pu64Src));
+IEM_DECL_IMPL_DEF(void, iemAImpl_pmovmskb_u128,(PCX86FXSTATE pFpuState, uint64_t *pu64Dst, uint128_t const *pu128Src));
+/** @} */
 
 
 

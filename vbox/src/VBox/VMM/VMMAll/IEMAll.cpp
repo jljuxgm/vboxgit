@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 47407 2013-07-25 19:37:36Z vboxsync $ */
+/* $Id: IEMAll.cpp 47411 2013-07-25 20:17:43Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -6863,6 +6863,15 @@ static VBOXSTRICTRC iemMemMarkSelDescAccessed(PIEMCPU pIemCpu, uint16_t uSel)
     do { \
         if (   ((pIemCpu)->CTX_SUFF(pCtx)->cr0 & X86_CR0_EM) \
             || !IEM_IS_INTEL_CPUID_FEATURE_PRESENT_EDX(X86_CPUID_FEATURE_EDX_MMX) ) \
+            return iemRaiseUndefinedOpcode(pIemCpu); \
+        if (pIemCpu->CTX_SUFF(pCtx)->cr0 & X86_CR0_TS) \
+            return iemRaiseDeviceNotAvailable(pIemCpu); \
+    } while (0)
+#define IEM_MC_MAYBE_RAISE_MMX_RELATED_XCPT_CHECK_SSE_OR_MMXEXT() \
+    do { \
+        if (   ((pIemCpu)->CTX_SUFF(pCtx)->cr0 & X86_CR0_EM) \
+            || (   !IEM_IS_INTEL_CPUID_FEATURE_PRESENT_EDX(X86_CPUID_FEATURE_EDX_SSE) \
+                && !IEM_IS_AMD_CPUID_FEATURE_PRESENT_EDX(X86_CPUID_AMD_FEATURE_EDX_AXMMX) ) ) \
             return iemRaiseUndefinedOpcode(pIemCpu); \
         if (pIemCpu->CTX_SUFF(pCtx)->cr0 & X86_CR0_TS) \
             return iemRaiseDeviceNotAvailable(pIemCpu); \
