@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 42861 2012-08-17 12:06:25Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 43023 2012-08-28 06:43:23Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -88,7 +88,6 @@ enum
     MODIFYVM_HDB,                // deprecated
     MODIFYVM_HDD,                // deprecated
     MODIFYVM_IDECONTROLLER,      // deprecated
-    MODIFYVM_SATAIDEEMULATION,   // deprecated
     MODIFYVM_SATAPORTCOUNT,      // deprecated
     MODIFYVM_SATAPORT,           // deprecated
     MODIFYVM_SATA,               // deprecated
@@ -241,7 +240,6 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--hdb",                      MODIFYVM_HDB,                       RTGETOPT_REQ_STRING },
     { "--hdd",                      MODIFYVM_HDD,                       RTGETOPT_REQ_STRING },
     { "--idecontroller",            MODIFYVM_IDECONTROLLER,             RTGETOPT_REQ_STRING },
-    { "--sataideemulation",         MODIFYVM_SATAIDEEMULATION,          RTGETOPT_REQ_UINT32 | RTGETOPT_FLAG_INDEX },
     { "--sataportcount",            MODIFYVM_SATAPORTCOUNT,             RTGETOPT_REQ_UINT32 },
     { "--sataport",                 MODIFYVM_SATAPORT,                  RTGETOPT_REQ_STRING | RTGETOPT_FLAG_INDEX },
     { "--sata",                     MODIFYVM_SATA,                      RTGETOPT_REQ_STRING },
@@ -812,17 +810,6 @@ int handleModifyVM(HandlerArg *a)
                     errorArgument("Invalid --idecontroller argument '%s'", ValueUnion.psz);
                     rc = E_FAIL;
                 }
-                break;
-            }
-
-            case MODIFYVM_SATAIDEEMULATION: // deprecated
-            {
-                ComPtr<IStorageController> SataCtl;
-                CHECK_ERROR(machine, GetStorageControllerByName(Bstr("SATA").raw(),
-                                                                SataCtl.asOutParam()));
-
-                if (SUCCEEDED(rc))
-                    CHECK_ERROR(SataCtl, SetIDEEmulationPort(GetOptState.uIndex, ValueUnion.u32));
                 break;
             }
 

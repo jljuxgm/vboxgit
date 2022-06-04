@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 42800 2012-08-14 06:47:07Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 43023 2012-08-28 06:43:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1607,18 +1607,6 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
                         if (pBiosCfg)
                         {
                             InsertConfigString(pBiosCfg, "SataHardDiskDevice", "ahci");
-                        }
-
-                        for (uint32_t j = 0; j < 4; ++j)
-                        {
-                            static const char * const s_apszBiosConfig[4] =
-                            { "SataPrimaryMasterLUN", "SataPrimarySlaveLUN", "SataSecondaryMasterLUN", "SataSecondarySlaveLUN" };
-
-                            LONG lPortNumber = -1;
-                            hrc = ctrls[i]->GetIDEEmulationPort(j, &lPortNumber);           H();
-                            InsertConfigInteger(pCfg, g_apszIDEDrives[j], lPortNumber);
-                            if (pBiosCfg)
-                                InsertConfigInteger(pBiosCfg, s_apszBiosConfig[j], lPortNumber);
                         }
                     }
 
