@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42566 2012-08-03 08:57:23Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42567 2012-08-03 09:07:34Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -27,6 +27,8 @@
 #include "Global.h"
 #include "AutoCaller.h"
 #include "ProgressImpl.h"
+
+#include <memory> /* For auto_ptr. */
 
 #include <iprt/env.h>
 
@@ -87,7 +89,8 @@ int GuestSessionTask::setProgressSuccess(void)
         && !fCompleted)
     {
         HRESULT hr = mProgress->notifyComplete(S_OK);
-        ComAssertComRC(hr);
+        if (FAILED(hr))
+            return VERR_COM_UNEXPECTED; /** @todo Find a better rc. */
     }
 
     return VINF_SUCCESS;
@@ -102,11 +105,11 @@ int GuestSessionTask::setProgressErrorMsg(HRESULT hr, const Utf8Str &strMsg)
         && SUCCEEDED(mProgress->COMGETTER(Completed(&fCompleted)))
         && !fCompleted)
     {
-        HRESULT hr = mProgress->notifyComplete(hr,
+        HRESULT hr2 = mProgress->notifyComplete(hr,
                                                COM_IIDOF(IGuestSession),
                                                GuestSession::getStaticComponentName(),
                                                strMsg.c_str());
-        if (FAILED(hr))
+        if (FAILED(hr2))
             return VERR_COM_UNEXPECTED;
     }
     return VINF_SUCCESS;
