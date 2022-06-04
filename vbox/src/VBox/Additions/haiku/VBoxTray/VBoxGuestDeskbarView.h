@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestDeskbarView.h 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: VBoxGuestDeskbarView.h 43364 2012-09-20 12:12:09Z vboxsync $ */
 /** @file
  * VBoxGuestDeskbarView, Haiku Guest Additions, header.
  */
@@ -64,30 +64,33 @@
 
 #define REMOVE_FROM_DESKBAR_MSG 'vbqr'
 
-class VBoxGuestDeskbarView : public BView {
-public:
-			VBoxGuestDeskbarView();
-			VBoxGuestDeskbarView(BMessage *archive);
-	virtual ~VBoxGuestDeskbarView();
-	static  BArchivable	*Instantiate(BMessage *data);
-	virtual	status_t	Archive(BMessage *data, bool deep = true) const;
+class VBoxGuestDeskbarView : public BView
+{
+    public:
+        VBoxGuestDeskbarView();
+        VBoxGuestDeskbarView(BMessage *archive);
+        virtual ~VBoxGuestDeskbarView();
 
-			void		Draw(BRect rect);
-			void		AttachedToWindow();
-			void		DetachedFromWindow();
+		static  BArchivable*   Instantiate(BMessage *data);
+        virtual status_t       Archive(BMessage *data, bool deep = true) const;
 
-	virtual	void		MouseDown(BPoint point);
-	virtual void		MessageReceived(BMessage* message);
+        void                   Draw(BRect rect);
+        void                   AttachedToWindow();
+        void                   DetachedFromWindow();
 
-	static status_t		AddToDeskbar(bool force=true);
-	static status_t		RemoveFromDeskbar();
+        virtual    void        MouseDown(BPoint point);
+        virtual void           MessageReceived(BMessage *message);
 
-private:
-	status_t			_Init(BMessage *archive=NULL);
-	BBitmap				*fIcon;
+        static status_t        AddToDeskbar(bool force = true);
+        static status_t        RemoveFromDeskbar();
 
-	VBoxClipboardService *fClipboardService;
-	VBoxDisplayService *fDisplayService;
+    private:
+        status_t               _Init(BMessage *archive = NULL);
+        BBitmap               *fIcon;
+
+        VBoxClipboardService *fClipboardService;
+        VBoxDisplayService *fDisplayService;
 };
 
 #endif /* __VBOXGUESTTRAYVIEW__H */
+

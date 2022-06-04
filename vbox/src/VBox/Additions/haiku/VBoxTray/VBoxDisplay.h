@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.h 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: VBoxDisplay.h 43364 2012-09-20 12:12:09Z vboxsync $ */
 /** @file
  * VBoxDisplayService, Haiku Guest Additions, header.
  */
@@ -50,25 +50,26 @@
 #include <Handler.h>
 #include <Screen.h>
 
-class VBoxDisplayService : public BHandler {
-public:
-	VBoxDisplayService();
-	virtual ~VBoxDisplayService();
+class VBoxDisplayService : public BHandler
+{
+    public:
+        VBoxDisplayService();
+        virtual ~VBoxDisplayService();
 
-	void		Start();
+        void                Start();
 
-	virtual	void		MessageReceived(BMessage* message);
+        virtual    void     MessageReceived(BMessage *message);
 
-private:
+    private:
 
-static status_t	_ServiceThreadNub(void *_this);
-	status_t	_ServiceThread();
+        static status_t     _ServiceThreadNub(void *_this);
+        status_t            _ServiceThread();
 
-	uint32_t	fClientId;
-	thread_id	fServiceThreadID;
-volatile bool	fExiting;
-	BScreen		fScreen;
+        uint32_t            fClientId;
+        thread_id           fServiceThreadID;
+        volatile bool       fExiting;
+        BScreen             fScreen;
 };
 
-
 #endif /* __VBOXSERVICESHAREDCLIPLBOARD__H */
+
