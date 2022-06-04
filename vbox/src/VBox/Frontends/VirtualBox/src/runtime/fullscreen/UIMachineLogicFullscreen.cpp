@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 44828 2013-02-26 13:13:46Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 44846 2013-02-27 17:26:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -147,7 +147,7 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     m_pScreenLayout->update();
 
     /* Create machine window(s): */
-    for (int cScreenId = 0; cScreenId < m_pScreenLayout->guestScreenCount(); ++cScreenId)
+    for (uint cScreenId = 0; cScreenId < session().GetMachine().GetMonitorCount(); ++cScreenId)
         addMachineWindow(UIMachineWindow::create(this, cScreenId));
 
     /* Connect screen-layout change handler: */
