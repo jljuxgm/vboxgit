@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 45757 2013-04-26 07:00:59Z vboxsync $ */
+/* $Id: MachineImpl.cpp 45770 2013-04-26 10:01:43Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -167,8 +167,8 @@ Machine::HWData::HWData()
     mAccelerate2DVideoEnabled = false;
     mMonitorCount = 1;
     mVideoCaptureFile = "Test.webm";
-    mVideoCaptureWidth = 640;
-    mVideoCaptureHeight = 480;
+    mVideoCaptureWidth = 1024;
+    mVideoCaptureHeight = 768;
     mVideoCaptureEnabled = false;
 
     mHWVirtExEnabled = true;

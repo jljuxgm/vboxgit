@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 45731 2013-04-25 14:33:35Z vboxsync $ */
+/* $Id: Settings.cpp 45770 2013-04-26 10:01:43Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1746,8 +1746,8 @@ Hardware::Hardware()
           cMonitors(1),
           fAccelerate3D(false),
           fAccelerate2DVideo(false),
-          ulVideoCaptureHorzRes(640),
-          ulVideoCaptureVertRes(480),
+          ulVideoCaptureHorzRes(1024),
+          ulVideoCaptureVertRes(768),
           fVideoCaptureEnabled(false),
           strVideoCaptureFile("Test.webm"),
           firmwareType(FirmwareType_BIOS),
