@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 45302 2013-04-03 10:06:39Z vboxsync $ */
+/* $Id: DevFdc.cpp 46339 2013-05-31 11:27:02Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -226,7 +226,7 @@ static int fd_seek(fdrive_t *drv, uint8_t head, uint8_t track, uint8_t sect,
                        drv->max_track, drv->last_sect);
         return 2;
     }
-    if (sect > drv->last_sect) {
+    if (sect > drv->last_sect || sect < 1) {
         FLOPPY_DPRINTF("try to read %d %02x %02x (max=%d %d %02x %02x)\n",
                        head, track, sect, 1,
                        (drv->flags & FDISK_DBL_SIDES) == 0 ? 0 : 1,
