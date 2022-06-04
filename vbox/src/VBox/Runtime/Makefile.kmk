@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47533 2013-08-03 22:31:16Z vboxsync $
+# $Id: Makefile.kmk 47534 2013-08-04 13:52:13Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -594,6 +594,7 @@ RuntimeR3_SOURCES.win = \
 	r3/win/alloc-win.cpp \
 	r3/win/allocex-win.cpp \
 	r3/win/dir-win.cpp \
+	r3/win/direnum-win.cpp \
 	r3/win/errvars-win.cpp \
 	r3/win/fileio-win.cpp \
 	r3/win/init-win.cpp \
