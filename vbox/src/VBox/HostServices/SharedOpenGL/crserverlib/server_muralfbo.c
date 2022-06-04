@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 41404 2012-05-22 16:41:38Z vboxsync $ */
+/* $Id: server_muralfbo.c 43182 2012-09-04 19:21:41Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -99,6 +99,9 @@ void crServerCheckMuralGeometry(CRMuralInfo *mural)
 {
     int tlS, brS, trS, blS;
     int overlappingScreenCount, primaryS, i;
+
+    if (!mural->width || !mural->height)
+        return;
 
     if (cr_server.screenCount<2 && !cr_server.bForceOffscreenRendering)
     {
@@ -251,8 +254,11 @@ void crServerRedirMuralFBO(CRMuralInfo *mural, GLboolean redir)
             cr_server.head_spu->dispatch_table.BindFramebufferEXT(GL_READ_FRAMEBUFFER, mural->idFBO);
         }
 
-        crStateGetCurrent()->buffer.width = 0;
-        crStateGetCurrent()->buffer.height = 0;
+        if (cr_server.curClient && cr_server.curClient->currentMural == mural)
+        {
+            crStateGetCurrent()->buffer.width = 0;
+            crStateGetCurrent()->buffer.height = 0;
+        }
     }
     else
     {
@@ -270,8 +276,11 @@ void crServerRedirMuralFBO(CRMuralInfo *mural, GLboolean redir)
             }
         }
 
-        crStateGetCurrent()->buffer.width = mural->width;
-        crStateGetCurrent()->buffer.height = mural->height;
+        if (cr_server.curClient && cr_server.curClient->currentMural == mural)
+        {
+            crStateGetCurrent()->buffer.width = mural->width;
+            crStateGetCurrent()->buffer.height = mural->height;
+        }
     }
 
     mural->bUseFBO = redir;
