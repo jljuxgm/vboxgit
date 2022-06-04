@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 42529 2012-08-02 11:53:21Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 42600 2012-08-05 14:32:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -78,6 +78,7 @@ void UIGDetailsElementInterface::sltUpdateAppearanceFinished(const UITextTable &
     setText(text);
     cleanupThread();
     model()->updateLayout();
+    update();
 }
 
 void UIGDetailsElementInterface::cleanupThread()
@@ -158,11 +159,11 @@ UIGDetailsElementPreview::UIGDetailsElementPreview(UIGDetailsSet *pParent, bool 
     m_pPreview = new UIGMachinePreview(this);
     pLayout->addItem(m_pPreview);
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    m_pPreview->setMachine(machine());
 }
 
 void UIGDetailsElementPreview::sltUpdateAppearance()
 {
+    m_pPreview->setMachine(machine());
 }
 
 int UIGDetailsElementPreview::minimumWidthHint() const

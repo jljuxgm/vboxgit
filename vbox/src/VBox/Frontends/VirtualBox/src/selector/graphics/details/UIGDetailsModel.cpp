@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 42547 2012-08-02 14:49:58Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 42600 2012-08-05 14:32:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -154,12 +154,12 @@ void UIGDetailsModel::sltElementTypeToggled()
         detailsSettings.append(strElementTypeClosed);
     }
     vboxGlobal().virtualBox().SetExtraDataStringList(GUI_DetailsPageBoxes, detailsSettings);
-    m_pRoot->rebuildItems();
+    m_pRoot->updateItems();
 }
 
 void UIGDetailsModel::sltHandleSlidingStarted()
 {
-    m_pRoot->setItems(QList<UIVMItem*>());
+    m_pRoot->stopPopulatingItems();
 }
 
 QVariant UIGDetailsModel::data(int iKey) const
