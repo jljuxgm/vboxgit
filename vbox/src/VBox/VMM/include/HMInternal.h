@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 43977 2012-11-27 16:43:29Z vboxsync $ */
+/* $Id: HMInternal.h 44032 2012-12-04 14:11:49Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -540,14 +540,14 @@ typedef struct HMCPU
         uint32_t                    u32Alignment;
 #endif
 
-        /** Current VMX_VMCS_CTRL_PROC_EXEC_CONTROLS. */
-        uint64_t                    u64ProcCtls;
-        /** Current VMX_VMCS_CTRL_PROC_EXEC2_CONTROLS. */
-        uint64_t                    u64ProcCtls2;
-        /** Current VMX_VMCS_CTRL_EXIT_CONTROLS. */
-        uint64_t                    u64ExitCtls;
-        /** Current VMX_VMCS_CTRL_ENTRY_CONTROLS. */
-        uint64_t                    u64EntryCtls;
+        /** Current VMX_VMCS32_CTRL_PROC_EXEC_CONTROLS. */
+        uint32_t                    u32ProcCtls;
+        /** Current VMX_VMCS32_CTRL_PROC_EXEC2_CONTROLS. */
+        uint32_t                    u32ProcCtls2;
+        /** Current VMX_VMCS32_CTRL_EXIT_CONTROLS. */
+        uint32_t                    u32ExitCtls;
+        /** Current VMX_VMCS32_CTRL_ENTRY_CONTROLS. */
+        uint32_t                    u32EntryCtls;
         /** Physical address of the virtual APIC page for TPR caching. */
         RTHCPHYS                    HCPhysVirtApic;
         /** R0 memory object for the virtual APIC page for TPR caching. */
