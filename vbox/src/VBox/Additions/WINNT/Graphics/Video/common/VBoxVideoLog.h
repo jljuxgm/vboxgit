@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoLog.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxVideoLog.h 47070 2013-07-10 11:39:19Z vboxsync $ */
 
 /** @file
  * VBox Video drivers, logging helper
@@ -103,6 +103,7 @@
         WARN_NOBP(_a);     \
         BP_WARN();         \
     } while (0)
+
 #define ASSERT_WARN(_a, _w) do {\
         if(!(_a)) { \
             WARN(_w); \
@@ -116,6 +117,19 @@
         _LOGMSG(VBOX_VIDEO_LOGREL_LOGGER, "FATAL! :", _a); \
         STOP_FATAL();                             \
     } while (0)
+
+#define _DBGOP_N_TIMES(_count, _op) do {    \
+        static int fDoWarnCount = (_count); \
+        if (fDoWarnCount) { \
+            --fDoWarnCount; \
+            _op; \
+        } \
+    } while (0)
+
+#define WARN_ONCE(_a) do {    \
+        _DBGOP_N_TIMES(1, WARN(_a)); \
+    } while (0)
+
 
 #define LOG(_a) _LOGMSG(VBOX_VIDEO_LOG_LOGGER, "", _a)
 #define LOGREL(_a) _LOGMSG(VBOX_VIDEO_LOGREL_LOGGER, "", _a)

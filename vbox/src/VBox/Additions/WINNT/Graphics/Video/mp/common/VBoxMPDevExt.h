@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 46885 2013-07-01 14:02:37Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 47070 2013-07-10 11:39:19Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -114,6 +114,7 @@ typedef struct _VBOXMP_DEVEXT
    /* this is examined and swicthed by DxgkDdiSubmitCommand only! */
    volatile BOOLEAN fRenderToShadowDisabled;
 
+   BOOLEAN f3DEnabled;
    BOOLEAN fTexPresentEnabled;
 
    uint32_t u32CrConDefaultClientID;

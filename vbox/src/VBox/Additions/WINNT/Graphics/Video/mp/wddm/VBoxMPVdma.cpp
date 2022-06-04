@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 47063 2013-07-10 07:30:18Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 47070 2013-07-10 11:39:19Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -970,6 +970,12 @@ static NTSTATUS vboxVdmaCrCtlGetDefaultClientId(PVBOXMP_DEVEXT pDevExt, uint32_t
 {
     if (!pDevExt->u32CrConDefaultClientID)
     {
+        if (!pDevExt->f3DEnabled)
+        {
+            WARN(("3D disabled, should not be here!"));
+            return STATUS_UNSUCCESSFUL;
+        }
+
         int rc = VBoxMpCrCtlConConnect(&pDevExt->CrCtlCon, CR_PROTOCOL_VERSION_MAJOR, CR_PROTOCOL_VERSION_MINOR, &pDevExt->u32CrConDefaultClientID);
         if (!RT_SUCCESS(rc))
         {
