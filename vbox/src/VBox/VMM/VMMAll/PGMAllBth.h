@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: PGMAllBth.h 45407 2013-04-08 13:45:38Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1196,6 +1196,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
     if (!PdeDst.n.u1Present)
     {
         STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,InvalidatePageSkipped));
+        PGM_INVL_PG(pVCpu, GCPtrPage);
         return VINF_SUCCESS;
     }
 
