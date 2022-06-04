@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46544 2013-06-13 18:23:06Z vboxsync $
+# $Id: Config.kmk 46653 2013-06-19 12:44:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1391,9 +1391,6 @@ DEFS.win     = RT_OS_WINDOWS __WIN__
 DEFS.win.x86 = __WIN32__
 DEFS.win.amd64 = __WIN64__
 # optional defines (use environment or make commandline)
-ifdef VBOX_WITH_DEBUGGER
- DEFS += VBOX_WITH_DEBUGGER
-endif
 ifdef VBOX_WITH_STATISTICS
  DEFS += VBOX_WITH_STATISTICS
 endif
@@ -1409,14 +1406,19 @@ endif
 ifdef VBOX_WITH_64_BITS_GUESTS
  DEFS += VBOX_WITH_64_BITS_GUESTS
 endif
+
+# Don't flood CDEFS, old MASMs doesn't like too many defines.
+ifdef VBOX_WITH_DEBUGGER
+ DEFS += VBOX_WITH_DEBUGGER
+endif
 ifdef VBOX_WITH_HARDENING
- DEFS += VBOX_WITH_HARDENING
+ CDEFS += VBOX_WITH_HARDENING
 endif
 if defined(VBOX_WITH_STRICT_LOCKS) && ($(KBUILD_TYPE) == "debug" || $(KBUILD_TYPE) == "strict")
- DEFS += RT_LOCK_STRICT RT_LOCK_STRICT_ORDER
+ CDEFS += RT_LOCK_STRICT RT_LOCK_STRICT_ORDER
 endif
 ifdef VBOX_WITH_EF_WRAPS
- DEFS += RTMEM_WRAP_TO_EF_APIS RTMEM_WRAP_SOME_NEW_AND_DELETE_TO_EF
+ CDEFS += RTMEM_WRAP_TO_EF_APIS RTMEM_WRAP_SOME_NEW_AND_DELETE_TO_EF
 endif
 
 # Quoted strings should not be passed to the assemblers since they might not
@@ -5334,7 +5336,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46544 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46653 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
