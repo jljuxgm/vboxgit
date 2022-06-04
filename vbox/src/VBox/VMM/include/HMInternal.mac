@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 45291 2013-04-02 15:31:42Z vboxsync $
+;$Id: HMInternal.mac 46038 2013-05-13 18:23:09Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -51,7 +51,7 @@ struc VMCSCACHE
     .Read.uAlignment          resd    1
     .Read.aField              resd    VMCSCACHE_MAX_ENTRY
     .Read.aFieldVal           resq    VMCSCACHE_MAX_ENTRY
-%ifdef DEBUG
+%ifdef VBOX_STRICT
     .TestIn.HCPhysCpuPage     resq    1
     .TestIn.HCPhysVmcs        resq    1
     .TestIn.pCache            resq    1
