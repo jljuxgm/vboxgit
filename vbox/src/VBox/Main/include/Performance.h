@@ -1,4 +1,4 @@
-/* $Id: Performance.h 44548 2013-02-05 15:52:49Z vboxsync $ */
+/* $Id: Performance.h 44551 2013-02-05 16:21:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -536,7 +536,7 @@ namespace pm
         ULONG getScale() { return 1; }
     private:
         com::Utf8Str mShortName;
-        ULONG        mSpeed;
+        uint32_t     mSpeed;
         SubMetric   *mLinkSpeed;
     };
 
