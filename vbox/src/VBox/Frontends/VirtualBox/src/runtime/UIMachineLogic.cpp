@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 45167 2013-03-25 12:41:25Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 45192 2013-03-26 13:37:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -51,6 +51,7 @@
 #include "UISettingsDialogSpecific.h"
 #include "UIVMLogViewer.h"
 #include "UIConverter.h"
+#include "UIModalWindowManager.h"
 #ifdef Q_WS_MAC
 # include "DockIconPreview.h"
 # include "UIExtraDataEventHandler.h"
@@ -987,7 +988,9 @@ void UIMachineLogic::sltTakeSnapshot()
     CMachine machine = session().GetMachine();
 
     /* Create take-snapshot dialog: */
-    QPointer<VBoxTakeSnapshotDlg> pDlg = new VBoxTakeSnapshotDlg(activeMachineWindow(), machine);
+    QWidget *pDlgParent = mwManager().realParentWindow(activeMachineWindow());
+    QPointer<VBoxTakeSnapshotDlg> pDlg = new VBoxTakeSnapshotDlg(pDlgParent, machine);
+    mwManager().registerNewParent(pDlg, pDlgParent);
 
     /* Assign corresponding icon: */
     QString strTypeId = machine.GetOSTypeId();
