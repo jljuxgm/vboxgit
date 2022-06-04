@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 43391 2012-09-21 10:11:14Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 43394 2012-09-21 11:11:17Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -46,7 +46,7 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VINF_SUCCESS:
             break;
         case VINF_EM_RESCHEDULE_RAW:
-        case VINF_EM_RESCHEDULE_HWACC:
+        case VINF_EM_RESCHEDULE_HM:
         case VINF_EM_RAW_INTERRUPT:
         case VINF_EM_RAW_TO_R3:
         case VINF_EM_RAW_TIMER_PENDING:

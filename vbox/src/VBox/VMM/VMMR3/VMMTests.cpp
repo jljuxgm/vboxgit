@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 43391 2012-09-21 10:11:14Z vboxsync $ */
+/* $Id: VMMTests.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -558,7 +558,7 @@ VMMR3DECL(int) VMMDoHmTest(PVM pVM)
             VM_FF_CLEAR(pVM, VM_FF_TM_VIRTUAL_SYNC);
 
             uint64_t TickThisStart = ASMReadTSC();
-            rc = SUPR3CallVMMR0Fast(pVM->pVMR0, VMMR0_DO_HWACC_RUN, 0);
+            rc = SUPR3CallVMMR0Fast(pVM->pVMR0, VMMR0_DO_HM_RUN, 0);
             uint64_t TickThisElapsed = ASMReadTSC() - TickThisStart;
             if (RT_FAILURE(rc))
             {

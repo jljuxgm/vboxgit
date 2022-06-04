@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -355,7 +355,7 @@ NTSTATUS _stdcall VBoxDrvNtDeviceControl(PDEVICE_OBJECT pDevObj, PIRP pIrp)
      */
     ULONG ulCmd = pStack->Parameters.DeviceIoControl.IoControlCode;
     if (    ulCmd == SUP_IOCTL_FAST_DO_RAW_RUN
-        ||  ulCmd == SUP_IOCTL_FAST_DO_HWACC_RUN
+        ||  ulCmd == SUP_IOCTL_FAST_DO_HM_RUN
         ||  ulCmd == SUP_IOCTL_FAST_DO_NOP)
     {
 #ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION

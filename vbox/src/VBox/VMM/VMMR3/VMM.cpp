@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 43392 2012-09-21 10:21:29Z vboxsync $ */
+/* $Id: VMM.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1282,7 +1282,7 @@ VMMR3_INT_DECL(int) VMMR3HmRunGC(PVM pVM, PVMCPU pVCpu)
 #ifdef NO_SUPCALLR0VMM
             rc = VERR_GENERAL_FAILURE;
 #else
-            rc = SUPR3CallVMMR0Fast(pVM->pVMR0, VMMR0_DO_HWACC_RUN, pVCpu->idCpu);
+            rc = SUPR3CallVMMR0Fast(pVM->pVMR0, VMMR0_DO_HM_RUN, pVCpu->idCpu);
             if (RT_LIKELY(rc == VINF_SUCCESS))
                 rc = pVCpu->vmm.s.iLastGZRc;
 #endif

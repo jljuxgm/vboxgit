@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 41573 2012-06-04 21:13:23Z vboxsync $ */
+/* $Id: DBGConsole.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -579,7 +579,7 @@ static const char *dbgcGetEventCtx(DBGFEVENTCTX enmCtx)
     {
         case DBGFEVENTCTX_RAW:      return "raw";
         case DBGFEVENTCTX_REM:      return "rem";
-        case DBGFEVENTCTX_HWACCL:   return "hwaccl";
+        case DBGFEVENTCTX_HM:   return "hwaccl";
         case DBGFEVENTCTX_HYPER:    return "hyper";
         case DBGFEVENTCTX_OTHER:    return "other";
 
