@@ -1,4 +1,4 @@
-/* $Id: UISelectorShortcuts.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
+/* $Id: UISelectorShortcuts.cpp 42542 2012-08-02 14:04:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,6 +32,7 @@ UISelectorShortcuts::UISelectorShortcuts()
     m_Shortcuts[ExitShortcut]                = UIKeySequence("Exit",                "Ctrl+Q");
     m_Shortcuts[NewVMShortcut]               = UIKeySequence("NewVM",               "Ctrl+N");
     m_Shortcuts[AddVMShortcut]               = UIKeySequence("AddVM",               "Ctrl+A");
+    m_Shortcuts[AddVMGroupShortcut]          = UIKeySequence("AddVMGroup",          "Ctrl+U");
     m_Shortcuts[SettingsVMShortcut]          = UIKeySequence("SettingsVM",          "Ctrl+S");
     m_Shortcuts[CloneVMShortcut]             = UIKeySequence("CloneVM",             "Ctrl+O");
     m_Shortcuts[RemoveVMGroupShortcut]       = UIKeySequence("RemoveVMGroup",       "Ctrl+R");
@@ -41,7 +42,7 @@ UISelectorShortcuts::UISelectorShortcuts()
     m_Shortcuts[DiscardVMShortcut]           = UIKeySequence("DiscardVM",           "Ctrl+J");
     m_Shortcuts[PauseVMShortcut]             = UIKeySequence("PauseVM",             "Ctrl+P");
     m_Shortcuts[ResetVMShortcut]             = UIKeySequence("ResetVM",             "Ctrl+T");
-    m_Shortcuts[ACPIShutdownVMShortcut]      = UIKeySequence("ACPIShutdownVM",      "Ctrl+U");
+    m_Shortcuts[ACPIShutdownVMShortcut]      = UIKeySequence("ACPIShutdownVM",      "Ctrl+H");
     m_Shortcuts[PowerOffVMShortcut]          = UIKeySequence("PowerOffVM",          "Ctrl+F");
     m_Shortcuts[RefreshVMShortcut]           = UIKeySequence("RefreshVM");
     m_Shortcuts[ShowVMLogShortcut]           = UIKeySequence("ShowVMLog",           "Ctrl+L");

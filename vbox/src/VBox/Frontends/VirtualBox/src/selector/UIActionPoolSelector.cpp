@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 42542 2012-08-02 14:04:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -530,6 +530,28 @@ protected:
     }
 };
 
+class UIActionSimpleMachineAddGroupDialog : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimpleMachineAddGroupDialog(QObject *pParent)
+        : UIActionSimple(pParent, ":/add_shared_folder_16px.png")
+    {
+        retranslateUi();
+    }
+
+protected:
+
+    void retranslateUi()
+    {
+        setText(QApplication::translate("UIActionPool", "&Add group..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Add a new group based on the items selected"));
+        setShortcut(gSS->keySequence(UISelectorShortcuts::AddVMGroupShortcut));
+    }
+};
+
 class UIActionSimpleMachineSettingsDialog : public UIActionSimple
 {
     Q_OBJECT;
@@ -943,6 +965,7 @@ void UIActionPoolSelector::createActions()
     /* 'Machine' actions: */
     m_pool[UIActionIndexSelector_Simple_Machine_NewWizard] = new UIActionSimpleMachineNewWizard(this);
     m_pool[UIActionIndexSelector_Simple_Machine_AddDialog] = new UIActionSimpleMachineAddDialog(this);
+    m_pool[UIActionIndexSelector_Simple_Machine_AddGroupDialog] = new UIActionSimpleMachineAddGroupDialog(this);
     m_pool[UIActionIndexSelector_Simple_Machine_SettingsDialog] = new UIActionSimpleMachineSettingsDialog(this);
     m_pool[UIActionIndexSelector_Simple_Machine_CloneWizard] = new UIActionSimpleMachineCloneWizard(this);
     m_pool[UIActionIndexSelector_Simple_Machine_RemoveDialog] = new UIActionSimpleMachineRemoveDialog(this);
