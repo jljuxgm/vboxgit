@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45733 2013-04-25 14:49:24Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45734 2013-04-25 14:54:16Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4627,7 +4627,6 @@ static int hmR0VmxCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pMixedCtx, 
             {
                 Log(("IDT: Contributory #PF uCR2=%#RGv\n", pMixedCtx->cr2));
             }
-            else
 #endif
             if (   uExitVector == X86_XCPT_PF
                 && uIdtVector == X86_XCPT_PF)
