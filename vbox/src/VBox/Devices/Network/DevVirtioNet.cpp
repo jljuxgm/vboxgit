@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 44851 2013-02-27 20:24:35Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 44852 2013-02-27 20:27:33Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -1755,17 +1755,17 @@ static DECLCALLBACK(int) vnetMap(PPCIDEVICE pPciDev, int iRegion,
         return VERR_INTERNAL_ERROR;
     }
 
-    pThis->VPCI.addrIOPort = (RTIOPORT)GCPhysAddress;
-    rc = PDMDevHlpIOPortRegister(pPciDev->pDevIns, pThis->VPCI.addrIOPort,
+    pThis->VPCI.IOPortBase = (RTIOPORT)GCPhysAddress;
+    rc = PDMDevHlpIOPortRegister(pPciDev->pDevIns, pThis->VPCI.IOPortBase,
                                  cb, 0, vnetIOPortOut, vnetIOPortIn,
                                  NULL, NULL, "VirtioNet");
 #ifdef VNET_GC_SUPPORT
     AssertRCReturn(rc, rc);
-    rc = PDMDevHlpIOPortRegisterR0(pPciDev->pDevIns, pThis->VPCI.addrIOPort,
+    rc = PDMDevHlpIOPortRegisterR0(pPciDev->pDevIns, pThis->VPCI.IOPortBase,
                                    cb, 0, "vnetIOPortOut", "vnetIOPortIn",
                                    NULL, NULL, "VirtioNet");
     AssertRCReturn(rc, rc);
-    rc = PDMDevHlpIOPortRegisterRC(pPciDev->pDevIns, pThis->VPCI.addrIOPort,
+    rc = PDMDevHlpIOPortRegisterRC(pPciDev->pDevIns, pThis->VPCI.IOPortBase,
                                    cb, 0, "vnetIOPortOut", "vnetIOPortIn",
                                    NULL, NULL, "VirtioNet");
 #endif
