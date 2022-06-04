@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 45778 2013-04-26 13:44:22Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 45779 2013-04-26 15:18:59Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -107,16 +107,6 @@ typedef struct VBOXGUESTMEMBALLOON
 /** Pointer to a memory balloon. */
 typedef VBOXGUESTMEMBALLOON *PVBOXGUESTMEMBALLOON;
 
-typedef enum VBOXGUUESTCAPS_MODE
-{
-    VBOXGUUESTCAPS_MODE_UNDEFINED = 0,
-    /* uncomment when/if guests have consistent Acquire/Set behavior,
-     * i.e. only either of those should be used, while at leats on win they are used interchangeably */
-    /*VBOXGUUESTCAPS_MODE_SET,*/
-    VBOXGUUESTCAPS_MODE_ACQUIRE,
-    VBOXGUUESTCAPS_MODE_Make32bit = 0x7fffffff,
-} VBOXGUUESTCAPS_MODE;
-
 /**
  * VBox guest device (data) extension.
  */
@@ -189,9 +179,10 @@ typedef struct VBOXGUESTDEVEXT
     uint32_t volatile           cISR;
     /** Callback and user data for a kernel mouse handler. */
     VBoxGuestMouseSetNotifyCallback MouseNotifyCallback;
-    /* true if the driver is in caps acquire mode,
-     * i.e. no seamless of resize events are reported unless the driver has acquired the corresponding guest caps */
-    volatile VBOXGUUESTCAPS_MODE enmGuestCapsAcquireMode;
+    /* list of caps used in acquire mode */
+    uint32_t                    u32AcquireModeGuestCaps;
+    /* list of caps used in set mode */
+    uint32_t                    u32SetModeGuestCaps;
     /* currently acquired (and reported) guest caps */
     uint32_t                    u32GuestCaps;
 } VBOXGUESTDEVEXT;

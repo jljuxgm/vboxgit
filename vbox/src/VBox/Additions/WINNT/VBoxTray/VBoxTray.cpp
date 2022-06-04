@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 45778 2013-04-26 13:44:22Z vboxsync $ */
+/* $Id: VBoxTray.cpp 45779 2013-04-26 15:18:59Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1011,7 +1011,6 @@ static int vboxStCheckState()
     WTS_CONNECTSTATE_CLASS *penmConnectState = NULL;
     USHORT *pProtocolType = NULL;
     DWORD cbBuf = 0;
-    Assert(0);
     if (gVBoxSt.pfnWTSQuerySessionInformationA(WTS_CURRENT_SERVER_HANDLE, WTS_CURRENT_SESSION, WTSConnectState, (LPTSTR *)&penmConnectState, &cbBuf))
     {
         if (gVBoxSt.pfnWTSQuerySessionInformationA(WTS_CURRENT_SERVER_HANDLE, WTS_CURRENT_SESSION, WTSClientProtocolType, (LPTSTR *)&pProtocolType, &cbBuf))
@@ -1062,9 +1061,6 @@ static int vboxStInit(HWND hWnd)
             WARN(("VBoxTray: WTSQuerySessionInformationA not found\n"));
             rc = VERR_NOT_SUPPORTED;
         }
-
-        Assert(0);
-
 
         if (rc == VINF_SUCCESS)
         {
