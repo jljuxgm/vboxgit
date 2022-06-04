@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 47234 2013-07-18 15:36:30Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 47296 2013-07-22 12:14:26Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -294,11 +294,13 @@ static DECLCALLBACK(int) vboxIPCSessionThread(RTTHREAD hThread, void *pvSession)
             VBOXTRAYIPCHEADER ipcHdr;
             rc = RTLocalIpcSessionRead(hSession, &ipcHdr, sizeof(ipcHdr),
                                        NULL /* Exact read, blocking */);
-            bool fRejected = false;
+            bool fRejected = false; /* Reject current command? */
             if (RT_SUCCESS(rc))
-                fRejected = ipcHdr.uMagic != VBOXTRAY_IPC_HDR_MAGIC;
+                fRejected =    ipcHdr.uMagic != VBOXTRAY_IPC_HDR_MAGIC
+                            || ipcHdr.uHdrVersion != 0; /* We only know version 0 commands for now. */
 
-            if (RT_SUCCESS(rc))
+            if (   !fRejected
+                && RT_SUCCESS(rc))
             {
                 switch (ipcHdr.uMsgType)
                 {
