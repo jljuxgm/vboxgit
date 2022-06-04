@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: HostImpl.cpp 46330 2013-05-30 12:41:48Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1041,15 +1041,12 @@ STDMETHODIMP Host::COMGETTER(MemorySize)(ULONG *aSize)
     CheckComArgOutPointerValid(aSize);
     // no locking required
 
-    /* @todo This is an ugly hack. There must be a function in IPRT for that. */
-    pm::CollectorHAL *hal = pm::createHAL();
-    if (!hal)
+    uint64_t cb;
+    int rc = RTSystemQueryTotalRam(&cb);
+    if (RT_FAILURE(rc))
         return E_FAIL;
-    ULONG tmp;
-    int rc = hal->getHostMemoryUsage(aSize, &tmp, &tmp);
-    *aSize /= 1024;
-    delete hal;
-    return rc;
+    *aSize = cb / _1M;
+    return S_OK;
 }
 
 /**
@@ -1063,15 +1060,12 @@ STDMETHODIMP Host::COMGETTER(MemoryAvailable)(ULONG *aAvailable)
     CheckComArgOutPointerValid(aAvailable);
     // no locking required
 
-    /* @todo This is an ugly hack. There must be a function in IPRT for that. */
-    pm::CollectorHAL *hal = pm::createHAL();
-    if (!hal)
+    uint64_t cb;
+    int rc = RTSystemQueryAvailableRam(&cb);
+    if (RT_FAILURE(rc))
         return E_FAIL;
-    ULONG tmp;
-    int rc = hal->getHostMemoryUsage(&tmp, &tmp, aAvailable);
-    *aAvailable /= 1024;
-    delete hal;
-    return rc;
+    *aAvailable = cb / _1M;
+    return S_OK;
 }
 
 /**
