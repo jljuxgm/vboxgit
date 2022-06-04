@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 44336 2013-01-23 13:51:33Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 44338 2013-01-23 14:45:34Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -574,6 +574,7 @@ VBOXMODULE g_ModBallooning =
     /* (Legacy) note. */
     "Set \"VBoxInternal/Guest/BalloonSizeMax\" for a per-VM maximum ballooning size.\n"
 #endif
+    "--balloon-safety-margin Free memory when deflating a balloon in MB (1024 MB).\n"
     ,
     /* methods. */
     VBoxModBallooningPreInit,
