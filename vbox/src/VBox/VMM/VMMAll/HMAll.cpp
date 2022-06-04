@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 43466 2012-09-28 14:47:29Z vboxsync $ */
+/* $Id: HMAll.cpp 43491 2012-10-01 12:21:36Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -51,7 +51,7 @@ static void hmQueueInvlPage(PVMCPU pVCpu, RTGCPTR GCVirt)
     VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
     NOREF(GCVirt);
 #else
-    Be very careful when activating this code!
+    /* Be very careful when activating this code! */
     if (iPage == RT_ELEMENTS(pVCpu->hm.s.TlbShootdown.aPages))
         VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
     else
