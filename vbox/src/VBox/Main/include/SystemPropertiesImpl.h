@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 44948 2013-03-07 10:36:42Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 46367 2013-06-03 16:34:26Z vboxsync $ */
 
 /** @file
  *
@@ -69,6 +69,8 @@ public:
     STDMETHOD(COMGETTER(SerialPortCount))(ULONG *count);
     STDMETHOD(COMGETTER(ParallelPortCount))(ULONG *count);
     STDMETHOD(COMGETTER(MaxBootPosition))(ULONG *aMaxBootPosition);
+    STDMETHOD(COMGETTER(LoggingLevel))(BSTR *aLoggingLevel);
+    STDMETHOD(COMSETTER(LoggingLevel))(IN_BSTR aLoggingLevel);
     STDMETHOD(COMGETTER(DefaultMachineFolder))(BSTR *aDefaultMachineFolder);
     STDMETHOD(COMSETTER(DefaultMachineFolder))(IN_BSTR aDefaultMachineFolder);
     STDMETHOD(COMGETTER(MediumFormats))(ComSafeArrayOut(IMediumFormat *, aMediumFormats));
@@ -124,6 +126,7 @@ private:
 
     HRESULT getUserHomeDirectory(Utf8Str &strPath);
     HRESULT setDefaultMachineFolder(const Utf8Str &aPath);
+    HRESULT setLoggingLevel(const Utf8Str &aLoggingLevel);
     HRESULT setDefaultHardDiskFormat(const Utf8Str &aFormat);
 
     HRESULT setVRDEAuthLibrary(const Utf8Str &aPath);
