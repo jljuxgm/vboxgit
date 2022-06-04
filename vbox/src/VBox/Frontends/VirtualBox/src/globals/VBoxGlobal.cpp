@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 47617 2013-08-08 18:03:26Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 47775 2013-08-15 15:51:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4256,7 +4256,7 @@ void VBoxGlobal::prepare()
     static const char * const s_kOSTypeIcons[][2] =
     {
         {"Other",           ":/os_other.png"},
-        {"Other_64",        ":/os_other.png"}, /// @todo os_other_64.png.
+        {"Other_64",        ":/os_other_64.png"},
         {"DOS",             ":/os_dos.png"},
         {"Netware",         ":/os_netware.png"},
         {"L4",              ":/os_l4.png"},
