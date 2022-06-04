@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45275 2013-04-02 06:04:05Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45292 2013-04-02 16:39:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2285,7 +2285,7 @@ QString VBoxGlobal::openMedium(UIMediumType mediumType, QString strMediumLocatio
         return vboxMedium.id();
     }
     else
-        msgCenter().cannotOpenMedium(pParent, vbox, mediumType, strMediumLocation);
+        msgCenter().cannotOpenMedium(vbox, mediumType, strMediumLocation, pParent);
 
     return QString();
 }

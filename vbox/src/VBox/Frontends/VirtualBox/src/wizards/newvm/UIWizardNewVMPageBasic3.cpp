@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 45292 2013-04-02 16:39:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -120,7 +120,7 @@ void UIWizardNewVMPage3::ensureNewVirtualDiskDeleted()
     if (fSuccess)
         vboxGlobal().removeMedium(UIMediumType_HardDisk, strId);
     else
-        msgCenter().cannotDeleteHardDiskStorage(thisImp(), m_virtualDisk, progress);
+        msgCenter().cannotDeleteHardDiskStorage(m_virtualDisk, progress, thisImp());
 
     /* Detach virtual-disk finally: */
     m_virtualDisk.detach();

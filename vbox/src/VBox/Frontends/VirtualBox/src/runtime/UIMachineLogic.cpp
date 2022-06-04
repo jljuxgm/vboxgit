@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 45274 2013-04-01 13:50:01Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 45292 2013-04-02 16:39:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1491,14 +1491,16 @@ void UIMachineLogic::sltMountStorageMedium()
     else
     {
         /* Ask for force remounting: */
-        if (msgCenter().cannotRemountMedium(0, machine, vboxGlobal().findMedium (fMount ? newId : currentId), fMount, true /* retry? */) == QIMessageBox::Ok)
+        if (msgCenter().cannotRemountMedium(machine, vboxGlobal().findMedium(fMount ? newId : currentId),
+                                            fMount, true /* retry? */, activeMachineWindow()) == QIMessageBox::Ok)
         {
             /* Force remount medium to the predefined port/device: */
             machine.MountMedium(target.name, target.port, target.device, medium, true /* force */);
             if (machine.isOk())
                 fWasMounted = true;
             else
-                msgCenter().cannotRemountMedium(0, machine, vboxGlobal().findMedium (fMount ? newId : currentId), fMount, false /* retry? */);
+                msgCenter().cannotRemountMedium(machine, vboxGlobal().findMedium(fMount ? newId : currentId),
+                                                fMount, false /* retry? */, activeMachineWindow());
         }
     }
 
@@ -1550,14 +1552,16 @@ void UIMachineLogic::sltMountRecentStorageMedium()
         else
         {
             /* Ask for force remounting: */
-            if (msgCenter().cannotRemountMedium(0, machine, vboxGlobal().findMedium(fMount ? strNewId : strCurrentId), fMount, true /* retry? */) == QIMessageBox::Ok)
+            if (msgCenter().cannotRemountMedium(machine, vboxGlobal().findMedium(fMount ? strNewId : strCurrentId),
+                                                fMount, true /* retry? */, activeMachineWindow()) == QIMessageBox::Ok)
             {
                 /* Force remount medium to the predefined port/device: */
                 machine.MountMedium(target.name, target.port, target.device, comMedium, true /* force? */);
                 if (machine.isOk())
                     fWasMounted = true;
                 else
-                    msgCenter().cannotRemountMedium(0, machine, vboxGlobal().findMedium(fMount ? strNewId : strCurrentId), fMount, false /* retry? */);
+                    msgCenter().cannotRemountMedium(machine, vboxGlobal().findMedium(fMount ? strNewId : strCurrentId),
+                                                    fMount, false /* retry? */, activeMachineWindow());
             }
         }
 
