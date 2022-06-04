@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 43803 2012-11-05 13:50:57Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 43849 2012-11-09 13:08:56Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3395,7 +3395,7 @@ ResumeExecution:
     Assert(rc == VINF_SUCCESS); /* might consider VERR_IPE_UNINITIALIZED_STATUS here later... */
     switch (exitReason)
     {
-    case VMX_EXIT_EXCEPTION:            /* 0 Exception or non-maskable interrupt (NMI). */
+    case VMX_EXIT_EXCEPTION_NMI:        /* 0 Exception or non-maskable interrupt (NMI). */
     case VMX_EXIT_EXTERNAL_IRQ:         /* 1 External interrupt. */
     {
         uint32_t vector = VMX_EXIT_INTERRUPTION_INFO_VECTOR(intInfo);
@@ -4675,7 +4675,7 @@ ResumeExecution:
     /* Investigate why there was a VM-exit. (part 2) */
     switch (exitReason)
     {
-    case VMX_EXIT_EXCEPTION:            /* 0 Exception or non-maskable interrupt (NMI). */
+    case VMX_EXIT_EXCEPTION_NMI:        /* 0 Exception or non-maskable interrupt (NMI). */
     case VMX_EXIT_EXTERNAL_IRQ:         /* 1 External interrupt. */
     case VMX_EXIT_EPT_VIOLATION:
     case VMX_EXIT_EPT_MISCONFIG:        /* 49 EPT misconfig is used by the PGM/MMIO optimizations. */
