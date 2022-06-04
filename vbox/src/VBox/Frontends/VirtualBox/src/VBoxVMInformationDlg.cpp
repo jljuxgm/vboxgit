@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 46102 2013-05-15 16:07:01Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 47162 2013-07-15 14:19:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -171,10 +171,6 @@ void VBoxVMInformationDlg::retranslateUi()
 
     /* Setup a dialog caption */
     setWindowTitle (tr ("%1 - Session Information").arg (machine.GetName()));
-
-    /* Setup a tabwidget page names */
-    mInfoStack->setTabText (0, tr ("&Details"));
-    mInfoStack->setTabText (1, tr ("&Runtime"));
 
     /* Clear counter names initially */
     mNamesMap.clear();
