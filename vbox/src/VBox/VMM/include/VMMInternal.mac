@@ -1,4 +1,4 @@
-; $Id: VMMInternal.mac 47456 2013-07-29 12:51:12Z vboxsync $
+; $Id: VMMInternal.mac 47460 2013-07-29 13:22:48Z vboxsync $
 ;; @file
 ; VMM - Internal header file.
 ;
@@ -108,6 +108,9 @@ struc VMMCPU
         .pR0LoggerR0            RTR0PTR_RES 1
 
         .hR0ThreadCtx		RTR0PTR_RES 1
+%if HC_ARCH_BITS == 32
+        .u32Padding             resd 1
+%endif
 
         .fInRendezvous          resb 1
 %if HC_ARCH_BITS == 32

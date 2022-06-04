@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 47456 2013-07-29 12:51:12Z vboxsync $ */
+/* $Id: VMMInternal.h 47460 2013-07-29 13:22:48Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -420,6 +420,9 @@ typedef struct VMMCPU
     /** @name Thread-context hooks.
      *  @{*/
     RTTHREADCTX                 hR0ThreadCtx;
+#if HC_ARCH_BITS == 32
+    uint32_t                    u32Padding;
+#endif
     /** @} */
 
     /** @name Rendezvous
