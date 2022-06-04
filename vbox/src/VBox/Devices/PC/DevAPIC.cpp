@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 45965 2013-05-09 15:32:14Z vboxsync $ */
+/* $Id: DevAPIC.cpp 47428 2013-07-26 16:19:03Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  *
@@ -1240,7 +1240,7 @@ PDMBOTHCBDECL(bool) apicHasPendingIrq(PPDMDEVINS pDevIns, VMCPUID idCpu, uint8_t
 
     if (pu8PendingIrq)
     {
-        Assert(irrv >= 0 && irrv <= UINT8_MAX);
+        Assert(irrv >= 0 && irrv <= (int)UINT8_MAX);
         *pu8PendingIrq = (uint8_t)irrv;
     }
     return true;

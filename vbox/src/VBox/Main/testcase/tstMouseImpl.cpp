@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 47405 2013-07-25 19:36:45Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 47428 2013-07-26 16:19:03Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -189,20 +189,18 @@ static struct PDMDRVINS pdmdrvInsCore =
     NIL_RTR3PTR,             /* pCfg */
     &pdmiBase,
     NULL,                    /* pDownBase */
-    NULL,                    /* IBase */
+    {                        /* IBase */
+        NULL                 /* pfnQueryInterface */
+    },
     0,                       /* fTracing */
     0,                       /* idTracing */
 #if HC_ARCH_BITS == 32
-    {
-        0                    /* au32Padding */
-    },
+    { 0 },                   /* au32Padding */
 #endif
     {
-        0                    /* Padding */
+        { 0 }                /* padding */
     },                       /* Internal */
-    {
-        0                    /* achInstanceData */
-    }
+    { 0 }                    /* achInstanceData */
 };
 
 static struct PDMDRVINS *ppdmdrvIns = NULL;
