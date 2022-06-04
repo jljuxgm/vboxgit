@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 47413 2013-07-25 22:04:31Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 47568 2013-08-07 03:11:58Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -573,6 +573,8 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
     do { CHK_CALL_ARG(a0, 0); CHK_CALL_ARG(a1, 1); } while (0)
 #define IEM_MC_CALL_CIMPL_3(a_pfnCImpl, a0, a1, a2) \
     do { CHK_CALL_ARG(a0, 0); CHK_CALL_ARG(a1, 1); CHK_CALL_ARG(a2, 2); } while (0)
+#define IEM_MC_CALL_CIMPL_4(a_pfnCImpl, a0, a1, a2, a3) \
+    do { CHK_CALL_ARG(a0, 0); CHK_CALL_ARG(a1, 1); CHK_CALL_ARG(a2, 2); CHK_CALL_ARG(a3, 3); } while (0)
 #define IEM_MC_CALL_CIMPL_5(a_pfnCImpl, a0, a1, a2, a3, a4) \
     do { CHK_CALL_ARG(a0, 0); CHK_CALL_ARG(a1, 1); CHK_CALL_ARG(a2, 2); CHK_CALL_ARG(a3, 3); CHK_CALL_ARG(a4, 4);  } while (0)
 #define IEM_MC_DEFER_TO_CIMPL_0(a_pfnCImpl)                             (VINF_SUCCESS)

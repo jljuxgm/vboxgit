@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 47444 2013-07-29 00:37:31Z vboxsync $ */
+/* $Id: IEMInternal.h 47568 2013-08-07 03:11:58Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -894,6 +894,11 @@ IEM_DECL_IMPL_TYPE(void, iemAImpl_bswap_u16,(uint32_t *pu32Dst)); /* Yes, 32-bit
 IEM_DECL_IMPL_TYPE(void, iemAImpl_bswap_u32,(uint32_t *pu32Dst));
 IEM_DECL_IMPL_TYPE(void, iemAImpl_bswap_u64,(uint64_t *pu64Dst));
 /** @}  */
+
+/** @name Misc.
+ * @{ */
+FNIEMAIMPLBINU16 iemAImpl_arpl;
+/** @} */
 
 
 /** @name FPU operations taking a 32-bit float argument
