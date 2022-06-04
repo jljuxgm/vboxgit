@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 47540 2013-08-05 10:22:24Z vboxsync $ */
+/* $Id: SUPDrv.c 47542 2013-08-05 10:25:37Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -1003,6 +1003,7 @@ uint32_t VBOXCALL supdrvSessionRetain(PSUPDRVSESSION pSession)
     return cRefs;
 }
 
+
 /**
  * Releases a given session.
  *
@@ -1021,6 +1022,7 @@ uint32_t VBOXCALL supdrvSessionRelease(PSUPDRVSESSION pSession)
         supdrvCloseSession(pSession->pDevExt, pSession);
     return cRefs;
 }
+
 
 /**
  * RTHandleTableDestroy callback used by supdrvCleanupSession.
