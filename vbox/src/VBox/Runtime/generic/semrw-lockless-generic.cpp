@@ -1,4 +1,4 @@
-/* $Id: semrw-lockless-generic.cpp 45110 2013-03-20 18:17:29Z vboxsync $ */
+/* $Id: semrw-lockless-generic.cpp 45309 2013-04-03 14:40:35Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic, lockless variant.
  */
@@ -495,7 +495,7 @@ RTDECL(int) RTSemRWReleaseRead(RTSEMRW hRWSem)
             c--;
 
             if (   c > 0
-                || (u64State & RTSEMRW_CNT_RD_MASK) == 0)
+                || (u64State & RTSEMRW_CNT_WD_MASK) == 0)
             {
                 /* Don't change the direction. */
                 u64State &= ~RTSEMRW_CNT_RD_MASK;
