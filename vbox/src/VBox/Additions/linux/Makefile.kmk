@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46262 2013-05-24 20:47:49Z vboxsync $
+# $Id: Makefile.kmk 46263 2013-05-24 21:07:01Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -144,7 +144,7 @@ VBOX_ADD_STRIP_MOD.linux = \
 	vboxmouse_drv_14.so \
 	vboxmouse_drv_15.so \
 	vboxmouse_drv_16.so \
-	$($(filter vboxvideo_drv_%,$(DLLS)).NAME) \
+	$(addsuffix .so,$(filter-out %_32,$(filter vboxvideo_drv_%,$(DLLS)))) \
 	$(if $(VBOX_WITH_PAM),pam_vbox.so,) \
 	mount.vboxsf
 
