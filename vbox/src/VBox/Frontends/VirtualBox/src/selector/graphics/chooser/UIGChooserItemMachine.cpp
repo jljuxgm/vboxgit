@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 42760 2012-08-10 16:53:11Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 42795 2012-08-13 17:24:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -792,24 +792,28 @@ void UIGChooserItemMachine::prepare()
     m_pToolBar = new UIGraphicsToolBar(this, 2, 2);
 
     /* Create buttons: */
-    m_pSettingsButton = new UIGraphicsZoomButton(m_pToolBar, UIGraphicsZoomDirection_Top | UIGraphicsZoomDirection_Left);
+    m_pSettingsButton = new UIGraphicsZoomButton(m_pToolBar,
+                                                 data(MachineItemData_SettingsButtonPixmap).value<QIcon>(),
+                                                 UIGraphicsZoomDirection_Top | UIGraphicsZoomDirection_Left);
     m_pSettingsButton->setIndent(m_pToolBar->toolBarMargin() - 1);
-    m_pSettingsButton->setIcon(data(MachineItemData_SettingsButtonPixmap).value<QIcon>());
     m_pToolBar->insertItem(m_pSettingsButton, 0, 0);
 
-    m_pStartButton = new UIGraphicsZoomButton(m_pToolBar, UIGraphicsZoomDirection_Top | UIGraphicsZoomDirection_Right);
+    m_pStartButton = new UIGraphicsZoomButton(m_pToolBar,
+                                              data(MachineItemData_StartButtonPixmap).value<QIcon>(),
+                                              UIGraphicsZoomDirection_Top | UIGraphicsZoomDirection_Right);
     m_pStartButton->setIndent(m_pToolBar->toolBarMargin() - 1);
-    m_pStartButton->setIcon(data(MachineItemData_StartButtonPixmap).value<QIcon>());
     m_pToolBar->insertItem(m_pStartButton, 0, 1);
 
-    m_pPauseButton = new UIGraphicsZoomButton(m_pToolBar, UIGraphicsZoomDirection_Bottom | UIGraphicsZoomDirection_Left);
+    m_pPauseButton = new UIGraphicsZoomButton(m_pToolBar,
+                                              data(MachineItemData_PauseButtonPixmap).value<QIcon>(),
+                                              UIGraphicsZoomDirection_Bottom | UIGraphicsZoomDirection_Left);
     m_pPauseButton->setIndent(m_pToolBar->toolBarMargin() - 1);
-    m_pPauseButton->setIcon(data(MachineItemData_PauseButtonPixmap).value<QIcon>());
     m_pToolBar->insertItem(m_pPauseButton, 1, 0);
 
-    m_pCloseButton = new UIGraphicsZoomButton(m_pToolBar, UIGraphicsZoomDirection_Bottom | UIGraphicsZoomDirection_Right);
+    m_pCloseButton = new UIGraphicsZoomButton(m_pToolBar,
+                                              data(MachineItemData_CloseButtonPixmap).value<QIcon>(),
+                                              UIGraphicsZoomDirection_Bottom | UIGraphicsZoomDirection_Right);
     m_pCloseButton->setIndent(m_pToolBar->toolBarMargin() - 1);
-    m_pCloseButton->setIcon(data(MachineItemData_CloseButtonPixmap).value<QIcon>());
     m_pToolBar->insertItem(m_pCloseButton, 1, 1);
 
     connect(m_pSettingsButton, SIGNAL(sigButtonClicked()),

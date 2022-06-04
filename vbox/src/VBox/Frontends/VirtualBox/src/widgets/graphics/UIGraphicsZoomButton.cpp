@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsZoomButton.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
+/* $Id: UIGraphicsZoomButton.cpp 42795 2012-08-13 17:24:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -27,8 +27,8 @@
 /* GUI includes: */
 #include "UIGraphicsZoomButton.h"
 
-UIGraphicsZoomButton::UIGraphicsZoomButton(QIGraphicsWidget *pParent, int iDirection)
-    : UIGraphicsButton(pParent)
+UIGraphicsZoomButton::UIGraphicsZoomButton(QIGraphicsWidget *pParent, const QIcon &icon, int iDirection)
+    : UIGraphicsButton(pParent, icon)
     , m_iIndent(4)
     , m_iDirection(iDirection)
     , m_iAnimationDuration(200)
