@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlThread.cpp 42997 2012-08-27 14:01:09Z vboxsync $ */
+/* $Id: VBoxServiceControlThread.cpp 43000 2012-08-27 14:20:07Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for every started guest process.
  */
@@ -1268,11 +1268,7 @@ void VBoxServiceControlThreadFreeArgv(char **papszArgv)
     {
         size_t i = 0;
         while (papszArgv[i])
-        {
-VBoxServiceVerbose(3, "free=%s\n",
-                       papszArgv[i]);
-                RTStrFree(papszArgv[i++]);
-        }
+            RTStrFree(papszArgv[i++]);
         RTMemFree(papszArgv);
     }
 }
