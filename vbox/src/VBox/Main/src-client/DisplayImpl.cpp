@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45962 2013-05-08 20:39:55Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 45980 2013-05-10 11:22:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4407,6 +4407,8 @@ DECLCALLBACK(int) Display::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
             RTStrFree(pszAbsPath);
         }
     }
+    else
+        pDisplay->mpVideoRecCtx = NULL;
 #endif
 
     return VINF_SUCCESS;
