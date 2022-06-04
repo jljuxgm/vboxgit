@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.cpp 44561 2013-02-06 12:04:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,7 +29,7 @@
 /* GUI includes: */
 #include "UIDefs.h"
 #include "VBoxGlobalSettings.h"
-#include "UIHotKeyEditor.h"
+#include "UIHostComboEditor.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -134,7 +134,7 @@ gPropertyMap[] =
 
 void VBoxGlobalSettings::setHostCombo (const QString &hostCombo)
 {
-    if (!UIHotKeyCombination::isValidKeyCombo (hostCombo))
+    if (!UIHostCombo::isValidKeyCombo (hostCombo))
     {
         last_err = tr ("'%1' is an invalid host-combination code-sequence.").arg (hostCombo);
         return;
