@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: spinlock-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Haiku.
  */
@@ -35,7 +35,7 @@
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
-# include <iprt/asm-amd64-x86.h>
+#include <iprt/asm-amd64-x86.h>
 #endif
 #include <iprt/err.h>
 #include <iprt/mem.h>
@@ -141,5 +141,5 @@ RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock)
 {
     if (!(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE))
         RTAssertMsg2("RTSpinlockReleaseNoInts: p=%p (magic=%#x)\n", Spinlock, Spinlock->u32Magic);
-    RTSpinlockRelease(Spinlock); 
+    RTSpinlockRelease(Spinlock);
 }

@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: semmutex-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Haiku.
  */
@@ -82,7 +82,7 @@ RTDECL(int)  RTSemMutexCreate(PRTSEMMUTEX phMutexSem)
         return VINF_SUCCESS;
     }
     RTMemFree(pThis);
-    return VERR_TOO_MANY_SEMAPHORES;	/** @todo r=ramshankar: use RTErrConvertFromHaikuKernReturn */
+    return VERR_TOO_MANY_SEMAPHORES;    /** @todo r=ramshankar: use RTErrConvertFromHaikuKernReturn */
 }
 
 
@@ -124,7 +124,7 @@ static int rtSemMutexRequestEx(RTSEMMUTEX hMutexSem, uint32_t fFlags, uint64_t u
         timeout = B_INFINITE_TIMEOUT;
     else
     {
-    	if (fFlags & RTSEMWAIT_FLAGS_NANOSECS)
+        if (fFlags & RTSEMWAIT_FLAGS_NANOSECS)
             timeout = uTimeout / 1000;
         else if (fFlags & RTSEMWAIT_FLAGS_MILLISECS)
             timeout = uTimeout * 1000;

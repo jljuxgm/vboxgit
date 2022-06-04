@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Haiku.
  */
@@ -35,7 +35,7 @@
 
 RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 {
-	/** @todo implement this */
+    /** @todo implement this */
     /*kprintf("%.*s", (int)cb, pch);*/
     return;
 }

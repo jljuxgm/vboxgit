@@ -1,4 +1,4 @@
-/* $Id: semfastmutex-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: semfastmutex-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
 /** @file
  * IPRT - Fast Mutex Semaphores, Ring-0 Driver, Haiku.
  */
@@ -62,7 +62,7 @@ RTDECL(int)  RTSemFastMutexCreate(PRTSEMFASTMUTEX phFastMtx)
 
     PRTSEMFASTMUTEXINTERNAL pThis = (PRTSEMFASTMUTEXINTERNAL)RTMemAllocZ(sizeof(*pThis));
     if (RT_UNLIKELY(!pThis))
-    	return VERR_NO_MEMORY;
+        return VERR_NO_MEMORY;
 
     pThis->u32Magic = RTSEMFASTMUTEX_MAGIC;
     pThis->BenId = 0;
@@ -73,7 +73,7 @@ RTDECL(int)  RTSemFastMutexCreate(PRTSEMFASTMUTEX phFastMtx)
         return VINF_SUCCESS;
     }
     RTMemFree(pThis);
-    return VERR_TOO_MANY_SEMAPHORES;	 /** @todo r=ramshankar: use RTErrConvertFromHaikuKernReturn */
+    return VERR_TOO_MANY_SEMAPHORES;     /** @todo r=ramshankar: use RTErrConvertFromHaikuKernReturn */
 }
 
 

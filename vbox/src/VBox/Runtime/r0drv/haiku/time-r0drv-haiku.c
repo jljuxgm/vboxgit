@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: time-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Haiku.
  */
@@ -38,13 +38,13 @@
 
 DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
-	return system_time() * 1000;
+    return system_time() * 1000;
 }
 
 
 DECLINLINE(uint64_t) rtTimeGetSystemMilliTS(void)
 {
-	return system_time() / 1000;
+    return system_time() / 1000;
 }
 
 

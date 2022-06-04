@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-haiku.c 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: semevent-r0drv-haiku.c 43366 2012-09-20 12:31:54Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Haiku.
  */
@@ -182,7 +182,8 @@ static int rtR0SemEventWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, uint64_t
 
     if (fFlags & RTSEMWAIT_FLAGS_INDEFINITE)
         timeout = B_INFINITE_TIMEOUT;
-    else {
+    else
+    {
         if (fFlags & RTSEMWAIT_FLAGS_NANOSECS)
             timeout = uTimeout / 1000;
         else if (fFlags & RTSEMWAIT_FLAGS_MILLISECS)
