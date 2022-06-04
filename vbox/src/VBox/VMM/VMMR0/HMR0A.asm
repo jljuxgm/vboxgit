@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 46905 2013-07-02 13:11:06Z vboxsync $
+; $Id: HMR0A.asm 46925 2013-07-03 11:16:39Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -317,9 +317,26 @@ BEGINPROC VMXRestoreHostState
 
 .test_es:
     test        edi, VMX_RESTORE_HOST_SEL_ES
-    jz          near .test_fs
+    jz          near .test_ldtr
     mov         ax, word [rsi + VMXRESTOREHOST.uHostSelES]
     mov         es, ax
+
+.test_ldtr:
+    test        edi, VMX_RESTORE_HOST_SEL_LDTR
+    jz          near .test_tr
+    mov         ax, word [rsi + VMXRESTOREHOST.uHostSelLDTR]
+    lldt        ax
+
+.test_tr:
+    test        edi, VMX_RESTORE_HOST_SEL_TR
+    jz          near .test_fs
+    mov         dx, word [rsi + VMXRESTOREHOST.uHostSelTR]
+    xor         xAX, xAX
+    mov         ax, dx
+    and         al, X86_SEL_MASK                                  ; Mask away TI and RPL bits leaving only the descriptor offset.
+    add         xAX, qword [rsi + VMXRESTOREHOST.HostGdtr + 2]    ; xAX <- descriptor offset + GDTR.pGdt.
+    and         dword [ss:xAX + 4], ~RT_BIT(9)                    ; Clear the busy flag in TSS (bits 0-7=base, bit 9=busy bit).
+    ltr         dx
 
 .test_fs:
     ; We're only restoring the selector. The base is valid and restored by VT-x. If we get an interrupt in between FS & GS
