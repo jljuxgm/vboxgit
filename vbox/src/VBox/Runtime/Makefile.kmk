@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46567 2013-06-14 16:12:24Z vboxsync $
+# $Id: Makefile.kmk 46570 2013-06-14 16:47:24Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -638,7 +638,7 @@ RuntimeR3_SOURCES.linux = \
 	generic/mppresent-generic.cpp \
 	generic/utf16locale-generic.cpp \
 	generic/uuid-generic.cpp \
-	r3/generic/allocex-r3-generic.cpp \
+	r3/posix/allocex-r3-posix.cpp \
 	r3/linux/RTThreadGetNativeState-linux.cpp \
 	r3/linux/mp-linux.cpp \
 	r3/linux/rtProcInitExePath-linux.cpp \
