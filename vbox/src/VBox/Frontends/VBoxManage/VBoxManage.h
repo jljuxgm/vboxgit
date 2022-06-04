@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 44498 2013-01-31 15:48:05Z vboxsync $ */
+/* $Id: VBoxManage.h 45156 2013-03-25 05:50:09Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -101,6 +101,7 @@
 #define USAGE_BANDWIDTHCONTROL      RT_BIT_64(56)
 #define USAGE_GUESTSTATS            RT_BIT_64(57)
 #define USAGE_REPAIRHD              RT_BIT_64(58)
+#define USAGE_NATNETWORK            RT_BIT_64(59)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -264,8 +265,12 @@ int handleUSBFilter(HandlerArg *a);
 /* VBoxManageHostonly.cpp */
 int handleHostonlyIf(HandlerArg *a);
 
-/* VBoxManageHostonly.cpp */
+/* VBoxManageDHCPServer.cpp */
 int handleDHCPServer(HandlerArg *a);
+
+/* VBoxManageNATNetwork.cpp */
+int handleNATNetwork(HandlerArg *a);
+
 
 /* VBoxManageBandwidthControl.cpp */
 int handleBandwidthControl(HandlerArg *a);

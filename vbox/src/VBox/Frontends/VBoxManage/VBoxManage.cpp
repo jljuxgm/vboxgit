@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 43463 2012-09-28 14:00:13Z vboxsync $ */
+/* $Id: VBoxManage.cpp 45156 2013-03-25 05:50:09Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -515,6 +515,9 @@ int main(int argc, char *argv[])
             { "hostonlyif",       USAGE_HOSTONLYIFS,       handleHostonlyIf },
 #endif
             { "dhcpserver",       USAGE_DHCPSERVER,        handleDHCPServer},
+#ifdef VBOX_WITH_NAT_SERVICE
+	    { "natnetwork",       USAGE_NATNETWORK,        handleNATNetwork},
+#endif
             { "extpack",          USAGE_EXTPACK,           handleExtPack},
             { "bandwidthctl",     USAGE_BANDWIDTHCONTROL,  handleBandwidthControl},
             { "debugvm",          USAGE_DEBUGVM,           handleDebugVM},
