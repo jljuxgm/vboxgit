@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 47788 2013-08-16 09:00:23Z vboxsync $ */
+/* $Id: EMHM.cpp 47790 2013-08-16 09:08:02Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -202,7 +202,7 @@ static int emR3HmExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC)
 #endif
     {
 #ifdef VBOX_WITH_REM
-        STAM_PROFILE_START(&pVCpu->em.s.StatREMEmu, a);
+        STAM_PROFILE_START(&pVCpu->em.s.StatREMEmu, b);
 # ifndef VBOX_WITH_FIRST_IEM_STEP
         Log(("EMINS[rem]: %04x:%RGv RSP=%RGv\n", pCtx->cs.Sel, (RTGCPTR)pCtx->rip, (RTGCPTR)pCtx->rsp));
 # elif defined(DEBUG_bird)
@@ -216,7 +216,7 @@ static int emR3HmExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC)
 
         rc = REMR3EmulateInstruction(pVM, pVCpu);
         EMRemUnlock(pVM);
-        STAM_PROFILE_STOP(&pVCpu->em.s.StatREMEmu, a);
+        STAM_PROFILE_STOP(&pVCpu->em.s.StatREMEmu, b);
 #else  /* !VBOX_WITH_REM */
         NOREF(pVM);
 #endif /* !VBOX_WITH_REM */
