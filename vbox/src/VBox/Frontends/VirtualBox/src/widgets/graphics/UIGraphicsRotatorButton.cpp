@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsRotatorButton.cpp 42856 2012-08-17 00:21:30Z vboxsync $ */
+/* $Id: UIGraphicsRotatorButton.cpp 45221 2013-03-28 07:43:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,13 +25,14 @@
 
 /* GUI includes: */
 #include "UIGraphicsRotatorButton.h"
+#include "UIIconPool.h"
 
 UIGraphicsRotatorButton::UIGraphicsRotatorButton(QIGraphicsWidget *pParent,
                                                  const QString &strPropertyName,
                                                  bool fToggled,
                                                  bool fReflected /* = false */,
                                                  int iAnimationDuration /* = 300 */)
-    : UIGraphicsButton(pParent, UIGraphicsButtonType_RoundArrow)
+    : UIGraphicsButton(pParent, UIIconPool::iconSet(":/expanding_collapsing_16px.png"))
     , m_fReflected(fReflected)
     , m_state(fToggled ? UIGraphicsRotatorButtonState_Rotated : UIGraphicsRotatorButtonState_Default)
     , m_pAnimationMachine(0)

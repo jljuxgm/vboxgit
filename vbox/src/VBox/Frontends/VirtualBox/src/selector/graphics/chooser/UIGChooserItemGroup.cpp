@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 45221 2013-03-28 07:43:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -408,7 +408,7 @@ void UIGChooserItemGroup::prepare()
         m_pToggleButton->hide();
 
         /* Setup enter-button: */
-        m_pEnterButton = new UIGraphicsButton(this, UIGraphicsButtonType_DirectArrow);
+        m_pEnterButton = new UIGraphicsButton(this, UIIconPool::iconSet(":/next_16px.png"));
         connect(m_pEnterButton, SIGNAL(sigButtonClicked()), this, SLOT(sltIndentRoot()));
         m_pEnterButton->hide();
 
@@ -424,11 +424,10 @@ void UIGChooserItemGroup::prepare()
     if (!isMainRoot())
     {
         /* Setup exit-button: */
-        m_pExitButton = new UIGraphicsButton(this, UIGraphicsButtonType_DirectArrow);
+        m_pExitButton = new UIGraphicsButton(this, UIIconPool::iconSet(":/previous_16px.png"));
         connect(m_pExitButton, SIGNAL(sigButtonClicked()), this, SLOT(sltUnindentRoot()));
         QSizeF sh = m_pExitButton->minimumSizeHint();
         m_pExitButton->setTransformOriginPoint(sh.width() / 2, sh.height() / 2);
-        m_pExitButton->setRotation(180);
         m_pExitButton->hide();
     }
 
