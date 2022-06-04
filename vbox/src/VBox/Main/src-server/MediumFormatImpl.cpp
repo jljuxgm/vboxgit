@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.cpp 45518 2013-04-12 12:01:02Z vboxsync $ */
+/* $Id: MediumFormatImpl.cpp 45584 2013-04-17 09:47:57Z vboxsync $ */
 /** @file
  *
  * MediumFormat COM class implementation
@@ -218,9 +218,9 @@ HRESULT MediumFormat::getCapabilities(std::vector<MediumFormatCapabilities_T> &a
         uint64_t tmp = m.capabilities;
         tmp &= 1ULL << i;
         if (tmp)
-            aCapabilities[cCapabilities] = (MediumFormatCapabilities_T)tmp;
+            aCapabilities[cCapabilities++] = (MediumFormatCapabilities_T)tmp;
     }
-    aCapabilities.resize(RT_MIN(cCapabilities, 1));
+    aCapabilities.resize(RT_MAX(cCapabilities, 1));
 
     return S_OK;
 }
