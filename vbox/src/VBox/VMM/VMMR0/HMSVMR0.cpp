@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47054 2013-07-09 12:49:31Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47055 2013-07-09 13:00:41Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -368,6 +368,7 @@ VMMR0DECL(int) SVMR0GlobalInit(void)
      * Allocate 12 KB for the IO bitmap. Since this is non-optional and we always intercept all IO accesses, it's done
      * once globally here instead of per-VM.
      */
+    Assert(g_hMemObjIOBitmap == NIL_RTR0MEMOBJ);
     int rc = RTR0MemObjAllocCont(&g_hMemObjIOBitmap, 3 << PAGE_SHIFT, false /* fExecutable */);
     if (RT_FAILURE(rc))
         return rc;
