@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 46418 2013-06-06 14:43:26Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 46430 2013-06-07 09:35:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4292,6 +4292,8 @@ void VBoxGlobal::prepare()
             mRecompileUser = true;
         else if (!::strcmp(arg, "--recompile-all"))
             mDisablePatm = mDisableCsam = mRecompileSupervisor = mRecompileUser = true;
+        else if (!::strcmp(arg, "--execute-all-in-iem"))
+            mDisablePatm = mDisableCsam = mExecuteAllInIem = true;
         else if (!::strcmp(arg, "--warp-pct"))
         {
             if (++i < argc)

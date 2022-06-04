@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 46359 2013-06-03 12:24:48Z vboxsync $ */
+/* $Id: UISession.cpp 46430 2013-06-07 09:35:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -196,6 +196,8 @@ void UISession::powerUp()
             debugger.SetRecompileSupervisor(true);
         if (vboxGlobal().isUserCodeExecedRecompiled())
             debugger.SetRecompileUser(true);
+        if (vboxGlobal().areWeToExecuteAllInIem())
+            debugger.SetExecuteAllInIEM(true);
         if (!vboxGlobal().isDefaultWarpPct())
             debugger.SetVirtualTimeRate(vboxGlobal().getWarpPct());
     }
