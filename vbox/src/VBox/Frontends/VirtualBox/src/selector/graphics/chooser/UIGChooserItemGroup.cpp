@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 45283 2013-04-02 11:36:53Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 46623 2013-06-18 13:01:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -392,8 +392,8 @@ void UIGChooserItemGroup::prepare()
     m_nameFont = font();
     m_nameFont.setWeight(QFont::Bold);
     m_infoFont = font();
-    m_groupsPixmap = QPixmap(":/nw_16px.png");
-    m_machinesPixmap = QPixmap(":/machine_16px.png");
+    m_groupsPixmap = QPixmap(":/group_abstract_16px.png");
+    m_machinesPixmap = QPixmap(":/machine_abstract_16px.png");
     m_pixmapSizeGroups = m_groupsPixmap.size();
     m_pixmapSizeMachines = m_machinesPixmap.size();
     m_minimumHeaderSize = QSize(0, 0);
