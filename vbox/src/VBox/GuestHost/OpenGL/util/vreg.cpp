@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 45009 2013-03-12 17:27:04Z vboxsync $ */
+/* $Id: vreg.cpp 45044 2013-03-15 06:00:18Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API implementation
@@ -889,7 +889,7 @@ VBOXVREGDECL(int) VBoxVrCompositorEntryRegionsAdd(PVBOXVR_COMPOSITOR pCompositor
         {
             if (VBoxVrListIsEmpty(&pEntry->Vr))
             {
-                WARN(("Empty rectangles passed in, is it expected?"));
+//                WARN(("Empty rectangles passed in, is it expected?"));
                 if (pfChangeFlags)
                     *pfChangeFlags = 0;
                 return VINF_SUCCESS;
