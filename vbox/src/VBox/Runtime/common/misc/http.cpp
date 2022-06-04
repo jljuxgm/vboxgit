@@ -1,4 +1,4 @@
-/* $Id: http.cpp 45343 2013-04-04 17:24:03Z vboxsync $ */
+/* $Id: http.cpp 45381 2013-04-05 15:00:45Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -338,6 +338,9 @@ RTR3DECL(int) RTHttpGet(RTHTTP hHttp, const char *pcszUrl, char **ppszResponse)
             case CURLE_URL_MALFORMAT:
             case CURLE_COULDNT_RESOLVE_HOST:
                 rc = VERR_HTTP_NOT_FOUND;
+                break;
+            case CURLE_COULDNT_CONNECT:
+                rc = VERR_HTTP_COULDNT_CONNECT;
                 break;
             default:
                 break;
