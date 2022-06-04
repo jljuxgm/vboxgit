@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 45103 2013-03-20 11:13:27Z vboxsync $ */
+/* $Id: PGMInternal.h 45695 2013-04-24 12:39:49Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1567,7 +1567,7 @@ typedef struct PGMMMIO2RANGE
     /** The saved state range ID. */
     uint8_t                             idSavedState;
     /** Alignment padding for putting the ram range on a PGMPAGE alignment boundary. */
-    uint8_t                             abAlignemnt[HC_ARCH_BITS == 32 ? 12 : 12];
+    uint8_t                             abAlignment[HC_ARCH_BITS == 32 ? 12 : 12];
     /** Live save per page tracking data. */
     R3PTRTYPE(PPGMLIVESAVEMMIO2PAGE)    paLSPages;
     /** The associated RAM range. */
