@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 44435 2013-01-28 17:24:56Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 44448 2013-01-29 18:37:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,6 +19,7 @@
 
 /* Local includes: */
 #include "UIActionPoolSelector.h"
+#include "UIShortcutPool.h"
 #include "UIDefs.h"
 
 class UIActionMenuFile : public UIActionMenu
@@ -973,6 +974,13 @@ protected:
     }
 };
 
+
+UIActionPoolSelector::UIActionPoolSelector()
+    : UIActionPool(UIActionPoolType_Selector)
+{
+    /* Prepare connections: */
+    connect(gShortcutPool, SIGNAL(sigSelectorShortcutsReloaded()), this, SLOT(sltApplyShortcuts()));
+}
 
 QString UIActionPoolSelector::shortcutsExtraDataID() const
 {

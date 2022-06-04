@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 44436 2013-01-28 18:21:14Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 44448 2013-01-29 18:37:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1046,6 +1046,13 @@ protected:
 };
 #endif /* Q_WS_MAC */
 
+
+UIActionPoolRuntime::UIActionPoolRuntime()
+    : UIActionPool(UIActionPoolType_Runtime)
+{
+    /* Prepare connections: */
+    connect(gShortcutPool, SIGNAL(sigMachineShortcutsReloaded()), this, SLOT(sltApplyShortcuts()));
+}
 
 QString UIActionPoolRuntime::shortcutsExtraDataID() const
 {

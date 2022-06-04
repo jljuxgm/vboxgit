@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 44436 2013-01-28 18:21:14Z vboxsync $ */
+/* $Id: UIActionPool.cpp 44448 2013-01-29 18:37:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -71,10 +71,14 @@ void UIAction::setName(const QString &strName)
 
 void UIAction::setShortcut(const QKeySequence &shortcut)
 {
-    /* Call to base-class: */
-    QAction::setShortcut(shortcut);
-    /* Remember shortcut: */
-    m_shortcut = shortcut;
+    /* Only for selector's action-pool: */
+    if (m_actionPoolType == UIActionPoolType_Selector)
+    {
+        /* Call to base-class: */
+        QAction::setShortcut(shortcut);
+        /* Remember shortcut: */
+        m_shortcut = shortcut;
+    }
     /* Update text according new shortcut: */
     updateText();
 }
@@ -567,7 +571,7 @@ void UIActionPool::prepare()
     /* Create menus: */
     createMenus();
     /* Apply shortcuts: */
-    gShortcutPool->applyShortcuts(this);
+	sltApplyShortcuts();
 }
 
 void UIActionPool::cleanup()
@@ -607,6 +611,11 @@ bool UIActionPool::processHotKey(const QKeySequence &key)
         }
     }
     return false;
+}
+
+void UIActionPool::sltApplyShortcuts()
+{
+    gShortcutPool->applyShortcuts(this);
 }
 
 void UIActionPool::createActions()
