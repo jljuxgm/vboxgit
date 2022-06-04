@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44791 2013-02-21 17:31:39Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 44934 2013-03-06 15:43:49Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -2273,7 +2273,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     if (fOffsettedTsc)
     {
         uint64_t u64CurTSC = ASMReadTSC();
-        if (u64CurTSC + pVCpu->hm.s.vmx.u64TSCOffset >= TMCpuTickGetLastSeen(pVCpu))
+        if (u64CurTSC + pVCpu->hm.s.vmx.u64TSCOffset > TMCpuTickGetLastSeen(pVCpu))
         {
             /* Note: VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_RDTSC_EXIT takes precedence over TSC_OFFSET, applies to RDTSCP too. */
             rc = VMXWriteVmcs64(VMX_VMCS64_CTRL_TSC_OFFSET_FULL, pVCpu->hm.s.vmx.u64TSCOffset);

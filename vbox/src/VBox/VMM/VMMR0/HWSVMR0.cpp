@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 44035 2012-12-04 18:30:44Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 44934 2013-03-06 15:43:49Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1021,7 +1021,7 @@ VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     if (TMCpuTickCanUseRealTSC(pVCpu, &pvVMCB->ctrl.u64TSCOffset))
     {
         uint64_t u64CurTSC = ASMReadTSC();
-        if (u64CurTSC + pvVMCB->ctrl.u64TSCOffset >= TMCpuTickGetLastSeen(pVCpu))
+        if (u64CurTSC + pvVMCB->ctrl.u64TSCOffset > TMCpuTickGetLastSeen(pVCpu))
         {
             pvVMCB->ctrl.u32InterceptCtrl1 &= ~SVM_CTRL1_INTERCEPT_RDTSC;
             pvVMCB->ctrl.u32InterceptCtrl2 &= ~SVM_CTRL2_INTERCEPT_RDTSCP;
