@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 47156 2013-07-15 11:49:02Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 47237 2013-07-18 19:29:40Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -66,8 +66,8 @@
  * only the attribute bits and nothing else). Upper 4-bits are unused.
  *
  * @{ */
-#define HMSVM_CPU_2_VMCB_SEG_ATTR(a)       (a & 0xff) | ((a & 0xf000) >> 4)
-#define HMSVM_VMCB_2_CPU_SEG_ATTR(a)       (a & 0xff) | ((a & 0x0f00) << 4)
+#define HMSVM_CPU_2_VMCB_SEG_ATTR(a)       ( ((a) & 0xff) | (((a) & 0xf000) >> 4) )
+#define HMSVM_VMCB_2_CPU_SEG_ATTR(a)       ( ((a) & 0xff) | (((a) & 0x0f00) << 4) )
 /** @} */
 
 
