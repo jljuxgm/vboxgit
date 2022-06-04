@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 45994 2013-05-12 19:16:16Z vboxsync $ */
+/* $Id: dbgcfg.cpp 45998 2013-05-13 01:48:34Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -703,7 +703,6 @@ RTDECL(int) RTDbgCfgCreate(PRTDBGCFG phDbgCfg, const char *pszEnvVarPrefix)
         {
             RTDBGCFGPROP    enmProp;
             const char     *pszVar;
-            void           *pvAttr;
         } const s_aProps[] =
         {
             { RTDBGCFGPROP_FLAGS,       "FLAGS"    },
