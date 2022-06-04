@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42546 2012-08-02 14:45:37Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42566 2012-08-03 08:57:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2859,7 +2859,7 @@ STDMETHODIMP Guest::FindSession(IN_BSTR aSessionName, ComSafeArrayOut(IGuestSess
     GuestSessions::const_iterator itSessions = mData.mGuestSessions.begin();
     while (itSessions != mData.mGuestSessions.end())
     {
-        if (strName.equals(itSessions->second->getName()))
+        if (strName.contains(itSessions->second->getName())) /** @todo Use a (simple) pattern match (IPRT?). */
             listSessions.push_back(itSessions->second);
         itSessions++;
     }
