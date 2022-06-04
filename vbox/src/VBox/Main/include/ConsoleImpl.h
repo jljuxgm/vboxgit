@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 46775 2013-06-25 12:37:57Z vboxsync $ */
+/* $Id: ConsoleImpl.h 47106 2013-07-12 09:36:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -725,6 +725,8 @@ private:
     const ComPtr<IVRDEServer> mVRDEServer;
 
     ConsoleVRDPServer * const mConsoleVRDPServer;
+    bool mfVRDEChangeInProcess;
+    bool mfVRDEChangePending;
 
     const ComObjPtr<Guest> mGuest;
     const ComObjPtr<Keyboard> mKeyboard;
