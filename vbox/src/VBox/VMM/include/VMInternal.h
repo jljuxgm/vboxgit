@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VMInternal.h 46788 2013-06-25 17:39:02Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -227,6 +227,11 @@ typedef struct VMINTUSERPERVM
      * This is mainly used for the 'Resetting' state, but may come in handy later
      * and when debugging. */
     VMSTATE                         enmPrevVMState;
+
+    /** Reason for the most recent suspend operation. */
+    VMSUSPENDREASON                 enmSuspendReason;
+    /** Reason for the most recent operation. */
+    VMRESUMEREASON                  enmResumeReason;
 
     /** Critical section for pAtError and pAtRuntimeError. */
     RTCRITSECT                      AtErrorCritSect;

@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46772 2013-06-25 08:27:02Z vboxsync $
+# $Id: Config.kmk 46788 2013-06-25 17:39:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1642,7 +1642,7 @@ ifeq ($(KBUILD_TARGET),win)
  LIB_XPCOM       = $(PATH_STAGE_BIN)/VBoxXPCOM.dll
  LIB_DDU         = $(PATH_STAGE_LIB)/VBoxDDU.lib
 endif
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.amd64)
+if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), win.amd64 linux.amd64)
  VBOX_LIB_VMM_LAZY      = $(PATH_STAGE_LIB)/VMMR3LazyImp$(VBOX_SUFF_LIB)
 else
  VBOX_LIB_VMM_LAZY      = $(LIB_VMM)
@@ -5340,7 +5340,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46772 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46788 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
