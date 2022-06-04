@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 43021 2012-08-28 04:04:45Z vboxsync $ */
+/* $Id: DevEFI.h 43146 2012-09-03 01:41:48Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -120,6 +120,9 @@ typedef enum
 #define EFI_VARIABLE_OP_STATUS_NOT_FOUND  0xcafe0002
 #define EFI_VARIABLE_OP_STATUS_NOT_WP     0xcafe0003
 #define EFI_VARIABLE_OP_STATUS_BSY        0xcafe0010
+
+#define EFI_VARIABLE_NAME_MAX   1024
+#define EFI_VARIABLE_VALUE_MAX   1024
 
 typedef enum {
     EFI_VM_VARIABLE_OP_START = 0,
