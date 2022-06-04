@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 47018 2013-07-06 17:31:11Z vboxsync $ */
+/* $Id: HostImpl.cpp 47022 2013-07-06 18:03:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -250,7 +250,7 @@ static inline char *getResolvConfPath()
     RT_ZERO(g_aszResolvConf);
     RTStrmPrintf(g_aszResolvConf, MAX_PATH, "%/RESOLV2", _PATH_ETC);
 # else
-    strcmp(g_aszResolvConf, "/etc/resolv.conf");
+    strcpy(g_aszResolvConf, "/etc/resolv.conf");
 # endif    
     return g_aszResolvConf;
 }
