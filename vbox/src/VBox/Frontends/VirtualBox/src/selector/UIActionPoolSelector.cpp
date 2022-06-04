@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 44583 2013-02-07 13:12:49Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -888,7 +888,7 @@ class UIActionSimpleSave : public UIActionSimple
 public:
 
     UIActionSimpleSave(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/state_saved_16px.png")
+        : UIActionSimple(pParent, ":/save_state_16px.png", ":/save_state_disabled_16px.png")
     {
         retranslateUi();
     }

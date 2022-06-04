@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 45226 2013-03-28 11:44:16Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -61,6 +61,19 @@ UIVMCloseDialog::UIVMCloseDialog(QWidget *pParent, const CMachine &machine, cons
 
     /* Retranslate finally: */
     retranslateUi();
+}
+
+/* static */
+UIVMCloseDialog::ResultCode UIVMCloseDialog::parseResultCode(const QString &strCloseAction)
+{
+    ResultCode resultCode = ResultCode_Cancel;
+    if (!strCloseAction.compare("Save", Qt::CaseInsensitive))
+        resultCode = ResultCode_Save;
+    else if (!strCloseAction.compare("Shutdown", Qt::CaseInsensitive))
+        resultCode = ResultCode_Shutdown;
+    else if (!strCloseAction.compare("PowerOff", Qt::CaseInsensitive))
+        resultCode = ResultCode_PowerOff;
+    return resultCode;
 }
 
 void UIVMCloseDialog::sltUpdateWidgetAvailability()
@@ -209,7 +222,7 @@ void UIVMCloseDialog::prepare()
                     {
                         /* Configure icon: */
                         m_pSaveIcon->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-                        m_pSaveIcon->setPixmap(QPixmap(":/state_saved_16px.png"));
+                        m_pSaveIcon->setPixmap(QPixmap(":/save_state_16px.png"));
                     }
                     /* Prepare 'save' radio-button: */
                     m_pSaveRadio = new QRadioButton(this);

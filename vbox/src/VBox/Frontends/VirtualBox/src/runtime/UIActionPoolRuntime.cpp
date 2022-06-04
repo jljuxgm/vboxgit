@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 44448 2013-01-29 18:37:30Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -342,6 +342,32 @@ protected:
     }
 };
 
+class UIActionSimplePerformSave : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimplePerformSave(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/save_state_16px.png", ":/save_state_disabled_16px.png")
+    {
+        retranslateUi();
+    }
+
+protected:
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("Save");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "Save State"));
+        setStatusTip(QApplication::translate("UIActionPool", "Save the machine state of the virtual machine"));
+    }
+};
+
 class UIActionSimplePerformShutdown : public UIActionSimple
 {
     Q_OBJECT;
@@ -374,6 +400,32 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "ACPI Sh&utdown"));
         setStatusTip(QApplication::translate("UIActionPool", "Send the ACPI Power Button press event to the virtual machine"));
+    }
+};
+
+class UIActionSimplePerformPowerOff : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimplePerformPowerOff(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/poweroff_16px.png", ":/poweroff_disabled_16px.png")
+    {
+        retranslateUi();
+    }
+
+protected:
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("PowerOff");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "Po&wer Off"));
+        setStatusTip(QApplication::translate("UIActionPool", "Power off the virtual machine"));
     }
 };
 
@@ -1076,7 +1128,9 @@ void UIActionPoolRuntime::createActions()
 #endif /* Q_WS_X11 */
     m_pool[UIActionIndexRuntime_Toggle_Pause] = new UIActionTogglePause(this);
     m_pool[UIActionIndexRuntime_Simple_Reset] = new UIActionSimplePerformReset(this);
+    m_pool[UIActionIndexRuntime_Simple_Save] = new UIActionSimplePerformSave(this);
     m_pool[UIActionIndexRuntime_Simple_Shutdown] = new UIActionSimplePerformShutdown(this);
+    m_pool[UIActionIndexRuntime_Simple_PowerOff] = new UIActionSimplePerformPowerOff(this);
     m_pool[UIActionIndexRuntime_Simple_Close] = new UIActionSimplePerformClose(this);
 
     /* 'View' actions: */

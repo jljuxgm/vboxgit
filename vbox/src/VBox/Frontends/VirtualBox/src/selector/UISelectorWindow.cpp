@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 45377 2013-04-05 14:41:52Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -602,18 +602,25 @@ void UISelectorWindow::sltPerformSaveAction()
 
         /* Get session console: */
         CConsole console = session.GetConsole();
-        /* Prepare machine state saving: */
-        CProgress progress = console.SaveState();
+        /* Pause VM first: */
+        console.Pause();
         if (console.isOk())
         {
-            /* Show machine state saving progress: */
-            CMachine machine = session.GetMachine();
-            msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_state_save_90px.png");
-            if (!progress.isOk() || progress.GetResultCode() != 0)
-                msgCenter().cannotSaveMachineState(progress, machine.GetName());
+            /* Prepare machine state saving: */
+            CProgress progress = console.SaveState();
+            if (console.isOk())
+            {
+                /* Show machine state saving progress: */
+                CMachine machine = session.GetMachine();
+                msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_state_save_90px.png");
+                if (!progress.isOk() || progress.GetResultCode() != 0)
+                    msgCenter().cannotSaveMachineState(progress, machine.GetName());
+            }
+            else
+                msgCenter().cannotSaveMachineState(console);
         }
         else
-            msgCenter().cannotSaveMachineState(console);
+            msgCenter().cannotPauseMachine(console);
 
         /* Unlock machine finally: */
         session.UnlockMachine();
