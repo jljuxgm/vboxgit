@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 45218 2013-03-27 19:41:00Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 45226 2013-03-28 11:44:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -78,7 +78,7 @@ void UIVMCloseDialog::accept()
         setResult(ResultCode_Shutdown);
     else if (m_pPowerOffRadio->isChecked())
     {
-        if (!m_pDiscardCheckBox->isChecked())
+        if (!m_pDiscardCheckBox->isChecked() || !m_pDiscardCheckBox->isVisible())
             setResult(ResultCode_PowerOff);
         else
             setResult(ResultCode_PowerOff_With_Discarding);
