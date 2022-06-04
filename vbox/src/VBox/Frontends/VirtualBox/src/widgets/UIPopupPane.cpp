@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 47756 2013-08-15 11:57:01Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 47759 2013-08-15 12:39:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -443,9 +443,6 @@ void UIPopupPane::paintFrame(QPainter &painter)
 
 void UIPopupPane::done(int iResultCode)
 {
-    /* Close the window: */
-    close();
-
     /* Was the popup auto-confirmed? */
     if (m_pTextPane->isAutoConfirmed())
         iResultCode |= AlertOption_AutoConfirmed;
