@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 39432 2011-11-28 11:20:27Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 45300 2013-04-03 09:48:39Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -429,7 +429,11 @@ int vboxPciOsDevDetachHostDriver(PVBOXRAWPCIINS pIns)
         if (!pNewCreds)
                 goto done;
 
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 5, 0)
+        pNewCreds->fsuid = GLOBAL_ROOT_UID;
+# else
         pNewCreds->fsuid = 0;
+# endif
         pOldCreds = override_creds(pNewCreds);
 #endif
 
@@ -539,7 +543,11 @@ int vboxPciOsDevReattachHostDriver(PVBOXRAWPCIINS pIns)
         if (!pNewCreds)
             goto done;
 
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 5, 0)
+        pNewCreds->fsuid = GLOBAL_ROOT_UID;
+# else
         pNewCreds->fsuid = 0;
+# endif
         pOldCreds = override_creds(pNewCreds);
 #endif
         RTStrPrintf(szFileBuf, cMaxBuf,
