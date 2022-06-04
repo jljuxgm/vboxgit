@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 45010 2013-03-12 17:47:56Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 45078 2013-03-18 21:09:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -481,7 +481,7 @@ STDMETHODIMP Guest::CreateSession(IN_BSTR aUser, IN_BSTR aPassword, IN_BSTR aDom
     {
         switch (rc)
         {
-            case VERR_GENERAL_FAILURE: /** @todo Special guest control rc needed! */
+            case VERR_GSTCTL_GUEST_ERROR:
                 hr = GuestSession::setErrorExternal(this, guestRc);
                 break;
 
