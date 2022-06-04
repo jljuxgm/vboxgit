@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 46244 2013-05-23 16:43:46Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 46296 2013-05-28 13:19:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -346,7 +346,7 @@ void UIRuntimeMiniToolBar::updateAutoHideAnimationBounds()
     switch (m_alignment)
     {
         case Qt::AlignTop:
-            m_hiddenToolbarPosition = m_shownToolbarPosition - QPoint(0, m_pEmbeddedToolbar->height() + 3);
+            m_hiddenToolbarPosition = m_shownToolbarPosition - QPoint(0, m_pEmbeddedToolbar->height() - 3);
             break;
         case Qt::AlignBottom:
             m_hiddenToolbarPosition = m_shownToolbarPosition + QPoint(0, m_pEmbeddedToolbar->height() - 3);
