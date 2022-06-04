@@ -1,4 +1,4 @@
-; $Id: tstAsm3DNow-1.asm 41868 2012-06-21 21:08:40Z vboxsync $
+; $Id: tstAsm3DNow-1.asm 43120 2012-08-30 18:15:00Z vboxsync $
 ;; @file
 ; Disassembly testcase - 3DNow!
 ;
@@ -8,7 +8,7 @@
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
-; you can rxDIstribute it and/or modify it under the terms of the GNU
+; you can redistribute it and/or modify it under the terms of the GNU
 ; General Public License (GPL) as published by the Free Software
 ; Foundation, in version 2 as it comes in the "COPYING" file of the
 ; VirtualBox OSE distribution. VirtualBox OSE is distributed in the
