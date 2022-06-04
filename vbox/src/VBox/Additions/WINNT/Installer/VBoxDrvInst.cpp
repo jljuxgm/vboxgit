@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 46709 2013-06-20 14:51:52Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 46710 2013-06-20 14:54:54Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -141,6 +141,7 @@ static HMODULE loadInstalledDll(const char *pszName)
 {
     char   szPath[MAX_PATH];
     UINT   cchPath = GetModuleFileNameA(NULL, szPath, sizeof(szPath));
+    size_t cbName = strlen(pszName) + 1;
     if (cchPath && cchPath <= sizeof(szPath))
     {
         char *pszSlashFile = strrchr(szPath, '\\');
