@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
+/* $Id: DevHPET.cpp 45839 2013-04-30 14:13:42Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1432,7 +1432,6 @@ static DECLCALLBACK(int) hpetR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         AssertRCReturn(rc, rc);
 
         pThis->pHpetHlpRC = pThis->pHpetHlpR3->pfnGetRCHelpers(pDevIns);
-        AssertReturn(pThis->pHpetHlpRC != NIL_RTRCPTR, VERR_INTERNAL_ERROR);
     }
 
     if (fR0Enabled)
