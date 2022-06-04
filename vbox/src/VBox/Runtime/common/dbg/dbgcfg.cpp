@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 46070 2013-05-14 15:21:57Z vboxsync $ */
+/* $Id: dbgcfg.cpp 46071 2013-05-14 15:28:37Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -443,7 +443,7 @@ static bool rtDbgCfgIsFileAndFixCase(char *pszPath, const char *pszFilename, boo
     {
         pszPath[cchPath] = '\0';
         rc = RTPathAppend(pszPath, RTPATH_MAX, pszFilename);
-        AssertRCReturn(rc, rc);
+        AssertRCReturn(rc, false);
         pszPath[strlen(pszPath) - 1] = '_';
 
         if (pfProbablyCompressed)
