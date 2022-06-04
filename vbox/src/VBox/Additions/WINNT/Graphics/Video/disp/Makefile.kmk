@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43589 2012-10-10 10:26:19Z vboxsync $
+# $Id: Makefile.kmk 46236 2013-05-23 14:15:40Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -211,7 +211,7 @@ tstMvWnd_TEMPLATE = VBOXR3EXE
 tstMvWnd_DEFS     = UNICODE _UNICODE
 tstMvWnd_SOURCES  = \
 	wddm/dbg/tstMvWnd.cpp
-tstMvWnd_LIBS     = $(LIB_RUNTIME)
+tstMvWnd_LIBS     = $(VBOX_LIB_IPRT_GUEST_R3)
 tstMvWnd_LDFLAGS.win = /SUBSYSTEM:windows
 
 PROGRAMS += DumpD3DCaps9
@@ -220,7 +220,7 @@ DumpD3DCaps9_SDKS     = ReorderCompilerIncs $(VBOX_WINDDK_GST_WLH)
 DumpD3DCaps9_DEFS     = UNICODE _UNICODE
 DumpD3DCaps9_SOURCES  = \
 	wddm/dbg/DumpD3DCaps9.cpp
-DumpD3DCaps9_LIBS     = $(LIB_RUNTIME)
+DumpD3DCaps9_LIBS     = $(VBOX_LIB_IPRT_GUEST_R3) d3d9.lib
 DumpD3DCaps9_LDFLAGS.win = /SUBSYSTEM:CONSOLE
 
 endif #VBOXVIDEOWINDBG
