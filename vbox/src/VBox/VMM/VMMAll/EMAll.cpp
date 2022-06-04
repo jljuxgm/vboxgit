@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
+/* $Id: EMAll.cpp 42317 2012-07-23 09:24:43Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -779,7 +779,8 @@ VMMDECL(int) EMInterpretRdpmc(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
     /* Just return zero here; rather tricky to properly emulate this, especially as the specs are a mess. */
     pRegFrame->rax = 0;
     pRegFrame->rdx = 0;
-    /** @todo We should trigger a #GP here if the cpu doesn't support the index in ecx. */
+    /** @todo We should trigger a #GP here if the CPU doesn't support the index in ecx
+     *        but see @bugref{3472}! */
 
     NOREF(pVM);
     return VINF_SUCCESS;
