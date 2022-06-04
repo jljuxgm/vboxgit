@@ -1,4 +1,4 @@
-/* $Id: alloc.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: alloc.cpp 46546 2013-06-14 09:20:15Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation.
  */
@@ -37,6 +37,10 @@
 /* Don't enable the tracker when building the minimal IPRT. */
 #ifdef RT_MINI
 # undef RTMEMALLOC_USE_TRACKER
+#endif
+
+#if defined(RTMEMALLOC_USE_TRACKER) && defined(RTMEM_NO_WRAP_TO_EF_APIS)
+# error "Cannot define both RTMEMALLOC_USE_TRACKER and RTMEM_NO_WRAP_TO_EF_APIS!"
 #endif
 
 
