@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 45697 2013-04-24 13:30:50Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 47334 2013-07-23 10:49:09Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -233,7 +233,7 @@ typedef VBOXSERVICECTRLSESSIONTHREAD *PVBOXSERVICECTRLSESSIONTHREAD;
 #define VBOXSERVICECTRLSESSION_FLAG_DUMPSTDERR           RT_BIT(3)
 
 /**
- * Strucutre for maintaining a guest session. This also
+ * Structure for maintaining a guest session. This also
  * contains all started threads (e.g. for guest processes).
  *
  * This structure can act in two different ways:
