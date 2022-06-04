@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 42846 2012-08-16 13:35:28Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 42847 2012-08-16 13:38:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -255,7 +255,7 @@ STDMETHODIMP GuestFile::QueryInfo(IFsObjInfo **aInfo)
             return VERR_COM_UNEXPECTED;
 
         vrc = pFsObjInfo->init(objData);
-        if (RT_SUCCESS(rc))
+        if (RT_SUCCESS(vrc))
             hr = pFsObjInfo.queryInterfaceTo(aInfo);
     }
     else
