@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 42217 2012-07-18 20:41:29Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 42224 2012-07-19 10:38:00Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -15,7 +15,6 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 #define _WIN32_WINNT 0x0500
-#include <windows.h>
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 #include "VBoxSeamless.h"
