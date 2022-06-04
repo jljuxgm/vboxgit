@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 41347 2012-05-17 22:40:43Z vboxsync $ */
+/* $Id: VBoxManage.h 42176 2012-07-17 12:23:50Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -23,6 +23,7 @@
 #include <VBox/com/ptr.h>
 #include <VBox/com/VirtualBox.h>
 #include <VBox/com/string.h>
+#include <VBox/com/array.h>
 #endif /* !VBOX_ONLY_DOCS */
 
 #include <iprt/types.h>
@@ -170,6 +171,9 @@ unsigned int getMaxNics(IVirtualBox* vbox, IMachine* mach);
 #endif
 
 /* VBoxManageModifyVM.cpp */
+#ifndef VBOX_ONLY_DOCS
+void parseGroups(const char *pcszGroups, com::SafeArray<BSTR> *pGroups);
+#endif
 int handleModifyVM(HandlerArg *a);
 
 /* VBoxManageDebugVM.cpp */
