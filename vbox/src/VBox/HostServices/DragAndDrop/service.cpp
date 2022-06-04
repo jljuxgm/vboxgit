@@ -1,4 +1,4 @@
-/* $Id: service.cpp 42342 2012-07-24 09:36:51Z vboxsync $ */
+/* $Id: service.cpp 43996 2012-11-29 13:24:08Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -138,15 +138,17 @@ int DragAndDropService::clientConnect(uint32_t u32ClientID, void *pvClient)
 int DragAndDropService::clientDisconnect(uint32_t u32ClientID, void *pvClient)
 {
     /* Remove all waiters with this clientId. */
-    while (!m_clientQueue.isEmpty())
+    for (size_t i = 0; i < m_clientQueue.size(); )
     {
-        HGCM::Client *pClient = m_clientQueue.first();
+        HGCM::Client *pClient = m_clientQueue.at(i);
         if (pClient->clientId() == u32ClientID)
         {
             m_pHelpers->pfnCallComplete(pClient->handle(), VERR_INTERRUPTED);
-            m_clientQueue.removeFirst();
+            m_clientQueue.removeAt(i);
             delete pClient;
         }
+        else
+            i++;
     }
 
     return VINF_SUCCESS;
