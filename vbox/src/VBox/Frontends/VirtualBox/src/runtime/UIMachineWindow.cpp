@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 44865 2013-02-28 12:23:20Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 44909 2013-03-04 11:25:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -199,6 +199,12 @@ CSession& UIMachineWindow::session() const
 CMachine UIMachineWindow::machine() const
 {
     return session().GetMachine();
+}
+
+void UIMachineWindow::setMask(const QRegion &region)
+{
+    /* Call to base-class: */
+    QMainWindow::setMask(region);
 }
 
 void UIMachineWindow::retranslateUi()
