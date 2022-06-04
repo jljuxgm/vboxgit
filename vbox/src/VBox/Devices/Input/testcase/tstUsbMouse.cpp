@@ -1,4 +1,4 @@
-/* $Id: tstUsbMouse.cpp 47674 2013-08-12 14:24:56Z vboxsync $ */
+/* $Id: tstUsbMouse.cpp 47768 2013-08-15 14:11:01Z vboxsync $ */
 /** @file
  * tstUsbMouse.cpp - testcase USB mouse and tablet devices.
  */
@@ -184,7 +184,8 @@ static void testSendPositionRel(RTTEST hTest)
                 if (   Urb.abData[0] != 3    /* Buttons */
                     || Urb.abData[1] != 123  /* x */
                     || Urb.abData[2] != 240  /* 256 - y */
-                    || Urb.abData[3] != 255  /* z */)
+                    || Urb.abData[3] != 255  /* z */
+                    || Urb.abData[4] != 255  /* w */)
                     rc = VERR_GENERAL_FAILURE;
             }
             else
