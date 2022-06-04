@@ -1,4 +1,4 @@
-/* $Id: tstRTSemRW.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: tstRTSemRW.cpp 45020 2013-03-13 14:34:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Reader/Writer Semaphore.
  */
@@ -297,14 +297,17 @@ static void Test4(unsigned cThreads, unsigned cSeconds, unsigned uWritePercent, 
 
     }
 
-    RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS,
-                 "Threads: %u  Total: %llu  Per Sec: %llu  Avg: %llu ns  Max dev: %llu%%\n",
-                 cThreads,
-                 cItrTotal,
-                 cItrTotal / cSeconds,
-                 ElapsedNS / cItrTotal,
-                 cItrMaxDeviation * 100 / cItrNormal
-                 );
+    //RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS,
+    //             "Threads: %u  Total: %llu  Per Sec: %llu  Avg: %llu ns  Max dev: %llu%%\n",
+    //             cThreads,
+    //             cItrTotal,
+    //             cItrTotal / cSeconds,
+    //             ElapsedNS / cItrTotal,
+    //             cItrMaxDeviation * 100 / cItrNormal
+    //             );
+    //
+    RTTestValue(g_hTest, "Thruput", cItrTotal * UINT32_C(1000000000) / ElapsedNS, RTTESTUNIT_CALLS_PER_SEC);
+    RTTestValue(g_hTest, "Max diviation", cItrMaxDeviation * 100 / cItrNormal, RTTESTUNIT_PCT);
 }
 
 
