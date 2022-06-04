@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 42708 2012-08-09 10:15:38Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 42715 2012-08-09 15:35:51Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -525,6 +525,8 @@ static int VBoxServiceToolboxPrintFsInfo(const char *pszName, uint16_t cbName,
         if (uOutputFlags & VBOXSERVICETOOLBOXOUTPUTFLAG_PARSEABLE)
         {
             RTPrintf("ftype=%c%c", chFileType, 0);
+            /** @todo Skip node_id if not present/available! */
+            RTPrintf("cnode_id=%RU64%c", (uint64_t)pObjInfo->Attr.u.Unix.INodeId, 0);
             RTPrintf("owner_mask=%c%c%c%c",
                      fMode & RTFS_UNIX_IRUSR ? 'r' : '-',
                      fMode & RTFS_UNIX_IWUSR ? 'w' : '-',
