@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43565 2012-10-08 12:08:24Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43577 2012-10-09 10:16:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -324,13 +324,11 @@ void UIGChooserItemMachine::clearItems(UIGChooserItemType)
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
 }
 
-void UIGChooserItemMachine::updateSizeHint()
-{
-    updateGeometry();
-}
-
 void UIGChooserItemMachine::updateLayout()
 {
+    /* Update size-hint for this item: */
+    updateGeometry();
+
     if (m_pToolBar)
     {
         /* Prepare variables: */

@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43565 2012-10-08 12:08:24Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43577 2012-10-09 10:16:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -731,17 +731,14 @@ void UIGChooserItemGroup::clearItems(UIGChooserItemType type /* = UIGChooserItem
     updateToolTip();
 }
 
-void UIGChooserItemGroup::updateSizeHint()
-{
-    /* Update size-hints for all the items: */
-    foreach (UIGChooserItem *pItem, items())
-        pItem->updateSizeHint();
-    /* Update size-hint for this item: */
-    updateGeometry();
-}
-
 void UIGChooserItemGroup::updateLayout()
 {
+    /* Update size-hints for all the children: */
+    foreach (UIGChooserItem *pItem, items())
+        pItem->updateGeometry();
+    /* Update size-hint for this item: */
+    updateGeometry();
+
     /* Prepare variables: */
     int iHorizontalMargin = data(GroupItemData_HorizonalMargin).toInt();
     int iVerticalMargin = data(GroupItemData_VerticalMargin).toInt();
