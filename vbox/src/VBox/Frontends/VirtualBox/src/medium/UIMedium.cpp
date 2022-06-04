@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 46756 2013-06-24 14:28:59Z vboxsync $ */
+/* $Id: UIMedium.cpp 47150 2013-07-15 10:25:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -393,7 +393,7 @@ QPixmap UIMedium::icon (bool aNoDiffs /* = false */, bool aCheckRO /* = false */
         pixmap = result (aNoDiffs).isOk() ? vboxGlobal().warningIcon() : vboxGlobal().errorIcon();
 
     if (aCheckRO && mIsReadOnly)
-        pixmap = VBoxGlobal::joinPixmaps (pixmap, QPixmap (":/new_16px.png"));
+        pixmap = VBoxGlobal::joinPixmaps (pixmap, QPixmap (":/hd_new_16px.png"));
 
     return pixmap;
 }
