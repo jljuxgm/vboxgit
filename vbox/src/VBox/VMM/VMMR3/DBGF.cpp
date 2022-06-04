@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 45533 2013-04-13 16:13:22Z vboxsync $ */
+/* $Id: DBGF.cpp 45692 2013-04-24 11:28:19Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -825,6 +825,9 @@ static int dbgfR3VMMCmd(PVM pVM, DBGFCMD enmCmd, PDBGFCMDDATA pCmdData, bool *pf
          */
         case DBGFCMD_GO:
         {
+            /** @todo SMP */
+            PVMCPU pVCpu = VMMGetCpu0(pVM);
+            pVCpu->dbgf.s.fSingleSteppingRaw = false;
             fSendEvent = false;
             fResume = true;
             break;
