@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 46108 2013-05-15 19:22:38Z vboxsync $ */
+/* $Id: ldrPE.cpp 46113 2013-05-15 22:39:43Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -970,11 +970,14 @@ static DECLCALLBACK(int) rtldrPEEnumSymbols(PRTLDRMODINTERNAL pMod, unsigned fFl
              */
             uintptr_t   uRVAExport = paAddress[uOrdinal];
             RTUINTPTR Value;
-            if (    uRVAExport - (uintptr_t)pModPe->ExportDir.VirtualAddress
-                <   pModPe->ExportDir.Size)
+            if (  uRVAExport - (uintptr_t)pModPe->ExportDir.VirtualAddress
+                < pModPe->ExportDir.Size)
             {
-                /* Resolve forwarder. */
-                AssertMsgFailed(("Forwarders are not supported!\n"));
+                if (!(fFlags & RTLDR_ENUM_SYMBOL_FLAGS_NO_FWD))
+                {
+                    /* Resolve forwarder. */
+                    AssertMsgFailed(("Forwarders are not supported!\n"));
+                }
                 continue;
             }
 

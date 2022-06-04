@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 46101 2013-05-15 15:36:43Z vboxsync $ */
+/* $Id: dbgmod.h 46113 2013-05-15 22:39:43Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -114,6 +114,21 @@ typedef struct RTDBGMODVTIMG
      * @param   pvUser          The user argument.
      */
     DECLCALLBACKMEMBER(int, pfnEnumSegments)(PRTDBGMODINT pMod, PFNRTLDRENUMSEGS pfnCallback, void *pvUser);
+
+    /**
+     * Enumerates the symbols exported by the module.
+     *
+     * @returns iprt status code, which might have been returned by pfnCallback.
+     * @param   pMod            Pointer to the module structure.
+     * @param   fFlags          Flags indicating what to return and such.
+     * @param   BaseAddress     The image base addressto use when calculating the
+     *                          symbol values.
+     * @param   pfnCallback     The callback function which each symbol is to be fed
+     *                          to.
+     * @param   pvUser          User argument to pass to the enumerator.
+     */
+    DECLCALLBACKMEMBER(int, pfnEnumSymbols)(PRTDBGMODINT pMod, uint32_t fFlags, RTLDRADDR BaseAddress,
+                                            PFNRTLDRENUMSYMS pfnCallback, void *pvUser);
 
     /**
      * Gets the size of the loaded image.
