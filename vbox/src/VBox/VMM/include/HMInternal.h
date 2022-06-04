@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: HMInternal.h 44769 2013-02-20 17:20:27Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -528,11 +528,11 @@ typedef struct HMCPU
     struct
     {
         /** Physical address of the VM control structure (VMCS). */
-        RTHCPHYS                    HCPhysVMCS;
+        RTHCPHYS                    HCPhysVmcs;
         /** R0 memory object for the VM control structure (VMCS). */
-        RTR0MEMOBJ                  hMemObjVMCS;
+        RTR0MEMOBJ                  hMemObjVmcs;
         /** Virtual address of the VM control structure (VMCS). */
-        R0PTRTYPE(void *)           pvVMCS;
+        R0PTRTYPE(void *)           pvVmcs;
         /** Ring 0 handlers for VT-x. */
         PFNHMVMXSTARTVM             pfnStartVM;
 
