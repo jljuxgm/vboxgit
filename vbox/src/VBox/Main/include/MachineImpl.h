@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 42890 2012-08-20 17:45:13Z vboxsync $ */
+/* $Id: MachineImpl.h 43041 2012-08-28 13:58:40Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -352,7 +352,8 @@ public:
                  const StringsList &llGroups,
                  GuestOSType *aOsType,
                  const Guid &aId,
-                 bool fForceOverwrite);
+                 bool fForceOverwrite,
+                 bool fDirectoryIncludesUUID);
 
     // initializer for loading existing machine XML (either registered or not)
     HRESULT initFromSettings(VirtualBox *aParent,

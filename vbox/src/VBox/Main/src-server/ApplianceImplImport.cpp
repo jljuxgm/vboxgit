@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 42708 2012-08-09 10:15:38Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 43041 2012-08-28 13:58:40Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -205,6 +205,7 @@ STDMETHODIMP Appliance::Interpret()
             Bstr bstrMachineFilename;
             rc = mVirtualBox->ComposeMachineFilename(Bstr(nameVBox).raw(),
                                                      NULL /* aGroup */,
+                                                     NULL /* aCreateFlags */,
                                                      NULL /* aBaseFolder */,
                                                      bstrMachineFilename.asOutParam());
             if (FAILED(rc)) throw rc;
@@ -1953,8 +1954,7 @@ void Appliance::importMachineGeneric(const ovf::VirtualSystem &vsysThis,
                                     Bstr(stack.strNameVBox).raw(),
                                     ComSafeArrayAsInParam(groups),
                                     Bstr(stack.strOsTypeVBox).raw(),
-                                    NULL, /* uuid */
-                                    FALSE, /* fForceOverwrite */
+                                    NULL, /* aCreateFlags */
                                     pNewMachine.asOutParam());
     if (FAILED(rc)) throw rc;
 
@@ -2867,6 +2867,7 @@ void Appliance::importMachines(ImportStack &stack,
         Bstr bstrMachineFilename;
         rc = mVirtualBox->ComposeMachineFilename(Bstr(stack.strNameVBox).raw(),
                                                  NULL /* aGroup */,
+                                                 NULL /* aCreateFlags */,
                                                  NULL /* aBaseFolder */,
                                                  bstrMachineFilename.asOutParam());
         if (FAILED(rc)) throw rc;

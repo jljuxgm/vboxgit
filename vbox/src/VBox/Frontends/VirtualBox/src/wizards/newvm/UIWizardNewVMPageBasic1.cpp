@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 42616 2012-08-06 12:12:48Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 43041 2012-08-28 13:58:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -183,7 +183,7 @@ bool UIWizardNewVMPage1::createMachineFolder()
     /* Get default machines directory: */
     QString strDefaultMachinesFolder = vbox.GetSystemProperties().GetDefaultMachineFolder();
     /* Compose machine filename: */
-    QString strMachineFilename = vbox.ComposeMachineFilename(m_pNameAndSystemEditor->name(), m_strGroup, strDefaultMachinesFolder);
+    QString strMachineFilename = vbox.ComposeMachineFilename(m_pNameAndSystemEditor->name(), m_strGroup, QString::null, strDefaultMachinesFolder);
     /* Compose machine folder/basename: */
     QFileInfo fileInfo(strMachineFilename);
     QString strMachineFolder = fileInfo.absolutePath();

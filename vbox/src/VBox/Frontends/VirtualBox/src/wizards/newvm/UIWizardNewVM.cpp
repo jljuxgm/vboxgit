@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 42616 2012-08-06 12:12:48Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 43041 2012-08-28 13:58:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -65,7 +65,7 @@ bool UIWizardNewVM::createVM()
         QVector<QString> groups;
         if (!m_strGroup.isEmpty())
             groups << m_strGroup;
-        m_machine = vbox.CreateMachine(QString(), field("name").toString(), groups, strTypeId, QString(), false);
+        m_machine = vbox.CreateMachine(QString(), field("name").toString(), groups, strTypeId, QString::null);
         if (!vbox.isOk())
         {
             msgCenter().cannotCreateMachine(vbox, this);
