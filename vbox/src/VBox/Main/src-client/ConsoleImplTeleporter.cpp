@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 44347 2013-01-24 00:27:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -573,7 +573,7 @@ static SSMSTRMOPS const g_teleporterTcpOps =
 static void teleporterProgressCancelCallback(void *pvUser)
 {
     TeleporterState *pState = (TeleporterState *)pvUser;
-    SSMR3Cancel(VMR3GetVM(pState->mpUVM));
+    SSMR3Cancel(pState->mpUVM);
     if (!pState->mfIsSource)
     {
         TeleporterStateTrg *pStateTrg = (TeleporterStateTrg *)pState;
@@ -597,7 +597,7 @@ static DECLCALLBACK(int) teleporterProgressCallback(PVM pVM, unsigned uPercent, 
             hrc = pState->mptrProgress->COMGETTER(Canceled)(&fCanceled);
             if (SUCCEEDED(hrc) && fCanceled)
             {
-                SSMR3Cancel(VMR3GetVM(pState->mpUVM));
+                SSMR3Cancel(pState->mpUVM);
                 return VERR_SSM_CANCELLED;
             }
         }

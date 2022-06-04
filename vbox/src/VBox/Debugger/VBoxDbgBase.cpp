@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 44342 2013-01-23 17:43:40Z vboxsync $ */
+/* $Id: VBoxDbgBase.cpp 44347 2013-01-24 00:27:56Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -86,7 +86,7 @@ VBoxDbgBase::stamEnum(const QString &rPat, PFNSTAMR3ENUM pfnEnum, void *pvUser)
     PUVM pUVM = m_pUVM;
     if (    pUVM
         &&  VMR3GetStateU(pUVM) < VMSTATE_DESTROYING)
-        return STAMR3Enum(VMR3GetVM(pUVM), pszPat, pfnEnum, pvUser);
+        return STAMR3Enum(pUVM, pszPat, pfnEnum, pvUser);
     return VERR_INVALID_HANDLE;
 }
 

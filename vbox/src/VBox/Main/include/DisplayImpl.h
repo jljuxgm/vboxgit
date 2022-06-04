@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 42878 2012-08-20 10:00:07Z vboxsync $ */
+/* $Id: DisplayImpl.h 44347 2013-01-24 00:27:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -121,7 +121,7 @@ public:
     // public initializer/uninitializer for internal purposes only
     HRESULT init (Console *aParent);
     void uninit();
-    int  registerSSM(PVM pVM);
+    int  registerSSM(PUVM pUVM);
 
     // public methods only for internal purposes
     int handleDisplayResize (unsigned uScreenId, uint32_t bpp, void *pvVRAM, uint32_t cbLine, int w, int h, uint16_t flags);

@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
+/* $Id: tstVMM.cpp 44347 2013-01-24 00:27:56Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -234,7 +234,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 44340 $\n");
+                RTPrintf("$Revision: 44347 $\n");
                 return 0;
 
             default:
@@ -286,7 +286,7 @@ int main(int argc, char **argv)
             }
         }
 
-        STAMR3Dump(pVM, "*");
+        STAMR3Dump(pUVM, "*");
 
         /*
          * Cleanup.

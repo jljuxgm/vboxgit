@@ -1,4 +1,4 @@
-/* $Id: tstVMM-HM.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
+/* $Id: tstVMM-HM.cpp 44347 2013-01-24 00:27:56Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -94,7 +94,7 @@ int main(int argc, char **argv)
         rc = VMR3ReqCallWaitU(pUVM, VMCPUID_ANY, (PFNRT)VMMDoHmTest, 1, pVM);
         AssertRC(rc);
 
-        STAMR3Dump(pVM, "*");
+        STAMR3Dump(pUVM, "*");
 
         /*
          * Cleanup.
