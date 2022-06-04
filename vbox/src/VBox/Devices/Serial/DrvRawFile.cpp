@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -139,8 +139,11 @@ static DECLCALLBACK(void) drvRawFileDestruct(PPDMDRVINS pDrvIns)
     if (pThis->pszLocation)
         MMR3HeapFree(pThis->pszLocation);
 
-    RTFileClose(pThis->hOutputFile);
-    pThis->hOutputFile = NIL_RTFILE;
+    if (pThis->hOutputFile != NIL_RTFILE)
+    {
+        RTFileClose(pThis->hOutputFile);
+        pThis->hOutputFile = NIL_RTFILE;
+    }
 }
 
 

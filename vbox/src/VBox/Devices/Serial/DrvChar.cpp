@@ -1,4 +1,4 @@
-/* $Id: DrvChar.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DrvChar.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
 /** @file
  * Driver that adapts PDMISTREAM into PDMICHARCONNECTOR / PDMICHARPORT.
  *
@@ -304,6 +304,7 @@ static DECLCALLBACK(void) drvCharDestruct(PPDMDRVINS pDrvIns)
     if (pThis->SendSem != NIL_RTSEMEVENT)
     {
         RTSemEventSignal(pThis->SendSem);
+        pThis->SendSem = NIL_RTSEMEVENT;
     }
 
     /*

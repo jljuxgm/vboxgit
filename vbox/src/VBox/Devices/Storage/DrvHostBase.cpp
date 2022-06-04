@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1877,6 +1877,7 @@ int DRVHostBaseInitData(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, PDMBLOCKTYPE enmType
 #endif
     pThis->enmType                          = enmType;
     //pThis->cErrors                          = 0;
+    pThis->fAttachFailError                 = true; /* It's an error until we've read the config. */
 
     pThis->pfnGetMediaSize                  = drvHostBaseGetMediaSize;
 

@@ -1,4 +1,4 @@
-/* $Id: DrvUDPTunnel.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DrvUDPTunnel.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
 /** @file
  * DrvUDPTunnel - UDP tunnel network transport driver
  *
@@ -403,10 +403,16 @@ static DECLCALLBACK(void) drvUDPTunnelDestruct(PPDMDRVINS pDrvIns)
     ASMAtomicXchgSize(&pThis->fLinkDown, true);
 
     if (pThis->pszInstance)
+    {
         RTStrFree(pThis->pszInstance);
+        pThis->pszInstance = NULL;
+    }
 
     if (pThis->pszDestIP)
+    {
         MMR3HeapFree(pThis->pszDestIP);
+        pThis->pszDestIP = NULL;
+    }
 
     if (pThis->pServer)
     {

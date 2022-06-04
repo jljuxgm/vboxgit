@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaper.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PDMNetShaper.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -345,6 +345,10 @@ VMMR3_INT_DECL(int) PDMR3NsDetach(PUVM pUVM, PPDMDRVINS pDrvIns, PPDMNSFILTER pF
 {
     VM_ASSERT_EMT(pUVM->pVM);
     AssertPtrReturn(pFilter, VERR_INVALID_POINTER);
+    /* Now, return quietly if the filter isn't attached since driver/device
+       destructors are called on constructor failure. */
+    if (!pFilter->pBwGroupR3)
+        return VINF_SUCCESS;
     AssertPtrReturn(pFilter->pBwGroupR3, VERR_INVALID_POINTER);
 
     PPDMNETSHAPER pShaper = pUVM->pdm.s.pNetShaper;

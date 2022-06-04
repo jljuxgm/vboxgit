@@ -1,4 +1,4 @@
-/* $Id: DrvRawImage.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DrvRawImage.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
 /** @file
  * VBox storage devices: Raw image driver
  */
@@ -234,8 +234,11 @@ static DECLCALLBACK(void) drvRawImageDestruct(PPDMDRVINS pDrvIns)
     LogFlow(("drvRawImageDestruct: '%s'\n", pThis->pszFilename));
     PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
 
-    RTFileClose(pThis->hFile);
-    pThis->hFile = NIL_RTFILE;
+    if (pThis->hFile != NIL_RTFILE)
+    {
+        RTFileClose(pThis->hFile);
+        pThis->hFile = NIL_RTFILE;
+    }
 
     if (pThis->pszFilename)
     {

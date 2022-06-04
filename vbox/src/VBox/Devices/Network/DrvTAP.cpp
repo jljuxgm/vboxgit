@@ -1,4 +1,4 @@
-/* $Id: DrvTAP.cpp 44580 2013-02-07 11:35:37Z vboxsync $ */
+/* $Id: DrvTAP.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
 /** @file
  * DrvTAP - Universal TAP network transport driver.
  */
@@ -776,17 +776,22 @@ static DECLCALLBACK(void) drvTAPDestruct(PPDMDRVINS pDrvIns)
      * Terminate the control pipe.
      */
     int rc;
-    rc = RTPipeClose(pThis->hPipeWrite); AssertRC(rc);
-    pThis->hPipeWrite = NIL_RTPIPE;
-    rc = RTPipeClose(pThis->hPipeRead); AssertRC(rc);
-    pThis->hPipeRead = NIL_RTPIPE;
+    if (pThis->hPipeWrite != NIL_RTPIPE)
+    {
+        rc = RTPipeClose(pThis->hPipeWrite); AssertRC(rc);
+        pThis->hPipeWrite = NIL_RTPIPE;
+    }
+    if (pThis->hPipeRead != NIL_RTPIPE)
+    {
+        rc = RTPipeClose(pThis->hPipeRead); AssertRC(rc);
+        pThis->hPipeRead = NIL_RTPIPE;
+    }
 
 #ifdef RT_OS_SOLARIS
     /** @todo r=bird: This *does* need checking against ConsoleImpl2.cpp if used on non-solaris systems. */
     if (pThis->hFileDevice != NIL_RTFILE)
     {
-        int rc = RTFileClose(pThis->hFileDevice);
-        AssertRC(rc);
+        int rc = RTFileClose(pThis->hFileDevice); AssertRC(rc);
         pThis->hFileDevice = NIL_RTFILE;
     }
 
@@ -807,8 +812,11 @@ static DECLCALLBACK(void) drvTAPDestruct(PPDMDRVINS pDrvIns)
 #else
     MMR3HeapFree(pThis->pszDeviceName);
 #endif
+    pThis->pszDeviceName = NULL;
     MMR3HeapFree(pThis->pszSetupApplication);
+    pThis->pszSetupApplication = NULL;
     MMR3HeapFree(pThis->pszTerminateApplication);
+    pThis->pszTerminateApplication = NULL;
 
     /*
      * Kill the xmit lock.
@@ -845,6 +853,8 @@ static DECLCALLBACK(int) drvTAPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
      */
     pThis->pDrvIns                      = pDrvIns;
     pThis->hFileDevice                  = NIL_RTFILE;
+    pThis->hPipeWrite                   = NIL_RTPIPE;
+    pThis->hPipeRead                    = NIL_RTPIPE;
     pThis->pszDeviceName                = NULL;
 #ifdef RT_OS_SOLARIS
     pThis->iIPFileDes                   = -1;
