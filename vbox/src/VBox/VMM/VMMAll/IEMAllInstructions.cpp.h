@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 47327 2013-07-22 22:11:09Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 47329 2013-07-23 00:15:09Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -7297,7 +7297,7 @@ FNIEMOP_DEF(iemOp_imul_Gv_Ev_Ib)
                 IEM_MC_LOCAL(uint32_t,      u32Tmp);
                 IEM_MC_LOCAL(RTGCPTR,  GCPtrEffDst);
 
-                IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffDst, bRm, 4);
+                IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffDst, bRm, 1);
                 uint32_t u32Imm; IEM_OPCODE_GET_NEXT_S8_SX_U32(&u32Imm);
                 IEM_MC_ASSIGN(u32Src, u32Imm);
                 IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
