@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 46202 2013-05-21 23:02:26Z vboxsync $ */
+/* $Id: strcache.cpp 46203 2013-05-21 23:10:26Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -681,7 +681,7 @@ static PRTSTRCACHEENTRY rtStrCacheAllocFixedEntry(PRTSTRCACHEINT pThis, uint32_t
         PRTSTRCACHECHUNK pChunk = (PRTSTRCACHECHUNK)RTMemPageAlloc(RTSTRCACHE_FIXED_GROW_SIZE);
         if (!pChunk)
             return NULL;
-        pChunk->cb = PAGE_SIZE;
+        pChunk->cb = RTSTRCACHE_FIXED_GROW_SIZE;
         pChunk->pNext = pThis->pChunkList;
         pThis->pChunkList = pChunk;
 
