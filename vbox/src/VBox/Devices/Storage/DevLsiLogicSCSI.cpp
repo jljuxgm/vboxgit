@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 43472 2012-09-29 19:54:30Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 43659 2012-10-16 16:25:26Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -2109,7 +2109,7 @@ static DECLCALLBACK(int) lsilogicDeviceSCSIRequestCompleted(PPDMISCSIPORT pInter
     {
         if (RT_UNLIKELY(pTaskState->fBIOS))
         {
-            int rc = vboxscsiRequestFinished(&pLsiLogic->VBoxSCSI, pSCSIRequest);
+            int rc = vboxscsiRequestFinished(&pLsiLogic->VBoxSCSI, pSCSIRequest, rcCompletion);
             AssertMsgRC(rc, ("Finishing BIOS SCSI request failed rc=%Rrc\n", rc));
         }
         else
@@ -3727,7 +3727,7 @@ static int lsilogicPrepareBIOSSCSIRequest(PLSILOGICSCSI pLsiLogic)
 
     memcpy(pLsiLogic->VBoxSCSI.pBuf, &ScsiInquiryData, 5);
 
-    rc = vboxscsiRequestFinished(&pLsiLogic->VBoxSCSI, &pTaskState->PDMScsiRequest);
+    rc = vboxscsiRequestFinished(&pLsiLogic->VBoxSCSI, &pTaskState->PDMScsiRequest, SCSI_STATUS_OK);
     AssertMsgRCReturn(rc, ("Finishing BIOS SCSI request failed rc=%Rrc\n", rc), rc);
 
     RTMemCacheFree(pLsiLogic->hTaskCache, pTaskState);
@@ -5229,7 +5229,7 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
     if (fBootable)
     {
         if (pThis->enmCtrlType == LSILOGICCTRLTYPE_SCSI_SPI)
-            rc = PDMDevHlpIOPortRegister(pDevIns, LSILOGIC_BIOS_IO_PORT, 3, NULL,
+            rc = PDMDevHlpIOPortRegister(pDevIns, LSILOGIC_BIOS_IO_PORT, 4, NULL,
                                          lsilogicIsaIOPortWrite, lsilogicIsaIOPortRead,
                                          lsilogicIsaIOPortWriteStr, lsilogicIsaIOPortReadStr,
                                          "LsiLogic BIOS");
