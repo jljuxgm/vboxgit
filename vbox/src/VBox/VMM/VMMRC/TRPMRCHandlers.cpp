@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 42773 2012-08-11 20:16:58Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 42779 2012-08-11 22:47:43Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -1138,7 +1138,7 @@ DECLASM(int) TRPMGCTrap0dHandler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         case VINF_EM_RAW_INTERRUPT_PENDING:
             Assert(TRPMHasTrap(pVCpu));
             /* no break; */
-        case VINF_PGM_SYNC_CR3: /** @todo Check this with Sander. */
+        case VINF_PGM_SYNC_CR3:
         case VINF_EM_RAW_EMULATE_INSTR:
         case VINF_IOM_R3_IOPORT_READ:
         case VINF_IOM_R3_IOPORT_WRITE:
@@ -1151,6 +1151,7 @@ DECLASM(int) TRPMGCTrap0dHandler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         case VINF_EM_RAW_TIMER_PENDING:
         case VINF_EM_PENDING_REQUEST:
         case VINF_EM_HALT:
+        case VINF_SELM_SYNC_GDT:
         case VINF_SUCCESS:
             break;
 
