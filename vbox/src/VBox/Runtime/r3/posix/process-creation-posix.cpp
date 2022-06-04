@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 44549 2013-02-05 16:10:29Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -475,6 +475,10 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
                 Assert(rc == 0);
             }
 # endif
+            sigset_t sigmask;
+            sigemptyset(&sigmask);
+            rc = posix_spawnattr_setsigmask(&Attr, &sigmask);
+            Assert(rc == 0);
 
             /* File changes. */
             posix_spawn_file_actions_t  FileActions;
@@ -583,6 +587,13 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
                 }
             }
 #endif
+
+            /*
+             * Unset the signal mask.
+             */
+            sigset_t sigmask;
+            sigemptyset(&sigmask);
+            sigprocmask(SIG_SETMASK, &sigmask, NULL);
 
             /*
              * Apply changes to the standard file descriptor and stuff.
