@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 44728 2013-02-18 12:03:31Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 44731 2013-02-18 13:12:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -364,13 +364,13 @@ void UIHotKeyEditor::reflectSequence()
     /* Append sequence with modifier names: */
     QStringList modifierNames;
     foreach (int iTakenModifier, m_takenModifiers)
-        modifierNames << QKeySequence(iTakenModifier).toString();
+        modifierNames << QKeySequence(iTakenModifier).toString(QKeySequence::NativeText);
     if (!modifierNames.isEmpty())
         strSequence += modifierNames.join("");
 
     /* Append sequence with main key name: */
     if (m_iTakenKey != -1)
-        strSequence += QKeySequence(m_iTakenKey).toString();
+        strSequence += QKeySequence(m_iTakenKey).toString(QKeySequence::NativeText);
 
     /* Draw sequence: */
     m_pLineEdit->setText(strSequence);
