@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic2.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic2.cpp 46496 2013-06-11 15:26:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -64,7 +64,6 @@ UIWizardNewVMPageBasic2::UIWizardNewVMPageBasic2()
             {
                 m_pRamSlider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
                 m_pRamSlider->setOrientation(Qt::Horizontal);
-                m_pRamSlider->setTickPosition(QSlider::TicksBelow);
             }
             m_pRamEditor = new QILineEdit(this);
             {

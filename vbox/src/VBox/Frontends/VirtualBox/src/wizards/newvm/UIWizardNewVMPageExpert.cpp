@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 45080 2013-03-19 07:54:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 46496 2013-06-11 15:26:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -63,7 +63,6 @@ UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
                 {
                     m_pRamSlider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
                     m_pRamSlider->setOrientation(Qt::Horizontal);
-                    m_pRamSlider->setTickPosition(QSlider::TicksBelow);
                     m_pRamSlider->setValue(m_pNameAndSystemEditor->type().GetRecommendedRAM());
                 }
                 m_pRamEditor = new QILineEdit(m_pMemoryCnt);
