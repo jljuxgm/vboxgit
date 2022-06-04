@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42289 2012-07-20 18:35:43Z vboxsync $
+# $Id: Config.kmk 42306 2012-07-22 02:06:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1811,6 +1811,15 @@ VBOX_PATH_MAKECAB   ?= $(VBOX_PATH_CABSDK)/BIN/MAKECAB.EXE
 if1of ($(KBUILD_HOST).$(KBUILD_HOST_ARCH), linux.x86 solaris.x86 win.x86)
  PATH_TOOL_YASM ?= $(PATH_DEVTOOLS_BLD)/bin
 endif
+
+# The Microsoft IDL compiler (the SDK build needs this on non-Windows).
+VBOX_WIN_MIDL ?= $(EXEC_X86_WIN32) $(call VBOX_FN_MAKE_WIN_PATH,$(firstword $(wildcard \
+	$(PATH_SDK_$(VBOX_WINPSDK)_BIN)/[Mm][Ii][Dd][Ll].[Ee][Xx][Ee]\
+	$(PATH_SDK_$(VBOX_WINPSDK))/[Bb][Ii][Nn]/[Mm][Ii][Dd][Ll].[Ee][Xx][Ee]\
+	$(PATH_SDK_WINPSDK_BIN)/[Mm][Ii][Dd][Ll].[Ee][Xx][Ee]\
+	$(PATH_SDK_WINPSDK)/[Bb][Ii][Nn]/[Mm][Ii][Dd][Ll].[Ee][Xx][Ee]\
+	$(PATH_DEVTOOLS)/win.x86/bin/[Mm][Ii][Dd][Ll].[Ee][Xx][Ee]\
+	) Sorry_Cannot_Find_The_Midl_Compiler_In_The_PSDK))
 
 # XPCOM setup for all but win32.
 ifneq ($(KBUILD_TARGET),win)
@@ -5097,7 +5106,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42289 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42306 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
