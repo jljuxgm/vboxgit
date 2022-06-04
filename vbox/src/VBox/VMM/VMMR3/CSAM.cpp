@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 42782 2012-08-11 23:19:17Z vboxsync $ */
+/* $Id: CSAM.cpp 43872 2012-11-15 08:52:11Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2448,6 +2448,7 @@ VMMR3DECL(int) CSAMR3DoPendingAction(PVM pVM, PVMCPU pVCpu)
  */
 VMMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
 {
+#ifdef VBOX_WITH_RAW_MODE
     Assert(pVM->cCpus == 1);
     PVMCPU      pVCpu = VMMGetCpu0(pVM);
     uint16_t    cbIDT;
@@ -2651,6 +2652,7 @@ VMMR3DECL(int) CSAMR3CheckGates(PVM pVM, uint32_t iGate, uint32_t cGates)
         }
     } /* for */
     STAM_PROFILE_STOP(&pVM->csam.s.StatCheckGates, a);
+#endif /* VBOX_WITH_RAW_MODE */
     return VINF_SUCCESS;
 }
 

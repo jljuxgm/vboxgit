@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 42931 2012-08-23 08:45:35Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 43872 2012-11-15 08:52:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3214,6 +3214,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
             if (   pVM->pgm.s.fMappingsFixed
                 && pgmMapAreMappingsEnabled(pVM))
             {
+#ifndef PGM_WITHOUT_MAPPINGS
                 RTGCPTR     GCPtrFixed    = pVM->pgm.s.GCPtrMappingFixed;
                 uint32_t    cbFixed       = pVM->pgm.s.cbMappingFixed;
                 pVM->pgm.s.fMappingsFixed = false;
@@ -3234,6 +3235,9 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
                     pVM->pgm.s.GCPtrMappingFixed      = GCPtrFixed;
                     pVM->pgm.s.cbMappingFixed         = cbFixed;
                 }
+#else
+                AssertFailed();
+#endif
             }
             else
             {

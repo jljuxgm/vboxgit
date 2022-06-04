@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 41943 2012-06-28 02:33:43Z vboxsync $ */
+/* $Id: TRPMInternal.h 43872 2012-11-15 08:52:11Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -26,7 +26,9 @@
 
 
 /** Enable to allow trap forwarding in GC. */
-#define TRPM_FORWARD_TRAPS_IN_GC
+#ifdef VBOX_WITH_RAW_MODE
+# define TRPM_FORWARD_TRAPS_IN_GC
+#endif
 
 /** First interrupt handler. Used for validating input. */
 #define TRPM_HANDLER_INT_BASE  0x20
