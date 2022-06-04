@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 44290 2013-01-14 21:49:11Z vboxsync $ */
+/* $Id: server_presenter.cpp 44499 2013-01-31 17:19:40Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -817,7 +817,7 @@ void CrHlpFreeTexImage(CRContext *pCurCtx, GLuint idPBO, void *pvData)
         if (pCurCtx)
             cr_server.head_spu->dispatch_table.BindBufferARB(GL_PIXEL_PACK_BUFFER_ARB, pCurCtx->bufferobject.packBuffer->hwid);
         else
-            cr_server.head_spu->dispatch_table.BindBufferARB(GL_PIXEL_PACK_BUFFER_ARB, NULL);
+            cr_server.head_spu->dispatch_table.BindBufferARB(GL_PIXEL_PACK_BUFFER_ARB, 0);
     }
     else
     {
