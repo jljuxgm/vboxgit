@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 43035 2012-08-28 13:19:43Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 43199 2012-09-05 11:53:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -316,8 +316,7 @@ void UIMachineSettingsSystem::putToCache()
     systemData.m_fUTCEnabled = mCbTCUseUTC->isChecked();
     systemData.m_fUseAbsHID = mCbUseAbsHID->isChecked();
     systemData.m_fPAEEnabled = mCbPae->isChecked();
-    systemData.m_fHwVirtExEnabled = !systemData.m_fPFHwVirtExSupported ? false :
-                                    mCbVirt->isChecked() || mSlCPU->value() > 1;
+    systemData.m_fHwVirtExEnabled = mCbVirt->checkState() == Qt::Checked || mSlCPU->value() > 1;
     systemData.m_fNestedPagingEnabled = mCbNestedPaging->isChecked();
     systemData.m_iRAMSize = mSlMemory->value();
     systemData.m_cCPUCount = mSlCPU->value();
@@ -457,22 +456,6 @@ bool UIMachineSettingsSystem::revalidate (QString &aWarning, QString & /* aTitle
             "This will be done automatically when you accept the VM Settings "
             "by pressing the OK button.");
         return true;
-    }
-
-    /* VT-x/AMD-V test */
-    {
-        /* Get system data from cache: */
-        const UIDataSettingsMachineSystem &systemData = m_cache.base();
-        if (mCbVirt->isChecked() && !systemData.m_fPFHwVirtExSupported)
-        {
-            aWarning = tr (
-                "you have hardware virtualization (VT-x/AMD-V) enabled. "
-                "Your host configuration does not support "
-                "hardware virtualization, so it will be disabled. "
-                "This will be done automatically when you accept the VM Settings "
-                "by pressing the OK button.");
-            return true;
-        }
     }
 
     /* CPU execution cap is low: */
