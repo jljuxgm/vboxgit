@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43598 2012-10-10 14:43:54Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43604 2012-10-10 16:19:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -357,6 +357,31 @@ bool UIGChooserItemMachine::hasItems(UIGChooserItemType) const
 void UIGChooserItemMachine::clearItems(UIGChooserItemType)
 {
     AssertMsgFailed(("Machine graphics item do NOT support children!"));
+}
+
+UIGChooserItem* UIGChooserItemMachine::searchForItem(const QString &strSearchTag, int iItemSearchFlags)
+{
+    /* Ignoring if we are not searching for the machine-item? */
+    if (!(iItemSearchFlags & UIGChooserItemSearchFlag_Machine))
+        return 0;
+
+    /* Are we searching by the exact name? */
+    if (iItemSearchFlags & UIGChooserItemSearchFlag_ExactName)
+    {
+        /* Exact name doesn't match? */
+        if (name() != strSearchTag)
+            return 0;
+    }
+    /* Are we searching by the few first symbols? */
+    else
+    {
+        /* Name doesn't start with passed symbols? */
+        if (!name().startsWith(strSearchTag, Qt::CaseInsensitive))
+            return 0;
+    }
+
+    /* Returning this: */
+    return this;
 }
 
 UIGChooserItemMachine* UIGChooserItemMachine::firstMachineItem()
