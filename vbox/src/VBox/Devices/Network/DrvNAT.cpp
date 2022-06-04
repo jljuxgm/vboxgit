@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 47499 2013-07-31 17:36:16Z vboxsync $ */
+/* $Id: DrvNAT.cpp 47506 2013-08-01 12:08:51Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -59,6 +59,8 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
+
+#define DRVNAT_MAXFRAMESIZE (16 * 1024)
 
 /**
  * @todo: This is a bad hack to prevent freezing the guest during high network
@@ -465,6 +467,16 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
         return VERR_NO_MEMORY;
     if (!pGso)
     {
+        /*
+         * Drop the frame if it is too big.
+         */
+        if (cbMin >= DRVNAT_MAXFRAMESIZE)
+        {
+            Log(("drvNATNetowrkUp_AllocBuf: drops over-sized frame (%u bytes), returns VERR_INVALID_PARAMETER\n",
+                 cbMin));
+            return VERR_INVALID_PARAMETER;
+        }
+
         pSgBuf->pvUser      = NULL;
         pSgBuf->pvAllocator = slirp_ext_m_get(pThis->pNATState, cbMin,
                                               &pSgBuf->aSegs[0].pvSeg, &pSgBuf->aSegs[0].cbSeg);
@@ -476,6 +488,16 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
     }
     else
     {
+        /*
+         * Drop the frame if its segment is too big.
+         */
+        if (pGso->cbHdrsTotal + pGso->cbMaxSeg >= DRVNAT_MAXFRAMESIZE)
+        {
+            Log(("drvNATNetowrkUp_AllocBuf: drops over-sized frame (%u bytes), returns VERR_INVALID_PARAMETER\n",
+                 pGso->cbHdrsTotal + pGso->cbMaxSeg));
+            return VERR_INVALID_PARAMETER;
+        }
+
         pSgBuf->pvUser      = RTMemDup(pGso, sizeof(*pGso));
         pSgBuf->pvAllocator = NULL;
         pSgBuf->aSegs[0].cbSeg = RT_ALIGN_Z(cbMin, 16);
