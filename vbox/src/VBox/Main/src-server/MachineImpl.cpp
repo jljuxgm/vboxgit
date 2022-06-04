@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 46351 2013-05-31 20:25:22Z vboxsync $ */
+/* $Id: MachineImpl.cpp 46387 2013-06-04 14:54:10Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3767,6 +3767,9 @@ STDMETHODIMP Machine::LaunchVMProcess(ISession *aSession,
         if (strFrontend == "emergencystop")
             strFrontend = Utf8Str::Empty;
     }
+    /* default frontend: Qt GUI */
+    if (strFrontend.isEmpty())
+        strFrontend = "GUI/Qt";
 
     if (strFrontend != "emergencystop")
     {
@@ -7600,6 +7603,7 @@ HRESULT Machine::launchVMProcess(IInternalSessionControl *aControl,
 
     AssertReturn(aControl, E_FAIL);
     AssertReturn(aProgress, E_FAIL);
+    AssertReturn(!strFrontend.isEmpty(), E_FAIL);
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
@@ -7686,9 +7690,8 @@ HRESULT Machine::launchVMProcess(IInternalSessionControl *aControl,
             RTStrFree(newEnvStr);
     }
 
-    /* Qt is default */
 #ifdef VBOX_WITH_QTGUI
-    if (strFrontend == "gui" || strFrontend == "GUI/Qt" || strFrontend == "")
+    if (strFrontend == "gui" || strFrontend == "GUI/Qt")
     {
 # ifdef RT_OS_DARWIN /* Avoid Launch Services confusing this with the selector by using a helper app. */
         const char VirtualBox_exe[] = "../Resources/VirtualBoxVM.app/Contents/MacOS/VirtualBoxVM";
