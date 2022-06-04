@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 47457 2013-07-29 12:52:56Z vboxsync $ */
+/* $Id: VMMR0.cpp 47645 2013-08-09 13:47:38Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -461,6 +461,33 @@ VMMR0DECL(int) VMMR0ThreadCtxHooksCreate(PVMCPU pVCpu)
 VMMR0DECL(void) VMMR0ThreadCtxHooksRelease(PVMCPU pVCpu)
 {
     RTThreadCtxHooksRelease(pVCpu->vmm.s.hR0ThreadCtx);
+}
+
+
+/**
+ * Whether thread-context hooks are created (implying they're supported) on this
+ * platform.
+ *
+ * @returns true if the hooks are created, false otherwise.
+ * @param   pVCpu       Pointer to the VMCPU.
+ *
+ * @remarks Can be called from any thread.
+ */
+VMMR0DECL(bool) VMMR0ThreadCtxHooksAreCreated(PVMCPU pVCpu)
+{
+    return pVCpu->vmm.s.hR0ThreadCtx != NIL_RTTHREADCTX;
+}
+
+
+/**
+ * Whether thread-context hooks are registered for this VCPU.
+ *
+ * @returns true if registered, false otherwise.
+ * @param   pVCpu       Pointer to the VMCPU.
+ */
+VMMR0DECL(bool) VMMR0ThreadCtxHooksAreRegistered(PVMCPU pVCpu)
+{
+    return RTThreadCtxHooksAreRegistered(pVCpu->vmm.s.hR0ThreadCtx);
 }
 
 
