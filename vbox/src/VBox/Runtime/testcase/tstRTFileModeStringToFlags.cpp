@@ -1,4 +1,4 @@
-/* $Id: tstRTFileModeStringToFlags.cpp 47809 2013-08-16 13:15:04Z vboxsync $ */
+/* $Id: tstRTFileModeStringToFlags.cpp 47811 2013-08-16 13:28:49Z vboxsync $ */
 /** @file
  * IPRT Testcase - File mode string to IPRT file mode flags.
  */
@@ -106,8 +106,9 @@ int main()
             break;
         }
 
-        /** @todo Sharing modes are not implemented yet, so just assume default ones. */
-        uMode |= RTFILE_O_DENY_NONE;
+        /** @todo Testing sharing modes are not implemented yet,
+         *        so just remove them from testing. */
+        uMode &= ~RTFILE_O_DENY_NONE;
 
         if (   RT_SUCCESS(iResult)
             && uMode != aTests[iTest].uMode)
