@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 42323 2012-07-23 12:33:32Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 43395 2012-09-21 11:38:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -159,6 +159,11 @@ void UIMachineViewFullscreen::setGuestAutoresizeEnabled(bool fEnabled)
         if (uisession()->isGuestSupportsGraphics())
             sltPerformGuestResize();
     }
+}
+
+void UIMachineViewFullscreen::normalizeGeometry(bool /* fAdjustPosition */)
+{
+    sltPerformGuestResize(workingArea().size());
 }
 
 QRect UIMachineViewFullscreen::workingArea() const
