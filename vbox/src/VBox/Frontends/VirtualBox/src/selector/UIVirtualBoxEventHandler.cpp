@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 42553 2012-08-02 17:36:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -60,6 +60,8 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
         << KVBoxEventType_OnMachineDataChanged
         << KVBoxEventType_OnMachineRegistered
         << KVBoxEventType_OnSessionStateChanged
+        << KVBoxEventType_OnSnapshotTaken
+        << KVBoxEventType_OnSnapshotDeleted
         << KVBoxEventType_OnSnapshotChanged;
 
     vbox.GetEventSource().RegisterListener(m_mainEventListener, events, TRUE);
