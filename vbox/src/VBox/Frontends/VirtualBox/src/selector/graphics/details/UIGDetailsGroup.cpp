@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 43982 2012-11-28 13:32:14Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 43987 2012-11-28 15:08:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -213,7 +213,7 @@ void UIGDetailsGroup::prepareLayout()
 
 void UIGDetailsGroup::prepareSets(const QList<UIVMItem*> &items)
 {
-    /* Remove superflous sets: */
+    /* Cleanup superflous sets: */
     while (m_sets.size() > items.size())
         delete m_sets.last();
 
