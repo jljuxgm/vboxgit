@@ -1,4 +1,4 @@
-/* $Id: allocex-r3-posix.cpp 46741 2013-06-23 16:44:18Z vboxsync $ */
+/* $Id: allocex-r3-posix.cpp 46742 2013-06-23 16:44:38Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc Workers, posix.
  */
@@ -42,7 +42,7 @@
 
 DECLHIDDEN(int) rtMemAllocEx16BitReach(size_t cbAlloc, uint32_t fFlags, void **ppv)
 {
-    AssertReturn(cbAlloc < _64K, NULL);
+    AssertReturn(cbAlloc < _64K, VERR_NO_MEMORY);
 
     /*
      * Try with every possible address hint since the possible range is very limited.
