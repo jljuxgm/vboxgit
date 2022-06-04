@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 45622 2013-04-18 21:49:05Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 45625 2013-04-18 23:33:59Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -272,7 +272,7 @@ ovf::CIMOSType_T convertVBoxOSType2CIMOSType(const char *pcszVBox, BOOL fLongMod
         }
     }
 
-    return ovf::CIMOSType_CIMOS_Other;
+    return fLongMode ? ovf::CIMOSType_CIMOS_Other_64 : ovf::CIMOSType_CIMOS_Other;
 }
 
 Utf8Str convertNetworkAttachmentTypeToString(NetworkAttachmentType_T type)
