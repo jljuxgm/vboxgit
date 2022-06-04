@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 46398 2013-06-05 16:06:05Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 46501 2013-06-11 16:02:55Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1015,7 +1015,8 @@ static void buslogicSetInterrupt(PBUSLOGIC pBusLogic, bool fSuppressIrq, uint8_t
  */
 static void buslogicClearInterrupt(PBUSLOGIC pBusLogic)
 {
-    LogFlowFunc(("pBusLogic=%#p\n", pBusLogic));
+    LogFlowFunc(("pBusLogic=%#p, clearing %#02x (pending %#02x)\n", 
+                 pBusLogic, pBusLogic->regInterrupt, pBusLogic->uPendingIntr));
     pBusLogic->regInterrupt = 0;
     PDMDevHlpPCISetIrq(pBusLogic->CTX_SUFF(pDevIns), 0, 0);
     /* If there's another pending interrupt, report it now. */
@@ -3486,7 +3487,7 @@ static DECLCALLBACK(void) buslogicR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp,
             }
 
             /* Incoming mailbox, 32-bit format. */
-            GCMailbox = pThis->GCPhysAddrMailboxOutgoingBase;
+            GCMailbox = pThis->GCPhysAddrMailboxOutgoingBase + (pThis->cMailbox * sizeof(Mailbox32));
             pHlp->pfnPrintf(pHlp, " Outgoing mailbox entries (32-bit) at %08X:\n", (uint32_t)GCMailbox);
             for (i = 0; i < pThis->cMailbox; ++i)
             {
