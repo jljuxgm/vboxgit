@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 42024 2012-07-05 12:10:53Z vboxsync $ */
+/* $Id: HostImpl.cpp 42664 2012-08-07 14:34:48Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -337,6 +337,23 @@ HRESULT Host::init(VirtualBox *aParent)
                 ASMCpuId(0x8000000A, &u32Dummy, &u32Dummy, &u32Dummy, &u32SVMFeatureEDX);
                 if (u32SVMFeatureEDX & AMD_CPUID_SVM_FEATURE_EDX_NESTED_PAGING)
                     m->fNestedPagingSupported = true;
+            }
+        }
+        else
+        if (    u32VendorEBX == X86_CPUID_VENDOR_VIA_EBX
+            &&  u32VendorECX == X86_CPUID_VENDOR_VIA_ECX
+            &&  u32VendorEDX == X86_CPUID_VENDOR_VIA_EDX
+           )
+        {
+            /* VIA. */
+            if (    (u32FeaturesECX & X86_CPUID_FEATURE_ECX_VMX)
+                 && (u32FeaturesEDX & X86_CPUID_FEATURE_EDX_MSR)
+                 && (u32FeaturesEDX & X86_CPUID_FEATURE_EDX_FXSR)
+               )
+            {
+                int rc = SUPR3QueryVTxSupported();
+                if (RT_SUCCESS(rc))
+                    m->fVTSupported = true;
             }
         }
     }
