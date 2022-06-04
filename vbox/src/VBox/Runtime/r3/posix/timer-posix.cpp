@@ -1,4 +1,4 @@
-/* $Id: timer-posix.cpp 39093 2011-10-24 14:01:50Z vboxsync $ */
+/* $Id: timer-posix.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
 /** @file
  * IPRT - Timer, POSIX.
  */
@@ -152,14 +152,12 @@ typedef struct RTTIMER
  * RTOnce callback that initializes the critical section.
  *
  * @returns RTCritSectInit return code.
- * @param   pvUser1     NULL, ignored.
- * @param   pvUser2     NULL, ignored.
+ * @param   pvUser      NULL, ignored.
  *
  */
-static DECLCALLBACK(int) rtTimerOnce(void *pvUser1, void *pvUser2)
+static DECLCALLBACK(int) rtTimerOnce(void *pvUser)
 {
-    NOREF(pvUser1);
-    NOREF(pvUser2);
+    NOREF(pvUser);
     return RTCritSectInit(&g_TimerCritSect);
 }
 #endif
@@ -539,7 +537,7 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
     /*
      * Do the global init first.
      */
-    int rc = RTOnce(&g_TimerOnce, rtTimerOnce, NULL, NULL);
+    int rc = RTOnce(&g_TimerOnce, rtTimerOnce, NULL);
     if (RT_FAILURE(rc))
         return rc;
 

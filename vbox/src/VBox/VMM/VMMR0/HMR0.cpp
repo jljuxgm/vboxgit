@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 43803 2012-11-05 13:50:57Z vboxsync $ */
+/* $Id: HMR0.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -916,10 +916,9 @@ static DECLCALLBACK(void) hmR0EnableCpuCallback(RTCPUID idCpu, void *pvUser1, vo
  * @param   pvUser          Pointer to the VM.
  * @param   pvUserIgnore    NULL, ignored.
  */
-static DECLCALLBACK(int32_t) hmR0EnableAllCpuOnce(void *pvUser, void *pvUserIgnore)
+static DECLCALLBACK(int32_t) hmR0EnableAllCpuOnce(void *pvUser)
 {
     PVM pVM = (PVM)pvUser;
-    NOREF(pvUserIgnore);
 
     /*
      * Indicate that we've initialized.
@@ -1007,7 +1006,7 @@ VMMR0DECL(int) HMR0EnableAllCpus(PVM pVM)
     if (ASMAtomicReadBool(&g_HvmR0.fSuspended))
         return VERR_HM_SUSPEND_PENDING;
 
-    return RTOnce(&g_HvmR0.EnableAllCpusOnce, hmR0EnableAllCpuOnce, pVM, NULL);
+    return RTOnce(&g_HvmR0.EnableAllCpusOnce, hmR0EnableAllCpuOnce, pVM);
 }
 
 

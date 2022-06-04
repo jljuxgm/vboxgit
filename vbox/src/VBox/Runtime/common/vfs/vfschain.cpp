@@ -1,4 +1,4 @@
-/* $Id: vfschain.cpp 39515 2011-12-02 13:41:07Z vboxsync $ */
+/* $Id: vfschain.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Chains.
  */
@@ -63,13 +63,11 @@ static RTLISTANCHOR g_rtVfsChainElementProviderList;
  * Initializes the globals via RTOnce.
  *
  * @returns IPRT status code
- * @param   pvUser1             Unused, ignored.
- * @param   pvUser2             Unused, ignored.
+ * @param   pvUser              Unused, ignored.
  */
-static DECLCALLBACK(int) rtVfsChainElementRegisterInit(void *pvUser1, void *pvUser2)
+static DECLCALLBACK(int) rtVfsChainElementRegisterInit(void *pvUser)
 {
-    NOREF(pvUser1);
-    NOREF(pvUser2);
+    NOREF(pvUser);
     return RTCritSectInit(&g_rtVfsChainElementCritSect);
 }
 
@@ -97,7 +95,7 @@ RTDECL(int) RTVfsChainElementRegisterProvider(PRTVFSCHAINELEMENTREG pRegRec, boo
      */
     if (!fFromCtor)
     {
-        rc = RTOnce(&g_rtVfsChainElementInitOnce, rtVfsChainElementRegisterInit, NULL, NULL);
+        rc = RTOnce(&g_rtVfsChainElementInitOnce, rtVfsChainElementRegisterInit, NULL);
         if (RT_FAILURE(rc))
             return rc;
         rc = RTCritSectEnter(&g_rtVfsChainElementCritSect);

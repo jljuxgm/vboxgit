@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 29269 2010-05-09 21:24:06Z vboxsync $ */
+/* $Id: mp-solaris.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -63,13 +63,12 @@ static RTCPUID      g_capCpuInfo;
  * Run once function that initializes the kstats we need here.
  *
  * @returns IPRT status code.
- * @param   pvUser1     Unused.
- * @param   pvUser2     Unused.
+ * @param   pvUser      Unused.
  */
-static DECLCALLBACK(int) rtMpSolarisOnce(void *pvUser1, void *pvUser2)
+static DECLCALLBACK(int) rtMpSolarisOnce(void *pvUser)
 {
     int rc = VINF_SUCCESS;
-    NOREF(pvUser1); NOREF(pvUser2);
+    NOREF(pvUser);
 
     /*
      * Open kstat and find the cpu_info entries for each of the CPUs.
@@ -129,7 +128,7 @@ static DECLCALLBACK(int) rtMpSolarisOnce(void *pvUser1, void *pvUser2)
 static uint64_t rtMpSolarisGetFrequency(RTCPUID idCpu, char *pszStatName)
 {
     uint64_t u64 = 0;
-    int rc = RTOnce(&g_MpSolarisOnce, rtMpSolarisOnce, NULL, NULL);
+    int rc = RTOnce(&g_MpSolarisOnce, rtMpSolarisOnce, NULL);
     if (RT_SUCCESS(rc))
     {
         if (    idCpu < g_capCpuInfo

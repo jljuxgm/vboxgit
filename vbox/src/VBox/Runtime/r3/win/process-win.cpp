@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 42077 2012-07-10 08:37:08Z vboxsync $ */
+/* $Id: process-win.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -157,12 +157,11 @@ static DECLCALLBACK(void) rtProcWinTerm(RTTERMREASON enmReason, int32_t iStatus,
  * Initialize the globals.
  *
  * @returns IPRT status code.
- * @param   pvUser1             Ignored.
- * @param   pvUser2             Ignored.
+ * @param   pvUser              Ignored.
  */
-static DECLCALLBACK(int32_t) rtProcWinInitOnce(void *pvUser1, void *pvUser2)
+static DECLCALLBACK(int32_t) rtProcWinInitOnce(void *pvUser)
 {
-    NOREF(pvUser1); NOREF(pvUser2);
+    NOREF(pvUser);
 
     g_cProcesses        = 0;
     g_cProcessesAlloc   = 0;
@@ -1065,7 +1064,7 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
     /*
      * Initialize the globals.
      */
-    int rc = RTOnce(&g_rtProcWinInitOnce, rtProcWinInitOnce, NULL, NULL);
+    int rc = RTOnce(&g_rtProcWinInitOnce, rtProcWinInitOnce, NULL);
     AssertRCReturn(rc, rc);
 
     /*
@@ -1288,7 +1287,7 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
 RTR3DECL(int) RTProcWait(RTPROCESS Process, unsigned fFlags, PRTPROCSTATUS pProcStatus)
 {
     AssertReturn(!(fFlags & ~(RTPROCWAIT_FLAGS_BLOCK | RTPROCWAIT_FLAGS_NOBLOCK)), VERR_INVALID_PARAMETER);
-    int rc = RTOnce(&g_rtProcWinInitOnce, rtProcWinInitOnce, NULL, NULL);
+    int rc = RTOnce(&g_rtProcWinInitOnce, rtProcWinInitOnce, NULL);
     AssertRCReturn(rc, rc);
 
     /*
@@ -1384,7 +1383,7 @@ RTR3DECL(int) RTProcTerminate(RTPROCESS Process)
     if (Process == NIL_RTPROCESS)
         return VINF_SUCCESS;
 
-    int rc = RTOnce(&g_rtProcWinInitOnce, rtProcWinInitOnce, NULL, NULL);
+    int rc = RTOnce(&g_rtProcWinInitOnce, rtProcWinInitOnce, NULL);
     AssertRCReturn(rc, rc);
 
     /*

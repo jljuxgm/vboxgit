@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 41493 2012-05-30 13:47:41Z vboxsync $ */
+/* $Id: dbgmod.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -253,12 +253,11 @@ static int rtDbgModImageInterpreterRegister(PCRTDBGMODVTIMG pVt)
  * the built-in interpreters.
  *
  * @returns IPRT status code.
- * @param   pvUser1     NULL.
- * @param   pvUser2     NULL.
+ * @param   pvUser      NULL.
  */
-static DECLCALLBACK(int) rtDbgModInitOnce(void *pvUser1, void *pvUser2)
+static DECLCALLBACK(int) rtDbgModInitOnce(void *pvUser)
 {
-    NOREF(pvUser1); NOREF(pvUser2);
+    NOREF(pvUser);
 
     /*
      * Create the semaphore and string cache.
@@ -298,7 +297,7 @@ static DECLCALLBACK(int) rtDbgModInitOnce(void *pvUser1, void *pvUser2)
 
 DECLINLINE(int) rtDbgModLazyInit(void)
 {
-    return RTOnce(&g_rtDbgModOnce, rtDbgModInitOnce, NULL, NULL);
+    return RTOnce(&g_rtDbgModOnce, rtDbgModInitOnce, NULL);
 }
 
 
