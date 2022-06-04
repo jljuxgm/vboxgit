@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 45618 2013-04-18 18:41:07Z vboxsync $ */
+/* $Id: MMAll.cpp 45640 2013-04-19 12:28:21Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -24,6 +24,7 @@
 #include <VBox/vmm/vmm.h>
 #include "MMInternal.h"
 #include <VBox/vmm/vm.h>
+#include <VBox/vmm/hm.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
