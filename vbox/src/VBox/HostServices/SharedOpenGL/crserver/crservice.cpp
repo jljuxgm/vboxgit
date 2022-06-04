@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: crservice.cpp 45132 2013-03-21 16:11:28Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1073,7 +1073,7 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
 
             Assert(sizeof(RTRECT)==4*sizeof(GLint));
 
-            rc = crVBoxServerSetRootVisibleRegion(paParms[1].u.uint32, (GLint*)paParms[0].u.pointer.addr);
+            rc = crVBoxServerSetRootVisibleRegion(paParms[1].u.uint32, (const RTRECT*)paParms[0].u.pointer.addr);
             break;
         }
         case SHCRGL_HOST_FN_SCREEN_CHANGED:

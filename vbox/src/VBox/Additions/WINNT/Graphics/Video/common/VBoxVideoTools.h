@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoTools.h 43334 2012-09-14 17:34:33Z vboxsync $ */
+/* $Id: VBoxVideoTools.h 45132 2013-03-21 16:11:28Z vboxsync $ */
 
 /** @file
  * VBox Video tooling
@@ -347,7 +347,7 @@ DECLINLINE(void) vboxWddmDirtyRegionAddRect(PVBOXWDDM_DIRTYREGION pInfo, const R
     }
 }
 
-DECLINLINE(void) vboxWddmDirtyRegionUnite(PVBOXWDDM_DIRTYREGION pInfo, const PVBOXWDDM_DIRTYREGION pInfo2)
+DECLINLINE(void) vboxWddmDirtyRegionUnite(PVBOXWDDM_DIRTYREGION pInfo, const VBOXWDDM_DIRTYREGION *pInfo2)
 {
     if (pInfo2->fFlags & VBOXWDDM_DIRTYREGION_F_VALID)
     {

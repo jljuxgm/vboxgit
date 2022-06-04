@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 45132 2013-03-21 16:11:28Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -311,7 +311,7 @@ static NTSTATUS vboxVdmaGgThreadCreate(PKTHREAD * ppThread, PKSTART_ROUTINE  pSt
     return STATUS_SUCCESS;
 }
 
-DECLINLINE(void) vboxVdmaDirtyRectsCalcIntersection(const RECT *pArea, const PVBOXWDDM_RECTS_INFO pRects, PVBOXWDDM_RECTS_INFO pResult)
+DECLINLINE(void) vboxVdmaDirtyRectsCalcIntersection(const RECT *pArea, const VBOXWDDM_RECTS_INFO *pRects, PVBOXWDDM_RECTS_INFO pResult)
 {
     uint32_t cRects = 0;
     for (uint32_t i = 0; i < pRects->cRects; ++i)

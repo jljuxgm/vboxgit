@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 45132 2013-03-21 16:11:28Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -190,8 +190,8 @@ void VBoxWddmVrListClear(PVBOXWDDMVR_LIST pList);
 
 void VBoxWddmVrListTranslate(PVBOXWDDMVR_LIST pList, LONG x, LONG y);
 
-NTSTATUS VBoxWddmVrListRectsAdd(PVBOXWDDMVR_LIST pList, UINT cRects, const PRECT aRects, BOOLEAN *pfChanged);
-NTSTATUS VBoxWddmVrListRectsSubst(PVBOXWDDMVR_LIST pList, UINT cRects, const PRECT aRects, BOOLEAN *pfChanged);
+NTSTATUS VBoxWddmVrListRectsAdd(PVBOXWDDMVR_LIST pList, UINT cRects, const RECT *aRects, BOOLEAN *pfChanged);
+NTSTATUS VBoxWddmVrListRectsSubst(PVBOXWDDMVR_LIST pList, UINT cRects, const RECT *aRects, BOOLEAN *pfChanged);
 NTSTATUS VBoxWddmVrListRectsGet(PVBOXWDDMVR_LIST pList, UINT cRects, PRECT aRects);
 
 NTSTATUS VBoxWddmVrInit();

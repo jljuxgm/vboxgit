@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 45132 2013-03-21 16:11:28Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -233,20 +233,20 @@ typedef struct VBOXWDDMDISP_RESOURCE *PVBOXWDDMDISP_RESOURCE;
 
 VOID vboxVDbgDoDumpAllocRect(const char * pPrefix, PVBOXWDDMDISP_ALLOCATION pAlloc, RECT *pRect, const char* pSuffix, DWORD fFlags);
 VOID vboxVDbgDoDumpRcRect(const char * pPrefix, PVBOXWDDMDISP_ALLOCATION pAlloc, IDirect3DResource9 *pD3DRc, RECT *pRect, const char * pSuffix, DWORD fFlags);
-VOID vboxVDbgDoDumpLockUnlockSurfTex(const char * pPrefix, const PVBOXWDDMDISP_ALLOCATION pAlloc, const char * pSuffix, DWORD fFlags);
+VOID vboxVDbgDoDumpLockUnlockSurfTex(const char * pPrefix, const VBOXWDDMDISP_ALLOCATION *pAlloc, const char * pSuffix, DWORD fFlags);
 VOID vboxVDbgDoDumpRt(const char * pPrefix, struct VBOXWDDMDISP_DEVICE *pDevice, const char * pSuffix, DWORD fFlags);
 VOID vboxVDbgDoDumpBb(const char * pPrefix, IDirect3DSwapChain9 *pSwapchainIf, const char * pSuffix, DWORD fFlags);
 VOID vboxVDbgDoDumpFb(const char * pPrefix, IDirect3DSwapChain9 *pSwapchainIf, const char * pSuffix, DWORD fFlags);
 VOID vboxVDbgDoDumpSamplers(const char * pPrefix, struct VBOXWDDMDISP_DEVICE *pDevice, const char * pSuffix, DWORD fFlags);
 
 void vboxVDbgDoPrintRect(const char * pPrefix, const RECT *pRect, const char * pSuffix);
-void vboxVDbgDoPrintAlloc(const char * pPrefix, const PVBOXWDDMDISP_RESOURCE pRc, uint32_t iAlloc, const char * pSuffix);
+void vboxVDbgDoPrintAlloc(const char * pPrefix, const VBOXWDDMDISP_RESOURCE *pRc, uint32_t iAlloc, const char * pSuffix);
 
 VOID vboxVDbgDoDumpLockSurfTex(const char * pPrefix, const D3DDDIARG_LOCK* pData, const char * pSuffix, DWORD fFlags);
 VOID vboxVDbgDoDumpUnlockSurfTex(const char * pPrefix, const D3DDDIARG_UNLOCK* pData, const char * pSuffix, DWORD fFlags);
 
-BOOL vboxVDbgDoCheckRectsMatch(const PVBOXWDDMDISP_RESOURCE pDstRc, uint32_t iDstAlloc,
-                            const PVBOXWDDMDISP_RESOURCE pSrcRc, uint32_t iSrcAlloc,
+BOOL vboxVDbgDoCheckRectsMatch(const VBOXWDDMDISP_RESOURCE *pDstRc, uint32_t iDstAlloc,
+                            const VBOXWDDMDISP_RESOURCE *pSrcRc, uint32_t iSrcAlloc,
                             const RECT *pDstRect,
                             const RECT *pSrcRect,
                             BOOL fBreakOnMismatch);
