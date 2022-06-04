@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 43787 2012-10-31 16:27:29Z vboxsync $ */
+/* $Id: VHD.cpp 44139 2012-12-15 16:03:59Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2483,7 +2483,7 @@ static int vhdAsyncWrite(void *pBackendData, uint64_t uOffset, size_t cbWrite,
                 rc = vdIfIoIntFileWriteMetaAsync(pImage->pIfIo, pImage->pStorage,
                                                  pImage->uCurrentEndOfFile,
                                                  pExpand->au8Bitmap,
-                                                 pImage->cbDataBlockBitmap, pIoCtx,
+                                                 pImage->cDataBlockBitmapSectors * VHD_SECTOR_SIZE, pIoCtx,
                                                  vhdAsyncExpansionDataBlockBitmapComplete,
                                                  pExpand);
                 if (RT_SUCCESS(rc))
@@ -2504,7 +2504,7 @@ static int vhdAsyncWrite(void *pBackendData, uint64_t uOffset, size_t cbWrite,
                  * Write the new block at the current end of the file.
                  */
                 rc = vdIfIoIntFileWriteUserAsync(pImage->pIfIo, pImage->pStorage,
-                                                 pImage->uCurrentEndOfFile + pImage->cbDataBlockBitmap,
+                                                 pImage->uCurrentEndOfFile + pImage->cDataBlockBitmapSectors * VHD_SECTOR_SIZE,
                                                  pIoCtx, cbWrite,
                                                  vhdAsyncExpansionDataComplete,
                                                  pExpand);
@@ -2544,7 +2544,7 @@ static int vhdAsyncWrite(void *pBackendData, uint64_t uOffset, size_t cbWrite,
                  * Set the new end of the file and link the new block into the BAT.
                  */
                 pImage->pBlockAllocationTable[cBlockAllocationTableEntry] = pImage->uCurrentEndOfFile / VHD_SECTOR_SIZE;
-                pImage->uCurrentEndOfFile += pImage->cbDataBlockBitmap + pImage->cbDataBlock;
+                pImage->uCurrentEndOfFile += pImage->cDataBlockBitmapSectors * VHD_SECTOR_SIZE + pImage->cbDataBlock;
 
                 /* Update the footer. */
                 rc = vdIfIoIntFileWriteMetaAsync(pImage->pIfIo, pImage->pStorage,
