@@ -1,4 +1,4 @@
-/* $Id: http.cpp 45339 2013-04-04 14:54:50Z vboxsync $ */
+/* $Id: http.cpp 45340 2013-04-04 15:07:31Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -203,7 +203,7 @@ RTR3DECL(int) RTHttpCertDigest(RTHTTP hHttp, char *pcszCert, size_t cbCert,
                                uint8_t **pabSha1,   size_t *pcbSha1,
                                uint8_t **pabSha512, size_t *pcbSha512)
 {
-    BIO *cert = BIO_new_mem_buf(pcszCert, cbCert);
+    BIO *cert = BIO_new_mem_buf(pcszCert, (int)cbCert);
     if (!cert)
         return VERR_INTERNAL_ERROR;
 
