@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 47016 2013-07-05 16:58:04Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 47030 2013-07-08 09:38:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -286,19 +286,29 @@ bool UIPopupPane::eventFilter(QObject *pWatched, QEvent *pEvent)
             {
                 m_fFocused = true;
                 emit sigFocusEnter();
+                /* Hover pane if not hovered: */
+                if (!m_fHovered)
+                {
+                    m_fHovered = true;
+                    emit sigHoverEnter();
+                }
             }
             break;
         }
         /* Pane is unfocused: */
         case QEvent::FocusOut:
         {
-            /* Unfocus and unhover pane: */
+            /* Unhocus pane if focused: */
             if (m_fFocused)
             {
                 m_fFocused = false;
                 emit sigFocusLeave();
-                m_fHovered = false;
-                emit sigHoverLeave();
+                /* Unhover pane if hovered: */
+                if (m_fHovered)
+                {
+                    m_fHovered = false;
+                    emit sigHoverLeave();
+                }
             }
             break;
         }
