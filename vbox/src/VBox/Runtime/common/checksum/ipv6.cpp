@@ -1,4 +1,4 @@
-/* $Id: ipv6.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: ipv6.cpp 44757 2013-02-20 08:52:13Z vboxsync $ */
 /** @file
  * IPRT - IPv6 Checksum calculation and validation.
  */
@@ -60,7 +60,7 @@ DECLINLINE(uint32_t) rtNetIPv6PseudoChecksumBits(PCRTNETADDRIPV6 pSrcAddr, PCRTN
                     + RT_H2BE_U16(RT_HIWORD(cbPkt))
                     + RT_H2BE_U16(RT_LOWORD(cbPkt))
                     + 0
-                    + RT_H2BE_U16(RT_MAKE_U16(0, bProtocol));
+                    + RT_H2BE_U16(RT_MAKE_U16(bProtocol, 0));
     return u32Sum;
 }
 
