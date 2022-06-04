@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 46465 2013-06-10 14:11:26Z vboxsync $ */
+/* $Id: ConsoleImpl.h 46775 2013-06-25 12:37:57Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -257,6 +257,10 @@ public:
                                      aBalloonedVMM, aSharedVMM, aVmNetRx, aVmNetTx);
     }
     void enableVMMStatistics(BOOL aEnable);
+
+    HRESULT pause(Reason_T aReason);
+    HRESULT resume(Reason_T aReason);
+    HRESULT saveState(Reason_T aReason, IProgress **aProgress);
 
     // callback callers (partly; for some events console callbacks are notified
     // directly from IInternalSessionControl event handlers declared above)

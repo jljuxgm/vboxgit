@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 46350 2013-05-31 20:12:02Z vboxsync $ */
+/* $Id: Global.cpp 46775 2013-06-25 12:37:57Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -445,6 +445,26 @@ Global::stringifyDeviceType(DeviceType_T aType)
             AssertMsgFailed(("%d (%#x)\n", aType, aType));
             static char s_szMsg[48];
             RTStrPrintf(s_szMsg, sizeof(s_szMsg), "InvalidType-0x%08x\n", aType);
+            return s_szMsg;
+        }
+    }
+}
+
+
+/*static*/ const char *
+Global::stringifyReason(Reason_T aReason)
+{
+    switch (aReason)
+    {
+        case Reason_Unspecified:      return "unspecified";
+        case Reason_HostSuspend:      return "host suspend";
+        case Reason_HostResume:       return "host resume";
+        case Reason_HostBatteryLow:   return "host battery low";
+        default:
+        {
+            AssertMsgFailed(("%d (%#x)\n", aReason, aReason));
+            static char s_szMsg[48];
+            RTStrPrintf(s_szMsg, sizeof(s_szMsg), "invalid reason %#010x\n", aReason);
             return s_szMsg;
         }
     }

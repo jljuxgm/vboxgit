@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 46465 2013-06-10 14:11:26Z vboxsync $ */
+/* $Id: SessionImpl.cpp 46775 2013-06-25 12:37:57Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -925,6 +925,45 @@ STDMETHODIMP Session::EnableVMMStatistics(BOOL aEnable)
     mConsole->enableVMMStatistics(aEnable);
 
     return S_OK;
+}
+
+STDMETHODIMP Session::PauseWithReason(Reason_T aReason)
+{
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+    AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->pause(aReason);
+}
+
+STDMETHODIMP Session::ResumeWithReason(Reason_T aReason)
+{
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+    AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->resume(aReason);
+}
+
+STDMETHODIMP Session::SaveStateWithReason(Reason_T aReason, IProgress **aProgress)
+{
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(mState == SessionState_Locked, VBOX_E_INVALID_VM_STATE);
+    AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
+    AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
+
+    return mConsole->saveState(aReason, aProgress);
 }
 
 // private methods

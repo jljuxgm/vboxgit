@@ -1,4 +1,4 @@
-/* $Id: Global.h 39248 2011-11-09 12:29:53Z vboxsync $ */
+/* $Id: Global.h 46775 2013-06-25 12:37:57Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -191,6 +191,14 @@ public:
      * @param   aType       The device type.
      */
     static const char *stringifyDeviceType(DeviceType_T aType);
+
+    /**
+     * Stringify a reason.
+     *
+     * @returns Pointer to a read only string.
+     * @param   aReason     The reason code.
+     */
+    static const char *stringifyReason(Reason_T aReason);
 
     /**
      * Try convert a COM status code to a VirtualBox status code (VBox/err.h).
