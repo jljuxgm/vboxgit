@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 47103 2013-07-11 15:52:27Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 47485 2013-07-31 12:44:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -341,17 +341,17 @@ STDMETHODIMP UIFrameBuffer::ProcessVHWACommand(BYTE *pCommand)
     return E_NOTIMPL;
 }
 
-STDMETHODIMP UIFrameBuffer::Notify3DEvent(ULONG uType, BYTE *pReserved)
+STDMETHODIMP UIFrameBuffer::Notify3DEvent(ULONG uType, BYTE *pData)
 {
     switch (uType)
     {
-        case VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_WINDOW:
+        case VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_3DDATA:
         {
-            if (pReserved)
-                return E_INVALIDARG;
+            BOOL fVisible = !!pData;
 
-            /* Notify GUI about 3D event: */
-            emit sigNotify3DEvent();
+            /* @todo: implement 3D visibility handling */
+//            /* Notify GUI about 3D event: */
+//            emit sigNotify3DEvent();
 
             return S_OK;
         }
