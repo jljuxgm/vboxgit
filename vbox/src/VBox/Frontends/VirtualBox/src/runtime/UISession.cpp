@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 45424 2013-04-09 08:21:25Z vboxsync $ */
+/* $Id: UISession.cpp 45425 2013-04-09 09:24:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -513,7 +513,7 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
             if (   !SUCCEEDED_WARNING(rc)
                 && rc != VBOX_E_NOT_SUPPORTED)
             {
-                msgCenter().cannotUpdateGuestAdditions(progressInstall, mainMachineWindow());
+                msgCenter().cannotUpdateGuestAdditions(progressInstall);
 
                 /* Log the error message in the release log. */
                 QString strErr = progressInstall.GetErrorInfo().GetText();
