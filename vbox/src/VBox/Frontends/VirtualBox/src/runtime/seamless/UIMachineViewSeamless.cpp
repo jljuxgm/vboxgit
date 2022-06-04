@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 42323 2012-07-23 12:33:32Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 44952 2013-03-07 13:18:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -151,11 +151,6 @@ void UIMachineViewSeamless::prepareFilters()
 {
     /* Base class filters: */
     UIMachineView::prepareFilters();
-
-#ifdef Q_WS_MAC // TODO: Is it really needed? See UIMachineViewSeamless::eventFilter(...);
-    /* Menu bar filter: */
-    machineWindow()->menuBar()->installEventFilter(this);
-#endif /* Q_WS_MAC */
 }
 
 void UIMachineViewSeamless::prepareConsoleConnections()

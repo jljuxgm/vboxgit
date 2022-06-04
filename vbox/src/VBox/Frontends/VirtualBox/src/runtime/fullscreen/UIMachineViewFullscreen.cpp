@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 43395 2012-09-21 11:38:32Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 44952 2013-03-07 13:18:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -132,11 +132,6 @@ void UIMachineViewFullscreen::prepareFilters()
 {
     /* Base class filters: */
     UIMachineView::prepareFilters();
-
-#ifdef Q_WS_MAC // TODO: Is it really needed? See UIMachineViewFullscreen::eventFilter(...);
-    /* Menu bar filter: */
-    machineWindow()->menuBar()->installEventFilter(this);
-#endif /* Q_WS_MAC */
 }
 
 void UIMachineViewFullscreen::prepareConsoleConnections()

@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 43395 2012-09-21 11:38:32Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 44952 2013-03-07 13:18:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -165,8 +165,10 @@ void UIMachineViewNormal::prepareFilters()
     /* Base class filters: */
     UIMachineView::prepareFilters();
 
-    /* Menu bar filters: */
+#ifdef Q_WS_WIN
+    /* Install menu-bar event-filter: */
     machineWindow()->menuBar()->installEventFilter(this);
+#endif /* Q_WS_WIN */
 }
 
 void UIMachineViewNormal::prepareConsoleConnections()
