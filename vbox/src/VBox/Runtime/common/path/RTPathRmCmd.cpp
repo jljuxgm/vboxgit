@@ -1,4 +1,4 @@
-/* $Id: RTPathRmCmd.cpp 44278 2013-01-13 20:52:34Z vboxsync $ */
+/* $Id: RTPathRmCmd.cpp 44279 2013-01-13 20:58:30Z vboxsync $ */
 /** @file
  * IPRT - TAR Command.
  */
@@ -302,6 +302,14 @@ static int rtPathRmRecursive(PRTPATHRMCMDOPTS pOpts, char *pszPath, size_t cchPa
             break;
         }
 
+        /* Skip '.' and '..'. */
+        if (   pDirEntry->szName[0] == '.'
+            && (   pDirEntry->cbName == 1
+                || (   pDirEntry->cbName == 2
+                    && pDirEntry->szName[1] == '.')))
+            continue;
+
+        /* Construct full path. */
         if (cchPath + pDirEntry->cbName > RTPATH_MAX)
         {
             pszPath[cchPath] = '\0';
