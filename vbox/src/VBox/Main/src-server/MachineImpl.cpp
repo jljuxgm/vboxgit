@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 46285 2013-05-27 11:56:50Z vboxsync $ */
+/* $Id: MachineImpl.cpp 46302 2013-05-28 20:27:31Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5892,9 +5892,7 @@ HRESULT Machine::setGuestPropertyToService(IN_BSTR aName, IN_BSTR aValue,
                             aFlags);
 
         bool fDelete = !RT_VALID_PTR(aValue) || *(aValue) == '\0';
-        HWData::GuestPropertyMap::iterator it =
-            mHWData->mGuestProperties.find(utf8Name);
-
+        HWData::GuestPropertyMap::iterator it = mHWData->mGuestProperties.find(utf8Name);
         if (it == mHWData->mGuestProperties.end())
         {
             /* only create the new property if this is really desired */
@@ -5939,9 +5937,7 @@ HRESULT Machine::setGuestPropertyToService(IN_BSTR aName, IN_BSTR aValue,
                         it->second.mFlags = fFlags;
                 }
                 else
-                {
                     mHWData->mGuestProperties.erase(it);
-                }
             }
         }
 
@@ -13236,8 +13232,8 @@ STDMETHODIMP SessionMachine::PushGuestProperty(IN_BSTR aName,
         /*
          * Convert input up front.
          */
-        Utf8Str     utf8Name(aName);
-        uint32_t    fFlags = NILFLAG;
+        Utf8Str  utf8Name(aName);
+        uint32_t fFlags = NILFLAG;
         if (aFlags)
         {
             Utf8Str utf8Flags(aFlags);
@@ -13274,10 +13270,11 @@ STDMETHODIMP SessionMachine::PushGuestProperty(IN_BSTR aName,
         setModified(IsModified_MachineData);
         mHWData.backup();
 
+        bool fDelete = !RT_VALID_PTR(aValue) || *(aValue) == '\0';
         HWData::GuestPropertyMap::iterator it = mHWData->mGuestProperties.find(utf8Name);
         if (it != mHWData->mGuestProperties.end())
         {
-            if (RT_VALID_PTR(aValue) && *(aValue) != '\0')
+            if (!fDelete)
             {
                 it->second.strValue   = aValue;
                 it->second.mFlags     = fFlags;
@@ -13285,7 +13282,17 @@ STDMETHODIMP SessionMachine::PushGuestProperty(IN_BSTR aName,
             }
             else
                 mHWData->mGuestProperties.erase(it);
+            
+            mData->mGuestPropertiesModified = TRUE;
+        }
+        else if (!fDelete)
+        {
+            HWData::GuestProperty prop;
+            prop.strValue = aValue;
+            prop.mTimestamp = aTimestamp;
+            prop.mFlags = fFlags;
 
+            mHWData->mGuestProperties[utf8Name] = prop;
             mData->mGuestPropertiesModified = TRUE;
         }
 
