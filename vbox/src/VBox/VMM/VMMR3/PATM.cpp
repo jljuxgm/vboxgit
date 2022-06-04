@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 45620 2013-04-18 20:07:14Z vboxsync $ */
+/* $Id: PATM.cpp 45984 2013-05-11 12:46:30Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -4147,7 +4147,7 @@ VMMR3_INT_DECL(int) PATMR3InstallPatch(PVM pVM, RTRCPTR pInstrGC, uint64_t flags
     if (pVM->patm.s.fOutOfMemory == true)
         return VERR_PATCHING_REFUSED;
 
-#if 0 /* DONT COMMIT ENABLED! */
+#if 1 /* DONT COMMIT ENABLED! */
     /* Blacklisted NT4SP1 areas - debugging why we sometimes crash early on, */
     if (  0
         //|| (pInstrGC - 0x80010000U) < 0x10000U // NT4SP1 HAL

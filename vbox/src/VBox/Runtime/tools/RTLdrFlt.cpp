@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 45984 2013-05-11 12:46:30Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -176,7 +176,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 44528 $\n");
+                RTPrintf("$Revision: 45984 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -190,7 +190,7 @@ int main(int argc, char **argv)
                 uint64_t u64Address = ValueUnion.u64;
 
                 RTDBGMOD hMod;
-                rc = RTDbgModCreateFromImage(&hMod, pszModule, NULL, 0 /*fFlags*/);
+                rc = RTDbgModCreateFromImage(&hMod, pszModule, NULL, NIL_RTDBGCFG);
                 if (RT_FAILURE(rc))
                     return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTDbgModCreateFromImage(,%s,,) -> %Rrc", pszModule, rc);
 

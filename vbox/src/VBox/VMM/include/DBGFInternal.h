@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DBGFInternal.h 45984 2013-05-11 12:46:30Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -24,6 +24,7 @@
 #include <iprt/critsect.h>
 #include <iprt/string.h>
 #include <iprt/avl.h>
+#include <iprt/dbg.h>
 #include <VBox/vmm/dbgf.h>
 
 
@@ -306,6 +307,8 @@ typedef struct DBGFUSERPERVM
     bool volatile               afAsAliasPopuplated[DBGF_AS_COUNT];
     /** Alignment padding. */
     bool                        afAlignment1[2];
+    /** Debug configuration. */
+    R3PTRTYPE(RTDBGCFG)         hDbgCfg;
 
     /** The register database lock. */
     RTSEMRW                     hRegDbLock;

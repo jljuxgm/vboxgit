@@ -1,4 +1,4 @@
-/* $Id: magics.h 45723 2013-04-25 10:05:52Z vboxsync $ */
+/* $Id: magics.h 45984 2013-05-11 12:46:30Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -36,6 +36,8 @@
 #define RTAIOMGRFILE_MAGIC              UINT32_C(0x19240823)
 /** Magic number for RTDBGMODINT::u32Magic. (Charles Lloyd) */
 #define RTDBGAS_MAGIC                   UINT32_C(0x19380315)
+/** Magic number for RTDBGCFGINT::u32Magic. (McCoy Tyner) */
+#define RTDBGCFG_MAGIC                  UINT32_C(0x19381211)
 /** Magic number for RTDBGMODINT::u32Magic. (Keith Jarrett) */
 #define RTDBGMOD_MAGIC                  UINT32_C(0x19450508)
 /** Magic number for RTDBGMODVTIMG::u32Magic. (Jack DeJohnette) */
