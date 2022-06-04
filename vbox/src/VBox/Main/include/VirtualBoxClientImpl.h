@@ -1,11 +1,11 @@
-/* $Id: VirtualBoxClientImpl.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 44970 2013-03-11 09:59:05Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -59,6 +59,7 @@ public:
     STDMETHOD(COMGETTER(VirtualBox))(IVirtualBox **aVirtualBox);
     STDMETHOD(COMGETTER(Session))(ISession **aSession);
     STDMETHOD(COMGETTER(EventSource))(IEventSource **aEventSource);
+    STDMETHOD(CheckMachineError)(IMachine *aMachine);
 
 private:
     /** Instance counter for simulating something similar to a singleton.
