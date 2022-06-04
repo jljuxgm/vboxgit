@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 42589 2012-08-03 21:48:12Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 43259 2012-09-09 16:02:15Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -143,7 +143,7 @@ static void vmmdevTestingCmdExec_ValueReg(PPDMDEVINS pDevIns, VMMDevState *pThis
 #if 1 /*!RTTestValue format*/
             char szFormat[128], szValue[128];
             RTStrPrintf(szFormat, sizeof(szFormat), "%%VR{%s}", pszRegNm);
-            int rc2 = DBGFR3RegPrintf(pVM, idCpu, szValue, sizeof(szValue), szFormat);
+            rc2 = DBGFR3RegPrintf(pVM, idCpu, szValue, sizeof(szValue), szFormat);
             if (RT_SUCCESS(rc2))
                 VMMDEV_TESTING_OUTPUT(("testing: VALUE '%s'%*s: %16s {reg=%s}%s\n",
                                        pszValueNm,

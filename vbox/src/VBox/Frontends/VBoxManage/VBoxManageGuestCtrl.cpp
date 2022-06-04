@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 43058 2012-08-29 07:47:42Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 43259 2012-09-09 16:02:15Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1929,7 +1929,7 @@ static int handleCtrlCopy(ComPtr<IGuest> guest, HandlerArg *pArg,
 
     /* Create the copy context -- it contains all information
      * the routines need to know when handling the actual copying. */
-    PCOPYCONTEXT pContext;
+    PCOPYCONTEXT pContext = NULL;
     vrc = ctrlCopyContextCreate(guest, fVerbose, fDryRun, fHostToGuest,
                                 strUsername, strPassword, strDomain,
                                 "VBoxManage Guest Control Copy", &pContext);

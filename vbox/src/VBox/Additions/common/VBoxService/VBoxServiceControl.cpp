@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 42927 2012-08-22 18:58:22Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 43259 2012-09-09 16:02:15Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -1083,7 +1083,7 @@ static void VBoxServiceControlShutdown(void)
         PVBOXSERVICECTRLFILE pNext = RTListNodeGetNext(&pFile->Node, VBOXSERVICECTRLFILE, Node);
         bool fLast = RTListNodeIsLast(&g_lstControlFiles, &pFile->Node);
 
-        int rc2 = RTFileClose(pFile->hFile);
+        rc2 = RTFileClose(pFile->hFile);
         if (RT_FAILURE(rc2))
         {
             VBoxServiceError("Unable to close file \"%s\"; rc=%Rrc\n",

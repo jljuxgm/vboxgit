@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 43201 2012-09-05 12:48:49Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 43259 2012-09-09 16:02:15Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -935,7 +935,7 @@ int GuestProcess::readData(uint32_t uHandle, uint32_t uSize, uint32_t uTimeoutMS
 
     int vrc = VINF_SUCCESS;
 
-    GuestCtrlCallback *pCallbackRead;
+    GuestCtrlCallback *pCallbackRead = NULL;
     try
     {
         pCallbackRead = new GuestCtrlCallback();
@@ -1512,7 +1512,7 @@ int GuestProcess::writeData(uint32_t uHandle, uint32_t uFlags,
 
     int vrc = VINF_SUCCESS;
 
-    GuestCtrlCallback *pCallbackWrite;
+    GuestCtrlCallback *pCallbackWrite = NULL;
     try
     {
         pCallbackWrite = new GuestCtrlCallback();
