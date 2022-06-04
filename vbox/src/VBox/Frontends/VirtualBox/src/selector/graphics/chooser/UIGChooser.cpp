@@ -1,4 +1,4 @@
-/* $Id: UIGChooser.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
+/* $Id: UIGChooser.cpp 43957 2012-11-26 10:00:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -134,8 +134,10 @@ void UIGChooser::prepareView()
 void UIGChooser::prepareConnections()
 {
     /* Setup chooser-model connections: */
-    connect(m_pChooserModel, SIGNAL(sigRootItemResized(const QSizeF&, int)),
-            m_pChooserView, SLOT(sltHandleRootItemResized(const QSizeF&, int)));
+    connect(m_pChooserModel, SIGNAL(sigRootItemResized(const QSizeF&)),
+            m_pChooserView, SLOT(sltHandleRootItemResized(const QSizeF&)));
+    connect(m_pChooserModel, SIGNAL(sigRootItemMinimumWidthHintChanged(int)),
+            m_pChooserView, SLOT(sltHandleRootItemMinimumWidthHintChanged(int)));
     connect(m_pChooserModel, SIGNAL(sigFocusChanged(UIGChooserItem*)),
             m_pChooserView, SLOT(sltFocusChanged(UIGChooserItem*)));
 

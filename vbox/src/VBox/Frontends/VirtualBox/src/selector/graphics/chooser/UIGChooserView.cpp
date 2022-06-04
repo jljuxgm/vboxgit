@@ -1,4 +1,4 @@
-/* $Id: UIGChooserView.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
+/* $Id: UIGChooserView.cpp 43957 2012-11-26 10:00:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -38,14 +38,16 @@ UIGChooserView::UIGChooserView(QWidget *pParent)
     updateSceneRect();
 }
 
-void UIGChooserView::sltHandleRootItemResized(const QSizeF &size, int iMinimumWidth)
+void UIGChooserView::sltHandleRootItemResized(const QSizeF &size)
 {
     /* Update scene-rect: */
     updateSceneRect(size);
+}
 
-    /* Set minimum width: */
-    setMinimumWidth(2 * frameWidth() + iMinimumWidth +
-                    verticalScrollBar()->sizeHint().width());
+void UIGChooserView::sltHandleRootItemMinimumWidthHintChanged(int iRootItemMinimumWidthHint)
+{
+    /* Set minimum view width according to root-item minimum-width-hint: */
+    setMinimumWidth(2 * frameWidth() + iRootItemMinimumWidthHint + verticalScrollBar()->sizeHint().width());
 }
 
 void UIGChooserView::sltFocusChanged(UIGChooserItem *pFocusItem)
