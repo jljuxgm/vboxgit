@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46959 2013-07-04 05:21:06Z vboxsync $
+# $Id: Makefile.kmk 46969 2013-07-04 06:35:01Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -334,8 +334,9 @@ VBoxSVC_SOURCES = \
 	src-server/BandwidthGroupImpl.cpp \
 	src-server/BIOSSettingsImpl.cpp \
 	src-server/DHCPServerImpl.cpp \
-	src-server/NetworkServiceRunner.cpp \
+	src-server/DHCPServerRunner.cpp \
 	src-server/NATNetworkImpl.cpp \
+	$(if $(VBOX_WITH_NAT_SERVICE),src-server/NATNetworkServiceRunner.cpp,) \
 	src-server/GuestOSTypeImpl.cpp \
 	src-server/HostImpl.cpp \
 	src-server/HostNetworkInterfaceImpl.cpp \

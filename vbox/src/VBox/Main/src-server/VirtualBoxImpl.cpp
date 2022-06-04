@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 46959 2013-07-04 05:21:06Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 46969 2013-07-04 06:35:01Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -60,7 +60,7 @@
 #include "USBControllerImpl.h"
 #include "SystemPropertiesImpl.h"
 #include "GuestOSTypeImpl.h"
-#include "NetworkServiceRunner.h"
+#include "DHCPServerRunner.h"
 #include "DHCPServerImpl.h"
 #include "NATNetworkImpl.h"
 #ifdef VBOX_WITH_RESOURCE_USAGE_API

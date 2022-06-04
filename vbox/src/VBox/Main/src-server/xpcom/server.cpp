@@ -1,4 +1,4 @@
-/* $Id: server.cpp 46959 2013-07-04 05:21:06Z vboxsync $ */
+/* $Id: server.cpp 46969 2013-07-04 06:35:01Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -66,7 +66,7 @@
 #include "AudioAdapterImpl.h"
 #include "BandwidthControlImpl.h"
 #include "BandwidthGroupImpl.h"
-#include "NetworkServiceRunner.h"
+#include "DHCPServerRunner.h"
 #include "DHCPServerImpl.h"
 #include "GuestOSTypeImpl.h"
 #include "HostImpl.h"
