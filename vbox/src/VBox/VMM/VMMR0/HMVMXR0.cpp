@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47636 2013-08-09 13:09:54Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47638 2013-08-09 13:17:00Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7934,7 +7934,7 @@ static uint32_t hmR0VmxCheckGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
         /* Shouldn't happen but distinguish it from AssertRCBreak() errors. */
         if (uError == VMX_IGS_ERROR)
-            uError == VMX_IGS_REASON_NOT_FOUND;
+            uError = VMX_IGS_REASON_NOT_FOUND;
     } while (0);
 
     pVCpu->hm.s.u32HMError = uError;
