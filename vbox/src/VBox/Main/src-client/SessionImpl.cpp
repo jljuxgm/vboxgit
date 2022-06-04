@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 45706 2013-04-24 14:42:02Z vboxsync $ */
+/* $Id: SessionImpl.cpp 45757 2013-04-26 07:00:59Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -823,7 +823,11 @@ STDMETHODIMP Session::AccessGuestProperty(IN_BSTR aName, IN_BSTR aValue, IN_BSTR
     if (!aIsSetter)
         return mConsole->getGuestProperty(aName, aRetValue, aRetTimestamp, aRetFlags);
     else
-        return mConsole->setGuestProperty(aName, aValue, aFlags);
+    {
+        HRESULT rc = mConsole->setGuestProperty(aName, aValue, aFlags);
+        LogRel(("Session::AccessGuestProperty: %ls -> %Rhrc\n", aName, rc)); /* !REMOVE ME! Debugging testboxes! */
+        return rc;
+    }
 #else /* VBOX_WITH_GUEST_PROPS not defined */
     ReturnComNotImplemented();
 #endif /* VBOX_WITH_GUEST_PROPS not defined */
