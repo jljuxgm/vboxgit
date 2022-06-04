@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 45284 2013-04-02 11:55:41Z vboxsync $ */
+/* $Id: MachineImpl.h 45563 2013-04-16 11:13:16Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -923,6 +923,8 @@ protected:
     struct DeleteTask;
     static DECLCALLBACK(int) deleteThread(RTTHREAD Thread, void *pvUser);
     HRESULT deleteTaskWorker(DeleteTask &task);
+
+    Utf8Str getExtraData(const Utf8Str &strKey);
 
 #ifdef VBOX_WITH_GUEST_PROPS
     HRESULT getGuestPropertyFromService(IN_BSTR aName, BSTR *aValue,
