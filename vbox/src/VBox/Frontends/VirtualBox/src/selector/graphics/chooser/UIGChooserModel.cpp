@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43552 2012-10-05 10:52:56Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 43563 2012-10-08 11:12:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -314,14 +314,6 @@ void UIGChooserModel::removeFromCurrentItems(UIGChooserItem *pItem)
     list.removeAll(pItem);
     /* Call for wrapper above: */
     setCurrentItems(list);
-}
-
-void UIGChooserModel::clearSelectionList()
-{
-    QList<UIGChooserItem*> oldCurrentItems = m_currentItems;
-    m_currentItems.clear();
-    foreach (UIGChooserItem *pItem, oldCurrentItems)
-        pItem->update();
 }
 
 void UIGChooserModel::notifyCurrentItemChanged()
