@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45122 2013-03-21 10:11:34Z vboxsync $
+# $Id: Makefile.kmk 45211 2013-03-27 16:00:07Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2495,6 +2495,13 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 endif
 	$(QUIET)$(APPEND) -t $@
 
+
+#
+# Windows build tool.
+#
+##BLDPROGS.win = ntBldSymDb
+##ntBldSymDb_TEMPLATE = VBoxAdvBldProg
+##ntBldSymDb_SOURCES = r0drv/nt/ntBldSymDb.cpp
 
 #
 # Generate the rules (we're the to sub-makefile).
