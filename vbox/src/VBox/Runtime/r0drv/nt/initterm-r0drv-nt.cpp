@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 45444 2013-04-09 19:08:17Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 45445 2013-04-09 19:08:33Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -147,14 +147,14 @@ static bool rtR0NtTryMatchSymSet(PCRTNTSDBSET pSet, uint8_t *pbPrcb, const char 
     char *pszPrcbVendorString = (char *)&pbPrcb[pSet->KPRCB.offVendorString];
     if (!MmIsAddressValid(&pszPrcbVendorString[4 * 3 - 1]))
     {
-        DbgPrint("IPRT: #%d invalid vendor string address.\n", pSet - &g_artNtSdbSets[0]);
+        //DbgPrint("IPRT: #%d invalid vendor string address.\n", pSet - &g_artNtSdbSets[0]);
         return false;
     }
     __try
     {
         if (memcmp(pszPrcbVendorString, pszVendor, RT_MIN(4 * 3, pSet->KPRCB.cbVendorString)) != 0)
         {
-            DbgPrint("IPRT: #%d Vendor string mismatch.\n", pSet - &g_artNtSdbSets[0]);
+            //DbgPrint("IPRT: #%d Vendor string mismatch.\n", pSet - &g_artNtSdbSets[0]);
             return false;
         }
     }
