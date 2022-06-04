@@ -1,4 +1,4 @@
-/* $Id: service.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: service.cpp 42342 2012-07-24 09:36:51Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -160,7 +160,6 @@ void DragAndDropService::modeSet(uint32_t u32Mode)
         case VBOX_DRAG_AND_DROP_MODE_HOST_TO_GUEST:
         case VBOX_DRAG_AND_DROP_MODE_GUEST_TO_HOST:
         case VBOX_DRAG_AND_DROP_MODE_BIDIRECTIONAL:
-            LogRel(("drag'n'drop mode = %d\n", u32Mode));
             m_u32Mode = u32Mode;
             break;
 
