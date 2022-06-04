@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 44948 2013-03-07 10:36:42Z vboxsync $ */
+/* $Id: Settings.cpp 44955 2013-03-07 13:59:53Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -327,7 +327,9 @@ ConfigFileBase::ConfigFileBase(const com::Utf8Str *pstrFilename)
                     m->sv = SettingsVersion_v1_12;
                 else if (ulMinor == 13)
                     m->sv = SettingsVersion_v1_13;
-                else if (ulMinor > 13)
+                else if (ulMinor == 14)
+                    m->sv = SettingsVersion_v1_14;
+                else if (ulMinor > 14)
                     m->sv = SettingsVersion_Future;
             }
             else if (ulMajor > 1)
