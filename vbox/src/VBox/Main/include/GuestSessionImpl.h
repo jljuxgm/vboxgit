@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42948 2012-08-23 12:12:09Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 43002 2012-08-27 15:47:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -176,7 +176,8 @@ protected:
               mProcInfo(startupInfo)
         {
             mProcInfo.mCommand = strDest;
-            mProcInfo.mName = strDest;
+            if (mProcInfo.mName.isEmpty())
+                mProcInfo.mName = strDest;
         }
 
         /** Source file on .ISO. */
@@ -193,7 +194,7 @@ protected:
     int copyFileToGuest(GuestSession *pSession, PRTISOFSFILE pISO,
                         Utf8Str const &strFileSource, const Utf8Str &strFileDest,
                         bool fOptional, uint32_t *pcbSize);
-    int runFile(GuestSession *pSession, GuestProcessStartupInfo &procInfo);
+    int runFileOnGuest(GuestSession *pSession, GuestProcessStartupInfo &procInfo);
 
     /** Files to handle. */
     std::vector<InstallerFile> mFiles;
