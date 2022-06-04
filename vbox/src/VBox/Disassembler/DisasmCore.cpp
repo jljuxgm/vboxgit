@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 41886 2012-06-22 13:24:38Z vboxsync $ */
+/* $Id: DisasmCore.cpp 45428 2013-04-09 12:32:35Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -292,7 +292,7 @@ DECL_NO_INLINE(static, void) disReadMore(PDISSTATE pDis, uint8_t offInstr, uint8
     else
     {
         Log(("disReadMore failed with rc=%Rrc!!\n", rc));
-        pDis->rc = VERR_DIS_MEM_READ;
+        pDis->rc = rc;
     }
 }
 
@@ -2607,7 +2607,7 @@ DECL_FORCE_INLINE(void) disPrefetchBytes(PDISSTATE pDis)
     else
     {
         Log(("Initial read failed with rc=%Rrc!!\n", rc));
-        pDis->rc = VERR_DIS_MEM_READ;
+        pDis->rc = rc;
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 45301 2013-04-03 09:51:13Z vboxsync $ */
+/* $Id: EMAll.cpp 45428 2013-04-09 12:32:35Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -460,8 +460,8 @@ VMM_INT_DECL(int) EMInterpretDisasOneEx(PVM pVM, PVMCPU pVCpu, RTGCUINTPTR GCPtr
     int rc = DISInstrWithReader(GCPtrInstr, enmCpuMode, emReadBytes, pVCpu, pDis, pcbInstr);
     if (RT_SUCCESS(rc))
         return VINF_SUCCESS;
-    AssertMsgFailed(("DISCoreOne failed to GCPtrInstr=%RGv rc=%Rrc\n", GCPtrInstr, rc));
-    return VERR_EM_INTERNAL_DISAS_ERROR;
+    AssertMsg(rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT, ("DISCoreOne failed to GCPtrInstr=%RGv rc=%Rrc\n", GCPtrInstr, rc));
+    return rc;
 }
 
 
