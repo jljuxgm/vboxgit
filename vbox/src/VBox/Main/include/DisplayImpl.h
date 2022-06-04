@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 42248 2012-07-20 08:39:45Z vboxsync $ */
+/* $Id: DisplayImpl.h 42878 2012-08-20 10:00:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -27,6 +27,7 @@
 #include <VBox/VBoxVideo.h>
 
 class Console;
+struct VIDEORECCONTEXT;
 
 enum {
     ResizeStatus_Void,
@@ -292,6 +293,10 @@ private:
 
 #ifdef VBOX_WITH_HGSMI
     volatile uint32_t mu32UpdateVBVAFlags;
+#endif
+
+#ifdef VBOX_WITH_VPX
+    VIDEORECCONTEXT *mpVideoRecContext;
 #endif
 };
 
