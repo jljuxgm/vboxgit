@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 40468 2012-03-14 17:07:58Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 44277 2013-01-12 21:17:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2670,7 +2670,7 @@ HRESULT ExtPackManager::doInstall(ExtPackFile *a_pExtPackFile, bool a_fReplace, 
                         LogRel(("ExtPackManager: Successfully installed extension pack '%s'.\n", pStrName->c_str()));
                     else
                     {
-                        LogRel(("ExtPackManager: Installated hook for '%s' failed: %Rrc - %s\n",
+                        LogRel(("ExtPackManager: Installed hook for '%s' failed: %Rrc - %s\n",
                                 pStrName->c_str(), ErrInfo.Core.rc, ErrInfo.Core.pszMsg));
 
                         /*
