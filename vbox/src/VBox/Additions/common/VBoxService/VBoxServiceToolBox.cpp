@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 42715 2012-08-09 15:35:51Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 42717 2012-08-09 16:04:09Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1298,9 +1298,6 @@ static RTEXITCODE VBoxServiceToolboxMkDir(int argc, char **argv)
         {
             case 'p':
                 fMakeParentDirs = true;
-#ifndef RT_OS_WINDOWS
-                umask(0); /* RTDirCreate workaround */
-#endif
                 break;
 
             case 'm':
