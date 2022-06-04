@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45743 2013-04-25 20:18:22Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 45772 2013-04-26 11:58:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3324,6 +3324,8 @@ DECLCALLBACK(void) Display::displayRefreshCallback(PPDMIDISPLAYCONNECTOR pInterf
         int rc;
         DISPLAYFBINFO *pFBInfo = &pDisplay->maFramebuffers[VBOX_VIDEO_PRIMARY_SCREEN];
 
+        uint64_t us = RTTimeProgramMicroTS();
+        LogRel(("CopyToIntBuffer start\n"));
         if (   !pFBInfo->pFramebuffer.isNull()
             && !pFBInfo->fDisabled
             && pFBInfo->u32ResizeStatus == ResizeStatus_Void)
@@ -3367,13 +3369,16 @@ DECLCALLBACK(void) Display::displayRefreshCallback(PPDMIDISPLAYCONNECTOR pInterf
                     Log2(("No Proper Format detected\n"));
                     break;
             }
+            LogRel(("  CopyToIntBuffer done %Rrc %llu\n", rc, RTTimeProgramMicroTS()-us));
 
             /* Just return in case of failure without any assertion */
             if (RT_SUCCESS(rc))
             {
+                LogRel(("  VideoRecDoRGBToYUV done %Rrc %llu\n", rc, RTTimeProgramMicroTS()-us));
                 rc = VideoRecDoRGBToYUV(pDisplay->mpVideoRecContext, u32VideoRecImgFormat);
                 if (RT_SUCCESS(rc))
                     VideoRecEncodeAndWrite(pDisplay->mpVideoRecContext, ulGuestWidth, ulGuestHeight);
+                LogRel(("  VideoRecEncodeAndWrite done %Rrc %llu\n", rc, RTTimeProgramMicroTS()-us));
             }
         }
     }
