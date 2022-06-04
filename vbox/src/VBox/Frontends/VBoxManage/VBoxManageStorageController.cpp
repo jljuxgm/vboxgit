@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 44131 2012-12-14 10:32:23Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 44132 2012-12-14 10:43:16Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -491,6 +491,8 @@ int handleStorageAttach(HandlerArg *a)
                                             COMGETTER(SystemProperties)(pProperties.asOutParam()));
                                 CHECK_ERROR(pProperties, COMGETTER(DefaultAdditionsISO)(bstrIso.asOutParam()));
                                 strIso = Utf8Str(bstrIso);
+                                if (strIso.isEmpty())
+                                    throw Utf8Str("Cannot find the Guest Additions ISO image\n");
                                 pszMedium = strIso.c_str();
                                 if (devTypeRequested == DeviceType_Null)
                                     devTypeRequested = DeviceType_DVD;
