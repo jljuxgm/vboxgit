@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
+/* $Id: UIModalWindowManager.cpp 45441 2013-04-09 16:01:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -83,7 +83,8 @@ QWidget* UIModalWindowManager::mainWindowShown() const
     if (vboxGlobal().isVMConsoleProcess())
     {
         /* It will be currently active machine-window if visible: */
-        if (vboxGlobal().activeMachineWindow()->isVisible())
+        if (vboxGlobal().activeMachineWindow() &&
+            vboxGlobal().activeMachineWindow()->isVisible())
             return vboxGlobal().activeMachineWindow();
     }
     /* Otherwise: */
