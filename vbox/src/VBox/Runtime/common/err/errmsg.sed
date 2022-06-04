@@ -1,4 +1,4 @@
-# $Id: errmsg.sed 35811 2011-02-01 13:12:08Z vboxsync $
+# $Id: errmsg.sed 47443 2013-07-28 16:58:01Z vboxsync $
 ## @file
 # IPRT - SED script for converting */err.h.
 #
@@ -49,33 +49,14 @@ b end
 ##
 # Convert descriptive comments. /** desc */
 :description
-# arg! how to do N until end of comment?
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
-/\*\//!N
+
+# Read all the lines belonging to the comment into the buffer.
+:look-for-end-of-comment
+/\*\//bend-of-comment
+N
+blook-for-end-of-comment
+:end-of-comment
+
 # anything with @{ and @} is skipped
 /@[\{\}]/d
 
