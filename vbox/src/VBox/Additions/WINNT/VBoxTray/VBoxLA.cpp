@@ -1,4 +1,4 @@
-/* $Id: VBoxLA.cpp 40891 2012-04-12 11:36:42Z vboxsync $ */
+/* $Id: VBoxLA.cpp 43224 2012-09-06 12:45:05Z vboxsync $ */
 /** @file
  * VBoxLA - VBox Location Awareness notifications.
  */
@@ -744,10 +744,12 @@ static int laGetProperty(uint32_t u32GuestPropHandle, const char *pszName, uint6
     else if (rc == VERR_NOT_FOUND)
     {
         LALOG(("LA: laGetProperty: not found [%s]\n", pszName));
+        RTMemFree(pvBuf);
     }
     else
     {
         LALOG(("LA: Failed to retrieve the property value, error %Rrc\n", rc));
+        RTMemFree(pvBuf);
     }
 
     return rc;
