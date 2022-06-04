@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.h 44337 2013-01-23 13:51:46Z vboxsync $ */
+/* $Id: UsbWebcamInterface.h 44758 2013-02-20 11:45:18Z vboxsync $ */
 /** @file
  * VirtualBox PDM Driver for Emulated USB Webcam
  */
@@ -33,8 +33,8 @@ class EmWebcam
         virtual ~EmWebcam();
 
         static const PDMDRVREG DrvReg;
-        EMWEBCAMDRV *mpDrv;
 
+        void EmWebcamConstruct(EMWEBCAMDRV *pDrv);
         void EmWebcamDestruct(EMWEBCAMDRV *pDrv);
 
         /* Callbacks. */
@@ -57,6 +57,7 @@ class EmWebcam
 
         Console * const mParent;
 
+        EMWEBCAMDRV *mpDrv;
         EMWEBCAMREMOTE *mpRemote;
         uint64_t volatile mu64DeviceIdSrc;
 };
