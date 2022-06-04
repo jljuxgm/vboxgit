@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43827 2012-11-07 11:02:12Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43829 2012-11-07 11:51:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1172,6 +1172,7 @@ QSizeF UIGChooserItemGroup::sizeHint(Qt::SizeHint which, const QSizeF &constrain
 
 QPixmap UIGChooserItemGroup::toPixmap()
 {
+    /* Ask item to paint itself into pixmap: */
     QSize minimumSize = minimumSizeHint(false).toSize();
     QPixmap pixmap(minimumSize);
     pixmap.fill(Qt::transparent);
