@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 46703 2013-06-20 11:54:22Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 46704 2013-06-20 12:04:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -267,7 +267,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
     if (!strDefaultAction.isEmpty())
     {
         /* Parse the close-action which was defined: */
-        closeAction = UIVMCloseDialog::parseResultCode(strDefaultAction);
+        closeAction = gpConverter->fromInternalString<MachineCloseAction>(strDefaultAction);
         /* If VM is stuck, and the default close-action is not 'power-off',
          * we should ask the user about what to do: */
         if (uisession()->isStuck() &&
