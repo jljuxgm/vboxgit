@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 44364 2013-01-25 01:15:41Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 44368 2013-01-25 11:18:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6295,7 +6295,7 @@ HRESULT Console::consoleInitReleaseLog(const ComPtr<IMachine> aMachine)
     char szError[RTPATH_MAX + 128];
     int vrc = com::VBoxLogRelCreate("VM", logFile.c_str(),
                                     RTLOGFLAGS_PREFIX_TIME_PROG | RTLOGFLAGS_RESTRICT_GROUPS,
-                                    "all all.restrict default.unrestricted",
+                                    "all all.restrict -default.restrict",
                                     "VBOX_RELEASE_LOG", RTLOGDEST_FILE,
                                     32768 /* cMaxEntriesPerGroup */,
                                     0 /* cHistory */, 0 /* uHistoryFileTime */,
