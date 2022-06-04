@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45892 2013-05-03 11:44:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45893 2013-05-03 11:54:41Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5864,7 +5864,7 @@ static int hmR0VmxInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
             && !fBlockSti)
         {
             Log(("Injecting NMI\n"));
-            RTGCUINTPTR uIntrInfo;
+            uint32_t uIntrInfo;
             uIntrInfo  = X86_XCPT_NMI | (1 << VMX_EXIT_INTERRUPTION_INFO_VALID_SHIFT);
             uIntrInfo |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_NMI << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
             rc = hmR0VmxInjectEventVmcs(pVCpu, pMixedCtx, uIntrInfo, 0 /* cbInstr */, 0 /* u32ErrCode */,
