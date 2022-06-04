@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 43746 2012-10-25 16:35:37Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 43865 2012-11-13 15:26:30Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -518,7 +518,7 @@ static void hmR0SvmSetMSRPermission(PVMCPU pVCpu, unsigned ulMSR, bool fRead, bo
  * Injects an event (trap or external interrupt).
  *
  * @param   pVCpu       Pointer to the VMCPU.
- * @param   pvVMCB       Pointer to the VMCB.
+ * @param   pvVMCB      Pointer to the VMCB.
  * @param   pCtx        Pointer to the guest CPU context.
  * @param   pIntInfo    Pointer to the SVM interrupt info.
  */
@@ -555,7 +555,7 @@ DECLINLINE(void) hmR0SvmInjectEvent(PVMCPU pVCpu, SVM_VMCB *pvVMCB, CPUMCTX *pCt
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
  * @param   pVCpu       Pointer to the VMCPU.
- * @param   pvVMCB       Pointer to the VMCB.
+ * @param   pvVMCB      Pointer to the VMCB.
  * @param   pCtx        Pointer to the guest CPU Context.
  */
 static int hmR0SvmCheckPendingInterrupt(PVM pVM, PVMCPU pVCpu, SVM_VMCB *pvVMCB, CPUMCTX *pCtx)
