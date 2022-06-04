@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 46254 2013-05-24 10:21:44Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 46258 2013-05-24 19:19:07Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -574,7 +574,9 @@ static DECLCALLBACK(RTDBGSEGIDX) rtDbgModContainer_RvaToSegOff(PRTDBGMODINT pMod
     PRTDBGMODCTN          pThis = (PRTDBGMODCTN)pMod->pvDbgPriv;
     PCRTDBGMODCTNSEGMENT  paSeg = pThis->paSegs;
     uint32_t const        cSegs = pThis->cSegs;
+#if 0
     if (cSegs <= 7)
+#endif
     {
         /*
          * Linear search.
@@ -590,6 +592,7 @@ static DECLCALLBACK(RTDBGSEGIDX) rtDbgModContainer_RvaToSegOff(PRTDBGMODINT pMod
             }
         }
     }
+#if 0 /** @todo binary search doesn't work if we've got empty segments in the list */
     else
     {
         /*
@@ -633,6 +636,7 @@ static DECLCALLBACK(RTDBGSEGIDX) rtDbgModContainer_RvaToSegOff(PRTDBGMODINT pMod
             }
         }
     }
+#endif
 
     /* Invalid. */
     return NIL_RTDBGSEGIDX;
