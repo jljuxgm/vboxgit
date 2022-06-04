@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 45994 2013-05-12 19:16:16Z vboxsync $ */
+/* $Id: ldrPE.cpp 45996 2013-05-12 23:41:02Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -840,7 +840,7 @@ static DECLCALLBACK(int) rtldrPE_EnumDbgInfo(PRTLDRMODINTERNAL pMod, const void 
                     PCCVPDB20INFO pCv20 = PE_RVA2TYPE(pvBits, DbgInfo.LinkAddress, PCCVPDB20INFO);
                     if (   pCv20->u32Magic   == CVPDB20INFO_MAGIC
                         && pCv20->offDbgInfo == 0
-                        && paDbgDir[i].SizeOfData > RT_OFFSETOF(CVPDB20INFO, szPdbFilename) )
+                        && paDbgDir[i].SizeOfData > RT_UOFFSETOF(CVPDB20INFO, szPdbFilename) )
                     {
                         DbgInfo.enmType             = RTLDRDBGINFOTYPE_CODEVIEW_PDB20;
                         DbgInfo.u.Pdb20.cbImage     = pModPe->cbImage;
@@ -849,7 +849,7 @@ static DECLCALLBACK(int) rtldrPE_EnumDbgInfo(PRTLDRMODINTERNAL pMod, const void 
                         DbgInfo.pszExtFile          = (const char *)&pCv20->szPdbFilename[0];
                     }
                     else if (   pCv20->u32Magic == CVPDB70INFO_MAGIC
-                             && paDbgDir[i].SizeOfData > RT_OFFSETOF(CVPDB70INFO, szPdbFilename) )
+                             && paDbgDir[i].SizeOfData > RT_UOFFSETOF(CVPDB70INFO, szPdbFilename) )
                     {
                         PCCVPDB70INFO pCv70 = (PCCVPDB70INFO)pCv20;
                         DbgInfo.enmType             = RTLDRDBGINFOTYPE_CODEVIEW_PDB70;
@@ -863,7 +863,7 @@ static DECLCALLBACK(int) rtldrPE_EnumDbgInfo(PRTLDRMODINTERNAL pMod, const void 
 
             case IMAGE_DEBUG_TYPE_MISC:
                 if (   paDbgDir[i].SizeOfData < sizeof(szPath)
-                    && paDbgDir[i].SizeOfData > RT_OFFSETOF(IMAGE_DEBUG_MISC, Data)
+                    && paDbgDir[i].SizeOfData > RT_UOFFSETOF(IMAGE_DEBUG_MISC, Data)
                     && DbgInfo.LinkAddress != NIL_RTLDRADDR)
                 {
                     PCIMAGE_DEBUG_MISC pMisc = PE_RVA2TYPE(pvBits, DbgInfo.LinkAddress, PCIMAGE_DEBUG_MISC);
