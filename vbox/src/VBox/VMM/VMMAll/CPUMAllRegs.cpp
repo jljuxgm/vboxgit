@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 42640 2012-08-06 23:16:14Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 42647 2012-08-07 07:47:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1012,8 +1012,14 @@ VMMDECL(int) CPUMQueryGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
         /*
          * Intel specifics MSRs:
          */
+        case MSR_IA32_PLATFORM_ID:          /* fam/mod >= 6_01 */
         case MSR_IA32_BIOS_SIGN_ID:         /* fam/mod >= 6_01 */
-        case MSR_IA32_BIOS_UPDT_TRIG:       /* fam/mod >= 6_01 */
+        /*case MSR_IA32_BIOS_UPDT_TRIG: - write-only? */
+        case MSR_IA32_MCP_CAP:              /* fam/mod >= 6_01 */
+        /*case MSR_IA32_MCP_STATUS:     - indicated as not present in CAP */
+        /*case MSR_IA32_MCP_CTRL:       - indicated as not present in CAP */
+        case MSR_IA32_MC0_CTL:
+        case MSR_IA32_MC0_STATUS:
             *puValue = 0;
             if (CPUMGetGuestCpuVendor(pVCpu->CTX_SUFF(pVM)) != CPUMCPUVENDOR_INTEL)
             {
@@ -1248,8 +1254,14 @@ VMMDECL(int) CPUMSetGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t uValue)
         /*
          * Intel specifics MSRs:
          */
+        /*case MSR_IA32_PLATFORM_ID: - read-only */
         case MSR_IA32_BIOS_SIGN_ID:         /* fam/mod >= 6_01 */
         case MSR_IA32_BIOS_UPDT_TRIG:       /* fam/mod >= 6_01 */
+        /*case MSR_IA32_MCP_CAP:     - read-only */
+        /*case MSR_IA32_MCP_STATUS:  - read-only */
+        /*case MSR_IA32_MCP_CTRL:    - indicated as not present in CAP */
+        /*case MSR_IA32_MC0_CTL:     - read-only? */
+        /*case MSR_IA32_MC0_STATUS:  - read-only? */
             if (CPUMGetGuestCpuVendor(pVCpu->CTX_SUFF(pVM)) != CPUMCPUVENDOR_INTEL)
             {
                 Log(("MSR %#x is Intel, the virtual CPU isn't an Intel one -> #GP\n", idMsr));
