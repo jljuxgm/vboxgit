@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 45037 2013-03-14 11:29:33Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1154,7 +1154,7 @@ NTSTATUS DxgkDdiStartDevice(
                     VBoxMPCmnInitCustomVideoModes(pDevExt);
                     VBoxWddmInvalidateAllVideoModesInfos(pDevExt);
 
-                    pDevExt->fAnyX = VBoxVideoAnyWidthAllowed();
+                    VBoxCommonFromDeviceExt(pDevExt)->fAnyX = VBoxVideoAnyWidthAllowed();
 #if 0
                     vboxShRcTreeInit(pDevExt);
 #endif
@@ -4318,7 +4318,7 @@ DxgkDdiEscape(
                 }
 
                 PVBOXDISPIFESCAPE_ISANYX pIsAnyX = (PVBOXDISPIFESCAPE_ISANYX)pEscapeHdr;
-                pIsAnyX->u32IsAnyX = pDevExt->fAnyX;
+                pIsAnyX->u32IsAnyX = VBoxCommonFromDeviceExt(pDevExt)->fAnyX;
                 Status = STATUS_SUCCESS;
                 break;
             }

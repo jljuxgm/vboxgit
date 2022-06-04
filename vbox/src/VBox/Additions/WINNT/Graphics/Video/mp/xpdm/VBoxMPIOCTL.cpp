@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 45037 2013-03-14 11:29:33Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport IOCTL handlers
@@ -199,8 +199,8 @@ BOOLEAN VBoxMPSetCurrentMode(PVBOXMP_DEVEXT pExt, PVIDEO_MODE pMode, PSTATUS_BLO
         return FALSE;
     }
 
-    LOG(("width %d, height %d, bpp %d",
-         pModeInfo->VisScreenWidth, pModeInfo->VisScreenHeight, pModeInfo->BitsPerPlane));
+    LOG(("screen [%d] mode %d width %d, height %d, bpp %d",
+         pExt->iDevice, pModeInfo->ModeIndex, pModeInfo->VisScreenWidth, pModeInfo->VisScreenHeight, pModeInfo->BitsPerPlane));
 
     /* Update device info */
     pExt->CurrentMode       = RequestedMode;
