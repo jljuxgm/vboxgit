@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45976 2013-05-10 09:40:22Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45977 2013-05-10 09:51:35Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7806,7 +7806,7 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
                 case MSR_IA32_SYSENTER_ESP: pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_SYSENTER_ESP_MSR; break;
                 case MSR_K8_FS_BASE:        /* no break */
                 case MSR_K8_GS_BASE:        pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_SEGMENT_REGS;     break;
-                /* MSR_K8_KERNEL_GS_BASE: Nothing to do as it's not part of the VMCS. Manually loaded each time on VM-entry. */
+                case MSR_K8_KERNEL_GS_BASE: pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_VMX_GUEST_AUTO_MSRS;    break;
             }
         }
 #ifdef VBOX_STRICT
