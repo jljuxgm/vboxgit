@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 45185 2013-03-26 07:52:14Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -338,6 +338,7 @@ NATEngine::RemoveRedirect(IN_BSTR aName)
     mNATRules.erase(it);
     mParent->setModified(Machine::IsModified_NetworkAdapters);
     m_fModified = true;
+    mData.commit();
     alock.release();
     mParent->onNATRedirectRuleChange(ulSlot, TRUE, aName, proto, Bstr(strHostIP).raw(), u16HostPort, Bstr(strGuestIP).raw(), u16GuestPort);
     return S_OK;
