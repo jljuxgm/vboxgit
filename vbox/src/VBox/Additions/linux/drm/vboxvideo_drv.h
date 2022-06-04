@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drv.h 44529 2013-02-04 15:54:15Z vboxsync $
+/** @file $Id: vboxvideo_drv.h 47388 2013-07-25 12:12:10Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -64,6 +64,8 @@
 
 #define VBOXVIDEO_INFO(fmt, arg...)  DRM_INFO(DRIVER_NAME ": " fmt, ##arg)
 #define VBOXVIDEO_ERROR(fmt, arg...) DRM_ERROR(DRIVER_NAME ": " fmt, ##arg)
+
+#define MB (1024 * 1024)
 
 /** @todo does this make sense?  What exactly is this connector? */
 #define VBOXVIDEOFB_CONN_LIMIT VBOX_VIDEO_MAX_SCREENS

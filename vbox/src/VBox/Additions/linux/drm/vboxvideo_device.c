@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_device.c 44529 2013-02-04 15:54:15Z vboxsync $
+/** @file $Id: vboxvideo_device.c 47388 2013-07-25 12:12:10Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -52,11 +52,36 @@
 
 #include <VBox/VBoxVideoGuest.h>
 
+static int vboxvideo_vram_init(struct vboxvideo_device *gdev)
+{
+    /* work out accessible VRAM */
+    gdev->mc.aper_base = pci_resource_start(gdev->ddev->pdev, 1);
+    gdev->mc.aper_size = pci_resource_len(gdev->ddev->pdev, 1);
+
+    gdev->mc.vram = ioremap(gdev->mc.aper_base, gdev->mc.aper_size);
+    if (!gdev->mc.vram) {
+        VBOXVIDEO_ERROR("Unable to ioremap %lu MB of VRAM. Bailing out.\n", (unsigned long)gdev->mc.aper_size / MB);
+        return -1;
+    }
+    gdev->fAnyX        = VBoxVideoAnyWidthAllowed();
+    gdev->mc.vram_size = VBoxVideoGetVRAMSize();
+
+    return 0;
+}
+
+static void vboxvideo_vram_fini(struct vboxvideo_device *gdev)
+{
+    iounmap(gdev->mc.vram);
+    gdev->mc.vram = NULL;
+}
+
 int vboxvideo_device_init(struct vboxvideo_device *gdev,
               struct drm_device *ddev,
               struct pci_dev *pdev,
               uint32_t flags)
 {
+    int ret;
+
     gdev->dev      = &pdev->dev;
     gdev->ddev     = ddev;
     gdev->pdev     = pdev;
@@ -66,14 +91,15 @@ int vboxvideo_device_init(struct vboxvideo_device *gdev,
     /** @todo hardware initialisation goes here once we start doing more complex
      *        stuff.
      */
-    gdev->fAnyX        = VBoxVideoAnyWidthAllowed();
-    gdev->mc.vram_size = VBoxVideoGetVRAMSize();
+    ret = vboxvideo_vram_init(gdev);
+    if (ret)
+        return ret;
 
     return 0;
 }
 
 void vboxvideo_device_fini(struct vboxvideo_device *gdev)
 {
-
+    vboxvideo_vram_fini(gdev);
 }
 #endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27) */
