@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 44742 2013-02-18 17:26:05Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 46345 2013-05-31 13:42:37Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -294,10 +294,12 @@ int NetIfGetLinkSpeed(const char *pcszIfName, uint32_t *puMbits)
         if (ioctl(sock, SIOCGIFFLAGS, &Req) >= 0)
             if (Req.ifr_flags & IFF_UP)
             {
+                close(sock);
                 *puMbits = getInterfaceSpeed(pcszIfName);
                 return VINF_SUCCESS;
             }
     }
+    close(sock);
     *puMbits = 0;
     return VWRN_NOT_FOUND;
 }
