@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 47758 2013-08-15 12:39:09Z vboxsync $ */
+/* $Id: MouseImpl.cpp 47774 2013-08-15 15:13:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -558,7 +558,7 @@ HRESULT Mouse::convertDisplayRes(LONG x, LONG y, int32_t *pxAdj, int32_t *pyAdj,
         ULONG displayWidth, displayHeight;
         /* Takes the display lock */
         HRESULT rc = pDisplay->getScreenResolution(0, &displayWidth,
-                                                   &displayHeight, NULL);
+                                                   &displayHeight, NULL, NULL, NULL);
         if (FAILED(rc))
             return rc;
 

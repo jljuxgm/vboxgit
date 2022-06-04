@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 46332 2013-05-30 13:43:23Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 47774 2013-08-15 15:13:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -187,7 +187,8 @@ void UIGMachinePreview::sltRecreatePreview()
                             CDisplay display = console.GetDisplay();
                             /* Todo: correct aspect radio */
 //                            ULONG w, h, bpp;
-//                            display.GetScreenResolution(0, w, h, bpp);
+//                            LONG xOrigin, yOrigin;
+//                            display.GetScreenResolution(0, w, h, bpp, xOrigin, yOrigin);
 //                            QImage shot = QImage(w, h, QImage::Format_RGB32);
 //                            shot.fill(Qt::black);
 //                            display.TakeScreenShot(0, shot.bits(), shot.width(), shot.height());

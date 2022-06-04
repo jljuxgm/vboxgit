@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 47746 2013-08-15 07:44:17Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 47774 2013-08-15 15:13:01Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -46,7 +46,7 @@ class TestDisplay : public DisplayMouseInterface
     void getFramebufferDimensions(int32_t *px1, int32_t *py1,
                                   int32_t *px2, int32_t *py2);
     int getScreenResolution(uint32_t cScreen, ULONG *pcx, ULONG *pcy,
-                            ULONG *pcBPP);
+                            ULONG *pcBPP, LONG *pXOrigin, LONG *pYOrigin);
 };
 
 class TestConsole : public ConsoleMouseInterface
@@ -240,7 +240,7 @@ void TestDisplay::getFramebufferDimensions(int32_t *px1, int32_t *py1,
 }
 
 int TestDisplay::getScreenResolution(uint32_t cScreen, ULONG *pcx,
-                                     ULONG *pcy, ULONG *pcBPP)
+                                     ULONG *pcy, ULONG *pcBPP, LONG *pXOrigin, LONG *pYOrigin)
 {
     NOREF(cScreen);
     if (pcx)
@@ -249,6 +249,10 @@ int TestDisplay::getScreenResolution(uint32_t cScreen, ULONG *pcx,
         *pcy = 480;
     if (pcBPP)
         *pcBPP = 32;
+    if (pXOrigin)
+        *pXOrigin = 0;
+    if (pYOrigin)
+        *pYOrigin = 0;
     return S_OK;
 }
 

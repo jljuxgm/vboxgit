@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 47523 2013-08-02 13:11:24Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 47774 2013-08-15 15:13:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2158,7 +2158,9 @@ void UIMachineLogic::takeScreenshot(const QString &strFile, const QString &strFo
         ULONG width  = 0;
         ULONG height = 0;
         ULONG bpp    = 0;
-        display.GetScreenResolution(i, width, height, bpp);
+        LONG xOrigin = 0;
+        LONG yOrigin = 0;
+        display.GetScreenResolution(i, width, height, bpp, xOrigin, yOrigin);
         uMaxWidth  += width;
         uMaxHeight  = RT_MAX(uMaxHeight, height);
         QImage shot = QImage(width, height, QImage::Format_RGB32);

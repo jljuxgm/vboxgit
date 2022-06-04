@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 47617 2013-08-08 18:03:26Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 47774 2013-08-15 15:13:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -464,12 +464,17 @@ void VBoxVMInformationDlg::refreshStatistics()
         ULONG width = 0;
         ULONG height = 0;
         ULONG bpp = 0;
-        console.GetDisplay().GetScreenResolution(0, width, height, bpp);
+        LONG xOrigin = 0;
+        LONG yOrigin = 0;
+        console.GetDisplay().GetScreenResolution(0, width, height, bpp, xOrigin, yOrigin);
         QString resolution = QString ("%1x%2")
             .arg (width)
             .arg (height);
         if (bpp)
             resolution += QString ("x%1").arg (bpp);
+        resolution += QString (" @%1,%2")
+                          .arg (xOrigin)
+                          .arg (yOrigin);
 
         QString clipboardMode = gpConverter->toString(m.GetClipboardMode());
         QString dragAndDropMode = gpConverter->toString(m.GetDragAndDropMode());
