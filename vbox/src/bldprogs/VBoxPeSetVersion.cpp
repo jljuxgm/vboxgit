@@ -1,4 +1,4 @@
-/* $Id: VBoxPeSetVersion.cpp 42239 2012-07-19 20:40:31Z vboxsync $ */
+/* $Id: VBoxPeSetVersion.cpp 43017 2012-08-27 22:16:03Z vboxsync $ */
 /** @file
  * IPRT - Change the OS and SubSystem version to 4.0 (VS2010 trick).
  */
@@ -36,6 +36,8 @@
 /** @todo Rewrite this so it can take options and print out error messages. */
 int main(int argc, char **argv)
 {
+    if (argc != 2)
+        return 30;
     FILE *pFile = fopen(argv[1], "r+b");
     if (!pFile)
         return 1;
