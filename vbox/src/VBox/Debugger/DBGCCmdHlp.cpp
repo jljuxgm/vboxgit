@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 47564 2013-08-06 17:16:43Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -466,7 +466,7 @@ static DECLCALLBACK(int) dbgcHlpMemRead(PDBGCCMDHLP pCmdHlp, void *pvBuffer, siz
         if (!cbLeft)
             break;
         pvBuffer = (char *)pvBuffer + cb;
-        rc = DBGCCmdHlpEval(pCmdHlp, &Var, "%DV + %d", &Var, cb);
+        rc = DBGCCmdHlpEval(pCmdHlp, &Var, "%DV + %#zx", &Var, cb);
         if (RT_FAILURE(rc))
         {
             if (pcbRead && (*pcbRead = cbRead - cbLeft) > 0)
