@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VMMTests.cpp 45533 2013-04-13 16:13:22Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -489,11 +489,13 @@ VMMR3DECL(int) VMMDoHmTest(PVM pVM)
         return VERR_ACCESS_DENIED;
     }
 
+#ifdef VBOX_WITH_RAW_MODE
     /*
      * These forced actions are not necessary for the test and trigger breakpoints too.
      */
     VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
     VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_SELM_SYNC_TSS);
+#endif
 
     /* Enable mapping of the hypervisor into the shadow page table. */
     uint32_t cb;

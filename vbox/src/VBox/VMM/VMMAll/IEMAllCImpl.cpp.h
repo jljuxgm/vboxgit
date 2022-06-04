@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 45305 2013-04-03 11:15:02Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 45533 2013-04-13 16:13:22Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -3415,7 +3415,9 @@ IEM_CIMPL_DEF_2(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX)
                 {
                     Log(("iemCImpl_load_CrX: VME %d -> %d => Setting VMCPU_FF_SELM_SYNC_TSS\n",
                          RT_BOOL(uOldCrX & X86_CR4_VME), RT_BOOL(uNewCrX & X86_CR4_VME) ));
+#ifdef VBOX_WITH_RAW_MODE
                     VMCPU_FF_SET(pVCpu, VMCPU_FF_SELM_SYNC_TSS);
+#endif
                 }
 
                 /* PGM - flushing and mode. */

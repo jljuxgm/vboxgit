@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 45006 2013-03-12 14:58:51Z vboxsync $ */
+/* $Id: DBGF.cpp 45533 2013-04-13 16:13:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -363,8 +363,10 @@ VMMR3_INT_DECL(int) DBGFR3VMMForcedAction(PVM pVM)
          */
         if (pVM->dbgf.s.enmVMMCmd != DBGFCMD_NO_COMMAND)
         {
+#ifdef VBOX_WITH_RAW_MODE
             /** @todo stupid GDT/LDT sync hack. go away! */
             SELMR3UpdateFromCPUM(pVM, pVCpu);
+#endif
 
             /*
              * Process the command.
@@ -670,8 +672,10 @@ static int dbgfR3VMMWait(PVM pVM)
 
     LogFlow(("dbgfR3VMMWait:\n"));
 
+#ifdef VBOX_WITH_RAW_MODE
     /** @todo stupid GDT/LDT sync hack. go away! */
     SELMR3UpdateFromCPUM(pVM, pVCpu);
+#endif
     int rcRet = VINF_SUCCESS;
 
     /*
