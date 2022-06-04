@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 43354 2012-09-18 15:25:32Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 43361 2012-09-19 20:49:07Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -2798,6 +2798,12 @@ VMMR0DECL(int) VMXR0RunGuestCode(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     }
 
     Log2(("\nE"));
+
+    /* This is not ideal, but if we don't clear the event injection in the VMCS right here,
+     * we may end up injecting some stale event into a VM, including injecting an event that 
+     * originated before a VM reset *after* the VM has been reset. See @bugref{6220}.
+     */
+    VMXWriteVMCS(VMX_VMCS_CTRL_ENTRY_IRQ_INFO, 0);
 
 #ifdef VBOX_STRICT
     {
