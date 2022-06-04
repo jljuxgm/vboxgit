@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 47464 2013-07-29 14:54:33Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 47571 2013-08-07 09:49:33Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -355,6 +355,7 @@ private:
                                                      uint32_t u32Method,
                                                      const void *pvEvent,
                                                      uint32_t cbEvent);
+    uint64_t mu64TouchInputTimestampMCS;
 };
 
 
