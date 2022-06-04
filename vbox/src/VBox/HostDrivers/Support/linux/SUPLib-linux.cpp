@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 44175 2012-12-19 18:16:25Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 44180 2012-12-19 18:35:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -94,7 +94,7 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted)
     /*
      * Try open the device.
      */
-    const char *pszDeviceNm = fUnrestricted ? DEVICE_NAME_SYS : DEVICE_NAME_USR
+    const char *pszDeviceNm = fUnrestricted ? DEVICE_NAME_SYS : DEVICE_NAME_USR;
     int hDevice = open(pszDeviceNm, O_RDWR, 0);
     if (hDevice < 0)
     {
