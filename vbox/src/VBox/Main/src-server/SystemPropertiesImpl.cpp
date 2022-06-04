@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 47525 2013-08-02 17:07:41Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 47587 2013-08-07 12:47:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -587,6 +587,7 @@ STDMETHODIMP SystemProperties::GetMaxInstancesOfUSBControllerType(ChipsetType_T 
                                                                   USBControllerType_T aType,
                                                                   ULONG *aMaxInstances)
 {
+    NOREF(aChipset);
     CheckComArgOutPointerValid(aMaxInstances);
 
     AutoCaller autoCaller(this);
