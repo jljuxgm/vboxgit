@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 47310 2013-07-22 14:49:07Z vboxsync $ */
+/* $Id: GuestImpl.cpp 47469 2013-07-30 09:43:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -109,9 +109,9 @@ HRESULT Guest::init(Console *aParent)
     AssertMsgRC(vrc, ("Failed to create guest statistics update timer (%Rrc)\n", vrc));
 
 #ifdef VBOX_WITH_GUEST_CONTROL
-    unconst(mEventSource).createObject();
-    Assert(!mEventSource.isNull());
-    hr = mEventSource->init(static_cast<IGuest*>(this));
+    hr = unconst(mEventSource).createObject();
+    if (SUCCEEDED(hr))
+        hr = mEventSource->init(static_cast<IGuest*>(this));
 #else
     hr = S_OK;
 #endif
