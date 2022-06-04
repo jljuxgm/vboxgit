@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 44040 2012-12-05 13:56:15Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 44331 2013-01-22 18:54:28Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2121,7 +2121,7 @@ NTSTATUS vboxVidPnSetupSourceInfo(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_S
         Assert(!pAllocation);
     }
     Assert(pSource->AllocData.SurfDesc.VidPnSourceId == srcId);
-    pSource->bGhSynced = FALSE;
+    pSource->fGhSynced = 0;
     return STATUS_SUCCESS;
 }
 

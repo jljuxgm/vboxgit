@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 43489 2012-10-01 11:55:58Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 44331 2013-01-22 18:54:28Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2673,7 +2673,7 @@ void vboxWddmDmAdjustDefaultVramLocations(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_P
         pSource = &pDevExt->aSources[i];
         if (pSource->AllocData.Addr.offVram != PhAddr.QuadPart
                 || pSource->AllocData.Addr.SegmentId != 1)
-            pSource->bGhSynced = FALSE;
+            pSource->fGhSynced = 0;
         pSource->AllocData.Addr.SegmentId = 1;
         pSource->AllocData.Addr.offVram = PhAddr.QuadPart;
     }
