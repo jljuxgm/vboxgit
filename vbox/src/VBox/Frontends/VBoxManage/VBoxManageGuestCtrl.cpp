@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 45010 2013-03-12 17:47:56Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 46009 2013-05-13 11:07:03Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1516,6 +1516,9 @@ static int ctrlCopyDirToGuest(PCOPYCONTEXT pContext,
                     vrc = VINF_SUCCESS;
                 break;
             }
+            /** @todo r=bird: This ain't gonna work on most UNIX file systems because
+             *        enmType is RTDIRENTRYTYPE_UNKNOWN.  This is clearly documented in
+             *        RTDIRENTRY::enmType. For trunk, RTDirQueryUnknownType can be used. */
             switch (DirEntry.enmType)
             {
                 case RTDIRENTRYTYPE_DIRECTORY:
