@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 44420 2013-01-28 12:16:27Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 44459 2013-01-30 11:23:57Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -240,6 +240,7 @@ Var g_bPostInstallStatus                ; Cmd line: Post the overall installatio
 
 ; Platform parts of this installer
 !include "VBoxGuestAdditionsLog.nsh"
+!include "VBoxGuestAdditionsExternal.nsh"
 !include "VBoxGuestAdditionsCommon.nsh"
 !if $%BUILD_TARGET_ARCH% == "x86"       ; 32-bit only
   !include "VBoxGuestAdditionsNT4.nsh"
@@ -756,9 +757,7 @@ Function PrepareWRPFile
   ${EndIf}
 
   ${If} ${FileExists} "$g_strSystemDir\takeown.exe"
-    nsExec::ExecToLog '"$g_strSystemDir\takeown.exe" /F "$0"'
-    Pop $1 ; Ret value
-    ${LogVerbose} "WRP: Taking ownership for $0 returned: $1"
+    ${CmdExecute} "$\"$g_strSystemDir\takeown.exe$\" /F $\"$0$\"" "true"
   ${Else}
     ${LogVerbose} "WRP: Warning: takeown.exe not found, skipping"
   ${EndIf}
