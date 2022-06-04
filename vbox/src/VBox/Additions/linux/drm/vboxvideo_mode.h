@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_mode.h 47417 2013-07-26 08:36:22Z vboxsync $
+/** @file $Id: vboxvideo_mode.h 47480 2013-07-30 18:47:16Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -68,14 +68,20 @@ struct vboxvideo_crtc
 {
     struct drm_crtc   base;
     int               crtc_id;
+    size_t            offCommandBuffer;
+    struct VBVABUFFERCONTEXT VbvaCtx;
     int               last_dpms;
+    int               last_hdisplay;
+    int               last_vdisplay;
+    int               last_x;
+    int               last_y;
     bool              enabled;
 };
 
 struct vboxvideo_mode_info
 {
     bool                    mode_config_initialized;
-    struct vboxvideo_crtc  *crtcs[1]; /* FIXME: how many CRTCs? */
+    struct vboxvideo_crtc  *crtcs[VBOX_VIDEO_MAX_SCREENS];
     /* pointer to fbdev info structure */
     struct vboxvideo_fbdev *gfbdev;
 };

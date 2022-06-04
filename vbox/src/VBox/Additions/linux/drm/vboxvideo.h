@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo.h 47417 2013-07-26 08:36:22Z vboxsync $
+/** @file $Id: vboxvideo.h 47480 2013-07-30 18:47:16Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -46,6 +46,7 @@
 #define __DRM_VBOXVIDEO_H__
 
 #include "vboxvideo_mode.h"
+#include <VBox/VBoxVideoGuest.h>
 #include "drm/drmP.h"
 
 struct vboxvideo_mc
@@ -60,8 +61,11 @@ struct vboxvideo_device
     struct drm_device  *ddev;
     struct pci_dev     *pdev;
     unsigned long       flags;
-    /** @todo move this into flags */
+    HGSMIGUESTCOMMANDCONTEXT Ctx;
     bool                fAnyX;
+    bool                fHaveHGSMI;
+    size_t              offViewInfo;
+    size_t              offCommandBuffers;
 
     drm_local_map_t    *framebuffer;
 

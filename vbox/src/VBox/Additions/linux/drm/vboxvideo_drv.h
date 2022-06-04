@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drv.h 47417 2013-07-26 08:36:22Z vboxsync $
+/** @file $Id: vboxvideo_drv.h 47480 2013-07-30 18:47:16Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -67,7 +67,7 @@
 
 #define MB (1024 * 1024)
 
-#define VBOXVIDEOFB_CONN_LIMIT VBOX_VIDEO_MAX_SCREENS
+#define VBOXVIDEOFB_CONN_LIMIT VBOX_VIDEO_MAX_SCREENS°°
 
 /* vboxvideo_crtc.c */
 void vboxvideo_crtc_fb_gamma_set(struct drm_crtc *crtc, u16 red, u16 green,
