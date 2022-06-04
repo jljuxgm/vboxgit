@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 45155 2013-03-24 20:08:10Z vboxsync $ */
+/* $Id: VD.cpp 45180 2013-03-25 20:48:52Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -4026,6 +4026,8 @@ static int vdIOIntReadUser(void *pvUser, PVDIOSTORAGE pIoStorage, uint64_t uOffs
         rc = pVDIo->pInterfaceIo->pfnReadSync(pVDIo->pInterfaceIo->Core.pvUser,
                                               pIoStorage->pStorage, uOffset,
                                               Seg.pvSeg, cbRead, NULL);
+        if (RT_SUCCESS(rc))
+            ASMAtomicSubU32(&pIoCtx->Req.Io.cbTransferLeft, cbRead);
     }
     else
     {
@@ -4120,6 +4122,8 @@ static int vdIOIntWriteUser(void *pvUser, PVDIOSTORAGE pIoStorage, uint64_t uOff
         rc = pVDIo->pInterfaceIo->pfnWriteSync(pVDIo->pInterfaceIo->Core.pvUser,
                                               pIoStorage->pStorage, uOffset,
                                               Seg.pvSeg, cbWrite, NULL);
+        if (RT_SUCCESS(rc))
+            ASMAtomicSubU32(&pIoCtx->Req.Io.cbTransferLeft, cbWrite);
     }
     else
     {
