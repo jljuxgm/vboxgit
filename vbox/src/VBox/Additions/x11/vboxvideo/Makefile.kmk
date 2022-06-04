@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46147 2013-05-17 15:35:09Z vboxsync $
+# $Id: Makefile.kmk 46189 2013-05-21 09:10:27Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -133,6 +133,7 @@ vboxvideo_drv_70_TEMPLATE = VBOXGUESTR3XORGMOD
 vboxvideo_drv_70_DEFS = $(vboxvideo_70_DEFS) XORG_VERSION_CURRENT=700000000
 ifeq ($(KBUILD_TARGET),solaris) # don't use .solaris or anything here.
  vboxvideo_drv_70_CFLAGS += -D_XPG6 # Until we have moved the C++ bits into a library
+ vboxvideo_drv_70_CFLAGS += -Wno-shadow # Try avoid MBs of warnings...
 endif
 vboxvideo_drv_70_INCS = \
 	$(VBOX_PATH_X11_XORG_7_0) \
