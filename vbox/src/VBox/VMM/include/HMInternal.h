@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 47089 2013-07-11 11:29:17Z vboxsync $ */
+/* $Id: HMInternal.h 47090 2013-07-11 11:34:04Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -660,7 +660,7 @@ typedef struct HMCPU
             RTCPUID                 idEnteredCpu;
             RTCPUID                 idCurrentCpu;
             uint32_t                padding;
-        } lasterror;
+        } LastError;
 
 #ifdef VBOX_WITH_OLD_VTX_CODE
         /** The last seen guest paging mode (by VT-x). */
