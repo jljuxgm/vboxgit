@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 47469 2013-07-30 09:43:14Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 47627 2013-08-09 08:31:24Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -211,7 +211,7 @@ STDMETHODIMP GuestDirectory::Close(void)
 
     uninit();
 
-    LogFlowFuncLeaveRC(rc);
+    LogFlowThisFunc(("Returning rc=%Rrc\n", rc));
     return hr;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
@@ -313,7 +313,7 @@ STDMETHODIMP GuestDirectory::Read(IFsObjInfo **aInfo)
         }
     }
 
-    LogFlowFuncLeaveRC(rc);
+    LogFlowThisFunc(("Returning rc=%Rrc\n", rc));
     return hr;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }

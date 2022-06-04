@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 47469 2013-07-30 09:43:14Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 47627 2013-08-09 08:31:24Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -360,7 +360,7 @@ int SessionTaskCopyTo::Run(void)
             /* If the guest does not support waiting for stdin, we now yield in
              * order to reduce the CPU load due to busy waiting. */
             if (waitRes == ProcessWaitResult_WaitFlagNotSupported)
-                RTThreadSleep(1); /* Optional, don't check rc. */
+                RTThreadYield(); /* Optional, don't check rc. */
 
             size_t cbRead = 0;
             if (mSourceSize) /* If we have nothing to write, take a shortcut. */
@@ -694,9 +694,9 @@ int SessionTaskCopyFrom::Run(void)
                         /* If the guest does not support waiting for stdin, we now yield in
                          * order to reduce the CPU load due to busy waiting. */
                         if (waitRes == ProcessWaitResult_WaitFlagNotSupported)
-                            RTThreadSleep(1); /* Optional, don't check rc. */
+                            RTThreadYield(); /* Optional, don't check rc. */
 
-                        uint32_t cbRead;
+                        uint32_t cbRead = 0; /* readData can return with VWRN_GSTCTL_OBJECTSTATE_CHANGED. */
                         rc = pProcess->readData(OUTPUT_HANDLE_ID_STDOUT, sizeof(byBuf),
                                                 30 * 1000 /* Timeout */, byBuf, sizeof(byBuf),
                                                 &cbRead, &guestRc);
