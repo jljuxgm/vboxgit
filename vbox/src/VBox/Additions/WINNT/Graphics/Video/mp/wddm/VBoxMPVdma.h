@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 42154 2012-07-13 23:00:53Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 43489 2012-10-01 11:55:58Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -340,8 +340,10 @@ DECLINLINE(void) vboxVdmaGgCmdRelease(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAPIPE_CMD_
     if (!cRefs)
         vboxVdmaGgCmdDestroy(pDevExt, pDr);
 }
+#ifndef VBOX_WDDM_MINIPORT_WITH_VISIBLE_RECTS
 NTSTATUS vboxVdmaGgCmdFinish(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_CONTEXT *pContext, PKEVENT pEvent);
 NTSTATUS vboxVdmaGgCmdCancel(PVBOXMP_DEVEXT pDevExt, VBOXWDDM_CONTEXT *pContext, PVBOXWDDM_SWAPCHAIN pSwapchain);
+#endif
 
 NTSTATUS vboxVdmaPostHideSwapchain(PVBOXWDDM_SWAPCHAIN pSwapchain);
 

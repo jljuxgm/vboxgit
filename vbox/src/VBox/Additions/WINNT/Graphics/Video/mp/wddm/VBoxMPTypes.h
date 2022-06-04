@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 42081 2012-07-10 09:47:29Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 43489 2012-10-01 11:55:58Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -235,6 +235,9 @@ typedef struct VBOXWDDM_CONTEXT
     UINT  EngineAffinity;
     BOOLEAN fRenderFromShadowDisabled;
     uint32_t u32CrConClientID;
+#ifdef VBOX_WDDM_MINIPORT_WITH_VISIBLE_RECTS
+    VBOXMP_CRPACKER CrPacker;
+#endif
     VBOXWDDM_HTABLE Swapchains;
     VBOXVIDEOCM_CTX CmContext;
     VBOXVIDEOCM_ALLOC_CONTEXT AllocContext;
