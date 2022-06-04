@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 46649 2013-06-19 11:47:32Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 47252 2013-07-19 12:31:46Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -332,7 +332,7 @@ public:
             {
 
                 ComPtr<IMouseCapabilityChangedEvent> mccev = aEvent;
-                Assert(mccev);
+                Assert(!mccev.isNull());
 
                 BOOL fSupportsAbsolute = false;
                 mccev->COMGETTER(SupportsAbsolute)(&fSupportsAbsolute);
