@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 47279 2013-07-19 18:36:27Z vboxsync $ */
+/* $Id: IEMAll.cpp 47280 2013-07-19 18:58:17Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -82,6 +82,7 @@
 #define LOG_GROUP   LOG_GROUP_IEM
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
+#include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pgm.h>
 #include <internal/pgm.h>
 #include <VBox/vmm/iom.h>
