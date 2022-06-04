@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 40994 2012-04-19 14:44:22Z vboxsync $
+# $Id: files_vboxguest 42330 2012-07-23 15:29:57Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -163,6 +163,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/linux/semevent-r0drv-linux.c=>r0drv/linux/semevent-r0drv-linux.c \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/linux/semeventmulti-r0drv-linux.c=>r0drv/linux/semeventmulti-r0drv-linux.c \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/linux/semfastmutex-r0drv-linux.c=>r0drv/linux/semfastmutex-r0drv-linux.c \
+    ${PATH_ROOT}/src/VBox/Runtime/r0drv/linux/semmutex-r0drv-linux.c=>r0drv/linux/semmutex-r0drv-linux.c \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/linux/spinlock-r0drv-linux.c=>r0drv/linux/spinlock-r0drv-linux.c \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/linux/string.h=>r0drv/linux/string.h \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h=>r0drv/linux/the-linux-kernel.h \

@@ -1,4 +1,4 @@
-# $Id: Makefile 37233 2011-05-27 13:31:57Z vboxsync $
+# $Id: Makefile 42330 2012-07-23 15:29:57Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -145,6 +145,7 @@ SRCS += \
 	semevent-r0drv-freebsd.c \
 	semeventmulti-r0drv-freebsd.c \
 	semfastmutex-r0drv-freebsd.c \
+	semmutex-r0drv-freebsd.c \
 	spinlock-r0drv-freebsd.c \
 	thread-r0drv-freebsd.c \
 	thread2-r0drv-freebsd.c \
