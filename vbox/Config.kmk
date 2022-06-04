@@ -1,4 +1,4 @@
-# $Id: Config.kmk 47207 2013-07-17 10:22:20Z vboxsync $
+# $Id: Config.kmk 47266 2013-07-19 14:53:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4146,6 +4146,22 @@ TEMPLATE_VBOXMAINLIB_EXTENDS = VBOXMAINDLL
 TEMPLATE_VBOXMAINLIB_LIBS =
 
 #
+# Main unit testing, for compiling API implementation files into a testcase.
+# This is the VBOXMAINEXE template only with a different install dir.
+#
+TEMPLATE_VBOXMAINTSTEXE  = VBox Main Testcase Exe
+TEMPLATE_VBOXMAINTSTEXE_EXTENDS = VBOXMAINEXE
+TEMPLATE_VBOXMAINTSTEXE_INST    = $(INST_TESTCASE)
+ifdef VBOX_WITH_RUNPATH
+ TEMPLATE_VBOXMAINTSTEXE_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RUNPATH)' $(TEMPLATE_VBOXMAINEXE_LDFLAGS)
+else ifdef VBOX_WITH_RELATIVE_RUNPATH
+ TEMPLATE_VBOXMAINTSTEXE_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)/..' $(TEMPLATE_VBOXMAINEXE_LDFLAGS)
+endif
+if "$(KBUILD_TARGET)" == "win" && defined(VBOX_SIGNING_MODE)
+ TEMPLATE_VBOXMAINTSTEXE_POST_CMDS =
+endif
+
+#
 # Template for building executables that use the VBox Main component.
 #
 TEMPLATE_VBOXMAINCLIENTEXE             = VBox Main Client (executable)
@@ -5360,7 +5376,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47207 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47266 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
