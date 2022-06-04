@@ -1,4 +1,4 @@
-/* $Id: init.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: init.cpp 45350 2013-04-04 20:22:25Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -275,17 +275,48 @@ static int rtR3InitArgv(uint32_t fFlags, int cArgs, char ***ppapszArgs)
         if (!papszArgs)
             return VERR_NO_MEMORY;
 
-        for (int i = 0; i < cArgs; i++)
+#ifdef RT_OS_WINDOWS
+        /* HACK ALERT! Try convert from unicode versions if possible.
+           Unfortunately for us, __wargv is only initialized if we have a
+           unicode main function.  So, we have to use CommandLineToArgvW to get
+           something similar. It should do the same conversion... :-) */
+        int    cArgsW     = -1;
+        PWSTR *papwszArgs = NULL;
+        if (   papszOrgArgs == __argv
+            && cArgs        == __argc
+            && (papwszArgs = CommandLineToArgvW(GetCommandLineW(), &cArgsW)) != NULL )
         {
-            int rc = RTStrCurrentCPToUtf8(&papszArgs[i], papszOrgArgs[i]);
-            if (RT_FAILURE(rc))
+            AssertMsg(cArgsW == cArgs, ("%d vs %d\n", cArgsW, cArgs));
+            for (int i = 0; i < cArgs; i++)
             {
-                while (i--)
-                    RTStrFree(papszArgs[i]);
-                RTMemFree(papszArgs);
-                return rc;
+                int rc = RTUtf16ToUtf8(papwszArgs[i], &papszArgs[i]);
+                if (RT_FAILURE(rc))
+                {
+                    while (i--)
+                        RTStrFree(papszArgs[i]);
+                    RTMemFree(papszArgs);
+                    LocalFree(papwszArgs);
+                    return rc;
+                }
+            }
+            LocalFree(papwszArgs);
+        }
+        else
+#endif
+        {
+            for (int i = 0; i < cArgs; i++)
+            {
+                int rc = RTStrCurrentCPToUtf8(&papszArgs[i], papszOrgArgs[i]);
+                if (RT_FAILURE(rc))
+                {
+                    while (i--)
+                        RTStrFree(papszArgs[i]);
+                    RTMemFree(papszArgs);
+                    return rc;
+                }
             }
         }
+
         papszArgs[cArgs] = NULL;
 
         g_papszrtOrgArgs = papszOrgArgs;
