@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 43424 2012-09-25 09:01:47Z vboxsync $ */
+/* $Id: UIWizard.cpp 45060 2013-03-18 13:31:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -102,6 +102,10 @@ UIWizard::UIWizard(QWidget *pParent, UIWizardType type, UIWizardMode mode)
      * This prevents the using of Enter to jump to the next page. */
     setOptions(options() ^ QWizard::NoDefaultButton);
 #endif /* Q_WS_MAC */
+
+    /* All our wizards would like to have window-modality,
+     * Under Mac OS it will be represented as Mac OS Sheet. */
+    setWindowModality(Qt::WindowModal);
 
     /* Setup connections: */
     connect(this, SIGNAL(currentIdChanged(int)), this, SLOT(sltCurrentIdChanged(int)));
