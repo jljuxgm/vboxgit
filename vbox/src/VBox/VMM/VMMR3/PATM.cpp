@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: PATM.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -1534,7 +1534,7 @@ static int patmAnalyseBlockCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uint8_
     case OP_JMP:
         break;
 
-#ifdef VBOX_WITH_SAFE_STR   /* @todo remove DISOPTYPE_PRIVILEGED_NOTRAP from disasm table */
+#ifdef VBOX_WITH_SAFE_STR   /** @todo remove DISOPTYPE_PRIVILEGED_NOTRAP from disasm table */
     case OP_STR:
         break;
 #endif
@@ -1650,7 +1650,7 @@ static int patmAnalyseFunctionCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uin
     case OP_RETN:
         return VINF_SUCCESS;
 
-#ifdef VBOX_WITH_SAFE_STR   /* @todo remove DISOPTYPE_PRIVILEGED_NOTRAP from disasm table */
+#ifdef VBOX_WITH_SAFE_STR   /** @todo remove DISOPTYPE_PRIVILEGED_NOTRAP from disasm table */
     case OP_STR:
         break;
 #endif

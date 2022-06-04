@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: SELMAll.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -22,6 +22,7 @@
 #define LOG_GROUP LOG_GROUP_SELM
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/stam.h>
+#include <VBox/vmm/em.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/hm.h>
@@ -32,6 +33,8 @@
 #include <iprt/assert.h>
 #include <VBox/vmm/vmm.h>
 #include <iprt/x86.h>
+
+#include "SELMInline.h"
 
 
 /*******************************************************************************
@@ -837,6 +840,7 @@ void selmSetRing1Stack(PVM pVM, uint32_t ss, RTGCPTR32 esp)
     pVM->selm.s.Tss.esp1 = (uint32_t)esp;
 }
 
+
 #ifdef VBOX_WITH_RAW_RING1
 /**
  * Sets ss:esp for ring1 in main Hypervisor's TSS.
@@ -852,6 +856,7 @@ void selmSetRing2Stack(PVM pVM, uint32_t ss, RTGCPTR32 esp)
     pVM->selm.s.Tss.esp2 = (uint32_t)esp;
 }
 #endif
+
 
 #ifdef VBOX_WITH_RAW_MODE_NOT_R0
 /**

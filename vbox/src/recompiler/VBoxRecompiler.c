@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 45305 2013-04-03 11:15:02Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 45485 2013-04-11 14:46:04Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1632,20 +1632,17 @@ bool remR3CanExecuteRaw(CPUX86State *env, RTGCPTR eip, unsigned fFlags, int *piE
             return false;
         }
 
-# ifdef VBOX_WITH_RAW_RING1
-        /* Only ring 0 and 1 supervisor code. */
         if (EMIsRawRing1Enabled(env->pVM))
         {
-            if (((fFlags >> HF_CPL_SHIFT) & 3) == 2)   /* ring 1 code is moved into ring 2, so we can't support ring-2 in that case. */
+            /* Only ring 0 and 1 supervisor code. */
+            if (((fFlags >> HF_CPL_SHIFT) & 3) == 2) /* ring 1 code is moved into ring 2, so we can't support ring-2 in that case. */
             {
                 Log2(("raw r0 mode refused: CPL %d\n", (fFlags >> HF_CPL_SHIFT) & 3));
                 return false;
             }
         }
-        else
-# endif
-        // Only R0
-        if (((fFlags >> HF_CPL_SHIFT) & 3) != 0)
+        /* Only R0. */
+        else if (((fFlags >> HF_CPL_SHIFT) & 3) != 0)
         {
             STAM_COUNTER_INC(&gStatRefuseRing1or2);
             Log2(("raw r0 mode refused: CPL %d\n", ((fFlags >> HF_CPL_SHIFT) & 3) ));

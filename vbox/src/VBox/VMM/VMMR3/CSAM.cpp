@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: CSAM.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -848,10 +848,8 @@ static int CSAMR3AnalyseCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uint8_t *
 
     /* removing breaks win2k guests? */
     case OP_IRET:
-#ifdef VBOX_WITH_RAW_RING1
         if (EMIsRawRing1Enabled(pVM))
             break;
-#endif
         /* no break */
 
     case OP_ILLUD2:

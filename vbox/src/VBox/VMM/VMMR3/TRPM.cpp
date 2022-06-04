@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: TRPM.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1330,10 +1330,7 @@ VMMR3DECL(int) TRPMR3SetGuestTrapHandler(PVM pVM, unsigned iTrap, RTRCPTR pHandl
     }
 
     if (    EMIsRawRing0Enabled(pVM)
-#ifdef VBOX_WITH_RAW_RING1
-        && !EMIsRawRing1Enabled(pVM)    /* can't deal with the ambiguity of ring 1 & 2 in the patch code. */
-#endif
-       )
+        && !EMIsRawRing1Enabled(pVM))   /* can't deal with the ambiguity of ring 1 & 2 in the patch code. */
     {
         /*
          * Only replace handlers for which we are 100% certain there won't be
