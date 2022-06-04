@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 44533 2013-02-04 20:55:12Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1394,10 +1394,10 @@ int main()
     GEN_CHECK_OFF(VBOXSCSI, uTargetDevice);
     GEN_CHECK_OFF(VBOXSCSI, uTxDir);
     GEN_CHECK_OFF(VBOXSCSI, cbCDB);
-    GEN_CHECK_OFF(VBOXSCSI, aCDB);
-    GEN_CHECK_OFF(VBOXSCSI, aCDB[11]);
+    GEN_CHECK_OFF(VBOXSCSI, abCDB);
+    GEN_CHECK_OFF(VBOXSCSI, abCDB[11]);
     GEN_CHECK_OFF(VBOXSCSI, iCDB);
-    GEN_CHECK_OFF(VBOXSCSI, pBuf);
+    GEN_CHECK_OFF(VBOXSCSI, pbBuf);
     GEN_CHECK_OFF(VBOXSCSI, cbBuf);
     GEN_CHECK_OFF(VBOXSCSI, iBuf);
     GEN_CHECK_OFF(VBOXSCSI, fBusy);
