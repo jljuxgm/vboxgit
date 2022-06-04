@@ -1,4 +1,4 @@
-/* $Id: critsectrw-generic.cpp 45309 2013-04-03 14:40:35Z vboxsync $ */
+/* $Id: critsectrw-generic.cpp 46495 2013-06-11 15:07:08Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -79,7 +79,7 @@ RTDECL(int) RTCritSectRwInitEx(PRTCRITSECTRW pThis, uint32_t fFlags,
 #endif
 
 #ifdef RTCRITSECTRW_STRICT
-    bool const fLVEnabled = !(fFlags & RTSEMRW_FLAGS_NO_LOCK_VAL);
+    bool const fLVEnabled = !(fFlags & RTCRITSECT_FLAGS_NO_LOCK_VAL);
     if (!pszNameFmt)
     {
         static uint32_t volatile s_iAnon = 0;
