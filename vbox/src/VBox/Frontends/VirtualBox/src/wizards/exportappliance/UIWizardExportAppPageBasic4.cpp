@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic4.cpp 45068 2013-03-18 17:27:22Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic4.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -58,7 +58,7 @@ void UIWizardExportAppPage4::refreshApplianceSettingsWidget()
                 fResult = machine.isOk();
                 if (!fResult)
                 {
-                    msgCenter().cannotExportAppliance(machine, pAppliance, thisImp());
+                    msgCenter().cannotExportAppliance(machine, pAppliance->GetPath(), thisImp());
                     return;
                 }
                 /* Now add some new fields the user may change: */
@@ -76,7 +76,7 @@ void UIWizardExportAppPage4::refreshApplianceSettingsWidget()
         m_pApplianceWidget->populate();
     }
     if (!fResult)
-        msgCenter().cannotExportAppliance(pAppliance, thisImp());
+        msgCenter().cannotExportAppliance(*pAppliance, thisImp());
 }
 
 UIWizardExportAppPageBasic4::UIWizardExportAppPageBasic4()

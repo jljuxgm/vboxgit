@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45313 2013-04-03 17:12:10Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2967,19 +2967,6 @@ QString VBoxGlobal::sizeRegexp()
             .arg (tr ("TB", "size suffix TBytes=1024 GBytes"))
             .arg (tr ("PB", "size suffix PBytes=1024 TBytes"));
     return regexp;
-}
-
-/* static */
-QString VBoxGlobal::toHumanReadableList(const QStringList &list)
-{
-    QString strList;
-    for (int i = 0; i < list.size(); ++i)
-    {
-        strList += list.at(i);
-        if (i < list.size() - 1)
-            strList += + " ";
-    }
-    return strList;
 }
 
 /**

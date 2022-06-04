@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 43644 2012-10-15 13:47:01Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -175,7 +175,7 @@ bool UIWizardNewVMPage1::createMachineFolder()
     /* Cleanup previosly created folder if any: */
     if (machineFolderCreated() && !cleanupMachineFolder())
     {
-        msgCenter().warnAboutCannotRemoveMachineFolder(thisImp(), m_strMachineFolder);
+        msgCenter().cannotRemoveMachineFolder(m_strMachineFolder, thisImp());
         return false;
     }
 
@@ -193,7 +193,7 @@ bool UIWizardNewVMPage1::createMachineFolder()
     /* Make sure that folder doesn't exists: */
     if (QDir(strMachineFolder).exists())
     {
-        msgCenter().warnAboutCannotRewriteMachineFolder(thisImp(), strMachineFolder);
+        msgCenter().cannotRewriteMachineFolder(strMachineFolder, thisImp());
         return false;
     }
 
@@ -201,7 +201,7 @@ bool UIWizardNewVMPage1::createMachineFolder()
     bool fMachineFolderCreated = QDir().mkpath(strMachineFolder);
     if (!fMachineFolderCreated)
     {
-        msgCenter().warnAboutCannotCreateMachineFolder(thisImp(), strMachineFolder);
+        msgCenter().cannotCreateMachineFolder(strMachineFolder, thisImp());
         return false;
     }
 

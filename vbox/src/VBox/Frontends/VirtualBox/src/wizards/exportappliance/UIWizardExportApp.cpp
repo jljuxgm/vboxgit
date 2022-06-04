@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 45220 2013-03-28 06:36:46Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -147,14 +147,14 @@ bool UIWizardExportApp::exportVMs(CAppliance &appliance)
             return false;
         if (!progress.isOk() || progress.GetResultCode() != 0)
         {
-            msgCenter().cannotExportAppliance(progress, &appliance, this);
+            msgCenter().cannotExportAppliance(progress, appliance.GetPath(), this);
             return false;
         }
         else
             return true;
     }
     if (!fResult)
-        msgCenter().cannotExportAppliance(&appliance, this);
+        msgCenter().cannotExportAppliance(appliance, this);
     return false;
 }
 

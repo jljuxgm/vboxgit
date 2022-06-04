@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 45316 2013-04-03 17:40:32Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -104,7 +104,7 @@ bool UIWizardCloneVM::cloneVM()
         const CSnapshot &newSnapshot = m_machine.FindSnapshot(strSnapshotName);
         if (newSnapshot.isNull())
         {
-            msgCenter().cannotFindSnapshotByName(this, m_machine, strSnapshotName);
+            msgCenter().cannotFindSnapshotByName(m_machine, strSnapshotName, this);
             return false;
         }
         srcMachine = newSnapshot.GetMachine();

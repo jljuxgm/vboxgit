@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 45315 2013-04-03 17:30:17Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -250,7 +250,7 @@ bool UIWizardNewVMPageBasic3::validatePage()
     if (m_pDiskSkip->isChecked())
     {
         /* Ask user about disk-less machine: */
-        fResult = msgCenter().confirmHardDisklessMachine(this);
+        fResult = msgCenter().confirmHardDisklessMachine(thisImp());
     }
     else if (m_pDiskCreate->isChecked())
     {
