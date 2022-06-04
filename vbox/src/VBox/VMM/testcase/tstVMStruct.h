@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 45152 2013-03-23 20:36:23Z vboxsync $ */
+/* $Id: tstVMStruct.h 45305 2013-04-03 11:15:02Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -275,17 +275,17 @@
     GEN_CHECK_OFF(IOM, pTreesRC);
     GEN_CHECK_OFF(IOM, pTreesR3);
     GEN_CHECK_OFF(IOM, pTreesR0);
-    GEN_CHECK_OFF(IOM, pMMIORangeLastR3);
-    GEN_CHECK_OFF(IOM, pMMIOStatsLastR3);
-    GEN_CHECK_OFF(IOM, pMMIORangeLastR0);
-    GEN_CHECK_OFF(IOM, pMMIOStatsLastR0);
-    GEN_CHECK_OFF(IOM, pMMIORangeLastRC);
-    GEN_CHECK_OFF(IOM, pMMIOStatsLastRC);
-    GEN_CHECK_OFF(IOM, pRangeLastReadR0);
-    GEN_CHECK_OFF(IOM, pRangeLastReadRC);
 
     GEN_CHECK_SIZE(IOMCPU);
     GEN_CHECK_OFF(IOMCPU, DisState);
+    GEN_CHECK_OFF(IOMCPU, pMMIORangeLastR3);
+    GEN_CHECK_OFF(IOMCPU, pMMIOStatsLastR3);
+    GEN_CHECK_OFF(IOMCPU, pMMIORangeLastR0);
+    GEN_CHECK_OFF(IOMCPU, pMMIOStatsLastR0);
+    GEN_CHECK_OFF(IOMCPU, pMMIORangeLastRC);
+    GEN_CHECK_OFF(IOMCPU, pMMIOStatsLastRC);
+    GEN_CHECK_OFF(IOMCPU, pRangeLastReadR0);
+    GEN_CHECK_OFF(IOMCPU, pRangeLastReadRC);
 
     GEN_CHECK_SIZE(IOMMMIORANGE);
     GEN_CHECK_OFF(IOMMMIORANGE, GCPhys);

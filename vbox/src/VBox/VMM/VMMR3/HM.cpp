@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45291 2013-04-02 15:31:42Z vboxsync $ */
+/* $Id: HM.cpp 45305 2013-04-03 11:15:02Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2551,7 +2551,7 @@ VMMR3_INT_DECL(VBOXSTRICTRC) HMR3RestartPendingIOInstr(PVM pVM, PVMCPU pVCpu, PC
             uint32_t uAndVal = pVCpu->hm.s.PendingIO.s.Port.uAndVal;
             uint32_t u32Val  = 0;
 
-            rcStrict = IOMIOPortRead(pVM, pVCpu->hm.s.PendingIO.s.Port.uPort,
+            rcStrict = IOMIOPortRead(pVM, pVCpu, pVCpu->hm.s.PendingIO.s.Port.uPort,
                                      &u32Val,
                                      pVCpu->hm.s.PendingIO.s.Port.cbSize);
             if (IOM_SUCCESS(rcStrict))
@@ -2564,7 +2564,7 @@ VMMR3_INT_DECL(VBOXSTRICTRC) HMR3RestartPendingIOInstr(PVM pVM, PVMCPU pVCpu, PC
         }
 
         case HMPENDINGIO_PORT_WRITE:
-            rcStrict = IOMIOPortWrite(pVM, pVCpu->hm.s.PendingIO.s.Port.uPort,
+            rcStrict = IOMIOPortWrite(pVM, pVCpu, pVCpu->hm.s.PendingIO.s.Port.uPort,
                                       pCtx->eax & pVCpu->hm.s.PendingIO.s.Port.uAndVal,
                                       pVCpu->hm.s.PendingIO.s.Port.cbSize);
             if (IOM_SUCCESS(rcStrict))

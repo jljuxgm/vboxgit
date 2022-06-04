@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
+/* $Id: DevPCI.cpp 45305 2013-04-03 11:15:02Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1839,10 +1839,10 @@ pciR3CommonSetConfigCallbacks(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, PFNPCICONF
 static DECLCALLBACK(int) pciR3FakePCIBIOS(PPDMDEVINS pDevIns)
 {
     unsigned    i;
-    uint8_t     elcr[2] = {0, 0};
+    uint8_t     elcr[2]  = {0, 0};
     PPCIGLOBALS pGlobals = PDMINS_2_DATA(pDevIns, PPCIGLOBALS);
-    PVM         pVM = PDMDevHlpGetVM(pDevIns);
-    Assert(pVM);
+    PVM         pVM      = PDMDevHlpGetVM(pDevIns); Assert(pVM);
+    PVMCPU      pVCpu    = PDMDevHlpGetVMCPU(pDevIns); Assert(pVM);
 
     /*
      * Set the start addresses.
@@ -1864,9 +1864,9 @@ static DECLCALLBACK(int) pciR3FakePCIBIOS(PPDMDEVINS pDevIns)
     }
 
     /* Tell to the PIC. */
-    VBOXSTRICTRC rcStrict = IOMIOPortWrite(pVM, 0x4d0, elcr[0], sizeof(uint8_t));
+    VBOXSTRICTRC rcStrict = IOMIOPortWrite(pVM, pVCpu, 0x4d0, elcr[0], sizeof(uint8_t));
     if (rcStrict == VINF_SUCCESS)
-        rcStrict = IOMIOPortWrite(pVM, 0x4d1, elcr[1], sizeof(uint8_t));
+        rcStrict = IOMIOPortWrite(pVM, pVCpu, 0x4d1, elcr[1], sizeof(uint8_t));
     if (rcStrict != VINF_SUCCESS)
     {
         AssertMsgFailed(("Writing to PIC failed! rcStrict=%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
