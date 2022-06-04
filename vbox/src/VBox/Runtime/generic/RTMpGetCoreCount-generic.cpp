@@ -1,4 +1,4 @@
-/* $Id: RTMpGetCoreCount-generic.cpp 46144 2013-05-17 14:46:57Z vboxsync $ */
+/* $Id: RTMpGetCoreCount-generic.cpp 46145 2013-05-17 14:55:29Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetCoreCount.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <iprt/mp.h>
+#include <internal/iprt.h>
 
 
 RTDECL(RTCPUID) RTMpGetCount(void)
