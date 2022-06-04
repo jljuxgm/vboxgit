@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 43023 2012-08-28 06:43:23Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 43531 2012-10-04 06:59:56Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -808,7 +808,7 @@ int handleStorageAttach(HandlerArg *a)
                 throw Utf8StrFmt("Couldn't find the controller attachment for the controller '%s'\n", pszCtl);
         }
 
-        if (   pszNonRotational
+        if (   pszDiscard
             && (SUCCEEDED(rc)))
         {
             ComPtr<IMediumAttachment> mattach;
