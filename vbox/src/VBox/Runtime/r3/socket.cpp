@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 43176 2012-09-04 17:50:31Z vboxsync $ */
+/* $Id: socket.cpp 43183 2012-09-05 06:32:57Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -691,6 +691,9 @@ RTDECL(int) RTSocketParseInetAddress(const char *pszAddress, unsigned uPort, PRT
  */
 RTDECL(int) RTSocketGetAddrInfo(const char *psz, char *pszResult, size_t *resultSize, PRTNETADDRTYPE pAddrType)
 {
+#if defined(RT_OS_OS2)
+    return VERR_NOT_SUPPORTED;
+#else
     int rc = 0;
     size_t resSize = 0;
     uint8_t *pubDummy = NULL;
@@ -870,6 +873,7 @@ RTDECL(int) RTSocketGetAddrInfo(const char *psz, char *pszResult, size_t *result
 
     } // AF_INET6
     return VERR_NET_ADDRESS_NOT_AVAILABLE;
+#endif /* !RT_OS_OS2 */
 }
 
 
