@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 45926 2013-05-06 20:26:43Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 46036 2013-05-13 17:03:47Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -175,13 +175,14 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--pcidetach 03:04.0]\n"
 #endif
                      "                            [--ioapic on|off]\n"
-                     "                            [--pae on|off]\n"
                      "                            [--hpet on|off]\n"
                      "                            [--hwvirtex on|off]\n"
                      "                            [--hwvirtexexcl on|off]\n"
                      "                            [--nestedpaging on|off]\n"
                      "                            [--largepages on|off]\n"
                      "                            [--vtxvpid on|off]\n"
+                     "                            [--pae on|off]\n"
+                     "                            [--longmode on|off]\n"
                      "                            [--synthcpu on|off]\n"
                      "                            [--cpuidset <leaf> <eax> <ebx> <ecx> <edx>]\n"
                      "                            [--cpuidremove <leaf>]\n"
