@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 43509 2012-10-02 14:15:17Z vboxsync $ */
+/* $Id: HMInternal.h 43670 2012-10-17 14:36:07Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -567,6 +567,9 @@ typedef struct HMCPU
         uint64_t                    cr0_mask;
         /** Current CR4 mask. */
         uint64_t                    cr4_mask;
+        /** Current exception bitmap. */
+        uint32_t                    u32XcptBitmap;
+        uint32_t                    uAlignment0;
         /** Current EPTP. */
         RTHCPHYS                    GCPhysEPTP;
 
