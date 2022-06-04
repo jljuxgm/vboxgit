@@ -1,4 +1,4 @@
-/* $Id: VBoxNetNATHardened.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxNetNATHardened.cpp 47863 2013-08-20 03:44:39Z vboxsync $ */
 /** @file
  * VBoxNetNAT - Hardened main().
  */
@@ -17,8 +17,11 @@
 
 #include <VBox/sup.h>
 
+#ifndef SERVICE_NAME
+# error "Please define SERVICE_NAME"
+#endif
 
 int main(int argc, char **argv, char **envp)
 {
-    return SUPR3HardenedMain("VBoxNetNAT", 0 /* fFlags */, argc, argv, envp);
+    return SUPR3HardenedMain(RT_STR(SERVICE_NAME), 0 /* fFlags */, argc, argv, envp);
 }
