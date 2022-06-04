@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42261 2012-07-20 13:27:47Z vboxsync $
+# $Id: Config.kmk 42262 2012-07-20 13:58:45Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -571,7 +571,7 @@ endif
 # Enable S3 support (requires libcurl)
 VBOX_WITH_S3 = 1
 # Enable Host=>Guest Drag'n'Drop
-if1of ($(KBUILD_TARGET), linux)
+if1of ($(KBUILD_TARGET), darin linux solaris)
  VBOX_WITH_DRAG_AND_DROP = 1
  # Guest=>Host drag'n'drop doesn't work
  #VBOX_WITH_DRAG_AND_DROP_GH = 1
@@ -5241,7 +5241,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42261 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42262 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
