@@ -1,4 +1,4 @@
-/* $Id: service.cpp 44155 2012-12-18 20:13:37Z vboxsync $ */
+/* $Id: service.cpp 44156 2012-12-18 20:16:59Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1166,7 +1166,7 @@ int Service::doNotifications(const char *pszProperty, uint64_t u64Timestamp)
         mGuestNotifications.push_back(prop);
 
         /** @todo r=andy This list does not have a purpose but for tracking
-          *              the timestamps ...
+          *              the timestamps ... */
         if (mGuestNotifications.size() > MAX_GUEST_NOTIFICATIONS)
             mGuestNotifications.pop_front();
     }
