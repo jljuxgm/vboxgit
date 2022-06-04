@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 41140 2012-05-03 15:43:49Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 43707 2012-10-22 16:41:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -18,12 +18,12 @@
  */
 
 /* Global includes: */
-#include <QNetworkReply>
 #include <QDir>
 #include <QFile>
 
 /* Local includes: */
 #include "UIDownloaderUserManual.h"
+#include "UINetworkReply.h"
 #include "QIFileDialog.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
@@ -74,12 +74,12 @@ UIDownloaderUserManual::~UIDownloaderUserManual()
         m_spInstance = 0;
 }
 
-bool UIDownloaderUserManual::askForDownloadingConfirmation(QNetworkReply *pReply)
+bool UIDownloaderUserManual::askForDownloadingConfirmation(UINetworkReply *pReply)
 {
     return msgCenter().confirmUserManualDownload(source().toString(), pReply->header(QNetworkRequest::ContentLengthHeader).toInt());
 }
 
-void UIDownloaderUserManual::handleDownloadedObject(QNetworkReply *pReply)
+void UIDownloaderUserManual::handleDownloadedObject(UINetworkReply *pReply)
 {
     /* Read received data into the buffer: */
     QByteArray receivedData(pReply->readAll());

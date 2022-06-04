@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 43707 2012-10-22 16:41:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -18,13 +18,13 @@
  */
 
 /* Global includes: */
-#include <QNetworkReply>
 #include <QDir>
 #include <QFile>
 #include <iprt/sha.h>
 
 /* Local includes: */
 #include "UIDownloaderExtensionPack.h"
+#include "UINetworkReply.h"
 #include "QIFileDialog.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
@@ -78,12 +78,12 @@ UIDownloaderExtensionPack::~UIDownloaderExtensionPack()
         m_spInstance = 0;
 }
 
-bool UIDownloaderExtensionPack::askForDownloadingConfirmation(QNetworkReply *pReply)
+bool UIDownloaderExtensionPack::askForDownloadingConfirmation(UINetworkReply *pReply)
 {
     return msgCenter().confirmDownloadExtensionPack(GUI_ExtPackName, source().toString(), pReply->header(QNetworkRequest::ContentLengthHeader).toInt());
 }
 
-void UIDownloaderExtensionPack::handleDownloadedObject(QNetworkReply *pReply)
+void UIDownloaderExtensionPack::handleDownloadedObject(UINetworkReply *pReply)
 {
     /* Read received data into the buffer: */
     QByteArray receivedData(pReply->readAll());
