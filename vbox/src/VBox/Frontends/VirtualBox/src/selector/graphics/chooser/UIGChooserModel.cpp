@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43006 2012-08-27 17:47:44Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 43007 2012-08-27 18:22:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -993,6 +993,28 @@ void UIGChooserModel::sltGroupOrdersSaveComplete()
     emit sigGroupSavingStateChanged();
 }
 
+void UIGChooserModel::sltReloadMachine(const QString &strId)
+{
+    /* Remove all the items first: */
+    removeMachineItems(strId, mainRoot());
+
+    /* Check if such machine still present: */
+    CMachine machine = vboxGlobal().virtualBox().FindMachine(strId);
+    if (machine.isNull())
+        return;
+
+    /* Add machine into the tree: */
+    addMachineIntoTheTree(machine);
+
+    /* And update model: */
+    updateGroupTree();
+    updateNavigation();
+    updateLayout();
+
+    /* Notify listeners about selection change: */
+    emit sigSelectionChanged();
+}
+
 void UIGChooserModel::sltEraseLookupTimer()
 {
     m_pLookupTimer->stop();
@@ -1498,6 +1520,8 @@ void UIGChooserModel::saveGroupDefinitions()
     /* Save information in other thread: */
     UIGroupDefinitionSaveThread::prepare();
     emit sigGroupSavingStateChanged();
+    connect(UIGroupDefinitionSaveThread::instance(), SIGNAL(sigReload(QString)),
+            this, SLOT(sltReloadMachine(QString)));
     UIGroupDefinitionSaveThread::instance()->configure(this, m_groups, groups);
     UIGroupDefinitionSaveThread::instance()->start();
     m_groups = groups;
@@ -2009,6 +2033,7 @@ void UIGroupDefinitionSaveThread::sltHandleError(UIGroupsSavingError errorType, 
         default:
             break;
     }
+    emit sigReload(machine.GetId());
     m_condition.wakeAll();
 }
 
