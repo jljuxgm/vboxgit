@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 43402 2012-09-22 11:47:10Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3020,7 +3020,7 @@ ResumeExecution:
 #endif
 
     /*
-     * When external interrupts are pending, we should exit the VM when IF is et.
+     * When external interrupts are pending, we should exit the VM when IF is set.
      * Note: *After* VM_FF_INHIBIT_INTERRUPTS check!
      */
     rc = hmR0VmxCheckPendingInterrupt(pVM, pVCpu, pCtx);
