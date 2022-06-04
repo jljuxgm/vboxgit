@@ -1,4 +1,4 @@
-/* $Id: pipe.h 32131 2010-08-31 11:55:27Z vboxsync $ */
+/* $Id: pipe.h 44469 2013-01-30 15:37:55Z vboxsync $ */
 /** @file
  * IPRT - Internal RTPipe header.
  */
@@ -32,8 +32,18 @@
 
 RT_C_DECLS_BEGIN
 
+/**
+ * Internal RTPollSetAdd helper that returns the handle that should be added to
+ * the pollset.
+ *
+ * @returns Valid handle on success, INVALID_HANDLE_VALUE on failure.
+ * @param   hPipe               The pipe handle.
+ * @param   fEvents             The events we're polling for.
+ * @param   phNative            Where to put the primary handle.
+ */
+int rtPipePollGetHandle(RTPIPE hPipe, uint32_t fEvents, PRTHCINTPTR phNative);
+
 #ifdef RT_OS_WINDOWS
-int         rtPipePollGetHandle(RTPIPE hPipe, uint32_t fEvents, PHANDLE ph);
 uint32_t    rtPipePollStart(RTPIPE hPipe, RTPOLLSET hPollSet, uint32_t fEvents, bool fFinalEntry, bool fNoWait);
 uint32_t    rtPipePollDone(RTPIPE hPipe, uint32_t fEvents, bool fFinalEntry, bool fHarvestEvents);
 #endif /* RT_OS_WINDOWS */

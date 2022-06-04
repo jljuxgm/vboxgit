@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44426 2013-01-28 14:28:11Z vboxsync $
+# $Id: Makefile.kmk 44469 2013-01-30 15:37:55Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -571,7 +571,7 @@ RuntimeR3_SOURCES.win = \
 	r3/win/mp-win.cpp \
 	r3/win/path-win.cpp \
 	r3/win/pipe-win.cpp \
-	r3/win/poll-win.cpp \
+	r3/poll.cpp \
 	r3/win/process-win.cpp \
 	r3/win/RTLogWriteDebugger-win.cpp \
 	r3/win/rtProcInitExePath-win.cpp \
