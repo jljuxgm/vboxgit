@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.cpp 47206 2013-07-17 10:17:13Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.cpp 47302 2013-07-22 14:18:41Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -292,7 +292,7 @@ DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint
                 break;
             }
 
-            PTSTRTR0THREADCTXDATA pCtxData = (PTSTRTR0THREADCTXDATA)RTMemAlloc(sizeof(*pCtxData));
+            PTSTRTR0THREADCTXDATA pCtxData = (PTSTRTR0THREADCTXDATA)RTMemAllocZ(sizeof(*pCtxData));
             AssertReturn(pCtxData, VERR_NO_MEMORY);
             pCtxData->u32Magic           = TSTRTR0THREADCTXDATA_MAGIC;
             pCtxData->hThreadCtx         = hThreadCtx;
