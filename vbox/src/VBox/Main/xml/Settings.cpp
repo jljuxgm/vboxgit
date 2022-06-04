@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 47401 2013-07-25 19:12:24Z vboxsync $ */
+/* $Id: Settings.cpp 47503 2013-08-01 09:01:40Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1496,12 +1496,24 @@ MainConfigFile::MainConfigFile(const Utf8Str *pstrFilename)
     }
 }
 
+void MainConfigFile::bumpSettingsVersionIfNeeded()
+{
+    if (m->sv < SettingsVersion_v1_14)
+    {
+        // VirtualBox 4.3 adds NAT networks.
+        if (   !llNATNetworks.empty())
+            m->sv = SettingsVersion_v1_14;
+    }
+}
+
 /**
  * Called from the IVirtualBox interface to write out VirtualBox.xml. This
  * builds an XML DOM tree and writes it out to disk.
  */
 void MainConfigFile::write(const com::Utf8Str strFilename)
 {
+    bumpSettingsVersionIfNeeded();
+
     m->strFilename = strFilename;
     createStubDocument();
 
@@ -1591,7 +1603,6 @@ void MainConfigFile::write(const com::Utf8Str strFilename)
 
      }
 
-    /* TODO: bump main version ? */
     xml::ElementNode *pelmNATNetworks;
     /* don't create entry if no NAT networks are registered. */
     if (!llNATNetworks.empty())
