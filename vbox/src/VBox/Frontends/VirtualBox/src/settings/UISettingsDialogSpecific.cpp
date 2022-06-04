@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 47203 2013-07-16 17:06:18Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 47263 2013-07-19 14:16:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -610,7 +610,6 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
                 case MachineSettingsPageType_System:
                 {
                     pSettingsPage = new UIMachineSettingsSystem;
-                    connect(pSettingsPage, SIGNAL(tableChanged()), this, SLOT(sltResetFirstRunFlag()));
                     addItem(":/chipset_32px.png", ":/chipset_disabled_32px.png",
                             ":/chipset_16px.png", ":/chipset_disabled_16px.png",
                             iPageIndex, "#system", pSettingsPage);
