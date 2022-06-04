@@ -1,4 +1,4 @@
-/* $Id: QIProcess.cpp 41590 2012-06-06 06:15:39Z vboxsync $ */
+/* $Id: QIProcess.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):

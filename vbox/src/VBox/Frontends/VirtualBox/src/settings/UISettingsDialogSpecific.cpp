@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 42382 2012-07-25 09:35:56Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -676,7 +676,7 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
                     pSettingsPage = new UIMachineSettingsSF;
                     addItem(":/shared_folder_32px.png", ":/shared_folder_disabled_32px.png",
                             ":/shared_folder_16px.png", ":/shared_folder_disabled_16px.png",
-                            iPageIndex, "#sfolders", pSettingsPage);
+                            iPageIndex, "#sharedFolders", pSettingsPage);
                     break;
                 }
                 default:

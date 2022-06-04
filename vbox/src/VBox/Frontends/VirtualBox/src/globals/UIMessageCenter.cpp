@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1242,6 +1242,21 @@ int UIMessageCenter::cannotEnterSeamlessMode()
                  "to your host.</p>"),
              0, /* pcszAutoConfirmId */
              QIMessageBox::Ok | QIMessageBox::Default);
+}
+
+int UIMessageCenter::confirmMachineItemRemoval(const QStringList &names)
+{
+    return message(&vboxGlobal().selectorWnd(),
+                   Question,
+                   tr("<p>You are about to remove following virtual "
+                      "machine items from the machine list:</p>"
+                      "<p><b>%1</b></p>"
+                      "<p>Do you wish to proceed?</p>").arg(names.join(", ")),
+                   0, /* auto-confirm id */
+                   QIMessageBox::Ok,
+                   QIMessageBox::Cancel | QIMessageBox::Escape | QIMessageBox::Default,
+                   0,
+                   tr("Remove"));
 }
 
 int UIMessageCenter::confirmMachineDeletion(const QList<CMachine> &machines)

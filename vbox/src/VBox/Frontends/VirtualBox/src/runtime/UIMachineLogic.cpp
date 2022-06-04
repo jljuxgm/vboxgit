@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 41819 2012-06-18 17:59:30Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1108,7 +1108,7 @@ void UIMachineLogic::sltOpenSharedFoldersDialog()
         msgCenter().remindAboutGuestAdditionsAreNotActive(activeMachineWindow());
 
     /* Open VM settings : Shared folders page: */
-    sltOpenVMSettingsDialog("#sfolders");
+    sltOpenVMSettingsDialog("#sharedFolders");
 }
 
 void UIMachineLogic::sltPrepareStorageMenu()

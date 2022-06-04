@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.cpp 41440 2012-05-24 16:37:17Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
