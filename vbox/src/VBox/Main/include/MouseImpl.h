@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 47841 2013-08-19 13:20:58Z vboxsync $ */
+/* $Id: MouseImpl.h 47848 2013-08-19 16:34:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -128,6 +128,10 @@ private:
 
     void fireMouseEvent(bool fAbsolute, LONG x, LONG y, LONG dz, LONG dw,
                         LONG fButtons);
+
+    void fireMultiTouchEvent(uint8_t cContacts,
+                             const LONG64 *paContacts,
+                             uint32_t u32ScanTime);
 };
 
 #endif // !____H_MOUSEIMPL
