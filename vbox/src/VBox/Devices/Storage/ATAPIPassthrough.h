@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.h 43573 2012-10-08 17:50:32Z vboxsync $ */
+/* $Id: ATAPIPassthrough.h 47791 2013-08-16 09:40:10Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI passthrough helpers (common code for DevATA and DevAHCI).
  */
@@ -67,7 +67,7 @@ DECLHIDDEN(int) ATAPIPassthroughTrackListUpdate(PTRACKLIST pTrackList, const uin
  * @param   pTrackList    The track list to use.
  * @param   iAtapiLba     The start LBA to get the sector size for.
  */
-DECLHIDDEN(size_t) ATAPIPassthroughTrackListGetSectorSizeFromLba(PTRACKLIST pTrackList, uint32_t iAtapiLba);
+DECLHIDDEN(uint32_t) ATAPIPassthroughTrackListGetSectorSizeFromLba(PTRACKLIST pTrackList, uint32_t iAtapiLba);
 
 RT_C_DECLS_END
 
