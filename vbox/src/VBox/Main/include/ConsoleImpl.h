@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 43584 2012-10-09 15:01:08Z vboxsync $ */
+/* $Id: ConsoleImpl.h 43908 2012-11-19 05:36:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -238,18 +238,19 @@ public:
     void VRDPInterceptClipboard(uint32_t u32ClientId);
 
     void processRemoteUSBDevices(uint32_t u32ClientId, VRDEUSBDEVICEDESC *pDevList, uint32_t cbDevList, bool fDescExt);
-    void reportGuestStatistics(ULONG aValidStats, ULONG aCpuUser,
+    void reportVmStatistics(ULONG aValidStats, ULONG aCpuUser,
                                ULONG aCpuKernel, ULONG aCpuIdle,
                                ULONG aMemTotal, ULONG aMemFree,
                                ULONG aMemBalloon, ULONG aMemShared,
                                ULONG aMemCache, ULONG aPageTotal,
                                ULONG aAllocVMM, ULONG aFreeVMM,
-                               ULONG aBalloonedVMM, ULONG aSharedVMM)
+                               ULONG aBalloonedVMM, ULONG aSharedVMM,
+                               ULONG aVmNetRx, ULONG aVmNetTx)
     {
-        mControl->ReportGuestStatistics(aValidStats, aCpuUser, aCpuKernel, aCpuIdle,
-                                        aMemTotal, aMemFree, aMemBalloon, aMemShared,
-                                        aMemCache, aPageTotal, aAllocVMM, aFreeVMM,
-                                        aBalloonedVMM, aSharedVMM);
+        mControl->ReportVmStatistics(aValidStats, aCpuUser, aCpuKernel, aCpuIdle,
+                                     aMemTotal, aMemFree, aMemBalloon, aMemShared,
+                                     aMemCache, aPageTotal, aAllocVMM, aFreeVMM,
+                                     aBalloonedVMM, aSharedVMM, aVmNetRx, aVmNetTx);
     }
     void enableVMMStatistics(BOOL aEnable);
 
