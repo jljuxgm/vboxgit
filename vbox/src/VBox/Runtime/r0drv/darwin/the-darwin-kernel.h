@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 43303 2012-09-11 23:55:10Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 43381 2012-09-20 23:46:30Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -83,6 +83,12 @@
 # define AST_PREEMPT    UINT32_C(1)
 # define AST_QUANTUM    UINT32_C(2)
 # define AST_URGENT     UINT32_C(4)
+#endif
+
+/* This flag was added in 10.6, it seems.  Should be harmless in earlier
+   releases... */
+#if MAC_OS_X_VERSION_MIN_REQUIRED < 1060
+# define kIOMemoryMapperNone UINT32_C(0x800)
 #endif
 
 
