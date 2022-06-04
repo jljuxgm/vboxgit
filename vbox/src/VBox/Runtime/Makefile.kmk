@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46199 2013-05-21 19:49:19Z vboxsync $
+# $Id: Makefile.kmk 46248 2013-05-23 19:20:58Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1146,6 +1146,7 @@ RuntimeGuestR3Mini_SOURCES = \
 	common/misc/buildconfig.cpp \
 	common/misc/sanity-c.c \
 	common/misc/sanity-cpp.cpp \
+	common/misc/sg.cpp \
 	common/path/rtPathVolumeSpecLen.cpp \
 	common/path/RTPathAbsDup.cpp \
 	common/path/RTPathAbsEx.cpp \
