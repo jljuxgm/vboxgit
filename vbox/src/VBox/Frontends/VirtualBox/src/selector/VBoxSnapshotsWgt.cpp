@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 45371 2013-04-05 13:46:55Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -813,9 +813,9 @@ bool VBoxSnapshotsWgt::takeSnapshot()
         if (fIsValid)
         {
             /* Create take-snapshot dialog: */
-            QWidget *pDlgParent = mwManager().realParentWindow(this);
+            QWidget *pDlgParent = windowManager().realParentWindow(this);
             QPointer<VBoxTakeSnapshotDlg> pDlg = new VBoxTakeSnapshotDlg(pDlgParent, mMachine);
-            mwManager().registerNewParent(pDlg, pDlgParent);
+            windowManager().registerNewParent(pDlg, pDlgParent);
 
             /* Assign corresponding icon: */
             pDlg->mLbIcon->setPixmap(vboxGlobal().vmGuestOSTypeIcon(mMachine.GetOSTypeId()));

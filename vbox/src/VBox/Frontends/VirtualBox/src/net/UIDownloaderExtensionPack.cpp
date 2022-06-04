@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 45342 2013-04-04 17:21:13Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,6 +28,7 @@
 #include "QIFileDialog.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+#include "UIModalWindowManager.h"
 
 /* static */
 UIDownloaderExtensionPack* UIDownloaderExtensionPack::m_spInstance = 0;
@@ -119,7 +120,7 @@ void UIDownloaderExtensionPack::handleDownloadedObject(UINetworkReply *pReply)
 
         /* Ask the user for another location for the extension-pack file: */
         QString strTarget = QIFileDialog::getExistingDirectory(QFileInfo(target()).absolutePath(),
-                                                               msgCenter().networkManagerOrMainWindowShown(),
+                                                               windowManager().networkManagerOrMainWindowShown(),
                                                                tr("Select folder to save %1 to").arg(GUI_ExtPackName), true);
 
         /* Check if user had really set a new target: */

@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 45335 2013-04-04 10:54:15Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -192,7 +192,7 @@ void UIProgressDialog::timerEvent(QTimerEvent* /* pEvent */)
      * This could happens in case of some other
      * modal dialog prevents our event-loop from
      * being exit overlapping 'this'. */
-    if (m_fEnded && !isHidden() && mwManager().isWindowOnTheTopOfTheModalWindowStack(this))
+    if (m_fEnded && !isHidden() && windowManager().isWindowOnTheTopOfTheModalWindowStack(this))
     {
         hide();
         return;
@@ -203,7 +203,7 @@ void UIProgressDialog::timerEvent(QTimerEvent* /* pEvent */)
     if (!m_fEnded && (!m_progress.isOk() || m_progress.GetCompleted()))
     {
         /* Is this progress-dialog a top-level modal-dialog now? */
-        if (mwManager().isWindowOnTheTopOfTheModalWindowStack(this))
+        if (windowManager().isWindowOnTheTopOfTheModalWindowStack(this))
         {
             /* Progress finished: */
             if (m_progress.isOk())

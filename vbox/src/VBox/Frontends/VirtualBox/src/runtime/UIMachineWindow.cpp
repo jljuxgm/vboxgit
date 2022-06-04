@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 45377 2013-04-05 14:41:52Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -272,9 +272,9 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
     }
 
     /* Prepare close-dialog: */
-    QWidget *pParentDlg = mwManager().realParentWindow(this);
+    QWidget *pParentDlg = windowManager().realParentWindow(this);
     QPointer<UIVMCloseDialog> pCloseDlg = new UIVMCloseDialog(pParentDlg, machineCopy, session());
-    mwManager().registerNewParent(pCloseDlg, pParentDlg);
+    windowManager().registerNewParent(pCloseDlg, pParentDlg);
 
     /* Makes sure the dialog is valid: */
     if (!pCloseDlg->isValid())
