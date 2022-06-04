@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 43170 2012-09-04 16:37:40Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 43201 2012-09-05 12:48:49Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -2013,6 +2013,11 @@ int GuestProcessTool::WaitEx(uint32_t fFlags, GuestProcessStreamBlock *pStreamBl
 
         switch (waitRes)
         {
+            case ProcessWaitResult_StdIn:
+               /* Nothing to do here yet. */
+               fDone = true;
+               break;
+
             case ProcessWaitResult_StdOut:
                 fHandleStdOut = true;
                 break;
@@ -2033,6 +2038,7 @@ int GuestProcessTool::WaitEx(uint32_t fFlags, GuestProcessStreamBlock *pStreamBl
 
             case ProcessWaitResult_Error:
             case ProcessWaitResult_Terminate:
+            case ProcessWaitResult_Timeout:
                 fDone = true;
                 break;
 
