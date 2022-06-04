@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 45103 2013-03-20 11:13:27Z vboxsync $ */
+/* $Id: PGMAllShw.h 45798 2013-04-29 03:40:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -460,7 +460,7 @@ PGM_SHW_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, size_t cb, uint64
                     AssertRC(rc);
                     if (RT_SUCCESS(rc))
                     {
-                        Assert(fGstPte & X86_PTE_RW);
+                        Assert((fGstPte & X86_PTE_RW) || !(CPUMGetGuestCR0(pVCpu) & X86_CR0_WP /* allow netware hack */));
                         PPGMPAGE pPage = pgmPhysGetPage(pVM, GCPhys);
                         Assert(pPage);
                         if (pPage)
