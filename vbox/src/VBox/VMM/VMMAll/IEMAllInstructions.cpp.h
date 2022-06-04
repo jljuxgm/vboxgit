@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 42676 2012-08-08 09:23:50Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 42729 2012-08-09 19:31:30Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -12341,7 +12341,8 @@ FNIEMOP_DEF(iemOp_EscF1)
             case 5:
             case 6:
             case 7:
-                return FNIEMOP_CALL(g_apfnEscF1_E0toFF[(bRm & (X86_MODRM_REG_MASK |X86_MODRM_RM_MASK)) - 0xe0]);
+                Assert((unsigned)bRm - 0xe0U < RT_ELEMENTS(g_apfnEscF1_E0toFF));
+                return FNIEMOP_CALL(g_apfnEscF1_E0toFF[bRm - 0xe0]);
             IEM_NOT_REACHED_DEFAULT_CASE_RET();
         }
     }
