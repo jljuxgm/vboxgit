@@ -1,4 +1,4 @@
-/* $Id: udp.c 45322 2013-04-04 04:49:45Z vboxsync $ */
+/* $Id: udp.c 46608 2013-06-18 06:23:45Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -132,6 +132,7 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
         {
             udpstat.udps_badlen++;
             Log3(("NAT: IP(id: %hd) has bad size\n", ip->ip_id));
+            goto bad_free_mbuf;
         }
         m_adj(m, len - ip->ip_len);
         ip->ip_len = len;
