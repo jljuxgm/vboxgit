@@ -1,7 +1,7 @@
 #!/sbin/sh
-# $Id: smf-vboxballoonctrl.sh 36748 2011-04-20 11:24:54Z vboxsync $
+# $Id: smf-vboxballoonctrl.sh 43579 2012-10-09 12:39:06Z vboxsync $
 
-# Copyright (C) 2008-2011 Oracle Corporation
+# Copyright (C) 2008-2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -61,7 +61,7 @@ case $VW_OPT in
         [ -z "$VW_ROTATE" ] && VW_ROTATE=10
         [ -z "$VW_LOGSIZE" ] && VW_LOGSIZE=104857600
         [ -z "$VW_LOGINTERVAL" ] && VW_LOGINTERVAL=86400
-        exec su - "$VW_USER" -c "/opt/VirtualBox/VBoxBalloonCtrl --background --interval \"$VW_INTERVAL\" --balloon-inc \"$VW_INCREMENT\" --balloon-dec \"$VW_DECREMENT\" --balloon-lower-limit \"$VW_LOWERLIMIT\" --logrotate \"$VW_ROTATE\" --logsize \"$VW_LOGSIZE\" --loginterval \"$VW_LOGINTERVAL\""
+        exec su - "$VW_USER" -c "/opt/VirtualBox/VBoxBalloonCtrl --background --balloon-interval \"$VW_INTERVAL\" --balloon-inc \"$VW_INCREMENT\" --balloon-dec \"$VW_DECREMENT\" --balloon-lower-limit \"$VW_LOWERLIMIT\" --logrotate \"$VW_ROTATE\" --logsize \"$VW_LOGSIZE\" --loginterval \"$VW_LOGINTERVAL\""
 
         VW_EXIT=$?
         if [ $VW_EXIT != 0 ]; then
