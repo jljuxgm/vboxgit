@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42501 2012-08-01 10:48:53Z vboxsync $
+# $Id: Makefile.kmk 43236 2012-09-07 09:32:42Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -117,6 +117,7 @@ VBoxDispD3D_SOURCES  = \
 	wddm/VBoxDispMpTst.cpp \
 	wddm/VBoxDispKmt.cpp \
 	wddm/VBoxDispDbg.cpp \
+	wddm/VBoxD3DIf.cpp \
 	wddm/VBoxDispD3D.rc \
 	wddm/VBoxDispD3D.def
 ifdef VBOX_WITH_CRHGSMI
