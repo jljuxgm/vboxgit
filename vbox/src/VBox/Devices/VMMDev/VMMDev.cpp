@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: VMMDev.cpp 44445 2013-01-29 13:54:37Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3562,7 +3562,7 @@ static DECLCALLBACK(int) vmmdevConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     /*
      * Create the critical section for the device.
      */
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "VMMDev#u", iInstance);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "VMMDev#%u", iInstance);
     AssertRCReturn(rc, rc);
     /* Later: pDevIns->pCritSectR3 = &pThis->CritSect; */
 

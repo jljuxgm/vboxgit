@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 40280 2012-02-28 19:47:00Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 44445 2013-01-29 13:54:37Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1223,7 +1223,7 @@ static DECLCALLBACK(int)  pitConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     /*
      * We do our own locking.  This must be done before creating timers.
      */
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "pit");
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "pit#%u", iInstance);
     AssertRCReturn(rc, rc);
 
     rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));

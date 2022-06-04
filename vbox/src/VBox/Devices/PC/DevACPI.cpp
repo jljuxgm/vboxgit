@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 41560 2012-06-04 12:07:32Z vboxsync $ */
+/* $Id: DevACPI.cpp 44445 2013-01-29 13:54:37Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2900,7 +2900,7 @@ static DECLCALLBACK(int) acpiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     int rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
     AssertRCReturn(rc, rc);
 
-    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "acpi%u", iInstance);
+    rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "acpi#%u", iInstance);
     AssertRCReturn(rc, rc);
 
     /*
