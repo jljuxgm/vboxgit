@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 47485 2013-07-31 12:44:53Z vboxsync $ */
+/* $Id: server_muralfbo.c 47577 2013-08-07 10:13:47Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -748,6 +748,9 @@ static void crServerVBoxCompositionDisable(CRMuralInfo *mural)
 
 void crServerVBoxCompositionDisableEnter(CRMuralInfo *mural)
 {
+    ++cr_server.cDisableEvents;
+    Assert(cr_server.cDisableEvents);
+
     ++mural->cDisabled;
     Assert(mural->cDisabled);
     if (mural->cDisabled == 1)
@@ -766,6 +769,10 @@ void crServerVBoxCompositionDisableLeave(CRMuralInfo *mural, GLboolean fForcePre
         crServerVBoxCompositionReenable(mural, mural->fForcePresentState);
         mural->fForcePresentState = GL_FALSE;
     }
+
+    --cr_server.cDisableEvents;
+    Assert(cr_server.cDisableEvents < UINT32_MAX/2);
+    crVBoxServerCheckVisibilityEvent(-1);
 }
 
 static void crServerVBoxCompositionSetEnableStateGlobalCB(unsigned long key, void *data1, void *data2)
