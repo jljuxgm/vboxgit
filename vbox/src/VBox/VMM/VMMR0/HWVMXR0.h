@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 45786 2013-04-26 22:35:59Z vboxsync $ */
+/* $Id: HWVMXR0.h 45904 2013-05-06 11:53:53Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -68,17 +68,25 @@ DECLINLINE(int) VMXReadCachedVmcsEx(PVMCPU pVCpu, uint32_t idxCache, RTGCUINTREG
 #  define VMXReadCachedVmcs                              VMXReadVmcsField
 # endif
 #  define VMXReadVmcs                                    VMXReadVmcsField
-#else
-# if HC_ARCH_BITS == 32 && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
-# define VMXReadVmcsHstN                                 VMXReadVmcs32
-# define VMXReadVmcsGstN(idxField, pVal)                 VMXReadCachedVmcsEx(pVCpu, idxField##_CACHE_IDX, pVal)
-# define VMXReadVmcsGstNByIdxVal(idxField, pVal)         VMXReadCachedVmcsEx(pVCpu, idxField, pVal)
-# else
-# define VMXReadVmcsHstN                                 VMXReadVmcs64
-# define VMXReadVmcsGstN                                 VMXReadVmcs64
-# define VMXReadVmcsGstNByIdxVal                         VMXReadVmcs64
+#else /* !VBOX_WITH_OLD_VTX_CODE */
+# ifdef VBOX_WITH_HYBRID_32BIT_KERNEL
+#  define VMXReadVmcsHstN(idxField, pVal)                 HMVMX_IS_64BIT_HOST_MODE() ?                     \
+                                                            VMXReadVmcs64(idxField, pVal)                  \
+                                                          : VMXReadVmcs32(idxField, (uint32_t *)pVal)
+#  define VMXReadVmcsGstN(idxField, pVal)                 (pVCpu->CTX_SUFF(pVM)->hm.s.fAllow64BitGuests) ? \
+                                                            VMXReadVmcs64(idxField, pVal)                  \
+                                                          : VMXReadVmcs32(idxField, (uint32_t *)pVal)
+#  define VMXReadVmcsGstNByIdxVal(idxField, pVal)         VMXReadVmcsGstN(idxField, pVal)
+# elif HC_ARCH_BITS == 32
+#  define VMXReadVmcsHstN                                 VMXReadVmcs32
+#  define VMXReadVmcsGstN(idxField, pVal)                 VMXReadCachedVmcsEx(pVCpu, idxField##_CACHE_IDX, pVal)
+#  define VMXReadVmcsGstNByIdxVal(idxField, pVal)         VMXReadCachedVmcsEx(pVCpu, idxField, pVal)
+# else /* HC_ARCH_BITS == 64 */
+#  define VMXReadVmcsHstN                                 VMXReadVmcs64
+#  define VMXReadVmcsGstN                                 VMXReadVmcs64
+#  define VMXReadVmcsGstNByIdxVal                         VMXReadVmcs64
 # endif
-#endif
+#endif  /* !VBOX_WITH_OLD_VTX_CODE */
 
 #endif /* IN_RING0 */
 
