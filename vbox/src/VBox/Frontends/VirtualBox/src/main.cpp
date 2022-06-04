@@ -1,4 +1,4 @@
-/* $Id: main.cpp 46005 2013-05-13 09:37:41Z vboxsync $ */
+/* $Id: main.cpp 46020 2013-05-13 15:09:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -222,25 +222,20 @@ static void QtMessageOutput (QtMsgType type, const char *msg)
 static void showHelp()
 {
     QString mode = "", dflt = "";
-#ifdef VBOX_GUI_USE_SDL
-    mode += "sdl";
-#endif
 #ifdef VBOX_GUI_USE_QIMAGE
     if (!mode.isEmpty())
         mode += "|";
     mode += "image";
-#endif
+#endif /* VBOX_GUI_USE_QIMAGE */
 #ifdef VBOX_GUI_USE_QUARTZ2D
     if (!mode.isEmpty())
         mode += "|";
     mode += "quartz2d";
-#endif
+#endif /* VBOX_GUI_USE_QUARTZ2D */
 #if defined (Q_WS_MAC) && defined (VBOX_GUI_USE_QUARTZ2D)
     dflt = "quartz2d";
-#elif (defined (Q_WS_WIN32) || defined (Q_WS_PM) || defined(Q_WS_X11)) && defined (VBOX_GUI_USE_QIMAGE)
+#elif (defined (Q_WS_WIN) || defined(Q_WS_X11)) && defined (VBOX_GUI_USE_QIMAGE)
     dflt = "image";
-#elif defined (Q_WS_X11) && defined (VBOX_GUI_USE_SDL)
-    dflt = "sdl";
 #else
     dflt = "image";
 #endif
