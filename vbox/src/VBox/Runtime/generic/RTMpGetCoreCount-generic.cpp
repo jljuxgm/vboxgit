@@ -1,4 +1,4 @@
-/* $Id: RTMpGetCoreCount-generic.cpp 46145 2013-05-17 14:55:29Z vboxsync $ */
+/* $Id: RTMpGetCoreCount-generic.cpp 46146 2013-05-17 15:00:39Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetCoreCount.
  */
@@ -32,8 +32,8 @@
 #include <internal/iprt.h>
 
 
-RTDECL(RTCPUID) RTMpGetCount(void)
+RTDECL(RTCPUID) RTMpGetCoreCount(void)
 {
-    return RTGetCoreCount();
+    return RTMpGetCount();
 }
 RT_EXPORT_SYMBOL(RTMpGetCoreCount);
