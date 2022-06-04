@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 42195 2012-07-17 20:57:20Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 42388 2012-07-25 11:56:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1179,8 +1179,12 @@ HRESULT SystemProperties::setAutostartDatabasePath(const Utf8Str &aPath)
     else
     {
         int vrc = autostartDb->setAutostartDbPath(NULL);
-        /* AssertRC(vrc); - VERR_NOT_IMPLEMENTED on Mac OS X and thus strict builds crashes. */
-        m->strAutostartDatabasePath = "";
+        if (RT_SUCCESS(vrc))
+            m->strAutostartDatabasePath = "";
+        else
+            rc = setError(E_FAIL,
+                          tr("Deleting the autostart database path failed (%Rrc)"),
+                          vrc);
     }
 
     return rc;
