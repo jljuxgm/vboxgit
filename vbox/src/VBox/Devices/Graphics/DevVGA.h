@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 44876 2013-02-28 20:56:09Z vboxsync $ */
+/* $Id: DevVGA.h 45808 2013-04-29 12:41:07Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -259,8 +259,7 @@ typedef struct VGAState {
     PPDMDEVINSRC                pDevInsRC;
     /** Pointer to the GC vram mapping. */
     RCPTRTYPE(uint8_t *)        vram_ptrRC;
-    /** Pointer to vgaGCLFBAccessHandler(). */
-    RTRCPTR                     RCPtrLFBHandler;
+    uint32_t                    PaddingMinus1;
 
     /** Pointer to the device instance - R3 Ptr. */
     PPDMDEVINSR3                pDevInsR3;

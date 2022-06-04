@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 45152 2013-03-23 20:36:23Z vboxsync $ */
+/* $Id: PDM.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -255,6 +255,7 @@
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/ssm.h>
+#include <VBox/vmm/hm.h>
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
 #include <VBox/vmm/vmm.h>
@@ -514,13 +515,20 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     /*
      * Devices & Drivers.
      */
-    PCPDMDEVHLPRC pDevHlpRC;
-    int rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDevHlp", &pDevHlpRC);
-    AssertReleaseMsgRC(rc, ("rc=%Rrc when resolving g_pdmRCDevHlp\n", rc));
+    int rc;
+    PCPDMDEVHLPRC pDevHlpRC = NIL_RTRCPTR;
+    if (!HMIsEnabled(pVM))
+    {
+        rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDevHlp", &pDevHlpRC);
+        AssertReleaseMsgRC(rc, ("rc=%Rrc when resolving g_pdmRCDevHlp\n", rc));
+    }
 
-    PCPDMDRVHLPRC pDrvHlpRC;
-    rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDevHlp", &pDrvHlpRC);
-    AssertReleaseMsgRC(rc, ("rc=%Rrc when resolving g_pdmRCDevHlp\n", rc));
+    PCPDMDRVHLPRC pDrvHlpRC = NIL_RTRCPTR;
+    if (!HMIsEnabled(pVM))
+    {
+        rc = PDMR3LdrGetSymbolRC(pVM, NULL, "g_pdmRCDevHlp", &pDrvHlpRC);
+        AssertReleaseMsgRC(rc, ("rc=%Rrc when resolving g_pdmRCDevHlp\n", rc));
+    }
 
     for (PPDMDEVINS pDevIns = pVM->pdm.s.pDevInstances; pDevIns; pDevIns = pDevIns->Internal.s.pNextR3)
     {

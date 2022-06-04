@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 45103 2013-03-20 11:13:27Z vboxsync $ */
+/* $Id: PGMPool.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -410,12 +410,17 @@ void pgmR3PoolRelocate(PVM pVM)
     pVM->pgm.s.pPoolR3->pVMRC = pVM->pVMRC;
     pVM->pgm.s.pPoolR3->paUsersRC = MMHyperR3ToRC(pVM, pVM->pgm.s.pPoolR3->paUsersR3);
     pVM->pgm.s.pPoolR3->paPhysExtsRC = MMHyperR3ToRC(pVM, pVM->pgm.s.pPoolR3->paPhysExtsR3);
-    int rc = PDMR3LdrGetSymbolRC(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolR3->pfnAccessHandlerRC);
-    AssertReleaseRC(rc);
+
+    if (!HMIsEnabled(pVM))
+    {
+        int rc = PDMR3LdrGetSymbolRC(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolR3->pfnAccessHandlerRC);
+        AssertReleaseRC(rc);
+    }
+
     /* init order hack. */
     if (!pVM->pgm.s.pPoolR3->pfnAccessHandlerR0)
     {
-        rc = PDMR3LdrGetSymbolR0(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolR3->pfnAccessHandlerR0);
+        int rc = PDMR3LdrGetSymbolR0(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolR3->pfnAccessHandlerR0);
         AssertReleaseRC(rc);
     }
 }

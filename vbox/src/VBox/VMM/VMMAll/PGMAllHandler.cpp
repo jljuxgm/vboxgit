@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -117,7 +117,7 @@ VMMDECL(int) PGMHandlerPhysicalRegisterEx(PVM pVM, PGMPHYSHANDLERTYPE enmType, R
                     VERR_INVALID_PARAMETER);
     AssertPtrReturn(pfnHandlerR3, VERR_INVALID_POINTER);
     AssertReturn(pfnHandlerR0, VERR_INVALID_PARAMETER);
-    AssertReturn(pfnHandlerRC, VERR_INVALID_PARAMETER);
+    AssertReturn(pfnHandlerRC || HMIsEnabled(pVM), VERR_INVALID_PARAMETER);
 
     /*
      * We require the range to be within registered ram.

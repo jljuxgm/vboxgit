@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: PGMHandler.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -119,7 +119,8 @@ VMMR3DECL(int) PGMR3HandlerPhysicalRegister(PVM pVM, PGMPHYSHANDLERTYPE enmType,
          * Resolve the GC handler.
          */
         RTRCPTR pfnHandlerRC = NIL_RTRCPTR;
-        rc = PDMR3LdrGetSymbolRCLazy(pVM, pszModRC, NULL /*pszSearchPath*/, pszHandlerRC, &pfnHandlerRC);
+        if (!HMIsEnabled(pVM))
+            rc = PDMR3LdrGetSymbolRCLazy(pVM, pszModRC, NULL /*pszSearchPath*/, pszHandlerRC, &pfnHandlerRC);
         if (RT_SUCCESS(rc))
             return PGMHandlerPhysicalRegisterEx(pVM, enmType, GCPhys, GCPhysLast, pfnHandlerR3, pvUserR3,
                                                 pfnHandlerR0, pvUserR0, pfnHandlerRC, pvUserRC, pszDesc);
@@ -259,7 +260,8 @@ VMMR3DECL(int) PGMR3HandlerVirtualRegister(PVM pVM, PGMVIRTHANDLERTYPE enmType, 
     RTRCPTR pfnHandlerRC;
     int rc = PDMR3LdrGetSymbolRCLazy(pVM, pszModRC, NULL /*pszSearchPath*/, pszHandlerRC, &pfnHandlerRC);
     if (RT_SUCCESS(rc))
-        return PGMR3HandlerVirtualRegisterEx(pVM, enmType, GCPtr, GCPtrLast, pfnInvalidateR3, pfnHandlerR3, pfnHandlerRC, pszDesc);
+        return PGMR3HandlerVirtualRegisterEx(pVM, enmType, GCPtr, GCPtrLast, pfnInvalidateR3,
+                                             pfnHandlerR3, pfnHandlerRC, pszDesc);
 
     AssertMsgFailed(("Failed to resolve %s.%s, rc=%Rrc.\n", pszModRC, pszHandlerRC, rc));
     return rc;

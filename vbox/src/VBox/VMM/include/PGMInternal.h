@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 45798 2013-04-29 03:40:54Z vboxsync $ */
+/* $Id: PGMInternal.h 45808 2013-04-29 12:41:07Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3893,7 +3893,12 @@ typedef PGMCPU *PPGMCPU;
 
 RT_C_DECLS_BEGIN
 
+#if defined(VBOX_STRICT) && defined(IN_RING3)
+int             pgmLockDebug(PVM pVM, RT_SRC_POS_DECL);
+# define pgmLock(a_pVM) pgmLockDebug(a_pVM, RT_SRC_POS)
+#else
 int             pgmLock(PVM pVM);
+#endif
 void            pgmUnlock(PVM pVM);
 /**
  * Asserts that the caller owns the PDM lock.

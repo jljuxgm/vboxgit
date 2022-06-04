@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 45693 2013-04-24 11:32:42Z vboxsync $ */
+/* $Id: EM.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2039,6 +2039,7 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
              * Do forced actions.
              */
             if (   !fFFDone
+                && RT_SUCCESS(rc)
                 && rc != VINF_EM_TERMINATE
                 && rc != VINF_EM_OFF
                 && (   VM_FF_ISPENDING(pVM, VM_FF_ALL_REM_MASK)

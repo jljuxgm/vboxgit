@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 45728 2013-04-25 12:08:17Z vboxsync $ */
+/* $Id: TRPM.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1175,6 +1175,7 @@ int trpmR3ClearPassThroughHandler(PVM pVM, unsigned iTrap)
 {
     /* Only applies to raw mode which supports only 1 VCPU. */
     PVMCPU pVCpu = &pVM->aCpus[0];
+    Assert(!HMIsEnabled(pVM));
 
     /** @todo cleanup trpmR3ClearPassThroughHandler()! */
     RTRCPTR aGCPtrs[TRPM_HANDLER_MAX];
