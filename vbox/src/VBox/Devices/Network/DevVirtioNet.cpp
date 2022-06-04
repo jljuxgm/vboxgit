@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 46904 2013-07-02 12:59:56Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 47499 2013-07-31 17:36:16Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -997,9 +997,10 @@ static DECLCALLBACK(int) vnetSetLinkState(PPDMINETWORKCONFIG pInterface, PDMNETW
 {
     PVNETSTATE pThis = RT_FROM_MEMBER(pInterface, VNETSTATE, INetworkConfig);
     bool fOldUp = !!(STATUS & VNET_S_LINK_UP);
-    bool fNewUp = enmState == PDMNETWORKLINKSTATE_UP;
+    bool fNewUp = enmState == PDMNETWORKLINKSTATE_UP || enmState == PDMNETWORKLINKSTATE_DOWN_RESUME;
 
-    if (fNewUp != fOldUp)
+    if (   fNewUp != fOldUp
+        || enmState == PDMNETWORKLINKSTATE_DOWN_RESUME)
     {
         if (fNewUp)
         {
@@ -1014,7 +1015,16 @@ static DECLCALLBACK(int) vnetSetLinkState(PPDMINETWORKCONFIG pInterface, PDMNETW
             vpciRaiseInterrupt(&pThis->VPCI, VERR_SEM_BUSY, VPCI_ISR_CONFIG);
         }
         if (pThis->pDrv)
-            pThis->pDrv->pfnNotifyLinkChanged(pThis->pDrv, enmState);
+        {
+            /*
+             * Send a UP link state to the driver below if the network adapter is only
+             * temproarily disconnected due to resume event.
+             */
+            if (enmState == PDMNETWORKLINKSTATE_DOWN_RESUME)
+                pThis->pDrv->pfnNotifyLinkChanged(pThis->pDrv, PDMNETWORKLINKSTATE_UP);
+            else
+                pThis->pDrv->pfnNotifyLinkChanged(pThis->pDrv, enmState);
+        }
     }
     return VINF_SUCCESS;
 }
