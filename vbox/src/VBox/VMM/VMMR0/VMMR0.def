@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 42066 2012-07-09 16:39:22Z vboxsync $
+; $Id: VMMR0.def 44360 2013-01-24 17:15:39Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -79,7 +79,7 @@ EXPORTS
     IntNetR0IfWait
 
     ; Network Shaper
-    PDMR0NsAllocateBandwidth
+    PDMNsAllocateBandwidth
 
     ; runtime
     RTAssertMsg1Weak
