@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: QCOW.cpp 44940 2013-03-06 22:12:24Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -1003,7 +1003,10 @@ static int qcowFreeImage(PQCOWIMAGE pImage, bool fDelete)
             RTMemFree(pImage->paL1Table);
 
         if (pImage->pszBackingFilename)
+        {
             RTMemFree(pImage->pszBackingFilename);
+            pImage->pszBackingFilename = NULL;
+        }
 
         qcowL2TblCacheDestroy(pImage);
 
@@ -1124,8 +1127,8 @@ static int qcowOpenImage(PQCOWIMAGE pImage, unsigned uOpenFlags)
                 && pImage->offBackingFilename)
             {
                 /* Load backing filename from image. */
-                pImage->pszFilename = (char *)RTMemAllocZ(pImage->cbBackingFilename + 1); /* +1 for \0 terminator. */
-                if (pImage->pszFilename)
+                pImage->pszBackingFilename = (char *)RTMemAllocZ(pImage->cbBackingFilename + 1); /* +1 for \0 terminator. */
+                if (pImage->pszBackingFilename)
                 {
                     rc = vdIfIoIntFileReadSync(pImage->pIfIo, pImage->pStorage,
                                                pImage->offBackingFilename, pImage->pszBackingFilename,
@@ -2377,7 +2380,7 @@ static int qcowGetParentFilename(void *pBackendData, char **ppszParentFilename)
 
     AssertPtr(pImage);
     if (pImage)
-        if (pImage->pszFilename)
+        if (pImage->pszBackingFilename)
             *ppszParentFilename = RTStrDup(pImage->pszBackingFilename);
         else
             rc = VERR_NOT_SUPPORTED;
