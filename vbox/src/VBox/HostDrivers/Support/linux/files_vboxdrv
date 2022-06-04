@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 41354 2012-05-19 18:18:42Z vboxsync $
+# $Id: files_vboxdrv 43389 2012-09-21 09:53:18Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -75,8 +75,8 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/include/VBox/types.h=>include/VBox/types.h \
     ${PATH_ROOT}/include/VBox/SUPDrvMangling.h=>include/VBox/SUPDrvMangling.h \
     ${PATH_ROOT}/include/VBox/VBoxTpG.h=>include/VBox/VBoxTpG.h \
-    ${PATH_ROOT}/include/VBox/vmm/hwacc_vmx.h=>include/VBox/vmm/hwacc_vmx.h \
-    ${PATH_ROOT}/include/VBox/vmm/hwacc_svm.h=>include/VBox/vmm/hwacc_svm.h \
+    ${PATH_ROOT}/include/VBox/vmm/hm_vmx.h=>include/VBox/vmm/hm_vmx.h \
+    ${PATH_ROOT}/include/VBox/vmm/hm_svm.h=>include/VBox/vmm/hm_svm.h \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c=>linux/SUPDrv-linux.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrv.c=>SUPDrv.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvSem.c=>SUPDrvSem.c \
