@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 43041 2012-08-28 13:58:40Z vboxsync $ */
+/* $Id: MachineImpl.h 43870 2012-11-14 18:04:07Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -887,7 +887,7 @@ protected:
     HRESULT createImplicitDiffs(IProgress *aProgress,
                                 ULONG aWeight,
                                 bool aOnline);
-    HRESULT deleteImplicitDiffs();
+    HRESULT deleteImplicitDiffs(bool aOnline);
 
     MediumAttachment* findAttachment(const MediaData::AttachmentList &ll,
                                      IN_BSTR aControllerName,
