@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45091 2013-03-19 16:01:32Z vboxsync $ */
+/* $Id: HMInternal.h 45093 2013-03-19 17:33:14Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -597,9 +597,6 @@ typedef struct HMCPU
         PFNHMVMXSTARTVM             pfnStartVM;
 
         uint32_t                    u32Alignment1;
-#if HC_ARCH_BITS == 32
-        uint32_t                    u32Alignment2;
-#endif
 
         /** Current VMX_VMCS32_CTRL_PIN_EXEC_CONTROLS. */
         uint32_t                    u32PinCtls;
