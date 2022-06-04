@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 46425 2013-06-07 05:09:23Z vboxsync $ */
+/* $Id: DevINIP.cpp 46426 2013-06-07 06:24:53Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -588,13 +588,12 @@ static DECLCALLBACK(int) devINIPDestruct(PPDMDEVINS pDevIns)
     {
         netif_set_down(&pThis->IntNetIF);
         netif_remove(&pThis->IntNetIF);
-        tcpip_terminate();
 #ifndef VBOX_WITH_NEW_LWIP
+        tcpip_terminate();
         lwip_sys_sem_wait(pThis->LWIPTcpInitSem);
         lwip_sys_sem_free(pThis->LWIPTcpInitSem);
 #else
-        lwip_sys_sem_wait(&pThis->LWIPTcpInitSem, 0);
-        lwip_sys_sem_free(&pThis->LWIPTcpInitSem);
+        vboxLwipCoreFinalize();
 #endif
     }
 
