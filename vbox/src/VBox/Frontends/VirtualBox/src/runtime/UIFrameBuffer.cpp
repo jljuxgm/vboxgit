@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 45940 2013-05-07 20:16:31Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 46064 2013-05-14 12:43:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -150,7 +150,7 @@ STDMETHODIMP UIFrameBuffer::Unlock()
     return S_OK;
 }
 
-/** @note This method is called on EMT from under this object's lock */
+/* This method is called on EMT from under this object's lock! */
 STDMETHODIMP UIFrameBuffer::RequestResize(ULONG uScreenId, ULONG uPixelFormat,
                                           BYTE *pVRAM, ULONG uBitsPerPixel, ULONG uBytesPerLine,
                                           ULONG uWidth, ULONG uHeight,
@@ -173,6 +173,16 @@ STDMETHODIMP UIFrameBuffer::RequestResize(ULONG uScreenId, ULONG uPixelFormat,
         *pbFinished = TRUE;
     unlock();
 
+    return S_OK;
+}
+
+/* This method is called on EMT from under this object's lock! */
+STDMETHODIMP UIFrameBuffer::NotifyUpdate(ULONG uX, ULONG uY, ULONG uW, ULONG uH)
+{
+    /* QWidget::update() is NOT thread safe and seems never will be,
+     * So we have to post an async event to perform update operation.
+     * Later the event will be replaced by the corresponding signal stuff: */
+    QApplication::postEvent(m_pMachineView, new UIRepaintEvent(uX, uY, uW, uH));
     return S_OK;
 }
 

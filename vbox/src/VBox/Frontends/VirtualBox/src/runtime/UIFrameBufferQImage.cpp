@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 46062 2013-05-14 12:26:26Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 46064 2013-05-14 12:43:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -46,15 +46,6 @@ UIFrameBufferQImage::UIFrameBufferQImage(UIMachineView *pMachineView)
     /* Initialize the framebuffer: */
     UIResizeEvent event(FramebufferPixelFormat_Opaque, NULL, 0, 0, 640, 480);
     resizeEvent(&event);
-}
-
-STDMETHODIMP UIFrameBufferQImage::NotifyUpdate(ULONG uX, ULONG uY, ULONG uW, ULONG uH)
-{
-    /* QWidget::update() is not thread safe and seems never will be,
-     * So we have to post an async event to perform update operation.
-     * Later the event will be replaced by the corresponding signal stuff: */
-    QApplication::postEvent(m_pMachineView, new UIRepaintEvent(uX, uY, uW, uH));
-    return S_OK;
 }
 
 void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)

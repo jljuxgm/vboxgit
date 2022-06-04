@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 46058 2013-05-14 11:14:14Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 46064 2013-05-14 12:43:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -70,17 +70,6 @@ UIFrameBufferQuartz2D::~UIFrameBufferQuartz2D()
 {
     Log (("Quartz2D: Deleting\n"));
     clean(false);
-}
-
-/** @note This method is called on EMT from under this object's lock */
-STDMETHODIMP UIFrameBufferQuartz2D::NotifyUpdate(ULONG aX, ULONG aY,
-                                                 ULONG aW, ULONG aH)
-{
-/*    Log (("Quartz2D: NotifyUpdate %d,%d %dx%d\n", aX, aY, aW, aH));*/
-
-    QApplication::postEvent(m_pMachineView,
-                            new UIRepaintEvent (aX, aY, aW, aH));
-    return S_OK;
 }
 
 STDMETHODIMP UIFrameBufferQuartz2D::SetVisibleRegion(BYTE *aRectangles, ULONG aCount)
