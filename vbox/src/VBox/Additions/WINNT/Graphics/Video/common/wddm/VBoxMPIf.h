@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 46662 2013-06-19 14:22:29Z vboxsync $ */
+/* $Id: VBoxMPIf.h 46757 2013-06-24 14:30:18Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -34,7 +34,7 @@
 #include <VBox/VBoxGuest2.h>
 
 /* One would increase this whenever definitions in this file are changed */
-#define VBOXVIDEOIF_VERSION 16
+#define VBOXVIDEOIF_VERSION 17
 
 #define VBOXWDDM_NODE_ID_SYSTEM           0
 #define VBOXWDDM_NODE_ID_3D               (VBOXWDDM_NODE_ID_SYSTEM)
@@ -423,6 +423,7 @@ typedef struct VBOXSWAPCHAININFO
 {
     VBOXDISP_KMHANDLE hSwapchainKm; /* in, NULL if new is being created */
     VBOXDISP_UMHANDLE hSwapchainUm; /* in, UMD private data */
+    DWORD winHostID;
     RECT Rect;
     UINT u32Reserved;
     UINT cAllocs;

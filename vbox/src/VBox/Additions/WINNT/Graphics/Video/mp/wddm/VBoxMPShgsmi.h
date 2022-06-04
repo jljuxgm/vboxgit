@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.h 46757 2013-06-24 14:30:18Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -48,9 +48,16 @@ int VBoxSHGSMICommandDoneSynch(PVBOXSHGSMI pHeap, const VBOXSHGSMIHEADER* pHeade
 void VBoxSHGSMICommandCancelAsynch(PVBOXSHGSMI pHeap, const VBOXSHGSMIHEADER* pHeader);
 void VBoxSHGSMICommandCancelSynch(PVBOXSHGSMI pHeap, const VBOXSHGSMIHEADER* pHeader);
 
-DECLINLINE(HGSMIOFFSET) VBoxSHGSMICommandOffset(PVBOXSHGSMI pHeap, const VBOXSHGSMIHEADER* pHeader)
+DECLINLINE(HGSMIOFFSET) VBoxSHGSMICommandOffset(const PVBOXSHGSMI pHeap, const VBOXSHGSMIHEADER* pHeader)
 {
     return HGSMIHeapBufferOffset(&pHeap->Heap, (void*)pHeader);
+}
+
+/* allows getting VRAM offset of arbitrary pointer within the SHGSMI command
+ * if invalid pointer is passed in, behavior is undefined */
+DECLINLINE(HGSMIOFFSET) VBoxSHGSMICommandPtrOffset(const PVBOXSHGSMI pHeap, const void * pvPtr)
+{
+    return HGSMIPointerToOffset (&pHeap->Heap.area, (const HGSMIBUFFERHEADER *)pvPtr);
 }
 
 int VBoxSHGSMIInit(PVBOXSHGSMI pHeap, void *pvBase, HGSMISIZE cbArea, HGSMIOFFSET offBase, bool fOffsetBased);

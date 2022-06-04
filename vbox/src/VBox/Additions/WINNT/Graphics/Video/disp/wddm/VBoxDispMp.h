@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMp.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxDispMp.h 46757 2013-06-24 14:30:18Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display external interface
@@ -25,6 +25,7 @@
 #include <d3dhal.h>
 #include "../../common/wddm/VBoxMPIf.h"
 
+#if 0
 typedef struct VBOXDISPMP_REGIONS
 {
     HWND hWnd;
@@ -80,5 +81,5 @@ typedef struct VBOXDISPMP_CALLBACKS
  */
 typedef VBOXDISPMP_DECL(HRESULT) FNVBOXDISPMP_GETCALLBACKS(uint32_t u32Version, PVBOXDISPMP_CALLBACKS pCallbacks);
 typedef FNVBOXDISPMP_GETCALLBACKS *PFNVBOXDISPMP_GETCALLBACKS;
-
+#endif /* 0 */
 #endif /* #ifndef ___VBoxDispMp_h___ */

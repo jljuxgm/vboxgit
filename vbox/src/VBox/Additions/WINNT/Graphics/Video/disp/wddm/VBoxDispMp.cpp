@@ -1,4 +1,4 @@
-/* $Id: VBoxDispMp.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxDispMp.cpp 46757 2013-06-24 14:30:18Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -18,7 +18,7 @@
 
 #include "VBoxDispD3DCmn.h"
 #include "VBoxDispMp.h"
-
+#if 0
 #include <iprt/assert.h>
 
 typedef struct VBOXVIDEOCM_ITERATOR
@@ -293,3 +293,4 @@ HRESULT vboxDispMpInternalCancel(VBOXWDDMDISP_CONTEXT *pContext, PVBOXWDDMDISP_S
     LeaveCriticalSection(&g_VBoxDispMp.CritSect);
     return hr;
 }
+#endif /* 0 */

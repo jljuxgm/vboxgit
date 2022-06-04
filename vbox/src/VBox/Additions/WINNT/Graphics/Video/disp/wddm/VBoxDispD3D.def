@@ -1,4 +1,4 @@
-; $Id: VBoxDispD3D.def 44529 2013-02-04 15:54:15Z vboxsync $
+; $Id: VBoxDispD3D.def 46757 2013-06-24 14:30:18Z vboxsync $
 ; @file
 ;
 ; VBoxDispD3D
@@ -16,4 +16,3 @@
 
 EXPORTS
 	OpenAdapter
-	VBoxDispMpGetCallbacks
