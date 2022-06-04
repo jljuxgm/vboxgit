@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 44657 2013-02-12 13:22:13Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -2147,7 +2147,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         AssertRC(rc);
 
         /** @todo do we really ever need this? */
-        rc |= VMXWriteVmcs(VMX_VMCS_GUEST_DEBUG_EXCEPTIONS,  0);
+        rc |= VMXWriteVmcs(VMX_VMCS_GUEST_PENDING_DEBUG_EXCEPTIONS,  0);
         AssertRC(rc);
     }
 
