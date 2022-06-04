@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 46548 2013-06-14 09:42:21Z vboxsync $
+; $Id: tstX86-1A.asm 47657 2013-08-11 13:36:21Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -2478,9 +2478,16 @@ extern NAME(RTTestISub)
  %endif
         call    NAME(RTTestISub)
 %else
+ %ifdef RT_OS_DARWIN
+        sub     esp, 12
+        push    %%s_szName
+        call    NAME(RTTestISub)
+        add     esp, 16
+ %else
         push    %%s_szName
         call    NAME(RTTestISub)
         add     esp, 4
+ %endif
 %endif
         jmp     %%done
 %%s_szName:
