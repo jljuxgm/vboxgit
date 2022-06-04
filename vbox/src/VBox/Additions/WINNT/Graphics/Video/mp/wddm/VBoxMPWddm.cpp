@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 42159 2012-07-16 11:30:29Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 42170 2012-07-16 20:17:25Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -4883,6 +4883,20 @@ DxgkDdiCommitVidPn(
             }
         }
 
+#ifdef VBOX_WDDM_WIN8
+        if (g_VBoxDisplayOnly)
+        {
+            for (int i = 0; /* <- never try to hide a primary monitor */
+                    i < VBoxCommonFromDeviceExt(pDevExt)->cDisplays; ++i)
+            {
+                PVBOXWDDM_SOURCE pSource = &pDevExt->aSources[i];
+                if (pSource->bVisible && !pSource->bGhSynced)
+                {
+                    vboxWddmGhDisplayCheckSetInfoFromSource(pDevExt, pSource);
+                }
+            }
+        }
+#endif
         LOGF(("LEAVE, SUCCESS status(0x%x), context(0x%x)", Status, hAdapter));
 
         return Status;
