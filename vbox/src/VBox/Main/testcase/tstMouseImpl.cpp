@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 47275 2013-07-19 17:43:28Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 47277 2013-07-19 17:49:34Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -18,6 +18,7 @@
 /******************************************************************************
 *   Header Files                                                              *
 ******************************************************************************/
+#define IN_VMM_R3 /* Kill most Windows warnings on CFGMR3* implementations. */
 #include "MouseImpl.h"
 #include "VMMDev.h"
 #include "DisplayImpl.h"
