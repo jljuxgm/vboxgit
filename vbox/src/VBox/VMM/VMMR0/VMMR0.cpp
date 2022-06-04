@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 47645 2013-08-09 13:47:38Z vboxsync $ */
+/* $Id: VMMR0.cpp 47760 2013-08-15 12:57:02Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -465,6 +465,34 @@ VMMR0DECL(void) VMMR0ThreadCtxHooksRelease(PVMCPU pVCpu)
 
 
 /**
+ * Registers the thread-context hook for this VCPU.
+ *
+ * @param   pVCpu           Pointer to the VMCPU.
+ * @param   pfnThreadHook   Pointer to the thread-context callback.
+ * @returns VBox status code.
+ *
+ * @thread EMT.
+ */
+VMMR0DECL(int) VMMR0ThreadCtxHooksRegister(PVMCPU pVCpu, PFNRTTHREADCTXHOOK pfnThreadHook)
+{
+    return RTThreadCtxHooksRegister(pVCpu->vmm.s.hR0ThreadCtx, pfnThreadHook, pVCpu);
+}
+
+
+/**
+ * Deregisters the thread-context hook for this VCPU.
+ *
+ * @returns VBox status code.
+ * @param   pVCpu       Pointer to the VMCPU.
+ * @thread EMT.
+ */
+VMMR0DECL(int) VMMR0ThreadCtxHooksDeregister(PVMCPU pVCpu)
+{
+    return RTThreadCtxHooksDeregister(pVCpu->vmm.s.hR0ThreadCtx);
+}
+
+
+/**
  * Whether thread-context hooks are created (implying they're supported) on this
  * platform.
  *
@@ -829,6 +857,7 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
             int rc;
             if (!HMR0SuspendPending())
             {
+                /** @todo VMMR0ThreadCtxHooks support. */
                 rc = HMR0Enter(pVM, pVCpu);
                 if (RT_SUCCESS(rc))
                 {
