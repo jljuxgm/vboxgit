@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 43445 2012-09-27 08:28:59Z vboxsync $ */
 
 /** @file
  *
@@ -78,6 +78,8 @@ public:
     STDMETHOD(DHCPRediscover)();
 
     HRESULT setVirtualBox(VirtualBox *pVBox);
+    void registerMetrics(PerformanceCollector *aCollector, ComPtr<IUnknown> objptr);
+    void unregisterMetrics(PerformanceCollector *aCollector, ComPtr<IUnknown> objptr);
 
 private:
     Bstr composeNetworkName(const Utf8Str szShortName);
@@ -110,6 +112,8 @@ private:
     } m;
 
 };
+
+typedef std::list<ComObjPtr<HostNetworkInterface> > HostNetworkInterfaceList;
 
 #endif // ____H_H_HOSTNETWORKINTERFACEIMPL
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
