@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 46357 2013-06-03 10:12:08Z vboxsync $ */
+/* $Id: HMR0.cpp 46358 2013-06-03 10:21:12Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1431,12 +1431,6 @@ VMMR0_INT_DECL(int) HMR0Enter(PVM pVM, PVMCPU pVCpu)
 
     /* Always reload the host context and the guest's CR0 register for the FPU bits (#NM, #MF, CR0.NE, CR0.TS, CR0.MP). */
     pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_CR0 | HM_CHANGED_HOST_CONTEXT;
-
-    /* Setup the register and mask according to the current execution mode. */
-    if (pCtx->msrEFER & MSR_K6_EFER_LMA)
-        pVM->hm.s.u64RegisterMask = UINT64_C(0xFFFFFFFFFFFFFFFF);
-    else
-        pVM->hm.s.u64RegisterMask = UINT64_C(0xFFFFFFFF);
 
     /* Enable VT-x or AMD-V if local init is required, or enable if it's a
        freshly onlined CPU. */

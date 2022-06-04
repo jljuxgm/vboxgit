@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 46304 2013-05-29 09:13:19Z vboxsync $ */
+/* $Id: HMInternal.h 46358 2013-06-03 10:21:12Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -296,9 +296,6 @@ typedef struct HM
     /** Set when TPR patching is active. */
     bool                        fTPRPatchingActive;
     bool                        u8Alignment[7];
-
-    /** And mask for copying register contents. */
-    uint64_t                    u64RegisterMask;
 
     /** Maximum ASID allowed. */
     uint32_t                    uMaxAsid;
