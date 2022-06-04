@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_vga.c 47341 2013-07-23 12:54:56Z vboxsync $
+/** @file $Id: vboxvideo_vga.c 47417 2013-07-26 08:36:22Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver, VGA functions
  */
@@ -43,7 +43,6 @@
  */
 
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 33)
 
 #include "vboxvideo_drv.h"
 #include "drm/drm_crtc_helper.h"
@@ -130,5 +129,3 @@ struct drm_connector *vboxvideo_vga_init(struct drm_device *dev)
 
     return connector;
 }
-
-#endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27) */

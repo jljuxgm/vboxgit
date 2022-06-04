@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dac.c 47341 2013-07-23 12:54:56Z vboxsync $
+/** @file $Id: vboxvideo_dac.c 47417 2013-07-26 08:36:22Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver, DAC functions
  */
@@ -43,7 +43,6 @@
  */
 
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 33)
 
 #include "vboxvideo_drv.h"
 
@@ -137,5 +136,3 @@ struct drm_encoder *vboxvideo_dac_init(struct drm_device *dev)
 
     return encoder;
 }
-
-#endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27) */

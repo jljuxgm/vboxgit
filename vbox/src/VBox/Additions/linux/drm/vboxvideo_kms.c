@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_kms.c 44529 2013-02-04 15:54:15Z vboxsync $
+/** @file $Id: vboxvideo_kms.c 47417 2013-07-26 08:36:22Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver, KMS support
  */
@@ -43,7 +43,6 @@
  */
 
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 33)
 
 #include "vboxvideo_drv.h"
 
@@ -96,5 +95,3 @@ int vboxvideo_driver_unload(struct drm_device * dev)
 struct drm_ioctl_desc vboxvideo_ioctls[] = {
 };
 int vboxvideo_max_ioctl = DRM_ARRAY_SIZE(vboxvideo_ioctls);
-
-#endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27) */
