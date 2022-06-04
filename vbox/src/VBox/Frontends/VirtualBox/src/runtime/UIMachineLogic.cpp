@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 44954 2013-03-07 13:34:21Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 44981 2013-03-11 12:15:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -167,6 +167,9 @@ void UIMachineLogic::prepare()
     prepareActionGroups();
     /* Prepare action connections: */
     prepareActionConnections();
+
+    /* Prepare other connections: */
+    prepareOtherConnections();
 
     /* Prepare handlers: */
     prepareHandlers();

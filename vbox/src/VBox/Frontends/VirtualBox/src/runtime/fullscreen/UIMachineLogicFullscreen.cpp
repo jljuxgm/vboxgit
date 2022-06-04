@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 44865 2013-02-28 12:23:20Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 44981 2013-03-11 12:15:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -91,17 +91,6 @@ bool UIMachineLogicFullscreen::checkAvailability()
     return true;
 }
 
-void UIMachineLogicFullscreen::prepare()
-{
-    /* Call to base-class: */
-    UIMachineLogic::prepare();
-
-#ifdef Q_WS_MAC
-    /* Prepare fullscreen connections: */
-    prepareFullscreenConnections();
-#endif /* Q_WS_MAC */
-}
-
 int UIMachineLogicFullscreen::hostScreenForGuestScreen(int iScreenId) const
 {
     return m_pScreenLayout->hostScreenForGuestScreen(iScreenId);
@@ -158,6 +147,15 @@ void UIMachineLogicFullscreen::prepareActionGroups()
     pMenu->setVisible(true);
 }
 
+#ifdef Q_WS_MAC
+void UIMachineLogicFullscreen::prepareOtherConnections()
+{
+    /* Presentation mode connection: */
+    connect(gEDataEvents, SIGNAL(sigPresentationModeChange(bool)),
+            this, SLOT(sltChangePresentationMode(bool)));
+}
+#endif /* Q_WS_MAC */
+
 void UIMachineLogicFullscreen::prepareMachineWindows()
 {
     /* Do not create window(s) if they created already: */
@@ -194,15 +192,6 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     /* Remember what machine window(s) created: */
     setMachineWindowsCreated(true);
 }
-
-#ifdef Q_WS_MAC
-void UIMachineLogicFullscreen::prepareFullscreenConnections()
-{
-    /* Presentation mode connection: */
-    connect(gEDataEvents, SIGNAL(sigPresentationModeChange(bool)),
-            this, SLOT(sltChangePresentationMode(bool)));
-}
-#endif /* Q_WS_MAC */
 
 void UIMachineLogicFullscreen::cleanupMachineWindows()
 {
