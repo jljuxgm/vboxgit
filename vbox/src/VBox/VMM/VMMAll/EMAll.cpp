@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 45549 2013-04-15 12:16:54Z vboxsync $ */
+/* $Id: EMAll.cpp 45620 2013-04-18 20:07:14Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -3400,7 +3400,7 @@ static int emInterpretLIGdt(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXCO
 static int emInterpretSti(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, uint32_t *pcbSize)
 {
     NOREF(pcbSize);
-    PPATMGCSTATE pGCState = PATMQueryGCState(pVM);
+    PPATMGCSTATE pGCState = PATMGetGCState(pVM);
 
     if(!pGCState)
     {

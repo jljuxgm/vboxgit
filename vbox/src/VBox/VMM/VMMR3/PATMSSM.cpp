@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: PATMSSM.cpp 45620 2013-04-18 20:07:14Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -691,6 +691,16 @@ DECLCALLBACK(int) patmR3Save(PVM pVM, PSSMHANDLE pSSM)
 
     return VINF_SUCCESS;
 }
+
+
+/**
+ * @callback_method_impl{FNSSMINTLOADEXEC, Dummy load function for HM mode.}
+ */
+DECLCALLBACK(int) patmR3LoadDummy(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass)
+{
+    return SSMR3SkipToEndOfUnit(pSSM);
+}
+
 
 /**
  * Execute state load operation.

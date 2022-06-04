@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 44362 2013-01-24 21:11:05Z vboxsync $ */
+/* $Id: PATMInternal.h 45620 2013-04-18 20:07:14Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -553,6 +553,7 @@ DECLCALLBACK(int) patmVirtPageHandler(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void 
 
 DECLCALLBACK(int) patmR3Save(PVM pVM, PSSMHANDLE pSSM);
 DECLCALLBACK(int) patmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass);
+DECLCALLBACK(int) patmR3LoadDummy(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass);
 
 #ifdef IN_RING3
 RTRCPTR         patmPatchGCPtr2GuestGCPtr(PVM pVM, PPATCHINFO pPatch, RCPTRTYPE(uint8_t *) pPatchGC);
