@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 46493 2013-06-11 13:34:40Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1241,9 +1241,8 @@ static int pdmR3BlkCacheRetain(PVM pVM, PPPDMBLKCACHE ppBlkCache, const char *pc
                         LogFlowFunc(("returns success\n"));
                         return VINF_SUCCESS;
                     }
-                    else
-                        rc = VERR_NO_MEMORY;
 
+                    rc = VERR_NO_MEMORY;
                     RTSemRWDestroy(pBlkCache->SemRWEntries);
                 }
 
@@ -1445,7 +1444,7 @@ VMMR3DECL(void) PDMR3BlkCacheRelease(PPDMBLKCACHE pBlkCache)
     RTSemRWDestroy(pBlkCache->SemRWEntries);
 
 #ifdef VBOX_WITH_STATISTICS
-    STAMR3Deregister(pCache->pVM, &pBlkCache->StatWriteDeferred);
+    STAMR3DeregisterF(pCache->pVM->pUVM, "/PDM/BlkCache/%s/Cache/DeferredWrites", pBlkCache->pszId);
 #endif
 
     RTStrFree(pBlkCache->pszId);

@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 46155 2013-05-18 00:30:13Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 46493 2013-06-11 13:34:40Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1020,7 +1020,7 @@ static const REMPARMDESC g_aArgsSTAMR3Register[] =
 static const REMPARMDESC g_aArgsSTAMR3Deregister[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(void *),             NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(const char *),       NULL },
 };
 static const REMPARMDESC g_aArgsTRPMAssertTrap[] =
 {

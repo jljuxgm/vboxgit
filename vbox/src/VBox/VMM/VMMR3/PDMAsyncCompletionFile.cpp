@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 46493 2013-06-11 13:34:40Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1153,8 +1153,8 @@ static int pdmacFileEpClose(PPDMASYNCCOMPLETIONENDPOINT pEndpoint)
     RTFileClose(pEpFile->hFile);
 
 #ifdef VBOX_WITH_STATISTICS
-    STAMR3Deregister(pEpClassFile->Core.pVM, &pEpFile->StatRead);
-    STAMR3Deregister(pEpClassFile->Core.pVM, &pEpFile->StatWrite);
+    /* Not sure if this might be unnecessary because of similar statement in pdmR3AsyncCompletionStatisticsDeregister? */
+    STAMR3DeregisterF(pEpClassFile->Core.pVM->pUVM, "/PDM/AsyncCompletion/File/%s/*", RTPathFilename(pEpFile->Core.pszUri));
 #endif
 
     return VINF_SUCCESS;
