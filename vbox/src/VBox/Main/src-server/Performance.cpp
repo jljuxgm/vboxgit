@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 43445 2012-09-27 08:28:59Z vboxsync $ */
+/* $Id: Performance.cpp 43453 2012-09-27 12:37:46Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -1137,6 +1137,11 @@ Filter::Filter(ComSafeArrayIn(IN_BSTR, metricNames),
                  ComSafeArrayAsInParam(objectArray));
         }
     }
+}
+
+Filter::Filter(const com::Utf8Str name, const ComPtr<IUnknown> &aObject)
+{
+    processMetricList(name, aObject);
 }
 
 void Filter::init(ComSafeArrayIn(IN_BSTR, metricNames),

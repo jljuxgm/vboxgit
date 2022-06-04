@@ -1,4 +1,4 @@
-/* $Id: Performance.h 43445 2012-09-27 08:28:59Z vboxsync $ */
+/* $Id: Performance.h 43453 2012-09-27 12:37:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -723,6 +723,7 @@ namespace pm
     public:
         Filter(ComSafeArrayIn(IN_BSTR, metricNames),
                ComSafeArrayIn(IUnknown * , objects));
+        Filter(const com::Utf8Str name, const ComPtr<IUnknown> &aObject);
         static bool patternMatch(const char *pszPat, const char *pszName,
                                  bool fSeenColon = false);
         bool match(const ComPtr<IUnknown> object, const RTCString &name) const;

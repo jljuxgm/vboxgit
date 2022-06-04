@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 43445 2012-09-27 08:28:59Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 43453 2012-09-27 12:37:46Z vboxsync $ */
 
 /** @file
  *
@@ -123,8 +123,9 @@ void HostNetworkInterface::unregisterMetrics(PerformanceCollector *aCollector, C
 {
     LogFlowThisFunc(("mInterfaceName={%ls}, mGuid={%s}\n",
                       mInterfaceName.raw(), mGuid.toString().c_str()));
-    aCollector->unregisterMetricsFor(objptr);
-    aCollector->unregisterBaseMetricsFor(objptr);
+    Utf8StrFmt name("Net/%ls/Load", mInterfaceName.raw());
+    aCollector->unregisterMetricsFor(objptr, name + "/*");
+    aCollector->unregisterBaseMetricsFor(objptr, name);
 }
 
 #ifdef VBOX_WITH_HOSTNETIF_API
