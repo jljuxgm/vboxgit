@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 43391 2012-09-21 10:11:14Z vboxsync $ */
+/* $Id: EMInternal.h 43392 2012-09-21 10:21:29Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -397,8 +397,8 @@ typedef struct EMCPU
     STAMPROFILE             StatForcedActions;
     STAMPROFILE             StatHalted;
     STAMPROFILEADV          StatCapped;
-    STAMPROFILEADV          StatHwAccEntry;
-    STAMPROFILE             StatHwAccExec;
+    STAMPROFILEADV          StatHmEntry;
+    STAMPROFILE             StatHmExec;
     STAMPROFILE             StatREMEmu;
     STAMPROFILE             StatREMExec;
     STAMPROFILE             StatREMSync;
@@ -414,8 +414,8 @@ typedef struct EMCPU
     STAMPROFILE             StatIOEmu;
     /** R3: Profiling of emR3RawPrivileged. */
     STAMPROFILE             StatPrivEmu;
-    /** R3: Number of time emR3HwAccExecute is called. */
-    STAMCOUNTER             StatHwAccExecuteEntry;
+    /** R3: Number of time emR3HmExecute is called. */
+    STAMCOUNTER             StatHmExecuteEntry;
 
     /** More statistics (R3). */
     R3PTRTYPE(PEMSTATS)     pStatsR3;
@@ -441,7 +441,7 @@ typedef EMCPU *PEMCPU;
 /** @} */
 
 
-int     emR3HwAccExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone);
+int     emR3HmExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone);
 int     emR3RawExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone);
 int     emR3RawHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc);
 int     emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc);
