@@ -1,4 +1,4 @@
-/* $Id: fsw_core.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: fsw_core.h 42741 2012-08-10 07:11:09Z vboxsync $ */
 /** @file
  * fsw_core.h - Core file system wrapper abstraction layer header.
  */
@@ -71,7 +71,7 @@
 #define FSW_FSTYPE_TABLE_NAME(t) FSW_CONCAT3(fsw_,t,_table)
 
 /** Indicates that the block cache entry is empty. */
-#define FSW_INVALID_BNO (~0UL)
+#define FSW_INVALID_BNO (~0U)
 
 
 //
