@@ -1,4 +1,4 @@
-/* $Id: tstRTFileAio.cpp 29393 2010-05-12 00:20:38Z vboxsync $ */
+/* $Id: tstRTFileAio.cpp 45678 2013-04-23 11:28:41Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -84,7 +84,7 @@ void tstFileAioTestReadWriteBasic(RTFILE File, bool fWrite, void *pvTestBuf,
 
     /* Create a context and associate the file handle with it. */
     RTFILEAIOCTX hAioContext;
-    RTTESTI_CHECK_RC_RETV(RTFileAioCtxCreate(&hAioContext, cMaxReqsInFlight), VINF_SUCCESS);
+    RTTESTI_CHECK_RC_RETV(RTFileAioCtxCreate(&hAioContext, cMaxReqsInFlight, 0 /* fFlags */), VINF_SUCCESS);
     RTTESTI_CHECK_RC_RETV(RTFileAioCtxAssociateWithFile(hAioContext, File), VINF_SUCCESS);
 
     /* Initialize requests. */
