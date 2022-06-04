@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 43041 2012-08-28 13:58:40Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 44316 2013-01-21 09:16:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -245,6 +245,11 @@ public:
                                  bool aSetError,
                                  ComObjPtr<Medium> &pMedium);
 
+    HRESULT checkMediaForConflicts(const Guid &aId,
+                                   const Utf8Str &aLocation,
+                                   Utf8Str &aConflictType,
+                                   ComObjPtr<Medium> *pDupMedium);
+
     HRESULT findGuestOSType(const Bstr &bstrOSType,
                             GuestOSType*& pGuestOSType);
 
@@ -308,11 +313,6 @@ private:
     {
         return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true);
     }
-
-    HRESULT checkMediaForConflicts(const Guid &aId,
-                                   const Utf8Str &aLocation,
-                                   Utf8Str &aConflictType,
-                                   ComObjPtr<Medium> *pDupMedium);
 
     HRESULT registerMachine(Machine *aMachine);
 
