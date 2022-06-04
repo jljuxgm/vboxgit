@@ -1,4 +1,4 @@
-/* $Id: strformatnum.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: strformatnum.cpp 44366 2013-01-25 11:03:51Z vboxsync $ */
 /** @file
  * IPRT - String Formatter, Single Numbers.
  */
@@ -49,7 +49,7 @@ RTDECL(ssize_t) RTStrFormatU8(char *pszBuf, size_t cbBuf, uint8_t u8Value, unsig
     {
         char szTmp[64];
         cchRet = RTStrFormatNumber(szTmp, u8Value, uiBase, cchWidth, cchPrecision, fFlags);
-        if ((size_t)cchRet <= cbBuf)
+        if ((size_t)cchRet < cbBuf)
             memcpy(pszBuf, szTmp, cchRet + 1);
         else
         {
