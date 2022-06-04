@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 42407 2012-07-26 11:41:35Z vboxsync $ */
+/* $Id: EMRaw.cpp 42772 2012-08-11 20:16:10Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -1429,10 +1429,9 @@ int emR3RawExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
         if (pCtx->eflags.Bits.u1VM)
             Log(("RV86: %04x:%08x IF=%d VMFlags=%x\n", pCtx->cs.Sel, pCtx->eip, pCtx->eflags.Bits.u1IF, pGCState->uVMFlags));
         else if ((pCtx->ss.Sel & X86_SEL_RPL) == 1)
-        {
-            bool fCSAMScanned = CSAMIsPageScanned(pVM, (RTGCPTR)pCtx->eip);
-            Log(("RR0: %08x ESP=%08x IF=%d VMFlags=%x PIF=%d CPL=%d (Scanned=%d)\n", pCtx->eip, pCtx->esp, pCtx->eflags.Bits.u1IF, pGCState->uVMFlags, pGCState->fPIF, (pCtx->ss.Sel & X86_SEL_RPL), fCSAMScanned));
-        }
+            Log(("RR0: %08x ESP=%08x EFL=%x IF=%d/%d VMFlags=%x PIF=%d CPL=%d (Scanned=%d)\n",
+                 pCtx->eip, pCtx->esp, CPUMRawGetEFlags(pVCpu), !!(pGCState->uVMFlags & X86_EFL_IF), pCtx->eflags.Bits.u1IF,
+                 pGCState->uVMFlags, pGCState->fPIF, (pCtx->ss.Sel & X86_SEL_RPL), CSAMIsPageScanned(pVM, (RTGCPTR)pCtx->eip)));
         else if ((pCtx->ss.Sel & X86_SEL_RPL) == 3)
             Log(("RR3: %08x ESP=%08x IF=%d VMFlags=%x\n", pCtx->eip, pCtx->esp, pCtx->eflags.Bits.u1IF, pGCState->uVMFlags));
 #endif /* LOG_ENABLED */
@@ -1461,7 +1460,9 @@ int emR3RawExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
         }
         STAM_PROFILE_ADV_START(&pVCpu->em.s.StatRAWTail, d);
 
-        LogFlow(("RR%u-E: %08x ESP=%08x IF=%d VMFlags=%x PIF=%d\n", (pCtx->ss.Sel & X86_SEL_RPL), pCtx->eip, pCtx->esp, pCtx->eflags.Bits.u1IF, pGCState->uVMFlags, pGCState->fPIF));
+        LogFlow(("RR%u-E: %08x ESP=%08x EFL=%x IF=%d/%d VMFlags=%x PIF=%d\n",
+                 (pCtx->ss.Sel & X86_SEL_RPL), pCtx->eip, pCtx->esp, CPUMRawGetEFlags(pVCpu),
+                 !!(pGCState->uVMFlags & X86_EFL_IF), pCtx->eflags.Bits.u1IF, pGCState->uVMFlags, pGCState->fPIF));
         LogFlow(("VMMR3RawRunGC returned %Rrc\n", rc));
 
 
