@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 45192 2013-03-26 13:37:41Z vboxsync $ */
+/* $Id: QIDialog.cpp 45205 2013-03-27 11:27:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -100,13 +100,21 @@ int QIDialog::exec(bool fShow /* = true */)
     return resultCode;
 }
 
-void QIDialog::showEvent(QShowEvent * /* pEvent */)
+void QIDialog::showEvent(QShowEvent *pEvent)
 {
-    /* Polishing: */
+    /* Make sure we should polish dialog: */
     if (m_fPolished)
         return;
-    m_fPolished = true;
 
+    /* Call to polish-event: */
+    polishEvent(pEvent);
+
+    /* Mark dialog as polished: */
+    m_fPolished = true;
+}
+
+void QIDialog::polishEvent(QShowEvent*)
+{
     /* Make sure layout is polished: */
     adjustSize();
 #ifdef Q_WS_MAC
