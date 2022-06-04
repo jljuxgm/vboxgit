@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 43803 2012-11-05 13:50:57Z vboxsync $ */
+/* $Id: HMInternal.h 43848 2012-11-09 12:57:45Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -692,7 +692,7 @@ typedef struct HMCPU
         } s;
     } PendingIO;
 
-    /** Currently shadow paging mode. */
+    /** Current shadow paging mode. */
     PGMMODE                 enmShadowMode;
 
     /** The CPU ID of the CPU currently owning the VMCS. Set in
