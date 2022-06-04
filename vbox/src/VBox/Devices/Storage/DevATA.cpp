@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 45972 2013-05-09 21:06:06Z vboxsync $ */
+/* $Id: DevATA.cpp 45973 2013-05-09 21:10:18Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -205,6 +205,8 @@ typedef struct ATADevState
 
     /** Media type if known. */
     volatile uint32_t MediaTrackType;
+
+    uint32_t    Aligmnent0; /**< Padding to 8-byte boundary. */
 
     /** The status LED state for this drive. */
     PDMLED Led;
