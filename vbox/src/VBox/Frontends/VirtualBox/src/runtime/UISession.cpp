@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 43396 2012-09-21 12:10:50Z vboxsync $ */
+/* $Id: UISession.cpp 43424 2012-09-25 09:01:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1135,8 +1135,11 @@ bool UISession::preparePowerUp()
               || m_machineState == KMachineState_Teleported)
              && machine.GetTeleporterEnabled()))
     {
-        UIWizardFirstRun wzd(mainMachineWindow(), session().GetMachine());
-        wzd.exec();
+        UISafePointerWizard pWizard = new UIWizardFirstRun(mainMachineWindow(), session().GetMachine());
+        pWizard->prepare();
+        pWizard->exec();
+        if (pWizard)
+            delete pWizard;
     }
 
     /* Skip further checks if VM in saved state */

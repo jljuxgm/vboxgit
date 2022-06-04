@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 43132 2012-08-31 11:36:34Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 43424 2012-09-25 09:01:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -3087,8 +3087,12 @@ QString UIMachineSettingsStorage::getWithNewHDWizard()
     CGuestOSType guestOSType = vboxGlobal().virtualBox().GetGuestOSType(m_strMachineGuestOSTypeId);
     QFileInfo fileInfo(m_strMachineSettingsFilePath);
     /* Show New VD wizard: */
-    UIWizardNewVD dlg(this, QString(), fileInfo.absolutePath(), guestOSType.GetRecommendedHDD());
-    return dlg.exec() == QDialog::Accepted ? dlg.virtualDisk().GetId() : QString();
+    UISafePointerWizardNewVD pWizard = new UIWizardNewVD(this, QString(), fileInfo.absolutePath(), guestOSType.GetRecommendedHDD());
+    pWizard->prepare();
+    QString strResult = pWizard->exec() == QDialog::Accepted ? pWizard->virtualDisk().GetId() : QString();
+    if (pWizard)
+        delete pWizard;
+    return strResult;
 }
 
 void UIMachineSettingsStorage::updateAdditionalObjects (KDeviceType aType)

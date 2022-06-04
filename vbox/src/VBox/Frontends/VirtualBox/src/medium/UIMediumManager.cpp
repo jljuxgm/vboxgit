@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 43424 2012-09-25 09:01:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1096,8 +1096,11 @@ void UIMediumManager::doCopyMedium()
     MediaItem *pItem = toMediaItem(pTree->currentItem());
 
     /* Show Clone VD wizard: */
-    UIWizardCloneVD wizard(this, pItem->medium().medium());
-    wizard.exec();
+    UISafePointerWizard pWizard = new UIWizardCloneVD(this, pItem->medium().medium());
+    pWizard->prepare();
+    pWizard->exec();
+    if (pWizard)
+        delete pWizard;
 }
 
 void UIMediumManager::doModifyMedium()

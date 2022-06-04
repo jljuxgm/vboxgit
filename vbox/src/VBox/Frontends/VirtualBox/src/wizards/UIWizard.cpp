@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIWizard.cpp 43424 2012-09-25 09:01:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -27,14 +27,6 @@
 #include "UIWizardPage.h"
 #include "VBoxGlobal.h"
 #include "QIRichTextLabel.h"
-
-int	UIWizard::exec()
-{
-    /* Prepare wizard: */
-    prepare();
-    /* Call to base-class: */
-    return QWizard::exec();
-}
 
 void UIWizard::sltCurrentIdChanged(int iId)
 {
@@ -242,7 +234,8 @@ void UIWizard::resizeToGoldenRatio()
         resizeAccordingLabelWidth(iInitialLabelWidth);
 
         /* Get some (first) of those pages: */
-        UIWizardPage *pPage = qobject_cast<UIWizardPage*>(page(0));
+        QList<int> pids = pageIds();
+        UIWizardPage *pPage = qobject_cast<UIWizardPage*>(page(pids.first()));
         /* Calculate actual label width: */
         int iPageWidth = pPage->minimumWidth();
         int iLeft, iTop, iRight, iBottom;

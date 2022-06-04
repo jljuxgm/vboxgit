@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 42925 2012-08-22 16:08:27Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 43424 2012-09-25 09:01:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -704,8 +704,11 @@ void VBoxSnapshotsWgt::sltCloneSnapshot()
     AssertReturn(!machine.isNull(), (void)0);
 
     /* Show Clone VM wizard: */
-    UIWizardCloneVM wzd(this, machine, snapshot);
-    wzd.exec();
+    UISafePointerWizard pWizard = new UIWizardCloneVM(this, machine, snapshot);
+    pWizard->prepare();
+    pWizard->exec();
+    if (pWizard)
+        delete pWizard;
 }
 
 void VBoxSnapshotsWgt::machineDataChanged(QString strId)
