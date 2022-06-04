@@ -1,4 +1,4 @@
-/* $Id: tstGuestCtrlContextID.cpp 42214 2012-07-18 18:02:58Z vboxsync $ */
+/* $Id: tstGuestCtrlContextID.cpp 42215 2012-07-18 18:05:25Z vboxsync $ */
 
 /** @file
  *
@@ -84,23 +84,6 @@ int main()
                          s, p, c, uContextID);
         }
     }
-
-#if 0
-    #define VBOX_GUESTCTRL_CONTEXTID_MAKE(uSession, uProcess, uCount) \
-    (  (uint32_t)((uSession) &   0xff) << 24 \
-     | (uint32_t)((uProcess) &   0xff) << 16 \
-     | (uint32_t)((uCount)   & 0xffff)       \
-    )
-/** Gets the session ID out of a context ID. */
-#define VBOX_GUESTCTRL_CONTEXTID_GET_SESSION(uContextID) \
-    (uContextID) >> 24)
-/** Gets the process ID out of a context ID. */
-#define VBOX_GUESTCTRL_CONTEXTID_GET_PROCESS(uContextID) \
-    (uContextID) >> 16)
-/** Gets the conext count of a process out of a context ID. */
-#define VBOX_GUESTCTRL_CONTEXTID_GET_COUNT(uContextID) \
-    ((uContextID) && 0xffff)
-#endif
 
     RTTestIPrintf(RTTESTLVL_DEBUG, "Shutting down COM...\n");
     com::Shutdown();
