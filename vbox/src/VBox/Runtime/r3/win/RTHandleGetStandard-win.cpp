@@ -1,10 +1,10 @@
-/* $Id: RTHandleGetStandard-win.cpp 36123 2011-03-01 15:38:35Z vboxsync $ */
+/* $Id: RTHandleGetStandard-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - RTHandleGetStandard, Windows.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

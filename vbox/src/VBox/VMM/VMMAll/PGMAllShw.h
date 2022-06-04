@@ -1,10 +1,10 @@
-/* $Id: PGMAllShw.h 43872 2012-11-15 08:52:11Z vboxsync $ */
+/* $Id: PGMAllShw.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

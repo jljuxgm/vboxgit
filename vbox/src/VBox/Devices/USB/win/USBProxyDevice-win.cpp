@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 37346 2011-06-07 13:06:29Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

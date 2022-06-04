@@ -1,10 +1,10 @@
-/* $Id: VMMSwitcher.h 41976 2012-07-01 14:16:40Z vboxsync $ */
+/* $Id: VMMSwitcher.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VMM - World Switchers.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

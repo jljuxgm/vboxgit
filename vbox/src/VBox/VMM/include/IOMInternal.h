@@ -1,10 +1,10 @@
-/* $Id: IOMInternal.h 41730 2012-06-14 23:28:16Z vboxsync $ */
+/* $Id: IOMInternal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

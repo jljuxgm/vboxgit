@@ -1,10 +1,10 @@
-/* $Id: tstRTFileGetSize-1.cpp 44200 2012-12-23 18:34:34Z vboxsync $ */
+/* $Id: tstRTFileGetSize-1.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTFileGetSize.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

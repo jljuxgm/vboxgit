@@ -1,10 +1,10 @@
-/* $Id: PGMInline.h 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: PGMInline.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

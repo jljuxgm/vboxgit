@@ -1,10 +1,10 @@
-/** $Id: USBLib-solaris.cpp 40504 2012-03-16 16:38:06Z vboxsync $ */
+/** $Id: USBLib-solaris.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Solaris flavor.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: vboxhgcm.c 42499 2012-08-01 10:26:43Z vboxsync $ */
+/* $Id: vboxhgcm.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

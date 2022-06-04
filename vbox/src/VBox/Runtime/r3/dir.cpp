@@ -1,10 +1,10 @@
-/* $Id: dir.cpp 39627 2011-12-15 11:44:19Z vboxsync $ */
+/* $Id: dir.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

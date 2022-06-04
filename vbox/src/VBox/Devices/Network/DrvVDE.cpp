@@ -1,11 +1,11 @@
-/* $Id: DrvVDE.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DrvVDE.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VDE network transport driver.
  */
 
 /*
  * Contributed by Renzo Davoli. VirtualSquare. University of Bologna, 2010
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

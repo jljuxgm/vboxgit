@@ -1,10 +1,10 @@
-/* $Id: UsbKbd.cpp 44022 2012-12-03 17:51:50Z vboxsync $ */
+/* $Id: UsbKbd.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

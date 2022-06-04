@@ -1,10 +1,10 @@
-/* $Id: NetIf-win.cpp 40080 2012-02-11 11:37:28Z vboxsync $ */
+/* $Id: NetIf-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

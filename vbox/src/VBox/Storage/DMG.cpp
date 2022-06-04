@@ -1,10 +1,10 @@
-/* $Id: DMG.cpp 44252 2013-01-08 13:23:54Z vboxsync $ */
+/* $Id: DMG.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

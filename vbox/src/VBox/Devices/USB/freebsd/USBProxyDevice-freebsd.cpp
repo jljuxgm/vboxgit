@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-freebsd.cpp 43125 2012-08-30 19:17:22Z vboxsync $ */
+/* $Id: USBProxyDevice-freebsd.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * USB device proxy - the FreeBSD backend.
  */
@@ -6,7 +6,7 @@
 /*
  * Includes contributions from Hans Petter Selasky
  *
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

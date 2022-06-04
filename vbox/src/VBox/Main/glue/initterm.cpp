@@ -1,11 +1,11 @@
-/* $Id: initterm.cpp 41017 2012-04-20 21:56:33Z vboxsync $ */
+/* $Id: initterm.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

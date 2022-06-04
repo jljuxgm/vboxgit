@@ -1,10 +1,10 @@
-/* $Id: DevIchAc97.cpp 35487 2011-01-11 13:45:20Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
 
 /*
- * Copyright (C) 2006-2008 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

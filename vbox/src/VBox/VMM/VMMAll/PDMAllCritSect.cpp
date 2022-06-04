@@ -1,10 +1,10 @@
-/* $Id: PDMAllCritSect.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, All Contexts.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibCredentials.cpp 40436 2012-03-12 18:28:21Z vboxsync $ */
+/* $Id: VBoxGuestR3LibCredentials.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, user credentials.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

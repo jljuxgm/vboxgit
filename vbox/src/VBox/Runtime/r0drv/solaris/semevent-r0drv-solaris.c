@@ -1,10 +1,10 @@
-/* $Id: semevent-r0drv-solaris.c 42835 2012-08-16 05:32:52Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

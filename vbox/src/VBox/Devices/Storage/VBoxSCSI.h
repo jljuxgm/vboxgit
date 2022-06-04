@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 43661 2012-10-16 17:22:59Z vboxsync $ */
+/* $Id: VBoxSCSI.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

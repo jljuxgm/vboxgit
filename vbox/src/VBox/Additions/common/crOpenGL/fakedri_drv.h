@@ -1,4 +1,4 @@
-/* $Id: fakedri_drv.h 32404 2010-09-10 13:17:42Z vboxsync $ */
+/* $Id: fakedri_drv.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

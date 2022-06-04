@@ -1,10 +1,10 @@
-/* $Id: spinlock-r0drv-linux.c 44451 2013-01-30 07:58:43Z vboxsync $ */
+/* $Id: spinlock-r0drv-linux.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

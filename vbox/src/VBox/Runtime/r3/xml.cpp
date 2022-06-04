@@ -1,10 +1,10 @@
-/* $Id: xml.cpp 43902 2012-11-16 18:23:10Z vboxsync $ */
+/* $Id: xml.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
 
 /*
- * Copyright (C) 2007-2011 Oracle Corporation
+ * Copyright (C) 2007-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

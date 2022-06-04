@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

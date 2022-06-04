@@ -1,10 +1,10 @@
-/* $Id: tcp_input.c 41453 2012-05-26 03:40:24Z vboxsync $ */
+/* $Id: tcp_input.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

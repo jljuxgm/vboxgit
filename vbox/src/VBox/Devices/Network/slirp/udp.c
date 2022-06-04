@@ -1,10 +1,10 @@
-/* $Id: udp.c 41987 2012-07-02 16:44:45Z vboxsync $ */
+/* $Id: udp.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

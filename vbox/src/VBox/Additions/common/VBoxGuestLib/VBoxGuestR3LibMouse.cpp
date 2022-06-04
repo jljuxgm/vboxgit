@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibMouse.cpp 42227 2012-07-19 12:21:49Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMouse.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Mouse.
  */
 
 /*
- * Copyright (C) 2007 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

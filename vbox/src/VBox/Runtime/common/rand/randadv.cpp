@@ -1,10 +1,10 @@
-/* $Id: randadv.cpp 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: randadv.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers, Generic Glue.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

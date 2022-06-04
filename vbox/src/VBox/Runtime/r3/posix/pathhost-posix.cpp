@@ -1,10 +1,10 @@
-/* $Id: pathhost-posix.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
+/* $Id: pathhost-posix.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Path Conversions, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: zone.h 38492 2011-08-19 03:24:58Z vboxsync $ */
+/* $Id: zone.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * NAT - this file is for sharing zone declaration with emu emulation and logging routines.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

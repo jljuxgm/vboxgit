@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.h 36527 2011-04-04 13:16:09Z vboxsync $ */
+/* $Id: HostHardwareLinux.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VirtualBox Main - Classes for handling hardware detection under Linux.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2008-2009 Oracle Corporation
+ * Copyright (C) 2008-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

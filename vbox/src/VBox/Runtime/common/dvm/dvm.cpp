@@ -1,10 +1,10 @@
-/* $Id: dvm.cpp 41549 2012-06-01 17:29:05Z vboxsync $ */
+/* $Id: dvm.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - generic code.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

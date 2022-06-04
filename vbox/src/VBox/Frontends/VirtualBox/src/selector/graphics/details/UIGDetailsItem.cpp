@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 44304 2013-01-16 11:54:25Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

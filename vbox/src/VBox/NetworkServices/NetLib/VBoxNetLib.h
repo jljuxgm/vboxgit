@@ -1,10 +1,10 @@
-/* $Id: VBoxNetLib.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: VBoxNetLib.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

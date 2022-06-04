@@ -1,10 +1,10 @@
-/* $Id: OpenGLTestApp.cpp 40845 2012-04-10 13:07:39Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
 
 /*
- * Copyright (C) 2009-2011 Oracle Corporation
+ * Copyright (C) 2009-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

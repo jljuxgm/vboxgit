@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl.xsl 43103 2012-08-30 13:48:30Z vboxsync $ -->
+<!-- $Id: xpidl.xsl 44528 2013-02-04 14:27:54Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
  *  from the generic interface definition expressed in XML.
 
-    Copyright (C) 2006-2009 Oracle Corporation
+    Copyright (C) 2006-2012 Oracle Corporation
 
     This file is part of VirtualBox Open Source Edition (OSE), as
     available from http://www.virtualbox.org. This file is free software;

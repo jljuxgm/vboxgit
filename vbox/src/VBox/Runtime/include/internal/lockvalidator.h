@@ -1,10 +1,10 @@
-/* $Id: lockvalidator.h 35499 2011-01-12 08:33:45Z vboxsync $ */
+/* $Id: lockvalidator.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Internal RTLockValidator header.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

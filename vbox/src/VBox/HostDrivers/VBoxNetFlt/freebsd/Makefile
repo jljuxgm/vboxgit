@@ -1,11 +1,11 @@
-# $Id: Makefile 36385 2011-03-24 06:15:17Z vboxsync $
+# $Id: Makefile 44528 2013-02-04 14:27:54Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
 
 #
 #
-# Copyright (C) 2006-2007 Oracle Corporation
+# Copyright (C) 2006-2011 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 44518 2013-02-01 16:02:28Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

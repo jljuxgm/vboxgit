@@ -1,11 +1,11 @@
-/* $Id: VBoxDispMp.h 41374 2012-05-21 18:04:03Z vboxsync $ */
+/* $Id: VBoxDispMp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display external interface
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxPkg.h 29252 2010-05-09 17:58:53Z vboxsync $ */
+/* $Id: VBoxPkg.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxPkg.h - Common header, must be include before IPRT and VBox headers.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

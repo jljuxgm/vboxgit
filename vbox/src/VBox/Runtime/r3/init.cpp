@@ -1,10 +1,10 @@
-/* $Id: init.cpp 44486 2013-01-31 12:01:11Z vboxsync $ */
+/* $Id: init.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

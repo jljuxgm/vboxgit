@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceInternal.h 44248 2013-01-08 10:10:22Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

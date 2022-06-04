@@ -1,10 +1,10 @@
-/* $Id: ConsoleVRDPServer.cpp 44525 2013-02-04 07:59:59Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

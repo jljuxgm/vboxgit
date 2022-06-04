@@ -1,10 +1,10 @@
-/* $Id: avllu32.cpp 40053 2012-02-09 15:36:48Z vboxsync $ */
+/* $Id: avllu32.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - AVL tree, uint32_t, unique keys.
  */
 
 /*
- * Copyright (C) 2001-2006 knut st. osmundsen (bird-src-spam@anduin.net)
+ * Copyright (C) 2001-2012 knut st. osmundsen (bird-src-spam@anduin.net)
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

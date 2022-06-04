@@ -1,10 +1,10 @@
-/* $Id: VBoxServicePropCache.cpp 44099 2012-12-12 08:35:51Z vboxsync $ */
+/* $Id: VBoxServicePropCache.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

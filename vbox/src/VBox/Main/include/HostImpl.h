@@ -1,10 +1,10 @@
-/* $Id: HostImpl.h 43629 2012-10-12 09:26:07Z vboxsync $ */
+/* $Id: HostImpl.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

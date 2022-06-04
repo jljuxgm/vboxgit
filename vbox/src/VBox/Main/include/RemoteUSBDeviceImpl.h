@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 38911 2011-09-30 09:52:40Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

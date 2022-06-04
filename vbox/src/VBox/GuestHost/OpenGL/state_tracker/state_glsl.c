@@ -1,11 +1,11 @@
-/* $Id: state_glsl.c 43184 2012-09-05 08:39:46Z vboxsync $ */
+/* $Id: state_glsl.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

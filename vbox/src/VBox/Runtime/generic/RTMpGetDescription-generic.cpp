@@ -1,10 +1,10 @@
-/* $Id: RTMpGetDescription-generic.cpp 29264 2010-05-09 19:58:37Z vboxsync $ */
+/* $Id: RTMpGetDescription-generic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetDescription.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

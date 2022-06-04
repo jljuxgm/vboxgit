@@ -1,10 +1,10 @@
-/* $Id: mp-r0drv-linux.c 37672 2011-06-28 19:48:17Z vboxsync $ */
+/* $Id: mp-r0drv-linux.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: HWVMXR0.h 44267 2013-01-10 11:43:26Z vboxsync $ */
+/* $Id: HWVMXR0.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

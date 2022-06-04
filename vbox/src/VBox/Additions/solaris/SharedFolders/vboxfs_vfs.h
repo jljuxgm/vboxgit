@@ -1,10 +1,10 @@
-/* $Id: vboxfs_vfs.h 39068 2011-10-21 09:26:34Z vboxsync $ */
+/* $Id: vboxfs_vfs.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VFS header.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

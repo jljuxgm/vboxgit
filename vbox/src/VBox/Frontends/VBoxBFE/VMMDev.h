@@ -1,11 +1,11 @@
-/* $Id: VMMDev.h 39892 2012-01-26 20:22:33Z vboxsync $ */
+/* $Id: VMMDev.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Declaration of VMMDev: driver interface to VMM device
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

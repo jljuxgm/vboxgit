@@ -1,10 +1,10 @@
-/* $Id: tstRTR0SemMutexDriver.cpp 40633 2012-03-26 12:00:16Z vboxsync $ */
+/* $Id: tstRTR0SemMutexDriver.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

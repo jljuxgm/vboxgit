@@ -1,10 +1,10 @@
-/* $Id: avl_Get.cpp.h 40938 2012-04-16 11:58:26Z vboxsync $ */
+/* $Id: avl_Get.cpp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * kAVLGet - get routine for AVL trees.
  */
 
 /*
- * Copyright (C) 1999-2002 knut st. osmundsen (bird-src-spam@anduin.net)
+ * Copyright (C) 1999-2012 knut st. osmundsen (bird-src-spam@anduin.net)
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

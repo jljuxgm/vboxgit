@@ -1,11 +1,11 @@
-/* $Id: pack_framebuffer.c 41136 2012-05-03 13:30:02Z vboxsync $ */
+/* $Id: pack_framebuffer.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

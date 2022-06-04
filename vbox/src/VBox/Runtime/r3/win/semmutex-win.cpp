@@ -1,10 +1,10 @@
-/* $Id: semmutex-win.cpp 30111 2010-06-09 12:14:59Z vboxsync $ */
+/* $Id: semmutex-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Windows.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

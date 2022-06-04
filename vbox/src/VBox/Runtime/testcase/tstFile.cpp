@@ -1,10 +1,10 @@
-/* $Id: tstFile.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstFile.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - File I/O.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

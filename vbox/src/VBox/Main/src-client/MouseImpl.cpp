@@ -1,10 +1,10 @@
-/* $Id: MouseImpl.cpp 41131 2012-05-03 11:43:01Z vboxsync $ */
+/* $Id: MouseImpl.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2008 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

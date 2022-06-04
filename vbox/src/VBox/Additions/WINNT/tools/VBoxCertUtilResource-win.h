@@ -1,10 +1,10 @@
-/* $Id: VBoxCertUtilResource-win.h 42939 2012-08-23 10:47:09Z vboxsync $ */
+/* $Id: VBoxCertUtilResource-win.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service, resource IDs.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

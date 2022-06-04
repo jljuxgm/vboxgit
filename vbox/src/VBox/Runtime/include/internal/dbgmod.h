@@ -1,10 +1,10 @@
-/* $Id: dbgmod.h 41493 2012-05-30 13:47:41Z vboxsync $ */
+/* $Id: dbgmod.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

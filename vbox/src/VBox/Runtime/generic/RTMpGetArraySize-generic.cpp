@@ -1,10 +1,10 @@
-/* $Id: RTMpGetArraySize-generic.cpp 40902 2012-04-13 14:05:26Z vboxsync $ */
+/* $Id: RTMpGetArraySize-generic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetArraySize.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-# $Id: Makefile 43129 2012-08-30 20:27:50Z vboxsync $
+# $Id: Makefile 44528 2013-02-04 14:27:54Z vboxsync $
 #* @file
 # Makefile - assembling the iso image for experimenting with EFI.
 #/
 #
 #
-# Copyright (C) 2009-2010 Oracle Corporation
+# Copyright (C) 2009-2012 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

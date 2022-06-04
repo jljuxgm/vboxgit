@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 43601 2012-10-10 14:48:43Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

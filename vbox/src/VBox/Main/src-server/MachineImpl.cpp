@@ -1,10 +1,10 @@
-/* $Id: MachineImpl.cpp 44490 2013-01-31 13:28:16Z vboxsync $ */
+/* $Id: MachineImpl.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2004-2012 Oracle Corporation
+ * Copyright (C) 2004-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

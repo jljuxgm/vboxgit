@@ -1,9 +1,9 @@
-// $Id: vbox-cpuhotplug.dsl 32786 2010-09-28 09:54:55Z vboxsync $
+// $Id: vbox-cpuhotplug.dsl 44528 2013-02-04 14:27:54Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
 //
-// Copyright (C) 2006-2007 Oracle Corporation
+// Copyright (C) 2006-2010 Oracle Corporation
 //
 // This file is part of VirtualBox Open Source Edition (OSE), as
 // available from http://www.virtualbox.org. This file is free software;

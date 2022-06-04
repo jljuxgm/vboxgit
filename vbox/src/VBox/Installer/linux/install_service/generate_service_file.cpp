@@ -1,4 +1,4 @@
-/* $Id: generate_service_file.cpp 44437 2013-01-29 07:33:05Z vboxsync $ */
+/* $Id: generate_service_file.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Read a service file template from standard input and output a service file
  * to standard output generated from the template based on arguments passed to
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxSeamless.cpp 42154 2012-07-13 23:00:53Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

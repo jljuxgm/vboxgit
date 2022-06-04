@@ -1,10 +1,10 @@
-/* $Id: _iprt_atomic.h 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: _iprt_atomic.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT Atomic Operation, for including into a system config header.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

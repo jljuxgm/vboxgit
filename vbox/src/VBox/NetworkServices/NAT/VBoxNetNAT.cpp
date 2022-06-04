@@ -1,10 +1,10 @@
-/* $Id: VBoxNetNAT.cpp 39557 2011-12-08 05:55:10Z vboxsync $ */
+/* $Id: VBoxNetNAT.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

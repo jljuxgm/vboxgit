@@ -1,10 +1,10 @@
-/* $Id: fdc.c 38821 2011-09-22 14:39:27Z vboxsync $ */
+/* $Id: fdc.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

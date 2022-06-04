@@ -1,10 +1,10 @@
-/* $Id: avlgcptr.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: avlgcptr.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - AVL tree, RTGCPTR, unique keys.
  */
 
 /*
- * Copyright (C) 2001-2003 knut st. osmundsen (bird-src-spam@anduin.net)
+ * Copyright (C) 2001-2010 knut st. osmundsen (bird-src-spam@anduin.net)
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

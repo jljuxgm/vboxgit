@@ -1,4 +1,4 @@
-/* $Id: DevVGASavedState.h 44000 2012-11-30 10:03:19Z vboxsync $ */
+/* $Id: DevVGASavedState.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * DevVGA - Saved state versions.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

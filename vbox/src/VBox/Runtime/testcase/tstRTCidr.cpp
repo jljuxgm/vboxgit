@@ -1,10 +1,10 @@
-/* $Id: tstRTCidr.cpp 29845 2010-05-27 11:29:36Z vboxsync $ */
+/* $Id: tstRTCidr.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv4.
  */
 
 /*
- * Copyright (C) 2008-2009 Oracle Corporation
+ * Copyright (C) 2008-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: thread2-r0drv-linux.c 42784 2012-08-12 20:31:36Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

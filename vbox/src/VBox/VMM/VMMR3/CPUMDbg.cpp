@@ -1,10 +1,10 @@
-/* $Id: CPUMDbg.cpp 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

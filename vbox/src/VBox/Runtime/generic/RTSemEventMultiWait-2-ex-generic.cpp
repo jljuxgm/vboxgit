@@ -1,10 +1,10 @@
-/* $Id: RTSemEventMultiWait-2-ex-generic.cpp 36190 2011-03-07 16:28:50Z vboxsync $ */
+/* $Id: RTSemEventMultiWait-2-ex-generic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - RTSemEventMultiWait, implementation based on RTSemEventMultiWaitEx.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

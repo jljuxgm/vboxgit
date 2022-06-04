@@ -1,10 +1,10 @@
-/* $Id: VSCSISense.cpp 43691 2012-10-19 14:10:27Z vboxsync $ */
+/* $Id: VSCSISense.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Sense handling
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 41864 2012-06-21 17:21:12Z vboxsync $ */
+/* $Id: DevPCNet.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

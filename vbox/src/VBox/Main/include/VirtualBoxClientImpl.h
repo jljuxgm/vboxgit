@@ -1,11 +1,11 @@
-/* $Id: VirtualBoxClientImpl.h 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

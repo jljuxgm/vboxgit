@@ -1,11 +1,11 @@
-/* $Id: server_glsl.c 41928 2012-06-27 16:06:23Z vboxsync $ */
+/* $Id: server_glsl.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL related functions
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

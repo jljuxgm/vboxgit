@@ -1,10 +1,10 @@
-/* $Id: RTFileMove-generic.cpp 39644 2011-12-16 10:56:51Z vboxsync $ */
+/* $Id: RTFileMove-generic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - RTFileMove, Generic.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

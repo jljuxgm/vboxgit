@@ -1,10 +1,10 @@
-/* $Id: logo.c 42370 2012-07-24 14:03:21Z vboxsync $ */
+/* $Id: logo.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
 
 /*
- * Copyright (C) 2004-2011 Oracle Corporation
+ * Copyright (C) 2004-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceTimeSync.cpp 43363 2012-09-20 09:56:07Z vboxsync $ */
+/* $Id: VBoxServiceTimeSync.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions TimeSync Service.
  */
 
 /*
- * Copyright (C) 2007 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstUSBLinux.h 30714 2010-07-07 16:20:03Z vboxsync $ */
+/* $Id: tstUSBLinux.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service class, test version for Linux hosts.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: strcache-stubs-generic.cpp 30320 2010-06-21 08:35:09Z vboxsync $ */
+/* $Id: strcache-stubs-generic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - String Cache, stub implementation.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: EMInternal.h 43392 2012-09-21 10:21:29Z vboxsync $ */
+/* $Id: EMInternal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

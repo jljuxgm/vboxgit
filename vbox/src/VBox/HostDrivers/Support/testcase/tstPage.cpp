@@ -1,10 +1,10 @@
-/* $Id: tstPage.cpp 41172 2012-05-04 15:04:24Z vboxsync $ */
+/* $Id: tstPage.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * SUP Testcase - Page allocation interface (ring 3).
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

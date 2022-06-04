@@ -1,10 +1,10 @@
-/* $Id: tstRTDvm.cpp 40027 2012-02-07 23:09:31Z vboxsync $ */
+/* $Id: tstRTDvm.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Disk Volume Management (DVM)
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

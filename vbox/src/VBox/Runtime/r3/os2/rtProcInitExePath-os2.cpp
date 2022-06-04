@@ -1,10 +1,10 @@
-/* $Id: rtProcInitExePath-os2.cpp 28929 2010-04-30 11:26:46Z vboxsync $ */
+/* $Id: rtProcInitExePath-os2.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - rtProcInitName, OS/2.
  */
 
 /*
- * Copyright (C) 2006-2008 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

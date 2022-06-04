@@ -1,10 +1,10 @@
-/* $Id: PDMR0Driver.cpp 41800 2012-06-17 16:18:26Z vboxsync $ */
+/* $Id: PDMR0Driver.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Driver parts.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

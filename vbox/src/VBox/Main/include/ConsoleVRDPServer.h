@@ -1,10 +1,10 @@
-/* $Id: ConsoleVRDPServer.h 44191 2012-12-20 17:36:56Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

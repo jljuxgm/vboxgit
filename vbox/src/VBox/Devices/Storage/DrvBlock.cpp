@@ -1,10 +1,10 @@
-/* $Id: DrvBlock.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DrvBlock.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

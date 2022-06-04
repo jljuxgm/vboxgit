@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 37115 2011-05-16 22:44:58Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

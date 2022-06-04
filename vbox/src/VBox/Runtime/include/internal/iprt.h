@@ -1,10 +1,10 @@
-/* $Id: iprt.h 42784 2012-08-12 20:31:36Z vboxsync $ */
+/* $Id: iprt.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Internal header for miscellaneous global defs and types.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

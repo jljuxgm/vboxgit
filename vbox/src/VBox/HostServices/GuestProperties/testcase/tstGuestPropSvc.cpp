@@ -1,11 +1,11 @@
-/* $Id: tstGuestPropSvc.cpp 44199 2012-12-23 00:27:34Z vboxsync $ */
+/* $Id: tstGuestPropSvc.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest property service.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

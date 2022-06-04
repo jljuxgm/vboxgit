@@ -1,10 +1,10 @@
-/* $Id: fileio-posix.cpp 44298 2013-01-15 14:54:18Z vboxsync $ */
+/* $Id: fileio-posix.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

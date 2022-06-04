@@ -1,10 +1,10 @@
-/* $Id: log.cpp 44369 2013-01-25 11:18:35Z vboxsync $ */
+/* $Id: log.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

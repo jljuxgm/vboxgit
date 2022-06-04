@@ -1,10 +1,10 @@
-/* $Id: gvm.h 37242 2011-05-27 16:17:12Z vboxsync $ */
+/* $Id: gvm.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

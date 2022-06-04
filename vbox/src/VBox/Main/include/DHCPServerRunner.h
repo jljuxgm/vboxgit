@@ -1,10 +1,10 @@
-/* $Id: DHCPServerRunner.h 33590 2010-10-29 08:55:09Z vboxsync $ */
+/* $Id: DHCPServerRunner.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

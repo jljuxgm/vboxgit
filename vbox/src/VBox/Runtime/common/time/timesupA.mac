@@ -1,10 +1,10 @@
-; $Id: timesupA.mac 36262 2011-03-11 14:50:45Z vboxsync $
+; $Id: timesupA.mac 44528 2013-02-04 14:27:54Z vboxsync $
 ;; @file
 ; IPRT - Time using SUPLib, the Assembly Code Template.
 ;
 
 ;
-; Copyright (C) 2006-2007 Oracle Corporation
+; Copyright (C) 2006-2011 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

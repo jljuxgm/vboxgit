@@ -1,10 +1,10 @@
-/* $Id: ldrkStuff.cpp 39436 2011-11-28 13:17:04Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

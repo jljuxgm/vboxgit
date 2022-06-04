@@ -1,10 +1,10 @@
-/* $Id: sbuf.c 39409 2011-11-24 15:28:32Z vboxsync $ */
+/* $Id: sbuf.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * NAT - sbuf implemenation.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/** @file $Id: vboxvideo_drm.h 28800 2010-04-27 08:22:32Z vboxsync $
+/** @file $Id: vboxvideo_drm.h 44528 2013-02-04 14:27:54Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

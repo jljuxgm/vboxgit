@@ -1,10 +1,10 @@
-/* $Id: ConsoleImplTeleporter.cpp 44393 2013-01-25 21:21:05Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

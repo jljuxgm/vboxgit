@@ -1,11 +1,11 @@
-/* $Id: packspu_getshaders.c 42499 2012-08-01 10:26:43Z vboxsync $ */
+/* $Id: packspu_getshaders.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related functions
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

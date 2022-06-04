@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 36618 2011-04-08 07:18:11Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

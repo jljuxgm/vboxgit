@@ -1,11 +1,11 @@
-/* $Id: server_getshaders.c 43051 2012-08-28 15:35:26Z vboxsync $ */
+/* $Id: server_getshaders.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related get functions
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

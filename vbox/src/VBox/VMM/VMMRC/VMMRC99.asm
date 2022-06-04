@@ -1,9 +1,9 @@
-; $Id: VMMRC99.asm 35335 2010-12-27 12:34:40Z vboxsync $
+; $Id: VMMRC99.asm 44528 2013-02-04 14:27:54Z vboxsync $
 ;; @file
 ; VMMGC99 - The last object module in the link.
 ;
 
-; Copyright (C) 2006-2007 Oracle Corporation
+; Copyright (C) 2006-2010 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

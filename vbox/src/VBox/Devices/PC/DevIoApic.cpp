@@ -1,10 +1,10 @@
-/* $Id: DevIoApic.cpp 40956 2012-04-16 22:58:48Z vboxsync $ */
+/* $Id: DevIoApic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

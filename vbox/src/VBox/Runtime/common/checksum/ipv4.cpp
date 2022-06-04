@@ -1,10 +1,10 @@
-/* $Id: ipv4.cpp 39080 2011-10-21 14:26:05Z vboxsync $ */
+/* $Id: ipv4.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - IPv4 Checksum calculation and validation.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

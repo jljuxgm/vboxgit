@@ -1,10 +1,10 @@
-/* $Id: VBoxUsbLib-win.cpp 40189 2012-02-21 09:01:41Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

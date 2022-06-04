@@ -1,10 +1,10 @@
-/* $Id: audiosniffer.c 35402 2011-01-04 14:59:31Z vboxsync $ */
+/* $Id: audiosniffer.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBox audio device: Audio sniffer device
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

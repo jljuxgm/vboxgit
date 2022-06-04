@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

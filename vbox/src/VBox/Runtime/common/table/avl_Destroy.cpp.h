@@ -1,10 +1,10 @@
-/* $Id: avl_Destroy.cpp.h 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: avl_Destroy.cpp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * kAVLDestroy - Walk the tree calling a callback to destroy all the nodes.
  */
 
 /*
- * Copyright (C) 1999-2007 knut st. osmundsen (bird-src-spam@anduin.net)
+ * Copyright (C) 1999-2011 knut st. osmundsen (bird-src-spam@anduin.net)
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

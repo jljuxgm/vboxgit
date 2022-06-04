@@ -1,10 +1,10 @@
-/* $Id: DrvHostBase.cpp 37780 2011-07-05 12:55:13Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstCompressionBenchmark.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
+/* $Id: tstCompressionBenchmark.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Compression Benchmark for SSM and PGM.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 44031 2012-12-04 12:19:12Z vboxsync $ */
+/* $Id: tstCollector.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

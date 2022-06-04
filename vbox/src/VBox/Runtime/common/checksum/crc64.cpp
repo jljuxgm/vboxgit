@@ -1,4 +1,4 @@
-/* $Id: crc64.cpp 31847 2010-08-21 20:33:07Z vboxsync $ */
+/* $Id: crc64.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - CRC64.
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

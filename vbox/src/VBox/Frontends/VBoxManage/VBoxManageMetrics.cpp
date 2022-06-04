@@ -1,10 +1,10 @@
-/* $Id: VBoxManageMetrics.cpp 43933 2012-11-22 07:43:47Z vboxsync $ */
+/* $Id: VBoxManageMetrics.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * VBoxManage - The 'metrics' command.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

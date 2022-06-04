@@ -1,10 +1,10 @@
-/* $Id: fs-posix.cpp 43046 2012-08-28 14:42:11Z vboxsync $ */
+/* $Id: fs-posix.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

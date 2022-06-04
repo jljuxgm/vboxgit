@@ -1,9 +1,9 @@
 #!/bin/sh
-# $Id: tstInstallInit.sh 44437 2013-01-29 07:33:05Z vboxsync $
+# $Id: tstInstallInit.sh 44528 2013-02-04 14:27:54Z vboxsync $
 #
 # VirtualBox init file creator unit test.
 #
-# Copyright (C) 2012 Oracle Corporation
+# Copyright (C) 2013 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

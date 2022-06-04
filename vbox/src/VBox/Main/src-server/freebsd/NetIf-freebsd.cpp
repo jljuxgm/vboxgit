@@ -1,10 +1,10 @@
-/* $Id: NetIf-freebsd.cpp 40910 2012-04-14 07:01:24Z vboxsync $ */
+/* $Id: NetIf-freebsd.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Main - NetIfList, FreeBSD implementation.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

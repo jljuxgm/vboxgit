@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 43958 2012-11-26 10:37:06Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

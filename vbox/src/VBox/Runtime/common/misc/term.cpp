@@ -1,10 +1,10 @@
-/* $Id: term.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
+/* $Id: term.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Common Termination Code.
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: logcom.cpp 39243 2011-11-08 15:36:46Z vboxsync $ */
+/* $Id: logcom.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Logging to Serial Port.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

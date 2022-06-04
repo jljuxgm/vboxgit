@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 44285 2013-01-14 13:11:01Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

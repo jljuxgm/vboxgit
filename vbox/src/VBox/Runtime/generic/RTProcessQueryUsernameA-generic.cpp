@@ -1,10 +1,10 @@
-/* $Id: RTProcessQueryUsernameA-generic.cpp 42078 2012-07-10 08:41:02Z vboxsync $ */
+/* $Id: RTProcessQueryUsernameA-generic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

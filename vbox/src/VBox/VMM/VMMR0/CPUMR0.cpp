@@ -1,10 +1,10 @@
-/* $Id: CPUMR0.cpp 44176 2012-12-19 18:17:48Z vboxsync $ */
+/* $Id: CPUMR0.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: USBDeviceFilterImpl.cpp 35638 2011-01-19 19:10:49Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

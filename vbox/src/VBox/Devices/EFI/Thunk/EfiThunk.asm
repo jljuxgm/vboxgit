@@ -1,4 +1,4 @@
-; $Id: EfiThunk.asm 39163 2011-11-01 18:42:55Z vboxsync $
+; $Id: EfiThunk.asm 44528 2013-02-04 14:27:54Z vboxsync $
 ;; @file
 ; 16-bit EFI Thunk - 16-bit code executed immediately after CPU startup/reset,
 ;                    performs minimal setup, switches CPU to 32-bit mode
@@ -8,7 +8,7 @@
 ;        see: http://www.tortall.net/projects/yasm/manual/html/manual.html#objfmt-bin-section
 
 ;
-; Copyright (C) 2009 Oracle Corporation
+; Copyright (C) 2011 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

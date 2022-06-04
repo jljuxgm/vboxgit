@@ -1,10 +1,10 @@
-/* $Id: initterm-r0drv-solaris.c 41684 2012-06-13 14:23:00Z vboxsync $ */
+/* $Id: initterm-r0drv-solaris.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, Ring-0 Driver, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

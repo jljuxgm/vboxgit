@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 44450 2013-01-30 07:19:06Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008 Oracle Corporation
+ * Copyright (C) 2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

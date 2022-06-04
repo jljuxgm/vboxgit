@@ -1,10 +1,10 @@
-/* $Id: RTAssertShouldPanic-generic.cpp 41618 2012-06-08 09:40:10Z vboxsync $ */
+/* $Id: RTAssertShouldPanic-generic.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Assertions, generic RTAssertShouldPanic.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

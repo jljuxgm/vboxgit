@@ -1,10 +1,10 @@
-/* $Id: tstRTTime.cpp 44220 2013-01-01 17:17:26Z vboxsync $ */
+/* $Id: tstRTTime.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime tests (requires GIP).
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

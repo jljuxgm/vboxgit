@@ -1,4 +1,4 @@
-/* $Id: intnetinline.h 38549 2011-08-26 13:26:07Z vboxsync $ */
+/* $Id: intnetinline.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * INTNET - Internal Networking, Inlined Code. (DEV,++)
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIWin.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstVBoxAPIWin.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  *
  * tstVBoxAPIWin - sample program to illustrate the VirtualBox
@@ -12,7 +12,7 @@
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2010 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: sched-darwin.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: sched-darwin.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, Darwin.
  */
 
 /*
- * Copyright (C) 2006-2009 Oracle Corporation
+ * Copyright (C) 2006-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

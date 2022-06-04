@@ -1,10 +1,10 @@
-/* $Id: ldrELFRelocatable.cpp.h 44042 2012-12-05 14:52:27Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-; $Id: VMMR0JmpA-amd64.asm 39402 2011-11-23 16:25:04Z vboxsync $
+; $Id: VMMR0JmpA-amd64.asm 44528 2013-02-04 14:27:54Z vboxsync $
 ;; @file
 ; VMM - R0 SetJmp / LongJmp routines for AMD64.
 ;
 
 ;
-; Copyright (C) 2006-2009 Oracle Corporation
+; Copyright (C) 2006-2011 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

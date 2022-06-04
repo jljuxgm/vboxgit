@@ -1,10 +1,10 @@
-/* $Id: RTLogWriteDebugger-r0drv-solaris.c 40966 2012-04-17 16:43:28Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-solaris.c 44528 2013-02-04 14:27:54Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
