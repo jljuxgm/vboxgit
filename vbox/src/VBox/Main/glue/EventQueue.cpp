@@ -1,4 +1,4 @@
-/* $Id: EventQueue.cpp 46652 2013-06-19 12:09:03Z vboxsync $ */
+/* $Id: EventQueue.cpp 46717 2013-06-21 08:34:43Z vboxsync $ */
 /** @file
  * Event queue class declaration.
  */
@@ -90,21 +90,24 @@ int EventQueue::processEventQueue(RTMSINTERVAL cMsTimeout)
     if (RT_SUCCESS(rc))
     {
         fWait = mEvents.size() == 0;
-        if (!fWait)
+        if (fWait)
         {
             int rc2 = RTCritSectLeave(&mCritSect);
             AssertRC(rc2);
         }
     }
     else
-        fWait = false;
-
-    if (fWait)
     {
         int rc2 = RTCritSectLeave(&mCritSect);
         AssertRC(rc2);
+        fWait = false;
+    }
 
+    if (fWait)
+    {
         rc = RTSemEventWaitNoResume(mSemEvent, cMsTimeout);
+        if (RT_SUCCESS(rc))
+            rc = RTCritSectEnter(&mCritSect);
     }
 
     if (RT_SUCCESS(rc))
@@ -112,8 +115,6 @@ int EventQueue::processEventQueue(RTMSINTERVAL cMsTimeout)
         if (ASMAtomicReadBool(&mShutdown))
             return VERR_INTERRUPTED;
 
-        if (fWait)
-            rc = RTCritSectEnter(&mCritSect);
         if (RT_SUCCESS(rc))
         {
             EventQueueListIterator it = mEvents.begin();
