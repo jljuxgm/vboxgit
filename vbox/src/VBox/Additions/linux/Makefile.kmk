@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45304 2013-04-03 10:36:00Z vboxsync $
+# $Id: Makefile.kmk 45477 2013-04-11 09:10:52Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -239,7 +239,8 @@ $(addprefix $(VBOX_LNX_ADD_INST_BIN_DIR),$(VBOX_LNX_ADD_STRIP_BIN)): \
 	$(QUIET)objcopy --add-gnu-debuglink=$@ $@
 
 # pattern rule for stripping and copying the VBOX_LNX_ADD_STRIP_SBIN files to the installation directory
-$(addprefix $(VBOX_LNX_ADD_INST_SBIN_DIR),$(VBOX_LNX_ADD_STRIP_SBIN)): \
+$(addprefix $(VBOX_LNX_ADD_INST_SBIN_DIR),\
+		$(filter-out vbox-greeter,$(VBOX_LNX_ADD_STRIP_SBIN))): \
 		$(VBOX_LNX_ADD_INST_SBIN_DIR)% : $(PATH_STAGE_BIN)/additions/% \
 		$(VBOX_LNX_ADD_DBG_SBIN_DIR)% \
 		| $$(dir $$@)
