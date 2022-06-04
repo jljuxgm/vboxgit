@@ -1,4 +1,4 @@
-; $Id: IEMAllAImpl.asm 47399 2013-07-25 18:05:08Z vboxsync $
+; $Id: IEMAllAImpl.asm 47407 2013-07-25 19:37:36Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
@@ -2811,6 +2811,9 @@ ENDPROC iemAImpl_ %+ %1 %+ _u128
 %endmacro
 
 IEMIMPL_MEDIA_F2 pxor
+IEMIMPL_MEDIA_F2 pcmpeqb
+IEMIMPL_MEDIA_F2 pcmpeqw
+IEMIMPL_MEDIA_F2 pcmpeqd
 
 
 ;;
