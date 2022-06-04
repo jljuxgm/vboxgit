@@ -1,4 +1,4 @@
-# $Id: VBoxDebugLib.inf 28800 2010-04-27 08:22:32Z vboxsync $
+# $Id: VBoxDebugLib.inf 42740 2012-08-10 06:59:20Z vboxsync $
 ## @file
 # VBoxDebugLib - Debug logging and assertions support routines using DevEFI.
 #
@@ -43,6 +43,9 @@
         BaseLib
         BaseMemoryLib
         PrintLib
+
+[Protocols]
+    gEfiDevicePathToTextProtocolGuid
 
 [Guids]
         # none
