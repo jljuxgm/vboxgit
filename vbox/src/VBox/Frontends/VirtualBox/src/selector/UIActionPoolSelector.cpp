@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 42879 2012-08-20 11:34:13Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 44354 2013-01-24 13:12:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -760,32 +760,6 @@ protected:
     }
 };
 
-
-/* static */
-void UIActionPoolSelector::create()
-{
-    /* Check that instance do NOT exists: */
-    if (m_pInstance)
-        return;
-
-    /* Create instance: */
-    UIActionPoolSelector *pPool = new UIActionPoolSelector;
-    /* Prepare instance: */
-    pPool->prepare();
-}
-
-/* static */
-void UIActionPoolSelector::destroy()
-{
-    /* Check that instance exists: */
-    if (!m_pInstance)
-        return;
-
-    /* Cleanup instance: */
-    m_pInstance->cleanup();
-    /* Delete instance: */
-    delete m_pInstance;
-}
 
 void UIActionPoolSelector::createActions()
 {
