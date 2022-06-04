@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47083 2013-07-10 15:38:57Z vboxsync $
+# $Id: Makefile.kmk 47085 2013-07-10 15:47:58Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -79,7 +79,6 @@ PROGRAMS += \
 	tstLdr \
 	tstLdrLoad \
 	tstRTList \
-	tstRTLocalIpc \
 	tstRTLockValidator \
 	tstLog \
 	tstMemAutoPtr \
@@ -138,8 +137,9 @@ PROGRAMS += \
 	tstVector
 
 PROGRAMS.win += \
-	tstRTProcWait \
 	tstRTCritSectW32 \
+	tstRTLocalIpc \
+	tstRTProcWait \
 	tstFileAppendWin-1 \
 	ntGetTimerResolution
 PROGRAMS.linux += \
