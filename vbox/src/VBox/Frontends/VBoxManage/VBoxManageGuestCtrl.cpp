@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 47859 2013-08-19 21:06:45Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 47872 2013-08-20 06:53:35Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -3120,7 +3120,7 @@ static RTEXITCODE handleCtrlList(ComPtr<IGuest> guest, HandlerArg *pArg)
                                     FileStatus_T fileStatus;
                                     CHECK_ERROR_BREAK(pCurFile, COMGETTER(Status)(&fileStatus));
 
-                                    RTPrintf("\n\t\tFile #%-03zu PID=%-6RU32 Status=[%s] Name=%ls",
+                                    RTPrintf("\n\t\tFile #%-03zu ID=%-6RU32 Status=[%s] Name=%ls",
                                              a, uID, ctrlFileStatusToText(fileStatus), strName.raw());
                                 }
                             }
