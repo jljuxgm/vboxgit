@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 47434 2013-07-27 01:34:28Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 47543 2013-08-05 11:32:00Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -2189,7 +2189,7 @@ VMMDECL(VBOXSTRICTRC) IOMInterpretINSEx(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
 }
 
 
-#if defined(VBOX_WITH_FIRST_IEM_STEP) || defined(IN_RC) /* Latter for IOMRCIOPortHandler */
+#if !defined(VBOX_WITH_FIRST_IEM_STEP) || defined(IN_RC) /* Latter for IOMRCIOPortHandler */
 /**
  * [REP*] INSB/INSW/INSD
  * ES:EDI,DX[,ECX]
@@ -2358,7 +2358,7 @@ VMMDECL(VBOXSTRICTRC) IOMInterpretOUTSEx(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRe
 }
 
 
-#if defined(VBOX_WITH_FIRST_IEM_STEP) || defined(IN_RC) /* Latter for IOMRCIOPortHandler */
+#if !defined(VBOX_WITH_FIRST_IEM_STEP) || defined(IN_RC) /* Latter for IOMRCIOPortHandler */
 /**
  * [REP*] OUTSB/OUTSW/OUTSD
  * DS:ESI,DX[,ECX]
