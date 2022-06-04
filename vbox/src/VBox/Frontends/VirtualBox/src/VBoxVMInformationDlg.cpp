@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 43484 2012-10-01 10:15:57Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 43869 2012-11-14 16:33:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -396,8 +396,8 @@ void VBoxVMInformationDlg::processStatistics()
     /* Process selected statistics: */
     for (DataMapType::const_iterator it = mNamesMap.begin(); it != mNamesMap.end(); ++ it)
     {
-        dbg.GetStats (it.key(), true, info);
-        mValuesMap [it.key()] = parseStatistics (info);
+        info = dbg.GetStats(it.key(), true);
+        mValuesMap[it.key()] = parseStatistics(info);
     }
 
     /* Statistics page update */
