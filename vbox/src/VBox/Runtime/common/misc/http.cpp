@@ -1,4 +1,4 @@
-/* $Id: http.cpp 45631 2013-04-19 08:32:21Z vboxsync $ */
+/* $Id: http.cpp 45632 2013-04-19 08:38:55Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -298,6 +298,8 @@ RTR3DECL(int) RTHttpSetCAFile(RTHTTP hHttp, const char *pcszCAFile)
     if (pHttpInt->pcszCAFile)
         RTStrFree(pHttpInt->pcszCAFile);
     pHttpInt->pcszCAFile = RTStrDup(pcszCAFile);
+    if (!pHttpInt->pcszCAFile)
+        return VERR_NO_MEMORY;
 
     return VINF_SUCCESS;
 }
