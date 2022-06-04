@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43551 2012-10-05 10:38:14Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43565 2012-10-08 12:08:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1079,7 +1079,7 @@ void UIGChooserItemGroup::processDrop(QGraphicsSceneDragDropEvent *pEvent, UIGCh
                 }
 
                 /* Update model: */
-                pModel->updateGroupTree();
+                pModel->cleanupGroupTree();
                 pModel->updateNavigation();
                 pModel->updateLayout();
                 pModel->setCurrentItem(pNewGroupItem);
@@ -1132,7 +1132,7 @@ void UIGChooserItemGroup::processDrop(QGraphicsSceneDragDropEvent *pEvent, UIGCh
                 }
 
                 /* Update model: */
-                pModel->updateGroupTree();
+                pModel->cleanupGroupTree();
                 pModel->updateNavigation();
                 pModel->updateLayout();
                 pModel->setCurrentItem(pNewMachineItem);
