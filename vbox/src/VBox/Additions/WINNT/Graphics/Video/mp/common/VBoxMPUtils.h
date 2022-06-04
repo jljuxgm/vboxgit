@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.h 38765 2011-09-15 14:11:47Z vboxsync $ */
+/* $Id: VBoxMPUtils.h 42151 2012-07-13 16:45:06Z vboxsync $ */
 /** @file
  * VBox Miniport common utils header
  */
@@ -125,8 +125,8 @@ if ((_vps) != NO_ERROR)                 \
 /* specifies whether the vboxVDbgBreakF should break in the debugger
  * windbg seems to have some issues when there is a lot ( >~50) of sw breakpoints defined
  * to simplify things we just insert breaks for the case of intensive debugging WDDM driver*/
-extern bool g_bVBoxVDbgBreakF;
-extern bool g_bVBoxVDbgBreakFv;
+extern int g_bVBoxVDbgBreakF;
+extern int g_bVBoxVDbgBreakFv;
 #define vboxVDbgBreakF() do { if (g_bVBoxVDbgBreakF) AssertBreakpoint(); } while (0)
 #define vboxVDbgBreakFv() do { if (g_bVBoxVDbgBreakFv) AssertBreakpoint(); } while (0)
 #else
