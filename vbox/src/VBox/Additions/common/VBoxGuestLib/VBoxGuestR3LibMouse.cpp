@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMouse.cpp 38592 2011-08-31 20:45:29Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMouse.cpp 42227 2012-07-19 12:21:49Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Mouse.
  */
@@ -66,7 +66,9 @@ VBGLR3DECL(int) VbglR3GetMouseStatus(uint32_t *pfFeatures, uint32_t *px, uint32_
  *
  * @returns VBox status code.
  *
- * @param   fFeatures  Supported mouse pointer features.
+ * @param   fFeatures  Supported mouse pointer features.  The main guest driver
+ *                     will mediate different callers and show the host any
+ *                     feature enabled by any guest caller.
  */
 VBGLR3DECL(int) VbglR3SetMouseStatus(uint32_t fFeatures)
 {
