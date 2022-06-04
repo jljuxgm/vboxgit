@@ -1,4 +1,4 @@
-/* $Id: sg.cpp 44135 2012-12-14 14:51:03Z vboxsync $ */
+/* $Id: sg.cpp 44241 2013-01-07 20:17:19Z vboxsync $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
@@ -31,6 +31,7 @@
 #include <iprt/sg.h>
 #include <iprt/string.h>
 #include <iprt/assert.h>
+#include <iprt/asm.h>
 
 
 static void *sgBufGet(PRTSGBUF pSgBuf, size_t *pcbData)
@@ -419,5 +420,54 @@ RTDECL(size_t) RTSgBufSegArrayCreate(PRTSGBUF pSgBuf, PRTSGSEG paSeg, unsigned *
     *pcSeg = cSeg;
 
     return cb;
+}
+
+RTDECL(bool) RTSgBufIsZero(PRTSGBUF pSgBuf, size_t cbCheck)
+{
+    bool fIsZero = true;
+    size_t cbLeft = cbCheck;
+    RTSGBUF SgBufTmp;
+
+    RTSgBufClone(&SgBufTmp, pSgBuf);
+
+    while (cbLeft)
+    {
+        size_t cbThisCheck = cbLeft;
+        void *pvBuf = sgBufGet(&SgBufTmp, &cbThisCheck);
+
+        if (!cbThisCheck)
+            break;
+
+        /* Use optimized inline assembler if possible. */
+        if (   !(cbThisCheck % 4)
+            && (cbThisCheck * 8 <= UINT32_MAX))
+        {
+            if (ASMBitFirstSet((volatile void *)pvBuf, cbThisCheck * 8) != -1)
+            {
+                fIsZero = false;
+                break;
+            }
+        }
+        else
+        {
+            for (unsigned i = 0; i < cbThisCheck; i++)
+            {
+                char *pbBuf = (char *)pvBuf;
+                if (*pbBuf)
+                {
+                    fIsZero = false;
+                    break;
+                }
+                pvBuf = pbBuf + 1;
+            }
+
+            if (!fIsZero)
+                break;
+        }
+
+        cbLeft -= cbThisCheck;
+    }
+
+    return fIsZero;
 }
 
