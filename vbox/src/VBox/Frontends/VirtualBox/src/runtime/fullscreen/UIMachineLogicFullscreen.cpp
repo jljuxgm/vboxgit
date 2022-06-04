@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 44846 2013-02-27 17:26:33Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 44848 2013-02-27 18:58:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -116,6 +116,17 @@ void UIMachineLogicFullscreen::sltScreenLayoutChanged()
     setPresentationModeEnabled(true);
 }
 #endif /* Q_WS_MAC */
+
+void UIMachineLogicFullscreen::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo)
+{
+    /* Update multi-screen layout before any window update: */
+    if (changeType == KGuestMonitorChangedEventType_Enabled ||
+        changeType == KGuestMonitorChangedEventType_Disabled)
+        m_pScreenLayout->rebuild();
+
+    /* Call to base-class: */
+    UIMachineLogic::sltGuestMonitorChange(changeType, uScreenId, screenGeo);
+}
 
 void UIMachineLogicFullscreen::prepareActionGroups()
 {
