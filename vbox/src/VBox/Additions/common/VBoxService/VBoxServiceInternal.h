@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 42846 2012-08-16 13:35:28Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 44046 2012-12-06 08:20:58Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -426,7 +426,7 @@ extern int                      VBoxServiceControlThreadRequestAlloc(PVBOXSERVIC
                                                                      VBOXSERVICECTRLREQUESTTYPE enmType);
 extern int                      VBoxServiceControlThreadRequestAllocEx(PVBOXSERVICECTRLREQUEST    *ppReq,
                                                                        VBOXSERVICECTRLREQUESTTYPE  enmType,
-                                                                       void*                       pbData,
+                                                                       void                       *pvData,
                                                                        size_t                      cbData,
                                                                        uint32_t                    uCID);
 extern void                     VBoxServiceControlThreadRequestFree(PVBOXSERVICECTRLREQUEST pReq);
