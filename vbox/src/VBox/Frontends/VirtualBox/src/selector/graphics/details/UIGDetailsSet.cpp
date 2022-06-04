@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 44014 2012-12-03 14:37:33Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 44015 2012-12-03 14:45:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -34,7 +34,7 @@ UIGDetailsSet::UIGDetailsSet(UIGDetailsItem *pParent)
     , m_fFullSet(true)
     , m_pStep(0)
     , m_iStep(-1)
-    , m_iLastStep(-1)
+    , m_iLastStepNumber(-1)
 {
     /* Add set to the parent group: */
     parentItem()->addItem(this);
@@ -57,7 +57,7 @@ UIGDetailsSet::~UIGDetailsSet()
 
 void UIGDetailsSet::configure(UIVMItem *pItem, const QStringList &settings, bool fFullSet)
 {
-    /* Assign settings: */
+    /* Remember passed arguments: */
     m_machine = pItem->machine();
     m_fFullSet = fFullSet;
     m_settings = settings;
@@ -69,7 +69,7 @@ void UIGDetailsSet::configure(UIVMItem *pItem, const QStringList &settings, bool
                 delete m_elements[i];
 
     /* Choose last-step number: */
-    m_iLastStep = m_fFullSet ? DetailsElementType_Description : DetailsElementType_Preview;
+    m_iLastStepNumber = m_fFullSet ? DetailsElementType_Description : DetailsElementType_Preview;
 
     /* Fetch USB controller restrictions: */
     const CUSBController &ctl = m_machine.GetUSBController();
@@ -489,7 +489,7 @@ void UIGDetailsSet::prepareElements()
 void UIGDetailsSet::prepareElement(QString strSetId)
 {
     /* Step number feats the bounds: */
-    if (m_iStep <= m_iLastStep)
+    if (m_iStep <= m_iLastStepNumber)
     {
         /* Load details settings: */
         DetailsElementType elementType = (DetailsElementType)m_iStep;
