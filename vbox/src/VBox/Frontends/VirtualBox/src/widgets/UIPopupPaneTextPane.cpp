@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneTextPane.cpp 47042 2013-07-08 14:28:27Z vboxsync $ */
+/* $Id: UIPopupPaneTextPane.cpp 47043 2013-07-08 14:29:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -267,9 +267,9 @@ void UIPopupPaneTextPane::updateSizeHint()
 QFont UIPopupPaneTextPane::tuneFont(QFont font)
 {
 #if defined(Q_WS_MAC)
-    font.setPointSize(currentFont.pointSize() - 2);
+    font.setPointSize(font.pointSize() - 2);
 #elif defined(Q_WS_X11)
-    font.setPointSize(currentFont.pointSize() - 1);
+    font.setPointSize(font.pointSize() - 1);
 #endif
     return font;
 }
