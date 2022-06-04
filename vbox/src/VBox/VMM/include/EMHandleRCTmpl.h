@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 42186 2012-07-17 13:32:15Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 42407 2012-07-26 11:41:35Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -282,6 +282,14 @@ int emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
             }
             LogFlow(("emR3RawHandleRC: %Rrc -> %Rrc\n", rc, VINF_EM_RESCHEDULE_REM));
             rc = VINF_EM_RESCHEDULE_REM;
+            break;
+
+        /*
+         * Conflict in GDT, resync and continue.
+         */
+        case VINF_SELM_SYNC_GDT:
+            AssertMsg(VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_SELM_SYNC_GDT), ("VINF_SELM_SYNC_GDT without VMCPU_FF_SELM_SYNC_GDT!\n"));
+            rc = VINF_SUCCESS;
             break;
 #endif
 

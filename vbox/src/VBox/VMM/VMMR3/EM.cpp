@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 41939 2012-06-27 23:59:46Z vboxsync $ */
+/* $Id: EM.cpp 42407 2012-07-26 11:41:35Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1310,6 +1310,40 @@ EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             Log2(("raw r0 mode refused: IOPL %d\n", EFlags.Bits.u2IOPL));
             return EMSTATE_REM;
         }
+    }
+
+    /*
+     * Stale hidden selectors means raw-mode is unsafe (being very careful).
+     */
+    if (pCtx->cs.fFlags & CPUMSELREG_FLAGS_STALE)
+    {
+        Log2(("raw mode refused: stale CS\n"));
+        return EMSTATE_REM;
+    }
+    if (pCtx->ss.fFlags & CPUMSELREG_FLAGS_STALE)
+    {
+        Log2(("raw mode refused: stale SS\n"));
+        return EMSTATE_REM;
+    }
+    if (pCtx->ds.fFlags & CPUMSELREG_FLAGS_STALE)
+    {
+        Log2(("raw mode refused: stale DS\n"));
+        return EMSTATE_REM;
+    }
+    if (pCtx->es.fFlags & CPUMSELREG_FLAGS_STALE)
+    {
+        Log2(("raw mode refused: stale ES\n"));
+        return EMSTATE_REM;
+    }
+    if (pCtx->fs.fFlags & CPUMSELREG_FLAGS_STALE)
+    {
+        Log2(("raw mode refused: stale FS\n"));
+        return EMSTATE_REM;
+    }
+    if (pCtx->gs.fFlags & CPUMSELREG_FLAGS_STALE)
+    {
+        Log2(("raw mode refused: stale GS\n"));
+        return EMSTATE_REM;
     }
 
     /*Assert(PGMPhysIsA20Enabled(pVCpu));*/
