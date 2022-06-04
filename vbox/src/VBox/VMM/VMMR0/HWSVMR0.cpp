@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 45531 2013-04-13 09:01:30Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 45749 2013-04-26 00:14:09Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1543,7 +1543,7 @@ ResumeExecution:
     }
 
     TMNotifyEndOfExecution(pVCpu);
-    VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED);
+    VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_HM);
     STAM_PROFILE_ADV_STOP_START(&pVCpu->hm.s.StatInGC, &pVCpu->hm.s.StatExit1, x);
     ASMSetFlags(uOldEFlags);
 #ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
@@ -2824,7 +2824,7 @@ end:
         rc = VINF_EM_RAW_EMULATE_INSTR;
 
     /* Just set the correct state here instead of trying to catch every goto above. */
-    VMCPU_CMPXCHG_STATE(pVCpu, VMCPUSTATE_STARTED, VMCPUSTATE_STARTED_EXEC);
+    VMCPU_CMPXCHG_STATE(pVCpu, VMCPUSTATE_STARTED_HM, VMCPUSTATE_STARTED_EXEC);
 
 #ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
     /* Restore interrupts if we exitted after disabling them. */

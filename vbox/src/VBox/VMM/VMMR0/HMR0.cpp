@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 45378 2013-04-05 14:43:12Z vboxsync $ */
+/* $Id: HMR0.cpp 45749 2013-04-26 00:14:09Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1490,7 +1490,7 @@ VMMR0_INT_DECL(int) HMR0Leave(PVM pVM, PVMCPU pVCpu)
         Log2(("CPUMR0SaveGuestFPU\n"));
         CPUMR0SaveGuestFPU(pVM, pVCpu, pCtx);
 
-        pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_CR0;
+        pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_GUEST_CR0; /** @todo r=bird: Why HM_CHANGED_GUEST_CR0?? */
         Assert(!CPUMIsGuestFPUStateActive(pVCpu));
     }
 #endif

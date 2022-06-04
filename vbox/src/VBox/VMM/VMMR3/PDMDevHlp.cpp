@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 45645 2013-04-19 13:46:48Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 45749 2013-04-26 00:14:09Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -3334,12 +3334,12 @@ static DECLCALLBACK(int) pdmR3DevHlp_VMPowerOff(PPDMDEVINS pDevIns)
     /** @todo Always take the SMP path - fewer code paths. */
     if (pVM->cCpus > 1)
     {
-        /* We own the IOM lock here and could cause a deadlock by waiting for a VCPU that is blocking on the IOM lock. */
+        /* We might be holding locks here and could cause a deadlock since
+           VMR3PowerOff rendezvous with the other CPUs. */
         rc = VMR3ReqCallNoWait(pVM, VMCPUID_ANY_QUEUE, (PFNRT)VMR3PowerOff, 1, pVM->pUVM);
         AssertRC(rc);
         /* Set the VCPU state to stopped here as well to make sure no
-         * inconsistency with the EM state occurs.
-         */
+           inconsistency with the EM state occurs. */
         VMCPU_SET_STATE(VMMGetCpu(pVM), VMCPUSTATE_STOPPED);
         rc = VINF_EM_OFF;
     }
