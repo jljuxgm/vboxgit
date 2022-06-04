@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 45047 2013-03-15 09:19:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -62,8 +62,8 @@ public:
         QString strDot("\\.");
         QString strDigits("(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)");
         QRegExp intRegExp(QString("^(%1?(%2(%1?(%2(%1?(%2%1?)?)?)?)?)?)?$").arg(strDigits).arg(strDot));
-        uint uNetwork, uMask;
-        if (strStringToValidate == "..." || RTCidrStrToIPv4(strStringToValidate.toLatin1().constData(), &uNetwork, &uMask) == VINF_SUCCESS)
+        RTNETADDRIPV4 Network, Mask;
+        if (strStringToValidate == "..." || RTCidrStrToIPv4(strStringToValidate.toLatin1().constData(), &Network, &Mask) == VINF_SUCCESS)
             return QValidator::Acceptable;
         else if (intRegExp.indexIn(strStringToValidate) != -1)
             return QValidator::Intermediate;

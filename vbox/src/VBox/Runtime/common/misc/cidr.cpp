@@ -1,4 +1,4 @@
-/* $Id: cidr.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: cidr.cpp 45047 2013-03-15 09:19:16Z vboxsync $ */
 /** @file
  * IPRT - IPv4 address parsing.
  */
@@ -37,7 +37,7 @@
 #include <iprt/stream.h>
 
 
-RTDECL(int) RTCidrStrToIPv4(const char *pszAddress, PRTIPV4ADDR pNetwork, PRTIPV4ADDR pNetmask)
+RTDECL(int) RTCidrStrToIPv4(const char *pszAddress, PRTNETADDRIPV4 pNetwork, PRTNETADDRIPV4 pNetmask)
 {
     uint8_t cBits;
     uint8_t addr[4];
@@ -110,8 +110,8 @@ RTDECL(int) RTCidrStrToIPv4(const char *pszAddress, PRTIPV4ADDR pNetwork, PRTIPV
     if ((u32Network & ~u32Netmask) != 0)
         return VERR_INVALID_PARAMETER;
 
-    *pNetmask = u32Netmask;
-    *pNetwork = u32Network;
+    pNetmask->u = u32Netmask;
+    pNetwork->u = u32Network;
     return VINF_SUCCESS;
 }
 RT_EXPORT_SYMBOL(RTCidrStrToIPv4);
