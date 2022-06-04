@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 47067 2013-07-10 11:11:20Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 47073 2013-07-10 12:11:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,6 +26,9 @@
 # include "UIFrameBuffer.h"
 # include "UIMessageCenter.h"
 # include "VBoxGlobal.h"
+# ifdef Q_WS_X11
+#  include "UIMachineWindow.h"
+# endif /* Q_WS_X11 */
 
 /* Other VBox includes: */
 # include <VBox/VBoxVideo3D.h>
