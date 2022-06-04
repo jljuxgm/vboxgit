@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 45568 2013-04-16 12:26:50Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 45571 2013-04-16 13:10:30Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -799,6 +799,8 @@ int GuestBase::generateContextID(uint32_t uSessionID, uint32_t uObjectID, uint32
         VBOX_GUESTCTRL_CONTEXTID_MAKE(uSessionID, uObjectID, uCount);
 
     *puContextID = uNewContextID;
+
+    return VINF_SUCCESS;
 }
 
 GuestObject::GuestObject(void)
