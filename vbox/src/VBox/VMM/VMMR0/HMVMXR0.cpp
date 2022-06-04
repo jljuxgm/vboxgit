@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47472 2013-07-30 11:57:14Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47512 2013-08-01 16:30:19Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7420,7 +7420,7 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmi(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANS
          * Dispatch the NMI to the host. See Intel spec. 27.5.5 "Updating Non-Register State".
          */
         VMXDispatchHostNmi();
-        STAM_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmi);
+        STAM_REL_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmi);
         STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatExitXcptNmi, y3);
         return VINF_SUCCESS;
     }

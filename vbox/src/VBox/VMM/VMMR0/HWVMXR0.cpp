@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 47472 2013-07-30 11:57:14Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 47512 2013-08-01 16:30:19Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3534,7 +3534,7 @@ ResumeExecution:
         {
         case VMX_EXIT_INTERRUPTION_INFO_TYPE_NMI:       /* Non-maskable interrupt. */
             /* External interrupt; leave to allow it to be dispatched again. */
-            STAM_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmi);
+            STAM_REL_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmi);
             rc = VINF_EM_RAW_INTERRUPT;
             break;
 
