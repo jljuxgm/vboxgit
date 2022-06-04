@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 43624 2012-10-11 20:40:21Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 44397 2013-01-27 20:23:39Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -44,7 +44,7 @@
  */
 
 /** Enable for delay injection from the debugger. */
-#if 0
+#if 1
 # define PDM_ASYNC_COMPLETION_FILE_WITH_DELAY
 #endif
 
@@ -427,6 +427,8 @@ typedef struct PDMASYNCCOMPLETIONENDPOINTFILE
          * task writing to that range has to wait until the task completes.
          */
         PAVLRFOFFTREE                              pTreeRangesLocked;
+        /** Number of requests with a range lock active. */
+        unsigned                                   cLockedReqsActive;
         /** Number of requests currently being processed for this endpoint
          * (excluded flush requests). */
         unsigned                                   cRequestsActive;
