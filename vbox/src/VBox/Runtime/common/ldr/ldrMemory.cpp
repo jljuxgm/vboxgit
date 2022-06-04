@@ -1,4 +1,5 @@
-/* $Id: ldrMemory.cpp 46083 2013-05-14 23:39:28Z vboxsync $ */
+
+/* $Id: ldrMemory.cpp 46084 2013-05-15 00:02:15Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The Memory/Debugger Oriented Parts.
  */
@@ -223,7 +224,7 @@ static DECLCALLBACK(int) rtldrRdrMem_Destroy(PRTLDRREADER pReader)
 static int rtldrRdrMem_Create(PRTLDRREADER *ppReader, const char *pszName, size_t cbImage,
                               PFNRTLDRRDRMEMREAD pfnRead, PFNRTLDRRDRMEMDTOR pfnDtor, void *pvUser)
 {
-    AssertReturn((RTFOFF)cbImage < RTFOFF_MAX, VERR_INVALID_PARAMETER);
+    AssertReturn(sizeof(cbImage) < sizeof(RTFOFF) || cbImage < RTFOFF_MAX, VERR_INVALID_PARAMETER);
     AssertReturn((RTFOFF)cbImage > 0, VERR_INVALID_PARAMETER);
 
     size_t cchName = strlen(pszName);
