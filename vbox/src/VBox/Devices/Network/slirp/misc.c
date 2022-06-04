@@ -1,4 +1,4 @@
-/* $Id: misc.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: misc.c 45087 2013-03-19 11:10:36Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -98,8 +98,13 @@ fd_nonblock(int fd)
 
     opt = fcntl(fd, F_GETFL, 0);
     opt |= O_NONBLOCK;
+
+
     fcntl(fd, F_SETFL, opt);
 # endif
+#ifndef RT_OS_WINDOWS
+    setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, &opt, sizeof(int));
+#ednif
 }
 
 # if !defined(VBOX_NAT_MEM_DEBUG)
