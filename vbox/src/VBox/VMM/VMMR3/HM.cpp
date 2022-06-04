@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45701 2013-04-24 14:21:09Z vboxsync $ */
+/* $Id: HM.cpp 45705 2013-04-24 14:37:42Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -838,7 +838,6 @@ static void hmR3DisableRawMode(PVM pVM)
 {
 #ifdef VBOX_WITH_RAW_MODE
     /* Turn off IDT/LDT/GDT and TSS monitoring and sycing. */
-    SELMR3DisableMonitoring(pVM);
     TRPMR3DisableMonitoring(pVM);
 #endif
 

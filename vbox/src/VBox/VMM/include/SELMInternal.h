@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 45533 2013-04-13 16:13:22Z vboxsync $ */
+/* $Id: SELMInternal.h 45705 2013-04-24 14:37:42Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -166,12 +166,9 @@ typedef struct SELM
     /** Indicates that the Guest GDT access handler have been registered. */
     bool                    fGDTRangeRegistered;
 
-    /** Indicates whether LDT/GDT/TSS monitoring and syncing is disabled. */
-    bool                    fDisableMonitoring;
-
     /** Indicates whether the TSS stack selector & base address need to be refreshed.  */
     bool                    fSyncTSSRing0Stack;
-    bool                    fPadding2[1+2];
+    bool                    fPadding2[4];
 
     /** SELMR3UpdateFromCPUM() profiling. */
     STAMPROFILE             StatUpdateFromCPUM;
