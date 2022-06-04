@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 45618 2013-04-18 18:41:07Z vboxsync $ */
+/* $Id: PGM.cpp 45701 2013-04-24 14:21:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3378,7 +3378,8 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
     enmShadowMode = pgmR3CalcShadowMode(pVM, enmGuestMode, pVM->pgm.s.enmHostMode, pVCpu->pgm.s.enmShadowMode, &enmSwitcher);
 
 #ifdef VBOX_WITH_RAW_MODE
-    if (enmSwitcher != VMMSWITCHER_INVALID)
+    if (   enmSwitcher != VMMSWITCHER_INVALID
+        && !HMIsEnabled(pVM))
     {
         /*
          * Select new switcher.

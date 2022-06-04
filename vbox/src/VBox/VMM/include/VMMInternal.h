@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 45097 2013-03-19 19:05:53Z vboxsync $ */
+/* $Id: VMMInternal.h 45701 2013-04-24 14:21:09Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -216,19 +216,18 @@ typedef struct VMM
     RTR0PTR                     pvCoreCodeR0;
     /** Pointer to core code guest context mapping. */
     RTRCPTR                     pvCoreCodeRC;
-    RTRCPTR                     pRCPadding0; /**< Alignment padding */
+    RTRCPTR                     pRCPadding0; /**< Alignment padding. */
 #ifdef VBOX_WITH_NMI
     /** The guest context address of the APIC (host) mapping. */
     RTRCPTR                     GCPtrApicBase;
-    RTRCPTR                     pRCPadding1; /**< Alignment padding */
+    RTRCPTR                     pRCPadding1; /**< Alignment padding. */
 #endif
     /** The current switcher.
      * This will be set before the VMM is fully initialized. */
     VMMSWITCHER                 enmSwitcher;
-    /** Flag to disable the switcher permanently (VMX) (boolean) */
-    bool                        fSwitcherDisabled;
     /** Array of offsets to the different switchers within the core code. */
-    RTUINT                      aoffSwitchers[VMMSWITCHER_MAX];
+    uint32_t                    aoffSwitchers[VMMSWITCHER_MAX];
+    uint32_t                    u32Padding2; /**< Alignment padding. */
 
     /** Resume Guest Execution. See CPUMGCResumeGuest(). */
     RTRCPTR                     pfnCPUMRCResumeGuest;

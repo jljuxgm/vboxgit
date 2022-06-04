@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 45531 2013-04-13 09:01:30Z vboxsync $ */
+/* $Id: IEMAll.cpp 45701 2013-04-24 14:21:09Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -86,6 +86,7 @@
 #include <internal/pgm.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/em.h>
+#include <VBox/vmm/hm.h>
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/dbgf.h>
 #ifdef VBOX_WITH_RAW_MODE_NOT_R0

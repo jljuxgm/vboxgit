@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 45618 2013-04-18 18:41:07Z vboxsync $ */
+/* $Id: HMAll.cpp 45701 2013-04-24 14:21:09Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -37,9 +37,10 @@
 
 
 /**
- * Query HM state (enabled/disabled)
+ * Checks whether HM (VT-x/AMD-V) is being used by this VM.
  *
- * @returns @c false if disabled, @c true if enabled.
+ * @retval  @c true if used.
+ * @retval  @c false if software virtualization (raw-mode) is used.
  * @param   pVM         The cross context VM structure.
  * @sa      HMIsEnabled, HMR3IsEnabled
  * @internal

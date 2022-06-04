@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 45620 2013-04-18 20:07:14Z vboxsync $ */
+/* $Id: EMAll.cpp 45701 2013-04-24 14:21:09Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1537,7 +1537,7 @@ static int emUpdateCRx(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t D
         }
 # endif
 # ifdef VBOX_WITH_RAW_MODE
-        if ((val ^ oldval) & X86_CR4_VME)
+        if (((val ^ oldval) & X86_CR4_VME) && !HMIsEnabled(pVM))
             VMCPU_FF_SET(pVCpu, VMCPU_FF_SELM_SYNC_TSS);
 # endif
 
