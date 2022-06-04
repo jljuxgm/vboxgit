@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 42214 2012-07-18 18:02:58Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 42216 2012-07-18 18:09:54Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -114,8 +114,6 @@ private:
         /** The waiting event. */
         RTSEMEVENT               mEvent;
     } mData;
-
-    friend GuestSession; /* Let's be friends! */
 };
 
 #endif /* !____H_GUESTPROCESSIMPL */
