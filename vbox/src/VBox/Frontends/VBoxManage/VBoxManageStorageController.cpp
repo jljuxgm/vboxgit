@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 43532 2012-10-04 07:10:49Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 43914 2012-11-19 15:56:41Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -601,7 +601,7 @@ int handleStorageAttach(HandlerArg *a)
                     Bstr("InitiatorSecret").detachTo(names.appendedRaw());
                     bstrPassword.detachTo(values.appendedRaw());
                 }
-                if (!bstrPassword.isEmpty())
+                if (!bstrInitiator.isEmpty())
                 {
                     Bstr("InitiatorName").detachTo(names.appendedRaw());
                     bstrInitiator.detachTo(values.appendedRaw());
