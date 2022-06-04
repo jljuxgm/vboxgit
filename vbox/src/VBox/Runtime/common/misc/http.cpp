@@ -1,4 +1,4 @@
-/* $Id: http.cpp 45398 2013-04-08 09:32:00Z vboxsync $ */
+/* $Id: http.cpp 45406 2013-04-08 13:42:49Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -334,7 +334,6 @@ RTR3DECL(int) RTHttpGet(RTHTTP hHttp, const char *pcszUrl, char **ppszResponse)
     }
     else
     {
-        RTPrintf("rcCurl = %d\n", rcCurl);
         switch (rcCurl)
         {
             case CURLE_URL_MALFORMAT:
