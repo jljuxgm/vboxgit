@@ -1,11 +1,11 @@
-/* $Id: SnapshotImpl.cpp 44395 2013-01-26 19:52:47Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 44406 2013-01-28 09:03:20Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -2505,12 +2505,12 @@ void SessionMachine::deleteSnapshotHandler(DeleteSnapshotTask &aTask)
 
         {/* see @bugref{4386} */
             /*check available place on the storage*/
-          RTFOFF pcbTotal = 0;
-          RTFOFF pcbFree = 0;
-          uint32_t pcbBlock = 0;
-          uint32_t pcbSector = 0;
-          std::multimap<uint32_t,uint64_t> neededStorageFreeSpace;
-          std::map<uint32_t,const char*> serialMapToStoragePath;
+            RTFOFF pcbTotal = 0;
+            RTFOFF pcbFree = 0;
+            uint32_t pcbBlock = 0;
+            uint32_t pcbSector = 0;
+            std::multimap<uint32_t,uint64_t> neededStorageFreeSpace;
+            std::map<uint32_t,const char*> serialMapToStoragePath;
 
             MediumDeleteRecList::const_iterator it_md = toDelete.begin();
 
