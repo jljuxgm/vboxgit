@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 44689 2013-02-14 13:22:44Z vboxsync $ */
+/* $Id: DevIoApic.cpp 44690 2013-02-14 13:24:07Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -313,7 +313,6 @@ static int ioapic_IoWin_r(PIOAPIC pThis, uint32_t *pu32Value)
     else if (uIoRegSel - UINT32_C(0x10) < IOAPIC_NUM_PINS * 2)
     {
         uint32_t const  idxIoRedTbl = (uIoRegSel - UINT32_C(0x10)) >> 1;
-        uint64_t        u64NewValue;
         if (!(uIoRegSel & 1))
             /** @todo r=bird: Do we need to emulate DELIVS or/and Remote IRR? */
             *pu32Value = RT_LODWORD(pThis->ioredtbl[idxIoRedTbl]);
