@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 46169 2013-05-20 07:57:55Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 46176 2013-05-20 19:13:04Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3129,7 +3129,8 @@ void Appliance::importMachines(ImportStack &stack,
     size_t i = 0;
     for (it = reader.m_llVirtualSystems.begin(),
          it1 = m->virtualSystemDescriptions.begin();
-         it != reader.m_llVirtualSystems.end();
+         it != reader.m_llVirtualSystems.end(),
+         it1 != m->virtualSystemDescriptions.end();
          ++it, ++it1, ++i)
     {
         const ovf::VirtualSystem &vsysThis = *it;
