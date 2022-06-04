@@ -1,4 +1,4 @@
-/* $Id: cr_vreg.h 44775 2013-02-21 12:52:07Z vboxsync $ */
+/* $Id: cr_vreg.h 45009 2013-03-12 17:27:04Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API
@@ -77,6 +77,11 @@ DECLINLINE(bool) VBoxRectIsCoveres(const RTRECT *pRect, const RTRECT *pCovered)
     if (pRect->yBottom < pCovered->yBottom)
         return false;
     return true;
+}
+
+DECLINLINE(bool) VBoxRectIsZero(const RTRECT *pRect)
+{
+    return pRect->xLeft == pRect->xRight || pRect->yTop == pRect->yBottom;
 }
 
 DECLINLINE(bool) VBoxRectIsIntersect(const RTRECT * pRect1, const RTRECT * pRect2)
