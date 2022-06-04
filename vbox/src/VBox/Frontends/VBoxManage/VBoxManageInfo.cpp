@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 42628 2012-08-06 15:56:00Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 42672 2012-08-08 07:52:11Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1633,16 +1633,19 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
             {
                 ComPtr<IVRDEServerInfo> vrdeServerInfo;
                 CHECK_ERROR_RET(console, COMGETTER(VRDEServerInfo)(vrdeServerInfo.asOutParam()), rc);
-                rc = vrdeServerInfo->COMGETTER(Port)(&currentPort);
-                if (rc == E_ACCESSDENIED)
+                if (!vrdeServerInfo.isNull())
                 {
-                    currentPort = -1; /* VM not powered up */
-                }
-                if (FAILED(rc))
-                {
-                    com::ErrorInfo info(vrdeServerInfo, COM_IIDOF(IVRDEServerInfo));
-                    GluePrintErrorInfo(info);
-                    return rc;
+                    rc = vrdeServerInfo->COMGETTER(Port)(&currentPort);
+                    if (rc == E_ACCESSDENIED)
+                    {
+                        currentPort = -1; /* VM not powered up */
+                    }
+                    if (FAILED(rc))
+                    {
+                        com::ErrorInfo info(vrdeServerInfo, COM_IIDOF(IVRDEServerInfo));
+                        GluePrintErrorInfo(info);
+                        return rc;
+                    }
                 }
             }
             if (details == VMINFO_MACHINEREADABLE)
