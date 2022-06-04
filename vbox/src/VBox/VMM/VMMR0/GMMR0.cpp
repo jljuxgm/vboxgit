@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: GMMR0.cpp 42976 2012-08-24 13:09:06Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3293,7 +3293,7 @@ DECLINLINE(void) gmmR0FreeSharedPage(PGMM pGMM, PGVM pGVM, uint32_t idPage, PGMM
         uint32_t uChecksum = gmmR0StrictPageChecksum(pGMM, pGVM, idPage);
         uChecksum &= UINT32_C(0x00003fff);
         AssertMsg(!uChecksum || uChecksum == pPage->Shared.u14Checksum,
-                  ("%#x vs %#x - idPage=%#\n", uChecksum, pPage->Shared.u14Checksum, idPage));
+                  ("%#x vs %#x - idPage=%#x\n", uChecksum, pPage->Shared.u14Checksum, idPage));
     }
 #endif
 
