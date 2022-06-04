@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 44742 2013-02-18 17:26:05Z vboxsync $ */
+/* $Id: Performance.cpp 45051 2013-03-15 15:34:54Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -97,7 +97,7 @@ int CollectorHAL::getProcessMemoryUsage(RTPROCESS /* process */, ULONG * /* used
     return E_NOTIMPL;
 }
 
-int CollectorHAL::getDiskListByFs(const char * /* name */, DiskList& /* list */)
+int CollectorHAL::getDiskListByFs(const char * /* name */, DiskList& /* listUsage */, DiskList& /* listLoad */)
 {
     return E_NOTIMPL;
 }

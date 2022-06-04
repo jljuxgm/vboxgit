@@ -1,4 +1,4 @@
-/* $Id: Performance.h 44551 2013-02-05 16:21:59Z vboxsync $ */
+/* $Id: Performance.h 45051 2013-03-15 15:34:54Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -388,8 +388,8 @@ namespace pm
         /** Returns process' CPU usage counter in platform-specific units. */
         virtual int getRawProcessCpuLoad(RTPROCESS process, uint64_t *user, uint64_t *kernel, uint64_t *total);
 
-        /** Returns the list of disks used by the specified file system. */
-        virtual int getDiskListByFs(const char *name, DiskList& list);
+        /** Returns the lists of disks (aggregate and physical) used by the specified file system. */
+        virtual int getDiskListByFs(const char *name, DiskList& listUsage, DiskList& listLoad);
     };
 
     extern CollectorHAL *createHAL();
