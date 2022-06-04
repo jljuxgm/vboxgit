@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 45939 2013-05-07 17:16:31Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 46582 2013-06-17 10:47:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -61,6 +61,15 @@ void UIMachineLogicNormal::sltPrepareSharedFoldersMenu()
     menu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_SharedFoldersDialog));
 }
 
+void UIMachineLogicNormal::sltPrepareVideoCaptureMenu()
+{
+    QMenu *pMenu = qobject_cast<QMenu*>(sender());
+    AssertMsg(pMenu, ("This slot should be called only on Video Capture menu show!\n"));
+    pMenu->clear();
+    pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_VideoCapture));
+    pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_VideoCaptureOptions));
+}
+
 void UIMachineLogicNormal::sltPrepareMouseIntegrationMenu()
 {
     QMenu *menu = qobject_cast<QMenu*>(sender());
@@ -79,6 +88,8 @@ void UIMachineLogicNormal::prepareActionConnections()
             this, SLOT(sltPrepareNetworkAdaptersMenu()));
     connect(gActionPool->action(UIActionIndexRuntime_Menu_SharedFolders)->menu(), SIGNAL(aboutToShow()),
             this, SLOT(sltPrepareSharedFoldersMenu()));
+    connect(gActionPool->action(UIActionIndexRuntime_Menu_VideoCapture)->menu(), SIGNAL(aboutToShow()),
+            this, SLOT(sltPrepareVideoCaptureMenu()));
     connect(gActionPool->action(UIActionIndexRuntime_Menu_MouseIntegration)->menu(), SIGNAL(aboutToShow()),
             this, SLOT(sltPrepareMouseIntegrationMenu()));
 }

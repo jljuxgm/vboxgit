@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 46542 2013-06-13 16:49:48Z vboxsync $ */
+/* $Id: UISession.cpp 46582 2013-06-17 10:47:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -995,6 +995,7 @@ void UISession::updateSessionSettings()
     bool fAllowReconfiguration = m_machineState != KMachineState_Stuck && m_fReconfigurable;
     gActionPool->action(UIActionIndexRuntime_Simple_SettingsDialog)->setEnabled(fAllowReconfiguration);
     gActionPool->action(UIActionIndexRuntime_Simple_SharedFoldersDialog)->setEnabled(fAllowReconfiguration);
+    gActionPool->action(UIActionIndexRuntime_Simple_VideoCaptureOptions)->setEnabled(fAllowReconfiguration);
     gActionPool->action(UIActionIndexRuntime_Simple_NetworkAdaptersDialog)->setEnabled(fAllowReconfiguration);
 }
 
