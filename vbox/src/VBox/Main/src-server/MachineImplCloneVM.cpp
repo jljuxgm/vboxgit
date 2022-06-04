@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 44380 2013-01-25 13:57:54Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 44480 2013-01-31 08:47:25Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1112,7 +1112,7 @@ HRESULT MachineCloneVM::run()
                             if (FAILED(rc)) throw rc;
                             else
                             {
-                                for (size_t j = 0; i < mediumVariant.size(); i++)
+                                for (size_t j = 0; j < mediumVariant.size(); j++)
                                     srcVar |= mediumVariant[j];
                             }
                         }
