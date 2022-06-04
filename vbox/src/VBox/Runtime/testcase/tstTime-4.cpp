@@ -1,4 +1,4 @@
-/* $Id: tstTime-4.cpp 46209 2013-05-22 09:50:03Z vboxsync $ */
+/* $Id: tstTime-4.cpp 46210 2013-05-22 10:06:57Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime vs. RTTimeSystem test.
  */
@@ -69,7 +69,7 @@ int main()
         if (Delta > 100000000ULL /* 100 ms */ )
         {
             cErrors++;
-            RTPrintf("tstTime-4: Delta=%llu!\n", Delta);
+            RTPrintf("tstTime-4: Delta=%llu (GipPrevTS=%llu, SysPrevTS=%llu)!\n", Delta, GipPrevTS, SysPrevTS);
         }
 
     } while (SysPrevTS - SysStartTS < 2000000000 /* 2s */);
