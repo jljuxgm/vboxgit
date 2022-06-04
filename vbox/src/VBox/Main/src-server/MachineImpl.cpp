@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 45624 2013-04-18 22:09:24Z vboxsync $ */
+/* $Id: MachineImpl.cpp 45629 2013-04-19 07:19:43Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -64,9 +64,6 @@
 #include "Performance.h"
 
 #include <iprt/asm.h>
-#if HC_ARCH_BITS == 32
-# include <iprt/asm-amd64-x86.h>
-#endif
 #include <iprt/path.h>
 #include <iprt/dir.h>
 #include <iprt/env.h>
