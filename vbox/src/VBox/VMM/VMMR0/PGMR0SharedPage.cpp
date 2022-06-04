@@ -1,4 +1,4 @@
-/* $Id: PGMR0SharedPage.cpp 43045 2012-08-28 14:21:43Z vboxsync $ */
+/* $Id: PGMR0SharedPage.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Page Sharing, Ring-0.
  */
@@ -107,7 +107,7 @@ VMMR0DECL(int) PGMR0SharedModuleCheck(PVM pVM, PGVM pGVM, VMCPUID idCpu, PGMMSHA
                         bool fFlush = false;
                         rc = pgmPoolTrackUpdateGCPhys(pVM, PageDesc.GCPhys, pPage, true /* clear the entries */, &fFlush);
                         Assert(   rc == VINF_SUCCESS
-                               || (   VMCPU_FF_ISSET(pVCpu, VMCPU_FF_PGM_SYNC_CR3)
+                               || (   VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3)
                                    && (pVCpu->pgm.s.fSyncFlags & PGM_SYNC_CLEAR_PGM_POOL)));
                         if (rc == VINF_SUCCESS)
                             fFlushTLBs |= fFlush;

@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 45798 2013-04-29 03:40:54Z vboxsync $ */
+/* $Id: PGM.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3683,7 +3683,7 @@ int pgmR3ReEnterShadowModeAfterPoolFlush(PVM pVM, PVMCPU pVCpu)
 {
     pVCpu->pgm.s.enmShadowMode = PGMMODE_INVALID;
     int rc = PGMR3ChangeMode(pVM, pVCpu, PGMGetGuestMode(pVCpu));
-    Assert(VMCPU_FF_ISSET(pVCpu, VMCPU_FF_PGM_SYNC_CR3));
+    Assert(VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3));
     AssertRCReturn(rc, rc);
     AssertRCSuccessReturn(rc, VERR_IPE_UNEXPECTED_INFO_STATUS);
 

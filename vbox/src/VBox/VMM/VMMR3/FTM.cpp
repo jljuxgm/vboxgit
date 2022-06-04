@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: FTM.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -1337,13 +1337,13 @@ VMMR3_INT_DECL(int) FTMR3SetCheckpoint(PVM pVM, FTMCHECKPOINTTYPE enmCheckpoint)
         /* We must take special care here as the memory sync is competing with us and requires a responsive EMT. */
         while ((rc = PDMCritSectTryEnter(&pVM->ftm.s.CritSect)) == VERR_SEM_BUSY)
         {
-            if (VM_FF_ISPENDING(pVM, VM_FF_EMT_RENDEZVOUS))
+            if (VM_FF_IS_PENDING(pVM, VM_FF_EMT_RENDEZVOUS))
             {
                 rc = VMMR3EmtRendezvousFF(pVM, pVCpu);
                 AssertRC(rc);
             }
 
-            if (VM_FF_ISPENDING(pVM, VM_FF_REQUEST))
+            if (VM_FF_IS_PENDING(pVM, VM_FF_REQUEST))
             {
                 rc = VMR3ReqProcessU(pVM->pUVM, VMCPUID_ANY, true /*fPriorityOnly*/);
                 AssertRC(rc);

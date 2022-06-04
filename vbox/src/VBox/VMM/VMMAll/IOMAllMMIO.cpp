@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 45311 2013-04-03 14:55:30Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -2572,7 +2572,7 @@ VMMDECL(int) IOMMMIOResetRegion(PVM pVM, RTGCPHYS GCPhys)
     AssertRC(rc);
 
 #ifdef VBOX_STRICT
-    if (!VMCPU_FF_ISSET(pVCpu, VMCPU_FF_PGM_SYNC_CR3))
+    if (!VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3))
     {
         uint32_t cb = pRange->cb;
         GCPhys = pRange->GCPhys;

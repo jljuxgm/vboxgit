@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 45693 2013-04-24 11:32:42Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 46420 2013-06-06 16:27:25Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -130,7 +130,7 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          * do here is to execute the pending forced actions.
          */
         case VINF_PGM_SYNC_CR3:
-            AssertMsg(VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL),
+            AssertMsg(VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_PGM_SYNC_CR3 | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL),
                       ("VINF_PGM_SYNC_CR3 and no VMCPU_FF_PGM_SYNC_CR3*!\n"));
             rc = VINF_SUCCESS;
             break;
@@ -288,7 +288,7 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
          * Conflict in GDT, resync and continue.
          */
         case VINF_SELM_SYNC_GDT:
-            AssertMsg(VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_SELM_SYNC_GDT | VMCPU_FF_SELM_SYNC_LDT | VMCPU_FF_SELM_SYNC_TSS),
+            AssertMsg(VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_SELM_SYNC_GDT | VMCPU_FF_SELM_SYNC_LDT | VMCPU_FF_SELM_SYNC_TSS),
                       ("VINF_SELM_SYNC_GDT without VMCPU_FF_SELM_SYNC_GDT/LDT/TSS!\n"));
             rc = VINF_SUCCESS;
             break;
