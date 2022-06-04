@@ -1,10 +1,10 @@
-; $Id: VBoxGuestA-os2.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: VBoxGuestA-os2.asm 44529 2013-02-04 15:54:15Z vboxsync $
 ;; @file
 ; VBoxGuest - OS/2 assembly file, the first file in the link.
 ;
 
 ;
-; Copyright (C) 2010 knut st. osmundsen <bird-src-spam@anduin.net>
+; Copyright (C) 2007-2010 knut st. osmundsen <bird-src-spam@anduin.net>
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

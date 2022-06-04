@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibSeamless.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSeamless.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Seamless mode.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2007-2011 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
