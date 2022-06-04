@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 47474 2013-07-30 12:33:41Z vboxsync $
+# $Id: vboxconfig.sh 47489 2013-07-31 13:06:26Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -1111,6 +1111,7 @@ postinstall()
                 # Start ZoneAccess service, other services are disabled by default.
                 start_service "Zone access service" "virtualbox/zoneaccess" "svc:/application/virtualbox/zoneaccess:default" \
                             "/var/svc/log/application-virtualbox-zoneaccess:default.log"
+            fi
         fi
 
         # Update mime and desktop databases to get the right menu entries
