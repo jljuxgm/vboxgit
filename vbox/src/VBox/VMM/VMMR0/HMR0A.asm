@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 43387 2012-09-21 09:40:25Z vboxsync $
+; $Id: HMR0A.asm 43737 2012-10-25 11:00:40Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -970,9 +970,9 @@ ENDPROC SVMR0InvlpgA
 ; * @param  pGdtr        Where to store the 64-bit GDTR.
 ; * @param  pIdtr        Where to store the 64-bit IDTR.
 ; */
-;DECLASM(void) hmR0Get64bitGDTRandIDTR(PX86XDTR64 pGdtr, PX86XDTR64 pIdtr);
+;DECLASM(void) hmR0Get64bitGdtrAndIdtr(PX86XDTR64 pGdtr, PX86XDTR64 pIdtr);
 ALIGNCODE(16)
-BEGINPROC hmR0Get64bitGDTRandIDTR
+BEGINPROC hmR0Get64bitGdtrAndIdtr
     db      0xea                        ; jmp far .sixtyfourbit_mode
     dd      .sixtyfourbit_mode, NAME(SUPR0Abs64bitKernelCS)
 .the_end:
@@ -990,7 +990,7 @@ BITS 64
 .fpret:                                 ; 16:32 Pointer to .the_end.
     dd      .the_end, NAME(SUPR0AbsKernelCS)
 BITS 32
-ENDPROC   hmR0Get64bitGDTRandIDTR
+ENDPROC   hmR0Get64bitGdtrAndIdtr
 
 
 ;/**
