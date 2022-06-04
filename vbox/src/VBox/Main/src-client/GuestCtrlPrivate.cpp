@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 42354 2012-07-24 12:13:00Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 42356 2012-07-24 12:26:37Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -62,7 +62,7 @@ int GuestCtrlEvent::Cancel(void)
         }
     }
 
-    LogFlowThisFuncLeave(rc);
+    LogFlowThisFuncLeaveRC(rc);
     return rc;
 }
 
