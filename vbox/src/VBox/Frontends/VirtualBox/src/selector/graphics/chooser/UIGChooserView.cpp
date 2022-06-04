@@ -1,4 +1,4 @@
-/* $Id: UIGChooserView.cpp 42873 2012-08-18 14:37:25Z vboxsync $ */
+/* $Id: UIGChooserView.cpp 43514 2012-10-02 15:08:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -32,7 +32,11 @@ UIGChooserView::UIGChooserView(QWidget *pParent)
     pal.setColor(QPalette::Base, QColor(240, 240, 240));
     setPalette(pal);
 
-    /* Scrollbars policy: */
+    /* Setup frame: */
+    setFrameShape(QFrame::NoFrame);
+    setFrameShadow(QFrame::Plain);
+
+    /* Setup scroll-bars policy: */
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     /* Update scene-rect: */
