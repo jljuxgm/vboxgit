@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 47589 2013-08-07 13:27:03Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 47590 2013-08-07 13:38:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1304,7 +1304,7 @@ HRESULT SystemProperties::setLoggingLevel(const Utf8Str &aLoggingLevel)
     }
     //  Set to passed value or if default used/attempted (even if error condition) use empty string.
     m->strLoggingLevel = (useLoggingLevel.equals(VBOXSVC_LOG_DEFAULT) ? "" : useLoggingLevel);
-    return rc;
+    return (RT_SUCCESS(rc) ? S_OK : E_FAIL);
 }
 
 HRESULT SystemProperties::setDefaultHardDiskFormat(const Utf8Str &aFormat)
