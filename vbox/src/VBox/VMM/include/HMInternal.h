@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 44146 2012-12-17 15:29:40Z vboxsync $ */
+/* $Id: HMInternal.h 44195 2012-12-21 10:39:53Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -691,6 +691,10 @@ typedef struct HMCPU
             uint64_t            aRaw[2];
         } s;
     } PendingIO;
+
+    /** The PAE PDPEs used with Nested Paging (only valid when
+     *  VMCPU_FF_HM_UPDATE_PAE_PDPES is set). */
+    X86PDPE                 aPdpes[4];
 
     /** Current shadow paging mode. */
     PGMMODE                 enmShadowMode;

@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 43510 2012-10-02 14:26:44Z vboxsync $ */
+/* $Id: HMAll.cpp 44195 2012-12-21 10:39:53Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -339,5 +339,17 @@ VMMDECL(bool) HMHasPendingIrq(PVM pVM)
 {
     PVMCPU pVCpu = VMMGetCpu(pVM);
     return !!pVCpu->hm.s.Event.fPending;
+}
+
+
+/**
+ * Return the PAE PDPE entries.
+ *
+ * @returns Pointer to the PAE PDPE array.
+ * @param   pVCpu       Pointer to the VMCPU.
+ */
+VMMDECL(PX86PDPE) HMGetPaePdpes(PVMCPU pVCpu)
+{
+    return &pVCpu->hm.s.aPdpes[0];
 }
 
