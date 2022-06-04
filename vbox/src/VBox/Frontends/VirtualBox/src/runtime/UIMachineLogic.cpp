@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 45224 2013-03-28 10:12:52Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 45274 2013-04-01 13:50:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1507,7 +1507,7 @@ void UIMachineLogic::sltMountStorageMedium()
     {
         machine.SaveSettings();
         if (!machine.isOk())
-            msgCenter().cannotSaveMachineSettings(machine);
+            msgCenter().cannotSaveMachineSettings(machine, activeMachineWindow());
     }
 }
 
@@ -1566,7 +1566,7 @@ void UIMachineLogic::sltMountRecentStorageMedium()
         {
             machine.SaveSettings();
             if (!machine.isOk())
-                msgCenter().cannotSaveMachineSettings(machine);
+                msgCenter().cannotSaveMachineSettings(machine, activeMachineWindow());
         }
     }
 }
