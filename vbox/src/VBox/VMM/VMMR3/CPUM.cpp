@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 42337 2012-07-24 07:50:38Z vboxsync $ */
+/* $Id: CPUM.cpp 42410 2012-07-26 14:04:04Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4361,7 +4361,7 @@ VMMR3DECL(void) CPUMR3RemLeave(PVMCPU pVCpu, bool fNoOutOfSyncSels)
     if (fNoOutOfSyncSels)
         pVCpu->cpum.s.fChanged &= ~CPUM_CHANGED_HIDDEN_SEL_REGS_INVALID;
     else
-        pVCpu->cpum.s.fChanged |= ~CPUM_CHANGED_HIDDEN_SEL_REGS_INVALID;
+        pVCpu->cpum.s.fChanged |= CPUM_CHANGED_HIDDEN_SEL_REGS_INVALID;
 
     pVCpu->cpum.s.fRemEntered = false;
 }
