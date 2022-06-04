@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 43737 2012-10-25 11:00:40Z vboxsync $ */
+/* $Id: HMInternal.h 43747 2012-10-25 16:36:04Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -591,7 +591,7 @@ typedef struct HMCPU
         R0PTRTYPE(void *)           pvHostMsr;
 
         /* Number of automatically loaded/restored guest MSRs during the world switch. */
-        uint32_t                    cCachedMsrs;
+        uint32_t                    cGuestMsrs;
         uint32_t                    uAlignment;
 #endif /* VBOX_WITH_AUTO_MSR_LOAD_RESTORE */
 
