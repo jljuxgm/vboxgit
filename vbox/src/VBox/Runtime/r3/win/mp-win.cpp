@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 46619 2013-06-18 12:06:16Z vboxsync $ */
+/* $Id: mp-win.cpp 46625 2013-06-18 13:28:52Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -96,7 +96,7 @@ RTDECL(RTCPUID) RTMpGetCoreCount(void)
     BOOL (WINAPI *pfnGetLogicalProcInfo)(PSYSTEM_LOGICAL_PROCESSOR_INFORMATION, PDWORD);
 
     pfnGetLogicalProcInfo = (BOOL (WINAPI *)(PSYSTEM_LOGICAL_PROCESSOR_INFORMATION, PDWORD))
-                             GetProcAddress(GetModuleHandle("KERNEL32.DLL"), "GetLogicalProcessorInformation");
+                             GetProcAddress(GetModuleHandle("kernel32.dll"), "GetLogicalProcessorInformation");
     /* 0 represents an error condition. We cannot return VERR* error codes as caller expects a
      * unsigned value of core count.*/
     if (!pfnGetLogicalProcInfo)

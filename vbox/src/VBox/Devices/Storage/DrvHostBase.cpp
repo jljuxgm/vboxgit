@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 46625 2013-06-18 13:28:52Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1560,7 +1560,7 @@ static DECLCALLBACK(int) drvHostBaseMediaThread(RTTHREAD ThreadSelf, void *pvUse
         memset(&s_classDeviceChange, 0, sizeof(s_classDeviceChange));
         s_classDeviceChange.lpfnWndProc   = DeviceChangeWindowProc;
         s_classDeviceChange.lpszClassName = "VBOX_DeviceChangeClass";
-        s_classDeviceChange.hInstance     = GetModuleHandle("VBOXDD.DLL");
+        s_classDeviceChange.hInstance     = GetModuleHandle("VBoxDD.dll");
         Assert(s_classDeviceChange.hInstance);
         s_hAtomDeviceChange = RegisterClassA(&s_classDeviceChange);
         Assert(s_hAtomDeviceChange);

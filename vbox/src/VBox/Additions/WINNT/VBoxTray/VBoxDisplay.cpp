@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 45761 2013-04-26 07:41:11Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 46625 2013-06-18 13:28:52Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -62,7 +62,7 @@ int VBoxDisplayInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStart
     OSinfo.dwOSVersionInfoSize = sizeof (OSinfo);
     GetVersionEx (&OSinfo);
 
-    HMODULE hUser = GetModuleHandle("USER32");
+    HMODULE hUser = GetModuleHandle("user32.dll");
 
     gCtx.pEnv = pEnv;
 

@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 46625 2013-06-18 13:28:52Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -224,7 +224,7 @@ static RTWINOSTYPE rtSystemWinOSType(OSVERSIONINFOEX const *pOSInfoEx)
 static RTWINPRODTYPE rtSystemWinGetProductInfo(DWORD dwOSMajorVersion, DWORD dwOSMinorVersion, DWORD dwSpMajorVersion, DWORD dwSpMinorVersion)
 {
     BOOL (WINAPI *pfnGetProductInfo)(DWORD, DWORD, DWORD, DWORD, PDWORD);
-    pfnGetProductInfo = (BOOL (WINAPI *)(DWORD, DWORD, DWORD, DWORD, PDWORD))GetProcAddress(GetModuleHandle("KERNEL32.DLL"), "GetProductInfo");
+    pfnGetProductInfo = (BOOL (WINAPI *)(DWORD, DWORD, DWORD, DWORD, PDWORD))GetProcAddress(GetModuleHandle("kernel32.dll"), "GetProductInfo");
     if (pfnGetProductInfo)
     {
         DWORD dwProductType = kRTWinProdType_UNDEFINED;

@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 44992 2013-03-11 15:41:01Z vboxsync $ */
+/* $Id: VBoxControl.cpp 46625 2013-06-18 13:28:52Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -581,7 +581,7 @@ static RTEXITCODE handleSetVideoMode(int argc, char *argv[])
         scr = atoi(argv[3]);
     }
 
-    HMODULE hUser = GetModuleHandle("USER32");
+    HMODULE hUser = GetModuleHandle("user32.dll");
 
     if (hUser)
     {
