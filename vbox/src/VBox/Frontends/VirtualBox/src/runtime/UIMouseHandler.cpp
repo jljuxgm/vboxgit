@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 47672 2013-08-12 11:17:48Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 47724 2013-08-14 13:12:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -911,7 +911,7 @@ bool UIMouseHandler::multiTouchEvent(QTouchEvent *pTouchEvent, ulong uScreenId)
     QVector<LONG64> contacts(pTouchEvent->touchPoints().size());
 
     /* Pass all multi-touch events into guest: */
-    int i = 0;
+    int iTouchPointIndex = 0;
     foreach (const QTouchEvent::TouchPoint &touchPoint, pTouchEvent->touchPoints())
     {
         /* Get touch-point origin: */
@@ -931,13 +931,17 @@ bool UIMouseHandler::multiTouchEvent(QTouchEvent *pTouchEvent, ulong uScreenId)
         }
 
         /* Pass absolute touch-point data: */
-        LogRelFlow(("UIMouseHandler::multiTouchEvent: Origin: %dx%d, State: %d\n",
-                    currentTouchPoint.x(), currentTouchPoint.y(), iTouchPointState));
+        LogRelFlow(("UIMouseHandler::multiTouchEvent: Origin: %dx%d, Id: %d, State: %d\n",
+                    currentTouchPoint.x(), currentTouchPoint.y(), touchPoint.id(), iTouchPointState));
 
-        contacts[i++] = RT_MAKE_U64_FROM_U16((uint16_t)currentTouchPoint.x() + 1,
-                                             (uint16_t)currentTouchPoint.y() + 1,
-                                             RT_MAKE_U16(touchPoint.id(), iTouchPointState),
-                                             0);
+        contacts[iTouchPointIndex] = RT_MAKE_U64_FROM_U16((uint16_t)currentTouchPoint.x() + 1,
+                                                          (uint16_t)currentTouchPoint.y() + 1,
+                                                          RT_MAKE_U16(touchPoint.id(), iTouchPointState),
+                                                          0);
+
+        LogRelFlow(("UIMouseHandler::multiTouchEvent: %RX64\n", contacts[iTouchPointIndex]));
+
+        ++iTouchPointIndex;
     }
 
     mouse.PutEventMultiTouch(pTouchEvent->touchPoints().size(),
