@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImplTasks.cpp 43299 2012-09-11 13:36:38Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 43493 2012-10-01 13:33:30Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -1036,7 +1036,7 @@ int SessionTaskUpdateAdditions::Run(void)
     }
 
     Utf8Str strOSVer;
-    eOSType osType;
+    eOSType osType = eOSType_Unknown;
     if (RT_SUCCESS(rc))
     {
         /*
