@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42586 2012-08-03 17:45:01Z vboxsync $
+# $Id: Config.kmk 42592 2012-08-04 15:10:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2305,16 +2305,11 @@ endif # !VBOX_NOINC_GCC_CONFIG_KMK
 #      macro usage in the logger.
 #
 ifdef VBOX_WITH_WARNINGS_AS_ERRORS
- if  defined(VBOX_WITH_WARNINGS_AS_ERRORS) \
-  && $(VBOX_GCC_VERSION_CXX) < 40000 \
-  && "$(KBUILD_TARGET_ARCH)" != "x86" \
-  && "$(KBUILD_TARGET)" != "win"
-  VBOX_WITH_WARNINGS_AS_ERRORS=
- else
+ if $(VBOX_GCC_VERSION_CXX) < 40000
   VBOX_GCC_WERR ?= -Werror
-  VBOX_VCC_WERR ?= -WX
-  VBOX_VCC_LD_WERR ?= ## @todo later also: -WX
  endif
+ VBOX_VCC_WERR ?= -WX
+ VBOX_VCC_LD_WERR ?= ## @todo later also: -WX
 endif
 
 
@@ -5147,7 +5142,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42586 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42592 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
