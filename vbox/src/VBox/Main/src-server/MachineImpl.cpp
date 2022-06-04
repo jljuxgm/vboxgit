@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 45838 2013-04-30 13:54:20Z vboxsync $ */
+/* $Id: MachineImpl.cpp 45882 2013-05-02 18:23:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1806,7 +1806,7 @@ STDMETHODIMP Machine::COMSETTER(VideoCaptureRate)(ULONG aRate)
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
-    mHWData->mVideoCaptureHeight = aRate;
+    mHWData->mVideoCaptureRate = aRate;
     return S_OK;
 }
 
