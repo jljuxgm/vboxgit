@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 44954 2013-03-07 13:34:21Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 46058 2013-05-14 11:14:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -356,6 +356,8 @@ void UIMachineWindowSeamless::setMask(const QRegion &constRegion)
     // ReshapeCustomWindow(reinterpret_cast<WindowPtr>(winId()));
     // UIMachineWindow::setMask(region);
     // HIWindowInvalidateShadow(::darwinToWindowRef(mConsole->viewport()));
+# else /* This code is disabled for a long time already, need analisys... */
+    UIMachineWindow::setMask(constRegion);
 # endif /* This code is disabled for a long time already, need analisys... */
 #else /* !Q_WS_MAC */
     UIMachineWindow::setMask(region);

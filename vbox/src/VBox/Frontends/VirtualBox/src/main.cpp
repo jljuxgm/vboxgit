@@ -1,4 +1,4 @@
-/* $Id: main.cpp 46020 2013-05-13 15:09:16Z vboxsync $ */
+/* $Id: main.cpp 46058 2013-05-14 11:14:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -232,12 +232,12 @@ static void showHelp()
         mode += "|";
     mode += "quartz2d";
 #endif /* VBOX_GUI_USE_QUARTZ2D */
-#if defined (Q_WS_MAC) && defined (VBOX_GUI_USE_QUARTZ2D)
+#if defined(Q_WS_MAC) && defined(VBOX_GUI_USE_QUARTZ2D)
     dflt = "quartz2d";
-#elif (defined (Q_WS_WIN) || defined(Q_WS_X11)) && defined (VBOX_GUI_USE_QIMAGE)
+#elif defined(VBOX_GUI_USE_QIMAGE)
     dflt = "image";
 #else
-    dflt = "image";
+# error "Cannot determine the default render mode!"
 #endif
 
     RTPrintf(VBOX_PRODUCT " Manager %s\n"

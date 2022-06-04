@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46022 2013-05-13 15:11:30Z vboxsync $
+# $Id: Makefile.kmk 46058 2013-05-14 11:14:14Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -82,7 +82,7 @@ endif
 
 VirtualBox_DEFS           =
 VirtualBox_DEFS.debug     = VBOX_CHECK_STATE # QT_FATAL_ASSERT
-VirtualBox_DEFS.darwin    = VBOX_GUI_USE_QUARTZ2D VBOX_GUI_USE_QIMAGE
+VirtualBox_DEFS.darwin    = VBOX_GUI_USE_QIMAGE VBOX_GUI_USE_QUARTZ2D
 VirtualBox_DEFS.freebsd   = VBOX_GUI_USE_QIMAGE
 VirtualBox_DEFS.linux     = VBOX_GUI_USE_QIMAGE
 VirtualBox_DEFS.netbsd    = VBOX_GUI_USE_QIMAGE

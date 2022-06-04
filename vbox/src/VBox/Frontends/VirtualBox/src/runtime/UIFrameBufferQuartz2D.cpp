@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 45147 2013-03-22 21:27:41Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 46058 2013-05-14 11:14:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,7 +17,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#if defined (VBOX_GUI_USE_QUARTZ2D)
+#ifdef VBOX_GUI_USE_QUARTZ2D
 
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include "precomp.h"
@@ -507,5 +507,5 @@ void UIFrameBufferQuartz2D::setView(UIMachineView *pView)
 }
 #endif
 
-#endif /* defined (VBOX_GUI_USE_QUARTZ2D) */
+#endif /* VBOX_GUI_USE_QUARTZ2D */
 
