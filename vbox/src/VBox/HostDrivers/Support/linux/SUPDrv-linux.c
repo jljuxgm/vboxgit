@@ -1,4 +1,4 @@
-/* $Rev: 44184 $ */
+/* $Rev: 44187 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -476,7 +476,7 @@ static void __exit VBoxDrvLinuxUnload(void)
  * @param   pFilp           Associated file pointer.
  * @param   fUnrestricted   Indicates which device node which was opened.
  */
-static int VBoxDrvLinuxCreateCommon(struct inode *pInode, struct file *pFilp, bool fUnrestricted)
+static int vboxdrvLinuxCreateCommon(struct inode *pInode, struct file *pFilp, bool fUnrestricted)
 {
     int                 rc;
     PSUPDRVSESSION      pSession;
