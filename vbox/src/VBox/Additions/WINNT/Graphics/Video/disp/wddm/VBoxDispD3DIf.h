@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 42518 2012-08-01 16:54:38Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.h 42557 2012-08-02 20:31:05Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -72,7 +72,33 @@ typedef struct VBOXDISPD3D
     HMODULE hD3DLib;
 } VBOXDISPD3D;
 
+typedef struct VBOXWDDMDISP_FORMATS
+{
+    uint32_t cFormstOps;
+    const struct _FORMATOP* paFormstOps;
+    uint32_t cSurfDescs;
+    struct _DDSURFACEDESC *paSurfDescs;
+} VBOXWDDMDISP_FORMATS, *PVBOXWDDMDISP_FORMATS;
+
+typedef struct VBOXWDDMDISP_D3D
+{
+    VBOXDISPD3D D3D;
+    IDirect3D9Ex * pD3D9If;
+    D3DCAPS9 Caps;
+    UINT cMaxSimRTs;
+} VBOXWDDMDISP_D3D, *PVBOXWDDMDISP_D3D;
+
+void VBoxDispD3DGlobalInit();
+void VBoxDispD3DGlobalTerm();
+HRESULT VBoxDispD3DGlobalOpen(PVBOXWDDMDISP_D3D pD3D, PVBOXWDDMDISP_FORMATS pFormats);
+void VBoxDispD3DGlobalClose(PVBOXWDDMDISP_D3D pD3D, PVBOXWDDMDISP_FORMATS pFormats);
+
 HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D);
 void VBoxDispD3DClose(VBOXDISPD3D *pD3D);
+
+#ifdef VBOX_WITH_VIDEOHWACCEL
+HRESULT VBoxDispD3DGlobal2DFormatsInit(struct VBOXWDDMDISP_ADAPTER *pAdapter);
+void VBoxDispD3DGlobal2DFormatsTerm(struct VBOXWDDMDISP_ADAPTER *pAdapter);
+#endif
 
 #endif /* ifndef ___VBoxDispD3DIf_h___ */
