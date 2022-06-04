@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 45188 2013-03-26 09:30:23Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 47537 2013-08-05 10:00:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -418,6 +418,8 @@ typedef struct SUPDRVSESSION
     uint32_t                        u32Cookie;
     /** Set if is an unrestricted session, clear if restricted. */
     bool                            fUnrestricted;
+    /* Reference counter. */
+    uint32_t volatile               cRefs;
 
     /** The VM associated with the session. */
     PVM                             pVM;
@@ -692,8 +694,8 @@ int  VBOXCALL   supdrvIDC(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSIO
 int  VBOXCALL   supdrvInitDevExt(PSUPDRVDEVEXT pDevExt, size_t cbSession);
 void VBOXCALL   supdrvDeleteDevExt(PSUPDRVDEVEXT pDevExt);
 int  VBOXCALL   supdrvCreateSession(PSUPDRVDEVEXT pDevExt, bool fUser, bool fUnrestricted,  PSUPDRVSESSION *ppSession);
-void VBOXCALL   supdrvCloseSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession);
-void VBOXCALL   supdrvCleanupSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession);
+uint32_t VBOXCALL supdrvSessionRetain(PSUPDRVSESSION pSession);
+uint32_t VBOXCALL supdrvSessionRelease(PSUPDRVSESSION pSession);
 
 int  VBOXCALL   supdrvTracerInit(PSUPDRVDEVEXT pDevExt);
 void VBOXCALL   supdrvTracerTerm(PSUPDRVDEVEXT pDevExt);

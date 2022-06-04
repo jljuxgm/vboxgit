@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 45433 2013-04-09 13:50:03Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 47537 2013-08-05 10:00:02Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -622,7 +622,7 @@ static int VBoxDrvSolarisClose(dev_t Dev, int flag, int otyp, cred_t *cred)
     /*
      * Close the session.
      */
-    supdrvCloseSession(&g_DevExt, pSession);
+    supdrvSessionRelease(pSession);
     return 0;
 }
 
