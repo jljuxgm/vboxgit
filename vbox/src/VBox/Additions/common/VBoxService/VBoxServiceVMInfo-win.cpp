@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 44539 2013-02-05 12:26:05Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 44884 2013-03-01 11:12:40Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -1050,10 +1050,16 @@ int VBoxServiceWinGetComponentVersions(uint32_t uClientID)
         { szSysDir, "VBoxTray.exe" },
         { szSysDir, "VBoxGINA.dll" },
         { szSysDir, "VBoxCredProv.dll" },
+# ifdef VBOX_WITH_MMR
+        { szSysDir, "VBoxMMR.exe" },
+# endif /* VBOX_WITH_MMR */
 
  /* On 64-bit we don't yet have the OpenGL DLLs in native format.
     So just enumerate the 32-bit files in the SYSWOW directory. */
 # ifdef RT_ARCH_AMD64
+#  ifdef VBOX_WITH_MMR
+        { szSysWowDir, "VBoxMMRHook.dll" },
+#  endif /* VBOX_WITH_MMR */
         { szSysWowDir, "VBoxOGLarrayspu.dll" },
         { szSysWowDir, "VBoxOGLcrutil.dll" },
         { szSysWowDir, "VBoxOGLerrorspu.dll" },
@@ -1062,6 +1068,9 @@ int VBoxServiceWinGetComponentVersions(uint32_t uClientID)
         { szSysWowDir, "VBoxOGLfeedbackspu.dll" },
         { szSysWowDir, "VBoxOGL.dll" },
 # else  /* !RT_ARCH_AMD64 */
+#  ifdef VBOX_WITH_MMR
+        { szSysDir, "VBoxMMRHook.dll" },
+#  endif /* VBOX_WITH_MMR */
         { szSysDir, "VBoxOGLarrayspu.dll" },
         { szSysDir, "VBoxOGLcrutil.dll" },
         { szSysDir, "VBoxOGLerrorspu.dll" },
