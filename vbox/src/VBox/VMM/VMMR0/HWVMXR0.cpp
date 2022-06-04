@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 45531 2013-04-13 09:01:30Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 45653 2013-04-19 22:46:22Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -2940,7 +2940,7 @@ VMMR0DECL(int) VMXR0RunGuestCode(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         fSetupTPRCaching = true;
     }
 
-    Log2(("\nE"));
+    Log2(("\n"));
 
     /* This is not ideal, but if we don't clear the event injection in the VMCS right here,
      * we may end up injecting some stale event into a VM, including injecting an event that
