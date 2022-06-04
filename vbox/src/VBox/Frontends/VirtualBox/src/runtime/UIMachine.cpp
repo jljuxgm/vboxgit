@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
+/* $Id: UIMachine.cpp 47831 2013-08-18 16:19:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -382,7 +382,7 @@ UIMachine::UIMachine(UIMachine **ppSelf, const CSession &session)
     qApp->setQuitOnLastWindowClosed(false);
 
     /* Cache IMedium data: */
-    vboxGlobal().startEnumeratingMedia();
+    vboxGlobal().startEnumeratingMedia(false /*fReallyNecessary*/);
 
     /* Load machine settings: */
     loadMachineSettings();

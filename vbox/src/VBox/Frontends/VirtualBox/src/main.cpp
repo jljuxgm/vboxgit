@@ -1,4 +1,4 @@
-/* $Id: main.cpp 46430 2013-06-07 09:35:06Z vboxsync $ */
+/* $Id: main.cpp 47831 2013-08-18 16:19:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -250,6 +250,8 @@ static void showHelp()
             "  --fullscreen               switch to fullscreen mode during startup\n"
             "  --rmode %-18s select different render mode (default is %s)\n"
             "  --no-startvm-errormsgbox   do not show a message box for VM start errors\n"
+            "  --restore-current          restore the current snapshot before starting\n"
+            "  --no-aggressive-caching    delays caching media info in VM processes\n"
 # ifdef VBOX_GUI_WITH_PIDFILE
             "  --pidfile <file>           create a pidfile file when a VM is up and running\n"
 # endif

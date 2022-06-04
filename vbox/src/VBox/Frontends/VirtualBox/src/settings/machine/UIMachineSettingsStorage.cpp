@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 47573 2013-08-07 09:57:28Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 47831 2013-08-18 16:19:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1734,7 +1734,7 @@ UIMachineSettingsStorage::UIMachineSettingsStorage()
     /* Enumerate Mediums. We need at least the MediaList filled, so this is the
      * lasted point, where we can start. The rest of the media checking is done
      * in a background thread. */
-    vboxGlobal().startEnumeratingMedia();
+    vboxGlobal().startEnumeratingMedia(true /*fReallyNecessary*/);
 
     /* Initialize pixmap pool */
     PixmapPool::pool (this);

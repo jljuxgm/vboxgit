@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
+/* $Id: UISession.cpp 47831 2013-08-18 16:19:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -375,23 +375,13 @@ bool UISession::powerOff(bool fIncludingDiscard, bool &fServerCrashed)
                 /* Prepare the snapshot-discard progress: */
                 CSnapshot snapshot = machine.GetCurrentSnapshot();
                 CProgress progress = console.RestoreSnapshot(snapshot);
-                if (console.isOk())
-                {
-                    /* Show the snapshot-discard progress: */
-                    msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_snapshot_discard_90px.png");
-                    if (progress.GetResultCode() != 0)
-                    {
-                        /* Failed in progress: */
-                        msgCenter().cannotRestoreSnapshot(progress, snapshot.GetName(), machine.GetName());
-                        return false;
-                    }
-                }
-                else
-                {
-                    /* Failed in console: */
-                    msgCenter().cannotRestoreSnapshot(console, snapshot.GetName(), machine.GetName());
-                    return false;
-                }
+                if (!console.isOk())
+                    return msgCenter().cannotRestoreSnapshot(console, snapshot.GetName(), machine.GetName());
+
+                /* Show the snapshot-discard progress: */
+                msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_snapshot_discard_90px.png");
+                if (progress.GetResultCode() != 0)
+                    return msgCenter().cannotRestoreSnapshot(progress, snapshot.GetName(), machine.GetName());
             }
         }
         else
