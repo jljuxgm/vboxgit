@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 44902 2013-03-02 02:28:37Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 44915 2013-03-05 09:06:51Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -386,6 +386,7 @@ static DECLCALLBACK(uint32_t) vnetIoCb_GetHostFeatures(void *pvState)
         | VNET_F_HOST_TSO4
         | VNET_F_HOST_TSO6
         | VNET_F_HOST_UFO
+        | VNET_F_GUEST_CSUM   /* We expect the guest to accept partial TCP checksums (see @bugref{4796}) */
         | VNET_F_GUEST_TSO4
         | VNET_F_GUEST_TSO6
         | VNET_F_GUEST_UFO
