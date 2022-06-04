@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 46027 2013-05-13 15:55:57Z vboxsync $ */
+/* $Id: dbgcfg.cpp 46028 2013-05-13 16:03:48Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -1434,7 +1434,7 @@ RTDECL(int) RTDbgCfgCreate(PRTDBGCFG phDbgCfg, const char *pszEnvVarPrefix)
 #endif
                     { NULL, NULL, 0 }
                 };
-                for (unsigned i = 0; i < aNativePaths[i].pList; i++)
+                for (unsigned i = 0; aNativePaths[i].pList; i++)
                 {
                     Assert(aNativePaths[i].chSep == ';'); /* fix when needed */
                     rc = RTEnvGetEx(RTENV_DEFAULT, aNativePaths[i].pszVar, pszEnvVal, cbEnvVal, NULL);
