@@ -1,4 +1,4 @@
-/* $Id: tstVBoxDbg.cpp 38636 2011-09-05 13:49:45Z vboxsync $ */
+/* $Id: tstVBoxDbg.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
 /** @file
  * VBox Debugger GUI, dummy testcase.
  */
@@ -45,7 +45,8 @@ int main(int argc, char **argv)
      * Create empty VM.
      */
     PVM pVM;
-    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM);
+    PUVM pUVM;
+    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM, &pUVM);
     if (RT_SUCCESS(rc))
     {
         /*
@@ -54,7 +55,7 @@ int main(int argc, char **argv)
         QApplication App(argc, argv);
         PDBGGUI pGui;
         PCDBGGUIVT pGuiVT;
-        rc = DBGGuiCreateForVM(pVM, &pGui, &pGuiVT);
+        rc = DBGGuiCreateForVM(pUVM, &pGui, &pGuiVT);
         if (RT_SUCCESS(rc))
         {
             if (argc <= 1 || argc == 2)
@@ -92,12 +93,13 @@ int main(int argc, char **argv)
         /*
          * Cleanup.
          */
-        rc = VMR3Destroy(pVM);
+        rc = VMR3Destroy(pUVM);
         if (!RT_SUCCESS(rc))
         {
             RTPrintf(TESTCASE ": error: failed to destroy vm! rc=%Rrc\n", rc);
             cErrors++;
         }
+        VMR3ReleaseUVM(pUVM);
     }
     else
     {

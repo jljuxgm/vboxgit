@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
+/* $Id: EMHM.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -39,7 +39,6 @@
 #include <VBox/vmm/pdmqueue.h>
 #include <VBox/vmm/hm.h>
 #include "EMInternal.h"
-#include "internal/em.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/cpumdis.h>
 #include <VBox/dis.h>

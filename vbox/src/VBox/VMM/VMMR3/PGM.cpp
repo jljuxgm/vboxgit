@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: PGM.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1368,7 +1368,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
      * Register callbacks, string formatters and the saved state data unit.
      */
 #ifdef VBOX_STRICT
-    VMR3AtStateRegister(pVM, pgmR3ResetNoMorePhysWritesFlag, NULL);
+    VMR3AtStateRegister(pVM->pUVM, pgmR3ResetNoMorePhysWritesFlag, NULL);
 #endif
     PGMRegisterStringFormatTypes();
 

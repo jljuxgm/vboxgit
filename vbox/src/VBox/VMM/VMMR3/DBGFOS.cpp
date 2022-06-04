@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: DBGFOS.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -441,7 +441,7 @@ VMMR3DECL(void *) DBGFR3OSQueryInterface(PVM pVM, DBGFOSINTERFACE enmIf)
      * Pass it on to an EMT.
      */
     void *pvIf = NULL;
-    VMR3ReqPriorityCallVoidWait(pVM, VMCPUID_ANY, (PFNRT)dbgfR3OSQueryInterface, 3, pVM, enmIf, &pvIf);
+    VMR3ReqPriorityCallVoidWaitU(pVM->pUVM, VMCPUID_ANY, (PFNRT)dbgfR3OSQueryInterface, 3, pVM, enmIf, &pvIf);
     return pvIf;
 }
 

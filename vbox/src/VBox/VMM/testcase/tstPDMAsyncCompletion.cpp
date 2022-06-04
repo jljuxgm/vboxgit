@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -86,11 +86,10 @@ int main(int argc, char *argv[])
     }
 
     PVM pVM;
-    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM);
+    PUVM pUVM;
+    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM, &pUVM);
     if (RT_SUCCESS(rc))
     {
-        PPDMASYNCCOMPLETIONTEMPLATE pTemplate;
-
         /*
          * Little hack to avoid the VM_ASSERT_EMT assertion.
          */
@@ -101,6 +100,7 @@ int main(int argc, char *argv[])
         /*
          * Create the template.
          */
+        PPDMASYNCCOMPLETIONTEMPLATE pTemplate;
         rc = PDMR3AsyncCompletionTemplateCreateInternal(pVM, &pTemplate, pfnAsyncTaskCompleted, NULL, "Test");
         if (RT_FAILURE(rc))
         {
@@ -235,8 +235,9 @@ int main(int argc, char *argv[])
             PDMR3AsyncCompletionEpClose(pEndpointSrc);
         }
 
-        rc = VMR3Destroy(pVM);
+        rc = VMR3Destroy(pUVM);
         AssertMsg(rc == VINF_SUCCESS, ("%s: Destroying VM failed rc=%Rrc!!\n", __FUNCTION__, rc));
+        VMR3ReleaseUVM(pUVM);
 
         /*
          * Clean up.

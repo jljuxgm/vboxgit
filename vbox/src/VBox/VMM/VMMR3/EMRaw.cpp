@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 42772 2012-08-11 20:16:10Z vboxsync $ */
+/* $Id: EMRaw.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -41,7 +41,6 @@
 #include <VBox/vmm/pdmqueue.h>
 #include <VBox/vmm/patm.h>
 #include "EMInternal.h"
-#include "internal/em.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/cpumdis.h>
 #include <VBox/dis.h>

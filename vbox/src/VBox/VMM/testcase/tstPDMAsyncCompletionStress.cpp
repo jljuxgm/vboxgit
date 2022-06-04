@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletionStress.cpp 39084 2011-10-22 00:37:15Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletionStress.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Stresstest.
  *
@@ -574,7 +574,8 @@ int main(int argc, char *argv[])
     RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
 
     PVM pVM;
-    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM);
+    PUVM pUVM;
+    int rc = VMR3Create(1, NULL, NULL, NULL, NULL, NULL, &pVM, &pUVM);
     if (RT_SUCCESS(rc))
     {
         /*
@@ -616,7 +617,7 @@ int main(int argc, char *argv[])
             rcRet++;
         }
 
-        rc = VMR3Destroy(pVM);
+        rc = VMR3Destroy(pUVM);
         AssertMsg(rc == VINF_SUCCESS, ("%s: Destroying VM failed rc=%Rrc!!\n", __FUNCTION__, rc));
     }
     else
