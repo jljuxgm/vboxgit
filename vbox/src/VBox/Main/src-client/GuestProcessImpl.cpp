@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 45780 2013-04-26 15:19:33Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 45805 2013-04-29 12:30:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -28,15 +28,15 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "GuestErrorInfoImpl.h"
 #include "GuestProcessImpl.h"
 #include "GuestSessionImpl.h"
 #include "GuestCtrlImplPrivate.h"
 #include "ConsoleImpl.h"
-#include "VBoxEvents.h"
+#include "VirtualBoxErrorInfoImpl.h"
 
 #include "Global.h"
 #include "AutoCaller.h"
+#include "VBoxEvents.h"
 
 #include <memory> /* For auto_ptr. */
 
@@ -937,12 +937,14 @@ int GuestProcess::setProcessStatus(ProcessStatus_T procStatus, int procRc)
         mData.mStatus = procStatus;
         mData.mRC     = procRc;
 
-        ComObjPtr<GuestErrorInfo> errorInfo;
+        ComObjPtr<VirtualBoxErrorInfo> errorInfo;
         HRESULT hr = errorInfo.createObject();
         ComAssertComRC(hr);
         if (RT_FAILURE(mData.mRC))
         {
-            int rc2 = errorInfo->init(mData.mRC, guestErrorToString(mData.mRC));
+            int rc2 = errorInfo->initEx(VBOX_E_IPRT_ERROR, mData.mRC,
+                                        COM_IIDOF(IGuestProcess), getComponentName(),
+                                        guestErrorToString(mData.mRC));
             AssertRC(rc2);
         }
 
@@ -1525,12 +1527,12 @@ int GuestProcess::waitForStatusChange(GuestWaitEvent *pEvent, uint32_t fWaitFlag
             ComAssertComRC(hr);
         }
 
-        ComPtr<IGuestErrorInfo> errorInfo;
+        ComPtr<IVirtualBoxErrorInfo> errorInfo;
         hr = pProcessEvent->COMGETTER(Error)(errorInfo.asOutParam());
         ComAssertComRC(hr);
 
         LONG lGuestRc;
-        hr = errorInfo->COMGETTER(Result)(&lGuestRc);
+        hr = errorInfo->COMGETTER(ResultDetail)(&lGuestRc);
         ComAssertComRC(hr);
         if (RT_FAILURE((int)lGuestRc))
             vrc = VERR_GSTCTL_GUEST_ERROR;

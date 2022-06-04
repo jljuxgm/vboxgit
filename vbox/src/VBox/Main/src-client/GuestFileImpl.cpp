@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 45780 2013-04-26 15:19:33Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 45805 2013-04-29 12:30:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -20,11 +20,11 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include "GuestErrorInfoImpl.h"
 #include "GuestFileImpl.h"
 #include "GuestSessionImpl.h"
 #include "GuestCtrlImplPrivate.h"
 #include "ConsoleImpl.h"
+#include "VirtualBoxErrorInfoImpl.h"
 
 #include "Global.h"
 #include "AutoCaller.h"
@@ -918,12 +918,14 @@ int GuestFile::setFileStatus(FileStatus_T fileStatus, int fileRc)
     {
         mData.mStatus = fileStatus;
 
-        ComObjPtr<GuestErrorInfo> errorInfo;
+        ComObjPtr<VirtualBoxErrorInfo> errorInfo;
         HRESULT hr = errorInfo.createObject();
         ComAssertComRC(hr);
         if (RT_FAILURE(fileRc))
         {
-            int rc2 = errorInfo->init(fileRc, guestErrorToString(fileRc));
+            int rc2 = errorInfo->initEx(VBOX_E_IPRT_ERROR, fileRc,
+                                        COM_IIDOF(IGuestFile), getComponentName(),
+                                        guestErrorToString(fileRc));
             AssertRC(rc2);
         }
 

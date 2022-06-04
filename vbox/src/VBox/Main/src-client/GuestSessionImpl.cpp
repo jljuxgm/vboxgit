@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 45783 2013-04-26 15:41:39Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 45805 2013-04-29 12:30:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -21,9 +21,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "GuestImpl.h"
-#include "GuestErrorInfoImpl.h"
 #include "GuestSessionImpl.h"
 #include "GuestCtrlImplPrivate.h"
+#include "VirtualBoxErrorInfoImpl.h"
 
 #include "Global.h"
 #include "AutoCaller.h"
@@ -1701,10 +1701,12 @@ int GuestSession::setSessionStatus(GuestSessionStatus_T sessionStatus, int sessi
         mData.mStatus = sessionStatus;
         mData.mRC     = sessionRc;
 
-        ComObjPtr<GuestErrorInfo> errorInfo;
+        ComObjPtr<VirtualBoxErrorInfo> errorInfo;
         HRESULT hr = errorInfo.createObject();
         ComAssertComRC(hr);
-        int rc2 = errorInfo->init(sessionRc, guestErrorToString(sessionRc));
+        int rc2 = errorInfo->initEx(VBOX_E_IPRT_ERROR, sessionRc,
+                                    COM_IIDOF(IGuestSession), getComponentName(),
+                                    guestErrorToString(sessionRc));
         AssertRC(rc2);
 
         fireGuestSessionStateChangedEvent(mEventSource, this,
@@ -1980,12 +1982,12 @@ int GuestSession::waitForStatusChange(GuestWaitEvent *pEvent, uint32_t fWaitFlag
         if (pSessionStatus)
             *pSessionStatus = sessionStatus;
 
-        ComPtr<IGuestErrorInfo> errorInfo;
+        ComPtr<IVirtualBoxErrorInfo> errorInfo;
         HRESULT hr = pChangedEvent->COMGETTER(Error)(errorInfo.asOutParam());
         ComAssertComRC(hr);
 
         LONG lGuestRc;
-        hr = errorInfo->COMGETTER(Result)(&lGuestRc);
+        hr = errorInfo->COMGETTER(ResultDetail)(&lGuestRc);
         ComAssertComRC(hr);
         if (RT_FAILURE((int)lGuestRc))
             vrc = VERR_GSTCTL_GUEST_ERROR;
