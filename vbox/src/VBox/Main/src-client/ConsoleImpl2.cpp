@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 44351 2013-01-24 12:04:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3156,7 +3156,7 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
                 {
                     /* Unmount existing media only for floppy and DVD drives. */
                     PPDMIBASE pBase;
-                    rc = PDMR3QueryLun(VMR3GetVM(pUVM), pcszDevice, uInstance, uLUN, &pBase);
+                    rc = PDMR3QueryLun(pUVM, pcszDevice, uInstance, uLUN, &pBase);
                     if (RT_FAILURE(rc))
                     {
                         if (rc == VERR_PDM_LUN_NOT_FOUND || rc == VERR_PDM_NO_DRIVER_ATTACHED_TO_LUN)
@@ -3178,7 +3178,7 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
                     }
                 }
 
-                rc = PDMR3DeviceDetach(VMR3GetVM(pUVM), pcszDevice, uInstance, uLUN, fHotplug ? 0 : PDM_TACH_FLAGS_NOT_HOT_PLUG);
+                rc = PDMR3DeviceDetach(pUVM, pcszDevice, uInstance, uLUN, fHotplug ? 0 : PDM_TACH_FLAGS_NOT_HOT_PLUG);
                 if (rc == VERR_PDM_NO_DRIVER_ATTACHED_TO_LUN)
                     rc = VINF_SUCCESS;
                 AssertRCReturn(rc, rc);
@@ -3473,7 +3473,7 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
         if (fAttachDetach)
         {
             /* Attach the new driver. */
-            rc = PDMR3DeviceAttach(VMR3GetVM(pUVM), pcszDevice, uInstance, uLUN,
+            rc = PDMR3DeviceAttach(pUVM, pcszDevice, uInstance, uLUN,
                                    fHotplug ? 0 : PDM_TACH_FLAGS_NOT_HOT_PLUG, NULL /*ppBase*/);
             AssertRCReturn(rc, rc);
 
@@ -3871,7 +3871,7 @@ int Console::configNetwork(const char *pszDevice,
 
         if (fAttachDetach)
         {
-            rc = PDMR3DeviceDetach(VMR3GetVM(mpUVM), pszDevice, uInstance, uLun, 0 /*fFlags*/);
+            rc = PDMR3DeviceDetach(mpUVM, pszDevice, uInstance, uLun, 0 /*fFlags*/);
             if (rc == VINF_PDM_NO_DRIVER_ATTACHED_TO_LUN)
                 rc = VINF_SUCCESS;
             AssertLogRelRCReturn(rc, rc);
@@ -4759,7 +4759,7 @@ int Console::configNetwork(const char *pszDevice,
                 {
                     if (fAttachDetach)
                     {
-                        rc = PDMR3DriverAttach(VMR3GetVM(mpUVM), pszDevice, uInstance, uLun, 0 /*fFlags*/, NULL /* ppBase */);
+                        rc = PDMR3DriverAttach(mpUVM, pszDevice, uInstance, uLun, 0 /*fFlags*/, NULL /* ppBase */);
                         //AssertRC(rc);
                     }
 

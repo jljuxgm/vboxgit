@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44269 2013-01-10 13:37:10Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 44351 2013-01-24 12:04:39Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -1812,7 +1812,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
             RTGCPHYS GCPhys;
 
             /* We convert it here every time as PCI regions could be reconfigured. */
-            rc = PDMVMMDevHeapR3ToGCPhys(pVM, pVM->hm.s.vmx.pRealModeTSS, &GCPhys);
+            rc = PDMVmmDevHeapR3ToGCPhys(pVM, pVM->hm.s.vmx.pRealModeTSS, &GCPhys);
             AssertRC(rc);
 
             rc =  VMXWriteVmcs(VMX_VMCS16_GUEST_FIELD_TR,         0);
@@ -2063,7 +2063,7 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
                 RTGCPHYS GCPhys;
 
                 /* We convert it here every time as PCI regions could be reconfigured. */
-                rc = PDMVMMDevHeapR3ToGCPhys(pVM, pVM->hm.s.vmx.pNonPagingModeEPTPageTable, &GCPhys);
+                rc = PDMVmmDevHeapR3ToGCPhys(pVM, pVM->hm.s.vmx.pNonPagingModeEPTPageTable, &GCPhys);
                 AssertMsgRC(rc, ("pNonPagingModeEPTPageTable = %RGv\n", pVM->hm.s.vmx.pNonPagingModeEPTPageTable));
 
                 /*
