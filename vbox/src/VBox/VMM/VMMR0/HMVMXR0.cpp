@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46655 2013-06-19 12:46:36Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46665 2013-06-19 15:13:29Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5726,7 +5726,7 @@ static int hmR0VmxCheckForceFlags(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
 
 
 /**
- * Converts any TRPM trap into a pending VMX event. This is typically used when
+ * Converts any TRPM trap into a pending HM event. This is typically used when
  * entering from ring-3 (not longjmp returns).
  *
  * @param   pVCpu           Pointer to the VMCPU.
@@ -5795,7 +5795,7 @@ static void hmR0VmxTrpmTrapToPendingEvent(PVMCPU pVCpu)
 
 
 /**
- * Converts any pending VMX event into a TRPM trap. Typically used when leaving
+ * Converts any pending HM event into a TRPM trap. Typically used when leaving
  * VT-x to execute any instruction.
  *
  * @param   pvCpu           Pointer to the VMCPU.
