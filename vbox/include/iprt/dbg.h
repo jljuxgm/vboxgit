@@ -1,4 +1,4 @@
-/* $Id: dbg.h 46101 2013-05-15 15:36:43Z vboxsync $ */
+/* $Id: dbg.h 46109 2013-05-15 19:54:06Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -998,6 +998,22 @@ RTDECL(const char *) RTDbgModImageFile(RTDBGMOD hDbgMod);
  * @param   hDbgMod         The module handle.
  */
 RTDECL(const char *) RTDbgModImageFileUsed(RTDBGMOD hDbgMod);
+
+/**
+ * Checks if the loading of the debug info has been postponed.
+ *
+ * @returns true if postponed, false if not or invalid handle.
+ * @param   hDbgMod         The module handle.
+ */
+RTDECL(bool)        RTDbgModIsDeferred(RTDBGMOD hDbgMod);
+
+/**
+ * Checks if the debug info is exports only.
+ *
+ * @returns true if exports only, false if not or invalid handle.
+ * @param   hDbgMod         The module handle.
+ */
+RTDECL(bool)        RTDbgModIsExports(RTDBGMOD hDbgMod);
 
 /**
  * Converts an image relative address to a segment:offset address.
