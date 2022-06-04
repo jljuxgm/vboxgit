@@ -1,4 +1,4 @@
-/* $Id: direnum-win.cpp 47534 2013-08-04 13:52:13Z vboxsync $ */
+/* $Id: direnum-win.cpp 47535 2013-08-05 01:54:25Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Windows.
  */
@@ -43,6 +43,13 @@
 #include "internal/dir.h"
 
 
+size_t rtDirNativeGetStructSize(const char *pszPath)
+{
+    NOREF(pszPath);
+    return sizeof(RTDIR);
+}
+
+
 int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
 {
     /*
@@ -77,7 +84,7 @@ int rtDirNativeOpen(PRTDIR pDir, char *pszPathBuf)
     rc = RTStrToUtf16(pszPathBuf, &pwszName);
     if (RT_SUCCESS(rc))
     {
-        pDir->hDir    = FindFirstFileW((LPCWSTR)pwszName, &pDir->Data);
+        pDir->hDir = FindFirstFileW((LPCWSTR)pwszName, &pDir->Data);
         if (pDir->hDir != INVALID_HANDLE_VALUE)
             pDir->fDataUnread = true;
         else

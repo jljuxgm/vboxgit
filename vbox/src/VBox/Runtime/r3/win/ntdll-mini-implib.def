@@ -1,4 +1,4 @@
-; $Id: ntdll-mini-implib.def 47533 2013-08-03 22:31:16Z vboxsync $
+; $Id: ntdll-mini-implib.def 47535 2013-08-05 01:54:25Z vboxsync $
 ;; @file
 ; IPRT - Minimal NTDLL import library defintion file.
 ;
@@ -28,6 +28,7 @@ LIBRARY ntdll.dll
 EXPORTS
     RtlNtStatusToDosError
     NtQueryTimerResolution
+    NtQueryDirectoryFile
     NtQueryInformationFile
     NtQueryInformationProcess
     NtSetInformationFile
@@ -36,3 +37,4 @@ EXPORTS
     NtQueryVirtualMemory
     NtCreateFile
     NtClose
+    NtOpenDirectoryObject
