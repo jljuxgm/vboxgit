@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 43507 2012-10-02 13:22:31Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 43538 2012-10-04 12:24:20Z vboxsync $ */
 
 /** @file
  *
@@ -87,6 +87,7 @@ private:
     const Bstr mInterfaceName;
     const Guid mGuid;
     const Bstr mNetworkName;
+    const Bstr mShortName;
     HostNetworkInterfaceType_T mIfType;
 
     VirtualBox * const  mVBox;
@@ -109,7 +110,7 @@ private:
         Bstr hardwareAddress;
         HostNetworkInterfaceMediumType_T mediumType;
         HostNetworkInterfaceStatus_T status;
-        ULONG speedMbytes;
+        ULONG speedMbits;
     } m;
 
 };

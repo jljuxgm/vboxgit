@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 43523 2012-10-03 05:38:33Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 43538 2012-10-04 12:24:20Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -156,16 +156,16 @@ static int getInterfaceInfo(int iSocket, const char *pszName, PNETIFINFO pInfo)
         /* First, we try to retrieve the speed via sysfs. */
         RTStrPrintf(szBuf, sizeof(szBuf), "/sys/class/net/%s/speed", pszName);
         fp = fopen(szBuf, "r");
-        if (fp && fscanf(fp, "%u", &pInfo->uSpeedMbytes) == 1)
+        if (fp && fscanf(fp, "%u", &pInfo->uSpeedMbits) == 1)
             fclose(fp);
         else
         {
             /* Failed to get speed via sysfs, go to plan B. */
             int rc = NetIfAdpCtlOut(pszName, "speed", szBuf, sizeof(szBuf));
             if (RT_SUCCESS(rc))
-                pInfo->uSpeedMbytes = RTStrToUInt32(szBuf);
+                pInfo->uSpeedMbits = RTStrToUInt32(szBuf);
             else
-                pInfo->uSpeedMbytes = 0;
+                pInfo->uSpeedMbits = 0;
         }
     }
     return VINF_SUCCESS;
