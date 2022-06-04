@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 42128 2012-07-12 16:31:42Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 42144 2012-07-13 12:46:58Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1809,15 +1809,15 @@ NTSTATUS APIENTRY DxgkDdiQueryAdapterInfo(
 #endif
 
             pCaps->HighestAcceptableAddress.QuadPart = ~((uintptr_t)0);
+            pCaps->MaxPointerWidth  = VBOXWDDM_C_POINTER_MAX_WIDTH;
+            pCaps->MaxPointerHeight = VBOXWDDM_C_POINTER_MAX_HEIGHT;
+            pCaps->PointerCaps.Value = 3; /* Monochrome , Color*/ /* MaskedColor == Value | 4, disable for now */
 #ifdef VBOX_WDDM_WIN8
             if (!g_VBoxDisplayOnly)
 #endif
             {
             pCaps->MaxAllocationListSlotId = 16;
             pCaps->ApertureSegmentCommitLimit = 0;
-            pCaps->MaxPointerWidth  = VBOXWDDM_C_POINTER_MAX_WIDTH;
-            pCaps->MaxPointerHeight = VBOXWDDM_C_POINTER_MAX_HEIGHT;
-            pCaps->PointerCaps.Value = 3; /* Monochrome , Color*/ /* MaskedColor == Value | 4, dosable for now */
             pCaps->InterruptMessageNumber = 0;
             pCaps->NumberOfSwizzlingRanges = 0;
             pCaps->MaxOverlays = 0;
