@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 42176 2012-07-17 12:23:50Z vboxsync $ */
+/* $Id: Settings.cpp 42179 2012-07-17 12:42:32Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1293,6 +1293,7 @@ MainConfigFile::MainConfigFile(const Utf8Str *pstrFilename)
                         pelmGlobalChild->getAttributeValue("webServiceAuthLibrary", systemProperties.strWebServiceAuthLibrary);
                         pelmGlobalChild->getAttributeValue("defaultVRDEExtPack", systemProperties.strDefaultVRDEExtPack);
                         pelmGlobalChild->getAttributeValue("LogHistoryCount", systemProperties.ulLogHistoryCount);
+                        pelmGlobalChild->getAttributeValue("autostartDatabasePath", systemProperties.strAutostartDatabasePath);
                     }
                     else if (pelmGlobalChild->nameEquals("ExtraData"))
                         readExtraData(*pelmGlobalChild, mapExtraDataItems);
@@ -1403,6 +1404,8 @@ void MainConfigFile::write(const com::Utf8Str strFilename)
     if (systemProperties.strDefaultVRDEExtPack.length())
         pelmSysProps->setAttribute("defaultVRDEExtPack", systemProperties.strDefaultVRDEExtPack);
     pelmSysProps->setAttribute("LogHistoryCount", systemProperties.ulLogHistoryCount);
+    if (systemProperties.strAutostartDatabasePath.length())
+        pelmSysProps->setAttribute("autostartDatabasePath", systemProperties.strAutostartDatabasePath);
 
     buildUSBDeviceFilters(*pelmGlobal->createChild("USBDeviceFilters"),
                           host.llUSBDeviceFilters,
