@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataEventHandler.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIExtraDataEventHandler.cpp 44303 2013-01-16 11:47:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -97,7 +97,7 @@ public slots:
 
    void sltExtraDataChange(QString strId, QString strKey, QString strValue)
    {
-       if (strId.isEmpty())
+       if (QUuid(strId).isNull())
        {
            if (strKey.startsWith ("GUI/"))
            {
