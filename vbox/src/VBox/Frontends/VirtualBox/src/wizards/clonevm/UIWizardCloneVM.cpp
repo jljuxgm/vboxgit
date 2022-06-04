@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 45193 2013-03-26 14:00:34Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 45316 2013-04-03 17:40:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -141,7 +141,7 @@ bool UIWizardCloneVM::cloneVM()
         return false;
     if (!progress.isOk() || progress.GetResultCode() != 0)
     {
-        msgCenter().cannotCreateClone(srcMachine, progress, this);
+        msgCenter().cannotCreateClone(progress, srcMachine.GetName(), this);
         return false;
     }
 
@@ -149,7 +149,7 @@ bool UIWizardCloneVM::cloneVM()
     vbox.RegisterMachine(cloneMachine);
     if (!vbox.isOk())
     {
-        msgCenter().cannotRegisterMachine(vbox, cloneMachine, this);
+        msgCenter().cannotRegisterMachine(vbox, cloneMachine.GetName(), this);
         return false;
     }
 

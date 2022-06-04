@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 45068 2013-03-18 17:27:22Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 45316 2013-04-03 17:40:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -189,7 +189,7 @@ bool UIWizardNewVM::createVM()
     vbox.RegisterMachine(m_machine);
     if (!vbox.isOk())
     {
-        msgCenter().cannotCreateMachine(vbox, m_machine, this);
+        msgCenter().cannotRegisterMachine(vbox, m_machine.GetName(), this);
         return false;
     }
 
