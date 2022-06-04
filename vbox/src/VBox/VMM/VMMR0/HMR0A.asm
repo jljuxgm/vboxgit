@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 45474 2013-04-10 20:25:33Z vboxsync $
+; $Id: HMR0A.asm 45875 2013-05-02 12:52:33Z vboxsync $
 ;; @file
 ; VMXM - R0 vmx helpers
 ;
@@ -582,9 +582,9 @@ BITS 64
     and     edx, 0ffffffffh
     xor     eax, eax
     vmxon   [rdx]
-    mov     r8d, VERR_INVALID_PARAMETER
+    mov     r8d, VERR_VMX_VMXON_FAILED
     cmovz   eax, r8d
-    mov     r9d, VERR_VMX_INVALID_VMCS_PTR
+    mov     r9d, VERR_VMX_INVALID_VMXON_PTR
     cmovc   eax, r9d
     jmp far [.fpret wrt rip]
 .fpret:                                 ; 16:32 Pointer to .the_end.
