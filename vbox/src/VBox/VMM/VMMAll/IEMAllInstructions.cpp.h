@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 47669 2013-08-12 10:42:55Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 47740 2013-08-14 19:55:03Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -10189,7 +10189,7 @@ FNIEMOP_DEF_1(iemOp_pop_Ev, uint8_t, bRm)
     if (rcStrict == VINF_SUCCESS)
     {
         pCtx->rsp = TmpRsp.u;
-        iemRegUpdateRip(pIemCpu);
+        iemRegUpdateRipAndClearRF(pIemCpu);
     }
     return rcStrict;
 
