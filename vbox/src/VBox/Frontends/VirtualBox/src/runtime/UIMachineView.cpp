@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 46364 2013-06-03 15:02:38Z vboxsync $ */
+/* $Id: UIMachineView.cpp 46538 2013-06-13 15:28:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -217,8 +217,8 @@ void UIMachineView::sltHandleRequestResize(int iPixelFormat, uchar *pVRAM,
      * frame-buffer and don't touch the window.  This prevents unwanted resizes
      * when entering or exiting fullscreen on X.Org guests and when
      * re-attaching the frame-buffer on a view switch. */
-    bool fResize =    iWidth != frameBuffer()->width()
-                   || iHeight != frameBuffer()->height();
+    bool fResize =    (ulong)iWidth != frameBuffer()->width()
+                   || (ulong)iHeight != frameBuffer()->height();
 
     /* If machine-window is visible: */
     if (uisession()->isScreenVisible(m_uScreenId))
