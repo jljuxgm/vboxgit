@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: MediumImpl.cpp 43476 2012-10-01 07:38:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -7814,15 +7814,15 @@ HRESULT Medium::taskResizeHandler(Medium::ResizeTask &task)
             {
                 if (vrc == VERR_NOT_SUPPORTED)
                     throw setError(VBOX_E_NOT_SUPPORTED,
-                                   tr("Compacting is not yet supported for medium '%s'"),
-                                   location.c_str());
+                                   tr("Resizing to new size %llu is not yet supported for medium '%s'"),
+                                   task.mSize, location.c_str());
                 else if (vrc == VERR_NOT_IMPLEMENTED)
                     throw setError(E_NOTIMPL,
-                                   tr("Compacting is not implemented, medium '%s'"),
+                                   tr("Resiting is not implemented, medium '%s'"),
                                    location.c_str());
                 else
                     throw setError(VBOX_E_FILE_ERROR,
-                                   tr("Could not compact medium '%s'%s"),
+                                   tr("Could not resize medium '%s'%s"),
                                    location.c_str(),
                                    vdError(vrc).c_str());
             }
