@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 46783 2013-06-25 16:09:37Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 46801 2013-06-26 13:01:07Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1992,6 +1992,7 @@ NTSTATUS APIENTRY DxgkDdiQueryAdapterInfo(
                     VBOXWDDM_QI * pQi = (VBOXWDDM_QI*)pQueryAdapterInfo->pOutputData;
                     memset (pQi, 0, sizeof (VBOXWDDM_QI));
                     pQi->u32Version = VBOXVIDEOIF_VERSION;
+                    pQi->u32VBox3DCaps = VBoxMpCrGetHostCaps();
                     pQi->cInfos = VBoxCommonFromDeviceExt(pDevExt)->cDisplays;
 #ifdef VBOX_WITH_VIDEOHWACCEL
                     for (int i = 0; i < VBoxCommonFromDeviceExt(pDevExt)->cDisplays; ++i)

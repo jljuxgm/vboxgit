@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCr.cpp 46783 2013-06-25 16:09:37Z vboxsync $ */
+/* $Id: VBoxMPCr.cpp 46801 2013-06-26 13:01:07Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -880,6 +880,11 @@ bool VBoxMpCrCtlConIs3DSupported()
         WARN(("vboxMpCrCtlConGetCaps failed rc (%d), ignoring..", rc));
         g_VBoxMpCrHostCaps = 0;
     }
+
+#ifndef DEBUG_misha
+    /* zero it up temporary to avoid new code activation */
+    g_VBoxMpCrHostCaps = 0;
+#endif
 
     rc = VBoxMpCrCtlConDisconnect(&CrCtlCon, u32ClientID);
     if (RT_FAILURE(rc))
