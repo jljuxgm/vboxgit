@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45556 2013-04-15 16:45:27Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45557 2013-04-15 17:50:23Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5940,8 +5940,7 @@ static int hmR0VmxInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
         {
             Log(("Injecting NMI\n"));
             RTGCUINTPTR uIntrInfo;
-            uIntrInfo  = X86_XCPT_NMI;
-            uIntrInfo |= (1 << VMX_EXIT_INTERRUPTION_INFO_VALID_SHIFT);
+            uIntrInfo  = X86_XCPT_NMI | (1 << VMX_EXIT_INTERRUPTION_INFO_VALID_SHIFT);
             uIntrInfo |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_NMI << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
             rc = hmR0VmxInjectEventVmcs(pVCpu, pMixedCtx, uIntrInfo, 0 /* cbInstr */, 0 /* u32ErrCode */, &uIntrState);
             AssertRCReturn(rc, rc);
@@ -8508,10 +8507,6 @@ static DECLCALLBACK(int) hmR0VmxExitXcptNM(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVM
     /* We require CR0 and EFER. EFER is always up-to-date. */
     int rc = hmR0VmxSaveGuestControlRegs(pVCpu, pMixedCtx);
     AssertRCReturn(rc, rc);
-
-    rc = hmR0VmxSaveGuestGprs(pVCpu, pMixedCtx);
-    rc |= hmR0VmxSaveGuestSegmentRegs(pVCpu, pMixedCtx);
-    Log(("Rip %04x:%#RX64\n", pMixedCtx->cs.Sel, pMixedCtx->rip));
 
     /* Lazy FPU loading; Load the guest-FPU state transparently and continue execution of the guest. */
     PVM pVM = pVCpu->CTX_SUFF(pVM);
