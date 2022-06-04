@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 45620 2013-04-18 20:07:14Z vboxsync $ */
+/* $Id: PATMAll.cpp 45628 2013-04-19 07:13:55Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -258,7 +258,7 @@ VMM_INT_DECL(bool) PATMShouldUseRawMode(PVM pVM, RTRCPTR pAddrGC)
  */
 VMM_INT_DECL(RCPTRTYPE(PPATMGCSTATE)) PATMGetGCState(PVM pVM)
 {
-    AssertReturn(!HMIsEnabled(pVM), NULL);
+    AssertReturn(!HMIsEnabled(pVM), NIL_RTRCPTR);
     return pVM->patm.s.pGCStateGC;
 }
 
