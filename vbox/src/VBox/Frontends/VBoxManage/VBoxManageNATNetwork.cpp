@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 47704 2013-08-13 17:57:49Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -28,7 +28,9 @@
 #include <VBox/com/VirtualBox.h>
 #endif /* !VBOX_ONLY_DOCS */
 
-#include <netinet/in.h>
+#ifndef RT_OS_WINDOWS
+# include <netinet/in.h>
+#endif
 
 #define IPv6
 
