@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 47627 2013-08-09 08:31:24Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 47817 2013-08-16 15:30:15Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -127,7 +127,7 @@ private:
         ProcessStatus_T          mStatus;
         /** The last returned process status
          *  returned from the guest side. */
-        int                      mRC;
+        int                      mLastError;
     } mData;
 };
 
