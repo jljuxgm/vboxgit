@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 44347 2013-01-24 00:27:56Z vboxsync $ */
+/* $Id: tstVMM.cpp 44387 2013-01-25 18:31:58Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -147,7 +147,7 @@ tstVMMLdrEnum(PVM pVM, const char *pszFilename, const char *pszName, RTUINTPTR I
 }
 
 static DECLCALLBACK(int)
-tstVMMConfigConstructor(PVM pVM, void *pvUser)
+tstVMMConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
 {
     NOREF(pvUser);
     int rc = CFGMR3ConstructDefaultTree(pVM);
@@ -234,7 +234,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 44347 $\n");
+                RTPrintf("$Revision: 44387 $\n");
                 return 0;
 
             default:

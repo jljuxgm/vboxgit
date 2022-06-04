@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 44364 2013-01-25 01:15:41Z vboxsync $ */
+/* $Id: ConsoleImpl.h 44387 2013-01-25 18:31:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -525,8 +525,8 @@ private:
     HRESULT createSharedFolder(const Utf8Str &strName, const SharedFolderData &aData);
     HRESULT removeSharedFolder(const Utf8Str &strName);
 
-    static DECLCALLBACK(int) configConstructor(PVM pVM, void *pvConsole);
-    int configConstructorInner(PVM pVM, AutoWriteLock *pAlock);
+    static DECLCALLBACK(int) configConstructor(PUVM pUVM, PVM pVM, void *pvConsole);
+    int configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock);
     int configCfgmOverlay(PVM pVM, IVirtualBox *pVirtualBox, IMachine *pMachine);
     int configDumpAPISettingsTweaks(IVirtualBox *pVirtualBox, IMachine *pMachine);
 

@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 44386 2013-01-25 18:18:12Z vboxsync $ */
+/* $Id: CFGM.cpp 44387 2013-01-25 18:31:58Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -124,7 +124,7 @@ VMMR3DECL(int) CFGMR3Init(PVM pVM, PFNCFGMCONSTRUCTOR pfnCFGMConstructor, void *
          * Call the constructor if specified, if not use the default one.
          */
     if (pfnCFGMConstructor)
-        rc = pfnCFGMConstructor(pVM, pvUser);
+        rc = pfnCFGMConstructor(pVM->pUVM, pVM, pvUser);
     else
         rc = CFGMR3ConstructDefaultTree(pVM);
     if (RT_SUCCESS(rc))
