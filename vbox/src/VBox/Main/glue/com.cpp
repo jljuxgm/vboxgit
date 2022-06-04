@@ -1,4 +1,4 @@
-/* $Id: com.cpp 41040 2012-04-24 10:13:40Z vboxsync $ */
+/* $Id: com.cpp 42385 2012-07-25 11:52:31Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -181,7 +181,7 @@ HRESULT GlueCreateInstance(const CLSID &clsid,
 
 #endif // VBOX_WITH_XPCOM
 
-int GetVBoxUserHomeDirectory(char *aDir, size_t aDirLen)
+int GetVBoxUserHomeDirectory(char *aDir, size_t aDirLen, bool fCreateDir)
 {
     AssertReturn(aDir, VERR_INVALID_POINTER);
     AssertReturn(aDirLen > 0, VERR_BUFFER_OVERFLOW);
@@ -210,7 +210,7 @@ int GetVBoxUserHomeDirectory(char *aDir, size_t aDirLen)
 
         /* ensure the home directory exists */
         if (RT_SUCCESS(vrc))
-            if (!RTDirExists(aDir))
+            if (!RTDirExists(aDir) && fCreateDir)
                 vrc = RTDirCreateFullPath(aDir, 0700);
     }
 
