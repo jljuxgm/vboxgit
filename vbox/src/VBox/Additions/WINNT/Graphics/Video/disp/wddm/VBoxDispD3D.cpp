@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 42501 2012-08-01 10:48:53Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 42518 2012-08-01 16:54:38Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -6620,13 +6620,11 @@ static HRESULT APIENTRY vboxWddmDDevDestroyDevice(IN HANDLE hDevice)
     PVBOXWDDMDISP_ADAPTER pAdapter = pDevice->pAdapter;
     if (VBOXDISPMODE_IS_3D(pAdapter))
     {
-//    Assert(!pDevice->cScreens);
-        /* destroy the device first, since destroying PVBOXWDDMDISP_SWAPCHAIN would result in a device window termination */
-        if (pDevice->pDevice9If)
-        {
-            pDevice->pDevice9If->Release();
-        }
         vboxWddmSwapchainDestroyAll(pDevice);
+        /* ensure the device is destroyed in any way.
+         * Release may not work in case of some leaking, which will leave the crOgl context refering the destroyed VBOXUHGSMI */
+        if (pDevice->pDevice9If)
+            pDevice->pAdapter->D3D.pfnVBoxWineExD3DDev9Term((IDirect3DDevice9Ex *)pDevice->pDevice9If);
     }
 
     HRESULT hr = vboxDispCmCtxDestroy(pDevice, &pDevice->DefaultContext);

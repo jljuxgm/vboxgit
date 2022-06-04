@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 42285 2012-07-20 16:52:34Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 42518 2012-08-01 16:54:38Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -76,6 +76,13 @@ HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D)
         if (!pD3D->pfnVBoxWineExD3DDev9Update)
         {
             WARN(("no VBoxWineExD3DDev9Update"));
+            break;
+        }
+
+        pD3D->pfnVBoxWineExD3DDev9Term = (PFNVBOXWINEEXD3DDEV9_TERM)GetProcAddress(pD3D->hD3DLib, "VBoxWineExD3DDev9Term");
+        if (!pD3D->pfnVBoxWineExD3DDev9Term)
+        {
+            WARN(("no VBoxWineExD3DDev9Term"));
             break;
         }
 
