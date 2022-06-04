@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
+/* $Id: DevPIC.cpp 47035 2013-07-08 12:21:25Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -333,6 +333,7 @@ static void pic_update_imr(PDEVPIC pThis, PPICSTATE pPic, uint8_t val)
     }
 
     /* Update IMR */
+    Log(("pic_update_imr: pic%u %#x -> %#x\n", pPic->idxPic, pPic->imr, val));
     pPic->imr = val;
 
     /* If an interrupt is pending and now masked, then clear the FF flag. */
