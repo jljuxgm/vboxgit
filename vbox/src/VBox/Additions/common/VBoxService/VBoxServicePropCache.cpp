@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePropCache.cpp 44098 2012-12-12 08:31:52Z vboxsync $ */
+/* $Id: VBoxServicePropCache.cpp 44099 2012-12-12 08:35:51Z vboxsync $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
@@ -76,7 +76,7 @@ PVBOXSERVICEVEPROPCACHEENTRY vboxServicePropCacheInsertEntryInternal(PVBOXSERVIC
         if (!pNode->pszName)
         {
             RTMemFree(pNode);
-            return VERR_NO_MEMORY;
+            return NULL;
         }
         pNode->pszValue = NULL;
         pNode->fFlags = 0;
@@ -384,7 +384,7 @@ int VBoxServicePropCacheFlush(PVBOXSERVICEVEPROPCACHE pCache)
  */
 void VBoxServicePropCacheDestroy(PVBOXSERVICEVEPROPCACHE pCache)
 {
-    AssertPtrReturn(pCache, VERR_INVALID_POINTER);
+    AssertPtrReturnVoid(pCache);
     Assert(pCache->uClientID);
 
     /* Lock the cache. */
