@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 45329 2013-04-04 09:00:44Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 45358 2013-04-05 08:56:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -191,7 +191,7 @@ void UISelectorWindow::sltMediumEnumFinished()
             break;
 
     /* Warn the user about inaccessible medium: */
-    if (it != list.end() && msgCenter().remindAboutInaccessibleMedia())
+    if (it != list.end() && msgCenter().warnAboutInaccessibleMedia())
     {
         /* Open the MM window (without refresh): */
         UIMediumManager::showModeless(this, false /* refresh? */);

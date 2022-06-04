@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 45358 2013-04-05 08:56:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -96,7 +96,7 @@ bool UIWizardExportApp::exportAppliance()
     }
     QVector<QString> exists = explorer.Exists(files);
     /* Check if the file exists already, if yes get confirmation for overwriting from the user. */
-    if (!msgCenter().askForOverridingFiles(exists, this))
+    if (!msgCenter().confirmOverridingFiles(exists, this))
         return false;
     /* Ok all is confirmed so delete all the files which exists: */
     if (!exists.isEmpty())
