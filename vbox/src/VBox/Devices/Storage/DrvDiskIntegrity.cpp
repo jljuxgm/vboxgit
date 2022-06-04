@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 40282 2012-02-28 21:02:40Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 44236 2013-01-04 20:49:19Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -522,7 +522,7 @@ static int drvdiskintDiscardRecords(PDRVDISKINTEGRITY pThis, PCRTRANGE paRanges,
             {
                 size_t cbPreLeft, cbPostLeft;
 
-                cbRange    = RT_MIN(cbRange, pSeg->Core.KeyLast - offStart + 1);
+                cbRange    = RT_MIN(cbLeft, pSeg->Core.KeyLast - offStart + 1);
                 cbPreLeft  = offStart - pSeg->Core.Key;
                 cbPostLeft = pSeg->cbSeg - cbRange - cbPreLeft;
 
