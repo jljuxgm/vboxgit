@@ -1,10 +1,10 @@
-/* $Id: VBoxManageStorageController.cpp 42395 2012-07-25 14:36:03Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 42442 2012-07-27 16:47:04Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -394,11 +394,10 @@ int handleStorageAttach(HandlerArg *a)
                         || (deviceType == DeviceType_Floppy))
                     {
                         /* just unmount the floppy/dvd */
-                        CHECK_ERROR(machine, MountMedium(Bstr(pszCtl).raw(),
-                                                         port,
-                                                         device,
-                                                         NULL,
-                                                         fForceUnmount));
+                        CHECK_ERROR(machine, UnmountMedium(Bstr(pszCtl).raw(),
+                                                           port,
+                                                           device,
+                                                           fForceUnmount));
                     }
                 }
                 else if (devTypeRequested == DeviceType_DVD)

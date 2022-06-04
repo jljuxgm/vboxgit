@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: MachineImpl.h 42442 2012-07-27 16:47:04Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -507,6 +507,8 @@ public:
                                           LONG aDevice, IBandwidthGroup *aBandwidthGroup);
     STDMETHOD(MountMedium)(IN_BSTR aControllerName, LONG aControllerPort,
                            LONG aDevice, IMedium *aMedium, BOOL aForce);
+    STDMETHOD(UnmountMedium)(IN_BSTR aControllerName, LONG aControllerPort,
+                             LONG aDevice, BOOL aForce);
     STDMETHOD(GetMedium)(IN_BSTR aControllerName, LONG aControllerPort, LONG aDevice,
                          IMedium **aMedium);
     STDMETHOD(GetSerialPort)(ULONG slot, ISerialPort **port);

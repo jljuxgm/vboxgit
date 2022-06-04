@@ -1,10 +1,10 @@
-/* $Id: VBoxManage.h 42248 2012-07-20 08:39:45Z vboxsync $ */
+/* $Id: VBoxManage.h 42442 2012-07-27 16:47:04Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
