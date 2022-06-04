@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 45907 2013-05-06 12:54:22Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -842,7 +842,7 @@ static int pgmPoolAccessHandlerFlush(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool, PPGM
     else if (rc2 == VINF_EM_RESCHEDULE)
     {
         if (rc == VINF_SUCCESS)
-            rc = rc2;
+            rc = VBOXSTRICTRC_VAL(rc2);
 # ifndef IN_RING3
         VMCPU_FF_SET(pVCpu, VMCPU_FF_TO_R3);
 # endif
