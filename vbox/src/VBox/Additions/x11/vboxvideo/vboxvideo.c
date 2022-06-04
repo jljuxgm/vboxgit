@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: vboxvideo.c 44998 2013-03-11 16:55:59Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1073,8 +1073,9 @@ static Bool VBOXScreenInit(ScreenPtr pScreen, int argc, char **argv)
         }
     }
 
-    /* Set a sane minimum and maximum mode size */
-    xf86CrtcSetSizeRange(pScrn, 64, 64, 32000, 32000);
+    /* Set a sane minimum and maximum mode size to match what the hardware
+     * supports. */
+    xf86CrtcSetSizeRange(pScrn, 64, 64, 16384, 16384);
 
     /* Now create our initial CRTC/output configuration. */
     if (!xf86InitialConfiguration(pScrn, TRUE)) {
