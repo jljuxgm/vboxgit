@@ -1,4 +1,4 @@
-/* $Id: http.h 45398 2013-04-08 09:32:00Z vboxsync $ */
+/* $Id: http.h 45454 2013-04-10 12:16:33Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP Communication API.
  */
@@ -72,6 +72,17 @@ RTR3DECL(void) RTHttpDestroy(RTHTTP hHttp);
  *                         '\0'-terminated.
  */
 RTR3DECL(int) RTHttpGet(RTHTTP hHttp, const char *pcszUrl, char **ppszResponse);
+
+/**
+ * Abort a pending HTTP request. A blocking RTHttpGet() call will return with
+ * VERR_HTTP_ABORTED. It may take some time (current cURL implementation needs
+ * up to 1 second) before the request is aborted.
+ *
+ * @returns iprt status code.
+ *
+ * @param    hHttp         HTTP interface handle.
+ */
+RTR3DECL(int) RTHttpAbort(RTHTTP hHttp);
 
 /**
  * Specify proxy settings.
