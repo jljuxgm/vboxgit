@@ -1,10 +1,10 @@
-/* $Id: IEMAllInstructions.cpp.h 47240 2013-07-18 23:53:08Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 47271 2013-07-19 16:54:06Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

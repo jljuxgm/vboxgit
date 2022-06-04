@@ -1,10 +1,10 @@
-/* $Id: IEMAllCImpl.cpp.h 46951 2013-07-03 19:36:50Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 47271 2013-07-19 16:54:06Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -116,7 +116,7 @@ static void iemHlpLoadNullDataSelectorProt(PCPUMSELREG pSReg, RTSEL uRpl)
     pSReg->fFlags   = CPUMSELREG_FLAGS_VALID;
     pSReg->u64Base  = 0;
     pSReg->u32Limit = 0;
-    pSReg->Attr.u   = 0;
+    pSReg->Attr.u   = X86DESCATTR_UNUSABLE;
 }
 
 
