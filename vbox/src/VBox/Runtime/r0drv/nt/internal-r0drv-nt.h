@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 45443 2013-04-09 18:30:45Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -40,6 +40,7 @@ typedef VOID (__stdcall *PFNHALREQUESTIPI)(KAFFINITY TargetSet);
 typedef VOID (__stdcall *PFNHALSENDSOFTWAREINTERRUPT)(ULONG ProcessorNumber, KIRQL Irql);
 typedef int (__stdcall *PFNRTSENDIPI)(RTCPUID idCpu);
 typedef ULONG_PTR (__stdcall *PFNRTKEIPIGENERICCALL)(PKIPI_BROADCAST_WORKER BroadcastFunction, ULONG_PTR  Context);
+typedef ULONG (__stdcall *PFNRTRTLGETVERSION)(PRTL_OSVERSIONINFOEXW pVerInfo);
 
 /*******************************************************************************
 *   Global Variables                                                           *
@@ -51,6 +52,7 @@ extern PFNHALREQUESTIPI             g_pfnrtNtHalRequestIpi;
 extern PFNHALSENDSOFTWAREINTERRUPT  g_pfnrtNtHalSendSoftwareInterrupt;
 extern PFNRTSENDIPI                 g_pfnrtSendIpi;
 extern PFNRTKEIPIGENERICCALL        g_pfnrtKeIpiGenericCall;
+extern PFNRTRTLGETVERSION             g_pfnrtRtlGetVersion;
 extern uint32_t                     g_offrtNtPbQuantumEnd;
 extern uint32_t                     g_cbrtNtPbQuantumEnd;
 extern uint32_t                     g_offrtNtPbDpcQueueDepth;
