@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: ConsoleImpl.h 43131 2012-08-31 11:34:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -33,6 +33,7 @@ class RemoteUSBDevice;
 class SharedFolder;
 class VRDEServerInfo;
 class AudioSniffer;
+class Nvram;
 #ifdef VBOX_WITH_USB_VIDEO
 class UsbWebcamInterface;
 #endif
@@ -767,6 +768,7 @@ private:
 
     VMMDev * m_pVMMDev;
     AudioSniffer * const mAudioSniffer;
+    Nvram   * const mNvram;
 #ifdef VBOX_WITH_USB_VIDEO
     UsbWebcamInterface * const mUsbWebcamInterface;
 #endif

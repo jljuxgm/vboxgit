@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 43023 2012-08-28 06:43:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 43131 2012-08-31 11:34:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1512,6 +1512,11 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
                 InsertConfigInteger(pCfg, "DmiUseHostInfo", 1);
                 InsertConfigInteger(pCfg, "DmiExposeMemoryTable", 1);
             }
+            PCFGMNODE pDrv;
+            InsertConfigNode(pInst,    "LUN#0", &pLunL0);
+            InsertConfigString(pLunL0, "Driver", "NvramStorage");
+            InsertConfigNode(pLunL0,   "Config", &pCfg);
+            InsertConfigInteger(pCfg,  "Object", (uint64_t)mNvram);
         }
 
         /*
