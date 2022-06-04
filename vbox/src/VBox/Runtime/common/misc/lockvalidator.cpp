@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 39083 2011-10-22 00:28:46Z vboxsync $ */
+/* $Id: lockvalidator.cpp 42225 2012-07-19 11:24:10Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1072,7 +1072,7 @@ RTDECL(int) RTLockValidatorClassCreateExV(PRTLOCKVALCLASS phClass, PCRTLOCKVALSR
     pThis->cMsMinOrder          = cMsMinOrder;
     for (unsigned i = 0; i < RT_ELEMENTS(pThis->au32Reserved); i++)
         pThis->au32Reserved[i]  = 0;
-    for (unsigned i = 0; i < RT_ELEMENTS(pThis->au32Reserved); i++)
+    for (unsigned i = 0; i < RT_ELEMENTS(pThis->PriorLocks.aRefs); i++)
     {
         pThis->PriorLocks.aRefs[i].hClass           = NIL_RTLOCKVALCLASS;
         pThis->PriorLocks.aRefs[i].cLookups         = 0;
