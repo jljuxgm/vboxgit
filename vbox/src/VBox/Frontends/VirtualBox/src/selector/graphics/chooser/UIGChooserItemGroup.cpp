@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 42688 2012-08-08 17:06:33Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 42690 2012-08-08 18:27:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1209,6 +1209,7 @@ void UIGChooserItemGroup::paintGroupInfo(QPainter *pPainter, const QStyleOptionG
 
         /* Prepare variables: */
         QRect fullRect = pOption->rect;
+        int iMinorSpacing = data(GroupItemData_MinorSpacing).toInt();
         int iEnterButtonWidth = data(GroupItemData_EnterButtonSize).toSizeF().width();
         QSize groupPixmapSize = data(GroupItemData_GroupPixmapSize).toSize();
         QSize machinePixmapSize = data(GroupItemData_MachinePixmapSize).toSize();
@@ -1223,7 +1224,7 @@ void UIGChooserItemGroup::paintGroupInfo(QPainter *pPainter, const QStyleOptionG
         /* Indent: */
         int iHorizontalIndent = fullRect.right() - iHorizontalMargin;
         if (!isRoot())
-            iHorizontalIndent -= iEnterButtonWidth;
+            iHorizontalIndent -= (iEnterButtonWidth + iMinorSpacing);
 
         /* Should we draw machine count info? */
         if (!strMachineCountText.isEmpty())
