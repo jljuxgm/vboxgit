@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42890 2012-08-20 17:45:13Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42903 2012-08-21 12:22:35Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11316,6 +11316,7 @@ void Machine::copyFrom(Machine *aThat)
         mStorageControllers->push_back(ctrl);
     }
 
+    mNetworkAdapters.resize(aThat->mNetworkAdapters.size());
     for (ULONG slot = 0; slot < mNetworkAdapters.size(); slot++)
         mNetworkAdapters[slot]->copyFrom(aThat->mNetworkAdapters[slot]);
     for (ULONG slot = 0; slot < RT_ELEMENTS(mSerialPorts); slot++)
