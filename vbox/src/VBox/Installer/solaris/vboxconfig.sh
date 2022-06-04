@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 44212 2012-12-28 21:21:44Z vboxsync $
+# $Id: vboxconfig.sh 44215 2012-12-29 00:45:56Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -603,13 +603,13 @@ install_drivers()
         return 1
     fi
 
-    # Create the device link for non-remote installs
+    # Create the device link for non-remote installs (not really relevant any more)
     if test "$REMOTEINST" -eq 0; then
         /usr/sbin/devfsadm -i "$MOD_VBOXDRV"
-        if test $? -ne 0 || test ! -h "/dev/vboxdrv" || test ! -h "/dev/vboxdrvu" ; then
-            errorprint "Failed to create device link for $MOD_VBOXDRV."
-            exit 1
-        fi
+        #if test $? -ne 0 || test ! -h "/dev/vboxdrv" || test ! -h "/dev/vboxdrvu" ; then
+        #    errorprint "Failed to create device link for $MOD_VBOXDRV."
+        #    exit 1
+        #fi
     fi
 
     # Load VBoxNetAdp
@@ -1221,12 +1221,17 @@ do
             # Use alternate kernel driver config folder (dev only)
             DIR_CONF="/usr/kernel/drv"
             ;;
+        --sh-trace) # forwarded pkgadd -v 
+            set -x
+            ;;
         --help)
             printusage
             exit 1
             ;;
         *)
-            break
+            # Take a hard line on invalid options.
+            errorprint "Invalid command line option: \"$1\""
+            exit 1;
             ;;
     esac
     shift

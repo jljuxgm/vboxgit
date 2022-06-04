@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postinstall.sh 44211 2012-12-28 21:20:59Z vboxsync $
+# $Id: postinstall.sh 44215 2012-12-29 00:45:56Z vboxsync $
 ## @file
 # VirtualBox postinstall script for Solaris.
 #
@@ -19,7 +19,8 @@
 rc=0
 currentzone=`zonename`
 if test "$currentzone" = "global"; then
-    ${PKG_INSTALL_ROOT:=/}/opt/VirtualBox/pkginstall.sh --srv4
+    DEBUGOPT=`set -o | sed -ne 's/^xtrace *on$/--sh-trace/p'` # propagate pkgadd -v
+    ${PKG_INSTALL_ROOT:=/}/opt/VirtualBox/pkginstall.sh --srv4 ${DEBUGOPT}
     rc=$?
 fi
 
