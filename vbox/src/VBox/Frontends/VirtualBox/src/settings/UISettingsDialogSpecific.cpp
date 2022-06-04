@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 47187 2013-07-16 13:15:30Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 47203 2013-07-16 17:06:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -420,7 +420,7 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent)
     retranslateUi();
 
     /* Choose first item by default: */
-    m_pSelector->selectById(0);
+    m_pSelector->selectById(GlobalSettingsPageType_General);
 }
 
 UISettingsDialogGlobal::~UISettingsDialogGlobal()
@@ -742,7 +742,7 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
     }
     /* First item as default: */
     else
-        m_pSelector->selectById(0);
+        m_pSelector->selectById(MachineSettingsPageType_General);
 }
 
 UISettingsDialogMachine::~UISettingsDialogMachine()
