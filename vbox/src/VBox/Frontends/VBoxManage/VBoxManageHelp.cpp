@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 42178 2012-07-17 12:35:07Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 42189 2012-07-17 13:55:28Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -113,7 +113,8 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            bridgedifs|dhcpservers|hostinfo|\n"
 #endif
                      "                            hostcpuids|hddbackends|hdds|dvds|floppies|\n"
-                     "                            usbhost|usbfilters|systemproperties|extpacks\n"
+                     "                            usbhost|usbfilters|systemproperties|extpacks|\n"
+                     "                            groups\n"
                      "\n");
 
     if (u64Cmd & USAGE_SHOWVMINFO)
