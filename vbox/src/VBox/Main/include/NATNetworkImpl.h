@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 45138 2013-03-22 11:52:24Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 45559 2013-04-16 06:11:59Z vboxsync $ */
 
 /** @file
  *
@@ -111,7 +111,10 @@ public:
 
 private:
     int RecalculateIpv4AddressAssignments();
+
     typedef std::map<Utf8Str, settings::NATRule> NATRuleMap;
+    typedef NATRuleMap::const_iterator constNATRuleMapIterator;
+
     void GetPortForwardRulesFromMap(ComSafeArrayOut(BSTR, aPortForwardRules), NATRuleMap& aRules);
     /** weak VirtualBox parent */
     VirtualBox * const      mVirtualBox;
@@ -119,7 +122,6 @@ private:
     const Bstr mName;
     struct Data;
     struct Data *m;
-    
 
 };
 
