@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 45288 2013-04-02 13:27:59Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 45294 2013-04-03 06:27:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1814,7 +1814,7 @@ UIMachineSettingsStorage::UIMachineSettingsStorage()
 #endif /* Q_WS_MAC */
 
     /* Setup choose-medium button: */
-    QMenu *pOpenMediumMenu = new QMenu(this);
+    QMenu *pOpenMediumMenu = new QMenu(mTbOpen);
     mTbOpen->setMenu(pOpenMediumMenu);
 
     /* Controller pane initialization: */
