@@ -1,4 +1,4 @@
-# $Id: Config.kmk 47266 2013-07-19 14:53:32Z vboxsync $
+# $Id: Config.kmk 47387 2013-07-25 11:41:37Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2236,7 +2236,11 @@ endif
 # YASM macros
 ifndef DONT_USE_YASM
  include $(KBUILD_PATH)/tools/YASM.kmk
- VBOX_YASM_CHECK = $(if-expr "$(shell $(TOOL_YASM_AS) -e -o vbox-yasm-check.o $1 - < /dev/null 2>&1)" == "",$(1),)
+ if1of ($(KBUILD_HOST), win os2)
+  VBOX_YASM_CHECK = $(if-expr "$(shell $(TOOL_YASM_AS) -e -o nul $1 - < /dev/null 2>&1)" == "",$(1),)
+ else
+  VBOX_YASM_CHECK = $(if-expr "$(shell $(TOOL_YASM_AS) -e -o /dev/null $1 - < /dev/null 2>&1)" == "",$(1),)
+ endif
 else
  VBOX_YASM_CHECK =
 endif
@@ -5376,7 +5380,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47266 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47387 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
