@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceVMInfo.cpp 44912 2013-03-04 14:45:14Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 45356 2013-04-05 07:01:27Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -392,7 +392,7 @@ static void vboxserviceVMInfoWriteFixedProperties(void)
  */
 static dbus_bool_t vboxService_dbus_message_get_args(DBusMessage *message,
                                                      DBusError   *error,
-                                                     int  	      first_arg_type,
+                                                     int first_arg_type,
                                                      ...)
 {
     va_list va;

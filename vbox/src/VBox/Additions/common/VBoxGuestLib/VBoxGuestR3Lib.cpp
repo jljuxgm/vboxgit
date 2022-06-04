@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3Lib.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 45356 2013-04-05 07:01:27Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -382,9 +382,8 @@ int vbglR3DoIOCtl(unsigned iFunction, void *pvData, size_t cbData)
     return rc;
 
 #elif defined(RT_OS_HAIKU)
-	/* The ioctl hook in Haiku does take the len parameter when specified,
-	 * so just use it.
-	 */
+    /* The ioctl hook in Haiku does take the len parameter when specified,
+     * so just use it. */
     int rc = ioctl((int)g_File, iFunction, pvData, cbData);
     if (RT_LIKELY(rc == 0))
         return VINF_SUCCESS;
