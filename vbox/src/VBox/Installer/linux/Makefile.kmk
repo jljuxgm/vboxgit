@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42422 2012-07-26 18:34:52Z vboxsync $
+# $Id: Makefile.kmk 42423 2012-07-26 18:41:09Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -226,7 +226,7 @@ endif
 
 # auth stuff
 VBOX_LNX_STRIP_BIN += \
-	VBoxAuth.so \
+	$(if $(VBOX_WITH_PAM),VBoxAuth.so,) \
 	VBoxAuthSimple.so
 
 # VRDP
