@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42436 2012-07-27 14:03:52Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42461 2012-07-30 21:28:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2815,6 +2815,9 @@ STDMETHODIMP Guest::CreateSession(IN_BSTR aUser, IN_BSTR aPassword, IN_BSTR aDom
         HRESULT hr2 = pSession.queryInterfaceTo(aGuestSession);
         if (FAILED(hr2))
             rc = VERR_COM_OBJECT_NOT_FOUND;
+
+        if (RT_SUCCESS(rc))
+            rc = pSession->queryInfo();
     }
 
     if (RT_FAILURE(rc))

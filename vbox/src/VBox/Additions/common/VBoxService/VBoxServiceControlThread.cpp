@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlThread.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: VBoxServiceControlThread.cpp 42461 2012-07-30 21:28:12Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for every started guest process.
  */
@@ -485,7 +485,7 @@ static int VBoxServiceControlThreadHandleRequest(RTPOLLSET hPollSet, uint32_t fP
                 rc = VBoxServiceControlThreadCloseStdIn(hPollSet, phStdInW);
             }
 
-            /* Reqport back actual data written (if any). */
+            /* Report back actual data written (if any). */
             pRequest->cbData = cbWritten;
             break;
         }

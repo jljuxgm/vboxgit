@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42441 2012-07-27 15:22:32Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42461 2012-07-30 21:28:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -127,16 +127,22 @@ public:
     int                     fileClose(ComObjPtr<GuestFile> pFile);
     const GuestCredentials &getCredentials(void);
     const GuestEnvironment &getEnvironment(void);
+    uint32_t                getProtocolVersion(void) { return mData.mProtocolVersion; }
     int                     processClose(ComObjPtr<GuestProcess> pProcess);
     int                     processCreateExInteral(GuestProcessInfo &procInfo, ComObjPtr<GuestProcess> &pProgress);
     inline bool             processExists(uint32_t uProcessID, ComObjPtr<GuestProcess> *pProcess);
     inline int              processGetByPID(ULONG uPID, ComObjPtr<GuestProcess> *pProcess);
+    int                     queryInfo(void);
     /** @}  */
 
 private:
 
     struct Data
     {
+        /** Guest control protocol version.
+         *  Guest control prior to VBox 4.2 has version 1,
+         *  guest control 2.0 has ...well, 2. */
+        uint32_t             mProtocolVersion;
         /** Flag indicating if this is an internal session
          *  or not. Internal session are not accessible by clients. */
         bool                 fInternal;
