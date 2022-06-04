@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 46192 2013-05-21 10:25:57Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 46214 2013-05-22 12:33:59Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3361,6 +3361,7 @@ ResumeExecution:
 #else
     rc = pVCpu->hm.s.vmx.pfnStartVM(pVCpu->hm.s.fResumeVM, pCtx, &pVCpu->hm.s.vmx.VMCSCache, pVM, pVCpu);
 #endif
+    STAM_PROFILE_ADV_STOP_START(&pVCpu->hm.s.StatInGC, &pVCpu->hm.s.StatExit1, x);
     ASMAtomicWriteBool(&pVCpu->hm.s.fCheckedTLBFlush, false);
     ASMAtomicIncU32(&pVCpu->hm.s.cWorldSwitchExits);
 
@@ -3391,7 +3392,6 @@ ResumeExecution:
         ASMWrMsr(MSR_K8_LSTAR, u64OldLSTAR);
     }
 
-    STAM_PROFILE_ADV_STOP_START(&pVCpu->hm.s.StatInGC, &pVCpu->hm.s.StatExit1, x);
     ASMSetFlags(uOldEFlags);
 #ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
     uOldEFlags = ~(RTCCUINTREG)0;
