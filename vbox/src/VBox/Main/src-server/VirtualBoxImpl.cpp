@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 43186 2012-09-05 09:01:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 43479 2012-10-01 09:07:25Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -4570,32 +4570,35 @@ void VirtualBox::saveModifiedRegistries()
     bool fNeedsGlobalSettings = false;
     uint64_t uOld;
 
-    for (MachinesOList::iterator it = m->allMachines.begin();
-         it != m->allMachines.end();
-         ++it)
     {
-        const ComObjPtr<Machine> &pMachine = *it;
+        AutoReadLock alock(m->allMachines.getLockHandle() COMMA_LOCKVAL_SRC_POS);
+        for (MachinesOList::iterator it = m->allMachines.begin();
+             it != m->allMachines.end();
+             ++it)
+        {
+            const ComObjPtr<Machine> &pMachine = *it;
 
-        for (;;)
-        {
-            uOld = ASMAtomicReadU64(&pMachine->uRegistryNeedsSaving);
-            if (!uOld)
-                break;
-            if (ASMAtomicCmpXchgU64(&pMachine->uRegistryNeedsSaving, 0, uOld))
-                break;
-            ASMNopPause();
-        }
-        if (uOld)
-        {
-            AutoCaller autoCaller(pMachine);
-            if (FAILED(autoCaller.rc()))
-                continue;
-            /* object is already dead, no point in saving settings */
-            if (autoCaller.state() != Ready)
-                continue;
-            AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
-            rc = pMachine->saveSettings(&fNeedsGlobalSettings,
-                                        Machine::SaveS_Force);           // caller said save, so stop arguing
+            for (;;)
+            {
+                uOld = ASMAtomicReadU64(&pMachine->uRegistryNeedsSaving);
+                if (!uOld)
+                    break;
+                if (ASMAtomicCmpXchgU64(&pMachine->uRegistryNeedsSaving, 0, uOld))
+                    break;
+                ASMNopPause();
+            }
+            if (uOld)
+            {
+                AutoCaller autoCaller(pMachine);
+                if (FAILED(autoCaller.rc()))
+                    continue;
+                /* object is already dead, no point in saving settings */
+                if (autoCaller.state() != Ready)
+                    continue;
+                AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
+                rc = pMachine->saveSettings(&fNeedsGlobalSettings,
+                                            Machine::SaveS_Force);           // caller said save, so stop arguing
+            }
         }
     }
 
