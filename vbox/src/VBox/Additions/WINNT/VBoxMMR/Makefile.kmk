@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44929 2013-03-06 09:27:29Z vboxsync $
+# $Id: Makefile.kmk 44974 2013-03-11 11:16:31Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxMMR.
 #
@@ -29,7 +29,6 @@ DLLS += VBoxMMRHook
 
 VBoxMMRHook_TEMPLATE    = VBOXGUESTR3DLL
 VBoxMMRHook_DEFS        = LOG_TO_BACKDOOR VBGL_VBOXGUEST VBOX_WITH_HGCM UNICODE TSMFHOOK_EXPORTS VBOX_WITH_GUEST_PROPS
-VBoxMMRHook_SDKS.x86    = WINDDK
 VBoxMMRHook_SOURCES  = \
 	VBoxMMRHook.rc \
 	VBoxMMRHook.def \
