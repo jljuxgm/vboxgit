@@ -1,4 +1,4 @@
-/* $Id: UIGChooserView.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIGChooserView.cpp 45007 2013-03-12 15:16:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -82,8 +82,10 @@ void UIGChooserView::sltFocusChanged(UIGChooserItem *pFocusItem)
     ensureVisible(geo, 0, 0);
 }
 
-void UIGChooserView::resizeEvent(QResizeEvent*)
+void UIGChooserView::resizeEvent(QResizeEvent *pEvent)
 {
+    /* Call to base-class: */
+    QGraphicsView::resizeEvent(pEvent);
     /* Notify listeners: */
     emit sigResized();
 }
