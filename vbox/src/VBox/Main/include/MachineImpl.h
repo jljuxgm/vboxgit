@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 42889 2012-08-20 17:44:10Z vboxsync $ */
+/* $Id: MachineImpl.h 42890 2012-08-20 17:45:13Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -355,9 +355,9 @@ public:
                  bool fForceOverwrite);
 
     // initializer for loading existing machine XML (either registered or not)
-    HRESULT init(VirtualBox *aParent,
-                 const Utf8Str &strConfigFile,
-                 const Guid *aId);
+    HRESULT initFromSettings(VirtualBox *aParent,
+                             const Utf8Str &strConfigFile,
+                             const Guid *aId);
 
     // initializer for machine config in memory (OVF import)
     HRESULT init(VirtualBox *aParent,

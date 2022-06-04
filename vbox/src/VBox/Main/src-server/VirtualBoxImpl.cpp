@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 42888 2012-08-20 17:36:31Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 42890 2012-08-20 17:45:13Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -606,9 +606,9 @@ HRESULT VirtualBox::initMachines()
         ComObjPtr<Machine> pMachine;
         if (SUCCEEDED(rc = pMachine.createObject()))
         {
-            rc = pMachine->init(this,
-                                xmlMachine.strSettingsFile,
-                                &uuid);
+            rc = pMachine->initFromSettings(this,
+                                            xmlMachine.strSettingsFile,
+                                            &uuid);
             if (SUCCEEDED(rc))
                 rc = registerMachine(pMachine);
             if (FAILED(rc))
