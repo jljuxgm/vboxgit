@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 45736 2013-04-25 15:59:59Z vboxsync $ */
+/* $Id: UISession.cpp 46359 2013-06-03 12:24:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -956,7 +956,7 @@ void UISession::cleanupFramebuffers()
         if (pFb)
         {
             /* Warn framebuffer about its no more necessary: */
-            pFb->setDeleted(true);
+            pFb->setScheduledToDelete(true);
             /* Detach framebuffer from Display: */
             CDisplay display = session().GetConsole().GetDisplay();
             display.SetFramebuffer(i, CFramebuffer(NULL));
