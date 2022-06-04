@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 43577 2012-10-09 10:16:20Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 43778 2012-10-30 13:13:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -170,7 +170,7 @@ void UIGChooserItem::makeSureItsVisible()
             /* We should make parent visible: */
             pParentItem->makeSureItsVisible();
             /* And make sure its opened: */
-            if (pParentItem->closed())
+            if (pParentItem->isClosed())
                 pParentItem->open(false);
         }
     }

@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerMouse.cpp 43564 2012-10-08 11:20:40Z vboxsync $ */
+/* $Id: UIGChooserHandlerMouse.cpp 43778 2012-10-30 13:13:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -185,10 +185,10 @@ bool UIGChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pE
                         if (iMouseDoubleClickX < iGroupItemWidth / 2)
                         {
                             /* Toggle it: */
-                            if (pGroupItem->opened())
-                                pGroupItem->close();
-                            else if (pGroupItem->closed())
+                            if (pGroupItem->isClosed())
                                 pGroupItem->open();
+                            else if (pGroupItem->isOpened())
+                                pGroupItem->close();
                         }
                         /* If click was at right part: */
                         else

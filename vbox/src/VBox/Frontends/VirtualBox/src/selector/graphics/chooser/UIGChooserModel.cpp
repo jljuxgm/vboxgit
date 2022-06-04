@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43620 2012-10-11 14:27:12Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 43778 2012-10-30 13:13:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1347,7 +1347,7 @@ QList<UIGChooserItem*> UIGChooserModel::createNavigationList(UIGChooserItem *pIt
     foreach (UIGChooserItem *pGroupItem, pItem->items(UIGChooserItemType_Group))
     {
         navigationItems << pGroupItem;
-        if (pGroupItem->toGroupItem()->opened())
+        if (pGroupItem->toGroupItem()->isOpened())
             navigationItems << createNavigationList(pGroupItem);
     }
     /* Iterate over all the machine-items: */
@@ -1690,7 +1690,7 @@ UIGChooserItem* UIGChooserModel::getGroupItem(const QString &strName, UIGChooser
             {
                 UIGChooserItem *pFoundItem = getGroupItem(strFirstSuffix, pGroupItem, fAllGroupsOpened);
                 if (UIGChooserItemGroup *pFoundGroupItem = pFoundItem->toGroupItem())
-                    if (fAllGroupsOpened && pFoundGroupItem->closed())
+                    if (fAllGroupsOpened && pFoundGroupItem->isClosed())
                         pFoundGroupItem->open(false);
                 return pFoundItem;
             }
@@ -1894,7 +1894,7 @@ void UIGChooserModel::gatherGroupOrders(QMap<QString, QStringList> &groups,
     /* Iterate over all the group-items: */
     foreach (UIGChooserItem *pItem, pParentItem->items(UIGChooserItemType_Group))
     {
-        QString strGroupDescriptor(pItem->toGroupItem()->opened() ? "go" : "gc");
+        QString strGroupDescriptor(pItem->toGroupItem()->isOpened() ? "go" : "gc");
         groups[strExtraDataKey] << QString("%1=%2").arg(strGroupDescriptor, pItem->name());
         gatherGroupOrders(groups, pItem);
     }
