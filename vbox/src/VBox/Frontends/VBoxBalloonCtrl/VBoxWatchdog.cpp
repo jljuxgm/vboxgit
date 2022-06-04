@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 43738 2012-10-25 13:09:26Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 44875 2013-02-28 19:34:16Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -462,7 +462,7 @@ static int machineDestroy(const Bstr &strUuid)
                                itGroup->first.c_str(), vecMembers.size()));
             if (!vecMembers.size())
             {
-                serviceLogVerbose(("Deleteting group \"%s\n", itGroup->first.c_str()));
+                serviceLogVerbose(("Deleting group \"%s\"\n", itGroup->first.c_str()));
                 g_mapGroup.erase(itGroup);
             }
 
