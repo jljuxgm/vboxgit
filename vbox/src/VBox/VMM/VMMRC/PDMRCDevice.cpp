@@ -1,4 +1,4 @@
-/* $Id: PDMRCDevice.cpp 44897 2013-03-01 21:44:24Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 44898 2013-03-01 22:26:49Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -83,7 +83,7 @@ static DECLCALLBACK(int) pdmRCDevHlp_PCIPhysRead(PPDMDEVINS pDevIns, RTGCPHYS GC
 
     if (!PCIDevIsBusmaster(pPciDev))
     {
-        Log(("pdmRCDevHlp_PCIPhysRead: caller=%p/%d: returns %Rrc - Not bus master! GCPhys=%RGp cbRead=%#z\n",
+        Log(("pdmRCDevHlp_PCIPhysRead: caller=%p/%d: returns %Rrc - Not bus master! GCPhys=%RGp cbRead=%#zx\n",
              pDevIns, pDevIns->iInstance, VERR_PDM_NOT_PCI_BUS_MASTER, GCPhys, cbRead));
         return VERR_PDM_NOT_PCI_BUS_MASTER;
     }
@@ -105,7 +105,7 @@ static DECLCALLBACK(int) pdmRCDevHlp_PCIPhysWrite(PPDMDEVINS pDevIns, RTGCPHYS G
 
     if (!PCIDevIsBusmaster(pPciDev))
     {
-        Log(("pdmRCDevHlp_PCIPhysWrite: caller=%p/%d: returns %Rrc - Not bus master! GCPhys=%RGp cbWrite=%#z\n",
+        Log(("pdmRCDevHlp_PCIPhysWrite: caller=%p/%d: returns %Rrc - Not bus master! GCPhys=%RGp cbWrite=%#zx\n",
              pDevIns, pDevIns->iInstance, VERR_PDM_NOT_PCI_BUS_MASTER, GCPhys, cbWrite));
         return VERR_PDM_NOT_PCI_BUS_MASTER;
     }
