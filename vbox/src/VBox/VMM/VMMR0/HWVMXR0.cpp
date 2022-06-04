@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44146 2012-12-17 15:29:40Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 44154 2012-12-18 18:06:52Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -4697,8 +4697,8 @@ ResumeExecution:
         AssertFailed();                 /* Can't happen. Yet. */
         break;
 
-    case VMX_EXIT_IO_SMI_IRQ:           /* 5 I/O system-management interrupt (SMI). */
-    case VMX_EXIT_SMI_IRQ:              /* 6 Other SMI. */
+    case VMX_EXIT_IO_SMI:               /* 5 I/O system-management interrupt (SMI). */
+    case VMX_EXIT_SMI:                  /* 6 Other SMI. */
         rc = VINF_EM_RAW_INTERRUPT;
         AssertFailed();                 /* Can't happen afaik. */
         break;
