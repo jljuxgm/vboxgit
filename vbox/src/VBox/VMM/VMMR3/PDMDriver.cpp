@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 42141 2012-07-13 10:05:11Z vboxsync $ */
+/* $Id: PDMDriver.cpp 43037 2012-08-28 13:33:33Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -799,9 +799,10 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
     }
     else
     {
-        AssertMsgFailed(("Query for string value of \"Driver\" -> %Rrc\n", rc));
         if (rc == VERR_CFGM_VALUE_NOT_FOUND)
             rc = VERR_PDM_CFG_MISSING_DRIVER_NAME;
+        else
+            AssertMsgFailed(("Query for string value of \"Driver\" -> %Rrc\n", rc));
     }
     return rc;
 }
