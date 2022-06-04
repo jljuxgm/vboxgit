@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 46876 2013-07-01 10:09:35Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -862,6 +862,15 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         {
             LogRel(("Limiting CPUID leaf count for NT4 guests\n"));
             InsertConfigInteger(pCPUM, "NT4LeafLimit", true);
+        }
+
+        /* Expose CMPXCHG16B. Currently a hack. */
+        if (   osTypeId == "Windows81"
+            || osTypeId == "Windows81_64"
+            || osTypeId == "Windows2012_64")
+        {
+            LogRel(("Enabling CMPXCHG16B for Windows 8.1 / 2k12 guests"));
+            InsertConfigInteger(pCPUM, "CMPXCHG16B", true);
         }
 
         /* Expose extended MWAIT features to Mac OS X guests. */

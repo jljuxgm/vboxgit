@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 46851 2013-06-27 16:55:20Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 46876 2013-07-01 10:09:35Z vboxsync $ */
 
 /** @file
  * VBox Miniport video modes related functions
@@ -356,9 +356,13 @@ VBoxMPFillModesTable(PVBOXMP_DEVEXT pExt, int iDisplay, PVIDEO_MODE_INFORMATION 
                      * For small host display resolutions, host will dislike the mode 1024x768 and above
                      * if the framebuffer window requires scrolling to fit the guest resolution.
                      * So add 1024x768 resolution for win8 guest to allow user switch to it */
-                    ((VBoxQueryWinVersion() != WIN8 && VBoxQueryWinVersion() != WIN8_1) || resolutionMatrix[resIndex].xRes != 1024 || resolutionMatrix[resIndex].yRes != 768) &&
+                       (   (VBoxQueryWinVersion() != WIN8 && VBoxQueryWinVersion() != WIN81)
+                        || resolutionMatrix[resIndex].xRes != 1024
+                        || resolutionMatrix[resIndex].yRes != 768)
+                    &&
 #endif
-                    !VBoxLikesVideoMode(iDisplay, resolutionMatrix[resIndex].xRes, resolutionMatrix[resIndex].yRes - yOffset, bitsPerPixel))
+                       !VBoxLikesVideoMode(iDisplay, resolutionMatrix[resIndex].xRes,
+                                           resolutionMatrix[resIndex].yRes - yOffset, bitsPerPixel))
             {
                 /* host doesn't like this mode */
                 continue;

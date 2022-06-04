@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.h 46858 2013-06-28 08:28:21Z vboxsync $ */
+/* $Id: VBoxGuest-win.h 46876 2013-07-01 10:09:35Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -135,7 +135,7 @@ typedef enum VBGDNTVER
     VBGDNTVER_WINVISTA,
     VBGDNTVER_WIN7,
     VBGDNTVER_WIN8,
-    VBGDNTVER_WIN8_1,
+    VBGDNTVER_WIN81,
 } VBGDNTVER;
 extern VBGDNTVER g_enmVbgdNtVer;
 

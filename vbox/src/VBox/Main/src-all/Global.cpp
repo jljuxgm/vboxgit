@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 46775 2013-06-25 12:37:57Z vboxsync $ */
+/* $Id: Global.cpp 46876 2013-07-01 10:09:35Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -106,6 +106,14 @@ const Global::OSType Global::sOSTypes[] =
        1024,128, 25 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA  },
     { "Windows", "Microsoft Windows", "Windows8_64",        "Windows 8 (64 bit)",
+      VBOXOSTYPE_Win8_x64,        VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET,
+       2048,128, 25 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+        StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA  },
+    { "Windows", "Microsoft Windows", "Windows81",          "Windows 8.1",
+      VBOXOSTYPE_Win8,             VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET | VBOXOSHINT_PAE,
+       1024,128, 25 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+        StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA  },
+    { "Windows", "Microsoft Windows", "Windows81_64",       "Windows 8.1 (64 bit)",
       VBOXOSTYPE_Win8_x64,        VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET,
        2048,128, 25 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA  },

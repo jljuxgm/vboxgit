@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 46625 2013-06-18 13:28:52Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 46876 2013-07-01 10:09:35Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -65,6 +65,7 @@ typedef enum RTWINOSTYPE
     kRTWinOSType_2008,
     kRTWinOSType_7,
     kRTWinOSType_8,
+    kRTWinOSType_81,
     kRTWinOSType_NT_UNKNOWN = 199,
     kRTWinOSType_NT_LAST    = kRTWinOSType_UNKNOWN
 } RTWINOSTYPE;
@@ -208,6 +209,9 @@ static RTWINOSTYPE rtSystemWinOSType(OSVERSIONINFOEX const *pOSInfoEx)
         else if (   dwMajorVersion == 6
                  && dwMinorVersion == 2)
             enmVer = kRTWinOSType_8;
+        else if (   dwMajorVersion == 6
+                 && dwMinorVersion == 3)
+            enmVer = kRTWinOSType_81;
         else
             enmVer = kRTWinOSType_NT_UNKNOWN;
     }
@@ -376,6 +380,7 @@ static int rtSystemWinQueryOSVersion(RTSYSOSINFO enmInfo, char *pszInfo, size_t 
                 case kRTWinOSType_2008:         strcpy(szTmp, "Windows 2008"); break;
                 case kRTWinOSType_7:            strcpy(szTmp, "Windows 7"); break;
                 case kRTWinOSType_8:            strcpy(szTmp, "Windows 8"); break;
+                case kRTWinOSType_81:           strcpy(szTmp, "Windows 8.1"); break;
 
                 case kRTWinOSType_NT_UNKNOWN:
                     RTStrPrintf(szTmp, sizeof(szTmp), "Unknown NT v%u.%u", OSInfoEx.dwMajorVersion, OSInfoEx.dwMinorVersion);
