@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 42621 2012-08-06 13:39:55Z vboxsync $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 42625 2012-08-06 13:53:12Z vboxsync $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -658,6 +658,7 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_rep_movs_op,OP_SIZE,_addr,ADDR_SIZE), uint8_
      * to prevent a false positive.
      * Note! This doesn't take aliasing or wrapping into account - lazy bird.
      */
+#ifdef IEM_VERIFICATION_MODE
     if (   IEM_VERIFICATION_ENABLED(pIemCpu)
         && (cbIncr > 0
             ?    uSrcAddrReg <= uDstAddrReg
@@ -665,6 +666,7 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_rep_movs_op,OP_SIZE,_addr,ADDR_SIZE), uint8_
             :    uDstAddrReg <= uSrcAddrReg
               && uDstAddrReg + cbIncr * uCounterReg > uSrcAddrReg))
         pIemCpu->fOverlappingMovs = true;
+#endif
 
     /*
      * The loop.
