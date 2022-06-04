@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 42728 2012-08-09 19:16:05Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 42735 2012-08-10 06:31:43Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1286,6 +1286,15 @@ static RTEXITCODE VBoxServiceToolboxMkTemp(int argc, char **argv)
         return RTEXITCODE_SYNTAX;
     }
     pszName = argv[argc - 1];
+    /* For now require an absolute path - perhaps later if we support a
+     * current directory concept we can change this. */
+    if (!RTPathStartsWithRoot(pszName))
+    {
+        toolboxMkTempReport("Template '%s' should contain an absolute path.\n",
+                            pszName, true, VERR_INVALID_PARAMETER,
+                            fOutputFlags, &rc);
+        return RTEXITCODE_FAILURE;
+    }
     if (RT_SUCCESS(rc) && !strchr(pszName, 'X'))  /* IPRT asserts this. */
     {
         toolboxMkTempReport("Template '%s' should contain at least one 'X' character.\n",
