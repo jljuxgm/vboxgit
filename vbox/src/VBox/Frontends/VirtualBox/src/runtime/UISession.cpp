@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 43545 2012-10-04 14:17:39Z vboxsync $ */
+/* $Id: UISession.cpp 43859 2012-11-12 16:31:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1142,6 +1142,8 @@ bool UISession::preparePowerUp()
             delete pWizard;
     }
 
+#ifdef VBOX_WITH_NETFLT
+
     /* Skip further checks if VM in saved state */
     if (isSaved())
         return true;
@@ -1202,6 +1204,8 @@ bool UISession::preparePowerUp()
             return false;
         }
     }
+
+#endif
 
     return true;
 }
