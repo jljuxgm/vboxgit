@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 42478 2012-07-31 13:20:37Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 42485 2012-07-31 16:13:53Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -149,7 +149,6 @@ int GuestCtrlCallback::Init(eVBoxGuestCtrlCallbackType enmType)
     AssertReturn(enmType > VBOXGUESTCTRLCALLBACKTYPE_UNKNOWN, VERR_INVALID_PARAMETER);
     Assert((pvData == NULL) && !cbData);
 
-    int rc = VINF_SUCCESS;
     switch (enmType)
     {
         case VBOXGUESTCTRLCALLBACKTYPE_EXEC_START:
@@ -184,12 +183,9 @@ int GuestCtrlCallback::Init(eVBoxGuestCtrlCallbackType enmType)
             break;
     }
 
+    int rc = GuestCtrlEvent::Init();
     if (RT_SUCCESS(rc))
-    {
-        rc = GuestCtrlEvent::Init();
-        if (RT_SUCCESS(rc))
-            mType  = enmType;
-    }
+        mType  = enmType;
 
     LogFlowFuncLeaveRC(rc);
     return rc;
