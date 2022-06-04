@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: EM.cpp 45106 2013-03-20 15:18:21Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1422,7 +1422,7 @@ int emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
     /* Update PAE PDPEs. This must be done *after* PGMUpdateCR3() and used only by the Nested Paging case for HM. */
     if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_HM_UPDATE_PAE_PDPES))
     {
-        Assert(CPUMIsGuestInPAEMode(pVCpu));
+        /* The paging mode might no longer be PAE but we still need to update this, otherwise we lose updates in HM. */
         PX86PDPE pPdpes = HMGetPaePdpes(pVCpu);
         AssertPtr(pPdpes);
 
