@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44267 2013-01-10 11:43:26Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 44269 2013-01-10 13:37:10Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -916,7 +916,7 @@ static int hmR0VmxInjectEvent(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, uint32_t int
             {
                 uint32_t intInfo2;
 
-                intInfo2  = (iGate == X86_XCPT_GP) ? (uint32_t)X86_XCPT_DF : iGate;
+                intInfo2  = (iGate == X86_XCPT_GP) ? (uint32_t)X86_XCPT_DF : (uint32_t)X86_XCPT_GP;
                 intInfo2 |= (1 << VMX_EXIT_INTERRUPTION_INFO_VALID_SHIFT);
                 intInfo2 |= VMX_EXIT_INTERRUPTION_INFO_ERROR_CODE_VALID;
                 intInfo2 |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_HW_XCPT << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
