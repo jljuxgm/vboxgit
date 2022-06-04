@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 43702 2012-10-22 16:08:00Z vboxsync $ */
+/* $Id: HMInternal.h 43703 2012-10-22 16:10:46Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -93,7 +93,7 @@ RT_C_DECLS_BEGIN
                                             | HM_CHANGED_GUEST_DEBUG        \
                                             | HM_CHANGED_GUEST_FPU)
 
-#define HM_CHANGED_ALL                      (HM_CHANGE_ALL_GUEST | HM_CHANGED_HOST_CONTEXT)
+#define HM_CHANGED_ALL                      (HM_CHANGED_ALL_GUEST | HM_CHANGED_HOST_CONTEXT)
 /** @} */
 
 /** Maximum number of page flushes we are willing to remember before considering a full TLB flush. */
