@@ -1,4 +1,4 @@
-/* $Id: DevApic.h 44004 2012-11-30 15:52:31Z vboxsync $ */
+/* $Id: DevApic.h 44005 2012-12-02 16:18:09Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device Definitions.
  */
@@ -73,5 +73,5 @@
 #define APIC_INPUT_POLARITY             (1 << 13)
 #define APIC_SEND_PENDING               (1 << 12)
 
-#endif /* ___PC_DevApic_h */
+#endif /* !___PC_DevApic_h */
 
