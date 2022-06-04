@@ -1,4 +1,4 @@
-/* $Id: pipe-posix.cpp 40102 2012-02-13 17:50:04Z vboxsync $ */
+/* $Id: pipe-posix.cpp 44472 2013-01-30 15:55:32Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, POSIX Implementation.
  */
@@ -35,6 +35,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/mem.h>
+#include <iprt/poll.h>
 #include <iprt/string.h>
 #include <iprt/thread.h>
 #include "internal/magics.h"
@@ -53,6 +54,8 @@
 #ifdef RT_OS_SOLARIS
 # include <sys/filio.h>
 #endif
+
+#include "internal/pipe.h"
 
 
 /*******************************************************************************
@@ -665,5 +668,19 @@ RTDECL(int) RTPipeQueryReadable(RTPIPE hPipe, size_t *pcbReadable)
     else
         rc = RTErrConvertFromErrno(rc);
     return rc;
+}
+
+
+int rtPipePollGetHandle(RTPIPE hPipe, uint32_t fEvents, PRTHCINTPTR phNative)
+{
+    RTPIPEINTERNAL *pThis = hPipe;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTPIPE_MAGIC, VERR_INVALID_HANDLE);
+
+    AssertReturn(!(fEvents & RTPOLL_EVT_READ)  || pThis->fRead,  VERR_INVALID_PARAMETER);
+    AssertReturn(!(fEvents & RTPOLL_EVT_WRITE) || !pThis->fRead, VERR_INVALID_PARAMETER);
+
+    *phNative = pThis->fd;
+    return VINF_SUCCESS;
 }
 

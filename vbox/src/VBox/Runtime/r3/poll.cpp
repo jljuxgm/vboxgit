@@ -1,4 +1,4 @@
-/* $Id: poll.cpp 44469 2013-01-30 15:37:55Z vboxsync $ */
+/* $Id: poll.cpp 44472 2013-01-30 15:55:32Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows+Posix Implementation.
  */
@@ -274,10 +274,10 @@ static int rtPollNoResumeWorker(RTPOLLSETINTERNAL *pThis, RTMSINTERVAL cMillies,
     while (i-- > 0)
         pThis->paPollFds[i].revents = 0;
 
-    int rc = poll(&pThis->paPollFds[0], pThis->cHandles,
-                  cMillies == RT_INDEFINITE_WAIT || cMillies >= INT_MAX
-                  ? -1
-                  : (int)cMillies);
+    rc = poll(&pThis->paPollFds[0], pThis->cHandles,
+              cMillies == RT_INDEFINITE_WAIT || cMillies >= INT_MAX
+              ? -1
+              : (int)cMillies);
     if (rc == 0)
         return VERR_TIMEOUT;
     if (rc < 0)
