@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerKeyboard.cpp 42543 2012-08-02 14:15:34Z vboxsync $ */
+/* $Id: UIGChooserHandlerKeyboard.cpp 42583 2012-08-03 14:39:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -23,6 +23,7 @@
 /* GUI incluedes: */
 #include "UIGChooserHandlerKeyboard.h"
 #include "UIGChooserModel.h"
+#include "UIGChooserItemGroup.h"
 
 UIGChooserHandlerKeyboard::UIGChooserHandlerKeyboard(UIGChooserModel *pParent)
     : QObject(pParent)
@@ -231,6 +232,27 @@ bool UIGChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
             model()->activate();
             /* And filter out that event: */
             return true;
+        }
+        case Qt::Key_Space:
+        {
+            /* If there is a focus item: */
+            if (UIGChooserItem *pFocusItem = model()->focusItem())
+            {
+                /* Of the group type: */
+                if (pFocusItem->type() == UIGChooserItemType_Group)
+                {
+                    /* Toggle that group: */
+                    UIGChooserItemGroup *pGroupItem = pFocusItem->toGroupItem();
+                    if (pGroupItem->closed())
+                        pGroupItem->open();
+                    else
+                        pGroupItem->close();
+                    /* Filter that event out: */
+                    return true;
+                }
+            }
+            /* Pass event to other items: */
+            return false;
         }
         default:
             break;
