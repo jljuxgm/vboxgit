@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 47469 2013-07-30 09:43:14Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 47470 2013-07-30 10:14:53Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1438,7 +1438,7 @@ int GuestProcess::waitFor(uint32_t fWaitFlags, ULONG uTimeoutMS, ProcessWaitResu
                                   &processStatus, pGuestRc);
         if (RT_SUCCESS(vrc))
         {
-            AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+            alock.acquire();
 
             waitResult = waitFlagsToResultEx(fWaitFlags, processStatus,
                                              mData.mProcess.mFlags, mSession->getProtocolVersion());
