@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 42323 2012-07-23 12:33:32Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 43014 2012-08-27 21:25:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -97,6 +97,14 @@ bool UIMachineViewNormal::eventFilter(QObject *pWatched, QEvent *pEvent)
         {
             case QEvent::Resize:
             {
+                /* We call this on every resize as:
+                 *   * Window frame geometry can change on resize.
+                 *   * On X11 we set information here which becomes available
+                 *     asynchronously at an unknown time after window
+                 *     creation.  As long as the information is not available
+                 *     we make a best guess.
+                 */
+                setMaxGuestSize();
                 if (pEvent->spontaneous() && m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
                     QTimer::singleShot(300, this, SLOT(sltPerformGuestResize()));
                 break;
@@ -276,6 +284,9 @@ QSize UIMachineViewNormal::calculateMaxGuestSize() const
     /* The area taken up by the machine window on the desktop,
      * including window frame, title, menu bar and status bar: */
     QRect windowGeo = machineWindow()->frameGeometry();
+    /* KWin makes the window bigger than the working area when it is maximised
+     * by placing the window borders off-screen. */
+    windowGeo &= workingArea();
     /* The area taken up by the machine central widget, so excluding all decorations: */
     QRect centralWidgetGeo = machineWindow()->centralWidget()->geometry();
     /* To work out how big we can make the console window while still fitting on the desktop,
