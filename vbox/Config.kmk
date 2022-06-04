@@ -1,4 +1,4 @@
-# $Id: Config.kmk 45450 2013-04-10 08:58:57Z vboxsync $
+# $Id: Config.kmk 45451 2013-04-10 09:49:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5322,7 +5322,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45450 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 45451 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -5407,6 +5407,11 @@ else
 	$(PATH_DEVTOOLS)/linux.x86/jdk1.6.0_27 \
 	/usr/lib/jvm/java-6-sun  \
 	/usr/lib/jvm/java-6-openjdk \
+	/usr/lib/jvm/java-6-openjdk-i386 \
+	/usr/lib/jvm/java-6-openjdk-amd64 \
+	/usr/lib/jvm/java-7-openjdk-i386 \
+	/usr/lib/jvm/java-7-openjdk-amd64 \
+	/usr/lib/jvm/default-java \
 	\
 	/usr/lib/jvm/sun-jdk-1.6 \
 	) /usr/lib/jvm/java-6-sun)
