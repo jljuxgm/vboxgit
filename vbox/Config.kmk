@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42154 2012-07-13 23:00:53Z vboxsync $
+# $Id: Config.kmk 42219 2012-07-18 23:58:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3125,10 +3125,6 @@ ifeq ($(KBUILD_TARGET),win)
   TEMPLATE_VBOXR0DRV_LDFLAGS          += -Merge:VTGPrLc.Data=VTGPrLc.Begin -Merge:VTGPrLc.End=VTGPrLc.Begin -Merge:VTGPrLc.Begin=VTGObj
  endif
  TEMPLATE_VBOXR0DRV_POST_CMDS          = $(VBOX_SIGN_DRIVER_CMDS)
- ifdef VBOX_USE_VCC100 # HACK ALERT!
-  TEMPLATE_VBOXR0DRV_CINCS             = $(TOOL_$(VBOX_VCC_TOOL)_CINCS)
-  TEMPLATE_VBOXR0DRV_CXXINCS           = $(TOOL_$(VBOX_VCC_TOOL)_CXXINCS)
- endif
 endif
 
 ifeq ($(KBUILD_TARGET),linux)
@@ -4253,7 +4249,11 @@ ifdef VBOX_WITH_QTGUI
     endif
    endif
   else if1of ($(KBUILD_TARGET), win)
-   VBOX_PATH_QT4 ?= $(lastword $(sort $(wildcard $(PATH_DEVTOOLS_TRG)/qt/v4*)))
+   ifdef VBOX_USE_VCC100
+    VBOX_PATH_QT4 ?= $(lastword $(filter %-vcc10,$(sort $(wildcard $(PATH_DEVTOOLS_TRG)/qt/v4*))))
+   else
+    VBOX_PATH_QT4 ?= $(lastword $(filter-out %-vcc10,$(sort $(wildcard $(PATH_DEVTOOLS_TRG)/qt/v4*))))
+   endif
   else if1of ($(KBUILD_TARGET), linux solaris)
    VBOX_PATH_QT4 ?= $(lastword $(sort $(wildcard $(PATH_DEVTOOLS_TRG)/qt/v4*)))
    ifneq ($(VBOX_PATH_QT4),)
@@ -4339,11 +4339,6 @@ ifdef VBOX_WITH_QTGUI
   endif
   TEMPLATE_VBOXQT4GUIEXE_POST_CMDS = $(VBOX_SIGN_IMAGE_CMDS)
   TEMPLATE_VBOXQT4GUIEXE_LDFLAGS.win.x86 += /LARGEADDRESSAWARE
-
- ifdef VBOX_USE_VCC100 # HACK ALERT!
-  TEMPLATE_VBOXQT4GUIEXE_CINCS   = $(TOOL_$(VBOX_VCC_TOOL)_CINCS)
-  TEMPLATE_VBOXQT4GUIEXE_CXXINCS = $(TOOL_$(VBOX_VCC_TOOL)_CXXINCS)
- endif
 
  else # the gcc guys:
   TEMPLATE_VBOXQT4GUIEXE_TOOL = $(VBOX_GCC_TOOL)
@@ -5207,7 +5202,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42154 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42219 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
