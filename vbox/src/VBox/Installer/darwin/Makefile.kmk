@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42983 2012-08-24 20:41:59Z vboxsync $
+# $Id: Makefile.kmk 42987 2012-08-25 01:36:58Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -206,7 +206,6 @@ $(VBOX_PATH_PACK_TMP)/DiskImage/VirtualBox.mpkg: \
 		--output $(VBOX_PATH_PACK_TMP)/VirtualBox.mpkg.res/English.lproj/Localizable.strings \
 		$(VBOX_PATH_DI_SRC)/VirtualBox_mpkg/Localizable.strings
 	$(INSTALL) -m 0644 $(VBOX_BRAND_DARWIN_INSTALLER_BG)                                    $(VBOX_PATH_PACK_TMP)/VirtualBox.mpkg.res/background.tif
-	$(INSTALL) -m 0766 $(VBOX_PATH_DI_SRC)/VirtualBox_mpkg/checkforrunningvms               $(VBOX_PATH_PACK_TMP)/VirtualBox.mpkg.res/checkforrunningvms
 	$(foreach f,$(VBOX_INSTALLER_ADD_LANGUAGES), \
 		$(MKDIR) -p \
 			$(VBOX_PATH_PACK_TMP)/VirtualBox.mpkg.res/$(VBOX_INSTALLER_$(f)_DARWIN_TARGET).lproj$(NLTAB) \
@@ -312,7 +311,6 @@ endif
 		--output $(VBOX_PATH_PACK_TMP)/VBoxKEXTs.pkg.desc/PkgBuildComponent.plist \
 		$(VBOX_PATH_DI_SRC)/VBoxKEXTs/PkgBuildComponent.plist
 	@# Copy the resources.
-	$(INSTALL) -m 0755 $(VBOX_PATH_DI_SRC)/VBoxKEXTs/InstallationCheck                     $(VBOX_PATH_PACK_TMP)/VBoxKEXTs.pkg.res/
 	$(INSTALL) -m 0755 $(VBOX_PATH_DI_SRC)/VBoxKEXTs/postflight                            $(VBOX_PATH_PACK_TMP)/VBoxKEXTs.pkg.res/
 	@# Build the package.
 	$(VBOX_PKGBUILD) \
