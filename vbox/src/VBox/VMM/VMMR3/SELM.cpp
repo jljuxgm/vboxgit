@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 45533 2013-04-13 16:13:22Z vboxsync $ */
+/* $Id: SELM.cpp 45555 2013-04-15 15:17:04Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -482,7 +482,7 @@ VMMR3DECL(void) SELMR3Relocate(PVM pVM)
         /*
          * Update shadow GDT/LDT/TSS write access handlers.
          */
-        int rc;
+        int rc; NOREF(rc);
 #ifdef SELM_TRACK_SHADOW_GDT_CHANGES
         if (pVM->selm.s.paGdtRC != NIL_RTRCPTR)
         {
