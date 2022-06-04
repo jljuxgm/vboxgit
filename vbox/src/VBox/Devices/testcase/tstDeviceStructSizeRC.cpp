@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 42206 2012-07-18 12:42:22Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 42207 2012-07-18 12:53:11Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1114,8 +1114,6 @@ int main()
     GEN_CHECK_OFF(SerialState, char_transmit_time);
 
 #ifdef VBOX_WITH_AHCI
-    /* Storage/ATAController.h */
-
     /* Storage/DevAHCI.cpp */
 
     GEN_CHECK_SIZE(AHCIPort);
