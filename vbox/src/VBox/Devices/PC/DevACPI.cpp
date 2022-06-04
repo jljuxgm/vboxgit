@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 44445 2013-01-29 13:54:37Z vboxsync $ */
+/* $Id: DevACPI.cpp 44447 2013-01-29 15:34:09Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2896,7 +2896,9 @@ static DECLCALLBACK(int) acpiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     pThis->IACPIPort.pfnGetGuestEnteredACPIMode = acpiPort_GetGuestEnteredACPIMode;
     pThis->IACPIPort.pfnGetCpuStatus            = acpiPort_GetCpuStatus;
 
-    /* Set the default critical section to NOP (related to the PM timer). */
+    /*
+     * Set the default critical section to NOP (related to the PM timer).
+     */
     int rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
     AssertRCReturn(rc, rc);
 
