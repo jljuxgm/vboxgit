@@ -1,10 +1,10 @@
-/* $Id: mtlist.h 37861 2011-07-11 10:03:22Z vboxsync $ */
+/* $Id: mtlist.h 45520 2013-04-12 14:22:41Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Thread-safe list classes declaration.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -29,6 +29,7 @@
 
 #include <VBox/com/ptr.h>
 #include <VBox/com/string.h>
+#include <VBox/com/array.h>
 #include <iprt/cpp/mtlist.h>
 
 /**
@@ -54,8 +55,8 @@ public:
      * @param   cCapacitiy   The initial capacity the list has.
      * @throws  std::bad_alloc
      */
-    RTCList(size_t cCapacity = BASE::DefaultCapacity)
-     : BASE(cCapacity) {}
+    RTCMTList(size_t cCapacity = BASE::kDefaultCapacity)
+        : BASE(cCapacity) {}
 
     /* Define our own new and delete. */
     RTMEMEF_NEW_AND_DELETE_OPERATORS();
@@ -84,7 +85,7 @@ public:
      * @param   cCapacitiy   The initial capacity the list has.
      * @throws  std::bad_alloc
      */
-    RTCList(size_t cCapacity = BASE::DefaultCapacity)
+    RTCMTList(size_t cCapacity = BASE::kDefaultCapacity)
      : BASE(cCapacity) {}
 
     /* Define our own new and delete. */
@@ -97,10 +98,10 @@ public:
  * The class offers methods for importing com::SafeArray's of com::Bstr's.
  */
 template <>
-class RTCMTList<Utf8Str>: public RTCListBase<Utf8Str, Utf8Str*, true>
+class RTCMTList<com::Utf8Str>: public RTCListBase<com::Utf8Str, com::Utf8Str *, true>
 {
     /* Traits */
-    typedef Utf8Str                   T;
+    typedef com::Utf8Str              T;
     typedef T                        *ITYPE;
     static const bool                 MT = true;
     typedef RTCListBase<T, ITYPE, MT> BASE;
@@ -114,8 +115,8 @@ public:
      * @param   cCapacitiy   The initial capacity the list has.
      * @throws  std::bad_alloc
      */
-    RTCMTList(size_t cCapacity = BASE::DefaultCapacity)
-     : BASE(cCapacity) {}
+    RTCMTList(size_t cCapacity = BASE::kDefaultCapacity)
+        : BASE(cCapacity) {}
 
     /**
      * Creates a copy of another list.
@@ -130,9 +131,10 @@ public:
     RTCMTList(ComSafeArrayIn(IN_BSTR, other))
     {
         com::SafeArray<IN_BSTR> sfaOther(ComSafeArrayInArg(other));
-        realloc(sfaOther.size());
-        m_cSize = sfaOther.size();
-        for (size_t i = 0; i < m_cSize; ++i)
+        size_t const cElementsOther = sfaOther.size();
+        resizeArray(cElementsOther);
+        m_cElements = cElementsOther;
+        for (size_t i = 0; i < cElementsOther; ++i)
             RTCListHelper<T, ITYPE>::set(m_pArray, i, T(sfaOther[i]));
     }
 
@@ -149,7 +151,7 @@ public:
     RTCMTList(const com::SafeArray<IN_BSTR> &other)
       : BASE(other.size())
     {
-        for (size_t i = 0; i < m_cSize; ++i)
+        for (size_t i = 0; i < m_cElements; ++i)
             RTCListHelper<T, ITYPE>::set(m_pArray, i, T(other[i]));
     }
 
@@ -165,11 +167,11 @@ public:
     {
         m_guard.enterWrite();
          /* Values cleanup */
-        RTCListHelper<T, ITYPE>::eraseRange(m_pArray, 0, m_cSize);
+        RTCListHelper<T, ITYPE>::eraseRange(m_pArray, 0, m_cElements);
         /* Copy */
         if (other.size() != m_cCapacity)
-            realloc_no_elements_clean(other.size());
-        m_cSize = other.size();
+            resizeArrayNoErase(other.size());
+        m_cElements = other.size();
         for (size_t i = 0; i < other.size(); ++i)
             RTCListHelper<T, ITYPE>::set(m_pArray, i, T(other[i]));
         m_guard.leaveWrite();
