@@ -1,4 +1,4 @@
-/* $Id: vboxms.c 42456 2012-07-30 16:17:41Z vboxsync $ */
+/* $Id: vboxms.c 42644 2012-08-07 06:43:51Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
@@ -268,7 +268,7 @@ int _init(void)
         LogRel((DEVICE_NAME ": failed to disable autounloading!\n"));
     rc = mod_install(&g_vbmsSolModLinkage);
 
-    LogRel((DEVICE_NAME ": initialisation returning %d.\n", rc));
+    LogRelFlow((DEVICE_NAME ": initialisation returning %d.\n", rc));
     return rc;
 }
 
