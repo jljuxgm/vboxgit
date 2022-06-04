@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 44152 2012-12-18 15:47:08Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 44327 2013-01-22 09:29:47Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -2522,6 +2522,15 @@ void SessionMachine::deleteSnapshotHandler(DeleteSnapshotTask &aTask)
                 ComObjPtr<Medium> pSource_local = it_md->mpSource;
                 ComObjPtr<Medium> pTarget_local = it_md->mpTarget;
                 ComPtr<IMediumFormat> pTargetFormat;
+
+                {
+                    if ( pSource_local.isNull() ||
+                         pSource_local == pTarget_local )
+                    {
+                        ++it_md;
+                        continue;
+                    }
+                }
 
                 rc = pTarget_local->COMGETTER(MediumFormat)(pTargetFormat.asOutParam());
                 if (FAILED(rc))
