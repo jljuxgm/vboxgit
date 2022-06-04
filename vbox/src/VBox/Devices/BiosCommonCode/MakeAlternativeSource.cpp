@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 43630 2012-10-12 11:12:27Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 44751 2013-02-19 13:03:01Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 43630 2012-10-12 11:12:27Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 44751 2013-02-19 13:03:01Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -986,6 +986,10 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
                      && pb[4] == 0x02
                      && pb[5] == 0x01
                     )
+                 || (   pb[0] == 0x98   /* bytes after apm_out_str_ */
+                     && pb[1] == 0x8a
+                     && pb[2] == 0x67
+                     && pb[3] == 0x8b)
                  || 0
                  )
             return disByteData(uFlatAddr, cb);
