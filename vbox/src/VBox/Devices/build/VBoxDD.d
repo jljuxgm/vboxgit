@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.d 40517 2012-03-17 19:30:54Z vboxsync $ */
+/* $Id: VBoxDD.d 44138 2012-12-15 14:31:17Z vboxsync $ */
 /** @file
  * VBoxDD - Static dtrace probes
  */
@@ -21,6 +21,11 @@ provider vboxdd
     probe hgcmcall__completed__req(void *pvCmd, int rc);
     probe hgcmcall__completed__emt(void *pvCmd, int rc);
     probe hgcmcall__completed__done(void *pvCmd, unsigned int idFunction, unsigned int idClient, int rc);
+
+    probe ahci__req__submit(void *pvReq, int iTxDir, uint64_t offStart, uint32_t cbXfer);
+    probe ahci__req__submit__timestamp(void *pvReq, uint64_t tsStart);
+    probe ahci__req__completed(void *pvReq, int rcReq, int iState, uint64_t offStart, uint32_t cbXfer);
+    probe ahci__req__completed__timestamp(void *pvReq, uint64_t tsEnd);
 };
 
 #pragma D attributes Evolving/Evolving/Common provider vboxdd provider

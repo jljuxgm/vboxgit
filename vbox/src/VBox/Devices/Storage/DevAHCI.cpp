@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 43626 2012-10-11 20:57:38Z vboxsync $ */
+/* $Id: DevAHCI.cpp 44138 2012-12-15 14:31:17Z vboxsync $ */
 /** @file
  * VBox storage devices: AHCI controller device (disk and cdrom).
  *                       Implements the AHCI standard 1.1
@@ -57,6 +57,17 @@
 #include "ide.h"
 #include "ATAPIPassthrough.h"
 #include "VBoxDD.h"
+
+#if   defined(VBOX_WITH_DTRACE) \
+   && defined(IN_RING3) \
+   && !defined(VBOX_DEVICE_STRUCT_TESTCASE)
+# include "dtrace/VBoxDD.h"
+#else
+# define VBOXDD_AHCI_REQ_SUBMIT(a,b,c,d)           do { } while (0)
+# define VBOXDD_AHCI_REQ_SUBMIT_TIMESTAMP(a,b)     do { } while (0)
+# define VBOXDD_AHCI_REQ_COMPLETED(a,b,c,d,e)      do { } while (0)
+# define VBOXDD_AHCI_REQ_COMPLETED_TIMESTAMP(a,b)  do { } while (0)
+#endif
 
 /** Maximum number of ports available.
  * Spec defines 32 but we have one allocated for command completion coalescing
@@ -5616,6 +5627,11 @@ static bool ahciTransferComplete(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, int rcR
     bool fRedo = false;
     bool fCanceled = false;
     uint64_t tsNow = RTTimeMilliTS();
+    AHCITXDIR enmTxDir = AHCITXDIR_NONE;
+
+    ASMAtomicReadSize(&pAhciReq->enmTxState, &enmTxDir);
+    VBOXDD_AHCI_REQ_COMPLETED(pAhciReq, rcReq, enmTxDir, pAhciReq->uOffset, pAhciReq->cbTransfer);
+    VBOXDD_AHCI_REQ_COMPLETED_TIMESTAMP(pAhciReq, tsNow);
 
     /*
      * Leave a release log entry if the request was active for more than 25 seconds
@@ -6322,6 +6338,8 @@ static DECLCALLBACK(bool) ahciNotifyQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEI
 
                     if (!(pAhciReq->fFlags & AHCI_REQ_OVERFLOW))
                     {
+                        VBOXDD_AHCI_REQ_SUBMIT(pAhciReq, enmTxDir, pAhciReq->uOffset, pAhciReq->cbTransfer);
+                        VBOXDD_AHCI_REQ_SUBMIT_TIMESTAMP(pAhciReq, pAhciReq->tsStart);
                         if (enmTxDir == AHCITXDIR_FLUSH)
                         {
                             rc = pAhciPort->pDrvBlockAsync->pfnStartFlush(pAhciPort->pDrvBlockAsync,
