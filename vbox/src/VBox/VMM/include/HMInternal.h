@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45093 2013-03-19 17:33:14Z vboxsync $ */
+/* $Id: HMInternal.h 45094 2013-03-19 17:51:30Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -595,8 +595,9 @@ typedef struct HMCPU
         R0PTRTYPE(void *)           pvVmcs;
         /** Ring 0 handlers for VT-x. */
         PFNHMVMXSTARTVM             pfnStartVM;
-
+#if HC_ARCH_BITS == 32
         uint32_t                    u32Alignment1;
+#endif
 
         /** Current VMX_VMCS32_CTRL_PIN_EXEC_CONTROLS. */
         uint32_t                    u32PinCtls;
