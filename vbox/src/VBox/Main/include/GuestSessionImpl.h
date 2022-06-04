@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42924 2012-08-22 15:34:37Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42948 2012-08-23 12:12:09Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -159,20 +159,20 @@ protected:
      */
     struct InstallerFile
     {
-        InstallerFile(const Utf8Str &strSource,
-                      const Utf8Str &strDest,
-                      uint32_t       fFlags = 0)
-            : strSource(strSource),
-              strDest(strDest),
-              fFlags(fFlags) { }
+        InstallerFile(const Utf8Str &aSource,
+                      const Utf8Str &aDest,
+                      uint32_t       aFlags = 0)
+            : strSource(aSource),
+              strDest(aDest),
+              fFlags(aFlags) { }
 
-        InstallerFile(const Utf8Str          &strSource,
-                      const Utf8Str          &strDest,
-                      uint32_t                fFlags,
+        InstallerFile(const Utf8Str          &aSource,
+                      const Utf8Str          &aDest,
+                      uint32_t                aFlags,
                       GuestProcessStartupInfo startupInfo)
-            : strSource(strSource),
-              strDest(strDest),
-              fFlags(fFlags),
+            : strSource(aSource),
+              strDest(aDest),
+              fFlags(aFlags),
               mProcInfo(startupInfo)
         {
             mProcInfo.mCommand = strDest;
