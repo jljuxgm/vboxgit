@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43543 2012-10-04 13:38:39Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 43544 2012-10-04 13:42:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -210,18 +210,6 @@ const QList<UIGChooserItem*>& UIGChooserModel::currentItems() const
     return m_currentItems;
 }
 
-void UIGChooserModel::setCurrentItem(int iItemIndex)
-{
-    /* Make sure passed index feats the bounds: */
-    if (iItemIndex >= 0 && iItemIndex < navigationList().size())
-    {
-        /* And call for other wrapper: */
-        setCurrentItem(navigationList().at(iItemIndex));
-    }
-    else
-        AssertMsgFailed(("Passed index out of bounds!"));
-}
-
 void UIGChooserModel::setCurrentItem(UIGChooserItem *pItem)
 {
     /* If navigation list contains passed item: */
@@ -232,6 +220,18 @@ void UIGChooserModel::setCurrentItem(UIGChooserItem *pItem)
     }
     else
         AssertMsgFailed(("Passed item not in navigation list!"));
+}
+
+void UIGChooserModel::setCurrentItem(int iItemIndex)
+{
+    /* Make sure passed index feats the bounds: */
+    if (iItemIndex >= 0 && iItemIndex < navigationList().size())
+    {
+        /* And call for other wrapper: */
+        setCurrentItem(navigationList().at(iItemIndex));
+    }
+    else
+        AssertMsgFailed(("Passed index out of bounds!"));
 }
 
 void UIGChooserModel::setCurrentItem(const QString &strDefinition)
