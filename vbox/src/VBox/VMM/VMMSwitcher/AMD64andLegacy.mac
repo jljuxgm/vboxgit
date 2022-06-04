@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 47660 2013-08-12 00:37:34Z vboxsync $
+; $Id: AMD64andLegacy.mac 47686 2013-08-13 10:59:12Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -1013,7 +1013,7 @@ gth_restored_cr4:
     test    esi, CPUM_USE_DEBUG_REGS_HOST | CPUM_USED_DEBUG_REGS_HOST | CPUM_USE_DEBUG_REGS_HYPER
     jnz     gth_debug_regs_restore
 gth_debug_regs_done:
-    and     dword [edx + CPUMCPU.fUseFlags], ~(CPUM_USED_DEBUG_REGS_HOST | CPUM_USED_DEBUG_REGS_HYPER)
+    and     dword [rdx + r8 + CPUMCPU.fUseFlags], ~(CPUM_USED_DEBUG_REGS_HOST | CPUM_USED_DEBUG_REGS_HYPER)
 
     ; Restore general registers.
     mov     eax, edi                    ; restore return code. eax = return code !!
