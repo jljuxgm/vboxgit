@@ -1,4 +1,4 @@
-/* $Id: com.cpp 43534 2012-10-04 10:01:56Z vboxsync $ */
+/* $Id: com.cpp 44367 2013-01-25 11:16:24Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -320,7 +320,7 @@ int VBoxLogRelCreate(const char *pcszEntity, const char *pcszLogFile,
     fFlags |= RTLOGFLAGS_USECRLF;
 #endif
     g_pszLogEntity = pcszEntity;
-    int vrc = RTLogCreateEx(&pReleaseLogger, fFlags, "all all.restrict default.unrestricted",
+    int vrc = RTLogCreateEx(&pReleaseLogger, fFlags, pcszGroupSettings,
                             pcszEnvVarBase, RT_ELEMENTS(s_apszGroups), s_apszGroups, fDestFlags,
                             vboxHeaderFooter, cHistory, uHistoryFileSize, uHistoryFileTime,
                             pszError, cbError, pcszLogFile);
