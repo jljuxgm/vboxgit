@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 44448 2013-01-29 18:37:30Z vboxsync $ */
+/* $Id: UIActionPool.cpp 44449 2013-01-29 18:42:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -571,7 +571,7 @@ void UIActionPool::prepare()
     /* Create menus: */
     createMenus();
     /* Apply shortcuts: */
-	sltApplyShortcuts();
+    sltApplyShortcuts();
 }
 
 void UIActionPool::cleanup()
