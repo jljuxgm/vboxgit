@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 47544 2013-08-05 13:45:55Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -306,13 +306,14 @@ int handleSnapshot(HandlerArg *a)
 
             /* parse the optional arguments */
             Bstr desc;
-            bool fPause = false;
+            bool fPause = true; /* default is NO live snapshot */
             static const RTGETOPTDEF s_aTakeOptions[] =
             {
                 { "--description", 'd', RTGETOPT_REQ_STRING },
                 { "-description",  'd', RTGETOPT_REQ_STRING },
                 { "-desc",         'd', RTGETOPT_REQ_STRING },
-                { "--pause",       'p', RTGETOPT_REQ_NOTHING }
+                { "--pause",       'p', RTGETOPT_REQ_NOTHING },
+                { "--live",        'l', RTGETOPT_REQ_NOTHING }
             };
             RTGETOPTSTATE GetOptState;
             RTGetOptInit(&GetOptState, a->argc, a->argv, s_aTakeOptions, RT_ELEMENTS(s_aTakeOptions),
@@ -326,6 +327,10 @@ int handleSnapshot(HandlerArg *a)
                 {
                     case 'p':
                         fPause = true;
+                        break;
+
+                    case 'l':
+                        fPause = false;
                         break;
 
                     case 'd':
