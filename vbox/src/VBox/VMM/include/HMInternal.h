@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 47123 2013-07-12 15:31:44Z vboxsync $ */
+/* $Id: HMInternal.h 47619 2013-08-08 19:06:45Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -537,7 +537,9 @@ typedef struct HMCPU
     bool                        fActive;
     /** Set when the TLB has been checked until we return from the world switch. */
     volatile bool               fCheckedTLBFlush;
-    uint8_t                     u8Alignment[4];
+    /** Whether we're executing a single instruction. */
+    bool                        fSingleInstruction;
+    uint8_t                     abAlignment[3];
 
     /** World switch exit counter. */
     volatile uint32_t           cWorldSwitchExits;
