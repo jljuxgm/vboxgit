@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42468 2012-07-31 06:53:42Z vboxsync $
+# $Id: Makefile.kmk 42470 2012-07-31 06:59:12Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -185,18 +185,6 @@ SOLARIS_ADD_DRIVERS_CONF = \
 	vboxms.conf
 
 SOLARIS_ADD_XORG_DRIVERS = \
-	vboxmouse_drv_13.so \
-	vboxmouse_drv_14.so \
-	vboxmouse_drv_15.so \
-	vboxmouse_drv_16.so \
-	vboxmouse_drv_17.so \
-	vboxmouse_drv_18.so \
-	vboxmouse_drv_19.so \
-	vboxmouse_drv_110.so \
-	vboxmouse_drv_111.so \
-	vboxmouse_drv_112.so \
-	vboxmouse_drv_70.so \
-	vboxmouse_drv_71.so \
 	vboxvideo_drv_13.so \
 	vboxvideo_drv_14.so \
 	vboxvideo_drv_15.so \
