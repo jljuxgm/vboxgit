@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
+/* $Id: PDMLdr.cpp 46915 2013-07-02 17:21:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -1448,7 +1448,10 @@ VMMR3DECL(int)  PDMR3LdrEnumModules(PVM pVM, PFNPDMR3ENUM pfnCallback, void *pvA
                          pCur->szName,
                          pCur->ImageBase,
                          pCur->eType == PDMMOD_TYPE_RC ? RTLdrSize(pCur->hLdrMod) : 0,
-                         pCur->eType == PDMMOD_TYPE_RC,
+                           pCur->eType == PDMMOD_TYPE_RC ? PDMLDRCTX_RAW_MODE
+                         : pCur->eType == PDMMOD_TYPE_R0 ? PDMLDRCTX_RING_0
+                         : pCur->eType == PDMMOD_TYPE_R3 ? PDMLDRCTX_RING_3
+                         :                                 PDMLDRCTX_INVALID,
                          pvArg);
         if (RT_FAILURE(rc))
             break;
