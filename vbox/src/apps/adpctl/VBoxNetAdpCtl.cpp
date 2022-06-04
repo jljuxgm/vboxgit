@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 43508 2012-10-02 14:04:16Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 43512 2012-10-02 14:46:50Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -29,6 +29,7 @@
 #include <fcntl.h>
 #ifdef RT_OS_LINUX
 # include <net/if.h>
+# include <asm/types.h>
 # include <linux/types.h>
 # include <linux/ethtool.h>
 # include <linux/sockios.h>
