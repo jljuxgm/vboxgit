@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46566 2013-06-14 16:07:45Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46580 2013-06-17 10:20:31Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8571,7 +8571,7 @@ HMVMX_EXIT_DECL hmR0VmxExitEptMisconfig(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTR
         /* Successfully handled MMIO operation. */
         pVCpu->hm.s.fContextUseFlags |=   HM_CHANGED_GUEST_RIP | HM_CHANGED_GUEST_RSP | HM_CHANGED_GUEST_RFLAGS
                                         | HM_CHANGED_VMX_GUEST_APIC_STATE;
-        return VINF_SUCCESS;
+        rc = VINF_SUCCESS;
     }
     return rc;
 }
