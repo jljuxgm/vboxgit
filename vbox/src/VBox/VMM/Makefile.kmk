@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44528 2013-02-04 14:27:54Z vboxsync $
+# $Id: Makefile.kmk 45091 2013-03-19 16:01:32Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -52,6 +52,9 @@ ifdef VBOX_WITH_PCI_PASSTHROUGH
 endif
 ifdef VBOX_WITH_DTRACE_RC
  VMM_COMMON_DEFS += VBOX_WITH_DTRACE_RC
+endif
+ifdef VBOX_WITH_OLD_VTX_CODE
+ VMM_COMMON_DEFS += VBOX_WITH_OLD_VTX_CODE
 endif
 # VMM_COMMON_DEFS += VBOX_WITH_NS_ACCOUNTING_STATS
 
@@ -491,7 +494,6 @@ ifndef VBOX_ONLY_EXTPACKS
  	VMMR0/HMR0.cpp \
  	VMMR0/HMR0A.asm \
  	VMMR0/HWSVMR0.cpp \
- 	VMMR0/HWVMXR0.cpp \
  	VMMR0/PDMR0Device.cpp \
  	VMMR0/PDMR0Driver.cpp \
  	VMMR0/PGMR0.cpp \
@@ -549,6 +551,11 @@ ifndef VBOX_ONLY_EXTPACKS
  ifdef VBOX_WITH_NETSHAPER
   VMMR0_SOURCES += \
  	VMMAll/PDMAllNetShaper.cpp
+ endif
+ ifdef VBOX_WITH_OLD_VTX_CODE
+  VMMR0_SOURCES += VMMR0/HWVMXR0.cpp
+ else
+  VMMR0_SOURCES += VMMR0/HMVMXR0.cpp
  endif
  VMMR0_SOURCES.amd64 = \
  	VMMR0/VMMR0JmpA-amd64.asm

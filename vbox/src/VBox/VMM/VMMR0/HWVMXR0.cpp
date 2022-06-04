@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 44968 2013-03-11 09:08:47Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 45091 2013-03-19 16:01:32Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -208,6 +208,16 @@ VMMR0DECL(int) VMXR0DisableCpu(PHMGLOBLCPUINFO pCpu, void *pvCpuPage, RTHCPHYS H
     return VINF_SUCCESS;
 }
 
+VMMR0DECL(int) VMXR0GlobalInit(void)
+{
+    /* Nothing to do. */
+    return VINF_SUCCESS;
+}
+
+VMMR0DECL(void) VMXR0GlobalTerm(void)
+{
+    /* Nothing to do. */
+}
 
 /**
  * Does Ring-0 per VM VT-x initialization.
@@ -529,6 +539,7 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
 
         rc = VMXWriteVmcs(VMX_VMCS32_CTRL_PIN_EXEC_CONTROLS, val);
         AssertRC(rc);
+        pVCpu->hm.s.vmx.u32PinCtls = val;
 
         /*
          * VMX_VMCS_CTRL_PROC_EXEC_CONTROLS
