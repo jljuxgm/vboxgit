@@ -1,4 +1,4 @@
-/* $Id: display.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: display.cpp 44967 2013-03-11 09:07:46Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -196,14 +196,14 @@ static int runDisplay(Display *pDisplay)
             /* Extended display version not supported on host */
             if (RT_FAILURE(rc2))
             {
-                LogRel(("GetDisplayChangeReq Extended Version not supported. \
-                         Trying for Normal Mode with cx=%d & cy=%d\n", cx, cy));
+                LogRel(("GetDisplayChangeReq Extended Version not supported.  "
+                        "Trying for Normal Mode with cx=%d & cy=%d\n", cx, cy));
                 fExtDispReqSupport = false;
                 rc2 = VbglR3GetDisplayChangeRequest(&cx, &cy, &cBits, &iDisplay, true);
             }
             else
-                LogRelFlowFunc(("Got Extended Param from Host cx=%d, cy=%d, bpp=%d, iDisp=%d, \
-                                OrgX=%d, OrgY=%d Enb=%d\n", cx, cy, cBits, iDisplay,
+                LogRelFlowFunc(("Got Extended Param from Host cx=%d, cy=%d, bpp=%d, iDisp=%d, "
+                                "OrgX=%d, OrgY=%d Enb=%d\n", cx, cy, cBits, iDisplay,
                                 cxOrg, cyOrg, fEnabled));
             /* If we are not stopping, sleep for a bit to avoid using up
                 too much CPU while retrying. */
