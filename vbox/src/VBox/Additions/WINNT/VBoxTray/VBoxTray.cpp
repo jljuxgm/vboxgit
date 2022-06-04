@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 45802 2013-04-29 08:46:41Z vboxsync $ */
+/* $Id: VBoxTray.cpp 45803 2013-04-29 08:48:26Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1200,7 +1200,7 @@ static BOOL vboxDtCalculateIsInputDesktop()
     else
     {
         DWORD dwErr = GetLastError();
-        WARN(("VBoxTray: pfnOpenInputDesktop for Seamless failed, last error = %08X\n", dwErr));
+//        WARN(("VBoxTray: pfnOpenInputDesktop for Seamless failed, last error = %08X\n", dwErr));
     }
     return fIsInputDt;
 }
