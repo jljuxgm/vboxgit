@@ -1,4 +1,4 @@
-/* $Id: DHCPServerRunner.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: DHCPServerRunner.h 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -53,9 +53,9 @@ public:
 
     int setOption(DHCPCFG opt, const char *val, bool enabled)
     {
-        if(opt == 0 || opt >= DHCPCFG_NOTOPT_MAXVAL)
+        if (opt == 0 || opt >= DHCPCFG_NOTOPT_MAXVAL)
             return VERR_INVALID_PARAMETER;
-        if(isRunning())
+        if (isRunning())
             return VERR_INVALID_STATE;
 
         mOptions[opt] = val;

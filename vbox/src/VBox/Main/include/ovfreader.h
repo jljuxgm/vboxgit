@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 45354 2013-04-05 06:07:36Z vboxsync $ */
+/* $Id: ovfreader.h 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -169,11 +169,11 @@ struct EnvelopeData
 
     OVFVersion_T getOVFVersion() const
     {
-        if(version == "0.9")
+        if (version == "0.9")
             return OVFVersion_0_9;
-        else if(version == "1.0")
+        else if (version == "1.0")
             return OVFVersion_1_0;
-        else if(version == "2.0")
+        else if (version == "2.0")
             return OVFVersion_2_0;
         else
             return OVFVersion_unknown;
@@ -182,11 +182,11 @@ struct EnvelopeData
 
     RTCString getStringOVFVersion() const
     {
-        if(version == "0.9")
+        if (version == "0.9")
             return "0.9";
-        else if(version == "1.0")
+        else if (version == "1.0")
             return "1.0";
-        else if(version == "2.0")
+        else if (version == "2.0")
             return "2.0";
         else
             return "";

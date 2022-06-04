@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 45276 2013-04-02 08:17:11Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -471,8 +471,8 @@ static LONG GetNextUsedSataPort(LONG aSataPortUsed[30], LONG lBaseVal, uint32_t 
     LONG lNextPortUsed = 30;
     for (size_t j = 0; j < u32Size; ++j)
     {
-        if(aSataPortUsed[j] > lBaseVal &&
-           aSataPortUsed[j] <= lNextPortUsed)
+        if (   aSataPortUsed[j] >  lBaseVal
+            && aSataPortUsed[j] <= lNextPortUsed)
            lNextPortUsed = aSataPortUsed[j];
     }
     return lNextPortUsed;
@@ -1668,14 +1668,14 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                             IMediumAttachment *pMediumAtt = atts[j];
                             LONG lPortNum = 0;
                             hrc = pMediumAtt->COMGETTER(Port)(&lPortNum);                   H();
-                            if(SUCCEEDED(hrc))
+                            if (SUCCEEDED(hrc))
                             {
                                 DeviceType_T lType;
                                 hrc = pMediumAtt->COMGETTER(Type)(&lType);                    H();
-                                if(SUCCEEDED(hrc) && lType == DeviceType_HardDisk)
+                                if (SUCCEEDED(hrc) && lType == DeviceType_HardDisk)
                                 {
                                     /* find min port number used for HD */
-                                    if(lPortNum < lPortLUN[0])
+                                    if (lPortNum < lPortLUN[0])
                                         lPortLUN[0] = lPortNum;
                                     lPortUsed[u32HDSataPortCount++] = lPortNum;
                                     LogFlowFunc(("HD Sata port Count=%d\n", u32HDSataPortCount));

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 45227 2013-03-28 12:22:11Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1676,7 +1676,7 @@ HRESULT Appliance::writeFSOVF(TaskOVF *pTask, AutoWriteLockBase& writeLock)
             break;
         }
         rc = writeFSImpl(pTask, writeLock, pShaIo, &storage);
-    }while(0);
+    } while (0);
 
     /* Cleanup */
     if (pShaIo)
@@ -1730,7 +1730,7 @@ HRESULT Appliance::writeFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock)
             break;
         }
         rc = writeFSImpl(pTask, writeLock, pShaIo, &storage);
-    }while(0);
+    } while (0);
 
     RTTarClose(tar);
 
@@ -1741,7 +1741,7 @@ HRESULT Appliance::writeFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock)
         RTMemFree(pTarIo);
 
     /* Delete ova file on error */
-    if(FAILED(rc))
+    if (FAILED(rc))
         RTFileDelete(pTask->locInfo.strPath.c_str());
 
     LogFlowFuncLeave();

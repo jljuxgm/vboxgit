@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 45362 2013-04-05 09:49:21Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 45368 2013-04-05 13:06:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -3055,18 +3055,18 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType deviceType)
         {
             int iAnswer = msgCenter().confirmOpticalAttachmentCreation(strControllerName, this);
             if (iAnswer == AlertButton_Choice1)
-                strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_DVD, this, strMachineFolder);
-            else if (iAnswer == AlertButton_Choice2)
                 strMediumId = vboxGlobal().findMedium(strMediumId).id();
+            else if (iAnswer == AlertButton_Choice2)
+                strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_DVD, this, strMachineFolder);
             break;
         }
         case KDeviceType_Floppy:
         {
             int iAnswer = msgCenter().confirmFloppyAttachmentCreation(strControllerName, this);
             if (iAnswer == AlertButton_Choice1)
-                strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_Floppy, this, strMachineFolder);
-            else if (iAnswer == AlertButton_Choice2)
                 strMediumId = vboxGlobal().findMedium(strMediumId).id();
+            else if (iAnswer == AlertButton_Choice2)
+                strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_Floppy, this, strMachineFolder);
             break;
         }
     }

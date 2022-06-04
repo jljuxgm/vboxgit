@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 45140 2013-03-22 12:15:11Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 45363 2013-04-05 09:49:47Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -143,6 +143,10 @@ BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam)
     PVBOX_ENUM_PARAM    lpParam = (PVBOX_ENUM_PARAM)lParam;
     DWORD               dwStyle, dwExStyle;
     RECT                rectWindow, rectVisible;
+    OSVERSIONINFO       OSinfo;
+
+    OSinfo.dwOSVersionInfoSize = sizeof (OSinfo);
+    GetVersionEx (&OSinfo);
 
     dwStyle   = GetWindowLong(hwnd, GWL_STYLE);
     dwExStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
@@ -198,7 +202,27 @@ BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam)
             if (ret == ERROR)
             {
                 Log(("VBoxTray: GetWindowRgn failed with rc=%d\n", GetLastError()));
-                SetRectRgn(hrgn, rectVisible.left, rectVisible.top, rectVisible.right, rectVisible.bottom);
+
+                /* for vista and above. To solve the issue of small bar above the Start button */
+                if (OSinfo.dwMajorVersion >= 6)
+                {
+                    char szWindowTextStart[256];
+                    HWND hStart = NULL;
+                    hStart = ::FindWindowEx(GetDesktopWindow(), NULL, "Button", NULL);
+                    GetWindowText(hwnd, szWindowText, sizeof(szWindowText));
+                    GetWindowText(hStart,szWindowTextStart, sizeof(szWindowTextStart));
+                    if (   hwnd == hStart && szWindowText != NULL
+                        && !(strcmp(szWindowText, szWindowTextStart))
+                       )
+                    {
+                        LogRel(("VboxTray/Seamless: Start found.\n"));
+                        SetRectRgn(hrgn, rectVisible.left, rectVisible.top +7, rectVisible.right, rectVisible.bottom);
+                    }
+                    else
+                        SetRectRgn(hrgn, rectVisible.left, rectVisible.top , rectVisible.right , rectVisible.bottom);
+                }
+                else
+                    SetRectRgn(hrgn, rectVisible.left, rectVisible.top , rectVisible.right , rectVisible.bottom);
             }
             else
             {

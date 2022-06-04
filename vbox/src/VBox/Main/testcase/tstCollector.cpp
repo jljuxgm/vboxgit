@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 45051 2013-03-15 15:34:54Z vboxsync $ */
+/* $Id: tstCollector.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
 
 /** @file
  *
@@ -63,7 +63,7 @@
         if (RT_FAILURE(rc)) \
             break; \
         ++nCalls; \
-    } while(RTTimeMilliTS() - start < RUN_TIME_MS); \
+    } while (RTTimeMilliTS() - start < RUN_TIME_MS); \
     if (RT_FAILURE(rc)) \
     { \
         RTPrintf("tstCollector: "#fn" -> %Rrc\n", rc); \
@@ -468,7 +468,7 @@ int main(int argc, char *argv[])
             return 1;
         }
         start = RTTimeMilliTS();
-        while(RTTimeMilliTS() - start < 5000)
+        while (RTTimeMilliTS() - start < 5000)
             ; // Loop for 5 seconds
         rc = collector->preCollect(hints, 0);
         if (RT_FAILURE(rc))

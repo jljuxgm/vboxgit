@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -436,7 +436,7 @@ STDMETHODIMP USBController::COMGETTER(DeviceFilters)(ComSafeArrayOut(IUSBDeviceF
     CheckComArgOutSafeArrayPointerValid(aDevicesFilters);
 
     AutoCaller autoCaller(this);
-    if(FAILED(autoCaller.rc())) return autoCaller.rc();
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 

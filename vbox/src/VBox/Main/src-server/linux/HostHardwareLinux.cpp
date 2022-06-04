@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1282,7 +1282,7 @@ hotplugInotifyImpl::hotplugInotifyImpl(const char *pcszDevicesRoot) :
             break;
         if (RT_FAILURE(rc = pipeCreateSimple(&mhWakeupPipeR, &mhWakeupPipeW)))
             break;
-    } while(0);
+    } while (0);
     mStatus = rc;
     if (RT_FAILURE(rc))
         term();

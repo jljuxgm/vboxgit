@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 45109 2013-03-20 16:41:00Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -655,7 +655,7 @@ int GuestEnvironment::Set(const Utf8Str &strPair)
 
     int rc = VINF_SUCCESS;
     size_t p = 0;
-    while(p < listPair.size() && RT_SUCCESS(rc))
+    while (p < listPair.size() && RT_SUCCESS(rc))
     {
         Utf8Str strKey = listPair.at(p++);
         if (   strKey.isEmpty()

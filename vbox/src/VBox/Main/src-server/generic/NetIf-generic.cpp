@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 44742 2013-02-18 17:26:05Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -315,7 +315,7 @@ int NetIfRemoveHostOnlyNetworkInterface(VirtualBox *pVBox, IN_GUID aId,
     ComPtr<IHost> host;
     int rc = VINF_SUCCESS;
     HRESULT hr = pVBox->COMGETTER(Host)(host.asOutParam());
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         Bstr ifname;
         ComPtr<IHostNetworkInterface> iface;
@@ -328,7 +328,7 @@ int NetIfRemoveHostOnlyNetworkInterface(VirtualBox *pVBox, IN_GUID aId,
         rc = progress->init(pVBox, host,
                             Bstr("Removing host network interface").raw(),
                             FALSE /* aCancelable */);
-        if(SUCCEEDED(rc))
+        if (SUCCEEDED(rc))
         {
             progress.queryInterfaceTo(aProgress);
             rc = NetIfAdpCtl(Utf8Str(ifname).c_str(), "remove", NULL, NULL);

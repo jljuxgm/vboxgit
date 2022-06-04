@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1430,7 +1430,7 @@ void TestUSBSetInotifyAvailable(bool fHaveInotifyLibC, bool fHaveInotifyKernel)
     s_fHaveInotifyKernel = fHaveInotifyKernel;
 }
 # define dlsym testDLSym
-# define close(a) do {} while(0)
+# define close(a) do {} while (0)
 #endif
 
 /** Is inotify available and working on this system?  This is a requirement

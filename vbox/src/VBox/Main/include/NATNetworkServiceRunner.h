@@ -1,4 +1,4 @@
-/* $Id: NATNetworkServiceRunner.h 45138 2013-03-22 11:52:24Z vboxsync $ */
+/* $Id: NATNetworkServiceRunner.h 45367 2013-04-05 13:02:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox NAT Network service
  */
@@ -43,9 +43,9 @@ public:
 
     int setOption(NATSCCFG opt, const char *val, bool enabled)
     {
-        if(opt == 0 || opt >= NATSCCFG_NOTOPT_MAXVAL)
+        if (opt == 0 || opt >= NATSCCFG_NOTOPT_MAXVAL)
             return VERR_INVALID_PARAMETER;
-        if(isRunning())
+        if (isRunning())
             return VERR_INVALID_STATE;
 
         mOptions[opt] = val;

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 45334 2013-04-04 10:53:23Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 45368 2013-04-05 13:06:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1503,7 +1503,7 @@ void UIMachineLogic::sltMountStorageMedium()
     {
         /* Ask for force remounting: */
         if (msgCenter().cannotRemountMedium(machine, vboxGlobal().findMedium(fMount ? newId : currentId),
-                                            fMount, true /* retry? */, activeMachineWindow()) == AlertButton_Ok)
+                                            fMount, true /* retry? */, activeMachineWindow()))
         {
             /* Force remount medium to the predefined port/device: */
             machine.MountMedium(target.name, target.port, target.device, medium, true /* force */);
@@ -1564,7 +1564,7 @@ void UIMachineLogic::sltMountRecentStorageMedium()
         {
             /* Ask for force remounting: */
             if (msgCenter().cannotRemountMedium(machine, vboxGlobal().findMedium(fMount ? strNewId : strCurrentId),
-                                                fMount, true /* retry? */, activeMachineWindow()) == AlertButton_Ok)
+                                                fMount, true /* retry? */, activeMachineWindow()))
             {
                 /* Force remount medium to the predefined port/device: */
                 machine.MountMedium(target.name, target.port, target.device, comMedium, true /* force? */);
