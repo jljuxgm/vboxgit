@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 44387 2013-01-25 18:31:58Z vboxsync $ */
+/* $Id: tstAnimate.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -880,7 +880,7 @@ int main(int argc, char **argv)
                     {
                         rc = EMR3SetExecutionPolicy(pUVM, EMEXECPOLICY_RECOMPILE_RING0, true); AssertReleaseRC(rc);
                         rc = EMR3SetExecutionPolicy(pUVM, EMEXECPOLICY_RECOMPILE_RING3, true); AssertReleaseRC(rc);
-                        DBGFR3Info(pVM, "cpumguest", "verbose", NULL);
+                        DBGFR3Info(pUVM, "cpumguest", "verbose", NULL);
                         if (fPowerOn)
                             rc = VMR3PowerOn(pUVM);
                         if (RT_SUCCESS(rc))
@@ -902,7 +902,7 @@ int main(int argc, char **argv)
                      * Don't start it, just enter the debugger.
                      */
                     RTPrintf("info: entering debugger...\n");
-                    DBGFR3Info(pVM, "cpumguest", "verbose", NULL);
+                    DBGFR3Info(pUVM, "cpumguest", "verbose", NULL);
                     signal(SIGINT, SigInterrupt);
                     while (!g_fSignaled)
                         RTThreadSleep(1000);

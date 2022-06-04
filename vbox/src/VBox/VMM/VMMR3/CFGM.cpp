@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 44387 2013-01-25 18:31:58Z vboxsync $ */
+/* $Id: CFGM.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -107,7 +107,8 @@ VMMR3DECL(int) CFGMR3Init(PVM pVM, PFNCFGMCONSTRUCTOR pfnCFGMConstructor, void *
     /*
      * Register DBGF into item.
      */
-    int rc = DBGFR3InfoRegisterInternal(pVM, "cfgm", "Dumps a part of the CFGM tree. The argument indicates where to start.", cfgmR3Info);
+    int rc = DBGFR3InfoRegisterInternal(pVM, "cfgm", "Dumps a part of the CFGM tree. The argument indicates where to start.",
+                                        cfgmR3Info);
     AssertRCReturn(rc,rc);
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELF.h 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: DBGPlugInCommonELF.h 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Common code for dealing with ELF images, Header.
  */
@@ -34,13 +34,13 @@
 #define DBG_DIGGER_ELF_MASK                 UINT32_C(0x00000003)
 /* @} */
 
-int DBGDiggerCommonParseElf32Mod(PVM pVM, const char *pszModName, const char *pszFilename, uint32_t fFlags,
+int DBGDiggerCommonParseElf32Mod(PUVM pUVM, const char *pszModName, const char *pszFilename, uint32_t fFlags,
                                  Elf32_Ehdr const *pEhdr, Elf32_Shdr const *paShdrs,
                                  Elf32_Sym const *paSyms, size_t cMaxSyms,
                                  char const *pbStrings, size_t cbMaxStrings,
                                  RTGCPTR MinAddr, RTGCPTR MaxAddr, uint64_t uModTag);
 
-int DBGDiggerCommonParseElf64Mod(PVM pVM, const char *pszModName, const char *pszFilename, uint32_t fFlags,
+int DBGDiggerCommonParseElf64Mod(PUVM pUVM, const char *pszModName, const char *pszFilename, uint32_t fFlags,
                                  Elf64_Ehdr const *pEhdr, Elf64_Shdr const *paShdrs,
                                  Elf64_Sym const *paSyms, size_t cMaxSyms,
                                  char const *pbStrings, size_t cbMaxStrings,

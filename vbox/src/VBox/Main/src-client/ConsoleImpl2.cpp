@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 44393 2013-01-25 21:21:05Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4934,7 +4934,7 @@ int configSetGlobalPropertyFlags(VMMDev * const pVMMDev,
             {
                 PFNDBGFHANDLEREXT pfnHandler = (PFNDBGFHANDLEREXT)(uintptr_t)Params[0].u.pointer.addr;
                 void *pService = (void*)Params[1].u.pointer.addr;
-                DBGFR3InfoRegisterExternal(VMR3GetVM(pUVM), "guestprops", "Display the guest properties", pfnHandler, pService);
+                DBGFR3InfoRegisterExternal(pUVM, "guestprops", "Display the guest properties", pfnHandler, pService);
             }
         }
 

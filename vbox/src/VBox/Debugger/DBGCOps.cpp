@@ -1,4 +1,4 @@
-/* $Id: DBGCOps.cpp 41573 2012-06-04 21:13:23Z vboxsync $ */
+/* $Id: DBGCOps.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Operators.
  */
@@ -461,7 +461,7 @@ DECLCALLBACK(int) dbgcOpRegister(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat,
      */
     if (enmCat == DBGCVAR_CAT_SYMBOL)
     {
-        int rc = DBGFR3RegNmValidate(pDbgc->pVM, pDbgc->idCpu, pArg->u.pszString);
+        int rc = DBGFR3RegNmValidate(pDbgc->pUVM, pDbgc->idCpu, pArg->u.pszString);
         if (RT_SUCCESS(rc))
             DBGCVAR_INIT_STRING(pResult, pArg->u.pszString);
         return rc;
@@ -472,7 +472,7 @@ DECLCALLBACK(int) dbgcOpRegister(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat,
      */
     DBGFREGVALTYPE  enmType;
     DBGFREGVAL      Value;
-    int rc = DBGFR3RegNmQuery(pDbgc->pVM, pDbgc->idCpu, pArg->u.pszString, &Value, &enmType);
+    int rc = DBGFR3RegNmQuery(pDbgc->pUVM, pDbgc->idCpu, pArg->u.pszString, &Value, &enmType);
     if (RT_SUCCESS(rc))
     {
         switch (enmType)

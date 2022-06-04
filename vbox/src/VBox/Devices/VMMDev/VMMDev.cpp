@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 44130 2012-12-14 10:27:28Z vboxsync $ */
+/* $Id: VMMDev.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -984,8 +984,8 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
                     /*
                      * Write the core file.
                      */
-                    PVM pVM = PDMDevHlpGetVM(pDevIns);
-                    pRequestHeader->rc = DBGFR3CoreWrite(pVM, szCorePath, true /*fReplaceFile*/);
+                    PUVM pUVM = PDMDevHlpGetUVM(pDevIns);
+                    pRequestHeader->rc = DBGFR3CoreWrite(pUVM, szCorePath, true /*fReplaceFile*/);
                 }
                 else
                     pRequestHeader->rc = VERR_ACCESS_DENIED;

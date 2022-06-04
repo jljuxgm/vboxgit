@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 44393 2013-01-25 21:21:05Z vboxsync $ */
+/* $Id: VBoxDbgBase.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -97,7 +97,7 @@ VBoxDbgBase::dbgcCreate(PDBGCBACK pBack, unsigned fFlags)
     PUVM pUVM = m_pUVM;
     if (    pUVM
         &&  VMR3GetStateU(pUVM) < VMSTATE_DESTROYING)
-        return DBGCCreate(VMR3GetVM(pUVM), pBack, fFlags);
+        return DBGCCreate(pUVM, pBack, fFlags);
     return VERR_INVALID_HANDLE;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 44358 2013-01-24 16:05:55Z vboxsync $ */
+/* $Id: PDM.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -658,14 +658,15 @@ VMMR3_INT_DECL(int) PDMR3Term(PVM pVM)
         }
 
         TMR3TimerDestroyDevice(pVM, pDevIns);
-        //SSMR3DeregisterDriver(pVM, pDevIns, NULL, 0);
+        SSMR3DeregisterDevice(pVM, pDevIns, NULL, 0);
         pdmR3CritSectDeleteDevice(pVM, pDevIns);
-        //pdmR3ThreadDestroyDevice(pVM, pDevIns);
-        //PDMR3QueueDestroyDevice(pVM, pDevIns);
+        pdmR3ThreadDestroyDevice(pVM, pDevIns);
+        PDMR3QueueDestroyDevice(pVM, pDevIns);
         PGMR3PhysMMIO2Deregister(pVM, pDevIns, UINT32_MAX);
 #ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
         pdmR3AsyncCompletionTemplateDestroyDevice(pVM, pDevIns);
 #endif
+        DBGFR3InfoDeregisterDevice(pVM, pDevIns, NULL);
     }
 
     /*

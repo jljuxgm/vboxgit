@@ -1,4 +1,4 @@
-/* $Id: DBGFRZ.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: DBGFRZ.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, RZ part.
  */
@@ -42,7 +42,7 @@
  * @param   pRegFrame   Pointer to the register frame for the trap.
  * @param   uDr6        The DR6 register value.
  */
-VMMRZDECL(int) DBGFRZTrap01Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, RTGCUINTREG uDr6)
+VMMRZ_INT_DECL(int) DBGFRZTrap01Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, RTGCUINTREG uDr6)
 {
 #ifdef IN_RC
     const bool fInHyper = !(pRegFrame->ss.Sel & X86_SEL_RPL) && !pRegFrame->eflags.Bits.u1VM;
@@ -109,7 +109,7 @@ VMMRZDECL(int) DBGFRZTrap01Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame
  * @param   pVCpu       Pointer to the VMCPU.
  * @param   pRegFrame   Pointer to the register frame for the trap.
  */
-VMMRZDECL(int) DBGFRZTrap03Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
+VMMRZ_INT_DECL(int) DBGFRZTrap03Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame)
 {
 #ifdef IN_RC
     const bool fInHyper = !(pRegFrame->ss.Sel & X86_SEL_RPL) && !pRegFrame->eflags.Bits.u1VM;

@@ -1,10 +1,10 @@
-/* $Id: DBGCFunctions.cpp 41561 2012-06-04 12:10:19Z vboxsync $ */
+/* $Id: DBGCFunctions.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Functions.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -44,13 +44,13 @@ static PDBGCEXTFUNCS    g_pExtFuncsHead;
 /**
  * @callback_method_impl{The randu32() function implementation.}
  */
-static DECLCALLBACK(int) dbgcFuncRandU32(PCDBGCFUNC pFunc, PDBGCCMDHLP pCmdHlp, PVM pVM, PCDBGCVAR paArgs, uint32_t cArgs,
+static DECLCALLBACK(int) dbgcFuncRandU32(PCDBGCFUNC pFunc, PDBGCCMDHLP pCmdHlp, PUVM pUVM, PCDBGCVAR paArgs, uint32_t cArgs,
                                          PDBGCVAR pResult)
 {
     AssertReturn(cArgs == 0, VERR_DBGC_PARSE_BUG);
     uint32_t u32 = RTRandU32();
     DBGCVAR_INIT_NUMBER(pResult, u32);
-    NOREF(pFunc); NOREF(pCmdHlp); NOREF(pVM); NOREF(paArgs);
+    NOREF(pFunc); NOREF(pCmdHlp); NOREF(pUVM); NOREF(paArgs);
     return VINF_SUCCESS;
 }
 
