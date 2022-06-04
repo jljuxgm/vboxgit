@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 45021 2013-03-13 14:54:05Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 45158 2013-03-25 08:57:28Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1207,10 +1207,18 @@ int handleControlVM(HandlerArg *a)
                 break;
             }
             /* guest is running; update IGuest */
-            ComPtr <IGuest> guest;
-            rc = console->COMGETTER(Guest)(guest.asOutParam());
+            ComPtr <IGuest> pGuest;
+            rc = console->COMGETTER(Guest)(pGuest.asOutParam());
             if (SUCCEEDED(rc))
-                CHECK_ERROR(guest, COMSETTER(MemoryBalloonSize)(uVal));
+            {
+                if (!pGuest)
+                {
+                    RTMsgError("Guest not running");
+                    rc = E_FAIL;
+                    break;
+                }
+                CHECK_ERROR(pGuest, COMSETTER(MemoryBalloonSize)(uVal));
+            }
         }
         else if (!strcmp(a->argv[1], "teleport"))
         {
