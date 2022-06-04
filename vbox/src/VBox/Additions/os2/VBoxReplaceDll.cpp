@@ -1,6 +1,6 @@
-/** $Id: VBoxReplaceDll.cpp 46692 2013-06-19 19:59:40Z vboxsync $ */
+/** $Id: VBoxReplaceDll.cpp 46694 2013-06-19 20:13:38Z vboxsync $ */
 /** @file
- * VBoxSF - OS/2 Shared Folders, the FS and FSD level IFS EPs
+ * VBoxReplaceDll - helper for replacing a dll when it's in use by the system
  */
 
 /*
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(argv[i], "--version")
                      || !strcmp(argv[i], "-V") )
             {
-                printf("$Revision: 46692 $\n");
+                printf("$Revision: 46694 $\n");
                 return 0;
             }
             else
