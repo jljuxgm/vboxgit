@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
+/* $Id: CSAM.cpp 42782 2012-08-11 23:19:17Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -886,7 +886,8 @@ static int CSAMR3AnalyseCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uint8_t *
 
             if (csamIsCodeScanned(pVM, pCurInstrGC + cbCurInstr, &pPage) == true)
             {
-                /* We've scanned the next instruction(s) already. This means we've followed a branch that ended up there before -> dangerous!! */
+                /* We've scanned the next instruction(s) already. This means we've
+                   followed a branch that ended up there before -> dangerous!! */
                 PATMR3DetectConflict(pVM, pCurInstrGC, pCurInstrGC + cbCurInstr);
                 break;
             }
