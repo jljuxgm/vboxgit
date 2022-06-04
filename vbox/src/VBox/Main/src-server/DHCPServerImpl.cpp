@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 46959 2013-07-04 05:21:06Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 46961 2013-07-04 05:34:20Z vboxsync $ */
 
 /** @file
  *
@@ -439,7 +439,7 @@ STDMETHODIMP DHCPServer::GetMacOptions(IN_BSTR aMAC, ComSafeArrayOut(BSTR, aValu
         com::Bstr mac;
 
         alock.release();
-        hrc = nic->GetMACAddress(mac.asOutParam());
+        hrc = nic->COMGETTER(MACAddress)(mac.asOutParam());
         alock.acquire();
 
         if (FAILED(hrc)) /* no MAC address ??? */
