@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 46102 2013-05-15 16:07:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -581,6 +581,11 @@ public:
             VBoxGlobal::tr("Enabled", "nested paging") :
             VBoxGlobal::tr("Disabled", "nested paging");
 
+        bool bUXEnabled = debugger.GetHWVirtExUXEnabled();
+        QString unrestrictExec = bUXEnabled ?
+            VBoxGlobal::tr("Enabled", "unrestricted execution") :
+            VBoxGlobal::tr("Disabled", "unrestricted execution");
+
         QString strCPUExecCap = QString::number(console.GetMachine().GetCPUExecutionCap());
 
         QString tip(QApplication::translate("UIIndicatorsPool",
@@ -588,10 +593,12 @@ public:
                                             "features used by this virtual machine:"
                                             "<br><nobr><b>%1:</b>&nbsp;%2</nobr>"
                                             "<br><nobr><b>%3:</b>&nbsp;%4</nobr>"
-                                            "<br><nobr><b>%5:</b>&nbsp;%6%</nobr>",
+                                            "<br><nobr><b>%5:</b>&nbsp;%6</nobr>"
+                                            "<br><nobr><b>%7:</b>&nbsp;%8%</nobr>",
                                             "Virtualization Stuff LED")
                     .arg(VBoxGlobal::tr("VT-x/AMD-V", "details report"), virtualization)
                     .arg(VBoxGlobal::tr("Nested Paging"), nestedPaging)
+                    .arg(VBoxGlobal::tr("Unrestricted Execution"), unrestrictExec)                    
                     .arg(VBoxGlobal::tr("Execution Cap", "details report"), strCPUExecCap));
 
         int cpuCount = console.GetMachine().GetCPUCount();
