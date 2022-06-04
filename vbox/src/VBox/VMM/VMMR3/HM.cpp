@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 46139 2013-05-17 09:36:06Z vboxsync $ */
+/* $Id: HM.cpp 46190 2013-05-21 10:04:21Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1595,12 +1595,13 @@ VMMR3_INT_DECL(void) HMR3PagingModeChanged(PVM pVM, PVMCPU pVCpu, PGMMODE enmSha
     }
 #endif
 
-    /** @todo r=ramshankar: Why do we need to do this? Most likely
-     *        VBOX_WITH_OLD_VTX_CODE only. */
+    /** @todo r=ramshankar: Why do we need to do this? */
+#ifdef VMX_USE_CACHED_VMCS_ACCESSES
     /* Reset the contents of the read cache. */
     PVMCSCACHE pCache = &pVCpu->hm.s.vmx.VMCSCache;
     for (unsigned j = 0; j < pCache->Read.cValidEntries; j++)
         pCache->Read.aFieldVal[j] = 0;
+#endif
 }
 
 
