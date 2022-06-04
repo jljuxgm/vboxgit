@@ -1,4 +1,4 @@
-/* $Id: vboxsf.c 43404 2012-09-22 12:09:45Z vboxsync $ */
+/* $Id: vboxsf.c 43415 2012-09-24 12:18:16Z vboxsync $ */
 /** @file
  * Shared folders - Haiku Guest Additions, implementation.
  */
@@ -990,7 +990,7 @@ static fs_vnode_ops vboxsf_vnode_ops =
     vboxsf_rename,
     NULL,                   /* access */
     vboxsf_read_stat,
-    vboxsf_write_stat
+    vboxsf_write_stat,
     NULL,                   /* preallocate */
     vboxsf_create,
     vboxsf_open,

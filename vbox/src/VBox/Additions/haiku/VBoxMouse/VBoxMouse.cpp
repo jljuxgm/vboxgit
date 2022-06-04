@@ -1,4 +1,4 @@
-/* $Id: VBoxMouse.cpp 43405 2012-09-22 13:53:03Z vboxsync $ */
+/* $Id: VBoxMouse.cpp 43415 2012-09-24 12:18:16Z vboxsync $ */
 /** @file
  * VBoxMouse; input_server add-on - Haiku Guest Additions, implementation.
  */
@@ -286,7 +286,7 @@ status_t VBoxMouse::_ServiceThread()
             break;
         }
 
-        int rc = VbglR3GetMouseStatus(&fFeatures, &cx, &cy);
+        rc = VbglR3GetMouseStatus(&fFeatures, &cx, &cy);
         if (   RT_SUCCESS(rc)
             && (fFeatures & VMMDEV_MOUSE_HOST_WANTS_ABSOLUTE))
         {
