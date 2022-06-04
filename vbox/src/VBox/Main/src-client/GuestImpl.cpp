@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 47294 2013-07-22 11:19:20Z vboxsync $ */
+/* $Id: GuestImpl.cpp 47310 2013-07-22 14:49:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -1157,7 +1157,7 @@ void Guest::facilityUpdate(VBoxGuestFacilityType a_enmFacility, VBoxGuestFacilit
  * @param   cbDetails           Size (in bytes) of state details. Pass 0 if not used.
  */
 void Guest::onUserStateChange(Bstr aUser, Bstr aDomain, VBoxGuestUserState enmState,
-                              uint8_t *puDetails, uint32_t cbDetails)
+                              const uint8_t *puDetails, uint32_t cbDetails)
 {
     LogFlowThisFunc(("\n"));
 
