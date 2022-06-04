@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 44621 2013-02-11 10:10:51Z vboxsync $ */
+/* $Id: DevEFI.cpp 44627 2013-02-11 11:01:55Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1450,8 +1450,10 @@ static DECLCALLBACK(void) efiReset(PPDMDEVINS pDevIns)
 static DECLCALLBACK(int) efiDestruct(PPDMDEVINS pDevIns)
 {
     PDEVEFI  pThis = PDMINS_2_DATA(pDevIns, PDEVEFI);
+    PDMDEV_CHECK_VERSIONS_RETURN_QUIET(pDevIns);
 
-    nvramStore(pThis);
+    if (pThis->Lun0.pNvramDrv)
+        nvramStore(pThis);
     nvramFlushDeviceVariableList(pThis);
 
     if (pThis->pu8EfiRom)
@@ -1690,6 +1692,7 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 {
     PDEVEFI     pThis = PDMINS_2_DATA(pDevIns, PDEVEFI);
     int         rc;
+    PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
 
     Assert(iInstance == 0);
 
