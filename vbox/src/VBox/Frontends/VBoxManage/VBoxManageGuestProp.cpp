@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestProp.cpp 44329 2013-01-22 12:16:50Z vboxsync $ */
+/* $Id: VBoxManageGuestProp.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestproperty command.
  */
@@ -28,9 +28,7 @@
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
-
 #include <VBox/com/VirtualBox.h>
-#include <VBox/com/EventQueue.h>
 
 #include <VBox/log.h>
 #include <iprt/asm.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 46523 2013-06-13 12:02:48Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -25,8 +25,6 @@
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
-#include <VBox/com/EventQueue.h>
-
 #include <VBox/com/VirtualBox.h>
 
 #include <iprt/ctype.h>

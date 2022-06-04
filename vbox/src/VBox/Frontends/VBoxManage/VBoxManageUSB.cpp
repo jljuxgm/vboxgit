@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 46308 2013-05-29 11:41:54Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -21,8 +21,6 @@
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
-#include <VBox/com/EventQueue.h>
-
 #include <VBox/com/VirtualBox.h>
 
 #include "VBoxManage.h"

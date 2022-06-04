@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 45068 2013-03-18 17:27:22Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -26,8 +26,6 @@
 # include <VBox/com/array.h>
 # include <VBox/com/ErrorInfo.h>
 # include <VBox/com/errorprint.h>
-# include <VBox/com/EventQueue.h>
-
 # include <VBox/com/VirtualBox.h>
 #endif /* !VBOX_ONLY_DOCS */
 

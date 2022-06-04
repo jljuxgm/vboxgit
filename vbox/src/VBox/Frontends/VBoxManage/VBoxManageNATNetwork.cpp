@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 45560 2013-04-16 08:02:19Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -25,8 +25,6 @@
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
-#include <VBox/com/EventQueue.h>
-
 #include <VBox/com/VirtualBox.h>
 #endif /* !VBOX_ONLY_DOCS */
 

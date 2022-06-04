@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -23,8 +23,6 @@
 #include <VBox/com/array.h>
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/errorprint.h>
-#include <VBox/com/EventQueue.h>
-
 #include <VBox/com/VirtualBox.h>
 #endif /* !VBOX_ONLY_DOCS */
 
