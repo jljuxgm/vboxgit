@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 43108 2012-08-30 14:23:41Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 43270 2012-09-10 15:08:03Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -51,6 +51,10 @@
 #ifndef PCIACCESS
 # include "xf86Pci.h"
 #endif
+#include <dri.h>
+#include <GL/glx.h>
+#include <GL/glxint.h>
+#include <drm.h>
 
 static Bool
 VBOXCreateContext(ScreenPtr pScreen, VisualPtr visual,

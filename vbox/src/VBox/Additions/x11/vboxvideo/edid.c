@@ -1,4 +1,4 @@
-/* $Id: edid.c 35776 2011-01-30 00:14:29Z vboxsync $ */
+/* $Id: edid.c 43270 2012-09-10 15:08:03Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, EDID construction
@@ -44,7 +44,6 @@
  *    Dave Airlie <airlied@redhat.com>
  */
 
-#include <xorg-server.h>
 #include <misc.h>
 #include <xf86DDC.h>
 #include <xf86Crtc.h>

@@ -1,4 +1,4 @@
-/* $Id: setmode.c 43245 2012-09-07 14:48:54Z vboxsync $ */
+/* $Id: setmode.c 43270 2012-09-10 15:08:03Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, mode setting
@@ -53,7 +53,6 @@
  * interferes with that. */
 # define _XF86_ANSIC_H
 # define XF86_LIBC_H
-# include "xorg-server.h"
 # include <string.h>
 #endif
 #include "vboxvideo.h"
