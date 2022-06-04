@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: VBoxService.cpp 46506 2013-06-12 09:05:32Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -130,7 +130,7 @@ static struct
 # endif
     { &g_VMStatistics,  NIL_RTTHREAD, false, false, false, false, true },
 #endif
-#if defined(VBOX_WITH_PAGE_SHARING) && defined(RT_OS_WINDOWS)
+#if defined(VBOXSERVICE_PAGE_SHARING)
     { &g_PageSharing,   NIL_RTTHREAD, false, false, false, false, true },
 #endif
 #ifdef VBOX_WITH_SHARED_FOLDERS

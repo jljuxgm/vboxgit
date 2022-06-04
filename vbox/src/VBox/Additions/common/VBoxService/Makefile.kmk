@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46147 2013-05-17 15:35:09Z vboxsync $
+# $Id: Makefile.kmk 46506 2013-06-12 09:05:32Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -51,7 +51,7 @@ ifdef VBOX_WITH_MEMBALLOON
  VBoxService_DEFS        += VBOX_WITH_MEMBALLOON
 endif
 if1of ($(KBUILD_TARGET), win)
- VBoxService_DEFS        += VBOX_WITH_PAGE_SHARING
+ VBoxService_DEFS        += VBOXSERVICE_PAGE_SHARING
  ifdef VBOX_WITH_MMR
   VBoxService_DEFS       += VBOX_WITH_MMR
  endif
