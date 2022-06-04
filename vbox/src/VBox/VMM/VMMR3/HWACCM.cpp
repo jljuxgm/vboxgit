@@ -1,4 +1,4 @@
-/* $Id: HWACCM.cpp 42033 2012-07-06 03:27:36Z vboxsync $ */
+/* $Id: HWACCM.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
 /** @file
  * HWACCM - Intel/AMD VM Hardware Support Manager
  */
@@ -1867,7 +1867,7 @@ DECLCALLBACK(VBOXSTRICTRC) hwaccmR3ReplaceTprInstr(PVM pVM, PVMCPU pVCpu, void *
     DBGFR3DisasInstrCurrentLog(pVCpu, "hwaccmR3ReplaceTprInstr");
     PDISCPUSTATE    pDis = &pVCpu->hwaccm.s.DisState;
     uint32_t        cbOp;
-    int rc = EMInterpretDisasOne(pVM, pVCpu, CPUMCTX2CORE(pCtx), pDis, &cbOp);
+    int rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, &cbOp);
     AssertRC(rc);
     if (    rc == VINF_SUCCESS
         &&  pDis->pCurInstr->uOpcode == OP_MOV
@@ -1919,7 +1919,7 @@ DECLCALLBACK(VBOXSTRICTRC) hwaccmR3ReplaceTprInstr(PVM pVM, PVMCPU pVCpu, void *
             uint64_t const uSavedRip  = pCtx->rip;
 
             pCtx->rip += cbOp;
-            rc = EMInterpretDisasOne(pVM, pVCpu, CPUMCTX2CORE(pCtx), pDis, &cbOp);
+            rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, &cbOp);
             DBGFR3DisasInstrCurrentLog(pVCpu, "Following read");
             pCtx->rip = uSavedRip;
 
@@ -2040,7 +2040,7 @@ DECLCALLBACK(VBOXSTRICTRC) hwaccmR3PatchTprInstr(PVM pVM, PVMCPU pVCpu, void *pv
      */
     PDISCPUSTATE    pDis   = &pVCpu->hwaccm.s.DisState;
     uint32_t        cbOp;
-    int rc = EMInterpretDisasOne(pVM, pVCpu, CPUMCTX2CORE(pCtx), pDis, &cbOp);
+    int rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, &cbOp);
     AssertRC(rc);
     if (    rc == VINF_SUCCESS
         &&  pDis->pCurInstr->uOpcode == OP_MOV

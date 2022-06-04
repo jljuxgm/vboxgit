@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 41939 2012-06-27 23:59:46Z vboxsync $ */
+/* $Id: PGMAllBth.h 42186 2012-07-17 13:32:15Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -907,7 +907,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
                  */
                 PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
                 uint32_t     cbOp;
-                rc = EMInterpretDisasOne(pVM, pVCpu, pRegFrame, pDis, &cbOp);
+                rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, &cbOp);
 
                 /* For now we'll restrict this to rep movsw/d instructions */
                 if (    rc == VINF_SUCCESS

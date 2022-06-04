@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 42186 2012-07-17 13:32:15Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hwaccm]HandleRC template.
  */
@@ -112,8 +112,7 @@ int emR3HwaccmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VINF_PATM_HC_MMIO_PATCH_READ:
             rc = PATMR3InstallPatch(pVM, SELMToFlat(pVM, DISSELREG_CS, CPUMCTX2CORE(pCtx), pCtx->eip),
                                       PATMFL_MMIO_ACCESS
-                                    | (    SELMGetCpuModeFromSelector(pVCpu, pCtx->eflags, pCtx->cs.Sel, &pCtx->cs)
-                                        == DISCPUMODE_32BIT ? PATMFL_CODE32 : 0));
+                                    | (CPUMGetGuestCodeBits(pVCpu) == 32 ? PATMFL_CODE32 : 0));
             if (RT_FAILURE(rc))
                 rc = emR3ExecuteInstruction(pVM, pVCpu, "MMIO");
             break;

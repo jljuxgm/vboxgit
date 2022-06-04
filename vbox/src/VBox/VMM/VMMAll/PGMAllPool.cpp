@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 42185 2012-07-17 13:28:39Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1088,7 +1088,7 @@ DECLEXPORT(int) pgmPoolAccessHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE 
      * Disassemble the faulting instruction.
      */
     PDISCPUSTATE pDis = &pVCpu->pgm.s.DisState;
-    int rc = EMInterpretDisasOne(pVM, pVCpu, pRegFrame, pDis, NULL);
+    int rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, NULL);
     if (RT_UNLIKELY(rc != VINF_SUCCESS))
     {
         AssertMsg(rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT, ("Unexpected rc %d\n", rc));

@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 42184 2012-07-17 13:27:53Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2427,7 +2427,7 @@ ResumeExecution:
             PDISCPUSTATE pDis = &pVCpu->hwaccm.s.DisState;
 
             /* Disassemble manually to deal with segment prefixes. */
-            rc = EMInterpretDisasOne(pVM, pVCpu, CPUMCTX2CORE(pCtx), pDis, NULL);
+            rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, NULL);
             if (rc == VINF_SUCCESS)
             {
                 if (IoExitInfo.n.u1Type == 0)
@@ -2989,11 +2989,10 @@ static int hmR0SvmInterpretInvpg(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, 
     /*
      * Only allow 32 & 64 bit code.
      */
-    DISCPUMODE enmMode = SELMGetCpuModeFromSelector(pVCpu, pRegFrame->eflags, pRegFrame->cs.Sel, &pRegFrame->cs);
-    if (enmMode != DISCPUMODE_16BIT)
+    if (CPUMGetGuestCodeBits(pVCpu) != 16)
     {
         PDISSTATE pDis = &pVCpu->hwaccm.s.DisState;
-        int rc = EMInterpretDisasOne(pVM, pVCpu, pRegFrame, pDis, NULL);
+        int rc = EMInterpretDisasCurrent(pVM, pVCpu, pDis, NULL);
         if (RT_SUCCESS(rc) && pDis->pCurInstr->uOpcode == OP_INVLPG)
         {
             rc = hmR0svmInterpretInvlPg(pVCpu, pDis, pRegFrame, uASID);

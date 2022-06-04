@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: CSAM.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -2294,7 +2294,7 @@ VMMR3DECL(int) CSAMR3CheckCodeEx(PVM pVM, PCPUMCTXCORE pCtxCore, RTRCPTR pInstrG
     if (CSAMIsEnabled(pVM))
     {
         /* Assuming 32 bits code for now. */
-        Assert(SELMGetCpuModeFromSelector(VMMGetCpu0(pVM), pCtxCore->eflags, pCtxCore->cs.Sel, &pCtxCore->cs) == DISCPUMODE_32BIT);
+        Assert(CPUMGetGuestCodeBits(VMMGetCpu0(pVM)) == 32);
 
         pInstrGC = SELMToFlat(pVM, DISSELREG_CS, pCtxCore, pInstrGC);
         return CSAMR3CheckCode(pVM, pInstrGC);

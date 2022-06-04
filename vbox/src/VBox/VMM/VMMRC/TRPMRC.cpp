@@ -1,4 +1,4 @@
-/* $Id: TRPMRC.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: TRPMRC.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -178,7 +178,7 @@ VMMRCDECL(int) trpmRCShadowIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCT
      * the writes and pretend success.
      */
     DISSTATE Dis;
-    int rc = EMInterpretDisasOne(pVM, pVCpu, pRegFrame, &Dis, NULL);
+    int rc = EMInterpretDisasCurrent(pVM, pVCpu, &Dis, NULL);
     if (rc == VINF_SUCCESS)
     {
         /* Just ignore the write. */
