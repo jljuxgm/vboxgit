@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 46200 2013-05-21 19:56:28Z vboxsync $ */
+/* $Id: strcache.cpp 46201 2013-05-21 19:58:14Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -221,7 +221,7 @@ typedef struct RTSTRCACHECHUNK
     /** Pointer to the next chunk. */
     struct RTSTRCACHECHUNK     *pNext;
 } RTSTRCACHECHUNK;
-AssertCompileSize(RTSTRCACHECHUNK, 16);
+AssertCompile(sizeof(RTSTRCACHECHUNK) <= sizeof(RTSTRCACHEENTRY));
 /** Pointer to the chunk tracking structure. */
 typedef RTSTRCACHECHUNK *PRTSTRCACHECHUNK;
 
