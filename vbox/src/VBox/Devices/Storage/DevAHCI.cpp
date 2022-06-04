@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 46738 2013-06-23 14:35:19Z vboxsync $ */
+/* $Id: DevAHCI.cpp 46819 2013-06-27 07:52:59Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -4079,8 +4079,9 @@ static int atapiReadSectors2352PostProcess(PAHCIREQ pAhciReq, void **ppvProc, si
     uint32_t iATAPILBA = pAhciReq->uOffset / 2048;
     uint8_t *pbBufDst;
     uint8_t *pbBufSrc  = (uint8_t *)pAhciReq->u.Io.DataSeg.pvSeg;
+    size_t cbAlloc = pAhciReq->cbTransfer + cSectors * (1 + 11 + 3 + 1 + 288); /* Per sector data like ECC. */
 
-    pbBuf = (uint8_t *)RTMemAlloc(pAhciReq->cbTransfer);
+    pbBuf = (uint8_t *)RTMemAlloc(cbAlloc);
     if (RT_UNLIKELY(!pbBuf))
         return VERR_NO_MEMORY;
 
@@ -4106,7 +4107,7 @@ static int atapiReadSectors2352PostProcess(PAHCIREQ pAhciReq, void **ppvProc, si
     }
 
     *ppvProc = pbBuf;
-    *pcbProc = pAhciReq->cbTransfer;
+    *pcbProc = cbAlloc;
 
     return VINF_SUCCESS;
 }
@@ -5359,7 +5360,7 @@ static void ahciIoBufFree(PPDMDEVINS pDevIns, PAHCIREQ pAhciReq,
 
             if (RT_SUCCESS(rc))
             {
-                ahciCopyToPrdtl(pDevIns, pAhciReq, pv, cb);
+                pAhciReq->cbTransfer = ahciCopyToPrdtl(pDevIns, pAhciReq, pv, cb);
                 RTMemFree(pv);
             }
         }
