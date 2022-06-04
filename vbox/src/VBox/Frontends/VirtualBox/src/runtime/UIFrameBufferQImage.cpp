@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 47372 2013-07-24 12:43:07Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 47510 2013-08-01 14:13:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -140,10 +140,10 @@ void UIFrameBufferQImage::resizeEvent(UIResizeEvent *pEvent)
 
     /* Remind if requested: */
     if (bRemind)
-        popupCenter().updatePopupAboutWrongColorDepth(m_pMachineView->machineWindow(),
+        popupCenter().remindAboutWrongColorDepth(m_pMachineView->machineWindow(),
                                                       pEvent->bitsPerPixel(), 32);
     else
-        popupCenter().recallPopupAboutWrongColorDepth(m_pMachineView->machineWindow());
+        popupCenter().forgetAboutWrongColorDepth(m_pMachineView->machineWindow());
 }
 
 void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
