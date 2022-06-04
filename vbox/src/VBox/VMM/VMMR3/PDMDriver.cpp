@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 44358 2013-01-24 16:05:55Z vboxsync $ */
+/* $Id: PDMDriver.cpp 45152 2013-03-23 20:36:23Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -961,7 +961,7 @@ void pdmR3DrvDestroyChain(PPDMDRVINS pDrvIns, uint32_t fFlags)
         AssertRC(rc);
 
         /* PDM critsects. */
-        rc = pdmR3CritSectDeleteDriver(pVM, pCur);
+        rc = pdmR3CritSectBothDeleteDriver(pVM, pCur);
         AssertRC(rc);
 
         /* Block caches. */

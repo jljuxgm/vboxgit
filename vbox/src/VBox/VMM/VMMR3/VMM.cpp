@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 44971 2013-03-11 10:53:36Z vboxsync $ */
+/* $Id: VMM.cpp 45152 2013-03-23 20:36:23Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2097,7 +2097,7 @@ static int vmmR3ServiceCallRing3Request(PVM pVM, PVMCPU pVCpu)
      * when entering other critsects here.
      */
     if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_PDM_CRITSECT))
-        PDMCritSectFF(pVCpu);
+        PDMCritSectBothFF(pVCpu);
 
     switch (pVCpu->vmm.s.enmCallRing3Operation)
     {

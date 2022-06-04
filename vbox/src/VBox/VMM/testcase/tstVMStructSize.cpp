@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 45094 2013-03-19 17:51:30Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 45152 2013-03-23 20:36:23Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -347,6 +347,7 @@ int main()
     CHECK_PADDING(PDMDRVINS, Internal, 1);
 
     CHECK_PADDING2(PDMCRITSECT);
+    CHECK_PADDING2(PDMCRITSECTRW);
 
     /* pgm */
 #if defined(VBOX_WITH_2X_4GB_ADDR_SPACE)  || defined(VBOX_WITH_RAW_MODE)

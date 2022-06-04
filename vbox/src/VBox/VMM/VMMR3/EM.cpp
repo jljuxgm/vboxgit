@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 45108 2013-03-20 15:26:53Z vboxsync $ */
+/* $Id: EM.cpp 45152 2013-03-23 20:36:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1408,7 +1408,7 @@ int emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
     VBOXVMM_EM_FF_HIGH(pVCpu, pVM->fGlobalForcedActions, pVCpu->fLocalForcedActions, rc);
 
     if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_PDM_CRITSECT))
-        PDMCritSectFF(pVCpu);
+        PDMCritSectBothFF(pVCpu);
 
     /* Update CR3 (Nested Paging case for HM). */
     if (VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_HM_UPDATE_CR3))
