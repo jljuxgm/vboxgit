@@ -1,4 +1,4 @@
-# $Id: Config.kmk 43609 2012-10-11 09:19:32Z vboxsync $
+# $Id: Config.kmk 43611 2012-10-11 09:26:26Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1747,24 +1747,6 @@ endif
 
 # Intel ASL compiler for ACPI
 VBOX_IASLCMD   ?= $(firstword $(wildcard $(PATH_DEVTOOLS_BLD)/bin/iasl$(HOSTSUFF_EXE)) iasl$(HOSTSUFF_EXE))
-
-# Bruce's C compile is a C-compiler for BIOS-related 8086 code
-ifndef VBOX_BCC
- if exists "$(PATH_DEVTOOLS_BLD)/bin/bcc$(HOSTSUFF_EXE)"
-VBOX_BCC       := $(PATH_DEVTOOLS_BLD)/bin/bcc$(HOSTSUFF_EXE) -B $(PATH_DEVTOOLS_BLD)/bin/
- else
-VBOX_BCC       := bcc$(HOSTSUFF_EXE)
- endif
-endif
-
-# Assembler for BIOS-related 8086 code
-ifndef VBOX_AS86
- if exists "$(PATH_DEVTOOLS_BLD)/bin/as86$(HOSTSUFF_EXE)"
-VBOX_AS86      := $(PATH_DEVTOOLS_BLD)/bin/as86$(HOSTSUFF_EXE)
- else
-VBOX_AS86      := as86$(HOSTSUFF_EXE)
- endif
-endif
 
 # libxslt XSLT processor. (see PATH_TOOL_YASM for explanation why it's temporarily located in bin.)
 ifeq ($(KBUILD_HOST),win)
@@ -5312,7 +5294,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43609 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43611 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
