@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 42849 2012-08-16 14:28:33Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 42850 2012-08-16 16:36:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -376,7 +376,7 @@ protected:
 
     void retranslateUi()
     {
-        setText(QApplication::translate("UIActionPool", "&Add Group..."));
+        setText(QApplication::translate("UIActionPool", "Gro&up"));
         setStatusTip(QApplication::translate("UIActionPool", "Add a new group based on the items selected"));
     }
 };
