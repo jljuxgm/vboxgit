@@ -1,4 +1,4 @@
-/* $Id: tftp.c 42431 2012-07-27 08:22:29Z vboxsync $ */
+/* $Id: tftp.c 43233 2012-09-06 20:21:37Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -761,7 +761,7 @@ static void tftpProcessACK(PNATState pData, PTFTPIPHDR pTftpIpHeader)
                                     RT_N2H_U16(pTftpIpHeader->Core.u16TftpOpCode), pTftpIpHeader) == 0);
 }
 
-DECLCALLBACK(int) slirpTftpInit(PNATState pData)
+int slirpTftpInit(PNATState pData)
 {
     AssertPtrReturn(pData, VERR_INVALID_PARAMETER);
     pData->pvTftpSessions = RTMemAllocZ(sizeof(TFTPSESSION) * TFTP_SESSIONS_MAX);
@@ -769,7 +769,12 @@ DECLCALLBACK(int) slirpTftpInit(PNATState pData)
     return VINF_SUCCESS;
 }
 
-DECLCALLBACK(int) slirpTftpInput(PNATState pData, struct mbuf *pMbuf)
+void slirpTftpTerm(PNATState pData)
+{
+    RTMemFree(pData->pvTftpSessions);
+}
+
+int slirpTftpInput(PNATState pData, struct mbuf *pMbuf)
 {
     PTFTPIPHDR pTftpIpHeader = NULL;
     AssertPtr(pData);

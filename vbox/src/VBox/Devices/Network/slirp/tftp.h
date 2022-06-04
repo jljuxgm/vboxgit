@@ -1,4 +1,4 @@
-/* $Id: tftp.h 41987 2012-07-02 16:44:45Z vboxsync $ */
+/* $Id: tftp.h 43233 2012-09-06 20:21:37Z vboxsync $ */
 /** @file
  * NAT - TFTP server (declarations/defines).
  */
@@ -34,6 +34,7 @@
 #define TFTP_FILENAME_MAX 512
 
 
-int slirpTftpInput(PNATState pData, struct mbuf *m);
-int slirpTftpInit(PNATState);
+int  slirpTftpInput(PNATState pData, struct mbuf *m);
+int  slirpTftpInit(PNATState pData);
+void slirpTftpTerm(PNATState pData);
 #endif

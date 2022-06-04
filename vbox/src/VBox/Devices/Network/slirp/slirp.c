@@ -1,4 +1,4 @@
-/* $Id: slirp.c 42100 2012-07-11 07:19:03Z vboxsync $ */
+/* $Id: slirp.c 43233 2012-09-06 20:21:37Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -524,6 +524,7 @@ void slirp_term(PNATState pData)
         LIST_REMOVE(ac, list);
         RTMemFree(ac);
     }
+    slirpTftpTerm(pData);
     bootp_dhcp_fini(pData);
     m_fini(pData);
 #ifdef RT_OS_WINDOWS
