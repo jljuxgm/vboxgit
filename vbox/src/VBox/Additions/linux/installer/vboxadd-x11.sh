@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions X11 setup init script ($Revision: 40634 $)
+# Linux Additions X11 setup init script ($Revision: 43321 $)
 #
 
 #
@@ -327,6 +327,11 @@ setup()
             echo "Warning: unsupported pre-release version of X.Org Server installed.  Not"
             echo "installing the X.Org drivers."
             dox11config=""
+            ;;
+        1.13.* )
+            xserver_version="X.Org Server 1.13"
+            vboxvideo_src=vboxvideo_drv_113.so
+            test "$system" = "redhat" || setupxorgconf=""
             ;;
         1.12.* )
             xserver_version="X.Org Server 1.12"
