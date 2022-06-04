@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 46582 2013-06-17 10:47:06Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 46604 2013-06-17 18:23:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -287,7 +287,9 @@ class UIActionTogglePause : public UIActionToggle
 public:
 
     UIActionTogglePause(UIActionPool *pParent)
-        : UIActionToggle(pParent, ":/pause_16px.png", ":/pause_disabled_16px.png")
+        : UIActionToggle(pParent,
+                         ":/pause_on_16px.png", ":/pause_16px.png",
+                         ":/pause_on_disabled_16px.png", ":/pause_disabled_16px.png")
     {
         retranslateUi();
     }
