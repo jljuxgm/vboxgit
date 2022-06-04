@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45618 2013-04-18 18:41:07Z vboxsync $ */
+/* $Id: HMInternal.h 45623 2013-04-18 22:05:35Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -41,6 +41,12 @@
 # define VMX_USE_CACHED_VMCS_ACCESSES
 #elif HC_ARCH_BITS == 32 && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
 # define VMX_USE_CACHED_VMCS_ACCESSES
+#endif
+
+/** @def HM_PROFILE_EXIT_DISPATCH
+ * Enables profiling of the VM exit handler dispatching. */
+#if 0
+# define HM_PROFILE_EXIT_DISPATCH
 #endif
 
 #define HM_VMX_EMULATE_REALMODE
@@ -899,6 +905,9 @@ typedef struct HMCPU
     R0PTRTYPE(PSTAMCOUNTER) paStatExitReasonR0;
     R3PTRTYPE(PSTAMCOUNTER) paStatInjectedIrqs;
     R0PTRTYPE(PSTAMCOUNTER) paStatInjectedIrqsR0;
+#endif
+#ifdef HM_PROFILE_EXIT_DISPATCH
+    STAMPROFILEADV          StatExitDispatch;
 #endif
 } HMCPU;
 /** Pointer to HM VM instance data. */

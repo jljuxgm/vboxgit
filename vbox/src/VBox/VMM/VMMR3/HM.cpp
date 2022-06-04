@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45618 2013-04-18 18:41:07Z vboxsync $ */
+/* $Id: HM.cpp 45623 2013-04-18 22:05:35Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -617,6 +617,13 @@ static int hmR3InitCPU(PVM pVM)
         rc = STAMR3RegisterF(pVM, &pVCpu->hm.s.StatWorldSwitch3264, STAMTYPE_PROFILE, STAMVISIBILITY_USED,
                              STAMUNIT_TICKS_PER_CALL, "Profiling of the 32/64 switcher",
                              "/PROF/CPU%d/HM/Switcher3264", i);
+        AssertRC(rc);
+# endif
+
+# ifdef HM_PROFILE_EXIT_DISPATCH
+        rc = STAMR3RegisterF(pVM, &pVCpu->hm.s.StatExitDispatch, STAMTYPE_PROFILE_ADV, STAMVISIBILITY_USED,
+                             STAMUNIT_TICKS_PER_CALL, "Profiling the dispatching of exit handlers",
+                             "/PROF/CPU%d/HM/ExitDispatch", i);
         AssertRC(rc);
 # endif
 
