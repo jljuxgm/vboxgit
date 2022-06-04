@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 43513 2012-10-02 14:57:44Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 43515 2012-10-02 15:19:48Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -27,10 +27,14 @@
 #include <sys/wait.h>
 #include <sys/ioctl.h>
 #include <fcntl.h>
-#if 0
-//def RT_OS_LINUX
+#ifdef RT_OS_LINUX
 # include <net/if.h>
 # include <linux/types.h>
+/* Older versions of ethtool.h rely on these: */
+typedef unsigned long long u64;
+typedef __uint32_t u32;
+typedef __uint16_t u16;
+typedef __uint8_t u8;
 # include <linux/ethtool.h>
 # include <linux/sockios.h>
 #endif
