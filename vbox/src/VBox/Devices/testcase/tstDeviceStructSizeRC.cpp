@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 44533 2013-02-04 20:55:12Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 44569 2013-02-06 14:00:43Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1304,7 +1304,7 @@ int main()
     GEN_CHECK_OFF(E1KSTATE, fIntRaised);
     GEN_CHECK_OFF(E1KSTATE, fCableConnected);
     GEN_CHECK_OFF(E1KSTATE, fR0Enabled);
-    GEN_CHECK_OFF(E1KSTATE, fGCEnabled);
+    GEN_CHECK_OFF(E1KSTATE, fRCEnabled);
     GEN_CHECK_OFF(E1KSTATE, auRegs[E1K_NUM_OF_32BIT_REGS]);
     GEN_CHECK_OFF(E1KSTATE, led);
     GEN_CHECK_OFF(E1KSTATE, u32PktNo);
