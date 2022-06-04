@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 47447 2013-07-29 04:16:10Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 47691 2013-08-13 12:56:34Z vboxsync $ */
 
 /** @file
  *
@@ -675,7 +675,7 @@ STDMETHODIMP NATNetwork::Start(IN_BSTR aTrunkType)
 
                 m->dhcpServer->AddGlobalOption(DhcpOpt_Router, m->IPv4Gateway.raw());
 
-                rc = m->dhcpServer->SetEnabled(true);
+                rc = m->dhcpServer->COMSETTER(Enabled)(true);
 
                 BSTR dhcpip = NULL;
                 BSTR netmask = NULL;
