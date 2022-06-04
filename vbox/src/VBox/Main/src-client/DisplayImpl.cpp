@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45956 2013-05-08 19:46:49Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 45958 2013-05-08 20:08:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4391,7 +4391,7 @@ DECLCALLBACK(int) Display::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
             if (RT_SUCCESS(rc))
             {
                 if (pDisplay->mcMonitors > 1)
-                    rc = RTStrAPrintf(&pszName, "%s-%u%s", pszAbsPath, uScreen, pszExt);
+                    rc = RTStrAPrintf(&pszName, "%s-%u%s", pszAbsPath, uScreen+1, pszExt);
                 else
                     rc = RTStrAPrintf(&pszName, "%s%s", pszAbsPath, pszExt);
             }
