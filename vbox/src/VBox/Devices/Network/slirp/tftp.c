@@ -1,4 +1,4 @@
-/* $Id: tftp.c 42190 2012-07-17 13:59:51Z vboxsync $ */
+/* $Id: tftp.c 42431 2012-07-27 08:22:29Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -239,7 +239,7 @@ DECLINLINE(void) tftpSessionTerminate(PTFTPSESSION pTftpSession)
     pTftpSession->fInUse = 0;
 }
 
-DECLINLINE(int)tftpSessionParseAndMarkOption(const char *pcszRawOption, PTFPTPSESSIONOPTDESC pTftpSessionOption)
+DECLINLINE(int) tftpSessionParseAndMarkOption(const char *pcszRawOption, PTFPTPSESSIONOPTDESC pTftpSessionOption)
 {
     int rc  = VINF_SUCCESS;
     rc = RTStrToInt64Full(pcszRawOption, 0, (int64_t *)&pTftpSessionOption->u64Value);
