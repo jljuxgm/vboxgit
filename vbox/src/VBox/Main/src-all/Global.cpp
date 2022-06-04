@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 46341 2013-05-31 12:13:49Z vboxsync $ */
+/* $Id: Global.cpp 46350 2013-05-31 20:12:02Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -26,7 +26,7 @@
 /* static */
 const Global::OSType Global::sOSTypes[] =
 {
-    /* NOTE1: we assume that unknown is always the first entry!
+    /* NOTE1: we assume that unknown is always the first two entries!
      * NOTE2: please use powers of 2 when specifying the size of harddisks since
      *        '2GB' looks better than '1.95GB' (= 2000MB) */
     { "Other",   "Other",             "Other",              "Other/Unknown",
