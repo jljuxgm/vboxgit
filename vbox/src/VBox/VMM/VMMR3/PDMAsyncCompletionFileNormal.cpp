@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 43858 2012-11-12 16:14:29Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 44235 2013-01-04 20:47:58Z vboxsync $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -1350,7 +1350,7 @@ static void pdmacFileAioMgrNormalReqCompleteRc(PPDMACEPFILEMGR pAioMgr, RTFILEAI
 
         if (pTask->enmTransferType == PDMACTASKFILETRANSFER_FLUSH)
         {
-            LogRel(("AIOMgr: Flush failed with %Rrc, disabling async flushes\n", rc));
+            LogRel(("AIOMgr: Flush failed with %Rrc, disabling async flushes\n", rcReq));
             pEndpoint->fAsyncFlushSupported = false;
             AssertMsg(pEndpoint->pFlushReq == pTask, ("Failed flush request doesn't match active one\n"));
             /* The other method will take over now. */
