@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 44835 2013-02-26 17:24:12Z vboxsync $ */
+/* $Id: DevOHCI.cpp 44902 2013-03-02 02:28:37Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1134,7 +1134,7 @@ DECLINLINE(void) ohciPhysRead(POHCI pThis, uint32_t Addr, void *pvBuf, size_t cb
 DECLINLINE(void) ohciPhysWrite(POHCI pThis, uint32_t Addr, const void *pvBuf, size_t cbBuf)
 {
     if (cbBuf)
-        PDMDevHlpPhysWrite(pThis->CTX_SUFF(pDevIns), Addr, pvBuf, cbBuf);
+        PDMDevHlpPCIPhysWrite(pThis->CTX_SUFF(pDevIns), Addr, pvBuf, cbBuf);
 }
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: PDMRCDevice.cpp 44899 2013-03-01 22:28:43Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 44902 2013-03-02 02:28:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -68,6 +68,7 @@ static DECLCALLBACK(int) pdmRCDevHlp_PCIPhysRead(PPDMDEVINS pDevIns, RTGCPHYS GC
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
 
+#ifndef PDM_DO_NOT_RESPECT_PCI_BM_BIT
     /*
      * Just check the busmaster setting here and forward the request to the generic read helper.
      */
@@ -80,6 +81,7 @@ static DECLCALLBACK(int) pdmRCDevHlp_PCIPhysRead(PPDMDEVINS pDevIns, RTGCPHYS GC
              pDevIns, pDevIns->iInstance, VERR_PDM_NOT_PCI_BUS_MASTER, GCPhys, cbRead));
         return VERR_PDM_NOT_PCI_BUS_MASTER;
     }
+#endif
 
     return pDevIns->pHlpRC->pfnPhysRead(pDevIns, GCPhys, pvBuf, cbRead);
 }

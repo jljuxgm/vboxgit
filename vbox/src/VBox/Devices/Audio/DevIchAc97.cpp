@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 44632 2013-02-11 12:52:40Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 44902 2013-03-02 02:28:37Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -731,7 +731,7 @@ static int read_audio(PAC97STATE pThis, PAC97BMREG pReg, int max, int *stop)
             *stop = 1;
             break;
         }
-        PDMDevHlpPhysWrite(pDevIns, addr, tmpbuf, acquired);
+        PDMDevHlpPCIPhysWrite(pDevIns, addr, tmpbuf, acquired);
         temp  -= acquired;
         addr  += acquired;
         nread += acquired;
