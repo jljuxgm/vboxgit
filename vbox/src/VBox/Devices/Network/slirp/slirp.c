@@ -1,4 +1,4 @@
-/* $Id: slirp.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: slirp.c 45323 2013-04-04 04:59:29Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -736,7 +736,15 @@ void slirp_select_fill(PNATState pData, int *pnfds, struct pollfd *polls)
                 Log2(("NAT: %R[natsock] expired\n", so));
                 if (so->so_timeout != NULL)
                 {
+                    /* so_timeout - might change the so_expire value or 
+                     * drop so_timeout* from so. 
+                     */
                     so->so_timeout(pData, so, so->so_timeout_arg);
+                    /* on 4.2 so->  
+                     */
+                    if (   so_next->so_prev != so /* so_timeout freed the socket */
+                        || so->so_timeout)  /* so_timeout just freed so_timeout */
+                      CONTINUE_NO_UNLOCK(udp);
                 }
                 UDP_DETACH(pData, so, so_next);
                 CONTINUE_NO_UNLOCK(udp);
