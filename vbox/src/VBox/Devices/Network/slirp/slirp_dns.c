@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 43673 2012-10-17 17:02:43Z vboxsync $ */
+/* $Id: slirp_dns.c 43714 2012-10-24 06:57:32Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -184,6 +184,7 @@ static int slirpOpenResolvConfFile(PRTFILE pResolvConfFile)
     char *etc = NULL;
     char *home = NULL;
     AssertPtrReturn(pResolvConfFile, VERR_INVALID_PARAMETER);
+    LogFlowFuncEnter();
 # ifdef RT_OS_OS2
     /* Try various locations. */
     NOREF(home);
@@ -220,6 +221,7 @@ static int slirpOpenResolvConfFile(PRTFILE pResolvConfFile)
     }
 #  endif
 # endif /* !RT_OS_OS2 */
+    LogFlowFuncLeaveRC(rc);
     return rc;
 }
 static int get_dns_addr_domain(PNATState pData, const char **ppszDomain)
