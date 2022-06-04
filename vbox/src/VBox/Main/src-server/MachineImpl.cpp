@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42825 2012-08-15 13:59:01Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42831 2012-08-15 19:03:48Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5949,8 +5949,8 @@ STDMETHODIMP Machine::RemoveStorageController(IN_BSTR aName)
         MediaData::AttachmentList llAttachments2 = mMediaData->mAttachments;
 
         for (MediaData::AttachmentList::iterator it = llAttachments2.begin();
-        it != llAttachments2.end();
-        ++it)
+             it != llAttachments2.end();
+             ++it)
         {
             MediumAttachment *pAttachTemp = *it;
 
