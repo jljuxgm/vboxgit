@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 42936 2012-08-23 10:16:52Z vboxsync $ */
+/* $Id: DevE1000.cpp 42953 2012-08-23 15:26:30Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -57,7 +57,7 @@
  * packets in a batch reducing the number of acknowledgments. Note that it
  * effectively disables R0 TX path, forcing sending in R3.
  */
-#define E1K_TX_DELAY 150
+//#define E1K_TX_DELAY 150
 /*
  * E1K_USE_TX_TIMERS aims to reduce the number of generated TX interrupts if a
  * guest driver set the delays via the Transmit Interrupt Delay Value (TIDV)
