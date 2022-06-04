@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 45196 2013-03-27 08:30:40Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 45346 2013-04-04 17:51:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -573,6 +573,7 @@ bool UIMachineSettingsUSB::revalidate(QString &strWarningText, QString& /* strTi
                             "It will be disabled in the meantime unless you cancel the current settings changes.")
                             .arg(GUI_ExtPackName);
         msgCenter().remindAboutUnsupportedUSB2(GUI_ExtPackName, this);
+        mCbUSB2->setChecked(false);
         return true;
     }
 #endif
