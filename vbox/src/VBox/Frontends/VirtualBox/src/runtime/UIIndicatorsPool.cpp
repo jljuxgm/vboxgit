@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 46682 2013-06-19 17:27:42Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 46686 2013-06-19 17:58:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -756,11 +756,19 @@ QIStateIndicator* UIIndicatorsPool::indicator(IndicatorType index)
 
 void UIIndicatorsPool::prepare()
 {
+    /* Access machine: */
+    CMachine machine = m_session.GetMachine();
+
     /* Populate indicator-pool: */
     for (int iIndex = 0; iIndex < IndicatorType_Max; ++iIndex)
     {
-        /* Prepare indicator: */
+        /* Make sure indicator presence is permitted: */
         IndicatorType index = static_cast<IndicatorType>(iIndex);
+        QString strIndicatorExtraDataName = gpConverter->toInternalString(static_cast<IndicatorType>(index));
+        if (!vboxGlobal().shouldWeShowStatusBarIndicator(machine, strIndicatorExtraDataName))
+            continue;
+
+        /* Prepare indicator: */
         switch (index)
         {
             case IndicatorType_HardDisks:     m_pool[index] = new UIIndicatorHardDisks(m_session); break;
