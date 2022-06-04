@@ -1,4 +1,4 @@
-/* $Id: Nvram.h 43133 2012-08-31 12:01:55Z vboxsync $ */
+/* $Id: Nvram.h 44591 2013-02-08 04:48:00Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation
@@ -30,16 +30,21 @@ class Nvram
 public:
     Nvram(Console *console);
     virtual ~Nvram();
-    static const PDMDRVREG DrvReg;
+
     Console *getParent(void) { return mParent; }
-    struct NVRAM *mpDrv;
+
+    static const PDMDRVREG DrvReg;
 
 private:
     static DECLCALLBACK(void *) drvNvram_QueryInterface(PPDMIBASE pInterface, const char *pszIID);
     static DECLCALLBACK(int)    drvNvram_Construct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)   drvNvram_Destruct(PPDMDRVINS pDrvIns);
 
+    /** Pointer to the parent object. */
     Console * const mParent;
+    /** Pointer to the driver instance data.
+     *  Can be NULL during init and termination. */
+    struct NVRAM *mpDrv;
 };
 
 #endif /* !____H_NVRAM */
