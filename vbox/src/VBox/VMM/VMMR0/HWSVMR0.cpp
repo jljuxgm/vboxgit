@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 47123 2013-07-12 15:31:44Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 47235 2013-07-18 18:16:57Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2234,9 +2234,9 @@ ResumeExecution:
     case SVM_EXIT_SMI:
     case SVM_EXIT_INIT:
 #ifdef VBOX_WITH_STATISTICS
-        if (vector == SVM_EXIT_INTR)
+        if (exitCode == SVM_EXIT_INTR)
             STAM_COUNTER_INC(&pVCpu->hm.s.StatExitExtInt);
-        else if (vector == SVM_EXIT_NMI)
+        else if (exitCode == SVM_EXIT_NMI)
             STAM_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmi);
 #endif
         /* External interrupt; leave to allow it to be dispatched again. */
