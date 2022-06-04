@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 43223 2012-09-06 11:48:24Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 43477 2012-10-01 09:04:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -438,7 +438,8 @@ void UIGDetailsUpdateThreadStorage::run()
             foreach (const CStorageController &controller, machine().GetStorageControllers())
             {
                 /* Add controller information: */
-                m_text << UITextTableLine(controller.GetName(), QString());
+                QString strControllerNameWrapper = QApplication::translate("UIMachineSettingsStorage", "%1: %2", "controller name wrapper");
+                m_text << UITextTableLine(strControllerNameWrapper.arg(QApplication::translate("UIMachineSettingsStorage", "Controller"), controller.GetName()), QString());
                 fSomeInfo = true;
                 /* Populate map (its sorted!): */
                 QMap<StorageSlot, QString> attachmentsMap;

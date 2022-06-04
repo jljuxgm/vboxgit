@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 43449 2012-09-27 11:39:05Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 43477 2012-10-01 09:04:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1452,7 +1452,8 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
             /* Get current controller: */
             const CStorageController &controller = controllers[i];
             /* Add controller information: */
-            item += QString(sSectionItemTpl3).arg(controller.GetName());
+            QString strControllerNameWrapper = QApplication::translate("UIMachineSettingsStorage", "%1: %2", "controller name wrapper");
+            item += QString(sSectionItemTpl3).arg(strControllerNameWrapper.arg(QApplication::translate("UIMachineSettingsStorage", "Controller"), controller.GetName()));
             ++ rows;
 
             /* Populate sorted map with attachments information: */

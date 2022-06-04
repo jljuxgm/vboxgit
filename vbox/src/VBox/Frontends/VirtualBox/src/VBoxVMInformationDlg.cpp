@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 42868 2012-08-17 14:10:30Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 43477 2012-10-01 09:04:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -543,7 +543,8 @@ void VBoxVMInformationDlg::refreshStatistics()
             if (!attachments.isEmpty() && busType != KStorageBus_Floppy)
             {
                 QString header = "<tr><td></td><td colspan=2><nobr>%1</nobr></td></tr>";
-                storageStat += header.arg (ctrName);
+                QString strControllerNameWrapper = QApplication::translate("UIMachineSettingsStorage", "%1: %2", "controller name wrapper");
+                storageStat += header.arg(strControllerNameWrapper.arg(QApplication::translate("UIMachineSettingsStorage", "Controller"), controller.GetName()));
                 int scsiIndex = 0;
                 foreach (const CMediumAttachment &attachment, attachments)
                 {

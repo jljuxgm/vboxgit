@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 43477 2012-10-01 09:04:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -540,7 +540,8 @@ int ControllerItem::childCount() const
 
 QString ControllerItem::text() const
 {
-    return ctrName();
+    QString strControllerNameWrapper = UIMachineSettingsStorage::tr("%1: %2", "controller name wrapper");
+    return strControllerNameWrapper.arg(UIMachineSettingsStorage::tr("Controller"), ctrName());
 }
 
 QString ControllerItem::tip() const
@@ -2306,27 +2307,27 @@ void UIMachineSettingsStorage::addController()
 
 void UIMachineSettingsStorage::addIDEController()
 {
-    addControllerWrapper (generateUniqueName (tr ("IDE Controller")), KStorageBus_IDE, KStorageControllerType_PIIX4);
+    addControllerWrapper (generateUniqueName ("IDE"), KStorageBus_IDE, KStorageControllerType_PIIX4);
 }
 
 void UIMachineSettingsStorage::addSATAController()
 {
-    addControllerWrapper (generateUniqueName (tr ("SATA Controller")), KStorageBus_SATA, KStorageControllerType_IntelAhci);
+    addControllerWrapper (generateUniqueName ("SATA"), KStorageBus_SATA, KStorageControllerType_IntelAhci);
 }
 
 void UIMachineSettingsStorage::addSCSIController()
 {
-    addControllerWrapper (generateUniqueName (tr ("SCSI Controller")), KStorageBus_SCSI, KStorageControllerType_LsiLogic);
+    addControllerWrapper (generateUniqueName ("SCSI"), KStorageBus_SCSI, KStorageControllerType_LsiLogic);
 }
 
 void UIMachineSettingsStorage::addFloppyController()
 {
-    addControllerWrapper (generateUniqueName (tr ("Floppy Controller")), KStorageBus_Floppy, KStorageControllerType_I82078);
+    addControllerWrapper (generateUniqueName ("Floppy"), KStorageBus_Floppy, KStorageControllerType_I82078);
 }
 
 void UIMachineSettingsStorage::addSASController()
 {
-    addControllerWrapper (generateUniqueName (tr ("SAS Controller")), KStorageBus_SAS, KStorageControllerType_LsiLogicSas);
+    addControllerWrapper (generateUniqueName ("SAS"), KStorageBus_SAS, KStorageControllerType_LsiLogicSas);
 }
 
 void UIMachineSettingsStorage::delController()
