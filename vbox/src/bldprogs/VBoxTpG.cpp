@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 46556 2013-06-14 12:36:09Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 46558 2013-06-14 13:24:32Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 46556 2013-06-14 12:36:09Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 46558 2013-06-14 13:24:32Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -850,8 +850,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                 ScmStreamPrintf(pStrm, g_fPic ?
                                 "        jmp     [rel %s wrt ..got]\n"
                                 : g_fProbeFnImported ?
-                                "        mov     rax, IMP2(%s)\n"
-                                "        jmp     rax\n"
+                                "        jmp     IMP2(%s)\n"
                                 :
                                 "        jmp     NAME(%s)\n"
                                 , g_pszProbeFnName);
@@ -942,7 +941,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 46556 2013-06-14 12:36:09Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 46558 2013-06-14 13:24:32Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1118,7 +1117,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 46556 2013-06-14 12:36:09Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 46558 2013-06-14 13:24:32Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2313,7 +2312,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 46556 $";
+                static const char s_szRev[] = "$Revision: 46558 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
