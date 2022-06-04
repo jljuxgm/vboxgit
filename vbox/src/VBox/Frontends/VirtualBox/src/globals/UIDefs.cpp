@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 46782 2013-06-25 14:58:15Z vboxsync $ */
+/* $Id: UIDefs.cpp 46797 2013-06-26 11:10:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -51,6 +51,7 @@ const char* UIDefs::GUI_PreventSnapshotOperations = "GUI/PreventSnapshotOperatio
 const char* UIDefs::GUI_HideDetails = "GUI/HideDetails";
 
 /* Machine-window definitions: */
+const char* UIDefs::GUI_RestrictedRuntimeMenus = "GUI/RestrictedRuntimeMenus";
 const char* UIDefs::GUI_Input_MachineShortcuts = "GUI/Input/MachineShortcuts";
 const char* UIDefs::GUI_LastNormalWindowPosition = "GUI/LastNormalWindowPosition";
 const char* UIDefs::GUI_LastScaleWindowPosition = "GUI/LastScaleWindowPosition";

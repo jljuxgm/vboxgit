@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 46256 2013-05-24 15:57:03Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 46797 2013-06-26 11:10:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -23,15 +23,14 @@
 #include <QTimer>
 
 /* GUI includes: */
-#include "UIDefs.h"
-#include "UIMiniToolBar.h"
+#include "VBoxGlobal.h"
 #include "UISession.h"
 #include "UIActionPoolRuntime.h"
 #include "UIMachineLogicFullscreen.h"
 #include "UIMachineWindowFullscreen.h"
+#include "UIMiniToolBar.h"
 
 /* COM includes: */
-#include "CMachine.h"
 #include "CSnapshot.h"
 
 UIMachineWindowFullscreen::UIMachineWindowFullscreen(UIMachineLogic *pMachineLogic, ulong uScreenId)
@@ -66,7 +65,10 @@ void UIMachineWindowFullscreen::prepareMenu()
     UIMachineWindow::prepareMenu();
 
     /* Prepare menu: */
-    m_pMainMenu = uisession()->newMenu();
+    CMachine machine = session().GetMachine();
+    RuntimeMenuType restrictedMenus = VBoxGlobal::restrictedRuntimeMenuTypes(machine);
+    RuntimeMenuType allowedMenus = static_cast<RuntimeMenuType>(RuntimeMenuType_All ^ restrictedMenus);
+    m_pMainMenu = uisession()->newMenu(allowedMenus);
 }
 
 void UIMachineWindowFullscreen::prepareVisualState()
@@ -105,7 +107,9 @@ void UIMachineWindowFullscreen::prepareMiniToolbar()
                                               IntegrationMode_Embedded,
                                               fIsAutoHide);
     QList<QMenu*> menus;
-    QList<QAction*> actions = uisession()->newMenu()->actions();
+    RuntimeMenuType restrictedMenus = VBoxGlobal::restrictedRuntimeMenuTypes(m);
+    RuntimeMenuType allowedMenus = static_cast<RuntimeMenuType>(RuntimeMenuType_All ^ restrictedMenus);
+    QList<QAction*> actions = uisession()->newMenu(allowedMenus)->actions();
     for (int i=0; i < actions.size(); ++i)
         menus << actions.at(i)->menu();
     m_pMiniToolBar->addMenus(menus);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 46686 2013-06-19 17:58:20Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 46797 2013-06-26 11:10:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -222,8 +222,11 @@ void UIMachineWindowNormal::prepareMenu()
     UIMachineWindow::prepareMenu();
 
 #ifndef Q_WS_MAC
-    /* Prepare menu-bar: */
-    setMenuBar(uisession()->newMenuBar());
+    /* Prepare application menu-bar: */
+    CMachine machine = session().GetMachine();
+    RuntimeMenuType restrictedMenus = VBoxGlobal::restrictedRuntimeMenuTypes(machine);
+    RuntimeMenuType allowedMenus = static_cast<RuntimeMenuType>(RuntimeMenuType_All ^ restrictedMenus);
+    setMenuBar(uisession()->newMenuBar(allowedMenus));
 #endif /* !Q_WS_MAC */
 }
 
