@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 47319 2013-07-22 16:53:15Z vboxsync $ */
+/* $Id: IEMAll.cpp 47326 2013-07-22 21:46:43Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -300,6 +300,12 @@ typedef IEMSELDESC *PIEMSELDESC;
 #define IEM_IS_INTEL_CPUID_FEATURE_PRESENT_EDX(a_fEdx)  \
     (   ((a_fEdx) & (X86_CPUID_FEATURE_EDX_TSC | 0)) \
      || iemRegIsIntelCpuIdFeaturePresent(pIemCpu, (a_fEdx), 0) )
+
+/**
+ * Checks if an Intel CPUID feature is present.
+ */
+#define IEM_IS_INTEL_CPUID_FEATURE_PRESENT_ECX(a_fEcx)  \
+    ( iemRegIsIntelCpuIdFeaturePresent(pIemCpu, 0, (a_fEcx)) )
 
 /**
  * Checks if an Intel CPUID feature is present in the host CPU.
