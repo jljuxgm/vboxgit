@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 48 2012-08-26 15:53:57Z bird $ */
+/* $Id: mach-o.h 50 2012-09-05 09:55:16Z bird $ */
 /** @file
  * Mach-0 structures, types and defines.
  */
@@ -169,7 +169,14 @@ typedef struct mach_header_64
 #define MH_WEAK_DEFINES             KU32_C(0x00008000) /**< The (finally) linked image has weak symbols. */
 #define MH_BINDS_TO_WEAK            KU32_C(0x00010000) /**< The (finally) linked image uses weak symbols. */
 #define MH_ALLOW_STACK_EXECUTION    KU32_C(0x00020000) /**< Task: allow stack execution. (MH_EXECUTE only) */
-#define MH_VALID_FLAGS              KU32_C(0x0003ffff) /**< Mask containing the defined flags. */
+#define MH_ROOT_SAFE                KU32_C(0x00040000) /**< Binary safe for root execution. */
+#define MH_SETUID_SAFE              KU32_C(0x00080000) /**< Binary safe for set-uid execution. */
+#define MH_NO_REEXPORTED_DYLIBS     KU32_C(0x00100000) /**< No reexported dylibs. */
+#define MH_PIE                      KU32_C(0x00200000) /**< Address space randomization. (MH_EXECUTE only) */
+#define MH_DEAD_STRIPPABLE_DYLIB    KU32_C(0x00400000) /**< Drop dylib dependency if not used. (MH_DYLIB only) */
+#define MH_HAS_TLV_DESCRIPTORS      KU32_C(0x00800000) /**< Has a S_TRHEAD_LOCAL_VARIABLES section.  TLS support. */
+#define MH_NO_HEAP_EXECUTION        KU32_C(0x01000000) /**< Task: no heap execution. (MH_EXECUTE only) */
+#define MH_VALID_FLAGS              KU32_C(0x01ffffff) /**< Mask containing the defined flags. */
 /** @} */
 
 
