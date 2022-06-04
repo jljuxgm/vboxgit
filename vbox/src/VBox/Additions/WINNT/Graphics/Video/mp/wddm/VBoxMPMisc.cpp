@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 47059 2013-07-09 16:27:54Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 47566 2013-08-06 22:20:23Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -241,7 +241,7 @@ PVBOXWDDM_SWAPCHAIN vboxWddmSwapchainRetainByAllocData(PVBOXMP_DEVEXT pDevExt, c
     return pSwapchain;
 }
 
-PVBOXWDDM_SWAPCHAIN vboxWddmSwapchainRetainByAlloc(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_ALLOCATION pAlloc)
+PVBOXWDDM_SWAPCHAIN vboxWddmSwapchainRetainByAlloc(PVBOXMP_DEVEXT pDevExt, const VBOXWDDM_ALLOCATION *pAlloc)
 {
     return vboxWddmSwapchainRetainByAllocData(pDevExt, &pAlloc->AllocData);
 }

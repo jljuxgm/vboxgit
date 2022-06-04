@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 47063 2013-07-10 07:30:18Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 47566 2013-08-06 22:20:23Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -333,6 +333,6 @@ NTSTATUS vboxVdmaProcessBltCmd(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_CONTEXT *
 NTSTATUS vboxVdmaProcessFlipCmd(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_CONTEXT *pContext, struct VBOXWDDM_DMA_PRIVATEDATA_FLIP *pFlip);
 NTSTATUS vboxVdmaProcessClrFillCmd(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_CONTEXT *pContext, struct VBOXWDDM_DMA_PRIVATEDATA_CLRFILL *pCF);
 
-NTSTATUS vboxVdmaTexPresentSetAlloc(PVBOXMP_DEVEXT pDevExt, const VBOXWDDM_ALLOC_DATA *pAllocData);
+NTSTATUS vboxVdmaTexPresentSetAlloc(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_ALLOCATION pRealFbAlloc);
 
 #endif /* #ifndef ___VBoxMPVdma_h___ */
