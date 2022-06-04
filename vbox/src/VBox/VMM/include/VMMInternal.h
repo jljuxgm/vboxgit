@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 46861 2013-06-28 10:29:10Z vboxsync $ */
+/* $Id: VMMInternal.h 47456 2013-07-29 12:51:12Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -416,6 +416,11 @@ typedef struct VMMCPU
     /** Pointer to the R0 logger instance - R0 Ptr.
      * This is NULL if logging is disabled. */
     R0PTRTYPE(PVMMR0LOGGER)     pR0LoggerR0;
+
+    /** @name Thread-context hooks.
+     *  @{*/
+    RTTHREADCTX                 hR0ThreadCtx;
+    /** @} */
 
     /** @name Rendezvous
      * @{ */
