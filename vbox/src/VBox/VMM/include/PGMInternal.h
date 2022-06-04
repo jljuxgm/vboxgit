@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PGMInternal.h 45024 2013-03-13 15:58:02Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3960,6 +3960,7 @@ void            pgmR3PhysRelinkRamRanges(PVM pVM);
 int             pgmR3PhysRamPreAllocate(PVM pVM);
 int             pgmR3PhysRamReset(PVM pVM);
 int             pgmR3PhysRomReset(PVM pVM);
+int             pgmR3PhysRamZeroAll(PVM pVM);
 int             pgmR3PhysChunkMap(PVM pVM, uint32_t idChunk, PPPGMCHUNKR3MAP ppChunk);
 int             pgmR3PhysRamTerm(PVM pVM);
 void            pgmR3PhysRomTerm(PVM pVM);

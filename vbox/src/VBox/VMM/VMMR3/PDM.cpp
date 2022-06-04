@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: PDM.cpp 45024 2013-03-13 15:58:02Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -1506,6 +1506,34 @@ VMMR3_INT_DECL(void) PDMR3Reset(PVM pVM)
     VM_FF_CLEAR(pVM, VM_FF_PDM_DMA);
 
     LogFlow(("PDMR3Reset: returns void\n"));
+}
+
+
+/**
+ * This function will tell all the devices to setup up their memory structures
+ * after VM construction and after VM reset.
+ *
+ * @param   pVM         Pointer to the VM.
+ * @param   fAtReset    Indicates the context, after reset if @c true or after
+ *                      construction if @c false.
+ */
+VMMR3_INT_DECL(void) PDMR3MemSetup(PVM pVM, bool fAtReset)
+{
+    LogFlow(("PDMR3MemSetup: fAtReset=%RTbool\n", fAtReset));
+    PDMDEVMEMSETUPCTX const enmCtx = fAtReset ? PDMDEVMEMSETUPCTX_AFTER_RESET : PDMDEVMEMSETUPCTX_AFTER_CONSTRUCTION;
+
+    /*
+     * Iterate thru the device instances and work the callback.
+     */
+    for (PPDMDEVINS pDevIns = pVM->pdm.s.pDevInstances; pDevIns; pDevIns = pDevIns->Internal.s.pNextR3)
+        if (pDevIns->pReg->pfnMemSetup)
+        {
+            PDMCritSectEnter(pDevIns->pCritSectRoR3, VERR_IGNORED);
+            pDevIns->pReg->pfnMemSetup(pDevIns, enmCtx);
+            PDMCritSectLeave(pDevIns->pCritSectRoR3);
+        }
+
+    LogFlow(("PDMR3MemSetup: returns void\n"));
 }
 
 
