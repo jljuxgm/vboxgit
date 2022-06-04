@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 46468 2013-06-10 14:35:37Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 46471 2013-06-10 15:19:26Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2676,9 +2676,9 @@ STDMETHODIMP Display::TakeScreenShotPNGToArray(ULONG aScreenId, ULONG width, ULO
 STDMETHODIMP Display::EnableVideoCaptureScreens(ComSafeArrayIn(BOOL, aScreens))
 {
 #ifdef VBOX_WITH_VPX
-    com::SafeArray<LONG> Screens(ComSafeArrayInArg(aScreens));
+    com::SafeArray<BOOL> Screens(ComSafeArrayInArg(aScreens));
     for (unsigned i = 0; i < Screens.size(); i++)
-        maVideoRecEnabled[i] = aScreens[i] ? true : false;
+        maVideoRecEnabled[i] = Screens[i];
     return S_OK;
 #else
     return E_NOTIMPL;
