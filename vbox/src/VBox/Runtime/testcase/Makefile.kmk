@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42503 2012-08-01 12:16:38Z vboxsync $
+# $Id: Makefile.kmk 43645 2012-10-15 14:10:03Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -64,6 +64,7 @@ PROGRAMS += \
 	tstRTFileGetSize-1 \
 	tstFileLock \
 	tstFork \
+	tstHttp \
 	tstRTFsQueries \
 	tstRTFilesystem \
 	tstRTGetOpt \
@@ -223,6 +224,10 @@ tstRTCType_TEMPLATE = VBOXR3TSTEXE
 tstRTCType_SOURCES = tstRTCType.cpp
 
 tstRTDigest_SOURCES = tstRTDigest.cpp
+
+tstHttp_TEMPLATE = VBOXR3TSTEXE
+tstHttp_SOURCES = tstHttp.cpp
+tstHttp_SDKS = VBOX_LIBCURL
 
 tstDir_TEMPLATE = VBOXR3TSTEXE
 tstDir_SOURCES = tstDir.cpp

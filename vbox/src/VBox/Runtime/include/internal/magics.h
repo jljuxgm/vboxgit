@@ -1,4 +1,4 @@
-/* $Id: magics.h 41549 2012-06-01 17:29:05Z vboxsync $ */
+/* $Id: magics.h 43645 2012-10-15 14:10:03Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -68,6 +68,10 @@
 #define RTHEAPOFFSET_MAGIC              UINT32_C(0x19591031)
 /** Magic number for RTHEAPSIMPLEINTERNAL::uMagic. (Kyoichi Katayama) */
 #define RTHEAPSIMPLE_MAGIC              UINT32_C(0x19590105)
+/** The magic value for RTHTTPINTERNAL::u32Magic. (Karl May) */
+#define RTHTTP_MAGIC                    UINT32_C(0x18420225)
+/** The value of RTHTTPINTERNAL::u32Magic after close. */
+#define RTHTTP_MAGIC_DEAD               UINT32_C(0x19120330)
 /** The magic value for RTLDRMODINTERNAL::u32Magic. (Alan Moore) */
 #define RTLDRMOD_MAGIC                  UINT32_C(0x19531118)
 /** The magic value for RTLOCALIPCSERVER::u32Magic. (Naoki Yamamoto) */

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43575 2012-10-09 09:12:00Z vboxsync $
+# $Id: Makefile.kmk 43645 2012-10-15 14:10:03Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT (IPRT).
 #
@@ -1326,6 +1326,7 @@ VBoxRT_SOURCES                 = \
 	common/checksum/crc32-zlib.cpp
 ifdef VBOX_WITH_LIBCURL
  VBoxRT_SOURCES               += common/misc/s3.cpp
+ VBoxRT_SOURCES               += common/misc/http.cpp
 endif
 VBoxRT_SOURCES.$(KBUILD_TARGET) = $(RuntimeR3_SOURCES.$(KBUILD_TARGET))
 VBoxRT_SOURCES.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH) = $(RuntimeR3_SOURCES.$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH))
