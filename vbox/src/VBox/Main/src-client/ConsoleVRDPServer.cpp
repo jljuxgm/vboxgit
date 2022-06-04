@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 43350 2012-09-18 14:39:14Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 43351 2012-09-18 14:42:48Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2236,7 +2236,6 @@ void ConsoleVRDPServer::setupTSMF(void)
         return;
     }
 
-    AssertCompile(RT_OFFSETOF(VBoxHostChannelHostRegister, name) == 0);
     int rc = pVMMDev->hgcmHostCall("VBoxHostChannel",
                                    VBOX_HOST_CHANNEL_HOST_FN_REGISTER,
                                    2,
