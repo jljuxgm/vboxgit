@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 43018 2012-08-27 22:16:16Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 43202 2012-09-05 12:50:13Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1294,9 +1294,11 @@ static RTEXITCODE VBoxServiceToolboxMkTemp(int argc, char **argv)
     }
     pcszTemplate = argv[argc - 1];
     /* Validate that the template is as IPRT requires (asserted by IPRT). */
-    if (RTPathHasPath(pcszTemplate) || !strchr(pcszTemplate, 'X'))
+    if (   RTPathHasPath(pcszTemplate)
+        || (   !strstr(pcszTemplate, "XXX")
+            && pcszTemplate[strlen(pcszTemplate) - 1] != 'X'))
     {
-        toolboxMkTempReport("Template '%s' should contain a file name with no path and at least one 'X' character.\n",
+        toolboxMkTempReport("Template '%s' should contain a file name with no path and at least three consecutive 'X' characters or ending in 'X'.\n",
                             pcszTemplate, true, VERR_INVALID_PARAMETER,
                             fOutputFlags, &rc);
         return RTEXITCODE_FAILURE;
