@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 42571 2012-08-03 10:02:51Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 42800 2012-08-14 06:47:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -967,6 +967,9 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
         BOOL fSyntheticCpu = false;
         hrc = pMachine->GetCPUProperty(CPUPropertyType_Synthetic, &fSyntheticCpu);          H();
         InsertConfigInteger(pCPUM, "SyntheticCpu", fSyntheticCpu);
+
+        if (fOsXGuest)
+            InsertConfigInteger(pCPUM, "EnableHVP", 1);
 
         BOOL fPXEDebug;
         hrc = biosSettings->COMGETTER(PXEDebugEnabled)(&fPXEDebug);                         H();
@@ -3249,7 +3252,7 @@ int Console::configMediumAttachment(PCFGMNODE pCtlInst,
 #endif
             }
         }
-        
+
         if (   pMedium
             && (   lType == DeviceType_DVD
                 || lType == DeviceType_Floppy))
