@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-generic.cpp 47352 2013-07-23 16:19:20Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-generic.cpp 47572 2013-08-07 09:51:45Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hooks, Ring-0 Driver, Generic.
  */
@@ -73,4 +73,12 @@ RTDECL(int) RTThreadCtxHooksDeregister(RTTHREADCTX hThreadCtx)
     return VERR_NOT_SUPPORTED;
 }
 RT_EXPORT_SYMBOL(RTThreadCtxHooksDeregister);
+
+
+RTDECL(bool) RTThreadCtxHooksAreRegistered(RTTHREADCTX hThreadCtx)
+{
+    NOREF(hThreadCtx);
+    return false;
+}
+RT_EXPORT_SYMBOL(RTThreadCtxHooksAreRegistered);
 

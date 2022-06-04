@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 47542 2013-08-05 10:25:37Z vboxsync $ */
+/* $Id: SUPDrv.c 47572 2013-08-07 09:51:45Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -366,6 +366,7 @@ static SUPFUNC g_aFunctions[] =
     { "RTStrPrintfExV",                         (void *)RTStrPrintfExV },
     { "RTStrPrintfV",                           (void *)RTStrPrintfV },
     { "RTThreadCreate",                         (void *)RTThreadCreate },
+    { "RTThreadCtxHooksAreRegistered",          (void *)RTThreadCtxHooksAreRegistered },
     { "RTThreadCtxHooksCreate",                 (void *)RTThreadCtxHooksCreate },
     { "RTThreadCtxHooksDeregister",             (void *)RTThreadCtxHooksDeregister },
     { "RTThreadCtxHooksRegister",               (void *)RTThreadCtxHooksRegister },
