@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 46364 2013-06-03 15:02:38Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 47058 2013-07-09 16:18:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -225,34 +225,46 @@ void UIFrameBufferQImage::paintSeamless(QPaintEvent *pEvent)
     /* Create painter: */
     QPainter painter(m_pMachineView->viewport());
 
-    /* Clear paint rectangle first: */
-    painter.setCompositionMode(QPainter::CompositionMode_Clear);
-    painter.eraseRect(paintRect);
-    painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
-
-    /* Manually clip paint rectangle using visible-region: */
+    /* Determine the region to erase: */
     lock();
-    QRegion visiblePaintRegion = m_syncVisibleRegion & paintRect;
+    QRegion regionToErase = (QRegion)paintRect - m_syncVisibleRegion;
     unlock();
-
-    /* Repaint all the rectangles of visible-region: */
-    foreach (const QRect &rect, visiblePaintRegion.rects())
+    if (!regionToErase.isEmpty())
     {
+        /* Optimize composition-mode: */
+        painter.setCompositionMode(QPainter::CompositionMode_Clear);
+        /* Erase required region, slowly, rectangle-by-rectangle: */
+        foreach (const QRect &rect, regionToErase.rects())
+            painter.eraseRect(rect);
+        /* Restore composition-mode: */
+        painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+    }
+
+    /* Determine the region to paint: */
+    lock();
+    QRegion regionToPaint = (QRegion)paintRect & m_syncVisibleRegion;
+    unlock();
+    if (!regionToPaint.isEmpty())
+    {
+        /* Paint required region, slowly, rectangle-by-rectangle: */
+        foreach (const QRect &rect, regionToPaint.rects())
+        {
 #ifdef Q_WS_WIN
-        /* Replace translucent background with black one,
-         * that is necessary for window with Qt::WA_TranslucentBackground: */
-        painter.setCompositionMode(QPainter::CompositionMode_Source);
-        painter.fillRect(rect, QColor(Qt::black));
-        painter.setCompositionMode(QPainter::CompositionMode_SourceAtop);
+            /* Replace translucent background with black one,
+             * that is necessary for window with Qt::WA_TranslucentBackground: */
+            painter.setCompositionMode(QPainter::CompositionMode_Source);
+            painter.fillRect(rect, QColor(Qt::black));
+            painter.setCompositionMode(QPainter::CompositionMode_SourceAtop);
 #endif /* Q_WS_WIN */
 
-        /* Draw image rectangle depending on rectangle width: */
-        if ((ulong)rect.width() < m_width * 2 / 3)
-            drawImageRectNarrow(painter, m_img,
-                                rect, m_pMachineView->contentsX(), m_pMachineView->contentsY());
-        else
-            drawImageRectWide(painter, m_img,
-                              rect, m_pMachineView->contentsX(), m_pMachineView->contentsY());
+            /* Draw image rectangle depending on rectangle width: */
+            if ((ulong)rect.width() < m_width * 2 / 3)
+                drawImageRectNarrow(painter, m_img,
+                                    rect, m_pMachineView->contentsX(), m_pMachineView->contentsY());
+            else
+                drawImageRectWide(painter, m_img,
+                                  rect, m_pMachineView->contentsX(), m_pMachineView->contentsY());
+        }
     }
 }
 
