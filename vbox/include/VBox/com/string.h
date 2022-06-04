@@ -1,10 +1,10 @@
-/* $Id: string.h 40875 2012-04-11 17:51:17Z vboxsync $ */
+/* $Id: string.h 42177 2012-07-17 12:27:22Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2012 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -508,6 +508,11 @@ public:
     Utf8Str(CBSTR that)
     {
         copyFrom(that);
+    }
+
+    Utf8Str(const char *a_pszSrc, size_t a_cchSrc)
+        : RTCString(a_pszSrc, a_cchSrc)
+    {
     }
 
     /**

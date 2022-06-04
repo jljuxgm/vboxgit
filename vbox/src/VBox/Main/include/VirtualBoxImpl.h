@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 42129 2012-07-12 17:32:31Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 42177 2012-07-17 12:27:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -221,6 +221,7 @@ public:
                         bool aSetError,
                         ComObjPtr<Machine> *machine = NULL);
 
+    HRESULT validateMachineGroup(const Utf8Str &aGroup);
     HRESULT convertMachineGroups(ComSafeArrayIn(IN_BSTR, aMachineGroups), StringsList *pllMachineGroups);
 
     HRESULT findHardDiskById(const Guid &id,
@@ -313,7 +314,7 @@ private:
                                bool aSaveRegistry = true);
     HRESULT unregisterDHCPServer(DHCPServer *aDHCPServer,
                                  bool aSaveRegistry = true);
-    
+
     void decryptSettings();
     void decryptMediumSettings(Medium *pMedium);
     int  decryptSettingBytes(uint8_t *aPlaintext, const uint8_t *aCiphertext,
