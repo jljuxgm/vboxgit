@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 45407 2013-04-08 13:45:38Z vboxsync $ */
+/* $Id: PGMAllBth.h 45619 2013-04-18 19:54:22Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -865,6 +865,7 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
 
 #   if PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE) && !defined(IN_RING0)
         if (   !GstWalk.Core.fEffectiveUS
+            && CSAMIsEnabled(pVM)
             && CPUMGetGuestCPL(pVCpu) == 0)
         {
             /* Note: Can't check for X86_TRAP_ID bit, because that requires execute disable support on the CPU. */
