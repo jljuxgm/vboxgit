@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 42032 2012-07-05 23:24:44Z vboxsync $ */
+/* $Id: CPUM.cpp 42191 2012-07-17 14:08:35Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -539,6 +539,12 @@ static CPUMCPUVENDOR cpumR3DetectVendor(uint32_t uEAX, uint32_t uEBX, uint32_t u
         &&  uECX == X86_CPUID_VENDOR_INTEL_ECX
         &&  uEDX == X86_CPUID_VENDOR_INTEL_EDX)
         return CPUMCPUVENDOR_INTEL;
+
+    if (    uEAX >= 1
+        &&  uEBX == X86_CPUID_VENDOR_VIA_EBX
+        &&  uECX == X86_CPUID_VENDOR_VIA_ECX
+        &&  uEDX == X86_CPUID_VENDOR_VIA_EDX)
+        return CPUMCPUVENDOR_VIA;
 
     /** @todo detect the other buggers... */
     return CPUMCPUVENDOR_UNKNOWN;
