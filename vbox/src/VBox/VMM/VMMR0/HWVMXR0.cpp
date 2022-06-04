@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 43519 2012-10-02 17:14:07Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 43566 2012-10-08 15:37:23Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -1754,13 +1754,6 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
                     pCtx->ss.Attr.n.u2Dpl  = 0;
                 }
                 pVCpu->hm.s.vmx.enmLastSeenGuestMode = enmGuestMode;
-            }
-            else if (   CPUMIsGuestInRealModeEx(pCtx)
-                     && pCtx->cs.u64Base == 0xffff0000)
-            {
-                /* VT-x will fail with a guest invalid state otherwise... (CPU state after a reset) */
-                pCtx->cs.u64Base = 0xf0000;
-                pCtx->cs.Sel     =  0xf000;
             }
         }
 
