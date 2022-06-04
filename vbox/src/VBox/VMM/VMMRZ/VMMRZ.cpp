@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 45091 2013-03-19 16:01:32Z vboxsync $ */
+/* $Id: VMMRZ.cpp 45097 2013-03-19 19:05:53Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -186,7 +186,7 @@ VMMRZDECL(bool) VMMRZCallRing3IsEnabled(PVMCPU pVCpu)
  *
  * @return VBox status code.
  */
-VMMRZDECL(int) VMMRZCallRing3SetNotification(PVMCPU pVCpu, PFNVMMR0CALLRING3NOTIFICATION pfnCallback, void *pvUser)
+VMMRZDECL(int) VMMRZCallRing3SetNotification(PVMCPU pVCpu, R0PTRTYPE(PFNVMMR0CALLRING3NOTIFICATION) pfnCallback, RTR0PTR pvUser)
 {
     AssertReturn(pVCpu, VERR_INVALID_POINTER);
     AssertReturn(pfnCallback, VERR_INVALID_POINTER);
