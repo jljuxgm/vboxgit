@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-linux.c 47370 2013-07-24 12:35:39Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-linux.c 47375 2013-07-24 14:25:01Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Linux.
  */
@@ -195,7 +195,6 @@ RTDECL(uint32_t) RTThreadCtxHooksRelease(RTTHREADCTX hThreadCtx)
 
         ASMAtomicWriteU32(&pThis->u32Magic, ~RTTHREADCTXINT_MAGIC);
         RTMemFree(pThis);
-        printk("freed pThis=%p\n", pThis);
     }
     else
         Assert(cRefs < UINT32_MAX / 2);
