@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 47790 2013-08-16 09:08:02Z vboxsync $ */
+/* $Id: EMHM.cpp 47807 2013-08-16 12:54:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -205,8 +205,8 @@ static int emR3HmExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC)
         STAM_PROFILE_START(&pVCpu->em.s.StatREMEmu, b);
 # ifndef VBOX_WITH_FIRST_IEM_STEP
         Log(("EMINS[rem]: %04x:%RGv RSP=%RGv\n", pCtx->cs.Sel, (RTGCPTR)pCtx->rip, (RTGCPTR)pCtx->rsp));
-# elif defined(DEBUG_bird)
-        AssertFailed();
+//# elif defined(DEBUG_bird)
+//        AssertFailed();
 # endif
         EMRemLock(pVM);
         /* Flush the recompiler TLB if the VCPU has changed. */
