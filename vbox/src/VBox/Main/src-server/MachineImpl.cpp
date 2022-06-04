@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 43870 2012-11-14 18:04:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 43900 2012-11-16 14:49:33Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9984,6 +9984,7 @@ HRESULT Machine::saveStorageDevices(ComObjPtr<StorageController> aStorageControl
                 dev.uuid = pMedium->getId();
             dev.fPassThrough = pAttach->getPassthrough();
             dev.fTempEject = pAttach->getTempEject();
+            dev.fNonRotational = pAttach->getNonRotational();
             dev.fDiscard = pAttach->getDiscard();
         }
 
