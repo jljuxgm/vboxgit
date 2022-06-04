@@ -1,6 +1,6 @@
-; $Id: HMR0A.asm 47439 2013-07-27 20:03:21Z vboxsync $
+; $Id: HMR0A.asm 47608 2013-08-08 10:24:29Z vboxsync $
 ;; @file
-; VMXM - R0 vmx helpers
+; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
 
 ;
