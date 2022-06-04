@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: InstructionTestGen.py 46906 2013-07-02 13:13:10Z vboxsync $
+# $Id: InstructionTestGen.py 46917 2013-07-02 17:44:45Z vboxsync $
 
 """
 Instruction Test Generator.
@@ -15,7 +15,7 @@ Copyright (C) 2012-2013 Oracle Corporation
 Oracle Corporation confidential
 All rights reserved
 """
-__version__ = "$Revision: 46906 $";
+__version__ = "$Revision: 46917 $";
 
 
 # Standard python imports.
@@ -133,6 +133,7 @@ g_asGRegs8Rex   = ('al',  'cl',  'dl',  'bl',  'spl', 'bpl', 'sil',  'dil',
 ## @{
 g_iMyRandSeed = int((os.urandom(4)).encode('hex'), 16);
 #g_iMyRandSeed = 286523426;
+#g_iMyRandSeed = 1994382324;
 g_oMyRand = random.Random(g_iMyRandSeed);
 #g_oMyRand = random.SystemRandom();
 
@@ -377,6 +378,7 @@ class TargetEnv(object):
 g_dTargetEnvs = {
     'iprt-r3-32':   TargetEnv('iprt-r3-32', TargetEnv.ksInstrSet_32, TargetEnv.ksCpuMode_Protect, 3),
     'iprt-r3-64':   TargetEnv('iprt-r3-64', TargetEnv.ksInstrSet_64, TargetEnv.ksCpuMode_Long,    3),
+    'bs2-r0-64':    TargetEnv('bs2-r0-64',  TargetEnv.ksInstrSet_64, TargetEnv.ksCpuMode_Long,    0),
 };
 
 
@@ -837,8 +839,8 @@ class InstrTest_MemOrGreg_2_Greg(InstrTestBase):
                             else:
                                 # SIB - currently only short list of inputs or things may get seriously out of hand.
                                 self.generateStdTestGregMemSib(oGen, cAddrBits, cbEffOp, cbMaxOp, oGen.iModReg, auShortInputs);
-                    break;
-                break;
+                    #break;
+                #break;
 
 
         return True;
@@ -1155,7 +1157,7 @@ class InstructionTestGen(object):
         Writes the file header.
         Raises exception on trouble.
         """
-        self.write('; $Id: InstructionTestGen.py 46906 2013-07-02 13:13:10Z vboxsync $\n'
+        self.write('; $Id: InstructionTestGen.py 46917 2013-07-02 17:44:45Z vboxsync $\n'
                    ';; @file %s\n'
                    '; Autogenerate by %s %s. DO NOT EDIT\n'
                    ';\n'
