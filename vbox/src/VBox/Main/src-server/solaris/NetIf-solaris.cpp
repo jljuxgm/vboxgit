@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 46997 2013-07-05 09:56:14Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 47001 2013-07-05 10:42:15Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -471,7 +471,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
                         vboxSolarisAddLinkHostIface(pszIface, &list);
                     }
                 }
-                RTMemTempFree(Ifaces);
+                RTMemTmpFree(Ifaces);
             }
         }
         close(Sock);
