@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45858 2013-05-01 00:18:53Z vboxsync $ */
+/* $Id: HM.cpp 45864 2013-05-01 11:42:27Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2955,7 +2955,7 @@ static DECLCALLBACK(int) hmR3Save(PVM pVM, PSSMHANDLE pSSM)
         rc = SSMR3PutU64(pSSM, pVM->aCpus[i].hm.s.Event.u64IntrInfo);
         AssertRCReturn(rc, rc);
 
-#if VBOX_WITH_OLD_VTX_CODE
+#ifdef VBOX_WITH_OLD_VTX_CODE
         rc = SSMR3PutU32(pSSM, pVM->aCpus[i].hm.s.vmx.enmLastSeenGuestMode);
         AssertRCReturn(rc, rc);
         rc = SSMR3PutU32(pSSM, pVM->aCpus[i].hm.s.vmx.enmCurrGuestMode);
