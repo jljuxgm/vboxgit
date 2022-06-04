@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46018 2013-05-13 13:51:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46041 2013-05-13 19:43:55Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -839,7 +839,7 @@ static int hmR0VmxStructsAlloc(PVM pVM)
     /*
      * Initialize per-VCPU VT-x structures.
      */
-    for (VMCPUID i =0; i < pVM->cCpus; i++)
+    for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
         AssertPtr(pVCpu);
@@ -8151,7 +8151,7 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
                         pMixedCtx->dr[7] &= ~X86_DR7_GD;
 
                         /* Paranoia. */
-                        pMixedCtx->dr[7] &= 0xffffffff;                                             /* Upper 32 bits reserved. */
+                        pMixedCtx->dr[7] &= UINT64_C(0xffffffff);                                   /* Upper 32 bits MBZ. */
                         pMixedCtx->dr[7] &= ~(RT_BIT(11) | RT_BIT(12) | RT_BIT(14) | RT_BIT(15));   /* MBZ. */
                         pMixedCtx->dr[7] |= 0x400;                                                  /* MB1. */
 
@@ -8614,7 +8614,7 @@ static int hmR0VmxExitXcptDB(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT pVm
         pMixedCtx->dr[7] &= ~X86_DR7_GD;
 
         /* Paranoia. */
-        pMixedCtx->dr[7] &= UINT32_C(0xffffffff);                                    /* upper 32 bits MBZ. */
+        pMixedCtx->dr[7] &= UINT64_C(0xffffffff);                                    /* upper 32 bits MBZ. */
         pMixedCtx->dr[7] &= ~(RT_BIT(11) | RT_BIT(12) | RT_BIT(14) | RT_BIT(15));    /* must be zero */
         pMixedCtx->dr[7] |= 0x400;                                                   /* must be one */
 
