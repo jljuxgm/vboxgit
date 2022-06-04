@@ -1,4 +1,4 @@
-/* $Id: com.cpp 42385 2012-07-25 11:52:31Z vboxsync $ */
+/* $Id: com.cpp 43534 2012-10-04 10:01:56Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -267,7 +267,7 @@ static void vboxHeaderFooter(PRTLOGGER pReleaseLogger, RTLOGPHASE enmPhase, PFNR
             if (RT_SUCCESS(vrc))
                 vrc = RTSystemQueryAvailableRam(&cbHostRamAvail);
             if (RT_SUCCESS(vrc))
-                pfnLog(pReleaseLogger, "Host RAM: %lluMB RAM, available: %lluMB\n",
+                pfnLog(pReleaseLogger, "Host RAM: %lluMB total, %lluMB available\n",
                        cbHostRam / _1M, cbHostRamAvail / _1M);
 
             /* the package type is interesting for Linux distributions */
