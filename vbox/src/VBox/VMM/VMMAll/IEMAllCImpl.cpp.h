@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 42649 2012-08-07 07:58:31Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 42666 2012-08-07 14:55:25Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2016,6 +2016,7 @@ IEM_CIMPL_DEF_1(iemCImpl_iret_real_v8086, IEMMODE, enmEffOpSize)
 IEM_CIMPL_DEF_5(iemCImpl_iret_prot_v8086, IEMMODE, enmEffOpSize, uint32_t, uNewEip, uint16_t, uNewCs,
                 uint32_t, uNewFlags, uint64_t, uNewRsp)
 {
+    /** @todo NT4SP1 0008:8013bd5d cf   iret */
     IEM_RETURN_ASPECT_NOT_IMPLEMENTED();
 }
 
