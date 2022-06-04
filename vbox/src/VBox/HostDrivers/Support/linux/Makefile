@@ -1,4 +1,4 @@
-# $Id: Makefile 44544 2013-02-05 13:56:17Z vboxsync $
+# $Id: Makefile 44579 2013-02-07 11:03:25Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -269,10 +269,6 @@ ifeq ($(BUILD_TYPE),debug)
  # IPRT_DEBUG_SEMS indicates thread wrt sems state via the comm field.
  #KFLAGS  += -DIPRT_DEBUG_SEMS
 endif
-
-# Uncomment this in order to avoid spinlock checker
-# disabling when CONFIG_PROVE_LOCKING is enabled
-#KFLAGS += -DDO_NOT_DISABLE_PROVE_LOCKING
 
 # 2.6 and later
 MODULE_EXT    := ko
