@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 43707 2012-10-22 16:41:04Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 45342 2013-04-04 17:21:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -115,7 +115,7 @@ void UIDownloaderExtensionPack::handleDownloadedObject(UINetworkReply *pReply)
         }
 
         /* Warn the user about extension-pack was downloaded but was NOT saved: */
-        msgCenter().warnAboutExtentionPackCantBeSaved(GUI_ExtPackName, source().toString(), QDir::toNativeSeparators(target()));
+        msgCenter().cannotSaveExtensionPack(GUI_ExtPackName, source().toString(), QDir::toNativeSeparators(target()));
 
         /* Ask the user for another location for the extension-pack file: */
         QString strTarget = QIFileDialog::getExistingDirectory(QFileInfo(target()).absolutePath(),

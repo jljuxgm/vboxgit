@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
+/* $Id: UINetworkManagerDialog.cpp 45342 2013-04-04 17:21:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -144,7 +144,7 @@ void UINetworkManagerDialog::removeNetworkRequestWidget(const QUuid &uuid)
 void UINetworkManagerDialog::sltHandleCancelAllButtonPress()
 {
     /* Ask if user wants to cancel all current network-requests: */
-    if (msgCenter().askAboutCancelAllNetworkRequest(this))
+    if (msgCenter().confirmCancelingAllNetworkRequests())
         emit sigCancelNetworkRequests();
 }
 

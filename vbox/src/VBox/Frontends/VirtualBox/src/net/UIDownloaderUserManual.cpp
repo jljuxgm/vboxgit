@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 43707 2012-10-22 16:41:04Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 45342 2013-04-04 17:21:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -76,7 +76,7 @@ UIDownloaderUserManual::~UIDownloaderUserManual()
 
 bool UIDownloaderUserManual::askForDownloadingConfirmation(UINetworkReply *pReply)
 {
-    return msgCenter().confirmUserManualDownload(source().toString(), pReply->header(QNetworkRequest::ContentLengthHeader).toInt());
+    return msgCenter().confirmDownloadUserManual(source().toString(), pReply->header(QNetworkRequest::ContentLengthHeader).toInt());
 }
 
 void UIDownloaderUserManual::handleDownloadedObject(UINetworkReply *pReply)
@@ -102,7 +102,7 @@ void UIDownloaderUserManual::handleDownloadedObject(UINetworkReply *pReply)
         }
 
         /* Warn user about user-manual was downloaded but was NOT saved: */
-        msgCenter().warnAboutUserManualCantBeSaved(source().toString(), QDir::toNativeSeparators(target()));
+        msgCenter().cannotSaveUserManual(source().toString(), QDir::toNativeSeparators(target()));
 
         /* Ask the user for another location for the user-manual file: */
         QString strTarget = QIFileDialog::getExistingDirectory(QFileInfo(target()).absolutePath(),
