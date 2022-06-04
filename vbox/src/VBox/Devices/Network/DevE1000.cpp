@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 46456 2013-06-10 09:15:23Z vboxsync $ */
+/* $Id: DevE1000.cpp 47459 2013-07-29 13:21:15Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -414,7 +414,7 @@ AssertCompileSize(PBAST, 4);
 #define COLC     pThis->auRegs[COLC_IDX]
 #define DC       pThis->auRegs[DC_IDX]
 #define TNCRS    pThis->auRegs[TNCRS_IDX]
-#define SEC      pThis->auRegs[SEC_IDX]
+/* #define SEC      pThis->auRegs[SEC_IDX]       Conflict with sys/time.h */
 #define CEXTERR  pThis->auRegs[CEXTERR_IDX]
 #define RLEC     pThis->auRegs[RLEC_IDX]
 #define XONRXC   pThis->auRegs[XONRXC_IDX]
