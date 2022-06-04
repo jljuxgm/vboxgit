@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 43163 2012-09-04 14:12:53Z vboxsync $ */
+/* $Id: PGMInternal.h 43302 2012-09-11 23:43:34Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -2105,7 +2105,7 @@ typedef enum
  */
 typedef struct PGMPOOLPAGE
 {
-    /** AVL node code with the (R3) physical address of this page. */
+    /** AVL node code with the (HC) physical address of this page. */
     AVLOHCPHYSNODECORE  Core;
     /** Pointer to the R3 mapping of the page. */
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
