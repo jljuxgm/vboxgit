@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 40968 2012-04-17 17:35:53Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 43699 2012-10-22 15:15:39Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -136,9 +136,9 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
 /**
  * Wrapper to Solaris IPI infrastructure.
  *
- * @param    pCpuSet        Pointer to Solaris CPU set.
- * @param    pfnSolWorker     Function to execute on target CPU(s).
- * @param     pArgs            Pointer to RTMPARGS to pass to @a pfnSolWorker.
+ * @param   pCpuSet        Pointer to Solaris CPU set.
+ * @param   pfnSolWorker   Function to execute on target CPU(s).
+ * @param   pArgs          Pointer to RTMPARGS to pass to @a pfnSolWorker.
  *
  * @returns Solaris error code.
  */
