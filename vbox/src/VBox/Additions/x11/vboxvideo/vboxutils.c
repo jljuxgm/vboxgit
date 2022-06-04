@@ -1,3 +1,4 @@
+/* $Id: vboxutils.c 46042 2013-05-13 19:45:02Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
