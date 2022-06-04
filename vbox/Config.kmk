@@ -1,4 +1,4 @@
-# $Id: Config.kmk 43627 2012-10-12 00:56:05Z vboxsync $
+# $Id: Config.kmk 43637 2012-10-15 11:14:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2784,7 +2784,11 @@ if1of ($(KBUILD_TARGET), linux)
                        $(kernelpath)/include/asm-x86/mach-default \
                        $(kernelpath)/arch/x86/include \
                        $(kernelpath)/arch/x86/include/asm/mach-default \
+                       $(kernelpath)/arch/x86/include/uapi \
                        $(kernelpath)/arch/x86/include/generated \
+                       $(kernelpath)/arch/x86/include/generated/uapi \
+                       $(kernelpath)/include/uapi \
+                       $(kernelpath)/include/generated/uapi \
                        $(kernelpath)/include
   endif
  endif
@@ -5295,7 +5299,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43627 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43637 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
