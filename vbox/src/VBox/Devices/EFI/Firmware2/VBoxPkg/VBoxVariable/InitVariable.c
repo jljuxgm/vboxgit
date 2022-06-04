@@ -1,4 +1,4 @@
-/* $Id: InitVariable.c 44593 2013-02-08 05:28:02Z vboxsync $ */
+/* $Id: InitVariable.c 44601 2013-02-08 12:27:08Z vboxsync $ */
 /** @file
  * InitVariable.h
  */
@@ -234,10 +234,14 @@ RuntimeServiceGetNextVariableName (
     /* 
      * Tell DevEFI which the current variable is, then ask for the next one.
      */
-    VBoxWriteNVRAMGuidParam(VendorGuid);
-    VBoxWriteNVRAMNameParam(VariableName);
-
-    u32Rc = VBoxWriteNVRAMDoOp(EFI_VARIABLE_OP_QUERY);
+    if (!VariableName[0])
+        u32Rc = VBoxWriteNVRAMDoOp(EFI_VARIABLE_OP_QUERY_REWIND);
+    else
+    {
+        VBoxWriteNVRAMGuidParam(VendorGuid);
+        VBoxWriteNVRAMNameParam(VariableName);
+        u32Rc = VBoxWriteNVRAMDoOp(EFI_VARIABLE_OP_QUERY);
+    }
     //if (u32Rc == EFI_VARIABLE_OP_STATUS_OK) - debug
         u32Rc = VBoxWriteNVRAMDoOp(EFI_VARIABLE_OP_QUERY_NEXT);
 

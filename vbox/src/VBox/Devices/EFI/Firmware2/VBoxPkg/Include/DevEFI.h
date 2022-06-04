@@ -1,4 +1,4 @@
-/* $Id: DevEFI.h 44591 2013-02-08 04:48:00Z vboxsync $ */
+/* $Id: DevEFI.h 44601 2013-02-08 12:27:08Z vboxsync $ */
 /** @file
  * EFI for VirtualBox Common Definitions.
  *
@@ -111,6 +111,7 @@ typedef enum
 
 #define EFI_VARIABLE_OP_QUERY        0xdead0001
 #define EFI_VARIABLE_OP_QUERY_NEXT   0xdead0002
+#define EFI_VARIABLE_OP_QUERY_REWIND 0xdead0003
 #define EFI_VARIABLE_OP_ADD          0xdead0010
 
 #define EFI_VARIABLE_OP_STATUS_OK         0xcafe0000
