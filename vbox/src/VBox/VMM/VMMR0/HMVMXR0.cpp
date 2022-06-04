@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46267 2013-05-26 11:29:24Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46280 2013-05-27 10:13:59Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1965,7 +1965,7 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
      * Without UnrestrictedGuest, pRealModeTSS and pNonPagingModeEPTPageTable *must* always be allocated.
      * We no longer support the highly unlikely case of UnrestrictedGuest without pRealModeTSS. See hmR3InitFinalizeR0().
      */
-    /* -XXX- change hmR3InitFinalizeR0() to fail if pRealModeTSS alloc fails. */
+    /* -XXX- change hmR3InitFinalizeR0Intel() to fail if pRealModeTSS alloc fails. */
     if (   !pVM->hm.s.vmx.fUnrestrictedGuest
         &&  (   !pVM->hm.s.vmx.pNonPagingModeEPTPageTable
              || !pVM->hm.s.vmx.pRealModeTSS))
