@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45379 2013-04-05 14:46:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45380 2013-04-05 14:48:24Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7807,7 +7807,7 @@ static DECLCALLBACK(int) hmR0VmxExitTaskSwitch(PVM pVM, PVMCPU pVCpu, PCPUMCTX p
                 && uIntType != VMX_IDT_VECTORING_INFO_TYPE_SW_XCPT
                 && uIntType != VMX_IDT_VECTORING_INFO_TYPE_PRIV_SW_XCPT)
             {
-                /* Save it as a pending event while will be converted to a TRPM event on the way out to ring-3. */
+                /* Save it as a pending event and it'll be converted to a TRPM event on the way out to ring-3. */
                 pVCpu->hm.s.Event.fPending = true;
                 pVCpu->hm.s.Event.u64IntrInfo = pVmxTransient->uIdtVectoringInfo;
                 rc = hmR0VmxReadIdtVectoringErrorCodeVmcs(pVmxTransient);
