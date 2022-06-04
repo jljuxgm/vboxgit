@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 45826 2013-04-30 00:14:47Z vboxsync $ */
+/* $Id: PGMAll.cpp 46125 2013-05-16 13:59:37Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -1410,6 +1410,63 @@ VMMDECL(int) PGMGstGetPage(PVMCPU pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTGC
 {
     VMCPU_ASSERT_EMT(pVCpu);
     return PGM_GST_PFN(GetPage, pVCpu)(pVCpu, GCPtr, pfFlags, pGCPhys);
+}
+
+
+/**
+ * Performs a guest page table walk.
+ *
+ * The guest should be in paged protect mode or long mode when making a call to
+ * this function.
+ *
+ * @returns VBox status code.
+ * @retval  VINF_SUCCESS on success.
+ * @retval  VERR_PAGE_TABLE_NOT_PRESENT on failure.  Check pWalk for details.
+ * @retval  VERR_PGM_NOT_USED_IN_MODE if not paging isn't enabled. @a pWalk is
+ *          not valid, except enmType is PGMPTWALKGSTTYPE_INVALID.
+ *
+ * @param   pVCpu       The current CPU.
+ * @param   GCPtr       The guest virtual address to walk by.
+ * @param   pWalk       Where to return the walk result. This is valid on some
+ *                      error codes as well.
+ */
+int pgmGstPtWalk(PVMCPU pVCpu, RTGCPTR GCPtr, PPGMPTWALKGST pWalk)
+{
+    VMCPU_ASSERT_EMT(pVCpu);
+    switch (pVCpu->pgm.s.enmGuestMode)
+    {
+        case PGMMODE_32_BIT:
+            pWalk->enmType = PGMPTWALKGSTTYPE_32BIT;
+            return PGM_GST_NAME_32BIT(Walk)(pVCpu, GCPtr, &pWalk->u.Legacy);
+
+        case PGMMODE_PAE:
+        case PGMMODE_PAE_NX:
+            pWalk->enmType = PGMPTWALKGSTTYPE_PAE;
+            return PGM_GST_NAME_PAE(Walk)(pVCpu, GCPtr, &pWalk->u.Pae);
+
+#if !defined(IN_RC)
+        case PGMMODE_AMD64:
+        case PGMMODE_AMD64_NX:
+            pWalk->enmType = PGMPTWALKGSTTYPE_AMD64;
+            return PGM_GST_NAME_AMD64(Walk)(pVCpu, GCPtr, &pWalk->u.Amd64);
+#endif
+
+        case PGMMODE_REAL:
+        case PGMMODE_PROTECTED:
+            pWalk->enmType = PGMPTWALKGSTTYPE_INVALID;
+            return VERR_PGM_NOT_USED_IN_MODE;
+
+#if defined(IN_RC)
+        case PGMMODE_AMD64:
+        case PGMMODE_AMD64_NX:
+#endif
+        case PGMMODE_NESTED:
+        case PGMMODE_EPT:
+        default:
+            AssertFailed();
+            pWalk->enmType = PGMPTWALKGSTTYPE_INVALID;
+            return VERR_PGM_NOT_USED_IN_MODE;
+    }
 }
 
 
