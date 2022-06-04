@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 45152 2013-03-23 20:36:23Z vboxsync $ */
+/* $Id: PDMInternal.h 45299 2013-04-03 09:47:49Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1329,6 +1329,11 @@ int         pdmR3BlkCacheResume(PVM pVM);
 void        pdmLock(PVM pVM);
 int         pdmLockEx(PVM pVM, int rc);
 void        pdmUnlock(PVM pVM);
+
+#if defined(IN_RING3) || defined(IN_RING0)
+void        pdmCritSectRwLeaveSharedQueued(PPDMCRITSECTRW pThis);
+void        pdmCritSectRwLeaveExclQueued(PPDMCRITSECTRW pThis);
+#endif
 
 /** @} */
 

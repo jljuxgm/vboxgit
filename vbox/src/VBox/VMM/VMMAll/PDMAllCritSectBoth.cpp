@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectBoth.cpp 45152 2013-03-23 20:36:23Z vboxsync $ */
+/* $Id: PDMAllCritSectBoth.cpp 45299 2013-04-03 09:47:49Z vboxsync $ */
 /** @file
  * PDM - Code Common to Both Critical Section Types, All Contexts.
  */
@@ -44,7 +44,6 @@ VMM_INT_DECL(void) PDMCritSectBothFF(PVMCPU pVCpu)
            || pVCpu->pdm.s.cQueuedCritSectRwShrdLeaves > 0
            || pVCpu->pdm.s.cQueuedCritSectRwExclLeaves > 0);
 
-#if 0 /* Later... */
     /* Shared leaves. */
     i = pVCpu->pdm.s.cQueuedCritSectRwShrdLeaves;
     pVCpu->pdm.s.cQueuedCritSectRwShrdLeaves = 0;
@@ -57,7 +56,7 @@ VMM_INT_DECL(void) PDMCritSectBothFF(PVMCPU pVCpu)
                                                                    pVCpu->pdm.s.apQueuedCritSectRwShrdLeaves[i]);
 # endif
 
-        PDMCritSectRwLeaveShared(pCritSectRw);
+        pdmCritSectRwLeaveSharedQueued(pCritSectRw);
         LogFlow(("PDMR3CritSectFF: %p (R/W)\n", pCritSectRw));
     }
 
@@ -73,10 +72,9 @@ VMM_INT_DECL(void) PDMCritSectBothFF(PVMCPU pVCpu)
                                                                    pVCpu->pdm.s.apQueuedCritSectRwExclLeaves[i]);
 # endif
 
-        PDMCritSectRwLeaveExcl(pCritSectRw);
+        pdmCritSectRwLeaveExclQueued(pCritSectRw);
         LogFlow(("PDMR3CritSectFF: %p (R/W)\n", pCritSectRw));
     }
-#endif
 
     /* Normal leaves. */
     i = pVCpu->pdm.s.cQueuedCritSectLeaves;
