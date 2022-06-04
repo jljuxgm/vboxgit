@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 43422 2012-09-25 07:10:53Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 43463 2012-09-28 14:00:13Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1106,7 +1106,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                     case NetworkAdapterPromiscModePolicy_Deny:          pszPromiscuousGuestPolicy = "deny"; break;
                     case NetworkAdapterPromiscModePolicy_AllowNetwork:  pszPromiscuousGuestPolicy = "allow-vms"; break;
                     case NetworkAdapterPromiscModePolicy_AllowAll:      pszPromiscuousGuestPolicy = "allow-all"; break;
-                    default: AssertFailedReturn(VERR_INTERNAL_ERROR_4);
+                    default: AssertFailedReturn(E_INVALIDARG);
                 }
 
                 /* trace stuff */
