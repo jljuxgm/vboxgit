@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 44560 2013-02-06 11:32:02Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 44583 2013-02-07 13:12:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -850,7 +850,7 @@ protected:
 
     QString shortcutExtraDataID() const
     {
-        return QString("SortParentGroup");
+        return QString("SortGroup");
     }
 
     void retranslateUi()
