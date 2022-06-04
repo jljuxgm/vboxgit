@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 45294 2013-04-03 06:27:16Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -3045,27 +3045,27 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType deviceType)
         case KDeviceType_HardDisk:
         {
             int iAnswer = msgCenter().askAboutHardDiskAttachmentCreation(strControllerName, this);
-            if (iAnswer == QIMessageBox::Yes)
+            if (iAnswer == AlertButton_Yes)
                 strMediumId = getWithNewHDWizard();
-            else if (iAnswer == QIMessageBox::No)
+            else if (iAnswer == AlertButton_No)
                 strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_HardDisk, this, strMachineFolder);
             break;
         }
         case KDeviceType_DVD:
         {
             int iAnswer = msgCenter().askAboutOpticalAttachmentCreation(strControllerName, this);
-            if (iAnswer == QIMessageBox::Yes)
+            if (iAnswer == AlertButton_Yes)
                 strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_DVD, this, strMachineFolder);
-            else if (iAnswer == QIMessageBox::No)
+            else if (iAnswer == AlertButton_No)
                 strMediumId = vboxGlobal().findMedium(strMediumId).id();
             break;
         }
         case KDeviceType_Floppy:
         {
             int iAnswer = msgCenter().askAboutFloppyAttachmentCreation(strControllerName, this);
-            if (iAnswer == QIMessageBox::Yes)
+            if (iAnswer == AlertButton_Yes)
                 strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_Floppy, this, strMachineFolder);
-            else if (iAnswer == QIMessageBox::No)
+            else if (iAnswer == AlertButton_No)
                 strMediumId = vboxGlobal().findMedium(strMediumId).id();
             break;
         }

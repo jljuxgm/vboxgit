@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 45233 2013-03-28 13:40:49Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -61,7 +61,7 @@ bool UIMachineLogicFullscreen::checkAvailability()
         {
             int result = msgCenter().cannotEnterFullscreenMode(0, 0, 0,
                                                                (((usedBits + 7) / 8 + _1M - 1) / _1M) * _1M);
-            if (result == QIMessageBox::Cancel)
+            if (result == AlertButton_Cancel)
                 return false;
         }
     }

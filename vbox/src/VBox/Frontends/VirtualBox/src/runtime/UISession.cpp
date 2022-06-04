@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 45292 2013-04-02 16:39:35Z vboxsync $ */
+/* $Id: UISession.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -591,7 +591,7 @@ void UISession::sltInstallGuestAdditionsFrom(const QString &strSource)
             {
                 /* Ask for force mounting: */
                 if (msgCenter().cannotRemountMedium(machine, vboxMedium, true /* mount? */,
-                                                    true /* retry? */, mainMachineWindow()) == QIMessageBox::Ok)
+                                                    true /* retry? */, mainMachineWindow()) == AlertButton_Ok)
                 {
                     /* Force mount medium to the predefined port/device: */
                     machine.MountMedium(strCntName, iCntPort, iCntDevice, vboxMedium.medium(), true /* force */);

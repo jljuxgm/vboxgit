@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 45288 2013-04-02 13:27:59Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1457,7 +1457,7 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
 
     /* Confirm machine removal: */
     int iResultCode = msgCenter().confirmMachineRemoval(machines);
-    if (iResultCode == QIMessageBox::Cancel)
+    if (iResultCode == AlertButton_Cancel)
         return;
 
     /* For every selected item: */
@@ -1465,7 +1465,7 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
     {
         /* Get iterated machine: */
         CMachine &machine = machines[iMachineIndex];
-        if (iResultCode == QIMessageBox::Yes)
+        if (iResultCode == AlertButton_Yes)
         {
             /* Unregister machine first: */
             CMediumVector mediums = machine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
