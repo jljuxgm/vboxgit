@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 44139 2012-12-15 16:03:59Z vboxsync $ */
+/* $Id: VHD.cpp 44229 2013-01-02 12:42:39Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1568,9 +1568,7 @@ static int vhdRead(void *pBackendData, uint64_t uOffset, void *pvBuf,
         if (pcbActuallyRead)
             *pcbActuallyRead = cbBuf;
 
-        Log2(("vhdRead: off=%#llx pvBuf=%p cbBuf=%d\n"
-                "%.*Rhxd\n",
-                uOffset, pvBuf, cbBuf, cbBuf, pvBuf));
+        Log2(("vhdRead: off=%#llx pvBuf=%p cbBuf=%d\n", uOffset, pvBuf, cbBuf));
     }
 
 out:
