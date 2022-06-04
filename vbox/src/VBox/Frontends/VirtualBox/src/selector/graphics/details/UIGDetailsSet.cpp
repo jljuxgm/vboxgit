@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 43983 2012-11-28 13:48:00Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 43985 2012-11-28 14:43:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -291,6 +291,7 @@ void UIGDetailsSet::updateLayout()
                 int iHeight = pElement->minimumHeightHint();
                 pElement->resize(iWidth, iHeight);
                 /* Update minimum height hint: */
+                pElement->updateMinimumTextHeight();
                 pItem->updateSizeHint();
                 /* Resize to required height: */
                 iHeight = pElement->minimumHeightHint();
