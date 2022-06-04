@@ -1,4 +1,4 @@
-/* $Id: strformattype.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: strformattype.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions, Dynamic Types.
  */
@@ -466,9 +466,9 @@ DECLHIDDEN(size_t) rtstrFormatType(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, 
     {
         rtstrFormatTypeReadUnlock();
 
-        cch  = pfnOutput(pvArgOutput, "<missing:%R[", sizeof("<missing:%R[") - 1);
+        cch  = pfnOutput(pvArgOutput, RT_STR_TUPLE("<missing:%R["));
         cch += pfnOutput(pvArgOutput, pszType, pszTypeEnd - pszType);
-        cch += pfnOutput(pvArgOutput, "]>", sizeof("]>") - 1);
+        cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("]>"));
     }
 
     return cch;

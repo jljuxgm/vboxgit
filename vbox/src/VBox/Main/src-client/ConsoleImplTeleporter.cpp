@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -239,7 +239,7 @@ Console::teleporterSrcReadACK(TeleporterStateSrc *pState, const char *pszWhich,
     if (!strcmp(szMsg, "ACK"))
         return S_OK;
 
-    if (!strncmp(szMsg, "NACK=", sizeof("NACK=") - 1))
+    if (!strncmp(szMsg, RT_STR_TUPLE("NACK=")))
     {
         char *pszMsgText = strchr(szMsg, ';');
         if (pszMsgText)

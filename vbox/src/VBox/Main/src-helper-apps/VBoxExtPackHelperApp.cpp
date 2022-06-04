@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 42708 2012-08-09 10:15:38Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1087,7 +1087,7 @@ static RTEXITCODE DoCleanup(int argc, char **argv)
             char *pszMarker = strstr(Entry.szName, "-_-");
             if (   pszMarker
                 && (   !strcmp(pszMarker, "-_-uninst")
-                    || !strncmp(pszMarker, "-_-inst", sizeof("-_-inst") - 1)))
+                    || !strncmp(pszMarker, RT_STR_TUPLE("-_-inst"))))
                 fCandidate = VBoxExtPackIsValidMangledName(Entry.szName, pszMarker - &Entry.szName[0]);
             if (fCandidate)
             {

@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutexDriver.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstRTR0SemMutexDriver.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -237,8 +237,8 @@ int main(int argc, char **argv)
                                              TSTRTR0SEMMUTEX_SANITY_FAILURE, 0, &Req.Hdr), VINF_SUCCESS);
     if (RT_FAILURE(rc))
         return RTTestSummaryAndDestroy(hTest);
-    RTTESTI_CHECK_MSG(!strncmp(Req.szMsg, "!42failure42", sizeof("!42failure42") - 1), ("%s", Req.szMsg));
-    if (strncmp(Req.szMsg, "!42failure42", sizeof("!42failure42") - 1))
+    RTTESTI_CHECK_MSG(!strncmp(Req.szMsg, RT_STR_TUPLE("!42failure42")), ("%s", Req.szMsg));
+    if (strncmp(Req.szMsg, RT_STR_TUPLE("!42failure42")))
         return RTTestSummaryAndDestroy(hTest);
 
     /*

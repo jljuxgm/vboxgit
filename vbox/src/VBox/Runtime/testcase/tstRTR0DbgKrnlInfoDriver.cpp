@@ -1,4 +1,4 @@
-/* $Id: tstRTR0DbgKrnlInfoDriver.cpp 41947 2012-06-28 06:29:36Z vboxsync $ */
+/* $Id: tstRTR0DbgKrnlInfoDriver.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Debug kernel information, driver program.
  */
@@ -120,8 +120,8 @@ int main (int argc, char **argv)
                                              TSTRTR0DBGKRNLINFO_SANITY_FAILURE, 0, &Req.Hdr), VINF_SUCCESS);
     if (RT_FAILURE(rc))
         return RTTestSummaryAndDestroy(hTest);
-    RTTESTI_CHECK_MSG(!strncmp(Req.szMsg, "!42failure42", sizeof("!42failure42") - 1), ("%s", Req.szMsg));
-    if (strncmp(Req.szMsg, "!42failure42", sizeof("!42failure42") - 1))
+    RTTESTI_CHECK_MSG(!strncmp(Req.szMsg, RT_STR_TUPLE("!42failure42")), ("%s", Req.szMsg));
+    if (strncmp(Req.szMsg, RT_STR_TUPLE("!42failure42")))
         return RTTestSummaryAndDestroy(hTest);
 
     /*

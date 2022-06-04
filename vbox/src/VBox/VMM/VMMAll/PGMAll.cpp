@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 46125 2013-05-16 13:59:37Z vboxsync $ */
+/* $Id: PGMAll.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -2658,7 +2658,7 @@ static DECLCALLBACK(size_t) pgmFormatTypeHandlerPage(PFNRTSTROUTPUT pfnOutput, v
         cch = pfnOutput(pvArgOutput, szTmp, cch);
     }
     else
-        cch = pfnOutput(pvArgOutput, "<bad-pgmpage-ptr>", sizeof("<bad-pgmpage-ptr>") - 1);
+        cch = pfnOutput(pvArgOutput, RT_STR_TUPLE("<bad-pgmpage-ptr>"));
     NOREF(pszType); NOREF(cchWidth); NOREF(pvUser);
     return cch;
 }
@@ -2680,7 +2680,7 @@ static DECLCALLBACK(size_t) pgmFormatTypeHandlerRamRange(PFNRTSTROUTPUT pfnOutpu
         cch = pfnOutput(pvArgOutput, szTmp, cch);
     }
     else
-        cch = pfnOutput(pvArgOutput, "<bad-pgmramrange-ptr>", sizeof("<bad-pgmramrange-ptr>") - 1);
+        cch = pfnOutput(pvArgOutput, RT_STR_TUPLE("<bad-pgmramrange-ptr>"));
     NOREF(pszType); NOREF(cchWidth); NOREF(cchPrecision); NOREF(pvUser); NOREF(fFlags);
     return cch;
 }

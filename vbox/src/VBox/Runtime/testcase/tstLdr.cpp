@@ -1,4 +1,4 @@
-/* $Id: tstLdr.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstLdr.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*.
  */
@@ -121,7 +121,7 @@ static int testLdrOne(const char *pszFilename)
 
         /* open it */
         int rc;
-        if (!strncmp(aLoads[i].pszName, "kLdr-", sizeof("kLdr-") - 1))
+        if (!strncmp(aLoads[i].pszName, RT_STR_TUPLE("kLdr-")))
             rc = RTLdrOpenkLdr(pszFilename, 0, RTLDRARCH_WHATEVER, &aLoads[i].hLdrMod);
         else
             rc = RTLdrOpen(pszFilename, 0, RTLDRARCH_WHATEVER, &aLoads[i].hLdrMod);

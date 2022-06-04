@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 44872 2013-02-28 16:48:03Z vboxsync $ */
+/* $Id: VBoxService.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -860,17 +860,17 @@ int main(int argc, char **argv)
             {
                 bool fFound = false;
 
-                if (cch > sizeof("enable-") && !memcmp(psz, "enable-", sizeof("enable-") - 1))
+                if (cch > sizeof("enable-") && !memcmp(psz, RT_STR_TUPLE("enable-")))
                     for (unsigned j = 0; !fFound && j < RT_ELEMENTS(g_aServices); j++)
                         if ((fFound = !RTStrICmp(psz + sizeof("enable-") - 1, g_aServices[j].pDesc->pszName)))
                             g_aServices[j].fEnabled = true;
 
-                if (cch > sizeof("disable-") && !memcmp(psz, "disable-", sizeof("disable-") - 1))
+                if (cch > sizeof("disable-") && !memcmp(psz, RT_STR_TUPLE("disable-")))
                     for (unsigned j = 0; !fFound && j < RT_ELEMENTS(g_aServices); j++)
                         if ((fFound = !RTStrICmp(psz + sizeof("disable-") - 1, g_aServices[j].pDesc->pszName)))
                             g_aServices[j].fEnabled = false;
 
-                if (cch > sizeof("only-") && !memcmp(psz, "only-", sizeof("only-") - 1))
+                if (cch > sizeof("only-") && !memcmp(psz, RT_STR_TUPLE("only-")))
                     for (unsigned j = 0; j < RT_ELEMENTS(g_aServices); j++)
                     {
                         g_aServices[j].fEnabled = !RTStrICmp(psz + sizeof("only-") - 1, g_aServices[j].pDesc->pszName);
