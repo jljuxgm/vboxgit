@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47094 2013-07-11 14:23:32Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47105 2013-07-11 17:10:40Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7363,6 +7363,8 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptNmi(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
 
     if (uIntrType == VMX_EXIT_INTERRUPTION_INFO_TYPE_NMI)
     {
+        /** @todo We should inject the NMI to the host by calling the NMI
+         *  interrupt handler! See Intel spec. 27.5.5 "Updating Non-Register State". */
         STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatExitXcptNmi, y3);
         return VINF_EM_RAW_INTERRUPT;
     }
