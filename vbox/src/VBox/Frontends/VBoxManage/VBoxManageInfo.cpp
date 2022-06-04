@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 43463 2012-09-28 14:00:13Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 43635 2012-10-15 05:15:43Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -499,7 +499,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
     SHOW_BOOLEAN_PROP(     machine, PageFusionEnabled,          "pagefusion",           "Page Fusion");
     SHOW_ULONG_PROP(       machine, VRAMSize,                   "vram",                 "VRAM size",        "MB");
     SHOW_ULONG_PROP(       machine, CPUExecutionCap,            "cpuexecutioncap",      "CPU exec cap",     "%%");
-    SHOW_BOOLEAN_PROP(     machine, PageFusionEnabled,          "hpet",                 "HPET");
+    SHOW_BOOLEAN_PROP(     machine, HPETEnabled,                "hpet",                 "HPET");
 
     ChipsetType_T chipsetType;
     CHECK_ERROR2_RET(machine, COMGETTER(ChipsetType)(&chipsetType), hrcCheck);
