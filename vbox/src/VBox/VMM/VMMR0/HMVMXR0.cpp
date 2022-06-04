@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47682 2013-08-12 22:57:18Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47683 2013-08-12 23:09:09Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9154,7 +9154,7 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
          * and take appropriate action.
          * Note that the I/O breakpoint type is undefined if CR4.DE is 0.
          */
-        int rc2 = hmR0VmxSaveGuestDR7(pVCpu, pMixedCtx);
+        rc2 = hmR0VmxSaveGuestDR7(pVCpu, pMixedCtx);
         AssertRCReturn(rc2, rc2);
 
         /** @todo Optimize away the DBGFBpIsHwIoArmed call by having DBGF tell the
