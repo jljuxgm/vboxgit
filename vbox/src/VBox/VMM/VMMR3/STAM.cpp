@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 45189 2013-03-26 09:31:59Z vboxsync $ */
+/* $Id: STAM.cpp 46436 2013-06-07 11:55:46Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -609,8 +609,13 @@ static int stamR3RegisterU(PUVM pUVM, void *pvSample, PFNSTAMR3CALLBACKRESET pfn
     /*
      * Check if exists.
      */
-    PSTAMDESC   pPrev = NULL;
-    PSTAMDESC   pCur = pUVM->stam.s.pHead;
+    PSTAMDESC   pPrev = pUVM->stam.s.pHint;
+    PSTAMDESC   pCur  = pPrev ? pPrev->pNext : NULL;
+    if (!pCur || strcmp(pCur->pszName, pszName) > 0)
+    {
+        pPrev = NULL;
+        pCur  = pUVM->stam.s.pHead;
+    }
     while (pCur)
     {
         int iDiff = strcmp(pCur->pszName, pszName);
@@ -629,6 +634,7 @@ static int stamR3RegisterU(PUVM pUVM, void *pvSample, PFNSTAMR3CALLBACKRESET pfn
         pPrev = pCur;
         pCur = pCur->pNext;
     }
+    pUVM->stam.s.pHint = pPrev;
 
     /*
      * Check that the name doesn't screw up sorting order when taking

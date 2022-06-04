@@ -1,4 +1,4 @@
-/* $Id: STAMInternal.h 45189 2013-03-26 09:31:59Z vboxsync $ */
+/* $Id: STAMInternal.h 46436 2013-06-07 11:55:46Z vboxsync $ */
 /** @file
  * STAM Internal Header.
  */
@@ -104,6 +104,8 @@ typedef struct STAMUSERPERVM
 {
     /** Pointer to the first sample. */
     R3PTRTYPE(PSTAMDESC)    pHead;
+    /** Lookup hint (pPrev value). */
+    R3PTRTYPE(PSTAMDESC)    pHint;
     /** RW Lock for the list. */
 #ifndef USE_PDMCRITSECTRW
     RTSEMRW                 RWSem;
