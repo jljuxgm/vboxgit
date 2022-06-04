@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46440 2013-06-07 13:38:21Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46442 2013-06-07 14:34:39Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6685,8 +6685,9 @@ VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     rc = hmR0VmxSetupVMRunHandler(pVCpu, pMixedCtx);
     AssertLogRelMsgRCReturn(rc, ("hmR0VmxSetupVMRunHandler! rc=%Rrc (pVM=%p pVCpu=%p)\n", rc, pVM, pVCpu), rc);
 
-    /* Clear the currently unused reserved bits. */
-    pVCpu->hm.s.fContextUseFlags &= ~(  HM_CHANGED_VMX_RESERVED1
+    /* Clear any unused and reserved bits. */
+    pVCpu->hm.s.fContextUseFlags &= ~(  HM_CHANGED_GUEST_CR2
+                                      | HM_CHANGED_VMX_RESERVED1
                                       | HM_CHANGED_VMX_RESERVED2);
 
     AssertMsg(!pVCpu->hm.s.fContextUseFlags,
