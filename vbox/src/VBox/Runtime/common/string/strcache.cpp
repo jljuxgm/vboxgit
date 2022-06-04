@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: strcache.cpp 46101 2013-05-15 15:36:43Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -164,6 +164,27 @@ RTDECL(const char *) RTStrCacheEnter(RTSTRCACHE hStrCache, const char *psz)
     return RTStrCacheEnterN(hStrCache, psz, strlen(psz));
 }
 RT_EXPORT_SYMBOL(RTStrCacheEnter);
+
+
+RTDECL(const char *) RTStrCacheEnterLowerN(RTSTRCACHE hStrCache, const char *pchString, size_t cchString)
+{
+    AssertPtr(pchString);
+    AssertReturn(cchString < _1G, NULL);
+    Assert(!RTStrEnd(pchString, cchString));
+
+    char *pszRet = (char *)RTMemPoolDupEx((RTMEMPOOL)hStrCache, pchString, cchString, 1);
+    if (!pszRet)
+        RTStrToLower(pszRet);
+    return pszRet;
+}
+RT_EXPORT_SYMBOL(RTStrCacheEnterLowerN);
+
+
+RTDECL(const char *) RTStrCacheEnterLower(RTSTRCACHE hStrCache, const char *psz)
+{
+    return RTStrCacheEnterLowerN(hStrCache, psz, strlen(psz));
+}
+RT_EXPORT_SYMBOL(RTStrCacheEnterLower);
 
 
 RTDECL(uint32_t) RTStrCacheRetain(const char *psz)

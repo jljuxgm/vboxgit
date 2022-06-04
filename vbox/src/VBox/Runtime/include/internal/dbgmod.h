@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 46083 2013-05-14 23:39:28Z vboxsync $ */
+/* $Id: dbgmod.h 46101 2013-05-15 15:36:43Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -528,6 +528,8 @@ typedef struct RTDBGMODINT
 
     /** The module name (short). */
     char const         *pszName;
+    /** The image file specified by the user.  Can be NULL. */
+    char const         *pszImgFileSpecified;
     /** The module filename. Can be NULL. */
     char const         *pszImgFile;
     /** The debug info file (if external). Can be NULL. */

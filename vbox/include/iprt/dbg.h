@@ -1,4 +1,4 @@
-/* $Id: dbg.h 46083 2013-05-14 23:39:28Z vboxsync $ */
+/* $Id: dbg.h 46101 2013-05-15 15:36:43Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -969,6 +969,35 @@ RTDECL(uint32_t)    RTDbgModRelease(RTDBGMOD hDbgMod);
  * @param   hDbgMod         The module handle.
  */
 RTDECL(const char *) RTDbgModName(RTDBGMOD hDbgMod);
+
+/**
+ * Gets the name of the debug info file we're using.
+ *
+ * @returns Pointer to a read only string containing the filename, NULL if we
+ *          don't use one.
+ *
+ * @param   hDbgMod         The module handle.
+ */
+RTDECL(const char *) RTDbgModDebugFile(RTDBGMOD hDbgMod);
+
+/**
+ * Gets the image filename (as specified by the user).
+ *
+ * @returns Pointer to a read only string containing the filename.
+ *
+ * @param   hDbgMod         The module handle.
+ */
+RTDECL(const char *) RTDbgModImageFile(RTDBGMOD hDbgMod);
+
+/**
+ * Gets the image filename actually used if it differs from RTDbgModImageFile.
+ *
+ * @returns Pointer to a read only string containing the filename, NULL if same
+ *          as RTDBgModImageFile.
+ *
+ * @param   hDbgMod         The module handle.
+ */
+RTDECL(const char *) RTDbgModImageFileUsed(RTDBGMOD hDbgMod);
 
 /**
  * Converts an image relative address to a segment:offset address.
