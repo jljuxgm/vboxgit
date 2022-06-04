@@ -1,4 +1,4 @@
-/* $Id: udp.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: udp.c 45322 2013-04-04 04:49:45Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -277,7 +277,7 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
      * DNS proxy
      */
     if (   pData->fUseDnsProxy
-        && (ip->ip_dst.s_addr == RT_H2N_U32(RT_N2H_U32(pData->special_addr.s_addr) | CTL_DNS))
+        && CTL_CHECK(ip->ip_dst.s_addr, CTL_DNS)
         && (uh->uh_dport == RT_H2N_U16_C(53)))
     {
         dnsproxy_query(pData, so, m, iphlen);
