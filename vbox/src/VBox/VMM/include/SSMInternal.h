@@ -1,4 +1,4 @@
-/* $Id: SSMInternal.h 35346 2010-12-27 16:13:13Z vboxsync $ */
+/* $Id: SSMInternal.h 44505 2013-02-01 10:26:12Z vboxsync $ */
 /** @file
  * SSM - Internal header file.
  */
@@ -199,6 +199,8 @@ typedef struct SSMUNIT
     /** The offset of the final data unit.
      * This is used for constructing the directory. */
     RTFOFF                  offStream;
+    /** Critical section to be taken before working any of the callbacks. */
+    PPDMCRITSECT            pCritSect;
     /** The guessed size of the data unit - used only for progress indication. */
     size_t                  cbGuess;
     /** Name size. (bytes) */
