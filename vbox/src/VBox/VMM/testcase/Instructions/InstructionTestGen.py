@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: InstructionTestGen.py 47135 2013-07-14 16:43:54Z vboxsync $
+# $Id: InstructionTestGen.py 47138 2013-07-14 18:05:53Z vboxsync $
 
 """
 Instruction Test Generator.
@@ -15,7 +15,7 @@ Copyright (C) 2012-2013 Oracle Corporation
 Oracle Corporation confidential
 All rights reserved
 """
-__version__ = "$Revision: 47135 $";
+__version__ = "$Revision: 47138 $";
 
 
 # pylint: disable=C0103,R0913
@@ -1291,7 +1291,7 @@ class InstrTest_DivIDiv(InstrTestBase):
             while iOp2 == X86_GREG_xAX or iOp2 == X86_GREG_xDX:
                 iOp2 = oGen.oTarget.randGRegNoSp();
 
-            for cbEffOp in [1]:#( 8, 4, 2, 1 ):
+            for cbEffOp in ( 8, 4, 2, 1 ):
                 if cbEffOp > oGen.oTarget.getMaxOpBytes():
                     continue;
                 oGen.write('; cbEffOp=%u iOp2=%u\n' % (cbEffOp, iOp2,));
@@ -1329,7 +1329,7 @@ g_aoInstructionTests = [
     #InstrTest_Mov_Gv_Ev(),
     ##InstrTest_MovSxD_Gv_Ev(),
     InstrTest_DivIDiv(fIsIDiv = False),
-    #InstrTest_DivIDiv(fIsIDiv = True),
+    InstrTest_DivIDiv(fIsIDiv = True),
 ];
 
 
@@ -1590,7 +1590,7 @@ class InstructionTestGen(object): # pylint: disable=R0902
         Writes the file header.
         Raises exception on trouble.
         """
-        self.write('; $Id: InstructionTestGen.py 47135 2013-07-14 16:43:54Z vboxsync $\n'
+        self.write('; $Id: InstructionTestGen.py 47138 2013-07-14 18:05:53Z vboxsync $\n'
                    ';; @file %s\n'
                    '; Autogenerate by %s %s. DO NOT EDIT\n'
                    ';\n'

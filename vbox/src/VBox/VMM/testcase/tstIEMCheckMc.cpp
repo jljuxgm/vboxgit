@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 46953 2013-07-03 20:46:10Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 47138 2013-07-14 18:05:53Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -502,6 +502,7 @@ IEMOPSHIFTDBLSIZES g_iemAImpl_shrd;
 #define IEM_MC_CALL_VOID_AIMPL_2(a_pfn, a0, a1)                         do {} while (0)
 #define IEM_MC_CALL_VOID_AIMPL_3(a_pfn, a0, a1, a2)                     do {} while (0)
 #define IEM_MC_CALL_VOID_AIMPL_4(a_pfn, a0, a1, a2, a3)                 do {} while (0)
+#define IEM_MC_CALL_AIMPL_3(a_rc, a_pfn, a0, a1, a2)                    do { (a_rc) = VINF_SUCCESS; } while (0)
 #define IEM_MC_CALL_AIMPL_4(a_rc, a_pfn, a0, a1, a2, a3)                do { (a_rc) = VINF_SUCCESS; } while (0)
 #define IEM_MC_CALL_CIMPL_0(a_pfnCImpl)                                 return VINF_SUCCESS
 #define IEM_MC_CALL_CIMPL_1(a_pfnCImpl, a0)                             return VINF_SUCCESS
