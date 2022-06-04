@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 46734 2013-06-22 19:39:58Z vboxsync $ */
+/* $Id: MachineImpl.cpp 46816 2013-06-26 19:46:07Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1729,12 +1729,14 @@ STDMETHODIMP Machine::COMSETTER(VideoCaptureEnabled)(BOOL fEnabled)
     mHWData.backup();
     mHWData->mVideoCaptureEnabled = fEnabled;
 
+    alock.release();
+    rc = onVideoCaptureChange();
+    alock.acquire();
+    if (FAILED(rc)) return rc;
+
     /** Save settings if online - @todo why is this required? -- @bugref{6818} */
     if (Global::IsOnline(mData->mMachineState))
         saveSettings(NULL);
-
-    alock.release();
-    rc = onVideoCaptureChange();
 
     return rc;
 }
