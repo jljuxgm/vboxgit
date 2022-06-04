@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 47018 2013-07-06 17:31:11Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 47112 2013-07-12 10:37:42Z vboxsync $ */
 
 /** @file
  *
@@ -412,7 +412,7 @@ STDMETHODIMP DHCPServer::GetMacOptions(IN_BSTR aMAC, ComSafeArrayOut(BSTR, aValu
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
-    HRESULT hrc;
+    HRESULT hrc = S_OK;
 
     ComPtr<IMachine> machine;
     ComPtr<INetworkAdapter> nic;
@@ -458,6 +458,7 @@ STDMETHODIMP DHCPServer::GetMacOptions(IN_BSTR aMAC, ComSafeArrayOut(BSTR, aValu
 
 STDMETHODIMP DHCPServer::COMGETTER(EventSource)(IEventSource **aEventSource)
 {
+    NOREF(aEventSource);
     ReturnComNotImplemented();
 }
 
