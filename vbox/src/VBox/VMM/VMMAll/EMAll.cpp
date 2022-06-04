@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 45533 2013-04-13 16:13:22Z vboxsync $ */
+/* $Id: EMAll.cpp 45549 2013-04-15 12:16:54Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -3679,7 +3679,7 @@ DECLINLINE(VBOXSTRICTRC) emInterpretInstructionCPU(PVM pVM, PVMCPU pVCpu, PDISCP
 #endif
         {
             if (    cpl != 0
-                ||  pDis->pCurInstr->uOpcode != OP_RDTSC)    /* rdtsc requires emulation in ring 3 as well */
+                &&  pDis->pCurInstr->uOpcode != OP_RDTSC)    /* rdtsc requires emulation in ring 3 as well */
             {
                 Log(("WARNING: refusing instruction emulation for user-mode code!!\n"));
                 STAM_COUNTER_INC(&pVCpu->em.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,FailedUserMode));
