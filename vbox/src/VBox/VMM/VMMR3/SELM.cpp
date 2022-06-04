@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 42407 2012-07-26 11:41:35Z vboxsync $ */
+/* $Id: SELM.cpp 42418 2012-07-26 16:24:26Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -1296,7 +1296,7 @@ static VBOXSTRICTRC selmR3UpdateSegmentRegisters(PVM pVM, PVMCPU pVCpu)
         if (Sel & (X86_SEL_MASK | X86_SEL_LDT))
         {
             /* Get the shadow descriptor entry corresponding to this. */
-            static X86DESC const s_NotPresentDesc = { { 0 } };
+            static X86DESC const s_NotPresentDesc = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
             PCX86DESC pDesc;
             if (!(Sel & X86_SEL_LDT))
             {
