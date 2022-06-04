@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.cpp 47302 2013-07-22 14:18:41Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.cpp 47352 2013-07-23 16:19:20Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -373,7 +373,9 @@ DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint
             RTThreadCtxHooksDeregister(hThreadCtx);
 
             Assert(RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-            RTThreadCtxHooksDestroy(hThreadCtx);
+            uint32_t cRefs = RTThreadCtxHooksRelease(hThreadCtx);
+            if (cRefs == UINT32_MAX)
+                RTStrPrintf(pszErr, cchErr, "!RTThreadCtxHooksRelease returns invalid cRefs!");
 
             RTMemFree(pCtxData);
             break;

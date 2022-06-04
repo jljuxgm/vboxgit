@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 47199 2013-07-16 15:45:42Z vboxsync $ */
+/* $Id: SUPDrv.c 47352 2013-07-23 16:19:20Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -368,8 +368,9 @@ static SUPFUNC g_aFunctions[] =
     { "RTThreadCreate",                         (void *)RTThreadCreate },
     { "RTThreadCtxHooksCreate",                 (void *)RTThreadCtxHooksCreate },
     { "RTThreadCtxHooksDeregister",             (void *)RTThreadCtxHooksDeregister },
-    { "RTThreadCtxHooksDestroy",                (void *)RTThreadCtxHooksDestroy },
     { "RTThreadCtxHooksRegister",               (void *)RTThreadCtxHooksRegister },
+    { "RTThreadCtxHooksRelease",                (void *)RTThreadCtxHooksRelease },
+    { "RTThreadCtxHooksRetain",                 (void *)RTThreadCtxHooksRetain },
     { "RTThreadGetName",                        (void *)RTThreadGetName },
     { "RTThreadGetNative",                      (void *)RTThreadGetNative },
     { "RTThreadGetType",                        (void *)RTThreadGetType },
