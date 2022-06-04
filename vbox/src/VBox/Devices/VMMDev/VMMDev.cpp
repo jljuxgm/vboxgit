@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 44773 2013-02-21 12:36:18Z vboxsync $ */
+/* $Id: VMMDev.cpp 44774 2013-02-21 12:41:51Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2185,13 +2185,10 @@ static int vmmdevReqHandler_WriteCoreDump(PVMMDEV pThis, VMMDevRequestHeader *pR
     return DBGFR3CoreWrite(pUVM, szCorePath, true /*fReplaceFile*/);
 }
 
+
 /**
- * Port I/O Handler for the generic request interface
- * @see FNIOMIOPORTOUT for details.
- *
- * @todo This function is too long!!  All new request SHALL be implemented as
- *       functions called from the switch!  When making changes, please move the
- *       relevant cases into functions.
+ * @callback_method_impl{FNIOMIOPORTOUT, Port I/O Handler for the generic
+ *                      request interface.}
  */
 static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t u32, unsigned cb)
 {
