@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 40907 2012-04-13 20:50:14Z vboxsync $ */
+/* $Id: DevPIC.cpp 44509 2013-02-01 13:11:17Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -928,7 +928,6 @@ static DECLCALLBACK(void) picRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
 static DECLCALLBACK(int)  picConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
     PDEVPIC         pThis = PDMINS_2_DATA(pDevIns, PDEVPIC);
-    PDMPICREG       PicReg;
     int             rc;
     bool            fGCEnabled;
     bool            fR0Enabled;
@@ -972,6 +971,7 @@ static DECLCALLBACK(int)  picConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     /*
      * Register us as the PIC with PDM.
      */
+    PDMPICREG PicReg;
     PicReg.u32Version           = PDM_PICREG_VERSION;
     PicReg.pfnSetIrqR3          = picSetIrq;
     PicReg.pfnGetInterruptR3    = picGetInterrupt;

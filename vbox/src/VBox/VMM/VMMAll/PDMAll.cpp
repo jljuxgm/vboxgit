@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 44351 2013-01-24 12:04:39Z vboxsync $ */
+/* $Id: PDMAll.cpp 44509 2013-02-01 13:11:17Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -317,16 +317,18 @@ VMMDECL(int) PDMApicSetTPR(PVMCPU pVCpu, uint8_t u8TPR)
  * @param   pfPending       Pending interrupt state (out).
  *
  * @remarks No-long-jump zone!!!
-*/
+ */
 VMMDECL(int) PDMApicGetTPR(PVMCPU pVCpu, uint8_t *pu8TPR, bool *pfPending)
 {
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     if (pVM->pdm.s.Apic.CTX_SUFF(pDevIns))
     {
-        Assert(pVM->pdm.s.Apic.CTX_SUFF(pfnGetTPR));
-        /* We don't acquire the PDM lock here as we're just reading information. Doing so causes massive
-         * contention as this function is called very often by each and every VCPU.
+        /*
+         * Note! We don't acquire the PDM lock here as we're just reading
+         *       information. Doing so causes massive contention as this
+         *       function is called very often by each and every VCPU.
          */
+        Assert(pVM->pdm.s.Apic.CTX_SUFF(pfnGetTPR));
         *pu8TPR = pVM->pdm.s.Apic.CTX_SUFF(pfnGetTPR)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), pVCpu->idCpu);
         if (pfPending)
             *pfPending = pVM->pdm.s.Apic.CTX_SUFF(pfnHasPendingIrq)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), pVCpu->idCpu);
