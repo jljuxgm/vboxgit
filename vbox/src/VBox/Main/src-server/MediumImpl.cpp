@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 44365 2013-01-25 10:24:45Z vboxsync $ */
+/* $Id: MediumImpl.cpp 44376 2013-01-25 13:35:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1542,10 +1542,11 @@ STDMETHODIMP Medium::COMGETTER(Variant)(ComSafeArrayOut(MediumVariant_T, aVarian
 
     SafeArray<MediumVariant_T> variants(sizeof(MediumVariant_T)*8);
 
-    for (unsigned int i = 0; i < variants.size(); ++i)
+    for (ulong i = 0; i < variants.size(); ++i)
     {
-        MediumVariant_T temp = m->variant;
-        variants [i] = (temp & (1<<i));
+        ulong temp = m->variant;
+        temp &= 1<<i; 
+        variants [i] = (MediumVariant_T)temp;
     }
 
     variants.detachTo(ComSafeArrayOutArg(aVariant));
