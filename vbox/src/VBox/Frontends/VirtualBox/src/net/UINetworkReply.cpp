@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 43709 2012-10-23 12:24:21Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 43710 2012-10-23 12:48:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -141,16 +141,16 @@ public:
             case QNetworkReply::NoError:
                 break;
             case QNetworkReply::HostNotFoundError:
-                return tr("The server has not found anything matching the URI given");
+                return tr("Host not found");
                 break;
             case QNetworkReply::ContentAccessDenied:
-                return tr("The request is for something forbidden, authorization will not help");
+                return tr("Content access denied");
                 break;
             case QNetworkReply::ProtocolFailure:
-                return tr("The server did not understand the request due to bad syntax");
+                return tr("Protocol failure");
                 break;
             default:
-                return tr("Unrecognized network error");
+                return tr("Unknown reason");
                 break;
         }
         return QString();
