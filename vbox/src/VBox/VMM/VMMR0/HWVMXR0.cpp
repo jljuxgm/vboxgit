@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 45387 2013-04-05 21:37:40Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 45453 2013-04-10 11:15:16Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -5499,7 +5499,7 @@ DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMCSCACHE 
 }
 
 
-# ifdef VBOX_STRICT
+#ifdef VBOX_STRICT
 static bool hmR0VmxIsValidReadField(uint32_t idxField)
 {
     switch (idxField)
@@ -5595,7 +5595,7 @@ static bool hmR0VmxIsValidWriteField(uint32_t idxField)
     }
     return false;
 }
-# endif /* VBOX_STRICT */
+#endif /* VBOX_STRICT */
 
 
 /**
