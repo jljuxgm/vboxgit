@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 41867 2012-06-21 21:08:19Z vboxsync $ */
+/* $Id: DisasmTables.cpp 42719 2012-08-09 17:23:46Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -604,8 +604,8 @@ const DISOPCODE g_aTwoByteMapX86[256] =
     OP("Grp10 Invalid Op",   IDX_ParseGrp10,     0,              0,          OP_GRP10_INV,OP_PARM_NONE,      OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("Grp8",               IDX_ParseGrp8,      0,              0,          OP_GRP8,    OP_PARM_Ev,         OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("btc %Ev,%Gv",        IDX_ParseModRM,     IDX_UseModRM,   0,          OP_BTC,     OP_PARM_Ev,         OP_PARM_Gv,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("bsf %Ev,%Gv",        IDX_ParseModRM,     IDX_UseModRM,   0,          OP_BSF,     OP_PARM_Ev,         OP_PARM_Gv,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
-    OP("bsr %Ev,%Gv",        IDX_ParseModRM,     IDX_UseModRM,   0,          OP_BSR,     OP_PARM_Ev,         OP_PARM_Gv,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("bsf %Gv,%Ev",        IDX_ParseModRM,     IDX_UseModRM,   0,          OP_BSF,     OP_PARM_Gv,         OP_PARM_Ev,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("bsr %Gv,%Ev",        IDX_ParseModRM,     IDX_UseModRM,   0,          OP_BSR,     OP_PARM_Gv,         OP_PARM_Ev,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("movsx %Gv,%Eb",      IDX_ParseModRM,     IDX_UseModRM,   0,          OP_MOVSX,   OP_PARM_Gv,         OP_PARM_Eb,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("movsx %Gv,%Ew",      IDX_ParseModRM,     IDX_UseModRM,   0,          OP_MOVSX,   OP_PARM_Gv,         OP_PARM_Ew,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
 
