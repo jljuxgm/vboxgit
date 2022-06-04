@@ -1,4 +1,4 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 45459 2013-04-10 15:24:23Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
@@ -28,10 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#if defined(RT_OS_DARWIN)
-# error "PORTME"
-
-#elif defined(RT_OS_OS2)
+#if defined(RT_OS_OS2)
 # define INCL_BASE
 # define INCL_ERRORS
 # include <os2.h>
@@ -73,10 +70,7 @@
  */
 VBGLR3DECL(int) VbglR3Daemonize(bool fNoChDir, bool fNoClose)
 {
-#if defined(RT_OS_DARWIN)
-# error "PORTME"
-
-#elif defined(RT_OS_OS2)
+#if defined(RT_OS_OS2)
     PPIB pPib;
     PTIB pTib;
     DosGetInfoBlocks(&pTib, &pPib);

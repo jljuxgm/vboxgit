@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45017 2013-03-13 12:51:10Z vboxsync $
+# $Id: Makefile.kmk 45459 2013-04-10 15:24:23Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -118,6 +118,8 @@ VBoxService_SOURCES.win  += \
 VBoxService_SOURCES.os2   = \
 	VBoxService-os2.def \
 	VBoxServiceClipboard-os2.cpp
+
+VBoxService_LDFLAGS.darwin = -framework IOKit
 
 VBoxService_LIBS        += \
 	$(VBOX_LIB_IPRT_GUEST_R3) \
