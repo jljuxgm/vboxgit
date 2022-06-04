@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 40825 2012-04-08 17:06:59Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 44489 2013-01-31 13:06:51Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -297,6 +297,10 @@ RTR3DECL(int)   RTProcCreateEx(const char *pszExec, const char * const *papszArg
     AssertReturn(!pszAsUser || *pszAsUser, VERR_INVALID_PARAMETER);
     AssertReturn(!pszPassword || pszAsUser, VERR_INVALID_PARAMETER);
     AssertPtrNullReturn(pszPassword, VERR_INVALID_POINTER);
+#if defined(RT_OS_OS2)
+    if (fFlags & RTPROC_FLAGS_DETACHED)
+        return VERR_PROC_DETACH_NOT_SUPPORTED;
+#endif
 
     /*
      * Get the file descriptors for the handles we've been passed.
