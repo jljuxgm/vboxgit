@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UsbKbd.cpp 44755 2013-02-19 15:47:26Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -742,6 +742,12 @@ static int usbHidFillReport(PUSBHIDK_REPORT pReport,
                 if (iKey == 0x90 || iKey == 0x91)
                     rc = true;
             }
+            /* Avoid "hanging" keys: If a key is unreported but no longer 
+             * depressed, we'll need to report the key-up state, too.
+             */
+            if (pabUnreportedKeys[iKey] && !pabDepressedKeys[iKey])
+                rc = true;
+            
             pabUnreportedKeys[iKey] = 0;
         }
     }
