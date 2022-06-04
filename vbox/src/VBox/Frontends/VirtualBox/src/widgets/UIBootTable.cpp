@@ -1,4 +1,4 @@
-/* $Id: UIBootTable.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIBootTable.cpp 46848 2013-06-27 14:41:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -80,14 +80,7 @@ void UIBootTable::adjustSizeToFitContent()
     int h = 2 * frameWidth();
     int w = h;
 #if QT_VERSION < 0x040700
-# ifdef Q_WS_MAC
-    int left, top, right, bottom;
-    getContentsMargins(&left, &top, &right, &bottom);
-    h += top + bottom;
-    w += left + right;
-# else /* Q_WS_MAC */
-    w += 4;
-# endif /* !Q_WS_MAC */
+    w += 4; // WTF?
 #endif /* QT_VERSION < 0x040700 */
     setFixedSize(sizeHintForColumn(0) + w,
                  sizeHintForRow(0) * count() + h);
