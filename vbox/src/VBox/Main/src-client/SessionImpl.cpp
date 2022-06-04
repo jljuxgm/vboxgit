@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 45284 2013-04-02 11:55:41Z vboxsync $ */
+/* $Id: SessionImpl.cpp 45679 2013-04-23 11:53:37Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -810,10 +810,10 @@ STDMETHODIMP Session::AccessGuestProperty(IN_BSTR aName, IN_BSTR aValue, IN_BSTR
         return E_POINTER;
     /* aValue can be NULL for a setter call if the property is to be deleted. */
     if (aIsSetter && (aValue != NULL) && !VALID_PTR(aValue))
-        return E_INVALIDARG;
+        return setError(E_INVALIDARG, tr("Invalid value pointer"));
     /* aFlags can be null if it is to be left as is */
     if (aIsSetter && (aFlags != NULL) && !VALID_PTR(aFlags))
-        return E_INVALIDARG;
+        return setError(E_INVALIDARG, tr("Invalid flags pointer"));
 
     /* If this session is not in a VM process fend off the call. The caller
      * handles this correctly, by doing the operation in VBoxSVC. */
