@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: DevAPIC.cpp 42537 2012-08-02 13:25:13Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  */
@@ -1066,7 +1066,9 @@ PDMBOTHCBDECL(int) apicWriteMSR(PPDMDEVINS pDevIns, VMCPUID idCpu, uint32_t u32R
 PDMBOTHCBDECL(int) apicReadMSR(PPDMDEVINS pDevIns, VMCPUID idCpu, uint32_t u32Reg, uint64_t *pu64Value)
 {
     APICDeviceInfo *pDev = PDMINS_2_DATA(pDevIns, APICDeviceInfo *);
+#ifndef DEBUG_michael  /* See xTracker #6304. */
     Assert(PDMCritSectIsOwner(pDev->CTX_SUFF(pCritSect)));
+#endif
 
     if (pDev->enmVersion < PDMAPICVERSION_X2APIC)
         return VERR_EM_INTERPRETER;
