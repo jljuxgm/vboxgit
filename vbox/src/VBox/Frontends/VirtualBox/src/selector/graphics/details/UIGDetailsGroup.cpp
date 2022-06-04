@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 42600 2012-08-05 14:32:11Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 42608 2012-08-05 21:52:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -129,17 +129,15 @@ QVariant UIGDetailsGroup::data(int iKey) const
     return QVariant();
 }
 
-void UIGDetailsGroup::updateSizeHint()
+void UIGDetailsGroup::updateLayout()
 {
     /* Update size-hints for all the items: */
     foreach (UIGDetailsItem *pItem, items())
         pItem->updateSizeHint();
     /* Update size-hint for this item: */
-    updateGeometry();
-}
+    updateSizeHint();
 
-void UIGDetailsGroup::updateLayout()
-{
+    /* Update layout finally: */
     m_pMainLayout->activate();
     m_pLayout->activate();
     foreach (UIGDetailsItem *pItem, items())

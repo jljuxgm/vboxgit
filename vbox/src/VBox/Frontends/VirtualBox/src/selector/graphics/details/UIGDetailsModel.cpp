@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 42600 2012-08-05 14:32:11Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 42608 2012-08-05 21:52:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -78,8 +78,6 @@ void UIGDetailsModel::updateLayout()
     QSize viewportSize = scene()->views()[0]->viewport()->size();
     int iViewportWidth = viewportSize.width() - 2 * iSceneMargin;
     int iViewportHeight = viewportSize.height() - 2 * iSceneMargin;
-    /* Update all the size-hints recursively: */
-    m_pRoot->updateSizeHint();
     /* Set root item position: */
     m_pRoot->setPos(iSceneMargin, iSceneMargin);
     /* Set root item size: */
