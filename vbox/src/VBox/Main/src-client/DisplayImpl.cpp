@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 45958 2013-05-08 20:08:45Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 45961 2013-05-08 20:34:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4349,18 +4349,17 @@ DECLCALLBACK(int) Display::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
 #endif
 
 #ifdef VBOX_WITH_VPX
-    rc = VideoRecContextCreate(&pDisplay->mpVideoRecCtx, pDisplay->mcMonitors);
-    if (RT_FAILURE(rc))
-    {
-        LogFlow(("Failed to create video recording context (%Rrc)!\n", rc));
-        return E_FAIL;
-    }
-
     ComPtr<IMachine> pMachine = pDisplay->mParent->machine();
     BOOL fEnabled = false;
     pMachine->COMGETTER(VideoCaptureEnabled)(&fEnabled);
     if (fEnabled)
     {
+        rc = VideoRecContextCreate(&pDisplay->mpVideoRecCtx, pDisplay->mcMonitors);
+        if (RT_FAILURE(rc))
+        {
+            LogFlow(("Failed to create video recording context (%Rrc)!\n", rc));
+            return E_FAIL;
+        }
         ULONG ulWidth;
         int hrc = pMachine->COMGETTER(VideoCaptureWidth)(&ulWidth);
         AssertComRCReturnRC(hrc);
