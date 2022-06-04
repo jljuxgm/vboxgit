@@ -1,4 +1,4 @@
-/* $Id: service.cpp 45697 2013-04-24 13:30:50Z vboxsync $ */
+/* $Id: service.cpp 46306 2013-05-29 10:32:33Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -1084,8 +1084,8 @@ int Service::clientDisconnect(uint32_t u32ClientID, void *pvClient)
                 /* Keep going. */
             }
 
-            while (pCurCmd->Release());
-
+            while (pCurCmd->Release())
+                ;
             delete pCurCmd;
             pCurCmd = NULL;
 
