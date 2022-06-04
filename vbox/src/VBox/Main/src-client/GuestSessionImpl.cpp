@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42810 2012-08-14 14:45:11Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42846 2012-08-16 13:35:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -764,8 +764,6 @@ int GuestSession::fileOpenInternal(const Utf8Str &strPath, const Utf8Str &strOpe
     if (FAILED(hr))
         return VERR_COM_UNEXPECTED;
 
-    /* Note: There will be a race between creating and getting/initing the directory
-             object here. */
     int rc = pFile->init(this /* Parent */,
                          strPath, strOpenMode, strDisposition, uCreationMode, iOffset);
     if (RT_FAILURE(rc))
@@ -817,6 +815,7 @@ int GuestSession::fsQueryInfoInternal(const Utf8Str &strPath, GuestFsObjData &ob
 {
     LogFlowThisFunc(("strPath=%s\n", strPath.c_str()));
 
+    /** @todo Merge this with IGuestFile::queryInfo(). */
     GuestProcessStartupInfo procInfo;
     procInfo.mName    = Utf8StrFmt(tr("Querying info for \"%s\""), strPath.c_str());
     procInfo.mCommand = Utf8Str(VBOXSERVICE_TOOL_STAT);

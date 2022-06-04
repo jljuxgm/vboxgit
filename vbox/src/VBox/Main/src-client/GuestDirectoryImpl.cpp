@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 42759 2012-08-10 15:53:25Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 42846 2012-08-16 13:35:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -193,6 +193,7 @@ STDMETHODIMP GuestDirectory::Close(void)
 
     uninit();
 
+    LogFlowThisFuncLeave();
     return S_OK;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
