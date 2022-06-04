@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47247 2013-07-19 10:01:36Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47254 2013-07-19 13:04:47Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5434,9 +5434,9 @@ DECLINLINE(int) hmR0VmxReadSegmentReg(PVMCPU pVCpu, uint32_t idxSel, uint32_t id
      *
      * bird: This isn't quite as simple.  VT-x and VBox(!) requires the DPL for SS to be the the same as CPL.  In 64-bit mode it
      *       is possible (int/trap/xxx injects does this when switching rings) to load SS with a NULL selector and RPL=CPL.
-     *       The Attr.u = X86DESCATTR_UNUSABLE works fine as long as nobody uses ring-1 or ring-2.  VT-x seems to set the DPL
-     *       correctly in the attributes even when the unusable bit is set, we need to preseve the DPL or we get invalid guest
-     *       state trouble.  Try bs2-cpu-hidden-regs-1.
+     *       The Attr.u = X86DESCATTR_UNUSABLE works fine as long as nobody uses ring-1 or ring-2.  VT-x updates the DPL
+     *       correctly in the attributes of SS even when the unusable bit is set, we need to preseve the DPL or we get invalid
+     *       guest state trouble.  Try bs2-cpu-hidden-regs-1.
      */
     if (pSelReg->Attr.u & X86DESCATTR_UNUSABLE)
     {
