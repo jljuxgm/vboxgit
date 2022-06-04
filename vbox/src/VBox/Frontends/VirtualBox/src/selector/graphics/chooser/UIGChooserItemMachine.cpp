@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43577 2012-10-09 10:16:20Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43594 2012-10-10 13:58:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -150,6 +150,41 @@ bool UIGChooserItemMachine::isLockedMachine() const
 void UIGChooserItemMachine::updateToolTip()
 {
     setToolTip(toolTipText());
+}
+
+/* static */
+void UIGChooserItemMachine::enumerateMachineItems(const QList<UIGChooserItem*> &il,
+                                                  QList<UIGChooserItemMachine*> &ol,
+                                                  int iEnumerationFlags /* = 0 */)
+{
+    /* Enumerate all the passed items: */
+    foreach (UIGChooserItem *pItem, il)
+    {
+        /* If that is machine-item: */
+        if (pItem->type() == UIGChooserItemType_Machine)
+        {
+            /* Get the iterated machine-item: */
+            UIGChooserItemMachine *pMachineItem = pItem->toMachineItem();
+            /* Skip if this item is already enumerated but we need unique: */
+            if ((iEnumerationFlags & UIGChooserItemMachineEnumerationFlag_Unique) &&
+                contains(ol, pMachineItem))
+                continue;
+            /* Skip if ths item is accessible and we no need it: */
+            if ((iEnumerationFlags & UIGChooserItemMachineEnumerationFlag_Inaccessible) &&
+                pMachineItem->accessible())
+                continue;
+            /* Add it: */
+            ol << pMachineItem;
+        }
+        /* If that is group-item: */
+        else if (pItem->type() == UIGChooserItemType_Group)
+        {
+            /* Enumerate all the machine-items recursively: */
+            enumerateMachineItems(pItem->items(UIGChooserItemType_Machine), ol, iEnumerationFlags);
+            /* Enumerate all the group-items recursively: */
+            enumerateMachineItems(pItem->items(UIGChooserItemType_Group), ol, iEnumerationFlags);
+        }
+    }
 }
 
 QVariant UIGChooserItemMachine::data(int iKey) const
@@ -866,5 +901,15 @@ void UIGChooserItemMachine::prepare()
     connect(m_pCloseButton, SIGNAL(sigButtonClicked()),
             gActionPool->action(UIActionIndexSelector_Simple_Machine_Close_PowerOff), SLOT(trigger()),
             Qt::QueuedConnection);
+}
+
+/* static */
+bool UIGChooserItemMachine::contains(const QList<UIGChooserItemMachine*> &list, UIGChooserItemMachine *pItem)
+{
+    /* Check if passed list contains passed machine-item id: */
+    foreach (UIGChooserItemMachine *pIteratedItem, list)
+        if (pIteratedItem->id() == pItem->id())
+            return true;
+    return false;
 }
 
