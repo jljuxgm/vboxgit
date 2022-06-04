@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 46113 2013-05-15 22:39:43Z vboxsync $ */
+/* $Id: dbgmod.h 46134 2013-05-16 23:32:06Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -574,11 +574,16 @@ extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgNm;
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgDbgHelp;
 #endif
 extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgDeferred;
+extern DECLHIDDEN(RTDBGMODVTDBG const)  g_rtDbgModVtDbgContainer;
 
 extern DECLHIDDEN(RTDBGMODVTIMG const)  g_rtDbgModVtImgLdr;
 extern DECLHIDDEN(RTDBGMODVTIMG const)  g_rtDbgModVtImgDeferred;
 
 DECLHIDDEN(int) rtDbgModContainerCreate(PRTDBGMODINT pMod, RTUINTPTR cbSeg);
+DECLHIDDEN(int) rtDbgModContainer_SymbolRemoveAll(PRTDBGMODINT pMod);
+DECLHIDDEN(int) rtDbgModContainer_LineRemoveAll(PRTDBGMODINT pMod);
+DECLHIDDEN(int) rtDbgModContainer_RemoveAll(PRTDBGMODINT pMod);
+
 DECLHIDDEN(int) rtDbgModCreateForExports(PRTDBGMODINT pDbgMod);
 DECLHIDDEN(int) rtDbgModDeferredCreate(PRTDBGMODINT pDbgMod, PFNRTDBGMODDEFERRED pfnDeferred, RTUINTPTR cbImage,
                                        RTDBGCFG hDbgCfg, PRTDBGMODDEFERRED *ppDeferred);

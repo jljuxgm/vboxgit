@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 46109 2013-05-15 19:54:06Z vboxsync $ */
+/* $Id: dbgmod.cpp 46134 2013-05-16 23:32:06Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -1157,6 +1157,34 @@ RTDECL(bool) RTDbgModIsExports(RTDBGMOD hDbgMod)
     PRTDBGMODINT pDbgMod = hDbgMod;
     RTDBGMOD_VALID_RETURN_RC(pDbgMod, false);
     return pDbgMod->fExports;
+}
+
+
+RTDECL(int) RTDbgModRemoveAll(RTDBGMOD hDbgMod, bool fLeaveSegments)
+{
+    PRTDBGMODINT pDbgMod = hDbgMod;
+    RTDBGMOD_VALID_RETURN_RC(pDbgMod, VERR_INVALID_HANDLE);
+
+    RTDBGMOD_LOCK(pDbgMod);
+
+    /* Only possible on container modules. */
+    int rc = VINF_SUCCESS;
+    if (pDbgMod->pDbgVt != &g_rtDbgModVtDbgContainer)
+    {
+        if (fLeaveSegments)
+        {
+            rc = rtDbgModContainer_LineRemoveAll(pDbgMod);
+            if (RT_SUCCESS(rc))
+                rc = rtDbgModContainer_SymbolRemoveAll(pDbgMod);
+        }
+        else
+            rc = rtDbgModContainer_RemoveAll(pDbgMod);
+    }
+    else
+        rc = VERR_ACCESS_DENIED;
+
+    RTDBGMOD_UNLOCK(pDbgMod);
+    return rc;
 }
 
 

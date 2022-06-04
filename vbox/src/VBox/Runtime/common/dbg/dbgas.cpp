@@ -1,4 +1,4 @@
-/* $Id: dbgas.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: dbgas.cpp 46134 2013-05-16 23:32:06Z vboxsync $ */
 /** @file
  * IPRT - Debug Address Space.
  */
@@ -394,6 +394,26 @@ RTDECL(uint32_t) RTDbgAsRelease(RTDBGAS hDbgAs)
     return cRefs;
 }
 RT_EXPORT_SYMBOL(RTDbgAsRelease);
+
+
+RTDECL(int) RTDbgAsLockExcl(RTDBGAS hDbgAs)
+{
+    PRTDBGASINT pDbgAs = hDbgAs;
+    RTDBGAS_VALID_RETURN_RC(pDbgAs, VERR_INVALID_HANDLE);
+    RTDBGAS_LOCK_WRITE(pDbgAs);
+    return VINF_SUCCESS;
+}
+RT_EXPORT_SYMBOL(RTDbgAsLockExcl);
+
+
+RTDECL(int) RTDbgAsUnlockExcl(RTDBGAS hDbgAs)
+{
+    PRTDBGASINT pDbgAs = hDbgAs;
+    RTDBGAS_VALID_RETURN_RC(pDbgAs, VERR_INVALID_HANDLE);
+    RTDBGAS_UNLOCK_WRITE(pDbgAs);
+    return VINF_SUCCESS;
+}
+RT_EXPORT_SYMBOL(RTDbgAsUnlockExcl);
 
 
 /**
