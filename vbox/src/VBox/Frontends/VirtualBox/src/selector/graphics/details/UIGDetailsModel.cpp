@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 43982 2012-11-28 13:32:14Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 43983 2012-11-28 13:48:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -95,7 +95,7 @@ void UIGDetailsModel::setItems(const QList<UIVMItem*> &items)
     m_pRoot->setItems(items);
 }
 
-void UIGDetailsModel::sltHandleViewResized()
+void UIGDetailsModel::sltHandleViewResize()
 {
     /* Relayout: */
     updateLayout();

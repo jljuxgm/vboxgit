@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 42906 2012-08-21 13:32:51Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 43983 2012-11-28 13:48:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -521,13 +521,17 @@ void UIGDetailsSet::prepareElement(QString strSetId)
         /* Show element if necessary: */
         if (fVisible && !pElement->isVisible())
         {
+            /* Show the element: */
             pElement->show();
+            /* Update layout: */
             model()->updateLayout();
         }
         /* Hide element if necessary: */
         else if (!fVisible && pElement->isVisible())
         {
+            /* Hide the element: */
             pElement->hide();
+            /* Update layout: */
             model()->updateLayout();
         }
         /* Update model if necessary: */
