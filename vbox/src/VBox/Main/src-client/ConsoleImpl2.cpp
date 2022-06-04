@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 45622 2013-04-18 21:49:05Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 45660 2013-04-22 08:43:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1321,21 +1321,32 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         /*
          * VGA.
          */
-        InsertConfigNode(pDevices, "vga", &pDev);
-        InsertConfigNode(pDev,     "0", &pInst);
-        InsertConfigInteger(pInst, "Trusted",              1); /* boolean */
+        GraphicsControllerType_T graphicsController;
+        hrc = pMachine->COMGETTER(GraphicsControllerType)(&graphicsController);             H();
+        switch (graphicsController)
+        {
+            case GraphicsControllerType_VBoxVGA:
+                InsertConfigNode(pDevices, "vga", &pDev);
+                InsertConfigNode(pDev,     "0", &pInst);
+                InsertConfigInteger(pInst, "Trusted",              1); /* boolean */
 
-        hrc = pBusMgr->assignPCIDevice("vga", pInst);                                       H();
-        InsertConfigNode(pInst,    "Config", &pCfg);
-        ULONG cVRamMBs;
-        hrc = pMachine->COMGETTER(VRAMSize)(&cVRamMBs);                                     H();
-        InsertConfigInteger(pCfg,  "VRamSize",             cVRamMBs * _1M);
-        ULONG cMonitorCount;
-        hrc = pMachine->COMGETTER(MonitorCount)(&cMonitorCount);                            H();
-        InsertConfigInteger(pCfg,  "MonitorCount",         cMonitorCount);
+                hrc = pBusMgr->assignPCIDevice("vga", pInst);                               H();
+                InsertConfigNode(pInst,    "Config", &pCfg);
+                ULONG cVRamMBs;
+                hrc = pMachine->COMGETTER(VRAMSize)(&cVRamMBs);                             H();
+                InsertConfigInteger(pCfg,  "VRamSize",             cVRamMBs * _1M);
+                ULONG cMonitorCount;
+                hrc = pMachine->COMGETTER(MonitorCount)(&cMonitorCount);                    H();
+                InsertConfigInteger(pCfg,  "MonitorCount",         cMonitorCount);
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-        InsertConfigInteger(pCfg,  "R0Enabled",            fHMEnabled);
+                InsertConfigInteger(pCfg,  "R0Enabled",            fHMEnabled);
 #endif
+                break;
+            default:
+                AssertMsgFailed(("Invalid graphicsController=%d\n", graphicsController));
+                return VMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS,
+                                    N_("Invalid graphics controller type '%d'"), graphicsController);
+        }
 
         /*
          * BIOS logo
