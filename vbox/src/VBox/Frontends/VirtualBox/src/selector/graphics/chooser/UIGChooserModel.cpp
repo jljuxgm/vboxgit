@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42616 2012-08-06 12:12:48Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42624 2012-08-06 13:46:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1148,7 +1148,11 @@ int UIGChooserModel::getDesiredPosition(UIGChooserItem *pParentItem, UIGChooserI
             /* Get current item: */
             UIGChooserItem *pItem = items[i];
             /* Which position should be current item placed by definitions? */
-            int iItemDefinitionPosition = positionFromDefinitions(pParentItem, type, pItem->name());
+            QString strDefinitionName = pItem->type() == UIGChooserItemType_Group ? pItem->name() :
+                                        pItem->type() == UIGChooserItemType_Machine ? pItem->toMachineItem()->id() :
+                                        QString();
+            AssertMsg(!strDefinitionName.isEmpty(), ("Wrong definition name!"));
+            int iItemDefinitionPosition = positionFromDefinitions(pParentItem, type, strDefinitionName);
             /* If some position wanted: */
             if (iItemDefinitionPosition != -1)
             {
@@ -1219,7 +1223,7 @@ void UIGChooserModel::createMachineItem(const CMachine &machine, UIGChooserItem 
     new UIGChooserItemMachine(/* Parent item and corresponding machine: */
                               pParentItem, machine,
                               /* Which position new group item should be placed in? */
-                              getDesiredPosition(pParentItem, UIGChooserItemType_Machine, machine.GetName()));
+                              getDesiredPosition(pParentItem, UIGChooserItemType_Machine, machine.GetId()));
 }
 
 void UIGChooserModel::saveGroupTree()
@@ -1285,7 +1289,7 @@ void UIGChooserModel::saveGroupsOrder(UIGChooserItem *pParentItem)
         order << QString("%1=%2").arg(strGroupDescriptor, pItem->name());
     }
     foreach (UIGChooserItem *pItem, pParentItem->items(UIGChooserItemType_Machine))
-        order << QString("m=%1").arg(pItem->name());
+        order << QString("m=%1").arg(pItem->toMachineItem()->id());
     vboxGlobal().virtualBox().SetExtraDataStringList(strExtraDataKey, order);
 }
 
