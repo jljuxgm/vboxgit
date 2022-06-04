@@ -1,4 +1,4 @@
-/* $Id: filesystemext.cpp 41552 2012-06-01 18:03:46Z vboxsync $ */
+/* $Id: filesystemext.cpp 46186 2013-05-21 06:30:21Z vboxsync $ */
 /** @file
  * IPRT Filesystem API (FileSys) - ext2/3 format.
  */
@@ -325,6 +325,8 @@ static DECLCALLBACK(void) rtFsExtDestroy(void *pvThis)
 
 static DECLCALLBACK(int) rtFsExtOpenRoot(void *pvThis, PRTVFSDIR phVfsDir)
 {
+    NOREF(pvThis);
+    NOREF(phVfsDir);
     return VERR_NOT_IMPLEMENTED;
 }
 
