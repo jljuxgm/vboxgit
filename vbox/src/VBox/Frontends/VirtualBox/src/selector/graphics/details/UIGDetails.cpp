@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.cpp 43935 2012-11-22 11:55:38Z vboxsync $ */
+/* $Id: UIGDetails.cpp 43936 2012-11-22 12:11:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -81,8 +81,6 @@ void UIGDetails::prepareView()
 {
     /* Setup details-view: */
     m_pDetailsView = new UIGDetailsView(this);
-    m_pDetailsView->setFrameShape(QFrame::NoFrame);
-    m_pDetailsView->setFrameShadow(QFrame::Plain);
     m_pDetailsView->setScene(m_pDetailsModel->scene());
     m_pDetailsView->show();
     setFocusProxy(m_pDetailsView);

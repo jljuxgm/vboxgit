@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsView.cpp 43926 2012-11-21 09:28:18Z vboxsync $ */
+/* $Id: UIGDetailsView.cpp 43936 2012-11-22 12:11:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,12 +28,14 @@
 UIGDetailsView::UIGDetailsView(QWidget *pParent)
     : QGraphicsView(pParent)
 {
-    /* Setup palette: */
-    QPalette pal = qApp->palette();
-    pal.setColor(QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
-    setPalette(pal);
+    /* Prepare palette: */
+    preparePalette();
 
-    /* Scrollbars policy: */
+    /* Setup frame: */
+    setFrameShape(QFrame::NoFrame);
+    setFrameShadow(QFrame::Plain);
+
+    /* Setup scroll-bars policy: */
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     /* Update scene-rect: */
@@ -48,6 +50,14 @@ void UIGDetailsView::sltHandleRootItemResized(const QSizeF &size, int iMinimumWi
     /* Set minimum width: */
     setMinimumWidth(2 * frameWidth() + iMinimumWidth +
                     verticalScrollBar()->sizeHint().width());
+}
+
+void UIGDetailsView::preparePalette()
+{
+    /* Setup palette: */
+    QPalette pal = qApp->palette();
+    pal.setColor(QPalette::Base, pal.color(QPalette::Active, QPalette::Window));
+    setPalette(pal);
 }
 
 void UIGDetailsView::resizeEvent(QResizeEvent*)
