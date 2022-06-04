@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 44011 2012-12-03 14:04:52Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 44012 2012-12-03 14:11:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -41,10 +41,10 @@ UIGDetailsGroup::~UIGDetailsGroup()
 
 void UIGDetailsGroup::setItems(const QList<UIVMItem*> &machineItems)
 {
-    /* Remember new items: */
+    /* Remember passed machine-items: */
     m_machineItems = machineItems;
 
-    /* Cleanup superflous sets: */
+    /* Cleanup superflous items: */
     while (m_items.size() > m_machineItems.size())
         delete m_items.last();
 
@@ -57,14 +57,14 @@ void UIGDetailsGroup::updateItems()
     /* Load settings: */
     loadSettings();
 
-    /* Clear step: */
+    /* Cleanup step: */
     delete m_pStep;
     m_pStep = 0;
 
     /* Generate new group-id: */
     m_strGroupId = QUuid::createUuid().toString();
 
-    /* Prepare first set: */
+    /* Request to prepare first set: */
     emit sigStartFirstStep(m_strGroupId);
 }
 
@@ -76,7 +76,7 @@ void UIGDetailsGroup::stopPopulatingItems()
 
 void UIGDetailsGroup::sltFirstStep(QString strGroupId)
 {
-    /* Clear step: */
+    /* Cleanup step: */
     delete m_pStep;
     m_pStep = 0;
 
@@ -91,7 +91,7 @@ void UIGDetailsGroup::sltFirstStep(QString strGroupId)
 
 void UIGDetailsGroup::sltNextStep(QString strGroupId)
 {
-    /* Clear step: */
+    /* Cleanup step: */
     delete m_pStep;
     m_pStep = 0;
 
