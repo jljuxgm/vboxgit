@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 39933 2012-02-01 13:45:02Z vboxsync $ */
+/* $Id: xml.cpp 43902 2012-11-16 18:23:10Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -516,6 +516,16 @@ void Node::buildChildren(const ElementNode &elmRoot)       // private
 const char* Node::getName() const
 {
     return m_pcszName;
+}
+
+/**
+ * Returns the name of the node, which is either the element name or
+ * the attribute name. For other node types it probably returns NULL.
+ * @return
+ */
+const char* Node::getPrefix() const
+{
+    return m_pcszNamespacePrefix;
 }
 
 /**
