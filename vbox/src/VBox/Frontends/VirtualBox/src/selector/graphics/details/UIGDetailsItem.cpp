@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 43989 2012-11-28 16:20:48Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 44016 2012-12-03 15:10:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -143,14 +143,15 @@ void UIGDetailsItem::paintText(QPainter *pPainter, const QRect &rect, const QFon
     pPainter->restore();
 }
 
-UIPrepareStep::UIPrepareStep(QObject *pParent, const QString &strStepId /* = QString() */)
+UIBuildStep::UIBuildStep(QObject *pParent, const QString &strStepId, int iStepNumber)
     : QObject(pParent)
     , m_strStepId(strStepId)
+    , m_iStepNumber(iStepNumber)
 {
 }
 
-void UIPrepareStep::sltStepDone()
+void UIBuildStep::sltStepDone()
 {
-    emit sigStepDone(m_strStepId);
+    emit sigStepDone(m_strStepId, m_iStepNumber);
 }
 
