@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 45316 2013-04-03 17:40:32Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 47431 2013-07-26 20:48:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -74,7 +74,7 @@ bool UIWizardCloneVD::copyVirtualDisk()
     for (int i = 0; i < variants.size(); ++i)
     {
         qulonglong temp = uVariant;
-        temp &= 1<<i;
+        temp &= Q_UINT64_C(1) << i;
         variants[i] = (KMediumVariant)temp;
     }
 
