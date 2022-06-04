@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 44684 2013-02-14 12:08:46Z vboxsync $ */
+/* $Id: DevIoApic.cpp 44685 2013-02-14 12:10:23Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -700,6 +700,7 @@ static DECLCALLBACK(int) ioapicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
 
     /*
      * Register MMIO callbacks and saved state.
+     * Note! The write ZEROing was observed on a real AMD system.
      */
     rc = PDMDevHlpMMIORegister(pDevIns, UINT32_C(0xfec00000), 0x1000, pThis,
                                IOMMMIO_FLAGS_READ_DWORD | IOMMMIO_FLAGS_WRITE_DWORD_ZEROED,
