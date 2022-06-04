@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 42460 2012-07-30 20:37:10Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 43654 2012-10-16 09:59:09Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -360,8 +360,10 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #endif
                      "                            [--autostart-enabled on|off]\n"
                      "                            [--autostart-delay <seconds>]\n"
+#if 0 /* Disabled until the feature is implemented. */
                      "                            [--autostop-type disabled|savestate|poweroff|\n"
                      "                                             acpishutdown]\n"
+#endif
                      "\n");
     }
 
