@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 46635 2013-06-18 17:03:32Z vboxsync $ */
+/* $Id: mp-win.cpp 46637 2013-06-18 17:11:17Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -112,7 +112,7 @@ RTDECL(RTCPUID) RTMpGetCoreCount(void)
          * Query the information. This unfortunately requires a buffer, so we
          * start with a guess and let windows advice us if it's too small.
          */
-        DWORD                                   cbSysProcInfo = _4K / 16;
+        DWORD                                   cbSysProcInfo = _4K;
         PSYSTEM_LOGICAL_PROCESSOR_INFORMATION   paSysInfo = NULL;
         BOOL                                    fRc = FALSE;
         do
