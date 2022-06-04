@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42160 2012-07-16 11:41:10Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42171 2012-07-16 20:28:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2759,7 +2759,8 @@ STDMETHODIMP Guest::CreateSession(IN_BSTR aUser, IN_BSTR aPassword, IN_BSTR aDom
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-
+    int rc = sessionCreate(aUser, aPassword, aDomain, aSessionName, aGuestSession);
+    return RT_SUCCESS(rc) ? S_OK : VBOX_E_IPRT_ERROR;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
