@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45905 2013-05-06 12:02:23Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45906 2013-05-06 12:40:14Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2831,7 +2831,7 @@ static int hmR0VmxLoadGuestControlRegs(PVMCPU pVCpu, PCPUMCTX pCtx)
          * by the guest because VT-x ignores saving/restoring them (namely CD, ET, NW) and for certain other bits
          * we want to be notified immediately of guest CR0 changes (e.g. PG to update our shadow page tables).
          */
-        uint64_t u32CR0Mask = 0;
+        uint32_t u32CR0Mask = 0;
         u32CR0Mask =  X86_CR0_PE
                     | X86_CR0_NE
                     | X86_CR0_WP
