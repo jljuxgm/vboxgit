@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 42958 2012-08-23 18:17:28Z vboxsync $ */
+/* $Id: DevATA.cpp 42959 2012-08-23 18:27:02Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2301,7 +2301,7 @@ static bool atapiPassthroughSS(ATADevState *s)
 
                 /** @todo: Implemented only for formatted TOC now. */
                 if (   (s->aATAPICmd[2] & 0xf) == 0
-                    && cbTransfer >= 4)
+                    && cbTransfer >= 6)
                 {
                     uint32_t NewMediaType;
                     uint32_t OldMediaType;
