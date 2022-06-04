@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 46681 2013-06-19 17:01:34Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 46705 2013-06-20 12:43:08Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -735,14 +735,15 @@ VMMR0DECL(int) SVMR0SetupVM(PVM pVM)
  */
 VMMR0DECL(int) SVMR0InvalidatePage(PVM pVM, PVMCPU pVCpu, RTGCPTR GCVirt)
 {
+    AssertReturn(pVM, VERR_INVALID_PARAMETER);
+    Assert(pVM->hm.s.svm.fSupported);
+
     bool fFlushPending = pVM->hm.s.svm.fAlwaysFlushTLB | VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
 
     /* Skip it if a TLB flush is already pending. */
     if (!fFlushPending)
     {
         Log4(("SVMR0InvalidatePage %RGv\n", GCVirt));
-        AssertReturn(pVM, VERR_INVALID_PARAMETER);
-        Assert(pVM->hm.s.svm.fSupported);
 
         PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
         AssertMsgReturn(pVmcb, ("Invalid pVmcb!\n"), VERR_SVM_INVALID_PVMCB);
