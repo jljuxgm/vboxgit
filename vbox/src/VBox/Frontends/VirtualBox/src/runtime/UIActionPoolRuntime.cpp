@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 47170 2013-07-15 17:09:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -80,7 +80,7 @@ class UIActionSimplePerformTakeSnapshot : public UIActionSimple
 public:
 
     UIActionSimplePerformTakeSnapshot(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/take_snapshot_16px.png", ":/take_snapshot_dis_16px.png")
+        : UIActionSimple(pParent, ":/snapshot_take_16px.png", ":/snapshot_take_disabled_16px.png")
     {
         retranslateUi();
     }

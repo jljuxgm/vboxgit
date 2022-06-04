@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 47149 2013-07-15 10:02:57Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 47170 2013-07-15 17:09:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4317,8 +4317,8 @@ void VBoxGlobal::prepare()
     }
 
     /* online/offline snapshot icons */
-    mOfflineSnapshotIcon = QPixmap (":/offline_snapshot_16px.png");
-    mOnlineSnapshotIcon = QPixmap (":/online_snapshot_16px.png");
+    mOfflineSnapshotIcon = QPixmap (":/snapshot_offline_16px.png");
+    mOnlineSnapshotIcon = QPixmap (":/snapshot_online_16px.png");
 
     qApp->installEventFilter (this);
 
