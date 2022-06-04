@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: HWVMXR0.h 43307 2012-09-12 11:13:58Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -121,17 +121,7 @@ VMMR0DECL(int) VMXR0Enter(PVM pVM, PVMCPU pVCpu, PHMGLOBLCPUINFO pCpu);
  */
 VMMR0DECL(int) VMXR0Leave(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
 
-
-/**
- * Sets up and activates VT-x on the current CPU.
- *
- * @returns VBox status code.
- * @param   pCpu            Pointer to the CPU info struct.
- * @param   pVM             Pointer to the VM. (can be NULL after a resume)
- * @param   pvPageCpu       Pointer to the global CPU page.
- * @param   pPageCpuPhys    Physical address of the global CPU page.
- */
-VMMR0DECL(int) VMXR0EnableCpu(PHMGLOBLCPUINFO pCpu, PVM pVM, void *pvPageCpu, RTHCPHYS pPageCpuPhys);
+VMMR0DECL(int) VMXR0EnableCpu(PHMGLOBLCPUINFO pCpu, PVM pVM, void *pvPageCpu, RTHCPHYS pPageCpuPhys, bool fEnabledBySystem);
 
 /**
  * Deactivates VT-x on the current CPU.

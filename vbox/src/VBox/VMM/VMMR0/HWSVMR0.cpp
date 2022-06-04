@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.cpp 43073 2012-08-29 12:55:52Z vboxsync $ */
+/* $Id: HWSVMR0.cpp 43307 2012-09-12 11:13:58Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -75,8 +75,9 @@ static uint32_t const g_aIOOpAnd[8] = {0, 0xff, 0xffff, 0, 0xffffffff, 0, 0, 0};
  * @param   pvCpuPage       Pointer to the global CPU page.
  * @param   HCPhysCpuPage   Physical address of the global CPU page.
  */
-VMMR0DECL(int) SVMR0EnableCpu(PHMGLOBLCPUINFO pCpu, PVM pVM, void *pvCpuPage, RTHCPHYS HCPhysCpuPage)
+VMMR0DECL(int) SVMR0EnableCpu(PHMGLOBLCPUINFO pCpu, PVM pVM, void *pvCpuPage, RTHCPHYS HCPhysCpuPage, bool fEnabledByHost)
 {
+    AssertReturn(!fEnabledByHost, VERR_INVALID_PARAMETER);
     AssertReturn(HCPhysCpuPage != 0 && HCPhysCpuPage != NIL_RTHCPHYS, VERR_INVALID_PARAMETER);
     AssertReturn(pvCpuPage, VERR_INVALID_PARAMETER);
 

@@ -1,4 +1,4 @@
-/* $Id: HWSVMR0.h 41906 2012-06-24 15:44:03Z vboxsync $ */
+/* $Id: HWSVMR0.h 43307 2012-09-12 11:13:58Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -57,16 +57,7 @@ VMMR0DECL(int) SVMR0Enter(PVM pVM, PVMCPU pVCpu, PHMGLOBLCPUINFO pCpu);
  */
 VMMR0DECL(int) SVMR0Leave(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx);
 
-/**
- * Sets up and activates AMD-V on the current CPU
- *
- * @returns VBox status code.
- * @param   pCpu            Pointer to the CPU info struct.
- * @param   pVM             Pointer to the VM (can be NULL after a resume!).
- * @param   pvPageCpu       Pointer to the global CPU page.
- * @param   pPageCpuPhys    Physical address of the global CPU page.
- */
-VMMR0DECL(int) SVMR0EnableCpu(PHMGLOBLCPUINFO pCpu, PVM pVM, void *pvPageCpu, RTHCPHYS HCPhysCpuPage);
+VMMR0DECL(int) SVMR0EnableCpu(PHMGLOBLCPUINFO pCpu, PVM pVM, void *pvPageCpu, RTHCPHYS HCPhysCpuPage, bool fEnabledBySystem);
 
 /**
  * Deactivates AMD-V on the current CPU
