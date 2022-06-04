@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: DBGF.cpp 42833 2012-08-15 23:28:35Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -589,11 +589,11 @@ VMMR3DECL(int) DBGFR3EventBreakpoint(PVM pVM, DBGFEVENTTYPE enmEvent)
         PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(VMMGetCpu(pVM));
         RTGCPTR  eip = pCtx->rip + pCtx->cs.u64Base;
 #endif
-        for (iBp = 0; iBp < RT_ELEMENTS(pVM->dbgf.s.aBreakpoints); iBp++)
-            if (    pVM->dbgf.s.aBreakpoints[iBp].enmType == DBGFBPTYPE_REM
-                &&  pVM->dbgf.s.aBreakpoints[iBp].GCPtr == eip)
+        for (size_t i = 0; i < RT_ELEMENTS(pVM->dbgf.s.aBreakpoints); i++)
+            if (    pVM->dbgf.s.aBreakpoints[i].enmType == DBGFBPTYPE_REM
+                &&  pVM->dbgf.s.aBreakpoints[i].GCPtr == eip)
             {
-                pVM->dbgf.s.DbgEvent.u.Bp.iBp = iBp;
+                pVM->dbgf.s.DbgEvent.u.Bp.iBp = pVM->dbgf.s.aBreakpoints[i].iBp;
                 break;
             }
         AssertMsg(pVM->dbgf.s.DbgEvent.u.Bp.iBp != ~0U, ("eip=%08x\n", eip));
