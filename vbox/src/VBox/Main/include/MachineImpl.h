@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 43915 2012-11-19 19:07:10Z vboxsync $ */
+/* $Id: MachineImpl.h 43949 2012-11-23 13:43:19Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -943,6 +943,7 @@ protected:
 #endif /* VBOX_WITH_GUEST_PROPS */
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
+    void getDiskList(MediaList &list);
     void registerMetrics(PerformanceCollector *aCollector, Machine *aMachine, RTPROCESS pid);
 
     pm::CollectorGuest     *mCollectorGuest;
