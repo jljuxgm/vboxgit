@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 45815 2013-04-29 14:12:02Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 45817 2013-04-29 14:38:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -417,7 +417,7 @@ static bool isSyntheticLCtrl(MSG *pMsg)
         return false;
     if ((peekMsg.lParam & 0x01FF0000) >> 16 != 0x138 /* RAlt */)
         return false;
-    auKeyStates[VK_LCTRL] = 0x80;
+    auKeyStates[VK_LCONTROL] = 0x80;
     auKeyStates[VK_RMENU] = 0x80;
     cbToAscii = ToAscii('A', 0, NULL, &achNoAltGr, 0);
     if (!cbToAscii || cbToAscii != ToAscii('A', 0, auKeyStates, &achAltGr, 0))
