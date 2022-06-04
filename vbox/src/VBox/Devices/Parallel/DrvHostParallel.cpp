@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 43428 2012-09-25 12:35:17Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 43436 2012-09-26 10:06:38Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -435,27 +435,8 @@ static int drvWinHostGetparportAddr(PDRVHOSTPARALLEL pThis)
                 break;
             }
         }
-        if(!pBuf)
-        {
-            LogFlowFunc(("No Memory to save ParportString\n"));
-            /* Trying once more  with fixed length, assuming friendly name
-             * will not be bigger than 2048
-             */
-            pBuf = (uint8_t *)RTMemAlloc(2048);
-            if (!pBuf)
-            {
-                LogFlowFunc(("Fixed allocation failed\n"));
-                return VERR_NO_MEMORY;
-            }
-            if (!SetupDiGetDeviceRegistryProperty(hDevInfo, &DeviceInfoData, SPDRP_FRIENDLYNAME,
-                                                 (PDWORD)&dwDataType, (uint8_t *)pBuf,
-                                                 2048, NULL))
-            {
-                LogFlowFunc(("GetDevProp failed with ERR = %d\n", GetLastError()));
-                return VERR_GENERAL_FAILURE;
-
-            }
-        }
+        if(pBuf)
+            LogFlowFunc(("Got Device Entity %s\n", pBuf));
         if (RTStrStr((char*)pBuf, "LPT"))
         {
             u32ParportAddr = drvHostWinFindIORangeResource(DeviceInfoData.DevInst);
