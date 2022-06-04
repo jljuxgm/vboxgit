@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 44699 2013-02-14 20:07:57Z vboxsync $ */
+/* $Id: DevOHCI.cpp 44835 2013-02-26 17:24:12Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -3356,7 +3356,7 @@ static void ohciServiceCtrlList(POHCI pThis)
             /*
              * Control TDs depends on order and stage. Only one can be in-flight
              * at any given time. OTOH, some stages are completed immediately,
-             * so we process the list until we've got a head which is in-fligth
+             * so we process the list until we've got a head which is in-flight
              * or reach the end of the list.
              */
             do
