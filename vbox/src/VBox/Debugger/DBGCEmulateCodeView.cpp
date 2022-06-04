@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 46158 2013-05-18 13:21:05Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 46159 2013-05-18 19:56:08Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -918,7 +918,7 @@ static DECLCALLBACK(int) dbgcCmdUnassemble(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
     /*
      * Check the desired mode.
      */
-    unsigned fFlags = DBGF_DISAS_FLAGS_NO_ADDRESS;
+    unsigned fFlags = DBGF_DISAS_FLAGS_NO_ADDRESS | DBGF_DISAS_FLAGS_UNPATCHED_BYTES | DBGF_DISAS_FLAGS_ANNOTATE_PATCHED;
     switch (pCmd->pszCmd[1])
     {
         default: AssertFailed();
