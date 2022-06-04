@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
+/* $Id: SUPLib.cpp 43400 2012-09-21 14:15:39Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -267,7 +267,7 @@ SUPR3DECL(int) SUPR3Init(PSUPDRVSESSION *ppSession)
         CookieReq.Hdr.rc = VERR_INTERNAL_ERROR;
         strcpy(CookieReq.u.In.szMagic, SUPCOOKIE_MAGIC);
         CookieReq.u.In.u32ReqVersion = SUPDRV_IOC_VERSION;
-        const uint32_t uMinVersion = (SUPDRV_IOC_VERSION & 0xffff0000) == 0x00190000
+        const uint32_t uMinVersion = (SUPDRV_IOC_VERSION & 0xffff0000) == 0x001a0000
                                    ? 0x001a0005
                                    : SUPDRV_IOC_VERSION & 0xffff0000;
         CookieReq.u.In.u32MinVersion = uMinVersion;
