@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 42930 2012-08-23 07:26:48Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 42957 2012-08-23 18:07:53Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1636,9 +1636,9 @@ STDMETHODIMP VirtualBox::OpenMachine(IN_BSTR aSettingsFile,
     if (SUCCEEDED(rc))
     {
         /* initialize the machine object */
-        rc = machine->init(this,
-                           aSettingsFile,
-                           NULL);       /* const Guid *aId */
+        rc = machine->initFromSettings(this,
+                                       aSettingsFile,
+                                       NULL);       /* const Guid *aId */
         if (SUCCEEDED(rc))
         {
             /* set the return value */
