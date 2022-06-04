@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 46164 2013-05-19 16:58:01Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 46180 2013-05-20 21:40:43Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -770,10 +770,11 @@ static DECLCALLBACK(int) RTLDRELF_NAME(EnumDbgInfo)(PRTLDRMODINTERNAL pMod, cons
 
             RT_ZERO(DbgInfo.u);
             DbgInfo.enmType         = RTLDRDBGINFOTYPE_DWARF_DWO;
-            DbgInfo.pszExtFile      = (const char *)((uintptr_t)pModElf->pvBits + paShdrs[iShdr].sh_offset);
+            DbgInfo.pszExtFile      = (const char *)((uintptr_t)pModElf->pvBits + (uintptr_t)paShdrs[iShdr].sh_offset);
             if (!RTStrEnd(DbgInfo.pszExtFile, paShdrs[iShdr].sh_size))
                 return VERR_BAD_EXE_FORMAT;
-            DbgInfo.u.Dwo.uCrc32    = *(uint32_t *)((uintptr_t)DbgInfo.pszExtFile + paShdrs[iShdr].sh_size - sizeof(uint32_t));
+            DbgInfo.u.Dwo.uCrc32    = *(uint32_t *)((uintptr_t)DbgInfo.pszExtFile + (uintptr_t)paShdrs[iShdr].sh_size
+                                                    - sizeof(uint32_t));
             DbgInfo.offFile         = -1;
             DbgInfo.cb              = 0;
         }
