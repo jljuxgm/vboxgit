@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 43877 2012-11-15 13:51:04Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 44863 2013-02-28 12:18:17Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1525,7 +1525,7 @@ static RTEXITCODE VBoxServiceToolboxStat(int argc, char **argv)
     RTListInit(&fileList);
 
     while (   (ch = RTGetOpt(&GetState, &ValueUnion))
-              && RT_SUCCESS(rc))
+           && RT_SUCCESS(rc))
     {
         /* For options that require an argument, ValueUnion has received the value. */
         switch (ch)

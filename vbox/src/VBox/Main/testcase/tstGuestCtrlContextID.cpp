@@ -1,4 +1,4 @@
-/* $Id: tstGuestCtrlContextID.cpp 43036 2012-08-28 13:22:39Z vboxsync $ */
+/* $Id: tstGuestCtrlContextID.cpp 44863 2013-02-28 12:18:17Z vboxsync $ */
 
 /** @file
  *
@@ -50,6 +50,27 @@ int main()
     /* Don't let the assertions trigger here
      * -- we rely on the return values in the test(s) below. */
     RTAssertSetQuiet(true);
+
+#if 0
+    for (int t = 0; t < 4 && !RTTestErrorCount(hTest); t++)
+    {
+        uint32_t uSession = RTRandU32Ex(0, VBOX_GUESTCTRL_MAX_SESSIONS - 1);
+        uint32_t uFilter = VBOX_GUESTCTRL_CONTEXTID_MAKE_SESSION(uSession);
+        RTTestIPrintf(RTTESTLVL_INFO, "Session: %RU32, Filter: %x\n", uSession, uFilter);
+
+        uint32_t uSession2 = RTRandU32Ex(0, VBOX_GUESTCTRL_MAX_SESSIONS - 1);
+        uint32_t uCID = VBOX_GUESTCTRL_CONTEXTID_MAKE(uSession2,
+                                                      RTRandU32Ex(0, VBOX_GUESTCTRL_MAX_OBJECTS - 1),
+                                                      RTRandU32Ex(0, VBOX_GUESTCTRL_MAX_CONTEXTS - 1));
+        RTTestIPrintf(RTTESTLVL_INFO, "CID: %x (Session: %d), Masked: %x\n",
+                      uCID, VBOX_GUESTCTRL_CONTEXTID_GET_SESSION(uCID), uCID & uFilter);
+        if ((uCID & uFilter) == uCID)
+        {
+            RTTestIPrintf(RTTESTLVL_INFO, "=========== Masking works: %x vs. %x\n",
+                          uCID & uFilter, uFilter);
+        }
+    }
+#endif
 
     uint32_t uContextMax = UINT32_MAX;
     RTTestIPrintf(RTTESTLVL_DEBUG, "Max context is: %RU32\n", uContextMax);
