@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 45935 2013-05-07 13:18:04Z vboxsync $ */
+/* $Id: SUPDrv.c 46889 2013-07-01 15:49:59Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4864,7 +4864,7 @@ DECLINLINE(int) supdrvLdrUnlock(PSUPDRVDEVEXT pDevExt)
  */
 static int supdrvIOCtl_CallServiceModule(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PSUPCALLSERVICE pReq)
 {
-#if !defined(RT_OS_WINDOWS) || defined(DEBUG)
+#if !defined(RT_OS_WINDOWS) || defined(RT_ARCH_AMD64) || defined(DEBUG)
     int rc;
 
     /*
@@ -4909,9 +4909,9 @@ static int supdrvIOCtl_CallServiceModule(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION p
         Log4(("SUP_IOCTL_CALL_SERVICE: rc=%Rrc op=%u out=%u arg=%RX64 p/t=%RTproc/%RTthrd\n",
               rc, pReq->u.In.uOperation, pReq->Hdr.cbOut, pReq->u.In.u64Arg, RTProcSelf(), RTThreadNativeSelf()));
     return rc;
-#else  /* RT_OS_WINDOWS && !DEBUG */
+#else  /* RT_OS_WINDOWS && !RT_ARCH_AMD64 && !DEBUG */
     return VERR_NOT_IMPLEMENTED;
-#endif /* RT_OS_WINDOWS && !DEBUG */
+#endif /* RT_OS_WINDOWS && !RT_ARCH_AMD64 && !DEBUG */
 }
 
 
