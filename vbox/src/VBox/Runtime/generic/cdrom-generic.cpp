@@ -1,4 +1,4 @@
-/* $Id: cdrom-generic.cpp 39730 2012-01-08 21:16:59Z vboxsync $ */
+/* $Id: cdrom-generic.cpp 45110 2013-03-20 18:17:29Z vboxsync $ */
 /** @file
  * IPRT - CD/DVD/BD-ROM Drive, Generic.
  */
@@ -28,7 +28,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define RTCRITSECT_WITHOUT_REMAPPING
 #include <iprt/cdrom.h>
 #include "internal/iprt.h"
 
