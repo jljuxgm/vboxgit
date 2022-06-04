@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 46101 2013-05-15 15:36:43Z vboxsync $ */
+/* $Id: strcache.cpp 46108 2013-05-15 19:22:38Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -173,7 +173,7 @@ RTDECL(const char *) RTStrCacheEnterLowerN(RTSTRCACHE hStrCache, const char *pch
     Assert(!RTStrEnd(pchString, cchString));
 
     char *pszRet = (char *)RTMemPoolDupEx((RTMEMPOOL)hStrCache, pchString, cchString, 1);
-    if (!pszRet)
+    if (pszRet)
         RTStrToLower(pszRet);
     return pszRet;
 }

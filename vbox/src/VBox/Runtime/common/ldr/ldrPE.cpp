@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 46101 2013-05-15 15:36:43Z vboxsync $ */
+/* $Id: ldrPE.cpp 46108 2013-05-15 19:22:38Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1729,8 +1729,7 @@ static int rtldrPEValidateOptionalHeader(const IMAGE_OPTIONAL_HEADER64 *pOptHdr,
                  pszLogName, i, pDir->VirtualAddress, cb));
             return VERR_BAD_EXE_FORMAT;
         }
-        if (    pDir->Size > cb - pDir->VirtualAddress
-            && !(fFlags & RTLDR_O_FOR_DEBUG) /* NT4 SP1 ntfs.sys base relocs. */ )
+        if (pDir->Size > cb - pDir->VirtualAddress)
         {
             Log(("rtldrPEOpen: %s: dir no. %d Size=%#x is invalid (rva=%#x, limit=%#x)!!!\n",
                  pszLogName, i, pDir->Size, pDir->VirtualAddress, cb));
