@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46788 2013-06-25 17:39:02Z vboxsync $
+# $Id: Config.kmk 46854 2013-06-28 02:53:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1702,8 +1702,8 @@ VBOX_PYLINT_FLAGS    = --report=n --output-format=parseable --include-ids=y --pe
 	--max-module-lines=4096 \
        --max-locals=32 \
        --min-public-methods=0 \
-	--function-rgx='[a-z_][a-zA-Z0-9_]{2,30}$(DOLLAR)' \
-	--method-rgx='[a-z_][a-zA-Z0-9_]{2,30}$(DOLLAR)' \
+	--function-rgx='[a-z_][a-zA-Z0-9_]{2,40}$(DOLLAR)' \
+	--method-rgx='[a-z_][a-zA-Z0-9_]{2,40}$(DOLLAR)' \
 	--argument-rgx='([a-z_][a-zA-Z0-9_]{2,30}|rc|hr|s|c|cx|cy|cb|fn)$(DOLLAR)' \
 	--variable-rgx='([a-z_][a-zA-Z0-9_]{2,30}|rc|hr|s|c|cx|cy|cb|fn)$(DOLLAR)' \
 	--attr-rgx='([a-z_][a-zA-Z0-9_]{2,30}|rc|hr|o)$(DOLLAR)' \
@@ -5340,7 +5340,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46788 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46854 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
