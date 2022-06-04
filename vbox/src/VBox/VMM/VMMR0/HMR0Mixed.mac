@@ -1,4 +1,4 @@
-; $Id: HMR0Mixed.mac 46943 2013-07-03 15:04:25Z vboxsync $
+; $Id: HMR0Mixed.mac 46944 2013-07-03 15:09:06Z vboxsync $
 ;; @file
 ; HMR0Mixed.mac - Stuff that darwin needs to build two versions of.
 ;
@@ -744,15 +744,6 @@ BEGINPROC MY_NAME(SVMR0VMRun)
     push    xBP
     mov     xBP, xSP
     pushf
-
-    ; Manual save and restore:
-    ;  - General purpose registers except RIP, RSP, RAX
-    ;
-    ; Trashed:
-    ;  - CR2 (we don't care)
-    ;  - LDTR (reset to 0)
-    ;  - DRx (presumably not changed at all)
-    ;  - DR7 (reset to 0x400)
 
     ; Save all general purpose host registers.
     MYPUSHAD
