@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42716 2012-08-09 15:49:46Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42758 2012-08-10 15:19:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2857,7 +2857,7 @@ int Guest::sessionCreate(const Utf8Str &strUser, const Utf8Str &strPassword, con
 
         mData.mGuestSessions[uNewSessionID] = pGuestSession;
 
-        LogFlowFunc(("Added new session with session ID=%RU32 (now %ld sessios total)\n",
+        LogFlowFunc(("Added new session with session ID=%RU32 (now %ld sessions total)\n",
                      uNewSessionID, mData.mGuestSessions.size()));
     }
     catch (int rc2)
