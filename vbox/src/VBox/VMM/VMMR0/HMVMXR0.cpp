@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47439 2013-07-27 20:03:21Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47440 2013-07-27 20:03:54Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6665,7 +6665,7 @@ VMMR0DECL(int) VMXR0Leave(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     /* Restore host-state bits that VT-x only restores partially. */
     if (pVCpu->hm.s.vmx.fRestoreHostFlags)
     {
-#ifndef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
+#ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
         Assert(ASMIntAreEnabled());
 #endif
         VMXRestoreHostState(pVCpu->hm.s.vmx.fRestoreHostFlags, &pVCpu->hm.s.vmx.RestoreHost);
