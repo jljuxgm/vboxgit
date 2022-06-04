@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43620 2012-10-11 14:27:12Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43828 2012-11-07 11:19:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -45,24 +45,9 @@ UIGChooserItemMachine::UIGChooserItemMachine(UIGChooserItem *pParent,
                                              int iPosition /* = -1 */)
     : UIGChooserItem(pParent, pParent->isTemporary())
     , UIVMItem(machine)
-    , m_pToolBar(0)
-    , m_pSettingsButton(0)
-    , m_pStartButton(0)
-    , m_pPauseButton(0)
-    , m_pCloseButton(0)
-    , m_iCornerRadius(0)
-#ifdef Q_WS_MAC
-    , m_iHighlightLightness(115)
-    , m_iHoverLightness(110)
-    , m_iHoverHighlightLightness(120)
-#else /* Q_WS_MAC */
-    , m_iHighlightLightness(130)
-    , m_iHoverLightness(155)
-    , m_iHoverHighlightLightness(175)
-#endif /* !Q_WS_MAC */
 {
-//    /* Prepare: */
-//    prepare();
+    /* Prepare: */
+    prepare();
 
     /* Add item to the parent: */
     AssertMsg(parentItem(), ("No parent set for machine item!"));
@@ -78,24 +63,9 @@ UIGChooserItemMachine::UIGChooserItemMachine(UIGChooserItem *pParent,
                                              int iPosition /* = -1 */)
     : UIGChooserItem(pParent, pParent->isTemporary())
     , UIVMItem(pCopyFrom->machine())
-    , m_pToolBar(0)
-    , m_pSettingsButton(0)
-    , m_pStartButton(0)
-    , m_pPauseButton(0)
-    , m_pCloseButton(0)
-    , m_iCornerRadius(0)
-#ifdef Q_WS_MAC
-    , m_iHighlightLightness(115)
-    , m_iHoverLightness(110)
-    , m_iHoverHighlightLightness(120)
-#else /* Q_WS_MAC */
-    , m_iHighlightLightness(130)
-    , m_iHoverLightness(155)
-    , m_iHoverHighlightLightness(175)
-#endif /* !Q_WS_MAC */
 {
-//    /* Prepare: */
-//    prepare();
+    /* Prepare: */
+    prepare();
 
     /* Add item to the parent: */
     AssertMsg(parentItem(), ("No parent set for machine item!"));
@@ -114,14 +84,18 @@ UIGChooserItemMachine::~UIGChooserItemMachine()
         /* Unset the focus: */
         model()->setFocusItem(0);
     }
-    /* If that item is selected: */
+    /* If that item is in selection list: */
     if (model()->currentItems().contains(this))
     {
         /* Remove item from the selection list: */
         model()->removeFromCurrentItems(this);
     }
-    /* Remove item from the navigation list: */
-    model()->removeFromNavigationList(this);
+    /* If that item is in navigation list: */
+    if (model()->navigationList().contains(this))
+    {
+        /* Remove item from the navigation list: */
+        model()->removeFromNavigationList(this);
+    }
 
     /* Remove item from the parent: */
     AssertMsg(parentItem(), ("No parent set for machine item!"));
@@ -932,6 +906,28 @@ void UIGChooserItemMachine::paintMachineInfo(QPainter *pPainter, const QStyleOpt
 
 void UIGChooserItemMachine::prepare()
 {
+    /* Tool-bar/buttons: */
+    m_pToolBar = 0;
+    m_pSettingsButton = 0;
+    m_pStartButton = 0;
+    m_pPauseButton = 0;
+    m_pCloseButton = 0;
+    /* Corner radius: */
+    m_iCornerRadius = 0;
+    /* Colors: */
+#ifdef Q_WS_MAC
+    m_iHighlightLightness = 115;
+    m_iHoverLightness = 110;
+    m_iHoverHighlightLightness = 120;
+#else /* Q_WS_MAC */
+    m_iHighlightLightness = 130;
+    m_iHoverLightness = 155;
+    m_iHoverHighlightLightness = 175;
+#endif /* !Q_WS_MAC */
+
+    /* Other things disabled for now: */
+    return;
+
     /* Create tool-bar: */
     m_pToolBar = new UIGraphicsToolBar(this, 2, 2);
 
