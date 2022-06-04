@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 46697 2013-06-20 10:07:44Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 46700 2013-06-20 11:05:39Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -49,6 +49,9 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlag
 {
     Assert(sizeof(*phHandle) >= sizeof(HMODULE));
     AssertReturn(fFlags == 0 || fFlags == RTLDRLOAD_FLAGS_NO_UNLOAD, VERR_INVALID_PARAMETER);
+    AssertLogRelMsgReturn(RTPathStartsWithRoot(pszFilename),  /* Relative names will still be applied to the search path. */
+                          ("pszFilename='%s'\n", pszFilename),
+                          VERR_INTERNAL_ERROR_2);
 
     /*
      * Do we need to add an extension?
