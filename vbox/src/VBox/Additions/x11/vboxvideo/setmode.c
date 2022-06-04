@@ -1,4 +1,4 @@
-/* $Id: setmode.c 43270 2012-09-10 15:08:03Z vboxsync $ */
+/* $Id: setmode.c 44491 2013-01-31 13:46:37Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, mode setting
@@ -143,9 +143,12 @@ Bool VBOXAdjustScreenPixmap(ScrnInfoPtr pScrn, int width, int height)
     PixmapPtr pPixmap = pScreen->GetScreenPixmap(pScreen);
     VBOXPtr pVBox = VBOXGetRec(pScrn);
     uint64_t cbLine = vboxLineLength(pScrn, width);
+    int displayWidth = vboxDisplayPitch(pScrn, cbLine);
 
     TRACE_LOG("width=%d, height=%d\n", width, height);
-    if (width == pScrn->virtualX && height == pScrn->virtualY)
+    if (   width == pScrn->virtualX
+        && height == pScrn->virtualY
+        && displayWidth == pScrn->displayWidth)
         return TRUE;
     if (!pPixmap) {
         xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
@@ -165,7 +168,7 @@ Bool VBOXAdjustScreenPixmap(ScrnInfoPtr pScrn, int width, int height)
     vboxClearVRAM(pScrn, width, height);
     pScrn->virtualX = width;
     pScrn->virtualY = height;
-    pScrn->displayWidth = vboxDisplayPitch(pScrn, cbLine);
+    pScrn->displayWidth = displayWidth;
     pVBox->cbLine = cbLine;
 #ifdef VBOX_DRI
     if (pVBox->useDRI)
