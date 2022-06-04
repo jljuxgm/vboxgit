@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PGMR0.cpp 42345 2012-07-24 10:45:50Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -449,7 +449,7 @@ VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PVMCPU pVCpu, PGMMODE enm
      *       can use existing code to build the nested page tables.
      */
     bool fLockTaken = false;
-    switch(enmShwPagingMode)
+    switch (enmShwPagingMode)
     {
         case PGMMODE_32_BIT:
             rc = PGM_BTH_NAME_32BIT_PROT(Trap0eHandler)(pVCpu, uErr, pRegFrame, GCPhysFault, &fLockTaken);
