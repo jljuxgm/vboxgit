@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 43041 2012-08-28 13:58:40Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 44268 2013-01-10 12:44:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -38,7 +38,6 @@ UIWizardCloneVM::UIWizardCloneVM(QWidget *pParent, const CMachine &machine, CSna
     /* Assign watermark: */
     assignWatermark(":/vmw_clone.png");
 #else /* Q_WS_MAC */
-    setMinimumSize(QSize(600, 400));
     /* Assign background image: */
     assignBackground(":/vmw_clone_bg.png");
 #endif /* Q_WS_MAC */
