@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 42253 2012-07-20 11:33:08Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 42254 2012-07-20 11:41:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -219,7 +219,7 @@ bool UIMachineSettingsNetwork::revalidate(QString &strWarning, QString &strTitle
     /* Validate MAC-address: */
     if (m_pMACEditor->text().size() < 12)
     {
-        strWarning = tr("the value of the Mac address field in not complete.");
+        strWarning = tr("the value of the MAC address field in not complete.");
         fValid = false;
     }
     else
@@ -227,7 +227,7 @@ bool UIMachineSettingsNetwork::revalidate(QString &strWarning, QString &strTitle
         QRegExp validator("[0-9A-Fa-f][02468ACEace][0-9A-Fa-f]{10}");
         if (!validator.exactMatch(m_pMACEditor->text()))
         {
-            strWarning = tr("the second digit cannot be odd, as only unicast Mac addresses allowed.");
+            strWarning = tr("the second digit cannot be odd, as only unicast MAC addresses allowed.");
             fValid = false;
         }
     }
