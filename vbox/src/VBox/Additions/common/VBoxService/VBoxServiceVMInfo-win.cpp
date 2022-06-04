@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 44531 2013-02-04 19:04:27Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 44539 2013-02-05 12:26:05Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -822,10 +822,8 @@ int VBoxServiceVMInfoWinWriteUsers(char **ppszUserList, uint32_t *pcUsersInList)
     PLUID       paSessions = NULL;
     ULONG       cSessions = 0;
 
-#ifdef DEBUG
     int rc2 = VbglR3GuestPropConnect(&s_uGuestPropClientID);
     AssertRC(rc2);
-#endif
 
     /* This function can report stale or orphaned interactive logon sessions
        of already logged off users (especially in Windows 2000). */
@@ -1015,10 +1013,10 @@ int VBoxServiceVMInfoWinWriteUsers(char **ppszUserList, uint32_t *pcUsersInList)
         VBoxServiceVMInfoWinProcessesFree(cProcs, paProcs);
     }
     LsaFreeReturnBuffer(paSessions);
-#ifdef DEBUG
+
     s_uIter++;
     VbglR3GuestPropDisconnect(s_uGuestPropClientID);
-#endif
+
     return rc;
 }
 
