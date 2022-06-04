@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 45051 2013-03-15 15:34:54Z vboxsync $ */
+/* $Id: Performance.cpp 46329 2013-05-30 12:37:56Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -877,7 +877,6 @@ void HostRamUsage::collect()
         mTotal->put(total);
         mUsed->put(used);
         mAvailable->put(available);
-
     }
 }
 
@@ -903,7 +902,6 @@ void HostFilesystemUsage::collect()
         mTotal->put(total);
         mUsed->put(used);
         mAvailable->put(available);
-
     }
 }
 
