@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 46980 2013-07-04 11:38:28Z vboxsync $ */
+/* $Id: manifest.cpp 46981 2013-07-04 11:42:07Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling, old style - deprecated.
  */
@@ -275,7 +275,7 @@ RTR3DECL(int) RTManifestVerifyDigestType(void *pvBuf, size_t cbSize, RTDIGESTTYP
     /* Validate input */
     AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
     AssertReturn(cbSize > 0, VERR_INVALID_PARAMETER);
-    AssertPtrRetrn(penmDigestType, VERR_INVALID_POINTER)
+    AssertPtrReturn(penmDigestType, VERR_INVALID_POINTER);
 
     int rc = VINF_SUCCESS;
 
