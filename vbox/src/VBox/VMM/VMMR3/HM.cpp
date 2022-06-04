@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 47655 2013-08-09 18:00:15Z vboxsync $ */
+/* $Id: HM.cpp 47681 2013-08-12 22:51:55Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2805,6 +2805,26 @@ VMMR3_INT_DECL(VBOXSTRICTRC) HMR3RestartPendingIOInstr(PVM pVM, PVMCPU pVCpu, PC
             AssertLogRelFailedReturn(VERR_HM_UNKNOWN_IO_INSTRUCTION);
     }
 
+    if (IOM_SUCCESS(rcStrict))
+    {
+        /*
+         * Check for I/O breakpoints.
+         */
+        uint32_t const uDr7 = pCtx->dr[7];
+        if (   (   (uDr7 & X86_DR7_ENABLED_MASK)
+                && X86_DR7_ANY_RW_IO(uDr7)
+                && (pCtx->cr4 & X86_CR4_DE))
+            || DBGFBpIsHwIoArmed(pVM))
+        {
+            VBOXSTRICTRC rcStrict2 = DBGFBpCheckIo(pVM, pVCpu, pCtx, pVCpu->hm.s.PendingIO.s.Port.uPort,
+                                                   pVCpu->hm.s.PendingIO.s.Port.cbSize);
+            if (rcStrict2 == VINF_EM_RAW_GUEST_TRAP)
+                rcStrict2 = TRPMAssertTrap(pVCpu, X86_XCPT_DB, TRPM_TRAP);
+            /* rcStrict is VINF_SUCCESS or in [VINF_EM_FIRST..VINF_EM_LAST]. */
+            else if (rcStrict2 != VINF_SUCCESS && (rcStrict == VINF_SUCCESS || rcStrict2 < rcStrict))
+                rcStrict = rcStrict2;
+        }
+    }
     return rcStrict;
 }
 
