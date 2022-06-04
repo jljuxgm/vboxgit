@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 42755 2012-08-10 12:46:01Z vboxsync $ */
+/* $Id: UIActionPool.cpp 42760 2012-08-10 16:53:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -246,7 +246,7 @@ protected:
     void retranslateUi()
     {
         setText(QApplication::translate("UIActionPool", "Show &Log..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Show the log files of the selected virtual machine"));
+        setStatusTip(QApplication::translate("UIActionPool", "Show the log files of the selected virtual machines"));
     }
 };
 
