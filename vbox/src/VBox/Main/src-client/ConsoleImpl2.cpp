@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 44590 2013-02-08 04:46:44Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 44829 2013-02-26 13:16:47Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2400,15 +2400,9 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     InsertConfigNode(pDev,     "0", &pInst);
                     InsertConfigNode(pInst,    "Config", &pCfg);
                     InsertConfigNode(pInst,    "LUN#0", &pLunL0);
-# ifdef VBOX_WITH_USB_VIDEO_TEST
-                    InsertConfigString(pLunL0, "Driver", "WebcamFileFeeder");
-                    InsertConfigNode(pLunL0,   "Config", &pCfg);
-                    InsertConfigString(pCfg,   "DirToFeed", "out");
-# else
                     InsertConfigString(pLunL0, "Driver", "EmWebcam");
                     InsertConfigNode(pLunL0,   "Config", &pCfg);
                     InsertConfigInteger(pCfg,  "Object", (uintptr_t)mEmWebcam);
-# endif
                 }
 #endif
 
