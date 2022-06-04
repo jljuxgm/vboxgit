@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 44696 2013-02-14 19:52:24Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 44697 2013-02-14 20:00:24Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5102,7 +5102,11 @@ static DECLCALLBACK(int) lsilogicR3Construct(PPDMDEVINS pDevIns, int iInstance, 
 
     /*
      * Create critical sections protecting the reply post and free queues.
+     * Note! We do our own syncronization, so NOP the default crit sect for the device.
      */
+    rc = PDMDevHlpSetDeviceCritSect(pDevIns, PDMDevHlpCritSectGetNop(pDevIns));
+    AssertRCReturn(rc, rc);
+
     rc = PDMDevHlpCritSectInit(pDevIns, &pThis->ReplyFreeQueueCritSect, RT_SRC_POS, "%sRFQ", szDevTag);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("LsiLogic: cannot create critical section for reply free queue"));
