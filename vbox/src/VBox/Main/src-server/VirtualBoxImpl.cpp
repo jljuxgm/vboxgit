@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 47561 2013-08-06 15:18:17Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 47597 2013-08-07 16:38:35Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -829,11 +829,6 @@ STDMETHODIMP VirtualBox::COMGETTER(Version)(BSTR *aVersion)
 
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
-
-    MultiResult mrc;
-    setError(E_INVALIDARG, "test error first");
-    setError(E_FAIL, "test error");
-    return 0x8000ffff;
 
     sVersion.cloneTo(aVersion);
     return S_OK;
