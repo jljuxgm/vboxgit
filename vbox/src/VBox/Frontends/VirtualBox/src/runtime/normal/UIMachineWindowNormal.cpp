@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 44561 2013-02-06 12:04:05Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 44954 2013-03-07 13:34:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -197,8 +197,10 @@ void UIMachineWindowNormal::prepareMenu()
     /* Call to base-class: */
     UIMachineWindow::prepareMenu();
 
+#ifndef Q_WS_MAC
     /* Prepare menu-bar: */
     setMenuBar(uisession()->newMenuBar());
+#endif /* !Q_WS_MAC */
 }
 
 void UIMachineWindowNormal::prepareStatusBar()
@@ -424,7 +426,9 @@ void UIMachineWindowNormal::loadSettings()
     /* Load global settings: */
     {
         VBoxGlobalSettings settings = vboxGlobal().settings();
+#ifndef Q_WS_MAC
         menuBar()->setHidden(settings.isFeatureActive("noMenuBar"));
+#endif /* !Q_WS_MAC */
         statusBar()->setHidden(settings.isFeatureActive("noStatusBar"));
         if (statusBar()->isHidden())
             m_pIdleTimer->stop();

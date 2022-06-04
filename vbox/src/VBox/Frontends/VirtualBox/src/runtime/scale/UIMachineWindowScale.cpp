@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 44954 2013-03-07 13:34:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -77,9 +77,7 @@ void UIMachineWindowScale::prepareMenu()
     /* Call to base-class: */
     UIMachineWindow::prepareMenu();
 
-#ifdef Q_WS_MAC
-    setMenuBar(uisession()->newMenuBar());
-#endif /* Q_WS_MAC */
+    /* Prepare menu: */
     m_pMainMenu = uisession()->newMenu();
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 44909 2013-03-04 11:25:30Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 44954 2013-03-07 13:34:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -86,9 +86,6 @@ void UIMachineWindowSeamless::prepareMenu()
     UIMachineWindow::prepareMenu();
 
     /* Prepare menu: */
-#ifdef Q_WS_MAC
-    setMenuBar(uisession()->newMenuBar());
-#endif /* Q_WS_MAC */
     m_pMainMenu = uisession()->newMenu();
 }
 
@@ -154,20 +151,6 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
     connect(m_pMiniToolBar, SIGNAL(geometryUpdated()), this, SLOT(sltUpdateMiniToolBarMask()));
 }
 #endif /* !Q_WS_MAC */
-
-#ifdef Q_WS_MAC
-void UIMachineWindowSeamless::loadSettings()
-{
-    /* Call to base-class: */
-    UIMachineWindow::loadSettings();
-
-    /* Load global settings: */
-    {
-        VBoxGlobalSettings settings = vboxGlobal().settings();
-        menuBar()->setHidden(settings.isFeatureActive("noMenuBar"));
-    }
-}
-#endif /* Q_WS_MAC */
 
 #ifndef Q_WS_MAC
 void UIMachineWindowSeamless::cleanupMiniToolbar()
