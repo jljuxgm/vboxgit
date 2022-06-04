@@ -1,4 +1,4 @@
-' $Id: configure.vbs 42293 2012-07-20 23:50:35Z vboxsync $
+' $Id: configure.vbs 42294 2012-07-20 23:52:38Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -1343,7 +1343,7 @@ function CheckForWinDDKSub(strPathDDK, blnCheckBuild)
       if Not blnCheckBuild then
          CheckForWinDDKSub = True
       '' @todo Find better build check.
-      elseif Shell("""" & DosSlashes(strPathDDK & "bin/x86/rc.exe") & """" , True) <> 0 _
+      elseif Shell("""" & DosSlashes(strPathDDK & "/bin/x86/rc.exe") & """" , True) <> 0 _
          And InStr(1, g_strShellOutput, "Resource Compiler Version 6.1.") > 0 then
          CheckForWinDDKSub = True
       end if
