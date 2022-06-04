@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 41767 2012-06-15 18:40:36Z vboxsync $ */
+/* $Id: VMDK.cpp 43818 2012-11-06 21:30:54Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -700,7 +700,12 @@ DECLINLINE(int) vmdkFileInflateSync(PVMDKIMAGE pImage, PVMDKEXTENT pExtent,
                 return rc;
         }
         else
+        {
             memcpy(pMarker, pcvMarker, RT_OFFSETOF(VMDKMARKER, uType));
+            /* pcvMarker endianness has already been partially transformed, fix it */
+            pMarker->uSector = RT_H2LE_U64(pMarker->uSector);
+            pMarker->cbSize = RT_H2LE_U32(pMarker->cbSize);
+        }
 
         cbCompSize = RT_LE2H_U32(pMarker->cbSize);
         if (cbCompSize == 0)
