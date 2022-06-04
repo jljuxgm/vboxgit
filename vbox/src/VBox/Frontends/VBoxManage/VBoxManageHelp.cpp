@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 46123 2013-05-16 13:40:20Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 46290 2013-05-27 15:26:15Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -415,6 +415,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                                    [--vendor <vendor name>]\n"
                      "                                    [--vendorurl <vendor url>]\n"
                      "                                    [--version <version info>]\n"
+                     "                                    [--description <description info>]\n"
                      "                                    [--eula <license text>]\n"
                      "                                    [--eulafile <filename>]\n"
                      "\n", SEP);

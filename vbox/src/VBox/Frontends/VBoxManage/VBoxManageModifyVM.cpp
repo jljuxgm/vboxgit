@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 46123 2013-05-16 13:40:20Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 46290 2013-05-27 15:26:15Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -50,6 +50,7 @@ enum
 {
     MODIFYVM_NAME = 1000,
     MODIFYVM_GROUPS,
+    MODIFYVM_DESCRIPTION,
     MODIFYVM_OSTYPE,
     MODIFYVM_MEMORY,
     MODIFYVM_PAGEFUSION,
@@ -210,6 +211,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
 {
     { "--name",                     MODIFYVM_NAME,                      RTGETOPT_REQ_STRING },
     { "--groups",                   MODIFYVM_GROUPS,                    RTGETOPT_REQ_STRING },
+    { "--description",              MODIFYVM_DESCRIPTION,               RTGETOPT_REQ_STRING },
     { "--ostype",                   MODIFYVM_OSTYPE,                    RTGETOPT_REQ_STRING },
     { "--memory",                   MODIFYVM_MEMORY,                    RTGETOPT_REQ_UINT32 },
     { "--pagefusion",               MODIFYVM_PAGEFUSION,                RTGETOPT_REQ_BOOL_ONOFF },
@@ -484,6 +486,11 @@ int handleModifyVM(HandlerArg *a)
                 com::SafeArray<BSTR> groups;
                 parseGroups(ValueUnion.psz, &groups);
                 CHECK_ERROR(machine, COMSETTER(Groups)(ComSafeArrayAsInParam(groups)));
+                break;
+            }
+            case MODIFYVM_DESCRIPTION:
+            {
+                CHECK_ERROR(machine, COMSETTER(Description)(Bstr(ValueUnion.psz).raw()));
                 break;
             }
             case MODIFYVM_OSTYPE:
