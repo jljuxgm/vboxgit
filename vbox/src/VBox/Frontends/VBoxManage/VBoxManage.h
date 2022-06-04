@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 42442 2012-07-27 16:47:04Z vboxsync $ */
+/* $Id: VBoxManage.h 42444 2012-07-30 11:56:33Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -161,6 +161,8 @@ HRESULT showProgress(ComPtr<IProgress> progress);
 void showLogo(PRTSTREAM pStrm);
 
 #ifndef VBOX_ONLY_DOCS
+RTEXITCODE readPasswordFile(const char *pszFilename, com::Utf8Str *pPasswd);
+
 int handleInternalCommands(HandlerArg *a);
 #endif /* !VBOX_ONLY_DOCS */
 

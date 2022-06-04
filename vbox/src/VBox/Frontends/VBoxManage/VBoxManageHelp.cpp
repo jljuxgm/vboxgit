@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 42395 2012-07-25 14:36:03Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 42444 2012-07-30 11:56:33Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -438,7 +438,9 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                                            [[<display>] [<enabled:yes|no>\n"
                      "                                              [<xorigin> <yorigin>]]] |\n"
                      "                            screenshotpng <file> [display] |\n"
-                     "                            setcredentials <username> <password> <domain>\n"
+                     "                            setcredentials <username>\n"
+                     "                                           --passwordfile <file> | <password>\n"
+                     "                                           <domain>\n"
                      "                                           [--allowlocallogon <yes|no>] |\n"
                      "                            teleport --host <name> --port <port>\n"
                      "                                   [--maxdowntime <msec>] [--password password]\n"
