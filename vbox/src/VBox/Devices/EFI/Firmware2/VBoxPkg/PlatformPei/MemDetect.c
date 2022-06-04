@@ -1,4 +1,4 @@
-/* $Id: MemDetect.c 42405 2012-07-26 07:04:37Z vboxsync $ */
+/* $Id: MemDetect.c 42421 2012-07-26 18:21:42Z vboxsync $ */
 /** @file
  * MemDetect.c
  */
@@ -134,6 +134,7 @@ MemDetect (
     MemoryBase = LowerMemorySize - SIZE_64MB;
     MemorySize = SIZE_64MB;
   }
+  MemorySize -= BASE_64KB; /* Reserves 64KB for ACPI tables. */
 
   //
   // Publish this memory to the PEI Core
@@ -146,11 +147,10 @@ MemDetect (
   //
   AddMemoryBaseSizeHob (MemoryBase, MemorySize);
   AddMemoryRangeHob (BASE_1MB, MemoryBase);
-  AddMemoryRangeHob (0, BASE_512KB + BASE_128KB);
-
   MtrrSetMemoryAttribute (BASE_1MB, MemoryBase + MemorySize - BASE_1MB, CacheWriteBack);
-
+  AddMemoryRangeHob (0, BASE_512KB + BASE_128KB);
   MtrrSetMemoryAttribute (0, BASE_512KB + BASE_128KB, CacheWriteBack);
+
 
   if (UpperMemorySize != 0) {
     AddUntestedMemoryBaseSizeHob (BASE_4GB, UpperMemorySize);
