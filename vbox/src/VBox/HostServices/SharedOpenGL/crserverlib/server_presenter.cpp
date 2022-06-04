@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 46061 2013-05-14 12:24:46Z vboxsync $ */
+/* $Id: server_presenter.cpp 46173 2013-05-20 12:15:50Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -127,8 +127,8 @@ int CrDpPresentEntry(PCR_DISPLAY pDisplay, PCR_DISPLAY_ENTRY pEntry)
 
     if (pMural)
     {
-        idDrawFBO = pMural->aidFBOs[pMural->iCurDrawBuffer];
-        idReadFBO = pMural->aidFBOs[pMural->iCurReadBuffer];
+        idDrawFBO = CR_SERVER_FBO_FOR_IDX(pMural, pMural->iCurDrawBuffer);
+        idReadFBO = CR_SERVER_FBO_FOR_IDX(pMural, pMural->iCurReadBuffer);
     }
 
     crStateSwitchPrepare(NULL, pCtx, idDrawFBO, idReadFBO);
