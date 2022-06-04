@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 45697 2013-04-24 13:30:50Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 47482 2013-07-30 19:11:59Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles
  *                             the forked session processes.
@@ -1261,7 +1261,7 @@ RTEXITCODE gstcntlSessionForkWorker(PVBOXSERVICECTRLSESSION pSession)
 
 
 /**
- * Finds a (formerly) started guest process given by its PID and increses
+ * Finds a (formerly) started guest process given by its PID and increases
  * its reference count. Must be decreased by the caller with GstCntlProcessRelease().
  *
  * @return  PVBOXSERVICECTRLTHREAD      Locked guest process if found, otherwise NULL.
