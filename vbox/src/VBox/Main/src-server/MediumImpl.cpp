@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 45597 2013-04-17 19:01:27Z vboxsync $ */
+/* $Id: MediumImpl.cpp 46720 2013-06-21 10:07:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3425,6 +3425,9 @@ void Medium::markRegistriesModified()
         llRegistryIDs = m->llRegistryIDs;
     }
 
+    /* Save the error information now, the implicit restore when this goes
+     * out of scope will throw away spurious additional errors created below. */
+    ErrorInfoKeeper eik;
     for (GuidList::const_iterator it = llRegistryIDs.begin();
          it != llRegistryIDs.end();
          ++it)
