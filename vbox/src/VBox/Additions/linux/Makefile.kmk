@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44080 2012-12-10 14:35:34Z vboxsync $
+# $Id: Makefile.kmk 44082 2012-12-10 14:43:38Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -358,7 +358,7 @@ lnx_add_inst-noexec_SOURCES  = \
 	$(VBOX_REL_X11_ADD_INST)vboxvideo.ids \
 	selinux-fedora/vbox_x11.pp \
 	selinux-fedora/vbox_accel.pp \
-    $(if $(VBOX_WITH_LIGHTDM_GREETER),lightdm-greeter/vbox-greeter.desktop)
+	$(if $(VBOX_WITH_LIGHTDM_GREETER),lightdm-greeter/vbox-greeter.desktop)
 
 INSTALLS += lnx_add_inst-license
 lnx_add_inst-license_INST     = $(VBOX_LNX_ADD_INST_OUT_DIR)
