@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 41774 2012-06-16 14:44:06Z vboxsync $ */
+/* $Id: DevOHCI.cpp 43149 2012-09-03 08:42:00Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -4980,7 +4980,7 @@ static DECLCALLBACK(int) ohciR3SaveDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     POHCIROOTHUB pRh = &pOhci->RootHub;
     OHCIROOTHUB Rh;
     unsigned i;
-    LogFlow(("ohciR3SavePrep: \n"));
+    LogFlow(("ohciR3SaveDone: \n"));
 
     /*
      * NULL the dev pointers.
