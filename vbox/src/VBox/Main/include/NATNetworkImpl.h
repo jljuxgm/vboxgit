@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 47867 2013-08-20 04:51:36Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 47869 2013-08-20 05:15:15Z vboxsync $ */
 
 /** @file
  *
@@ -108,6 +108,9 @@ public:
 
     STDMETHOD(COMGETTER(LocalMappings))(ComSafeArrayOut(BSTR, aLocalMappings));
     STDMETHOD(AddLocalMapping)(IN_BSTR aHostId, LONG aOffset);
+
+    STDMETHOD(COMGETTER(LoopbackIp6))(LONG *aLoopbackIp6);
+    STDMETHOD(COMSETTER(LoopbackIp6))(LONG aLoopbackIp6);
 
     STDMETHOD(COMGETTER(PortForwardRules4))(ComSafeArrayOut(BSTR, aPortForwardRules4));
     STDMETHOD(COMGETTER(PortForwardRules6))(ComSafeArrayOut(BSTR, aPortForwardRules6));

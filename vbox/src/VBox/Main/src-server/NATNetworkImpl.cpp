@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 47867 2013-08-20 04:51:36Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 47869 2013-08-20 05:15:15Z vboxsync $ */
 
 /** @file
  *
@@ -481,6 +481,16 @@ STDMETHODIMP NATNetwork::COMGETTER(LocalMappings)(ComSafeArrayOut(BSTR, aLocalMa
 }
 
 STDMETHODIMP NATNetwork::AddLocalMapping(IN_BSTR aHostId, LONG aOffset)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP NATNetwork::COMGETTER(LoopbackIp6)(LONG *aLoopbackIp6)
+{
+    return E_NOTIMPL;
+}
+
+STDMETHODIMP NATNetwork::COMSETTER(LoopbackIp6)(LONG aLoopbackIp6)
 {
     return E_NOTIMPL;
 }
