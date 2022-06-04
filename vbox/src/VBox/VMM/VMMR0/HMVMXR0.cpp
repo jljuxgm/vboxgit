@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47660 2013-08-12 00:37:34Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47662 2013-08-12 01:16:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9662,7 +9662,7 @@ static int hmR0VmxExitXcptDB(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT pVm
         /*
          * Raise #DB in the guest.
          */
-        int rc = hmR0VmxReadExitIntrInfoVmcs(pVCpu, pVmxTransient);
+        rc  = hmR0VmxReadExitIntrInfoVmcs(pVCpu, pVmxTransient);
         rc |= hmR0VmxReadExitInstrLenVmcs(pVCpu, pVmxTransient);
         rc |= hmR0VmxReadExitIntrErrorCodeVmcs(pVCpu, pVmxTransient);
         AssertRCReturn(rc, rc);
