@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.h 43567 2012-10-08 16:32:26Z vboxsync $ */
+/* $Id: ATAPIPassthrough.h 43573 2012-10-08 17:50:32Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI passthrough helpers (common code for DevATA and DevAHCI).
  */
@@ -58,7 +58,7 @@ DECLHIDDEN(void) ATAPIPassthroughTrackListClear(PTRACKLIST pTrackList);
  * @param   pCDB          The CDB buffer.
  * @param   pvBuf         The data buffer.
  */
-DECLHIDDEN(int) ATAPIPassthroughTrackListUpdate(PTRACKLIST pTrackList, uint8_t *pCDB, void *pvBuf);
+DECLHIDDEN(int) ATAPIPassthroughTrackListUpdate(PTRACKLIST pTrackList, const uint8_t *pCDB, const void *pvBuf);
 
 /**
  * Return the sector size from the track matching the LBA in the given track list.
