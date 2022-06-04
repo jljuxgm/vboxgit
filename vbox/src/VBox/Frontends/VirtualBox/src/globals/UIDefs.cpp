@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 46726 2013-06-21 14:32:44Z vboxsync $ */
+/* $Id: UIDefs.cpp 46763 2013-06-24 17:21:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -66,6 +66,10 @@ const char* UIDefs::GUI_SaveMountedAtRuntime = "GUI/SaveMountedAtRuntime";
 const char* UIDefs::GUI_PassCAD = "GUI/PassCAD";
 const char* UIDefs::GUI_DefaultCloseAction = "GUI/DefaultCloseAction";
 const char* UIDefs::GUI_RestrictedStatusBarIndicators = "GUI/RestrictedStatusBarIndicators";
+
+/* Settings dialogs stuff: */
+const char* UIDefs::GUI_RestrictedGlobalSettingsPages = "GUI/RestrictedGlobalSettingsPages";
+const char* UIDefs::GUI_RestrictedMachineSettingsPages = "GUI/RestrictedMachineSettingsPages";
 
 /* Mini tool-bar definitions: */
 const char* UIDefs::GUI_ShowMiniToolBar = "GUI/ShowMiniToolBar";

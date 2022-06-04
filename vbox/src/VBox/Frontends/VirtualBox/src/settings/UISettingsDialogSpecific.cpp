@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 46761 2013-06-24 17:03:16Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 46763 2013-06-24 17:21:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -310,8 +310,14 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent)
     setDialogType(SettingsDialogType_Offline);
 
     /* Creating settings pages: */
+    QList<GlobalSettingsPageType> restrictedGlobalSettingsPages = vboxGlobal().restrictedGlobalSettingsPages(vboxGlobal().virtualBox());
     for (int iPageIndex = GlobalSettingsPageType_General; iPageIndex < GlobalSettingsPageType_Max; ++iPageIndex)
     {
+        /* Make sure page was not restricted: */
+        if (restrictedGlobalSettingsPages.contains(static_cast<GlobalSettingsPageType>(iPageIndex)))
+            continue;
+
+        /* Make sure page is available: */
         if (isPageAvailable(iPageIndex))
         {
             UISettingsPage *pSettingsPage = 0;
@@ -577,8 +583,14 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
     updateDialogType();
 
     /* Creating settings pages: */
+    QList<MachineSettingsPageType> restrictedMachineSettingsPages = vboxGlobal().restrictedMachineSettingsPages(m_machine);
     for (int iPageIndex = MachineSettingsPageType_General; iPageIndex < MachineSettingsPageType_Max; ++iPageIndex)
     {
+        /* Make sure page was not restricted: */
+        if (restrictedMachineSettingsPages.contains(static_cast<MachineSettingsPageType>(iPageIndex)))
+            continue;
+
+        /* Make sure page is available: */
         if (isPageAvailable(iPageIndex))
         {
             UISettingsPage *pSettingsPage = 0;

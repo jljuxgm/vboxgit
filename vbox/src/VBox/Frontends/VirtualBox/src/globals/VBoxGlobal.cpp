@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 46726 2013-06-21 14:32:44Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 46763 2013-06-24 17:21:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3775,6 +3775,44 @@ QList<MachineCloseAction> VBoxGlobal::restrictedMachineCloseActions(CMachine &ma
     {
         MachineCloseAction value = gpConverter->fromInternalString<MachineCloseAction>(strValue);
         if (value != MachineCloseAction_Invalid)
+            result << value;
+    }
+    /* Return result: */
+    return result;
+}
+
+/* static */
+QList<GlobalSettingsPageType> VBoxGlobal::restrictedGlobalSettingsPages(CVirtualBox &vbox)
+{
+    /* Prepare result: */
+    QList<GlobalSettingsPageType> result;
+    /* Load restricted global-settings-pages: */
+    QString strList(vbox.GetExtraData(GUI_RestrictedGlobalSettingsPages));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        GlobalSettingsPageType value = gpConverter->fromInternalString<GlobalSettingsPageType>(strValue);
+        if (value != GlobalSettingsPageType_Invalid)
+            result << value;
+    }
+    /* Return result: */
+    return result;
+}
+
+/* static */
+QList<MachineSettingsPageType> VBoxGlobal::restrictedMachineSettingsPages(CMachine &machine)
+{
+    /* Prepare result: */
+    QList<MachineSettingsPageType> result;
+    /* Load restricted machine-settings-pages: */
+    QString strList(machine.GetExtraData(GUI_RestrictedMachineSettingsPages));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        MachineSettingsPageType value = gpConverter->fromInternalString<MachineSettingsPageType>(strValue);
+        if (value != MachineSettingsPageType_Invalid)
             result << value;
     }
     /* Return result: */
