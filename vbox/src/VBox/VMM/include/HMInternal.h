@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 43947 2012-11-23 11:06:22Z vboxsync $ */
+/* $Id: HMInternal.h 43977 2012-11-27 16:43:29Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -549,11 +549,11 @@ typedef struct HMCPU
         /** Current VMX_VMCS_CTRL_ENTRY_CONTROLS. */
         uint64_t                    u64EntryCtls;
         /** Physical address of the virtual APIC page for TPR caching. */
-        RTHCPHYS                    HCPhysVAPIC;
+        RTHCPHYS                    HCPhysVirtApic;
         /** R0 memory object for the virtual APIC page for TPR caching. */
-        RTR0MEMOBJ                  hMemObjVAPIC;
+        RTR0MEMOBJ                  hMemObjVirtApic;
         /** Virtual address of the virtual APIC page for TPR caching. */
-        R0PTRTYPE(uint8_t *)        pbVAPIC;
+        R0PTRTYPE(uint8_t *)        pbVirtApic;
 
         /** Current CR0 mask. */
         uint64_t                    cr0_mask;
