@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 43778 2012-10-30 13:13:59Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 43807 2012-11-06 07:36:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -344,6 +344,18 @@ void UIGChooserItem::paintText(QPainter *pPainter, QPoint point,
     pPainter->setFont(font);
     pPainter->drawText(point, strText);
     pPainter->restore();
+}
+
+/* static */
+QSize UIGChooserItem::textSize(const QFont &font, QPaintDevice *pPaintDevice, const QString &strText)
+{
+    /* Make sure text is not empty: */
+    if (strText.isEmpty())
+        return QSize(0, 0);
+
+    /* Return text size, based on font-metrics: */
+    QFontMetrics fm(font, pPaintDevice);
+    return QSize(fm.width(strText), fm.height());
 }
 
 /* static */
