@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: VBoxHeadlessXOrg.sh 43832 2012-11-07 14:37:42Z vboxsync $
+# $Id: VBoxHeadlessXOrg.sh 44001 2012-11-30 10:47:15Z vboxsync $
 #
 # VirtualBox X Server auto-start service.
 #
@@ -46,10 +46,8 @@ CONFIGURATION_FILE=/etc/default/virtualbox
 SCRIPT_NAME="$0"
 ## Command line we were called with.
 SCRIPT_COMMAND_LINE="$0 $@"
-## The service name.  Should match the init script name.
+## The service name.
 SERVICE_NAME="vboxheadlessxorg"
-## The descriptive service name.
-SERVICE_LONG_NAME="VBoxHeadless X Server service"
 ## Signals and conditions which may be used to terminate the service.
 EXIT_SIGNALS="EXIT HUP INT QUIT ABRT TERM"
 ## The default X server configuration directory.
