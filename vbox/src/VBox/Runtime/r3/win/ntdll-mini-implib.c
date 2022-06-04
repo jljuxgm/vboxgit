@@ -1,4 +1,4 @@
-/* $Id: ntdll-mini-implib.c 43386 2012-09-21 08:40:12Z vboxsync $ */
+/* $Id: ntdll-mini-implib.c 47533 2013-08-03 22:31:16Z vboxsync $ */
 /** @file
  * IPRT - Minimal NTDLL import library defintion file.
  */
@@ -36,6 +36,7 @@ typedef INT     FILE_INFORMATION_CLASS;
 typedef INT     FS_INFORMATION_CLASS;
 typedef INT     MEMORY_INFORMATION_CLASS;
 typedef INT     PROCESSINFOCLASS;
+typedef PVOID   POBJECT_ATTRIBUTES;
 
 
 /* Error/status conversion: */
@@ -111,4 +112,27 @@ NTSYSAPI LONG NTAPI NtSetTimerResolution(IN ULONG DesiredResolution,
     return -1;
 }
 
+
+
+/* Handles: */
+
+NTSYSAPI NTSTATUS NTAPI NtCreateFile(OUT PHANDLE FileHandle,
+                                     IN ACCESS_MASK DesiredAccess,
+                                     IN POBJECT_ATTRIBUTES ObjectAttributes,
+                                     OUT PIO_STATUS_BLOCK IoStatusBlock,
+                                     IN PLARGE_INTEGER AllocationSize OPTIONAL,
+                                     IN ULONG FileAttributes,
+                                     IN ULONG ShareAccess,
+                                     IN ULONG CreateDisposition,
+                                     IN ULONG CreateOptions,
+                                     IN PVOID EaBuffer,
+                                     IN ULONG EaLength)
+{
+    return -1;
+}
+
+NTSYSAPI NTSTATUS NTAPI NtClose(IN HANDLE Handle)
+{
+    return -1;
+}
 
