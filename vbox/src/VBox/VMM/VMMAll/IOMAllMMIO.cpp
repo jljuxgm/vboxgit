@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 42186 2012-07-17 13:32:15Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 42726 2012-08-09 19:07:08Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -105,12 +105,16 @@ static VBOXSTRICTRC iomMMIODoComplicatedWrite(PVM pVM, PIOMMMIORANGE pRange, RTG
     int rc = VINF_SUCCESS; NOREF(pVM);
 #ifdef VBOX_STRICT
     if (pRange->fFlags & IOMMMIO_FLAGS_DBGSTOP_ON_COMPLICATED_WRITE)
+    {
 # ifdef IN_RING3
         rc = DBGFR3EventSrc(pVM, DBGFEVENT_DEV_STOP, RT_SRC_POS,
                             "Complicated write %#x byte at %RGp to %s\n", cbValue, GCPhys, R3STRING(pRange->pszDesc));
+        if (rc == VERR_DBGF_NOT_ATTACHED)
+            rc = VINF_SUCCESS;
 # else
         return VINF_IOM_R3_MMIO_WRITE;
 # endif
+    }
 #endif
 
 
@@ -305,12 +309,16 @@ static VBOXSTRICTRC iomMMIODoComplicatedRead(PVM pVM, PIOMMMIORANGE pRange, RTGC
     int rc = VINF_SUCCESS; NOREF(pVM);
 #ifdef VBOX_STRICT
     if (pRange->fFlags & IOMMMIO_FLAGS_DBGSTOP_ON_COMPLICATED_READ)
+    {
 # ifdef IN_RING3
         rc = DBGFR3EventSrc(pVM, DBGFEVENT_DEV_STOP, RT_SRC_POS,
                             "Complicated read %#x byte at %RGp to %s\n", cbValue, GCPhys, R3STRING(pRange->pszDesc));
+        if (rc == VERR_DBGF_NOT_ATTACHED)
+            rc = VINF_SUCCESS;
 # else
         return VINF_IOM_R3_MMIO_READ;
 # endif
+    }
 #endif
 
     /*
