@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 43791 2012-11-01 13:25:57Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 43792 2012-11-01 13:28:44Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -260,7 +260,7 @@ static void vboxserviceVMInfoWriteFixedProperties(void)
 #endif
 }
 
-# if defined(VBOX_WITH_DBUS) && defined(RT_OS_LINUX) /* Not yet for Solaris/FreeBSB. */
+#if defined(VBOX_WITH_DBUS) && defined(RT_OS_LINUX) /* Not yet for Solaris/FreeBSB. */
 /* 
  * Simple wrapper to work around compiler-specific va_list madness.
  */
@@ -558,7 +558,6 @@ static int vboxserviceVMInfoWriteUsers(void)
     VBoxServiceVerbose(4, "cUsersInList=%RU32, pszUserList=%s, rc=%Rrc\n",
                        cUsersInList, pszUserList ? pszUserList : "<NULL>", rc);
 
-#if 0
     if (pszUserList && cUsersInList > 0)
         VBoxServicePropCacheUpdate(&g_VMInfoPropCache, "/VirtualBox/GuestInfo/OS/LoggedInUsersList", "%s", pszUserList);
     else
@@ -570,7 +569,7 @@ static int vboxserviceVMInfoWriteUsers(void)
                                    cUsersInList == 0 ? "true" : "false");
         g_cVMInfoLoggedInUsers = cUsersInList;
     }
-#endif
+
     if (RT_SUCCESS(rc) && pszUserList)
         RTStrFree(pszUserList);
     return rc;
