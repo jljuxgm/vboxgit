@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 45148 2013-03-22 21:28:29Z vboxsync $ */
+/* $Id: crservice.cpp 45940 2013-05-07 20:16:31Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -243,6 +243,31 @@ static int svcPresentFBOTearDown(void)
 
     return rc;
 }
+
+static DECLCALLBACK(void) svcNotifyEventCB(int32_t screenId, uint32_t uEvent, void*pvData)
+{
+    ComPtr<IDisplay> pDisplay;
+    ComPtr<IFramebuffer> pFramebuffer;
+    LONG xo, yo;
+    LONG64 winId = 0;
+    ULONG monitorCount, i, w, h;
+
+    if (!g_pConsole)
+    {
+        crWarning("Console not defined!");
+        return;
+    }
+
+    CHECK_ERROR2_STMT(g_pConsole, COMGETTER(Display)(pDisplay.asOutParam()), return);
+
+    CHECK_ERROR2_STMT(pDisplay, GetFramebuffer(screenId, pFramebuffer.asOutParam(), &xo, &yo), return);
+
+    if (!pFramebuffer)
+        return;
+
+    CHECK_ERROR2_STMT(pFramebuffer, Notify3DEvent(VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_WINDOW, NULL), return);
+}
+
 
 static DECLCALLBACK(int) svcUnload (void *)
 {
@@ -1280,6 +1305,8 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad (VBOXHGCMSVCFNTABLE *pt
                 return VERR_NOT_SUPPORTED;
 
             rc = svcPresentFBOInit();
+
+            crServerVBoxSetNotifyEventCB(svcNotifyEventCB);
         }
     }
 

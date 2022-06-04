@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 45580 2013-04-16 18:34:32Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 45940 2013-05-07 20:16:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,6 +26,8 @@
 # include "UIFrameBuffer.h"
 # include "UIMessageCenter.h"
 # include "VBoxGlobal.h"
+
+# include <VBox/VBoxVideo3D.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
@@ -258,6 +260,21 @@ STDMETHODIMP UIFrameBuffer::ProcessVHWACommand(BYTE *pCommand)
 {
     Q_UNUSED(pCommand);
     return E_NOTIMPL;
+}
+
+STDMETHODIMP UIFrameBuffer::Notify3DEvent(ULONG uType, BYTE *pReserved)
+{
+    switch (uType)
+    {
+        case VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_WINDOW:
+            if (pReserved)
+                return E_INVALIDARG;
+
+            /* @todo: submit asynchronous event to GUI thread */
+            return E_NOTIMPL;
+        default:
+            return E_INVALIDARG;
+    }
 }
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
