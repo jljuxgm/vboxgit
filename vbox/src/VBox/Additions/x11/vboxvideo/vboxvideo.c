@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 44998 2013-03-11 16:55:59Z vboxsync $ */
+/* $Id: vboxvideo.c 45000 2013-03-11 16:58:42Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -75,7 +75,6 @@
 #include "fb.h"
 
 #include "vboxvideo.h"
-#include <iprt/asm-math.h>
 #include "version-generated.h"
 #include "product-generated.h"
 #include <xf86.h>
