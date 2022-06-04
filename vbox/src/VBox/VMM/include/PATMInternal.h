@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 46150 2013-05-17 17:21:45Z vboxsync $ */
+/* $Id: PATMInternal.h 46347 2013-05-31 15:15:24Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -491,6 +491,11 @@ typedef struct PATM
 
     /** Debug module for the patch memory. */
     RTDBGMOD                    hDbgModPatchMem;
+
+#if HC_ARCH_BITS == 32
+    /** Align statistics on a 8 byte boundary. */
+    uint32_t                    u32Alignment1;
+#endif
 
     STAMCOUNTER                 StatNrOpcodeRead;
     STAMCOUNTER                 StatDisabled;
