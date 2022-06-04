@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 42222 2012-07-19 09:00:16Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -58,8 +58,8 @@ RT_C_DECLS_END
 /*******************************************************************************
 *   Prototypes                                                                 *
 *******************************************************************************/
-static int pdmR0DevHlp_PhysRead(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead);
-static int pdmR0DevHlp_PhysWrite(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite);
+static DECLCALLBACK(int) pdmR0DevHlp_PhysRead(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead);
+static DECLCALLBACK(int) pdmR0DevHlp_PhysWrite(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite);
 
 
 /*******************************************************************************
