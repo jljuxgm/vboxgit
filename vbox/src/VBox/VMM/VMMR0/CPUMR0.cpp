@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 44076 2012-12-10 12:36:48Z vboxsync $ */
+/* $Id: CPUMR0.cpp 44077 2012-12-10 12:46:42Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -140,7 +140,6 @@ static DECLCALLBACK(void) cpumR0CheckCpuid(RTCPUID idCpu, void *pvUser1, void *p
 
         ASMCpuId_Idx_ECX(uLeave, 0, &eax, &ebx, &ecx, &edx);
         PCPUMCPUID paLeaves;
-        uint32_t idx;
         if (uLeave < 0x80000000)
             paLeaves = &pCPUM->aGuestCpuIdStd[uLeave - 0x00000000];
         else if (uLeave < 0xc0000000)
@@ -148,8 +147,8 @@ static DECLCALLBACK(void) cpumR0CheckCpuid(RTCPUID idCpu, void *pvUser1, void *p
         else
             paLeaves = &pCPUM->aGuestCpuIdCentaur[uLeave - 0xc0000000];
         /* unify important bits */
-        paLeaves->ecx & (ecx | ~aCpuidUnify[i].ecx);
-        paLeaves->edx & (edx | ~aCpuidUnify[i].edx);
+        paLeaves->ecx &= (ecx | ~aCpuidUnify[i].ecx);
+        paLeaves->edx &= (edx | ~aCpuidUnify[i].edx);
     }
 }
 
