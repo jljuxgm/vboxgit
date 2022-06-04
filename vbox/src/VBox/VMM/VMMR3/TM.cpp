@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: TM.cpp 44800 2013-02-22 13:47:25Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -1657,6 +1657,7 @@ VMMR3DECL(int) TMR3TimerDestroy(PTMTIMER pTimer)
         STAM_PROFILE_START(&pVM->tm.s.CTX_SUFF_Z(StatScheduleOne), a);
         Assert(pQueue->offSchedule);
         tmTimerQueueSchedule(pVM, pQueue);
+        STAM_PROFILE_STOP(&pVM->tm.s.CTX_SUFF_Z(StatScheduleOne), a);
     }
 
     /*
