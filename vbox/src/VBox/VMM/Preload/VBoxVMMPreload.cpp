@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMPreload.cpp 41075 2012-04-26 23:28:21Z vboxsync $ */
+/* $Id: VBoxVMMPreload.cpp 46175 2013-05-20 12:38:38Z vboxsync $ */
 /** @file
  * VBoxVMMPreload - Preload VBox the ring-0 modules.
  */
@@ -155,7 +155,6 @@ static RTEXITCODE LoadModules(void)
             if (RT_FAILURE(rc))
                 return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTPathAppPrivateArch or RTPathAppend returned %Rrc", rc);
 
-            void           *pvImageBase;
             RTERRINFOSTATIC ErrInfo;
             RTErrInfoInitStatic(&ErrInfo);
             rc = SUPR3LoadModule(szPath, g_aModules[i].pszName, &g_aModules[i].pvImageBase, &ErrInfo.Core);
