@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-solaris.c 39515 2011-12-02 13:41:07Z vboxsync $ */
+/* $Id: semevent-r0drv-solaris.c 42835 2012-08-16 05:32:52Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -233,6 +233,10 @@ RTDECL(int) RTSemEventSignal(RTSEMEVENT hEventSem)
     mutex_exit(&pThis->Mtx);
     rtR0SemEventSolRelease(pThis);
 
+#ifdef DEBUG_ramshankar
+    /** See @bugref{6318} comment#11 */
+    return VINF_SUCCESS;
+#endif
     RT_ASSERT_PREEMPT_CPUID();
     return VINF_SUCCESS;
 }

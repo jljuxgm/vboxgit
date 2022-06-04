@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-solaris.c 36392 2011-03-24 11:20:37Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-solaris.c 42835 2012-08-16 05:32:52Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Solaris.
  */
@@ -213,6 +213,10 @@ RTDECL(int) RTSemEventMultiSignal(RTSEMEVENTMULTI hEventMultiSem)
     mutex_exit(&pThis->Mtx);
 
     rtR0SemEventMultiSolRelease(pThis);
+#ifdef DEBUG_ramshankar
+    /** See @bugref{6318} comment#11 */
+    return VINF_SUCCESS;
+#endif
     RT_ASSERT_PREEMPT_CPUID();
     return VINF_SUCCESS;
 }
@@ -241,6 +245,10 @@ RTDECL(int) RTSemEventMultiReset(RTSEMEVENTMULTI hEventMultiSem)
     mutex_exit(&pThis->Mtx);
     rtR0SemEventMultiSolRelease(pThis);
 
+#ifdef DEBUG_ramshankar
+    /** See @bugref{6318} comment#11 */
+    return VINF_SUCCESS;
+#endif
     RT_ASSERT_PREEMPT_CPUID();
     return VINF_SUCCESS;
 }
