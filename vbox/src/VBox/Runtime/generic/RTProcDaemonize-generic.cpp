@@ -1,4 +1,4 @@
-/* $Id: RTProcDaemonize-generic.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: RTProcDaemonize-generic.cpp 47093 2013-07-11 14:09:57Z vboxsync $ */
 /** @file
  * IPRT - RTProcDaemonize, generic implementation.
  */
@@ -80,7 +80,8 @@ RTR3DECL(int) RTProcDaemonize(const char * const *papszArgs, const char *pszDaem
         {
             hStdOutAndErr.enmType = RTHANDLETYPE_FILE;
 
-            rc = RTProcCreateEx(szExecPath, papszNewArgs, RTENV_DEFAULT, RTPROC_FLAGS_DETACHED,
+            rc = RTProcCreateEx(szExecPath, papszNewArgs, RTENV_DEFAULT,
+                                RTPROC_FLAGS_DETACHED | RTPROC_FLAGS_SAME_CONTRACT,
                                 &hStdIn, &hStdOutAndErr, &hStdOutAndErr,
                                 NULL /*pszAsUser*/,  NULL /*pszPassword*/, NULL /*phProcess*/);
 
