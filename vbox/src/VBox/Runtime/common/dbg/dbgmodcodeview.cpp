@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 46934 2013-07-03 13:26:47Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 46936 2013-07-03 13:28:53Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -1071,7 +1071,7 @@ static int rtDbgModCvLoadSegmentMap(PRTDBGMODCV pThis)
                 && (paDescs[i].fFlags & (RTCVSEGMAPDESC_F_SEL | RTCVSEGMAPDESC_F_ABS))
                 && paDescs[i].iOverlay == 0
                 && enmImgFmt != RTLDRFMT_PE
-                && enmImgFmt != RTCVFILETYPE_DBG)
+                && pThis->enmType != RTCVFILETYPE_DBG)
                 fHaveDosFrames = true; /* BIOS, only groups with frames. */
         }
     }
