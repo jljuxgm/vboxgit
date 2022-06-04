@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 42442 2012-07-27 16:47:04Z vboxsync $ */
+/* $Id: MachineImpl.h 42489 2012-07-31 19:02:49Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -94,7 +94,10 @@ public:
 
     enum StateDependency
     {
-        AnyStateDep = 0, MutableStateDep, MutableOrSavedStateDep
+        AnyStateDep = 0,
+        MutableStateDep,
+        MutableOrSavedStateDep,
+        OfflineStateDep
     };
 
     /**
