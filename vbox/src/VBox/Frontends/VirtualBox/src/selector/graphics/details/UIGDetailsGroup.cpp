@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 44019 2012-12-03 16:00:19Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 44060 2012-12-07 13:43:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -234,12 +234,6 @@ int UIGDetailsGroup::minimumHeightHint() const
 
 void UIGDetailsGroup::updateLayout()
 {
-    /* Update size-hints for all the children: */
-    foreach (UIGDetailsItem *pItem, items())
-        pItem->updateSizeHint();
-    /* Update size-hint for this item: */
-    updateSizeHint();
-
     /* Prepare variables: */
     int iMargin = data(GroupData_Margin).toInt();
     int iSpacing = data(GroupData_Spacing).toInt();

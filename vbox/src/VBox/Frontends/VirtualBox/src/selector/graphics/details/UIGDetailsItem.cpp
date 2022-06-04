@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.cpp 44019 2012-12-03 16:00:19Z vboxsync $ */
+/* $Id: UIGDetailsItem.cpp 44060 2012-12-07 13:43:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -84,10 +84,14 @@ UIGDetailsItem* UIGDetailsItem::parentItem() const
     return m_pParent;
 }
 
-void UIGDetailsItem::updateSizeHint()
+void UIGDetailsItem::updateGeometry()
 {
-    /* Update the geometry: */
-    updateGeometry();
+    /* Call to base-class: */
+    QIGraphicsWidget::updateGeometry();
+
+    /* Do the same for the parent: */
+    if (parentItem())
+        parentItem()->updateGeometry();
 }
 
 QSizeF UIGDetailsItem::sizeHint(Qt::SizeHint which, const QSizeF &constraint /* = QSizeF() */) const
