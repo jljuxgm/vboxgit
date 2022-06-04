@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43955 2012-11-26 08:46:58Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43956 2012-11-26 09:59:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -228,7 +228,7 @@ void UIGChooserItemMachine::updatePixmaps()
     QIcon stateIcon = machineStateIcon();
     QSize stateIconSize = stateIcon.availableSizes().first();
     m_statePixmap = stateIcon.pixmap(stateIconSize);
-    QPixmap statePixmap = icon.pixmap(stateIconSize);
+    QPixmap statePixmap = stateIcon.pixmap(stateIconSize);
     if (m_statePixmap.toImage() != statePixmap.toImage())
     {
         m_statePixmap = statePixmap;
