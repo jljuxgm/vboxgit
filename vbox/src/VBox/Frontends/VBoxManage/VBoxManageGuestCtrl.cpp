@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 42693 2012-08-08 22:37:51Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 42711 2012-08-09 14:11:29Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1924,10 +1924,11 @@ static int ctrlCopyDirToHost(PCOPYCONTEXT pContext,
         return ctrlPrintError(pContext->pGuest, COM_IIDOF(IGuest));
     ComPtr<IGuestDirEntry> dirEntry;
 #else
+    SafeArray<DirectoryOpenFlag_T> dirOpenFlags; /* No flags supported yet. */
     ComPtr<IGuestDirectory> pDirectory;
     HRESULT rc = pContext->pGuestSession->DirectoryOpen(Bstr(szCurDir).raw(), Bstr(pszFilter).raw(),
-                                                 Bstr().raw() /* No flags supported yet. */,
-                                                 pDirectory.asOutParam());
+                                                        ComSafeArrayAsInParam(dirOpenFlags),
+                                                        pDirectory.asOutParam());
     if (FAILED(rc))
         return ctrlPrintError(pContext->pGuestSession, COM_IIDOF(IGuestSession));
     ComPtr<IFsObjInfo> dirEntry;
