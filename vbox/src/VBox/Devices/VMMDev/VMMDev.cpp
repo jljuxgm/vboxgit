@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 47300 2013-07-22 14:04:31Z vboxsync $ */
+/* $Id: VMMDev.cpp 47301 2013-07-22 14:07:57Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -686,7 +686,7 @@ static int vmmdevReqHandler_ReportGuestUserState(PVMMDEV pThis, VMMDevRequestHea
         uint8_t *pvDynamic = (uint8_t *)pStatus + RT_OFFSETOF(VBoxGuestUserStatus, szUser);
         AssertPtr(pvDynamic);
 
-        if (!pStatus->cbUser)) /* User name is required. */
+        if (!pStatus->cbUser) /* User name is required. */
             return VERR_INVALID_PARAMETER;
         const char *pszUser = (const char *)pvDynamic;
         AssertPtrReturn(pszUser, VERR_INVALID_POINTER);
