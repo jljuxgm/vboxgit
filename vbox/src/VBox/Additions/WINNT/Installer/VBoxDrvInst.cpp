@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 46709 2013-06-20 14:51:52Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -137,11 +137,16 @@ void LogCallback(DIFXAPI_LOG Event, DWORD dwError, PCWSTR pEventDescription, PVO
  * @returns Module handle or NULL
  * @param   pszName             The DLL name.
  */
-static HMODULE loadSystemDll(const char *pszName)
+static HMODULE loadInstalledDll(const char *pszName)
 {
     char   szPath[MAX_PATH];
-    UINT   cchPath = GetSystemDirectoryA(szPath, sizeof(szPath));
-    size_t cbName  = strlen(pszName) + 1;
+    UINT   cchPath = GetModuleFileNameA(NULL, szPath, sizeof(szPath));
+    if (cchPath && cchPath <= sizeof(szPath))
+    {
+        char *pszSlashFile = strrchr(szPath, '\\');
+        if (pszSlashFile)
+            cchPath = pszSlashFile - szPath;
+    }
     if (cchPath + 1 + cbName > sizeof(szPath))
         return NULL;
     szPath[cchPath] = '\\';
@@ -163,7 +168,7 @@ int VBoxInstallDriver(const BOOL fInstall, const _TCHAR *pszDriverPath, BOOL fSi
                       const _TCHAR *pszLogFile)
 {
     HRESULT hr = S_OK;
-    HMODULE hDIFxAPI = loadSystemDll("DIFxAPI.dll");
+    HMODULE hDIFxAPI = loadInstalledDll("DIFxAPI.dll");
     if (NULL == hDIFxAPI)
     {
         _tprintf(_T("ERROR: Unable to locate DIFxAPI.dll!\n"));
