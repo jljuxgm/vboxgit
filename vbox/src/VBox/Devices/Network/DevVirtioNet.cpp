@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 44915 2013-03-05 09:06:51Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 44925 2013-03-05 13:47:44Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -756,7 +756,6 @@ static int vnetHandleRxPacket(PVNETSTATE pThis, const void *pvBuf, size_t cb,
                               PCPDMNETWORKGSO pGso)
 {
     VNETHDRMRX   Hdr;
-    PVNETHDRMRX pHdr;
     unsigned    uHdrLen;
     RTGCPHYS     addrHdrMrx = 0;
 
