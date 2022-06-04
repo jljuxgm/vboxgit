@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 46626 2013-06-18 14:00:20Z vboxsync $ */
+/* $Id: UISession.cpp 46726 2013-06-21 14:32:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -892,7 +892,7 @@ void UISession::prepareFramebuffers()
 
 void UISession::prepareMenuPool()
 {
-    m_pMenuPool = new UIMachineMenuBar;
+    m_pMenuPool = new UIMachineMenuBar(session().GetMachine());
 }
 
 void UISession::loadSessionSettings()

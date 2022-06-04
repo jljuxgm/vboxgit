@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 46708 2013-06-20 14:32:52Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 46726 2013-06-21 14:32:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3720,6 +3720,27 @@ bool VBoxGlobal::shouldWeAutoMountGuestScreens(CMachine &machine,
 
     /* 'true' if guest-screen auto-mounting approved by the extra-data: */
     return isApprovedByExtraData(machine, GUI_AutomountGuestScreens);
+}
+
+/* static */
+bool VBoxGlobal::shouldWeAllowSnapshotOperations(CMachine &machine,
+                                                 bool fIncludingSanityCheck /*= true*/)
+{
+    if (fIncludingSanityCheck)
+    {
+        /* 'false' for null machines,
+         * we can't operate snapshot in that case: */
+        if (machine.isNull())
+            return false;
+
+        /* 'false' for inaccessible machines,
+         * we can't operate snapshot in that case: */
+        if (!machine.GetAccessible())
+            return false;
+    }
+
+    /* 'true' if snapshot operations are not restricted by the extra-data: */
+    return !isApprovedByExtraData(machine, GUI_PreventSnapshotOperations);
 }
 
 /* static */
