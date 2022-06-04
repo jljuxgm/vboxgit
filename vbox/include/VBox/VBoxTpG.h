@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 41343 2012-05-16 20:07:33Z vboxsync $ */
+/* $Id: VBoxTpG.h 44424 2013-01-28 13:54:47Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -122,8 +122,18 @@ typedef VTGPROBELOC const *PCVTGPROBELOC;
 #  error "Unsupported Darwin compiler!"
 # endif
 
-#elif defined(RT_OS_OS2)
-# error "OS/2 is not supported"
+#elif defined(RT_OS_OS2) /** @todo This doesn't actually work, but it makes the code compile. */
+# define VTG_OBJ_SECT       "__DATA"
+# define VTG_LOC_SECT       "__VTGPrLc"
+# define VTG_LOC_SET        "__VTGPrLcSet"
+# ifdef __GNUC__
+#  define VTG_DECL_VTGPROBELOC(a_VarName) \
+    static VTGPROBELOC a_VarName; \
+    __asm__ (".stabs \"__VTGPrLcSet\",  23, 0, 0, _" #a_VarName );
+    
+# else
+#  error "Unsupported Darwin compiler!"
+# endif
 
 #else /* Assume the rest uses ELF. */
 # define VTG_OBJ_SECT       ".VTGObj"
