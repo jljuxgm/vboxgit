@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 40388 2012-03-07 12:44:46Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 42285 2012-07-20 16:52:34Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -35,7 +35,6 @@ HRESULT VBoxDispD3DOpen(VBOXDISPD3D *pD3D)
 #else
     pD3D->hD3DLib = LoadLibraryW(L"VBoxD3D9wddm.dll");
 #endif
-    Assert(pD3D->hD3DLib);
     if (!pD3D->hD3DLib)
     {
         DWORD winErr = GetLastError();
