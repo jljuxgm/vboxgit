@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 45216 2013-03-27 19:08:28Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 45237 2013-03-28 15:08:39Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -3102,7 +3102,7 @@ ResumeExecution:
             if (    VM_FF_ISPENDING(pVM, VM_FF_HM_TO_R3_MASK)
                 ||  VMCPU_FF_ISPENDING(pVCpu, VMCPU_FF_HM_TO_R3_MASK))
             {
-                STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchToR3);
+                STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchHmToR3FF);
                 rc = RT_UNLIKELY(VM_FF_ISPENDING(pVM, VM_FF_PGM_NO_MEMORY)) ? VINF_EM_NO_MEMORY : VINF_EM_RAW_TO_R3;
                 goto end;
             }
