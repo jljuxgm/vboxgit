@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 45362 2013-04-05 09:49:21Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 45371 2013-04-05 13:46:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -608,7 +608,7 @@ void UISelectorWindow::sltPerformSaveAction()
         {
             /* Show machine state saving progress: */
             CMachine machine = session.GetMachine();
-            msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_state_save_90px.png", this);
+            msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_state_save_90px.png");
             if (!progress.isOk() || progress.GetResultCode() != 0)
                 msgCenter().cannotSaveMachineState(progress, machine.GetName());
         }
@@ -698,7 +698,7 @@ void UISelectorWindow::sltPerformPowerOffAction()
         {
             /* Show machine power down progress: */
             CMachine machine = session.GetMachine();
-            msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_poweroff_90px.png", this);
+            msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_poweroff_90px.png");
             if (!progress.isOk() || progress.GetResultCode() != 0)
                 msgCenter().cannotPowerDownMachine(progress, machine.GetName());
         }

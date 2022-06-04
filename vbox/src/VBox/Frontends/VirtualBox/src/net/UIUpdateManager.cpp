@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 45342 2013-04-04 17:21:13Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 45371 2013-04-05 13:46:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -442,7 +442,7 @@ private slots:
     {
         /* Warn the user about extension pack was downloaded and saved, propose to install it: */
         if (msgCenter().proposeInstallExtentionPack(GUI_ExtPackName, strSource, QDir::toNativeSeparators(strTarget)))
-            UIGlobalSettingsExtension::doInstallation(strTarget, strDigest, msgCenter().mainWindowShown(), NULL);
+            UIGlobalSettingsExtension::doInstallation(strTarget, strDigest, msgCenter().networkManagerOrMainWindowShown(), NULL);
     }
 };
 

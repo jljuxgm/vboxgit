@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 45328 2013-04-04 08:49:11Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 45371 2013-04-05 13:46:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -606,8 +606,7 @@ void VBoxSnapshotsWgt::sltRestoreSnapshot()
     CProgress progress = console.RestoreSnapshot(snapshot);
     if (console.isOk())
     {
-        msgCenter().showModalProgressDialog(progress, mMachine.GetName(), ":/progress_snapshot_restore_90px.png",
-                                            msgCenter().mainWindowShown(), true);
+        msgCenter().showModalProgressDialog(progress, mMachine.GetName(), ":/progress_snapshot_restore_90px.png");
         if (progress.GetResultCode() != 0)
             msgCenter().cannotRestoreSnapshot(progress, snapshot.GetName(), mMachine.GetName());
     }
@@ -655,8 +654,7 @@ void VBoxSnapshotsWgt::sltDeleteSnapshot()
     if (console.isOk())
     {
         /* Show the progress dialog */
-        msgCenter().showModalProgressDialog(progress, mMachine.GetName(), ":/progress_snapshot_discard_90px.png",
-                                            msgCenter().mainWindowShown(), true);
+        msgCenter().showModalProgressDialog(progress, mMachine.GetName(), ":/progress_snapshot_discard_90px.png");
 
         if (progress.GetResultCode() != 0)
             msgCenter().cannotRemoveSnapshot(progress,  snapshot.GetName(), mMachine.GetName());
