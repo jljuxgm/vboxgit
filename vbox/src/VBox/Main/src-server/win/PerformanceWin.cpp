@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 35368 2010-12-30 13:38:23Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 43547 2012-10-05 10:26:16Z vboxsync $ */
 
 /** @file
  *
@@ -300,19 +300,19 @@ int CollectorWin::getHostCpuMHz(ULONG *mhz)
 
 int CollectorWin::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available)
 {
-    MEMORYSTATUSEX mstat;
-
-    mstat.dwLength = sizeof(mstat);
-    if (GlobalMemoryStatusEx(&mstat))
+    uint64_t cb;
+    int rc = RTSystemQueryTotalRam(&cb);
+    if (RT_SUCCESS(rc))
     {
-        *total = (ULONG)( mstat.ullTotalPhys / 1024 );
-        *available = (ULONG)( mstat.ullAvailPhys / 1024 );
-        *used = *total - *available;
+        *total = (ULONG)(cb / 1024);
+        rc = RTSystemQueryAvailableRam(&cb);
+        if (RT_SUCCESS(rc))
+        {
+            *available = (ULONG)(cb / 1024);
+            *used = *total - *available;
+        }
     }
-    else
-        return RTErrConvertFromWin32(GetLastError());
-
-    return VINF_SUCCESS;
+    return rc;
 }
 
 int CollectorWin::getProcessCpuLoad(RTPROCESS process, ULONG *user, ULONG *kernel)
