@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47066 2013-07-10 09:50:29Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47076 2013-07-10 13:22:48Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2987,7 +2987,8 @@ static int hmR0VmxLoadGuestControlRegs(PVMCPU pVCpu, PCPUMCTX pCtx)
 
         /* Additional intercepts for debugging, define these yourself explicitly. */
 #ifdef HMVMX_ALWAYS_TRAP_ALL_XCPTS
-        pVCpu->hm.s.vmx.u32XcptBitmap |=   RT_BIT(X86_XCPT_BP)
+        pVCpu->hm.s.vmx.u32XcptBitmap |= 0
+                                         | RT_BIT(X86_XCPT_BP)
                                          | RT_BIT(X86_XCPT_DB)
                                          | RT_BIT(X86_XCPT_DE)
                                          | RT_BIT(X86_XCPT_NM)
@@ -2996,7 +2997,8 @@ static int hmR0VmxLoadGuestControlRegs(PVMCPU pVCpu, PCPUMCTX pCtx)
                                          | RT_BIT(X86_XCPT_SS)
                                          | RT_BIT(X86_XCPT_GP)
                                          | RT_BIT(X86_XCPT_PF)
-                                         | RT_BIT(X86_XCPT_MF);
+                                         | RT_BIT(X86_XCPT_MF)
+                                         ;
 #elif defined(HMVMX_ALWAYS_TRAP_PF)
         pVCpu->hm.s.vmx.u32XcptBitmap    |= RT_BIT(X86_XCPT_PF);
 #endif
