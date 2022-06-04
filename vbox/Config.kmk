@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46390 2013-06-04 22:08:52Z vboxsync $
+# $Id: Config.kmk 46429 2013-06-07 09:07:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -384,6 +384,8 @@ VBOX_WITH_EHCI = 1
 VBOX_WITH_ISCSI = 1
 # Enable INIP support in the ISCSI feature.
 VBOX_WITH_INIP = 1
+# Enable new (pre-1.5.0 release) version of LWIP.
+VBOX_WITH_NEW_LWIP=1
 # Enable the E1000 feature.
 VBOX_WITH_E1000 = 1
 # Enable the Virtio feature.
@@ -5270,7 +5272,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46390 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46429 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
