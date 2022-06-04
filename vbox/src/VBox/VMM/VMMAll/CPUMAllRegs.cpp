@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 46286 2013-05-27 13:44:19Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1968,6 +1968,12 @@ VMMDECL(bool) CPUMGetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
         {
             if (pVM->cpum.s.aGuestCpuIdExt[0].eax >= 0x80000001)
                 return !!(pVM->cpum.s.aGuestCpuIdExt[1].edx & X86_CPUID_EXT_FEATURE_EDX_NX);
+        }
+
+        case CPUMCPUIDFEATURE_SYSCALL:
+        {
+            if (pVM->cpum.s.aGuestCpuIdExt[0].eax >= 0x80000001)
+                return !!(pVM->cpum.s.aGuestCpuIdExt[1].edx & X86_CPUID_EXT_FEATURE_EDX_SYSCALL);
         }
 
         case CPUMCPUIDFEATURE_RDTSCP:
