@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 45109 2013-03-20 16:41:00Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 45415 2013-04-08 21:40:42Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -155,6 +155,31 @@ VBGLR3DECL(int) VbglR3GuestCtrlMsgSetFilter(uint32_t uClientId,
     int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
     if (RT_SUCCESS(rc))
         rc = Msg.hdr.result;
+    return rc;
+}
+
+
+/**
+ * Tells the host service to skip the current message returned by
+ * VbglR3GuestCtrlMsgWaitFor().
+ *
+ * @return  IPRT status code.
+ * @param   uClientId       The client id returned by VbglR3GuestCtrlConnect().
+ */
+VBGLR3DECL(int) VbglR3GuestCtrlMsgSkip(uint32_t uClientId)
+{
+    HGCMMsgCmdSkip Msg;
+
+    Msg.hdr.result      = VERR_WRONG_ORDER;
+    Msg.hdr.u32ClientID = uClientId;
+    Msg.hdr.u32Function = GUEST_MSG_SKIP; /* Tell the host we want to skip
+                                             the current assigned command. */
+    Msg.hdr.cParms      = 0;              /* No parameters needed. */
+
+    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
+    if (RT_SUCCESS(rc))
+        rc = Msg.hdr.result;
+
     return rc;
 }
 

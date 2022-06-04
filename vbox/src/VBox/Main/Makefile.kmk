@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45276 2013-04-02 08:17:11Z vboxsync $
+# $Id: Makefile.kmk 45415 2013-04-08 21:40:42Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -610,6 +610,7 @@ VBoxC_SOURCES = \
 	src-client/DisplayImpl.cpp \
 	src-client/GuestImpl.cpp \
 	src-client/GuestDirectoryImpl.cpp \
+	src-client/GuestErrorInfoImpl.cpp \
 	src-client/GuestFileImpl.cpp \
 	src-client/GuestFsObjInfoImpl.cpp \
 	src-client/GuestProcessImpl.cpp \
