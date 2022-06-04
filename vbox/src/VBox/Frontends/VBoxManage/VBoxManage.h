@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 42460 2012-07-30 20:37:10Z vboxsync $ */
+/* $Id: VBoxManage.h 44028 2012-12-04 08:03:41Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -198,7 +198,7 @@ extern int handleGuestControl(HandlerArg *a);
 HRESULT showSnapshots(ComPtr<ISnapshot> &rootSnapshot,
                       ComPtr<ISnapshot> &currentSnapshot,
                       VMINFO_DETAILS details,
-                      const com::Bstr &prefix = "",
+                      const com::Utf8Str &prefix = "",
                       int level = 0);
 int handleShowVMInfo(HandlerArg *a);
 HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
@@ -230,13 +230,10 @@ int handleSharedFolder(HandlerArg *a);
 int handleExtPack(HandlerArg *a);
 
 /* VBoxManageDisk.cpp */
-HRESULT findMedium(HandlerArg *a, const char *pszFilenameOrUuid,
-                   DeviceType_T enmDevType, bool fSilent,
-                   ComPtr<IMedium> &pMedium);
-HRESULT findOrOpenMedium(HandlerArg *a, const char *pszFilenameOrUuid,
-                         DeviceType_T enmDevType, AccessMode_T enmAccessMode,
-                         ComPtr<IMedium> &pMedium, bool fForceNewUuidOnOpen,
-                         bool *pfWasUnknown);
+HRESULT openMedium(HandlerArg *a, const char *pszFilenameOrUuid,
+                   DeviceType_T enmDevType, AccessMode_T enmAccessMode,
+                   ComPtr<IMedium> &pMedium, bool fForceNewUuidOnOpen,
+                   bool fSilent);
 int handleCreateHardDisk(HandlerArg *a);
 int handleModifyHardDisk(HandlerArg *a);
 int handleCloneHardDisk(HandlerArg *a);
