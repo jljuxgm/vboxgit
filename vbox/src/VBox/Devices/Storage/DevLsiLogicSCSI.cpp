@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 45796 2013-04-28 22:23:18Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 45899 2013-05-05 12:24:03Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -2095,6 +2095,8 @@ static int lsilogicR3ProcessSCSIIORequest(PLSILOGICSCSI pThis, PLSILOGICTASKSTAT
                                                        uChainOffset);
                 AssertRC(rc);
             }
+            else
+                pTaskState->cSGListEntries = 0;
 
 # if 0
             /* Map sense buffer. */
