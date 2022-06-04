@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 42814 2012-08-14 18:04:44Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 42830 2012-08-15 17:48:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -455,6 +455,11 @@ void UIGChooserModel::updateLayout()
     emit sigRootItemResized(root()->geometry().size(), root()->minimumWidthHint());
 }
 
+void UIGChooserModel::startEditing()
+{
+    sltStartEditingSelectedGroup();
+}
+
 void UIGChooserModel::setCurrentDragObject(QDrag *pDragObject)
 {
     /* Make sure real focus unset: */
@@ -777,6 +782,10 @@ void UIGChooserModel::sltAddGroupBasedOnChosenItems()
 
 void UIGChooserModel::sltStartEditingSelectedGroup()
 {
+    /* Check if action is enabled: */
+    if (!gActionPool->action(UIActionIndexSelector_Simple_Group_Rename)->isEnabled())
+        return;
+
     /* Only for single selected group: */
     if (!singleGroupSelected())
         return;

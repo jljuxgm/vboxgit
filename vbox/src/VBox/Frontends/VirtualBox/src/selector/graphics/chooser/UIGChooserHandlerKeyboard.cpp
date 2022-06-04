@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerKeyboard.cpp 42656 2012-08-07 12:15:14Z vboxsync $ */
+/* $Id: UIGChooserHandlerKeyboard.cpp 42830 2012-08-15 17:48:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -298,7 +298,7 @@ bool UIGChooserHandlerKeyboard::handleKeyPress(QKeyEvent *pEvent) const
             if (model()->focusItem()->type() == UIGChooserItemType_Group)
             {
                 /* Start embedded editing focus item: */
-                model()->focusItem()->startEditing();
+                model()->startEditing();
                 /* Filter that event out: */
                 return true;
             }
