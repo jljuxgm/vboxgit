@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
+/* $Id: UIGDetails.cpp 43926 2012-11-21 09:28:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -18,6 +18,7 @@
  */
 
 /* Qt includes: */
+#include <QApplication>
 #include <QVBoxLayout>
 
 /* GUI includes: */
@@ -31,6 +32,12 @@ UIGDetails::UIGDetails(QWidget *pParent)
     , m_pDetailsModel(0)
     , m_pDetailsView(0)
 {
+    /* Setup palette: */
+    setAutoFillBackground(true);
+    QPalette pal = qApp->palette();
+    pal.setColor(QPalette::Window, pal.color(QPalette::Active, QPalette::Window));
+    setPalette(pal);
+
     /* Create main-layout: */
     m_pMainLayout = new QVBoxLayout(this);
     m_pMainLayout->setContentsMargins(2, 0, 0, 0);
