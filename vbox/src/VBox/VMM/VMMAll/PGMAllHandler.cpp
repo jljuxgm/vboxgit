@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 47719 2013-08-14 10:34:44Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -1003,6 +1003,7 @@ VMMDECL(int)  PGMHandlerPhysicalPageTempOff(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS G
     return VERR_PGM_HANDLER_NOT_FOUND;
 }
 
+#ifndef IEM_VERIFICATION_MODE_FULL
 
 /**
  * Replaces an MMIO page with an MMIO2 page.
@@ -1130,6 +1131,7 @@ VMMDECL(int)  PGMHandlerPhysicalPageAlias(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS GCP
     return VERR_PGM_HANDLER_NOT_FOUND;
 }
 
+
 /**
  * Replaces an MMIO page with an arbitrary HC page.
  *
@@ -1234,6 +1236,7 @@ VMMDECL(int)  PGMHandlerPhysicalPageAliasHC(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS G
     return VERR_PGM_HANDLER_NOT_FOUND;
 }
 
+#endif /* !IEM_VERIFICATION_MODE_FULL */
 
 /**
  * Checks if a physical range is handled
