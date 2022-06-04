@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 45287 2013-04-02 12:19:58Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 47401 2013-07-25 19:12:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,6 +28,7 @@
 
 /* COM includes: */
 #include "CUSBController.h"
+#include "CUSBDeviceFilters.h"
 
 UIGDetailsSet::UIGDetailsSet(UIGDetailsItem *pParent)
     : UIGDetailsItem(pParent)
@@ -95,8 +96,8 @@ void UIGDetailsSet::buildSet(UIVMItem *pMachineItem, bool fFullSet, const QStrin
     m_iLastStepNumber = m_fFullSet ? DetailsElementType_Description : DetailsElementType_Preview;
 
     /* Fetch USB controller restrictions: */
-    const CUSBController &ctl = m_machine.GetUSBController();
-    if (ctl.isNull() || !ctl.GetProxyAvailable())
+    const CUSBDeviceFilters &filters = m_machine.GetUSBDeviceFilters();
+    if (filters.isNull() || !m_machine.GetUSBProxyAvailable())
     {
         QString strElementTypeOpened = gpConverter->toInternalString(DetailsElementType_USB);
         QString strElementTypeClosed = strElementTypeOpened + "Closed";

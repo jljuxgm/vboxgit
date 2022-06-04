@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 47401 2013-07-25 19:12:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -46,6 +46,7 @@
 #include "CConsole.h"
 #include "CMediumAttachment.h"
 #include "CUSBController.h"
+#include "CUSBDeviceFilters.h"
 
 UIMachineWindowNormal::UIMachineWindowNormal(UIMachineLogic *pMachineLogic, ulong uScreenId)
     : UIMachineWindow(pMachineLogic, uScreenId)
@@ -487,10 +488,11 @@ void UIMachineWindowNormal::loadSettings()
         /* USB Stuff: */
         if (indicatorsPool()->indicator(IndicatorType_USB))
         {
-            const CUSBController &usbController = m.GetUSBController();
-            if (    usbController.isNull()
-                || !usbController.GetEnabled()
-                || !usbController.GetProxyAvailable())
+            const CUSBDeviceFilters &filters = m.GetUSBDeviceFilters();
+            ULONG cOhciCtls = m.GetUSBControllerCountByType(KUSBControllerType_OHCI);
+            bool fUSBEnabled = !filters.isNull() && cOhciCtls && m.GetUSBProxyAvailable();
+
+            if (!fUSBEnabled)
             {
                 /* Hide USB menu: */
                 indicatorsPool()->indicator(IndicatorType_USB)->setHidden(true);
@@ -498,8 +500,7 @@ void UIMachineWindowNormal::loadSettings()
             else
             {
                 /* Toggle USB LED: */
-                indicatorsPool()->indicator(IndicatorType_USB)->setState(
-                    usbController.GetEnabled() ? KDeviceActivity_Idle : KDeviceActivity_Null);
+                indicatorsPool()->indicator(IndicatorType_USB)->setState(KDeviceActivity_Idle);
             }
         }
     }

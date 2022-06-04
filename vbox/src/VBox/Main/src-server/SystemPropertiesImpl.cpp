@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 46367 2013-06-03 16:34:26Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 47401 2013-07-25 19:12:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -580,6 +580,35 @@ STDMETHODIMP SystemProperties::GetDefaultIoCacheSettingForStorageController(Stor
         default:
             AssertMsgFailed(("Invalid controller type %d\n", aControllerType));
     }
+    return S_OK;
+}
+
+STDMETHODIMP SystemProperties::GetMaxInstancesOfUSBControllerType(ChipsetType_T aChipset,
+                                                                  USBControllerType_T aType,
+                                                                  ULONG *aMaxInstances)
+{
+    CheckComArgOutPointerValid(aMaxInstances);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    ULONG cCtrs = 0;
+
+    /* no need to lock, this is const */
+    switch (aType)
+    {
+        case USBControllerType_OHCI:
+        case USBControllerType_EHCI:
+        {
+            cCtrs = 1;
+            break;
+        }
+        default:
+            AssertMsgFailed(("Invalid bus type %d\n", aType));
+    }
+
+    *aMaxInstances = cCtrs;
+
     return S_OK;
 }
 

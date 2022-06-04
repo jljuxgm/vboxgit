@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.h 47377 2013-07-24 15:22:34Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.h 47401 2013-07-25 19:12:24Z vboxsync $ */
 
 /** @file
  *
@@ -27,7 +27,7 @@ class USBDeviceFilter;
 
 namespace settings
 {
-    struct USBController;
+    struct USB;
 }
 
 class ATL_NO_VTABLE USBDeviceFilters :
@@ -66,8 +66,8 @@ public:
 
     // public methods only for internal purposes
 
-    HRESULT loadSettings(const settings::USBController &data);
-    HRESULT saveSettings(settings::USBController &data);
+    HRESULT loadSettings(const settings::USB &data);
+    HRESULT saveSettings(settings::USB &data);
 
     void rollback();
     void commit();
