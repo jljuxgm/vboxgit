@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
+/* $Id: DevVGA.cpp 45055 2013-03-18 11:28:56Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5242,7 +5242,11 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
 
     /* notify port handler */
     if (pThis->pDrv)
+    {
+        PDMCritSectLeave(&pThis->CritSect); /* hack around lock order issue. */
         pThis->pDrv->pfnReset(pThis->pDrv);
+        PDMCritSectEnter(&pThis->CritSect, VERR_IGNORED);
+    }
 
     /* Reset latched access mask. */
     pThis->uMaskLatchAccess     = 0x3ff;
