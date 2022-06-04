@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 44654 2013-02-12 13:05:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -68,7 +68,7 @@ void UIGlobalSettingsInput::getFromCache()
 void UIGlobalSettingsInput::putToCache()
 {
     /* Upload to cache: */
-    m_cache.m_strHostCombo = m_pHostKeyEditor->combo();
+    m_cache.m_strHostCombo = m_pHostKeyEditor->combo().toString();
     m_cache.m_fAutoCapture = m_pEnableAutoGrabCheckbox->isChecked();
 }
 
