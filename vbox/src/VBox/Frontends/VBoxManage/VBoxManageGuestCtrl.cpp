@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 42967 2012-08-24 08:05:39Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 42969 2012-08-24 08:35:47Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2564,25 +2564,8 @@ static int handleCtrlUpdateAdditions(ComPtr<IGuest> guest, HandlerArg *pArg)
     /* Determine source if not set yet. */
     if (strSource.isEmpty())
     {
-        char strTemp[RTPATH_MAX];
-        vrc = RTPathAppPrivateNoArch(strTemp, sizeof(strTemp));
-        AssertRC(vrc);
-        Utf8Str strSrc1 = Utf8Str(strTemp).append("/VBoxGuestAdditions.iso");
-
-        vrc = RTPathExecDir(strTemp, sizeof(strTemp));
-        AssertRC(vrc);
-        Utf8Str strSrc2 = Utf8Str(strTemp).append("/additions/VBoxGuestAdditions.iso");
-
-        /* Check the standard image locations */
-        if (RTFileExists(strSrc1.c_str()))
-            strSource = strSrc1;
-        else if (RTFileExists(strSrc2.c_str()))
-            strSource = strSrc2;
-        else
-        {
-            RTMsgError("Source could not be determined! Please use --source to specify a valid source\n");
-            vrc = VERR_FILE_NOT_FOUND;
-        }
+        RTMsgError("No Guest Additions source found or specified, aborting\n");
+        vrc = VERR_FILE_NOT_FOUND;
     }
     else if (!RTFileExists(strSource.c_str()))
     {
