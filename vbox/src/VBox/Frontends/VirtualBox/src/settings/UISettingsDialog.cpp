@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 47573 2013-08-07 09:57:28Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 47581 2013-08-07 10:45:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -357,6 +357,8 @@ void UISettingsDialog::revalidate()
     /* Perform dialog revalidation: */
     m_fValid = true;
     m_fSilent = true;
+    setError(QString());
+    setWarning(QString());
 
     /* Enumerating all the validators we have: */
     QList<UIPageValidator*> validators(findChildren<UIPageValidator*>());
