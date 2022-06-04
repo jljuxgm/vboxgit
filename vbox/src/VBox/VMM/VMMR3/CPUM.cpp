@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 43657 2012-10-16 15:34:05Z vboxsync $ */
+/* $Id: CPUM.cpp 43667 2012-10-17 11:54:39Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4379,5 +4379,23 @@ VMMR3DECL(void) CPUMR3RemLeave(PVMCPU pVCpu, bool fNoOutOfSyncSels)
     Assert(pVCpu->cpum.s.fRemEntered);
 
     pVCpu->cpum.s.fRemEntered = false;
+}
+
+
+/**
+ * Called when the ring-3 init phase completes.
+ *
+ * @returns VBox status code.
+ * @param   pVM                 Pointer to the VM.
+ */
+VMMR3DECL(int) CPUMR3InitCompleted(PVM pVM)
+{
+    for (VMCPUID i = 0; i < pVM->cCpus; i++)
+    {
+        /* Cache the APIC base (from the APIC device) once it has been initialized. */
+        PDMApicGetBase(&pVM->aCpus[i], &pVM->aCpus[i].cpum.s.Guest.msrApicBase);
+        Log(("CPUMR3InitCompleted pVM=%p APIC base[%u]=%RX64\n", pVM, (unsigned)i, pVM->aCpus[i].cpum.s.Guest.msrApicBase));
+    }
+    return VINF_SUCCESS;
 }
 
