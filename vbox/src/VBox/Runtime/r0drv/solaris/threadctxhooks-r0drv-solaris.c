@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-solaris.c 47354 2013-07-23 16:37:59Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-solaris.c 47364 2013-07-24 10:12:08Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Solaris.
  */
@@ -69,9 +69,8 @@ typedef struct RTTHREADCTXINT
 #define RTTHREADCTX_VALID_RETURN_RC(pThis, rc) \
     do { \
         AssertPtrReturn((pThis), (rc)); \
-        AssertMsgReturn((pThis)->u32Magic == RTTHREADCTXINT_MAGIC, ("pThis->u32Magic=%RX32 pThis=%p\n", (pThis)->u32Magic,  \
-                        (pThis)), (rc));  \
-        AssertMsgReturn((pThis)->cRefs > 0, ("cRefs is 0! pThis=%p\n", (pThis)), (rc)); \
+        AssertReturn((pThis)->u32Magic == RTTHREADCTXINT_MAGIC, (rc)); \
+        AssertReturn((pThis)->cRefs > 0, (rc)); \
     } while (0)
 
 
