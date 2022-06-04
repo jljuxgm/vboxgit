@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 42795 2012-08-13 17:24:30Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 42796 2012-08-13 18:17:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -105,7 +105,7 @@ UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
     parentItem()->addItem(this, iPosition);
     setZValue(parentItem()->zValue() + 1);
     connect(this, SIGNAL(sigToggleStarted()), model(), SIGNAL(sigToggleStarted()));
-    connect(this, SIGNAL(sigToggleFinished()), model(), SIGNAL(sigToggleFinished()));
+    connect(this, SIGNAL(sigToggleFinished()), model(), SIGNAL(sigToggleFinished()), Qt::QueuedConnection);
 }
 
 UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
