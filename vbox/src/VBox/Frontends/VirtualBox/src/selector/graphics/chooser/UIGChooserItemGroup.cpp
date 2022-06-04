@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43011 2012-08-27 19:26:11Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43153 2012-09-03 17:06:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -46,6 +46,7 @@ UIGChooserItemGroup::UIGChooserItemGroup(QGraphicsScene *pScene)
     , m_iAdditionalHeight(0)
     , m_iCornerRadius(10)
     , m_fMainRoot(true)
+    , m_iBlackoutDarkness(110)
 {
     /* Prepare: */
     prepare();
@@ -69,6 +70,7 @@ UIGChooserItemGroup::UIGChooserItemGroup(QGraphicsScene *pScene,
     , m_iAdditionalHeight(0)
     , m_iCornerRadius(10)
     , m_fMainRoot(fMainRoot)
+    , m_iBlackoutDarkness(110)
 {
     /* Prepare: */
     prepare();
@@ -96,6 +98,7 @@ UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
     , m_iAdditionalHeight(0)
     , m_iCornerRadius(10)
     , m_fMainRoot(false)
+    , m_iBlackoutDarkness(110)
 {
     /* Prepare: */
     prepare();
@@ -122,6 +125,7 @@ UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
     , m_iAdditionalHeight(0)
     , m_iCornerRadius(10)
     , m_fMainRoot(false)
+    , m_iBlackoutDarkness(110)
 {
     /* Prepare: */
     prepare();
@@ -1112,7 +1116,8 @@ void UIGChooserItemGroup::paintBackground(QPainter *pPainter, const QRect &rect)
 
     /* Prepare color: */
     QPalette pal = palette();
-    QColor windowColor = pal.color(QPalette::Active, model()->selectionList().contains(this) ?
+    QColor windowColor = pal.color(QPalette::Active,
+                                   model()->selectionList().contains(this) ?
                                    QPalette::Highlight : QPalette::Window);
 
     /* Root item: */
@@ -1216,8 +1221,8 @@ void UIGChooserItemGroup::paintBackground(QPainter *pPainter, const QRect &rect)
                 dragTokenGradient.setStart(dragTokenRect.topLeft());
                 dragTokenGradient.setFinalStop(dragTokenRect.bottomLeft());
             }
-            dragTokenGradient.setColorAt(0, windowColor.darker(blackoutDarkness()));
-            dragTokenGradient.setColorAt(1, windowColor.darker(dragTokenDarkness()));
+            dragTokenGradient.setColorAt(0, windowColor.darker(dragTokenDarkness()));
+            dragTokenGradient.setColorAt(1, windowColor.darker(dragTokenDarkness() + 40));
             pPainter->fillRect(dragTokenRect, dragTokenGradient);
         }
     }

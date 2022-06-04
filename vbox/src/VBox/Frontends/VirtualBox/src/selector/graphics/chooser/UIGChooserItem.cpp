@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 42922 2012-08-22 14:36:27Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 43153 2012-09-03 17:06:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,12 +44,11 @@ UIGChooserItem::UIGChooserItem(UIGChooserItem *pParent, bool fTemporary)
     , m_pForwardAnimation(0)
     , m_pBackwardAnimation(0)
     , m_iAnimationDuration(400)
-    , m_iDefaultDarkness(103)
-    , m_iBlackoutDarkness(110)
+    , m_iDefaultDarkness(100)
     , m_iHighlightDarkness(90)
-    , m_iStrokeDarkness(130)
     , m_iAnimationDarkness(m_iDefaultDarkness)
-    , m_iDragTokenDarkness(150)
+    , m_iStrokeDarkness(130)
+    , m_iDragTokenDarkness(110)
 {
     /* Basic item setup: */
     setOwnedByLayout(false);
