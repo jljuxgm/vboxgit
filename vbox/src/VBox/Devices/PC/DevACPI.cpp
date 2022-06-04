@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 44514 2013-02-01 14:26:03Z vboxsync $ */
+/* $Id: DevACPI.cpp 44626 2013-02-11 10:52:19Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1719,7 +1719,7 @@ static int acpiR3RegisterPmHandlers(ACPIState *pThis)
     R(PM1a_EVT_OFFSET+2, 1, acpiR3PM1aEnWrite,       acpiR3Pm1aEnRead,      "ACPI PM1a Enable");
     R(PM1a_EVT_OFFSET,   1, acpiR3PM1aStsWrite,      acpiR3Pm1aStsRead,     "ACPI PM1a Status");
     R(PM1a_CTL_OFFSET,   1, acpiR3PM1aCtlWrite,      acpiR3Pm1aCtlRead,     "ACPI PM1a Control");
-    R(PM_TMR_OFFSET,     1, NULL,                  acpiPMTmrRead,       "ACPI PM Timer");
+    R(PM_TMR_OFFSET,     1, NULL,                    acpiPMTmrRead,         "ACPI PM Timer");
     R(GPE0_OFFSET + L,   L, acpiR3Gpe0EnWrite,       acpiR3Gpe0EnRead,      "ACPI GPE0 Enable");
     R(GPE0_OFFSET,       L, acpiR3Gpe0StsWrite,      acpiR3Gpe0StsRead,     "ACPI GPE0 Status");
 #undef L
