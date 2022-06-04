@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43998 2012-11-29 16:15:22Z vboxsync $
+# $Id: Makefile.kmk 45677 2013-04-23 11:01:26Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -196,6 +196,7 @@ SOLARIS_ADD_XORG_DRIVERS = \
 	vboxvideo_drv_111.so \
 	vboxvideo_drv_112.so \
 	vboxvideo_drv_113.so \
+	vboxvideo_drv_114.so \
 	vboxvideo_drv_70.so \
 	vboxvideo_drv_71.so
 
