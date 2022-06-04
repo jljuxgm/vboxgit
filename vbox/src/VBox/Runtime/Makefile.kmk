@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46941 2013-07-03 14:48:42Z vboxsync $
+# $Id: Makefile.kmk 47096 2013-07-11 14:31:35Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -794,7 +794,6 @@ RuntimeR3_SOURCES.darwin = \
 	generic/RTTimerCreate-generic.cpp \
 	generic/RTUuidCreate-generic.cpp \
 	generic/mppresent-generic.cpp \
-	generic/RTMpGetCoreCount-generic.cpp \
 	generic/RTMpGetOnlineCoreCount-generic.cpp \
  	generic/RTSemEventMultiWait-2-ex-generic.cpp \
  	generic/RTSemEventMultiWaitNoResume-2-ex-generic.cpp \
