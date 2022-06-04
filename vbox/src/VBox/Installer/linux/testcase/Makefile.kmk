@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44049 2012-12-06 11:31:26Z vboxsync $
+# $Id: Makefile.kmk 44057 2012-12-06 17:07:25Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux installer testcase.
 #
@@ -46,8 +46,8 @@ tstHeadlessXOrg_SOURCES = tstHeadlessXOrg.sh
 
 INSTALLS += tstInstallInit
 TESTING += tstInstallInit
-tstHeadlessXOrg_INST    = $(INST_TESTCASE)
-tstHeadlessXOrg_MODE    = a+rx,u+w
-tstHeadlessXOrg_SOURCES = tstInstallInit.sh
+tstInstallInit_INST    = $(INST_TESTCASE)
+tstInstallInit_MODE    = a+rx,u+w
+tstInstallInit_SOURCES = tstInstallInit.sh
 
 include $(FILE_KBUILD_SUB_FOOTER)
