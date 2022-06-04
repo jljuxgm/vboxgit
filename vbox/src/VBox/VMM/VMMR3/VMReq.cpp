@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
+/* $Id: VMReq.cpp 44346 2013-01-23 23:39:39Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -464,7 +464,7 @@ VMMR3DECL(int) VMR3ReqCallVU(PUVM pUVM, VMCPUID idDstCpu, PVMREQ *ppReq, RTMSINT
      * Validate input.
      */
     AssertPtrReturn(pfnFunction, VERR_INVALID_POINTER);
-    AssertPtrReturn(pUVM, VERR_INVALID_POINTER);
+    UVM_ASSERT_VALID_EXT_RETURN(pUVM, VERR_INVALID_VM_HANDLE);
     AssertReturn(!(fFlags & ~(VMREQFLAGS_RETURN_MASK | VMREQFLAGS_NO_WAIT | VMREQFLAGS_POKE | VMREQFLAGS_PRIORITY)), VERR_INVALID_PARAMETER);
     if (!(fFlags & VMREQFLAGS_NO_WAIT) || ppReq)
     {
