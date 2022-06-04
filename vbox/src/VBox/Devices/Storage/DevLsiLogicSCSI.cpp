@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 43659 2012-10-16 16:25:26Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 43665 2012-10-17 11:35:08Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5234,7 +5234,7 @@ static DECLCALLBACK(int) lsilogicConstruct(PPDMDEVINS pDevIns, int iInstance, PC
                                          lsilogicIsaIOPortWriteStr, lsilogicIsaIOPortReadStr,
                                          "LsiLogic BIOS");
         else if (pThis->enmCtrlType == LSILOGICCTRLTYPE_SCSI_SAS)
-            rc = PDMDevHlpIOPortRegister(pDevIns, LSILOGIC_SAS_BIOS_IO_PORT, 3, NULL,
+            rc = PDMDevHlpIOPortRegister(pDevIns, LSILOGIC_SAS_BIOS_IO_PORT, 4, NULL,
                                          lsilogicIsaIOPortWrite, lsilogicIsaIOPortRead,
                                          lsilogicIsaIOPortWriteStr, lsilogicIsaIOPortReadStr,
                                          "LsiLogic SAS BIOS");
