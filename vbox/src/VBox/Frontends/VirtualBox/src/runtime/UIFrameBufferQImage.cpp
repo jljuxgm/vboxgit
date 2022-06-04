@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 47371 2013-07-24 12:37:53Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 47372 2013-07-24 12:43:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -171,6 +171,8 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
         && machineState != KMachineState_TeleportingPausedVM
         /* saving */
         && machineState != KMachineState_Saving
+        /* guru */
+        && machineState != KMachineState_Stuck
         )
     {
         LogRelFlow(("UIFrameBufferQImage::paintEvent: "
