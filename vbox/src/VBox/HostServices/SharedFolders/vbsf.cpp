@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 44222 2013-01-01 19:23:50Z vboxsync $ */
+/* $Id: vbsf.cpp 44224 2013-01-01 19:27:16Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -410,7 +410,7 @@ static int vbsfBuildFullPath(SHFLCLIENTDATA *pClient, SHFLROOT root, PSHFLSTRING
 #endif
                     return rc;
                 }
-                assert(cbDst == strlen(pszDst));
+                Assert(cbDst == strlen(pszDst));
 
                 /* Verify that the path is under the root directory. */
                 rc = vbsfPathCheck(pszDst, cbDst);
