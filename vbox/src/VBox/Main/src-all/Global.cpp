@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 43248 2012-09-07 15:16:12Z vboxsync $ */
+/* $Id: Global.cpp 44413 2013-01-28 10:54:31Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -125,13 +125,13 @@ const Global::OSType Global::sOSTypes[] =
       VBOXOSTYPE_Linux24_x64,     VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC,
        128,   4,  4 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
-    { "Linux",   "Linux",             "Linux26",            "Linux 2.6",
+    { "Linux",   "Linux",             "Linux26",            "Linux 2.6 / 3.x",
       VBOXOSTYPE_Linux26,         VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
-       256,   4,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       256,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
-    { "Linux",   "Linux",             "Linux26_64",         "Linux 2.6 (64 bit)",
+    { "Linux",   "Linux",             "Linux26_64",         "Linux 2.6 / 3.x (64 bit)",
       VBOXOSTYPE_Linux26_x64,     VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
-       256,   4,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       256,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "ArchLinux",          "Arch Linux",
       VBOXOSTYPE_ArchLinux,       VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
