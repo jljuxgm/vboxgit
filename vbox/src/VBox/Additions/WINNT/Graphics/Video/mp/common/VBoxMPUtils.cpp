@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxMPUtils.cpp 46851 2013-06-27 16:55:20Z vboxsync $ */
 
 /** @file
  * VBox Miniport utils
@@ -61,7 +61,9 @@ vboxWinVersion_t VBoxQueryWinVersion()
 
     if(major == 6)
     {
-        if (minor == 2)
+        if (minor == 3)
+            s_WinVersion = WIN8_1;
+        else if (minor == 2)
             s_WinVersion = WIN8;
         else if (minor == 1)
             s_WinVersion = WIN7;

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 46757 2013-06-24 14:30:18Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 46851 2013-06-27 16:55:20Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -618,7 +618,7 @@ NTSTATUS vboxWddmRegQueryDisplaySettingsKeyName(PVBOXMP_DEVEXT pDevExt, D3DDDI_V
     }
     else
     {
-        Assert(ver == WIN7 || ver == WIN8);
+        Assert(ver == WIN7 || ver == WIN8 || ver == WIN8_1);
         pKeyPrefix = VBOXWDDM_REG_DISPLAYSETTINGSKEY_PREFIX_WIN7;
         cbKeyPrefix = sizeof (VBOXWDDM_REG_DISPLAYSETTINGSKEY_PREFIX_WIN7);
     }
