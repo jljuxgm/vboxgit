@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 45674 2013-04-23 08:45:54Z vboxsync $ */
+/* $Id: DisplayImpl.h 45838 2013-04-30 13:54:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -294,7 +294,7 @@ private:
 #endif
 
 #ifdef VBOX_WITH_VPX
-    VIDEORECCONTEXT *mpVideoRecContext;
+    VIDEORECCONTEXT *mpVideoRecCtx;
 #endif
 };
 
