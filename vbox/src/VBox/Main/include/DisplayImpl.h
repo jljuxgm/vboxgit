@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 44347 2013-01-24 00:27:56Z vboxsync $ */
+/* $Id: DisplayImpl.h 44383 2013-01-25 14:19:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -282,7 +282,7 @@ public:
     static int displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_t **ppu8Data, size_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height);
 
 private:
-    static void InvalidateAndUpdateEMT(Display *pDisplay);
+    static void InvalidateAndUpdateEMT(Display *pDisplay, unsigned uId, bool fUpdateAll);
     static int drawToScreenEMT(Display *pDisplay, ULONG aScreenId, BYTE *address, ULONG x, ULONG y, ULONG width, ULONG height);
 
     int videoAccelRefreshProcess(void);
