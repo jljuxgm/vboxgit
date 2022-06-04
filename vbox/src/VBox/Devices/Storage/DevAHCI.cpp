@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 47299 2013-07-22 13:20:38Z vboxsync $ */
+/* $Id: DevAHCI.cpp 47361 2013-07-24 09:10:38Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6464,7 +6464,7 @@ static DECLCALLBACK(int) ahciAsyncIOLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
  * Unblock the async I/O thread so it can respond to a state change.
  *
  * @returns VBox status code.
- * @param   pDevIns     The pcnet device instance.
+ * @param   pDevIns     The device instance.
  * @param   pThread     The send thread.
  */
 static DECLCALLBACK(int) ahciAsyncIOLoopWakeUp(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
