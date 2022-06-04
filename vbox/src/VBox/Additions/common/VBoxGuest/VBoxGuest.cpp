@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 42366 2012-07-24 13:32:30Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 44130 2012-12-14 10:27:28Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1568,6 +1568,7 @@ static int VBoxGuestCheckIfVMMReqAllowed(PVBOXGUESTSESSION pSession, VMMDevReque
         case VMMDevReq_VideoAccelEnable:
         case VMMDevReq_VideoAccelFlush:
         case VMMDevReq_VideoSetVisibleRegion:
+        case VMMDevReq_GetDisplayChangeRequestEx:
         case VMMDevReq_GetSeamlessChangeRequest:
         case VMMDevReq_GetVRDPChangeRequest:
         case VMMDevReq_LogString:

@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 42248 2012-07-20 08:39:45Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 44130 2012-12-14 10:27:28Z vboxsync $ */
 /** @file
  * VBox frontends: Basic Frontend (BFE):
  * Implementation of Display class
@@ -831,13 +831,10 @@ void Display::SetVideoModeHint(ULONG aDisplay, BOOL aEnabled,
                                ULONG aWidth, ULONG aHeight, ULONG aBitsPerPixel)
 {
     PPDMIVMMDEVPORT pVMMDevPort = gVMMDev->getVMMDevPort ();
-    NOREF(aEnabled);
-    NOREF(aChangeOrigin);
-    NOREF(aOriginX);
-    NOREF(aOriginY);
 
     if (pVMMDevPort)
-        pVMMDevPort->pfnRequestDisplayChange(pVMMDevPort, aWidth, aHeight, aBitsPerPixel, aDisplay);
+        pVMMDevPort->pfnRequestDisplayChange(pVMMDevPort, aWidth, aHeight, aBitsPerPixel,
+                                             aDisplay, aOriginX, aOriginY, aEnabled, aChangeOrigin);
 }
 
 static bool vbvaPartialRead (uint8_t **ppu8, uint32_t *pcb, uint32_t cbRecord, VBVAMEMORY *pVbvaMemory)

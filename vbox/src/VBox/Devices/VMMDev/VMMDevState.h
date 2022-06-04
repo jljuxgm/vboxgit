@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 39890 2012-01-26 19:42:19Z vboxsync $ */
+/* $Id: VMMDevState.h 44130 2012-12-14 10:27:28Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -30,6 +30,10 @@ typedef struct DISPLAYCHANGEINFO
     uint32_t yres;
     uint32_t bpp;
     uint32_t display;
+    uint32_t xOrigin;
+    uint32_t yOrigin;
+    bool fEnabled;
+    bool fChangeOrigin;
 } DISPLAYCHANGEINFO;
 
 typedef struct DISPLAYCHANGEREQUEST
