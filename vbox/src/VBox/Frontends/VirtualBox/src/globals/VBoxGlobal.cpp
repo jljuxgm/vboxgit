@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 45054 2013-03-18 08:53:39Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 45121 2013-03-21 10:00:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -222,13 +222,6 @@ static RenderMode vboxGetRenderMode (const char *aModeStr)
 
 #if defined (Q_WS_MAC) && defined (VBOX_GUI_USE_QUARTZ2D)
     mode = Quartz2DMode;
-# ifdef RT_ARCH_X86
-    /* Quartz2DMode doesn't refresh correctly on 32-bit Snow Leopard, use image mode. */
-//    char szRelease[80];
-//    if (    RT_SUCCESS (RTSystemQueryOSInfo (RTSYSOSINFO_RELEASE, szRelease, sizeof (szRelease)))
-//        &&  !strncmp (szRelease, "10.", 3))
-//        mode = QImageMode;
-# endif
 #elif (defined (Q_WS_WIN32) || defined (Q_WS_PM) || defined (Q_WS_X11)) && defined (VBOX_GUI_USE_QIMAGE)
     mode = QImageMode;
 #elif defined (Q_WS_X11) && defined (VBOX_GUI_USE_SDL)

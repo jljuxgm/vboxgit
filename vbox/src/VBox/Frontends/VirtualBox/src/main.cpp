@@ -1,4 +1,4 @@
-/* $Id: main.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: main.cpp 45121 2013-03-21 10:00:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -241,7 +241,7 @@ static void showHelp()
 #endif
 #if defined (Q_WS_MAC) && defined (VBOX_GUI_USE_QUARTZ2D)
     dflt = "quartz2d";
-#elif (defined (Q_WS_WIN32) || defined (Q_WS_PM)) && defined (VBOX_GUI_USE_QIMAGE)
+#elif (defined (Q_WS_WIN32) || defined (Q_WS_PM) || defined(Q_WS_X11)) && defined (VBOX_GUI_USE_QIMAGE)
     dflt = "image";
 #elif defined (Q_WS_X11) && defined (VBOX_GUI_USE_SDL)
     dflt = "sdl";
