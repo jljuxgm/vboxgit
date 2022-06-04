@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
+/* $Id: VMDK.cpp 47832 2013-08-18 18:32:26Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -1104,7 +1104,7 @@ static int vmdkReadGrainDirectory(PVMDKIMAGE pImage, PVMDKEXTENT pExtent)
         {
             uint32_t uGTStart = *pGDTmp;
             uint32_t uRGTStart = *pRGDTmp;
-            uint32_t cbGTRead = cbGT;
+            size_t   cbGTRead = cbGT;
 
             /* If no grain table is allocated skip the entry. */
             if (*pGDTmp == 0 && *pRGDTmp == 0)
