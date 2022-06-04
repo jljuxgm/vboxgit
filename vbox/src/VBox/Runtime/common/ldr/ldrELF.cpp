@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ldrELF.cpp 45982 2013-05-10 12:36:39Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -48,8 +48,10 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
-/** Finds an ELF string. */
+/** Finds an ELF symbol table string. */
 #define ELF_STR(pHdrs, iStr) ((pHdrs)->pStr + (iStr))
+/** Finds an ELF section header string. */
+#define ELF_SH_STR(pHdrs, iStr) ((pHdrs)->pShStr + (iStr))
 
 
 
