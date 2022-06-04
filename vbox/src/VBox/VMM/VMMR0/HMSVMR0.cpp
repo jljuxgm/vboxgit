@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 46794 2013-06-26 09:34:52Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 46798 2013-06-26 11:32:44Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3714,6 +3714,8 @@ HMSVM_EXIT_DECL hmR0SvmExitMsr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTr
     PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
     PVM      pVM   = pVCpu->CTX_SUFF(pVM);
 
+    /** @todo r=ramshankar: This cannot be right if prefixes are involved. When
+     *        NRIP_SAVE isn't available we have to disassemble the instruction. */
     int rc;
     if (pVmcb->ctrl.u64ExitInfo1 == SVM_EXIT1_MSR_WRITE)
     {
