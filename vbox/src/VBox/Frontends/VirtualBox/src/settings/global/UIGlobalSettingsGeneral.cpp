@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 45374 2013-04-05 14:22:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -30,10 +30,6 @@ UIGlobalSettingsGeneral::UIGlobalSettingsGeneral()
     /* Apply UI decorations: */
     Ui::UIGlobalSettingsGeneral::setupUi(this);
 
-#ifndef VBOX_GUI_WITH_SYSTRAY
-    m_pEnableTrayIconCheckbox->hide();
-    m_pSpacerWidget1->hide();
-#endif /* !VBOX_GUI_WITH_SYSTRAY */
 #ifndef Q_WS_MAC
     m_pEnablePresentationModeCheckbox->hide();
     m_pSpacerWidget2->hide();

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45222 2013-03-28 07:56:30Z vboxsync $
+# $Id: Makefile.kmk 45374 2013-04-05 14:22:14Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -710,14 +710,6 @@ VirtualBox_QT_MOCHDRS.darwin += \
 ifdef VBOX_WITH_ICHAT_THEATER
  VirtualBox_SOURCES.darwin += \
 	src/platform/darwin/VBoxIChatTheaterWrapper.m
-endif
-
-ifdef VBOX_GUI_WITH_SYSTRAY
- VirtualBox_DEFS += VBOX_GUI_WITH_SYSTRAY
- VirtualBox_QT_MOCHDRS += \
-	src/selector/VBoxTrayIcon.h
- VirtualBox_SOURCES += \
-	src/selector/VBoxTrayIcon.cpp
 endif
 
 if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_GUI_USE_QGL)
