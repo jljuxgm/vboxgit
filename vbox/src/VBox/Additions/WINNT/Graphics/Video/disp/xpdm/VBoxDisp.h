@@ -1,4 +1,4 @@
-/* $Id: VBoxDisp.h 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxDisp.h 43467 2012-09-28 14:53:20Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -29,7 +29,7 @@
 #error VBOXDISPDRIVERVERSION can't be more than 0xFF
 #endif
 
-#define VBOXDISP_DEVICE_NAME L"VBoxVideo"
+#define VBOXDISP_DEVICE_NAME L"VBoxDisp"
 
 /* Current mode info */
 typedef struct _VBOXDISPCURRENTMODE
