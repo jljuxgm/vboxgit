@@ -1,4 +1,4 @@
-/* $Id: HWACCMR0.cpp 43307 2012-09-12 11:13:58Z vboxsync $ */
+/* $Id: HWACCMR0.cpp 43376 2012-09-20 17:18:06Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -482,7 +482,7 @@ static int hmR0InitIntel(uint32_t u32FeaturesECX, uint32_t u32FeaturesEDX)
                          *
                          * They should fix their code, but until they do we simply refuse to run.
                          */
-                        g_HvmR0.lLastError = VERR_VMX_IN_VMX_ROOT_MODE;
+                        g_HvmR0.lLastError = rc == VERR_VMX_GENERIC ? VERR_VMX_IN_VMX_ROOT_MODE : rc;
                     }
 
                     /* Restore CR4 again; don't leave the X86_CR4_VMXE flag set
