@@ -1,6 +1,6 @@
-; $Id: 32BitToAMD64.asm 41933 2012-06-27 18:37:33Z vboxsync $
+; $Id: 32BitToAMD64.asm 45745 2013-04-25 20:36:55Z vboxsync $
 ;; @file
-; VMM - World Switchers, 32-Bit to AMD64
+; VMM - World Switchers, 32-Bit to AMD64 intermediate context.
 ;
 
 ;
@@ -19,7 +19,7 @@
 ;*   Defined Constants And Macros                                              *
 ;*******************************************************************************
 %define SWITCHER_TYPE               VMMSWITCHER_32_TO_AMD64
-%define SWITCHER_DESCRIPTION        "32-bit to/from AMD64"
+%define SWITCHER_DESCRIPTION        "32-bit to/from AMD64 intermediate context"
 %define NAME_OVERLOAD(name)         vmmR3Switcher32BitToAMD64_ %+ name
 %define SWITCHER_FIX_INTER_CR3_HC   FIX_INTER_32BIT_CR3
 

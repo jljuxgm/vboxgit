@@ -1,4 +1,4 @@
-; $Id: PAEToAMD64.asm 41933 2012-06-27 18:37:33Z vboxsync $
+; $Id: PAEToAMD64.asm 45745 2013-04-25 20:36:55Z vboxsync $
 ;; @file
 ; VMM - World Switchers, PAE to AMD64
 ;
@@ -19,7 +19,7 @@
 ;*   Defined Constants And Macros                                              *
 ;*******************************************************************************
 %define SWITCHER_TYPE               VMMSWITCHER_PAE_TO_AMD64
-%define SWITCHER_DESCRIPTION        "PAE to/from AMD64"
+%define SWITCHER_DESCRIPTION        "PAE to/from AMD64 intermediate context"
 %define NAME_OVERLOAD(name)         vmmR3SwitcherPAEToAMD64_ %+ name
 %define SWITCHER_FIX_INTER_CR3_HC   FIX_INTER_PAE_CR3
 %define NEED_PAE_ON_HOST  1
