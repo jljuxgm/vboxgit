@@ -1,4 +1,4 @@
-/* $Id: time-win.cpp 28800 2010-04-27 08:22:32Z vboxsync $ */
+/* $Id: time-win.cpp 46223 2013-05-22 17:18:47Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -39,13 +39,17 @@
 #include <iprt/err.h>
 #include "internal/time.h"
 
+/*
+ * Note! The selected time source be the exact same one as we use in kernel land!
+ */
 #define USE_TICK_COUNT
 //#define USE_PERFORMANCE_COUNTER
-#if 0//defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
-# define USE_INTERRUPT_TIME
-#else
 //# define USE_FILE_TIME
-#endif
+//#if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
+//# define USE_INTERRUPT_TIME
+//#else
+//# define USE_TICK_COUNT
+//#endif
 
 
 #ifdef USE_INTERRUPT_TIME
@@ -114,7 +118,7 @@ DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
         /** @todo find official way of getting this or some more clever
          * detection algorithm if necessary. The com debugger class
          * exports this too, windbg knows it too... */
-        s_pUserSharedData = (MY_ KUSER_SHARED_DATA *)(uintptr_t)0x7ffe0000;
+        s_pUserSharedData = (PMY_KUSER_SHARED_DATA)(uintptr_t)0x7ffe0000;
     }
 
     /* use interrupt time */

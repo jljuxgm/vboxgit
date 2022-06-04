@@ -1,4 +1,4 @@
-/* $Id: time-r0drv-nt.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: time-r0drv-nt.cpp 46223 2013-05-22 17:18:47Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Nt.
  */
@@ -35,10 +35,15 @@
 
 DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
-#ifndef IPRT_TARGET_NT4
+    /*
+     * Note! The time source we use here must be exactly the same as in
+     *       the ring-3 code!
+     */
+#if 0
+# ifndef IPRT_TARGET_NT4
     ULONGLONG InterruptTime = KeQueryInterruptTime();
     return (uint64_t)InterruptTime * 100; /* The value is in 100ns, convert to ns units. */
-#else
+# else
     LARGE_INTEGER InterruptTime;
     do
     {
@@ -47,6 +52,11 @@ DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
     } while (((KUSER_SHARED_DATA volatile *)SharedUserData)->InterruptTime.High2Time != InterruptTime.HighPart);
 
     return (uint64_t)InterruptTime.QuadPart * 100;
+# endif
+#else
+    LARGE_INTEGER Tick;
+    KeQueryTickCount(&Tick);
+    return (uint64_t)Tick.QuadPart * KeQueryTimeIncrement() * 100;
 #endif
 }
 
