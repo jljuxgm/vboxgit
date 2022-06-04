@@ -1,6 +1,6 @@
-/* $Id: DevCodec.cpp 44668 2013-02-13 14:53:36Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 44669 2013-02-13 15:00:00Z vboxsync $ */
 /** @file
- * DevCodec - VBox ICH Intel HD Audio Codec.
+ * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
  * Implemented against "Intel I/O Controller Hub 6 (ICH6) High Definition
  * Audio / AC '97 - Programmer's Reference Manual (PRM)", document number
@@ -36,7 +36,7 @@
 extern "C" {
 #include "audio.h"
 }
-#include "DevCodec.h"
+#include "DevIchHdaCodec.h"
 
 
 /*******************************************************************************
