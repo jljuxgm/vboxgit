@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 42611 2012-08-06 08:42:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -44,7 +44,7 @@ public:
     END_COM_MAP()
     DECLARE_EMPTY_CTOR_DTOR(GuestProcess)
 
-    int     init(Console *aConsole, GuestSession *aSession, ULONG aProcessID, const GuestProcessInfo &aProcInfo);
+    int     init(Console *aConsole, GuestSession *aSession, ULONG aProcessID, const GuestProcessStartupInfo &aProcInfo);
     void    uninit(void);
     HRESULT FinalConstruct(void);
     void    FinalRelease(void);
@@ -116,7 +116,7 @@ private:
         /** All related callbacks to this process. */
         GuestCtrlCallbacks       mCallbacks;
         /** The process start information. */
-        GuestProcessInfo         mProcess;
+        GuestProcessStartupInfo  mProcess;
         /** Exit code if process has been terminated. */
         LONG                     mExitCode;
         /** PID reported from the guest. */
