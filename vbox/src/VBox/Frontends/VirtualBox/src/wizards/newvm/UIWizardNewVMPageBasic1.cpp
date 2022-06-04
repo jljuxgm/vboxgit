@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 45325 2013-04-04 07:20:01Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 45562 2013-04-16 09:18:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -84,8 +84,8 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp("OS[/|!-]{,1}2", Qt::CaseInsensitive), "OS2" },
 
     /* Code names for Linux distributions: */
-    { QRegExp("((edgy)|(feisty)|(gutsy)|(hardy)|(intrepid)|(jaunty)|(karmic)|(lucid)|(maverick)|(natty)|(oneiric)|(precise)|(quantal)).*64", Qt::CaseInsensitive), "Ubuntu_64" },
-    { QRegExp("(edgy)|(feisty)|(gutsy)|(hardy)|(intrepid)|(jaunty)|(karmic)|(lucid)|(maverick)|(natty)|(oneiric)|(precise)|(quantal)", Qt::CaseInsensitive), "Ubuntu" },
+    { QRegExp("((edgy)|(feisty)|(gutsy)|(hardy)|(intrepid)|(jaunty)|(karmic)|(lucid)|(maverick)|(natty)|(oneiric)|(precise)|(quantal)|(raring)).*64", Qt::CaseInsensitive), "Ubuntu_64" },
+    { QRegExp("(edgy)|(feisty)|(gutsy)|(hardy)|(intrepid)|(jaunty)|(karmic)|(lucid)|(maverick)|(natty)|(oneiric)|(precise)|(quantal)|(raring)", Qt::CaseInsensitive), "Ubuntu" },
     { QRegExp("((sarge)|(etch)|(lenny)|(squeeze)|(wheezy)|(jessie)|(sid)).*64", Qt::CaseInsensitive), "Debian_64" },
     { QRegExp("(sarge)|(etch)|(lenny)|(squeeze)|(wheezy)|(jessie)|(sid)", Qt::CaseInsensitive), "Debian" },
     { QRegExp("((moonshine)|(werewolf)|(sulphur)|(cambridge)|(leonidas)|(constantine)|(goddard)|(laughlin)|(lovelock)|(verne)|(beefy)|(spherical)).*64", Qt::CaseInsensitive), "Fedora_64" },
