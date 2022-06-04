@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 43041 2012-08-28 13:58:40Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 44039 2012-12-05 12:08:52Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2639,14 +2639,14 @@ void Appliance::importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescThi
                 cHardDisks++;
                 if (cHardDisks == 1)
                 {
-                    if (hdUuid.isEmpty())
+                    if (hdUuid.isZero())
                         hdUuid = thisUuid;
                     else
                         fInconsistent = true;
                 }
                 else
                 {
-                    if (thisUuid.isEmpty())
+                   if (thisUuid.isZero())
                         fInconsistent = true;
                     else if (thisUuid == hdUuid)
                         fRepairDuplicate = true;
@@ -2699,7 +2699,7 @@ void Appliance::importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescThi
         {
             settings::AttachedDevice &d = *dit;
 
-            if (d.uuid.isEmpty())
+            if (d.uuid.isZero())
                 // empty DVD and floppy media
                 continue;
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 44039 2012-12-05 12:08:52Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -873,7 +873,9 @@ int handleControlVM(HandlerArg *a)
             bool attach = !strcmp(a->argv[1], "usbattach");
 
             Bstr usbId = a->argv[2];
-            if (Guid(usbId).isEmpty())
+
+            Guid guid(usbId);
+            if (!guid.isValid())
             {
                 // assume address
                 if (attach)
@@ -896,6 +898,12 @@ int handleControlVM(HandlerArg *a)
                                                                       dev.asOutParam()));
                     CHECK_ERROR_BREAK(dev, COMGETTER(Id)(usbId.asOutParam()));
                 }
+            }
+            else if (guid.isZero())
+            {
+                errorArgument("Zero UUID argument '%s'", a->argv[2]);
+                rc = E_FAIL;
+                break;
             }
 
             if (attach)

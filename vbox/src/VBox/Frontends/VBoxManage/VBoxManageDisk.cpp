@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 44028 2012-12-04 08:03:41Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 44039 2012-12-05 12:08:52Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -158,7 +158,7 @@ HRESULT openMedium(HandlerArg *a, const char *pszFilenameOrUuid,
     char szFilenameAbs[RTPATH_MAX] = "";
 
     /* If it is no UUID, convert the filename to an absolute one. */
-    if (id.isEmpty())
+    if (!id.isValid())
     {
         int irc = RTPathAbs(pszFilenameOrUuid, szFilenameAbs, sizeof(szFilenameAbs));
         if (RT_FAILURE(irc))
