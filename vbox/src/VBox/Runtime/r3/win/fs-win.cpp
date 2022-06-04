@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: fs-win.cpp 46008 2013-05-13 11:05:55Z vboxsync $ */
 /** @file
  * IPRT - File System, Win32.
  */
@@ -319,6 +319,9 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
         pProperties->fReadOnly        = !!(dwFlags & FILE_READ_ONLY_VOLUME);
         pProperties->fSupportsUnicode = !!(dwFlags & FILE_UNICODE_ON_DISK);
         pProperties->fCaseSensitive   = false;    /* win32 is case preserving only */
+        /** @todo r=bird: What about FILE_CASE_SENSITIVE_SEARCH ?  Is this set for NTFS
+         *        as well perchance?  If so, better mention it instead of just setting
+         *        fCaseSensitive to false. */
         pProperties->fRemote          = false;    /* no idea yet */
     }
     else
