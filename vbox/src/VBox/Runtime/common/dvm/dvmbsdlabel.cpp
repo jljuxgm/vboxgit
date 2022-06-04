@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 41785 2012-06-16 19:38:41Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 42387 2012-07-25 11:55:30Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -347,6 +347,8 @@ static DECLCALLBACK(int) rtDvmFmtBsdLblQueryRangeUse(RTDVMFMT hVolMgrFmt,
                                                      bool *pfUsed)
 {
     PRTDVMFMTINTERNAL pThis = hVolMgrFmt;
+
+    NOREF(cbRange);
 
     if (off <= RTDVM_BSDLBL_LBA2BYTE(1, pThis->pDisk))
         *pfUsed = true;
