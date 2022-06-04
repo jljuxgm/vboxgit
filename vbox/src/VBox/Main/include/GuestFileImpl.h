@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.h 45426 2013-04-09 09:30:55Z vboxsync $ */
+/* $Id: GuestFileImpl.h 45434 2013-04-09 13:51:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -93,8 +93,9 @@ public:
     int             seekAt(uint64_t uOffset, GUEST_FILE_SEEKTYPE eSeekType, uint32_t uTimeoutMS, uint64_t *puOffset);
     static HRESULT  setErrorExternal(VirtualBoxBase *pInterface, int guestRc);
     int             setFileStatus(FileStatus_T fileStatus, int fileRc);
+    int             waitForEvents(uint32_t uTimeoutMS, ComSafeArrayIn(VBoxEventType_T, pEvents), VBoxEventType_T *pType, IEvent **ppEvent);
     int             waitForOffsetChange(uint32_t uTimeoutMS, uint64_t *puOffset);
-    int             waitForRead(uint32_t uTimeoutMS, void* pvData, size_t cbData, uint32_t *pcbRead);
+    int             waitForRead(uint32_t uTimeoutMS, void *pvData, size_t cbData, uint32_t *pcbRead);
     int             waitForStatusChange(uint32_t uTimeoutMS, FileStatus_T *pFileStatus);
     int             waitForWrite(uint32_t uTimeoutMS, uint32_t *pcbWritten);
     int             writeData(uint32_t uTimeoutMS, void *pvData, uint32_t cbData, uint32_t *pcbWritten);
