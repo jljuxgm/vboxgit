@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: assert.cpp 47826 2013-08-17 23:51:57Z vboxsync $ */
 /** @file
  * IPRT - Assertions, common code.
  */
@@ -137,10 +137,12 @@ RTDECL(void) RTAssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFi
 
 #else  /* !IN_RING0 */
 # if !defined(IN_RING3) && !defined(LOG_NO_COM)
+#  if 0 /* Enable this iff you have a COM port and really want this debug info. */
         RTLogComPrintf("\n!!Assertion Failed!!\n"
                        "Expression: %s\n"
                        "Location  : %s(%d) %s\n",
                        pszExpr, pszFile, uLine, pszFunction);
+#  endif
 # endif
 
         PRTLOGGER pLog = RTLogRelDefaultInstance();
