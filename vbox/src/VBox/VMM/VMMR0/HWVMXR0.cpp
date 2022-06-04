@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 46871 2013-06-28 16:25:06Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 47065 2013-07-10 09:19:19Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -1663,10 +1663,6 @@ static void hmR0VmxUpdateExceptionBitmap(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     /* Catch floating point exceptions if we need to report them to the guest in a different way. */
     if (!(pCtx->cr0 & X86_CR0_NE))
         u32TrapMask |= RT_BIT(X86_XCPT_MF);
-
-#ifdef VBOX_STRICT
-    Assert(u32TrapMask & RT_BIT(X86_XCPT_GP));
-#endif
 
     /*
      * Intercept all exceptions in real mode as none of them can be injected directly (#GP otherwise).
