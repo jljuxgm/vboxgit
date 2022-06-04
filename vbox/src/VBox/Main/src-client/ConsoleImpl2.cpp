@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 47246 2013-07-19 09:43:01Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 47342 2013-07-23 13:59:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2289,6 +2289,7 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                  */
                 attachStatusDriver(pInst, &mapUSBLed[0], 0, 0, NULL, NULL, 0);
 
+                mfVMHasUsbController = true;
 #ifdef VBOX_WITH_EHCI
                 BOOL fEHCIEnabled;
                 hrc = USBCtlPtr->COMGETTER(EnabledEHCI)(&fEHCIEnabled);                     H();

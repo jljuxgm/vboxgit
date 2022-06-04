@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 47190 2013-07-16 13:44:46Z vboxsync $ */
+/* $Id: ConsoleImpl.h 47342 2013-07-23 13:59:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -785,6 +785,8 @@ private:
     bool mfSnapshotFolderExt4WarningShown : 1;
     /** true if we already listed the disk type of the snapshot folder. */
     bool mfSnapshotFolderDiskTypeShown : 1;
+    /** true if a USB controller is available (i.e. USB devices can be attached). */
+    bool mfVMHasUsbController : 1;
 
     /** Pointer to the VMM -> User (that's us) callbacks. */
     struct MYVMM2USERMETHODS : public VMM2USERMETHODS
