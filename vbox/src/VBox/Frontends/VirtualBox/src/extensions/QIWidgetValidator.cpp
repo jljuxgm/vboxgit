@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: QIWidgetValidator.cpp 47559 2013-08-06 13:58:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,14 +19,36 @@
 
 #include "QIWidgetValidator.h"
 
-/* Qt includes */
+#ifdef VBOX_WITH_NEW_SETTINGS_VALIDATOR
+
+/* GUI includes: */
+#include "UISettingsPage.h"
+
+UIPageValidator::UIPageValidator(QObject *pParent, UISettingsPage *pPage)
+    : QObject(pParent)
+    , m_pPage(pPage)
+    , m_fIsValid(true)
+{
+}
+
+void UIPageValidator::revalidate()
+{
+    /* Notify listener(s) about validity change: */
+    emit sigValidityChanged(this);
+}
+
+#else /* VBOX_WITH_NEW_SETTINGS_VALIDATOR */
+
+/* Qt includes: */
 #include <QLineEdit>
 #include <QComboBox>
 #include <QLabel>
 
-#include <iprt/assert.h>
-
+/* GUI includes: */
 #include "VBoxGlobal.h"
+
+/* Other VBox includes: */
+#include <iprt/assert.h>
 
 /** @class QIWidgetValidator
  *
@@ -354,6 +376,7 @@ QString QIWidgetValidator::warningText() const
  *  isValid() method to check for validity.
  */
 
+#endif /* !VBOX_WITH_NEW_SETTINGS_VALIDATOR */
 
 /** @class QIULongValidator
  *
