@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneButtonPane.cpp 47012 2013-07-05 15:56:59Z vboxsync $ */
+/* $Id: UIPopupPaneButtonPane.cpp 47107 2013-07-12 09:57:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -187,7 +187,7 @@ QIcon UIPopupPaneButtonPane::defaultIcon(int iButtonID)
     QIcon icon;
     switch (iButtonID & AlertButtonMask)
     {
-        case AlertButton_Ok:      icon = UIIconPool::iconSet(":/ok_16px.png");     break;
+        case AlertButton_Ok:      icon = UIIconPool::iconSet(":/delete_16px.png"); break;
         case AlertButton_Cancel:  icon = UIIconPool::iconSet(":/cancel_16px.png"); break;
         case AlertButton_Choice1: break;
         case AlertButton_Choice2: break;
