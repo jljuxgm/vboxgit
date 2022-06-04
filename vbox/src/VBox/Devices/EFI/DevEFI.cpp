@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 44591 2013-02-08 04:48:00Z vboxsync $ */
+/* $Id: DevEFI.cpp 44592 2013-02-08 05:18:29Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -476,23 +476,17 @@ static int nvramWriteVariableOpAdd(PDEVEFI pThis)
                  pThis->NVRAM.VarOpBuf.cbValue, pThis->NVRAM.VarOpBuf.abValue));
 
     /*
-     * Validate the input a little.
+     * Validate and adjust the input a little before we start.
      */
     int rc = RTStrValidateEncoding(pThis->NVRAM.VarOpBuf.szName);
     if (RT_FAILURE(rc))
         LogRel(("EFI: Badly encoded variable name: %.*Rhxs\n", pThis->NVRAM.VarOpBuf.cchName + 1, pThis->NVRAM.VarOpBuf.szName));
-    size_t cchName = RTStrNLen(pThis->NVRAM.VarOpBuf.szName, sizeof(pThis->NVRAM.VarOpBuf.szName));
-    if (cchName != pThis->NVRAM.VarOpBuf.cchName)
-    {
-        LogRel(("EFI: Bad name length %#x, expected %#x: %.*Rhxs\n",
-                cchName, pThis->NVRAM.VarOpBuf.cchName, pThis->NVRAM.VarOpBuf.cchName + 1, pThis->NVRAM.VarOpBuf.szName));
-        rc = VERR_INVALID_PARAMETER;
-    }
     if (RT_FAILURE(rc))
     {
         pThis->NVRAM.u32Status = EFI_VARIABLE_OP_STATUS_ERROR;
         return VINF_SUCCESS;
     }
+    pThis->NVRAM.VarOpBuf.cchName = RTStrNLen(pThis->NVRAM.VarOpBuf.szName, sizeof(pThis->NVRAM.VarOpBuf.szName));
 
     /*
      * Look it up and see what to do.
