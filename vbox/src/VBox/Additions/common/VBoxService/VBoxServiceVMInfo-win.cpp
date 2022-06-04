@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 44530 2013-02-04 16:15:22Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 44531 2013-02-04 19:04:27Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -40,10 +40,8 @@
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceUtils.h"
 
-#ifdef DEBUG
 static uint32_t s_uGuestPropClientID = 0;
 static uint32_t s_uIter = 0;
-#endif
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
