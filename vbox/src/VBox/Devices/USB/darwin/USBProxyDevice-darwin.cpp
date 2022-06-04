@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 45756 2013-04-26 04:09:56Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 46046 2013-05-14 05:36:41Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -321,7 +321,7 @@ static int usbProxyDarwinRemoveSourceRefFromAllRunLoops(PRTLISTANCHOR pHead,
 {
     AssertPtrReturn(pHead, VERR_INVALID_PARAMETER);
    
-    while (RTListIsEmpty(pHead)) 
+    while (!RTListIsEmpty(pHead)) 
     {
         PRUNLOOPREFLIST pNode = RTListGetFirst(pHead, RUNLOOPREFLIST, List);
         /* XXX: Should Release Reference? */
