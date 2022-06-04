@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 43913 2012-11-19 15:00:28Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 43918 2012-11-20 14:21:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -382,6 +382,9 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
             /* This flag will keep the status of every further logical operation: */
             bool fSuccess = true;
 
+            /* This flag is set if we must terminate the VM, even if server calls fail */
+            bool fForce = false;
+
             /* Pause before showing dialog if necessary: */
             bool fWasPaused = uisession()->isPaused() || uisession()->machineState() == KMachineState_Stuck;
             if (!fWasPaused)
@@ -468,7 +471,14 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                                     msgCenter().cannotStopMachine(progress);
                             }
                             else
-                                msgCenter().cannotStopMachine(console);
+                            {
+                                COMResult res(console);
+                                /* This can happen if VBoxSVC is not running */
+                                if (FAILED_DEAD_INTERFACE(res.rc()))
+                                    fForce = true;
+                                else
+                                    msgCenter().cannotStopMachine(console);
+                            }
                             if (fSuccess)
                             {
                                 /* Discard the current state if requested: */
@@ -488,7 +498,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
                                         msgCenter().cannotRestoreSnapshot(console, snapshot.GetName());
                                 }
                             }
-                            if (fSuccess)
+                            if (fSuccess || fForce)
                                 fCloseApplication = true;
                             break;
                         }
