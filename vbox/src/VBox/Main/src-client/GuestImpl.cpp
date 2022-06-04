@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 46456 2013-06-10 09:15:23Z vboxsync $ */
+/* $Id: GuestImpl.cpp 46457 2013-06-10 09:17:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -183,7 +183,7 @@ void Guest::uninit()
 }
 
 /* static */
-void Guest::staticUpdateStats(RTTIMERLR hTimerLR, void *pvUser, uint64_t iTick)
+DECLCALLBACK(void) Guest::staticUpdateStats(RTTIMERLR hTimerLR, void *pvUser, uint64_t iTick)
 {
     AssertReturnVoid(pvUser != NULL);
     Guest *guest = static_cast<Guest *>(pvUser);
