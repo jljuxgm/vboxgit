@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 43807 2012-11-06 07:36:18Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 43809 2012-11-06 09:07:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -133,6 +133,7 @@ void UIGChooserItem::hide()
 void UIGChooserItem::setRoot(bool fRoot)
 {
     m_fRoot = fRoot;
+    handleRootStatusChange();
 }
 
 bool UIGChooserItem::isRoot() const
