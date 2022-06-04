@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 47091 2013-07-11 12:03:46Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 47103 2013-07-11 15:52:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -273,6 +273,28 @@ void UIPopupCenter::hidePopupStack(QWidget *pParent)
     unassignPopupStackParent(pPopupStack, pParent);
 }
 
+void UIPopupCenter::raisePopupStack(QWidget *pParent)
+{
+    /* Make sure passed parent is valid: */
+    if (!pParent)
+    {
+        AssertMsgFailed(("Passed parent is NULL"));
+        return;
+    }
+
+    /* Do we have a stack for passed parent? */
+    const QString strPopupStackID(popupStackID(pParent));
+    if (!m_stacks.contains(strPopupStackID))
+        return;
+
+    /* Just raise, its:
+     * useful for Win host,
+     * do not work on Mac host and
+     * need to check for x11/KDE still. */
+    UIPopupStack *pPopupStack = m_stacks[strPopupStackID];
+    pPopupStack->raise();
+}
+
 void UIPopupCenter::assignPopupStackParent(UIPopupStack *pPopupStack, QWidget *pParent)
 {
     /* Make sure parent is not NULL: */
@@ -343,6 +365,11 @@ void UIPopupCenter::sltShowPopupStack()
 void UIPopupCenter::sltHidePopupStack()
 {
     hidePopupStack(vboxGlobal().activeMachineWindow());
+}
+
+void UIPopupCenter::sltRaisePopupStack()
+{
+    raisePopupStack(vboxGlobal().activeMachineWindow());
 }
 
 void UIPopupCenter::sltRemovePopupStack()
