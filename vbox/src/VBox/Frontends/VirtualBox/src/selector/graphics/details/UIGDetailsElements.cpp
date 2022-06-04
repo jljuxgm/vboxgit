@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 45050 2013-03-15 13:21:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -64,6 +64,10 @@ UIGDetailsElementInterface::~UIGDetailsElementInterface()
 
 void UIGDetailsElementInterface::updateAppearance()
 {
+    /* Call for base class: */
+    UIGDetailsElement::updateAppearance();
+
+    /* Create/start update thread in necessary: */
     if (!m_pThread)
     {
         m_pThread = createUpdateThread();
@@ -256,6 +260,10 @@ void UIGDetailsElementPreview::updateLayout()
 
 void UIGDetailsElementPreview::updateAppearance()
 {
+    /* Call for base class: */
+    UIGDetailsElement::updateAppearance();
+
+    /* Set new machine attribute: */
     m_pPreview->setMachine(machine());
     emit sigBuildDone();
 }

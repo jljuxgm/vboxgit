@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 43460 2012-09-28 09:58:36Z vboxsync $ */
+/* $Id: UIVMItem.cpp 45050 2013-03-15 13:21:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -255,6 +255,10 @@ bool UIVMItem::recache()
             mWinId = FindWindowIdFromPid(m_pid);
 #endif
         }
+
+        /* Should we allow reconfiguration for this item? */
+        m_fReconfigurable = m_machineState != KMachineState_Stuck &&
+                            VBoxGlobal::shouldWeAllowMachineReconfiguration(m_machine);
     }
     else
     {
@@ -278,6 +282,9 @@ bool UIVMItem::recache()
 #if 0
         mWinId = (WId) ~0;
 #endif
+
+        /* Should we allow reconfiguration for this item? */
+        m_fReconfigurable = false;
     }
 
     return needsResort;

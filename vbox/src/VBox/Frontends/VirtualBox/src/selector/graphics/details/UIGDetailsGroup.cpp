@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.cpp 44069 2012-12-07 16:17:43Z vboxsync $ */
+/* $Id: UIGDetailsGroup.cpp 45050 2013-03-15 13:21:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -110,7 +110,7 @@ void UIGDetailsGroup::sltBuildStep(QString strStepId, int iStepNumber)
         m_pBuildStep = new UIBuildStep(this, pSet, strStepId, iStepNumber + 1);
 
         /* Build set: */
-        pSet->buildSet(m_machineItems[iStepNumber]->machine(), m_machineItems.size() == 1, m_settings);
+        pSet->buildSet(m_machineItems[iStepNumber], m_machineItems.size() == 1, m_settings);
     }
     else
     {
