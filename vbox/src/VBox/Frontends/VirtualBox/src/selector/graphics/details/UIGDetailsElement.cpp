@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 42827 2012-08-15 15:21:45Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 42856 2012-08-17 00:21:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -93,12 +93,12 @@ bool UIGDetailsElement::opened() const
 
 void UIGDetailsElement::close()
 {
-    m_pButton->setToggled(false, false);
+    m_pButton->setToggled(false);
 }
 
 void UIGDetailsElement::open()
 {
-    m_pButton->setToggled(true, false);
+    m_pButton->setToggled(true);
 }
 
 int UIGDetailsElement::minimumWidthHint() const
@@ -133,6 +133,16 @@ void UIGDetailsElement::updateHoverAccessibility()
                                 machine().GetState() != KMachineState_Stuck;
 }
 
+void UIGDetailsElement::markAnimationFinished()
+{
+    m_fAnimationRunning = false;
+}
+
+void UIGDetailsElement::sltToggleButtonClicked()
+{
+    emit sigToggleElement(m_type, closed());
+}
+
 void UIGDetailsElement::sltElementToggleStart()
 {
     /* Mark animation running: */
@@ -143,21 +153,15 @@ void UIGDetailsElement::sltElementToggleStart()
 
     /* Toggle element state: */
     m_fClosed = !m_fClosed;
-    /* Relayout model: */
-    model()->updateLayout();
-    update();
 }
 
 void UIGDetailsElement::sltElementToggleFinish(bool fToggled)
 {
-    /* Mark animation stopped: */
-    m_fAnimationRunning = false;
-
     /* Update toggle-state: */
     m_fClosed = !fToggled;
-    /* Relayout model: */
-    model()->updateLayout();
-    update();
+
+    /* Notify about finishing: */
+    emit sigToggleElementFinished();
 }
 
 QVariant UIGDetailsElement::data(int iKey) const
@@ -442,6 +446,8 @@ void UIGDetailsElement::prepareButton()
 {
     /* Setup toggle-button: */
     m_pButton = new UIGraphicsRotatorButton(this, "additionalHeight", !m_fClosed, true /* reflected */);
+    m_pButton->setAutoHandleButtonClick(false);
+    connect(m_pButton, SIGNAL(sigButtonClicked()), this, SLOT(sltToggleButtonClicked()));
     connect(m_pButton, SIGNAL(sigRotationStart()), this, SLOT(sltElementToggleStart()));
     connect(m_pButton, SIGNAL(sigRotationFinish(bool)), this, SLOT(sltElementToggleFinish(bool)));
 }
