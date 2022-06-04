@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 43206 2012-09-05 13:31:05Z vboxsync $ */
+/* $Id: socket.cpp 43213 2012-09-06 08:37:56Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -684,12 +684,10 @@ RTDECL(int) RTSocketParseInetAddress(const char *pszAddress, unsigned uPort, PRT
 
 
 /*
- * new function to allow both ipv4 and ipv6 addresses to be resolved.
- * breaks compatibility with windows before 2000
- * will change when the new ipv6 struct will be added
- * temporary solution
+ * New function to allow both ipv4 and ipv6 addresses to be resolved.
+ * Breaks compatibility with windows before 2000.
  */
-RTDECL(int) RTSocketGetAddrInfo(const char *pszHost, char *pszResult, size_t *pcbResult, PRTNETADDRTYPE penmAddrType)
+RTDECL(int) RTSocketQueryAddressStr(const char *pszHost, char *pszResult, size_t *pcbResult, PRTNETADDRTYPE penmAddrType)
 {
     AssertPtrReturn(pszHost, VERR_INVALID_POINTER);
     AssertPtrReturn(pcbResult, VERR_INVALID_POINTER);
