@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 41360 2012-05-21 11:01:31Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 42211 2012-07-18 14:24:58Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -346,17 +346,25 @@ static int machineAdd(const Bstr &strUuid)
         CHECK_ERROR_BREAK(g_pVirtualBox, FindMachine(strUuid.raw(), machine.asOutParam()));
         Assert(!machine.isNull());
 
-        /* Note: Currently only one group per VM supported? We don't care. */
-        Bstr strGroups;
-        CHECK_ERROR_BREAK(machine, GetExtraData(Bstr("VBoxInternal2/VMGroup").raw(),
-                                                strGroups.asOutParam()));
+        /*
+         * Get groups for this machine.
+        */
+        com::SafeArray<BSTR> groups;
+        CHECK_ERROR_BREAK(machine, COMGETTER(Groups)(ComSafeArrayAsOutParam(groups)));
+        Utf8Str strGroups;
+        for (size_t i = 0; i < groups.size(); i++)
+        {
+            if (i != 0)
+                strGroups.append(",");
+            strGroups.append(Utf8Str(groups[i]));
+        }
 
         /*
          * Add machine to map.
          */
         VBOXWATCHDOG_MACHINE m;
         m.machine = machine;
-        int rc2 = groupAdd(m.groups, Utf8Str(strGroups).c_str(), 0 /* Flags */);
+        int rc2 = groupAdd(m.groups, strGroups.c_str(), 0 /* Flags */);
         AssertRC(rc2);
 
         mapVMIter it = g_mapVM.find(strUuid);
@@ -698,7 +706,7 @@ static RTEXITCODE watchdogMain(HandlerArg *a)
         vboxListenerImpl.createObject();
         vboxListenerImpl->init(new VirtualBoxEventListener());
 
-        com::SafeArray <VBoxEventType_T> eventTypes;
+        com::SafeArray<VBoxEventType_T> eventTypes;
         eventTypes.push_back(VBoxEventType_OnMachineRegistered);
         eventTypes.push_back(VBoxEventType_OnMachineStateChanged);
         eventTypes.push_back(VBoxEventType_OnVBoxSVCAvailabilityChanged); /* Processed by g_pEventSourceClient. */
