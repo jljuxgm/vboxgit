@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 45296 2013-04-03 08:41:08Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 45313 2013-04-03 17:12:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1483,7 +1483,7 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
             }
             /* And show cleanup progress finally: */
             msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_delete_90px.png");
-            if (progress.GetResultCode() != 0)
+            if (!progress.isOk() || progress.GetResultCode() != 0)
             {
                 msgCenter().cannotRemoveMachine(machine, progress);
                 continue;
