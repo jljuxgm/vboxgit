@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 43383 2012-09-21 08:12:41Z vboxsync $ */
+/* $Id: DevParallel.cpp 43393 2012-09-21 10:54:07Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -474,16 +474,12 @@ PDMBOTHCBDECL(int) parallelIOPortRead(PPDMDEVINS pDevIns, void *pvUser,
 #ifndef IN_RING3
                     rc = VINF_IOM_R3_IOPORT_READ;
 #else
-                    LogFlow(("Read Status \n"));
                     if (RT_LIKELY(pThis->pDrvHostParallelConnector))
                     {
-                        LogFlow(("Call to Read Status \n"));
                         rc = pThis->pDrvHostParallelConnector->pfnReadStatus(pThis->pDrvHostParallelConnector, &pThis->regStatus);
                         AssertRC(rc);
                     }
                     *pu32 = pThis->regStatus;
-
-                    LogFlow(("Call to parallel IRQ . Status=%d\n", *pu32));
                     parallelIrqClear(pThis);
 #endif
                     break;
