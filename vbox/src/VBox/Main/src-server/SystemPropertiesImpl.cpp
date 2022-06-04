@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 47592 2013-08-07 13:58:24Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 47593 2013-08-07 14:06:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1282,9 +1282,8 @@ HRESULT SystemProperties::setDefaultMachineFolder(const Utf8Str &strPath)
 
 HRESULT SystemProperties::setLoggingLevel(const Utf8Str &aLoggingLevel)
 {
-    int rc;
     Utf8Str useLoggingLevel(aLoggingLevel);
-    rc = RTLogGroupSettings(RTLogRelDefaultInstance(), useLoggingLevel.c_str());
+    int rc = RTLogGroupSettings(RTLogRelDefaultInstance(), useLoggingLevel.c_str());
     //  If failed and not the default logging level - try to use the default logging level.
     if (RT_FAILURE(rc))
     {
