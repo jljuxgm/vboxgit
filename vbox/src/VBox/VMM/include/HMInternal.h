@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45503 2013-04-12 01:17:01Z vboxsync $ */
+/* $Id: HMInternal.h 45517 2013-04-12 11:23:56Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -627,7 +627,7 @@ typedef struct HMCPU
         /** The updated-guest-state mask. */
         uint32_t                    fUpdatedGuestState;
         /** Current EPTP. */
-        RTHCPHYS                    GCPhysEPTP;
+        RTHCPHYS                    HCPhysEPTP;
 
         /** Physical address of the MSR bitmap. */
         RTHCPHYS                    HCPhysMsrBitmap;
@@ -792,11 +792,9 @@ typedef struct HMCPU
     STAMPROFILEADV          StatEntry;
     STAMPROFILEADV          StatExit1;
     STAMPROFILEADV          StatExit2;
-#ifdef VBOX_WITH_OLD_VTX_CODE /* "temporary" for tracking down darwin issues. */
-    STAMPROFILEADV          StatExit2Sub1;
-    STAMPROFILEADV          StatExit2Sub2;
-    STAMPROFILEADV          StatExit2Sub3;
-#endif
+    STAMPROFILEADV          StatExitIO;
+    STAMPROFILEADV          StatExitMovCRx;
+    STAMPROFILEADV          StatExitXcptNmi;
     STAMPROFILEADV          StatLoadGuestState;
     STAMPROFILEADV          StatInGC;
 
