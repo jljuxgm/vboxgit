@@ -1,10 +1,10 @@
-/* $Id: CSAMRC.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: CSAMRC.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -108,7 +108,7 @@ VMMRCDECL(int) CSAMGCCodePageWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
     /* If user code is modifying one of our monitored pages, then we can safely make it r/w as it's no longer being used for supervisor code. */
     if (cpl != 3)
     {
-        rc = PATMGCHandleWriteToPatchPage(pVM, pRegFrame, (RTRCPTR)((RTRCUINTPTR)pvRange + offRange), 4 /** @todo */);
+        rc = PATMRCHandleWriteToPatchPage(pVM, pRegFrame, (RTRCPTR)((RTRCUINTPTR)pvRange + offRange), 4 /** @todo */);
         if (rc == VINF_SUCCESS)
             return rc;
         if (rc == VINF_EM_RAW_EMULATE_INSTR)

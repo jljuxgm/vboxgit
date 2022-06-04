@@ -1,10 +1,10 @@
-/* $Id: TRPMAll.cpp 42776 2012-08-11 20:21:47Z vboxsync $ */
+/* $Id: TRPMAll.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
 
 /*
- * Copyright (C) 2006-2007 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

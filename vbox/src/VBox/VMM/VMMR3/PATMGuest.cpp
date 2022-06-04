@@ -1,4 +1,4 @@
-/* $Id: PATMGuest.cpp 41965 2012-06-29 02:52:49Z vboxsync $ */
+/* $Id: PATMGuest.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
 /** @file
  * PATMGuest - Guest OS Patching Manager (non-generic)
  */
@@ -194,7 +194,7 @@ int PATMPatchOpenBSDHandlerPrefix(PVM pVM, PDISCPUSTATE pCpu, RTGCPTR32 pInstrGC
     }
     /* Found it; patch the push cs */
     pPatchRec->patch.flags &= ~(PATMFL_GUEST_SPECIFIC);  /* prevent a breakpoint from being triggered */
-    return PATMR3PatchInstrInt3(pVM, pInstrGC, pInstrHC, pCpu, &pPatchRec->patch);
+    return patmR3PatchInstrInt3(pVM, pInstrGC, pInstrHC, pCpu, &pPatchRec->patch);
 }
 
 /**
@@ -209,7 +209,7 @@ int PATMPatchOpenBSDHandlerPrefix(PVM pVM, PDISCPUSTATE pCpu, RTGCPTR32 pInstrGC
  * @param   pPatchRec   Patch structure
  *
  */
-int PATMInstallGuestSpecificPatch(PVM pVM, PDISCPUSTATE pCpu, RTGCPTR32 pInstrGC, uint8_t *pInstrHC, PPATMPATCHREC pPatchRec)
+int patmR3InstallGuestSpecificPatch(PVM pVM, PDISCPUSTATE pCpu, RTGCPTR32 pInstrGC, uint8_t *pInstrHC, PPATMPATCHREC pPatchRec)
 {
     int rc;
 

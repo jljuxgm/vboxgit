@@ -1,10 +1,10 @@
-/* $Id: TRPMRCHandlers.cpp 42779 2012-08-11 22:47:43Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

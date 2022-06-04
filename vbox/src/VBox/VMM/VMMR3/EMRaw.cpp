@@ -1,10 +1,10 @@
-/* $Id: EMRaw.cpp 44340 2013-01-23 16:20:07Z vboxsync $ */
+/* $Id: EMRaw.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

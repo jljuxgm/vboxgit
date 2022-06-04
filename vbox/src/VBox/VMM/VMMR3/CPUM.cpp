@@ -1,10 +1,10 @@
-/* $Id: CPUM.cpp 44170 2012-12-19 17:57:32Z vboxsync $ */
+/* $Id: CPUM.cpp 44362 2013-01-24 21:11:05Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
