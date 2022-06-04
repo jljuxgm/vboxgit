@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 44731 2013-02-18 13:12:52Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 44736 2013-02-18 14:05:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -156,8 +156,8 @@ void UIHotKeyEditor::sltClear()
 
 void UIHotKeyEditor::retranslateUi()
 {
-    m_pResetButton->setToolTip(tr("Reset to Default"));
-    m_pClearButton->setToolTip(tr("Unset Shortcut"));
+    m_pResetButton->setToolTip(tr("Reset shortcut to default"));
+    m_pClearButton->setToolTip(tr("Unset shortcut"));
 }
 
 bool UIHotKeyEditor::eventFilter(QObject *pWatched, QEvent *pEvent)
