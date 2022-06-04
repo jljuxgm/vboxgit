@@ -1,4 +1,4 @@
-; $Id: tstAsmStructsAsm.asm 46312 2013-05-29 14:08:18Z vboxsync $
+; $Id: tstAsmStructsAsm.asm 46928 2013-07-03 12:12:05Z vboxsync $
 ;; @file
 ; Assembly / C structure layout testcase.
 ;
@@ -7,7 +7,7 @@
 ;
 
 ;
-; Copyright (C) 2006-2012 Oracle Corporation
+; Copyright (C) 2006-2013 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
