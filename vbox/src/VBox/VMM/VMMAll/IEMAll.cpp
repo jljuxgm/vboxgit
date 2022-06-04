@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 47326 2013-07-22 21:46:43Z vboxsync $ */
+/* $Id: IEMAll.cpp 47327 2013-07-22 22:11:09Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7393,6 +7393,15 @@ static VBOXSTRICTRC iemMemMarkSelDescAccessed(PIEMCPU pIemCpu, uint16_t uSel)
     do \
     { \
         if (pIemCpu->enmCpuMode == IEMMODE_64BIT) \
+            return IEMOP_RAISE_INVALID_OPCODE(); \
+    } while (0)
+
+/** The instruction is only available in 64-bit mode, throw #UD if we're not in
+ * 64-bit mode. */
+#define IEMOP_HLP_ONLY_64BIT() \
+    do \
+    { \
+        if (pIemCpu->enmCpuMode != IEMMODE_64BIT) \
             return IEMOP_RAISE_INVALID_OPCODE(); \
     } while (0)
 

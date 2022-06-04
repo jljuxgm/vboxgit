@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 47326 2013-07-22 21:46:43Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 47327 2013-07-22 22:11:09Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4413,6 +4413,35 @@ IEM_CIMPL_DEF_0(iemCImpl_mwait)
 
     iemRegAddToRip(pIemCpu, cbInstr);
     return rcStrict;
+}
+
+
+/**
+ * Implements 'SWAPGS'.
+ */
+IEM_CIMPL_DEF_0(iemCImpl_swapgs)
+{
+    Assert(pIemCpu->enmCpuMode == IEMMODE_64BIT); /* Caller checks this. */
+
+    /*
+     * Permission checks.
+     */
+    if (pIemCpu->uCpl != 0)
+    {
+        Log2(("swapgs: CPL != 0\n"));
+        return iemRaiseUndefinedOpcode(pIemCpu);
+    }
+
+    /*
+     * Do the job.
+     */
+    PCPUMCTX pCtx = pIemCpu->CTX_SUFF(pCtx);
+    uint64_t uOtherGsBase = pCtx->msrKERNELGSBASE;
+    pCtx->msrKERNELGSBASE = pCtx->gs.u64Base;
+    pCtx->gs.u64Base = uOtherGsBase;
+
+    iemRegAddToRip(pIemCpu, cbInstr);
+    return VINF_SUCCESS;
 }
 
 
