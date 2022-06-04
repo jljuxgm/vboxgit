@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.cpp 36589 2011-04-06 15:24:00Z vboxsync $ */
+/* $Id: UISettingsDefs.cpp 43128 2012-08-30 19:30:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,7 +24,7 @@
 using namespace UISettingsDefs;
 
 /* Machine state => Settings dialog type converter: */
-SettingsDialogType UISettingsDefs::machineStateToSettingsDialogType(KMachineState machineState)
+SettingsDialogType UISettingsDefs::determineSettingsDialogType(KSessionState sessionState, KMachineState machineState)
 {
     SettingsDialogType result = SettingsDialogType_Wrong;
     switch (machineState)
@@ -32,7 +32,8 @@ SettingsDialogType UISettingsDefs::machineStateToSettingsDialogType(KMachineStat
         case KMachineState_PoweredOff:
         case KMachineState_Teleported:
         case KMachineState_Aborted:
-            result = SettingsDialogType_Offline;
+            result = sessionState == KSessionState_Unlocked ? SettingsDialogType_Offline :
+                                                              SettingsDialogType_Online;
             break;
         case KMachineState_Saved:
             result = SettingsDialogType_Saved;
