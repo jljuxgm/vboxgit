@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 42890 2012-08-20 17:45:13Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 42930 2012-08-23 07:26:48Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3176,7 +3176,7 @@ HRESULT VirtualBox::findMachineByName(const Utf8Str &aName, bool aSetError,
 
     if (aSetError && FAILED(rc))
         rc = setError(rc,
-                      tr("Could not find a registered machine named '%ls'"), aName.c_str());
+                      tr("Could not find a registered machine named '%s'"), aName.c_str());
 
     return rc;
 }
