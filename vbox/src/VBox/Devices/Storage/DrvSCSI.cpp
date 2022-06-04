@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 44888 2013-03-01 15:42:23Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 44889 2013-03-01 15:45:44Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -254,30 +254,6 @@ static DECLCALLBACK(int) drvscsiSetLock(VSCSILUN hVScsiLun, void *pvScsiLunUser,
     else
         pThis->pDrvMount->pfnUnlock(pThis->pDrvMount);
 
-    return VINF_SUCCESS;
-}
-
-static DECLCALLBACK(int) drvscsiEject(VSCSILUN hVScsiLun, void *pvScsiLunUser)
-{
-    PDRVSCSI    pThis = (PDRVSCSI)pvScsiLunUser;
-    int         rc;
-
-#if 0
-    /* This must be done from EMT. */
-    PPDMDEVINS pDevIns = NULL; //ATADEVSTATE_2_DEVINS(s);
-    
-    rc = VMR3ReqPriorityCallWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                                 (PFNRT)pThis->pDrvMount->pfnUnmount, 3,
-                                 pThis->pDrvMount, false /*=fForce*/, true /*=fEject*/);
-    Assert(RT_SUCCESS(rc) || (rc == VERR_PDM_MEDIA_LOCKED) || (rc = VERR_PDM_MEDIA_NOT_MOUNTED));
-    if (RT_SUCCESS(rc) && pThis->pMediaNotify)
-    {
-        rc = VMR3ReqCallNoWait(PDMDevHlpGetVM(pDevIns), VMCPUID_ANY,
-                               (PFNRT)pThis->pMediaNotify->pfnEjected, 2,
-                               pThis->pMediaNotify, s->iLUN);
-        AssertRC(rc);
-    }
-#endif
     return VINF_SUCCESS;
 }
 
@@ -997,7 +973,6 @@ LogRelFunc(("pDrvIns=%#p pCfg=%#p\n", pDrvIns, pCfg));
     pThis->VScsiIoCallbacks.pfnVScsiLunReqTransferEnqueue = drvscsiReqTransferEnqueue;
     pThis->VScsiIoCallbacks.pfnVScsiLunGetFeatureFlags    = drvscsiGetFeatureFlags;
     pThis->VScsiIoCallbacks.pfnVScsiLunMediumSetLock      = drvscsiSetLock;
-    pThis->VScsiIoCallbacks.pfnVScsiLunMediumEject        = drvscsiEject;
 
     rc = VSCSIDeviceCreate(&pThis->hVScsiDevice, drvscsiVScsiReqCompleted, pThis);
     AssertMsgReturn(RT_SUCCESS(rc), ("Failed to create VSCSI device rc=%Rrc\n"), rc);
