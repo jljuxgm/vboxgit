@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 44347 2013-01-24 00:27:56Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 44393 2013-01-25 21:21:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -584,7 +584,7 @@ static void teleporterProgressCancelCallback(void *pvUser)
 /**
  * @copydoc PFNVMPROGRESS
  */
-static DECLCALLBACK(int) teleporterProgressCallback(PVM pVM, unsigned uPercent, void *pvUser)
+static DECLCALLBACK(int) teleporterProgressCallback(PUVM pUVM, unsigned uPercent, void *pvUser)
 {
     TeleporterState *pState = (TeleporterState *)pvUser;
     if (pState->mptrProgress)
@@ -603,6 +603,7 @@ static DECLCALLBACK(int) teleporterProgressCallback(PVM pVM, unsigned uPercent, 
         }
     }
 
+    NOREF(pUVM);
     return VINF_SUCCESS;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 44347 2013-01-24 00:27:56Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 44393 2013-01-25 21:21:05Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -48,9 +48,9 @@ static int g_cErrors = 0;
 /**
  * Testings va_list passing in VMSetRuntimeError.
  */
-static DECLCALLBACK(void) MyAtRuntimeError(PVM pVM, void *pvUser, uint32_t fFlags, const char *pszErrorId, const char *pszFormat, va_list va)
+static DECLCALLBACK(void) MyAtRuntimeError(PUVM pUVM, void *pvUser, uint32_t fFlags, const char *pszErrorId, const char *pszFormat, va_list va)
 {
-    NOREF(pVM);
+    NOREF(pUVM);
     if (strcmp((const char *)pvUser, "user argument"))
     {
         RTPrintf(TESTCASE ": pvUser=%p:{%s}!\n", pvUser, (const char *)pvUser);

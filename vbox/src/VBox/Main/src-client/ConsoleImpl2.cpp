@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 44387 2013-01-25 18:31:58Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 44393 2013-01-25 21:21:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -160,7 +160,7 @@ static int DarwinSmcKey(char *pabKey, uint32_t cbKey)
 
     for (int i = 0; i < 2; i++)
     {
-        inputStruct.key = (uint32_t)((i == 0) ? 'OSK0' : 'OSK1');
+        inputStruct.key = (uint32_t)(i == 0 ? 'OSK0' : 'OSK1');
         kr = IOConnectCallStructMethod((mach_port_t)port,
                                        (uint32_t)2,
                                        (const void *)&inputStruct,

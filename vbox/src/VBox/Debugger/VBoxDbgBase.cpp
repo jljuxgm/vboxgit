@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.cpp 44348 2013-01-24 00:30:01Z vboxsync $ */
+/* $Id: VBoxDbgBase.cpp 44393 2013-01-25 21:21:05Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -103,19 +103,20 @@ VBoxDbgBase::dbgcCreate(PDBGCBACK pBack, unsigned fFlags)
 
 
 /*static*/ DECLCALLBACK(void)
-VBoxDbgBase::atStateChange(PVM pVM, VMSTATE enmState, VMSTATE /*enmOldState*/, void *pvUser)
+VBoxDbgBase::atStateChange(PUVM pUVM, VMSTATE enmState, VMSTATE /*enmOldState*/, void *pvUser)
 {
-    VBoxDbgBase *pThis = (VBoxDbgBase *)pvUser; NOREF(pVM);
+    VBoxDbgBase *pThis = (VBoxDbgBase *)pvUser; NOREF(pUVM);
     switch (enmState)
     {
         case VMSTATE_TERMINATED:
         {
             /** @todo need to do some locking here?  */
-            PUVM pUVM = ASMAtomicXchgPtrT(&pThis->m_pUVM, NULL, PUVM);
-            if (pUVM)
+            PUVM pUVM2 = ASMAtomicXchgPtrT(&pThis->m_pUVM, NULL, PUVM);
+            if (pUVM2)
             {
+                Assert(pUVM2 == pUVM);
                 pThis->sigTerminated();
-                VMR3ReleaseUVM(pUVM);
+                VMR3ReleaseUVM(pUVM2);
             }
             break;
         }

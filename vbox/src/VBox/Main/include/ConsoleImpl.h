@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 44387 2013-01-25 18:31:58Z vboxsync $ */
+/* $Id: ConsoleImpl.h 44393 2013-01-25 21:21:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -595,8 +595,7 @@ private:
 
     static DECLCALLBACK(int) configGuestProperties(void *pvConsole, PUVM pUVM);
     static DECLCALLBACK(int) configGuestControl(void *pvConsole);
-    static DECLCALLBACK(void) vmstateChangeCallback(PVM aVM, VMSTATE aState,
-                                                    VMSTATE aOldState, void *aUser);
+    static DECLCALLBACK(void) vmstateChangeCallback(PUVM pUVM, VMSTATE enmState, VMSTATE enmOldState, void *pvUser);
     static DECLCALLBACK(int) unplugCpu(Console *pThis, PUVM pUVM, VMCPUID idCpu);
     static DECLCALLBACK(int) plugCpu(Console *pThis, PUVM pUVM, VMCPUID idCpu);
     HRESULT doMediumChange(IMediumAttachment *aMediumAttachment, bool fForce, PUVM pUVM);
@@ -639,13 +638,13 @@ private:
 
     static DECLCALLBACK(int)    fntTakeSnapshotWorker(RTTHREAD Thread, void *pvUser);
 
-    static DECLCALLBACK(int)    stateProgressCallback(PVM pVM, unsigned uPercent, void *pvUser);
+    static DECLCALLBACK(int)    stateProgressCallback(PUVM pUVM, unsigned uPercent, void *pvUser);
 
-    static DECLCALLBACK(void)   genericVMSetErrorCallback(PVM pVM, void *pvUser, int rc, RT_SRC_POS_DECL,
+    static DECLCALLBACK(void)   genericVMSetErrorCallback(PUVM pUVM, void *pvUser, int rc, RT_SRC_POS_DECL,
                                                           const char *pszErrorFmt, va_list va);
 
     void                        setVMRuntimeErrorCallbackF(uint32_t fFatal, const char *pszErrorId, const char *pszFormat, ...);
-    static DECLCALLBACK(void)   setVMRuntimeErrorCallback(PVM pVM, void *pvUser, uint32_t fFatal,
+    static DECLCALLBACK(void)   setVMRuntimeErrorCallback(PUVM pUVM, void *pvUser, uint32_t fFatal,
                                                           const char *pszErrorId, const char *pszFormat, va_list va);
 
     HRESULT                     captureUSBDevices(PUVM pUVM);
