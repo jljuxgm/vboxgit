@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 46141 2013-05-17 12:24:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -191,8 +191,16 @@ void UIMachineSettingsGeneral::saveFromCacheTo(QVariant &data)
         }
         if (isMachineOffline())
         {
-            /* Basic tab: */
-            m_machine.SetOSTypeId(generalData.m_strGuestOsTypeId);
+            /* Basic tab: Must update long mode CPU feature bit when os type changes. */
+            if (generalData.m_strGuestOsTypeId != m_cache.base().m_strGuestOsTypeId)
+            {
+                m_machine.SetOSTypeId(generalData.m_strGuestOsTypeId);
+
+                CVirtualBox vbox = vboxGlobal().virtualBox();
+                CGuestOSType newType = vbox.GetGuestOSType(generalData.m_strGuestOsTypeId);
+                m_machine.SetCPUProperty(KCPUPropertyType_LongMode, newType.GetIs64Bit());
+            }
+
             /* Advanced tab: */
             m_machine.SetSnapshotFolder(generalData.m_strSnapshotsFolder);
             /* Basic (again) tab: */
