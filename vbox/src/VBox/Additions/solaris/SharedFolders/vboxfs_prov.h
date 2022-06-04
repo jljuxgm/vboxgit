@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: vboxfs_prov.h 46237 2013-05-23 14:39:41Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -100,7 +100,8 @@ typedef struct sfp_file sfp_file_t;
 
 extern int sfprov_create(sfp_mount_t *, char *path, mode_t mode,
     sfp_file_t **fp, sffs_stat_t *stat);
-extern int sfprov_open(sfp_mount_t *, char *path, sfp_file_t **fp);
+extern int sfprov_diropen(sfp_mount_t *mnt, char *path, sfp_file_t **fp);
+extern int sfprov_open(sfp_mount_t *, char *path, sfp_file_t **fp, int flag);
 extern int sfprov_close(sfp_file_t *fp);
 extern int sfprov_read(sfp_file_t *, char * buffer, uint64_t offset,
     uint32_t *numbytes);
@@ -126,7 +127,6 @@ extern int sfprov_set_size(sfp_mount_t *, char *, uint64_t);
 /*
  * File/Directory operations
  */
-extern int sfprov_trunc(sfp_mount_t *, char *);
 extern int sfprov_remove(sfp_mount_t *, char *path, uint_t is_link);
 extern int sfprov_mkdir(sfp_mount_t *, char *path, mode_t mode,
     sfp_file_t **fp, sffs_stat_t *stat);
@@ -164,7 +164,7 @@ typedef struct sffs_dirents {
 #define SFFS_DIRENTS_OFF	(offsetof(sffs_dirents_t, sf_entries[0]))
 
 extern int sfprov_readdir(sfp_mount_t *mnt, char *path,
-	sffs_dirents_t **dirents);
+	sffs_dirents_t **dirents, int flag);
 
 #ifdef	__cplusplus
 }

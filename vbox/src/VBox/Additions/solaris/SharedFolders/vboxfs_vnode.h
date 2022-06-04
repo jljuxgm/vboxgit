@@ -1,4 +1,4 @@
-/* $Id: vboxfs_vnode.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: vboxfs_vnode.h 46237 2013-05-23 14:39:41Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VNode header.
  */
@@ -52,6 +52,7 @@ typedef struct sfnode {
 	uint64_t	sf_ino;		/* assigned unique ID number */
 	vnode_t		*sf_vnode;	/* vnode if active */
 	sfp_file_t	*sf_file;	/* non NULL if open */
+    int			sf_flag;    /* last opened file-mode. */
 	struct sfnode	*sf_parent;	/* parent sfnode of this one */
 	uint16_t	sf_children;	/* number of children sfnodes */
 	uint8_t		sf_type;	/* VDIR or VREG */
