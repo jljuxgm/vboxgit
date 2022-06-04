@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 44452 2013-01-30 09:14:45Z vboxsync $ */
+/* $Id: HM.cpp 44461 2013-01-30 12:36:50Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1239,7 +1239,9 @@ static int hmR3InitFinalizeR0(PVM pVM)
                     CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_LAHF);
                     CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_NX);
 # if RT_ARCH_X86
-                    LogRel(("NX is only supported for 64-bit guests!\n"));
+                    if (   !CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_PAE)
+                        || !(pVM->hm.s.vmx.hostEFER & MSR_K6_EFER_NXE))
+                        LogRel(("NX is only supported for 64-bit guests!\n"));
 # endif
                 }
                 else
