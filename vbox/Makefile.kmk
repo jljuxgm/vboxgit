@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43387 2012-09-21 09:40:25Z vboxsync $
+# $Id: Makefile.kmk 43633 2012-10-12 12:16:43Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1368,7 +1368,8 @@ testsuite-packing:
 		VBOX_WITH_TESTSUITE_PACKING.win.amd64=1 \
 		VBOX_WITH_TESTSUITE_PACKING.win.x86=1 \
 		-C src/VBox/Testsuite \
-		$(PATH_OUT)/VBoxTestSuite.zip
+		$(PATH_OUT)/VBoxTestSuite.zip \
+		$(PATH_OUT)/VBoxTestBoxScript.zip
 
 .PHONY: \
 	testsuite-build-win.x86 \
