@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-generic.cpp 47200 2013-07-16 16:00:43Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-generic.cpp 47201 2013-07-16 16:03:16Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hooks, Ring-0 Driver, Generic.
  */
@@ -31,6 +31,7 @@
 #include <iprt/thread.h>
 #include <iprt/err.h>
 
+#include "internal/iprt.h"
 
 RTDECL(int) RTThreadCtxHooksCreate(PRTTHREADCTX phThreadCtx)
 {
