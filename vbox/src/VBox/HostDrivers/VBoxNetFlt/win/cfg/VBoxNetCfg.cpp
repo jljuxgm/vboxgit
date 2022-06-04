@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 46386 2013-06-04 14:39:51Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -2080,7 +2080,7 @@ static BOOL vboxNetCfgWinAdjustHostOnlyNetworkInterfacePriority(IN INetCfg *pNc,
                 }
                 else
                 {
-                    if (hr = S_FALSE) /* No more binding paths? */
+                    if (hr == S_FALSE) /* No more binding paths? */
                         hr = S_OK;
                     else
                         NonStandardLogFlow(("Next bind path failed, hr (0x%x)\n", hr));
