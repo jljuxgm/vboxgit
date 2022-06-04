@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 43484 2012-10-01 10:15:57Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 43678 2012-10-18 11:59:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2047,13 +2047,28 @@ void VBoxGlobal::startEnumeratingMedia()
 void VBoxGlobal::reloadProxySettings()
 {
     UIProxyManager proxyManager(settings().proxySettings());
+    if (proxyManager.authEnabled())
+    {
+        proxyManager.setAuthEnabled(false);
+        proxyManager.setAuthLogin(QString());
+        proxyManager.setAuthPassword(QString());
+        VBoxGlobalSettings globalSettings = settings();
+        globalSettings.setProxySettings(proxyManager.toString());
+        vboxGlobal().setSettings(globalSettings);
+    }
     if (proxyManager.proxyEnabled())
     {
+#if 0
         QNetworkProxy::setApplicationProxy(QNetworkProxy(QNetworkProxy::HttpProxy,
                                                          proxyManager.proxyHost(),
                                                          proxyManager.proxyPort().toInt(),
                                                          proxyManager.authEnabled() ? proxyManager.authLogin() : QString(),
                                                          proxyManager.authEnabled() ? proxyManager.authPassword() : QString()));
+#else
+        QNetworkProxy::setApplicationProxy(QNetworkProxy(QNetworkProxy::HttpProxy,
+                                                         proxyManager.proxyHost(),
+                                                         proxyManager.proxyPort().toInt()));
+#endif
     }
     else
     {
