@@ -1,4 +1,4 @@
-/* $Id: DisasmTablesX64.cpp 41690 2012-06-13 18:12:25Z vboxsync $ */
+/* $Id: DisasmTablesX64.cpp 46949 2013-07-03 19:22:34Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for AMD64 (64-bit mode).
  */
@@ -262,14 +262,14 @@ const DISOPCODE g_aOneByteMapX64[256] =
 
 
     /* B */
-    OP("mov AL,%Ib",         IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_AL,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
-    OP("mov CL,%Ib",         IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_CL,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
-    OP("mov DL,%Ib",         IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_DL,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
-    OP("mov BL,%Ib",         IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_BL,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
-    OP("mov AH,%Ib",         IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_AH,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
-    OP("mov CH,%Ib",         IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_CH,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
-    OP("mov DH,%Ib",         IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_DH,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
-    OP("mov BH,%Ib",         IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_BH,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
+    OP("mov %eAL,%Ib",       IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_AL,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
+    OP("mov %eCL,%Ib",       IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_CL,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
+    OP("mov %eDL,%Ib",       IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_DL,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
+    OP("mov %eBL,%Ib",       IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_BL,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
+    OP("mov %eAH,%Ib",       IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_AH,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
+    OP("mov %eCH,%Ib",       IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_CH,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
+    OP("mov %eDH,%Ib",       IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_DH,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
+    OP("mov %eBH,%Ib",       IDX_ParseFixedReg,  IDX_ParseImmByte,  0,          OP_MOV,     OP_PARM_REG_BH,     OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
     OP("mov %eAX,%Iv",       IDX_ParseFixedReg,  IDX_ParseImmV,     0,          OP_MOV,     OP_PARM_REG_EAX,    OP_PARM_Iv,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
     OP("mov %eCX,%Iv",       IDX_ParseFixedReg,  IDX_ParseImmV,     0,          OP_MOV,     OP_PARM_REG_ECX,    OP_PARM_Iv,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),
     OP("mov %eDX,%Iv",       IDX_ParseFixedReg,  IDX_ParseImmV,     0,          OP_MOV,     OP_PARM_REG_EDX,    OP_PARM_Iv,     OP_PARM_NONE,   DISOPTYPE_HARMLESS | DISOPTYPE_REXB_EXTENDS_OPREG),

@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 46177 2013-05-20 21:12:43Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 46949 2013-07-03 19:22:34Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -1093,9 +1093,10 @@ DISDECL(size_t) DISFormatYasmEx(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, ui
                         break;
                     }
 
-                    case 'e': /* Register based on operand size (e.g. %eAX) (ParseFixedReg). */
+                    case 'e': /* Register based on operand size (e.g. %eAX, %eAH) (ParseFixedReg). */
                     {
-                        Assert(RT_C_IS_ALPHA(pszFmt[0]) && RT_C_IS_ALPHA(pszFmt[1]) && !RT_C_IS_ALPHA(pszFmt[2])); pszFmt += 2;
+                        Assert(RT_C_IS_ALPHA(pszFmt[0]) && RT_C_IS_ALPHA(pszFmt[1]) && !RT_C_IS_ALPHA(pszFmt[2]));
+                        pszFmt += 2;
                         size_t cchReg;
                         const char *pszReg = disasmFormatYasmBaseReg(pDis, pParam, &cchReg);
                         PUT_STR(pszReg, cchReg);
