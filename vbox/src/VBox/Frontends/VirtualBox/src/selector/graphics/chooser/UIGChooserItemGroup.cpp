@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 43887 2012-11-15 19:27:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1437,7 +1437,7 @@ void UIGChooserItemGroup::paintBackground(QPainter *pPainter, const QRect &rect)
     QColor headerColor = pal.color(QPalette::Active,
                                    model()->currentItems().contains(this) ?
                                    QPalette::Highlight : QPalette::Button);
-    QColor strokeColor = pal.color(QPalette::Active, QPalette::Dark);
+    QColor strokeColor = pal.color(QPalette::Active, QPalette::Mid);
     QColor bodyColor = pal.color(QPalette::Active, QPalette::Base);
 
     /* Root-item: */

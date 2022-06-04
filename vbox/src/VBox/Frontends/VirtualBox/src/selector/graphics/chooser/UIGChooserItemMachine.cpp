@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43885 2012-11-15 18:10:23Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43887 2012-11-15 19:27:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -833,7 +833,7 @@ void UIGChooserItemMachine::paintFrameRectangle(QPainter *pPainter, const QRect 
     QPalette pal = palette();
     QColor strokeColor = pal.color(QPalette::Active,
                                    model()->currentItems().contains(this) ?
-                                   QPalette::Dark : QPalette::Highlight);
+                                   QPalette::Mid : QPalette::Highlight);
     pPainter->setPen(strokeColor);
     pPainter->drawRect(rect);
     pPainter->restore();
