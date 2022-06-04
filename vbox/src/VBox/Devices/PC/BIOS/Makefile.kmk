@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42770 2012-08-11 17:03:21Z vboxsync $
+# $Id: Makefile.kmk 46946 2013-07-03 16:15:51Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -129,6 +129,15 @@ else
 	$(QUIET)$(VBOX_BIN2C) -min 64 -max 256 -mask 0xffff -ascii -export PcBiosBinary $(PcBiosBin_0_OUTDIR)/VBoxPcBios.rom $@
 	$(QUIET)$(RM) -f -- $$(PcBiosBin_0_OUTDIR)/VBoxPcBios.rom
 endif
+
+
+#
+# Install the symbol file for the BIOS.
+#
+INSTALLS += VBoxPcBiosSym
+VBoxPcBiosSym_TEMPLATE = VBoxDbgSyms
+VBoxPcBiosSym_SOURCES = $(basename $(VBoxPcBios_1_TARGET)).sym
+
 
 include $(FILE_KBUILD_SUB_FOOTER)
 

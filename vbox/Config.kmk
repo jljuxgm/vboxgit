@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46902 2013-07-02 12:27:25Z vboxsync $
+# $Id: Config.kmk 46946 2013-07-03 16:15:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -100,6 +100,8 @@ ifeq ($(KBUILD_TARGET),darwin)
  INST_ADDITIONS       = $(INST_DIST)additions/
  INST_ADDITIONS_ISO   = $(INST_BIN)
 
+ INST_VBOXDBG_SYMS    = $(INST_VIRTUALBOX)Contents/Resources/VBoxDbgSyms/
+
  # other paths
  INST_LIB             = lib/
  INST_ADDITIONS_LIB   = $(INST_LIB)additions/
@@ -128,7 +130,10 @@ else
  INST_ADDITIONS_LIB   = $(INST_LIB)additions/
  VBOX_INST_DTRACE_LIB = $(INST_BIN)dtrace/lib/
  VBOX_INST_DTRACE_TST = $(INST_BIN)dtrace/testcase/
+
+ INST_VBOXDBG_SYMS    = $(INST_BIN)VBoxDbgSyms/
 endif
+
 
 INST_TESTSUITE        = testsuite/
 INST_TESTBOXSCRIPT    = testboxscript/
@@ -4499,6 +4504,13 @@ endif # VBOX_WITH_QTGUI
 
 
 #
+# Template for installing symbol files that we wish to ship.
+#
+TEMPLATE_VBoxDbgSyms = Symbol files for VBoxDbg and gurus.
+TEMPLATE_VBoxDbgSyms_INST = $(INST_VBOXDBG_SYMS)
+
+
+#
 # Template for building build bldprogs.
 #
 # HACK ALERT! The BLD_TRG_* is a hack to allow building libraries as well.
@@ -5335,7 +5347,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46902 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46946 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
