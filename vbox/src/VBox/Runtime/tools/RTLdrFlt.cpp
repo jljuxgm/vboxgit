@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 45994 2013-05-12 19:16:16Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 46000 2013-05-13 06:47:16Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -153,7 +153,7 @@ int main(int argc, char **argv)
     unsigned        cVerbosityLevel = 0;
     enum {
         kOpenMethod_FromImage,
-        kOpenMethod_FromPeImage,
+        kOpenMethod_FromPeImage
     }               enmOpenMethod   = kOpenMethod_FromImage;
 
     RTGETOPTUNION   ValueUnion;
@@ -195,7 +195,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 45994 $\n");
+                RTPrintf("$Revision: 46000 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
