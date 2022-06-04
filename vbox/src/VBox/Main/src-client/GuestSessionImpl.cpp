@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 43493 2012-10-01 13:33:30Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 43981 2012-11-28 11:44:04Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -847,6 +847,15 @@ int GuestSession::processCreateExInteral(GuestProcessStartupInfo &procInfo, ComO
         {
             return VERR_INVALID_PARAMETER;
         }
+    }
+
+    if (   (procInfo.mFlags & ProcessCreateFlag_WaitForProcessStartOnly)
+        && (   (procInfo.mFlags & ProcessCreateFlag_WaitForStdOut)
+            || (procInfo.mFlags & ProcessCreateFlag_WaitForStdErr)
+           )
+       )
+    {
+        return VERR_INVALID_PARAMETER;
     }
 
     /* Adjust timeout. If set to 0, we define
