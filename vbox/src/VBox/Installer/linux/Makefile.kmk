@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42261 2012-07-20 13:27:47Z vboxsync $
+# $Id: Makefile.kmk 42422 2012-07-26 18:34:52Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -142,7 +142,7 @@ VBOX_LNX_STRIP_BIN = \
 		VBoxOGLhostcrutil.so \
 		VBoxOGLhosterrorspu.so \
 		VBoxOGLrenderspu.so \
-		VBoxTestOGL \
+		$(if $(VBOX_WITH_QTGUI),VBoxTestOGL,) \
 		VBoxSharedCrOpenGL.so,) \
 	$(if $(VBOX_WITH_PYTHON),$(notdir $(wildcard $(PATH_STAGE_BIN)/VBoxPython*.so)),) \
 	$(if $(VBOX_WITH_JXPCOM),libvboxjxpcom.so,) \
