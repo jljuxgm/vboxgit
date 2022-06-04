@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45656 2013-04-21 23:02:57Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45657 2013-04-22 00:09:30Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5504,7 +5504,7 @@ static int hmR0VmxCheckForceFlags(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
         if (VM_FF_IS_PENDING(pVM, VM_FF_PGM_POOL_FLUSH_PENDING))
         {
             Log(("hmR0VmxCheckForceFlags: PGM pool flush pending forcing us back to ring-3\n"));
-            return rc = VINF_PGM_POOL_FLUSH_PENDING;
+            return VINF_PGM_POOL_FLUSH_PENDING;
         }
 
         /* Pending DMA requests. */
