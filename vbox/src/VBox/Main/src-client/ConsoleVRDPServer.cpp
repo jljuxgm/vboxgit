@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 45680 2013-04-23 13:00:08Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 46097 2013-05-15 13:11:39Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1332,6 +1332,8 @@ ConsoleVRDPServer::ConsoleVRDPServer(Console *console)
 
     mhServer = 0;
     mServerInterfaceVersion = 0;
+
+    mcInResize = 0;
 
     m_fGuestWantsAbsolute = false;
     m_mousex = 0;
@@ -2818,6 +2820,23 @@ void ConsoleVRDPServer::Stop(void)
         /* Reset the handle to avoid further calls to the server. */
         mhServer = 0;
 
+        /* Workaround for VM process hangs on termination.
+         *
+         * Make sure that the server is not currently processing a resize.
+         * mhServer 0 will not allow to enter the server again.
+         * Wait until any current resize returns from the server.
+         */
+        if (mcInResize)
+        {
+            LogRel(("VRDP: waiting for resize %d\n", mcInResize));
+
+            int i = 0;
+            while (mcInResize && ++i < 100)
+            {
+                RTThreadSleep(10);
+            }
+        }
+
         if (mpEntryPoints && hServer)
         {
             mpEntryPoints->VRDEDestroy(hServer);
@@ -3634,11 +3653,13 @@ void ConsoleVRDPServer::SendUpdate(unsigned uScreenId, void *pvUpdate, uint32_t 
     }
 }
 
-void ConsoleVRDPServer::SendResize(void) const
+void ConsoleVRDPServer::SendResize(void)
 {
     if (mpEntryPoints && mhServer)
     {
+        ++mcInResize;
         mpEntryPoints->VRDEResize(mhServer);
+        --mcInResize;
     }
 }
 
