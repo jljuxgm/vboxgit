@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 46597 2013-06-17 15:43:04Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 46598 2013-06-17 15:47:23Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -276,7 +276,7 @@ static int vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
                 *pu8ReplyPos++ = 0x4;  /* Write cache enabled. */
                 fValid = true;
             } else if (uModePage == 0) {
-                fValid = 0;
+                fValid = true;
             }
 
             /* Querying unknown pages must fail. */
