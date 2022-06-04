@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 43334 2012-09-14 17:34:33Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 43340 2012-09-18 11:13:49Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -117,7 +117,9 @@ typedef struct VBOXWDDMDISP_STREAM_SOURCE_INFO
 
 typedef struct VBOXWDDMDISP_INDICES_INFO
 {
-  UINT   uiStride;
+    struct VBOXWDDMDISP_ALLOCATION *pIndicesAlloc;
+    const void *pvIndicesUm;
+    UINT uiStride;
 } VBOXWDDMDISP_INDICES_INFO;
 
 typedef struct VBOXWDDMDISP_RENDERTGT_FLAGS
@@ -191,11 +193,10 @@ typedef struct VBOXWDDMDISP_DEVICE
     D3DDDI_CREATEDEVICEFLAGS fFlags;
     /* number of StreamSources set */
     UINT cStreamSources;
+    UINT cStreamSourcesUm;
     VBOXWDDMDISP_STREAMSOURCEUM aStreamSourceUm[VBOXWDDMDISP_MAX_VERTEX_STREAMS];
     struct VBOXWDDMDISP_ALLOCATION *aStreamSource[VBOXWDDMDISP_MAX_VERTEX_STREAMS];
     VBOXWDDMDISP_STREAM_SOURCE_INFO StreamSourceInfo[VBOXWDDMDISP_MAX_VERTEX_STREAMS];
-    VBOXWDDMDISP_INDICIESUM IndiciesUm;
-    struct VBOXWDDMDISP_ALLOCATION *pIndicesAlloc;
     VBOXWDDMDISP_INDICES_INFO IndiciesInfo;
     /* need to cache the ViewPort data because IDirect3DDevice9::SetViewport
      * is split into two calls : SetViewport & SetZRange */
