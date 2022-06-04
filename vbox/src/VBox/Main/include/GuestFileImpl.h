@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.h 42897 2012-08-21 10:03:52Z vboxsync $ */
+/* $Id: GuestFileImpl.h 43162 2012-09-04 13:53:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -45,7 +45,7 @@ public:
     END_COM_MAP()
     DECLARE_EMPTY_CTOR_DTOR(GuestFile)
 
-    int     init(GuestSession *pSession, const Utf8Str &strPath, const Utf8Str &strOpenMode, const Utf8Str &strDisposition, uint32_t uCreationMode, int64_t iOffset);
+    int     init(GuestSession *pSession, const Utf8Str &strPath, const Utf8Str &strOpenMode, const Utf8Str &strDisposition, uint32_t uCreationMode, int64_t iOffset, int *pGuestRc);
     void    uninit(void);
     HRESULT FinalConstruct(void);
     void    FinalRelease(void);

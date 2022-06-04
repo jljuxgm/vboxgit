@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 42897 2012-08-21 10:03:52Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 43162 2012-09-04 13:53:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -60,7 +60,7 @@ void GuestFile::FinalRelease(void)
 
 int GuestFile::init(GuestSession *pSession, const Utf8Str &strPath,
                     const Utf8Str &strOpenMode, const Utf8Str &strDisposition, uint32_t uCreationMode,
-                    int64_t iOffset)
+                    int64_t iOffset, int *pGuestRc)
 {
     /* Enclose the state transition NotReady->InInit->Ready. */
     AutoInitSpan autoInitSpan(this);
@@ -75,6 +75,7 @@ int GuestFile::init(GuestSession *pSession, const Utf8Str &strPath,
     mData.mOffset = iOffset;
 
     /** @todo Validate parameters! */
+    /** @todo Implement guest side file handling! */
 
     /* Confirm a successful initialization when it's the case. */
     autoInitSpan.setSucceeded();
