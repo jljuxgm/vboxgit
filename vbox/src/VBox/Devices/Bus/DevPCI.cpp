@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 41825 2012-06-19 14:14:28Z vboxsync $ */
+/* $Id: DevPCI.cpp 44310 2013-01-18 12:59:37Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2120,18 +2120,12 @@ static DECLCALLBACK(void) pciInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const 
 {
     PPCIBUS pBus = DEVINS_2_PCIBUS(pDevIns);
 
-    if (pszArgs == NULL || !strcmp(pszArgs, "basic"))
-    {
+    if (pszArgs == NULL || !*pszArgs || !strcmp(pszArgs, "basic"))
         pciBusInfo(pBus, pHlp, 0, false);
-    }
     else if (!strcmp(pszArgs, "verbose"))
-    {
         pciBusInfo(pBus, pHlp, 0, true);
-    }
     else
-    {
         pHlp->pfnPrintf(pHlp, "Invalid argument. Recognized arguments are 'basic', 'verbose'.\n");
-    }
 }
 
 /**
