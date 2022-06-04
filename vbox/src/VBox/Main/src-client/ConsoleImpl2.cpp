@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 47219 2013-07-17 14:00:49Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 47223 2013-07-17 19:26:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1849,7 +1849,7 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 #ifdef VMWARE_NET_IN_SLOT_11
             /*
              * Dirty hack for PCI slot compatibility with VMWare,
-             * it assigns slot 11 to the first network controller.
+             * it assigns slot 0x11 to the first network controller.
              */
             if (iPCIDeviceNo == 3 && adapterType == NetworkAdapterType_I82545EM)
             {
