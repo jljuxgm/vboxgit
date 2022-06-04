@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 42214 2012-07-18 18:02:58Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 42234 2012-07-19 16:43:43Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -138,19 +138,27 @@ void GuestCtrlCallback::Destroy(void)
         RTSemEventDestroy(hEventSem);
 }
 
-eVBoxGuestCtrlCallbackType GuestCtrlCallback::Type(void)
+int GuestCtrlCallback::Signal(int rc /*= VINF_SUCCESS*/, const Utf8Str &strMsg /*= "" */)
 {
-    return mType;
+    AssertReturn(hEventSem != NIL_RTSEMEVENT, VERR_CANCELLED);
+    return RTSemEventSignal(hEventSem);
 }
 
 int GuestCtrlCallback::Wait(ULONG uTimeoutMS)
 {
-    Assert(hEventSem != NIL_RTSEMEVENT);
+    AssertReturn(hEventSem != NIL_RTSEMEVENT, VERR_CANCELLED);
 
     RTMSINTERVAL msInterval = uTimeoutMS;
     if (!uTimeoutMS)
         msInterval = RT_INDEFINITE_WAIT;
-    return RTSemEventWait(hEventSem, msInterval);
+    int rc = RTSemEventWait(hEventSem, msInterval);
+    if (RT_SUCCESS(rc))
+    {
+        /* Assign overall callback result. */
+        rc = mRC;
+    }
+
+    return rc;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
