@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 46501 2013-06-11 16:02:55Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 46601 2013-06-17 16:05:23Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1084,6 +1084,8 @@ static int buslogicR3HwReset(PBUSLOGIC pBusLogic, bool fResetIO)
     pBusLogic->iParameter = 0;
     pBusLogic->cbCommandParametersLeft = 0;
     pBusLogic->fIRQEnabled = true;
+    pBusLogic->fStrictRoundRobinMode = false;
+    pBusLogic->fExtendedLunCCBFormat = false;
     pBusLogic->uMailboxOutgoingPositionCurrent = 0;
     pBusLogic->uMailboxIncomingPositionCurrent = 0;
 
