@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 44173 2012-12-19 18:12:31Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 44175 2012-12-19 18:16:25Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -94,13 +94,14 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted)
     /*
      * Try open the device.
      */
-    int hDevice = open(fUnrestricted ? DEVICE_NAME_SYS : DEVICE_NAME_USR, O_RDWR, 0);
+    const char *pszDeviceNm = fUnrestricted ? DEVICE_NAME_SYS : DEVICE_NAME_USR
+    int hDevice = open(pszDeviceNm, O_RDWR, 0);
     if (hDevice < 0)
     {
         /*
          * Try load the device.
          */
-        hDevice = open(fUnrestricted ? DEVICE_NAME_SYS : DEVICE_NAME_USR, O_RDWR, 0);
+        hDevice = open(pszDeviceNm, O_RDWR, 0);
         if (hDevice < 0)
         {
             int rc;
@@ -113,7 +114,7 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted)
                 case ENOENT:    rc = VERR_VM_DRIVER_NOT_INSTALLED; break;
                 default:        rc = VERR_VM_DRIVER_OPEN_ERROR; break;
             }
-            LogRel(("Failed to open \"%s\", errno=%d, rc=%Rrc\n", DEVICE_NAME, errno, rc));
+            LogRel(("Failed to open \"%s\", errno=%d, rc=%Rrc\n", pszDeviceNm, errno, rc));
             return rc;
         }
     }
