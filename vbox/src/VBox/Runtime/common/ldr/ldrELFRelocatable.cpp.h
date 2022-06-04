@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 46151 2013-05-17 19:28:09Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 46152 2013-05-17 19:29:35Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -1008,7 +1008,7 @@ static DECLCALLBACK(int) RTLDRELF_NAME(ReadDbgInfo)(PRTLDRMODINTERNAL pMod, uint
     AssertReturn(pThis->paShdrs[iDbgInfo].sh_size   == cb, VERR_INVALID_PARAMETER);
     RTFOFF cbRawImage = pThis->Core.pReader->pfnSize(pThis->Core.pReader);
     AssertReturn(cbRawImage >= 0, VERR_INVALID_PARAMETER);
-    AssertReturn(off >= 0 && cb <= (uint64_t)cbRawImage && off + cb <= (uint64_t)cbRawImage, VERR_INVALID_PARAMETER);
+    AssertReturn(off >= 0 && cb <= (uint64_t)cbRawImage && (uint64_t)off + cb <= (uint64_t)cbRawImage, VERR_INVALID_PARAMETER);
 
     /*
      * Read it from the file and look for fixup sections.
