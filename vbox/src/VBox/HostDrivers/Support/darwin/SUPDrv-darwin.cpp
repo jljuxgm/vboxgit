@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 44173 2012-12-19 18:12:31Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 45250 2013-03-29 15:40:59Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -701,7 +701,7 @@ static int VBoxDrvDarwinIOCtlSlow(PSUPDRVSESSION pSession, u_long iCmd, caddr_t 
  * @param   iReq        The request code.
  * @param   pReq        The request.
  */
-int VBOXCALL SUPDrvDarwinIDC(uint32_t uReq, PSUPDRVIDCREQHDR pReq)
+DECLEXPORT(int) VBOXCALL SUPDrvDarwinIDC(uint32_t uReq, PSUPDRVIDCREQHDR pReq)
 {
     PSUPDRVSESSION  pSession;
 

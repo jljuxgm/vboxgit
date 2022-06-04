@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIDC.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 45250 2013-03-29 15:40:59Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communication (IDC) definitions.
  */
@@ -224,7 +224,11 @@ typedef SUPDRVIDCREQCOMPDEREGFACTORY *PSUPDRVIDCREQCOMPDEREGFACTORY;
 RT_C_DECLS_BEGIN
 
 #if defined(RT_OS_DARWIN)
-extern int VBOXCALL SUPDrvDarwinIDC(uint32_t iReq, PSUPDRVIDCREQHDR pReq);
+# ifdef IN_SUP_R0
+extern DECLEXPORT(int) VBOXCALL SUPDrvDarwinIDC(uint32_t iReq, PSUPDRVIDCREQHDR pReq);
+# else
+extern DECLIMPORT(int) VBOXCALL SUPDrvDarwinIDC(uint32_t iReq, PSUPDRVIDCREQHDR pReq);
+# endif
 
 #elif defined(RT_OS_FREEBSD)
 extern int VBOXCALL SUPDrvFreeBSDIDC(uint32_t iReq, PSUPDRVIDCREQHDR pReq);
