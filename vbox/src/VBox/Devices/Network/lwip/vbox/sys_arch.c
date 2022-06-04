@@ -1,4 +1,4 @@
-/** $Id: sys_arch.c 33464 2010-10-26 12:27:50Z vboxsync $ */
+/** $Id: sys_arch.c 42334 2012-07-23 18:06:38Z vboxsync $ */
 /** @file
  * System dependent parts of lwIP, implemented with IPRT.
  */
@@ -271,6 +271,8 @@ u32_t sys_arch_mbox_fetch(sys_mbox_t mbox, void **msg, u32_t timeout)
     else
         cMillies = timeout;
     rc = LWIPMutexRequest(mbox->mutex, cMillies);
+    if (rc == VERR_TIMEOUT)
+        return SYS_ARCH_TIMEOUT;
     AssertRC(rc);
     while (mbox->head == mbox->tail)
     {
