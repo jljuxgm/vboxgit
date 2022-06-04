@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 46078 2013-05-14 18:22:53Z vboxsync $ */
+/* $Id: DBGConsole.cpp 46137 2013-05-17 08:09:59Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -162,6 +162,7 @@
 #include <VBox/dbg.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/vmapi.h> /* VMR3GetVM() */
+#include <VBox/vmm/hm.h>    /* HMR3IsEnabled */
 #include <VBox/err.h>
 #include <VBox/log.h>
 
@@ -1013,6 +1014,8 @@ DBGDECL(int) DBGCCreate(PUVM pUVM, PDBGCBACK pBack, unsigned fFlags)
     int rc = dbgcCreate(&pDbgc, pBack, fFlags);
     if (RT_FAILURE(rc))
         return rc;
+    if (!HMR3IsEnabled(pUVM))
+        pDbgc->hDbgAs = DBGF_AS_RC_AND_GC_GLOBAL;
 
     /*
      * Print welcome message.
