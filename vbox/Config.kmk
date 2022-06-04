@@ -1,4 +1,4 @@
-# $Id: Config.kmk 42960 2012-08-23 18:41:26Z vboxsync $
+# $Id: Config.kmk 42962 2012-08-23 19:30:07Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3721,10 +3721,8 @@ ifdef VBOX_WITH_RUNPATH
 else ifdef VBOX_WITH_RELATIVE_RUNPATH
  TEMPLATE_VBOXR3TSTEXE_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RELATIVE_RUNPATH)/..' $(TEMPLATE_VBOXR3EXE_LDFLAGS)
 endif
-ifeq ($(KBUILD_TARGET),win)
- ifdef VBOX_SIGNING_MODE
-  TEMPLATE_VBOXR3TSTEXE_POST_CMDS =
- endif
+if "$(KBUILD_TARGET)" == "win" && defined(VBOX_SIGNING_MODE)
+ TEMPLATE_VBOXR3TSTEXE_POST_CMDS =
 endif
 
 #
@@ -5203,7 +5201,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42960 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 42962 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
