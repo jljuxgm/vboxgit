@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 44421 2013-01-28 12:42:07Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 44822 2013-02-25 15:58:57Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4099,11 +4099,13 @@ DECLCALLBACK(int) Display::displayVBVAResize(PPDMIDISPLAYCONNECTOR pInterface, c
         pFBInfo->fDisabled = true;
         pFBInfo->flags = pScreen->u16Flags;
 
-        /* Temporary: ask framebuffer to resize using a default format. The framebuffer will be black. */
-        pThis->handleDisplayResize(pScreen->u32ViewIndex, 0,
-                                   (uint8_t *)NULL,
-                                   pScreen->u32LineSize, pScreen->u32Width,
-                                   pScreen->u32Height, pScreen->u16Flags);
+        /* Ask the framebuffer to resize using a default format. The framebuffer will be black.
+         * So if the frontend does not support GuestMonitorChangedEventType_Disabled event,
+         * the VM window will be black. */
+        uint32_t u32Width = pFBInfo->w ? pFBInfo->w : 640;
+        uint32_t u32Height = pFBInfo->h ? pFBInfo->h : 480;
+        pThis->handleDisplayResize(pScreen->u32ViewIndex, 0, (uint8_t *)NULL, 0,
+                                   u32Width, u32Height, pScreen->u16Flags);
 
         fireGuestMonitorChangedEvent(pThis->mParent->getEventSource(),
                                      GuestMonitorChangedEventType_Disabled,
