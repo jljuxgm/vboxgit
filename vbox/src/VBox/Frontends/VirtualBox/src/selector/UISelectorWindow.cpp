@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 45278 2013-04-02 08:54:33Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 45280 2013-04-02 10:48:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -352,7 +352,7 @@ void UISelectorWindow::sltShowAddMachineDialog(const QString &strFileName /* = Q
 
     /* Make sure this machine can be opened: */
     CMachine newMachine = vbox.OpenMachine(strTmpFile);
-    if (!vbox.isOk() || newMachine.isNull())
+    if (!vbox.isOk())
     {
         msgCenter().cannotOpenMachine(vbox, strTmpFile);
         return;
