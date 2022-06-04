@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 41615 2012-06-07 16:55:08Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 42616 2012-08-06 12:12:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -37,7 +37,8 @@
 #include "QILineEdit.h"
 #include "QIToolButton.h"
 
-UIWizardNewVMPageExpert::UIWizardNewVMPageExpert()
+UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
+    : UIWizardNewVMPage1(strGroup)
 {
     /* Create widgets: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
