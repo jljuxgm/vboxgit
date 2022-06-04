@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 43798 2012-11-02 13:24:21Z vboxsync $ */
+/* $Id: HMInternal.h 43803 2012-11-05 13:50:57Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -356,7 +356,7 @@ typedef struct HM
             uint64_t                vmx_cr4_fixed0;
             uint64_t                vmx_cr4_fixed1;
             uint64_t                vmx_vmcs_enum;
-            uint64_t                vmx_eptcaps;
+            uint64_t                vmx_ept_vpid_caps;
         } msr;
 
         /** Flush types for invept & invvpid; they depend on capabilities. */
