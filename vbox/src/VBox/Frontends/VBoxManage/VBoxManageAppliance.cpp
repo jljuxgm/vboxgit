@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 44868 2013-02-28 14:22:24Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1021,7 +1021,7 @@ int handleExportAppliance(HandlerArg *a)
                         int irc = RTFileReadAll(itD->second.c_str(), &pvFile, &cbFile);
                         if (RT_SUCCESS(irc))
                         {
-                            Bstr bstrContent((char*)pvFile);
+                            Bstr bstrContent((char*)pvFile, cbFile);
                             pVSD->AddDescription(VirtualSystemDescriptionType_License,
                                                  bstrContent.raw(),
                                                  bstrContent.raw());
