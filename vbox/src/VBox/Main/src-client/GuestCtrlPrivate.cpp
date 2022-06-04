@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 45783 2013-04-26 15:41:39Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 45801 2013-04-29 07:59:25Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -1010,8 +1010,7 @@ GuestWaitEvent::GuestWaitEvent(uint32_t uCID,
                                const std::list<VBoxEventType_T> &lstEvents)
     : mCID(uCID),
       mEventTypes(lstEvents),
-      mEventSem(NIL_RTSEMEVENT),
-      mEvent(false)
+      mEventSem(NIL_RTSEMEVENT)
 {
     int rc = RTSemEventCreate(&mEventSem);
     AssertRC(rc);
