@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 43540 2012-10-04 12:56:22Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 43543 2012-10-04 13:38:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -111,11 +111,11 @@ UIGChooserItemMachine::~UIGChooserItemMachine()
     /* If that item is focused: */
     if (model()->focusItem() == this)
     {
-        /* Unset the focus/selection: */
-        model()->setFocusItem(0, true);
+        /* Unset the focus: */
+        model()->setFocusItem(0);
     }
-    /* If that item is NOT focused, but selected: */
-    else if (model()->currentItems().contains(this))
+    /* If that item is selected: */
+    if (model()->currentItems().contains(this))
     {
         /* Remove item from the selection list: */
         model()->removeFromCurrentItems(this);

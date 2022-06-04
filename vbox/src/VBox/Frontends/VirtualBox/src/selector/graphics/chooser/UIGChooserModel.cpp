@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 43542 2012-10-04 13:28:09Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 43543 2012-10-04 13:38:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -584,7 +584,7 @@ void UIGChooserModel::sltMachineRegistered(QString strId, bool fRegistered)
         /* Machine was found? */
         if (!machine.isNull())
         {
-            /* Add new machine item: */
+            /* Add new machine-item: */
             addMachineIntoTheTree(machine, true);
             /* And update model: */
             updateNavigation();
@@ -595,16 +595,20 @@ void UIGChooserModel::sltMachineRegistered(QString strId, bool fRegistered)
     /* Existing VM unregistered? */
     else
     {
-        /* Remove machine items with passed id: */
+        /* Remove machine-items with passed id: */
         removeMachineItems(strId, mainRoot());
-        /* And update model: */
+        /* Update model: */
         updateGroupTree();
         updateNavigation();
         updateLayout();
-        if (mainRoot()->hasItems())
+        /* Make sure focus-item present, if possible: */
+        if (!focusItem() && currentItem())
+            setFocusItem(currentItem());
+        /* Make sure current-item present, if possible: */
+        if (!currentItem() && !navigationList().isEmpty())
             setCurrentItem(0);
-        else
-            unsetCurrentItem();
+        /* Notify about current-item change: */
+        notifyCurrentItemChanged();
     }
 }
 
@@ -807,13 +811,9 @@ void UIGChooserModel::sltRemoveCurrentlySelectedGroup()
     delete focusItem();
 
     /* And update model: */
-    updateGroupTree();
     updateNavigation();
     updateLayout();
-    if (mainRoot()->hasItems())
-        setCurrentItem(0);
-    else
-        unsetCurrentItem();
+    setCurrentItem(0);
     saveGroupSettings();
 }
 
