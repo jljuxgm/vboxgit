@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: RAW.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -159,7 +159,7 @@ out:
                 rawFlushImage(pImage);
             }
 
-            vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
+            rc = vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
             pImage->pStorage = NULL;
         }
 

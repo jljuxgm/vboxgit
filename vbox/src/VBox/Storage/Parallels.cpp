@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 46170 2013-05-20 09:14:04Z vboxsync $ */
+/* $Id: Parallels.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -157,7 +157,7 @@ static int parallelsFreeImage(PPARALLELSIMAGE pImage, bool fDelete)
             if (!fDelete)
                 parallelsFlushImage(pImage);
 
-            vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
+            rc = vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
             pImage->pStorage = NULL;
         }
 

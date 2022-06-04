@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 44786 2013-02-21 15:58:31Z vboxsync $ */
+/* $Id: VHD.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -559,7 +559,7 @@ static int vhdFreeImage(PVHDIMAGE pImage, bool fDelete)
             if (!fDelete)
                 vhdFlushImage(pImage);
 
-            vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
+            rc = vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
             pImage->pStorage = NULL;
         }
 
@@ -580,7 +580,7 @@ static int vhdFreeImage(PVHDIMAGE pImage, bool fDelete)
         }
 
         if (fDelete && pImage->pszFilename)
-            rc = vdIfIoIntFileDelete(pImage->pIfIo, pImage->pszFilename);
+            vdIfIoIntFileDelete(pImage->pIfIo, pImage->pszFilename);
     }
 
     LogFlowFunc(("returns %Rrc\n", rc));
@@ -3159,7 +3159,11 @@ static DECLCALLBACK(int) vhdRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
         RTMemFree(pu32BlockBitmap);
 
     if (pStorage)
-        vdIfIoIntFileClose(pIfIo, pStorage);
+    {
+        int rc2 = vdIfIoIntFileClose(pIfIo, pStorage);
+        if (RT_SUCCESS(rc))
+            rc = rc2; /* Propagate status code only when repairing the image was successful. */
+    }
 
     LogFlowFunc(("returns %Rrc\n", rc));
     return rc;

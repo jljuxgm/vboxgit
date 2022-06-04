@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 44940 2013-03-06 22:12:24Z vboxsync $ */
+/* $Id: QED.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -1141,7 +1141,7 @@ static int qedFreeImage(PQEDIMAGE pImage, bool fDelete)
             if (!fDelete)
                 qedFlushImage(pImage);
 
-            vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
+            rc = vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
             pImage->pStorage = NULL;
         }
 

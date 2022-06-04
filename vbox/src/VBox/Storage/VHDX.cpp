@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 46029 2013-05-13 16:07:36Z vboxsync $ */
+/* $Id: VHDX.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -970,7 +970,7 @@ static int vhdxFreeImage(PVHDXIMAGE pImage, bool fDelete)
     {
         if (pImage->pStorage)
         {
-            vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
+            rc = vdIfIoIntFileClose(pImage->pIfIo, pImage->pStorage);
             pImage->pStorage = NULL;
         }
 
