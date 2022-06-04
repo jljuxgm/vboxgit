@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 43256 2012-09-08 03:38:02Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 43350 2012-09-18 14:39:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2458,6 +2458,28 @@ int Console::configConstructorInner(PVM pVM, AutoWriteLock *pAlock)
                     pVMMDev->hgcmHostCall("VBoxSharedClipboard", VBOX_SHARED_CLIPBOARD_HOST_FN_SET_HEADLESS, 1, &parm);
 
                     Log(("Set VBoxSharedClipboard mode\n"));
+                }
+            }
+        }
+
+        /*
+         * HGCM HostChannel
+         */
+        {
+            Bstr value;
+            hrc = pMachine->GetExtraData(Bstr("HGCM/HostChannel").raw(),
+                                         value.asOutParam());
+
+            if (   hrc   == S_OK
+                && value == "1")
+            {
+                rc = pVMMDev->hgcmLoadService("VBoxHostChannel", "VBoxHostChannel");
+
+                if (RT_FAILURE(rc))
+                {
+                    LogRel(("VBoxHostChannel is not available. rc = %Rrc\n", rc));
+                    /* That is not a fatal failure. */
+                    rc = VINF_SUCCESS;
                 }
             }
         }
