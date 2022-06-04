@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 44988 2013-03-11 14:34:08Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 44992 2013-03-11 15:41:01Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -265,8 +265,7 @@ void VBoxGuestNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt);
 
 
 #ifdef VBOX_WITH_DPC_LATENCY_CHECKER
-int VBoxGuestCommonIOCtl_DPC(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession,
-                             void *pvData, size_t cbData, size_t *pcbDataReturned);
+int VbgdNtIOCtl_DpcLatencyChecker(void);
 #endif
 
 RT_C_DECLS_END
