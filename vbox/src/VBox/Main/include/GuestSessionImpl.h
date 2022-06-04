@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 42354 2012-07-24 12:13:00Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 42411 2012-07-26 14:07:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -60,6 +60,7 @@ public:
     STDMETHOD(COMGETTER(Name))(BSTR *aName);
     STDMETHOD(COMGETTER(Id))(ULONG *aId);
     STDMETHOD(COMGETTER(Timeout))(ULONG *aTimeout);
+    STDMETHOD(COMSETTER(Timeout))(ULONG aTimeout);
     STDMETHOD(COMGETTER(Environment))(ComSafeArrayOut(BSTR, aEnvironment));
     STDMETHOD(COMGETTER(Processes))(ComSafeArrayOut(IGuestProcess *, aProcesses));
     STDMETHOD(COMGETTER(Directories))(ComSafeArrayOut(IGuestDirectory *, aDirectories));

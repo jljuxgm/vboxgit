@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 42358 2012-07-24 12:35:19Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 42411 2012-07-26 14:07:13Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -205,6 +205,22 @@ void GuestCtrlCallback::Destroy(void)
         pvData = NULL;
     }
     cbData = 0;
+}
+
+int GuestCtrlCallback::FillData(const void *pData, size_t cbData)
+{
+    if (!cbData)
+        return VINF_SUCCESS;
+    AssertPtr(pData);
+
+    Assert(pvData == NULL); /* Can't reuse callbacks! */
+    pvData = RTMemAlloc(cbData);
+    if (!pvData)
+        return VERR_NO_MEMORY;
+
+    memcpy(pvData, pData, cbData);
+
+    return VINF_SUCCESS;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

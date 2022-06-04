@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 42354 2012-07-24 12:13:00Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 42411 2012-07-26 14:07:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -2831,5 +2831,10 @@ STDMETHODIMP Guest::CreateSession(IN_BSTR aUser, IN_BSTR aPassword, IN_BSTR aDom
     LogFlowFuncLeaveRC(rc);
     return hr;
 #endif /* VBOX_WITH_GUEST_CONTROL */
+}
+
+STDMETHODIMP Guest::FindSession(IN_BSTR aSessionName, ComSafeArrayOut(IGuestSession *, aSessions))
+{
+    ReturnComNotImplemented();
 }
 

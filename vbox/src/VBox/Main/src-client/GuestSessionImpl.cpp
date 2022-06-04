@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 42354 2012-07-24 12:13:00Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 42411 2012-07-26 14:07:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -239,6 +239,25 @@ STDMETHODIMP GuestSession::COMGETTER(Timeout)(ULONG *aTimeout)
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
 
+STDMETHODIMP GuestSession::COMSETTER(Timeout)(ULONG aTimeout)
+{
+#ifndef VBOX_WITH_GUEST_CONTROL
+    ReturnComNotImplemented();
+#else
+    LogFlowThisFuncEnter();
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    mData.mTimeout = aTimeout;
+
+    LogFlowFuncLeaveRC(S_OK);
+    return S_OK;
+#endif /* VBOX_WITH_GUEST_CONTROL */
+}
+
 STDMETHODIMP GuestSession::COMGETTER(Environment)(ComSafeArrayOut(BSTR, aEnvironment))
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
@@ -434,7 +453,9 @@ int GuestSession::processCreateExInteral(GuestProcessInfo &procInfo, ComObjPtr<G
         if (   !(procInfo.mFlags & ProcessCreateFlag_IgnoreOrphanedProcesses)
             && !(procInfo.mFlags & ProcessCreateFlag_WaitForProcessStartOnly)
             && !(procInfo.mFlags & ProcessCreateFlag_Hidden)
-            && !(procInfo.mFlags & ProcessCreateFlag_NoProfile))
+            && !(procInfo.mFlags & ProcessCreateFlag_NoProfile)
+            && !(procInfo.mFlags & ProcessCreateFlag_WaitForStdOut)
+            && !(procInfo.mFlags & ProcessCreateFlag_WaitForStdErr))
         {
             return VERR_INVALID_PARAMETER;
         }
