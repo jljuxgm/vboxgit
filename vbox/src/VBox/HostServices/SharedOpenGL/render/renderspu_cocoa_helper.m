@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 44787 2013-02-21 16:09:31Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 44813 2013-02-25 07:51:53Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -998,7 +998,7 @@ static NSOpenGLContext * vboxCtxGetCurrent()
 				{
 					fCompositorAquired = true;
 				}
-			    else if (rc != VERR_SEM_BUSY)
+			    else if (rc == VERR_SEM_BUSY)
 #endif
 			    {
 			        glFlush();
