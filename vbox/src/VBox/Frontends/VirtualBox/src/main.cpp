@@ -1,4 +1,4 @@
-/* $Id: main.cpp 41689 2012-06-13 17:13:36Z vboxsync $ */
+/* $Id: main.cpp 42665 2012-08-07 14:55:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -279,6 +279,7 @@ static void showHelp()
             "  --recompile-user           recompiled execution of user code (*)\n"
             "  --recompile-all            recompiled execution of all code, with disabled\n"
             "                             code patching and scanning\n"
+            "  --warp-pct <pct>           time warp factor, 100%% (= 1.0) = normal speed\n"
             "  (*) For AMD-V/VT-x setups the effect is --recompile-all.\n"
             "\n"
 # ifdef VBOX_WITH_DEBUGGER_GUI
