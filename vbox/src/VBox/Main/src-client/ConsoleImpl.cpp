@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 47190 2013-07-16 13:44:46Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 47249 2013-07-19 11:19:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6127,7 +6127,7 @@ void Console::onMouseCapabilityChange(BOOL supportsAbsolute, BOOL supportsRelati
     }
 #endif
 
-    fireMouseCapabilityChangedEvent(mEventSource, supportsAbsolute, supportsRelative, needsHostCursor);
+    fireMouseCapabilityChangedEvent(mEventSource, supportsAbsolute, supportsRelative, supportsMT, needsHostCursor);
 }
 
 void Console::onStateChange(MachineState_T machineState)
