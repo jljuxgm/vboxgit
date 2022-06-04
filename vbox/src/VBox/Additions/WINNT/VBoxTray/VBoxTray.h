@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 45837 2013-04-30 12:42:28Z vboxsync $ */
+/* $Id: VBoxTray.h 47195 2013-07-16 14:48:43Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -100,6 +100,7 @@ typedef struct _VBOXSERVICEINFO
     char     *pszName;
     int      (* pfnInit)             (const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartThread);
     unsigned (__stdcall * pfnThread) (void *pInstance);
+    void     (* pfnStop)             (const VBOXSERVICEENV *pEnv, void *pInstance);
     void     (* pfnDestroy)          (const VBOXSERVICEENV *pEnv, void *pInstance);
 
     /* Variables. */
