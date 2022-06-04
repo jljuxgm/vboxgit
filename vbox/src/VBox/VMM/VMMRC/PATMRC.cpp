@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 42556 2012-08-02 20:08:12Z vboxsync $ */
+/* $Id: PATMRC.cpp 42706 2012-08-09 08:04:59Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -516,8 +516,8 @@ VMMRCDECL(int) PATMRCHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pRegFrame)
 
 #ifdef VBOX_WITH_IEM
             VBOXSTRICTRC rcStrict;
-            rcStrict = IEMExecOneWithPrefetchedByPC(pVCpu, pRegFrame, pRegFrame->rip,
-                                                    pRec->patch.aPrivInstr, pRec->patch.cbPrivInstr);
+            rcStrict = IEMExecOneBypassWithPrefetchedByPC(pVCpu, pRegFrame, pRegFrame->rip,
+                                                          pRec->patch.aPrivInstr, pRec->patch.cbPrivInstr);
             rc = VBOXSTRICTRC_TODO(rcStrict);
 #else
             uint32_t    cbOp;
