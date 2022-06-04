@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45672 2013-04-23 03:06:28Z vboxsync $
+# $Id: Makefile.kmk 46425 2013-06-07 05:09:23Z vboxsync $
 ## @file
 #
 
@@ -74,8 +74,7 @@ VBoxNetLwipNAT_INCS += ../../Devices/Network \
 VBoxNetLwipNAT_DEFS += ${LWIP_DEFS} 
 VBoxNetLwipNAT_SOURCES += VBoxNetLwipNAT.cpp	\
 	../NetLib/VBoxNetBaseService.cpp \
-	../NetLib/VBoxNetPortForwardString.cpp \
-	../../Devices/Network/VBoxLwipCore.cpp
+	../NetLib/VBoxNetPortForwardString.cpp
 VBoxNetLwipNAT_LIBS = \
 	$(LIB_RUNTIME)
 VBoxNetLwipNAT_LDFLAGS.win = /SUBSYSTEM:windows
