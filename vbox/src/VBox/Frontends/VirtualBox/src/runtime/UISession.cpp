@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 44841 2013-02-27 12:20:54Z vboxsync $ */
+/* $Id: UISession.cpp 44865 2013-02-28 12:23:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,6 +19,7 @@
 
 /* Qt includes: */
 #include <QApplication>
+#include <QDesktopWidget>
 #include <QWidget>
 #include <QTimer>
 
@@ -103,6 +104,9 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
     , m_fIsValidPointerShapePresent(false)
     , m_fIsHidingHostPointer(true)
 {
+    /* Prepare connections: */
+    prepareConnections();
+
     /* Prepare console event-handlers: */
     prepareConsoleEventHandlers();
 
@@ -718,6 +722,12 @@ void UISession::prepareConsoleEventHandlers()
 
     connect(gConsoleEvents, SIGNAL(sigGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)),
             this, SLOT(sltGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)));
+}
+
+void UISession::prepareConnections()
+{
+    connect(QApplication::desktop(), SIGNAL(screenCountChanged(int)),
+            this, SIGNAL(sigHostScreenCountChanged(int)));
 }
 
 void UISession::prepareScreens()
