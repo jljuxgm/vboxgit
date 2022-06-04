@@ -1,4 +1,4 @@
-; $Id: tstDisasm-1A.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: tstDisasm-1A.asm 46863 2013-06-28 12:22:45Z vboxsync $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -25,6 +25,10 @@
 ;%include "iprt/x86.mac"
 
 BITS 32
+
+%if __YASM_MAJOR__ > 1 || (__YASM_MAJOR__ == 1 && __YASM_MINOR__ >= 2)
+ %define pmulhrwa pmulhrw
+%endif
 
 
 BEGINCODE
