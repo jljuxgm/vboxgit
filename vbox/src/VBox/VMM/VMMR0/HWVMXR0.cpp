@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.cpp 45102 2013-03-20 10:46:51Z vboxsync $ */
+/* $Id: HWVMXR0.cpp 45216 2013-03-27 19:08:28Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Host Context Ring-0.
  */
@@ -629,7 +629,7 @@ VMMR0DECL(int) VMXR0SetupVM(PVM pVM)
         val = pVM->hm.s.vmx.msr.vmx_proc_ctls.n.disallowed0;
         /* Program which event cause VM-exits and which features we want to use. */
         val |=   VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_HLT_EXIT
-               | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_TSC_OFFSET
+               | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_USE_TSC_OFFSETTING
                | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_MOV_DR_EXIT
                | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_UNCOND_IO_EXIT
                | VMX_VMCS_CTRL_PROC_EXEC_CONTROLS_RDPMC_EXIT
