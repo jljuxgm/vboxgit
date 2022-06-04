@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 47566 2013-08-06 22:20:23Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 47603 2013-08-07 19:36:53Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1180,7 +1180,6 @@ NTSTATUS DxgkDdiStartDevice(
                     if (pDevExt->f3DEnabled)
                     {
                         pDevExt->fTexPresentEnabled = !!(VBoxMpCrGetHostCaps() & CR_VBOX_CAP_TEX_PRESENT);
-                        Assert(!pDevExt->fTexPresentEnabled);
                     }
                     else
                         pDevExt->fTexPresentEnabled = FALSE;
