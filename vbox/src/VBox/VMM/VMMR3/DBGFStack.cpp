@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 42165 2012-07-16 13:36:01Z vboxsync $ */
+/* $Id: DBGFStack.cpp 42449 2012-07-30 15:10:30Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -299,6 +299,8 @@ static DECLCALLBACK(int) dbgfR3StackWalkCtxFull(PVM pVM, VMCPUID idCpu, PCCPUMCT
     int rc = VINF_SUCCESS;
     if (pAddrPC)
         pCur->AddrPC = *pAddrPC;
+    else if (enmCodeType != DBGFCODETYPE_GUEST)
+        DBGFR3AddrFromFlat(pVM, &pCur->AddrPC, pCtxCore->rip);
     else
         rc = DBGFR3AddrFromSelOff(pVM, idCpu, &pCur->AddrPC, pCtxCore->cs.Sel, pCtxCore->rip);
     if (RT_SUCCESS(rc))
@@ -339,11 +341,15 @@ static DECLCALLBACK(int) dbgfR3StackWalkCtxFull(PVM pVM, VMCPUID idCpu, PCCPUMCT
 
         if (pAddrStack)
             pCur->AddrStack = *pAddrStack;
+        else if (enmCodeType != DBGFCODETYPE_GUEST)
+            DBGFR3AddrFromFlat(pVM, &pCur->AddrStack, pCtxCore->rsp & fAddrMask);
         else
             rc = DBGFR3AddrFromSelOff(pVM, idCpu, &pCur->AddrStack, pCtxCore->ss.Sel, pCtxCore->rsp & fAddrMask);
 
         if (pAddrFrame)
             pCur->AddrFrame = *pAddrFrame;
+        else if (enmCodeType != DBGFCODETYPE_GUEST)
+            DBGFR3AddrFromFlat(pVM, &pCur->AddrFrame, pCtxCore->rbp & fAddrMask);
         else if (RT_SUCCESS(rc))
             rc = DBGFR3AddrFromSelOff(pVM, idCpu, &pCur->AddrFrame, pCtxCore->ss.Sel, pCtxCore->rbp & fAddrMask);
     }
