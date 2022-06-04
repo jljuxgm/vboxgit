@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 47018 2013-07-06 17:31:11Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 47447 2013-07-29 04:16:10Z vboxsync $ */
 
 /** @file
  *
@@ -721,6 +721,9 @@ STDMETHODIMP NATNetwork::Start(IN_BSTR aTrunkType)
 STDMETHODIMP NATNetwork::Stop()
 {
 #ifdef VBOX_WITH_NAT_SERVICE
+    if (!m->dhcpServer.isNull())
+        m->dhcpServer->Stop();
+
     if (RT_SUCCESS(m->NATRunner.stop()))
     {
         mVirtualBox->onNATNetworkStartStop(mName.raw(), FALSE);

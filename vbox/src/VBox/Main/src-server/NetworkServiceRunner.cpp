@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.cpp 47018 2013-07-06 17:31:11Z vboxsync $ */
+/* $Id: NetworkServiceRunner.cpp 47447 2013-07-29 04:16:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -104,6 +104,7 @@ int NetworkServiceRunner::stop()
         return VINF_OBJECT_DESTROYED;
 
     int rc = RTProcTerminate(mProcess);
+    RTProcWait(mProcess, RTPROCWAIT_FLAGS_BLOCK, NULL);
     mProcess = NIL_RTPROCESS;
     return rc;
 }
