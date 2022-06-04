@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.cpp 44503 2013-02-01 06:28:53Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.cpp 44511 2013-02-01 13:26:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -42,7 +42,7 @@ void UIWizardCloneVDPage2::addFormatButton(QWidget *pParent, QVBoxLayout *pForma
     ULONG uFormatCapabilities = 0;
     QVector<KMediumFormatCapabilities> capabilities;
     capabilities = medFormat.GetCapabilities();
-    for (ULONG i = 0; i < capabilities.size(); i++)
+    for (int i = 0; i < capabilities.size(); i++)
         uFormatCapabilities |= capabilities[i];
 
     if (!(uFormatCapabilities & MediumFormatCapabilities_CreateFixed ||
@@ -158,7 +158,7 @@ int UIWizardCloneVDPageBasic2::nextId() const
     ULONG uCapabilities = 0;
     QVector<KMediumFormatCapabilities> capabilities;
     capabilities = medFormat.GetCapabilities();
-    for (ULONG i = 0; i < capabilities.size(); i++)
+    for (int i = 0; i < capabilities.size(); i++)
         uCapabilities |= capabilities[i];
 
     int cTest = 0;
