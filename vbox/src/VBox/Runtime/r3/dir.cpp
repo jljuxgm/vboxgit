@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: dir.cpp 45630 2013-04-19 08:22:59Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -533,7 +533,7 @@ static int rtDirOpenCommon(PRTDIR *ppDir, const char *pszPath, const char *pszFi
     if (!pszFilter)
     {
         cbFilter = cucFilter0 = 0;
-        rc = RTPathReal(pszPath, szRealPath, sizeof(szRealPath) - 1);
+        rc = RTPathAbs(pszPath, szRealPath, sizeof(szRealPath) - 1);
     }
     else
     {
@@ -547,7 +547,7 @@ static int rtDirOpenCommon(PRTDIR *ppDir, const char *pszPath, const char *pszFi
             if (!pszTmp)
                 return VERR_NO_MEMORY;
             pszTmp[pszFilter - pszPath] = '\0';
-            rc = RTPathReal(pszTmp, szRealPath, sizeof(szRealPath) - 1);
+            rc = RTPathAbs(pszTmp, szRealPath, sizeof(szRealPath) - 1);
             RTStrFree(pszTmp);
         }
         else
