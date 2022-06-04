@@ -1,4 +1,4 @@
-# $Id: Config.kmk 43019 2012-08-27 22:56:37Z vboxsync $
+# $Id: Config.kmk 43055 2012-08-28 23:50:20Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2978,6 +2978,8 @@ TEMPLATE_VBoxR0_SYSSUFF             = .r0
 TEMPLATE_VBoxR0_MODE                = a+r,u+w
 
 TEMPLATE_VBoxR0_USES               += dtrace
+TEMPLATE_VBoxR0_DTRACE_HDR_FLAGS    = --ring-0-context-agnostic
+TEMPLATE_VBoxR0_DTRACE_OBJ_FLAGS    = --ring-0-context-agnostic
 ifdef VBOX_WITH_DTRACE_R0
  TEMPLATE_VBoxR0_DTRACETOOL         = VBoxTpG
  TEMPLATE_VBoxR0_DEFS              += VBOX_WITH_DTRACE VBOX_WITH_DTRACE_R0
@@ -5195,7 +5197,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43019 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 43055 $  )
  VBOX_SVN_DEP          := $(wildcard $(PATH_ROOT)/.svn/entries)
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
