@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 46004 2013-05-13 09:20:43Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 46018 2013-05-13 13:51:10Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2505,6 +2505,8 @@ DECLINLINE(int) hmR0VmxLoadGuestApicState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
                 const uint8_t u8TprPriority     = (u8Tpr >> 4) & 7;
                 if (u8PendingPriority <= u8TprPriority)
                     u32TprThreshold = u8PendingPriority;
+                else
+                    u32TprThreshold = u8TprPriority;             /* Required for Vista 64-bit guest, see @bugref{6398}. */
             }
             Assert(!(u32TprThreshold & 0xfffffff0));             /* Bits 31:4 MBZ. */
 
