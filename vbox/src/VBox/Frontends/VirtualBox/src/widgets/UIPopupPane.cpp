@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 45662 2013-04-22 11:21:52Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 45663 2013-04-22 11:28:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -727,6 +727,7 @@ QIToolButton* UIPopupPaneButtonPane::addButton(int iButtonID, const QString &str
 {
     /* Create button: */
     QIToolButton *pButton = new QIToolButton;
+    pButton->removeBorder();
     pButton->setToolTip(strToolTip.isEmpty() ? defaultToolTip(iButtonID) : strToolTip);
     pButton->setIcon(defaultIcon(iButtonID));
 
