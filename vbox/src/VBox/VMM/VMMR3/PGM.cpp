@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: PGM.cpp 47786 2013-08-16 08:59:32Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3951,8 +3951,9 @@ static DECLCALLBACK(int) pgmR3CmdPhysToFile(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp,
 
                     default:
                         AssertFailed();
-                    case PGMPAGETYPE_MMIO2_ALIAS_MMIO:
                     case PGMPAGETYPE_MMIO:
+                    case PGMPAGETYPE_MMIO2_ALIAS_MMIO:
+                    case PGMPAGETYPE_SPECIAL_ALIAS_MMIO:
                         if (fIncZeroPgs)
                         {
                             rc = RTFileWrite(hFile, abZeroPg, PAGE_SIZE, NULL);
