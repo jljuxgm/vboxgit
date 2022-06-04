@@ -1,10 +1,10 @@
-/* $Id: clipboard-helper.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: clipboard-helper.cpp 46422 2013-06-06 17:50:51Z vboxsync $ */
 /** @file
  * Shared Clipboard: Some helper function for converting between the various eol.
  */
 
 /*
- * Includes contributions from François Revol
+ * Includes contributions from FranÃ§ois Revol
  *
  * Copyright (C) 2006-2012 Oracle Corporation
  *
