@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 45270 2013-04-01 11:33:42Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 45278 2013-04-02 08:54:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -354,7 +354,7 @@ void UISelectorWindow::sltShowAddMachineDialog(const QString &strFileName /* = Q
     CMachine newMachine = vbox.OpenMachine(strTmpFile);
     if (!vbox.isOk() || newMachine.isNull())
     {
-        msgCenter().cannotOpenMachine(this, strTmpFile, vbox);
+        msgCenter().cannotOpenMachine(vbox, strTmpFile);
         return;
     }
 
@@ -362,7 +362,7 @@ void UISelectorWindow::sltShowAddMachineDialog(const QString &strFileName /* = Q
     CMachine oldMachine = vbox.FindMachine(newMachine.GetId());
     if (!oldMachine.isNull())
     {
-        msgCenter().cannotReregisterMachine(this, strTmpFile, oldMachine.GetName());
+        msgCenter().cannotReregisterExistingMachine(strTmpFile, oldMachine.GetName());
         return;
     }
 
