@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 41404 2012-05-22 16:41:38Z vboxsync $ */
+/* $Id: crservice.cpp 43723 2012-10-24 10:56:20Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -472,7 +472,7 @@ static CRVBOXSVCBUFFER_t* svcGetBuffer(uint32_t iBuffer, uint32_t cbBufferSize)
         {
             if (pBuffer->uiId == iBuffer)
             {
-                if (pBuffer->uiSize!=cbBufferSize)
+                if (cbBufferSize && pBuffer->uiSize!=cbBufferSize)
                 {
                     static int shown=0;
 

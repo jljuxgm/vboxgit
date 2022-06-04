@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 42499 2012-08-01 10:26:43Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 43723 2012-10-24 10:56:20Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -233,19 +233,24 @@ int vboxCrHgsmiPrivateCtlConCall(struct VBOXUHGSMI_PRIVATE_BASE *pHgsmi, struct 
     }
 
     pBuf->CallHdr.EscapeHdr.escapeCode = VBOXESC_CRHGSMICTLCON_CALL;
-    pBuf->CallHdr.EscapeHdr.u32CmdSpecific = 0;
+    pBuf->CallHdr.EscapeHdr.u32CmdSpecific = (uint32_t)VERR_GENERAL_FAILURE;
     memcpy(&pBuf->CallHdr.CallInfo, pCallInfo, cbCallInfo);
 
     int rc = vboxCrHgsmiPrivateEscape(pHgsmi, pBuf, cbBuffer, FALSE);
     if (RT_SUCCESS(rc))
     {
-        memcpy(pCallInfo, &pBuf->CallHdr.CallInfo, cbCallInfo);
-        rc = VINF_SUCCESS;
+        rc = (int)pBuf->CallHdr.EscapeHdr.u32CmdSpecific;
+        if (RT_SUCCESS(rc))
+        {
+            memcpy(pCallInfo, &pBuf->CallHdr.CallInfo, cbCallInfo);
+            rc = VINF_SUCCESS;
+        }
+        else
+            WARN(("vboxCrHgsmiPrivateEscape u32CmdSpecific failed, rc (%d)", rc));
     }
     else
-    {
         WARN(("vboxCrHgsmiPrivateEscape failed, rc (%d)", rc));
-   }
+
     /* cleanup */
     if (pBuf != &Buf)
         RTMemFree(pBuf);

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 43643 2012-10-15 13:44:30Z vboxsync $ */
+/* $Id: VBoxMPIf.h 43723 2012-10-24 10:56:20Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -34,7 +34,7 @@
 #include <VBox/VBoxGuest2.h>
 
 /* One would increase this whenever definitions in this file are changed */
-#define VBOXVIDEOIF_VERSION 14
+#define VBOXVIDEOIF_VERSION 15
 
 #define VBOXWDDM_NODE_ID_SYSTEM           0
 #define VBOXWDDM_NODE_ID_3D               (VBOXWDDM_NODE_ID_SYSTEM)
