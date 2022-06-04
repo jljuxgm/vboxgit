@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 45861 2013-05-01 10:55:14Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 45865 2013-05-01 12:05:16Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5772,6 +5772,7 @@ static int hmR0VmxInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     Assert(   !(uIntrState & VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE_BLOCK_NMI)      /* We don't support block-by-NMI and SMI yet.*/
            && !(uIntrState & VMX_VMCS_GUEST_INTERRUPTIBILITY_STATE_BLOCK_SMI));
     Assert(!fBlockSti || pMixedCtx->eflags.Bits.u1IF);       /* Cannot set block-by-STI when interrupts are disabled. */
+    Assert(!TRPMHasTrap(pVCpu));
 
     int rc = VINF_SUCCESS;
     if (pVCpu->hm.s.Event.fPending)     /* First, inject any pending HM events. */
@@ -6471,13 +6472,11 @@ DECLINLINE(int) hmR0VmxPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PV
 #endif
 
     /*
-     * This clears force-flags, TRPM traps & pending HM events. We cannot safely restore the state if we exit to ring-3
-     * (before running guest code) after calling this function (e.g. how do we reverse the effects of calling PDMGetInterrupt()?)
-     * This is why this is done after all possible exits-to-ring-3 paths in this code.
+     * Evaluates and injects any pending events, toggling force-flags and updating the guest-interruptibility
+     * state (interrupt shadow) in the VMCS. This -can- potentially be reworked to be done before disabling
+     * interrupts and handle returning to ring-3 afterwards, but requires very careful state restoration.
      */
-    /** @todo r=bird: You reverse the effect of calling PDMGetInterrupt by
-     *        handing it over to TPRM like we do in REMR3StateBack using
-     *        TRPMAssertTrap and the other setters. */
+    /** @todo Rework event evaluation and injection to be complete separate. */
     rc = hmR0VmxInjectPendingEvent(pVCpu, pMixedCtx);
     AssertRCReturn(rc, rc);
     return rc;
