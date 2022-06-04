@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 45605 2013-04-18 13:09:08Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 45608 2013-04-18 13:15:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -728,7 +728,11 @@ void UIPopupPaneTextPane::prepareContent()
             pMainLayout->addWidget(m_pLabel);
             /* Prepare label: */
             QFont currentFont = m_pLabel->font();
+#ifdef Q_WS_MAC
             currentFont.setPointSize(currentFont.pointSize() - 2);
+#else /* Q_WS_MAC */
+            currentFont.setPointSize(currentFont.pointSize() - 1);
+#endif /* !Q_WS_MAC */
             m_pLabel->setFont(currentFont);
             m_pLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
             m_pLabel->setWordWrap(true);
