@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -746,7 +746,7 @@ UIMachineSettingsNetworkPage::UIMachineSettingsNetworkPage()
     }
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsNetworkPage::loadToCacheFrom(QVariant &data)
 {

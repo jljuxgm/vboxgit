@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 38311 2011-08-04 13:08:39Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -215,7 +215,7 @@ void UIMachineSettingsSF::resizeEvent (QResizeEvent *aEvent)
     adjustList();
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsSF::loadToCacheFrom(QVariant &data)
 {

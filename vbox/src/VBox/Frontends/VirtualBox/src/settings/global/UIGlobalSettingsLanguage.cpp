@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 35522 2011-01-13 13:06:44Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -189,7 +189,7 @@ UIGlobalSettingsLanguage::UIGlobalSettingsLanguage()
     retranslateUi();
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIGlobalSettingsLanguage::loadToCacheFrom(QVariant &data)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 35862 2011-02-07 08:57:38Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -39,7 +39,7 @@ UIGlobalSettingsInput::UIGlobalSettingsInput()
     retranslateUi();
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIGlobalSettingsInput::loadToCacheFrom(QVariant &data)
 {

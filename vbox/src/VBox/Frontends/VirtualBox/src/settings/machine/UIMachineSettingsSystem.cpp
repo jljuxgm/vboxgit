@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 43199 2012-09-05 11:53:53Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -192,7 +192,7 @@ void UIMachineSettingsSystem::setOHCIEnabled(bool fEnabled)
     m_fOHCIEnabled = fEnabled;
 }
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsSystem::loadToCacheFrom(QVariant &data)
 {

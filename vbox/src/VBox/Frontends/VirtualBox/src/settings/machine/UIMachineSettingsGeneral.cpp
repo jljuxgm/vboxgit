@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 43459 2012-09-28 07:19:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -79,7 +79,7 @@ bool UIMachineSettingsGeneral::isWindowsOSTypeSelected() const
 }
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 
-/* Load data to cashe from corresponding external object(s),
+/* Load data to cache from corresponding external object(s),
  * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsGeneral::loadToCacheFrom(QVariant &data)
 {
