@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 44296 2013-01-15 14:12:18Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 44297 2013-01-15 14:14:10Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -248,7 +248,7 @@ static DWORD EnableAndResizeDispDev(ULONG Id, DWORD aWidth, DWORD aHeight,
             DeviceModeTmp.dmSize = sizeof(DEVMODE);
             DeviceModeTmp.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT | DM_BITSPERPEL | DM_POSITION
                                      | DM_DISPLAYFREQUENCY | DM_DISPLAYFLAGS ;
-            ChangeDisplaySettingsEx(DisplayDeviceTmp.DeviceName, &DeviceModeTmp, NULL,
+            gCtx.pfnChangeDisplaySettingsEx(DisplayDeviceTmp.DeviceName, &DeviceModeTmp, NULL,
                                     (CDS_UPDATEREGISTRY | CDS_NORESET), NULL);
         }
         DispNum++;
