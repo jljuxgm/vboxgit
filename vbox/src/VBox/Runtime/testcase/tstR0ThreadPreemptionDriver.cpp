@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemptionDriver.cpp 45264 2013-03-31 12:40:20Z vboxsync $ */
+/* $Id: tstR0ThreadPreemptionDriver.cpp 45538 2013-04-14 01:21:56Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -159,6 +159,22 @@ int main(int argc, char **argv)
         return RTTestSummaryAndDestroy(hTest);
     }
     if (Req.szMsg[0])
+        RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", Req.szMsg);
+
+    /*
+     * Is it trusty.
+     */
+    RTTestSub(hTest, "RTThreadPreemptIsPendingTrusty");
+    Req.Hdr.u32Magic = SUPR0SERVICEREQHDR_MAGIC;
+    Req.Hdr.cbReq = sizeof(Req);
+    Req.szMsg[0] = '\0';
+    RTTESTI_CHECK_RC(rc = SUPR3CallR0Service("tstR0ThreadPreemption", sizeof("tstR0ThreadPreemption") - 1,
+                                             TSTR0THREADPREMEPTION_IS_TRUSTY, 0, &Req.Hdr), VINF_SUCCESS);
+    if (RT_FAILURE(rc))
+        return RTTestSummaryAndDestroy(hTest);
+    if (Req.szMsg[0] == '!')
+        RTTestIFailed("%s", &Req.szMsg[1]);
+    else if (Req.szMsg[0])
         RTTestIPrintf(RTTESTLVL_ALWAYS, "%s", Req.szMsg);
 
     /*
