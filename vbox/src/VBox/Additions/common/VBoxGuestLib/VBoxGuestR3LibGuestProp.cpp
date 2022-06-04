@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 36638 2011-04-11 09:51:59Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 44324 2013-01-21 15:47:33Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
 
 /*
- * Copyright (C) 2007 Oracle Corporation
+ * Copyright (C) 2007-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -779,6 +779,32 @@ VBGLR3DECL(void) VbglR3GuestPropEnumFree(PVBGLR3GUESTPROPENUM pHandle)
 {
     RTMemFree(pHandle->pchBuf);
     RTMemFree(pHandle);
+}
+
+
+/**
+ * Deletes a guest property.
+ *
+ * @returns VBox status code.
+ * @param   u32ClientId     The client id returned by VbglR3InvsSvcConnect().
+ * @param   pszName         The property to delete.  Utf8
+ */
+VBGLR3DECL(int) VbglR3GuestPropDelete(uint32_t u32ClientId, const char *pszName)
+{
+    AssertPtrReturn(pszName,  VERR_INVALID_POINTER);
+
+    DelProperty Msg;
+
+    Msg.hdr.result = VERR_WRONG_ORDER;
+    Msg.hdr.u32ClientID = u32ClientId;
+    Msg.hdr.u32Function = DEL_PROP;
+    Msg.hdr.cParms = 1;
+    VbglHGCMParmPtrSetString(&Msg.name, pszName);
+    int rc = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
+    if (RT_SUCCESS(rc))
+        rc = Msg.hdr.result;
+
+    return rc;
 }
 
 

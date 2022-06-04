@@ -1,10 +1,10 @@
-/* $Id: tstVBoxControl.cpp 32705 2010-09-23 07:06:34Z vboxsync $ */
+/* $Id: tstVBoxControl.cpp 44324 2013-01-21 15:47:33Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface, test case
  */
 
 /*
- * Copyright (C) 2007 Oracle Corporation
+ * Copyright (C) 2007-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -94,6 +94,14 @@ VBGLR3DECL(int)     VbglR3GuestPropRead(uint32_t u32ClientId,
         *ppszFlags = szFlags;
     if (VALID_PTR(pcbBufActual))
         *pcbBufActual = 256;
+    return VINF_SUCCESS;
+}
+
+VBGLR3DECL(int)     VbglR3GuestPropDelete(uint32_t u32ClientId,
+                                          const char *pszName)
+{
+    RTPrintf("Called DEL_PROP, client %d, name %s...\n",
+             u32ClientId, pszName);
     return VINF_SUCCESS;
 }
 
