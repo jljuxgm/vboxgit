@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 45138 2013-03-22 11:52:24Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 45145 2013-03-22 15:03:53Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1188,7 +1188,9 @@ VirtualBox::COMGETTER(NATNetworks)(ComSafeArrayOut(INATNetwork *, aNATNetworks))
     return S_OK;
 #else
     NOREF(aNATNetworks);
+# ifndef RT_OS_WINDOWS
     NOREF(aNATNetworksSize);
+# endif
     return E_NOTIMPL;
 #endif
 }
