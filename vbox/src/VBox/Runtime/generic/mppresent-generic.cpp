@@ -1,4 +1,4 @@
-/* $Id: mppresent-generic.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: mppresent-generic.cpp 46639 2013-06-18 17:33:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Stubs for the RTMp*Present* API.
  */
@@ -44,6 +44,13 @@ RTDECL(RTCPUID) RTMpGetPresentCount(void)
     return RTMpGetCount();
 }
 RT_EXPORT_SYMBOL(RTMpGetPresentCount);
+
+
+RTDECL(RTCPUID) RTMpGetPresentCoreCount(void)
+{
+    return RTMpGetCoreCount();
+}
+RT_EXPORT_SYMBOL(RTMpGetPresentCoreCount);
 
 
 RTDECL(bool) RTMpIsCpuPresent(RTCPUID idCpu)

@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 46637 2013-06-18 17:11:17Z vboxsync $ */
+/* $Id: mp-win.cpp 46639 2013-06-18 17:33:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -163,5 +163,12 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
     RTCPUSET Set;
     RTMpGetOnlineSet(&Set);
     return RTCpuSetCount(&Set);
+}
+
+
+RTDECL(RTCPUID) RTMpGetOnlineCoreCount(void)
+{
+    /** @todo this isn't entirely correct. */
+    return RTMpGetCoreCount();
 }
 

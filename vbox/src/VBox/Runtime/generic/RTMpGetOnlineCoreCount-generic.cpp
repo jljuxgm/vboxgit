@@ -1,4 +1,4 @@
-/* $Id: RTMpGetCoreCount-generic.cpp 46639 2013-06-18 17:33:09Z vboxsync $ */
+/* $Id: RTMpGetOnlineCoreCount-generic.cpp 46639 2013-06-18 17:33:09Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetCoreCount.
  */
@@ -32,9 +32,9 @@
 #include "internal/iprt.h"
 
 
-RTDECL(RTCPUID) RTMpGetCoreCount(void)
+RTDECL(RTCPUID) RTMpGetOnlineCoreCount(void)
 {
-    return RTMpGetCount();
+    return RTMpGetOnlineCount();
 }
-RT_EXPORT_SYMBOL(RTMpGetCoreCount);
+RT_EXPORT_SYMBOL(RTMpGetOnlineCoreCount);
 
