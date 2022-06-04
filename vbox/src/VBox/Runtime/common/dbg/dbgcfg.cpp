@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 46074 2013-05-14 16:25:57Z vboxsync $ */
+/* $Id: dbgcfg.cpp 46078 2013-05-14 18:22:53Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -1159,9 +1159,9 @@ RTDECL(int) RTDbgCfgSetLogCallback(RTDBGCFG hDbgCfg, PFNRTDBGCFGLOG pfnCallback,
     int rc = RTCritSectRwEnterExcl(&pThis->CritSect);
     if (RT_SUCCESS(rc))
     {
-        if (   pThis->pfnLogCallback != NULL
-            && (   pfnCallback == NULL
-                || pfnCallback == pThis->pfnLogCallback) )
+        if (   pThis->pfnLogCallback == NULL
+            || pfnCallback == NULL
+            || pfnCallback == pThis->pfnLogCallback)
         {
             pThis->pfnLogCallback = NULL;
             pThis->pvLogUser      = NULL;

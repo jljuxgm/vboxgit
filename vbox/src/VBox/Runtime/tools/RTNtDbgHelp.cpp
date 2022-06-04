@@ -1,4 +1,4 @@
-﻿/* $Id: RTNtDbgHelp.cpp 45929 2013-05-07 08:34:15Z vboxsync $ */
+﻿/* $Id: RTNtDbgHelp.cpp 46078 2013-05-14 18:22:53Z vboxsync $ */
 /** @file
  * IPRT - RTNtDbgHelp -  Tool for working/exploring DbgHelp.dll.
  */
@@ -263,7 +263,7 @@ static RTEXITCODE dumpAll(void)
             /** @todo CVData. */
             RTPrintf("    PdbSig          = %#010x\n", ModInfo.PdbSig);
             RTPrintf("    PdbSig70        = %RTuuid\n", &ModInfo.PdbSig70);
-            RTPrintf("    PdbSig          = %#010x\n", ModInfo.PdbAge);
+            RTPrintf("    PdbAge          = %#010x\n", ModInfo.PdbAge);
             RTPrintf("    PdbUnmatched    = %RTbool\n", ModInfo.PdbUnmatched);
             RTPrintf("    DbgUnmatched    = %RTbool\n", ModInfo.DbgUnmatched);
             RTPrintf("    LineNumbers     = %RTbool\n", ModInfo.LineNumbers);
@@ -345,11 +345,11 @@ int main(int argc, char **argv)
 
 
             case 'V':
-                RTPrintf("$Revision: 45929 $");
+                RTPrintf("$Revision: 46078 $");
                 break;
 
             case 'h':
-                RTPrintf("usage: %s [-v|--verbose] [-q|--quiet] [-f|--force] [-o|--output <file.h>] <dir1|pdb1> [...]\n"
+                RTPrintf("usage: %s [-v|--verbose] [-q|--quiet] [-a <addr>] [-l <file>] [-d] [...]\n"
                          "   or: %s [-V|--version]\n"
                          "   or: %s [-h|--help]\n",
                          argv[0], argv[0], argv[0]);

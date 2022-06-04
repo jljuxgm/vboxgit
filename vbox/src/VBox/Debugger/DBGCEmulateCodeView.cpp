@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 46078 2013-05-14 18:22:53Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3801,7 +3801,7 @@ static int dbgcDoListNear(PDBGCCMDHLP pCmdHlp, PUVM pUVM, PCDBGCVAR pArg)
         if (RT_FAILURE(rc))
             return pCmdHlp->pfnVBoxError(pCmdHlp, rc, "DBGFR3AsSymbolByName(,,%s,)\n", pArg->u.pszString);
 
-        rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL, "%Rptr %s\n", Symbol.Value, Symbol.szName);
+        rc = pCmdHlp->pfnPrintf(pCmdHlp, NULL, "%RTptr %s\n", Symbol.Value, Symbol.szName);
     }
     else
     {

@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 46074 2013-05-14 16:25:57Z vboxsync $ */
+/* $Id: DBGConsole.cpp 46078 2013-05-14 18:22:53Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -1049,7 +1049,6 @@ DBGDECL(int) DBGCCreate(PUVM pUVM, PDBGCBACK pBack, unsigned fFlags)
         rc = pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, "VBoxDbg> ");
         if (RT_SUCCESS(rc))
         {
-
             /*
              * Set debug config log callback.
              */
@@ -1083,7 +1082,6 @@ DBGDECL(int) DBGCCreate(PUVM pUVM, PDBGCBACK pBack, unsigned fFlags)
                 RTDbgCfgRelease(hDbgCfg);
             }
         }
-
     }
     else
         pDbgc->CmdHlp.pfnPrintf(&pDbgc->CmdHlp, NULL, "\nDBGCCreate error: %Rrc\n", rc);
