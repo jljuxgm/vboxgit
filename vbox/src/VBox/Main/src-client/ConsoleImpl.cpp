@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 45890 2013-05-03 09:57:44Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 46451 2013-06-07 19:42:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7063,7 +7063,7 @@ HRESULT Console::powerDown(IProgress *aProgress /*= NULL*/)
      * something like Stopping, so most Console methods will return an error
      * to the caller.
      */
-    if (mpUVM != NULL)
+    if (pUVM != NULL)
         VMR3ReleaseUVM(pUVM);
     else
         mVMDestroying = false;
