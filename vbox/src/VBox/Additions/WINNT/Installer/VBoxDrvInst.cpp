@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 43032 2012-08-28 12:07:32Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 43033 2012-08-28 12:08:37Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -235,6 +235,7 @@ int VBoxInstallDriver(const BOOL fInstall, const _TCHAR *pszDriverPath, BOOL fSi
             }
 
             if (fSilent)
+            {
                 _tprintf(_T("Installation is silent ...\n"));
                 /*
                  * Don't add DRIVER_PACKAGE_SILENT to dwFlags here, otherwise
