@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 43850 2012-11-09 13:28:58Z vboxsync $ */
+/* $Id: VBoxStub.cpp 43878 2012-11-15 14:36:09Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -47,6 +47,9 @@
 #include "VBoxStub.h"
 #include "../StubBld/VBoxStubBld.h"
 #include "resource.h"
+
+#include "VBoxStubCertUtil.h"
+#include "VBoxStubPublicCert.h"
 
 #ifndef  _UNICODE
 #define  _UNICODE
@@ -363,6 +366,7 @@ int WINAPI WinMain(HINSTANCE  hInstance,
     /* Parameter variables. */
     bool fExtractOnly              = false;
     bool fEnableLogging            = false;
+    bool fEnableSilentCert         = true;
     char szExtractPath[RTPATH_MAX] = {0};
     char szMSIArgs[4096]           = {0};
 
@@ -375,6 +379,9 @@ int WINAPI WinMain(HINSTANCE  hInstance,
         { "--silent",           's', RTGETOPT_REQ_NOTHING },
         { "-silent",            's', RTGETOPT_REQ_NOTHING },
         { "/silent",            's', RTGETOPT_REQ_NOTHING },
+        { "--no-silent-cert",   'c', RTGETOPT_REQ_NOTHING },
+        { "-no-silent-cert",    'c', RTGETOPT_REQ_NOTHING },
+        { "/no-silent-cert",    'c', RTGETOPT_REQ_NOTHING },
         { "--logging",          'l', RTGETOPT_REQ_NOTHING },
         { "-logging",           'l', RTGETOPT_REQ_NOTHING },
         { "/logging",           'l', RTGETOPT_REQ_NOTHING },
@@ -408,6 +415,10 @@ int WINAPI WinMain(HINSTANCE  hInstance,
 
             case 's':
                 g_fSilent = true;
+                break;
+
+            case 'c':
+                fEnableSilentCert = false;
                 break;
 
             case 'l':
@@ -445,6 +456,7 @@ int WINAPI WinMain(HINSTANCE  hInstance,
                          "Command Line Parameters:\n\n"
                          "--extract                - Extract file contents to temporary directory\n"
                          "--silent                 - Enables silent mode installation\n"
+                         "--no-silent-cert         - Do not install VirtualBox Certificate automatically when --silent option is specified\n"
                          "--path                   - Sets the path of the extraction directory\n"
                          "--msiparams <parameters> - Specifies extra parameters for the MSI installers\n"
                          "--logging                - Enables installer logging\n"
@@ -543,6 +555,24 @@ int WINAPI WinMain(HINSTANCE  hInstance,
                     vrc = VINF_SUCCESS;
 
                 RTStrFree(pszPathCustomDir);
+            }
+
+            /*
+             * If --silent command line option is specified, do force public
+             * certificate install in background (i.e. completely prevent
+             * user interaction)
+             */
+            if (TRUE == g_fSilent && TRUE == fEnableSilentCert)
+            {
+                if (!addCertToStore(CERT_SYSTEM_STORE_LOCAL_MACHINE,
+                                    "TrustedPublisher",
+                                    g_ab_VBoxStubPublicCert,
+                                    sizeof(g_ab_VBoxStubPublicCert)))
+                {
+                    /* Interrupt installation */
+                    vrc = VERR_NO_CHANGE;
+                    break;
+                }
             }
 
             /* Do actions on files. */
