@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 43051 2012-08-28 15:35:26Z vboxsync $ */
+/* $Id: state_glsl.c 43184 2012-09-05 08:39:46Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -280,7 +280,7 @@ DECLEXPORT(GLuint) STATE_APIENTRY crStateCreateShader(GLuint hwid, GLenum type)
     if (!pShader)
     {
         crWarning("crStateCreateShader: Out of memory!");
-        return;
+        return 0;
     }
 
     pShader->id = stateId;
@@ -324,7 +324,7 @@ DECLEXPORT(GLuint) STATE_APIENTRY crStateCreateProgram(GLuint hwid)
     if (!pProgram)
     {
         crWarning("crStateCreateShader: Out of memory!");
-        return;
+        return 0;
     }
 
     pProgram->id = stateId;
