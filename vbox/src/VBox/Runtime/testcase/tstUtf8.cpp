@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstUtf8.cpp 45253 2013-03-29 21:51:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -49,7 +49,7 @@ static RTUTF16 GetRandUtf16(void)
     RTUTF16 wc;
     do
     {
-        wc = (RTUTF16)RTRandU32Ex(1, 0xffff);
+        wc = (RTUTF16)RTRandU32Ex(1, 0xfffd);
     } while (wc >= 0xd800 && wc <= 0xdfff);
     return wc;
 }
