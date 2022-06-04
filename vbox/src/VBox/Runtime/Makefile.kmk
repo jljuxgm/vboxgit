@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46642 2013-06-19 01:48:05Z vboxsync $
+# $Id: Makefile.kmk 46644 2013-06-19 07:50:43Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1754,6 +1754,7 @@ RuntimeR0Drv_SOURCES.win = \
 	generic/RTLogWriteStdOut-stub-generic.cpp \
 	generic/RTTimerCreate-generic.cpp \
 	generic/mppresent-generic.cpp \
+	generic/RTMpGetCoreCount-generic.cpp \
 	nt/RTErrConvertFromNtStatus.cpp \
 	r0drv/memobj-r0drv.cpp \
 	r0drv/mpnotification-r0drv.c \
