@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.h 45789 2013-04-28 09:26:56Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.h 45795 2013-04-28 22:16:52Z vboxsync $ */
 /** @file
  * VBox storage devices: LsiLogic LSI53c1030 SCSI controller - Defines and structures.
  */
@@ -1150,6 +1150,7 @@ typedef union MptReplyUnion
     MptFWDownloadReply         FWDownload;
     MptFWUploadReply           FWUpload;
 } MptReplyUnion, *PMptReplyUnion;
+AssertCompileSize(MptReplyUnion, 60);
 
 
 /**
