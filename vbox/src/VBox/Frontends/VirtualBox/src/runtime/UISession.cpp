@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 43859 2012-11-12 16:31:55Z vboxsync $ */
+/* $Id: UISession.cpp 44841 2013-02-27 12:20:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -614,6 +614,31 @@ void UISession::sltVRDEChange()
     emit sigVRDEChange();
 }
 
+void UISession::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo)
+{
+    /* Ignore KGuestMonitorChangedEventType_NewOrigin change event: */
+    if (changeType == KGuestMonitorChangedEventType_NewOrigin)
+        return;
+    /* Ignore KGuestMonitorChangedEventType_Disabled event if there is only one window visible: */
+    AssertMsg(countOfVisibleWindows() > 0, ("All machine windows are hidden!"));
+    if (   changeType == KGuestMonitorChangedEventType_Disabled
+        && countOfVisibleWindows() == 1
+        && isScreenVisible(uScreenId))
+        return;
+
+    /* Process KGuestMonitorChangedEventType_Enabled change event: */
+    if (   !isScreenVisible(uScreenId)
+        && changeType == KGuestMonitorChangedEventType_Enabled)
+        setScreenVisible(uScreenId, true);
+    /* Process KGuestMonitorChangedEventType_Disabled change event: */
+    else if (   isScreenVisible(uScreenId)
+             && changeType == KGuestMonitorChangedEventType_Disabled)
+        setScreenVisible(uScreenId, false);
+
+    /* Notify listeners about the change: */
+    emit sigGuestMonitorChange(changeType, uScreenId, screenGeo);
+}
+
 void UISession::sltAdditionsChange()
 {
     /* Get our guest: */
@@ -692,7 +717,7 @@ void UISession::prepareConsoleEventHandlers()
             this, SIGNAL(sigCPUExecutionCapChange()));
 
     connect(gConsoleEvents, SIGNAL(sigGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)),
-            this, SIGNAL(sigGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)));
+            this, SLOT(sltGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)));
 }
 
 void UISession::prepareScreens()
