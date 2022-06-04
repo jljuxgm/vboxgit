@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 45328 2013-04-04 08:49:11Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 45329 2013-04-04 09:00:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1804,24 +1804,33 @@ bool UISelectorWindow::isItemsPoweredOff(const QList<UIVMItem*> &items)
 /* static */
 bool UISelectorWindow::isAtLeastOneItemAbleToShutdown(const QList<UIVMItem*> &items)
 {
+    /* Enumerate all the passed items: */
     foreach (UIVMItem *pItem, items)
     {
+        /* Skip non-running machines: */
         if (!UIVMItem::isItemRunning(pItem))
             continue;
-
+        /* Skip session failures: */
         CSession session = vboxGlobal().openExistingSession(pItem->id());
         if (session.isNull())
-            return false;
+            continue;
+        /* Skip console failures: */
         CConsole console = session.GetConsole();
         if (console.isNull())
         {
+            /* Do not forget to release machine: */
             session.UnlockMachine();
-            return false;
+            continue;
         }
+        /* Is the guest entered ACPI mode? */
+        bool fGuestEnteredACPIMode = console.GetGuestEnteredACPIMode();
+        /* Do not forget to release machine: */
         session.UnlockMachine();
-
-        return console.GetGuestEnteredACPIMode();
+        /* True if the guest entered ACPI mode: */
+        if (fGuestEnteredACPIMode)
+            return true;
     }
+    /* False by default: */
     return false;
 }
 
