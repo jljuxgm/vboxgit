@@ -1,4 +1,4 @@
-/* $Id: ErrorInfo.cpp 45805 2013-04-29 12:30:50Z vboxsync $ */
+/* $Id: ErrorInfo.cpp 46372 2013-06-04 08:47:43Z vboxsync $ */
 
 /** @file
  *
@@ -42,6 +42,16 @@ namespace com
 // ErrorInfo class
 //
 ////////////////////////////////////////////////////////////////////////////////
+
+HRESULT ErrorInfo::getVirtualBoxErrorInfo(ComPtr<IVirtualBoxErrorInfo> &pVirtualBoxErrorInfo)
+{
+    HRESULT rc = S_OK;
+    if (mErrorInfo)
+        rc = mErrorInfo.queryInterfaceTo(pVirtualBoxErrorInfo.asOutParam());
+    else
+        pVirtualBoxErrorInfo.setNull();
+    return rc;
+}
 
 void ErrorInfo::copyFrom(const ErrorInfo &x)
 {
