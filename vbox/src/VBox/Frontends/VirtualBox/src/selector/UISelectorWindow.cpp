@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 46782 2013-06-25 14:58:15Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 46836 2013-06-27 12:24:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1054,17 +1054,6 @@ bool UISelectorWindow::eventFilter(QObject *pObject, QEvent *pEvent)
             return true;
             break;
         }
-# if (QT_VERSION < 0x040402)
-        case QEvent::KeyPress:
-        {
-            /* Bug in Qt below 4.4.2. The key events are send to the current
-             * window even if a menu is shown & has the focus. See
-             * http://trolltech.com/developer/task-tracker/index_html?method=entry&id=214681. */
-            if (::darwinIsMenuOpen())
-                return true;
-            break;
-        }
-# endif
         default:
             break;
     }
