@@ -1,4 +1,4 @@
-/* $Id: VBoxCPP.cpp 41359 2012-05-21 08:32:15Z vboxsync $ */
+/* $Id: VBoxCPP.cpp 42548 2012-08-02 15:30:49Z vboxsync $ */
 /** @file
  * VBox Build Tool - A mini C Preprocessor.
  *
@@ -154,9 +154,9 @@ typedef struct VBCPPMACROEXP
     /** Array of argument values.  Used when expanding function style macros.  */
     char          **papszArgs;
     /** The number of argument values current in papszArgs. */
-    size_t          cArgs;
+    uint32_t        cArgs;
     /** The number of argument values papszArgs can currently hold  */
-    size_t          cArgsAlloced;
+    uint32_t        cArgsAlloced;
 } VBCPPMACROEXP;
 /** Pointer to macro expansion data. */
 typedef VBCPPMACROEXP *PVBCPPMACROEXP;
@@ -5359,7 +5359,7 @@ static RTEXITCODE vbcppParseOptions(PVBCPP pThis, int argc, char **argv, bool *p
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 41359 $";
+                static const char s_szRev[] = "$Revision: 42548 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 *pfExit = true;

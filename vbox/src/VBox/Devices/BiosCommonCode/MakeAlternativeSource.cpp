@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 42369 2012-07-24 13:55:34Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 42548 2012-08-02 15:30:49Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 42369 2012-07-24 13:55:34Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 42548 2012-08-02 15:30:49Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -907,7 +907,7 @@ static DECLCALLBACK(int) disReadOpcodeBytes(PDISCPUSTATE pDis, uint8_t offInstr,
             cbToRead = g_cbImg - offBios;
     }
     memcpy(&pDis->abInstr[offInstr], &g_pbImg[offBios], cbToRead);
-    pDis->cbCachedInstr = offInstr + cbToRead;
+    pDis->cbCachedInstr = (uint8_t)(offInstr + cbToRead);
     return VINF_SUCCESS;
 }
 
@@ -1093,7 +1093,7 @@ static RTEXITCODE DisassembleBiosImage(void)
 
     /* Final gap. */
     if (uFlatAddr < g_uBiosFlatBase + g_cbImg)
-        fRc = disCopySegmentGap(uFlatAddr, g_uBiosFlatBase + g_cbImg - uFlatAddr);
+        fRc = disCopySegmentGap(uFlatAddr, (uint32_t)(g_uBiosFlatBase + g_cbImg - uFlatAddr));
     else if (uFlatAddr > g_uBiosFlatBase + g_cbImg)
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Last segment spills beyond 1MB; uFlatAddr=%#x\n", uFlatAddr);
 
