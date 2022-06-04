@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: HMR0.cpp 43414 2012-09-24 11:51:41Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -196,7 +196,7 @@ static void hmR0FirstRcInit(PHMR0FIRSTRC pFirstRc)
 
 
 /**
- * Try se the status code (success ignored).
+ * Try set the status code (success ignored).
  *
  * @param   pFirstRc            The first return code structure.
  * @param   rc                  The status code.
@@ -851,7 +851,6 @@ static DECLCALLBACK(void) hmR0InitAmdCpu(RTCPUID idCpu, void *pvUser1, void *pvU
 
     hmR0FirstRcSetStatus(pFirstRc, rc);
 }
-
 
 
 /**
