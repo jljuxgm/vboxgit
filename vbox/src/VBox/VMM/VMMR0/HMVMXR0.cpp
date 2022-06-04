@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 47773 2013-08-15 14:53:40Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 47776 2013-08-15 15:51:51Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7425,8 +7425,8 @@ static int hmR0VmxRunGuestCodeStep(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     VMXTRANSIENT VmxTransient;
     VmxTransient.fUpdateTscOffsettingAndPreemptTimer = true;
-    int          rc     = VERR_INTERNAL_ERROR_5;
-    uint32_t     cLoops = 0;
+    int          rc        = VERR_INTERNAL_ERROR_5;
+    uint32_t     cLoops    = 0;
     uint16_t     uCsStart  = pCtx->cs.Sel;
     uint64_t     uRipStart = pCtx->rip;
 
