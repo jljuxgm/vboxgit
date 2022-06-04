@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 44226 2013-01-02 12:05:47Z vboxsync $ */
+/* $Id: VD.cpp 44232 2013-01-04 14:30:20Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -6652,7 +6652,11 @@ VBOXDDU_DECL(int) VDMerge(PVBOXHDD pDisk, unsigned nImageFrom,
         unsigned uOpenFlags = pImageTo->Backend->pfnGetOpenFlags(pImageTo->pBackendData);
         if (uOpenFlags & VD_OPEN_FLAGS_READONLY)
         {
-            uOpenFlags &= ~VD_OPEN_FLAGS_READONLY;
+            /*
+             * Clear skip consistency checks because the image is made writable now and
+             * skipping consistency checks is only possible for readonly images.
+             */
+            uOpenFlags &= ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_SKIP_CONSISTENCY_CHECKS);
             rc = pImageTo->Backend->pfnSetOpenFlags(pImageTo->pBackendData,
                                                     uOpenFlags);
             if (RT_FAILURE(rc))

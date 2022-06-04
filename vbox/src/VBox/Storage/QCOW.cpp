@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 40106 2012-02-13 18:48:25Z vboxsync $ */
+/* $Id: QCOW.cpp 44232 2013-01-04 14:30:20Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -2194,7 +2194,8 @@ static int qcowSetOpenFlags(void *pBackendData, unsigned uOpenFlags)
     int rc;
 
     /* Image must be opened and the new flags must be valid. */
-    if (!pImage || (uOpenFlags & ~(VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_ASYNC_IO)))
+    if (!pImage || (uOpenFlags & ~(  VD_OPEN_FLAGS_READONLY | VD_OPEN_FLAGS_INFO
+                                   | VD_OPEN_FLAGS_ASYNC_IO | VD_OPEN_FLAGS_SKIP_CONSISTENCY_CHECKS)))
     {
         rc = VERR_INVALID_PARAMETER;
         goto out;
