@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.h 47472 2013-07-30 11:57:14Z vboxsync $ */
+/* $Id: HMSVMR0.h 47473 2013-07-30 11:59:17Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VMMR0_HWSVMR0_h
-#define ___VMMR0_HWSVMR0_h
+#ifndef ___HMSVMR0_h
+#define ___HMSVMR0_h
 
 #include <VBox/cdefs.h>
 #include <VBox/types.h>
@@ -95,5 +95,5 @@ DECLASM(void) SVMR0InvlpgA(RTGCPTR pPageGC, uint32_t u32ASID);
 
 RT_C_DECLS_END
 
-#endif /* !___VMMR0_HWSVMR0_h */
+#endif /* HMSVMR0_h */
 
