@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 41493 2012-05-30 13:47:41Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 43020 2012-08-28 00:21:09Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -3076,7 +3076,13 @@ static int rtDwarfInfo_ParseDie(PRTDBGMODDWARF pThis, PRTDWARFDIE pDie, PCRTDWAR
      * Snoope up symbols on the way out.
      */
     if (RT_SUCCESS(rc))
+    {
         rc = rtDwarfInfo_SnoopSymbols(pThis, pDie);
+        /* Ignore duplicates, get work done instead. */
+        /** @todo clean up global/static symbol mess. */
+        if (rc == VERR_DBG_DUPLICATE_SYMBOL)
+            rc = VINF_SUCCESS;
+    }
 
     return rc;
 }
