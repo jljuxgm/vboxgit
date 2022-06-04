@@ -1,4 +1,4 @@
-# $Id: Config.kmk 46946 2013-07-03 16:15:51Z vboxsync $
+# $Id: Config.kmk 47008 2013-07-05 13:48:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -371,7 +371,7 @@ VBOX_WITH_PDM_LOCK = 1
 # Activate this to use the old VT-x code.
 VBOX_WITH_OLD_VTX_CODE =
 # Activate this to use the old AMD-V code.
-VBOX_WITH_OLD_AMDV_CODE =
+VBOX_WITH_OLD_AMDV_CODE = 1
 ## @}
 
 
@@ -5347,7 +5347,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 46946 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 47008 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
