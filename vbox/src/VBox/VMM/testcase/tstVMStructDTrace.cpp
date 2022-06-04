@@ -1,4 +1,4 @@
-/* $Id: tstVMStructDTrace.cpp 43387 2012-09-21 09:40:25Z vboxsync $ */
+/* $Id: tstVMStructDTrace.cpp 45528 2013-04-12 17:32:57Z vboxsync $ */
 /** @file
  * tstVMMStructDTrace - Generates the DTrace test scripts for check that C/C++
  *                      and DTrace has the same understand of the VM, VMCPU and
@@ -42,14 +42,16 @@
 #include "IOMInternal.h"
 #include "REMInternal.h"
 #include "HMInternal.h"
-#include "PATMInternal.h"
 #include "VMMInternal.h"
 #include "DBGFInternal.h"
 #include "STAMInternal.h"
-#include "CSAMInternal.h"
 #include "EMInternal.h"
 #include "IEMInternal.h"
 #include "REMInternal.h"
+#ifdef VBOX_WITH_RAW_MODE
+# include "CSAMInternal.h"
+# include "PATMInternal.h"
+#endif
 #include <VBox/vmm/vm.h>
 #include <VBox/param.h>
 #include <iprt/x86.h>

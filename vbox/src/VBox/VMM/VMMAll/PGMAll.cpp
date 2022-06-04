@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 45103 2013-03-20 11:13:27Z vboxsync $ */
+/* $Id: PGMAll.cpp 45528 2013-04-12 17:32:57Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -775,6 +775,7 @@ VMMDECL(int) PGMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCPtrPage)
         Assert(!pVM->pgm.s.fMappingsFixed); Assert(!pVM->pgm.s.fMappingsDisabled);
     }
 
+# ifdef VBOX_WITH_RAW_MODE
     /*
      * Inform CSAM about the flush
      *
@@ -782,6 +783,7 @@ VMMDECL(int) PGMInvalidatePage(PVMCPU pVCpu, RTGCPTR GCPtrPage)
      *       callbacks for virtual handlers, this is no longer required.
      */
     CSAMR3FlushPage(pVM, GCPtrPage);
+# endif
 #endif /* IN_RING3 */
 
     /* Ignore all irrelevant error codes. */

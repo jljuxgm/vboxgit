@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 45517 2013-04-12 11:23:56Z vboxsync $ */
+/* $Id: HM.cpp 45528 2013-04-12 17:32:57Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -723,9 +723,11 @@ VMMR3_INT_DECL(int) HMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
  */
 static void hmR3DisableRawMode(PVM pVM)
 {
+#ifdef VBOX_WITH_RAW_MODE
     /* Disable PATM & CSAM. */
     PATMR3AllowPatching(pVM->pUVM, false);
     CSAMDisableScanning(pVM);
+#endif
 
     /* Turn off IDT/LDT/GDT and TSS monitoring and sycing. */
     SELMR3DisableMonitoring(pVM);

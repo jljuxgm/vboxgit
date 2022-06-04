@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
+/* $Id: EMAll.cpp 45528 2013-04-12 17:32:57Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -333,7 +333,7 @@ static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_
     else if (cbToRead < cbMinRead)
         cbToRead = cbMinRead;
 
-#if defined(IN_RC) || defined(IN_RING3)
+#if defined(VBOX_WITH_RAW_MODE) && (defined(IN_RC) || defined(IN_RING3))
     /*
      * We might be called upon to interpret an instruction in a patch.
      */

@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
+/* $Id: TRPMAll.cpp 45528 2013-04-12 17:32:57Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -846,6 +846,7 @@ VMMDECL(int) TRPMRaiseXcptErrCR2(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, X86XCPT en
 }
 
 
+#ifdef VBOX_WITH_RAW_MODE
 /**
  * Clear guest trap/interrupt gate handler
  *
@@ -865,13 +866,14 @@ VMMDECL(int) trpmClearGuestTrapHandler(PVM pVM, unsigned iTrap)
     }
 
     if (ASMBitTest(&pVM->trpm.s.au32IdtPatched[0], iTrap))
-#ifdef IN_RING3
+# ifdef IN_RING3
         trpmR3ClearPassThroughHandler(pVM, iTrap);
-#else
+# else
         AssertFailed();
-#endif
+# endif
 
     pVM->trpm.s.aGuestTrapHandler[iTrap] = TRPM_INVALID_HANDLER;
     return VINF_SUCCESS;
 }
+#endif /* VBOX_WITH_RAW_MODE */
 

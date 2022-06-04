@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: EMInternal.h 45528 2013-04-12 17:32:57Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -346,8 +346,10 @@ typedef struct EMCPU
     /** Inhibit interrupts for this instruction. Valid only when VM_FF_INHIBIT_INTERRUPTS is set. */
     RTGCUINTPTR             GCPtrInhibitInterrupts;
 
+#ifdef VBOX_WITH_RAW_MODE
     /** Pointer to the PATM status structure. (R3 Ptr) */
     R3PTRTYPE(PPATMGCSTATE) pPatmGCState;
+#endif
 
     /** Pointer to the guest CPUM state. (R3 Ptr) */
     R3PTRTYPE(PCPUMCTX)     pCtx;

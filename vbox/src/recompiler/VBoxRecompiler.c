@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 45485 2013-04-11 14:46:04Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 45528 2013-04-12 17:32:57Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -1656,12 +1656,14 @@ bool remR3CanExecuteRaw(CPUX86State *env, RTGCPTR eip, unsigned fFlags, int *piE
             return false;
         }
 
+#ifdef VBOX_WITH_RAW_MODE
         if (PATMIsPatchGCAddr(env->pVM, eip))
         {
             Log2(("raw r0 mode forced: patch code\n"));
             *piException = EXCP_EXECUTE_RAW;
             return true;
         }
+#endif
 
 #if !defined(VBOX_ALLOW_IF0) && !defined(VBOX_RUN_INTERRUPT_GATE_HANDLERS)
         if (!(env->eflags & IF_MASK))
@@ -1740,6 +1742,7 @@ bool remR3CanExecuteRaw(CPUX86State *env, RTGCPTR eip, unsigned fFlags, int *piE
 }
 
 
+#ifdef VBOX_WITH_RAW_MODE
 /**
  * Fetches a code byte.
  *
@@ -1755,6 +1758,7 @@ bool remR3GetOpcode(CPUX86State *env, RTGCPTR GCPtrInstr, uint8_t *pu8Byte)
         return true;
     return false;
 }
+#endif /* VBOX_WITH_RAW_MODE */
 
 
 /**
@@ -2088,7 +2092,9 @@ void remR3TrapClear(PVM pVM)
  */
 void remR3RecordCall(CPUX86State *env)
 {
+#ifdef VBOX_WITH_RAW_MODE
     CSAMR3RecordCallAddress(env->pVM, env->eip);
+#endif
 }
 
 
