@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 42844 2012-08-16 12:24:54Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 42861 2012-08-17 12:06:25Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -332,8 +332,8 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--faulttolerancesyncinterval", MODIFYVM_FAULT_TOLERANCE_SYNC_INTERVAL, RTGETOPT_REQ_UINT32 },
     { "--chipset",                  MODIFYVM_CHIPSET,                   RTGETOPT_REQ_STRING },
 #ifdef VBOX_WITH_VPX
-    { "--videocapture",             MODIFYVM_VCP    ,                   RTGETOPT_REQ_BOOL_ONOFF },
-    { "--vcpfilename",              MODIFYVM_VCP_FILENAME,              RTGETOPT_REQ_STRING },
+    { "--vcpenabled",               MODIFYVM_VCP,                       RTGETOPT_REQ_BOOL_ONOFF },
+    { "--vcpfile",                  MODIFYVM_VCP_FILENAME,              RTGETOPT_REQ_STRING },
     { "--vcpwidth",                 MODIFYVM_VCP_WIDTH,                 RTGETOPT_REQ_UINT32 },
     { "--vcpheight",                MODIFYVM_VCP_HEIGHT,                RTGETOPT_REQ_UINT32 },
 #endif
@@ -2411,7 +2411,8 @@ int handleModifyVM(HandlerArg *a)
             }
             case MODIFYVM_VCP_FILENAME:
             {
-                //CHECK_ERROR(machine, COMSETTER(VideoRecFilename)(ValueUnion.psz));
+                Bstr bstr(ValueUnion.psz);
+                CHECK_ERROR(machine, COMSETTER(VideoCaptureFile)(bstr.raw()));
                 break;
             }
             case MODIFYVM_VCP_WIDTH:

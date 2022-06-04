@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 42858 2012-08-17 08:18:32Z vboxsync $ */
+/* $Id: MachineImpl.cpp 42861 2012-08-17 12:06:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1695,11 +1695,14 @@ STDMETHODIMP Machine::COMGETTER(VideoCaptureFile)(BSTR * apFile)
 
 STDMETHODIMP Machine::COMSETTER(VideoCaptureFile)(IN_BSTR aFile)
 {
+    Utf8Str strFile(aFile);
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    mHWData->mVideoCaptureFile = aFile;
+    if(strFile.isEmpty())
+       strFile = "VideoCap.webm";
+    mHWData->mVideoCaptureFile = strFile;
     return S_OK;
 }
 
