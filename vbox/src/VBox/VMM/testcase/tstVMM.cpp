@@ -1,4 +1,4 @@
-/* $Id: tstVMM.cpp 45664 2013-04-22 12:32:23Z vboxsync $ */
+/* $Id: tstVMM.cpp 46299 2013-05-28 15:29:28Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -193,16 +193,10 @@ int main(int argc, char **argv)
     /*
      * Init runtime and the test environment.
      */
-    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
-    if (RT_FAILURE(rc))
-        return RTMsgInitFailure(rc);
     RTTEST hTest;
-    rc = RTTestCreate("tstVMM", &hTest);
-    if (RT_FAILURE(rc))
-    {
-        RTPrintf("tstVMM: RTTestCreate failed: %Rrc\n", rc);
-        return 1;
-    }
+    RTEXITCODE rcExit = RTTestInitExAndCreate(argc, &argv, RTR3INIT_FLAGS_SUPLIB, "tstVMM", &hTest);
+    if (rcExit != RTEXITCODE_SUCCESS)
+        return rcExit;
 
     /*
      * Parse arguments.
@@ -246,7 +240,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 45664 $\n");
+                RTPrintf("$Revision: 46299 $\n");
                 return 0;
 
             default:
@@ -260,7 +254,7 @@ int main(int argc, char **argv)
     RTPrintf(TESTCASE ": Initializing...\n");
     PVM pVM;
     PUVM pUVM;
-    rc = VMR3Create(g_cCpus, NULL, NULL, NULL, tstVMMConfigConstructor, NULL, &pVM, &pUVM);
+    int rc = VMR3Create(g_cCpus, NULL, NULL, NULL, tstVMMConfigConstructor, NULL, &pVM, &pUVM);
     if (RT_SUCCESS(rc))
     {
         PDMR3LdrEnumModules(pVM, tstVMMLdrEnum, NULL);
