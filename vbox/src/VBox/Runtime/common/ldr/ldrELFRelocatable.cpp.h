@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 41510 2012-05-30 20:05:54Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 44042 2012-12-05 14:52:27Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -281,7 +281,7 @@ static int RTLDRELF_NAME(RelocateSection)(PRTLDRMODELF pModElf, Elf_Addr BaseAdd
         /*
          * Get the symbol.
          */
-        const Elf_Sym  *pSym;
+        const Elf_Sym  *pSym = NULL; /* shut up gcc */
         Elf_Addr        SymValue = 0; /* shut up gcc-4 */
         int rc = RTLDRELF_NAME(Symbol)(pModElf, BaseAddr, pfnGetImport, pvUser, ELF_R_SYM(paRels[iRel].r_info), &pSym, &SymValue);
         if (RT_FAILURE(rc))
