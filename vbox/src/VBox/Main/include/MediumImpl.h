@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 44365 2013-01-25 10:24:45Z vboxsync $ */
+/* $Id: MediumImpl.h 44395 2013-01-26 19:52:47Z vboxsync $ */
 
 /** @file
  *
@@ -230,6 +230,9 @@ public:
     HRESULT unmarkForDeletion();
     HRESULT markLockedForDeletion();
     HRESULT unmarkLockedForDeletion();
+
+    HRESULT queryPreferredMergeDirection(const ComObjPtr<Medium> &pOther,
+                                         bool &fMergeForward);
 
     HRESULT prepareMergeTo(const ComObjPtr<Medium> &pTarget,
                            const Guid *aMachineId,
