@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
+/* $Id: HM.cpp 43413 2012-09-24 11:51:20Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -314,7 +314,7 @@ VMMR3DECL(int) HMR3Init(PVM pVM)
     /*
      * Register the saved state data unit.
      */
-    int rc = SSMR3RegisterInternal(pVM, "HM", 0, HM_SSM_VERSION, sizeof(HM),
+    int rc = SSMR3RegisterInternal(pVM, "HWACCM", 0, HM_SSM_VERSION, sizeof(HM),
                                    NULL, NULL, NULL,
                                    NULL, hmR3Save, NULL,
                                    NULL, hmR3Load, NULL);
