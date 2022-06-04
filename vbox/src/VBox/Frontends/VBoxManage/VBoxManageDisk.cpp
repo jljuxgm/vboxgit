@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 44376 2013-01-25 13:35:31Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 44379 2013-01-25 13:50:03Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -374,9 +374,9 @@ int handleCreateHardDisk(HandlerArg *a)
         ComPtr<IProgress> progress;
         com::SafeArray<MediumVariant_T> l_variants(sizeof(MediumVariant_T)*8);
 
-        for (ulong i = 0; i < l_variants.size(); ++i)
+        for (ULONG i = 0; i < l_variants.size(); ++i)
         {
-            ulong temp = DiskVariant;
+            ULONG temp = DiskVariant;
             temp &= 1<<i;
             l_variants [i] = (MediumVariant_T)temp;
         }
@@ -687,9 +687,9 @@ int handleCloneHardDisk(HandlerArg *a)
         ComPtr<IProgress> progress;
         com::SafeArray<MediumVariant_T> l_variants(sizeof(MediumVariant_T)*8);
 
-        for (ulong i = 0; i < l_variants.size(); ++i)
+        for (ULONG i = 0; i < l_variants.size(); ++i)
         {
-            ulong temp = DiskVariant;
+            ULONG temp = DiskVariant;
             temp &= 1<<i;
             l_variants [i] = (MediumVariant_T)temp;
         }
