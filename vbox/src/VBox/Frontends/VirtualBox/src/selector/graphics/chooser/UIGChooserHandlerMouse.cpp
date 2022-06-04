@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerMouse.cpp 42529 2012-08-02 11:53:21Z vboxsync $ */
+/* $Id: UIGChooserHandlerMouse.cpp 42632 2012-08-06 17:14:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -178,11 +178,15 @@ bool UIGChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pE
                     {
                         /* Unindent root if possible: */
                         if (model()->root() != model()->mainRoot())
+                        {
+                            pGroupItem->setHovered(false);
                             model()->unindentRoot();
+                        }
                     }
                     else
                     {
                         /* Indent root with group item: */
+                        pGroupItem->setHovered(false);
                         model()->indentRoot(pGroupItem);
                     }
                     /* Filter that event out: */
@@ -199,7 +203,10 @@ bool UIGChooserHandlerMouse::handleMouseDoubleClick(QGraphicsSceneMouseEvent *pE
                     {
                         /* Unindent root if possible: */
                         if (model()->root() != model()->mainRoot())
+                        {
+                            pMachineItem->setHovered(false);
                             model()->unindentRoot();
+                        }
                     }
                     else
                     {
