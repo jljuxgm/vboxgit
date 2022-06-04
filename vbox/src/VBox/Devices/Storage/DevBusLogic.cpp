@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 43642 2012-10-15 13:35:04Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 43646 2012-10-15 14:11:35Z vboxsync $ */
 /** @file
  * VBox storage devices: BusLogic SCSI host adapter BT-958.
  */
@@ -1852,6 +1852,7 @@ static int buslogicRegisterWrite(PBUSLOGIC pBusLogic, unsigned iRegister, uint8_
                     case BUSLOGICCOMMAND_INQUIRE_PCI_HOST_ADAPTER_INFORMATION:
                     case BUSLOGICCOMMAND_INQUIRE_CONFIGURATION:
                     case BUSLOGICCOMMAND_INQUIRE_INSTALLED_DEVICES_ID_0_TO_7:
+                    case BUSLOGICCOMMAND_INQUIRE_INSTALLED_DEVICES_ID_8_TO_15:
                     case BUSLOGICCOMMAND_INQUIRE_TARGET_DEVICES:
                         pBusLogic->cbCommandParametersLeft = 0;
                         break;
