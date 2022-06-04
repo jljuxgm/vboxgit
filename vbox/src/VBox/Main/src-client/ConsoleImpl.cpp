@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 46788 2013-06-25 17:39:02Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 46807 2013-06-26 14:34:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1232,9 +1232,13 @@ int Console::VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const ch
     {
         uint32_t u32GuestFlags = VMMDEV_SETCREDENTIALS_GUESTLOGON;
 
-        int rc = m_pVMMDev->getVMMDevPort()->pfnSetCredentials(m_pVMMDev->getVMMDevPort(),
-                     pszUser, pszPassword, pszDomain, u32GuestFlags);
-        AssertRC(rc);
+        PPDMIVMMDEVPORT pDevPort = m_pVMMDev->getVMMDevPort();
+        if (pDevPort)
+        {
+            int rc = pDevPort->pfnSetCredentials(m_pVMMDev->getVMMDevPort(),
+                                                 pszUser, pszPassword, pszDomain, u32GuestFlags);
+            AssertRC(rc);
+        }
     }
 
     return VINF_SUCCESS;
