@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 47314 2013-07-22 15:39:12Z vboxsync $ */
+/* $Id: IEMInternal.h 47350 2013-07-23 16:14:05Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -415,6 +415,8 @@ typedef struct IEMCPU
 } IEMCPU;
 /** Pointer to the per-CPU IEM state. */
 typedef IEMCPU *PIEMCPU;
+/** Pointer to the const per-CPU IEM state. */
+typedef IEMCPU const *PCIEMCPU;
 
 /** Converts a IEMCPU pointer to a VMCPU pointer.
  * @returns VMCPU pointer.
