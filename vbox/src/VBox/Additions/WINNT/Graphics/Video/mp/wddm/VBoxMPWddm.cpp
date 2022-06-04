@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 46852 2013-06-27 16:56:53Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 46885 2013-07-01 14:02:37Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3062,6 +3062,9 @@ DxgkDdiSubmitCommand(
                                 VBOXWDDM_SOURCE *pSource = &pDevExt->aSources[pDstAlloc->AllocData.SurfDesc.VidPnSourceId];
                                 Assert(pDstAlloc->AllocData.SurfDesc.VidPnSourceId < VBOX_VIDEO_MAX_SCREENS);
 
+                                if (pSource->fHas3DVrs)
+                                    fBltFlags.fVisibleRegions = 1;
+
                                 if (!fRenderFromSharedDisabled && pSource->bVisible)
                                 {
                                     RECT rect;
@@ -5555,6 +5558,7 @@ DxgkDdiPresent(
             Assert(pDstAlloc);
             if (pDstAlloc)
             {
+                PVBOXWDDM_SOURCE pSource = &pDevExt->aSources[pDstAlloc->AllocData.SurfDesc.VidPnSourceId];
                 do
                 {
 #ifdef VBOXWDDM_RENDER_FROM_SHADOW
@@ -5572,7 +5576,7 @@ DxgkDdiPresent(
 #endif
                     /* issue VBOXWDDM_ALLOC_TYPE_STD_SHADOWSURFACE ONLY in case there are no 3D contexts currently
                      * otherwise we would need info about all rects being updated on primary for visible rect reporting */
-                    if (!cContexts3D && !cContexts2D)
+                    if (!cContexts3D && !cContexts2D && !pSource->fHas3DVrs)
                     {
                         if (pDstAlloc->enmType == VBOXWDDM_ALLOC_TYPE_STD_SHAREDPRIMARYSURFACE
                                 && pSrcAlloc->enmType == VBOXWDDM_ALLOC_TYPE_STD_SHADOWSURFACE)
