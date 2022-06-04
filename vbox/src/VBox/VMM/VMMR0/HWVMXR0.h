@@ -1,4 +1,4 @@
-/* $Id: HWVMXR0.h 45453 2013-04-10 11:15:16Z vboxsync $ */
+/* $Id: HWVMXR0.h 45681 2013-04-23 13:53:27Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -49,7 +49,7 @@ VMMR0DECL(int)  VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, 
                                          uint32_t *paParam);
 # endif
 
-/* Cached VMCS accesses -- defined always in the old VT-x code, defined only for 32, & hybrid hosts on new code. */
+/* Cached VMCS accesses -- defined always in the old VT-x code, defined only for 32 hosts on new code. */
 #ifdef VMX_USE_CACHED_VMCS_ACCESSES
 VMMR0DECL(int) VMXWriteCachedVmcsEx(PVMCPU pVCpu, uint32_t idxField, uint64_t u64Val);
 
@@ -69,7 +69,7 @@ DECLINLINE(int) VMXReadCachedVmcsEx(PVMCPU pVCpu, uint32_t idxCache, RTGCUINTREG
 # endif
 #  define VMXReadVmcs                                    VMXReadVmcsField
 #else
-# if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+# if HC_ARCH_BITS == 32 && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
 # define VMXReadVmcsHstN                                 VMXReadVmcs32
 # define VMXReadVmcsGstN(idxField, pVal)                 VMXReadCachedVmcsEx(pVCpu, idxField##_CACHE_IDX, pVal)
 # define VMXReadVmcsGstNByIdxVal(idxField, pVal)         VMXReadCachedVmcsEx(pVCpu, idxField, pVal)
