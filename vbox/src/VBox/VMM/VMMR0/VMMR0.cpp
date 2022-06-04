@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 43394 2012-09-21 11:11:17Z vboxsync $ */
+/* $Id: VMMR0.cpp 43930 2012-11-21 15:36:39Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1507,6 +1507,18 @@ VMMR0DECL(void) VMMR0LogFlushEnable(PVMCPU pVCpu)
         pVCpu->vmm.s.pR0LoggerR0->fFlushingDisabled = false;
 }
 
+
+/**
+ * Checks if log flushing is disabled or not.
+ *
+ * @param   pVCpu       Pointer to the VMCPU.
+ */
+VMMR0DECL(bool) VMMR0IsLogFlushDisabled(PVMCPU pVCpu)
+{
+    if (pVCpu->vmm.s.pR0LoggerR0)
+        return pVCpu->vmm.s.pR0LoggerR0->fFlushingDisabled;
+    return true;
+}
 #endif /* LOG_ENABLED */
 
 /**
