@@ -1,4 +1,4 @@
-/* $Id: UIAnimationFramework.cpp 46242 2013-05-23 15:16:35Z vboxsync $ */
+/* $Id: UIAnimationFramework.cpp 46809 2013-06-26 17:23:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -38,6 +38,18 @@ UIAnimation* UIAnimation::installPropertyAnimation(QWidget *pTarget, const char 
                            pszSignalForward, pszSignalReverse,
                            fReverse, iAnimationDuration);
 }
+
+/* static */
+UIAnimationLoop* UIAnimationLoop::installAnimationLoop(QWidget *pTarget, const char *pszPropertyName,
+                                                       const char *pszValuePropertyNameStart, const char *pszValuePropertyNameFinal,
+                                                       int iAnimationDuration /*= 300*/)
+{
+    /* Return newly created animation-loop: */
+    return new UIAnimationLoop(pTarget, pszPropertyName,
+                               pszValuePropertyNameStart, pszValuePropertyNameFinal,
+                               iAnimationDuration);
+}
+
 
 UIAnimation::UIAnimation(QWidget *pParent, const char *pszPropertyName,
                          const char *pszValuePropertyNameStart, const char *pszValuePropertyNameFinal,
@@ -94,5 +106,49 @@ void UIAnimation::update()
     /* Update 'reverse' animation: */
     m_pReverseAnimation->setStartValue(parent()->property(m_pszValuePropertyNameFinal));
     m_pReverseAnimation->setEndValue(parent()->property(m_pszValuePropertyNameStart));
+}
+
+
+UIAnimationLoop::UIAnimationLoop(QWidget *pParent, const char *pszPropertyName,
+                                 const char *pszValuePropertyNameStart, const char *pszValuePropertyNameFinal,
+                                 int iAnimationDuration)
+    : QObject(pParent)
+    , m_pszPropertyName(pszPropertyName)
+    , m_pszValuePropertyNameStart(pszValuePropertyNameStart), m_pszValuePropertyNameFinal(pszValuePropertyNameFinal)
+    , m_iAnimationDuration(iAnimationDuration)
+    , m_pAnimation(0)
+{
+    /* Prepare: */
+    prepare();
+}
+
+void UIAnimationLoop::prepare()
+{
+    /* Prepare loop: */
+    m_pAnimation = new QPropertyAnimation(parent(), m_pszPropertyName, this);
+    m_pAnimation->setDuration(m_iAnimationDuration);
+    m_pAnimation->setLoopCount(-1);
+
+    /* Fetch animation-borders: */
+    update();
+}
+
+void UIAnimationLoop::update()
+{
+    /* Update animation: */
+    m_pAnimation->setStartValue(parent()->property(m_pszValuePropertyNameStart));
+    m_pAnimation->setEndValue(parent()->property(m_pszValuePropertyNameFinal));
+}
+
+void UIAnimationLoop::start()
+{
+    /* Start animation: */
+    m_pAnimation->start();
+}
+
+void UIAnimationLoop::stop()
+{
+    /* Stop animation: */
+    m_pAnimation->stop();
 }
 
