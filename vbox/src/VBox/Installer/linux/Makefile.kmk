@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44580 2013-02-07 11:35:37Z vboxsync $
+# $Id: Makefile.kmk 45002 2013-03-11 20:29:30Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -66,6 +66,7 @@ INSTALLS += linux-bin
 linux-bin_INST = bin/
 linux-bin_MODE = a+rx,u+w
 linux-bin_SOURCES = \
+        scripts/install.sh=>scripts/install.sh \
         scripts/VBoxHeadlessXOrg.sh=>scripts/VBoxHeadlessXOrg.sh \
         VBoxSysInfo.sh \
         VBoxCreateUSBNode.sh \
