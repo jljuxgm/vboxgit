@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 46792 2013-06-26 09:27:42Z vboxsync $ */
+/* $Id: CFGM.cpp 46793 2013-06-26 09:29:54Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -2027,7 +2027,7 @@ static void cfgmR3FreeValue(PVM pVM, PCFGMLEAF pLeaf)
  */
 VMMR3DECL(int) CFGMR3DestroyTree(PCFGMNODE pRoot)
 {
-    if (pRoot)
+    if (!pRoot)
         return VINF_SUCCESS;
     AssertReturn(!pRoot->pParent, VERR_INVALID_PARAMETER);
     AssertReturn(!pRoot->pVM || pRoot != pRoot->pVM->cfgm.s.pRoot, VERR_ACCESS_DENIED);
