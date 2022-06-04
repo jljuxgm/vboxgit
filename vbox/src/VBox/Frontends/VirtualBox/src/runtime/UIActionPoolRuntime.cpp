@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 42949 2012-08-23 12:51:31Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 43622 2012-10-11 16:13:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -531,6 +531,26 @@ protected:
     }
 };
 
+class MenuDragAndDropAction : public UIActionMenu
+{
+    Q_OBJECT;
+
+public:
+
+    MenuDragAndDropAction(QObject *pParent)
+        : UIActionMenu(pParent, ":/vm_open_filemanager_16px.png", ":/vm_open_filemanager_disabled_16px.png")
+    {
+        retranslateUi();
+    }
+
+protected:
+
+    void retranslateUi()
+    {
+        menu()->setTitle(menuText(QApplication::translate("UIActionPool", "Drag'n'Drop")));
+    }
+};
+
 class MenuNetworkAdaptersAction : public UIActionMenu
 {
     Q_OBJECT;
@@ -929,6 +949,9 @@ void UIActionPoolRuntime::createMenus()
     if (m_pool[UIActionIndexRuntime_Menu_SharedClipboard])
         delete m_pool[UIActionIndexRuntime_Menu_SharedClipboard];
     m_pool[UIActionIndexRuntime_Menu_SharedClipboard] = new MenuSharedClipboardAction(this);
+    if (m_pool[UIActionIndexRuntime_Menu_DragAndDrop])
+        delete m_pool[UIActionIndexRuntime_Menu_DragAndDrop];
+    m_pool[UIActionIndexRuntime_Menu_DragAndDrop] = new MenuDragAndDropAction(this);
     if (m_pool[UIActionIndexRuntime_Menu_NetworkAdapters])
         delete m_pool[UIActionIndexRuntime_Menu_NetworkAdapters];
     m_pool[UIActionIndexRuntime_Menu_NetworkAdapters] = new MenuNetworkAdaptersAction(this);
