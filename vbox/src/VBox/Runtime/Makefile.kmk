@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45227 2013-03-28 12:22:11Z vboxsync $
+# $Id: Makefile.kmk 45238 2013-03-28 15:13:27Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1113,6 +1113,7 @@ RuntimeGuestR3_SOURCES                  := $(filter-out \
 	common/time/timesupA.asm \
 	common/time/timesup.cpp \
 	common/checksum/RTSha1Digest.cpp \
+	common/checksum/RTSha256Digest.cpp \
 	common/checksum/sha% \
 	generic/RTLogWriteUser-generic.cpp \
 	, $(RuntimeR3_SOURCES))
