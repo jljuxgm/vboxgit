@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 42796 2012-08-13 18:17:50Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 42828 2012-08-15 15:52:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1203,6 +1203,13 @@ void UIGChooserItemGroup::paintGroupInfo(QPainter *pPainter, const QStyleOptionG
     QSize exitButtonSize = data(GroupItemData_ExitButtonSize).toSize();
     QSize nameSize = data(GroupItemData_NameSize).toSize();
     int iFullHeaderHeight = data(GroupItemData_FullHeaderSize).toSize().height();
+
+    /* Update palette: */
+    if (model()->selectionList().contains(this))
+    {
+        QPalette pal = palette();
+        pPainter->setPen(pal.color(QPalette::HighlightedText));
+    }
 
     /* Update buttons: */
     if (m_pToggleButton)

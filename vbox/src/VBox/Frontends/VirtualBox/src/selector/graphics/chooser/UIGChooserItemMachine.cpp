@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 42795 2012-08-13 17:24:30Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 42828 2012-08-15 15:52:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -542,7 +542,7 @@ void UIGChooserItemMachine::paintBackground(QPainter *pPainter, const QRect &rec
     if (model()->selectionList().contains(this))
     {
         /* Highlight color: */
-        QColor highlight = pal.color(QPalette::Active, QPalette::Highlight);
+        QColor highlight = pal.color(QPalette::Highlight);
 
         /* Calculate top rectangle: */
         QRect tRect = rect;
@@ -655,6 +655,13 @@ void UIGChooserItemMachine::paintMachineInfo(QPainter *pPainter, const QStyleOpt
     QSize snapshotNameSize = data(MachineItemData_SnapshotNameSize).toSize();
     QSize machineStatePixmapSize = data(MachineItemData_StatePixmapSize).toSize();
     QSize machineStateTextSize = data(MachineItemData_StateTextSize).toSize();
+
+    /* Update palette: */
+    if (model()->selectionList().contains(this))
+    {
+        QPalette pal = palette();
+        pPainter->setPen(pal.color(QPalette::HighlightedText));
+    }
 
     /* Calculate indents: */
     int iLeftColumnIndent = iMargin;
