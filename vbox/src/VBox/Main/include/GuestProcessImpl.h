@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 42507 2012-08-01 12:40:05Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 42525 2012-08-02 10:24:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -115,8 +115,6 @@ private:
         Console                 *mConsole;
         /** All related callbacks to this process. */
         GuestCtrlCallbacks       mCallbacks;
-        /** The process' name. */
-        Utf8Str                  mName;
         /** The process start information. */
         GuestProcessInfo         mProcess;
         /** Exit code if process has been terminated. */

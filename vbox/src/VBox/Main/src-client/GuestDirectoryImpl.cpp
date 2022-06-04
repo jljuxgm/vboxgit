@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 42478 2012-07-31 13:20:37Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 42525 2012-08-02 10:24:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -51,16 +51,19 @@ void GuestDirectory::FinalRelease(void)
 // public initializer/uninitializer for internal purposes only
 /////////////////////////////////////////////////////////////////////////////
 
-HRESULT GuestDirectory::init(void)
+int GuestDirectory::init(GuestSession *aSession, const Utf8Str &strPath)
 {
     /* Enclose the state transition NotReady->InInit->Ready. */
     AutoInitSpan autoInitSpan(this);
     AssertReturn(autoInitSpan.isOk(), E_FAIL);
 
+    mData.mParent = aSession;
+    mData.mName = strPath;
+
     /* Confirm a successful initialization when it's the case. */
     autoInitSpan.setSucceeded();
 
-    return S_OK;
+    return VINF_SUCCESS;
 }
 
 /**
@@ -99,7 +102,7 @@ STDMETHODIMP GuestDirectory::COMGETTER(DirectoryName)(BSTR *aName)
 // implementation of public methods
 /////////////////////////////////////////////////////////////////////////////
 
-STDMETHODIMP GuestDirectory::Read(IGuestFsObjInfo **aInfo)
+STDMETHODIMP GuestDirectory::Read(IFsObjInfo **aInfo)
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();

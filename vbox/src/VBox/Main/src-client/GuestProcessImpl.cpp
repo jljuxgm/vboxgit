@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 42509 2012-08-01 13:17:11Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 42525 2012-08-02 10:24:28Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -265,7 +265,7 @@ STDMETHODIMP GuestProcess::COMGETTER(Name)(BSTR *aName)
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    mData.mName.cloneTo(aName);
+    mData.mProcess.mName.cloneTo(aName);
 
     LogFlowFuncLeaveRC(S_OK);
     return S_OK;
