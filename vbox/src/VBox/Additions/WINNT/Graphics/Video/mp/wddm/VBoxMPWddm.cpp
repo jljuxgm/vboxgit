@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 44331 2013-01-22 18:54:28Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 44334 2013-01-23 13:35:15Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -4247,6 +4247,7 @@ DxgkDdiEscape(
                 PVBOXDISPIFESCAPE_ADJUSTVIDEOMODES pPodesInfo = (PVBOXDISPIFESCAPE_ADJUSTVIDEOMODES)pEscapeHdr;
                 VBoxWddmAdjustModes(pDevExt, cModes, pPodesInfo->aScreenInfos);
                 Status = STATUS_SUCCESS;
+                break;
             }
             case VBOXESC_SHRC_ADDREF:
             case VBOXESC_SHRC_RELEASE:
