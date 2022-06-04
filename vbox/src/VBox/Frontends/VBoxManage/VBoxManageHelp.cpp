@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 46998 2013-07-05 10:13:50Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 47246 2013-07-19 09:43:01Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -256,7 +256,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--nataliasmode<1-N> default|[log],[proxyonly],\n"
                      "                                                         [sameports]]\n"
                      "                            [--macaddress<1-N> auto|<mac>]\n"
-                     "                            [--mouse ps2|usb|usbtablet\n"
+                     "                            [--mouse ps2|usb|usbtablet|usbmultitouch]\n"
                      "                            [--keyboard ps2|usb\n"
                      "                            [--uart<1-N> off|<I/O base> <IRQ>]\n"
                      "                            [--uartmode<1-N> disconnected|\n"

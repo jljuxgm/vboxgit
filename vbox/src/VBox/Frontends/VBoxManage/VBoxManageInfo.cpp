@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 46667 2013-06-19 15:30:23Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 47246 2013-07-19 09:43:01Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1217,6 +1217,10 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
         case PointingHIDType_ComboMouse:
             pszHID = "USB Tablet and PS/2 Mouse";
             pszMrHID = "combomouse";
+            break;
+        case PointingHIDType_USBMultiTouch:
+            pszHID = "USB Multi-Touch";
+            pszMrHID = "usbmultitouch";
             break;
         default:
             break;

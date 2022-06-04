@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 46685 2013-06-19 17:41:54Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 47246 2013-07-19 09:43:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -1754,6 +1754,12 @@ int handleModifyVM(HandlerArg *a)
                 else if (!RTStrICmp(ValueUnion.psz, "usbtablet"))
                 {
                     CHECK_ERROR(machine, COMSETTER(PointingHIDType)(PointingHIDType_USBTablet));
+                    if (SUCCEEDED(rc))
+                        fEnableUsb = true;
+                }
+                else if (!RTStrICmp(ValueUnion.psz, "usbmultitouch"))
+                {
+                    CHECK_ERROR(machine, COMSETTER(PointingHIDType)(PointingHIDType_USBMultiTouch));
                     if (SUCCEEDED(rc))
                         fEnableUsb = true;
                 }
