@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 46829 2013-06-27 11:49:45Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 46830 2013-06-27 11:50:46Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2196,7 +2196,6 @@ static void hmR0SvmInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
 
         if (fInject)
         {
-            Log4(("TPR=%#x\n", pVmcb->ctrl.IntCtrl.n.u8VTPR));
             hmR0SvmInjectEventVmcb(pVCpu, pVmcb, pCtx, &Event);
             pVCpu->hm.s.Event.fPending = false;
             STAM_COUNTER_INC(&pVCpu->hm.s.StatIntReinject);
