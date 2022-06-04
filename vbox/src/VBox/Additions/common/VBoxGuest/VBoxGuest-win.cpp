@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 44983 2013-03-11 13:34:31Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 44985 2013-03-11 13:38:24Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -71,7 +71,6 @@ RT_C_DECLS_END
 # pragma alloc_text(PAGE, vbgdNtUnload)
 # pragma alloc_text(PAGE, vbgdNtCreate)
 # pragma alloc_text(PAGE, vbgdNtClose)
-# pragma alloc_text(PAGE, vbgdNtIOCtl)
 # pragma alloc_text(PAGE, vbgdNtShutdown)
 # pragma alloc_text(PAGE, vbgdNtNotSupportedStub)
 # pragma alloc_text(PAGE, vbgdNtScanPCIResourceList)
