@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 45198 2013-03-27 09:02:56Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 45233 2013-03-28 13:40:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1056,7 +1056,7 @@ void UISettingsDialogMachine::sltMachineDataChanged(QString strMachineId)
         return;
 
     /* Check if user had changed something and warn him about he will loose settings on reloading: */
-    if (isSettingsChanged() && !msgCenter().confirmedSettingsReloading(this))
+    if (isSettingsChanged() && !msgCenter().confirmSettingsReloading(this))
         return;
 
     /* Reload data: */

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic3.cpp 41833 2012-06-19 15:23:12Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic3.cpp 45233 2013-03-28 13:40:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -397,7 +397,7 @@ bool UIWizardNewVDPageBasic3::validatePage()
     QString strMediumPath(mediumPath());
     fResult = !QFileInfo(strMediumPath).exists();
     if (!fResult)
-        msgCenter().sayCannotOverwriteHardDiskStorage(this, strMediumPath);
+        msgCenter().cannotOverwriteHardDiskStorage(this, strMediumPath);
 
     if (fResult)
     {

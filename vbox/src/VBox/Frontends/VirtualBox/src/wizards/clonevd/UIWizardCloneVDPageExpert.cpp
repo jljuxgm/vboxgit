@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 45080 2013-03-19 07:54:18Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 45233 2013-03-28 13:40:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -262,7 +262,7 @@ bool UIWizardCloneVDPageExpert::validatePage()
     QString strMediumPath(mediumPath());
     fResult = !QFileInfo(strMediumPath).exists();
     if (!fResult)
-        msgCenter().sayCannotOverwriteHardDiskStorage(this, strMediumPath);
+        msgCenter().cannotOverwriteHardDiskStorage(this, strMediumPath);
 
     /* Try to copy virtual-disk: */
     if (fResult)

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 44982 2013-03-11 12:58:09Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 45233 2013-03-28 13:40:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -51,17 +51,6 @@ bool UIMachineLogicFullscreen::checkAvailability()
 {
     /* Temporary get a machine object: */
     const CMachine &machine = uisession()->session().GetMachine();
-
-#if 0
-    /* Check that there are enough physical screens are connected: */
-    int cHostScreens = m_pScreenLayout->hostScreenCount();
-    int cGuestScreens = m_pScreenLayout->guestScreenCount();
-    if (cHostScreens < cGuestScreens)
-    {
-        msgCenter().cannotEnterFullscreenMode();
-        return false;
-    }
-#endif
 
     /* Check if there is enough physical memory to enter fullscreen: */
     if (uisession()->isGuestAdditionsActive())

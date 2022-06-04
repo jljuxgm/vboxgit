@@ -1,4 +1,4 @@
-/* $Id: main.cpp 45183 2013-03-26 05:17:34Z vboxsync $ */
+/* $Id: main.cpp 45233 2013-03-28 13:40:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -471,7 +471,9 @@ extern "C" DECLEXPORT(int) TrustedMain (int argc, char **argv, char ** /*envp*/)
             if (vboxGlobal().processArgs())
                 return 0;
 
+#ifdef RT_OS_LINUX
             msgCenter().checkForMountedWrongUSB();
+#endif /* RT_OS_LINUX */
 
             VBoxGlobalSettings settings = vboxGlobal().settings();
             /* Process known keys */
