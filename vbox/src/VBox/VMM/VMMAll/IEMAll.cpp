@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 47271 2013-07-19 16:54:06Z vboxsync $ */
+/* $Id: IEMAll.cpp 47279 2013-07-19 18:36:27Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2236,9 +2236,9 @@ iemRaiseXcptOrIntInProtMode(PIEMCPU     pIemCpu,
     uint32_t cbLimitCS = X86DESC_LIMIT_G(&DescCS.Legacy);
     if (uNewEip > cbLimitCS)
     {
-        Log(("RaiseXcptOrIntInProtMode %#x - CS=%#x - DPL (%d) > CPL (%d) -> #GP\n",
-             u8Vector, NewCS, DescCS.Legacy.Gen.u2Dpl, pIemCpu->uCpl));
-        return iemRaiseGeneralProtectionFault(pIemCpu, NewCS & X86_SEL_MASK_OFF_RPL);
+        Log(("RaiseXcptOrIntInProtMode %#x - EIP=%#x > cbLimitCS=%#x (CS=%#x) -> #GP(0)\n",
+             u8Vector, uNewEip, cbLimitCS, NewCS));
+        return iemRaiseGeneralProtectionFault(pIemCpu, 0);
     }
 
     /*
