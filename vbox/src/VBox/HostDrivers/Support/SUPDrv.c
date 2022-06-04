@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 45188 2013-03-26 09:30:23Z vboxsync $ */
+/* $Id: SUPDrv.c 45935 2013-05-07 13:18:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -235,6 +235,7 @@ static SUPFUNC g_aFunctions[] =
     { "RTHandleTableFreeWithCtx",               (void *)RTHandleTableFreeWithCtx },
     { "RTHandleTableLookupWithCtx",             (void *)RTHandleTableLookupWithCtx },
     { "RTLogDefaultInstance",                   (void *)RTLogDefaultInstance },
+    { "RTLogGetDefaultInstance",                (void *)RTLogGetDefaultInstance },
     { "RTLogLoggerExV",                         (void *)RTLogLoggerExV },
     { "RTLogPrintfV",                           (void *)RTLogPrintfV },
     { "RTLogRelDefaultInstance",                (void *)RTLogRelDefaultInstance },
