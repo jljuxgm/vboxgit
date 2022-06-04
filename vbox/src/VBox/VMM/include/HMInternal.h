@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 45501 2013-04-11 23:20:33Z vboxsync $ */
+/* $Id: HMInternal.h 45502 2013-04-12 00:22:50Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -730,6 +730,7 @@ typedef struct HMCPU
     {
         uint32_t                    fPending;
         uint32_t                    u32ErrCode;
+        uint32_t                    u32InstrLen;
         uint64_t                    u64IntrInfo;
     } Event;
 
