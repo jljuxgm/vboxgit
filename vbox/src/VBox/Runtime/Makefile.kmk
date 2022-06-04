@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47535 2013-08-05 01:54:25Z vboxsync $
+# $Id: Makefile.kmk 47762 2013-08-15 13:04:51Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -329,6 +329,7 @@ RuntimeR3_SOURCES       = \
 	common/misc/RTAssertMsg2AddWeakV.cpp \
 	common/misc/RTAssertMsg2Weak.cpp \
 	common/misc/RTAssertMsg2WeakV.cpp \
+	common/misc/RTFileModeToFlags.cpp \
 	common/misc/RTFileOpenF.cpp \
 	common/misc/RTFileOpenV.cpp \
 	common/misc/RTMemWipeThoroughly.cpp \
