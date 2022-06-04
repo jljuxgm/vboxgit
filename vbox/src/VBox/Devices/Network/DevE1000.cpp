@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 43432 2012-09-26 07:05:20Z vboxsync $ */
+/* $Id: DevE1000.cpp 43442 2012-09-26 13:21:27Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -7345,7 +7345,11 @@ static DECLCALLBACK(void) e1kConfigurePCI(PCIDEVICE& pci, E1KCHIP eChip)
 
 static int e1kInitDebugHelpers()
 {
-    int rc;
+    int rc = VINF_SUCCESS;
+    static bool g_fHelpersRegistered = false;
+    if (g_fHelpersRegistered)
+        return rc;
+    g_fHelpersRegistered = true;
     rc = RTStrFormatTypeRegister("e1krxd", e1kFmtRxDesc, NULL);
     AssertRCReturn(rc, rc);
     rc = RTStrFormatTypeRegister("e1ktxd", e1kFmtTxDesc, NULL);
