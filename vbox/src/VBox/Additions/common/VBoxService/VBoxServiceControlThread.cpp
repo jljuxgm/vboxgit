@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlThread.cpp 42461 2012-07-30 21:28:12Z vboxsync $ */
+/* $Id: VBoxServiceControlThread.cpp 42739 2012-08-10 06:56:05Z vboxsync $ */
 /** @file
  * VBoxServiceControlExecThread - Thread for every started guest process.
  */
@@ -1337,6 +1337,7 @@ static int VBoxServiceControlThreadCreateProcess(const char *pszExec, const char
                     uProcFlags |= RTPROC_FLAGS_HIDDEN;
                 if (fFlags & EXECUTEPROCESSFLAG_NO_PROFILE)
                     uProcFlags |= RTPROC_FLAGS_NO_PROFILE;
+                /** @todo Implement EXECUTEPROCESSFLAG_EXPAND_ARGUMENTS. */
             }
 
             /* If no user name specified run with current credentials (e.g.
