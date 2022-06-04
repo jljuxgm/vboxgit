@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 46811 2013-06-26 17:43:30Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 46931 2013-07-03 12:56:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -512,7 +512,7 @@ public:
         , m_dRotationAngle(0)
     {
         /* Assign state icons: */
-        setStateIcon(UIIndicatorStateVideoCapture_Disabled, QPixmap(":/movie_reel_16px.png"));
+        setStateIcon(UIIndicatorStateVideoCapture_Disabled, QPixmap(":/video_capture_16px.png"));
         setStateIcon(UIIndicatorStateVideoCapture_Enabled, QPixmap(":/movie_reel_16px.png"));
 
         /* Prepare *enabled* state animation: */
