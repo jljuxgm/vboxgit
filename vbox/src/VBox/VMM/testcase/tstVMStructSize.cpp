@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 43511 2012-10-02 14:27:13Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 43798 2012-11-02 13:24:21Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -400,7 +400,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(HM, StatTprPatchSuccess, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, StatEntry, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, vmx.HCPhysVMCS, sizeof(RTHCPHYS));
-    CHECK_MEMBER_ALIGNMENT(HMCPU, vmx.proc_ctls, 8);
+    CHECK_MEMBER_ALIGNMENT(HMCPU, vmx.u64ProcCtls, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, Event.intInfo, 8);
 
     /* Make sure the set is large enough and has the correct size. */
