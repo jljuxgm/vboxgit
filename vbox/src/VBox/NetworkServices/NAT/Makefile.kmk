@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50005 2013-12-26 02:38:39Z vboxsync $
+# $Id: Makefile.kmk 50065 2014-01-14 01:42:41Z vboxsync $
 ## @file
 #
 
@@ -82,6 +82,13 @@ else
  # raw sockets
  VBoxNetLwipNAT_SOURCES += pxping.c
 endif
+
+# ifeq ($(VBOX_WITH_HARDENING),)
+#  ifn1of ($(KBUILD_TARGET), darwin win)
+#   # helper for debugging unprivileged
+#   VBoxNetLwipNAT_SOURCES += getrawsock.c
+#  endif
+# endif
 
 VBoxNetLwipNAT_SOURCES.darwin  += rtmon_bsd.c
 VBoxNetLwipNAT_SOURCES.freebsd += rtmon_bsd.c
