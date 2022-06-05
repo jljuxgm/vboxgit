@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.h 50559 2014-02-24 17:38:24Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.h 50618 2014-02-26 19:55:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - XXX.
  */
@@ -47,8 +47,8 @@ public:
 public:
     /** @name Public internal methods.
      * @{ */
-    int            callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb);
-    int            onRemove(void);
+    int            i_callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb);
+    int            i_onRemove(void);
 
     static Utf8Str i_guestErrorToString(int guestRc);
     static HRESULT i_setErrorExternal(VirtualBoxBase *pInterface, int guestRc);

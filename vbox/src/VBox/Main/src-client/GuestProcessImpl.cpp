@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 50618 2014-02-26 19:55:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -461,7 +461,7 @@ STDMETHODIMP GuestProcess::COMGETTER(Status)(ProcessStatus_T *aStatus)
 // private methods
 /////////////////////////////////////////////////////////////////////////////
 
-int GuestProcess::callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb)
+int GuestProcess::i_callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb)
 {
     AssertPtrReturn(pCbCtx, VERR_INVALID_POINTER);
     AssertPtrReturn(pSvcCb, VERR_INVALID_POINTER);
@@ -865,7 +865,7 @@ int GuestProcess::onProcessOutput(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRL
  * Called by IGuestSession right before this process gets
  * removed from the public process list.
  */
-int GuestProcess::onRemove(void)
+int GuestProcess::i_onRemove(void)
 {
     LogFlowThisFuncEnter();
 

@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 50559 2014-02-24 17:38:24Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 50618 2014-02-26 19:55:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -170,7 +170,7 @@ HRESULT GuestDirectory::getFilter(com::Utf8Str &aFilter)
 // private methods
 /////////////////////////////////////////////////////////////////////////////
 
-int GuestDirectory::callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb)
+int GuestDirectory::i_callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb)
 {
     AssertPtrReturn(pCbCtx, VERR_INVALID_POINTER);
     AssertPtrReturn(pSvcCb, VERR_INVALID_POINTER);
@@ -241,7 +241,7 @@ Utf8Str GuestDirectory::i_guestErrorToString(int guestRc)
  * Called by IGuestSession right before this directory gets
  * removed from the public directory list.
  */
-int GuestDirectory::onRemove(void)
+int GuestDirectory::i_onRemove(void)
 {
     LogFlowThisFuncEnter();
 
