@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 47194 2013-07-16 14:31:39Z vboxsync $ */
+/* $Id: localipc-win.cpp 47976 2013-08-21 16:16:10Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -828,15 +828,15 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuffer, si
                     {
                         DWORD dwErr = GetLastError();
                         AssertMsgFailed(("err=%ld\n",  dwErr));
-                            rc = RTErrConvertFromWin32(dwErr);
+                        rc = RTErrConvertFromWin32(dwErr);
                     }
                 }
-                 else
-                    {
-                        DWORD dwErr = GetLastError();
-                        AssertMsgFailed(("err2=%ld\n",  dwErr));
-                            rc = RTErrConvertFromWin32(dwErr);
-                    }
+                else
+                {
+                    DWORD dwErr = GetLastError();
+                    AssertMsgFailed(("err2=%ld\n",  dwErr));
+                    rc = RTErrConvertFromWin32(dwErr);
+                }
 
                 RTCritSectEnter(&pThis->CritSect);
                 pThis->fIOPending = false;
