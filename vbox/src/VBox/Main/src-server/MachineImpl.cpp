@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 50291 2014-01-30 16:22:55Z vboxsync $ */
+/* $Id: MachineImpl.cpp 50297 2014-01-31 10:20:54Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12532,7 +12532,7 @@ bool Machine::isControllerHotplugCapable(StorageControllerType_T enmCtrlType)
         return false;
 
     BOOL aHotplugCapable = FALSE;
-    systemProperties->COMGETTER(StorageControllerHotplugCapable)(enmCtrlType, &aHotplugCapable);
+    systemProperties->GetStorageControllerHotplugCapable(enmCtrlType, &aHotplugCapable);
 
     return RT_BOOL(aHotplugCapable);
 }
