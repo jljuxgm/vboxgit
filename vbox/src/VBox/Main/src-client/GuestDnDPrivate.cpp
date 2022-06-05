@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 51556 2014-06-05 14:38:31Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -500,7 +500,7 @@ int GuestDnD::hostCall(uint32_t u32Function, uint32_t cParms, PVBOXHGCMSVCPARM p
 
     /* Forward the information to the VMM device. */
     Assert(!pConsole.isNull());
-    VMMDev *pVMMDev = pConsole->getVMMDev();
+    VMMDev *pVMMDev = pConsole->i_getVMMDev();
     if (!pVMMDev)
         return VERR_COM_OBJECT_NOT_FOUND;
 

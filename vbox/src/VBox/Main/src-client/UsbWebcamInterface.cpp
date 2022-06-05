@@ -1,10 +1,10 @@
-/* $Id: UsbWebcamInterface.cpp 50580 2014-02-25 15:22:04Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -257,7 +257,7 @@ void EmWebcam::EmWebcamCbDeviceDesc(int rcRequest, void *pDeviceCtx, void *pvUse
         pRemote->cbDeviceDesc = cbDeviceDesc;
 
         /* Try to attach the device. */
-        EmulatedUSB *pEUSB = mParent->getConsole()->getEmulatedUSB();
+        EmulatedUSB *pEUSB = mParent->getConsole()->i_getEmulatedUSB();
         pEUSB->i_webcamAttachInternal("", "", "EmWebcam", pRemote);
     }
     else

@@ -1,10 +1,10 @@
-/* $Id: KeyboardImpl.cpp 51096 2014-04-17 09:29:40Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -284,9 +284,9 @@ STDMETHODIMP Keyboard::COMGETTER(EventSource)(IEventSource ** aEventSource)
 DECLCALLBACK(void) Keyboard::keyboardLedStatusChange(PPDMIKEYBOARDCONNECTOR pInterface, PDMKEYBLEDS enmLeds)
 {
     PDRVMAINKEYBOARD pDrv = RT_FROM_MEMBER(pInterface, DRVMAINKEYBOARD, IConnector);
-    pDrv->pKeyboard->getParent()->onKeyboardLedsChange(RT_BOOL(enmLeds & PDMKEYBLEDS_NUMLOCK),
-                                                       RT_BOOL(enmLeds & PDMKEYBLEDS_CAPSLOCK),
-                                                       RT_BOOL(enmLeds & PDMKEYBLEDS_SCROLLLOCK));
+    pDrv->pKeyboard->getParent()->i_onKeyboardLedsChange(RT_BOOL(enmLeds & PDMKEYBLEDS_NUMLOCK),
+                                                         RT_BOOL(enmLeds & PDMKEYBLEDS_CAPSLOCK),
+                                                         RT_BOOL(enmLeds & PDMKEYBLEDS_SCROLLLOCK));
 }
 
 /**

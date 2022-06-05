@@ -1,10 +1,10 @@
-/* $Id: GuestSessionImpl.cpp 50899 2014-03-26 18:08:27Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -2006,7 +2006,7 @@ int GuestSession::i_sendCommand(uint32_t uFunction,
     Assert(!pConsole.isNull());
 
     /* Forward the information to the VMM device. */
-    VMMDev *pVMMDev = pConsole->getVMMDev();
+    VMMDev *pVMMDev = pConsole->i_getVMMDev();
     AssertPtr(pVMMDev);
 
     LogFlowThisFunc(("uFunction=%RU32, uParms=%RU32\n", uFunction, uParms));
