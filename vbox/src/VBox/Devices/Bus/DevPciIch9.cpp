@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 50583 2014-02-25 16:03:17Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 50638 2014-02-27 20:15:22Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1889,10 +1889,10 @@ DECLINLINE(void) ich9pciWriteBarByte(PCIDevice *aDev, int iRegion, int iOffset, 
          iRegion, iOffset, u8Val, iRegionSize));
 
     if (iOffset > 3)
-        Assert((aDev->Int.s.aIORegions[iRegion].type & PCI_ADDRESS_SPACE_BAR64) != 0);
+        Assert((pRegion->type & PCI_ADDRESS_SPACE_BAR64) != 0);
 
     /* Check if we're writing to upper part of 64-bit BAR. */
-    if (aDev->Int.s.aIORegions[iRegion].type == 0xff)
+    if (pRegion->type == 0xff)
     {
         ich9pciWriteBarByte(aDev, iRegion-1, iOffset+4, u8Val);
         return;
