@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 49377 2013-11-04 07:23:53Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 49378 2013-11-04 07:27:17Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -314,8 +314,8 @@ static DECLCALLBACK(int) vboxIPCSessionThread(RTTHREAD hThread, void *pvSession)
                 break;
             }
             else
-                LogRelFunc(("Session %p: Waiting for session data failed with rc=%Rrc\n",
-                            pThis, rc));
+                LogFunc(("Session %p: Waiting for session data failed with rc=%Rrc\n",
+                         pThis, rc));
         }
         else
         {
@@ -385,8 +385,8 @@ static DECLCALLBACK(int) vboxIPCSessionThread(RTTHREAD hThread, void *pvSession)
         }
     }
 
-    LogRelFunc(("Session %p: Handler ended with rc=%Rrc\n",
-                pThis, rc));
+    LogFunc(("Session %p: Handler ended with rc=%Rrc\n",
+             pThis, rc));
 
     /*
      * Clean up the session.
