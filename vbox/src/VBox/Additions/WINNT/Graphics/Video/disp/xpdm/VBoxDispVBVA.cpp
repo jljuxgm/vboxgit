@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVBVA.cpp 50482 2014-02-17 15:23:05Z vboxsync $ */
+/* $Id: VBoxDispVBVA.cpp 50542 2014-02-21 14:13:48Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -424,7 +424,7 @@ int VBoxDispVBVAInit(PVBOXDISPDEV pDev)
         LOG(("offBase=%#x", info.areaDisplay.offBase));
 
         rc = HGSMIHeapSetup(&pDev->hgsmi.ctx.heapCtx,
-                            HGSMI_HEAP_TYPE_POINTER,
+                            HGSMI_HEAP_TYPE_MA,
                             (uint8_t *)pDev->memInfo.VideoRamBase+pDev->layout.offDisplayInfo+sizeof(HGSMIHOSTFLAGS),
                             pDev->layout.cbDisplayInfo-sizeof(HGSMIHOSTFLAGS),
                             info.areaDisplay.offBase+pDev->layout.offDisplayInfo+sizeof(HGSMIHOSTFLAGS),

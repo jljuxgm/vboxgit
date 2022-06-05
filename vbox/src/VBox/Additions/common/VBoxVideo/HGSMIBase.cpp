@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 50482 2014-02-17 15:23:05Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 50542 2014-02-21 14:13:48Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -325,10 +325,10 @@ RTDECL(int) VBoxHGSMISetupGuestContext(PHGSMIGUESTCOMMANDCONTEXT pCtx,
     /** @todo should we be using a fixed ISA port value here? */
     pCtx->port = (RTIOPORT)VGA_PORT_HGSMI_GUEST;
 #ifdef VBOX_WDDM_MINIPORT
-    return VBoxSHGSMIInit(&pCtx->heapCtx, HGSMI_HEAP_TYPE_POINTER, pvGuestHeapMemory,
+    return VBoxSHGSMIInit(&pCtx->heapCtx, HGSMI_HEAP_TYPE_MA, pvGuestHeapMemory,
                           cbGuestHeapMemory, offVRAMGuestHeapMemory, pEnv);
 #else
-    return HGSMIHeapSetup(&pCtx->heapCtx, HGSMI_HEAP_TYPE_POINTER, pvGuestHeapMemory,
+    return HGSMIHeapSetup(&pCtx->heapCtx, HGSMI_HEAP_TYPE_MA, pvGuestHeapMemory,
                           cbGuestHeapMemory, offVRAMGuestHeapMemory, pEnv);
 #endif
 }
