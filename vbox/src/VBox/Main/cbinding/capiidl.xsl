@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 50930 2014-03-31 15:55:14Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 52787 2014-09-18 14:13:38Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -2096,7 +2096,7 @@ typedef PCVBOXCAPI (*PFNVBOXGETXPCOMCFUNCTIONS)(unsigned uVersion);
   <xsl:if test="not(@readonly='yes')">
     <!-- setter (COM compatible) -->
     <xsl:text>#define </xsl:text>
-    <xsl:value-of select="concat($iface, '_set_')"/>
+    <xsl:value-of select="concat($iface, '_put_')"/>
     <xsl:call-template name="capitalize">
       <xsl:with-param name="str" select="@name"/>
     </xsl:call-template>
