@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50589 2014-02-25 18:29:15Z vboxsync $
+# $Id: Makefile.kmk 50591 2014-02-25 19:34:40Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -236,7 +236,7 @@ tstMediumLock_SOURCES  = tstMediumLock.cpp
 #
 # tstMouseImpl
 #
-tstMouseImpl_TEMPLATE = VBOXMAINTSTEXE
+tstMouseImpl_TEMPLATE = VBOXMAINCLIENTTSTEXE
 tstMouseImpl_SOURCES  = \
 	tstMouseImpl.cpp \
 	../src-client/MouseImpl.cpp \
