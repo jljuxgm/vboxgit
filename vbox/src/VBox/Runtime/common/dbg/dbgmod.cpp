@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 46276 2013-05-26 22:58:10Z vboxsync $ */
+/* $Id: dbgmod.cpp 49040 2013-10-10 18:36:15Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -583,7 +583,7 @@ rtDbgModOpenDebugInfoExternalToImageCallback(RTLDRMOD hLdrMod, PCRTLDRDBGINFO pD
             if (psz)
             {
                 memcpy(psz, pArgs->pDbgMod->pszName, cchName + 1);
-                RTPathStripExt(psz);
+                RTPathStripSuffix(psz);
                 pszExtFile = strcat(psz, pszExt);
             }
         }
