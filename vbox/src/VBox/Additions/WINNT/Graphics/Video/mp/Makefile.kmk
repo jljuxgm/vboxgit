@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50941 2014-04-01 11:28:51Z vboxsync $
+# $Id: Makefile.kmk 52136 2014-07-22 19:36:45Z vboxsync $
 ## @file
 # Makefile for the Windows guest miniport driver.
 #
@@ -112,13 +112,16 @@ ifdef VBOX_WITH_WDDM
  	wddm/VBoxMPMisc.cpp \
  	wddm/VBoxMPWddm.rc \
  	wddm/VBoxMPRegistry.cpp \
+ 	wddm/VBoxMPVModes.cpp \
  	common/VBoxMPUtils.cpp \
  	common/VBoxMPCommon.cpp \
  	common/VBoxMPHGSMI.cpp \
- 	common/VBoxMPVidModes.cpp \
  	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp \
  	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/VBVABase.cpp \
  	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp
+
+   VBoxVideoWddm_SOURCES   += \
+	$(PATH_ROOT)/src/VBox/GuestHost/OpenGL/util/sortarray.cpp
  	
  if defined(VBOX_WITH_CROGL)
    VBoxVideoWddm_SOURCES   += \
