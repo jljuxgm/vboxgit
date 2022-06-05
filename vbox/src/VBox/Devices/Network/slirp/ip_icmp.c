@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 50134 2014-01-21 05:34:45Z vboxsync $ */
+/* $Id: ip_icmp.c 50136 2014-01-21 09:32:13Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -449,8 +449,8 @@ icmp_input(PNATState pData, struct mbuf *m, int hlen)
             ip->ip_len += hlen;              /* since ip_input subtracts this */
             dst = ip->ip_dst.s_addr;
             if (   CTL_CHECK(dst, CTL_ALIAS)
-		|| CTL_CHECK(dst, CTL_DNS)
-		|| CTL_CHECK(dst, CTL_TFTP))
+                || CTL_CHECK(dst, CTL_DNS)
+                || CTL_CHECK(dst, CTL_TFTP))
             {
                 icp->icmp_type = ICMP_ECHOREPLY;
                 ip->ip_dst.s_addr = ip->ip_src.s_addr;
