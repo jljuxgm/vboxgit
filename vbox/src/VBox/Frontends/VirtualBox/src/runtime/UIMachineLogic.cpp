@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 51038 2014-04-10 14:12:38Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 51055 2014-04-11 16:55:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -975,8 +975,7 @@ void UIMachineLogic::prepareMenu()
 {
 #ifdef Q_WS_MAC
     /* Prepare native menu-bar: */
-    CMachine machine = session().GetMachine();
-    RuntimeMenuType restrictedMenus = VBoxGlobal::restrictedRuntimeMenuTypes(machine);
+    RuntimeMenuType restrictedMenus = gEDataManager->restrictedRuntimeMenuTypes(vboxGlobal().managedVMUuid());
     RuntimeMenuType allowedMenus = static_cast<RuntimeMenuType>(RuntimeMenuType_All ^ restrictedMenus);
     m_pMenuBar = uisession()->newMenuBar(allowedMenus);
 #endif /* Q_WS_MAC */
