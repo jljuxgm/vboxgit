@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 49401 2013-11-06 18:02:27Z vboxsync $ */
+/* $Id: UIMachineView.cpp 49420 2013-11-08 15:54:02Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -617,6 +617,11 @@ void UIMachineView::cleanupFrameBuffer()
 
     /* Process pending framebuffer events: */
     QApplication::sendPostedEvents(this, QEvent::MetaCall);
+
+#ifdef VBOX_WITH_VIDEOHWACCEL
+    if (m_fAccelerate2DVideo)
+        QApplication::sendPostedEvents(this, VHWACommandProcessType);
+#endif /* VBOX_WITH_VIDEOHWACCEL */
 
     /* Temporarily detach the framebuffer from IDisplay before detaching
      * from view in order to respect the thread synchonisation logic (see UIFrameBuffer.h).
