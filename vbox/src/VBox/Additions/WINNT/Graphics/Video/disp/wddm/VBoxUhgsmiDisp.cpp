@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiDisp.cpp 50921 2014-03-28 15:47:50Z vboxsync $ */
+/* $Id: VBoxUhgsmiDisp.cpp 50928 2014-03-31 14:14:11Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -35,6 +35,9 @@ DECLCALLBACK(int) vboxUhgsmiD3DBufferDestroy(PVBOXUHGSMI_BUFFER pBuf)
     HRESULT hr = pDevice->RtCallbacks.pfnDeallocateCb(pDevice->hDevice, &DdiDealloc);
     if (hr == S_OK)
     {
+#ifdef DEBUG_misha
+        memset(pBuffer, 0, sizeof (*pBuffer));
+#endif
         RTMemFree(pBuffer);
         return VINF_SUCCESS;
     }

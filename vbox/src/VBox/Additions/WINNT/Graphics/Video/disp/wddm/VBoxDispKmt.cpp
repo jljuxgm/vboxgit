@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
+/* $Id: VBoxDispKmt.cpp 50928 2014-03-31 14:14:11Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -165,6 +165,9 @@ HRESULT vboxDispKmtCallbacksInit(PVBOXDISPKMT_CALLBACKS pCallbacks)
 HRESULT vboxDispKmtCallbacksTerm(PVBOXDISPKMT_CALLBACKS pCallbacks)
 {
     FreeLibrary(pCallbacks->hGdi32);
+#ifdef DEBUG_misha
+    memset(pCallbacks, 0, sizeof (*pCallbacks));
+#endif
     return S_OK;
 }
 
@@ -318,6 +321,9 @@ HRESULT vboxDispKmtCloseAdapter(PVBOXDISPKMT_ADAPTER pAdapter)
     if (!Status)
     {
         DeleteDC(pAdapter->hDc);
+#ifdef DEBUG_misha
+        memset(pAdapter, 0, sizeof (*pAdapter));
+#endif
         return S_OK;
     }
 
@@ -357,6 +363,9 @@ HRESULT vboxDispKmtDestroyDevice(PVBOXDISPKMT_DEVICE pDevice)
     Assert(!Status);
     if (!Status)
     {
+#ifdef DEBUG_misha
+        memset(pDevice, 0, sizeof (*pDevice));
+#endif
         return S_OK;
     }
     return E_FAIL;
@@ -405,6 +414,11 @@ HRESULT vboxDispKmtDestroyContext(PVBOXDISPKMT_CONTEXT pContext)
     NTSTATUS Status = pContext->pDevice->pAdapter->pCallbacks->pfnD3DKMTDestroyContext(&DestroyContextData);
     Assert(!Status);
     if (!Status)
+    {
+#ifdef DEBUG_misha
+        memset(pContext, 0, sizeof (*pContext));
+#endif
         return S_OK;
+    }
     return E_FAIL;
 }

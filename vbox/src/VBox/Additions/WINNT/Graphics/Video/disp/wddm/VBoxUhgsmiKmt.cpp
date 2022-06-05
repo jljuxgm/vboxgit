@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.cpp 50921 2014-03-28 15:47:50Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.cpp 50928 2014-03-31 14:14:11Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -41,6 +41,9 @@ DECLCALLBACK(int) vboxUhgsmiKmtBufferDestroy(PVBOXUHGSMI_BUFFER pBuf)
     NTSTATUS Status = pPrivate->Callbacks.pfnD3DKMTDestroyAllocation(&DdiDealloc);
     if (NT_SUCCESS(Status))
     {
+#ifdef DEBUG_misha
+        memset(pBuffer, 0, sizeof(*pBuffer));
+#endif
         RTMemFree(pBuffer);
         return VINF_SUCCESS;
     }
@@ -370,7 +373,12 @@ HRESULT vboxUhgsmiKmtDestroy(PVBOXUHGSMI_PRIVATE_KMT pHgsmi)
                 hr = vboxDispKmtCallbacksTerm(&pHgsmi->Callbacks);
                 Assert(hr == S_OK);
                 if (hr == S_OK)
+                {
+#ifdef DEBUG_misha
+                    memset(pHgsmi, 0, sizeof (*pHgsmi));
+#endif
                     return S_OK;
+                }
             }
         }
     }

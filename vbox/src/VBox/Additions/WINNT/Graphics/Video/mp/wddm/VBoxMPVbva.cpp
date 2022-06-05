@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 50921 2014-03-28 15:47:50Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 50928 2014-03-31 14:14:11Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1132,9 +1132,9 @@ uint32_t VBoxCVDdiPTransferVRamSysBuildEls(VBOXCMDVBVA_PAGING_TRANSFER *pCmd, PM
 {
     uint32_t cbInitBuffer = cbBuffer;
     uint32_t i = 0;
-    VBOXCMDVBVAPAGEIDX *pPageNumbers = pCmd->aPageNumbers;
+    VBOXCMDVBVAPAGEIDX *pPageNumbers = pCmd->Data.aPageNumbers;
 
-    cbBuffer -= RT_OFFSETOF(VBOXCMDVBVA_PAGING_TRANSFER, aPageNumbers);
+    cbBuffer -= RT_OFFSETOF(VBOXCMDVBVA_PAGING_TRANSFER, Data.aPageNumbers);
 
     for (; i < cPages && cbBuffer >= sizeof (*pPageNumbers); ++i, cbBuffer -= sizeof (*pPageNumbers))
     {
@@ -1142,7 +1142,7 @@ uint32_t VBoxCVDdiPTransferVRamSysBuildEls(VBOXCMDVBVA_PAGING_TRANSFER *pCmd, PM
     }
 
     *pcPagesWritten = i;
-    Assert(cbInitBuffer - cbBuffer == RT_OFFSETOF(VBOXCMDVBVA_PAGING_TRANSFER, aPageNumbers[i]));
+    Assert(cbInitBuffer - cbBuffer == RT_OFFSETOF(VBOXCMDVBVA_PAGING_TRANSFER, Data.aPageNumbers[i]));
     return cbInitBuffer - cbBuffer;
 }
 

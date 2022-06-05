@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 49591 2013-11-20 17:53:55Z vboxsync $ */
+/* $Id: vboxhgcm.c 50928 2014-03-31 14:14:11Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -1637,7 +1637,6 @@ static void _crVBoxHGSMIFree(CRConnection *conn, void *buf)
     {
         PVBOXUHGSMI_BUFFER pBuf = _crVBoxHGSMIBufFromHdr(hgcm_buffer);
         PCRVBOXHGSMI_CLIENT pClient = (PCRVBOXHGSMI_CLIENT)pBuf->pvUserData;
-        pBuf->pfnUnlock(pBuf);
         _crVBoxHGSMIBufFree(pClient, pBuf);
     }
     else
