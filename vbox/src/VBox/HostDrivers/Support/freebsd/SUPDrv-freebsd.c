@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 47537 2013-08-05 10:00:02Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 49634 2013-11-22 18:11:29Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -549,6 +549,31 @@ void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
 {
     NOREF(pDevExt); NOREF(pImage);
 }
+
+
+#ifdef SUPDRV_WITH_MSR_PROBER
+
+int VBOXCALL    supdrvOSMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue)
+{
+    NOREF(uMsr); NOREF(idCpu); NOREF(puValue);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+int VBOXCALL    supdrvOSMsrProberWrite(uint32_t uMsr, RTCPUID idCpu, uint64_t uValue)
+{
+    NOREF(uMsr); NOREF(idCpu); NOREF(uValue);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+int VBOXCALL    supdrvOSMsrProberModify(RTCPUID idCpu, PSUPMSRPROBER pReq)
+{
+    NOREF(idCpu); NOREF(pReq);
+    return VERR_NOT_SUPPORTED;
+}
+
+#endif /* SUPDRV_WITH_MSR_PROBER */
 
 
 SUPR0DECL(int) SUPR0Printf(const char *pszFormat, ...)

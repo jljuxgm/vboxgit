@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 49634 2013-11-22 18:11:29Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -54,6 +54,7 @@ PFNRT g_VBoxRTDeps[] =
 #ifndef RT_NO_GIP
     (PFNRT)SUPR3Init,
     (PFNRT)SUPR3PageAllocEx,
+    (PFNRT)SUPR3LoadVMM,
     (PFNRT)SUPSemEventCreate,
     (PFNRT)SUPTracerFireProbe,
 #endif

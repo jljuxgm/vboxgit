@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48677 2013-09-25 11:05:27Z vboxsync $
+# $Id: Makefile.kmk 49634 2013-11-22 18:11:29Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -82,6 +82,7 @@ SUPR3_DEFS          = \
 SUPR3_INCS         := $(PATH_SUB_CURRENT)
 SUPR3_SOURCES       = \
 	SUPLib.cpp \
+	SUPLibLdr.cpp \
 	SUPLibSem.cpp \
 	SUPLibTracerA.asm \
 	SUPR3HardenedIPRT.cpp \

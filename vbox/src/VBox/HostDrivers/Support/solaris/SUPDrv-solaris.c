@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 48952 2013-10-07 21:54:31Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 49634 2013-11-22 18:11:29Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1186,6 +1186,31 @@ void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
 }
 
 #endif /* !VBOX_WITH_NATIVE_SOLARIS_LOADING */
+
+
+#ifdef SUPDRV_WITH_MSR_PROBER
+
+int VBOXCALL    supdrvOSMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue)
+{
+    NOREF(uMsr); NOREF(idCpu); NOREF(puValue);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+int VBOXCALL    supdrvOSMsrProberWrite(uint32_t uMsr, RTCPUID idCpu, uint64_t uValue)
+{
+    NOREF(uMsr); NOREF(idCpu); NOREF(uValue);
+    return VERR_NOT_SUPPORTED;
+}
+
+
+int VBOXCALL    supdrvOSMsrProberModify(RTCPUID idCpu, PSUPMSRPROBER pReq)
+{
+    NOREF(idCpu); NOREF(pReq);
+    return VERR_NOT_SUPPORTED;
+}
+
+#endif /* SUPDRV_WITH_MSR_PROBER */
 
 
 RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
