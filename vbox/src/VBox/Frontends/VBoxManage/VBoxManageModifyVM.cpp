@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 49069 2013-10-12 13:26:22Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 49983 2013-12-19 12:23:17Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -734,6 +734,11 @@ int handleModifyVM(HandlerArg *a)
                          || !RTStrICmp(ValueUnion.psz, "vga")
                          || !RTStrICmp(ValueUnion.psz, "vesa"))
                     CHECK_ERROR(machine, COMSETTER(GraphicsControllerType)(GraphicsControllerType_VBoxVGA));
+#ifdef VBOX_WITH_VMSVGA
+                else if (   !RTStrICmp(ValueUnion.psz, "vmsvga")
+                         || !RTStrICmp(ValueUnion.psz, "vmware"))
+                    CHECK_ERROR(machine, COMSETTER(GraphicsControllerType)(GraphicsControllerType_VMSVGA));
+#endif
                 else
                 {
                     errorArgument("Invalid --graphicscontroller argument '%s'", ValueUnion.psz);

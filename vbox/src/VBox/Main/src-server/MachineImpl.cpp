@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 49976 2013-12-18 14:58:43Z vboxsync $ */
+/* $Id: MachineImpl.cpp 49983 2013-12-19 12:23:17Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1933,6 +1933,9 @@ STDMETHODIMP Machine::COMSETTER(GraphicsControllerType)(GraphicsControllerType_T
     {
         case GraphicsControllerType_Null:
         case GraphicsControllerType_VBoxVGA:
+#ifdef VBOX_WITH_VMSVGA
+        case GraphicsControllerType_VMSVGA:
+#endif
             break;
         default:
             return setError(E_INVALIDARG, tr("The graphics controller type (%d) is invalid"), aGraphicsControllerType);
