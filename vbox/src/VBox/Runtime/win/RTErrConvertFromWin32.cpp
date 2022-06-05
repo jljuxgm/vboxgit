@@ -1,10 +1,10 @@
-/* $Id: RTErrConvertFromWin32.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 51427 2014-05-27 19:28:19Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -186,6 +186,7 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_INVALID_ADDRESS:         return VERR_INVALID_POINTER; ///@todo fix ERROR_INVALID_ADDRESS translation - dbghelp returns it on some line number queries.
 
         case ERROR_CANCELLED:               return VERR_CANCELLED;
+        case ERROR_USER_MAPPED_FILE:        return VERR_SHARING_VIOLATION;
         case ERROR_DIRECTORY:               return VERR_NOT_A_DIRECTORY;
 
         case ERROR_LOGON_FAILURE:           return VERR_AUTHENTICATION_FAILURE;
