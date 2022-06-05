@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 48890 2013-10-04 15:32:56Z vboxsync $ */
+/* $Id: PDMUsb.cpp 48936 2013-10-07 21:21:42Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -814,7 +814,7 @@ int pdmR3UsbInstantiateDevices(PVM pVM)
 
         if (paUsbDevs[i].pUsbDev->pReg->fFlags & PDM_USBREG_HIGHSPEED_CAPABLE)
             iUsbVersion |= VUSB_STDVER_20;
-        
+
         /*
          * Find a suitable hub with free ports.
          */

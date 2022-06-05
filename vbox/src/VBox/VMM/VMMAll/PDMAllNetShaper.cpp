@@ -1,4 +1,4 @@
-/* $Id: PDMAllNetShaper.cpp 44359 2013-01-24 17:12:12Z vboxsync $ */
+/* $Id: PDMAllNetShaper.cpp 48936 2013-10-07 21:21:42Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -74,5 +74,4 @@ VMMDECL(bool) PDMNsAllocateBandwidth(PPDMNSFILTER pFilter, size_t cbTransfer)
     rc = PDMCritSectLeave(&pBwGroup->Lock); AssertRC(rc);
     return fAllowed;
 }
-
 

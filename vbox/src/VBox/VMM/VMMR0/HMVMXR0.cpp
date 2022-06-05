@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48885 2013-10-04 10:58:32Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48936 2013-10-07 21:21:42Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1815,7 +1815,7 @@ static int hmR0VmxSetupProcCtls(PVM pVM, PVMCPU pVCpu)
     else
     {
         /*
-         * Some 32-bit CPUs do not support CR8 load/store exiting as MOV CR8 is invalid on 32-bit Intel CPUs. 
+         * Some 32-bit CPUs do not support CR8 load/store exiting as MOV CR8 is invalid on 32-bit Intel CPUs.
          * Set this control only for 64-bit guests.
          */
         if (pVM->hm.s.fAllow64BitGuests)

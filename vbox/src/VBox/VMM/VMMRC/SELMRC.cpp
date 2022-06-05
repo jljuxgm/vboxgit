@@ -1,4 +1,4 @@
-/* $Id: SELMRC.cpp 45485 2013-04-11 14:46:04Z vboxsync $ */
+/* $Id: SELMRC.cpp 48936 2013-10-07 21:21:42Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
@@ -388,7 +388,7 @@ VMMRCDECL(int) selmRCGuestTSSWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
      */
     uint32_t cb;
     int rc = EMInterpretInstructionEx(pVCpu, pRegFrame, (RTGCPTR)(RTRCUINTPTR)pvFault, &cb);
-    if (    RT_SUCCESS(rc) 
+    if (    RT_SUCCESS(rc)
         &&  cb)
     {
         rc = VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 47819 2013-08-16 19:45:01Z vboxsync $ */
+/* $Id: IEMAll.cpp 48936 2013-10-07 21:21:42Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2601,7 +2601,7 @@ iemRaiseXcptOrIntInProtMode(PIEMCPU     pIemCpu,
         {
             if (fFlags & IEM_XCPT_FLAGS_ERR)
                 *uStackFrame.pu32++ = uErr;
-            uStackFrame.pu32[0] = fFlags & IEM_XCPT_FLAGS_T_SOFT_INT ? pCtx->eip + cbInstr : pCtx->eip; 
+            uStackFrame.pu32[0] = fFlags & IEM_XCPT_FLAGS_T_SOFT_INT ? pCtx->eip + cbInstr : pCtx->eip;
             uStackFrame.pu32[1] = (pCtx->cs.Sel & ~X86_SEL_RPL) | pIemCpu->uCpl;
             uStackFrame.pu32[2] = fEfl;
         }
@@ -2609,7 +2609,7 @@ iemRaiseXcptOrIntInProtMode(PIEMCPU     pIemCpu,
         {
             if (fFlags & IEM_XCPT_FLAGS_ERR)
                 *uStackFrame.pu16++ = uErr;
-            uStackFrame.pu16[0] = fFlags & IEM_XCPT_FLAGS_T_SOFT_INT ? pCtx->eip + cbInstr : pCtx->eip; 
+            uStackFrame.pu16[0] = fFlags & IEM_XCPT_FLAGS_T_SOFT_INT ? pCtx->eip + cbInstr : pCtx->eip;
             uStackFrame.pu16[1] = (pCtx->cs.Sel & ~X86_SEL_RPL) | pIemCpu->uCpl;
             uStackFrame.pu16[2] = fEfl;
         }
