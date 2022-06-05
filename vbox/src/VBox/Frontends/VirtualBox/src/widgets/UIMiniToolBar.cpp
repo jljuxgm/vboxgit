@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 51079 2014-04-15 15:04:26Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 51654 2014-06-18 18:14:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -41,13 +41,13 @@
 #endif /* !Q_WS_X11 */
 
 UIRuntimeMiniToolBar::UIRuntimeMiniToolBar(QWidget *pParent,
-                                           Qt::Alignment alignment,
                                            IntegrationMode integrationMode,
-                                           bool fAutoHide /* = true*/)
+                                           Qt::Alignment alignment,
+                                           bool fAutoHide /* = true */)
     : QWidget(pParent)
     /* Variables: General stuff: */
-    , m_alignment(alignment)
     , m_integrationMode(integrationMode)
+    , m_alignment(alignment)
     , m_fAutoHide(fAutoHide)
     /* Variables: Contents stuff: */
     , m_pMdiArea(0)
