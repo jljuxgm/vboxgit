@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 51969 2014-07-10 12:58:20Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 51970 2014-07-10 13:12:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -90,6 +90,7 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted)
     int rc = supHardenedWinInitImageVerifier(NULL);
     if (RT_FAILURE(rc))
         return rc;
+    supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation();
 #endif
 
     /*
