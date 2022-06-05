@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 49063 2013-10-12 07:16:07Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 49113 2013-10-15 09:36:22Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -398,22 +398,22 @@ int VBoxNetDhcp::init()
         {
             for (i = 0; i < count_strs; ++i)
             {
-                char aszAddr[17];
+                char szAddr[17];
                 RTNETADDRIPV4 ip4addr;
                 char *pszTerm;
                 uint32_t u32Off;
                 com::Utf8Str strLo2Off(strs[i]);
                 const char *pszLo2Off = strLo2Off.c_str();
 
-                RT_ZERO(aszAddr);
+                RT_ZERO(szAddr);
 
                 pszTerm = RTStrStr(pszLo2Off, "=");
 
                 if (   pszTerm
                     && (pszTerm - pszLo2Off) <= INET_ADDRSTRLEN)
                 {
-                    memcpy(aszAddr, pszLo2Off, (pszTerm - pszLo2Off));
-                    int rc = RTNetStrToIPv4Addr(aszAddr, &ip4addr);
+                    memcpy(szAddr, pszLo2Off, (pszTerm - pszLo2Off));
+                    int rc = RTNetStrToIPv4Addr(szAddr, &ip4addr);
                     if (RT_SUCCESS(rc))
                     {
                         u32Off = RTStrToUInt32(pszTerm + 1);
