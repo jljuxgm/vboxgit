@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 49760 2013-12-03 17:57:11Z vboxsync $ */
+/* $Id: ApplianceImpl.h 50174 2014-01-23 09:22:22Z vboxsync $ */
 
 /** @file
  *
@@ -108,7 +108,7 @@ private:
     HRESULT getWarnings(std::vector<com::Utf8Str> &aWarnings);
 
     /** weak VirtualBox parent */
-    VirtualBox* const   mVirtualBox;
+    VirtualBox* const mVirtualBox;
 
     struct ImportStack;
     struct TaskOVF;

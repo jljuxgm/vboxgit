@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 49871 2013-12-10 16:49:59Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 50174 2014-01-23 09:22:22Z vboxsync $ */
 
 /** @file
  *
@@ -45,7 +45,7 @@ public:
     HRESULT updateConfig();
 #endif
 
-    HRESULT i_setVirtualBox(VirtualBox *pVBox);
+    HRESULT i_setVirtualBox(VirtualBox *pVirtualBox);
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
     void i_registerMetrics(PerformanceCollector *aCollector, ComPtr<IUnknown> objptr);
@@ -86,7 +86,7 @@ private:
     const Bstr mShortName;
     HostNetworkInterfaceType_T mIfType;
 
-    VirtualBox * const  mVBox;
+    VirtualBox * const  mVirtualBox;
 
     struct Data
     {

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 44970 2013-03-11 09:59:05Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 50174 2014-01-23 09:22:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -281,8 +281,8 @@ DECLCALLBACK(int) VirtualBoxClient::SVCWatcherThread(RTTHREAD ThreadSelf,
                  * this fails use an increased waiting time as very frequent
                  * restart attempts in some wedged config can cause high CPU
                  * and disk load. */
-                ComPtr<IVirtualBox> pVBox;
-                rc = pVBox.createLocalObject(CLSID_VirtualBox);
+                ComPtr<IVirtualBox> pVirtualBox;
+                rc = pVirtualBox.createLocalObject(CLSID_VirtualBox);
                 if (FAILED(rc))
                     cMillies = 3 * VBOXCLIENT_DEFAULT_INTERVAL;
                 else
@@ -292,7 +292,7 @@ DECLCALLBACK(int) VirtualBoxClient::SVCWatcherThread(RTTHREAD ThreadSelf,
                         AutoWriteLock alock(pThis COMMA_LOCKVAL_SRC_POS);
                         /* Update the VirtualBox reference, there's a working
                          * VBoxSVC again from now on. */
-                        pThis->mData.m_pVirtualBox = pVBox;
+                        pThis->mData.m_pVirtualBox = pVirtualBox;
                     }
                     fireVBoxSVCAvailabilityChangedEvent(pThis->mData.m_pEventSource, TRUE);
                     cMillies = VBOXCLIENT_DEFAULT_INTERVAL;

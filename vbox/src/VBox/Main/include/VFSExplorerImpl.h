@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 49871 2013-12-10 16:49:59Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 50174 2014-01-23 09:22:22Z vboxsync $ */
 
 /** @file
  *
@@ -63,7 +63,7 @@ private:
                    ComPtr<IProgress> &aProgress);
 
     /* Private member vars */
-    VirtualBox * const  mVirtualBox;
+    VirtualBox * const mVirtualBox;
 
     ////////////////////////////////////////////////////////////////////////////////
     ////

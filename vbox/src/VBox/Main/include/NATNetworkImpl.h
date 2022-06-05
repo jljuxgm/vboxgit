@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 49742 2013-12-02 17:59:21Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 50174 2014-01-23 09:22:22Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -120,7 +120,7 @@ private:
     void i_getPortForwardRulesFromMap(std::vector<Utf8Str> &aPortForwardRules, NATRuleMap& aRules);
 
     /** weak VirtualBox parent */
-    VirtualBox * const      mVirtualBox;
+    VirtualBox * const mVirtualBox;
 
     const  com::Utf8Str mName;
 

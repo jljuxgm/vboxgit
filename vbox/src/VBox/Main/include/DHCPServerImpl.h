@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 49673 2013-11-27 03:11:49Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 50174 2014-01-23 09:22:22Z vboxsync $ */
 
 /** @file
  *
@@ -131,7 +131,7 @@ private:
     struct Data;
     Data *m;
     /** weak VirtualBox parent */
-    VirtualBox * const      mVirtualBox;
+    VirtualBox * const mVirtualBox;
     const Bstr mName;
 
 };
