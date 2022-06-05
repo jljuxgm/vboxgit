@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.cpp 51903 2014-07-07 13:03:49Z vboxsync $ */
+/* $Id: AutoCaller.cpp 52029 2014-07-15 06:56:27Z vboxsync $ */
 
 /** @file
  *
@@ -37,7 +37,7 @@ ObjectState::ObjectState() : mStateLock(LOCKCLASS_OBJECTSTATE)
 }
 
 ObjectState::ObjectState(VirtualBoxBase *aObj) :
-    mStateLock(LOCKCLASS_OBJECTSTATE), mObj(aObj)
+    mObj(aObj), mStateLock(LOCKCLASS_OBJECTSTATE)
 {
     Assert(mObj);
     mState = NotReady;
