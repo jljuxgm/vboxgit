@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 48982 2013-10-08 21:22:52Z vboxsync $
+; $Id: VMMR3.def 49324 2013-10-29 22:05:21Z vboxsync $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -357,6 +357,7 @@ EXPORTS
     VMR3Save
     VMR3SetCpuExecutionCap
     VMR3SetError
+    VMR3SetPowerOffInsteadOfReset
     VMR3Suspend
     VMR3Teleport
     VMR3AtStateDeregister
