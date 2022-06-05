@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-win.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-win.cpp 50853 2014-03-24 11:44:34Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, windows ring-3.
  */
@@ -165,8 +165,11 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
     /*
      * Before we do anything with COM, we have to initialize it.
      */
+    bool fUninit = true;
     HRESULT hrc = rtSystemDmiWinInitialize();
-    if (FAILED(hrc))
+    if (hrc == RPC_E_CHANGED_MODE)
+        fUninit = false;  /* don't fail if already initialized */
+    else if (FAILED(hrc))
         return VERR_NOT_SUPPORTED;
 
     int rc = VERR_NOT_SUPPORTED;
@@ -246,7 +249,8 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
     }
     else
         hrc = E_OUTOFMEMORY;
-    rtSystemDmiWinTerminate();
+    if (fUninit)
+        rtSystemDmiWinTerminate();
     if (FAILED(hrc) && rc == VERR_NOT_SUPPORTED)
         rc = VERR_NOT_SUPPORTED;
     return rc;
