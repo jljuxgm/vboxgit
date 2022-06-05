@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52030 2014-07-15 07:28:25Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -38,6 +38,7 @@ DECLHIDDEN(int)      supHardenedWinInitImageVerifier(PRTERRINFO pErrInfo);
 DECLHIDDEN(void)     supHardenedWinTermImageVerifier(void);
 DECLHIDDEN(int)      supHardenedWinVerifyProcess(HANDLE hProcess, HANDLE hThread, PRTERRINFO pErrInfo);
 
+DECLHIDDEN(bool)     supHardViIsAppPatchDir(PCRTUTF16 pwszPath, uint32_t cwcName);
 DECLHIDDEN(int)      supHardenedWinVerifyImageByHandle(HANDLE hFile, PCRTUTF16 pwszName, uint32_t fFlags, bool *pfCacheable, PRTERRINFO pErrInfo);
 DECLHIDDEN(int)      supHardenedWinVerifyImageByHandleNoName(HANDLE hFile, uint32_t fFlags, PRTERRINFO pErrInfo);
 /** @name SUPHNTVI_F_XXX - Flags for supHardenedWinVerifyImageByHandle.
@@ -51,6 +52,8 @@ DECLHIDDEN(int)      supHardenedWinVerifyImageByHandleNoName(HANDLE hFile, uint3
 #  define SUPHNTVI_F_REQUIRE_SIGNATURE_ENFORCEMENT  RT_BIT(2)
 /** Whether to allow image verification by catalog file. */
 #  define SUPHNTVI_F_ALLOW_CAT_FILE_VERIFICATION    RT_BIT(3)
+/** Resource image, could be any bitness. */
+#  define SUPHNTVI_F_RESOURCE_IMAGE                 RT_BIT(30)
 /** Raw-mode context image, always 32-bit. */
 #  define SUPHNTVI_F_RC_IMAGE                       RT_BIT(31)
 /** @} */
