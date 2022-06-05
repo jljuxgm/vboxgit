@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 51972 2014-07-10 13:17:32Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 51977 2014-07-11 02:20:36Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -569,6 +569,8 @@ static int supHardNtViCheckIfNotSignedOk(RTLDRMOD hLdrMod, PCRTUTF16 pwszName, u
         if (supHardViUtf16PathIsEqual(pwsz, "apisetschema.dll"))
             return IS_W70() ? VINF_LDRVI_NOT_SIGNED : rc;
         if (supHardViUtf16PathIsEqual(pwsz, "apphelp.dll"))
+            return uNtVer < SUP_MAKE_NT_VER_SIMPLE(6, 4) ? VINF_LDRVI_NOT_SIGNED : rc;
+        if (supHardViUtf16PathIsEqual(pwsz, "sfc.dll"))
             return uNtVer < SUP_MAKE_NT_VER_SIMPLE(6, 4) ? VINF_LDRVI_NOT_SIGNED : rc;
 
 #ifndef IN_RING0
