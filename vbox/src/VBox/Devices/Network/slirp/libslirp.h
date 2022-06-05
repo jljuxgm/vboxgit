@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 50671 2014-03-04 01:18:02Z vboxsync $ */
+/* $Id: libslirp.h 50676 2014-03-04 13:00:59Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -101,7 +101,7 @@ void slirp_set_somaxconn(PNATState pData, int iSoMaxConn);
  * Main API has primitives for listening DNS change event since 4.3.
  */
 #if (defined(RT_OS_DARWIN))
-# define HAVE_NOTIFICATION_FOR_DNS_UPDATE 1
+# define HAVE_NOTIFICATION_FOR_DNS_UPDATE 0
 #else
 # define HAVE_NOTIFICATION_FOR_DNS_UPDATE 0
 #endif
