@@ -1,4 +1,4 @@
-/** @file $Id: vbox_drv.h 52832 2014-09-24 09:11:35Z vboxsync $
+/** @file $Id: vbox_drv.h 52850 2014-09-24 19:19:10Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -96,8 +96,6 @@ struct vbox_private
     uint32_t full_vram_size;
     /** Amount of available VRAM, not including space used for buffers. */
     uint32_t vram_size;
-    /** Is HGSMI currently disabled? */
-    bool fDisableHGSMI;
 
     struct vbox_fbdev *fbdev;
 
