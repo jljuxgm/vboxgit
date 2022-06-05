@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 48985 2013-10-08 22:38:17Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 49069 2013-10-12 13:26:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1025,6 +1025,15 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 LogRel(("fHMForced=true - HWVirtExPropertyType_Force\n"));
         }
         InsertConfigInteger(pRoot, "HMEnabled", fHMEnabled);
+
+        /* /EM/xzy */
+        PCFGMNODE pEM;
+        InsertConfigNode(pRoot, "EM", &pEM);
+
+        /* Triple fault behavior. */
+        BOOL fTripleFaultReset = false;
+        hrc = pMachine->GetCPUProperty(CPUPropertyType_TripleFaultReset, &fTripleFaultReset); H();
+        InsertConfigInteger(pEM, "TripleFaultReset", fTripleFaultReset);
 
         /* /HM/xzy */
         PCFGMNODE pHM;
