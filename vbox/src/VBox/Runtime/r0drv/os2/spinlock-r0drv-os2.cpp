@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-os2.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: spinlock-r0drv-os2.cpp 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, OS/2.
  */
@@ -125,17 +125,5 @@ RTDECL(void) RTSpinlockRelease(RTSPINLOCK Spinlock)
     Assert(pThis->u32Magic == RTSPINLOCK_MAGIC);
 
     KernReleaseSpinLock(&pThis->Spinlock);
-}
-
-
-RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock)
-{
-#if 1
-    if (RT_UNLIKELY(!(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE)))
-        RTAssertMsg2("RTSpinlockReleaseNoInts: %p (magic=%#x)\n", Spinlock, Spinlock->u32Magic);
-#else
-    AssertRelease(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE);
-#endif
-    RTSpinlockRelease(Spinlock);
 }
 

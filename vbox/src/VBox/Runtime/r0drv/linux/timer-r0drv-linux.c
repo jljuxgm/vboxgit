@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -1440,7 +1440,7 @@ RTDECL(int) RTTimerDestroy(PRTTIMER pTimer)
         }
 
         if (pTimer->cCpus > 1)
-            RTSpinlockReleaseNoInts(pTimer->hSpinlock);
+            RTSpinlockRelease(pTimer->hSpinlock);
     }
 
     if (fCanDestroy)

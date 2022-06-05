@@ -1,10 +1,10 @@
-/* $Id: mp-r0drv-haiku.c 43373 2012-09-20 15:04:11Z vboxsync $ */
+/* $Id: mp-r0drv-haiku.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Haiku.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -214,5 +214,11 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
     return Args.cHits == 1
            ? VINF_SUCCESS
            : VERR_CPU_NOT_FOUND;
+}
+
+
+RTDECL(bool) RTMpOnAllIsConcurrentSafe(void)
+{
+    return true;
 }
 

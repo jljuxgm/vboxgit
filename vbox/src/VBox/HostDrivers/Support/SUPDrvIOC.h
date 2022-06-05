@@ -1,10 +1,10 @@
-/* $Revision: 51907 $ */
+/* $Revision: 52618 $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -199,9 +199,9 @@ typedef SUPREQHDR *PSUPREQHDR;
  *  -# When increment the major number, execute all pending work.
  *
  * @todo Pending work on next major version change:
- *          - Remove RTSpinlockReleaseNoInts.
+ *          - (none).
  */
-#define SUPDRV_IOC_VERSION                              0x001a0007
+#define SUPDRV_IOC_VERSION                              0x001b0000
 
 /** SUP_IOCTL_COOKIE. */
 typedef struct SUPCOOKIE

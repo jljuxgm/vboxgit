@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltRt-win.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime
  */
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1068,7 +1068,7 @@ DECLHIDDEN(void) vboxNetFltWinQuFiniPacketQueue(PVBOXNETFLTINS pInstance)
     {
         pSG = pWorker->pSG;
         pWorker->pSG = NULL;
-        RTSpinlockReleaseNoInts((pInstance)->hSpinlock);
+        RTSpinlockRelease((pInstance)->hSpinlock);
         KeSetEvent(&pWorker->KillEvent, 0, FALSE);
 
         KeWaitForSingleObject(pWorker->pThread, Executive,
@@ -1082,7 +1082,7 @@ DECLHIDDEN(void) vboxNetFltWinQuFiniPacketQueue(PVBOXNETFLTINS pInstance)
     }
     else
     {
-        RTSpinlockReleaseNoInts((pInstance)->hSpinlock);
+        RTSpinlockRelease((pInstance)->hSpinlock);
     }
 }
 

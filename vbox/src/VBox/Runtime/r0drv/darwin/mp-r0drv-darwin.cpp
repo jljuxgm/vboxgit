@@ -1,10 +1,10 @@
-/* $Id: mp-r0drv-darwin.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: mp-r0drv-darwin.cpp 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Darwin.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -268,5 +268,11 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
         return VERR_NOT_SUPPORTED;
     g_pfnR0DarwinCpuInterrupt(idCpu);
     return VINF_SUCCESS;
+}
+
+
+RTDECL(bool) RTMpOnAllIsConcurrentSafe(void)
+{
+    return true;
 }
 

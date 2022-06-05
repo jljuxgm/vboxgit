@@ -1,10 +1,10 @@
-/* $Id: spinlock-r0drv-linux.c 50811 2014-03-18 17:05:24Z vboxsync $ */
+/* $Id: spinlock-r0drv-linux.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -176,17 +176,4 @@ RTDECL(void) RTSpinlockRelease(RTSPINLOCK Spinlock)
     RT_ASSERT_PREEMPT_CPUID();
 }
 RT_EXPORT_SYMBOL(RTSpinlockRelease);
-
-
-RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock)
-{
-#if 1
-    if (RT_UNLIKELY(!(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE)))
-        RTAssertMsg2("RTSpinlockReleaseNoInts: %p (magic=%#x)\n", Spinlock, Spinlock->u32Magic);
-#else
-    AssertRelease(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE);
-#endif
-    RTSpinlockRelease(Spinlock);
-}
-RT_EXPORT_SYMBOL(RTSpinlockReleaseNoInts);
 

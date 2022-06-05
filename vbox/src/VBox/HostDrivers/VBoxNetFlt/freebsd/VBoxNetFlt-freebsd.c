@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-freebsd.c 40912 2012-04-14 07:05:47Z vboxsync $ */
+/* $Id: VBoxNetFlt-freebsd.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), FreeBSD Specific Code.
  */
@@ -608,7 +608,7 @@ int vboxNetFltOsInitInstance(PVBOXNETFLTINS pThis, void *pvContext)
     mtx_init(&pThis->u.s.outq.ifq_mtx, "vboxnetflt outq", NULL, MTX_SPIN);
     TASK_INIT(&pThis->u.s.tskout, 0, vboxNetFltFreeBSDoutput, pThis);
 
-    RTSpinlockReleaseNoInts(pThis->hSpinlock);
+    RTSpinlockRelease(pThis->hSpinlock);
 
     NG_NODE_SET_PRIVATE(node, pThis);
 

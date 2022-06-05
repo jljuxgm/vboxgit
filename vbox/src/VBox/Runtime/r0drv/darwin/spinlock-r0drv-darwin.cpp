@@ -1,10 +1,10 @@
-/* $Id: spinlock-r0drv-darwin.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: spinlock-r0drv-darwin.cpp 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Darwin.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -158,17 +158,5 @@ RTDECL(void) RTSpinlockRelease(RTSPINLOCK Spinlock)
     }
     else
         lck_spin_unlock(pThis->pSpinLock);
-}
-
-
-RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock)
-{
-#if 1
-    if (RT_UNLIKELY(!(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE)))
-        RTAssertMsg2("RTSpinlockReleaseNoInts: %p (%s)\n", Spinlock, Spinlock->pszName);
-#else
-    AssertRelease(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE);
-#endif
-    RTSpinlockRelease(Spinlock);
 }
 

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-haiku.h 43411 2012-09-22 18:42:16Z vboxsync $ */
+/* $Id: VBoxGuest-haiku.h 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, header.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -176,7 +176,6 @@ struct vboxguest_module_info
     int (*_RTTimerRequestSystemGranularity)(uint32_t u32Request, uint32_t *pu32Granted);
     void (*_RTSpinlockAcquire)(RTSPINLOCK Spinlock);
     void (*_RTSpinlockRelease)(RTSPINLOCK Spinlock);
-    void (*_RTSpinlockReleaseNoInts)(RTSPINLOCK Spinlock);
     void* (*_RTMemTmpAllocTag)(size_t cb, const char *pszTag);
     void (*_RTMemTmpFree)(void *pv);
     PRTLOGGER(*_RTLogDefaultInstance)(void);

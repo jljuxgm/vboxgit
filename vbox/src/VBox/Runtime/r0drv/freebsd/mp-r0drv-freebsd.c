@@ -1,10 +1,10 @@
-/* $Id: mp-r0drv-freebsd.c 49718 2013-11-29 10:51:54Z vboxsync $ */
+/* $Id: mp-r0drv-freebsd.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, FreeBSD.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -287,4 +287,10 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
     return VERR_NOT_SUPPORTED;
 }
 #endif /* < 7.0 */
+
+
+RTDECL(bool) RTMpOnAllIsConcurrentSafe(void)
+{
+    return true;
+}
 

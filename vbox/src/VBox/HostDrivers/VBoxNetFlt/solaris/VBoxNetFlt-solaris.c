@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFlt-solaris.c 50664 2014-03-03 10:54:25Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1109,7 +1109,7 @@ static int VBoxNetFltSolarisModReadPut(queue_t *pQueue, mblk_t *pMsg)
             RTSpinlockAcquire(pThis->hSpinlock);
             const bool fActive = pThis->enmTrunkState == INTNETTRUNKIFSTATE_ACTIVE;
             vboxNetFltRetain(pThis, true /* fBusy */);
-            RTSpinlockReleaseNoInts(pThis->hSpinlock);
+            RTSpinlockRelease(pThis->hSpinlock);
 
             vboxnetflt_promisc_stream_t *pPromiscStream = (vboxnetflt_promisc_stream_t *)pStream;
 

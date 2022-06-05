@@ -1,10 +1,10 @@
-/* $Id: mp-r0drv-nt.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -415,3 +415,10 @@ RTDECL(int) RTMpPokeCpu(RTCPUID idCpu)
     KeLowerIrql(oldIrql);
     return (bRet == TRUE) ? VINF_SUCCESS : VERR_ACCESS_DENIED /* already queued */;
 }
+
+
+RTDECL(bool) RTMpOnAllIsConcurrentSafe(void)
+{
+    return false;
+}
+

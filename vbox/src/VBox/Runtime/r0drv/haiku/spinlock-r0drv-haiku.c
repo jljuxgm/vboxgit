@@ -1,10 +1,10 @@
-/* $Id: spinlock-r0drv-haiku.c 43403 2012-09-22 11:48:24Z vboxsync $ */
+/* $Id: spinlock-r0drv-haiku.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Haiku.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -134,13 +134,5 @@ RTDECL(void) RTSpinlockRelease(RTSPINLOCK Spinlock)
 
     release_spinlock(&pSpinlockInt->hSpinLock);
     restore_interrupts(pSpinlockInt->fIntSaved);
-}
-
-
-RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock)
-{
-    if (!(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE))
-        RTAssertMsg2("RTSpinlockReleaseNoInts: p=%p (magic=%#x)\n", Spinlock, Spinlock->u32Magic);
-    RTSpinlockRelease(Spinlock);
 }
 

@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-haiku-stubs.c 49529 2013-11-18 13:05:36Z vboxsync $ */
+/* $Id: VBoxGuest-haiku-stubs.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, stubs.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -317,10 +317,6 @@ RTDECL(void) RTSpinlockAcquire(RTSPINLOCK Spinlock)
 RTDECL(void) RTSpinlockRelease(RTSPINLOCK Spinlock)
 {
     g_VBoxGuest->_RTSpinlockRelease(Spinlock);
-}
-RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock)
-{
-    g_VBoxGuest->_RTSpinlockReleaseNoInts(Spinlock);
 }
 RTDECL(void*) RTMemTmpAllocTag(size_t cb, const char *pszTag)
 {

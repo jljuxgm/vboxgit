@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-freebsd.c 42496 2012-08-01 08:48:06Z vboxsync $ */
+/* $Id: spinlock-r0drv-freebsd.c 52618 2014-09-05 12:07:29Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, FreeBSD.
  */
@@ -205,17 +205,5 @@ RTDECL(void) RTSpinlockRelease(RTSPINLOCK Spinlock)
     }
 
     critical_exit();
-}
-
-
-RTDECL(void) RTSpinlockReleaseNoInts(RTSPINLOCK Spinlock)
-{
-#if 1
-    if (RT_UNLIKELY(!(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE)))
-        RTAssertMsg2("RTSpinlockReleaseNoInts: %p (magic=%#x)\n", Spinlock, Spinlock->u32Magic);
-#else
-    AssertRelease(Spinlock->fFlags & RTSPINLOCK_FLAGS_INTERRUPT_SAFE);
-#endif
-    RTSpinlockRelease(Spinlock);
 }
 
