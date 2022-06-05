@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 47571 2013-08-07 09:49:33Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 51609 2014-06-12 10:01:53Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -200,6 +200,20 @@ static DECLCALLBACK(void) drvMousePassThruReportModes(PPDMIMOUSECONNECTOR pInter
 {
     PDRVMOUSEQUEUE pDrv = PPDMIMOUSECONNECTOR_2_DRVMOUSEQUEUE(pInterface);
     pDrv->pDownConnector->pfnReportModes(pDrv->pDownConnector, fRel, fAbs, fMT);
+}
+
+
+/**
+ * Flush the mouse queue if there are pending events.
+ *
+ * @param   pInterface  Pointer to the mouse connector interface structure.
+ */
+static DECLCALLBACK(void) drvMouseFlushQueue(PPDMIMOUSECONNECTOR pInterface)
+{
+    PDRVMOUSEQUEUE pDrv = PPDMIMOUSECONNECTOR_2_DRVMOUSEQUEUE(pInterface);
+
+    AssertPtr(pDrv->pQueue);
+    PDMQueueFlushIfNecessary(pDrv->pQueue);
 }
 
 
