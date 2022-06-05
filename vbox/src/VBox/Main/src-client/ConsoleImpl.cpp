@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 52019 2014-07-14 20:01:03Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 52032 2014-07-15 09:21:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6151,6 +6151,12 @@ HRESULT Console::i_saveState(Reason_T aReason, IProgress **aProgress)
             tr("Cannot save the execution state as the machine is not running or paused (machine state: %s)"),
             Global::stringifyMachineState(mMachineState));
     }
+
+    Bstr strDisableSaveState;
+    mMachine->GetExtraData(Bstr("VBoxInternal2/DisableSaveState").raw(), strDisableSaveState.asOutParam());
+    if (strDisableSaveState == "1")
+        return setError(VBOX_E_VM_ERROR,
+                        tr("Saving the execution state is disabled for this VM"));
 
     if (aReason != Reason_Unspecified)
         LogRel(("Saving state of VM, reason \"%s\"\n", Global::stringifyReason(aReason)));
