@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 52074 2014-07-17 12:36:12Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 52076 2014-07-17 12:47:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -895,7 +895,7 @@ void UIStatusBarEditorWindow::setWidgetGeometry(const QRect &rect)
      * because there is a Qt composition works properly,
      * Mac host has native translucency support,
      * Win host allows to enable it through Qt::WA_TranslucentBackground: */
-    setMask(m_pEmbeddedToolbar->geometry());
+    setMask(m_pEmbeddedWidget->geometry());
 #endif /* Q_WS_X11 */
 }
 
