@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 49502 2013-11-15 13:11:13Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 49503 2013-11-15 13:13:05Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -720,11 +720,7 @@ static void ctrlUninitVM(PGCTLCMDCTX pCtx, uint32_t uFlags)
             else if (   (pCtx->uFlags & CTLCMDCTX_FLAGS_SESSION_DETACH)
                      && pCtx->fVerbose)
                 RTPrintf("Guest session detached\n");
-#ifdef DEBUG
-            ULONG cRefs = pCtx->pGuestSession->AddRef();
-            RTPrintf("cRefs=%RU32\n", cRefs - 1);
-            pCtx->pGuestSession->Release();
-#endif
+
             pCtx->pGuestSession.setNull();
         }
 
