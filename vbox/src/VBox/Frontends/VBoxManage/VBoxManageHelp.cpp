@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 48985 2013-10-08 22:38:17Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 49086 2013-10-14 12:57:15Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -177,6 +177,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
 #endif
                      "                            [--ioapic on|off]\n"
                      "                            [--hpet on|off]\n"
+                     "                            [--triplefaultreset on|off]\n"
                      "                            [--hwvirtex on|off]\n"
                      "                            [--nestedpaging on|off]\n"
                      "                            [--largepages on|off]\n"
