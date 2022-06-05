@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 52767 2014-09-16 16:51:51Z vboxsync $ */
+/* $Id: GIMAll.cpp 52768 2014-09-16 17:02:30Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -107,8 +107,10 @@ VMM_INT_DECL(int) GIMHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
 
 /**
  * Returns whether the guest has configured and setup the use of paravirtualized
- * TSC. Paravirtualized TSCs are per-VM and the rest of the execution engine
- * logic relies on that.
+ * TSC.
+ *
+ * Paravirtualized TSCs are per-VM and the rest of the execution engine logic
+ * relies on that.
  *
  * @returns true if enabled and usable, false otherwise.
  * @param   pVM         Pointer to the VM.
