@@ -1,4 +1,4 @@
-/* $Id: utf-16.cpp 50793 2014-03-14 21:13:23Z vboxsync $ */
+/* $Id: utf-16.cpp 50795 2014-03-14 23:41:48Z vboxsync $ */
 /** @file
  * IPRT - UTF-16.
  */
@@ -325,7 +325,7 @@ RTDECL(int) RTUtf16ValidateEncodingEx(PCRTUTF16 pwsz, size_t cwc, uint32_t fFlag
     /*
      * Use rtUtf16Length for the job.
      */
-    size_t cwcActual;
+    size_t cwcActual = 0; /* Shut up cc1plus. */
     size_t cCpsIgnored;
     int rc = rtUtf16Length(pwsz, cwc, &cCpsIgnored, &cwcActual);
     if (RT_SUCCESS(rc))
