@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50833 2014-03-21 07:56:25Z vboxsync $
+# $Id: Makefile.kmk 50834 2014-03-21 07:57:16Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -363,7 +363,6 @@ RuntimeR3_SOURCES       = \
 	common/path/RTPathAppend.cpp \
 	common/path/RTPathAppendEx.cpp \
 	common/path/RTPathCalcRelative.cpp \
-	common/path/RTPathCheck.cpp \
 	common/path/RTPathChangeToDosSlashes.cpp \
 	common/path/RTPathChangeToUnixSlashes.cpp \
 	common/path/RTPathCopyComponents.cpp \
