@@ -1,4 +1,4 @@
-/* $Id: x509-core.cpp 51856 2014-07-03 18:39:21Z vboxsync $ */
+/* $Id: x509-core.cpp 52206 2014-07-27 19:33:10Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Core APIs.
  */
@@ -643,6 +643,7 @@ static struct
     const char *pszLongNm;
 } const g_aRdnMap[] =
 {
+    {   "0.9.2342.19200300.100.1.3",  RT_STR_TUPLE("Mail"),                 "Rfc822Mailbox" },
     {   "0.9.2342.19200300.100.1.25", RT_STR_TUPLE("DC"),                   "DomainComponent" },
     {   "1.2.840.113549.1.9.1",       RT_STR_TUPLE("Email"),                "EmailAddress" },
     {   "2.5.4.3",                    RT_STR_TUPLE("CN"),                   "CommonName" },
