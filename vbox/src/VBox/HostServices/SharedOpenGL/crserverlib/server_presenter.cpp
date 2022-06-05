@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 52368 2014-08-13 15:08:02Z vboxsync $ */
+/* $Id: server_presenter.cpp 52384 2014-08-14 16:06:54Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -923,9 +923,15 @@ int CrFbResize(CR_FRAMEBUFFER *pFb, const struct VBVAINFOSCREEN * pScreen, void 
         return VERR_INVALID_STATE;
     }
 
-    if (pScreen->u16Flags & VBVA_SCREEN_F_DISABLED)
+    int rc = VINF_SUCCESS;
+    if (CrFbIsEnabled(pFb))
     {
-        CrVrScrCompositorClear(&pFb->Compositor);
+        rc = CrFbRegionsClear(pFb);
+        if (RT_FAILURE(rc))
+        {
+            WARN(("CrFbRegionsClear failed %d", rc));
+            return rc;
+        }
     }
 
     RTRECT Rect;
@@ -933,7 +939,7 @@ int CrFbResize(CR_FRAMEBUFFER *pFb, const struct VBVAINFOSCREEN * pScreen, void 
     Rect.yTop = 0;
     Rect.xRight = pScreen->u32Width;
     Rect.yBottom = pScreen->u32Height;
-    int rc = CrVrScrCompositorRectSet(&pFb->Compositor, &Rect, NULL);
+    rc = CrVrScrCompositorRectSet(&pFb->Compositor, &Rect, NULL);
     if (!RT_SUCCESS(rc))
     {
         WARN(("CrVrScrCompositorRectSet failed rc %d", rc));
