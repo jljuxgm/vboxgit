@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 52236 2014-07-30 14:11:22Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 52343 2014-08-11 15:15:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -123,7 +123,7 @@ void UIMachineLogicNormal::sltToggleStatusBar()
     gEDataManager->setStatusBarEnabled(!fEnabled, vboxGlobal().managedVMUuid());
 }
 
-void UIMachineLogicNormal::sltHandleActionTriggerViewResize(int iIndex, const QSize &size)
+void UIMachineLogicNormal::sltHandleActionTriggerViewScreenResize(int iIndex, const QSize &size)
 {
     /* Resize guest to required size: */
     CDisplay display = session().GetConsole().GetDisplay();
@@ -147,8 +147,8 @@ void UIMachineLogicNormal::prepareActionConnections()
             this, SLOT(sltOpenStatusBarSettings()));
     connect(actionPool()->action(UIActionIndexRT_M_View_M_StatusBar_T_Visibility), SIGNAL(triggered(bool)),
             this, SLOT(sltToggleStatusBar()));
-    connect(actionPool(), SIGNAL(sigNotifyAboutTriggeringViewResize(int, const QSize&)),
-            this, SLOT(sltHandleActionTriggerViewResize(int, const QSize&)));
+    connect(actionPool(), SIGNAL(sigNotifyAboutTriggeringViewScreenResize(int, const QSize&)),
+            this, SLOT(sltHandleActionTriggerViewScreenResize(int, const QSize&)));
 }
 
 void UIMachineLogicNormal::prepareMachineWindows()
