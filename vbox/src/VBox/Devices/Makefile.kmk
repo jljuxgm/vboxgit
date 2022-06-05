@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52506 2014-08-27 14:11:36Z vboxsync $
+# $Id: Makefile.kmk 52797 2014-09-19 16:38:00Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1308,6 +1308,14 @@ if defined(VBOX_WITH_EXTPACK_PUEL) && defined(VBOX_WITH_EXTPACK_PUEL_BUILD)
 	USB/DevEHCI.cpp \
 	USB/DevXHCI.cpp
   endif
+
+  # Hacky but MSI support *must* be enabled
+  ifdef VBOX_WITH_MSI_DEVICES
+   VBoxEhciR3_DEFS += VBOX_WITH_MSI_DEVICES
+   VBoxEhciR0_DEFS += VBOX_WITH_MSI_DEVICES
+   VBoxEhciRC_DEFS += VBOX_WITH_MSI_DEVICES
+  endif
+
  endif
 
  if defined(VBOX_WITH_PCI_PASSTHROUGH)
