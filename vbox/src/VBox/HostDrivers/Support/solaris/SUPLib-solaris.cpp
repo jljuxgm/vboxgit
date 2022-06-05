@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 48952 2013-10-07 21:54:31Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 49636 2013-11-24 12:51:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -64,6 +64,8 @@
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
 *******************************************************************************/
+/** @todo r=ramshankar: This breaks accessing the driver from non-global zones. We should check
+    using getzoneid() != GLOBAL_ZONE and use /dev/vboxdrv[u] instead when we're in a zone. */
 /** Solaris device link - system. */
 #define DEVICE_NAME_SYS     "/devices/pseudo/vboxdrv@0:vboxdrv"
 /** Solaris device link - user. */
