@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51111 2014-04-21 18:22:49Z vboxsync $ */
+/* $Id: server_presenter.cpp 51112 2014-04-21 18:50:56Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -1527,7 +1527,7 @@ int CrFbRegionsClear(HCR_FRAMEBUFFER hFb)
 
     const struct VBVAINFOSCREEN* pScreen = CrFbGetScreenInfo(hFb);
     VBOXCMDVBVAOFFSET offVRAM = (VBOXCMDVBVAOFFSET)(((uintptr_t)CrFbGetVRAM(hFb)) - ((uintptr_t)g_pvVRamBase));
-    int8_t i8Result = crVBoxServerCrCmdBltPrimaryVramGenericProcess(pScreen->u32ViewIndex, offVRAM, pScreen->u32Width, pScreen->u32Height, 0, 0, pRegions, cRegions, false);
+    int8_t i8Result = crVBoxServerCrCmdBltPrimaryVramGenericProcess(pScreen->u32ViewIndex, offVRAM, pScreen->u32Width, pScreen->u32Height, 0, 0, pRegions, cRegions, true);
     if (i8Result)
     {
         WARN(("crVBoxServerCrCmdBltPrimaryVramGenericProcess failed"));
