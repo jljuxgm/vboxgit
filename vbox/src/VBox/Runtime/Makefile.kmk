@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51784 2014-07-01 20:07:45Z vboxsync $
+# $Id: Makefile.kmk 51785 2014-07-01 20:08:29Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2317,7 +2317,7 @@ RuntimeGuestR0_SOURCES   := $(filter-out generic/RTLogWriteUser-generic.cpp, $(R
 RuntimeGuestR0_SOURCES   += \
 	VBox/logbackdoor.cpp
 RuntimeGuestR0_SOURCES.win := \
-	$(filter-out common/hash/md% common/sha%, $(RuntimeR0Drv_SOURCES.win))
+	$(filter-out common/checksum/md% common/checksum/sha%, $(RuntimeR0Drv_SOURCES.win))
 
 
 #
