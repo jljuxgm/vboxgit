@@ -1,4 +1,4 @@
-# $Id: Config.kmk 48406 2013-09-10 12:53:50Z vboxsync $
+# $Id: Config.kmk 48444 2013-09-12 09:54:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2824,6 +2824,7 @@ if1of ($(KBUILD_TARGET), linux)
    #
    VBOX_LINUX_INCS  += $(kernelpath)/include/asm-i386/mach-default \
                        $(kernelpath)/include/asm-x86/mach-default \
+                       $(kernelpath)/include/drm \
                        $(kernelpath)/arch/x86/include \
                        $(kernelpath)/arch/x86/include/asm/mach-default \
                        $(kernelpath)/arch/x86/include/uapi \
@@ -5171,6 +5172,7 @@ TEMPLATE_VBOXGUESTR0_SDKS.win.amd64 = ReorderCompilerIncs $(VBOX_WINDDK_GST) $(V
 TEMPLATE_VBOXGUESTR0_LIBS.win.x86   = \
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB)/int64.lib
 TEMPLATE_VBOXGUESTR0_DEFS        = $(TEMPLATE_VBOXR0DRV_DEFS) IN_GUEST IN_GUEST_R0
+TEMPLATE_VBOXGUESTR0_DEFS.linux  = RT_NO_EXPORT_SYMBOL
 ifeq ($(KBUILD_TARGET),solaris)
  TEMPLATE_VBOXGUESTR0_LDFLAGS    = -r -dy
 endif
@@ -5488,7 +5490,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48406 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48444 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
