@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 52546 2014-09-01 08:58:51Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 52585 2014-09-03 14:06:48Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2633,6 +2633,24 @@ struct MachineEvent : public VirtualBox::CallbackEvent
     MachineState_T mState;
     BOOL mBool;
 };
+
+
+/**
+ * Extpack install notification
+ */
+void VirtualBox::i_extPackInstallNotify(const char *pszExtPackName)
+{
+    m->pSystemProperties->i_extPackInstallNotify(pszExtPackName);
+}
+
+/**
+ * Extpack uninstall notification
+ */
+void VirtualBox::i_extPackUninstallNotify(const char *pszExtPackName)
+{
+    m->pSystemProperties->i_extPackUninstallNotify(pszExtPackName);
+}
+
 
 /**
  *  @note Doesn't lock any object.
