@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 50009 2013-12-27 14:44:05Z vboxsync $ */
+/* $Id: VMMRZ.cpp 50842 2014-03-21 13:17:58Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -134,7 +134,7 @@ VMMRZDECL(void) VMMRZCallRing3Disable(PVMCPU pVCpu)
 
     Assert(pVCpu->vmm.s.cCallRing3Disabled < 16);
     if (ASMAtomicIncU32(&pVCpu->vmm.s.cCallRing3Disabled) == 1) /** @todo replace with unordered variant (ASMAtomicUoIncU32). */
-    {
+    {                                                           /** @todo See @bugref{6208} c36 for impl. diff. */
         /** @todo it might make more sense to just disable logging here, then we
          * won't flush away important bits... but that goes both ways really. */
 #ifdef IN_RC
