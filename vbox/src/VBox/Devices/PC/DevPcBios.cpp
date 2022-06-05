@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 50091 2014-01-17 12:06:45Z vboxsync $ */
+/* $Id: DevPcBios.cpp 50320 2014-02-04 16:49:07Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -1396,8 +1396,11 @@ static DECLCALLBACK(int)  pcbiosConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     }
 
     if (pThis->u8IOAPIC)
+    {
         FwCommonPlantMpsTable(pDevIns, pThis->au8DMIPage + VBOX_DMI_TABLE_SIZE,
                               _4K - VBOX_DMI_TABLE_SIZE, pThis->cCpus);
+        LogRel(("MPS table at %08x\n", VBOX_DMI_TABLE_BASE + VBOX_DMI_TABLE_SIZE));
+    }
 
     rc = PDMDevHlpROMRegister(pDevIns, VBOX_DMI_TABLE_BASE, _4K, pThis->au8DMIPage, _4K,
                               PGMPHYS_ROM_FLAGS_PERMANENT_BINARY, "DMI tables");
