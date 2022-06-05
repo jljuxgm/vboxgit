@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 51525 2014-06-04 08:32:22Z vboxsync $ */
+/* $Id: DisplayImpl.h 51551 2014-06-05 12:09:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -235,7 +235,6 @@ public:
     STDMETHOD(TakeScreenShotPNGToArray)(ULONG aScreenId, ULONG width, ULONG height, ComSafeArrayOut(BYTE, aScreenData));
     STDMETHOD(DrawToScreen)(ULONG aScreenId, BYTE *address, ULONG x, ULONG y, ULONG width, ULONG height);
     STDMETHOD(InvalidateAndUpdate)();
-    STDMETHOD(ResizeCompleted)(ULONG aScreenId);
     STDMETHOD(SetSeamlessMode)(BOOL enabled);
 
     STDMETHOD(CompleteVHWACommand)(BYTE *pCommand);
