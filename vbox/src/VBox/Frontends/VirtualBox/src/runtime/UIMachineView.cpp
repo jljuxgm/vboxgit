@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 49420 2013-11-08 15:54:02Z vboxsync $ */
+/* $Id: UIMachineView.cpp 50224 2014-01-24 14:35:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -881,8 +881,8 @@ void UIMachineView::scrollContentsBy(int dx, int dy)
     session().GetConsole().GetDisplay().ViewportChanged(screenId(),
                             contentsX(),
                             contentsY(),
-                            contentsWidth(),
-                            contentsHeight());
+                            visibleWidth(),
+                            visibleHeight());
 }
 
 
@@ -1005,8 +1005,8 @@ bool UIMachineView::eventFilter(QObject *pWatched, QEvent *pEvent)
                 session().GetConsole().GetDisplay().ViewportChanged(screenId(),
                         contentsX(),
                         contentsY(),
-                        contentsWidth(),
-                        contentsHeight());
+                        visibleWidth(),
+                        visibleHeight());
                 break;
             }
             default:
