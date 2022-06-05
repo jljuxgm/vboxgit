@@ -1,4 +1,4 @@
-; $Id: sup.mac 53430 2014-12-03 13:18:41Z vboxsync $
+; $Id: sup.mac 53436 2014-12-03 18:26:46Z vboxsync $
 ;; @file
 ; SUP - Support Library, assembly definitions.
 ;
@@ -135,8 +135,8 @@ endstruc
     je      %%done
 %%valid_delta:
     ; Subtract the delta from edx:eax
-    sub     eax, dword [%1 + SUPGIPCPU.i64TSCDelta + 4]
-    sbb     edx, dword [%1 + SUPGIPCPU.i64TSCDelta]
+    sub     eax, dword [%1 + SUPGIPCPU.i64TSCDelta]
+    sbb     edx, dword [%1 + SUPGIPCPU.i64TSCDelta + 4]
 %%done:
 %endmacro
 
