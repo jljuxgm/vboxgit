@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49026 2013-10-10 12:01:59Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49134 2013-10-16 12:24:39Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3422,7 +3422,7 @@ DECLINLINE(int) hmR0SvmHandleExit(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
             HMSVM_ASSERT_PREEMPT_CPUID(); \
     } while (0)
 #else   /* Release builds */
-# define HMSVM_VALIDATE_EXIT_HANDLER_PARAMS() do { } while(0)
+# define HMSVM_VALIDATE_EXIT_HANDLER_PARAMS() do { } while (0)
 #endif
 
 

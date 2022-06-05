@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 47826 2013-08-17 23:51:57Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 49134 2013-10-16 12:24:39Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -66,7 +66,7 @@
 # define TRPM_ENTER_DBG_HOOK(a_iVector) \
     uint32_t const fDbgEFlags1 = CPUMRawGetEFlags(pVCpu); \
     if (!(fDbgEFlags1 & X86_EFL_IF)) Log(("%s: IF=0 ##\n", __FUNCTION__)); \
-    else do {} while(0)
+    else do {} while (0)
 # define TRPM_EXIT_DBG_HOOK(a_iVector) \
     do { \
         uint32_t const fDbgEFlags2 = CPUMRawGetEFlags(pVCpu); \
