@@ -1,4 +1,4 @@
-; $Id: VBoxVgaBiosAlternative.asm 48619 2013-09-20 17:17:20Z vboxsync $ 
+; $Id: VBoxVgaBiosAlternative.asm 48664 2013-09-24 20:26:56Z vboxsync $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
@@ -150,6 +150,16 @@
 ;  //   - VESA BIOS EXTENSION (VBE) Core Functions Standard Version 3.0 located at www.vesa.org
 ;  //
 ;  // ============================================================================================
+
+
+;
+; Oracle LGPL Disclaimer: For the avoidance of doubt, except that if any license choice
+; other than GPL or LGPL is available it will apply instead, Oracle elects to use only
+; the Lesser General Public License version 2.1 (LGPLv2) at this time for any software where
+; a choice of LGPL license versions is made available with the language indicating
+; that LGPLv2 or any later version may be used, or where a choice of which version
+; of the LGPL is applied is otherwise unspecified.
+;
 
 
 

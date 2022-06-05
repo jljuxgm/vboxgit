@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 47937 2013-08-20 16:17:35Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 48664 2013-09-24 20:26:56Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 47937 2013-08-20 16:17:35Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 48664 2013-09-24 20:26:56Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -203,6 +203,7 @@ static bool disFileHeader(void)
      * List the header of each source file, up to and including the
      * copyright notice.
      */
+    bool fNeedLgplDisclaimer = false;
     PBIOSOBJFILE pObjFile;
     RTListForEach(&g_ObjList, pObjFile, BIOSOBJFILE, Node)
     {
@@ -258,6 +259,10 @@ static bool disFileHeader(void)
                         || strstr(psz, "copyright")) )
                     fSeenCopyright = true;
 
+                /* Detect LGPL. */
+                if (strstr(psz, "LGPL"))
+                    fNeedLgplDisclaimer = true;
+
                 fRc = outputPrintf(";  %s\n", psz) && fRc;
             }
 
@@ -266,6 +271,21 @@ static bool disFileHeader(void)
                 return disError("Error reading '%s': rc=%Rrc iLine=%u", pObjFile->pszSource, rc, iLine);
         }
     }
+
+    /*
+     * Add Oracle LGPL disclaimer.
+     */
+    if (fNeedLgplDisclaimer)
+        outputPrintf("\n"
+                     ";\n"
+                     "; Oracle LGPL Disclaimer: For the avoidance of doubt, except that if any license choice\n"
+                     "; other than GPL or LGPL is available it will apply instead, Oracle elects to use only\n"
+                     "; the Lesser General Public License version 2.1 (LGPLv2) at this time for any software where\n"
+                     "; a choice of LGPL license versions is made available with the language indicating\n"
+                     "; that LGPLv2 or any later version may be used, or where a choice of which version\n"
+                     "; of the LGPL is applied is otherwise unspecified.\n"
+                     ";\n"
+                     "\n");
 
     /*
      * Set the org.
