@@ -1,4 +1,4 @@
-/* $Id: VBoxVga.c 49098 2013-10-15 01:30:53Z vboxsync $ */
+/* $Id: VBoxVga.c 53144 2014-10-24 14:16:14Z vboxsync $ */
 /** @file
  * VBoxVga.c
  */
@@ -897,8 +897,8 @@ DrawLogo (
   )
 {
   DEBUG((DEBUG_INFO, "UGA is %a GOP is %a\n",
-        FeaturePcdGet(PcdSupportGop) ? "on" : "off",
-        FeaturePcdGet(PcdSupportUga) ? "on" : "off"
+        FeaturePcdGet(PcdSupportUga) ? "on" : "off",
+        FeaturePcdGet(PcdSupportGop) ? "on" : "off"
   ));
 }
 
