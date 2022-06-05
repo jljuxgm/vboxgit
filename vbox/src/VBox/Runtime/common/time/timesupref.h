@@ -1,10 +1,10 @@
-/* $Id: timesupref.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: timesupref.h 53430 2014-12-03 13:18:41Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib, the C Code Template.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
