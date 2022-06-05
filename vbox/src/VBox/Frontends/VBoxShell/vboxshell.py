@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 50409 2014-02-11 09:16:15Z vboxsync $
+# $Id: vboxshell.py 50711 2014-03-06 13:10:54Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 50409 $"
+__version__ = "$Revision: 50711 $"
 
 
 import os, sys
@@ -377,7 +377,7 @@ def monitorSource(ctx, eventSource, active, dur):
             if mtev:
                 printMultiTouchEvent(ctx, mtev)
 
-    class EventListener:
+    class EventListener(object):
         def __init__(self, arg):
             pass
 
