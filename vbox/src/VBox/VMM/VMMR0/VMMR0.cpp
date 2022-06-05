@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 49026 2013-10-10 12:01:59Z vboxsync $ */
+/* $Id: VMMR0.cpp 49215 2013-10-21 15:14:54Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -816,10 +816,18 @@ VMMR0DECL(int) VMMR0EntryInt(PVM pVM, VMMR0OPERATION enmOperation, void *pvArg)
  */
 VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperation)
 {
+    /*
+     * Validation.
+     */
     if (RT_UNLIKELY(idCpu >= pVM->cCpus))
         return;
     PVMCPU pVCpu = &pVM->aCpus[idCpu];
+    if (RT_UNLIKELY(pVCpu->hNativeThreadR0 != RTThreadNativeSelf()))
+        return;
 
+    /*
+     * Perform requested operation.
+     */
     switch (enmOperation)
     {
         /*
