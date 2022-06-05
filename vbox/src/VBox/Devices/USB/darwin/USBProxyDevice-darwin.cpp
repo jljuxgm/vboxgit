@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 50228 2014-01-24 21:16:37Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 50231 2014-01-24 21:30:57Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1286,7 +1286,6 @@ static DECLCALLBACK(int) usbProxyDarwinOpen(PUSBPROXYDEV pProxyDev, const char *
                                     pProxyDev->iActiveCfg = -1;
                                     pProxyDev->cIgnoreSetConfigs = 1;
 
-                                    pProxyDev->Backend.pv = pDevOsX;
                                     usbProxyDarwinAddRunLoopRef(&pDevOsX->HeadOfRunLoopLst, pDevOsX->RunLoopSrcRef);
                                     return VINF_SUCCESS;        /* return */
                                 }
