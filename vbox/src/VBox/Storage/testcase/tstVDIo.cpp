@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 52496 2014-08-25 14:41:15Z vboxsync $ */
+/* $Id: tstVDIo.cpp 52640 2014-09-08 11:15:32Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2033,7 +2033,7 @@ static DECLCALLBACK(int) vdScriptHandlerResize(PVDSCRIPTARG paScriptArgs, void *
     int rc = VINF_SUCCESS;
     PVDTESTGLOB pGlob = (PVDTESTGLOB)pvUser;
     const char *pcszDisk = paScriptArgs[0].psz;
-    uint64_t cbDiskNew = 0;
+    uint64_t cbDiskNew = paScriptArgs[1].u64;
     PVDDISK pDisk = NULL;
 
     pDisk = tstVDIoGetDiskByName(pGlob, pcszDisk);
