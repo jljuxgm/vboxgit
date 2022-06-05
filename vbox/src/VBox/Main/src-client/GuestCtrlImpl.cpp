@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 47732 2013-08-14 14:34:35Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 48342 2013-09-06 07:22:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -96,9 +96,7 @@ DECLCALLBACK(int) Guest::notifyCtrlDispatcher(void    *pvExtension,
 
     uint32_t uContextID;
     int rc = pSvcCb->mpaParms[0].getUInt32(&uContextID);
-    AssertMsgRC(rc, ("Unable to extract callback context ID, pvData=%p\n", pSvcCb));
-    if (RT_FAILURE(rc))
-        return rc;
+    AssertMsgRCReturn(rc, ("Unable to extract callback context ID, pvData=%p\n", pSvcCb), rc);
 #ifdef DEBUG
     LogFlowFunc(("CID=%RU32, uSession=%RU32, uObject=%RU32, uCount=%RU32\n",
                  uContextID,

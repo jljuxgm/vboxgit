@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 47817 2013-08-16 15:30:15Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 48342 2013-09-06 07:22:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1316,13 +1316,13 @@ int GuestSession::onSessionStatusChange(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUE
 
     CALLBACKDATA_SESSION_NOTIFY dataCb;
     /* pSvcCb->mpaParms[0] always contains the context ID. */
-    pSvcCbData->mpaParms[1].getUInt32(&dataCb.uType);
-    pSvcCbData->mpaParms[2].getUInt32(&dataCb.uResult);
+    int vrc = pSvcCbData->mpaParms[1].getUInt32(&dataCb.uType);
+    AssertRCReturn(vrc, vrc);
+    vrc = pSvcCbData->mpaParms[2].getUInt32(&dataCb.uResult);
+    AssertRCReturn(vrc, vrc);
 
     LogFlowThisFunc(("ID=%RU32, uType=%RU32, guestRc=%Rrc\n",
                      mData.mSession.mID, dataCb.uType, dataCb.uResult));
-
-    int vrc = VINF_SUCCESS;
 
     GuestSessionStatus_T sessionStatus = GuestSessionStatus_Undefined;
 
