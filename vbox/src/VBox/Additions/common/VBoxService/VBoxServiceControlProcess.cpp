@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 49349 2013-10-31 16:40:46Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 51205 2014-05-07 14:19:19Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -524,6 +524,8 @@ static int gstcntlProcessProcLoop(PVBOXSERVICECTRLPROCESS pProcess)
     rc = VbglR3GuestCtrlProcCbStatus(&ctxStart,
                                      pProcess->uPID, PROC_STS_STARTED, 0 /* u32Flags */,
                                      NULL /* pvData */, 0 /* cbData */);
+    if (rc == VERR_INTERRUPTED)
+        rc = VINF_SUCCESS; /* SIGCHLD send by quick childs! */
     if (RT_FAILURE(rc))
         VBoxServiceError("[PID %RU32]: Error reporting starting status to host, rc=%Rrc\n",
                          pProcess->uPID, rc);
