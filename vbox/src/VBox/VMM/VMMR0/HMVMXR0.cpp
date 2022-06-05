@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48436 2013-09-11 15:55:29Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48443 2013-09-12 09:46:35Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6261,18 +6261,12 @@ static int hmR0VmxExitToRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, int rcE
     Assert(pMixedCtx);
     HMVMX_ASSERT_PREEMPT_SAFE();
 
-    if (RT_UNLIKELY(rcExit == VERR_VMX_INVALID_GUEST_STATE))
-    {
-        /* We've done what is required in hmR0VmxExitErrInvalidGuestState(). We're not going to continue guest execution... */
-        return VINF_SUCCESS;
-    }
-    else if (RT_UNLIKELY(rcExit == VERR_VMX_INVALID_VMCS_PTR))
+    if (RT_UNLIKELY(rcExit == VERR_VMX_INVALID_VMCS_PTR))
     {
         VMXGetActivatedVmcs(&pVCpu->hm.s.vmx.LastError.u64VMCSPhys);
         pVCpu->hm.s.vmx.LastError.u32VMCSRevision = *(uint32_t *)pVCpu->hm.s.vmx.pvVmcs;
         pVCpu->hm.s.vmx.LastError.idEnteredCpu    = pVCpu->hm.s.idEnteredCpu;
         /* LastError.idCurrentCpu was updated in hmR0VmxPreRunGuestCommitted(). */
-        return VINF_SUCCESS;
     }
 
     /* Please, no longjumps here (any logging shouldn't flush jump back to ring-3). NO LOGGING BEFORE THIS POINT! */
