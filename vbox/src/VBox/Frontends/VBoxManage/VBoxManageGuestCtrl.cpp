@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 49351 2013-10-31 17:14:14Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 49353 2013-10-31 18:54:14Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -335,7 +335,7 @@ void usageGuestControl(PRTSTREAM pStrm, const char *pcszSep1, const char *pcszSe
                  "                            [--domain <domain>] [--verbose]\n"
                  "                            [--parents] [--mode <mode>]\n"
                  "\n"
-                 "                            removedir[ectory]|rmdir|rm\n"
+                 "                            removedir[ectory]|rmdir\n"
                  "                            <guest directory>... --username <name>\n"
                  "                            [--passwordfile <file> | --password <password>]\n"
                  "                            [--domain <domain>] [--verbose]\n"
