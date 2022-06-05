@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52773 2014-09-17 11:57:32Z vboxsync $
+# $Id: Config.kmk 52774 2014-09-17 14:42:47Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1082,7 +1082,6 @@ ifdef VBOX_OSE
  ifndef ($(VBOX_NO_DOCS_TRANSLATIONS))
   VBOX_WITH_DOCS_TRANSLATIONS = 1
  endif
- VBOX_WITH_VALIDATIONKIT=
  VBOX_WITH_INTEL_PXE=
  # Disable for OSE, requires snv_159+.
  VBOX_WITH_NETFLT_CROSSBOW=
@@ -5734,7 +5733,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52773 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52774 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
