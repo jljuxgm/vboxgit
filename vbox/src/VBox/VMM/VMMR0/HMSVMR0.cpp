@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48302 2013-09-05 12:11:58Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 48306 2013-09-05 12:53:53Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2747,6 +2747,8 @@ static int hmR0SvmCheckForceFlags(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
  */
 static int hmR0SvmPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmTransient)
 {
+    HMSVM_ASSERT_PREEMPT_SAFE();
+
     /* Check force flag actions that might require us to go back to ring-3. */
     int rc = hmR0SvmCheckForceFlags(pVM, pVCpu, pCtx);
     if (rc != VINF_SUCCESS)
