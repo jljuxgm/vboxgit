@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 51699 2014-06-23 16:55:42Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 51701 2014-06-23 20:26:09Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -591,7 +591,7 @@ static int rtZipPkzipFssIosReadLfh(PRTZIPPKZIPFSSTREAM pThis, uint64_t *poffStar
     {
         if (lfh.u32Magic == RTZIPPKZIPLOCALFILEHDR_MAGIC)
         {
-            size_t cbExtra;;
+            size_t cbExtra = 0;
             rc = rtZipPkzipParseLocalFileHeader(&pThis->PkzipReader, &lfh, &cbExtra);
             if (RT_SUCCESS(rc))
             {
@@ -629,7 +629,7 @@ static int rtZipPkzipFssIosReadCdh(PRTZIPPKZIPFSSTREAM pThis, uint64_t *poffStar
         {
             pThis->offNextCdh += sizeof(cdh) - 1;
             pThis->iCentrDirEntry++;
-            size_t cbExtra;
+            size_t cbExtra = 0;
             rc = rtZipPkzipParseCentrDirHeader(&pThis->PkzipReader, &cdh, &cbExtra);
             if (RT_SUCCESS(rc))
             {
