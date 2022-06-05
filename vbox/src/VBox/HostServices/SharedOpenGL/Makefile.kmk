@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51016 2014-04-09 15:13:33Z vboxsync $
+# $Id: Makefile.kmk 51672 2014-06-19 15:46:43Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -49,7 +49,7 @@ endif # darwin
 VBoxSharedCrOpenGL_TEMPLATE = VBOXCROGLR3HOSTDLL
 ifdef VBOX_WITH_XPCOM
  VBoxSharedCrOpenGL_DEFS = VBOX_WITH_XPCOM
- VBoxSharedCrOpenGL_CXXFLAGS = -Wno-non-virtual-dtor
+ VBoxSharedCrOpenGL_CXXFLAGS = -Wno-non-virtual-dtor -fshort-wchar
 endif
 VBoxSharedCrOpenGL_INTERMEDIATES = \
 	$(TEMPLATE_VBOXMAINEXE_INTERMEDIATES)
