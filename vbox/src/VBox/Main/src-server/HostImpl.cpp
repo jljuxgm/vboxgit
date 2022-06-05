@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 49235 2013-10-22 18:56:03Z vboxsync $ */
+/* $Id: HostImpl.cpp 49408 2013-11-07 13:18:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -227,7 +227,7 @@ struct Host::Data
 
     HostPowerService        *pHostPowerService;
     /** Host's DNS informaton fetching */
-    HostDnsMonitorProxy         hostDnsMonitorProxy;
+    HostDnsMonitorProxy     hostDnsMonitorProxy;
 };
 
 ////////////////////////////////////////////////////////////////////////////////

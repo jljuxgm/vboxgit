@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 49103 2013-10-15 06:20:39Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 49408 2013-11-07 13:18:13Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -372,7 +372,7 @@ STDMETHODIMP Machine::ExportTo(IAppliance *aAppliance, IN_BSTR location, IVirtua
                  * 3. only ISO image is exported
                  */
 
-                //1. no host drive CD/DVD image 
+                //1. no host drive CD/DVD image
                 BOOL fHostDrive = false;
                 rc = pMedium->COMGETTER(HostDrive)(&fHostDrive);
                 if (FAILED(rc)) throw rc;
@@ -380,7 +380,7 @@ STDMETHODIMP Machine::ExportTo(IAppliance *aAppliance, IN_BSTR location, IVirtua
                 if(fHostDrive)
                     continue;
 
-                //2. the image must be accessible and readable 
+                //2. the image must be accessible and readable
                 MediumState_T ms;
                 rc = pMedium->RefreshState(&ms);
                 if (FAILED(rc)) throw rc;
@@ -388,7 +388,7 @@ STDMETHODIMP Machine::ExportTo(IAppliance *aAppliance, IN_BSTR location, IVirtua
                 if (ms != MediumState_Created)
                     continue;
 
-                //3. only ISO image is exported 
+                //3. only ISO image is exported
                 Bstr bstrLocation;
                 rc = pMedium->COMGETTER(Location)(bstrLocation.asOutParam());
                 if (FAILED(rc)) throw rc;
