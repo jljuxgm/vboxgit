@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48865 2013-10-04 01:21:14Z vboxsync $
+# $Id: Makefile.kmk 48866 2013-10-04 01:37:19Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2511,6 +2511,7 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 			-e '/^_Z[[:alpha:]]*[[:digit:]]\+RTC/d' \
                        \
 			-e '/^_ZnwjPv/d' \
+			-e '/^_ZnwmPv/d' \
 			-e '/^_ZNSt9bad_allocC1Ev/d' \
 			-e '/^_ZNSt9exceptionC2Ev/d' \
 			\
