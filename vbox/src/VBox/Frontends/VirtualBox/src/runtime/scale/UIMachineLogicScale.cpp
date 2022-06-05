@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 50490 2014-02-18 09:38:41Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 52097 2014-07-18 11:03:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -56,6 +56,8 @@ void UIMachineLogicScale::prepareActionGroups()
     gActionPool->action(UIActionIndexRuntime_Toggle_GuestAutoresize)->setVisible(false);
     /* Adjust-window isn't allowed in scale-mode: */
     gActionPool->action(UIActionIndexRuntime_Simple_AdjustWindow)->setVisible(false);
+    /* Status-bar menu isn't allowed in scale-mode: */
+    gActionPool->action(UIActionIndexRuntime_Menu_StatusBar)->setVisible(false);
 
     /* Take care of view-action toggle state: */
     UIAction *pActionScale = gActionPool->action(UIActionIndexRuntime_Toggle_Scale);
@@ -148,6 +150,8 @@ void UIMachineLogicScale::cleanupActionGroups()
         pActionScale->update();
     }
 
+    /* Reenable status-bar menu: */
+    gActionPool->action(UIActionIndexRuntime_Menu_StatusBar)->setVisible(true);
     /* Reenable guest-autoresize action: */
     gActionPool->action(UIActionIndexRuntime_Toggle_GuestAutoresize)->setVisible(true);
     /* Reenable adjust-window action: */

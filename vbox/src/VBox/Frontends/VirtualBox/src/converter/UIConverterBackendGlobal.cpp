@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 52012 2014-07-14 11:07:33Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 52097 2014-07-18 11:03:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -506,6 +506,7 @@ template<> QString toInternalString(const RuntimeMenuViewActionType &runtimeMenu
         case RuntimeMenuViewActionType_Scale:           strResult = "Scale"; break;
         case RuntimeMenuViewActionType_GuestAutoresize: strResult = "GuestAutoresize"; break;
         case RuntimeMenuViewActionType_AdjustWindow:    strResult = "AdjustWindow"; break;
+        case RuntimeMenuViewActionType_StatusBar:       strResult = "StatusBar"; break;
         case RuntimeMenuViewActionType_Multiscreen:     strResult = "Multiscreen"; break;
         case RuntimeMenuViewActionType_All:             strResult = "All"; break;
         default:
@@ -528,6 +529,7 @@ template<> RuntimeMenuViewActionType fromInternalString<RuntimeMenuViewActionTyp
     keys << "Scale";           values << RuntimeMenuViewActionType_Scale;
     keys << "GuestAutoresize"; values << RuntimeMenuViewActionType_GuestAutoresize;
     keys << "AdjustWindow";    values << RuntimeMenuViewActionType_AdjustWindow;
+    keys << "StatusBar";       values << RuntimeMenuViewActionType_StatusBar;
     keys << "Multiscreen";     values << RuntimeMenuViewActionType_Multiscreen;
     keys << "All";             values << RuntimeMenuViewActionType_All;
     /* Invalid type for unknown words: */

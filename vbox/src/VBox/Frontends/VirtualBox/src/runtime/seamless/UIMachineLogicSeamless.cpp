@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 51249 2014-05-13 16:41:52Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 52097 2014-07-18 11:03:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -188,6 +188,8 @@ void UIMachineLogicSeamless::prepareActionGroups()
     gActionPool->action(UIActionIndexRuntime_Simple_AdjustWindow)->setVisible(false);
     /* Disable mouse-integration isn't allowed in seamless: */
     gActionPool->action(UIActionIndexRuntime_Toggle_MouseIntegration)->setVisible(false);
+    /* Status-bar menu isn't allowed in seamless: */
+    gActionPool->action(UIActionIndexRuntime_Menu_StatusBar)->setVisible(false);
 
     /* Take care of view-action toggle state: */
     UIAction *pActionSeamless = gActionPool->action(UIActionIndexRuntime_Toggle_Seamless);
@@ -291,6 +293,8 @@ void UIMachineLogicSeamless::cleanupActionGroups()
         pActionSeamless->update();
     }
 
+    /* Reenable status-bar menu: */
+    gActionPool->action(UIActionIndexRuntime_Menu_StatusBar)->setVisible(true);
     /* Reenable guest-autoresize action: */
     gActionPool->action(UIActionIndexRuntime_Toggle_GuestAutoresize)->setVisible(true);
     /* Reenable adjust-window action: */
