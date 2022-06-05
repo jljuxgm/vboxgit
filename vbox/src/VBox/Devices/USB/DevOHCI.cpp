@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 51990 2014-07-11 13:46:35Z vboxsync $ */
+/* $Id: DevOHCI.cpp 51991 2014-07-11 13:48:15Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5581,7 +5581,7 @@ static DECLCALLBACK(int) ohciR3Destruct(PPDMDEVINS pDevIns)
      * Destroy event sempahores.
      */
     RTSemEventDestroy(pThis->hSemEventFrame);
-    if (RTCritSectIsInitialized(&pEhci->CritSect))
+    if (RTCritSectIsInitialized(&pThis->CritSect))
         RTCritSectDelete(&pThis->CritSect);
     PDMR3CritSectDelete(&pThis->CsIrq);
 
