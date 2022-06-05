@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 52006 2014-07-12 12:01:19Z vboxsync $ */
+/* $Id: GIMAll.cpp 52767 2014-09-16 16:51:51Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -39,7 +39,7 @@
  */
 VMMDECL(bool) GIMIsEnabled(PVM pVM)
 {
-    return pVM->gim.s.fEnabled;
+    return pVM->gim.s.enmProviderId != GIMPROVIDERID_NONE;
 }
 
 
@@ -115,9 +115,6 @@ VMM_INT_DECL(int) GIMHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
  */
 VMM_INT_DECL(bool) GIMIsParavirtTscEnabled(PVM pVM)
 {
-    if (!pVM->gim.s.fEnabled)
-        return false;
-
     switch (pVM->gim.s.enmProviderId)
     {
         case GIMPROVIDERID_HYPERV:

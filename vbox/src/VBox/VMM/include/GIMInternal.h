@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 52765 2014-09-16 16:19:32Z vboxsync $ */
+/* $Id: GIMInternal.h 52767 2014-09-16 16:51:51Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -39,8 +39,6 @@ RT_C_DECLS_BEGIN
  */
 typedef struct GIM
 {
-    /** Whether GIM is enabled for this VM or not. */
-    bool                             fEnabled;
     /** The provider that is active for this VM. */
     GIMPROVIDERID                    enmProviderId;
     /** The interface implementation version. */

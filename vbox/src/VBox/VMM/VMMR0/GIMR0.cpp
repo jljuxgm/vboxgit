@@ -1,4 +1,4 @@
-/* $Id: GIMR0.cpp 51643 2014-06-18 11:06:06Z vboxsync $ */
+/* $Id: GIMR0.cpp 52767 2014-09-16 16:51:51Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM) - Host Context Ring-0.
  */
@@ -89,13 +89,13 @@ VMMR0_INT_DECL(int) GIMR0TermVM(PVM pVM)
  */
 VMMR0_INT_DECL(int) GIMR0UpdateParavirtTsc(PVM pVM, uint64_t u64Offset)
 {
-    if (!pVM->gim.s.fEnabled)
-        return VERR_GIM_NOT_ENABLED;
-
     switch (pVM->gim.s.enmProviderId)
     {
         case GIMPROVIDERID_HYPERV:
             return GIMR0HvUpdateParavirtTsc(pVM, u64Offset);
+
+        case GIMPROVIDERID_NONE:
+            return VERR_GIM_NOT_ENABLED;
 
         default:
             break;
