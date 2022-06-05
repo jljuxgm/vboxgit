@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 50548 2014-02-21 19:53:11Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 50559 2014-02-24 17:38:24Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2779,7 +2779,7 @@ STDMETHODIMP GuestSession::DirectoryOpen(IN_BSTR aPath, IN_BSTR aFilter, ComSafe
                break;
 
             case VERR_GSTCTL_GUEST_ERROR:
-                hr = GuestDirectory::setErrorExternal(this, guestRc);
+                hr = GuestDirectory::i_setErrorExternal(this, guestRc);
                 break;
 
             default:
@@ -2884,7 +2884,7 @@ STDMETHODIMP GuestSession::DirectoryRemove(IN_BSTR aPath)
                 break;
 
             case VERR_GSTCTL_GUEST_ERROR:
-                hr = GuestDirectory::setErrorExternal(this, guestRc);
+                hr = GuestDirectory::i_setErrorExternal(this, guestRc);
                 break;
 
             default:
