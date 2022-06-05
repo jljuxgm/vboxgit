@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 51477 2014-05-30 15:19:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -332,10 +332,10 @@ HRESULT GuestDnDTarget::drop(ULONG aScreenId, ULONG aX, ULONG aY,
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 }
 
-STDMETHODIMP GuestDnDTarget::sendData(ULONG aScreenId,
-                                      const com::Utf8Str &aFormat,
-                                      const std::vector<BYTE> &aData,
-                                      ComPtr<IProgress> &aProgress)
+HRESULT GuestDnDTarget::sendData(ULONG aScreenId,
+                                 const com::Utf8Str &aFormat,
+                                 const std::vector<BYTE> &aData,
+                                 ComPtr<IProgress> &aProgress)
 {
 #if !defined(VBOX_WITH_DRAG_AND_DROP) || !defined(VBOX_WITH_DRAG_AND_DROP_GH)
     ReturnComNotImplemented();
