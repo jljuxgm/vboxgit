@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 49235 2013-10-22 18:56:03Z vboxsync $ */
+/* $Id: HostDnsService.cpp 49248 2013-10-23 03:26:55Z vboxsync $ */
 /** @file
  * Base class fo Host DNS & Co services.
  */
@@ -159,7 +159,6 @@ void HostDnsMonitor::shutdown()
 
 const HostDnsInformation& HostDnsMonitor::getInfo() const
 {
-    ALock l(this);
     return m->info;
 }
 
