@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 52202 2014-07-25 20:34:38Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 52243 2014-07-31 07:11:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -622,6 +622,7 @@ bool UIKeyboardHandler::x11EventFilter(XEvent *pEvent, ulong uScreenId)
                 }
             }
             fResult = false;
+            break;
         }
         case XKeyPress:
         case XKeyRelease:
