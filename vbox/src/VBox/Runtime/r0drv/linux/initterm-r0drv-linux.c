@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-linux.c 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: initterm-r0drv-linux.c 50008 2013-12-27 14:20:34Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
@@ -49,10 +49,8 @@ static DECLARE_TASK_QUEUE(g_rtR0LnxWorkQueue);
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-#if defined(RT_ARCH_AMD64) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 23)
 /* in alloc-r0drv0-linux.c */
 DECLHIDDEN(void) rtR0MemExecCleanup(void);
-#endif
 
 
 /**
@@ -114,8 +112,6 @@ DECLHIDDEN(void) rtR0TermNative(void)
     g_prtR0LnxWorkQueue = NULL;
 #endif
 
-#if defined(RT_ARCH_AMD64) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 23)
     rtR0MemExecCleanup();
-#endif
 }
 

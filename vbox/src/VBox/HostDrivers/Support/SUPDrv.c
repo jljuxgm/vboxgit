@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 49965 2013-12-17 20:20:45Z vboxsync $ */
+/* $Id: SUPDrv.c 50008 2013-12-27 14:20:34Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4460,6 +4460,7 @@ static int supdrvIOCtl_LdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
         if (RT_FAILURE(rc) && pDevExt->pvVMMR0 == pImage->pvImage)
             supdrvLdrUnsetVMMR0EPs(pDevExt);
     }
+    SUPR0Printf("vboxdrv: %p %s\n", pImage->pvImage, pImage->szName);
 
     if (RT_FAILURE(rc))
     {

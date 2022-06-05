@@ -1,4 +1,4 @@
-# $Id: Makefile 49395 2013-11-05 18:38:08Z vboxsync $
+# $Id: Makefile 50008 2013-12-27 14:20:34Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -274,6 +274,9 @@ ifeq ($(BUILD_TYPE),debug)
  KFLAGS  += -DDEBUG -DDEBUG_$(USER) -g
  # IPRT_DEBUG_SEMS indicates thread wrt sems state via the comm field.
  #KFLAGS  += -DIPRT_DEBUG_SEMS
+endif
+ifdef VBOX_WITH_TEXT_MODMEM_HACK
+ KFLAGS += -DRTMEMALLOC_EXEC_HEAP -DVBOX_WITH_TEXT_MODMEM_HACK
 endif
 
 # 2.6 and later
