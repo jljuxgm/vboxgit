@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53259 $"
 
 
 # Standard Python imports.
@@ -785,7 +785,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
             reporter.addLogFile(sLogFile, 'log/uninstaller', "Verbose MSI uninstallation log file");
 
         # TEMPORARY HACK - START
-        if fRc and utils.getHostOsVersion() in ['8', '8.1', '9', '2008ServerR2', '2012Server']:
+        if fRc and utils.getHostOsVersion() in ['8', '8.1', '9', '2008Server', '2008ServerR2', '2012Server']:
             reporter.log('Peforming extra NDIS cleanup...');
             sMagicScript = os.path.abspath(os.path.join(g_ksValidationKitDir, 'testdriver', 'win-vbox-net-uninstall.ps1'));
             fRc2, _ = self._sudoExecuteSync(['powershell.exe', '-Command', 'set-executionpolicy unrestricted']);
