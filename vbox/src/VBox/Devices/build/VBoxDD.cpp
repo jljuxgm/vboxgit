@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 50686 2014-03-04 19:21:18Z vboxsync $ */
+/* $Id: VBoxDD.cpp 51560 2014-06-06 05:17:02Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -191,6 +191,9 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     if (RT_FAILURE(rc))
         return rc;
 #endif
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceGIMDev);
+    if (RT_FAILURE(rc))
+        return rc;
 
     return VINF_SUCCESS;
 }

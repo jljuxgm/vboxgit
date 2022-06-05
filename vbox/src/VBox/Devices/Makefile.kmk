@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50686 2014-03-04 19:21:18Z vboxsync $
+# $Id: Makefile.kmk 51560 2014-06-06 05:17:02Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -150,6 +150,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	PC/DevPcBios.cpp \
  	PC/DevFwCommon.cpp \
  	PC/DevPcArch.cpp \
+	GIMDev/GIMDev.cpp \
  	VMMDev/VMMDev.cpp \
  	$(if $(VBOX_WITH_HGCM),VMMDev/VMMDevHGCM.cpp,) \
  	VMMDev/VMMDevTesting.cpp \
