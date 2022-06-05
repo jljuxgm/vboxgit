@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 50622 2014-02-27 02:54:00Z vboxsync $ */
+/* $Id: DrvNAT.cpp 50949 2014-04-02 00:53:08Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1091,7 +1091,7 @@ DECLINLINE(void) drvNATHostNetworkConfigurationChangeEventStrategySelector(PDRVN
     switch (strategy)
     {
 
-        case VBOX_NAT_HNCE_DNSPROXY:
+        case VBOX_NAT_DNS_DNSPROXY:
             {
                 /**
                  * XXX: Here or in _strategy_selector we should deal with network change
@@ -1115,7 +1115,7 @@ DECLINLINE(void) drvNATHostNetworkConfigurationChangeEventStrategySelector(PDRVN
                 return;
             }
 
-        case VBOX_NAT_HNCE_EXSPOSED_NAME_RESOLUTION_INFO:
+        case VBOX_NAT_DNS_EXTERNAL:
             /*
              * Host resumed from a suspend and the network might have changed.
              * Disconnect the guest from the network temporarily to let it pick up the changes.
@@ -1126,7 +1126,7 @@ DECLINLINE(void) drvNATHostNetworkConfigurationChangeEventStrategySelector(PDRVN
                                                       PDMNETWORKLINKSTATE_DOWN_RESUME);
             return;
 
-        case VBOX_NAT_HNCE_HOSTRESOLVER:
+        case VBOX_NAT_DNS_HOSTRESOLVER:
         default:
             return;
     }
