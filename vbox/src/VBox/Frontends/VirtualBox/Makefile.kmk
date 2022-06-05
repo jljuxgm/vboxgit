@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51187 2014-05-05 14:38:41Z vboxsync $
+# $Id: Makefile.kmk 51264 2014-05-15 15:57:30Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -804,6 +804,8 @@ VirtualBox2.qrc_RCCFLAGS       = -name BASIC2
 ifeq ($(KBUILD_TARGET),darwin)
  VirtualBox_SOURCES             += VirtualBox1_hidpi.qrc
  VirtualBox1_hidpi.qrc_RCCFLAGS  = -name BASIC1_HIDPI
+ VirtualBox_SOURCES             += VirtualBox2_hidpi.qrc
+ VirtualBox2_hidpi.qrc_RCCFLAGS  = -name BASIC2_HIDPI
  VirtualBox_SOURCES           += VirtualBoxMac.qrc
  VirtualBoxMac.qrc_RCCFLAGS    = -name MAC
 else
