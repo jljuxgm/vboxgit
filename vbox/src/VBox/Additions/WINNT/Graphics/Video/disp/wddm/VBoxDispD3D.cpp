@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 53189 2014-11-04 10:23:26Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 53296 2014-11-10 20:48:41Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -28,7 +28,6 @@
 
 #include "VBoxDispD3DCmn.h"
 #include "VBoxDispD3D.h"
-#include "VBoxScreen.h"
 #include <VBox/VBoxCrHgsmi.h>
 
 #include <Psapi.h>
@@ -218,8 +217,6 @@ HRESULT vboxDispMpTstStop();
 #endif
 
 #define VBOXDISP_WITH_WINE_BB_WORKAROUND
-
-static VBOXSCREENMONRUNNER g_VBoxScreenMonRunner;
 
 //#define VBOXWDDMOVERLAY_TEST
 
