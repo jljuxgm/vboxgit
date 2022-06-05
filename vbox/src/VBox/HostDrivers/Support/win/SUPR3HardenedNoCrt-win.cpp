@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedNoCrt-win.cpp 52947 2014-10-05 16:48:25Z vboxsync $ */
+/* $Id: SUPR3HardenedNoCrt-win.cpp 52949 2014-10-05 21:43:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -268,7 +268,7 @@ RTDECL(void *) RTMemAllocTag(size_t cb, const char *pszTag) RT_NO_THROW
     HANDLE hHeap = g_hSupR3HardenedHeap;
     if (!hHeap)
     {
-        if (   g_fSupEarlyVmProcessInit
+        if (   g_fSupEarlyProcessInit
             && g_enmSupR3HardenedMainState <= SUPR3HARDENEDMAINSTATE_WIN_EP_CALLED)
             return supR3HardenedEarlyAlloc(cb, false /*fZero*/);
         hHeap = supR3HardenedHeapInit();
@@ -286,7 +286,7 @@ RTDECL(void *) RTMemAllocZTag(size_t cb, const char *pszTag) RT_NO_THROW
     HANDLE hHeap = g_hSupR3HardenedHeap;
     if (!hHeap)
     {
-        if (   g_fSupEarlyVmProcessInit
+        if (   g_fSupEarlyProcessInit
             && g_enmSupR3HardenedMainState <= SUPR3HARDENEDMAINSTATE_WIN_EP_CALLED)
             return supR3HardenedEarlyAlloc(cb, true /*fZero*/);
         hHeap = supR3HardenedHeapInit();
@@ -327,7 +327,7 @@ RTDECL(void *) RTMemReallocTag(void *pvOld, size_t cbNew, const char *pszTag) RT
         return RTMemAllocZTag(cbNew, pszTag);
 
     void *pv;
-    if (g_fSupEarlyVmProcessInit)
+    if (g_fSupEarlyProcessInit)
     {
         uint32_t iHeap = supR3HardenedEarlyFind(pvOld);
         if (iHeap != UINT32_MAX)
@@ -386,7 +386,7 @@ RTDECL(void) RTMemFree(void *pv) RT_NO_THROW
 {
     if (pv)
     {
-        if (g_fSupEarlyVmProcessInit)
+        if (g_fSupEarlyProcessInit)
         {
             uint32_t iHeap = supR3HardenedEarlyFind(pv);
             if (iHeap != UINT32_MAX)

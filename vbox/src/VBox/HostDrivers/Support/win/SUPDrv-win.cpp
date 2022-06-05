@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 52908 2014-09-30 23:03:58Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 52949 2014-10-05 21:43:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -3577,7 +3577,7 @@ static int supdrvNtProtectRestrictHandlesToProcessAndThread(PSUPDRVNTPROTECT pNt
         SYSTEM_HANDLE_ENTRY_INFO_EX const *pHandleInfo = &pInfo->Handles[i];
         if (pHandleInfo->Object == pProtectedProcess)
         {
-            /* Handles within the protected process is fine. */
+            /* Handles within the protected process are fine. */
             if (   !(pHandleInfo->GrantedAccess & SUPDRV_NT_EVIL_PROCESS_RIGHTS)
                 || pHandleInfo->UniqueProcessId == hProtectedPid)
             {

@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 52943 2014-10-04 01:54:58Z vboxsync $ */
+/* $Id: SUPLibInternal.h 52949 2014-10-05 21:43:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -312,7 +312,7 @@ typedef FNSUPR3PREINIT *PFNSUPR3PREINIT;
 typedef enum SUPR3HARDENEDMAINSTATE
 {
     SUPR3HARDENEDMAINSTATE_NOT_YET_CALLED = 0,
-    SUPR3HARDENEDMAINSTATE_WIN_VM_INIT_CALLED,
+    SUPR3HARDENEDMAINSTATE_WIN_EARLY_INIT_CALLED,
     SUPR3HARDENEDMAINSTATE_WIN_EARLY_IMPORTS_RESOLVED,
     SUPR3HARDENEDMAINSTATE_WIN_EARLY_DEVICE_OPENED,
     SUPR3HARDENEDMAINSTATE_WIN_EP_CALLED,
@@ -341,7 +341,7 @@ extern DECLHIDDEN(PSUPQUERYFUNCS)       g_pSupFunctions;
 #endif
 extern DECLHIDDEN(SUPR3HARDENEDMAINSTATE) g_enmSupR3HardenedMainState;
 #ifdef RT_OS_WINDOWS
-extern DECLHIDDEN(bool)                 g_fSupEarlyVmProcessInit;
+extern DECLHIDDEN(bool)                 g_fSupEarlyProcessInit;
 #endif
 
 
