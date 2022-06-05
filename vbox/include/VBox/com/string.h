@@ -1,4 +1,4 @@
-/* $Id: string.h 42570 2012-08-03 09:56:09Z vboxsync $ */
+/* $Id: string.h 48691 2013-09-25 16:45:39Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -204,15 +204,23 @@ public:
     }
 
     bool operator==(const Bstr &that) const { return !compare(that.m_bstr); }
+    bool operator==(CBSTR that) const       { return !compare(that); }
+    bool operator==(BSTR that) const        { return !compare(that); }
     bool operator!=(const Bstr &that) const { return !!compare(that.m_bstr); }
-    bool operator==(CBSTR that) const { return !compare(that); }
-    bool operator==(BSTR that) const { return !compare(that); }
-
-    bool operator!=(CBSTR that) const { return !!compare(that); }
-    bool operator!=(BSTR that) const { return !!compare(that); }
-    bool operator<(const Bstr &that) const { return compare(that.m_bstr) < 0; }
-    bool operator<(CBSTR that) const { return compare(that) < 0; }
-    bool operator<(BSTR that) const { return compare(that) < 0; }
+    bool operator!=(CBSTR that) const       { return !!compare(that); }
+    bool operator!=(BSTR that) const        { return !!compare(that); }
+    bool operator<(const Bstr &that) const  { return compare(that.m_bstr) <  0; }
+    bool operator<(CBSTR that) const        { return compare(that)        <  0; }
+    bool operator<(BSTR that) const         { return compare(that)        <  0; }
+    bool operator<=(const Bstr &that) const { return compare(that.m_bstr) <= 0; }
+    bool operator<=(CBSTR that) const       { return compare(that)        <= 0; }
+    bool operator<=(BSTR that) const        { return compare(that)        <= 0; }
+    bool operator>(const Bstr &that) const  { return compare(that.m_bstr) >  0; }
+    bool operator>(CBSTR that) const        { return compare(that)        >  0; }
+    bool operator>(BSTR that) const         { return compare(that)        >  0; }
+    bool operator>=(const Bstr &that) const { return compare(that.m_bstr) >= 0; }
+    bool operator>=(CBSTR that) const       { return compare(that)        >= 0; }
+    bool operator>=(BSTR that) const        { return compare(that)        >= 0; }
 
     /**
      * Returns true if the member string has no length.
