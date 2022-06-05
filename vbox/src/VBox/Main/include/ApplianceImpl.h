@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 49749 2013-12-03 12:29:19Z vboxsync $ */
+/* $Id: ApplianceImpl.h 49760 2013-12-03 17:57:11Z vboxsync $ */
 
 /** @file
  *
@@ -87,7 +87,6 @@ public:
 
     /* private instance data */
 private:
-    /** weak VirtualBox parent */
     // wrapped IAppliance properties
     HRESULT getPath(com::Utf8Str &aPath);
     HRESULT getDisks(std::vector<com::Utf8Str> &aDisks);
@@ -108,7 +107,7 @@ private:
                   ComPtr<IProgress> &aProgress);
     HRESULT getWarnings(std::vector<com::Utf8Str> &aWarnings);
 
-
+    /** weak VirtualBox parent */
     VirtualBox* const   mVirtualBox;
 
     struct ImportStack;
