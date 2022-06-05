@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 51375 2014-05-23 15:59:40Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 51379 2014-05-23 17:52:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -985,8 +985,10 @@ void UIActionPoolSelector::retranslateUi()
     /* Translate all the actions: */
     foreach (const int iActionPoolKey, m_pool.keys())
         m_pool[iActionPoolKey]->retranslateUi();
-    /* Re-apply shortcuts: */
+    /* Re-apply Selector UI shortcuts: */
     sltApplyShortcuts();
+    /* Temporary create Runtime UI pool to do the same: */
+    UIActionPool::createTemporary(UIActionPoolType_Runtime);
 }
 
 QString UIActionPoolSelector::shortcutsExtraDataID() const
