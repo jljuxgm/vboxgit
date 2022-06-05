@@ -1,4 +1,4 @@
-/* $Id: dsoundaudio.c 53392 2014-11-24 19:35:57Z vboxsync $ */
+/* $Id: dsoundaudio.c 53393 2014-11-24 19:40:58Z vboxsync $ */
 /** @file
  * DirectSound Windows Host Audio Backend.
  */
@@ -14,8 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  * --------------------------------------------------------------------
- *
- * This code is based on: dsoundaudio.c
  *
  * QEMU DirectSound audio driver
  *

@@ -1,4 +1,4 @@
-/* $Id: dsound_template.h 53392 2014-11-24 19:35:57Z vboxsync $ */
+/* $Id: dsound_template.h 53393 2014-11-24 19:40:58Z vboxsync $ */
 
 /*
  * Copyright (C) 2014 Oracle Corporation
@@ -11,8 +11,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  * --------------------------------------------------------------------
- *
- * This code is based on: audio.h
  *
  * QEMU DirectSound audio driver header
  *
