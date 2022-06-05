@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 51390 2014-05-26 12:18:11Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 51453 2014-05-28 17:46:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -141,6 +141,13 @@ UISelectorWindow::~UISelectorWindow()
 {
     /* Destroy event handlers: */
     UIVirtualBoxEventHandler::destroy();
+
+#ifdef Q_WS_MAC
+    UIWindowMenuManager::destroy();
+#endif /* Q_WS_MAC */
+
+    /* Cleanup connections: */
+    cleanupConnections();
 
     /* Save settings: */
     saveSettings();
@@ -1601,8 +1608,6 @@ void UISelectorWindow::saveSettings()
                     save.x(), save.y(), save.width(), save.height()));
         QString strWinPos = QString("%1,%2,%3,%4").arg(save.x()).arg(save.y()).arg(save.width()).arg(save.height());
 #ifdef Q_WS_MAC
-        UIWindowMenuManager::destroy();
-        ::darwinUnregisterForUnifiedToolbarContextMenuEvents(this);
         if (::darwinIsWindowMaximized(this))
 #else /* Q_WS_MAC */
         if (isMaximized())
@@ -1616,6 +1621,14 @@ void UISelectorWindow::saveSettings()
     {
         vbox.SetExtraDataIntList(GUI_SplitterSizes, m_pSplitter->sizes());
     }
+}
+
+void UISelectorWindow::cleanupConnections()
+{
+#ifdef Q_WS_MAC
+    /* Tool-bar connections: */
+    ::darwinUnregisterForUnifiedToolbarContextMenuEvents(this);
+#endif /* Q_WS_MAC */
 }
 
 UIVMItem* UISelectorWindow::currentItem() const
