@@ -1,4 +1,4 @@
-# $Id: Makefile 52789 2014-09-18 16:08:18Z vboxsync $
+# $Id: Makefile 53241 2014-11-05 15:33:05Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -77,6 +77,7 @@ SRCS += \
 .PATH:	${.CURDIR}/common/string
 SRCS += \
 	RTStrCopy.c \
+	RTStrCopyEx.c \
 	RTStrCopyP.c \
 	strformat.c \
 	strformatrt.c \

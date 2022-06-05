@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxguest 52789 2014-09-18 16:08:18Z vboxsync $
+# $Id: files_vboxguest 53241 2014-11-05 15:33:05Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -123,6 +123,7 @@ FILES_VBOXGUEST_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/common/misc/assert.cpp=>common/misc/assert.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/misc/thread.cpp=>common/misc/thread.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrCopy.cpp=>common/string/RTStrCopy.c \
+    ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrCopyEx.cpp=>common/string/RTStrCopyEx.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/RTStrCopyP.cpp=>common/string/RTStrCopyP.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/strformat.cpp=>common/string/strformat.c \
     ${PATH_ROOT}/src/VBox/Runtime/common/string/strformatrt.cpp=>common/string/strformatrt.c \
