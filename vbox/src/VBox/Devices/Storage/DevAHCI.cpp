@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 51342 2014-05-22 10:24:53Z vboxsync $ */
+/* $Id: DevAHCI.cpp 51383 2014-05-23 19:26:10Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -4095,7 +4095,8 @@ static int atapiPassthroughSS(PAHCIREQ pAhciReq, PAHCIPort pAhciPort, size_t cbD
             }
             case SCSI_SYNCHRONIZE_CACHE:
             {
-                ATAPIPassthroughTrackListClear(pAhciPort->pTrackList);
+                if (pAhciPort->pTrackList)
+                    ATAPIPassthroughTrackListClear(pAhciPort->pTrackList);
                 break;
             }
         }
