@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 50986 2014-04-07 16:12:55Z vboxsync $ */
+/* $Id: ip_icmp.c 53292 2014-11-10 15:03:43Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -126,9 +126,6 @@ icmp_init(PNATState pData, int iIcmpCacheLimit)
         {
             pData->pfIcmpParseReplies = (long (WINAPI *)(void *, long))RTLdrGetFunction(hLdrMod, "IcmpParseReplies");
             pData->pfIcmpCloseHandle = (BOOL (WINAPI *)(HANDLE))RTLdrGetFunction(hLdrMod, "IcmpCloseHandle");
-            rc = RTLdrGetSymbol(hLdrMod, "GetAdaptersAddresses", (void **)&pData->pfGetAdaptersAddresses);
-            if (RT_FAILURE(rc))
-                LogRel(("NAT: Can't find GetAdapterAddresses in Iphlpapi.dll\n"));
             RTLdrClose(hLdrMod);
         }
 
