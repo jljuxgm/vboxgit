@@ -1,4 +1,4 @@
-/* $Id: VBoxBusMouseMain.cpp 48419 2013-09-10 22:28:34Z vboxsync $ */
+/* $Id: VBoxBusMouseMain.cpp 48949 2013-10-07 21:44:25Z vboxsync $ */
 /** @file
  * Bus Mouse main module.
  */
@@ -74,7 +74,7 @@ static PCVBOXEXTPACKHLP g_pHlp;
 //
 
 /**
- * @interface_method_impl{VBOXEXTPACKREG,pfnVMConfigureVMM 
+ * @interface_method_impl{VBOXEXTPACKREG,pfnVMConfigureVMM
  */
 static DECLCALLBACK(int)  vboxBusMouseExtPack_VMConfigureVMM(PCVBOXEXTPACKREG pThis, IConsole *pConsole, PVM pVM)
 {
