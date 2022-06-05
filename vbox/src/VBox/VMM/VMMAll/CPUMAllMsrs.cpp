@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 51233 2014-05-12 11:12:14Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 51235 2014-05-12 12:15:17Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -567,7 +567,11 @@ static DECLCALLBACK(int) cpumMsrWr_Ia32SysEnterEip(PVMCPU pVCpu, uint32_t idMsr,
         pVCpu->cpum.s.Guest.SysEnter.eip = uValue;
         return VINF_SUCCESS;
     }
+#ifdef IN_RING3
+    LogRel(("CPUM: IA32_SYSENTER_EIP not canonical! %#llx\n", uValue));
+#else
     Log(("CPUM: IA32_SYSENTER_EIP not canonical! %#llx\n", uValue));
+#endif
     return VERR_CPUM_RAISE_GP_0;
 }
 
