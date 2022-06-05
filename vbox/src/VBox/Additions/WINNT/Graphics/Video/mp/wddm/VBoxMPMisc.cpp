@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 50629 2014-02-27 13:05:32Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 50927 2014-03-31 10:34:37Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1256,7 +1256,8 @@ static PVBOXVIDEOCM_ALLOC_REF vboxVideoAMgrCtxAllocRefAcquire(PVBOXVIDEOCM_ALLOC
 {
     ExAcquireFastMutex(&pContext->Mutex);
     PVBOXVIDEOCM_ALLOC_REF pAllocRef = (PVBOXVIDEOCM_ALLOC_REF)vboxWddmHTableGet(&pContext->AllocTable, hSesionHandle);
-    ASMAtomicIncU32(&pAllocRef->cRefs);
+    if (pAllocRef)
+        ASMAtomicIncU32(&pAllocRef->cRefs);
     ExReleaseFastMutex(&pContext->Mutex);
     return pAllocRef;
 }
