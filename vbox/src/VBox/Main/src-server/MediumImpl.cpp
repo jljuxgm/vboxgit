@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 49871 2013-12-10 16:49:59Z vboxsync $ */
+/* $Id: MediumImpl.cpp 49951 2013-12-17 11:44:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6159,7 +6159,7 @@ HRESULT Medium::i_setFormat(const Utf8Str &aFormat)
         SystemProperties *pSysProps = m->pVirtualBox->getSystemProperties();
         AutoReadLock propsLock(pSysProps COMMA_LOCKVAL_SRC_POS);
 
-        unconst(m->formatObj) = pSysProps->mediumFormat(aFormat);
+        unconst(m->formatObj) = pSysProps->i_mediumFormat(aFormat);
         if (m->formatObj.isNull())
             return setError(E_INVALIDARG,
                             tr("Invalid medium storage format '%s'"),

@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 49742 2013-12-02 17:59:21Z vboxsync $ */
+/* $Id: USBProxyService.cpp 49951 2013-12-17 11:44:22Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -421,7 +421,7 @@ HRESULT USBProxyService::runAllFiltersOnDevice(ComObjPtr<HostUSBDevice> &aDevice
          ++it)
     {
         AutoWriteLock filterLock(*it COMMA_LOCKVAL_SRC_POS);
-        const HostUSBDeviceFilter::Data &data = (*it)->getData();
+        const HostUSBDeviceFilter::Data &data = (*it)->i_getData();
         if (aDevice->isMatch(data))
         {
             USBDeviceFilterAction_T action = USBDeviceFilterAction_Null;

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 49795 2013-12-05 18:53:18Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 49951 2013-12-17 11:44:22Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2357,7 +2357,7 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
             {
                 const char *pszSuff = RTPathSuffix(strTargetPath->c_str());
                 /* Figure out which format the user like to have. Default is VMDK. */
-                ComObjPtr<MediumFormat> trgFormat = pSysProps->mediumFormatFromExtension(&pszSuff[1]);
+                ComObjPtr<MediumFormat> trgFormat = pSysProps->i_mediumFormatFromExtension(&pszSuff[1]);
                 if (trgFormat.isNull())
                     throw setError(VBOX_E_NOT_SUPPORTED,
                                    tr("Could not find a valid medium format for the target disk '%s'"),
