@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 46534 2013-06-13 14:06:54Z vboxsync $ */
+/* $Id: ovfreader.cpp 47924 2013-08-20 14:39:23Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -281,11 +281,11 @@ void OVFReader::HandleDiskSection(const xml::ElementNode *pReferencesElem,
         // suggest a size in megabytes to help callers with progress reports
         d.ulSuggestedSizeMB = 0;
         if (d.iCapacity != -1)
-            d.ulSuggestedSizeMB = d.iCapacity / _1M;
+            d.ulSuggestedSizeMB = (uint32_t)(d.iCapacity / _1M);
         else if (d.iPopulatedSize != -1)
-            d.ulSuggestedSizeMB = d.iPopulatedSize / _1M;
+            d.ulSuggestedSizeMB = (uint32_t)(d.iPopulatedSize / _1M);
         else if (d.iSize != -1)
-            d.ulSuggestedSizeMB = d.iSize / _1M;
+            d.ulSuggestedSizeMB = (uint32_t)(d.iSize / _1M);
         if (d.ulSuggestedSizeMB == 0)
             d.ulSuggestedSizeMB = 10000;         // assume 10 GB, this is for the progress bar only anyway
 
