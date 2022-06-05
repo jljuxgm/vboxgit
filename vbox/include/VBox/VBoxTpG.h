@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxTpG.h 48934 2013-10-07 21:12:09Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -130,7 +130,7 @@ typedef VTGPROBELOC const *PCVTGPROBELOC;
 #  define VTG_DECL_VTGPROBELOC(a_VarName) \
     static VTGPROBELOC a_VarName; \
     __asm__ (".stabs \"__VTGPrLcSet\",  23, 0, 0, _" #a_VarName );
-    
+
 # else
 #  error "Unsupported Darwin compiler!"
 # endif
