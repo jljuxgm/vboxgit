@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 49025 2013-10-10 12:00:25Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 49309 2013-10-28 14:01:51Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -76,6 +76,12 @@ bool UIMachineLogicSeamless::checkAvailability()
         return false;
 
     return true;
+}
+
+/** Adjusts guest screen count/size for the machine-logic we have. */
+void UIMachineLogicSeamless::maybeAdjustGuestScreenSize()
+{
+    m_pScreenLayout->rebuild();
 }
 
 int UIMachineLogicSeamless::hostScreenForGuestScreen(int iScreenId) const
