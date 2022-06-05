@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 52095 2014-07-18 09:14:01Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1249,7 +1249,8 @@ HRESULT MachineCloneVM::run()
                         {
                             AutoWriteLock tlock(p->mParent->i_getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
                             rc = p->mParent->i_registerMedium(pTarget, &pTarget,
-                                                            DeviceType_HardDisk);
+                                                            DeviceType_HardDisk,
+                                                            tlock);
                             if (FAILED(rc)) throw rc;
                         }
                         /* This medium becomes the parent of the next medium in the

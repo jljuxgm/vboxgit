@@ -1,4 +1,4 @@
-/* $Id: AutoCaller.cpp 52029 2014-07-15 06:56:27Z vboxsync $ */
+/* $Id: AutoCaller.cpp 52095 2014-07-18 09:14:01Z vboxsync $ */
 
 /** @file
  *
@@ -496,4 +496,19 @@ AutoUninitSpan::~AutoUninitSpan()
         return;
 
     mObj->getObjectState().autoUninitSpanDestructor();
+}
+
+/**
+ * Marks the uninitializion as succeeded.
+ *
+ * Same as the destructor, and makes the destructor do nothing.
+ */
+void AutoUninitSpan::setSucceeded()
+{
+    /* do nothing if already uninitialized */
+    if (mUninitDone)
+        return;
+
+    mObj->getObjectState().autoUninitSpanDestructor();
+    mUninitDone = true;
 }

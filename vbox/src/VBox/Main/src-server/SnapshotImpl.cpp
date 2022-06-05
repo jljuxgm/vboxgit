@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 51903 2014-07-07 13:03:49Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 52095 2014-07-18 09:14:01Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -3468,8 +3468,9 @@ STDMETHODIMP SessionMachine::FinishOnlineMergeMedium()
             pDeleteRec->mpSource->i_deparent();
 
         // then, register again
-        rc = mParent->i_registerMedium(pDeleteRec->mpTarget, &pDeleteRec->mpTarget, DeviceType_HardDisk);
+        rc = mParent->i_registerMedium(pDeleteRec->mpTarget, &pDeleteRec->mpTarget, DeviceType_HardDisk, treeLock);
         AssertComRC(rc);
+        treeLock.acquire();
     }
     else
     {
