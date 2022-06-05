@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 50253 2014-01-28 12:31:40Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 50310 2014-02-03 15:11:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -197,7 +197,7 @@ void UINameAndSystemEditor::sltFamilyChanged(int iIndex)
     else if (strFamilyId == "Windows")
     {
         QString strDefaultID = "WindowsXP";
-        if (ARCH_BITS == 64)
+        if (m_fSupportsHWVirtEx && m_fSupportsLongMode)
             strDefaultID += "_64";
         int iIndexWinXP = m_pTypeCombo->findData(strDefaultID, TypeID);
         if (iIndexWinXP != -1)
@@ -207,7 +207,7 @@ void UINameAndSystemEditor::sltFamilyChanged(int iIndex)
     else if (strFamilyId == "Linux")
     {
         QString strDefaultID = "Ubuntu";
-        if (ARCH_BITS == 64)
+        if (m_fSupportsHWVirtEx && m_fSupportsLongMode)
             strDefaultID += "_64";
         int iIndexUbuntu = m_pTypeCombo->findData(strDefaultID, TypeID);
         if (iIndexUbuntu != -1)

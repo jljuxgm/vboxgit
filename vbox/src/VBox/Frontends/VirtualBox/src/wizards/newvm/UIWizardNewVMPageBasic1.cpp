@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 50253 2014-01-28 12:31:40Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 50310 2014-02-03 15:11:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -32,9 +32,6 @@
 
 /* COM includes: */
 #include "CSystemProperties.h"
-
-/* Other VBox includes: */
-#include <iprt/system.h>
 
 /* Defines some patterns to guess the right OS type. Should be in sync with
  * VirtualBox-settings-common.xsd in Main. The list is sorted by priority. The
@@ -162,12 +159,15 @@ static const osTypePattern gs_OSTypePattern[] =
 UIWizardNewVMPage1::UIWizardNewVMPage1(const QString &strGroup)
     : m_strGroup(strGroup)
 {
+    CHost host = vboxGlobal().host();
+    m_fSupportsHWVirtEx = host.GetProcessorFeature(KProcessorFeature_HWVirtEx);
+    m_fSupportsLongMode = host.GetProcessorFeature(KProcessorFeature_LongMode);
 }
 
 void UIWizardNewVMPage1::onNameChanged(QString strNewName)
 {
     /* Do not forget about achitecture bits: */
-    strNewName += QString::number(ARCH_BITS);
+    strNewName += m_fSupportsHWVirtEx && m_fSupportsLongMode ? "64" : "32";
 
     /* Search for a matching OS type based on the string the user typed already. */
     for (size_t i = 0; i < RT_ELEMENTS(gs_OSTypePattern); ++i)
