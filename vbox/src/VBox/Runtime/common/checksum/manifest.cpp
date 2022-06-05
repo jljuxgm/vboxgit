@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: manifest.cpp 50446 2014-02-13 13:36:04Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling, old style - deprecated.
  */
@@ -517,7 +517,6 @@ RTR3DECL(int) RTManifestVerifyFilesBuf(void *pvBuf, size_t cbSize, PRTMANIFESTTE
     }
     RTMemTmpFree(paFiles);
 
-    RTPrintf("rc = %Rrc\n", rc);
     return rc;
 }
 
