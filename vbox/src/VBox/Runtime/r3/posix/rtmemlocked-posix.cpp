@@ -1,4 +1,4 @@
-/* $Id: rtmemlocked-posix.cpp 51074 2014-04-15 11:26:10Z vboxsync $ */
+/* $Id: rtmemlocked-posix.cpp 51075 2014-04-15 11:57:27Z vboxsync $ */
 /** @file
  * IPRT - RTMemLocked*, POSIX.
  */
@@ -40,7 +40,9 @@
 #include <sys/types.h>
 #include <sys/mman.h>
 #include <sys/errno.h>
-
+#if !defined(MAP_ANONYMOUS) && defined(MAP_ANON)
+# define MAP_ANONYMOUS MAP_ANON
+#endif
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
