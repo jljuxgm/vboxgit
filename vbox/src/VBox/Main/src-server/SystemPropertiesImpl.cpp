@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 49951 2013-12-17 11:44:22Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 50291 2014-01-30 16:22:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -534,6 +534,31 @@ HRESULT SystemProperties::getDefaultIoCacheSettingForStorageController(StorageCo
         default:
             AssertMsgFailed(("Invalid controller type %d\n", aControllerType));
     }
+    return S_OK;
+}
+
+HRESULT SystemProperties::getStorageControllerHotplugCapable(StorageControllerType_T aControllerType,
+                                                             BOOL *aHotplugCapable)
+{
+    switch (aControllerType)
+    {
+        case StorageControllerType_IntelAhci:
+        case StorageControllerType_USB:
+            *aHotplugCapable = true;
+            break;
+        case StorageControllerType_LsiLogic:
+        case StorageControllerType_LsiLogicSas:
+        case StorageControllerType_BusLogic:
+        case StorageControllerType_PIIX3:
+        case StorageControllerType_PIIX4:
+        case StorageControllerType_ICH6:
+        case StorageControllerType_I82078:
+            *aHotplugCapable = false;
+            break;
+        default:
+            AssertMsgFailedReturn(("Invalid controller type %d\n", aControllerType), E_FAIL);
+    }
+
     return S_OK;
 }
 

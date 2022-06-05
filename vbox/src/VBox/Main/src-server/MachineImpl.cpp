@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 49983 2013-12-19 12:23:17Z vboxsync $ */
+/* $Id: MachineImpl.cpp 50291 2014-01-30 16:22:55Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12526,21 +12526,15 @@ void Machine::copyFrom(Machine *aThat)
  */
 bool Machine::isControllerHotplugCapable(StorageControllerType_T enmCtrlType)
 {
-    switch (enmCtrlType)
-    {
-        case StorageControllerType_IntelAhci:
-        case StorageControllerType_USB:
-            return true;
-        case StorageControllerType_LsiLogic:
-        case StorageControllerType_LsiLogicSas:
-        case StorageControllerType_BusLogic:
-        case StorageControllerType_PIIX3:
-        case StorageControllerType_PIIX4:
-        case StorageControllerType_ICH6:
-        case StorageControllerType_I82078:
-        default:
-            return false;
-    }
+    ComPtr<ISystemProperties> systemProperties;
+    HRESULT rc = mParent->COMGETTER(SystemProperties)(systemProperties.asOutParam());
+    if (FAILED(rc))
+        return false;
+
+    BOOL aHotplugCapable = FALSE;
+    systemProperties->COMGETTER(StorageControllerHotplugCapable)(enmCtrlType, &aHotplugCapable);
+
+    return RT_BOOL(aHotplugCapable);
 }
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
