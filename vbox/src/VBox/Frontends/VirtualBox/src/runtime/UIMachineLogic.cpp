@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 50299 2014-01-31 12:21:40Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 50301 2014-01-31 13:11:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -693,9 +693,11 @@ void UIMachineLogic::retranslateUi()
 
 bool UIMachineLogic::isHidLedsSyncEnabled()
 {
+    /** If extra data GUI/HidLedsSync is not present in VM config or set to 1 then sync is enabled. Otherwise, it is disabled. */
     QString strHidLedsSyncSettings = session().GetMachine().GetExtraData(GUI_HidLedsSync);
-    if (strHidLedsSyncSettings == "1")
+    if (strHidLedsSyncSettings == NULL || strHidLedsSyncSettings == "1")
         return true;
+
     return false;
 }
 
