@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 47182 2013-07-16 09:22:44Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 47935 2013-08-20 15:51:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -908,7 +908,8 @@ public:
 
     UIActionToggleVideoCapture(UIActionPool *pParent)
         : UIActionToggle(pParent,
-                         ":/video_capture_16px.png", ":/video_capture_disabled_16px.png")
+                         ":/video_capture_on_16px.png", ":/video_capture_16px.png",
+                         ":/video_capture_on_disabled_16px.png", ":/video_capture_disabled_16px.png")
     {
         retranslateUi();
     }
