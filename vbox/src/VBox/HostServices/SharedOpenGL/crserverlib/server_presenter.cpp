@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51670 2014-06-19 15:12:30Z vboxsync $ */
+/* $Id: server_presenter.cpp 51975 2014-07-10 15:48:05Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -2513,7 +2513,7 @@ public:
                     CrVrScrCompositorInit(&TmpCompositor, &Rect);
                     /* this is a cleanup operation
                      * empty compositor is guarantid to be released on VBoxPresentComposition return */
-                    cr_server.head_spu->dispatch_table.VBoxPresentComposition(mSpuWindow, mpCompositor, NULL);
+                    cr_server.head_spu->dispatch_table.VBoxPresentComposition(mSpuWindow, &TmpCompositor, NULL);
                 }
                 g_pLed->Asserted.s.fWriting = 1;
             }
