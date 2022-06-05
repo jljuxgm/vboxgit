@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-win.h 53082 2014-10-17 06:49:23Z vboxsync $ */
+/* $Id: VBoxNetAdp-win.h 53134 2014-10-23 19:22:00Z vboxsync $ */
 /** @file
  * VBoxNetAdp-win.h - Host-only Miniport Driver, Windows-specific code.
  */
@@ -22,6 +22,7 @@
 #define VBOXNETADP_VERSION_MAJOR             1
 #define VBOXNETADP_VERSION_MINOR             0
 
+#define VBOXNETADP_VENDOR_NAME               "Oracle"
 #define VBOXNETADP_VENDOR_ID                 0xFFFFFF
 #define VBOXNETADP_MCAST_LIST_SIZE           32
 #define VBOXNETADP_MAX_FRAME_SIZE            1518 // TODO: 14+4+1500
