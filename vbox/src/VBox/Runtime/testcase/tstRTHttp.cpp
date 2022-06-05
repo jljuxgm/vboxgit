@@ -1,4 +1,4 @@
-/* $Id: tstRTHttp.cpp 51716 2014-06-24 16:33:45Z vboxsync $ */
+/* $Id: tstRTHttp.cpp 51717 2014-06-24 16:37:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple cURL testcase.
  */
@@ -262,6 +262,7 @@ int main(int argc, char **argv)
             RTMemFree(pszBuf);
             pszBuf = NULL;
         }
+        RTPrintf("Old way: rc=%Rrc\n", rc);
 
         /*
          * The new way:
@@ -292,6 +293,7 @@ int main(int argc, char **argv)
         }
         else
             checkError(hHttp, rc, "roots.zip");
+        RTPrintf("New way: rc=%Rrc\n", rc);
     }
 
     /*
