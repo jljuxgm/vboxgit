@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 49464 2013-11-13 13:02:43Z vboxsync $ */
+/* $Id: PATMSSM.cpp 49473 2013-11-13 17:24:50Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -42,6 +42,7 @@
 #include <iprt/string.h>
 #include <VBox/dis.h>
 #include <VBox/disopcode.h>
+#include <VBox/version.h>
 
 /**
  * Patch information - SSM version.
@@ -838,7 +839,8 @@ DECLCALLBACK(int) patmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32
      */
     RT_ZERO(patmInfo);
     if (   uVersion == PATM_SSM_VERSION_MEM
-        && SSMR3HandleRevision(pSSM) >= 86139)
+        && SSMR3HandleRevision(pSSM) >= 86139
+        && SSMR3HandleVersion(pSSM)  >= VBOX_FULL_VERSION_MAKE(4, 2, 51))
         rc = SSMR3GetStructEx(pSSM, &patmInfo, sizeof(patmInfo), SSMSTRUCT_FLAGS_MEM_BAND_AID_RELAXED,
                               &g_aPatmFields86139[0], NULL);
     else
