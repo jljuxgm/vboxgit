@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 47845 2013-08-19 14:10:34Z vboxsync $ */
+/* $Id: CPUMInternal.h 49019 2013-10-10 08:45:11Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -97,6 +97,8 @@
 /** Sync the debug state on next entry (32->64 switcher only).
  * Almost the same as CPUM_USE_DEBUG_REGS_HYPER in the raw-mode switchers.  */
 #define CPUM_SYNC_DEBUG_REGS_HYPER      RT_BIT(18)
+/** Host CPU requires fxsave/fxrstor leaky bit handling. */
+#define CPUM_USE_FFXSR_LEAKY            RT_BIT(19)
 /** @} */
 
 /* Sanity check. */
@@ -431,7 +433,9 @@ RT_C_DECLS_BEGIN
 int                 cpumR3DbgInit(PVM pVM);
 #endif
 
+#ifdef IN_RC
 DECLASM(int)        cpumHandleLazyFPUAsm(PCPUMCPU pCPUM);
+#endif
 
 #ifdef IN_RING0
 DECLASM(int)        cpumR0SaveHostRestoreGuestFPUState(PCPUMCPU pCPUM);

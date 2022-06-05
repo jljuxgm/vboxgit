@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 48221 2013-09-01 23:27:56Z vboxsync $
+; $Id: CPUMInternal.mac 49019 2013-10-10 08:45:11Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -31,7 +31,7 @@
 %define CPUM_SYNC_FPU_STATE             RT_BIT(16)
 %define CPUM_SYNC_DEBUG_REGS_GUEST      RT_BIT(17)
 %define CPUM_SYNC_DEBUG_REGS_HYPER      RT_BIT(18)
-
+%define CPUM_USE_FFXSR_LEAKY            RT_BIT(19)
 
 %define CPUM_HANDLER_DS                 1
 %define CPUM_HANDLER_ES                 2
