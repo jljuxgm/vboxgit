@@ -1,10 +1,10 @@
-/* $Id: time-r0drv-darwin.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: time-r0drv-darwin.cpp 52822 2014-09-23 10:25:34Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Darwin.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -67,7 +67,7 @@ RTDECL(uint64_t) RTTimeNanoTS(void)
 
 RTDECL(uint64_t) RTTimeMilliTS(void)
 {
-    return rtTimeGetSystemNanoTS() / 1000000;
+    return rtTimeGetSystemNanoTS() / RT_NS_1MS;
 }
 
 
@@ -79,7 +79,7 @@ RTDECL(uint64_t) RTTimeSystemNanoTS(void)
 
 RTDECL(uint64_t) RTTimeSystemMilliTS(void)
 {
-    return rtTimeGetSystemNanoTS() / 1000000;
+    return rtTimeGetSystemNanoTS() / RT_NS_1MS;
 }
 
 
@@ -93,6 +93,6 @@ RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
     clock_nsec_t    uNanosecs;
 #endif
     clock_get_calendar_nanotime(&uSecs, &uNanosecs);
-    return RTTimeSpecSetNano(pTime, (uint64_t)uSecs * 1000000000 + uNanosecs);
+    return RTTimeSpecSetNano(pTime, (uint64_t)uSecs * RT_NS_1SEC + uNanosecs);
 }
 

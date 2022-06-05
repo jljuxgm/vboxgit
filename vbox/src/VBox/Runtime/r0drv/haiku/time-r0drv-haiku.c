@@ -1,10 +1,10 @@
-/* $Id: time-r0drv-haiku.c 43403 2012-09-22 11:48:24Z vboxsync $ */
+/* $Id: time-r0drv-haiku.c 52822 2014-09-23 10:25:34Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Haiku.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -38,13 +38,13 @@
 
 DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
-    return system_time() * 1000;
+    return system_time() * RT_NS_1US;
 }
 
 
 DECLINLINE(uint64_t) rtTimeGetSystemMilliTS(void)
 {
-    return system_time() / 1000;
+    return system_time() / RT_NS_1US;
 }
 
 
@@ -74,6 +74,6 @@ RTDECL(uint64_t) RTTimeSystemMilliTS(void)
 
 RTDECL(PRTTIMESPEC) RTTimeNow(PRTTIMESPEC pTime)
 {
-    return RTTimeSpecSetNano(pTime, real_time_clock_usecs() * 1000);
+    return RTTimeSpecSetNano(pTime, real_time_clock_usecs() * RT_NS_1US);
 }
 

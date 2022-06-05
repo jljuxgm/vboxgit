@@ -1,10 +1,10 @@
-/* $Id: time-haiku.cpp 45356 2013-04-05 07:01:27Z vboxsync $ */
+/* $Id: time-haiku.cpp 52822 2014-09-23 10:25:34Z vboxsync $ */
 /** @file
  * IPRT - Time, Haiku.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -43,7 +43,7 @@
 
 DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
 {
-    return (uint64_t)system_time() * 1000;
+    return (uint64_t)system_time() * RT_NS_1US;
 }
 
 
@@ -71,7 +71,7 @@ RTDECL(uint64_t) RTTimeSystemNanoTS(void)
  */
 RTDECL(uint64_t) RTTimeSystemMilliTS(void)
 {
-    return rtTimeGetSystemNanoTS() / 1000000;
+    return rtTimeGetSystemNanoTS() / RT_NS_1MS;
 }
 
 
@@ -82,3 +82,4 @@ RTDECL(int) RTTimeSet(PCRTTIMESPEC pTime)
     set_real_time_clock(tv.tv_sec);
     return VINF_SUCCESS;
 }
+

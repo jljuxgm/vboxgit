@@ -1,10 +1,10 @@
-/* $Id: time-darwin.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: time-darwin.cpp 52822 2014-09-23 10:25:34Z vboxsync $ */
 /** @file
  * IPRT - Time, Darwin.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -88,8 +88,8 @@ DECLINLINE(uint64_t) rtTimeGetSystemNanoTS(void)
     /* worst case: fallback to gettimeofday(). */
     struct timeval tv;
     gettimeofday(&tv, NULL);
-    return (uint64_t)tv.tv_sec  * (uint64_t)(1000 * 1000 * 1000)
-         + (uint64_t)(tv.tv_usec * 1000);
+    return (uint64_t)tv.tv_sec  * RT_NS_1SEC_64
+         + (uint64_t)(tv.tv_usec * RT_NS_1US);
 }
 
 
@@ -101,7 +101,7 @@ RTDECL(uint64_t) RTTimeSystemNanoTS(void)
 
 RTDECL(uint64_t) RTTimeSystemMilliTS(void)
 {
-    return rtTimeGetSystemNanoTS() / 1000000;
+    return rtTimeGetSystemNanoTS() / RT_NS_1MS;
 }
 
 

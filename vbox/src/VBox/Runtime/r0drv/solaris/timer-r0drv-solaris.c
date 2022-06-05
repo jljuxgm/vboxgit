@@ -1,10 +1,10 @@
-/* $Id: timer-r0drv-solaris.c 48186 2013-08-30 10:11:58Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 52822 2014-09-23 10:25:34Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
