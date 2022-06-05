@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 50843 2014-03-21 14:52:02Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 50845 2014-03-21 15:46:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane and UITask class implementation.
  */
@@ -67,6 +67,15 @@ void UIGraphicsTextPane::setText(const UITextTable &text)
     updateMinimumTextHeightHint();
 }
 
+void UIGraphicsTextPane::updateGeometry()
+{
+    /* Call to base-class to notify layout if any: */
+    QIGraphicsWidget::updateGeometry();
+
+    /* And notify listeners which are not layouts: */
+    emit sigGeometryChanged();
+}
+
 void UIGraphicsTextPane::updateMinimumTextWidthHint()
 {
     /* Prepare variables: */
@@ -112,7 +121,7 @@ void UIGraphicsTextPane::updateMinimumTextWidthHint()
     /* Remember new value: */
     m_iMinimumTextWidth = iMinimumTextWidth;
 
-    /* Notify layout if any: */
+    /* Notify listeners: */
     updateGeometry();
 }
 
@@ -189,7 +198,7 @@ void UIGraphicsTextPane::updateMinimumTextHeightHint()
     /* Remember new value: */
     m_iMinimumTextHeight = iMinimumTextHeight;
 
-    /* Notify layout if any: */
+    /* Notify listeners: */
     updateGeometry();
 }
 

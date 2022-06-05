@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 50843 2014-03-21 14:52:02Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 50845 2014-03-21 15:46:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -390,6 +390,7 @@ void UIGDetailsElement::prepareTextPane()
 {
     /* Create text-pane: */
     m_pTextPane = new UIGraphicsTextPane(this, model()->paintDevice());
+    connect(m_pTextPane, SIGNAL(sigGeometryChanged()), this, SLOT(sltUpdateGeometry()));
 }
 
 void UIGDetailsElement::paint(QPainter *pPainter, const QStyleOptionGraphicsItem *pOption, QWidget*)
