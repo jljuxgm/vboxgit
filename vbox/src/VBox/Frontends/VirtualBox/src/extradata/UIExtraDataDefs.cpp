@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 51484 2014-06-02 10:41:25Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 51593 2014-06-10 16:49:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -91,7 +91,6 @@ const char* UIExtraDataDefs::GUI_Scale = "GUI/Scale";
 const char* UIExtraDataDefs::GUI_VirtualScreenToHostScreen = "GUI/VirtualScreenToHostScreen";
 const char* UIExtraDataDefs::GUI_AutoresizeGuest = "GUI/AutoresizeGuest";
 const char* UIExtraDataDefs::GUI_AutomountGuestScreens = "GUI/AutomountGuestScreens";
-const char* UIExtraDataDefs::GUI_SaveMountedAtRuntime = "GUI/SaveMountedAtRuntime";
 const char* UIExtraDataDefs::GUI_PassCAD = "GUI/PassCAD";
 const char* UIExtraDataDefs::GUI_DefaultCloseAction = "GUI/DefaultCloseAction";
 const char* UIExtraDataDefs::GUI_RestrictedStatusBarIndicators = "GUI/RestrictedStatusBarIndicators";
