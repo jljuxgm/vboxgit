@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51966 2014-07-10 11:45:54Z vboxsync $
+# $Id: Config.kmk 51986 2014-07-11 13:03:14Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3999,9 +3999,9 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/int64.lib \
  	$(PATH_TOOL_$(TEMPLATE_VBOXR3HARDENEDEXE_TOOL.win.x86)_LIB)/chkstk.obj
  TEMPLATE_VBOXR3HARDENEDEXE_CXXFLAGS      = $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CXXFLAGS)) -GS-
- TEMPLATE_VBOXR3HARDENEDEXE_CXXFLAGS.debug= $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CXXFLAGS.debug)) -GS-
+ TEMPLATE_VBOXR3HARDENEDEXE_CXXFLAGS.debug= $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CXXFLAGS.debug)) -GS- -O2 -Oy-
  TEMPLATE_VBOXR3HARDENEDEXE_CFLAGS        = $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CFLAGS)) -GS-
- TEMPLATE_VBOXR3HARDENEDEXE_CXXFLAGS.debug= $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CFLAGS.debug)) -GS-
+ TEMPLATE_VBOXR3HARDENEDEXE_CFLAGS.debug  = $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CFLAGS.debug)) -GS- -O2 -Oy-
  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS       = $(TEMPLATE_VBOXR3EXE_LDFLAGS) \
 	/DISALLOWLIB:msvcrt$(VBOX_VCC_CRT_TYPE).lib \
 	/DISALLOWLIB:msvcprt$(VBOX_VCC_CRT_TYPE).lib
@@ -5711,7 +5711,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51966 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51986 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
