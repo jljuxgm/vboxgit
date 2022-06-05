@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 52192 2014-07-25 15:04:01Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 52553 2014-09-01 14:48:33Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -200,7 +200,9 @@ static RTSPINLOCK           g_Spinlock = NIL_RTSPINLOCK;
  */
 int _init(void)
 {
+#if 0    /* No IPRT logging before RTR0Init() is done! */
     LogFlowFunc(("vboxdrv:_init\n"));
+#endif
 
     /*
      * Prevent module autounloading.
@@ -209,7 +211,7 @@ int _init(void)
     if (pModCtl)
         pModCtl->mod_loadflags |= MOD_NOAUTOUNLOAD;
     else
-        LogRel(("vboxdrv: failed to disable autounloading!\n"));
+        cmn_err(CE_NOTE, "vboxdrv: failed to disable autounloading!\n");
 
     /*
      * Initialize IPRT R0 driver, which internally calls OS-specific r0 init.
@@ -299,7 +301,9 @@ int _fini(void)
 
 int _info(struct modinfo *pModInfo)
 {
-    LogFlowFunc(("vboxdrv:_info\n"));
+#if 0    /* No IPRT logging before RTR0Init() is done! And yes this is called before _init()!*/
+    LogFlowFunc(("vboxdrv:_init\n"));
+#endif
     int e = mod_info(&g_VBoxDrvSolarisModLinkage, pModInfo);
     return e;
 }
