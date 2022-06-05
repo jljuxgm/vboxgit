@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 49055 2013-10-11 14:33:56Z vboxsync $ */
+/* $Id: dbgcfg.cpp 49057 2013-10-11 15:50:14Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -871,7 +871,7 @@ static int rtDbgCfgTryOpenList(PRTDBGCFGINT pThis, PRTLISTANCHOR pList, PRTPATHS
                                PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2)
 {
     int rcRet = VWRN_NOT_FOUND;
-    int rc2;
+    int rc2 = VINF_SUCCESS;
 
     const char *pchCache = NULL;
     size_t      cchCache = 0;
