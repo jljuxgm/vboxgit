@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 49456 2013-11-13 10:14:30Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 49495 2013-11-15 11:18:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -115,6 +115,10 @@
 # endif
 #endif /* VBOX_WITH_NETFLT */
 
+#include <string>
+/* XXX: We don't need class declared in NetworkServiceRunner, this file included because of 
+ * mcrodefintions TRUNKTYPE_*
+ */
 #include "NetworkServiceRunner.h"
 #include "BusAssignmentManager.h"
 #ifdef VBOX_WITH_EXTPACK
