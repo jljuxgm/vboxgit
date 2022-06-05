@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 50412 2014-02-11 10:21:01Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 51360 2014-05-22 19:43:45Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1226,16 +1226,16 @@ static void vboxCtxLeave(PVBOX_CR_RENDER_CTX_INFO pCtxInfo)
     
     if ([self lockFocusIfCanDraw])
     {
-        [self vboxPresent:pCompositor];
-        if (pCompositor != &TmpCompositor)
-            renderspuVBoxCompositorRelease(m_pWinInfo);
-            
+        [self vboxPresent:pCompositor];            
         [self unlockFocus];
     }
     else
     {
         [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(vboxTryDrawUI) userInfo:nil repeats:NO];
     }
+    
+    if (pCompositor != &TmpCompositor)
+        renderspuVBoxCompositorRelease(m_pWinInfo);
 }
 
 - (void)swapFBO
