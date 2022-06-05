@@ -12,6 +12,7 @@ and guest operating systems to our battery of tests.
 
 We warmly welcome contributions, new ideas for good tests and fixes.
 
+
 Directory Layout
 ----------------
 
@@ -108,6 +109,6 @@ Directory Layout
 
 
 
-:Status: $Id: VBoxValidationKitReadMe.txt 52776 2014-09-17 14:51:43Z vboxsync $
+:Status: $Id: VBoxValidationKitReadMe.txt 53149 2014-10-27 07:48:10Z vboxsync $
 :Copyright: Copyright (C) 2010-2014 Oracle Corporation.
 
