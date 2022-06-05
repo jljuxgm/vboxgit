@@ -1,4 +1,4 @@
-/** $Id: VBoxUSBInterface.h 49787 2013-12-05 11:26:00Z vboxsync $ */
+/** $Id: VBoxUSBInterface.h 51488 2014-06-02 14:46:50Z vboxsync $ */
 /** @file
  * VirtualBox USB Driver User<->Kernel Interface.
  */
@@ -46,6 +46,8 @@ typedef struct VBOXUSBADDFILTEROUT
 /** Pointer to a VBOXUSBADDFILTEROUT. */
 typedef VBOXUSBADDFILTEROUT *PVBOXUSBADDFILTEROUT;
 
+/** Cookie used to fend off some unwanted clients to the IOService.  */
+#define VBOXUSB_DARWIN_IOSERVICE_COOKIE     UINT32_C(0x62735556) /* 'VUsb' */
 
 #endif
 

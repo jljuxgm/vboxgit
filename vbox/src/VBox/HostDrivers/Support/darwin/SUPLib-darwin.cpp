@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: SUPLib-darwin.cpp 51488 2014-06-02 14:46:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -170,7 +170,7 @@ static int suplibDarwinOpenService(PSUPLIBDATA pThis)
      * instantiated and create a session for this process.
      */
     io_connect_t Connection = NULL;
-    kr = IOServiceOpen(ServiceObject, mach_task_self(), 0, &Connection);
+    kr = IOServiceOpen(ServiceObject, mach_task_self(), SUP_DARWIN_IOSERVICE_COOKIE, &Connection);
     IOObjectRelease(ServiceObject);
     if (kr != kIOReturnSuccess)
     {

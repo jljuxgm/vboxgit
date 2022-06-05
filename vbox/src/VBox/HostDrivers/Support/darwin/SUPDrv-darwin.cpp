@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 51420 2014-05-27 09:08:51Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 51488 2014-06-02 14:46:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1372,6 +1372,13 @@ bool org_virtualbox_SupDrvClient::initWithTask(task_t OwningTask, void *pvSecuri
 
     if (!OwningTask)
         return false;
+
+    if (u32Type != SUP_DARWIN_IOSERVICE_COOKIE)
+    {
+        Log(("org_virtualbox_SupDrvClient::initWithTask: Bade cookie %#x\n", u32Type));
+        return false;
+    }
+
     if (IOUserClient::initWithTask(OwningTask, pvSecurityId , u32Type))
     {
         m_Task = OwningTask;
