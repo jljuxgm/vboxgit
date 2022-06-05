@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49520 2013-11-18 09:30:29Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49521 2013-11-18 09:46:30Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -36,13 +36,13 @@
 # include <VBox/vmm/rem.h>
 #endif
 #ifdef DEBUG_ramshankar
-#define HMVMX_SAVE_FULL_GUEST_STATE
-#define HMVMX_SYNC_FULL_GUEST_STATE
-#define HMVMX_ALWAYS_CHECK_GUEST_STATE
-#define HMVMX_ALWAYS_TRAP_ALL_XCPTS
-#define HMVMX_ALWAYS_TRAP_PF
-#define HMVMX_ALWAYS_SWAP_FPU_STATE
-#define HMVMX_ALWAYS_FLUSH_TLB
+# define HMVMX_SAVE_FULL_GUEST_STATE
+# define HMVMX_SYNC_FULL_GUEST_STATE
+# define HMVMX_ALWAYS_CHECK_GUEST_STATE
+# define HMVMX_ALWAYS_TRAP_ALL_XCPTS
+# define HMVMX_ALWAYS_TRAP_PF
+# define HMVMX_ALWAYS_SWAP_FPU_STATE
+# define HMVMX_ALWAYS_FLUSH_TLB
 #endif
 
 
