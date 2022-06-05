@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52478 2014-08-22 15:21:15Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 52516 2014-08-28 15:16:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1206,7 +1206,7 @@ void UIMachineLogic::sltAdjustWindow()
             pMachineWindow->showNormal();
 
         /* Normalize window geometry: */
-        pMachineWindow->normalizeGeometry(true);
+        pMachineWindow->normalizeGeometry(true /* adjust position */);
     }
 }
 
