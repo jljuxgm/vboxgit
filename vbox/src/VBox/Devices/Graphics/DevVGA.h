@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 50760 2014-03-12 19:22:24Z vboxsync $ */
+/* $Id: DevVGA.h 50848 2014-03-24 10:15:41Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -629,6 +629,8 @@ int vboxCmdVBVACmdHostCtl(PPDMIDISPLAYVBVACALLBACKS pInterface,
                                                                struct VBOXCRCMDCTL* pCmd, uint32_t cbCmd,
                                                                PFNCRCTLCOMPLETION pfnCompletion,
                                                                void *pvCompletion);
+int vboxCmdVBVACmdHostCtlSync(PPDMIDISPLAYVBVACALLBACKS pInterface,
+                                                               struct VBOXCRCMDCTL* pCmd, uint32_t cbCmd);
 
 int vboxVBVASaveStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Version);

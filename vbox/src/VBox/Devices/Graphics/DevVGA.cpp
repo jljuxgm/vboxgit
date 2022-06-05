@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 50804 2014-03-17 15:38:52Z vboxsync $ */
+/* $Id: DevVGA.cpp 50848 2014-03-24 10:15:41Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5954,6 +5954,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 # endif
 #endif
     pThis->IVBVACallbacks.pfnCrCtlSubmit = vboxCmdVBVACmdHostCtl;
+    pThis->IVBVACallbacks.pfnCrCtlSubmitSync = vboxCmdVBVACmdHostCtlSync;
 
     /*
      * We use our own critical section to avoid unncessary pointer indirections
