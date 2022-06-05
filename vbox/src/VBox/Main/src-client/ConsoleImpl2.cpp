@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 48701 2013-09-26 10:20:10Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 48756 2013-09-28 20:09:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -893,19 +893,19 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             uint32_t uMaxIntelFamilyModelStep = UINT32_MAX;
             if (   osTypeId == "MacOS"
                 || osTypeId == "MacOS_x64")
-                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 0); /* Penryn. */
+                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 7); /* Penryn / X5482. */
             else if (   osTypeId == "MacOS106"
                      || osTypeId == "MacOS106_x64")
-                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 0); /* Penryn */
+                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 7); /* Penryn / X5482 */
             else if (   osTypeId == "MacOS107"
                      || osTypeId == "MacOS107_x64")
-                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 0); /* Penryn */ /** @todo figure out what is required here. */
+                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 7); /* Penryn / X5482 */ /** @todo figure out what is required here. */
             else if (   osTypeId == "MacOS108"
                      || osTypeId == "MacOS108_x64")
-                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 0); /* Penryn */ /** @todo figure out what is required here. */
+                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 7); /* Penryn / X5482 */ /** @todo figure out what is required here. */
             else if (   osTypeId == "MacOS109"
                      || osTypeId == "MacOS109_x64")
-                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 0); /* Penryn */ /** @todo figure out what is required here. */
+                uMaxIntelFamilyModelStep = RT_MAKE_U32_FROM_U8(1, 23, 6, 7); /* Penryn / X5482 */ /** @todo figure out what is required here. */
             if (uMaxIntelFamilyModelStep != UINT32_MAX)
                 InsertConfigInteger(pCPUM, "MaxIntelFamilyModelStep", uMaxIntelFamilyModelStep);
         }
