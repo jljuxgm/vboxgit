@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 47922 2013-08-20 14:36:24Z vboxsync $ */
 
 /** @file
  *
@@ -55,7 +55,7 @@ class ATL_NO_VTABLE VFSExplorer :
     STDMETHOD(Cd)(IN_BSTR aDir, IProgress **aProgress);
     STDMETHOD(CdUp)(IProgress **aProgress);
 
-    STDMETHOD(EntryList)(ComSafeArrayOut(BSTR, aNames), ComSafeArrayOut(VFSFileType_T, aTypes), ComSafeArrayOut(ULONG, aSizes), ComSafeArrayOut(ULONG, aModes));
+    STDMETHOD(EntryList)(ComSafeArrayOut(BSTR, aNames), ComSafeArrayOut(VFSFileType_T, aTypes), ComSafeArrayOut(LONG64, aSizes), ComSafeArrayOut(ULONG, aModes));
 
     STDMETHOD(Exists)(ComSafeArrayIn(IN_BSTR, aNames), ComSafeArrayOut(BSTR, aExists));
 
