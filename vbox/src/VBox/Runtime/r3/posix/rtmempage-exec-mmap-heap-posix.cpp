@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-heap-posix.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-heap-posix.cpp 53278 2014-11-09 21:01:25Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with heap.
  */
@@ -40,6 +40,7 @@
 #include <iprt/param.h>
 #include <iprt/string.h>
 #include "internal/mem.h"
+#include "../alloc-ef.h"
 
 #include <stdlib.h>
 #include <errno.h>
@@ -411,7 +412,13 @@ static int rtHeapPageAllocLocked(PRTHEAPPAGE pHeap, size_t cPages, const char *p
 
     }
     /** @todo Eliminate this rtMemBaseAlloc dependency! */
-    PRTHEAPPAGEBLOCK pBlock = (PRTHEAPPAGEBLOCK)rtMemBaseAlloc(sizeof(*pBlock));
+    PRTHEAPPAGEBLOCK pBlock;
+#ifdef RTALLOC_REPLACE_MALLOC
+    if (g_pfnOrgMalloc)
+        pBlock = (PRTHEAPPAGEBLOCK)g_pfnOrgMalloc(sizeof(*pBlock));
+    else
+#endif
+        pBlock = (PRTHEAPPAGEBLOCK)rtMemBaseAlloc(sizeof(*pBlock));
     if (!pBlock)
     {
         munmap(pvPages, RTMEMPAGEPOSIX_BLOCK_SIZE);
@@ -582,7 +589,12 @@ int RTHeapPageFree(PRTHEAPPAGE pHeap, void *pv, size_t cPages)
                         munmap(pBlock->Core.Key, RTMEMPAGEPOSIX_BLOCK_SIZE);
                         pBlock->Core.Key = pBlock->Core.KeyLast = NULL;
                         pBlock->cFreePages = 0;
-                        rtMemBaseFree(pBlock);
+#ifdef RTALLOC_REPLACE_MALLOC
+                        if (g_pfnOrgFree)
+                            g_pfnOrgFree(pBlock);
+                        else
+#endif
+                            rtMemBaseFree(pBlock);
 
                         RTCritSectEnter(&pHeap->CritSect);
                     }
