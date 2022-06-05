@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 52023 2014-07-14 21:00:18Z vboxsync $ */
+/* $Id: DrvBlock.cpp 53148 2014-10-26 18:03:09Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -143,6 +143,25 @@ static DECLCALLBACK(int) drvblockRead(PPDMIBLOCK pInterface, uint64_t off, void 
     }
 
     int rc = pThis->pDrvMedia->pfnRead(pThis->pDrvMedia, off, pvBuf, cbRead);
+    return rc;
+}
+
+
+/** @copydoc PDMIBLOCK::pfnReadPcBios */
+static DECLCALLBACK(int) drvblockReadPcBios(PPDMIBLOCK pInterface, uint64_t off, void *pvBuf, size_t cbRead)
+{
+    PDRVBLOCK pThis = PDMIBLOCK_2_DRVBLOCK(pInterface); 
+
+    /*
+     * Check the state.
+     */
+    if (!pThis->pDrvMedia)
+    {
+        AssertMsgFailed(("Invalid state! Not mounted!\n"));
+        return VERR_PDM_MEDIA_NOT_MOUNTED;
+    }
+
+    int rc = pThis->pDrvMedia->pfnReadPcBios(pThis->pDrvMedia, off, pvBuf, cbRead);
     return rc;
 }
 
@@ -880,6 +899,7 @@ static DECLCALLBACK(int) drvblockConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, u
 
     /* IBlock. */
     pThis->IBlock.pfnRead                   = drvblockRead;
+    pThis->IBlock.pfnReadPcBios             = drvblockReadPcBios;
     pThis->IBlock.pfnWrite                  = drvblockWrite;
     pThis->IBlock.pfnFlush                  = drvblockFlush;
     pThis->IBlock.pfnMerge                  = drvblockMerge;
