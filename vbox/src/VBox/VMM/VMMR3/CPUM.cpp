@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 52764 2014-09-16 15:57:03Z vboxsync $ */
+/* $Id: CPUM.cpp 53202 2014-11-04 15:41:05Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1176,7 +1176,7 @@ static int cpumR3CpuIdInit(PVM pVM)
                         "Please use IMachine::setCPUIDLeaf() instead.");
 
     /*
-     * Pre-exploded the CPUID info.
+     * Pre-explode the CPUID info.
      */
     if (RT_SUCCESS(rc))
         rc = cpumR3CpuIdExplodeFeatures(pCPUM->GuestInfo.paCpuIdLeavesR3, pCPUM->GuestInfo.cCpuIdLeaves, &pCPUM->GuestFeatures);
