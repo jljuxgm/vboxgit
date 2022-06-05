@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 51548 2014-06-05 10:02:39Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 51590 2014-06-10 14:53:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1610,8 +1610,11 @@ void UIGChooserModel::loadGroupTree()
     /* Add all the approved machines we have into the group-tree: */
     LogRelFlow(("UIGChooserModel: Loading VMs...\n"));
     foreach (CMachine machine, vboxGlobal().virtualBox().GetMachines())
-        if (gEDataManager->shouldWeShowMachine(machine.GetId()))
+    {
+        const QString strMachineID = machine.GetId();
+        if (!strMachineID.isEmpty() && gEDataManager->shouldWeShowMachine(strMachineID))
             addMachineIntoTheTree(machine);
+    }
     LogRelFlow(("UIGChooserModel: VMs loaded.\n"));
 }
 
