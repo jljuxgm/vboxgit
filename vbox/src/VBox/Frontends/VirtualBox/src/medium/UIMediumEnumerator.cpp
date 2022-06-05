@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 48829 2013-10-03 10:47:11Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 48893 2013-10-04 17:58:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -186,7 +186,7 @@ void UIMediumEnumerator::sltHandleMachineUpdate(QString strMachineID)
     foreach (const QString &strMediumID, mediumIDs())
     {
         const UIMedium &uimedium = m_mediums[strMediumID];
-        const QList<QString> &machineIDs = uimedium.machineIds();
+        const QList<QString> &machineIDs = uimedium.curStateMachineIds();
         if (machineIDs.contains(strMachineID))
             oldUsage << strMediumID;
     }
