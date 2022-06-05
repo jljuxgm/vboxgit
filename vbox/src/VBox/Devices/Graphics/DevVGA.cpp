@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 51836 2014-07-03 09:40:21Z vboxsync $ */
+/* $Id: DevVGA.cpp 52504 2014-08-27 13:01:59Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4649,7 +4649,7 @@ static int updateDisplayAll(PVGASTATE pThis, bool fFailOnResize)
 }
 
 
-int vgaUpdateDisplayAll(PVGASTATE pThis, bool fFailOnResize)
+DECLCALLBACK(int) vgaUpdateDisplayAll(PVGASTATE pThis, bool fFailOnResize)
 {
 #ifdef DEBUG_sunlover
     LogFlow(("vgaPortUpdateDisplayAll\n"));
