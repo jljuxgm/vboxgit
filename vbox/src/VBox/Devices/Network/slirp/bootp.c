@@ -1,4 +1,4 @@
-/* $Id: bootp.c 50672 2014-03-04 01:34:15Z vboxsync $ */
+/* $Id: bootp.c 50689 2014-03-05 06:39:57Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -302,14 +302,11 @@ static int dhcp_do_ack_offer(PNATState pData, struct mbuf *m, BOOTPClient *bc, i
         uint32_t addr = RT_H2N_U32(RT_N2H_U32(pData->special_addr.s_addr) | CTL_DNS);
         FILL_BOOTP_EXT(q, RFC1533_DNS, 4, &addr);
     }
-    else
+    else if (!TAILQ_EMPTY(&pData->pDnsList))
     {
-        if (!TAILQ_EMPTY(&pData->pDnsList))
-        {
-            de = TAILQ_LAST(&pData->pDnsList, dns_list_head);
-            q_dns_header = q;
-            FILL_BOOTP_EXT(q, RFC1533_DNS, 4, &de->de_addr.s_addr);
-        }
+        de = TAILQ_LAST(&pData->pDnsList, dns_list_head);
+        q_dns_header = q;
+        FILL_BOOTP_EXT(q, RFC1533_DNS, 4, &de->de_addr.s_addr);
 
         TAILQ_FOREACH_REVERSE(de, &pData->pDnsList, dns_list_head, de_list)
         {
@@ -318,7 +315,10 @@ static int dhcp_do_ack_offer(PNATState pData, struct mbuf *m, BOOTPClient *bc, i
             FILL_BOOTP_APP(q_dns_header, q, RFC1533_DNS, 4, &de->de_addr.s_addr);
         }
     }
-    if (pData->fPassDomain && !pData->fUseHostResolver)
+
+    if (   pData->fPassDomain
+        && !pData->fUseHostResolver
+        && !LIST_EMPTY(&pData->pDomainList))
     {
         LIST_FOREACH(dd, &pData->pDomainList, dd_list)
         {
