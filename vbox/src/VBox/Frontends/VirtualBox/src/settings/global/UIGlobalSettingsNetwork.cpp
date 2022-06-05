@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 53285 2014-11-10 12:05:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -471,6 +471,13 @@ UIGlobalSettingsNetwork::UIGlobalSettingsNetwork()
         m_pToolbarNetworkHost->addAction(m_pActionDelNetworkHost);
         m_pToolbarNetworkHost->addAction(m_pActionEditNetworkHost);
     }
+
+#ifndef Q_WS_WIN
+    /* On Windows host that looks ugly, but
+     * On Mac OS X and X11 that deserves it's place. */
+    m_pLayoutNAT->setContentsMargins(0, 0, 0, 0);
+    m_pLayoutHostOnly->setContentsMargins(0, 0, 0, 0);
+#endif /* !Q_WS_WIN */
 
     /* Apply language settings: */
     retranslateUi();
