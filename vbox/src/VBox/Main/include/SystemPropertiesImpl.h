@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 49951 2013-12-17 11:44:22Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 50293 2014-01-30 16:34:08Z vboxsync $ */
 
 /** @file
  *
@@ -118,6 +118,8 @@ private:
                                         std::vector<DeviceType_T> &aDeviceTypes);
     HRESULT getDefaultIoCacheSettingForStorageController(StorageControllerType_T aControllerType,
                                                          BOOL *aEnabled);
+    HRESULT getStorageControllerHotplugCapable(StorageControllerType_T aControllerType,
+                                               BOOL *aHotplugCapable);
     HRESULT getMaxInstancesOfUSBControllerType(ChipsetType_T aChipset,
                                                USBControllerType_T aType,
                                                ULONG *aMaxInstances);
