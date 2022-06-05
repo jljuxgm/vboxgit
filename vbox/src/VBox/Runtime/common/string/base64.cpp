@@ -1,4 +1,4 @@
-/* $Id: base64.cpp 51791 2014-07-01 20:33:39Z vboxsync $ */
+/* $Id: base64.cpp 51792 2014-07-01 20:34:29Z vboxsync $ */
 /** @file
  * IPRT - Base64, MIME content transfer encoding.
  */
@@ -131,7 +131,7 @@ RTDECL(ssize_t) RTBase64DecodedSizeEx(const char *pszString, size_t cchStringMax
      */
     uint32_t    c6Bits = 0;
     uint8_t     u8     = BASE64_INVALID;
-    unsigned    ch;
+    unsigned    ch     = 0;
     AssertCompile(sizeof(char) == sizeof(uint8_t));
 
     while (cchStringMax > 0 && (ch = *pszString))
