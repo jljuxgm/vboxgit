@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49990 2013-12-19 16:54:12Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 50856 2014-03-24 14:11:10Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -320,11 +320,12 @@ R0PTRTYPE(void *)           g_pvIOBitmap      = NULL;
 VMMR0DECL(int) SVMR0EnableCpu(PHMGLOBALCPUINFO pCpu, PVM pVM, void *pvCpuPage, RTHCPHYS HCPhysCpuPage, bool fEnabledByHost,
                               void *pvArg)
 {
+    Assert(!fEnabledByHost);
+    Assert(HCPhysCpuPage && HCPhysCpuPage != NIL_RTHCPHYS);
+    Assert(RT_ALIGN_T(HCPhysCpuPage, _4K, RTHCPHYS) == HCPhysCpuPage);
+    Assert(pvCpuPage);
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-    AssertReturn(!fEnabledByHost, VERR_INVALID_PARAMETER);
-    AssertReturn(   HCPhysCpuPage
-                 && HCPhysCpuPage != NIL_RTHCPHYS, VERR_INVALID_PARAMETER);
-    AssertReturn(pvCpuPage, VERR_INVALID_PARAMETER);
+
     NOREF(pvArg);
     NOREF(fEnabledByHost);
 
