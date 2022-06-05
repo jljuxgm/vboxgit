@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 47755 2013-08-15 11:56:00Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 47910 2013-08-20 13:12:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -246,7 +246,9 @@ void UIPopupCenter::showPopupPane(QWidget *pParent, const QString &strPopupPaneI
     if ((iButton1 || iButton2) && fProposeAutoConfirmation)
     {
         QStringList confirmedPopupList = vboxGlobal().virtualBox().GetExtraData(GUI_SuppressMessages).split(',');
-        if (confirmedPopupList.contains(strPopupPaneID))
+        if (   confirmedPopupList.contains(strPopupPaneID)
+            || confirmedPopupList.contains("AllPopupPanes")
+            || confirmedPopupList.contains("All") )
         {
             int iResultCode = AlertOption_AutoConfirmed;
             if (iButton1 & AlertButtonOption_Default)
