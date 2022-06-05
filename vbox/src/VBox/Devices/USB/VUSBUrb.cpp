@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 53161 2014-10-29 09:10:28Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 53162 2014-10-29 09:16:50Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -1139,10 +1139,6 @@ void vusbUrbCompletionRh(PVUSBURB pUrb)
     }
 #ifdef LOG_ENABLED
     vusbUrbTrace(pUrb, "vusbUrbCompletionRh", true);
-#endif
-#ifndef VBOX_WITH_STATISTICS
-    PVUSBROOTHUB pRh = vusbDevGetRh(pUrb->VUsb.pDev);
-    AssertPtrReturnVoid(pRh);
 #endif
 
     pRh->pIRhPort->pfnXferCompletion(pRh->pIRhPort, pUrb);
