@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53223 2014-11-05 09:40:08Z vboxsync $
+# $Id: Config.kmk 53224 2014-11-05 09:50:43Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -437,7 +437,7 @@ VBOX_WITH_INTERNAL_NETWORKING = 1
 # Enable vmsvga (svga2) graphics device variant, 2D part
 VBOX_WITH_VMSVGA = 1
 # Enable vmsvga (svga2) graphics device variant, 3D part
-if1of ($(KBUILD_TARGET), darwin linux solaris)
+if1of ($(KBUILD_TARGET), darwin linux)
  VBOX_WITH_VMSVGA3D = 1
 endif
 # Enable Host Guest Shared Memory Interface.
@@ -5734,7 +5734,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53223 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53224 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
