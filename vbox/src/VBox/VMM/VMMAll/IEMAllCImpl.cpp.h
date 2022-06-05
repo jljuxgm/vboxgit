@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 47821 2013-08-16 23:14:13Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 47988 2013-08-22 13:01:54Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4667,6 +4667,11 @@ IEM_CIMPL_DEF_0(iemCImpl_rdmsr)
     int rc = CPUMQueryGuestMsr(IEMCPU_TO_VMCPU(pIemCpu), pCtx->ecx, &uValue.u);
     if (rc != VINF_SUCCESS)
     {
+#ifdef IN_RING3
+        static uint32_t s_cTimes = 0;
+        if (s_cTimes++ < 10)
+            LogRel(("IEM: rdmsr(%#x) -> GP(0)\n", pCtx->ecx));
+#endif
         Log(("IEM: rdmsr(%#x) -> GP(0)\n", pCtx->ecx));
         AssertMsgReturn(rc == VERR_CPUM_RAISE_GP_0, ("%Rrc\n", rc), VERR_IPE_UNEXPECTED_STATUS);
         return iemRaiseGeneralProtectionFault0(pIemCpu);
