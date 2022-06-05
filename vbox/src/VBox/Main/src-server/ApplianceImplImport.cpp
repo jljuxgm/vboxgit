@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 49038 2013-10-10 18:21:26Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -769,12 +769,12 @@ STDMETHODIMP Appliance::ImportMachines(ComSafeArrayIn(ImportOptions_T, options),
     AutoCaller autoCaller(this);
     if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
     if (options != NULL)
-        m->optList = com::SafeArray<ImportOptions_T>(ComSafeArrayInArg(options)).toList();
+        m->optListImport = com::SafeArray<ImportOptions_T>(ComSafeArrayInArg(options)).toList();
 
-    AssertReturn(!(m->optList.contains(ImportOptions_KeepAllMACs) && m->optList.contains(ImportOptions_KeepNATMACs)), E_INVALIDARG);
-
-    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+    AssertReturn(!(m->optListImport.contains(ImportOptions_KeepAllMACs) && m->optListImport.contains(ImportOptions_KeepNATMACs)), E_INVALIDARG);
 
     // do not allow entering this method if the appliance is busy reading or writing
     if (!isApplianceIdle())
@@ -3339,8 +3339,8 @@ void Appliance::importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescThi
     settings::NetworkAdaptersList &llNetworkAdapters = config.hardwareMachine.llNetworkAdapters;
     /* First disable all network cards, they will be enabled below again. */
     settings::NetworkAdaptersList::iterator it1;
-    bool fKeepAllMACs = m->optList.contains(ImportOptions_KeepAllMACs);
-    bool fKeepNATMACs = m->optList.contains(ImportOptions_KeepNATMACs);
+    bool fKeepAllMACs = m->optListImport.contains(ImportOptions_KeepAllMACs);
+    bool fKeepNATMACs = m->optListImport.contains(ImportOptions_KeepNATMACs);
     for (it1 = llNetworkAdapters.begin(); it1 != llNetworkAdapters.end(); ++it1)
     {
         it1->fEnabled = false;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 49038 2013-10-10 18:21:26Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1050,9 +1050,13 @@ int handleExportAppliance(HandlerArg *a)
         if (FAILED(rc))
             break;
 
+        com::SafeArray<ExportOptions_T> options;
+        if (fManifest)
+            options.push_back(ExportOptions_CreateManifest);
+
         ComPtr<IProgress> progress;
         CHECK_ERROR_BREAK(pAppliance, Write(Bstr(strOvfFormat).raw(),
-                                            fManifest,
+                                            ComSafeArrayAsInParam(options),
                                             Bstr(pszAbsFilePath).raw(),
                                             progress.asOutParam()));
         RTStrFree(pszAbsFilePath);
