@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 52429 2014-08-20 11:58:38Z vboxsync $ */
+/* $Id: server_presenter.cpp 52451 2014-08-21 19:20:27Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -4884,6 +4884,28 @@ static int crPMgrModeModifyGlobal(uint32_t u32ModeAdd, uint32_t u32ModeRemove)
             hFb = CrPMgrFbGetNextInitialized(hFb))
     {
         crPMgrModeModify(hFb, u32ModeAdd, u32ModeRemove);
+    }
+
+    return VINF_SUCCESS;
+}
+
+int CrPMgrClearRegionsGlobal()
+{
+    for (HCR_FRAMEBUFFER hFb = CrPMgrFbGetFirstEnabled();
+            hFb;
+            hFb = CrPMgrFbGetNextEnabled(hFb))
+    {
+        int rc = CrFbUpdateBegin(hFb);
+        if (RT_SUCCESS(rc))
+        {
+            rc = CrFbRegionsClear(hFb);
+            if (RT_FAILURE(rc))
+            {
+                WARN(("CrFbRegionsClear failed %d", rc));
+            }
+
+            CrFbUpdateEnd(hFb);
+        }
     }
 
     return VINF_SUCCESS;
