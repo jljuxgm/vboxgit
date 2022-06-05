@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 49426 2013-11-08 16:34:34Z vboxsync $ */
+/* $Id: VMMDev.cpp 50674 2014-03-04 11:15:29Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1513,8 +1513,6 @@ static int vmmdevReqHandler_HGCMCall(PVMMDEV pThis, VMMDevRequestHeader *pReqHdr
     return vmmdevHGCMCall(pThis, pReq, pReq->header.header.size, GCPhysReqHdr, f64Bits);
 }
 
-#endif /* VBOX_WITH_HGCM */
-
 /**
  * Handles VMMDevReq_HGCMCancel.
  *
@@ -1560,6 +1558,8 @@ static int vmmdevReqHandler_HGCMCancel2(PVMMDEV pThis, VMMDevRequestHeader *pReq
     Log(("VMMDevReq_VMMDevHGCMCancel\n"));
     return vmmdevHGCMCancel2(pThis, pReq->physReqToCancel);
 }
+
+#endif /* VBOX_WITH_HGCM */
 
 
 /**
@@ -2404,7 +2404,6 @@ static int vmmdevReqDispatcher(PVMMDEV pThis, VMMDevRequestHeader *pReqHdr, RTGC
             pReqHdr->rc = vmmdevReqHandler_HGCMCall(pThis, pReqHdr, GCPhysReqHdr);
             *pfDelayedUnlock = true;
             break;
-#endif /* VBOX_WITH_HGCM */
 
         case VMMDevReq_HGCMCancel:
             pReqHdr->rc = vmmdevReqHandler_HGCMCancel(pThis, pReqHdr, GCPhysReqHdr);
@@ -2414,6 +2413,7 @@ static int vmmdevReqDispatcher(PVMMDEV pThis, VMMDevRequestHeader *pReqHdr, RTGC
         case VMMDevReq_HGCMCancel2:
             pReqHdr->rc = vmmdevReqHandler_HGCMCancel2(pThis, pReqHdr);
             break;
+#endif /* VBOX_WITH_HGCM */
 
         case VMMDevReq_VideoAccelEnable:
             pReqHdr->rc = vmmdevReqHandler_VideoAccelEnable(pThis, pReqHdr);
@@ -3595,8 +3595,10 @@ static DECLCALLBACK(void) vmmdevReset(PPDMDEVINS pDevIns)
     /* disabled statistics updating */
     pThis->u32LastStatIntervalSize = 0;
 
+#ifdef VBOX_WITH_HGCM
     /* Clear the "HGCM event enabled" flag so the event can be automatically reenabled.  */
     pThis->u32HGCMEnabled = 0;
+#endif
 
     /*
      * Clear the event variables.
