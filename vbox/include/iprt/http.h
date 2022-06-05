@@ -1,4 +1,4 @@
-/* $Id: http.h 51635 2014-06-17 15:58:40Z vboxsync $ */
+/* $Id: http.h 51705 2014-06-24 11:07:40Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP Communication API.
  */
@@ -60,6 +60,16 @@ RTR3DECL(int) RTHttpCreate(PRTHTTP phHttp);
  * @param   hHttp       Handle to the HTTP interface.
  */
 RTR3DECL(void) RTHttpDestroy(RTHTTP hHttp);
+
+
+/**
+ * Retrieve the redir location for 301 responses.
+ *
+ * @param   hHttp       Handle to the HTTP interface.
+ * @para    ppszRedirLocation   Where to store the string. To be freed with
+ *                              RTStrFree().
+ */
+RTR3DECL(int) RTHttpGetRedirLocation(RTHTTP hHttp, char **ppszRedirLocation);
 
 /**
  * Perform a simple blocking HTTP request.
