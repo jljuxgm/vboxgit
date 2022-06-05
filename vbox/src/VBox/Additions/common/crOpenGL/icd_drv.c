@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: icd_drv.c 51559 2014-06-05 21:18:41Z vboxsync $ */
 
 /** @file
  * VBox OpenGL windows ICD driver functions
@@ -307,11 +307,11 @@ BOOL APIENTRY DrvCopyContext(HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask)
     return 0;
 }
 
+DECLEXPORT(BOOL) WINAPI wglShareLists_prox( HGLRC hglrc1, HGLRC hglrc2 );
+
 BOOL APIENTRY DrvShareLists(HGLRC hglrc1, HGLRC hglrc2)
 {
-    CR_DDI_PROLOGUE();
-    crWarning( "DrvShareLists: unsupported" );
-    return 1;
+    return wglShareLists_prox(hglrc1, hglrc2);
 }
 
 int APIENTRY DrvSetLayerPaletteEntries(HDC hdc, int iLayerPlane,
