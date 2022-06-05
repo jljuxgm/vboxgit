@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 50957 2014-04-02 20:26:07Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 50963 2014-04-03 14:07:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4564,6 +4564,12 @@ DECLCALLBACK(void) Display::displayVBVADisable(PPDMIDISPLAYCONNECTOR pInterface,
     vbvaSetMemoryFlagsHGSMI(uScreenId, 0, false, pFBInfo);
 
     pFBInfo->pVBVAHostFlags = NULL;
+
+    if (uScreenId == VBOX_VIDEO_PRIMARY_SCREEN)
+    {
+        /* Force full screen update, because VGA device must take control, do resize, etc. */
+        pThis->InvalidateAndUpdateEMT(pThis, VBOX_VIDEO_PRIMARY_SCREEN, false);
+    }
 }
 
 DECLCALLBACK(void) Display::displayVBVAUpdateBegin(PPDMIDISPLAYCONNECTOR pInterface, unsigned uScreenId)
