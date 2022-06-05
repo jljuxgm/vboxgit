@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48426 2013-09-11 11:52:56Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48436 2013-09-11 15:55:29Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3114,8 +3114,12 @@ static int hmR0VmxLoadSharedCR0(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
                     | X86_CR0_ET    /* Bit ignored on VM-entry and VM-exit. Don't let the guest modify the host CR0.ET */
                     | X86_CR0_CD    /* Bit ignored on VM-entry and VM-exit. Don't let the guest modify the host CR0.CD */
                     | X86_CR0_NW;   /* Bit ignored on VM-entry and VM-exit. Don't let the guest modify the host CR0.NW */
+        /** @todo Temporarily intercept CR0.PE changes with unrestricted. Fix PGM
+         *        enmGuestMode to not be out-of-sync. See @bugref{6398}. */
+#if 0
         if (pVM->hm.s.vmx.fUnrestrictedGuest)
             u32CR0Mask &= ~X86_CR0_PE;
+#endif
         if (pVM->hm.s.fNestedPaging)
             u32CR0Mask &= ~X86_CR0_WP;
 
