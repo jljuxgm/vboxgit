@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.h 50602 2014-02-26 12:50:39Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.h 50603 2014-02-26 12:56:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,6 +25,9 @@
 #include <QString>
 #include <QStringList>
 #include <QVariant>
+
+/* COM includes: */
+#include "CSession.h"
 
 /* Forward declarations: */
 class UIDnDDrag;
