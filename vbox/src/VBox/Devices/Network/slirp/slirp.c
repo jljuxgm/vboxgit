@@ -1,4 +1,4 @@
-/* $Id: slirp.c 49347 2013-10-31 14:08:05Z vboxsync $ */
+/* $Id: slirp.c 50045 2014-01-10 01:50:27Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -2031,4 +2031,12 @@ void slirp_info(PNATState pData, const void *pvArg, const char *pszArgs)
                         rule->host_port, rule->guest_addr.s_addr, rule->guest_port,
                         rule->activated ? ' ' : '*');
     }
+}
+
+
+int slirp_host_network_configuration_change_strategy_selector(const PNATState pData)
+{
+    if (pData->fUseHostResolver) return VBOX_NAT_HNCE_HOSTRESOLVER;
+    if (pData->fUseDnsProxy) return VBOX_NAT_HNCE_DNSPROXY;
+    return VBOX_NAT_HNCE_EXSPOSED_NAME_RESOLUTION_INFO;
 }
