@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i5_3570.h 50590 2014-02-25 18:51:23Z vboxsync $ */
+/* $Id: Intel_Core_i5_3570.h 50617 2014-02-26 19:34:46Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i5-3570".
  * Generated at 2013-12-13T16:13:56Z by VBoxCpuReport v4.3.53r91216 on linux.amd64.
@@ -69,7 +69,7 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i5_3570[] =
     MVX(0x0000002e, "I7_UNK_0000_002e", 0, 0x400, UINT64_C(0xfffffffffffffbff)),
     MVX(0x00000033, "TEST_CTL", 0, 0, UINT64_C(0xffffffff7fffffff)),
     MVO(0x00000034, "P6_UNK_0000_0034", 0x285),
-    MVO(0x00000035, "P6_UNK_0000_0035", 0x40004),
+    MFO(0x00000035, "MSR_CORE_THREAD_COUNT", IntelI7CoreThreadCount), /* value=0x40004*/
     MVO(0x00000036, "I7_UNK_0000_0036", UINT64_C(0x1000000000105df2)),
     MFO(0x0000003a, "IA32_FEATURE_CONTROL", Ia32FeatureControl), /* value=0x5 */
     MVX(0x0000003e, "I7_UNK_0000_003e", 0x1, 0, UINT64_C(0xfffffffffffffffe)),
