@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49102 2013-10-15 04:18:36Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49109 2013-10-15 08:54:39Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -320,9 +320,9 @@ STDMETHODIMP VBoxNetLwipNAT::HandleEvent(VBoxEventType_T aEventType,
             /* XXX: limits should be checked */
             r.Pfr.u16PfrHostPort = (uint16_t)lHostPort;
 
-            RTStrPrintf(r.Pfr.aszPfrHostAddr, RT_ELEMENTS(r.Pfr.aszPfrGuestAddr),
+            RTStrPrintf(r.Pfr.aszPfrGuestAddr, RT_ELEMENTS(r.Pfr.aszPfrGuestAddr),
                       "%s",
-                      com::Utf8Str(strHostAddr).c_str());
+                      com::Utf8Str(strGuestAddr).c_str());
 
             /* XXX: limits should be checked */
             r.Pfr.u16PfrGuestPort = (uint16_t)lGuestPort;
