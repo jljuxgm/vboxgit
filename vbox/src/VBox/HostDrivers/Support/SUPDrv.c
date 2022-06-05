@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 53430 2014-12-03 13:18:41Z vboxsync $ */
+/* $Id: SUPDrv.c 53444 2014-12-04 15:57:45Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -7861,12 +7861,13 @@ static int supdrvIOCtl_TscDeltaMeasure(PSUPDRVDEVEXT pDevExt, PSUPTSCDELTAMEASUR
     if (idCpuWorker == NIL_RTCPUID)
         return VERR_INVALID_CPU_ID;
 
-    if (!GIP_ARE_TSC_DELTAS_APPLICABLE(pGip))
-        return VINF_SUCCESS;
-
     cTries       = RT_MAX(pReq->u.In.cRetries + 1, 10);
     cMsWaitRetry = RT_MAX(pReq->u.In.cMsWaitRetry, 5);
     pGip = pDevExt->pGip;
+
+    if (!GIP_ARE_TSC_DELTAS_APPLICABLE(pGip))
+        return VINF_SUCCESS;
+
     for (iCpu = 0; iCpu < pGip->cCpus; iCpu++)
     {
         PSUPGIPCPU pGipCpuWorker = &pGip->aCPUs[iCpu];
