@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 51865 2014-07-04 04:31:32Z vboxsync $ */
+/* $Id: tcp_subr.c 52755 2014-09-15 21:31:50Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -505,7 +505,6 @@ tcp_connect(PNATState pData, struct socket *inso)
         }
         so->so_laddr = inso->so_laddr;
         so->so_lport = inso->so_lport;
-        so->so_la = inso->so_la;
     }
 
     (void) tcp_mss(pData, sototcpcb(so), 0);
