@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 48247 2013-09-03 12:30:47Z vboxsync $ */
+/* $Id: state_glsl.c 50041 2014-01-09 16:13:28Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -258,7 +258,7 @@ DECLEXPORT(GLuint) STATE_APIENTRY crStateGLSLProgramHWIDtoID(GLuint hwid)
     return parms.id;
 }
 
-DECLEXPORT(GLuint) STATE_APIENTRY crStateDeleteObjectARB( GLhandleARB obj )
+DECLEXPORT(GLuint) STATE_APIENTRY crStateDeleteObjectARB( VBoxGLhandleARB obj )
 {
     GLuint hwId = crStateGetProgramHWID(obj);
     if (hwId)

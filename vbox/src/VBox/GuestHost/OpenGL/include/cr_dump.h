@@ -1,4 +1,4 @@
-/* $Id: cr_dump.h 49172 2013-10-17 19:34:35Z vboxsync $ */
+/* $Id: cr_dump.h 50041 2014-01-09 16:13:28Z vboxsync $ */
 
 /** @file
  * Debugging: Dump API
@@ -109,7 +109,11 @@ typedef struct CR_HTML_DUMPER
     uint32_t cImg;
 } CR_HTML_DUMPER;
 
+DECLEXPORT(bool) crDmpHtmlIsInited(struct CR_HTML_DUMPER * pDumper);
+DECLEXPORT(void) crDmpHtmlTerm(struct CR_HTML_DUMPER * pDumper);
 DECLEXPORT(int) crDmpHtmlInit(struct CR_HTML_DUMPER * pDumper, const char *pszDir, const char *pszFile);
+DECLEXPORT(int) crDmpHtmlInitV(struct CR_HTML_DUMPER * pDumper, const char *pszDir, const char *pszFile, va_list pArgList);
+DECLEXPORT(int) crDmpHtmlInitF(struct CR_HTML_DUMPER * pDumper, const char *pszDir, const char *pszFile, ...);
 
 #ifdef RT_OS_WINDOWS
 DECLINLINE(void) crDmpDbgPrintInit(CR_DBGPRINT_DUMPER *pDumper)
