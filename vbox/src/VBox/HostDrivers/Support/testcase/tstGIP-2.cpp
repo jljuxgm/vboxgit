@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 52620 2014-09-05 12:13:47Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 52718 2014-09-12 12:10:29Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -162,7 +162,7 @@ int main(int argc, char **argv)
             /* Display TSC deltas. */
             RTPrintf("tstGIP-2: TSC deltas:\n");
             for (unsigned iCpu = 0; iCpu < g_pSUPGlobalInfoPage->cCpus; iCpu++)
-                RTPrintf("tstGIP-2: %6d: %016lld\n", iCpu, g_pSUPGlobalInfoPage->aCPUs[iCpu].i64TSCDelta);
+                RTPrintf("tstGIP-2: %6d: %lld\n", iCpu, g_pSUPGlobalInfoPage->aCPUs[iCpu].i64TSCDelta);
         }
         else
         {
