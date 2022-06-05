@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 49946 2013-12-17 08:10:20Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 49950 2013-12-17 10:51:16Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2645,7 +2645,7 @@ static int VBoxGuestCommonGuestCapsAcquire(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTS
     }
 
     int rc = VBoxGuestSetGuestCapabilities(fSessionOrCaps, fSessionNotCaps);
-    if (!RT_FAILURE(rc))
+    if (RT_FAILURE(rc))
     {
         LogRel(("VBoxGuestCommonGuestCapsAcquire: VBoxGuestSetGuestCapabilities failed, rc=%Rrc\n", rc));
 

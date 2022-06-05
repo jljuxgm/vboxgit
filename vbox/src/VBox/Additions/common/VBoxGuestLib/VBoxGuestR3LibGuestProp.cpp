@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 44324 2013-01-21 15:47:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 49950 2013-12-17 10:51:16Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -558,7 +558,7 @@ VBGLR3DECL(int) VbglR3GuestPropEnumRaw(uint32_t u32ClientId,
             ||  rc == VERR_BUFFER_OVERFLOW))
     {
         int rc2 = VbglHGCMParmUInt32Get(&Msg.size, pcbBufActual);
-        if (!RT_SUCCESS(rc2))
+        if (RT_FAILURE(rc2))
             rc = rc2;
     }
     return rc;
@@ -841,7 +841,7 @@ VBGLR3DECL(int) VbglR3GuestPropDelSet(uint32_t u32ClientId,
     while (RT_SUCCESS(rc) && pszName)
     {
         rc = VbglR3GuestPropWriteValue(u32ClientId, pszName, NULL);
-        if (!RT_SUCCESS(rc))
+        if (RT_FAILURE(rc))
             break;
 
         rc = VbglR3GuestPropEnumNext(pHandle,
