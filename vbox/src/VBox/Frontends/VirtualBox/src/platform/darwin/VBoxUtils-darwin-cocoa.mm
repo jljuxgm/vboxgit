@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 50479 2014-02-17 14:50:21Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 50505 2014-02-19 15:03:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -189,12 +189,27 @@ void darwinEnableFullscreenSupport(NativeNSWindowRef pWindow)
     [pWindow setCollectionBehavior :NSWindowCollectionBehaviorFullScreenPrimary];
 }
 
+void darwinEnableTransienceSupport(NativeNSWindowRef pWindow)
+{
+    [pWindow setCollectionBehavior :NSWindowCollectionBehaviorTransient];
+}
+
 void darwinToggleFullscreenMode(NativeNSWindowRef pWindow)
 {
     /* Toggle native fullscreen mode for passed pWindow.
      * This method is available since 10.7 only. */
     if ([pWindow respondsToSelector: @selector(toggleFullScreen:)])
         [pWindow performSelector: @selector(toggleFullScreen:) withObject: (id)nil];
+}
+
+bool darwinScreensHaveSeparateSpaces()
+{
+    /* Check whether screens have separate spaces.
+     * This method is available since 10.9 only. */
+    if ([NSScreen respondsToSelector: @selector(screensHaveSeparateSpaces)])
+        return [NSScreen performSelector: @selector(screensHaveSeparateSpaces)];
+    else
+        return false;
 }
 
 void darwinSetDockIconMenu(QMenu* pMenu)
