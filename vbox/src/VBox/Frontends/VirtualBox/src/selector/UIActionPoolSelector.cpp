@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 52215 2014-07-28 18:24:57Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 52572 2014-09-02 15:30:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -951,6 +951,9 @@ void UIActionPoolSelector::prepareConnections()
 {
     /* Prepare connections: */
     connect(gShortcutPool, SIGNAL(sigSelectorShortcutsReloaded()), this, SLOT(sltApplyShortcuts()));
+
+    /* Call to base-class: */
+    UIActionPool::prepareConnections();
 }
 
 void UIActionPoolSelector::updateMenus()

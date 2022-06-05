@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 52567 2014-09-02 13:52:35Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 52572 2014-09-02 15:30:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -1858,6 +1858,9 @@ void UIActionPoolRuntime::prepareConnections()
     /* Prepare connections: */
     connect(gShortcutPool, SIGNAL(sigMachineShortcutsReloaded()), this, SLOT(sltApplyShortcuts()));
     connect(gEDataManager, SIGNAL(sigMenuBarConfigurationChange()), this, SLOT(sltHandleConfigurationChange()));
+
+    /* Call to base-class: */
+    UIActionPool::prepareConnections();
 }
 
 void UIActionPoolRuntime::updateConfiguration()
