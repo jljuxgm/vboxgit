@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 49567 2013-11-20 08:52:10Z vboxsync $ */
+/* $Id: Config.cpp 49568 2013-11-20 08:56:59Z vboxsync $ */
 
 /**
  * XXX: license.
@@ -55,6 +55,12 @@ const ClientMatchCriteria *g_AnyClient = new AnyClientMatchCriteria();
 static ConfigurationManager *g_ConfigurationManager = ConfigurationManager::getConfigurationManager();
 
 static NetworkManager *g_NetworkManager = NetworkManager::getNetworkManager();
+
+bool MACClientMatchCriteria::check(const Client& client) const
+{
+    return (client == m_mac);
+}
+
 
 int BaseConfigEntity::match(Client& client, BaseConfigEntity **cfg)
 {
@@ -505,6 +511,14 @@ bool ConfigurationManager::isAddressTaken(const RTNETADDRIPV4& addr, Lease& leas
     lease = Lease::NullLease;
     return false;
 }
+
+
+bool ConfigurationManager::isAddressTaken(const RTNETADDRIPV4& addr)
+{
+    Lease ignore;
+    return isAddressTaken(addr, ignore);
+}
+
 
 
 NetworkConfigEntity *ConfigurationManager::addNetwork(NetworkConfigEntity *,
