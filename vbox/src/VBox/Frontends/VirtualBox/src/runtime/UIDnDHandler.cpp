@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 51479 2014-05-30 16:32:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -232,19 +232,16 @@ int UIDnDHandler::dragIsPending(CSession &session, CDnDSource &dndSource,
 
     if (!lstFmtNative.isEmpty())
     {
-        try
+        UIDnDDrag *pDrag = new UIDnDDrag(session, dndSource, lstFmtNative,
+                                         toQtDnDAction(defaultAction),
+                                         toQtDnDActions(vecActions), pParent);
+        if (pDrag)
         {
-            UIDnDDrag *pDrag = new UIDnDDrag(session, dndSource, lstFmtNative,
-                                             toQtDnDAction(defaultAction),
-                                             toQtDnDActions(vecActions), pParent);
             rc = pDrag->DoDragDrop();
-
             delete pDrag;
         }
-        catch (std::bad_alloc &)
-        {
+        else
             rc = VERR_NO_MEMORY;
-        }
     }
     else /* No format data from the guest arrived yet. */
         rc = VERR_NO_DATA;
