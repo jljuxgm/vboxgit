@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_drm.c 48354 2013-09-06 12:52:27Z vboxsync $
+/** @file $Id: vboxvideo_drm.c 48422 2013-09-11 09:50:20Z vboxsync $
  *
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -121,7 +121,6 @@ static struct file_operations driver_fops =
         .unlocked_ioctl = drm_ioctl,
         .mmap = drm_mmap,
         .poll = drm_poll,
-        .fasync = drm_fasync,
 };
 #endif
 
@@ -152,7 +151,6 @@ static struct drm_driver driver =
 #endif
         .mmap = drm_mmap,
         .poll = drm_poll,
-        .fasync = drm_fasync,
     },
 #else /* LINUX_VERSION_CODE >= KERNEL_VERSION(3, 3, 0) || defined(DRM_FOPS_AS_POINTER) */
     .fops = &driver_fops,
