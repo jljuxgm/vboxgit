@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 48548 2013-09-19 16:31:07Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 51267 2014-05-15 19:01:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -36,7 +36,7 @@ UIGlobalSettingsPortForwardingDlg::UIGlobalSettingsPortForwardingDlg(QWidget *pP
     , m_pButtonBox(0)
 {
     /* Set dialog icon: */
-    setWindowIcon(UIIconPool::iconSetFull(QSize(32, 32), QSize(16, 16), ":/nw_32px.png", ":/nw_16px.png"));
+    setWindowIcon(UIIconPool::iconSetFull(":/nw_32px.png", ":/nw_16px.png"));
 
     /* Create layout: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
