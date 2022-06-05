@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 51238 2014-05-13 11:36:49Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 51239 2014-05-13 11:40:53Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3233,7 +3233,7 @@ static bool hmR0VmxShouldSwapEferMsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     /*
      * If the guest uses PAE and EFER.NXE bit differs, we need to swap EFER as it                    .
      * affects guest paging. 64-bit paging implies CR4.PAE as well.
-     * See Intel spec. 4.5 "IA32e Paging" and Intel spec. 4.1.1 "Three Paging Modes".
+     * See Intel spec. 4.5 "IA-32e Paging" and Intel spec. 4.1.1 "Three Paging Modes".
      */
     if (   (pMixedCtx->cr4 & X86_CR4_PAE)
         && (pMixedCtx->cr0 & X86_CR0_PG)
