@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 50965 2014-04-03 14:34:51Z vboxsync $ */
+/* $Id: DevPS2.cpp 52052 2014-07-16 14:25:52Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1711,7 +1711,6 @@ static DECLCALLBACK(int) kbdConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     rc = CFGMR3QueryBoolDef(pCfg, "R0Enabled", &fR0Enabled, true);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("Failed to query \"R0Enabled\" from the config"));
-fGCEnabled = fR0Enabled = false;
     Log(("pckbd: fGCEnabled=%RTbool fR0Enabled=%RTbool\n", fGCEnabled, fR0Enabled));
 
 
