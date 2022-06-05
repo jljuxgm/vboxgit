@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 51648 2014-06-18 12:13:53Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 51730 2014-06-26 07:37:27Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1820,15 +1820,13 @@ int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Vers
 
             if (u32Version > VGA_SAVEDSTATE_VERSION_WDDM)
             {
-#define VBOX_VHWA_SOLARIS_ARCH "solaris."
-
                 bool fLoadCommands;
 
                 if (u32Version < VGA_SAVEDSTATE_VERSION_FIXED_PENDVHWA)
                 {
                     const char *pcszOsArch = SSMR3HandleHostOSAndArch(pSSM);
                     Assert(pcszOsArch);
-                    fLoadCommands = !pcszOsArch || RTStrNCmp(pcszOsArch, VBOX_VHWA_SOLARIS_ARCH, sizeof (VBOX_VHWA_SOLARIS_ARCH) - 1);
+                    fLoadCommands = !pcszOsArch || RTStrNCmp(pcszOsArch, RT_STR_TUPLE("solaris"));
                 }
                 else
                     fLoadCommands = true;
