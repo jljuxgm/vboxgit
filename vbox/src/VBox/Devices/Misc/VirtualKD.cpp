@@ -1,8 +1,8 @@
-/* $Id: VirtualKD.cpp 52597 2014-09-04 17:07:37Z vboxsync $ */
+/* $Id: VirtualKD.cpp 52610 2014-09-05 09:42:58Z vboxsync $ */
 /** @file
  * VirtualKD - Device stub/loader for fast Windows kernel-mode debugging.
  *
- * Contributed by: Igor Shcherbakov
+ * Contributed by: Ivan Shcherbakov
  * Heavily modified after the contribution.
  */
 
