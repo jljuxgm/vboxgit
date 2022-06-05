@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 51660 2014-06-19 07:59:01Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 51662 2014-06-19 09:18:43Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2242,6 +2242,7 @@ static void hmR0SvmUpdateTscOffsetting(PVMCPU pVCpu)
         uint64_t u64LastTick = TMCpuTickGetLastSeen(pVCpu);
         if (fParavirtTsc)
         {
+#if 0
             if (u64CurTSC + pVmcb->ctrl.u64TSCOffset > u64LastTick)
             {
                 pVmcb->ctrl.u64TSCOffset = u64LastTick - u64CurTSC;
@@ -2249,6 +2250,7 @@ static void hmR0SvmUpdateTscOffsetting(PVMCPU pVCpu)
             }
             int rc = GIMR0UpdateParavirtTsc(pVCpu->CTX_SUFF(pVM), pVmcb->ctrl.u64TSCOffset);
             AssertRC(rc);
+#endif
             STAM_COUNTER_INC(&pVCpu->hm.s.StatTscParavirt);
         }
 
