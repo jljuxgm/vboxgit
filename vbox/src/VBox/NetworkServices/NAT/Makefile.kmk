@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47992 2013-08-22 14:38:19Z vboxsync $
+# $Id: Makefile.kmk 47993 2013-08-22 14:42:13Z vboxsync $
 ## @file
 #
 
@@ -63,15 +63,6 @@ $(foreach file,$(LWIP_SOURCES) $(LWIP_NAT_SOURCES),$(eval $(call def_vbox_nat_ne
 
 $(foreach incs,$(LWIP_INCS),$(eval $(call def_vbox_nat_network_service_incs, VBoxNetLwipNAT, ../../Devices,$(incs))))
 
-endif
-
-ifdef VBOX_WITH_TESTCASES
-PROGRAMS += tstNetPfAddressPortPairParse
-
-tstNetPfAddressPortPairParse_TEMPLATE = VBOXR3TSTEXE
-#tstNetPfAddressPortPairParse_INSTTYPE = none
-tstNetPfAddressPortPairParse_SOURCES = 	../NetLib/testcase/tstNetPfAddressPortPairParse.cpp \
-	../NetLib/VBoxNetPortForwardString.cpp
 endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
