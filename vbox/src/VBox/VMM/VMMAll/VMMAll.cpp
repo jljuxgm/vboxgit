@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 47989 2013-08-22 13:56:52Z vboxsync $ */
+/* $Id: VMMAll.cpp 48426 2013-09-11 11:52:56Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -200,6 +200,7 @@ VMMDECL(VMCPUID) VMMGetCpuId(PVM pVM)
      * and then by native thread id (page fusion case).
      */
     /* RTMpCpuId had better be cheap. */
+    Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     RTCPUID idHostCpu = RTMpCpuId();
 
     /** @todo optimize for large number of VCPUs when that becomes more common. */
