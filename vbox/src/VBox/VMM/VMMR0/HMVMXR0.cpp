@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49258 2013-10-23 16:10:21Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49269 2013-10-24 08:15:08Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1823,6 +1823,7 @@ DECLINLINE(void) hmR0VmxFlushTaggedTlb(PVMCPU pVCpu, PHMGLOBALCPUINFO pCpu)
             break;
     }
     Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_TLB_FLUSH));
+    Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_TLB_SHOOTDOWN));
 }
 
 
