@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 51477 2014-05-30 15:19:53Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 51489 2014-06-02 15:28:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -352,9 +352,9 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId,
     VBOXHGCMSVCPARM paParms[8];
     int i = 0;
     paParms[i++].setUInt32(aScreenId);
-    paParms[i++].setPointer((void*)aFormat.c_str(), (uint32_t)aFormat.length() + 1);
+    paParms[i++].setPointer((void *)aFormat.c_str(), (uint32_t)aFormat.length() + 1);
     paParms[i++].setUInt32((uint32_t)aFormat.length() + 1);
-    paParms[i++].setPointer((void*)aData.data(), (uint32_t)aData.size());
+    paParms[i++].setPointer((void *)aData.front(), (uint32_t)aData.size());
     paParms[i++].setUInt32((uint32_t)aData.size());
 
     GuestDnDResponse *pResp = GuestDnDInst()->response();
