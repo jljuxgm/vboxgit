@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 51159 2014-04-29 07:38:41Z vboxsync $ */
+/* $Id: iokit.cpp 51163 2014-04-29 12:47:21Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -38,6 +38,7 @@
 #ifdef VBOX_WITH_USB
 # include <IOKit/usb/IOUSBLib.h>
 # include <IOKit/IOCFPlugIn.h>
+# include <IOKit/storage/IOMedia.h>
 #endif
 
 #include <VBox/log.h>
@@ -736,13 +737,28 @@ static io_object_t darwinFindObjectByClass(io_object_t Object, const char *pszCl
  */
 static bool darwinIsMassStorageInterfaceInUse(io_object_t MSDObj, io_name_t pszNameBuf)
 {
-    io_object_t MediaObj = darwinFindObjectByClass(MSDObj, "IOMedia", pszNameBuf);
+    io_object_t MediaObj = darwinFindObjectByClass(MSDObj, kIOMediaClass, pszNameBuf);
     if (MediaObj)
     {
+        CFMutableDictionaryRef pProperties;
+        kern_return_t krc;
+        bool fInUse = true;
+
+        krc = IORegistryEntryCreateCFProperties(MediaObj, &pProperties, kCFAllocatorDefault, kNilOptions);
+        if (krc == KERN_SUCCESS)
+        {
+            CFBooleanRef pBoolValue = (CFBooleanRef)CFDictionaryGetValue(pProperties, CFSTR(kIOMediaOpenKey));
+            if (pBoolValue)
+                fInUse = CFBooleanGetValue(pBoolValue);
+
+            CFRelease(pProperties);
+        }
+
         /* more checks? */
         IOObjectRelease(MediaObj);
-        return true;
+        return fInUse;
     }
+
     return false;
 }
 
