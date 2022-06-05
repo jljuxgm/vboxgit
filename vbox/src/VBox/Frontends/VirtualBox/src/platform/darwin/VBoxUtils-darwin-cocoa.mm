@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 50476 2014-02-17 11:20:37Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 50479 2014-02-17 14:50:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -187,6 +187,14 @@ void darwinMinaturizeWindow(NativeNSWindowRef pWindow)
 void darwinEnableFullscreenSupport(NativeNSWindowRef pWindow)
 {
     [pWindow setCollectionBehavior :NSWindowCollectionBehaviorFullScreenPrimary];
+}
+
+void darwinToggleFullscreenMode(NativeNSWindowRef pWindow)
+{
+    /* Toggle native fullscreen mode for passed pWindow.
+     * This method is available since 10.7 only. */
+    if ([pWindow respondsToSelector: @selector(toggleFullScreen:)])
+        [pWindow performSelector: @selector(toggleFullScreen:) withObject: (id)nil];
 }
 
 void darwinSetDockIconMenu(QMenu* pMenu)
