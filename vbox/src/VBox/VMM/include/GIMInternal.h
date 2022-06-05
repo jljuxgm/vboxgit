@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 52247 2014-07-31 13:49:15Z vboxsync $ */
+/* $Id: GIMInternal.h 52761 2014-09-16 15:49:57Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -31,7 +31,7 @@ RT_C_DECLS_BEGIN
  */
 
 /** The saved state version. */
-#define GIM_SSM_VERSION                          1
+#define GIM_SAVED_STATE_VERSION         1
 
 /**
  * GIM VM Instance data.
