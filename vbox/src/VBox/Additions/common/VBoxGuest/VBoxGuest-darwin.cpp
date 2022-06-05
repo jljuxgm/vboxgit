@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 51115 2014-04-22 10:05:08Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 51490 2014-06-02 15:37:51Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -980,6 +980,13 @@ bool org_virtualbox_VBoxGuestClient::initWithTask(task_t OwningTask, void *pvSec
 
     if (!OwningTask)
         return false;
+
+    if (u32Type != VBOXGUEST_DARWIN_IOSERVICE_COOKIE)
+    {
+        Log(("org_virtualbox_VBoxGuestClient::initWithTask: Bad cookie %#x\n", u32Type));
+        return false;
+    }
+
     if (IOUserClient::initWithTask(OwningTask, pvSecurityId , u32Type))
     {
         m_Task = OwningTask;

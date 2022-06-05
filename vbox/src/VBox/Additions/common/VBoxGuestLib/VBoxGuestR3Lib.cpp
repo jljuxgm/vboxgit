@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 48938 2013-10-07 21:23:57Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 51490 2014-06-02 15:37:51Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -218,7 +218,7 @@ static int vbglR3Init(const char *pszDeviceName)
         return VERR_NOT_FOUND;
 
     io_connect_t uConnection;
-    kr = IOServiceOpen(ServiceObject, mach_task_self(), 0, &uConnection);
+    kr = IOServiceOpen(ServiceObject, mach_task_self(), VBOXGUEST_DARWIN_IOSERVICE_COOKIE, &uConnection);
     IOObjectRelease(ServiceObject);
     if (kr != kIOReturnSuccess)
         return VERR_OPEN_FAILED;
