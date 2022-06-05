@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 47501 2013-08-01 06:24:41Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 48367 2013-09-06 15:57:46Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -382,6 +382,40 @@ int VBoxNetDhcp::init()
         RTNetStrToIPv4Addr(com::Utf8Str(strGateway).c_str(), &gateway);
 
         confManager->addToAddressList(RTNET_DHCP_OPT_ROUTERS, gateway);
+
+        ComPtr<IHost> host;
+        if (SUCCEEDED(virtualbox->COMGETTER(Host)(host.asOutParam())))
+        {
+            int i;
+            com::SafeArray<BSTR> strs;
+            if (SUCCEEDED(host->COMGETTER(NameServers)(ComSafeArrayAsOutParam(strs))))
+            {
+                RTNETADDRIPV4 addr;
+                confManager->flushAddressList(RTNET_DHCP_OPT_DNS);
+                int rc;
+                for (i = 0; i < strs.size(); ++i)
+                {
+                    rc = RTNetStrToIPv4Addr(com::Utf8Str(strs[i]).c_str(), &addr);
+                    if (RT_SUCCESS(rc))
+                        confManager->addToAddressList(RTNET_DHCP_OPT_DNS, addr);
+                }
+            }
+
+            strs.setNull();
+#if 0
+            if (SUCCEEDED(host->COMGETTER(SearchStrings)(ComSafeArrayAsOutParam(strs))))
+            {
+                /* XXX: todo. */;
+            }
+            strs.setNull();
+
+            Bstr domain;
+            if (SUCCEEDED(host->COMGETTER(DomainName)(domain.asOutPutParam())))
+            {
+                /* XXX: todo. */
+            }
+#endif
+        }
     }
 
     NetworkManager *netManager = NetworkManager::getNetworkManager();

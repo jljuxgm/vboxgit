@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 47929 2013-08-20 14:55:47Z vboxsync $ */
+/* $Id: Config.cpp 48367 2013-09-06 15:57:46Z vboxsync $ */
 
 /**
  * XXX: license.
@@ -626,10 +626,10 @@ int NetworkManager::processParameterReqList(Client* client, uint8_t *pu8ReqList,
                 break;
 
             case RTNET_DHCP_OPT_ROUTERS:
+            case RTNET_DHCP_OPT_DNS:
                 {
                     const Ipv4AddressContainer lst = 
-                      g_ConfigurationManager->getAddressList(
-                        RTNET_DHCP_OPT_ROUTERS);
+                      g_ConfigurationManager->getAddressList(pReqList[idxParam]);
                     PRTNETADDRIPV4 pAddresses = (PRTNETADDRIPV4)&opt.au8RawOpt[0];
 
                     for (Ipv4AddressConstIterator it = lst.begin();
@@ -646,8 +646,6 @@ int NetworkManager::processParameterReqList(Client* client, uint8_t *pu8ReqList,
                 }
                 break;
             case RTNET_DHCP_OPT_DOMAIN_NAME:
-                break;
-            case RTNET_DHCP_OPT_DNS:
                 break;
             default:
                 Log(("opt: %d is ignored\n", pReqList[idxParam]));
