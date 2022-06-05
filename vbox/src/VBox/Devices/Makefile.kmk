@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49317 2013-10-29 09:07:49Z vboxsync $
+# $Id: Makefile.kmk 49577 2013-11-20 10:55:41Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -893,7 +893,10 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  VBoxDD2_LIBS            = \
  	$(PATH_STAGE_LIB)/PcBiosBin$(VBOX_SUFF_LIB) \
  	$(PATH_STAGE_LIB)/VgaBiosBin$(VBOX_SUFF_LIB) \
- 	$(if $(VBOX_WITH_PXE_ROM),$(PATH_STAGE_LIB)/iPxeBiosBin$(VBOX_SUFF_LIB),) \
+ 	$(if $(VBOX_WITH_PXE_ROM),\
+	  $(if $(VBOX_WITH_INTEL_PXE),\
+	    $(PATH_STAGE_LIB)/NetBiosBin$(VBOX_SUFF_LIB),\
+	    $(PATH_STAGE_LIB)/iPxeBiosBin$(VBOX_SUFF_LIB)),) \
  	$(LIB_VMM) \
  	$(LIB_RUNTIME)
  VBoxDD2_LIBS.darwin    += $(LIB_REM)
