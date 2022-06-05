@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47894 2013-08-20 11:37:09Z vboxsync $
+# $Id: Makefile.kmk 50142 2014-01-21 16:44:29Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -321,7 +321,8 @@ VBOX_MIME_ICONS = \
 VBOX_DESKTOP_ICONS = \
 	$(addprefix $(PATH_ROOT)/src/VBox/Resources/$(if $(VBOX_OSE),OSE,NonOSE)/,\
 	    $(foreach s,16 20 32 40 48 64 128,\
-		virtualbox-$(s)px.png=>$(s)x$(s)/virtualbox.png))
+		virtualbox-$(s)px.png=>$(s)x$(s)/virtualbox.png) \
+		virtualbox.svg=>scalable/virtualbox.svg)
 
 #
 # All the bin files that goes into the archives.
