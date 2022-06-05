@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50975 2014-04-04 19:12:59Z vboxsync $
+# $Id: Makefile.kmk 51016 2014-04-09 15:13:33Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -101,6 +101,7 @@ VBoxOGLcrserverlib_INCS  = \
 VBoxOGLcrserverlib_INTERMEDIATES = \
 	$(VBOX_PATH_CROGL_GENFILES)/spu_dispatch_table.h \
 	$(VBOX_PATH_CROGL_GENFILES)/server_dispatch.h \
+        $(VBOX_PATH_CROGL_GENFILES)/cr_opcodes.h \
 	$(VBOX_PATH_CROGL_GENFILES)/state/cr_currentpointers.h \
 	$(VBOX_PATH_CROGL_GENFILES)/state/cr_statefuncs.h
 VBoxOGLcrserverlib_SOURCES := \
