@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 51658 2014-06-19 03:25:54Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 51686 2014-06-23 05:40:05Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -214,7 +214,7 @@ VMM_INT_DECL(int) GIMHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRa
 
             /* Enable the TSC-page. */
             RTGCPHYS GCPhysTscPage = MSR_GIM_HV_REF_TSC_GUEST_PFN(uRawValue) << PAGE_SHIFT;
-            int rc = GIMR3HvEnableTscPage(pVM, GCPhysTscPage);
+            int rc = GIMR3HvEnableTscPage(pVM, GCPhysTscPage, false /* fUseThisTscSequence */, 0 /* uTscSequence */);
             if (RT_SUCCESS(rc))
             {
                 pHv->u64TscPageMsr = uRawValue;
