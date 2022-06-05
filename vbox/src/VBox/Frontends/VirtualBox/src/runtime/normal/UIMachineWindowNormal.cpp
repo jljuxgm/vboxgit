@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52057 2014-07-16 17:23:26Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52058 2014-07-16 17:30:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -298,10 +298,10 @@ private slots:
     /** Handles drag object destroy. */
     void sltHandleDragObjectDestroy();
 
-#ifdef Q_WS_MAC
+#ifdef RT_OS_DARWIN
     /** Performs window activation. */
     void sltActivateWindow() { activateWindow(); }
-#endif /* Q_WS_MAC */
+#endif /* RT_OS_DARWIN */
 
 private:
 
