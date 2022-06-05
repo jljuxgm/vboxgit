@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 47493 2013-07-31 14:39:13Z vboxsync $ */
+/* $Id: UIMachineView.cpp 48642 2013-09-23 16:23:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -171,6 +171,9 @@ UIMachineView* UIMachineView::create(  UIMachineWindow *pMachineWindow
      * subclass constructors here too?  It is called for Normal and Seamless,
      * but not for Fullscreen and Scale.  However for Scale it is a no op.,
      * so it would not hurt.  Would it hurt for Fullscreen? */
+
+    /* Set a preliminary maximum size: */
+    pMachineView->setMaxGuestSize();
 
     return pMachineView;
 }
