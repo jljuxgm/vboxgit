@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52819 2014-09-22 15:59:04Z vboxsync $
+# $Id: Makefile.kmk 52820 2014-09-22 16:19:31Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -84,6 +84,8 @@ VirtualBox_SDKS.win = ReorderCompilerIncs $(VBOX_WINPSDK) $(VBOX_WINDDK)
 VirtualBox_DEFS           =
 VirtualBox_DEFS.debug     = VBOX_CHECK_STATE # QT_FATAL_ASSERT
 VirtualBox_DEFS.linux     = VBOX_WITH_MASKED_SEAMLESS VBOX_WITH_TRANSLUCENT_SEAMLESS
+VirtualBox_DEFS.solaris   = VBOX_WITH_MASKED_SEAMLESS VBOX_WITH_TRANSLUCENT_SEAMLESS
+VirtualBox_DEFS.freebsd   = VBOX_WITH_MASKED_SEAMLESS VBOX_WITH_TRANSLUCENT_SEAMLESS
 VirtualBox_DEFS.darwin    = VBOX_WITH_TRANSLUCENT_SEAMLESS # VBOX_WITH_MASKED_SEAMLESS
 VirtualBox_DEFS.win       = VBOX_WITH_MASKED_SEAMLESS # VBOX_WITH_TRANSLUCENT_SEAMLESS
 VirtualBox_DEFS.win       += UNICODE QT_DLL
