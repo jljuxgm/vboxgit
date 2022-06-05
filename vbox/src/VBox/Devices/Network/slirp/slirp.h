@@ -1,4 +1,4 @@
-/* $Id: slirp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: slirp.h 51137 2014-04-24 14:28:08Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -392,6 +392,8 @@ int sscanf(const char *s, const char *format, ...);
 # define bcopy(src, dst, len) memcpy((dst), (src), (len))
 # define bcmp(a1, a2, len) memcmp((a1), (a2), (len))
 # define NO_FW_PUNCH
+/* Two wrongs don't make a right, but this at least averts harm. */
+# define NO_USE_SOCKETS
 
 # ifdef alias_addr
 #  ifndef VBOX_SLIRP_BSD

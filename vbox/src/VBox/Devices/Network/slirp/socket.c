@@ -1,4 +1,4 @@
-/* $Id: socket.c 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: socket.c 51137 2014-04-24 14:28:08Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -203,9 +203,12 @@ sofree(PNATState pData, struct socket *so)
     else if (so == udp_last_so)
         udp_last_so = &udb;
 
+#if 0 /* XXX: !defined(NO_USE_SOCKETS) */
     /* libalias notification */
     if (so->so_pvLnk)
         slirpDeleteLinkSocket(so->so_pvLnk);
+#endif
+
     /* check if mbuf haven't been already freed  */
     if (so->so_m != NULL)
     {
