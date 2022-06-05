@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 49412 2013-11-08 01:16:46Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 49415 2013-11-08 07:52:30Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -345,6 +345,7 @@ int VBoxNetBaseService::tryGoOnline(void)
     /* bail out */
     Log2(("VBoxNetBaseService: SUPR3CallVMMR0Ex(,VMMR0_DO_INTNET_IF_SET_PROMISCUOUS_MODE,) failed, rc=%Rrc\n", rc));
 
+    /* ignore this error */
     return VINF_SUCCESS;
 }
 
