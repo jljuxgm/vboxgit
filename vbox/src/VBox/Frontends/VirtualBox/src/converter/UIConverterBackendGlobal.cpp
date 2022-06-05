@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 51401 2014-05-26 16:45:43Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 51403 2014-05-26 16:55:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -704,9 +704,9 @@ template<> RenderMode fromInternalString<RenderMode>(const QString &strRenderMod
 #ifdef VBOX_GUI_USE_QUARTZ2D
     keys << "Quartz2D"; values << RenderMode_Quartz2D;
 #endif /* VBOX_GUI_USE_QUARTZ2D */
-    /* Invalid mode for unknown words: */
+    /* QImage mode for unknown words: */
     if (!keys.contains(strRenderMode, Qt::CaseInsensitive))
-        return RenderMode_Invalid;
+        return RenderMode_QImage;
     /* Corresponding mode for known words: */
     return values.at(keys.indexOf(QRegExp(strRenderMode, Qt::CaseInsensitive)));
 }
