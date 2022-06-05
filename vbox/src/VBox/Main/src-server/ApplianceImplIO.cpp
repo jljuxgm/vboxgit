@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 50193 2014-01-23 17:50:07Z vboxsync $ */
 /** @file
  * IO helper for IAppliance COM class implementations.
  */
@@ -304,12 +304,13 @@ static int tarOpenCallback(void *pvUser, const char *pszLocation, uint32_t fOpen
 
         for (;;)
         {
-            char *pszFilename = 0;
+            char *pszFilename;
             rc = RTTarCurrentFile(tar, &pszFilename);
             if (RT_SUCCESS(rc))
             {
                 if (rc == VINF_TAR_DIR_PATH)
                 {
+                    RTStrFree(pszFilename);
                     break;
                 }
 
@@ -318,14 +319,9 @@ static int tarOpenCallback(void *pvUser, const char *pszLocation, uint32_t fOpen
                 RTStrFree(pszFilename);
                 if (fFound)
                     break;
-                else
-                {
-                    rc = RTTarSeekNextFile(tar);
-                    if (RT_FAILURE(rc))
-                    {
-                        break;
-                    }
-                }
+                rc = RTTarSeekNextFile(tar);
+                if (RT_FAILURE(rc))
+                    break;
             }
             else
                 break;
