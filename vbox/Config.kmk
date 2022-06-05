@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51859 2014-07-03 19:49:57Z vboxsync $
+# $Id: Config.kmk 51891 2014-07-06 21:45:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -802,6 +802,9 @@ endif
 # Enable the system wide support service/daemon.
 # Very sketchy work in progress.
 #VBOX_WITH_SUPSVC = 1
+
+# Continue to support Vista w/o any service pack, at least for now.
+VBOX_WITH_VISTA_NO_SP = 1
 ## @}
 
 
@@ -5682,7 +5685,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51859 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51891 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
