@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 51666 2014-06-19 14:07:14Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 51669 2014-06-19 14:54:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -96,6 +96,12 @@
 # include <XKeyboard.h>
 # include <QX11Info>
 #endif /* Q_WS_X11 */
+
+#ifdef Q_WS_MAC
+/* Namespaces: */
+using namespace UIExtraDataDefs;
+#endif /* Q_WS_MAC */
+
 
 struct USBTarget
 {

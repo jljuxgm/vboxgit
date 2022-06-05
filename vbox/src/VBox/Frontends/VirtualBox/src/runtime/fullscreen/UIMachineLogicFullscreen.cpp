@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 51252 2014-05-14 12:51:25Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 51669 2014-06-19 14:54:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -32,6 +32,12 @@
 # include "UIFrameBuffer.h"
 # include <Carbon/Carbon.h>
 #endif /* Q_WS_MAC */
+
+#ifdef Q_WS_MAC
+/* Namespaces: */
+using namespace UIExtraDataDefs;
+#endif /* Q_WS_MAC */
+
 
 UIMachineLogicFullscreen::UIMachineLogicFullscreen(QObject *pParent, UISession *pSession)
     : UIMachineLogic(pParent, pSession, UIVisualStateType_Fullscreen)

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.cpp 51188 2014-05-05 14:46:05Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.cpp 51669 2014-06-19 14:54:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -35,6 +35,11 @@
 /* COM includes: */
 #include "COMEnums.h"
 #include "CVirtualBox.h"
+
+#ifdef Q_WS_MAC
+/* Namespaces: */
+using namespace UIExtraDataDefs;
+#endif /* Q_WS_MAC */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
