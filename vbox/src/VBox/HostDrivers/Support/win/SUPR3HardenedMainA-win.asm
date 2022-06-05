@@ -1,4 +1,4 @@
-; $Id: SUPR3HardenedMainA-win.asm 52367 2014-08-13 10:48:36Z vboxsync $
+; $Id: SUPR3HardenedMainA-win.asm 52374 2014-08-13 22:23:44Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Hardened main(), Windows assembly bits.
 ;
@@ -128,7 +128,7 @@ ENDPROC %1 %+ _SyscallType1
 BEGINPROC %1 %+ _SyscallType1
         mov     edx, 07ffe0300h         ; SharedUserData!SystemCallStub
         mov     eax, [NAME(g_uApiNo %+ %1) xWrtRIP]
-        call    edx
+        call    dword [edx]
         ret     %2
 ENDPROC %1 %+ _SyscallType1
 BEGINPROC %1 %+ _SyscallType2
