@@ -1,6 +1,6 @@
-/* $Id: VBoxVgaGraphicsOutput.c 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: VBoxVgaGraphicsOutput.c 52069 2014-07-17 08:40:36Z vboxsync $ */
 /** @file
- * LegacyBiosMpTable.h
+ * VBoxVgaGraphicsOutput.c
  */
 
 /*

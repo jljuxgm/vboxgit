@@ -1,4 +1,4 @@
-/* $Id: VBoxConsole.c 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: VBoxConsole.c 52069 2014-07-17 08:40:36Z vboxsync $ */
 /** @file
  * VBoxConsole.c - Helper driver waiting for Ready to Boot event to switch graphic mode into user-defined one.
  */
@@ -79,7 +79,7 @@ ConsoleSwitchMode (
     {
         UINT32 H = 1027;
         UINT32 V = 768;
-        GetVmVariable(EFI_INFO_INDEX_UGA_HORISONTAL_RESOLUTION, (CHAR8 *)&H, sizeof(UINT32));
+        GetVmVariable(EFI_INFO_INDEX_UGA_HORIZONTAL_RESOLUTION, (CHAR8 *)&H, sizeof(UINT32));
         GetVmVariable(EFI_INFO_INDEX_UGA_VERTICAL_RESOLUTION, (CHAR8 *)&V, sizeof(UINT32));
         r = Uga->SetMode(Uga, H, V, 32, 60);
     }
