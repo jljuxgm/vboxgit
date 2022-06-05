@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 48318 2013-09-05 17:15:49Z vboxsync $
+; $Id: HMR0A.asm 48964 2013-10-08 08:42:56Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
@@ -1625,3 +1625,4 @@ ENDPROC   SVMR0VMRun64
 
  %include "HMR0Mixed.mac"
 %endif ; VBOX_WITH_HYBRID_32BIT_KERNEL
+
