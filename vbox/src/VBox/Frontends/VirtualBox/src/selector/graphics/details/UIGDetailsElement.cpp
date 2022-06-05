@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 53410 2014-11-28 13:40:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class implementation.
  */
@@ -33,6 +33,7 @@
 # include "UIGDetailsModel.h"
 # include "UIGraphicsRotatorButton.h"
 # include "UIGraphicsTextPane.h"
+# include "UIActionPool.h"
 # include "UIIconPool.h"
 # include "UIConverter.h"
 # include "VBoxGlobal.h"
@@ -155,7 +156,8 @@ void UIGDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
         )
     {
         /* Prepare storage-menu: */
-        QMenu menu;
+        UIMenu menu;
+        menu.setShowToolTip(true);
 
         /* Storage-controller name: */
         QString strControllerName = strData.section(',', 0, 0);
