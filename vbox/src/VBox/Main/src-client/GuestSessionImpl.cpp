@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 49619 2013-11-22 09:02:44Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 49630 2013-11-22 16:19:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1125,6 +1125,12 @@ int GuestSession::dispatchToProcess(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCT
         = mData.mProcesses.find(uProcessID);
     if (itProc != mData.mProcesses.end())
     {
+#ifdef DEBUG_andy
+        ULONG cRefs = itProc->second->AddRef();
+        Assert(cRefs >= 2);
+        LogFlowFunc(("pProcess=%p, cRefs=%RU32\n", &itProc->second, cRefs - 1));
+        itProc->second->Release();
+#endif
         ComObjPtr<GuestProcess> pProcess(itProc->second);
         Assert(!pProcess.isNull());
 
