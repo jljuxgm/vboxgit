@@ -1,4 +1,4 @@
-; $Id: CPUMR0A.asm 49020 2013-10-10 08:52:52Z vboxsync $
+; $Id: CPUMR0A.asm 50661 2014-03-03 09:06:19Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -121,7 +121,7 @@ BEGINCODE
 ; Saves the host FPU/XMM state and restores the guest state.
 ;
 ; @returns  0
-; @param    pCPUMCPU  x86:[esp+4] GCC:rdi MSC:rcx     CPUMCPU pointer
+; @param    pCPUMCPU  x86:[esp+4] gcc:rdi msc:rcx     CPUMCPU pointer
 ;
 align 16
 BEGINPROC cpumR0SaveHostRestoreGuestFPUState
@@ -205,7 +205,7 @@ ENDPROC   cpumR0SaveHostRestoreGuestFPUState
 ; Saves the host FPU/XMM state
 ;
 ; @returns  0
-; @param    pCPUMCPU  x86:[esp+4] GCC:rdi MSC:rcx     CPUMCPU pointer
+; @param    pCPUMCPU  x86:[esp+4] gcc:rdi msc:rcx     CPUMCPU pointer
 ;
 align 16
 BEGINPROC cpumR0SaveHostFPUState
@@ -238,7 +238,7 @@ ENDPROC   cpumR0SaveHostFPUState
 ; Saves the guest FPU/XMM state and restores the host state.
 ;
 ; @returns  0
-; @param    pCPUMCPU  x86:[esp+4] GCC:rdi MSC:rcx     CPUMCPU pointer
+; @param    pCPUMCPU  x86:[esp+4] gcc:rdi msc:rcx     CPUMCPU pointer
 ;
 align 16
 BEGINPROC cpumR0SaveGuestRestoreHostFPUState
@@ -309,7 +309,7 @@ ENDPROC   cpumR0SaveGuestRestoreHostFPUState
 ; Sets the host's FPU/XMM state
 ;
 ; @returns  0
-; @param    pCPUMCPU  x86:[esp+4] GCC:rdi MSC:rcx     CPUMCPU pointer
+; @param    pCPUMCPU  x86:[esp+4] gcc:rdi msc:rcx     CPUMCPU pointer
 ;
 align 16
 BEGINPROC cpumR0RestoreHostFPUState

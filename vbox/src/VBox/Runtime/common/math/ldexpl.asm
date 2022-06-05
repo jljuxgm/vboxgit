@@ -1,4 +1,4 @@
-; $Id: ldexpl.asm 46548 2013-06-14 09:42:21Z vboxsync $
+; $Id: ldexpl.asm 50661 2014-03-03 09:06:19Z vboxsync $
 ;; @file
 ; IPRT - No-CRT ldexpl - AMD64 & X86.
 ;
@@ -32,7 +32,7 @@ BEGINCODE
 ; Computes lrd * 2^exp
 ; @returns st(0)
 ; @param    lrd     [rbp + xCB*2]
-; @param    exp     [ebp + 14h]  GCC:edi  MSC:ecx
+; @param    exp     [ebp + 14h]  gcc:edi  msc:ecx
 BEGINPROC RT_NOCRT(ldexpl)
     push    xBP
     mov     xBP, xSP
