@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 51268 2014-05-15 19:04:09Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 51303 2014-05-20 11:46:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -89,6 +89,10 @@ VBoxVMInformationDlg::VBoxVMInformationDlg (UIMachineWindow *pMachineWindow)
     /* Apply window icons */
     setWindowIcon(UIIconPool::iconSetFull(":/session_info_32px.png", ":/session_info_16px.png"));
 #endif
+
+    /* Setup tab icons: */
+    mInfoStack->setTabIcon(0, UIIconPool::iconSet(":/session_info_details_16px.png"));
+    mInfoStack->setTabIcon(1, UIIconPool::iconSet(":/session_info_runtime_16px.png"));
 
     /* Setup focus-proxy for pages */
     mPage1->setFocusProxy (mDetailsText);
