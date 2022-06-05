@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 51560 2014-06-06 05:17:02Z vboxsync $ */
+/* $Id: VBoxDD.h 52249 2014-07-31 19:40:11Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -60,6 +60,7 @@ extern const PDMDEVREG g_DeviceAudioSniffer;
 #endif
 extern const PDMDEVREG g_DeviceOHCI;
 extern const PDMDEVREG g_DeviceEHCI;
+extern const PDMDEVREG g_DeviceXHCI;
 extern const PDMDEVREG g_DeviceACPI;
 extern const PDMDEVREG g_DeviceDMA;
 extern const PDMDEVREG g_DeviceFloppyController;
