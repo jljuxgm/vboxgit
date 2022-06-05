@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52769 2014-09-17 06:50:20Z vboxsync $
+# $Id: Makefile.kmk 53242 2014-11-05 16:28:08Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -327,6 +327,9 @@ VBoxSVC_LIBS.solaris = \
 	devinfo \
 	socket \
 	$(LIB_VMM)
+
+VBoxSVC_LIBS.win += \
+	$(PATH_SDK_$(VBOX_WINPSDK)_LIB)/dnsapi.lib
 
 VBoxSVC_INTERMEDIATES = \
 	$(VBOX_MAIN_PREREQS) \
