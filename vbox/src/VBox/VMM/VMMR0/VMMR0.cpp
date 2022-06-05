@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 48132 2013-08-28 17:27:43Z vboxsync $ */
+/* $Id: VMMR0.cpp 48135 2013-08-28 18:04:49Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -937,10 +937,6 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
 
                     /* Setup the longjmp machinery and execute guest code. */
                     rc = vmmR0CallRing3SetJmp(&pVCpu->vmm.s.CallRing3JmpBufR0, HMR0RunGuestCode, pVM, pVCpu);
-
-                    /* Leave HM context. */
-                    int rc2 = HMR0Leave(pVM, pVCpu);
-                    AssertRC(rc2);
 
                     if (RT_UNLIKELY(   VMCPU_GET_STATE(pVCpu) != VMCPUSTATE_STARTED_HM
                                     && RT_SUCCESS_NP(rc)  && rc !=  VINF_VMM_CALL_HOST ))
