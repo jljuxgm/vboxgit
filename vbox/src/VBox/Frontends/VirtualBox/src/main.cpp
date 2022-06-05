@@ -1,4 +1,4 @@
-/* $Id: main.cpp 49364 2013-11-01 13:10:46Z vboxsync $ */
+/* $Id: main.cpp 50934 2014-03-31 18:29:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -411,6 +411,11 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 #else /* Q_WS_X11 */
         QApplication a(argc, argv);
 #endif /* Q_WS_X11 */
+
+#ifdef Q_WS_MAC
+        /* Enable HiDPI icons. */
+        qApp->setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif /* Q_WS_MAC */
 
 #ifdef Q_OS_SOLARIS
         /* Use plastique look&feel for Solaris instead of the default motif (Qt 4.7.x): */
