@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 52308 2014-08-06 18:47:47Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 53434 2014-12-03 15:20:59Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -120,6 +120,7 @@ using namespace guestProp;
  * Connects to the guest property service.
  *
  * @returns VBox status code
+ * @returns VERR_NOT_SUPPORTED if guest properties are not available on the host.
  * @param   pu32ClientId    Where to put the client id on success. The client id
  *                          must be passed to all the other calls to the service.
  */
@@ -138,6 +139,8 @@ VBGLR3DECL(int) VbglR3GuestPropConnect(uint32_t *pu32ClientId)
         rc = Info.result;
         if (RT_SUCCESS(rc))
             *pu32ClientId = Info.u32ClientID;
+        if (rc == VERR_NOT_IMPLEMENTED || rc == VERR_HGCM_SERVICE_NOT_FOUND)
+            rc = VERR_NOT_SUPPORTED;
     }
     return rc;
 }

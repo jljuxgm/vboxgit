@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 53293 2014-11-10 15:37:37Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 53434 2014-12-03 15:20:59Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2318,6 +2318,8 @@ static int VBoxGuestCommonIOCtl_HGCMConnect(PVBOXGUESTDEVEXT pDevExt, PVBOXGUEST
                 return VERR_TOO_MANY_OPEN_FILES;
             }
         }
+        else
+            rc = pInfo->result;
         if (pcbDataReturned)
             *pcbDataReturned = sizeof(*pInfo);
     }
