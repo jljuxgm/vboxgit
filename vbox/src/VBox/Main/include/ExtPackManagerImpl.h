@@ -1,10 +1,10 @@
-/* $Id: ExtPackManagerImpl.h 50914 2014-03-27 19:07:53Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 52596 2014-09-04 16:45:50Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -134,6 +134,8 @@ protected:
     static DECLCALLBACK(int)    i_hlpGetFilePath(PCVBOXEXTPACKHLP pHlp, const char *pszFilename, char *pszPath, size_t cbPath);
     static DECLCALLBACK(VBOXEXTPACKCTX) i_hlpGetContext(PCVBOXEXTPACKHLP pHlp);
     static DECLCALLBACK(int)    i_hlpLoadHGCMService(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IConsole) *pConsole, const char *pszServiceLibrary, const char *pszServiceName);
+    static DECLCALLBACK(int)    i_hlpLoadVDPlugin(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IVirtualBox) *pVirtualBox, const char *pszPluginLibrary);
+    static DECLCALLBACK(int)    i_hlpUnloadVDPlugin(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IVirtualBox) *pVirtualBox, const char *pszPluginLibrary);
     static DECLCALLBACK(int)    i_hlpReservedN(PCVBOXEXTPACKHLP pHlp);
     /** @}  */
 

@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 52585 2014-09-03 14:06:48Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 52596 2014-09-04 16:45:50Z vboxsync $ */
 
 /** @file
  *
@@ -52,8 +52,8 @@ public:
     ComObjPtr<MediumFormat> i_mediumFormat(const Utf8Str &aFormat);
     ComObjPtr<MediumFormat> i_mediumFormatFromExtension(const Utf8Str &aExt);
 
-    void i_extPackInstallNotify(const char *pszExtPackName);
-    void i_extPackUninstallNotify(const char *pszExtPackName);
+    int i_loadVDPlugin(const char *pszPluginLibrary);
+    int i_unloadVDPlugin(const char *pszPluginLibrary);
 
 private:
 
@@ -127,9 +127,6 @@ private:
     HRESULT getMaxInstancesOfUSBControllerType(ChipsetType_T aChipset,
                                                USBControllerType_T aType,
                                                ULONG *aMaxInstances);
-
-    HRESULT i_loadExtPackVDPluginCrypt();
-    HRESULT i_unloadExtPackVDPluginCrypt();
 
     HRESULT i_getUserHomeDirectory(Utf8Str &strPath);
     HRESULT i_setDefaultMachineFolder(const Utf8Str &strPath);
