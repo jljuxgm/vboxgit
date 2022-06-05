@@ -1,4 +1,4 @@
-/* $Id: ip_input.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: ip_input.c 50017 2013-12-31 06:02:06Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
@@ -194,6 +194,7 @@ ip_input(PNATState pData, struct mbuf *m)
     /* check ip_ttl for a correct ICMP reply */
     if (ip->ip_ttl==0 || ip->ip_ttl == 1)
     {
+        /* XXX: if we're in destination so perhaps we need to send ICMP_TIMXCEED_REASS */
         icmp_error(pData, m, ICMP_TIMXCEED, ICMP_TIMXCEED_INTRANS, 0, "ttl");
         goto no_free_m;
     }
