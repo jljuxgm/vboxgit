@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 52395 2014-08-15 22:27:49Z vboxsync $ */
+/* $Id: IEMAll.cpp 52659 2014-09-09 17:22:26Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10951,8 +10951,10 @@ VMMDECL(VBOXSTRICTRC) IEMInjectTrpmEvent(PVMCPU pVCpu)
     if (RT_FAILURE(rc))
         return rc;
 
-    TRPMResetTrap(pVCpu);
-    return IEMInjectTrap(pVCpu, u8TrapNo, enmType, uErrCode, uCr2, cbInstr);
+    VBOXSTRICTRC rcStrict = IEMInjectTrap(pVCpu, u8TrapNo, enmType, uErrCode, uCr2, cbInstr);
+    if (rcStrict == VINF_SUCCESS)
+        TRPMResetTrap(pVCpu);
+    return rcStrict;
 #endif
 }
 
