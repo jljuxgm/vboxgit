@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.c 47628 2013-08-09 09:08:20Z vboxsync $ */
+/* $Id: server_muralfbo.c 48692 2013-09-25 17:04:19Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -1023,7 +1023,8 @@ static void crServerVBoxCompositionReenable(CRMuralInfo *mural)
 
 static void crServerVBoxCompositionDisable(CRMuralInfo *mural)
 {
-    if ((mural->fPresentMode & (CR_SERVER_REDIR_F_FBO | CR_SERVER_REDIR_F_DISPLAY)) != (CR_SERVER_REDIR_F_FBO | CR_SERVER_REDIR_F_DISPLAY)
+    if (!(mural->fPresentMode & CR_SERVER_REDIR_F_DISPLAY)
+            || (mural->fUseDefaultDEntry && !(mural->fPresentMode & CR_SERVER_REDIR_F_FBO))
             || !mural->fDataPresented)
         return;
     cr_server.head_spu->dispatch_table.VBoxPresentComposition(mural->spuWindow, NULL, NULL);
