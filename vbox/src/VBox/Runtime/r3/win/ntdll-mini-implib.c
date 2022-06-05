@@ -1,4 +1,4 @@
-/* $Id: ntdll-mini-implib.c 47535 2013-08-05 01:54:25Z vboxsync $ */
+/* $Id: ntdll-mini-implib.c 49150 2013-10-17 07:22:02Z vboxsync $ */
 /** @file
  * IPRT - Minimal NTDLL import library defintion file.
  */
@@ -167,6 +167,13 @@ NTSYSAPI NTSTATUS NTAPI NtOpenDirectoryObject(OUT PHANDLE ObjectHandle,
 }
 
 NTSYSAPI NTSTATUS NTAPI NtClose(IN HANDLE Handle)
+{
+    return -1;
+}
+
+NTSYSAPI NTSTATUS NTAPI NtDeviceIoControlFile(HANDLE FileHandle, HANDLE Event, PIO_APC_ROUTINE ApcRoutine, PVOID ApcContext,
+                                              PIO_STATUS_BLOCK IoStatusBlock, ULONG IoControlCode, PVOID InputBuffer,
+                                              LONG InputBufferLength, PVOID OutputBuffer, ULONG OutputBufferLength)
 {
     return -1;
 }

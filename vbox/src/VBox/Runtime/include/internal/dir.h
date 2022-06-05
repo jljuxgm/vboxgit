@@ -1,4 +1,4 @@
-/* $Id: dir.h 47535 2013-08-05 01:54:25Z vboxsync $ */
+/* $Id: dir.h 49150 2013-10-17 07:22:02Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -90,7 +90,7 @@ typedef struct RTDIR
 # ifdef RT_OS_WINDOWS
     /** Handle to the opened directory search. */
     HANDLE              hDir;
-#  ifndef RT_USE_NATIVE_NT
+#  ifndef RTNT_USE_NATIVE_NT
     /** Find data buffer.
      * fDataUnread indicates valid data. */
     WIN32_FIND_DATAW    Data;
