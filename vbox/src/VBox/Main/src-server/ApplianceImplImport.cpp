@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 49751 2013-12-03 12:38:49Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 49753 2013-12-03 12:44:50Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3976,7 +3976,7 @@ HRESULT Appliance::ImportStack::restoreOriginalUUIDOfAttachedDevice(settings::Ma
             {
                 Utf8Str uuidOriginal = it->second;
                 itadl->uuid = Guid(uuidOriginal);
-                mapNewUUIDsToOriginalUUIDs.erase(it);
+                mapNewUUIDsToOriginalUUIDs.erase(it->first);
             }
             ++itadl;
         }
