@@ -1,4 +1,4 @@
-/* $Id: tstRTMp-1.cpp 46638 2013-06-18 17:12:16Z vboxsync $ */
+/* $Id: tstRTMp-1.cpp 48808 2013-10-02 07:48:29Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMp.
  */
@@ -128,6 +128,16 @@ int main()
         RTTestIFailed("RTMpGetOnlineCount -> %d\n", (int)cCpusOnline);
         cCpusOnline = 1;
     }
+
+    RTCPUID cCoresOnline = RTMpGetOnlineCoreCount();
+    if (cCoresOnline > 0)
+        RTTestIPrintf(RTTESTLVL_ALWAYS, "RTMpGetOnlineCoreCount -> %d\n", (int)cCoresOnline);
+    else
+    {
+        RTTestIFailed("RTMpGetOnlineCoreCount -> %d, expected <= %d\n", (int)cCoresOnline, (int)cCpusOnline);
+        cCoresOnline = 1;
+    }
+    RTTESTI_CHECK(cCoresOnline <= cCpusOnline);
 
     RTCPUSET SetOnline;
     pSet = RTMpGetOnlineSet(&SetOnline);
