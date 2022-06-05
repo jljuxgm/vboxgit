@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 50647 2014-02-28 08:22:11Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 50679 2014-03-04 15:39:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -100,10 +100,14 @@ void UIMachineWindowFullscreen::sltPopupMainMenu()
 }
 
 #ifdef Q_WS_MAC
-void UIMachineWindowFullscreen::sltEnterNativeFullscreen()
+void UIMachineWindowFullscreen::sltEnterNativeFullscreen(UIMachineWindow *pMachineWindow)
 {
     /* Make sure this slot is called only under ML and next: */
     AssertReturnVoid(vboxGlobal().osRelease() > MacOSXRelease_Lion);
+
+    /* Make sure it is NULL or 'this' window passed: */
+    if (pMachineWindow && pMachineWindow != this)
+        return;
 
     /* Make sure this window should be shown at all: */
     if (!uisession()->isScreenVisible(m_uScreenId))
@@ -127,10 +131,14 @@ void UIMachineWindowFullscreen::sltEnterNativeFullscreen()
         darwinToggleFullscreenMode(this);
 }
 
-void UIMachineWindowFullscreen::sltExitNativeFullscreen()
+void UIMachineWindowFullscreen::sltExitNativeFullscreen(UIMachineWindow *pMachineWindow)
 {
     /* Make sure this slot is called only under ML and next: */
     AssertReturnVoid(vboxGlobal().osRelease() > MacOSXRelease_Lion);
+
+    /* Make sure it is NULL or 'this' window passed: */
+    if (pMachineWindow && pMachineWindow != this)
+        return;
 
     /* Mark window 'transitioned from fullscreen': */
     m_fIsInFullscreenTransition = true;
