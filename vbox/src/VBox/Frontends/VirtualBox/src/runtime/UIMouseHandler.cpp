@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 50265 2014-01-29 11:12:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -906,11 +906,12 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
                 || cpnt.y() < 0
                 || cpnt.y() > iCh - 1)
             {
-                if ((mouseButtons.testFlag(Qt::LeftButton)))
+                bool fHandledGHDnD
+                    = RT_BOOL(mouseButtons.testFlag(Qt::LeftButton));
+                if (fHandledGHDnD)
                 {
                     m_views[uScreenId]->handleGHDnd();
-
-                    return false;
+                    return true;
                 }
             }
 # endif
