@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 49644 2013-11-25 16:57:15Z vboxsync $ */
+/* $Id: MachineImpl.h 49976 2013-12-18 14:58:43Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -790,9 +790,7 @@ public:
                                 ComPtr<IInternalSessionControl> *aControl = NULL)
     { return isSessionOpen(aMachine, aControl, true /* aAllowClosing */); }
 
-#ifndef VBOX_WITH_GENERIC_SESSION_WATCHER
     bool checkForSpawnFailure();
-#endif /* !VBOX_WITH_GENERIC_SESSION_WATCHER */
 
     HRESULT prepareRegister();
 
