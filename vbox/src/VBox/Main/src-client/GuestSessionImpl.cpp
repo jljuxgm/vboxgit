@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 52082 2014-07-17 17:18:56Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 53128 2014-10-23 09:40:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2680,8 +2680,8 @@ HRESULT GuestSession::directoryOpen(const com::Utf8Str &aPath, const com::Utf8St
         switch (rc)
         {
             case VERR_INVALID_PARAMETER:
-               hr = setError(VBOX_E_IPRT_ERROR, tr("Opening directory \"%s\" failed; invalid parameters given",
-                                                   aPath.c_str()));
+               hr = setError(VBOX_E_IPRT_ERROR, tr("Opening directory \"%s\" failed; invalid parameters given"),
+                                                   aPath.c_str());
                break;
 
             case VERR_GSTCTL_GUEST_ERROR:
@@ -2739,8 +2739,8 @@ HRESULT GuestSession::directoryQueryInfo(const com::Utf8Str &aPath, ComPtr<IGues
                 break;
 
             case VERR_NOT_A_DIRECTORY:
-                hr = setError(VBOX_E_IPRT_ERROR, tr("Element \"%s\" exists but is not a directory",
-                                                    aPath.c_str()));
+                hr = setError(VBOX_E_IPRT_ERROR, tr("Element \"%s\" exists but is not a directory"),
+                                                    aPath.c_str());
                 break;
 
             default:
