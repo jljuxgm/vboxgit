@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 52346 2014-08-11 16:21:27Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 52372 2014-08-13 19:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -99,11 +99,26 @@ Qt::WindowFlags UIMachineLogicFullscreen::windowFlags(ulong uScreenId) const
 /** Adjusts guest screen count/size for the machine-logic we have. */
 void UIMachineLogicFullscreen::maybeAdjustGuestScreenSize()
 {
+    LogRel(("UIMachineLogicFullscreen::maybeAdjustGuestScreenSize"));
+
     /* Rebuild multi-screen layout: */
     m_pScreenLayout->rebuild();
+
+#ifdef Q_WS_MAC
+    /* For Lion and previous: */
+    if (vboxGlobal().osRelease() <= MacOSXRelease_Lion)
+    {
+        /* Make sure all machine-window(s) have proper geometry: */
+        foreach (UIMachineWindow *pMachineWindow, machineWindows())
+            pMachineWindow->showInNecessaryMode();
+    }
+    /* Revalidate native fullscreen for ML and next: */
+    else revalidateNativeFullScreen();
+#else /* !Q_WS_MAC */
     /* Make sure all machine-window(s) have proper geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->showInNecessaryMode();
+#endif /* !Q_WS_MAC */
 }
 
 int UIMachineLogicFullscreen::hostScreenForGuestScreen(int iScreenId) const
@@ -352,11 +367,8 @@ void UIMachineLogicFullscreen::sltMachineStateChanged()
 
         /* Make sure further code will be called just once: */
         uisession()->forgetPreviousMachineState();
-        /* Rebuild multi-screen layout: */
-        m_pScreenLayout->rebuild();
-        /* Make sure all machine-window(s) have proper geometry: */
-        foreach (UIMachineWindow *pMachineWindow, machineWindows())
-            pMachineWindow->showInNecessaryMode();
+        /* Adjust guest-screen size if necessary: */
+        maybeAdjustGuestScreenSize();
     }
 }
 

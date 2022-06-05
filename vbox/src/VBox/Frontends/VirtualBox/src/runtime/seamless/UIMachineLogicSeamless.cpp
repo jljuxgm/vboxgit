@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 52346 2014-08-11 16:21:27Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 52372 2014-08-13 19:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -87,8 +87,11 @@ bool UIMachineLogicSeamless::checkAvailability()
 /** Adjusts guest screen count/size for the machine-logic we have. */
 void UIMachineLogicSeamless::maybeAdjustGuestScreenSize()
 {
+    LogRel(("UIMachineLogicSeamless::maybeAdjustGuestScreenSize"));
+
     /* Rebuild multi-screen layout: */
     m_pScreenLayout->rebuild();
+
     /* Make sure all machine-window(s) have proper geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->showInNecessaryMode();
@@ -146,11 +149,8 @@ void UIMachineLogicSeamless::sltMachineStateChanged()
 
         /* Make sure further code will be called just once: */
         uisession()->forgetPreviousMachineState();
-        /* Rebuild multi-screen layout: */
-        m_pScreenLayout->rebuild();
-        /* Make sure all machine-window(s) have proper geometry: */
-        foreach (UIMachineWindow *pMachineWindow, machineWindows())
-            pMachineWindow->showInNecessaryMode();
+        /* Adjust guest-screen size if necessary: */
+        maybeAdjustGuestScreenSize();
     }
 }
 
@@ -168,6 +168,8 @@ void UIMachineLogicSeamless::sltInvokePopupMenu()
 
 void UIMachineLogicSeamless::sltScreenLayoutChanged()
 {
+    LogRel(("UIMachineLogicSeamless::sltScreenLayoutChanged: Multi-screen layout changed.\n"));
+
     /* Make sure all machine-window(s) have proper geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->showInNecessaryMode();
