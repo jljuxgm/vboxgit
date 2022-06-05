@@ -1,10 +1,10 @@
-/* $Id: RTGzip.cpp 49320 2013-10-29 12:39:25Z vboxsync $ */
+/* $Id: RTGzip.cpp 51519 2014-06-04 05:09:03Z vboxsync $ */
 /** @file
  * IPRT - GZIP Utility.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -68,9 +68,9 @@ typedef struct RTGZIPCMDOPTS
     /** The current input filename (for deletion and messages). */
     const char     *pszInput;
 } RTGZIPCMDOPTS;
-/** Pointer to GZIP options.   */
+/** Pointer to GZIP options. */
 typedef RTGZIPCMDOPTS *PRTGZIPCMDOPTS;
-/** Pointer to const GZIP options.   */
+/** Pointer to const GZIP options. */
 typedef RTGZIPCMDOPTS const *PCRTGZIPCMDOPTS;
 
 

@@ -1,11 +1,11 @@
 
-/* $Id: ldrMemory.cpp 46115 2013-05-15 23:53:03Z vboxsync $ */
+/* $Id: ldrMemory.cpp 51519 2014-06-04 05:09:03Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The Memory/Debugger Oriented Parts.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -71,7 +71,7 @@ typedef struct RTLDRRDRMEM
     /** The fake filename (variable size). */
     char                szName[1];
 } RTLDRRDRMEM;
-/** Memory based loader reader instance data.   */
+/** Memory based loader reader instance data. */
 typedef RTLDRRDRMEM *PRTLDRRDRMEM;
 
 
