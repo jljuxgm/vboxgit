@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 45030 2013-03-13 20:58:12Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 49386 2013-11-04 16:39:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -252,6 +252,19 @@ STDMETHODIMP Keyboard::PutCAD()
     cadSequence[7] = 0x9d; // Ctrl up
 
     return PutScancodes(ComSafeArrayAsInParam(cadSequence), NULL);
+}
+
+/**
+ * Releases all currently held keys in the virtual keyboard.
+ *
+ * @returns COM status code
+ *
+ */
+STDMETHODIMP Keyboard::ReleaseKeys()
+{
+    com::SafeArray<LONG> scancodes(1);
+    scancodes[0] = 0xFC;    /* Magic scancode, see PS/2 and USB keyboard devices. */
+    return PutScancodes(ComSafeArrayAsInParam(scancodes), NULL);
 }
 
 STDMETHODIMP Keyboard::COMGETTER(EventSource)(IEventSource ** aEventSource)

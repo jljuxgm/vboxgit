@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 45029 2013-03-13 20:57:11Z vboxsync $ */
+/* $Id: KeyboardImpl.h 49386 2013-11-04 16:39:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -73,6 +73,7 @@ public:
     STDMETHOD(PutScancodes)(ComSafeArrayIn(LONG, scancodes),
                             ULONG *codesStored);
     STDMETHOD(PutCAD)();
+    STDMETHOD(ReleaseKeys)();
 
     STDMETHOD(COMGETTER(EventSource))(IEventSource ** aEventSource);
 
