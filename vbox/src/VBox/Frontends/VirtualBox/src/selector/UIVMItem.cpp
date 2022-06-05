@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
+/* $Id: UIVMItem.cpp 51579 2014-06-09 13:01:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -167,8 +167,8 @@ QString UIVMItem::machineStateName() const
 
 QIcon UIVMItem::machineStateIcon() const
 {
-    return m_fAccessible ? gpConverter->toPixmap(m_machineState) :
-                           QPixmap(":/state_aborted_16px.png");
+    return m_fAccessible ? gpConverter->toIcon(m_machineState) :
+                           gpConverter->toIcon(KMachineState_Aborted);
 }
 
 QString UIVMItem::sessionStateName() const
