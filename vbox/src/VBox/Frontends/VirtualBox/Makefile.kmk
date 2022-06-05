@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49123 2013-10-15 18:09:24Z vboxsync $
+# $Id: Makefile.kmk 49158 2013-10-17 09:09:08Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -693,11 +693,6 @@ VirtualBox_SOURCES = \
 	src/wizards/importappliance/UIWizardImportAppPageExpert.cpp \
 	src/wizards/firstrun/UIWizardFirstRun.cpp \
 	src/wizards/firstrun/UIWizardFirstRunPageBasic.cpp
-
-ifndef VBOX_OSE
- VirtualBox_SOURCES += \
-	src/net/Intermediate.cpp
-endif
 
 VirtualBox_SOURCES.darwin += \
 	src/platform/darwin/UIAbstractDockIconPreview.cpp \
