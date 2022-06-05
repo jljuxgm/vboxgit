@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 49770 2013-12-04 10:51:06Z vboxsync $ */
+/* $Id: HMInternal.h 50870 2014-03-25 17:25:14Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -223,7 +223,7 @@ typedef struct HMGLOBALCPUINFO
 {
     /** The CPU ID. */
     RTCPUID             idCpu;
-    /** The memory object   */
+    /** The VM_HSAVE_AREA (AMD-V) / VMXON region (Intel) memory backing. */
     RTR0MEMOBJ          hMemObj;
     /** Current ASID (AMD-V) / VPID (Intel). */
     uint32_t            uCurrentAsid;
@@ -961,7 +961,7 @@ typedef struct HMCPU
     STAMPROFILEADV          StatExitDispatch;
 #endif
 } HMCPU;
-/** Pointer to HM VM instance data. */
+/** Pointer to HM VMCPU instance data. */
 typedef HMCPU *PHMCPU;
 
 
