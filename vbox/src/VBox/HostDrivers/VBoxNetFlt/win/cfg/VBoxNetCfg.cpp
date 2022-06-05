@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 48641 2013-09-23 16:08:45Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 48952 2013-10-07 21:54:31Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -948,7 +948,7 @@ static HRESULT netIfWinFindAdapterClassById(IWbemServices * pSvc, const GUID * p
     {
         swprintf(wszQuery, L"SELECT * FROM Win32_NetworkAdapterConfiguration WHERE SettingID = \"%s\"", wszGuid);
         IEnumWbemClassObject* pEnumerator = NULL;
-        hr = pSvc->ExecQuery(bstr_t("WQL"), bstr_t(wszQuery), WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, 
+        hr = pSvc->ExecQuery(bstr_t("WQL"), bstr_t(wszQuery), WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY,
                              NULL, &pEnumerator);
         if (SUCCEEDED(hr))
         {
@@ -957,7 +957,7 @@ static HRESULT netIfWinFindAdapterClassById(IWbemServices * pSvc, const GUID * p
                 IWbemClassObject *pclsObj;
                 ULONG uReturn = 0;
                 hr = pEnumerator->Next(WBEM_INFINITE, 1, &pclsObj, &uReturn);
-                NonStandardLogFlow(("netIfWinFindAdapterClassById: IEnumWbemClassObject::Next -> hr=0x%x pclsObj=%p uReturn=%u 42=%u\n", 
+                NonStandardLogFlow(("netIfWinFindAdapterClassById: IEnumWbemClassObject::Next -> hr=0x%x pclsObj=%p uReturn=%u 42=%u\n",
                                     hr, (void *)pclsObj, uReturn, 42));
                 if (SUCCEEDED(hr))
                 {

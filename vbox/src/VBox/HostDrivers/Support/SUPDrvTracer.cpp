@@ -1,4 +1,4 @@
-/* $Id: SUPDrvTracer.cpp 47518 2013-08-02 00:26:46Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 48952 2013-10-07 21:54:31Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
@@ -1472,13 +1472,13 @@ SUPR0TracerFireProbe:                                                   \n\
 ");
 # if   defined(RT_ARCH_AMD64)
 __asm__(" \
-	    movq    g_pfnSupdrvProbeFireKernel(%rip), %rax                  \n\
-	    jmp	    *%rax \n\
+            movq    g_pfnSupdrvProbeFireKernel(%rip), %rax                  \n\
+            jmp     *%rax \n\
 ");
 # elif defined(RT_ARCH_X86)
 __asm__("\
-	    movl    g_pfnSupdrvProbeFireKernel, %eax                        \n\
-	    jmp	    *%eax \n\
+            movl    g_pfnSupdrvProbeFireKernel, %eax                        \n\
+            jmp     *%eax \n\
 ");
 # else
 #  error "Which arch is this?"
