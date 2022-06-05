@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 45924 2013-05-06 19:34:30Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 49868 2013-12-10 14:49:04Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container
  */

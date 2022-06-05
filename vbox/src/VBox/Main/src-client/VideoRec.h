@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 45950 2013-05-08 13:00:13Z vboxsync $ */
+/* $Id: VideoRec.h 49868 2013-12-10 14:49:04Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */

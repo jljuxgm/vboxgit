@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 49868 2013-12-10 14:49:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
