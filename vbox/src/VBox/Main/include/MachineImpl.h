@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 48431 2013-09-11 14:08:36Z vboxsync $ */
+/* $Id: MachineImpl.h 48505 2013-09-17 15:48:55Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -456,6 +456,7 @@ public:
     STDMETHOD(COMGETTER(USBControllers))(ComSafeArrayOut(IUSBController *, aUSBControllers));
     STDMETHOD(COMGETTER(USBDeviceFilters))(IUSBDeviceFilters * *aUSBDeviceFilters);
     STDMETHOD(COMGETTER(SettingsFilePath))(BSTR *aFilePath);
+    STDMETHOD(COMSETTER(SettingsFilePath))(IN_BSTR aFilePath);
     STDMETHOD(COMGETTER(SettingsModified))(BOOL *aModified);
     STDMETHOD(COMGETTER(SessionState))(SessionState_T *aSessionState);
     STDMETHOD(COMGETTER(SessionType))(BSTR *aSessionType);

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 48431 2013-09-11 14:08:36Z vboxsync $ */
+/* $Id: MachineImpl.cpp 48505 2013-09-17 15:48:55Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2751,6 +2751,16 @@ STDMETHODIMP Machine::COMGETTER(SettingsFilePath)(BSTR *aFilePath)
 
     mData->m_strConfigFileFull.cloneTo(aFilePath);
     return S_OK;
+}
+
+STDMETHODIMP Machine::COMSETTER(SettingsFilePath)(IN_BSTR aFilePath)
+{
+    CheckComArgStrNotEmptyOrNull(aFilePath);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    ReturnComNotImplemented();
 }
 
 STDMETHODIMP Machine::COMGETTER(SettingsModified)(BOOL *aModified)
