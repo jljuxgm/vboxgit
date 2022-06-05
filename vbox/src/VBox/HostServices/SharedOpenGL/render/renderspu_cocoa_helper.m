@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 52614 2014-09-05 11:32:02Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 52616 2014-09-05 11:36:39Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -429,6 +429,7 @@ typedef DECLCALLBACKPTR(void, PFNVBOXTASKCALLBACK)(void *pvCb);
 
 - (void)add:(VBoxTask*)pTask
 {
+    [pTask retain];
     int rc = RTCritSectEnter(&m_Lock);
     if (RT_SUCCESS(rc))
     {
@@ -568,6 +569,7 @@ static DECLCALLBACK(void) vboxRcdRun(void *pvCb)
 {
     VBoxTaskPerformSelector *pSelTask = [[VBoxTaskPerformSelector alloc] initWithObject:aObject selector:aSelector arg:aArg];
     [self add:pSelTask];
+    [pSelTask release];
 }
 
 - (void)runTasks
