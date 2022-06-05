@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 48301 2013-09-05 11:52:39Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 48310 2013-09-05 14:19:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4205,6 +4205,31 @@ void VBoxGlobal::prepare()
             }
             vmUuid = m.GetId();
         }
+    }
+
+    /* After initializing *vmUuid* we already know if that is VM process or not: */
+    if (!isVMConsoleProcess())
+    {
+        /* We should create separate logging file for VM selector: */
+        char szLogFile[RTPATH_MAX];
+        const char *pszLogFile = NULL;
+        com::GetVBoxUserHomeDirectory(szLogFile, sizeof(szLogFile));
+        RTPathAppend(szLogFile, sizeof(szLogFile), "selectorwindow.log");
+        pszLogFile = szLogFile;
+        /* Create release logger, to file: */
+        char szError[RTPATH_MAX + 128];
+        com::VBoxLogRelCreate("GUI VM Selector Window",
+                              pszLogFile,
+                              RTLOGFLAGS_PREFIX_TIME_PROG,
+                              "all",
+                              "VBOX_GUI_SELECTORWINDOW_RELEASE_LOG",
+                              RTLOGDEST_FILE,
+                              UINT32_MAX,
+                              1,
+                              60 * 60,
+                              _1M,
+                              szError,
+                              sizeof(szError));
     }
 
     if (mSettingsPwSet)
