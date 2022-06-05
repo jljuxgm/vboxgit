@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53376 2014-11-21 18:16:02Z vboxsync $
+# $Id: Config.kmk 53377 2014-11-21 19:03:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2033,7 +2033,11 @@ ifeq ($(KBUILD_TARGET),darwin)
   endif
  else
   if $(VBOX_XCODE_VERSION_MAJOR) < 4 && "$(VBOX_XCODE_VERSION)" != "3.2"
-   $(error VBox: 64-bit darwin builds require Xcode 3.2 or later, you have $(VBOX_XCODE_VERSION))
+   ifeq ($(PATH_CURRENT),$(PATH_ROOT)/tools)
+    $(warning VBox: 64-bit darwin builds require Xcode 3.2 or later, you have $(VBOX_XCODE_VERSION))
+   else
+    $(error VBox: 64-bit darwin builds require Xcode 3.2 or later, you have $(VBOX_XCODE_VERSION))
+   endif
   endif
  endif
  if $(VBOX_XCODE_VERSION_MAJOR) == 4 && $(VBOX_XCODE_VERSION_MINOR) >= 2
@@ -5751,7 +5755,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53376 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53377 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
