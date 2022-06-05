@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49643 2013-11-25 15:46:54Z vboxsync $
+# $Id: Makefile.kmk 49723 2013-11-29 13:04:42Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1648,6 +1648,11 @@ RuntimeR0_SOURCES += \
 	common/math/gcc/umoddi3.c \
 	common/math/gcc/xordi3.c
 endif
+
+RuntimeR0_SOURCES.x86 += \
+	common/asm/ASMCpuIdExSlow.asm
+RuntimeR0_SOURCES.amd64 += \
+	common/asm/ASMCpuIdExSlow.asm
 
 #if1of ($(KBUILD_TARGET_ARCH),amd64 x86)
 # RuntimeR0_SOURCES += common/time/timesupA.asm
