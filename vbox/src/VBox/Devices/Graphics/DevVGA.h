@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 49983 2013-12-19 12:23:17Z vboxsync $ */
+/* $Id: DevVGA.h 50125 2014-01-20 16:52:31Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -354,6 +354,7 @@ typedef struct VGAState {
         /** Register caps. */
         uint32_t                    u32RegCaps;
         /** Physical address of command mmio range. */
+        uint32_t                    Padding2;
         RTIOPORT                    BasePort;
         /** Port io index register. */
         uint32_t                    u32IndexReg;
@@ -375,7 +376,7 @@ typedef struct VGAState {
         bool                        f3DEnabled;
         /** VRAM page monitoring enabled or not. */
         bool                        fVRAMTracking;
-        bool                        Padding6[HC_ARCH_BITS == 64 ? 6 : 2];
+        bool                        Padding6[2];
     } svga;
 #endif
 
