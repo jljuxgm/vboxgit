@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 52172 2014-07-24 16:11:50Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 52182 2014-07-25 06:21:21Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6678,10 +6678,6 @@ static int hmR0VmxSaveGuestState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     else
         Assert(VMMR0IsLogFlushDisabled(pVCpu));
     Log4Func(("vcpu[%RU32]\n", pVCpu->idCpu));
-
-    /* In case we get preempted before saving the interruptibility-state in hmR0VmxPostRunGuest(), do it here.
-       Otherwise we lose the info. from the VMCS if we get rescheduled on a different host CPU. */
-    hmR0VmxSaveGuestIntrState(pVCpu, pMixedCtx);
 
     int rc = hmR0VmxSaveGuestRipRspRflags(pVCpu, pMixedCtx);
     AssertLogRelMsgRCReturn(rc, ("hmR0VmxSaveGuestRipRspRflags failed! rc=%Rrc (pVCpu=%p)\n", rc, pVCpu), rc);
