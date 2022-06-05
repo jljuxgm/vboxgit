@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 47815 2013-08-16 14:10:31Z vboxsync $ */
+/* $Id: PGMPhys.cpp 48728 2013-09-27 11:04:41Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -3692,8 +3692,17 @@ int pgmR3PhysRomReset(PVM pVM)
                     break;
 
                 if (memcmp(pvDstPage, pbSrcPage, RT_MIN(cbSrcLeft, PAGE_SIZE)))
+                {
+# ifdef DEBUG_bird /* This is darn handy for EFI debugging w/ snapshots, should be made default later. */
+                    void *pvDstPageW;
+                    rc = pgmPhysPageMap(pVM, &pRom->aPages[iPage].Virgin, GCPhys, &pvDstPageW);
+                    AssertRCReturn(rc, rc);
+                    memcpy(pvDstPageW, pbSrcPage, RT_MIN(cbSrcLeft, PAGE_SIZE));
+# else
                     LogRel(("pgmR3PhysRomReset: %RGp rom page changed (%s) - loaded saved state?\n",
                             GCPhys, pRom->pszDesc));
+# endif
+                }
                 cbSrcLeft -= RT_MIN(cbSrcLeft, PAGE_SIZE);
             }
         }
