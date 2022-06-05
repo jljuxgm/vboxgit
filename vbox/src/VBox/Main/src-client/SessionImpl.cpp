@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 49453 2013-11-12 13:24:14Z vboxsync $ */
+/* $Id: SessionImpl.cpp 51236 2014-05-12 16:01:39Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -268,8 +268,6 @@ STDMETHODIMP Session::GetRemoteConsole(IConsole **aConsole)
     AssertComRCReturn(autoCaller.rc(), autoCaller.rc());
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
-
-    AssertReturn(mState != SessionState_Unlocked, VBOX_E_INVALID_VM_STATE);
 
 #ifndef VBOX_COM_INPROC_API_CLIENT
     AssertMsgReturn(mType == SessionType_WriteLock && !!mConsole,
