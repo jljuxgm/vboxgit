@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 51401 2014-05-26 16:45:43Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 51668 2014-06-19 14:46:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -22,6 +22,10 @@
 #include "UIExtraDataDefs.h"
 #include "UIShortcutPool.h"
 #include "UIDefs.h"
+
+/* Namespaces: */
+using namespace UIExtraDataDefs;
+
 
 class UIActionMenuFile : public UIActionMenu
 {

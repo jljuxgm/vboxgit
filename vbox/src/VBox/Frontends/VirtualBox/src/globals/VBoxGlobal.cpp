@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 51666 2014-06-19 14:07:14Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 51668 2014-06-19 14:46:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -174,6 +174,10 @@ typedef unsigned __int64 Q_ULONG;   /* word up to 64 bit unsigned */
 typedef long Q_LONG;                /* word up to 64 bit signed */
 typedef unsigned long Q_ULONG;      /* word up to 64 bit unsigned */
 #endif
+
+/* Namespaces: */
+using namespace UIExtraDataDefs;
+
 
 // VBoxGlobal
 ////////////////////////////////////////////////////////////////////////////////

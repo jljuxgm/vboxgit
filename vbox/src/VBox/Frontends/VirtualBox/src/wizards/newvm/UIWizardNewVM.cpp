@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 51215 2014-05-08 14:06:55Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 51668 2014-06-19 14:46:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -33,6 +33,10 @@
 #include "CUSBDeviceFilters.h"
 #include "CExtPackManager.h"
 #include "CStorageController.h"
+
+/* Namespaces: */
+using namespace UIExtraDataDefs;
+
 
 UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strGroup /* = QString() */)
     : UIWizard(pParent, WizardType_NewVM)

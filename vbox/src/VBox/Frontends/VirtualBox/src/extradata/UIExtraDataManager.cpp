@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51667 2014-06-19 14:33:28Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51668 2014-06-19 14:46:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -32,6 +32,9 @@
 #include "CEventSource.h"
 #include "CVirtualBox.h"
 #include "CMachine.h"
+
+/* Namespaces: */
+using namespace UIExtraDataDefs;
 
 
 /** QObject extension

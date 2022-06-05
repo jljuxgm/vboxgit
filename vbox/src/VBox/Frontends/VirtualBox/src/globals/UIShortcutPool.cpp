@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 51449 2014-05-28 13:56:37Z vboxsync $ */
+/* $Id: UIShortcutPool.cpp 51668 2014-06-19 14:46:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -21,6 +21,10 @@
 #include "UIShortcutPool.h"
 #include "UIActionPool.h"
 #include "UIExtraDataManager.h"
+
+/* Namespaces: */
+using namespace UIExtraDataDefs;
+
 
 void UIShortcut::setDescription(const QString &strDescription)
 {
