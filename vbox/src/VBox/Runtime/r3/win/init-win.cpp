@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 47596 2013-08-07 15:15:09Z vboxsync $ */
+/* $Id: init-win.cpp 48304 2013-09-05 12:38:39Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -220,9 +220,8 @@ DECLHIDDEN(int) rtR3InitNativeObtrusiveWorker(void)
             rc = VERR_INTERNAL_ERROR_3;
     }
 
-#if ARCH_BITS == 32
-    if (g_enmWinVer > kRTWinOSType_VISTA) /* Observed GUI issues on 32-bit Vista. */
-#endif
+    /** @bugref 6861: Observed GUI issues on Vista (32-bit and 64-bit). */
+    if (g_enmWinVer > kRTWinOSType_VISTA)
     {
         typedef BOOL(WINAPI *PFNSETDEFAULTDLLDIRECTORIES)(DWORD);
         PFNSETDEFAULTDLLDIRECTORIES pfnSetDefDllDirs;
