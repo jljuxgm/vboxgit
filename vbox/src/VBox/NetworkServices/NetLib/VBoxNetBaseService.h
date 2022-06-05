@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 49735 2013-11-30 02:08:42Z vboxsync $ */
+/* $Id: VBoxNetBaseService.h 49832 2013-12-09 11:19:34Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -96,7 +96,6 @@ protected:
     virtual void debugPrintV(int32_t iMinLevel, bool fMsg, const char *pszFmt, va_list va) const;
 
     void doReceiveLoop();
-    
 
 protected:
     /* VirtualBox instance */
