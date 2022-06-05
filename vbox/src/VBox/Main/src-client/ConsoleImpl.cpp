@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 51342 2014-05-22 10:24:53Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 51412 2014-05-27 08:25:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -118,6 +118,10 @@
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>
 # include <VBox/com/array.h>
+#endif
+
+#ifdef VBOX_OPENSSL_FIPS
+# include <openssl/crypto.h>
 #endif
 
 #include <set>
@@ -6825,6 +6829,10 @@ HRESULT Console::powerUp(IProgress **aProgress, bool aPaused)
         rc = consoleInitReleaseLog(mMachine);
         if (FAILED(rc))
             throw rc;
+
+#ifdef VBOX_OPENSSL_FIPS
+        LogRel(("crypto: FIPS mode %s\n", FIPS_mode() ? "enabled" : "FAILED"));
+#endif
 
         /* test and clear the TeleporterEnabled property  */
         BOOL fTeleporterEnabled;
