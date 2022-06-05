@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 51642 2014-06-18 04:18:05Z vboxsync $ */
+/* $Id: slirp_dns.c 53448 2014-12-05 09:12:22Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -303,6 +303,10 @@ int slirpReleaseDnsSettings(PNATState pData)
             RTStrFree(pDomain->dd_pszDomain);
         RTMemFree(pDomain);
     }
+
+    /* tell any pending dnsproxy requests their copy is expired */
+    ++pData->dnsgen;
+
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
