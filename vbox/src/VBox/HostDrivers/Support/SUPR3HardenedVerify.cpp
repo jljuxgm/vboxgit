@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 52355 2014-08-11 19:21:58Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 52417 2014-08-19 15:11:12Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -874,7 +874,8 @@ static int supR3HardenedVerifyProgram(const char *pszProgName, bool fFatal, bool
                     rc = supR3HardenedError(VERR_INTERNAL_ERROR, fFatal,
                                             "supR3HardenedVerifyProgram: duplicate DLL entry for \"%s\"\n", pszProgName);
                 else
-                    rc = supR3HardenedVerifyFileInternal(iFile, fFatal, fLeaveOpen, false /* fVerifyAll */);
+                    rc = supR3HardenedVerifyFileInternal(iFile, fFatal, fLeaveOpen,
+                                                         true /* fVerifyAll - check sign later, only final process need check it on load. */);
                 fDll = true;
             }
             else if (   (   g_aSupInstallFiles[iFile].enmType == kSupIFT_Exe
