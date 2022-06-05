@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 53238 2014-11-05 14:01:08Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 53324 2014-11-13 15:19:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -258,8 +258,18 @@ void UIGMachinePreview::sltRecreatePreview()
                     if (!display.isOk() || screenData.isEmpty())
                         break;
 
+                    /* Make sure screen-data size is valid: */
+                    const int iExpectedSize = size.width() * size.height() * 4;
+                    const int iActualSize = screenData.size();
+                    if (iActualSize != iExpectedSize)
+                    {
+                        AssertMsgFailed(("Invalid screen-data size '%d', should be '%d'!\n", iActualSize, iExpectedSize));
+                        break;
+                    }
+
                     /* Create image based on shallow copy of acquired data: */
-                    image = QImage(screenData.data(), size.width(), size.height(), QImage::Format_RGB32);
+                    QImage tempImage(screenData.data(), size.width(), size.height(), QImage::Format_RGB32);
+                    image = tempImage;
                     /* And detach that copy to make it deep: */
                     image.detach();
                     /* Dim image to give it required look for PAUSED state: */
