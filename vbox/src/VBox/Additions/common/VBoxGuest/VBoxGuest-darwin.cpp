@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 50701 2014-03-05 11:55:54Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 50722 2014-03-07 04:07:46Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -77,9 +77,11 @@
 #if DEBUG
 # define MODULE_NAME "VBoxGuest"
 # define PDEBUG(fmt, args...) \
-     printf(MODULE_NAME ": DEBUG: %s:%d %s(): " fmt "\n", __FILE__, __LINE__, __FUNCTION__, ## args)
+  do { \
+      printf(MODULE_NAME ": DEBUG: %s:%d %s(): " fmt "\n", __FILE__, __LINE__, __FUNCTION__, ## args); \
+  } while (0)
 #else
-# define PDEBUG(fmt, args...) { ; }
+# define PDEBUG(fmt, args...) do {} while (0)
 #endif
 
 
