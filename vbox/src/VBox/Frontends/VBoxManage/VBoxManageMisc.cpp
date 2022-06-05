@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 47908 2013-08-20 12:57:00Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 47991 2013-08-22 14:31:52Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -822,6 +822,18 @@ int handleSetProperty(HandlerArg *a)
             CHECK_ERROR(systemProperties, COMSETTER(DefaultMachineFolder)(NULL));
         else
             CHECK_ERROR(systemProperties, COMSETTER(DefaultMachineFolder)(Bstr(a->argv[1]).raw()));
+    }
+    else if (!strcmp(a->argv[0], "hwvirtexclusive"))
+    {
+        bool   fHwVirtExclusive;
+
+        if (!strcmp(a->argv[1], "on"))
+            fHwVirtExclusive = true;
+        else if (!strcmp(a->argv[1], "off"))
+            fHwVirtExclusive = false;
+        else
+            return errorArgument("Invalid hwvirtexclusive argument '%s'", a->argv[1]);
+        CHECK_ERROR(systemProperties, COMSETTER(ExclusiveHwVirt)(fHwVirtExclusive));
     }
     else if (   !strcmp(a->argv[0], "vrdeauthlibrary")
              || !strcmp(a->argv[0], "vrdpauthlibrary"))

@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 47593 2013-08-07 14:06:24Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 47991 2013-08-22 14:31:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -97,6 +97,17 @@ HRESULT SystemProperties::init(VirtualBox *aParent)
     setDefaultVRDEExtPack(Utf8Str::Empty);
 
     m->ulLogHistoryCount = 3;
+
+
+    /* On Windows and OS X, HW virtualization use isn't exclusive by
+     * default so that VT-x or AMD-V can be shared with other
+     * hypervisors without requiring user intervention.
+     */
+#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
+    m->fExclusiveHwVirt = false;
+#else
+    m->fExclusiveHwVirt = true;
+#endif
 
     HRESULT rc = S_OK;
 
@@ -313,6 +324,36 @@ STDMETHODIMP SystemProperties::COMGETTER(MaxBootPosition)(ULONG *aMaxBootPositio
     return S_OK;
 }
 
+
+STDMETHODIMP SystemProperties::COMGETTER(ExclusiveHwVirt)(BOOL *aExclusiveHwVirt)
+{
+    CheckComArgOutPointerValid(aExclusiveHwVirt);
+
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    *aExclusiveHwVirt = m->fExclusiveHwVirt;
+
+    return S_OK;
+}
+
+STDMETHODIMP SystemProperties::COMSETTER(ExclusiveHwVirt)(BOOL aExclusiveHwVirt)
+{
+    AutoCaller autoCaller(this);
+    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+    m->fExclusiveHwVirt = !!aExclusiveHwVirt;
+    alock.release();
+
+    // VirtualBox::saveSettings() needs vbox write lock
+    AutoWriteLock vboxLock(mParent COMMA_LOCKVAL_SRC_POS);
+    HRESULT rc = mParent->saveSettings();
+
+    return rc;
+}
 
 STDMETHODIMP SystemProperties::GetMaxNetworkAdapters(ChipsetType_T aChipset, ULONG *count)
 {
@@ -1125,6 +1166,7 @@ HRESULT SystemProperties::loadSettings(const settings::SystemProperties &data)
     if (FAILED(rc)) return rc;
 
     m->ulLogHistoryCount = data.ulLogHistoryCount;
+    m->fExclusiveHwVirt  = data.fExclusiveHwVirt;
 
     rc = setAutostartDatabasePath(data.strAutostartDatabasePath);
     if (FAILED(rc)) return rc;

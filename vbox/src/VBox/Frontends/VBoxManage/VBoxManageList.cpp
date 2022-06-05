@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 47908 2013-08-20 12:57:00Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 47991 2013-08-22 14:31:52Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -524,6 +524,7 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
     Bstr str;
     ULONG ulValue;
     LONG64 i64Value;
+    BOOL fValue;
 
     pVirtualBox->COMGETTER(APIVersion)(str.asOutParam());
     RTPrintf("API version:                     %ls\n", str.raw());
@@ -606,6 +607,8 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
 #endif
     systemProperties->COMGETTER(DefaultMachineFolder)(str.asOutParam());
     RTPrintf("Default machine folder:          %ls\n", str.raw());
+    systemProperties->COMGETTER(ExclusiveHwVirt)(&fValue);
+    RTPrintf("Exclusive HW virtualization use: %ls\n", fValue ? L"on" : L"off");
     systemProperties->COMGETTER(DefaultHardDiskFormat)(str.asOutParam());
     RTPrintf("Default hard disk format:        %ls\n", str.raw());
     systemProperties->COMGETTER(VRDEAuthLibrary)(str.asOutParam());

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 47908 2013-08-20 12:57:00Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 47991 2013-08-22 14:31:52Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -671,7 +671,6 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
     SHOW_LONG64_PROP(biosSettings,  TimeOffset,                 "biossystemtimeoffset", "Time offset",  "ms");
     SHOW_BOOLEAN_PROP_EX(machine,   RTCUseUTC,                  "rtcuseutc",            "RTC",          "UTC", "local time");
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_Enabled,   &f),   "hwvirtex",     "Hardw. virt.ext");
-    SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_Exclusive, &f),   "hwvirtexexcl", "Hardw. virt.ext exclusive");
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_NestedPaging, &f),"nestedpaging", "Nested Paging");
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_LargePages, &f),  "largepages",   "Large Pages");
     SHOW_BOOLEAN_METHOD(machine, GetHWVirtExProperty(HWVirtExPropertyType_VPID, &f),        "vtxvpid",      "VT-x VPID");

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 47561 2013-08-06 15:18:17Z vboxsync $ */
+/* $Id: MachineImpl.h 47991 2013-08-22 14:31:52Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -269,7 +269,6 @@ public:
         BOOL                maVideoCaptureScreens[SchemaDefs::MaxGuestMonitors];
         ULONG               mMonitorCount;
         BOOL                mHWVirtExEnabled;
-        BOOL                mHWVirtExExclusive;
         BOOL                mHWVirtExNestedPagingEnabled;
         BOOL                mHWVirtExLargePagesEnabled;
         BOOL                mHWVirtExVPIDEnabled;

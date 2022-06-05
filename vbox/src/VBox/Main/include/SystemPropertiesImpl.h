@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 47401 2013-07-25 19:12:24Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 47991 2013-08-22 14:31:52Z vboxsync $ */
 
 /** @file
  *
@@ -69,6 +69,8 @@ public:
     STDMETHOD(COMGETTER(SerialPortCount))(ULONG *count);
     STDMETHOD(COMGETTER(ParallelPortCount))(ULONG *count);
     STDMETHOD(COMGETTER(MaxBootPosition))(ULONG *aMaxBootPosition);
+    STDMETHOD(COMGETTER(ExclusiveHwVirt))(BOOL *aExclusiveHwVirt);
+    STDMETHOD(COMSETTER(ExclusiveHwVirt))(BOOL aExclusiveHwVirt);
     STDMETHOD(COMGETTER(LoggingLevel))(BSTR *aLoggingLevel);
     STDMETHOD(COMSETTER(LoggingLevel))(IN_BSTR aLoggingLevel);
     STDMETHOD(COMGETTER(DefaultMachineFolder))(BSTR *aDefaultMachineFolder);

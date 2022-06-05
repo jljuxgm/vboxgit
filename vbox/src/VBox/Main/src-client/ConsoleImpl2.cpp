@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 47841 2013-08-19 13:20:58Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 47991 2013-08-22 14:31:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -987,7 +987,7 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
         /* HWVirtEx exclusive mode */
         BOOL fHMExclusive = true;
-        hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_Exclusive, &fHMExclusive); H();
+        hrc = systemProperties->COMGETTER(ExclusiveHwVirt)(&fHMExclusive);                  H();
         InsertConfigInteger(pHM, "Exclusive", fHMExclusive);
 
         /* Nested paging (VT-x/AMD-V) */
