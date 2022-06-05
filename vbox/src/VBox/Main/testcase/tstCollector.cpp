@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 50865 2014-03-25 15:45:26Z vboxsync $ */
+/* $Id: tstCollector.cpp 51965 2014-07-10 10:37:15Z vboxsync $ */
 
 /** @file
  *
@@ -247,12 +247,12 @@ int testDisk(pm::CollectorHAL *collector)
         if (disksUsage.empty())
         {
             RTPrintf("tstCollector: getDiskListByFs(%s) returned empty usage list\n", FSNAME);
-            return 1;
+            return 0;
         }
         if (disksLoad.empty())
         {
             RTPrintf("tstCollector: getDiskListByFs(%s) returned empty usage list\n", FSNAME);
-            return 1;
+            return 0;
         }
 
         pm::DiskList::iterator it;
