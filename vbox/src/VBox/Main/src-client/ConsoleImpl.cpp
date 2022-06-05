@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 53066 2014-10-15 13:07:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8431,7 +8431,7 @@ Console::i_usbAttachCallback(Console *that, PUVM pUVM, IUSBDevice *aHostDevice, 
 
     int vrc = PDMR3UsbCreateProxyDevice(pUVM, aUuid, aRemote, aAddress, pvRemoteBackend,
                                         aPortVersion == 3 ? VUSB_STDVER_30 :
-                                        aPortVersion == 2 ? VUSB_STDVER_11 : VUSB_STDVER_20,
+                                        aPortVersion == 2 ? VUSB_STDVER_20 : VUSB_STDVER_11,
                                         aMaskedIfs, pszCaptureFilename);
     LogFlowFunc(("vrc=%Rrc\n", vrc));
     LogFlowFuncLeave();
