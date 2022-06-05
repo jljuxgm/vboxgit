@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 52940 2014-10-03 18:40:54Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 52941 2014-10-03 19:58:01Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -226,11 +226,17 @@ static int suplibHardenedStrCopyEx(char *pszDst, size_t cbDst, ...)
 DECLNORETURN(void) suplibHardenedExit(RTEXITCODE rcExit)
 {
     for (;;)
+    {
 #ifdef RT_OS_WINDOWS
-        RtlExitProcess(rcExit);
+        if (g_enmSupR3HardenedMainState >= SUPR3HARDENEDMAINSTATE_WIN_IMPORTS_RESOLVED)
+            ExitProcess(rcExit);
+        if (RtlExitUserProcess != NULL)
+            RtlExitUserProcess(rcExit);
+        NtTerminateProcess(NtCurrentProcess(), rcExit);
 #else
         _Exit(rcExit);
 #endif
+    }
 }
 
 

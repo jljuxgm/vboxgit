@@ -1,4 +1,4 @@
-; $Id: SUPR3HardenedMainA-win.asm 52940 2014-10-03 18:40:54Z vboxsync $
+; $Id: SUPR3HardenedMainA-win.asm 52941 2014-10-03 19:58:01Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Hardened main(), Windows assembly bits.
 ;
@@ -161,8 +161,9 @@ SUPHNTIMP_STDCALL_NAME(%1, %2) %+ _Early:
 
 %define SUPHARNT_COMMENT(a_Comment)
 %define SUPHARNT_IMPORT_SYSCALL(a_Name, a_cbParamsX86)       SupHardNtImport a_Name, a_cbParamsX86, SUPHNTIMP_SYSCALL, 1
-%define SUPHARNT_IMPORT_STDCALL(a_Name, a_cbParamsX86)       SupHardNtImport a_Name, a_cbParamsX86, 0,                 0
-%define SUPHARNT_IMPORT_STDCALL_EARLY(a_Name, a_cbParamsX86) SupHardNtImport a_Name, a_cbParamsX86, 0,                 1
+%define SUPHARNT_IMPORT_STDCALL(a_Name, a_cbParamsX86)       SupHardNtImport a_Name, a_cbParamsX86, 0, 0
+%define SUPHARNT_IMPORT_STDCALL_EARLY(a_Name, a_cbParamsX86) SupHardNtImport a_Name, a_cbParamsX86, 0, 1
+%define SUPHARNT_IMPORT_STDCALL_EARLY_OPTIONAL(a_Name, a_cbParamsX86) SUPHARNT_IMPORT_STDCALL_EARLY(a_Name, a_cbParamsX86)
 %include "import-template-ntdll.h"
 %include "import-template-kernel32.h"
 
