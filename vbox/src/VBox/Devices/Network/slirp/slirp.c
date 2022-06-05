@@ -1,4 +1,4 @@
-/* $Id: slirp.c 50949 2014-04-02 00:53:08Z vboxsync $ */
+/* $Id: slirp.c 51135 2014-04-24 11:54:02Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1612,7 +1612,7 @@ int slirp_remove_redirect(PNATState pData, int is_udp, struct in_addr host_addr,
             && rule->activated)
         {
             LogRel(("NAT: remove redirect %s host port %d => guest port %d @ %RTnaipv4\n",
-                   rule->proto == IPPROTO_UDP ? "UDP" : "TCP", rule->host_port, rule->guest_port, guest_addr));
+                   rule->proto == IPPROTO_UDP ? "UDP" : "TCP", rule->host_port, rule->guest_port, guest_addr.s_addr));
 
             LibAliasUninit(rule->so->so_la);
             if (is_udp)
