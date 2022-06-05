@@ -1,11 +1,11 @@
-/* $Id: initterm.cpp 48282 2013-09-04 23:59:15Z vboxsync $ */
+/* $Id: initterm.cpp 50117 2014-01-20 14:05:02Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -20,7 +20,7 @@
 
 # include <objbase.h>
 
-#else /* !defined (VBOX_WITH_XPCOM) */
+#else /* !defined(VBOX_WITH_XPCOM) */
 
 # include <stdlib.h>
 
@@ -172,7 +172,7 @@ DirectoryServiceProvider::GetFile(const char *aProp,
     if (NS_FAILED(rv))
         return rv;
 
-    return localFile->QueryInterface(NS_GET_IID (nsIFile), (void **)aRetval);
+    return localFile->QueryInterface(NS_GET_IID(nsIFile), (void **)aRetval);
 }
 
 /**
@@ -186,7 +186,7 @@ static bool volatile gIsXPCOMInitialized = false;
  */
 static unsigned int gXPCOMInitCount = 0;
 
-#else /* !defined (VBOX_WITH_XPCOM) */
+#else /* !defined(VBOX_WITH_XPCOM) */
 
 /**
  *  The COM main thread handle. (The first caller of com::Initialize().)
@@ -198,7 +198,7 @@ static RTTHREAD volatile gCOMMainThread = NIL_RTTHREAD;
  */
 static uint32_t gCOMMainInitCount = 0;
 
-#endif /* !defined (VBOX_WITH_XPCOM) */
+#endif /* !defined(VBOX_WITH_XPCOM) */
 
 
 /**
@@ -294,7 +294,7 @@ HRESULT Initialize(bool fGui)
     if (SUCCEEDED(rc))
         gCOMMainInitCount = 1;
 
-#else /* !defined (VBOX_WITH_XPCOM) */
+#else /* !defined(VBOX_WITH_XPCOM) */
 
     /* Unused here */
     NOREF(fGui);
@@ -498,7 +498,7 @@ HRESULT Initialize(bool fGui)
         }
     }
 
-#endif /* !defined (VBOX_WITH_XPCOM) */
+#endif /* !defined(VBOX_WITH_XPCOM) */
 
     AssertComRCReturnRC(rc);
 
@@ -536,7 +536,7 @@ HRESULT Shutdown()
 
     CoUninitialize();
 
-#else /* !defined (VBOX_WITH_XPCOM) */
+#else /* !defined(VBOX_WITH_XPCOM) */
 
     nsCOMPtr<nsIEventQueue> eventQ;
     rc = NS_GetMainEventQ(getter_AddRefs(eventQ));
