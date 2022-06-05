@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-objid-decode.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-ut-objid-decode.cpp 51773 2014-07-01 18:29:17Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, OBJECT IDENTIFIER Type, Decoder.
  */
@@ -266,8 +266,8 @@ RTDECL(int) RTAsn1ObjId_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags, PRTAS
             /*
              * Validate and count things first.
              */
-            uint8_t cComponents;
-            uint8_t cchObjId;
+            uint8_t cComponents = 0; /* gcc maybe-crap */
+            uint8_t cchObjId = 0;    /* ditto */
             rc = rtAsn1ObjId_PreParse(pCursor->pbCur, pThis->Asn1Core.cb, pCursor, pszErrorTag, &cComponents, &cchObjId);
             if (RT_SUCCESS(rc))
             {
