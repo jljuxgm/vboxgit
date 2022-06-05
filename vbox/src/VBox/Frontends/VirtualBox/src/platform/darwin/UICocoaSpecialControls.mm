@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 51265 2014-05-15 18:04:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -397,7 +397,7 @@ void UICocoaSegmentedButton::setToolTip(int iSegment, const QString &strTip)
 
 void UICocoaSegmentedButton::setIcon(int iSegment, const QIcon& icon)
 {
-    QImage image = toGray(icon.pixmap(icon.actualSize(QSize(13, 13))).toImage());
+    QImage image = toGray(icon.pixmap(icon.availableSizes().first()).toImage());
 
     NSImage *pNSimage = [::darwinToNSImageRef(&image) autorelease];
     [m_pNativeRef setImage: pNSimage forSegment: iSegment];

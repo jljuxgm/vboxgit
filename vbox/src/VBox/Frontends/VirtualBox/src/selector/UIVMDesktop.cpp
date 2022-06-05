@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 49706 2013-11-28 19:08:22Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 51265 2014-05-15 18:04:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -228,7 +228,8 @@ UIVMDesktop::UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *
 {
     /* Prepare buttons: */
     m_pHeaderBtn = new UITexturedSegmentedButton(2);
-    m_pHeaderBtn->setIcon(Dtls, UIIconPool::iconSet(":/vm_settings_16px.png"));
+    m_pHeaderBtn->setIcon(Dtls, UIIconPool::iconSet(":/vm_settings_16px.png",
+                                                    ":/vm_settings_disabled_16px.png"));
     m_pHeaderBtn->setIcon(Snap, UIIconPool::iconSet(":/snapshot_take_16px.png",
                                                     ":/snapshot_take_disabled_16px.png"));
 #ifdef Q_WS_MAC
