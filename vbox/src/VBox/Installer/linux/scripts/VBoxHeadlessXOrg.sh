@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: VBoxHeadlessXOrg.sh 46352 2013-05-31 21:07:53Z vboxsync $
+# $Id: VBoxHeadlessXOrg.sh 48954 2013-10-07 21:57:06Z vboxsync $
 #
 # VirtualBox X Server auto-start service.
 #
@@ -22,7 +22,7 @@ PATH=$PATH:/bin:/sbin:/usr/sbin
 #
 # I have tried to follow the best practices I could find for writing a Linux
 # service (and doing it in shell script) which should work well with
-# traditional and modern service systems using minimal init or service files. 
+# traditional and modern service systems using minimal init or service files.
 # In our case this boils down to:
 #  * Start with a single command line, stop using one of ${EXIT_SIGNALS} below.
 #  * Stopping with a signal can be done safely using the pid stored in the
