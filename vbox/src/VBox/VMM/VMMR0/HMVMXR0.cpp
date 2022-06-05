@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48700 2013-09-26 07:34:12Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48885 2013-10-04 10:58:32Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1814,8 +1814,15 @@ static int hmR0VmxSetupProcCtls(PVM pVM, PVMCPU pVCpu)
     }
     else
     {
-        val |=   VMX_VMCS_CTRL_PROC_EXEC_CR8_STORE_EXIT        /* CR8 reads causes a VM-exit. */
-               | VMX_VMCS_CTRL_PROC_EXEC_CR8_LOAD_EXIT;        /* CR8 writes causes a VM-exit. */
+        /*
+         * Some 32-bit CPUs do not support CR8 load/store exiting as MOV CR8 is invalid on 32-bit Intel CPUs. 
+         * Set this control only for 64-bit guests.
+         */
+        if (pVM->hm.s.fAllow64BitGuests)
+        {
+            val |=   VMX_VMCS_CTRL_PROC_EXEC_CR8_STORE_EXIT    /* CR8 reads causes a VM-exit. */
+                   | VMX_VMCS_CTRL_PROC_EXEC_CR8_LOAD_EXIT;    /* CR8 writes causes a VM-exit. */
+        }
     }
 
     /* Use MSR-bitmaps if supported by the CPU. */
