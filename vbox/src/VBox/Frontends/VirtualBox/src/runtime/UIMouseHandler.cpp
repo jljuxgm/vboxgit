@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 50784 2014-03-14 10:32:36Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 50786 2014-03-14 11:16:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -555,7 +555,7 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                     foreach (QWidget *pViewport, m_viewports)
                     {
                         QPoint posInViewport = pViewport->mapFromGlobal(pOldMouseEvent->globalPos());
-                        if (pViewport->geometry().contains(posInViewport))
+                        if (pViewport->geometry().adjusted(0, 0, 1, 1).contains(posInViewport))
                             probablyHoveredViewports << pViewport;
                     }
                     /* Determine actually hovered viewport: */
