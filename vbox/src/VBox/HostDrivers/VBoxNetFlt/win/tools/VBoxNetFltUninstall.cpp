@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltUninstall.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxNetFltUninstall.cpp 51908 2014-07-07 17:44:56Z vboxsync $ */
 /** @file
  * NetFltUninstall - VBoxNetFlt uninstaller command line tool
  */
@@ -47,7 +47,7 @@ static int VBoxNetFltUninstall()
             if(hr == S_OK)
             {
                 hr = VBoxNetCfgWinNetFltUninstall(pnc);
-                if(hr != S_OK)
+                if(hr != S_OK && hr != S_FALSE)
                 {
                     wprintf(L"error uninstalling VBoxNetFlt (0x%x)\n", hr);
                     r = 1;
