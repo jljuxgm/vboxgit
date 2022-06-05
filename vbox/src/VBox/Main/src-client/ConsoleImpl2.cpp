@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 51613 2014-06-12 16:54:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4581,7 +4581,7 @@ int Console::i_configNetwork(const char *pszDevice,
             case NetworkAttachmentType_Bridged:
             {
 #if (defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)) && !defined(VBOX_WITH_NETFLT)
-                hrc = attachToTapInterface(aNetworkAdapter);
+                hrc = i_attachToTapInterface(aNetworkAdapter);
                 if (FAILED(hrc))
                 {
                     switch (hrc)
@@ -4783,7 +4783,7 @@ int Console::i_configNetwork(const char *pszDevice,
                  * interface via the current FreeBSD vboxnetflt implementation.
                  */
                 if (!strncmp(pszBridgedIfName, RT_STR_TUPLE("tap"))) {
-                    hrc = attachToTapInterface(aNetworkAdapter);
+                    hrc = i_attachToTapInterface(aNetworkAdapter);
                     if (FAILED(hrc))
                     {
                         switch (hrc)
