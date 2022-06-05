@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48994 2013-10-09 11:13:11Z vboxsync $
+# $Id: Makefile.kmk 48996 2013-10-09 11:21:37Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -1100,8 +1100,8 @@ OTHER_CLEAN += \
 
 # Generate the Doxyfile
 $(QTGUI_DOXYFILE_OUTPUT)/Doxyfile.qtgui: \
-		$(PATH_CURRENT)/Doxyfile \
-		$(PATH_CURRENT)/Makefile.kmk \
+		$(PATH_SUB_CURRENT)/Doxyfile \
+		$(PATH_SUB_CURRENT)/Makefile.kmk \
 		| $$(dir $$@)
 	$(RM) -f $@ $@.tmp $@.dep
 	$(CP) -f $< $@.tmp
