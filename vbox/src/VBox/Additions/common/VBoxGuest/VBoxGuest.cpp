@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 48231 2013-09-02 15:02:20Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 48311 2013-09-05 14:37:07Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1541,6 +1541,7 @@ static int VBoxGuestCommonIOCtl_CancelAllWaitEvents(PVBOXGUESTDEVEXT pDevExt, PV
     }
     RTSpinlockReleaseNoInts(pDevExt->EventSpinlock);
     Assert(rc == 0);
+    NOREF(rc);
 
 #ifdef VBOXGUEST_USE_DEFERRED_WAKE_UP
     VBoxGuestWaitDoWakeUps(pDevExt);
@@ -3072,6 +3073,7 @@ bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt)
 
     ASMAtomicDecU32(&pDevExt->cISR);
     Assert(rc == 0);
+    NOREF(rc);
     return fOurIrq;
 }
 
