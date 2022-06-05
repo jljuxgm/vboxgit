@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 46273 2013-05-26 22:38:33Z vboxsync $ */
+/* $Id: ldrPE.cpp 48636 2013-09-23 12:35:22Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1514,12 +1514,6 @@ static DECLCALLBACK(int) rtldrPEClose(PRTLDRMODINTERNAL pMod)
     {
         RTMemFree(pModPe->pvBits);
         pModPe->pvBits = NULL;
-    }
-    if (pModPe->Core.pReader)
-    {
-        int rc = pModPe->Core.pReader->pfnDestroy(pModPe->Core.pReader);
-        AssertRC(rc);
-        pModPe->Core.pReader = NULL;
     }
     return VINF_SUCCESS;
 }

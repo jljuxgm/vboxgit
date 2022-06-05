@@ -1,4 +1,4 @@
-/* $Id: ldr.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: ldr.cpp 48636 2013-09-23 12:35:22Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
@@ -158,6 +158,12 @@ RTDECL(int) RTLdrClose(RTLDRMOD hLdrMod)
     AssertRC(rc);
     pMod->eState = LDR_STATE_INVALID;
     pMod->u32Magic++;
+    if (pMod->pReader)
+    {
+        rc = pMod->pReader->pfnDestroy(pMod->pReader);
+        AssertRC(rc);
+        pMod->pReader = NULL;
+    }
     RTMemFree(pMod);
 
     LogFlow(("RTLdrClose: returns VINF_SUCCESS\n"));
