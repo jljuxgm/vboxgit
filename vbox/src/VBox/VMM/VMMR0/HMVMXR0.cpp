@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 52279 2014-08-05 14:13:40Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 52281 2014-08-05 14:33:31Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1605,10 +1605,13 @@ static int hmR0VmxCheckVmcsCtls(PVMCPU pVCpu)
     AssertMsgReturn(pVCpu->hm.s.vmx.u32ProcCtls == u32Val, ("Cache=%#RX32 VMCS=%#RX32", pVCpu->hm.s.vmx.u32ProcCtls, u32Val),
                     VERR_VMX_PROC_EXEC_CTLS_CACHE_INVALID);
 
-    rc = VMXReadVmcs32(VMX_VMCS32_CTRL_PROC_EXEC2, &u32Val);
-    AssertRCReturn(rc, rc);
-    AssertMsgReturn(pVCpu->hm.s.vmx.u32ProcCtls2 == u32Val, ("Cache=%#RX32 VMCS=%#RX32", pVCpu->hm.s.vmx.u32ProcCtls2, u32Val),
-                    VERR_VMX_PROC_EXEC2_CTLS_CACHE_INVALID);
+    if (pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_USE_SECONDARY_EXEC_CTRL)
+    {
+        rc = VMXReadVmcs32(VMX_VMCS32_CTRL_PROC_EXEC2, &u32Val);
+        AssertRCReturn(rc, rc);
+        AssertMsgReturn(pVCpu->hm.s.vmx.u32ProcCtls2 == u32Val, ("Cache=%#RX32 VMCS=%#RX32", pVCpu->hm.s.vmx.u32ProcCtls2, u32Val),
+                        VERR_VMX_PROC_EXEC2_CTLS_CACHE_INVALID);
+    }
 
     return VINF_SUCCESS;
 }
