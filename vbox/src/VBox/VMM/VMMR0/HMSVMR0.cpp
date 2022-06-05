@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49770 2013-12-04 10:51:06Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49876 2013-12-11 15:21:28Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2947,6 +2947,10 @@ static void hmR0SvmPreRunGuestCommitted(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PS
         hmR0SvmUpdateTscOffsetting(pVCpu);
         pSvmTransient->fUpdateTscOffsetting = false;
     }
+
+    /* If we've migrating CPUs, mark the VMCB clean bits as dirty. */
+    if (HMR0GetCurrentCpu()->idCpu != pVCpu->hm.s.idLastCpu)
+        pVmcb->ctrl.u64VmcbCleanBits = 0;
 
     /* Store status of the shared guest-host state at the time of VMRUN. */
 #if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
