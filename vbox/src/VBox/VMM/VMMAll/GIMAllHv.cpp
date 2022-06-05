@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 51644 2014-06-18 11:08:40Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 51658 2014-06-19 03:25:54Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -78,6 +78,7 @@ VMM_INT_DECL(int) GIMHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRan
     {
         case MSR_GIM_HV_TIME_REF_COUNT:
         {
+            /** @todo r=ramshankar: Shouldn't we add the TSC offset here? */
             /* Hyper-V reports the time in 100 ns units (10 MHz). */
             uint64_t u64Tsc      = TMCpuTickGet(pVCpu);
             uint64_t u64TscHz    = TMCpuTicksPerSecond(pVM);

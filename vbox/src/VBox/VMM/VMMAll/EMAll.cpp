@@ -1,10 +1,10 @@
-/* $Id: EMAll.cpp 51643 2014-06-18 11:06:06Z vboxsync $ */
+/* $Id: EMAll.cpp 51658 2014-06-19 03:25:54Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
