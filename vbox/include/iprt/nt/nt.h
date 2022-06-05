@@ -1,4 +1,4 @@
-/* $Id: nt.h 52941 2014-10-03 19:58:01Z vboxsync $ */
+/* $Id: nt.h 52943 2014-10-04 01:54:58Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -1771,6 +1771,32 @@ NTSYSAPI NTSTATUS NTAPI NtWaitForMultipleObjects(ULONG, PHANDLE, OBJECT_WAIT_TYP
 
 NTSYSAPI NTSTATUS NTAPI NtQuerySecurityObject(HANDLE, ULONG, PSECURITY_DESCRIPTOR, ULONG, PULONG);
 
+#ifdef IPRT_NT_USE_WINTERNL
+typedef enum _EVENT_TYPE
+{
+    /* Manual reset event. */
+    NotificationEvent = 0,
+    /* Automaitc reset event. */
+    SynchronizationEvent
+} EVENT_TYPE;
+#endif
+NTSYSAPI NTSTATUS NTAPI NtCreateEvent(PHANDLE, ACCESS_MASK, POBJECT_ATTRIBUTES, EVENT_TYPE, BOOLEAN);
+NTSYSAPI NTSTATUS NTAPI NtOpenEvent(PHANDLE, ACCESS_MASK, POBJECT_ATTRIBUTES);
+NTSYSAPI NTSTATUS NTAPI NtClearEvent(HANDLE);
+NTSYSAPI NTSTATUS NTAPI NtResetEvent(HANDLE, PULONG);
+NTSYSAPI NTSTATUS NTAPI NtSetEvent(HANDLE, PULONG);
+typedef enum _EVENT_INFORMATION_CLASS
+{
+    EventBasicInformation = 0
+} EVENT_INFORMATION_CLASS;
+/** Data returned by NtQueryEvent + EventBasicInformation. */
+typedef struct EVENT_BASIC_INFORMATION
+{
+    EVENT_TYPE  EventType;
+    ULONG       EventState;
+} EVENT_BASIC_INFORMATION;
+typedef EVENT_BASIC_INFORMATION *PEVENT_BASIC_INFORMATION;
+NTSYSAPI NTSTATUS NTAPI NtQueryEvent(HANDLE, EVENT_INFORMATION_CLASS, PVOID, ULONG, PULONG);
 
 #ifdef IPRT_NT_USE_WINTERNL
 /** For NtQueryValueKey. */
