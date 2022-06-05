@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 50994 2014-04-08 12:30:50Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 51333 2014-05-22 04:42:22Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -35,7 +35,7 @@
 VMMR3_INT_DECL(int) GIMR3MinimalInit(PVM pVM)
 {
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
-    AssertReturn(pVM->gim.s.enmProvider == GIMPROVIDER_MINIMAL, VERR_INTERNAL_ERROR_5);
+    AssertReturn(pVM->gim.s.enmProviderId == GIMPROVIDERID_MINIMAL, VERR_INTERNAL_ERROR_5);
 
     Assert(CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP));
 

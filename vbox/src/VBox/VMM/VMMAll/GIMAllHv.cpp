@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 50953 2014-04-02 14:47:00Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 51333 2014-05-22 04:42:22Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -25,6 +25,18 @@
 #include <iprt/err.h>
 
 DECLEXPORT(int) GIMHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
+{
+    return VINF_SUCCESS;
+}
+
+
+DECLEXPORT(int) GIMHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue)
+{
+    return VINF_SUCCESS;
+}
+
+
+DECLEXPORT(int) GIMHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t uValue, uint64_t uRawValue)
 {
     return VINF_SUCCESS;
 }
