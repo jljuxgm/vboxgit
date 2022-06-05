@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 50940 2014-04-01 11:22:34Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 52804 2014-09-22 08:29:46Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -4467,7 +4467,7 @@ static HRESULT APIENTRY vboxWddmDDevCreateResource(HANDLE hDevice, D3DDDIARG_CRE
                         }
                         else
                         {
-                            for (UINT j = 0; i < j; ++j)
+                            for (UINT j = 0; j < i; ++j)
                             {
                                 D3DDDI_ALLOCATIONINFO * pCur = &pDdiAllocIBase[i];
                                 D3DDDICB_DEALLOCATE Dealloc;
