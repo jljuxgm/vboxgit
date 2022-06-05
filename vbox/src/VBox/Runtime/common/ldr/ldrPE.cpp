@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 51914 2014-07-08 00:38:45Z vboxsync $ */
+/* $Id: ldrPE.cpp 52204 2014-07-26 11:22:44Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -574,7 +574,8 @@ static DECLCALLBACK(int) rtldrPEGetBits(PRTLDRMODINTERNAL pMod, void *pvBits, RT
         /*
          * Resolve imports.
          */
-        rc = ((PRTLDROPSPE)pMod->pOps)->pfnResolveImports(pModPe, pvBits, pvBits, pfnGetImport, pvUser);
+        if (pfnGetImport)
+            rc = ((PRTLDROPSPE)pMod->pOps)->pfnResolveImports(pModPe, pvBits, pvBits, pfnGetImport, pvUser);
         if (RT_SUCCESS(rc))
         {
             /*

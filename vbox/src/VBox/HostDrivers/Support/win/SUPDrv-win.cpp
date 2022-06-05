@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 52192 2014-07-25 15:04:01Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 52204 2014-07-26 11:22:44Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -3421,7 +3421,7 @@ static int supdrvNtProtectVerifyProcess(PSUPDRVNTPROTECT pNtProtect)
         RTERRINFO ErrInfo;
         RTErrInfoInit(&ErrInfo, szErr, sizeof(szErr));
 
-        rc = supHardenedWinVerifyProcess(NtCurrentProcess(), NtCurrentThread(), &ErrInfo);
+        rc = supHardenedWinVerifyProcess(NtCurrentProcess(), NtCurrentThread(), SUPHARDNTVPKIND_VERIFY_ONLY, &ErrInfo);
         if (RT_FAILURE(rc))
             RTLogWriteDebugger(szErr, strlen(szErr));
     }
