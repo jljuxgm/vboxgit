@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 50523 2014-02-20 12:00:58Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 50537 2014-02-21 12:11:24Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -169,9 +169,6 @@ typedef struct VBOXGUESTDEVEXT
     bool                        fLoggingEnabled;
     /** Memory balloon information for RTR0MemObjAllocPhysNC(). */
     VBOXGUESTMEMBALLOON         MemBalloon;
-    /** Counter of number of active ISRs.  Currently used for safely removing
-     * the mouse handler callback. */
-    uint32_t volatile           cISR;
     /** Callback and user data for a kernel mouse handler. */
     VBoxGuestMouseSetNotifyCallback MouseNotifyCallback;
     /** Guest capabilities which have been set to "acquire" mode.  This means
