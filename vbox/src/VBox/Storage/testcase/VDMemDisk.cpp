@@ -1,4 +1,4 @@
-/** $Id: VDMemDisk.cpp 36635 2011-04-08 23:25:37Z vboxsync $ */
+/** $Id: VDMemDisk.cpp 52371 2014-08-13 19:00:27Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, memory disk/file.
@@ -89,6 +89,7 @@ void VDMemDiskDestroy(PVDMEMDISK pMemDisk)
     AssertPtrReturnVoid(pMemDisk);
 
     RTAvlrU64Destroy(pMemDisk->pTreeSegments, vdMemDiskDestroy, NULL);
+    RTMemFree(pMemDisk->pTreeSegments);
     RTMemFree(pMemDisk);
 }
 
