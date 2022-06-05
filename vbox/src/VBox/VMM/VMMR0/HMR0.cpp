@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 50748 2014-03-12 14:29:06Z vboxsync $ */
+/* $Id: HMR0.cpp 50789 2014-03-14 14:44:27Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1279,14 +1279,11 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVM pVM)
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
+        pVCpu->hm.s.idEnteredCpu = NIL_RTCPUID;
+        pVCpu->hm.s.idLastCpu    = NIL_RTCPUID;
 
-        pVCpu->hm.s.idEnteredCpu        = NIL_RTCPUID;
-
-        /* Invalidate the last cpu we were running on. */
-        pVCpu->hm.s.idLastCpu           = NIL_RTCPUID;
-
-        /* We'll aways increment this the first time (host uses ASID 0) */
-        pVCpu->hm.s.uCurrentAsid        = 0;
+        /* We'll aways increment this the first time (host uses ASID 0). */
+        AssertReturn(!pVCpu->hm.s.uCurrentAsid, VERR_HM_IPE_3);
     }
 
     /*
