@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 50740 2014-03-11 17:27:35Z vboxsync $ */
+/* $Id: HMR0.cpp 50746 2014-03-12 14:03:28Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1697,7 +1697,7 @@ VMMR0_INT_DECL(int) HMR0EnterSwitcher(PVM pVM, VMMSWITCHER enmSwitcher, bool *pf
 {
     NOREF(pVM);
 
-    Assert(!(ASMGetFlags() & X86_EFL_IF) || !RTThreadPreemptIsEnabled(NIL_RTTHREAD));
+    Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
     *pfVTxDisabled = false;
 
@@ -1761,7 +1761,7 @@ VMMR0_INT_DECL(int) HMR0EnterSwitcher(PVM pVM, VMMSWITCHER enmSwitcher, bool *pf
  */
 VMMR0_INT_DECL(void) HMR0LeaveSwitcher(PVM pVM, bool fVTxDisabled)
 {
-    Assert(!(ASMGetFlags() & X86_EFL_IF));
+    Assert(!ASMIntAreEnabled());
 
     if (!fVTxDisabled)
         return;         /* nothing to do */
