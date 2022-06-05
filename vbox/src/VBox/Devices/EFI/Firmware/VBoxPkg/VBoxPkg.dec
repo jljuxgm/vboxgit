@@ -1,4 +1,4 @@
-# $Id: VBoxPkg.dec 48674 2013-09-25 08:26:15Z vboxsync $
+# $Id: VBoxPkg.dec 53336 2014-11-14 17:29:57Z vboxsync $
 ## @file
 # VBoxPkg.dec - VirtualBox Package description.
 #
@@ -49,6 +49,7 @@
         gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwWorkingSize|0|UINT32|0x00001003
         gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareBase|0|UINT32|0x00001004
         gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareSize|0|UINT32|0x00001005
+        gVBoxVgaPkgTokenSpaceGuid.PcdDriverSupportedEfiVersion|0x0002000a|UINT32|0x00010003
 
 ## XXX - boot mode - gEfiNt32PkgTokenSpaceGuid.PcdWinNtBootMode|1|UINT32|0x00001006
 

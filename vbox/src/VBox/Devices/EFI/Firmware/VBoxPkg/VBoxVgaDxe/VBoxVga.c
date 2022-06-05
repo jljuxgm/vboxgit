@@ -1,4 +1,4 @@
-/* $Id: VBoxVga.c 53144 2014-10-24 14:16:14Z vboxsync $ */
+/* $Id: VBoxVga.c 53336 2014-11-14 17:29:57Z vboxsync $ */
 /** @file
  * VBoxVga.c
  */
@@ -514,12 +514,10 @@ VBoxVgaControllerDriverStart (
                       &Private->Handle,
                       &gEfiGraphicsOutputProtocolGuid,
                       &Private->GraphicsOutput,
-#if 0
                       &gEfiEdidDiscoveredProtocolGuid,
                       &Private->EdidDiscovered,
                       &gEfiEdidActiveProtocolGuid,
                       &Private->EdidActive,
-#endif
                       NULL
                       );
     }
@@ -1062,7 +1060,6 @@ InitializeVBoxVga (
              );
   ASSERT_EFI_ERROR (Status);
 
-#if 0
   //
   // Install EFI Driver Supported EFI Version Protocol required for
   // EFI drivers that are on PCI and other plug in cards.
@@ -1072,18 +1069,11 @@ InitializeVBoxVga (
                   &ImageHandle,
                   &gEfiDriverSupportedEfiVersionProtocolGuid,
                   &gVBoxVgaDriverSupportedEfiVersion,
+                  &gEfiAppleFrameBufferInfoGuid,
+                  &gAppleFrameBufferInfo,
                   NULL
                   );
   ASSERT_EFI_ERROR (Status);
-#endif
-  Status = gBS->InstallMultipleProtocolInterfaces (
-      &ImageHandle,
-      &gEfiAppleFrameBufferInfoGuid,
-      &gAppleFrameBufferInfo,
-      NULL
-                                                   );
-  ASSERT_EFI_ERROR (Status);
-
 
   return Status;
 }
