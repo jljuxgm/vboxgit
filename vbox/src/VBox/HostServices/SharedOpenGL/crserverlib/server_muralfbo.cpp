@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.cpp 50394 2014-02-10 15:33:47Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 50625 2014-02-27 10:34:19Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -194,7 +194,6 @@ static int crServerRedirMuralDbSyncFb(CRMuralInfo *mural, HCR_FRAMEBUFFER hFb, C
         for (uint32_t i = 0; i < mural->cBuffers; ++i)
         {
             VBOXVR_TEXTURE Tex;
-            int rc;
             Tex.width = mural->width;
             Tex.height = mural->height;
             Tex.hwid = mural->aidColorTexs[i];
