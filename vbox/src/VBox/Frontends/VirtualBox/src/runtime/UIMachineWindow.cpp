@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 52298 2014-08-06 16:37:41Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 52705 2014-09-11 15:12:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -207,6 +207,13 @@ CSession& UIMachineWindow::session() const
 CMachine UIMachineWindow::machine() const
 {
     return session().GetMachine();
+}
+
+void UIMachineWindow::adjustMachineViewSize()
+{
+    /* By default, the only thing we need is to
+     * adjust guest-screen size if necessary: */
+    machineView()->adjustGuestScreenSize();
 }
 
 #ifndef VBOX_WITH_TRANSLUCENT_SEAMLESS

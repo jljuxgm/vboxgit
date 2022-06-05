@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52686 2014-09-10 18:16:52Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 52705 2014-09-11 15:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -270,11 +270,12 @@ UIMachineWindow* UIMachineLogic::activeMachineWindow() const
     return mainMachineWindow();
 }
 
-/** Adjusts guest screen size for each the machine-window we have. */
-void UIMachineLogic::maybeAdjustGuestScreenSize()
+void UIMachineLogic::adjustMachineWindowsGeometry()
 {
+    /* By default, the only thing we need is to
+     * adjust machine-view size(s) if necessary: */
     foreach(UIMachineWindow *pMachineWindow, machineWindows())
-        pMachineWindow->machineView()->maybeAdjustGuestScreenSize();
+        pMachineWindow->adjustMachineViewSize();
 }
 
 #ifdef Q_WS_MAC

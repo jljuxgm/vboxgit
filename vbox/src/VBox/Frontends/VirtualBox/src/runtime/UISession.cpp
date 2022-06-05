@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 52645 2014-09-08 11:42:02Z vboxsync $ */
+/* $Id: UISession.cpp 52705 2014-09-11 15:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -281,8 +281,8 @@ void UISession::powerUp()
     if (isSaved())
     {
         msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_state_restore_90px.png", 0, 0);
-        /* After restoring from 'saved' state, guest screen size should be adjusted: */
-        machineLogic()->maybeAdjustGuestScreenSize();
+        /* After restoring from 'saved' state, machine-window(s) geometry should be adjusted: */
+        machineLogic()->adjustMachineWindowsGeometry();
     }
     else
         msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_start_90px.png");

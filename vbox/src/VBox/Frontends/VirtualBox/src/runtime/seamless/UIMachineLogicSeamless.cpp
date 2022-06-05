@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 52478 2014-08-22 15:21:15Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 52705 2014-09-11 15:12:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -84,10 +84,9 @@ bool UIMachineLogicSeamless::checkAvailability()
     return true;
 }
 
-/** Adjusts guest screen count/size for the machine-logic we have. */
-void UIMachineLogicSeamless::maybeAdjustGuestScreenSize()
+void UIMachineLogicSeamless::adjustMachineWindowsGeometry()
 {
-    LogRel(("UIMachineLogicSeamless::maybeAdjustGuestScreenSize"));
+    LogRel(("UIMachineLogicSeamless::adjustMachineWindowsGeometry\n"));
 
     /* Rebuild multi-screen layout: */
     m_pScreenLayout->rebuild();
@@ -143,14 +142,14 @@ void UIMachineLogicSeamless::sltMachineStateChanged()
     /* If machine-state changed from 'paused' to 'running': */
     if (uisession()->isRunning() && uisession()->wasPaused())
     {
-        LogRelFlow(("UIMachineLogicSeamless: "
-                    "Machine-state changed from 'paused' to 'running': "
-                    "Updating screen-layout...\n"));
+        LogRel(("UIMachineLogicSeamless::sltMachineStateChanged:"
+                "Machine-state changed from 'paused' to 'running': "
+                "Adjust machine-window geometry...\n"));
 
         /* Make sure further code will be called just once: */
         uisession()->forgetPreviousMachineState();
-        /* Adjust guest-screen size if necessary: */
-        maybeAdjustGuestScreenSize();
+        /* Adjust machine-window geometry if necessary: */
+        adjustMachineWindowsGeometry();
     }
 }
 

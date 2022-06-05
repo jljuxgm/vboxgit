@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 49322 2013-10-29 15:33:56Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 52705 2014-09-11 15:12:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -71,7 +71,7 @@ UIMachineViewSeamless::~UIMachineViewSeamless()
 
 void UIMachineViewSeamless::sltAdditionsStateChanged()
 {
-    maybeAdjustGuestScreenSize();
+    adjustGuestScreenSize();
 }
 
 void UIMachineViewSeamless::sltHandleSetVisibleRegion(QRegion region)
@@ -153,10 +153,9 @@ void UIMachineViewSeamless::cleanupSeamless()
         session().GetConsole().GetDisplay().SetSeamlessMode(false);
 }
 
-/** Adjusts guest screen size to correspond current <i>working area</i> size. */
-void UIMachineViewSeamless::maybeAdjustGuestScreenSize()
+void UIMachineViewSeamless::adjustGuestScreenSize()
 {
-    /* Check if we should adjust guest to new size: */
+    /* Check if we should adjust guest-screen to new size: */
     if (frameBuffer()->isAutoEnabled() ||
         (int)frameBuffer()->width() != workingArea().size().width() ||
         (int)frameBuffer()->height() != workingArea().size().height())
