@@ -1,4 +1,4 @@
-/* $Id: Performance.h 45051 2013-03-15 15:34:54Z vboxsync $ */
+/* $Id: Performance.h 48013 2013-08-23 08:58:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -198,7 +198,7 @@ namespace pm
         virtual ~CollectorGuestRequest() {};
         void setGuest(CollectorGuest *aGuest) { mCGuest = aGuest; };
         CollectorGuest *getGuest() { return mCGuest; };
-        virtual int execute() = 0;
+        virtual HRESULT execute() = 0;
 
         virtual void debugPrint(void *aObject, const char *aFunction, const char *aText) = 0;
     protected:
@@ -211,7 +211,7 @@ namespace pm
     public:
         CGRQEnable(ULONG aMask)
             : mMask(aMask) {};
-        int execute();
+        HRESULT execute();
 
         void debugPrint(void *aObject, const char *aFunction, const char *aText);
     private:
@@ -223,7 +223,7 @@ namespace pm
     public:
         CGRQDisable(ULONG aMask)
             : mMask(aMask) {};
-        int execute();
+        HRESULT execute();
 
         void debugPrint(void *aObject, const char *aFunction, const char *aText);
     private:
@@ -234,7 +234,7 @@ namespace pm
     {
     public:
         CGRQAbort() {};
-        int execute();
+        HRESULT execute();
 
         void debugPrint(void *aObject, const char *aFunction, const char *aText);
     };
@@ -279,7 +279,7 @@ namespace pm
         int disable(ULONG mask);
 
         int enqueueRequest(CollectorGuestRequest *aRequest);
-        int enableInternal(ULONG mask);
+        HRESULT enableInternal(ULONG mask);
         int disableInternal(ULONG mask);
 
         const com::Utf8Str& getVMName() const { return mMachineName; };
