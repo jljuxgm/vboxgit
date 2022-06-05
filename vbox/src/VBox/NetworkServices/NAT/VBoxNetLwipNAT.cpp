@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49124 2013-10-15 23:04:55Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49125 2013-10-15 23:08:23Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -300,7 +300,7 @@ STDMETHODIMP VBoxNetLwipNAT::HandleEvent(VBoxEventType_T aEventType,
                 goto port_forward_done;
             }
 
-	    r.Pfr.fPfrIPv6 = fIPv6FW;
+            r.Pfr.fPfrIPv6 = fIPv6FW;
 
             switch (proto)
             {
