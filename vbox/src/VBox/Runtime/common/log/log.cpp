@@ -1,4 +1,4 @@
-/* $Id: log.cpp 49938 2013-12-16 17:13:59Z vboxsync $ */
+/* $Id: log.cpp 49939 2013-12-16 17:33:04Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2626,7 +2626,7 @@ static int rtlogFileOpen(PRTLOGGER pLogger, char *pszErrorMsg, size_t cchErrorMs
         fOpen |= RTFILE_O_WRITE_THROUGH;
 
     int rc;
-    int cBackoff = 0;
+    unsigned cBackoff = 0;
     do
     {
         rc = RTFileOpen(&pLogger->pInt->hFile, pLogger->pInt->szFilename, fOpen);
@@ -2734,7 +2734,7 @@ static void rtlogRotate(PRTLOGGER pLogger, uint32_t uTimeSlot, bool fFirst)
 
 
             int rc;
-            int cBackoff = 0;
+            unsigned cBackoff = 0;
             do
             {
 	        rc = RTFileRename(szOldName, szNewName, RTFILEMOVE_FLAGS_REPLACE);
