@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 50686 2014-03-04 19:21:18Z vboxsync $ */
+/* $Id: DevIchHda.cpp 51516 2014-06-03 16:01:47Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3220,7 +3220,7 @@ static DECLCALLBACK(int) hdaConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     rc = PDMDevHlpPCIRegisterMsi(pDevIns, &MsiReg);
     if (RT_FAILURE(rc))
     {
-        LogRel(("Chipset cannot do MSI: %Rrc\n", rc));
+        /* That's OK, we can work without MSI */
         PCIDevSetCapabilityList(&pThis->PciDev, 0x50);
     }
 #endif

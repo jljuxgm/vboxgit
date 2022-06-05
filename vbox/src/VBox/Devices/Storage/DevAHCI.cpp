@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 51409 2014-05-26 20:29:00Z vboxsync $ */
+/* $Id: DevAHCI.cpp 51516 2014-06-03 16:01:47Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -8217,7 +8217,6 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     rc = PDMDevHlpPCIRegisterMsi(pDevIns, &MsiReg);
     if (RT_FAILURE(rc))
     {
-        LogRel(("Chipset cannot do MSI: %Rrc\n", rc));
         PCIDevSetCapabilityList(&pThis->dev, 0x70);
         /* That's OK, we can work without MSI */
     }

@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 46265 2013-05-25 17:51:06Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 51516 2014-06-03 16:01:47Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5411,7 +5411,6 @@ static DECLCALLBACK(int) lsilogicR3Construct(PPDMDEVINS pDevIns, int iInstance, 
     rc = PDMDevHlpPCIRegisterMsi(pDevIns, &MsiReg);
     if (RT_FAILURE (rc))
     {
-        LogRel(("Chipset cannot do MSI: %Rrc\n", rc));
         /* That's OK, we can work without MSI */
         PCIDevSetCapabilityList(&pThis->PciDev, 0x0);
     }
