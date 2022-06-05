@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 49983 2013-12-19 12:23:17Z vboxsync $ */
+/* $Id: DevVGA.cpp 50079 2014-01-15 12:26:01Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2350,6 +2350,23 @@ static int vga_draw_graphic(PVGASTATE pThis, bool full_update, bool fFailOnResiz
             return rc;
         full_update = true;
     }
+
+    if (pThis->fRenderVRAM)
+    {
+        /* Do not update the destination buffer if it is not big enough.
+         * Can happen if the resize request was ignored by the driver.
+         */
+        if (   pThis->pDrv->cx != (uint32_t)width
+            || pThis->pDrv->cy != (uint32_t)height
+            || pThis->pDrv->cBits != (uint32_t)bits)
+        {
+            Log(("Framebuffer mismatch: vga %dx%d@%d, drv %dx%d@%d!!!\n",
+                 width, height, bits,
+                 pThis->pDrv->cx, pThis->pDrv->cy, pThis->pDrv->cBits));
+            return VINF_SUCCESS;
+        }
+    }
+
     vga_draw_line = vga_draw_line_table[v * 4 + get_depth_index(pThis->pDrv->cBits)];
 
     if (pThis->cursor_invalidate)
