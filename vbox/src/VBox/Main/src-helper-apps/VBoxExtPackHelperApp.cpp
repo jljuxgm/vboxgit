@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 51445 2014-05-28 12:25:36Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 51971 2014-07-10 13:13:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1786,6 +1786,9 @@ int main(int argc, char **argv)
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 
+#ifdef RT_OS_WINDOWS
+    SUPR3InitEx(false /*fUnrestricted*/, NULL); /* Ignore return code, we only need the image verifier bits to work. */
+#endif
     RTERRINFOSTATIC ErrInfo;
     RTErrInfoInitStatic(&ErrInfo);
     rc = SUPR3HardenedVerifySelf(argv[0], true /*fInternal*/, &ErrInfo.Core);
