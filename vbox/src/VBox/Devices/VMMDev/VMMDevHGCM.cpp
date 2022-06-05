@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 50891 2014-03-26 13:54:05Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 50982 2014-04-07 09:47:28Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -805,14 +805,12 @@ int vmmdevHGCMCall (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, uint32_t cbHGCMCal
         return rc;
     }
 
-    PVBOXHGCMCMD pCmd = (PVBOXHGCMCMD)RTMemAlloc (cbCmdSize);
+    PVBOXHGCMCMD pCmd = (PVBOXHGCMCMD)RTMemAllocZ(cbCmdSize);
 
     if (pCmd == NULL)
     {
         return VERR_NO_MEMORY;
     }
-
-    memset (pCmd, 0, sizeof (*pCmd));
 
     pCmd->paHostParms = NULL;
     pCmd->cLinPtrs    = cLinPtrs;
@@ -820,8 +818,8 @@ int vmmdevHGCMCall (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, uint32_t cbHGCMCal
 
     if (cLinPtrs > 0)
     {
-        pCmd->paLinPtrs = (VBOXHGCMLINPTR *)RTMemAlloc (  sizeof (VBOXHGCMLINPTR) * cLinPtrs
-                                                          + sizeof (RTGCPHYS) * cLinPtrPages);
+        pCmd->paLinPtrs = (VBOXHGCMLINPTR *)RTMemAllocZ(  sizeof (VBOXHGCMLINPTR) * cLinPtrs
+                                                        + sizeof (RTGCPHYS) * cLinPtrPages);
 
         if (pCmd->paLinPtrs == NULL)
         {
