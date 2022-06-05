@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 49319 2013-10-29 11:13:53Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 49500 2013-11-15 12:52:19Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -349,7 +349,7 @@ static void suplibHardenedPrintStrN(const char *pch, size_t cch)
     DWORD cbWrittenIgn;
     WriteFile(GetStdHandle(STD_ERROR_HANDLE), pch, (DWORD)cch, &cbWrittenIgn, NULL);
 #else
-    write(2, pch, cch);
+    (void)write(2, pch, cch);
 #endif
 }
 
