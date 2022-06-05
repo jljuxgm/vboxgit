@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 48884 2013-10-04 10:54:10Z vboxsync $ */
+/* $Id: HM.cpp 48998 2013-10-09 11:41:26Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2938,7 +2938,7 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
 
             case VERR_HM_UNSUPPORTED_CPU_FEATURE_COMBO:
             case VERR_VMX_INVALID_GUEST_STATE:
-            case VERR_VMX_UNEXPECTED_EXIT_CODE:
+            case VERR_VMX_UNEXPECTED_EXIT:
             case VERR_SVM_UNKNOWN_EXIT:
             case VERR_SVM_UNEXPECTED_EXIT:
             case VERR_SVM_UNEXPECTED_PATCH_TYPE:
