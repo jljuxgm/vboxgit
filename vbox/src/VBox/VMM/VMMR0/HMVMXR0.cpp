@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49579 2013-11-20 12:08:05Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49580 2013-11-20 12:16:14Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7886,8 +7886,11 @@ static void hmR0VmxPreRunGuestCommitted(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCt
      * The host MSR values the very first time around won't be updated, so we need to
      * fill those values in. Subsequently, it's updated as part of the host state.
      */
-    if (!pVCpu->hm.s.vmx.fUpdatedHostMsrs)
+    if (   !pVCpu->hm.s.vmx.fUpdatedHostMsrs
+        && pVCpu->hm.s.vmx.cMsrs > 0)
+    {
         VMCPU_HMCF_SET(pVCpu, HM_CHANGED_HOST_CONTEXT);
+    }
 
     /*
      * Load the host state bits as we may've been preempted (only happens when
@@ -7899,12 +7902,6 @@ static void hmR0VmxPreRunGuestCommitted(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCt
         int rc = hmR0VmxSaveHostState(pVM, pVCpu);
         AssertRC(rc);
         STAM_COUNTER_INC(&pVCpu->hm.s.StatPreemptSaveHostState);
-
-        /*
-         * Prevent unnecessary host-state updates in case fUpdatedHostMsrs remains false 
-         * throughout execution (e.g. if we are not swapping any MSRs)
-         */
-        pVCpu->hm.s.vmx.fUpdatedHostMsrs = true;
     }
     Assert(!VMCPU_HMCF_IS_PENDING(pVCpu, HM_CHANGED_HOST_CONTEXT));
 
