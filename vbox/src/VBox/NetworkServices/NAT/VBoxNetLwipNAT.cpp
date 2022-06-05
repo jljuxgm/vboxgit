@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49110 2013-10-15 08:56:52Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49112 2013-10-15 09:04:23Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1080,15 +1080,18 @@ int VBoxNetLwipNAT::parseOpt(int rc, const RTGETOPTUNION& Val)
 
 int VBoxNetLwipNAT::run()
 {
-
+    /* EventQueue processing from VBoxHeadless.cpp */
+    com::NativeEventQueue         *gEventQ = NULL;
+    gEventQ = com::NativeEventQueue::getMainEventQueue();
     while(true)
     {
-        RTSemEventWait(g_pLwipNat->hSemSVC, RT_INDEFINITE_WAIT);
+        /* XXX:todo: graceful termination */
+        gEventQ->processEventQueue(0);
+        gEventQ->processEventQueue(500);
     }
 
     vboxLwipCoreFinalize(VBoxNetLwipNAT::onLwipTcpIpFini, this);
 
-    /* @todo: clean up of port-forward rules */
     m_vecPortForwardRule4.clear();
     m_vecPortForwardRule6.clear();
 
