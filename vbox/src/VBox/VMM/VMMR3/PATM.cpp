@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 46493 2013-06-11 13:34:40Z vboxsync $ */
+/* $Id: PATM.cpp 50575 2014-02-25 13:07:16Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -145,10 +145,7 @@ VMMR3_INT_DECL(int) PATMR3Init(PVM pVM)
     if (HMIsEnabled(pVM))
     {
         pVM->fPATMEnabled = false;
-        return SSMR3RegisterInternal(pVM, "PATM", 0, PATM_SSM_VERSION, 0,
-                                     NULL, NULL, NULL,
-                                     NULL, NULL, NULL,
-                                     NULL, patmR3LoadDummy, NULL);
+        return SSMR3RegisterStub(pVM, "PATM", 0);
     }
 
     /*
