@@ -1,10 +1,10 @@
-/* $Id: timer-r0drv-linux.c 52618 2014-09-05 12:07:29Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 53019 2014-10-10 09:22:50Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1589,7 +1589,7 @@ RTDECL(uint32_t) RTTimerGetSystemGranularity(void)
         return Ts.tv_nsec;
     }
 #endif
-    return 1000000000 / HZ; /* ns */
+    return RT_NS_1SEC / HZ; /* ns */
 }
 RT_EXPORT_SYMBOL(RTTimerGetSystemGranularity);
 
