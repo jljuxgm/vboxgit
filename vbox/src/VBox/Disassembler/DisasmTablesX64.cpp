@@ -1,4 +1,4 @@
-/* $Id: DisasmTablesX64.cpp 46949 2013-07-03 19:22:34Z vboxsync $ */
+/* $Id: DisasmTablesX64.cpp 53094 2014-10-20 16:04:09Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for AMD64 (64-bit mode).
  */
@@ -284,8 +284,8 @@ const DISOPCODE g_aOneByteMapX64[256] =
     OP("Shift Grp2 %Ev,%Ib", IDX_ParseShiftGrp2, 0,                 0,          OP_SHIFT_GRP2,  OP_PARM_Ev,      OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("retn %Iw",           IDX_ParseImmUshort, 0,                 0,          OP_RETN,        OP_PARM_Iw,      OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_CONTROLFLOW | DISOPTYPE_UNCOND_CONTROLFLOW | DISOPTYPE_FORCED_64_OP_SIZE),
     OP("retn",               0,                  0,                 0,          OP_RETN,        OP_PARM_NONE,    OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_CONTROLFLOW | DISOPTYPE_UNCOND_CONTROLFLOW | DISOPTYPE_FORCED_64_OP_SIZE),
-    INVALID_OPCODE,
-    INVALID_OPCODE,
+    OP("VEX 3-byte",         IDX_ParseVex3b,     0,                 0,          OP_VEX3B,       OP_PARM_NONE,    OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("VEX 2-byte",         IDX_ParseVex2b,     0,                 0,          OP_VEX2B,       OP_PARM_NONE,    OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     /* @todo these two are actually group11 */
     OP("mov %Eb,%Ib",        IDX_ParseModRM,     IDX_ParseImmByte,  0,          OP_MOV,         OP_PARM_Eb,      OP_PARM_Ib,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("mov %Ev,%Iz",        IDX_ParseModRM,     IDX_ParseImmZ,     0,          OP_MOV,         OP_PARM_Ev,      OP_PARM_Iz,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
