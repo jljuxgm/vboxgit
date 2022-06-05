@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
+/* $Id: DevAPIC.cpp 49437 2013-11-11 13:20:49Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  *
@@ -606,8 +606,6 @@ PDMBOTHCBDECL(void) apicSetBase(PPDMDEVINS pDevIns, VMCPUID idCpu, uint64_t val)
                 pApic->spurious_vec &= ~APIC_SV_ENABLE;
                 /* Clear any pending APIC interrupt action flag. */
                 apicCpuClearInterrupt(pDev, pApic);
-                /** @todo: why do we do that? */
-                pDev->CTX_SUFF(pApicHlp)->pfnChangeFeature(pDevIns, PDMAPICVERSION_NONE);
                 break;
             }
             case PDMAPICVERSION_APIC:
