@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50460 2014-02-14 09:46:58Z vboxsync $
+# $Id: Makefile.kmk 50515 2014-02-19 18:57:56Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1029,6 +1029,11 @@ VBoxSVC_VBOX_TRANSLATIONS = \
 
 VBoxC_VBOX_HEADERS = \
 	include/ConsoleImpl.h
+
+ifdef VBOX_WITH_GUEST_CONTROL
+VBoxC_VBOX_HEADERS += $(VBOX_MAIN_APIWRAPPER_INCS)
+endif # VBOX_WITH_GUEST_CONTROL
+
 VBoxC_VBOX_TRANSLATIONS = \
 	nls/VBoxC_de.ts
 
