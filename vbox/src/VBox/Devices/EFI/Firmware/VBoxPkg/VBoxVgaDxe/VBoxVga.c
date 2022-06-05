@@ -1,4 +1,4 @@
-/* $Id: VBoxVga.c 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: VBoxVga.c 49098 2013-10-15 01:30:53Z vboxsync $ */
 /** @file
  * VBoxVga.c
  */
@@ -997,6 +997,7 @@ InitializeGraphicsMode (
   ClearScreen (Private);
 }
 
+/** Aka know as AppleGraphInfoProtocolGuid in other sources. */
 #define EFI_UNKNOWN_2_PROTOCOL_GUID \
   { 0xE316E100, 0x0751, 0x4C49, {0x90, 0x56, 0x48, 0x6C, 0x7E, 0x47, 0x29, 0x03} }
 
