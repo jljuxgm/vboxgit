@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 48647 2013-09-24 08:30:29Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1016,6 +1016,12 @@ void UIKeyboardHandler::darwinGrabKeyboardEvents(bool fGrab)
         /* Disable mouse and keyboard event compression/delaying to make sure we *really* get all of the events. */
         ::CGSetLocalEventsSuppressionInterval(0.0);
         ::darwinSetMouseCoalescingEnabled(false);
+
+        /* Bring the caps lock state up to date, otherwise e.g. a later Shift
+         * key press will accidentally inject a CapsLock key press and release,
+         * see UIKeyboardHandler::darwinKeyboardEvent for the code handling
+         * modifier key state changes */
+        m_darwinKeyModifiers ^= (m_darwinKeyModifiers ^ ::GetCurrentEventKeyModifiers()) & alphaLock;
 
         /* Register the event callback/hook and grab the keyboard. */
         UICocoaApplication::instance()->registerForNativeEvents(RT_BIT_32(10) | RT_BIT_32(11) | RT_BIT_32(12) /* NSKeyDown  | NSKeyUp | | NSFlagsChanged */,
