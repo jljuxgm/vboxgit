@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 51698 2014-06-23 16:54:17Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 51699 2014-06-23 16:55:42Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -566,8 +566,8 @@ static bool rtZipPkzipReaderScanEocd(const uint8_t *pu8Buf, size_t cb, int *piPo
 {
     if (cb < 4)
         return false;
-    int i;
-    for (i = cb - 4; i >= 0; --i)
+    ssize_t i;
+    for (i = (ssize_t)cb - 4; i >= 0; --i)
         if (*(uint32_t*)(pu8Buf + i) == RTZIPPKZIPENDOFCENTRDIRREC_MAGIC)
         {
             *piPos = i;
