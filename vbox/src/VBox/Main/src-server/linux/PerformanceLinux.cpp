@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 48015 2013-08-23 09:02:51Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 48055 2013-08-26 10:30:35Z vboxsync $ */
 
 /** @file
  *
@@ -516,7 +516,8 @@ void CollectorLinux::addRaidDisks(const char *pcszDevice, DiskList& listDisks)
 void CollectorLinux::addVolumeDependencies(const char *pcszVolume, DiskList& listDisks)
 {
     char szVolInfo[RTPATH_MAX];
-    int rc = RTPathExecDir(szVolInfo, sizeof(szVolInfo) - sizeof("/" VBOXVOLINFO_NAME " ") - strlen(pcszVolume));
+    int rc = RTPathAppPrivateArch(szVolInfo, 
+                                  sizeof(szVolInfo) - sizeof("/" VBOXVOLINFO_NAME " ") - strlen(pcszVolume));
     if (RT_FAILURE(rc))
     {
         LogRel(("VolInfo: Failed to get program path, rc=%Rrc\n", rc));
