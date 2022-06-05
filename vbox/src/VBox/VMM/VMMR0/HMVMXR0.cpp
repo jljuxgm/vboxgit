@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49283 2013-10-25 08:49:06Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49284 2013-10-25 09:45:30Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3709,13 +3709,15 @@ static int hmR0VmxLoadSharedDebugState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
             }
             else
 #endif
-            if (CPUMIsGuestDebugStateActive(pVCpu))
+            if (!CPUMIsGuestDebugStateActive(pVCpu))
             {
                 CPUMR0LoadGuestDebugState(pVCpu, true /* include DR6 */);
                 Assert(CPUMIsGuestDebugStateActive(pVCpu));
                 Assert(!CPUMIsHyperDebugStateActive(pVCpu));
                 STAM_COUNTER_INC(&pVCpu->hm.s.StatDRxArmed);
             }
+            Assert(!fInterceptDB);
+            Assert(!fInterceptMovDRx);
         }
         /*
          * If no debugging enabled, we'll lazy load DR0-3.  Unlike on AMD-V, we
