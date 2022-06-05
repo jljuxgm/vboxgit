@@ -1,4 +1,4 @@
-/* $Id: WinKeyboard.cpp 53221 2014-11-05 09:09:40Z vboxsync $ */
+/* $Id: WinKeyboard.cpp 53319 2014-11-13 11:18:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Windows keyboard handling..
  */
@@ -271,7 +271,9 @@ bool WinAltGrMonitor::isCurrentEventDefinitelyFake(unsigned iDownScanCode,
     if (!PeekMessage(&peekMsg, NULL, WM_KEYFIRST, WM_KEYLAST, PM_NOREMOVE))
         return false;
 
-		if (   fKeyDown
+	if (messageTime != peekMsg.time)
+	    return false;
+	if (   fKeyDown
         && (peekMsg.message != WM_KEYDOWN && peekMsg.message != WM_SYSKEYDOWN))
         return false;
     if (   !fKeyDown
