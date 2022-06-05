@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 52403 2014-08-18 20:35:32Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 52404 2014-08-19 00:52:17Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -68,6 +68,11 @@
  * use by current windows version is SHA-512, we double this and hope it's
  * enough a good while. */
 #define SUPHARDNTVI_MAX_CAT_HASH_SIZE   128
+
+
+#if defined(VBOX_PERMIT_EVEN_MORE) && !defined(VBOX_PERMIT_MORE)
+# error "VBOX_PERMIT_EVEN_MORE without VBOX_PERMIT_MORE!"
+#endif
 
 
 /*******************************************************************************
@@ -727,12 +732,12 @@ static int supHardNtViCheckIfNotSignedOk(RTLDRMOD hLdrMod, PCRTUTF16 pwszName, u
         /* Check that this DLL isn't supposed to be signed on this windows
            version.  If it should, it's likely to be a fake. */
         /** @todo list of signed dlls for various windows versions.  */
-SUP_DPRINTF(("supHardNtViCheckIfNotSignedOk: VINF_LDRVI_NOT_SIGNED\n"));
         return VINF_LDRVI_NOT_SIGNED;
 #else
         return rc;
 #endif /* IN_RING0 */
     }
+
 
 #ifndef IN_RING0
     /*
@@ -752,12 +757,14 @@ SUP_DPRINTF(("supHardNtViCheckIfNotSignedOk: VINF_LDRVI_NOT_SIGNED\n"));
         if (cSlashes != 1)
             return rc;
 
-        if (   (fFlags & SUPHNTVI_F_TRUSTED_INSTALLER_OWNER)
-            && supHardNtViCheckIsOwnedByTrustedInstaller(hFile, pwszName))
-            return VINF_LDRVI_NOT_SIGNED;
-        return rc;
+        /* Must be owned by trusted installer. */
+        if (   !(fFlags & SUPHNTVI_F_TRUSTED_INSTALLER_OWNER)
+            && !supHardNtViCheckIsOwnedByTrustedInstaller(hFile, pwszName))
+            return rc;
+        return VINF_LDRVI_NOT_SIGNED;
     }
 #endif /* !IN_RING0 */
+
 
 #ifdef VBOX_PERMIT_MORE
     /*
@@ -772,26 +779,30 @@ SUP_DPRINTF(("supHardNtViCheckIfNotSignedOk: VINF_LDRVI_NOT_SIGNED\n"));
             && !supHardNtViCheckIsOwnedByTrustedInstaller(hFile, pwszName))
             return rc;
 
+# ifndef VBOX_PERMIT_EVEN_MORE
         if (supHardViUtf16PathIsEqual(pwsz, "acres.dll"))
             return VINF_LDRVI_NOT_SIGNED;
 
-# ifdef RT_ARCH_AMD64
+#  ifdef RT_ARCH_AMD64
         if (supHardViUtf16PathIsEqual(pwsz, "AppPatch64\\AcGenral.dll"))
             return VINF_LDRVI_NOT_SIGNED;
-# elif defined(RT_ARCH_X86)
+#  elif defined(RT_ARCH_X86)
         if (supHardViUtf16PathIsEqual(pwsz, "AcGenral.dll"))
             return VINF_LDRVI_NOT_SIGNED;
-# endif
+#  endif
+# endif /* !VBOX_PERMIT_EVEN_MORE */
 
-# ifndef IN_RING0
-        return VINF_LDRVI_NOT_SIGNED;
-# else
+# ifdef IN_RING0
         return rc;
+# else
+        return VINF_LDRVI_NOT_SIGNED;
 # endif
     }
 #endif /* VBOX_PERMIT_MORE */
 
-#if !defined(IN_RING0) && defined(VBOX_PERMIT_MORE)
+
+#ifndef IN_RING0
+# if defined(VBOX_PERMIT_MORE) && !defined(VBOX_PERMIT_EVEN_MORE)
     /*
      * Program files and common files.
      * Permit anything that's signed and correctly installed.
@@ -812,13 +823,26 @@ SUP_DPRINTF(("supHardNtViCheckIfNotSignedOk: VINF_LDRVI_NOT_SIGNED\n"));
 # endif
        )
     {
-        if (   (fFlags & SUPHNTVI_F_TRUSTED_INSTALLER_OWNER)
-            && supHardNtViCheckIsOwnedByTrustedInstaller(hFile, pwszName))
-            return VINF_LDRVI_NOT_SIGNED;
-        return rc;
+        if (   !(fFlags & SUPHNTVI_F_TRUSTED_INSTALLER_OWNER)
+            && !supHardNtViCheckIsOwnedByTrustedInstaller(hFile, pwszName))
+            return rc;
+        return VINF_LDRVI_NOT_SIGNED;
     }
-#endif /* !IN_RING0 && VBOX_PERMIT_MORE*/
 
+# elif defined(VBOX_PERMIT_MORE) && defined(VBOX_PERMIT_EVEN_MORE)
+    /*
+     * Anything that's owned by the trusted installer.
+     */
+    if (   (fFlags & SUPHNTVI_F_TRUSTED_INSTALLER_OWNER)
+        || supHardNtViCheckIsOwnedByTrustedInstaller(hFile, pwszName))
+        return VINF_LDRVI_NOT_SIGNED;
+
+# endif
+#endif /* !IN_RING0 */
+
+    /*
+     * Not permitted.
+     */
     return rc;
 }
 
