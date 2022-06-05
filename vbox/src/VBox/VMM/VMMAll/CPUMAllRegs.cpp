@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 48695 2013-09-26 00:20:56Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 48697 2013-09-26 01:02:55Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1176,7 +1176,7 @@ static int cpumQueryGuestMsrInt(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
                 {
                     /** @todo restrict this to nehalem.  */
                     PVM pVM = pVCpu->CTX_SUFF(pVM); /* Note! Not sweating the 4-bit core count limit on westmere. */
-                    *puValue = pVM->cCpus & 0xffff | ((pVM->cCpus & 0xffff) << 16);
+                    *puValue = (pVM->cCpus & 0xffff) | ((pVM->cCpus & 0xffff) << 16);
                     break;
                 }
 
