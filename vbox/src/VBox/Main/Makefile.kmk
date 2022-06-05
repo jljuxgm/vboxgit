@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48431 2013-09-11 14:08:36Z vboxsync $
+# $Id: Makefile.kmk 48459 2013-09-12 16:40:18Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -160,6 +160,7 @@ docs:                $(PATH_TARGET)/docs.Main
 endif
 
 
+ifndef VBOX_ONLY_SDK
 #
 # Generate library with API class wrappers from the XIDL file.
 #
@@ -188,6 +189,8 @@ LIBRARIES += VBoxAPIWrap-x86
 VBoxAPIWrap-x86_TEMPLATE = VBoxMainLib-x86
 VBoxAPIWrap-x86_EXTENDS  = VBoxAPIWrap
 endif
+
+endif # !VBOX_ONLY_SDK
 
 #
 # Some SDK bit.
