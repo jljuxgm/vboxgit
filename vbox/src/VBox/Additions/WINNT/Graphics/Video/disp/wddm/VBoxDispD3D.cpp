@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 52804 2014-09-22 08:29:46Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 53189 2014-11-04 10:23:26Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -523,7 +523,7 @@ static BOOLEAN vboxWddmDalCheckAdd(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_A
     }
     else
     {
-        Assert(pAlloc->fDirtyWrite == fWrite);
+        Assert(pAlloc->fDirtyWrite == fWrite || pAlloc->pRc->RcDesc.fFlags.SharedResource);
     }
     pAlloc->fDirtyWrite |= fWrite;
     pAlloc->fEverWritten |= fWrite;
