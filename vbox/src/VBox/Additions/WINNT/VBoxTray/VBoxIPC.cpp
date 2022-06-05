@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 47977 2013-08-21 16:37:27Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 49377 2013-11-04 07:23:53Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -385,7 +385,8 @@ static DECLCALLBACK(int) vboxIPCSessionThread(RTTHREAD hThread, void *pvSession)
         }
     }
 
-    LogRelFunc(("Session %p: Handler ended with rc=%Rrc\n", rc));
+    LogRelFunc(("Session %p: Handler ended with rc=%Rrc\n",
+                pThis, rc));
 
     /*
      * Clean up the session.
