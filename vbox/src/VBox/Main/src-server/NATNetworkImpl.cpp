@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 48460 2013-09-12 17:14:51Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 48522 2013-09-18 15:25:51Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -171,6 +171,7 @@ HRESULT NATNetwork::init(VirtualBox *aVirtualBox,
     m->fEnabled = data.fEnabled;
     m->fAdvertiseDefaultIPv6Route = data.fAdvertiseDefaultIPv6Route;
     m->fNeedDhcpServer = data.fNeedDhcpServer;
+    m->fIPv6Enabled = data.fIPv6;
 
     m->u32LoopbackIp6 = data.u32HostLoopback6Offset;
 
