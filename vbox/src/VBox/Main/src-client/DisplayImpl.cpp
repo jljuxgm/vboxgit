@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 49790 2013-12-05 13:08:04Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 50080 2014-01-15 12:27:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4035,20 +4035,6 @@ DECLCALLBACK(void) Display::displayVBVADisable(PPDMIDISPLAYCONNECTOR pInterface,
     vbvaSetMemoryFlagsHGSMI(uScreenId, 0, false, pFBInfo);
 
     pFBInfo->pVBVAHostFlags = NULL;
-
-    pFBInfo->u32Offset = 0; /* Not used in HGSMI. */
-    pFBInfo->u32MaxFramebufferSize = 0; /* Not used in HGSMI. */
-    pFBInfo->u32InformationSize = 0; /* Not used in HGSMI. */
-
-    pFBInfo->xOrigin = 0;
-    pFBInfo->yOrigin = 0;
-
-    pFBInfo->w = 0;
-    pFBInfo->h = 0;
-
-    pFBInfo->u16BitsPerPixel = 0;
-    pFBInfo->pu8FramebufferVRAM = NULL;
-    pFBInfo->u32LineSize = 0;
 }
 
 DECLCALLBACK(void) Display::displayVBVAUpdateBegin(PPDMIDISPLAYCONNECTOR pInterface, unsigned uScreenId)
