@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 50255 2014-01-28 13:10:13Z vboxsync $ */
+/* $Id: CPUM.cpp 50590 2014-02-25 18:51:23Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -987,6 +987,14 @@ static int cpumR3CpuIdInstallAndExplodeLeaves(PVM pVM, PCPUM pCPUM, PCPUMCPUIDLE
     rc = cpumR3CpuIdExplodeFeatures(pCPUM->GuestInfo.paCpuIdLeavesR3, pCPUM->GuestInfo.cCpuIdLeaves, &pCPUM->GuestFeatures);
     AssertLogRelRCReturn(rc, rc);
 
+    /*
+     * Adjust the scalable bus frequency according to the CPUID information
+     * we're now using.
+     */
+    if (CPUMMICROARCH_IS_INTEL_CORE7(pVM->cpum.s.GuestFeatures.enmMicroarch))
+        pCPUM->GuestInfo.uScalableBusFreq = pCPUM->GuestFeatures.enmMicroarch >= kCpumMicroarch_Intel_Core7_SandyBridge
+                                          ? UINT64_C(100000000)  /* 100MHz */
+                                          : UINT64_C(133333333); /* 133MHz */
 
     /*
      * Populate the legacy arrays.  Currently used for everything, later only
