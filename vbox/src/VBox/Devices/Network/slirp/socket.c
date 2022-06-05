@@ -1,4 +1,4 @@
-/* $Id: socket.c 52798 2014-09-21 21:19:38Z vboxsync $ */
+/* $Id: socket.c 53056 2014-10-14 15:21:09Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -925,7 +925,6 @@ sorecvfrom(PNATState pData, struct socket *so)
         else
         {
             m_freem(pData, m);
-            so->so_m = NULL;
 
             if (!soIgnorableErrorCode(errno))
             {
@@ -939,6 +938,7 @@ sorecvfrom(PNATState pData, struct socket *so)
 
                 Log2((" rx error, tx icmp ICMP_UNREACH:%i\n", code));
                 icmp_error(pData, so->so_m, ICMP_UNREACH, code, 0, strerror(errno));
+                so->so_m = NULL;
             }
         }
 
