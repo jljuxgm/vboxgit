@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB-solaris.c 52745 2014-09-15 12:15:17Z vboxsync $ */
+/* $Id: VBoxUSB-solaris.c 52746 2014-09-15 12:16:06Z vboxsync $ */
 /** @file
  * VirtualBox USB Client Driver, Solaris Hosts.
  */
@@ -28,6 +28,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_USB_DRV
+#define DEBUG_ramshankar
 #ifdef DEBUG_ramshankar
 # define LOG_ENABLED
 # define LOG_INSTANCE       RTLogRelDefaultInstance()
