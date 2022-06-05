@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 53226 2014-11-05 10:56:59Z vboxsync $ */
+/* $Id: SUPDrv.c 53228 2014-11-05 11:04:03Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -7448,7 +7448,7 @@ static void supdrvGipUpdate(PSUPDRVDEVEXT pDevExt, uint64_t u64NanoTS, uint64_t 
                 /** @todo r=ramshankar: Changing u32UpdateHz might screw up TSC frequency
                  *        calculation on non-invariant hosts if it changes the history decision
                  *        taken in supdrvGipDoUpdateCpu(). */
-                uint64_t u64Interval = u64Delta / UINT64_C(GIP_UPDATEHZ_RECALC_FREQ);
+                uint64_t u64Interval = u64Delta / GIP_UPDATEHZ_RECALC_FREQ;
                 ASMAtomicWriteU32(&pGip->u32UpdateHz, u32UpdateHz);
                 ASMAtomicWriteU32(&pGip->u32UpdateIntervalNS, (uint32_t)u64Interval);
             }
