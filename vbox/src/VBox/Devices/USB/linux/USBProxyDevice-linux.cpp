@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 52517 2014-08-28 15:18:46Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 52946 2014-10-05 14:31:20Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -1543,8 +1543,9 @@ static DECLCALLBACK(int) usbProxyLinuxUrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB 
         if (    errno == EINVAL
             &&  pUrb->cbData >= 8*_1K)
         {
+            rc = usbProxyLinuxUrbQueueSplit(pProxyDev, pUrbLnx, pUrb);
             RTCritSectLeave(&pDevLnx->CritSect);
-            return usbProxyLinuxUrbQueueSplit(pProxyDev, pUrbLnx, pUrb);
+            return rc;
         }
 
         Log(("usb-linux: Queue URB %p -> %d!!! type=%d ep=%#x buffer_length=%#x cTries=%d\n",
