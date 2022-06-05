@@ -1,4 +1,4 @@
-/* $Id: scsi.c 50176 2014-01-23 11:22:18Z vboxsync $ */
+/* $Id: scsi.c 52812 2014-09-22 10:05:12Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -511,7 +511,7 @@ void scsi_enumerate_attached_devices(uint16_t io_base)
                 else
                     bios_dsk->devices[hd_index].lchs.cylinders = (uint16_t)cylinders;
 
-                BX_INFO("SCSI %d-ID#%d: LCHS=%u/%u/%u %ld sectors\n", devcount_scsi,
+                BX_INFO("SCSI %d-ID#%d: LCHS=%u/%u/%u %lu sectors\n", devcount_scsi,
                         i, (uint16_t)cylinders, heads, sectors_per_track, sectors);
 
                 /* Write PCHS values. */
