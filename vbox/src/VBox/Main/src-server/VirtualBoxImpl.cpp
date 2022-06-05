@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 48804 2013-10-02 05:10:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 48817 2013-10-02 13:46:58Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3096,7 +3096,8 @@ void VirtualBox::onNATNetworkPortForward(IN_BSTR aNetworkName, BOOL create, BOOL
 
 void VirtualBox::onHostNameResolutionConfigurationChange()
 {
-    fireHostNameResolutionConfigurationChangeEvent(m->pEventSource);
+    if (m->pEventSource)
+        fireHostNameResolutionConfigurationChangeEvent(m->pEventSource);
 }
 
 
