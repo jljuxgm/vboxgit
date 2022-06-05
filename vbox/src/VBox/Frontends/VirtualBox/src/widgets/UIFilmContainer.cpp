@@ -1,4 +1,4 @@
-/* $Id: UIFilmContainer.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
+/* $Id: UIFilmContainer.cpp 48583 2013-09-20 12:57:03Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -140,7 +140,7 @@ void UIFilm::retranslateUi()
 {
     /* Translate check-box: */
     m_pCheckBox->setText(QApplication::translate("UIMachineSettingsDisplay", "Screen %1").arg(m_iScreenIndex + 1));
-    m_pCheckBox->setToolTip(QApplication::translate("UIMachineSettingsDisplay", "Enable video recording for screen %1.").arg(m_iScreenIndex + 1));
+    m_pCheckBox->setWhatsThis(QApplication::translate("UIMachineSettingsDisplay", "Enable video recording for screen %1.").arg(m_iScreenIndex + 1));
 }
 
 void UIFilm::prepare()
