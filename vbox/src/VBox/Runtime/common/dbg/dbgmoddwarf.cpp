@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 51519 2014-06-04 05:09:03Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 52835 2014-09-24 12:59:20Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -2938,6 +2938,7 @@ static PCRTDWARFABBREV rtDwarfAbbrev_LookupMiss(PRTDBGMODDWARF pThis, uint32_t u
             if (   pRet != NULL
                 && uCurCode >= pThis->cCachedAbbrevsAlloced)
                 break;
+            uPrevCode = uCurCode;
         }
     }
     else
