@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51802 2014-07-02 09:27:46Z vboxsync $
+# $Id: Config.kmk 51805 2014-07-02 11:32:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -739,9 +739,7 @@ endif
 ## @{
 # Enables hardening.
 # Most developers will want to disable this in their LocalConfig.kmk.
-ifn1of ($(KBUILD_TARGET), win)
 VBOX_WITH_HARDENING = 1
-endif
 # Where the application files are (going to be) installed.
 #VBOX_PATH_APP_PRIVATE       = /usr/lib/virtualbox
 ifdef VBOX_WITH_HARDENING
@@ -5699,7 +5697,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51802 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51805 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
