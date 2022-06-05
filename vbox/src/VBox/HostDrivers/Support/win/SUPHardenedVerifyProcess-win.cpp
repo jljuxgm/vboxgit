@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 52529 2014-08-29 15:03:07Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 52634 2014-09-06 20:21:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1576,7 +1576,8 @@ DECLHIDDEN(int) supHardNtLdrCacheEntryVerify(PSUPHNTLDRCACHEENTRY pEntry, PCRTUT
     int rc = VINF_SUCCESS;
     if (!pEntry->fVerified)
     {
-        rc = supHardenedWinVerifyImageByLdrMod(pEntry->hLdrMod, pwszName, pEntry->pNtViRdr, NULL /*pfWinVerifyTrust*/, pErrInfo);
+        rc = supHardenedWinVerifyImageByLdrMod(pEntry->hLdrMod, pwszName, pEntry->pNtViRdr,
+                                               false /*fAvoidWinVerifyTrust*/, NULL /*pfWinVerifyTrust*/, pErrInfo);
         pEntry->fVerified = RT_SUCCESS(rc);
     }
     return rc;

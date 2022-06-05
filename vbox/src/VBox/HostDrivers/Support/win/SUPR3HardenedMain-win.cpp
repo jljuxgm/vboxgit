@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52633 2014-09-06 17:46:52Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52634 2014-09-06 20:21:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -1435,7 +1435,7 @@ static NTSTATUS supR3HardenedScreenImage(HANDLE hFile, bool fImage, PULONG pfAcc
 
     int  rc;
     bool fWinVerifyTrust = false;
-    rc = supHardenedWinVerifyImageByHandle(hMyFile, uBuf.UniStr.Buffer, fFlags, &fWinVerifyTrust, &ErrInfo);
+    rc = supHardenedWinVerifyImageByHandle(hMyFile, uBuf.UniStr.Buffer, fFlags, fAvoidWinVerifyTrust, &fWinVerifyTrust, &ErrInfo);
     if (RT_FAILURE(rc))
     {
         supR3HardenedError(VINF_SUCCESS, false,

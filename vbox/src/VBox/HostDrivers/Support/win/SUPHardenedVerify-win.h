@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 52627 2014-09-05 20:18:13Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52634 2014-09-06 20:21:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -90,11 +90,11 @@ DECLHIDDEN(int)  supHardNtViRdrCreate(HANDLE hFile, PCRTUTF16 pwszName, uint32_t
 DECLHIDDEN(bool) supHardenedWinIsWinVerifyTrustCallable(void);
 DECLHIDDEN(int)  supHardenedWinVerifyImageTrust(HANDLE hFile, PCRTUTF16 pwszName, uint32_t fFlags, int rc,
                                                 bool *pfWinVerifyTrust, PRTERRINFO pErrInfo);
-DECLHIDDEN(int)  supHardenedWinVerifyImageByHandle(HANDLE hFile, PCRTUTF16 pwszName, uint32_t fFlags,
+DECLHIDDEN(int)  supHardenedWinVerifyImageByHandle(HANDLE hFile, PCRTUTF16 pwszName, uint32_t fFlags, bool fAvoidWinVerifyTrust,
                                                    bool *pfWinVerifyTrust, PRTERRINFO pErrInfo);
 DECLHIDDEN(int)  supHardenedWinVerifyImageByHandleNoName(HANDLE hFile, uint32_t fFlags, PRTERRINFO pErrInfo);
 DECLHIDDEN(int)  supHardenedWinVerifyImageByLdrMod(RTLDRMOD hLdrMod, PCRTUTF16 pwszName, PSUPHNTVIRDR pNtViRdr,
-                                                   bool *pfWinVerifyTrust, PRTERRINFO pErrInfo);
+                                                   bool fAvoidWinVerifyTrust, bool *pfWinVerifyTrust, PRTERRINFO pErrInfo);
 /** @name SUPHNTVI_F_XXX - Flags for supHardenedWinVerifyImageByHandle.
  * @{ */
 /** The signing certificate must be the same as the one the VirtualBox build
