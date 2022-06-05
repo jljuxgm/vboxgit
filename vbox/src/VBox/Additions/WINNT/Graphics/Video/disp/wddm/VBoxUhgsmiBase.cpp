@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 50984 2014-04-07 10:57:41Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -272,6 +272,25 @@ int vboxCrHgsmiPrivateCtlConGetClientID(struct VBOXUHGSMI_PRIVATE_BASE *pHgsmi, 
     else
     {
         *pu32ClientID = 0;
+        WARN(("vboxCrHgsmiPrivateEscape failed, rc (%d)", rc));
+    }
+    return rc;
+}
+
+int vboxCrHgsmiPrivateCtlConGetHostCaps(struct VBOXUHGSMI_PRIVATE_BASE *pHgsmi, uint32_t *pu32HostCaps)
+{
+    VBOXDISPIFESCAPE GetHostCaps = {0};
+    GetHostCaps.escapeCode = VBOXESC_CRHGSMICTLCON_GETHOSTCAPS;
+
+    int rc = vboxCrHgsmiPrivateEscape(pHgsmi, &GetHostCaps, sizeof (GetHostCaps), FALSE);
+    if (RT_SUCCESS(rc))
+    {
+        *pu32HostCaps = GetHostCaps.u32CmdSpecific;
+        return VINF_SUCCESS;
+    }
+    else
+    {
+        *pu32HostCaps = 0;
         WARN(("vboxCrHgsmiPrivateEscape failed, rc (%d)", rc));
     }
     return rc;

@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.cpp 50984 2014-04-07 10:57:41Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -111,7 +111,18 @@ VBOXCRHGSMI_DECL(int) VBoxCrHgsmiCtlConGetClientID(PVBOXUHGSMI pHgsmi, uint32_t 
     int rc = vboxCrHgsmiPrivateCtlConGetClientID(pHgsmiPrivate, pu32ClientID);
     if (!RT_SUCCESS(rc))
     {
-        WARN(("VBoxCrHgsmiPrivateCtlConCall failed with rc (%d)", rc));
+        WARN(("vboxCrHgsmiPrivateCtlConGetClientID failed with rc (%d)", rc));
+    }
+    return rc;
+}
+
+VBOXCRHGSMI_DECL(int) VBoxCrHgsmiCtlConGetHostCaps(PVBOXUHGSMI pHgsmi, uint32_t *pu32HostCaps)
+{
+    PVBOXUHGSMI_PRIVATE_BASE pHgsmiPrivate = (PVBOXUHGSMI_PRIVATE_BASE)pHgsmi;
+    int rc = vboxCrHgsmiPrivateCtlConGetHostCaps(pHgsmiPrivate, pu32HostCaps);
+    if (!RT_SUCCESS(rc))
+    {
+        WARN(("vboxCrHgsmiPrivateCtlConGetHostCaps failed with rc (%d)", rc));
     }
     return rc;
 }
