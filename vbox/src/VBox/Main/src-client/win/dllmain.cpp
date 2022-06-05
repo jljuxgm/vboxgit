@@ -1,4 +1,4 @@
-/* $Id: dllmain.cpp 48349 2013-09-06 11:38:20Z vboxsync $ */
+/* $Id: dllmain.cpp 48350 2013-09-06 11:42:50Z vboxsync $ */
 /** @file
  * VBoxC - COM DLL exports and DLL init/term.
  */
@@ -239,7 +239,7 @@ static void removeOldClassIDs(HKEY hkeyClassesRoot)
             Assert(rc == ERROR_SUCCESS);
         }
 
-        RegCloseKey(hkeyClsId);
+        RegCloseKey(hkeyClassesRoot);
     }
 }
 
