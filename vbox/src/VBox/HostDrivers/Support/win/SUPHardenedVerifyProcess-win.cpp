@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 52967 2014-10-06 22:18:51Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 52973 2014-10-07 12:15:09Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -852,16 +852,12 @@ static int supHardNtVpVerifyImageMemoryCompare(PSUPHNTVPSTATE pThis, PSUPHNTVPIM
             aSkipAreas[cSkipAreas++].cb = ARCH_BITS == 32 ? 5 : 12;
         }
 
-        if (   pThis->enmKind == SUPHARDNTVPKIND_SELF_PURIFICATION
-            || pThis->enmKind == SUPHARDNTVPKIND_VERIFY_ONLY)
-        {
-            /* Ignore our patched LdrInitializeThunk hack. */
-            rc = RTLdrGetSymbolEx(pImage->pCacheEntry->hLdrMod, pbBits, 0, UINT32_MAX, "LdrInitializeThunk", &uValue);
-            if (RT_FAILURE(rc))
-                return supHardNtVpSetInfo2(pThis, rc, "%s: Failed to find 'LdrInitializeThunk': %Rrc", pImage->pszName, rc);
-            aSkipAreas[cSkipAreas].uRva = (uint32_t)uValue;
-            aSkipAreas[cSkipAreas++].cb = 14;
-        }
+        /* Ignore our patched LdrInitializeThunk hack. */
+        rc = RTLdrGetSymbolEx(pImage->pCacheEntry->hLdrMod, pbBits, 0, UINT32_MAX, "LdrInitializeThunk", &uValue);
+        if (RT_FAILURE(rc))
+            return supHardNtVpSetInfo2(pThis, rc, "%s: Failed to find 'LdrInitializeThunk': %Rrc", pImage->pszName, rc);
+        aSkipAreas[cSkipAreas].uRva = (uint32_t)uValue;
+        aSkipAreas[cSkipAreas++].cb = 14;
 
         /* LdrSystemDllInitBlock is filled in by the kernel. It mainly contains addresses of 32-bit ntdll method for wow64. */
         rc = RTLdrGetSymbolEx(pImage->pCacheEntry->hLdrMod, pbBits, 0, UINT32_MAX, "LdrSystemDllInitBlock", &uValue);
