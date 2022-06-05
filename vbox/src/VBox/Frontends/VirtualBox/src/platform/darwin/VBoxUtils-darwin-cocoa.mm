@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 50475 2014-02-17 10:47:45Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 50476 2014-02-17 11:20:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -34,6 +34,9 @@
 /* For the keyboard stuff */
 #include <Carbon/Carbon.h>
 #include "DarwinKeyboard.h"
+
+/** Easy way of dynamical call for 10.7 AppKit functionality we do not yet support. */
+#define NSWindowCollectionBehaviorFullScreenPrimary (1 << 7)
 
 NativeNSWindowRef darwinToNativeWindowImpl(NativeNSViewRef pView)
 {
@@ -179,6 +182,11 @@ void darwinMinaturizeWindow(NativeNSWindowRef pWindow)
 //    [pWindow miniaturize:pWindow];
 //    [[NSApplication sharedApplication] deactivate];
 //    [pWindow performMiniaturize:nil];
+}
+
+void darwinEnableFullscreenSupport(NativeNSWindowRef pWindow)
+{
+    [pWindow setCollectionBehavior :NSWindowCollectionBehaviorFullScreenPrimary];
 }
 
 void darwinSetDockIconMenu(QMenu* pMenu)
