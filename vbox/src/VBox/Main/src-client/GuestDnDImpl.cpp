@@ -1,4 +1,4 @@
-/* $Id: GuestDnDImpl.cpp 50609 2014-02-26 14:32:11Z vboxsync $ */
+/* $Id: GuestDnDImpl.cpp 50612 2014-02-26 15:07:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest Drag and Drop parts
  */
@@ -339,6 +339,12 @@ Utf8Str DnDGuestResponse::errorToString(const ComObjPtr<Guest>& pGuest, int gues
 
     switch (guestRc)
     {
+        case VERR_ACCESS_DENIED:
+            strError += Utf8StrFmt(pGuest->tr("For one or more guest files or directories selected for transferring to the host your guest "
+                                              "user does not have the appropriate access rights for. Please make sure that all selected "
+                                              "elements can be accessed and that your guest user has the appropriate rights."));
+            break;
+
         case VERR_SHARING_VIOLATION:
             strError += Utf8StrFmt(pGuest->tr("One or more guest files or directories selected for transferring to the host were locked. "
                                               "Please make sure that all selected elements can be accessed and that your guest user has "
