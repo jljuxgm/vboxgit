@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.vd 44943 2013-03-06 23:07:00Z vboxsync $ */
+/* $Id: tstVDIo.vd 52111 2014-07-21 13:28:54Z vboxsync $ */
 /**
  * Storage: Simple I/O testing for most backends.
  */
@@ -33,6 +33,16 @@ void tstIo(string strMessage, string strBackend)
     close("test", "single", true /* fDelete */);
     close("test", "single", true /* fDelete */);
     close("test", "single", true /* fDelete */);
+    destroydisk("test");
+}
+
+void tstIoUnaligned(string strMessage, string strBackend)
+{
+    print(strMessage);
+    createdisk("test", true);
+    create("test", "base", "tst.disk", "dynamic", strBackend, 2G, false);
+    io("test", false, 1, "seq", 512, 3584, 4096, 512, 100, "none");
+    io("test", false, 1, "seq", 512, 3584, 4096, 512,   0, "none");
     destroydisk("test");
 }
 
