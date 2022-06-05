@@ -1,4 +1,4 @@
-/* $Id: cr_vreg.h 50313 2014-02-03 18:46:27Z vboxsync $ */
+/* $Id: cr_vreg.h 50316 2014-02-04 08:03:23Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API
@@ -188,8 +188,8 @@ VBOXVREGDECL(int) VBoxVrListClone(const VBOXVR_LIST *pList, VBOXVR_LIST *pDstLis
 VBOXVREGDECL(int) VBoxVrListRectsIntersect(PVBOXVR_LIST pList, uint32_t cRects, const RTRECT * aRects, bool *pfChanged);
 VBOXVREGDECL(int) VBoxVrListIntersect(PVBOXVR_LIST pList, const VBOXVR_LIST *pList2, bool *pfChanged);
 
-VBOXVREGDECL(int) VBoxVrInit();
-VBOXVREGDECL(void) VBoxVrTerm();
+VBOXVREGDECL(int) VBoxVrInit(void);
+VBOXVREGDECL(void) VBoxVrTerm(void);
 
 typedef struct VBOXVR_LIST_ITERATOR
 {
