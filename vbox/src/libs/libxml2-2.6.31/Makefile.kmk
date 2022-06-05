@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48891 2013-10-04 16:54:07Z vboxsync $
+# $Id: Makefile.kmk 49108 2013-10-15 08:39:07Z vboxsync $
 ## @file
 # Sub-Makefile for the libxml2 library.
 #
@@ -47,8 +47,6 @@ VBox-libxml2_SOURCES        = \
 	HTMLtree.c \
 	legacy.c \
 	list.c \
-	nanoftp.c \
-	nanohttp.c \
 	parser.c \
 	parserInternals.c \
 	pattern.c \
