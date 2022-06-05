@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51531 2014-06-04 13:08:25Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51532 2014-06-04 15:07:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -424,6 +424,49 @@ void UIExtraDataManager::setSelectorWindowStatusBarVisible(bool fVisible)
 {
     /* Remember if feature restricted: */
     setExtraDataString(GUI_Statusbar, toFeatureRestricted(!fVisible));
+}
+
+QMap<DetailsElementType, bool> UIExtraDataManager::selectorWindowDetailsElements()
+{
+    /* Load corresponding extra-data: */
+    const QStringList data = extraDataStringList(GUI_DetailsPageBoxes);
+
+    /* Prepare elements: */
+    QMap<DetailsElementType, bool> elements;
+    /* Enumerate all the data items: */
+    foreach (QString strItem, data)
+    {
+        bool fOpened = true;
+        if (strItem.endsWith("Closed", Qt::CaseInsensitive))
+        {
+            fOpened = false;
+            strItem.remove("Closed");
+        }
+        DetailsElementType type = gpConverter->fromInternalString<DetailsElementType>(strItem);
+        if (type != DetailsElementType_Invalid)
+            elements[type] = fOpened;
+    }
+
+    /* Return elements: */
+    return elements;
+}
+
+void UIExtraDataManager::setSelectorWindowDetailsElements(const QMap<DetailsElementType, bool> &elements)
+{
+    /* Prepare corresponding extra-data: */
+    QStringList data;
+
+    /* Searialize passed elements: */
+    foreach (DetailsElementType type, elements.keys())
+    {
+        QString strValue = gpConverter->toInternalString(type);
+        if (!elements[type])
+            strValue += "Closed";
+        data << strValue;
+    }
+
+    /* Save corresponding extra-data: */
+    setExtraDataStringList(GUI_DetailsPageBoxes, data);
 }
 
 PreviewUpdateIntervalType UIExtraDataManager::selectorWindowPreviewUpdateInterval() const
