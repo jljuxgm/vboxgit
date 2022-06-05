@@ -1,4 +1,4 @@
-# $Id: Makefile 47199 2013-07-16 15:45:42Z vboxsync $
+# $Id: Makefile 48901 2013-10-04 20:33:57Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -249,7 +249,8 @@ else
  MANGLING := $(KBUILD_EXTMOD)/include/VBox/SUPDrvMangling.h
 endif
 KFLAGS   := -D__KERNEL__ -DMODULE -DRT_OS_LINUX -DIN_RING0 -DIN_RT_R0 \
-	    -DIN_SUP_R0 -DVBOX -DRT_WITH_VBOX -DVBOX_WITH_HARDENING
+	    -DIN_SUP_R0 -DVBOX -DRT_WITH_VBOX -DVBOX_WITH_HARDENING \
+	    -Wno-declaration-after-statement
 ifdef VBOX_REDHAT_KABI
  KFLAGS  += -DVBOX_REDHAT_KABI
 endif
