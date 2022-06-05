@@ -1,4 +1,4 @@
-/* $Id: string.h 52546 2014-09-01 08:58:51Z vboxsync $ */
+/* $Id: string.h 52554 2014-09-01 16:00:05Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -513,9 +513,9 @@ public:
         copyFrom(that.raw());
     }
 
-    Utf8Str(CBSTR that, size_t a_cchSize = RTSTR_MAX)
+    Utf8Str(CBSTR that, size_t a_cwcSize = RTSTR_MAX)
     {
-        copyFrom(that, a_cchSize);
+        copyFrom(that, a_cwcSize);
     }
 
     Utf8Str(const char *a_pszSrc, size_t a_cchSrc)
@@ -717,7 +717,7 @@ public:
     static const Utf8Str Empty;
 protected:
 
-    void copyFrom(CBSTR a_pbstr, size_t a_cchSize = RTSTR_MAX);
+    void copyFrom(CBSTR a_pbstr, size_t a_cwcMax = RTSTR_MAX);
     HRESULT copyFromEx(CBSTR a_pbstr);
     HRESULT copyFromExNComRC(const char *a_pcszSrc, size_t a_offSrc, size_t a_cchSrc);
 
