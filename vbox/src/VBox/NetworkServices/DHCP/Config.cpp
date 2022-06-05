@@ -1,18 +1,8 @@
-/* $Id: Config.cpp 49063 2013-10-12 07:16:07Z vboxsync $ */
+/* $Id: Config.cpp 49064 2013-10-12 07:17:53Z vboxsync $ */
 
 /**
  * XXX: license.
  */
-
-#include <VBox/com/com.h>
-#include <VBox/com/listeners.h>
-#include <VBox/com/string.h>
-#include <VBox/com/Guid.h>
-#include <VBox/com/array.h>
-#include <VBox/com/ErrorInfo.h>
-#include <VBox/com/errorprint.h>
-#include <VBox/com/EventQueue.h>
-#include <VBox/com/VirtualBox.h>
 
 #include <iprt/asm.h>
 #include <iprt/net.h>
