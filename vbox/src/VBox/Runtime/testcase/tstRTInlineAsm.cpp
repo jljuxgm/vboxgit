@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 49194 2013-10-18 22:08:35Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -188,6 +188,16 @@ void tstASMCpuId(void)
     uint32_t uECX2 = s.uECX - 1;
     uint32_t uEDX2 = s.uEDX - 1;
     ASMCpuId_ECX_EDX(0, &uECX2, &uEDX2);
+    CHECKVAL(uECX2, s.uECX, "%x");
+    CHECKVAL(uEDX2, s.uEDX, "%x");
+
+    uint32_t uEAX2 = s.uEAX - 1;
+    uint32_t uEBX2 = s.uEBX - 1;
+    uECX2 = s.uECX - 1;
+    uEDX2 = s.uEDX - 1;
+    ASMCpuIdExSlow(0, 0, 0, 0, &uEAX2, &uEBX2, &uECX2, &uEDX2);
+    CHECKVAL(uEAX2, s.uEAX, "%x");
+    CHECKVAL(uEBX2, s.uEBX, "%x");
     CHECKVAL(uECX2, s.uECX, "%x");
     CHECKVAL(uEDX2, s.uEDX, "%x");
 
