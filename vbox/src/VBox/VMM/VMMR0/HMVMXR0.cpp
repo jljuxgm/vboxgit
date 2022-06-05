@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49755 2013-12-03 14:09:51Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49757 2013-12-03 14:56:36Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6071,7 +6071,7 @@ DECLINLINE(int) hmR0VmxReadSegmentReg(PVMCPU pVCpu, uint32_t idxSel, uint32_t id
      * same time (the selector was supposed to invalid as we started executing
      * a V8086 interrupt in ring-0).
      *
-     * What should be important for the rest of the VBox code that the P bit is
+     * What should be important for the rest of the VBox code, is that the P bit is
      * cleared.  Some of the other VBox code recognizes the unusable bit, but
      * AMD-V certainly don't, and REM doesn't really either.  So, to be on the
      * safe side here, we'll strip off P and other bits we don't care about.  If
