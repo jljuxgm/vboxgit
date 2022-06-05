@@ -1,8 +1,6 @@
-/* $Id: UIVMDesktop.cpp 51265 2014-05-15 18:04:22Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIVMDesktop class implementation
+ * VBox Qt GUI - UIVMDesktop class implementation.
  */
 
 /*

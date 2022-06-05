@@ -1,8 +1,6 @@
-/* $Id: VBoxX11Helper.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxX11Helper.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * X11 helpers.
+ * VBox Qt GUI - X11 helpers..
  */
 
 /*

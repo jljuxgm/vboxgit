@@ -1,8 +1,6 @@
-/* $Id: QITableView.cpp 31533 2010-08-10 13:08:56Z vboxsync $ */
+/* $Id: QITableView.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VirtualBox Qt extensions: QITableView class implementation
+ * VBox Qt GUI - VirtualBox Qt extensions: QITableView class implementation.
  */
 
 /*

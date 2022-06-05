@@ -1,9 +1,6 @@
-/* $Id: CocoaEventHelper.mm 30122 2010-06-09 13:50:26Z vboxsync $ */
+/* $Id: CocoaEventHelper.mm 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Declarations of utility functions for handling Darwin Cocoa specific event
- * handling tasks
+ * VBox Qt GUI - Declarations of utility functions for handling Darwin Cocoa specific event handling tasks.
  */
 
 /*

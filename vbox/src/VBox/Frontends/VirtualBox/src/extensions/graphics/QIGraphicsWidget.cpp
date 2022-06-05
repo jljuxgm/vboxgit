@@ -1,8 +1,6 @@
-/* $Id: QIGraphicsWidget.cpp 42526 2012-08-02 10:31:28Z vboxsync $ */
+/* $Id: QIGraphicsWidget.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * QIGraphicsWidget class definition
+ * VBox Qt GUI - QIGraphicsWidget class definition.
  */
 
 /*

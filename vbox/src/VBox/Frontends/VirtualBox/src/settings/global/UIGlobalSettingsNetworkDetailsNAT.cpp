@@ -1,8 +1,6 @@
-/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 48548 2013-09-19 16:31:07Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIGlobalSettingsNetworkDetailsNAT class implementation
+ * VBox Qt GUI - UIGlobalSettingsNetworkDetailsNAT class implementation.
  */
 
 /*

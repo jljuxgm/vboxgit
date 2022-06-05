@@ -1,8 +1,6 @@
-/* $Id: UIDesktopServices_darwin.cpp 34411 2010-11-26 16:57:30Z vboxsync $ */
+/* $Id: UIDesktopServices_darwin.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Qt GUI - Utility Classes and Functions specific to darwin.
+ * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to darwin..
  */
 
 /*

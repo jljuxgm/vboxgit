@@ -1,8 +1,6 @@
-/* $Id: UICocoaDockIconPreview.mm 30151 2010-06-10 16:12:33Z vboxsync $ */
+/* $Id: UICocoaDockIconPreview.mm 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Cocoa helper for the dock icon preview
+ * VBox Qt GUI - Cocoa helper for the dock icon preview.
  */
 
 /*

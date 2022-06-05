@@ -1,8 +1,6 @@
-/* $Id: UINetworkManager.cpp 52061 2014-07-16 18:42:45Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UINetworkManager stuff implementation
+ * VBox Qt GUI - UINetworkManager stuff implementation.
  */
 
 /*

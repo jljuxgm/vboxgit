@@ -1,8 +1,6 @@
-/* $Id: UIFilmContainer.cpp 48583 2013-09-20 12:57:03Z vboxsync $ */
+/* $Id: UIFilmContainer.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIFilmContainer class implementation
+ * VBox Qt GUI - UIFilmContainer class implementation.
  */
 
 /*

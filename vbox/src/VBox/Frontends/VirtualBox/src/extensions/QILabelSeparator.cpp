@@ -1,8 +1,6 @@
-/* $Id: QILabelSeparator.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
+/* $Id: QILabelSeparator.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VirtualBox Qt extensions: QILabelSeparator class implementation
+ * VBox Qt GUI - VirtualBox Qt extensions: QILabelSeparator class implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: UIDnDDropSource_win.cpp 50602 2014-02-26 12:50:39Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDnDDropSource class implementation for Windows. This implements
+ * VBox Qt GUI - UIDnDDropSource class implementation for Windows. This implements
  * the IDropSource interface.
  */
 

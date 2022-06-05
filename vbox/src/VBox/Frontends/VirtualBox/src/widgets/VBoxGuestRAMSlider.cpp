@@ -1,8 +1,6 @@
-/* $Id: VBoxGuestRAMSlider.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxGuestRAMSlider.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VirtualBox Qt extensions: VBoxGuestRAMSlider class implementation
+ * VBox Qt GUI - VirtualBox Qt extensions: VBoxGuestRAMSlider class implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 51267 2014-05-15 19:01:07Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIGlobalSettingsPortForwardingDlg class implementation
+ * VBox Qt GUI - UIGlobalSettingsPortForwardingDlg class implementation.
  */
 
 /*

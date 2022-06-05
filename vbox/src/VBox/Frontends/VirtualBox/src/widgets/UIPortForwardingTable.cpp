@@ -1,8 +1,6 @@
-/* $Id: UIPortForwardingTable.cpp 48830 2013-10-03 10:52:25Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIPortForwardingTable class implementation
+ * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
 
 /*

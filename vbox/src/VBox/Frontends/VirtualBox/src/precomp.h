@@ -1,4 +1,4 @@
-/* $Id: precomp.h 52722 2014-09-12 13:41:01Z vboxsync $*/
+/* $Id: precomp.h 52727 2014-09-12 14:09:27Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -86,7 +86,6 @@
 #include <QHostAddress>
 #include <QHttp>
 #include <QHttpResponseHeader>
-#include <QIWithRetranslateUI.h>
 #include <QIcon>
 #include <QImage>
 #include <QImageWriter>

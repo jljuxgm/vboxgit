@@ -1,8 +1,6 @@
-/* $Id: QIListView.cpp 42261 2012-07-20 13:27:47Z vboxsync $ */
+/* $Id: QIListView.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * QIListView, QIItemDelegate class implementation
+ * VBox Qt GUI - QIListView, QIItemDelegate class implementation.
  */
 
 /*

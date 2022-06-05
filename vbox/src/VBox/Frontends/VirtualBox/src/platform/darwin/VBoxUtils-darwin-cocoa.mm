@@ -1,9 +1,6 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 52593 2014-09-04 13:09:58Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Declarations of utility classes and functions for handling Darwin Cocoa
- * specific tasks
+ * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
 
 /*

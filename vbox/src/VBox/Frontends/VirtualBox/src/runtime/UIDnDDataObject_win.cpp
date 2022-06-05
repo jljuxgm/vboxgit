@@ -1,8 +1,6 @@
-/* $Id: UIDnDDataObject_win.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDnDDrag class implementation. This class implements the
+ * VBox Qt GUI - UIDnDDrag class implementation. This class implements the
  * IDataObject interface.
  */
 

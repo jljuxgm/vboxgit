@@ -1,6 +1,6 @@
-/* $Id: VirtualBox.rc 51900 2014-07-07 10:59:18Z vboxsync $ */
+/* $Id: VirtualBox.rc 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- * Windows resource file for VirtualBox.exe.
+ * VBox Qt GUI - Windows resource file for VirtualBox.exe.
  */
 
 /*

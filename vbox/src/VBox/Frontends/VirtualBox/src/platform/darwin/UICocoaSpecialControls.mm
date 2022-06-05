@@ -1,8 +1,6 @@
-/* $Id: UICocoaSpecialControls.mm 51265 2014-05-15 18:04:22Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UICocoaSpecialControls implementation
+ * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
 
 /*

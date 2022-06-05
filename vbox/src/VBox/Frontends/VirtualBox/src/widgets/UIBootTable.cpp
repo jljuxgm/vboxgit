@@ -1,8 +1,6 @@
-/* $Id: UIBootTable.cpp 51278 2014-05-16 14:53:26Z vboxsync $ */
+/* $Id: UIBootTable.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIBootTable class implementation
+ * VBox Qt GUI - UIBootTable class implementation.
  */
 
 /*

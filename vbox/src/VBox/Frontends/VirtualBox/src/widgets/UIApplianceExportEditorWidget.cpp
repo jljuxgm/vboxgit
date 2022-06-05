@@ -1,8 +1,6 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIApplianceExportEditorWidget class implementation
+ * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: UIMachineSettingsGeneral.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIMachineSettingsGeneral class implementation
+ * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
 
 /*

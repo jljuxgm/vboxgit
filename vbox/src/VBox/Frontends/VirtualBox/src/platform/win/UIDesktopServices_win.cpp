@@ -1,8 +1,6 @@
-/* $Id: UIDesktopServices_win.cpp 34415 2010-11-26 17:09:29Z vboxsync $ */
+/* $Id: UIDesktopServices_win.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Qt GUI - Utility Classes and Functions specific to Windows.
+ * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to Windows..
  */
 
 /*

@@ -1,8 +1,6 @@
-/* $Id: VBoxSettingsSelector.cpp 51937 2014-07-08 16:01:15Z vboxsync $ */
+/* $Id: VBoxSettingsSelector.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * VBoxSettingsSelector class implementation
+ * VBox Qt GUI - VBoxSettingsSelector class implementation.
  */
 
 /*

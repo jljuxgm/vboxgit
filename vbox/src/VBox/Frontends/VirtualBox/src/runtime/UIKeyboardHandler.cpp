@@ -1,8 +1,6 @@
-/* $Id: UIKeyboardHandler.cpp 52266 2014-08-04 13:59:14Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIKeyboardHandler class implementation
+ * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
 
 /*

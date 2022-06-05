@@ -1,8 +1,6 @@
-/* $Id: UIDnDEnumFormat_win.h 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: UIDnDEnumFormat_win.h 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDnDEnumFormat class declaration
+ * VBox Qt GUI - UIDnDEnumFormat class declaration.
  */
 
 /*

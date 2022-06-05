@@ -1,8 +1,6 @@
-/* $Id: UIWindowMenuManager.cpp 51012 2014-04-09 13:45:54Z vboxsync $ */
+/* $Id: UIWindowMenuManager.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIWindowMenuManager class implementation
+ * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
 
 /*

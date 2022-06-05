@@ -1,8 +1,6 @@
-/* $Id: UIGChooserItem.cpp 52202 2014-07-25 20:34:38Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIGChooserItem class definition
+ * VBox Qt GUI - UIGChooserItem class definition.
  */
 
 /*

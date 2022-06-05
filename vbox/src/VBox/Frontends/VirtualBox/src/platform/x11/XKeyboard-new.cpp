@@ -1,8 +1,6 @@
-/* $Id: XKeyboard-new.cpp 44797 2013-02-21 20:40:14Z vboxsync $ */
+/* $Id: XKeyboard-new.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Implementation of Linux-specific keyboard functions
+ * VBox Qt GUI - Implementation of Linux-specific keyboard functions.
  */
 
 /*

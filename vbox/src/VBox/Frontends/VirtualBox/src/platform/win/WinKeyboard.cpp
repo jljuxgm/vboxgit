@@ -1,8 +1,6 @@
-/* $Id: WinKeyboard.cpp 50350 2014-02-06 15:49:58Z vboxsync $ */
+/* $Id: WinKeyboard.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Windows keyboard handling.
+ * VBox Qt GUI - Windows keyboard handling..
  */
 
 /*

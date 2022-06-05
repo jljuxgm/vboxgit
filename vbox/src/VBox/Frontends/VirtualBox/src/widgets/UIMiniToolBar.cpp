@@ -1,9 +1,6 @@
-/* $Id: UIMiniToolBar.cpp 52381 2014-08-14 13:02:35Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMiniToolBar class implementation.
- * This is the toolbar shown in fullscreen/seamless modes.
+ * VBox Qt GUI - UIMiniToolBar class implementation (fullscreen/seamless).
  */
 
 /*

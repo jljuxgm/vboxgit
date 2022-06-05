@@ -1,8 +1,6 @@
-/* $Id: UIDnDDropSource_win.h 50604 2014-02-26 13:30:01Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.h 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDnDDropSource class declaration
+ * VBox Qt GUI - UIDnDDropSource class declaration.
  */
 
 /*

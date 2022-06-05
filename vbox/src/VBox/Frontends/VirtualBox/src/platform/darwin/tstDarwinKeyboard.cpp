@@ -1,6 +1,6 @@
-/* $Id: tstDarwinKeyboard.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstDarwinKeyboard.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- * Common GUI Library - Testcase - Darwin Keyboard routines.
+ * VBox Qt GUI Testcase - Common GUI Library - Darwin Keyboard routines.
  *
  * @todo Move this up somewhere so that the two SDL GUIs can use parts of this code too (-HID crap).
  */

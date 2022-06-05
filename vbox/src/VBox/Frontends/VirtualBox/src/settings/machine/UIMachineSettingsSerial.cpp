@@ -1,8 +1,6 @@
-/* $Id: UIMachineSettingsSerial.cpp 47944 2013-08-21 07:36:55Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIMachineSettingsSerial class implementation
+ * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
 
 /*

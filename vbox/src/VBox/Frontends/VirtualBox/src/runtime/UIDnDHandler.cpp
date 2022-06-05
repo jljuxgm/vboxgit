@@ -1,8 +1,6 @@
-/* $Id: UIDnDHandler.cpp 51479 2014-05-30 16:32:11Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDnDHandler class implementation
+ * VBox Qt GUI - UIDnDHandler class implementation.
  */
 
 /*

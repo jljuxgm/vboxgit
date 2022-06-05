@@ -1,8 +1,6 @@
-/* $Id: UIVMItem.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
+/* $Id: UIVMItem.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIVMItem class implementation
+ * VBox Qt GUI - UIVMItem class implementation.
  */
 
 /*

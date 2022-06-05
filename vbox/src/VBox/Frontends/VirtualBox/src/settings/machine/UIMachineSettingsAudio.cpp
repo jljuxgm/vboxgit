@@ -1,8 +1,6 @@
-/* $Id: UIMachineSettingsAudio.cpp 46641 2013-06-18 18:40:33Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIMachineSettingsAudio class implementation
+ * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
 
 /*

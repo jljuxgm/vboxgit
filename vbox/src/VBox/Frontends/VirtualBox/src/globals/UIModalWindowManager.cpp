@@ -1,8 +1,6 @@
-/* $Id: UIModalWindowManager.cpp 49596 2013-11-21 10:11:36Z vboxsync $ */
+/* $Id: UIModalWindowManager.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIModalWindowManager class implementation
+ * VBox Qt GUI - UIModalWindowManager class implementation.
  */
 
 /*

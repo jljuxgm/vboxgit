@@ -1,8 +1,6 @@
-/* $Id: UISelectorWindow.cpp 52579 2014-09-03 11:56:06Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UISelectorWindow class implementation
+ * VBox Qt GUI - UISelectorWindow class implementation.
  */
 
 /*

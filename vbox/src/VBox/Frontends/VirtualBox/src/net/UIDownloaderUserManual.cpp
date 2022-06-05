@@ -1,8 +1,6 @@
-/* $Id: UIDownloaderUserManual.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDownloaderUserManual class implementation
+ * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */
 
 /*

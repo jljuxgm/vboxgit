@@ -1,9 +1,6 @@
-/* $Id: vmstarter.mm 34275 2010-11-23 11:08:52Z vboxsync $ */
+/* $Id: vmstarter.mm 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * Helper application for starting vbox the right way when the user double
- * clicks on a file type association.
+ * VBox Qt GUI -  Helper application for starting vbox the right way when the user double clicks on a file type association.
  */
 
 /*

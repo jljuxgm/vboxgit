@@ -1,8 +1,6 @@
-/* $Id: UIDownloaderExtensionPack.cpp 45432 2013-04-09 13:03:52Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDownloaderExtensionPack class implementation
+ * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
 
 /*

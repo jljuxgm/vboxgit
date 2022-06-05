@@ -1,8 +1,6 @@
-/* $Id: UIDnDMIMEData.h 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: UIDnDMIMEData.h 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIDnDMIMEData class declaration
+ * VBox Qt GUI - UIDnDMIMEData class declaration.
  */
 
 /*

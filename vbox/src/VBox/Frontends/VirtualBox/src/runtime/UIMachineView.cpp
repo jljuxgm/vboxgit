@@ -1,8 +1,6 @@
-/* $Id: UIMachineView.cpp 52246 2014-07-31 12:09:47Z vboxsync $ */
+/* $Id: UIMachineView.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMachineView class implementation
+ * VBox Qt GUI - UIMachineView class implementation.
  */
 
 /*

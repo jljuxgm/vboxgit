@@ -1,8 +1,6 @@
-/* $Id: UIGlobalSettingsNetworkDetailsHost.cpp 48458 2013-09-12 16:26:07Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsHost.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIGlobalSettingsNetworkDetailsHost class implementation
+ * VBox Qt GUI - UIGlobalSettingsNetworkDetailsHost class implementation.
  */
 
 /*

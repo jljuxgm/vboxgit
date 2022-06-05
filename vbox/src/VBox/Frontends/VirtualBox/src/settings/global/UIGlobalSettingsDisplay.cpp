@@ -1,8 +1,6 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 47189 2013-07-16 13:33:00Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIGlobalSettingsDisplay class implementation
+ * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
 
 /*
