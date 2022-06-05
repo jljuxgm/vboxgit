@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 52632 2014-09-05 23:00:50Z vboxsync $ */
+/* $Id: SUPLibInternal.h 52795 2014-09-19 15:02:04Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -436,6 +436,7 @@ DECLHIDDEN(int)     supR3HardenedRecvPreInitData(PCSUPPREINITDATA pPreInitData);
 DECLHIDDEN(void)    supR3HardenedWinInit(uint32_t fFlags);
 DECLHIDDEN(void)    supR3HardenedWinInitVersion(void);
 DECLHIDDEN(void)    supR3HardenedWinInitImports(void);
+DECLHIDDEN(PFNRT)   supR3HardenedWinGetRealDllSymbol(const char *pszDll, const char *pszProcedure);
 DECLHIDDEN(void)    supR3HardenedWinVerifyProcess(void);
 DECLHIDDEN(void)    supR3HardenedWinEnableThreadCreation(void);
 DECLHIDDEN(void)    supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation(const char *pszProgName);
