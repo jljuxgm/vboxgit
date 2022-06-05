@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 50906 2014-03-27 14:37:16Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 51198 2014-05-06 15:41:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -37,6 +37,7 @@
 #include "UIMachineSettingsStorage.h"
 #include "UIConverter.h"
 #include "UIMedium.h"
+#include "UIExtraDataManager.h"
 
 /* COM includes: */
 #include "CStorageController.h"
@@ -3336,24 +3337,15 @@ void UIMachineSettingsStorage::addChooseHostDriveActions(QMenu *pOpenMediumMenu)
 
 void UIMachineSettingsStorage::addRecentMediumActions(QMenu *pOpenMediumMenu, UIMediumType recentMediumType)
 {
-    /* Compose recent-medium list address: */
-    QString strRecentMediumAddress;
+    /* Get recent-medium list: */
+    QStringList recentMediumList;
     switch (recentMediumType)
     {
-        case UIMediumType_HardDisk:
-            strRecentMediumAddress = GUI_RecentListHD;
-            break;
-        case UIMediumType_DVD:
-            strRecentMediumAddress = GUI_RecentListCD;
-            break;
-        case UIMediumType_Floppy:
-            strRecentMediumAddress = GUI_RecentListFD;
-            break;
-        default:
-            break;
+        case UIMediumType_HardDisk: recentMediumList = gEDataManager->recentListOfHardDrives(); break;
+        case UIMediumType_DVD:      recentMediumList = gEDataManager->recentListOfOpticalDisks(); break;
+        case UIMediumType_Floppy:   recentMediumList = gEDataManager->recentListOfFloppyDisks(); break;
+        default: break;
     }
-    /* Get recent-medium list: */
-    QStringList recentMediumList = vboxGlobal().virtualBox().GetExtraData(strRecentMediumAddress).split(';');
     /* For every list-item: */
     for (int index = 0; index < recentMediumList.size(); ++index)
     {
