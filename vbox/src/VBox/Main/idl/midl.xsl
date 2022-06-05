@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 50183 2014-01-23 15:58:21Z vboxsync $ -->
+<!-- $Id: midl.xsl 50855 2014-03-24 13:30:46Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -243,6 +243,9 @@
   <xsl:choose>
     <xsl:when test="@extends='$unknown'">IDispatch</xsl:when>
     <xsl:when test="@extends='$errorinfo'">IErrorInfo</xsl:when>
+    <!-- TODO/FIXME/BUGBUG: The above $errorinfo value causes the following warning (/W4):
+warning MIDL2460 : dual interface should be derived from IDispatch : IVirtualBoxErrorInfo [ Interface 'IVirtualBoxErrorInfo'  ]
+    -->
     <xsl:otherwise><xsl:value-of select="@extends"/></xsl:otherwise>
   </xsl:choose>
   <xsl:text>&#x0A;{&#x0A;</xsl:text>
