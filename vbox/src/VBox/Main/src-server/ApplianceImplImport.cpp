@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 50181 2014-01-23 15:30:40Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 50182 2014-01-23 15:35:42Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1802,6 +1802,7 @@ HRESULT Appliance::i_importFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock)
          * won't be used anymore.
          */
         {
+            ErrorInfoKeeper eik; /* paranoia */
             list< ComObjPtr<VirtualSystemDescription> >::const_iterator itvsd;
             /* Iterate through all virtual systems of that appliance */
             for (itvsd = m->virtualSystemDescriptions.begin();
