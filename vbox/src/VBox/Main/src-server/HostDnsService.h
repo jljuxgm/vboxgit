@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 48805 2013-10-02 05:16:26Z vboxsync $ */
+/* $Id: HostDnsService.h 48806 2013-10-02 05:23:35Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -95,7 +95,7 @@ class HostDnsServiceResolvConf: public HostDnsService
 public:
     HostDnsServiceResolvConf(const char *aResolvConfFileName = "/etc/resolv.conf");
     virtual ~HostDnsServiceResolvConf();
-    virtual HRESULT init(VirtualBox *aParent);
+    virtual HRESULT init(const VirtualBox *aParent);
     virtual HRESULT update();
 protected:
     com::Utf8Str m_ResolvConfFilename;
