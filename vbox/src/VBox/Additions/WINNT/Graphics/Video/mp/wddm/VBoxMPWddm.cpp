@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 48146 2013-08-29 11:11:11Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 48643 2013-09-23 17:16:28Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -327,6 +327,9 @@ bool vboxWddmGhDisplaySetInfoFromSourceTarget(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_
     if (!g_VBoxDisplayOnly)
 # endif
     {
+        if (!pRealFbAlloc)
+            return false;
+
         if (!pFbAlloc)
         {
             pFbAlloc = VBOXWDDM_NONFB_ALLOCATION(pDevExt, pSource);
