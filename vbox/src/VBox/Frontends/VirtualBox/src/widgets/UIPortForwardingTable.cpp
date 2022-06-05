@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 53290 2014-11-10 13:34:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -509,7 +509,11 @@ UIPortForwardingTable::UIPortForwardingTable(const UIPortForwardingDataList &rul
     QHBoxLayout *pMainLayout = new QHBoxLayout(this);
     {
         /* Configure layout: */
-        pMainLayout->setMargin(0);
+#ifndef Q_WS_WIN
+        /* On Windows host that looks ugly, but
+         * On Mac OS X and X11 that deserves it's place. */
+        pMainLayout->setContentsMargins(0, 0, 0, 0);
+#endif /* !Q_WS_WIN */
         pMainLayout->setSpacing(3);
         /* Create model: */
         m_pModel = new UIPortForwardingModel(this, rules);
