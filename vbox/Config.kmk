@@ -1,4 +1,4 @@
-# $Id: Config.kmk 48320 2013-09-05 17:34:14Z vboxsync $
+# $Id: Config.kmk 48324 2013-09-05 19:42:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -509,7 +509,7 @@ VBOX_WITH_VBOXDRV = 1
 # The main api.
 VBOX_WITH_MAIN = 1
 # Whether to also ship 32-bit main API on 64-bit systems.
-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), solaris.amd64)
+if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), solaris.amd64 win.amd64)
  VBOX_WITH_32_ON_64_MAIN_API = 1
 endif
 # The recompiler.
@@ -5490,7 +5490,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48320 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48324 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
