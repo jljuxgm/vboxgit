@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50183 2014-01-23 15:58:21Z vboxsync $
+# $Id: Makefile.kmk 50858 2014-03-25 09:51:08Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -127,7 +127,8 @@ if !defined(VBOX_ONLY_SDK)
   endif
   tstCAPIGlue_INTERMEDIATES = \
   	$(VBOX_PATH_SDK)/bindings/c/glue/VBoxCAPIGlue.h \
-  	$(VBOX_PATH_SDK)/bindings/c/include/VBoxCAPI_v$(VBOX_API_VERSION).h
+  	$(VBOX_PATH_SDK)/bindings/c/include/VBoxCAPI_v$(VBOX_API_VERSION).h \
+       $(if-expr !defined(VBOX_WITH_XPCOM),$(VBOX_PATH_SDK)/bindings/mscom/include/VirtualBox.h,)
   tstCAPIGlue_SOURCES = \
   	tstCAPIGlue.c
   tstCAPIGlue_LIBS = \
