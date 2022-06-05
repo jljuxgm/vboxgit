@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 52902 2014-09-30 15:38:46Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 53305 2014-11-11 16:04:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1159,12 +1159,11 @@ void UISelectorWindow::prepareMenuFile(QMenu *pMenu)
 #ifdef DEBUG
     pMenu->addAction(actionPool()->action(UIActionIndexST_M_File_S_ShowExtraDataManager));
 #endif /* DEBUG */
-#ifdef RT_OS_DARWIN
+#ifdef Q_WS_MAC
+    pMenu->addAction(actionPool()->action(UIActionIndex_M_Application_S_About));
     pMenu->addAction(actionPool()->action(UIActionIndex_M_Application_S_Preferences));
-#else /* !RT_OS_DARWIN */
+#else /* !Q_WS_MAC */
     pMenu->addAction(actionPool()->action(UIActionIndex_Simple_Preferences));
-#endif /* !RT_OS_DARWIN */
-#ifndef Q_WS_MAC
     pMenu->addSeparator();
 #endif /* Q_WS_MAC */
     pMenu->addAction(actionPool()->action(UIActionIndexST_M_File_S_Close));
