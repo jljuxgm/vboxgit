@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 47467 2013-07-29 16:35:34Z vboxsync $ */
+/* $Id: VMMInternal.h 49141 2013-10-16 14:07:14Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -523,6 +523,23 @@ typedef enum VMMGCOPERATION
     /** The usual 32-bit hack. */
     VMMGC_DO_32_BIT_HACK = 0x7fffffff
 } VMMGCOPERATION;
+
+
+
+/**
+ * MSR test result entry.
+ */
+typedef struct VMMTESTMSRENTRY
+{
+    /** The MSR number, including padding.
+     * Set to UINT64_MAX if invalid MSR. */
+    uint64_t    uMsr;
+    /** The register value. */
+    uint64_t    uValue;
+} VMMTESTMSRENTRY;
+/** Pointer to an MSR test result entry. */
+typedef VMMTESTMSRENTRY *PVMMTESTMSRENTRY;
+
 
 
 RT_C_DECLS_BEGIN
