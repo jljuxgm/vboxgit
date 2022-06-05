@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 52544 2014-09-01 02:30:21Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 52592 2014-09-03 20:23:24Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -5103,7 +5103,6 @@ static DECLCALLBACK(void) intnetR0TrunkIfPortReportNoPreemptDsts(PINTNETTRUNKSWP
 }
 
 
-#ifdef VBOX_WITH_INTNET_DISCONNECT
 /** @copydoc INTNETTRUNKSWPORT::pfnDisconnect */
 static DECLCALLBACK(void) intnetR0TrunkIfPortDisconnect(PINTNETTRUNKSWPORT pSwitchPort, PINTNETTRUNKIFPORT pIfPort,
                                                         PFNINTNETTRUNKIFPORTRELEASEBUSY pfnReleaseBusy)
@@ -5161,7 +5160,6 @@ static DECLCALLBACK(void) intnetR0TrunkIfPortDisconnect(PINTNETTRUNKSWPORT pSwit
     else
         pfnReleaseBusy(pIfPort);
 }
-#endif /* VBOX_WITH_INTNET_DISCONNECT */
 
 
 /** @copydoc INTNETTRUNKSWPORT::pfnPreRecv */
@@ -5523,9 +5521,7 @@ static int intnetR0NetworkCreateTrunkIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION 
         pTrunk->SwitchPort.pfnReportPromiscuousMode   = intnetR0TrunkIfPortReportPromiscuousMode;
         pTrunk->SwitchPort.pfnReportGsoCapabilities   = intnetR0TrunkIfPortReportGsoCapabilities;
         pTrunk->SwitchPort.pfnReportNoPreemptDsts     = intnetR0TrunkIfPortReportNoPreemptDsts;
-#ifdef VBOX_WITH_INTNET_DISCONNECT
         pTrunk->SwitchPort.pfnDisconnect              = intnetR0TrunkIfPortDisconnect;
-#endif /* VBOX_WITH_INTNET_DISCONNECT */
         pTrunk->SwitchPort.u32VersionEnd              = INTNETTRUNKSWPORT_VERSION;
         //pTrunk->pIfPort                 = NULL;
         pTrunk->pNetwork                  = pNetwork;

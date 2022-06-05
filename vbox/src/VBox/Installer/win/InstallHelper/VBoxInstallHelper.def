@@ -1,4 +1,4 @@
-; $Id: VBoxInstallHelper.def 40997 2012-04-19 19:54:24Z vboxsync $
+; $Id: VBoxInstallHelper.def 52592 2014-09-03 20:23:24Z vboxsync $
 ;; @file
 ; VBoxInstallHelper - Defines the exports the MSI engine uses.
 ;
@@ -24,9 +24,15 @@ EXPORTS
     UninstallBranding
     InstallNetFlt
     UninstallNetFlt
+    InstallNetLwf
+    UninstallNetLwf
     UninstallTAPInstances
     CreateHostOnlyInterface
     StopHostOnlyInterfaces
     UpdateHostOnlyInterfaces
     RemoveHostOnlyInterfaces
+    Ndis6CreateHostOnlyInterface
+    Ndis6StopHostOnlyInterfaces
+    Ndis6UpdateHostOnlyInterfaces
+    Ndis6RemoveHostOnlyInterfaces
 
