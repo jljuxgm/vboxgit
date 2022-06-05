@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVModes.cpp 52136 2014-07-22 19:36:45Z vboxsync $ */
+/* $Id: VBoxMPVModes.cpp 52450 2014-08-21 19:11:11Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -84,6 +84,13 @@ static void vboxWddmVModesInit(VBOXWDDM_VMODES *pModes, uint32_t cTargets)
     VBoxVModesInit(&pModes->Modes, cTargets);
     memset(pModes->aTransientResolutions, 0, cTargets * sizeof (pModes->aTransientResolutions[0]));
     memset(pModes->aPendingRemoveCurResolutions, 0, cTargets * sizeof (pModes->aPendingRemoveCurResolutions[0]));
+}
+
+static void vboxWddmVModesCleanup(VBOXWDDM_VMODES *pModes)
+{
+    VBoxVModesCleanup(&pModes->Modes);
+    memset(pModes->aTransientResolutions, 0, sizeof (pModes->aTransientResolutions));
+    memset(pModes->aPendingRemoveCurResolutions, 0, sizeof (pModes->aPendingRemoveCurResolutions));
 }
 
 /*
@@ -383,6 +390,11 @@ int voxWddmVModesInitForTarget(PVBOXMP_DEVEXT pExt, VBOXWDDM_VMODES *pModes, uin
 
 static VBOXWDDM_VMODES g_VBoxWddmVModes;
 
+void VBoxWddmVModesCleanup()
+{
+    VBOXWDDM_VMODES *pModes = &g_VBoxWddmVModes;
+    vboxWddmVModesCleanup(pModes);
+}
 
 int VBoxWddmVModesInit(PVBOXMP_DEVEXT pExt)
 {

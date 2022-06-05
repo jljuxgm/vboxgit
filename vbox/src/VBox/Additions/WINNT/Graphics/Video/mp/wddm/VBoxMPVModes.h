@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVModes.h 52136 2014-07-22 19:36:45Z vboxsync $ */
+/* $Id: VBoxMPVModes.h 52450 2014-08-21 19:11:11Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -33,6 +33,7 @@ DECLINLINE(RTRECTSIZE) vboxU642RSize2(uint64_t size) { return *_CR_TYPECAST(RTRE
 #define CR_U642RSIZE vboxU642RSize2
 
 int VBoxWddmVModesInit(PVBOXMP_DEVEXT pExt);
+void VBoxWddmVModesCleanup();
 const CR_SORTARRAY* VBoxWddmVModesGet(PVBOXMP_DEVEXT pExt, uint32_t u32Target);
 int VBoxWddmVModesRemove(PVBOXMP_DEVEXT pExt, uint32_t u32Target, const RTRECTSIZE *pResolution);
 int VBoxWddmVModesAdd(PVBOXMP_DEVEXT pExt, uint32_t u32Target, const RTRECTSIZE *pResolution, BOOLEAN fTrancient);

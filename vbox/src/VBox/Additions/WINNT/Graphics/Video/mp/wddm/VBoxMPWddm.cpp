@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 52350 2014-08-11 18:30:55Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 52450 2014-08-21 19:11:11Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1351,6 +1351,7 @@ NTSTATUS DxgkDdiStopDevice(
     {
         vboxWddmVGuidFree(pDevExt);
 
+        VBoxWddmVModesCleanup();
         /* revert back to the state we were right after the DxgkDdiAddDevice */
         vboxWddmDevExtZeroinit(pDevExt, pDevExt->pPDO);
     }
