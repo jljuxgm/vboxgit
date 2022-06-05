@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52059 2014-07-16 18:24:26Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52060 2014-07-16 18:28:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -541,9 +541,6 @@ void UIStatusBarEditorWindow::prepare()
     prepareAnimation();
     /* Prepare geometry: */
     prepareGeometry();
-
-    /* Activate window: */
-    activateWindow();
 }
 
 void UIStatusBarEditorWindow::prepareStatusButtons()
