@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 53159 2014-10-28 14:51:59Z vboxsync $ */
+/* $Id: HostDnsService.h 53165 2014-10-29 16:26:20Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -157,7 +157,6 @@ class HostDnsServiceWin : public HostDnsMonitor
     virtual int monitorWorker();
 
     private:
-    void strList2List(std::vector<std::string>& lst, char *strLst);
     HRESULT updateInfo();
 
     private:
