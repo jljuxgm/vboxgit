@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
+/* $Id: ISCSI.cpp 49780 2013-12-04 18:26:46Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4458,7 +4458,7 @@ return the status of target and will clear any unit attention condition that it 
                 /* Log failures but continue. */
                 LogRel(("iSCSI: Could not enable read and write cache of target %s, rc=%Rrc status=%#x\n",
                         pImage->pszTargetName, rc, sr.status));
-                LogRel(("iSCSI: Sense:\n%.*Rhxd\n", sr.cbSense, sense));
+                LogRel(("iSCSI: Sense:\n%.*Rhxd\n", sr.cbSense, sr.abSense));
                 rc = VINF_SUCCESS;
             }
         }
@@ -4466,8 +4466,8 @@ return the status of target and will clear any unit attention condition that it 
     else
     {
         /* Log errors but continue. */
-        LogRel(("iSCSI: Could not check write cache of target %s, rc=%Rrc, got mode page %#x\n", pImage->pszTargetName, rc,aCachingModePage[0] & 0x3f));
-        LogRel(("iSCSI: Sense:\n%.*Rhxd\n", sr.cbSense, sense));
+        LogRel(("iSCSI: Could not check write cache of target %s, rc=%Rrc, got mode page %#x\n", pImage->pszTargetName, rc, aCachingModePage[0] & 0x3f));
+        LogRel(("iSCSI: Sense:\n%.*Rhxd\n", sr.cbSense, sr.abSense));
         rc = VINF_SUCCESS;
     }
 
