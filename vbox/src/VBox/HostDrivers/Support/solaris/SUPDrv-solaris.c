@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 49843 2013-12-09 13:51:55Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 50633 2014-02-27 15:03:00Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -138,7 +138,8 @@ static struct dev_ops g_VBoxDrvSolarisDevOps =
     nodev,                  /* reset */
     &g_VBoxDrvSolarisCbOps,
     (struct bus_ops *)0,
-    nodev                   /* power */
+    nodev,                  /* power */
+    ddi_quiesce_not_needed
 };
 
 /**
@@ -437,7 +438,6 @@ static int VBoxDrvSolarisDetach(dev_info_t *pDip, ddi_detach_cmd_t enmCmd)
             return DDI_FAILURE;
     }
 }
-
 
 
 /**
