@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 53249 2014-11-06 09:14:36Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 53250 2014-11-06 10:06:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2090,6 +2090,12 @@ bool UIExtraDataManager::activateHoveredMachineWindow()
 {
     /* 'False' unless feature allowed: */
     return isFeatureAllowed(GUI_ActivateHoveredMachineWindow);
+}
+
+void UIExtraDataManager::setActivateHoveredMachineWindow(bool fActivate)
+{
+    /* 'True' if feature allowed, null-string otherwise: */
+    setExtraDataString(GUI_ActivateHoveredMachineWindow, toFeatureAllowed(fActivate));
 }
 
 QStringList UIExtraDataManager::shortcutOverrides(const QString &strPoolExtraDataID)
