@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48374 2013-09-08 06:25:15Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48376 2013-09-09 06:52:41Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -119,12 +119,6 @@ typedef std::vector<NATSEVICEPORTFORWARDRULE> VECNATSERVICEPF;
 typedef VECNATSERVICEPF::iterator ITERATORNATSERVICEPF;
 typedef VECNATSERVICEPF::const_iterator CITERATORNATSERVICEPF;
 
-struct ip4address2off
-{
-    struct sockaddr_in addr;
-    uint32_t off;
-};
-
 class PortForwardListener;
 
 class VBoxNetLwipNAT: public VBoxNetBaseService
@@ -143,10 +137,6 @@ class VBoxNetLwipNAT: public VBoxNetBaseService
     struct proxy_options m_ProxyOptions;
     struct sockaddr_in m_src4;
     struct sockaddr_in6 m_src6;
-    /**
-     * place for registered local interfaces.
-     */
-    ip4address2off m_lo2off[10];
 
     uint16_t m_u16Mtu;
     netif m_LwipNetIf;
@@ -899,48 +889,6 @@ int VBoxNetLwipNAT::init()
             netPfStrToPf(com::Utf8Str(rules[idxRules]).c_str(), 1, &Rule.Pfr);
             m_vecPortForwardRule6.push_back(Rule);
         }
-
-#if 0 /* fetching local mappings */
-        com::SafeArray<BSTR> strs;
-        int count_strs;
-        hrc = net->COMGETTER(LocalMappings)(ComSafeArrayAsOutParam(strs));
-        if (   SUCCEEDED(hrc) 
-            && (count_strs = strs.size()))
-        {
-            unsigned int j = 0;
-            int i;
-
-            for (i = 0; i < count_strs && j < RT_ELEMENTS(m_lo2off); ++i)
-            {
-                char aszAddr[17];
-                RTNETADDRIPV4 ip4addr;
-                char *pszTerm;
-                uint32_t u32Off;
-                const char *pszLo2Off = com::Utf8Str(strs[i]).c_str();
-        
-                RT_ZERO(aszAddr);
-                
-                pszTerm = RTStrStr(pszLo2Off, ";");
-
-                if (   !pszTerm
-                    && (pszTerm - pszLo2Off) >= 17)
-                    continue;
-                
-                memcpy(aszAddr, pszLo2Off, (pszTerm - pszLo2Off));
-                rc = RTNetStrToIPv4Addr(aszAddr, &ip4addr);
-                if (RT_FAILURE(rc))
-                    continue;
-
-                u32Off = RTStrToUInt32(pszTerm + 1);
-                if (u32Off == 0)
-                    continue;
-
-                m_lo2off[j].addr.sin_addr.s_addr = ip4addr.u;
-                m_lo2off[j].off = u32Off;
-                ++j;
-            }
-        }
-#endif
     } /* if (!fDontLoadRulesOnStartup) */
 
     hrc = virtualbox->COMGETTER(HomeFolder)(bstr.asOutParam());
