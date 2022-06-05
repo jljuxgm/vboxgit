@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48140 2013-08-29 09:39:53Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 48153 2013-08-29 12:57:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1713,27 +1713,6 @@ static int hmR0SvmLoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
     STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatLoadGuestState, x);
     return rc;
-}
-
-
-/**
- * Loads the guest state on the way from ring-3.
- *
- * @returns VBox status code.
- * @param   pVM         Pointer to the VM.
- * @param   pVCpu       Pointer to the VMCPU.
- * @param   pCtx        Pointer to the guest-CPU context.
- *
- * @remarks No-long-jump zone!!!
- */
-VMMR0DECL(int) SVMR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
-{
-    /*
-     * Avoid reloading the guest state on longjmp reentrants and do it lazily just before executing the guest.
-     * This only helps when we get rescheduled more than once to a different host CPU on a longjmp trip before
-     * finally executing guest code.
-     */
-    return VINF_SUCCESS;
 }
 
 

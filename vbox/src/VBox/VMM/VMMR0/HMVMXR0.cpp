@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48140 2013-08-29 09:39:53Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48153 2013-08-29 12:57:00Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7199,32 +7199,6 @@ static void hmR0VmxLoadSharedState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 
     AssertMsg(!(pVCpu->hm.s.fContextUseFlags & HM_CHANGED_HOST_GUEST_SHARED_STATE), ("fContextUseFlags=%#x\n",
                                                                                      pVCpu->hm.s.fContextUseFlags));
-}
-
-
-/**
- * Loads the guest state into the VMCS guest-state area.
- *
- * @returns VBox status code.
- * @param   pVM         Pointer to the VM.
- * @param   pVCpu       Pointer to the VMCPU.
- * @param   pMixedCtx   Pointer to the guest-CPU context. The data may be
- *                      out-of-sync. Make sure to update the required fields
- *                      before using them.
- *
- * @remarks No-long-jump zone!!!
- */
-VMMR0DECL(int) VMXR0LoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
-{
-    /*
-     * Avoid reloading the guest state on longjmp reentrants and do it lazily just before executing the guest.
-     * When thread-context hooks are not used: This only helps when we get rescheduled more than once to a
-     * different host CPU on a longjmp trip before finally executing guest code.
-     *
-     * When thread-context hooks are used: We avoid loading the guest state here for the above reason plus
-     * we can avoid doing it while preemption is disabled (which it is here).
-     */
-    return VINF_SUCCESS;
 }
 
 
