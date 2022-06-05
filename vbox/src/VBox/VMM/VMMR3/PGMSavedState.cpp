@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 52692 2014-09-11 11:46:59Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 52693 2014-09-11 11:48:23Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3076,7 +3076,7 @@ static int pgmR3LoadFinalLocked(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
-        pVCpu->pgm.s.GCPhysA20Mask = ~((RTGCPHYS)!pVM->aCpus[i].pgm.s.fA20Enabled << 20);
+        pVCpu->pgm.s.GCPhysA20Mask = ~((RTGCPHYS)!pVCpu->pgm.s.fA20Enabled << 20);
         pgmR3RefreshShadowModeAfterA20Change(pVCpu);
     }
 
