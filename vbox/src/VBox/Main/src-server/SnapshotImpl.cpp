@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 52481 2014-08-22 17:27:48Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 52483 2014-08-22 22:02:30Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -1693,7 +1693,7 @@ HRESULT SessionMachine::restoreSnapshot(const ComPtr<IConsole> &aInitiator,
                  E_FAIL);
 
     ISnapshot* iSnapshot = aSnapshot;
-    ComObjPtr<Snapshot>pSnapshot(static_cast<Snapshot*>(iSnapshot));
+    ComObjPtr<Snapshot> pSnapshot(static_cast<Snapshot*>(iSnapshot));
     ComObjPtr<SnapshotMachine> pSnapMachine = pSnapshot->i_getSnapshotMachine();
 
     // create a progress object. The number of operations is:

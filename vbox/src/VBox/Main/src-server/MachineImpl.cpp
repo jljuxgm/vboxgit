@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 52481 2014-08-22 17:27:48Z vboxsync $ */
+/* $Id: MachineImpl.cpp 52483 2014-08-22 22:02:30Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -13062,12 +13062,12 @@ HRESULT SessionMachine::adoptSavedState(const com::Utf8Str &aSavedStateFile)
                  || mData->mMachineState == MachineState_Aborted
                  , E_FAIL); /** @todo setError. */
 
-    com::Utf8Str stateFilePathFull = aSavedStateFile;
+    com::Utf8Str stateFilePathFull;
     int vrc = i_calculateFullPath(aSavedStateFile, stateFilePathFull);
     if (RT_FAILURE(vrc))
         return setError(VBOX_E_FILE_ERROR,
                         tr("Invalid saved state file path '%s' (%Rrc)"),
-                        stateFilePathFull.c_str(),
+                        aSavedStateFile.c_str(),
                         vrc);
 
     mSSData->strStateFilePath = stateFilePathFull;
