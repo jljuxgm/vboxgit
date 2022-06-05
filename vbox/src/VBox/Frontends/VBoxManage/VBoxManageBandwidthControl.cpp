@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 49621 2013-11-22 11:15:41Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 50085 2014-01-16 09:42:33Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -107,6 +107,12 @@ static RTEXITCODE handleBandwidthControlAdd(HandlerArg *a, ComPtr<IBandwidthCont
 
 
     Bstr name(a->argv[2]);
+    if (name.isEmpty())
+    {
+        errorArgument("Bandwidth group name must not be empty!\n");
+        return RTEXITCODE_FAILURE;
+    }
+
     const char *pszType  = NULL;
     int64_t cMaxBytesPerSec = INT64_MAX;
 
