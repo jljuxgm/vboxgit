@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49896 2013-12-13 15:38:40Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49897 2013-12-13 15:42:31Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -879,9 +879,15 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu)
         pVCpu->hm.s.uCurrentAsid         = 1;
         pVCpu->hm.s.cTlbFlushes          = pCpu->cTlbFlushes;
         pVmcb->ctrl.TLBCtrl.n.u8TLBFlush = SVM_TLB_FLUSH_ENTIRE;
+
+        /* Clear the VMCB Clean Bit for NP while flushing the TLB. See @bugref{7152}. */
+        pVmcb->ctrl.u64VmcbCleanBits    &= ~HMSVM_VMCB_CLEAN_NP;
     }
     else if (pVCpu->hm.s.fForceTLBFlush)
     {
+        /* Clear the VMCB Clean Bit for NP while flushing the TLB. See @bugref{7152}. */
+        pVmcb->ctrl.u64VmcbCleanBits    &= ~HMSVM_VMCB_CLEAN_NP;
+
         if (fNewAsid)
         {
             ++pCpu->uCurrentAsid;
