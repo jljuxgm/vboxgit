@@ -1,4 +1,4 @@
-/* $Id: error.c 53374 2014-11-21 16:42:52Z vboxsync $ */
+/* $Id: error.c 53390 2014-11-24 17:16:42Z vboxsync $ */
 /** @file
  * VBox crOpenGL error logging
  */
@@ -15,6 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 #if 1
+
+#define LOG_GROUP LOG_GROUP_SHARED_CROPENGL
 
 #include <iprt/string.h>
 #include <iprt/stream.h>
@@ -58,7 +60,11 @@ static void logDebugV(const char *pszPrefix, const char *pszFormat, va_list va)
     RTStrAPrintfV(&pszMessage, pszFormat, va);
     if (pszMessage != NULL)
     {
+#if defined(DEBUG_vgalitsy) || defined(DEBUG_galitsyn)
+        LogRel(("%s%s\n", pszPrefix, pszMessage));
+#else
         Log(("%s%s\n", pszPrefix, pszMessage));
+#endif
         RTStrFree(pszMessage);
     }
 }
