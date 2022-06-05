@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 47572 2013-08-07 09:51:45Z vboxsync $ */
+/* $Id: SUPDrv.c 48152 2013-08-29 12:51:26Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5163,7 +5163,7 @@ static int supdrvGipCreate(PSUPDRVDEVEXT pDevExt)
         }
     }
     if (pGip->u32Mode != SUPGIPMODE_ASYNC_TSC)
-        rc = RTTimerCreateEx(&pDevExt->pGipTimer, u32Interval, 0, supdrvGipSyncTimer, pDevExt);
+        rc = RTTimerCreateEx(&pDevExt->pGipTimer, u32Interval, 0 /* fFlags */, supdrvGipSyncTimer, pDevExt);
     if (RT_SUCCESS(rc))
     {
         rc = RTMpNotificationRegister(supdrvGipMpEvent, pDevExt);
