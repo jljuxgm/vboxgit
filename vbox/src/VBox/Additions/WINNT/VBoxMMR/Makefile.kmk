@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 44974 2013-03-11 11:16:31Z vboxsync $
+# $Id: Makefile.kmk 50766 2014-03-13 14:29:07Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxMMR.
 #
@@ -71,9 +71,9 @@ VBoxMMRHook_INCS := \
 	$(SUB_DEPTH)/include
 
 VBoxMMRHook_LIBS.x86  := \
-	$(VBOX_PATH_PSDK_v71)/Lib/WS2_32.lib
+	$(VBOX_PATH_PSDK_v71)/Lib/WS2_32.Lib
 VBoxMMRHook_LIBS.amd64  := \
-	$(VBOX_PATH_PSDK_v71)/Lib/x64/WS2_32.lib
+	$(VBOX_PATH_PSDK_v71)/Lib/x64/WS2_32.Lib
 
 VBoxMMRHook_LIBS    += \
  	$(VBOX_LIB_IPRT_GUEST_R3) \
