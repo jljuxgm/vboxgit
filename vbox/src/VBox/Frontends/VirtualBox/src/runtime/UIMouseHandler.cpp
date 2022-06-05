@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 50807 2014-03-18 09:35:35Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 50823 2014-03-19 12:55:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -21,7 +21,6 @@
 #include <QDesktopWidget>
 #include <QMouseEvent>
 #include <QTouchEvent>
-#include <QTimer>
 
 /* GUI includes: */
 #include "VBoxGlobal.h"
@@ -597,8 +596,8 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                         m_windows.values().contains(pWatchedWidget->window()) &&
                         QApplication::activeWindow() != pWatchedWidget->window())
                     {
-                        /* Activating hovered machine-window in 300msec: */
-                        QTimer::singleShot(300, pWatchedWidget->window(), SLOT(sltActivateWindow()));
+                        /* Activating hovered machine window: */
+                        pWatchedWidget->window()->activateWindow();
 #ifdef Q_WS_X11
                         /* On X11 its not enough to just activate window if you
                          * want to raise it also, so we will make it separately: */
