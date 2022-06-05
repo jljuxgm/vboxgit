@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 51158 2014-04-28 17:33:21Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 51664 2014-06-19 11:28:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -38,6 +38,7 @@
 #include "UIVMCloseDialog.h"
 #include "UIConverter.h"
 #include "UIModalWindowManager.h"
+#include "UIExtraDataManager.h"
 
 /* COM includes: */
 #include "CConsole.h"
@@ -261,7 +262,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
     CMachine m = machine();
 
     /* If there is a close hook script defined: */
-    QString strScript = m.GetExtraData(GUI_CloseActionHook);
+    const QString strScript = gEDataManager->machineCloseHookScript(vboxGlobal().managedVMUuid());
     if (!strScript.isEmpty())
     {
         /* Execute asynchronously and leave: */

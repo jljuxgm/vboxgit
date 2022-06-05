@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51663 2014-06-19 11:20:16Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51664 2014-06-19 11:28:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1008,6 +1008,11 @@ MachineCloseAction UIExtraDataManager::lastMachineCloseAction(const QString &str
 void UIExtraDataManager::setLastMachineCloseAction(MachineCloseAction machineCloseAction, const QString &strID)
 {
     setExtraDataString(GUI_LastCloseAction, gpConverter->toInternalString(machineCloseAction), strID);
+}
+
+QString UIExtraDataManager::machineCloseHookScript(const QString &strID) const
+{
+    return extraDataString(GUI_CloseActionHook, strID);
 }
 
 void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey, QString strValue)
