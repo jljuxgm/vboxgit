@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 49563 2013-11-20 07:13:46Z vboxsync $ */
+/* $Id: Config.cpp 49566 2013-11-20 08:49:10Z vboxsync $ */
 
 /**
  * XXX: license.
@@ -741,7 +741,6 @@ int NetworkManager::offer4Client(const Client& client, uint32_t u32Xid,
     return doReply(client, extra);
 }
 
-
 /**
  * Network manager creates DHCPACK
  */
@@ -793,7 +792,6 @@ int NetworkManager::ack(const Client& client, uint32_t u32Xid,
 
     return doReply(client, extra);
 }
-
 
 /**
  * Network manager creates DHCPNAK

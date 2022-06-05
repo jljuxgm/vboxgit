@@ -1,4 +1,4 @@
-/* $Id: Config.h 49565 2013-11-20 07:35:28Z vboxsync $ */
+/* $Id: Config.h 49566 2013-11-20 08:49:10Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -164,7 +164,6 @@ typedef std::map<Lease, RTNETADDRIPV4> MapLease2Ip4Address;
 typedef MapLease2Ip4Address::iterator MapLease2Ip4AddressIterator;
 typedef MapLease2Ip4Address::const_iterator MapLease2Ip4AddressConstIterator;
 typedef MapLease2Ip4Address::value_type MapLease2Ip4AddressPair;
-
 
 /**
  *

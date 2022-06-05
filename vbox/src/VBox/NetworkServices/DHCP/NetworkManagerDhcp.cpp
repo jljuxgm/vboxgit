@@ -1,4 +1,4 @@
-/* $Id: NetworkManagerDhcp.cpp 49563 2013-11-20 07:13:46Z vboxsync $ */
+/* $Id: NetworkManagerDhcp.cpp 49566 2013-11-20 08:49:10Z vboxsync $ */
 /** @file
  * NetworkManagerDhcp - Network Manager part handling Dhcp.
  */
@@ -36,6 +36,7 @@
 
 #include <VBox/sup.h>
 #include <VBox/intnet.h>
+
 #include "Config.h"
 #include "ClientDataInt.h"
 
