@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 49928 2013-12-16 12:38:05Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 49935 2013-12-16 14:57:43Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -1823,7 +1823,6 @@ static void darwinUsbHidGeneralInterestCb(void *pData, io_service_t unused1, nat
             {
                 LogRel2(("IOUSBInterface IOService general interest notification kIOUSBMessageCompositeDriverReconfigured for KBD %d (Location ID: 0x%X)\n",
                          (int)(pKbd->idxPosition), pKbd->idLocation));
-                darwinUsbHidResyncLeds(pKbd);
                 break;
             }
 
