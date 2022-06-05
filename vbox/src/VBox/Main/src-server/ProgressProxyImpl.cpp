@@ -1,10 +1,10 @@
-/* $Id: ProgressProxyImpl.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 51687 2014-06-23 11:23:59Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -82,8 +82,7 @@ HRESULT ProgressProxy::init(
                           1 /* cOperations */,
                           1 /* ulTotalOperationsWeight */,
                           bstrDescription /* bstrFirstOperationDescription */,
-                          1 /* ulFirstOperationWeight */,
-                          NULL /* pId */);
+                          1 /* ulFirstOperationWeight */);
 }
 
 /**
@@ -123,8 +122,7 @@ HRESULT ProgressProxy::init(
                           1 + cOtherProgressObjectOperations /* cOperations */,
                           uTotalOperationsWeight,
                           bstrFirstOperationDescription,
-                          uFirstOperationWeight,
-                          NULL);
+                          uFirstOperationWeight);
 }
 
 void ProgressProxy::FinalRelease()

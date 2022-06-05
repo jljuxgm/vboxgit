@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 51687 2014-06-23 11:23:59Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -609,8 +609,7 @@ HRESULT ExtPackFile::install(BOOL aReplace, const com::Utf8Str &aDisplayInfo, Co
 #endif
                                               static_cast<IExtPackFile *>(this),
                                               bstrDescription.raw(),
-                                              FALSE /*aCancelable*/,
-                                              NULL /*aId*/);
+                                              FALSE /*aCancelable*/);
             }
             if (SUCCEEDED(hrc))
             {
@@ -1988,8 +1987,7 @@ HRESULT ExtPackManager::uninstall(const com::Utf8Str &aName, BOOL aForcedRemoval
 #endif
                                           static_cast<IExtPackManager *>(this),
                                           bstrDescription.raw(),
-                                          FALSE /*aCancelable*/,
-                                          NULL /*aId*/);
+                                          FALSE /*aCancelable*/);
         }
         if (SUCCEEDED(hrc))
         {

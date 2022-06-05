@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 51630 2014-06-17 12:52:44Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 51687 2014-06-23 11:23:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6923,8 +6923,7 @@ HRESULT Console::i_powerUp(IProgress **aProgress, bool aPaused)
                                         cOperations,
                                         ulTotalOperationsWeight,
                                         Bstr(tr("Starting Hard Disk operations")).raw(),
-                                        1,
-                                        NULL);
+                                        1);
             AssertComRCReturnRC(rc);
         }
         else if (    mMachineState == MachineState_Saved
@@ -6942,8 +6941,7 @@ HRESULT Console::i_powerUp(IProgress **aProgress, bool aPaused)
                                         3    /* cOperations */,
                                         10   /* ulTotalOperationsWeight */,
                                         Bstr(tr("Teleporting virtual machine")).raw(),
-                                        1    /* ulFirstOperationWeight */,
-                                        NULL);
+                                        1    /* ulFirstOperationWeight */);
         }
         else if (fFaultToleranceSyncEnabled)
         {
@@ -6953,8 +6951,7 @@ HRESULT Console::i_powerUp(IProgress **aProgress, bool aPaused)
                                         3    /* cOperations */,
                                         10   /* ulTotalOperationsWeight */,
                                         Bstr(tr("Fault Tolerance syncing of remote virtual machine")).raw(),
-                                        1    /* ulFirstOperationWeight */,
-                                        NULL);
+                                        1    /* ulFirstOperationWeight */);
         }
 
         if (FAILED(rc))
