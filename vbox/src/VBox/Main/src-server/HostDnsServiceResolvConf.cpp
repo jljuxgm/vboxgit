@@ -1,6 +1,6 @@
-/* $Id: HostDnsServiceResolvConf.cpp 53122 2014-10-22 20:43:04Z vboxsync $ */
+/* $Id: HostDnsServiceResolvConf.cpp 53123 2014-10-22 20:46:01Z vboxsync $ */
 /** @file
- * Base class fo Host DNS & Co services.
+ * Base class for Host DNS & Co services.
  */
 
 /*
