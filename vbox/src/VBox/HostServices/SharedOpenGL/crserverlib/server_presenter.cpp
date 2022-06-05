@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 50100 2014-01-17 18:32:44Z vboxsync $ */
+/* $Id: server_presenter.cpp 50108 2014-01-20 10:24:47Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -2877,7 +2877,7 @@ int CrPMgrScreenChanged(uint32_t idScreen)
     if (idScreen >= CR_MAX_GUEST_MONITORS)
     {
         WARN(("invalid idScreen %d", idScreen));
-        return NULL;
+        return VERR_INVALID_PARAMETER;
     }
 
     CR_FBDISPLAY_INFO *pInfo = &g_CrPresenter.aDisplayInfos[idScreen];
