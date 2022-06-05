@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 48236 2013-09-02 19:14:55Z vboxsync $ */
+/* $Id: VMMR0.cpp 48391 2013-09-09 12:51:09Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -449,7 +449,7 @@ VMMR0DECL(int) VMMR0ThreadCtxHooksCreate(PVMCPU pVCpu)
 {
     VMCPU_ASSERT_EMT(pVCpu);
     Assert(pVCpu->vmm.s.hR0ThreadCtx == NIL_RTTHREADCTX);
-#if defined(RT_OS_SOLARIS) || defined(RT_OS_LINUX)
+#if 0  /* Not stable. */
     int rc = RTThreadCtxHooksCreate(&pVCpu->vmm.s.hR0ThreadCtx);
     if (   RT_FAILURE(rc)
         && rc != VERR_NOT_SUPPORTED)
