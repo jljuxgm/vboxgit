@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 51489 2014-06-02 15:28:06Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 51556 2014-06-05 14:38:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -25,6 +25,7 @@
 #include "Global.h"
 #include "AutoCaller.h"
 
+#include <algorithm> /* For std::find(). */
 #include <iprt/cpp/utils.h> /* For unconst(). */
 
 #include <VBox/com/array.h>
@@ -89,7 +90,51 @@ void GuestDnDTarget::uninit(void)
         return;
 }
 
-// implementation of wrapped private getters/setters for attributes
+// implementation of wrapped IDnDBase methods.
+/////////////////////////////////////////////////////////////////////////////
+
+HRESULT GuestDnDTarget::isFormatSupported(const com::Utf8Str &aFormat,
+                                          BOOL *aSupported)
+{
+#if !defined(VBOX_WITH_DRAG_AND_DROP) || !defined(VBOX_WITH_DRAG_AND_DROP_GH)
+    ReturnComNotImplemented();
+#else /* VBOX_WITH_DRAG_AND_DROP */
+
+    return GuestDnDBase::isFormatSupported(aFormat, aSupported);
+#endif /* VBOX_WITH_DRAG_AND_DROP */
+}
+
+HRESULT GuestDnDTarget::getFormats(std::vector<com::Utf8Str> &aFormats)
+{
+#if !defined(VBOX_WITH_DRAG_AND_DROP) || !defined(VBOX_WITH_DRAG_AND_DROP_GH)
+    ReturnComNotImplemented();
+#else /* VBOX_WITH_DRAG_AND_DROP */
+
+    return GuestDnDBase::getFormats(aFormats);
+#endif /* VBOX_WITH_DRAG_AND_DROP */
+}
+
+HRESULT GuestDnDTarget::addFormats(const std::vector<com::Utf8Str> &aFormats)
+{
+#if !defined(VBOX_WITH_DRAG_AND_DROP) || !defined(VBOX_WITH_DRAG_AND_DROP_GH)
+    ReturnComNotImplemented();
+#else /* VBOX_WITH_DRAG_AND_DROP */
+
+    return GuestDnDBase::addFormats(aFormats);
+#endif /* VBOX_WITH_DRAG_AND_DROP */
+}
+
+HRESULT GuestDnDTarget::removeFormats(const std::vector<com::Utf8Str> &aFormats)
+{
+#if !defined(VBOX_WITH_DRAG_AND_DROP) || !defined(VBOX_WITH_DRAG_AND_DROP_GH)
+    ReturnComNotImplemented();
+#else /* VBOX_WITH_DRAG_AND_DROP */
+
+    return GuestDnDBase::removeFormats(aFormats);
+#endif /* VBOX_WITH_DRAG_AND_DROP */
+}
+
+// implementation of wrapped IDnDTarget methods.
 /////////////////////////////////////////////////////////////////////////////
 
 HRESULT GuestDnDTarget::enter(ULONG aScreenId, ULONG aX, ULONG aY,
@@ -126,8 +171,7 @@ HRESULT GuestDnDTarget::enter(ULONG aScreenId, ULONG aX, ULONG aY,
         return S_OK;
 
     /* Make a flat data string out of the supported format list. */
-    Utf8Str strFormats = GuestDnD::toFormatString(GuestDnDInst()->supportedFormats(),
-                                                  aFormats);
+    Utf8Str strFormats = GuestDnD::toFormatString(m_strFormats, aFormats);
     /* If there is no valid supported format, ignore this request. */
     if (strFormats.isEmpty())
         return S_OK;
@@ -194,8 +238,7 @@ HRESULT GuestDnDTarget::move(ULONG aScreenId, ULONG aX, ULONG aY,
         return S_OK;
 
     /* Make a flat data string out of the supported format list. */
-    RTCString strFormats = GuestDnD::toFormatString(GuestDnDInst()->supportedFormats(),
-                                                    aFormats);
+    RTCString strFormats = GuestDnD::toFormatString(m_strFormats, aFormats);
     /* If there is no valid supported format, ignore this request. */
     if (strFormats.isEmpty())
         return S_OK;
@@ -287,8 +330,7 @@ HRESULT GuestDnDTarget::drop(ULONG aScreenId, ULONG aX, ULONG aY,
         return S_OK;
 
     /* Make a flat data string out of the supported format list. */
-    Utf8Str strFormats = GuestDnD::toFormatString(GuestDnDInst()->supportedFormats(),
-                                                  aFormats);
+    Utf8Str strFormats = GuestDnD::toFormatString(m_strFormats, aFormats);
     /* If there is no valid supported format, ignore this request. */
     if (strFormats.isEmpty())
         return S_OK;

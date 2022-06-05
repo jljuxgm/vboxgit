@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 51556 2014-06-05 14:38:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -22,7 +22,8 @@
 #include "GuestDnDPrivate.h"
 
 class ATL_NO_VTABLE GuestDnDSource :
-    public GuestDnDSourceWrap
+    public GuestDnDSourceWrap,
+    protected GuestDnDBase
 {
 public:
     /** @name COM and internal init/term/mapping cruft.
@@ -38,7 +39,15 @@ public:
 
 private:
 
-    /** Wrapped @name IDnDSource methods.
+    /** Private wrapped @name IDnDBase methods.
+     * @{ */
+    HRESULT isFormatSupported(const com::Utf8Str &aFormat, BOOL *aSupported);
+    HRESULT getFormats(std::vector<com::Utf8Str> &aFormats);
+    HRESULT addFormats(const std::vector<com::Utf8Str> &aFormats);
+    HRESULT removeFormats(const std::vector<com::Utf8Str> &aFormats);
+    /** @}  */
+
+    /** Private wrapped @name IDnDSource methods.
      * @{ */
     HRESULT dragIsPending(ULONG uScreenId, std::vector<com::Utf8Str> &aFormats, std::vector<DnDAction_T> &aAllowedActions, DnDAction_T *aDefaultAction);
     HRESULT drop(const com::Utf8Str &aFormat, DnDAction_T aAction, ComPtr<IProgress> &aProgress);
