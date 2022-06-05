@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 52252 2014-08-01 08:17:46Z vboxsync $ */
+/* $Id: SessionImpl.cpp 52481 2014-08-22 17:27:48Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -268,12 +268,12 @@ HRESULT Session::getRemoteConsole(ComPtr<IConsole> &aConsole)
 
 #ifndef VBOX_WITH_GENERIC_SESSION_WATCHER
 HRESULT Session::assignMachine(const ComPtr<IMachine> &aMachine,
-                          LockType_T aLockType,
-                          const com::Utf8Str &aTokenId)
+                               LockType_T aLockType,
+                               const com::Utf8Str &aTokenId)
 #else
 HRESULT Session::assignMachine(const ComPtr<IMachine> &aMachine,
-                          LockType_T aLockType,
-                          const ComPtr<IToken> &aToken)
+                               LockType_T aLockType,
+                               const ComPtr<IToken> &aToken)
 #endif /* !VBOX_WITH_GENERIC_SESSION_WATCHER */
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
