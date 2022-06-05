@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 47506 2013-08-01 12:08:51Z vboxsync $ */
+/* $Id: ip_icmp.c 50012 2013-12-31 01:33:36Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -750,7 +750,7 @@ end_error:
     /*
      * clear source datagramm in case if some of requirement haven't been met.
      */
-    if (!msrc)
+    if (msrc)
         m_freem(pData, msrc);
 
     {
