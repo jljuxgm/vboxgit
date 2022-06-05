@@ -1,10 +1,10 @@
-/* $Id: CPUMAllRegs.cpp 48544 2013-09-19 16:10:47Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 48567 2013-09-19 22:51:40Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
