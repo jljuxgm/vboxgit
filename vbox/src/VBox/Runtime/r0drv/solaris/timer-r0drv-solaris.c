@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 48165 2013-08-29 17:16:42Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 48167 2013-08-29 17:20:56Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -348,7 +348,8 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
         pSingleTimer->hHandler.cyh_level = CY_LOCK_LEVEL;
 
         mutex_enter(&cpu_lock);
-        if (iCpu != SOL_TIMER_ANY_CPU && !cpu_is_online(cpu[iCpu]))
+        if (   iCpu != SOL_TIMER_ANY_CPU
+            && !cpu_is_online(cpu[iCpu]))
         {
             mutex_exit(&cpu_lock);
             RTMemFree(pSingleTimer);
