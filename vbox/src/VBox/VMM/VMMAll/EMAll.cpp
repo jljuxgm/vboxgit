@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 48066 2013-08-26 15:05:20Z vboxsync $ */
+/* $Id: EMAll.cpp 48177 2013-08-30 03:05:26Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -3079,7 +3079,6 @@ static int emInterpretCmpXchg(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTX
  */
 static int emInterpretCmpXchg8b(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, uint32_t *pcbSize)
 {
-    Assert(pDis->uCpuMode != DISCPUMODE_64BIT);    /** @todo check */
     DISQPVPARAMVAL param1;
     NOREF(pvFault);
 
