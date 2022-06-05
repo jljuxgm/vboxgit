@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49537 2013-11-18 16:19:01Z vboxsync $
+# $Id: Makefile.kmk 49547 2013-11-19 09:58:32Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1434,7 +1434,7 @@ endif # linux
 #
 VBoxRT-x86_EXTENDS = VBoxRT
 VBoxRT-x86_TEMPLATE = VBoxR3Dll-x86
-VBoxRT-x86_INST = $(INST_DLL)x86/
+VBoxRT-x86_INST.win = $(INST_DLL)x86/
 VBoxRT-x86_SDKS  = VBOX_LIBXML2
 ifdef VBOX_WITH_LIBCURL
  VBoxRT-x86_SDKS += VBOX_LIBCURL-x86
