@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 50996 2014-04-08 13:15:27Z vboxsync $ */
+/* $Id: Settings.cpp 51212 2014-05-08 10:56:45Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -5497,13 +5497,14 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
                     if (ctrl.strName != "OHCI")
                         fNonStdName = true;
                     break;
-               case USBControllerType_EHCI:
+                case USBControllerType_EHCI:
                     cEhciCtrls++;
                     if (ctrl.strName != "EHCI")
                         fNonStdName = true;
                     break;
                 default:
-                    AssertMsgFailed(("Unknown USB controller type %d\n", ctrl.enmType));
+                    /* Anything unknown forces a bump. */
+                    fNonStdName = true;
             }
 
             /* Skip checking other controllers if the settings bump is necessary. */
