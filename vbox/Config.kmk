@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52321 2014-08-08 11:05:03Z vboxsync $
+# $Id: Config.kmk 52326 2014-08-08 13:26:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1741,7 +1741,7 @@ endif
 #
 # Note! Users of older pylint release (< 1.0) needs to define
 #       VBOX_WITH_PYLINT_PRE_V1_0 in LocalConfig because they changed the
-#	 output arguments in an backwards incompatible way and added more
+#       output arguments in an backwards incompatible way and added more
 #       attribute regex options.
 #
 ifndef VBOX_PYLINT
@@ -5702,7 +5702,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52321 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52326 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
