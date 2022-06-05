@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 52947 2014-10-05 16:48:25Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52954 2014-10-06 13:44:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -55,6 +55,9 @@ typedef enum SUPHARDNTVPKIND
 } SUPHARDNTVPKIND;
 DECLHIDDEN(int)     supHardenedWinVerifyProcess(HANDLE hProcess, HANDLE hThread, SUPHARDNTVPKIND enmKind,
                                                 uint32_t *pcFixes, PRTERRINFO pErrInfo);
+DECLHIDDEN(int)     supHardNtVpThread(HANDLE hProcess, HANDLE hThread, PRTERRINFO pErrInfo);
+DECLHIDDEN(int)     supHardNtVpDebugger(HANDLE hProcess, PRTERRINFO pErrInfo);
+
 
 DECLHIDDEN(bool)    supHardViUtf16PathIsEqualEx(PCRTUTF16 pawcLeft, size_t cwcLeft, const char *pszRight);
 DECLHIDDEN(bool)    supHardViUniStrPathStartsWithUniStr(UNICODE_STRING const *pUniStrLeft,
