@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 52734 2014-09-12 18:06:07Z vboxsync $ */
+/* $Id: EventImpl.cpp 53160 2014-10-28 16:26:43Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -1148,10 +1148,8 @@ HRESULT EventSource::getEvent(const ComPtr<IEventListener> &aListener,
     Listeners::iterator it = m->mListeners.find(aListener);
     HRESULT rc = S_OK;
 
-    IEvent *ae = aEvent;
-
     if (it != m->mListeners.end())
-        rc = it->second.obj()->dequeue(&ae, aTimeout, alock);
+        rc = it->second.obj()->dequeue(aEvent.asOutParam(), aTimeout, alock);
     else
         rc = setError(VBOX_E_OBJECT_NOT_FOUND,
                       tr("Listener was never registered"));
