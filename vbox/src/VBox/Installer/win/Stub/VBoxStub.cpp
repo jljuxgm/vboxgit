@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 51126 2014-04-23 15:19:32Z vboxsync $ */
+/* $Id: VBoxStub.cpp 51128 2014-04-23 15:29:16Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -914,8 +914,8 @@ int WINAPI WinMain(HINSTANCE  hInstance,
                 ShowInfo("-- %s v%d.%d.%d.%d --\n"
                          "\n"
                          "Command Line Parameters:\n\n"
-                         "--help                   - Print this help and exit\n"
                          "--extract                - Extract file contents to temporary directory\n"
+                         "--help                   - Print this help and exit\n"
                          "--logging                - Enables installer logging\n"
                          "--msiparams <parameters> - Specifies extra parameters for the MSI installers\n"
                          "--no-silent-cert         - Do not install VirtualBox Certificate automatically when --silent option is specified\n"
