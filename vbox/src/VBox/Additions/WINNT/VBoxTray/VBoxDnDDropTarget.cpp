@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropTarget.cpp 50732 2014-03-10 09:37:10Z vboxsync $ */
+/* $Id: VBoxDnDDropTarget.cpp 50734 2014-03-10 13:54:03Z vboxsync $ */
 /** @file
  * VBoxDnDTarget.cpp - IDropTarget implementation.
  */
@@ -463,7 +463,6 @@ STDMETHODIMP VBoxDnDDropTarget::Drop(IDataObject *pDataObject,
                             {
                                 RTCString strRoot = lstURI.RootToString();
                                 size_t cbRoot = strRoot.length() + 1; /* Include termination */
-                                Assert(cbRoot);
 
                                 mpvData = RTMemAlloc(cbRoot);
                                 if (mpvData)
