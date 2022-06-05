@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 50662 2014-03-03 10:14:58Z vboxsync $ */
+/* $Id: vboxvideo.c 50668 2014-03-03 16:22:36Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -433,7 +433,7 @@ vbox_output_add_mode (VBOXPtr pVBox, DisplayModePtr *pModes,
                       const char *pszName, int x, int y,
                       Bool isPreferred, Bool isUserDef)
 {
-    TRACE_LOG("pszName=%s, x=%d, y=%d\n", pszName, x, y);
+    TRACE_LOG("pszName=%s, x=%d, y=%d\n", pszName ? pszName : "(null)", x, y);
     DisplayModePtr pMode = xnfcalloc(1, sizeof(DisplayModeRec));
 
     pMode->status        = MODE_OK;
