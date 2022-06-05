@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 52816 2014-09-22 13:46:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportApp class implementation.
  */
@@ -180,7 +180,7 @@ QString UIWizardExportApp::uri(bool fWithFile) const
                 uri = QString("%1%2").arg(uri).arg(field("username").toString());
             if (!field("password").toString().isEmpty())
                 uri = QString("%1:%2").arg(uri).arg(field("password").toString());
-            if (!field("username").toString().isEmpty() || !field("username").toString().isEmpty())
+            if (!field("username").toString().isEmpty() || !field("password").toString().isEmpty())
                 uri = QString("%1@").arg(uri);
             uri = QString("%1%2/%3/%4").arg(uri).arg("object.storage.network.com").arg(field("bucket").toString()).arg(path);
             return uri;

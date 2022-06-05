@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 52816 2014-09-22 13:46:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class implementation.
  */
@@ -480,11 +480,11 @@ QString QIFileDialog::getSaveFileName (const QString &aStartWith,
 
             ofn.lStructSize = sizeof (OPENFILENAME);
             ofn.hwndOwner = topParent ? topParent->winId() : 0;
-            ofn.lpstrFilter = (TCHAR *) winFilters.isNull() ? 0 : winFilters.utf16();
+            ofn.lpstrFilter = (TCHAR *)(winFilters.isNull() ? 0 : winFilters.utf16());
             ofn.lpstrFile = buf;
             ofn.nMaxFile = sizeof (buf) - 1;
-            ofn.lpstrInitialDir = (TCHAR *) workDir.isNull() ? 0 : workDir.utf16();
-            ofn.lpstrTitle = (TCHAR *) title.isNull() ? 0 : title.utf16();
+            ofn.lpstrInitialDir = (TCHAR *)(workDir.isNull() ? 0 : workDir.utf16());
+            ofn.lpstrTitle = (TCHAR *)(title.isNull() ? 0 : title.utf16());
             ofn.Flags = (OFN_NOCHANGEDIR | OFN_HIDEREADONLY |
                          OFN_EXPLORER | OFN_ENABLEHOOK |
                          OFN_NOTESTFILECREATE | (m_fConfirmOverwrite ? OFN_OVERWRITEPROMPT : 0));
@@ -737,11 +737,11 @@ QStringList QIFileDialog::getOpenFileNames (const QString &aStartWith,
 
             ofn.lStructSize = sizeof (OPENFILENAME);
             ofn.hwndOwner = topParent ? topParent->winId() : 0;
-            ofn.lpstrFilter = (TCHAR *) winFilters.isNull() ? 0 : winFilters.utf16();
+            ofn.lpstrFilter = (TCHAR *)(winFilters.isNull() ? 0 : winFilters.utf16());
             ofn.lpstrFile = buf;
             ofn.nMaxFile = sizeof (buf) - 1;
-            ofn.lpstrInitialDir = (TCHAR *) workDir.isNull() ? 0 : workDir.utf16();
-            ofn.lpstrTitle = (TCHAR *) title.isNull() ? 0 : title.utf16();
+            ofn.lpstrInitialDir = (TCHAR *)(workDir.isNull() ? 0 : workDir.utf16());
+            ofn.lpstrTitle = (TCHAR *)(title.isNull() ? 0 : title.utf16());
             ofn.Flags = (OFN_NOCHANGEDIR | OFN_HIDEREADONLY |
                           OFN_EXPLORER | OFN_ENABLEHOOK |
                           OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST);
