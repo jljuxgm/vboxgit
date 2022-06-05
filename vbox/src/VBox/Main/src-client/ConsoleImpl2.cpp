@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 49769 2013-12-04 10:27:18Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 49785 2013-12-05 10:33:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1514,6 +1514,11 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 }
                 InsertConfigString(pBiosCfg, szParamName, pszBootDevice);
             }
+
+            /** @todo @bugref{7145}: We might want to enable this by default for new VMs. For now,
+             *        this is required for Windows 2012 guests. */
+            if (osTypeId == "Windows2012_64")
+                InsertConfigInteger(pBiosCfg, "DmiExposeMemoryTable", 1); /* boolean */
         }
         else
         {
