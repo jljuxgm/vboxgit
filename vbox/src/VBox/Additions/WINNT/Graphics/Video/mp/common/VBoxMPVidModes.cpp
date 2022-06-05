@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 49273 2013-10-24 12:02:35Z vboxsync $ */
 
 /** @file
  * VBox Miniport video modes related functions
@@ -62,6 +62,10 @@ VBoxMPValidateVideoModeParamsGuest(PVBOXMP_DEVEXT pExt, uint32_t iDisplay, uint3
 #ifndef VBOX_WITH_8BPP_MODES
             return FALSE;
 #else
+#ifdef VBOX_XPDM_MINIPORT
+            if (pExt->iDevice != 0) /* Secondary monitors do not support 8 bit */
+                return FALSE;
+#endif
             break;
 #endif
         default:
