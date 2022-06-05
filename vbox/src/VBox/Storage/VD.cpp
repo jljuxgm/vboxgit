@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 51754 2014-06-27 22:38:09Z vboxsync $ */
+/* $Id: VD.cpp 51756 2014-06-29 20:31:36Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3538,7 +3538,7 @@ static bool vdPluginFind(const char *pszFilename)
 {
     PVDPLUGIN pIt = NULL;
 
-    RTListForEach(&g_ListPluginsLoaded, pIt, VDPLUGIN, NodePlugin);
+    RTListForEach(&g_ListPluginsLoaded, pIt, VDPLUGIN, NodePlugin)
     {
         if (!RTStrCmp(pIt->pszFilename, pszFilename))
             return true;
