@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceBalloon.cpp 51564 2014-06-06 08:34:30Z vboxsync $ */
+/* $Id: VBoxServiceBalloon.cpp 51570 2014-06-06 15:53:52Z vboxsync $ */
 /** @file
  * VBoxService - Memory Ballooning.
  */
@@ -226,25 +226,6 @@ static int VBoxServiceBalloonSetUser(uint32_t cNewChunks)
 }
 
 
-/** @copydoc VBOXSERVICE::pfnPreInit */
-static DECLCALLBACK(int) VBoxServiceBalloonPreInit(void)
-{
-    return VINF_SUCCESS;
-}
-
-
-/** @copydoc VBOXSERVICE::pfnOption */
-static DECLCALLBACK(int) VBoxServiceBalloonOption(const char **ppszShort, int argc, char **argv, int *pi)
-{
-    NOREF(ppszShort);
-    NOREF(argc);
-    NOREF(argv);
-    NOREF(pi);
-
-    return -1;
-}
-
-
 /** @copydoc VBOXSERVICE::pfnInit */
 static DECLCALLBACK(int) VBoxServiceBalloonInit(void)
 {
@@ -395,14 +376,6 @@ DECLCALLBACK(int) VBoxServiceBalloonWorker(bool volatile *pfShutdown)
     return 0;
 }
 
-/** @copydoc VBOXSERVICE::pfnTerm */
-static DECLCALLBACK(void) VBoxServiceBalloonTerm(void)
-{
-    VBoxServiceVerbose(3, "VBoxServiceBalloonTerm\n");
-    return;
-}
-
-
 /** @copydoc VBOXSERVICE::pfnStop */
 static DECLCALLBACK(void) VBoxServiceBalloonStop(void)
 {
@@ -424,10 +397,10 @@ VBOXSERVICE g_MemBalloon =
     /* pszOptions. */
     NULL,
     /* methods */
-    VBoxServiceBalloonPreInit,
-    VBoxServiceBalloonOption,
+    VBoxServiceDefaultPreInit,
+    VBoxServiceDefaultOption,
     VBoxServiceBalloonInit,
     VBoxServiceBalloonWorker,
     VBoxServiceBalloonStop,
-    VBoxServiceBalloonTerm
+    VBoxServiceDefaultTerm
 };

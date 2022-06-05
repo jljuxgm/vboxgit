@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 51564 2014-06-06 08:34:30Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 51570 2014-06-06 15:53:52Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -93,6 +93,13 @@ typedef struct
 typedef VBOXSERVICE *PVBOXSERVICE;
 /** Pointer to a const VBOXSERVICE. */
 typedef VBOXSERVICE const *PCVBOXSERVICE;
+
+/* Default call-backs for services which do not need special behaviour. */
+DECLCALLBACK(int) VBoxServiceDefaultPreInit(void);
+DECLCALLBACK(int) VBoxServiceDefaultOption(const char **ppszShort, int argc,
+                                           char **argv, int *pi);
+DECLCALLBACK(int) VBoxServiceDefaultInit(void);
+DECLCALLBACK(void) VBoxServiceDefaultTerm(void);
 
 /** The service name.
  * @note Used on windows to name the service as well as the global mutex. */

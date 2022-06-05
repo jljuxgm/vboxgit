@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 51564 2014-06-06 08:34:30Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 51570 2014-06-06 15:53:52Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -82,25 +82,6 @@ static VBOXSTATSCONTEXT gCtx = {0};
 
 /** The semaphore we're blocking on. */
 static RTSEMEVENTMULTI  g_VMStatEvent = NIL_RTSEMEVENTMULTI;
-
-
-/** @copydoc VBOXSERVICE::pfnPreInit */
-static DECLCALLBACK(int) VBoxServiceVMStatsPreInit(void)
-{
-    return VINF_SUCCESS;
-}
-
-
-/** @copydoc VBOXSERVICE::pfnOption */
-static DECLCALLBACK(int) VBoxServiceVMStatsOption(const char **ppszShort, int argc, char **argv, int *pi)
-{
-    NOREF(ppszShort);
-    NOREF(argc);
-    NOREF(argv);
-    NOREF(pi);
-
-    return -1;
-}
 
 
 /** @copydoc VBOXSERVICE::pfnInit */
@@ -680,14 +661,6 @@ DECLCALLBACK(int) VBoxServiceVMStatsWorker(bool volatile *pfShutdown)
 }
 
 
-/** @copydoc VBOXSERVICE::pfnTerm */
-static DECLCALLBACK(void) VBoxServiceVMStatsTerm(void)
-{
-    VBoxServiceVerbose(3, "VBoxServiceVMStatsTerm\n");
-    return;
-}
-
-
 /** @copydoc VBOXSERVICE::pfnStop */
 static DECLCALLBACK(void) VBoxServiceVMStatsStop(void)
 {
@@ -709,11 +682,11 @@ VBOXSERVICE g_VMStatistics =
     /* pszOptions. */
     NULL,
     /* methods */
-    VBoxServiceVMStatsPreInit,
-    VBoxServiceVMStatsOption,
+    VBoxServiceDefaultPreInit,
+    VBoxServiceDefaultOption,
     VBoxServiceVMStatsInit,
     VBoxServiceVMStatsWorker,
     VBoxServiceVMStatsStop,
-    VBoxServiceVMStatsTerm
+    VBoxServiceDefaultTerm
 };
 
