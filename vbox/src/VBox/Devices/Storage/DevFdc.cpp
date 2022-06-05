@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 48162 2013-08-29 14:27:01Z vboxsync $ */
+/* $Id: DevFdc.cpp 49881 2013-12-12 11:00:42Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -52,7 +52,6 @@
 #include <iprt/uuid.h>
 
 #include "VBoxDD.h"
-#include "vl_vbox.h"
 
 #define FDC_SAVESTATE_CURRENT   2       /* The new and improved saved state. */
 #define FDC_SAVESTATE_OLD       1       /* The original saved state. */
@@ -711,7 +710,11 @@ struct fdctrl_t {
 #endif
     uint32_t io_base;
     /* Controller state */
+#ifndef VBOX
     QEMUTimer *result_timer;
+#else
+    struct TMTIMER *result_timer;
+#endif
     uint8_t sra;
     uint8_t srb;
     uint8_t dor;
