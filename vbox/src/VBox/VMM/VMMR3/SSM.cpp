@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 50575 2014-02-25 13:07:16Z vboxsync $ */
+/* $Id: SSM.cpp 51598 2014-06-11 08:14:20Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -1397,7 +1397,7 @@ VMMR3DECL(int) SSMR3RegisterInternal(PVM pVM, const char *pszName, uint32_t uIns
     PFNSSMINTLOADPREP pfnLoadPrep, PFNSSMINTLOADEXEC pfnLoadExec, PFNSSMINTLOADDONE pfnLoadDone)
 {
     PSSMUNIT pUnit;
-    int rc = ssmR3Register(pVM, pszName, uInstance, uVersion, cbGuess, NULL, &pUnit);
+    int rc = ssmR3Register(pVM, pszName, uInstance, uVersion, cbGuess, NULL /* pszBefore */, &pUnit);
     if (RT_SUCCESS(rc))
     {
         pUnit->enmType = SSMUNITTYPE_INTERNAL;
@@ -1451,7 +1451,7 @@ VMMR3DECL(int) SSMR3RegisterExternal(PUVM pUVM, const char *pszName, uint32_t uI
     VM_ASSERT_VALID_EXT_RETURN(pVM, VERR_INVALID_VM_HANDLE);
 
     PSSMUNIT pUnit;
-    int rc = ssmR3Register(pVM, pszName, uInstance, uVersion, cbGuess, NULL, &pUnit);
+    int rc = ssmR3Register(pVM, pszName, uInstance, uVersion, cbGuess, NULL /* pszBefore */, &pUnit);
     if (RT_SUCCESS(rc))
     {
         pUnit->enmType = SSMUNITTYPE_EXTERNAL;
