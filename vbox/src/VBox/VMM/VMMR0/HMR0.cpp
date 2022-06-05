@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 48218 2013-09-01 16:31:26Z vboxsync $ */
+/* $Id: HMR0.cpp 48230 2013-09-02 14:52:50Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1073,7 +1073,7 @@ static int hmR0DisableCpu(RTCPUID idCpu)
         if (idCpu == RTMpCpuId())
         {
             rc = g_HvmR0.pfnDisableCpu(pCpu, pvCpuPage, HCPhysCpuPage);
-            AssertRC(rc);
+            AssertRCReturn(rc, rc);
         }
         else
         {
