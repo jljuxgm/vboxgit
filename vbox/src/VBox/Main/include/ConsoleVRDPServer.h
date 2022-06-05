@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 52442 2014-08-21 16:03:15Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 52923 2014-10-02 07:04:02Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -157,6 +157,9 @@ public:
 
     Console *getConsole(void) { return mConsole; }
 
+    void onMousePointerShapeChange(BOOL visible, BOOL alpha, ULONG xHot, ULONG yHot,
+                                   ULONG width, ULONG height, ComSafeArrayIn(BYTE,shape));
+
 private:
     /* Note: This is not a ComObjPtr here, because the ConsoleVRDPServer object
      * is actually just a part of the Console.
@@ -192,6 +195,8 @@ private:
     static DECLCALLBACK(void) VRDPCallbackInput             (void *pvCallback, int type, const void *pvInput, unsigned cbInput);
     static DECLCALLBACK(void) VRDPCallbackVideoModeHint     (void *pvCallback, unsigned cWidth, unsigned cHeight,  unsigned cBitsPerPixel, unsigned uScreenId);
     static DECLCALLBACK(void) VRDECallbackAudioIn           (void *pvCallback, void *pvCtx, uint32_t u32ClientId, uint32_t u32Event, const void *pvData, uint32_t cbData);
+
+    void fetchCurrentState(void);
 
     bool m_fGuestWantsAbsolute;
     int m_mousex;
