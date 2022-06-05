@@ -1,4 +1,4 @@
-/* $Id: fakedri_drv.c 49599 2013-11-21 11:05:59Z vboxsync $ */
+/* $Id: fakedri_drv.c 49600 2013-11-21 12:07:07Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -71,7 +71,7 @@ typedef enum {
 #  define DRI_DEFAULT_DRIVER_DIR "/usr/local/lib/dri"
 #  define DRI_XORG_DRV_DIR "/usr/local/lib/xorg/modules/drivers/"
 # else
-#  define DRI_DEFAULT_DRIVER_DIR "/usr/lib/dri:/usr/lib/i386-linux-gnu/dri"
+#  define DRI_DEFAULT_DRIVER_DIR "/usr/lib/dri:/usr/lib/i386-linux-gnu/dri:/usr/lib/xorg/modules/dri"
 #  define DRI_XORG_DRV_DIR "/usr/lib/xorg/modules/drivers/"
 # endif
 #endif
