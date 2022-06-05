@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-linux.c 47955 2013-08-21 09:18:16Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-linux.c 48382 2013-09-09 10:04:44Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Linux.
  */
@@ -38,7 +38,11 @@
 #include <iprt/asm.h>
 #include "internal/thread.h"
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 23) && defined(CONFIG_PREEMPT_NOTIFIERS)
+/*
+ * Linux kernel 2.6.23 introduced thread-context hooks but RedHat kernel 2.6.18 has it backported.
+ * Checking the define alone without depending on a version ought to be sufficient.
+ */
+#if defined(CONFIG_PREEMPT_NOTIFIERS)
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
