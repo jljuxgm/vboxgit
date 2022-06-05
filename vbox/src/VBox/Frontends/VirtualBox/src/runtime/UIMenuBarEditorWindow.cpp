@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 52557 2014-09-01 16:45:25Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 52558 2014-09-01 17:02:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -473,8 +473,8 @@ void UIMenuBarEditorWidget::prepareMenuApplication()
     QMenu *pMenu = prepareNamedMenu("VirtualBox");
     AssertPtrReturnVoid(pMenu);
     {
-        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_Simple_About));
-        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_Simple_Preferences));
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_About));
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_Preferences));
     }
 }
 #endif /* Q_WS_MAC */
