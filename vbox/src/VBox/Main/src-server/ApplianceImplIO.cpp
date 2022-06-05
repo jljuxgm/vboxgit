@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 50193 2014-01-23 17:50:07Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 50199 2014-01-23 18:48:54Z vboxsync $ */
 /** @file
  * IO helper for IAppliance COM class implementations.
  */
@@ -1242,7 +1242,7 @@ PVDINTERFACEIO TarCreateInterface()
     return pCallbacks;
 }
 
-int ShaReadBuf(const char *pcszFilename, void **ppvBuf, size_t *pcbSize, PVDINTERFACEIO pIfIo, void *pvUser)
+int readFileIntoBuffer(const char *pcszFilename, void **ppvBuf, size_t *pcbSize, PVDINTERFACEIO pIfIo, void *pvUser)
 {
     /* Validate input. */
     AssertPtrReturn(ppvBuf, VERR_INVALID_POINTER);
@@ -1309,7 +1309,7 @@ int ShaReadBuf(const char *pcszFilename, void **ppvBuf, size_t *pcbSize, PVDINTE
     return rc;
 }
 
-int ShaWriteBuf(const char *pcszFilename, void *pvBuf, size_t cbSize, PVDINTERFACEIO pIfIo, void *pvUser)
+int writeBufferToFile(const char *pcszFilename, void *pvBuf, size_t cbSize, PVDINTERFACEIO pIfIo, void *pvUser)
 {
     /* Validate input. */
     AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
