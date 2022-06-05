@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 50996 2014-04-08 13:15:27Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 51384 2014-05-26 07:04:16Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -725,7 +725,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
     if (details == VMINFO_MACHINEREADABLE)
         RTPrintf("paravirtprovider=\"%s\"\n", pszParavirtProvider);
     else
-        RTPrintf("Paravirt. Provider:  %s\n", pszParavirtProvider);
+        RTPrintf("Paravirt. Provider: %s\n", pszParavirtProvider);
 
 
     MachineState_T machineState;
