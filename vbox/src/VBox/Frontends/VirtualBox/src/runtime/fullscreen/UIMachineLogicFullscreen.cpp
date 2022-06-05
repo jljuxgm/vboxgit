@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 52752 2014-09-15 15:15:38Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 52886 2014-09-29 13:49:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -863,7 +863,10 @@ void UIMachineLogicFullscreen::nativeHandlerForApplicationActivation(const QMap<
     /* Make sure we have BundleIdentifier key: */
     AssertReturnVoid(userInfo.contains("BundleIdentifier"));
     /* Skip other applications: */
-    if (userInfo.value("BundleIdentifier") != "org.virtualbox.app.VirtualBox")
+    QStringList ourBundleIdentifiers;
+    ourBundleIdentifiers << "org.virtualbox.app.VirtualBox";
+    ourBundleIdentifiers << "org.virtualbox.app.VirtualBoxVM";
+    if (!ourBundleIdentifiers.contains(userInfo.value("BundleIdentifier")))
         return;
 
     /* Skip if 'screen have separate spaces': */
