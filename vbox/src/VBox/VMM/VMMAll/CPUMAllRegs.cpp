@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 49972 2013-12-18 13:10:58Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 50785 2014-03-14 10:52:32Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1202,7 +1202,7 @@ static int cpumQueryGuestMsrInt(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
         case MSR_K8_NB_CFG:             /* (All known values are 0 on reset.) */
         case MSR_K8_HWCR:               /* Very interesting bits here. :) */
         case MSR_K8_VM_CR:              /* Windows 8 */
-        case 0xc0011029:                /* quick fix for FreeBSd 9.1. */
+        case 0xc0011029:                /* quick fix for FreeBSD 9.1. */
         case 0xc0010042:                /* quick fix for something. */
         case 0xc001102a:                /* quick fix for w2k8 + opposition. */
         case 0xc0011004:                /* quick fix for the opposition. */
