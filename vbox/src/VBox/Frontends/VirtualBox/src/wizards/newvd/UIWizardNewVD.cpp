@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 45316 2013-04-03 17:40:32Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 47927 2013-08-20 14:50:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -77,7 +77,7 @@ bool UIWizardNewVD::createVirtualDisk()
     for (int i = 0; i < variants.size(); ++i)
     {
         qulonglong temp = uVariant;
-        temp &= 1<<i;
+        temp &= UINT64_C(1)<<i;
         variants[i] = (KMediumVariant)temp;
     }
 
