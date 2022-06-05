@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 48451 2013-09-12 15:01:07Z vboxsync $ */
+/* $Id: DevSmc.cpp 48760 2013-09-29 19:44:37Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Manaagement Controller.
  *
@@ -235,8 +235,10 @@ typedef struct DEVSMC
     uint8_t                 bNinjaActionTimerJob;
     /** @} */
 } DEVSMC;
+#ifndef _MSC_VER
 AssertCompileMembersAtSameOffset(DEVSMC, u.abRegsRW[SMC_REG_CMD],         DEVSMC, u.s.bState);
 AssertCompileMembersAtSameOffset(DEVSMC, u.abRegsRW[SMC_REG_STATUS_CODE], DEVSMC, u.s.bStatusCode);
+#endif
 
 /** Pointer to the SMC state. */
 typedef DEVSMC *PDEVSMC;
