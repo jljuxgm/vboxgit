@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49669 2013-11-26 16:59:07Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49670 2013-11-26 17:01:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7910,9 +7910,6 @@ DECLINLINE(void) hmR0VmxLoadGuestStateOptimal(PVM pVM, PVMCPU pVCpu, PCPUMCTX pM
  *                          out-of-sync. Make sure to update the required fields
  *                          before using them.
  * @param   pVmxTransient   Pointer to the VMX transient structure.
- *
- * @remarks Called with preemption disabled. In the VINF_SUCCESS return case
- *          interrupts will be disabled.
  */
 static int hmR0VmxPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT pVmxTransient)
 {
