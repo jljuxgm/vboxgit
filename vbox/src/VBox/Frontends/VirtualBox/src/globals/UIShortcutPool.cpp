@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 51380 2014-05-23 17:54:07Z vboxsync $ */
+/* $Id: UIShortcutPool.cpp 51449 2014-05-28 13:56:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -255,7 +255,7 @@ void UIShortcutPool::loadOverridesFor(const QString &strPoolExtraDataID)
     /* Compose shortcut key template: */
     const QString strShortcutKeyTemplate(m_sstrShortcutKeyTemplate.arg(strPoolExtraDataID));
     /* Iterate over all the overrides: */
-    const QStringList overrides = vboxGlobal().virtualBox().GetExtraDataStringList(strPoolExtraDataID);
+    const QStringList overrides = gEDataManager->shortcutOverrides(strPoolExtraDataID);
     foreach (const QString &strKeyValuePair, overrides)
     {
         /* Make sure override structure is valid: */

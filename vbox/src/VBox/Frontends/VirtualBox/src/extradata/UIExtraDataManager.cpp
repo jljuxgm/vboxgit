@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51447 2014-05-28 13:38:38Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51449 2014-05-28 13:56:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -196,6 +196,15 @@ void UIExtraDataManager::incrementApplicationUpdateCheckCounter()
     setExtraDataString(GUI_UpdateCheckCount, QString::number(applicationUpdateCheckCounter() + 1));
 }
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+
+QStringList UIExtraDataManager::shortcutOverrides(const QString &strPoolExtraDataID) const
+{
+    if (strPoolExtraDataID == GUI_Input_SelectorShortcuts)
+        return extraDataStringList(GUI_Input_SelectorShortcuts);
+    if (strPoolExtraDataID == GUI_Input_MachineShortcuts)
+        return extraDataStringList(GUI_Input_MachineShortcuts);
+    return QStringList();
+}
 
 QString UIExtraDataManager::recentFolderForHardDrives() const
 {
