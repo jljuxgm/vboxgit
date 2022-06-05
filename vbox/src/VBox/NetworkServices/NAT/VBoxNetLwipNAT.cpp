@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 50483 2014-02-17 15:31:02Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 50484 2014-02-17 15:31:33Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1251,7 +1251,7 @@ static int fetchNatPortForwardRules(const ComNatPtr& nat, bool fIsIPv6, VECNATSE
         RT_ZERO(Rule);
 
         int rc = netPfStrToPf(com::Utf8Str(rules[idxRules]).c_str(),
-			      fIsIPv6, &Rule.Pfr);
+                              fIsIPv6, &Rule.Pfr);
         if (RT_FAILURE(rc))
             continue;
 
