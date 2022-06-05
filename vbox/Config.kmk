@@ -1,4 +1,4 @@
-# $Id: Config.kmk 50686 2014-03-04 19:21:18Z vboxsync $
+# $Id: Config.kmk 50702 2014-03-05 12:41:40Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1728,7 +1728,7 @@ VBOX_PYLINT_FLAGS   := --report=n \
 	  ,--msg-template='{path}:{line}: {msg_id}({obj}:{symbol}): {msg}' \
 	  ,--output-format=msvs --include-ids=y) \
 	--persistent=n \
-	--rcfile=$(if-expr "$(KBUILD_HOST)" == "win",nul,/dev/null) \
+	--rcfile=$(PATH_ROOT)/tools/pylintrc \
 	--max-line-length=130 \
 	--max-attributes=20 \
 	--max-branch$(if-expr !defined(VBOX_WITH_PYLINT_PRE_V1_0),e,)s=50 \
@@ -5577,7 +5577,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 50686 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 50702 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
