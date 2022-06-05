@@ -1,4 +1,4 @@
-/* $Id: UIMediumTypeChangeDialog.cpp 45292 2013-04-02 16:39:35Z vboxsync $ */
+/* $Id: UIMediumTypeChangeDialog.cpp 48259 2013-09-04 10:22:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,7 +43,7 @@ UIMediumTypeChangeDialog::UIMediumTypeChangeDialog(QWidget *pParent, const QStri
 #endif /* Q_WS_MAC */
 
     /* Search for corresponding medium: */
-    m_medium = vboxGlobal().findMedium(strMediumId).medium();
+    m_medium = vboxGlobal().medium(strMediumId).medium();
     m_oldMediumType = m_medium.GetType();
     m_newMediumType = m_oldMediumType;
 

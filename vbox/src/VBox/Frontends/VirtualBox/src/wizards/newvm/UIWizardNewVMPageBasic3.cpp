@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 47184 2013-07-16 09:28:19Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 48259 2013-09-04 10:22:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -235,7 +235,7 @@ bool UIWizardNewVMPageBasic3::isComplete() const
     /* Make sure 'virtualDisk' field feats the rules: */
     return m_pDiskSkip->isChecked() ||
            !m_pDiskPresent->isChecked() ||
-           !vboxGlobal().findMedium(m_pDiskSelector->id()).isNull();
+           !vboxGlobal().medium(m_pDiskSelector->id()).isNull();
 }
 
 bool UIWizardNewVMPageBasic3::validatePage()

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 47814 2013-08-16 13:46:11Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 48259 2013-09-04 10:22:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -250,7 +250,7 @@ bool UIWizardNewVMPageExpert::isComplete() const
      * 'virtualDisk' field feats the rules: */
     return UIWizardPage::isComplete() &&
            (m_pRamSlider->value() >= qMax(1, (int)m_pRamSlider->minRAM()) && m_pRamSlider->value() <= (int)m_pRamSlider->maxRAM()) &&
-           (m_pDiskSkip->isChecked() || !m_pDiskPresent->isChecked() || !vboxGlobal().findMedium(m_pDiskSelector->id()).isNull());
+           (m_pDiskSkip->isChecked() || !m_pDiskPresent->isChecked() || !vboxGlobal().medium(m_pDiskSelector->id()).isNull());
 }
 
 bool UIWizardNewVMPageExpert::validatePage()

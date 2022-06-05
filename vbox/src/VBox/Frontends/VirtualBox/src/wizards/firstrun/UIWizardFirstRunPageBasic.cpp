@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRunPageBasic.cpp 47184 2013-07-16 09:28:19Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.cpp 48259 2013-09-04 10:22:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -132,7 +132,7 @@ void UIWizardFirstRunPageBasic::initializePage()
 bool UIWizardFirstRunPageBasic::isComplete() const
 {
     /* Make sure valid medium chosen: */
-    return !vboxGlobal().findMedium(id()).isNull();
+    return !vboxGlobal().medium(id()).isNull();
 }
 
 bool UIWizardFirstRunPageBasic::validatePage()
