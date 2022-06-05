@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 48718 2013-09-26 15:26:32Z vboxsync $ */
+/* $Id: MachineImpl.cpp 48735 2013-09-27 13:19:15Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10817,13 +10817,13 @@ HRESULT Machine::saveStorageDevices(ComObjPtr<StorageController> aStorageControl
         dev.deviceType = pAttach->getType();
         dev.lPort = pAttach->getPort();
         dev.lDevice = pAttach->getDevice();
+        dev.fPassThrough = pAttach->getPassthrough();
         if (pMedium)
         {
             if (pMedium->isHostDrive())
                 dev.strHostDriveSrc = pMedium->getLocationFull();
             else
                 dev.uuid = pMedium->getId();
-            dev.fPassThrough = pAttach->getPassthrough();
             dev.fTempEject = pAttach->getTempEject();
             dev.fNonRotational = pAttach->getNonRotational();
             dev.fDiscard = pAttach->getDiscard();
