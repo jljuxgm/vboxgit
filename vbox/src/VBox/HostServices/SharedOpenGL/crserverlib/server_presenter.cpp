@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 50217 2014-01-24 11:37:07Z vboxsync $ */
+/* $Id: server_presenter.cpp 50223 2014-01-24 14:34:51Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -1876,7 +1876,7 @@ public:
         if (pViewportRect->xLeft != mViewportRect.xLeft || pViewportRect->yTop != mViewportRect.yTop)
         {
             const RTRECT* pRect = getRect();
-            int rc = mpWindow->SetPosition(pRect->xLeft - mViewportRect.xLeft, pRect->yTop - mViewportRect.yTop);
+            int rc = mpWindow->SetPosition(pRect->xLeft - pViewportRect->xLeft, pRect->yTop - pViewportRect->yTop);
             if (!RT_SUCCESS(rc))
             {
                 WARN(("SetPosition failed"));
