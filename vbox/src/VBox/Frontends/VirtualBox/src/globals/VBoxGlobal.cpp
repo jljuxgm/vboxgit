@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 52188 2014-07-25 13:49:37Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 52202 2014-07-25 20:34:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -63,8 +63,6 @@
 #include "QIDialogButtonBox.h"
 #include "UIIconPool.h"
 #include "UIShortcutPool.h"
-#include "UIActionPoolSelector.h"
-#include "UIActionPoolRuntime.h"
 #include "UIExtraDataManager.h"
 #include "QIFileDialog.h"
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
@@ -4307,18 +4305,6 @@ void VBoxGlobal::prepare()
     /* Schedule update manager: */
     UIUpdateManager::schedule();
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
-
-    /* Create action pool: */
-    if (isVMConsoleProcess())
-    {
-        UIActionPool::create(UIActionPoolType_Runtime);
-        UIActionPool::createTemporary(UIActionPoolType_Selector);
-    }
-    else
-    {
-        UIActionPool::create(UIActionPoolType_Selector);
-        UIActionPool::createTemporary(UIActionPoolType_Runtime);
-    }
 }
 
 void VBoxGlobal::cleanup()
@@ -4334,9 +4320,6 @@ void VBoxGlobal::cleanup()
     /* Destroy network manager: */
     UINetworkManager::destroy();
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
-
-    /* Destroy action pool: */
-    UIActionPool::destroy();
 
     /* Destroy shortcut pool: */
     UIShortcutPool::destroy();

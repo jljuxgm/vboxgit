@@ -1,4 +1,4 @@
-/* $Id: UIGChooser.cpp 44051 2012-12-06 14:04:04Z vboxsync $ */
+/* $Id: UIGChooser.cpp 52202 2014-07-25 20:34:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,10 +25,12 @@
 #include "UIGChooser.h"
 #include "UIGChooserModel.h"
 #include "UIGChooserView.h"
+#include "UISelectorWindow.h"
 #include "VBoxGlobal.h"
 
-UIGChooser::UIGChooser(QWidget *pParent)
+UIGChooser::UIGChooser(UISelectorWindow *pParent)
     : QWidget(pParent)
+    , m_pSelectorWindow(pParent)
     , m_pMainLayout(0)
     , m_pChooserModel(0)
     , m_pChooserView(0)
@@ -57,6 +59,11 @@ UIGChooser::~UIGChooser()
 {
     /* Save: */
     save();
+}
+
+UIActionPool* UIGChooser::actionPool() const
+{
+    return selector()->actionPool();
 }
 
 UIVMItem* UIGChooser::currentItem() const
