@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 52386 2014-08-14 18:39:50Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 52517 2014-08-28 15:18:46Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -1652,7 +1652,7 @@ static DECLCALLBACK(PVUSBURB) usbProxyLinuxUrbReap(PUSBPROXYDEV pProxyDev, RTMSI
         if (pUrbLnx)
         {
             /* unlink from the pending delivery list */
-            RTListNodeRemove(&pDevLnx->ListTaxing);
+            RTListNodeRemove(&pUrbLnx->NodeList);
 
             /* temporarily into the active list, so free works right. */
             RTListAppend(&pDevLnx->ListInFlight, &pUrbLnx->NodeList);
