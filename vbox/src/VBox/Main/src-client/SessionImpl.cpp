@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
+/* $Id: SessionImpl.cpp 51903 2014-07-07 13:03:49Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -474,7 +474,7 @@ STDMETHODIMP Session::UpdateMachineState(MachineState_T aMachineState)
 {
     AutoCaller autoCaller(this);
 
-    if (autoCaller.state() != Ready)
+    if (getObjectState().getState() != ObjectState::Ready)
     {
         /*
          *  We might have already entered Session::uninit() at this point, so
@@ -513,7 +513,7 @@ STDMETHODIMP Session::Uninitialize()
 
     HRESULT rc = S_OK;
 
-    if (autoCaller.state() == Ready)
+    if (getObjectState().getState() == ObjectState::Ready)
     {
         /* close() needs write lock */
         AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
@@ -535,7 +535,7 @@ STDMETHODIMP Session::Uninitialize()
         /* close ourselves */
         rc = unlockMachine(false /* aFinalRelease */, true /* aFromServer */);
     }
-    else if (autoCaller.state() == InUninit)
+    else if (getObjectState().getState() == ObjectState::InUninit)
     {
         /*
          *  We might have already entered Session::uninit() at this point,

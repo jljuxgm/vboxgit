@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50613 2014-02-26 16:07:35Z vboxsync $
+# $Id: Makefile.kmk 51903 2014-07-07 13:03:49Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -241,6 +241,7 @@ tstMouseImpl_SOURCES  = \
 	tstMouseImpl.cpp \
 	../src-client/MouseImpl.cpp \
 	../src-all/EventImpl.cpp \
+	../src-all/AutoCaller.cpp \
 	../src-all/VirtualBoxBase.cpp \
 	../src-all/VirtualBoxErrorInfoImpl.cpp \
 	$(VBOX_AUTOGEN_EVENT_CPP) \

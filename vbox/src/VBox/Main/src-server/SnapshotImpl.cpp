@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 51903 2014-07-07 13:03:49Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -1796,7 +1796,7 @@ void SessionMachine::i_restoreSnapshotHandler(RestoreSnapshotTask &aTask)
 
     AutoCaller autoCaller(this);
 
-    LogFlowThisFunc(("state=%d\n", autoCaller.state()));
+    LogFlowThisFunc(("state=%d\n", getObjectState().getState()));
     if (!autoCaller.isOk())
     {
         /* we might have been uninitialized because the session was accidentally
@@ -2337,7 +2337,7 @@ void SessionMachine::i_deleteSnapshotHandler(DeleteSnapshotTask &aTask)
 
     AutoCaller autoCaller(this);
 
-    LogFlowThisFunc(("state=%d\n", autoCaller.state()));
+    LogFlowThisFunc(("state=%d\n", getObjectState().getState()));
     if (!autoCaller.isOk())
     {
         /* we might have been uninitialized because the session was accidentally

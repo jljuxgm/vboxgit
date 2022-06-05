@@ -1,10 +1,10 @@
-/* $Id: MediumImpl.cpp 51888 2014-07-06 19:38:04Z vboxsync $ */
+/* $Id: MediumImpl.cpp 51903 2014-07-07 13:03:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2008-2013 Oracle Corporation
+ * Copyright (C) 2008-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1374,7 +1374,7 @@ void Medium::uninit()
     if (!m->formatObj.isNull())
     {
         /* remove the caller reference we added in setFormat() */
-        m->formatObj->releaseCaller();
+        m->formatObj->getObjectState().releaseCaller();
         m->formatObj.setNull();
     }
 
@@ -6003,7 +6003,7 @@ HRESULT Medium::i_setLocation(const Utf8Str &aLocation,
     /* formatObj may be null only when initializing from an existing path and
      * no format is known yet */
     AssertReturn(    (!m->strFormat.isEmpty() && !m->formatObj.isNull())
-                  || (    autoCaller.state() == InInit
+                  || (    getObjectState().getState() == ObjectState::InInit
                        && m->state != MediumState_NotCreated
                        && m->id.isZero()
                        && m->strFormat.isEmpty()
@@ -6176,7 +6176,7 @@ HRESULT Medium::i_setFormat(const Utf8Str &aFormat)
 
         /* reference the format permanently to prevent its unexpected
          * uninitialization */
-        HRESULT rc = m->formatObj->addCaller();
+        HRESULT rc = m->formatObj->getObjectState().addCaller(m->formatObj);
         AssertComRCReturnRC(rc);
 
         /* get properties (preinsert them as keys in the map). Note that the
