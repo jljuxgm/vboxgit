@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50858 2014-03-25 09:51:08Z vboxsync $
+# $Id: Makefile.kmk 52912 2014-10-01 10:33:33Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -49,6 +49,7 @@ CAPIHeaders_SOURCES = \
 	VBoxCAPI_v4_0.h \
 	VBoxCAPI_v4_1.h \
 	VBoxCAPI_v4_2.h \
+	VBoxCAPI_v4_3.h \
 	$(CAPIHeaders_0_OUTDIR)/VBoxCAPI.h=>VBoxCAPI_v$(VBOX_API_VERSION).h
 
 $$(CAPIHeaders_0_OUTDIR)/VBoxCAPIGlue.h: \
