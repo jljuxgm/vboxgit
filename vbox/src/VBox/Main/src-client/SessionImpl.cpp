@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 48431 2013-09-11 14:08:36Z vboxsync $ */
+/* $Id: SessionImpl.cpp 49453 2013-11-12 13:24:14Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -528,10 +528,11 @@ STDMETHODIMP Session::Uninitialize()
             return S_OK;
         }
 
-#ifndef DEBUG_andy /* Don't bug me -- now time to fix this at the moment. */
-        AssertReturn(mState == SessionState_Locked ||
-                     mState == SessionState_Spawning, VBOX_E_INVALID_VM_STATE);
-#endif
+        AssertMsgReturn(   mState == SessionState_Locked
+                        || mState == SessionState_Spawning,
+                        ("Session is in wrong state (%ld), expected locked (%ld) or spawning (%ld)\n",
+                         mState, SessionState_Locked, SessionState_Spawning),
+                        VBOX_E_INVALID_VM_STATE);
 
         /* close ourselves */
         rc = unlockMachine(false /* aFinalRelease */, true /* aFromServer */);
