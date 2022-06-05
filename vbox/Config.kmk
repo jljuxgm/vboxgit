@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53377 2014-11-21 19:03:30Z vboxsync $
+# $Id: Config.kmk 53379 2014-11-23 23:19:31Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2057,6 +2057,10 @@ ifeq ($(KBUILD_TARGET),darwin)
    SVN := $(firstword $(which svn) svn)
   endif
   export PATH:=$(VBOX_PATH_MACOSX_DEVEL_ROOT)/usr/bin/:$(PATH)
+  TOOL_GXX32_CC  = $(TOOL_GCC4MACHO_PREFIX)gcc$(TOOL_GCC4MACHO_SUFFIX) -m32
+  TOOL_GXX32_CXX = $(TOOL_GCC4MACHO_PREFIX)g++$(TOOL_GCC4MACHO_SUFFIX) -m32
+  TOOL_GXX32_LD  = $(TOOL_GXX32_CXX)
+  override TOOL_StandardDTrace_DTRACE := dtrace "-xcpppath=$(TOOL_GCC4MACHO_PREFIX)cpp-4.2"
  endif
  ## @todo WTF do we do the -m32/64 stuff here for these compilers? Also the visibility should be elsewhere...
  TOOL_GXX4MACHO_OBJC   = $(TOOL_GCC4MACHO_PREFIX)gcc$(TOOL_GCC4MACHO_SUFFIX) $(if-expr $(KBUILD_TARGET_ARCH) == "x86",-m32,-m64) -fvisibility=hidden
@@ -5755,7 +5759,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53377 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53379 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
