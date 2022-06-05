@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 52358 2014-08-12 08:43:35Z vboxsync $ */
+/* $Id: VHD.cpp 52468 2014-08-22 11:55:43Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -341,7 +341,8 @@ static int vhdLocatorUpdate(PVHDIMAGE pImage, PVHDPLE pLocator, const char *pszF
                 }
                 memcpy(pvBuf, pszFilename, cb);
             }
-            pLocator->u32DataLength = RT_H2BE_U32(cb);
+            if (RT_SUCCESS(rc))
+                pLocator->u32DataLength = RT_H2BE_U32(cb);
             break;
         }
         case VHD_PLATFORM_CODE_WI2K:
