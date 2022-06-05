@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 51220 2014-05-09 01:51:16Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 51230 2014-05-12 05:32:21Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1814,7 +1814,8 @@ static int hmR0SvmLoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
                             | HM_CHANGED_GUEST_LAZY_MSRS          /* Unused. */
                             | HM_CHANGED_SVM_RESERVED1            /* Reserved. */
                             | HM_CHANGED_SVM_RESERVED2
-                            | HM_CHANGED_SVM_RESERVED3);
+                            | HM_CHANGED_SVM_RESERVED3
+                            | HM_CHANGED_SVM_RESERVED4);
 
     /* All the guest state bits should be loaded except maybe the host context and/or shared host/guest bits. */
     AssertMsg(   !HMCPU_CF_IS_PENDING(pVCpu, HM_CHANGED_ALL_GUEST)
