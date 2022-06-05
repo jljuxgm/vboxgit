@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 53137 2014-10-23 21:15:34Z vboxsync $
+# $Id: wuiadmintestbox.py 53284 2014-11-10 12:03:49Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53137 $"
+__version__ = "$Revision: 53284 $"
 
 
 # Standard python imports.
@@ -247,6 +247,7 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                     sVer1 = sOsVersion[:iSep].strip();
                     sVer2 = sOsVersion[iSep + 3:].strip();
                     sVer2 = sVer2.replace('Red Hat Enterprise Linux Server', 'RHEL');
+                    sVer2 = sVer2.replace('Oracle Linux Server', 'OL');
             elif oEntry.sOs == 'solaris':
                 iSep = sOsVersion.find(' (');
                 if iSep > 0 and sOsVersion[-1] == ')':

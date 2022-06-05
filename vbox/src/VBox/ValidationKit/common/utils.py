@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 53137 2014-10-23 21:15:34Z vboxsync $
+# $Id: utils.py 53284 2014-11-10 12:03:49Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53137 $"
+__version__ = "$Revision: 53284 $"
 
 
 # Standard Python imports.
@@ -172,6 +172,7 @@ def getHostOsVersion():
             [
                 [ '/etc/debian_version', 'Debian v'],
                 [ '/etc/gentoo-release', '' ],
+                [ '/etc/oracle-release', '' ],
                 [ '/etc/redhat-release', '' ],
                 [ '/etc/SuSE-release', '' ],
             ];
