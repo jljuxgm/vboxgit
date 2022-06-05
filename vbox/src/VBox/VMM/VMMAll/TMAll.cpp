@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: TMAll.cpp 48080 2013-08-27 13:03:25Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -96,7 +96,7 @@ VMMDECL(void) TMNotifyStartOfExecution(PVMCPU pVCpu)
 
 
 /**
- * Notification that execution is about to start.
+ * Notification that execution has ended.
  *
  * This call must always be paired with a TMNotifyStartOfExecution call.
  *
