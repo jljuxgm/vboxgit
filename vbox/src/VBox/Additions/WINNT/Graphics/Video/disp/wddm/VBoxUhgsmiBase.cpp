@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 50984 2014-04-07 10:57:41Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 53349 2014-11-19 11:03:07Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -147,7 +147,7 @@ DECLCALLBACK(int) vboxUhgsmiBaseEscBufferCreate(PVBOXUHGSMI pHgsmi, uint32_t cbB
 
 DECLCALLBACK(int) vboxUhgsmiBaseEscBufferSubmit(PVBOXUHGSMI pHgsmi, PVBOXUHGSMI_BUFFER_SUBMIT aBuffers, uint32_t cBuffers)
 {
-    /* we no chromium will not submit more than three buffers actually,
+    /* We know chromium will not submit more than three buffers actually,
      * for simplicity allocate it statically on the stack  */
     struct
     {
@@ -155,7 +155,7 @@ DECLCALLBACK(int) vboxUhgsmiBaseEscBufferSubmit(PVBOXUHGSMI pHgsmi, PVBOXUHGSMI_
         VBOXWDDM_UHGSMI_BUFFER_UI_INFO_ESCAPE aBufInfos[3];
     } Buf;
 
-    if (!cBuffers || cBuffers > RT_ELEMENTS(Buf.aBufInfos) + 1)
+    if (!cBuffers || cBuffers > RT_ELEMENTS(Buf.aBufInfos))
     {
         WARN(("invalid cBuffers!"));
         return VERR_INVALID_PARAMETER;
