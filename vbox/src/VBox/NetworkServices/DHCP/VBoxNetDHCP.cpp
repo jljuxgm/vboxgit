@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 49858 2013-12-10 03:19:40Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 49859 2013-12-10 03:22:27Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -168,7 +168,7 @@ static inline int configGetBoundryAddress(const ComDhcpServerPtr& dhcp, bool fUp
     else
         hrc = dhcp->COMGETTER(LowerIP)(strAddress.asOutParam());
     AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);
-    
+
     return RTNetStrToIPv4Addr(com::Utf8Str(strAddress).c_str(), &boundryAddress);
 }
 
