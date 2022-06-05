@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 48409 2013-09-10 13:22:32Z vboxsync $ */
+/* $Id: DevAHCI.cpp 48721 2013-09-26 19:37:59Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -2990,7 +2990,8 @@ static int ahciIdentifySS(PAHCIPort pAhciPort, void *pvBuf)
     if (   pAhciPort->pDrvBlock->pfnDiscard
         || ( pAhciPort->fAsyncInterface
             && pAhciPort->pDrvBlockAsync->pfnStartDiscard)
-        || pAhciPort->cbSector != 512)
+        || pAhciPort->cbSector != 512
+        || pAhciPort->fNonRotational)
     {
         p[80] = RT_H2LE_U16(0x1f0); /* support everything up to ATA/ATAPI-8 ACS */
         p[81] = RT_H2LE_U16(0x28); /* conforms to ATA/ATAPI-8 ACS */
