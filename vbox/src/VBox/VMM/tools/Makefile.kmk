@@ -1,5 +1,5 @@
 
-# $Id: Makefile.kmk 49282 2013-10-24 21:57:22Z vboxsync $
+# $Id: Makefile.kmk 49893 2013-12-13 00:40:20Z vboxsync $
 ## @file
 # Sub-Makefile for VMM tools.
 #
@@ -48,6 +48,23 @@ VBoxVMMPreload_LIBS = $(LIB_RUNTIME)
 ifdef VBOX_WITH_HARDENING
  VBoxVMMPreload_LDFLAGS.darwin += -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxVMMPreload.dylib
 endif
+
+
+#
+# CPU report program (CPUM DB).
+#
+PROGRAMS += VBoxCpuReport
+VBoxCpuReport_TEMPLATE := VBoxR3Static
+VBoxCpuReport_DEFS      = IN_VMM_R3
+VBoxCpuReport_INCS      = ../include
+VBoxCpuReport_SOURCES   = \
+	VBoxCpuReport.cpp \
+       ../VMMR3/CPUMR3CpuId.cpp
+VBoxCpuReport_LIBS      = \
+	$(PATH_STAGE_LIB)/SUPR3Static$(VBOX_SUFF_LIB) \
+       $(VBOX_LIB_RUNTIME_STATIC)
+VBoxCpuReport_LDFLAGS.darwin = \
+	-framework IOKit -framework CoreFoundation -framework CoreServices
 
 
 include $(FILE_KBUILD_SUB_FOOTER)

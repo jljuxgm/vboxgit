@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 47844 2013-08-19 14:03:17Z vboxsync $ */
+/* $Id: tstVMStruct.h 49893 2013-12-13 00:40:20Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -31,11 +31,8 @@
     GEN_CHECK_OFF(CPUM, CPUFeatures);
     GEN_CHECK_OFF(CPUM, CPUFeaturesExt);
     GEN_CHECK_OFF(CPUM, CPUFeaturesExt);
-    GEN_CHECK_OFF(CPUM, enmHostCpuVendor);
-    GEN_CHECK_OFF(CPUM, enmGuestCpuVendor);
     GEN_CHECK_OFF(CPUM, CR4);
 #ifndef VBOX_FOR_DTRACE_LIB
-    GEN_CHECK_OFF(CPUM, fSyntheticCpu);
     GEN_CHECK_OFF(CPUM, u8PortableCpuIdLevel);
     GEN_CHECK_OFF(CPUM, fPendingRestore);
 #endif

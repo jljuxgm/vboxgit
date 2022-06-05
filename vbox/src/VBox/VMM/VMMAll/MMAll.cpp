@@ -1,4 +1,4 @@
-/* $Id: MMAll.cpp 45640 2013-04-19 12:28:21Z vboxsync $ */
+/* $Id: MMAll.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Any Context.
  */
@@ -566,6 +566,10 @@ const char *mmGetTagName(MMTAG enmTag)
         TAG2STR(CFGM_BYTES);
         TAG2STR(CFGM_STRING);
         TAG2STR(CFGM_USER);
+
+        TAG2STR(CPUM_CTX);
+        TAG2STR(CPUM_CPUID);
+        TAG2STR(CPUM_MSRS);
 
         TAG2STR(CSAM);
         TAG2STR(CSAM_PATCH);

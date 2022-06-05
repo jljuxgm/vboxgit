@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 48629 2013-09-23 10:39:35Z vboxsync $ */
+/* $Id: PGM.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2167,6 +2167,7 @@ VMMR3DECL(int) PGMR3InitFinalize(PVM pVM)
         pVM->pgm.s.HCPhysInvMmioPg |= UINT64_C(0x000f0000000000);
     }
 
+    /** @todo query from CPUM. */
     pVM->pgm.s.GCPhysInvAddrMask = 0;
     for (uint32_t iBit = cMaxPhysAddrWidth; iBit < 64; iBit++)
         pVM->pgm.s.GCPhysInvAddrMask |= RT_BIT_64(iBit);
