@@ -1,4 +1,4 @@
-/* $Id: asn1-cursor.cpp 52600 2014-09-04 22:59:00Z vboxsync $ */
+/* $Id: asn1-cursor.cpp 52607 2014-09-05 00:21:35Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Basic Operations.
  */
@@ -27,7 +27,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define RT_STRICT
 #include "internal/iprt.h"
 #include <iprt/asn1.h>
 
