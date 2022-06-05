@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49836 2013-12-09 11:50:26Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49839 2013-12-09 12:33:46Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -186,7 +186,7 @@ class VBoxNetLwipNAT: public VBoxNetBaseService, public NATNetworkEventAdapter
 static VBoxNetLwipNAT *g_pLwipNat;
 INTNETSEG VBoxNetLwipNAT::aXmitSeg[64];
 
-STDMETHODIMP VBoxNetLwipNAT::HandleEvent(VBoxEventType_T aEventType,
+HRESULT VBoxNetLwipNAT::HandleEvent(VBoxEventType_T aEventType,
                                                   IEvent *pEvent)
 {
     HRESULT hrc = S_OK;
