@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 52179 2014-07-24 23:39:00Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 52180 2014-07-25 00:18:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -142,16 +142,17 @@ void UIMachineLogicNormal::sltPrepareMenuViewPopup()
                             uisession()->isGuestSupportsGraphics();
 
     /* For each the machine-window: */
-    foreach (UIMachineWindow *pMachineWindow, machineWindows())
-    {
-        /* Add 'Virtual Screen %1' menu: */
-        const int iScreenID = pMachineWindow->screenId();
-        QMenu *pSubMenu = pMenu->addMenu(QApplication::translate("UIMultiScreenLayout",
-                                                                 "Virtual Screen %1").arg(iScreenID + 1));
-        pSubMenu->setProperty("Screen ID", iScreenID);
-        pSubMenu->setEnabled(fGAEnabled);
-        connect(pSubMenu, SIGNAL(aboutToShow()), this, SLOT(sltPrepareMenuViewVirtualScreen()));
-    }
+    if (uisession()->allowedActionsMenuView() & RuntimeMenuViewActionType_Resize)
+        foreach (UIMachineWindow *pMachineWindow, machineWindows())
+        {
+            /* Add 'Virtual Screen %1' menu: */
+            const int iScreenID = pMachineWindow->screenId();
+            QMenu *pSubMenu = pMenu->addMenu(QApplication::translate("UIMultiScreenLayout",
+                                                                     "Virtual Screen %1").arg(iScreenID + 1));
+            pSubMenu->setProperty("Screen ID", iScreenID);
+            pSubMenu->setEnabled(fGAEnabled);
+            connect(pSubMenu, SIGNAL(aboutToShow()), this, SLOT(sltPrepareMenuViewVirtualScreen()));
+        }
 }
 
 void UIMachineLogicNormal::sltPrepareMenuViewVirtualScreen()
