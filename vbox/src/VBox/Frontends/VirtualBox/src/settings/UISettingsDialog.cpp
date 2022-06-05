@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 47944 2013-08-21 07:36:55Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -462,7 +462,7 @@ bool UISettingsDialog::eventFilter(QObject *pObject, QEvent *pEvent)
     if (!pObject->isWidgetType())
         return QIMainDialog::eventFilter(pObject, pEvent);
 
-    /* Ignore widgets which window is NOT settings dialog: */
+    /* Ignore widgets which window is NOT settings window: */
     QWidget *pWidget = static_cast<QWidget*>(pObject);
     if (pWidget->window() != this)
         return QIMainDialog::eventFilter(pObject, pEvent);

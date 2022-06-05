@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 48260 2013-09-04 11:42:46Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -686,7 +686,7 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
     /* Retranslate UI: */
     retranslateUi();
 
-    /* Setup settings dialog: */
+    /* Setup settings window: */
     if (!strCategory.isNull())
     {
         m_pSelector->selectByLink(strCategory);
@@ -980,7 +980,7 @@ void UISettingsDialogMachine::sltMarkLoaded()
         m_console = CConsole();
     }
 
-    /* Make sure settings dialog will be updated on machine state/data changes: */
+    /* Make sure settings window will be updated on machine state/data changes: */
     connect(gVBoxEvents, SIGNAL(sigSessionStateChange(QString, KSessionState)),
             this, SLOT(sltSessionStateChanged(QString, KSessionState)));
     connect(gVBoxEvents, SIGNAL(sigMachineStateChange(QString, KMachineState)),

@@ -1,4 +1,4 @@
-/* $Id: VBoxFilePathSelectorWidget.cpp 47184 2013-07-16 09:28:19Z vboxsync $ */
+/* $Id: VBoxFilePathSelectorWidget.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -311,7 +311,7 @@ void VBoxFilePathSelectorWidget::retranslateUi()
     {
         case Mode_Folder:
             setItemData (SelectId,
-                         tr ("Opens a dialog to select a different folder."),
+                         tr ("Opens a window to select a different folder."),
                          Qt::ToolTipRole);
             setItemData (ResetId,
                          tr ("Resets the folder path to the default value."),
@@ -320,7 +320,7 @@ void VBoxFilePathSelectorWidget::retranslateUi()
         case Mode_File_Open:
         case Mode_File_Save:
             setItemData (SelectId,
-                         tr ("Opens a dialog to select a different file."),
+                         tr ("Opens a window to select a different file."),
                          Qt::ToolTipRole);
             setItemData (ResetId,
                          tr ("Resets the file path to the default value."),

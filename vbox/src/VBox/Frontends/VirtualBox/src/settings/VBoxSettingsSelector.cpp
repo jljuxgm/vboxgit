@@ -1,4 +1,4 @@
-/* $Id: VBoxSettingsSelector.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
+/* $Id: VBoxSettingsSelector.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -320,7 +320,7 @@ void VBoxSettingsTreeViewSelector::clear()
 }
 
 /**
- *  Returns a path to the given page of this settings dialog. See ::path() for
+ *  Returns a path to the given page of this settings window. See ::path() for
  *  details.
  */
 QString VBoxSettingsTreeViewSelector::pagePath (const QString &aMatch) const

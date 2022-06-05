@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 47365 2013-07-24 10:13:29Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -73,7 +73,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&Virtual Media Manager..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Display the Virtual Media Manager dialog"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the Virtual Media Manager window"));
     }
 };
 
@@ -167,7 +167,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&Preferences...", "global settings"));
-        setStatusTip(QApplication::translate("UIActionPool", "Display the global settings dialog"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the global settings window"));
     }
 };
 

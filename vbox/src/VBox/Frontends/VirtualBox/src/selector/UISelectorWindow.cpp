@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 48316 2013-09-05 16:14:52Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -322,7 +322,7 @@ void UISelectorWindow::sltShowPreferencesDialog()
      * if the user tries to open global settings: */
     m_fWarningAboutInaccessibleMediumShown = true;
 
-    /* Create and execute global settings dialog: */
+    /* Create and execute global settings window: */
     UISettingsDialogGlobal dialog(this);
     dialog.execute();
 
@@ -416,7 +416,7 @@ void UISelectorWindow::sltShowMachineSettingsDialog(const QString &strCategoryRe
      * if the user tries to open VM settings: */
     m_fWarningAboutInaccessibleMediumShown = true;
 
-    /* Create and execute corresponding VM settings dialog: */
+    /* Create and execute corresponding VM settings window: */
     UISettingsDialogMachine dialog(this,
                                    QUuid(strId).isNull() ? currentItem()->id() : strId,
                                    strCategory, strControl);

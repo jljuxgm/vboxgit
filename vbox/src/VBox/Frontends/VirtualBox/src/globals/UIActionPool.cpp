@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 48388 2013-09-09 11:27:17Z vboxsync $ */
+/* $Id: UIActionPool.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -507,7 +507,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&About VirtualBox..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Show a dialog with product information"));
+        setStatusTip(QApplication::translate("UIActionPool", "Show a window with product information"));
     }
 };
 

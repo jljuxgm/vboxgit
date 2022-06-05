@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -3659,9 +3659,9 @@ bool UIMachineSettingsStorage::isAttachmentCouldBeUpdated(const UICacheSettingsM
 
 void UIMachineSettingsStorage::setDialogType(SettingsDialogType settingsDialogType)
 {
-    /* Update model 'settings dialog type': */
+    /* Update model 'settings window type': */
     mStorageModel->setDialogType(settingsDialogType);
-    /* Update 'settings dialog type' of base class: */
+    /* Update 'settings window type' of base class: */
     UISettingsPageMachine::setDialogType(settingsDialogType);
 }
 
