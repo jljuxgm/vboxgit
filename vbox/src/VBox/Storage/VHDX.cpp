@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
+/* $Id: VHDX.cpp 48861 2013-10-04 00:59:38Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -1591,8 +1591,9 @@ static int vhdxLoadRegionTable(PVHDXIMAGE pImage)
             {
                 /* Parse the region table entries. */
                 PVhdxRegionTblEntry pRegTblEntry = (PVhdxRegionTblEntry)(pbRegionTbl + sizeof(VhdxRegionTblHdr));
-                VhdxRegionTblEntry RegTblEntryBat; /**<< BAT region table entry. */
+                VhdxRegionTblEntry RegTblEntryBat; /* BAT region table entry. */
                 bool fBatRegPresent = false;
+                RT_ZERO(RegTblEntryBat); /* Maybe uninitialized, gcc. */
 
                 for (unsigned i = 0; i < RegionTblHdr.u32EntryCount; i++)
                 {
