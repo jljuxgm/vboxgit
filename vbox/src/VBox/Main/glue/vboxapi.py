@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 47981 2013-08-22 00:47:00Z vboxsync $
+# $Id: vboxapi.py 47983 2013-08-22 08:49:41Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -16,7 +16,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 47981 $"
+__version__ = "$Revision: 47983 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -737,7 +737,6 @@ class PlatformXPCOM(PlatformBase):
         return oXcpt.errno;
 
     def errIsDeadInterface(self, oXcpt):
-        import winerror;
         return self.errGetStatus(oXcpt) in [
             0x80004004, -2147467260, # NS_ERROR_ABORT
             0x800706be, -2147023170, # NS_ERROR_CALL_FAILED (RPC_S_CALL_FAILED)
@@ -758,7 +757,6 @@ class PlatformXPCOM(PlatformBase):
         return xpcom.Exception;
 
     def errSetupConstants(self, oDst):
-        import winerror;
         oDst = self.errCopyErrorConstants(oDst, winerror);
 
         # COM compatability constants.
