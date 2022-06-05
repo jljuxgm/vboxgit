@@ -1,4 +1,4 @@
-/* $Id: DBGFStack.cpp 46165 2013-05-19 19:07:50Z vboxsync $ */
+/* $Id: DBGFStack.cpp 48729 2013-09-27 11:09:39Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Call Stack Analyser.
  */
@@ -255,7 +255,7 @@ static int dbgfR3StackWalk(PUVM pUVM, VMCPUID idCpu, RTDBGAS hAs, PDBGFSTACKFRAM
 
     pFrame->pSymReturnPC  = DBGFR3AsSymbolByAddrA(pUVM, hAs, &pFrame->AddrReturnPC, RTDBGSYMADDR_FLAGS_LESS_OR_EQUAL,
                                                   NULL /*poffDisp*/, NULL /*phMod*/);
-    pFrame->pLineReturnPC = DBGFR3AsLineByAddrA(pUVM, hAs, &pFrame->AddrPC, NULL /*poffDisp*/, NULL /*phMod*/);
+    pFrame->pLineReturnPC = DBGFR3AsLineByAddrA(pUVM, hAs, &pFrame->AddrReturnPC, NULL /*poffDisp*/, NULL /*phMod*/);
 
     /*
      * Frame bitness flag.
