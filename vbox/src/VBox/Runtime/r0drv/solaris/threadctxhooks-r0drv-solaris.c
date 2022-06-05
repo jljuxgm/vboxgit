@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-solaris.c 48035 2013-08-23 17:29:18Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-solaris.c 48051 2013-08-26 09:51:43Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Solaris.
  */
@@ -216,8 +216,8 @@ RTDECL(uint32_t) RTThreadCtxHooksRelease(RTTHREADCTX hThreadCtx)
     ASMAtomicWriteBool(&pThis->fRegistered, false);
     uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
 
-    if (   pThis->hOwner == RTThreadNativeSelf()
-        && cRefs == 1)
+    if (   cRefs == 1
+        && pThis->hOwner == RTThreadNativeSelf())
     {
         /*
          * removectx() will invoke rtThreadCtxHooksSolFree() and there is no way to bypass it and still use
