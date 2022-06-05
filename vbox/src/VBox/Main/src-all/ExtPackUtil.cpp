@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 48778 2013-10-01 02:10:29Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -322,7 +322,7 @@ RTCString *VBoxExtPackLoadDescFromVfsFile(RTVFSFILE hVfsFile, PVBOXEXTPACKDESC a
     if (RT_SUCCESS(rc))
     {
         xml::XmlMemParser   Parser;
-        RTCString    strFileName = VBOX_EXTPACK_DESCRIPTION_NAME;
+        RTCString           strFileName = VBOX_EXTPACK_DESCRIPTION_NAME;
         try
         {
             Parser.read(pvFile, cbFile, strFileName, Doc);
