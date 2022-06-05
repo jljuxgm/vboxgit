@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 53026 2014-10-10 12:03:00Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 53069 2014-10-15 15:28:20Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -155,8 +155,15 @@ int main(int argc, char **argv)
                 if (!fSpin)
                     RTThreadSleep(9);
                 else
-                    while (u32TransactionId == *pu32TransactionId)
-                        /* nop */;
+                {
+                    if (pu32TransactionId)
+                    {
+                        while (u32TransactionId == *pu32TransactionId)
+                            ASMNopPause();
+                    }
+                    else
+                        RTThreadSleep(1);
+                }
             }
 
             /*
