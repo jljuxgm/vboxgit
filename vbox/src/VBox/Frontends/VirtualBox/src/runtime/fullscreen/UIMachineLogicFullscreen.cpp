@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 50498 2014-02-18 16:23:28Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 50520 2014-02-20 11:15:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -125,8 +125,16 @@ void UIMachineLogicFullscreen::sltHandleNativeFullscreenDidExit()
     AssertReturnVoid(fResult && !m_fullscreenMachineWindows.contains(pMachineWindow));
     Q_UNUSED(fResult);
 
-    /* Exit fullscreen mode if there is/are no fullscreen window(s) left: */
-    if (m_fullscreenMachineWindows.isEmpty())
+    /* If there is/are still fullscreen window(s) present: */
+    if (!m_fullscreenMachineWindows.isEmpty())
+    {
+        /* Ask remain window(s) to exit fullscreen too: */
+        foreach (UIMachineWindow *pMachineWindow, machineWindows())
+            if (darwinIsInFullscreenMode(pMachineWindow))
+                darwinToggleFullscreenMode(pMachineWindow);
+    }
+    /* If there is/are no more fullscreen window(s) left: */
+    else
     {
         /* Change visual-state to requested: */
         LogRel(("UIMachineLogicFullscreen::sltHandleNativeFullscreenDidExit: "
