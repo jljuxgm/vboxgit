@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 51352 2014-05-22 11:49:22Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 51355 2014-05-22 12:28:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -483,8 +483,6 @@ void UIMachineSettingsUSB::saveFromCacheTo(QVariant &data)
 
 bool UIMachineSettingsUSB::validate(QList<UIValidationMessage> &messages)
 {
-    printf("UIMachineSettingsUSB::validate\n");
-
     Q_UNUSED(messages);
 
     /* Pass by default: */
