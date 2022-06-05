@@ -1,4 +1,4 @@
-/** $Id: VBoxClientClipboard.cpp 48181 2013-08-30 08:33:19Z vboxsync $ */
+/** $Id: VBoxClientClipboard.cpp 48222 2013-09-02 05:33:12Z vboxsync $ */
 /** @file
  * VBoxClient - Shared Slipboard Dispatcher, Darwin.
  */
@@ -111,14 +111,14 @@ static DECLCALLBACK(int) vbclClipboardDispatcher(RTTHREAD ThreadSelf, void *pvUs
                 case VBOX_SHARED_CLIPBOARD_HOST_MSG_READ_DATA:
                     VBoxClientVerbose(2, "host requested guest's clipboard read\n");
                     rc = vbclClipboardForwardToHost(g_u32ClientId, g_PasteboardRef, fFormats);
-                    AssertMsg(RT_SUCCESS(rc), "paste to host failed\n");
+                    AssertMsg(RT_SUCCESS(rc), ("paste to host failed\n"));
                     break;
 
                 /* The host has announced available clipboard formats */
                 case VBOX_SHARED_CLIPBOARD_HOST_MSG_FORMATS:
                     VBoxClientVerbose(2, "host requested guest's clipboard write\n");
                     rc = vbclClipboardForwardToGuest(g_u32ClientId, g_PasteboardRef, fFormats);
-                    AssertMsg(RT_SUCCESS(rc), "paste to guest failed\n");
+                    AssertMsg(RT_SUCCESS(rc), ("paste to guest failed\n"));
                     break;
 
                 default:
