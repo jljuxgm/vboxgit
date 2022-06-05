@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51541 2014-06-05 07:14:45Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51548 2014-06-05 10:02:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -424,6 +424,26 @@ void UIExtraDataManager::setSelectorWindowStatusBarVisible(bool fVisible)
 {
     /* Remember if feature restricted: */
     setExtraDataString(GUI_Statusbar, toFeatureRestricted(!fVisible));
+}
+
+void UIExtraDataManager::clearSelectorWindowGroupsDefinitions()
+{
+    /* Read-only access global extra-data map: */
+    const ExtraDataMap &data = m_data[m_sstrGlobalID];
+    /* Wipe-out each the group definition record: */
+    foreach (const QString &strKey, data.keys())
+        if (strKey.startsWith(GUI_GroupDefinitions))
+            setExtraDataString(strKey, QString());
+}
+
+QStringList UIExtraDataManager::selectorWindowGroupsDefinitions(const QString &strGroupID) const
+{
+    return extraDataStringList(GUI_GroupDefinitions + strGroupID);
+}
+
+void UIExtraDataManager::setSelectorWindowGroupsDefinitions(const QString &strGroupID, const QStringList &definitions)
+{
+    setExtraDataStringList(GUI_GroupDefinitions + strGroupID, definitions);
 }
 
 QString UIExtraDataManager::selectorWindowLastItemChosen() const
