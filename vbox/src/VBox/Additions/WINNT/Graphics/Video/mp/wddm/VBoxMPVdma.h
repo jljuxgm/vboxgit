@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 50940 2014-04-01 11:22:34Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 51260 2014-05-15 15:35:56Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -113,10 +113,6 @@ DECLINLINE(VOID) vboxVdmaDdiCmdHandleCompletedList(PVBOXMP_DEVEXT pDevExt, LIST_
             pCmd->pfnComplete(pDevExt, pCmd, pCmd->pvComplete);
     }
 }
-
-#ifdef VBOXWDDM_RENDER_FROM_SHADOW
-NTSTATUS vboxVdmaHlpUpdatePrimary(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId, RECT* pRect);
-#endif
 
 #if 0
 typedef DECLCALLBACK(int) FNVBOXVDMASUBMIT(struct _DEVICE_EXTENSION* pDevExt, struct VBOXVDMAINFO * pInfo, HGSMIOFFSET offDr, PVOID pvContext);
@@ -319,7 +315,7 @@ NTSTATUS vboxVdmaProcessBltCmd(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_CONTEXT *
 NTSTATUS vboxVdmaProcessFlipCmd(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_CONTEXT *pContext, struct VBOXWDDM_DMA_PRIVATEDATA_FLIP *pFlip);
 NTSTATUS vboxVdmaProcessClrFillCmd(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_CONTEXT *pContext, struct VBOXWDDM_DMA_PRIVATEDATA_CLRFILL *pCF);
 #ifdef VBOX_WITH_CROGL
-NTSTATUS vboxVdmaTexPresentSetAlloc(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_ALLOCATION pRealFbAlloc);
+NTSTATUS vboxVdmaTexPresentSetAlloc(PVBOXMP_DEVEXT pDevExt, const VBOXWDDM_ALLOC_DATA *pAllocData);
 #endif
 
 #endif /* #ifndef ___VBoxMPVdma_h___ */

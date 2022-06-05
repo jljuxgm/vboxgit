@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 51218 2014-05-08 18:08:40Z vboxsync $ */
+/* $Id: DevVGA.h 51260 2014-05-15 15:35:56Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -613,6 +613,7 @@ void VBVARaiseIrqNoWait(PVGASTATE pVGAState, uint32_t fFlags);
 
 int VBVAInfoView(PVGASTATE pVGAState, VBVAINFOVIEW *pView);
 int VBVAInfoScreen(PVGASTATE pVGAState, VBVAINFOSCREEN *pScreen);
+int VBVAGetInfoViewAndScreen(PVGASTATE pVGAState, uint32_t u32ViewIndex, VBVAINFOVIEW *pView, VBVAINFOSCREEN *pScreen);
 
 /* @return host-guest flags that were set on reset
  * this allows the caller to make further cleaning when needed,

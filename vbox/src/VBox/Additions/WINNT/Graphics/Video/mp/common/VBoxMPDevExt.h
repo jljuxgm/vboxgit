@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 50987 2014-04-07 17:08:07Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 51260 2014-05-15 15:35:56Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -118,14 +118,11 @@ typedef struct _VBOXMP_DEVEXT
    volatile uint32_t cContexts3D;
    volatile uint32_t cContexts2D;
    volatile uint32_t cContextsDispIfResize;
-   volatile uint32_t cRenderFromShadowDisabledContexts;
    volatile uint32_t cUnlockedVBVADisabled;
 
    volatile uint32_t fCompletingCommands;
 
    DWORD dwDrvCfgFlags;
-   /* this is examined and swicthed by DxgkDdiSubmitCommand only! */
-   volatile BOOLEAN fRenderToShadowDisabled;
 #ifdef VBOX_WITH_CROGL
    BOOLEAN f3DEnabled;
    BOOLEAN fTexPresentEnabled;

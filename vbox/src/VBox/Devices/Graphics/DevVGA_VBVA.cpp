@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 51121 2014-04-23 11:39:21Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 51260 2014-05-15 15:35:56Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1958,6 +1958,23 @@ int VBVAInfoScreen(PVGASTATE pVGAState, VBVAINFOSCREEN *pScreen)
                     (unsigned long)pScreen->u32StartOffset,
                     (unsigned long)pView->u32MaxScreenSize));
     return VERR_INVALID_PARAMETER;
+}
+
+int VBVAGetInfoViewAndScreen(PVGASTATE pVGAState, uint32_t u32ViewIndex, VBVAINFOVIEW *pView, VBVAINFOSCREEN *pScreen)
+{
+    if (u32ViewIndex >= pVGAState->cMonitors)
+        return VERR_INVALID_PARAMETER;
+
+    PHGSMIINSTANCE pIns = pVGAState->pHGSMI;
+    VBVACONTEXT *pCtx = (VBVACONTEXT *)HGSMIContext (pIns);
+
+    if (pView)
+        *pView = pCtx->aViews[u32ViewIndex].view;
+
+    if (pScreen)
+        *pScreen = pCtx->aViews[u32ViewIndex].screen;
+
+    return VINF_SUCCESS;
 }
 
 

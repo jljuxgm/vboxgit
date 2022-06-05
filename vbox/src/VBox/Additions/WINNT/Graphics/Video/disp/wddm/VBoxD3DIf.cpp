@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.cpp 50940 2014-04-01 11:22:34Z vboxsync $ */
+/* $Id: VBoxD3DIf.cpp 51260 2014-05-15 15:35:56Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -888,7 +888,8 @@ int vboxD3DIfSetHostId(PVBOXWDDMDISP_ALLOCATION pAlloc, uint32_t hostID, uint32_
     D3DDDICB_ESCAPE DdiEscape = {0};
     DdiEscape.hContext = pDevice->DefaultContext.ContextInfo.hContext;
     DdiEscape.hDevice = pDevice->hDevice;
-//    DdiEscape.Flags.Value = 0;
+    DdiEscape.Flags.Value = 0;
+    DdiEscape.Flags.HardwareAccess = 1;
     DdiEscape.pPrivateDriverData = &SetHostID;
     DdiEscape.PrivateDriverDataSize = sizeof (SetHostID);
     HRESULT hr = pDevice->RtCallbacks.pfnEscapeCb(pDevice->pAdapter->hAdapter, &DdiEscape);
