@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 48208 2013-08-30 22:05:31Z vboxsync $ */
+/* $Id: HMR0.cpp 48209 2013-08-30 22:13:19Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -123,11 +123,11 @@ static struct
         {
             uint64_t                u64FeatureCtrl;
             uint64_t                u64BasicInfo;
-            VMXCAPABILITY           vmxPinCtls;
-            VMXCAPABILITY           vmxProcCtls;
-            VMXCAPABILITY           vmxProcCtls2;
-            VMXCAPABILITY           vmxExit;
-            VMXCAPABILITY           vmxEntry;
+            VMX_CAPABILITY          vmxPinCtls;
+            VMX_CAPABILITY          vmxProcCtls;
+            VMX_CAPABILITY          vmxProcCtls2;
+            VMX_CAPABILITY          vmxExit;
+            VMX_CAPABILITY          vmxEntry;
             uint64_t                u64Misc;
             uint64_t                u64Cr0Fixed0;
             uint64_t                u64Cr0Fixed1;

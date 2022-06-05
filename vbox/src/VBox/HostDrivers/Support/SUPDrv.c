@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 48208 2013-08-30 22:05:31Z vboxsync $ */
+/* $Id: SUPDrv.c 48209 2013-08-30 22:13:19Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3418,7 +3418,7 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
                     || !(u64Value & MSR_IA32_FEATURE_CONTROL_LOCK) /* not enabled, but not locked either */
                    )
                 {
-                    VMXCAPABILITY vtCaps;
+                    VMX_CAPABILITY vtCaps;
 
                     *pfCaps |= SUPVTCAPS_VT_X;
 
