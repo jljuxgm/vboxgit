@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 49058 2013-10-11 15:51:50Z vboxsync $ */
+/* $Id: Settings.cpp 49066 2013-10-12 08:02:26Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1882,9 +1882,9 @@ Hardware::Hardware()
           fUnrestrictedExecution(true),
           fHardwareVirtForce(false),
           fSyntheticCpu(false),
+          fTripleFaultReset(false),
           fPAE(false),
           enmLongMode(HC_ARCH_BITS == 64 ? Hardware::LongMode_Enabled : Hardware::LongMode_Disabled),
-          fTripleFaultReset(false),
           cCPUs(1),
           fCpuHotPlug(false),
           fHPETEnabled(false),
