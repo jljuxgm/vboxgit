@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 50628 2014-02-27 12:39:15Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 50940 2014-04-01 11:22:34Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -203,7 +203,9 @@ typedef struct VBOXWDDMDISP_DEVICE
      * is split into two calls : SetViewport & SetZRange */
     D3DVIEWPORT9 ViewPort;
     VBOXWDDMDISP_CONTEXT DefaultContext;
+#ifdef VBOX_WITH_CRHGSMI
     VBOXUHGSMI_PRIVATE_D3D Uhgsmi;
+#endif
 
     /* no lock is needed for this since we're guaranteed the per-device calls are not reentrant */
     RTLISTANCHOR DirtyAllocList;

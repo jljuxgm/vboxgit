@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.h 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: VBoxMPMisc.h 50940 2014-04-01 11:22:34Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -69,7 +69,7 @@ VBOXWDDM_HANDLE vboxWddmHTablePut(PVBOXWDDM_HTABLE pTbl, PVOID pvData);
 PVOID vboxWddmHTableRemove(PVBOXWDDM_HTABLE pTbl, VBOXWDDM_HANDLE hHandle);
 PVOID vboxWddmHTableGet(PVBOXWDDM_HTABLE pTbl, VBOXWDDM_HANDLE hHandle);
 
-
+#ifdef VBOX_WITH_CROGL
 PVBOXWDDM_SWAPCHAIN vboxWddmSwapchainCreate();
 BOOLEAN vboxWddmSwapchainRetain(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SWAPCHAIN pSwapchain);
 VOID vboxWddmSwapchainRelease(PVBOXWDDM_SWAPCHAIN pSwapchain);
@@ -83,6 +83,7 @@ VOID vboxWddmSwapchainCtxDestroyAll(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pC
 NTSTATUS vboxWddmSwapchainCtxEscape(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pContext, PVBOXDISPIFESCAPE_SWAPCHAININFO pSwapchainInfo, UINT cbSize);
 NTSTATUS vboxWddmSwapchainCtxInit(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pContext);
 VOID vboxWddmSwapchainCtxTerm(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pContext);
+#endif
 
 
 NTSTATUS vboxWddmRegQueryDisplaySettingsKeyName(PVBOXMP_DEVEXT pDevExt, D3DDDI_VIDEO_PRESENT_SOURCE_ID VidPnSourceId,

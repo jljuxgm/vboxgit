@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DCmn.h 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: VBoxDispD3DCmn.h 50940 2014-04-01 11:22:34Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -43,7 +43,9 @@
 #ifndef IN_VBOXCRHGSMI
 #include "VBoxD3DIf.h"
 #endif
+#ifdef VBOX_WITH_CROGL
 #include <cr_protocol.h>
+#endif
 
 # ifdef VBOXWDDMDISP
 #  define VBOXWDDMDISP_DECL(_type) DECLEXPORT(_type)

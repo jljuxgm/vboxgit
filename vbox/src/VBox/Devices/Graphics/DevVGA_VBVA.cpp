@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 50754 2014-03-12 17:43:09Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 50940 2014-04-01 11:22:34Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1941,16 +1941,21 @@ static DECLCALLBACK(int) vbvaChannelHandler (void *pvHandler, uint16_t u16Channe
     {
         case VBVA_CMDVBVA_SUBMIT:
         {
+# ifdef VBOX_WITH_CRHGSMI
             rc = vboxCmdVBVACmdSubmit(pVGAState);
+#endif
             break;
         }
         case VBVA_CMDVBVA_FLUSH:
         {
+# ifdef VBOX_WITH_CRHGSMI
             rc =vboxCmdVBVACmdFlush(pVGAState);
+#endif
             break;
         }
         case VBVA_CMDVBVA_CTL:
         {
+#ifdef VBOX_WITH_CRHGSMI
             if (cbBuffer < VBoxSHGSMIBufferHeaderSize() + sizeof (VBOXCMDVBVA_CTL))
             {
                 Log(("buffer too small\n"));
@@ -1960,9 +1965,9 @@ static DECLCALLBACK(int) vbvaChannelHandler (void *pvHandler, uint16_t u16Channe
                 rc = VERR_INVALID_PARAMETER;
                 break;
             }
-
             VBOXCMDVBVA_CTL *pCtl = (VBOXCMDVBVA_CTL*)VBoxSHGSMIBufferData((PVBOXSHGSMIHEADER)pvBuffer);
             rc = vboxCmdVBVACmdCtl(pVGAState, pCtl, cbBuffer - VBoxSHGSMIBufferHeaderSize());
+#endif
             break;
         }
 #ifdef VBOX_WITH_VDMA

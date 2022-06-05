@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 50933 2014-03-31 16:43:00Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 50940 2014-04-01 11:22:34Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -97,6 +97,7 @@ int vboxVbvaReportDirtyRect (PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SOURCE pSrc, RECT
     return VERR_GENERAL_FAILURE;
 }
 
+#ifdef VBOX_WITH_CROGL
 /* command vbva ring buffer */
 
 /* customized VBVA implementation */
@@ -1286,3 +1287,4 @@ int VBoxCmdVbvaConCmdCompletionData(void *pvCmd, VBOXCMDVBVA_CRCMD_CMD **ppCmd)
         *ppCmd = (VBOXCMDVBVA_CRCMD_CMD*)(pCmd+1);
     return pCmd->Hdr.i32Result;
 }
+#endif

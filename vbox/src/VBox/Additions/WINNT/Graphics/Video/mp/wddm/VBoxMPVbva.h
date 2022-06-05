@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.h 50859 2014-03-25 10:46:17Z vboxsync $ */
+/* $Id: VBoxMPVbva.h 50940 2014-04-01 11:22:34Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -58,6 +58,7 @@ int vboxVbvaReportDirtyRect(PVBOXMP_DEVEXT pDevExt, struct VBOXWDDM_SOURCE *pSrc
         } while (0)
 
 
+#ifdef VBOX_WITH_CROGL
 /* customized VBVA implementation */
 struct VBVAEXBUFFERCONTEXT;
 
@@ -231,5 +232,6 @@ VBOXCMDVBVA_CRCMD_CMD* VBoxCmdVbvaConCmdAlloc(PVBOXMP_DEVEXT pDevExt, uint32_t c
 void VBoxCmdVbvaConCmdFree(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA_CRCMD_CMD* pCmd);
 int VBoxCmdVbvaConCmdSubmitAsync(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA_CRCMD_CMD* pCmd, FNVBOXSHGSMICMDCOMPLETION pfnCompletion, void *pvCompletion);
 int VBoxCmdVbvaConCmdCompletionData(void *pvCmd, VBOXCMDVBVA_CRCMD_CMD **ppCmd);
+#endif /* #ifdef VBOX_WITH_CROGL */
 
 #endif /* #ifndef ___VBoxMPVbva_h___ */

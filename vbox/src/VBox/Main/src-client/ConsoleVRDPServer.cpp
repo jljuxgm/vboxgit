@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 50914 2014-03-27 19:07:53Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 50940 2014-04-01 11:22:34Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -2130,6 +2130,7 @@ void ConsoleVRDPServer::remote3DRedirect(bool fEnable)
         RT_ZERO(outputRedirect);
     }
 
+#if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)
     VBOXCRCMDCTL_HGCM data;
     data.Hdr.enmType = VBOXCRCMDCTL_TYPE_HGCM;
     data.Hdr.u32Function = SHCRGL_HOST_FN_SET_OUTPUT_REDIRECT;
@@ -2146,8 +2147,9 @@ void ConsoleVRDPServer::remote3DRedirect(bool fEnable)
     }
 
     LogRel(("VRDE: %s 3D redirect.\n", fEnable? "Enabled": "Disabled"));
-#ifdef DEBUG_misha
+# ifdef DEBUG_misha
     AssertFailed();
+# endif
 #endif
 
     return;

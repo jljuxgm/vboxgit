@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 50927 2014-03-31 10:34:37Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 50940 2014-04-01 11:22:34Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -179,7 +179,7 @@ PVOID vboxWddmHTableIterRemoveCur(PVBOXWDDM_HTABLE_ITERATOR pIter)
     }
     return NULL;
 }
-
+#ifdef VBOX_WITH_CROGL
 PVBOXWDDM_SWAPCHAIN vboxWddmSwapchainCreate(UINT w, UINT h)
 {
     PVBOXWDDM_SWAPCHAIN pSwapchain = (PVBOXWDDM_SWAPCHAIN)vboxWddmMemAllocZero(sizeof (VBOXWDDM_SWAPCHAIN));
@@ -571,7 +571,7 @@ VOID vboxWddmSwapchainCtxTerm(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pContext
     vboxWddmSwapchainCtxDestroyAll(pDevExt, pContext);
     vboxWddmHTableDestroy(&pContext->Swapchains);
 }
-
+#endif
 NTSTATUS vboxWddmRegQueryDrvKeyName(PVBOXMP_DEVEXT pDevExt, ULONG cbBuf, PWCHAR pBuf, PULONG pcbResult)
 {
     WCHAR fallBackBuf[2];

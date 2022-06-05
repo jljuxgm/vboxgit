@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 50677 2014-03-04 13:21:14Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 50940 2014-04-01 11:22:34Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -126,7 +126,7 @@ typedef struct _VBOXMP_DEVEXT
    DWORD dwDrvCfgFlags;
    /* this is examined and swicthed by DxgkDdiSubmitCommand only! */
    volatile BOOLEAN fRenderToShadowDisabled;
-
+#ifdef VBOX_WITH_CROGL
    BOOLEAN f3DEnabled;
    BOOLEAN fTexPresentEnabled;
    BOOLEAN fCmdVbvaEnabled;
@@ -137,7 +137,7 @@ typedef struct _VBOXMP_DEVEXT
 
    VBOXMP_CRCTLCON CrCtlCon;
    VBOXMP_CRSHGSMITRANSPORT CrHgsmiTransport;
-
+#endif
    VBOXWDDM_GLOBAL_POINTER_INFO PointerInfo;
 
    VBOXVTLIST CtlList;
@@ -219,6 +219,7 @@ DECLINLINE(PVBOXMP_COMMON) VBoxCommonFromDeviceExt(PVBOXMP_DEVEXT pExt)
 #ifdef VBOX_WDDM_MINIPORT
 DECLINLINE(ULONG) vboxWddmVramCpuVisibleSize(PVBOXMP_DEVEXT pDevExt)
 {
+#ifdef VBOX_WITH_CROGL
     if (pDevExt->fCmdVbvaEnabled)
     {
         /* all memory layout info should be initialized */
@@ -228,6 +229,7 @@ DECLINLINE(ULONG) vboxWddmVramCpuVisibleSize(PVBOXMP_DEVEXT pDevExt)
 
         return (ULONG)(pDevExt->CmdVbva.Vbva.offVRAMBuffer & ~0xfffULL);
     }
+#endif
     /* all memory layout info should be initialized */
     Assert(pDevExt->aSources[0].Vbva.Vbva.offVRAMBuffer);
     /* page aligned */
