@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 49465 2013-11-13 13:27:44Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 49553 2013-11-19 15:15:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1719,14 +1719,6 @@ void VBoxGlobal::createMedium(const UIMedium &medium)
     QReadLocker cleanupRacePreventor(&m_mediumEnumeratorDtorRwLock);
     if (m_pMediumEnumerator)
         m_pMediumEnumerator->createMedium(medium);
-}
-
-void VBoxGlobal::updateMedium(const UIMedium &medium)
-{
-    /* Update medium of medium-enumerator: */
-    QReadLocker cleanupRacePreventor(&m_mediumEnumeratorDtorRwLock);
-    if (m_pMediumEnumerator)
-        m_pMediumEnumerator->updateMedium(medium);
 }
 
 void VBoxGlobal::deleteMedium(const QString &strMediumID)
@@ -4358,8 +4350,6 @@ void VBoxGlobal::prepare()
         /* Prepare medium-enumerator: */
         connect(m_pMediumEnumerator, SIGNAL(sigMediumCreated(const QString&)),
                 this, SIGNAL(sigMediumCreated(const QString&)));
-        connect(m_pMediumEnumerator, SIGNAL(sigMediumUpdated(const QString&)),
-                this, SIGNAL(sigMediumUpdated(const QString&)));
         connect(m_pMediumEnumerator, SIGNAL(sigMediumDeleted(const QString&)),
                 this, SIGNAL(sigMediumDeleted(const QString&)));
         connect(m_pMediumEnumerator, SIGNAL(sigMediumEnumerationStarted()),

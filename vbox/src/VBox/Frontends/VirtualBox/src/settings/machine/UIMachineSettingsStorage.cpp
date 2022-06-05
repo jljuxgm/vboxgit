@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 48985 2013-10-08 22:38:17Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 49553 2013-11-19 15:15:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1878,9 +1878,7 @@ UIMachineSettingsStorage::UIMachineSettingsStorage()
 
     /* Setup connections: */
     connect(&vboxGlobal(), SIGNAL(sigMediumEnumerated(const QString&)),
-            this, SLOT(sltHandleMediumUpdated(const QString&)));
-    connect(&vboxGlobal(), SIGNAL(sigMediumUpdated(const QString&)),
-            this, SLOT(sltHandleMediumUpdated(const QString&)));
+            this, SLOT(sltHandleMediumEnumerated(const QString&)));
     connect(&vboxGlobal(), SIGNAL(sigMediumDeleted(const QString&)),
             this, SLOT(sltHandleMediumDeleted(const QString&)));
     connect (mAddCtrAction, SIGNAL (triggered (bool)), this, SLOT (addController()));
@@ -2317,7 +2315,7 @@ void UIMachineSettingsStorage::showEvent (QShowEvent *aEvent)
     UISettingsPageMachine::showEvent (aEvent);
 }
 
-void UIMachineSettingsStorage::sltHandleMediumUpdated(const QString &strMediumID)
+void UIMachineSettingsStorage::sltHandleMediumEnumerated(const QString &strMediumID)
 {
     /* Search for corresponding medium: */
     UIMedium medium = vboxGlobal().medium(strMediumID);

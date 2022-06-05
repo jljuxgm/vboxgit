@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 48906 2013-10-05 22:39:42Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 49553 2013-11-19 15:15:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -117,22 +117,6 @@ void UIMediumEnumerator::createMedium(const UIMedium &medium)
 
     /* Notify listener: */
     emit sigMediumCreated(strMediumID);
-}
-
-void UIMediumEnumerator::updateMedium(const UIMedium &medium)
-{
-    /* Get medium ID: */
-    QString strMediumID = medium.id();
-    LogRelFlow(("UIMediumEnumerator: Medium with ID={%s} updated.\n", strMediumID.toAscii().constData()));
-
-    /* Make sure medium still exists: */
-    AssertReturnVoid(m_mediums.contains(strMediumID));
-
-    /* Update medium: */
-    m_mediums[strMediumID] = medium;
-
-    /* Notify listener: */
-    emit sigMediumUpdated(strMediumID);
 }
 
 void UIMediumEnumerator::deleteMedium(const QString &strMediumID)
