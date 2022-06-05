@@ -1,4 +1,4 @@
-/* $Id: server_getshaders.c 50041 2014-01-09 16:13:28Z vboxsync $ */
+/* $Id: server_getshaders.c 51200 2014-05-06 17:21:16Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related get functions
@@ -218,6 +218,29 @@ crServerDispatchGetUniformsLocations(GLuint program, GLsizei maxcbData, GLsizei 
     /* initial (fallback )value */
     *pLocal = 0;
     crStateGLSLProgramCacheUniforms(program, maxcbData, pLocal, (char*)&pLocal[1]);
+
+    crServerReturnValue(pLocal, (*pLocal)+sizeof(GLsizei));
+    crFree(pLocal);
+}
+
+void SERVER_DISPATCH_APIENTRY
+crServerDispatchGetAttribsLocations(GLuint program, GLsizei maxcbData, GLsizei * cbData, GLvoid * pData)
+{
+    GLsizei *pLocal;
+
+    (void) cbData;
+    (void) pData;
+
+    pLocal = (GLsizei*) crAlloc(maxcbData+sizeof(GLsizei));
+    if (!pLocal)
+    {
+        GLsizei zero=0;
+        crServerReturnValue(&zero, sizeof(zero));
+    }
+
+    /* initial (fallback )value */
+    *pLocal = 0;
+    crStateGLSLProgramCacheAttribs(program, maxcbData, pLocal, (char*)&pLocal[1]);
 
     crServerReturnValue(pLocal, (*pLocal)+sizeof(GLsizei));
     crFree(pLocal);

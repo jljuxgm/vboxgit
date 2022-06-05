@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 50041 2014-01-09 16:13:28Z vboxsync $ */
+/* $Id: unpack_shaders.c 51200 2014-05-06 17:21:16Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -334,4 +334,13 @@ void crUnpackExtendGetUniformsLocations(void)
 	SET_RETURN_PTR(16);
 	SET_WRITEBACK_PTR(24);
 	cr_unpackDispatch.GetUniformsLocations(program, maxcbData, NULL, NULL);
+}
+
+void crUnpackExtendGetAttribsLocations(void)
+{
+    GLuint program = READ_DATA(8, GLuint);
+    GLsizei maxcbData = READ_DATA(12, GLsizei);
+    SET_RETURN_PTR(16);
+    SET_WRITEBACK_PTR(24);
+    cr_unpackDispatch.GetAttribsLocations(program, maxcbData, NULL, NULL);
 }

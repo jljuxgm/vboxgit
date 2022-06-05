@@ -1,4 +1,4 @@
-/* $Id: pack_shaders.c 50041 2014-01-09 16:13:28Z vboxsync $ */
+/* $Id: pack_shaders.c 51200 2014-05-06 17:21:16Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -559,6 +559,22 @@ void PACK_APIENTRY crPackGetUniformsLocations(GLuint program, GLsizei maxcbData,
     CR_GET_BUFFERED_POINTER(pc, 32);
     WRITE_DATA(0, GLint, 32);
     WRITE_DATA(4, GLenum, CR_GETUNIFORMSLOCATIONS_EXTEND_OPCODE);
+    WRITE_DATA(8, GLuint, program);
+    WRITE_DATA(12, GLsizei, maxcbData);
+    WRITE_NETWORK_POINTER(16, (void *) cbData);
+    WRITE_NETWORK_POINTER(24, (void *) writeback);
+    WRITE_OPCODE(pc, CR_EXTEND_OPCODE);
+    CR_UNLOCK_PACKER_CONTEXT(pc);
+}
+
+void PACK_APIENTRY crPackGetAttribsLocations(GLuint program, GLsizei maxcbData, GLsizei * cbData, GLvoid * pData, int * writeback)
+{
+    CR_GET_PACKER_CONTEXT(pc);
+    unsigned char *data_ptr;
+    (void) pData;
+    CR_GET_BUFFERED_POINTER(pc, 32);
+    WRITE_DATA(0, GLint, 32);
+    WRITE_DATA(4, GLenum, CR_GETATTRIBSLOCATIONS_EXTEND_OPCODE);
     WRITE_DATA(8, GLuint, program);
     WRITE_DATA(12, GLsizei, maxcbData);
     WRITE_NETWORK_POINTER(16, (void *) cbData);
