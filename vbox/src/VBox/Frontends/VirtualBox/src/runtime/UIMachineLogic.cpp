@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52558 2014-09-01 17:02:01Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 52579 2014-09-03 11:56:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -965,7 +965,7 @@ void UIMachineLogic::prepareActionConnections()
             this, SLOT(sltShowDebugCommandLine()));
     connect(actionPool()->action(UIActionIndexRT_M_Debug_T_Logging), SIGNAL(toggled(bool)),
             this, SLOT(sltLoggingToggled(bool)));
-    connect(actionPool()->action(UIActionIndex_Simple_LogDialog), SIGNAL(triggered()),
+    connect(actionPool()->action(UIActionIndexRT_M_Debug_S_ShowLogDialog), SIGNAL(triggered()),
             this, SLOT(sltShowLogDialog()));
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 

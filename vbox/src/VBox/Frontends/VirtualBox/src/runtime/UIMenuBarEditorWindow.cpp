@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 52558 2014-09-01 17:02:01Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 52579 2014-09-03 11:56:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -560,7 +560,7 @@ void UIMenuBarEditorWidget::prepareMenuDebug()
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Debug_S_ShowStatistics));
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Debug_S_ShowCommandLine));
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Debug_T_Logging));
-        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_Simple_LogDialog));
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Debug_S_ShowLogDialog));
     }
 }
 #endif /* VBOX_WITH_DEBUGGER_GUI */
