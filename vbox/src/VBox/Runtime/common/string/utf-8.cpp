@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: utf-8.cpp 50793 2014-03-14 21:13:23Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -300,7 +300,8 @@ RT_EXPORT_SYMBOL(RTStrValidateEncoding);
 
 RTDECL(int) RTStrValidateEncodingEx(const char *psz, size_t cch, uint32_t fFlags)
 {
-    AssertReturn(!(fFlags & ~(RTSTR_VALIDATE_ENCODING_ZERO_TERMINATED)), VERR_INVALID_PARAMETER);
+    AssertReturn(!(fFlags & ~(RTSTR_VALIDATE_ENCODING_ZERO_TERMINATED | RTSTR_VALIDATE_ENCODING_EXACT_LENGTH)),
+                 VERR_INVALID_PARAMETER);
     AssertPtr(psz);
 
     /*
@@ -311,8 +312,19 @@ RTDECL(int) RTStrValidateEncodingEx(const char *psz, size_t cch, uint32_t fFlags
     int rc = rtUtf8Length(psz, cch, &cCpsIgnored, &cchActual);
     if (RT_SUCCESS(rc))
     {
-        if (    (fFlags & RTSTR_VALIDATE_ENCODING_ZERO_TERMINATED)
-            &&  cchActual >= cch)
+        if (fFlags & RTSTR_VALIDATE_ENCODING_EXACT_LENGTH)
+        {
+            if (fFlags & RTSTR_VALIDATE_ENCODING_ZERO_TERMINATED)
+                cchActual++;
+            if (cchActual == cch)
+                rc = VINF_SUCCESS;
+            else if (cchActual < cch)
+                rc = VERR_BUFFER_UNDERFLOW;
+            else
+                rc = VERR_BUFFER_OVERFLOW;
+        }
+        else if (    (fFlags & RTSTR_VALIDATE_ENCODING_ZERO_TERMINATED)
+                 &&  cchActual >= cch)
             rc = VERR_BUFFER_OVERFLOW;
     }
     return rc;
