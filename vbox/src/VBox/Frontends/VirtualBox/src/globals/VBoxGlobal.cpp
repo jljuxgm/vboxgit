@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 48310 2013-09-05 14:19:29Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -70,6 +70,7 @@
 #include "UISession.h"
 #include "UIConverter.h"
 #include "UIMediumEnumerator.h"
+#include "UIMedium.h"
 
 #ifdef Q_WS_X11
 # include "UIHostComboEditor.h"

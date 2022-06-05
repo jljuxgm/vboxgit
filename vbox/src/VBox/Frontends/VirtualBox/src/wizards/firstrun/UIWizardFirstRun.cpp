@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 48259 2013-09-04 10:22:19Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -22,6 +22,7 @@
 #include "UIWizardFirstRunPageBasic.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
+#include "UIMedium.h"
 
 /* COM includes: */
 #include "CStorageController.h"

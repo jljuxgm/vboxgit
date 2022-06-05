@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaComboBox.cpp 48301 2013-09-05 11:52:39Z vboxsync $ */
+/* $Id: VBoxMediaComboBox.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,11 +17,14 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include "VBoxMediaComboBox.h"
-
+/* Qt includes: */
 #include <QFileInfo>
 #include <QDir>
 #include <QAbstractItemView>
+
+/* GUI includes: */
+#include "VBoxMediaComboBox.h"
+#include "UIMedium.h"
 
 VBoxMediaComboBox::VBoxMediaComboBox (QWidget *aParent)
     : QComboBox (aParent)

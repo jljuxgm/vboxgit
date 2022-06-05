@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 47401 2013-07-25 19:12:24Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -27,6 +27,7 @@
 #include "UIMachineDefs.h"
 #include "UIConverter.h"
 #include "UIAnimationFramework.h"
+#include "UIMedium.h"
 
 /* COM includes: */
 #include "CConsole.h"

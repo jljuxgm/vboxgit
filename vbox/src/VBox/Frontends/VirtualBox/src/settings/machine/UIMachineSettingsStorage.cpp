@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 48301 2013-09-05 11:52:39Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -36,6 +36,7 @@
 #include "UIMessageCenter.h"
 #include "UIMachineSettingsStorage.h"
 #include "UIConverter.h"
+#include "UIMedium.h"
 
 /* COM includes: */
 #include "CStorageController.h"

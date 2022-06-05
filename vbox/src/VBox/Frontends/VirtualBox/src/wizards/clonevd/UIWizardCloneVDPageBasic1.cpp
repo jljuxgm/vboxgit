@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic1.cpp 48259 2013-09-04 10:22:19Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic1.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -28,6 +28,7 @@
 #include "QIRichTextLabel.h"
 #include "VBoxMediaComboBox.h"
 #include "QIToolButton.h"
+#include "UIMedium.h"
 
 UIWizardCloneVDPage1::UIWizardCloneVDPage1()
 {

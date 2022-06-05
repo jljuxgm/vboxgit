@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageExpert.cpp 48259 2013-09-04 10:22:19Z vboxsync $ */
+/* $Id: UIWizardNewVMPageExpert.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -36,6 +36,7 @@
 #include "VBoxGuestRAMSlider.h"
 #include "VBoxMediaComboBox.h"
 #include "QIToolButton.h"
+#include "UIMedium.h"
 
 UIWizardNewVMPageExpert::UIWizardNewVMPageExpert(const QString &strGroup)
     : UIWizardNewVMPage1(strGroup)

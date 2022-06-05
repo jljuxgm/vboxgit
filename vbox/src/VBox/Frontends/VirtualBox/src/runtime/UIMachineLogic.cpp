@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 48259 2013-09-04 10:22:19Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -53,6 +53,7 @@
 #include "UIVMLogViewer.h"
 #include "UIConverter.h"
 #include "UIModalWindowManager.h"
+#include "UIMedium.h"
 #ifdef Q_WS_MAC
 # include "DockIconPreview.h"
 # include "UIExtraDataEventHandler.h"

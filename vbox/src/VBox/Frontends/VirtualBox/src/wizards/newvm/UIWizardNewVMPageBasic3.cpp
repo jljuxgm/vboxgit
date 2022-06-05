@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 48260 2013-09-04 11:42:46Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -32,6 +32,7 @@
 #include "QIToolButton.h"
 #include "UIWizardNewVD.h"
 #include "QIRichTextLabel.h"
+#include "UIMedium.h"
 
 UIWizardNewVMPage3::UIWizardNewVMPage3()
 {
