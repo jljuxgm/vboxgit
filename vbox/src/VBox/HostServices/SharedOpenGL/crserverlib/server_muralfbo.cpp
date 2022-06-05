@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.cpp 51260 2014-05-15 15:35:56Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 51320 2014-05-21 12:56:33Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -650,7 +650,7 @@ DECLEXPORT(void) crServerVBoxScreenshotRelease(CR_SCREENSHOT *pScreenshot)
 
 DECLEXPORT(int) crServerVBoxScreenshotGet(uint32_t u32Screen, uint32_t width, uint32_t height, uint32_t pitch, void *pvBuffer, CR_SCREENSHOT *pScreenshot)
 {
-    HCR_FRAMEBUFFER hFb = CrPMgrFbGetEnabled(u32Screen);
+    HCR_FRAMEBUFFER hFb = CrPMgrFbGetEnabledForScreen(u32Screen);
     if (!hFb)
         return VERR_INVALID_STATE;
 
