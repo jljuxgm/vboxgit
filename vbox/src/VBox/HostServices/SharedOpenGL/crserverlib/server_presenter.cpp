@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 48726 2013-09-27 10:19:54Z vboxsync $ */
+/* $Id: server_presenter.cpp 48733 2013-09-27 13:07:23Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -225,8 +225,6 @@ int CrDpEntryRegionsAdd(PCR_DISPLAY pDisplay, PCR_DISPLAY_ENTRY pEntry, const RT
     {
         if (fChangeFlags & VBOXVR_COMPOSITOR_CF_REGIONS_CHANGED)
         {
-            uint32_t cRects;
-            const RTRECT *pRects;
             bool fChanged = true;
             if (pDisplay->Mural.fRootVrOn)
             {

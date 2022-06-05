@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 48726 2013-09-27 10:19:54Z vboxsync $ */
+/* $Id: vreg.cpp 48733 2013-09-27 13:07:23Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API implementation
@@ -2563,21 +2563,11 @@ VBOXVREGDECL(int) CrVrScrCompositorIntersectList(PVBOXVR_SCR_COMPOSITOR pComposi
     PVBOXVR_SCR_COMPOSITOR_ENTRY pEntry;
     CrVrScrCompositorIterInit(pCompositor, &CIter);
     int rc = VINF_SUCCESS;
-    uint32_t cRects;
-    const RTRECT *pRects;
     bool fChanged = false;
 
     while ((pEntry = CrVrScrCompositorIterNext(&CIter)) != NULL)
     {
         bool fCurChanged = false;
-
-        /* get source rects, that will be non-stretched and entry pos - pased */
-        rc = CrVrScrCompositorEntryRegionsGet(pCompositor, pEntry, &cRects, NULL, NULL, &pRects);
-        if (!RT_SUCCESS(rc))
-        {
-            WARN(("CrVrScrCompositorEntryRegionsGet failed, rc %d", rc));
-            break;
-        }
 
         rc = CrVrScrCompositorEntryListIntersect(pCompositor, pEntry, pVr, &fCurChanged);
         if (!RT_SUCCESS(rc))
