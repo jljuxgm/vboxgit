@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52728 2014-09-12 16:12:04Z vboxsync $
+# $Id: Config.kmk 52773 2014-09-17 11:57:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -646,6 +646,17 @@ endif
 # Enable support for VRDP redirection of Windows Media Player content
 ifeq ($(KBUILD_TARGET),win)
  VBOX_WITH_MMR = 1
+endif
+# Use merge modules if we're not doing an official release. This will increase
+# the overall installer size significantly because merge modules are not able
+# to use a common .cab file to reduce their size.
+ifneq ($(int-mod $(VBOX_VERSION_BUILD),2),0)
+ VBOX_WITH_MSM_INSTALL := 1
+ VBOX_INSTALLER_LANGUAGES = en_US
+endif
+ifeq ($(USERNAME),andy)
+ VBOX_WITH_MSM_INSTALL := 1
+ VBOX_INSTALLER_LANGUAGES = en_US
 endif
 ## @}
 
@@ -5723,7 +5734,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52728 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52773 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
