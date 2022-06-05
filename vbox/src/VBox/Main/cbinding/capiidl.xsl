@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 50183 2014-01-23 15:58:21Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 50187 2014-01-23 16:37:53Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -188,11 +188,14 @@
 # include "oaidl.h"
 # include "VirtualBox.h"
 
+#ifndef __cplusplus
+/* Skip this in the C++ case as there's already a definition for CBSTR. */
 typedef const BSTR CBSTR;
+#endif /* !__cplusplus */
 
 #define ComSafeArrayAsInParam(f) (f)
 #define ComSafeArrayAsOutParam(f) (&amp;(f))
-#define ComSafeArrayAsOutIfaceParam(f) (&amp;(f))
+#define ComSafeArrayAsOutIfaceParam(f,t) (&amp;(f))
 
 #else /* !WIN32 */
 
