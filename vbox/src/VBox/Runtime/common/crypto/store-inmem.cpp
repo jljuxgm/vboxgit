@@ -1,4 +1,4 @@
-/* $Id: store-inmem.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: store-inmem.cpp 51780 2014-07-01 19:57:51Z vboxsync $ */
 /** @file
  * IPRT - In Memory Cryptographic Certificate Store.
  */
@@ -334,6 +334,7 @@ static int rtCrStoreInMemCreateInternal(PRTCRSTOREINMEM *ppStore)
         *ppStore = pStore;
         return VINF_SUCCESS;
     }
+    *pStore = NULL; /* shut up gcc-maybe-pita warning. */
     return VERR_NO_MEMORY;
 }
 
