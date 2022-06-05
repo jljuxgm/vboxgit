@@ -1,4 +1,4 @@
-/* $Id: time.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: time.cpp 52833 2014-09-24 12:44:08Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -452,7 +452,7 @@ static PRTTIME rtTimeNormalizeInternal(PRTTIME pTime)
         {
             unsigned cDaysInMonth = fLeapYear
                                   ? g_acDaysInMonthsLeap[pTime->u8Month - 1]
-                                  : g_acDaysInMonthsLeap[pTime->u8Month - 1];
+                                  : g_acDaysInMonths[pTime->u8Month - 1];
             if (pTime->u8MonthDay <= cDaysInMonth)
                 break;
             pTime->u8MonthDay -= cDaysInMonth;
