@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 52802 2014-09-22 07:34:22Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 52813 2014-09-22 10:20:57Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -381,8 +381,9 @@ HRESULT Appliance::interpret()
                 }
             }
             /* else we use the ovf configuration. */
-            else if (size_t cEthernetAdapters = vsysThis.llEthernetAdapters.size() >  0)
+            else if (vsysThis.llEthernetAdapters.size() >  0)
             {
+                size_t cEthernetAdapters = vsysThis.llEthernetAdapters.size();
                 uint32_t maxNetworkAdapters = Global::getMaxNetworkAdapters(ChipsetType_PIIX3);
 
                 /* Check for the constrains */
