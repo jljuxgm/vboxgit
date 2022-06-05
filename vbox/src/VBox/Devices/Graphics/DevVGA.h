@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 51461 2014-05-29 13:20:06Z vboxsync $ */
+/* $Id: DevVGA.h 51836 2014-07-03 09:40:21Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -650,7 +650,7 @@ int vboxVBVASaveStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Version);
 int vboxVBVALoadStateDone (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 
-int vgaUpdateDisplayAll(PVGASTATE pThis);
+int vgaUpdateDisplayAll(PVGASTATE pThis, bool fFailOnResize);
 
 # ifdef VBOX_WITH_VDMA
 typedef struct VBOXVDMAHOST *PVBOXVDMAHOST;
