@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 52751 2014-09-15 15:08:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -220,6 +220,12 @@ bool darwinIsInFullscreenMode(NativeNSWindowRef pWindow)
 {
     /* Check whether passed pWindow is in native fullscreen mode. */
     return [pWindow styleMask] & NSFullScreenWindowMask;
+}
+
+bool darwinIsOnActiveSpace(NativeNSWindowRef pWindow)
+{
+    /* Check whether passed pWindow is on active space. */
+    return [pWindow isOnActiveSpace];
 }
 
 bool darwinScreensHaveSeparateSpaces()

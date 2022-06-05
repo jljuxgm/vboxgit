@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 52751 2014-09-15 15:08:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -161,6 +161,11 @@ void darwinToggleFullscreenMode(QWidget *pWidget)
 bool darwinIsInFullscreenMode(QWidget *pWidget)
 {
     return ::darwinIsInFullscreenMode(::darwinToNativeWindow(pWidget));
+}
+
+bool darwinIsOnActiveSpace(QWidget *pWidget)
+{
+    return ::darwinIsOnActiveSpace(::darwinToNativeWindow(pWidget));
 }
 
 void darwinInstallResizeDelegate(QWidget *pWidget)
