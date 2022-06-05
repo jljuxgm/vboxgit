@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: VirtualBoxStartup.sh 48954 2013-10-07 21:57:06Z vboxsync $
+# $Id: VirtualBoxStartup.sh 49540 2013-11-18 20:23:28Z vboxsync $
 ## @file
 # Startup service for loading the kernel extensions and select the set of VBox
 # binaries that matches the kernel architecture.
@@ -85,8 +85,8 @@ StartService()
         VBOX_LINKNAME=`echo "$VBOX_TRG" | sed -e 's|-'"${VBOX_ARCH}"'$||' `
         if test "$VBOX_LINKNAME" != "$VBOX_TRG"; then
             rm -f "$VBOX_LINKNAME"
-            if ! ln -vh "$VBOX_TRG" "$VBOX_LINKNAME"; then
-                ConsoleMessage "Error: ln -vh $VBOX_TRG $VBOX_LINKNAME failed"
+            if ! /bin/ln -vh "$VBOX_TRG" "$VBOX_LINKNAME"; then
+                ConsoleMessage "Error: /bin/ln -vh $VBOX_TRG $VBOX_LINKNAME failed"
                 VBOX_RC=1
             fi
         else
