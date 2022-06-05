@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52909 2014-10-01 05:59:51Z vboxsync $
+# $Id: Config.kmk 52985 2014-10-08 10:24:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1504,7 +1504,7 @@ USES += dtrace
 #
 # Compiler optimization flags.
 #
-VBOX_GCC_WARN     ?= -Wall $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) -Wno-unused -Wno-trigraphs $(VBOX_GCC_fdiagnostics-show-option) $(VBOX_GCC_Wno-unused-parameter)
+VBOX_GCC_WARN     ?= -Wall $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) -Wno-unused -Wno-trigraphs $(VBOX_GCC_fdiagnostics-show-option) $(VBOX_GCC_Wno-unused-parameter) $(VBOX_GCC_Wlogical-op)
 VBOX_GCC_WARN_PEDANTIC = -Wshadow $(VBOX_GCC_WARN) -Wno-long-long
 ifdef VBOX_WITH_MASOCHISTIC_WARNINGS
  VBOX_GCC_WARN_PEDANTIC += -Wunused-variable -Wunused-function -Wunused-label -Wunused-parameter
@@ -5726,7 +5726,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52909 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52985 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
