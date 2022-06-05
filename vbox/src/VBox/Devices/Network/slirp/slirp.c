@@ -1,4 +1,4 @@
-/* $Id: slirp.c 51138 2014-04-24 15:34:40Z vboxsync $ */
+/* $Id: slirp.c 51905 2014-07-07 15:58:35Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -859,7 +859,20 @@ static bool slirpConnectOrWrite(PNATState pData, struct socket *so, bool fConnec
         /* continue; */
     }
     else if (!fConnectOnly)
+    {
         SOWRITE(ret, pData, so);
+        if (RT_LIKELY(ret > 0))
+        {
+            /*
+             * Make sure we will send window update to peer.  This is
+             * a moral equivalent of calling tcp_output() for PRU_RCVD
+             * in tcp_usrreq() of the real stack.
+             */
+            struct tcpcb *tp = sototcpcb(so);
+            if (RT_LIKELY(tp != NULL))
+                tp->t_flags |= TF_DELACK;
+        }
+    }
     /*
      * XXX If we wrote something (a lot), there could be the need
      * for a window update. In the worst case, the remote will send
