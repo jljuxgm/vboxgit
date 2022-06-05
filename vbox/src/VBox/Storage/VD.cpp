@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 49388 2013-11-04 22:46:38Z vboxsync $ */
+/* $Id: VD.cpp 49880 2013-12-11 23:56:41Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2420,7 +2420,8 @@ static int vdWriteHelperOptimizedPreReadAsync(PVDIOCTX pIoCtx)
 
     pIoCtx->fFlags |= VDIOCTX_FLAGS_ZERO_FREE_BLOCKS;
 
-    if (pIoCtx->Req.Io.cbTransferLeft)
+    if (   pIoCtx->Req.Io.cbTransferLeft
+        && !pIoCtx->cDataTransfersPending)
         rc = vdReadHelperAsync(pIoCtx);
 
     if (   RT_SUCCESS(rc)
