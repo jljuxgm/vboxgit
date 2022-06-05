@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 48227 2013-09-02 11:54:23Z vboxsync $ */
+/* $Id: VMMRZ.cpp 48228 2013-09-02 11:57:36Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -222,6 +222,6 @@ VMMRZDECL(void) VMMRZCallRing3RemoveNotification(PVMCPU pVCpu)
  */
 VMMRZDECL(bool) VMMRZCallRing3IsNotificationSet(PVMCPU pVCpu)
 {
-    return !(pVCpu->vmm.s.pfnCallRing3CallbackR0 == NULL);
+    return pVCpu->vmm.s.pfnCallRing3CallbackR0 != NULL;
 }
 
