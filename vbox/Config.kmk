@@ -1,4 +1,4 @@
-# $Id: Config.kmk 48918 2013-10-07 12:42:51Z vboxsync $
+# $Id: Config.kmk 48962 2013-10-07 22:18:05Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -393,7 +393,7 @@ VBOX_WITH_INIP = 1
 VBOX_WITH_NEW_LWIP = 1
 # Enables lwip as a core of NAT service
 VBOX_WITH_LWIP_NAT = 1
-# Enables compilation of NAT service 
+# Enables compilation of NAT service
 VBOX_WITH_NAT_SERVICE = 1
 # Enable the E1000 feature.
 VBOX_WITH_E1000 = 1
@@ -5581,7 +5581,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48918 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48962 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
