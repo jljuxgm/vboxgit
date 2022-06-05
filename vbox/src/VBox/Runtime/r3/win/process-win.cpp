@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: process-win.cpp 49030 2013-10-10 13:38:32Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -966,7 +966,7 @@ static int rtProcWinCreateAsUser1(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTU
 {
     PFNCREATEPROCESSWITHLOGON pfnCreateProcessWithLogonW;
     pfnCreateProcessWithLogonW = (PFNCREATEPROCESSWITHLOGON)RTLdrGetSystemSymbol("Advapi32.dll", "CreateProcessWithLogonW");
-    if (pfnCreateProcessWithLogonW)
+    if (!pfnCreateProcessWithLogonW)
         return VERR_SYMBOL_NOT_FOUND;
 
     PRTUTF16 pwszzBlock;
