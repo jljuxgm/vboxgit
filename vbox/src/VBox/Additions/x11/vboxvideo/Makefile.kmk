@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50569 2014-02-25 08:20:11Z vboxsync $
+# $Id: Makefile.kmk 50750 2014-03-12 15:20:08Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -377,7 +377,7 @@ ifdef VBOX_USE_SYSTEM_XORG_HEADERS
         /usr/include/libdrm \
         /usr/include/xorg \
         /usr/include/pixman-1
- vboxvideo_drv_system_SOURCES := $(vboxvideo_drv_15_SOURCES)
+ vboxvideo_drv_system_SOURCES := $(vboxvideo_drv_17_SOURCES)
 endif
 
 
