@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 52237 2014-07-30 15:01:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3758,7 +3758,7 @@ DECLCALLBACK(void) Display::i_displayRefreshCallback(PPDMIDISPLAYCONNECTOR pInte
                         pData->aParms[0].type = VBOX_HGCM_SVC_PARM_PTR;
                         pData->aParms[0].u.pointer.addr = &pDisplay->mCrOglScreenshotData;
                         pData->aParms[0].u.pointer.size = sizeof(pDisplay->mCrOglScreenshotData);
-                        rc = pDisplay->i_crCtlSubmit(&pData->Hdr, sizeof(*pData), i_displayCrCmdFree, pData);
+                        rc = pDisplay->i_crCtlSubmit(&pData->Hdr, sizeof(*pData), NULL, NULL);
                         if (!RT_SUCCESS(rc))
                             AssertMsgFailed(("crCtlSubmit failed rc %d\n", rc));
                     }
