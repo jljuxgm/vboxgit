@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: VBoxMPIf.h 49244 2013-10-22 20:08:34Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -477,6 +477,15 @@ typedef struct VBOXDISPIFESCAPE_SHRC_REF
     VBOXDISPIFESCAPE EscapeHdr;
     uint64_t hAlloc;
 } VBOXDISPIFESCAPE_SHRC_REF, *PVBOXDISPIFESCAPE_SHRC_REF;
+
+typedef struct VBOXDISPIFESCAPE_SETALLOCHOSTID
+{
+    VBOXDISPIFESCAPE EscapeHdr;
+    int32_t rc;
+    uint32_t hostID;
+    uint64_t hAlloc;
+
+} VBOXDISPIFESCAPE_SETALLOCHOSTID, *PVBOXDISPIFESCAPE_SETALLOCHOSTID;
 
 typedef struct VBOXDISPIFESCAPE_CRHGSMICTLCON_CALL
 {

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 49220 2013-10-22 06:51:19Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 49244 2013-10-22 20:08:34Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -5747,7 +5747,8 @@ static HRESULT APIENTRY vboxWddmDDevOpenResource(HANDLE hDevice, D3DDDIARG_OPENR
             pRc->RcDesc.enmMultisampleType = D3DDDIMULTISAMPLE_NONE;
             pRc->RcDesc.MultisampleQuality = 0;
             pRc->RcDesc.MipLevels = 0;
-            pRc->RcDesc.Fvf;
+            /*pRc->RcDesc.Fvf;*/
+            pRc->RcDesc.fFlags.SharedResource = 1;
 
             if (pData->NumAllocations != 1)
             {
