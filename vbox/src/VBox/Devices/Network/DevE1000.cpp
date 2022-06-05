@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 49414 2013-11-08 07:12:07Z vboxsync $ */
+/* $Id: DevE1000.cpp 49493 2013-11-15 10:13:23Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -6501,6 +6501,8 @@ static DECLCALLBACK(int) e1kR3SetLinkState(PPDMINETWORKCONFIG pInterface, PDMNET
             if (STATUS & STATUS_LU)
                 e1kR3LinkDownTemp(pThis);
             break;
+        default:
+            ;
     }
     return VINF_SUCCESS;
 }
