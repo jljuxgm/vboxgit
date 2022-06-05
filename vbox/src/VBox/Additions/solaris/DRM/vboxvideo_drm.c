@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 48943 2013-10-07 21:30:45Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 52441 2014-08-21 13:17:56Z vboxsync $ */
 /** @file
  * vboxvideo_drm - Direct Rendering Module, Solaris Specific Code.
  */
@@ -184,7 +184,6 @@ static int VBoxVideoSolarisAttach(dev_info_t *pDip, ddi_attach_cmd_t enmCmd)
     LogFlow((DEVICE_NAME ":VBoxVideoSolarisAttach pDip=%p enmCmd=%d\n", pDip, enmCmd));
     cmn_err(CE_NOTE, DEVICE_NAME ":attach\n");
 
-    int rc = -1;
     switch (enmCmd)
     {
         case DDI_ATTACH:
