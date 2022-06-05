@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52992 2014-10-08 12:27:51Z vboxsync $
+# $Id: Config.kmk 53093 2014-10-20 13:25:38Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5213,7 +5213,7 @@ else # the gcc guys
    TEMPLATE_VBOXGUESTR3EXE_TOOL         := VBoxXGccAmd64LinuxGnu
    TEMPLATE_VBOXGUESTR3EXE_TOOL.x86     := VBoxXGccX86RedHatLinux
   endif
-  TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS      := $(filter-out $(VBOX_GCC_pipe) $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) $(VBOX_GCC_fdiagnostics-show-option) $(VBOX_GCC_Wno-delete-non-virtual-dtor) $(VBOX_GCC_Wno-variadic-macros) $(VBOX_GCC_fvisibility-hidden) $(VBOX_GCC_fvisibility-inlines-hidden) $(VBOX_GCC_mtune-generic),$(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS)) -pipe
+  TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS      := $(filter-out $(VBOX_GCC_pipe) $(VBOX_GCC_Wextra) $(VBOX_GCC_Wno-missing-field-initializers) $(VBOX_GCC_fdiagnostics-show-option) $(VBOX_GCC_Wno-delete-non-virtual-dtor) $(VBOX_GCC_Wno-variadic-macros) $(VBOX_GCC_fvisibility-hidden) $(VBOX_GCC_fvisibility-inlines-hidden) $(VBOX_GCC_mtune-generic) $(VBOX_GCC_Wlogical-op),$(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS)) -pipe
   TEMPLATE_VBOXGUESTR3EXE_CFLAGS        := $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS)
   TEMPLATE_VBOXGUESTR3EXE_LDFLAGS.linux := $(filter-out $(VBOX_GCC_ORIGIN_OPT) $(VBOX_LD_as_needed),$(TEMPLATE_VBOXGUESTR3EXE_LDFLAGS.linux))
  endif
@@ -5730,7 +5730,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52992 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53093 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
