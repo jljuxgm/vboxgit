@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52203 2014-07-25 23:46:23Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52220 2014-07-28 23:40:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -150,8 +150,8 @@ void UIMachineWindowNormal::sltHandleIndicatorContextMenuRequest(IndicatorType i
         case IndicatorType_HardDisks:     pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_HardDrives);     break;
         case IndicatorType_OpticalDisks:  pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_OpticalDevices); break;
         case IndicatorType_FloppyDisks:   pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_FloppyDevices);  break;
-        case IndicatorType_USB:           pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_USBDevices);     break;
         case IndicatorType_Network:       pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_Network);        break;
+        case IndicatorType_USB:           pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_USBDevices);     break;
         case IndicatorType_SharedFolders: pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_SharedFolders);  break;
         case IndicatorType_Display:       pAction = actionPool()->action(UIActionIndexRT_M_ViewPopup);                break;
         case IndicatorType_VideoCapture:  pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_VideoCapture);   break;
