@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 50962 2014-04-03 13:58:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -210,7 +210,7 @@ STDMETHODIMP Keyboard::PutScancodes(ComSafeArrayIn(LONG, scancodes),
 
     uint32_t sent;
     for (sent = 0; (sent < keys.size()) && RT_SUCCESS(vrc); sent++)
-        vrc = pUpPort->pfnPutEvent(pUpPort, (uint8_t)keys[sent]);
+        vrc = pUpPort->pfnPutEventScan(pUpPort, (uint8_t)keys[sent]);
 
     if (codesStored)
         *codesStored = sent;
