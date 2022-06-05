@@ -1,4 +1,4 @@
-/* $Id: VUSBReadAhead.cpp 46806 2013-06-26 14:24:17Z vboxsync $ */
+/* $Id: VUSBReadAhead.cpp 50453 2014-02-13 18:01:35Z vboxsync $ */
 /** @file
  * Virtual USB - Read-ahead buffering for periodic endpoints.
  */
@@ -173,7 +173,8 @@ static DECLCALLBACK(int) vusbDevReadAheadThread(RTTHREAD Thread, void *pvUser)
     /* The previous read-ahead thread could be still running (vusbReadAheadStop sets only
      * fTerminate to true and returns immediately). Therefore we have to wait until the
      * previous thread is done and all submitted URBs are completed. */
-    while (pPipe->cSubmitted > 0)
+    while (   pPipe->cSubmitted > 0
+           && pPipe->cBuffered > 0)
     {
         Log2(("vusbDevReadAheadThread: still %u packets submitted, waiting before starting...\n", pPipe->cSubmitted));
         RTThreadSleep(1);
@@ -245,6 +246,20 @@ static DECLCALLBACK(int) vusbDevReadAheadThread(RTTHREAD Thread, void *pvUser)
         RTThreadSleep(1);
     }
 
+    /*
+     * Free all still buffered URBs because another endpoint with a different packet size
+     * and complete different data formats might be served later.
+     */
+    while (pPipe->pBuffUrbHead)
+    {
+        PVUSBURB pBufferedUrb = pPipe->pBuffUrbHead;
+
+        pPipe->pBuffUrbHead = pBufferedUrb->Hci.pNext;
+        pBufferedUrb->VUsb.pfnFree(pBufferedUrb);
+    }
+
+    pPipe->pBuffUrbTail = NULL;
+    pPipe->cBuffered = 0;
     RTMemTmpFree(pArgs);
 
     return rc;
