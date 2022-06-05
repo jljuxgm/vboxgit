@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 51286 2014-05-19 11:29:30Z vboxsync $ */
+/* $Id: vbox-img.cpp 51306 2014-05-20 12:43:45Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -423,8 +423,6 @@ static int handleGeometry(HandlerArg *a)
         return errorRuntime("Cannot get LCHS geometry of virtual disk image \"%s\": %Rrc\n",
                             pszFilename, rc);
 
-    RTPrintf("Old image LCHS: %u/%u/%u\n", oldLCHSGeometry.cCylinders, oldLCHSGeometry.cHeads, oldLCHSGeometry.cSectors);
-
     VDGEOMETRY newLCHSGeometry = oldLCHSGeometry;
     if (fCylinders)
         newLCHSGeometry.cCylinders = cCylinders;
@@ -435,6 +433,7 @@ static int handleGeometry(HandlerArg *a)
 
     if (fCylinders || fHeads || fSectors)
     {
+        RTPrintf("Old image LCHS: %u/%u/%u\n", oldLCHSGeometry.cCylinders, oldLCHSGeometry.cHeads, oldLCHSGeometry.cSectors);
         RTPrintf("New image LCHS: %u/%u/%u\n", newLCHSGeometry.cCylinders, newLCHSGeometry.cHeads, newLCHSGeometry.cSectors);
 
         rc = VDSetLCHSGeometry(pVD, VD_LAST_IMAGE, &newLCHSGeometry);
@@ -442,6 +441,9 @@ static int handleGeometry(HandlerArg *a)
             return errorRuntime("Cannot set LCHS geometry of virtual disk image \"%s\": %Rrc\n",
                                 pszFilename, rc);
     }
+    else
+        RTPrintf("Current image LCHS: %u/%u/%u\n", oldLCHSGeometry.cCylinders, oldLCHSGeometry.cHeads, oldLCHSGeometry.cSectors);
+
 
     VDDestroy(pVD);
 
