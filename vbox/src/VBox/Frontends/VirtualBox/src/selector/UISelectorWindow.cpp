@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 51937 2014-07-08 16:01:15Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 51992 2014-07-11 14:32:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1349,7 +1349,7 @@ void UISelectorWindow::prepareStatusBar()
     statusBar()->setContextMenuPolicy(Qt::CustomContextMenu);
 
     /* Add network-manager indicator: */
-    QIStateIndicator *pIndicator = gNetworkManager->indicator();
+    UINetworkManagerIndicator *pIndicator = gNetworkManager->indicator();
     statusBar()->addPermanentWidget(pIndicator);
     pIndicator->updateAppearance();
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */

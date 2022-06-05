@@ -1,4 +1,4 @@
-/* $Id: precomp.h 51304 2014-05-20 11:55:32Z vboxsync $*/
+/* $Id: precomp.h 51992 2014-07-11 14:32:04Z vboxsync $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -175,8 +175,8 @@
 #include "QIMessageBox.h"
 #include "QIRichToolButton.h"
 #include "QISplitter.h"
-#include "QIStateIndicator.h"
 #include "QIStatusBar.h"
+#include "QIStatusBarIndicator.h"
 #include "QIToolButton.h"
 #include "QITreeView.h"
 #include "QITreeWidget.h"
