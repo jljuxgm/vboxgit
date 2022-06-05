@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 49375 2013-11-04 02:40:16Z vboxsync $ */
+/* $Id: VMMTests.cpp 49376 2013-11-04 04:37:06Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -161,6 +161,7 @@ static int vmmR3DoMsrQuickReport(PVM pVM, PRTSTREAM pReportStrm, bool fWithCpuId
 //      { 0xc0000000, 0x00022000 },
         { 0xc0000000, 0x00010000 },
         { 0xc0010000, 0x00001040 },
+        { 0xc0011040, 0x00000040 }, /* should cause trouble... */
     };
     uint32_t cMsrsFound = 0;
     int rc = VINF_SUCCESS;
