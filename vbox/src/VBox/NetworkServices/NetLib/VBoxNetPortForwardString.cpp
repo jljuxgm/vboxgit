@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 47703 2013-08-13 17:55:29Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 48363 2013-09-06 15:47:40Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -22,6 +22,7 @@
 #include <netinet/in.h>
 #else
 # include <Winsock2.h>
+# include <Ws2ipdef.h>
 #endif
 
 #include <iprt/cdefs.h>

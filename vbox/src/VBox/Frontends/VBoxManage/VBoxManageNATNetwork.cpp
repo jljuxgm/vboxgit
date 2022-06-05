@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 48105 2013-08-27 19:53:13Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 48363 2013-09-06 15:47:40Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -29,6 +29,9 @@
 
 #ifndef RT_OS_WINDOWS
 # include <netinet/in.h>
+#else
+/* from  <ws2ipdef.h> */
+# define INET6_ADDRSTRLEN 65
 #endif
 
 #define IPv6
