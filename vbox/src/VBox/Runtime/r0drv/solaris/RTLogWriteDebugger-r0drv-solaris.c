@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-solaris.c 48042 2013-08-24 12:04:57Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-solaris.c 52748 2014-09-15 13:49:05Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Solaris.
  */
@@ -47,8 +47,10 @@ RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
         AssertBreakpoint();
 
     /* cmn_err() acquires adaptive mutexes. Not preemption safe, see @bugref{6657}. */
+#if 0
     if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))
         return;
+#endif
 
     if (    !g_frtSolSplSetsEIF
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
