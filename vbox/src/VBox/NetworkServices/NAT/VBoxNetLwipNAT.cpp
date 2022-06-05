@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49735 2013-11-30 02:08:42Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49823 2013-12-09 06:57:03Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -179,8 +179,6 @@ class VBoxNetLwipNAT: public VBoxNetBaseService
 
     uint16_t m_u16Mtu;
     netif m_LwipNetIf;
-    /* Queues */
-    RTREQQUEUE  hReqIntNet;
     /* thread where we're waiting for a frames, no semaphores needed */
     RTTHREAD hThrIntNetRecv;
 
@@ -196,7 +194,6 @@ class VBoxNetLwipNAT: public VBoxNetBaseService
 
     const char **getHostNameservers();
 
-    RTSEMEVENT hSemSVC;
     /* Only for debug needs, by default NAT service should load rules from SVC
      * on startup, and then on sync them on events.
      */
@@ -919,12 +916,6 @@ int VBoxNetLwipNAT::init()
     m_ProxyOptions.nameservers = getHostNameservers();
 
     /* end of COM initialization */
-
-    rc = RTSemEventCreate(&hSemSVC);
-    AssertRCReturn(rc, rc);
-
-    rc = RTReqQueueCreate(&hReqIntNet);
-    AssertRCReturn(rc, rc);
 
     rc = g_pLwipNat->tryGoOnline();
     if (RT_FAILURE(rc))
