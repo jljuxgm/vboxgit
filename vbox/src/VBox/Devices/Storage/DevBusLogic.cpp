@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 52264 2014-08-04 12:40:00Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 52713 2014-09-12 09:34:39Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3499,13 +3499,18 @@ static DECLCALLBACK(void) buslogicR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp,
     if (pThis->regStatus & BL_STAT_INREQ)
         pHlp->pfnPrintf(pHlp, "Mailbox not initialized\n");
     else
-        pHlp->pfnPrintf(pHlp, "%u-bit mailbox with %u entries at %RGp\n",
+        pHlp->pfnPrintf(pHlp, "%u-bit mailbox with %u entries at %RGp (%d LUN CCBs)\n",
                         pThis->fMbxIs24Bit ? 24 : 32, pThis->cMailbox,
-                        pThis->GCPhysAddrMailboxOutgoingBase);
+                        pThis->GCPhysAddrMailboxOutgoingBase,
+                        pThis->fMbxIs24Bit ? 8 : pThis->fExtendedLunCCBFormat ? 64 : 8);
 
     /* Print register contents. */
     pHlp->pfnPrintf(pHlp, "Registers: STAT=%02x INTR=%02x GEOM=%02x\n",
                     pThis->regStatus, pThis->regInterrupt, pThis->regGeometry);
+
+    /* Print miscellaneous state. */
+    pHlp->pfnPrintf(pHlp, "HAC interrupts: %s\n",
+                    pThis->fIRQEnabled ? "on" : "off");
 
     /* Print the current command, if any. */
     if (pThis->uOperationCode != 0xff )
