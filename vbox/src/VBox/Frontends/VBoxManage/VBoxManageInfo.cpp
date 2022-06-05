@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 49621 2013-11-22 11:15:41Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1026,13 +1026,13 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                             RTPrintf("natnet%d=\"%ls\"\n", currentNIC + 1, strNetwork.length() ? strNetwork.raw(): Bstr("nat").raw());
                             strAttachment = "nat";
                             strNatSettings = Utf8StrFmt("mtu=\"%d\"\nsockSnd=\"%d\"\nsockRcv=\"%d\"\ntcpWndSnd=\"%d\"\ntcpWndRcv=\"%d\"\n",
-                                mtu, sockSnd ? sockSnd : 64, sockRcv ? sockRcv : 64 , tcpSnd ? tcpSnd : 64, tcpRcv ? tcpRcv : 64);
+                                mtu, sockSnd ? sockSnd : 64, sockRcv ? sockRcv : 64, tcpSnd ? tcpSnd : 64, tcpRcv ? tcpRcv : 64);
                         }
                         else
                         {
                             strAttachment = "NAT";
                             strNatSettings = Utf8StrFmt("NIC %d Settings:  MTU: %d, Socket (send: %d, receive: %d), TCP Window (send:%d, receive: %d)\n",
-                                currentNIC + 1, mtu, sockSnd ? sockSnd : 64, sockRcv ? sockRcv : 64 , tcpSnd ? tcpSnd : 64, tcpRcv ? tcpRcv : 64);
+                                currentNIC + 1, mtu, sockSnd ? sockSnd : 64, sockRcv ? sockRcv : 64, tcpSnd ? tcpSnd : 64, tcpRcv ? tcpRcv : 64);
                         }
                         break;
                     }

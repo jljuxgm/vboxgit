@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 49621 2013-11-22 11:15:41Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -274,8 +274,11 @@ static RTEXITCODE handleBandwidthControlList(HandlerArg *pArgs, ComPtr<IBandwidt
     {
         switch (c)
         {
-            case 'M':   enmDetails = VMINFO_MACHINEREADABLE; break;
-            default:    return errorGetOpt(USAGE_BANDWIDTHCONTROL, c, &ValueUnion);
+            case 'M':
+                enmDetails = VMINFO_MACHINEREADABLE;
+                break;
+            default:
+                return errorGetOpt(USAGE_BANDWIDTHCONTROL, c, &ValueUnion);
         }
     }
 
