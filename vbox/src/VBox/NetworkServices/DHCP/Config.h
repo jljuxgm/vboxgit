@@ -1,4 +1,4 @@
-/* $Id: Config.h 48461 2013-09-12 18:14:50Z vboxsync $ */
+/* $Id: Config.h 48465 2013-09-13 01:36:17Z vboxsync $ */
 /**
  * This file contains declarations of DHCP config.
  */
@@ -422,10 +422,8 @@ private:
     Ipv4AddressContainer m_nameservers;
     Ipv4AddressContainer m_routers;
 
-
     std::string          m_domainName;
     VecClient m_clients;
-
 };
 
 
