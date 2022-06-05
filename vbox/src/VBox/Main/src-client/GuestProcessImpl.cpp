@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 49389 2013-11-05 13:32:12Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 49405 2013-11-07 09:16:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1422,6 +1422,10 @@ int GuestProcess::waitFor(uint32_t fWaitFlags, ULONG uTimeoutMS,
     }
 
     alock.release(); /* Release lock before waiting. */
+
+    /* Adjust timeout. Passing 0 means RT_INDEFINITE_WAIT. */
+    if (!uTimeoutMS)
+        uTimeoutMS = RT_INDEFINITE_WAIT;
 
     int vrc;
 
