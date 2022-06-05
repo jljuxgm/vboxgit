@@ -1,4 +1,4 @@
-/* $Id: log.cpp 53175 2014-11-02 00:17:39Z vboxsync $ */
+/* $Id: log.cpp 53177 2014-11-02 09:36:04Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -830,7 +830,6 @@ RTDECL(int) RTLogCreateExV(PRTLOGGER *ppLogger, uint32_t fFlags, const char *psz
         pLogger->pInt->pvPrefixUserArg          = NULL;
         pLogger->pInt->afPadding1[0]            = false;
         pLogger->pInt->afPadding1[1]            = false;
-        pLogger->pInt->afPadding1[2]            = false;
         pLogger->pInt->fCreated                 = false;
         pLogger->pInt->cMaxGroups               = cGroups;
         pLogger->pInt->papszGroups              = papszGroups;
