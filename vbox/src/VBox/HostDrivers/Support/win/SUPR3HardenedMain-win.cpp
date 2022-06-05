@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52169 2014-07-24 14:12:57Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52173 2014-07-24 16:49:08Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -1732,7 +1732,6 @@ DECLINLINE(PIMAGE_NT_HEADERS) supR3HardNtPuChFindNtHeaders(uint8_t *pbBuf, size_
 }
 
 
-#ifdef DEBUG
 static uint32_t supR3HardNtPuChFindFirstDiff(void const *pvBuf1, void const *pvBuf2, size_t cbBuf)
 {
     uint8_t const *pabBuf1 = (uint8_t const *)pvBuf1;
@@ -1742,7 +1741,6 @@ static uint32_t supR3HardNtPuChFindFirstDiff(void const *pvBuf1, void const *pvB
         off++;
     return off;
 }
-#endif
 
 
 static NTSTATUS supR3HardNtPuChRestoreImageBits(PSUPR3HARDNTPUCH pThis, PVOID pvChildAddr,
