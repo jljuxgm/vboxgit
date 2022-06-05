@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48360 2013-09-06 14:29:56Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48361 2013-09-06 14:37:34Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7172,10 +7172,11 @@ static int hmR0VmxLoadGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     int rc = hmR0VmxSetupVMRunHandler(pVCpu, pMixedCtx);
     AssertLogRelMsgRCReturn(rc, ("hmR0VmxSetupVMRunHandler! rc=%Rrc (pVM=%p pVCpu=%p)\n", rc, pVM, pVCpu), rc);
 
+    /* This needs to be done after hmR0VmxSetupVMRunHandler() as changing pfnStartVM may require VM-entry control updates. */
     rc = hmR0VmxLoadGuestEntryCtls(pVCpu, pMixedCtx);
     AssertLogRelMsgRCReturn(rc, ("hmR0VmxLoadGuestEntryCtls! rc=%Rrc (pVM=%p pVCpu=%p)\n", rc, pVM, pVCpu), rc);
 
-    /* This needs to be done after pfnStartVM is set as it may require exit guest controls changes. */
+    /* This needs to be done after hmR0VmxSetupVMRunHandler() as changing pfnStartVM may require VM-exit control updates. */
     rc = hmR0VmxLoadGuestExitCtls(pVCpu, pMixedCtx);
     AssertLogRelMsgRCReturn(rc, ("hmR0VmxSetupExitCtls failed! rc=%Rrc (pVM=%p pVCpu=%p)\n", rc, pVM, pVCpu), rc);
 
