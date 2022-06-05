@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 51330 2014-05-21 19:46:25Z vboxsync $ */
+/* $Id: vboxhgcm.c 51944 2014-07-08 18:57:43Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -2625,7 +2625,6 @@ int crVBoxHGCMRecv(
 
 #ifdef IN_GUEST
 # if defined(VBOX_WITH_CRHGSMI) && defined(IN_GUEST)
-    CRASSERT(!g_crvboxhgcm.bHgsmiOn == !conn);
     if (conn && g_crvboxhgcm.bHgsmiOn)
     {
         _crVBoxHGCMPerformPollHost(conn);
