@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 49486 2013-11-14 16:38:53Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 50001 2013-12-24 21:28:55Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -120,6 +120,22 @@ VMMDECL(uint32_t) PDMR3CritSectRwSetSubClass(PPDMCRITSECTRW pThis, uint32_t uSub
 # endif
 }
 #endif /* IN_RING3 */
+
+
+#ifdef IN_RING0
+/**
+ * Go back to ring-3 so the kernel can do signals, APCs and other fun things.
+ *
+ * @param   pThis       Pointer to the read/write critical section.
+ */
+static void pdmR0CritSectRwYieldToRing3(PPDMCRITSECTRW pThis)
+{
+    PVM     pVM   = pThis->s.CTX_SUFF(pVM);     AssertPtr(pVM);
+    PVMCPU  pVCpu = VMMGetCpu(pVM);             AssertPtr(pVCpu);
+    int rc = VMMRZCallRing3(pVM, pVCpu, VMMCALLRING3_VM_R0_PREEMPT, NULL);
+    AssertRC(rc);
+}
+#endif /* IN_RING0 */
 
 
 /**
@@ -264,11 +280,18 @@ static int pdmCritSectRwEnterShared(PPDMCRITSECTRW pThis, int rcBusy, bool fTryO
 #  endif
 # endif
                         {
-                            do
+                            for (;;)
+                            {
                                 rc = SUPSemEventMultiWaitNoResume(pThis->s.CTX_SUFF(pVM)->pSession,
                                                                   (SUPSEMEVENTMULTI)pThis->s.Core.hEvtRead,
                                                                   RT_INDEFINITE_WAIT);
-                            while (rc == VERR_INTERRUPTED && pThis->s.Core.u32Magic == RTCRITSECTRW_MAGIC);
+                                if (   rc != VERR_INTERRUPTED
+                                    || pThis->s.Core.u32Magic != RTCRITSECTRW_MAGIC)
+                                    break;
+# ifdef IN_RING0
+                                pdmR0CritSectRwYieldToRing3(pThis);
+# endif
+                            }
 # ifdef IN_RING3
                             RTThreadUnblocked(hThreadSelf, RTTHREADSTATE_RW_READ);
 # endif
@@ -818,11 +841,18 @@ static int pdmCritSectRwEnterExcl(PPDMCRITSECTRW pThis, int rcBusy, bool fTryOnl
 #  endif
 # endif
                 {
-                    do
+                    for (;;)
+                    {
                         rc = SUPSemEventWaitNoResume(pThis->s.CTX_SUFF(pVM)->pSession,
                                                      (SUPSEMEVENT)pThis->s.Core.hEvtWrite,
                                                      RT_INDEFINITE_WAIT);
-                    while (rc == VERR_INTERRUPTED && pThis->s.Core.u32Magic == RTCRITSECTRW_MAGIC);
+                        if (   rc != VERR_INTERRUPTED
+                            || pThis->s.Core.u32Magic != RTCRITSECTRW_MAGIC)
+                            break;
+# ifdef IN_RING0
+                        pdmR0CritSectRwYieldToRing3(pThis);
+# endif
+                    }
 # ifdef IN_RING3
                     RTThreadUnblocked(hThreadSelf, RTTHREADSTATE_RW_WRITE);
 # endif
