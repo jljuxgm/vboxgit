@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51199 2014-05-06 16:06:13Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51204 2014-05-07 13:05:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -549,7 +549,7 @@ void UIExtraDataManager::prepareExtraDataEventHandler()
     {
         /* Extra-data change signal: */
         connect(m_pHandler, SIGNAL(sigExtraDataChange(QString, QString, QString)),
-                this, SIGNAL(sltExtraDataChange(QString, QString, QString)),
+                this, SLOT(sltExtraDataChange(QString, QString, QString)),
                 Qt::QueuedConnection);
 
         /* Prepare Main event-listener: */
