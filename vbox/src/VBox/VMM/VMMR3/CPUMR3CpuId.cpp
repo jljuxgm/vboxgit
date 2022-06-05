@@ -1,10 +1,10 @@
-/* $Id: CPUMR3CpuId.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 50019 2014-01-03 13:09:08Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,6 @@
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/ctype.h>
 #include <iprt/mem.h>
-#include <iprt/stream.h>
 #include <iprt/string.h>
 
 
@@ -1061,7 +1060,7 @@ VMMR3DECL(int) CPUMR3CpuIdDetectUnknownLeafMethod(PCPUMUKNOWNCPUID penmUnknownMe
             cValues--;
         }
 
-        RTStrmPrintf(g_pStdErr, "cNeither=%d cSame=%d cLastWithEcx=%d cTotal=%d\n", cNeither, cSame, cLastWithEcx, cTotal);
+        Log(("CPUM: cNeither=%d cSame=%d cLastWithEcx=%d cTotal=%d\n", cNeither, cSame, cLastWithEcx, cTotal));
         if (cSame == cTotal)
             *penmUnknownMethod = CPUMUKNOWNCPUID_LAST_STD_LEAF;
         else if (cLastWithEcx == cTotal)
