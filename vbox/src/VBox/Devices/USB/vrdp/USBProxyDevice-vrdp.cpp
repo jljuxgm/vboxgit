@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-vrdp.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: USBProxyDevice-vrdp.cpp 49814 2013-12-06 21:38:28Z vboxsync $ */
 /** @file
  * USB device proxy - the VRDP backend, calls the RemoteUSBBackend methods.
  */
@@ -261,6 +261,15 @@ static void usbProxyVrdpUrbCancel(PVUSBURB pUrb)
     pDevVrdp->pCallback->pfnCancelURB (pDevVrdp->pDevice, (PREMOTEUSBQURB)pUrb->Dev.pvPrivate);
 }
 
+static int usbProxyVrdpWakeup(PUSBPROXYDEV pProxyDev)
+{
+    LogFlow(("usbProxyVrdpWakeup: pProxyDev=%s\n", pProxyDev->pUsbIns->pszName));
+
+    PUSBPROXYDEVVRDP pDevVrdp = (PUSBPROXYDEVVRDP)pProxyDev->Backend.pv;
+
+    return pDevVrdp->pCallback->pfnWakeup (pDevVrdp->pDevice);
+}
+
 /**
  * The VRDP USB Proxy Backend operations.
  */
@@ -279,6 +288,7 @@ extern const USBPROXYBACK g_USBProxyDeviceVRDP =
     usbProxyVrdpUrbQueue,
     usbProxyVrdpUrbCancel,
     usbProxyVrdpUrbReap,
+    usbProxyVrdpWakeup,
     0
 };
 

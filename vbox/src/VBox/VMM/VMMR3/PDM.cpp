@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: PDM.cpp 49814 2013-12-06 21:38:28Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -641,6 +641,27 @@ VMMR3_INT_DECL(int) PDMR3Term(PVM pVM)
     for (PPDMUSBINS pUsbIns = pVM->pdm.s.pUsbInstances; pUsbIns; pUsbIns = pUsbIns->Internal.s.pNext)
     {
         pdmR3TermLuns(pVM, pUsbIns->Internal.s.pLuns, pUsbIns->pReg->szName, pUsbIns->iInstance);
+
+        /*
+         * Detach it from the HUB (if it's actually attached to one) so the HUB has
+         * a chance to stop accessing any data.
+         */
+        PPDMUSBHUB pHub = pUsbIns->Internal.s.pHub;
+        if (pHub)
+        {
+            int rc = pHub->Reg.pfnDetachDevice(pHub->pDrvIns, pUsbIns, pUsbIns->Internal.s.iPort);
+            if (RT_FAILURE(rc))
+            {
+                LogRel(("PDM: Failed to detach USB device '%s' instance %d from %p: %Rrc\n",
+                        pUsbIns->pReg->szName, pUsbIns->iInstance, pHub, rc));
+            }
+            else
+            {
+                pHub->cAvailablePorts++;
+                Assert(pHub->cAvailablePorts > 0 && pHub->cAvailablePorts <= pHub->cPorts);
+                pUsbIns->Internal.s.pHub = NULL;
+            }
+        }
 
         if (pUsbIns->pReg->pfnDestruct)
         {

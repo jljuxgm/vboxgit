@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 49814 2013-12-06 21:38:28Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1871,6 +1871,15 @@ static void usbProxyDarwinUrbCancel(PVUSBURB pUrb)
 }
 
 
+static int usbProxyDarwinUrbReap(PUSBPROXYDEV pProxyDev, RTMSINTERVAL cMillies)
+{
+    PUSBPROXYDEVOSX pDevOsX = (PUSBPROXYDEVOSX)pProxyDev->Backend.pv;
+
+    CFRunLoopStop(g_pRunLoopMode);
+    return VINF_SUCCESS;
+}
+
+
 /**
  * The Darwin USB Proxy Backend.
  */
@@ -1889,6 +1898,7 @@ extern const USBPROXYBACK g_USBProxyDeviceHost =
     usbProxyDarwinUrbQueue,
     usbProxyDarwinUrbCancel,
     usbProxyDarwinUrbReap,
+    usbProxyDarwinWakeup,
     0
 };
 

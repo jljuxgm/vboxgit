@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: USBProxyDevice.h 49814 2013-12-06 21:38:28Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy header
  */
@@ -128,6 +128,14 @@ typedef struct USBPROXYBACK
      *                      wait at all.
      */
     PVUSBURB (* pfnUrbReap)(PUSBPROXYDEV pProxyDev, RTMSINTERVAL cMillies);
+
+    /**
+     * Kicks the thread waiting in pfnUrbReap to make it return.
+     *
+     * @returns VBox status code.
+     * @param   pProxyDev   The device.
+     */
+    int (* pfnWakeup)(PUSBPROXYDEV pProxyDev);
 
     /** Dummy entry for making sure we've got all members initialized. */
     uint32_t uDummy;

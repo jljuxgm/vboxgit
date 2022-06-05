@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 49093 2013-10-14 22:02:15Z vboxsync $ */
+/* $Id: UsbMsd.cpp 49814 2013-12-06 21:38:28Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1221,6 +1221,18 @@ static DECLCALLBACK(PVUSBURB) usbMsdUrbReap(PPDMUSBINS pUsbIns, RTMSINTERVAL cMi
 
 
 /**
+ * @copydoc PDMUSBREG::pfnWakeup
+ */
+static DECLCALLBACK(int) usbMsdWakeup(PPDMUSBINS pUsbIns)
+{
+    PUSBMSD pThis = PDMINS_2_DATA(pUsbIns, PUSBMSD);
+    LogFlow(("usbMsdUrbReap/#%u:\n", pUsbIns->iInstance));
+
+    return RTSemEventSignal(pThis->hEvtDoneQueue);
+}
+
+
+/**
  * @copydoc PDMUSBREG::pfnUrbCancel
  */
 static DECLCALLBACK(int) usbMsdUrbCancel(PPDMUSBINS pUsbIns, PVUSBURB pUrb)
@@ -2161,6 +2173,8 @@ const PDMUSBREG g_UsbMsd =
     usbMsdUrbCancel,
     /* pfnUrbReap */
     usbMsdUrbReap,
+    /* pfnWakeup */
+    usbMsdWakeup,
     /* u32TheEnd */
     PDM_USBREG_VERSION
 };

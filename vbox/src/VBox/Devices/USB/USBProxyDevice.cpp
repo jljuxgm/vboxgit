@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 49814 2013-12-06 21:38:28Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -698,6 +698,19 @@ static DECLCALLBACK(PVUSBURB) usbProxyDevUrbReap(PPDMUSBINS pUsbIns, RTMSINTERVA
 }
 
 
+/**
+ * @copydoc PDMUSBREG::pfnWakeup
+ *
+ * USB Device Proxy: Call OS specific code.
+ */
+static DECLCALLBACK(int) usbProxyDevWakeup(PPDMUSBINS pUsbIns)
+{
+    PUSBPROXYDEV pProxyDev = PDMINS_2_DATA(pUsbIns, PUSBPROXYDEV);
+
+    return pProxyDev->pOps->pfnWakeup(pProxyDev);
+}
+
+
 /** @copydoc PDMUSBREG::pfnDestruct */
 static DECLCALLBACK(void) usbProxyDestruct(PPDMUSBINS pUsbIns)
 {
@@ -1123,6 +1136,8 @@ const PDMUSBREG g_UsbDevProxy =
     usbProxyDevUrbCancel,
     /* pfnUrbReap */
     usbProxyDevUrbReap,
+    /* pfnWakeup */
+    usbProxyDevWakeup,
 
     /* u32TheEnd */
     PDM_USBREG_VERSION

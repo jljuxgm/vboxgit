@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 49385 2013-11-04 14:32:18Z vboxsync $ */
+/* $Id: UsbKbd.cpp 49814 2013-12-06 21:38:28Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -1050,6 +1050,17 @@ static DECLCALLBACK(PVUSBURB) usbHidUrbReap(PPDMUSBINS pUsbIns, RTMSINTERVAL cMi
 
 
 /**
+ * @copydoc PDMUSBREG::pfnWakeup
+ */
+static DECLCALLBACK(int) usbHidWakeup(PPDMUSBINS pUsbIns)
+{
+    PUSBHID pThis = PDMINS_2_DATA(pUsbIns, PUSBHID);
+
+    return RTSemEventSignal(pThis->hEvtDoneQueue);
+}
+
+
+/**
  * @copydoc PDMUSBREG::pfnUrbCancel
  */
 static DECLCALLBACK(int) usbHidUrbCancel(PPDMUSBINS pUsbIns, PVUSBURB pUrb)
@@ -1588,6 +1599,8 @@ const PDMUSBREG g_UsbHidKbd =
     usbHidUrbCancel,
     /* pfnUrbReap */
     usbHidUrbReap,
+    /* pfnWakeup */
+    usbHidWakeup,
     /* u32TheEnd */
     PDM_USBREG_VERSION
 };
