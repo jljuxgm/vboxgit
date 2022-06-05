@@ -1,10 +1,10 @@
-/* $Id: SessionImpl.cpp 51236 2014-05-12 16:01:39Z vboxsync $ */
+/* $Id: SessionImpl.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -783,7 +783,7 @@ STDMETHODIMP Session::OnClipboardModeChange(ClipboardMode_T aClipboardMode)
 #endif
 }
 
-STDMETHODIMP Session::OnDragAndDropModeChange(DragAndDropMode_T aDragAndDropMode)
+STDMETHODIMP Session::OnDnDModeChange(DnDMode_T aDragAndDropMode)
 {
     LogFlowThisFunc(("\n"));
 
@@ -795,7 +795,7 @@ STDMETHODIMP Session::OnDragAndDropModeChange(DragAndDropMode_T aDragAndDropMode
 #ifndef VBOX_COM_INPROC_API_CLIENT
     AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
 
-    return mConsole->onDragAndDropModeChange(aDragAndDropMode);
+    return mConsole->onDnDModeChange(aDragAndDropMode);
 #else
     return S_OK;
 #endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropSource.cpp 51469 2014-05-30 11:49:42Z vboxsync $ */
+/* $Id: VBoxDnDDropSource.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
 /** @file
  * VBoxDnDSource.cpp - IDropSource implementation.
  */
@@ -99,7 +99,7 @@ STDMETHODIMP VBoxDnDDropSource::QueryInterface(REFIID iid, void **ppvObject)
  */
 STDMETHODIMP VBoxDnDDropSource::QueryContinueDrag(BOOL fEscapePressed, DWORD dwKeyState)
 {
-#ifndef DEBUG_andy
+#if 1
     LogFlowFunc(("fEscapePressed=%RTbool, dwKeyState=0x%x, mdwCurEffect=%RI32, muCurAction=%RU32\n",
                  fEscapePressed, dwKeyState, mdwCurEffect, muCurAction));
 #endif
@@ -110,12 +110,16 @@ STDMETHODIMP VBoxDnDDropSource::QueryContinueDrag(BOOL fEscapePressed, DWORD dwK
         mdwCurEffect = 0;
         muCurAction = DND_IGNORE_ACTION;
 
+        LogFlowFunc(("Canceled\n"));
         return DRAGDROP_S_CANCEL;
     }
 
     /* Left mouse button released? Start "drop" action. */
     if ((dwKeyState & MK_LBUTTON) == 0)
+    {
+        LogFlowFunc(("Dropping ...\n"));
         return DRAGDROP_S_DROP;
+    }
 
     /* No change, just continue. */
     return S_OK;
@@ -131,7 +135,7 @@ STDMETHODIMP VBoxDnDDropSource::GiveFeedback(DWORD dwEffect)
 {
     uint32_t uAction = DND_IGNORE_ACTION;
 
-#ifndef DEBUG_andy
+#if 1
     LogFlowFunc(("dwEffect=0x%x\n", dwEffect));
 #endif
     if (dwEffect)

@@ -1,10 +1,10 @@
-/* $Id: DisplayImpl.h 51460 2014-05-29 12:44:48Z vboxsync $ */
+/* $Id: DisplayImpl.h 51476 2014-05-30 14:58:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -65,7 +65,7 @@ typedef struct _DISPLAYFBINFO
 
     uint16_t flags;
 
-    /* for saving the rectangles arrived during fb resize is in progress. */
+    /** For saving the rectangles arrived during fb resize is in progress. */
     PRTRECT mpSavedVisibleRegion;
     uint32_t mcSavedVisibleRegion;
 
@@ -73,7 +73,7 @@ typedef struct _DISPLAYFBINFO
 
     volatile uint32_t u32ResizeStatus;
 
-    /* The Framebuffer has default format and must be updates immediately. */
+    /** The framebuffer has default format and must be updates immediately. */
     bool fDefaultFormat;
 
     struct

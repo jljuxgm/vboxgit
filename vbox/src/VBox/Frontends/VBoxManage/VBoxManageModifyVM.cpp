@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 51259 2014-05-15 14:44:19Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -2167,15 +2167,15 @@ int handleModifyVM(HandlerArg *a)
 
             case MODIFYVM_DRAGANDDROP:
             {
-                DragAndDropMode_T mode;
+                DnDMode_T mode;
                 if (!RTStrICmp(ValueUnion.psz, "disabled"))
-                    mode = DragAndDropMode_Disabled;
+                    mode = DnDMode_Disabled;
                 else if (!RTStrICmp(ValueUnion.psz, "hosttoguest"))
-                    mode = DragAndDropMode_HostToGuest;
+                    mode = DnDMode_HostToGuest;
                 else if (!RTStrICmp(ValueUnion.psz, "guesttohost"))
-                    mode = DragAndDropMode_GuestToHost;
+                    mode = DnDMode_GuestToHost;
                 else if (!RTStrICmp(ValueUnion.psz, "bidirectional"))
-                    mode = DragAndDropMode_Bidirectional;
+                    mode = DnDMode_Bidirectional;
                 else
                 {
                     errorArgument("Invalid --draganddrop argument '%s'", ValueUnion.psz);
@@ -2183,7 +2183,7 @@ int handleModifyVM(HandlerArg *a)
                 }
                 if (SUCCEEDED(rc))
                 {
-                    CHECK_ERROR(machine, COMSETTER(DragAndDropMode)(mode));
+                    CHECK_ERROR(machine, COMSETTER(DnDMode)(mode));
                 }
                 break;
             }

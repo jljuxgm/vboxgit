@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 51384 2014-05-26 07:04:16Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1609,29 +1609,29 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
     /* Drag'n'drop */
     {
         const char *psz = "Unknown";
-        DragAndDropMode_T enmMode;
-        rc = machine->COMGETTER(DragAndDropMode)(&enmMode);
+        DnDMode_T enmMode;
+        rc = machine->COMGETTER(DnDMode)(&enmMode);
         switch (enmMode)
         {
-            case DragAndDropMode_Disabled:
+            case DnDMode_Disabled:
                 if (details == VMINFO_MACHINEREADABLE)
                     psz = "disabled";
                 else
                     psz = "disabled";
                 break;
-            case DragAndDropMode_HostToGuest:
+            case DnDMode_HostToGuest:
                 if (details == VMINFO_MACHINEREADABLE)
                     psz = "hosttoguest";
                 else
                     psz = "HostToGuest";
                 break;
-            case DragAndDropMode_GuestToHost:
+            case DnDMode_GuestToHost:
                 if (details == VMINFO_MACHINEREADABLE)
                     psz = "guesttohost";
                 else
                     psz = "GuestToHost";
                 break;
-            case DragAndDropMode_Bidirectional:
+            case DnDMode_Bidirectional:
                 if (details == VMINFO_MACHINEREADABLE)
                     psz = "bidirectional";
                 else

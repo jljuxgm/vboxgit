@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51436 2014-05-28 09:12:15Z vboxsync $
+# $Id: Makefile.kmk 51476 2014-05-30 14:58:02Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -746,7 +746,9 @@ ifdef VBOX_WITH_GUEST_CONTROL
 endif
 ifdef VBOX_WITH_DRAG_AND_DROP
  VBoxC_SOURCES += \
-	src-client/GuestDnDImpl.cpp
+	src-client/GuestDnDPrivate.cpp \
+	src-client/GuestDnDSourceImpl.cpp \
+	src-client/GuestDnDTargetImpl.cpp
 endif
 ifdef VBOX_WITH_XPCOM
  VBoxC_SOURCES += \
