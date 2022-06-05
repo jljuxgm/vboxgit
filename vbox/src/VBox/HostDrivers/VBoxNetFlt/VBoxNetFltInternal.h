@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 46904 2013-07-02 12:59:56Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 52394 2014-08-15 22:25:31Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -329,6 +329,7 @@ DECLHIDDEN(int) vboxNetFltTryDeleteIdc(PVBOXNETFLTGLOBALS pGlobals);
 DECLHIDDEN(bool) vboxNetFltCanUnload(PVBOXNETFLTGLOBALS pGlobals);
 DECLHIDDEN(PVBOXNETFLTINS) vboxNetFltFindInstance(PVBOXNETFLTGLOBALS pGlobals, const char *pszName);
 
+DECLHIDDEN(DECLCALLBACK(void)) vboxNetFltPortReleaseBusy(PINTNETTRUNKIFPORT pIfPort);
 DECLHIDDEN(void) vboxNetFltRetain(PVBOXNETFLTINS pThis, bool fBusy);
 DECLHIDDEN(bool) vboxNetFltTryRetainBusyActive(PVBOXNETFLTINS pThis);
 DECLHIDDEN(bool) vboxNetFltTryRetainBusyNotDisconnected(PVBOXNETFLTINS pThis);
