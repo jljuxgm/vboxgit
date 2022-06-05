@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 49062 2013-10-12 06:17:18Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 49063 2013-10-12 07:16:07Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -735,9 +735,9 @@ bool VBoxNetDhcp::handleDhcpReqDiscover(PCRTNETBOOTP pDhcpMsg, size_t cb)
         /* 3. Send of offer */
         NetworkManager *networkManager = NetworkManager::getNetworkManager();
 
-        lease->fBinding = true;
-        lease->u64TimestampBindingStarted = RTTimeMilliTS();
-        lease->u32BindExpirationPeriod = 300; /* 3 min. */
+        lease->bindingPhase(true);
+        lease->phaseStart(RTTimeMilliTS());
+        lease->setExpiration(300); /* 3 min. */
         networkManager->offer4Client(client, pDhcpMsg->bp_xid, opt.au8RawOpt, opt.cbRawOpt);
     } /* end of if(!m_DhcpServer.isNull()) */
 
