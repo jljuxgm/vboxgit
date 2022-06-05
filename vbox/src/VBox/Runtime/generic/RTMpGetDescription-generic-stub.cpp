@@ -1,10 +1,10 @@
-/* $Id: RTMpGetDescription-generic-stub.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: RTMpGetDescription-generic-stub.cpp 50641 2014-02-27 20:21:45Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Generic RTMpGetDescription stub.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -37,7 +37,7 @@ RTDECL(int) RTMpGetDescription(RTCPUID idCpu, char *pszBuf, size_t cbBuf)
 {
     static const char s_szUnknown[] = "Unknown";
 
-    if (!RTMpIsCpuOnline(idCpu))
+    if (idCpu != NIL_RTCPUID && !RTMpIsCpuOnline(idCpu))
         return RTMpIsCpuPossible(idCpu)
              ? VERR_CPU_OFFLINE
              : VERR_CPU_NOT_FOUND;
