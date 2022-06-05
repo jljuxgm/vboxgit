@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 50224 2014-01-24 14:35:28Z vboxsync $ */
+/* $Id: UIMachineView.cpp 50248 2014-01-27 16:28:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -421,6 +421,7 @@ void UIMachineView::prepareFrameBuffer()
                 /* Mark framebuffer as used again: */
                 LogRelFlow(("UIMachineView::prepareFrameBuffer: Start EMT callbacks accepting for screen: %d.\n", screenId()));
                 pFrameBuffer->setMarkAsUnused(false);
+                uisession()->setFrameBuffer(screenId(), pFrameBuffer);
             }
             else
             {
@@ -456,6 +457,7 @@ void UIMachineView::prepareFrameBuffer()
                 /* Mark framebuffer as used again: */
                 LogRelFlow(("UIMachineView::prepareFrameBuffer: Start EMT callbacks accepting for screen: %d.\n", screenId()));
                 pFrameBuffer->setMarkAsUnused(false);
+                uisession()->setFrameBuffer(screenId(), pFrameBuffer);
             }
             else
             {
@@ -632,9 +634,6 @@ void UIMachineView::cleanupFrameBuffer()
 
     /* Detach framebuffer from view: */
     m_pFrameBuffer->setView(NULL);
-
-    /* Attach frambuffer back to IDisplay: */
-    display.SetFramebuffer(m_uScreenId, CFramebuffer(m_pFrameBuffer));
 }
 
 UIMachineLogic* UIMachineView::machineLogic() const
