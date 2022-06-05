@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51401 2014-05-26 16:45:43Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51402 2014-05-26 16:47:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -304,9 +304,7 @@ void UIExtraDataManager::setModeForWizard(WizardType type, WizardMode mode)
 
 RenderMode UIExtraDataManager::renderMode(const QString &strId) const
 {
-    RenderMode rm = gpConverter->fromInternalString<RenderMode>(extraDataString(GUI_RenderMode, strId));
-    printf("RenderMode=%d\n", (int)rm);
-    return rm;
+    return gpConverter->fromInternalString<RenderMode>(extraDataString(GUI_RenderMode, strId));
 }
 
 bool UIExtraDataManager::isFirstRun(const QString &strId) const
