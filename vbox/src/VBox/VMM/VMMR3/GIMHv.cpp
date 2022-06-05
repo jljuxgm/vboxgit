@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 52027 2014-07-15 06:05:08Z vboxsync $ */
+/* $Id: GIMHv.cpp 52110 2014-07-21 12:53:59Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -658,7 +658,7 @@ VMMR3_INT_DECL(int) GIMR3HvEnableHypercallPage(PVM pVM, RTGCPHYS GCPhysHypercall
         else
         {
             /** @todo Handle raw-mode hypercall page patching. */
-            LogRel(("GIM: HyperV: Raw-mode not yet implemented!\n"));
+            LogRel(("GIM: HyperV: Raw-mode hypercalls not yet implemented!\n"));
         }
         GIMR3Mmio2Unmap(pVM, pRegion);
     }

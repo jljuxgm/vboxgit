@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 52009 2014-07-14 05:27:31Z vboxsync $ */
+/* $Id: GIMInternal.h 52110 2014-07-21 12:53:59Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -45,6 +45,8 @@ typedef struct GIM
     GIMPROVIDERID                    enmProviderId;
     /** The interface implementation version. */
     uint32_t                         u32Version;
+    /** The Guest OS identifier. */
+    GIMOSID                          enmGuestOsId;
 
     /** Pointer to the GIM device - ring-3 context. */
     R3PTRTYPE(PPDMDEVINS)            pDevInsR3;
@@ -96,7 +98,7 @@ VMMR3_INT_DECL(int)           GIMR3Mmio2Unmap(PVM pVM, PGIMMMIO2REGION pRegion);
 VMMR3_INT_DECL(int)           GIMR3Mmio2Map(PVM pVM, PGIMMMIO2REGION pRegion, RTGCPHYS GCPhysRegion);
 VMMR3_INT_DECL(int)           GIMR3Mmio2HandlerPhysicalRegister(PVM pVM, PGIMMMIO2REGION pRegion);
 VMMR3_INT_DECL(int)           GIMR3Mmio2HandlerPhysicalDeregister(PVM pVM, PGIMMMIO2REGION pRegion);
-VMMR3_INT_DECL(bool)          GIMR3IsOSXGuest(GIMOSID enmGuestOs);
+VMMR3_INT_DECL(bool)          GIMR3IsOSXGuest(PVM pVM);
 #endif /* IN_RING3 */
 
 /** @} */
