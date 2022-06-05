@@ -1,4 +1,4 @@
-/** @file $Id: vbox_drv.h 52850 2014-09-24 19:19:10Z vboxsync $
+/** @file $Id: vbox_drv.h 52864 2014-09-26 09:15:04Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -113,6 +113,7 @@ struct vbox_private
 
 int vbox_driver_load(struct drm_device *dev, unsigned long flags);
 int vbox_driver_unload(struct drm_device *dev);
+void vbox_driver_lastclose(struct drm_device *pDev);
 
 struct vbox_gem_object;
 

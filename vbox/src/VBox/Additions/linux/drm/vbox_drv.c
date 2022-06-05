@@ -1,4 +1,4 @@
-/** @file $Id: vbox_drv.c 52832 2014-09-24 09:11:35Z vboxsync $
+/** @file $Id: vbox_drv.c 52864 2014-09-26 09:15:04Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -117,6 +117,7 @@ static struct drm_driver driver =
 
     .load = vbox_driver_load,
     .unload = vbox_driver_unload,
+    .lastclose = vbox_driver_lastclose,
 
     .fops = &vbox_fops,
     .name = DRIVER_NAME,
