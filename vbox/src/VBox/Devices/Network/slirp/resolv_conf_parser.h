@@ -1,6 +1,6 @@
-/* $Id: resolv_conf_parser.h 50129 2014-01-20 17:41:57Z vboxsync $ */
+/* $Id: resolv_conf_parser.h 50215 2014-01-24 09:34:27Z vboxsync $ */
 /** @file
- * resolv_conf_parser.h - interface to parser of resolv.conf resolver(5) 
+ * resolv_conf_parser.h - interface to parser of resolv.conf resolver(5)
  */
 
 /*
