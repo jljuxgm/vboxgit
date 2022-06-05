@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 48650 2013-09-24 09:06:28Z vboxsync $ */
+/* $Id: HM.cpp 48653 2013-09-24 11:20:21Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -278,9 +278,9 @@ static const char * const g_apszAmdVExitReasons[MAX_EXITREASON_STAT] =
         if ((allowed1) & (featflag)) \
             LogRel(("HM:   " #featflag "\n")); \
         else \
-            LogRel(("HM:   " #featflag " *must* be cleared\n")); \
+            LogRel(("HM:   " #featflag " (must be cleared)\n")); \
         if ((disallowed0) & (featflag)) \
-            LogRel(("HM:   " #featflag " *must* be set\n")); \
+            LogRel(("HM:   " #featflag " (must be set)\n")); \
     } while (0)
 
 #define HMVMX_REPORT_ALLOWED_FEATURE(allowed1, featflag) \
