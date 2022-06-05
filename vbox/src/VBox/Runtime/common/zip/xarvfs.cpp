@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 48868 2013-10-04 01:42:42Z vboxsync $ */
+/* $Id: xarvfs.cpp 49028 2013-10-10 12:55:06Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1925,7 +1925,7 @@ static int rtZipXarReadAndValidateToc(RTVFSIOSTREAM hVfsIosIn, PCXARHEADER pXarH
                     xml::ElementNode const *pRootElem = pDoc->getRootElement();
                     xml::ElementNode const *pTocElem  = NULL;
                     if (pRootElem && pRootElem->nameEquals("xar"))
-                        pTocElem = pRootElem ? pRootElem->findChildElement(NULL, "toc") : NULL;
+                        pTocElem = pRootElem ? pRootElem->findChildElement("toc") : NULL;
                     if (pTocElem)
                     {
 #ifndef USE_STD_LIST_FOR_CHILDREN
