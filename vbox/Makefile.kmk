@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52854 2014-09-25 10:30:25Z vboxsync $
+# $Id: Makefile.kmk 52855 2014-09-25 10:59:06Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1420,7 +1420,7 @@ validationkit-build-linux.x86:
 validationkit-build-linux: validationkit-build-linux.x86 validationkit-build-linux.amd64
 else
 validationkit-build-linux.rsync-into-vm: $(VBOX_VALIDATIONKIT_BUILD_WIN_HOST_FIRST)
-	$(VBOX_KMK_TIME) $(call VBOX_RSYNC_IN_FN,solaris,*) \
+	$(VBOX_KMK_TIME) $(call VBOX_RSYNC_IN_FN,linux,*) \
 		'--exclude=src/VBox/Additions/WINNT/**' \
 		'--exclude=src/VBox/Frontends/**' \
 		'--exclude=src/VBox/VMM/**' \
