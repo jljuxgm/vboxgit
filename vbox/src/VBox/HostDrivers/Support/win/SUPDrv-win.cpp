@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 53016 2014-10-10 00:19:30Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 53017 2014-10-10 01:44:08Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -4062,7 +4062,7 @@ static int supdrvNtProtectVerifyProcess(PSUPDRVNTPROTECT pNtProtect)
             rc = supdrvNtProtectRestrictHandlesToProcessAndThread(pNtProtect, &ErrInfo);
         if (RT_SUCCESS(rc))
         {
-            rc = supHardenedWinVerifyProcess(NtCurrentProcess(), NtCurrentThread(), SUPHARDNTVPKIND_VERIFY_ONLY,
+            rc = supHardenedWinVerifyProcess(NtCurrentProcess(), NtCurrentThread(), SUPHARDNTVPKIND_VERIFY_ONLY, 0 /*fFlags*/,
                                              NULL /*pcFixes*/, &ErrInfo);
             if (RT_SUCCESS(rc) && pNtProtect->enmProcessKind >= kSupDrvNtProtectKind_VmProcessUnconfirmed)
                 rc = supdrvNtProtectVerifyStubForVmProcess(pNtProtect, &ErrInfo);
