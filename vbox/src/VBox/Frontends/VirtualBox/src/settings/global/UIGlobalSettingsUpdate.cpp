@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 47134 2013-07-14 14:18:13Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 51216 2014-05-08 16:13:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -19,6 +19,7 @@
 
 /* GUI includes: */
 #include "UIGlobalSettingsUpdate.h"
+#include "UIExtraDataManager.h"
 #include "VBoxGlobal.h"
 
 UIGlobalSettingsUpdate::UIGlobalSettingsUpdate()
@@ -47,7 +48,7 @@ void UIGlobalSettingsUpdate::loadToCacheFrom(QVariant &data)
     UISettingsPageGlobal::fetchData(data);
 
     /* Fill internal variables with corresponding values: */
-    VBoxUpdateData updateData(vboxGlobal().virtualBox().GetExtraData(GUI_UpdateDate));
+    VBoxUpdateData updateData(gEDataManager->applicationUpdateData());
     m_cache.m_fCheckEnabled = !updateData.isNoNeedToCheck();
     m_cache.m_periodIndex = updateData.periodIndex();
     m_cache.m_branchIndex = updateData.branchIndex();
@@ -102,7 +103,7 @@ void UIGlobalSettingsUpdate::saveFromCacheTo(QVariant &data)
 
     /* Gather corresponding values from internal variables: */
     VBoxUpdateData newData(m_cache.m_periodIndex, m_cache.m_branchIndex);
-    vboxGlobal().virtualBox().SetExtraData(GUI_UpdateDate, newData.data());
+    gEDataManager->setApplicationUpdateData(newData.data());
 
     /* Upload properties & settings to data: */
     UISettingsPageGlobal::uploadData(data);
