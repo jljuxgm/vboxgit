@@ -1,4 +1,4 @@
-/* $Id: ClientDataInt.h 49563 2013-11-20 07:13:46Z vboxsync $ */
+/* $Id: ClientDataInt.h 50213 2014-01-24 08:23:12Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -36,16 +36,16 @@ public:
 
     }
     ~ClientData(){}
-    
+
     /* client information */
     RTNETADDRIPV4 m_address;
     RTNETADDRIPV4 m_network;
     RTMAC m_mac;
-    
+
     bool fHasClient;
 
     /* Lease part */
-    bool fHasLease; 
+    bool fHasLease;
     /** lease isn't commited */
     bool fBinding;
 
@@ -63,4 +63,5 @@ public:
 
     NetworkConfigEntity *pCfg;
 };
+
 #endif

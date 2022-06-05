@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.cpp 49516 2013-11-16 06:42:31Z vboxsync $ */
+/* $Id: NetworkServiceRunner.cpp 50213 2014-01-24 08:23:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -43,7 +43,7 @@ struct NetworkServiceRunner::Data
 NetworkServiceRunner::NetworkServiceRunner(const char *aProcName)
 {
     m = new NetworkServiceRunner::Data(aProcName);
-    
+
 }
 
 

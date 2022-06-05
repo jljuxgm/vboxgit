@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 50174 2014-01-23 09:22:22Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 50213 2014-01-24 08:23:12Z vboxsync $ */
 
 /** @file
  *
@@ -107,7 +107,7 @@ void HostNetworkInterface::i_registerMetrics(PerformanceCollector *aCollector, C
         "Physical link speed.");
 
     /* Create and register base metrics */
-    pm::BaseMetric *networkSpeed = new pm::HostNetworkSpeed(hal, objptr, strName + "/LinkSpeed", 
+    pm::BaseMetric *networkSpeed = new pm::HostNetworkSpeed(hal, objptr, strName + "/LinkSpeed",
                                                             Utf8Str(mShortName), Utf8Str(mInterfaceName),
                                                             m.speedMbits, networkLinkSpeed);
     aCollector->registerBaseMetric(networkSpeed);

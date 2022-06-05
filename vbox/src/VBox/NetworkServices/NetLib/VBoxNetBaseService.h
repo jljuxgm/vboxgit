@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 49842 2013-12-09 13:49:46Z vboxsync $ */
+/* $Id: VBoxNetBaseService.h 50213 2014-01-24 08:23:12Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -56,7 +56,7 @@ private:
     VBoxNetLockee *m_lck;
 };
 
-# ifndef BASE_SERVICES_ONLY 
+# ifndef BASE_SERVICES_ONLY
 class VBoxNetBaseService: public VBoxNetHlpUDPService, public VBoxNetLockee
 {
 public:

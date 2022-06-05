@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 49638 2013-11-25 10:33:46Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 50213 2014-01-24 08:23:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -248,15 +248,15 @@ Utf8Str GuestDirectory::guestErrorToString(int guestRc)
 }
 
 /**
- * Called by IGuestSession right before this directory gets 
- * removed from the public directory list. 
+ * Called by IGuestSession right before this directory gets
+ * removed from the public directory list.
  */
 int GuestDirectory::onRemove(void)
 {
     LogFlowThisFuncEnter();
 
     int vrc = VINF_SUCCESS;
-         
+
     LogFlowFuncLeaveRC(vrc);
     return vrc;
 }

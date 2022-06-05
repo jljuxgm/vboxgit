@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 49842 2013-12-09 13:49:46Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 50213 2014-01-24 08:23:12Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -725,7 +725,7 @@ void VBoxNetBaseService::doReceiveLoop()
 int VBoxNetBaseService::startReceiveThreadAndEnterEventLoop()
 {
     AssertMsgReturn(isMainNeeded(), ("It's expected that we need Main"), VERR_INTERNAL_ERROR);
-        
+
     /* start receiving thread */
     int rc = RTThreadCreate(&m->m_hThrRecv, /* thread handle*/
                             &VBoxNetBaseService::Data::recvLoop,  /* routine */
@@ -742,7 +742,7 @@ int VBoxNetBaseService::startReceiveThreadAndEnterEventLoop()
     while(true)
     {
         m->m_EventQ->processEventQueue(0);
-            
+
         if (m->fShutdown)
             break;
 

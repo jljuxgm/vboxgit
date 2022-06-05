@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 49243 2013-10-22 19:38:39Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 50213 2014-01-24 08:23:12Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -183,7 +183,7 @@ HRESULT HostDnsServiceDarwin::updateInfo()
                                                            CFStringGetSystemEncoding());
             if (!pszServerAddress)
                 continue;
-            
+
             info.servers.push_back(std::string(pszServerAddress));
         }
     }

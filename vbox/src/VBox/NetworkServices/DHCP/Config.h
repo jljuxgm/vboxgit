@@ -1,4 +1,4 @@
-/* $Id: Config.h 49926 2013-12-16 11:20:42Z vboxsync $ */
+/* $Id: Config.h 50213 2014-01-24 08:23:12Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -16,7 +16,7 @@
  */
 
 #ifndef _CONFIG_H_
-# define _CONFIG_H_
+#define _CONFIG_H_
 
 #include <iprt/asm-math.h>
 #include <iprt/cpp/utils.h>
@@ -120,7 +120,7 @@ class Lease
     void phaseStart(uint64_t u64Start);
     bool isInBindingPhase() const;
     /* returns 0 if in binding state */
-    uint64_t issued() const; 
+    uint64_t issued() const;
 
     void setExpiration(uint32_t);
     uint32_t getExpiration() const;
