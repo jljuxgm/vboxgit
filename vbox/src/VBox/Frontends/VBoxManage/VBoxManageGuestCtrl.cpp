@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 51628 2014-06-17 11:47:28Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 52842 2014-09-24 13:44:42Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2359,28 +2359,34 @@ static int ctrlCopyCreateSourceRoot(const char *pszSource, char **ppszSourceRoot
     AssertPtrReturn(ppszSourceRoot, VERR_INVALID_POINTER);
 
     char *pszNewRoot = RTStrDup(pszSource);
-    AssertPtrReturn(pszNewRoot, VERR_NO_MEMORY);
+    if (!pszNewRoot)
+        return VERR_NO_MEMORY;
 
     size_t lenRoot = strlen(pszNewRoot);
     if (   lenRoot
-        && pszNewRoot[lenRoot - 1] == '/'
-        && pszNewRoot[lenRoot - 1] == '\\'
-        && lenRoot > 1
-        && pszNewRoot[lenRoot - 2] == '/'
-        && pszNewRoot[lenRoot - 2] == '\\')
+        && (   pszNewRoot[lenRoot - 1] == '/'
+            || pszNewRoot[lenRoot - 1] == '\\')
+       )
     {
-        *ppszSourceRoot = pszNewRoot;
-        if (lenRoot > 1)
-            *ppszSourceRoot[lenRoot - 2] = '\0';
-        *ppszSourceRoot[lenRoot - 1] = '\0';
+        pszNewRoot[lenRoot - 1] = '\0';
     }
-    else
+
+    if (   lenRoot > 1
+        && (   pszNewRoot[lenRoot - 2] == '/'
+            || pszNewRoot[lenRoot - 2] == '\\')
+       )
+    {
+        pszNewRoot[lenRoot - 2] = '\0';
+    }
+
+    if (!lenRoot)
     {
         /* If there's anything (like a file name or a filter),
          * strip it! */
         RTPathStripFilename(pszNewRoot);
-        *ppszSourceRoot = pszNewRoot;
     }
+
+    *ppszSourceRoot = pszNewRoot;
 
     return VINF_SUCCESS;
 }
