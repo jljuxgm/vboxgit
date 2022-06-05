@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -37,7 +37,7 @@ UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
                              const QString &strDefaultName, const QString &strDefaultPath,
                              qulonglong uDefaultSize,
                              UIWizardMode mode)
-    : UIWizard(pParent, UIWizardType_NewVD, mode)
+    : UIWizard(pParent, WizardType_NewVD, mode)
     , m_strDefaultName(strDefaultName)
     , m_strDefaultPath(strDefaultPath)
     , m_uDefaultSize(uDefaultSize)

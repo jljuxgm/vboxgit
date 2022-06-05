@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 47431 2013-07-26 20:48:11Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -34,7 +34,7 @@
 #include "CMediumFormat.h"
 
 UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const CMedium &sourceVirtualDisk)
-    : UIWizard(pParent, UIWizardType_CloneVD)
+    : UIWizard(pParent, WizardType_CloneVD)
     , m_sourceVirtualDisk(sourceVirtualDisk)
 {
 #ifndef Q_WS_MAC

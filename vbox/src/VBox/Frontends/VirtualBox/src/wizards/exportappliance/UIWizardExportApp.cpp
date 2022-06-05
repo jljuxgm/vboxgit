@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 50882 2014-03-26 09:39:25Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -36,7 +36,7 @@
 #include "CVFSExplorer.h"
 
 UIWizardExportApp::UIWizardExportApp(QWidget *pParent, const QStringList &selectedVMNames)
-    : UIWizard(pParent, UIWizardType_ExportAppliance)
+    : UIWizard(pParent, WizardType_ExportAppliance)
     , m_selectedVMNames(selectedVMNames)
 {
 #ifndef Q_WS_MAC

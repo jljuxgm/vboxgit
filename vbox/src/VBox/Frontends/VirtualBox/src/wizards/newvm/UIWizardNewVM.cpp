@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 51209 2014-05-07 16:32:00Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -35,7 +35,7 @@
 #include "CStorageController.h"
 
 UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strGroup /* = QString() */)
-    : UIWizard(pParent, UIWizardType_NewVM)
+    : UIWizard(pParent, WizardType_NewVM)
     , m_strGroup(strGroup)
     , m_iIDECount(0)
     , m_iSATACount(0)

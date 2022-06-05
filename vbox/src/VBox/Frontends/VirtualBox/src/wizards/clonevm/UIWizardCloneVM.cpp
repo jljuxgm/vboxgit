@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 45328 2013-04-04 08:49:11Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -30,7 +30,7 @@
 #include "CConsole.h"
 
 UIWizardCloneVM::UIWizardCloneVM(QWidget *pParent, const CMachine &machine, CSnapshot snapshot /* = CSnapshot() */)
-    : UIWizard(pParent, UIWizardType_CloneVM)
+    : UIWizard(pParent, WizardType_CloneVM)
     , m_machine(machine)
     , m_snapshot(snapshot)
 {
