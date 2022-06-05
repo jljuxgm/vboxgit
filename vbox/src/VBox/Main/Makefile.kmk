@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49202 2013-10-21 03:01:10Z vboxsync $
+# $Id: Makefile.kmk 49537 2013-11-18 16:19:01Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -767,6 +767,7 @@ ifdef VBOX_WITH_32_ON_64_MAIN_API
  VBoxClient-x86_TEMPLATE = VBoxMainComp-x86
  VBoxClient-x86_EXTENDS  = VBoxC
  VBoxClient-x86_DEFS = VBOX_COM_INPROC_API_CLIENT $(VBoxC_DEFS)
+ VBoxClient-x86_INST = $(INST_DLL)x86/
  VBoxClient-x86_INCS.win = \
  	$(VBoxClient-x86_0_OUTDIR) \
  	$(VBoxCOM-x86_0_OUTDIR) \
