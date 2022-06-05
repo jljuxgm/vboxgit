@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52129 2014-07-22 15:17:21Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52130 2014-07-22 15:52:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -39,7 +39,7 @@
 #include "QIStatusBar.h"
 #include "QIStatusBarIndicator.h"
 #ifndef Q_WS_MAC
-# include "UIMachineMenuBar.h"
+# include "UIMenuBar.h"
 #else /* Q_WS_MAC */
 # include "VBoxUtils.h"
 # include "UIImageTools.h"

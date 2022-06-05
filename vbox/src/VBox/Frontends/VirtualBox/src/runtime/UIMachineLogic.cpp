@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52129 2014-07-22 15:17:21Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 52130 2014-07-22 15:52:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -42,7 +42,7 @@
 #include "UIMachineLogicNormal.h"
 #include "UIMachineLogicSeamless.h"
 #include "UIMachineLogicScale.h"
-#include "UIMachineMenuBar.h"
+#include "UIMenuBar.h"
 #include "UIMachineView.h"
 #include "UIMachineWindow.h"
 #include "UISession.h"

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 52129 2014-07-22 15:17:21Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 52130 2014-07-22 15:52:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -27,7 +27,7 @@
 #include "UIMachineLogicFullscreen.h"
 #include "UIMachineWindowFullscreen.h"
 #include "UIMultiScreenLayout.h"
-#include "UIMachineMenuBar.h"
+#include "QIMenu.h"
 #ifdef Q_WS_MAC
 # include "UIExtraDataManager.h"
 # include "VBoxUtils.h"
