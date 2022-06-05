@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 49242 2013-10-22 19:37:26Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 49243 2013-10-22 19:38:39Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -116,7 +116,7 @@ HRESULT HostDnsServiceDarwin::init()
     if (!g_DnsWatcher)
         return E_OUTOFMEMORY;
 
-    HRESULT hrc = HostDnsService::init();
+    HRESULT hrc = HostDnsMonitor::init();
     AssertComRCReturn(hrc, hrc);
 
     int rc = RTSemEventCreate(&g_DnsInitEvent);
