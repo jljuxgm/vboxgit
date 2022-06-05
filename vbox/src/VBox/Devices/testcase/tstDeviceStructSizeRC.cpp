@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 50532 2014-02-20 19:48:25Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 51341 2014-05-22 09:20:09Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1307,6 +1307,7 @@ int main()
     GEN_CHECK_OFF(AHCI, fR0Enabled);
     GEN_CHECK_OFF(AHCI, fSignalIdle);
     GEN_CHECK_OFF(AHCI, fBootable);
+    GEN_CHECK_OFF(AHCI, fLegacyPortResetMethod);
     GEN_CHECK_OFF(AHCI, cPortsImpl);
     GEN_CHECK_OFF(AHCI, cCmdSlotsAvail);
     GEN_CHECK_OFF(AHCI, f8ByteMMIO4BytesWrittenSuccessfully);
