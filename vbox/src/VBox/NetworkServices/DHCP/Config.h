@@ -1,4 +1,4 @@
-/* $Id: Config.h 49566 2013-11-20 08:49:10Z vboxsync $ */
+/* $Id: Config.h 49567 2013-11-20 08:52:10Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -501,10 +501,6 @@ class NetworkManager
 public:
     static NetworkManager *getNetworkManager();
 
-    int offer4Client(const Client& lease, uint32_t u32Xid, uint8_t *pu8ReqList, int cReqList);
-    int ack(const Client& lease, uint32_t u32Xid, uint8_t *pu8ReqList, int cReqList);
-    int nak(const Client& lease, uint32_t u32Xid);
-
     const RTNETADDRIPV4& getOurAddress() const;
     const RTNETADDRIPV4& getOurNetmask() const;
     const RTMAC& getOurMac() const;
@@ -524,6 +520,10 @@ public:
 private:
     NetworkManager();
     ~NetworkManager();
+
+    int offer4Client(const Client& lease, uint32_t u32Xid, uint8_t *pu8ReqList, int cReqList);
+    int ack(const Client& lease, uint32_t u32Xid, uint8_t *pu8ReqList, int cReqList);
+    int nak(const Client& lease, uint32_t u32Xid);
 
     int prepareReplyPacket4Client(const Client& client, uint32_t u32Xid);
     int doReply(const Client& client, const std::vector<RawOption>& extra);
