@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 49638 2013-11-25 10:33:46Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 49653 2013-11-26 10:40:26Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2104,7 +2104,7 @@ int GuestProcessTool::GetCurrentBlock(uint32_t uHandle, GuestProcessStreamBlock 
 
 bool GuestProcessTool::IsRunning(void)
 {
-    AssertReturn(!pProcess.isNull(), true);
+    AssertReturn(!pProcess.isNull(), false);
 
     ProcessStatus_T procStatus = ProcessStatus_Undefined;
     HRESULT hr = pProcess->COMGETTER(Status(&procStatus));
