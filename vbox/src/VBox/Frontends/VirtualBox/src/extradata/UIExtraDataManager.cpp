@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51209 2014-05-07 16:32:00Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51213 2014-05-08 12:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -239,6 +239,28 @@ bool UIExtraDataManager::shouldWeAllowApplicationUpdate() const
     return !isFeatureAllowed(GUI_PreventApplicationUpdate);
 }
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+
+bool UIExtraDataManager::isDescriptionHiddenForWizard(const QString &strWizardName)
+{
+    /* True if wizard-name among the others: */
+    return extraDataStringList(GUI_HideDescriptionForWizards).contains(strWizardName);
+}
+
+void UIExtraDataManager::setDescriptionHiddenForWizard(const QString &strWizardName, bool fHidden)
+{
+    /* Get current value: */
+    QStringList oldValue = extraDataStringList(GUI_HideDescriptionForWizards);
+    QStringList newValue = oldValue;
+    /* Include wizard-name if necessary: */
+    if (fHidden && !newValue.contains(strWizardName))
+        newValue << strWizardName;
+    /* Exclude wizard-name if necessary: */
+    else if (!fHidden && newValue.contains(strWizardName))
+        newValue.removeAll(strWizardName);
+    /* Update extra-data if necessary: */
+    if (newValue != oldValue)
+        setExtraDataStringList(GUI_HideDescriptionForWizards, newValue);
+}
 
 bool UIExtraDataManager::isFirstRun(const QString &strId) const
 {

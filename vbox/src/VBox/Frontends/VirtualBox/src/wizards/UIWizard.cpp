@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 45060 2013-03-18 13:31:20Z vboxsync $ */
+/* $Id: UIWizard.cpp 51213 2014-05-08 12:56:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -27,6 +27,7 @@
 #include "UIWizardPage.h"
 #include "VBoxGlobal.h"
 #include "QIRichTextLabel.h"
+#include "UIExtraDataManager.h"
 
 void UIWizard::sltCurrentIdChanged(int iId)
 {
@@ -50,37 +51,16 @@ void UIWizard::sltCustomButtonClicked(int iId)
         /* Cleanup: */
         cleanup();
 
-        /* Compose wizard's name: */
-        QString strWizardName = nameForType(m_type);
-        /* Load mode settings: */
-        QStringList wizards = vboxGlobal().virtualBox().GetExtraDataStringList(GUI_HideDescriptionForWizards);
-
         /* Switch mode: */
         switch (m_mode)
         {
-            case UIWizardMode_Basic:
-            {
-                m_mode = UIWizardMode_Expert;
-                if (!wizards.contains(strWizardName))
-                    wizards << strWizardName;
-                break;
-            }
-            case UIWizardMode_Expert:
-            {
-                m_mode = UIWizardMode_Basic;
-                if (wizards.contains(strWizardName))
-                    wizards.removeAll(strWizardName);
-                break;
-            }
-            default:
-            {
-                AssertMsgFailed(("Invalid mode: %d", m_mode));
-                break;
-            }
+            case UIWizardMode_Basic:  m_mode = UIWizardMode_Expert; break;
+            case UIWizardMode_Expert: m_mode = UIWizardMode_Basic;  break;
+            default: AssertMsgFailed(("Invalid mode: %d", m_mode)); break;
         }
 
         /* Save mode settings: */
-        vboxGlobal().virtualBox().SetExtraDataStringList(GUI_HideDescriptionForWizards, wizards);
+        gEDataManager->setDescriptionHiddenForWizard(nameForType(m_type), m_mode == UIWizardMode_Expert);
 
         /* Prepare: */
         prepare();
@@ -546,11 +526,8 @@ UIWizardMode UIWizard::loadModeForType(UIWizardType type)
     /* Some wizard use only basic mode: */
     if (type == UIWizardType_FirstRun)
         return UIWizardMode_Basic;
-    /* Get mode from extra-data: */
-    QStringList wizards = vboxGlobal().virtualBox().GetExtraDataStringList(GUI_HideDescriptionForWizards);
-    if (wizards.contains(nameForType(type)))
-        return UIWizardMode_Expert;
-    /* Return mode: */
-    return UIWizardMode_Basic;
+    /* Otherwise get mode from extra-data manager: */
+    return gEDataManager->isDescriptionHiddenForWizard(nameForType(type))
+           ? UIWizardMode_Expert : UIWizardMode_Basic;
 }
 
