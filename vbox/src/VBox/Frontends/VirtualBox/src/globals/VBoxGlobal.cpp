@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 48269 2013-09-04 14:34:13Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 48277 2013-09-04 16:49:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -963,14 +963,15 @@ bool VBoxGlobal::toLPTPortNumbers (const QString &aName, ulong &aIRQ,
 QString VBoxGlobal::details(const CMedium &cmedium, bool fPredictDiff, bool fUseHtml /*= true*/)
 {
     /* Search for corresponding UI medium: */
-    UIMedium uimedium = cmedium.isNull() ? UIMedium() : medium(cmedium.GetId());
+    const QString strMediumID = cmedium.isNull() ? UIMedium::nullID() : cmedium.GetId();
+    UIMedium uimedium = medium(strMediumID);
     if (!cmedium.isNull() && uimedium.isNull())
     {
-        /* UI medium may be new and not in medium-list, request enumeration: */
+        /* UI medium may be new and not among our mediums, request enumeration: */
         startMediumEnumeration();
 
         /* Search for corresponding UI medium again: */
-        uimedium = medium(cmedium.GetId());
+        uimedium = medium(strMediumID);
         if (uimedium.isNull())
         {
             /* Medium might be deleted already, return null string: */
