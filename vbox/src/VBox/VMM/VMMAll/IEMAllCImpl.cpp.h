@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 53102 2014-10-20 18:38:19Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 53107 2014-10-21 15:43:09Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -16,7 +16,6 @@
  */
 
 
-#define IEM_IMPLEMENTS_CALLGATE
 /** @name Misc Helpers
  * @{
  */
