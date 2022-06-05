@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 49664 2013-11-26 15:53:35Z vboxsync $ */
+/* $Id: HMInternal.h 49725 2013-11-29 14:03:10Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -55,6 +55,70 @@ RT_C_DECLS_BEGIN
  * @internal
  * @{
  */
+
+/** @def VMCPU_HMCF_CLEAR
+ * Clears a HM-context flag for the given VCPU.
+ *
+ * @param   pVCpu   Pointer to the VMCPU.
+ * @param   fFlag   The flag to clear.
+ */
+#define VMCPU_HMCF_CLEAR(pVCpu, fFlag)              (ASMAtomicUoAndU32(&(pVCpu)->hm.s.fContextUseFlags, ~(fFlag)))
+
+/** @def VMCPU_FF_SET
+ * Sets a HM-context flag for the given VCPU.
+ *
+ * @param   pVCpu   Pointer to the VMCPU.
+ * @param   fFlag   The flag to set.
+ */
+#define VMCPU_HMCF_SET(pVCpu, fFlag)                (ASMAtomicUoOrU32(&(pVCpu)->hm.s.fContextUseFlags, (fFlag)))
+
+/** @def VMCPU_HMCF_IS_SET
+ * Checks if all the flags in the specified HM-context set is pending.
+ *
+ * @param   pVCpu   Pointer to the VMCPU.
+ * @param   fFlag   The flag to check.
+ */
+#define VMCPU_HMCF_IS_SET(pVCpu, fFlag)             ((ASMAtomicUoReadU32(&(pVCpu)->hm.s.fContextUseFlags) & (fFlag)) == (fFlag))
+
+/** @def VMCPU_HMCF_IS_PENDING
+ * Checks if one or more of the flags in the specified HM-context set is
+ * pending.
+ *
+ * @param   pVCpu   Pointer to the VMCPU.
+ * @param   fFlags  The flags to check for.
+ */
+#define VMCPU_HMCF_IS_PENDING(pVCpu, fFlags)        RT_BOOL(ASMAtomicUoReadU32(&(pVCpu)->hm.s.fContextUseFlags) & (fFlags))
+
+/** @def VMCPU_HMCF_IS_PENDING_ONLY
+ * Checks if -only- one or more of the specified HM-context flags is pending.
+ *
+ * @param   pVCpu   Pointer to the VMCPU.
+ * @param   fFlags  The flags to check for.
+ */
+#define VMCPU_HMCF_IS_PENDING_ONLY(pVCpu, fFlags)   !RT_BOOL(ASMAtomicUoReadU32(&(pVCpu)->hm.s.fContextUseFlags) & ~(fFlags))
+
+/** @def VMCPU_HMCF_IS_SET_ONLY
+ * Checks if -only- all the flags in the specified HM-context set is pending.
+ *
+ * @param   pVCpu   Pointer to the VMCPU.
+ * @param   fFlags  The flags to check for.
+ */
+#define VMCPU_HMCF_IS_SET_ONLY(pVCpu, fFlags)       (ASMAtomicUoReadU32(&(pVCpu)->hm.s.fContextUseFlags) == (fFlags))
+
+/** @def VMCPU_HMCF_RESET_TO
+ * Resets the HM-context flags to the specified value.
+ *
+ * @param   pVCpu   Pointer to the VMCPU.
+ * @param   fFlags  The new value.
+ */
+#define VMCPU_HMCF_RESET_TO(pVCpu, fFlags)          (ASMAtomicUoWriteU32(&(pVCpu)->hm.s.fContextUseFlags, (fFlags)))
+
+/** @def VMCPU_HMCF_VALUE
+ * Returns the current HM-context flags value.
+ *
+ * @param   pVCpu   Pointer to the VMCPU.
+ */
+#define VMCPU_HMCF_VALUE(pVCpu)                     (ASMAtomicUoReadU32(&(pVCpu)->hm.s.fContextUseFlags))
 
 
 /** Maximum number of exit reason statistics counters. */
@@ -512,7 +576,7 @@ typedef struct HMCPU
     /** World switch exit counter. */
     volatile uint32_t           cWorldSwitchExits;
     /** HM_CHANGED_* flags. */
-    uint32_t                    fContextUseFlags;
+    volatile uint32_t           fContextUseFlags;
     /** Id of the last cpu we were executing code on (NIL_RTCPUID for the first
      *  time). */
     RTCPUID                     idLastCpu;
