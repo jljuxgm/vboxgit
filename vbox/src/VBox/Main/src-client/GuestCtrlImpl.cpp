@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 49350 2013-10-31 17:08:48Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 49392 2013-11-05 15:56:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -129,7 +129,7 @@ STDMETHODIMP Guest::UpdateGuestAdditions(IN_BSTR aSource, ComSafeArrayIn(IN_BSTR
     uint32_t fFlags = AdditionsUpdateFlag_None;
     if (aFlags)
     {
-        com::SafeArray<CopyFileFlag_T> flags(ComSafeArrayInArg(aFlags));
+        com::SafeArray<AdditionsUpdateFlag_T> flags(ComSafeArrayInArg(aFlags));
         for (size_t i = 0; i < flags.size(); i++)
             fFlags |= flags[i];
     }
