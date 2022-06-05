@@ -1,4 +1,4 @@
-/* $Id: nt.h 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: nt.h 51945 2014-07-09 00:59:53Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -297,6 +297,26 @@ RT_C_DECLS_BEGIN
 #endif
 #ifndef ZwCurrentThread
 # define ZwCurrentThread()                  NtCurrentThread()
+#endif
+/** @} */
+
+
+/** @name Directory object access rights.
+ * @{ */
+#ifndef DIRECTORY_QUERY
+# define DIRECTORY_QUERY                    UINT32_C(0x00000001)
+#endif
+#ifndef DIRECTORY_TRAVERSE
+# define DIRECTORY_TRAVERSE                 UINT32_C(0x00000002)
+#endif
+#ifndef DIRECTORY_CREATE_OBJECT
+# define DIRECTORY_CREATE_OBJECT            UINT32_C(0x00000004)
+#endif
+#ifndef DIRECTORY_CREATE_SUBDIRECTORY
+# define DIRECTORY_CREATE_SUBDIRECTORY      UINT32_C(0x00000008)
+#endif
+#ifndef DIRECTORY_ALL_ACCESS
+# define DIRECTORY_ALL_ACCESS               ( STANDARD_RIGHTS_REQUIRED | UINT32_C(0x0000000f) )
 #endif
 /** @} */
 
