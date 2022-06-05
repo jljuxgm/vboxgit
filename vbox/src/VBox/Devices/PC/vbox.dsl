@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 52561 2014-09-01 19:06:59Z vboxsync $
+// $Id: vbox.dsl 53334 2014-11-14 16:40:07Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -586,7 +586,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                         Return (0x00)
                      }
                      else {
-                        Return (0x0E)
+                        Return (0x0F)
                      }
                     }
                 }               
