@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 50385 2014-02-10 11:07:05Z vboxsync $ */
+/* $Id: TMAll.cpp 50387 2014-02-10 12:36:13Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -103,7 +103,7 @@
         } \
     } while (0)
 #else
-# define TMTIMER_ASSERT_SYNC_CRITSECT_ORDER(pTimer) do { } while (0)
+# define TMTIMER_ASSERT_SYNC_CRITSECT_ORDER(pVM, pTimer) do { } while (0)
 #endif
 
 
