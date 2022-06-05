@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 48788 2013-10-01 08:09:35Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 48789 2013-10-01 08:25:31Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -1626,20 +1626,20 @@ int DarwinHidDevicesApplyAndReleaseLedsState(void *pState)
             /* Restore LEDs */
             for (i = 0; i < hidsState->cDevices; i++)
             {
-                rc = darwinSetDeviceLedsState(hidsState->hidDevicesCollection[i],
-                                              elementMatchingDict,
-                                              hidsState->hidLedsCollection[i].fNumLockOn,
-                                              hidsState->hidLedsCollection[i].fCapsLockOn,
-                                              hidsState->hidLedsCollection[i].fScrollLockOn);
-                if (rc != 0)
-                {
-                    Log2(("Unable to restore led states for device (%d)!\n", (int)i));
-                    rc2 = kIOReturnError;
-                }
-
-                /* Only supported devices have subscription to input callbacks. */
+                /* Cycle through supported devices only. */
                 if (darwinHidDeviceSupported(hidsState->hidDevicesCollection[i]))
                 {
+                    rc = darwinSetDeviceLedsState(hidsState->hidDevicesCollection[i],
+                                                  elementMatchingDict,
+                                                  hidsState->hidLedsCollection[i].fNumLockOn,
+                                                  hidsState->hidLedsCollection[i].fCapsLockOn,
+                                                  hidsState->hidLedsCollection[i].fScrollLockOn);
+                    if (rc != 0)
+                    {
+                        Log2(("Unable to restore led states for device (%d)!\n", (int)i));
+                        rc2 = kIOReturnError;
+                    }
+
                     IOHIDDeviceRegisterInputValueCallback(hidsState->hidDevicesCollection[i], NULL, NULL);
                     IOHIDDeviceUnscheduleFromRunLoop(hidsState->hidDevicesCollection[i], CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
                 }
