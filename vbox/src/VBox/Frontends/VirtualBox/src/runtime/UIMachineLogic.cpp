@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 49025 2013-10-10 12:00:25Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 49048 2013-10-11 07:45:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -489,7 +489,7 @@ void UIMachineLogic::sltKeyboardLedsChanged()
      * [bool] uisession() -> isNumLock(), isCapsLock(), isScrollLock() can be used for that. */
     LogRelFlow(("UIMachineLogic::sltKeyboardLedsChanged: Updating host LED lock states (NOT IMPLEMENTED).\n"));
 #ifdef Q_WS_MAC
-    DarwinHidDevicesBroadcastLeds(uisession()->isNumLock(), uisession()->isCapsLock(), uisession()->isScrollLock());
+    DarwinHidDevicesBroadcastLeds(m_pHostLedsState, uisession()->isNumLock(), uisession()->isCapsLock(), uisession()->isScrollLock());
 #endif
 }
 
@@ -2209,7 +2209,7 @@ void UIMachineLogic::sltSwitchKeyboardLedsToGuestLeds()
 #ifdef Q_WS_MAC
     if (m_pHostLedsState == NULL)
         m_pHostLedsState = DarwinHidDevicesKeepLedsState();
-    DarwinHidDevicesBroadcastLeds(uisession()->isNumLock(), uisession()->isCapsLock(), uisession()->isScrollLock());
+    DarwinHidDevicesBroadcastLeds(m_pHostLedsState, uisession()->isNumLock(), uisession()->isCapsLock(), uisession()->isScrollLock());
 #endif /* Q_WS_MAC */
 }
 
