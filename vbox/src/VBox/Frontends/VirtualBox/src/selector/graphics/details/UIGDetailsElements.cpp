@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 51322 2014-05-21 13:08:47Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 51740 2014-06-26 14:43:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -186,11 +186,21 @@ UIGDetailsElementPreview::UIGDetailsElementPreview(UIGDetailsSet *pParent, bool 
 
     /* Create preview: */
     m_pPreview = new UIGMachinePreview(this);
+    connect(m_pPreview, SIGNAL(sigSizeHintChanged()),
+            this, SLOT(sltPreviewSizeHintChanged()));
     pLayout->addItem(m_pPreview);
     setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     /* Translate: */
     retranslateUi();
+}
+
+void UIGDetailsElementPreview::sltPreviewSizeHintChanged()
+{
+    /* Recursively update size-hints: */
+    updateGeometry();
+    /* Update whole model layout: */
+    model()->updateLayout();
 }
 
 void UIGDetailsElementPreview::retranslateUi()
