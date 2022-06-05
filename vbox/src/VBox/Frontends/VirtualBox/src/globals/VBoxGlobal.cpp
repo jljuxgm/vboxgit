@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 49074 2013-10-13 22:08:34Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 49307 2013-10-28 13:03:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -432,7 +432,11 @@ QWidget* VBoxGlobal::activeMachineWindow()
  */
 bool VBoxGlobal::is3DAvailableWorker() const
 {
+#ifdef VBOX_WITH_CROGL
     bool fSupported = VBoxOglIs3DAccelerationSupported();
+#else
+    bool fSupported = false;
+#endif
     unconst(this)->m3DAvailable = fSupported;
     return fSupported;
 }
