@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 51606 2014-06-11 14:54:11Z vboxsync $ */
+/* $Id: DisplayImpl.h 51610 2014-06-12 10:40:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -45,13 +45,6 @@ typedef struct _DISPLAYFBINFO
     ComPtr<IFramebuffer> pFramebuffer;
     ComPtr<IDisplaySourceBitmap> pSourceBitmap;
     bool fDisabled;
-
-    struct
-    {
-        ComPtr<IDisplaySourceBitmap> pSourceBitmap;
-        uint8_t *pu8Address;
-        uint32_t cbLine;
-    } updateImage;
 
     LONG xOrigin;
     LONG yOrigin;
@@ -190,10 +183,6 @@ public:
     // IEventListener methods
     STDMETHOD(HandleEvent)(IEvent * aEvent);
 
-    // IDisplay properties
-    STDMETHOD(COMGETTER(FramebufferUpdateMode))(FramebufferUpdateMode_T *aFramebufferUpdateMode);
-    STDMETHOD(COMSETTER(FramebufferUpdateMode))(FramebufferUpdateMode_T aFramebufferUpdateMode);
-
     // IDisplay methods
     STDMETHOD(GetScreenResolution)(ULONG aScreenId, ULONG *aWidth, ULONG *aHeight, ULONG *aBitsPerPixel, LONG *aXOrigin, LONG *aYOrigin);
     STDMETHOD(AttachFramebuffer)(ULONG aScreenId,
@@ -302,8 +291,6 @@ private:
 
     bool mfSourceBitmapEnabled;
     bool volatile fVGAResizing;
-
-    FramebufferUpdateMode_T mFramebufferUpdateMode;
 
     VBVAMEMORY *mpVbvaMemory;
     bool        mfVideoAccelEnabled;
