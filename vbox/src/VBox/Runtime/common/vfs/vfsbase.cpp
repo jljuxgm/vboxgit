@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 48021 2013-08-23 12:02:52Z vboxsync $ */
+/* $Id: vfsbase.cpp 48175 2013-08-30 02:20:52Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -1554,8 +1554,7 @@ RTDECL(int) RTVfsUtilPumpIoStreams(RTVFSIOSTREAM hVfsIosSrc, RTVFSIOSTREAM hVfsI
         rc = RTVfsIoStrmRead(hVfsIosSrc, pvBuf, cbBuf, true /*fBlocking*/, &cbRead);
         if (RT_FAILURE(rc))
             break;
-        if (cbRead == 0) /* will never return VINF_EOF as we passed cbRead so the
-                            caller is expected to handle partial reads. */
+        if (rc == VINF_EOF && cbRead == 0)
             break;
 
         rc = RTVfsIoStrmWrite(hVfsIosDst, pvBuf, cbRead, true /*fBlocking*/, NULL /*cbWritten*/);
