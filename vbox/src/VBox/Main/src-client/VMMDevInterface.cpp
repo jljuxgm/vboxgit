@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 52082 2014-07-17 17:18:56Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 52652 2014-09-09 08:12:31Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -368,7 +368,7 @@ DECLCALLBACK(int) iface_VideoAccelEnable(PPDMIVMMDEVCONNECTOR pInterface, bool f
     if (display)
     {
         LogSunlover(("MAIN::VMMDevInterface::iface_VideoAccelEnable: %d, %p\n", fEnable, pVbvaMemory));
-        return display->i_VideoAccelEnable(fEnable, pVbvaMemory);
+        return display->VideoAccelEnableVMMDev(fEnable, pVbvaMemory);
     }
 
     return VERR_NOT_SUPPORTED;
@@ -383,7 +383,7 @@ DECLCALLBACK(void) iface_VideoAccelFlush(PPDMIVMMDEVCONNECTOR pInterface)
     if (display)
     {
         LogSunlover(("MAIN::VMMDevInterface::iface_VideoAccelFlush\n"));
-        display->i_VideoAccelFlush();
+        display->VideoAccelFlushVMMDev();
     }
 }
 
