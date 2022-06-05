@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 51753 2014-06-27 21:03:59Z vboxsync $ */
+/* $Id: ConsoleImpl.h 51925 2014-07-08 11:13:51Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -843,6 +843,7 @@ private:
      * @{ */
     HRESULT i_consoleParseDiskEncryption(const char *psz, const char **ppszEnd);
     HRESULT i_configureEncryptionForDisk(const char *pszUuid);
+    HRESULT i_clearDiskEncryptionKeysOnAllAttachments(void);
     int i_consoleParseKeyValue(const char *psz, const char **ppszEnd,
                                char **ppszKey, char **ppszVal);
     /** @} */
