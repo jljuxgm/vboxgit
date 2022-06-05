@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 49749 2013-12-03 12:29:19Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 49751 2013-12-03 12:38:49Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -3970,13 +3970,13 @@ HRESULT Appliance::ImportStack::restoreOriginalUUIDOfAttachedDevice(settings::Ma
         settings::AttachedDevicesList::iterator itadl = llAttachments.begin();
         while (itadl != llAttachments.end())
         {
-            std::map<Utf8Str , Utf8Str>::const_iterator cit =
+            std::map<Utf8Str , Utf8Str>::iterator it =
                 mapNewUUIDsToOriginalUUIDs.find(itadl->uuid.toString());
-            if(cit!=mapNewUUIDsToOriginalUUIDs.end())
+            if(it!=mapNewUUIDsToOriginalUUIDs.end())
             {
-                Utf8Str uuidOriginal = cit->second;
+                Utf8Str uuidOriginal = it->second;
                 itadl->uuid = Guid(uuidOriginal);
-                mapNewUUIDsToOriginalUUIDs.erase(cit);
+                mapNewUUIDsToOriginalUUIDs.erase(it);
             }
             ++itadl;
         }
