@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50561 2014-02-24 21:07:22Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50562 2014-02-24 21:13:39Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -902,6 +902,7 @@ VBGLR3DECL(int) VbglR3DnDHGRequestData(uint32_t u32ClientId, const char* pcszFor
     return rc;
 }
 
+#ifdef VBOX_WITH_DRAG_AND_DROP_GH
 VBGLR3DECL(int) VbglR3DnDGHAcknowledgePending(uint32_t u32ClientId,
                                               uint32_t uDefAction, uint32_t uAllActions,
                                               const char* pcszFormats)
@@ -1167,4 +1168,4 @@ VBGLR3DECL(int) VbglR3DnDGHSendError(uint32_t u32ClientId, int rcErr)
     LogFlowFunc(("Sending error %Rrc returned with rc=%Rrc\n", rcErr, rc));
     return rc;
 }
-
+#endif /* VBOX_WITH_DRAG_AND_DROP_GH */
