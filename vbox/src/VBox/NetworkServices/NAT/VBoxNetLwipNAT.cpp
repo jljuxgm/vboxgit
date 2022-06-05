@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48242 2013-09-03 02:39:49Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48288 2013-09-05 02:14:22Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -463,7 +463,7 @@ err_t VBoxNetLwipNAT::netifInit(netif *pNetif)
       | NETIF_FLAG_ETHARP                /* Don't bother driver with ARP and let Lwip resolve ARP handling */
       | NETIF_FLAG_ETHERNET;             /* Lwip works with ethernet too */
 
-    netif_create_ip6_linklocal_address(pNetif, 0);
+    netif_create_ip6_linklocal_address(pNetif, /* :from_mac_48bit */ 1);
     netif_ip6_addr_set_state(pNetif, 0, IP6_ADDR_VALID);
     pNetif->output_ip6 = ethip6_output;
     LogFunc(("netif[%c%c%d] ipv6 addr:%RTnaipv6\n", 
