@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 51361 2014-05-22 21:29:44Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 51466 2014-05-30 10:07:26Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1110,7 +1110,7 @@ NTSTATUS DxgkDdiStartDevice(
                 {
                     pDevExt->fTexPresentEnabled = !!(VBoxMpCrGetHostCaps() & CR_VBOX_CAP_TEX_PRESENT);
                     pDevExt->fCmdVbvaEnabled = !!(VBoxMpCrGetHostCaps() & CR_VBOX_CAP_CMDVBVA);
-# if 0
+# if 1
                     pDevExt->fComplexTopologiesEnabled = pDevExt->fCmdVbvaEnabled;
 # else
                     pDevExt->fComplexTopologiesEnabled = FALSE;
