@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48240 2013-09-03 01:48:43Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48248 2013-09-03 12:44:22Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1980,7 +1980,7 @@ static int hmR0VmxSetupMiscCtls(PVM pVM, PVMCPU pVCpu)
 
 /**
  * Sets up the initial exception bitmap in the VMCS based on static conditions
- * (i.e. conditions that cannot ever change at runtime).
+ * (i.e. conditions that cannot ever change after starting the VM).
  *
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
