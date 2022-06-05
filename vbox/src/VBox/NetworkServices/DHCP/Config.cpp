@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 49064 2013-10-12 07:17:53Z vboxsync $ */
+/* $Id: Config.cpp 49065 2013-10-12 07:19:24Z vboxsync $ */
 
 /**
  * XXX: license.
@@ -374,7 +374,7 @@ bool ConfigurationManager::isAddressTaken(const RTNETADDRIPV4& addr, Lease** ppL
     return false;
 }
 
-NetworkConfigEntity *ConfigurationManager::addNetwork(NetworkConfigEntity *pCfg,
+NetworkConfigEntity *ConfigurationManager::addNetwork(NetworkConfigEntity *,
                                     const RTNETADDRIPV4& networkId,
                                     const RTNETADDRIPV4& netmask,
                                     RTNETADDRIPV4& LowerAddress,
