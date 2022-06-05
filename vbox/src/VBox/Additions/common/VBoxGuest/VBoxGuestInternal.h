@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 45779 2013-04-26 15:18:59Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 50372 2014-02-09 16:05:37Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -236,6 +236,11 @@ typedef struct VBOXGUESTSESSION
 #endif
     /* Guest Caps Acquired & Reported by this session */
     uint32_t                    u32AquiredGuestCaps;
+    /** Whether a CANCEL_ALL_WAITEVENTS is pending.  This happens when
+     * CANCEL_ALL_WAITEVENTS is called, but no call to WAITEVENT is in process
+     * in the current session.  In that case the next call will be interrupted
+     * at once. */
+    bool volatile               fPendingCancelWaitEvents;
 } VBOXGUESTSESSION;
 
 RT_C_DECLS_BEGIN
