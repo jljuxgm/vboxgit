@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 52011 2014-07-14 10:17:26Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -432,7 +432,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
         LONG64 i64; \
         CHECK_ERROR2_RET(a_pObj, COMGETTER(a_Prop)(&i64), hrcCheck); \
         if (details == VMINFO_MACHINEREADABLE) \
-            RTPrintf(a_szHuman "=%lld", i64); \
+            RTPrintf(a_szMachine "=%lld\n", i64); \
         else \
             RTPrintf("%-16s %'lld" a_szUnit "\n", a_szHuman ":", i64); \
     } while (0)
