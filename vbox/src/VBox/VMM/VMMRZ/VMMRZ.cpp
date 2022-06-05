@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 48473 2013-09-13 14:17:58Z vboxsync $ */
+/* $Id: VMMRZ.cpp 50009 2013-12-27 14:44:05Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -25,6 +25,7 @@
 #include <VBox/err.h>
 
 #include <iprt/assert.h>
+#include <iprt/asm-amd64-x86.h>
 #include <iprt/string.h>
 
 
@@ -127,8 +128,12 @@ VMMRZDECL(int) VMMRZCallRing3NoCpu(PVM pVM, VMMCALLRING3 enmOperation, uint64_t 
 VMMRZDECL(void) VMMRZCallRing3Disable(PVMCPU pVCpu)
 {
     VMCPU_ASSERT_EMT(pVCpu);
+#if defined(LOG_ENABLED) && defined(IN_RING0)
+    RTCCUINTREG fFlags = ASMIntDisableFlags(); /* preemption consistency. */
+#endif
+
     Assert(pVCpu->vmm.s.cCallRing3Disabled < 16);
-    if (++pVCpu->vmm.s.cCallRing3Disabled == 1)
+    if (ASMAtomicIncU32(&pVCpu->vmm.s.cCallRing3Disabled) == 1) /** @todo replace with unordered variant (ASMAtomicUoIncU32). */
     {
         /** @todo it might make more sense to just disable logging here, then we
          * won't flush away important bits... but that goes both ways really. */
@@ -141,6 +146,10 @@ VMMRZDECL(void) VMMRZCallRing3Disable(PVMCPU pVCpu)
 # endif
 #endif
     }
+
+#if defined(LOG_ENABLED) && defined(IN_RING0)
+    ASMSetFlags(fFlags);
+#endif
 }
 
 
@@ -153,8 +162,12 @@ VMMRZDECL(void) VMMRZCallRing3Disable(PVMCPU pVCpu)
 VMMRZDECL(void) VMMRZCallRing3Enable(PVMCPU pVCpu)
 {
     VMCPU_ASSERT_EMT(pVCpu);
+#if defined(LOG_ENABLED) && defined(IN_RING0)
+    RTCCUINTREG fFlags = ASMIntDisableFlags(); /* preemption consistency. */
+#endif
+
     Assert(pVCpu->vmm.s.cCallRing3Disabled > 0);
-    if (--pVCpu->vmm.s.cCallRing3Disabled == 0)
+    if (ASMAtomicDecU32(&pVCpu->vmm.s.cCallRing3Disabled) == 0) /** @todo replace with unordered variant (ASMAtomicUoDecU32). */
     {
 #ifdef IN_RC
         pVCpu->pVMRC->vmm.s.fRCLoggerFlushingDisabled = false;
@@ -165,6 +178,10 @@ VMMRZDECL(void) VMMRZCallRing3Enable(PVMCPU pVCpu)
 # endif
 #endif
     }
+
+#if defined(LOG_ENABLED) && defined(IN_RING0)
+    ASMSetFlags(fFlags);
+#endif
 }
 
 
