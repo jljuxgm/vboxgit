@@ -1,10 +1,10 @@
-/* $Id: DevPS2.cpp 49882 2013-12-12 11:01:59Z vboxsync $ */
+/* $Id: DevPS2.cpp 49886 2013-12-12 15:10:02Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -51,6 +51,10 @@
 
 #include "VBoxDD.h"
 #include "PS2Dev.h"
+
+/* Do not remove this (unless eliminating the corresponding ifdefs), it willi
+ * cause instant triple faults when booting Windows VMs. */
+#define TARGET_I386
 
 #define PCKBD_SAVED_STATE_VERSION 7
 
