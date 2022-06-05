@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 50754 2014-03-12 17:43:09Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 50774 2014-03-13 16:52:21Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1087,17 +1087,15 @@ static uint32_t vboxCVDdiSysMemElBuild(VBOXCMDVBVA_SYSMEMEL *pEl, PMDL pMdl, uin
     PFN_NUMBER cur = MmGetMdlPfnArray(pMdl)[iPfn];
     uint32_t cbEl = sizeof (*pEl);
     uint32_t cStoredPages = 1;
-    pEl->iPage = cur;
+    PFN_NUMBER next;
+    pEl->iPage1 = (uint32_t)(cur & 0xfffff);
+    pEl->iPage2 = (uint32_t)(cur >> 20);
     --cPages;
-    for ( ; cPages && cStoredPages < VBOXCMDVBVA_SYSMEMEL_CPAGES_MAX; --cPages, ++cStoredPages)
+    for ( ; cPages && cStoredPages < VBOXCMDVBVA_SYSMEMEL_CPAGES_MAX; --cPages, ++cStoredPages, cur = next;)
     {
-        PFN_NUMBER next = MmGetMdlPfnArray(pMdl)[iPfn+cStoredPages];
+        next = MmGetMdlPfnArray(pMdl)[iPfn+cStoredPages];
         if (next != cur+1)
             break;
-
-        cur = next;
-        ++cStoredPages;
-        --cPages;
     }
 
     Assert(cStoredPages);
