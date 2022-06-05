@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 53086 2014-10-17 13:56:38Z vboxsync $ */
+/* $Id: UISession.cpp 53227 2014-11-05 11:00:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1044,6 +1044,9 @@ bool UISession::prepareSession()
     m_debugger = m_console.GetDebugger();
     if (m_debugger.isNull())
         return false;
+
+    /* Update machine-name: */
+    m_strMachineName = machine().GetName();
 
     /* Update machine-state: */
     m_machineState = machine().GetState();
