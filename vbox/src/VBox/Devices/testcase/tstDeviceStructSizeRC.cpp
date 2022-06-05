@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 49173 2013-10-17 20:42:22Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 49754 2013-12-03 13:15:15Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -524,10 +524,6 @@ int main()
     GEN_CHECK_OFF(PCNETSTATE, pfnEMInterpretInstructionGC
     GEN_CHECK_OFF(PCNETSTATE, pfnEMInterpretInstructionR0
 #endif
-    GEN_CHECK_OFF(PCNETSTATE, pSharedMMIOR3);
-    GEN_CHECK_OFF(PCNETSTATE, pSharedMMIOR0);
-    GEN_CHECK_OFF(PCNETSTATE, pSharedMMIORC);
-    GEN_CHECK_OFF(PCNETSTATE, fPrivIfEnabled);
     GEN_CHECK_OFF(PCNETSTATE, fGCEnabled);
     GEN_CHECK_OFF(PCNETSTATE, fR0Enabled);
     GEN_CHECK_OFF(PCNETSTATE, fAm79C973);
