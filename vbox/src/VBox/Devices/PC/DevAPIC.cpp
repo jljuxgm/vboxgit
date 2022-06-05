@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 49442 2013-11-11 21:52:32Z vboxsync $ */
+/* $Id: DevAPIC.cpp 49548 2013-11-19 13:07:10Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  *
@@ -606,6 +606,12 @@ PDMBOTHCBDECL(void) apicSetBase(PPDMDEVINS pDevIns, VMCPUID idCpu, uint64_t val)
                 pApic->spurious_vec &= ~APIC_SV_ENABLE;
                 /* Clear any pending APIC interrupt action flag. */
                 apicCpuClearInterrupt(pDev, pApic);
+                /* See @bugref{7097}. Intel IA-32/64 Spec 10.4.3:
+                 * "When IA32_APIC_BASE[11] is 0, the processor is functionally equivalent to
+                 * an IA-32 processor without an on-chip APIC. The CPUID feature flag for the
+                 * APIC (see Section 10.4.2, 'Presence of the Local APIC') is also set to 0."
+                 */
+                pDev->CTX_SUFF(pApicHlp)->pfnChangeFeature(pDevIns, PDMAPICVERSION_NONE);
                 break;
             }
             case PDMAPICVERSION_APIC:
