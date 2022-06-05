@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 51560 2014-06-06 05:17:02Z vboxsync $ */
+/* $Id: VM.cpp 51640 2014-06-18 04:04:52Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3308,7 +3308,7 @@ static bool vmR3ValidateStateTransition(VMSTATE enmStateOld, VMSTATE enmStateNew
  */
 static void vmR3DoAtState(PVM pVM, PUVM pUVM, VMSTATE enmStateNew, VMSTATE enmStateOld)
 {
-    LogRel(("Changing the VM state from '%s' to '%s'.\n", VMR3GetStateName(enmStateOld),  VMR3GetStateName(enmStateNew)));
+    LogRel(("Changing the VM state from '%s' to '%s'\n", VMR3GetStateName(enmStateOld),  VMR3GetStateName(enmStateNew)));
 
     for (PVMATSTATE pCur = pUVM->vm.s.pAtState; pCur; pCur = pCur->pNext)
     {
