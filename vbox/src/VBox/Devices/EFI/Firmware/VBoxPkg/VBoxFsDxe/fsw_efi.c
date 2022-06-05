@@ -1,4 +1,4 @@
-/* $Id: fsw_efi.c 48730 2013-09-27 12:28:22Z vboxsync $ */
+/* $Id: fsw_efi.c 48748 2013-09-28 03:21:23Z vboxsync $ */
 /** @file
  * fsw_efi.c - EFI host environment code.
  */
@@ -281,7 +281,7 @@ static EFI_STATUS fsw_efi_ReMount(IN FSW_VOLUME_DATA *pVolume,
                                           &FSW_FSTYPE_TABLE_NAME(FSTYPE), &pVolume->vol),
                                 pVolume);
 
-    VBoxLogFlowFuncMarkVar(Status, "%r");
+    VBoxLogFlowFuncMarkRC(Status);
     if (!EFI_ERROR(Status)) {
         // register the SimpleFileSystem protocol
         pVolume->FileSystem.Revision     = EFI_FILE_IO_INTERFACE_REVISION;
