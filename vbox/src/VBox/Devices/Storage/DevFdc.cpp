@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 49881 2013-12-12 11:00:42Z vboxsync $ */
+/* $Id: DevFdc.cpp 49885 2013-12-12 14:11:23Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -2283,7 +2283,7 @@ static void fdctrl_write_data(fdctrl_t *fdctrl, uint32_t value)
         fdctrl->msr |= FD_MSR_CMDBUSY;
     }
 
-    FLOPPY_DPRINTF("%s: %02x\n", __func__, value);
+    FLOPPY_DPRINTF("%s: %02x\n", __FUNCTION__, value);
     fdctrl->fifo[fdctrl->data_pos++] = value;
     if (fdctrl->data_pos == fdctrl->data_len) {
         /* We now have all parameters
