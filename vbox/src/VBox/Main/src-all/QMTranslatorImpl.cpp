@@ -1,4 +1,4 @@
-/* $Id: QMTranslatorImpl.cpp 52559 2014-09-01 17:10:15Z vboxsync $ */
+/* $Id: QMTranslatorImpl.cpp 52901 2014-09-30 15:32:03Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -54,7 +54,7 @@ class QMBytesStream
     {
         return RT_BE2H_U16(value);
     }
-    
+
 public:
 
     QMBytesStream(const uint8_t *const dataStart, size_t cbSize) :
@@ -410,7 +410,7 @@ int QMTranslator::load(const char *pszFilename) throw()
         bool isSuccess() { return RT_SUCCESS(rc); }
     };
 
-    try 
+    try
     {
         FileLoader loader(pszFilename);
         if (loader.isSuccess())

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 52319 2014-08-08 10:13:28Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 52901 2014-09-30 15:32:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1871,7 +1871,6 @@ HRESULT Console::i_doEnumerateGuestProperties(const Utf8Str &aPatterns,
        ++cEntries;
     }
 
-    
     aNames.resize(cEntries);
     aValues.resize(cEntries);
     aTimestamps.resize(cEntries);
