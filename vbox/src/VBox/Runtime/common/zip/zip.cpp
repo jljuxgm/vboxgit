@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: zip.cpp 49233 2013-10-22 14:56:22Z vboxsync $ */
 /** @file
  * IPRT - Compression.
  */
@@ -1947,7 +1947,7 @@ RTDECL(int) RTZipBlockDecompress(RTZIPTYPE enmType, uint32_t fFlags,
                 return zipErrConvertFromZlib(rc, false /*fCompressing*/);
 
             if (pcbSrcActual)
-                *pcbSrcActual = ZStrm.avail_in - cbSrc;
+                *pcbSrcActual = cbSrc - ZStrm.avail_in;
             if (pcbDstActual)
                 *pcbDstActual = ZStrm.total_out;
             break;
