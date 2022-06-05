@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 51520 2014-06-04 05:17:41Z vboxsync $ */
+/* $Id: DevSmc.cpp 52507 2014-08-27 14:18:38Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Manaagement Controller.
  *
@@ -1161,6 +1161,7 @@ static const struct
     /* [0x0d] = */ { smcRegFF_w,       smcRegFF_r },
     /* [0x0e] = */ { smcRegFF_w,       smcRegFF_r },
     /* [0x0f] = */ { smcRegFF_w,       smcRegFF_r },
+    /* [0x10] = */ { smcRegGen_w,      smcRegGen_r },
     /* [0x11] = */ { smcRegGen_w,      smcRegGen_r },
     /* [0x12] = */ { smcRegGen_w,      smcRegGen_r },
     /* [0x13] = */ { smcRegGen_w,      smcRegGen_r },
