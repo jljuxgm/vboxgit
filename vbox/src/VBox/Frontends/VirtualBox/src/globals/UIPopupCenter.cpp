@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 49267 2013-10-23 18:57:04Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 50138 2014-01-21 13:00:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -294,9 +294,10 @@ void UIPopupCenter::showPopupPane(QWidget *pParent, const QString &strPopupPaneI
             buttonDescriptions[iButton1] = strButtonText1;
         if (iButton2 != 0)
             buttonDescriptions[iButton2] = strButtonText2;
+        if (fProposeAutoConfirmation)
+            buttonDescriptions[AlertButton_Cancel | AlertOption_AutoConfirmed] = QString();
         /* Create new one: */
-        pPopupStack->createPopupPane(strPopupPaneID, strMessage, strDetails,
-                                     buttonDescriptions, fProposeAutoConfirmation);
+        pPopupStack->createPopupPane(strPopupPaneID, strMessage, strDetails, buttonDescriptions);
     }
 
     /* Show popup-stack: */

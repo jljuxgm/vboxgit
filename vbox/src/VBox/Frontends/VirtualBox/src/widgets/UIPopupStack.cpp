@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 47693 2013-08-13 13:09:31Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 50138 2014-01-21 13:00:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,14 +49,12 @@ bool UIPopupStack::exists(const QString &strPopupPaneID) const
 
 void UIPopupStack::createPopupPane(const QString &strPopupPaneID,
                                    const QString &strMessage, const QString &strDetails,
-                                   const QMap<int, QString> &buttonDescriptions,
-                                   bool fProposeAutoConfirmation)
+                                   const QMap<int, QString> &buttonDescriptions)
 {
     /* Redirect request to viewport: */
     m_pScrollViewport->createPopupPane(strPopupPaneID,
                                        strMessage, strDetails,
-                                       buttonDescriptions,
-                                       fProposeAutoConfirmation);
+                                       buttonDescriptions);
 
     /* Propagate width: */
     propagateWidth();
