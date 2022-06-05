@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 52385 2014-08-14 16:40:36Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 52658 2014-09-09 16:02:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1261,6 +1261,13 @@ void UIIndicatorsPool::cleanup()
     cleanupUpdateTimer();
     /* Cleanup indicators: */
     cleanupContents();
+}
+
+void UIIndicatorsPool::contextMenuEvent(QContextMenuEvent *pEvent)
+{
+    /* Do not pass-through context menu events,
+     * otherwise they will raise the underlying status-bar context-menu. */
+    pEvent->accept();
 }
 
 int UIIndicatorsPool::indicatorPosition(IndicatorType indicatorType) const
