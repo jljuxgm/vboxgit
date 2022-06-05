@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 51894 2014-07-06 22:05:09Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -36,6 +36,7 @@ PROGRAMS += tstSDL
 #
 VBoxSDLHardened_TEMPLATE = VBOXR3HARDENEDEXE
 VBoxSDLHardened_SOURCES = VBoxSDLHardened.cpp
+VBoxSDLHardened_SOURCES.win = $(VBoxSDL_0_OUTDIR)/VBoxSDL-icon.rc
 VBoxSDLHardened_NAME = VBoxSDL
 
 
