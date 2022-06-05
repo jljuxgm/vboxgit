@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 46375 2013-06-04 09:51:08Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 50349 2014-02-06 15:01:52Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -1134,6 +1134,7 @@ static NTSTATUS vboxUsbRtUrbSendCompletion(PDEVICE_OBJECT pDevObj, IRP *pIrp, vo
                 Status = STATUS_SUCCESS;
                 break;
             case USBD_STATUS_DEV_NOT_RESPONDING:
+            case USBD_STATUS_DEVICE_GONE:
                 pUrbInfo->error = USBSUP_XFER_DNR;
                 Status = STATUS_SUCCESS;
                 break;
