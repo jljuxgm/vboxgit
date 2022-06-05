@@ -1,4 +1,4 @@
-/* $Id: rtmemlocked-posix.cpp 51075 2014-04-15 11:57:27Z vboxsync $ */
+/* $Id: rtmemlocked-posix.cpp 51076 2014-04-15 11:58:28Z vboxsync $ */
 /** @file
  * IPRT - RTMemLocked*, POSIX.
  */
@@ -39,7 +39,7 @@
 
 #include <sys/types.h>
 #include <sys/mman.h>
-#include <sys/errno.h>
+#include <errno.h>
 #if !defined(MAP_ANONYMOUS) && defined(MAP_ANON)
 # define MAP_ANONYMOUS MAP_ANON
 #endif
