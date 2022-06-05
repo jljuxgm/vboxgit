@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 51333 2014-05-22 04:42:22Z vboxsync $ */
+/* $Id: GIMAll.cpp 51367 2014-05-23 07:45:35Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -80,6 +80,7 @@ VMM_INT_DECL(int) GIMHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
  */
 VMM_INT_DECL(int) GIMReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue)
 {
+    Assert(pVCpu);
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     Assert(GIMIsEnabled(pVM));
     VMCPU_ASSERT_EMT(pVCpu);
@@ -108,6 +109,7 @@ VMM_INT_DECL(int) GIMReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange
  */
 VMM_INT_DECL(int) GIMWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t uValue, uint64_t uRawValue)
 {
+    Assert(pVCpu);
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     Assert(GIMIsEnabled(pVM));
     VMCPU_ASSERT_EMT(pVCpu);

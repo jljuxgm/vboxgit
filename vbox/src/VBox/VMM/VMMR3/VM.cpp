@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 50953 2014-04-02 14:47:00Z vboxsync $ */
+/* $Id: VM.cpp 51367 2014-05-23 07:45:35Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -988,8 +988,8 @@ static int vmR3InitRing3(PVM pVM, PUVM pUVM)
                                                                     rc = PDMR3Init(pVM);
                                                                     if (RT_SUCCESS(rc))
                                                                     {
-                                                                        /* GIM must be init'd after PDM, relies on PDMR3 for
-                                                                           symbol resolution.*/
+                                                                        /* GIM must be init'd after PDM, may rely on PDMR3 for
+                                                                           symbol resolution. */
                                                                         rc = GIMR3Init(pVM);
                                                                         if (RT_SUCCESS(rc))
                                                                         {

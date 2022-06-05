@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 51333 2014-05-22 04:42:22Z vboxsync $ */
+/* $Id: GIM.cpp 51367 2014-05-23 07:45:35Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -115,7 +115,7 @@ VMMR3_INT_DECL(int) GIMR3Init(PVM pVM)
     /*
      * Setup the GIM provider for this VM.
      */
-    LogRel(("GIM: Using provider \"%s\" version %u\n", szProvider, uVersion));
+    LogRel(("GIM: Using provider \"%s\" (Implementation version: %u)\n", szProvider, uVersion));
     if (!RTStrCmp(szProvider, "None"))
     {
         Assert(!pVM->gim.s.fEnabled);
@@ -142,7 +142,6 @@ VMMR3_INT_DECL(int) GIMR3Init(PVM pVM)
             rc = VERR_NOT_SUPPORTED;
         }
     }
-
     return rc;
 }
 
