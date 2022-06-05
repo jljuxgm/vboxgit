@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 49009 2013-10-09 15:06:13Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 49177 2013-10-18 11:48:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -62,7 +62,7 @@ UIMachineViewFullscreen::~UIMachineViewFullscreen()
 
 void UIMachineViewFullscreen::sltAdditionsStateChanged()
 {
-    normalizeGeometry(false);
+    maybeAdjustGuestScreenSize();
 }
 
 bool UIMachineViewFullscreen::eventFilter(QObject *pWatched, QEvent *pEvent)
@@ -135,7 +135,8 @@ void UIMachineViewFullscreen::setGuestAutoresizeEnabled(bool fEnabled)
     }
 }
 
-void UIMachineViewFullscreen::normalizeGeometry(bool /* fAdjustPosition */)
+/** Adjusts guest screen size to correspond current <i>working area</i> size. */
+void UIMachineViewFullscreen::maybeAdjustGuestScreenSize()
 {
     /* Check if we should adjust guest to new size: */
     if ((int)frameBuffer()->width() != workingArea().size().width() ||

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 49048 2013-10-11 07:45:09Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 49177 2013-10-18 11:48:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -268,6 +268,13 @@ UIMachineWindow* UIMachineLogic::activeMachineWindow() const
 
     /* Return main machine window: */
     return mainMachineWindow();
+}
+
+/** Adjusts guest screen size for each the machine-window we have. */
+void UIMachineLogic::maybeAdjustGuestScreenSize()
+{
+    foreach(UIMachineWindow *pMachineWindow, machineWindows())
+        pMachineWindow->machineView()->maybeAdjustGuestScreenSize();
 }
 
 #ifdef Q_WS_MAC
@@ -1119,8 +1126,8 @@ void UIMachineLogic::sltAdjustWindow()
         if (pMachineWindow->isMaximized())
             pMachineWindow->showNormal();
 
-        /* Normalize view's geometry: */
-        pMachineWindow->machineView()->normalizeGeometry(true);
+        /* Normalize window geometry: */
+        pMachineWindow->normalizeGeometry(true);
     }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 49167 2013-10-17 18:17:16Z vboxsync $ */
+/* $Id: UIMachineView.cpp 49177 2013-10-18 11:48:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -274,7 +274,7 @@ void UIMachineView::sltHandleRequestResize(int iPixelFormat, uchar *pVRAM,
 
             /* Normalize machine-window geometry: */
             if (visualStateType() == UIVisualStateType_Normal)
-                normalizeGeometry(true /* Adjust Position? */);
+                machineWindow()->normalizeGeometry(true /* adjust position */);
         }
     }
 
