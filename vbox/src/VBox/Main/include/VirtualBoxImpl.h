@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 48297 2013-09-05 09:57:44Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 48709 2013-09-26 13:43:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -225,6 +225,9 @@ public:
                                  IN_BSTR aRuleName, NATProtocol_T proto,
                                  IN_BSTR aHostIp, LONG aHostPort,
                                  IN_BSTR aGuestIp, LONG aGuestPort);
+    
+    int natNetworkRefInc(IN_BSTR aNetworkName);
+    int natNetworkRefDec(IN_BSTR aNetworkName);
 
     ComObjPtr<GuestOSType> getUnknownOSType();
 
@@ -359,6 +362,8 @@ private:
     static ULONG sRevision;
     static Bstr sPackageType;
     static Bstr sAPIVersion;
+    static std::map<Bstr, int> sNatNetworkNameToRefCount;
+    static RWLockHandle* spMtxNatNetworkNameToRefCountLock;
 
     static DECLCALLBACK(int) AsyncEventHandler(RTTHREAD thread, void *pvUser);
 
