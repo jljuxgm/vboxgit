@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 48720 2013-09-26 15:56:16Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 48722 2013-09-27 08:01:03Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles
  *                             the forked session processes.
@@ -153,7 +153,7 @@ static int gstcntlSessionHandleFileOpen(PVBOXSERVICECTRLSESSION pSession,
 #endif
     if (RT_SUCCESS(rc))
     {
-        PVBOXSERVICECTRLFILE pFile = (PVBOXSERVICECTRLFILE)RTMemAlloc(sizeof(VBOXSERVICECTRLFILE));
+        PVBOXSERVICECTRLFILE pFile = (PVBOXSERVICECTRLFILE)RTMemAllocZ(sizeof(VBOXSERVICECTRLFILE));
         if (pFile)
         {
             if (!strlen(szFile))
@@ -198,7 +198,11 @@ static int gstcntlSessionHandleFileOpen(PVBOXSERVICECTRLSESSION pSession,
             }
 
             if (RT_FAILURE(rc))
+            {
+                if (pFile->hFile)
+                    RTFileClose(pFile->hFile);
                 RTMemFree(pFile);
+            }
         }
         else
             rc = VERR_NO_MEMORY;
