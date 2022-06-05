@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51986 2014-07-11 13:03:14Z vboxsync $
+# $Id: Config.kmk 52194 2014-07-25 15:20:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5217,7 +5217,10 @@ TEMPLATE_NewVBoxGuestR3Exe_LIBS     = \
 TEMPLATE_VBOXGUESTR3DLL           = VBox Guest User Dynamic Libraries
 TEMPLATE_VBOXGUESTR3DLL_EXTENDS   = VBOXGUESTR3EXE
 ## @todo add a INSTFUN that separates dlls and libs.
-ifn1of ($(KBUILD_TARGET), darwin os2 win)
+if1of ($(KBUILD_TARGET), linux)
+ TEMPLATE_VBOXGUESTR3DLL_CFLAGS   = $(TEMPLATE_VBOXGUESTR3EXE_CFLAGS) -fPIC -ffunction-sections
+ TEMPLATE_VBOXGUESTR3DLL_CXXFLAGS = $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS) -fPIC -ffunction-sections
+else ifn1of ($(KBUILD_TARGET), darwin os2 win)
  TEMPLATE_VBOXGUESTR3DLL_DEFS     = $(TEMPLATE_VBOXGUESTR3EXE_DEFS) PIC
  TEMPLATE_VBOXGUESTR3DLL_CFLAGS   = $(TEMPLATE_VBOXGUESTR3EXE_CFLAGS) -fPIC
  TEMPLATE_VBOXGUESTR3DLL_CXXFLAGS = $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS) -fPIC -fno-exceptions
@@ -5364,7 +5367,7 @@ TEMPLATE_VBOXGUESTR3XORGMOD_LIBS.$(KBUILD_TYPE)     = $(NO_SUCH_VARIABLE)
 TEMPLATE_VBOXGUESTR3XORGMOD_LIBS.$(KBUILD_TARGET)   = $(NO_SUCH_VARIABLE)
 TEMPLATE_VBOXGUESTR3XORGMOD_CFLAGS                  = $(TEMPLATE_VBOXGUESTR3DLL_CFLAGS) -std=c99
 if1of ($(KBUILD_TARGET), linux)
- TEMPLATE_VBOXGUESTR3XORGMOD_CFLAGS                += -Wno-conversion -Wno-unused-parameter
+ TEMPLATE_VBOXGUESTR3XORGMOD_CFLAGS                += -Wno-conversion -Wno-unused-parameter -ffunction-sections
  ifeq ($(VBOX_WITH_COMPATIBLE_LINUX_GUEST_PACKAGE),)
   TEMPLATE_VBOXGUESTR3XORGMOD_CFLAGS               += $(VBOX_GCC_Wno-variadic-macros)
  endif
@@ -5374,7 +5377,7 @@ ifeq ($(KBUILD_TARGET_ARCH),amd64)
  TEMPLATE_VBOXGUESTR3XORGMOD_DEFS += _XSERVER64
 endif
 if1of ($(KBUILD_TARGET), linux)
- TEMPLATE_VBOXGUESTR3XORGMOD_LDFLAGS = $(TEMPLATE_VBOXGUESTR3DLL_LDFLAGS)
+ TEMPLATE_VBOXGUESTR3XORGMOD_LDFLAGS = $(TEMPLATE_VBOXGUESTR3DLL_LDFLAGS) -Wl,-gc-sections
 endif
 TEMPLATE_VBOXGUESTR3XORGMOD_LIBS = \
 	$(VBOX_LIB_VBGL_R3_SHARED) \
@@ -5711,7 +5714,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51986 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52194 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
