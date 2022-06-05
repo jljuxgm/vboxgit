@@ -1,4 +1,4 @@
-/* $Id: VBoxSettingsSelector.cpp 51287 2014-05-19 12:16:11Z vboxsync $ */
+/* $Id: VBoxSettingsSelector.cpp 51937 2014-07-08 16:01:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -378,7 +378,7 @@ VBoxSettingsToolBarSelector::VBoxSettingsToolBarSelector (QWidget *aParent /* = 
 {
     /* Init the toolbar */
     mTbSelector = new UIToolBar (aParent);
-    mTbSelector->setUsesTextLabel (true);
+    mTbSelector->setUseTextLabels (true);
     mTbSelector->setIconSize (QSize (32, 32));
 #ifdef Q_WS_MAC
     mTbSelector->setShowToolBarButton (false);

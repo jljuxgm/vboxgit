@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 47193 2013-07-16 14:16:44Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 51937 2014-07-08 16:01:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -101,7 +101,6 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
             this, SLOT(sltShowContextMenu(const QPoint&)));
 
     /* Setup tool-bar: */
-    m_pPackagesToolbar->setUsesTextLabel(false);
     m_pPackagesToolbar->setIconSize(QSize(16, 16));
     m_pPackagesToolbar->setOrientation(Qt::Vertical);
     m_pActionAdd = m_pPackagesToolbar->addAction(UIIconPool::iconSet(":/extension_pack_install_16px.png",

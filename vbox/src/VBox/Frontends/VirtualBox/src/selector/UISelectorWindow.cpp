@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 51931 2014-07-08 13:20:51Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 51937 2014-07-08 16:01:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -120,7 +120,7 @@ UISelectorWindow::UISelectorWindow(UISelectorWindow **ppSelf, QWidget *pParent,
     /* Enable unified toolbars on Mac OS X. Available on Qt >= 4.3.
      * We do this after setting the window pos/size, cause Qt sometimes
      * includes the toolbar height in the content height. */
-    mVMToolBar->setMacToolbar();
+    mVMToolBar->enableMacToolbar();
 # endif /* MAC_LEOPARD_STYLE */
 
     UIWindowMenuManager::instance()->addWindow(this);

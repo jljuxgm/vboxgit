@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 47149 2013-07-15 10:02:57Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 51937 2014-07-08 16:01:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -187,7 +187,6 @@ UIMachineSettingsSF::UIMachineSettingsSF()
                                             ":/sf_remove_disabled_16px.png"));
 
     /* Prepare tool-bar: */
-    m_pFoldersToolBar->setUsesTextLabel(false);
     m_pFoldersToolBar->setIconSize(QSize(16, 16));
     m_pFoldersToolBar->setOrientation(Qt::Vertical);
     m_pFoldersToolBar->addAction(mNewAction);

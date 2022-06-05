@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 51267 2014-05-15 19:01:07Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 51937 2014-07-08 16:01:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1151,7 +1151,7 @@ void UIMediumManager::prepareToolBar()
 #if MAC_LEOPARD_STYLE
         /* Enable unified tool-bars on Mac OS X. Available on Qt >= 4.3: */
         addToolBar(m_pToolBar);
-        m_pToolBar->setMacToolbar();
+        m_pToolBar->enableMacToolbar();
         /* No spacing/margin on the Mac: */
         pMainLayout->setContentsMargins(0, 0, 0, 0);
         pMainLayout->insertSpacing(0, 10);

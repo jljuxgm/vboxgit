@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 51287 2014-05-19 12:16:11Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 51937 2014-07-08 16:01:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -84,7 +84,7 @@ UISettingsDialog::UISettingsDialog(QWidget *pParent)
     m_pLbTitle->hide();
     /* Create modern tool-bar selector: */
     m_pSelector = new VBoxSettingsToolBarSelector(this);
-    static_cast<UIToolBar*>(m_pSelector->widget())->setMacToolbar();
+    static_cast<UIToolBar*>(m_pSelector->widget())->enableMacToolbar();
     addToolBar(qobject_cast<QToolBar*>(m_pSelector->widget()));
     /* No title in this mode, we change the title of the window: */
     pMainLayout->setColumnMinimumWidth(0, 0);
