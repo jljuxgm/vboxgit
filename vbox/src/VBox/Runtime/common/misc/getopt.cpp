@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 46489 2013-06-11 03:24:29Z vboxsync $ */
+/* $Id: getopt.cpp 49326 2013-10-30 04:33:40Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -110,8 +110,6 @@ static int rtgetoptConvertIPv4Addr(const char *pszValue, PRTNETADDRIPV4 pAddr)
 /**
  * Converts an stringified Ethernet MAC address into the RTMAC representation.
  *
- * @todo This should be move to some generic part of the runtime.
- *
  * @returns VINF_SUCCESS on success, VERR_GETOPT_INVALID_ARGUMENT_FORMAT on
  *          failure.
  *
@@ -120,42 +118,9 @@ static int rtgetoptConvertIPv4Addr(const char *pszValue, PRTNETADDRIPV4 pAddr)
  */
 static int rtgetoptConvertMacAddr(const char *pszValue, PRTMAC pAddr)
 {
-    /*
-     * Not quite sure if I should accept stuff like "08::27:::1" here...
-     * The code is accepting "::" patterns now, except for for the first
-     * and last parts.
-     */
 
-    /* first */
-    char *pszNext;
-    int rc = RTStrToUInt8Ex(RTStrStripL(pszValue), &pszNext, 16, &pAddr->au8[0]);
-    if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_CHARS)
-        return VERR_GETOPT_INVALID_ARGUMENT_FORMAT;
-    if (*pszNext++ != ':')
-        return VERR_GETOPT_INVALID_ARGUMENT_FORMAT;
-
-    /* middle */
-    for (unsigned i = 1; i < 5; i++)
-    {
-        if (*pszNext == ':')
-            pAddr->au8[i] = 0;
-        else
-        {
-            rc = RTStrToUInt8Ex(pszNext, &pszNext, 16, &pAddr->au8[i]);
-            if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_CHARS)
-                return VERR_GETOPT_INVALID_ARGUMENT_FORMAT;
-            if (*pszNext != ':')
-                return VERR_GETOPT_INVALID_ARGUMENT_FORMAT;
-        }
-        pszNext++;
-    }
-
-    /* last */
-    rc = RTStrToUInt8Ex(pszNext, &pszNext, 16, &pAddr->au8[5]);
-    if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_SPACES)
-        return VERR_GETOPT_INVALID_ARGUMENT_FORMAT;
-    pszNext = RTStrStripL(pszNext);
-    if (*pszNext)
+    int rc = RTNetStrToMacAddr(pszValue, pAddr);
+    if (RT_FAILURE(rc))
         return VERR_GETOPT_INVALID_ARGUMENT_FORMAT;
 
     return VINF_SUCCESS;
