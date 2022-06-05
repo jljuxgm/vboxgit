@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 47846 2013-08-19 15:27:57Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 47998 2013-08-22 15:46:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -552,7 +552,7 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
 #endif /* Q_WS_MAC */
 
     /* Allow to reset first-run flag just when medium enumeration was finished: */
-    connect(&vboxGlobal(), SIGNAL(mediumEnumFinished(const VBoxMediaList &)), this, SLOT(sltAllowResetFirstRunFlag()));
+    connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationFinished(const VBoxMediaList &)), this, SLOT(sltAllowResetFirstRunFlag()));
 
     /* Get corresponding machine (required to determine dialog type and page availability): */
     m_machine = vboxGlobal().virtualBox().FindMachine(m_strMachineId);

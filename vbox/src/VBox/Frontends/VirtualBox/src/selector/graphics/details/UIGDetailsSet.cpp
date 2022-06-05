@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 47401 2013-07-25 19:12:24Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 47998 2013-08-22 15:46:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -345,8 +345,8 @@ void UIGDetailsSet::prepareConnections()
     connect(gVBoxEvents, SIGNAL(sigSnapshotChange(QString, QString)), this, SLOT(sltMachineAttributesChange(QString)));
 
     /* Meidum-enumeration connections: */
-    connect(&vboxGlobal(), SIGNAL(mediumEnumStarted()), this, SLOT(sltUpdateAppearance()));
-    connect(&vboxGlobal(), SIGNAL(mediumEnumFinished(const VBoxMediaList &)), this, SLOT(sltUpdateAppearance()));
+    connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationStarted()), this, SLOT(sltUpdateAppearance()));
+    connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationFinished(const VBoxMediaList &)), this, SLOT(sltUpdateAppearance()));
 }
 
 int UIGDetailsSet::minimumWidthHint() const

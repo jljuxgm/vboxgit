@@ -1,4 +1,4 @@
-/* $Id: VBoxVMInformationDlg.cpp 47774 2013-08-15 15:13:01Z vboxsync $ */
+/* $Id: VBoxVMInformationDlg.cpp 47998 2013-08-22 15:46:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -115,7 +115,7 @@ VBoxVMInformationDlg::VBoxVMInformationDlg (UIMachineWindow *pMachineWindow, Qt:
      * more than one screens. */
     connect (pMachineWindow->machineView(), SIGNAL (resizeHintDone()), this, SLOT (processStatistics()));
     connect (mInfoStack, SIGNAL (currentChanged (int)), this, SLOT (onPageChanged (int)));
-    connect (&vboxGlobal(), SIGNAL (mediumEnumFinished (const VBoxMediaList &)), this, SLOT (updateDetails()));
+    connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationFinished(const VBoxMediaList&)), this, SLOT(updateDetails()));
     connect (mStatTimer, SIGNAL (timeout()), this, SLOT (processStatistics()));
 
     /* Loading language constants */
