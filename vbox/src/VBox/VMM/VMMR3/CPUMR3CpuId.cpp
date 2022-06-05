@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 50019 2014-01-03 13:09:08Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 50087 2014-01-16 18:15:44Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -887,7 +887,27 @@ VMMR3DECL(int) CPUMR3CpuIdCollectLeaves(PCPUMCPUIDLEAF *ppaLeaves, uint32_t *pcL
                     && cpumR3IsEcxRelevantForCpuIdLeaf(uLeaf, &cSubLeaves, &fFinalEcxUnchanged))
                 {
                     if (cSubLeaves > 16)
+                    {
+                        /* This shouldn't happen.  But in case it does, file all
+                           relevant details in the release log. */
+                        LogRel(("CPUM: VERR_CPUM_TOO_MANY_CPUID_SUBLEAVES! uLeaf=%#x cSubLeaves=%#x\n", uLeaf, cSubLeaves));
+                        LogRel(("------------------ dump of problematic subleaves ------------------\n"));
+                        for (uint32_t uSubLeaf = 0; uSubLeaf < 128; uSubLeaf++)
+                        {
+                            uint32_t auTmp[4];
+                            ASMCpuIdExSlow(uLeaf, 0, uSubLeaf, 0, &auTmp[0], &auTmp[1], &auTmp[2], &auTmp[3]);
+                            LogRel(("CPUM: %#010x, %#010x => %#010x %#010x %#010x %#010x\n",
+                                    uLeaf, uSubLeaf, auTmp[0], auTmp[1], auTmp[2], auTmp[3]));
+                        }
+                        LogRel(("----------------- dump of what we've found so far -----------------\n"));
+                        for (uint32_t i = 0 ; i < *pcLeaves; i++)
+                            LogRel(("CPUM: %#010x, %#010x/%#010x => %#010x %#010x %#010x %#010x\n",
+                                    (*ppaLeaves)[i].uLeaf, (*ppaLeaves)[i].uSubLeaf,  (*ppaLeaves)[i].fSubLeafMask,
+                                    (*ppaLeaves)[i].uEax, (*ppaLeaves)[i].uEbx, (*ppaLeaves)[i].uEcx, (*ppaLeaves)[i].uEdx));
+                        LogRel(("\nPlease create a defect on virtualbox.org and attach this log file!\n\n"));
                         return VERR_CPUM_TOO_MANY_CPUID_SUBLEAVES;
+                    }
+
                     for (uint32_t uSubLeaf = 0; uSubLeaf < cSubLeaves; uSubLeaf++)
                     {
                         ASMCpuIdExSlow(uLeaf, 0, uSubLeaf, 0, &uEax, &uEbx, &uEcx, &uEdx);
