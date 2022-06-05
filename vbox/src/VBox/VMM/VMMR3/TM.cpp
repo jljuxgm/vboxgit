@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 53307 2014-11-11 18:38:12Z vboxsync $ */
+/* $Id: TM.cpp 53326 2014-11-14 13:52:40Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -351,7 +351,8 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
          * switching between offsetted mode and taking VM exits, on all VCPUs
          * without any kind of coordination) it will lead to inconsistent TSC
          * behavior with guest SMP, including TSC going backwards. */
-        if (pVM->cCpus != 1)
+        if (   pVM->cCpus != 1
+            && !pVM->tm.s.fTSCUseRealTSC)
             pVM->tm.s.fMaybeUseOffsettedHostTSC = false;
     }
 
