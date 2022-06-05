@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 47894 2013-08-20 11:37:09Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 48098 2013-08-27 17:08:10Z vboxsync $ */
 
 /** @file
  *
@@ -129,6 +129,7 @@ public:
 
 private:
     int RecalculateIpv4AddressAssignments();
+    int findFirstAvailableOffset(uint32_t *);
 
     typedef std::map<Utf8Str, settings::NATRule> NATRuleMap;
     typedef NATRuleMap::const_iterator constNATRuleMapIterator;
