@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 52226 2014-07-29 12:53:58Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 52329 2014-08-08 18:34:02Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -2770,6 +2770,8 @@ DxgkDdiDestroyAllocation(
         vboxWddmAllocationCleanupAssignment(pDevExt, pAlloc);
         /* wait for all current allocation-related ops are completed */
         vboxWddmAllocationCleanup(pDevExt, pAlloc);
+        if (pAlloc->hSharedHandle && pAlloc->AllocData.hostID)
+            VBoxVdmaChromiumParameteriCRSubmit(pDevExt, GL_PIN_TEXTURE_CLEAR_CR, pAlloc->AllocData.hostID);
         vboxWddmAllocationDestroy(pAlloc);
     }
 
