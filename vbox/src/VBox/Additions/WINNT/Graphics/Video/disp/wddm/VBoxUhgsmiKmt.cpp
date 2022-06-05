@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.cpp 49332 2013-10-30 13:13:02Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -70,8 +70,8 @@ DECLCALLBACK(int) vboxUhgsmiKmtBufferLock(PVBOXUHGSMI_BUFFER pBuf, uint32_t offL
 
     EnterCriticalSection(&pBuffer->CritSect);
 
-    int rc = vboxUhgsmiBaseLockData(pBuf, offLock, cbLock, fFlags,
-                                         &DdiLock.Flags, &DdiLock.NumPages, pBuffer->aLockPageIndices);
+    int rc = vboxUhgsmiBaseDxLockData(&pBuffer->BasePrivate, offLock, cbLock, fFlags,
+                                         &DdiLock.Flags, &DdiLock.NumPages);
     AssertRC(rc);
     if (RT_FAILURE(rc))
         return rc;
@@ -193,7 +193,7 @@ DECLCALLBACK(int) vboxUhgsmiKmtBufferSubmit(PVBOXUHGSMI pHgsmi, PVBOXUHGSMI_BUFF
 {
     PVBOXUHGSMI_PRIVATE_KMT pHg = VBOXUHGSMIKMT_GET(pHgsmi);
     UINT cbDmaCmd = pHg->Context.CommandBufferSize;
-    int rc = vboxUhgsmiBaseDmaFill(aBuffers, cBuffers,
+    int rc = vboxUhgsmiBaseDxDmaFill(aBuffers, cBuffers,
             pHg->Context.pCommandBuffer, &cbDmaCmd,
             pHg->Context.pAllocationList, pHg->Context.AllocationListSize,
             pHg->Context.pPatchLocationList, pHg->Context.PatchLocationListSize);
