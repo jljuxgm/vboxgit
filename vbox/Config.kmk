@@ -1,4 +1,4 @@
-# $Id: Config.kmk 48444 2013-09-12 09:54:33Z vboxsync $
+# $Id: Config.kmk 48479 2013-09-15 21:53:12Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5490,7 +5490,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48444 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48479 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -5608,13 +5608,18 @@ else
  	$(VBOX_JAVA_HOME)/include/$(VBOX_MD_OS)
 endif
 
-ifeq ($(KBUILD_TARGET), win)
-  VBOX_SEP=\;
+
+#
+# VBOX_SEP needs to be quoted when used on the shell command line.
+#
+if1of ($(KBUILD_TARGET), os2 win)
+ VBOX_SEP = $(SEMICOLON)
 else
-  VBOX_SEP=:
+ VBOX_SEP = $(COLON)
 endif
 VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 1.5 -target 1.5 -Xlint:unchecked
 VBOX_JAVADOC_OPTS = -encoding UTF-8
+
 
 #
 # Legacy.
