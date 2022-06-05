@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 50945 2014-04-01 15:16:22Z vboxsync $ */
+/* $Id: ConsoleImpl.h 51008 2014-04-09 09:20:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -330,7 +330,7 @@ private:
     class AutoVMCallerBase
     {
     public:
-        AutoVMCallerBase(Console *aThat) : mThat(aThat), mRC(S_OK)
+        AutoVMCallerBase(Console *aThat) : mThat(aThat), mRC(E_FAIL)
         {
             Assert(aThat);
             mRC = aThat->addVMCaller(taQuiet, taAllowNullVM);
@@ -427,7 +427,7 @@ private:
     {
         typedef AutoVMCallerBase<taQuiet, true> Base;
     public:
-        SafeVMPtrBase(Console *aThat) : Base(aThat), mRC(S_OK), mpUVM(NULL)
+        SafeVMPtrBase(Console *aThat) : Base(aThat), mRC(E_FAIL), mpUVM(NULL)
         {
             if (Base::isOk())
                 mRC = aThat->safeVMPtrRetainer(&mpUVM, taQuiet);
