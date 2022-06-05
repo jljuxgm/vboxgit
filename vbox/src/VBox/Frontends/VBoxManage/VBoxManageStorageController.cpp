@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 49190 2013-10-18 15:26:52Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 51259 2014-05-15 14:44:19Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -551,7 +551,7 @@ int handleStorageAttach(HandlerArg *a)
 
             // find the medium given
             /* host drive? */
-            if (!RTStrNICmp(pszMedium, "host:", 5))
+            if (!RTStrNICmp(pszMedium, RT_STR_TUPLE("host:")))
             {
                 ComPtr<IHost> host;
                 CHECK_ERROR(a->virtualBox, COMGETTER(Host)(host.asOutParam()));
