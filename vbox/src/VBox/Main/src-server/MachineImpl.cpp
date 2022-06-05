@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 51506 2014-06-03 09:28:52Z vboxsync $ */
+/* $Id: MachineImpl.cpp 51512 2014-06-03 14:25:50Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5391,8 +5391,8 @@ HRESULT Machine::i_getGuestPropertyFromVM(const com::Utf8Str &aName,
                                           com::Utf8Str &aFlags) const
 {
     HRESULT rc = S_OK;
-    BSTR bValue;
-    BSTR bFlags;
+    BSTR bValue = NULL;
+    BSTR bFlags = NULL;
 
     ComPtr<IInternalSessionControl> directControl;
     directControl = mData->mSession.mDirectControl;
