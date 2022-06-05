@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 47991 2013-08-22 14:31:52Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 48004 2013-08-22 17:58:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -102,6 +102,7 @@ HRESULT SystemProperties::init(VirtualBox *aParent)
     /* On Windows and OS X, HW virtualization use isn't exclusive by
      * default so that VT-x or AMD-V can be shared with other
      * hypervisors without requiring user intervention.
+     * NB: See also SystemProperties constructor in settings.h
      */
 #if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
     m->fExclusiveHwVirt = false;
