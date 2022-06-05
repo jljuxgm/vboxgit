@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48482 2013-09-16 03:10:07Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48873 2013-10-04 04:02:00Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -230,7 +230,7 @@ STDMETHODIMP VBoxNetLwipNAT::HandleEvent(VBoxEventType_T aEventType,
             hrc = pfEvt->COMGETTER(GuestIp)(strGuestAddr.asOutParam());
             AssertReturn(SUCCEEDED(hrc), hrc);
 
-            hrc = pfEvt->COMGETTER(HostPort)(&lGuestPort);
+            hrc = pfEvt->COMGETTER(GuestPort)(&lGuestPort);
             AssertReturn(SUCCEEDED(hrc), hrc);
           
             hrc = pfEvt->COMGETTER(Create)(&fCreateFW);
