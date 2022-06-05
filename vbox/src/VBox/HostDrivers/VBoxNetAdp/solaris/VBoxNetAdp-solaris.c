@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 48952 2013-10-07 21:54:31Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 50525 2014-02-20 13:35:15Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -64,7 +64,6 @@
 #define DEVICE_NAME              "vboxnet"
 /** The module descriptions as seen in 'modinfo'. */
 #define DEVICE_DESC_DRV          "VirtualBox NetAdp"
-#define VBOXNETADP_MTU           1500
 
 
 /*******************************************************************************
