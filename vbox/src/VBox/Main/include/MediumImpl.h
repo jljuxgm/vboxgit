@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 52096 2014-07-18 09:30:10Z vboxsync $ */
+/* $Id: MediumImpl.h 52324 2014-08-08 12:41:32Z vboxsync $ */
 
 /** @file
  *
@@ -229,11 +229,13 @@ private:
     HRESULT getMachineIds(std::vector<com::Guid> &aMachineIds);
 
     // wrapped IMedium methods
-    HRESULT setIds(BOOL aSetImageId,
+    HRESULT setIds(AutoCaller &aAutoCaller,
+                   BOOL aSetImageId,
                    const com::Guid &aImageId,
                    BOOL aSetParentId,
                    const com::Guid &aParentId);
-    HRESULT refreshState(MediumState_T *aState);
+    HRESULT refreshState(AutoCaller &aAutoCaller,
+                         MediumState_T *aState);
     HRESULT getSnapshotIds(const com::Guid &aMachineId,
                            std::vector<com::Guid> &aSnapshotIds);
     HRESULT lockRead(ComPtr<IToken> &aToken);
@@ -272,7 +274,7 @@ private:
     HRESULT reset(ComPtr<IProgress> &aProgress);
 
     // Private internal nmethods
-    HRESULT i_queryInfo(bool fSetImageId, bool fSetParentId);
+    HRESULT i_queryInfo(bool fSetImageId, bool fSetParentId, AutoCaller &autoCaller);
     HRESULT i_canClose();
     HRESULT i_unregisterWithVirtualBox();
     HRESULT i_setStateError();
