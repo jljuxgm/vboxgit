@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 48406 2013-09-10 12:53:50Z vboxsync $ */
+/* $Id: Settings.cpp 48408 2013-09-10 13:10:53Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3243,7 +3243,7 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
         }
         else if (pelmHwChild->nameEquals("EmulatedUSB"))
         {
-            const xml::ElementNode *pelmCardReader, *pelmWebcam;
+            const xml::ElementNode *pelmCardReader;
 
             if ((pelmCardReader = pelmHwChild->findChildElement("CardReader")))
             {
