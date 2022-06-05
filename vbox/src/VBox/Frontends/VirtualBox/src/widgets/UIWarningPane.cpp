@@ -1,4 +1,4 @@
-/* $Id: UIWarningPane.cpp 47847 2013-08-19 15:44:05Z vboxsync $ */
+/* $Id: UIWarningPane.cpp 47945 2013-08-21 07:49:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -91,6 +91,7 @@ void UIWarningPane::prepareContent()
     {
         /* Configure layout: */
         pMainLayout->setContentsMargins(0, 0, 0, 0);
+        pMainLayout->setSpacing(10);
         /* Add left stretch: */
         pMainLayout->addStretch();
         /* Create text-label: */
@@ -104,6 +105,7 @@ void UIWarningPane::prepareContent()
         {
             /* Configure layout: */
             m_pIconLayout->setContentsMargins(0, 0, 0, 0);
+            m_pIconLayout->setSpacing(6);
             /* Add into main-layout: */
             pMainLayout->addLayout(m_pIconLayout);
         }
