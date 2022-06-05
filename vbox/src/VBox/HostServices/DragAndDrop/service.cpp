@@ -1,4 +1,4 @@
-/* $Id: service.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: service.cpp 50463 2014-02-14 10:29:32Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -469,7 +469,7 @@ DECLCALLBACK(int) DragAndDropService::progressCallback(uint32_t uPercentage, uin
                      uPercentage, uState, rc));
         DragAndDropSvc::VBOXDNDCBHGEVTPROGRESSDATA data;
         data.hdr.u32Magic = DragAndDropSvc::CB_MAGIC_DND_HG_EVT_PROGRESS;
-        data.uPercentage  = RT_CLAMP(uPercentage, 0, 100);
+        data.uPercentage  = RT_MIN(uPercentage, 100);
         data.uState       = uState;
         data.rc           = rc;
 

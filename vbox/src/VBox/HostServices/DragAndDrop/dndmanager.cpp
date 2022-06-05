@@ -1,4 +1,4 @@
-/* $Id: dndmanager.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: dndmanager.cpp 50463 2014-02-14 10:29:32Z vboxsync $ */
 /** @file
  * Drag and Drop manager.
  */
@@ -498,7 +498,7 @@ int DnDHGSendDataMessage::progressCallback(size_t cbDone, void *pvUser)
                    pSelf->m_cbTransfered, pSelf->m_cbTotal, cbDone));
 
         unsigned uPercentage = (unsigned)((uint64_t)pSelf->m_cbTransfered * 100 / pSelf->m_cbTotal);
-        rc = pSelf->m_pfnProgressCallback(RT_CLAMP(uPercentage, 0, 100),
+        rc = pSelf->m_pfnProgressCallback(RT_MIN(uPercentage, 100),
                                           DragAndDropSvc::DND_PROGRESS_RUNNING,
                                           VINF_SUCCESS /* rc */, pSelf->m_pvProgressUser);
     }
