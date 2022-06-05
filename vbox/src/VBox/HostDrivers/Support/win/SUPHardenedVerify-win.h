@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 52403 2014-08-18 20:35:32Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52406 2014-08-19 03:03:28Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -86,6 +86,8 @@ typedef struct SUPHNTVIRDR
 typedef SUPHNTVIRDR *PSUPHNTVIRDR;
 DECLHIDDEN(int)  supHardNtViRdrCreate(HANDLE hFile, PCRTUTF16 pwszName, uint32_t fFlags, PSUPHNTVIRDR *ppNtViRdr);
 DECLHIDDEN(bool) supHardenedWinIsWinVerifyTrustCallable(void);
+DECLHIDDEN(int)  supHardenedWinVerifyImageTrust(HANDLE hFile, PCRTUTF16 pwszName, uint32_t fFlags, int rc,
+                                                bool *pfWinVerifyTrust, PRTERRINFO pErrInfo);
 DECLHIDDEN(int)  supHardenedWinVerifyImageByHandle(HANDLE hFile, PCRTUTF16 pwszName, uint32_t fFlags,
                                                    bool *pfWinVerifyTrust, PRTERRINFO pErrInfo);
 DECLHIDDEN(int)  supHardenedWinVerifyImageByHandleNoName(HANDLE hFile, uint32_t fFlags, PRTERRINFO pErrInfo);
