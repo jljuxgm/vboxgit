@@ -1,4 +1,4 @@
-# $Id: Config.kmk 48669 2013-09-25 07:50:47Z vboxsync $
+# $Id: Config.kmk 48845 2013-10-03 18:35:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2835,10 +2835,6 @@ SDK_VBOX_VPX_DEFAULT_INCS := $(PATH_ROOT)/src/libs/libvpx
 SDK_VBOX_VPX_INCS ?= $(SDK_VBOX_VPX_DEFAULT_INCS)
 SDK_VBOX_VPX_LIBS ?= $(PATH_STAGE_LIB)/VBox-libvpx$(VBOX_SUFF_LIB)
 
-SDK_VBOX_BOOST       = .
-SDK_VBOX_BOOST_DEFS ?= BOOST_DISABLE_ASSERTS
-SDK_VBOX_BOOST_INCS ?= $(PATH_ROOT)/src/libs/boost-1.37.0
-
 #
 # Special SDK for the problematic NTDLL.LIB.
 #
@@ -5549,7 +5545,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48669 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48845 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

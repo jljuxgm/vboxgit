@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48812 2013-10-02 09:30:32Z vboxsync $
+# $Id: Makefile.kmk 48845 2013-10-03 18:35:53Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1278,7 +1278,7 @@ RuntimeGuestR3Mini_SOURCES += \
 # VBoxRT - Shared Object / DLL version.
 #
 VBoxRT_TEMPLATE                = VBoxR3DllNoPic
-VBoxRT_SDKS                    = VBOX_LIBXML2 VBOX_BOOST
+VBoxRT_SDKS                    = VBOX_LIBXML2
 ifdef VBOX_WITH_LIBCURL
  VBoxRT_SDKS                  += VBOX_LIBCURL
 endif
@@ -1416,7 +1416,7 @@ endif # linux
 #
 VBoxRT-x86_EXTENDS = VBoxRT
 VBoxRT-x86_TEMPLATE = VBoxR3Dll-x86
-VBoxRT-x86_SDKS  = VBOX_LIBXML2 VBOX_BOOST
+VBoxRT-x86_SDKS  = VBOX_LIBXML2
 ifdef VBOX_WITH_LIBCURL
  VBoxRT-x86_SDKS += VBOX_LIBCURL-x86
 endif
