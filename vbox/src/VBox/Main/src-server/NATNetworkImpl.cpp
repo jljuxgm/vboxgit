@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 49742 2013-12-02 17:59:21Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 49762 2013-12-03 18:39:12Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -109,7 +109,7 @@ HRESULT NATNetwork::FinalConstruct()
 
 void NATNetwork::FinalRelease()
 {
-    uninit ();
+    uninit();
 
     BaseFinalRelease();
 }
@@ -484,7 +484,7 @@ HRESULT NATNetwork::getLocalMappings(std::vector<com::Utf8Str> &aLocalMappings)
     for (settings::NATLoopbackOffsetList::const_iterator it = m->maNATLoopbackOffsetList.begin();
          it != m->maNATLoopbackOffsetList.end(); ++it, ++i)
     {
-        aLocalMappings[i] = Utf8StrFmt("%s;%d",
+        aLocalMappings[i] = Utf8StrFmt("%s=%d",
                             (*it).strLoopbackHostAddress.c_str(),
                             (*it).u32Offset);
     }
