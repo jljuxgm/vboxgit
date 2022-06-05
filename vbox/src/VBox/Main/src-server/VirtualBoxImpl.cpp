@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 48968 2013-10-08 10:45:30Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 49219 2013-10-22 06:25:04Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3110,7 +3110,7 @@ int VirtualBox::natNetworkRefInc(IN_BSTR aNetworkName)
     {
         ComPtr<INATNetwork> nat;
         HRESULT rc = FindNATNetworkByName(aNetworkName, nat.asOutParam());
-        AssertComRCReturn(rc, -1);
+        if (FAILED(rc)) return -1;
 
         rc = nat->Start(Bstr("whatever").raw());
         if (SUCCEEDED(rc))
@@ -3140,7 +3140,7 @@ int VirtualBox::natNetworkRefDec(IN_BSTR aNetworkName)
     {
         ComPtr<INATNetwork> nat;
         HRESULT rc = FindNATNetworkByName(aNetworkName, nat.asOutParam());
-        AssertComRCReturn(rc, -1);
+        if (FAILED(rc)) return -1;
 
         rc = nat->Stop();
         if (SUCCEEDED(rc))
