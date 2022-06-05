@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 52977 2014-10-07 17:46:32Z vboxsync $ */
+/* $Id: UIMachine.cpp 52987 2014-10-08 10:58:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -212,6 +212,7 @@ bool UIMachine::prepare()
      * This is a hack, maybe more generic approach can be used. */
     machineLogic()->initializePostPowerUp();
 
+    /* True by default: */
     return true;
 }
 
@@ -241,11 +242,9 @@ UIMachine::~UIMachine()
 
 QWidget* UIMachine::activeWindow() const
 {
-    /* Null if machine-logic not yet created: */
-    if (!machineLogic())
-        return 0;
-    /* Active machine-window otherwise: */
-    return machineLogic()->activeMachineWindow();
+    if (machineLogic() &&  machineLogic()->activeMachineWindow())
+        return machineLogic()->activeMachineWindow();
+    return 0;
 }
 
 void UIMachine::asyncChangeVisualState(UIVisualStateType visualStateType)
