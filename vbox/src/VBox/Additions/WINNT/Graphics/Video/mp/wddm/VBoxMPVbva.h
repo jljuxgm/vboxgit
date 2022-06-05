@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.h 50754 2014-03-12 17:43:09Z vboxsync $ */
+/* $Id: VBoxMPVbva.h 50778 2014-03-13 18:30:47Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -129,7 +129,7 @@ typedef struct VBOXCMDVBVA
 
 /** @name VBVAEx APIs
  * @{ */
-RTDECL(bool) VBoxVBVAExEnable(PVBVAEXBUFFERCONTEXT pCtx,
+RTDECL(int) VBoxVBVAExEnable(PVBVAEXBUFFERCONTEXT pCtx,
                             PHGSMIGUESTCOMMANDCONTEXT pHGSMICtx,
                             struct VBVABUFFER *pVBVA);
 RTDECL(void) VBoxVBVAExDisable(PVBVAEXBUFFERCONTEXT pCtx,
