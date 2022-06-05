@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 51570 2014-06-06 15:53:52Z vboxsync $ */
+/* $Id: VBoxService.cpp 52702 2014-09-11 13:41:06Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -268,7 +268,7 @@ int VBoxServiceLogCreate(const char *pszLogFile)
                            "VBOXSERVICE_RELEASE_LOG",
 #endif
                            RT_ELEMENTS(s_apszGroups), s_apszGroups,
-                           RTLOGDEST_STDOUT,
+                           RTLOGDEST_STDOUT | RTLOGDEST_USER,
                            VBoxServiceLogHeaderFooter, g_cHistory, g_uHistoryFileSize, g_uHistoryFileTime,
                            szError, sizeof(szError), pszLogFile);
     if (RT_SUCCESS(rc))
