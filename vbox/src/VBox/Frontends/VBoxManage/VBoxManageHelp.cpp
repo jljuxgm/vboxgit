@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 50996 2014-04-08 13:15:27Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 51889 2014-07-06 19:40:14Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -612,6 +612,18 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--format VDI|VMDK|VHD|RAW|<other>]\n"
                      "                            [--variant Standard,Fixed,Split2G,Stream,ESX]\n"
                      "                            [--existing]\n"
+                     "\n", SEP);
+
+    if (fCategory & USAGE_HDPROPERTY)
+        RTStrmPrintf(pStrm,
+                           "%s hdproperty %s      set <uuid|filename>\n"
+                     "                            <property> <value>\n"
+                     "\n"
+                     "                            get <uuid|filename>\n"
+                     "                            <property>\n"
+                     "\n"
+                     "                            delete <uuid|filename>\n"
+                     "                            <property>\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_CONVERTFROMRAW)
