@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 50590 2014-02-25 18:51:23Z vboxsync $ */
+/* $Id: CPUM.cpp 50873 2014-03-25 17:59:33Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1083,7 +1083,7 @@ static int cpumR3CpuIdInit(PVM pVM)
     AssertLogRelRCReturn(rc, rc);
 
     /** @cfgm{CPUM/GuestCpuName, string}
-     * The name of of the CPU we're to emulate.  The default is the host CPU.
+     * The name of the CPU we're to emulate.  The default is the host CPU.
      * Note! CPUs other than "host" one is currently unsupported. */
     char szCpuName[128];
     rc = CFGMR3QueryStringDef(pCpumCfg, "GuestCpuName", szCpuName, sizeof(szCpuName), "host");
