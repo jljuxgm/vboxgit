@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 50780 2014-03-14 01:35:15Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 50781 2014-03-14 01:35:39Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -216,7 +216,7 @@ int vboxPciOsDevRegisterWithIommu(PVBOXRAWPCIINS pIns)
     {
         printk(KERN_DEBUG "vboxpci: iommu_attach_device() success\n");
         pIns->fIommuUsed = true;
-        rc = VINF_SUCCESS;;
+        rc = VINF_SUCCESS;
     }
     else
     {
