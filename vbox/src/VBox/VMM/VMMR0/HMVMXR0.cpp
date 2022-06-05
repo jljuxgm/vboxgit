@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 52928 2014-10-02 13:04:50Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 53089 2014-10-17 15:38:03Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7305,7 +7305,7 @@ DECLCALLBACK(int) hmR0VmxCallRing3Callback(PVMCPU pVCpu, VMMCALLRING3 enmOperati
     VMMRZCallRing3Disable(pVCpu);
     Assert(VMMR0IsLogFlushDisabled(pVCpu));
 
-    Log4(("hmR0VmxCallRing3Callback->hmR0VmxLongJmpToRing3 pVCpu=%p idCpu=%RU32\n enmOperation=%d", pVCpu, pVCpu->idCpu,
+    Log4(("hmR0VmxCallRing3Callback->hmR0VmxLongJmpToRing3 pVCpu=%p idCpu=%RU32 enmOperation=%d\n", pVCpu, pVCpu->idCpu,
           enmOperation));
 
     int rc = hmR0VmxLongJmpToRing3(pVCpu->CTX_SUFF(pVM), pVCpu, (PCPUMCTX)pvUser);
