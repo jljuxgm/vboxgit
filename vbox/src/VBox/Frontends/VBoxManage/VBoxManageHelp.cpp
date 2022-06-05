@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 48630 2013-09-23 10:42:42Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 48966 2013-10-08 10:16:21Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -480,7 +480,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            plugcpu <id> |\n"
                      "                            unplugcpu <id> |\n"
                      "                            cpuexecutioncap <1-100>\n"
-                     "                            webcam attach [path [settings]] | detach [path] | list]\n"
+                     "                            webcam <attach [path [settings]]> | <detach [path]> | <list>\n"
                      "\n", SEP);
     }
 
