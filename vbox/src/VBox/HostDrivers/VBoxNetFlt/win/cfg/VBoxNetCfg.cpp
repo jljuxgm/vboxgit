@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 51844 2014-07-03 13:03:19Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 51847 2014-07-03 13:12:16Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -2010,7 +2010,7 @@ static HRESULT vboxNetCfgWinNetFltUninstall(IN INetCfg *pNc, DWORD InfRmFlags)
         NonStandardLog("NetFlt is installed currently, uninstalling ...\n");
 
         hr = VBoxNetCfgWinUninstallComponent(pNc, pNcc);
-        NonStandardLog("NetFlt component uninstallation ended with hr (0x%x)\n", hr));
+        NonStandardLog(("NetFlt component uninstallation ended with hr (0x%x)\n", hr));
 
         pNcc->Release();
     }
