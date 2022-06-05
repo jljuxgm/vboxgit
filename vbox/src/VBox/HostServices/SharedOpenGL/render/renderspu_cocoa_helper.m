@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 47566 2013-08-06 22:20:23Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 48079 2013-08-27 12:30:57Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1780,6 +1780,9 @@ void cocoaViewGetGeometry(NativeNSViewRef pView, int *pX, int *pY, int *pW, int 
 void cocoaViewPresentComposition(NativeNSViewRef pView, struct VBOXVR_SCR_COMPOSITOR_ENTRY *pChangedEntry)
 {
     NSAutoreleasePool *pPool = [[NSAutoreleasePool alloc] init];
+    
+    /* view should not necesserily have a context set 
+     * @todo: check and set default shared one */
 
     [(OverlayView*)pView presentComposition:pChangedEntry];
 
