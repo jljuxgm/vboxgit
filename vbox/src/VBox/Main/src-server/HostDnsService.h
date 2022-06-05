@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 48346 2013-09-06 09:50:19Z vboxsync $ */
+/* $Id: HostDnsService.h 48805 2013-10-02 05:16:26Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -17,6 +17,7 @@
 
 #ifndef ___H_DNSHOSTSERVICE
 #define ___H_DNSHOSTSERVICE
+#include "VirtualBoxBase.h"
 
 #include <iprt/cdefs.h>
 #include <iprt/critsect.h>
@@ -33,7 +34,7 @@ class HostDnsService
 public: 
     HostDnsService();
     virtual ~HostDnsService();
-    virtual HRESULT init(void);
+    virtual HRESULT init(const VirtualBox *aParent);
     virtual HRESULT start(void);
     virtual void stop(void);
     STDMETHOD(COMGETTER(NameServers))(ComSafeArrayOut(BSTR, aNameServers));
@@ -45,10 +46,11 @@ protected:
     /* XXX: hide it with struct Data together with <list> */
     Utf8StrList     m_llNameServers;
     Utf8StrList     m_llSearchStrings;
-    com::Utf8Str        m_DomainName;
+    com::Utf8Str    m_DomainName;
     RTCRITSECT      m_hCritSect;
 
 private:
+    const VirtualBox *mParent;
     HostDnsService(const HostDnsService& service){ NOREF(service); }
     HostDnsService& operator =(const HostDnsService& service){ NOREF(service); return *this; }
 };
@@ -60,7 +62,7 @@ public:
     HostDnsServiceDarwin();
     virtual ~HostDnsServiceDarwin();
 
-    virtual HRESULT init(void);
+    virtual HRESULT init(const VirtualBox *aParent);
     virtual HRESULT start(void);
     virtual void stop(void);
     virtual HRESULT update();
@@ -77,7 +79,7 @@ public:
     HostDnsServiceWin();
     virtual ~HostDnsServiceWin();
 
-    virtual HRESULT init(void);
+    virtual HRESULT init(const VirtualBox *aParent);
     virtual HRESULT start(void);
     virtual void stop(void);
     virtual HRESULT update();
@@ -93,7 +95,7 @@ class HostDnsServiceResolvConf: public HostDnsService
 public:
     HostDnsServiceResolvConf(const char *aResolvConfFileName = "/etc/resolv.conf");
     virtual ~HostDnsServiceResolvConf();
-    virtual HRESULT init(void);
+    virtual HRESULT init(VirtualBox *aParent);
     virtual HRESULT update();
 protected:
     com::Utf8Str m_ResolvConfFilename;

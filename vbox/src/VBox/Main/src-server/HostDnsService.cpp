@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 48340 2013-09-06 07:14:05Z vboxsync $ */
+/* $Id: HostDnsService.cpp 48805 2013-10-02 05:16:26Z vboxsync $ */
 /** @file
  * Base class fo Host DNS & Co services.
  */
@@ -19,6 +19,9 @@
 #include <VBox/com/ptr.h>
 #include <VBox/com/string.h>
 
+#include <iprt/cpp/utils.h>
+
+#include "VirtualBoxImpl.h"
 #include "HostDnsService.h"
 #include <iprt/thread.h>
 #include <iprt/semaphore.h>
@@ -32,8 +35,10 @@ HostDnsService::~HostDnsService ()
 }
 
 
-HRESULT HostDnsService::init (void) 
+HRESULT HostDnsService::init(const VirtualBox *aParent) 
 {
+    mParent = aParent;
+    
     int rc = RTCritSectInit(&m_hCritSect);
     AssertRCReturn(rc, E_FAIL);
     return S_OK;
@@ -50,6 +55,7 @@ void HostDnsService::stop()
 
 HRESULT HostDnsService::update()
 {
+    unconst(mParent)->onHostNameResolutionConfigurationChange();
     return S_OK;
 }
 
