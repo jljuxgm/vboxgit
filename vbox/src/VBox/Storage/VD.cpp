@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 48563 2013-09-19 19:45:04Z vboxsync $ */
+/* $Id: VD.cpp 48574 2013-09-20 08:20:42Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1430,7 +1430,9 @@ static int vdIoCtxProcessLocked(PVDIOCTX pIoCtx)
              || rc == VERR_VD_NOT_ENOUGH_METADATA
              || rc == VERR_VD_IOCTX_HALT)
         rc = VERR_VD_ASYNC_IO_IN_PROGRESS;
-    else if (RT_FAILURE(rc) && (rc != VERR_VD_ASYNC_IO_IN_PROGRESS))
+    else if (   RT_FAILURE(rc) 
+                && (rc != VERR_VD_ASYNC_IO_IN_PROGRESS)
+                && (rc != VERR_DISK_FULL))
     {
         ASMAtomicCmpXchgS32(&pIoCtx->rcReq, rc, VINF_SUCCESS);
         /*
