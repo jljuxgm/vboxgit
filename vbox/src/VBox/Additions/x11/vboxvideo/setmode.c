@@ -1,4 +1,4 @@
-/* $Id: setmode.c 49877 2013-12-11 16:27:39Z vboxsync $ */
+/* $Id: setmode.c 50569 2014-02-25 08:20:11Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, mode setting
@@ -120,11 +120,6 @@ Bool VBOXSetMode(ScrnInfoPtr pScrn, unsigned cDisplay, unsigned cWidth,
     if (cDisplay == 0)
         VBoxVideoSetModeRegisters(cwReal, cHeight, pScrn->displayWidth,
                                   vboxBPP(pScrn), 0, x, y);
-    /* Tell the host we support graphics */
-#ifndef VBOX_WITH_GUEST_KMS_DRIVER
-    if (vbox_device_available(pVBox))
-        vboxEnableGraphicsCap(pVBox);
-#endif
     if (pVBox->fHaveHGSMI)
     {
         uint16_t fFlags = VBVA_SCREEN_F_ACTIVE;
