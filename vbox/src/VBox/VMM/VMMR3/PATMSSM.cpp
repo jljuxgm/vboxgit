@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 49794 2013-12-05 17:22:10Z vboxsync $ */
+/* $Id: PATMSSM.cpp 49796 2013-12-05 22:47:58Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -576,6 +576,8 @@ static DECLCALLBACK(int) patmSaveFixupRecords(PAVLPVNODECORE pNode, void *pVM1)
         if (*pFixup == CPUMR3GetGuestCpuIdCentaurRCPtr(pVM))
             rec.Core.Key = (AVLPVKEY)PATM_FIXUP_CPUID_CENTAUR;
     }
+    else /* Zero rec.Core.Key since it's unused and may trigger SSM check due to the above hack. */
+        rec.Core.Key = 0;
 
     /* Save the lookup record. */
     int rc = SSMR3PutStructEx(pSSM, &rec, sizeof(rec), 0 /*fFlags*/, &g_aPatmRelocRec[0], NULL);
