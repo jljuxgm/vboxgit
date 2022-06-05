@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 47070 2013-07-10 11:39:19Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 48070 2013-08-26 18:13:22Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -99,6 +99,7 @@ typedef struct _VBOXMP_DEVEXT
    uint8_t * pvVisibleVram;
 
    VBOXVIDEOCM_MGR CmMgr;
+   VBOXVIDEOCM_MGR SeamlessCtxMgr;
    /* hgsmi allocation manager */
    VBOXVIDEOCM_ALLOC_MGR AllocMgr;
    VBOXVDMADDI_NODE aNodes[VBOXWDDM_NUM_NODES];
@@ -109,8 +110,11 @@ typedef struct _VBOXMP_DEVEXT
    KSPIN_LOCK SynchLock;
    volatile uint32_t cContexts3D;
    volatile uint32_t cContexts2D;
+   volatile uint32_t cContextsDispIfResize;
    volatile uint32_t cRenderFromShadowDisabledContexts;
    volatile uint32_t cUnlockedVBVADisabled;
+
+   DWORD dwDrvCfgFlags;
    /* this is examined and swicthed by DxgkDdiSubmitCommand only! */
    volatile BOOLEAN fRenderToShadowDisabled;
 

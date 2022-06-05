@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DCmn.h 46783 2013-06-25 16:09:37Z vboxsync $ */
+/* $Id: VBoxDispD3DCmn.h 48070 2013-08-26 18:13:22Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -18,30 +18,7 @@
 #ifndef ___VBoxDispD3DCmn_h___
 #define ___VBoxDispD3DCmn_h___
 
-#       define _InterlockedExchange           _InterlockedExchange_StupidDDKVsCompilerCrap
-#       define _InterlockedExchangeAdd        _InterlockedExchangeAdd_StupidDDKVsCompilerCrap
-#       define _InterlockedCompareExchange    _InterlockedCompareExchange_StupidDDKVsCompilerCrap
-#       define _InterlockedAddLargeStatistic  _InterlockedAddLargeStatistic_StupidDDKVsCompilerCrap
-#       define _interlockedbittestandset      _interlockedbittestandset_StupidDDKVsCompilerCrap
-#       define _interlockedbittestandreset    _interlockedbittestandreset_StupidDDKVsCompilerCrap
-#       define _interlockedbittestandset64    _interlockedbittestandset64_StupidDDKVsCompilerCrap
-#       define _interlockedbittestandreset64  _interlockedbittestandreset64_StupidDDKVsCompilerCrap
-#       pragma warning(disable : 4163)
-#include <windows.h>
-#       pragma warning(default : 4163)
-#       undef  _InterlockedExchange
-#       undef  _InterlockedExchangeAdd
-#       undef  _InterlockedCompareExchange
-#       undef  _InterlockedAddLargeStatistic
-#       undef  _interlockedbittestandset
-#       undef  _interlockedbittestandreset
-#       undef  _interlockedbittestandset64
-#       undef  _interlockedbittestandreset64
-
-#include <d3d9types.h>
-//#include <d3dtypes.h>
-#include <D3dumddi.h>
-#include <d3dhal.h>
+#include "VBoxDispD3DBase.h"
 
 #include <iprt/initterm.h>
 #include <iprt/log.h>
@@ -53,7 +30,7 @@
 
 #include "VBoxDispDbg.h"
 #include "VBoxDispD3DIf.h"
-#include "common/wddm/VBoxMPIf.h"
+#include "../../common/wddm/VBoxMPIf.h"
 #include "VBoxDispCm.h"
 #include "VBoxDispMpInternal.h"
 #include "VBoxDispKmt.h"

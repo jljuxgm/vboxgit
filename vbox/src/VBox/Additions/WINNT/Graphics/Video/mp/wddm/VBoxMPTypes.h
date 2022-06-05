@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 47059 2013-07-09 16:27:54Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 48070 2013-08-26 18:13:22Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -34,6 +34,9 @@ typedef struct VBOXWDDM_ALLOCATION *PVBOXWDDM_ALLOCATION;
 
 #include <cr_vreg.h>
 
+#ifdef DEBUG_misha
+extern DWORD g_VBoxDbgBreakModes;
+#endif
 
 #if 0
 #include <iprt/avl.h>
@@ -138,6 +141,11 @@ typedef struct VBOXWDDM_TARGET
     uint32_t ScanLineState;
     uint32_t HeightVisible;
     uint32_t HeightTotal;
+    /* since there coul be multiple state changes on auto-resize,
+     * we pend notifying host to avoi flickering */
+    volatile bool fStateSyncPening;
+    bool fConnected;
+    bool fConfigured;
 } VBOXWDDM_TARGET, *PVBOXWDDM_TARGET;
 
 /* allocation */

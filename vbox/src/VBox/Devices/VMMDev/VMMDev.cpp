@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 47450 2013-07-29 08:07:32Z vboxsync $ */
+/* $Id: VMMDev.cpp 48070 2013-08-26 18:13:22Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2992,7 +2992,8 @@ vmmdevIPort_RequestDisplayChange(PPDMIVMMDEVPORT pInterface, uint32_t cx, uint32
 
     if (!fSameResolution)
     {
-        LogRel(("VMMDev::SetVideoModeHint: got a video mode hint (%dx%dx%d) at %d\n", cx, cy, cBits, idxDisplay));
+        LogRel(("VMMDev::SetVideoModeHint: got a video mode hint (%dx%dx%d)@(%dx%d),(%d;%d) at %d\n",
+                cx, cy, cBits, xOrigin, yOrigin, fEnabled, fChangeOrigin, idxDisplay));
 
         /* we could validate the information here but hey, the guest can do that as well! */
         pRequest->displayChangeRequest.xres          = cx;

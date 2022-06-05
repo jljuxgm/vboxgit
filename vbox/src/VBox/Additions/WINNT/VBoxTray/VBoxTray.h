@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 47195 2013-07-16 14:48:43Z vboxsync $ */
+/* $Id: VBoxTray.h 48070 2013-08-26 18:13:22Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -53,6 +53,17 @@
 #include <VBoxDisplay.h>
 
 #include "VBoxDispIf.h"
+
+#ifdef DEBUG_misha
+#define WARN(_m) do { \
+            Assert(0); \
+            Log(_m); \
+        } while (0)
+#else
+#define WARN(_m) do { \
+            Log(_m); \
+        } while (0)
+#endif
 
 /*
  * Windows messsages.

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCm.h 38112 2011-07-22 13:26:19Z vboxsync $ */
+/* $Id: VBoxMPCm.h 48070 2013-08-26 18:13:22Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -21,7 +21,7 @@
 
 typedef struct VBOXVIDEOCM_MGR
 {
-    KEVENT SynchEvent;
+    KSPIN_LOCK SynchLock;
     /* session list */
     LIST_ENTRY SessionList;
 } VBOXVIDEOCM_MGR, *PVBOXVIDEOCM_MGR;
@@ -40,6 +40,7 @@ NTSTATUS vboxVideoCmCtxAdd(PVBOXVIDEOCM_MGR pMgr, PVBOXVIDEOCM_CTX pContext, HAN
 NTSTATUS vboxVideoCmCtxRemove(PVBOXVIDEOCM_MGR pMgr, PVBOXVIDEOCM_CTX pContext);
 NTSTATUS vboxVideoCmInit(PVBOXVIDEOCM_MGR pMgr);
 NTSTATUS vboxVideoCmTerm(PVBOXVIDEOCM_MGR pMgr);
+NTSTATUS vboxVideoCmSignalEvents(PVBOXVIDEOCM_MGR pMgr);
 
 NTSTATUS vboxVideoCmCmdSubmitCompleteEvent(PVBOXVIDEOCM_CTX pContext, PKEVENT pEvent);
 void* vboxVideoCmCmdCreate(PVBOXVIDEOCM_CTX pContext, uint32_t cbSize);
@@ -56,10 +57,5 @@ typedef FNVBOXVIDEOCMCMDVISITOR *PFNVBOXVIDEOCMCMDVISITOR;
 NTSTATUS vboxVideoCmCmdVisit(PVBOXVIDEOCM_CTX pContext, BOOLEAN bEntireSession, PFNVBOXVIDEOCMCMDVISITOR pfnVisitor, PVOID pvVisitor);
 
 NTSTATUS vboxVideoCmEscape(PVBOXVIDEOCM_CTX pContext, PVBOXDISPIFESCAPE_GETVBOXVIDEOCMCMD pCmd, uint32_t cbCmd);
-
-NTSTATUS vboxVideoCmWaitCompletedCmds(PVBOXVIDEOCM_MGR pMgr, uint32_t msTimeout);
-
-VOID vboxVideoCmLock(PVBOXVIDEOCM_CTX pContext);
-VOID vboxVideoCmUnlock(PVBOXVIDEOCM_CTX pContext);
 
 #endif /* #ifndef ___VBoxMPCm_h___ */
