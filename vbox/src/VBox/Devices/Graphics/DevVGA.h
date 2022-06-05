@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 53201 2014-11-04 15:30:43Z vboxsync $ */
+/* $Id: DevVGA.h 53203 2014-11-04 15:43:20Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -308,7 +308,7 @@ typedef struct
     bool                        fVRAMTracking;
     /** External command to be executed in the FIFO thread. */
     uint8_t                     u8FIFOExtCommand;
-    bool                        Padding6[1];
+    bool                        Padding6[5];
 } VMSVGAState;
 #endif /* VBOX_WITH_VMSVGA */
 
@@ -421,6 +421,9 @@ typedef struct VGAState {
     R0PTRTYPE(uint8_t *)        vram_ptrR0;
 
 #ifdef VBOX_WITH_VMSVGA
+# if HC_ARCH_BITS == 32
+    uint32_t                    Padding3;
+# endif
     VMSVGAState                 svga;
 #endif
 
