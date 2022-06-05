@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 48142 2013-08-29 09:47:29Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 48144 2013-08-29 10:45:58Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1131,6 +1131,8 @@ VMMDECL(int) CPUMQueryGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
         /*
          * Intel specifics MSRs:
          */
+        case MSR_P5_MC_ADDR:
+        case MSR_P5_MC_TYPE:
         case MSR_IA32_PLATFORM_ID:          /* fam/mod >= 6_01 */
         /*case MSR_IA32_BIOS_UPDT_TRIG: - write-only? */
         case MSR_RAPL_POWER_UNIT:
@@ -1160,6 +1162,15 @@ VMMDECL(int) CPUMQueryGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
                     break;
             }
             break;
+
+#if 0 /* Only on pentium CPUs! */
+        /* Event counters, not supported. */
+        case MSR_IA32_CESR:
+        case MSR_IA32_CTR0:
+        case MSR_IA32_CTR1:
+            *puValue = 0;
+            break;
+#endif
 
 
         /*
