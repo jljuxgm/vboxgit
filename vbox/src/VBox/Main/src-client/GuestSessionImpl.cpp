@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 49349 2013-10-31 16:40:46Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 49359 2013-11-01 10:19:06Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1131,6 +1131,7 @@ int GuestSession::dispatchToThis(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLH
     {
         case GUEST_DISCONNECTED:
             /** @todo Handle closing all guest objects. */
+            rc = VERR_INTERNAL_ERROR;
             break;
 
         case GUEST_SESSION_NOTIFY: /* Guest Additions >= 4.3.0. */
