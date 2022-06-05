@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.mm 30154 2010-06-10 16:28:15Z vboxsync $ */
+/* $Id: UICocoaApplication.mm 49595 2013-11-21 09:16:03Z vboxsync $ */
 /** @file
  * UICocoaApplication - C++ interface to NSApplication for handling -sendEvent.
  */
@@ -171,6 +171,11 @@ UICocoaApplication* UICocoaApplication::instance()
         m_pInstance = new UICocoaApplication();
 
     return m_pInstance;
+}
+
+void UICocoaApplication::hide()
+{
+    [m_pNative hide:m_pNative];
 }
 
 UICocoaApplication::UICocoaApplication()
