@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 48056 2013-08-26 10:31:27Z vboxsync $ */
+/* $Id: DrvNAT.cpp 48150 2013-08-29 12:41:05Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -24,6 +24,8 @@
 #define __STDC_CONSTANT_MACROS
 #include "slirp/libslirp.h"
 #include "slirp/ctl.h"
+
+#include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/vmm/pdmnetifs.h>
 #include <VBox/vmm/pdmnetinline.h>
