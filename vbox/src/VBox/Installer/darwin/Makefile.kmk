@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51299 2014-05-19 20:42:08Z vboxsync $
+# $Id: Makefile.kmk 53280 2014-11-10 08:34:39Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -406,6 +406,10 @@ endif
 if defined(VBOX_WITH_PYTHON) && !defined(VBOX_WITHOUT_VBOXPYTHON_FOR_OSX_10_7)
  VBOX_DI_VBAPP_DYLIBS += \
  	MacOS/VBoxPython2_7.so
+endif
+ifdef VBOX_WITH_VMSVGA3D
+ VBOX_DI_VBAPP_DYLIBS += \
+ 	MacOS/VBoxSVGA3D.dylib
 endif
 
 VBOX_DI_VBAPP_DYLIBS.x86 := \
