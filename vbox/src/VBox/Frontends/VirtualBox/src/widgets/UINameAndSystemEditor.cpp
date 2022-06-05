@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 48576 2013-09-20 09:08:41Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 50253 2014-01-28 12:31:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -196,14 +196,20 @@ void UINameAndSystemEditor::sltFamilyChanged(int iIndex)
     /* Or select WinXP item for Windows family as default: */
     else if (strFamilyId == "Windows")
     {
-        int iIndexWinXP = m_pTypeCombo->findData("WindowsXP", TypeID);
+        QString strDefaultID = "WindowsXP";
+        if (ARCH_BITS == 64)
+            strDefaultID += "_64";
+        int iIndexWinXP = m_pTypeCombo->findData(strDefaultID, TypeID);
         if (iIndexWinXP != -1)
             m_pTypeCombo->setCurrentIndex(iIndexWinXP);
     }
     /* Or select Ubuntu item for Linux family as default: */
     else if (strFamilyId == "Linux")
     {
-        int iIndexUbuntu = m_pTypeCombo->findData("Ubuntu", TypeID);
+        QString strDefaultID = "Ubuntu";
+        if (ARCH_BITS == 64)
+            strDefaultID += "_64";
+        int iIndexUbuntu = m_pTypeCombo->findData(strDefaultID, TypeID);
         if (iIndexUbuntu != -1)
             m_pTypeCombo->setCurrentIndex(iIndexUbuntu);
     }
