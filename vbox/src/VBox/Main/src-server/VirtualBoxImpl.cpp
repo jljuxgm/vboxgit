@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 50380 2014-02-10 10:31:35Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 50384 2014-02-10 10:57:26Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1854,7 +1854,7 @@ HRESULT VirtualBox::getGuestOSType(const com::Utf8Str &aId,
     {
         const Bstr &typeId = (*it)->i_id();
         AssertMsg(!typeId.isEmpty(), ("ID must not be NULL"));
-        if (typeId == aId)
+        if (typeId.compare(aId, Bstr::CaseInsensitive) == 0)
         {
             (*it).queryInterfaceTo(aType.asOutParam());
             break;
