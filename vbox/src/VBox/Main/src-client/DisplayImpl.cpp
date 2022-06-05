@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 51534 2014-06-04 15:46:56Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 51545 2014-06-05 08:35:17Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2386,8 +2386,8 @@ void Display::notifyPowerDown(void)
         if (!pFBInfo->fDisabled)
         {
             handleDisplayResize(uScreenId, 32,
-                                NULL,
-                                0,
+                                pFBInfo->pu8FramebufferVRAM,
+                                pFBInfo->u32LineSize,
                                 pFBInfo->w,
                                 pFBInfo->h,
                                 0);
