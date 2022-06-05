@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51207 2014-05-07 15:53:58Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51208 2014-05-07 16:26:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -662,6 +662,16 @@ bool UIExtraDataManager::isFeatureRestricted(const QString &strKey, const QStrin
            || strValue.compare("no", Qt::CaseInsensitive) == 0
            || strValue.compare("off", Qt::CaseInsensitive) == 0
            || strValue == "0";
+}
+
+QString UIExtraDataManager::toFeatureAllowed(bool fAllowed)
+{
+    return fAllowed ? QString("true") : QString();
+}
+
+QString UIExtraDataManager::toFeatureRestricted(bool fRestricted)
+{
+    return fRestricted ? QString("false") : QString();
 }
 
 QString UIExtraDataManager::extraDataString(const QString &strKey, const QString &strID /* = QString() */) const
