@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 48689 2013-09-25 16:07:38Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 49009 2013-10-09 15:06:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -69,6 +69,11 @@ UIMachineViewSeamless::~UIMachineViewSeamless()
     cleanupFrameBuffer();
 }
 
+void UIMachineViewSeamless::sltAdditionsStateChanged()
+{
+    normalizeGeometry(false);
+}
+
 void UIMachineViewSeamless::sltHandleSetVisibleRegion(QRegion region)
 {
     /* Apply new seamless-region: */
@@ -125,6 +130,15 @@ void UIMachineViewSeamless::prepareFilters()
     UIMachineView::prepareFilters();
 }
 
+void UIMachineViewSeamless::prepareConsoleConnections()
+{
+    /* Base class connections: */
+    UIMachineView::prepareConsoleConnections();
+
+    /* Guest additions state-change updater: */
+    connect(uisession(), SIGNAL(sigAdditionsStateChange()), this, SLOT(sltAdditionsStateChanged()));
+}
+
 void UIMachineViewSeamless::prepareSeamless()
 {
     /* Set seamless feature flag to the guest: */
@@ -137,6 +151,15 @@ void UIMachineViewSeamless::cleanupSeamless()
     if (uisession()->isRunning())
         /* Reset seamless feature flag of the guest: */
         session().GetConsole().GetDisplay().SetSeamlessMode(false);
+}
+
+void UIMachineViewSeamless::normalizeGeometry(bool /* fAdjustPosition */)
+{
+    /* Check if we should adjust guest to new size: */
+    if ((int)frameBuffer()->width() != workingArea().size().width() ||
+        (int)frameBuffer()->height() != workingArea().size().height())
+        if (uisession()->isGuestSupportsGraphics())
+            sltPerformGuestResize(workingArea().size());
 }
 
 QRect UIMachineViewSeamless::workingArea() const
