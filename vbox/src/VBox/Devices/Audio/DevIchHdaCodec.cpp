@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 50686 2014-03-04 19:21:18Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 51636 2014-06-17 17:00:47Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -2315,9 +2315,9 @@ int hdaCodecOpenVoice(PHDACODEC pThis, ENMSOUNDSOURCE enmSoundSource, audsetting
     }
     if (!rc)
 #ifdef VBOX_WITH_PDM_AUDIO_DRIVER
-        LogRel(("HdaCodec: can't open %s fmt(freq: %d)\n", enmSoundSource == PI_INDEX? "in" : "out", uFrequency));
+        LogRel(("HdaCodec: Can't open %s fmt(freq: %d)\n", enmSoundSource == PI_INDEX? "in" : "out", uFrequency));
 #else
-        LogRel(("HdaCodec: can't open %s fmt(freq: %d)\n", enmSoundSource == PI_INDEX? "in" : "out", pAudioSettings->freq));
+        LogRel(("HdaCodec: Can't open %s fmt(freq: %d)\n", enmSoundSource == PI_INDEX? "in" : "out", pAudioSettings->freq));
 #endif
     return rc;
 }
