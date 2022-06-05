@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.h 48435 2013-09-11 15:18:22Z vboxsync $ */
+/* $Id: VBoxDD2.h 52506 2014-08-27 14:11:36Z vboxsync $ */
 /** @file
  * Built-in drivers & devices part 2 header.
  *
@@ -45,9 +45,6 @@ extern DECLIMPORT(const unsigned)       g_cbNetBiosBinary;
 #endif /* !IN_VBOXDD2 */
 extern const PDMDEVREG g_DeviceAPIC;
 extern const PDMDEVREG g_DeviceIOAPIC;
-#ifndef VBOX_WITH_SMC_NEW
-extern const PDMDEVREG g_DeviceSMC;
-#endif
 extern const PDMDEVREG g_DeviceLPC;
 
 RT_C_DECLS_END
