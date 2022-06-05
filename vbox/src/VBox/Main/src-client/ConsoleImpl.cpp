@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 52082 2014-07-17 17:18:56Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 52104 2014-07-20 19:52:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4648,8 +4648,9 @@ HRESULT Console::i_consoleParseDiskEncryption(const char *psz, const char **ppsz
         cbKey = RTBase64DecodedSize(pszKeyEnc, NULL);
         if (cbKey != -1)
         {
-            uint8_t *pbKey = (uint8_t *)RTMemSaferAllocZ(cbKey);
-            if (pbKey)
+            uint8_t *pbKey = NULL;
+            rc = RTMemSaferAllocZEx(&pbKey, cbKey, RTMEMSAFER_F_REQUIRE_NOT_PAGABLE);
+            if (RT_SUCCESS(rc))
             {
                 rc = RTBase64Decode(pszKeyEnc, pbKey, cbKey, NULL, NULL);
                 if (RT_SUCCESS(rc))
@@ -4666,7 +4667,7 @@ HRESULT Console::i_consoleParseDiskEncryption(const char *psz, const char **ppsz
             }
             else
                 hrc = setError(E_FAIL,
-                               tr("Failed to allocate secure memory for the key"));
+                               tr("Failed to allocate secure memory for the key (%Rrc)"), rc);
         }
         else
             hrc = setError(E_FAIL,
