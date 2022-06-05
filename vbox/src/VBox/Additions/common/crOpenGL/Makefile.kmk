@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51194 2014-05-06 10:59:56Z vboxsync $
+# $Id: Makefile.kmk 52038 2014-07-15 13:20:45Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -24,15 +24,8 @@ include $(KBUILD_PATH)/subheader.kmk
 BLDDIRS += \
 	$(VBOX_PATH_CROGL_GENFILES)/
 
-DLLS.win += \
-    VBoxOGL \
-    VBoxOGLarrayspu \
-    VBoxOGLpassthroughspu \
-    VBoxOGLpackspu \
-    VBoxOGLfeedbackspu
-
-if1of ($(KBUILD_TARGET), linux solaris freebsd)
-DLLS += \
+if1of ($(KBUILD_TARGET), win linux solaris freebsd)
+ DLLS += \
     VBoxOGL \
     VBoxOGLarrayspu \
     VBoxOGLpassthroughspu \
