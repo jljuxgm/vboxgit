@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 52720 2014-09-12 12:59:15Z vboxsync $ */
+/* $Id: EventImpl.cpp 52734 2014-09-12 18:06:07Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -137,6 +137,10 @@ HRESULT VBoxEvent::init(IEventSource *aSource, VBoxEventType_T aType, BOOL aWait
 
 void VBoxEvent::uninit()
 {
+    AutoUninitSpan autoUninitSpan(this);
+    if (autoUninitSpan.uninitDone())
+        return;
+
     if (!m)
         return;
 
@@ -262,14 +266,24 @@ HRESULT VBoxVetoEvent::init(IEventSource *aSource, VBoxEventType_T aType)
     if (FAILED(rc))
         return rc;
 
+    AutoInitSpan autoInitSpan(this);
+    AssertReturn(autoInitSpan.isOk(), E_FAIL);
+
     m->mVetoed = FALSE;
     m->mVetoList.clear();
+
+    /* Confirm a successful initialization */
+    autoInitSpan.setSucceeded();
 
     return S_OK;
 }
 
 void VBoxVetoEvent::uninit()
 {
+    AutoUninitSpan autoUninitSpan(this);
+    if (autoUninitSpan.uninitDone())
+        return;
+
     if (!m)
         return;
 
