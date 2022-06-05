@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 52805 2014-09-22 08:36:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -2258,7 +2258,7 @@ int VBoxVHWAImage::vhwaSurfaceCanCreate(struct VBOXVHWACMD_SURF_CANCREATE *pCmd)
         if (pCmd->SurfInfo.PixelFormat.flags & VBOXVHWA_PF_RGB)
         {
             if (pCmd->SurfInfo.PixelFormat.c.rgbBitCount != 32
-                    || pCmd->SurfInfo.PixelFormat.c.rgbBitCount != 24)
+                    && pCmd->SurfInfo.PixelFormat.c.rgbBitCount != 24)
             {
                 AssertFailed();
                 pCmd->u.out.ErrInfo = -1;
