@@ -1,6 +1,6 @@
-/* $Id: VBoxPortForwardString.h 45559 2013-04-16 06:11:59Z vboxsync $ */
+/* $Id: VBoxPortForwardString.h 48346 2013-09-06 09:50:19Z vboxsync $ */
 /** @file
- * VBoxPortForwardString 
+ * VBoxPortForwardString
  */
 
 /*

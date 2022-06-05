@@ -1,6 +1,6 @@
-/* $Id: HostDnsService.h 48330 2013-09-06 03:16:32Z vboxsync $ */
+/* $Id: HostDnsService.h 48346 2013-09-06 09:50:19Z vboxsync $ */
 /** @file
- * Host DNS listener. 
+ * Host DNS listener.
  */
 
 /*
