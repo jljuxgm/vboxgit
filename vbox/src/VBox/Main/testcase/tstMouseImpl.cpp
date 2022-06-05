@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 50613 2014-02-26 16:07:35Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 51615 2014-06-13 08:01:09Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -48,8 +48,8 @@ class TestDisplay : public DisplayMouseInterface
 class TestConsole : public ConsoleMouseInterface
 {
 public:
-    VMMDevMouseInterface *getVMMDevMouseInterface() { return &mVMMDev; }
-    DisplayMouseInterface *getDisplayMouseInterface() { return &mDisplay; }
+    VMMDevMouseInterface *i_getVMMDevMouseInterface() { return &mVMMDev; }
+    DisplayMouseInterface *i_getDisplayMouseInterface() { return &mDisplay; }
     /** @todo why on earth is this not implemented? */
     void onMouseCapabilityChange(BOOL supportsAbsolute, BOOL supportsRelative,
                                  BOOL supportsMT, BOOL needsHostCursor) {}
