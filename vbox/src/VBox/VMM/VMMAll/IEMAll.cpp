@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 51182 2014-05-05 12:08:40Z vboxsync $ */
+/* $Id: IEMAll.cpp 51256 2014-05-15 10:30:08Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10934,6 +10934,9 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMInjectTrap(PVMCPU pVCpu, uint8_t u8TrapNo, TRPMEVE
  */
 VMMDECL(VBOXSTRICTRC) IEMInjectTrpmEvent(PVMCPU pVCpu)
 {
+#ifndef IEM_IMPLEMENTS_TASKSWITCH
+    IEM_RETURN_ASPECT_NOT_IMPLEMENTED_LOG(("Event injection\n"));
+#else
     uint8_t     u8TrapNo;
     TRPMEVENT   enmType;
     RTGCUINT    uErrCode;
@@ -10945,6 +10948,7 @@ VMMDECL(VBOXSTRICTRC) IEMInjectTrpmEvent(PVMCPU pVCpu)
 
     TRPMResetTrap(pVCpu);
     return IEMInjectTrap(pVCpu, u8TrapNo, enmType, uErrCode, uCr2, cbInstr);
+#endif
 }
 
 
