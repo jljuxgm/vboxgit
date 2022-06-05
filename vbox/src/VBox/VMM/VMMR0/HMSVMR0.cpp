@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48370 2013-09-06 18:28:00Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 48449 2013-09-12 13:07:28Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2071,12 +2071,6 @@ static void hmR0SvmExitToRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rcExit)
     Assert(pVCpu);
     Assert(pCtx);
     HMSVM_ASSERT_PREEMPT_SAFE();
-
-    if (RT_UNLIKELY(rcExit == VERR_SVM_INVALID_GUEST_STATE))
-    {
-        /* We don't need to do any syncing here, we're not going to come back to execute anything again. */
-        return;
-    }
 
     /* Please, no longjumps here (any logging shouldn't flush jump back to ring-3). NO LOGGING BEFORE THIS POINT! */
     VMMRZCallRing3Disable(pVCpu);
