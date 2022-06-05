@@ -1,4 +1,4 @@
-; $Id: bignum-amd64-x86.asm 52291 2014-08-06 10:23:10Z vboxsync $
+; $Id: bignum-amd64-x86.asm 52330 2014-08-08 19:05:54Z vboxsync $
 ;; @file
 ; IPRT - Big Integer Numbers, AMD64 and X86 Assembly Workers
 ;
@@ -250,7 +250,7 @@ SEH64_END_PROLOGUE
         add     cUsed, 1                ; cUsed = RT_ALIGN(cUsed, 2) / 2
         shr     cUsed, 1
 %endif
-        cmp     cUsed, 4                ; Skip the big loop if small number.
+        cmp     cUsed, 8                ; Skip the big loop if small number.
         jb      .small_job
 
         mov     r10d, cUsed
