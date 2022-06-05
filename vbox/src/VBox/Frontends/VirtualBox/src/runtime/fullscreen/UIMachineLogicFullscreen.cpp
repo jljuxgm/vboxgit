@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 51246 2014-05-13 16:18:35Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 51247 2014-05-13 16:21:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -130,7 +130,8 @@ void UIMachineLogicFullscreen::sltHandleNativeFullscreenDidEnter()
     /* Fade to normal if necessary: */
     QSet<UIMachineWindow*> visibleMachineWindows;
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
-        if (uisession()->isScreenVisible(pMachineWindow->screenId()))
+        if (   uisession()->isScreenVisible(pMachineWindow->screenId())
+            && hasHostScreenForGuestScreen(pMachineWindow->screenId()))
             visibleMachineWindows << pMachineWindow;
     if (   !darwinScreensHaveSeparateSpaces()
         || m_fullscreenMachineWindows == visibleMachineWindows)
