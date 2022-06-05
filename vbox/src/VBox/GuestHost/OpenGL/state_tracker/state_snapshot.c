@@ -1,4 +1,4 @@
-/* $Id: state_snapshot.c 50100 2014-01-17 18:32:44Z vboxsync $ */
+/* $Id: state_snapshot.c 50429 2014-02-12 15:55:20Z vboxsync $ */
 
 /** @file
  * VBox Context state saving/loading used by VM snapshot
@@ -1448,7 +1448,9 @@ static int32_t crStateLoadKeys(CRHashTable *pHash, PSSMHANDLE pSSM, uint32_t u32
             for (i = u32Key; i < u32Count + u32Key; ++i)
             {
                 GLboolean fIsNew = crHashtableAllocRegisterKey(pHash, i);
+#if 0 //def DEBUG_misha
                 CRASSERT(fIsNew);
+#endif
             }
         }
     }
