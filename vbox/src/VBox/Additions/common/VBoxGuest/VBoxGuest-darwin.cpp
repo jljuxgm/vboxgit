@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-darwin.cpp 50722 2014-03-07 04:07:46Z vboxsync $ */
+/* $Id: VBoxGuest-darwin.cpp 51115 2014-04-22 10:05:08Z vboxsync $ */
 /** @file
  * VBoxGuest - Darwin Specifics.
  */
@@ -453,7 +453,7 @@ static int VbgdDarwinIOCtl(dev_t Dev, u_long iCmd, caddr_t pData, int fFlags, st
      */
     RTSpinlockAcquire(g_Spinlock);
     pSession = g_apSessionHashTab[iHash];
-    while (pSession && pSession->Process != Process /*later: && pSession->fUnrestricted == fUnrestricted*/ && pSession->fOpened)
+    while (pSession && pSession->Process != Process && (/*later: pSession->fUnrestricted != fUnrestricted ||*/  !pSession->fOpened))
         pSession = pSession->pNextHash;
     RTSpinlockReleaseNoInts(g_Spinlock);
     if (!pSession)
