@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 50493 2014-02-18 14:02:26Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 50498 2014-02-18 16:23:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -505,7 +505,12 @@ Qt::WindowFlags UIMachineWindow::windowFlags(UIVisualStateType visualStateType)
     switch (visualStateType)
     {
         case UIVisualStateType_Normal: return Qt::Window;
+#ifdef Q_WS_MAC
+        /* We want normal window for native fullscreen mode on ML and next: */
+        case UIVisualStateType_Fullscreen: return vboxGlobal().osRelease() > MacOSXRelease_Lion ? Qt::Window : Qt::FramelessWindowHint;
+#else /* !Q_WS_MAC */
         case UIVisualStateType_Fullscreen: return Qt::FramelessWindowHint;
+#endif /* !Q_WS_MAC */
         case UIVisualStateType_Seamless: return Qt::FramelessWindowHint;
         case UIVisualStateType_Scale: return Qt::Window;
     }
