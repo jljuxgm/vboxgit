@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 49698 2013-11-28 11:44:37Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 50042 2014-01-09 16:25:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineMenuBar class implementation.
  */
@@ -472,6 +472,8 @@ void UIMachineMenuBar::prepareMenuDevices(QMenu *pMenu)
     if (m_pSession->allowedActionsMenuDevices() & RuntimeMenuDevicesActionType_VRDEServer)
     {
         pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_VRDEServer));
+        if (!m_pSession->isExtensionPackUsable())
+            gActionPool->action(UIActionIndexRuntime_Toggle_VRDEServer)->setEnabled(false);
         fSeparator2 = true;
     }
     else

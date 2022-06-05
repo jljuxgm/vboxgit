@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 49989 2013-12-19 16:06:21Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 50042 2014-01-09 16:25:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -398,9 +398,9 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
                                  "However, this requires the <b>%1</b> to be installed. "
                                  "Please install the Extension Pack from the VirtualBox download site as "
                                  "otherwise your VM will be started with Remote Display disabled.")
-                                .arg(GUI_ExtPackName);
+                                 .arg(GUI_ExtPackName);
         }
-#endif
+#endif VBOX_WITH_EXTPACK
 
         /* Check VRDE server port: */
         if (m_pEditorRemoteDisplayPort->text().trimmed().isEmpty())
