@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 49787 2013-12-05 11:26:00Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 49965 2013-12-17 20:20:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -749,7 +749,7 @@ int VBOXCALL    supdrvOSMsrProberModify(RTCPUID idCpu, PSUPMSRPROBER pReq);
 #endif /* SUPDRV_WITH_MSR_PROBER */
 
 #if defined(RT_OS_DARWIN)
-int VBOXCALL    supdrvDarwinResumeBuiltinKbd(void);
+int VBOXCALL    supdrvDarwinResumeSuspendedKbds(void);
 #endif
 
 /*******************************************************************************

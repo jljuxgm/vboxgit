@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 49957 2013-12-17 15:26:35Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 49965 2013-12-17 20:20:45Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -1280,8 +1280,8 @@ static int darwinLedElementSetValue(IOHIDDeviceRef hidDevice, IOHIDElementRef el
     IOHIDValueRef valueRef;
     IOReturn      rc = kIOReturnError;
 
-    /* Try to resume built-in keyboard. Abort if failed in order to avoid GUI freezes. */
-    int rc1 = SUPR3ResumeBuiltinKeyboard();
+    /* Try to resume suspended keyboard devices. Abort if failed in order to avoid GUI freezes. */
+    int rc1 = SUPR3ResumeSuspendedKeyboards();
     if (RT_FAILURE(rc1))
         return rc1;
 
@@ -1307,8 +1307,8 @@ static int darwinLedElementGetValue(IOHIDDeviceRef hidDevice, IOHIDElementRef el
     IOReturn      rc;
     CFIndex       integerValue;
 
-    /* Try to resume built-in keyboard. Abort if failed in order to avoid GUI freezes. */
-    int rc1 = SUPR3ResumeBuiltinKeyboard();
+    /* Try to resume suspended keyboard devices. Abort if failed in order to avoid GUI freezes. */
+    int rc1 = SUPR3ResumeSuspendedKeyboards();
     if (RT_FAILURE(rc1))
         return rc1;
 
