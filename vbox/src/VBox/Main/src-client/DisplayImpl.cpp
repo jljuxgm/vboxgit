@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 51513 2014-06-03 14:36:21Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 51525 2014-06-04 08:32:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -596,6 +596,8 @@ HRESULT Display::init(Console *aParent)
     AssertReturn(autoInitSpan.isOk(), E_FAIL);
 
     unconst(mParent) = aParent;
+
+    mfSourceBitmapEnabled = true;
 
     ULONG ul;
     mParent->machine()->COMGETTER(MonitorCount)(&ul);
@@ -2365,6 +2367,34 @@ int Display::videoAccelRefreshProcess(void)
     return rc;
 }
 
+void Display::notifyPowerDown(void)
+{
+    LogRelFlowFunc(("\n"));
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    /* Source bitmaps are not available anymore. */
+    mfSourceBitmapEnabled = false;
+
+    /* Resize all displays to tell framebuffers to forget current source bitmap. */
+    unsigned uScreenId = mcMonitors;
+    while (uScreenId > 0)
+    {
+        --uScreenId;
+
+        DISPLAYFBINFO *pFBInfo = &maFramebuffers[uScreenId];
+        if (!pFBInfo->fDisabled)
+        {
+            handleDisplayResize(uScreenId, 32,
+                                NULL,
+                                0,
+                                pFBInfo->w,
+                                pFBInfo->h,
+                                0);
+        }
+    }
+}
+
 // IDisplay methods
 /////////////////////////////////////////////////////////////////////////////
 STDMETHODIMP Display::GetScreenResolution(ULONG aScreenId,
@@ -3727,6 +3757,12 @@ HRESULT Display::querySourceBitmap(ULONG aScreenId,
                                    IDisplaySourceBitmap **ppDisplaySourceBitmap)
 {
     HRESULT hr = S_OK;
+
+    if (!mfSourceBitmapEnabled)
+    {
+        *ppDisplaySourceBitmap = NULL;
+        return E_FAIL;
+    }
 
     DISPLAYFBINFO *pFBInfo = &maFramebuffers[aScreenId];
     if (pFBInfo->pSourceBitmap.isNull())

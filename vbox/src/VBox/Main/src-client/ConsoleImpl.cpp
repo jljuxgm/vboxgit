@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 51525 2014-06-04 08:32:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7349,6 +7349,15 @@ HRESULT Console::powerDown(IProgress *aProgress /*= NULL*/)
      * DONE with necessary state changes, perform the power down actions (it's
      * safe to release the object lock now if needed)
      * ---------------------------------------------------------------------- */
+
+    if (mDisplay)
+    {
+        alock.release();
+
+        mDisplay->notifyPowerDown();
+
+        alock.acquire();
+    }
 
     /* Stop the VRDP server to prevent new clients connection while VM is being
      * powered off. */

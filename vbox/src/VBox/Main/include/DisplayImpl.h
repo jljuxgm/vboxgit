@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: DisplayImpl.h 51525 2014-06-04 08:32:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -215,6 +215,8 @@ public:
     void VideoCaptureStop();
     int  VideoCaptureEnableScreens(ComSafeArrayIn(BOOL, aScreens));
 
+    void notifyPowerDown(void);
+
     // IEventListener methods
     STDMETHOD(HandleEvent)(IEvent * aEvent);
 
@@ -329,6 +331,8 @@ private:
 
     unsigned mcMonitors;
     DISPLAYFBINFO maFramebuffers[SchemaDefs::MaxGuestMonitors];
+
+    bool mfSourceBitmapEnabled;
 
     /* arguments of the last handleDisplayResize() call */
     void       *mLastAddress;
