@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 50816 2014-03-19 07:47:53Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 50916 2014-03-28 11:52:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -325,8 +325,6 @@ void UIMachineWindowFullscreen::placeOnScreen()
     /* Move mini-toolbar into appropriate place: */
     if (m_pMiniToolBar)
         m_pMiniToolBar->adjustGeometry();
-    /* Process pending move & resize events: */
-    qApp->processEvents();
 }
 
 void UIMachineWindowFullscreen::showInNecessaryMode()

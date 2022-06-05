@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 50816 2014-03-19 07:47:53Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 50916 2014-03-28 11:52:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -214,8 +214,6 @@ void UIMachineWindowSeamless::placeOnScreen()
     if (m_pMiniToolBar)
         m_pMiniToolBar->adjustGeometry();
 #endif /* !Q_WS_MAC */
-    /* Process pending move & resize events: */
-    qApp->processEvents();
 }
 
 void UIMachineWindowSeamless::showInNecessaryMode()
