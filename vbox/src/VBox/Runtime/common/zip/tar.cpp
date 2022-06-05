@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 50154 2014-01-21 19:51:00Z vboxsync $ */
+/* $Id: tar.cpp 50180 2014-01-23 13:31:19Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -455,6 +455,7 @@ DECLINLINE(int) rtTarAppendZeros(RTTARFILE hFile, uint64_t cbSize)
     return rc;
 }
 
+/* Only used for write handles when RT_USE_TAR_VFS_FOR_ALL_READS is defined. */
 DECLINLINE(PRTTARFILEINTERNAL) rtCreateTarFileInternal(PRTTARINTERNAL pInt, const char *pszFilename, uint32_t fOpen)
 {
     PRTTARFILEINTERNAL pFileInt = (PRTTARFILEINTERNAL)RTMemAllocZ(sizeof(RTTARFILEINTERNAL));
@@ -462,9 +463,7 @@ DECLINLINE(PRTTARFILEINTERNAL) rtCreateTarFileInternal(PRTTARINTERNAL pInt, cons
         return NULL;
 
     pFileInt->u32Magic = RTTARFILE_MAGIC;
-#ifndef RT_USE_TAR_VFS_FOR_ALL_READS
     pFileInt->pTar = pInt;
-#endif
     pFileInt->fOpenMode = fOpen;
     pFileInt->pszFilename = RTStrDup(pszFilename);
     if (!pFileInt->pszFilename)
