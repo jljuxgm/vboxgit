@@ -1,5 +1,5 @@
 @echo off
-REM $Id: comregister.cmd 52397 2014-08-18 15:46:28Z vboxsync $
+REM $Id: comregister.cmd 52418 2014-08-19 15:38:59Z vboxsync $
 REM
 REM Script to register the VirtualBox COM classes
 REM (both inproc and out-of-process)
@@ -18,6 +18,11 @@ REM hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 REM
 
 setlocal
+
+REM Check if the current user is an administrator. Otherwise
+REM all the COM registration will fail silently.
+NET FILE 1>NUL 2>NUL & IF ERRORLEVEL 1 ^
+    (ECHO Must be run as Administrator. Exiting.) & GOTO end
 
 REM
 REM Figure out where the script lives first, so that we can invoke the
