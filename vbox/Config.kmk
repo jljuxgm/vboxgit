@@ -1,4 +1,4 @@
-# $Id: Config.kmk 50463 2014-02-14 10:29:32Z vboxsync $
+# $Id: Config.kmk 50465 2014-02-14 10:35:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5381,10 +5381,10 @@ ifeq ($(KBUILD_TARGET),x86)
  VBOX_LIB_VBGL_R3_X86            = $(VBOX_LIB_VBGL_R3)
  VBOX_LIB_VBGL_R3_SHARED_X86     = $(VBOX_LIB_VBGL_R3_SHARED)
 else
- VBOX_LIB_IPRT_GUEST_R3_X86      = $(VBOX_PATH_ADDITIONS_LIB)/RuntimeGuestR3-x86$(VBOX_SUFF_LIB) \
-				   $(if $(VBOX_WITH_DRAG_AND_DROP),$(VBOX_PATH_ADDITIONS_LIB)//VBoxDnDGuestR3Lib$(VBOX_SUFF_LIB))
+ VBOX_LIB_IPRT_GUEST_R3_X86      = $(VBOX_PATH_ADDITIONS_LIB)/RuntimeGuestR3-x86$(VBOX_SUFF_LIB)
  VBOX_LIB_IPRT_GUEST_R3_SHARED_X86 = $(VBOX_PATH_ADDITIONS_LIB)/RuntimeGuestR3Shared-x86$(VBOX_SUFF_LIB)
- VBOX_LIB_VBGL_R3_X86            = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR3Lib-x86$(VBOX_SUFF_LIB)
+ VBOX_LIB_VBGL_R3_X86            = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR3Lib-x86$(VBOX_SUFF_LIB) \
+				   $(if $(VBOX_WITH_DRAG_AND_DROP),$(VBOX_PATH_ADDITIONS_LIB)/VBoxDnDGuestR3Lib-x86$(VBOX_SUFF_LIB))
  VBOX_LIB_VBGL_R3_SHARED_X86     = $(VBOX_PATH_ADDITIONS_LIB)/VBoxGuestR3LibShared-x86$(VBOX_SUFF_LIB)
 endif
 
@@ -5575,7 +5575,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 50463 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 50465 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

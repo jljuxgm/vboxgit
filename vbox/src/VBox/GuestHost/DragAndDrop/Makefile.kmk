@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50460 2014-02-14 09:46:58Z vboxsync $
+# $Id: Makefile.kmk 50465 2014-02-14 10:35:24Z vboxsync $
 ## @file
 # Sub-Makefile for the shared DnD code for both host and guest.
 #
@@ -33,6 +33,10 @@ ifdef VBOX_WITH_ADDITIONS
  VBoxDnDGuestR3Lib_TEMPLATE = VBOXGUESTR3LIB
  VBoxDnDGuestR3Lib_DEFS     =
  VBoxDnDGuestR3Lib_SOURCES  = $(VBOX_DND_GUESTHOST_FILES)
+
+ LIBRARIES.win.amd64 += VBoxDnDGuestR3Lib-x86
+ VBoxDnDGuestR3Lib-x86_EXTENDS      := VBoxDnDGuestR3Lib
+ VBoxDnDGuestR3Lib-x86_BLD_TRG_ARCH := x86
 endif
 
 #
