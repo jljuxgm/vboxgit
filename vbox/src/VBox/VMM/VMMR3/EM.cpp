@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 47808 2013-08-16 12:56:26Z vboxsync $ */
+/* $Id: EM.cpp 48130 2013-08-28 17:14:38Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2526,6 +2526,8 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                             rc = VINF_EM_RESCHEDULE;
                         }
                     }
+                    else if (TRPMHasTrap(pVCpu))
+                        rc = VINF_EM_RESCHEDULE;
                     else
                         rc = VMR3WaitHalted(pVM, pVCpu, !(CPUMGetGuestEFlags(pVCpu) & X86_EFL_IF));
 
