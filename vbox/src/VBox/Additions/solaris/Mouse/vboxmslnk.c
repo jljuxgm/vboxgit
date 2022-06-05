@@ -1,4 +1,4 @@
-/* $Id: vboxmslnk.c 50725 2014-03-07 13:03:58Z vboxsync $ */
+/* $Id: vboxmslnk.c 50726 2014-03-07 13:04:59Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris: user space loader tool.
  */
@@ -109,7 +109,7 @@ void handleArgs(int argc, char *argv[], int *pfNoLogo)
                "All rights reserved.\n\n");
     if (fShowUsage)
     {
-        printf("Usage:\n  -V|--version  print the tool vesion.\n"
+        printf("Usage:\n  -V|--version  print the tool version.\n"
                "  --nologo      do not display the logo text and only output the connection\n"
                "                ID number needed to disable pointer integration\n"
                "                again.\n"
