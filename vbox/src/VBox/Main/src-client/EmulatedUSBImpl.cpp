@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 48631 2013-09-23 10:46:00Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.cpp 48969 2013-10-08 10:53:53Z vboxsync $ */
 /** @file
  *
  * Emulated USB manager implementation.
@@ -125,10 +125,9 @@ class EUSBWEBCAM /* : public EUSBDEVICE */
     for (it = pThis->mDrvSettings.begin(); it != pThis->mDrvSettings.end(); ++it)
         CFGMR3InsertString(pConfig, it->first.c_str(), it->second.c_str());
 
+    /* pInstance will be used by PDM and deallocated on error. */
     int rc = PDMR3UsbCreateEmulatedDevice(pUVM, "Webcam", pInstance, &pThis->mUuid);
     LogRelFlowFunc(("PDMR3UsbCreateEmulatedDevice %Rrc\n", rc));
-    if (RT_FAILURE(rc) && pInstance)
-        CFGMR3RemoveNode(pInstance);
     return rc;
 }
 
