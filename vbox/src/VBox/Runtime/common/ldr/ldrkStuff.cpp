@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 49044 2013-10-11 01:06:28Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 49045 2013-10-11 02:24:24Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -108,7 +108,7 @@ static int rtkldrConvertError(int krc)
         case KERR_INVALID_PARAMETER:                        return VERR_INVALID_PARAMETER;
         case KERR_INVALID_HANDLE:                           return VERR_INVALID_HANDLE;
         case KERR_NO_MEMORY:                                return VERR_NO_MEMORY;
-
+        case KLDR_ERR_CPU_ARCH_MISMATCH:                    return VERR_LDR_ARCH_MISMATCH;
 
         case KLDR_ERR_UNKNOWN_FORMAT:
         case KLDR_ERR_MZ_NOT_SUPPORTED:                     return VERR_MZ_EXE_NOT_SUPPORTED;
