@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 46035 2013-05-13 16:47:40Z vboxsync $ */
+/* $Id: log-vbox.cpp 48189 2013-08-30 12:36:50Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -423,6 +423,15 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
 # endif /* IN_GUEST */
 
 #else /* IN_RING0 */
+
+    /* Some platforms has trouble allocating memory with interrupts and/or
+       preemption disabled. Check and fail before we panic. */
+# if defined(RT_OS_DARWIN)
+    if (   !ASMIntAreEnabled()
+        || !RTThreadPreemptIsEnabled(NIL_RTTHREAD))
+        return NULL;
+# endif
+
 # ifndef IN_GUEST
     rc = RTLogCreate(&pLogger, 0, NULL, "VBOX_LOG", RT_ELEMENTS(g_apszGroups), &g_apszGroups[0], RTLOGDEST_FILE, "VBox-ring0.log");
 # else  /* IN_GUEST */
