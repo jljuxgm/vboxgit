@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 51517 2014-06-04 04:52:30Z vboxsync $ */
+/* $Id: STAM.cpp 52841 2014-09-24 13:41:13Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -1129,7 +1129,7 @@ static void stamR3LookupMaybeFree(PSTAMLOOKUP pLookup)
     if (pCur->cDescsInTree > 0)
         return;
     PSTAMLOOKUP pParent = pCur->pParent;
-    if (pParent)
+    if (!pParent)
         return;
 
     if (pParent->cDescsInTree == 0 && pParent->pParent)
