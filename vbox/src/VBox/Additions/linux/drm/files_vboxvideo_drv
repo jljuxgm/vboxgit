@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxvideo_drv 48444 2013-09-12 09:54:33Z vboxsync $
+# $Id: files_vboxvideo_drv 50546 2014-02-21 15:46:57Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -48,6 +48,7 @@ FILES_VBOXVIDEO_DRM_NOBIN=" \
     ${PATH_ROOT}/include/VBox/HGSMI/HGSMI.h=>include/VBox/HGSMI/HGSMI.h \
     ${PATH_ROOT}/include/VBox/HGSMI/HGSMIChannels.h=>include/VBox/HGSMI/HGSMIChannels.h \
     ${PATH_ROOT}/include/VBox/HGSMI/HGSMIChSetup.h=>include/VBox/HGSMI/HGSMIChSetup.h \
+    ${PATH_ROOT}/include/VBox/HGSMI/HGSMIDefs.h=>include/VBox/HGSMI/HGSMIDefs.h \
     ${PATH_ROOT}/include/VBox/Hardware/VBoxVideoVBE.h=>include/VBox/Hardware/VBoxVideoVBE.h \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxVideo/HGSMIBase.cpp=>HGSMIBase.c \
     ${PATH_ROOT}/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp=>Modesetting.c \
