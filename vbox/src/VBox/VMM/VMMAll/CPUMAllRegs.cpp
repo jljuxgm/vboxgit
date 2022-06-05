@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 51301 2014-05-20 04:47:59Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 51720 2014-06-25 04:57:53Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -902,7 +902,7 @@ static int cpumQueryGuestMsrInt(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
 
         case MSR_IA32_APICBASE:
         {
-            /* See @bugref{7097} comment 6. */
+            /* See @bugref{7097} comment #6. */
             PVM pVM = pVCpu->CTX_SUFF(pVM);
             if (PDMHasApic(pVM))
                 *puValue = pVCpu->cpum.s.Guest.msrApicBase;
