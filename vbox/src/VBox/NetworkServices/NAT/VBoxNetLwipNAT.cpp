@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 50488 2014-02-18 01:30:46Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 50494 2014-02-18 14:21:10Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -14,6 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+/* Must be included before winutils.h (lwip/def.h), otherwise Windows build breaks. */
+#include <iprt/cpp/mem.h>
 
 #include "winutils.h"
 
@@ -48,7 +51,6 @@
 #include <iprt/req.h>
 #include <iprt/file.h>
 #include <iprt/semaphore.h>
-#include <iprt/cpp/mem.h>
 #include <iprt/cpp/utils.h>
 #define LOG_GROUP LOG_GROUP_NAT_SERVICE
 #include <VBox/log.h>
