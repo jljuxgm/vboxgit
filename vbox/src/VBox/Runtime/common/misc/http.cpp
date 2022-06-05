@@ -1,4 +1,4 @@
-/* $Id: http.cpp 52217 2014-07-28 19:12:48Z vboxsync $ */
+/* $Id: http.cpp 53074 2014-10-16 10:37:19Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -487,6 +487,9 @@ RTR3DECL(int) rtHttpGet(RTHTTP hHttp, const char *pcszUrl, uint8_t **ppvResponse
     rcCurl = curl_easy_setopt(pHttpInt->pCurl, CURLOPT_NOPROGRESS, (long)0);
     if (CURL_FAILED(rcCurl))
         return VERR_INTERNAL_ERROR;
+    rcCurl = curl_easy_setopt(pHttpInt->pCurl, CURLOPT_SSLVERSION, (long)CURL_SSLVERSION_TLSv1);
+    if (CURL_FAILED(rcCurl))
+        return VERR_INVALID_PARAMETER;
 
     rcCurl = curl_easy_perform(pHttpInt->pCurl);
     int rc = rtHttpGetCalcStatus(pHttpInt, rcCurl);
