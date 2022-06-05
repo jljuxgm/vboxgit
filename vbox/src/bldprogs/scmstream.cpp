@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 41217 2012-05-08 20:18:36Z vboxsync $ */
+/* $Id: scmstream.cpp 48959 2013-10-07 22:10:40Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -1357,6 +1357,4 @@ const char *ScmStreamCGetWordM1(PSCMSTREAM pStream, size_t *pcchWord)
     *pcchWord = off;
     return psz;
 }
-
-
 
