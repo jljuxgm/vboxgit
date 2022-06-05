@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 51931 2014-07-08 13:20:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -132,4 +132,10 @@ const char* UIExtraDataDefs::GUI_CloseActionHook = "GUI/CloseActionHook";
 const char* UIExtraDataDefs::GUI_Dbg_Enabled = "GUI/Dbg/Enabled";
 const char* UIExtraDataDefs::GUI_Dbg_AutoShow = "GUI/Dbg/AutoShow";
 #endif /* VBOX_WITH_DEBUGGER_GUI */
+
+#ifdef DEBUG
+/* VirtualBox: Extra-data Manager window: */
+const char* UIExtraDataDefs::GUI_ExtraDataManager_Geometry = "GUI/ExtraDataManager/Geometry";
+const char* UIExtraDataDefs::GUI_ExtraDataManager_SplitterHints = "GUI/ExtraDataManager/SplitterHints";
+#endif /* DEBUG */
 
