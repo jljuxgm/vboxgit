@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 51265 2014-05-15 18:04:22Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 51275 2014-05-16 14:37:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -73,11 +73,13 @@ NativeNSImageRef darwinToNSImageRef(const QImage *pImage)
     CGImageRef pCGImage = ::darwinToCGImageRef(pImage);
     NativeNSImageRef pNSImage = ::darwinToNSImageRef(pCGImage);
     CGImageRelease(pCGImage);
+#ifdef VBOX_GUI_WITH_HIDPI
     /* Apply device pixel ratio: */
     double dScaleFactor = pImage->devicePixelRatio();
     NSSize imageSize = { (CGFloat)pImage->width() / dScaleFactor,
                          (CGFloat)pImage->height() / dScaleFactor };
     [pNSImage setSize:imageSize];
+#endif /* VBOX_GUI_WITH_HIDPI */
     /* Return result: */
     return pNSImage;
 }
