@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 49628 2013-11-22 15:17:39Z vboxsync $ */
+/* $Id: vboxvideo.c 49639 2013-11-25 11:56:00Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1226,11 +1226,10 @@ static void VBOXLeaveVT(ScrnInfoPtr pScrn)
     if (pVBox->useDRI)
         DRILock(xf86ScrnToScreen(pScrn), 0);
 #elif defined(VBOX_DRI)  /* DRI2 */
-    if (pVBox->drmFD >= 0)
+    if (   pVBox->drmFD < 0
         /* Tell the kernel driver, if present, that it can use the framebuffer
          * driver again. */
-        drmIoctl(pVBox->drmFD, VBOXVIDEO_IOCTL_ENABLE_HGSMI, NULL);
-    else
+        || drmIoctl(pVBox->drmFD, VBOXVIDEO_IOCTL_ENABLE_HGSMI, NULL) < 0)
 #endif
         VBOXRestoreMode(pScrn);
     TRACE_EXIT();
@@ -1250,20 +1249,19 @@ static Bool VBOXCloseScreen(ScreenPtr pScreen)
         vboxClearVRAM(pScrn, 0, 0);
     }
 #ifdef VBOX_DRI
-# ifndef VBOX_DRI_OLD  /* DRI2 */
-    if (pVBox->drmFD >= 0)
-        /* Tell the kernel driver, if present, that we are going away. */
-        drmIoctl(pVBox->drmFD, VBOXVIDEO_IOCTL_ENABLE_HGSMI, NULL);
-# endif
     if (pVBox->useDRI)
         VBOXDRICloseScreen(pScreen, pVBox);
     pVBox->useDRI = false;
+# ifndef VBOX_DRI_OLD  /* DRI2 */
+    if (   pVBox->drmFD < 0
+        /* Tell the kernel driver, if present, that we are going away. */
+        || drmIoctl(pVBox->drmFD, VBOXVIDEO_IOCTL_ENABLE_HGSMI, NULL) < 0)
+# endif
 #endif
-
-    if (pScrn->vtSema) {
-        VBOXRestoreMode(pScrn);
+        if (pScrn->vtSema)
+            VBOXRestoreMode(pScrn);
+    if (pScrn->vtSema)
         VBOXUnmapVidMem(pScrn);
-    }
     pScrn->vtSema = FALSE;
 
     /* Do additional bits which are separate for historical reasons */
