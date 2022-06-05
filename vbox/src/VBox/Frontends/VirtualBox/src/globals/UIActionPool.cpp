@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 51375 2014-05-23 15:59:40Z vboxsync $ */
+/* $Id: UIActionPool.cpp 51378 2014-05-23 17:37:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -269,6 +269,11 @@ UIActionMenu::UIActionMenu(UIActionPool *pParent,
     if (!icon.isNull())
         setIcon(icon);
     setMenu(new UIMenu);
+}
+
+void UIActionMenu::updateText()
+{
+    setText(nameInMenu());
 }
 
 
