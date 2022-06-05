@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 51469 2014-05-30 11:49:42Z vboxsync $ */
+/* $Id: VBoxTray.cpp 51473 2014-05-30 13:14:49Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -28,7 +28,6 @@
 #include "VBoxSeamless.h"
 #include "VBoxClipboard.h"
 #include "VBoxDisplay.h"
-#include "VBoxRestore.h"
 #include "VBoxVRDP.h"
 #include "VBoxHostVersion.h"
 #include "VBoxSharedFolders.h"
