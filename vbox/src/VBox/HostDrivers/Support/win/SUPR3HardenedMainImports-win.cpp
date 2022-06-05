@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMainImports-win.cpp 52374 2014-08-13 22:23:44Z vboxsync $ */
+/* $Id: SUPR3HardenedMainImports-win.cpp 52375 2014-08-14 01:25:12Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened Main, Windows Import Trickery.
  */
@@ -596,5 +596,9 @@ DECLHIDDEN(void) supR3HardenedWinInitImports(void)
                 SUPHNTIMP_ERROR(21, "supR3HardenedWinInitImports", kSupInitOp_Misc, rc,
                                 "%ls: supHardNtLdrCacheOpen failed: %Rrc '%s'.", g_aSupNtImpDlls[iDll].pwszName, rc);
         }
+
+#if 0 /* Win7/32 ntdll!LdrpDebugFlags. */
+    *(uint8_t *)&g_aSupNtImpDlls[0].pbImageBase[0xdd770] = 0x3;
+#endif
 }
 

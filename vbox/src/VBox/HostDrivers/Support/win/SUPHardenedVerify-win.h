@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 52373 2014-08-13 20:24:31Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52375 2014-08-14 01:25:12Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -42,6 +42,7 @@ RT_C_DECLS_BEGIN
 # ifdef RT_OS_WINDOWS
 DECLHIDDEN(int)     supHardenedWinInitImageVerifier(PRTERRINFO pErrInfo);
 DECLHIDDEN(void)    supHardenedWinTermImageVerifier(void);
+DECLHIDDEN(void)    supR3HardenedWinVerifyCachePreload(PCRTUTF16 pwszName);
 
 typedef enum SUPHARDNTVPKIND
 {
@@ -57,6 +58,7 @@ DECLHIDDEN(bool)    supHardViUniStrPathStartsWithUniStr(UNICODE_STRING const *pU
 DECLHIDDEN(bool)    supHardViUtf16PathStartsWithEx(PCRTUTF16 pwszLeft, uint32_t cwcLeft,
                                                 PCRTUTF16 pwszRight, uint32_t cwcRight, bool fCheckSlash);
 DECLHIDDEN(bool)    supHardViIsAppPatchDir(PCRTUTF16 pwszPath, uint32_t cwcName);
+
 
 /**
  * SUP image verifier loader reader instance.
