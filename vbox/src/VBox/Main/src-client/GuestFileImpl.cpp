@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 48720 2013-09-26 15:56:16Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 48770 2013-09-30 13:09:20Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -1414,6 +1414,7 @@ STDMETHODIMP GuestFile::Write(ComSafeArrayIn(BYTE, aData), ULONG aTimeoutMS, ULO
 #else
     LogFlowThisFuncEnter();
 
+    CheckComArgSafeArrayNotNull(aData);
     CheckComArgOutPointerValid(aWritten);
 
     AutoCaller autoCaller(this);
@@ -1448,6 +1449,7 @@ STDMETHODIMP GuestFile::WriteAt(LONG64 aOffset, ComSafeArrayIn(BYTE, aData), ULO
 #else
     LogFlowThisFuncEnter();
 
+    CheckComArgSafeArrayNotNull(aData);
     CheckComArgOutPointerValid(aWritten);
 
     AutoCaller autoCaller(this);

@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 47905 2013-08-20 12:47:22Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 48770 2013-09-30 13:09:20Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1945,6 +1945,7 @@ STDMETHODIMP GuestProcess::Write(ULONG aHandle, ULONG aFlags,
 #else
     LogFlowThisFuncEnter();
 
+    CheckComArgSafeArrayNotNull(aData);
     CheckComArgOutPointerValid(aWritten);
 
     AutoCaller autoCaller(this);
@@ -1989,6 +1990,7 @@ STDMETHODIMP GuestProcess::WriteArray(ULONG aHandle, ComSafeArrayIn(ProcessInput
 #else
     LogFlowThisFuncEnter();
 
+    CheckComArgSafeArrayNotNull(aData);
     CheckComArgOutPointerValid(aWritten);
 
     AutoCaller autoCaller(this);
