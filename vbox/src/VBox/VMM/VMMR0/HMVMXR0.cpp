@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 51961 2014-07-10 08:55:01Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 51981 2014-07-11 06:16:19Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -975,7 +975,13 @@ static int hmR0VmxStructsAlloc(PVM pVM)
                 goto cleanup;
         }
 
-        /* Allocate the MSR-bitmap if supported by the CPU. The MSR-bitmap is for transparent accesses of specific MSRs. */
+        /*
+         * Allocate the MSR-bitmap if supported by the CPU. The MSR-bitmap is for
+         * transparent accesses of specific MSRs.
+         *
+         * If the condition for enabling MSR bitmaps changes here, don't forget to
+         * update HMIsMsrBitmapsAvailable().
+         */
         if (pVM->hm.s.vmx.Msrs.VmxProcCtls.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC_USE_MSR_BITMAPS)
         {
             rc = hmR0VmxPageAllocZ(&pVCpu->hm.s.vmx.hMemObjMsrBitmap, &pVCpu->hm.s.vmx.pvMsrBitmap,
