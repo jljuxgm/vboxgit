@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50389 2014-02-10 13:32:55Z vboxsync $
+# $Id: Makefile.kmk 50500 2014-02-18 19:11:17Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -181,7 +181,8 @@ tstGuestCtrlParseBuffer_DEFS    += VBOX_WITH_HGCM VBOX_WITH_GUEST_CONTROL VBOX_G
 tstGuestCtrlParseBuffer_SOURCES  = \
 	tstGuestCtrlParseBuffer.cpp \
 	../src-client/GuestCtrlPrivate.cpp
-tstGuestCtrlParseBuffer_INCS     = ../include
+tstGuestCtrlParseBuffer_INCS     = ../include \
+								   $(VBOX_MAIN_APIWRAPPER_INCS)
 
 
 #
@@ -192,7 +193,8 @@ tstGuestCtrlContextID_DEFS    += VBOX_WITH_HGCM VBOX_WITH_GUEST_CONTROL VBOX_GUE
 tstGuestCtrlContextID_SOURCES  = \
 	tstGuestCtrlContextID.cpp \
 	../src-client/GuestCtrlPrivate.cpp
-tstGuestCtrlContextID_INCS     = ../include
+tstGuestCtrlContextID_INCS     = ../include \
+								 $(VBOX_MAIN_APIWRAPPER_INCS)
 
 
 #

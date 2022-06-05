@@ -1,11 +1,11 @@
 
-/* $Id: GuestFileImpl.h 49504 2013-11-15 13:19:45Z vboxsync $ */
+/* $Id: GuestFileImpl.h 50500 2014-02-18 19:11:17Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -22,7 +22,6 @@
 #include "VirtualBoxBase.h"
 #include "EventImpl.h"
 
-#include "GuestFsObjInfoImpl.h"
 #include "GuestCtrlImplPrivate.h"
 
 class Console;
