@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 50953 2014-04-02 14:47:00Z vboxsync $ */
+/* $Id: GIMInternal.h 50994 2014-04-08 12:30:50Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -52,6 +52,10 @@ typedef struct GIM
     {
         struct
         {
+        } minimal;
+
+        struct
+        {
             /** Hypervisor system identity - Minor version number. */
             uint16_t                 uVersionMinor;
             /** Hypervisor system identity - Major version number. */
@@ -65,9 +69,7 @@ typedef struct GIM
             uint64_t                 u64TscPageMsr;
         } hv;
 
-        struct
-        {
-        } kvm;
+        /** @todo KVM and others. */
     } u;
 } GIM;
 /** Pointer to GIM VM instance data. */
