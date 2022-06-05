@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 48998 2013-10-09 11:41:26Z vboxsync $ */
+/* $Id: HM.cpp 49000 2013-10-09 12:22:39Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2980,8 +2980,9 @@ static DECLCALLBACK(int) hmR3Save(PVM pVM, PSSMHANDLE pSSM)
         AssertRCReturn(rc, rc);
         rc = SSMR3PutU32(pSSM, pVM->aCpus[i].hm.s.Event.u32ErrCode);
         AssertRCReturn(rc, rc);
-        rc = SSMR3PutU64(pSSM, pVM->aCpus[i].hm.s.Event.u64IntrInfo);
+        rc = SSMR3PutU64(pSSM, pVM->aCpus[i].hm.s.Event.u64IntInfo);
         AssertRCReturn(rc, rc);
+        /** @todo Shouldn't we be saving GCPtrFaultAddress too? */
 
         /** @todo We only need to save pVM->aCpus[i].hm.s.vmx.fWasInRealMode and
          *        perhaps not even that (the initial value of @c true is safe. */
@@ -3078,7 +3079,7 @@ static DECLCALLBACK(int) hmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, u
         AssertRCReturn(rc, rc);
         rc = SSMR3GetU32(pSSM, &pVM->aCpus[i].hm.s.Event.u32ErrCode);
         AssertRCReturn(rc, rc);
-        rc = SSMR3GetU64(pSSM, &pVM->aCpus[i].hm.s.Event.u64IntrInfo);
+        rc = SSMR3GetU64(pSSM, &pVM->aCpus[i].hm.s.Event.u64IntInfo);
         AssertRCReturn(rc, rc);
 
         if (uVersion >= HM_SSM_VERSION_NO_PATCHING)
