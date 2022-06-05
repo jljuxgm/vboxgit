@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.h 49960 2013-12-17 17:24:57Z vboxsync $ */
+/* $Id: SnapshotImpl.h 50504 2014-02-19 13:17:43Z vboxsync $ */
 
 /** @file
  *
@@ -58,7 +58,7 @@ public:
      * Override of the default locking class to be used for validating lock
      * order with the standard member lock handle.
      */
-    virtual VBoxLockingClass i_getLockingClass() const
+    virtual VBoxLockingClass getLockingClass() const
     {
         return LOCKCLASS_SNAPSHOTOBJECT;
     }
