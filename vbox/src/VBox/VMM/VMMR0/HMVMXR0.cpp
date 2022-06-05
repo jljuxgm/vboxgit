@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49852 2013-12-09 18:09:21Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49853 2013-12-09 18:13:24Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10192,6 +10192,7 @@ HMVMX_EXIT_DECL hmR0VmxExitMovCRx(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
         {
             /* EMInterpretCRxRead() requires EFER MSR, CS. */
             rc  = hmR0VmxSaveGuestSegmentRegs(pVCpu, pMixedCtx);
+            rc |= hmR0VmxSaveGuestControlRegs(pVCpu, pMixedCtx);
             AssertRCReturn(rc, rc);
             Assert(   !pVM->hm.s.fNestedPaging
                    || !CPUMIsGuestPagingEnabledEx(pMixedCtx)
