@@ -1,6 +1,6 @@
-/* $Id: RTPathStripExt.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
+/* $Id: RTPathStripExt.cpp 50791 2014-03-14 16:19:08Z vboxsync $ */
 /** @file
- * IPRT - RTPathStripExt
+ * IPRT - RTPathStripSuffix
  */
 
 /*
