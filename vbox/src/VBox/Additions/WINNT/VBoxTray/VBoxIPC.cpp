@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 47960 2013-08-21 10:32:05Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 47973 2013-08-21 14:25:52Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -127,7 +127,7 @@ static int vboxIPCHandleUserLastInput(PVBOXIPCSESSION pSession, PVBOXTRAYIPCHEAD
         if (fRc)
         {
             VBOXTRAYIPCRES_USERLASTINPUT ipcRes;
-            ipcRes.uLastInputMs = GetTickCount() - lastInput.dwTime;
+            ipcRes.uLastInput = (GetTickCount() - lastInput.dwTime) / 1000;
             fLastInputAvailable = true;
         }
         else
@@ -137,7 +137,7 @@ static int vboxIPCHandleUserLastInput(PVBOXIPCSESSION pSession, PVBOXTRAYIPCHEAD
     if (!fLastInputAvailable)
     {
         /* No last input available. */
-        ipcRes.uLastInputMs = UINT32_MAX;
+        ipcRes.uLastInput = UINT32_MAX;
     }
 
     int rc2 = RTLocalIpcSessionWrite(pSession->hSession, &ipcRes, sizeof(ipcRes));

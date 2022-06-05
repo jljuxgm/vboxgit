@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.h 47335 2013-07-23 10:53:37Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.h 47973 2013-08-21 14:25:52Z vboxsync $ */
 /** @file
  * VBoxServiceVMInfo.h - Internal VM info definitions.
  */
@@ -25,7 +25,7 @@ extern int vboxServiceUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *ps
 
 //RT_C_DECLS_END
 
-extern uint32_t g_uVMInfoUserIdleThreshold;
+extern uint32_t g_uVMInfoUserIdleThresholdMS;
 
 #endif /* ___VBoxServiceVMInfo_h */
 
