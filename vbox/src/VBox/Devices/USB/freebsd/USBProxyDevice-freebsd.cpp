@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-freebsd.cpp 50234 2014-01-24 22:48:13Z vboxsync $ */
+/* $Id: USBProxyDevice-freebsd.cpp 50236 2014-01-24 23:10:53Z vboxsync $ */
 /** @file
  * USB device proxy - the FreeBSD backend.
  */
@@ -800,12 +800,12 @@ retry:
             index++;
             goto retry;
         }
-        return false;
+        return rc;
     }
     pUrb->Dev.pvPrivate = (void *)(long)(index + 1);
     pEndpointFBSD->pUrb = pUrb;
 
-    return true;
+    return rc;
 }
 
 /**
