@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 51141 2014-04-25 12:51:03Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 51408 2014-05-26 19:34:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4457,7 +4457,7 @@ int  Display::handleCrHgcmCtlSubmit(struct VBOXCRCMDCTL* pCmd, uint32_t cbCmd,
                                     PFNCRCTLCOMPLETION pfnCompletion,
                                     void *pvCompletion)
 {
-    VMMDev *pVMMDev = mParent->getVMMDev();
+    VMMDev *pVMMDev = mParent ? mParent->getVMMDev() : NULL;
     if (!pVMMDev)
     {
         AssertMsgFailed(("no vmmdev\n"));
