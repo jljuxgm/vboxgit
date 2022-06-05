@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 50674 2014-03-04 11:15:29Z vboxsync $ */
+/* $Id: VMMDev.cpp 50891 2014-03-26 13:54:05Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3664,6 +3664,8 @@ static DECLCALLBACK(int) vmmdevDestruct(PPDMDEVINS pDevIns)
         RTMemFree(pThis->pCredentials);
         pThis->pCredentials = NULL;
     }
+
+    vmmdevHGCMDestroy(pThis);
 
 #ifndef VBOX_WITHOUT_TESTING_FEATURES
     /*
