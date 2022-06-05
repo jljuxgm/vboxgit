@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 52468 2014-08-22 11:55:43Z vboxsync $ */
+/* $Id: VHD.cpp 52695 2014-09-11 11:51:07Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2696,7 +2696,7 @@ static int vhdResize(void *pBackendData, uint64_t cbSize,
         {
             if (pImage->pBlockAllocationTable[idxBlock] != ~0U)
             {
-                uint64_t offStartBlock = pImage->pBlockAllocationTable[idxBlock] * VHD_SECTOR_SIZE;
+                uint64_t offStartBlock = (uint64_t)pImage->pBlockAllocationTable[idxBlock] * VHD_SECTOR_SIZE;
                 if (offStartBlock < offStartDataOld)
                     offStartDataOld = offStartBlock;
                 cBlocksAllocated++;
