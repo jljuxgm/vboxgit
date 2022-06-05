@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 52596 2014-09-04 16:45:50Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 52615 2014-09-05 11:35:27Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1763,7 +1763,6 @@ HRESULT VirtualBox::openMedium(const com::Utf8Str &aLocation,
 {
     HRESULT rc = S_OK;
     Guid id(aLocation);
-    const Guid cid = id;
     ComObjPtr<Medium> pMedium;
 
     // have to get write lock as the whole find/update sequence must be done

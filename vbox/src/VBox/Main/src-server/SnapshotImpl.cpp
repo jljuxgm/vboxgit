@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 52498 2014-08-25 16:44:59Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 52615 2014-09-05 11:35:27Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -1400,6 +1400,7 @@ HRESULT SessionMachine::beginTakingSnapshot(const ComPtr<IConsole> &aInitiator,
                                             BOOL  aFTakingSnapshotOnline,
                                             com::Utf8Str &aStateFilePath)
 {
+    NOREF(aInitiator);
     LogFlowThisFuncEnter();
 
     LogFlowThisFunc(("aName='%s' aFTakingSnapshotOnline=%RTbool\n", aName.c_str(), aFTakingSnapshotOnline));

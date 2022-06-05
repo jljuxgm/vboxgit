@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceLinux.cpp 50263 2014-01-28 19:29:52Z vboxsync $ */
+/* $Id: HostDnsServiceLinux.cpp 52615 2014-09-05 11:35:27Z vboxsync $ */
 /** @file
  * Linux specific DNS information fetching.
  */
@@ -145,6 +145,7 @@ int HostDnsServiceLinux::monitorWorker()
         {
             RT_ZERO(combo);
             ssize_t r = read(polls[0].fd, static_cast<void *>(&combo), sizeof(combo));
+            NOREF(r);
 
             if (combo.e.wd == wd[0])
             {
