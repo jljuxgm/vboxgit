@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 51848 2014-07-03 13:31:25Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1398,8 +1398,7 @@ HRESULT NetworkAdapter::i_checkAndSwitchFromNatNetworking(com::Utf8Str networkNa
     if (FAILED(hrc))
         return hrc;
 
-    if (   mData->mAttachmentType == NetworkAttachmentType_NATNetwork
-        && state == MachineState_Running)
+    if (state == MachineState_Running)
     {
         Bstr bstrName;
         hrc = mParent->COMGETTER(Name)(bstrName.asOutParam());
