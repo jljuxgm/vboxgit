@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 48378 2013-09-09 07:59:22Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 48379 2013-09-09 08:00:26Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -999,4 +999,3 @@ int NATNetwork::recalculateIpv4AddressAssignments()
     LogFlowFunc(("getaway:%RTnaipv4, netmask:%RTnaipv4\n", gateway, netmask));
     return VINF_SUCCESS;
 }
-
