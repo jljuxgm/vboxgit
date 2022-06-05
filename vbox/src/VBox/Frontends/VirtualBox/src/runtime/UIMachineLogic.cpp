@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 50301 2014-01-31 13:11:11Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 50309 2014-02-03 14:41:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -826,6 +826,8 @@ void UIMachineLogic::prepareActionGroups()
     m_pRunningOrPausedActions->addAction(gActionPool->action(UIActionIndexRuntime_Menu_MouseIntegration));
     m_pRunningOrPausedActions->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_MouseIntegration));
     m_pRunningOrPausedActions->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_Pause));
+    m_pRunningOrPausedActions->addAction(gActionPool->action(UIActionIndexRuntime_Menu_HardDisks));
+    m_pRunningOrPausedActions->addAction(gActionPool->action(UIActionIndexRuntime_Simple_StorageSettings));
     m_pRunningOrPausedActions->addAction(gActionPool->action(UIActionIndexRuntime_Menu_OpticalDevices));
     m_pRunningOrPausedActions->addAction(gActionPool->action(UIActionIndexRuntime_Menu_FloppyDevices));
     m_pRunningOrPausedActions->addAction(gActionPool->action(UIActionIndexRuntime_Menu_USBDevices));
@@ -885,6 +887,8 @@ void UIMachineLogic::prepareActionConnections()
             this, SLOT(sltAdjustWindow()));
 
     /* "Devices" actions connections: */
+    connect(gActionPool->action(UIActionIndexRuntime_Simple_StorageSettings), SIGNAL(triggered()),
+            this, SLOT(sltOpenStorageSettingsDialog()));
     connect(gActionPool->action(UIActionIndexRuntime_Menu_OpticalDevices)->menu(), SIGNAL(aboutToShow()),
             this, SLOT(sltPrepareStorageMenu()));
     connect(gActionPool->action(UIActionIndexRuntime_Menu_FloppyDevices)->menu(), SIGNAL(aboutToShow()),
@@ -1452,6 +1456,12 @@ void UIMachineLogic::sltOpenVMSettingsDialog(const QString &strCategory /* = QSt
      * originated from our side. */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->updateAppearanceOf(UIVisualElement_HDStuff | UIVisualElement_CDStuff | UIVisualElement_FDStuff);
+}
+
+void UIMachineLogic::sltOpenStorageSettingsDialog()
+{
+    /* Machine settings: Storage page: */
+    sltOpenVMSettingsDialog("#storage");
 }
 
 void UIMachineLogic::sltOpenNetworkAdaptersDialog()
