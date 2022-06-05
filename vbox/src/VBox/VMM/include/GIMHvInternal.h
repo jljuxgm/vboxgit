@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 52699 2014-09-11 13:31:23Z vboxsync $ */
+/* $Id: GIMHvInternal.h 52762 2014-09-16 15:50:08Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -21,10 +21,6 @@
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/cpum.h>
 
-/**
- * GIM Hyper-V saved-state version.
- */
-#define GIM_HV_SSM_VERSION                 UINT32_C(1)
 
 /** @name Hyper-V base feature identification.
  * Features based on current partition privileges (per-VM).
