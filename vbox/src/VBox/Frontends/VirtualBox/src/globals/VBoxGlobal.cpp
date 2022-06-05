@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 52202 2014-07-25 20:34:38Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 52203 2014-07-25 23:46:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3454,20 +3454,6 @@ QString VBoxGlobal::insertKeyToActionText(const QString &strText, const QString 
         return strText;
     else
         return pattern.arg(strText).arg(QKeySequence(strKey).toString(QKeySequence::NativeText));
-}
-
-/* static */
-QString VBoxGlobal::extractKeyFromActionText (const QString &aText)
-{
-    QString key;
-#ifdef Q_WS_MAC
-    QRegExp re (".* \\(Host\\+(.+)\\)");
-#else
-    QRegExp re (".* \\t\\Host\\+(.+)");
-#endif
-    if (re.exactMatch (aText))
-        key = re.cap (1);
-    return key;
 }
 
 /**

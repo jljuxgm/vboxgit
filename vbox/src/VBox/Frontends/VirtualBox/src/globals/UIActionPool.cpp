@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 52202 2014-07-25 20:34:38Z vboxsync $ */
+/* $Id: UIActionPool.cpp 52203 2014-07-25 23:46:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -650,18 +650,16 @@ void UIActionPool::updateShortcuts()
 
 bool UIActionPool::processHotKey(const QKeySequence &key)
 {
-    /* Get the list of keys: */
-    QList<int> keys = m_pool.keys();
     /* Iterate through the whole list of keys: */
-    for (int i = 0; i < keys.size(); ++i)
+    foreach (const int &iKey, m_pool.keys())
     {
         /* Get current action: */
-        UIAction *pAction = m_pool[keys[i]];
+        UIAction *pAction = m_pool.value(iKey);
         /* Skip menus/separators: */
         if (pAction->type() == UIActionType_Menu)
             continue;
-        /* Get the hot key of the current action: */
-        QString strHotKey = VBoxGlobal::extractKeyFromActionText(pAction->text());
+        /* Get the hot-key of the current action: */
+        const QString strHotKey = gShortcutPool->shortcut(this, pAction).toString();
         if (pAction->isEnabled() && pAction->isVisible() && !strHotKey.isEmpty())
         {
             if (key.matches(QKeySequence(strHotKey)) == QKeySequence::ExactMatch)
