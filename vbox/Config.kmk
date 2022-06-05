@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51857 2014-07-03 18:54:42Z vboxsync $
+# $Id: Config.kmk 51859 2014-07-03 19:49:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2917,13 +2917,6 @@ SDK_VBoxOpenSslExtPack_LIBS    = \
 	$(PATH_STAGE_LIB)/VBoxExtPack-libssl$(VBOX_SUFF_LIB) \
 	$(PATH_STAGE_LIB)/VBoxExtPack-libcrypto$(VBOX_SUFF_LIB)
 
-SDK_VBOX_BLD_OPENSSL      = .
-SDK_VBOX_BLD_OPENSSL_EXTENDS = VBOX_OPENSSL
-SDK_VBOX_BLD_OPENSSL_LIBS ?= \
-	$(PATH_STAGE_LIB)/VBoxBldProg-libcrypto$(VBOX_SUFF_LIB)
-SDK_VBOX_BLD_OPENSSL_LIBS.linux ?= \
-	crypt
-
 ifdef VBOX_WITH_S3
 VBOX_WITH_LIBCURL = 1
 SDK_VBOX_LIBCURL       = .
@@ -5058,11 +5051,11 @@ endif # !win
 
 
 #
-# Advanced build programs using IPRT, openssl and worse stuff.
+# Advanced build programs using IPRT and stuff.
 #
 TEMPLATE_VBoxAdvBldProg = Advanced VBox Build Program
 TEMPLATE_VBoxAdvBldProg_EXTENDS = VBoxBldProg
-TEMPLATE_VBoxAdvBldProg_SDKS    = $(TEMPLATE_VBoxBldProg_SDKS) VBOX_BLD_OPENSSL
+TEMPLATE_VBoxAdvBldProg_SDKS    = $(TEMPLATE_VBoxBldProg_SDKS)
 TEMPLATE_VBoxAdvBldProg_SDKS.win= $(TEMPLATE_VBoxBldProg_SDKS.win) VBOX_NTDLL
 TEMPLATE_VBoxAdvBldProg_DEFS    = $(TEMPLATE_VBoxBldProg_DEFS) IN_RT_R3
 ifeq ($(KBUILD_HOST),win)
@@ -5689,7 +5682,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51857 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51859 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
