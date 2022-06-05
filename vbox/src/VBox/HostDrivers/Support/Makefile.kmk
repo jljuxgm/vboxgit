@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46045 2013-05-13 20:59:46Z vboxsync $
+# $Id: Makefile.kmk 48132 2013-08-28 17:27:43Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -274,9 +274,6 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
  endif
  ifdef VBOX_WITHOUT_NATIVE_R0_LOADER
   VBoxDrv_DEFS.win       += VBOX_WITHOUT_NATIVE_R0_LOADER
- endif
- ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
-  VBoxDrv_DEFS.win       += VBOX_WITH_VMMR0_DISABLE_PREEMPTION
  endif
 
  VBoxDrv_INCS             = . $(VBoxDrv_0_OUTDIR)

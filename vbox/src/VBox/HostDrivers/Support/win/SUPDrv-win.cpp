@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 47541 2013-08-05 10:24:35Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 48132 2013-08-28 17:27:43Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -451,9 +451,9 @@ NTSTATUS _stdcall VBoxDrvNtDeviceControl(PDEVICE_OBJECT pDevObj, PIRP pIrp)
             || ulCmd == SUP_IOCTL_FAST_DO_NOP)
         && pSession->fUnrestricted == true)
     {
-#ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
         int rc = supdrvIOCtlFast(ulCmd, (unsigned)(uintptr_t)pIrp->UserBuffer /* VMCPU id */, pDevExt, pSession);
-#else
+
+#if 0   /* When preemption was not used i.e. !VBOX_WITH_VMMR0_DISABLE_PREEMPTION. That's no longer required. */
         /* Raise the IRQL to DISPATCH_LEVEL to prevent Windows from rescheduling us to another CPU/core. */
         Assert(KeGetCurrentIrql() <= DISPATCH_LEVEL);
         KIRQL oldIrql;

@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 48044 2013-08-25 19:21:27Z vboxsync $ */
+/* $Id: HMR0.cpp 48132 2013-08-28 17:27:43Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1284,10 +1284,8 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVM pVM)
     if (!pVM->hm.s.cMaxResumeLoops) /* allow ring-3 overrides */
     {
         pVM->hm.s.cMaxResumeLoops       = 1024;
-#ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
         if (RTThreadPreemptIsPendingTrusty())
             pVM->hm.s.cMaxResumeLoops   = 8192;
-#endif
     }
 
     /*
