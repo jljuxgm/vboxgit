@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 47889 2013-08-20 11:15:31Z vboxsync $ */
+/* $Id: CPUM.cpp 48368 2013-09-06 17:28:13Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1570,6 +1570,11 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVMCPU pVCpu)
     /* TSC must be 0. Intel spec. Table 9-1. "IA-32 Processor States Following Power-up, Reset, or INIT." */
     CPUMSetGuestMsr(pVCpu, MSR_IA32_TSC, 0);
 #endif
+
+
+    /* C-state control. Guesses. */
+    pVCpu->cpum.s.GuestMsrs.msr.PkgCStateCfgCtrl = 1 /*C1*/ | RT_BIT_32(25) | RT_BIT_32(26) | RT_BIT_32(27) | RT_BIT_32(28);
+
 
     /*
      * Get the APIC base MSR from the APIC device. For historical reasons (saved state), the APIC base
