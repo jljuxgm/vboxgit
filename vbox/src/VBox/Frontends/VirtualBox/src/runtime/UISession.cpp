@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 52186 2014-07-25 13:00:08Z vboxsync $ */
+/* $Id: UISession.cpp 52195 2014-07-25 15:32:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -133,6 +133,7 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
 #ifndef Q_WS_MAC
     , m_pMachineWindowIcon(0)
 #endif /* !Q_WS_MAC */
+    , m_mouseCapturePolicy(MouseCapturePolicy_Default)
     , m_guruMeditationHandlerType(GuruMeditationHandlerType_Default)
     , m_hiDPIOptimizationType(HiDPIOptimizationType_None)
     , m_requestedVisualStateType(UIVisualStateType_Invalid)
@@ -1145,6 +1146,9 @@ void UISession::loadSessionSettings()
         /* Load user's machine-window name postfix: */
         m_strMachineWindowNamePostfix = gEDataManager->machineWindowNamePostfix(strMachineID);
 #endif /* !Q_WS_MAC */
+
+        /* Determine mouse-capture policy: */
+        m_mouseCapturePolicy = gEDataManager->mouseCapturePolicy(strMachineID);
 
         /* Determine Guru Meditation handler type: */
         m_guruMeditationHandlerType = gEDataManager->guruMeditationHandlerType(strMachineID);

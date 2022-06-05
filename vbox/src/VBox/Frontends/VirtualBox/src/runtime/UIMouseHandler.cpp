@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 52190 2014-07-25 14:36:14Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 52195 2014-07-25 15:32:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -34,7 +34,6 @@
 #include "UIMachineWindow.h"
 #include "UIMachineView.h"
 #include "UIFrameBuffer.h"
-#include "UIExtraDataManager.h"
 
 #ifdef Q_WS_WIN
 # include "VBoxUtils-win.h"
@@ -991,7 +990,7 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
                         qApp->processEvents();
 #endif /* Q_WS_X11 */
                         machineLogic()->keyboardHandler()->captureKeyboard(uScreenId);
-                        if (gEDataManager->mouseCapturePolicy(vboxGlobal().managedVMUuid()) == MouseCapturePolicy_Default)
+                        if (uisession()->mouseCapturePolicy() == MouseCapturePolicy_Default)
                             captureMouse(uScreenId);
                     }
                 }
