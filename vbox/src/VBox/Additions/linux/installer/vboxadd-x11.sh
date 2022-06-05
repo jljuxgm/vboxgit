@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions X11 setup init script ($Revision: 50312 $)
+# Linux Additions X11 setup init script ($Revision: 50499 $)
 #
 
 #
@@ -296,9 +296,12 @@ setup()
         test -c /dev/psaux && nopsaux="";;
     esac
     # Should we use the VMSVGA driver instead of VBoxVideo?
+    if grep 80eebeef /proc/bus/pci/devices > /dev/null; then
     vmsvga=""
-    if ! grep 80eebeef /proc/bus/pci/devices > /dev/null; then
+    elif grep 15ad0405 /proc/bus/pci/devices > /dev/null; then
         vmsvga="--vmsvga"
+    else
+        dox11config=""
     fi
     # The video driver to install for X.Org 6.9+
     vboxvideo_src=
