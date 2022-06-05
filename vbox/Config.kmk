@@ -1,4 +1,4 @@
-# $Id: Config.kmk 50703 2014-03-05 12:42:53Z vboxsync $
+# $Id: Config.kmk 50735 2014-03-10 14:00:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -615,7 +615,7 @@ VBOX_WITH_S3 = 1
 # Enable Host=>Guest Drag'n'Drop
 if1of ($(KBUILD_TARGET), darwin linux solaris win)
  VBOX_WITH_DRAG_AND_DROP = 1
- if1of ($(KBUILD_TARGET), linux win)
+ if1of ($(KBUILD_TARGET), linux solaris win)
   VBOX_WITH_DRAG_AND_DROP_GH = 1
  endif
 endif
@@ -5577,7 +5577,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 50703 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 50735 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
