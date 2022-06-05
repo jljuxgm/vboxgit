@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 49551 2013-11-19 13:35:20Z vboxsync $ */
+/* $Id: PDMAll.cpp 49556 2013-11-19 17:15:58Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -211,7 +211,7 @@ VMM_INT_DECL(bool) PDMHasIoApic(PVM pVM)
 
 
 /**
- * Returns the presence of a Local IO-APIC.
+ * Returns the presence of a Local APIC.
  *
  * @returns VBox true if a Local APIC is present.
  * @param   pVM             Pointer to the VM.
