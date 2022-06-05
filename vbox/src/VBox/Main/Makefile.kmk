@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48607 2013-09-20 15:47:37Z vboxsync $
+# $Id: Makefile.kmk 48654 2013-09-24 12:21:27Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -832,7 +832,8 @@ else # !win
 endif # !win
 
 glue/com.cpp_DEFS = \
-	$(if $(VBOX_BLEEDING_EDGE),VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\",)
+	$(if $(VBOX_BLEEDING_EDGE),VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\",) \
+	KBUILD_TYPE=\"$(KBUILD_TYPE)\"
 
 # 32-bit version of VBoxCOM.
 ifdef VBOX_WITH_32_ON_64_MAIN_API
