@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 47628 2013-08-09 09:08:20Z vboxsync $ */
+/* $Id: server_presenter.cpp 48719 2013-09-26 15:33:58Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -314,6 +314,12 @@ void CrDpLeave(PCR_DISPLAY pDisplay)
     crServerVBoxCompositionDisableLeave(&pDisplay->Mural, pDisplay->fForcePresent);
     pDisplay->fForcePresent = GL_FALSE;
 }
+
+void CrDpRootUpdate(PCR_DISPLAY pDisplay)
+{
+    crVBoxServerUpdateMuralRootVisibleRegion(&pDisplay->Mural);
+}
+
 
 typedef struct CR_DEM_ENTRY_INFO
 {
