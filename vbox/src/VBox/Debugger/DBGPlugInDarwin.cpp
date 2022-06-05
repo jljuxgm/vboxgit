@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDarwin.cpp 50616 2014-02-26 18:52:55Z vboxsync $ */
+/* $Id: DBGPlugInDarwin.cpp 52838 2014-09-24 13:09:57Z vboxsync $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
@@ -554,7 +554,7 @@ static DECLCALLBACK(int)  dbgDiggerDarwinInit(PUVM pUVM, void *pvData)
                     } uMod;
                     RT_ZERO(uMod);
                     rc = DBGFR3MemRead(pUVM, 0 /*idCpu*/, &AddrModInfo, &uMod,
-                                       f64Bit ? sizeof(uMod.Info64) : sizeof(uMod.Info64));
+                                       f64Bit ? sizeof(uMod.Info64) : sizeof(uMod.Info32));
                     if (RT_FAILURE(rc))
                     {
                         Log(("OSXDig: Error reading kmod_info structure at %RGv: %Rrc\n", AddrModInfo.FlatPtr, rc));
