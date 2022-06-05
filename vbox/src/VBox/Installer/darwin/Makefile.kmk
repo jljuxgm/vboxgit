@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48924 2013-10-07 13:49:09Z vboxsync $
+# $Id: Makefile.kmk 48926 2013-10-07 14:36:15Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -295,7 +295,7 @@ ifdef VBOX_SIGNING_MODE
 		,$(NLTAB)$(call VBOX_SIGN_MACHO_FN,$(VBOX_PATH_PACK_TMP)/VBoxKEXTs.pkg.root/$(kext).kext/Contents/MacOS/$(kext),org.virtualbox.app.kext.$(kext)) )
 	$(foreach kext,$(VBOX_DI_KEXTS), \
 		$(NLTAB)$(call VBOX_SIGN_BUNDLE_FN,$(VBOX_PATH_PACK_TMP)/VBoxKEXTs.pkg.root/$(kext).kext,org.virtualbox.app.kext.$(kext)) )
-	$(foreach kext,$(VBOX_DI_KEXTS), $(NLTAB)codesign --verify --verbose 1 $(VBOX_PATH_PACK_TMP)/VBoxKEXTs.pkg.root/$(kext).kext )
+	$(foreach kext,$(VBOX_DI_KEXTS), $(NLTAB)codesign --verify --verbose=1 $(VBOX_PATH_PACK_TMP)/VBoxKEXTs.pkg.root/$(kext).kext )
 endif
 	@# Set the correct owners.
 	sudo chown -R root:wheel $(VBOX_PATH_PACK_TMP)/VBoxKEXTs.pkg.root/
