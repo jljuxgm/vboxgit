@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 49409 2013-11-07 13:36:15Z vboxsync $ */
+/* $Id: HostDnsService.cpp 49718 2013-11-29 10:51:54Z vboxsync $ */
 /** @file
  * Base class fo Host DNS & Co services.
  */
@@ -135,6 +135,8 @@ const HostDnsMonitor *HostDnsMonitor::getHostDnsMonitor()
         g_monitor = new HostDnsServiceLinux();
 # elif defined(RT_OS_SOLARIS)
         g_monitor =  new HostDnsServiceSolaris();
+# elif defined(RT_OS_FREEBSD)
+        g_monitor = new HostDnsServiceFreebsd();
 # elif defined(RT_OS_OS2)
         g_monitor = new HostDnsServiceOs2();
 # else

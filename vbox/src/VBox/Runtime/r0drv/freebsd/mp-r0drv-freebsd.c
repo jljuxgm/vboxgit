@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-freebsd.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: mp-r0drv-freebsd.c 49718 2013-11-29 10:51:54Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, FreeBSD.
  */
@@ -87,6 +87,11 @@ RTDECL(RTCPUID) RTMpGetCount(void)
     return mp_maxid + 1;
 }
 
+
+RTDECL(RTCPUID) RTMpGetCoreCount(void)
+{
+    return mp_maxid + 1;
+}
 
 RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 {

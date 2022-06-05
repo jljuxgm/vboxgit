@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-freebsd.c 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: alloc-r0drv-freebsd.c 49718 2013-11-29 10:51:54Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -79,8 +79,13 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
             return VERR_NO_EXEC_MEMORY;
 
         /* Addr contains a start address vm_map_find will start searching for suitable space at. */
+#if __FreeBSD_version >= 1000055
+        int rc = vm_map_find(kernel_map, pVmObject, 0, &Addr,
+                             cbAllocated, 0, VMFS_ANY_SPACE, VM_PROT_ALL, VM_PROT_ALL, 0);
+#else
         int rc = vm_map_find(kernel_map, pVmObject, 0, &Addr,
                              cbAllocated, TRUE, VM_PROT_ALL, VM_PROT_ALL, 0);
+#endif
         if (rc == KERN_SUCCESS)
         {
             rc = vm_map_wire(kernel_map, Addr, Addr + cbAllocated,

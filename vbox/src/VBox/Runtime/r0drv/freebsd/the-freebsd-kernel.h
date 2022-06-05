@@ -1,4 +1,4 @@
-/* $Id: the-freebsd-kernel.h 44238 2013-01-04 20:56:32Z vboxsync $ */
+/* $Id: the-freebsd-kernel.h 49718 2013-11-29 10:51:54Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Driver, The FreeBSD Kernel Headers.
  */
@@ -50,6 +50,9 @@
 #include <sys/unistd.h>
 #include <sys/kthread.h>
 #include <sys/lock.h>
+#if __FreeBSD_version >= 1000030
+#include <sys/rwlock.h>
+#endif
 #include <sys/mutex.h>
 #include <sys/sched.h>
 #include <sys/callout.h>

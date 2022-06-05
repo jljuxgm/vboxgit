@@ -1,4 +1,4 @@
-/* $Id: PerformanceFreeBSD.cpp 48010 2013-08-23 07:41:13Z vboxsync $ */
+/* $Id: PerformanceFreeBSD.cpp 49718 2013-11-29 10:51:54Z vboxsync $ */
 /** @file
  * VirtualBox Performance Collector, FreeBSD Specialization.
  */
@@ -105,6 +105,11 @@ int CollectorFreeBSD::getProcessCpuLoad(RTPROCESS process, ULONG *user, ULONG *k
 }
 
 int CollectorFreeBSD::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+int getDiskListByFs(const char *name, DiskList& list)
 {
     return VERR_NOT_IMPLEMENTED;
 }

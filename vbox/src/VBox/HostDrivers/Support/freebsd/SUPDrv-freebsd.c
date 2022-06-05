@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 49634 2013-11-22 18:11:29Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 49718 2013-11-29 10:51:54Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -291,7 +291,7 @@ static void VBoxDrvFreeBSDDtr(void *pData)
     /*
      * Close the session.
      */
-    supdrvSessionRelease(&g_VBoxDrvFreeBSDDevExt, pSession);
+    supdrvSessionRelease(pSession);
     ASMAtomicDecU32(&g_cUsers);
 }
 
