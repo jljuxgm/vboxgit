@@ -1,5 +1,4 @@
-
-/* $Id: GuestSessionImpl.h 50874 2014-03-25 18:29:02Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 51321 2014-05-21 13:02:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -258,7 +257,8 @@ public:
 
 private:
 
-    // Wrapped GuestSession Properties
+    /** Wrapped @name IGuestSession properties.
+     * @{ */
     HRESULT getUser(com::Utf8Str &aUser);
     HRESULT getDomain(com::Utf8Str &aDomain);
     HRESULT getName(com::Utf8Str &aName);
@@ -273,8 +273,10 @@ private:
     HRESULT getDirectories(std::vector<ComPtr<IGuestDirectory> > &aDirectories);
     HRESULT getFiles(std::vector<ComPtr<IGuestFile> > &aFiles);
     HRESULT getEventSource(ComPtr<IEventSource> &aEventSource);
+    /** @}  */
 
-    // Wrapped GuestSession Methods
+    /** Wrapped @name IGuestSession methods.
+     * @{ */
     HRESULT close();
     HRESULT copyFrom(const com::Utf8Str &aSource,
                      const com::Utf8Str &aDest,
@@ -376,7 +378,7 @@ private:
     HRESULT waitForArray(const std::vector<GuestSessionWaitForFlag_T> &aWaitFor,
                          ULONG aTimeoutMS,
                          GuestSessionWaitResult_T *aReason);
-
+    /** @}  */
 
     /** Map of guest directories. The key specifies the internal directory ID. */
     typedef std::map <uint32_t, ComObjPtr<GuestDirectory> > SessionDirectories;
