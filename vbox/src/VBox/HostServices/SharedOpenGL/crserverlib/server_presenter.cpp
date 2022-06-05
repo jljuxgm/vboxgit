@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 50398 2014-02-10 16:08:02Z vboxsync $ */
+/* $Id: server_presenter.cpp 50405 2014-02-10 20:10:18Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -4137,6 +4137,8 @@ int CrFbEntryLoadState(CR_FRAMEBUFFER *pFb, PSSMHANDLE pSSM, uint32_t version)
 
     if (pRects)
         crFree(pRects);
+
+    CrFbEntryRelease(pFb, hEntry);
 
     return VINF_SUCCESS;
 }
