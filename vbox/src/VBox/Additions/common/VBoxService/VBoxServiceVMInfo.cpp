@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 50026 2014-01-06 16:37:22Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 50448 2014-02-13 14:09:25Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -796,20 +796,23 @@ static int vboxserviceVMInfoWriteUsers(void)
     }
 
     /* Build the user list. */
-    if (RT_SUCCESS(rc))
-        rc = RTStrAllocEx(&pszUserList, cchUserList + 1);
-    if (RT_SUCCESS(rc))
+    if (cchUserList > 0)
     {
-        char *psz = pszUserList;
-        for (uint32_t i = 0; i < cUsersInList; i++)
+        if (RT_SUCCESS(rc))
+            rc = RTStrAllocEx(&pszUserList, cchUserList + 1);
+        if (RT_SUCCESS(rc))
         {
-            if (i != 0)
-                *psz++ = ',';
-            size_t cch = strlen(papszUsers[i]);
-            memcpy(psz, papszUsers[i], cch);
-            psz += cch;
+            char *psz = pszUserList;
+            for (uint32_t i = 0; i < cUsersInList; i++)
+            {
+                if (i != 0)
+                    *psz++ = ',';
+                size_t cch = strlen(papszUsers[i]);
+                memcpy(psz, papszUsers[i], cch);
+                psz += cch;
+            }
+            *psz = '\0';
         }
-        *psz = '\0';
     }
 
     /* Cleanup. */
