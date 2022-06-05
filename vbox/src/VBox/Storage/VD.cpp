@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 48957 2013-10-07 22:04:36Z vboxsync $ */
+/* $Id: VD.cpp 49314 2013-10-28 21:00:25Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1432,19 +1432,22 @@ static int vdIoCtxProcessLocked(PVDIOCTX pIoCtx)
              || rc == VERR_VD_IOCTX_HALT)
         rc = VERR_VD_ASYNC_IO_IN_PROGRESS;
     else if (   RT_FAILURE(rc)
-                && (rc != VERR_VD_ASYNC_IO_IN_PROGRESS)
-                && (rc != VERR_DISK_FULL))
+                && (rc != VERR_VD_ASYNC_IO_IN_PROGRESS))
     {
         ASMAtomicCmpXchgS32(&pIoCtx->rcReq, rc, VINF_SUCCESS);
-        /*
-         * The I/O context completed if we have an error and there is no data
-         * or meta data transfer pending.
-         */
-        if (   !pIoCtx->cMetaTransfersPending
-            && !pIoCtx->cDataTransfersPending)
-            rc = VINF_VD_ASYNC_IO_FINISHED;
-        else
-            rc = VERR_VD_ASYNC_IO_IN_PROGRESS;
+
+        if (rc != VERR_DISK_FULL)
+        {
+            /*
+             * The I/O context completed if we have an error and there is no data
+             * or meta data transfer pending.
+             */
+            if (   !pIoCtx->cMetaTransfersPending
+                && !pIoCtx->cDataTransfersPending)
+                rc = VINF_VD_ASYNC_IO_FINISHED;
+            else
+                rc = VERR_VD_ASYNC_IO_IN_PROGRESS;
+        }
     }
 
 out:
