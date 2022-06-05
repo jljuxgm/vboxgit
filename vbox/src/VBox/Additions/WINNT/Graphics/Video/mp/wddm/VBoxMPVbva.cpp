@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 52226 2014-07-29 12:53:58Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 52808 2014-09-22 08:44:09Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -994,7 +994,7 @@ VBOXCMDVBVA_HDR* VBoxCmdVbvaSubmitLock(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbv
     if (VBoxVBVAExGetSize(&pVbva->Vbva) < cbCmd)
     {
         WARN(("buffer does not fit the vbva buffer, we do not support splitting buffers"));
-        NULL;
+        return NULL;
     }
 
     if (!VBoxVBVAExBufferBeginUpdate(&pVbva->Vbva, &VBoxCommonFromDeviceExt(pDevExt)->guestCtx))
