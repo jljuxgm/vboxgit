@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 52179 2014-07-24 23:39:00Z vboxsync $ */
+/* $Id: UIActionPool.cpp 52181 2014-07-25 00:24:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -618,6 +618,16 @@ UIActionPool::~UIActionPool()
     /* Cleanup instance: */
     if (m_pInstance == this)
         m_pInstance = 0;
+}
+
+UIActionPoolRuntime* UIActionPool::toRuntime()
+{
+    return qobject_cast<UIActionPoolRuntime*>(this);
+}
+
+UIActionPoolSelector* UIActionPool::toSelector()
+{
+    return qobject_cast<UIActionPoolSelector*>(this);
 }
 
 void UIActionPool::prepare()
