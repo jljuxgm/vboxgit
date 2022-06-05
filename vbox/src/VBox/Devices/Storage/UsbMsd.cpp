@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 53207 2014-11-04 16:25:06Z vboxsync $ */
+/* $Id: UsbMsd.cpp 53210 2014-11-04 18:07:07Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -2007,9 +2007,9 @@ static DECLCALLBACK(PCPDMUSBDESCCACHE) usbMsdUsbGetDescriptorCache(PPDMUSBINS pU
 {
     PUSBMSD pThis = PDMINS_2_DATA(pUsbIns, PUSBMSD);
     LogFlow(("usbMsdUsbGetDescriptorCache/#%u:\n", pUsbIns->iInstance));
-    if (pThis->pUsbIns->iUsbHubVersion & VUSB_STDVER_30)
+    if (pThis->pUsbIns->enmSpeed == VUSB_SPEED_SUPER)
         return &g_UsbMsdDescCacheSS;
-    else if (pThis->pUsbIns->iUsbHubVersion & VUSB_STDVER_20)
+    else if (pThis->pUsbIns->enmSpeed == VUSB_SPEED_SUPER)
         return &g_UsbMsdDescCacheHS;
     else
         return &g_UsbMsdDescCacheFS;

@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 52878 2014-09-28 17:05:33Z vboxsync $ */
+/* $Id: DevOHCI.cpp 53210 2014-11-04 18:07:07Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -965,6 +965,8 @@ static DECLCALLBACK(int) ohciRhAttach(PVUSBIROOTHUBPORT pInterface, PVUSBIDEVICE
     Assert(uPort >= 1 && uPort <= RT_ELEMENTS(pThis->RootHub.aPorts));
     uPort--;
     Assert(!pThis->RootHub.aPorts[uPort].pDev);
+    /* Only LS/FS devices can end up here. */
+    Assert(pDev->pfnGetSpeed(pDev) == VUSB_SPEED_LOW || pDev->pfnGetSpeed(pDev) == VUSB_SPEED_FULL);
 
     /*
      * Attach it.
