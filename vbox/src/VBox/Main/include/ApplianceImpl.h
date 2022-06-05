@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 49103 2013-10-15 06:20:39Z vboxsync $ */
+/* $Id: ApplianceImpl.h 49620 2013-11-22 10:37:17Z vboxsync $ */
 
 /** @file
  *
@@ -22,6 +22,7 @@
 
 /* VBox includes */
 #include "VirtualBoxBase.h"
+#include "MediumFormatImpl.h"
 
 /* Todo: This file needs massive cleanup. Split IAppliance in a public and
  * private classes. */
@@ -153,6 +154,8 @@ private:
     HRESULT initApplianceIONameMap();
 
     Utf8Str applianceIOName(APPLIANCEIONAME type) const;
+
+    HRESULT findMediumFormatFromDiskImage(const ovf::DiskImage &di, ComObjPtr<MediumFormat>& mf);
 
     /*******************************************************************************
      * Read stuff
