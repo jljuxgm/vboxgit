@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51929 2014-07-08 12:50:15Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51930 2014-07-08 12:52:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1258,7 +1258,12 @@ void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey
 {
     /* Re-cache value only if strMachineID known already: */
     if (m_data.contains(strMachineID))
-        m_data[strMachineID][strKey] = strValue;
+    {
+        if (!strValue.isEmpty())
+            m_data[strMachineID][strKey] = strValue;
+        else
+            m_data[strMachineID].remove(strKey);
+    }
 
     /* Global extra-data 'change' event: */
     if (strMachineID == GlobalID)
@@ -1295,6 +1300,9 @@ void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey
             emit sigDockIconAppearanceChange(!isFeatureRestricted(strKey, strMachineID));
 #endif /* Q_WS_MAC */
     }
+
+    /* Notify listeners: */
+    emit sigExtraDataChange(strMachineID, strKey, strValue);
 }
 
 void UIExtraDataManager::prepare()
