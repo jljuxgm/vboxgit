@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 49546 2013-11-19 09:27:49Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 49684 2013-11-27 15:43:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -312,8 +312,16 @@ int Guest::dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOSTC
                     break;
 
                 default:
+                    /*
+                     * Try processing generic messages which might
+                     * (or might not) supported by certain objects.
+                     * If the message either is not found or supported
+                     * by the approprirate object, try handling it
+                     * in this session object.
+                     */
                     rc = pSession->dispatchToObject(pCtxCb, pSvcCb);
-                    if (rc == VERR_NOT_FOUND)
+                    if (   rc == VERR_NOT_FOUND
+                        || rc == VERR_NOT_SUPPORTED)
                     {
                         alock.acquire();
 
