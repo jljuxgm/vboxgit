@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 50906 2014-03-27 14:37:16Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 51287 2014-05-19 12:16:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -269,6 +269,7 @@ QString UISettingsDialog::titleExtension() const
 }
 
 void UISettingsDialog::addItem(const QString &strBigIcon,
+                               const QString &strMediumIcon,
                                const QString &strSmallIcon,
                                int cId,
                                const QString &strLink,
@@ -276,7 +277,7 @@ void UISettingsDialog::addItem(const QString &strBigIcon,
                                int iParentId /* = -1 */)
 {
     /* Add new selector item: */
-    if (QWidget *pPage = m_pSelector->addItem(strBigIcon, strSmallIcon,
+    if (QWidget *pPage = m_pSelector->addItem(strBigIcon, strMediumIcon, strSmallIcon,
                                               cId, strLink, pSettingsPage, iParentId))
     {
         /* Add stack-widget page if created: */
