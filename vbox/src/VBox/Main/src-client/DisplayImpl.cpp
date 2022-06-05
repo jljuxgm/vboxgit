@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 51627 2014-06-17 10:33:46Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 51656 2014-06-18 21:43:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2306,6 +2306,8 @@ STDMETHODIMP Display::AttachFramebuffer(ULONG aScreenId,
 
     pFBInfo->pFramebuffer = aFramebuffer;
 
+    alock.release();
+
     /* The driver might not have been constructed yet */
     if (mpDrv)
     {
@@ -2317,8 +2319,6 @@ STDMETHODIMP Display::AttachFramebuffer(ULONG aScreenId,
                             pFBInfo->h,
                             pFBInfo->flags);
     }
-
-    alock.release();
 
     Console::SafeVMPtrQuiet ptrVM(mParent);
     if (ptrVM.isOk())
