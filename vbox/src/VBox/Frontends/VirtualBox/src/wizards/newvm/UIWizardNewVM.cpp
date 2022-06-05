@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 49091 2013-10-14 21:15:46Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 51209 2014-05-07 16:32:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -74,8 +74,11 @@ bool UIWizardNewVM::createVM()
             return false;
         }
 
-        /* The FirstRun wizard is to be shown only when we don't attach any virtual hard drive or attach a new (empty) one.
-         * Selecting an existing virtual hard drive will cancel the FirstRun wizard. */
+        /* The First RUN Wizard is to be shown:
+         * 1. if we don't attach any virtual hard-drive
+         * 2. or attach a new (empty) one.
+         * Usually we are assigning extra-data values through UIExtraDataManager,
+         * but in that special case VM was not registered yet, so UIExtraDataManager is unaware of it. */
         if (field("virtualDiskId").toString().isNull() || !field("virtualDisk").value<CMedium>().isNull())
             m_machine.SetExtraData(GUI_FirstRun, "yes");
     }

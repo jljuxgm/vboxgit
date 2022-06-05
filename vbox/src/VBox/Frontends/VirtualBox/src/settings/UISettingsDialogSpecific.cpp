@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 51209 2014-05-07 16:32:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -828,10 +828,9 @@ void UISettingsDialogMachine::saveData()
                 m_machine.AddUSBController("OHCI", KUSBControllerType_OHCI);
         }
 
-        /* Clear the "GUI_FirstRun" extra data key in case if
-         * the boot order or disk configuration were changed: */
+        /* Disable First RUN Wizard: */
         if (m_fResetFirstRunFlag)
-            m_machine.SetExtraData(GUI_FirstRun, QString::null);
+            gEDataManager->setFirstRun(false, m_strMachineId);
 
         /* Save settings finally: */
         m_machine.SaveSettings();
