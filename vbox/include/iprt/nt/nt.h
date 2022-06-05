@@ -1,4 +1,4 @@
-/* $Id: nt.h 51945 2014-07-09 00:59:53Z vboxsync $ */
+/* $Id: nt.h 52039 2014-07-15 14:32:21Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -362,6 +362,24 @@ typedef enum _FSINFOCLASS
 typedef FS_INFORMATION_CLASS *PFS_INFORMATION_CLASS;
 NTSYSAPI NTSTATUS NTAPI NtQueryVolumeInformationFile(HANDLE, PIO_STATUS_BLOCK, PVOID, ULONG, FS_INFORMATION_CLASS);
 
+typedef struct _FILE_BOTH_DIR_INFORMATION
+{
+    ULONG           NextEntryOffset;
+    ULONG           FileIndex;
+    LARGE_INTEGER   CreationTime;
+    LARGE_INTEGER   LastAccessTime;
+    LARGE_INTEGER   LastWriteTime;
+    LARGE_INTEGER   ChangeTime;
+    LARGE_INTEGER   EndOfFile;
+    LARGE_INTEGER   AllocationSize;
+    ULONG           FileAttributes;
+    ULONG           FileNameLength;
+    ULONG           EaSize;
+    CCHAR           ShortNameLength;
+    WCHAR           ShortName[12];
+    WCHAR           FileName[1];
+} FILE_BOTH_DIR_INFORMATION;
+typedef FILE_BOTH_DIR_INFORMATION *PFILE_BOTH_DIR_INFORMATION;
 typedef struct _FILE_STANDARD_INFORMATION
 {
     LARGE_INTEGER   AllocationSize;
@@ -371,6 +389,12 @@ typedef struct _FILE_STANDARD_INFORMATION
     BOOLEAN         Directory;
 } FILE_STANDARD_INFORMATION;
 typedef FILE_STANDARD_INFORMATION *PFILE_STANDARD_INFORMATION;
+typedef struct _FILE_NAME_INFORMATION
+{
+    ULONG           FileNameLength;
+    WCHAR           FileName[1];
+} FILE_NAME_INFORMATION;
+typedef FILE_NAME_INFORMATION *PFILE_NAME_INFORMATION;
 typedef enum _FILE_INFORMATION_CLASS
 {
     FileDirectoryInformation = 1,
