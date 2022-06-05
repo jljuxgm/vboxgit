@@ -1,4 +1,4 @@
-/* $Id: Dialog.cpp 40947 2012-04-16 18:04:08Z vboxsync $ */
+/* $Id: Dialog.cpp 50323 2014-02-05 10:20:04Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Dialog Code.
  */
@@ -19,7 +19,7 @@
 #include <windows.h>
 #include <stdio.h>      /* Needed for swprintf() */
 
-#include <VBox/VboxGuestLib.h>
+#include <VBox/VBoxGuestLib.h>
 
 #include "Dialog.h"
 #include "WinWlx.h"

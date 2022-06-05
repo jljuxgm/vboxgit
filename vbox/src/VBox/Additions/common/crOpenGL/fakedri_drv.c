@@ -1,4 +1,4 @@
-/* $Id: fakedri_drv.c 49600 2013-11-21 12:07:07Z vboxsync $ */
+/* $Id: fakedri_drv.c 50323 2014-02-05 10:20:04Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -360,7 +360,7 @@ vboxPatchMesaExport(const char* psFuncName, const void *pStart, const void *pEnd
 
 #ifndef VBOX_NO_MESA_PATCH_REPORTS
     crDebug("Mesa Entry: %p, start: %p(%s:%s), size: %li", pMesaEntry, dlip.dli_saddr, dlip.dli_fname, dlip.dli_sname, sym->st_size);
-    crDebug("Vbox code: start: %p, end %p, size: %li", pStart, pEnd, pEnd-pStart);
+    crDebug("VBox code: start: %p, end %p, size: %li", pStart, pEnd, pEnd-pStart);
 #endif
 
 #ifndef VBOX_OGL_GLX_USE_CSTUBS

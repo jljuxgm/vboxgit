@@ -1,4 +1,4 @@
-/* $Id: Helper.cpp 40947 2012-04-16 18:04:08Z vboxsync $ */
+/* $Id: Helper.cpp 50323 2014-02-05 10:20:04Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Helper Functions.
  */
@@ -26,7 +26,7 @@
 #include "VBoxGINA.h"
 
 #include <VBox/log.h>
-#include <VBox/VboxGuestLib.h>
+#include <VBox/VBoxGuestLib.h>
 
 /** Flag indicating whether remote sessions (over MSRDP) should be
  *  handled or not. Default is disabled. */

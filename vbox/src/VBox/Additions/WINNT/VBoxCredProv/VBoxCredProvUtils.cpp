@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvUtils.cpp 40435 2012-03-12 18:01:39Z vboxsync $ */
+/* $Id: VBoxCredProvUtils.cpp 50323 2014-02-05 10:20:04Z vboxsync $ */
 /** @file
  * VBoxCredProvUtils - Misc. utility functions for VBoxCredProv.
  */
@@ -21,7 +21,7 @@
 #include <Windows.h>
 #include <iprt/string.h>
 #include <VBox/log.h>
-#include <VBox/VboxGuestLib.h>
+#include <VBox/VBoxGuestLib.h>
 
 
 /*******************************************************************************

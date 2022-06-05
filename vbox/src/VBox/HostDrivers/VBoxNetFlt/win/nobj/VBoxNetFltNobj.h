@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.h 36184 2011-03-07 10:57:04Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.h 50323 2014-02-05 10:20:04Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.h - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -14,8 +14,8 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#ifndef ___VboxNetFltNobj_h___
-#define ___VboxNetFltNobj_h___
+#ifndef ___VBoxNetFltNobj_h___
+#define ___VBoxNetFltNobj_h___
 
 #include <windows.h>
 /* atl stuff */
@@ -70,4 +70,4 @@ private:
     BOOL mbInstalling;
 };
 
-#endif /* #ifndef ___VboxNetFltNobj_h___ */
+#endif /* #ifndef ___VBoxNetFltNobj_h___ */
