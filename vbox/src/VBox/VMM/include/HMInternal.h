@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 52127 2014-07-22 11:29:08Z vboxsync $ */
+/* $Id: HMInternal.h 52192 2014-07-25 15:04:01Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -342,7 +342,10 @@ typedef struct HM
     bool                        fGlobalInit;
     /** Set when TPR patching is active. */
     bool                        fTPRPatchingActive;
-    bool                        u8Alignment[7];
+    bool                        u8Alignment[3];
+
+    /** Host kernel flags that HM might need to know (SUPKERNFEATURES_XXX). */
+    uint32_t                    uHostKernelFeatures;
 
     /** Maximum ASID allowed. */
     uint32_t                    uMaxAsid;

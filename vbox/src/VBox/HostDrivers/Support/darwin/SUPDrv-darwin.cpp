@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 52192 2014-07-25 15:04:01Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1283,6 +1283,15 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
     szMsg[sizeof(szMsg) - 1] = '\0';
 
     printf("%s", szMsg);
+    return 0;
+}
+
+
+/**
+ * Returns configuration flags of the host kernel.
+ */
+SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
+{
     return 0;
 }
 

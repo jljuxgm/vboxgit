@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 52192 2014-07-25 15:04:01Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -505,3 +505,13 @@ SUPR0DECL(int) SUPR0Printf(const char *pszFormat, ...)
 
     return cch;
 }
+
+
+/**
+ * Returns configuration flags of the host kernel.
+ */
+SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
+{
+    return 0;
+}
+

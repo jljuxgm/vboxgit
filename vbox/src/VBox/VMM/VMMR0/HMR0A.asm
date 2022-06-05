@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 49739 2013-12-02 13:59:40Z vboxsync $
+; $Id: HMR0A.asm 52192 2014-07-25 15:04:01Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
@@ -295,8 +295,19 @@ BEGINPROC VMXRestoreHostState
     mov         ax, dx
     and         eax, X86_SEL_MASK_OFF_RPL                       ; Mask away TI and RPL bits leaving only the descriptor offset.
     add         rax, qword [rsi + VMXRESTOREHOST.HostGdtr + 2]  ; xAX <- descriptor offset + GDTR.pGdt.
+    test        edi, VMX_RESTORE_HOST_GDT_READ_ONLY
+    jnz         .gdt_readonly
     and         dword [rax + 4], ~RT_BIT(9)                     ; Clear the busy flag in TSS desc (bits 0-7=base, bit 9=busy bit).
     ltr         dx
+    jmp short   .test_fs
+.gdt_readonly:
+    mov         rcx, cr0
+    mov         r9, rcx
+    and         rcx, ~X86_CR0_WP
+    mov         cr0, rcx
+    and         dword [rax + 4], ~RT_BIT(9)                     ; Clear the busy flag in TSS desc (bits 0-7=base, bit 9=busy bit).
+    ltr         dx
+    mov         cr0, r9
 
 .test_fs:
     ;

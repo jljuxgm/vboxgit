@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 52192 2014-07-25 15:04:01Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1265,6 +1265,15 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
 
     szMsg[sizeof(szMsg) - 1] = '\0';
     cmn_err(CE_CONT, "%s", szMsg);
+    return 0;
+}
+
+
+/**
+ * Returns configuration flags of the host kernel.
+ */
+SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
+{
     return 0;
 }
 
