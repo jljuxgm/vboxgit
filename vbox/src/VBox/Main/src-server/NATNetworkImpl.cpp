@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 48107 2013-08-27 22:15:13Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 48378 2013-09-09 07:59:22Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -914,7 +914,7 @@ int NATNetwork::findFirstAvailableOffset(uint32_t *poff)
 
     uint32_t off;
     settings::NATLoopbackOffsetList::iterator it;
-    for (off = 1; off < (network.u & ~netmask.u); ++off)
+    for (off = 1; off < ~netmask.u; ++off)
     {
 
         if (off == m->offGateway)
