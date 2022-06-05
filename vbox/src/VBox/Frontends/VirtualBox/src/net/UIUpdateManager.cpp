@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 50977 2014-04-04 19:47:18Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 50978 2014-04-04 19:56:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -274,7 +274,7 @@ private:
 
         /* Get script path: */
         char szAppPrivPath[RTPATH_MAX];
-        vrc = RTPathAppPrivateNoArch(szAppPrivPath, sizeof(szAppPrivPath)); AssertRC(rc);
+        vrc = RTPathAppPrivateNoArch(szAppPrivPath, sizeof(szAppPrivPath)); AssertRC(vrc);
         if (RT_SUCCESS(vrc))
         {
             /* Run script: */
