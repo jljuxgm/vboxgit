@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 53403 2014-11-26 15:34:33Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 53404 2014-11-27 13:40:07Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -220,7 +220,7 @@ static void rtTimerSolOmniCpuOnline(void *pvArg, cpu_t *pCpu, cyc_handler_t *pCy
     AssertPtrReturnVoid(pCyclicTime);
 
     pTimer->pOmniTimer->au64Ticks[pCpu->cpu_id] = 0;
-    pCyclicHandler->cyh_func  = rtTimerSolCallbackWrapper;
+    pCyclicHandler->cyh_func  = (cyc_func_t)rtTimerSolCallbackWrapper;
     pCyclicHandler->cyh_arg   = pTimer;
     pCyclicHandler->cyh_level = CY_LOCK_LEVEL;
 
@@ -367,7 +367,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
             return VERR_NO_MEMORY;
 
         pTimer->pSingleTimer = pSingleTimer;
-        pSingleTimer->hHandler.cyh_func  = rtTimerSolCallbackWrapper;
+        pSingleTimer->hHandler.cyh_func  = (cyc_func_t)rtTimerSolCallbackWrapper;
         pSingleTimer->hHandler.cyh_arg   = pTimer;
         pSingleTimer->hHandler.cyh_level = CY_LOCK_LEVEL;
 
