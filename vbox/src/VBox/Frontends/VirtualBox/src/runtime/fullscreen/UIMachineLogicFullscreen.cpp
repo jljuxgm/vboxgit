@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 52886 2014-09-29 13:49:00Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 52889 2014-09-29 14:23:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -866,6 +866,7 @@ void UIMachineLogicFullscreen::nativeHandlerForApplicationActivation(const QMap<
     QStringList ourBundleIdentifiers;
     ourBundleIdentifiers << "org.virtualbox.app.VirtualBox";
     ourBundleIdentifiers << "org.virtualbox.app.VirtualBoxVM";
+    ourBundleIdentifiers << "com.citrix.DesktopPlayerVM";
     if (!ourBundleIdentifiers.contains(userInfo.value("BundleIdentifier")))
         return;
 
