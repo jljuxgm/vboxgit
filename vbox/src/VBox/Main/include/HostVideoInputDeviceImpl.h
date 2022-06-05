@@ -1,4 +1,4 @@
-/* $Id: HostVideoInputDeviceImpl.h 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: HostVideoInputDeviceImpl.h 49132 2013-10-16 12:09:56Z vboxsync $ */
 
 /** @file
  *
@@ -42,7 +42,7 @@ public:
     HRESULT init(const com::Utf8Str &name, const com::Utf8Str &path, const com::Utf8Str &alias);
     void uninit();
 
-    static HRESULT queryHostDevices(HostVideoInputDeviceList *pList);
+    static HRESULT queryHostDevices(VirtualBox *pVirtualBox, HostVideoInputDeviceList *pList);
 
 private:
 
