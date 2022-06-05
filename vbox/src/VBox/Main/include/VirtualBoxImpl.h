@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 50355 2014-02-06 17:55:07Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 50356 2014-02-06 19:25:04Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -60,7 +60,7 @@ namespace settings
 class ATL_NO_VTABLE VirtualBox :
     public VirtualBoxWrap
 #ifdef RT_OS_WINDOWS
-    , public CComCoClass<VirtualBox, &CLSID_VirtualBox>
+//     , public CComCoClass<VirtualBox, &CLSID_VirtualBox>
 #endif
 {
 

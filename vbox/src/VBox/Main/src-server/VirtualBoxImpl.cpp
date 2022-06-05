@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 50356 2014-02-06 19:25:04Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1255,11 +1255,11 @@ HRESULT VirtualBox::checkFirmwarePresent(FirmwareType_T aFirmwareType,
 /* Helper for VirtualBox::ComposeMachineFilename */
 static void sanitiseMachineFilename(Utf8Str &aName);
 
-STDMETHODIMP VirtualBox::composeMachineFilename(const com::Utf8Str &aName,
-                                                const com::Utf8Str &aGroup,
-                                                const com::Utf8Str &aCreateFlags,
-                                                const com::Utf8Str &aBaseFolder,
-                                                com::Utf8Str       &aFile)
+HRESULT VirtualBox::composeMachineFilename(const com::Utf8Str &aName,
+                                           const com::Utf8Str &aGroup,
+                                           const com::Utf8Str &aCreateFlags,
+                                           const com::Utf8Str &aBaseFolder,
+                                           com::Utf8Str       &aFile)
 {
     LogFlowThisFuncEnter();
 
