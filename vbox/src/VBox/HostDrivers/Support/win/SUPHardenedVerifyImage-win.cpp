@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 51970 2014-07-10 13:12:43Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 51972 2014-07-10 13:17:32Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -836,7 +836,7 @@ DECLHIDDEN(int) supHardenedWinVerifyImageByHandle(HANDLE hFile, PCRTUTF16 pwszNa
 
 #ifdef IN_RING3
     /* Check that the caller has performed the necessary library initialization. */
-    if (RTCrX509Certificate_IsPresent(&g_BuildX509Cert))
+    if (!RTCrX509Certificate_IsPresent(&g_BuildX509Cert))
         return RTErrInfoSet(pErrInfo, VERR_WRONG_ORDER,
                             "supHardenedWinVerifyImageByHandle: supHardenedWinInitImageVerifier was not called.");
 #endif
