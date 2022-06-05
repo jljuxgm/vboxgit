@@ -1,4 +1,4 @@
-/* $Id: Wrapper.h 47650 2013-08-09 14:27:21Z vboxsync $ */
+/* $Id: Wrapper.h 49652 2013-11-26 09:28:02Z vboxsync $ */
 
 /** @file
  *
@@ -305,7 +305,7 @@ public:
     {
     }
 
-    ComTypeInConverter(A *aSrc) : mSrc(mSrc)
+    ComTypeInConverter(A *aSrc) : mSrc(aSrc)
     {
     }
 
