@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: mp-r0drv.h 52581 2014-09-03 12:19:42Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Internal Header.
  */
@@ -53,6 +53,9 @@ typedef struct RTMPARGS
     void       *pvUser2;
     RTCPUID     idCpu;
     uint32_t volatile cHits;
+#ifdef RT_OS_LINUX
+    PRTCPUSET   pWorkerSet;
+#endif
 } RTMPARGS;
 /** Pointer to a RTMpOn* argument packet. */
 typedef RTMPARGS *PRTMPARGS;
