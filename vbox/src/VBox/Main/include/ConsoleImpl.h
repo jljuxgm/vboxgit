@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 51008 2014-04-09 09:20:00Z vboxsync $ */
+/* $Id: ConsoleImpl.h 51026 2014-04-10 07:08:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -446,7 +446,7 @@ private:
         }
 
         /** The combined result of Console::addVMCaller() and Console::safeVMPtrRetainer */
-        HRESULT rc() const { return SUCCEEDED(mRC)? Base::rc(): mRC; }
+        HRESULT rc() const { return Base::isOk()? mRC: Base::rc(); }
         /** Shortcut to SUCCEEDED(rc()) */
         bool isOk() const { return SUCCEEDED(mRC) && Base::isOk(); }
 
