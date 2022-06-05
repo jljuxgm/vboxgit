@@ -1,4 +1,4 @@
-/* $Id: Global.h 46775 2013-06-25 12:37:57Z vboxsync $ */
+/* $Id: Global.h 49074 2013-10-13 22:08:34Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -39,6 +39,7 @@
 #define VBOXOSHINT_ACCEL3D              RT_BIT(10)
 #define VBOXOSHINT_FLOPPY               RT_BIT(11)
 #define VBOXOSHINT_NOUSB                RT_BIT(12)
+#define VBOXOSHINT_TFRESET              RT_BIT(13)
 
 /** The VBoxVRDP kludge extension pack name.
  *

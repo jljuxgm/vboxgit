@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 49074 2013-10-13 22:08:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -155,6 +155,9 @@ bool UIWizardNewVM::createVM()
 
     /* Turn on PAE, if recommended: */
     m_machine.SetCPUProperty(KCPUPropertyType_PAE, type.GetRecommendedPAE());
+
+    /* Set the recommended triple fault behavior: */
+    m_machine.SetCPUProperty(KCPUPropertyType_TripleFaultReset, type.GetRecommendedTFReset());
 
     /* Set recommended firmware type: */
     KFirmwareType fwType = type.GetRecommendedFirmware();
