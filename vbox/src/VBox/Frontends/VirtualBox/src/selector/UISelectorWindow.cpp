@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 48301 2013-09-05 11:52:39Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 48316 2013-09-05 16:14:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -45,6 +45,7 @@
 #include "UIVMDesktop.h"
 #include "UIVirtualBoxEventHandler.h"
 #include "UIMediumManager.h"
+#include "UIMedium.h"
 #include "UIMessageCenter.h"
 #include "UISelectorWindow.h"
 #include "UISettingsDialogSpecific.h"

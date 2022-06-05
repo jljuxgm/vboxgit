@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 48310 2013-09-05 14:19:29Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 48316 2013-09-05 16:14:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,8 +43,9 @@
 #include "UIVirtualBoxEventHandler.h"
 
 /* COM includes: */
-#include "CMachine.h"
 #include "CVirtualBox.h"
+#include "CMachine.h"
+#include "CMedium.h"
 
 /* Type defs: */
 typedef QSet<QString> UIStringSet;

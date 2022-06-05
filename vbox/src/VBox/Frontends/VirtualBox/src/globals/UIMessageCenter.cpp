@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 48022 2013-08-23 12:04:01Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 48316 2013-09-05 16:14:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,14 +29,15 @@
 #endif /* Q_WS_MAC */
 
 /* GUI includes: */
-#include "UIMessageCenter.h"
 #include "VBoxGlobal.h"
+#include "UIConverter.h"
+#include "UIMessageCenter.h"
 #include "UISelectorWindow.h"
 #include "UIProgressDialog.h"
 #include "UINetworkManager.h"
 #include "UINetworkManagerDialog.h"
-#include "UIConverter.h"
 #include "UIModalWindowManager.h"
+#include "UIMedium.h"
 #ifdef VBOX_OSE
 # include "UIDownloaderUserManual.h"
 #endif /* VBOX_OSE */
