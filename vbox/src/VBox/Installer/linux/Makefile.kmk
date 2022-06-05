@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51351 2014-05-22 11:46:17Z vboxsync $
+# $Id: Makefile.kmk 51386 2014-05-26 09:03:29Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -237,10 +237,12 @@ endif
 # Documentation
 ifdef VBOX_WITH_DOCS_PACKING
  VBOX_LNX_NO_STRIP += \
-	$(notdir $(wildcard $(PATH_STAGE_BIN)/UserManual*.pdf))
+	UserManual.pdf \
+	$(foreach f,$(VBOX_MANUAL_ADD_LANGUAGES),UserManual_$(f).pdf)
  ifdef VBOX_WITH_DOCS_CHM
   VBOX_LNX_NO_STRIP += \
-        $(notdir $(wildcard $(PATH_STAGE_BIN)/VirtualBox*.chm))  
+  	VirtualBox.chm \
+	$(foreach f,$(VBOX_MANUAL_ADD_LANGUAGES),VirtualBox_$(f).chm)
  endif
  VBOX_LNX_STRIP_BIN += \
 	$(if $(VBOX_WITH_KCHMVIEWER),kchmviewer,)
