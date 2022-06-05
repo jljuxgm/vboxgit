@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 48406 2013-09-10 12:53:50Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 48429 2013-09-11 13:08:59Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -181,6 +181,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--nestedpaging on|off]\n"
                      "                            [--largepages on|off]\n"
                      "                            [--vtxvpid on|off]\n"
+                     "                            [--vtxux on|off]\n"
                      "                            [--pae on|off]\n"
                      "                            [--longmode on|off]\n"
                      "                            [--synthcpu on|off]\n"
