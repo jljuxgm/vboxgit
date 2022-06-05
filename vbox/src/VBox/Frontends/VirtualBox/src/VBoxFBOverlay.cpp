@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 52086 2014-07-17 19:57:07Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -3776,7 +3776,7 @@ void VBoxVHWAImage::resize(const VBoxFBSizeInfo & size)
     bool bUsesGuestVram;
 
     /* check if we support the pixel format and can use the guest VRAM directly */
-    if (size.pixelFormat() == FramebufferPixelFormat_FOURCC_RGB)
+    if (size.pixelFormat() == BitmapFormat_BGR)
     {
 
         bitsPerPixel = size.bitsPerPixel();

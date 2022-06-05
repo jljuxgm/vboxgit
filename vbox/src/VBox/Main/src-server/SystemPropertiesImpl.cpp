@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 51888 2014-07-06 19:38:04Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -983,6 +983,15 @@ HRESULT SystemProperties::setDefaultFrontend(const com::Utf8Str &aDefaultFronten
     }
 
     return rc;
+}
+
+HRESULT SystemProperties::getScreenShotFormats(std::vector<BitmapFormat_T> &aBitmapFormats)
+{
+    aBitmapFormats.push_back(BitmapFormat_BGR0);
+    aBitmapFormats.push_back(BitmapFormat_BGRA);
+    aBitmapFormats.push_back(BitmapFormat_RGBA);
+    aBitmapFormats.push_back(BitmapFormat_PNG);
+    return S_OK;
 }
 
 // public methods only for internal purposes

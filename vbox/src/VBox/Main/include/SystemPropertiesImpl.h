@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 50293 2014-01-30 16:34:08Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 52200 2014-07-25 20:00:49Z vboxsync $ */
 
 /** @file
  *
@@ -98,6 +98,7 @@ private:
     HRESULT setDefaultAdditionsISO(const com::Utf8Str &aDefaultAdditionsISO);
     HRESULT getDefaultFrontend(com::Utf8Str &aDefaultFrontend);
     HRESULT setDefaultFrontend(const com::Utf8Str &aDefaultFrontend);
+    HRESULT getScreenShotFormats(std::vector<BitmapFormat_T> &aScreenShotFormats);
 
     // wrapped ISystemProperties methods
     HRESULT getMaxNetworkAdapters(ChipsetType_T aChipset,

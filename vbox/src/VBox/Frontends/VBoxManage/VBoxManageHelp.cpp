@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 52037 2014-07-15 13:07:29Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -128,7 +128,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
 #endif
                      "                            hostinfo|hostcpuids|hddbackends|hdds|dvds|floppies|\n"
                      "                            usbhost|usbfilters|systemproperties|extpacks|\n"
-                     "                            groups|webcams\n"
+                     "                            groups|webcams|screenshotformats\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_SHOWVMINFO)

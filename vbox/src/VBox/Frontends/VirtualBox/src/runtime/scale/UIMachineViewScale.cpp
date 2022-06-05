@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 51592 2014-06-10 16:35:18Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -69,7 +69,7 @@ void UIMachineViewScale::takePauseShotLive()
     /* If TakeScreenShot fails or returns no image, just show a black image. */
     shot.fill(0);
     CDisplay dsp = session().GetConsole().GetDisplay();
-    dsp.TakeScreenShot(screenId(), shot.bits(), shot.width(), shot.height());
+    dsp.TakeScreenShot(screenId(), shot.bits(), shot.width(), shot.height(), KBitmapFormat_BGR0);
     m_pPauseImage = new QImage(shot);
     scalePauseShot();
 }

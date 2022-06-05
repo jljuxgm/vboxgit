@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 52179 2014-07-24 23:39:00Z vboxsync $ */
+/* $Id: UIMachineView.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -658,7 +658,7 @@ void UIMachineView::takePauseShotLive()
     /* If TakeScreenShot fails or returns no image, just show a black image. */
     shot.fill(0);
     CDisplay dsp = session().GetConsole().GetDisplay();
-    dsp.TakeScreenShot(screenId(), shot.bits(), shot.width(), shot.height());
+    dsp.TakeScreenShot(screenId(), shot.bits(), shot.width(), shot.height(), KBitmapFormat_BGR0);
     /* TakeScreenShot() may fail if, e.g. the Paused notification was delivered
      * after the machine execution was resumed. It's not fatal: */
     if (dsp.isOk())

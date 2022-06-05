@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 50314 2014-02-03 19:29:26Z vboxsync $ */
+/* $Id: VideoRec.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -822,7 +822,7 @@ int VideoRecCopyToIntBuf(PVIDEORECCONTEXT pCtx, uint32_t uScreen, uint32_t x, ui
 
         /* Calculate bytes per pixel */
         uint32_t bpp = 1;
-        if (uPixelFormat == FramebufferPixelFormat_FOURCC_RGB)
+        if (uPixelFormat == BitmapFormat_BGR)
         {
             switch (uBitsPerPixel)
             {

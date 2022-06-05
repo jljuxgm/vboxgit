@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52186 2014-07-25 13:00:08Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2358,7 +2358,7 @@ void UIMachineLogic::takeScreenshot(const QString &strFile, const QString &strFo
         uMaxWidth  += width;
         uMaxHeight  = RT_MAX(uMaxHeight, height);
         QImage shot = QImage(width, height, QImage::Format_RGB32);
-        display.TakeScreenShot(i, shot.bits(), shot.width(), shot.height());
+        display.TakeScreenShot(i, shot.bits(), shot.width(), shot.height(), KBitmapFormat_BGR0);
         images << shot;
     }
     /* Create a image which will hold all sub images vertically. */

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 50711 2014-03-06 13:10:54Z vboxsync $
+# $Id: vboxshell.py 52200 2014-07-25 20:00:49Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 50711 $"
+__version__ = "$Revision: 52200 $"
 
 
 import os, sys
@@ -555,7 +555,7 @@ def takeScreenshotOld(_ctx, console, args):
         h = fbh
 
     print "Saving screenshot (%d x %d) screen %d in %s..." % (w, h, screen, f)
-    data = display.takeScreenShotToArray(screen, w, h)
+    data = display.takeScreenShotToArray(screen, w, h, ctx['const'].BitmapFormat_RGBA)
     size = (w, h)
     mode = "RGBA"
     im = Image.frombuffer(mode, size, str(data), "raw", mode, 0, 1)
@@ -582,7 +582,7 @@ def takeScreenshot(_ctx, console, args):
         h = fbh
 
     print "Saving screenshot (%d x %d) screen %d in %s..." % (w, h, screen, f)
-    data = display.takeScreenShotPNGToArray(screen, w, h)
+    data = display.takeScreenShotToArray(screen, w, h, ctx['const'].BitmapFormat_PNG)
     pngfile = open(f, 'wb')
     pngfile.write(data)
     pngfile.close()
