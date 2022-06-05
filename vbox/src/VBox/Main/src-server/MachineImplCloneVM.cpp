@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 49742 2013-12-02 17:59:21Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -581,7 +581,7 @@ void MachineCloneVMPrivate::updateMACAddresses(settings::NetworkAdaptersList &nw
         if (   fNotNAT
             && it->mode == NetworkAttachmentType_NAT)
             continue;
-        Host::generateMACAddress(it->strMACAddress);
+        Host::i_generateMACAddress(it->strMACAddress);
     }
 }
 

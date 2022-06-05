@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 41528 2012-05-31 16:48:33Z vboxsync $ */
+/* $Id: USBProxyService.cpp 49742 2013-12-02 17:59:21Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -217,7 +217,7 @@ HRESULT USBProxyService::detachDeviceFromVM(SessionMachine *aMachine, IN_GUID aI
     // get a list of all running machines while we're outside the lock
     // (getOpenedMachines requests locks which are incompatible with the lock of the machines list)
     SessionMachinesList llOpenedMachines;
-    mHost->parent()->getOpenedMachines(llOpenedMachines);
+    mHost->i_parent()->getOpenedMachines(llOpenedMachines);
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -328,7 +328,7 @@ HRESULT USBProxyService::detachAllDevicesFromVM(SessionMachine *aMachine, bool a
     // get a list of all running machines while we're outside the lock
     // (getOpenedMachines requests locks which are incompatible with the host object lock)
     SessionMachinesList llOpenedMachines;
-    mHost->parent()->getOpenedMachines(llOpenedMachines);
+    mHost->i_parent()->getOpenedMachines(llOpenedMachines);
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -410,7 +410,7 @@ HRESULT USBProxyService::runAllFiltersOnDevice(ComObjPtr<HostUSBDevice> &aDevice
      */
     Host::USBDeviceFilterList globalFilters;
 
-    mHost->getUSBFilters(&globalFilters);
+    mHost->i_getUSBFilters(&globalFilters);
 
     /*
      * Run global filters filters first.
@@ -861,7 +861,7 @@ void USBProxyService::processChanges(void)
     // get a list of all running machines while we're outside the lock
     // (getOpenedMachines requests higher priority locks)
     SessionMachinesList llOpenedMachines;
-    mHost->parent()->getOpenedMachines(llOpenedMachines);
+    mHost->i_parent()->getOpenedMachines(llOpenedMachines);
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 

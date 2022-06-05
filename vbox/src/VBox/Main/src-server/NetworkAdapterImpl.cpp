@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 49644 2013-11-25 16:57:15Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 49742 2013-12-02 17:59:21Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1458,7 +1458,7 @@ ComObjPtr<NetworkAdapter> NetworkAdapter::getPeer()
 void NetworkAdapter::generateMACAddress()
 {
     Utf8Str mac;
-    Host::generateMACAddress(mac);
+    Host::i_generateMACAddress(mac);
     LogFlowThisFunc(("generated MAC: '%s'\n", mac.c_str()));
     mData->mMACAddress = mac;
 }
