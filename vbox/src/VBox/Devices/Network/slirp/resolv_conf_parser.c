@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.c 50128 2014-01-20 17:36:43Z vboxsync $ */
+/* $Id: resolv_conf_parser.c 50130 2014-01-20 17:54:38Z vboxsync $ */
 /** @file
  * resolv_conf_parser.c - parser of resolv.conf resolver(5) 
  */
@@ -51,6 +51,10 @@ enum RCP_TOKEN {
 
 #define RCP_BUFFER_SIZE 256
 
+/* If ctypes.h doesn't have definition for isblank(3) */
+#ifndef isblank
+# define isblank(c) ((c) == '\t' || (c) == '\ ')
+#endif
 
 struct rcp_parser
 {
