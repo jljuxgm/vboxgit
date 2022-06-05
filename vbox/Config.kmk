@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53093 2014-10-20 13:25:38Z vboxsync $
+# $Id: Config.kmk 53222 2014-11-05 09:21:42Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -436,6 +436,8 @@ VBOX_WITH_WINMM =
 VBOX_WITH_INTERNAL_NETWORKING = 1
 # Enable vmsvga (svga2) graphics device variant, 2D part
 VBOX_WITH_VMSVGA = 1
+# Enable vmsvga (svga2) graphics device variant, 3D part
+VBOX_WITH_VMSVGA3D = 1
 # Enable Host Guest Shared Memory Interface.
 VBOX_WITH_HGSMI = 1
 # Enable Video 2D Acceleration.
@@ -5730,7 +5732,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53093 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53222 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

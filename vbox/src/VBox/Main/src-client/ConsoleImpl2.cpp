@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 53082 2014-10-17 06:49:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 53222 2014-11-05 09:21:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3401,7 +3401,7 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
             InsertConfigInteger(pCfg, "VMSVGAEnabled", true);
 #ifdef VBOX_WITH_VMSVGA3D
             IFramebuffer *pFramebuffer = NULL;
-            hrc = getDisplay()->QueryFramebuffer(0, &pFramebuffer);
+            hrc = i_getDisplay()->QueryFramebuffer(0, &pFramebuffer);
             if (SUCCEEDED(hrc) && pFramebuffer)
             {
                 LONG64 winId = 0;
