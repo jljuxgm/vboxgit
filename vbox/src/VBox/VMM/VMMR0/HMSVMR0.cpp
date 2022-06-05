@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49720 2013-11-29 11:04:07Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49721 2013-11-29 11:04:53Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5018,7 +5018,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptMF(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
         if (RT_SUCCESS(rc))
         {
             /* Convert a #MF into a FERR -> IRQ 13. See @bugref{6117}. */
-            rc = PDMIsaSetIrq(pVCpu->CTX_SUFF(pVM), 13, 1, 0 /*uTagSrc*/);
+            rc = PDMIsaSetIrq(pVCpu->CTX_SUFF(pVM), 13, 1, 0 /* uTagSrc */);
             if (RT_SUCCESS(rc))
                 pCtx->rip += cbOp;
         }
