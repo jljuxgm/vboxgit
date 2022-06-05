@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 50864 2014-03-25 15:31:49Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 50869 2014-03-25 17:19:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2156,12 +2156,24 @@ void VBoxGlobal::updateMachineStorage(const CMachine &constMachine, const UIMedi
     CSession session;
     CMachine machine = constMachine;
     KSessionState sessionState = machine.GetSessionState();
+    /* Session state unlocked? */
     if (sessionState == KSessionState_Unlocked)
     {
+        /* Open own 'write' session: */
         session = openSession(machine.GetId());
         AssertReturnVoid(!session.isNull());
         machine = session.GetMachine();
     }
+    /* Is it Selector UI call? */
+    else if (!isVMConsoleProcess())
+    {
+        /* Open existing 'shared' session: */
+        session = openExistingSession(machine.GetId());
+        AssertReturnVoid(!session.isNull());
+        machine = session.GetMachine();
+    }
+    /* Else this is Runtime UI call
+     * which has session locked for itself. */
 
     /* Remount medium to the predefined port/device: */
     bool fWasMounted = false;
