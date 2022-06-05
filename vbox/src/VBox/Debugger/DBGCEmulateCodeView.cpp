@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 48898 2013-10-04 20:01:01Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 48899 2013-10-04 20:02:12Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1421,6 +1421,8 @@ static DECLCALLBACK(int) dbgcCmdRegCommon(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, P
             if (RT_FAILURE(rc))
                 rc = DBGCCmdHlpVBoxError(pCmdHlp, rc, "DBGFR3RegNmSet failed settings '%s%s': %Rrc\n",
                                          pszActualPrefix, pszReg, rc);
+            if (rc != VINF_SUCCESS)
+                DBGCCmdHlpPrintf(pCmdHlp, "%s: warning: %Rrc\n", pCmd->pszCmd, rc);
         }
         else
             rc = DBGCCmdHlpVBoxError(pCmdHlp, rc, "DBGFR3RegFormatValue failed: %Rrc.\n", rc);
