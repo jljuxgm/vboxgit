@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl.xsl 50121 2014-01-20 14:31:00Z vboxsync $ -->
+<!-- $Id: xpidl.xsl 50183 2014-01-23 15:58:21Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
@@ -243,7 +243,6 @@
   <xsl:text> : </xsl:text>
   <xsl:choose>
       <xsl:when test="@extends='$unknown'">nsISupports</xsl:when>
-      <xsl:when test="@extends='$dispatched'">nsISupports</xsl:when>
       <xsl:when test="@extends='$errorinfo'">nsIException</xsl:when>
       <xsl:otherwise><xsl:value-of select="@extends"/></xsl:otherwise>
   </xsl:choose>
