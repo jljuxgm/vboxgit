@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48337 2013-09-06 06:09:55Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48365 2013-09-06 15:49:18Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -26,7 +26,6 @@
 #include <VBox/com/errorprint.h>
 #include <VBox/com/VirtualBox.h>
 
-#define IPv6 /* RTNETADDRU */
 #include <iprt/net.h>
 #include <iprt/initterm.h>
 #include <iprt/alloca.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 48363 2013-09-06 15:47:40Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 48365 2013-09-06 15:49:18Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -26,7 +26,6 @@
 #endif
 
 #include <iprt/cdefs.h>
-#define IPv6
 #include <iprt/cidr.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
