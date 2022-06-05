@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 47627 2013-08-09 08:31:24Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 47905 2013-08-20 12:47:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -371,7 +371,7 @@ int SessionTaskCopyTo::Run(void)
                 if (RT_SUCCESS(rc))
                 {
                     rc = RTFileRead(*pFile, (uint8_t*)byBuf,
-                                    RT_MIN(cbToRead, sizeof(byBuf)), &cbRead);
+                                    RT_MIN((size_t)cbToRead, sizeof(byBuf)), &cbRead);
                     /*
                      * Some other error occured? There might be a chance that RTFileRead
                      * could not resolve/map the native error code to an IPRT code, so just
@@ -1000,7 +1000,7 @@ int SessionTaskUpdateAdditions::copyFileToGuest(GuestSession *pSession, PRTISOFS
         if (RT_SUCCESS(rc))
         {
             if (pcbSize)
-                *pcbSize = cbSizeOnGuest;
+                *pcbSize = (uint32_t)cbSizeOnGuest;
         }
     }
 

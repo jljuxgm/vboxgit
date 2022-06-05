@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 46423 2013-06-06 19:48:27Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 47905 2013-08-20 12:47:22Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -1405,7 +1405,6 @@ STDMETHODIMP MachineDebugger::GetRegisters(ULONG a_idCpu, ComSafeArrayOut(BSTR, 
 
                             for (uint32_t iReg = 0; iReg < cRegs; iReg++)
                             {
-                                char szHex[128];
                                 Bstr bstrValue;
 
                                 hrc = formatRegisterValue(&bstrValue, &paRegs[iReg].Val, paRegs[iReg].enmType);

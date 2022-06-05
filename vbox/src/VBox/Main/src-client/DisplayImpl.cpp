@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 47774 2013-08-15 15:13:01Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 47905 2013-08-20 12:47:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2688,7 +2688,7 @@ int Display::VideoCaptureEnableScreens(ComSafeArrayIn(BOOL, aScreens))
 #ifdef VBOX_WITH_VPX
     com::SafeArray<BOOL> Screens(ComSafeArrayInArg(aScreens));
     for (unsigned i = 0; i < Screens.size(); i++)
-        maVideoRecEnabled[i] = Screens[i];
+        maVideoRecEnabled[i] = RT_BOOL(Screens[i]);
     return VINF_SUCCESS;
 #else
     return VERR_NOT_IMPLEMENTED;
