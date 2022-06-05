@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 51498 2014-06-02 18:53:08Z vboxsync $ */
+/* $Id: MachineImpl.h 52090 2014-07-18 06:37:32Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1113,6 +1113,7 @@ private:
     HRESULT hotUnplugCPU(ULONG aCpu);
     HRESULT getCPUStatus(ULONG aCpu,
                          BOOL *aAttached);
+    HRESULT getEffectiveParavirtProvider(ParavirtProvider_T *aParavirtProvider);
     HRESULT queryLogFilename(ULONG aIdx,
                              com::Utf8Str &aFilename);
     HRESULT readLog(ULONG aIdx,
