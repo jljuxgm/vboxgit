@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 52767 2014-09-16 16:51:51Z vboxsync $ */
+/* $Id: GIMInternal.h 52772 2014-09-17 11:53:43Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -94,7 +94,6 @@ VMMR3_INT_DECL(int)           GIMR3Mmio2Unmap(PVM pVM, PGIMMMIO2REGION pRegion);
 VMMR3_INT_DECL(int)           GIMR3Mmio2Map(PVM pVM, PGIMMMIO2REGION pRegion, RTGCPHYS GCPhysRegion);
 VMMR3_INT_DECL(int)           GIMR3Mmio2HandlerPhysicalRegister(PVM pVM, PGIMMMIO2REGION pRegion);
 VMMR3_INT_DECL(int)           GIMR3Mmio2HandlerPhysicalDeregister(PVM pVM, PGIMMMIO2REGION pRegion);
-VMMR3_INT_DECL(bool)          GIMR3IsOSXGuest(PVM pVM);
 #endif /* IN_RING3 */
 
 /** @} */
