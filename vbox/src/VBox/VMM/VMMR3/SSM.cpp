@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 49800 2013-12-05 23:43:10Z vboxsync $ */
+/* $Id: SSM.cpp 49801 2013-12-05 23:56:13Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -6651,6 +6651,7 @@ VMMR3DECL(int) SSMR3GetStructEx(PSSMHANDLE pSSM, void *pvStruct, size_t cbStruct
     /*
      * Put the fields
      */
+    rc = VINF_SUCCESS;
     uint32_t off = 0;
     for (PCSSMFIELD pCur = paFields;
          pCur->cb != UINT32_MAX && pCur->off != UINT32_MAX;
