@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 49978 2013-12-18 18:06:52Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 49979 2013-12-19 10:11:17Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -507,7 +507,7 @@ int cpumR3MsrApplyFudge(PVM pVM)
         {
             MFX(0x0000002c, "P4_EBC_FREQUENCY_ID", IntelP4EbcFrequencyId, IntelP4EbcFrequencyId, 0xf12010f, UINT64_MAX, 0),
         };
-        int rc = cpumR3MsrApplyFudgeTable(pVM, &s_aP4FudgeMsrs[0], RT_ELEMENTS(s_aP4FudgeMsrs));
+        rc = cpumR3MsrApplyFudgeTable(pVM, &s_aP4FudgeMsrs[0], RT_ELEMENTS(s_aP4FudgeMsrs));
         AssertLogRelRCReturn(rc, rc);
     }
 
