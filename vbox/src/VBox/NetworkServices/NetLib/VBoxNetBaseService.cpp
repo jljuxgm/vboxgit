@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 49516 2013-11-16 06:42:31Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 49558 2013-11-20 02:43:14Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -137,7 +137,7 @@ VBoxNetBaseService::~VBoxNetBaseService()
 
 int VBoxNetBaseService::init()
 {
-    if (m_fNeedMain)
+    if (isMainNeeded())
     {
         HRESULT hrc = com::Initialize();
         AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);
