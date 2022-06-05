@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
+/* $Id: DevHPET.cpp 51526 2014-06-04 09:52:54Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -76,8 +76,8 @@
 
 /** @name Interrupt type
  * @{ */
-#define HPET_TIMER_TYPE_LEVEL       1
-#define HPET_TIMER_TYPE_EDGE        0
+#define HPET_TIMER_TYPE_LEVEL       (1 << 1)
+#define HPET_TIMER_TYPE_EDGE        (0 << 1)
 /** @} */
 
 /** @name Delivery mode
