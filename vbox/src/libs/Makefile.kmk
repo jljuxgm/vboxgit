@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51425 2014-05-27 15:10:18Z vboxsync $
+# $Id: Makefile.kmk 51600 2014-06-11 09:26:44Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -52,7 +52,7 @@ endif
 if !defined(VBOX_ONLY_SDK) \
  && (   "$(SDK_VBOX_OPENSSL_INCS)" == "$(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)" \
      || defined(VBOX_WITH_EXTPACK_PUEL_BUILD))
- include $(PATH_SUB_CURRENT)/openssl-1.0.1g/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/openssl-1.0.1h/Makefile.kmk
 endif
 
 # libjpeg for VRDP video redirection
