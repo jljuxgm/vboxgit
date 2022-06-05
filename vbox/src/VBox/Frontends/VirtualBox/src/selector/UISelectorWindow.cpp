@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 52894 2014-09-29 21:38:19Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 52902 2014-09-30 15:38:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -475,9 +475,9 @@ void UISelectorWindow::sltPerformStartOrShowAction()
 
         /* Launch/show current VM: */
         CMachine machine = pItem->machine();
-        vboxGlobal().launchMachine(machine, qApp->keyboardModifiers() == Qt::ShiftModifier?
-                                                VBoxGlobal::LaunchMode_Headless:
-                                                VBoxGlobal::LaunchMode_Default);
+        vboxGlobal().launchMachine(machine, qApp->keyboardModifiers() == Qt::ShiftModifier ?
+                                            VBoxGlobal::LaunchMode_Headless :
+                                            VBoxGlobal::LaunchMode_Default);
     }
 }
 

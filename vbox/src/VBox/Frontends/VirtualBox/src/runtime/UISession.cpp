@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 52894 2014-09-29 21:38:19Z vboxsync $ */
+/* $Id: UISession.cpp 52902 2014-09-30 15:38:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -260,7 +260,7 @@ void UISession::powerUp()
             debugger.SetVirtualTimeRate(vboxGlobal().getWarpPct());
     }
 
-    if (!vboxGlobal().isSeparate())
+    if (!vboxGlobal().isSeparateProcess())
     {
         /* Power UP machine: */
 #ifdef VBOX_WITH_DEBUGGER_GUI
