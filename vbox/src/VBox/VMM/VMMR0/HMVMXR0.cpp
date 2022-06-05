@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49666 2013-11-26 16:20:09Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49667 2013-11-26 16:24:05Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5862,7 +5862,7 @@ static int hmR0VmxSaveGuestLazyMsrs(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     }
     else
     {
-        /* Darwin 32-bit/PAE kernels. */
+        /* Darwin 32-bit/PAE kernel or 64-bit host running 32-bit guest. */
         pVCpu->hm.s.vmx.fUpdatedGuestState |= HMVMX_UPDATED_GUEST_LAZY_MSRS;
     }
 #else   /* HC_ARCH_BITS == 32 */
