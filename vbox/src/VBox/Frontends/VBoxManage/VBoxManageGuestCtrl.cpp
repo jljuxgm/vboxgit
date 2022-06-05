@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 49165 2013-10-17 14:48:13Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 49166 2013-10-17 14:53:00Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -67,6 +67,14 @@ static volatile bool         g_fGuestCtrlCanceled = false;
 /** Our global session object which is also used in the
  *  signal handler to abort operations properly. */
 static ComPtr<IGuestSession> g_pGuestSession;
+
+/**
+ * Listener declarations.
+ */
+VBOX_LISTENER_DECLARE(GuestFileEventListenerImpl)
+VBOX_LISTENER_DECLARE(GuestProcessEventListenerImpl)
+VBOX_LISTENER_DECLARE(GuestSessionEventListenerImpl)
+VBOX_LISTENER_DECLARE(GuestEventListenerImpl)
 
 /**
  * Command context flags.
