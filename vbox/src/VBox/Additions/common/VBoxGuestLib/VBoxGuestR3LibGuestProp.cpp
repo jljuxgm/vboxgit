@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 49950 2013-12-17 10:51:16Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 52189 2014-07-25 14:09:02Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -777,6 +777,8 @@ VBGLR3DECL(int) VbglR3GuestPropEnumNext(PVBGLR3GUESTPROPENUM pHandle,
  */
 VBGLR3DECL(void) VbglR3GuestPropEnumFree(PVBGLR3GUESTPROPENUM pHandle)
 {
+    if (!pHandle)
+        return;
     RTMemFree(pHandle->pchBuf);
     RTMemFree(pHandle);
 }
