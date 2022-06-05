@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48069 2013-08-26 17:02:08Z vboxsync $
+# $Id: Makefile.kmk 49286 2013-10-25 10:09:21Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -52,6 +52,7 @@ ifdef VBOX_WITH_OPEN_WATCOM
  	disk.c \
  	serial.c \
  	system.c \
+ 	invop.c \
  	timepci.c \
  	ps2mouse.c \
  	parallel.c \
