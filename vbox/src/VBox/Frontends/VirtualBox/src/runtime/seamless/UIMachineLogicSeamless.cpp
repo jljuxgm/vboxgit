@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 49698 2013-11-28 11:44:37Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 50490 2014-02-18 09:38:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -199,11 +199,11 @@ void UIMachineLogicSeamless::prepareActionConnections()
 
     /* "View" actions connections: */
     connect(gActionPool->action(UIActionIndexRuntime_Toggle_Seamless), SIGNAL(triggered(bool)),
-            uisession(), SLOT(sltChangeVisualStateToNormal()));
+            this, SLOT(sltChangeVisualStateToNormal()));
     connect(gActionPool->action(UIActionIndexRuntime_Toggle_Fullscreen), SIGNAL(triggered(bool)),
-            uisession(), SLOT(sltChangeVisualStateToFullscreen()));
+            this, SLOT(sltChangeVisualStateToFullscreen()));
     connect(gActionPool->action(UIActionIndexRuntime_Toggle_Scale), SIGNAL(triggered(bool)),
-            uisession(), SLOT(sltChangeVisualStateToScale()));
+            this, SLOT(sltChangeVisualStateToScale()));
 }
 
 void UIMachineLogicSeamless::prepareMachineWindows()
@@ -262,11 +262,11 @@ void UIMachineLogicSeamless::cleanupActionConnections()
 {
     /* "View" actions disconnections: */
     disconnect(gActionPool->action(UIActionIndexRuntime_Toggle_Seamless), SIGNAL(triggered(bool)),
-               uisession(), SLOT(sltChangeVisualStateToNormal()));
+               this, SLOT(sltChangeVisualStateToNormal()));
     disconnect(gActionPool->action(UIActionIndexRuntime_Toggle_Fullscreen), SIGNAL(triggered(bool)),
-               uisession(), SLOT(sltChangeVisualStateToFullscreen()));
+               this, SLOT(sltChangeVisualStateToFullscreen()));
     disconnect(gActionPool->action(UIActionIndexRuntime_Toggle_Scale), SIGNAL(triggered(bool)),
-               uisession(), SLOT(sltChangeVisualStateToScale()));
+               this, SLOT(sltChangeVisualStateToScale()));
 
     /* Call to base-class: */
     UIMachineLogic::cleanupActionConnections();

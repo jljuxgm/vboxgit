@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 50354 2014-02-06 17:14:05Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 50490 2014-02-18 09:38:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -396,6 +396,30 @@ void UIMachineLogic::notifyAbout3DOverlayVisibilityChange(bool fVisible)
         popupCenter().setPopupStackType(activeMachineWindow(), fVisible ? UIPopupStackType_Separate : UIPopupStackType_Embedded);
         popupCenter().showPopupStack(activeMachineWindow());
     }
+}
+
+void UIMachineLogic::sltChangeVisualStateToNormal()
+{
+    uisession()->setRequestedVisualState(UIVisualStateType_Invalid);
+    uisession()->changeVisualState(UIVisualStateType_Normal);
+}
+
+void UIMachineLogic::sltChangeVisualStateToFullscreen()
+{
+    uisession()->setRequestedVisualState(UIVisualStateType_Invalid);
+    uisession()->changeVisualState(UIVisualStateType_Fullscreen);
+}
+
+void UIMachineLogic::sltChangeVisualStateToSeamless()
+{
+    uisession()->setRequestedVisualState(UIVisualStateType_Invalid);
+    uisession()->changeVisualState(UIVisualStateType_Seamless);
+}
+
+void UIMachineLogic::sltChangeVisualStateToScale()
+{
+    uisession()->setRequestedVisualState(UIVisualStateType_Invalid);
+    uisession()->changeVisualState(UIVisualStateType_Scale);
 }
 
 void UIMachineLogic::sltMachineStateChanged()
