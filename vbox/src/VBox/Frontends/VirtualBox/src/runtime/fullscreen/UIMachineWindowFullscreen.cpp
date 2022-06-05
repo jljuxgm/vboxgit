@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 52327 2014-08-08 13:38:31Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 52370 2014-08-13 17:30:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -220,7 +220,7 @@ void UIMachineWindowFullscreen::prepareMiniToolbar()
 
     /* Create mini-toolbar: */
     m_pMiniToolBar = new UIRuntimeMiniToolBar(this,
-                                              IntegrationMode_Embedded,
+                                              GeometryType_Full,
                                               gEDataManager->miniToolbarAlignment(vboxGlobal().managedVMUuid()),
                                               gEDataManager->autoHideMiniToolbar(vboxGlobal().managedVMUuid()));
     m_pMiniToolBar->addMenus(actionPool()->menus());

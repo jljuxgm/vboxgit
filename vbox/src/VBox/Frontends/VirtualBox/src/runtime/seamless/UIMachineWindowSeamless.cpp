@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 52202 2014-07-25 20:34:38Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 52370 2014-08-13 17:30:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -111,7 +111,7 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
 
     /* Create mini-toolbar: */
     m_pMiniToolBar = new UIRuntimeMiniToolBar(this,
-                                              IntegrationMode_External,
+                                              GeometryType_Available,
                                               gEDataManager->miniToolbarAlignment(vboxGlobal().managedVMUuid()),
                                               gEDataManager->autoHideMiniToolbar(vboxGlobal().managedVMUuid()));
     m_pMiniToolBar->show();
