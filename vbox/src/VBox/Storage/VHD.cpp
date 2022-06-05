@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 49944 2013-12-16 23:50:41Z vboxsync $ */
+/* $Id: VHD.cpp 50851 2014-03-24 10:50:00Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -2463,7 +2463,7 @@ static int vhdCompact(void *pBackendData, unsigned uPercentStart,
         if (pfnParentRead)
         {
             pvParent = RTMemTmpAlloc(pImage->cbDataBlock);
-            AssertBreakStmt(VALID_PTR(pvBuf), rc = VERR_NO_MEMORY);
+            AssertBreakStmt(VALID_PTR(pvParent), rc = VERR_NO_MEMORY);
         }
         pvBuf = RTMemTmpAlloc(pImage->cbDataBlock);
         AssertBreakStmt(VALID_PTR(pvBuf), rc = VERR_NO_MEMORY);
