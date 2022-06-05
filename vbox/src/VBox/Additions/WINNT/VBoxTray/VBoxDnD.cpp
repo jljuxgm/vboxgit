@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 51529 2014-06-04 12:11:43Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag'n drop service.
  */
@@ -676,7 +676,6 @@ int VBoxDnDWnd::OnHgEnter(const RTCList<RTCString> &lstFormats, uint32_t uAllAct
         << "text/plain;charset=utf-8"
         << "UTF8_STRING"
         << "text/plain"
-        << "COMPOUND_TEXT"
         << "TEXT"
         << "STRING"
         /* OpenOffice formats */

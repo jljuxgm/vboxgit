@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 51529 2014-06-04 12:11:43Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -459,7 +459,6 @@ GuestDnD::GuestDnD(const ComObjPtr<Guest> &pGuest)
         "text/plain;charset=utf-8",
         "UTF8_STRING",
         "text/plain",
-        "COMPOUND_TEXT",
         "TEXT",
         "STRING",
         /* OpenOffice formats */
