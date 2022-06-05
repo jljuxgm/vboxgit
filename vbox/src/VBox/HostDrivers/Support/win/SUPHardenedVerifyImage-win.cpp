@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 51826 2014-07-02 22:56:54Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 51860 2014-07-03 22:08:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -572,6 +572,7 @@ static int supHardNtViCheckIfNotSignedOk(RTLDRMOD hLdrMod, PCRTUTF16 pwszName, u
             return uNtVer < SUP_MAKE_NT_VER_SIMPLE(6, 4) ? VINF_LDRVI_NOT_SIGNED : rc;
 
 #ifndef IN_RING0
+# if 0 /* Allow anything below System32 that WinVerifyTrust thinks is fine. */
         /* The ATI drivers load system drivers into the process, allow this,
            but reject anything else from a subdirectory. */
         uint32_t cSlashes = supHardViUtf16PathCountSlashes(pwsz);
@@ -584,6 +585,7 @@ static int supHardNtViCheckIfNotSignedOk(RTLDRMOD hLdrMod, PCRTUTF16 pwszName, u
                 return VINF_LDRVI_NOT_SIGNED;
             return rc;
         }
+# endif
 
         /* Check that this DLL isn't supposed to be signed on this windows
            version.  If it should, it's likely to be a fake. */
