@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 50907 2014-03-27 15:00:16Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 50968 2014-04-03 15:53:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,6 +25,7 @@
 #include <QDesktopWidget>
 #include <QDesktopServices>
 #include <QMenuBar>
+#include <QStatusBar>
 #include <QResizeEvent>
 #include <QStackedWidget>
 #include <QTimer>
