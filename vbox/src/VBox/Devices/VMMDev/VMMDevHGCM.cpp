@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 49421 2013-11-08 15:55:56Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 49454 2013-11-12 16:24:07Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -1826,13 +1826,13 @@ static int vmmdevHGCMParmVerify64(HGCMFunctionParameter64 *pGuestParm, VBOXHGCMS
         case VMMDevHGCMParmType_LinAddr_Out: /* Out (write) */
         case VMMDevHGCMParmType_LinAddr:     /* In & Out */
             if (   pHostParm->type == VBOX_HGCM_SVC_PARM_PTR
-                && pGuestParm->u.Pointer.size == pHostParm->u.pointer.size)
+                && pGuestParm->u.Pointer.size >= pHostParm->u.pointer.size)
                 rc = VINF_SUCCESS;
             break;
 
         case VMMDevHGCMParmType_PageList:
             if (   pHostParm->type == VBOX_HGCM_SVC_PARM_PTR
-                && pGuestParm->u.PageList.size == pHostParm->u.pointer.size)
+                && pGuestParm->u.PageList.size >= pHostParm->u.pointer.size)
                 rc = VINF_SUCCESS;
             break;
 
@@ -1869,13 +1869,13 @@ static int vmmdevHGCMParmVerify32(HGCMFunctionParameter *pGuestParm, VBOXHGCMSVC
         case VMMDevHGCMParmType_LinAddr_Out: /* Out (write) */
         case VMMDevHGCMParmType_LinAddr:     /* In & Out */
             if (   pHostParm->type == VBOX_HGCM_SVC_PARM_PTR
-                && pGuestParm->u.Pointer.size == pHostParm->u.pointer.size)
+                && pGuestParm->u.Pointer.size >= pHostParm->u.pointer.size)
                 rc = VINF_SUCCESS;
             break;
 
         case VMMDevHGCMParmType_PageList:
             if (   pHostParm->type == VBOX_HGCM_SVC_PARM_PTR
-                && pGuestParm->u.PageList.size == pHostParm->u.pointer.size)
+                && pGuestParm->u.PageList.size >= pHostParm->u.pointer.size)
                 rc = VINF_SUCCESS;
             break;
 
