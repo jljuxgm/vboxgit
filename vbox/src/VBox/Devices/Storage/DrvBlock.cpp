@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 47829 2013-08-18 12:30:02Z vboxsync $ */
+/* $Id: DrvBlock.cpp 52023 2014-07-14 21:00:18Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -307,6 +307,22 @@ static DECLCALLBACK(int) drvblockDiscard(PPDMIBLOCK pInterface, PCRTRANGE paRang
     PDRVBLOCK pThis = PDMIBLOCK_2_DRVBLOCK(pInterface);
 
     return pThis->pDrvMedia->pfnDiscard(pThis->pDrvMedia, paRanges, cRanges);
+}
+
+/** @copydoc PDMIBLOCK::pfnIoBufAlloc */
+static DECLCALLBACK(int) drvblockIoBufAlloc(PPDMIBLOCK pInterface, size_t cb, void **ppvNew)
+{
+    PDRVBLOCK pThis = PDMIBLOCK_2_DRVBLOCK(pInterface);
+
+    return pThis->pDrvMedia->pfnIoBufAlloc(pThis->pDrvMedia, cb, ppvNew);
+}
+
+/** @copydoc PDMIBLOCK::pfnIoBufFree */
+static DECLCALLBACK(int) drvblockIoBufFree(PPDMIBLOCK pInterface, void *pv, size_t cb)
+{
+    PDRVBLOCK pThis = PDMIBLOCK_2_DRVBLOCK(pInterface);
+
+    return pThis->pDrvMedia->pfnIoBufFree(pThis->pDrvMedia, pv, cb);
 }
 
 /* -=-=-=-=- IBlockAsync -=-=-=-=- */
@@ -872,6 +888,8 @@ static DECLCALLBACK(int) drvblockConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, u
     pThis->IBlock.pfnGetSectorSize          = drvblockGetSectorSize;
     pThis->IBlock.pfnGetType                = drvblockGetType;
     pThis->IBlock.pfnGetUuid                = drvblockGetUuid;
+    pThis->IBlock.pfnIoBufAlloc             = drvblockIoBufAlloc;
+    pThis->IBlock.pfnIoBufFree              = drvblockIoBufFree;
 
     /* IBlockBios. */
     pThis->IBlockBios.pfnGetPCHSGeometry    = drvblockGetPCHSGeometry;
