@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 45786 2013-04-26 22:35:59Z vboxsync $ */
+/* $Id: SELMAll.cpp 49482 2013-11-14 15:43:58Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -608,6 +608,7 @@ VMM_INT_DECL(void) SELMLoadHiddenSelectorReg(PVMCPU pVCpu, PCCPUMCTX pCtx, PCPUM
 DECLINLINE(int) selmValidateAndConvertCSAddrRealMode(PVMCPU pVCpu, RTSEL SelCS, PCCPUMSELREGHID pSReg, RTGCPTR Addr,
                                                      PRTGCPTR ppvFlat)
 {
+    NOREF(pVCpu);
     RTGCUINTPTR uFlat = Addr & 0xffff;
     if (!pSReg || !CPUMSELREG_ARE_HIDDEN_PARTS_VALID(pVCpu, pSReg))
         uFlat += (RTGCUINTPTR)SelCS << 4;

@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 49039 2013-10-10 18:27:32Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 49482 2013-11-14 15:43:58Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -4456,6 +4456,8 @@ FNIEMOP_DEF_1(iemOpCommonBit_Ev_Gv, PCIEMOPBINSIZES, pImpl)
             IEMOP_HLP_NO_LOCK_PREFIX();
             fAccess = IEM_ACCESS_DATA_R;
         }
+
+        NOREF(fAccess);
 
         /** @todo test negative bit offsets! */
         switch (pIemCpu->enmEffOpSize)
