@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 51625 2014-06-16 20:01:10Z vboxsync $ */
+/* $Id: QED.cpp 51680 2014-06-20 17:55:52Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -831,7 +831,7 @@ static int qedFlushImage(PQEDIMAGE pImage)
                                              pImage->cTableEntries);
             rc = vdIfIoIntFileWriteSync(pImage->pIfIo, pImage->pStorage,
                                         pImage->offL1Table, paL1TblImg,
-                                        pImage->cbTable, NULL);
+                                        pImage->cbTable);
             RTMemFree(paL1TblImg);
         }
         else
