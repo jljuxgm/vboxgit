@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51532 2014-06-04 15:07:21Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51541 2014-06-05 07:14:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -424,6 +424,16 @@ void UIExtraDataManager::setSelectorWindowStatusBarVisible(bool fVisible)
 {
     /* Remember if feature restricted: */
     setExtraDataString(GUI_Statusbar, toFeatureRestricted(!fVisible));
+}
+
+QString UIExtraDataManager::selectorWindowLastItemChosen() const
+{
+    return extraDataString(GUI_LastItemSelected);
+}
+
+void UIExtraDataManager::setSelectorWindowLastItemChosen(const QString &strItemID)
+{
+    setExtraDataString(GUI_LastItemSelected, strItemID);
 }
 
 QMap<DetailsElementType, bool> UIExtraDataManager::selectorWindowDetailsElements()
