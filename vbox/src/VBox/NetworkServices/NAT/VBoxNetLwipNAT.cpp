@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48289 2013-09-05 03:23:26Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48336 2013-09-06 06:08:58Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -869,7 +869,7 @@ int VBoxNetLwipNAT::init()
             Log(("%d-rule: %ls\n", idxRules, rules[idxRules]));
             NATSEVICEPORTFORWARDRULE Rule;
             netPfStrToPf(com::Utf8Str(rules[idxRules]).c_str(), 1, &Rule.Pfr);
-            m_vecPortForwardRule4.push_back(Rule);
+            m_vecPortForwardRule6.push_back(Rule);
         }
     } /* if (!fDontLoadRulesOnStartup) */
 
