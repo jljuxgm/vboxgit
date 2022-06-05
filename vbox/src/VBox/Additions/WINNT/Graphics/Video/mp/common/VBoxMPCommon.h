@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCommon.h 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: VBoxMPCommon.h 49450 2013-11-12 12:33:30Z vboxsync $ */
 /** @file
  * VBox Miniport common functions used by XPDM/WDDM drivers
  */
@@ -29,14 +29,13 @@ typedef bool(*PFNVIDEOIRQSYNC)(void *);
 bool VBoxMPCmnSyncToVideoIRQ(PVBOXMP_COMMON pCommon, PFNVIDEOIRQSYNC pfnSync, void *pvUser);
 
 /* Video modes related */
-#define VBOXMP_MAX_VIDEO_MODES 128
 void VBoxMPCmnInitCustomVideoModes(PVBOXMP_DEVEXT pExt);
 VIDEO_MODE_INFORMATION* VBoxMPCmnGetCustomVideoModeInfo(ULONG ulIndex);
 
 #ifdef VBOX_XPDM_MINIPORT
-VIDEO_MODE_INFORMATION* VBoxMPCmnGetVideoModeInfo(ULONG ulIndex);
+VIDEO_MODE_INFORMATION* VBoxMPCmnGetVideoModeInfo(PVBOXMP_DEVEXT pExt, ULONG ulIndex);
 VIDEO_MODE_INFORMATION* VBoxMPXpdmCurrentVideoMode(PVBOXMP_DEVEXT pExt);
-ULONG VBoxMPXpdmGetVideoModesCount();
+ULONG VBoxMPXpdmGetVideoModesCount(PVBOXMP_DEVEXT pExt);
 void VBoxMPXpdmBuildVideoModesTable(PVBOXMP_DEVEXT pExt);
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDriver.cpp 48944 2013-10-07 21:32:37Z vboxsync $ */
+/* $Id: VBoxMPDriver.cpp 49450 2013-11-12 12:33:30Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport driver interface functions
@@ -309,7 +309,7 @@ VBoxDrvStartIO(PVOID HwDeviceExtension, PVIDEO_REQUEST_PACKET RequestPacket)
         {
             PVIDEO_MODE_INFORMATION pModes = (PVIDEO_MODE_INFORMATION) RequestPacket->OutputBuffer;
 
-            if (RequestPacket->OutputBufferLength < VBoxMPXpdmGetVideoModesCount()*sizeof(VIDEO_MODE_INFORMATION))
+            if (RequestPacket->OutputBufferLength < VBoxMPXpdmGetVideoModesCount(pExt)*sizeof(VIDEO_MODE_INFORMATION))
             {
                 pStatus->Status = ERROR_INSUFFICIENT_BUFFER;
                 break;
