@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 51357 2014-05-22 17:11:17Z vboxsync $ */
+/* $Id: DevVGA.cpp 51365 2014-05-23 06:53:24Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4758,6 +4758,8 @@ static DECLCALLBACK(int) vgaPortTakeScreenshot(PPDMIDISPLAYPORT pInterface, uint
             Connector.pfnRefresh    = vgaDummyRefresh;
             Connector.pfnResize     = vgaDummyResize;
             Connector.pfnUpdateRect = vgaDummyUpdateRect;
+            /* keep the CtlSubmit unchanged */
+            Connector.pfnCrHgcmCtlSubmit = pThis->pDrv ? pThis->pDrv->pfnCrHgcmCtlSubmit : NULL;
 
             /* Save & replace state data. */
             PPDMIDISPLAYCONNECTOR pConnectorSaved = pThis->pDrv;
