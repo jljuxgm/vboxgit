@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 48382 2013-09-09 10:04:44Z vboxsync $ */
+/* $Id: the-linux-kernel.h 48383 2013-09-09 10:14:21Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -125,7 +125,7 @@
 #include <asm/div64.h>
 
 /* For thread-context hooks. */
-#if defined(CONFIG_PREEMPT_NOTIFIERS)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 18) && defined(CONFIG_PREEMPT_NOTIFIERS)
 # include <linux/preempt.h>
 #endif
 
