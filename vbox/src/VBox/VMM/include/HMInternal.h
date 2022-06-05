@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 49000 2013-10-09 12:22:39Z vboxsync $ */
+/* $Id: HMInternal.h 49275 2013-10-24 13:06:04Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -514,7 +514,8 @@ typedef struct HMCPU
     bool                        fLeaveDone;
     /** Whether we're using the hyper DR7 or guest DR7. */
     bool                        fUsingHyperDR7;
-    uint8_t                     abAlignment[1];
+    /** Whether to preload the guest-FPU state to avoid #NM VM-exit overhead. */
+    bool                        fUseGuestFpu;
 
     /** World switch exit counter. */
     volatile uint32_t           cWorldSwitchExits;
