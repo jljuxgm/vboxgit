@@ -1,4 +1,4 @@
-/* $Id: misc.c 45089 2013-03-19 11:26:12Z vboxsync $ */
+/* $Id: misc.c 50016 2013-12-31 05:59:37Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -495,9 +495,8 @@ struct mbuf *slirp_ext_m_get(PNATState pData, size_t cbMin, void **ppvBuf, size_
     struct mbuf *m;
     size_t size = MCLBYTES;
     LogFlowFunc(("ENTER: cbMin:%d, ppvBuf:%p, pcbBuf:%p\n", cbMin, ppvBuf, pcbBuf));
-    if (cbMin < MSIZE)
-        size = MCLBYTES;
-    else if (cbMin < MCLBYTES)
+
+    if (cbMin < MCLBYTES)
         size = MCLBYTES;
     else if (cbMin < MJUM9BYTES)
         size = MJUM9BYTES;
