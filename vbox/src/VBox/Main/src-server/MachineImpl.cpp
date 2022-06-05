@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 52990 2014-10-08 11:42:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 53012 2014-10-09 17:40:56Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1280,7 +1280,9 @@ HRESULT Machine::getEffectiveParavirtProvider(ParavirtProvider_T *aParavirtProvi
                 {
                     if (fOsXGuest)
                         *aParavirtProvider = ParavirtProvider_Minimal;
-                    else if (   mUserData->s.strOsType == "Windows81"
+                    else if (   mUserData->s.strOsType == "Windows10"
+                             || mUserData->s.strOsType == "Windows10_64"
+                             || mUserData->s.strOsType == "Windows81"
                              || mUserData->s.strOsType == "Windows81_64"
                              || mUserData->s.strOsType == "Windows8"
                              || mUserData->s.strOsType == "Windows8_64"
