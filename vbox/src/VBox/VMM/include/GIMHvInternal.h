@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 52762 2014-09-16 15:50:08Z vboxsync $ */
+/* $Id: GIMHvInternal.h 52763 2014-09-16 15:50:35Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -524,5 +524,5 @@ VMM_INT_DECL(int)               GIMHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCP
 
 RT_C_DECLS_END
 
-#endif /* ___GIMHvInternal_h */
+#endif
 
