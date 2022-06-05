@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 51640 2014-06-18 04:04:52Z vboxsync $ */
+/* $Id: VM.cpp 52009 2014-07-14 05:27:31Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -985,8 +985,8 @@ static int vmR3InitRing3(PVM pVM, PUVM pUVM)
                                                                 rc = DBGFR3Init(pVM);
                                                                 if (RT_SUCCESS(rc))
                                                                 {
-                                                                    /* GIM must be init'd before PDM, DevGIM construction may
-                                                                       require GIM provider to be setup. */
+                                                                    /* GIM must be init'd before PDM, gimdevR3Construct()
+                                                                       requires GIM provider to be setup. */
                                                                     rc = GIMR3Init(pVM);
                                                                     if (RT_SUCCESS(rc))
                                                                     {

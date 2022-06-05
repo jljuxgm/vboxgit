@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 52006 2014-07-12 12:01:19Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 52009 2014-07-14 05:27:31Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5130,7 +5130,6 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptDB(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     HMSVM_CHECK_EXIT_DUE_TO_EVENT_DELIVERY();
 
     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitGuestDB);
-
 
     /* This can be a fault-type #DB (instruction breakpoint) or a trap-type #DB (data breakpoint). However, for both cases
        DR6 and DR7 are updated to what the exception handler expects. See AMD spec. 15.12.2 "#DB (Debug)". */

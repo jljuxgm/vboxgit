@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 52006 2014-07-12 12:01:19Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 52009 2014-07-14 05:27:31Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6384,7 +6384,7 @@ DECLINLINE(int) hmR0VmxReadSegmentReg(PVMCPU pVCpu, uint32_t idxSel, uint32_t id
      *    - For the remaining data segments no bits are defined.
      *
      * The present bit and the unusable bit has been observed to be set at the
-     * same time (the selector was supposed to invalid as we started executing
+     * same time (the selector was supposed to be invalid as we started executing
      * a V8086 interrupt in ring-0).
      *
      * What should be important for the rest of the VBox code, is that the P bit is

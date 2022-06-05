@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 52004 2014-07-12 07:37:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 52009 2014-07-14 05:27:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1217,6 +1217,8 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         if (   !RTStrCmp(pcszParavirtProvider, "Minimal")
             && fOsXGuest)
         {
+            /* When adding new OS X types, please add corresponding types to GIMOSID and
+               update GIMR3IsOSXGuest().  */
             GIMOSID enmOsId = GIMOSID_OSX;
             if (osTypeId == "MacOS_64")
                 enmOsId = GIMOSID_OSX_64;
