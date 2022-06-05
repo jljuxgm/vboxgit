@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.cpp 49120 2013-10-15 15:12:06Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 50580 2014-02-25 15:22:04Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
@@ -258,7 +258,7 @@ void EmWebcam::EmWebcamCbDeviceDesc(int rcRequest, void *pDeviceCtx, void *pvUse
 
         /* Try to attach the device. */
         EmulatedUSB *pEUSB = mParent->getConsole()->getEmulatedUSB();
-        pEUSB->webcamAttachInternal("", "", "EmWebcam", pRemote);
+        pEUSB->i_webcamAttachInternal("", "", "EmWebcam", pRemote);
     }
     else
     {
