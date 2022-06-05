@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 52619 2014-09-05 12:10:24Z vboxsync $ */
+/* $Id: SUPDrv.c 52621 2014-09-05 14:58:20Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5641,7 +5641,6 @@ static int supdrvGipCreate(PSUPDRVDEVEXT pDevExt)
              * Measure the TSC deltas now that we have MP notifications.
              */
             unsigned cTries = 5;
-#if 0
             do
             {
                 rc = supdrvMeasureTscDeltas(pDevExt, pGip, NULL /* pidxMaster */);
@@ -5653,8 +5652,6 @@ static int supdrvGipCreate(PSUPDRVDEVEXT pDevExt)
                 else
                     break;
             } while (cTries > 0);
-#endif
-
             if (RT_SUCCESS(rc))
             {
 #if 0
