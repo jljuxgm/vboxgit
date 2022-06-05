@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 50288 2014-01-30 14:13:58Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 50290 2014-01-30 15:58:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -3662,11 +3662,14 @@ bool UIMachineSettingsStorage::createStorageAttachment(const UICacheSettingsMach
                         fSuccess = m_machine.isOk();
                     }
                 }
-                if (fSuccess && isMachineOffline())
+                if (controllerBus == KStorageBus_SATA)
                 {
-                    m_machine.SetHotPluggableForDevice(strControllerName, iAttachmentPort, iAttachmentDevice, fAttachmentHotPluggable);
-                    /* Check that machine is OK: */
-                    fSuccess = m_machine.isOk();
+                    if (fSuccess && isMachineOffline())
+                    {
+                        m_machine.SetHotPluggableForDevice(strControllerName, iAttachmentPort, iAttachmentDevice, fAttachmentHotPluggable);
+                        /* Check that machine is OK: */
+                        fSuccess = m_machine.isOk();
+                    }
                 }
             }
             else
@@ -3748,11 +3751,14 @@ bool UIMachineSettingsStorage::updateStorageAttachment(const UICacheSettingsMach
                         fSuccess = m_machine.isOk();
                     }
                 }
-                if (fSuccess && isMachineOffline())
+                if (controllerBus == KStorageBus_SATA)
                 {
-                    m_machine.SetHotPluggableForDevice(strControllerName, iAttachmentPort, iAttachmentDevice, fAttachmentHotPluggable);
-                    /* Check that machine is OK: */
-                    fSuccess = m_machine.isOk();
+                    if (fSuccess && isMachineOffline())
+                    {
+                        m_machine.SetHotPluggableForDevice(strControllerName, iAttachmentPort, iAttachmentDevice, fAttachmentHotPluggable);
+                        /* Check that machine is OK: */
+                        fSuccess = m_machine.isOk();
+                    }
                 }
             }
             else
