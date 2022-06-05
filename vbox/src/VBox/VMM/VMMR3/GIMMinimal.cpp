@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 52674 2014-09-10 11:34:08Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 52675 2014-09-10 13:24:03Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -45,9 +45,18 @@ VMMR3_INT_DECL(int) GIMR3MinimalInit(PVM pVM)
      */
     CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP);
 
+    return VINF_SUCCESS;
+}
+
+
+VMMR3_INT_DECL(int) GIMR3MinimalInitFinalize(PVM pVM)
+{
     /*
      * Expose a generic hypervisor-agnostic leaf (originally defined VMware).
      * The leaves range from  0x40000010 to 0x400000FF.
+     *
+     * This is done in the finalize routine as we need PDM to be
+     * initialized (otherwise PDMApicGetTimerFreq() would fail).
      */
     CPUMCPUIDLEAF HyperLeaf;
     int rc = CPUMR3CpuIdGetLeaf(pVM, &HyperLeaf, 0x40000000, 0 /* uSubLeaf */);
@@ -81,7 +90,6 @@ VMMR3_INT_DECL(int) GIMR3MinimalInit(PVM pVM)
 
     return VINF_SUCCESS;
 }
-
 
 VMMR3_INT_DECL(void) GIMR3MinimalRelocate(PVM pVM, RTGCINTPTR offDelta)
 {

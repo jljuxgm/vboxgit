@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 52247 2014-07-31 13:49:15Z vboxsync $ */
+/* $Id: GIM.cpp 52675 2014-09-10 13:24:03Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -147,37 +147,28 @@ VMMR3_INT_DECL(int) GIMR3Init(PVM pVM)
     return rc;
 }
 
-#if 0
-VMM_INT_DECL(int) GIMR3InitFinalize(PVM pVM)
+
+VMMR3_INT_DECL(int) GIMR3InitFinalize(PVM pVM)
 {
     LogFlow(("GIMR3InitFinalize\n"));
 
     if (!pVM->gim.s.fEnabled)
         return VINF_SUCCESS;
 
+    int rc = VINF_SUCCESS;
     switch (pVM->gim.s.enmProviderId)
     {
         case GIMPROVIDERID_MINIMAL:
         {
-            GIMR3MinimalInitFinalize(pVM);
+            rc = GIMR3MinimalInitFinalize(pVM);
             break;
         }
 
-        case GIMPROVIDERID_HYPERV:
-        {
-            GIMR3HvInitFinalize(pVM);
-            break;
-        }
-
-        case GIMPROVIDERID_KVM:            /** @todo KVM. */
         default:
-        {
-            AssertMsgFailed(("Invalid provider Id %#x\n", pVM->gim.s.enmProviderId));
             break;
-        }
     }
+    return rc;
 }
-#endif
 
 
 /**

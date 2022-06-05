@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 52419 2014-08-19 16:12:46Z vboxsync $ */
+/* $Id: VM.cpp 52675 2014-09-10 13:24:03Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1010,6 +1010,8 @@ static int vmR3InitRing3(PVM pVM, PUVM pUVM)
                                                                             if (RT_SUCCESS(rc))
                                                                                 rc = REMR3InitFinalize(pVM);
 #endif
+                                                                            if (RT_SUCCESS(rc))
+                                                                                rc = GIMR3InitFinalize(pVM);
                                                                             if (RT_SUCCESS(rc))
                                                                             {
                                                                                 PGMR3MemSetup(pVM, false /*fAtReset*/);
