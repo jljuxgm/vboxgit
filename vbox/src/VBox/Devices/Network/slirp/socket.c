@@ -1,4 +1,4 @@
-/* $Id: socket.c 53056 2014-10-14 15:21:09Z vboxsync $ */
+/* $Id: socket.c 53310 2014-11-12 04:16:52Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -1460,7 +1460,7 @@ sorecvfrom_icmp_win(PNATState pData, struct socket *so)
     int out_len;
     int size;
 
-    len = pData->pfIcmpParseReplies(pData->pvIcmpBuffer, pData->cbIcmpBuffer);
+    len = IcmpParseReplies(pData->pvIcmpBuffer, pData->cbIcmpBuffer);
     if (len < 0)
     {
         LogRel(("NAT: Error (%d) occurred on ICMP receiving\n", GetLastError()));
