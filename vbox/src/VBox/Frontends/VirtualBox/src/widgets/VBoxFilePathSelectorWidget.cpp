@@ -1,4 +1,4 @@
-/* $Id: VBoxFilePathSelectorWidget.cpp 48577 2013-09-20 10:10:18Z vboxsync $ */
+/* $Id: VBoxFilePathSelectorWidget.cpp 49266 2013-10-23 18:54:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -282,7 +282,7 @@ void VBoxFilePathSelectorWidget::retranslateUi()
     {
         mNoneStr = tr ("<reset to default>");
         mNoneTip = tr ("The actual default path value will be displayed after "
-                       "accepting the changes and opening this dialog again.");
+                       "accepting the changes and opening this window again.");
     }
     else
     {
