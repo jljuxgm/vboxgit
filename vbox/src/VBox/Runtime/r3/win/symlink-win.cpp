@@ -1,4 +1,4 @@
-/* $Id: symlink-win.cpp 47596 2013-08-07 15:15:09Z vboxsync $ */
+/* $Id: symlink-win.cpp 49043 2013-10-11 00:58:02Z vboxsync $ */
 /** @file
  * IPRT - Symbolic Links, Windows.
  */
@@ -157,6 +157,16 @@ RTDECL(int) RTSymlinkCreate(const char *pszSymlink, const char *pszTarget, RTSYM
         rc = RTStrToUtf16(pszTarget, &pwszNativeTarget);
         if (RT_SUCCESS(rc))
         {
+            /* The link target path must use backslashes to work reliably. */
+            RTUTF16  wc;
+            PRTUTF16 pwsz = pwszNativeTarget;
+            while ((wc = *pwsz) != '\0')
+            {
+                if (wc == '/')
+                    *pwsz = '\\';
+                pwsz++;
+            }
+
             /*
              * Massage the target path, determin the link type.
              */
