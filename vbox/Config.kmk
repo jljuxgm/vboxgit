@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52197 2014-07-25 15:38:04Z vboxsync $
+# $Id: Config.kmk 52198 2014-07-25 16:25:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5381,7 +5381,7 @@ TEMPLATE_VBOXGUESTR3XORGMOD_DEFS = $(TEMPLATE_VBOXGUESTR3DLL_DEFS) LOG_TO_BACKDO
 ifeq ($(KBUILD_TARGET_ARCH),amd64)
  TEMPLATE_VBOXGUESTR3XORGMOD_DEFS += _XSERVER64
 endif
-if1of ($(KBUILD_TARGET), linux solaris)
+if1of ($(KBUILD_TARGET), linux)
  TEMPLATE_VBOXGUESTR3XORGMOD_LDFLAGS = $(TEMPLATE_VBOXGUESTR3DLL_LDFLAGS) -Wl,-gc-sections
 endif
 TEMPLATE_VBOXGUESTR3XORGMOD_LIBS = \
@@ -5719,7 +5719,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52197 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52198 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
