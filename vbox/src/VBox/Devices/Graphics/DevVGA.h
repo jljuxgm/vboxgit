@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 51217 2014-05-08 17:42:50Z vboxsync $ */
+/* $Id: DevVGA.h 51218 2014-05-08 18:08:40Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -295,6 +295,11 @@ typedef struct VGAState {
 # endif
     /** Status LUN\#0: Leds interface. */
     PDMILEDPORTS                ILeds;
+
+#if HC_ARCH_BITS == 32
+    uint32_t                    Padding2;
+#endif
+
     /** Pointer to base interface of the driver. */
     R3PTRTYPE(PPDMIBASE)        pDrvBase;
     /** Pointer to display connector interface of the driver. */
