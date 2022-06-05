@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.h 49516 2013-11-16 06:42:31Z vboxsync $ */
+/* $Id: NetworkServiceRunner.h 49517 2013-11-16 07:23:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server.
  */
@@ -20,6 +20,8 @@
 #include <iprt/string.h>
 #include <iprt/mem.h>
 #include <VBox/com/string.h>
+
+#include <string>
 
 #define TRUNKTYPE_WHATEVER "whatever"
 #define TRUNKTYPE_NETFLT   "netflt"

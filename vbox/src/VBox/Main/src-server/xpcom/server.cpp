@@ -1,4 +1,4 @@
-/* $Id: server.cpp 49497 2013-11-15 11:39:00Z vboxsync $ */
+/* $Id: server.cpp 49517 2013-11-16 07:23:21Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -50,8 +50,6 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/resource.h>
-
-#include <string>
 
 /////////////////////////////////////////////////////////////////////////////
 // VirtualBox component instantiation
