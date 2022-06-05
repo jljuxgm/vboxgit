@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 49630 2013-11-22 16:19:16Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 49631 2013-11-22 16:30:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1431,6 +1431,10 @@ int GuestSession::fsQueryInfoInternal(const Utf8Str &strPath, GuestFsObjData &ob
         else
             vrc = VERR_NO_DATA;
     }
+
+    if (   vrc == VERR_GSTCTL_GUEST_ERROR)
+        && pGuestRc)
+        *pGuestRc = guestRc;
 
     LogFlowThisFunc(("Returning rc=%Rrc, guestRc=%Rrc\n",
                      vrc, guestRc));
