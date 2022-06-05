@@ -1,4 +1,4 @@
-/* $Id: state_framebuffer.c 48491 2013-09-16 15:31:03Z vboxsync $ */
+/* $Id: state_framebuffer.c 52641 2014-09-08 11:18:08Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: EXT_framebuffer_object state tracking
@@ -1096,7 +1096,7 @@ DECLEXPORT(GLuint) STATE_APIENTRY crStateGetFramebufferHWID(GLuint id)
 {
     CRContext *g = GetCurrentContext();
     CRFramebufferObject *pFBO = (CRFramebufferObject*) crHashtableSearch(g->shared->fbTable, id);
-#ifdef DEBUG_misha
+#if 0 //def DEBUG_misha
     crDebug("FB id(%d) hw(%d)", id, pFBO ? pFBO->hwid : 0);
 #endif
     return pFBO ? pFBO->hwid : 0;
