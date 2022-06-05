@@ -1,10 +1,10 @@
-/* $Id: PGMPhys.cpp 51517 2014-06-04 04:52:30Z vboxsync $ */
+/* $Id: PGMPhys.cpp 51518 2014-06-04 04:59:30Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
