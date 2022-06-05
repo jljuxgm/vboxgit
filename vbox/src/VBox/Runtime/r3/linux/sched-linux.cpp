@@ -1,4 +1,4 @@
-/* $Id: sched-linux.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: sched-linux.cpp 53081 2014-10-16 18:43:26Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -311,40 +311,23 @@ static void rtSchedNativeRestore(PSAVEDPRIORITY pSave)
 static int rtSchedRunThread(void *(*pfnThread)(void *pvArg), void *pvArg)
 {
     /*
-     * Setup thread attributes.
+     * Create the thread.
      */
-    pthread_attr_t  ThreadAttr;
-    int rc = pthread_attr_init(&ThreadAttr);
+    pthread_t Thread;
+    int rc = pthread_create(&Thread, NULL, pfnThread, pvArg);
     if (!rc)
     {
-        rc = pthread_attr_setdetachstate(&ThreadAttr, PTHREAD_CREATE_JOINABLE);
-        if (!rc)
+        /*
+         * Wait for the thread to finish.
+         */
+        void *pvRet = (void *)-1;
+        do
         {
-            rc = pthread_attr_setstacksize(&ThreadAttr, 128*1024);
-            if (!rc)
-            {
-                /*
-                 * Create the thread.
-                 */
-                pthread_t Thread;
-                rc = pthread_create(&Thread, &ThreadAttr, pfnThread, pvArg);
-                if (!rc)
-                {
-                    /*
-                     * Wait for the thread to finish.
-                     */
-                    void *pvRet = (void *)-1;
-                    do
-                    {
-                        rc = pthread_join(Thread, &pvRet);
-                    } while (errno == EINTR);
-                    if (rc)
-                        return RTErrConvertFromErrno(rc);
-                    return (int)(uintptr_t)pvRet;
-                }
-            }
-        }
-        pthread_attr_destroy(&ThreadAttr);
+            rc = pthread_join(Thread, &pvRet);
+        } while (errno == EINTR);
+        if (rc)
+            return RTErrConvertFromErrno(rc);
+        return (int)(uintptr_t)pvRet;
     }
     return RTErrConvertFromErrno(rc);
 }
