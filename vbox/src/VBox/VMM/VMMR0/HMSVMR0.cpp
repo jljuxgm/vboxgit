@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49019 2013-10-10 08:45:11Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49026 2013-10-10 12:01:59Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1668,6 +1668,7 @@ VMMR0DECL(int) SVMR0Enter(PVM pVM, PVMCPU pVCpu, PHMGLOBALCPUINFO pCpu)
  * @param   enmEvent        The thread-context event.
  * @param   pVCpu           Pointer to the VMCPU.
  * @param   fGlobalInit     Whether global VT-x/AMD-V init. is used.
+ * @thread  EMT(pVCpu)
  */
 VMMR0DECL(void) SVMR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPU pVCpu, bool fGlobalInit)
 {
