@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 48158 2013-08-29 13:42:37Z vboxsync $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 49271 2013-10-24 10:50:57Z vboxsync $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -1070,7 +1070,7 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_ins_op,OP_SIZE,_addr,ADDR_SIZE), bool, fIoCh
            cause misbehavior if the instruction is re-interpreted or smth. So,
            we fail with an internal error here instead. */
         else
-            AssertLogRelFailedReturn(VERR_IEM_IPE_1);
+            AssertLogRelMsgFailedReturn(("rcStrict2=%Rrc\n", VBOXSTRICTRC_VAL(rcStrict2)), VERR_IEM_IPE_1);
     }
     return rcStrict;
 }
@@ -1226,7 +1226,8 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_rep_ins_op,OP_SIZE,_addr,ADDR_SIZE), bool, f
 
             *puMem = (OP_TYPE)u32Value;
             VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmap(pIemCpu, puMem, IEM_ACCESS_DATA_W);
-            AssertLogRelReturn(rcStrict2 == VINF_SUCCESS, VERR_IEM_IPE_1); /* See non-rep version. */
+            AssertLogRelMsgReturn(rcStrict2 == VINF_SUCCESS, ("rcStrict2=%Rrc\n", VBOXSTRICTRC_VAL(rcStrict2)),
+                                  VERR_IEM_IPE_1); /* See non-rep version. */
 
             pCtx->ADDR_rDI = uAddrReg += cbIncr;
             pCtx->ADDR_rCX = --uCounterReg;
