@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 51349 2014-05-22 11:42:21Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 51358 2014-05-22 17:16:05Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1866,7 +1866,9 @@ int vboxVBVALoadStateDone (PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 
             if (pView->pVBVA)
             {
+#ifdef VBOX_WITH_CRHGSMI
                 Assert(!vboxCmdVBVAIsEnabled(pVGAState));
+#endif
                 vbvaEnable (iView, pVGAState, pCtx, pView->pVBVA, pView->u32VBVAOffset, true /* fRestored */);
                 vbvaResize (pVGAState, pView, &pView->screen);
             }
@@ -2136,12 +2138,14 @@ static DECLCALLBACK(int) vbvaChannelHandler (void *pvHandler, uint16_t u16Channe
 
         case VBVA_INFO_VIEW:
         {
+#ifdef VBOX_WITH_CRHGSMI
             if (vboxCmdVBVAIsEnabled(pVGAState))
             {
                 AssertMsgFailed(("VBVA_INFO_VIEW is not acceptible for CmdVbva\n"));
                 rc = VERR_INVALID_PARAMETER;
                 break;
             }
+#endif
 
             if (cbBuffer < sizeof (VBVAINFOVIEW))
             {
@@ -2201,12 +2205,14 @@ static DECLCALLBACK(int) vbvaChannelHandler (void *pvHandler, uint16_t u16Channe
                 break;
             }
 
+#ifdef VBOX_WITH_CRHGSMI
             if (vboxCmdVBVAIsEnabled(pVGAState))
             {
                 AssertMsgFailed(("VBVA_INFO_SCREEN is not acceptible for CmdVbva\n"));
                 rc = VERR_INVALID_PARAMETER;
                 break;
             }
+#endif
 
             VBVAINFOSCREEN *pScreen = (VBVAINFOSCREEN *)pvBuffer;
             VBVAINFOSCREEN Screen = *pScreen;
@@ -2215,12 +2221,14 @@ static DECLCALLBACK(int) vbvaChannelHandler (void *pvHandler, uint16_t u16Channe
 
         case VBVA_ENABLE:
         {
+#ifdef VBOX_WITH_CRHGSMI
             if (vboxCmdVBVAIsEnabled(pVGAState))
             {
                 AssertMsgFailed(("VBVA_ENABLE is not acceptible for CmdVbva\n"));
                 rc = VERR_INVALID_PARAMETER;
                 break;
             }
+#endif
 
             if (cbBuffer < sizeof (VBVAENABLE))
             {
