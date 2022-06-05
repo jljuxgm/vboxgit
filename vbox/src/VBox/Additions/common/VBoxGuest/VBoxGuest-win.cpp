@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 51224 2014-05-09 11:16:06Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 53008 2014-10-09 11:34:57Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -129,6 +129,9 @@ ULONG DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
                     break;
                 case 3:
                     g_enmVbgdNtVer = VBGDNTVER_WIN81;
+                    break;
+                case 4:
+                    g_enmVbgdNtVer = VBGDNTVER_WIN10;
                     break;
                 default:
                     LogRelFunc(("Unknown version of Windows (%u.%u), refusing!\n", ulMajorVer, ulMinorVer));
@@ -1307,6 +1310,14 @@ VBOXOSTYPE vbgdNtVersionToOSType(VBGDNTVER enmNtVer)
             enmOsType = VBOXOSTYPE_Win81_x64;
 #else
             enmOsType = VBOXOSTYPE_Win81;
+#endif
+            break;
+
+        case VBGDNTVER_WIN10:
+#if ARCH_BITS == 64
+            enmOsType = VBOXOSTYPE_Win10_x64;
+#else
+            enmOsType = VBOXOSTYPE_Win10;
 #endif
             break;
 

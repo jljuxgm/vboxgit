@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.cpp 49750 2013-12-03 12:31:51Z vboxsync $ */
+/* $Id: VBoxMPInternal.cpp 53008 2014-10-09 11:34:57Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport internal functions
@@ -426,7 +426,7 @@ static int VBoxVbvaCreateChannelContexts(PVBOXMP_COMMON pCommon, VBVA_CHANNELCON
     VBVA_CHANNELCONTEXTS *pContext = (VBVA_CHANNELCONTEXTS*) VBoxMPMemAllocDriver(pCommon, size);
     if (pContext)
     {
-        VideoPortZeroMemory(pContext, size);
+        VideoPortZeroMemory(pContext, (ULONG)size);
         pContext->cContexts = cDisplays;
         pContext->pCommon = pCommon;
         *ppContext = pContext;
