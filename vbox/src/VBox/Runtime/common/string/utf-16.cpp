@@ -1,4 +1,4 @@
-/* $Id: utf-16.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: utf-16.cpp 52944 2014-10-05 04:37:10Z vboxsync $ */
 /** @file
  * IPRT - UTF-16.
  */
@@ -97,6 +97,20 @@ static int rtUtf16Length(PCRTUTF16 pwsz, size_t cwc, size_t *pcuc, size_t *pcwcA
         *pcwcActual = pwsz - pwszStart;
     return VINF_SUCCESS;
 }
+
+
+RTDECL(PRTUTF16) RTUtf16AllocTag(size_t cb, const char *pszTag)
+{
+    if (cb > sizeof(RTUTF16))
+        cb = RT_ALIGN_Z(cb, sizeof(RTUTF16));
+    else
+        cb = sizeof(RTUTF16);
+    PRTUTF16 pwsz = (PRTUTF16)RTMemAllocTag(cb, pszTag);
+    if (pwsz)
+        *pwsz = '\0';
+    return pwsz;
+}
+RT_EXPORT_SYMBOL(RTUtf16AllocTag);
 
 
 RTDECL(void)  RTUtf16Free(PRTUTF16 pwszString)

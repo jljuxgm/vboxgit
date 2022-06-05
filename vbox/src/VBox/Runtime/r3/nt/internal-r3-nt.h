@@ -1,4 +1,4 @@
-/* $Id: internal-r3-nt.h 49150 2013-10-17 07:22:02Z vboxsync $ */
+/* $Id: internal-r3-nt.h 52944 2014-10-05 04:37:10Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the Native NT code.
  */
@@ -28,8 +28,11 @@
 #ifndef ___internal_r3_nt_h___
 #define ___internal_r3_nt_h___
 
-
-#include <iprt/nt/nt.h>
+#ifdef IN_SUP_HARDENED_R3
+# include <iprt/nt/nt-and-windows.h>
+#else
+# include <iprt/nt/nt.h>
+#endif
 #include "internal/iprt.h"
 
 
