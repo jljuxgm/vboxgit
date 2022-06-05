@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: RTSignTool.cpp 51774 2014-07-01 18:32:18Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -468,7 +468,7 @@ static RTEXITCODE HandleVerifyExe(int cArgs, char **papszArgs)
      */
 #ifdef VBOX
     unsigned cSets = 0;
-    struct { RTCRSTORE hStore; PCSUPTAENTRY paTAs; unsigned cTAs; } aSets[6];
+    struct STORESET { RTCRSTORE hStore; PCSUPTAENTRY paTAs; unsigned cTAs; } aSets[6];
 #endif
 
     switch (State.enmSignType)
