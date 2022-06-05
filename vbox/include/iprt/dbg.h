@@ -1,4 +1,4 @@
-/* $Id: dbg.h 49053 2013-10-11 14:16:18Z vboxsync $ */
+/* $Id: dbg.h 49061 2013-10-11 20:15:59Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -459,6 +459,8 @@ RTDECL(int) RTDbgCfgOpenDbg(RTDBGCFG hDbgCfg, const char *pszFilename, uint32_t 
 RTDECL(int) RTDbgCfgOpenDwo(RTDBGCFG hDbgCfg, const char *pszFilename, uint32_t uCrc32,
                             PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 RTDECL(int) RTDbgCfgOpenDsymBundle(RTDBGCFG hDbgCfg, const char *pszFilename, PCRTUUID pUuid,
+                                   PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
+RTDECL(int) RTDbgCfgOpenMachOImage(RTDBGCFG hDbgCfg, const char *pszFilename, PCRTUUID pUuid,
                                    PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 
 

@@ -1,4 +1,4 @@
-/* $Id: dbgmod.h 49044 2013-10-11 01:06:28Z vboxsync $ */
+/* $Id: dbgmod.h 49061 2013-10-11 20:15:59Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDbgMod and the associated interpreters.
  */
@@ -638,27 +638,6 @@ typedef struct RTDBGMODINT
 } RTDBGMODINT;
 /** Pointer to an debug module structure.  */
 typedef RTDBGMODINT *PRTDBGMODINT;
-
-
-/**
- * Special segment package used passing segment order information for mach-o
- * images (mainly mach_kernel, really).
- *
- * Passes to rtDbgModDwarf_TryOpen via RTDBGMODINF::pvDbgPriv.
- */
-typedef struct RTDBGDWARFSEGPKG
-{
-    /** Pointer to the segment array. */
-    PCRTDBGSEGMENT      paSegs;
-    /** Number of segments. */
-    uint32_t            cSegs;
-    /** For use more internal use in file locator callbacks. */
-    RTLDRARCH           enmArch;
-    /** For use more internal use in file locator callbacks. */
-    PCRTUUID            pUuid;
-} RTDBGDWARFSEGPKG;
-/** Pointer to a const segment package. */
-typedef RTDBGDWARFSEGPKG const *PCRTDBGDWARFSEGPKG;
 
 
 extern DECLHIDDEN(RTSTRCACHE)           g_hDbgModStrCache;
