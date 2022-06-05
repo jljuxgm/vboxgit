@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 50754 2014-03-12 17:43:09Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 50805 2014-03-17 15:57:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1072,6 +1072,9 @@ void Display::handleResizeCompletedEMT (void)
                 pFBInfo->pFramebuffer->NotifyUpdate(0, 0, pFBInfo->w, pFBInfo->h);
         }
         LogRelFlow(("[%d]: default format %d\n", uScreenId, pFBInfo->fDefaultFormat));
+
+        /* Repaint the display because VM continued to run during the framebuffer resize. */
+        InvalidateAndUpdateEMT(this, uScreenId, false);
 
         /* Handle the case if there are some saved visible region that needs to be
          * applied after the resize of the framebuffer is completed
@@ -3841,10 +3844,7 @@ DECLCALLBACK(void) Display::displayRefreshCallback(PPDMIDISPLAYCONNECTOR pInterf
                 /* The resize status could be not Void here because a pending resize is issued. */
                 continue;
             }
-            /* Continue with normal processing because the status here is ResizeStatus_Void.
-             * Repaint all displays because VM continued to run during the framebuffer resize.
-             */
-            pDisplay->InvalidateAndUpdateEMT(pDisplay, uScreenId, false);
+            /* Continue with normal processing because the status here is ResizeStatus_Void. */
         }
         else if (u32ResizeStatus == ResizeStatus_InProgress)
         {
