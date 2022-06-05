@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 49754 2013-12-03 13:15:15Z vboxsync $ */
+/* $Id: DevPCNet.cpp 49809 2013-12-06 11:33:54Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4954,6 +4954,15 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
     rc = PDMDevHlpPCIIORegionRegister(pDevIns, 1, PCNET_PNPMMIO_SIZE, PCI_ADDRESS_SPACE_MEM, pcnetMMIOMap);
     if (RT_FAILURE(rc))
         return rc;
+
+    /** XXX remove! */
+#define PCNET_GUEST_SHARED_MEMORY_SIZE _512K
+    void *pvSharedMMIOR3;
+    rc = PDMDevHlpMMIO2Register(pDevIns, 2, PCNET_GUEST_SHARED_MEMORY_SIZE, 0, (void **)&pvSharedMMIOR3, "PCNetSh");
+    if (RT_FAILURE(rc))
+        return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
+                                   N_("Failed to allocate %u bytes of memory for the PCNet device"),
+                                   PCNET_GUEST_SHARED_MEMORY_SIZE);
 
 #ifdef PCNET_NO_POLLING
     /*
