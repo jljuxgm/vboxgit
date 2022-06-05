@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 49335 2013-10-30 14:58:17Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 49498 2013-11-15 12:41:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -163,6 +163,16 @@ void UIMachineLogicFullscreen::prepareActionGroups()
 
     /* Adjust-window action isn't allowed in fullscreen: */
     gActionPool->action(UIActionIndexRuntime_Simple_AdjustWindow)->setVisible(false);
+
+    /* Take care of view-action toggle state: */
+    UIAction *pActionFullscreen = gActionPool->action(UIActionIndexRuntime_Toggle_Fullscreen);
+    if (!pActionFullscreen->isChecked())
+    {
+        pActionFullscreen->blockSignals(true);
+        pActionFullscreen->setChecked(true);
+        pActionFullscreen->blockSignals(false);
+        pActionFullscreen->update();
+    }
 }
 
 #ifdef Q_WS_MAC
@@ -240,11 +250,21 @@ void UIMachineLogicFullscreen::cleanupMachineWindows()
 
 void UIMachineLogicFullscreen::cleanupActionGroups()
 {
-    /* Call to base-class: */
-    UIMachineLogic::cleanupActionGroups();
+    /* Take care of view-action toggle state: */
+    UIAction *pActionFullscreen = gActionPool->action(UIActionIndexRuntime_Toggle_Fullscreen);
+    if (pActionFullscreen->isChecked())
+    {
+        pActionFullscreen->blockSignals(true);
+        pActionFullscreen->setChecked(false);
+        pActionFullscreen->blockSignals(false);
+        pActionFullscreen->update();
+    }
 
     /* Reenable adjust-window action: */
     gActionPool->action(UIActionIndexRuntime_Simple_AdjustWindow)->setVisible(true);
+
+    /* Call to base-class: */
+    UIMachineLogic::cleanupActionGroups();
 }
 
 #ifdef Q_WS_MAC
