@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 49180 2013-10-18 12:35:36Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 49220 2013-10-22 06:51:19Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -4177,7 +4177,7 @@ static HRESULT APIENTRY vboxWddmDDevCreateResource(HANDLE hDevice, D3DDDIARG_CRE
             bCreateKMResource = true;
         }
 
-        if (pRc->RcDesc.fFlags.RenderTarget)
+        if (pRc->RcDesc.fFlags.RenderTarget || pRc->RcDesc.fFlags.Primary)
         {
             bIssueCreateResource = true;
             bSetHostID = true;
