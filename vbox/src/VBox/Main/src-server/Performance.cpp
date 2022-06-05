@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: Performance.cpp 49795 2013-12-05 18:53:18Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -1100,7 +1100,7 @@ void MachineDiskUsage::collect()
 
         AutoReadLock local_alock(pMedium COMMA_LOCKVAL_SRC_POS);
 
-        used += (ULONG)(pMedium->getSize() / _1M);
+        used += (ULONG)(pMedium->i_getSize() / _1M);
     }
 
     mUsed->put(used);

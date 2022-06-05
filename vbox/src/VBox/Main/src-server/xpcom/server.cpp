@@ -1,4 +1,4 @@
-/* $Id: server.cpp 49742 2013-12-02 17:59:21Z vboxsync $ */
+/* $Id: server.cpp 49795 2013-12-05 18:53:18Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -111,9 +111,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SnapshotMachine, IMachine)
 
 NS_DECL_CLASSINFO(Snapshot)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Snapshot, ISnapshot)
-
-NS_DECL_CLASSINFO(Medium)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Medium, IMedium)
 
 NS_DECL_CLASSINFO(MediumAttachment)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(MediumAttachment, IMediumAttachment)

@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 49747 2013-12-03 02:30:01Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 49795 2013-12-05 18:53:18Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2134,12 +2134,12 @@ HRESULT Appliance::i_writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, P
                     rc = pProgress2->init(mVirtualBox, static_cast<IAppliance*>(this), BstrFmt(tr("Creating medium '%s'"), strTargetFilePath.c_str()).raw(), TRUE);
                     if (FAILED(rc)) throw rc;
 
-                    rc = pSourceDisk->exportFile(strTargetFilePath.c_str(),
-                                                 format,
-                                                 MediumVariant_VmdkStreamOptimized,
-                                                 pIfIo,
-                                                 pStorage,
-                                                 pProgress2);
+                    rc = pSourceDisk->i_exportFile(strTargetFilePath.c_str(),
+                                                   format,
+                                                   MediumVariant_VmdkStreamOptimized,
+                                                   pIfIo,
+                                                   pStorage,
+                                                   pProgress2);
                     if (FAILED(rc)) throw rc;
 
                     ComPtr<IProgress> pProgress3(pProgress2);
