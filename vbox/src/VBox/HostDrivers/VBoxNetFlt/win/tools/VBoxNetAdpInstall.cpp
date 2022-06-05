@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInstall.cpp 41110 2012-05-02 08:42:00Z vboxsync $ */
+/* $Id: VBoxNetAdpInstall.cpp 52134 2014-07-22 17:39:46Z vboxsync $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
@@ -21,7 +21,11 @@
 
 #include <devguid.h>
 
+#ifdef NDIS60
+#define VBOX_NETADP_INF L"VBoxNetAdp6.inf"
+#else /* !NDIS60 */
 #define VBOX_NETADP_INF L"VBoxNetAdp.inf"
+#endif /* !NDIS60 */
 
 static VOID winNetCfgLogger(LPCSTR szString)
 {
