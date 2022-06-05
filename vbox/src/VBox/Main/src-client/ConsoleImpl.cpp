@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 52104 2014-07-20 19:52:23Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 52107 2014-07-21 05:53:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4648,8 +4648,8 @@ HRESULT Console::i_consoleParseDiskEncryption(const char *psz, const char **ppsz
         cbKey = RTBase64DecodedSize(pszKeyEnc, NULL);
         if (cbKey != -1)
         {
-            uint8_t *pbKey = NULL;
-            rc = RTMemSaferAllocZEx(&pbKey, cbKey, RTMEMSAFER_F_REQUIRE_NOT_PAGABLE);
+            uint8_t *pbKey;
+            rc = RTMemSaferAllocZEx((void **)&pbKey, cbKey, RTMEMSAFER_F_REQUIRE_NOT_PAGABLE);
             if (RT_SUCCESS(rc))
             {
                 rc = RTBase64Decode(pszKeyEnc, pbKey, cbKey, NULL, NULL);
