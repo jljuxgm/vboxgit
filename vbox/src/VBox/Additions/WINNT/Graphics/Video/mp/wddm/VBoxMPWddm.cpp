@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 50677 2014-03-04 13:21:14Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 50678 2014-03-04 14:53:11Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3226,7 +3226,7 @@ DxgkDdiSubmitCommandLegacy(
                     vboxWddmGhDisplayCheckSetInfoFromSource(pDevExt, pSource);
                 }
 
-                Assert(pSource->u8SyncState == VBOXWDDM_HGSYNC_F_SYNCED_ALL);
+                Assert(pSource->u8SyncState == VBOXWDDM_HGSYNC_F_SYNCED_ALL || pDevExt->aTargets[pDstAlloc->AllocData.SurfDesc.VidPnSourceId].fStateSyncPening);
             }
 
             Status = vboxVdmaProcessBltCmd(pDevExt, pContext, pBlt);
