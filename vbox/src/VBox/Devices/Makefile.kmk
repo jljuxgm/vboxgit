@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50058 2014-01-13 03:58:29Z vboxsync $
+# $Id: Makefile.kmk 50066 2014-01-14 02:23:50Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -371,6 +371,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
       include $(PATH_SUB_CURRENT)/Network/lwip-new/Makefile.kmk
     endif
     Network/DevINIP.cpp_DEFS += VBOX_WITH_NEW_LWIP
+    VBoxDD_LWIP_INCS += Network # for lwipopts.h
     $(eval $(call def_vbox_lwip_private, \
                       VBoxDD, Network/lwip-new))
     $(eval $(call def_vbox_lwip_flags, \

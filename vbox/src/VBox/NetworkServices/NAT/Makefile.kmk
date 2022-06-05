@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50065 2014-01-14 01:42:41Z vboxsync $
+# $Id: Makefile.kmk 50066 2014-01-14 02:23:50Z vboxsync $
 ## @file
 #
 
@@ -100,6 +100,7 @@ VBoxNetLwipNAT_SOURCES.win += \
     RTWinPoll.cpp \
     RTWinSocketPair.cpp
 
+VBoxNetLwipNAT_INCS += . # for lwipopts.h
 $(eval $(call def_vbox_lwip_public, \
     VBoxNetLwipNAT, ../../Devices/Network/lwip-new))
 endif
