@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48369 2013-09-06 17:40:56Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48370 2013-09-06 18:28:00Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8952,7 +8952,7 @@ HMVMX_EXIT_DECL hmR0VmxExitMwait(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
         AssertRCReturn(rc3, rc3);
 
         if (   rc == VINF_EM_HALT
-            && EMShouldContinueAfterHalt(pVCpu, pMixedCtx))
+            && EMMonitorWaitShouldContinue(pVCpu, pMixedCtx))
         {
             rc = VINF_SUCCESS;
         }
