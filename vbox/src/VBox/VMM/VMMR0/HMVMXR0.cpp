@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 53196 2014-11-04 12:52:21Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 53198 2014-11-04 15:01:20Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10165,10 +10165,7 @@ HMVMX_EXIT_DECL hmR0VmxExitRdtsc(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
             pVmxTransient->fUpdateTscOffsettingAndPreemptTimer = true;
     }
     else
-    {
-        AssertMsgFailed(("hmR0VmxExitRdtsc: EMInterpretRdtsc failed with %Rrc\n", rc));
         rc = VERR_EM_INTERPRETER;
-    }
     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitRdtsc);
     return rc;
 }
