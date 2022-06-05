@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49132 2013-10-16 12:09:56Z vboxsync $
+# $Id: Makefile.kmk 49202 2013-10-21 03:01:10Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -392,6 +392,7 @@ VBoxSVC_SOURCES.win = \
 
 VBoxSVC_SOURCES.linux = \
 	src-server/linux/HostHardwareLinux.cpp \
+	src-server/linux/HostDnsServiceLinux.cpp \
 	src-server/HostDnsServiceResolvConf.cpp
 
 VBoxSVC_SOURCES.solaris = \
