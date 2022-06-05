@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 51493 2014-06-02 16:30:27Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 51592 2014-06-10 16:35:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -83,7 +83,7 @@ void UIMachineViewScale::takePauseShotSnapshot()
     {
         ULONG guestOriginX = 0, guestOriginY = 0, guestWidth = 0, guestHeight = 0;
         BOOL fEnabled = true;
-        machine.QuerySavedGuestScreenInfo(0, guestOriginX, guestOriginY, guestWidth, guestHeight, fEnabled);
+        machine.QuerySavedGuestScreenInfo(m_uScreenId, guestOriginX, guestOriginY, guestWidth, guestHeight, fEnabled);
         QImage shot = QImage::fromData(screenData.data(), screenData.size(), "PNG").scaled(guestWidth > 0 ? QSize(guestWidth, guestHeight) : guestSizeHint());
         m_pPauseImage = new QImage(shot);
         scalePauseShot();
