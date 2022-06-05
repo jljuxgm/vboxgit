@@ -1,4 +1,4 @@
-/* $Id: UIDnDDropSource_win.h 50603 2014-02-26 12:56:01Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.h 50604 2014-02-26 13:30:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -19,6 +19,9 @@
 
 #ifndef ___UIDnDDropSource_win_h___
 #define ___UIDnDDropSource_win_h___
+
+/* COM includes: */
+#include "COMEnums.h"
 
 class UIDnDDropSource : public IDropSource
 {

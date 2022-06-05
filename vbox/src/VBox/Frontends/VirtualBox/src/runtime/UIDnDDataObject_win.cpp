@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.cpp 50602 2014-02-26 12:50:39Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 50604 2014-02-26 13:30:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -39,7 +39,7 @@
 #include "UIDnDDataObject_win.h"
 #include "UIDnDEnumFormat_win.h"
 
-UIDnDDataObject::UIDnDDataObject(CSession &session, 
+UIDnDDataObject::UIDnDDataObject(CSession &session,
                                  const QStringList &lstFormats,
                                  QWidget *pParent)
     : mSession(session),
@@ -289,7 +289,7 @@ STDMETHODIMP UIDnDDataObject::GetData(FORMATETC *pFormatEtc, STGMEDIUM *pMedium)
         if (!mVaData.isValid())
         {
             rc = UIDnDDrag::RetrieveData(mSession,
-                                         DropAction::CopyAction,
+                                         Qt::CopyAction,
                                          strMIMEType, vaType, mVaData,
                                          mpParent);
         }
