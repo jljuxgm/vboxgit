@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 51275 2014-05-16 14:37:36Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 52593 2014-09-04 13:09:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -183,6 +183,14 @@ void darwinSetShowsWindowTransparentImpl(NativeNSWindowRef pWindow, bool fEnable
         [pWindow setBackgroundColor:[NSColor windowBackgroundColor]];
         [pWindow setHasShadow:YES];
     }
+}
+
+void darwinSetWindowHasShadow(NativeNSWindowRef pWindow, bool fEnabled)
+{
+    if (fEnabled)
+        [pWindow setHasShadow :YES];
+    else
+        [pWindow setHasShadow :NO];
 }
 
 void darwinMinaturizeWindow(NativeNSWindowRef pWindow)

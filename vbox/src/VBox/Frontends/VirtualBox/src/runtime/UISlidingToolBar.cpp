@@ -1,4 +1,4 @@
-/* $Id: UISlidingToolBar.cpp 52480 2014-08-22 15:53:41Z vboxsync $ */
+/* $Id: UISlidingToolBar.cpp 52593 2014-09-04 13:09:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingToolBar class implementation.
  */
@@ -261,6 +261,28 @@ void UISlidingToolBar::closeEvent(QCloseEvent *pEvent)
         /* And start collapse animation: */
         emit sigCollapse();
     }
+}
+
+bool UISlidingToolBar::event(QEvent *pEvent)
+{
+    /* Depending on event-type: */
+    switch (pEvent->type())
+    {
+        case QEvent::Resize:
+        case QEvent::WindowActivate:
+        {
+            /* By some strange reason
+             * cocoa resets NSWindow::setHasShadow option
+             * for frameless windows on every window resize/activation.
+             * So we have to make sure window still has no shadows. */
+            darwinSetWindowHasShadow(this, false);
+            break;
+        }
+        default:
+            break;
+    }
+    /* Call to base-class: */
+    return QWidget::event(pEvent);
 }
 
 void UISlidingToolBar::setWidgetGeometry(const QRect &rect)
