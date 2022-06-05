@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 52592 2014-09-03 20:23:24Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 52824 2014-09-23 10:37:15Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -2063,6 +2063,39 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetFltInstall(IN INetCfg *pNc,
                                                  NULL);
     }
     return hr;
+}
+
+#define VBOXNETCFGWIN_NETADP_ID L"sun_VBoxNetAdp"
+static HRESULT vboxNetCfgWinNetAdpUninstall(IN INetCfg *pNc, DWORD InfRmFlags)
+{
+    INetCfgComponent *pNcc = NULL;
+    HRESULT hr = pNc->FindComponent(VBOXNETCFGWIN_NETADP_ID, &pNcc);
+    if (hr == S_OK)
+    {
+        NonStandardLog("NetAdp is installed currently, uninstalling ...\n");
+
+        hr = VBoxNetCfgWinUninstallComponent(pNc, pNcc);
+        NonStandardLogFlow(("NetAdp component uninstallation ended with hr (0x%x)\n", hr));
+
+        pNcc->Release();
+    }
+    else if (hr == S_FALSE)
+    {
+        NonStandardLog("NetAdp is not installed currently\n");
+    }
+    else
+    {
+        NonStandardLogFlow(("FindComponent failed, hr (0x%x)\n", hr));
+    }
+
+    VBoxDrvCfgInfUninstallAllF(L"Net", VBOXNETCFGWIN_NETADP_ID, InfRmFlags);
+
+    return hr;
+}
+
+VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetAdpUninstall(IN INetCfg *pNc)
+{
+    return vboxNetCfgWinNetAdpUninstall(pNc, 0);
 }
 
 /*
