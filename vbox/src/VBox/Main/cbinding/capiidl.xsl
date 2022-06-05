@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 50187 2014-01-23 16:37:53Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 50188 2014-01-23 16:55:14Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -192,6 +192,8 @@
 /* Skip this in the C++ case as there's already a definition for CBSTR. */
 typedef const BSTR CBSTR;
 #endif /* !__cplusplus */
+
+#define VBOX_WINAPI WINAPI
 
 #define ComSafeArrayAsInParam(f) (f)
 #define ComSafeArrayAsOutParam(f) (&amp;(f))
@@ -802,6 +804,7 @@ typedef nsID nsCID;
 
 #endif /* __cplusplus */
 
+#define VBOX_WINAPI
 
 /* Various COM types defined by their XPCOM equivalent */
 typedef PRInt64 LONG64;
