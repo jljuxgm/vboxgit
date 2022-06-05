@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 47018 2013-07-06 17:31:11Z vboxsync $ */
+/* $Id: HostImpl.h 48578 2013-09-20 10:35:43Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -77,6 +77,7 @@ public:
     STDMETHOD(COMGETTER(OSVersion))(BSTR *version);
     STDMETHOD(COMGETTER(UTCTime))(LONG64 *aUTCTime);
     STDMETHOD(COMGETTER(Acceleration3DAvailable))(BOOL *aSupported);
+    STDMETHOD(COMGETTER(VideoCaptureDevices))(ComSafeArrayOut(IHostVideoCaptureDevice*, aVideoCaptureDevices));
 
     // IHost methods
     STDMETHOD(CreateHostOnlyNetworkInterface)(IHostNetworkInterface **aHostNetworkInterface,
