@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
+/* $Id: MachineImpl.cpp 50435 2014-02-12 18:49:26Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -571,6 +571,10 @@ HRESULT Machine::init(VirtualBox *aParent,
             autoInitSpan.setSucceeded();
         else
         {
+            /* Ignore all errors from unregistering, they would destroy
+             * the more interesting error information we already have,
+             * pinpointing the issue with the VM config. */
+            ErrorInfoKeeper eik;
             autoInitSpan.setLimited();
 
             // uninit media from this machine's media registry, or else
