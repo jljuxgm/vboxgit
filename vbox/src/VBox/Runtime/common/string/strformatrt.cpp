@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 50765 2014-03-13 12:53:10Z vboxsync $ */
+/* $Id: strformatrt.cpp 52331 2014-08-09 12:05:21Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -711,7 +711,7 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                     case 'x':
                     {
                         uint8_t *pu8 = va_arg(*pArgs, uint8_t *);
-                        if (cchPrecision <= 0)
+                        if (cchPrecision < 0)
                             cchPrecision = 16;
                         if (pu8)
                         {
