@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 49316 2013-10-29 08:30:37Z vboxsync $ */
+/* $Id: VBoxDD.h 50686 2014-03-04 19:21:18Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -55,7 +55,9 @@ extern const PDMDEVREG g_DeviceINIP;
 extern const PDMDEVREG g_DeviceICHAC97;
 extern const PDMDEVREG g_DeviceSB16;
 extern const PDMDEVREG g_DeviceICH6_HDA;
+#ifndef VBOX_WITH_PDM_AUDIO_DRIVER
 extern const PDMDEVREG g_DeviceAudioSniffer;
+#endif
 extern const PDMDEVREG g_DeviceOHCI;
 extern const PDMDEVREG g_DeviceEHCI;
 extern const PDMDEVREG g_DeviceACPI;
@@ -110,6 +112,23 @@ extern const PDMDRVREG g_DrvNetShaper;
 #endif /* VBOX_WITH_NETSHAPER */
 extern const PDMDRVREG g_DrvNetSniffer;
 extern const PDMDRVREG g_DrvAUDIO;
+#ifdef VBOX_WITH_PDM_AUDIO_DRIVER
+# if defined(RT_OS_WINDOWS)
+extern const PDMDRVREG g_DrvHostDSound;
+# endif
+# if defined(RT_OS_LINUX)
+extern const PDMDRVREG g_DrvHostPulseAudio;
+# endif
+# if defined(RT_OS_DARWIN)
+extern const PDMDRVREG g_DrvHostCoreAudio;
+# endif
+# if defined(RT_OS_SOLARIS)
+extern const PDMDRVREG g_DrvHostSolAudio;
+# endif
+# if defined(RT_OS_FREEBSD)
+extern const PDMDRVREG g_DrvHostOssAudio;
+# endif
+#endif
 extern const PDMDRVREG g_DrvACPI;
 extern const PDMDRVREG g_DrvAcpiCpu;
 extern const PDMDRVREG g_DrvVUSBRootHub;
