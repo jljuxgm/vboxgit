@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 53442 2014-12-04 13:49:43Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 53452 2014-12-05 10:16:22Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1031,8 +1031,8 @@ static int ichac97WriteAudio(PAC97STATE pThis, PAC97BMREG pReg, int max, int *st
 #else
         copied = AUD_write(pThis->voice_po, tmpbuf, to_copy);
 #endif /* VBOX_WITH_PDM_AUDIO_DRIVER */
-        LogRelFunc(("to_copy=%RU32, copied=%RU32, temp=%RU32, temp_left=%RU32\n", to_copy, copied,
-                    temp, temp - copied));
+        LogFlowFunc(("to_copy=%RU32, copied=%RU32, temp=%RU32, temp_left=%RU32\n", 
+                     to_copy, copied, temp, temp - copied));
 
         if (!copied)
         {
