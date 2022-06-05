@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 50332 2014-02-05 15:23:20Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 50334 2014-02-05 17:20:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -68,7 +68,7 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp("(Wi.*8.*1.*32)|(W8.*32)", Qt::CaseInsensitive), "Windows81" },
     { QRegExp("(Wi.*8.*64)|(W8.*64)", Qt::CaseInsensitive), "Windows8_64" },
     { QRegExp("(Wi.*8.*32)|(W8.*32)", Qt::CaseInsensitive), "Windows8" },
-    { QRegExp("Wi.*3", Qt::CaseInsensitive), "Windows31" },
+    { QRegExp("Wi.*3.*1", Qt::CaseInsensitive), "Windows31" },
     { QRegExp("Wi.*64", Qt::CaseInsensitive), "WindowsXP_64" },
     { QRegExp("Wi.*32", Qt::CaseInsensitive), "WindowsXP" },
 
