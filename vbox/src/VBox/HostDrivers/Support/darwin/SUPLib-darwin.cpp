@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 51488 2014-06-02 14:46:50Z vboxsync $ */
+/* $Id: SUPLib-darwin.cpp 53002 2014-10-08 23:46:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -185,7 +185,7 @@ static int suplibDarwinOpenService(PSUPLIBDATA pThis)
 }
 
 
-int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted)
+int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
 {
     /*
      * Nothing to do if pre-inited.

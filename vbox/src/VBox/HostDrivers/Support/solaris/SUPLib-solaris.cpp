@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 49840 2013-12-09 13:31:05Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 53002 2014-10-08 23:46:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -77,7 +77,7 @@
 
 
 
-int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted)
+int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
 {
     /*
      * Nothing to do if pre-inited.

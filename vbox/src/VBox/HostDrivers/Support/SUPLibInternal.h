@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 52969 2014-10-07 08:29:34Z vboxsync $ */
+/* $Id: SUPLibInternal.h 53002 2014-10-08 23:46:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -351,7 +351,7 @@ extern DECLHIDDEN(bool)                 g_fSupEarlyProcessInit;
 RT_C_DECLS_BEGIN
 int     suplibOsInstall(void);
 int     suplibOsUninstall(void);
-int     suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted);
+int     suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo);
 int     suplibOsTerm(PSUPLIBDATA pThis);
 int     suplibOsHardenedVerifyInit(void);
 int     suplibOsHardenedVerifyTerm(void);
@@ -470,6 +470,7 @@ extern char         g_szSupLibHardenedExePath[RTPATH_MAX];
 # endif
 DECLHIDDEN(void)    supR3HardenedWinCompactHeaps(void);
 DECLHIDDEN(void)    supR3HardenedMainOpenDevice(void);
+DECLHIDDEN(char *)  supR3HardenedWinReadErrorInfoDevice(char *pszErrorInfo, size_t cbErrorInfo, const char *pszPrefix);
 DECLHIDDEN(void)    supR3HardenedWinReportErrorToParent(const char *pszWhere, SUPINITOP enmWhat, int rc,
                                                         const char *pszFormat, va_list va);
 #endif

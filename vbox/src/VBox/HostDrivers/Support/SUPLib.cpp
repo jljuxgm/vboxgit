@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 52618 2014-09-05 12:07:29Z vboxsync $ */
+/* $Id: SUPLib.cpp 53002 2014-10-08 23:46:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -261,7 +261,8 @@ SUPR3DECL(int) SUPR3InitEx(bool fUnrestricted, PSUPDRVSESSION *ppSession)
     /*
      * Open the support driver.
      */
-    int rc = suplibOsInit(&g_supLibData, g_fPreInited, fUnrestricted);
+    SUPINITOP enmWhat = kSupInitOp_Driver;
+    int rc = suplibOsInit(&g_supLibData, g_fPreInited, fUnrestricted, &enmWhat, NULL);
     if (RT_SUCCESS(rc))
     {
         /*

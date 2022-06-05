@@ -1,4 +1,4 @@
-/* $Id: SUPLib-freebsd.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: SUPLib-freebsd.cpp 53002 2014-10-08 23:46:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - FreeBSD specific parts.
  */
@@ -67,7 +67,7 @@
 
 
 
-int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted)
+int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
 {
     /*
      * Nothing to do if pre-inited.
