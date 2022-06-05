@@ -1,4 +1,4 @@
-/** $Id: VDScriptInterp.cpp 46003 2013-05-13 08:44:23Z vboxsync $ */
+/** $Id: VDScriptInterp.cpp 48957 2013-10-07 22:04:36Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine, interpreter.
@@ -657,7 +657,7 @@ static int vdScriptInterpreterEvaluateStatement(PVDSCRIPTINTERPCTX pThis, PVDSCR
 
             /* Put the conditionals for while and for loops onto the control stack again. */
             PVDSCRIPTASTSTMT pLoopStmt = (PVDSCRIPTASTSTMT)pCtrl->Ctrl.pAstNode;
-  
+
             AssertMsg(   pLoopStmt->enmStmtType == VDSCRIPTSTMTTYPE_WHILE
                       || pLoopStmt->enmStmtType == VDSCRIPTSTMTTYPE_FOR,
                       ("Invalid statement type, must be for or while loop\n"));

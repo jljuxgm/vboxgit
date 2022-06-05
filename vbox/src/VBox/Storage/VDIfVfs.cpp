@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs.cpp 48871 2013-10-04 02:50:59Z vboxsync $ */
+/* $Id: VDIfVfs.cpp 48957 2013-10-07 22:04:36Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -410,5 +410,4 @@ VBOXDDU_DECL(int) VDIfCreateVfsFile(PVDINTERFACEIO pVDIfs, struct VDINTERFACEIOI
 
     return rc;
 }
-
 
