@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 47573 2013-08-07 09:57:28Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 47895 2013-08-20 11:49:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -166,13 +166,13 @@ bool UIGlobalSettingsInput::validate(QString &strWarning, QString &strTitle)
     if (!m_pSelectorModel->isAllShortcutsUnique())
     {
         strTitle += ": " + VBoxGlobal::removeAccelMark(m_pTabWidget->tabText(UIHotKeyTableIndex_Selector));
-        strWarning = tr("there are duplicated shortcuts.");
+        strWarning = tr("Some items have the same shortcuts assigned.");
         return false;
     }
     else if (!m_pMachineModel->isAllShortcutsUnique())
     {
         strTitle += ": " + VBoxGlobal::removeAccelMark(m_pTabWidget->tabText(UIHotKeyTableIndex_Machine));
-        strWarning = tr("there are duplicated shortcuts.");
+        strWarning = tr("Some items have the same shortcuts assigned.");
         return false;
     }
 

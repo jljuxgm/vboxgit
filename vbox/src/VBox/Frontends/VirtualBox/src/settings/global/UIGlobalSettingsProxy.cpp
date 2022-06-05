@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 47573 2013-08-07 09:57:28Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 47895 2013-08-20 11:49:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -110,12 +110,12 @@ bool UIGlobalSettingsProxy::validate(QString &strWarning, QString&)
     /* Check for host/port values: */
     if (m_pHostEditor->text().trimmed().isEmpty())
     {
-        strWarning = tr("host is not specified.");
+        strWarning = tr("No proxy host is currently specified.");
         return false;
     }
     else if (m_pPortEditor->text().trimmed().isEmpty())
     {
-        strWarning = tr("port is not specified.");
+        strWarning = tr("No proxy port is currently specified.");
         return false;
     }
 

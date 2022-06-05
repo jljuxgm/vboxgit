@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 47573 2013-08-07 09:57:28Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 47895 2013-08-20 11:49:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -349,11 +349,11 @@ bool UIMachineSettingsParallelPage::validate(QString &strWarning, QString &strTi
             if (!valid)
             {
                 if (strIRQ.isEmpty())
-                    strWarning = tr("IRC not specified.");
+                    strWarning = tr("No IRQ is currently specified.");
                 else if (strIOPort.isEmpty())
-                    strWarning = tr("IO port not specified.");
+                    strWarning = tr("No I/O port is currently specified.");
                 else
-                    strWarning = tr ("duplicate port attributes specified.");
+                    strWarning = tr("Two or more ports have the same settings.");
                 strTitle += ": " +
                     vboxGlobal().removeAccelMark(mTabWidget->tabText(mTabWidget->indexOf(tab)));
             }
@@ -367,8 +367,8 @@ bool UIMachineSettingsParallelPage::validate(QString &strWarning, QString &strTi
             if (!valid)
             {
                 strWarning = path.isEmpty() ?
-                    tr ("Port path not specified ") :
-                    tr ("Duplicate port path entered ");
+                    tr("No port path is currently specified.") :
+                    tr("There are currently duplicate port paths specified.");
                 strTitle += ": " +
                     vboxGlobal().removeAccelMark (mTabWidget->tabText (mTabWidget->indexOf (tab)));
                 break;
