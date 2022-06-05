@@ -1,4 +1,4 @@
-# $Id: Config.kmk 48852 2013-10-03 20:06:54Z vboxsync $
+# $Id: Config.kmk 48855 2013-10-03 21:52:16Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3802,11 +3802,14 @@ ifndef SDK_VBOX_OPENSSL_LIBS
  	$(PATH_STAGE_LIB)/VBox-libcrypto$(VBOX_SUFF_LIB) \
  	$(PATH_STAGE_LIB)/VBox-libssl$(VBOX_SUFF_LIB)
 endif
+ifndef SDK_VBOX_LIBXML2_LIBS
+ TEMPLATE_VBoxR3Static_LIBS        += \
+ 	$(PATH_STAGE_LIB)/VBox-libxml2-static$(VBOX_SUFF_LIB)
+endif
 if1of ($(KBUILD_TARGET),os2 win)
  TEMPLATE_VBoxR3Static_LIBS        += \
  	$(PATH_STAGE_LIB)/VBox-liblzf-static$(VBOX_SUFF_LIB) \
- 	$(PATH_STAGE_LIB)/VBox-zlib-static$(VBOX_SUFF_LIB) \
- 	$(PATH_STAGE_LIB)/VBox-libxml2-static$(VBOX_SUFF_LIB)
+ 	$(PATH_STAGE_LIB)/VBox-zlib-static$(VBOX_SUFF_LIB)
 else
  TEMPLATE_VBoxR3Static_LIBS        += \
  	$(PATH_STAGE_LIB)/VBox-liblzf$(VBOX_SUFF_LIB) \
@@ -5573,7 +5576,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48852 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48855 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
