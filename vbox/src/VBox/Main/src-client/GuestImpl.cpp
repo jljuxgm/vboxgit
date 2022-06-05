@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 52082 2014-07-17 17:18:56Z vboxsync $ */
+/* $Id: GuestImpl.cpp 52085 2014-07-17 19:26:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -925,11 +925,11 @@ void Guest::i_setAdditionsInfo2(uint32_t a_uFullVersion, const char *a_pszName, 
 
     if (a_uFullVersion)
     {
-        mData.mAdditionsVersionNew  = Utf8Str(BstrFmt(*a_pszName ? "%u.%u.%u_%s" : "%u.%u.%u",
-                                              VBOX_FULL_VERSION_GET_MAJOR(a_uFullVersion),
-                                              VBOX_FULL_VERSION_GET_MINOR(a_uFullVersion),
-                                              VBOX_FULL_VERSION_GET_BUILD(a_uFullVersion),
-                                              a_pszName));
+        mData.mAdditionsVersionNew  = Utf8StrFmt(*a_pszName ? "%u.%u.%u_%s" : "%u.%u.%u",
+                                                 VBOX_FULL_VERSION_GET_MAJOR(a_uFullVersion),
+                                                 VBOX_FULL_VERSION_GET_MINOR(a_uFullVersion),
+                                                 VBOX_FULL_VERSION_GET_BUILD(a_uFullVersion),
+                                                 a_pszName);
         mData.mAdditionsVersionFull = a_uFullVersion;
         mData.mAdditionsRevision    = a_uRevision;
         mData.mAdditionsFeatures    = a_fFeatures;
