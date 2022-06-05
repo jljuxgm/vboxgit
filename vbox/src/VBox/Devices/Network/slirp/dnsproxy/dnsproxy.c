@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 50049 2014-01-10 07:52:20Z vboxsync $ */
+/* $Id: dnsproxy.c 50050 2014-01-10 07:58:00Z vboxsync $ */
 
 /*
  * Copyright (C) 2009-2013 Oracle Corporation
@@ -337,7 +337,6 @@ dnsproxy_query(PNATState pData, struct socket *so, struct mbuf *m, int iphlen)
         ++dropped_queries;
         return;
     }
-
 
     req = so->so_timeout_arg;
 
