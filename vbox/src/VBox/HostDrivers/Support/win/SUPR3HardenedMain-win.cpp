@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52656 2014-09-09 14:06:16Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52665 2014-09-10 07:25:07Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -3650,6 +3650,9 @@ static int supR3HardenedWinDoReSpawn(int iWhich)
         dwCreationFlags |= EXTENDED_STARTUPINFO_PRESENT;
         /** @todo experiment with protected process stuff later on. */
     }
+
+    SiEx.StartupInfo.dwFlags |= pParentProcParams->Flags & STARTF_USESHOWWINDOW;
+    SiEx.StartupInfo.wShowWindow = (WORD)pParentProcParams->ShowWindowFlags;
 
     SiEx.StartupInfo.dwFlags |= STARTF_USESTDHANDLES;
     SiEx.StartupInfo.hStdInput  = pParentProcParams->StandardInput;
