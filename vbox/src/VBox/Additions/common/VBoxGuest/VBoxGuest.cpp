@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 48034 2013-08-23 16:03:04Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 48231 2013-09-02 15:02:20Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2975,7 +2975,7 @@ bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt)
             PVBOXGUESTWAIT  pWait;
             PVBOXGUESTWAIT  pSafe;
 
-            Log(("VBoxGuestCommonISR: acknowledge events succeeded %#RX32\n", fEvents));
+            Log3(("VBoxGuestCommonISR: acknowledge events succeeded %#RX32\n", fEvents));
 
             /*
              * VMMDEV_EVENT_MOUSE_POSITION_CHANGED can only be polled for.
