@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 50455 2014-02-13 20:12:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -634,7 +634,7 @@ HRESULT SystemProperties::setLoggingLevel(const com::Utf8Str &aLoggingLevel)
         rc = mParent->i_saveSettings();
     }
     else
-        LogRel(("Cannot set passed logging level=%ls, or the default one - Error=%Rhrc \n", Bstr(aLoggingLevel).raw(), rc));
+        LogRel(("Cannot set passed logging level=%s, or the default one - Error=%Rhrc \n", aLoggingLevel.c_str(), rc));
 
     return rc;
 }
@@ -1258,7 +1258,7 @@ HRESULT SystemProperties::i_setDefaultAdditionsISO(const com::Utf8Str &aPath)
 
         vrc = RTPathUserHome(strTemp, sizeof(strTemp));
         AssertRC(vrc);
-        Utf8Str strSrc3 = Utf8StrFmt("%s/VBoxGuestAdditions_%ls.iso", strTemp, Bstr(VirtualBox::i_getVersionNormalized()).raw());
+        Utf8Str strSrc3 = Utf8StrFmt("%s/VBoxGuestAdditions_%s.iso", strTemp, VirtualBox::i_getVersionNormalized().c_str());
 
         /* Check the standard image locations */
         if (RTFileExists(strSrc1.c_str()))
