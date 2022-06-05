@@ -1,4 +1,4 @@
-/* $Id: Config.h 49918 2013-12-16 07:56:51Z vboxsync $ */
+/* $Id: Config.h 49919 2013-12-16 07:58:01Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -521,8 +521,6 @@ private:
     Data *m;
 
 };
-
-
 
 
 extern const ClientMatchCriteria *g_AnyClient;
