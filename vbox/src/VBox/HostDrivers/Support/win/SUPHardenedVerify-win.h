@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 52366 2014-08-13 10:35:55Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52373 2014-08-13 20:24:31Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -130,7 +130,7 @@ typedef struct SUPHNTLDRCACHEENTRY
 } SUPHNTLDRCACHEENTRY;
 /** Pointer to a loader cache entry. */
 typedef SUPHNTLDRCACHEENTRY *PSUPHNTLDRCACHEENTRY;
-DECLHIDDEN(int)  supHardNtLdrCacheOpen(const char *pszName, PRTERRINFO pErrInfo, PSUPHNTLDRCACHEENTRY *ppEntry);
+DECLHIDDEN(int)  supHardNtLdrCacheOpen(const char *pszName, PSUPHNTLDRCACHEENTRY *ppEntry);
 DECLHIDDEN(int)  supHardNtLdrCacheEntryVerify(PSUPHNTLDRCACHEENTRY pEntry, PCRTUTF16 pwszName, PRTERRINFO pErrInfo);
 DECLHIDDEN(int)  supHardNtLdrCacheEntryAllocBits(PSUPHNTLDRCACHEENTRY pEntry, uint8_t **ppbBits, PRTERRINFO pErrInfo);
 

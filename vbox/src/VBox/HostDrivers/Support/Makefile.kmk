@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52357 2014-08-11 20:24:54Z vboxsync $
+# $Id: Makefile.kmk 52373 2014-08-13 20:24:31Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -285,6 +285,9 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTStrPrintHexBytes.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTUtf16PrintHexBytes.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTUtf16ICmpAscii.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTUtf16CatAscii.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTUtf16CopyAscii.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/common/string/RTUtf16End.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/string/strstrip.cpp \
        \
 	$(VBOX_PATH_RUNTIME_SRC)/common/err/errmsg.cpp \
