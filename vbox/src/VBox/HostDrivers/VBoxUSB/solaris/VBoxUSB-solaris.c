@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB-solaris.c 47497 2013-07-31 16:43:28Z vboxsync $ */
+/* $Id: VBoxUSB-solaris.c 52491 2014-08-25 11:31:20Z vboxsync $ */
 /** @file
  * VirtualBox USB Client Driver, Solaris Hosts.
  */
@@ -1171,7 +1171,7 @@ int VBoxUSBSolarisIOCtl(dev_t Dev, int Cmd, intptr_t pArg, int Mode, cred_t *pCr
     /*
      * Process the IOCtl.
      */
-    size_t cbDataOut;
+    size_t cbDataOut = 0;
     rc = vboxUSBSolarisProcessIOCtl(Cmd, pState, Mode, &ReqWrap, pvBuf, &cbDataOut);
     ReqWrap.rc = rc;
     rc = 0;
