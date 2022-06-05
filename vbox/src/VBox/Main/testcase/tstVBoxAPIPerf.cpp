@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIPerf.cpp 49910 2013-12-15 16:18:45Z vboxsync $ */
+/* $Id: tstVBoxAPIPerf.cpp 49943 2013-12-16 20:19:58Z vboxsync $ */
 /** @file
  * tstVBoxAPIPerf - Checks the performance of the COM / XPOM API.
  */
@@ -179,7 +179,7 @@ static void tstApiPrf4(IVirtualBox *pVBox)
     while (cLeft-- > 0)
     {
         BOOL fSupported;
-        HRESULT hrc = pHost->GetProcessorFeature(ProcessorFeature_PAE, &fSupported);
+        hrc = pHost->GetProcessorFeature(ProcessorFeature_PAE, &fSupported);
         if (FAILED(hrc))
         {
             tstComExpr(hrc, "IHost::GetProcessorFeature", __LINE__);
