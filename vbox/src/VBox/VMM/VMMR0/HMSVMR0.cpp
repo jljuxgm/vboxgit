@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 52310 2014-08-07 11:47:33Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 52396 2014-08-18 14:39:39Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3913,12 +3913,12 @@ DECLINLINE(void) hmR0SvmSetPendingXcptDF(PVMCPU pVCpu)
 static int hmR0SvmEmulateMovTpr(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     Log4(("Emulated VMMCall TPR access replacement at RIP=%RGv\n", pCtx->rip));
-    bool fPatchFound = false;
 
     /*
      * We do this in a loop as we increment the RIP after a successful emulation
      * and the new RIP may be a patched instruction which needs emulation as well.
      */
+    bool fPatchFound = false;
     for (;;)
     {
         bool    fPending;
