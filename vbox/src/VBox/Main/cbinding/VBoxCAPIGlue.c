@@ -1,4 +1,4 @@
-/* $Revision: 50183 $ */
+/* $Revision: 50269 $ */
 /** @file
  * Glue code for dynamically linking to VBoxCAPI.
  */
@@ -57,7 +57,6 @@
 # define DYNLIB_NAME        "VBoxXPCOMC.dll"
 #elif defined(WIN32)
 # define DYNLIB_NAME        "VBoxCAPI.dll"
-# undef DYNLIB_LEGACY_NAME
 #else
 # error "Port me"
 #endif
