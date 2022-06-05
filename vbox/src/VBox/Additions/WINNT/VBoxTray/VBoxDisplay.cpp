@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 46625 2013-06-18 13:28:52Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 48030 2013-08-23 13:03:06Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -605,7 +605,7 @@ static BOOL ResizeDisplayDevice(UINT Id, DWORD Width, DWORD Height, DWORD BitsPe
               if (OSinfo.dwMajorVersion >= 6 && OSinfo.dwMinorVersion >= 1)
               {
                   LogRel(("VBoxTray: (WDDM) Request to enable/disable %d display device\n", fEnabled));
-                  DWORD dwStatus = vboxDispIfWddmEnableDisplay(&pCtx->pEnv->dispIf, Id, fEnabled);
+                  DWORD dwStatus = vboxDispIfWddmEnableDisplay(&pCtx->pEnv->dispIf, Id, RT_BOOL(fEnabled));
                   if(dwStatus != ERROR_SUCCESS)
                   {
                       /* Not going to retry for enabling or disabling of the secondary display device.*/
