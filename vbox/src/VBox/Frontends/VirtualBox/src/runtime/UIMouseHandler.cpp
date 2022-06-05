@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 53079 2014-10-16 14:49:09Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 53249 2014-11-06 09:14:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -35,6 +35,7 @@
 # include "UIMachineWindow.h"
 # include "UIMachineView.h"
 # include "UIFrameBuffer.h"
+# include "UIExtraDataManager.h"
 
 # ifdef Q_WS_WIN
 #  include "VBoxUtils-win.h"
@@ -613,7 +614,8 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                         pWatchedWidget->window()->activateWindow();
 #endif /* Q_WS_X11 */
                     /* Check if we should activate window under cursor: */
-                    if (!uisession()->isMouseCaptured() &&
+                    if (gEDataManager->activateHoveredMachineWindow() &&
+                        !uisession()->isMouseCaptured() &&
                         QApplication::activeWindow() &&
                         m_windows.values().contains(QApplication::activeWindow()) &&
                         m_windows.values().contains(pWatchedWidget->window()) &&

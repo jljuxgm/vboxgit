@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 52937 2014-10-02 16:13:45Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 53249 2014-11-06 09:14:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -45,6 +45,9 @@ const char* UIExtraDataDefs::GUI_UpdateCheckCount = "GUI/UpdateCheckCount";
 /* Settings: */
 const char* UIExtraDataDefs::GUI_RestrictedGlobalSettingsPages = "GUI/RestrictedGlobalSettingsPages";
 const char* UIExtraDataDefs::GUI_RestrictedMachineSettingsPages = "GUI/RestrictedMachineSettingsPages";
+
+/* Settings: Display: */
+const char* UIExtraDataDefs::GUI_ActivateHoveredMachineWindow = "GUI/ActivateHoveredMachineWindow";
 
 /* Settings: Keyboard: */
 const char* UIExtraDataDefs::GUI_Input_SelectorShortcuts = "GUI/Input/SelectorShortcuts";
