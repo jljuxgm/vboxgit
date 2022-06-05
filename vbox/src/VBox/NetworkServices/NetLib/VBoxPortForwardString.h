@@ -1,4 +1,4 @@
-/* $Id: VBoxPortForwardString.h 49113 2013-10-15 09:36:22Z vboxsync $ */
+/* $Id: VBoxPortForwardString.h 50459 2014-02-14 03:14:24Z vboxsync $ */
 /** @file
  * VBoxPortForwardString
  */
@@ -42,10 +42,8 @@ typedef struct PORTFORWARDRULE
     int        fPfrIPv6;
     /* IPPROTO_{UDP,TCP} */
     int        iPfrProto;
-    RTNETADDRU uPfrHostAddr;
     char       szPfrHostAddr[INET6_ADDRSTRLEN];
     uint16_t   u16PfrHostPort;
-    RTNETADDRU uPfrGuestAddr;
     char       szPfrGuestAddr[INET6_ADDRSTRLEN];
     uint16_t   u16PfrGuestPort;
 } PORTFORWARDRULE, *PPORTFORWARDRULE;

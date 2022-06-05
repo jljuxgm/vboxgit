@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 49113 2013-10-15 09:36:22Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 50459 2014-02-14 03:14:24Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -321,34 +321,9 @@ int netPfStrToPf(const char *pcszStrPortForward, int fIPv6, PPORTFORWARDRULE pPf
     pPfr->fPfrIPv6 = fIPv6;
     pPfr->iPfrProto = proto;
 
-
-    if (strlen(pszHostAddr))
-    {
-        if (!fIPv6)
-            rc = RTNetStrToIPv4Addr(pszHostAddr, &pPfr->uPfrHostAddr.IPv4);
-#if 0 /* No IPv6 yet */
-        else
-            rc = RTNetStrToIPv6Addr(pszHostAddr, &pPfr->uPfrHostAddr.IPv6);
-#endif
-
-        if (RT_FAILURE(rc))
-            goto invalid_parameter;
-    }
-
     pPfr->u16PfrHostPort = u16HostPort;
 
-    if (strlen(pszGuestAddr))
-    {
-        if (!fIPv6)
-            rc = RTNetStrToIPv4Addr(pszGuestAddr, &pPfr->uPfrGuestAddr.IPv4);
-#if 0
-        else
-            rc = RTNetStrToIPv6Addr(pszGuestAddr, &pPfr->uPfrGuestAddr.IPv6);
-#endif
-        if (RT_FAILURE(rc))
-            goto invalid_parameter;
-    }
-    else
+    if (*pszGuestAddr == '\0')
         goto invalid_parameter; /* guest address should be defined */
 
     pPfr->u16PfrGuestPort = u16GuestPort;
