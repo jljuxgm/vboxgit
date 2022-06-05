@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49969 2013-12-17 22:04:18Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49970 2013-12-17 23:44:22Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3092,8 +3092,10 @@ static void hmR0SvmPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PSVMT
 
     if (pSvmTransient->fRestoreTscAuxMsr)
     {
-        CPUMR0SetGuestTscAux(pVCpu, ASMRdMsr(MSR_K8_TSC_AUX));
-        ASMWrMsr(MSR_K8_TSC_AUX, pVCpu->hm.s.u64HostTscAux);
+        uint64_t u64GuestTscAuxMsr = ASMRdMsr(MSR_K8_TSC_AUX);
+        CPUMR0SetGuestTscAux(pVCpu, u64GuestTscAuxMsr);
+        if (u64GuestTscAuxMsr != pVCpu->hm.s.u64HostTscAux)
+            ASMWrMsr(MSR_K8_TSC_AUX, pVCpu->hm.s.u64HostTscAux);
     }
 
     if (!(pVmcb->ctrl.u32InterceptCtrl1 & SVM_CTRL1_INTERCEPT_RDTSC))
