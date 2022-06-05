@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 49306 2013-10-28 12:46:49Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 49322 2013-10-29 15:33:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -160,7 +160,8 @@ void UIMachineViewSeamless::maybeAdjustGuestScreenSize()
     if (frameBuffer()->isAutoEnabled() ||
         (int)frameBuffer()->width() != workingArea().size().width() ||
         (int)frameBuffer()->height() != workingArea().size().height())
-        if (uisession()->isGuestSupportsGraphics())
+        if (uisession()->isGuestSupportsGraphics() &&
+            uisession()->isScreenVisible(screenId()))
         {
             frameBuffer()->setAutoEnabled(false);
             sltPerformGuestResize(workingArea().size());
