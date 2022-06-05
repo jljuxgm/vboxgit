@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 51349 2014-05-22 11:42:21Z vboxsync $ */
+/* $Id: DevVGA.cpp 51357 2014-05-22 17:11:17Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4649,7 +4649,9 @@ static int updateDisplayAll(PVGASTATE pThis)
 static DECLCALLBACK(int) vgaPortUpdateDisplayAll(PPDMIDISPLAYPORT pInterface)
 {
     PVGASTATE pThis = IDISPLAYPORT_2_VGASTATE(pInterface);
-    PDMDEV_ASSERT_EMT(VGASTATE2DEVINS(pThis));
+    /* this can be called from CmdVbva thread as a result of VBVA disable,
+     * there should be no problem with calling it from there afaics */
+//    PDMDEV_ASSERT_EMT(VGASTATE2DEVINS(pThis));
 
     /* This is called both in VBVA mode and normal modes. */
 

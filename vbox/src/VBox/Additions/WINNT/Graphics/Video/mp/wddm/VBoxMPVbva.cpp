@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 51266 2014-05-15 18:25:40Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 51357 2014-05-22 17:11:17Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -277,11 +277,11 @@ RTDECL(void) VBoxVBVAExDisable(PVBVAEXBUFFERCONTEXT pCtx,
 {
     LogFlowFunc(("\n"));
 
+    vboxVBVAExCtlSubmitEnableDisable(pCtx, pHGSMICtx, false);
+
     pCtx->fHwBufferOverflow = false;
     pCtx->pRecord           = NULL;
     pCtx->pVBVA             = NULL;
-
-    vboxVBVAExCtlSubmitEnableDisable(pCtx, pHGSMICtx, false);
 
     return;
 }
