@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 50314 2014-02-03 19:29:26Z vboxsync $ */
+/* $Id: crservice.cpp 50341 2014-02-06 13:01:37Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -368,7 +368,7 @@ static DECLCALLBACK(int) svcLoadState(void *, uint32_t u32ClientID, void *pvClie
         LogRel(("SHARED_CROPENGL svcLoadState: unsupported save state version %d\n", ui32));
 
         /*@todo ugly hack, as we don't know size of stored opengl data try to read untill end of opengl data marker*/
-        /*VboxSharedCrOpenGL isn't last hgcm service now, so can't use SSMR3SkipToEndOfUnit*/
+        /*VBoxSharedCrOpenGL isn't last hgcm service now, so can't use SSMR3SkipToEndOfUnit*/
         {
             const char *pMatch = &gszVBoxOGLSSMMagic[0];
             char current;
