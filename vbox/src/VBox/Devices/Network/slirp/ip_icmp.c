@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 50015 2013-12-31 02:57:28Z vboxsync $ */
+/* $Id: ip_icmp.c 50134 2014-01-21 05:34:45Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -607,7 +607,6 @@ done:
  * @note This function will free msrc!
  */
 
-#define ICMP_MAXDATALEN (MSIZE - 28 - ETH_HLEN)
 void icmp_error(PNATState pData, struct mbuf *msrc, u_char type, u_char code, int minsize, const char *message)
 {
     unsigned hlen, shlen, s_ip_len;
@@ -779,7 +778,6 @@ end_error:
     }
     LogFlowFuncLeave();
 }
-#undef ICMP_MAXDATALEN
 
 /*
  * Reflect the ip packet back to the source
