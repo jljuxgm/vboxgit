@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 50928 2014-03-31 14:14:11Z vboxsync $ */
+/* $Id: vboxhgcm.c 50973 2014-04-04 18:31:40Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -2439,6 +2439,10 @@ void crVBoxHGCMConnection(CRConnection *conn
     conn->pHostBuffer = (uint8_t*) crAlloc(conn->cbHostBufferAllocated);
     CRASSERT(conn->pHostBuffer);
     conn->cbHostBuffer = 0;
+
+#if !defined(IN_GUEST)
+    RTListInit(&conn->PendingMsgList);
+#endif
 
 #ifdef CHROMIUM_THREADSAFE
     crLockMutex(&g_crvboxhgcm.mutex);
