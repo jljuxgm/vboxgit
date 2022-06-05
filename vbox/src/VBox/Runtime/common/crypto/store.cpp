@@ -1,4 +1,4 @@
-/* $Id: store.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: store.cpp 51777 2014-07-01 19:49:11Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store.
  */
@@ -340,6 +340,8 @@ RTDECL(int) RTCrStoreConvertToOpenSslCertStore(RTCRSTORE hStore, uint32_t fFlags
         }
         X509_STORE_free(pOsslStore);
     }
+    else
+        rc = VERR_NOT_MEMORY;
     return rc;
 }
 
@@ -393,6 +395,8 @@ RTDECL(int) RTCrStoreConvertToOpenSslCertStack(RTCRSTORE hStore, uint32_t fFlags
         }
         sk_X509_pop_free(pOsslStack, X509_free);
     }
+    else
+        rc = VERR_NOT_MEMORY;
     return rc;
 }
 
