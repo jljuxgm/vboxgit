@@ -1,4 +1,4 @@
-/* $Id: base64.cpp 51792 2014-07-01 20:34:29Z vboxsync $ */
+/* $Id: base64.cpp 52025 2014-07-14 21:39:52Z vboxsync $ */
 /** @file
  * IPRT - Base64, MIME content transfer encoding.
  */
@@ -109,8 +109,7 @@ static void rtBase64Sanity(void)
                    || (     u8 == BASE64_PAD
                        &&   i  == '=')
                    || (     u8 == BASE64_SPACE
-                       &&   (   RT_C_IS_SPACE(i)
-                             || (i == '\r'))) /* Carriage return is handled as a space character as well. */
+                       &&   RT_C_IS_SPACE(i))
                    || (     u8 < 64
                        &&   (unsigned)g_szValToChar[u8] == i));
         }
