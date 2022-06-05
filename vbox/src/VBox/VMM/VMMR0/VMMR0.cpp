@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 48038 2013-08-23 19:35:02Z vboxsync $ */
+/* $Id: VMMR0.cpp 48044 2013-08-25 19:21:27Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -900,6 +900,7 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
         case VMMR0_DO_HM_RUN:
         {
 #ifdef VBOX_WITH_VMMR0_DISABLE_PREEMPTION
+            Assert(!VMMR0ThreadCtxHooksAreRegistered(pVCpu));
             RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
             RTThreadPreemptDisable(&PreemptState);
 #elif !defined(RT_OS_WINDOWS)
@@ -939,22 +940,21 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
 
                 /* Enter HM context. */
                 rc = HMR0Enter(pVM, pVCpu);
-
-                /* When preemption hooks are in place, enable preemption now that we're in HM context. */
-                if (VMMR0ThreadCtxHooksAreRegistered(pVCpu))
-                {
-                    fPreemptRestored = true;
-                    RTThreadPreemptRestore(&PreemptState);
-                }
-
                 if (RT_SUCCESS(rc))
                 {
                     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_HM);
 
+                    /* When preemption hooks are in place, enable preemption now that we're in HM context. */
+                    if (VMMR0ThreadCtxHooksAreRegistered(pVCpu))
+                    {
+                        fPreemptRestored = true;
+                        RTThreadPreemptRestore(&PreemptState);
+                    }
+
                     /* Setup the longjmp machinery and execute guest code. */
                     rc = vmmR0CallRing3SetJmp(&pVCpu->vmm.s.CallRing3JmpBufR0, HMR0RunGuestCode, pVM, pVCpu);
 
-                    /* Leave HM context. This deregisters thread-context hooks if any. */
+                    /* Leave HM context. */
                     int rc2 = HMR0Leave(pVM, pVCpu);
                     AssertRC(rc2);
 

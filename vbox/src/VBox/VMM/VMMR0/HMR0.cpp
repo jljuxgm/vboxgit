@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 48037 2013-08-23 18:11:36Z vboxsync $ */
+/* $Id: HMR0.cpp 48044 2013-08-25 19:21:27Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1491,6 +1491,8 @@ VMMR0_INT_DECL(int) HMR0Enter(PVM pVM, PVMCPU pVCpu)
  *
  * @returns VBox status code.
  * @param   pVCpu       Pointer to the VMCPU.
+ *
+ * @remarks No-long-jump zone!!!
  */
 VMMR0_INT_DECL(int) HMR0LeaveCpu(PVMCPU pVCpu)
 {
