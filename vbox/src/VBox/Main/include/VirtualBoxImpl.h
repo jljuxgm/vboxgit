@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 52596 2014-09-04 16:45:50Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 53323 2014-11-13 14:52:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -337,8 +337,7 @@ private:
     HRESULT i_registerMachine(Machine *aMachine);
     HRESULT i_registerDHCPServer(DHCPServer *aDHCPServer,
                                  bool aSaveRegistry = true);
-    HRESULT i_unregisterDHCPServer(DHCPServer *aDHCPServer,
-                                   bool aSaveRegistry = true);
+    HRESULT i_unregisterDHCPServer(DHCPServer *aDHCPServer);
     HRESULT i_registerNATNetwork(NATNetwork *aNATNetwork,
                                  bool aSaveRegistry = true);
     HRESULT i_unregisterNATNetwork(NATNetwork *aNATNetwork,
