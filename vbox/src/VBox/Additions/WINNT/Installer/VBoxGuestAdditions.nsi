@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 53008 2014-10-09 11:34:57Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 53129 2014-10-23 10:16:25Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -145,7 +145,7 @@ VIAddVersionKey "InternalName"      "${PRODUCT_OUTPUT}"
 !ifdef _DEBUG
   BrandingText "VirtualBox Windows Additions $%VBOX_VERSION_STRING% (r$%VBOX_SVN_REV%) - Debug Build"
 !else
-  BrandingText "VirtualBox Windows Additions $%VBOX_VERSION_STRING%"
+  BrandingText "VirtualBox Windows Additions $%VBOX_VERSION_STRING% r$%VBOX_SVN_REV%"
 !endif
 
 !ifdef VBOX_WITH_LICENSE_DISPLAY
