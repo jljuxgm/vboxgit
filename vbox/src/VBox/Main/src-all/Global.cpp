@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 50242 2014-01-27 12:23:36Z vboxsync $ */
+/* $Id: Global.cpp 51389 2014-05-26 10:28:48Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -203,7 +203,7 @@ const Global::OSType Global::sOSTypes[] =
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "RedHat_64",          "Red Hat (64 bit)",
       VBOXOSTYPE_RedHat_x64,      VBOXOSHINT_64BIT | VBOXOSHINT_PAE | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC,
-       512,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       768,  12,  8 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Turbolinux",         "Turbolinux (32 bit)",
       VBOXOSTYPE_Turbolinux,      VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
@@ -235,7 +235,7 @@ const Global::OSType Global::sOSTypes[] =
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Oracle_64",          "Oracle (64 bit)",
       VBOXOSTYPE_Oracle_x64,      VBOXOSHINT_64BIT | VBOXOSHINT_PAE | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_RTCUTC,
-       512,  12, 12 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
+       768,  12, 12 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_PIIX4, StorageBus_IDE,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_AC97  },
     { "Linux",   "Linux",             "Linux",              "Other Linux (32 bit)",
       VBOXOSTYPE_Linux,           VBOXOSHINT_RTCUTC | VBOXOSHINT_USBTABLET,
