@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 50935 2014-03-31 18:38:41Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 51004 2014-04-08 17:13:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4082,6 +4082,15 @@ QList<MachineSettingsPageType> VBoxGlobal::restrictedMachineSettingsPages(CMachi
     /* Return result: */
     return result;
 }
+
+#ifndef Q_WS_MAC
+/* static */
+QStringList VBoxGlobal::machineWindowIconNames(CMachine &machine)
+{
+    /* Return result: */
+    return machine.GetExtraDataStringList(GUI_MachineWindowIcons);
+}
+#endif /* !Q_WS_MAC */
 
 #ifdef RT_OS_LINUX
 /* static */

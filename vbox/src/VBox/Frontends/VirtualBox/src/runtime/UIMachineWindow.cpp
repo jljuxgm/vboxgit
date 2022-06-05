@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 50631 2014-02-27 14:46:41Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 51004 2014-04-08 17:13:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -173,13 +173,18 @@ UIMachineWindow::UIMachineWindow(UIMachineLogic *pMachineLogic, ulong uScreenId)
     , m_pRightSpacer(0)
 {
 #ifndef Q_WS_MAC
-    /* On Mac OS X application icon referenced in info.plist is used. */
+    /* On Mac OS X window icon referenced in info.plist is used. */
 
-    /* Set default application icon (will be changed to VM-specific icon little bit later): */
+    /* Set default window icon (will be changed to VM-specific icon little bit later): */
     setWindowIcon(QIcon(":/VirtualBox_48px.png"));
 
-    /* Set VM-specific application icon: */
-    setWindowIcon(vboxGlobal().vmGuestOSTypeIcon(machine().GetOSTypeId()));
+    /* Set redefined machine-window icon if any: */
+    QIcon *pMachineWidnowIcon = uisession()->machineWindowIcon();
+    if (pMachineWidnowIcon)
+        setWindowIcon(*pMachineWidnowIcon);
+    /* Or set default machine-window icon: */
+    else
+        setWindowIcon(vboxGlobal().vmGuestOSTypeIcon(machine().GetOSTypeId()));
 #endif /* !Q_WS_MAC */
 }
 
