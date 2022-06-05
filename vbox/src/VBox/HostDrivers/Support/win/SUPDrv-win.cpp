@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 51229 2014-05-09 19:34:42Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 51742 2014-06-27 09:05:35Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -66,7 +66,8 @@
 #define DEVICE_NAME_DOS_USR     L"\\DosDevices\\VBoxDrvU"
 
 /** Enables the fast I/O control code path. */
-#define VBOXDRV_WITH_FAST_IO
+//@todo: Currently breaks guest SMP. Must be disabled until fixed.
+//#define VBOXDRV_WITH_FAST_IO
 
 
 /*******************************************************************************
