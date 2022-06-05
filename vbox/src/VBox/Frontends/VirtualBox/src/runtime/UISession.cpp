@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 48504 2013-09-17 15:02:04Z vboxsync $ */
+/* $Id: UISession.cpp 48510 2013-09-17 18:32:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -98,9 +98,6 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
     , m_fNumLock(false)
     , m_fCapsLock(false)
     , m_fScrollLock(false)
-    , m_fHostNumLock(false)
-    , m_fHostCapsLock(false)
-    , m_fHostScrollLock(false)
     , m_uNumLockAdaptionCnt(2)
     , m_uCapsLockAdaptionCnt(2)
     /* Mouse flags: */
@@ -464,6 +461,26 @@ bool UISession::isVisualStateAllowedSeamless() const
 bool UISession::isVisualStateAllowedScale() const
 {
     return m_pMachine->isVisualStateAllowedScale();
+}
+
+void UISession::setHostLockStates(const QString &strKeyboardID, bool fNum, bool fCaps, bool fScroll)
+{
+    /* Acquire modifiable reference, create default value if doesn't exists: */
+    UIKeyboardLocks &hostLock = m_hostLocks[strKeyboardID];
+    /* Save passed values: */
+    hostLock.m_num = fNum;
+    hostLock.m_caps = fCaps;
+    hostLock.m_scroll = fScroll;
+}
+
+void UISession::getHostLockStates(const QString &strKeyboardID, bool &fNum, bool &fCaps, bool &fScroll)
+{
+    /* Acquire modifiable reference, create default value if doesn't exists: */
+    UIKeyboardLocks &hostLock = m_hostLocks[strKeyboardID];
+    /* Load cached values: */
+    fNum = hostLock.m_num;
+    fCaps = hostLock.m_caps;
+    fScroll = hostLock.m_scroll;
 }
 
 bool UISession::setPause(bool fOn)
