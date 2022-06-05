@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 49360 2013-11-01 12:08:56Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 49479 2013-11-14 15:13:05Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1942,6 +1942,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
                 break;
         }
 
+        NOREF(type);
         *pEax |= ((cores - 1) << 26)        |
                  ((sharing - 1) << 14)      |
                  (level << 5)               |
