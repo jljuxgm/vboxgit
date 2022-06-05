@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47345 2013-07-23 15:29:30Z vboxsync $
+# $Id: Makefile.kmk 51104 2014-04-18 10:16:38Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -49,6 +49,18 @@ StorageLib_SOURCES  = \
 	QCOW.cpp \
 	VHDX.cpp \
 	VCICache.cpp
+
+ifndef VBOX_OSE
+ ifneq ($(KBUILD_TARGET),win)
+  DLLS += VDPluginCrypt
+  VDPluginCrypt_TEMPLATE = VBOXR3
+  VDPluginCrypt_LIBS = $(LIB_RUNTIME)
+  VDPluginCrypt_SDKS = VBOX_OPENSSL2
+
+  VDPluginCrypt_SOURCES = \
+  	VDFilterCrypt.cpp
+ endif
+endif
 
 #StorageLibNoDB_TEMPLATE = VBOXR3
 #StorageLibNoDB_DEFS     = IN_VBOXDDU VBOX_HDD_NO_DYNAMIC_BACKENDS
