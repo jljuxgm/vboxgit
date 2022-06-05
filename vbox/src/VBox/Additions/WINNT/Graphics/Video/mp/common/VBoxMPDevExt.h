@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 49450 2013-11-12 12:33:30Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 49458 2013-11-13 10:32:13Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -27,7 +27,6 @@
 # include <ntddvdeo.h>
 # include <video.h>
 # include "common/xpdm/VBoxVideoPortAPI.h"
-#include <VBox/Hardware/VBoxVideoVBE.h>
 #endif
 
 #ifdef VBOX_WDDM_MINIPORT
@@ -79,10 +78,10 @@ typedef struct _VBOXMP_DEVEXT
 
    ULONG iDevice;                              /* Device index: 0 for primary, otherwise a secondary device. */
    /* Standart video modes list.
-    * Additional space is reserved for custom video modes for VBOX_VIDEO_MAX_SCREENS guest monitors.
-    * The custom video mode index is alternating for each mode set and 2 indexes are needed for each custom mode.
+    * Additional space is reserved for a custom video mode for this guest monitor.
+    * The custom video mode index is alternating for each mode set and 2 indexes are needed for the custom mode.
     */
-   VIDEO_MODE_INFORMATION aVideoModes[VBOXMP_MAX_VIDEO_MODES + VBOX_VIDEO_MAX_SCREENS * 2];
+   VIDEO_MODE_INFORMATION aVideoModes[VBOXMP_MAX_VIDEO_MODES + 2];
    /* Number of available video modes, set by VBoxMPCmnBuildVideoModesTable. */
    uint32_t cVideoModes;
    ULONG CurrentMode;                          /* Saved information about video modes */
