@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48903 2013-10-05 06:56:24Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48904 2013-10-05 06:57:50Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1051,6 +1051,9 @@ int VBoxNetLwipNAT::run()
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
     LogFlowFuncEnter();
+
+    NOREF(envp);
+
 #ifdef RT_OS_WINDOWS
     WSADATA wsaData;
     int err;
