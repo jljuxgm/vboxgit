@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 49324 2013-10-29 22:05:21Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 49471 2013-11-13 15:20:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5382,7 +5382,8 @@ HRESULT Console::onExtraDataChange(IN_BSTR aMachineId, IN_BSTR aKey, IN_BSTR aVa
     LogFlowThisFunc(("\n"));
 
     AutoCaller autoCaller(this);
-    AssertComRCReturnRC(autoCaller.rc());
+    if (FAILED(autoCaller.rc()))
+        return autoCaller.rc();
 
     if (!aMachineId)
         return S_OK;
