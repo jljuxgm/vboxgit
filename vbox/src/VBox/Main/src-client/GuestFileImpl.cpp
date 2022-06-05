@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 50618 2014-02-26 19:55:39Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 50727 2014-03-07 18:21:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -1237,7 +1237,7 @@ HRESULT GuestFile::close()
      * work first and then return an error. */
 
     AssertPtr(mSession);
-    int rc2 = mSession->fileRemoveFromList(this);
+    int rc2 = mSession->i_fileRemoveFromList(this);
     if (RT_SUCCESS(rc))
         rc = rc2;
 

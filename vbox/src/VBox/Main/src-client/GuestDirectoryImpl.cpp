@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 50709 2014-03-05 18:29:52Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 50727 2014-03-07 18:21:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -298,7 +298,7 @@ HRESULT GuestDirectory::close()
     }
 
     AssertPtr(mSession);
-    int rc2 = mSession->directoryRemoveFromList(this);
+    int rc2 = mSession->i_directoryRemoveFromList(this);
     if (RT_SUCCESS(rc))
         rc = rc2;
 

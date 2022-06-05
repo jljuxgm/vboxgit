@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 49948 2013-12-17 09:51:45Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 50727 2014-03-07 18:21:44Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -1225,7 +1225,7 @@ int GuestObject::registerWaitEvent(const GuestEventTypes &lstEvents,
                                    GuestWaitEvent **ppEvent)
 {
     AssertPtr(mSession);
-    return GuestBase::registerWaitEvent(mSession->getId(), mObjectID, lstEvents, ppEvent);
+    return GuestBase::registerWaitEvent(mSession->i_getId(), mObjectID, lstEvents, ppEvent);
 }
 
 int GuestObject::sendCommand(uint32_t uFunction,
