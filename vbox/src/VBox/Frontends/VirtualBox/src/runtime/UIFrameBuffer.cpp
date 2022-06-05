@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 50818 2014-03-19 11:02:22Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 51132 2014-04-24 11:21:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -48,6 +48,7 @@ UIFrameBuffer::UIFrameBuffer(UIMachineView *pMachineView)
 #ifdef Q_OS_WIN
     , m_iRefCnt(0)
 #endif /* Q_OS_WIN */
+    , m_dBackingScaleFactor(1.0)
 {
     /* Assign mahine-view: */
     AssertMsg(m_pMachineView, ("UIMachineView must not be NULL\n"));
@@ -569,6 +570,16 @@ void UIFrameBuffer::setView(UIMachineView * pView)
     /* Connect handlers: */
     if (m_pMachineView)
         prepareConnections();
+}
+
+void UIFrameBuffer::setBackingScaleFactor(double dBackingScaleFactor)
+{
+    /* Make sure 'backing scale factor' changed: */
+    if (m_dBackingScaleFactor == dBackingScaleFactor)
+        return;
+
+    /* Update 'backing scale factor': */
+    m_dBackingScaleFactor = dBackingScaleFactor;
 }
 
 void UIFrameBuffer::prepareConnections()
