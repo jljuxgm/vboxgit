@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51536 2014-06-04 16:30:26Z vboxsync $ */
+/* $Id: server_presenter.cpp 51670 2014-06-19 15:12:30Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -2899,7 +2899,7 @@ protected:
         bool fVisible = isVisible();
         if (mFlags.fNeVisible != fVisible || mFlags.fNeForce)
         {
-            crVBoxServerNotifyEvent(mu32Screen, VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_3DDATA, fVisible ? (void*)1 : NULL);
+            crVBoxServerNotifyEvent(mu32Screen, VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_3DDATA, &fVisible, sizeof(fVisible));
             mFlags.fNeVisible = fVisible;
             mFlags.fNeForce = 0;
         }

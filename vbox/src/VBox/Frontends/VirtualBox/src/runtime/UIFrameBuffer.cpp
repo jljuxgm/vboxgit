@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 51657 2014-06-18 21:52:51Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 51670 2014-06-19 15:12:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -408,7 +408,7 @@ STDMETHODIMP UIFrameBuffer::ProcessVHWACommand(BYTE *pCommand)
     return E_NOTIMPL;
 }
 
-STDMETHODIMP UIFrameBuffer::Notify3DEvent(ULONG uType, BYTE *pData)
+STDMETHODIMP UIFrameBuffer::Notify3DEvent(ULONG uType, ComSafeArrayIn(BYTE, aData))
 {
     /* Lock access to frame-buffer: */
     lock();
@@ -425,13 +425,14 @@ STDMETHODIMP UIFrameBuffer::Notify3DEvent(ULONG uType, BYTE *pData)
         return E_FAIL;
     }
 
+    com::SafeArray<BYTE> data(ComSafeArrayInArg(aData));
     switch (uType)
     {
         case VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_3DDATA:
         {
             /* Notify machine-view with the async-signal
              * about 3D overlay visibility change: */
-            BOOL fVisible = !!pData;
+            BOOL fVisible = data[0];
             LogRel2(("UIFrameBuffer::Notify3DEvent: Sending to async-handler: "
                      "(VBOX3D_NOTIFY_EVENT_TYPE_VISIBLE_3DDATA = %s)\n",
                      fVisible ? "TRUE" : "FALSE"));
