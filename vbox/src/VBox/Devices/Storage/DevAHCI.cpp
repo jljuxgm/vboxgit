@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 49208 2013-10-21 10:24:51Z vboxsync $ */
+/* $Id: DevAHCI.cpp 49218 2013-10-21 22:33:46Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -8013,6 +8013,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         pAhciPort->pDrvBase             = NULL;
         pAhciPort->pAsyncIOThread       = NULL;
         pAhciPort->hEvtProcess          = NIL_SUPSEMEVENT;
+        pAhciPort->fHotpluggable        = true;
     }
 
     /*
@@ -8156,7 +8157,6 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         pAhciPort->IMountNotify.pfnMountNotify          = ahciR3MountNotify;
         pAhciPort->IMountNotify.pfnUnmountNotify        = ahciR3UnmountNotify;
         pAhciPort->fAsyncIOThreadIdle                   = true;
-        pAhciPort->fHotpluggable                        = true;
 
         /* Query per port configuration options if available. */
         PCFGMNODE pCfgPort = CFGMR3GetChild(pDevIns->pCfg, szName);
