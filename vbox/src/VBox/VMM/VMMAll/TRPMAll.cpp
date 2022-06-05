@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: TRPMAll.cpp 49623 2013-11-22 12:26:29Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -864,6 +864,7 @@ failure:
 VMMDECL(int) TRPMRaiseXcpt(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, X86XCPT enmXcpt)
 {
     LogFlow(("TRPMRaiseXcptErr: cs:eip=%RTsel:%RX32 enmXcpt=%#x\n", pCtxCore->cs.Sel, pCtxCore->eip, enmXcpt));
+    NOREF(pCtxCore);
 /** @todo dispatch the trap. */
     pVCpu->trpm.s.uActiveVector            = enmXcpt;
     pVCpu->trpm.s.enmActiveType            = TRPM_TRAP;
@@ -892,6 +893,7 @@ VMMDECL(int) TRPMRaiseXcpt(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, X86XCPT enmXcpt)
 VMMDECL(int) TRPMRaiseXcptErr(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, X86XCPT enmXcpt, uint32_t uErr)
 {
     LogFlow(("TRPMRaiseXcptErr: cs:eip=%RTsel:%RX32 enmXcpt=%#x uErr=%RX32\n", pCtxCore->cs.Sel, pCtxCore->eip, enmXcpt, uErr));
+    NOREF(pCtxCore);
 /** @todo dispatch the trap. */
     pVCpu->trpm.s.uActiveVector            = enmXcpt;
     pVCpu->trpm.s.enmActiveType            = TRPM_TRAP;
@@ -921,6 +923,7 @@ VMMDECL(int) TRPMRaiseXcptErr(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, X86XCPT enmXc
 VMMDECL(int) TRPMRaiseXcptErrCR2(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, X86XCPT enmXcpt, uint32_t uErr, RTGCUINTPTR uCR2)
 {
     LogFlow(("TRPMRaiseXcptErr: cs:eip=%RTsel:%RX32 enmXcpt=%#x uErr=%RX32 uCR2=%RGv\n", pCtxCore->cs.Sel, pCtxCore->eip, enmXcpt, uErr, uCR2));
+    NOREF(pCtxCore);
 /** @todo dispatch the trap. */
     pVCpu->trpm.s.uActiveVector            = enmXcpt;
     pVCpu->trpm.s.enmActiveType            = TRPM_TRAP;
