@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51112 2014-04-21 18:50:56Z vboxsync $ */
+/* $Id: server_presenter.cpp 51121 2014-04-23 11:39:21Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -1241,7 +1241,6 @@ static CR_FBTEX* crFbTexCreate(const VBOXVR_TEXTURE *pTex)
 
     return pFbTex;
 }
-
 
 CR_TEXDATA* CrFbTexDataCreate(const VBOXVR_TEXTURE *pTex)
 {

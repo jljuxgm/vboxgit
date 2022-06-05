@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.cpp 50754 2014-03-12 17:43:09Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 51121 2014-04-23 11:39:21Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -394,7 +394,7 @@ void crVBoxServerMuralFbResizeBegin(HCR_FRAMEBUFFER hFb)
 }
 
 
-static int crVBoxServerResizeScreen(const struct VBVAINFOSCREEN *pScreen, void *pvVRAM)
+int crVBoxServerResizeScreen(const struct VBVAINFOSCREEN *pScreen, void *pvVRAM)
 {
     int rc;
     HCR_FRAMEBUFFER hFb = CrPMgrFbGet(pScreen->u32ViewIndex);
@@ -430,6 +430,12 @@ static int crVBoxServerResizeScreen(const struct VBVAINFOSCREEN *pScreen, void *
 
 DECLEXPORT(int) crVBoxServerNotifyResize(const struct VBVAINFOSCREEN *pScreen, void *pvVRAM)
 {
+    if (cr_server.fCrCmdEnabled)
+    {
+        WARN(("crVBoxServerNotifyResize for enabled CrCmd"));
+        return VERR_INVALID_STATE;
+    }
+
     int rc = crVBoxServerResizeScreen(pScreen, pvVRAM);
     if (!RT_SUCCESS(rc))
     {

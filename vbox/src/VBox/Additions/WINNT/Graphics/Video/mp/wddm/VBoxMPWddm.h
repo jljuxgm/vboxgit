@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 50987 2014-04-07 17:08:07Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 51121 2014-04-23 11:39:21Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -242,6 +242,28 @@ DECLINLINE(VBOXVIDEOOFFSET) vboxWddmAddrFramOffset(const VBOXWDDM_ADDR *pAddr)
     return (pAddr->offVram != VBOXVIDEOOFFSET_VOID && pAddr->SegmentId) ?
             (pAddr->SegmentId == 1 ? pAddr->offVram : 0)
             : VBOXVIDEOOFFSET_VOID;
+}
+
+DECLINLINE(int) vboxWddmScreenInfoInit(VBVAINFOSCREEN *pScreen, const VBOXWDDM_ALLOC_DATA *pAllocData, const POINT * pVScreenPos, uint16_t fFlags)
+{
+    VBOXVIDEOOFFSET offVram = vboxWddmAddrFramOffset(&pAllocData->Addr);
+    if (offVram == VBOXVIDEOOFFSET_VOID && !(fFlags & VBVA_SCREEN_F_DISABLED))
+    {
+        WARN(("offVram == VBOXVIDEOOFFSET_VOID"));
+        return VERR_INVALID_PARAMETER;
+    }
+
+    pScreen->u32ViewIndex    = pAllocData->SurfDesc.VidPnSourceId;
+    pScreen->i32OriginX      = pVScreenPos->x;
+    pScreen->i32OriginY      = pVScreenPos->y;
+    pScreen->u32StartOffset  = (uint32_t)offVram;
+    pScreen->u32LineSize     = pAllocData->SurfDesc.pitch;
+    pScreen->u32Width        = pAllocData->SurfDesc.width;
+    pScreen->u32Height       = pAllocData->SurfDesc.height;
+    pScreen->u16BitsPerPixel = (uint16_t)pAllocData->SurfDesc.bpp;
+    pScreen->u16Flags        = fFlags;
+
+    return VINF_SUCCESS;
 }
 
 bool vboxWddmGhDisplayCheckSetInfoFromSource(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SOURCE pSource);
