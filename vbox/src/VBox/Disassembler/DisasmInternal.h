@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 53007 2014-10-09 09:13:24Z vboxsync $ */
+/* $Id: DisasmInternal.h 53032 2014-10-10 16:18:37Z vboxsync $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -109,6 +109,9 @@ extern PCDISOPCODE const g_apThreeByteMapX86_F30F38[16];
 
 /** Three byte opcode map with prefix 0x66 (0xF 0x3A) */
 extern PCDISOPCODE const g_apThreeByteMapX86_660F3A[16];
+
+/** Three byte opcode map with prefixes 0x66 0xF2 (0xF 0x38) */
+extern PCDISOPCODE const g_apThreeByteMapX86_66F20F38[16];
 /** @} */
 
 /** @name Opcode extensions (Group tables)
