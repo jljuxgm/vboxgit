@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-solaris.c 47428 2013-07-26 16:19:03Z vboxsync $ */
+/* $Id: alloc-r0drv-solaris.c 50667 2014-03-03 14:01:47Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Solaris.
  */
@@ -185,7 +185,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
 
     /* Allocate physically contiguous (< 4GB) page-aligned memory. */
     uint64_t uPhys;
-    void *pvMem = rtR0SolMemAlloc((uint64_t)_4G - 1, &uPhys, cb, PAGESIZE, true);
+    void *pvMem = rtR0SolMemAlloc((uint64_t)_4G - 1, &uPhys, cb, PAGESIZE, true /* fContig */);
     if (RT_UNLIKELY(!pvMem))
     {
         LogRel(("RTMemContAlloc failed to allocate %u bytes\n", cb));
