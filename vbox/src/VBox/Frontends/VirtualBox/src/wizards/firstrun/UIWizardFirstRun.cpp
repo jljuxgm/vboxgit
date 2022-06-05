@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 51215 2014-05-08 14:06:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -102,12 +102,12 @@ void UIWizardFirstRun::prepare()
     /* Create corresponding pages: */
     switch (mode())
     {
-        case UIWizardMode_Basic:
+        case WizardMode_Basic:
         {
             setPage(Page, new UIWizardFirstRunPageBasic(m_machine.GetId(), m_fHardDiskWasSet));
             break;
         }
-        case UIWizardMode_Expert:
+        case WizardMode_Expert:
         {
             AssertMsgFailed(("First-run wizard has no expert-mode!"));
             break;

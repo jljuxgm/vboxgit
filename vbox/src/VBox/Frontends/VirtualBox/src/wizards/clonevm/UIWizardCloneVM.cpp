@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 51215 2014-05-08 14:06:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -52,8 +52,8 @@ bool UIWizardCloneVM::cloneVM()
     /* Should we create linked clone? */
     bool fLinked = field("linkedClone").toBool();
     /* Get clone mode: */
-    KCloneMode cloneMode = (mode() == UIWizardMode_Basic && page(Page3)) ||
-                           (mode() == UIWizardMode_Expert && page(PageExpert)) ?
+    KCloneMode cloneMode = (mode() == WizardMode_Basic && page(Page3)) ||
+                           (mode() == WizardMode_Expert && page(PageExpert)) ?
                            field("cloneMode").value<KCloneMode>() : KCloneMode_MachineState;
 
     /* Get VBox object: */
@@ -171,7 +171,7 @@ void UIWizardCloneVM::prepare()
     /* Create corresponding pages: */
     switch (mode())
     {
-        case UIWizardMode_Basic:
+        case WizardMode_Basic:
         {
             setPage(Page1, new UIWizardCloneVMPageBasic1(m_machine.GetName()));
             setPage(Page2, new UIWizardCloneVMPageBasic2(m_snapshot.isNull()));
@@ -179,7 +179,7 @@ void UIWizardCloneVM::prepare()
                 setPage(Page3, new UIWizardCloneVMPageBasic3(m_snapshot.isNull() ? false : m_snapshot.GetChildrenCount() > 0));
             break;
         }
-        case UIWizardMode_Expert:
+        case WizardMode_Expert:
         {
             setPage(PageExpert, new UIWizardCloneVMPageExpert(m_machine.GetName(),
                                                               m_snapshot.isNull(),

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 51215 2014-05-08 14:06:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -288,14 +288,14 @@ void UIWizardNewVM::prepare()
     /* Create corresponding pages: */
     switch (mode())
     {
-        case UIWizardMode_Basic:
+        case WizardMode_Basic:
         {
             setPage(Page1, new UIWizardNewVMPageBasic1(m_strGroup));
             setPage(Page2, new UIWizardNewVMPageBasic2);
             setPage(Page3, new UIWizardNewVMPageBasic3);
             break;
         }
-        case UIWizardMode_Expert:
+        case WizardMode_Expert:
         {
             setPage(PageExpert, new UIWizardNewVMPageExpert(m_strGroup));
             break;

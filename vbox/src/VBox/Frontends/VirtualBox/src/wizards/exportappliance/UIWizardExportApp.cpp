@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 51215 2014-05-08 14:06:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -212,8 +212,8 @@ void UIWizardExportApp::sltCurrentIdChanged(int iId)
     /* Call to base-class: */
     UIWizard::sltCurrentIdChanged(iId);
     /* Enable 2nd button (Reset to Defaults) for 4th and Expert pages only! */
-    setOption(QWizard::HaveCustomButton2, (mode() == UIWizardMode_Basic && iId == Page4) ||
-                                          (mode() == UIWizardMode_Expert && iId == PageExpert));
+    setOption(QWizard::HaveCustomButton2, (mode() == WizardMode_Basic && iId == Page4) ||
+                                          (mode() == WizardMode_Expert && iId == PageExpert));
 }
 
 void UIWizardExportApp::sltCustomButtonClicked(int iId)
@@ -248,7 +248,7 @@ void UIWizardExportApp::prepare()
     /* Create corresponding pages: */
     switch (mode())
     {
-        case UIWizardMode_Basic:
+        case WizardMode_Basic:
         {
             setPage(Page1, new UIWizardExportAppPageBasic1(m_selectedVMNames));
             setPage(Page2, new UIWizardExportAppPageBasic2);
@@ -256,7 +256,7 @@ void UIWizardExportApp::prepare()
             setPage(Page4, new UIWizardExportAppPageBasic4);
             break;
         }
-        case UIWizardMode_Expert:
+        case WizardMode_Expert:
         {
             setPage(PageExpert, new UIWizardExportAppPageExpert(m_selectedVMNames));
             break;
