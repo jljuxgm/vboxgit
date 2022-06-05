@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 45930 2013-05-07 12:14:06Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 48445 2013-09-12 10:52:46Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -427,6 +427,8 @@ static int dbgfR3CoreWriteWorker(PVM pVM, RTFILE hFile)
     /*
      * Write the CPU context note headers and data.
      */
+    /** @todo r=ramshankar: Dump a more standardized CPU structure rather than
+     *        dumping CPUMCTX and bump the core file version number. */
     Assert(RTFileTell(hFile) == offCpuDumps);
     for (uint32_t iCpu = 0; iCpu < pVM->cCpus; iCpu++)
     {
