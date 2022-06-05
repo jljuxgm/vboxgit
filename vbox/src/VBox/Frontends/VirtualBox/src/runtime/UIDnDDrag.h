@@ -1,4 +1,4 @@
-/* $Id: UIDnDDrag.h 50593 2014-02-26 08:44:58Z vboxsync $ */
+/* $Id: UIDnDDrag.h 50602 2014-02-26 12:50:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,24 +44,24 @@ class UIDnDDrag : public QObject
 
 public:
 
-    UIDnDDrag(CSession &session, const QStringList &lstFormats,
-              Qt::DropAction defAction,
-              Qt::DropActions actions, QWidget *pParent);
-
+    UIDnDDrag(CSession &session, 
+              const QStringList &lstFormats, Qt::DropAction defAction, Qt::DropActions actions,
+              QWidget *pParent = NULL);
 public:
 
     int DoDragDrop(void);
 
-    int RetrieveData(const QString &strMimeType,
-                     QVariant::Type vaType, QVariant &vaData);
+public:
+
+    static int RetrieveData(const CSession &session, Qt::DropAction dropAction, const QString &strMimeType, QVariant::Type vaType, QVariant &vaData, QWidget *pParent);
 
 private:
 
-    QWidget          *m_pParent;
     CSession          m_session;
     QStringList       m_lstFormats;
     Qt::DropAction    m_defAction;
     Qt::DropActions   m_actions;
+    QWidget          *m_pParent;
 #ifndef RT_OS_WINDOWS
     UIDnDMimeData    *pMData;
     friend class UIDnDMimeData;

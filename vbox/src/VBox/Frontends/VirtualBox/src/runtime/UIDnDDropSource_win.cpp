@@ -1,4 +1,4 @@
-/* $Id: UIDnDDropSource_win.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.cpp 50602 2014-02-26 12:50:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -31,7 +31,7 @@
 
 #include "UIDnDDropSource_win.h"
 
-UIDnDDropSource::UIDnDDropSource(UIDnDDrag *pParent)
+UIDnDDropSource::UIDnDDropSource(QWidget *pParent)
     : mRefCount(1),
       mpParent(pParent),
       mdwCurEffect(0),

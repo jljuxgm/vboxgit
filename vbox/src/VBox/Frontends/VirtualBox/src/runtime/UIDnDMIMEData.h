@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 50595 2014-02-26 09:48:29Z vboxsync $ */
+/* $Id: UIDnDMIMEData.h 50602 2014-02-26 12:50:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -60,9 +60,9 @@ class UIDnDMimeData: public QMimeData
 
 public:
 
-    UIDnDMimeData(CSession &session, QStringList formats,
-                  Qt::DropAction defAction,
-                  Qt::DropActions actions, UIDnDDrag *pParent);
+    UIDnDMimeData(CSession &session, QStringList formats, Qt::DropAction defAction, Qt::DropActions actions, QWidget *pParent);
+
+public:
 
     int setData(const QString &mimeType);
 
@@ -94,19 +94,15 @@ private slots:
     void sltInstallEventFilter(void);
 #endif
 
-protected:
-
-    int retrieveDataInternal(const QString &strMimeType, QVariant::Type vaType, QVariant &vaData) const;
-
 private:
 
-    UIDnDDrag        *m_pParent;
-    CSession          m_session;
+    CSession          m_Session;
     QStringList       m_lstFormats;
     Qt::DropAction    m_defAction;
     Qt::DropActions   m_actions;
+    QWidget          *m_pParent;
     mutable State     m_enmState;
-    mutable QVariant  m_data;
+    mutable QVariant  m_vaData;
 };
 
 #endif /* ___UIDnDMIMEData_h___ */

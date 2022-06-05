@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.h 50561 2014-02-24 21:07:22Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.h 50602 2014-02-26 12:50:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -44,7 +44,7 @@ public:
 
 public:
 
-    UIDnDDataObject(const QStringList &lstFormats, UIDnDDrag *pParent);
+    UIDnDDataObject(CSession &session, const QStringList &lstFormats, QWidget *pParent);
     virtual ~UIDnDDataObject(void);
 
 public: /* IUnknown methods. */
@@ -80,7 +80,8 @@ protected:
     void RegisterFormat(FORMATETC *pFormatEtc, CLIPFORMAT clipFormat, TYMED tyMed = TYMED_HGLOBAL,
                         LONG lindex = -1, DWORD dwAspect = DVASPECT_CONTENT, DVTARGETDEVICE *pTargetDevice = NULL);
 
-    UIDnDDrag  *mpParent;
+    QWidget    *mpParent;
+    CSession    mSession;
     Status      mStatus;
     LONG        mRefCount;
     /** Number of native formats registered. This
