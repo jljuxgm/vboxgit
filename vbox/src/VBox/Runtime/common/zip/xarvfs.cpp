@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 48842 2013-10-03 14:19:13Z vboxsync $ */
+/* $Id: xarvfs.cpp 48843 2013-10-03 14:35:05Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -903,7 +903,7 @@ static DECLCALLBACK(int) rtZipXarFssIos_Read(void *pvThis, RTFOFF off, PCRTSGBUF
 
         /* Check hash. */
         if (   pThis->uHashState == RTZIPXAR_HASH_PENDING
-            && pThis->cbDigested == pThis->DataAttr.cbDataArchived)
+            && pThis->cbDigested == (RTFOFF)pThis->DataAttr.cbDataArchived)
         {
             RTZIPXARHASHDIGEST Digest;
             rtZipXarHashFinal(&pThis->CtxArchived, pThis->DataAttr.uHashFunArchived, &Digest);
