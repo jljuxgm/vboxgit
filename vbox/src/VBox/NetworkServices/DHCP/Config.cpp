@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 49568 2013-11-20 08:56:59Z vboxsync $ */
+/* $Id: Config.cpp 49569 2013-11-20 08:59:17Z vboxsync $ */
 
 /**
  * XXX: license.
@@ -492,6 +492,7 @@ int ConfigurationManager::expireLease4Client(Client& client)
     return VINF_SUCCESS;
 }
 
+
 bool ConfigurationManager::isAddressTaken(const RTNETADDRIPV4& addr, Lease& lease)
 {
     MapLease2Ip4AddressIterator it;
@@ -518,7 +519,6 @@ bool ConfigurationManager::isAddressTaken(const RTNETADDRIPV4& addr)
     Lease ignore;
     return isAddressTaken(addr, ignore);
 }
-
 
 
 NetworkConfigEntity *ConfigurationManager::addNetwork(NetworkConfigEntity *,
