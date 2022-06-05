@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 50228 2014-01-24 21:16:37Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 50229 2014-01-24 21:22:26Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -822,6 +822,7 @@ static DECLCALLBACK(int) usbProxyConstruct(PPDMUSBINS pUsbIns, int iInstance, PC
     pThis->iActiveCfg = -1;
     pThis->fMaskedIfs = 0;
     pThis->fOpened = false;
+    pThis->fInited = false;
 
     /*
      * Read the basic configuration.
@@ -1071,6 +1072,7 @@ static DECLCALLBACK(int) usbProxyConstruct(PPDMUSBINS pUsbIns, int iInstance, PC
         if (RT_FAILURE(rc))
             return rc;
     }
+    pThis->fInited = true;
 
     /*
      * We're good!

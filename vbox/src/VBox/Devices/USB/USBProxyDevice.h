@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.h 50228 2014-01-24 21:16:37Z vboxsync $ */
+/* $Id: USBProxyDevice.h 50229 2014-01-24 21:22:26Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy header
  */
@@ -205,6 +205,9 @@ typedef struct USBPROXYDEV
     /** Whether we've opened the device or not.
      * For dealing with failed construction (the destruct method is always called). */
     bool                fOpened;
+    /** Whether we've called pfnInit or not.
+     * For dealing with failed construction (the destruct method is always called). */
+    bool                fInited;
     /** Whether the device has been detached.
      * This is hack for making PDMUSBREG::pfnUsbQueue return the right status code. */
     bool                fDetached;
