@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 50413 2014-02-11 12:45:12Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 50552 2014-02-24 09:34:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2686,6 +2686,14 @@ int Display::displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_
                 else
                 {
                     RTMemFree(pu8Data);
+
+                    /* CopyRect can fail if VBVA was paused in VGA device, retry using the generic method. */
+                    if (   rc == VERR_INVALID_STATE
+                        && aScreenId == VBOX_VIDEO_PRIMARY_SCREEN)
+                    {
+                        rc = pDisplay->mpDrv->pUpPort->pfnTakeScreenshot(pDisplay->mpDrv->pUpPort,
+                                                                         ppu8Data, pcbData, pu32Width, pu32Height);
+                    }
                 }
             }
         }
