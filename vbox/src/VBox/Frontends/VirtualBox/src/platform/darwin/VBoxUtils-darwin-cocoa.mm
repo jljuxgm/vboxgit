@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 50534 2014-02-21 06:46:09Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 51130 2014-04-24 10:53:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -217,6 +217,31 @@ bool darwinScreensHaveSeparateSpaces()
         return [NSScreen performSelector: @selector(screensHaveSeparateSpaces)];
     else
         return false;
+}
+
+double darwinBackingScaleFactor(NativeNSWindowRef pWindow)
+{
+    /* If host window responds to 'backingScaleFactor' selector: */
+    if ([pWindow respondsToSelector :@selector(backingScaleFactor)])
+    {
+        /* Default scale-factor still '1': */
+        CGFloat dScaleFactor = 1.0;
+        /* Compose dynamical invocation: */
+        SEL selector = @selector(backingScaleFactor);
+        NSMethodSignature *signature = [pWindow methodSignatureForSelector :selector];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature :signature];
+        /* Configure invocation: */
+        [invocation setTarget :pWindow];
+        [invocation setSelector :selector];
+        /* Call for invocation: */
+        [invocation invoke];
+        /* And acquire invocation result finally: */
+        [invocation getReturnValue :&dScaleFactor];
+        /* Return scale-factor we have: */
+        return dScaleFactor;
+    }
+    /* Default scale-factor is '1': */
+    return 1.0;
 }
 
 void darwinSetDockIconMenu(QMenu* pMenu)
