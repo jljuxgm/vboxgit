@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 48579 2013-09-20 10:55:37Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 48830 2013-10-03 10:52:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -452,7 +452,7 @@ QVariant UIPortForwardingModel::data(const QModelIndex &index, int iRole) const
     return QVariant();
 }
 
-bool UIPortForwardingModel::setData(const QModelIndex &index, const QVariant &value, int iRole /*= Qt::EditRole*/)
+bool UIPortForwardingModel::setData(const QModelIndex &index, const QVariant &value, int iRole /* = Qt::EditRole */)
 {
     /* Check index validness: */
     if (!index.isValid() || iRole != Qt::EditRole)
