@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -15,26 +15,33 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QHeaderView>
-#include <QHostAddress>
+# include <QHeaderView>
+# include <QHostAddress>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
-#include "UIIconPool.h"
-#include "UIConverter.h"
-#include "UIMessageCenter.h"
-#include "UIGlobalSettingsNetwork.h"
-#include "UIGlobalSettingsNetworkDetailsNAT.h"
-#include "UIGlobalSettingsNetworkDetailsHost.h"
+# include "VBoxGlobal.h"
+# include "UIIconPool.h"
+# include "UIConverter.h"
+# include "UIMessageCenter.h"
+# include "UIGlobalSettingsNetwork.h"
+# include "UIGlobalSettingsNetworkDetailsNAT.h"
+# include "UIGlobalSettingsNetworkDetailsHost.h"
 
 /* COM includes: */
-#include "CNATNetwork.h"
-#include "CHostNetworkInterface.h"
-#include "CDHCPServer.h"
+# include "CNATNetwork.h"
+# include "CHostNetworkInterface.h"
+# include "CDHCPServer.h"
 
 /* Other VBox includes: */
-#include "iprt/cidr.h"
+# include <iprt/cidr.h>
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 
 /* Global settings / Network page / NAT network item: */

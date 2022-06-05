@@ -1,4 +1,4 @@
-/* $Id: UIFilmContainer.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIFilmContainer.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilmContainer class implementation.
  */
@@ -15,16 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QScrollArea>
-#include <QScrollBar>
-#include <QCheckBox>
-#include <QPainter>
+# include <QHBoxLayout>
+# include <QVBoxLayout>
+# include <QScrollArea>
+# include <QScrollBar>
+# include <QCheckBox>
+# include <QPainter>
 
 /* GUI includes: */
-#include "UIFilmContainer.h"
+# include "UIFilmContainer.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIFilmContainer::UIFilmContainer(QWidget *pParent /* = 0*/)
     : QWidget(pParent)

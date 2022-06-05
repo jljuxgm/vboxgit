@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPane class implementation.
  */
@@ -15,15 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 /* Qt includes: */
-#include <QPainter>
+# include <QPainter>
 
 /* GUI includes: */
-#include "UIPopupPane.h"
-#include "UIPopupPaneTextPane.h"
-#include "UIPopupPaneButtonPane.h"
-#include "UIAnimationFramework.h"
-#include "QIMessageBox.h"
+# include "UIPopupPane.h"
+# include "UIPopupPaneTextPane.h"
+# include "UIPopupPaneButtonPane.h"
+# include "UIAnimationFramework.h"
+# include "QIMessageBox.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIPopupPane::UIPopupPane(QWidget *pParent,
                          const QString &strMessage, const QString &strDetails,

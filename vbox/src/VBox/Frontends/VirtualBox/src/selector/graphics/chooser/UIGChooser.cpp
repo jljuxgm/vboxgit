@@ -1,4 +1,4 @@
-/* $Id: UIGChooser.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIGChooser.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooser class implementation.
  */
@@ -15,16 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QVBoxLayout>
-#include <QStatusBar>
+# include <QVBoxLayout>
+# include <QStatusBar>
 
 /* GUI includes: */
-#include "UIGChooser.h"
-#include "UIGChooserModel.h"
-#include "UIGChooserView.h"
-#include "UISelectorWindow.h"
-#include "VBoxGlobal.h"
+# include "UIGChooser.h"
+# include "UIGChooserModel.h"
+# include "UIGChooserView.h"
+# include "UISelectorWindow.h"
+# include "VBoxGlobal.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIGChooser::UIGChooser(UISelectorWindow *pParent)
     : QWidget(pParent)

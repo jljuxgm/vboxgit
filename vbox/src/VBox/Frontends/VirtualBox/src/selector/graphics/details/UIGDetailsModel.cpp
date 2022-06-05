@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsModel class implementation.
  */
@@ -15,18 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QGraphicsScene>
-#include <QGraphicsSceneContextMenuEvent>
-#include <QGraphicsView>
+# include <QGraphicsScene>
+# include <QGraphicsSceneContextMenuEvent>
+# include <QGraphicsView>
 
 /* GUI includes: */
-#include "UIGDetailsModel.h"
-#include "UIGDetailsGroup.h"
-#include "UIGDetailsElement.h"
-#include "UIExtraDataManager.h"
-#include "VBoxGlobal.h"
-#include "UIConverter.h"
+# include "UIGDetailsModel.h"
+# include "UIGDetailsGroup.h"
+# include "UIGDetailsElement.h"
+# include "UIExtraDataManager.h"
+# include "VBoxGlobal.h"
+# include "UIConverter.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIGDetailsModel::UIGDetailsModel(QObject *pParent)
     : QObject(pParent)

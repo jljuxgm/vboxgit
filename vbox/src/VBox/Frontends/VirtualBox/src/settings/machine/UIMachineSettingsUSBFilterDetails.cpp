@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSBFilterDetails class implementation.
  */
@@ -15,9 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* GUI includes: */
-#include "UIMachineSettingsUSBFilterDetails.h"
-#include "UIConverter.h"
+# include "UIMachineSettingsUSBFilterDetails.h"
+# include "UIConverter.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIMachineSettingsUSBFilterDetails::UIMachineSettingsUSBFilterDetails(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI2<QIDialog>(pParent, Qt::Sheet)

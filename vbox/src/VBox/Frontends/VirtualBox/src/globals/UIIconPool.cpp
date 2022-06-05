@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 51406 2014-05-26 17:28:21Z vboxsync $ */
+/* $Id: UIIconPool.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -15,16 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QApplication>
-#include <QWidget>
-#include <QStyle>
+# include <QApplication>
+# include <QWidget>
+# include <QStyle>
 
 /* GUI includes: */
-#include "UIIconPool.h"
+# include "UIIconPool.h"
 
 /* Other VBox includes: */
-#include <iprt/assert.h>
+# include <iprt/assert.h>
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* static */
 QPixmap UIIconPool::pixmap(const QString &strName)

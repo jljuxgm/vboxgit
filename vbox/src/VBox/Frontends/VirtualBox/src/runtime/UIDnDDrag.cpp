@@ -1,4 +1,4 @@
-/* $Id: UIDnDDrag.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIDnDDrag.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation. This class acts as a wrapper
  * for OS-dependent guest->host drag'n drop operations.
@@ -16,30 +16,35 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/* Qt includes: */
-#include <QApplication>
-#include <QFileInfo>
-#include <QKeyEvent>
-#include <QMimeData>
-#include <QStringList>
-#include <QTimer>
-#include <QUrl>
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
+/* Qt includes: */
+# include <QApplication>
+# include <QFileInfo>
+# include <QKeyEvent>
+# include <QMimeData>
+# include <QStringList>
+# include <QTimer>
+# include <QUrl>
+
+/* GUI includes: */
+# include "UIDnDDrag.h"
+# include "UIDnDHandler.h"
+# include "UIDnDMIMEData.h"
+# include "UIMessageCenter.h"
+# ifdef RT_OS_WINDOWS
+#  include "UIDnDDropSource_win.h"
+#  include "UIDnDDataObject_win.h"
+# endif
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#undef LOG_GROUP
 #define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
 
-/* GUI includes: */
-#include "UIDnDDrag.h"
-#include "UIDnDHandler.h"
-#include "UIDnDMIMEData.h"
-#include "UIMessageCenter.h"
-#ifdef RT_OS_WINDOWS
-# include "UIDnDDropSource_win.h"
-# include "UIDnDDataObject_win.h"
-#endif
 
 UIDnDDrag::UIDnDDrag(CSession &session,
                      CDnDSource &dndSource,

@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizard.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -15,17 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes: */
-#include <QAbstractButton>
-#include <QLayout>
-#include <qmath.h>
+# include <QAbstractButton>
+# include <QLayout>
 
 /* Local includes: */
-#include "UIWizard.h"
-#include "UIWizardPage.h"
-#include "VBoxGlobal.h"
-#include "QIRichTextLabel.h"
-#include "UIExtraDataManager.h"
+# include "UIWizard.h"
+# include "UIWizardPage.h"
+# include "VBoxGlobal.h"
+# include "QIRichTextLabel.h"
+# include "UIExtraDataManager.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <qmath.h>
+
 
 void UIWizard::sltCurrentIdChanged(int iId)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend implementation.
  */
@@ -15,16 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QApplication>
-#include <QHash>
+# include <QApplication>
+# include <QHash>
 
 /* GUI includes: */
-#include "UIConverterBackend.h"
-#include "UIIconPool.h"
+# include "UIConverterBackend.h"
+# include "UIIconPool.h"
 
 /* COM includes: */
-#include "COMEnums.h"
+# include "COMEnums.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* Determines if <Object of type X> can be converted to object of other type.
  * These functions returns 'true' for all allowed conversions. */

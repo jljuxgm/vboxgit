@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVD.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizardNewVD.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVD class implementation.
  */
@@ -15,21 +15,28 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QVariant>
+# include <QVariant>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
-#include "UIWizardNewVD.h"
-#include "UIWizardNewVDPageBasic1.h"
-#include "UIWizardNewVDPageBasic2.h"
-#include "UIWizardNewVDPageBasic3.h"
-#include "UIWizardNewVDPageExpert.h"
-#include "UIMessageCenter.h"
-#include "UIMedium.h"
+# include "VBoxGlobal.h"
+# include "UIWizardNewVD.h"
+# include "UIWizardNewVDPageBasic1.h"
+# include "UIWizardNewVDPageBasic2.h"
+# include "UIWizardNewVDPageBasic3.h"
+# include "UIWizardNewVDPageExpert.h"
+# include "UIMessageCenter.h"
+# include "UIMedium.h"
 
 /* COM includes: */
-#include "CMediumFormat.h"
+# include "CMediumFormat.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWizardNewVD::UIWizardNewVD(QWidget *pParent,
                              const QString &strDefaultName, const QString &strDefaultPath,

@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic3.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic3.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic3 class implementation.
  */
@@ -15,19 +15,26 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QVBoxLayout>
-#include <QButtonGroup>
-#include <QRadioButton>
-#include <QCheckBox>
+# include <QVBoxLayout>
+# include <QButtonGroup>
+# include <QRadioButton>
+# include <QCheckBox>
 
 /* GUI includes: */
-#include "UIWizardCloneVDPageBasic3.h"
-#include "UIWizardCloneVD.h"
-#include "QIRichTextLabel.h"
+# include "UIWizardCloneVDPageBasic3.h"
+# include "UIWizardCloneVD.h"
+# include "QIRichTextLabel.h"
 
 /* COM includes: */
-#include "CMediumFormat.h"
+# include "CMediumFormat.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWizardCloneVDPage3::UIWizardCloneVDPage3()
 {

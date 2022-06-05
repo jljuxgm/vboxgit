@@ -1,4 +1,4 @@
-/* $Id: WinKeyboard.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: WinKeyboard.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Windows keyboard handling..
  */
@@ -22,6 +22,7 @@
 #include <VBox/log.h>
 
 #include <stdio.h>
+
 
 /* Beautification of log output */
 #define VBOX_BOOL_TO_STR_STATE(x)   (x) ? "ON" : "OFF"

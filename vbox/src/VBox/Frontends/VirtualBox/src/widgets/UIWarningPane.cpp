@@ -1,4 +1,4 @@
-/* $Id: UIWarningPane.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIWarningPane.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWarningPane class implementation.
  */
@@ -15,18 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QEvent>
-#include <QTimer>
+# include <QHBoxLayout>
+# include <QLabel>
+# include <QEvent>
+# include <QTimer>
 
 /* GUI includes: */
-#include "UIWarningPane.h"
-#include "QIWidgetValidator.h"
+# include "UIWarningPane.h"
+# include "QIWidgetValidator.h"
 
 /* Other VBox includes: */
-#include <VBox/sup.h>
+# include <VBox/sup.h>
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWarningPane::UIWarningPane(QWidget *pParent)
     : QWidget(pParent)

@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerDialog.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UINetworkManagerDialog.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerDialog stuff implementation.
  */
@@ -15,24 +15,31 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes: */
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QPushButton>
-#include <QStatusBar>
-#include <QKeyEvent>
+# include <QVBoxLayout>
+# include <QLabel>
+# include <QPushButton>
+# include <QStatusBar>
+# include <QKeyEvent>
 
 /* Local includes: */
-#include "UINetworkManagerDialog.h"
-#include "UINetworkManager.h"
-#include "UINetworkRequest.h"
-#include "UINetworkRequestWidget.h"
-#include "UINetworkCustomer.h"
-#include "UIIconPool.h"
-#include "VBoxGlobal.h"
-#include "UIMessageCenter.h"
-#include "UIModalWindowManager.h"
-#include "QIDialogButtonBox.h"
+# include "UINetworkManagerDialog.h"
+# include "UINetworkManager.h"
+# include "UINetworkRequest.h"
+# include "UINetworkRequestWidget.h"
+# include "UINetworkCustomer.h"
+# include "UIIconPool.h"
+# include "VBoxGlobal.h"
+# include "UIMessageCenter.h"
+# include "UIModalWindowManager.h"
+# include "QIDialogButtonBox.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 void UINetworkManagerDialog::showNormal()
 {

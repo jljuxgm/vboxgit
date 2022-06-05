@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -15,22 +15,29 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes: */
-#include <QDir>
-#include <QVBoxLayout>
-#include <QGridLayout>
-#include <QLabel>
-#include <QLineEdit>
-#include <QComboBox>
-#include <QCheckBox>
+# include <QDir>
+# include <QVBoxLayout>
+# include <QGridLayout>
+# include <QLabel>
+# include <QLineEdit>
+# include <QComboBox>
+# include <QCheckBox>
 
 /* Local includes: */
-#include "UIWizardExportAppPageBasic3.h"
-#include "UIWizardExportApp.h"
-#include "UIWizardExportAppDefs.h"
-#include "VBoxGlobal.h"
-#include "VBoxFilePathSelectorWidget.h"
-#include "QIRichTextLabel.h"
+# include "UIWizardExportAppPageBasic3.h"
+# include "UIWizardExportApp.h"
+# include "UIWizardExportAppDefs.h"
+# include "VBoxGlobal.h"
+# include "VBoxFilePathSelectorWidget.h"
+# include "QIRichTextLabel.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWizardExportAppPage3::UIWizardExportAppPage3()
 {

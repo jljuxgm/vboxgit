@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIGDetails.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetails class implementation.
  */
@@ -15,14 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QApplication>
-#include <QVBoxLayout>
+# include <QApplication>
+# include <QVBoxLayout>
 
 /* GUI includes: */
-#include "UIGDetails.h"
-#include "UIGDetailsModel.h"
-#include "UIGDetailsView.h"
+# include "UIGDetails.h"
+# include "UIGDetailsModel.h"
+# include "UIGDetailsView.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIGDetails::UIGDetails(QWidget *pParent)
     : QWidget(pParent)

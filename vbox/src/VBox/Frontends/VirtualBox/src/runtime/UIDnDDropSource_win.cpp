@@ -1,4 +1,4 @@
-/* $Id: UIDnDDropSource_win.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDropSource class implementation for Windows. This implements
  * the IDropSource interface.
@@ -16,18 +16,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <iprt/thread.h>
-
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
+#undef LOG_GROUP
 #define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
+
+#include <iprt/thread.h>
 
 #include <windows.h>
 #include <new> /* For bad_alloc. */
 
 #include "UIDnDDropSource_win.h"
+
+
 
 UIDnDDropSource::UIDnDDropSource(QWidget *pParent)
     : mRefCount(1),

@@ -1,4 +1,4 @@
-/* $Id: QIWidgetValidator.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: QIWidgetValidator.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIWidgetValidator class implementation.
  */
@@ -15,9 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* GUI includes: */
-#include "QIWidgetValidator.h"
-#include "UISettingsPage.h"
+# include "QIWidgetValidator.h"
+# include "UISettingsPage.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 
 QObjectValidator::QObjectValidator(QValidator *pValidator, QObject *pParent /* = 0 */)

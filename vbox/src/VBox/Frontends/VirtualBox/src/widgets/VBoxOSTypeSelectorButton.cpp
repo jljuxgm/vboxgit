@@ -1,4 +1,4 @@
-/* $Id: VBoxOSTypeSelectorButton.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: VBoxOSTypeSelectorButton.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxOSTypeSelectorButton class implementation.
  */
@@ -15,13 +15,20 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* VBox includes */
-#include "VBoxOSTypeSelectorButton.h"
-#include "VBoxGlobal.h"
+# include "VBoxOSTypeSelectorButton.h"
+# include "VBoxGlobal.h"
 
 /* Qt includes */
-#include <QMenu>
-#include <QSignalMapper>
+# include <QMenu>
+# include <QSignalMapper>
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 VBoxOSTypeSelectorButton::VBoxOSTypeSelectorButton (QWidget *aParent)
   : QIWithRetranslateUI <QPushButton> (aParent)

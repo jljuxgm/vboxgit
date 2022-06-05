@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 52729 2014-09-12 16:19:07Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -15,29 +15,36 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QDesktopWidget>
-#include <QMenu>
-#include <QTimer>
+# include <QDesktopWidget>
+# include <QMenu>
+# include <QTimer>
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
-#include "UIExtraDataManager.h"
-#include "UISession.h"
-#include "UIActionPoolRuntime.h"
-#include "UIMachineLogicFullscreen.h"
-#include "UIMachineWindowFullscreen.h"
-#include "UIMachineView.h"
-#include "UIFrameBuffer.h"
-#include "UIMachineDefs.h"
-#include "UIMiniToolBar.h"
-#ifdef Q_WS_MAC
-# include "VBoxUtils-darwin.h"
-# include "UICocoaApplication.h"
-#endif /* Q_WS_MAC */
+# include "VBoxGlobal.h"
+# include "UIExtraDataManager.h"
+# include "UISession.h"
+# include "UIActionPoolRuntime.h"
+# include "UIMachineLogicFullscreen.h"
+# include "UIMachineWindowFullscreen.h"
+# include "UIMachineView.h"
+# include "UIFrameBuffer.h"
+# include "UIMachineDefs.h"
+# include "UIMiniToolBar.h"
+# ifdef Q_WS_MAC
+#  include "VBoxUtils-darwin.h"
+#  include "UICocoaApplication.h"
+# endif /* Q_WS_MAC */
 
 /* COM includes: */
-#include "CSnapshot.h"
+# include "CSnapshot.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIMachineWindowFullscreen::UIMachineWindowFullscreen(UIMachineLogic *pMachineLogic, ulong uScreenId)
     : UIMachineWindow(pMachineLogic, uScreenId)

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageExpert.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizardImportAppPageExpert.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageExpert class implementation.
  */
@@ -15,17 +15,24 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes: */
-#include <QFileInfo>
-#include <QVBoxLayout>
-#include <QGroupBox>
+# include <QFileInfo>
+# include <QVBoxLayout>
+# include <QGroupBox>
 
 /* Local includes: */
-#include "UIWizardImportAppPageExpert.h"
-#include "UIWizardImportApp.h"
-#include "VBoxGlobal.h"
-#include "VBoxFilePathSelectorWidget.h"
-#include "UIApplianceImportEditorWidget.h"
+# include "UIWizardImportAppPageExpert.h"
+# include "UIWizardImportApp.h"
+# include "VBoxGlobal.h"
+# include "VBoxFilePathSelectorWidget.h"
+# include "UIApplianceImportEditorWidget.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWizardImportAppPageExpert::UIWizardImportAppPageExpert(const QString &strFileName)
 {

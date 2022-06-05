@@ -1,4 +1,4 @@
-/* $Id: UIPopupPaneTextPane.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIPopupPaneTextPane.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupPaneTextPane class implementation.
  */
@@ -15,13 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 /* Qt includes: */
-#include <QLabel>
-#include <QCheckBox>
+# include <QLabel>
+# include <QCheckBox>
 
 /* GUI includes: */
-#include "UIPopupPaneTextPane.h"
-#include "UIAnimationFramework.h"
+# include "UIPopupPaneTextPane.h"
+# include "UIAnimationFramework.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIPopupPaneTextPane::UIPopupPaneTextPane(QWidget *pParent, const QString &strText, bool fFocused)
     : QWidget(pParent)

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class implementation.
  */
@@ -15,10 +15,17 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* GUI includes: */
-#include "UIGlobalSettingsUpdate.h"
-#include "UIExtraDataManager.h"
-#include "VBoxGlobal.h"
+# include "UIGlobalSettingsUpdate.h"
+# include "UIExtraDataManager.h"
+# include "VBoxGlobal.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIGlobalSettingsUpdate::UIGlobalSettingsUpdate()
     : m_pLastChosenRadio(0)

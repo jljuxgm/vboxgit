@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -15,17 +15,24 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes: */
-#include <QFileInfo>
-#include <QVBoxLayout>
+# include <QFileInfo>
+# include <QVBoxLayout>
 
 /* Local includes: */
-#include "UIWizardImportAppPageBasic1.h"
-#include "UIWizardImportAppPageBasic2.h"
-#include "UIWizardImportApp.h"
-#include "VBoxGlobal.h"
-#include "VBoxFilePathSelectorWidget.h"
-#include "QIRichTextLabel.h"
+# include "UIWizardImportAppPageBasic1.h"
+# include "UIWizardImportAppPageBasic2.h"
+# include "UIWizardImportApp.h"
+# include "VBoxGlobal.h"
+# include "VBoxFilePathSelectorWidget.h"
+# include "QIRichTextLabel.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWizardImportAppPage1::UIWizardImportAppPage1()
 {

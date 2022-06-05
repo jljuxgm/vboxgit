@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 52645 2014-09-08 11:42:02Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -15,8 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* GUI includes: */
-#include "UIExtraDataDefs.h"
+# include "UIExtraDataDefs.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* General: */
 const char* UIExtraDataDefs::GUI_LanguageId = "GUI/LanguageID";

@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: QITreeWidget.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITreeWidget class implementation.
  */
@@ -15,12 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes */
-#include <QPainter>
-#include <QResizeEvent>
+# include <QPainter>
+# include <QResizeEvent>
 
 /* Local includes */
-#include "QITreeWidget.h"
+# include "QITreeWidget.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 QITreeWidget::QITreeWidget (QWidget *aParent)
     : QTreeWidget (aParent)

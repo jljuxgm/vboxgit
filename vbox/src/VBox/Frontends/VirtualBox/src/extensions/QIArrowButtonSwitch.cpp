@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonSwitch.cpp 51873 2014-07-04 16:22:24Z vboxsync $ */
+/* $Id: QIArrowButtonSwitch.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowButtonSwitch class implementation.
  */
@@ -15,11 +15,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QKeyEvent>
+# include <QKeyEvent>
 
 /* GUI includes: */
-#include "QIArrowButtonSwitch.h"
+# include "QIArrowButtonSwitch.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 QIArrowButtonSwitch::QIArrowButtonSwitch(QWidget *pParent /* = 0 */)
     : QIRichToolButton(pParent)

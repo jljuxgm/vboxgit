@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic3.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic3.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic3 class implementation.
  */
@@ -15,14 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes: */
-#include <QVBoxLayout>
-#include <QRadioButton>
+# include <QVBoxLayout>
+# include <QRadioButton>
 
 /* Local includes: */
-#include "UIWizardCloneVMPageBasic3.h"
-#include "UIWizardCloneVM.h"
-#include "QIRichTextLabel.h"
+# include "UIWizardCloneVMPageBasic3.h"
+# include "UIWizardCloneVM.h"
+# include "QIRichTextLabel.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWizardCloneVMPage3::UIWizardCloneVMPage3(bool fShowChildsOption)
     : m_fShowChildsOption(fShowChildsOption)

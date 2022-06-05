@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerFullscreen.cpp 52129 2014-07-22 15:17:21Z vboxsync $ */
+/* $Id: UIKeyboardHandlerFullscreen.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerFullscreen class implementation.
  */
@@ -15,14 +15,21 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QKeyEvent>
-#include <QTimer>
+# include <QKeyEvent>
+# include <QTimer>
 
 /* GUI includes: */
-#include "UIKeyboardHandlerFullscreen.h"
-#include "UIMachineLogic.h"
-#include "UIShortcutPool.h"
+# include "UIKeyboardHandlerFullscreen.h"
+# include "UIMachineLogic.h"
+# include "UIShortcutPool.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* Namespaces: */
 using namespace UIExtraDataDefs;

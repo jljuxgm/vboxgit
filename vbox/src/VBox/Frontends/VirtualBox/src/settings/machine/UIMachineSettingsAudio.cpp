@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
@@ -15,12 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* GUI includes: */
-#include "UIMachineSettingsAudio.h"
-#include "UIConverter.h"
+# include "UIMachineSettingsAudio.h"
+# include "UIConverter.h"
 
 /* COM includes: */
-#include "CAudioAdapter.h"
+# include "CAudioAdapter.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIMachineSettingsAudio::UIMachineSettingsAudio()
 {

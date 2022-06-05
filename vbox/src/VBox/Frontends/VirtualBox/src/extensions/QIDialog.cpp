@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: QIDialog.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIDialog class implementation.
  */
@@ -15,9 +15,16 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* GUI includes: */
-#include "QIDialog.h"
-#include "VBoxGlobal.h"
+# include "QIDialog.h"
+# include "VBoxGlobal.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 QIDialog::QIDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags flags /* = 0 */)
     : QDialog(pParent, flags)

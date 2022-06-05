@@ -1,4 +1,4 @@
-/* $Id: UISlidingToolBar.cpp 52594 2014-09-04 13:12:10Z vboxsync $ */
+/* $Id: UISlidingToolBar.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingToolBar class implementation.
  */
@@ -15,18 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QMdiSubWindow>
-#include <QHBoxLayout>
-#include <QMdiArea>
+# include <QMdiSubWindow>
+# include <QHBoxLayout>
+# include <QMdiArea>
 
 /* GUI includes: */
-#include "UISlidingToolBar.h"
-#include "UIAnimationFramework.h"
-#include "UIMachineWindow.h"
-#ifdef Q_WS_MAC
-# include "VBoxUtils-darwin.h"
-#endif /* Q_WS_MAC */
+# include "UISlidingToolBar.h"
+# include "UIAnimationFramework.h"
+# include "UIMachineWindow.h"
+# ifdef Q_WS_MAC
+#  include "VBoxUtils-darwin.h"
+# endif /* Q_WS_MAC */
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UISlidingToolBar::UISlidingToolBar(QWidget *pParentWidget, QWidget *pIndentWidget, QWidget *pChildWidget, Position position)
     : QWidget(pParentWidget, Qt::Tool | Qt::FramelessWindowHint)

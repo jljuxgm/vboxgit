@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UINetworkRequest.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest stuff implementation.
  */
@@ -15,17 +15,24 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QNetworkReply>
+# include <QNetworkReply>
 
 /* GUI includes: */
-#include "UINetworkRequest.h"
-#include "UINetworkRequestWidget.h"
-#include "UINetworkManager.h"
-#include "UINetworkManagerDialog.h"
-#include "UINetworkManagerIndicator.h"
-#include "UINetworkCustomer.h"
-#include "VBoxGlobal.h"
+# include "UINetworkRequest.h"
+# include "UINetworkRequestWidget.h"
+# include "UINetworkManager.h"
+# include "UINetworkManagerDialog.h"
+# include "UINetworkManagerIndicator.h"
+# include "UINetworkCustomer.h"
+# include "VBoxGlobal.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* Constructor: */
 UINetworkRequest::UINetworkRequest(const QNetworkRequest &request, UINetworkRequestType type, const QString &strDescription,

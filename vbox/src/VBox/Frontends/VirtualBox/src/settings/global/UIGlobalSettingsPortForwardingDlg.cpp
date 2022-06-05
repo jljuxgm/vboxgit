@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsPortForwardingDlg class implementation.
  */
@@ -15,15 +15,22 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QTabWidget>
+# include <QVBoxLayout>
+# include <QPushButton>
+# include <QTabWidget>
 
 /* GUI includes: */
-#include "UIGlobalSettingsPortForwardingDlg.h"
-#include "UIIconPool.h"
-#include "QIDialogButtonBox.h"
+# include "UIGlobalSettingsPortForwardingDlg.h"
+# include "UIIconPool.h"
+# include "QIDialogButtonBox.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIGlobalSettingsPortForwardingDlg::UIGlobalSettingsPortForwardingDlg(QWidget *pParent,
                                                                      const UIPortForwardingDataList &ipv4rules,

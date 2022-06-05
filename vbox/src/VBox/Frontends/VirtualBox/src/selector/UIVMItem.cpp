@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIVMItem.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class implementation.
  */
@@ -16,26 +16,27 @@
  */
 
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include "precomp.h"
+# include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-#include <QFileInfo>
-#include <QIcon>
+# include <QFileInfo>
+# include <QIcon>
 
 /* GUI includes: */
-#include "UIVMItem.h"
-#include "VBoxGlobal.h"
-#include "UIConverter.h"
-#include "UIExtraDataManager.h"
-#ifdef Q_WS_MAC
-# include <ApplicationServices/ApplicationServices.h>
-#endif /* Q_WS_MAC */
+# include "UIVMItem.h"
+# include "VBoxGlobal.h"
+# include "UIConverter.h"
+# include "UIExtraDataManager.h"
+# ifdef Q_WS_MAC
+#  include <ApplicationServices/ApplicationServices.h>
+# endif /* Q_WS_MAC */
 
 /* COM includes: */
-#include "CSnapshot.h"
+# include "CSnapshot.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 // Helpers
 ////////////////////////////////////////////////////////////////////////////////

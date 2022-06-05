@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -15,28 +15,37 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QKeyEvent>
-#ifdef Q_WS_X11
-# include <QX11Info>
-#endif /* Q_WS_X11 */
+# include <QKeyEvent>
+# ifdef Q_WS_X11
+#  include <QX11Info>
+# endif /* Q_WS_X11 */
 
 /* GUI includes: */
-#include "VBoxGlobal.h"
-#include "UIMessageCenter.h"
-#include "UIPopupCenter.h"
-#include "UIActionPool.h"
-#include "UIKeyboardHandlerNormal.h"
-#include "UIKeyboardHandlerFullscreen.h"
-#include "UIKeyboardHandlerSeamless.h"
-#include "UIKeyboardHandlerScale.h"
-#include "UIMouseHandler.h"
-#include "UISession.h"
-#include "UIMachineLogic.h"
-#include "UIMachineWindow.h"
-#include "UIMachineView.h"
-#include "UIHostComboEditor.h"
-#include "UIExtraDataManager.h"
+# include "VBoxGlobal.h"
+# include "UIMessageCenter.h"
+# include "UIPopupCenter.h"
+# include "UIActionPool.h"
+# include "UIKeyboardHandlerNormal.h"
+# include "UIKeyboardHandlerFullscreen.h"
+# include "UIKeyboardHandlerSeamless.h"
+# include "UIKeyboardHandlerScale.h"
+# include "UIMouseHandler.h"
+# include "UISession.h"
+# include "UIMachineLogic.h"
+# include "UIMachineWindow.h"
+# include "UIMachineView.h"
+# include "UIHostComboEditor.h"
+# include "UIExtraDataManager.h"
+
+/* COM includes: */
+# include "CConsole.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Other VBox includes: */
 #ifdef Q_WS_X11
@@ -62,8 +71,6 @@ const int XKeyRelease = KeyRelease;
 # include <Carbon/Carbon.h>
 #endif /* Q_WS_MAC */
 
-/* COM includes: */
-#include "CConsole.h"
 
 /* Enums representing different keyboard-states: */
 enum { KeyExtended = 0x01, KeyPressed = 0x02, KeyPause = 0x04, KeyPrint = 0x08 };

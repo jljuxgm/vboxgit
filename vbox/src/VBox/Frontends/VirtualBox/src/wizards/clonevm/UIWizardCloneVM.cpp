@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVM.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizardCloneVM.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVM class implementation.
  */
@@ -15,17 +15,24 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* GUI includes: */
-#include "UIWizardCloneVM.h"
-#include "UIWizardCloneVMPageBasic1.h"
-#include "UIWizardCloneVMPageBasic2.h"
-#include "UIWizardCloneVMPageBasic3.h"
-#include "UIWizardCloneVMPageExpert.h"
-#include "VBoxGlobal.h"
-#include "UIMessageCenter.h"
+# include "UIWizardCloneVM.h"
+# include "UIWizardCloneVMPageBasic1.h"
+# include "UIWizardCloneVMPageBasic2.h"
+# include "UIWizardCloneVMPageBasic3.h"
+# include "UIWizardCloneVMPageExpert.h"
+# include "VBoxGlobal.h"
+# include "UIMessageCenter.h"
 
 /* COM includes: */
-#include "CConsole.h"
+# include "CConsole.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWizardCloneVM::UIWizardCloneVM(QWidget *pParent, const CMachine &machine, CSnapshot snapshot /* = CSnapshot() */)
     : UIWizard(pParent, WizardType_CloneVM)

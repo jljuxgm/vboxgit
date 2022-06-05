@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.cpp 51992 2014-07-11 14:32:04Z vboxsync $ */
+/* $Id: QIStatusBarIndicator.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIStatusBarIndicator interface implementation.
  */
@@ -15,17 +15,24 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QIcon>
-#include <QPainter>
-#include <QHBoxLayout>
-#include <QLabel>
-#ifdef Q_WS_MAC
-# include <QContextMenuEvent>
-#endif /* Q_WS_MAC */
+# include <QIcon>
+# include <QPainter>
+# include <QHBoxLayout>
+# include <QLabel>
+# ifdef Q_WS_MAC
+#  include <QContextMenuEvent>
+# endif /* Q_WS_MAC */
 
 /* GUI includes: */
-#include "QIStatusBarIndicator.h"
+# include "QIStatusBarIndicator.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 
 QIStatusBarIndicator::QIStatusBarIndicator(QWidget *pParent /* = 0 */)

@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerSeamless.cpp 52129 2014-07-22 15:17:21Z vboxsync $ */
+/* $Id: UIKeyboardHandlerSeamless.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerSeamless class implementation.
  */
@@ -15,18 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef Q_WS_MAC
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+# ifndef Q_WS_MAC
 /* Qt includes: */
-# include <QKeyEvent>
-# include <QTimer>
-#endif /* !Q_WS_MAC */
+#  include <QKeyEvent>
+#  include <QTimer>
+# endif /* !Q_WS_MAC */
 
 /* GUI includes: */
-#include "UIKeyboardHandlerSeamless.h"
-#ifndef Q_WS_MAC
-# include "UIMachineLogic.h"
-# include "UIShortcutPool.h"
-#endif /* !Q_WS_MAC */
+# include "UIKeyboardHandlerSeamless.h"
+# ifndef Q_WS_MAC
+#  include "UIMachineLogic.h"
+#  include "UIShortcutPool.h"
+# endif /* !Q_WS_MAC */
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 #ifndef Q_WS_MAC
 /* Namespaces: */

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -15,8 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Local includes: */
-#include "UIGlobalSettingsDisplay.h"
+# include "UIGlobalSettingsDisplay.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* Display page constructor: */
 UIGlobalSettingsDisplay::UIGlobalSettingsDisplay()

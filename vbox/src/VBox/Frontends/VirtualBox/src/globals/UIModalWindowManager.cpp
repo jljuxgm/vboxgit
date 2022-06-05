@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIModalWindowManager.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class implementation.
  */
@@ -15,18 +15,25 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* GUI includes: */
-#include "UIModalWindowManager.h"
-#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-# include "UINetworkManagerDialog.h"
-# include "UINetworkManager.h"
-#endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
-#include "UISelectorWindow.h"
-#include "UIProgressDialog.h"
-#include "VBoxGlobal.h"
+# include "UIModalWindowManager.h"
+# ifdef VBOX_GUI_WITH_NETWORK_MANAGER
+#  include "UINetworkManagerDialog.h"
+#  include "UINetworkManager.h"
+# endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+# include "UISelectorWindow.h"
+# include "UIProgressDialog.h"
+# include "VBoxGlobal.h"
 
 /* Other VBox includes: */
-#include <VBox/sup.h>
+# include <VBox/sup.h>
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* static */
 UIModalWindowManager* UIModalWindowManager::m_spInstance = 0;

@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class implementation.
  */
@@ -15,22 +15,29 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes: */
-#include <QMetaType>
-#include <QVBoxLayout>
-#include <QGridLayout>
-#include <QRadioButton>
+# include <QMetaType>
+# include <QVBoxLayout>
+# include <QGridLayout>
+# include <QRadioButton>
 
 /* Local includes: */
-#include "UIWizardNewVMPageBasic3.h"
-#include "UIWizardNewVM.h"
-#include "UIMessageCenter.h"
-#include "UIIconPool.h"
-#include "VBoxMediaComboBox.h"
-#include "QIToolButton.h"
-#include "UIWizardNewVD.h"
-#include "QIRichTextLabel.h"
-#include "UIMedium.h"
+# include "UIWizardNewVMPageBasic3.h"
+# include "UIWizardNewVM.h"
+# include "UIMessageCenter.h"
+# include "UIIconPool.h"
+# include "VBoxMediaComboBox.h"
+# include "QIToolButton.h"
+# include "UIWizardNewVD.h"
+# include "QIRichTextLabel.h"
+# include "UIMedium.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIWizardNewVMPage3::UIWizardNewVMPage3()
 {

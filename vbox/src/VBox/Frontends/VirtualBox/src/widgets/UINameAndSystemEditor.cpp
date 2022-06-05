@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -15,15 +15,22 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Global includes: */
-#include <QGridLayout>
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QLineEdit>
-#include <QComboBox>
+# include <QGridLayout>
+# include <QVBoxLayout>
+# include <QLabel>
+# include <QLineEdit>
+# include <QComboBox>
 
 /* Local includes: */
-#include "UINameAndSystemEditor.h"
+# include "UINameAndSystemEditor.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 enum
 {

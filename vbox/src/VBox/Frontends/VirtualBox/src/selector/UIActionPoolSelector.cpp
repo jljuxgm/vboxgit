@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 52579 2014-09-03 11:56:06Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -15,11 +15,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Local includes: */
-#include "UIActionPoolSelector.h"
-#include "UIExtraDataDefs.h"
-#include "UIShortcutPool.h"
-#include "UIDefs.h"
+# include "UIActionPoolSelector.h"
+# include "UIExtraDataDefs.h"
+# include "UIShortcutPool.h"
+# include "UIDefs.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* Namespaces: */
 using namespace UIExtraDataDefs;

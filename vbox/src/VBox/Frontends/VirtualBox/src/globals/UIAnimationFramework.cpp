@@ -1,4 +1,4 @@
-/* $Id: UIAnimationFramework.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIAnimationFramework.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAnimationFramework class implementation.
  */
@@ -15,17 +15,24 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QWidget>
-#include <QStateMachine>
-#include <QPropertyAnimation>
-#include <QSignalTransition>
+# include <QWidget>
+# include <QStateMachine>
+# include <QPropertyAnimation>
+# include <QSignalTransition>
 
 /* GUI includes: */
-#include "UIAnimationFramework.h"
+# include "UIAnimationFramework.h"
 
 /* Other VBox includes: */
-#include "iprt/assert.h"
+# include "iprt/assert.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /* static */
 UIAnimation* UIAnimation::installPropertyAnimation(QWidget *pTarget, const char *pszPropertyName,

@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 51187 2014-05-05 14:38:41Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask class implementation.
  */
@@ -15,12 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QThread>
+# include <QThread>
 
 /* GUI includes: */
-#include "UIThreadPool.h"
-#include "UIDefs.h"
+# include "UIThreadPool.h"
+# include "UIDefs.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 /**
  * COM capable worker thread for the UIThreadPool.

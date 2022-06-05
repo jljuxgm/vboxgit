@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonPress.cpp 51873 2014-07-04 16:22:24Z vboxsync $ */
+/* $Id: QIArrowButtonPress.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowButtonPress class implementation.
  */
@@ -15,11 +15,18 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QKeyEvent>
+# include <QKeyEvent>
 
 /* GUI includes: */
-#include "QIArrowButtonPress.h"
+# include "QIArrowButtonPress.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 QIArrowButtonPress::QIArrowButtonPress(QIArrowButtonPress::ButtonType buttonType,
                                        QWidget *pParent /* = 0 */)

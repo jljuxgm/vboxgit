@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -15,12 +15,19 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 /* Qt includes: */
-#include <QDir>
+# include <QDir>
 
 /* GUI includes: */
-#include "UIGlobalSettingsGeneral.h"
-#include "VBoxGlobal.h"
+# include "UIGlobalSettingsGeneral.h"
+# include "VBoxGlobal.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIGlobalSettingsGeneral::UIGlobalSettingsGeneral()
 {

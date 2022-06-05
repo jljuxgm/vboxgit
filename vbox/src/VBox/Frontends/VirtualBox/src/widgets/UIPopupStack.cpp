@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -15,17 +15,23 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifdef VBOX_WITH_PRECOMPILED_HEADERS
+# include <precomp.h>
+#else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 /* Qt includes: */
-#include <QVBoxLayout>
-#include <QScrollArea>
-#include <QEvent>
-#include <QMainWindow>
-#include <QMenuBar>
-#include <QStatusBar>
+# include <QVBoxLayout>
+# include <QScrollArea>
+# include <QEvent>
+# include <QMainWindow>
+# include <QMenuBar>
+# include <QStatusBar>
 
 /* GUI includes: */
-#include "UIPopupStack.h"
-#include "UIPopupStackViewport.h"
+# include "UIPopupStack.h"
+# include "UIPopupStackViewport.h"
+
+#endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIPopupStack::UIPopupStack(const QString &strID, UIPopupStackOrientation orientation)
     : m_strID(strID)
