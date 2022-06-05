@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 49991 2013-12-19 23:22:06Z vboxsync $ */
+/* $Id: DevOHCI.cpp 50530 2014-02-20 19:38:14Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -80,7 +80,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEV_USB
+#define LOG_GROUP LOG_GROUP_DEV_OHCI
 #include <VBox/pci.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/mm.h>
