@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 51133 2014-04-24 11:26:07Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 51134 2014-04-24 11:35:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -317,7 +317,9 @@ void UIFrameBufferQImage::drawImageRect(QPainter &painter, const QImage &image, 
         /* Scale sub-pixmap (2nd copy involved): */
         subPixmap = subPixmap.scaled(subPixmap.size() * dBackingScaleFactor,
                                      Qt::IgnoreAspectRatio, Qt::FastTransformation);
+# ifdef Q_WS_MAC
         subPixmap.setDevicePixelRatio(dBackingScaleFactor);
+# endif /* Q_WS_MAC */
     }
 
     /* Draw sub-pixmap: */
@@ -329,7 +331,9 @@ void UIFrameBufferQImage::drawImageRect(QPainter &painter, const QImage &image, 
         /* Create scaled-sub-image (1st copy involved): */
         QImage scaledSubImage = subImage.scaled(subImage.size() * dBackingScaleFactor,
                                                 Qt::IgnoreAspectRatio, Qt::FastTransformation);
+# ifdef Q_WS_MAC
         scaledSubImage.setDevicePixelRatio(dBackingScaleFactor);
+# endif /* Q_WS_MAC */
         /* Directly draw scaled-sub-image: */
         painter.drawImage(rect.x(), rect.y(), scaledSubImage);
     }
