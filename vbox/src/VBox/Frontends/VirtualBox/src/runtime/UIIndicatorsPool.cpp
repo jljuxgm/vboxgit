@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 48530 2013-09-19 12:00:06Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -544,19 +544,18 @@ public:
         setState(machine.GetVideoCaptureEnabled());
 
         /* Update LED tool-tip: */
-        QString strToolTip = QApplication::translate("UIIndicatorsPool", "<nobr>Indicates the activity of the video capture:</nobr>");
-        strToolTip += "<br>";
+        QString strToolTip = QApplication::translate("UIIndicatorsPool", "<nobr>Indicates the activity of the video capture:</nobr><br>%1");
         switch (state())
         {
             case UIIndicatorStateVideoCapture_Disabled:
             {
-                strToolTip += QApplication::translate("UIIndicatorsPool", "<b>Video capture disabled</b>");
+                strToolTip = strToolTip.arg(QApplication::translate("UIIndicatorsPool", "<nobr><b>Video capture disabled</b></nobr>"));
                 break;
             }
             case UIIndicatorStateVideoCapture_Enabled:
             {
-                strToolTip += QApplication::translate("UIIndicatorsPool", "<nobr><b>Video capture file:</b> %1</nobr>")
-                                                                          .arg(machine.GetVideoCaptureFile());
+                strToolTip = strToolTip.arg(QApplication::translate("UIIndicatorsPool", "<nobr><b>Video capture file:</b> %1</nobr>"));
+                strToolTip = strToolTip.arg(machine.GetVideoCaptureFile());
                 break;
             }
             default:
