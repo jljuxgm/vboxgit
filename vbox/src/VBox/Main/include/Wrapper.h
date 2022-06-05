@@ -1,12 +1,10 @@
-/* $Id: Wrapper.h 50151 2014-01-21 19:16:49Z vboxsync $ */
-
+/* $Id: Wrapper.h 50152 2014-01-21 19:17:29Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM: API wrapper helpers
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -487,5 +485,5 @@ private:
     std::vector<A> mArray;
 };
 
-#endif // ____H_WRAPPER
+#endif // !____H_WRAPPER
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
