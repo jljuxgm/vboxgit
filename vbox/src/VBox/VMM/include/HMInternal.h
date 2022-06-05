@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 48209 2013-08-30 22:13:19Z vboxsync $ */
+/* $Id: HMInternal.h 48210 2013-08-30 22:22:15Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -353,10 +353,10 @@ typedef struct HM
         uint32_t                    u32Alignment;
 #endif
         /** Host CR4 value (set by ring-0 VMX init) */
-        uint64_t                    hostCR4;
+        uint64_t                    u64HostCr4;
 
         /** Host EFER value (set by ring-0 VMX init) */
-        uint64_t                    hostEFER;
+        uint64_t                    u64HostEfer;
 
         /** VMX MSR values */
         struct
