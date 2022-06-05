@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50830 2014-03-20 16:13:19Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 52800 2014-09-22 07:01:51Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -653,7 +653,9 @@ static int vbglR3DnDGHProcessRequestPendingMessage(uint32_t  uClientId,
     {
         rc = Msg.hdr.result;
         if (RT_SUCCESS(rc))
+        {
             rc = Msg.uScreenId.GetUInt32(puScreenId); AssertRC(rc);
+        }
     }
 
     return rc;
