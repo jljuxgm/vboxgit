@@ -1,4 +1,4 @@
-; $Id: CPUMAllA.asm 48540 2013-09-19 15:38:41Z vboxsync $
+; $Id: CPUMAllA.asm 48542 2013-09-19 15:52:25Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -164,7 +164,11 @@ hlfpua_switch_fpu_ctx:
     fxsave  [xDX + CPUMCPU.Host.fpu]
 %endif
     or      dword [xDX + CPUMCPU.fUseFlags], (CPUM_USED_FPU | CPUM_USED_FPU_SINCE_REM)
+%ifdef RT_ARCH_AMD64
+    o64 fxrstor [xDX + CPUMCPU.Guest.fpu]
+%else
     fxrstor [xDX + CPUMCPU.Guest.fpu]
+%endif
 hlfpua_finished_switch:
 %ifdef IN_RC
     mov     cr0, xCX                            ; load the new cr0 flags.
