@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 51675 2014-06-20 10:17:20Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 51924 2014-07-08 11:08:53Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag'n drop service.
  */
@@ -1510,6 +1510,9 @@ int VBoxDnDInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartThre
 
     if (RT_SUCCESS(rc))
     {
+        /* Assign service environment to our context. */
+        pCtx->pEnv = pEnv;
+
         /* Create the proxy window. At the moment we
          * only support one window at a time. */
         VBoxDnDWnd *pWnd = NULL;
@@ -1530,12 +1533,6 @@ int VBoxDnDInit(const VBOXSERVICEENV *pEnv, void **ppInstance, bool *pfStartThre
 
     if (RT_SUCCESS(rc))
         rc = RTSemEventCreate(&pCtx->hEvtQueueSem);
-    if (RT_SUCCESS(rc))
-    {
-        /* Assign service environment to our context. */
-        gCtx.pEnv = pEnv;
-    }
-
     if (RT_SUCCESS(rc))
     {
         *ppInstance = pCtx;
