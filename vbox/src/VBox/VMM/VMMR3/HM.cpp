@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 50713 2014-03-06 14:12:35Z vboxsync $ */
+/* $Id: HM.cpp 50918 2014-03-28 14:37:18Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2522,12 +2522,12 @@ VMMR3DECL(bool) HMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
                 /* VT-x also chokes on invalid TR or LDTR selectors (minix). */
                 if (pCtx->gdtr.cbGdt)
                 {
-                    if (pCtx->tr.Sel > pCtx->gdtr.cbGdt)
+                    if ((pCtx->tr.Sel | X86_SEL_RPL_LDT) > pCtx->gdtr.cbGdt)
                     {
                         STAM_COUNTER_INC(&pVCpu->hm.s.StatVmxCheckBadTr);
                         return false;
                     }
-                    else if (pCtx->ldtr.Sel > pCtx->gdtr.cbGdt)
+                    else if ((pCtx->ldtr.Sel | X86_SEL_RPL_LDT) > pCtx->gdtr.cbGdt)
                     {
                         STAM_COUNTER_INC(&pVCpu->hm.s.StatVmxCheckBadLdt);
                         return false;
