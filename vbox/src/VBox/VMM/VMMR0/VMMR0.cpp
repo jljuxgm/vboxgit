@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 48139 2013-08-29 07:48:39Z vboxsync $ */
+/* $Id: VMMR0.cpp 48201 2013-08-30 15:25:22Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -406,7 +406,6 @@ VMMR0DECL(int) VMMR0TermVM(PVM pVM, PGVM pGVM)
     PciRawR0TermVM(pVM);
 #endif
 
-
     /*
      * Tell GVMM what we're up to and check that we only do this once.
      */
@@ -440,8 +439,7 @@ VMMR0DECL(int) VMMR0ThreadCtxHooksCreate(PVMCPU pVCpu)
 {
     VMCPU_ASSERT_EMT(pVCpu);
     Assert(pVCpu->vmm.s.hR0ThreadCtx == NIL_RTTHREADCTX);
-#if 0
-//#if defined(RT_OS_LINUX) /* Solaris driver doesn't unload, re-enable when fixed || defined(RT_OS_SOLARIS) */
+#if defined(RT_OS_SOLARIS) || defined(RT_OS_LINUX)
     int rc = RTThreadCtxHooksCreate(&pVCpu->vmm.s.hR0ThreadCtx);
     if (   RT_FAILURE(rc)
         && rc != VERR_NOT_SUPPORTED)
