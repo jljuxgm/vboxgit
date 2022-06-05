@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49710 2013-11-28 23:47:47Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49711 2013-11-28 23:58:05Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1230,7 +1230,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
     if (icmpsock4 != INVALID_SOCKET)
     {
-#ifdef ICMP_FILTER              //  Linux specific; NB: privileged!
+#ifdef ICMP_FILTER              //  Linux specific
         struct icmp_filter flt = {
             ~(uint32_t)(
                   (1U << ICMP_ECHOREPLY)
