@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 52882 2014-09-29 10:13:38Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 52883 2014-09-29 10:15:23Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2504,7 +2504,7 @@ IEM_CIMPL_DEF_1(iemCImpl_iret_prot, IEMMODE, enmEffOpSize)
         }
         else
         {
-            rcStrict = iemMemStackPopContinueSpecial(pIemCpu, 8, &uFrame.pv, &uNewRsp);
+            rcStrict = iemMemStackPopContinueSpecial(pIemCpu, 4, &uFrame.pv, &uNewRsp);
             if (rcStrict != VINF_SUCCESS)
                 return rcStrict;
             uNewESP = uFrame.pu16[0];
