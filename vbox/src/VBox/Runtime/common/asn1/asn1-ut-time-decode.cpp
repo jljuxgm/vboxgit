@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-time-decode.cpp 52600 2014-09-04 22:59:00Z vboxsync $ */
+/* $Id: asn1-ut-time-decode.cpp 52608 2014-09-05 06:52:25Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types, Decoding.
  */
@@ -192,7 +192,7 @@ static int rtAsn1Time_ConvertGeneralizedTimeFraction(PRTASN1CURSOR pCursor, cons
      * Do the conversion.
      */
     char chLastDigit;
-    uint32_t uMult = 1000000000;
+    uint32_t uMult = 100000000;
     do
     {
         char chDigit = chLastDigit = *pchFraction;
