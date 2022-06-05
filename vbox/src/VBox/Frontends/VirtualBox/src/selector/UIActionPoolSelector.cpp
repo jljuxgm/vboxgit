@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 51379 2014-05-23 17:52:35Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 51390 2014-05-26 12:18:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -136,38 +136,6 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "&Export Appliance..."));
         setStatusTip(QApplication::translate("UIActionPool", "Export one or more VirtualBox virtual machines as an appliance"));
-    }
-};
-
-class UIActionSimplePreferencesDialog : public UIActionSimple
-{
-    Q_OBJECT;
-
-public:
-
-    UIActionSimplePreferencesDialog(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/global_settings_16px.png")
-    {
-        setMenuRole(QAction::PreferencesRole);
-        retranslateUi();
-    }
-
-protected:
-
-    QString shortcutExtraDataID() const
-    {
-        return QString("Preferences");
-    }
-
-    QKeySequence defaultShortcut(UIActionPoolType) const
-    {
-        return QKeySequence("Ctrl+G");
-    }
-
-    void retranslateUi()
-    {
-        setName(QApplication::translate("UIActionPool", "&Preferences...", "global settings"));
-        setStatusTip(QApplication::translate("UIActionPool", "Display the global settings window"));
     }
 };
 
@@ -1005,7 +973,6 @@ void UIActionPoolSelector::createActions()
     m_pool[UIActionIndexSelector_Simple_File_MediumManagerDialog] = new UIActionSimpleMediumManagerDialog(this);
     m_pool[UIActionIndexSelector_Simple_File_ImportApplianceWizard] = new UIActionSimpleImportApplianceWizard(this);
     m_pool[UIActionIndexSelector_Simple_File_ExportApplianceWizard] = new UIActionSimpleExportApplianceWizard(this);
-    m_pool[UIActionIndexSelector_Simple_File_PreferencesDialog] = new UIActionSimplePreferencesDialog(this);
     m_pool[UIActionIndexSelector_Simple_File_Exit] = new UIActionSimpleExit(this);
 
     /* 'Group' actions: */

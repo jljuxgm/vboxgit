@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 51378 2014-05-23 17:37:33Z vboxsync $ */
+/* $Id: UIActionPool.cpp 51390 2014-05-26 12:18:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -276,6 +276,43 @@ void UIActionMenu::updateText()
     setText(nameInMenu());
 }
 
+
+class UIActionSimplePreferences : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimplePreferences(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/global_settings_16px.png")
+    {
+        setMenuRole(QAction::PreferencesRole);
+        retranslateUi();
+    }
+
+protected:
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("Preferences");
+    }
+
+    QKeySequence defaultShortcut(UIActionPoolType) const
+    {
+        switch (actionPool()->type())
+        {
+            case UIActionPoolType_Selector: return QKeySequence("Ctrl+G");
+            case UIActionPoolType_Runtime: break;
+        }
+        return QKeySequence();
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "&Preferences...", "global settings"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the global settings window"));
+    }
+};
 
 class UIActionSimpleLogDialog : public UIActionSimple
 {
@@ -638,6 +675,7 @@ void UIActionPool::sltApplyShortcuts()
 void UIActionPool::createActions()
 {
     /* Various dialog actions: */
+    m_pool[UIActionIndex_Simple_Preferences] = new UIActionSimplePreferences(this);
     m_pool[UIActionIndex_Simple_LogDialog] = new UIActionSimpleLogDialog(this);
     /* 'Help' actions: */
     m_pool[UIActionIndex_Simple_Contents] = new UIActionSimpleContents(this);

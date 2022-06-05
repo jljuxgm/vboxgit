@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 51390 2014-05-26 12:18:11Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1161,7 +1161,7 @@ void UISelectorWindow::prepareMenuFile(QMenu *pMenu)
 #ifndef Q_WS_MAC
     pMenu->addSeparator();
 #endif /* Q_WS_MAC */
-    m_pPreferencesDialogAction = gActionPool->action(UIActionIndexSelector_Simple_File_PreferencesDialog);
+    m_pPreferencesDialogAction = gActionPool->action(UIActionIndex_Simple_Preferences);
     pMenu->addAction(m_pPreferencesDialogAction);
 #ifndef Q_WS_MAC
     pMenu->addSeparator();
