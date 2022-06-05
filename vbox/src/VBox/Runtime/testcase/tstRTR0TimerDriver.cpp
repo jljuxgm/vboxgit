@@ -1,10 +1,10 @@
-/* $Id: tstRTR0TimerDriver.cpp 48411 2013-09-10 14:36:31Z vboxsync $ */
+/* $Id: tstRTR0TimerDriver.cpp 50811 2014-03-18 17:05:24Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers, driver program.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
