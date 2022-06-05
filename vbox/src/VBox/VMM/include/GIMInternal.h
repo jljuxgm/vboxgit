@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 52110 2014-07-21 12:53:59Z vboxsync $ */
+/* $Id: GIMInternal.h 52247 2014-07-31 13:49:15Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -45,8 +45,6 @@ typedef struct GIM
     GIMPROVIDERID                    enmProviderId;
     /** The interface implementation version. */
     uint32_t                         u32Version;
-    /** The Guest OS identifier. */
-    GIMOSID                          enmGuestOsId;
 
     /** Pointer to the GIM device - ring-3 context. */
     R3PTRTYPE(PPDMDEVINS)            pDevInsR3;

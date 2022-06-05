@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 51832 2014-07-03 05:12:28Z vboxsync $ */
+/* $Id: CPUM.cpp 52247 2014-07-31 13:49:15Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1685,8 +1685,6 @@ static int cpumR3CpuIdInit(PVM pVM)
     /*
      * Mini CPU selection support for making Mac OS X happy.
      */
-    /** @todo This should probably be removed, as GIM Minimal provider does this
-     *        work. */
     if (pCPUM->GuestFeatures.enmCpuVendor == CPUMCPUVENDOR_INTEL)
     {
         pStdFeatureLeaf = cpumR3CpuIdGetLeaf(pCPUM->GuestInfo.paCpuIdLeavesR3, pCPUM->GuestInfo.cCpuIdLeaves, 1, 0);
