@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 51149 2014-04-26 16:07:34Z vboxsync $ */
+/* $Id: UISession.cpp 51158 2014-04-28 17:33:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1127,6 +1127,9 @@ void UISession::loadSessionSettings()
                 icon.addFile(strIconName);
         if (!icon.isNull())
             m_pMachineWindowIcon = new QIcon(icon);
+
+        /* Load user's machine-window name postfix: */
+        m_strMachineWindowNamePostfix = gEDataManager->machineWindowNamePostfix(vboxGlobal().managedVMUuid());
 #endif /* !Q_WS_MAC */
 
         /* Determine Guru Meditation handler type: */

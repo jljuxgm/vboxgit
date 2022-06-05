@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51149 2014-04-26 16:07:34Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51158 2014-04-28 17:33:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -440,6 +440,11 @@ QList<MachineSettingsPageType> UIExtraDataManager::restrictedMachineSettingsPage
 QStringList UIExtraDataManager::machineWindowIconNames(const QString &strID) const
 {
     return extraDataStringList(GUI_MachineWindowIcons, strID);
+}
+
+QString UIExtraDataManager::machineWindowNamePostfix(const QString &strID) const
+{
+    return extraDataString(GUI_MachineWindowNamePostfix, strID);
 }
 #endif /* !Q_WS_MAC */
 
