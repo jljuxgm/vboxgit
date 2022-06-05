@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 45061 2013-03-18 14:09:03Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 48028 2013-08-23 13:00:41Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -1022,7 +1022,6 @@ static DECLCALLBACK(int) drvHostParallelConstruct(PPDMDRVINS pDrvIns, PCFGMNODE 
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS, N_("HostParallel#%d cannot create monitor thread"), pDrvIns->iInstance);
 
 #else /* VBOX_WITH_WIN_PARPORT_SUP */
-    HANDLE hPort;
     pThis->fParportAvail     = false;
     pThis->u32LptAddr        = 0;
     pThis->u32LptAddrControl = 0;
