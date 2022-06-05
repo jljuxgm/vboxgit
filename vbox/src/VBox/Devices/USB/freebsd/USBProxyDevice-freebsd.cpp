@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-freebsd.cpp 50236 2014-01-24 23:10:53Z vboxsync $ */
+/* $Id: USBProxyDevice-freebsd.cpp 52148 2014-07-23 12:42:21Z vboxsync $ */
 /** @file
  * USB device proxy - the FreeBSD backend.
  */
@@ -672,9 +672,8 @@ static DECLCALLBACK(int) usbProxyFreeBSDClearHaltedEp(PUSBPROXYDEV pProxyDev, un
 /**
  * @copydoc USBPROXYBACK::pfnUrbQueue
  */
-static DECLCALLBACK(int) usbProxyFreeBSDUrbQueue(PVUSBURB pUrb)
+static DECLCALLBACK(int) usbProxyFreeBSDUrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB pUrb)
 {
-    PUSBPROXYDEV pProxyDev = PDMINS_2_DATA(pUrb->pUsbIns, PUSBPROXYDEV);
     PUSBPROXYDEVFBSD pDevFBSD = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVFBSD);
     PUSBENDPOINTFBSD pEndpointFBSD;
     struct usb_fs_endpoint *pXferEndpoint;

@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 49815 2013-12-06 21:43:55Z vboxsync $ */
+/* $Id: VUSBInternal.h 52148 2014-07-23 12:42:21Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -29,6 +29,7 @@
 #include <VBox/vmm/stam.h>
 #include <iprt/assert.h>
 #include <iprt/queueatomic.h>
+#include <iprt/req.h>
 
 RT_C_DECLS_BEGIN
 
@@ -218,6 +219,8 @@ typedef struct VUSBDEV
     RTTHREAD            hUrbIoThread;
     /** Queue of URBs to submit. */
     RTQUEUEATOMIC       QueueUrb;
+    /** Request queue for cancelling URBs on the I/O thread. */
+    RTREQQUEUE          hReqQueueCancel;
     /** Flag whether the URB I/O thread should terminate. */
     bool volatile       fTerminate;
     /** Flag whether the I/O thread was woken up. */
