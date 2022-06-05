@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49967 2013-12-17 20:59:40Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49968 2013-12-17 21:34:08Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3093,7 +3093,10 @@ static void hmR0SvmPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PSVMT
     pVmcb->ctrl.u64VmcbCleanBits = HMSVM_VMCB_CLEAN_ALL;        /* Mark the VMCB-state cache as unmodified by VMM. */
 
     if (pSvmTransient->fRestoreTscAuxMsr)
+    {
+        CPUMR0SetGuestTscAux(pVCpu, ASMRdMsr(MSR_K8_TSC_AUX));
         ASMWrMsr(MSR_K8_TSC_AUX, pVCpu->hm.s.u64HostTscAux);
+    }
 
     if (!(pVmcb->ctrl.u32InterceptCtrl1 & SVM_CTRL1_INTERCEPT_RDTSC))
     {
