@@ -1,4 +1,4 @@
-/* $Id: Config.h 48956 2013-10-07 22:00:27Z vboxsync $ */
+/* $Id: Config.h 49056 2013-10-11 15:15:25Z vboxsync $ */
 /**
  * This file contains declarations of DHCP config.
  */
@@ -95,7 +95,7 @@ typedef VecClient::const_iterator VecClientConstIterator;
 class ClientMatchCriteria
 {
     public:
-    virtual bool check(const Client& client) const {return false;};
+    virtual bool check(const Client&) const {return false;};
 };
 
 
@@ -139,7 +139,7 @@ private:
 class AnyClientMatchCriteria: public ClientMatchCriteria
 {
 public:
-    virtual bool check(const Client& client) const
+    virtual bool check(const Client&) const
     {
         return true;
     }
@@ -213,7 +213,7 @@ class NullConfigEntity: public BaseConfigEntity
 public:
     NullConfigEntity(){}
     virtual ~NullConfigEntity(){}
-    int add(BaseConfigEntity *cfg) const
+    int add(BaseConfigEntity *) const
     {
         return 0;
     }
