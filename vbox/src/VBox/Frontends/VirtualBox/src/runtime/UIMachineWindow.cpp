@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 48706 2013-09-26 12:24:20Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 48832 2013-10-03 13:04:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -434,6 +434,11 @@ void UIMachineWindow::cleanupMachineView()
 }
 
 void UIMachineWindow::handleScreenCountChange()
+{
+    showInNecessaryMode();
+}
+
+void UIMachineWindow::handleScreenResize()
 {
     showInNecessaryMode();
 }

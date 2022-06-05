@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 48515 2013-09-18 11:07:49Z vboxsync $ */
+/* $Id: UISession.cpp 48832 2013-10-03 13:04:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -874,6 +874,11 @@ void UISession::prepareConnections()
 
     connect(QApplication::desktop(), SIGNAL(screenCountChanged(int)),
             this, SIGNAL(sigHostScreenCountChanged(int)));
+
+    connect(QApplication::desktop(), SIGNAL(resized(int)),
+            this, SIGNAL(sigHostScreenFullGeometryResized(int)));
+    connect(QApplication::desktop(), SIGNAL(workAreaResized(int)),
+            this, SIGNAL(sigHostScreenAvailableGeometryResized(int)));
 }
 
 void UISession::prepareScreens()
