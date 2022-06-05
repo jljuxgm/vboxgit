@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 52213 2014-07-28 17:52:58Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 52365 2014-08-13 06:11:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1534,7 +1534,9 @@ static int supHardNtVpOpenImages(PSUPHNTVPSTATE pThis)
          * Figure out validation flags we'll be using and create the reader
          * for this image.
          */
-        uint32_t fFlags = pImage->fDll ? 0 : SUPHNTVI_F_REQUIRE_BUILD_CERT;
+        uint32_t fFlags = pImage->fDll
+                        ? SUPHNTVI_F_TRUSTED_INSTALLER_OWNER | SUPHNTVI_F_ALLOW_CAT_FILE_VERIFICATION
+                        : SUPHNTVI_F_REQUIRE_BUILD_CERT;
         if (pImage->f32bitResourceDll)
             fFlags |= SUPHNTVI_F_RESOURCE_IMAGE;
 
