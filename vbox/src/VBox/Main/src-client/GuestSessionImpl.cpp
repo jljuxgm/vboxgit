@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 50728 2014-03-07 19:17:57Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 50729 2014-03-07 19:43:26Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2360,7 +2360,7 @@ int GuestSession::i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t fWaitFl
 // implementation of public methods
 /////////////////////////////////////////////////////////////////////////////
 
-STDMETHODIMP GuestSession::close()
+HRESULT GuestSession::close()
 {
 #ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
