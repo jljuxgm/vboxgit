@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Timer.cpp 48412 2013-09-10 14:47:18Z vboxsync $ */
+/* $Id: tstRTR0Timer.cpp 49480 2013-11-14 15:13:54Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers.
  */
@@ -888,7 +888,6 @@ DECLEXPORT(int) TSTRTR0TimerSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOpe
                 RTThreadSleep(2);
 
             RTR0TESTR0_CHECK_RC_BREAK(RTTimerStop(pTimer), VINF_SUCCESS);
-            uint64_t    cNsElapsedX = RTTimeNanoTS() - uStartNsTS;
 
             /*
              * Process the result.
