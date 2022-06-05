@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51010 2014-04-09 11:04:07Z vboxsync $
+# $Id: Config.kmk 51068 2014-04-14 16:24:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1866,7 +1866,7 @@ VBOX_PATH_AUTOIT3 ?= $(PATH_DEVTOOLS)/win.x86/autoit/v3.2.10.0
 
 # Windows install tools...
 # Note! The scripts has been moved to Bin in v8.0.
-VBOX_PATH_WIX       ?= $(PATH_DEVTOOLS)/win.x86/wix/v3.5.2519.0
+VBOX_PATH_WIX       ?= $(PATH_DEVTOOLS)/win.x86/wix/v3.8.1128.0
 VBOX_PATH_MSITRAN   ?= $(PATH_DEVTOOLS)/win.x86/sdk/v7.1/Bin/MsiTran.Exe
 VBOX_PATH_MSIDB     ?= $(PATH_DEVTOOLS)/win.x86/sdk/v7.1/Bin/MsiDb.Exe
 VBOX_PATH_WISUBSTG  ?= $(PATH_DEVTOOLS)/win.x86/sdk/v7.1/Samples/sysmgmt/msi/scripts/WiSubStg.vbs
@@ -5580,7 +5580,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51010 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51068 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
