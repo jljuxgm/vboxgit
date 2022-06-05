@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 53135 2014-10-23 19:43:25Z vboxsync $
+# $Id: utils.py 53137 2014-10-23 21:15:34Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53135 $"
+__version__ = "$Revision: 53137 $"
 
 
 # Standard Python imports.
@@ -202,7 +202,7 @@ def getHostOsVersion():
                 pass;
 
     elif sOs == 'darwin':
-        sVersion = platform.mac_ver()[0];
+        sOsxVersion = platform.mac_ver()[0];
         codenames = {"4": "Tiger",
                      "5": "Leopard",
                      "6": "Snow Leopard",
@@ -210,7 +210,7 @@ def getHostOsVersion():
                      "8": "Mountain Lion",
                      "9": "Mavericks",
                      "10": "Yosemite"}
-        sVersion += ' (' + codenames[sVersion.split('.')[1]] + ')'
+        sVersion += ' / OS X ' + sOsxVersion + ' (' + codenames[sOsxVersion.split('.')[1]] + ')'
 
     return sVersion;
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: wuiadmintestbox.py 53137 2014-10-23 21:15:34Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53137 $"
 
 
 # Standard python imports.
@@ -241,7 +241,7 @@ class WuiTestBoxList(WuiListContentWithActionBase):
 
             sVer1 = sOsVersion;
             sVer2 = None;
-            if oEntry.sOs == 'linux':
+            if oEntry.sOs == 'linux' or oEntry.sOs == 'darwin':
                 iSep = sOsVersion.find(' / ');
                 if iSep > 0:
                     sVer1 = sOsVersion[:iSep].strip();
