@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51056 2014-04-11 17:09:24Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51149 2014-04-26 16:07:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -446,6 +446,11 @@ QStringList UIExtraDataManager::machineWindowIconNames(const QString &strID) con
 GuruMeditationHandlerType UIExtraDataManager::guruMeditationHandlerType(const QString &strID) const
 {
     return gpConverter->fromInternalString<GuruMeditationHandlerType>(extraDataString(GUI_GuruMeditationHandler, strID));
+}
+
+HiDPIOptimizationType UIExtraDataManager::hiDPIOptimizationType(const QString &strID) const
+{
+    return gpConverter->fromInternalString<HiDPIOptimizationType>(extraDataString(GUI_HiDPIOptimization, strID));
 }
 
 void UIExtraDataManager::prepare()

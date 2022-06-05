@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 51021 2014-04-09 16:48:49Z vboxsync $ */
+/* $Id: UIDefs.cpp 51149 2014-04-26 16:07:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -83,6 +83,7 @@ const char* UIDefs::GUI_DefaultCloseAction = "GUI/DefaultCloseAction";
 const char* UIDefs::GUI_RestrictedStatusBarIndicators = "GUI/RestrictedStatusBarIndicators";
 const char* UIDefs::GUI_HidLedsSync = "GUI/HidLedsSync";
 const char* UIDefs::GUI_GuruMeditationHandler = "GUI/GuruMeditationHandler";
+const char* UIDefs::GUI_HiDPIOptimization = "GUI/HiDPI/Optimization";
 
 /* Settings dialogs stuff: */
 const char* UIDefs::GUI_RestrictedGlobalSettingsPages = "GUI/RestrictedGlobalSettingsPages";
