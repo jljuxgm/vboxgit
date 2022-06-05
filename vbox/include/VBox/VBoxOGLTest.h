@@ -1,9 +1,9 @@
-/* $Id: VBoxOGLTest.h 40858 2012-04-10 19:52:43Z vboxsync $ */
+/* $Id: VBoxOGLTest.h 52622 2014-09-05 18:25:38Z vboxsync $ */
 /** @file
  * VBox 3D Support test API
  */
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -29,6 +29,7 @@
 
 RT_C_DECLS_BEGIN
 
+bool RTCALL VBoxOglIsOfflineRenderingAppropriate();
 bool RTCALL VBoxOglIs3DAccelerationSupported();
 
 RT_C_DECLS_END

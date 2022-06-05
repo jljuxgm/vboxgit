@@ -1,10 +1,10 @@
-/* $Id: renderspu_cocoa_helper.m 52616 2014-09-05 11:36:39Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 52622 2014-09-05 18:25:38Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -27,6 +27,7 @@
 #include <iprt/mem.h>
 #include <iprt/time.h>
 #include <iprt/assert.h>
+#include <VBox/VBoxOGLTest.h>
 
 #include <cr_vreg.h>
 #include <cr_error.h>
@@ -2415,6 +2416,12 @@ void cocoaGLCtxCreate(NativeNSOpenGLContextRef *ppCtx, GLbitfield fVisParams, Na
         DEBUG_MSG(("CR_STEREO_BIT requested\n"));
         attribs[i++] = NSOpenGLPFAStereo;
         */
+    }
+
+    if (VBoxOglIsOfflineRenderingAppropriate())
+    {
+        DEBUG_MSG(("Offline rendering is enabled\n"));
+        attribs[i++] = NSOpenGLPFAAllowOfflineRenderers;
     }
 
     /* Mark the end */
