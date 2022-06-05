@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 52592 2014-09-03 20:23:24Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 52994 2014-10-08 12:54:30Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1849,10 +1849,14 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                         InsertConfigString(pLunL0, "Driver",               "VUSBRootHub");
                         InsertConfigNode(pLunL0,   "Config", &pCfg);
 
+                        InsertConfigNode(pInst,    "LUN#1", &pLunL1);
+                        InsertConfigString(pLunL1, "Driver",               "VUSBRootHub");
+                        InsertConfigNode(pLunL1,   "Config", &pCfg);
+
                         /*
                          * Attach the status driver.
                          */
-                        i_attachStatusDriver(pInst, &mapUSBLed[1], 0, 0, NULL, NULL, 0);
+                        i_attachStatusDriver(pInst, &mapUSBLed[1], 0, 1, NULL, NULL, 0);
                     }
 # ifdef VBOX_WITH_EXTPACK
                     else
