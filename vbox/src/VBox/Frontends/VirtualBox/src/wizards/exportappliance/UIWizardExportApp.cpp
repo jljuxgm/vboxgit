@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportApp.cpp 49038 2013-10-10 18:21:26Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 50882 2014-03-26 09:39:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -86,7 +86,7 @@ bool UIWizardExportApp::exportAppliance()
     {
         /* Show some progress, so the user know whats going on: */
         msgCenter().showModalProgressDialog(progress, QApplication::translate("UIWizardExportApp", "Checking files ..."),
-                                            ":/refresh_32px.png", this);
+                                            ":/progress_refresh_90px.png", this);
         if (progress.GetCanceled())
             return false;
         if (!progress.isOk() || progress.GetResultCode() != 0)
@@ -108,7 +108,7 @@ bool UIWizardExportApp::exportAppliance()
         {
             /* Show some progress, so the user know whats going on: */
             msgCenter().showModalProgressDialog(progress1, QApplication::translate("UIWizardExportApp", "Removing files ..."),
-                                                ":/vm_delete_32px.png", this);
+                                                ":/progress_delete_90px.png", this);
             if (progress1.GetCanceled())
                 return false;
             if (!progress1.isOk() || progress1.GetResultCode() != 0)
