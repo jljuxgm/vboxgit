@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 47833 2013-08-19 08:08:42Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 49418 2013-11-08 11:25:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -944,6 +944,10 @@ QWidget *VirtualSystemDelegate::createEditor(QWidget *pParent, const QStyleOptio
 
     ModelItem *item = static_cast<ModelItem*>(index.internalPointer());
     QWidget *editor = item->createEditor(pParent, styleOption, index);
+
+    /* Allow UILineTextEdit to commit data early: */
+    if (editor && qobject_cast<UILineTextEdit*>(editor))
+        connect(editor, SIGNAL(sigFinished(QWidget*)), this, SIGNAL(commitData(QWidget*)));
 
     if (editor == NULL)
         return QItemDelegate::createEditor(pParent, styleOption, index);

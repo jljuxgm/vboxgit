@@ -1,4 +1,4 @@
-/* $Id: UILineTextEdit.cpp 38375 2011-08-09 11:55:48Z vboxsync $ */
+/* $Id: UILineTextEdit.cpp 49418 2013-11-08 11:25:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -118,6 +118,10 @@ void UILineTextEdit::edit()
     UITextEditor te(this);
     te.setText(m_strText);
     if (te.exec() == QDialog::Accepted)
+    {
         m_strText = te.text();
+        /* Notify listener(s) about we finished: */
+        emit sigFinished(this);
+    }
 }
 
