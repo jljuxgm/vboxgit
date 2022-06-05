@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 49454 2013-11-12 16:24:07Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 49846 2013-12-09 15:41:02Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -685,6 +685,12 @@ int vmmdevHGCMCall (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, uint32_t cbHGCMCal
                     if (pGuestParm->u.Pointer.size > 0)
                     {
                         /* Only pointers with some actual data are counted. */
+                        if (pGuestParm->u.Pointer.size > VMMDEV_MAX_HGCM_DATA_SIZE - cbCmdSize)
+                        {
+                            rc = VERR_INVALID_PARAMETER;
+                            break;
+                        }
+
                         cbCmdSize += pGuestParm->u.Pointer.size;
 
                         cLinPtrs++;
@@ -698,6 +704,12 @@ int vmmdevHGCMCall (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, uint32_t cbHGCMCal
 
                 case VMMDevHGCMParmType_PageList:
                 {
+                    if (pGuestParm->u.PageList.size > VMMDEV_MAX_HGCM_DATA_SIZE - cbCmdSize)
+                    {
+                        rc = VERR_INVALID_PARAMETER;
+                        break;
+                    }
+
                     cbCmdSize += pGuestParm->u.PageList.size;
                     Log(("vmmdevHGCMCall: pagelist size = %d\n", pGuestParm->u.PageList.size));
                 } break;
@@ -737,6 +749,12 @@ int vmmdevHGCMCall (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, uint32_t cbHGCMCal
                     if (pGuestParm->u.Pointer.size > 0)
                     {
                         /* Only pointers with some actual data are counted. */
+                        if (pGuestParm->u.Pointer.size > VMMDEV_MAX_HGCM_DATA_SIZE - cbCmdSize)
+                        {
+                            rc = VERR_INVALID_PARAMETER;
+                            break;
+                        }
+
                         cbCmdSize += pGuestParm->u.Pointer.size;
 
                         cLinPtrs++;
@@ -750,6 +768,12 @@ int vmmdevHGCMCall (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, uint32_t cbHGCMCal
 
                 case VMMDevHGCMParmType_PageList:
                 {
+                    if (pGuestParm->u.PageList.size > VMMDEV_MAX_HGCM_DATA_SIZE - cbCmdSize)
+                    {
+                        rc = VERR_INVALID_PARAMETER;
+                        break;
+                    }
+
                     cbCmdSize += pGuestParm->u.PageList.size;
                     Log(("vmmdevHGCMCall: pagelist size = %d\n", pGuestParm->u.PageList.size));
                 } break;
