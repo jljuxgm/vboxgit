@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 49061 2013-10-11 20:15:59Z vboxsync $ */
+/* $Id: dbgmod.cpp 49082 2013-10-14 03:31:06Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -1267,12 +1267,12 @@ rtDbgModFromMachOImageOpenDsymMachOCallback(RTDBGCFG hDbgCfg, const char *pszFil
             if (RT_SUCCESS(rc))
             {
                 /*
-                 * Pass it to the DWARF reader(s).
+                 * Pass it to the DWARF reader(s).  Careful to restrict this or
+                 * the dbghelp wrapper may end up being overly helpful.
                  */
                 for (PRTDBGMODREGDBG pDbg = g_pDbgHead; pDbg; pDbg = pDbg->pNext)
                 {
-                    if (   pArgs->fOpenImage
-                        || (pDbg->pVt->fSupports & RT_DBGTYPE_DWARF) )
+                    if (pDbg->pVt->fSupports & (RT_DBGTYPE_DWARF | RT_DBGTYPE_STABS | RT_DBGTYPE_WATCOM))
 
                     {
                         pDbgMod->pDbgVt    = pDbg->pVt;

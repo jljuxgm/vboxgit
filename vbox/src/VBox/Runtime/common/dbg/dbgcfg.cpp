@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 49061 2013-10-11 20:15:59Z vboxsync $ */
+/* $Id: dbgcfg.cpp 49082 2013-10-14 03:31:06Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -1680,6 +1680,7 @@ static int rtDbgCfgOpenBundleFile(RTDBGCFG hDbgCfg, const char *pszImage, const 
 
         rc2 = rtDbgCfgConstructUuidMappingSubDir(szUuidMappingSubDir, sizeof(szUuidMappingSubDir), pszUuidMapDirName, pUuid);
         AssertRCReturn(rc2, rc2);
+        pszUuidMappingSubDir = szUuidMappingSubDir;
     }
 
     /*
