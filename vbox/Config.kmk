@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51935 2014-07-08 15:25:23Z vboxsync $
+# $Id: Config.kmk 51966 2014-07-10 11:45:54Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4002,8 +4002,13 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
  TEMPLATE_VBOXR3HARDENEDEXE_CXXFLAGS.debug= $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CXXFLAGS.debug)) -GS-
  TEMPLATE_VBOXR3HARDENEDEXE_CFLAGS        = $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CFLAGS)) -GS-
  TEMPLATE_VBOXR3HARDENEDEXE_CXXFLAGS.debug= $(filter-out -RTC% -GZ -GS,$(TEMPLATE_VBOXR3EXE_CFLAGS.debug)) -GS-
+ TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS       = $(TEMPLATE_VBOXR3EXE_LDFLAGS) \
+	/DISALLOWLIB:msvcrt$(VBOX_VCC_CRT_TYPE).lib \
+	/DISALLOWLIB:msvcprt$(VBOX_VCC_CRT_TYPE).lib
  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.win.x86   = $(TEMPLATE_VBOXR3EXE_LDFLAGS.win.x86)   /entry:suplibHardenedWindowsMain
  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.win.amd64 = $(TEMPLATE_VBOXR3EXE_LDFLAGS.win.amd64) /entry:suplibHardenedWindowsMain
+ TEMPLATE_VBOXR3HARDENEDEXE_LIBS.x86       = $(NOT_SUCH_VARIABLE)
+ TEMPLATE_VBOXR3HARDENEDEXE_LIBS.amd64     = $(NOT_SUCH_VARIABLE)
 else ifn1of ($(KBUILD_TARGET), os2)
  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS       = $(filter-out '$(VBOX_GCC_RPATH_OPT)%,$(TEMPLATE_VBOXR3EXE_LDFLAGS))
  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.linux = $(filter-out $(VBOX_GCC_ORIGIN_OPT),$(TEMPLATE_VBOXR3EXE_LDFLAGS.linux))
@@ -5706,7 +5711,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51935 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51966 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
