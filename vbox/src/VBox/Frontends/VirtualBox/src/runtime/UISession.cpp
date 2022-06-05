@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 50165 2014-01-22 17:46:16Z vboxsync $ */
+/* $Id: UISession.cpp 50302 2014-01-31 13:55:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -347,6 +347,16 @@ void UISession::powerUp()
            machine.GetAccelerate2DVideoEnabled() && VBoxGlobal::isAcceleration2DVideoAvailable()
                  ? "enabled"
                  : "disabled"));
+#endif
+
+/* Check if HID LEDs sync is enabled and add a log message about it. */
+#if defined(Q_WS_MAC) || defined(Q_WS_WIN)
+    if(uimachine()->machineLogic()->isHidLedsSyncEnabled())
+        LogRel(("HID LEDs sync is enabled.\n"));
+    else
+        LogRel(("HID LEDs sync is disabled.\n"));
+#else
+    LogRel(("HID LEDs sync is not supported on this platform.\n"));
 #endif
 
 #ifdef VBOX_GUI_WITH_PIDFILE
