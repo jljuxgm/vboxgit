@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 52737 2014-09-13 21:58:40Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 52738 2014-09-13 23:12:54Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -3952,6 +3952,9 @@ static NTSTATUS supdrvNtProtectInit(void)
         return STATUS_PROCEDURE_NOT_FOUND;
     }
 # endif
+
+    /* LPC object type. */
+    g_pAlpcPortObjectType1 = *LpcPortObjectType;
 
     /* The spinlock protecting our structures. */
     int rc = RTSpinlockCreate(&g_hNtProtectLock, RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE, "NtProtectLock");
