@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 49787 2013-12-05 11:26:00Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 51107 2014-04-18 13:43:50Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -598,7 +598,7 @@ org_virtualbox_VBoxUSBClient::free()
 {
     uint32_t cInstances = ASMAtomicDecU32(&g_cInstances); NOREF(cInstances);
     Log(("VBoxUSBClient::free([%p]) new g_cInstances=%d\n", this, cInstances));
-    IOService::free();
+    IOUserClient::free();
 }
 
 
