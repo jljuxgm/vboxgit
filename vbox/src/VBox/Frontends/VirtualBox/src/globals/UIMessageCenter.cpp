@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 53291 2014-11-10 13:36:52Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 53328 2014-11-14 14:02:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1116,6 +1116,14 @@ bool UIMessageCenter::warnAboutNameShouldBeUnique(QWidget *pParent /* = 0 */) co
     alert(pParent, MessageType_Error,
           tr("The current port forwarding rules are not valid. "
              "Rule names should be unique."));
+    return false;
+}
+
+bool UIMessageCenter::warnAboutRulesConflict(QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("The current port forwarding rules are not valid. "
+             "Few rules have same host ports and conflicting IP addresses."));
     return false;
 }
 

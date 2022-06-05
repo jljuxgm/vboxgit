@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 53295 2014-11-10 17:11:24Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 53328 2014-11-14 14:02:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -29,6 +29,7 @@
 # include <QComboBox>
 # include <QLineEdit>
 # include <QSpinBox>
+# include <QHostAddress>
 
 /* GUI includes: */
 # include "UIPortForwardingTable.h"
@@ -691,6 +692,7 @@ bool UIPortForwardingTable::validate() const
 {
     /* Validate table: */
     QSet<QString> usedNames;
+    QMap<int, QString> rules;
     for (int i = 0; i < m_pModel->rowCount(); ++i)
     {
         /* If at aleast one port is 'zero': */
@@ -704,6 +706,20 @@ bool UIPortForwardingTable::validate() const
             usedNames << strName;
         else
             return msgCenter().warnAboutNameShouldBeUnique(window());
+
+        /* Make sure rules are not in conflict: */
+        const ushort iHostPort = m_pModel->data(m_pModel->index(i, UIPortForwardingModel::UIPortForwardingDataType_HostPort), Qt::EditRole).value<PortData>().value();
+        const QString strHostAddressNew = m_pModel->data(m_pModel->index(i, UIPortForwardingModel::UIPortForwardingDataType_HostIp), Qt::EditRole).value<IpData>();
+        if (rules.contains(iHostPort))
+        {
+            const QString strHostAddressOld = rules.value(iHostPort);
+            if (   strHostAddressNew == strHostAddressOld
+                || strHostAddressNew.isEmpty() || QHostAddress(strHostAddressNew).isNull()
+                || strHostAddressOld.isEmpty() || QHostAddress(strHostAddressOld).isNull())
+                return msgCenter().warnAboutRulesConflict(window());
+        }
+        else
+            rules[iHostPort] = strHostAddressNew;
     }
     /* True by default: */
     return true;
