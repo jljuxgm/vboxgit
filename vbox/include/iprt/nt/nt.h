@@ -1,4 +1,4 @@
-/* $Id: nt.h 52163 2014-07-24 11:35:26Z vboxsync $ */
+/* $Id: nt.h 52354 2014-08-11 19:20:47Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -444,7 +444,7 @@ typedef struct _PEB_COMMON
 #endif
     HANDLE Mutant;                                                          /**< 0x008 / 0x004 */
     PVOID ImageBaseAddress;                                                 /**< 0x010 / 0x008 */
-    PPEB_LDR_DATA *Ldr;                                                     /**< 0x018 / 0x00c */
+    PPEB_LDR_DATA Ldr;                                                      /**< 0x018 / 0x00c */
     struct _RTL_USER_PROCESS_PARAMETERS *ProcessParameters;                 /**< 0x020 / 0x010 */
     PVOID SubSystemData;                                                    /**< 0x028 / 0x014 */
     HANDLE ProcessHeap;                                                     /**< 0x030 / 0x018 */
