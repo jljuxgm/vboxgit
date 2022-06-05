@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 52110 2014-07-21 12:53:59Z vboxsync $ */
+/* $Id: GIMHv.cpp 52685 2014-09-10 17:29:24Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -112,6 +112,8 @@ VMMR3_INT_DECL(int) GIMR3HvInit(PVM pVM)
                          | GIM_HV_HINT_RELAX_TIME_CHECKS;
 
         /* Hypervisor capabilities; features used by the hypervisor. */
+        /** @todo This is currently busted as it's too early. See @bugref{7270}
+         *        comment 130. */
         pHv->uHyperCaps  = HMIsNestedPagingActive(pVM)   ? GIM_HV_HOST_FEAT_NESTED_PAGING : 0;
         pHv->uHyperCaps |= HMAreMsrBitmapsAvailable(pVM) ? GIM_HV_HOST_FEAT_MSR_BITMAP : 0;
     }
