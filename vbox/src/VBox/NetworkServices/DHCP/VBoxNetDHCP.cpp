@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 48461 2013-09-12 18:14:50Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 48956 2013-10-07 22:00:27Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -466,7 +466,7 @@ int VBoxNetDhcp::init()
             com::Bstr domain;
             if (SUCCEEDED(host->COMGETTER(DomainName)(domain.asOutParam())))
                 confManager->setString(RTNET_DHCP_OPT_DOMAIN_NAME, std::string(com::Utf8Str(domain).c_str()));
-            
+
 
         }
     }

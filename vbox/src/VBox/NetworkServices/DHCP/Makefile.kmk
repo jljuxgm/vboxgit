@@ -1,4 +1,4 @@
- # $Id: Makefile.kmk 47025 2013-07-06 20:25:21Z vboxsync $
+ # $Id: Makefile.kmk 48956 2013-10-07 22:00:27Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxNetDHCP.
 #
@@ -56,7 +56,7 @@ ifeq ($(USERNAME),vvl)
 PROGRAMS += tstDhcpConfig
 
 #
-# VBOXMAINCLIENT here only to use DhcpOpt_T type. 
+# VBOXMAINCLIENT here only to use DhcpOpt_T type.
 tstDhcpConfig_TEMPLATE = VBOXMAINCLIENTEXE
 #XXX: enable condtionally if user is vvl
 #tstDhcpConfig_INSTTYPE = none
