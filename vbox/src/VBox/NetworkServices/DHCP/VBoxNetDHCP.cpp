@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 48414 2013-09-10 14:51:02Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 48430 2013-09-11 14:05:43Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -402,7 +402,8 @@ int VBoxNetDhcp::init()
                 RTNETADDRIPV4 ip4addr;
                 char *pszTerm;
                 uint32_t u32Off;
-                const char *pszLo2Off = com::Utf8Str(strs[i]).c_str();
+                com::Utf8Str strLo2Off(strs[i]);
+                const char *pszLo2Off = strLo2Off.c_str();
 
                 RT_ZERO(aszAddr);
 
