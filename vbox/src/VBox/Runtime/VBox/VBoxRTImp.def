@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 52028 2014-07-15 06:38:12Z vboxsync $
+; $Id: VBoxRTImp.def 52250 2014-07-31 20:31:26Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 
@@ -1494,3 +1494,7 @@ EXPORTS
     SUPR3HardenedLdrLoadPlugIn
     SUPR3QueryVTxSupported
     SUPR3QueryVTCaps
+    SUPSemEventSignal
+    SUPSemEventWaitNoResume
+    SUPSemEventClose
+    SUPSemEventCreate
