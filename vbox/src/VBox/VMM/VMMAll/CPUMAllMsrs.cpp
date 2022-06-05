@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 51235 2014-05-12 12:15:17Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 51288 2014-05-19 12:47:48Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -2712,6 +2712,8 @@ static DECLCALLBACK(int) cpumMsrRd_P6LastIntFromIp(PVMCPU pVCpu, uint32_t idMsr,
 static DECLCALLBACK(int) cpumMsrWr_P6LastIntFromIp(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t uValue, uint64_t uRawValue)
 {
     /** @todo implement last exception records. */
+    /* Note! On many CPUs, the high bit of the 0x000001dd register is always writable, even when the result is
+             a non-cannonical address. */
     return VINF_SUCCESS;
 }
 

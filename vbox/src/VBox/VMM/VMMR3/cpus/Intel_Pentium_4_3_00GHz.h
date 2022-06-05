@@ -1,4 +1,4 @@
-/* $Id: Intel_Pentium_4_3_00GHz.h 50590 2014-02-25 18:51:23Z vboxsync $ */
+/* $Id: Intel_Pentium_4_3_00GHz.h 51288 2014-05-19 12:47:48Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Pentium 4 3.00GHz".
  * Generated at 2013-12-18T06:37:54Z by VBoxCpuReport v4.3.53r91376 on win.amd64.
@@ -69,8 +69,8 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Pentium_4_3_00GHz[] =
     MFX(0x000000fe, "IA32_MTRRCAP", Ia32MtrrCap, ReadOnly, 0x508, 0, 0), /* value=0x508 */
     MFX(0x00000119, "BBL_CR_CTL", IntelBblCrCtl, ReadOnly, 0, 0, 0), /* value=0x0 */
     MFX(0x00000174, "IA32_SYSENTER_CS", Ia32SysEnterCs, Ia32SysEnterCs, 0, ~(uint64_t)UINT32_MAX, 0), /* value=0x0 */
-    MFX(0x00000175, "IA32_SYSENTER_ESP", Ia32SysEnterEsp, Ia32SysEnterEsp, 0, 0, UINT64_C(0xffff800000000000)), /* value=0x0 */
-    MFX(0x00000176, "IA32_SYSENTER_EIP", Ia32SysEnterEip, Ia32SysEnterEip, 0, 0, UINT64_C(0xffff800000000000)), /* value=0x0 */
+    MFN(0x00000175, "IA32_SYSENTER_ESP", Ia32SysEnterEsp, Ia32SysEnterEsp), /* value=0x0 */
+    MFN(0x00000176, "IA32_SYSENTER_EIP", Ia32SysEnterEip, Ia32SysEnterEip), /* value=0x0 */
     MFX(0x00000179, "IA32_MCG_CAP", Ia32McgCap, ReadOnly, 0x180204, 0, 0), /* value=0x180204 */
     MFN(0x0000017a, "IA32_MCG_STATUS", Ia32McgStatus, Ia32McgStatus), /* value=0x0 */
     MVX(0x00000180, "MSR_MCG_RAX", 0, 0, UINT64_MAX),
