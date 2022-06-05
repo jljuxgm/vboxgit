@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 52451 2014-08-21 19:20:27Z vboxsync $ */
+/* $Id: server_presenter.cpp 52494 2014-08-25 13:23:57Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -6408,7 +6408,7 @@ static DECLCALLBACK(void) crServerClientCallout(PFNVCRSERVER_CLIENT_CALLOUT_CB p
 
 DECLEXPORT(void) crVBoxServerCalloutEnable(VBOXCRCMDCTL *pCtl)
 {
-#ifdef CR_SERVER_WITH_CLIENT_CALLOUTS
+#if 1 //def CR_SERVER_WITH_CLIENT_CALLOUTS
     Assert(!cr_server.pCurrentCalloutCtl);
     cr_server.pCurrentCalloutCtl = pCtl;
 
@@ -6418,7 +6418,7 @@ DECLEXPORT(void) crVBoxServerCalloutEnable(VBOXCRCMDCTL *pCtl)
 
 extern DECLEXPORT(void) crVBoxServerCalloutDisable()
 {
-#ifdef CR_SERVER_WITH_CLIENT_CALLOUTS
+#if 1 //def CR_SERVER_WITH_CLIENT_CALLOUTS
     Assert(cr_server.pCurrentCalloutCtl);
 
     cr_server.head_spu->dispatch_table.ChromiumParametervCR(GL_HH_SET_CLIENT_CALLOUT, 0, 0, NULL);
