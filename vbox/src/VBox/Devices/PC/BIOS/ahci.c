@@ -1,4 +1,4 @@
-/* $Id: ahci.c 50294 2014-01-30 18:27:35Z vboxsync $ */
+/* $Id: ahci.c 51232 2014-05-12 10:14:17Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -626,6 +626,14 @@ void ahci_port_detect_device(ahci_t __far *ahci, uint8_t u8Port)
 
     /* Check if there is a device on the port. */
     VBOXAHCI_PORT_READ_REG(ahci->iobase, u8Port, AHCI_REG_PORT_SSTS, val);
+    if (ahci_ctrl_extract_bits(val, 0xfL, 0) == 0)
+        return; /* No device detected. */
+
+    do
+    {
+        VBOXAHCI_PORT_READ_REG(ahci->iobase, u8Port, AHCI_REG_PORT_SSTS, val);
+    } while (ahci_ctrl_extract_bits(val, 0xfL, 0) == 0x1);
+
     if (ahci_ctrl_extract_bits(val, 0xfL, 0) == 0x3)
     {
         uint8_t     abBuffer[0x0200];
