@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 52304 2014-08-06 17:28:32Z vboxsync $ */
+/* $Id: VUSBInternal.h 52305 2014-08-06 17:33:03Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -350,9 +350,6 @@ typedef struct VUSBROOTHUB
     /** The HUB.
      * @todo remove this? */
     VUSBHUB                 Hub;
-#if HC_ARCH_BITS == 32
-    uint32_t                Alignment0;
-#endif
     /** Address hash table. */
     PVUSBDEV                apAddrHash[VUSB_ADDR_HASHSZ];
     /** The default address. */
