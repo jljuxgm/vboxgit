@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 51603 2014-06-11 11:59:20Z vboxsync $ */
+/* $Id: DisplayImpl.h 51604 2014-06-11 12:16:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -291,14 +291,6 @@ private:
 
     bool mfSourceBitmapEnabled;
     bool volatile fVGAResizing;
-
-    /* arguments of the last handleDisplayResize() call */
-    void       *mLastAddress;
-    uint32_t    mLastBytesPerLine;
-    uint32_t    mLastBitsPerPixel;
-    uint32_t    mLastWidth;
-    uint32_t    mLastHeight;
-    uint16_t    mLastFlags;
 
     VBVAMEMORY *mpVbvaMemory;
     bool        mfVideoAccelEnabled;
