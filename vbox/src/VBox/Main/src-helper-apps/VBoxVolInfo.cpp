@@ -1,4 +1,4 @@
-/* $Id: VBoxVolInfo.cpp 48669 2013-09-25 07:50:47Z vboxsync $ */
+/* $Id: VBoxVolInfo.cpp 48671 2013-09-25 07:56:57Z vboxsync $ */
 /** @file
  * Apps - VBoxVolInfo, Volume information tool.
  */
@@ -21,6 +21,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include <dirent.h>
+#define private privatekw
 #include <libdevmapper.h>
 #include <stdio.h>
 #include <sys/types.h>
