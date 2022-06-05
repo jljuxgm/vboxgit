@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 52213 2014-07-28 17:52:58Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -560,7 +560,7 @@ static DECLCALLBACK(int) rtkldr_Relocate(PRTLDRMODINTERNAL pMod, void *pvBits, R
 
 /** @copydoc RTLDROPS::pfnGetSymbolEx */
 static DECLCALLBACK(int) rtkldr_GetSymbolEx(PRTLDRMODINTERNAL pMod, const void *pvBits, RTUINTPTR BaseAddress,
-                                            const char *pszSymbol, RTUINTPTR *pValue)
+                                            uint32_t iOrdinal, const char *pszSymbol, RTUINTPTR *pValue)
 {
     PKLDRMOD pModkLdr = ((PRTLDRMODKLDR)pMod)->pMod;
     KLDRADDR uValue;
@@ -580,8 +580,10 @@ static DECLCALLBACK(int) rtkldr_GetSymbolEx(PRTLDRMODINTERNAL pMod, const void *
 #endif
 
     int rc = kLdrModQuerySymbol(pModkLdr, pvBits, BaseAddress,
-                                NIL_KLDRMOD_SYM_ORDINAL, pszSymbol, strlen(pszSymbol), NULL,
-                                NULL, NULL, &uValue, NULL);
+                                iOrdinal == UINT32_MAX ? NIL_KLDRMOD_SYM_ORDINAL : iOrdinal,
+                                pszSymbol, strlen(pszSymbol), NULL,
+                                NULL, NULL,
+                                &uValue, NULL);
     if (!rc)
     {
         *pValue = uValue;
@@ -872,6 +874,7 @@ static const RTLDROPS g_rtkldrOps =
     rtkldr_GetBits,
     rtkldr_Relocate,
     rtkldr_GetSymbolEx,
+    NULL /*pfnQueryForwarderInfo*/,
     rtkldr_EnumDbgInfo,
     rtkldr_EnumSegments,
     rtkldr_LinkAddressToSegOffset,

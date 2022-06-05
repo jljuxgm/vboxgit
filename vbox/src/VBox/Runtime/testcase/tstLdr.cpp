@@ -1,4 +1,4 @@
-/* $Id: tstLdr.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: tstLdr.cpp 52213 2014-07-28 17:52:58Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*.
  */
@@ -236,7 +236,8 @@ static int testLdrOne(const char *pszFilename)
                 for (unsigned iSym = 0; iSym < RT_ELEMENTS(aSyms); iSym++)
                 {
                     RTUINTPTR Value;
-                    int rc = RTLdrGetSymbolEx(aLoads[i].hLdrMod, aLoads[i].pvBits, aLoads[i].Addr, aSyms[iSym].pszName, &Value);
+                    int rc = RTLdrGetSymbolEx(aLoads[i].hLdrMod, aLoads[i].pvBits, aLoads[i].Addr,
+                                              UINT32_MAX, aSyms[iSym].pszName, &Value);
                     if (RT_SUCCESS(rc))
                     {
                         unsigned off = Value - aLoads[i].Addr;

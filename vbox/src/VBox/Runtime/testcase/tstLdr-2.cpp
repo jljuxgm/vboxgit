@@ -1,4 +1,4 @@
-/* $Id: tstLdr-2.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: tstLdr-2.cpp 52213 2014-07-28 17:52:58Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -112,7 +112,7 @@ static int testLdrOne(const char *pszFilename)
             if (RT_SUCCESS(rc))
             {
                 RTUINTPTR Value;
-                rc = RTLdrGetSymbolEx(hLdrMod, pvBits, Addr, "Entrypoint", &Value);
+                rc = RTLdrGetSymbolEx(hLdrMod, pvBits, Addr, UINT32_MAX, "Entrypoint", &Value);
                 if (RT_SUCCESS(rc))
                 {
                     unsigned off = Value - Addr;
