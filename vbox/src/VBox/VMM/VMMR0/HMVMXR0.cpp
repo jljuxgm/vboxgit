@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49257 2013-10-23 15:54:08Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49258 2013-10-23 16:10:21Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -42,6 +42,7 @@
 #define HMVMX_ALWAYS_TRAP_ALL_XCPTS
 #define HMVMX_ALWAYS_TRAP_PF
 #define HMVMX_ALWAYS_SWAP_FPU_STATE
+#define HMVMX_ALWAYS_FLUSH_TLB
 #endif
 
 
@@ -1807,6 +1808,9 @@ static void hmR0VmxFlushTaggedTlbVpid(PVM pVM, PVMCPU pVCpu, PHMGLOBALCPUINFO pC
  */
 DECLINLINE(void) hmR0VmxFlushTaggedTlb(PVMCPU pVCpu, PHMGLOBALCPUINFO pCpu)
 {
+#ifdef HMVMX_ALWAYS_FLUSH_TLB
+    VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
+#endif
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     switch (pVM->hm.s.vmx.uFlushTaggedTlb)
     {
@@ -1818,6 +1822,7 @@ DECLINLINE(void) hmR0VmxFlushTaggedTlb(PVMCPU pVCpu, PHMGLOBALCPUINFO pCpu)
             AssertMsgFailed(("Invalid flush-tag function identifier\n"));
             break;
     }
+    Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_TLB_FLUSH));
 }
 
 
