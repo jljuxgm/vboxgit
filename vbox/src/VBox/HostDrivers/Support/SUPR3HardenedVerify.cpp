@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 52084 2014-07-17 18:00:41Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 52160 2014-07-24 09:47:27Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -91,7 +91,7 @@
 
 /** Compare table file names with externally supplied names. */
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
-# define SUP_COMP_FILENAME  suplibHardenedStrICmp
+# define SUP_COMP_FILENAME  RTStrICmp
 #else
 # define SUP_COMP_FILENAME  suplibHardenedStrCmp
 #endif
