@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 48148 2013-08-29 12:04:40Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -205,6 +205,10 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *ppTimer, uint64_t u64NanoInterval, uint32_
     if ((fFlags & RTTIMER_FLAGS_CPU_ALL) == RTTIMER_FLAGS_CPU_ALL && u64NanoInterval == 0)
         return VERR_NOT_SUPPORTED;
 
+    /* One-shot timers are not supported by the cyclic system. */
+    if (u64NanoInterval == 0)
+        return VERR_NOT_SUPPORTED;
+
     /*
      * Allocate and initialize the timer handle.
      */
@@ -341,10 +345,14 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
         else
             pSingleTimer->hFireTime.cyt_interval = pTimer->interval;
 
+        /* Disable interrupts to prevent timer firing between cyclic_add() and cyclic_bind(). */
+        RTCCUINTREG uEflags = ASMIntDisableFlags();
+
         pTimer->hCyclicId = cyclic_add(&pSingleTimer->hHandler, &pSingleTimer->hFireTime);
         if (iCpu != SOL_TIMER_ANY_CPU)
             cyclic_bind(pTimer->hCyclicId, cpu[iCpu], NULL /* cpupart */);
 
+        ASMSetFlags(uEflags);
         mutex_exit(&cpu_lock);
     }
 
