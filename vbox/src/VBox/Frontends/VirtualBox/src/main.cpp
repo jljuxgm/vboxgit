@@ -1,4 +1,4 @@
-/* $Id: main.cpp 50934 2014-03-31 18:29:17Z vboxsync $ */
+/* $Id: main.cpp 50972 2014-04-04 17:34:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -413,8 +413,10 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 #endif /* Q_WS_X11 */
 
 #ifdef Q_WS_MAC
+# ifndef VBOX_OSE
         /* Enable HiDPI icons. */
         qApp->setAttribute(Qt::AA_UseHighDpiPixmaps);
+# endif /* !VBOX_OSE */
 #endif /* Q_WS_MAC */
 
 #ifdef Q_OS_SOLARIS
