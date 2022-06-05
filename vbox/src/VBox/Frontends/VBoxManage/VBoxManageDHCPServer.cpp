@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDHCPServer.cpp 47451 2013-07-29 08:09:04Z vboxsync $ */
+/* $Id: VBoxManageDHCPServer.cpp 48776 2013-09-30 20:44:32Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of dhcpserver command.
  */
@@ -133,8 +133,8 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
     const char * pLowerIp = NULL;
     const char * pUpperIp = NULL;
 
-    uint8_t u8OptId = -1;
-    uint8_t u8Slot = -1;
+    uint8_t u8OptId = (uint8_t)~0;
+    uint8_t u8Slot = (uint8_t)~0;
 
     int enable = -1;
 
