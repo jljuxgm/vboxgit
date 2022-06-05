@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 52789 2014-09-18 16:08:18Z vboxsync $ */
+/* $Id: VMMDev.cpp 53073 2014-10-16 09:09:09Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -339,8 +339,9 @@ static int vmmdevReqHandler_ReportGuestInfo(PVMMDEV pThis, VMMDevRequestHeader *
         /* Check additions interface version. */
         pThis->fu32AdditionsOk = VBOX_GUEST_INTERFACE_VERSION_OK(pThis->guestInfo.interfaceVersion);
 
-        LogRel(("Guest Additions information report: Interface = 0x%08X osType = 0x%08X\n",
-                pThis->guestInfo.interfaceVersion, pThis->guestInfo.osType));
+        LogRel(("Guest Additions information report: Interface = 0x%08X osType = 0x%08X (%u-bit)\n",
+                pThis->guestInfo.interfaceVersion, pThis->guestInfo.osType,
+                (pThis->guestInfo.osType & VBOXOSTYPE_x64) ? 64 : 32));
 
         if (pThis->pDrv && pThis->pDrv->pfnUpdateGuestInfo)
             pThis->pDrv->pfnUpdateGuestInfo(pThis->pDrv, &pThis->guestInfo);
@@ -3560,8 +3561,9 @@ static DECLCALLBACK(int) vmmdevLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
 
     if (pThis->fu32AdditionsOk)
     {
-        LogRel(("Guest Additions information report: additionsVersion = 0x%08X, osType = 0x%08X\n",
-                pThis->guestInfo.interfaceVersion, pThis->guestInfo.osType));
+        LogRel(("Guest Additions information report: additionsVersion = 0x%08X, osType = 0x%08X (%u-bit)\n",
+                pThis->guestInfo.interfaceVersion, pThis->guestInfo.osType,
+                (pThis->guestInfo.osType & VBOXOSTYPE_x64) ? 64 : 32));
         if (pThis->pDrv)
         {
             if (pThis->guestInfo2.uFullVersion && pThis->pDrv->pfnUpdateGuestInfo2)
