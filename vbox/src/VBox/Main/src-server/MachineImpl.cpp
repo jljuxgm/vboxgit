@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 49292 2013-10-25 15:56:09Z vboxsync $ */
+/* $Id: MachineImpl.cpp 49293 2013-10-25 16:00:53Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1346,7 +1346,7 @@ STDMETHODIMP Machine::COMGETTER(HardwareUUID)(BSTR *aUUID)
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (mHWData->mHardwareUUID.isZero())
+    if (!mHWData->mHardwareUUID.isZero())
         mHWData->mHardwareUUID.toUtf16().cloneTo(aUUID);
     else
         mData->mUuid.toUtf16().cloneTo(aUUID);
