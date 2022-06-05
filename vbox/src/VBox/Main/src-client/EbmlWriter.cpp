@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 52791 2014-09-18 16:11:50Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 52888 2014-09-29 14:10:33Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container
  */
@@ -475,7 +475,7 @@ class WebMWriter_Impl
 
 public:
 
-    WebMWriter_Impl::WebMWriter_Impl() :
+    WebMWriter_Impl() :
         m_bDebug(false),
         m_iLastPtsMs(-1),
         m_iInitialPtsMs(-1),
