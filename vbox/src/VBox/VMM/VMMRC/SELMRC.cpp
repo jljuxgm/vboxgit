@@ -1,4 +1,4 @@
-/* $Id: SELMRC.cpp 48936 2013-10-07 21:21:42Z vboxsync $ */
+/* $Id: SELMRC.cpp 49914 2013-12-15 20:03:06Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
@@ -148,7 +148,8 @@ static VBOXSTRICTRC selmRCSyncGDTEntry(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegF
                     Log(("GDT write to selector in %s register %04X (now stale)\n", g_aszSRegNms[iSReg], paSReg[iSReg].Sel));
                     paSReg[iSReg].fFlags |= CPUMSELREG_FLAGS_STALE;
                     VMCPU_FF_SET(pVCpu, VMCPU_FF_TO_R3); /* paranoia */
-                    rcStrict = VINF_EM_RESCHEDULE_REM;
+                    /* rcStrict = VINF_EM_RESCHEDULE_REM; - bad idea if we're in a patch. */
+                    rcStrict = VINF_EM_RAW_EMULATE_INSTR_GDT_FAULT;
                 }
                 else if (paSReg[iSReg].fFlags & CPUMSELREG_FLAGS_STALE)
                 {
@@ -287,6 +288,9 @@ VMMRCDECL(int) selmRCGuestGDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTX
 
                 if (rc2 == VINF_SUCCESS || rc2 == VINF_EM_RESCHEDULE_REM)
                 {
+                    /* VINF_EM_RESCHEDULE_REM - bad idea if we're in a patch. */
+                    if (rc2 == VINF_EM_RESCHEDULE_REM)
+                        rc = VINF_EM_RAW_EMULATE_INSTR_GDT_FAULT;
                     STAM_COUNTER_INC(&pVM->selm.s.StatRCWriteGuestGDTHandled);
                     return rc;
                 }

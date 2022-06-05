@@ -1,4 +1,4 @@
-/* $Id: SELMInline.h 46168 2013-05-19 22:58:37Z vboxsync $ */
+/* $Id: SELMInline.h 49914 2013-12-15 20:03:06Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -252,7 +252,7 @@ DECLINLINE(bool) selmIsSRegStale32(PCCPUMSELREG pSReg, PCX86DESC pShwDesc, uint3
 
     if (pSReg->u64Base != X86DESC_BASE(pShwDesc))
     {
-        Log(("selmIsSRegStale32: base changed (%#llx -> %#llx)\n", pSReg->u64Base, X86DESC_BASE(pShwDesc)));
+        Log(("selmIsSRegStale32: base changed (%#llx -> %#x)\n", pSReg->u64Base, X86DESC_BASE(pShwDesc)));
         return true;
     }
 
