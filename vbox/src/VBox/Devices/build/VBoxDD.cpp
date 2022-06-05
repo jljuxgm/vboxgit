@@ -1,10 +1,10 @@
-/* $Id: VBoxDD.cpp 52249 2014-07-31 19:40:11Z vboxsync $ */
+/* $Id: VBoxDD.cpp 52473 2014-08-22 13:35:55Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -199,6 +199,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceGIMDev);
     if (RT_FAILURE(rc))
         return rc;
+#ifdef VBOX_WITH_VIRTUALKD
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVirtualKD);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
 
     return VINF_SUCCESS;
 }

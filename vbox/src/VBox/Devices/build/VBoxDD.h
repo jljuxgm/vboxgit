@@ -1,10 +1,10 @@
-/* $Id: VBoxDD.h 52249 2014-07-31 19:40:11Z vboxsync $ */
+/* $Id: VBoxDD.h 52473 2014-08-22 13:35:55Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -84,6 +84,10 @@ extern const PDMDEVREG g_DeviceEFI;
 #ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
 extern const PDMDEVREG g_DevicePciRaw;
 #endif
+extern const PDMDEVREG g_DeviceGIMDev;
+#ifdef VBOX_WITH_VIRTUALKD
+extern const PDMDEVREG g_DeviceVirtualKD;
+#endif
 
 extern const PDMDRVREG g_DrvMouseQueue;
 extern const PDMDRVREG g_DrvKeyboardQueue;
@@ -147,7 +151,6 @@ extern const PDMDRVREG g_DrvDiskIntegrity;
 #ifdef VBOX_WITH_PCI_PASSTHROUGH_IMPL
 extern const PDMDRVREG g_DrvPciRaw;
 #endif
-extern const PDMDEVREG g_DeviceGIMDev;
 
 #ifdef VBOX_WITH_USB
 extern const PDMUSBREG g_UsbDevProxy;
