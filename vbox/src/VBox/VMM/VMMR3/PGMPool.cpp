@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
+/* $Id: PGMPool.cpp 52810 2014-09-22 10:02:26Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -298,7 +298,7 @@ int pgmR3PoolInit(PVM pVM)
     pPool->aPages[NIL_PGMPOOL_IDX].iModifiedNext    = NIL_PGMPOOL_IDX;
     pPool->aPages[NIL_PGMPOOL_IDX].iModifiedPrev    = NIL_PGMPOOL_IDX;
     pPool->aPages[NIL_PGMPOOL_IDX].iMonitoredNext   = NIL_PGMPOOL_IDX;
-    pPool->aPages[NIL_PGMPOOL_IDX].iMonitoredNext   = NIL_PGMPOOL_IDX;
+    pPool->aPages[NIL_PGMPOOL_IDX].iMonitoredPrev   = NIL_PGMPOOL_IDX;
     pPool->aPages[NIL_PGMPOOL_IDX].iAgeNext         = NIL_PGMPOOL_IDX;
     pPool->aPages[NIL_PGMPOOL_IDX].iAgePrev         = NIL_PGMPOOL_IDX;
 
