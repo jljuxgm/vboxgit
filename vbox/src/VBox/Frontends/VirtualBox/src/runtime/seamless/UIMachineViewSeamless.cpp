@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 52794 2014-09-19 14:33:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -178,7 +178,7 @@ QRect UIMachineViewSeamless::workingArea() const
     /* Get corresponding screen: */
     int iScreen = static_cast<UIMachineLogicSeamless*>(machineLogic())->hostScreenForGuestScreen(screenId());
     /* Return available geometry for that screen: */
-    return vboxGlobal().availableGeometry(iScreen);
+    return QApplication::desktop()->availableGeometry(iScreen);
 }
 
 QSize UIMachineViewSeamless::calculateMaxGuestSize() const

@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 52783 2014-09-18 11:45:40Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 52794 2014-09-19 14:33:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation (fullscreen/seamless).
  */
@@ -146,7 +146,7 @@ void UIRuntimeMiniToolBar::adjustGeometry(int iHostScreen /* = -1 */)
     int iX = 0, iY = 0;
     switch (m_geometryType)
     {
-        case GeometryType_Available: screenRect = vboxGlobal().availableGeometry(iHostScreen); break;
+        case GeometryType_Available: screenRect = QApplication::desktop()->availableGeometry(iHostScreen); break;
         case GeometryType_Full:      screenRect = QApplication::desktop()->screenGeometry(iHostScreen); break;
         default: break;
     }
