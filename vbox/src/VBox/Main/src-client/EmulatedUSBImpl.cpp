@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 48408 2013-09-10 13:10:53Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.cpp 48423 2013-09-11 10:44:36Z vboxsync $ */
 /** @file
  *
  * Emulated USB manager implementation.
@@ -253,11 +253,9 @@ void EmulatedUSB::uninit()
     WebcamsMap::iterator it = m.webcams.begin();
     while (it != m.webcams.end())
     {
-        WebcamsMap::iterator itNext = ++it;
         EUSBWEBCAM *p = it->second;
-        m.webcams.erase(it);
+        m.webcams.erase(it++);
         p->Release();
-        it = itNext;
     }
     alock.release();
 
@@ -401,6 +399,10 @@ HRESULT EmulatedUSB::webcamDetach(const com::Utf8Str &aPath)
         {
             hrc = p->Detach(m.pConsole, ptrVM.rawUVM());
             p->Release();
+        }
+        else
+        {
+            hrc = E_INVALIDARG;
         }
     }
     else
