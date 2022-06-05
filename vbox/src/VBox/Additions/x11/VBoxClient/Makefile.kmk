@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49877 2013-12-11 16:27:39Z vboxsync $
+# $Id: Makefile.kmk 50336 2014-02-05 19:10:45Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -61,7 +61,6 @@ ifdef VBOX_X11_SEAMLESS_GUEST
 	seamless.cpp \
 	seamless-host.cpp \
 	seamless-x11.cpp \
-	thread.cpp \
 	display.cpp \
 	hostversion.cpp
  VBoxClient_LIBS += \
@@ -111,8 +110,7 @@ $$(tstSeamlessX11-auto_0_OUTDIR)/tstSeamlessX11-auto.run: \
    tstSeamlessX11_SOURCES = \
            testcase/tstSeamlessX11.cpp \
            seamless-host.cpp \
-           seamless-x11.cpp \
-           thread.cpp
+           seamless-x11.cpp
    tstSeamlessX11_LIBPATH = \
            $(VBOX_LIBPATH_X11)
    tstSeamlessX11_LIBS = \
