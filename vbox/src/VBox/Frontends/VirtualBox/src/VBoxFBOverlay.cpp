@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 49485 2013-11-14 16:18:00Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 49535 2013-11-18 15:41:20Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -2594,6 +2594,7 @@ int VBoxVHWAImage::vhwaSurfaceDestroy(struct VBOXVHWACMD_SURF_DESTROY *pCmd)
     }
     else
     {
+        Assert(pList);
         Assert(pList->size() >= 1);
         if(pList->size() > 1)
         {
