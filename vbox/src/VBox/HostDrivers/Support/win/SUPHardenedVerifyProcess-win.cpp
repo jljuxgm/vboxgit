@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 51910 2014-07-07 20:36:52Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -159,6 +159,20 @@ static const char *g_apszSupNtVpAllowedVmExes[] =
     "VBoxSDL.exe",
     "VBoxNetDHCP.exe",
     "VBoxNetNAT.exe",
+
+    "tstMicro.exe",
+    "tstPDMAsyncCompletion.exe",
+    "tstPDMAsyncCompletionStress.exe",
+    "tstVMM.exe",
+    "tstVMREQ.exe",
+    "tstCFGM.exe",
+    "tstIntNet-1.exe",
+    "tstMMHyperHeap.exe",
+    "tstR0ThreadPreemptionDriver.exe",
+    "tstRTR0MemUserKernelDriver.exe",
+    "tstRTR0SemMutexDriver.exe",
+    "tstRTR0TimerDriver.exe",
+    "tstSSM.exe",
 };
 
 /** Pointer to NtQueryVirtualMemory.  Initialized by SUPDrv-win.cpp in
