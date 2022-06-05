@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 51455 2014-05-28 17:53:18Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 51514 2014-06-03 14:42:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1542,10 +1542,7 @@ void UISelectorWindow::loadSettings()
 
     /* Restore splitter handle position: */
     {
-        QList<int> sizes = vbox.GetExtraDataIntList(GUI_SplitterSizes);
-
-        if (sizes.size() == 2)
-            m_pSplitter->setSizes(sizes);
+        m_pSplitter->setSizes(gEDataManager->selectorWindowSplitterHints());
     }
 
     /* Restore toolbar and statusbar visibility: */
@@ -1569,7 +1566,7 @@ void UISelectorWindow::saveSettings()
 
     /* Save splitter handle position: */
     {
-        vbox.SetExtraDataIntList(GUI_SplitterSizes, m_pSplitter->sizes());
+        gEDataManager->setSelectorWindowSplitterHints(m_pSplitter->sizes());
     }
 
     /* Save window position: */
