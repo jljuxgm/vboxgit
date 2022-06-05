@@ -1,4 +1,4 @@
-/* $Id: utils.h 49819 2013-12-09 06:22:16Z vboxsync $ */
+/* $Id: utils.h 49825 2013-12-09 09:12:47Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -126,6 +126,8 @@ class NS_CLASSINFO_NAME(NATNetworkListenerImpl);
 typedef ComPtr<NATNetworkListenerImpl> ComNatListenerPtr;
 typedef com::SafeArray<VBoxEventType_T> ComEventTypeArray;
 
+/* XXX: const is commented out because of compilation erro on Windows host, but it's intended that this function 
+ isn't modify event type array */
 int createNatListener(ComNatListenerPtr& listener, const ComVirtualBoxPtr& vboxptr, 
-                      NATNetworkEventAdapter *adapter, const ComEventTypeArray& events);
+                      NATNetworkEventAdapter *adapter, /* const */ ComEventTypeArray& events);
 #endif

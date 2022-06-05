@@ -1,4 +1,4 @@
-/* $Id: ComHostUtils.cpp 49822 2013-12-09 06:49:32Z vboxsync $ */
+/* $Id: ComHostUtils.cpp 49825 2013-12-09 09:12:47Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -192,7 +192,7 @@ int hostDnsDomain(const ComHostPtr& host, std::string& domainStr)
 }
 
 int createNatListener(ComNatListenerPtr& listener, const ComVirtualBoxPtr& vboxptr, 
-                             NATNetworkEventAdapter *adapter, const ComEventTypeArray& events)
+                      NATNetworkEventAdapter *adapter, /* const */ ComEventTypeArray& events)
 {
     ComObjPtr<NATNetworkListenerImpl> obj;
     HRESULT hrc = obj.createObject();
