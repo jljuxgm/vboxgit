@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 51493 2014-06-02 16:30:27Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 51509 2014-06-03 12:16:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -220,6 +220,9 @@ STDMETHODIMP UIFrameBuffer::NotifyChange(ULONG uScreenId, ULONG uX, ULONG uY, UL
         /* Ignore NotifyChange: */
         return E_FAIL;
     }
+
+    /* Disable screen updates: */
+    m_fUpdatesAllowed = false;
 
     /* Acquire new pending bitmap: */
     m_pendingSourceBitmap = 0;
@@ -483,9 +486,6 @@ void UIFrameBuffer::notifyChange(int iWidth, int iHeight)
         /* Return immediately: */
         return;
     }
-
-    /* Disable screen updates: */
-    m_fUpdatesAllowed = false;
 
     /* Release the current bitmap and keep the pending one: */
     m_sourceBitmap = m_pendingSourceBitmap;
