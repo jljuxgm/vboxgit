@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 50335 2014-02-05 17:24:34Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 50648 2014-02-28 09:06:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -103,8 +103,8 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp("((Mac)|(Tig)|(Leop)|(os[ ]*x)).*32",                                             Qt::CaseInsensitive), "MacOS" },
 
     /* Code names for Linux distributions: */
-    { QRegExp("((edgy)|(feisty)|(gutsy)|(hardy)|(intrepid)|(jaunty)|(karmic)|(lucid)|(maverick)|(natty)|(oneiric)|(precise)|(quantal)|(raring)).*64",    Qt::CaseInsensitive), "Ubuntu_64" },
-    { QRegExp("((edgy)|(feisty)|(gutsy)|(hardy)|(intrepid)|(jaunty)|(karmic)|(lucid)|(maverick)|(natty)|(oneiric)|(precise)|(quantal)|(raring)).*32",    Qt::CaseInsensitive), "Ubuntu" },
+    { QRegExp("((edgy)|(feisty)|(gutsy)|(hardy)|(intrepid)|(jaunty)|(karmic)|(lucid)|(maverick)|(natty)|(oneiric)|(precise)|(quantal)|(raring)|(saucy)|(trusty)).*64",    Qt::CaseInsensitive), "Ubuntu_64" },
+    { QRegExp("((edgy)|(feisty)|(gutsy)|(hardy)|(intrepid)|(jaunty)|(karmic)|(lucid)|(maverick)|(natty)|(oneiric)|(precise)|(quantal)|(raring)|(saucy)|(trusty)).*32",    Qt::CaseInsensitive), "Ubuntu" },
     { QRegExp("((sarge)|(etch)|(lenny)|(squeeze)|(wheezy)|(jessie)|(sid)).*64",                                                                          Qt::CaseInsensitive), "Debian_64" },
     { QRegExp("((sarge)|(etch)|(lenny)|(squeeze)|(wheezy)|(jessie)|(sid)).*32",                                                                          Qt::CaseInsensitive), "Debian" },
     { QRegExp("((moonshine)|(werewolf)|(sulphur)|(cambridge)|(leonidas)|(constantine)|(goddard)|(laughlin)|(lovelock)|(verne)|(beefy)|(spherical)).*64", Qt::CaseInsensitive), "Fedora_64" },
