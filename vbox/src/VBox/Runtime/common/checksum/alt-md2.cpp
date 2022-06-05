@@ -1,4 +1,4 @@
-/* $Id: alt-md2.cpp 51851 2014-07-03 14:01:28Z vboxsync $ */
+/* $Id: alt-md2.cpp 51861 2014-07-03 22:56:18Z vboxsync $ */
 /** @file
  * IPRT - Message-Digest Algorithm 2, Alternative Implementation.
  */
@@ -255,6 +255,7 @@ RTDECL(void) RTMd2Final(PRTMD2CONTEXT pCtx, uint8_t pabDigest[RTMD2_HASH_SIZE])
      */
     memcpy(pabDigest, pCtx->AltPrivate.abStateX, RTMD2_HASH_SIZE);
 
+    RT_ZERO(pCtx->AltPrivate);
     pCtx->AltPrivate.cbBuffer = UINT8_MAX;
 }
 RT_EXPORT_SYMBOL(RTMd2Final);
