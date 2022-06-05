@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48187 2013-08-30 11:42:03Z vboxsync $
+# $Id: Makefile.kmk 48224 2013-09-02 10:14:43Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X Guest Additions.
 #
@@ -66,16 +66,6 @@ endif
 ifndef VBOX_PATH_PACK_TMP
  VBOX_PATH_PACK_TMP := $(VBOX_DI_OUT_DIR)
 endif
-
-
-#
-# Install the darwin docs/license.
-#
-INSTALLS += darwin-docs
-darwin-docs_INST = $(INST_DIST)
-darwin-docs_MODE = a+r,u+w
-darwin-docs_SOURCES = \
-	$(VBOX_BRAND_LICENSE_TXT)=>LICENSE
 
 
 #
