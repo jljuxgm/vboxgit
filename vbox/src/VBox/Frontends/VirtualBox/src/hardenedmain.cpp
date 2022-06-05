@@ -1,4 +1,4 @@
-/* $Id: hardenedmain.cpp 49892 2013-12-13 00:34:26Z vboxsync $ */
+/* $Id: hardenedmain.cpp 52424 2014-08-20 03:25:37Z vboxsync $ */
 /** @file
  * VirtualBox - Hardened main().
  */
@@ -56,6 +56,6 @@ int main(int argc, char **argv, char **envp)
             break;
         }
 
-    return SUPR3HardenedMain("VirtualBox", fFlags, argc, argv, envp);
+    return SUPR3HardenedMain("VirtualBox", fFlags | SUPSECMAIN_FLAGS_TRUSTED_ERROR, argc, argv, envp);
 }
 
