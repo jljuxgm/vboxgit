@@ -1,4 +1,4 @@
-/* $Id: Gpt.c 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: Gpt.c 48730 2013-09-27 12:28:22Z vboxsync $ */
 /** @file
  * Gpt.c
  */
@@ -220,7 +220,7 @@ PartitionInstallGptChildHandles (
   HARDDRIVE_DEVICE_PATH       HdDev;
   UINT32                      MediaId;
 
-  LogFlowFuncMarkDP(DevicePath);
+  VBoxLogFlowFuncMarkDP(DevicePath);
   ProtectiveMbr = NULL;
   PrimaryHeader = NULL;
   BackupHeader  = NULL;
