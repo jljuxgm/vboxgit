@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 50039 2014-01-09 15:24:47Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 50040 2014-01-09 15:27:51Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -293,6 +293,9 @@ void VBoxIPCDestroy(const VBOXSERVICEENV *pEnv, void *pInstance)
         {
             fListIsEmpty = RTListIsEmpty(&pCtx->SessionList);
             rc2 = RTCritSectLeave(&pCtx->CritSect);
+
+            if (!fListIsEmpty) /* Don't hog CPU while waiting. */
+                RTThreadSleep(100);
         }
 
         if (RT_FAILURE(rc2))
