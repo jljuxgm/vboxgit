@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 52558 2014-09-01 17:02:01Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 52638 2014-09-08 11:08:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -400,6 +400,9 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
         m_pMiniToolBar->show();
         m_pMiniToolBar->adjustGeometry(iHostScreen);
     }
+
+    /* Make sure machine-view have focus: */
+    m_pMachineView->setFocus();
 }
 
 void UIMachineWindowFullscreen::updateAppearanceOf(int iElement)

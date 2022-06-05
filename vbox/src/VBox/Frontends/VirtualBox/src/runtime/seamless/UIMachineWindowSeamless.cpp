@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 52382 2014-08-14 13:27:19Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 52638 2014-09-08 11:08:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -210,6 +210,9 @@ void UIMachineWindowSeamless::showInNecessaryMode()
         m_pMiniToolBar->adjustGeometry();
     }
 #endif /* !Q_WS_MAC */
+
+    /* Make sure machine-view have focus: */
+    m_pMachineView->setFocus();
 }
 
 #ifndef Q_WS_MAC

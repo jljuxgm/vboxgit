@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 52129 2014-07-22 15:17:21Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 52638 2014-09-08 11:08:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -154,6 +154,9 @@ void UIMachineWindowScale::showInNecessaryMode()
 
     /* Show in normal mode: */
     show();
+
+    /* Make sure machine-view have focus: */
+    m_pMachineView->setFocus();
 }
 
 bool UIMachineWindowScale::event(QEvent *pEvent)

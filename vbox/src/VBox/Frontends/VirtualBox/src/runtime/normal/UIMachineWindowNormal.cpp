@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52516 2014-08-28 15:16:56Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52638 2014-09-08 11:08:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -410,6 +410,9 @@ void UIMachineWindowNormal::showInNecessaryMode()
 
     /* Show in normal mode: */
     show();
+
+    /* Make sure machine-view have focus: */
+    m_pMachineView->setFocus();
 }
 
 /**

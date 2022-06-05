@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 52246 2014-07-31 12:09:47Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 52638 2014-09-08 11:08:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -86,26 +86,6 @@ bool UIMachineViewNormal::eventFilter(QObject *pWatched, QEvent *pEvent)
                 break;
         }
     }
-
-#ifdef Q_WS_WIN
-    else if (pWatched != 0 && pWatched == machineWindow()->menuBar())
-    {
-        /* Due to windows host uses separate 'focus set' to let menubar to
-         * operate while popped up (see UIMachineViewNormal::event() for details),
-         * it also requires backward processing: */
-        switch (pEvent->type())
-        {
-            /* If menubar gets the focus while not popped up => give it back: */
-            case QEvent::FocusIn:
-            {
-                if (!QApplication::activePopupWidget())
-                    setFocus();
-            }
-            default:
-                break;
-        }
-    }
-#endif /* Q_WS_WIN */
 
     return UIMachineView::eventFilter(pWatched, pEvent);
 }
