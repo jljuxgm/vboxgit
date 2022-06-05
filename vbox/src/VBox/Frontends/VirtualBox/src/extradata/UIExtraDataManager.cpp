@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51177 2014-04-30 14:18:14Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51178 2014-04-30 14:43:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -572,6 +572,27 @@ bool UIExtraDataManager::isFeatureAllowed(const QString &strKey, const QString &
            || strValue.compare("yes", Qt::CaseInsensitive) == 0
            || strValue.compare("on", Qt::CaseInsensitive) == 0
            || strValue == "1";
+}
+
+bool UIExtraDataManager::isFeatureRestricted(const QString &strKey, const QString &strID /* = QString() */) const
+{
+    /* Hot-load machine extra-data map if necessary: */
+    if (!strID.isNull() && !m_data.contains(strID))
+        hotloadMachineExtraDataMap(strID);
+
+    /* Access corresponding map: */
+    ExtraDataMap &data = m_data[strID];
+
+    /* 'false' if value was not set: */
+    if (!data.contains(strKey))
+        return false;
+
+    /* Check corresponding value: */
+    const QString &strValue = data[strKey];
+    return    strValue.compare("false", Qt::CaseInsensitive) == 0
+           || strValue.compare("no", Qt::CaseInsensitive) == 0
+           || strValue.compare("off", Qt::CaseInsensitive) == 0
+           || strValue == "0";
 }
 
 QString UIExtraDataManager::extraDataString(const QString &strKey, const QString &strID /* = QString() */) const
