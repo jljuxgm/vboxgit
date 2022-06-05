@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50591 2014-02-25 19:34:40Z vboxsync $
+# $Id: Makefile.kmk 50592 2014-02-25 19:56:18Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -236,7 +236,7 @@ tstMediumLock_SOURCES  = tstMediumLock.cpp
 #
 # tstMouseImpl
 #
-tstMouseImpl_TEMPLATE = VBOXMAINCLIENTTSTEXE
+tstMouseImpl_TEMPLATE = VBOXMAINTSTEXE
 tstMouseImpl_SOURCES  = \
 	tstMouseImpl.cpp \
 	../src-client/MouseImpl.cpp \
@@ -249,10 +249,7 @@ tstMouseImpl_INCS      = ../include \
 	$(VBOX_PATH_SDK)/bindings/xpcom/include \
 	$(VBOX_PATH_SDK)/bindings/xpcom/include/nsprpub \
 	$(VBOX_PATH_SDK)/bindings/xpcom/include/xpcom \
-	$(dir $(VBOX_XML_SCHEMADEFS_H)) \
- 	$(VBOX_MAIN_APIWRAPPER_INCS)
-tstMouse_INTERMEDIATES   = $(VBOX_MAIN_APIWRAPPER_GEN_HDRS)
-
+	$(dir $(VBOX_XML_SCHEMADEFS_H))
 tstMouseImpl_LIBS      = \
 	$(PATH_STAGE_LIB)/VBoxAPIWrap$(VBOX_SUFF_LIB) \
 	$(LIB_VMM)
