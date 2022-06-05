@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 52372 2014-08-13 19:06:54Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 52459 2014-08-22 11:03:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -462,10 +462,10 @@ void UIMachineLogicFullscreen::prepareActionGroups()
 
     /* Restrict 'Adjust Window', 'Status Bar' and 'Resize' actions for 'View' menu: */
     actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Logic,
-                                                         (RuntimeMenuViewActionType)
-                                                         (RuntimeMenuViewActionType_AdjustWindow |
-                                                          RuntimeMenuViewActionType_StatusBar |
-                                                          RuntimeMenuViewActionType_Resize));
+                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
+                                                         (UIExtraDataMetaDefs::RuntimeMenuViewActionType_AdjustWindow |
+                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBar |
+                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize));
 
     /* Take care of view-action toggle state: */
     UIAction *pActionFullscreen = actionPool()->action(UIActionIndexRT_M_View_T_Fullscreen);
@@ -637,7 +637,7 @@ void UIMachineLogicFullscreen::cleanupActionGroups()
 
     /* Allow 'Adjust Window', 'Status Bar' and 'Resize' actions for 'View' menu: */
     actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Logic,
-                                                         RuntimeMenuViewActionType_Invalid);
+                                                         UIExtraDataMetaDefs::RuntimeMenuViewActionType_Invalid);
 
     /* Call to base-class: */
     UIMachineLogic::cleanupActionGroups();

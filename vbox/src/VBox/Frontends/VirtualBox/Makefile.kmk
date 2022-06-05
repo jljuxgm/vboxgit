@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52389 2014-08-15 12:13:18Z vboxsync $
+# $Id: Makefile.kmk 52459 2014-08-22 11:03:40Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -278,6 +278,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/extensions/QIWidgetValidator.h \
 	src/extensions/QIAdvancedToolBar.h \
 	src/extensions/graphics/QIGraphicsWidget.h \
+	src/extradata/UIExtraDataDefs.h \
 	src/extradata/UIExtraDataManager.h \
 	src/globals/UIActionPool.h \
 	src/globals/UIAnimationFramework.h \
