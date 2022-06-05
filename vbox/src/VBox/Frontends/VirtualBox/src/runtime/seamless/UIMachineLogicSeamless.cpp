@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 49506 2013-11-15 14:38:02Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 49698 2013-11-28 11:44:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -239,8 +239,9 @@ void UIMachineLogicSeamless::prepareMenu()
     /* Call to base-class: */
     UIMachineLogic::prepareMenu();
 
-    /* Finally update view-menu: */
-    m_pScreenLayout->setViewMenu(gActionPool->action(UIActionIndexRuntime_Menu_View)->menu());
+    /* Finally update view-menu, if necessary: */
+    if (uisession()->allowedActionsMenuView() & RuntimeMenuViewActionType_Multiscreen)
+        m_pScreenLayout->setViewMenu(gActionPool->action(UIActionIndexRuntime_Menu_View)->menu());
 }
 
 void UIMachineLogicSeamless::cleanupMachineWindows()

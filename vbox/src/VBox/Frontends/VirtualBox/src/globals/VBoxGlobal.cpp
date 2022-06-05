@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 49596 2013-11-21 10:11:36Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 49698 2013-11-28 11:44:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3552,6 +3552,124 @@ RuntimeMenuType VBoxGlobal::restrictedRuntimeMenuTypes(CMachine &machine)
         RuntimeMenuType value = gpConverter->fromInternalString<RuntimeMenuType>(strValue);
         if (value != RuntimeMenuType_Invalid)
             result = static_cast<RuntimeMenuType>(result | value);
+    }
+    /* Return result: */
+    return result;
+}
+
+#ifdef Q_WS_MAC
+/* static */
+RuntimeMenuApplicationActionType VBoxGlobal::restrictedRuntimeMenuApplicationActionTypes(CMachine &machine)
+{
+    /* Prepare result: */
+    RuntimeMenuApplicationActionType result = RuntimeMenuApplicationActionType_Invalid;
+    /* Load restricted runtime-application-menu action-types: */
+    QString strList(machine.GetExtraData(GUI_RestrictedRuntimeApplicationMenuActions));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        RuntimeMenuApplicationActionType value = gpConverter->fromInternalString<RuntimeMenuApplicationActionType>(strValue);
+        if (value != RuntimeMenuApplicationActionType_Invalid)
+            result = static_cast<RuntimeMenuApplicationActionType>(result | value);
+    }
+    /* Return result: */
+    return result;
+}
+#endif /* Q_WS_MAC */
+
+/* static */
+RuntimeMenuMachineActionType VBoxGlobal::restrictedRuntimeMenuMachineActionTypes(CMachine &machine)
+{
+    /* Prepare result: */
+    RuntimeMenuMachineActionType result = RuntimeMenuMachineActionType_Invalid;
+    /* Load restricted runtime-machine-menu action-types: */
+    QString strList(machine.GetExtraData(GUI_RestrictedRuntimeMachineMenuActions));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        RuntimeMenuMachineActionType value = gpConverter->fromInternalString<RuntimeMenuMachineActionType>(strValue);
+        if (value != RuntimeMenuMachineActionType_Invalid)
+            result = static_cast<RuntimeMenuMachineActionType>(result | value);
+    }
+    /* Return result: */
+    return result;
+}
+
+/* static */
+RuntimeMenuViewActionType VBoxGlobal::restrictedRuntimeMenuViewActionTypes(CMachine &machine)
+{
+    /* Prepare result: */
+    RuntimeMenuViewActionType result = RuntimeMenuViewActionType_Invalid;
+    /* Load restricted runtime-view-menu action-types: */
+    QString strList(machine.GetExtraData(GUI_RestrictedRuntimeViewMenuActions));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        RuntimeMenuViewActionType value = gpConverter->fromInternalString<RuntimeMenuViewActionType>(strValue);
+        if (value != RuntimeMenuViewActionType_Invalid)
+            result = static_cast<RuntimeMenuViewActionType>(result | value);
+    }
+    /* Return result: */
+    return result;
+}
+
+/* static */
+RuntimeMenuDevicesActionType VBoxGlobal::restrictedRuntimeMenuDevicesActionTypes(CMachine &machine)
+{
+    /* Prepare result: */
+    RuntimeMenuDevicesActionType result = RuntimeMenuDevicesActionType_Invalid;
+    /* Load restricted runtime-devices-menu action-types: */
+    QString strList(machine.GetExtraData(GUI_RestrictedRuntimeDevicesMenuActions));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        RuntimeMenuDevicesActionType value = gpConverter->fromInternalString<RuntimeMenuDevicesActionType>(strValue);
+        if (value != RuntimeMenuDevicesActionType_Invalid)
+            result = static_cast<RuntimeMenuDevicesActionType>(result | value);
+    }
+    /* Return result: */
+    return result;
+}
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+/* static */
+RuntimeMenuDebuggerActionType VBoxGlobal::restrictedRuntimeMenuDebuggerActionTypes(CMachine &machine)
+{
+    /* Prepare result: */
+    RuntimeMenuDebuggerActionType result = RuntimeMenuDebuggerActionType_Invalid;
+    /* Load restricted runtime-debugger-menu action-types: */
+    QString strList(machine.GetExtraData(GUI_RestrictedRuntimeDebuggerMenuActions));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        RuntimeMenuDebuggerActionType value = gpConverter->fromInternalString<RuntimeMenuDebuggerActionType>(strValue);
+        if (value != RuntimeMenuDebuggerActionType_Invalid)
+            result = static_cast<RuntimeMenuDebuggerActionType>(result | value);
+    }
+    /* Return result: */
+    return result;
+}
+#endif /* VBOX_WITH_DEBUGGER_GUI */
+
+/* static */
+RuntimeMenuHelpActionType VBoxGlobal::restrictedRuntimeMenuHelpActionTypes(CMachine &machine)
+{
+    /* Prepare result: */
+    RuntimeMenuHelpActionType result = RuntimeMenuHelpActionType_Invalid;
+    /* Load restricted runtime-help-menu action-types: */
+    QString strList(machine.GetExtraData(GUI_RestrictedRuntimeHelpMenuActions));
+    QStringList list = strList.split(',');
+    /* Convert list into appropriate values: */
+    foreach (const QString &strValue, list)
+    {
+        RuntimeMenuHelpActionType value = gpConverter->fromInternalString<RuntimeMenuHelpActionType>(strValue);
+        if (value != RuntimeMenuHelpActionType_Invalid)
+            result = static_cast<RuntimeMenuHelpActionType>(result | value);
     }
     /* Return result: */
     return result;

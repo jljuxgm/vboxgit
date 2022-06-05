@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 49306 2013-10-28 12:46:49Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 49698 2013-11-28 11:44:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -359,6 +359,10 @@ void UIMultiScreenLayout::cleanupViewMenu()
 
 void UIMultiScreenLayout::updateMenuActions(bool fWithSave)
 {
+    /* Make sure view-menu was set: */
+    if (!m_pViewMenu)
+        return;
+
     /* Get the list of all view-menu actions: */
     QList<QAction*> viewMenuActions = gActionPool->action(UIActionIndexRuntime_Menu_View)->menu()->actions();
     /* Get the list of all view related actions: */
