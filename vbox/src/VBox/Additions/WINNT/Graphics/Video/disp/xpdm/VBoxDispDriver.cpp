@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriver.cpp 46896 2013-07-02 08:16:43Z vboxsync $ */
+/* $Id: VBoxDispDriver.cpp 52476 2014-08-22 14:41:54Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver interface functions
@@ -184,11 +184,13 @@ VOID _wcsncpy(WCHAR *pwcd, WCHAR *pwcs, ULONG dstsize)
 
 static int VBoxDispInitDevice(PVBOXDISPDEV pDev, DEVMODEW *pdm, GDIINFO *pGdiInfo, DEVINFO *pDevInfo)
 {
-    VIDEO_MODE_INFORMATION *pModesTable, selectedMode;
+    VIDEO_MODE_INFORMATION *pModesTable = NULL, selectedMode;
     ULONG cModes, i=0;
     int rc;
 
     LOGF_ENTER();
+
+    memset(&selectedMode, 0, sizeof(VIDEO_MODE_INFORMATION));
 
     /* Get a list of supported modes by both miniport and display driver */
     rc = VBoxDispMPGetVideoModes(pDev->hDriver, &pModesTable, &cModes);
