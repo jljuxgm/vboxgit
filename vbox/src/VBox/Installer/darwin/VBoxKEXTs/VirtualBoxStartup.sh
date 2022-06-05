@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id$
+# $Id: VirtualBoxStartup.sh 48928 2013-10-07 16:13:23Z vboxsync $
 ## @file
 # Startup service for loading the kernel extensions and select the set of VBox
 # binaries that matches the kernel architecture.
@@ -17,7 +17,52 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-. /etc/rc.common
+if false; then
+    . /etc/rc.common
+else
+    # Fake the startup item functions we're using. 
+
+    ConsoleMessage()
+    {
+        if [ "$1" != "-f" ]; then 
+            echo "$@"
+        else
+            shift
+            echo "Fatal error: $@"
+            exit 1;
+        fi
+    }
+
+    RunService()
+    {
+        case "$1" in 
+            "start")
+                StartService
+                exit $?;
+                ;;
+            "stop")
+                StopService
+                exit $?;
+                ;;
+            "restart")
+                RestartService
+                exit $?;
+                ;;
+            "launchd")
+                if RestartService; then
+                    while true;
+                    do
+                        sleep 3600
+                    done
+                fi 
+                exit $?;
+                ;;
+             **)
+                echo "Error: Unknown action '$1'"
+                exit 1;
+        esac                    
+    }
+fi
 
 
 StartService()
