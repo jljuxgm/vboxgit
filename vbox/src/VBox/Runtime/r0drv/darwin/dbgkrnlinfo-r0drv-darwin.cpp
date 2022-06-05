@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 43303 2012-09-11 23:55:10Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 48905 2013-10-05 16:39:36Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -57,7 +57,7 @@ RT_C_DECLS_END
 #include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
-#include "internal/ldrMach-O.h"
+#include <iprt/formats/mach-o.h>
 #include "internal/magics.h"
 
 /** @def MY_CPU_TYPE
