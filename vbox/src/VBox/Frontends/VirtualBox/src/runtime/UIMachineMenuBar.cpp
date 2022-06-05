@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 51392 2014-05-26 12:32:56Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 51397 2014-05-26 13:48:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineMenuBar class implementation.
  */
@@ -24,6 +24,7 @@
 /* GUI includes: */
 #include "UIMachineMenuBar.h"
 #include "UISession.h"
+#include "UIMachineLogic.h"
 #include "UIActionPoolRuntime.h"
 #include "VBoxGlobal.h"
 #include "UIMessageCenter.h"
@@ -638,7 +639,7 @@ void UIMachineMenuBar::prepareMenuHelp(QMenu *pMenu)
     {
         pMenu->addAction(gActionPool->action(UIActionIndex_Simple_Preferences));
         VBoxGlobal::connect(gActionPool->action(UIActionIndex_Simple_Preferences), SIGNAL(triggered()),
-                            m_pSession, SLOT(sltOpenGlobalPreferences()));
+                            m_pSession->machineLogic(), SLOT(sltShowGlobalPreferences()));
     }
     else
         gActionPool->action(UIActionIndex_Simple_Preferences)->setEnabled(false);
