@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 53302 2014-11-11 13:32:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsModel class implementation.
  */
@@ -228,10 +228,6 @@ void UIGDetailsModel::loadSettings()
 {
     /* Load settings: */
     m_settings = gEDataManager->selectorWindowDetailsElements();
-}
-
-void UIGDetailsModel::saveSettings()
-{
     /* If settings are empty: */
     if (m_settings.isEmpty())
     {
@@ -247,7 +243,10 @@ void UIGDetailsModel::saveSettings()
         m_settings[DetailsElementType_SF] = true;
         m_settings[DetailsElementType_Description] = true;
     }
+}
 
+void UIGDetailsModel::saveSettings()
+{
     /* Save settings: */
     gEDataManager->setSelectorWindowDetailsElements(m_settings);
 }
