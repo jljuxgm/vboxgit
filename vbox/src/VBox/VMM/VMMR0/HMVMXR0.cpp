@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49889 2013-12-12 17:12:08Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49890 2013-12-12 17:13:49Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6593,7 +6593,7 @@ static int hmR0VmxLeave(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, bool fSaveGue
     Log4Func(("HostCpuId=%u\n", idCpu));
 
     /*
-     * IMPORTANT!!!
+     * !!! IMPORTANT !!!
      * If you modify code here, make sure to check whether hmR0SvmCallRing3Callback() needs to be updated too.
      */
 
@@ -6718,7 +6718,7 @@ DECLINLINE(int) hmR0VmxLeaveSession(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     }
 
     /*
-     * IMPORTANT!!!
+     * !!! IMPORTANT !!!
      * If you modify code here, make sure to check whether hmR0SvmCallRing3Callback() needs to be updated too.
      */
 
