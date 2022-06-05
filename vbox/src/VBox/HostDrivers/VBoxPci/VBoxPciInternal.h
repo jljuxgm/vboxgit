@@ -1,4 +1,4 @@
-/* $Id: VBoxPciInternal.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxPciInternal.h 50779 2014-03-13 22:54:47Z vboxsync $ */
 /** @file
  * VBoxPci - PCI driver (Host), Internal Header.
  */
@@ -94,6 +94,8 @@ typedef struct VBOXRAWPCIINS
 
     /** Pointer to per-VM context in hypervisor data. */
     PRAWPCIPERVM       pVmCtx;
+
+    RTR0PTR            aRegionR0Mapping[/* XXX: magic */ 7];
 } VBOXRAWPCIINS;
 
 /**
