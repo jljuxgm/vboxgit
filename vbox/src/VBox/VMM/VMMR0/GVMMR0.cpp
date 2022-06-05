@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 48208 2013-08-30 22:05:31Z vboxsync $ */
+/* $Id: GVMMR0.cpp 48395 2013-09-09 16:37:41Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1117,7 +1117,13 @@ GVMMR0DECL(int) GVMMR0DestroyVM(PVM pVM)
         gvmmR0CreateDestroyUnlock(pGVMM);
 
         for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
+        {
+            /** @todo Can we busy wait here for all thread-context hooks to be
+             *        deregistered before releasing (destroying) it? Only until we find a
+             *        solution for not deregistering hooks everytime we're leaving HMR0
+             *        context. */
             VMMR0ThreadCtxHooksRelease(&pVM->aCpus[idCpu]);
+        }
 
         SUPR0ObjRelease(pvObj, pHandle->pSession);
     }
