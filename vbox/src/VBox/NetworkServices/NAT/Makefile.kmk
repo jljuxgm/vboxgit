@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49735 2013-11-30 02:08:42Z vboxsync $
+# $Id: Makefile.kmk 49835 2013-12-09 11:45:07Z vboxsync $
 ## @file
 #
 
@@ -47,7 +47,8 @@ VBoxNetLwipNAT_SOURCES += VBoxNetLwipNAT.cpp	\
 	../NetLib/VBoxNetPortForwardString.cpp \
 	../NetLib/VBoxNetIntIf.cpp \
 	../NetLib/VBoxNetUDP.cpp \
-	../NetLib/VBoxNetARP.cpp
+	../NetLib/VBoxNetARP.cpp \
+	../NetLib/ComHostUtils.cpp
 
 VBoxNetLwipNAT_LIBS = \
 	$(LIB_RUNTIME)
