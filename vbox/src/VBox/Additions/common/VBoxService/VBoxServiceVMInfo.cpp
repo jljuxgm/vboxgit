@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 50571 2014-02-25 09:55:13Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 51503 2014-06-03 07:24:46Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -150,13 +150,6 @@ int VBoxServiceVMInfoSignal(void)
     if (g_hVMInfoEvent)
         return RTSemEventMultiSignal(g_hVMInfoEvent);
 
-    return VINF_SUCCESS;
-}
-
-
-/** @copydoc VBOXSERVICE::pfnPreInit */
-static DECLCALLBACK(int) VBoxServiceVMInfoPreInit(void)
-{
     return VINF_SUCCESS;
 }
 
@@ -1591,7 +1584,8 @@ VBOXSERVICE g_VMInfo =
     "                            is 5000 (5 seconds).\n"
     ,
     /* methods */
-    VBoxServiceVMInfoPreInit,
+    /* pfnPreInit */
+    NULL,
     VBoxServiceVMInfoOption,
     VBoxServiceVMInfoInit,
     VBoxServiceVMInfoWorker,
