@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 50492 2014-02-18 13:25:22Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 50493 2014-02-18 14:02:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -527,16 +527,19 @@ Qt::Alignment UIMachineWindow::viewAlignment(UIVisualStateType visualStateType)
     return 0;
 }
 
+#ifdef Q_WS_MAC
 void UIMachineWindow::handleNativeNotification(const QString &strNativeNotificationName, QWidget *pWidget)
 {
-    /* Redirect arrived notification: */
+    /* Handle arrived notification: */
     LogRel(("UIMachineWindow::handleNativeNotification: Notification '%s' received.\n",
             strNativeNotificationName.toAscii().constData()));
     if (UIMachineWindow *pMachineWindow = qobject_cast<UIMachineWindow*>(pWidget))
     {
+        /* Redirect arrived notification: */
         LogRel(("UIMachineWindow::handleNativeNotification: Redirecting '%s' notification to corresponding machine-window...\n",
                 strNativeNotificationName.toAscii().constData()));
         pMachineWindow->handleNativeNotification(strNativeNotificationName);
     }
 }
+#endif /* Q_WS_MAC */
 
