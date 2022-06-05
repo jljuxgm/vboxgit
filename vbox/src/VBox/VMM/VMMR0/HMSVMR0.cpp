@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49900 2013-12-13 16:51:32Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49902 2013-12-14 01:01:54Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2135,7 +2135,7 @@ DECLCALLBACK(int) hmR0SvmCallRing3Callback(PVMCPU pVCpu, VMMCALLRING3 enmOperati
             VMMR0ThreadCtxHooksDeregister(pVCpu);
 
         /* Leave HM context. This takes care of local init (term). */
-        int rc = HMR0LeaveCpu(pVCpu);
+        HMR0LeaveCpu(pVCpu);
 
         HM_RESTORE_PREEMPT_IF_NEEDED();
         return VINF_SUCCESS;
