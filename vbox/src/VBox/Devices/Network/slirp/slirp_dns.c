@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 48753 2013-09-28 06:41:28Z vboxsync $ */
+/* $Id: slirp_dns.c 49436 2013-11-11 12:07:31Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -43,7 +43,7 @@ static int get_dns_addr_domain(PNATState pData,
     struct dns_domain_entry *pDomain = NULL;
     ULONG ret = ERROR_SUCCESS;
 
-    /* @todo add SKIPing flags to get only required information */
+    /** @todo add SKIPing flags to get only required information */
 
     /* determine size of buffer */
     size = 0;
@@ -290,7 +290,7 @@ static int get_dns_addr_domain(PNATState pData, const char **ppszDomain)
             TAILQ_INSERT_HEAD(&pData->pDnsList, pDns, de_list);
             cNameserversFound++;
         }
-        if ((!strncmp(buff, "domain", 6) || !strncmp(buff, "search", 6)))
+        if (!strncmp(buff, "domain", 6) || !strncmp(buff, "search", 6))
         {
             char *tok;
             char *saveptr;
@@ -337,7 +337,8 @@ int slirpInitializeDnsSettings(PNATState pData)
     {
         TAILQ_INIT(&pData->pDnsList);
         LIST_INIT(&pData->pDomainList);
-        /**
+
+        /*
          * Some distributions haven't got /etc/resolv.conf
          * so we should other way to configure DNS settings.
          */
