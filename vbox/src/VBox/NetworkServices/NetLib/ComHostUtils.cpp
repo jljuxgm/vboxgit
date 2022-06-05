@@ -1,4 +1,4 @@
-/* $Id: ComHostUtils.cpp 49819 2013-12-09 06:22:16Z vboxsync $ */
+/* $Id: ComHostUtils.cpp 49822 2013-12-09 06:49:32Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -18,6 +18,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#ifdef RT_OS_WINDOWS
+# define VBOX_COM_OUTOFPROC_MODULE
+#endif
 #include <VBox/com/com.h>
 #include <VBox/com/listeners.h>
 #include <VBox/com/string.h>
