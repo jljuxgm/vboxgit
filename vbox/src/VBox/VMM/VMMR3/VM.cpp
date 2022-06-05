@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 52009 2014-07-14 05:27:31Z vboxsync $ */
+/* $Id: VM.cpp 52419 2014-08-19 16:12:46Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -4280,6 +4280,21 @@ VMMR3_INT_DECL(RTCPUID) VMR3GetVMCPUId(PVM pVM)
     return pUVCpu
          ? pUVCpu->idCpu
          : NIL_VMCPUID;
+}
+
+
+/**
+ * Checks if the VM is long-mode (64-bit) capable or not.
+ * @returns true if VM can operate in long-mode, false
+ *        otherwise.
+ *
+ * @param   pVM             Pointer to the VM.
+ */
+VMMR3_INT_DECL(bool) VMR3IsLongModeAllowed(PVM pVM)
+{
+    if (HMIsEnabled(pVM))
+        return HMIsLongModeAllowed(pVM);
+    return false;
 }
 
 

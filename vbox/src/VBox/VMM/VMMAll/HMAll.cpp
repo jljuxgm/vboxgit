@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 51981 2014-07-11 06:16:19Z vboxsync $ */
+/* $Id: HMAll.cpp 52419 2014-08-19 16:12:46Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -281,6 +281,18 @@ VMM_INT_DECL(int) HMFlushTLBOnAllVCpus(PVM pVM)
 VMM_INT_DECL(bool) HMIsNestedPagingActive(PVM pVM)
 {
     return HMIsEnabled(pVM) && pVM->hm.s.fNestedPaging;
+}
+
+
+/**
+ * Checks if this VM is long-mode capable.
+ *
+ * @returns true if long mode is allowed, false otherwise.
+ * @param   pUVM        The user mode VM handle.
+ */
+VMM_INT_DECL(bool) HMIsLongModeAllowed(PVM pVM)
+{
+    return HMIsEnabled(pVM) && pVM->hm.s.fAllow64BitGuests;
 }
 
 

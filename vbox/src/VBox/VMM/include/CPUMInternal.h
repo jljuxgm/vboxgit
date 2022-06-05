@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 51728 2014-06-26 05:52:17Z vboxsync $ */
+/* $Id: CPUMInternal.h 52419 2014-08-19 16:12:46Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -100,6 +100,8 @@
 #define CPUM_SYNC_DEBUG_REGS_HYPER      RT_BIT(18)
 /** Host CPU requires fxsave/fxrstor leaky bit handling. */
 #define CPUM_USE_FFXSR_LEAKY            RT_BIT(19)
+/** Set if the VM supports long-mode. */
+#define CPUM_USE_SUPPORTS_LONGMODE      RT_BIT(20)
 /** @} */
 
 /* Sanity check. */

@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
+/* $Id: CPUMR0.cpp 52419 2014-08-19 16:12:46Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -425,7 +425,10 @@ VMMR0_INT_DECL(int) CPUMR0LoadGuestFPU(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         bool     fRestoreEfer = false;
         if (pVM->cpum.s.CPUFeaturesExt.edx & X86_CPUID_AMD_FEATURE_EDX_FFXSR)
         {
-            uHostEfer = ASMRdMsr(MSR_K6_EFER);
+            /** @todo r=ramshankar: Can't we used a cached value here
+             *        instead of reading the MSR? host EFER doesn't usually
+             *        change. */
+            uHostEfer = ASMRdMsr(MSR_K6_EFER);    
             if (uHostEfer & MSR_K6_EFER_FFXSR)
             {
                 ASMWrMsr(MSR_K6_EFER, uHostEfer & ~MSR_K6_EFER_FFXSR);
