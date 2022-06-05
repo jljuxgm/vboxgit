@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 50223 2014-01-24 14:34:51Z vboxsync $ */
+/* $Id: server_presenter.cpp 50225 2014-01-24 15:24:43Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -1948,7 +1948,7 @@ public:
         if (!hFb)
             return false;
         const struct VBOXVR_SCR_COMPOSITOR* pCompositor = CrFbGetCompositor(hFb);
-        return CrVrScrCompositorIsEmpty(pCompositor);
+        return !CrVrScrCompositorIsEmpty(pCompositor);
     }
 
 protected:
