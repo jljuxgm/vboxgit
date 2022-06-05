@@ -1,4 +1,4 @@
-/* $Id: slirp.c 51905 2014-07-07 15:58:35Z vboxsync $ */
+/* $Id: slirp.c 52088 2014-07-18 00:16:28Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -873,11 +873,7 @@ static bool slirpConnectOrWrite(PNATState pData, struct socket *so, bool fConnec
                 tp->t_flags |= TF_DELACK;
         }
     }
-    /*
-     * XXX If we wrote something (a lot), there could be the need
-     * for a window update. In the worst case, the remote will send
-     * a window probe to get things going again.
-     */
+
     LogFlowFunc(("LEAVE: true\n"));
     return true;
 }
