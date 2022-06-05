@@ -1,4 +1,4 @@
-/* $Id: server.cpp 49953 2013-12-17 14:15:09Z vboxsync $ */
+/* $Id: server.cpp 49960 2013-12-17 17:24:57Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -109,9 +109,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS2_CI(SessionMachine, IMachine, IInternalMachineContr
 NS_DECL_CLASSINFO(SnapshotMachine)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SnapshotMachine, IMachine)
 
-NS_DECL_CLASSINFO(Snapshot)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Snapshot, ISnapshot)
-
 NS_DECL_CLASSINFO(Progress)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Progress, IProgress)
 
@@ -122,8 +119,6 @@ NS_DECL_CLASSINFO(SharedFolder)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SharedFolder, ISharedFolder)
 
 #ifdef VBOX_WITH_USB
-NS_DECL_CLASSINFO(HostUSBDevice)
-NS_IMPL_THREADSAFE_ISUPPORTS2_CI(HostUSBDevice, IUSBDevice, IHostUSBDevice)
 
 #endif
 

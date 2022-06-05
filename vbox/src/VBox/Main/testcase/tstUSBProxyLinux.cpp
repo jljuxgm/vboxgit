@@ -1,4 +1,4 @@
-/* $Id: tstUSBProxyLinux.cpp 37618 2011-06-23 17:16:39Z vboxsync $ */
+/* $Id: tstUSBProxyLinux.cpp 49960 2013-12-17 17:24:57Z vboxsync $ */
 /** @file
  * USBProxyServiceLinux test case.
  */
@@ -57,7 +57,7 @@ bool USBProxyService::isActive() { return true; }
 
 VBoxMainHotplugWaiter::VBoxMainHotplugWaiter(char const*) {}
 
-com::Utf8Str HostUSBDevice::getName()
+com::Utf8Str HostUSBDevice::i_getName()
 {
     return Utf8Str();
 }

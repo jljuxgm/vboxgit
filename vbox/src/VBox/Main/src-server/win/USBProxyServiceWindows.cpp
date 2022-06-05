@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceWindows.cpp 41814 2012-06-18 13:15:30Z vboxsync $ */
+/* $Id: USBProxyServiceWindows.cpp 49960 2013-12-17 17:24:57Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -143,9 +143,9 @@ int USBProxyServiceWindows::captureDevice(HostUSBDevice *aDevice)
     AssertReturn(!aDevice->isWriteLockOnCurrentThread(), VERR_GENERAL_FAILURE);
 
     AutoReadLock devLock(aDevice COMMA_LOCKVAL_SRC_POS);
-    LogFlowThisFunc(("aDevice=%s\n", aDevice->getName().c_str()));
+    LogFlowThisFunc(("aDevice=%s\n", aDevice->i_getName().c_str()));
 
-    Assert(aDevice->getUnistate() == kHostUSBDeviceState_Capturing);
+    Assert(aDevice->i_getUnistate() == kHostUSBDeviceState_Capturing);
 
     /*
      * Create a one-shot ignore filter for the device
@@ -185,9 +185,9 @@ int USBProxyServiceWindows::releaseDevice(HostUSBDevice *aDevice)
     AssertReturn(!aDevice->isWriteLockOnCurrentThread(), VERR_GENERAL_FAILURE);
 
     AutoReadLock devLock(aDevice COMMA_LOCKVAL_SRC_POS);
-    LogFlowThisFunc(("aDevice=%s\n", aDevice->getName().c_str()));
+    LogFlowThisFunc(("aDevice=%s\n", aDevice->i_getName().c_str()));
 
-    Assert(aDevice->getUnistate() == kHostUSBDeviceState_ReleasingToHost);
+    Assert(aDevice->i_getUnistate() == kHostUSBDeviceState_ReleasingToHost);
 
     /*
      * Create a one-shot ignore filter for the device
