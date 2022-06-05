@@ -1,4 +1,4 @@
-/* $Id: Config.h 49735 2013-11-30 02:08:42Z vboxsync $ */
+/* $Id: Config.h 49821 2013-12-09 06:28:34Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -21,11 +21,8 @@
 #include <iprt/asm-math.h>
 #include <iprt/cpp/utils.h>
 
+#include "../NetLib/cpp/utils.h"
 
-static bool operator <(const RTNETADDRIPV4& a, const RTNETADDRIPV4& b)
-{
-    return (RT_N2H_U32(a.u) < RT_N2H_U32(b.u));
-}
 
 static bool operator > (const RTNETADDRIPV4& a, const RTNETADDRIPV4& b)
 {
