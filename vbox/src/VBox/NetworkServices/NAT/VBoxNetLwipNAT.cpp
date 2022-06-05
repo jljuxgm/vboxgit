@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 47948 2013-08-21 08:15:54Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 47950 2013-08-21 08:17:19Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -777,7 +777,7 @@ int VBoxNetLwipNAT::natServicePfRegister(NATSEVICEPORTFORWARDRULE& natPf)
      */
     memcpy(pFwCopy, &natPf.FWSpec, sizeof(fwspec));
 
-    lrc = portfwd_rule_add(&natPf.FWSpec);
+    lrc = portfwd_rule_add(pFwCopy);
     
     AssertReturn(!lrc, VERR_IGNORED);
 
