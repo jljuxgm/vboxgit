@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 49036 2013-10-10 16:59:38Z vboxsync $ */
+/* $Id: fileio.cpp 49037 2013-10-10 17:00:33Z vboxsync $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -579,7 +579,7 @@ RTDECL(int) RTFileCompareEx(const char *pszFile1, const char *pszFile2, uint32_t
                 rc = rc2;
         }
 
-        int rc2 = RTFileClose(hFile2);
+        int rc2 = RTFileClose(hFile1);
         AssertRC(rc2);
         if (RT_FAILURE(rc2) && RT_SUCCESS(rc))
             rc = rc2;
