@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 48352 2013-09-06 12:10:56Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 48353 2013-09-06 12:28:50Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2152,10 +2152,10 @@ HRESULT Appliance::writeFSImpl(TaskOVF *pTask, AutoWriteLockBase& writeLock, PVD
                         }
 
                         void *pvTmpBuf = 0;
-                        uint64_t cbTmpSize = _1M;
+                        size_t cbTmpSize = _1M;
                         size_t cbAllWritten = 0;
                         uint64_t cbFile = 0;
-                        uint64_t cbSize = 0;
+                        size_t cbSize = 0;
 
                         vrc = RTFileGetSize(pFile, &cbFile);
 
