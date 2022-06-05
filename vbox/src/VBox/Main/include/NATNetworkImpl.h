@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 47869 2013-08-20 05:15:15Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 47894 2013-08-20 11:37:09Z vboxsync $ */
 
 /** @file
  *
@@ -37,9 +37,9 @@ namespace settings
 }
 
 #ifdef RT_OS_WINDOWS
-# define NATSR_EXECUTABLE_NAME "VBoxNetLwipNAT.exe"
+# define NATSR_EXECUTABLE_NAME "VBoxNetNAT.exe"
 #else
-# define NATSR_EXECUTABLE_NAME "VBoxNetLwipNAT"
+# define NATSR_EXECUTABLE_NAME "VBoxNetNAT"
 #endif
 
 class NATNetworkServiceRunner: public NetworkServiceRunner
