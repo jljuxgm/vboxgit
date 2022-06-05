@@ -1,4 +1,4 @@
-; $Id: ASMAtomicUoOrU32.asm 50840 2014-03-21 12:04:35Z vboxsync $
+; $Id: ASMAtomicUoOrU32.asm 51143 2014-04-25 13:21:43Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicUoOrU32().
 ;
@@ -42,9 +42,9 @@ BEGINCODE
 BEGINPROC_EXPORTED ASMAtomicUoOrU32
 %ifdef RT_ARCH_AMD64
  %ifdef ASM_CALL64_MSC
-        or      [rcx], rdx
+        or      [rcx], edx
  %else
-        or      [rdi], rsi
+        or      [rdi], esi
  %endif
 %elifdef RT_ARCH_X86
         mov     ecx, [esp + 04h]
