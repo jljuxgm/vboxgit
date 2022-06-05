@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49559 2013-11-20 02:44:13Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49560 2013-11-20 03:05:10Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -166,7 +166,7 @@ class VBoxNetLwipNAT: public VBoxNetBaseService
     /* @todo: when configuration would be really needed */
     virtual int parseOpt(int rc, const RTGETOPTUNION& getOptVal);
     /* VBoxNetNAT always needs Main */
-    virtual bool        isMainNeeded() { return true; }
+    virtual bool isMainNeeded() const { return true; }
    private:
     struct proxy_options m_ProxyOptions;
     struct sockaddr_in m_src4;

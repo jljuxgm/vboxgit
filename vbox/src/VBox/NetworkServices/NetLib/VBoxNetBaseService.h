@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 49558 2013-11-20 02:43:14Z vboxsync $ */
+/* $Id: VBoxNetBaseService.h 49560 2013-11-20 03:05:10Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -38,7 +38,7 @@ public:
     virtual int         parseOpt(int rc, const RTGETOPTUNION& getOptVal) = 0;
 
     virtual int         init(void);
-    virtual bool        isMainNeeded() { return m_fNeedMain; }
+    virtual bool        isMainNeeded() const { return m_fNeedMain; }
     /* VirtualBox instance */
     ComPtr<IVirtualBox> virtualbox;
 
