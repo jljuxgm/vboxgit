@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 50263 2014-01-28 19:29:52Z vboxsync $ */
+/* $Id: HostDnsService.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
 /** @file
  * Base class fo Host DNS & Co services.
  */
@@ -261,7 +261,7 @@ void HostDnsMonitorProxy::init(const HostDnsMonitor *mon, const VirtualBox* aPar
 void HostDnsMonitorProxy::notify() const
 {
     m->fModified = true;
-    const_cast<VirtualBox *>(m->virtualbox)->onHostNameResolutionConfigurationChange();
+    const_cast<VirtualBox *>(m->virtualbox)->i_onHostNameResolutionConfigurationChange();
 }
 
 HRESULT HostDnsMonitorProxy::GetNameServers(ComSafeArrayOut(BSTR, aNameServers))

@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.cpp 49960 2013-12-17 17:24:57Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -50,7 +50,7 @@ struct USBDeviceFilters::Data
 {
     Data(Machine *pMachine)
         : pParent(pMachine),
-          pHost(pMachine->getVirtualBox()->host())
+          pHost(pMachine->getVirtualBox()->i_host())
     { }
 
     ~Data()

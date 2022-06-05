@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 50203 2014-01-24 00:10:01Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2211,7 +2211,7 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
     if (FAILED(rc)) throw rc;
 
     /* Get the system properties. */
-    SystemProperties *pSysProps = mVirtualBox->getSystemProperties();
+    SystemProperties *pSysProps = mVirtualBox->i_getSystemProperties();
 
     /*
      * we put strSourceOVF into the stack.llSrcDisksDigest in the end of this
@@ -2240,7 +2240,7 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
     int vrc = RTUuidFromStr(&uuid, strTargetPath->c_str());
     if (vrc == VINF_SUCCESS)
     {
-        rc = mVirtualBox->findHardDiskById(Guid(uuid), true, &pTargetHD);
+        rc = mVirtualBox->i_findHardDiskById(Guid(uuid), true, &pTargetHD);
         if (FAILED(rc)) throw rc;
     }
     else

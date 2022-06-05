@@ -1,4 +1,4 @@
-/* $Id: server.cpp 49960 2013-12-17 17:24:57Z vboxsync $ */
+/* $Id: server.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -96,10 +96,6 @@
 
 
 /* implement nsISupports parts of our objects with support for nsIClassInfo */
-
-NS_DECL_CLASSINFO(VirtualBox)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(VirtualBox, IVirtualBox)
-
 NS_DECL_CLASSINFO(Machine)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Machine, IMachine)
 

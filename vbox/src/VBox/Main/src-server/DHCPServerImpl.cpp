@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 49742 2013-12-02 17:59:21Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
 
 /** @file
  *
@@ -199,7 +199,7 @@ HRESULT DHCPServer::setEnabled(BOOL aEnabled)
     // save the global settings; for that we should hold only the VirtualBox lock
     alock.release();
     AutoWriteLock vboxLock(mVirtualBox COMMA_LOCKVAL_SRC_POS);
-    HRESULT rc = mVirtualBox->saveSettings();
+    HRESULT rc = mVirtualBox->i_saveSettings();
 
     return rc;
 }
@@ -257,7 +257,7 @@ HRESULT DHCPServer::setConfiguration(const com::Utf8Str &aIPAddress,
     // save the global settings; for that we should hold only the VirtualBox lock
     alock.release();
     AutoWriteLock vboxLock(mVirtualBox COMMA_LOCKVAL_SRC_POS);
-    return mVirtualBox->saveSettings();
+    return mVirtualBox->i_saveSettings();
 }
 
 
@@ -274,7 +274,7 @@ HRESULT DHCPServer::addGlobalOption(DhcpOpt_T aOption, const com::Utf8Str &aValu
     alock.release();
 
     AutoWriteLock vboxLock(mVirtualBox COMMA_LOCKVAL_SRC_POS);
-    return mVirtualBox->saveSettings();
+    return mVirtualBox->i_saveSettings();
 }
 
 
@@ -317,7 +317,7 @@ HRESULT DHCPServer::addVmSlotOption(const com::Utf8Str &aVmName,
     alock.release();
 
     AutoWriteLock vboxLock(mVirtualBox COMMA_LOCKVAL_SRC_POS);
-    return mVirtualBox->saveSettings();
+    return mVirtualBox->i_saveSettings();
 }
 
 
@@ -330,7 +330,7 @@ HRESULT DHCPServer::removeVmSlotOptions(const com::Utf8Str &aVmName, LONG aSlot)
     alock.release();
 
     AutoWriteLock vboxLock(mVirtualBox COMMA_LOCKVAL_SRC_POS);
-    return mVirtualBox->saveSettings();
+    return mVirtualBox->i_saveSettings();
 }
 
 /**

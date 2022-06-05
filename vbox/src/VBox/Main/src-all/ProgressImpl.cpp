@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 46820 2013-06-27 07:58:37Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -579,7 +579,7 @@ HRESULT Progress::init(
 #if !defined(VBOX_COM_INPROC)
     /* add to the global collection of progress operations (note: after
  *      * creating mId) */
-    mParent->addProgress(this);
+    mParent->i_addProgress(this);
 #endif
 
     unconst(mDescription) = aDescription;
@@ -701,7 +701,7 @@ void Progress::uninit()
     {
         /* remove the added progress on failure to complete the initialization */
         if (autoUninitSpan.initFailed() && mId.isValid() && !mId.isZero())
-            mParent->removeProgress(mId.ref());
+            mParent->i_removeProgress(mId.ref());
 
         unconst(mParent) = NULL;
     }
@@ -1128,7 +1128,7 @@ HRESULT Progress::notifyComplete(HRESULT aResultCode)
 #if !defined VBOX_COM_INPROC
     /* remove from the global collection of pending progress operations */
     if (mParent)
-        mParent->removeProgress(mId.ref());
+        mParent->i_removeProgress(mId.ref());
 #endif
 
     /* wake up all waiting threads */
@@ -1202,7 +1202,7 @@ HRESULT Progress::notifyCompleteV(HRESULT aResultCode,
 #if !defined VBOX_COM_INPROC
     /* remove from the global collection of pending progress operations */
     if (mParent)
-        mParent->removeProgress(mId.ref());
+        mParent->i_removeProgress(mId.ref());
 #endif
 
     /* wake up all waiting threads */

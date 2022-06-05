@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 49960 2013-12-17 17:24:57Z vboxsync $ */
+/* $Id: USBProxyService.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -217,7 +217,7 @@ HRESULT USBProxyService::detachDeviceFromVM(SessionMachine *aMachine, IN_GUID aI
     // get a list of all running machines while we're outside the lock
     // (getOpenedMachines requests locks which are incompatible with the lock of the machines list)
     SessionMachinesList llOpenedMachines;
-    mHost->i_parent()->getOpenedMachines(llOpenedMachines);
+    mHost->i_parent()->i_getOpenedMachines(llOpenedMachines);
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -328,7 +328,7 @@ HRESULT USBProxyService::detachAllDevicesFromVM(SessionMachine *aMachine, bool a
     // get a list of all running machines while we're outside the lock
     // (getOpenedMachines requests locks which are incompatible with the host object lock)
     SessionMachinesList llOpenedMachines;
-    mHost->i_parent()->getOpenedMachines(llOpenedMachines);
+    mHost->i_parent()->i_getOpenedMachines(llOpenedMachines);
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -861,7 +861,7 @@ void USBProxyService::processChanges(void)
     // get a list of all running machines while we're outside the lock
     // (getOpenedMachines requests higher priority locks)
     SessionMachinesList llOpenedMachines;
-    mHost->i_parent()->getOpenedMachines(llOpenedMachines);
+    mHost->i_parent()->i_getOpenedMachines(llOpenedMachines);
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
