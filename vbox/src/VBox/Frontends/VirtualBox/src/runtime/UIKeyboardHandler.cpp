@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 50191 2014-01-23 17:05:30Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 50683 2014-03-04 17:13:55Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1213,11 +1213,13 @@ bool UIKeyboardHandler::keyEventHandleNormal(int iKey, uint8_t uScan, int fFlags
     if ((fFlags & KeyPressed) || (m_pressedKeys[uScan] & uWhatPressed))
     {
         /* Check if the guest has the same view on the modifier keys
-         * (NumLock, CapsLock, ScrollLock) as the X server.
-         * If not, send KeyPress events to synchronize the state: */
-#if !defined(Q_WS_MAC) && !defined(Q_WS_WIN)
-        if (fFlags & KeyPressed)
-            fixModifierState(pCodes, puCodesCount);
+         * (NumLock, CapsLock, ScrollLock) as the X server. */
+#if !defined(Q_WS_MAC)
+        /* If there is no HID LEDs sync enabled or supported
+         * we should re-sync keyboard LEDs and state following this way. */
+        if (!machineLogic()->isHidLedsSyncEnabled())
+            if (fFlags & KeyPressed)
+                fixModifierState(pCodes, puCodesCount);
 #endif
 
         /* Prepend 'extended' scancode if needed: */
