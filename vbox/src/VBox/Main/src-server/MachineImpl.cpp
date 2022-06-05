@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 52489 2014-08-25 08:27:46Z vboxsync $ */
+/* $Id: MachineImpl.cpp 52490 2014-08-25 09:27:40Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12912,9 +12912,6 @@ HRESULT SessionMachine::onSessionEnd(const ComPtr<ISession> &aSession,
 
     if (control == mData->mSession.mDirectControl)
     {
-        IProgress *pProgress = aProgress;
-        ComAssertRet(pProgress, E_POINTER);
-
         /* The direct session is being normally closed by the client process
          * ----------------------------------------------------------------- */
 
