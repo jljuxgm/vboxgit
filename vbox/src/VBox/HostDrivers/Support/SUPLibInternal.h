@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 51978 2014-07-11 02:57:40Z vboxsync $ */
+/* $Id: SUPLibInternal.h 52083 2014-07-17 17:59:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -205,6 +205,10 @@ typedef struct SUPVERIFIEDFILE
     intptr_t    hFile;
     /** Whether the file has been validated. */
     bool        fValidated;
+#ifdef RT_OS_WINDOWS
+    /** Whether we've checked the signature of the file. */
+    bool        fCheckedSignature;
+#endif
 } SUPVERIFIEDFILE;
 typedef SUPVERIFIEDFILE *PSUPVERIFIEDFILE;
 typedef SUPVERIFIEDFILE const *PCSUPVERIFIEDFILE;
@@ -398,7 +402,7 @@ DECLHIDDEN(int)    supR3HardenedErrorV(int rc, bool fFatal, const char *pszForma
  */
 DECLHIDDEN(int)     supR3HardenedError(int rc, bool fFatal, const char *pszFormat, ...);
 
-DECLHIDDEN(int)     supR3HardenedVerifyAll(bool fFatal, bool fLeaveFilesOpen, const char *pszProgName);
+DECLHIDDEN(int)     supR3HardenedVerifyAll(bool fFatal, const char *pszProgName);
 DECLHIDDEN(int)     supR3HardenedVerifyFixedDir(SUPINSTDIR enmDir, bool fFatal);
 DECLHIDDEN(int)     supR3HardenedVerifyFixedFile(const char *pszFilename, bool fFatal);
 DECLHIDDEN(int)     supR3HardenedVerifyDir(const char *pszDirPath, bool fRecursive, bool fCheckFiles, PRTERRINFO pErrInfo);
