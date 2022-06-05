@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 52151 2014-07-23 15:12:33Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 52184 2014-07-25 11:57:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -220,7 +220,7 @@ void UIMachineWindowFullscreen::prepareMiniToolbar()
                                               IntegrationMode_Embedded,
                                               gEDataManager->miniToolbarAlignment(vboxGlobal().managedVMUuid()),
                                               gEDataManager->autoHideMiniToolbar(vboxGlobal().managedVMUuid()));
-    m_pMiniToolBar->addMenus(m_pMachineLogic->menus());
+    m_pMiniToolBar->addMenus(gpActionPool->menus());
 #ifndef RT_OS_DARWIN
     connect(m_pMiniToolBar, SIGNAL(sigMinimizeAction()), this, SLOT(showMinimized()));
 #endif /* !RT_OS_DARWIN */
