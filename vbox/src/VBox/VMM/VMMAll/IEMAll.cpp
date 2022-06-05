@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 52661 2014-09-09 20:29:11Z vboxsync $ */
+/* $Id: IEMAll.cpp 52669 2014-09-10 10:54:25Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10952,8 +10952,14 @@ VMMDECL(VBOXSTRICTRC) IEMInjectTrpmEvent(PVMCPU pVCpu)
         return rc;
 
     VBOXSTRICTRC rcStrict = IEMInjectTrap(pVCpu, u8TrapNo, enmType, uErrCode, uCr2, cbInstr);
-    if (rcStrict == VINF_SUCCESS || rcStrict == VINF_IEM_RAISED_XCPT)
+
+    /** @todo Are there any other codes that imply the event was successfully
+     *        delivered to the guest? See @bugref{6607}.  */
+    if (   rcStrict == VINF_SUCCESS
+        || rcStrict == VINF_IEM_RAISED_XCPT)
+    {
         TRPMResetTrap(pVCpu);
+    }
     return rcStrict;
 #endif
 }
