@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 50508 2014-02-19 15:45:58Z vboxsync $ */
+/* $Id: DnDURIList.cpp 50561 2014-02-24 21:07:22Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -182,9 +182,11 @@ int DnDURIObject::Read(void *pvBuf, uint32_t cbToRead, uint32_t *pcbRead)
                     Assert(m_cbProcessed <= m_cbSize);
 
                     /* End of file reached or error occurred? */
-                    if (   cbRead < cbToRead
+                    if (   m_cbProcessed == m_cbSize
                         || RT_FAILURE(rc))
+                    {
                         closeInternal();
+                    }
                 }
             }
 
@@ -571,7 +573,8 @@ int DnDURIList::RootFromURIData(const void *pvData, size_t cbData,
     return rc;
 }
 
-RTCString DnDURIList::RootToString(const RTCString &strBasePath /* = "" */)
+RTCString DnDURIList::RootToString(const RTCString &strBasePath /* = "" */,
+                                   const RTCString &strSeparator /* = "\r\n" */)
 {
     RTCString strRet;
     for (size_t i = 0; i < m_lstRoot.size(); i++)
@@ -585,9 +588,11 @@ RTCString DnDURIList::RootToString(const RTCString &strBasePath /* = "" */)
                 char *pszPathURI = RTUriFileCreate(pszPath);
                 if (pszPathURI)
                 {
-                    strRet += RTCString(pszPathURI) + "\r\n";
+                    strRet += RTCString(pszPathURI) + strSeparator;
                     RTStrFree(pszPathURI);
                 }
+                else
+                    break;
                 RTStrFree(pszPath);
             }
             else
@@ -598,7 +603,7 @@ RTCString DnDURIList::RootToString(const RTCString &strBasePath /* = "" */)
             char *pszPathURI = RTUriFileCreate(pszCurRoot);
             if (pszPathURI)
             {
-                strRet += RTCString(pszPathURI) + "\r\n";
+                strRet += RTCString(pszPathURI) + strSeparator;
                 RTStrFree(pszPathURI);
             }
             else

@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.h 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.h 50561 2014-02-24 21:07:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,6 +24,7 @@
 
 #include <QString>
 #include <QStringList>
+#include <QVariant>
 
 /* Forward declarations: */
 class UIDnDDrag;
@@ -91,7 +92,13 @@ protected:
     RTSEMEVENT  mSemEvent;
     QStringList mlstFormats;
     QString     mstrFormat;
+    /** The retrieved data as a QVariant. Needed
+     *  for buffering in case a second format needs
+     *  the same data, e.g. CF_TEXT and CF_UNICODETEXT. */
+    QVariant    mVaData;
+    /** The retrieved data as a raw buffer. */
     void       *mpvData;
+    /** Raw buffer size (in bytes). */
     uint32_t    mcbData;
 };
 
