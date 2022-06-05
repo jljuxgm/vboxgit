@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 49813 2013-12-06 13:41:50Z vboxsync $ */
+/* $Id: DevPCNet.cpp 51155 2014-04-28 14:31:32Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -1548,8 +1548,7 @@ static void pcnetStart(PPCNETSTATE pThis)
 static void pcnetStop(PPCNETSTATE pThis)
 {
     Log(("#%d pcnetStop:\n", PCNET_INST_NR));
-    pThis->aCSR[0] &= ~0x7feb;
-    pThis->aCSR[0] |=  0x0014;
+    pThis->aCSR[0]  =  0x0004;
     pThis->aCSR[4] &= ~0x02c2;
     pThis->aCSR[5] &= ~0x0011;
     pcnetPollTimer(pThis);
