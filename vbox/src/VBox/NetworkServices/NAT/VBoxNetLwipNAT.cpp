@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 50213 2014-01-24 08:23:12Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 50239 2014-01-27 02:34:23Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1078,17 +1078,24 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     }
 
     HRESULT hrc = com::Initialize();
-#ifdef VBOX_WITH_XPCOM
-    if (hrc == NS_ERROR_FILE_ACCESS_DENIED)
-    {
-        char szHome[RTPATH_MAX] = "";
-        com::GetVBoxUserHomeDirectory(szHome, sizeof(szHome));
-        return RTMsgErrorExit(RTEXITCODE_FAILURE,
-               "Failed to initialize COM because the global settings directory '%s' is not accessible!", szHome);
-    }
-#endif
     if (FAILED(hrc))
-        return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to initialize COM!");
+    {
+#ifdef VBOX_WITH_XPCOM
+        if (hrc == NS_ERROR_FILE_ACCESS_DENIED)
+        {
+            char szHome[RTPATH_MAX] = "";
+            int vrc = com::GetVBoxUserHomeDirectory(szHome, sizeof(szHome), false);
+            if (RT_SUCCESS(vrc))
+            {
+                return RTMsgErrorExit(RTEXITCODE_FAILURE,
+                                      "Failed to initialize COM: %s: %Rhrf",
+                                      szHome, hrc);
+            }
+        }
+#endif  // VBOX_WITH_XPCOM
+        return RTMsgErrorExit(RTEXITCODE_FAILURE,
+                              "Failed to initialize COM: %Rhrf", hrc);
+    }
 
     g_pLwipNat = new VBoxNetLwipNAT(icmpsock4, icmpsock6);
 
