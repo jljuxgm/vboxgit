@@ -1,4 +1,4 @@
-/* $Id: cr_vreg.h 50316 2014-02-04 08:03:23Z vboxsync $ */
+/* $Id: cr_vreg.h 50371 2014-02-07 21:59:02Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API
@@ -48,12 +48,14 @@ DECLINLINE(int) VBoxRectCmp(const RTRECT * pRect1, const RTRECT * pRect2)
 }
 
 #ifndef IN_RING0
+#define CR_FLOAT_RCAST(_t, _v) ((_t)((float)(_v) + 0.5))
+
 DECLINLINE(void) VBoxRectStretch(PRTRECT pRect, float xStretch, float yStretch)
 {
-    pRect->xLeft = (int32_t)(pRect->xLeft * xStretch);
-    pRect->yTop = (int32_t)(pRect->yTop * yStretch);
-    pRect->xRight = (int32_t)(pRect->xRight * xStretch);
-    pRect->yBottom = (int32_t)(pRect->yBottom * yStretch);
+    pRect->xLeft = CR_FLOAT_RCAST(int32_t, pRect->xLeft * xStretch);
+    pRect->yTop = CR_FLOAT_RCAST(int32_t, pRect->yTop * yStretch);
+    pRect->xRight = CR_FLOAT_RCAST(int32_t, pRect->xRight * xStretch);
+    pRect->yBottom = CR_FLOAT_RCAST(int32_t, pRect->yBottom * yStretch);
 }
 
 DECLINLINE(void) VBoxRectStretched(const RTRECT *pRect, float xStretch, float yStretch, PRTRECT pResult)
