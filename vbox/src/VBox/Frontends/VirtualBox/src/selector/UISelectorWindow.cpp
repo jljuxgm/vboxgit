@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 51453 2014-05-28 17:46:46Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 51454 2014-05-28 17:49:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1601,6 +1601,11 @@ void UISelectorWindow::saveSettings()
     /* Get VBox object: */
     CVirtualBox vbox = vboxGlobal().virtualBox();
 
+    /* Save splitter handle position: */
+    {
+        vbox.SetExtraDataIntList(GUI_SplitterSizes, m_pSplitter->sizes());
+    }
+
     /* Save window position: */
     {
         QRect save(m_normalGeo);
@@ -1615,11 +1620,6 @@ void UISelectorWindow::saveSettings()
             strWinPos += QString(",%1").arg(GUI_LastWindowState_Max);
 
         vbox.SetExtraData(GUI_LastSelectorWindowPosition, strWinPos);
-    }
-
-    /* Save splitter handle position: */
-    {
-        vbox.SetExtraDataIntList(GUI_SplitterSizes, m_pSplitter->sizes());
     }
 }
 
