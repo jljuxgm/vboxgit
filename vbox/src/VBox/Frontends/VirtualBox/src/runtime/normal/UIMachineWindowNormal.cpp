@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52100 2014-07-18 12:58:30Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52112 2014-07-21 16:14:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -151,6 +151,7 @@ void UIMachineWindowNormal::sltHandleIndicatorContextMenuRequest(IndicatorType i
         case IndicatorType_USB:           pAction = gActionPool->action(UIActionIndexRuntime_Menu_USBDevices);       break;
         case IndicatorType_Network:       pAction = gActionPool->action(UIActionIndexRuntime_Menu_Network);          break;
         case IndicatorType_SharedFolders: pAction = gActionPool->action(UIActionIndexRuntime_Menu_SharedFolders);    break;
+        case IndicatorType_Display:       pAction = gActionPool->action(UIActionIndexRuntime_Menu_ViewPopup);          break;
         case IndicatorType_VideoCapture:  pAction = gActionPool->action(UIActionIndexRuntime_Menu_VideoCapture);     break;
         case IndicatorType_Mouse:         pAction = gActionPool->action(UIActionIndexRuntime_Menu_MouseIntegration); break;
         case IndicatorType_Keyboard:      pAction = gActionPool->action(UIActionIndexRuntime_Menu_Keyboard);         break;
@@ -487,6 +488,8 @@ void UIMachineWindowNormal::updateAppearanceOf(int iElement)
         m_pIndicatorsPool->updateAppearance(IndicatorType_USB);
     if (iElement & UIVisualElement_SharedFolderStuff)
         m_pIndicatorsPool->updateAppearance(IndicatorType_SharedFolders);
+    if (iElement & UIVisualElement_Display)
+        m_pIndicatorsPool->updateAppearance(IndicatorType_Display);
     if (iElement & UIVisualElement_VideoCapture)
         m_pIndicatorsPool->updateAppearance(IndicatorType_VideoCapture);
     if (iElement & UIVisualElement_FeaturesStuff)
