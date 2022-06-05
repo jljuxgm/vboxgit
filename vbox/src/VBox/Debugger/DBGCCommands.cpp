@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 48696 2013-09-26 00:22:48Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 51957 2014-07-09 14:35:36Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1023,7 +1023,7 @@ static DECLCALLBACK(int) dbgcCmdCpu(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM pU
         VMCPUID cCpus = DBGFR3CpuGetCount(pUVM);
         if (paArgs[0].u.u64Number >= cCpus)
             rc = DBGCCmdHlpPrintf(pCmdHlp, "error: idCpu %u is out of range! Highest ID is %u.\n",
-                                    paArgs[0].u.u64Number, cCpus);
+                                    paArgs[0].u.u64Number, cCpus-1);
         else
         {
             rc = DBGCCmdHlpPrintf(pCmdHlp, "Changed CPU from %u to %u.\n",
