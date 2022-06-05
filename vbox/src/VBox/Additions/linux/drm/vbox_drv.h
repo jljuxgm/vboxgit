@@ -1,4 +1,4 @@
-/** @file $Id: vbox_drv.h 52612 2014-09-05 10:08:57Z vboxsync $
+/** @file $Id: vbox_drv.h 52832 2014-09-24 09:11:35Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -239,13 +239,6 @@ void vbox_mm_fini(struct vbox_private *vbox);
 
 int vbox_bo_create(struct drm_device *dev, int size, int align,
           uint32_t flags, struct vbox_bo **pvboxbo);
-
-/** IOCtl handler to stop this driver using HGSMI so that user space can. */
-extern int VBoxDisableHGSMI(struct drm_device *dev, void *data,
-                            struct drm_file *file_priv);
-/** IOCtl handler to start this driver using HGSMI again. */
-extern int VBoxEnableHGSMI(struct drm_device *dev, void *data,
-                           struct drm_file *file_priv);
 
 int vbox_gem_create(struct drm_device *dev,
            u32 size, bool iskernel,
