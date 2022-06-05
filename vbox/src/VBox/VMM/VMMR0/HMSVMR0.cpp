@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48230 2013-09-02 14:52:50Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 48256 2013-09-04 09:16:13Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3783,7 +3783,7 @@ HMSVM_EXIT_DECL hmR0SvmExitIntr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSvmT
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
 
     if (pSvmTransient->u64ExitCode == SVM_EXIT_NMI)
-        STAM_REL_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmi);
+        STAM_REL_COUNTER_INC(&pVCpu->hm.s.StatExitHostNmiInGC);
     else if (pSvmTransient->u64ExitCode == SVM_EXIT_INTR)
         STAM_COUNTER_INC(&pVCpu->hm.s.StatExitExtInt);
 
