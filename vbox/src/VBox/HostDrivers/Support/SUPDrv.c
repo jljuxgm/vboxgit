@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 53054 2014-10-14 14:52:50Z vboxsync $ */
+/* $Id: SUPDrv.c 53058 2014-10-14 16:02:14Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -6421,10 +6421,11 @@ static bool supdrvIsInvariantTsc(void)
  *
  * @remarks Measuring TSC deltas between the CPUs is tricky because we need to
  *     read the TSC at exactly the same time on both the master and the worker
- *     CPUs. Due to DMA, bus arbitration, cache locality, contention, pipelining
- *     etc. there is no guaranteed way of doing this on x86 CPUs. We try to
- *     minimize the measurement error by computing the minimum read time of the
- *     compare statement in the worker by taking TSC measurements across it.
+ *     CPUs. Due to DMA, bus arbitration, cache locality, contention, SMI,
+ *     pipelining etc. there is no guaranteed way of doing this on x86 CPUs. We
+ *     try to minimize the measurement error by computing the minimum read time
+ *     of the compare statement in the worker by taking TSC measurements across
+ *     it.
  *
  *     We ignore the first few runs of the loop in order to prime the cache.
  *     Also, be careful about using 'pause' instruction in critical busy-wait
