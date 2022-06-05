@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 53038 2014-10-13 10:42:54Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 53082 2014-10-17 06:49:23Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -2411,7 +2411,6 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinRenameConnection (LPWSTR pGuid, PCWSTR 
 }
 
 #define DRIVERHWID _T("sun_VBoxNetAdp")
-#define DRIVERHWID_NDIS6 _T("sun_VBoxNetAdp6")
 
 #define SetErrBreak(strAndArgs) \
     if (1) { \
@@ -2568,7 +2567,7 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinRemoveHostOnlyNetworkInterface(IN const
                      t && *t && t < &deviceHwid[size / sizeof(TCHAR)];
                      t += _tcslen (t) + 1)
                 {
-                    if (!_tcsicmp (DRIVERHWID, t) || !_tcsicmp (DRIVERHWID_NDIS6, t))
+                    if (!_tcsicmp (DRIVERHWID, t))
                     {
                           /* get the device instance ID */
                           TCHAR devId[MAX_DEVICE_ID_LEN];
@@ -2788,7 +2787,7 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinCreateHostOnlyNetworkInterface(IN LPCWS
                 t = pDriverInfoDetail->HardwareID;
                 while (t && *t && t < (TCHAR *) &detailBuf [RT_ELEMENTS(detailBuf)])
                 {
-                    if (!_tcsicmp(t, DRIVERHWID) || !_tcsicmp(t, DRIVERHWID_NDIS6))
+                    if (!_tcsicmp(t, DRIVERHWID))
                         break;
 
                     t += _tcslen(t) + 1;

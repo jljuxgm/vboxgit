@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-win.h 52630 2014-09-05 20:39:47Z vboxsync $ */
+/* $Id: VBoxNetAdp-win.h 53082 2014-10-17 06:49:23Z vboxsync $ */
 /** @file
  * VBoxNetAdp-win.h - Host-only Miniport Driver, Windows-specific code.
  */
@@ -34,7 +34,7 @@
 
 #define VBOXNETADPWIN_TAG                    'ANBV'
 
-#define VBOXNETADPWIN_ATTR_FLAGS             NDIS_MINIPORT_ATTRIBUTES_NDIS_WDM
+#define VBOXNETADPWIN_ATTR_FLAGS             NDIS_MINIPORT_ATTRIBUTES_NDIS_WDM | NDIS_MINIPORT_ATTRIBUTES_NO_HALT_ON_SUSPEND
 #define VBOXNETADP_MAC_OPTIONS               NDIS_MAC_OPTION_NO_LOOPBACK
 #define VBOXNETADP_SUPPORTED_FILTERS         (NDIS_PACKET_TYPE_DIRECTED | \
                                               NDIS_PACKET_TYPE_MULTICAST | \

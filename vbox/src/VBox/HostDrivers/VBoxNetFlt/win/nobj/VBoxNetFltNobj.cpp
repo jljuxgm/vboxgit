@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.cpp 52592 2014-09-03 20:23:24Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.cpp 53082 2014-10-17 06:49:23Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.cpp - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -200,8 +200,7 @@ static HRESULT vboxNetFltWinNotifyCheckNetAdp(IN INetCfgComponent *pComponent, O
     hr = pComponent->GetId(&pDevId);
     if (hr == S_OK)
     {
-        if (!_wcsnicmp(pDevId, L"sun_VBoxNetAdp", sizeof(L"sun_VBoxNetAdp")/2) ||
-            !_wcsnicmp(pDevId, L"sun_VBoxNetAdp6", sizeof(L"sun_VBoxNetAdp6")/2))
+        if (!_wcsnicmp(pDevId, L"sun_VBoxNetAdp", sizeof(L"sun_VBoxNetAdp")/2))
         {
             *pbShouldBind = false;
         }

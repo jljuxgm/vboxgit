@@ -1,4 +1,4 @@
-; $Id: VBoxNetAdp6.inf 52630 2014-09-05 20:39:47Z vboxsync $
+; $Id: VBoxNetAdp6.inf 53082 2014-10-17 06:49:23Z vboxsync $
 ; @file
 ; VBoxNetAdp6.inf - VirtualBox NDIS6 Miniport Driver inf file
 ;
@@ -31,13 +31,13 @@ DriverVer   = 07/18/2014,1.0.1.0
 [ControlFlags]
 
 [VBox]
-%VBoxNetAdp6_Desc% = VBoxNetAdp6.ndi, sun_VBoxNetAdp6
+%VBoxNetAdp6_Desc% = VBoxNetAdp6.ndi, sun_VBoxNetAdp
 
 [VBox.NTx86]
-%VBoxNetAdp6_Desc% = VBoxNetAdp6.ndi, sun_VBoxNetAdp6
+%VBoxNetAdp6_Desc% = VBoxNetAdp6.ndi, sun_VBoxNetAdp
 
 [VBox.NTamd64]
-%VBoxNetAdp6_Desc% = VBoxNetAdp6.ndi, sun_VBoxNetAdp6
+%VBoxNetAdp6_Desc% = VBoxNetAdp6.ndi, sun_VBoxNetAdp
 
 [VBoxNetAdp6.ndi]
 AddReg             = VBoxNetAdp6.ndi.AddReg

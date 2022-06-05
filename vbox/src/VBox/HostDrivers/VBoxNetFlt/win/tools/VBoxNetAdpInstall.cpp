@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInstall.cpp 52592 2014-09-03 20:23:24Z vboxsync $ */
+/* $Id: VBoxNetAdpInstall.cpp 53082 2014-10-17 06:49:23Z vboxsync $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
@@ -21,12 +21,11 @@
 
 #include <devguid.h>
 
+#define VBOX_NETADP_HWID L"sun_VBoxNetAdp"
 #ifdef NDIS60
 #define VBOX_NETADP_INF L"VBoxNetAdp6.inf"
-#define VBOX_NETADP_HWID L"sun_VBoxNetAdp6"
 #else /* !NDIS60 */
 #define VBOX_NETADP_INF L"VBoxNetAdp.inf"
-#define VBOX_NETADP_HWID L"sun_VBoxNetAdp"
 #endif /* !NDIS60 */
 
 static VOID winNetCfgLogger(LPCSTR szString)
@@ -140,6 +139,13 @@ static int VBoxNetAdpUpdate(void)
     if (SUCCEEDED(hr))
     {
         BOOL fRebootRequired = FALSE;
+        /*
+         * Before we can update the driver for existing adapters we need to remove
+         * all old driver packages from the driver cache. Otherwise we may end up
+         * with both NDIS5 and NDIS6 versions of VBoxNetAdp in the cache which
+         * will cause all sorts of trouble.
+         */
+        VBoxDrvCfgInfUninstallAllF(L"Net", VBOX_NETADP_HWID, SUOI_FORCEDELETE);
         hr = VBoxNetCfgWinUpdateHostOnlyNetworkInterface(VBOX_NETADP_INF, &fRebootRequired, VBOX_NETADP_HWID);
         if (SUCCEEDED(hr))
         {
