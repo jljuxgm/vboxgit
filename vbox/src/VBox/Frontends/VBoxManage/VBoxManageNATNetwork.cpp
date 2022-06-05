@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 49114 2013-10-15 09:40:09Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 53312 2014-11-12 11:14:34Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -396,7 +396,7 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
                      ++it)
                 {
                     std::string address, strOffset;
-                    int pos = it->find('=');
+                    size_t pos = it->find('=');
                     LONG lOffset = 0;
                     Bstr bstrAddress;
 
