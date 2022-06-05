@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 52112 2014-07-21 16:14:18Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 52121 2014-07-22 09:23:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -199,8 +199,8 @@ void UIMachineLogicNormal::sltPrepareMenuViewVirtualScreen()
                 pAction->setProperty("Screen ID", iScreenID);
                 pAction->setProperty("Requested Size", size);
                 pAction->setCheckable(true);
-                if (pFrameBuffer->width() == size.width() &&
-                    pFrameBuffer->height() == size.height())
+                if (pFrameBuffer->width() == (ulong)size.width() &&
+                    pFrameBuffer->height() == (ulong)size.height())
                 {
                     pAction->setChecked(true);
                 }
