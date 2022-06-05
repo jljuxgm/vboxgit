@@ -1,4 +1,4 @@
-/* $Id: WinKeyboard.cpp 50191 2014-01-23 17:05:30Z vboxsync $ */
+/* $Id: WinKeyboard.cpp 50350 2014-02-06 15:49:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -17,6 +17,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#define LOG_GROUP LOG_GROUP_GUI
+ 
 #include "WinKeyboard.h"
 #include <iprt/assert.h>
 #include <VBox/log.h>
@@ -61,8 +63,8 @@ static void winSetModifierState(int idModifier, bool fState)
     if (winGetModifierState(idModifier) != fState)
     {
         /* Simulate KeyUp+KeyDown keystroke */
-        keybd_event(idModifier, MapVirtualKey(idModifier, MAPVK_VK_TO_VSC), KEYEVENTF_EXTENDEDKEY, 0);
-        keybd_event(idModifier, MapVirtualKey(idModifier, MAPVK_VK_TO_VSC), KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+        keybd_event(idModifier, 0, KEYEVENTF_EXTENDEDKEY, 0);
+        keybd_event(idModifier, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
 
         LogRel2(("HID LEDs sync: setting %s state to %s (0x%X).\n",
                  VBOX_CONTROL_TO_STR_NAME(idModifier), VBOX_BOOL_TO_STR_STATE(fState), MapVirtualKey(idModifier, MAPVK_VK_TO_VSC)));
@@ -165,7 +167,7 @@ void WinHidDevicesBroadcastLeds(bool fNumLockOn, bool fCapsLockOn, bool fScrollL
              VBOX_BOOL_TO_STR_STATE(fScrollLockOn)));
 
     if (winSetHidLeds(fNumLockOn, fCapsLockOn, fScrollLockOn))
-        LogRel2(("ID LEDs sync: broadcast completed\n"));
+        LogRel2(("HID LEDs sync: broadcast completed\n"));
     else
-        LogRel2(("ID LEDs sync: broadcast failed\n"));
+        LogRel2(("HID LEDs sync: broadcast failed\n"));
 }
