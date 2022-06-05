@@ -1,4 +1,4 @@
-/* $Id: main.cpp 47831 2013-08-18 16:19:10Z vboxsync $ */
+/* $Id: main.cpp 48137 2013-08-29 06:19:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -299,6 +299,11 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
     /* Failed result initially: */
     int iResultCode = 1;
 
+#ifdef Q_WS_X11
+    if (!XInitThreads())
+        return 1;
+#endif
+
     /* Simulate try-catch block: */
     do
     {
@@ -536,6 +541,10 @@ int main(int argc, char **argv, char **envp)
      * Initialize the SUPLib as well only if we are really about to start a VM.
      * Don't do this if we are only starting the selector window. */
     bool fInitSUPLib = false;
+#ifdef Q_WS_X11
+    if (!XInitThreads())
+        return 1;
+#endif
     for (int i = 1; i < argc; ++i)
     {
         /* NOTE: the check here must match the corresponding check for the
