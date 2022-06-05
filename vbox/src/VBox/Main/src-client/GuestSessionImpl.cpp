@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 50764 2014-03-13 10:17:19Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 50771 2014-03-13 15:12:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3079,9 +3079,9 @@ HRESULT GuestSession::fileOpen(const com::Utf8Str &aPath, const com::Utf8Str &aO
 #else
     LogFlowThisFuncEnter();
 
-    Bstr strSharingMode = ""; /* Sharing mode is ignored. */
+    Utf8Str strSharingMode = ""; /* Sharing mode is ignored. */
 
-    return fileOpenEx(aPath, aOpenMode, aDisposition, strSharingMode.raw(), aCreationMode,
+    return fileOpenEx(aPath, aOpenMode, aDisposition, strSharingMode, aCreationMode,
                       0 /* aOffset */, aFile);
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }
