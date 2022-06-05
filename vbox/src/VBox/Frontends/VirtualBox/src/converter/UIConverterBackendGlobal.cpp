@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 53086 2014-10-17 13:56:38Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 53406 2014-11-27 14:49:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -577,6 +577,7 @@ template<> QString toInternalString(const UIExtraDataMetaDefs::RuntimeMenuViewAc
         case UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBar:         strResult = "StatusBar"; break;
         case UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBarSettings: strResult = "StatusBarSettings"; break;
         case UIExtraDataMetaDefs::RuntimeMenuViewActionType_ToggleStatusBar:   strResult = "ToggleStatusBar"; break;
+        case UIExtraDataMetaDefs::RuntimeMenuViewActionType_ScaleFactor:       strResult = "ScaleFactor"; break;
         case UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize:            strResult = "Resize"; break;
         case UIExtraDataMetaDefs::RuntimeMenuViewActionType_Multiscreen:       strResult = "Multiscreen"; break;
         case UIExtraDataMetaDefs::RuntimeMenuViewActionType_All:               strResult = "All"; break;
@@ -606,6 +607,7 @@ template<> UIExtraDataMetaDefs::RuntimeMenuViewActionType fromInternalString<UIE
     keys << "StatusBar";         values << UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBar;
     keys << "StatusBarSettings"; values << UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBarSettings;
     keys << "ToggleStatusBar";   values << UIExtraDataMetaDefs::RuntimeMenuViewActionType_ToggleStatusBar;
+    keys << "ScaleFactor";       values << UIExtraDataMetaDefs::RuntimeMenuViewActionType_ScaleFactor;
     keys << "Resize";            values << UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize;
     keys << "Multiscreen";       values << UIExtraDataMetaDefs::RuntimeMenuViewActionType_Multiscreen;
     keys << "All";               values << UIExtraDataMetaDefs::RuntimeMenuViewActionType_All;

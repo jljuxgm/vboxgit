@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 53406 2014-11-27 14:49:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -897,6 +897,7 @@ void UIMachineLogic::prepareActionGroups()
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_View_T_Scale));
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize));
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_View_S_AdjustWindow));
+    m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_View_M_ScaleFactor));
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_Input_S_TypeCAD));
 #ifdef Q_WS_X11
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_Input_S_TypeCABS));
