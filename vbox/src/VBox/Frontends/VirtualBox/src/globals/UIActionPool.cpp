@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 51267 2014-05-15 19:01:07Z vboxsync $ */
+/* $Id: UIActionPool.cpp 51375 2014-05-23 15:59:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -46,7 +46,7 @@ private:
 
 /* UIAction stuff: */
 UIAction::UIAction(UIActionPool *pParent, UIActionType type)
-    : QIWithRetranslateUI3<QAction>(pParent)
+    : QAction(pParent)
     , m_pActionPool(pParent)
     , m_type(type)
     , m_actionPoolType(pParent->type())
