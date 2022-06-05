@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 52388 2014-08-15 09:45:12Z vboxsync $ */
+/* $Id: DevRTC.cpp 52756 2014-09-16 09:19:43Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -661,8 +661,8 @@ static void rtc_copy_date(PRTCSTATE pThis)
     else
     {
         /* 12 hour format */
-        int h = (tm->tm_hour % 12) ? tm->tm_hour % 12 : 12;
-        pThis->cmos_data[RTC_HOURS] = to_bcd(pThis, h);
+        int h = tm->tm_hour % 12;
+        pThis->cmos_data[RTC_HOURS] = to_bcd(pThis, h ? h : 12);
         if (tm->tm_hour >= 12)
             pThis->cmos_data[RTC_HOURS] |= 0x80;
     }
