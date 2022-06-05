@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 45356 2013-04-05 07:01:27Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 49696 2013-11-28 09:46:38Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -270,10 +270,16 @@ Bool VBOXDRIScreenInit(ScrnInfoPtr pScrn, ScreenPtr pScreen, VBOXPtr pVBox)
         pDRIInfo->bufferRequests = DRI_ALL_WINDOWS;
         TRACE_LOG("Calling DRIScreenInit\n");
         if (!DRIScreenInit(pScreen, pDRIInfo, &pVBox->drmFD))
+        {
             rc = FALSE;
-        if (!rc)
             xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
                        "DRIScreenInit failed, disabling DRI.\n");
+            if (pVBox->drmFD)
+            {
+                drmClose(pVBox->drmFD);
+                pVBox->drmFD = -1;
+            }
+        }
     }
     if (rc && !VBOXInitVisualConfigs(pScrn, pVBox))
     {
@@ -281,7 +287,8 @@ Bool VBOXDRIScreenInit(ScrnInfoPtr pScrn, ScreenPtr pScreen, VBOXPtr pVBox)
                    "VBOXInitVisualConfigs failed, disabling DRI.\n");
         rc = FALSE;
     }
-    xf86DrvMsg(pScrn->scrnIndex, X_INFO, "visual configurations initialized\n");
+    else
+        xf86DrvMsg(pScrn->scrnIndex, X_INFO, "visual configurations initialized\n");
 
     /* Check the DRM version */
     if (rc)
@@ -304,12 +311,12 @@ Bool VBOXDRIScreenInit(ScrnInfoPtr pScrn, ScreenPtr pScreen, VBOXPtr pVBox)
     /* Clean up on failure. */
     if (!rc)
     {
-        if (pVBox->pDRIInfo)
-            DRIDestroyInfoRec(pVBox->pDRIInfo);
-        pVBox->pDRIInfo = NULL;
         if (pVBox->drmFD >= 0)
            VBOXDRICloseScreen(pScreen, pVBox);
         pVBox->drmFD = -1;
+        if (pVBox->pDRIInfo)
+            DRIDestroyInfoRec(pVBox->pDRIInfo);
+        pVBox->pDRIInfo = NULL;
     }
     TRACE_LOG("returning %s\n", BOOL_STR(rc));
     return rc;
