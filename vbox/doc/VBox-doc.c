@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 51346 2014-05-22 11:35:05Z vboxsync $ */
+/* $Id: VBox-doc.c 51368 2014-05-23 08:23:39Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -145,7 +145,7 @@
  *        maintained atm).
  *  - IPRT - Runtime Library for hiding host OS differences.
  *  - Validation Kit:
- *      - @ref pg_testsuite_guideline
+ *      - @ref pg_validationkit_guideline
  *
  * @todo Make links to the components.
  *
