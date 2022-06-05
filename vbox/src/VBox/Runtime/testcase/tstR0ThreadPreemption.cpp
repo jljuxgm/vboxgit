@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemption.cpp 47899 2013-08-20 12:24:49Z vboxsync $ */
+/* $Id: tstR0ThreadPreemption.cpp 48463 2013-09-12 22:36:08Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -383,6 +383,7 @@ DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint
 
                 RTThreadSleep(cMsSleepGranularity);
                 cMsSlept += cMsSleepGranularity;
+                RTThreadYield();
             }
 
             if (!ASMAtomicReadBool(&pCtxData->fPreemptingInvoked))
