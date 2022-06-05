@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52796 2014-09-19 15:26:52Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52937 2014-10-02 16:13:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -191,8 +191,8 @@ void UIMachineWindowNormal::sltHandleIndicatorContextMenuRequest(IndicatorType i
         case IndicatorType_SharedFolders: pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_SharedFolders);  break;
         case IndicatorType_Display:       pAction = actionPool()->action(UIActionIndexRT_M_ViewPopup);                break;
         case IndicatorType_VideoCapture:  pAction = actionPool()->action(UIActionIndexRT_M_Devices_M_VideoCapture);   break;
-        case IndicatorType_Mouse:         pAction = actionPool()->action(UIActionIndexRT_M_Machine_M_Mouse);          break;
-        case IndicatorType_Keyboard:      pAction = actionPool()->action(UIActionIndexRT_M_Machine_M_Keyboard);       break;
+        case IndicatorType_Mouse:         pAction = actionPool()->action(UIActionIndexRT_M_Input_M_Mouse);            break;
+        case IndicatorType_Keyboard:      pAction = actionPool()->action(UIActionIndexRT_M_Input_M_Keyboard);         break;
         default: break;
     }
     /* Raise action's context-menu: */
