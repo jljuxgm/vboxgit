@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 52801 2014-09-22 07:07:19Z vboxsync $ */
+/* $Id: MachineImpl.h 52958 2014-10-06 17:57:01Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1102,14 +1102,10 @@ private:
                                     ULONG *aWidth,
                                     ULONG *aHeight);
     HRESULT readSavedThumbnailToArray(ULONG aScreenId,
-                                      BOOL aBGR,
+                                      BitmapFormat_T aBitmapFormat,
                                       ULONG *aWidth,
                                       ULONG *aHeight,
                                       std::vector<BYTE> &aData);
-    HRESULT readSavedThumbnailPNGToArray(ULONG aScreenId,
-                                         ULONG *aWidth,
-                                         ULONG *aHeight,
-                                         std::vector<BYTE> &aData);
     HRESULT querySavedScreenshotPNGSize(ULONG aScreenId,
                                         ULONG *aSize,
                                         ULONG *aWidth,

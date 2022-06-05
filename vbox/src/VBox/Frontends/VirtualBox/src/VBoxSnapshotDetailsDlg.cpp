@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotDetailsDlg.cpp 52722 2014-09-12 13:41:01Z vboxsync $ */
+/* $Id: VBoxSnapshotDetailsDlg.cpp 52958 2014-10-06 17:57:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSnapshotDetailsDlg class implementation.
  */
@@ -73,7 +73,7 @@ void VBoxSnapshotDetailsDlg::getFromSnapshot (const CSnapshot &aSnapshot)
 
     /* Get thumbnail if present */
     ULONG width = 0, height = 0;
-    QVector <BYTE> thumbData = machine.ReadSavedThumbnailToArray (0, true, width, height);
+    QVector <BYTE> thumbData = machine.ReadSavedThumbnailToArray (0, KBitmapFormat_BGR0, width, height);
     mThumbnail = thumbData.size() != 0 ? QPixmap::fromImage (QImage (thumbData.data(), width, height, QImage::Format_RGB32).copy()) : QPixmap();
     QVector <BYTE> screenData = machine.ReadSavedScreenshotPNGToArray (0, width, height);
     mScreenshot = screenData.size() != 0 ? QPixmap::fromImage (QImage::fromData (screenData.data(), screenData.size(), "PNG")) : QPixmap();
