@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 48264 2013-09-04 13:17:43Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 48269 2013-09-04 14:34:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1961,8 +1961,7 @@ void UIMachineSettingsStorage::loadToCacheFrom(QVariant &data)
                     storageAttachmentData.m_fAttachmentTempEject = attachment.GetTemporaryEject();
                     storageAttachmentData.m_fAttachmentNonRotational = attachment.GetNonRotational();
                     CMedium cmedium = attachment.GetMedium();
-                    UIMedium uimedium;
-                    vboxGlobal().medium(cmedium, uimedium);
+                    UIMedium uimedium = cmedium.isNull() ? UIMedium() : vboxGlobal().medium(cmedium.GetId());
                     storageAttachmentData.m_strAttachmentMediumId = uimedium.id();
                 }
 
