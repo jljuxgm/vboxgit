@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 48036 2013-08-23 17:52:07Z vboxsync $
+# $Id: vboxconfig.sh 48207 2013-08-30 17:44:34Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -923,7 +923,7 @@ stop_service()
         errorprint "missing argument to stop_service()"
         exit 1
     fi
-    servicefound=`$BIN_SVCS -a | grep "$2" 2>/dev/null`
+    servicefound=`$BIN_SVCS -H "$2" 2>/dev/null | grep '^online'`
     if test ! -z "$servicefound"; then
         $BIN_SVCADM disable -s "$3"
         # Don't delete the manifest, this is handled by the manifest class action
