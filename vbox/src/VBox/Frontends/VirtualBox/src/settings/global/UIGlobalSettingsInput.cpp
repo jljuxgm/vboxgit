@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 48546 2013-09-19 16:17:42Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -94,7 +94,7 @@ void UIGlobalSettingsInput::loadToCacheFrom(QVariant &data)
     UISettingsPageGlobal::fetchData(data);
 
     /* Load host-combo shortcut to cache: */
-    m_cache.m_shortcuts << UIShortcutCacheItem(UIHostCombo::hostComboCacheKey(), tr("Host Combo"),  m_settings.hostCombo(), QString());
+    m_cache.m_shortcuts << UIShortcutCacheItem(UIHostCombo::hostComboCacheKey(), tr("Host Key Combination"),  m_settings.hostCombo(), QString());
     /* Load all other shortcuts to cache: */
     const QMap<QString, UIShortcut>& shortcuts = gShortcutPool->shortcuts();
     const QList<QString> shortcutKeys = shortcuts.keys();
