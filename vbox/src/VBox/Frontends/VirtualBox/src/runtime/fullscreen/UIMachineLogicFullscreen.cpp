@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 50634 2014-02-27 15:53:39Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 50646 2014-02-28 06:55:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -544,6 +544,14 @@ bool UIMachineLogicFullscreen::shouldWeInvalidateFullscreenMode() const
                  * be shown or isn't mapped to some host-screen: */
                 if (   !uisession()->isScreenVisible(uScreenID)
                     || !hasHostScreenForGuestScreen(uScreenID))
+                {
+                    fSomethingInvalid = true;
+                    break;
+                }
+                /* Check if that window should be located
+                 * on another host-screen than currently. */
+                if (hostScreenForGuestScreen((int)uScreenID) !=
+                    QApplication::desktop()->screenNumber(pMachineWindow))
                 {
                     fSomethingInvalid = true;
                     break;
