@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 50234 2014-01-24 22:48:13Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 50238 2014-01-25 11:36:40Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  *
@@ -721,15 +721,15 @@ static DECLCALLBACK(int) usbProxyWinUrbCancel(PUSBPROXYDEV pProxyDev, PVUSBURB p
         return VINF_SUCCESS;
 
     DWORD dwErr = GetLastError();
-    if (    dwErr == ERROR_INVALID_HANDLE_STATE
-        ||  dwErr == ERROR_BAD_COMMAND)
+    if (   dwErr == ERROR_INVALID_HANDLE_STATE
+        || dwErr == ERROR_BAD_COMMAND)
     {
         Log(("usbproxy: device %x unplugged!!\n", pPriv->hDev));
         pProxyDev->fDetached = true;
         return VINF_SUCCESS; /* Fake success and deal with the unplugged device elsewhere. */
     }
     else
-        AssertMsgFailed(("lasterr=%d\n", rc));
+        AssertMsgFailed(("lasterr=%d\n", dwErr));
 }
 
 static DECLCALLBACK(int) usbProxyWinWakeup(PUSBPROXYDEV pProxyDev)
