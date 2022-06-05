@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 51252 2014-05-14 12:51:25Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 51304 2014-05-20 11:55:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -49,7 +49,7 @@
 #include "UIMessageCenter.h"
 #include "UIPopupCenter.h"
 #include "VBoxTakeSnapshotDlg.h"
-#include "VBoxVMInformationDlg.h"
+#include "UIVMInfoDialog.h"
 #include "UISettingsDialogSpecific.h"
 #include "UIVMLogViewer.h"
 #include "UIConverter.h"
@@ -1382,7 +1382,7 @@ void UIMachineLogic::sltShowInformationDialog()
     if (!isMachineWindowsCreated())
         return;
 
-    VBoxVMInformationDlg::createInformationDlg(mainMachineWindow());
+    UIVMInfoDialog::createInformationDlg(mainMachineWindow());
 }
 
 void UIMachineLogic::sltReset()

@@ -1,4 +1,4 @@
-/* $Id: precomp.h 46224 2013-05-22 17:46:22Z vboxsync $*/
+/* $Id: precomp.h 51304 2014-05-20 11:55:32Z vboxsync $*/
 /** @file
  * Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -245,7 +245,7 @@
 #include "VBoxUtils-darwin.h"
 #include "VBoxUtils.h"
 #include "VBoxVMFirstRunWzd.h"
-#include "VBoxVMInformationDlg.h"
+#include "UIVMInfoDialog.h"
 #include "UIVMLogViewer.h"
 #include "UIMachineSettingsAudio.h"
 #include "UIMachineSettingsDisplay.h"
