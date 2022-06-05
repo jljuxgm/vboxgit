@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 52163 2014-07-24 11:35:26Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 52355 2014-08-11 19:21:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -517,7 +517,7 @@ static int supR3HardenedVerifyFileOpen(PCSUPINSTFILE pFile, bool fFatal, intptr_
                                        OPEN_EXISTING,
                                        FILE_ATTRIBUTE_NORMAL,
                                        NULL);
-            if (hFile)
+            if (hFile != INVALID_HANDLE_VALUE)
             {
                 *phFile = (intptr_t)hFile;
                 rc = VINF_SUCCESS;
