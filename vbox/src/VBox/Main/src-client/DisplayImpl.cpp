@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 51836 2014-07-03 09:40:21Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 51984 2014-07-11 10:51:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2396,6 +2396,31 @@ STDMETHODIMP Display::DetachFramebuffer(ULONG aScreenId)
 
     pFBInfo->pFramebuffer.setNull();
 
+    alock.release();
+
+#if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)
+    Console::SafeVMPtrQuiet ptrVM(mParent);
+    if (ptrVM.isOk())
+    {
+        BOOL fIs3DEnabled = FALSE;
+        mParent->i_machine()->COMGETTER(Accelerate3DEnabled)(&fIs3DEnabled);
+
+        if (fIs3DEnabled)
+        {
+            VBOXCRCMDCTL_HGCM data;
+            RT_ZERO(data);
+            data.Hdr.enmType = VBOXCRCMDCTL_TYPE_HGCM;
+            data.Hdr.u32Function = SHCRGL_HOST_FN_SCREEN_CHANGED;
+
+            data.aParms[0].type = VBOX_HGCM_SVC_PARM_32BIT;
+            data.aParms[0].u.uint32 = aScreenId;
+
+            int vrc = crCtlSubmitSync(&data.Hdr, sizeof(data));
+            AssertRC(vrc);
+        }
+    }
+#endif /* defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL) */
+
     return S_OK;
 }
 
@@ -3648,7 +3673,7 @@ int Display::crViewportNotify(ULONG aScreenId, ULONG x, ULONG y, ULONG width, UL
     pData->aParms[4].type = VBOX_HGCM_SVC_PARM_32BIT;
     pData->aParms[4].u.uint32 = height;
 
-    return crCtlSubmitSyncIfHasDataForScreen(aScreenId, &pData->Hdr, cbData);
+    return crCtlSubmitSyncIfHasDataForScreen(aScreenId, &pData->Hdr, (uint32_t)cbData);
 }
 #endif
 
