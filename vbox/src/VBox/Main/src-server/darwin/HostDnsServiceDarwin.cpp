@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 48489 2013-09-16 15:03:45Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 48492 2013-09-16 15:40:44Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -160,6 +160,9 @@ HRESULT HostDnsServiceDarwin::update()
      *   }
      * }
      */
+    
+    if (!propertyRef)
+        return S_OK;
     
     CFStringRef domainNameRef = (CFStringRef)CFDictionaryGetValue(
       static_cast<CFDictionaryRef>(propertyRef), CFSTR("DomainName"));
