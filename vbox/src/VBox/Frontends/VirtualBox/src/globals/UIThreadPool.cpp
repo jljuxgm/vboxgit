@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 48822 2013-10-02 15:22:41Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 48894 2013-10-04 18:59:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -155,7 +155,7 @@ UITask* UIThreadPool::dequeueTask(UIThreadWorker *pWorker)
 
     /* Make sure we have a task or outdated: */
     bool fOutdated = false;
-    while (!pTask && !fOutdated)
+    while (!isTerminating() && !pTask && !fOutdated)
     {
         /* Mark thread as not busy: */
         pWorker->setBusy(false);
@@ -171,7 +171,7 @@ UITask* UIThreadPool::dequeueTask(UIThreadWorker *pWorker)
         if (!m_tasks.isEmpty())
             pTask = m_tasks.dequeue();
     }
-    Assert(pTask || fOutdated);
+    Assert(isTerminating() || pTask || fOutdated);
 
     /* Unlock task locker: */
     m_taskLocker.unlock();
