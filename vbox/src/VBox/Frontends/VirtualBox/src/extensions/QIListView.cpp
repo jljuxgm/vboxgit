@@ -1,4 +1,4 @@
-/* $Id: QIListView.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QIListView.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIListView, QIItemDelegate class implementation.
  */
@@ -23,13 +23,16 @@
 # if MAC_LEOPARD_STYLE
 #  include <QPainter>
 #  include <QApplication>
-#  include <qmacstyle_mac.h>
 # endif /* MAC_LEOPARD_STYLE */
 
-/* GUI includes: */
-# include "QIListView.h"
-
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#if MAC_LEOPARD_STYLE
+# include <qmacstyle_mac.h>
+#endif /* MAC_LEOPARD_STYLE */
+
+/* GUI includes: */
+#include "QIListView.h"
 
 
 QIListView::QIListView (QWidget *aParent /* = 0 */)

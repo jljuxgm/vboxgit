@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -20,7 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QShortcut>
 # include <QHeaderView>
 # include <QAbstractItemDelegate>
 # include <QStyledItemDelegate>
@@ -36,6 +35,8 @@
 # include "VBoxGlobalSettings.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QShortcut>
 
 
 /* Namespaces: */

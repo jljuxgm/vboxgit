@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -41,11 +41,12 @@
 # include "CUSBDevice.h"
 # include "CUSBDeviceFilter.h"
 # include "CHostUSBDevice.h"
-# include "CHostUSBDeviceFilter.h"
 # include "CExtPackManager.h"
 # include "CExtPack.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include "CHostUSBDeviceFilter.h"
 
 
 /**

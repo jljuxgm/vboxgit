@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -74,11 +74,12 @@
 # endif /* VBOX_WITH_DRAG_AND_DROP */
 
 /* Other VBox includes: */
-# include <iprt/err.h>
 # include <iprt/param.h>
 # include <iprt/path.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <iprt/err.h>
 
 
 /* static */

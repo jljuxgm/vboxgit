@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedToolBar.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QIAdvancedToolBar.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIAdvancedToolBar class implementation.
  */
@@ -24,10 +24,10 @@
 # include <QAction>
 # include <QToolButton>
 
-/* GUI includes: */
-# include "QIAdvancedToolBar.h"
-
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+/* GUI includes: */
+#include "QIAdvancedToolBar.h"
 
 
 /* More configurable tool-button for QIAdvancedToolBar: */

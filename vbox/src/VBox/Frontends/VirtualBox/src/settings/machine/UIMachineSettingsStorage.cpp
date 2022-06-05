@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -22,12 +22,10 @@
 /* Qt includes: */
 # include <QHeaderView>
 # include <QItemEditorFactory>
-# include <QMetaProperty>
 # include <QMouseEvent>
 # include <QScrollBar>
 # include <QStylePainter>
 # include <QTimer>
-# include <QCommonStyle>
 
 /* GUI includes: */
 # include "QIWidgetValidator.h"
@@ -46,6 +44,9 @@
 # include "CMediumAttachment.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QCommonStyle>
+#include <QMetaProperty>
 
 
 QString compressText (const QString &aText)

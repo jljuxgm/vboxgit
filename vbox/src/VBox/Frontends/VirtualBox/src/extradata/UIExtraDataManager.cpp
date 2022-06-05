@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -29,7 +29,6 @@
 #  include <QListView>
 #  include <QTableView>
 #  include <QHeaderView>
-#  include <QStandardItemModel>
 #  include <QSortFilterProxyModel>
 #  include <QStyledItemDelegate>
 #  include <QPainter>
@@ -37,8 +36,6 @@
 #  include <QLineEdit>
 #  include <QComboBox>
 #  include <QPushButton>
-#  include <QXmlStreamWriter>
-#  include <QXmlStreamReader>
 # endif /* DEBUG */
 
 /* GUI includes: */
@@ -68,6 +65,12 @@
 # include "CMachine.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#ifdef DEBUG
+# include <QStandardItemModel>
+# include <QXmlStreamWriter>
+# include <QXmlStreamReader>
+#endif
 
 
 /* Namespaces: */

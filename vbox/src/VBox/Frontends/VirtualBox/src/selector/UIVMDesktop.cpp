@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMDesktop class implementation.
  */
@@ -21,7 +21,6 @@
 
 /* Qt includes: */
 # include <QLabel>
-# include <QStackedLayout>
 # include <QStackedWidget>
 # include <QToolButton>
 # ifdef Q_WS_MAC
@@ -43,6 +42,8 @@
 # include <iprt/assert.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QStackedLayout>
 
 
 //#ifdef Q_WS_MAC

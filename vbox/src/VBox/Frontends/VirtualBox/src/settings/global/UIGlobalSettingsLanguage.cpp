@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -31,12 +31,13 @@
 # include "VBoxGlobal.h"
 
 /* Other VBox includes: */
-# include <iprt/err.h>
 # include <iprt/param.h>
 # include <iprt/path.h>
 # include <VBox/version.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <iprt/err.h>
 
 
 extern const char *gVBoxLangSubDir;

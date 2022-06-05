@@ -1,4 +1,4 @@
-/* $Id: main.cpp 52722 2014-09-12 13:41:01Z vboxsync $ */
+/* $Id: main.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -33,27 +33,28 @@
 # endif
 
 # ifdef Q_WS_X11
-#  include <QFontDatabase>
 #  include <iprt/env.h>
 # endif
 
-# include <QCleanlooksStyle>
-# include <QPlastiqueStyle>
 # include <QMessageBox>
 # include <QLocale>
 # include <QTranslator>
 
 # include <iprt/buildconfig.h>
-# include <iprt/err.h>
 # include <iprt/initterm.h>
 # include <iprt/process.h>
 # include <iprt/stream.h>
-# include <VBox/err.h>
 # include <VBox/version.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+#include <VBox/err.h>
+
+#include <QCleanlooksStyle>
+#include <QPlastiqueStyle>
+
 #ifdef Q_WS_X11
+# include <QFontDatabase>
 # include <X11/Xlib.h>
 # include <dlfcn.h>
 #endif

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -21,8 +21,6 @@
 
 /* Global includes: */
 # include <QDialogButtonBox>
-# include <QPrintDialog>
-# include <QPrinter>
 # include <QPushButton>
 # include <QTextStream>
 
@@ -36,6 +34,9 @@
 # include "QIFileDialog.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QPrintDialog>
+#include <QPrinter>
 
 
 /* Import license viewer: */

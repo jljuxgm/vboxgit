@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIMainDialog class implementation.
  */
@@ -32,11 +32,12 @@
 # include <QDir>
 # include <QUrl>
 # include <QMenu>
-# include <QSizeGrip>
 # include <QPushButton>
 # include <QDialogButtonBox>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QSizeGrip>
 
 
 QIMainDialog::QIMainDialog (QWidget *aParent /* = 0 */,

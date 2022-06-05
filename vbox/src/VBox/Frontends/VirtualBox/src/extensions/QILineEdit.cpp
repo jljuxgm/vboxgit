@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QILineEdit.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VirtualBox Qt GUI - QILineEdit class implementation.
  */
@@ -22,10 +22,7 @@
 # include "QILineEdit.h"
 
 /* Qt includes */
-# include <QStyleOptionFrame>
-
 # ifdef Q_WS_WIN32
-#  include <QWindowsVistaStyle>
 #  include <QLibrary>
 
 #  include <Windows.h>
@@ -33,6 +30,11 @@
 # endif
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QStyleOptionFrame>
+#ifdef Q_WS_WIN32
+# include <QWindowsVistaStyle>
+#endif
 
 
 void QILineEdit::setMinimumWidthByText (const QString &aText)

@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedSlider.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QIAdvancedSlider.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIAdvancedSlider class implementation.
  */
@@ -25,9 +25,10 @@
 # include <QVBoxLayout>
 # include <QPainter>
 # include <QStyle>
-# include <QStyleOptionSlider>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QStyleOptionSlider>
 
 /* System includes */
 #include <math.h>

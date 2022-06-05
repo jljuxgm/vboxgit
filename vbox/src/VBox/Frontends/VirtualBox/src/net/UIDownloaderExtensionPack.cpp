@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
@@ -22,7 +22,6 @@
 /* Global includes: */
 # include <QDir>
 # include <QFile>
-# include <iprt/sha.h>
 
 /* Local includes: */
 # include "UIDownloaderExtensionPack.h"
@@ -33,6 +32,8 @@
 # include "UIModalWindowManager.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <iprt/sha.h>
 
 
 /* static */

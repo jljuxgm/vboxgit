@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class implementation.
  */
@@ -24,7 +24,6 @@
 # include <QStyleOptionGraphicsItem>
 # include <QGraphicsSceneDragDropEvent>
 # include <QLineEdit>
-# include <QGraphicsProxyWidget>
 # include <QGraphicsScene>
 # include <QHBoxLayout>
 # include <QMenu>
@@ -38,6 +37,8 @@
 # include "UIGChooserView.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QGraphicsProxyWidget>
 
 
 /* static */

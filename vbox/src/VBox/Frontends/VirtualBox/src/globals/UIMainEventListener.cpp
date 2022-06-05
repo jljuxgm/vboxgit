@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -26,29 +26,29 @@
 # include "COMEnums.h"
 # include "CVirtualBoxErrorInfo.h"
 # include "CUSBDevice.h"
-# include "CEvent.h"
-# include "CMachineStateChangedEvent.h"
-# include "CMachineDataChangedEvent.h"
-# include "CExtraDataCanChangeEvent.h"
-# include "CExtraDataChangedEvent.h"
-# include "CMachineRegisteredEvent.h"
-# include "CSessionStateChangedEvent.h"
-# include "CSnapshotTakenEvent.h"
-# include "CSnapshotDeletedEvent.h"
-# include "CSnapshotChangedEvent.h"
-# include "CMousePointerShapeChangedEvent.h"
-# include "CMouseCapabilityChangedEvent.h"
-# include "CKeyboardLedsChangedEvent.h"
-# include "CStateChangedEvent.h"
-# include "CNetworkAdapterChangedEvent.h"
-# include "CMediumChangedEvent.h"
-# include "CUSBDeviceStateChangedEvent.h"
-# include "CRuntimeErrorEvent.h"
-# include "CCanShowWindowEvent.h"
-# include "CShowWindowEvent.h"
-# include "CGuestMonitorChangedEvent.h"
-
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include "CEvent.h"
+#include "CMachineStateChangedEvent.h"
+#include "CMachineDataChangedEvent.h"
+#include "CExtraDataCanChangeEvent.h"
+#include "CExtraDataChangedEvent.h"
+#include "CMachineRegisteredEvent.h"
+#include "CSessionStateChangedEvent.h"
+#include "CSnapshotTakenEvent.h"
+#include "CSnapshotDeletedEvent.h"
+#include "CSnapshotChangedEvent.h"
+#include "CMousePointerShapeChangedEvent.h"
+#include "CMouseCapabilityChangedEvent.h"
+#include "CKeyboardLedsChangedEvent.h"
+#include "CStateChangedEvent.h"
+#include "CNetworkAdapterChangedEvent.h"
+#include "CMediumChangedEvent.h"
+#include "CUSBDeviceStateChangedEvent.h"
+#include "CRuntimeErrorEvent.h"
+#include "CCanShowWindowEvent.h"
+#include "CShowWindowEvent.h"
+#include "CGuestMonitorChangedEvent.h"
 
 
 UIMainEventListener::UIMainEventListener()

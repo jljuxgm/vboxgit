@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane and UITask class implementation.
  */
@@ -21,15 +21,16 @@
 
 /* Qt includes: */
 # include <QApplication>
-# include <QFontMetrics>
-# include <QTextLayout>
 # include <QPainter>
-# include <QGraphicsSceneHoverEvent>
 
 /* GUI includes: */
 # include "UIGraphicsTextPane.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QFontMetrics>
+#include <QGraphicsSceneHoverEvent>
+#include <QTextLayout>
 
 
 UIGraphicsTextPane::UIGraphicsTextPane(QIGraphicsWidget *pParent, QPaintDevice *pPaintDevice)

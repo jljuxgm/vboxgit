@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: COMDefs.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
@@ -21,7 +21,6 @@
 
 /* Qt includes: */
 # include <QObject>
-# include <QSocketNotifier>
 
 /* COM includes: */
 # include "COMDefs.h"
@@ -29,6 +28,8 @@
 # include "CVirtualBoxErrorInfo.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+#include <QSocketNotifier>
 
 #ifdef VBOX_WITH_XPCOM
 

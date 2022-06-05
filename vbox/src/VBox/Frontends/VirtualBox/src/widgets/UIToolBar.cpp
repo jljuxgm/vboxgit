@@ -1,4 +1,4 @@
-/* $Id: UIToolBar.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIToolBar.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBar class implementation.
  */
@@ -23,7 +23,6 @@
 # include <QLayout>
 # include <QMainWindow>
 # include <QWindowsStyle>
-# include <QCleanlooksStyle>
 
 /* GUI includes: */
 # include "UIToolBar.h"
@@ -32,6 +31,9 @@
 # endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 #endif /* Q_WS_MAC */
+
+#include <QCleanlooksStyle>
+
 
 UIToolBar::UIToolBar(QWidget *pParent /* = 0 */)
     : QToolBar(pParent)
