@@ -1,6 +1,6 @@
-/* $Id: hardenedmain.cpp 52424 2014-08-20 03:25:37Z vboxsync $ */
+/* $Id: hardenedmain.cpp 52722 2014-09-12 13:41:01Z vboxsync $ */
 /** @file
- * VirtualBox - Hardened main().
+ * VBox Qt GUI - Hardened main().
  */
 
 /*

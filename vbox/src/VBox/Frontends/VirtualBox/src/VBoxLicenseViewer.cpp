@@ -1,8 +1,6 @@
-/* $Id: VBoxLicenseViewer.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.cpp 52722 2014-09-12 13:41:01Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * VBoxLicenseViewer class implementation
+ * VBox Qt GUI - VBoxLicenseViewer class implementation.
  */
 
 /*
@@ -18,19 +16,22 @@
  */
 
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
-# include "precomp.h"
+# include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
-#include "VBoxLicenseViewer.h"
-#include "QIDialogButtonBox.h"
-#include "UIMessageCenter.h"
+
+# include "VBoxLicenseViewer.h"
+# include "QIDialogButtonBox.h"
+# include "UIMessageCenter.h"
 
 /* Qt includes */
-#include <QTextBrowser>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QScrollBar>
-#include <QFile>
+# include <QTextBrowser>
+# include <QPushButton>
+# include <QVBoxLayout>
+# include <QScrollBar>
+# include <QFile>
+
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 VBoxLicenseViewer::VBoxLicenseViewer(QWidget *pParent /* = 0 */)
     : QIWithRetranslateUI2<QDialog>(pParent)
