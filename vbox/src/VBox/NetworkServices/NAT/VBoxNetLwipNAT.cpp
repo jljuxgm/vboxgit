@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49842 2013-12-09 13:49:46Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 50002 2013-12-25 14:10:51Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -756,7 +756,7 @@ int VBoxNetLwipNAT::init()
     {
         unsigned long i = 0;
         for (AddressToOffsetMapping::iterator it = tmp.begin();
-             it != tmp.begin() && i < RT_ELEMENTS(m_lo2off); 
+             it != tmp.end() && i < RT_ELEMENTS(m_lo2off); 
              ++it, ++i)
         {
             ip4_addr_set_u32(&m_lo2off[i].loaddr, it->first.u);
