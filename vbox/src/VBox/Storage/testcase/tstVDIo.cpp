@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 52407 2014-08-19 08:23:56Z vboxsync $ */
+/* $Id: tstVDIo.cpp 52496 2014-08-25 14:41:15Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2811,7 +2811,7 @@ static void tstVDIoScriptRun(const char *pcszFilename)
 static void tstVDIoRunBuiltinTests(void)
 {
     /* 32bit hosts are excluded because of the 4GB address space. */
-#ifdef HC_ARCH_BITS == 32
+#if HC_ARCH_BITS == 32
     RTStrmPrintf(g_pStdErr, "tstVDIo: Running on a 32bit host is not supported for the builtin tests, skipping\n");
     return;
 #else
