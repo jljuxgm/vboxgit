@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
+/* $Id: VBoxManageDebugVM.cpp 52927 2014-10-02 11:34:37Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -167,11 +167,17 @@ static RTEXITCODE handleDebugVM_LogXXXX(HandlerArg *pArgs, IMachineDebugger *pDe
     RTGETOPTSTATE               GetState;
     RTGETOPTUNION               ValueUnion;
 
-    /** @todo Put short options into enum / defines! */
+    /*
+     * NB: don't use short options to prevent log specifications like
+     * "-drv_foo" from being interpreted as options.
+     */
+#   define DEBUGVM_LOG_DEBUG       (VINF_GETOPT_NOT_OPTION + 'd')
+#   define DEBUGVM_LOG_RELEASE     (VINF_GETOPT_NOT_OPTION + 'r')
+
     static const RTGETOPTDEF    s_aOptions[] =
     {
-        { "--debug",        'd', RTGETOPT_REQ_NOTHING },
-        { "--release",      'r', RTGETOPT_REQ_NOTHING }
+        { "--debug",        DEBUGVM_LOG_DEBUG,   RTGETOPT_REQ_NOTHING },
+        { "--release",      DEBUGVM_LOG_RELEASE, RTGETOPT_REQ_NOTHING }
     };
     int rc = RTGetOptInit(&GetState, pArgs->argc, pArgs->argv, s_aOptions, RT_ELEMENTS(s_aOptions), 2, RTGETOPTINIT_FLAGS_OPTS_FIRST);
     AssertRCReturn(rc, RTEXITCODE_FAILURE);
@@ -180,11 +186,11 @@ static RTEXITCODE handleDebugVM_LogXXXX(HandlerArg *pArgs, IMachineDebugger *pDe
     {
         switch (rc)
         {
-            case 'r':
+            case DEBUGVM_LOG_RELEASE:
                 fRelease = true;
                 break;
 
-            case 'd':
+            case DEBUGVM_LOG_DEBUG:
                 fRelease = false;
                 break;
 
