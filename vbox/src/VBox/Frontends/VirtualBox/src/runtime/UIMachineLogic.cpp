@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52645 2014-09-08 11:42:02Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 52686 2014-09-10 18:16:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1007,12 +1007,23 @@ void UIMachineLogic::prepareDock()
 {
     QMenu *pDockMenu = actionPool()->action(UIActionIndexRT_M_Dock)->menu();
 
-    /* Add all VM menu entries to the dock menu. Leave out close and stuff like
-     * this. */
+    /* Add all the 'Machine' menu entries to the 'Dock' menu: */
     QList<QAction*> actions = actionPool()->action(UIActionIndexRT_M_Machine)->menu()->actions();
     for (int i=0; i < actions.size(); ++i)
-        if (actions.at(i)->menuRole() == QAction::NoRole)
-            pDockMenu->addAction(actions.at(i));
+    {
+        /* Check if we really have correct action: */
+        UIAction *pAction = qobject_cast<UIAction*>(actions.at(i));
+        /* Skip incorrect actions: */
+        if (!pAction)
+            continue;
+        /* Skip actions which have 'role' (to prevent consuming): */
+        if (pAction->menuRole() != QAction::NoRole)
+            continue;
+        /* Skip actions which have menu (to prevent consuming): */
+        if (qobject_cast<UIActionMenu*>(pAction))
+            continue;
+        pDockMenu->addAction(actions.at(i));
+    }
     pDockMenu->addSeparator();
 
     QMenu *pDockSettingsMenu = actionPool()->action(UIActionIndexRT_M_Dock_M_DockSettings)->menu();
