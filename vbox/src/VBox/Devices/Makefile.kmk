@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53304 2014-11-11 15:00:41Z vboxsync $
+# $Id: Makefile.kmk 53378 2014-11-23 23:05:37Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1365,11 +1365,11 @@ if defined(VBOX_WITH_VMSVGA3D) && !defined(VBOX_ONLY_EXTPACKS)
  TEMPLATE_VBoxSVGA3D_EXTENDS = VBOXR3
  TEMPLATE_VBoxSVGA3D_CFLAGS  = \
  	$(filter-out -pedantic -fno-common -Wstrict-prototypes,$(TEMPLATE_VBOXR3_CFLAGS))
- TEMPLATE_VBoxSVGA3D_CXXFLAG = \
+ TEMPLATE_VBoxSVGA3D_CXXFLAGS = \
  	$(filter-out -pedantic -fno-common,$(TEMPLATE_VBOXR3_CXXFLAGS))
  TEMPLATE_VBoxSVGA3D_CFLAGS.darwin  = \
  	$(filter-out -fno-common,$(TEMPLATE_VBOXR3_CFLAGS.darwin))
- TEMPLATE_VBoxSVGA3D_LDFLAGS.darwin = \
+ TEMPLATE_VBoxSVGA3D_LDFLAGS.darwin = $(TEMPLATE_VBOXR3_LDFLAGS.darwin) \
  	-framework AppKit -framework OpenGL
 
  #
