@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 46820 2013-06-27 07:58:37Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 48101 2013-08-27 18:23:47Z vboxsync $ */
 
 /** @file
  *
@@ -59,6 +59,7 @@ public:
 
     // IHostNetworkInterface properties
     STDMETHOD(COMGETTER(Name))(BSTR *aInterfaceName);
+    STDMETHOD(COMGETTER(ShortName))(BSTR *aShortName);
     STDMETHOD(COMGETTER(Id))(BSTR *aGuid);
     STDMETHOD(COMGETTER(DHCPEnabled))(BOOL *aDHCPEnabled);
     STDMETHOD(COMGETTER(IPAddress))(BSTR *aIPAddress);

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 47831 2013-08-18 16:19:10Z vboxsync $ */
+/* $Id: UISession.cpp 48101 2013-08-27 18:23:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1357,6 +1357,7 @@ bool UISession::preparePowerUp()
     foreach (const CHostNetworkInterface &iface, vboxGlobal().host().GetNetworkInterfaces())
     {
         availableInterfaceNames << iface.GetName();
+        availableInterfaceNames << iface.GetShortName();
     }
 
     ulong cCount = vboxGlobal().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(machine.GetChipsetType());
