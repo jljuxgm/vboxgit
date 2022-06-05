@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46952 2013-07-03 20:45:26Z vboxsync $
+# $Id: Makefile.kmk 49116 2013-10-15 12:50:23Z vboxsync $
 ## @file
 # Sub-Makefile for the New VGA BIOS ROM.
 #
@@ -115,7 +115,7 @@ $$(VgaBiosBin_0_OUTDIR)/vbetables.h: $(MAKEFILE_CURRENT) $$(vbetables-gen_1_TARG
 # The VBE tables.
 #
 BLDPROGS += vbetables-gen
-vbetables-gen_TEMPLATE = VBOXBLDPROG
+vbetables-gen_TEMPLATE = VBoxBldProg
 vbetables-gen_SOURCES  = vbetables-gen.c
 vbetables-gen_CLEAN    = $(vbetables-gen)
 
