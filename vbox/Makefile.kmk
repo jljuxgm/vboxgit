@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52588 2014-09-03 15:50:55Z vboxsync $
+# $Id: Makefile.kmk 52590 2014-09-03 17:57:54Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1023,7 +1023,7 @@ ifeq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),linux.x86)
 	+ $(VBOX_KMK_TIME) $(KMK) $(VBOX_ADDITIONS_BUILD.x86) packing VBOX_WITH_COMBINED_LINUX_GUEST_PACKAGE=1
 else
 	$(call VBOX_BLD_VM_MSG_BEGIN,Linux/x86 additions, combine)
-	$(VBOX_KMK_TIME) ssh 'vbox@$(VBOX_BLD_VM_LNX_NEW_X86_IP "echo $@ && dchroot -c rhel3-i386 \"cd /mnt/tinderbox/$(VBOX_ADDITIONS_BUILD_SUBDIRNAME) && tools/env.sh --no-wine kmk $(VBOX_ADDITIONS_BUILD.x86) all packing VBOX_WITH_COMBINED_LINUX_GUEST_PACKAGE=1\""'
+	$(VBOX_KMK_TIME) ssh 'vbox@$(VBOX_BLD_VM_LNX_NEW_X86_IP) "echo $@ && dchroot -c rhel3-i386 \"cd /mnt/tinderbox/$(VBOX_ADDITIONS_BUILD_SUBDIRNAME) && tools/env.sh --no-wine kmk $(VBOX_ADDITIONS_BUILD.x86) all packing VBOX_WITH_COMBINED_LINUX_GUEST_PACKAGE=1\""'
 	$(call VBOX_BLD_VM_MSG_END__,Linux/x86 additions, combine)
 endif
 
