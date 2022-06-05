@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 48705 2013-09-26 12:20:47Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 49013 2013-10-09 15:49:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,7 +28,7 @@
 #include "UIActionPoolRuntime.h"
 #include "UIMachineLogicSeamless.h"
 #include "UIMachineWindowSeamless.h"
-#include "UIMachineViewSeamless.h"
+#include "UIMachineView.h"
 #ifndef Q_WS_MAC
 # include "UIMachineDefs.h"
 # include "UIMiniToolBar.h"
@@ -196,6 +196,8 @@ void UIMachineWindowSeamless::placeOnScreen()
     move(workingArea.topLeft());
     /* Resize to the appropriate size: */
     resize(workingArea.size());
+    /* Adjust guest if necessary: */
+    machineView()->normalizeGeometry(false);
 #ifndef Q_WS_MAC
     /* Move mini-toolbar into appropriate place: */
     if (m_pMiniToolBar)

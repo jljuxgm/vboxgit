@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 49013 2013-10-09 15:49:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,6 +28,7 @@
 #include "UIActionPoolRuntime.h"
 #include "UIMachineLogicFullscreen.h"
 #include "UIMachineWindowFullscreen.h"
+#include "UIMachineView.h"
 #include "UIMachineDefs.h"
 #include "UIMiniToolBar.h"
 
@@ -163,6 +164,8 @@ void UIMachineWindowFullscreen::placeOnScreen()
     move(workingArea.topLeft());
     /* Resize to the appropriate size: */
     resize(workingArea.size());
+    /* Adjust guest if necessary: */
+    machineView()->normalizeGeometry(false);
     /* Move mini-toolbar into appropriate place: */
     if (m_pMiniToolBar)
         m_pMiniToolBar->adjustGeometry();

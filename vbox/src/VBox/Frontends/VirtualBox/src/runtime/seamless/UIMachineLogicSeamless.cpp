@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 48920 2013-10-07 13:02:45Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 49013 2013-10-09 15:49:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -108,17 +108,23 @@ void UIMachineLogicSeamless::sltMachineStateChanged()
     /* If machine-state changed from 'paused' to 'running': */
     if (uisession()->isRunning() && uisession()->wasPaused())
     {
+        LogRelFlow(("UIMachineLogicSeamless: "
+                    "Machine-state changed from 'paused' to 'running': "
+                    "Updating screen-layout...\n"));
+
+        /* Make sure further code will be called just once: */
+        uisession()->forgetPreviousMachineState();
         /* We should rebuild screen-layout: */
         m_pScreenLayout->rebuild();
         /* We should update machine-windows sizes: */
         foreach (UIMachineWindow *pMachineWindow, machineWindows())
-            pMachineWindow->handleScreenResize();
+            pMachineWindow->handleScreenGeometryChange();
     }
 }
 
 void UIMachineLogicSeamless::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo)
 {
-    LogRelFlow(("UIMachineLogicSeamless::GuestScreenCountChanged.\n"));
+    LogRelFlow(("UIMachineLogicSeamless: Guest-screen count changed.\n"));
 
     /* Update multi-screen layout before any window update: */
     if (changeType == KGuestMonitorChangedEventType_Enabled ||
@@ -131,7 +137,7 @@ void UIMachineLogicSeamless::sltGuestMonitorChange(KGuestMonitorChangedEventType
 
 void UIMachineLogicSeamless::sltHostScreenCountChanged(int cScreenCount)
 {
-    LogRelFlow(("UIMachineLogicSeamless::HostScreenCountChanged.\n"));
+    LogRelFlow(("UIMachineLogicSeamless: Host-screen count changed.\n"));
 
     /* Update multi-screen layout before any window update: */
     m_pScreenLayout->rebuild();

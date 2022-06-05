@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 48832 2013-10-03 13:04:18Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 49013 2013-10-09 15:49:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -543,11 +543,13 @@ void UIMachineLogic::sltHostScreenCountChanged(int /*cHostScreenCount*/)
         pMachineWindow->handleScreenCountChange();
 }
 
-void UIMachineLogic::sltHostScreenResized(int /*iHostScreenNumber*/)
+void UIMachineLogic::sltHostScreenGeometryChanged()
 {
+    LogRelFlow(("UIMachineLogic: Host-screen geometry changed.\n"));
+
     /* Deliver event to all machine-windows: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
-        pMachineWindow->handleScreenResize();
+        pMachineWindow->handleScreenGeometryChange();
 }
 
 UIMachineLogic::UIMachineLogic(QObject *pParent, UISession *pSession, UIVisualStateType visualStateType)
@@ -717,15 +719,11 @@ void UIMachineLogic::prepareSessionConnections()
     connect(uisession(), SIGNAL(sigGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)),
             this, SLOT(sltGuestMonitorChange(KGuestMonitorChangedEventType, ulong, QRect)));
 
-    /* Host-screen-change updater: */
+    /* Host-screen-change updaters: */
     connect(uisession(), SIGNAL(sigHostScreenCountChanged(int)),
             this, SLOT(sltHostScreenCountChanged(int)));
-
-    /* Host-screen-resize updaters: */
-    connect(uisession(), SIGNAL(sigHostScreenFullGeometryResized(int)),
-            this, SLOT(sltHostScreenResized(int)));
-    connect(uisession(), SIGNAL(sigHostScreenAvailableGeometryResized(int)),
-            this, SLOT(sltHostScreenResized(int)));
+    connect(uisession(), SIGNAL(sigHostScreenGeometryChanged()),
+            this, SLOT(sltHostScreenGeometryChanged()));
 }
 
 void UIMachineLogic::prepareActionGroups()
