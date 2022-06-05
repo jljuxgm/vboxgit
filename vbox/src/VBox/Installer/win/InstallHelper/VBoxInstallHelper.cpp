@@ -1,10 +1,10 @@
-/* $Id: VBoxInstallHelper.cpp 41024 2012-04-23 12:51:21Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 51009 2014-04-09 09:43:59Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -288,7 +288,7 @@ UINT __stdcall InstallPythonAPI(MSIHANDLE hModule)
             logStringW(hModule, L"InstallPythonAPI: Unable to retrieve VBox installation path!");
     }
 
-    VBoxSetProperty(hModule, L"PYTHON_INSTALLED", bInstalled ? L"1" : L"0");
+    VBoxSetProperty(hModule, L"VBOX_PYTHON_IS_INSTALLED", bInstalled ? L"1" : L"0");
 
     if (!bInstalled)
         logStringW(hModule, L"InstallPythonAPI: VBox API not installed.");
