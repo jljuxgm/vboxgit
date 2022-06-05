@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 52408 2014-08-19 10:04:54Z vboxsync $ */
+/* $Id: DevAHCI.cpp 52409 2014-08-19 10:12:38Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -8053,8 +8053,6 @@ static DECLCALLBACK(void) ahciR3Reset(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(void) ahciR3PowerOff(PPDMDEVINS pDevIns)
 {
-    PAHCI pThis = PDMINS_2_DATA(pDevIns, PAHCI);
-
     Log(("achiR3PowerOff\n"));
     ahciR3SuspendOrPowerOff(pDevIns);
 }
