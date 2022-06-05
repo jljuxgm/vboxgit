@@ -1,4 +1,4 @@
-/* $Revision: 50190 $ */
+/* $Revision: 50254 $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -979,7 +979,7 @@ int main(int argc, char **argv)
 
     printf("Starting main()\n");
 
-    if (VBoxCGlueInit() != 0)
+    if (VBoxCGlueInit())
     {
         fprintf(stderr, "%s: FATAL: VBoxCGlueInit failed: %s\n",
                 argv[0], g_szVBoxErrMsg);
