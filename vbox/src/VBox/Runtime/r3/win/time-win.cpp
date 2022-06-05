@@ -1,4 +1,4 @@
-/* $Id: time-win.cpp 52822 2014-09-23 10:25:34Z vboxsync $ */
+/* $Id: time-win.cpp 52823 2014-09-23 10:27:55Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -195,7 +195,7 @@ RTDECL(int64_t) RTTimeLocalDeltaNano(void)
     TIME_ZONE_INFORMATION Tzi;
     Tzi.Bias = 0;
     if (GetTimeZoneInformation(&Tzi) != TIME_ZONE_ID_INVALID)
-        return -(int64_t)Tzi.Bias * 60 * RT_NS_1MS_64;
+        return -(int64_t)Tzi.Bias * 60 * RT_NS_1SEC_64;
     return 0;
 }
 
