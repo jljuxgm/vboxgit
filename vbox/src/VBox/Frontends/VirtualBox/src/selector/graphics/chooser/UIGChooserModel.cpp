@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 45362 2013-04-05 09:49:21Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 48087 2013-08-27 15:37:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1491,12 +1491,18 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
         }
         else if (iResultCode == AlertButton_Choice2)
         {
-            /* Just unregister machine: */
-            machine.Unregister(KCleanupMode_DetachAllReturnNone);
+            /* Unregister machine first: */
+            CMediumVector mediums = machine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
             if (!machine.isOk())
             {
                 msgCenter().cannotRemoveMachine(machine);
                 continue;
+            }
+            /* Finally close all media, deliberately ignoring errors: */
+            foreach (CMedium medium, mediums)
+            {
+                if (!medium.isNull())
+                    medium.Close();
             }
         }
     }
