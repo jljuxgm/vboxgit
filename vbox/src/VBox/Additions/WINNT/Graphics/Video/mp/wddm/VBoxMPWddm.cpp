@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 48145 2013-08-29 11:05:46Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 48146 2013-08-29 11:11:11Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -3854,7 +3854,7 @@ DxgkDdiEscape(
                 }
 
 #if 0
-                /* win8.1 does not allow context-based hw-access escapes for some reason */
+                /* win8.1 does not allow context-based escapes for display-only mode */
                 PVBOXWDDM_CONTEXT pContext = (PVBOXWDDM_CONTEXT)pEscape->hContext;
                 if (!pContext)
                 {
@@ -3886,7 +3886,7 @@ DxgkDdiEscape(
                 }
 
 #if 0
-                /* win8.1 does not allow context-based hw-access escapes for some reason */
+                /* win8.1 does not allow context-based escapes for display-only mode */
                 PVBOXWDDM_CONTEXT pContext = (PVBOXWDDM_CONTEXT)pEscape->hContext;
                 if (!pContext)
                 {
@@ -3928,7 +3928,7 @@ DxgkDdiEscape(
                 }
 
 #if 0
-                /* win8.1 does not allow context-based hw-access escapes for some reason */
+                /* win8.1 does not allow context-based escapes for display-only mode */
                 PVBOXWDDM_CONTEXT pContext = (PVBOXWDDM_CONTEXT)pEscape->hContext;
                 if (!pContext)
                 {
