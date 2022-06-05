@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 47944 2013-08-21 07:36:55Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 47975 2013-08-21 16:05:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -245,14 +245,14 @@ void UIMachineSettingsUSB::loadToCacheFrom(QVariant &data)
     /* Prepare USB data: */
     UIDataSettingsMachineUSB usbData;
 
+    /* Gather USB values: */
+    usbData.m_fUSBEnabled = m_machine.GetUSBControllerCountByType(KUSBControllerType_OHCI) > 0;
+    usbData.m_fEHCIEnabled = m_machine.GetUSBControllerCountByType(KUSBControllerType_EHCI) > 0;
+
     /* Check if controller is valid: */
     const CUSBDeviceFilters &filters = m_machine.GetUSBDeviceFilters();
     if (!filters.isNull())
     {
-        /* Gather USB values: */
-        usbData.m_fUSBEnabled = m_machine.GetUSBControllerCountByType(KUSBControllerType_OHCI) > 0;
-        usbData.m_fEHCIEnabled = m_machine.GetUSBControllerCountByType(KUSBControllerType_EHCI) > 0;
-
         /* For each USB filter: */
         const CUSBDeviceFilterVector &coll = filters.GetDeviceFilters();
         for (int iFilterIndex = 0; iFilterIndex < coll.size(); ++iFilterIndex)
