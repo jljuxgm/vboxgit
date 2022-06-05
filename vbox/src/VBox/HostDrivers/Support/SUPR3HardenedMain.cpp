@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 52523 2014-08-29 06:52:04Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 52527 2014-08-29 09:55:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1558,6 +1558,7 @@ static PFNSUPTRUSTEDERROR supR3HardenedMainGetTrustedError(const char *pszProgNa
      * Open it and resolve the symbol.
      */
 #if defined(RT_OS_WINDOWS)
+    supR3HardenedWinEnableThreadCreation();
     HMODULE hMod = (HMODULE)supR3HardenedWinLoadLibrary(szPath, false /*fSystem32Only*/);
     if (!hMod)
         return NULL;
