@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 48984 2013-10-08 22:03:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -2515,7 +2515,7 @@ void UIMachineSettingsStorage::getInformation()
 
                 KStorageBus bus = mStorageModel->data (index, StorageModel::R_CtrBusType).value <KStorageBus>();
                 mLbPortCount->setVisible (bus == KStorageBus_SATA);
-                mSbPortCount->setVisible (bus == KStorageBus_SATA || bus == KStorageBus_SAS);
+                mSbPortCount->setVisible (bus == KStorageBus_SATA);
                 uint uPortCount = mStorageModel->data (index, StorageModel::R_CtrPortCount).toUInt();
                 mSbPortCount->setValue (uPortCount);
 
