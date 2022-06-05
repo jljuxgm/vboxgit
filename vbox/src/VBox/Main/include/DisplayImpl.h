@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 52978 2014-10-08 07:09:11Z vboxsync $ */
+/* $Id: DisplayImpl.h 53053 2014-10-14 11:17:08Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -379,8 +379,6 @@ private:
     CRVBOXHGCMTAKESCREENSHOT mCrOglScreenshotData;
     VBOXCRCMDCTL_HGCM mCrOglScreenshotCtl;
 #endif
-
-    void i_handleResizeCompletedEMT(unsigned uScreenId, BOOL fResizeContext);
 
     /* The legacy VBVA data and methods. */
     VIDEOACCEL mVideoAccelLegacy;
