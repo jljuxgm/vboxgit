@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 49634 2013-11-22 18:11:29Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 49843 2013-12-09 13:51:55Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1192,6 +1192,8 @@ void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
 
 int VBOXCALL    supdrvOSMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue)
 {
+/** @todo cmi_hdl_rdmsr can safely do this. there is also the on_trap() fun
+ *        for catching traps that could possibly be used directly. */
     NOREF(uMsr); NOREF(idCpu); NOREF(puValue);
     return VERR_NOT_SUPPORTED;
 }
@@ -1199,6 +1201,7 @@ int VBOXCALL    supdrvOSMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *pu
 
 int VBOXCALL    supdrvOSMsrProberWrite(uint32_t uMsr, RTCPUID idCpu, uint64_t uValue)
 {
+/** @todo cmi_hdl_wrmsr can safely do this. */
     NOREF(uMsr); NOREF(idCpu); NOREF(uValue);
     return VERR_NOT_SUPPORTED;
 }
