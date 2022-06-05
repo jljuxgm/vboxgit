@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 49871 2013-12-10 16:49:59Z vboxsync $ */
+/* $Id: NATEngineImpl.h 49874 2013-12-11 12:28:07Z vboxsync $ */
 
 /** @file
  *
@@ -100,8 +100,8 @@ private:
 
     HRESULT removeRedirect(const com::Utf8Str &aName);
 
-    struct  Data;
-    Backupable<Data> mData;
+    struct Data;
+    Data *mData;
     bool m_fModified;
     const ComObjPtr<NATEngine> mPeer;
     Machine * const mParent;
