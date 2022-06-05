@@ -1,4 +1,4 @@
-/* $Id: alt-sha256.cpp 51884 2014-07-06 16:46:08Z vboxsync $ */
+/* $Id: alt-sha256.cpp 51885 2014-07-06 18:09:40Z vboxsync $ */
 /** @file
  * IPRT - SHA-256 and SHA-224 hash functions, Alternative Implementation.
  */
@@ -209,7 +209,17 @@ DECLINLINE(void) rtSha256BlockInit(PRTSHA256CONTEXT pCtx, uint8_t const *pbBlock
     /* Copy and byte-swap the block. Initializing the rest of the Ws are done
        in the processing loop. */
 # ifdef RT_LITTLE_ENDIAN
-#  if ARCH_BITS == 64
+#  if 0 /* Just an idea... very little gain as this isn't the expensive code. */
+    __m128i const  uBSwapConst = { 3, 2, 1, 0,  7, 6, 5, 4,  11, 10, 9, 8,  15, 14, 13, 12 };
+    __m128i const *puSrc = (__m128i const *)pbBlock;
+    __m128i       *puDst = (__m128i *)&pCtx->AltPrivate.auW[0];
+
+    _mm_storeu_si128(puDst, _mm_shuffle_epi8(_mm_loadu_si128(puSrc), uBSwapConst)); puDst++; puSrc++;
+    _mm_storeu_si128(puDst, _mm_shuffle_epi8(_mm_loadu_si128(puSrc), uBSwapConst)); puDst++; puSrc++;
+    _mm_storeu_si128(puDst, _mm_shuffle_epi8(_mm_loadu_si128(puSrc), uBSwapConst)); puDst++; puSrc++;
+    _mm_storeu_si128(puDst, _mm_shuffle_epi8(_mm_loadu_si128(puSrc), uBSwapConst)); puDst++; puSrc++;
+
+#  elif ARCH_BITS == 64
     uint64_t const *puSrc = (uint64_t const *)pbBlock;
     uint64_t       *puW   = (uint64_t *)&pCtx->AltPrivate.auW[0];
     Assert(!((uintptr_t)puSrc & 7));
