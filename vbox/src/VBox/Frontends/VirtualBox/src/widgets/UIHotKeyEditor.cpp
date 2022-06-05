@@ -1,4 +1,4 @@
-/* $Id: UIHotKeyEditor.cpp 50041 2014-01-09 16:13:28Z vboxsync $ */
+/* $Id: UIHotKeyEditor.cpp 51649 2014-06-18 13:43:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -151,6 +151,8 @@ void UIHotKeyEditor::sltReset()
     drawSequence();
     /* Move the focut to text-field: */
     m_pLineEdit->setFocus();
+    /* Commit data to the listener: */
+    emit sigCommitData(this);
 }
 
 void UIHotKeyEditor::sltClear()
@@ -161,6 +163,8 @@ void UIHotKeyEditor::sltClear()
     drawSequence();
     /* Move the focut to text-field: */
     m_pLineEdit->setFocus();
+    /* Commit data to the listener: */
+    emit sigCommitData(this);
 }
 
 void UIHotKeyEditor::retranslateUi()
@@ -435,6 +439,8 @@ void UIHotKeyEditor::reflectSequence()
     }
     /* Save what we've got: */
     m_hotKey.setSequence(strSequence);
+    /* Commit data to the listener: */
+    emit sigCommitData(this);
 }
 
 void UIHotKeyEditor::drawSequence()
