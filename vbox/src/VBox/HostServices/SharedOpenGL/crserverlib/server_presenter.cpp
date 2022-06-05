@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51320 2014-05-21 12:56:33Z vboxsync $ */
+/* $Id: server_presenter.cpp 51323 2014-05-21 13:28:39Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -3985,7 +3985,7 @@ HCR_FRAMEBUFFER CrPMgrFbGetEnabled(uint32_t idFb)
 
 HCR_FRAMEBUFFER CrPMgrFbGetEnabledForScreen(uint32_t idScreen)
 {
-    if (idScreen >= cr_server.screenCount)
+    if (idScreen >= (uint32_t)cr_server.screenCount)
     {
         WARN(("invalid target id"));
         return NULL;
