@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 49163 2013-10-17 13:27:31Z vboxsync $ */
+/* $Id: crservice.cpp 49474 2013-11-14 06:49:54Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -952,6 +952,10 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
 
     switch (u32Function)
     {
+        case SHCRGL_HOST_FN_CRCMD_NOTIFY_CMDS:
+        {
+            rc = crVBoxServerCrCmdNotifyCmds();
+        } break;
 #ifdef VBOX_WITH_CRHGSMI
         case SHCRGL_HOST_FN_CRHGSMI_CMD:
         {
