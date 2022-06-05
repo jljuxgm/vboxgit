@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 50032 2014-01-08 12:34:28Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 50034 2014-01-08 15:34:00Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1086,6 +1086,7 @@ int main()
     GEN_CHECK_OFF(EHCI, hSemEventFrame);
     GEN_CHECK_OFF(EHCI, fBusStarted);
     GEN_CHECK_OFF(EHCI, CsIrq);
+    GEN_CHECK_OFF(EHCI, uFrameRateDefault);
     GEN_CHECK_OFF(EHCI, nsWait);
     GEN_CHECK_OFF(EHCI, CritSect);
 # endif /* VBOX_WITH_EHCI_IMPL */
