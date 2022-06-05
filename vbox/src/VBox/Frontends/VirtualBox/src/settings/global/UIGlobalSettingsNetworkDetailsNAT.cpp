@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 53289 2014-11-10 13:32:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetworkDetailsNAT class implementation.
  */
@@ -67,8 +67,11 @@ void UIGlobalSettingsNetworkDetailsNAT::retranslateUi()
     Ui::UIGlobalSettingsNetworkDetailsNAT::retranslateUi(this);
 }
 
-void UIGlobalSettingsNetworkDetailsNAT::polishEvent(QShowEvent*)
+void UIGlobalSettingsNetworkDetailsNAT::polishEvent(QShowEvent *pEvent)
 {
+    /* Call to base-class: */
+    QIWithRetranslateUI2<QIDialog>::polishEvent(pEvent);
+
     /* Update availability: */
     m_pCheckboxAdvertiseDefaultIPv6Route->setEnabled(m_pCheckboxSupportsIPv6->isChecked());
     m_pContainerOptions->setEnabled(m_pCheckboxNetwork->isChecked());
