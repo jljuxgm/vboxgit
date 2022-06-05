@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 53080 2014-10-16 17:01:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1857,7 +1857,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                         /*
                          * Attach the status driver.
                          */
-                        i_attachStatusDriver(pInst, &mapUSBLed[1], 0, 1, NULL, NULL, 0);
+                        i_attachStatusDriver(pInst, &mapUSBLed[0], 0, 1, NULL, NULL, 0);
                     }
 # ifdef VBOX_WITH_EXTPACK
                     else
