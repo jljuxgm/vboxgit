@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 49588 2013-11-20 16:51:56Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 49598 2013-11-21 10:36:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4371,12 +4371,12 @@ int Console::configNetwork(const char *pszDevice,
                     }
                 }
 
-                Assert((int)maTapFD[uInstance] >= 0);
-                if ((int)maTapFD[uInstance] >= 0)
+                Assert((intptr_t)maTapFD[uInstance] >= 0);
+                if ((intptr_t)maTapFD[uInstance] >= 0)
                 {
                     InsertConfigString(pLunL0, "Driver", "HostInterface");
                     InsertConfigNode(pLunL0, "Config", &pCfg);
-                    InsertConfigInteger(pCfg, "FileHandle", maTapFD[uInstance]);
+                    InsertConfigInteger(pCfg, "FileHandle", (intptr_t)maTapFD[uInstance]);
                 }
 
 #elif defined(VBOX_WITH_NETFLT)
@@ -4570,12 +4570,12 @@ int Console::configNetwork(const char *pszDevice,
                         }
                     }
 
-                    Assert((int)maTapFD[uInstance] >= 0);
-                    if ((int)maTapFD[uInstance] >= 0)
+                    Assert((intptr_t)maTapFD[uInstance] >= 0);
+                    if ((intptr_t)maTapFD[uInstance] >= 0)
                     {
                         InsertConfigString(pLunL0, "Driver", "HostInterface");
                         InsertConfigNode(pLunL0, "Config", &pCfg);
-                        InsertConfigInteger(pCfg, "FileHandle", maTapFD[uInstance]);
+                        InsertConfigInteger(pCfg, "FileHandle", (intptr_t)maTapFD[uInstance]);
                     }
                     break;
                 }
