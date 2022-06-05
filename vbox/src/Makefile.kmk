@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42269 2012-07-20 14:37:15Z vboxsync $
+# $Id: Makefile.kmk 48960 2013-10-07 22:11:24Z vboxsync $
 ## @file
 # Top-level makefile for the src directory.
 #
@@ -38,9 +38,6 @@ else if !defined(VBOX_ONLY_BUILD)
  endif
  ifdef VBOX_WITH_TESTSUITE
   include $(PATH_SUB_CURRENT)/tests/Makefile.kmk
- endif
- ifdef VBOX_WITH_TESTCASES
-  include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
  endif
 endif # !VBOX_ONLY_BUILD
 
