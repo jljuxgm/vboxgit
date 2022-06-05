@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 50147 2014-01-21 17:46:51Z vboxsync $ */
+/* $Id: tar.cpp 50153 2014-01-21 19:25:12Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -24,7 +24,7 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-//#define RT_USE_TAR_VFS_FOR_ALL_READS - make default on trunk!
+#define RT_USE_TAR_VFS_FOR_ALL_READS // the old code sticks around for a short while for debugging the new.
 
 /******************************************************************************
  *   Header Files                                                             *
