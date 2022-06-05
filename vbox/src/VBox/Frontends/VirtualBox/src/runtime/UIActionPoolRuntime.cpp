@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 51401 2014-05-26 16:45:43Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 51472 2014-05-30 12:43:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -191,7 +191,7 @@ class UIActionSimpleKeyboardSettings : public UIActionSimple
 public:
 
     UIActionSimpleKeyboardSettings(UIActionPool *pParent)
-        : UIActionSimple(pParent, ":/hostkey_16px.png")
+        : UIActionSimple(pParent, ":/keyboard_settings_16px.png", ":/keyboard_settings_disabled_16px.png")
     {
         retranslateUi();
     }
