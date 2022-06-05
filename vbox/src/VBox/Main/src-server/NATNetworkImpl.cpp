@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 47964 2013-08-21 12:53:18Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 47965 2013-08-21 13:14:21Z vboxsync $ */
 
 /** @file
  *
@@ -477,7 +477,10 @@ STDMETHODIMP NATNetwork::COMSETTER(NeedDhcpServer)(BOOL aNeedDhcpServer)
 
 STDMETHODIMP NATNetwork::COMGETTER(LocalMappings)(ComSafeArrayOut(BSTR, aLocalMappings))
 {
-    NOREF(aLocalMappings); NOREF(aLocalMappingsSize);
+    NOREF(aLocalMappings);
+#ifndef RT_OS_WINDOWS
+    NOREF(aLocalMappingsSize);
+#endif
     return E_NOTIMPL;
 }
 
