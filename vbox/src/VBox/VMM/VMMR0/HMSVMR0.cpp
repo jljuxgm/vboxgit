@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49481 2013-11-14 15:18:56Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49512 2013-11-15 16:42:02Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4670,8 +4670,8 @@ HMSVM_EXIT_DECL hmR0SvmExitNestedPF(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT p
         && (GCPhysFaultAddr & PAGE_OFFSET_MASK) == 0x80                                                  /* TPR offset. */
         && (   !(u32ErrCode & X86_TRAP_PF_P)                                                             /* Not present */
             || (u32ErrCode & (X86_TRAP_PF_P | X86_TRAP_PF_RSVD)) == (X86_TRAP_PF_P | X86_TRAP_PF_RSVD))  /* MMIO page. */
-        && !CPUMGetGuestCPL(pVCpu)
         && !CPUMIsGuestInLongModeEx(pCtx)
+        && !CPUMGetGuestCPL(pVCpu)
         && pVM->hm.s.cPatches < RT_ELEMENTS(pVM->hm.s.aPatches))
     {
         RTGCPHYS GCPhysApicBase = pCtx->msrApicBase;
@@ -4870,8 +4870,8 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptPF(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     if (   pVM->hm.s.fTRPPatchingAllowed
         && (uFaultAddress & 0xfff) == 0x80  /* TPR offset. */
         && !(u32ErrCode & X86_TRAP_PF_P)    /* Not present. */
-        && !CPUMGetGuestCPL(pVCpu)
         && !CPUMIsGuestInLongModeEx(pCtx)
+        && !CPUMGetGuestCPL(pVCpu)
         && pVM->hm.s.cPatches < RT_ELEMENTS(pVM->hm.s.aPatches))
     {
         RTGCPHYS GCPhysApicBase;

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 49495 2013-11-15 11:18:07Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 49512 2013-11-15 16:42:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -116,7 +116,7 @@
 #endif /* VBOX_WITH_NETFLT */
 
 #include <string>
-/* XXX: We don't need class declared in NetworkServiceRunner, this file included because of 
+/* XXX: We don't need class declared in NetworkServiceRunner, this file included because of
  * mcrodefintions TRUNKTYPE_*
  */
 #include "NetworkServiceRunner.h"
@@ -1054,8 +1054,7 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 #endif
 
             /** @todo Not exactly pretty to check strings; VBOXOSTYPE would be better, but that requires quite a bit of API change in Main. */
-            if (    !fIsGuest64Bit
-                &&  fIOAPIC
+            if (    fIOAPIC
                 &&  (   osTypeId == "WindowsNT4"
                      || osTypeId == "Windows2000"
                      || osTypeId == "WindowsXP"
