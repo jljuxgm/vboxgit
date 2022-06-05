@@ -1,4 +1,4 @@
-/* $Id: tstRTFileModeStringToFlags.cpp 47812 2013-08-16 13:31:28Z vboxsync $ */
+/* $Id: tstRTFileModeStringToFlags.cpp 48828 2013-10-02 19:19:48Z vboxsync $ */
 /** @file
  * IPRT Testcase - File mode string to IPRT file mode flags.
  */
@@ -65,12 +65,12 @@ int main()
             { VINF_SUCCESS          , "r+t",        RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_WRITE },
             { VINF_SUCCESS          , "r+b",        RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_WRITE },
         /* Open / append ("a"). */
-            { VINF_SUCCESS          , "a",          RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_APPEND },
-            { VINF_SUCCESS          , "a+",         RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_WRITE | RTFILE_O_APPEND },
-            { VINF_SUCCESS          , "a+++",       RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_WRITE | RTFILE_O_APPEND },
-            { VINF_SUCCESS          , "+++a",       RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_APPEND },
-            { VINF_SUCCESS          , "a+t",        RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_WRITE | RTFILE_O_APPEND },
-            { VINF_SUCCESS          , "a+b",        RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_WRITE | RTFILE_O_APPEND },
+            { VINF_SUCCESS          , "a",          RTFILE_O_OPEN_CREATE | RTFILE_O_WRITE | RTFILE_O_APPEND },
+            { VINF_SUCCESS          , "a+",         RTFILE_O_OPEN_CREATE | RTFILE_O_READ | RTFILE_O_WRITE | RTFILE_O_APPEND },
+            { VINF_SUCCESS          , "a+++",       RTFILE_O_OPEN_CREATE | RTFILE_O_READ | RTFILE_O_WRITE | RTFILE_O_APPEND },
+            { VINF_SUCCESS          , "+++a",       RTFILE_O_OPEN_CREATE | RTFILE_O_WRITE | RTFILE_O_APPEND },
+            { VINF_SUCCESS          , "a+t",        RTFILE_O_OPEN_CREATE | RTFILE_O_READ | RTFILE_O_WRITE | RTFILE_O_APPEND },
+            { VINF_SUCCESS          , "a+b",        RTFILE_O_OPEN_CREATE | RTFILE_O_READ | RTFILE_O_WRITE | RTFILE_O_APPEND },
         /* Create / open ("c"). */
             { VINF_SUCCESS          , "c",          RTFILE_O_OPEN_CREATE | RTFILE_O_WRITE },
             { VINF_SUCCESS          , "c+",         RTFILE_O_OPEN_CREATE | RTFILE_O_READ | RTFILE_O_WRITE },
