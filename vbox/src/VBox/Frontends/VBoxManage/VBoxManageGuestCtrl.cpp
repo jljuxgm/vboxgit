@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 49683 2013-11-27 15:42:13Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 49685 2013-11-27 16:03:20Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2949,7 +2949,7 @@ static DECLCALLBACK(RTEXITCODE) handleCtrlRename(PGCTLCMDCTX pCtx)
         ComPtr<IGuestFsObjInfo> pFsObjInfo;
         rc = pCtx->pGuestSession->DirectoryQueryInfo(Bstr(strDest).raw(), pFsObjInfo.asOutParam());
         if (FAILED(rc))
-            return RTMsgErrorExit(RTEXITCODE_FAILURE, "Destination must be a directory when speciying multiple sources\n");
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "Destination must be a directory when specifying multiple sources\n");
     }
 
     /*
