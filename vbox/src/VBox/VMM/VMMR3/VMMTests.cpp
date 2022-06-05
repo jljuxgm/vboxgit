@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 49374 2013-11-03 21:01:58Z vboxsync $ */
+/* $Id: VMMTests.cpp 49375 2013-11-04 02:40:16Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -160,7 +160,7 @@ static int vmmR3DoMsrQuickReport(PVM pVM, PRTSTREAM pReportStrm, bool fWithCpuId
 //   Need 0xc0000000..0xc001106f (at least), but trouble on solaris w/ 10h and 0fh family cpus:
 //      { 0xc0000000, 0x00022000 },
         { 0xc0000000, 0x00010000 },
-        { 0xc0010000, 0x00001000 },
+        { 0xc0010000, 0x00001040 },
     };
     uint32_t cMsrsFound = 0;
     int rc = VINF_SUCCESS;
