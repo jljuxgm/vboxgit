@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 51443 2014-05-28 12:03:00Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 51445 2014-05-28 12:25:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -294,7 +294,7 @@ static RTEXITCODE SetExtPackPermissions(const char *pszDir)
      if (RT_FAILURE(rc))
          return RTMsgErrorExit(RTEXITCODE_FAILURE, "Failed to set directory permissions: %Rrc ('%s')", rc, pszDir);
 #else
-        /** @todo  */
+     /** @todo TrustedInstaller? */
 #endif
 
     return RTEXITCODE_SUCCESS;
