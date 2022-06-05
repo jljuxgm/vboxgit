@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.cpp 52485 2014-08-24 16:49:25Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 52486 2014-08-24 16:50:39Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -192,8 +192,6 @@ static int crServerRedirMuralDbSyncFb(CRMuralInfo *mural, HCR_FRAMEBUFFER hFb, C
 
     if (!pData->hFb)
     {
-        pData->hFb = hFb;
-
         /* Guard against modulo-by-zero when calling CrFbEntryCreateForTexData
            below. Observed when failing to load atig6pxx.dll and similar. */
         if (RT_UNLIKELY(mural->cBuffers == 0))
@@ -201,6 +199,8 @@ static int crServerRedirMuralDbSyncFb(CRMuralInfo *mural, HCR_FRAMEBUFFER hFb, C
             WARN(("crServerRedirMuralDbSyncFb: cBuffers == 0 (crServerSupportRedirMuralFBO=%d)", crServerSupportRedirMuralFBO()));
             return VERR_NOT_SUPPORTED;
         }
+
+        pData->hFb = hFb;
 
         for (uint32_t i = 0; i < mural->cBuffers; ++i)
         {
