@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 52151 2014-07-23 15:12:33Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 52153 2014-07-23 16:26:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1046,7 +1046,7 @@ bool UIKeyboardHandler::winLowKeyboardEvent(UINT msg, const KBDLLHOOKSTRUCT &eve
     if (   (event.flags & 0x80) /* released */
         && (   (   UIHostCombo::toKeyCodeList(m_globalSettings.hostCombo()).contains(event.vkCode)
                 && !m_bIsHostkeyInCapture)
-            ||    (  m_pressedKeys[event.scanCode]
+            ||    (  m_pressedKeys[event.scanCode & 0x7F]
                    & (IsKbdCaptured | what_pressed))
                == what_pressed))
         return false;
