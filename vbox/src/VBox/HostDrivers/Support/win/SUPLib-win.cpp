@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 52356 2014-08-11 19:24:00Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 52844 2014-09-24 13:53:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -364,6 +364,8 @@ static int suplibOsStopService(void)
         }
         CloseServiceHandle(hSMgr);
     }
+    else
+        rc = RTErrConvertFromWin32(dwErr);
     return rc;
 }
 
