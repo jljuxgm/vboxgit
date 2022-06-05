@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 50830 2014-03-20 16:13:19Z vboxsync $ */
+/* $Id: DragAndDrop.h 51211 2014-05-08 07:44:14Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -13,6 +13,15 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ *
+ * The contents of this file may alternatively be used under the terms
+ * of the Common Development and Distribution License Version 1.0
+ * (CDDL) only, as it comes in the "COPYING.CDDL" file of the
+ * VirtualBox OSE distribution, in which case the provisions of the
+ * CDDL are applicable instead of those of the GPL.
+ *
+ * You may elect to license modified versions of this file under the
+ * terms and conditions of either the GPL or the CDDL or both.
  */
 
 #ifndef ___VBox_GuestHost_DragAndDrop_h
