@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 49350 2013-10-31 17:08:48Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 49389 2013-11-05 13:32:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -278,10 +278,13 @@ void GuestProcess::uninit(void)
 #ifdef VBOX_WITH_GUEST_CONTROL
     baseUninit();
 
-    mEventSource->UnregisterListener(mLocalListener);
+    if (!mEventSource.isNull())
+    {
+        mEventSource->UnregisterListener(mLocalListener);
 
-    mLocalListener.setNull();
-    unconst(mEventSource).setNull();
+        mLocalListener.setNull();
+        unconst(mEventSource).setNull();
+    }
 #endif
 
     LogFlowThisFunc(("Returning rc=%Rrc, guestRc=%Rrc\n",

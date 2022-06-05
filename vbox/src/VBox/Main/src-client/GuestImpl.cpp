@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 47469 2013-07-30 09:43:14Z vboxsync $ */
+/* $Id: GuestImpl.cpp 49389 2013-11-05 13:32:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -158,7 +158,7 @@ void Guest::uninit()
     {
 #ifdef DEBUG
         ULONG cRefs = itSessions->second->AddRef();
-        LogFlowThisFunc(("pSession=%p, cRefs=%RU32\n", (GuestSession *)itSessions->second, cRefs > 0 ? cRefs - 1 : 0));
+        LogFlowThisFunc(("sessionID=%RU32, cRefs=%RU32\n", itSessions->first, cRefs > 1 ? cRefs - 1 : 0));
         itSessions->second->Release();
 #endif
         itSessions->second->uninit();

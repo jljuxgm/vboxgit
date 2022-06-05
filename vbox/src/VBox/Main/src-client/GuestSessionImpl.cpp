@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.cpp 49359 2013-11-01 10:19:06Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 49389 2013-11-05 13:32:12Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -144,7 +144,7 @@ DEFINE_EMPTY_CTOR_DTOR(GuestSession)
 
 HRESULT GuestSession::FinalConstruct(void)
 {
-    LogFlowThisFunc(("\n"));
+    LogFlowThisFuncEnter();
     return BaseFinalConstruct();
 }
 
@@ -314,9 +314,13 @@ void GuestSession::uninit(void)
 
     baseUninit();
 
-    mEventSource->UnregisterListener(mLocalListener);
-    unconst(mEventSource).setNull();
+    if (!mEventSource.isNull())
+    {
+        mEventSource->UnregisterListener(mLocalListener);
 
+        mLocalListener.setNull();
+        unconst(mEventSource).setNull();
+    }
 #endif /* VBOX_WITH_GUEST_CONTROL */
     LogFlowFuncLeaveRC(rc);
 }
