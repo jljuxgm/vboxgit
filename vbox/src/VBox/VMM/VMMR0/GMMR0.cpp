@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 49481 2013-11-14 15:18:56Z vboxsync $ */
+/* $Id: GMMR0.cpp 49789 2013-12-05 12:51:16Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -5154,7 +5154,7 @@ GMMR0DECL(int) GMMR0CheckSharedModules(PVM pVM, PVMCPU pVCpu)
         Args.idCpu    = pVCpu->idCpu;
         rc = RTAvlGCPtrDoWithAll(&pGVM->gmm.s.pSharedModuleTree, true /* fFromLeft */, gmmR0CheckSharedModule, &Args);
 
-        Log(("GMMR0CheckSharedModules done!\n"));
+        Log(("GMMR0CheckSharedModules done (rc=%Rrc)!\n", rc));
         GMM_CHECK_SANITY_UPON_LEAVING(pGMM);
     }
     else
