@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 48386 2013-09-09 11:14:21Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 48496 2013-09-16 16:55:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -79,6 +79,9 @@
 #ifdef VBOX_WITH_DEBUGGER_GUI
 # include <iprt/ldr.h>
 #endif /* VBOX_WITH_DEBUGGER_GUI */
+#ifdef Q_WS_MAC
+# include "DarwinKeyboard.h"
+#endif
 
 /* External includes: */
 #ifdef Q_WS_X11
@@ -480,6 +483,9 @@ void UIMachineLogic::sltKeyboardLedsChanged()
     /* Here we have to update host LED lock states using values provided by UISession:
      * [bool] uisession() -> isNumLock(), isCapsLock(), isScrollLock() can be used for that. */
     LogRelFlow(("UIMachineLogic::sltKeyboardLedsChanged: Updating host LED lock states (NOT IMPLEMENTED).\n"));
+#ifdef Q_WS_MAC
+    //DarwinUpdateHostLedDevices(uisession()->isNumLock(), uisession()->isCapsLock(), uisession()->isScrollLock());
+#endif
 }
 
 void UIMachineLogic::sltUSBDeviceStateChange(const CUSBDevice &device, bool fIsAttached, const CVirtualBoxErrorInfo &error)

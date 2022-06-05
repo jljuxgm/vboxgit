@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 47511 2013-08-01 15:20:04Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 48496 2013-09-16 16:55:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1197,8 +1197,10 @@ bool UIKeyboardHandler::keyEventHandleNormal(int iKey, uint8_t uScan, int fFlags
         /* Check if the guest has the same view on the modifier keys
          * (NumLock, CapsLock, ScrollLock) as the X server.
          * If not, send KeyPress events to synchronize the state: */
+#if !defined(Q_WS_MAC)
         if (fFlags & KeyPressed)
             fixModifierState(pCodes, puCodesCount);
+#endif
 
         /* Prepend 'extended' scancode if needed: */
         if (fFlags & KeyExtended)
