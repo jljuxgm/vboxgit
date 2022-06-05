@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 53017 2014-10-10 01:44:08Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 53329 2014-11-14 14:13:03Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -2918,6 +2918,7 @@ static int supdrvNtProtectProtectNewStubChild(PSUPDRVNTPROTECT pNtParent, HANDLE
         }
         else
             rc = VERR_WRONG_ORDER;
+        pNtChild->enmProcessKind = kSupDrvNtProtectKind_VmProcessDead;
         RTSpinlockRelease(g_hNtProtectLock);
 
         supdrvNtProtectRelease(pNtChild);
