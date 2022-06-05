@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 49867 2013-12-10 14:34:12Z vboxsync $
+# $Id: vboxconfig.sh 50054 2014-01-10 17:47:57Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -259,7 +259,7 @@ get_sysinfo()
                     # the build number.
                     BRANCH_VERSION=STR_KERN_MAJOR
                     HOST_OS_MAJORVERSION=`echo "$BRANCH_VERSION" | cut -f2 -d'-' | cut -f1,2 -d'.'`
-                    if test "HOST_OS_MAJORVERSION" = "5.12"; then
+                    if test "$HOST_OS_MAJORVERSION" = "5.12"; then
                         HOST_OS_MINORVERSION=`echo "$BRANCH_VERSION" | cut -f2 -d'-' | cut -f6 -d'.'`
                         return 0
                     else
