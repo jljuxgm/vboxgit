@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 48946 2013-10-07 21:34:16Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -53,8 +53,8 @@ public:
      * This differs from QTextEdit::append() in that it won't start on a new paragraph
      * unless the previous char was a newline ('\n').
      *
-     * @param   rStr        The text string to append. 
-     * @param   fClearSelection     Whether to clear selected text before appending. 
+     * @param   rStr        The text string to append.
+     * @param   fClearSelection     Whether to clear selected text before appending.
      *                              If @c false the selection and window position
      *                              are preserved.
      */

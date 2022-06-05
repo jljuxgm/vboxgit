@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInSolaris.cpp 45880 2013-05-02 15:08:48Z vboxsync $ */
+/* $Id: DBGPlugInSolaris.cpp 48946 2013-10-07 21:34:16Z vboxsync $ */
 /** @file
  * DBGPlugInSolaris - Debugger and Guest OS Digger Plugin For Solaris.
  */
