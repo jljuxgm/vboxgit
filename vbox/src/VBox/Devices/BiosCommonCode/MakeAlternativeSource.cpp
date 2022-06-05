@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 45670 2013-04-22 15:46:03Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 47937 2013-08-20 16:17:35Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 45670 2013-04-22 15:46:03Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 47937 2013-08-20 16:17:35Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -965,6 +965,20 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
                      && pb[4] == 0xc8
                      && pb[5] == 0x58
                     )
+                 || (   pb[0] == 0x50
+                     && pb[1] == 0x4e
+                     && pb[2] == 0x49
+                     && pb[3] == 0x48
+                     && pb[4] == 0x47
+                     && pb[5] == 0x46
+                    )
+                 || (   pb[0] == 0x29
+                     && pb[1] == 0x65
+                     && pb[2] == 0x4b
+                     && pb[3] == 0x65
+                     && pb[4] == 0x6e
+                     && pb[5] == 0x65
+                    )
                  || (   pb[0] == 0xc9   /* _pci16_function switch */
                      && pb[1] == 0x8d
                      && pb[2] == 0xe3
@@ -986,10 +1000,12 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
                      && pb[4] == 0x02
                      && pb[5] == 0x01
                     )
-                 || (   pb[0] == 0x98   /* bytes after apm_out_str_ */
-                     && pb[1] == 0x8a
-                     && pb[2] == 0x67
-                     && pb[3] == 0x8b)
+                 || (   pb[0] == 0x8c   /* bytes after apm_out_str_ */
+                     && pb[1] == 0x2f
+                     && pb[2] == 0x8d
+                     && pb[3] == 0xbb
+                     && pb[4] == 0x8c
+                     && pb[5] == 0x2f)
                  || 0
                  )
             return disByteData(uFlatAddr, cb);
