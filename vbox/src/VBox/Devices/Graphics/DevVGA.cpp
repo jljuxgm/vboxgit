@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 51005 2014-04-09 08:58:50Z vboxsync $ */
+/* $Id: DevVGA.cpp 51013 2014-04-09 14:00:52Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5982,7 +5982,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 
 #if defined(VBOX_WITH_HGSMI)
 # if defined(VBOX_WITH_VIDEOHWACCEL)
-    pThis->IVBVACallbacks.pfnVHWACommandCompleteAsynch = vbvaVHWACommandCompleteAsynch;
+    pThis->IVBVACallbacks.pfnVHWACommandCompleteAsync = vbvaVHWACommandCompleteAsync;
 # endif
 #if defined(VBOX_WITH_CRHGSMI)
     pThis->IVBVACallbacks.pfnCrHgsmiCommandCompleteAsync = vboxVDMACrHgsmiCommandCompleteAsync;
