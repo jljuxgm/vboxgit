@@ -1,4 +1,4 @@
-/* $Id: MMHyper.cpp 45618 2013-04-18 18:41:07Z vboxsync $ */
+/* $Id: MMHyper.cpp 50110 2014-01-20 11:47:12Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
@@ -51,7 +51,7 @@ static DECLCALLBACK(void) mmR3HyperInfoHma(PVM pVM, PCDBGFINFOHLP pHlp, const ch
  * @returns The heap size in bytes.
  * @param   pVM     Pointer to the VM.
  */
-static uint32_t mmR3ComputeHyperHeapSize(PVM pVM)
+static uint32_t mmR3HyperHeapComputeSize(PVM pVM)
 {
     /*
      * Gather parameters.
@@ -123,7 +123,7 @@ int mmR3HyperInit(PVM pVM)
      */
     PCFGMNODE pMM = CFGMR3GetChild(CFGMR3GetRoot(pVM), "MM");
     uint32_t cbHyperHeap;
-    int rc = CFGMR3QueryU32Def(pMM, "cbHyperHeap", &cbHyperHeap, mmR3ComputeHyperHeapSize(pVM));
+    int rc = CFGMR3QueryU32Def(pMM, "cbHyperHeap", &cbHyperHeap, mmR3HyperHeapComputeSize(pVM));
     AssertLogRelRCReturn(rc, rc);
 
     cbHyperHeap = RT_ALIGN_32(cbHyperHeap, PAGE_SIZE);
