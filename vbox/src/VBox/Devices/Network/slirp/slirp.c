@@ -1,4 +1,4 @@
-/* $Id: slirp.c 51135 2014-04-24 11:54:02Z vboxsync $ */
+/* $Id: slirp.c 51138 2014-04-24 15:34:40Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1940,9 +1940,9 @@ static inline int slirp_arp_cache_update(PNATState pData, uint32_t dst, const ui
             && memcmp(mac, zerro_ethaddr, ETH_ALEN)));
     LIST_FOREACH(ac, &pData->arp_cache, list)
     {
-        if (!memcmp(ac->ether, mac, ETH_ALEN))
+        if (ac->ip == dst)
         {
-            ac->ip = dst;
+            memcpy(ac->ether, mac, ETH_ALEN);
             return 0;
         }
     }
