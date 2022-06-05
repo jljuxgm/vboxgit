@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 52236 2014-07-30 14:11:22Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 52239 2014-07-30 19:05:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -46,11 +46,13 @@ UIMachineLogicFullscreen::UIMachineLogicFullscreen(QObject *pParent, UISession *
 {
     /* Create multiscreen layout: */
     m_pScreenLayout = new UIMultiScreenLayout(this);
+    actionPool()->toRuntime()->setMultiScreenLayout(m_pScreenLayout);
 }
 
 UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
 {
     /* Delete multiscreen layout: */
+    actionPool()->toRuntime()->setMultiScreenLayout(0);
     delete m_pScreenLayout;
 }
 
@@ -502,9 +504,6 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     /* Update the multi-screen layout: */
     m_pScreenLayout->update();
 
-    // TODO: Make this through action-pool.
-    m_pScreenLayout->setViewMenu(actionPool()->action(UIActionIndexRT_M_View)->menu());
-
     /* Create machine-window(s): */
     for (uint cScreenId = 0; cScreenId < session().GetMachine().GetMonitorCount(); ++cScreenId)
         addMachineWindow(UIMachineWindow::create(this, cScreenId));
@@ -516,7 +515,7 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     emit sigFrameBufferResize();
 
     /* Connect multi-screen layout change handler: */
-    connect(m_pScreenLayout, SIGNAL(sigScreenLayoutChanged()),
+    connect(m_pScreenLayout, SIGNAL(sigScreenLayoutChange()),
             this, SLOT(sltScreenLayoutChanged()));
 
 #ifdef Q_WS_MAC
