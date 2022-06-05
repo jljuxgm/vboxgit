@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 52483 2014-08-22 22:02:30Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 52498 2014-08-25 16:44:59Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -2062,7 +2062,6 @@ HRESULT SessionMachine::deleteSnapshot(const ComPtr<IConsole> &aInitiator,
 
     AssertReturn(aInitiator && !aStartId.isZero() && !aEndId.isZero() && aStartId.isValid() && aEndId.isValid(), E_INVALIDARG);
 
-    AssertReturn(aMachineState && aProgress, E_POINTER);
 
     /** @todo implement the "and all children" and "range" variants */
     if (aDeleteAllChildren || aStartId != aEndId)
