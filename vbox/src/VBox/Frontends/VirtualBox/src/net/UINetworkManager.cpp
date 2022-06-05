@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 51992 2014-07-11 14:32:04Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 52061 2014-07-16 18:42:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -114,7 +114,7 @@ void UINetworkManager::prepare()
     if (!vboxGlobal().isVMConsoleProcess())
     {
         m_pNetworkManagerIndicator = new UINetworkManagerIndicator;
-        connect(m_pNetworkManagerIndicator, SIGNAL(sigMouseDoubleClick(QIStateStatusBarIndicator*, QMouseEvent *)), this, SLOT(show()));
+        connect(m_pNetworkManagerIndicator, SIGNAL(sigMouseDoubleClick(QIStatusBarIndicator*, QMouseEvent*)), this, SLOT(show()));
     }
 }
 
