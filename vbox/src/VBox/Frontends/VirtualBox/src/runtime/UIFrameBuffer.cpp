@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 49306 2013-10-28 12:46:49Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 50250 2014-01-28 09:13:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -500,6 +500,14 @@ STDMETHODIMP UIFrameBuffer::Notify3DEvent(ULONG uType, BYTE *pData)
             /* Confirm Notify3DEvent: */
             return S_OK;
         }
+
+        case VBOX3D_NOTIFY_EVENT_TYPE_TEST_FUNCTIONAL:
+        {
+            HRESULT hr = m_fIsMarkedAsUnused ? E_FAIL : S_OK;
+            unlock();
+            return hr;
+        }
+
         default:
             break;
     }
