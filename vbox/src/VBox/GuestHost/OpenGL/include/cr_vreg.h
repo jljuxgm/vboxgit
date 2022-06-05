@@ -1,4 +1,4 @@
-/* $Id: cr_vreg.h 50095 2014-01-17 16:34:07Z vboxsync $ */
+/* $Id: cr_vreg.h 50246 2014-01-27 15:00:45Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API
@@ -110,7 +110,7 @@ DECLINLINE(void) VBoxRectMoved(const RTRECT * pRect, int32_t x, int32_t y, RTREC
     VBoxRectMove(pResult, x, y);
 }
 
-DECLINLINE(bool) VBoxRectIsCoveres(const RTRECT *pRect, const RTRECT *pCovered)
+DECLINLINE(bool) VBoxRectCovers(const RTRECT *pRect, const RTRECT *pCovered)
 {
     Assert(pRect);
     Assert(pCovered);
