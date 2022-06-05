@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 51256 2014-05-15 10:30:08Z vboxsync $ */
+/* $Id: IEMAll.cpp 51434 2014-05-28 08:14:55Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7138,7 +7138,7 @@ static VBOXSTRICTRC iemMemFetchDataU128(PIEMCPU pIemCpu, uint128_t *pu128Dst, ui
  * Fetches a data dqword (double qword) at an aligned address, generally SSE
  * related.
  *
- * Raises GP(0) if not aligned.
+ * Raises \#GP(0) if not aligned.
  *
  * @returns Strict VBox status code.
  * @param   pIemCpu             The IEM per CPU data.
