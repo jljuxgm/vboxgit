@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 45300 2013-04-03 09:48:39Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 49137 2013-10-16 12:28:02Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -80,7 +80,7 @@ MODULE_VERSION(VBOX_VERSION_STRING);
 # define PCI_DEV_GET_SLOT(bus, devfn)  pci_get_bus_and_slot(bus, devfn)
 #else
 # define PCI_DEV_GET(v,d,p)            pci_find_device(v,d,p)
-# define PCI_DEV_PUT(x)                do {} while(0)
+# define PCI_DEV_PUT(x)                do { } while (0)
 # define PCI_DEV_GET_SLOT(bus, devfn)  pci_find_slot(bus, devfn)
 #endif
 

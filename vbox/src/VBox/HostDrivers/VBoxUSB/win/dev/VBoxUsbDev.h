@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbDev.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxUsbDev.h 49137 2013-10-16 12:28:02Z vboxsync $ */
 /** @file
  * VBoxUsbDev.h - USB device.
  */
@@ -46,7 +46,7 @@ AssertCompile(sizeof (ENMVBOXUSB_PNPSTATE) == sizeof (uint32_t));
 DECLHIDDEN(VOID) vboxUsbPnPStateGbgChange(ENMVBOXUSB_PNPSTATE enmOld, ENMVBOXUSB_PNPSTATE enmNew);
 # define VBOXUSB_PNP_GBG_STATE_CHANGE(_old, _new) vboxUsbPnPStateGbgChange((_old), (_new))
 #else
-# define VBOXUSB_PNP_GBG_STATE_CHANGE(_old, _new) do {} while(0)
+# define VBOXUSB_PNP_GBG_STATE_CHANGE(_old, _new) do { } while (0)
 #endif
 
 
