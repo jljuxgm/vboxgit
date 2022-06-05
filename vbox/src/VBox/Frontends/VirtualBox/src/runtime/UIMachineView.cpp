@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: UIMachineView.cpp 50707 2014-03-05 14:40:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -375,7 +375,7 @@ UIMachineView::UIMachineView(  UIMachineWindow *pMachineWindow
                              , bool bAccelerate2DVideo
 #endif /* VBOX_WITH_VIDEOHWACCEL */
                              )
-    : QAbstractScrollArea(pMachineWindow)
+    : QAbstractScrollArea(pMachineWindow->centralWidget())
     , m_pMachineWindow(pMachineWindow)
     , m_uScreenId(uScreenId)
     , m_pFrameBuffer(0)
