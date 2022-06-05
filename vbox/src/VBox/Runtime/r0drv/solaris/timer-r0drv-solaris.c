@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 48185 2013-08-30 10:10:27Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 48186 2013-08-30 10:11:58Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -387,7 +387,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
             /*
              * cylic_add() comment: "The caller is responsible for assuring that cyt_when + cyt_interval <= INT64_MAX"
              * but it contradicts itself because cyclic_reprogram() updates only the interval and accepts CY_INFINITY as
-             * a valid special value. See cyclic_fire().
+             * a valid, special value. See cyclic_fire().
              */
             pSingleTimer->hFireTime.cyt_interval = CY_INFINITY;
         }
