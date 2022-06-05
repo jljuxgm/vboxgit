@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 49983 2013-12-19 12:23:17Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 50084 2014-01-16 09:33:20Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1173,6 +1173,10 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             hrc = bwGroups[i]->COMGETTER(Name)(strName.asOutParam());                       H();
             hrc = bwGroups[i]->COMGETTER(Type)(&enmType);                                   H();
             hrc = bwGroups[i]->COMGETTER(MaxBytesPerSec)(&cMaxBytesPerSec);                 H();
+
+            if (strName.isEmpty())
+                return VMR3SetError(pUVM, VERR_CFGM_NO_NODE, RT_SRC_POS,
+                                    N_("No bandwidth group name specified"));
 
             if (enmType == BandwidthGroupType_Disk)
             {
@@ -4348,6 +4352,10 @@ int Console::configNetwork(const char *pszDevice,
                     /* continue with next rule if no valid proto was passed */
                     if (!fValid)
                         continue;
+
+                    if (strName.isEmpty())
+                        VMSetError(VMR3GetVM(mpUVM), VERR_CFGM_NO_NODE, RT_SRC_POS,
+                                   N_("NAT redirection rule without a name"));
 
                     InsertConfigNode(pCfg, strName.c_str(), &pPF);
                     InsertConfigString(pPF, "Protocol", strProto);
