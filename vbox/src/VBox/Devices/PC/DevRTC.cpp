@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
+/* $Id: DevRTC.cpp 52388 2014-08-15 09:45:12Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -274,9 +274,12 @@ static void rtc_set_time(PRTCSTATE pThis)
     tm->tm_sec  = from_bcd(pThis, pThis->cmos_data[RTC_SECONDS]);
     tm->tm_min  = from_bcd(pThis, pThis->cmos_data[RTC_MINUTES]);
     tm->tm_hour = from_bcd(pThis, pThis->cmos_data[RTC_HOURS] & 0x7f);
-    if (   !(pThis->cmos_data[RTC_REG_B] & 0x02)
-        && (pThis->cmos_data[RTC_HOURS] & 0x80))
-        tm->tm_hour += 12;
+    if (!(pThis->cmos_data[RTC_REG_B] & 0x02))
+    {
+        tm->tm_hour %= 12;
+        if (pThis->cmos_data[RTC_HOURS] & 0x80)
+            tm->tm_hour += 12;
+    }
     tm->tm_wday = from_bcd(pThis, pThis->cmos_data[RTC_DAY_OF_WEEK]);
     tm->tm_mday = from_bcd(pThis, pThis->cmos_data[RTC_DAY_OF_MONTH]);
     tm->tm_mon  = from_bcd(pThis, pThis->cmos_data[RTC_MONTH]) - 1;
@@ -658,7 +661,8 @@ static void rtc_copy_date(PRTCSTATE pThis)
     else
     {
         /* 12 hour format */
-        pThis->cmos_data[RTC_HOURS] = to_bcd(pThis, tm->tm_hour % 12);
+        int h = (tm->tm_hour % 12) ? tm->tm_hour % 12 : 12;
+        pThis->cmos_data[RTC_HOURS] = to_bcd(pThis, h);
         if (tm->tm_hour >= 12)
             pThis->cmos_data[RTC_HOURS] |= 0x80;
     }
