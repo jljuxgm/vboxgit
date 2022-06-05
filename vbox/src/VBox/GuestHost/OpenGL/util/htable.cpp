@@ -1,4 +1,4 @@
-/* $Id: htable.cpp 50276 2014-01-29 19:36:53Z vboxsync $ */
+/* $Id: htable.cpp 50311 2014-02-03 15:47:40Z vboxsync $ */
 
 /** @file
  * uint32_t handle to void simple table impl
@@ -65,7 +65,7 @@ int crHTableRealloc(PCRHTABLE pTbl, uint32_t cNewSize)
         void **pvNewData = (void**)RTMemAllocZ(sizeof (pTbl->paData[0]) * cNewSize);
         if (!pvNewData)
         {
-            WARN(("RTMemAllocZ failed for size (%d)", sizeof (pTbl->paData[0]) * cNewSize));
+            WARN(("RTMemAllocZ failed for size (%d)", (int)(sizeof (pTbl->paData[0]) * cNewSize)));
             return VERR_NO_MEMORY;
         }
         memcpy(pvNewData, pTbl->paData, sizeof (pTbl->paData[0]) * pTbl->cSize);
