@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 50621 2014-02-27 02:42:06Z vboxsync $ */
+/* $Id: DrvNAT.cpp 50622 2014-02-27 02:54:00Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1093,6 +1093,12 @@ DECLINLINE(void) drvNATHostNetworkConfigurationChangeEventStrategySelector(PDRVN
 
         case VBOX_NAT_HNCE_DNSPROXY:
             {
+                /**
+                 * XXX: Here or in _strategy_selector we should deal with network change
+                 * in "network change" scenario domain name change we have to update guest lease
+                 * forcibly.
+                 * Note at that built-in dhcp also updates DNS information on NAT thread.
+                 */
                 /**
                  * It's unsafe to to do it directly on non-NAT thread
                  * so we schedule the worker and kick the NAT thread.
