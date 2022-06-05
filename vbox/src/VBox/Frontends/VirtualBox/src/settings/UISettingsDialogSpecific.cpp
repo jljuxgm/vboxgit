@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 51322 2014-05-21 13:08:47Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 51345 2014-05-22 11:31:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -943,7 +943,7 @@ void UISettingsDialogMachine::recorrelate(UISettingsPage *pSettingsPage)
             UIMachineSettingsUSB *pUsbPage = qobject_cast<UIMachineSettingsUSB*>(pSettingsPage);
             UIMachineSettingsSystem *pSystemPage = qobject_cast<UIMachineSettingsSystem*>(m_pSelector->idToPage(MachineSettingsPageType_System));
             if (pUsbPage && pSystemPage)
-                pSystemPage->setOHCIEnabled(pUsbPage->isOHCIEnabled());
+                pSystemPage->setUSBEnabled(pUsbPage->isUSBEnabled());
             break;
         }
         default:
