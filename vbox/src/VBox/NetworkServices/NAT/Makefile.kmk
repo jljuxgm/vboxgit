@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49119 2013-10-15 15:05:37Z vboxsync $
+# $Id: Makefile.kmk 49249 2013-10-23 04:53:22Z vboxsync $
 ## @file
 #
 
@@ -57,6 +57,7 @@ VBoxNetLwipNAT_SOURCES += \
     pxremap.c \
     pxtcp.c \
     pxudp.c \
+    pxdns.c \
     fwtcp.c \
     fwudp.c \
     portfwd.c \
