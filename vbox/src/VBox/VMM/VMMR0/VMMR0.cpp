@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 49215 2013-10-21 15:14:54Z vboxsync $ */
+/* $Id: VMMR0.cpp 49481 2013-11-14 15:18:56Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -227,6 +227,7 @@ DECLEXPORT(int) ModuleInit(void *hMod)
  */
 DECLEXPORT(void) ModuleTerm(void *hMod)
 {
+    NOREF(hMod);
     LogFlow(("ModuleTerm:\n"));
 
     /*
