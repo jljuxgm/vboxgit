@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 47990 2013-08-22 14:18:41Z vboxsync $ */
+/* $Id: HMInternal.h 48037 2013-08-23 18:11:36Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -130,6 +130,10 @@ RT_C_DECLS_BEGIN
                                                   | HM_CHANGED_VMX_EXIT_CTLS)
 
 #define HM_CHANGED_HOST_CONTEXT                  RT_BIT(21)
+
+/* Bits shared between host and guest. */
+#define HM_CHANGED_HOST_GUEST_SHARED_STATE       (  HM_CHANGED_GUEST_CR0                \
+                                                  | HM_CHANGED_GUEST_DEBUG)
 /** @} */
 
 /** Maximum number of page flushes we are willing to remember before considering a full TLB flush. */
