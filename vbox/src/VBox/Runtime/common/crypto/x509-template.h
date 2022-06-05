@@ -1,4 +1,4 @@
-/* $Id: x509-template.h 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: x509-template.h 52521 2014-08-29 06:10:31Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Code Generator Template.
  */
@@ -50,7 +50,7 @@ RTASN1TMPL_END_SEQCORE();
 #define RTASN1TMPL_INT_NAME     rtCrX509AlgorithmIdentifier
 RTASN1TMPL_BEGIN_SEQCORE();
 RTASN1TMPL_MEMBER(              Algorithm,          RTASN1OBJID,                    RTAsn1ObjId);
-RTASN1TMPL_MEMBER(              Parameters,         RTASN1DYNTYPE,                  RTAsn1DynType);
+RTASN1TMPL_MEMBER_OPT_ANY(      Parameters,         RTASN1DYNTYPE,                  RTAsn1DynType);
 RTASN1TMPL_END_SEQCORE();
 #undef RTASN1TMPL_TYPE
 #undef RTASN1TMPL_EXT_NAME
