@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 49341 2013-10-31 08:43:56Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 49363 2013-11-01 13:07:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -133,6 +133,10 @@
 #ifdef Q_WS_X11
 #include <iprt/mem.h>
 #endif /* Q_WS_X11 */
+
+#ifdef Q_WS_MAC
+#include <sys/utsname.h>
+#endif /* Q_WS_MAC */
 
 /* External includes: */
 #include <math.h>
@@ -314,6 +318,32 @@ bool VBoxGlobal::isBeta() const
 {
     return mVBox.GetVersion().contains("BETA", Qt::CaseInsensitive);
 }
+
+#ifdef Q_WS_MAC
+/** Returns #MacOSXRelease determined using <i>uname</i> call. */
+MacOSXRelease VBoxGlobal::osRelease()
+{
+    /* Prepare 'utsname' struct: */
+    utsname info;
+    if (uname(&info) != -1)
+    {
+        /* Parse known .release types: */
+            if (QString(info.release).startsWith("13."))
+                return MacOSXRelease_Mavericks;
+        else
+            if (QString(info.release).startsWith("12."))
+                return MacOSXRelease_MountainLion;
+        else
+            if (QString(info.release).startsWith("11."))
+                return MacOSXRelease_Lion;
+        else
+            if (QString(info.release).startsWith("10."))
+                return MacOSXRelease_SnowLeopard;
+    }
+    /* Unknown by default: */
+    return MacOSXRelease_Unknown;
+}
+#endif /* Q_WS_MAC */
 
 /**
  *  Sets the new global settings and saves them to the VirtualBox server.
