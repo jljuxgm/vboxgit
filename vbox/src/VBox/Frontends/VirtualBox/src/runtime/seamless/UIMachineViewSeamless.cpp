@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 53076 2014-10-16 12:13:15Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 53389 2014-11-24 16:19:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -35,6 +35,7 @@
 # include "UIMachineWindow.h"
 # include "UIMachineViewSeamless.h"
 # include "UIFrameBuffer.h"
+# include "UIExtraDataManager.h"
 
 /* COM includes: */
 # include "CConsole.h"
@@ -160,10 +161,15 @@ void UIMachineViewSeamless::cleanupSeamless()
 
 void UIMachineViewSeamless::adjustGuestScreenSize()
 {
+    /* Acquire working-area size: */
+    const QSize workingAreaSize = workingArea().size();
+    /* Acquire frame-buffer size: */
+    QSize frameBufferSize(frameBuffer()->width(), frameBuffer()->height());
+    /* Take the scale-factor into account: */
+    frameBufferSize *= gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
     /* Check if we should adjust guest-screen to new size: */
     if (frameBuffer()->isAutoEnabled() ||
-        (int)frameBuffer()->width() != workingArea().size().width() ||
-        (int)frameBuffer()->height() != workingArea().size().height())
+        frameBufferSize != workingAreaSize)
         if (uisession()->isGuestSupportsGraphics() &&
             uisession()->isScreenVisible(screenId()))
         {

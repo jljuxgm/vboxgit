@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 53388 2014-11-24 14:49:24Z vboxsync $ */
+/* $Id: UIMachineView.cpp 53389 2014-11-24 16:19:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -317,6 +317,18 @@ void UIMachineView::sltDesktopResized()
     setMaxGuestSize();
 }
 
+void UIMachineView::sltHandleScaleFactorChange(const QString &strMachineID)
+{
+    /* Skip unrelated machine IDs: */
+    if (strMachineID != vboxGlobal().managedVMUuid())
+        return;
+
+    /* Adjust frame-buffer, machine-window and guest-screen size if necessary: */
+    sltHandleNotifyChange(frameBuffer()->width(), frameBuffer()->height());
+    machineWindow()->normalizeGeometry(true /* adjust position */);
+    adjustGuestScreenSize();
+}
+
 void UIMachineView::sltMachineStateChanged()
 {
     /* Get machine state: */
@@ -539,6 +551,9 @@ void UIMachineView::prepareConnections()
     /* Desktop resolution change (e.g. monitor hotplug): */
     connect(QApplication::desktop(), SIGNAL(resized(int)), this,
             SLOT(sltDesktopResized()));
+    /* Scale-factor change: */
+    connect(gEDataManager, SIGNAL(sigScaleFactorChange(const QString&)),
+            this, SLOT(sltHandleScaleFactorChange(const QString&)));
 }
 
 void UIMachineView::prepareConsoleConnections()

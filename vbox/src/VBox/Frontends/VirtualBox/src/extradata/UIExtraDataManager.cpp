@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 53372 2014-11-21 13:52:39Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 53389 2014-11-24 16:19:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3567,6 +3567,9 @@ void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey
                  strKey == GUI_RestrictedStatusBarIndicators ||
                  strKey == GUI_StatusBar_IndicatorOrder)
             emit sigStatusBarConfigurationChange(strMachineID);
+        /* Scale-factor change: */
+        else if (strKey == GUI_ScaleFactor)
+            emit sigScaleFactorChange(strMachineID);
     }
 
     /* Notify listeners: */
