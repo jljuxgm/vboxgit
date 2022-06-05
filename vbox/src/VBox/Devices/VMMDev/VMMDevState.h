@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 51520 2014-06-04 05:17:41Z vboxsync $ */
+/* $Id: VMMDevState.h 52789 2014-09-18 16:08:18Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -358,6 +358,21 @@ typedef struct VMMDevState
     /** Testing instance for dealing with the output. */
     RTTEST                  hTestingTest;
 #endif /* !VBOX_WITHOUT_TESTING_FEATURES */
+
+    /** Timestamp of the last heartbeat from guest in nanosec. */
+    uint64_t volatile   uLastHBTime;
+    /** Indicates whether we missed HB from guest on last check. */
+    bool volatile       fHasMissedHB;
+    /** Indicates whether heartbeat check is active. */
+    bool volatile       fHBCheckEnabled;
+    /** Alignment padding. */
+    bool                afAlignment8[6];
+    /** Guest heartbeat interval in nanoseconds. */
+    uint64_t            u64HeartbeatInterval;
+    /** Guest heartbeat timeout in nanoseconds. */
+    uint64_t            u64HeartbeatTimeout;
+    /** Timer for checking guest heart beat. */
+    PTMTIMERR3          pHBCheckTimer;
 } VMMDevState;
 typedef VMMDevState VMMDEV;
 /** Pointer to the VMM device state. */

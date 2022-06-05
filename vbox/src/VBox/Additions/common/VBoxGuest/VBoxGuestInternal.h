@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestInternal.h 52700 2014-09-11 13:39:16Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 52789 2014-09-18 16:08:18Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -31,6 +31,7 @@
 #include <iprt/list.h>
 #include <iprt/semaphore.h>
 #include <iprt/spinlock.h>
+#include <iprt/timer.h>
 #include <VBox/VMMDev.h>
 #include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
@@ -178,6 +179,12 @@ typedef struct VBOXGUESTDEVEXT
     /** Mask of all capabilities which are currently acquired by some session
      * and as such reported to the host. */
     uint32_t                    u32GuestCaps;
+    /** Heartbeat timer which fires with interval
+      * cNsHearbeatInterval and its handler sends
+      * VMMDevReq_GuestHeartbeat to VMMDev. */
+    PRTTIMER                    pHeartbeatTimer;
+    /** Heartbeat timer interval in nanoseconds. */
+    uint64_t                    cNsHeartbeatInterval;
 } VBOXGUESTDEVEXT;
 /** Pointer to the VBoxGuest driver data. */
 typedef VBOXGUESTDEVEXT *PVBOXGUESTDEVEXT;
