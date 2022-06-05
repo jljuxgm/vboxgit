@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
+/* $Id: MediumImpl.cpp 48967 2013-10-08 10:40:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2331,8 +2331,14 @@ STDMETHODIMP Medium::GetProperty(IN_BSTR aName, BSTR *aValue)
 
     settings::StringsMap::const_iterator it = m->mapProperties.find(Utf8Str(aName));
     if (it == m->mapProperties.end())
-        return setError(VBOX_E_OBJECT_NOT_FOUND,
-                        tr("Property '%ls' does not exist"), aName);
+    {
+        if (!Utf8Str(aName).startsWith("Special/"))
+            return setError(VBOX_E_OBJECT_NOT_FOUND,
+                            tr("Property '%ls' does not exist"), aName);
+        else
+            /* be more silent here */
+            return VBOX_E_OBJECT_NOT_FOUND;
+    }
 
     it->second.cloneTo(aValue);
 
