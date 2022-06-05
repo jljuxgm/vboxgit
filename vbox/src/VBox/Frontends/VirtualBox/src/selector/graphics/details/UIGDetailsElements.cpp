@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 50871 2014-03-25 17:29:10Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 50912 2014-03-27 16:00:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -514,16 +514,15 @@ void UIGDetailsUpdateThreadStorage::run()
                     /* Insert that attachment information into the map: */
                     if (!strAttachmentInfo.isNull())
                     {
-                        /* Hovering anchors for dvd/floppy stuff: */
-                        if (deviceType == KDeviceType_DVD || deviceType == KDeviceType_Floppy)
-                            attachmentsMap.insert(attachmentSlot,
-                                                  QString("<a href=#choose,%1,%2>%3</a>")
-                                                          .arg(controller.GetName(),
-                                                               gpConverter->toString(attachmentSlot),
-                                                               strDeviceType + strAttachmentInfo));
-                        /* Usual stuff for hard-drives: */
-                        else
-                            attachmentsMap.insert(attachmentSlot, strDeviceType + strAttachmentInfo);
+                        /* Configure hovering anchors: */
+                        const QString strAnchorType = deviceType == KDeviceType_DVD || deviceType == KDeviceType_Floppy ? QString("mount") :
+                                                      deviceType == KDeviceType_HardDisk ? QString("attach") : QString();
+                        attachmentsMap.insert(attachmentSlot,
+                                              QString("<a href=#%1,%2,%3>%4</a>")
+                                                      .arg(strAnchorType,
+                                                           controller.GetName(),
+                                                           gpConverter->toString(attachmentSlot),
+                                                           strDeviceType + strAttachmentInfo));
                     }
                 }
                 /* Iterate over the sorted map: */

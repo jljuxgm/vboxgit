@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 50909 2014-03-27 15:06:05Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 50912 2014-03-27 16:00:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -94,6 +94,11 @@ void UIGDetailsElement::updateAppearance()
     /* Reset name hover state: */
     m_fNameHovered = false;
     updateNameHoverLink();
+
+    /* Update anchor role restrictions: */
+    ConfigurationAccessLevel cal = m_pSet->configurationAccessLevel();
+    m_pTextPane->setAnchorRoleRestricted("#mount", cal == ConfigurationAccessLevel_Null);
+    m_pTextPane->setAnchorRoleRestricted("#attach", cal != ConfigurationAccessLevel_Full);
 }
 
 void UIGDetailsElement::markAnimationFinished()
@@ -139,8 +144,10 @@ void UIGDetailsElement::sltHandleAnchorClicked(const QString &strAnchor)
     const QString strRole = strAnchor.section(',', 0, 0);
     const QString strData = strAnchor.section(',', 1);
 
-    /* Handle known roles: */
-    if (strRole == "#choose")
+    /* Handle known anchor roles: */
+    if (   strRole == "#mount"  // Optical and floppy attachments..
+        || strRole == "#attach" // Hard-drive attachments..
+        )
     {
         /* Prepare storage-menu: */
         QMenu menu;
