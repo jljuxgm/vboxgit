@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 48576 2013-09-20 09:08:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1150,10 +1150,10 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
             ? tr ("Enabled", "details report (ACPI)")
             : tr ("Disabled", "details report (ACPI)");
 
-        /* IO APIC */
+        /* I/O APIC */
         QString ioapic = biosSettings.GetIOAPICEnabled()
-            ? tr ("Enabled", "details report (IO APIC)")
-            : tr ("Disabled", "details report (IO APIC)");
+            ? tr ("Enabled", "details report (I/O APIC)")
+            : tr ("Disabled", "details report (I/O APIC)");
 
         /* PAE/NX */
         QString pae = aMachine.GetCpuProperty(KCpuPropertyType_PAE)
@@ -1191,7 +1191,7 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
                      + QString (sSectionItemTpl2).arg (tr ("Boot Order", "details report"), bootOrder)
 #ifdef VBOX_WITH_FULL_DETAILS_REPORT
                      + QString (sSectionItemTpl2).arg (tr ("ACPI", "details report"), acpi)
-                     + QString (sSectionItemTpl2).arg (tr ("IO APIC", "details report"), ioapic)
+                     + QString (sSectionItemTpl2).arg (tr ("I/O APIC", "details report"), ioapic)
                      + QString (sSectionItemTpl2).arg (tr ("PAE/NX", "details report"), pae)
 #endif /* VBOX_WITH_FULL_DETAILS_REPORT */
                      ;

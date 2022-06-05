@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 48530 2013-09-19 12:00:06Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 48576 2013-09-20 09:08:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -544,7 +544,7 @@ public:
         setState(machine.GetVideoCaptureEnabled());
 
         /* Update LED tool-tip: */
-        QString strToolTip = QApplication::translate("UIIndicatorsPool", "<nobr>Indicates the activity of the video capture:</nobr><br>%1");
+        QString strToolTip = QApplication::translate("UIIndicatorsPool", "<nobr>Indicates video capturing activity:</nobr><br>%1");
         switch (state())
         {
             case UIIndicatorStateVideoCapture_Disabled:
@@ -678,8 +678,7 @@ public:
         QString strCPUExecCap = QString::number(console.GetMachine().GetCPUExecutionCap());
 
         QString tip(QApplication::translate("UIIndicatorsPool",
-                                            "Indicates the status of different "
-                                            "features used by this virtual machine:"
+                                            "Additional feature status:"
                                             "<br><nobr><b>%1:</b>&nbsp;%2</nobr>"
                                             "<br><nobr><b>%3:</b>&nbsp;%4</nobr>"
                                             "<br><nobr><b>%5:</b>&nbsp;%6</nobr>"
