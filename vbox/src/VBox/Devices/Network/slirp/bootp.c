@@ -1,4 +1,4 @@
-/* $Id: bootp.c 50969 2014-04-03 21:58:38Z vboxsync $ */
+/* $Id: bootp.c 51032 2014-04-10 11:55:43Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -527,11 +527,15 @@ static int dhcp_decode_request(PNATState pData, struct bootp_t *bp, struct mbuf 
                 return offReply;
             }
 
-            bc = bc_alloc_client(pData);
+            /* find_addr() got some result? */
             if (!bc)
             {
-                LogRel(("NAT: can't alloc address. RENEW has been silently ignored\n"));
-                return -1;
+                bc = bc_alloc_client(pData);
+                if (!bc)
+                {
+                    LogRel(("NAT: can't alloc address. RENEW has been silently ignored\n"));
+                    return -1;
+                }
             }
             Assert((bp->bp_hlen == ETH_ALEN));
             memcpy(bc->macaddr, bp->bp_hwaddr, bp->bp_hlen);
