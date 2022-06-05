@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 52030 2014-07-15 07:28:25Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52139 2014-07-22 20:19:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -99,6 +99,8 @@ extern uint32_t         g_uNtVerCombined;
 
 /** Combined NT version number for XP. */
 #define SUP_NT_VER_XP       SUP_MAKE_NT_VER_SIMPLE(5,1)
+/** Combined NT version number for Windows server 2003 & XP64. */
+#define SUP_NT_VER_W2K3     SUP_MAKE_NT_VER_SIMPLE(5,2)
 /** Combined NT version number for Vista. */
 #define SUP_NT_VER_VISTA    SUP_MAKE_NT_VER_SIMPLE(6,0)
 /** Combined NT version number for Windows 7. */
