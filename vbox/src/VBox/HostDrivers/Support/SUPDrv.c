@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPDrv.c 51846 2014-07-03 13:06:19Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -177,6 +177,7 @@ static SUPFUNC g_aFunctions[] =
     { "SUPR0SuspendVTxOnCpu",                   (void *)SUPR0SuspendVTxOnCpu },
     { "SUPR0ResumeVTxOnCpu",                    (void *)SUPR0ResumeVTxOnCpu },
     { "SUPR0GetPagingMode",                     (void *)SUPR0GetPagingMode },
+    { "SUPR0GetKernelFeatures",                 (void *)SUPR0GetKernelFeatures },
     { "SUPR0LockMem",                           (void *)SUPR0LockMem },
     { "SUPR0LowAlloc",                          (void *)SUPR0LowAlloc },
     { "SUPR0LowFree",                           (void *)SUPR0LowFree },
@@ -1253,6 +1254,7 @@ PSUPDRVSESSION VBOXCALL supdrvSessionHashTabLookup(PSUPDRVDEVEXT pDevExt, RTPROC
     if (pCur)
     {
         uint32_t cRefs = ASMAtomicIncU32(&pCur->cRefs);
+        NOREF(cRefs);
         Assert(cRefs > 1 && cRefs < _1M);
     }
 
