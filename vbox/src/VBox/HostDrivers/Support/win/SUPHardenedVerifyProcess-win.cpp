@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 52795 2014-09-19 15:02:04Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 52875 2014-09-26 18:05:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1765,6 +1765,15 @@ static int supHardNtLdrCacheNewEntry(PSUPHNTLDRCACHEENTRY pEntry, const char *ps
     pEntry->hFile     = hFile;
     pEntry->pbBits    = NULL;
     pEntry->fVerified = false;
+
+#ifdef IN_SUP_HARDENED_R3
+    /*
+     * Log the image timestamp when in the hardened exe.
+     */
+    uint64_t uTimestamp = 0;
+    rc = RTLdrQueryProp(hLdrMod, RTLDRPROP_TIMESTAMP_SECONDS, &uTimestamp, sizeof(uint64_t));
+    SUP_DPRINTF(("%s: timestamp %#llx (rc=%Rrc)\n", pszName, uTimestamp, rc));
+#endif
 
     return VINF_SUCCESS;
 }
