@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 51493 2014-06-02 16:30:27Z vboxsync $ */
+/* $Id: UIMachineView.cpp 51496 2014-06-02 18:47:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -217,6 +217,8 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
 
 void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
 {
+    NOREF(uScreenId);
+
     LogRelFlow(("UIMachineView::HandleNotifyChange: Screen=%d, Size=%dx%d.\n",
                 (unsigned long)m_uScreenId, iWidth, iHeight));
 
