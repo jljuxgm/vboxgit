@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52665 2014-09-10 07:25:07Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52666 2014-09-10 07:56:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -3839,6 +3839,11 @@ static int supR3HardenedWinDoReSpawn(int iWhich)
      */
     supR3HardenedWinFlushLoaderCache();
     HeapCompact(GetProcessHeap(), 0 /*dwFlags*/);
+
+    /*
+     * Enable thread creation at this point so Ctrl-C and Ctrl-Break can be processed.
+     */
+    supR3HardenedWinEnableThreadCreation();
 
     /*
      * If this is the middle process, wait for both parent and child to quit.
