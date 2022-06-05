@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 51896 2014-07-07 06:17:59Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 51961 2014-07-10 08:55:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5588,7 +5588,7 @@ static void hmR0VmxUpdateTscOffsettingAndPreemptTimer(PVMCPU pVCpu)
 #if 1
     if (fParavirtTsc)
     {
-#if 0
+#if 1
         uint64_t const u64CurTsc   = ASMReadTSC();
         uint64_t const u64LastTick = TMCpuTickGetLastSeen(pVCpu);
         if (u64CurTsc + pVCpu->hm.s.vmx.u64TSCOffset < u64LastTick)

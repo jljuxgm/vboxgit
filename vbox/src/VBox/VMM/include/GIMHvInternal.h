@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 51686 2014-06-23 05:40:05Z vboxsync $ */
+/* $Id: GIMHvInternal.h 51961 2014-07-10 08:55:01Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -424,7 +424,6 @@ AssertCompile(MSR_GIM_HV_RANGE11_START <= MSR_GIM_HV_RANGE11_END);
 
 /**
  * MMIO2 region indices.
- * Note!! Saved-state are dependent on the index values, do -not- change!
  */
 /** The hypercall page region. */
 #define GIM_HV_HYPERCALL_PAGE_REGION_IDX          UINT8_C(0)
