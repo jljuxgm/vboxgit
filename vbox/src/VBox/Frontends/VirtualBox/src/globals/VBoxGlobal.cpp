@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 51410 2014-05-27 08:03:54Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 51456 2014-05-28 18:12:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4341,9 +4341,6 @@ void VBoxGlobal::cleanup()
     deletePidfile();
 #endif
 
-    /* Destroy our event handlers */
-    UIExtraDataManager::destroy();
-
     /* Destroy the GUI root windows _BEFORE_ the media-mess, because there is
        code in the GUI that's using the media code an will be racing us! */
     if (mSelectorWnd)
@@ -4363,6 +4360,9 @@ void VBoxGlobal::cleanup()
     delete m_pMediumEnumerator;
     m_pMediumEnumerator = 0;
     m_mediumEnumeratorDtorRwLock.unlock();
+
+    /* Destroy extra-data manager: */
+    UIExtraDataManager::destroy();
 
     /* Destroy whatever this converter stuff is: */
     UIConverter::cleanup();
