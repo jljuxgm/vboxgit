@@ -1,10 +1,10 @@
-/* $Id: SUPLib-win.cpp 49150 2013-10-17 07:22:02Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 49213 2013-10-21 14:56:48Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -540,8 +540,8 @@ int suplibOsIOCtlFast(PSUPLIBDATA pThis, uintptr_t uFunction, uintptr_t idCpu)
     Ios.Information = 0;
     NTSTATUS rcNt = NtDeviceIoControlFile((HANDLE)pThis->hDevice, NULL /*hEvent*/, NULL /*pfnApc*/, NULL /*pvApcCtx*/, &Ios,
                                           (ULONG)uFunction,
-                                          (PVOID)idCpu /*pvInput */, 0 /* cbInput */,
-                                          NULL /*pvOutput*/, 0 /* cbOutput */);
+                                          NULL /*pvInput */, 0 /* cbInput */,
+                                          (PVOID)idCpu /*pvOutput*/, 0 /* cbOutput */);
     if (NT_SUCCESS(rcNt))
     {
         if (NT_SUCCESS(Ios.Status))
