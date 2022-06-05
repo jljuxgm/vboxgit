@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 44734 2013-02-18 13:46:38Z vboxsync $ */
+/* $Id: UIShortcutPool.cpp 48831 2013-10-03 11:06:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -232,7 +232,7 @@ void UIShortcutPool::loadDefaults()
     const QString strRuntimeShortcutKeyTemplate(m_strShortcutKeyTemplate.arg(GUI_Input_MachineShortcuts));
     /* Default shortcut for the Runtime Popup Menu invokation: */
     m_shortcuts.insert(strRuntimeShortcutKeyTemplate.arg("PopupMenu"),
-                       UIShortcut(QApplication::translate("UIActonPool", "Popup Menu"), QString("Home"), QString("Home")));
+                       UIShortcut(QApplication::translate("UIActionPool", "Popup Menu"), QString("Home"), QString("Home")));
 }
 
 void UIShortcutPool::loadOverrides()
