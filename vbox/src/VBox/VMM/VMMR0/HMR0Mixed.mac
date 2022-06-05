@@ -1,4 +1,4 @@
-; $Id: HMR0Mixed.mac 48617 2013-09-20 16:38:10Z vboxsync $
+; $Id: HMR0Mixed.mac 48618 2013-09-20 16:40:05Z vboxsync $
 ;; @file
 ; HM - Ring-0 Host 32/64, Guest 32/64 world-switch routines
 ;
@@ -27,7 +27,7 @@
  ; Darwin (Mavericks) uses IDTR limit to store the CPUID so we need to restore it always.
  ; See @bugref{6875}.
  %elifdef RT_OS_WINDOWS
- ; Windows 8.1 RTM also seems to be using the IDTR for something. See @bugref{6956}.
+ ; Windows 8.1 RTM also seems to be using the IDTR limit for something. See @bugref{6956}.
  ;; @todo figure out what exactly it does and try and restrict it more.
  %else
   %define VMX_SKIP_IDTR
