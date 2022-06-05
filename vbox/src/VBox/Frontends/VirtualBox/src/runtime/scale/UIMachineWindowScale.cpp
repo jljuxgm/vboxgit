@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 52638 2014-09-08 11:08:19Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 52642 2014-09-08 11:21:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,9 +30,7 @@
 #include "UISession.h"
 #include "UIMachineLogic.h"
 #include "UIMachineWindowScale.h"
-#ifdef Q_WS_WIN
-# include "UIMachineView.h"
-#endif /* Q_WS_WIN */
+#include "UIMachineView.h"
 #ifdef Q_WS_MAC
 # include "VBoxUtils.h"
 # include "UIImageTools.h"
