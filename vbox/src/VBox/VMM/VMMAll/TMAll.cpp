@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 50381 2014-02-10 10:35:27Z vboxsync $ */
+/* $Id: TMAll.cpp 50383 2014-02-10 10:43:40Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1129,7 +1129,6 @@ static int tmTimerVirtualSyncSet(PVM pVM, PTMTIMER pTimer, uint64_t u64Expire)
 {
     STAM_PROFILE_START(&pVM->tm.s.CTX_SUFF_Z(StatTimerSetVs), a);
     VM_ASSERT_EMT(pVM);
-    Assert(PDMCritSectIsOwner(&pVM->tm.s.VirtualSyncLock));
     int rc = PDMCritSectEnter(&pVM->tm.s.VirtualSyncLock, VINF_SUCCESS);
     AssertRCReturn(rc, rc);
 
