@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 48397 2013-09-10 08:14:05Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 48401 2013-09-10 11:34:05Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -66,11 +66,15 @@
 #ifdef RT_OS_WINDOWS /* WinMain */
 # include <Windows.h>
 # include <stdlib.h>
+# ifdef INET_ADDRSTRLEN
+/* On Windows INET_ADDRSTRLEN defined as 22 Ws2ipdef.h, because it include port number */
+#  undef INET_ADDRSTRLEN
+# endif
+# define INET_ADDRSTRLEN 16 
+#else
+# include <netinet/in.h>
 #endif
 
-#ifndef INET4_ADDRLEN
-# define INET4_ADDRLEN 17
-#endif
 
 #include "Config.h"
 /*******************************************************************************
@@ -405,7 +409,7 @@ int VBoxNetDhcp::init()
                 pszTerm = RTStrStr(pszLo2Off, ";");
 
                 if (   pszTerm
-                       && (pszTerm - pszLo2Off) < 16)
+                       && (pszTerm - pszLo2Off) <= INET_ADDRSTRLEN)
                 {
                 
                     memcpy(aszAddr, pszLo2Off, (pszTerm - pszLo2Off));
