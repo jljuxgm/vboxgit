@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.cpp 48592 2013-09-20 13:44:09Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -176,7 +176,7 @@ void UINetworkRequestWidget::sltSetProgressToFailed(const QString &strError)
 
     /* Show error label: */
     m_pErrorPane->setHidden(false);
-    m_pErrorPane->setText(UINetworkManagerDialog::tr("The network operation failed with the error: %1.").arg(strErrorText));
+    m_pErrorPane->setText(UINetworkManagerDialog::tr("The network operation failed with the following error: %1.").arg(strErrorText));
 }
 
 void UINetworkRequestWidget::sltTimeIsOut()
