@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 49704 2013-11-28 18:26:13Z vboxsync $
+# $Id: vboxshell.py 49841 2013-12-09 13:32:33Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 49704 $"
+__version__ = "$Revision: 49841 $"
 
 
 import os, sys
@@ -3556,6 +3556,7 @@ def main(argv):
         if sPath is None:
             for sCurLoc in asLocations:
                 if os.path.isfile(os.path.join(sCurLoc, "sdk", "bindings", "VirtualBox.xidl")):
+                    sCurLoc = os.path.join(sCurLoc, "sdk");
                     print "Autodetected VBOX_SDK_PATH as", sCurLoc
                     os.environ["VBOX_SDK_PATH"] = sCurLoc
                     sPath = sCurLoc;
