@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51204 2014-05-07 13:05:00Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51207 2014-05-07 15:53:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -225,6 +225,11 @@ QStringList UIExtraDataManager::suppressedMessages() const
 void UIExtraDataManager::setSuppressedMessages(const QStringList &value)
 {
     setExtraDataStringList(GUI_SuppressMessages, value);
+}
+
+QStringList UIExtraDataManager::messagesWithInvertedOption() const
+{
+    return extraDataStringList(GUI_InvertMessageOption);
 }
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
