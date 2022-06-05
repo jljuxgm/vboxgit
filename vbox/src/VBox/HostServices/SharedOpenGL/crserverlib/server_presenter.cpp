@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51070 2014-04-14 17:10:23Z vboxsync $ */
+/* $Id: server_presenter.cpp 51078 2014-04-15 12:59:00Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -5284,7 +5284,7 @@ int8_t crVBoxServerCrCmdFlipProcess(const VBOXCMDVBVA_FLIP *pFlip)
     HCR_FRAMEBUFFER hFb = CrPMgrFbGetEnabled(idScreen);
     if (!hFb)
     {
-        WARN(("request to present on disabled framebuffer, ignore"));
+        LOG(("request to present on disabled framebuffer, ignore"));
         return 0;
     }
 
