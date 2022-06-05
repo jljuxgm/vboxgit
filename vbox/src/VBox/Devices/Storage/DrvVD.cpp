@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 47829 2013-08-18 12:30:02Z vboxsync $ */
+/* $Id: DrvVD.cpp 48744 2013-09-27 18:21:23Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1620,7 +1620,7 @@ static DECLCALLBACK(uint32_t) drvvdGetSectorSize(PPDMIMEDIA pInterface)
 {
     LogFlowFunc(("\n"));
     PVBOXDISK pThis = PDMIMEDIA_2_VBOXDISK(pInterface);
-    uint32_t cb = 512;
+    uint32_t cb = VDGetSectorSize(pThis->pDisk, VD_LAST_IMAGE);
     LogFlowFunc(("returns %u\n", cb));
     return cb;
 }
