@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 49506 2013-11-15 14:38:02Z vboxsync $ */
+/* $Id: UISession.cpp 49574 2013-11-20 10:10:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -76,6 +76,10 @@
 #include "CHostVideoInputDevice.h"
 #include "CSnapshot.h"
 #include "CMedium.h"
+
+#ifdef VBOX_GUI_WITH_KEYS_RESET_HANDLER
+static void signalHandlerSIGUSR1(int sig, siginfo_t *, void *);
+#endif
 
 #ifdef Q_WS_MAC
 /**
@@ -1678,7 +1682,7 @@ void UISession::recacheDisplayData()
  * this hack.
  */
 /* static */
-void UISession::signalHandlerSIGUSR1(int sig, siginfo_t * /* pInfo */, void * /*pSecret */)
+static void signalHandlerSIGUSR1(int sig, siginfo_t * /* pInfo */, void * /*pSecret */)
 {
     /* only SIGUSR1 is interesting */
     if (sig == SIGUSR1)
