@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 47280 2013-07-19 18:58:17Z vboxsync $ */
+/* $Id: PDMAll.cpp 49549 2013-11-19 13:28:01Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -207,6 +207,18 @@ VMM_INT_DECL(int) PDMIoApicSendMsi(PVM pVM, RTGCPHYS GCAddr, uint32_t uValue, ui
 VMM_INT_DECL(bool) PDMHasIoApic(PVM pVM)
 {
     return pVM->pdm.s.IoApic.CTX_SUFF(pDevIns) != NULL;
+}
+
+
+/**
+ * Returns presence of an IO-APIC
+ *
+ * @returns VBox true if IO-APIC is present
+ * @param   pVM             Pointer to the VM.
+ */
+VMM_INT_DECL(bool) PDMHasApic(PVM pVM)
+{
+    return pVM->pdm.s.Apic.CTX_SUFF(pDevIns) != NULL;
 }
 
 
