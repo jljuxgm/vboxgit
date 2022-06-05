@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 48592 2013-09-20 13:44:09Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 51446 2014-05-28 13:22:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -40,15 +40,8 @@ UIWizardExportAppPage3::UIWizardExportAppPage3()
 
 void UIWizardExportAppPage3::chooseDefaultSettings()
 {
-    /* Select default settings: */
-#if 0
-    m_pUsernameEditor->setText(vboxGlobal().virtualBox().GetExtraData(GUI_Export_Username));
-    m_pHostnameEditor->setText(vboxGlobal().virtualBox().GetExtraData(GUI_Export_Hostname));
-    m_pBucketEditor->setText(vboxGlobal().virtualBox().GetExtraData(GUI_Export_Bucket));
-#else
-    /* Choose defalt format: */
+    /* Choose default format: */
     setFormat("ovf-1.0");
-#endif
 }
 
 void UIWizardExportAppPage3::refreshCurrentSettings()
