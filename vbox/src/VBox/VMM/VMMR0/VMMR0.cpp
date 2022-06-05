@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 48394 2013-09-09 15:54:51Z vboxsync $ */
+/* $Id: VMMR0.cpp 48448 2013-09-12 12:53:17Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -947,15 +947,23 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
                     /* Setup the longjmp machinery and execute guest code. */
                     rc = vmmR0CallRing3SetJmp(&pVCpu->vmm.s.CallRing3JmpBufR0, HMR0RunGuestCode, pVM, pVCpu);
 
+                    /* Manual assert as normal assertions are going to crash in this case. */
                     if (RT_UNLIKELY(   VMCPU_GET_STATE(pVCpu) != VMCPUSTATE_STARTED_HM
                                     && RT_SUCCESS_NP(rc)  && rc !=  VINF_VMM_CALL_HOST ))
                     {
-                        /* Manual assert as normal assertions are going to crash in this case. */
                         pVM->vmm.s.szRing0AssertMsg1[0] = '\0';
                         RTStrPrintf(pVM->vmm.s.szRing0AssertMsg2, sizeof(pVM->vmm.s.szRing0AssertMsg2),
                                     "Got VMCPU state %d expected %d.\n", VMCPU_GET_STATE(pVCpu), VMCPUSTATE_STARTED_HM);
                         rc = VERR_VMM_WRONG_HM_VMCPU_STATE;
                     }
+                    else if (RT_UNLIKELY(VMMR0ThreadCtxHooksAreRegistered(pVCpu)))
+                    {
+                        pVM->vmm.s.szRing0AssertMsg1[0] = '\0';
+                        RTStrPrintf(pVM->vmm.s.szRing0AssertMsg2, sizeof(pVM->vmm.s.szRing0AssertMsg2),
+                                    "Thread-context hooks still registered! VCPU=%p Id=%u rc=%d.\n", pVCpu, pVCpu->idCpu, rc);
+                        rc = VERR_INVALID_STATE;
+                    }
+
                     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED);
                 }
                 STAM_COUNTER_INC(&pVM->vmm.s.StatRunRC);
