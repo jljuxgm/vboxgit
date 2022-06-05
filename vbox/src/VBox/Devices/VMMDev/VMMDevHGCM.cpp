@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 44792 2013-02-21 18:14:07Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 49410 2013-11-07 15:58:54Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -634,6 +634,20 @@ int vmmdevHGCMCall (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, uint32_t cbHGCMCal
     Log(("vmmdevHGCMCall: cParms = %d\n", cParms));
 
     /*
+     * Sane upper limit.
+     */
+    if (cParms > VMMDEV_MAX_VMMDEV_PARMS)
+    {
+        static int s_cRelWarn;
+        if (s_cRelWarn < 50)
+        {
+            s_cRelWarn++;
+            LogRel(("VMMDev: request packet with too many parameters (%d). Refusing operation.\n", cParms));
+            return VERR_NOT_SUPPORTED;
+        }
+    }
+
+    /*
      * Compute size of required memory buffer.
      */
 
@@ -1144,6 +1158,20 @@ static int vmmdevHGCMCallSaved (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, RTGCPH
     uint32_t cParms = pHGCMCall->cParms;
 
     Log(("vmmdevHGCMCall: cParms = %d\n", cParms));
+
+    /*
+     * Sane upper limit.
+     */
+    if (cParms > VMMDEV_MAX_VMMDEV_PARMS)
+    {
+        static int s_cRelWarn;
+        if (s_cRelWarn < 50)
+        {
+            s_cRelWarn++;
+            LogRel(("VMMDev: request packet with too many parameters (%d). Refusing operation.\n", cParms));
+            return VERR_NOT_SUPPORTED;
+        }
+    }
 
     /*
      * Compute size of required memory buffer.
