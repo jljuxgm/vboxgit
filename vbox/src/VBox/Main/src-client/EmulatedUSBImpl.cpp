@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 49120 2013-10-15 15:12:06Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.cpp 49161 2013-10-17 12:34:47Z vboxsync $ */
 /** @file
  *
  * Emulated USB manager implementation.
@@ -69,8 +69,8 @@ class EUSBWEBCAM /* : public EUSBDEVICE */
             :
             mcRefs(1),
             mpEmulatedUSB(NULL),
-            enmStatus(EUSBDEVICE_CREATED),
-            mpvObject(NULL)
+            mpvObject(NULL),
+            enmStatus(EUSBDEVICE_CREATED)
         {
             RT_ZERO(mUuid);
             RT_ZERO(mszUuid);
