@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48473 2013-09-13 14:17:58Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48474 2013-09-13 14:22:05Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7522,12 +7522,11 @@ static void hmR0VmxPreRunGuestCommitted(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCt
 
     /*
      * Load the host state bits as we may've been preempted (only happens when
-     * thread-context hooks are used).
+     * thread-context hooks are used or when hmR0VmxSetupVMRunHandler() changes pfnStartVM).
      */
     if (pVCpu->hm.s.fContextUseFlags & HM_CHANGED_HOST_CONTEXT)
     {
         /* This ASSUMES that pfnStartVM has been set up already. */
-        Assert(VMMR0ThreadCtxHooksAreRegistered(pVCpu));
         int rc = hmR0VmxSaveHostState(pVM, pVCpu);
         AssertRC(rc);
         STAM_COUNTER_INC(&pVCpu->hm.s.StatPreemptSaveHostState);
