@@ -1,4 +1,4 @@
-/* $Id: ahci.c 48123 2013-08-28 11:57:34Z vboxsync $ */
+/* $Id: ahci.c 50294 2014-01-30 18:27:35Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -632,6 +632,9 @@ void ahci_port_detect_device(ahci_t __far *ahci, uint8_t u8Port)
         uint8_t     hdcount, devcount_ahci, hd_index;
         uint8_t     cdcount;
         uint8_t     removable;
+
+        /* Clear all errors after the reset. */
+        VBOXAHCI_PORT_WRITE_REG(ahci->iobase, u8Port, AHCI_REG_PORT_SERR, 0xffffffff);
 
         devcount_ahci = bios_dsk->ahci_devcnt;
 
