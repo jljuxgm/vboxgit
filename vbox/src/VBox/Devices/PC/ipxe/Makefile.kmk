@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49116 2013-10-15 12:50:23Z vboxsync $
+# $Id: Makefile.kmk 53362 2014-11-20 16:33:54Z vboxsync $
 ## @file
 # Sub-makefile for iPXE.
 #
@@ -321,6 +321,8 @@ endif
 	src/net/udp/dhcp.c \
 	src/net/udp/dns.c \
 	src/net/udp/tftp.c \
+	src/net/tcp/http.c \
+	src/net/tcp/httpcore.c \
 	src/usr/autoboot.c \
 	src/usr/dhcpmgmt.c \
 	src/usr/ifmgmt.c \
