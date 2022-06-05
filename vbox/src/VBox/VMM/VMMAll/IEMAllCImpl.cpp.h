@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 51434 2014-05-28 08:14:55Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 52041 2014-07-15 15:43:30Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2988,6 +2988,12 @@ IEM_CIMPL_DEF_1(iemCImpl_iret_long, IEMMODE, enmEffOpSize)
  */
 IEM_CIMPL_DEF_1(iemCImpl_iret, IEMMODE, enmEffOpSize)
 {
+    /*
+     * First, clear NMI inhibition before causing any exceptions.
+     */
+    PVMCPU pVCpu = IEMCPU_TO_VMCPU(pIemCpu);
+    VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INHIBIT_NMIS);
+
     /*
      * Call a mode specific worker.
      */

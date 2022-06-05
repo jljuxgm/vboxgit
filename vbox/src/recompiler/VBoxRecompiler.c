@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 51326 2014-05-21 14:31:25Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 52041 2014-07-15 15:43:30Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2236,6 +2236,11 @@ REMR3DECL(int)  REMR3State(PVM pVM, PVMCPU pVCpu)
         }
     }
 
+    /* Update the inhibit NMI mask. */
+    pVM->rem.s.Env.hflags2 &= ~HF2_NMI_MASK;
+    if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INHIBIT_NMIS))
+        pVM->rem.s.Env.hflags2 |= HF2_NMI_MASK;
+
     /*
      * Sync the A20 gate.
      */
@@ -2722,6 +2727,18 @@ REMR3DECL(int) REMR3StateBack(PVM pVM, PVMCPU pVCpu)
     {
         Log(("Clearing VMCPU_FF_INHIBIT_INTERRUPTS at %RGv - successor %RGv (REM#2)\n", (RTGCPTR)pCtx->rip, EMGetInhibitInterruptsPC(pVCpu)));
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS);
+    }
+
+    /* Inhibit NMI flag. */
+    if (pVM->rem.s.Env.hflags2 & HF2_NMI_MASK)
+    {
+        Log(("Settings VMCPU_FF_INHIBIT_NMIS at %RGv (REM)\n", (RTGCPTR)pCtx->rip));
+        VMCPU_FF_SET(pVCpu, VMCPU_FF_INHIBIT_NMIS);
+    }
+    else if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INHIBIT_NMIS))
+    {
+        Log(("Clearing VMCPU_FF_INHIBIT_NMIS at %RGv (REM)\n", (RTGCPTR)pCtx->rip));
+        VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INHIBIT_NMIS);
     }
 
     remR3TrapClear(pVM);
