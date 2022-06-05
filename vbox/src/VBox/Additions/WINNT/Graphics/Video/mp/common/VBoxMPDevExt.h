@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 49591 2013-11-20 17:53:55Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 50628 2014-02-27 12:39:15Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -149,7 +149,9 @@ typedef struct _VBOXMP_DEVEXT
    PKTHREAD pWdThread;
    KEVENT WdEvent;
 #endif
-
+   BOOL bVSyncTimerEnabled;
+   volatile uint32_t fVSyncInVBlank;
+   volatile LARGE_INTEGER VSyncTime;
    KTIMER VSyncTimer;
    KDPC VSyncDpc;
 
