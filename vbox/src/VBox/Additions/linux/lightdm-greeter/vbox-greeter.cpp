@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 45979 2013-05-10 10:35:32Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 48652 2013-09-24 09:39:55Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -1456,7 +1456,7 @@ int main(int argc, char **argv)
         g_main_context_iteration(pMainCtx,
                                  FALSE /* No blocking */);
         Fl::check();
-        RTThreadYield();
+        RTThreadSleep(10); /* Wait a bit, don't hog the CPU too much. */
     }
 
     g_main_context_unref(pMainCtx);
