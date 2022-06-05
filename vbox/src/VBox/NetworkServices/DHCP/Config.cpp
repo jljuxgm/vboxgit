@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 49918 2013-12-16 07:56:51Z vboxsync $ */
+/* $Id: Config.cpp 49920 2013-12-16 08:02:46Z vboxsync $ */
 
 /**
  * XXX: license.
@@ -1051,15 +1051,6 @@ int NetworkManager::processParameterReqList(const Client& client, const uint8_t 
 
     return VINF_SUCCESS;
 }
-
-/* Utility */
-bool operator== (const RTMAC& lhs, const RTMAC& rhs)
-{
-    return (   lhs.au16[0] == rhs.au16[0]
-            && lhs.au16[1] == rhs.au16[1]
-            && lhs.au16[2] == rhs.au16[2]);
-}
-
 
 /* Client */
 Client::Client()
