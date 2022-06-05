@@ -1,8 +1,6 @@
-/* $Id: UIMachineLogic.cpp 49341 2013-10-31 08:43:56Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 49505 2013-11-15 14:01:16Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMachineLogic class implementation
+ * VBox Qt GUI - UIMachineLogic class implementation.
  */
 
 /*
@@ -248,6 +246,8 @@ void UIMachineLogic::cleanup()
     /* Cleanup handlers: */
     cleanupHandlers();
 
+    /* Cleanup action connections: */
+    cleanupActionConnections();
     /* Cleanup action groups: */
     cleanupActionGroups();
 }
