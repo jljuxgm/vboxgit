@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 52390 2014-08-15 16:34:10Z vboxsync $ */
+/* $Id: DisplayImpl.h 52574 2014-09-02 19:24:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -46,7 +46,7 @@ typedef struct _DISPLAYFBINFO
     ComPtr<IDisplaySourceBitmap> pSourceBitmap;
     bool fDisabled;
 
-    FramebufferUpdateMode_T enmFramebufferUpdateMode;
+    uint32_t u32Caps;
 
     struct
     {
@@ -231,8 +231,6 @@ private:
                                     ULONG aHeight);
     virtual HRESULT querySourceBitmap(ULONG aScreenId,
                                       ComPtr<IDisplaySourceBitmap> &aDisplaySourceBitmap);
-    virtual HRESULT setFramebufferUpdateMode(ULONG aScreenId,
-                                             FramebufferUpdateMode_T aFramebufferUpdateMode);
 
     // Wrapped IEventListener properties
 

@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 52086 2014-07-17 19:57:07Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 52574 2014-09-02 19:24:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -190,6 +190,20 @@ STDMETHODIMP UIFrameBuffer::COMGETTER(WinId)(LONG64 *pWinId)
     if (!pWinId)
         return E_POINTER;
     *pWinId = m_iWinId;
+    return S_OK;
+}
+
+STDMETHODIMP UIFrameBuffer::COMGETTER(Capabilities)(ComSafeArrayOut(FramebufferCapabilities_T, aCapabilities))
+{
+    if (ComSafeArrayOutIsNull(aCapabilities))
+        return E_POINTER;
+
+    com::SafeArray<FramebufferCapabilities_T> caps;
+    caps.resize(2);
+    caps[0] = FramebufferCapabilities_VHWA;
+    caps[1] = FramebufferCapabilities_VisibleRegion;
+
+    caps.detachTo(ComSafeArrayOutArg(aCapabilities));
     return S_OK;
 }
 
