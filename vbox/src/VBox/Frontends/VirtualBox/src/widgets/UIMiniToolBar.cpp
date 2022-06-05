@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 51654 2014-06-18 18:14:46Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 51956 2014-07-09 14:32:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -189,6 +189,13 @@ void UIRuntimeMiniToolBar::adjustGeometry()
 
     /* Recalculate auto-hide animation: */
     updateAutoHideAnimationBounds();
+
+    /* Update toolbar geometry if necessary: */
+    const QString strAnimationState = property("AnimationState").toString();
+    if (strAnimationState == "Start")
+        m_pEmbeddedToolbar->move(m_hiddenToolbarPosition);
+    else if (strAnimationState == "Final")
+        m_pEmbeddedToolbar->move(m_shownToolbarPosition);
 
     /* Simulate toolbar auto-hiding: */
     simulateToolbarAutoHiding();

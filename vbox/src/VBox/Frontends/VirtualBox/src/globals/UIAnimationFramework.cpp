@@ -1,4 +1,4 @@
-/* $Id: UIAnimationFramework.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
+/* $Id: UIAnimationFramework.cpp 51956 2014-07-09 14:32:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,6 +25,9 @@
 
 /* GUI includes: */
 #include "UIAnimationFramework.h"
+
+/* Other VBox includes: */
+#include "iprt/assert.h"
 
 /* static */
 UIAnimation* UIAnimation::installPropertyAnimation(QWidget *pTarget, const char *pszPropertyName,
@@ -68,13 +71,18 @@ UIAnimation::UIAnimation(QWidget *pParent, const char *pszPropertyName,
 
 void UIAnimation::prepare()
 {
+    /* Make sure parent asigned: */
+    AssertPtrReturnVoid(parent());
+
     /* Prepare animation-machine: */
     m_pAnimationMachine = new QStateMachine(this);
     /* Create 'start' state: */
     m_pStateStart = new QState(m_pAnimationMachine);
+    m_pStateStart->assignProperty(parent(), "AnimationState", QString("Start"));
     connect(m_pStateStart, SIGNAL(propertiesAssigned()), this, SIGNAL(sigStateEnteredStart()));
     /* Create 'final' state: */
     m_pStateFinal = new QState(m_pAnimationMachine);
+    m_pStateFinal->assignProperty(parent(), "AnimationState", QString("Final"));
     connect(m_pStateFinal, SIGNAL(propertiesAssigned()), this, SIGNAL(sigStateEnteredFinal()));
 
     /* Prepare 'forward' animation: */
