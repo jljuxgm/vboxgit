@@ -1,8 +1,6 @@
-/* $Id: UIWizardFirstRunPageBasic.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: UIWizardFirstRunPageBasic.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardFirstRunPageBasic class implementation
+ * VBox Qt GUI - UIWizardFirstRunPageBasic class implementation.
  */
 
 /*

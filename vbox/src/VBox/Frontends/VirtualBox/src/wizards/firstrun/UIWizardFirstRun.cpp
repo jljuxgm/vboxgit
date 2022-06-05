@@ -1,8 +1,6 @@
-/* $Id: UIWizardFirstRun.cpp 51215 2014-05-08 14:06:55Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardFirstRun class implementation
+ * VBox Qt GUI - UIWizardFirstRun class implementation.
  */
 
 /*

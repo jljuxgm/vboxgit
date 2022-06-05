@@ -1,8 +1,6 @@
-/* $Id: UIWizardExportApp.cpp 51446 2014-05-28 13:22:45Z vboxsync $ */
+/* $Id: UIWizardExportApp.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardExportApp class implementation
+ * VBox Qt GUI - UIWizardExportApp class implementation.
  */
 
 /*

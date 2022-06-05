@@ -1,8 +1,6 @@
-/* $Id: UIWizardCloneVMPageBasic1.cpp 41587 2012-06-06 04:19:03Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic1.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardCloneVMPageBasic1 class implementation
+ * VBox Qt GUI - UIWizardCloneVMPageBasic1 class implementation.
  */
 
 /*

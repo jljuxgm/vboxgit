@@ -1,8 +1,6 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 48592 2013-09-20 13:44:09Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 52721 2014-09-12 13:39:22Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt4 GUI ("VirtualBox"):
- * UIWizardExportAppPageExpert class implementation
+ * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
 
 /*
