@@ -1,4 +1,4 @@
-/* $Id: req.cpp 39550 2011-12-07 20:28:23Z vboxsync $ */
+/* $Id: req.cpp 48484 2013-09-16 08:05:04Z vboxsync $ */
 /** @file
  * IPRT - Request packets
  */
@@ -228,7 +228,7 @@ RT_EXPORT_SYMBOL(RTReqRelease);
 
 RTDECL(int) RTReqSubmit(PRTREQ hReq, RTMSINTERVAL cMillies)
 {
-    LogFlow(("RTReqQueue: hReq=%p cMillies=%d\n", hReq, cMillies));
+    LogFlow(("RTReqSubmit: hReq=%p cMillies=%d\n", hReq, cMillies));
 
     /*
      * Verify the supplied package.
@@ -267,7 +267,7 @@ RTDECL(int) RTReqSubmit(PRTREQ hReq, RTMSINTERVAL cMillies)
     if (!(fFlags & RTREQFLAGS_NO_WAIT))
         rc = RTReqWait(pReq, cMillies);
 
-    LogFlow(("RTReqQueue: returns %Rrc\n", rc));
+    LogFlow(("RTReqSubmit: returns %Rrc\n", rc));
     return rc;
 }
 RT_EXPORT_SYMBOL(RTReqSubmit);
