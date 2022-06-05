@@ -1,4 +1,4 @@
-/** @file $Id: vbox_drv.h 48364 2013-09-06 15:49:03Z vboxsync $
+/** @file $Id: vbox_drv.h 48380 2013-09-09 08:29:33Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -82,6 +82,7 @@ struct vbox_private {
 
 	void __iomem *vram;
     HGSMIGUESTCOMMANDCONTEXT Ctx;
+    struct VBVABUFFERCONTEXT *paVBVACtx;
     bool fAnyX;
     unsigned cCrtcs;
 	bool vga2_clone;
