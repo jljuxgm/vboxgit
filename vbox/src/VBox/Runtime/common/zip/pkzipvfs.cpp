@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 51712 2014-06-24 14:42:55Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 51739 2014-06-26 13:04:36Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -982,6 +982,15 @@ static DECLCALLBACK(int) rtZipPkzipFssIos_Read(void *pvThis, RTFOFF off, PCRTSGB
     return rc;
 }
 
+static DECLCALLBACK(int) rtZipPkzipFssIos_Write(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcWritten)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
+
+static DECLCALLBACK(int) rtZipPkzipFssIos_Flush(void *pvThis)
+{
+    return VERR_NOT_IMPLEMENTED;
+}
 
 /**
  * @interface_method_impl{RTVFSIOSTREAMOPS,pfnPollOne}
@@ -1034,8 +1043,8 @@ static const RTVFSIOSTREAMOPS g_rtZipPkzipFssIosOps =
     RTVFSIOSTREAMOPS_VERSION,
     RTVFSIOSTREAMOPS_FEAT_NO_SG,
     rtZipPkzipFssIos_Read,
-    NULL /*Write*/,
-    NULL /*Flush*/,
+    rtZipPkzipFssIos_Write,
+    rtZipPkzipFssIos_Flush,
     rtZipPkzipFssIos_PollOne,
     rtZipPkzipFssIos_Tell,
     NULL /*Skip*/,
