@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 49653 2013-11-26 10:40:26Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -188,7 +188,7 @@ int GuestProcess::init(Console *aConsole, GuestSession *aSession,
             vrc = VERR_NO_MEMORY;
         else
         {
-            hr = mEventSource->init(static_cast<IGuestProcess*>(this));
+            hr = mEventSource->init();
             if (FAILED(hr))
                 vrc = VERR_COM_UNEXPECTED;
         }

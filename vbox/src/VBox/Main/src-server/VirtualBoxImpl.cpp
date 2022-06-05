@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 50434 2014-02-12 18:47:09Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -504,7 +504,7 @@ HRESULT VirtualBox::init()
 
         /* events */
         if (SUCCEEDED(rc = unconst(m->pEventSource).createObject()))
-            rc = m->pEventSource->init(static_cast<IVirtualBox*>(this));
+            rc = m->pEventSource->init();
         if (FAILED(rc)) throw rc;
 
 #ifdef VBOX_WITH_EXTPACK

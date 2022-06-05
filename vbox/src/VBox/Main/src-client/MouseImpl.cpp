@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 47848 2013-08-19 16:34:02Z vboxsync $ */
+/* $Id: MouseImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -112,7 +112,7 @@ HRESULT Mouse::init (ConsoleMouseInterface *parent)
     unconst(mParent) = parent;
 
     unconst(mEventSource).createObject();
-    HRESULT rc = mEventSource->init(static_cast<IMouse*>(this));
+    HRESULT rc = mEventSource->init();
     AssertComRCReturnRC(rc);
     mMouseEvent.init(mEventSource, VBoxEventType_OnGuestMouse,
                      0, 0, 0, 0, 0, 0);

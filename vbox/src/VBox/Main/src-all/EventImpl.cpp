@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 50543 2014-02-21 14:16:56Z vboxsync $ */
+/* $Id: EventImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -928,7 +928,7 @@ void EventSource::FinalRelease()
     BaseFinalRelease();
 }
 
-HRESULT EventSource::init(IUnknown *)
+HRESULT EventSource::init()
 {
     HRESULT rc = S_OK;
 
@@ -1409,7 +1409,7 @@ HRESULT EventSourceAggregator::init(ComSafeArrayIn(IEventSource *, aSourcesIn))
     rc = mSource.createObject();
     ComAssertMsgRet(SUCCEEDED(rc), ("Could not create source (%Rhrc)", rc),
                     E_FAIL);
-    rc = mSource->init((IEventSource *)this);
+    rc = mSource->init();
     ComAssertMsgRet(SUCCEEDED(rc), ("Could not init source (%Rhrc)", rc),
                     E_FAIL);
 

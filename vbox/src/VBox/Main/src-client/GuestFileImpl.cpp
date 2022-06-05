@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 49610 2013-11-21 16:01:00Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -160,7 +160,7 @@ int GuestFile::init(Console *pConsole, GuestSession *pSession,
         mData.mOpenInfo = openInfo;
 
         unconst(mEventSource).createObject();
-        HRESULT hr = mEventSource->init(static_cast<IGuestFile*>(this));
+        HRESULT hr = mEventSource->init();
         if (FAILED(hr))
             vrc = VERR_COM_UNEXPECTED;
     }

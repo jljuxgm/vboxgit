@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 50174 2014-01-23 09:22:22Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -81,7 +81,7 @@ HRESULT VirtualBoxClient::init()
 
     rc = unconst(mData.m_pEventSource).createObject();
     AssertComRCReturnRC(rc);
-    rc = mData.m_pEventSource->init(static_cast<IVirtualBoxClient *>(this));
+    rc = mData.m_pEventSource->init();
     AssertComRCReturnRC(rc);
 
     /* Setting up the VBoxSVC watcher thread. If anything goes wrong here it

@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: GuestImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -111,7 +111,7 @@ HRESULT Guest::init(Console *aParent)
 #ifdef VBOX_WITH_GUEST_CONTROL
     hr = unconst(mEventSource).createObject();
     if (SUCCEEDED(hr))
-        hr = mEventSource->init(static_cast<IGuest*>(this));
+        hr = mEventSource->init();
 #else
     hr = S_OK;
 #endif

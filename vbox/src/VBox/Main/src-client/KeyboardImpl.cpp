@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 49386 2013-11-04 16:39:46Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -112,7 +112,7 @@ HRESULT Keyboard::init(Console *aParent)
     unconst(mParent) = aParent;
 
     unconst(mEventSource).createObject();
-    HRESULT rc = mEventSource->init(static_cast<IKeyboard*>(this));
+    HRESULT rc = mEventSource->init();
     AssertComRCReturnRC(rc);
 
     /* Confirm a successful initialization */
