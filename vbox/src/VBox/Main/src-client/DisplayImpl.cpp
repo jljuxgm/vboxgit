@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 50848 2014-03-24 10:15:41Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 50908 2014-03-27 15:03:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3332,7 +3332,9 @@ void Display::InvalidateAndUpdateEMT(Display *pDisplay, unsigned uId, bool fUpda
     {
         DISPLAYFBINFO *pFBInfo = &pDisplay->maFramebuffers[uScreenId];
 
-        if (uScreenId == VBOX_VIDEO_PRIMARY_SCREEN && !pFBInfo->pFramebuffer.isNull())
+        if (   !pFBInfo->fVBVAEnabled
+            && uScreenId == VBOX_VIDEO_PRIMARY_SCREEN
+            && !pFBInfo->pFramebuffer.isNull())
         {
             pDisplay->mpDrv->pUpPort->pfnUpdateDisplayAll(pDisplay->mpDrv->pUpPort);
         }
