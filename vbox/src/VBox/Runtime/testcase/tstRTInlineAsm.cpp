@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 49194 2013-10-18 22:08:35Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 49281 2013-10-24 19:36:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -579,6 +579,41 @@ void tstASMCpuId(void)
                        s.uEBX, s.uEBX);
      }
 }
+
+# if 0
+static void bruteForceCpuId(void)
+{
+    RTTestISub("brute force CPUID leafs");
+    uint32_t auPrevValues[4] = { 0, 0, 0, 0};
+    uint32_t uLeaf = 0;
+    do
+    {
+        uint32_t auValues[4];
+        ASMCpuIdExSlow(uLeaf, 0, 0, 0, &auValues[0], &auValues[1], &auValues[2], &auValues[3]);
+        if (   (auValues[0] != auPrevValues[0] && auValues[0] != uLeaf)
+            || (auValues[1] != auPrevValues[1] && auValues[1] != 0)
+            || (auValues[2] != auPrevValues[2] && auValues[2] != 0)
+            || (auValues[3] != auPrevValues[3] && auValues[3] != 0)
+            || (uLeaf & (UINT32_C(0x08000000) - UINT32_C(1))) == 0)
+        {
+            RTTestIPrintf(RTTESTLVL_ALWAYS,
+                          "%08x: %08x %08x %08x %08x\n", uLeaf,
+                          auValues[0], auValues[1], auValues[2], auValues[3]);
+        }
+        auPrevValues[0] = auValues[0];
+        auPrevValues[1] = auValues[1];
+        auPrevValues[2] = auValues[2];
+        auPrevValues[3] = auValues[3];
+
+        //uint32_t uSubLeaf = 0;
+        //do
+        //{
+        //
+        //
+        //} while (false);
+    } while (uLeaf++ < UINT32_MAX);
+}
+# endif
 
 #endif /* AMD64 || X86 */
 
@@ -1560,6 +1595,7 @@ int main(int argc, char *argv[])
      */
 #if !defined(GCC44_32BIT_PIC) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
     tstASMCpuId();
+    //bruteForceCpuId();
 #endif
 #if 1
     tstASMAtomicXchgU8();
