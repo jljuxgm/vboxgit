@@ -1,4 +1,4 @@
-/* $Id: server.cpp 50914 2014-03-27 19:07:53Z vboxsync $ */
+/* $Id: server.cpp 50919 2014-03-28 15:21:43Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -115,9 +115,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SnapshotMachine, IMachine)
 
 NS_DECL_CLASSINFO(ProgressProxy)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ProgressProxy, IProgress)
-
-NS_DECL_CLASSINFO(SharedFolder)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SharedFolder, ISharedFolder)
 
 #ifdef VBOX_WITH_USB
 
