@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.cpp 50364 2014-02-07 14:11:50Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 50394 2014-02-10 15:33:47Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -747,6 +747,11 @@ DECLEXPORT(int) crServerVBoxScreenshotGet(uint32_t u32Screen, uint32_t width, ui
     return VINF_SUCCESS;
 }
 
+extern DECLEXPORT(int) crServerVBoxWindowsShow(bool fShow)
+{
+    return CrPMgrModeWinVisible(fShow);
+}
+
 void crServerPresentFBO(CRMuralInfo *mural)
 {
     uint32_t i;
@@ -828,3 +833,4 @@ void crServerMuralFBOSwapBuffers(CRMuralInfo *mural)
     }
     Assert(mural->aidColorTexs[CR_SERVER_FBO_FB_IDX(mural)]);
 }
+
