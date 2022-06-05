@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-solaris.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: thread2-r0drv-solaris.c 52982 2014-10-08 10:00:48Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Solaris.
  */
@@ -112,7 +112,7 @@ DECLHIDDEN(int) rtThreadNativeCreate(PRTTHREADINT pThreadInt, PRTNATIVETHREAD pN
                                        0,                               /* Stack size */
                                        rtThreadNativeMain,              /* Thread function */
                                        pThreadInt,                      /* Function data */
-                                       sizeof(pThreadInt),              /* Data size */
+                                       0,                               /* Data size */
                                        (proc_t *)RTR0ProcHandleSelf(),  /* Process handle */
                                        TS_RUN,                          /* Ready to run */
                                        minclsyspri                      /* Priority */
