@@ -1,4 +1,4 @@
-/* $Id: semeventwait-r0drv-solaris.h 52996 2014-10-08 15:58:55Z vboxsync $ */
+/* $Id: semeventwait-r0drv-solaris.h 52997 2014-10-08 16:06:34Z vboxsync $ */
 /** @file
  * IPRT - Solaris Ring-0 Driver Helpers for Event Semaphore Waits.
  */
@@ -155,7 +155,7 @@ DECLINLINE(int) rtR0SemSolWaitInit(PRTR0SEMSOLWAIT pWait, uint32_t fFlags, uint6
                 fFlags |= RTSEMWAIT_FLAGS_INDEFINITE;
             else
             {
-                pWait->u.lTimeout = drv_usectohz(uTimeout / RT_NS_1US_64);
+                pWait->u.lTimeout = cTicks;
                 pWait->fHighRes = false;
             }
         }
