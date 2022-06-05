@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 48794 2013-10-01 13:43:21Z vboxsync $ */
+/* $Id: UIMachineView.cpp 49008 2013-10-09 15:01:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -200,6 +200,8 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
     AssertMsg(newSize.isValid(), ("Size should be valid!\n"));
 
     /* Send new size-hint to the guest: */
+    LogRelFlow(("UIMachineView: Sending guest size-hint to screen %d: %dx%d\n",
+                (int)screenId(), newSize.width(), newSize.height()));
     session().GetConsole().GetDisplay().SetVideoModeHint(screenId(),
                                                          uisession()->isScreenVisible(screenId()),
                                                          false, 0, 0, newSize.width(), newSize.height(), 0);
