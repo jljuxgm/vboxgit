@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51666 2014-06-19 14:07:14Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51667 2014-06-19 14:33:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -838,6 +838,38 @@ void UIExtraDataManager::setGuestScreenAutoResize(bool fEnabled, const QString &
     /* 'False' if feature restricted, null-string otherwise: */
     setExtraDataString(GUI_AutoresizeGuest, toFeatureRestricted(!fEnabled), strID);
 }
+
+#ifdef VBOX_WITH_VIDEOHWACCEL
+bool UIExtraDataManager::useLinearStretch(const QString &strID) const
+{
+    /* 'True' unless feature restricted: */
+    return !isFeatureRestricted(GUI_Accelerate2D_StretchLinear, strID);
+}
+
+bool UIExtraDataManager::usePixelFormatYV12(const QString &strID) const
+{
+    /* 'True' unless feature restricted: */
+    return !isFeatureRestricted(GUI_Accelerate2D_PixformatYV12, strID);
+}
+
+bool UIExtraDataManager::usePixelFormatUYVY(const QString &strID) const
+{
+    /* 'True' unless feature restricted: */
+    return !isFeatureRestricted(GUI_Accelerate2D_PixformatUYVY, strID);
+}
+
+bool UIExtraDataManager::usePixelFormatYUY2(const QString &strID) const
+{
+    /* 'True' unless feature restricted: */
+    return !isFeatureRestricted(GUI_Accelerate2D_PixformatYUY2, strID);
+}
+
+bool UIExtraDataManager::usePixelFormatAYUV(const QString &strID) const
+{
+    /* 'True' unless feature restricted: */
+    return !isFeatureRestricted(GUI_Accelerate2D_PixformatAYUV, strID);
+}
+#endif /* VBOX_WITH_VIDEOHWACCEL */
 
 int UIExtraDataManager::hostScreenForPassedGuestScreen(int iGuestScreenIndex, const QString &strID)
 {
