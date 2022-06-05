@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 48786 2013-10-01 06:46:27Z vboxsync $ */
+/* $Id: DevEFI.cpp 50584 2014-02-25 16:06:26Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -22,6 +22,7 @@
 
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pgm.h>
+#include <VBox/vmm/cpum.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/log.h>
 #include <VBox/err.h>
@@ -2208,7 +2209,8 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
         return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
                                    N_("Configuration error: Querying \"BootArgs\" as a string failed"));
 
-    //strcpy(pThis->szBootArgs, "-v keepsyms=1 io=0xf");
+    //strcpy(pThis->szBootArgs, "-v keepsyms=1 io=0xf debug=0x2a");
+    //strcpy(pThis->szBootArgs, "-v keepsyms=1 debug=0x2a");
     LogRel(("EFI: boot args = %s\n", pThis->szBootArgs));
 
     /*
@@ -2238,9 +2240,8 @@ static DECLCALLBACK(int)  efiConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
      * CPU frequencies.
      */
     pThis->u64TscFrequency = TMCpuTicksPerSecond(PDMDevHlpGetVM(pDevIns));
-    /* Multiplier is read from MSR_IA32_PERF_STATUS, and now is hardcoded as 4. */
-    pThis->u64FsbFrequency = pThis->u64TscFrequency / 4;
     pThis->u64CpuFrequency = pThis->u64TscFrequency;
+    pThis->u64FsbFrequency = CPUMGetGuestBusFrequency(PDMDevHlpGetVM(pDevIns));
 
     /*
      * GOP graphics.
