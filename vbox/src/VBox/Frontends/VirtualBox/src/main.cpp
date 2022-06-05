@@ -1,4 +1,4 @@
-/* $Id: main.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: main.cpp 52007 2014-07-12 18:27:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -641,6 +641,7 @@ extern "C" DECLEXPORT(void) TrustedError(const char *pszWhere, SUPINITOP enmWhat
     char szMsgBuf[1024];
     RTStrPrintfV(szMsgBuf, sizeof(szMsgBuf), pszMsgFmt, va);
     QString strText = QApplication::tr("<html><b>%1 (rc=%2)</b><br/><br/>").arg(szMsgBuf).arg(rc);
+    strText.replace(QString("\n"), QString("<br>"));
 
     switch (enmWhat)
     {
