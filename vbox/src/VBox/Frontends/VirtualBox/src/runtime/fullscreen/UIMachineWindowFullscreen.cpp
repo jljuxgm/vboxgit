@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 50679 2014-03-04 15:39:12Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 50681 2014-03-04 16:47:28Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -59,14 +59,28 @@ void UIMachineWindowFullscreen::handleNativeNotification(const QString &strNativ
     LogRel(("UIMachineWindowFullscreen::handleNativeNotification: Notification '%s' received.\n",
             strNativeNotificationName.toAscii().constData()));
 
+    /* Handle 'NSWindowWillEnterFullScreenNotification' notification: */
+    if (strNativeNotificationName == "NSWindowWillEnterFullScreenNotification")
+    {
+        LogRel(("UIMachineWindowFullscreen::handleNativeNotification: "
+                "Native fullscreen mode about to enter, notifying listener...\n"));
+        emit sigNotifyAboutNativeFullscreenWillEnter();
+    }
     /* Handle 'NSWindowDidEnterFullScreenNotification' notification: */
-    if (strNativeNotificationName == "NSWindowDidEnterFullScreenNotification")
+    else if (strNativeNotificationName == "NSWindowDidEnterFullScreenNotification")
     {
         /* Mark window transition complete: */
         m_fIsInFullscreenTransition = false;
         LogRel(("UIMachineWindowFullscreen::handleNativeNotification: "
                 "Native fullscreen mode entered, notifying listener...\n"));
         emit sigNotifyAboutNativeFullscreenDidEnter();
+    }
+    /* Handle 'NSWindowWillExitFullScreenNotification' notification: */
+    else if (strNativeNotificationName == "NSWindowWillExitFullScreenNotification")
+    {
+        LogRel(("UIMachineWindowFullscreen::handleNativeNotification: "
+                "Native fullscreen mode about to exit, notifying listener...\n"));
+        emit sigNotifyAboutNativeFullscreenWillExit();
     }
     /* Handle 'NSWindowDidExitFullScreenNotification' notification: */
     else if (strNativeNotificationName == "NSWindowDidExitFullScreenNotification")
@@ -188,7 +202,11 @@ void UIMachineWindowFullscreen::prepareVisualState()
         else
             darwinEnableTransienceSupport(this);
         /* Register to native fullscreen notifications: */
+        UICocoaApplication::instance()->registerToNativeNotification("NSWindowWillEnterFullScreenNotification", this,
+                                                                     UIMachineWindow::handleNativeNotification);
         UICocoaApplication::instance()->registerToNativeNotification("NSWindowDidEnterFullScreenNotification", this,
+                                                                     UIMachineWindow::handleNativeNotification);
+        UICocoaApplication::instance()->registerToNativeNotification("NSWindowWillExitFullScreenNotification", this,
                                                                      UIMachineWindow::handleNativeNotification);
         UICocoaApplication::instance()->registerToNativeNotification("NSWindowDidExitFullScreenNotification", this,
                                                                      UIMachineWindow::handleNativeNotification);
@@ -251,7 +269,9 @@ void UIMachineWindowFullscreen::cleanupVisualState()
     if (vboxGlobal().osRelease() > MacOSXRelease_Lion)
     {
         /* Unregister from native fullscreen notifications: */
+        UICocoaApplication::instance()->unregisterFromNativeNotification("NSWindowWillEnterFullScreenNotification", this);
         UICocoaApplication::instance()->unregisterFromNativeNotification("NSWindowDidEnterFullScreenNotification", this);
+        UICocoaApplication::instance()->unregisterFromNativeNotification("NSWindowWillExitFullScreenNotification", this);
         UICocoaApplication::instance()->unregisterFromNativeNotification("NSWindowDidExitFullScreenNotification", this);
     }
 #endif /* Q_WS_MAC */
