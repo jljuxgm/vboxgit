@@ -1,5 +1,6 @@
+/* $Id: tsp-asn1-decoder.cpp 52600 2014-09-04 22:59:00Z vboxsync $ */
 /** @file
- * IPRT - ASN.1 Code Generator, the ASN1 Init, Clone and Modifier Passes.
+ * IPRT - Crypto - Time-Stamp Protocol (RFC-3161), Decoder for ASN.1.
  */
 
 /*
@@ -23,14 +24,18 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#include <iprt/string.h>
 
-#define RTASN1TMPL_PASS                 RTASN1TMPL_PASS_INIT
-#include <iprt/asn1-generator-pass.h>
-#define RTASN1TMPL_PASS                 RTASN1TMPL_PASS_CLONE
-#include <iprt/asn1-generator-pass.h>
-#define RTASN1TMPL_PASS                 RTASN1TMPL_PASS_SETTERS_1
-#include <iprt/asn1-generator-pass.h>
-#define RTASN1TMPL_PASS                 RTASN1TMPL_PASS_SETTERS_2
-#include <iprt/asn1-generator-pass.h>
+/*******************************************************************************
+*   Header Files                                                               *
+*******************************************************************************/
+#include "internal/iprt.h"
+#include <iprt/crypto/tsp.h>
+
+#include "tsp-internal.h"
+
+
+/*
+ * Generate the code.
+ */
+#include <iprt/asn1-generator-asn1-decoder.h>
 

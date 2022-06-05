@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 52541 2014-08-31 21:52:20Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 52600 2014-09-04 22:59:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -1003,11 +1003,12 @@ static DECLCALLBACK(int) supHardNtViCallback(RTLDRMOD hLdrMod, RTLDRSIGNATURETYP
     RTTimeSpecSetSeconds(&ValidationTime, pNtViRdr->uTimestamp);
 
     uint32_t fFlags = RTCRPKCS7VERIFY_SD_F_ALWAYS_USE_SIGNING_TIME_IF_PRESENT
+                    | RTCRPKCS7VERIFY_SD_F_ALWAYS_USE_MS_TIMESTAMP_IF_PRESENT
                     | RTCRPKCS7VERIFY_SD_F_COUNTER_SIGNATURE_SIGNING_TIME_ONLY;
 #ifndef IN_RING0
     if (!g_fHaveOtherRoots)
 #endif
-        fFlags |= RTCRPKCS7VERIFY_SD_F_USE_SIGNING_TIME_UNVERIFIED;
+        fFlags |= RTCRPKCS7VERIFY_SD_F_USE_SIGNING_TIME_UNVERIFIED | RTCRPKCS7VERIFY_SD_F_USE_MS_TIMESTAMP_UNVERIFIED;
     return RTCrPkcs7VerifySignedData(pContentInfo, fFlags, g_hSpcAndNtKernelSuppStore, g_hSpcAndNtKernelRootStore,
                                      &ValidationTime, supHardNtViCertVerifyCallback, pNtViRdr, pErrInfo);
 }

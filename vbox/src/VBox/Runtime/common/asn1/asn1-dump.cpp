@@ -1,4 +1,4 @@
-/* $Id: asn1-dump.cpp 51858 2014-07-03 19:44:21Z vboxsync $ */
+/* $Id: asn1-dump.cpp 52600 2014-09-04 22:59:00Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Structure Dumper.
  */
@@ -83,14 +83,13 @@ static void rtAsn1DumpPrintf(PRTASN1DUMPDATA pData, const char *pszFormat, ...)
  */
 static void rtAsn1DumpPrintIdent(PRTASN1DUMPDATA pData, uint32_t uDepth)
 {
-    uint32_t i = 0;
-    uDepth *= 2;
-    while (i < uDepth)
+    uint32_t cchLeft = uDepth * 2;
+    while (cchLeft > 0)
     {
         static char const s_szSpaces[] = "                                        ";
-        uint32_t cch = RT_MIN(uDepth, sizeof(s_szSpaces) - 1);
+        uint32_t cch = RT_MIN(cchLeft, sizeof(s_szSpaces) - 1);
         rtAsn1DumpPrintf(pData, &s_szSpaces[sizeof(s_szSpaces) - 1 - cch]);
-        i += cch;
+        cchLeft -= cch;
     }
 }
 

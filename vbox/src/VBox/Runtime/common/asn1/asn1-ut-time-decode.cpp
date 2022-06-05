@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-time-decode.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-ut-time-decode.cpp 52600 2014-09-04 22:59:00Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types, Decoding.
  */
@@ -177,7 +177,7 @@ static int rtAsn1Time_ConvertGeneralizedTimeFraction(PRTASN1CURSOR pCursor, cons
     /*
      * Check the dot.
      */
-    if (*pchFraction == '.')
+    if (*pchFraction != '.')
         return RTAsn1CursorSetInfo(pCursor, VERR_ASN1_INVALID_GENERALIZED_TIME_ENCODING,
                                    "%s: Expected GeneralizedTime fraction dot, found: '%c' ('%.*s')",
                                    pszErrorTag, *pchFraction, pThis->Asn1Core.cb, pThis->Asn1Core.uData.pch);
