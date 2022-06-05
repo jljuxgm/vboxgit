@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 48386 2013-09-09 11:14:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -475,6 +475,13 @@ void UIMachineLogic::sltMouseCapabilityChanged()
         pAction->setChecked(false);
 }
 
+void UIMachineLogic::sltKeyboardLedsChanged()
+{
+    /* Here we have to update host LED lock states using values provided by UISession:
+     * [bool] uisession() -> isNumLock(), isCapsLock(), isScrollLock() can be used for that. */
+    LogRelFlow(("UIMachineLogic::sltKeyboardLedsChanged: Updating host LED lock states (NOT IMPLEMENTED).\n"));
+}
+
 void UIMachineLogic::sltUSBDeviceStateChange(const CUSBDevice &device, bool fIsAttached, const CVirtualBoxErrorInfo &error)
 {
     /* Check if USB device have anything to tell us: */
@@ -670,6 +677,9 @@ void UIMachineLogic::prepareSessionConnections()
 
     /* Mouse capability state-change updater: */
     connect(uisession(), SIGNAL(sigMouseCapabilityChange()), this, SLOT(sltMouseCapabilityChanged()));
+
+    /* Keyboard LEDs state-change updater: */
+    connect(uisession(), SIGNAL(sigKeyboardLedsChange()), this, SLOT(sltKeyboardLedsChanged()));
 
     /* USB devices state-change updater: */
     connect(uisession(), SIGNAL(sigUSBDeviceStateChange(const CUSBDevice &, bool, const CVirtualBoxErrorInfo &)),
