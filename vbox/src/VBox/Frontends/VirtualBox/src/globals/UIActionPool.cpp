@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 52477 2014-08-22 14:43:34Z vboxsync $ */
+/* $Id: UIActionPool.cpp 52555 2014-09-01 16:29:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -58,6 +58,10 @@ private:
 
 UIMenu::UIMenu()
     : m_fShowToolTip(false)
+#ifdef Q_WS_MAC
+    , m_fConsumable(false)
+    , m_fConsumed(false)
+#endif /* Q_WS_MAC */
 {
 }
 
@@ -96,6 +100,11 @@ UIAction::UIAction(UIActionPool *pParent, UIActionType type)
     /* By default there is no specific menu role.
      * It will be set explicitly later. */
     setMenuRole(QAction::NoRole);
+}
+
+UIMenu* UIAction::menu() const
+{
+    return qobject_cast<UIMenu*>(QAction::menu());
 }
 
 UIActionPolymorphic* UIAction::toActionPolymorphic()
