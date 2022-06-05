@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 52592 2014-09-03 20:23:24Z vboxsync $ */
+/* $Id: log-vbox.cpp 53384 2014-11-24 12:36:42Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -485,7 +485,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
 # if defined(DEBUG_michael) && defined(IN_GUEST)
         RTLogGroupSettings(pLogger, "+all.e.l.f");
         RTLogFlags(pLogger, "enabled unbuffered");
-        pLogger->fDestFlags |= RTLOGDEST_DEBUGGER;
+        pLogger->fDestFlags |= RTLOGDEST_DEBUGGER | RTLOGDEST_STDOUT;
 # endif
 # if 0 /* vboxdrv logging - ATTENTION: this is what we're referring to guys! Change to '# if 1'. */
         RTLogGroupSettings(pLogger, "all=~0 -default.l6.l5.l4.l3");
