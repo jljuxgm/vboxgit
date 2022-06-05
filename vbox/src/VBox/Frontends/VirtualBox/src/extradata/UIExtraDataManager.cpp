@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51514 2014-06-03 14:42:36Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51515 2014-06-03 16:00:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -400,6 +400,30 @@ void UIExtraDataManager::setSelectorWindowSplitterHints(const QList<int> &hints)
 
     /* Re-cache corresponding extra-data: */
     setExtraDataStringList(GUI_SplitterSizes, data);
+}
+
+bool UIExtraDataManager::selectorWindowToolBarVisible() const
+{
+    /* Show unless feature restricted: */
+    return !isFeatureRestricted(GUI_Toolbar);
+}
+
+void UIExtraDataManager::setSelectorWindowToolBarVisible(bool fVisible)
+{
+    /* Remember if feature restricted: */
+    setExtraDataString(GUI_Toolbar, toFeatureRestricted(!fVisible));
+}
+
+bool UIExtraDataManager::selectorWindowStatusBarVisible() const
+{
+    /* Show unless feature restricted: */
+    return !isFeatureRestricted(GUI_Statusbar);
+}
+
+void UIExtraDataManager::setSelectorWindowStatusBarVisible(bool fVisible)
+{
+    /* Remember if feature restricted: */
+    setExtraDataString(GUI_Statusbar, toFeatureRestricted(!fVisible));
 }
 
 bool UIExtraDataManager::isFirstRun(const QString &strId) const
