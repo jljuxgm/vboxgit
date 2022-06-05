@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 51770 2014-07-01 18:14:02Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 53174 2014-11-02 00:02:59Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -971,8 +971,7 @@ my_generate_project "kStuff"        "src/libs/kStuff"                       --be
 my_generate_project "VBoxHeaders"   "include"                               --begin-incs "include"                                          --end-includes "include/VBox"
 
 # Misc
-my_generate_project "misc"          "src/tests"                             --begin-incs "include"                                          --end-includes \
-    "src/tests" \
+my_generate_project "misc"          "."                                     --begin-incs "include"                                          --end-includes \
     "configure" \
     "configure.vbs" \
     "Config.kmk" \
