@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 46982 2013-07-04 11:54:20Z vboxsync $ */
+/* $Id: manifest.cpp 48628 2013-09-23 10:11:58Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling, old style - deprecated.
  */
@@ -438,6 +438,7 @@ RTR3DECL(int) RTManifestVerifyFilesBuf(void *pvBuf, size_t cbSize, PRTMANIFESTTE
             pszDigestEnd = rtManifestPosOfCharInBuf(pcBuf, cch, '\n');
         if (!pszDigestEnd)
         {
+            RTMemTmpFree(pszName);
             rc = VERR_MANIFEST_WRONG_FILE_FORMAT;
             break;
         }
@@ -446,6 +447,7 @@ RTR3DECL(int) RTManifestVerifyFilesBuf(void *pvBuf, size_t cbSize, PRTMANIFESTTE
         char *pszDigest = (char *)RTMemTmpAlloc(cchDigest + 1);
         if (!pszDigest)
         {
+            RTMemTmpFree(pszName);
             rc = VERR_NO_MEMORY;
             break;
         }
