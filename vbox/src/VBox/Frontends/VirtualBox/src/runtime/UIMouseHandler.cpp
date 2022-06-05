@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 52014 2014-07-14 11:16:43Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 52179 2014-07-24 23:39:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -113,8 +113,8 @@ void UIMouseHandler::prepareListener(ulong uIndex, UIMachineWindow *pMachineWind
         m_views.insert(uIndex, pMachineWindow->machineView());
         /* Install event-filter for machine-view: */
         m_views[uIndex]->installEventFilter(this);
-        /* Make machine-view notify mouse-handler about resizeHintDone(): */
-        connect(m_views[uIndex], SIGNAL(resizeHintDone()), this, SLOT(sltMousePointerShapeChanged()));
+        /* Make machine-view notify mouse-handler about frame-buffer resize: */
+        connect(m_views[uIndex], SIGNAL(sigFrameBufferResize()), this, SLOT(sltMousePointerShapeChanged()));
     }
 
     /* If that viewport is NOT registered yet: */

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 52151 2014-07-23 15:12:33Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 52179 2014-07-24 23:39:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -118,6 +118,11 @@ void UIMachineLogicScale::prepareMachineWindows()
     /* Order machine window(s): */
     for (ulong uScreenId = uMonitorCount; uScreenId > 0; -- uScreenId)
         machineWindows()[uScreenId - 1]->raise();
+
+    /* Listen for frame-buffer resize: */
+    foreach (UIMachineWindow *pMachineWindow, machineWindows())
+        connect(pMachineWindow, SIGNAL(sigFrameBufferResize()),
+                this, SIGNAL(sigFrameBufferResize()));
 
     /* Mark machine-window(s) created: */
     setMachineWindowsCreated(true);

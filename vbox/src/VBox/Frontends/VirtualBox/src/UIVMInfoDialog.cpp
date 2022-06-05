@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
+/* $Id: UIVMInfoDialog.cpp 52179 2014-07-24 23:39:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -364,7 +364,7 @@ void UIVMInfoDialog::prepareThis()
     connect(m_pMachineWindow->uisession(), SIGNAL(sigMediumChange(const CMediumAttachment&)), this, SLOT(sltUpdateDetails()));
     connect(m_pMachineWindow->uisession(), SIGNAL(sigSharedFolderChange()), this, SLOT(sltUpdateDetails()));
     /* TODO_NEW_CORE: this is ofc not really right in the mm sense. There are more than one screens. */
-    connect(m_pMachineWindow->machineView(), SIGNAL(resizeHintDone()), this, SLOT(sltProcessStatistics()));
+    connect(m_pMachineWindow->machineView(), SIGNAL(sigFrameBufferResize()), this, SLOT(sltProcessStatistics()));
     connect(m_pTabWidget, SIGNAL(currentChanged(int)), this, SLOT(sltHandlePageChanged(int)));
     connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationFinished()), this, SLOT(sltUpdateDetails()));
     connect(m_pTimer, SIGNAL(timeout()), this, SLOT(sltProcessStatistics()));

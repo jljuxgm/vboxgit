@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 52152 2014-07-23 15:18:04Z vboxsync $ */
+/* $Id: UIActionPool.cpp 52179 2014-07-24 23:39:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -81,8 +81,8 @@ bool UIMenu::event(QEvent *pEvent)
 
 UIAction::UIAction(UIActionPool *pParent, UIActionType type)
     : QAction(pParent)
-    , m_pActionPool(pParent)
     , m_type(type)
+    , m_pActionPool(pParent)
     , m_actionPoolType(pParent->type())
     , m_fShortcutHidden(false)
 {

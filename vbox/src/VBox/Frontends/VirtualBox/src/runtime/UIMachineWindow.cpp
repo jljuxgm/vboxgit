@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 51664 2014-06-19 11:28:05Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 52179 2014-07-24 23:39:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -414,6 +414,9 @@ void UIMachineWindow::prepareMachineView()
                                            , bAccelerate2DVideo
 #endif /* VBOX_WITH_VIDEOHWACCEL */
                                            );
+
+    /* Listen for frame-buffer resize: */
+    connect(m_pMachineView, SIGNAL(sigFrameBufferResize()), this, SIGNAL(sigFrameBufferResize()));
 
     /* Add machine-view into main-layout: */
     m_pMainLayout->addWidget(m_pMachineView, 1, 1, viewAlignment(visualStateType));
