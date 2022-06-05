@@ -1,4 +1,4 @@
-/* $Id: time.cpp 48835 2013-10-03 13:29:58Z vboxsync $ */
+/* $Id: time.cpp 48895 2013-10-04 19:04:19Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -858,7 +858,7 @@ RTDECL(PRTTIME) RTTimeFromString(PRTTIME pTime, const char *pszString)
      */
     if (*pszString == 'Z')
     {
-        *pszString++;
+        pszString++;
         pTime->fFlags &= ~RTTIME_FLAGS_TYPE_MASK;
         pTime->fFlags |= ~RTTIME_FLAGS_TYPE_UTC;
         pTime->offUTC = 0;
