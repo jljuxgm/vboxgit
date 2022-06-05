@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 50042 2014-01-09 16:25:41Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 50043 2014-01-09 16:35:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -400,7 +400,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
                                  "otherwise your VM will be started with Remote Display disabled.")
                                  .arg(GUI_ExtPackName);
         }
-#endif VBOX_WITH_EXTPACK
+#endif /* VBOX_WITH_EXTPACK */
 
         /* Check VRDE server port: */
         if (m_pEditorRemoteDisplayPort->text().trimmed().isEmpty())
