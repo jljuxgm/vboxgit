@@ -1,4 +1,4 @@
-; $Id: zero.asm 51868 2014-07-04 13:35:22Z vboxsync $
+; $Id: zero.asm 51872 2014-07-04 15:23:30Z vboxsync $
 ;; @file
 ; IPRT - Zero Memory.
 ;
@@ -41,5 +41,5 @@ EXPORTEDNAME_EX g_abRTZero8K, object
 EXPORTEDNAME_EX g_abRTZero16K, object
 EXPORTEDNAME_EX g_abRTZero32K, object
 EXPORTEDNAME_EX g_abRTZero64K, object
-        times 0x10000/(8*8) dq 0,0,0,0,0,0,0,0
+        times 0x10000/(16*4) dd 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0
 
