@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 49742 2013-12-02 17:59:21Z vboxsync $ */
+/* $Id: ApplianceImpl.h 49749 2013-12-03 12:29:19Z vboxsync $ */
 
 /** @file
  *
@@ -21,6 +21,7 @@
 #define ____H_APPLIANCEIMPL
 
 /* VBox includes */
+#include <VBox/settings.h>
 #include "VirtualSystemDescriptionWrap.h"
 #include "ApplianceWrap.h"
 #include "MediumFormatImpl.h"
