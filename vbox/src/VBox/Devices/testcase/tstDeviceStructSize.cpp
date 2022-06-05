@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 47466 2013-07-29 15:14:11Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 48214 2013-08-31 16:16:58Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -36,6 +36,8 @@
 #include "../Input/DevPS2.cpp"
 #undef LOG_GROUP
 #include "../Input/PS2K.cpp"
+#undef LOG_GROUP
+#include "../Input/PS2M.cpp"
 #ifdef VBOX_WITH_E1000
 # undef LOG_GROUP
 # include "../Network/DevE1000.cpp"
