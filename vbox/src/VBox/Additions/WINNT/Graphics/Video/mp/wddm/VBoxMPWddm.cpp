@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 48732 2013-09-27 13:07:09Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 49171 2013-10-17 19:05:01Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -4668,7 +4668,7 @@ DxgkDdiCommitVidPn(
                     break;
                 }
 
-                /* this will zero up visible height for all targets of the fiven source, see above comment */
+                /* this will zero up visible height for all targets of the given source, see above comment */
                 Status = vboxVidPnEnumTargetsForSource(pDevExt, hVidPnTopology, pVidPnTopologyInterface,
                                 pCommitVidPnArg->AffectedVidPnSourceId,
                                 vboxWddmVidPnCleanupTargetsForSrcEnum, NULL);
