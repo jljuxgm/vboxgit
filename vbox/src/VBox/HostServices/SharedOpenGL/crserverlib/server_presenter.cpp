@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51069 2014-04-14 16:51:24Z vboxsync $ */
+/* $Id: server_presenter.cpp 51070 2014-04-14 17:10:23Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -4521,7 +4521,6 @@ int CrFbEntryLoadState(CR_FRAMEBUFFER *pFb, PSSMHANDLE pSSM, uint32_t version)
 
 int CrFbLoadState(CR_FRAMEBUFFER *pFb, PSSMHANDLE pSSM, uint32_t version)
 {
-    Assert(0);
     uint32_t u32 = 0;
     int rc = SSMR3GetU32(pSSM, &u32);
     AssertRCReturn(rc, rc);
