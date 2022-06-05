@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 51981 2014-07-11 06:16:19Z vboxsync $ */
+/* $Id: GIMHv.cpp 51982 2014-07-11 06:18:28Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -392,7 +392,7 @@ VMMR3_INT_DECL(int) GIMR3HvLoad(PVM pVM, PSSMHANDLE pSSM, uint32_t uSSMVersion)
     rc = SSMR3GetU64(pSSM, &pHv->u64TscPageMsr);            AssertRCReturn(rc, rc);
 
     /*
-     * Save Hyper-V features / capabilities.
+     * Load Hyper-V features / capabilities.
      */
     rc = SSMR3GetU32(pSSM, &pHv->uBaseFeat);                AssertRCReturn(rc, rc);
     rc = SSMR3GetU32(pSSM, &pHv->uPartFlags);               AssertRCReturn(rc, rc);
