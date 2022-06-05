@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 52937 2014-10-02 16:13:45Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2341,7 +2341,8 @@ void UIMachineLogic::takeScreenshot(const QString &strFile, const QString &strFo
         ULONG bpp    = 0;
         LONG xOrigin = 0;
         LONG yOrigin = 0;
-        display.GetScreenResolution(i, width, height, bpp, xOrigin, yOrigin);
+        KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
+        display.GetScreenResolution(i, width, height, bpp, xOrigin, yOrigin, monitorStatus);
         uMaxWidth  += width;
         uMaxHeight  = RT_MAX(uMaxHeight, height);
         QImage shot = QImage(width, height, QImage::Format_RGB32);

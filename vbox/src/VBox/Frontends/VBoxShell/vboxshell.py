@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 52200 2014-07-25 20:00:49Z vboxsync $
+# $Id: vboxshell.py 52978 2014-10-08 07:09:11Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 52200 $"
+__version__ = "$Revision: 52978 $"
 
 
 import os, sys
@@ -544,7 +544,7 @@ def takeScreenshotOld(_ctx, console, args):
         screen = int(args[3])
     else:
         screen = 0
-    (fbw, fbh, _fbbpp, fbx, fby) = display.getScreenResolution(screen)
+    (fbw, fbh, _fbbpp, fbx, fby, _) = display.getScreenResolution(screen)
     if len(args) > 1:
         w = int(args[1])
     else:
@@ -571,7 +571,7 @@ def takeScreenshot(_ctx, console, args):
         screen = int(args[3])
     else:
         screen = 0
-    (fbw, fbh, _fbbpp, fbx, fby) = display.getScreenResolution(screen)
+    (fbw, fbh, _fbbpp, fbx, fby, _) = display.getScreenResolution(screen)
     if len(args) > 1:
         w = int(args[1])
     else:

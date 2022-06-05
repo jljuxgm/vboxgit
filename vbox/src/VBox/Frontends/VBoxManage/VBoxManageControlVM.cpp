@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1331,7 +1331,8 @@ int handleControlVM(HandlerArg *a)
             }
             ULONG width, height, bpp;
             LONG xOrigin, yOrigin;
-            CHECK_ERROR_BREAK(pDisplay, GetScreenResolution(iScreen, &width, &height, &bpp, &xOrigin, &yOrigin));
+            GuestMonitorStatus_T monitorStatus;
+            CHECK_ERROR_BREAK(pDisplay, GetScreenResolution(iScreen, &width, &height, &bpp, &xOrigin, &yOrigin, &monitorStatus));
             com::SafeArray<BYTE> saScreenshot;
             CHECK_ERROR_BREAK(pDisplay, TakeScreenShotToArray(iScreen, width, height, BitmapFormat_PNG, ComSafeArrayAsOutParam(saScreenshot)));
             RTFILE pngFile = NIL_RTFILE;

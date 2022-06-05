@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIVMInfoDialog.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -574,7 +574,8 @@ void UIVMInfoDialog::refreshStatistics()
         ULONG uBpp = 0;
         LONG xOrigin = 0;
         LONG yOrigin = 0;
-        console.GetDisplay().GetScreenResolution(0, uWidth, uHeight, uBpp, xOrigin, yOrigin);
+        KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
+        console.GetDisplay().GetScreenResolution(0, uWidth, uHeight, uBpp, xOrigin, yOrigin, monitorStatus);
         QString strResolution = QString("%1x%2").arg(uWidth).arg(uHeight);
         if (uBpp)
             strResolution += QString("x%1").arg(uBpp);

@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 52923 2014-10-02 07:04:02Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1103,8 +1103,9 @@ DECLCALLBACK(bool) ConsoleVRDPServer::VRDPCallbackFramebufferQuery(void *pvCallb
         if (SUCCEEDED(hr))
         {
             ULONG dummy;
+            GuestMonitorStatus_T monitorStatus;
             hr = server->mConsole->i_getDisplay()->GetScreenResolution(uScreenId, &dummy, &dummy, &dummy,
-                                                                     &xOrigin, &yOrigin);
+                                                                       &xOrigin, &yOrigin, &monitorStatus);
 
             if (SUCCEEDED(hr))
             {

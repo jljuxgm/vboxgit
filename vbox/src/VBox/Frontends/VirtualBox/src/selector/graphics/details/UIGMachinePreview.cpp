@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 52952 2014-10-06 13:12:21Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -240,7 +240,8 @@ void UIGMachinePreview::sltRecreatePreview()
                     /* Calculate aspect-ratio: */
                     LONG iOriginX, iOriginY;
                     ULONG uGuestWidth, uGuestHeight, uBpp;
-                    display.GetScreenResolution(0, uGuestWidth, uGuestHeight, uBpp, iOriginX, iOriginY);
+                    KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
+                    display.GetScreenResolution(0, uGuestWidth, uGuestHeight, uBpp, iOriginX, iOriginY, monitorStatus);
                     double dAspectRatio = (double)uGuestWidth / uGuestHeight;
                     /* Look for the best aspect-ratio preset preset: */
                     preset = bestAspectRatioPreset(dAspectRatio, m_ratios);

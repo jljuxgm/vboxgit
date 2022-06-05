@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -316,7 +316,8 @@ quint64 UIMultiScreenLayout::memoryRequirements(const QMap<int, int> &screenLayo
             screen = QApplication::desktop()->availableGeometry(screenLayout.value(iGuestScreen, 0));
         else
             screen = QApplication::desktop()->screenGeometry(screenLayout.value(iGuestScreen, 0));
-        display.GetScreenResolution(iGuestScreen, width, height, guestBpp, xOrigin, yOrigin);
+        KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
+        display.GetScreenResolution(iGuestScreen, width, height, guestBpp, xOrigin, yOrigin, monitorStatus);
         usedBits += screen.width() * /* display width */
                     screen.height() * /* display height */
                     guestBpp + /* guest bits per pixel */

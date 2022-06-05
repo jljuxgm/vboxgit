@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -204,8 +204,9 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenToggle(int iIndex, bo
     /* Enable/disable guest keeping current size: */
     ULONG uWidth, uHeight, uBitsPerPixel;
     LONG uOriginX, uOriginY;
+    KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
     CDisplay display = session().GetConsole().GetDisplay();
-    display.GetScreenResolution(iIndex, uWidth, uHeight, uBitsPerPixel, uOriginX, uOriginY);
+    display.GetScreenResolution(iIndex, uWidth, uHeight, uBitsPerPixel, uOriginX, uOriginY, monitorStatus);
     if (!fEnabled)
         display.SetVideoModeHint(iIndex, false, false, 0, 0, 0, 0, 0);
     else

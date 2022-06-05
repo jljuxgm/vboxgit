@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: vboxwrappers.py 52978 2014-10-08 07:09:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 52978 $"
 
 
 # Standard Python imports.
@@ -2219,7 +2219,7 @@ class SessionWrapper(TdTaskBase):
         Returns False on failure.
         """
         try:
-            iWidth, iHeight, _, _, _ = self.o.console.display.getScreenResolution(iScreenId)
+            iWidth, iHeight, _, _, _, _ = self.o.console.display.getScreenResolution(iScreenId)
             if self.fpApiVer >= 4.4:
                 aPngData = self.o.console.display.takeScreenShotToArray(iScreenId, iWidth, iHeight,
                                                                         vboxcon.BitmapFormat_PNG)
