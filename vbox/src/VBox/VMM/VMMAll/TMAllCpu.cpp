@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 53152 2014-10-27 13:29:31Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 53235 2014-11-05 12:56:17Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -238,13 +238,13 @@ VMM_INT_DECL(bool) TMCpuTickCanUseRealTSC(PVMCPU pVCpu, uint64_t *poffRealTSC, b
      *          b) the virtual sync clock hasn't been halted by an expired timer, and
      *          c) we're not using warp drive (accelerated virtual guest time).
      */
-    if (    (*pfParavirtTsc = GIMIsParavirtTscEnabled(pVM)) == true
-        ||  (    pVM->tm.s.fMaybeUseOffsettedHostTSC
-             &&  RT_LIKELY(pVCpu->tm.s.fTSCTicking)
-             &&  (   pVM->tm.s.fTSCUseRealTSC
-                 || (   !pVM->tm.s.fVirtualSyncCatchUp
-                     && RT_LIKELY(pVM->tm.s.fVirtualSyncTicking)
-                     && !pVM->tm.s.fVirtualWarpDrive))))
+    *pfParavirtTsc = GIMIsParavirtTscEnabled(pVM);
+    if (    pVM->tm.s.fMaybeUseOffsettedHostTSC
+        &&  RT_LIKELY(pVCpu->tm.s.fTSCTicking)
+        &&  (   pVM->tm.s.fTSCUseRealTSC
+             || (   !pVM->tm.s.fVirtualSyncCatchUp
+                 && RT_LIKELY(pVM->tm.s.fVirtualSyncTicking)
+                 && !pVM->tm.s.fVirtualWarpDrive)))
     {
         if (!pVM->tm.s.fTSCUseRealTSC)
         {
@@ -337,13 +337,13 @@ VMM_INT_DECL(uint64_t) TMCpuTickGetDeadlineAndTscOffset(PVMCPU pVCpu, bool *pfOf
      *          b) the virtual sync clock hasn't been halted by an expired timer, and
      *          c) we're not using warp drive (accelerated virtual guest time).
      */
-    if (    (*pfParavirtTsc = GIMIsParavirtTscEnabled(pVM)) == true
-        ||  (    pVM->tm.s.fMaybeUseOffsettedHostTSC
-             &&  RT_LIKELY(pVCpu->tm.s.fTSCTicking)
-             &&  (   pVM->tm.s.fTSCUseRealTSC
-                 || (   !pVM->tm.s.fVirtualSyncCatchUp
-                     && RT_LIKELY(pVM->tm.s.fVirtualSyncTicking)
-                     && !pVM->tm.s.fVirtualWarpDrive))))
+    *pfParavirtTsc = GIMIsParavirtTscEnabled(pVM);
+    if (    pVM->tm.s.fMaybeUseOffsettedHostTSC
+        &&  RT_LIKELY(pVCpu->tm.s.fTSCTicking)
+        &&  (   pVM->tm.s.fTSCUseRealTSC
+             || (   !pVM->tm.s.fVirtualSyncCatchUp
+                 && RT_LIKELY(pVM->tm.s.fVirtualSyncTicking)
+                 && !pVM->tm.s.fVirtualWarpDrive)))
     {
         *pfOffsettedTsc = true;
         if (!pVM->tm.s.fTSCUseRealTSC)
