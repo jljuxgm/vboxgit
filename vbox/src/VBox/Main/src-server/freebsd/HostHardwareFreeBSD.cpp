@@ -1,10 +1,10 @@
-/* $Id: HostHardwareFreeBSD.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
+/* $Id: HostHardwareFreeBSD.cpp 48424 2013-09-11 11:32:46Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under FreeBSD.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -31,7 +31,6 @@
 #include <iprt/mem.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
-#include <iprt/thread.h>  /* for RTThreadSleep() */
 #include <iprt/string.h>
 
 #ifdef RT_OS_FREEBSD

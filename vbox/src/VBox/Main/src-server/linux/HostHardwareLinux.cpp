@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 45367 2013-04-05 13:02:06Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 48424 2013-09-11 11:32:46Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -37,7 +37,6 @@
 #include <iprt/param.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
-#include <iprt/thread.h>  /* for RTThreadSleep() */
 
 #include <linux/cdrom.h>
 #include <linux/fd.h>
