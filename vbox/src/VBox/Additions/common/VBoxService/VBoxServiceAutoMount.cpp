@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 51570 2014-06-06 15:53:52Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 51711 2014-06-24 14:38:56Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -257,7 +257,8 @@ static int VBoxServiceAutoMountSharedFolder(const char *pszShareName, const char
         int flags = 0;
         if (pOpts->ronly)
             flags |= MS_RDONLY;
-        RTStrPrintf(achOptBuf, sizeof(achOptBuf), "uid=%d,gid=%d", pOpts->uid, pOpts->gid);
+        RTStrPrintf(achOptBuf, sizeof(achOptBuf), "uid=%d,gid=%d,dmode=%0o,fmode=%0o,dmask=%0o,fmask=%0o",
+                    pOpts->uid, pOpts->gid, pOpts->dmode, pOpts->fmode, pOpts->dmask, pOpts->fmask);
         int r = mount(pszShareName,
                       pszMountPoint,
                       flags | MS_OPTIONSTR,
