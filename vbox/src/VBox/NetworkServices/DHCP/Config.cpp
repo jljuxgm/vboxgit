@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 47501 2013-08-01 06:24:41Z vboxsync $ */
+/* $Id: Config.cpp 47929 2013-08-20 14:55:47Z vboxsync $ */
 
 /**
  * XXX: license.
@@ -227,8 +227,8 @@ Lease *ConfigurationManager::allocateLease4Client(Client *client, PCRTNETBOOTP p
     if (RT_SUCCESS(rc))
     {
         hintAddress.u = *(uint32_t *)opt.au8RawOpt;
-        if (   !RT_H2N_U32(hintAddress.u) < RT_H2N_U32(pNetCfg->lowerIp().u)
-            || !RT_H2N_U32(hintAddress.u) > RT_H2N_U32(pNetCfg->upperIp().u))
+        if (   RT_H2N_U32(hintAddress.u) < RT_H2N_U32(pNetCfg->lowerIp().u)
+            || RT_H2N_U32(hintAddress.u) > RT_H2N_U32(pNetCfg->upperIp().u))
             hintAddress.u = 0; /* clear hint */
     }
 
