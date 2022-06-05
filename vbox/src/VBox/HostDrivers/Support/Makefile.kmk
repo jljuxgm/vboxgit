@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51771 2014-07-01 18:19:35Z vboxsync $
+# $Id: Makefile.kmk 51808 2014-07-02 12:19:50Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -538,6 +538,9 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
  endif
  ifdef VBOX_WITH_VISTA_NO_SP
   VBoxDrv_DEFS.win       += VBOX_WITH_VISTA_NO_SP
+ endif
+ ifdef VBOX_WITH_HARDENING
+  VBoxDrv_ASDEFS         += VBOX_WITH_HARDENING
  endif
 
  VBoxDrv_INCS             = . $(VBoxDrv_0_OUTDIR)
