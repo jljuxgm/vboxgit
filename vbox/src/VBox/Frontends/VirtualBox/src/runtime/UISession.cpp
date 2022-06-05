@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 52239 2014-07-30 19:05:31Z vboxsync $ */
+/* $Id: UISession.cpp 52275 2014-08-05 13:57:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -884,7 +884,7 @@ void UISession::sltHandleHostScreenCountChange()
     updateHostScreenData();
 
     /* Notify current machine-logic: */
-    emit sigHostScreenCountChanged();
+    emit sigHostScreenCountChange();
 }
 
 void UISession::sltHandleHostScreenGeometryChange()
@@ -895,7 +895,15 @@ void UISession::sltHandleHostScreenGeometryChange()
     updateHostScreenData();
 
     /* Notify current machine-logic: */
-    emit sigHostScreenGeometryChanged();
+    emit sigHostScreenGeometryChange();
+}
+
+void UISession::sltHandleHostScreenAvailableAreaChange()
+{
+    LogRelFlow(("UISession: Host-screen available-area changed.\n"));
+
+    /* Notify current machine-logic: */
+    emit sigHostScreenAvailableAreaChange();
 }
 
 void UISession::sltAdditionsChange()
@@ -1083,7 +1091,7 @@ void UISession::prepareConnections()
     connect(QApplication::desktop(), SIGNAL(resized(int)),
             this, SLOT(sltHandleHostScreenGeometryChange()));
     connect(QApplication::desktop(), SIGNAL(workAreaResized(int)),
-            this, SLOT(sltHandleHostScreenGeometryChange()));
+            this, SLOT(sltHandleHostScreenAvailableAreaChange()));
 #endif /* !Q_WS_MAC */
 }
 

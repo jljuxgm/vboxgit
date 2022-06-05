@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 52239 2014-07-30 19:05:31Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 52275 2014-08-05 13:57:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -175,7 +175,7 @@ void UIMachineLogicSeamless::sltScreenLayoutChanged()
 
 void UIMachineLogicSeamless::sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo)
 {
-    LogRelFlow(("UIMachineLogicSeamless: Guest-screen count changed.\n"));
+    LogRel(("UIMachineLogicSeamless: Guest-screen count changed.\n"));
 
     /* Update multi-screen layout before any window update: */
     if (changeType == KGuestMonitorChangedEventType_Enabled ||
@@ -186,15 +186,15 @@ void UIMachineLogicSeamless::sltGuestMonitorChange(KGuestMonitorChangedEventType
     UIMachineLogic::sltGuestMonitorChange(changeType, uScreenId, screenGeo);
 }
 
-void UIMachineLogicSeamless::sltHostScreenCountChanged()
+void UIMachineLogicSeamless::sltHostScreenCountChange()
 {
-    LogRelFlow(("UIMachineLogicSeamless: Host-screen count changed.\n"));
+    LogRel(("UIMachineLogicSeamless: Host-screen count changed.\n"));
 
     /* Update multi-screen layout before any window update: */
     m_pScreenLayout->rebuild();
 
     /* Call to base-class: */
-    UIMachineLogic::sltHostScreenCountChanged();
+    UIMachineLogic::sltHostScreenCountChange();
 }
 
 void UIMachineLogicSeamless::prepareActionGroups()
