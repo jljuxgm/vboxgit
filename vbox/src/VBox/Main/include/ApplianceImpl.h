@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 50203 2014-01-24 00:10:01Z vboxsync $ */
+/* $Id: ApplianceImpl.h 50444 2014-02-13 12:22:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -256,6 +256,7 @@ struct VirtualSystemDescriptionEntry
     Utf8Str strExtraConfigCurrent;          ///< extra configuration key=value strings (type-dependent); current value, either from interpret() or setFinalValue()
 
     uint32_t ulSizeMB;                      ///< hard disk images only: a copy of ovf::DiskImage::ulSuggestedSizeMB
+    bool skipIt;                            ///< used during export to skip some parts if it's needed
 };
 
 class ATL_NO_VTABLE VirtualSystemDescription :
