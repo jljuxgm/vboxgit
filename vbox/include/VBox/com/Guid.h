@@ -1,4 +1,4 @@
-/* $Id: Guid.h 51688 2014-06-23 13:22:09Z vboxsync $ */
+/* $Id: Guid.h 51689 2014-06-23 13:41:10Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -395,7 +395,7 @@ public:
     /**
      * Internal helper class for asOutParam().
      *
-     * This takes a GUID refrence in the constructor and copies the mUuid from
+     * This takes a GUID reference in the constructor and copies the mUuid from
      * the method to that instance in its destructor.
      */
     class GuidOutParam
@@ -415,10 +415,10 @@ public:
         operator nsID**() { return &ptr; }
         ~GuidOutParam()
         {
-            if (ptr && outer.isEmpty())
+            if (ptr && outer.isZero())
             {
                 outer = *ptr;
-                outer.refresh();
+                outer.dbg_refresh();
                 nsMemory::Free(ptr);
             }
         }
