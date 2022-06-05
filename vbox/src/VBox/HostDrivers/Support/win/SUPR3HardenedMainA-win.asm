@@ -1,4 +1,4 @@
-; $Id: SUPR3HardenedMainA-win.asm 52950 2014-10-06 09:27:36Z vboxsync $
+; $Id: SUPR3HardenedMainA-win.asm 52967 2014-10-06 22:18:51Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Hardened main(), Windows assembly bits.
 ;
@@ -31,54 +31,11 @@
 %include "iprt/asmdefs.mac"
 
 
-; External data.
-extern NAME(g_pfnNtCreateSectionJmpBack)
-
 ; External code.
 extern NAME(supR3HardenedEarlyProcessInit)
 
 
 BEGINCODE
-
-;
-; 64-bit
-;
-%ifdef RT_ARCH_AMD64
- %macro supR3HardenedJmpBack_NtCreateSection_Xxx 1
- BEGINPROC supR3HardenedJmpBack_NtCreateSection_ %+ %1
-        SEH64_END_PROLOGUE
-        ; The code we replaced.
-        mov     r10, rcx
-        mov     eax, %1
-
-        ; Jump back to the original code.
-        jmp     [NAME(g_pfnNtCreateSectionJmpBack) wrt RIP]
- ENDPROC   supR3HardenedJmpBack_NtCreateSection_ %+ %1
- %endm
- %define SYSCALL(a_Num) supR3HardenedJmpBack_NtCreateSection_Xxx a_Num
- %include "NtCreateSection-template-amd64-syscall-type-1.h"
-
-%endif
-
-
-;
-; 32-bit.
-;
-%ifdef RT_ARCH_X86
- %macro supR3HardenedJmpBack_NtCreateSection_Xxx 1
- BEGINPROC supR3HardenedJmpBack_NtCreateSection_ %+ %1
-        ; The code we replaced.
-        mov     eax, %1
-
-        ; Jump back to the original code.
-        jmp     [NAME(g_pfnNtCreateSectionJmpBack)]
- ENDPROC   supR3HardenedJmpBack_NtCreateSection_ %+ %1
- %endm
- %define SYSCALL(a_Num) supR3HardenedJmpBack_NtCreateSection_Xxx a_Num
- %include "NtCreateSection-template-x86-syscall-type-1.h"
-
-%endif
-
 
 
 ;;

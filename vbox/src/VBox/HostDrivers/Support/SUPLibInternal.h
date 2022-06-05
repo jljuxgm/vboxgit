@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 52962 2014-10-06 20:09:04Z vboxsync $ */
+/* $Id: SUPLibInternal.h 52967 2014-10-06 22:18:51Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -448,6 +448,7 @@ DECLHIDDEN(void)    supR3HardenedWinInit(uint32_t fFlags, bool fAvastKludge);
 DECLHIDDEN(void)    supR3HardenedWinInitVersion(void);
 DECLHIDDEN(void)    supR3HardenedWinInitImports(void);
 DECLHIDDEN(void)    supR3HardenedWinInitImportsEarly(uintptr_t uNtDllAddr);
+DECLHIDDEN(void)    supR3HardenedWinInitSyscalls(bool fReportErrors);
 DECLHIDDEN(PFNRT)   supR3HardenedWinGetRealDllSymbol(const char *pszDll, const char *pszProcedure);
 DECLHIDDEN(void)    supR3HardenedWinEnableThreadCreation(void);
 DECLHIDDEN(void)    supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation(const char *pszProgName);
