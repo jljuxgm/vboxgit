@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.h 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.h 49120 2013-10-15 15:12:06Z vboxsync $ */
 
 /** @file
  *
@@ -44,6 +44,12 @@ public:
     /* Public method for internal use. */
     static DECLCALLBACK(int) eusbCallback(void *pv, const char *pszId, uint32_t iEvent,
                                           const void *pvData, uint32_t cbData);
+
+    HRESULT webcamAttachInternal(const com::Utf8Str &aPath,
+                                 const com::Utf8Str &aSettings,
+                                 const char *pszDriver,
+                                 void *pvObject);
+    HRESULT webcamDetachInternal(const com::Utf8Str &aPath);
 
 private:
 

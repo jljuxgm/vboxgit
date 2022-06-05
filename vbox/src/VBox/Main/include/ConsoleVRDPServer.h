@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 48406 2013-09-10 12:53:50Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 49120 2013-10-15 15:12:06Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -38,6 +38,8 @@
 
 // ConsoleVRDPServer
 ///////////////////////////////////////////////////////////////////////////////
+
+class EmWebcam;
 
 typedef struct _VRDPInputSynch
 {
@@ -151,6 +153,8 @@ public:
     int VideoInGetDeviceDesc(void *pvUser, const VRDEVIDEOINDEVICEHANDLE *pDeviceHandle);
     int VideoInControl(void *pvUser, const VRDEVIDEOINDEVICEHANDLE *pDeviceHandle,
                        const VRDEVIDEOINCTRLHDR *pReq, uint32_t cbReq);
+
+    Console *getConsole(void) { return mConsole; }
 
 private:
     /* Note: This is not a ComObjPtr here, because the ConsoleVRDPServer object
@@ -338,6 +342,7 @@ private:
                                                        void *pDeviceCtx,
                                                        const VRDEVIDEOINPAYLOADHDR *pFrame,
                                                        uint32_t cbFrame);
+    EmWebcam *mEmWebcam;
 
     /* Input interface. */
     VRDEINPUTINTERFACE m_interfaceInput;

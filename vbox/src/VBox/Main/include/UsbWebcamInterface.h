@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.h 44758 2013-02-20 11:45:18Z vboxsync $ */
+/* $Id: UsbWebcamInterface.h 49120 2013-10-15 15:12:06Z vboxsync $ */
 /** @file
  * VirtualBox PDM Driver for Emulated USB Webcam
  */
@@ -22,14 +22,14 @@
 #define VRDE_VIDEOIN_WITH_VRDEINTERFACE /* Get the VRDE interface definitions. */
 #include <VBox/RemoteDesktop/VRDEVideoIn.h>
 
-class Console;
+class ConsoleVRDPServer;
 typedef struct EMWEBCAMDRV EMWEBCAMDRV;
 typedef struct EMWEBCAMREMOTE EMWEBCAMREMOTE;
 
 class EmWebcam
 {
     public:
-        EmWebcam(Console *console);
+        EmWebcam(ConsoleVRDPServer *pServer);
         virtual ~EmWebcam();
 
         static const PDMDRVREG DrvReg;
@@ -55,7 +55,7 @@ class EmWebcam
         static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
         static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
 
-        Console * const mParent;
+        ConsoleVRDPServer * const mParent;
 
         EMWEBCAMDRV *mpDrv;
         EMWEBCAMREMOTE *mpRemote;
