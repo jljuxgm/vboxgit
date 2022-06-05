@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 50921 2014-03-28 15:47:50Z vboxsync $ */
+/* $Id: server_presenter.cpp 50944 2014-04-01 13:53:32Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -4671,10 +4671,15 @@ int8_t crVBoxServerCrCmdBltProcess(const VBOXCMDVBVA_HDR *pCmd, uint32_t cbCmd)
             if (!(u8Flags & VBOXCMDVBVA_OPF_ALLOC_SRCPRIMARY))
             {
                 /* blit to primary from non-primary */
-                if (u8Flags & VBOXCMDVBVA_OPF_ALLOC_DSTID)
+                if (u8Flags & VBOXCMDVBVA_OPF_ALLOC_SRCID)
                 {
                     /* TexPresent */
                     uint32_t texId = pBlt->alloc.u.id;
+                    if (!texId)
+                    {
+                        WARN(("texId is NULL!\n"));
+                        return -1;
+                    }
 
                     crServerDispatchVBoxTexPresent(texId, u8PrimaryID, pBlt->Pos.x, pBlt->Pos.y, cRects, (const GLint*)pRects);
                 }
