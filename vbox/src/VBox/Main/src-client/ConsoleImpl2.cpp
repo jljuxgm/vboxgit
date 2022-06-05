@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 48985 2013-10-08 22:38:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2017,6 +2017,10 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
                     InsertConfigString(pCfg,  "ControllerType", "SAS1068");
                     InsertConfigInteger(pCfg, "Bootable",  fBootable);
+
+                    ULONG cPorts = 0;
+                    hrc = ctrls[i]->COMGETTER(PortCount)(&cPorts);                          H();
+                    InsertConfigInteger(pCfg, "NumPorts", cPorts);
 
                     /* Attach the status driver */
                     Assert(cLedSas >= 8);

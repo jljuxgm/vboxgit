@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 48984 2013-10-08 22:03:13Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 48985 2013-10-08 22:38:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -484,6 +484,11 @@ uint ControllerItem::portCount()
             mPortCount = (uint)pItem->attSlot().port + 1;
     }
     return mPortCount;
+}
+
+uint ControllerItem::maxPortCount()
+{
+    return (uint)vboxGlobal().virtualBox().GetSystemProperties().GetMaxPortCountForStorageBus(ctrBusType());
 }
 
 bool ControllerItem::ctrUseIoCache() const
@@ -1106,6 +1111,13 @@ QVariant StorageModel::data (const QModelIndex &aIndex, int aRole) const
             if (AbstractItem *item = static_cast <AbstractItem*> (aIndex.internalPointer()))
                 if (item->rtti() == AbstractItem::Type_ControllerItem)
                     return static_cast <ControllerItem*> (item)->portCount();
+            return 0;
+        }
+        case R_CtrMaxPortCount:
+        {
+            if (AbstractItem *item = static_cast <AbstractItem*> (aIndex.internalPointer()))
+                if (item->rtti() == AbstractItem::Type_ControllerItem)
+                    return static_cast <ControllerItem*> (item)->maxPortCount();
             return 0;
         }
         case R_CtrIoCache:
@@ -2514,9 +2526,11 @@ void UIMachineSettingsStorage::getInformation()
                 mCbType->setCurrentIndex (ctrPos == -1 ? 0 : ctrPos);
 
                 KStorageBus bus = mStorageModel->data (index, StorageModel::R_CtrBusType).value <KStorageBus>();
-                mLbPortCount->setVisible (bus == KStorageBus_SATA);
-                mSbPortCount->setVisible (bus == KStorageBus_SATA);
+                mLbPortCount->setVisible (bus == KStorageBus_SATA || bus == KStorageBus_SAS);
+                mSbPortCount->setVisible (bus == KStorageBus_SATA || bus == KStorageBus_SAS);
                 uint uPortCount = mStorageModel->data (index, StorageModel::R_CtrPortCount).toUInt();
+                uint uMaxPortCount = mStorageModel->data (index, StorageModel::R_CtrMaxPortCount).toUInt();
+                mSbPortCount->setMaximum(uMaxPortCount);
                 mSbPortCount->setValue (uPortCount);
 
                 bool isUseIoCache = mStorageModel->data (index, StorageModel::R_CtrIoCache).toBool();
@@ -3405,7 +3419,7 @@ bool UIMachineSettingsStorage::createStorageController(const UICacheSettingsMach
                 /* Set storage controller attributes: */
                 controller.SetControllerType(controllerType);
                 controller.SetUseHostIOCache(fUseHostIOCache);
-                if (controllerBus == KStorageBus_SATA)
+                if (controllerBus == KStorageBus_SATA || controllerBus == KStorageBus_SAS)
                 {
                     uPortCount = qMax(uPortCount, controller.GetMinPortCount());
                     uPortCount = qMin(uPortCount, controller.GetMaxPortCount());
@@ -3454,7 +3468,7 @@ bool UIMachineSettingsStorage::updateStorageController(const UICacheSettingsMach
             /* Set storage controller attributes: */
             controller.SetControllerType(controllerType);
             controller.SetUseHostIOCache(fUseHostIOCache);
-            if (controllerBus == KStorageBus_SATA)
+            if (controllerBus == KStorageBus_SATA || controllerBus == KStorageBus_SAS)
             {
                 uPortCount = qMax(uPortCount, controller.GetMinPortCount());
                 uPortCount = qMin(uPortCount, controller.GetMaxPortCount());

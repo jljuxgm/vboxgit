@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 48966 2013-10-08 10:16:21Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 48985 2013-10-08 22:38:17Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -552,7 +552,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--add ide|sata|scsi|floppy|sas]\n"
                      "                            [--controller LSILogic|LSILogicSAS|BusLogic|\n"
                      "                                          IntelAHCI|PIIX3|PIIX4|ICH6|I82078]\n"
-                     "                            [--sataportcount <1-30>]\n"
+                     "                            [--portcount <1-n>]\n"
                      "                            [--hostiocache on|off]\n"
                      "                            [--bootable on|off]\n"
                      "                            [--remove]\n"
