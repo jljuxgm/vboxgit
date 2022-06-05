@@ -1,4 +1,4 @@
-/* $Id: com.cpp 50247 2014-01-27 16:22:59Z vboxsync $ */
+/* $Id: com.cpp 50249 2014-01-27 16:29:43Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -379,7 +379,7 @@ int VBoxLogRelCreate(const char *pcszEntity, const char *pcszLogFile,
                             pcszEnvVarBase, RT_ELEMENTS(s_apszGroups), s_apszGroups, fDestFlags,
                             vboxHeaderFooter, cHistory, uHistoryFileSize, uHistoryFileTime,
                             pszError, cbError,
-                            "%s", pcszLogFile);
+                            pcszLogFile ? "%s" : NULL, pcszLogFile);
     if (RT_SUCCESS(vrc))
     {
         /* make sure that we don't flood logfiles */
