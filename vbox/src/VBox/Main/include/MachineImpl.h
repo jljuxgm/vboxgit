@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 50650 2014-02-28 15:27:51Z vboxsync $ */
+/* $Id: MachineImpl.h 50651 2014-02-28 15:37:42Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1219,7 +1219,7 @@ private:
     /** client token for this machine */
     ClientToken *mClientToken;
 
-    int iNATNetworksStarted;
+    int miNATNetworksStarted;
 
     static DECLCALLBACK(int) taskHandler(RTTHREAD thread, void *pvUser);
 };
