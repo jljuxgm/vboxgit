@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 49101 2013-10-15 03:12:55Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 49126 2013-10-15 23:40:23Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -243,6 +243,15 @@ HRESULT NATNetwork::saveSettings(settings::NATNetwork &data)
                                          m->llNATLoopbackOffsetList.end());
 
     mVirtualBox->onNATNetworkSetting(mName.raw(),
+                                     data.fEnabled ? TRUE : FALSE,
+                                     m->IPv4NetworkCidr.raw(),
+                                     m->IPv4Gateway.raw(),
+                                     data.fAdvertiseDefaultIPv6Route ? TRUE : FALSE,
+                                     data.fNeedDhcpServer ? TRUE : FALSE);
+
+    /* Notify listerners listening on this network only */
+    fireNATNetworkSettingEvent(m->pEventSource,
+                                     mName.raw(),
                                      data.fEnabled ? TRUE : FALSE,
                                      m->IPv4NetworkCidr.raw(),
                                      m->IPv4Gateway.raw(),
