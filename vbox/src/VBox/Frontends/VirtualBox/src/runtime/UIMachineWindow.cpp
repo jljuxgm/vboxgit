@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 49468 2013-11-13 14:04:55Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 50060 2014-01-13 09:12:20Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -443,11 +443,21 @@ void UIMachineWindow::cleanupMachineView()
 
 void UIMachineWindow::handleScreenCountChange()
 {
+    /* Ignore if window is minimized: */
+    if (isMinimized())
+        return;
+
+    /* Make sure window is in necessary mode: */
     showInNecessaryMode();
 }
 
 void UIMachineWindow::handleScreenGeometryChange()
 {
+    /* Ignore if window is minimized: */
+    if (isMinimized())
+        return;
+
+    /* Make sure window is in necessary mode: */
     showInNecessaryMode();
 }
 
