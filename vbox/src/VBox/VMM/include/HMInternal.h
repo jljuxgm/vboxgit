@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 47989 2013-08-22 13:56:52Z vboxsync $ */
+/* $Id: HMInternal.h 47990 2013-08-22 14:18:41Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -657,6 +657,8 @@ typedef struct HMCPU
         VMXRESTOREHOST              RestoreHost;
         /** Set if guest was executing in real mode (extra checks). */
         bool                        fWasInRealMode;
+        /** Padding.  */
+        uint32_t                    u32Padding;
     } vmx;
 
     struct
