@@ -1,4 +1,4 @@
-/* $Id: vbsf.c 42154 2012-07-13 23:00:53Z vboxsync $ */
+/* $Id: vbsf.c 48944 2013-10-07 21:32:37Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders.
  *
@@ -1184,7 +1184,7 @@ NTSTATUS vbsfCreateConnection(IN PRX_CONTEXT RxContext, OUT PBOOLEAN PostToFsp)
 
                     if (pDeviceExtension->wszLocalConnectionName[idx] == NULL)
                     {
-                        Log(("VBOXSF: vbsfCreateConnection: LocalConnectionName at index %d NOT allocated!\n", 
+                        Log(("VBOXSF: vbsfCreateConnection: LocalConnectionName at index %d NOT allocated!\n",
                              idx));
                         Status = STATUS_INSUFFICIENT_RESOURCES;
                     }

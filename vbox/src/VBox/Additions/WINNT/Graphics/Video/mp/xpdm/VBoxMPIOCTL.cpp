@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 46896 2013-07-02 08:16:43Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 48944 2013-10-07 21:32:37Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport IOCTL handlers
@@ -633,7 +633,7 @@ BOOLEAN VBoxMPQueryRegistryFlags(PVBOXMP_DEVEXT pExt, ULONG *pulFlags, PSTATUS_B
         rc = VBoxMPCmnRegQueryDword(Registry, L"VBoxVideoFlags", &u32Flags);
         VBOXMP_WARN_VPS_NOBP(rc);
         if (rc != NO_ERROR)
-        {   
+        {
             u32Flags = 0;
         }
 

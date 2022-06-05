@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46757 2013-06-24 14:30:18Z vboxsync $
+# $Id: Makefile.kmk 48944 2013-10-07 21:32:37Z vboxsync $
 ## @file
 # Makefile for the Windows guest miniport driver.
 #
@@ -171,7 +171,7 @@ ifdef VBOX_WITH_WDDM
   	$(PATH_SDK_$(VBOX_WINDDK_GST_W8)_LIB)/displib.lib \
   	$(PATH_SDK_$(VBOX_WINDDK_GST_W8)_LIB)/BufferOverflowK.lib
  endif # VBOX_WITH_WDDM_W8
- 
+
 endif # VBOX_WITH_WDDM
 
 #

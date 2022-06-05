@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 46783 2013-06-25 16:09:37Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 48944 2013-10-07 21:32:37Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -1856,7 +1856,7 @@ BOOL WINAPI DllMain(HINSTANCE hInstance,
 
 static HRESULT APIENTRY vboxWddmDispGetCaps (HANDLE hAdapter, CONST D3DDDIARG_GETCAPS* pData)
 {
-	VBOXDISP_DDI_PROLOGUE_ADP(hAdapter);
+        VBOXDISP_DDI_PROLOGUE_ADP(hAdapter);
 
     vboxVDbgPrint(("==> "__FUNCTION__", hAdapter(0x%p), caps type(%d)\n", hAdapter, pData->Type));
 

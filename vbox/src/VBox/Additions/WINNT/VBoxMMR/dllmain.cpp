@@ -1,4 +1,4 @@
-/* $Id: dllmain.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: dllmain.cpp 48944 2013-10-07 21:32:37Z vboxsync $ */
 /** @file
  * VBoxMMR - Multimedia Redirection
  */
@@ -41,7 +41,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
             GetModuleFileNameA(NULL, buffer, sizeof(buffer));
             const PCHAR pc = strrchr(buffer, '\\');
             isWMP = (0 == strcmp(pc + 1, "wmplayer.exe"));
-            
+
             if (isWMP)
             {
                 RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);

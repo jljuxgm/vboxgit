@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVrdpBmp.cpp 45768 2013-04-26 08:24:55Z vboxsync $ */
+/* $Id: VBoxDispVrdpBmp.cpp 48944 2013-10-07 21:32:37Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -29,7 +29,7 @@
  *
  * "Temporary" list contains free and temporary entries. Temporary entries are at the head,
  * free entries are at the tail. New temporary entries are inserted in the head.
- * 
+ *
  * "Cached" list contains cached entries. When a entry is used, it is moved to the head.
  *
  * The purpose of the cache is to answer whether the bitmap was already encountered
@@ -316,7 +316,7 @@ static int bcInsertHash (VRDPBC *pCache, const VRDPBCHASH *phash, VRDPBCHASH *ph
  *    first time just append the bitmap hash and mark it as "temporary";
  *    if the hash is used again, mark as cached and tell the caller to cache the bitmap;
  *    remove "temporary" entries before any other.
- *    
+ *
  */
 int vrdpbmpCacheSurface(VRDPBC *pCache, const SURFOBJ *pso, VRDPBCHASH *phash, VRDPBCHASH *phashDeleted, BOOL bForce)
 {
