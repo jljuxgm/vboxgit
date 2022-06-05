@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 46788 2013-06-25 17:39:02Z vboxsync $ */
+/* $Id: VMInternal.h 48528 2013-09-18 20:39:01Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -163,6 +163,8 @@ typedef struct VMINT
     R3PTRTYPE(PVMRUNTIMEERROR)      pRuntimeErrorR3;
     /** The VM was/is-being teleported and has not yet been fully resumed. */
     bool                            fTeleportedAndNotFullyResumedYet;
+    /** The VM should power off instead of reset. */
+    bool                            fPowerOffInsteadOfReset;
 } VMINT;
 /** Pointer to the VM Internal Data (part of the VM structure). */
 typedef VMINT *PVMINT;

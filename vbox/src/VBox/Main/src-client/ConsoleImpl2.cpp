@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 48406 2013-09-10 12:53:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 48528 2013-09-18 20:39:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1009,6 +1009,11 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         BOOL fEnableUX = false;
         hrc = pMachine->GetHWVirtExProperty(HWVirtExPropertyType_UnrestrictedExecution, &fEnableUX); H();
         InsertConfigInteger(pHM, "EnableUX", fEnableUX);
+
+        /* Reset overwrite. */
+        if (isResetTurnedIntoPowerOff())
+            InsertConfigInteger(pRoot, "PowerOffInsteadOfReset", 1);
+
 
         /*
          * MM values.
