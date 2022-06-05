@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 53034 2014-10-10 23:39:15Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 53036 2014-10-11 07:48:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1810,7 +1810,7 @@ static int supHardNtLdrCacheNewEntry(PSUPHNTLDRCACHEENTRY pEntry, const char *ps
 #endif
 
     NTSTATUS rcNt = NtCreateFile(&hFile,
-                                 GENERIC_READ,
+                                 GENERIC_READ | SYNCHRONIZE,
                                  &ObjAttr,
                                  &Ios,
                                  NULL /* Allocation Size*/,
