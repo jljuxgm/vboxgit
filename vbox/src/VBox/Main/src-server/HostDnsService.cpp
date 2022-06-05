@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 48330 2013-09-06 03:16:32Z vboxsync $
+/* $Id: HostDnsService.cpp 48340 2013-09-06 07:14:05Z vboxsync $ */
 /** @file
  * Base class fo Host DNS & Co services.
  */
