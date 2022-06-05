@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 50089 2014-01-17 12:02:20Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -657,6 +657,7 @@ static DECLCALLBACK(void *)  drvscsiQueryInterface(PPDMIBASE pInterface, const c
     PDRVSCSI    pThis   = PDMINS_2_DATA(pDrvIns, PDRVSCSI);
 
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIMOUNT, pThis->pDrvMount);
+    PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBLOCKBIOS, pThis->pDrvBlockBios);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBASE, &pDrvIns->IBase);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMISCSICONNECTOR, &pThis->ISCSIConnector);
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIBLOCKPORT, &pThis->IPort);
