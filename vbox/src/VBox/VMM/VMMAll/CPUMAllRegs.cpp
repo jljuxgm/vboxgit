@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 48077 2013-08-27 10:20:47Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 48119 2013-08-28 10:40:43Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1116,6 +1116,7 @@ VMMDECL(int) CPUMQueryGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
         case MSR_IA32_PLATFORM_ID:          /* fam/mod >= 6_01 */
         /*case MSR_IA32_BIOS_UPDT_TRIG: - write-only? */
         case MSR_RAPL_POWER_UNIT:
+        case MSR_BBL_CR_CTL3:               /* ca. core arch? */
             *puValue = 0;
             if (CPUMGetGuestCpuVendor(pVCpu->CTX_SUFF(pVM)) != CPUMCPUVENDOR_INTEL)
             {
@@ -1131,6 +1132,12 @@ VMMDECL(int) CPUMQueryGuestMsr(PVMCPU pVCpu, uint32_t idMsr, uint64_t *puValue)
                     *puValue = RT_MAKE_U32_FROM_U8(3 /* power units (1/8 W)*/,
                                                    16 /* 15.3 micro-Joules */,
                                                    10 /* 976 microseconds increments */,
+                                                   0);
+                    break;
+                case MSR_BBL_CR_CTL3:
+                    *puValue = RT_MAKE_U32_FROM_U8(1, /* bit 0  - L2 Hardware Enabled. (RO) */
+                                                   1, /* bit 8  - L2 Enabled (R/W). */
+                                                   0, /* bit 23 - L2 Not Present (RO). */
                                                    0);
                     break;
             }
