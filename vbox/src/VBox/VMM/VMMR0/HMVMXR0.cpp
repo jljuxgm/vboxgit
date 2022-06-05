@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 50867 2014-03-25 15:47:45Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 50880 2014-03-26 09:22:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8381,7 +8381,6 @@ static void hmR0VmxPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXT
 }
 
 
-
 /**
  * Runs the guest code using VT-x the normal way.
  *
@@ -8550,7 +8549,7 @@ static int hmR0VmxRunGuestCodeStep(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     }
     /** @todo there seems to be issues with the resume flag when the monitor trap
      *        flag is pending without being used. Seen early in bios init when
-     *        accessing APIC page in prot mode. */
+     *        accessing APIC page in protected mode. */
 
     STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatEntry, x);
     return rc;
