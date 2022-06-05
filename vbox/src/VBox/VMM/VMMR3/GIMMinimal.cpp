@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 52672 2014-09-10 11:27:22Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 52674 2014-09-10 11:34:08Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -76,6 +76,8 @@ VMMR3_INT_DECL(int) GIMR3MinimalInit(PVM pVM)
         rc = CPUMR3CpuIdInsert(pVM, &HyperLeaf);
         AssertLogRelRCReturn(rc, rc);
     }
+    else
+        LogRel(("GIM: Minimal: failed to get hypervisor leaf 0x40000000.\n"));
 
     return VINF_SUCCESS;
 }
