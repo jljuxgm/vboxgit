@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 48621 2013-09-21 12:23:40Z vboxsync $ */
+/* $Id: HMR0.cpp 49178 2013-10-18 12:17:21Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -798,6 +798,7 @@ VMMR0_INT_DECL(int) HMR0Term(void)
  */
 static DECLCALLBACK(void) hmR0InitIntelCpu(RTCPUID idCpu, void *pvUser1, void *pvUser2)
 {
+    /** @todo Unify code with SUPR0QueryVTCaps(). */
     PHMR0FIRSTRC pFirstRc = (PHMR0FIRSTRC)pvUser1;
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     Assert(idCpu == (RTCPUID)RTMpCpuIdToSetIndex(idCpu)); /** @todo fix idCpu == index assumption (rainy day) */
