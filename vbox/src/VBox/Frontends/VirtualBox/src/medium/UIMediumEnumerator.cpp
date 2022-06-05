@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 49661 2013-11-26 14:50:10Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 50445 2014-02-13 13:34:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -430,7 +430,11 @@ void UIMediumEnumerator::calculateActualUsage(const QString &strMachineID, CMedi
 {
     /* Search for corresponding machine: */
     CMachine machine = vboxGlobal().virtualBox().FindMachine(strMachineID);
-    AssertReturnVoid(!machine.isNull());
+    if (machine.isNull())
+    {
+        /* Usually means the machine is already gone, not harmful. */
+        return;
+    }
 
     /* Calculate actual usage starting from root-snapshot if necessary: */
     if (!fTakeIntoAccountCurrentStateOnly)
