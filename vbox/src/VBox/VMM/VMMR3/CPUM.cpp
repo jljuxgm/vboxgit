@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 52550 2014-09-01 11:47:17Z vboxsync $ */
+/* $Id: CPUM.cpp 52551 2014-09-01 11:54:13Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4220,6 +4220,7 @@ static DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
     if (iVerbosity && cExtMax >= 7)
     {
         uint32_t uEDX = pVM->cpum.s.aGuestCpuIdExt[7].edx;
+
         pHlp->pfnPrintf(pHlp, "Host Invariant-TSC support:      %RTbool\n", fSupportsInvariantTsc);
         pHlp->pfnPrintf(pHlp, "APM Features:                   ");
         if (uEDX & RT_BIT(0))   pHlp->pfnPrintf(pHlp, " TS");
