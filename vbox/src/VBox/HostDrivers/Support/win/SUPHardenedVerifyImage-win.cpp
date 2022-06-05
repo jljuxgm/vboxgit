@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 52537 2014-08-31 19:28:17Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 52541 2014-08-31 21:52:20Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -996,16 +996,18 @@ static DECLCALLBACK(int) supHardNtViCallback(RTLDRMOD hLdrMod, RTLDRSIGNATURETYP
      * counter signature present when present, falling back on the timestamp
      * planted by the linker when absent.  In ring-0 we don't have all the
      * necessary timestamp server root certificate info, so we have to allow
-     * using counter signatures unverified there.
+     * using counter signatures unverified there.  Ditto for the early period
+     * of ring-3 hardened stub execution.
      */
     RTTIMESPEC ValidationTime;
     RTTimeSpecSetSeconds(&ValidationTime, pNtViRdr->uTimestamp);
 
     uint32_t fFlags = RTCRPKCS7VERIFY_SD_F_ALWAYS_USE_SIGNING_TIME_IF_PRESENT
                     | RTCRPKCS7VERIFY_SD_F_COUNTER_SIGNATURE_SIGNING_TIME_ONLY;
-#ifdef IN_RING0
-    fFlags |= RTCRPKCS7VERIFY_SD_F_USE_SIGNING_TIME_UNVERIFIED;
+#ifndef IN_RING0
+    if (!g_fHaveOtherRoots)
 #endif
+        fFlags |= RTCRPKCS7VERIFY_SD_F_USE_SIGNING_TIME_UNVERIFIED;
     return RTCrPkcs7VerifySignedData(pContentInfo, fFlags, g_hSpcAndNtKernelSuppStore, g_hSpcAndNtKernelRootStore,
                                      &ValidationTime, supHardNtViCertVerifyCallback, pNtViRdr, pErrInfo);
 }
