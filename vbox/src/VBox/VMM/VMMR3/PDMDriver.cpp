@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 48890 2013-10-04 15:32:56Z vboxsync $ */
+/* $Id: PDMDriver.cpp 48980 2013-10-08 21:20:06Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -829,7 +829,8 @@ int pdmR3DrvDetach(PPDMDRVINS pDrvIns, uint32_t fFlags)
     if (pDrvIns->Internal.s.fDetaching)
     {
         AssertMsgFailed(("Recursive detach! '%s'/%d\n", pDrvIns->pReg->szName, pDrvIns->iInstance));
-        return VINF_SUCCESS;           }
+        return VINF_SUCCESS;
+    }
 
     /*
      * Check that we actually can detach this instance.
@@ -923,8 +924,7 @@ void pdmR3DrvDestroyChain(PPDMDRVINS pDrvIns, uint32_t fFlags)
                     if (pLun->pUsbIns->pReg->pfnDriverDetach)
                     {
                         /** @todo USB device locking? */
-                        /** @todo add flags to pfnDriverDetach. */
-                        pLun->pUsbIns->pReg->pfnDriverDetach(pLun->pUsbIns, pLun->iLun);
+                        pLun->pUsbIns->pReg->pfnDriverDetach(pLun->pUsbIns, pLun->iLun, fFlags);
                     }
                 }
             }
