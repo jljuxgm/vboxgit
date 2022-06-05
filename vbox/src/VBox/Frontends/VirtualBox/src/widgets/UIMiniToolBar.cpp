@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 52729 2014-09-12 16:19:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation (fullscreen/seamless).
  */
@@ -287,9 +287,6 @@ void UIRuntimeMiniToolBar::prepare()
 
     /* Adjust geometry finally: */
     adjustGeometry();
-
-    /* Show: */
-    show();
 }
 
 void UIRuntimeMiniToolBar::cleanup()
