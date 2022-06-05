@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 49598 2013-11-21 10:36:22Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 49679 2013-11-27 13:03:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -373,7 +373,7 @@ public:
         return S_OK;
     }
 private:
-    Console *mConsole;
+    ComObjPtr<Console>    mConsole;
 };
 
 typedef ListenerImpl<VmEventListener, Console*> VmEventListenerImpl;
