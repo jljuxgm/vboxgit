@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 50490 2014-02-18 09:38:41Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 51249 2014-05-13 16:41:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -55,7 +55,8 @@ void UIMachineLogicNormal::sltCheckForRequestedVisualStateType()
             /* And supported: */
             if (uisession()->isGuestSupportsSeamless())
             {
-                LogRel(("UIMachineLogicNormal: Going 'seamless' as requested...\n"));
+                LogRel(("UIMachineLogicNormal::sltCheckForRequestedVisualStateType: "
+                        "Going 'seamless' as requested...\n"));
                 uisession()->setRequestedVisualState(UIVisualStateType_Invalid);
                 uisession()->changeVisualState(UIVisualStateType_Seamless);
             }
