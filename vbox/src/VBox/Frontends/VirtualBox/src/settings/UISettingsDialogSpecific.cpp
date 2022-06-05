@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 51394 2014-05-26 13:39:05Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 51405 2014-05-26 17:19:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -426,10 +426,8 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent,
         /* Search for a widget with the given name: */
         if (!strControl.isNull())
         {
-            printf("Looking for widget %s..\n", strControl.toAscii().constData());
             if (QWidget *pWidget = m_pStack->findChild<QWidget*>(strControl))
             {
-                printf("Widget %s found!\n", strControl.toAscii().constData());
                 QList<QWidget*> parents;
                 QWidget *pParentWidget = pWidget;
                 while ((pParentWidget = pParentWidget->parentWidget()) != 0)
