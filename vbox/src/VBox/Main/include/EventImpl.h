@@ -1,4 +1,4 @@
-/* $Id: EventImpl.h 52719 2014-09-12 12:33:41Z vboxsync $ */
+/* $Id: EventImpl.h 52720 2014-09-12 12:59:15Z vboxsync $ */
 /** @file
  * VirtualBox COM IEvent implementation
  */
@@ -52,7 +52,7 @@ private:
 
 
 class ATL_NO_VTABLE VBoxVetoEvent :
-    public virtual VetoEventWrap
+    public VetoEventWrap
 {
 public:
     DECLARE_EMPTY_CTOR_DTOR(VBoxVetoEvent)
