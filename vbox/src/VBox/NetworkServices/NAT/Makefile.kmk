@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49835 2013-12-09 11:45:07Z vboxsync $
+# $Id: Makefile.kmk 50005 2013-12-26 02:38:39Z vboxsync $
 ## @file
 #
 
@@ -69,12 +69,19 @@ VBoxNetLwipNAT_SOURCES += \
     pxtcp.c \
     pxudp.c \
     pxdns.c \
-    pxping.c \
     fwtcp.c \
     fwudp.c \
     portfwd.c \
     proxy_dhcp6ds.c \
     proxy_tftpd.c
+
+ifeq ($(KBUILD_TARGET),win)
+ # unprivileged Icmp API
+ VBoxNetLwipNAT_SOURCES += pxping_win.c
+else
+ # raw sockets
+ VBoxNetLwipNAT_SOURCES += pxping.c
+endif
 
 VBoxNetLwipNAT_SOURCES.darwin  += rtmon_bsd.c
 VBoxNetLwipNAT_SOURCES.freebsd += rtmon_bsd.c
