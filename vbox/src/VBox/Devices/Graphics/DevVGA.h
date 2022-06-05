@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 50149 2014-01-21 18:18:36Z vboxsync $ */
+/* $Id: DevVGA.h 50259 2014-01-28 14:17:48Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -592,6 +592,7 @@ int      VBVAInit       (PVGASTATE pVGAState);
 void     VBVADestroy    (PVGASTATE pVGAState);
 int      VBVAUpdateDisplay (PVGASTATE pVGAState);
 void     VBVAReset (PVGASTATE pVGAState);
+void     VBVAPause (PVGASTATE pVGAState, bool fPause);
 int      VBVAGetScreenInfo(PVGASTATE pVGAState, unsigned uScreenId, struct VBVAINFOSCREEN *pScreen, void **ppvVram);
 
 bool VBVAIsEnabled(PVGASTATE pVGAState);
