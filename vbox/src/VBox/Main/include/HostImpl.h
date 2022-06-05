@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 49742 2013-12-02 17:59:21Z vboxsync $ */
+/* $Id: HostImpl.h 52159 2014-07-24 08:48:52Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -61,7 +61,7 @@ public:
     HRESULT i_loadSettings(const settings::Host &data);
     HRESULT i_saveSettings(settings::Host &data);
 
-    HRESULT i_getDrives(DeviceType_T mediumType, bool fRefresh, MediaList *&pll);
+    HRESULT i_getDrives(DeviceType_T mediumType, bool fRefresh, MediaList *&pll, AutoWriteLock &treeLock);
     HRESULT i_findHostDriveById(DeviceType_T mediumType, const Guid &uuid, bool fRefresh, ComObjPtr<Medium> &pMedium);
     HRESULT i_findHostDriveByName(DeviceType_T mediumType, const Utf8Str &strLocationFull, bool fRefresh, ComObjPtr<Medium> &pMedium);
 
