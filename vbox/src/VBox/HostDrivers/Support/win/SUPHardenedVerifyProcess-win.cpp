@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 52446 2014-08-21 17:23:33Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 52488 2014-08-24 18:35:04Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1017,6 +1017,7 @@ static int supHardNtVpThread(HANDLE hProcess, HANDLE hThread, PRTERRINFO pErrInf
     /*
      * Use the ThreadAmILastThread request to check that there is only one
      * thread in the process.
+     * Seems this isn't entirely reliable when hThread isn't the current thread?
      */
     ULONG cbIgn = 0;
     ULONG fAmI  = 0;
@@ -2051,7 +2052,9 @@ DECLHIDDEN(int) supHardenedWinVerifyProcess(HANDLE hProcess, HANDLE hThread, SUP
      * Some basic checks regarding threads and debuggers. We don't need
      * allocate any state memory for these.
      */
-    int rc = supHardNtVpThread(hProcess, hThread, pErrInfo);
+    int rc = VINF_SUCCESS;
+    if (enmKind != SUPHARDNTVPKIND_CHILD_PURIFICATION)
+       rc = supHardNtVpThread(hProcess, hThread, pErrInfo);
 #ifndef VBOX_WITHOUT_DEBUGGER_CHECKS
     if (RT_SUCCESS(rc))
         rc = supHardNtVpDebugger(hProcess, pErrInfo);
