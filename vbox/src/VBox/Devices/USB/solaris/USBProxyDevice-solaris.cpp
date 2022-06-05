@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-solaris.cpp 50235 2014-01-24 22:59:06Z vboxsync $ */
+/* $Id: USBProxyDevice-solaris.cpp 50237 2014-01-24 23:16:52Z vboxsync $ */
 /** @file
  * USB device proxy - the Solaris backend.
  */
@@ -646,7 +646,7 @@ static DECLCALLBACK(int) usbProxySolarisUrbCancel(PUSBPROXYDEV pProxyDev, PVUSBU
 {
     PUSBPROXYURBSOL pUrbSol = (PUSBPROXYURBSOL)pUrb->Dev.pvPrivate;
     PUSBPROXYDEVSOL pDevSol = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVSOL);
-    AssertPtrReturnVoid(pDevSol);
+    AssertPtrReturn(pDevSol, VERR_INVALID_POINTER);
 
     LogFlowFunc((USBPROXY ":usbProxySolarisUrbCancel pUrb=%p pUrbSol=%p pDevSol=%p\n", pUrb, pUrbSol, pUrbSol->pDevSol));
 
