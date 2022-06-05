@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50724 2014-03-07 10:54:59Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50830 2014-03-20 16:13:19Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1081,7 +1081,7 @@ static int vbglR3DnDGHSendURIObject(uint32_t u32ClientId, DnDURIObject &obj)
 }
 
 static int vbglR3DnDGHProcessURIMessages(uint32_t u32ClientId,
-                                         void *pvData, uint32_t cbData)
+                                         const void *pvData, uint32_t cbData)
 {
     AssertPtrReturn(pvData, VERR_INVALID_POINTER);
     AssertReturn(cbData, VERR_INVALID_PARAMETER);
