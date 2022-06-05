@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 52595 2014-09-04 16:28:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 52611 2014-09-05 09:44:51Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11219,6 +11219,8 @@ HMVMX_EXIT_DECL hmR0VmxExitApicAccess(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRAN
     }
 
     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitApicAccess);
+    if (rc != VINF_SUCCESS)
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatExitApicAccessToR3);
     return rc;
 }
 
