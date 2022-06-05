@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 49190 2013-10-18 15:26:52Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 49456 2013-11-13 10:14:30Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1038,7 +1038,7 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
         /* /HM/xzy */
         PCFGMNODE pHM;
         InsertConfigNode(pRoot, "HM", &pHM);
-        InsertConfigInteger(pRoot, "HMForced", fHMForced);
+        InsertConfigInteger(pHM, "HMForced", fHMForced);
         if (fHMEnabled)
         {
             /* Indicate whether 64-bit guests are supported or not. */
