@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52974 2014-10-07 13:41:55Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52975 2014-10-07 13:44:25Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -4035,7 +4035,7 @@ static void supR3HardenedWinDoReSpawn(int iWhich)
      */
     rcNt = NtSetInformationThread(This.hThread, ThreadHideFromDebugger, NULL, 0);
     if (!NT_SUCCESS(rcNt))
-        SUP_DPRINTF(("supR3HardenedWinReSpawn: NtSetInformationThread/ThreadHideFromDebugger failed: %#x (harmless)\n", rcNt);
+        SUP_DPRINTF(("supR3HardenedWinReSpawn: NtSetInformationThread/ThreadHideFromDebugger failed: %#x (harmless)\n", rcNt));
 #endif
 
     /*
