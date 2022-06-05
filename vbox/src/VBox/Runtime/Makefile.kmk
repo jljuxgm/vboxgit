@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51862 2014-07-03 23:51:54Z vboxsync $
+# $Id: Makefile.kmk 51868 2014-07-04 13:35:22Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -432,6 +432,7 @@ RuntimeR3_SOURCES       = \
 	common/misc/thread.cpp \
 	common/misc/term.cpp \
 	common/misc/uri.cpp \
+	common/misc/zero.asm \
 	common/net/netaddrstr2.cpp \
 	common/net/macstr.cpp \
 	common/path/rtPathRootSpecLen.cpp \
@@ -2055,6 +2056,7 @@ RuntimeR0Drv_SOURCES.win = \
 	common/err/errinfo.cpp \
 	common/path/RTPathChangeToUnixSlashes.cpp \
 	common/math/bignum.cpp \
+	common/misc/zero.asm \
 	common/string/RTStrPrintHexBytes.cpp \
 	common/string/RTUtf16Copy.cpp \
 	common/string/RTUtf16CopyAscii.cpp \
