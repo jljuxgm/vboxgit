@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.cpp 50095 2014-01-17 16:34:07Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 50123 2014-01-20 16:30:32Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -46,6 +46,35 @@ void crServerCheckMuralGeometry(CRMuralInfo *mural)
 
     crServerRedirMuralFBO(mural, true);
     crServerRedirMuralFbSync(mural);
+}
+
+static void crServerCheckMuralGeometryCB(unsigned long key, void *data1, void *data2)
+{
+    CRMuralInfo *pMI = (CRMuralInfo*) data1;
+
+    if (!pMI->fRedirected || pMI == data2)
+        return;
+
+    crServerCheckMuralGeometry(pMI);
+}
+
+
+void crServerCheckAllMuralGeometry(CRMuralInfo *pMI)
+{
+    CR_FBMAP Map;
+    int rc = CrPMgrHlpGlblUpdateBegin(&Map);
+    if (!RT_SUCCESS(rc))
+    {
+        WARN(("CrPMgrHlpGlblUpdateBegin failed %d", rc));
+        return;
+    }
+
+    crHashtableWalk(cr_server.muralTable, crServerCheckMuralGeometryCB, pMI);
+
+    if (pMI)
+        crServerCheckMuralGeometry(pMI);
+
+    CrPMgrHlpGlblUpdateEnd(&Map);
 }
 
 GLboolean crServerSupportRedirMuralFBO(void)
