@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 46793 2013-06-26 09:29:54Z vboxsync $ */
+/* $Id: CFGM.cpp 53437 2014-12-03 19:03:45Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -609,6 +609,20 @@ VMMR3DECL(bool) CFGMR3AreValuesValid(PCFGMNODE pNode, const char *pszzValid)
     return true;
 }
 
+
+/**
+ * Checks if the given value exists.
+ *
+ * @returns true if it exists, false if not.
+ * @param   pNode           Which node to search for pszName in.
+ * @param   pszName         The name of the value we seek.
+ */
+VMMR3DECL(bool) CFGMR3Exists(PCFGMNODE pNode, const char *pszName)
+{
+    PCFGMLEAF pLeaf;
+    int rc = cfgmR3ResolveLeaf(pNode, pszName, &pLeaf);
+    return RT_SUCCESS_NP(rc);
+}
 
 
 /**
