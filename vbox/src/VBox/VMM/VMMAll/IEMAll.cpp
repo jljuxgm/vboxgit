@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 48936 2013-10-07 21:21:42Z vboxsync $ */
+/* $Id: IEMAll.cpp 49391 2013-11-05 15:17:27Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -333,7 +333,7 @@ typedef IEMSELDESC *PIEMSELDESC;
 /**
  * Check if the address is canonical.
  */
-#define IEM_IS_CANONICAL(a_u64Addr)         ((uint64_t)(a_u64Addr) + UINT64_C(0x800000000000) < UINT64_C(0x1000000000000))
+#define IEM_IS_CANONICAL(a_u64Addr)         X86_IS_CANONICAL(a_u64Addr)
 
 
 /*******************************************************************************
