@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.h 53350 2014-11-19 13:05:41Z vboxsync $ */
+/* $Id: ip_icmp.h 53399 2014-11-25 22:49:59Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling (declarations/defines).
  */
@@ -207,6 +207,7 @@ struct icmp_msg * icmp_find_original_mbuf (PNATState , struct ip *);
 int icmpwin_init (PNATState);
 void icmpwin_finit (PNATState);
 void icmpwin_ping(PNATState, struct mbuf *, int);
+void icmpwin_process(PNATState);
 #endif
 
 #endif
