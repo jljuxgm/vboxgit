@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 48559 2013-09-19 18:09:13Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 48560 2013-09-19 18:15:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -438,8 +438,8 @@ void UIMachineSettingsNetwork::sltHandleAttachmentTypeChange()
         }
         case KNetworkAttachmentType_NATNetwork:
         {
-            m_pAdapterNameCombo->setWhatsThis(tr("Enter the name of the NAT network that this network card "
-                                                 "will be connected to. You can create and remove adapters "
+            m_pAdapterNameCombo->setWhatsThis(tr("Selects the name of the NAT network that this network card "
+                                                 "will be connected to. You can create and remove networks "
                                                  "using the global network settings in the virtual machine "
                                                  "manager window."));
             m_pAdapterNameCombo->setEditable(false);
