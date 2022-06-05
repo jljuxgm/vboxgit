@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 48701 2013-09-26 10:20:10Z vboxsync $ */
+/* $Id: CPUM.cpp 48814 2013-10-02 09:42:43Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -4333,7 +4333,7 @@ VMMR3DECL(void) CPUMR3LogCpuIds(PVM pVM)
                 RTCpuSetToU64(RTMpGetOnlineSet(&OnlineSet)) ));
     RTCPUID cCores = RTMpGetCoreCount();
     if (cCores)
-        LogRel(("Physical cores: %u\n", (unsigned)cCores));
+        LogRel(("Physical host cores: %u\n", (unsigned)cCores));
     LogRel(("************************* CPUID dump ************************\n"));
     DBGFR3Info(pVM->pUVM, "cpuid", "verbose", DBGFR3InfoLogRelHlp());
     LogRel(("\n"));
