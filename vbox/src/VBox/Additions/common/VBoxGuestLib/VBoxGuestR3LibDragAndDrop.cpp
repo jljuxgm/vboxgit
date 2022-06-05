@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 49924 2013-12-16 09:39:13Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 49929 2013-12-16 12:46:47Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -745,7 +745,7 @@ static int vbglR3DnDGHProcessDroppedMessage(uint32_t  uClientId,
     return rc;
 }
 
-int vbglR3DnDPathSanitize(char *pszPath, size_t cbPath)
+static int vbglR3DnDPathSanitize(char *pszPath, size_t cbPath)
 {
     int rc = VINF_SUCCESS;
 #ifdef RT_OS_WINDOWS
