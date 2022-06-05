@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 49038 2013-10-10 18:21:26Z vboxsync $ */
+/* $Id: ApplianceImpl.h 49103 2013-10-15 06:20:39Z vboxsync $ */
 
 /** @file
  *
@@ -337,6 +337,8 @@ public:
 
     void importVboxMachineXML(const xml::ElementNode &elmMachine);
     const settings::MachineConfigFile* getMachineConfig() const;
+
+    void removeByType(VirtualSystemDescriptionType_T aType);
 
     /* private instance data */
 private:

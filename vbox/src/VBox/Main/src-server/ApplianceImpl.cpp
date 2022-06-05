@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 49103 2013-10-15 06:20:39Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1555,6 +1555,26 @@ std::list<VirtualSystemDescriptionEntry*> VirtualSystemDescription::findByType(V
     }
 
     return vsd;
+}
+
+/**
+ * Private method; delete all records from the list 
+ * m->llDescriptions that match the given type. 
+ * @param aType
+ * @return
+ */
+void VirtualSystemDescription::removeByType(VirtualSystemDescriptionType_T aType)
+{
+    std::list<VirtualSystemDescriptionEntry*> vsd;
+
+    list<VirtualSystemDescriptionEntry>::iterator it = m->llDescriptions.begin();
+    while (it != m->llDescriptions.end())
+    {
+        if (it->type == aType)
+            it = m->llDescriptions.erase(it);
+        else
+            ++it;
+    }
 }
 
 /**

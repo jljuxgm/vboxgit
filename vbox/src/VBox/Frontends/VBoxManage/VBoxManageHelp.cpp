@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 49086 2013-10-14 12:57:15Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 49103 2013-10-15 06:20:39Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -409,6 +409,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                            "%s export %s          <machines> --output|-o <name>.<ovf/ova>\n"
                      "                            [--legacy09|--ovf09|--ovf10|--ovf20]\n"
                      "                            [--manifest]\n"
+                     "                            [--iso]\n"
                      "                            [--vsys <number of virtual system>]\n"
                      "                                    [--product <product name>]\n"
                      "                                    [--producturl <product url>]\n"
