@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 50623 2014-02-27 10:30:24Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 50688 2014-03-04 23:11:39Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -3088,11 +3088,11 @@ bool VBoxGuestCommonISR(PVBOXGUESTDEVEXT pDevExt)
 
     RTSpinlockReleaseNoInts(pDevExt->EventSpinlock);
 
-#if defined(VBOXGUEST_USE_DEFERRED_WAKE_UP) && !defined(RT_OS_WINDOWS)
+#if defined(VBOXGUEST_USE_DEFERRED_WAKE_UP) && !defined(RT_OS_DARWIN) && !defined(RT_OS_WINDOWS)
     /*
      * Do wake-ups.
      * Note. On Windows this isn't possible at this IRQL, so a DPC will take
-     *       care of it.
+     *       care of it.  Same on darwin, doing it in the work loop callback.
      */
     VBoxGuestWaitDoWakeUps(pDevExt);
 #endif
