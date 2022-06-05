@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 38513 2011-08-24 11:12:07Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 48742 2013-09-27 17:05:06Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -325,7 +325,11 @@ PVBOXUSBFLT_DEVICE vboxUsbFltDevGet(PDEVICE_OBJECT pPdo)
 
     VBOXUSBFLT_LOCK_ACQUIRE();
     pDevice = vboxUsbFltDevGetLocked(pPdo);
-    if (pDevice->enmState > VBOXUSBFLT_DEVSTATE_ADDED)
+    if (pDevice == NULL)
+    {
+        WARN(("failed to get device for PDO(0x%p)", pPdo));
+    }
+    else if (pDevice->enmState > VBOXUSBFLT_DEVSTATE_ADDED)
     {
         vboxUsbFltDevRetain(pDevice);
         LOG(("found device (0x%p), state(%d) for PDO(0x%p)", pDevice, pDevice->enmState, pPdo));
@@ -1363,7 +1367,11 @@ HVBOXUSBFLTDEV VBoxUsbFltProxyStarted(PDEVICE_OBJECT pPdo)
     PVBOXUSBFLT_DEVICE pDevice;
     VBOXUSBFLT_LOCK_ACQUIRE();
     pDevice = vboxUsbFltDevGetLocked(pPdo);
-    if (pDevice->enmState = VBOXUSBFLT_DEVSTATE_CAPTURING)
+    if (pDevice == NULL)
+    {
+        WARN(("failed to get device for PDO(0x%p)", pPdo));
+    }
+    else if (pDevice->enmState = VBOXUSBFLT_DEVSTATE_CAPTURING)
     {
         pDevice->enmState = VBOXUSBFLT_DEVSTATE_CAPTURED;
         LOG(("The proxy notified proxy start for the captured device 0x%x", pDevice));
