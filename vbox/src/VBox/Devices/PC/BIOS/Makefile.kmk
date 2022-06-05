@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46952 2013-07-03 20:45:26Z vboxsync $
+# $Id: Makefile.kmk 48069 2013-08-26 17:02:08Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -45,6 +45,7 @@ ifdef VBOX_WITH_OPEN_WATCOM
  	print.c \
  	ata.c \
  	floppy.c \
+ 	floppyt.c \
  	eltorito.c \
  	boot.c \
  	keyboard.c \
