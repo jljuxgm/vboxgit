@@ -1,4 +1,4 @@
-/* $Id: dump.cpp 46515 2013-06-12 22:47:50Z vboxsync $ */
+/* $Id: dump.cpp 48292 2013-09-05 07:27:54Z vboxsync $ */
 
 /** @file
  * Blitter API implementation
@@ -554,7 +554,7 @@ static char *crRecDumpGetLine(char **ppszStr, uint32_t *pcbStr)
 
     *pNewLine = '\0';
     *pcbStr = cbStr - (((uintptr_t)pNewLine) - ((uintptr_t)pszStr)) - 1;
-    Assert((*pcbStr) >= 0);
+    Assert((*pcbStr) < UINT32_MAX/2);
     Assert((*pcbStr) < cbStr);
     *ppszStr = pNewLine + 1;
 
@@ -1420,6 +1420,7 @@ void crRecDumpTextures(CR_RECORDER *pRec, CRContext *ctx, CR_BLITTER_CONTEXT *pC
     }
 }
 
+#ifdef RT_OS_WINDOWS
 static void crDmpPrint(const char* szString, ...)
 {
     char szBuffer[4096] = {0};
@@ -1453,6 +1454,7 @@ DECLCALLBACK(void) crDmpDumpStrDbgPrint(struct CR_DUMPER * pDumper, const char*p
 {
     OutputDebugStringA(pszStr);
 }
+#endif
 
 static void crDmpHtmlDumpStrExact(struct CR_HTML_DUMPER * pDumper, const char *pszStr)
 {
