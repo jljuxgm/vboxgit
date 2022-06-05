@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
+/* $Id: ISCSI.cpp 51105 2014-04-18 10:18:56Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -3843,7 +3843,7 @@ static int iscsiOpenImage(PISCSIIMAGE pImage, unsigned uOpenFlags)
     pImage->pIfNet = VDIfTcpNetGet(pImage->pVDIfsImage);
     if (!pImage->pIfNet)
     {
-        rc = vdIfError(pImage->pIfError, VERR_VD_ISCSI_UNKNOWN_INTERFACE,
+        rc = vdIfError(pImage->pIfError, VERR_VD_UNKNOWN_INTERFACE,
                        RT_SRC_POS, N_("iSCSI: TCP network stack interface missing"));
         goto out;
     }
@@ -3852,7 +3852,7 @@ static int iscsiOpenImage(PISCSIIMAGE pImage, unsigned uOpenFlags)
     pImage->pIfConfig = VDIfConfigGet(pImage->pVDIfsImage);
     if (!pImage->pIfConfig)
     {
-        rc = vdIfError(pImage->pIfError, VERR_VD_ISCSI_UNKNOWN_INTERFACE,
+        rc = vdIfError(pImage->pIfError, VERR_VD_UNKNOWN_INTERFACE,
                        RT_SRC_POS, N_("iSCSI: configuration interface missing"));
         goto out;
     }
@@ -3861,7 +3861,7 @@ static int iscsiOpenImage(PISCSIIMAGE pImage, unsigned uOpenFlags)
     pImage->pIfIo = VDIfIoIntGet(pImage->pVDIfsImage);
     if (!pImage->pIfIo)
     {
-        rc = vdIfError(pImage->pIfError, VERR_VD_ISCSI_UNKNOWN_INTERFACE,
+        rc = vdIfError(pImage->pIfError, VERR_VD_UNKNOWN_INTERFACE,
                        RT_SRC_POS, N_("iSCSI: I/O interface missing"));
         goto out;
     }
@@ -3903,7 +3903,7 @@ static int iscsiOpenImage(PISCSIIMAGE pImage, unsigned uOpenFlags)
                            "HostIPStack\0"
                            "DumpMalformedPackets\0"))
     {
-        rc = vdIfError(pImage->pIfError, VERR_VD_ISCSI_UNKNOWN_CFG_VALUES, RT_SRC_POS, N_("iSCSI: configuration error: unknown configuration keys present"));
+        rc = vdIfError(pImage->pIfError, VERR_VD_UNKNOWN_CFG_VALUES, RT_SRC_POS, N_("iSCSI: configuration error: unknown configuration keys present"));
         goto out;
     }
 
