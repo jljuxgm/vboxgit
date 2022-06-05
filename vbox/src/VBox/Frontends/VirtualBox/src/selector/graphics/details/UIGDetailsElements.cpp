@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 51740 2014-06-26 14:43:09Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 51988 2014-07-11 13:08:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -341,6 +341,14 @@ void UIGDetailsUpdateThreadSystem::run()
             }
             if (machine().GetCPUProperty(KCPUPropertyType_PAE))
                 acceleration << QApplication::translate("UIGDetails", "PAE/NX", "details (system)");
+            switch (machine().GetParavirtProvider())
+            {
+                case KParavirtProvider_Default: acceleration << QApplication::translate("UIGDetails", "Default Paravirtualization", "details (system)"); break;
+                case KParavirtProvider_Legacy:  acceleration << QApplication::translate("UIGDetails", "Legacy Paravirtualization", "details (system)"); break;
+                case KParavirtProvider_Minimal: acceleration << QApplication::translate("UIGDetails", "Minimal Paravirtualization", "details (system)"); break;
+                case KParavirtProvider_HyperV:  acceleration << QApplication::translate("UIGDetails", "Hyper-V Paravirtualization", "details (system)"); break;
+                default: break;
+            }
             if (!acceleration.isEmpty())
                 m_text << UITextTableLine(QApplication::translate("UIGDetails", "Acceleration", "details (system)"),
                                           acceleration.join(", "));
