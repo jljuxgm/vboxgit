@@ -1,4 +1,4 @@
-/* $Id: pkcs7-template.h 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: pkcs7-template.h 52503 2014-08-26 14:43:04Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Core APIs, Code Generator Template.
  */
@@ -54,6 +54,10 @@ RTASN1TMPL_MEMBER_DYN(          uValues,    pOctetStrings,  RTASN1SETOFOCTETSTRI
     enmType, RTCRPKCS7ATTRIBUTETYPE_OCTET_STRINGS,  RTAsn1ObjId_CompareWithString(&pThis->Type, RTCR_PKCS9_ID_MESSAGE_DIGEST_OID) == 0);
 RTASN1TMPL_MEMBER_DYN(          uValues,    pObjIds,        RTASN1SETOFOBJIDS,          RTAsn1SetOfObjIds,          Allocation,
     enmType, RTCRPKCS7ATTRIBUTETYPE_OBJ_IDS,        RTAsn1ObjId_CompareWithString(&pThis->Type, RTCR_PKCS9_ID_CONTENT_TYPE_OID) == 0);
+RTASN1TMPL_MEMBER_DYN(          uValues, pCounterSignatures, RTCRPKCS7SINGERINFOS,      RTCrPkcs7SignerInfos,       Allocation,
+    enmType, RTCRPKCS7ATTRIBUTETYPE_COUNTER_SIGNATURES, RTAsn1ObjId_CompareWithString(&pThis->Type, RTCR_PKCS9_ID_COUNTER_SIGNATURE_OID) == 0);
+RTASN1TMPL_MEMBER_DYN(          uValues,    pSigningTime,   RTASN1SETOFTIMES,           RTAsn1SetOfTimes,           Allocation,
+    enmType, RTCRPKCS7ATTRIBUTETYPE_SIGNING_TIME,   RTAsn1ObjId_CompareWithString(&pThis->Type, RTCR_PKCS9_ID_SIGNING_TIME_OID) == 0);
 RTASN1TMPL_MEMBER_DYN_DEFAULT(  uValues,    pCores,         RTASN1SETOFCORES,           RTAsn1SetOfCores,           Allocation,
     enmType, RTCRPKCS7ATTRIBUTETYPE_UNKNOWN);
 RTASN1TMPL_MEMBER_DYN_END(RTCRPKCS7ATTRIBUTETYPE, enmType, Allocation);
