@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52089 2014-07-18 05:42:29Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52092 2014-07-18 07:14:33Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -946,16 +946,35 @@ static void *supR3HardenedWinAllocHookMemory(uintptr_t uStart, uintptr_t uEnd, i
  */
 DECLHIDDEN(void) supR3HardenedWinInstallHooks(void)
 {
+    NTSTATUS rcNt;
+
 #ifndef VBOX_WITHOUT_DEBUGGER_CHECKS
     /*
      * Install a anti debugging hack before we continue.  This prevents most
      * notifications from ending up in the debugger.
      */
-    NTSTATUS rcNt = NtSetInformationThread(GetCurrentThread(), ThreadHideFromDebugger, NULL, 0);
+    rcNt = NtSetInformationThread(GetCurrentThread(), ThreadHideFromDebugger, NULL, 0);
     if (!NT_SUCCESS(rcNt))
-        supR3HardenedFatalMsg("supR3HardenedWinInstallHooks", kSupInitOp_Misc, VERR_NO_MEMORY,
+        supR3HardenedFatalMsg("supR3HardenedWinInstallHooks", kSupInitOp_Misc, VERR_GENERAL_FAILURE,
                               "NtSetInformationThread/ThreadHideFromDebugger failed: %#x\n", rcNt);
 #endif
+
+    /*
+     * Disable hard error popups so we can quietly refuse images to be loaded.
+     */
+    ULONG fHardErr = 0;
+    rcNt = NtQueryInformationProcess(NtCurrentProcess(), ProcessDefaultHardErrorMode, &fHardErr, sizeof(fHardErr), NULL);
+    if (!NT_SUCCESS(rcNt))
+        supR3HardenedFatalMsg("supR3HardenedWinInstallHooks", kSupInitOp_Misc, VERR_GENERAL_FAILURE,
+                              "NtQueryInformationProcess/ProcessDefaultHardErrorMode failed: %#x\n", rcNt);
+    if (fHardErr & PROCESS_HARDERR_CRITICAL_ERROR)
+    {
+        fHardErr &= ~PROCESS_HARDERR_CRITICAL_ERROR;
+        rcNt = NtSetInformationProcess(NtCurrentProcess(), ProcessDefaultHardErrorMode, &fHardErr, sizeof(fHardErr));
+        if (!NT_SUCCESS(rcNt))
+            supR3HardenedFatalMsg("supR3HardenedWinInstallHooks", kSupInitOp_Misc, VERR_GENERAL_FAILURE,
+                                  "NtSetInformationProcess/ProcessDefaultHardErrorMode failed: %#x\n", rcNt);
+    }
 
     /*
      * Locate the routine.
