@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 52204 2014-07-26 11:22:44Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 52353 2014-08-11 19:16:55Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -1967,19 +1967,6 @@ static NTSTATUS     VBoxDrvNtErr2NtStatus(int rc)
             return (NTSTATUS)( ((uint32_t)rc & UINT32_C(0xffff)) | SUP_NT_STATUS_BASE );
     }
     return STATUS_UNSUCCESSFUL;
-}
-
-
-
-/** @todo use the nocrt stuff? */
-int VBOXCALL mymemcmp(const void *pv1, const void *pv2, size_t cb)
-{
-    const uint8_t *pb1 = (const uint8_t *)pv1;
-    const uint8_t *pb2 = (const uint8_t *)pv2;
-    for (; cb > 0; cb--, pb1++, pb2++)
-        if (*pb1 != *pb2)
-            return *pb1 - *pb2;
-    return 0;
 }
 
 

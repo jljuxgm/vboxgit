@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 52353 2014-08-11 19:16:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -72,8 +72,6 @@
 #       include <iprt/nt/nt.h>
 #   endif
 #   include <memory.h>
-#   define memcmp(a,b,c) mymemcmp(a,b,c)
-    int VBOXCALL mymemcmp(const void *, const void *, size_t);
     RT_C_DECLS_END
 
 #elif defined(RT_OS_LINUX)
