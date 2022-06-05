@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 52203 2014-07-25 23:46:23Z vboxsync $ */
+/* $Id: UISession.cpp 52236 2014-07-30 14:11:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -984,6 +984,8 @@ void UISession::prepareActions()
 {
     /* Create action-pool: */
     m_pActionPool = UIActionPool::create(UIActionPoolType_Runtime);
+    m_pActionPool->toRuntime()->setSession(this);
+    connect(this, SIGNAL(sigFrameBufferResize()), m_pActionPool, SLOT(sltHandleFrameBufferResize()));
 
     /* Get host/machine: */
     const CHost host = vboxGlobal().host();
@@ -1127,10 +1129,7 @@ void UISession::prepareScreens()
 void UISession::prepareFramebuffers()
 {
     /* Each framebuffer will be really prepared on first UIMachineView creation: */
-    const ULONG uMonitorCount = m_session.GetMachine().GetMonitorCount();
-    m_frameBufferVector.resize(uMonitorCount);
-    QVector<QSize> sizes(uMonitorCount);
-    actionPool()->toRuntime()->setCurrentFrameBufferSizes(sizes.toList(), true);
+    m_frameBufferVector.resize(m_session.GetMachine().GetMonitorCount());
 }
 
 void UISession::loadSessionSettings()

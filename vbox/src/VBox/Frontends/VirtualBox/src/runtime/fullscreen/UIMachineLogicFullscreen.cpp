@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 52203 2014-07-25 23:46:23Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 52236 2014-07-30 14:11:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -476,9 +476,6 @@ void UIMachineLogicFullscreen::prepareActionConnections()
 #ifdef Q_WS_MAC
 void UIMachineLogicFullscreen::prepareOtherConnections()
 {
-    /* Call to base-class: */
-    UIMachineLogic::prepareOtherConnections();
-
     /* Make sure 'presentation mode' preference handling
      * is updated at runtime for Lion and previous: */
     if (vboxGlobal().osRelease() <= MacOSXRelease_Lion)
@@ -516,6 +513,7 @@ void UIMachineLogicFullscreen::prepareMachineWindows()
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         connect(pMachineWindow, SIGNAL(sigFrameBufferResize()),
                 this, SIGNAL(sigFrameBufferResize()));
+    emit sigFrameBufferResize();
 
     /* Connect multi-screen layout change handler: */
     connect(m_pScreenLayout, SIGNAL(sigScreenLayoutChanged()),

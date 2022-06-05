@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 52203 2014-07-25 23:46:23Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 52236 2014-07-30 14:11:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -176,6 +176,7 @@ void UIMachineLogicNormal::prepareMachineWindows()
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         connect(pMachineWindow, SIGNAL(sigFrameBufferResize()),
                 this, SIGNAL(sigFrameBufferResize()));
+    emit sigFrameBufferResize();
 
     /* Mark machine-window(s) created: */
     setMachineWindowsCreated(true);
