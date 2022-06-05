@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 49211 2013-10-21 14:22:52Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 49319 2013-10-29 11:13:53Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -34,6 +34,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <dlfcn.h>
+# include <unistd.h>
 
 #elif RT_OS_WINDOWS
 # include <Windows.h>
