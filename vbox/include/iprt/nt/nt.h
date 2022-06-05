@@ -1,4 +1,4 @@
-/* $Id: nt.h 52364 2014-08-13 06:09:41Z vboxsync $ */
+/* $Id: nt.h 52438 2014-08-21 11:25:51Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -1109,6 +1109,14 @@ typedef PTEB_COMMON PTEB;
 #ifdef IPRT_NT_USE_WINTERNL
 NTSYSAPI NTSTATUS NTAPI NtCreateSection(PHANDLE, ACCESS_MASK, POBJECT_ATTRIBUTES, PLARGE_INTEGER, ULONG, ULONG, HANDLE);
 NTSYSAPI NTSTATUS NTAPI NtUnmapViewOfSection(HANDLE, PVOID);
+typedef enum _SECTION_INHERIT
+{
+    ViewShare = 1,
+    ViewUnmap
+} SECTION_INHERIT;
+NTSYSAPI NTSTATUS NTAPI NtMapViewOfSection(HANDLE, HANDLE, PVOID *, ULONG, SIZE_T, PLARGE_INTEGER, PSIZE_T, SECTION_INHERIT,
+                                           ULONG, ULONG);
+
 
 typedef struct _FILE_FS_ATTRIBUTE_INFORMATION
 {
