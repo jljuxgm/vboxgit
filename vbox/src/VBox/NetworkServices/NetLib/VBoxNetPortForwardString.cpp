@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 50459 2014-02-14 03:14:24Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 52938 2014-10-02 16:43:35Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -281,9 +281,9 @@ int netPfStrToPf(const char *pcszStrPortForward, int fIPv6, PPORTFORWARDRULE pPf
 
     cbRaw--;
 
-    if (     ((    fTcpProto = (RTStrNICmp(pszRaw, "tcp", 3) == 0)
-              ||  (RTStrNICmp(pszRaw, "udp", 3) == 0))
-          && (pszRaw[3] == PF_FIELD_SEPARATOR)))
+    if (  (  (fTcpProto = (RTStrNICmp(pszRaw, "tcp", 3) == 0))
+           ||              RTStrNICmp(pszRaw, "udp", 3) == 0)
+        && pszRaw[3] == PF_FIELD_SEPARATOR)
     {
         proto = (fTcpProto ? IPPROTO_TCP : IPPROTO_UDP);
         idxRaw = 3;
