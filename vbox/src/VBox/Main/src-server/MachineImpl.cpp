@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 52483 2014-08-22 22:02:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 52489 2014-08-25 08:27:46Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8064,7 +8064,7 @@ HRESULT Machine::initDataAndChildObjects()
     AutoCaller autoCaller(this);
     AssertComRCReturnRC(autoCaller.rc());
     AssertComRCReturn(   getObjectState().getState() == ObjectState::InInit
-		      || getObjectState().getState() == ObjectState::Limited, E_FAIL);
+                      || getObjectState().getState() == ObjectState::Limited, E_FAIL);
 
     AssertReturn(!mData->mAccessible, E_FAIL);
 
