@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51524 2014-06-04 08:06:12Z vboxsync $ */
+/* $Id: server_presenter.cpp 51536 2014-06-04 16:30:26Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -3633,7 +3633,7 @@ protected:
         uint32_t cRects;
         const RTRECT *pRects;
 
-        int rc = CrVrScrCompositorEntryRegionsGet(pCompositor, pEntry, &cRects, NULL, &pRects, NULL);
+        int rc = CrVrScrCompositorEntryRegionsGet(pCompositor, pEntry, &cRects, &pRects, NULL, NULL);
         if (!RT_SUCCESS(rc))
         {
             WARN(("CrVrScrCompositorEntryRegionsGet failed, rc %d", rc));
