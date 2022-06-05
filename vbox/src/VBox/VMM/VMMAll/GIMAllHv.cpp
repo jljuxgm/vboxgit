@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 52440 2014-08-21 12:12:09Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 52671 2014-09-10 11:04:48Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -138,9 +138,12 @@ VMM_INT_DECL(int) GIMHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRan
             return VINF_SUCCESS;
 
         case MSR_GIM_HV_APIC_FREQ:
-            /** @todo Fix this later! Get the information from DevApic. */
-            *puValue = UINT32_C(1000000000); /* TMCLOCK_FREQ_VIRTUAL */
+        {
+            int rc = PDMApicGetTimerFreq(pVM, puValue);
+            if (RT_FAILURE(rc))
+                return VERR_CPUM_RAISE_GP_0;
             return VINF_SUCCESS;
+        }
 
         case MSR_GIM_HV_RESET:
             *puValue = 0;
