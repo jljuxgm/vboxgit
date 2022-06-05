@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 48107 2013-08-27 22:15:13Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 48417 2013-09-10 15:58:39Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -39,6 +39,14 @@ namespace settings
 #else
 # define NATSR_EXECUTABLE_NAME "VBoxNetNAT"
 #endif
+
+enum ADDRESSLOOKUPTYPE
+{
+    ADDR_GATEWAY,
+    ADDR_DHCP,
+    ADDR_DHCPLOWERIP,
+    ADDR_ANY
+};
 
 class NATNetworkServiceRunner: public NetworkServiceRunner
 {
@@ -127,7 +135,7 @@ public:
 
 private:
     int recalculateIpv4AddressAssignments();
-    int findFirstAvailableOffset(uint32_t *);
+    int findFirstAvailableOffset(ADDRESSLOOKUPTYPE, uint32_t *);
 
     typedef std::map<Utf8Str, settings::NATRule> NATRuleMap;
     typedef NATRuleMap::const_iterator constNATRuleMapIterator;
