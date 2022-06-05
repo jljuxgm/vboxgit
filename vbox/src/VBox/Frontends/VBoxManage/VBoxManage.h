@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 51889 2014-07-06 19:40:14Z vboxsync $ */
+/* $Id: VBoxManage.h 53266 2014-11-07 16:02:36Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -224,10 +224,10 @@ HRESULT showSnapshots(ComPtr<ISnapshot> &rootSnapshot,
                       const com::Utf8Str &prefix = "",
                       int level = 0);
 int handleShowVMInfo(HandlerArg *a);
-HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
-                   ComPtr<IMachine> machine,
-                   VMINFO_DETAILS details = VMINFO_NONE,
-                   ComPtr<IConsole> console = ComPtr<IConsole>());
+HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
+                   ComPtr<IMachine> pMachine,
+                   ComPtr<ISession> pSession,
+                   VMINFO_DETAILS details = VMINFO_NONE);
 const char *machineStateToName(MachineState_T machineState, bool fShort);
 HRESULT showBandwidthGroups(ComPtr<IBandwidthControl> &bwCtrl,
                             VMINFO_DETAILS details);

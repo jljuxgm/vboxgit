@@ -1,10 +1,10 @@
-/* $Id: VBoxManageBandwidthControl.cpp 50085 2014-01-16 09:42:33Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 53266 2014-11-07 16:02:36Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -288,7 +288,6 @@ static RTEXITCODE handleBandwidthControlList(HandlerArg *pArgs, ComPtr<IBandwidt
         }
     }
 
-    /* See showVMInfo. */
     if (FAILED(showBandwidthGroups(rptrBWControl, enmDetails)))
         return RTEXITCODE_FAILURE;
 
