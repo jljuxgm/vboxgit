@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 48273 2013-09-04 16:15:32Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 48274 2013-09-04 16:17:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -16,6 +16,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+/* Qt includes: */
+#include <QSet>
 
 /* GUI includes: */
 #include "UIMediumEnumerator.h"
