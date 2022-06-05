@@ -1,10 +1,10 @@
-/* $Id: DrvStorageFilter.cpp 40379 2012-03-06 15:04:31Z vboxsync $ */
+/* $Id: DrvStorageFilter.cpp 52547 2014-09-01 09:05:45Z vboxsync $ */
 /** @file
- * VBox Sample Driver.
+ * VBox storage filter driver sample.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -339,6 +339,11 @@ static DECLCALLBACK(int) drvStorageFlt_Construct(PPDMDRVINS pDrvIns, PCFGMNODE p
     pThis->pIMediaAsyncBelow = PDMIBASE_QUERY_INTERFACE(pIBaseBelow, PDMIMEDIAASYNC);
 
     AssertLogRelReturn(pThis->pIMediaBelow, VERR_PDM_MISSING_INTERFACE_BELOW);
+
+    if (!pThis->pIMediaBelow->pfnDiscard)
+        pThis->IMedia.pfnDiscard = NULL;
+    if (!pThis->pIMediaAsyncBelow || !pThis->pIMediaAsyncBelow->pfnStartDiscard)
+        pThis->IMediaAsync.pfnStartDiscard = NULL;
 
     return VINF_SUCCESS;
 }
