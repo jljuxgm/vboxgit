@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 49337 2013-10-30 16:53:58Z vboxsync $ */
+/* $Id: UISession.cpp 49340 2013-10-30 21:07:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1472,7 +1472,7 @@ void UISession::reinitMenuPool()
         /* Check whether there is an accessible video input devices pool: */
         const CHostVideoInputDeviceVector &webcams = host.GetVideoInputDevices(); Q_UNUSED(webcams);
         ULONG cOhciCtls = machine.GetUSBControllerCountByType(KUSBControllerType_OHCI);
-        bool fWebCamsEnabled = host.isOk() && cOhciCtls && machine.GetUSBProxyAvailable();
+        bool fWebCamsEnabled = host.isOk() && cOhciCtls;
 
         /* Show/Hide WebCams menu depending on ExtPack availability: */
         gActionPool->action(UIActionIndexRuntime_Menu_WebCams)->setVisible(fWebCamsEnabled);
