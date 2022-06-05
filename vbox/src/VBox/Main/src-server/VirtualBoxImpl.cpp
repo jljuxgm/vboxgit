@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 51745 2014-06-27 12:05:33Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -597,6 +597,13 @@ HRESULT VirtualBox::initMachines()
         HRESULT rc = S_OK;
         const settings::MachineRegistryEntry &xmlMachine = *it;
         Guid uuid = xmlMachine.uuid;
+
+        /* Check if machine record has valid parameters. */
+        if (xmlMachine.strSettingsFile.isEmpty() || uuid.isZero())
+        {
+            LogRel(("Skipped invalid machine record.\n"));
+            continue;
+        }
 
         ComObjPtr<Machine> pMachine;
         if (SUCCEEDED(rc = pMachine.createObject()))
