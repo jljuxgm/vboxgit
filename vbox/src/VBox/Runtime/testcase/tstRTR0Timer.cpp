@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Timer.cpp 48147 2013-08-29 12:03:25Z vboxsync $ */
+/* $Id: tstRTR0Timer.cpp 48165 2013-08-29 17:16:42Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers.
  */
@@ -527,7 +527,7 @@ DECLEXPORT(int) TSTRTR0TimerSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOpe
                     int rc = RTTimerCreateEx(&pTimer, 0, fFlags, tstRTR0TimerCallbackSpecific, &State);
                     if (rc == VERR_NOT_SUPPORTED)
                     {
-                        RTR0TestR0Info("specific timer are not supported, skipping\n");
+                        RTR0TestR0Info("one-shot specific timer are not supported, skipping\n");
                         break;
                     }
                     RTR0TESTR0_CHECK_RC_BREAK(rc, VINF_SUCCESS);
