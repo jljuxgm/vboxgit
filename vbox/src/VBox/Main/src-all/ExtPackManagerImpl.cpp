@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 48313 2013-09-05 15:35:22Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 48390 2013-09-09 12:39:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1601,6 +1601,8 @@ ExtPack::hlpLoadHGCMService(PCVBOXEXTPACKHLP pHlp, VBOXEXTPACK_IF_CS(IConsole) *
 
     Console *pCon = (Console *)pConsole;
     return pCon->hgcmLoadService(pszServiceLibrary, pszServiceName);
+#else
+    NOREF(pHlp); NOREF(pConsole); NOREF(pszServiceLibrary); NOREF(pszServiceName);
 #endif
     return VERR_INVALID_STATE;
 }
