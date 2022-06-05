@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 50552 2014-02-24 09:34:35Z vboxsync $ */
+/* $Id: DevVGA.cpp 50754 2014-03-12 17:43:09Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5498,6 +5498,9 @@ static DECLCALLBACK(void)  vgaR3Reset(PPDMDEVINS pDevIns)
     char           *pchEnd;
     LogFlow(("vgaReset\n"));
 
+    if (pThis->pVdma)
+        vboxVDMAReset(pThis->pVdma);
+
 #ifdef VBOX_WITH_HGSMI
     VBVAReset(pThis);
 #endif /* VBOX_WITH_HGSMI */
@@ -5948,6 +5951,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     pThis->IVBVACallbacks.pfnCrHgsmiControlCompleteAsync = vboxVDMACrHgsmiControlCompleteAsync;
 # endif
 #endif
+    pThis->IVBVACallbacks.pfnCrCtlSubmit = vboxCmdVBVACmdHostCtl;
 
     /*
      * We use our own critical section to avoid unncessary pointer indirections

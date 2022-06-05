@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 50678 2014-03-04 14:53:11Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 50754 2014-03-12 17:43:09Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1352,7 +1352,7 @@ BOOLEAN DxgkDdiInterruptRoutineNew(
 
             switch (chInfo)
             {
-                case VBVA_VBVACMD_CTL:
+                case VBVA_CMDVBVA_CTL:
                 {
                     int rc = VBoxSHGSMICommandProcessCompletion (&VBoxCommonFromDeviceExt(pDevExt)->guestCtx.heapCtx, (VBOXSHGSMIHEADER*)pvCmd, TRUE /*bool bIrq*/ , &CtlList);
                     AssertRC(rc);
