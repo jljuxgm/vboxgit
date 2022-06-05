@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49757 2013-12-03 14:56:36Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49774 2013-12-04 15:07:09Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9270,7 +9270,8 @@ HMVMX_EXIT_DECL hmR0VmxExitXcptOrNmi(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANS
     uint32_t uVector      = VMX_EXIT_INTERRUPTION_INFO_VECTOR(uExitIntInfo);
     switch (uIntType)
     {
-        case VMX_EXIT_INTERRUPTION_INFO_TYPE_SW_XCPT:   /* Software exception. (#BP or #OF) */
+        case VMX_EXIT_INTERRUPTION_INFO_TYPE_PRIV_SW_XCPT:  /* Privileged software exception. (#DB from ICEBP) */
+        case VMX_EXIT_INTERRUPTION_INFO_TYPE_SW_XCPT:       /* Software exception. (#BP or #OF) */
             Assert(uVector == X86_XCPT_DB || uVector == X86_XCPT_BP || uVector == X86_XCPT_OF);
             /* no break */
         case VMX_EXIT_INTERRUPTION_INFO_TYPE_HW_XCPT:
