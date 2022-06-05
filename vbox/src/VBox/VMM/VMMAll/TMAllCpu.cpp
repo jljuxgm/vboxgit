@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 52410 2014-08-19 10:14:14Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 53152 2014-10-27 13:29:31Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -185,7 +185,6 @@ int tmCpuTickPauseLocked(PVM pVM, PVMCPU pVCpu)
  */
 DECLINLINE(void) tmCpuTickRecordOffsettedTscRefusal(PVM pVM, PVMCPU pVCpu)
 {
-
     /* Sample the reason for refusing. */
     if (!pVM->tm.s.fMaybeUseOffsettedHostTSC)
        STAM_COUNTER_INC(&pVM->tm.s.StatTSCNotFixed);
