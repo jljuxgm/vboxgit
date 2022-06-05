@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1374,7 +1374,7 @@ NTSTATUS vboxVideoAMgrCtxAllocSubmit(PVBOXMP_DEVEXT pDevExt, PVBOXVIDEOCM_ALLOC_
 #endif
                 pBufCmd->offBuffer = pRef->pAlloc->offData + pBufInfo->Info.offData;
                 pBufCmd->cbBuffer = pBufInfo->Info.cbData;
-                pBufCmd->u32GuestData = pBufInfo->Info.bDoNotSignalCompletion;
+                pBufCmd->u32GuestData = 0;
                 pBufCmd->u64GuestData = (uint64_t)pRef;
             }
             else

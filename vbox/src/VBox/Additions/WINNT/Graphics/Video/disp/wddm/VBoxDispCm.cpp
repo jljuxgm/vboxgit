@@ -1,4 +1,4 @@
-/* $Id: VBoxDispCm.cpp 45403 2013-04-08 13:00:36Z vboxsync $ */
+/* $Id: VBoxDispCm.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -164,7 +164,12 @@ HRESULT vboxDispCmCtxCreate(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_CONTEXT 
         vboxDispCmSessionCtxAdd(&g_pVBoxCmMgr.Session, pContext);
         pContext->pDevice = pDevice;
         if (fIsCrContext)
-            vboxUhgsmiD3DEscInit(&pDevice->Uhgsmi, pDevice);
+        {
+            if (pDevice->pAdapter->u32VBox3DCaps & CR_VBOX_CAP_CMDVBVA)
+                vboxUhgsmiD3DInit(&pDevice->Uhgsmi, pDevice);
+            else
+                vboxUhgsmiD3DEscInit(&pDevice->Uhgsmi, pDevice);
+        }
     }
     else
     {

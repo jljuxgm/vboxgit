@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCr.cpp 47603 2013-08-07 19:36:53Z vboxsync $ */
+/* $Id: VBoxMPCr.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -891,6 +891,10 @@ void VBoxMpCrCtlConInit()
         WARN(("vboxMpCrCtlConGetCaps failed rc (%d), ignoring..", rc));
         g_VBoxMpCrHostCaps = 0;
     }
+
+#if 1 /*def DEBUG_misha*/
+    g_VBoxMpCrHostCaps &= ~CR_VBOX_CAP_CMDVBVA;
+#endif
 
     rc = VBoxMpCrCtlConDisconnect(&CrCtlCon, u32ClientID);
     if (RT_FAILURE(rc))

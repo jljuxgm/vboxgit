@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiKmt.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxUhgsmiKmt.h 49591 2013-11-20 17:53:55Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -34,12 +34,8 @@ typedef struct VBOXUHGSMI_PRIVATE_KMT
 #define VBOXUHGSMIKMT_GET_PRIVATE(_p, _t) ((_t*)(((uint8_t*)_p) - RT_OFFSETOF(_t, BasePrivate.Base)))
 #define VBOXUHGSMIKMT_GET(_p) VBOXUHGSMIKMT_GET_PRIVATE(_p, VBOXUHGSMI_PRIVATE_KMT)
 
-#if 0
-HRESULT vboxUhgsmiKmtCreate(PVBOXUHGSMI_PRIVATE_KMT pHgsmi, BOOL bD3D);
-#endif
 HRESULT vboxUhgsmiKmtDestroy(PVBOXUHGSMI_PRIVATE_KMT pHgsmi);
 
-HRESULT vboxUhgsmiKmtEscCreate(PVBOXUHGSMI_PRIVATE_KMT pHgsmi, BOOL bD3D);
-
+HRESULT vboxUhgsmiKmtCreate(PVBOXUHGSMI_PRIVATE_KMT pHgsmi, BOOL bD3D);
 
 #endif /* #ifndef ___VBoxUhgsmiKmt_h__ */

@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -61,11 +61,7 @@ VBOXCRHGSMI_DECL(PVBOXUHGSMI) VBoxCrHgsmiCreate()
     PVBOXUHGSMI_PRIVATE_KMT pHgsmiGL = (PVBOXUHGSMI_PRIVATE_KMT)RTMemAllocZ(sizeof (*pHgsmiGL));
     if (pHgsmiGL)
     {
-#if 0
         HRESULT hr = vboxUhgsmiKmtCreate(pHgsmiGL, TRUE /* bD3D tmp for injection thread*/);
-#else
-        HRESULT hr = vboxUhgsmiKmtEscCreate(pHgsmiGL, TRUE /* bD3D tmp for injection thread*/);
-#endif
         Log(("CrHgsmi: faled to create KmtEsc VBOXUHGSMI instance, hr (0x%x)\n", hr));
         if (hr == S_OK)
         {

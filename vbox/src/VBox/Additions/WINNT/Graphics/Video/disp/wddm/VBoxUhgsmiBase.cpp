@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 49332 2013-10-30 13:13:02Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -177,7 +177,6 @@ DECLCALLBACK(int) vboxUhgsmiBaseEscBufferSubmit(PVBOXUHGSMI pHgsmi, PVBOXUHGSMI_
         PVBOXUHGSMI_BUFFER_SUBMIT pBufInfo = &aBuffers[i];
         PVBOXUHGSMI_BUFFER_PRIVATE_ESC_BASE pBuf = VBOXUHGSMIESCBASE_GET_BUFFER(pBufInfo->pBuf);
         pSubmInfo->hAlloc = pBuf->Alloc.hAlloc;
-        pSubmInfo->Info.bDoNotSignalCompletion = 0;
         if (pBufInfo->fFlags.bEntireBuffer)
         {
             pSubmInfo->Info.offData = 0;

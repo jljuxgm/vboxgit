@@ -1,4 +1,4 @@
-/* $Id: VBoxDispKmt.h 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: VBoxDispKmt.h 49591 2013-11-20 17:53:55Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -69,6 +69,8 @@ typedef struct VBOXDISPKMT_CALLBACKS
     PFND3DKMT_CLOSEADAPTER pfnD3DKMTCloseAdapter;
     /* escape */
     PFND3DKMT_ESCAPE pfnD3DKMTEscape;
+
+    PFND3DKMT_QUERYADAPTERINFO pfnD3DKMTQueryAdapterInfo;
 
     PFND3DKMT_CREATEDEVICE pfnD3DKMTCreateDevice;
     PFND3DKMT_DESTROYDEVICE pfnD3DKMTDestroyDevice;

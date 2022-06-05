@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 49458 2013-11-13 10:32:13Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 49591 2013-11-20 17:53:55Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -127,8 +127,11 @@ typedef struct _VBOXMP_DEVEXT
 
    BOOLEAN f3DEnabled;
    BOOLEAN fTexPresentEnabled;
+   BOOLEAN fCmdVbvaEnabled;
 
    uint32_t u32CrConDefaultClientID;
+
+   VBOXCMDVBVA CmdVbva;
 
    VBOXMP_CRCTLCON CrCtlCon;
    VBOXMP_CRSHGSMITRANSPORT CrHgsmiTransport;
@@ -212,21 +215,21 @@ DECLINLINE(PVBOXMP_COMMON) VBoxCommonFromDeviceExt(PVBOXMP_DEVEXT pExt)
 #ifdef VBOX_WDDM_MINIPORT
 DECLINLINE(ULONG) vboxWddmVramCpuVisibleSize(PVBOXMP_DEVEXT pDevExt)
 {
-#ifdef VBOXWDDM_RENDER_FROM_SHADOW
+    if (pDevExt->fCmdVbvaEnabled)
+    {
+        /* all memory layout info should be initialized */
+        Assert(pDevExt->CmdVbva.Vbva.offVRAMBuffer);
+        /* page aligned */
+        Assert(!(pDevExt->CmdVbva.Vbva.offVRAMBuffer & 0xfff));
+
+        return (ULONG)(pDevExt->CmdVbva.Vbva.offVRAMBuffer & ~0xfffULL);
+    }
     /* all memory layout info should be initialized */
     Assert(pDevExt->aSources[0].Vbva.Vbva.offVRAMBuffer);
     /* page aligned */
     Assert(!(pDevExt->aSources[0].Vbva.Vbva.offVRAMBuffer & 0xfff));
 
     return (ULONG)(pDevExt->aSources[0].Vbva.Vbva.offVRAMBuffer & ~0xfffULL);
-#else
-    /* all memory layout info should be initialized */
-    Assert(pDevExt->u.primary.Vdma.CmdHeap.Heap.area.offBase);
-    /* page aligned */
-    Assert(!(pDevExt->u.primary.Vdma.CmdHeap.Heap.area.offBase & 0xfff));
-
-    return pDevExt->u.primary.Vdma.CmdHeap.Heap.area.offBase & ~0xfffUL;
-#endif
 }
 
 DECLINLINE(ULONG) vboxWddmVramCpuVisibleSegmentSize(PVBOXMP_DEVEXT pDevExt)
