@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 52427 2014-08-20 08:59:33Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 52432 2014-08-20 16:34:15Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container
  */
@@ -103,8 +103,8 @@ void WebMWriter::writeSeekInfo()
     m_uSegmentInfoPos = RTFileTell(m_File);
 
     char szVersion[64];
-    RTStrPrintf(szVersion, sizeof(szVersion), "vpxenc%",
-                m_bDebug ? vpx_codec_version_str() : "");
+    RTStrPrintf(szVersion, sizeof(szVersion), "vpxenc%s",
+                m_bDebug ? "" : vpx_codec_version_str());
 
     m_Ebml.subStart(Info)
           .serializeUnsignedInteger(TimecodeScale, 1000000)
