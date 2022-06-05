@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 50379 2014-02-10 10:22:43Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 50410 2014-02-11 09:37:33Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -34,7 +34,6 @@
 #include <VBox/err.h>
 #include <VBox/intnetinline.h>
 #include <VBox/version.h>
-#include <VBox/VBoxNetSend.h>
 #include <iprt/initterm.h>
 #include <iprt/assert.h>
 #include <iprt/spinlock.h>
@@ -45,6 +44,8 @@
 #include <iprt/time.h>
 #include <iprt/net.h>
 #include <iprt/thread.h>
+
+#include "../../darwin/VBoxNetSend.h"
 
 #include <mach/kmod.h>
 #include <sys/conf.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 50322 2014-02-05 09:19:01Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 50410 2014-02-11 09:37:33Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -31,7 +31,6 @@
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/version.h>
-#include <VBox/VBoxNetSend.h>
 #include <iprt/assert.h>
 #include <iprt/initterm.h>
 #include <iprt/semaphore.h>
@@ -39,6 +38,8 @@
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 #include <iprt/alloca.h>
+
+#include "../../darwin/VBoxNetSend.h"
 
 #include <sys/systm.h>
 RT_C_DECLS_BEGIN /* Buggy 10.4 headers, fixed in 10.5. */
