@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51820 2014-07-02 19:32:59Z vboxsync $
+# $Id: Makefile.kmk 51856 2014-07-03 18:39:21Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -240,6 +240,9 @@ tstRTDigest_TEMPLATE = VBOXR3TSTEXE
 tstRTDigest_SOURCES = tstRTDigest.cpp
 
 tstRTDigest-2_TEMPLATE = VBOXR3TSTEXE
+ifndef VBOX_WITH_ALT_HASH_CODE
+ tstRTDigest-2_DEFS = IPRT_WITHOUT_SHA512T224 IPRT_WITHOUT_SHA512T256
+endif
 tstRTDigest-2_SOURCES = tstRTDigest-2.cpp
 
 ifdef VBOX_WITH_LIBCURL
