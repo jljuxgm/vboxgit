@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: USBProxyService.cpp 51441 2014-05-28 10:59:01Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -355,8 +355,9 @@ HRESULT USBProxyService::detachAllDevicesFromVM(SessionMachine *aMachine, bool a
             if (    SUCCEEDED(hrc)
                 &&  fRunFilters)
             {
-                Assert(aDone && pHostDevice->i_getUnistate() ==
-                    kHostUSBDeviceState_HeldByProxy && pHostDevice->i_getMachine().isNull());
+                Assert(   aDone
+                       && pHostDevice->i_getUnistate() == kHostUSBDeviceState_HeldByProxy
+                       && pHostDevice->i_getMachine().isNull());
                 devLock.release();
                 alock.release();
                 HRESULT hrc2 = runAllFiltersOnDevice(pHostDevice, llOpenedMachines, aMachine);

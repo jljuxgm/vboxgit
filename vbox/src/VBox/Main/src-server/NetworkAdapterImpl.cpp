@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 51441 2014-05-28 10:59:01Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1305,7 +1305,7 @@ HRESULT NetworkAdapter::getBandwidthGroup(ComPtr<IBandwidthGroup> &aBandwidthGro
         hrc = mParent->getBandwidthGroup(mData->mBandwidthGroup, pBwGroup, true /* fSetError */);
 
         Assert(SUCCEEDED(hrc)); /* This is not allowed to fail because the existence
-                                i  of the group was checked when it was attached. */
+                                 * of the group was checked when it was attached. */
         if (SUCCEEDED(hrc))
             pBwGroup.queryInterfaceTo(aBandwidthGroup.asOutParam());
     }

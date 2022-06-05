@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 51441 2014-05-28 10:59:01Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3853,8 +3853,8 @@ static int fntSaveMediaRegistries(RTTHREAD ThreadSelf, void *pvUser)
  * This locks the media tree. Throws HRESULT on errors!
  *
  * @param mediaRegistry Settings structure to fill.
- * @param uuidRegistry The UUID of the media registry; either a machine UUID (
- *        if machine registry) or the UUID of the global registry.
+ * @param uuidRegistry The UUID of the media registry; either a machine UUID
+ *        (if machine registry) or the UUID of the global registry.
  * @param strMachineFolder The machine folder for relative paths, if machine registry, or an empty string otherwise.
  */
 void VirtualBox::i_saveMediaRegistry(settings::MediaRegistry &mediaRegistry,

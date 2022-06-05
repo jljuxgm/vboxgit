@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 51441 2014-05-28 10:59:01Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -3074,8 +3074,8 @@ void Appliance::i_importMachineGeneric(const ovf::VirtualSystem &vsysThis,
             if (LogIsEnabled())
             {
                 size_t i = 0;
-                for (list<VirtualSystemDescriptionEntry*>::const_iterator itHD =
-                     avsdeHDs.begin(); itHD != avsdeHDs.end(); ++itHD, i++)
+                for (list<VirtualSystemDescriptionEntry*>::const_iterator itHD = avsdeHDs.begin();
+                     itHD != avsdeHDs.end(); ++itHD, i++)
                      Log(("avsdeHDs[%zu]: strRef=%s strOvf=%s\n", i, (*itHD)->strRef.c_str(), (*itHD)->strOvf.c_str()));
                 i = 0;
                 for (ovf::DiskImagesMap::const_iterator itDisk = stack.mapDisks.begin(); itDisk != stack.mapDisks.end(); ++itDisk)
