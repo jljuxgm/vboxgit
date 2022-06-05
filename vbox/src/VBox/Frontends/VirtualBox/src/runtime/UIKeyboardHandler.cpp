@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 52014 2014-07-14 11:16:43Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 52131 2014-07-22 15:53:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1053,6 +1053,14 @@ bool UIKeyboardHandler::winLowKeyboardEvent(UINT msg, const KBDLLHOOKSTRUCT &eve
 
     if (!m_fIsKeyboardCaptured)
         return false;
+
+    /* For normal user applications, Windows defines AltGr to be the same as
+     * LControl + RAlt.  Without a low-level hook it is hard to recognise the
+     * additional LControl event inserted, but in a hook we recognise it by
+     * its special 0x21D scan code. */
+    if (   m_views[m_iKeyboardHookViewIndex]->hasFocus()
+        && ((event.scanCode & ~0x80) == 0x21D))
+        return true;
 
     MSG message;
     message.hwnd = m_views[m_iKeyboardHookViewIndex]->winId();
