@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 46328 2013-05-30 12:37:09Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 48009 2013-08-23 07:38:52Z vboxsync $ */
 
 /** @file
  *
@@ -225,7 +225,6 @@ int CollectorLinux::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *availab
 int CollectorLinux::getHostFilesystemUsage(const char *path, ULONG *total, ULONG *used, ULONG *available)
 {
     struct statvfs stats;
-    const unsigned _MB = 1024 * 1024;
 
     if (statvfs(path, &stats) == -1)
     {
@@ -233,9 +232,9 @@ int CollectorLinux::getHostFilesystemUsage(const char *path, ULONG *total, ULONG
         return VERR_ACCESS_DENIED;
     }
     uint64_t cbBlock = stats.f_frsize ? stats.f_frsize : stats.f_bsize;
-    *total = (ULONG)(cbBlock * stats.f_blocks / _MB);
-    *used  = (ULONG)(cbBlock * (stats.f_blocks - stats.f_bfree) / _MB);
-    *available = (ULONG)(cbBlock * stats.f_bavail / _MB);
+    *total = (ULONG)(cbBlock * stats.f_blocks / _1M);
+    *used  = (ULONG)(cbBlock * (stats.f_blocks - stats.f_bfree) / _1M);
+    *available = (ULONG)(cbBlock * stats.f_bavail / _1M);
 
     return VINF_SUCCESS;
 }

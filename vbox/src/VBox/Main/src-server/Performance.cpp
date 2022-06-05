@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 48007 2013-08-23 07:29:19Z vboxsync $ */
+/* $Id: Performance.cpp 48009 2013-08-23 07:38:52Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -921,7 +921,7 @@ void HostDiskUsage::collect()
     uint64_t total;
     int rc = mHAL->getHostDiskSize(mDiskName.c_str(), &total);
     if (RT_SUCCESS(rc))
-        mTotal->put((ULONG)(total / (1024*1024)));
+        mTotal->put((ULONG)(total / _1M));
 }
 
 #ifndef VBOX_COLLECTOR_TEST_CASE
