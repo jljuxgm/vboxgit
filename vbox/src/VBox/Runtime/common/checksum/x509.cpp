@@ -1,4 +1,4 @@
-/* $Id: x509.cpp 50835 2014-03-21 08:26:49Z vboxsync $ */
+/* $Id: x509.cpp 50887 2014-03-26 12:55:14Z vboxsync $ */
 /** @file
  * IPRT - X509 functions.
  */
@@ -361,10 +361,14 @@ RTDECL(int) RTX509CertificateVerify(void *pvBuf, unsigned int cbSize)
                 else
                     rc = VERR_X509_CERTIFICATE_VERIFICATION_FAILURE;
             }
+            else
+            {
+                rc = VINF_NOT_SELFSIGNED_X509_CERTIFICATE;
+            }
         }
         else
         {
-            rc = VERR_NOT_SELFSIGNED_X509_CERTIFICATE;
+            rc = VINF_NOT_SELFSIGNED_X509_CERTIFICATE;
         }
 
         break;
