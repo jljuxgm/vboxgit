@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 49073 2013-10-13 02:35:35Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -234,7 +234,7 @@ HRESULT NATNetwork::saveSettings(settings::NATNetwork &data)
     data.llPortForwardRules6.clear();
     for (NATRuleMap::iterator it = m->mapName2PortForwardRule6.begin();
          it != m->mapName2PortForwardRule6.end(); ++it)
-        data.llPortForwardRules4.push_back(it->second);
+        data.llPortForwardRules6.push_back(it->second);
 
     data.u32HostLoopback6Offset = m->u32LoopbackIp6;
 
