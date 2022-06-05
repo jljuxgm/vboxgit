@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 49059 2013-10-11 15:56:05Z vboxsync $ */
+/* $Id: MachineImpl.h 49644 2013-11-25 16:57:15Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -813,9 +813,9 @@ public:
                               ComObjPtr<BandwidthGroup> &pBandwidthGroup,
                               bool fSetError = false)
     {
-        return mBandwidthControl->getBandwidthGroupByName(strBandwidthGroup,
-                                                          pBandwidthGroup,
-                                                          fSetError);
+        return mBandwidthControl->i_getBandwidthGroupByName(strBandwidthGroup,
+                                                            pBandwidthGroup,
+                                                            fSetError);
     }
 
 protected:
