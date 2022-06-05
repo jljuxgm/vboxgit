@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 50321 2014-02-05 08:30:46Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 50322 2014-02-05 09:19:01Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -296,7 +296,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
             if (!err)
             {
                 ifnet_set_mtu(pThis->u.s.pIface, VBOXNETADP_MTU);
-                VboxNetSendDummy(pThis->u.s.pIface);
+                VBoxNetSendDummy(pThis->u.s.pIface);
                 return VINF_SUCCESS;
             }
             else

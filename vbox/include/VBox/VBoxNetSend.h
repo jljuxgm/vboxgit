@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSend.h 50321 2014-02-05 08:30:46Z vboxsync $ */
+/* $Id: VBoxNetSend.h 50322 2014-02-05 09:19:01Z vboxsync $ */
 /** @file
  * A place to share code and definitions between VBoxNetAdp and VBoxNetFlt host drivers.
  */
@@ -57,7 +57,7 @@ RT_C_DECLS_BEGIN
  * @param   pIfNet      The interface that will hold the reference to the calling
  *                      thread. We submit dummy as if it was coming from this interface.
  */
-inline int VboxNetSendDummy(ifnet_t pIfNet)
+inline int VBoxNetSendDummy(ifnet_t pIfNet)
 {
     int rc = 0;
     size_t cbTotal = 50; /* No Ethernet header */

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 50321 2014-02-05 08:30:46Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 50322 2014-02-05 09:19:01Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -889,7 +889,7 @@ static int vboxNetFltSendDummyWorker(RTTHREAD ThreadSelf, void *pvUser)
 {
     Assert(pvUser);
     ifnet_t pIfNet = (ifnet_t)pvUser;
-    return VboxNetSendDummy(pIfNet);
+    return VBoxNetSendDummy(pIfNet);
 }
 
 /*
