@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 48553 2013-09-19 17:04:41Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -441,7 +441,7 @@ void UIMachineSettingsNetwork::sltHandleAttachmentTypeChange()
                                                  "will be connected to. You can create and remove adapters "
                                                  "using the global network settings in the virtual machine "
                                                  "manager window."));
-            m_pAdapterNameCombo->setEditable(true);
+            m_pAdapterNameCombo->setEditable(false);
             break;
         }
         default:
