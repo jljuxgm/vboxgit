@@ -1,4 +1,4 @@
-/* $Id: utf-8-case.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: utf-8-case.cpp 51795 2014-07-02 01:01:50Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Case Sensitivity and Folding, Part 1.
  */
@@ -289,8 +289,12 @@ RTDECL(char *) RTStrToLower(char *psz)
         int rc = RTStrGetCpEx(&pszSrc, &uc);
         if (RT_SUCCESS(rc))
         {
-            uc = RTUniCpToLower(uc);
-            pszDst = RTStrPutCp(pszDst, uc);
+            RTUNICP uc2 = RTUniCpToLower(uc);
+            if (RT_LIKELY(   uc2 == uc
+                          || RTUniCpCalcUtf8Len(uc2) == RTUniCpCalcUtf8Len(uc)))
+                pszDst = RTStrPutCp(pszDst, uc2);
+            else
+                pszDst = RTStrPutCp(pszDst, uc);
         }
         else
         {
@@ -322,8 +326,12 @@ RTDECL(char *) RTStrToUpper(char *psz)
         int rc = RTStrGetCpEx(&pszSrc, &uc);
         if (RT_SUCCESS(rc))
         {
-            uc = RTUniCpToUpper(uc);
-            pszDst = RTStrPutCp(pszDst, uc);
+            RTUNICP uc2 = RTUniCpToUpper(uc);
+            if (RT_LIKELY(   uc2 == uc
+                          || RTUniCpCalcUtf8Len(uc2) == RTUniCpCalcUtf8Len(uc)))
+                pszDst = RTStrPutCp(pszDst, uc2);
+            else
+                pszDst = RTStrPutCp(pszDst, uc);
         }
         else
         {
