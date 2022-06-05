@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 52449 2014-08-21 18:25:08Z vboxsync $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 52456 2014-08-22 08:46:41Z vboxsync $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -1066,8 +1066,8 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_ins_op,OP_SIZE,_addr,ADDR_SIZE), bool, fIoCh
                 pCtx->ADDR_rDI -= OP_SIZE / 8;
             iemRegAddToRipAndClearRF(pIemCpu, cbInstr);
         }
-        /* iemMemMap already check permissions, so this may only be real errors
-           or access handlers medling. The access handler case is going to
+        /* iemMemMap already checked permissions, so this may only be real errors
+           or access handlers meddling. The access handler case is going to
            cause misbehavior if the instruction is re-interpreted or smth. So,
            we fail with an internal error here instead. */
         else
