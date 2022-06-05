@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
+/* $Id: MachineImpl.cpp 53110 2014-10-21 17:11:01Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14395,7 +14395,7 @@ HRESULT Machine::runUSBDeviceFilters(const ComPtr<IUSBDevice> &aDevice,
 
 HRESULT Machine::captureUSBDevice(const com::Guid &aId, const com::Utf8Str &aCaptureFilename)
 {
-    NOREF(aId);
+    NOREF(aId); NOREF(aCaptureFilename);
     ReturnComNotImplemented();
 }
 
