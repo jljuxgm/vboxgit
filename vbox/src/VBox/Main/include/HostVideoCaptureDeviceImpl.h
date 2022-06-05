@@ -1,4 +1,4 @@
-/* $Id: HostVideoCaptureDeviceImpl.h 48589 2013-09-20 13:36:09Z vboxsync $ */
+/* $Id: HostVideoCaptureDeviceImpl.h 48600 2013-09-20 14:30:46Z vboxsync $ */
 
 /** @file
  *
@@ -39,7 +39,7 @@ public:
     void FinalRelease();
 
     /* Public initializer/uninitializer for internal purposes only. */
-    HRESULT init(com::Utf8Str name, com::Utf8Str path, com::Utf8Str alias);
+    HRESULT init(const com::Utf8Str &name, const com::Utf8Str &path, const com::Utf8Str &alias);
     void uninit();
 
     static HRESULT queryHostDevices(HostVideoCaptureDeviceList *pList);

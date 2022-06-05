@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48578 2013-09-20 10:35:43Z vboxsync $
+# $Id: Makefile.kmk 48600 2013-09-20 14:30:46Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -303,6 +303,7 @@ VBoxSVC_LIBS += \
 	$(PATH_STAGE_LIB)/VBoxAPIWrap$(VBOX_SUFF_LIB) \
 	$(PATH_STAGE_LIB)/SSMStandalone$(VBOX_SUFF_LIB) \
 	$(LIB_DDU)
+VBoxSVC_LIBS.win += strmiids.lib
 VBoxSVC_SDKS = VBOX_LIBPNG VBOX_ZLIB
 VBoxSVC_LIBS.solaris = \
 	adm \
