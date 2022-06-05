@@ -1,4 +1,4 @@
-/* $Id: VBoxSupLib-win.cpp 52024 2014-07-14 21:23:24Z vboxsync $ */
+/* $Id: VBoxSupLib-win.cpp 52940 2014-10-03 18:40:54Z vboxsync $ */
 /** @file
  * IPRT - VBoxSupLib.dll, Windows.
  */
@@ -51,7 +51,7 @@ BOOL __stdcall DllMainEntrypoint(HANDLE hModule, DWORD dwReason, PVOID pvReserve
             WCHAR wszName[RTPATH_MAX];
             SetLastError(NO_ERROR);
             if (   GetModuleFileNameW((HMODULE)hModule, wszName, RT_ELEMENTS(wszName)) > 0
-                && GetLastError() == NO_ERROR)
+                && RtlGetLastWin32Error() == NO_ERROR)
             {
                 int cExtraLoads = 2;
                 while (cExtraLoads-- > 0)
