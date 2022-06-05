@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: MMPagePool.cpp 52809 2014-09-22 09:55:50Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -231,7 +231,7 @@ DECLINLINE(void *) mmR3PagePoolAlloc(PMMPAGEPOOL pPool)
     unsigned        cPages = !pPool->fLow ? 128 : 32;
     PMMPAGESUBPOOL  pSub;
     int rc = MMHyperAlloc(pPool->pVM,
-                          RT_OFFSETOF(MMPAGESUBPOOL, auBitmap[cPages / (sizeof(pSub->auBitmap[0] * 8))])
+                          RT_OFFSETOF(MMPAGESUBPOOL, auBitmap[cPages / (sizeof(pSub->auBitmap[0]) * 8)])
                           + (sizeof(SUPPAGE) + sizeof(MMPPLOOKUPHCPHYS)) * cPages
                           + sizeof(MMPPLOOKUPHCPTR),
                           0,
