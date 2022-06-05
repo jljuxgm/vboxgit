@@ -1,4 +1,4 @@
-/* $Id: cr_dump.h 48897 2013-10-04 19:35:58Z vboxsync $ */
+/* $Id: cr_dump.h 49172 2013-10-17 19:34:35Z vboxsync $ */
 
 /** @file
  * Debugging: Dump API
@@ -157,6 +157,10 @@ VBOXDUMPDECL(void) crRecDumpVertAttrV(CR_RECORDER *pRec, CRContext *ctx, const c
 VBOXDUMPDECL(void) crRecDumpTexParam(CR_RECORDER *pRec, CRContext *ctx, GLenum enmTarget);
 VBOXDUMPDECL(void) crRecDumpTexEnv(CR_RECORDER *pRec, CRContext *ctx);
 VBOXDUMPDECL(void) crRecDumpTexGen(CR_RECORDER *pRec, CRContext *ctx);
+
+VBOXDUMPDECL(int) crRecAlphaImgCreate(const CR_BLITTER_IMG *pImg, CR_BLITTER_IMG *pAlphaImg);
+VBOXDUMPDECL(void) crRecAlphaImgDestroy(CR_BLITTER_IMG *pImg);
+
 
 typedef DECLCALLBACKPTR(GLuint, PFNCRDUMPGETHWID)(void *pvObj);
 void* crDmpHashtableSearchByHwid(CRHashTable *pHash, GLuint hwid, PFNCRDUMPGETHWID pfnGetHwid, unsigned long *pKey);
