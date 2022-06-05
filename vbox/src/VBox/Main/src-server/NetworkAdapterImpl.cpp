@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 48989 2013-10-09 07:05:31Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 49590 2013-11-20 17:36:14Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1566,15 +1566,13 @@ void NetworkAdapter::updateBandwidthGroup(BandwidthGroup *aBwGroup)
 
 HRESULT NetworkAdapter::checkAndSwitchFromNatNetworking(IN_BSTR networkName)
 {
-    HRESULT hrc;
     MachineState_T state;
 
-    hrc = mParent->COMGETTER(State)(&state);
+    HRESULT hrc = mParent->COMGETTER(State)(&state);
     if (FAILED(hrc))
         return hrc;
 
-    if (   mData->mAttachmentType == NetworkAttachmentType_NATNetwork
-        && state == MachineState_Running)
+    if (state == MachineState_Running)
     {
         Bstr bstrName;
         hrc = mParent->COMGETTER(Name)(bstrName.asOutParam());
@@ -1590,10 +1588,9 @@ HRESULT NetworkAdapter::checkAndSwitchFromNatNetworking(IN_BSTR networkName)
 
 HRESULT NetworkAdapter::switchToNatNetworking(IN_BSTR aNatNetworkName)
 {
-    HRESULT hrc;
     MachineState_T state;
 
-    hrc = mParent->COMGETTER(State)(&state);
+    HRESULT hrc = mParent->COMGETTER(State)(&state);
     if (FAILED(hrc))
         return hrc;
 
