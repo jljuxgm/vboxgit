@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 49271 2013-10-24 10:50:57Z vboxsync $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 52449 2014-08-21 18:25:08Z vboxsync $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -1056,6 +1056,7 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_ins_op,OP_SIZE,_addr,ADDR_SIZE), bool, fIoCh
         rcStrict = iemVerifyFakeIOPortRead(pIemCpu, pCtx->dx, &u32Value, OP_SIZE / 8);
     if (IOM_SUCCESS(rcStrict))
     {
+        *puMem = (OP_TYPE)u32Value;
         VBOXSTRICTRC rcStrict2 = iemMemCommitAndUnmap(pIemCpu, puMem, IEM_ACCESS_DATA_W);
         if (RT_LIKELY(rcStrict2 == VINF_SUCCESS))
         {
