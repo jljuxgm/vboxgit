@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 50605 2014-02-26 13:53:19Z vboxsync $ */
+/* $Id: DnDURIList.cpp 50610 2014-02-26 14:35:56Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -292,8 +292,7 @@ int DnDURIList::appendPathRecursive(const char *pcszPath, size_t cbBaseLen,
                     || RTStrCmp(DirEntry.szName, "..") == 0)
                     break;
 
-                char *pszRecDir = RTStrAPrintf2("%s/%s", pcszPath,
-                                                DirEntry.szName);
+                char *pszRecDir = RTPathJoinA(pcszPath, DirEntry.szName);
                 if (pszRecDir)
                 {
                     rc = appendPathRecursive(pszRecDir, cbBaseLen, fFlags);
@@ -306,8 +305,7 @@ int DnDURIList::appendPathRecursive(const char *pcszPath, size_t cbBaseLen,
             case RTDIRENTRYTYPE_SYMLINK:
             case RTDIRENTRYTYPE_FILE:
             {
-                char *pszNewFile = RTStrAPrintf2("%s/%s",
-                                                 pcszPath, DirEntry.szName);
+                char *pszNewFile = RTPathJoinA(pcszPath, DirEntry.szName);
                 if (pszNewFile)
                 {
                     /* We need the size and the mode of the file. */
