@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48956 2013-10-07 22:00:27Z vboxsync $
+# $Id: Makefile.kmk 49016 2013-10-10 00:12:58Z vboxsync $
 ## @file
 #
 
@@ -53,7 +53,7 @@ VBoxNetLwipNAT_LDFLAGS.win = /SUBSYSTEM:windows
 VBoxNetLwipNAT_SOURCES += \
     proxy_pollmgr.c \
     proxy_rtadvd.c \
-    proxytest.c \
+    proxy.c \
     pxremap.c \
     pxtcp.c \
     pxudp.c \

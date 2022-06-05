@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48956 2013-10-07 22:00:27Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49016 2013-10-10 00:12:58Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -96,7 +96,7 @@ extern "C"
 #include "lwip/sockets.h"
 #include "netif/etharp.h"
 
-#include "proxytest.h"
+#include "proxy.h"
 #include "pxremap.h"
 #include "portfwd.h"
 }
