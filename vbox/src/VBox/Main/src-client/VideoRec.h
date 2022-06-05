@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 50041 2014-01-09 16:13:28Z vboxsync $ */
+/* $Id: VideoRec.h 50313 2014-02-03 18:46:27Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -31,7 +31,7 @@ void VideoRecContextClose(PVIDEORECCONTEXT pCtx);
 bool VideoRecIsEnabled(PVIDEORECCONTEXT pCtx);
 int  VideoRecCopyToIntBuf(PVIDEORECCONTEXT pCtx, uint32_t uScreen,
                           uint32_t x, uint32_t y, uint32_t uPixelFormat, uint32_t uBitsPerPixel,
-                          uint32_t uBytesPerLine, uint32_t uGuestHeight, uint32_t uGuestWidth,
+                          uint32_t uBytesPerLine, uint32_t uGuestWidth, uint32_t uGuestHeight,
                           uint8_t *pu8BufferAddress, uint64_t u64TimeStamp);
 
 #endif /* !____H_VIDEOREC */

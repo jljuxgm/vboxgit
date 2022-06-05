@@ -1,4 +1,4 @@
-/* $Id: cr_vreg.h 50246 2014-01-27 15:00:45Z vboxsync $ */
+/* $Id: cr_vreg.h 50313 2014-02-03 18:46:27Z vboxsync $ */
 
 /** @file
  * Visible Regions processing API
@@ -92,6 +92,19 @@ DECLINLINE(void) VBoxRectTranslated(const RTRECT * pRect, int32_t x, int32_t y, 
 {
     *pResult = *pRect;
     VBoxRectTranslate(pResult, x, y);
+}
+
+DECLINLINE(void) VBoxRectInvertY(RTRECT * pRect)
+{
+    int32_t y = pRect->yTop;
+    pRect->yTop = pRect->yBottom;
+    pRect->yBottom = y;
+}
+
+DECLINLINE(void) VBoxRectInvertedY(const RTRECT * pRect, RTRECT * pResult)
+{
+    *pResult = *pRect;
+    VBoxRectInvertY(pResult);
 }
 
 DECLINLINE(void) VBoxRectMove(RTRECT * pRect, int32_t x, int32_t y)
