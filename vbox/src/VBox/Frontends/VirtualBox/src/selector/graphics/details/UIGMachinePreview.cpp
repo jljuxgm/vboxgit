@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 50924 2014-03-28 19:21:17Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 51401 2014-05-26 16:45:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,6 +26,7 @@
 /* GUI includes: */
 #include "UIGMachinePreview.h"
 #include "UIVirtualBoxEventHandler.h"
+#include "UIExtraDataDefs.h"
 #include "UIImageTools.h"
 #include "VBoxGlobal.h"
 
