@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 51214 2014-05-08 13:23:04Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 51398 2014-05-26 14:04:39Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -436,6 +436,7 @@ template<> QString toInternalString(const RuntimeMenuMachineActionType &runtimeM
         case RuntimeMenuMachineActionType_TakeSnapshot:      strResult = "TakeSnapshot"; break;
         case RuntimeMenuMachineActionType_TakeScreenshot:    strResult = "TakeScreenshot"; break;
         case RuntimeMenuMachineActionType_InformationDialog: strResult = "InformationDialog"; break;
+        case RuntimeMenuMachineActionType_KeyboardSettings:  strResult = "KeyboardSettings"; break;
         case RuntimeMenuMachineActionType_MouseIntegration:  strResult = "MouseIntegration"; break;
         case RuntimeMenuMachineActionType_TypeCAD:           strResult = "TypeCAD"; break;
 #ifdef Q_WS_X11
@@ -469,6 +470,7 @@ template<> RuntimeMenuMachineActionType fromInternalString<RuntimeMenuMachineAct
     keys << "TakeSnapshot";      values << RuntimeMenuMachineActionType_TakeSnapshot;
     keys << "TakeScreenshot";    values << RuntimeMenuMachineActionType_TakeScreenshot;
     keys << "InformationDialog"; values << RuntimeMenuMachineActionType_InformationDialog;
+    keys << "KeyboardSettings";  values << RuntimeMenuMachineActionType_KeyboardSettings;
     keys << "MouseIntegration";  values << RuntimeMenuMachineActionType_MouseIntegration;
     keys << "TypeCAD";           values << RuntimeMenuMachineActionType_TypeCAD;
 #ifdef Q_WS_X11
