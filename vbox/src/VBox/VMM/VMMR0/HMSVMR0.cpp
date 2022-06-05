@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 51643 2014-06-18 11:06:06Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 51660 2014-06-19 07:59:01Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2525,7 +2525,7 @@ static void hmR0SvmEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
     Assert(!pVCpu->hm.s.Event.fPending);
     Log4Func(("\n"));
 
-    const bool fIntShadow = !!hmR0SvmGetGuestIntrShadow(pVCpu, pCtx);
+    const bool fIntShadow = RT_BOOL(hmR0SvmGetGuestIntrShadow(pVCpu, pCtx));
     const bool fBlockInt  = !(pCtx->eflags.u32 & X86_EFL_IF);
     PSVMVMCB pVmcb        = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
 
