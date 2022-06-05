@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 52459 2014-08-22 11:03:40Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 52478 2014-08-22 15:21:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -210,6 +210,7 @@ void UIMachineLogicSeamless::prepareActionGroups()
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType_AdjustWindow |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize |
+                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_MenuBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize));
 

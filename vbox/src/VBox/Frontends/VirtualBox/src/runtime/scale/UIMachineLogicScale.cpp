@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 52459 2014-08-22 11:03:40Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 52478 2014-08-22 15:21:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -77,6 +77,7 @@ void UIMachineLogicScale::prepareActionGroups()
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType_AdjustWindow |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize |
+                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_MenuBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize));
 
