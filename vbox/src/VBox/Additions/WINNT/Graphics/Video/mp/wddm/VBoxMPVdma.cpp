@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 51260 2014-05-15 15:35:56Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 51330 2014-05-21 19:46:25Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1160,7 +1160,7 @@ static NTSTATUS vboxVdmaProcessVRegTexPresent(PVBOXMP_DEVEXT pDevExt,
         return STATUS_NOT_SUPPORTED;
     }
 
-    NTSTATUS Status = STATUS_UNSUCCESSFUL;
+    NTSTATUS Status = STATUS_SUCCESS;
     uint32_t hostID = pSrcAllocData->hostID;
     int rc;
     if (hostID)
