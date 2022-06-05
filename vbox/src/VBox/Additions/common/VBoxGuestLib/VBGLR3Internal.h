@@ -1,4 +1,4 @@
-/* $Id: VBGLR3Internal.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBGLR3Internal.h 52177 2014-07-24 20:15:59Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 support library for the guest additions, Internal header.
  */
@@ -107,6 +107,10 @@ DECLINLINE(void) VbglHGCMParmPtrSetString(HGCMFunctionParameter *pParm, const ch
 }
 
 #endif /* ___iprt_string_h */
+
+#ifdef VBOX_VBGLR3_XFREE86
+# undef strlen
+#endif /* VBOX_VBGLR3_XFREE86 */
 
 RT_C_DECLS_END
 
