@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 49178 2013-10-18 12:17:21Z vboxsync $ */
+/* $Id: HMR0.cpp 49310 2013-10-28 15:58:48Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -596,7 +596,11 @@ static int hmR0InitAmd(uint32_t u32FeaturesEDX, uint32_t uMaxExtLeaf)
             g_HvmR0.svm.fSupported = true;
         }
         else
+        {
             g_HvmR0.lLastError = rc;
+            if (rc == VERR_SVM_DISABLED || rc == VERR_SVM_IN_USE)
+                rc = VINF_SUCCESS; /* Don't fail if AMD-V is disabled or in use. */
+        }
     }
     else
     {
