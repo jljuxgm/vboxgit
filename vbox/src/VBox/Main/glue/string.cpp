@@ -1,4 +1,4 @@
-/* $Id: string.cpp 51887 2014-07-06 19:35:16Z vboxsync $ */
+/* $Id: string.cpp 52312 2014-08-07 12:54:38Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -142,6 +142,25 @@ Utf8Str& Utf8Str::stripSuffix()
         jolt();
     }
     return *this;
+}
+
+size_t Utf8Str::parseKeyValue(Utf8Str &key, Utf8Str &value, size_t pos, const Utf8Str &pairSeparator, const Utf8Str &keyValueSeparator) const
+{
+    size_t start = pos;
+    while(start == (pos = find(pairSeparator.c_str(), pos)))
+        start = ++pos;
+
+    size_t kvSepPos = find(keyValueSeparator.c_str(), start);
+    if (kvSepPos < pos)
+    {
+        key = substr(start, kvSepPos - start);
+        value = substr(kvSepPos + 1, pos - kvSepPos - 1);
+    }
+    else
+    {
+        key = value = "";
+    }
+    return pos;
 }
 
 /**

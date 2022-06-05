@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 52168 2014-07-24 13:43:46Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 52312 2014-08-07 12:54:38Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1282,39 +1282,22 @@ HRESULT VirtualBox::composeMachineFilename(const com::Utf8Str &aName,
 
     LogFlowThisFunc(("aName=\"%s\",aBaseFolder=\"%s\"\n", strName.c_str(), strBase.c_str()));
 
-    Utf8Str strCreateFlags(aCreateFlags);
     Guid id;
     bool fDirectoryIncludesUUID = false;
-    if (!strCreateFlags.isEmpty())
+    if (!aCreateFlags.isEmpty())
     {
-        const char *pcszNext = strCreateFlags.c_str();
-        while (*pcszNext != '\0')
-        {
-            Utf8Str strFlag;
-            const char *pcszComma = RTStrStr(pcszNext, ",");
-            if (!pcszComma)
-                strFlag = pcszNext;
-            else
-                strFlag = Utf8Str(pcszNext, pcszComma - pcszNext);
+        size_t uPos = 0;
+        do {
 
-            const char *pcszEqual = RTStrStr(strFlag.c_str(), "=");
-            /* skip over everything which doesn't contain '=' */
-            if (pcszEqual && pcszEqual != strFlag.c_str())
-            {
-                Utf8Str strKey(strFlag.c_str(), pcszEqual - strFlag.c_str());
-                Utf8Str strValue(strFlag.c_str() + (pcszEqual - strFlag.c_str() + 1));
+            com::Utf8Str strKey, strValue;
+            uPos = aCreateFlags.parseKeyValue(strKey, strValue, uPos);
 
-                if (strKey == "UUID")
-                    id = strValue.c_str();
-                else if (strKey == "directoryIncludesUUID")
-                    fDirectoryIncludesUUID = (strValue == "1");
-            }
+            if (strKey == "UUID")
+                id = strValue.c_str();
+            else if (strKey == "directoryIncludesUUID")
+                fDirectoryIncludesUUID = (strValue == "1");
 
-            if (!pcszComma)
-                pcszNext += strFlag.length();
-            else
-                pcszNext += strFlag.length() + 1;
-        }
+        } while(uPos != com::Utf8Str::npos);
     }
 
     if (id.isZero())

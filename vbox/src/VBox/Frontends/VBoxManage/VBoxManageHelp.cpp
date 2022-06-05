@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 52200 2014-07-25 20:00:49Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 52312 2014-08-07 12:54:38Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -383,6 +383,9 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--vcpheight <height>]\n"
                      "                            [--vcprate <rate>]\n"
                      "                            [--vcpfps <fps>]\n"
+                     "                            [--vcpmaxtime <time>]\n"
+                     "                            [--vcpmaxsize <size>]\n"
+                     "                            [--vcpoptions <options>]\n"
 #endif
                      "                            [--defaultfrontend default|<name>]\n"
                      "\n");
