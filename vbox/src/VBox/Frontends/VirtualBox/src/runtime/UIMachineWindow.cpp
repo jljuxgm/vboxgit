@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 52819 2014-09-22 15:59:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -220,13 +220,13 @@ void UIMachineWindow::adjustMachineViewSize()
     machineView()->adjustGuestScreenSize();
 }
 
-#ifndef VBOX_WITH_TRANSLUCENT_SEAMLESS
+#ifdef VBOX_WITH_MASKED_SEAMLESS
 void UIMachineWindow::setMask(const QRegion &region)
 {
     /* Call to base-class: */
     QMainWindow::setMask(region);
 }
-#endif /* !VBOX_WITH_TRANSLUCENT_SEAMLESS */
+#endif /* VBOX_WITH_MASKED_SEAMLESS */
 
 void UIMachineWindow::retranslateUi()
 {
