@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49853 2013-12-09 18:13:24Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49864 2013-12-10 10:26:58Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9187,8 +9187,9 @@ static uint32_t hmR0VmxCheckGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         }
 
         /** @todo Checks on Guest Page-Directory-Pointer-Table Entries when guest is
-         *        in IA-32e Paging Mode (AMD64 Paging). */
+         *        not using Nested Paging? */
         if (   pVM->hm.s.fNestedPaging
+            && !fLongModeGuest
             && CPUMIsGuestInPAEModeEx(pCtx))
         {
             rc = VMXReadVmcs64(VMX_VMCS64_GUEST_PDPTE0_FULL, &u64Val);
