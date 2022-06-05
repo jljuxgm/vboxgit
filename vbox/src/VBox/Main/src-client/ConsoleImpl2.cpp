@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 49069 2013-10-12 13:26:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 49190 2013-10-18 15:26:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1946,6 +1946,19 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                                         lPortLUN[0] = lPortNum;
                                     lPortUsed[u32HDSataPortCount++] = lPortNum;
                                     LogFlowFunc(("HD Sata port Count=%d\n", u32HDSataPortCount));
+                                }
+
+                                /* Configure the hotpluggable flag for the port. */
+                                BOOL fHotPluggable = FALSE;
+                                hrc = pMediumAtt->COMGETTER(HotPluggable)(&fHotPluggable); H();
+                                if (SUCCEEDED(hrc))
+                                {
+                                    PCFGMNODE pPortCfg;
+                                    char szName[24];
+                                    RTStrPrintf(szName, sizeof(szName), "Port%d", lPortNum);
+
+                                    InsertConfigNode(pCfg, szName, &pPortCfg);
+                                    InsertConfigInteger(pPortCfg, "Hotpluggable", fHotPluggable ? 1 : 0);
                                 }
                              }
                         }

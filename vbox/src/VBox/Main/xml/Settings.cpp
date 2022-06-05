@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 49066 2013-10-12 08:02:26Z vboxsync $ */
+/* $Id: Settings.cpp 49190 2013-10-18 15:26:52Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3441,6 +3441,7 @@ void MachineConfigFile::readStorageControllers(const xml::ElementNode &elmStorag
 
             att.fDiscard = false;
             att.fNonRotational = false;
+            att.fHotPluggable = false;
 
             if (strTemp == "HardDisk")
             {
