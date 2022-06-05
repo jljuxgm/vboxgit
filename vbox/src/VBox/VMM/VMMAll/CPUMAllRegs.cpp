@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 49972 2013-12-18 13:10:58Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2264,7 +2264,7 @@ VMMDECL(void) CPUMSetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFeature)
         case CPUMCPUIDFEATURE_HVP:
             pLeaf = cpumCpuIdGetLeaf(pVM, UINT32_C(0x00000001), 0);
             if (pLeaf)
-                pVM->cpum.s.aGuestCpuIdStd[1].ecx |= X86_CPUID_FEATURE_ECX_HVP;
+                pVM->cpum.s.aGuestCpuIdStd[1].ecx = pLeaf->uEcx |= X86_CPUID_FEATURE_ECX_HVP;
             pVM->cpum.s.GuestFeatures.fHypervisorPresent = 1;
             LogRel(("CPUM: SetGuestCpuIdFeature: Enabled Hypervisor Present bit\n"));
             break;

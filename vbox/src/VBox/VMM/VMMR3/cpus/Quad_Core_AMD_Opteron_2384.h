@@ -1,4 +1,4 @@
-/* $Id: Quad_Core_AMD_Opteron_2384.h 49922 2013-12-16 09:21:06Z vboxsync $ */
+/* $Id: Quad_Core_AMD_Opteron_2384.h 49972 2013-12-18 13:10:58Z vboxsync $ */
 /** @file
  * CPU database entry "Quad-Core AMD Opteron 2384".
  * Generated at 2013-12-09T21:56:56Z by VBoxCpuReport v4.3.51r91133 on win.amd64.
@@ -118,7 +118,7 @@ static CPUMMSRRANGE const g_aMsrRanges_Quad_Core_AMD_Opteron_2384[] =
     MFS(0x00000277, "IA32_PAT", Ia32Pat, Ia32Pat, Guest.msrPAT),
     MFZ(0x000002ff, "IA32_MTRR_DEF_TYPE", Ia32MtrrDefType, Ia32MtrrDefType, GuestMsrs.msr.MtrrDefType, 0, UINT64_C(0xfffffffffffff3f8)),
     RFN(0x00000400, 0x00000417, "IA32_MCi_CTL_STATUS_ADDR_MISC", Ia32McCtlStatusAddrMiscN, Ia32McCtlStatusAddrMiscN),
-    MFX(0xc0000080, "AMD64_EFER", Amd64Efer, Amd64Efer, 0x4d01, 0xfe, UINT64_C(0xffffffffffff8600)),
+    MFX(0xc0000080, "AMD64_EFER", Amd64Efer, Amd64Efer, 0x4d01, 0xfe, UINT64_C(0xffffffffffff8200)),
     MFN(0xc0000081, "AMD64_STAR", Amd64SyscallTarget, Amd64SyscallTarget), /* value=0x230010`00000000 */
     MFN(0xc0000082, "AMD64_STAR64", Amd64LongSyscallTarget, Amd64LongSyscallTarget), /* value=0xfffff800`0245dd00 */
     MFN(0xc0000083, "AMD64_STARCOMPAT", Amd64CompSyscallTarget, Amd64CompSyscallTarget), /* value=0xfffff800`0245da80 */

@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 49954 2013-12-17 14:39:08Z vboxsync $ */
+/* $Id: CPUM.cpp 49972 2013-12-18 13:10:58Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -752,7 +752,7 @@ static int cpumR3LoadMsrOverrides(PVM pVM, PCFGMNODE pMsrNode)
             MsrRange.enmRdFn = kCpumMsrRdFn_FixedValue;
             MsrRange.enmWrFn = kCpumMsrWrFn_IgnoreWrite;
 
-            rc = CFGMR3QueryU64Def(pNode, "Value", &MsrRange.uInitOrReadValue, 0);
+            rc = CFGMR3QueryU64Def(pNode, "Value", &MsrRange.uValue, 0);
             if (RT_FAILURE(rc))
                 return VMSetError(pVM, rc, RT_SRC_POS, "Invalid MSR entry '%s': Error querying 'Value' value: %Rrc\n",
                                   MsrRange.szName, rc);
