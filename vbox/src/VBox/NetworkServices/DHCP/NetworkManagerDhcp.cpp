@@ -1,4 +1,4 @@
-/* $Id: NetworkManagerDhcp.cpp 49566 2013-11-20 08:49:10Z vboxsync $ */
+/* $Id: NetworkManagerDhcp.cpp 49735 2013-11-30 02:08:42Z vboxsync $ */
 /** @file
  * NetworkManagerDhcp - Network Manager part handling Dhcp.
  */
@@ -20,6 +20,7 @@
 *******************************************************************************/
 #include <iprt/asm.h>
 #include <iprt/cdefs.h>
+#include <iprt/getopt.h>
 #include <iprt/net.h>
 #include <iprt/param.h>
 #include <iprt/path.h>
@@ -37,6 +38,8 @@
 #include <VBox/sup.h>
 #include <VBox/intnet.h>
 
+#define BASE_SERVICES_ONLY
+#include "../NetLib/VBoxNetBaseService.h"
 #include "Config.h"
 #include "ClientDataInt.h"
 

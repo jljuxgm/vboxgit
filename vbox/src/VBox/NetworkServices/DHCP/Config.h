@@ -1,4 +1,4 @@
-/* $Id: Config.h 49568 2013-11-20 08:56:59Z vboxsync $ */
+/* $Id: Config.h 49735 2013-11-30 02:08:42Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -502,14 +502,12 @@ public:
     void setOurNetmask(const RTNETADDRIPV4& aNetmask);
     void setOurMac(const RTMAC& aMac);
 
-    void setSession(PSUPDRVSESSION);
-    void setInterface(INTNETIFHANDLE);
-    void setRingBuffer(PINTNETBUF);
-
     bool handleDhcpReqDiscover(PCRTNETBOOTP pDhcpMsg, size_t cb);
     bool handleDhcpReqRequest(PCRTNETBOOTP pDhcpMsg, size_t cb);
     bool handleDhcpReqDecline(PCRTNETBOOTP pDhcpMsg, size_t cb);
     bool handleDhcpReqRelease(PCRTNETBOOTP pDhcpMsg, size_t cb);
+
+    void setService(const VBoxNetHlpUDPService *);
 private:
     NetworkManager();
     ~NetworkManager();
