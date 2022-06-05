@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48365 2013-09-06 15:49:18Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48372 2013-09-07 02:28:41Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -841,6 +841,25 @@ int VBoxNetLwipNAT::init()
     hrc = pES->RegisterListener(listener, ComSafeArrayAsInParam(events), true);
     AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);        
 #endif
+
+    com::Bstr bstrSourceIp4Key = com::BstrFmt("NAT/%s/SourceIp4",m_Network.c_str());
+    com::Bstr bstrSourceIpX;
+    RTNETADDRIPV4 addr;
+    hrc = virtualbox->GetExtraData(bstrSourceIp4Key.raw(), bstrSourceIpX.asOutParam());
+    if (SUCCEEDED(hrc))
+    {
+        int rc = RTNetStrToIPv4Addr(com::Utf8Str(bstrSourceIpX).c_str(), &addr);
+        if (RT_SUCCESS(rc))
+        {
+            RT_ZERO(m_src4);
+
+            m_src4.sin_addr.s_addr = addr.u;
+            m_ProxyOptions.src4 = &m_src4; 
+            
+            bstrSourceIpX.setNull();
+        }
+    }
+    
     if (!fDontLoadRulesOnStartup)
     {
         /* XXX: extract function and do not duplicate */
