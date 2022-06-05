@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 50899 2014-03-26 18:08:27Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -936,11 +936,8 @@ HRESULT Appliance::i_setUpProgress(ComObjPtr<Progress> &pProgress,
             break;
         }
     }
-
-    Utf8Str str;
-    str = "Setting up progress object: ulTotalMB = %d, cDisks = %d, => cOperations = %d,";
-    str +=  "ulTotalOperationsWeight = %d, m->ulWeightForXmlOperation = %d\n";
-    Log((str.c_str(), m->ulTotalDisksMB, m->cDisks, cOperations, ulTotalOperationsWeight, m->ulWeightForXmlOperation));
+    Log(("Setting up progress object: ulTotalMB = %d, cDisks = %d, => cOperations = %d, ulTotalOperationsWeight = %d, m->ulWeightForXmlOperation = %d\n",
+         m->ulTotalDisksMB, m->cDisks, cOperations, ulTotalOperationsWeight, m->ulWeightForXmlOperation));
 
     rc = pProgress->init(mVirtualBox, static_cast<IAppliance*>(this),
                          bstrDescription.raw(),
