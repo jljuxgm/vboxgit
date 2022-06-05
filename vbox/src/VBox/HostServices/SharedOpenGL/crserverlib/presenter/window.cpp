@@ -1,4 +1,4 @@
-/* $Id: window.cpp 53157 2014-10-27 17:24:02Z vboxsync $ */
+/* $Id: window.cpp 53158 2014-10-28 12:09:57Z vboxsync $ */
 
 /** @file
  * Presenter API: window class implementation.
@@ -198,7 +198,6 @@ int CrFbWindow::UpdateBegin()
         return VINF_SUCCESS;
 
     Assert(!mFlags.fForcePresentOnReenable);
-//        Assert(!mFlags.fCompositoEntriesModified);
 
     if (mFlags.fDataPresented)
     {
