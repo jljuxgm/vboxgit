@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.cpp 49349 2013-10-31 16:40:46Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 49350 2013-10-31 17:08:48Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -118,7 +118,7 @@ public:
                 int rc2 = mProcess->signalWaitEvent(aType, aEvent);
 #ifdef DEBUG
                 LogFlowThisFunc(("Signalling events of type=%ld, process=%p resulted in rc=%Rrc\n",
-                                 aType, mProcess, rc2));
+                                 aType, &mProcess, rc2));
 #endif
                 break;
             }

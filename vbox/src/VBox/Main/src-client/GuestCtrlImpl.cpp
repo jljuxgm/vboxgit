@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 49349 2013-10-31 16:40:46Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 49350 2013-10-31 17:08:48Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -315,7 +315,7 @@ int Guest::dispatchToSession(PVBOXGUESTCTRLHOSTCBCTX pCtxCb, PVBOXGUESTCTRLHOSTC
                     rc = pSession->dispatchToObject(pCtxCb, pSvcCb);
                     if (rc == VERR_NOT_FOUND)
                     {
-                        AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+                        alock.acquire();
 
                         rc = pSession->dispatchGeneric(pCtxCb, pSvcCb);
                     }
