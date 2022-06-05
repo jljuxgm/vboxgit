@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 49517 2013-11-16 07:23:21Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 49588 2013-11-20 16:51:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5071,7 +5071,11 @@ int Console::configNetwork(const char *pszDevice,
                         /* Stop the hostonly DHCP Server */
                     }
 
-                    if (!networkName.isEmpty())
+                    /*
+                     * NAT networks start their DHCP server theirself, see NATNetwork::Start()
+                     */
+                    if (   !networkName.isEmpty()
+                        && eAttachmentType != NetworkAttachmentType_NATNetwork)
                     {
                         /*
                          * Until we implement service reference counters DHCP Server will be stopped
