@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49108 2013-10-15 08:39:07Z vboxsync $
+# $Id: Makefile.kmk 51346 2014-05-22 11:35:05Z vboxsync $
 ## @file
 # Sub-Makefile for the libxml2 library.
 #
@@ -18,7 +18,7 @@
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
 
-ifndef VBOX_ONLY_TESTSUITE
+ifndef VBOX_ONLY_VALIDATIONKIT
  LIBRARIES += VBox-libxml2
 endif
 VBox-libxml2_TEMPLATE       = VBOXR3NP

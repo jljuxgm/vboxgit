@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 51346 2014-05-22 11:35:05Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -23,7 +23,7 @@ include $(PATH_SUB_CURRENT)/Support/Makefile.kmk
 
 if  !defined(VBOX_ONLY_DOCS) \
  && !defined(VBOX_ONLY_EXTPACKS) \
- && !defined(VBOX_ONLY_TESTSUITE)
+ && !defined(VBOX_ONLY_VALIDATIONKIT)
  if1of ($(KBUILD_TARGET),win)
   include $(PATH_SUB_CURRENT)/win/Makefile.kmk
  endif
@@ -51,7 +51,7 @@ if  !defined(VBOX_ONLY_DOCS) \
   endif
  endif
 
-endif # !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_TESTSUITE)
+endif # !defined(VBOX_ONLY_DOCS) && !defined(VBOX_ONLY_VALIDATIONKIT)
 
 # Let kBuild generate the rules.
 include $(FILE_KBUILD_SUB_FOOTER)

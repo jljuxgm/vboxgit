@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 41857 2012-06-21 09:12:56Z vboxsync $ */
+/* $Id: VBox-doc.c 51346 2014-05-22 11:35:05Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -144,7 +144,7 @@
  *      - VBoxBFE - A bare metal edition which does not use COM/XPCOM (barely
  *        maintained atm).
  *  - IPRT - Runtime Library for hiding host OS differences.
- *  - Testsuite:
+ *  - Validation Kit:
  *      - @ref pg_testsuite_guideline
  *
  * @todo Make links to the components.

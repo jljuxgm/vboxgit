@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45459 2013-04-10 15:24:23Z vboxsync $
+# $Id: Makefile.kmk 51346 2014-05-22 11:35:05Z vboxsync $
 ## @file
 # Sub-Makefile for the common addition code.
 #
@@ -19,7 +19,7 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefile.
-ifndef VBOX_ONLY_TESTSUITE
+ifndef VBOX_ONLY_VALIDATIONKIT
  include $(PATH_SUB_CURRENT)/VBoxGuestLib/Makefile.kmk
  include $(PATH_SUB_CURRENT)/VBoxControl/Makefile.kmk
  include $(PATH_SUB_CURRENT)/VBoxGuest/Makefile.kmk
@@ -30,6 +30,6 @@ ifndef VBOX_ONLY_TESTSUITE
  ifdef VBOX_WITH_PAM
   include $(PATH_SUB_CURRENT)/pam/Makefile.kmk
  endif
-endif # !VBOX_ONLY_TESTSUITE
+endif # !VBOX_ONLY_VALIDATIONKIT
 
 include $(FILE_KBUILD_SUB_FOOTER)
