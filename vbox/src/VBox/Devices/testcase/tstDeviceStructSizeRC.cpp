@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 50125 2014-01-20 16:52:31Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 50532 2014-02-20 19:48:25Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -67,6 +67,7 @@
 # undef LOG_GROUP
 # include "../USB/DevOHCI.cpp"
 # ifdef VBOX_WITH_EHCI_IMPL
+#  undef LOG_GROUP
 #  include "../USB/DevEHCI.cpp"
 # endif
 #endif
