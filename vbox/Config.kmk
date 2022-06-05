@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52196 2014-07-25 15:34:50Z vboxsync $
+# $Id: Config.kmk 52197 2014-07-25 15:38:04Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5220,7 +5220,7 @@ TEMPLATE_VBOXGUESTR3DLL_EXTENDS   = VBOXGUESTR3EXE
 if1of ($(KBUILD_TARGET), linux solaris)
  TEMPLATE_VBOXGUESTR3DLL_DEFS     = $(TEMPLATE_VBOXGUESTR3EXE_DEFS) PIC
  TEMPLATE_VBOXGUESTR3DLL_CFLAGS   = $(TEMPLATE_VBOXGUESTR3EXE_CFLAGS) -fPIC -ffunction-sections
- TEMPLATE_VBOXGUESTR3DLL_CXXFLAGS = $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS) -fPIC -ffunction-sections
+ TEMPLATE_VBOXGUESTR3DLL_CXXFLAGS = $(TEMPLATE_VBOXGUESTR3EXE_CXXFLAGS) -fPIC -fno-exceptions -ffunction-sections
  TEMPLATE_VBOXGUESTR3DLL_LDFLAGS  = $(TEMPLATE_VBOXGUESTR3EXE_LDFLAGS) -fPIC
 else ifn1of ($(KBUILD_TARGET), darwin os2 win)
  TEMPLATE_VBOXGUESTR3DLL_DEFS     = $(TEMPLATE_VBOXGUESTR3EXE_DEFS) PIC
@@ -5719,7 +5719,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52196 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52197 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
