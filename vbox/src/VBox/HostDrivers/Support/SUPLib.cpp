@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPLib.cpp 51978 2014-07-11 02:57:40Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -1463,6 +1463,26 @@ SUPR3DECL(int) SUPR3LowFree(void *pv, size_t cPages)
     if (RT_SUCCESS(rc))
         rc = Req.Hdr.rc;
     return rc;
+}
+
+
+SUPR3DECL(int) SUPR3HardenedVerifyInit(void)
+{
+#ifdef RT_OS_WINDOWS
+    if (g_cInits == 0)
+        return suplibOsHardenedVerifyInit();
+#endif
+    return VINF_SUCCESS;
+}
+
+
+SUPR3DECL(int) SUPR3HardenedVerifyTerm(void)
+{
+#ifdef RT_OS_WINDOWS
+    if (g_cInits == 0)
+        return suplibOsHardenedVerifyTerm();
+#endif
+    return VINF_SUCCESS;
 }
 
 

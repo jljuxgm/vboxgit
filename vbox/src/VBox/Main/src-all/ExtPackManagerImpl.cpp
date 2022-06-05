@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 51687 2014-06-23 11:23:59Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 51978 2014-07-11 02:57:40Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -715,6 +715,13 @@ HRESULT ExtPack::initWithDir(VBOXEXTPACKCTX a_enmContext, const char *a_pszName,
     m->pReg                         = NULL;
     m->enmContext                   = a_enmContext;
     m->fMadeReadyCall               = false;
+
+    /*
+     * Make sure the SUPR3Hardened API works (ignoring errors for now).
+     */
+    int rc = SUPR3HardenedVerifyInit();
+    if (RT_FAILURE(rc))
+        LogRel(("SUPR3HardenedVerifyInit failed: %Rrc\n", rc));
 
     /*
      * Probe the extension pack (this code is shared with refresh()).
