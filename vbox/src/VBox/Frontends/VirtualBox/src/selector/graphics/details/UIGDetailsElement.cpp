@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 50871 2014-03-25 17:29:10Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 50907 2014-03-27 15:00:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -620,7 +620,8 @@ void UIGDetailsElement::handleHoverEvent(QGraphicsSceneHoverEvent *pEvent)
     /* Simulate hyperlink hovering: */
     QPoint point = pEvent->pos().toPoint();
     bool fNameHovered = QRect(QPoint(iElementNameX, iElementNameY), m_nameSize).contains(point);
-    if (m_pSet->elementNameHoverable() && m_fNameHovered != fNameHovered)
+    if (   m_pSet->configurationAccessLevel() != ConfigurationAccessLevel_Null
+        && m_fNameHovered != fNameHovered)
     {
         m_fNameHovered = fNameHovered;
         updateNameHoverLink();

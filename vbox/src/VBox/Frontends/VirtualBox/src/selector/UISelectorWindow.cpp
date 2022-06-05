@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 50092 2014-01-17 13:03:16Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 50907 2014-03-27 15:00:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1720,7 +1720,7 @@ bool UISelectorWindow::isActionEnabled(int iActionIndex, const QList<UIVMItem*> 
         {
             return !m_pChooser->isGroupSavingInProgress() &&
                    items.size() == 1 &&
-                   pItem->reconfigurable();
+                   pItem->configurationAccessLevel() != ConfigurationAccessLevel_Null;
         }
         case UIActionIndexSelector_Simple_Machine_Clone:
         {
