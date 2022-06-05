@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 51982 2014-07-11 06:18:28Z vboxsync $ */
+/* $Id: GIMHv.cpp 51983 2014-07-11 09:55:55Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -245,6 +245,12 @@ VMMR3_INT_DECL(int) GIMR3HvInitFinalize(PVM pVM)
 #endif
 
 
+/**
+ * Terminates the Hyper-V GIM provider.
+ *
+ * @returns VBox status code.
+ * @param   pVM         Pointer to the VM.
+ */
 VMMR3_INT_DECL(int) GIMR3HvTerm(PVM pVM)
 {
     GIMR3HvReset(pVM);
@@ -252,6 +258,14 @@ VMMR3_INT_DECL(int) GIMR3HvTerm(PVM pVM)
 }
 
 
+/**
+ * Applies relocations to data and code managed by this component. This function
+ * will be called at init and whenever the VMM need to relocate itself inside
+ * the GC.
+ *
+ * @param   pVM         Pointer to the VM.
+ * @param   offDelta    Relocation delta relative to old location.
+ */
 VMMR3_INT_DECL(void) GIMR3HvRelocate(PVM pVM, RTGCINTPTR offDelta)
 {
 #if 0
