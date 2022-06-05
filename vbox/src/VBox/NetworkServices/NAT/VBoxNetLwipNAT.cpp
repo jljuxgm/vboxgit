@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 50240 2014-01-27 05:10:27Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 50279 2014-01-30 01:53:42Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1209,7 +1209,7 @@ static int vboxNetNATLogInit(int argc, char **argv)
     }
 
     char szError[RTPATH_MAX + 128];
-    rc = com::VBoxLogRelCreate("NetNAT",
+    rc = com::VBoxLogRelCreate("NAT Network",
                                szLogFile,
                                RTLOGFLAGS_PREFIX_TIME_PROG,
                                "all all.restrict -default.restrict",
