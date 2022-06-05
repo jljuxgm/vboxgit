@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 47596 2013-08-07 15:15:09Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 50976 2014-04-04 19:34:38Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -260,8 +260,13 @@ static int rtSystemWinQueryOSVersion(RTSYSOSINFO enmInfo, char *pszInfo, size_t 
             else if (g_WinOsInfoEx.szCSDVersion[0])
             {
                 /* just copy the entire string. */
-                memcpy(szTmp, g_WinOsInfoEx.szCSDVersion, sizeof(g_WinOsInfoEx.szCSDVersion));
-                szTmp[sizeof(g_WinOsInfoEx.szCSDVersion)] = '\0';
+                char *pszTmp = szTmp;
+                int rc = RTUtf16ToUtf8Ex(g_WinOsInfoEx.szCSDVersion, RT_ELEMENTS(g_WinOsInfoEx.szCSDVersion),
+                                         &pszTmp, sizeof(szTmp), NULL);
+                if (RT_SUCCESS(rc))
+                    RTStrStripR(szTmp);
+                else
+                    szTmp[0] = '\0';
                 AssertCompile(sizeof(szTmp) > sizeof(g_WinOsInfoEx.szCSDVersion));
             }
             else
