@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 49141 2013-10-16 14:07:14Z vboxsync $ */
+/* $Id: VMMTests.cpp 49144 2013-10-16 18:13:11Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -678,7 +678,11 @@ VMMDECL(int) VMMDoBruteForceMsrs(PVM pVM)
             /*
              * The MSRs.
              */
+#ifdef RT_OS_WINDOWS /* Paranoia: Avoid DPC and other watchdogs. */
             uint32_t const      cMsrsPerCall = 1024;
+#else
+            uint32_t const      cMsrsPerCall = 4096;
+#endif
             uint32_t            cbResults = cMsrsPerCall * sizeof(VMMTESTMSRENTRY);
             PVMMTESTMSRENTRY    paResults;
             rc = MMHyperAlloc(pVM, cbResults, 0, MM_TAG_VMM, (void **)&paResults);
