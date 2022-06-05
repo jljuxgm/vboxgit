@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 53012 2014-10-09 17:40:56Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 53013 2014-10-09 18:22:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -174,8 +174,9 @@ UIWizardNewVMPage1::UIWizardNewVMPage1(const QString &strGroup)
 
 void UIWizardNewVMPage1::onNameChanged(QString strNewName)
 {
-    /* Do not forget about achitecture bits: */
-    strNewName += ARCH_BITS == 64 && m_fSupportsHWVirtEx && m_fSupportsLongMode ? "64" : "32";
+    /* Do not forget about achitecture bits, if not yet specified: */
+    if (!strNewName.contains("32") && !strNewName.contains("64"))
+        strNewName += ARCH_BITS == 64 && m_fSupportsHWVirtEx && m_fSupportsLongMode ? "64" : "32";
 
     /* Search for a matching OS type based on the string the user typed already. */
     for (size_t i = 0; i < RT_ELEMENTS(gs_OSTypePattern); ++i)
