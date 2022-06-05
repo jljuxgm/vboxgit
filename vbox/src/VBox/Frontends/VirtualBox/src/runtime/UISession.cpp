@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 49177 2013-10-18 11:48:13Z vboxsync $ */
+/* $Id: UISession.cpp 49333 2013-10-30 13:42:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -75,6 +75,7 @@
 #include "CVRDEServer.h"
 #include "CUSBController.h"
 #include "CUSBDeviceFilters.h"
+#include "CHostVideoInputDevice.h"
 #include "CSnapshot.h"
 #include "CMedium.h"
 
@@ -1409,6 +1410,9 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
 
 void UISession::reinitMenuPool()
 {
+    /* Get host: */
+    const CHost &host = vboxGlobal().host();
+
     /* Get uisession machine: */
     const CMachine &machine = session().GetConsole().GetMachine();
 
@@ -1447,22 +1451,30 @@ void UISession::reinitMenuPool()
                 break;
             }
         }
+
         /* Show/Hide Network Adapters action depending on overall adapters activity status: */
         gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings)->setVisible(fAtLeastOneAdapterActive);
     }
 
     /* USB stuff: */
     {
-        /*
-         * Check whether there is at least one OHCI USB controllers with
-         * an available proxy.
-         */
+        /* Check whether there is at least one OHCI USB controllers with an available proxy. */
         const CUSBDeviceFilters &filters = machine.GetUSBDeviceFilters();
         ULONG cOhciCtls = machine.GetUSBControllerCountByType(KUSBControllerType_OHCI);
         bool fUSBEnabled = !filters.isNull() && cOhciCtls && machine.GetUSBProxyAvailable();
 
         /* Show/Hide USB menu depending on controller availability, activity and USB-proxy presence: */
         gActionPool->action(UIActionIndexRuntime_Menu_USBDevices)->setVisible(fUSBEnabled);
+    }
+
+    /* WebCams stuff: */
+    {
+        /* Check whether there is an accessible video input devices pool: */
+        const CHostVideoInputDeviceVector &webcams = host.GetVideoInputDevices();
+        bool fWebCamsEnabled = host.isOk(); Q_UNUSED(webcams);
+
+        /* Show/Hide WebCams menu depending on ExtPack availability: */
+        gActionPool->action(UIActionIndexRuntime_Menu_WebCams)->setVisible(fWebCamsEnabled);
     }
 }
 

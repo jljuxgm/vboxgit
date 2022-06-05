@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 49307 2013-10-28 13:03:16Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 49333 2013-10-30 13:42:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -107,6 +107,7 @@
 #include "CParallelPort.h"
 #include "CUSBController.h"
 #include "CHostUSBDevice.h"
+#include "CHostVideoInputDevice.h"
 #include "CMediumFormat.h"
 #include "CSharedFolder.h"
 #include "CConsole.h"
@@ -1076,6 +1077,26 @@ QString VBoxGlobal::toolTip (const CUSBDeviceFilter &aFilter) const
     }
 
     return tip;
+}
+
+/** Returns the multi-line description of the given CHostVideoInputDevice filter. */
+QString VBoxGlobal::toolTip(const CHostVideoInputDevice &webcam) const
+{
+    QStringList records;
+
+    QString strAlias = webcam.GetAlias();
+    if (!strAlias.isEmpty())
+        records << tr("<nobr>Alias: %1</nobr>", "webcam tooltip").arg(strAlias);
+
+    QString strName = webcam.GetName();
+    if (!strName.isEmpty())
+        records << tr("<nobr>Name: %1</nobr>", "webcam tooltip").arg(strName);
+
+    QString strPath = webcam.GetPath();
+    if (!strPath.isEmpty())
+        records << tr("<nobr>Path: %1</nobr>", "webcam tooltip").arg(strPath);
+
+    return records.join("<br>");
 }
 
 /**

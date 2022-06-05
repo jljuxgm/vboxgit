@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 49333 2013-10-30 13:42:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -255,6 +255,7 @@ void UIMachineMenuBar::prepareMenuDevices(QMenu *pMenu)
     pMenu->addMenu(gActionPool->action(UIActionIndexRuntime_Menu_OpticalDevices)->menu());
     pMenu->addMenu(gActionPool->action(UIActionIndexRuntime_Menu_FloppyDevices)->menu());
     pMenu->addMenu(gActionPool->action(UIActionIndexRuntime_Menu_USBDevices)->menu());
+    pMenu->addMenu(gActionPool->action(UIActionIndexRuntime_Menu_WebCams)->menu());
     pMenu->addMenu(gActionPool->action(UIActionIndexRuntime_Menu_SharedClipboard)->menu());
     pMenu->addMenu(gActionPool->action(UIActionIndexRuntime_Menu_DragAndDrop)->menu());
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings));
