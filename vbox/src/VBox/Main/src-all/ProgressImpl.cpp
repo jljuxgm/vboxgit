@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 50899 2014-03-26 18:08:27Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 50952 2014-04-02 11:23:17Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -442,7 +442,7 @@ HRESULT Progress::init(
                        ULONG ulFirstOperationWeight,
                        OUT_GUID aId /* = NULL */)
 {
-    LogFlowThisFunc(("aDescription=\"%ls\", cOperations=%d, ulTotalOperationsWeight=%d, bstrFirstOperationDescription=\"%ls\", ulFirstOperationWeight=%d\n",
+    LogFlowThisFunc(("aDescription=\"%s\", cOperations=%d, ulTotalOperationsWeight=%d, aFirstOperationDescription=\"%s\", ulFirstOperationWeight=%d\n",
                      aDescription.c_str(),
                      cOperations,
                      ulTotalOperationsWeight,
