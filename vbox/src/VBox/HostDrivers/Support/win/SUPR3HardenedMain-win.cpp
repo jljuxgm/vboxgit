@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 51907 2014-07-07 17:15:05Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -47,6 +47,7 @@
 
 #include "SUPLibInternal.h"
 #include "win/SUPHardenedVerify-win.h"
+#include "../SUPDrvIOC.h"
 
 
 /*******************************************************************************
@@ -1421,13 +1422,13 @@ DECLHIDDEN(int) supR3HardenedWinReSpawn(void)
         rcNt = Ios.Status;
     if (!NT_SUCCESS(rcNt))
     {
-        int rc;
-        if ((rcNt & UINT32_C(0xffff0000)) == 0xe9860000) /* See VBoxDrvNtErr2NtStatus. */ /** @todo #defines  for VBoxDrvNtErr2NtStatus mangling */
-            rc = (int)(rcNt | UINT32_C(0xffff0000));
+        int rc = VERR_OPEN_FAILED;
+        if (SUP_NT_STATUS_IS_VBOX(rcNt)) /* See VBoxDrvNtErr2NtStatus. */
+            rc = SUP_NT_STATUS_TO_VBOX(rcNt);
         else
             supR3HardenedFatalMsg("supR3HardenedWinReSpawn", kSupInitOp_Driver, VERR_OPEN_FAILED,
                                   "NtCreateFile(%ls) failed: %#x\n", s_wszName, rcNt);
-        supR3HardenedFatalMsg("supR3HardenedWinReSpawn", kSupInitOp_Driver, VERR_OPEN_FAILED,
+        supR3HardenedFatalMsg("supR3HardenedWinReSpawn", kSupInitOp_Driver, rc,
                               "NtCreateFile(%ls) failed: %Rrc (rcNt=%#x)\n", s_wszName, rc, rcNt);
     }
 

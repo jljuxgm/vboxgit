@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 51786 2014-07-01 20:11:03Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 51907 2014-07-07 17:15:05Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -2005,8 +2005,7 @@ static NTSTATUS     VBoxDrvNtErr2NtStatus(int rc)
     if (rc < 0)
     {
         if (((uint32_t)rc & UINT32_C(0xffff0000)) == UINT32_C(0xffff0000))
-            return (NTSTATUS)( ((uint32_t)rc & UINT32_C(0xffff))
-                              | UINT32_C(0xe9860000) ); /* STATUS_SEVERITY_ERROR + C-bit + facility 0x986 */
+            return (NTSTATUS)( ((uint32_t)rc & UINT32_C(0xffff)) | SUP_NT_STATUS_BASE );
     }
     return STATUS_UNSUCCESSFUL;
 }
