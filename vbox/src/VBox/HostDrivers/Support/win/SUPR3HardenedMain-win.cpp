@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52039 2014-07-15 14:32:21Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52089 2014-07-18 05:42:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -1750,7 +1750,9 @@ DECLHIDDEN(void) supR3HardenedWinInit(uint32_t fFlags)
     if (RT_FAILURE(rc))
         supR3HardenedFatalMsg("supR3HardenedWinInit", kSupInitOp_Misc, rc,
                               "supHardenedWinInitImageVerifier failed: %s", g_ErrInfoStatic.szMsg);
-    supR3HardenedWinInstallHooks();
+
+    if (!(fFlags & SUPSECMAIN_FLAGS_DONT_OPEN_DEV))
+        supR3HardenedWinInstallHooks();
 
 #ifndef VBOX_WITH_VISTA_NO_SP
     /*

@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 52083 2014-07-17 17:59:11Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 52089 2014-07-18 05:42:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1553,7 +1553,8 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
 #else
     supR3HardenedWinInit(fFlags);
     supR3HardenedVerifyAll(true /* fFatal */, pszProgName);
-    supR3HardenedWinVerifyProcess();
+    if (!(fFlags & SUPSECMAIN_FLAGS_DONT_OPEN_DEV))
+        supR3HardenedWinVerifyProcess();
 #endif
 
 #ifdef RT_OS_WINDOWS
