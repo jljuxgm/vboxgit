@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51475 2014-05-30 14:50:26Z vboxsync $
+# $Id: Config.kmk 51533 2014-06-04 15:26:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -517,6 +517,8 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
 endif
 # Emulated USB smart card reader
 VBOX_WITH_USB_CARDREADER = 1
+# Disk crypt plugin
+VBOX_WITH_PLUGIN_CRYPT = 1
 ## @}
 
 # legacy
@@ -1057,6 +1059,7 @@ ifdef VBOX_OSE
  VBOX_WITH_OS2_ADDITIONS_BIN=
  VBOX_WITH_SECURELABEL=
  VBOX_WITH_KCHMVIEWER=
+ VBOX_WITH_PLUGIN_CRYPT=
  ifn1of ($(KBUILD_TARGET), linux)
   VBOX_WITH_DOCS=
   VBOX_WITH_DOCS_PACKING=
@@ -5610,7 +5613,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51475 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51533 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
