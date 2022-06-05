@@ -1,4 +1,4 @@
-/* $Id: tsmfhook.cpp 52857 2014-09-25 11:16:12Z vboxsync $ */
+/* $Id: tsmfhook.cpp 52860 2014-09-25 11:59:14Z vboxsync $ */
 /** @file
  * VBoxMMR - Multimedia Redirection
  */
@@ -1257,7 +1257,7 @@ ReadTSMF(uint32_t u32ChannelHandle, uint32_t u32HGCMClientId, uint32_t u32SizeAv
         pChannel->PushBuffer(pBuffer);
     }
     else
-        delete pBuffer;
+        free(pBuffer);
 }
 
 DECLCALLBACK(int)
