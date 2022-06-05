@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaComboBox.cpp 49553 2013-11-19 15:15:13Z vboxsync $ */
+/* $Id: VBoxMediaComboBox.cpp 50985 2014-04-07 11:46:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -171,6 +171,11 @@ void VBoxMediaComboBox::sltHandleMediumCreated(const QString &strMediumID)
 {
     /* Search for corresponding medium: */
     UIMedium medium = vboxGlobal().medium(strMediumID);
+
+    /* Ignore mediums (and their children) which are
+     * marked as hidden or attached to hidden machines only: */
+    if (UIMedium::isMediumAttachedToHiddenMachinesOnly(medium))
+        return;
 
     /* Add only 1. NULL medium and 2. mediums of required type: */
     if (!medium.isNull() && medium.type() != mType)

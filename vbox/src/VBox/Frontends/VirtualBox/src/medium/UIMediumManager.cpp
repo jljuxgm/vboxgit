@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 50968 2014-04-03 15:53:37Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 50985 2014-04-07 11:46:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -708,7 +708,7 @@ void UIMediumManager::sltHandleMediumCreated(const QString &strMediumID)
 
     /* Ignore mediums (and their children) which are
      * marked as hidden or attached to hidden machines only: */
-    if (isMediumAttachedToHiddenMachinesOnly(medium))
+    if (UIMedium::isMediumAttachedToHiddenMachinesOnly(medium))
         return;
 
     /* Create medium-item for corresponding medium: */
@@ -779,7 +779,7 @@ void UIMediumManager::sltHandleMediumEnumerated(const QString &strMediumID)
 
     /* Ignore mediums (and their children) which are
      * marked as hidden or attached to hidden machines only: */
-    if (isMediumAttachedToHiddenMachinesOnly(medium))
+    if (UIMedium::isMediumAttachedToHiddenMachinesOnly(medium))
         return;
 
     /* Update medium-item for corresponding medium: */
@@ -2324,25 +2324,6 @@ QString UIMediumManager::formatFieldText(const QString &strText, bool fCompact /
                                    strText)
                               .arg(fCompact ? "</compact>" : "");
     return strInfo;
-}
-
-/* static */
-bool UIMediumManager::isMediumAttachedToHiddenMachinesOnly(const UIMedium &medium)
-{
-    /* Iterate till the root: */
-    UIMedium mediumIterator = medium;
-    do
-    {
-        /* Ignore medium if its hidden
-         * or attached to hidden machines only: */
-        if (mediumIterator.isHidden())
-            return true;
-        /* Move iterator to parent: */
-        mediumIterator = mediumIterator.parent();
-    }
-    while (!mediumIterator.isNull());
-    /* False by default: */
-    return false;
 }
 
 #include "UIMediumManager.moc"

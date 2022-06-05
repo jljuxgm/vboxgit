@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 49646 2013-11-25 18:32:18Z vboxsync $ */
+/* $Id: UIMedium.cpp 50985 2014-04-07 11:46:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -557,6 +557,25 @@ QString UIMedium::details(bool fNoDiffs /* = false */,
 QString UIMedium::nullID()
 {
     return m_sstrNullID;
+}
+
+/* static */
+bool UIMedium::isMediumAttachedToHiddenMachinesOnly(const UIMedium &medium)
+{
+    /* Iterate till the root: */
+    UIMedium mediumIterator = medium;
+    do
+    {
+        /* Ignore medium if its hidden
+         * or attached to hidden machines only: */
+        if (mediumIterator.isHidden())
+            return true;
+        /* Move iterator to parent: */
+        mediumIterator = mediumIterator.parent();
+    }
+    while (!mediumIterator.isNull());
+    /* False by default: */
+    return false;
 }
 
 /**
