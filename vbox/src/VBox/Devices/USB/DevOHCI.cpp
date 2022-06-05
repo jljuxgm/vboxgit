@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 50530 2014-02-20 19:38:14Z vboxsync $ */
+/* $Id: DevOHCI.cpp 51589 2014-06-10 13:22:15Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5174,7 +5174,11 @@ static DECLCALLBACK(int) ohciR3SaveDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
      */
     Rh = *pRh;
     for (i = 0; i < RT_ELEMENTS(pRh->aPorts); i++)
-        pRh->aPorts[i].pDev = NULL;
+    {
+        if (   pRh->aPorts[i].pDev
+            && !VUSBIDevIsEmulated(pRh->aPorts[i].pDev))
+            pRh->aPorts[i].pDev = NULL;
+    }
 
     /*
      * Attach the devices.
