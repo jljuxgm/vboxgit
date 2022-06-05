@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 48405 2013-09-10 12:22:17Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -174,38 +174,38 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
                 ipv6 = ValueUnion.f;
                 break;
 
-	    case 'L': /* ipv6 loopback */
-	    case 'l': /* ipv4 loopback */
-		if (RTStrCmp(ValueUnion.psz, "delete") == 0)
-		{
-		    /* deletion */
-		    if (enmCode != OP_MODIFY)
-		      errorSyntax(USAGE_NATNETWORK,
-				  "loopback couldn't be deleted on modified\n");
-		    if (c == 'L')
+            case 'L': /* ipv6 loopback */
+            case 'l': /* ipv4 loopback */
+                if (RTStrCmp(ValueUnion.psz, "delete") == 0)
+                {
+                    /* deletion */
+                    if (enmCode != OP_MODIFY)
+                      errorSyntax(USAGE_NATNETWORK,
+                                  "loopback couldn't be deleted on modified\n");
+                    if (c == 'L')
                         loopback6Offset = -1;
-		    else
-		    {
-			int vrc;
-			RTGETOPTUNION Addr2Delete;
-			vrc = RTGetOptFetchValue(&GetState,
-						 &Addr2Delete,
-						 RTGETOPT_REQ_STRING);
-			if (RT_FAILURE(vrc))
-			  return errorSyntax(USAGE_NATNETWORK,
-					     "Not enough parmaters\n");
+                    else
+                    {
+                        int vrc;
+                        RTGETOPTUNION Addr2Delete;
+                        vrc = RTGetOptFetchValue(&GetState,
+                                                 &Addr2Delete,
+                                                 RTGETOPT_REQ_STRING);
+                        if (RT_FAILURE(vrc))
+                          return errorSyntax(USAGE_NATNETWORK,
+                                             "Not enough parmaters\n");
 
-			vLoopback2Delete.push_back(std::string(Addr2Delete.psz));
-		    }
-		}
-		else /* addition */
-		{
-		    if (c == 'L')
-		      loopback6Offset = ValueUnion.u32;
-		    else
-		      vLoopback2Add.push_back(std::string(ValueUnion.psz));
-		}
-		break;
+                        vLoopback2Delete.push_back(std::string(Addr2Delete.psz));
+                    }
+                }
+                else /* addition */
+                {
+                    if (c == 'L')
+                      loopback6Offset = ValueUnion.u32;
+                    else
+                      vLoopback2Add.push_back(std::string(ValueUnion.psz));
+                }
+                break;
 
             case 'P': /* ipv6 portforwarding*/
             case 'p': /* ipv4 portforwarding */

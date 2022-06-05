@@ -1,4 +1,4 @@
-/* $Id: VBoxHlp.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxHlp.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
 /** @file
  * VBox frontends: Qt GUI ("VirtualBox"):
  * Implementation of OS/2-specific helpers that require to reside in a DLL

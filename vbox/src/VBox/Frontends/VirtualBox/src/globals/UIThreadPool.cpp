@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 48911 2013-10-07 00:01:17Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask class implementation.
  */
@@ -134,7 +134,7 @@ void UIThreadPool::enqueueTask(UITask *pTask)
             {
                 /* Prepare the new worker: */
                 UIThreadWorker *pWorker = new UIThreadWorker(this, idxFirstUnused);
-                connect(pWorker, SIGNAL(sigFinished(UIThreadWorker*)), this, 
+                connect(pWorker, SIGNAL(sigFinished(UIThreadWorker*)), this,
                         SLOT(sltHandleWorkerFinished(UIThreadWorker*)), Qt::QueuedConnection);
                 m_workers[idxFirstUnused] = pWorker;
                 m_cWorkers++;

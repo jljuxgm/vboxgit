@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 48644 2013-09-23 17:54:48Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -214,7 +214,7 @@ QSize UIMachineViewScale::calculateMaxGuestSize() const
     /* To work out how big the guest display can get without the window going
      * over the maximum size we calculated above, we work out how much space
      * the other parts of the window (frame, menu bar, status bar and so on)
-     * take up and subtract that space from the maximum window size. The 
+     * take up and subtract that space from the maximum window size. The
      * central widget shouldn't be bigger than the window, but we bound it for
      * sanity (or insanity) reasons. */
     return maximumSize - (windowSize - centralWidgetSize.boundedTo(windowSize));

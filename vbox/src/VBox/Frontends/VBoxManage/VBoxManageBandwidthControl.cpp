@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -166,7 +166,7 @@ static RTEXITCODE handleBandwidthControlAdd(HandlerArg *a, ComPtr<IBandwidthCont
         errorArgument("Invalid bandwidth group type\n");
         return RTEXITCODE_FAILURE;
     }
-    
+
     CHECK_ERROR2_RET(bwCtrl, CreateBandwidthGroup(name.raw(), enmType, (LONG64)cMaxBytesPerSec), RTEXITCODE_FAILURE);
 
     return RTEXITCODE_SUCCESS;
@@ -226,7 +226,7 @@ static RTEXITCODE handleBandwidthControlSet(HandlerArg *a, ComPtr<IBandwidthCont
         }
     }
 
-    
+
     if (cMaxBytesPerSec != INT64_MAX)
     {
         ComPtr<IBandwidthGroup> bwGroup;
