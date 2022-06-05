@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 48973 2013-10-08 11:40:57Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 48987 2013-10-09 03:59:04Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -553,14 +553,6 @@ STDMETHODIMP NetworkAdapter::COMSETTER(BridgedInterface)(IN_BSTR aBridgedInterfa
                             tr("Empty or null bridged interface name is not valid"));
         }
 
-        alock.release();
-
-        HRESULT hrc = checkAndSwitchFromNatNetworking();
-        if (FAILED(hrc))
-            return hrc;
-
-        alock.acquire();
-
         mData.backup();
         mData->mBridgedInterface = aBridgedInterface;
 
@@ -621,14 +613,6 @@ STDMETHODIMP NetworkAdapter::COMSETTER(HostOnlyInterface)(IN_BSTR aHostOnlyInter
                             tr("Empty or null host only interface name is not valid"));
         }
 
-        alock.release();
-
-        HRESULT hrc = checkAndSwitchFromNatNetworking();
-        if (FAILED(hrc))
-            return hrc;
-
-        alock.acquire();
-
         mData.backup();
         mData->mHostOnlyInterface = aHostOnlyInterface;
 
@@ -684,14 +668,6 @@ STDMETHODIMP NetworkAdapter::COMSETTER(InternalNetwork)(IN_BSTR aInternalNetwork
             return setError(E_FAIL,
                             tr("Empty or null internal network name is not valid"));
         }
-
-        alock.release();
-
-        HRESULT hrc = checkAndSwitchFromNatNetworking();
-        if (FAILED(hrc))
-            return hrc;
-
-        alock.acquire();
 
         mData.backup();
         mData->mInternalNetwork = aInternalNetwork;
