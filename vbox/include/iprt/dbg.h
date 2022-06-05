@@ -1,4 +1,4 @@
-/* $Id: dbg.h 49061 2013-10-11 20:15:59Z vboxsync $ */
+/* $Id: dbg.h 50003 2013-12-25 17:59:47Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -106,7 +106,7 @@ typedef RTDBGSEGMENT const *PCRTDBGSEGMENT;
 
 
 /** Max length (including '\\0') of a symbol name. */
-#define RTDBG_SYMBOL_NAME_LENGTH    (384 - 8 - 8 - 8 - 4 - 4 - 8)
+#define RTDBG_SYMBOL_NAME_LENGTH    (512 - 8 - 8 - 8 - 4 - 4 - 8)
 
 /**
  * Debug symbol.
