@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 49267 2013-10-23 18:57:04Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 51459 2014-05-29 12:04:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,7 +49,6 @@
 
 UIFrameBufferQuartz2D::UIFrameBufferQuartz2D(UIMachineView *pMachineView)
     : UIFrameBuffer(pMachineView)
-    , m_fUsesGuestVRAM(false)
     , m_pDataAddress(NULL)
     , m_pBitmapData(NULL)
     , m_uPixelFormat(FramebufferPixelFormat_FOURCC_RGB)
@@ -200,8 +199,6 @@ void UIFrameBufferQuartz2D::resizeEvent(UIResizeEvent *aEvent)
     if (   aEvent->pixelFormat() == FramebufferPixelFormat_FOURCC_RGB
         && aEvent->bitsPerPixel() == 32)
     {
-        m_fUsesGuestVRAM = true;
-//        printf ("VRAM\n");
         /* Create the image copy of the framebuffer */
         CGDataProviderRef dp = CGDataProviderCreateWithData(NULL, aEvent->VRAM(), aEvent->bytesPerLine() * m_height, NULL);
         m_image = CGImageCreate(m_width, m_height, 8, aEvent->bitsPerPixel(), aEvent->bytesPerLine(), cs,
@@ -212,9 +209,7 @@ void UIFrameBufferQuartz2D::resizeEvent(UIResizeEvent *aEvent)
     }
     else
     {
-        m_fUsesGuestVRAM = false;
         remind = true;
-//        printf ("No VRAM\n");
         /* Create the memory we need for our image copy
          * Read somewhere that an alignment of 16 is
          * best for optimal performance. So why not. */
@@ -246,8 +241,7 @@ void UIFrameBufferQuartz2D::paintEvent(QPaintEvent *aEvent)
     /* If the machine is NOT in 'running' state,
      * the link between framebuffer and video memory
      * is broken, we should go fallback now... */
-    if (m_fUsesGuestVRAM &&
-        !m_pMachineView->uisession()->isRunning() &&
+    if (!m_pMachineView->uisession()->isRunning() &&
         !m_pMachineView->uisession()->isPaused() &&
         /* Online snapshotting: */
         m_pMachineView->uisession()->machineState() != KMachineState_Saving)

@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 51458 2014-05-29 11:56:56Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 51459 2014-05-29 12:04:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -168,7 +168,7 @@ STDMETHODIMP UIFrameBuffer::COMGETTER(UsesGuestVRAM) (BOOL *pbUsesGuestVRAM)
 {
     if (!pbUsesGuestVRAM)
         return E_POINTER;
-    *pbUsesGuestVRAM = usesGuestVRAM();
+    *pbUsesGuestVRAM = true;
     return S_OK;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 51458 2014-05-29 11:56:56Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 51459 2014-05-29 12:04:50Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -125,7 +125,6 @@ void UIFrameBufferQImage::resizeEvent(UIResizeEvent *pEvent)
             LogRel(("UIFrameBufferQImage::resizeEvent: Resizing to directly use VGA device content..\n"));
             m_img = QImage((uchar *)pEvent->VRAM(), m_width, m_height, bitsPerLine / 8, format);
             m_uPixelFormat = FramebufferPixelFormat_FOURCC_RGB;
-            m_bUsesGuestVRAM = true;
         }
     }
     else
@@ -185,9 +184,8 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
      * situations when the state was changed already but
      * GUI didn't received event about that or didn't processed it yet. */
     KMachineState machineState = m_pMachineView->uisession()->session().GetConsole().GetState();
-    if (   m_bUsesGuestVRAM
-        /* running */
-        && machineState != KMachineState_Running
+    if (/* running */
+           machineState != KMachineState_Running
         && machineState != KMachineState_Teleporting
         && machineState != KMachineState_LiveSnapshotting
         && machineState != KMachineState_DeletingSnapshotOnline
@@ -413,7 +411,6 @@ void UIFrameBufferQImage::goFallback()
 
         m_img = QImage(pAddress, ulWidth, ulHeight, ulBytesPerLine, QImage::Format_RGB32);
         m_uPixelFormat = FramebufferPixelFormat_FOURCC_RGB;
-        m_bUsesGuestVRAM = true;
     }
 }
 
