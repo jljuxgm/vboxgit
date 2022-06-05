@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 49425 2013-11-08 16:30:42Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 49430 2013-11-08 17:27:37Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -4420,10 +4420,7 @@ void VBoxQGLOverlay::onResizeEventPostprocess (const VBoxFBSizeInfo &re, const Q
         mNeedOverlayRepaint = vboxSynchGl();
 
         if (!mOverlayImage.hasSurfaces())
-        {
-            Assert(0);
             vboxSetGlOn(false);
-        }
     }
     else
         Assert(!mOverlayImage.hasSurfaces());
@@ -5186,6 +5183,12 @@ void VBoxVHWACommandElementProcessor::reset(CDisplay *pDisplay)
         RTListNodeRemove(&pCur->ListNode);
         g_VBoxCmdEntriesCache.free(pCur);
     }
+
+    RTCritSectEnter(&mCritSect);
+
+    mbResetting = false;
+
+    RTCritSectLeave(&mCritSect);
 }
 
 #define VBOXVHWACOMMANDELEMENTLISTBEGIN_MAGIC 0x89abcdef
