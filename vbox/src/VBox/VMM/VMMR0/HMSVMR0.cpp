@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49275 2013-10-24 13:06:04Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49404 2013-11-07 04:39:16Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -562,7 +562,7 @@ VMMR0DECL(int) SVMR0InitVM(PVM pVM)
         pVCpu->hm.s.svm.pvMsrBitmap     = RTR0MemObjAddress(pVCpu->hm.s.svm.hMemObjMsrBitmap);
         pVCpu->hm.s.svm.HCPhysMsrBitmap = RTR0MemObjGetPagePhysAddr(pVCpu->hm.s.svm.hMemObjMsrBitmap, 0 /* iPage */);
         /* Set all bits to intercept all MSR accesses (changed later on). */
-        ASMMemFill32(pVCpu->hm.s.svm.pvMsrBitmap, 2 << PAGE_SHIFT, 0xffffffff);
+        ASMMemFill32(pVCpu->hm.s.svm.pvMsrBitmap, 2 << PAGE_SHIFT, UINT32_C(0xffffffff));
     }
 
     return VINF_SUCCESS;

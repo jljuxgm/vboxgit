@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49403 2013-11-07 04:22:51Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49404 2013-11-07 04:39:16Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -992,7 +992,7 @@ static int hmR0VmxStructsAlloc(PVM pVM)
                                    &pVCpu->hm.s.vmx.HCPhysMsrBitmap);
             if (RT_FAILURE(rc))
                 goto cleanup;
-            memset(pVCpu->hm.s.vmx.pvMsrBitmap, 0xff, PAGE_SIZE);
+            ASMMemFill32(pVCpu->hm.s.vmx.pvMsrBitmap, PAGE_SIZE, UINT32_C(0xffffffff));
         }
 
 #ifdef VBOX_WITH_AUTO_MSR_LOAD_RESTORE
