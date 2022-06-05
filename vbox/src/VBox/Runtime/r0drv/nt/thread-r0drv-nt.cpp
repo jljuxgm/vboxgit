@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 48384 2013-09-09 10:24:25Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -106,6 +106,7 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
     /*
      * Read the globals and check if they are useful.
      */
+/** @todo Should we check KPRCB.InterruptRequest and KPRCB.DpcInterruptRequested (older kernels).  */
     uint32_t const offQuantumEnd     = g_offrtNtPbQuantumEnd;
     uint32_t const cbQuantumEnd      = g_cbrtNtPbQuantumEnd;
     uint32_t const offDpcQueueDepth  = g_offrtNtPbDpcQueueDepth;
