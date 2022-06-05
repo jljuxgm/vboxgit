@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-octetstring-decode.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-ut-octetstring-decode.cpp 52563 2014-09-02 08:36:53Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, OCTET STRING Type, Decoding.
  */
@@ -65,6 +65,7 @@ RTDECL(int) RTAsn1OctetString_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags,
             rc = RTAsn1CursorSetInfo(pCursor, rc, "%s: Not OCTET STRING: fClass=%#x / uTag=%#x",
                                      pszErrorTag, pThis->Asn1Core.fClass, pThis->Asn1Core.uTag);
     }
+    RT_ZERO(*pThis);
     return rc;
 }
 

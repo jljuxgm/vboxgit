@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-string-decode.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-ut-string-decode.cpp 52563 2014-09-02 08:36:53Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, XXX STRING Types, Decoding.
  */
@@ -162,6 +162,7 @@ static int rtAsn1XxxString_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags, ui
                                      "%s: Constructed %s not implemented.", pszErrorTag, pszWhat);
         }
     }
+    RT_ZERO(*pThis);
     return rc;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-core-decode.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-ut-core-decode.cpp 52563 2014-09-02 08:36:53Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Generic Core Type, Decoding.
  */
@@ -43,6 +43,7 @@ RTDECL(int) RTAsn1Core_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags, PRTASN
         pThis->pOps = &g_RTAsn1Core_Vtable;
         return VINF_SUCCESS;
     }
+    RT_ZERO(*pThis);
     return rc;
 }
 

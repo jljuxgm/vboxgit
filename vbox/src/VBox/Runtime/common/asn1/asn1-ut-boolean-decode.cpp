@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-boolean-decode.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-ut-boolean-decode.cpp 52563 2014-09-02 08:36:53Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, BOOLEAN Type, Decoding.
  */
@@ -68,6 +68,7 @@ RTDECL(int) RTAsn1Boolean_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags, PRT
                                          pszErrorTag, pThis->Asn1Core.cb);
         }
     }
+    RT_ZERO(*pThis);
     return rc;
 }
 
