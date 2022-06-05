@@ -1,4 +1,4 @@
-/* $Id: socket.h 52755 2014-09-15 21:31:50Z vboxsync $ */
+/* $Id: socket.h 52798 2014-09-21 21:19:38Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -58,6 +58,7 @@ struct socket
                                   * PING reply's */
     struct tcpiphdr *so_ti;      /* Pointer to the original ti within
                                   * so_mconn, for non-blocking connections */
+    uint8_t         *so_ohdr;    /* unmolested IP header of the datagram in so_m */
     int             so_urgc;
     struct in_addr  so_faddr;    /* foreign host table entry */
     struct in_addr  so_laddr;    /* local host table entry */

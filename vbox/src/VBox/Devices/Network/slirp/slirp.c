@@ -1,4 +1,4 @@
-/* $Id: slirp.c 52792 2014-09-18 22:59:21Z vboxsync $ */
+/* $Id: slirp.c 52798 2014-09-21 21:19:38Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1010,9 +1010,7 @@ void slirp_select_poll(PNATState pData, struct pollfd *polls, int ndfs)
 #endif
             if (sockerr != 0)
             {
-                /* "continue" tcp_input() to reject connection from guest */
-                so->so_state = SS_NOFDREF;
-                TCP_INPUT(pData, NULL, 0, so);
+                tcp_fconnect_failed(pData, so, sockerr);
                 ret = slirpVerifyAndFreeSocket(pData, so);
                 Assert(ret == 1); /* freed */
                 CONTINUE(tcp);

@@ -1,4 +1,4 @@
-/* $Id: socket.c 52712 2014-09-11 21:37:27Z vboxsync $ */
+/* $Id: socket.c 52798 2014-09-21 21:19:38Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -213,6 +213,12 @@ sofree(PNATState pData, struct socket *so)
     {
         m_freem(pData, so->so_m);
         so->so_m = NULL;
+    }
+
+    if (so->so_ohdr != NULL)
+    {
+        RTMemFree(so->so_ohdr);
+        so->so_ohdr = NULL;
     }
 
     if (so->so_next && so->so_prev)
