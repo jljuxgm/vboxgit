@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 52209 2014-07-28 10:42:11Z vboxsync $ */
+/* $Id: DevOHCI.cpp 52301 2014-08-06 17:12:53Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1117,9 +1117,7 @@ static void ohciDoReset(POHCI pThis, uint32_t fNewMode, bool fResetOnLinux)
      * suspend/reset state. Also, a real HC isn't going to send anything
      * any more when a reset has been signaled.
      */
-    RTCritSectEnter(&pThis->CritSect);
     pThis->RootHub.pIRhConn->pfnCancelAllUrbs(pThis->RootHub.pIRhConn);
-    RTCritSectLeave(&pThis->CritSect);
 
     /*
      * Reset the hardware registers.
