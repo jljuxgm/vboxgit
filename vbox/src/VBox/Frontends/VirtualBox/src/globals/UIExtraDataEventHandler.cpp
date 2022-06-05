@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataEventHandler.cpp 50684 2014-03-04 17:17:12Z vboxsync $ */
+/* $Id: UIExtraDataEventHandler.cpp 50687 2014-03-04 19:36:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -102,9 +102,7 @@ public slots:
             {
                 /* If extra data GUI/HidLedsSync is not present in VM config or set
                  * to 1 then sync is enabled. Otherwise, it is disabled. */
-
-                /* (temporary disabled by default) */
-                bool f = (strValue == "1") ? true : false;
+                bool f = (strValue.isEmpty() || strValue == "1") ? true : false;
                 emit sigHidLedsSyncStateChanged(f);
             }
 
