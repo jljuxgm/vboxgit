@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 49596 2013-11-21 10:11:36Z vboxsync $ */
+/* $Id: UIActionPool.cpp 50931 2014-03-31 15:56:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -350,7 +350,7 @@ class UIActionSimpleContents : public UIActionSimple
 public:
 
     UIActionSimpleContents(UIActionPool *pParent)
-        : UIActionSimple(pParent, UIIconPool::defaultIcon(UIIconPool::DialogHelpIcon))
+        : UIActionSimple(pParent, UIIconPool::defaultIcon(UIIconPool::UIDefaultIconType_DialogHelp))
     {
         retranslateUi();
     }
