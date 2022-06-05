@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 52894 2014-09-29 21:38:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -167,8 +167,12 @@ UIConsoleEventHandler::UIConsoleEventHandler(UISession *pSession)
 UIConsoleEventHandler::~UIConsoleEventHandler()
 {
     const CConsole &console = m_pSession->session().GetConsole();
-    console.GetEventSource().UnregisterListener(m_mainEventListener);
-    AssertWrapperOk(console);
+    if (!console.isNull())
+    {
+        CEventSource eventSource = console.GetEventSource();
+        if (!eventSource.isNull())
+            eventSource.UnregisterListener(m_mainEventListener);
+    }
 }
 
 void UIConsoleEventHandler::sltCanShowWindow(bool & /* fVeto */, QString & /* strReason */)
