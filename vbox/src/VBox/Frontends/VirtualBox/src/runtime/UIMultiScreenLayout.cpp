@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 47774 2013-08-15 15:13:01Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 48503 2013-09-17 13:49:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -163,12 +163,9 @@ void UIMultiScreenLayout::update()
         {
             /* Get corresponding guest-screen: */
             int iGuestScreen = m_disabledGuestScreens[iGuestScreenIndex];
-            /* Re-enable guest-screen with the old arguments: */
+            /* Re-enable guest-screen with 'default' arguments: */
             LogRelFlow(("UIMultiScreenLayout::update: Enabling guest-screen %d.\n", iGuestScreen));
-            ULONG iWidth, iHeight, iBpp;
-            LONG xOrigin, yOrigin;
-            display.GetScreenResolution(iGuestScreen, iWidth, iHeight, iBpp, xOrigin, yOrigin);
-            display.SetVideoModeHint(iGuestScreen, true, false, 0, 0, iWidth, iHeight, iBpp);
+            display.SetVideoModeHint(iGuestScreen, true, false, 0, 0, 800, 600, 32);
         }
     }
 
