@@ -1,4 +1,4 @@
-/* $Id: keyboard-layouts.h 45101 2013-03-20 09:08:45Z vboxsync $ */
+/* $Id: keyboard-layouts.h 53037 2014-10-13 09:05:00Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables (keyboard layouts).
  *
@@ -75,6 +75,15 @@ static const char main_key_us_intl[MAIN_LEN][2] =
 "qQ","wW","eE","rR","tT","yY","uU","iI","oO","pP","[{","]}",
 "aA","sS","dD","fF","gG","hH","jJ","kK","lL",";:","QW","\\|",
 "zZ","xX","cC","vV","bB","nN","mM",",<",".>","/?","<>","\x0\x0","\x0\x0"
+};
+
+/* U.S. English, International, alternative 102nd key */
+static const char main_key_us_intl_alt102[MAIN_LEN][2] =
+{
+"PS","1!","2@","3#","4$","5%","6R","7&","8*","9(","0)","-_","=+",
+"qQ","wW","eE","rR","tT","yY","uU","iI","oO","pP","[{","]}",
+"aA","sS","dD","fF","gG","hH","jJ","kK","lL",";:","QW","\\|",
+"zZ","xX","cC","vV","bB","nN","mM",",<",".>","/?","\\|","\x0\x0","\x0\x0"
 };
 
 /* U.S. English, Dvorak */

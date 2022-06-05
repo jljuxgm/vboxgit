@@ -1,4 +1,4 @@
-/* $Id: keyboard-list.h 45101 2013-03-20 09:08:45Z vboxsync $ */
+/* $Id: keyboard-list.h 53037 2014-10-13 09:05:00Z vboxsync $ */
 /** @file
  * VBox/Frontends/Common - X11 keyboard driver translation tables (keyboard layouts)
  */
@@ -43,6 +43,7 @@
 
  {"U.S. English", &main_key_us},
  {"U.S. English, International (with dead keys)", &main_key_us_intl},
+ {"U.S. English, International, alternative 102nd key", &main_key_us_intl_alt102},
  {"U.S. English, Dvorak", &main_key_us_dvorak},
  {"U.S. English, Left handed Dvorak", &main_key_us_dvorak_l},
  {"U.S. English, Right handed Dvorak", &main_key_us_dvorak_r},
