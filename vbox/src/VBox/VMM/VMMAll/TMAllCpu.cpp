@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 51852 2014-07-03 15:09:01Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 51959 2014-07-09 15:18:00Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -79,6 +79,7 @@ int tmCpuTickResume(PVM pVM, PVMCPU pVCpu)
     return VERR_TM_TSC_ALREADY_TICKING;
 }
 
+
 /**
  * Resumes the CPU timestamp counter ticking.
  *
@@ -143,6 +144,7 @@ int tmCpuTickPause(PVMCPU pVCpu)
     return VERR_TM_TSC_ALREADY_PAUSED;
 }
 
+
 /**
  * Pauses the CPU timestamp counter ticking.
  *
@@ -171,6 +173,7 @@ int tmCpuTickPauseLocked(PVM pVM, PVMCPU pVCpu)
     AssertFailed();
     return VERR_TM_TSC_ALREADY_PAUSED;
 }
+
 
 /**
  * Record why we refused to use offsetted TSC.
