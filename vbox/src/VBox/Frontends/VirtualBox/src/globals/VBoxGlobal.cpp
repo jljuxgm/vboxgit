@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 50869 2014-03-25 17:19:16Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 50897 2014-03-26 16:41:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2058,12 +2058,12 @@ void VBoxGlobal::prepareStorageMenu(QMenu &menu,
         case UIMediumType_DVD:
             pActionOpenExistingMedium->setText(QApplication::translate("UIMachineSettingsStorage", "Choose a virtual CD/DVD disk file..."));
             pActionUnmountMedium->setText(QApplication::translate("UIMachineSettingsStorage", "Remove disk from virtual drive"));
-            pActionUnmountMedium->setIcon(UIIconPool::iconSet(":/cd_unmount_16px.png", ":/cd_unmount_dis_16px.png"));
+            pActionUnmountMedium->setIcon(UIIconPool::iconSet(":/cd_unmount_16px.png", ":/cd_unmount_disabled_16px.png"));
             break;
         case UIMediumType_Floppy:
             pActionOpenExistingMedium->setText(QApplication::translate("UIMachineSettingsStorage", "Choose a virtual floppy disk file..."));
             pActionUnmountMedium->setText(QApplication::translate("UIMachineSettingsStorage", "Remove disk from virtual drive"));
-            pActionUnmountMedium->setIcon(UIIconPool::iconSet(":/fd_unmount_16px.png", ":/fd_unmount_dis_16px.png"));
+            pActionUnmountMedium->setIcon(UIIconPool::iconSet(":/fd_unmount_16px.png", ":/fd_unmount_disabled_16px.png"));
             break;
         default:
             break;
