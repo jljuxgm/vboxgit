@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 48515 2013-09-18 11:07:49Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 48516 2013-09-18 11:33:37Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -199,6 +199,7 @@ void UIMachineLogic::prepare()
     sltMachineStateChanged();
     sltAdditionsStateChanged();
     sltMouseCapabilityChanged();
+    sltSwitchKeyboardLedsToGuestLeds();
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
     /* Prepare debugger: */
@@ -211,6 +212,9 @@ void UIMachineLogic::prepare()
 
 void UIMachineLogic::cleanup()
 {
+    /* Deinitialization: */
+    sltSwitchKeyboardLedsToPreviousLeds();
+
 #ifdef VBOX_WITH_DEBUGGER_GUI
     /* Cleanup debugger: */
     cleanupDebugger();
