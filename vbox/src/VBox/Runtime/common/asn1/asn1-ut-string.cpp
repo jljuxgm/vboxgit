@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-string.cpp 51858 2014-07-03 19:44:21Z vboxsync $ */
+/* $Id: asn1-ut-string.cpp 53015 2014-10-09 22:05:11Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, XXX STRING Types.
  */
@@ -1439,7 +1439,7 @@ RTDECL(int) RTAsn1String_CompareWithString(PCRTASN1STRING pThis, const char *psz
                         iDiff = cch < cchString ? - 1 : 1;
                     break;
 
-                /** @todo Implement compating ASN1_TAG_BMP_STRING, ASN1_TAG_UNIVERSAL_STRING and
+                /** @todo Implement comparing ASN1_TAG_BMP_STRING, ASN1_TAG_UNIVERSAL_STRING and
                  *        ASN1_TAG_T61_STRING with UTF-8 strings without conversion. */
 
                 default:
@@ -1527,7 +1527,7 @@ RTDECL(int) RTAsn1String_QueryUtf8(PCRTASN1STRING pThis, const char **ppsz, size
                     {
                         char           *pszDst = psz;
                         size_t          cchSrc = pThis->Asn1Core.cb;
-                        uint8_t const  *pbSrc  = (uint8_t const *)psz;
+                        uint8_t const  *pbSrc  = pThis->Asn1Core.uData.pu8;
                         while (cchSrc > 0)
                         {
                             RTUNICP uc = RT_MAKE_U32_FROM_U8(pbSrc[3], pbSrc[2], pbSrc[1], pbSrc[0]); /* big endian */
@@ -1546,7 +1546,7 @@ RTDECL(int) RTAsn1String_QueryUtf8(PCRTASN1STRING pThis, const char **ppsz, size
                     {
                         char           *pszDst = psz;
                         size_t          cchSrc = pThis->Asn1Core.cb;
-                        uint8_t const  *pbSrc  = (uint8_t const *)psz;
+                        uint8_t const  *pbSrc  = pThis->Asn1Core.uData.pu8;
                         while (cchSrc > 0)
                         {
                             RTUNICP uc = RT_MAKE_U32_FROM_U8(pbSrc[1], pbSrc[0], 0, 0); /* big endian */
