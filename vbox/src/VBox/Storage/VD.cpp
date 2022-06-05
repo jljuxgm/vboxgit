@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 52358 2014-08-12 08:43:35Z vboxsync $ */
+/* $Id: VD.cpp 52359 2014-08-12 08:51:58Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -4030,7 +4030,6 @@ static void vdIoCtxContinueDeferredList(PVDIOSTORAGE pIoStorage, PRTLISTANCHOR p
     while (!RTListIsEmpty(pListWaiting))
     {
         int rc = VINF_SUCCESS;
-        bool fContinue = true;
         PVDIOCTXDEFERRED pDeferred = RTListGetFirst(pListWaiting, VDIOCTXDEFERRED, NodeDeferred);
         PVDIOCTX pIoCtx = pDeferred->pIoCtx;
         RTListNodeRemove(&pDeferred->NodeDeferred);
