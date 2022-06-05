@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 52353 2014-08-11 19:16:55Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 52575 2014-09-03 07:36:27Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -822,7 +822,7 @@ int VBOXCALL    supdrvDarwinResumeSuspendedKbds(void);
 *   Shared Functions                                                           *
 *******************************************************************************/
 /* SUPDrv.c */
-int  VBOXCALL   supdrvIOCtl(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PSUPREQHDR pReqHdr);
+int  VBOXCALL   supdrvIOCtl(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PSUPREQHDR pReqHdr, size_t cbReq);
 int  VBOXCALL   supdrvIOCtlFast(uintptr_t uIOCtl, VMCPUID idCpu, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession);
 int  VBOXCALL   supdrvIDC(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PSUPDRVIDCREQHDR pReqHdr);
 int  VBOXCALL   supdrvInitDevExt(PSUPDRVDEVEXT pDevExt, size_t cbSession);

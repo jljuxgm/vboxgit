@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 52192 2014-07-25 15:04:01Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 52575 2014-09-03 07:36:27Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -410,6 +410,8 @@ static int VBoxDrvFreeBSDIOCtlSlow(PSUPDRVSESSION pSession, u_long ulCmd, caddr_
             RTMemTmpFree(pHdr);
             return rc;
         }
+        if (Hdr.cbIn < cbReq)
+            RT_BZERO((uint8_t *)pHdr + Hdr.cbIn, cbReq - Hdr.cbIn)
     }
     else
     {
@@ -420,7 +422,7 @@ static int VBoxDrvFreeBSDIOCtlSlow(PSUPDRVSESSION pSession, u_long ulCmd, caddr_
     /*
      * Process the IOCtl.
      */
-    int rc = supdrvIOCtl(ulCmd, &g_VBoxDrvFreeBSDDevExt, pSession, pHdr);
+    int rc = supdrvIOCtl(ulCmd, &g_VBoxDrvFreeBSDDevExt, pSession, pHdr, cbReq);
     if (RT_LIKELY(!rc))
     {
         /*

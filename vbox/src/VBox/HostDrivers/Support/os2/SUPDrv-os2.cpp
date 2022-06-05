@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 52192 2014-07-25 15:04:01Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 52575 2014-09-03 07:36:27Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -334,7 +334,7 @@ DECLASM(int) VBoxDrvIOCtl(uint16_t sfn, uint8_t iCat, uint8_t iFunction, void *p
                 /*
                  * Process the IOCtl.
                  */
-                rc = supdrvIOCtl(iFunction, &g_DevExt, pSession, pHdr);
+                rc = supdrvIOCtl(iFunction, &g_DevExt, pSession, pHdr, cbReq);
             }
             else
             {

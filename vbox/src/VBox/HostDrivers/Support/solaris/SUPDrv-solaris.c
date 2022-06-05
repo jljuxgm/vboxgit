@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 52553 2014-09-01 14:48:33Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 52575 2014-09-03 07:36:27Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -815,7 +815,7 @@ static int VBoxDrvSolarisIOCtlSlow(PSUPDRVSESSION pSession, int iCmd, int Mode, 
     /*
      * Process the IOCtl.
      */
-    rc = supdrvIOCtl(iCmd, &g_DevExt, pSession, pHdr);
+    rc = supdrvIOCtl(iCmd, &g_DevExt, pSession, pHdr, cbBuf);
 
     /*
      * Copy ioctl data and output buffer back to user space.
