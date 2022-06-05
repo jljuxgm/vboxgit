@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 53025 2014-10-10 11:01:28Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 53034 2014-10-10 23:39:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1817,7 +1817,7 @@ static int supHardNtLdrCacheNewEntry(PSUPHNTLDRCACHEENTRY pEntry, const char *ps
                                  FILE_ATTRIBUTE_NORMAL,
                                  FILE_SHARE_READ,
                                  FILE_OPEN,
-                                 FILE_NON_DIRECTORY_FILE, /** @todo nonalert? */
+                                 FILE_NON_DIRECTORY_FILE | FILE_SYNCHRONOUS_IO_NONALERT,
                                  NULL /*EaBuffer*/,
                                  0 /*EaLength*/);
     if (NT_SUCCESS(rcNt))

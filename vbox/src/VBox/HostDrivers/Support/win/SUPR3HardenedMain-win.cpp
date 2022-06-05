@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 53027 2014-10-10 12:10:38Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 53034 2014-10-10 23:39:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -4847,7 +4847,7 @@ static void supR3HardenedLogFileInfo(PCRTUTF16 pwszFile, bool fAdversarial)
                                  FILE_ATTRIBUTE_NORMAL,
                                  FILE_SHARE_READ,
                                  FILE_OPEN,
-                                 FILE_NON_DIRECTORY_FILE,
+                                 FILE_NON_DIRECTORY_FILE | FILE_SYNCHRONOUS_IO_NONALERT,
                                  NULL /*EaBuffer*/,
                                  0 /*EaLength*/);
     if (NT_SUCCESS(rcNt))
@@ -5305,7 +5305,8 @@ static uint32_t supR3HardenedWinFindAdversaries(void)
         UniStrName.MaximumLength = UniStrName.Length + sizeof(WCHAR);
         InitializeObjectAttributes(&ObjAttr, &UniStrName, OBJ_CASE_INSENSITIVE, NULL /*hRootDir*/, NULL /*pSecDesc*/);
         rcNt = NtCreateFile(&hFile, GENERIC_READ, &ObjAttr, &Ios, NULL /* Allocation Size*/,  FILE_ATTRIBUTE_NORMAL,
-                            FILE_SHARE_READ, FILE_OPEN, FILE_NON_DIRECTORY_FILE, NULL /*EaBuffer*/, 0 /*EaLength*/);
+                            FILE_SHARE_READ, FILE_OPEN, FILE_NON_DIRECTORY_FILE | FILE_SYNCHRONOUS_IO_NONALERT,
+                            NULL /*EaBuffer*/, 0 /*EaLength*/);
         if (NT_SUCCESS(rcNt) && NT_SUCCESS(Ios.Status))
         {
             fFound |= s_aFiles[i].fAdversary;

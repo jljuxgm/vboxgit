@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 53024 2014-10-10 10:44:30Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 53034 2014-10-10 23:39:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -253,6 +253,11 @@ static DECLCALLBACK(int) supHardNtViRdrRead(PRTLDRREADER pReader, void *pvBuf, s
             return VERR_READ_ERROR;
         }
 
+/** @todo This nonsense is probably due to missing FILE_SYNCHRONOUS_IO_NONALERT
+ *        flags in early code stage.  Should clean this up, but leave code
+ *        for handling STATUS_PENDING as we don't know what callers of
+ *        NtCreateSection might've been passing to their NtCreateFile calls.
+ *        In ring-0, this code is mostly pointless, I think. */
         /*
          * Delay a little before we retry?
          */
