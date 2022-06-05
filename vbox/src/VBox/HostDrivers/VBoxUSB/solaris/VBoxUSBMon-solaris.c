@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBMon-solaris.c 47497 2013-07-31 16:43:28Z vboxsync $ */
+/* $Id: VBoxUSBMon-solaris.c 50630 2014-02-27 14:42:29Z vboxsync $ */
 /** @file
  * VirtualBox USB Monitor Driver, Solaris Hosts.
  */
@@ -122,7 +122,8 @@ static struct dev_ops g_VBoxUSBMonSolarisDevOps =
     nodev,                      /* reset */
     &g_VBoxUSBMonSolarisCbOps,
     (struct bus_ops *)0,
-    nodev                       /* power */
+    nodev,                      /* power */
+    ddi_quiesce_not_needed
 };
 
 /**
