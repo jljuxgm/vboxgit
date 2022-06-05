@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48875 2013-10-04 06:10:20Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48876 2013-10-04 06:11:21Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -177,13 +177,17 @@ class VBoxNetLwipNAT: public VBoxNetBaseService
 class PortForwardListener
 {
 public:
+
     HRESULT init(VBoxNetLwipNAT *pNAT) 
     {
         m_pNAT = pNAT; 
         return S_OK; 
     }
+
     HRESULT init() { return init(NULL); }
+
     void uninit() { init(NULL); }
+
     STDMETHOD(HandleEvent)(VBoxEventType_T aEventType, IEvent *pEvent)
     {
         if (m_pNAT)
@@ -191,6 +195,7 @@ public:
         else
             return E_FAIL;
     }
+
 private:
     VBoxNetLwipNAT *m_pNAT;
 };
