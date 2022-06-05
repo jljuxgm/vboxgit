@@ -1,4 +1,4 @@
-/* $Id: HostVideoInputDeviceImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
+/* $Id: HostVideoInputDeviceImpl.cpp 50914 2014-03-27 19:07:53Z vboxsync $ */
 /** @file
  *
  * Host video capture device implementation.
@@ -182,7 +182,7 @@ static HRESULT fillDeviceList(VirtualBox *pVirtualBox, HostVideoInputDeviceList 
 
 #ifdef VBOX_WITH_EXTPACK
     ExtPackManager *pExtPackMgr = pVirtualBox->i_getExtPackManager();
-    hr = pExtPackMgr->getLibraryPathForExtPack("VBoxHostWebcam", &strExtPackPuel, &strLibrary);
+    hr = pExtPackMgr->i_getLibraryPathForExtPack("VBoxHostWebcam", &strExtPackPuel, &strLibrary);
 #else
     hr = E_NOTIMPL;
 #endif

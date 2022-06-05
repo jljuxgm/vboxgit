@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 50848 2014-03-24 10:15:41Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 50914 2014-03-27 19:07:53Z vboxsync $ */
 /** @file
  * VBox Console VRDP Helper class
  */
@@ -1515,7 +1515,7 @@ int ConsoleVRDPServer::Launch(void)
     {
 #ifdef VBOX_WITH_EXTPACK
         ExtPackManager *pExtPackMgr = mConsole->getExtPackManager();
-        vrc = pExtPackMgr->getVrdeLibraryPathForExtPack(&strExtPack, &strVrdeLibrary);
+        vrc = pExtPackMgr->i_getVrdeLibraryPathForExtPack(&strExtPack, &strVrdeLibrary);
 #else
         vrc = VERR_FILE_NOT_FOUND;
 #endif

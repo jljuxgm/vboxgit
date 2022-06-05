@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 50914 2014-03-27 19:07:53Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -578,7 +578,7 @@ HRESULT VirtualBox::init()
     if (SUCCEEDED(rc))
     {
         lock.release();
-        m->ptrExtPackManager->callAllVirtualBoxReadyHooks();
+        m->ptrExtPackManager->i_callAllVirtualBoxReadyHooks();
     }
 #endif
 
@@ -1554,7 +1554,7 @@ HRESULT VirtualBox::createMachine(const com::Utf8Str &aSettingsFile,
 
 #ifdef VBOX_WITH_EXTPACK
         /* call the extension pack hooks */
-        m->ptrExtPackManager->callAllVmCreatedHooks(machine);
+        m->ptrExtPackManager->i_callAllVmCreatedHooks(machine);
 #endif
     }
 

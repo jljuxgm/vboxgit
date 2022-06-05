@@ -1,4 +1,4 @@
-/* $Id: server.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
+/* $Id: server.cpp 50914 2014-03-27 19:07:53Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -129,18 +129,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(PerformanceCollector, IPerformanceCollector)
 NS_DECL_CLASSINFO(PerformanceMetric)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(PerformanceMetric, IPerformanceMetric)
 #endif /* VBOX_WITH_RESOURCE_USAGE_API */
-
-#ifdef VBOX_WITH_EXTPACK
-NS_DECL_CLASSINFO(ExtPackFile)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ExtPackFile, IExtPackFile)
-
-NS_DECL_CLASSINFO(ExtPack)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ExtPack, IExtPack)
-
-NS_DECL_CLASSINFO(ExtPackManager)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ExtPackManager, IExtPackManager)
-#endif
-
 
 ////////////////////////////////////////////////////////////////////////////////
 
