@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 47342 2013-07-23 13:59:12Z vboxsync $ */
+/* $Id: ConsoleImpl.h 48054 2013-08-26 10:30:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -617,6 +617,7 @@ private:
 
     static DECLCALLBACK(int) configGuestProperties(void *pvConsole, PUVM pUVM);
     static DECLCALLBACK(int) configGuestControl(void *pvConsole);
+    void vmstateChangePowerOff(bool fCalledFromReset /* = false */);
     static DECLCALLBACK(void) vmstateChangeCallback(PUVM pUVM, VMSTATE enmState, VMSTATE enmOldState, void *pvUser);
     static DECLCALLBACK(int) unplugCpu(Console *pThis, PUVM pUVM, VMCPUID idCpu);
     static DECLCALLBACK(int) plugCpu(Console *pThis, PUVM pUVM, VMCPUID idCpu);
@@ -723,6 +724,8 @@ private:
     void guestPropertiesVRDPUpdateOtherInfoChange(uint32_t u32ClientId, const char *pszOtherInfo);
     void guestPropertiesVRDPUpdateDisconnect(uint32_t u32ClientId);
 #endif
+
+    bool isResetTurnedIntoPowerOff(void);
 
     /** @name Teleporter support
      * @{ */
