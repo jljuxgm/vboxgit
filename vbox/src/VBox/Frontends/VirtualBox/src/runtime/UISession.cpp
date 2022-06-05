@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
+/* $Id: UISession.cpp 51693 2014-06-23 16:04:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -69,7 +69,6 @@
 #include "CStorageController.h"
 #include "CMediumAttachment.h"
 #include "CDisplay.h"
-#include "CFramebuffer.h"
 #include "CNetworkAdapter.h"
 #include "CHostNetworkInterface.h"
 #include "CVRDEServer.h"

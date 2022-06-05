@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 51693 2014-06-23 16:04:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -60,7 +60,6 @@ const int XKeyRelease = KeyRelease;
 /* COM includes: */
 #include "CConsole.h"
 #include "CMouse.h"
-#include "CFramebuffer.h"
 #include "CDisplay.h"
 
 #include <iprt/time.h>
