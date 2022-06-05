@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 48152 2013-08-29 12:51:26Z vboxsync $ */
+/* $Id: SUPDrv.c 48208 2013-08-30 22:05:31Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3366,7 +3366,7 @@ SUPR0DECL(void) SUPR0ResumeVTxOnCpu(bool fSuspended)
 
 
 /**
- * Quries the AMD-V and VT-x capabilities of the calling CPU.
+ * Queries the AMD-V and VT-x capabilities of the calling CPU.
  *
  * @returns VBox status code.
  * @retval  VERR_VMX_NO_VMX
@@ -3418,7 +3418,7 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
                     || !(u64Value & MSR_IA32_FEATURE_CONTROL_LOCK) /* not enabled, but not locked either */
                    )
                 {
-                    VMX_CAPABILITY vtCaps;
+                    VMXCAPABILITY vtCaps;
 
                     *pfCaps |= SUPVTCAPS_VT_X;
 
