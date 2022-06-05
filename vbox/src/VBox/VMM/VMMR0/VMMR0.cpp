@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 47989 2013-08-22 13:56:52Z vboxsync $ */
+/* $Id: VMMR0.cpp 48003 2013-08-22 17:45:07Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -354,7 +354,7 @@ static int vmmR0InitVM(PVM pVM, uint32_t uSvnRev, uint32_t uBuildType)
         rc = HMR0InitVM(pVM);
         if (RT_SUCCESS(rc))
         {
-            rc = CPUMR0Init(pVM); /** @todo rename to CPUMR0InitVM */
+            rc = CPUMR0InitVM(pVM);
             if (RT_SUCCESS(rc))
             {
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE

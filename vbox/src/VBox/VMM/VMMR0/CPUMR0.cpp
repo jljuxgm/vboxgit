@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 47856 2013-08-19 19:19:29Z vboxsync $ */
+/* $Id: CPUMR0.cpp 48003 2013-08-22 17:45:07Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -169,7 +169,7 @@ static DECLCALLBACK(void) cpumR0CheckCpuid(RTCPUID idCpu, void *pvUser1, void *p
  * @returns VBox status code.
  * @param   pVM         Pointer to the VM.
  */
-VMMR0_INT_DECL(int) CPUMR0Init(PVM pVM)
+VMMR0_INT_DECL(int) CPUMR0InitVM(PVM pVM)
 {
     LogFlow(("CPUMR0Init: %p\n", pVM));
 
