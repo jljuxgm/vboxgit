@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 48234 2013-09-02 17:09:24Z vboxsync $ */
+/* $Id: PDMUsb.cpp 48406 2013-09-10 12:53:50Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -854,11 +854,11 @@ int pdmR3UsbInstantiateDevices(PVM pVM)
  * @param   pUVM            The user mode VM handle.
  * @param   pszDeviceName   The name of the PDM device to instantiate.
  * @param   pInstanceNode   The instance CFGM node.
- * @param   pUuid           Where to store the UUID of the created device.
+ * @param   pUuid           The UUID to be associated with the device.
  *
  * @thread EMT
  */
-VMMR3DECL(int) PDMR3UsbCreateEmulatedDevice(PUVM pUVM, const char *pszDeviceName, PCFGMNODE pInstanceNode, PRTUUID pUuid)
+VMMR3DECL(int) PDMR3UsbCreateEmulatedDevice(PUVM pUVM, const char *pszDeviceName, PCFGMNODE pInstanceNode, PCRTUUID pUuid)
 {
     /*
      * Validate input.
@@ -908,9 +908,6 @@ VMMR3DECL(int) PDMR3UsbCreateEmulatedDevice(PUVM pUVM, const char *pszDeviceName
     /*
      * Create and attach the device.
      */
-    rc = RTUuidCreate(pUuid);
-    AssertRCReturn(rc, rc);
-
     rc = pdmR3UsbCreateDevice(pVM, pHub, pUsbDev, -1, pUuid, &pInstanceNode, iUsbVersion);
     AssertRCReturn(rc, rc);
 

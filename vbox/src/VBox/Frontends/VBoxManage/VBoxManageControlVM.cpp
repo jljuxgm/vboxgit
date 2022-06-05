@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 47908 2013-08-20 12:57:00Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 48406 2013-09-10 12:53:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1406,6 +1406,58 @@ int handleControlVM(HandlerArg *a)
             }
 
             CHECK_ERROR_BREAK(sessionMachine, COMSETTER(VideoCaptureScreens)(ComSafeArrayAsInParam(saScreens)));
+        }
+        else if (!strcmp(a->argv[1], "webcam"))
+        {
+            if (a->argc < 3)
+            {
+                errorArgument("Missing argument to '%s'", a->argv[1]);
+                rc = E_FAIL;
+                break;
+            }
+
+            ComPtr<IEmulatedUSB> pEmulatedUSB;
+            CHECK_ERROR_BREAK(console, COMGETTER(EmulatedUSB)(pEmulatedUSB.asOutParam()));
+            if (!pEmulatedUSB)
+            {
+                RTMsgError("Guest not running");
+                rc = E_FAIL;
+                break;
+            }
+
+            if (!strcmp(a->argv[2], "attach"))
+            {
+                Bstr path("");
+                if (a->argc >= 4)
+                    path = a->argv[3];
+                Bstr settings("");
+                if (a->argc >= 5)
+                    settings = a->argv[4];
+                CHECK_ERROR_BREAK(pEmulatedUSB, WebcamAttach(path.raw(), settings.raw()));
+            }
+            else if (!strcmp(a->argv[2], "detach"))
+            {
+                Bstr path("");
+                if (a->argc >= 4)
+                    path = a->argv[3];
+                CHECK_ERROR_BREAK(pEmulatedUSB, WebcamDetach(path.raw()));
+            }
+            else if (!strcmp(a->argv[2], "list"))
+            {
+                com::SafeArray <BSTR> webcams;
+                CHECK_ERROR_BREAK(pEmulatedUSB, COMGETTER(Webcams)(ComSafeArrayAsOutParam(webcams)));
+                for (size_t i = 0; i < webcams.size(); ++i)
+                {
+                    RTPrintf("%ls\n", webcams[i][0]? webcams[i]: Bstr("default").raw());
+                }
+            }
+            else
+            {
+                errorArgument("Invalid argument to '%s'", a->argv[1]);
+                rc = E_FAIL;
+                break;
+            }
+            
         }
         else
         {

@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 47571 2013-08-07 09:49:33Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 48406 2013-09-10 12:53:50Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -143,10 +143,6 @@ public:
                             uint32_t cBits);
 
     void SendAudioInputEnd(void *pvUserCtx);
-#ifdef VBOX_WITH_USB_VIDEO
-    int GetVideoFrameDimensions(uint16_t *pu16Heigh, uint16_t *pu16Width);
-    int SendVideoSreamOn(bool fFetch);
-#endif
 
     int SCardRequest(void *pvUser, uint32_t u32Function, const void *pvData, uint32_t cbData);
 

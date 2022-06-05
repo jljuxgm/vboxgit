@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 48303 2013-09-05 12:26:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 48406 2013-09-10 12:53:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2378,21 +2378,6 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 // that it's documented somewhere.) Users needing it can use:
                 //      VBoxManage setextradata "myvm" "VBoxInternal/USB/USBProxy/GlobalConfig/Force11PacketSize" 1
                 //InsertConfigInteger(pCfg, "Force11PacketSize", true);
-            }
-#endif
-
-#ifdef VBOX_WITH_USB_VIDEO
-            BOOL aEmulatedUSBWebcamEnabled = FALSE;
-            hrc = pMachine->COMGETTER(EmulatedUSBWebcameraEnabled)(&aEmulatedUSBWebcamEnabled);    H();
-            if (aEmulatedUSBWebcamEnabled)
-            {
-                InsertConfigNode(pUsbDevices, "Webcam", &pDev);
-                InsertConfigNode(pDev,     "0", &pInst);
-                InsertConfigNode(pInst,    "Config", &pCfg);
-                InsertConfigNode(pInst,    "LUN#0", &pLunL0);
-                InsertConfigString(pLunL0, "Driver", "EmWebcam");
-                InsertConfigNode(pLunL0,   "Config", &pCfg);
-                InsertConfigInteger(pCfg,  "Object", (uintptr_t)mEmWebcam);
             }
 #endif
 

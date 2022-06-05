@@ -1,4 +1,4 @@
-# $Id: Config.kmk 48393 2013-09-09 15:49:58Z vboxsync $
+# $Id: Config.kmk 48406 2013-09-10 12:53:50Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -495,8 +495,6 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
 endif
 # Emulated USB smart card reader
 VBOX_WITH_USB_CARDREADER = 1
-# Emulated USB webcam
-VBOX_WITH_USB_VIDEO = 1
 ## @}
 
 
@@ -5490,7 +5488,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48393 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48406 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 48105 2013-08-27 19:53:13Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 48406 2013-09-10 12:53:50Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -356,9 +356,6 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--faulttolerancesyncinterval <msec>]\n"
                      "                            [--faulttolerancepassword <password>]\n"
 #endif
-#ifdef VBOX_WITH_USB_VIDEO
-                     "                            [--usbwebcam on|off]\n"
-#endif
 #ifdef VBOX_WITH_USB_CARDREADER
                      "                            [--usbcardreader on|off]\n"
 #endif
@@ -482,6 +479,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            plugcpu <id> |\n"
                      "                            unplugcpu <id> |\n"
                      "                            cpuexecutioncap <1-100>\n"
+                     "                            webcam attach [path [settings]] | detach [path] | list]\n"
                      "\n", SEP);
     }
 
