@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48456 2013-09-12 16:11:51Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48457 2013-09-12 16:25:35Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8101,7 +8101,8 @@ static uint32_t hmR0VmxCheckGuestState(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         }
 
         if (   fLongModeGuest
-            || !(u32GuestCR0 & X86_CR0_PE))
+            || (   fUnrestrictedGuest
+                && !(u32GuestCR0 & X86_CR0_PE)))
         {
             HMVMX_CHECK_BREAK(!(u32Eflags & X86_EFL_VM), VMX_IGS_RFLAGS_VM_INVALID);
         }
