@@ -1,4 +1,4 @@
-/** @file $Id: vbox_drv.h 49627 2013-11-22 15:11:53Z vboxsync $
+/** @file $Id: vbox_drv.h 49878 2013-12-11 16:28:57Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -122,6 +122,13 @@ struct vbox_gem_object;
 struct vbox_connector
 {
     struct drm_connector base;
+    /** Property for receiving mode hints from user space. */
+    struct drm_property *pModeHintProp;
+    struct
+    {
+        uint16_t cX;
+        uint16_t cY;
+    } modeHint;
 };
 
 struct vbox_crtc
