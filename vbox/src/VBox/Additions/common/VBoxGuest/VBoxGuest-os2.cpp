@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-os2.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 48665 2013-09-24 21:11:43Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
 
 /*
- * Copyright (C) 2007-2012 knut st. osmundsen <bird-src-spam@anduin.net>
+ * Copyright (C) 2007-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -19,7 +19,7 @@
  *
  * VBoxDrv - OS/2 specifics.
  *
- * Copyright (c) 2007 knut st. osmundsen <bird-src-spam@anduin.net>
+ * Copyright (c) 2007-2012 knut st. osmundsen <bird-src-spam@anduin.net>
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
