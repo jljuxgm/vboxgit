@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49890 2013-12-12 17:13:49Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49896 2013-12-13 15:38:40Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -749,6 +749,9 @@ VMMR0DECL(int) SVMR0SetupVM(PVM pVM)
          * so choose type 6 for all PAT slots.
          */
         pVmcb->guest.u64GPAT = UINT64_C(0x0006060606060606);
+
+        /* Setup Nested Paging. This doesn't change throughout the execution time of the VM. */
+        pVmcb->ctrl.NestedPaging.n.u1NestedPaging = pVM->hm.s.fNestedPaging;
 
         /* Without Nested Paging, we need additionally intercepts. */
         if (!pVM->hm.s.fNestedPaging)
@@ -2864,16 +2867,6 @@ static int hmR0SvmPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIEN
     else if (!pVCpu->hm.s.Event.fPending)
         hmR0SvmEvaluatePendingEvent(pVCpu, pCtx);
 
-    /*
-     * Re-enable nested paging (automatically disabled on every VM-exit). See AMD spec. 15.25.3 "Enabling Nested Paging".
-     * We avoid changing the corresponding VMCB Clean bit as we're not changing it to a different value since the previous run.
-     */
-    /** @todo The above assumption could be wrong. It's not documented what
-     *        should be done wrt to the VMCB Clean bit, but we'll find out the
-     *        hard way. */
-    PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
-    pVmcb->ctrl.NestedPaging.n.u1NestedPaging = pVM->hm.s.fNestedPaging;
-
 #ifdef HMSVM_SYNC_FULL_GUEST_STATE
     HMCPU_CF_SET(pVCpu, HM_CHANGED_ALL_GUEST);
 #endif
@@ -2892,7 +2885,10 @@ static int hmR0SvmPreRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIEN
         if (pVM->hm.s.fTPRPatchingActive)
             pSvmTransient->u8GuestTpr = pCtx->msrLSTAR;
         else
+        {
+            PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
             pSvmTransient->u8GuestTpr = pVmcb->ctrl.IntCtrl.n.u8VTPR;
+        }
     }
 
     /*
