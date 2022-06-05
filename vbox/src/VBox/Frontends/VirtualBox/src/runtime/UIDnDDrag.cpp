@@ -1,4 +1,4 @@
-/* $Id: UIDnDDrag.cpp 50602 2014-02-26 12:50:39Z vboxsync $ */
+/* $Id: UIDnDDrag.cpp 50839 2014-03-21 11:49:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -112,8 +112,10 @@ int UIDnDDrag::DoDragDrop(void)
      * DoDragDrop() method, so this call will block until the DnD operation
      * is finished. */
     pDrag->setMimeData(pMData);
+#ifdef LOG_ENABLED
     Qt::DropAction dropAction = pDrag->exec(m_actions, m_defAction);
     LogFlowFunc(("dropAction=%ld\n", UIDnDHandler::toVBoxDnDAction(dropAction)));
+#endif
 
      /* Note: The UIDnDMimeData object will not be not accessible here anymore,
      *        since QDrag had its ownership and deleted it after the (blocking)
