@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 49516 2013-11-16 06:42:31Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 49543 2013-11-19 02:43:09Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -386,9 +386,9 @@ int VBoxNetDhcp::run(void)
 
     /* XXX: shortcut should be hidden from network manager */
     NetworkManager *netManager = NetworkManager::getNetworkManager();
-    netManager->m_pSession = m_pSession;
-    netManager->m_hIf = m_hIf;
-    netManager->m_pIfBuf = m_pIfBuf;
+    netManager->setSession(m_pSession);
+    netManager->setInterface(m_hIf);
+    netManager->setRingBuffer(m_pIfBuf);
 
     /*
      * The loop.
