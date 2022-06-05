@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52472 2014-08-22 12:45:51Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52514 2014-08-28 14:58:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -261,15 +261,6 @@ void UIMachineWindowNormal::prepareVisualState()
     /* Call to base-class: */
     UIMachineWindow::prepareVisualState();
 
-#ifdef VBOX_GUI_WITH_CUSTOMIZATIONS1
-    /* The background has to go black: */
-    QPalette palette(centralWidget()->palette());
-    palette.setColor(centralWidget()->backgroundRole(), Qt::black);
-    centralWidget()->setPalette(palette);
-    centralWidget()->setAutoFillBackground(true);
-    setAutoFillBackground(true);
-#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
-
 #ifdef Q_WS_MAC
     /* Beta label? */
     if (vboxGlobal().isBeta())
@@ -427,7 +418,6 @@ void UIMachineWindowNormal::showInNecessaryMode()
  */
 void UIMachineWindowNormal::normalizeGeometry(bool fAdjustPosition)
 {
-#ifndef VBOX_GUI_WITH_CUSTOMIZATIONS1
     /* Skip if maximized: */
     if (isMaximized())
         return;
@@ -467,10 +457,6 @@ void UIMachineWindowNormal::normalizeGeometry(bool fAdjustPosition)
     /* Finally, set the frame geometry: */
     setGeometry(frameGeo.left() + dl, frameGeo.top() + dt,
                 frameGeo.width() - dl - dr, frameGeo.height() - dt - db);
-
-#else /* !VBOX_GUI_WITH_CUSTOMIZATIONS1 */
-    Q_UNUSED(fAdjustPosition);
-#endif /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
 }
 
 void UIMachineWindowNormal::updateAppearanceOf(int iElement)
