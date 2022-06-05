@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 52585 2014-09-03 14:06:48Z vboxsync $ */
+/* $Id: VD.cpp 53337 2014-11-14 18:51:54Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3075,6 +3075,7 @@ static int vdWriteHelperAsync(PVDIOCTX pIoCtx)
 
                 if (RT_FAILURE(rc) && (rc != VERR_VD_ASYNC_IO_IN_PROGRESS))
                 {
+                    vdIoCtxUnlockDisk(pDisk, pIoCtx, false /* fProcessDeferredReqs*/ );
                     vdIoCtxFree(pDisk, pIoCtxWrite);
                     break;
                 }
