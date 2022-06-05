@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 49013 2013-10-09 15:49:57Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 49025 2013-10-10 12:00:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -135,7 +135,7 @@ void UIMachineLogicSeamless::sltGuestMonitorChange(KGuestMonitorChangedEventType
     UIMachineLogic::sltGuestMonitorChange(changeType, uScreenId, screenGeo);
 }
 
-void UIMachineLogicSeamless::sltHostScreenCountChanged(int cScreenCount)
+void UIMachineLogicSeamless::sltHostScreenCountChanged()
 {
     LogRelFlow(("UIMachineLogicSeamless: Host-screen count changed.\n"));
 
@@ -143,7 +143,7 @@ void UIMachineLogicSeamless::sltHostScreenCountChanged(int cScreenCount)
     m_pScreenLayout->rebuild();
 
     /* Call to base-class: */
-    UIMachineLogic::sltHostScreenCountChanged(cScreenCount);
+    UIMachineLogic::sltHostScreenCountChanged();
 }
 
 void UIMachineLogicSeamless::prepareActionGroups()
